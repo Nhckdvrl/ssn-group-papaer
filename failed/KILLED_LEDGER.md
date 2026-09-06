@@ -981,3 +981,38 @@ A recent pipeline making the mistake demonstrates persistence of the problem, no
 
 **Reopen only if**  
 A different event representation quantity is identified that prior trigger-sharing, event-coreference, event-individuation, and complex-trigger work do not already cover.
+
+
+---
+
+## K080 — Textually Expressed Relation ≠ Contextually Inferable Relation
+
+**Date:** 2026-09-07  
+**RQ:** When two text-mentioned entities are related in the world or by a plausible contextual inference, can generative relation/KG extraction distinguish that from a relation actually licensed by the source text?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Why it looked promising**  
+The object is natural and important: a text can mention two entities while leaving their relationship unstated, and modern free-form KG extraction can generate a plausible relation from parametric/world knowledge rather than source evidence.
+
+**Exact kill reason**  
+The modern parent is already directly owned. In *Grounded Knowledge Graph Extraction via LLMs: An Anchor-Constrained Framework with Provenance Tracking* (Computers, 2026), the authors explicitly isolate the case in which subject and object are text-grounded but the relation is unsupported by textual evidence; they distinguish this from external-knowledge injection and report unsupported relations as the dominant hallucination category. Their verification rule also explicitly requires the relationship to be stated or directly inferable from the text, not supplied by external knowledge.
+
+Source: https://www.mdpi.com/2073-431X/15/3/178
+
+Thus the intended axis
+
+> textually supported relation vs plausible/contextual/world-knowledge relation
+
+is not merely adjacent to the prior work: it is already a named error category, evaluation target, and pipeline-design consequence in modern LLM KG extraction.
+
+**Reviewer compression**  
+> “Grounded KG extraction / unsupported-relation hallucination, with another dataset or decomposition.”
+
+**Why cleaner data cannot rescue it**  
+A corpus with better relation evidence labels would improve measurement, but would not change ownership of the parent scientific question.
+
+**Reopen only if**  
+A different relation quantity is found whose decisive prediction cannot be reduced to textual-support grounding, external-knowledge injection, relation hallucination, or ordinary relation-extraction faithfulness.
