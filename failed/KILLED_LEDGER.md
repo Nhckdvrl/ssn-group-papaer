@@ -573,3 +573,301 @@ Not every entry needs a long section. Use a table row when the reason is already
 > **Natural data → novelty dies / novel contrast → naturalness dies is itself a valid reason to KILL.**
 
 > **Zero good candidates is preferable to carrying weak legacy topics.**
+
+
+---
+
+## K061 — Split-Antecedent Referential Composition
+
+**Date:** 2026-09-06  
+**RQ:** When a plural expression refers jointly to several previously mentioned individuals, can a generative model distinguish composition of a discourse referent from ordinary one-antecedent identity coreference?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Why it looked promising**  
+The distinction is intuitive: “John met Mary. They left.” requires forming a plural referent from multiple antecedents rather than identifying one prior mention.
+
+**Exact kill reason**  
+Split-antecedent reference is an established coreference object, existing metrics have already been extended for it, and 2025 work directly asks whether LLMs detect ambiguous plural reference involving split antecedents and mereological reference. The CRAC shared-task ecosystem now also evaluates split-antecedent and bridging phenomena, including LLM tracks.
+
+**Reviewer compression**  
+> “Another LLM evaluation of split-antecedent coreference.”
+
+**Reopen only if**  
+A broader new scientific quantity is found that uses plural composition only as an identification substrate and cannot be reduced to split-antecedent competence.
+
+---
+
+## K062 — NIL-Aware Generative Entity Linking
+
+**Date:** 2026-09-06  
+**RQ:** Does recognizing a mention as entity-like license linking it to a concrete knowledge-base entity, or should a generative linker explicitly represent that no valid KB entity exists?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+“Learn to Not Link” (2023) directly makes NIL prediction a central entity-linking problem, and current LLM-based entity-linking systems explicitly include NIL prediction/candidate rejection. The distinction between entity mention recognition and KB-link commitment is therefore already owned at the parent level.
+
+**Reviewer compression**  
+> “NIL prediction for modern LLM entity linking.”
+
+**Reopen only if**  
+A different commitment quantity is found that is not KB coverage / NIL prediction.
+
+---
+
+## K063 — Quote Speaker Attribution
+
+**Date:** 2026-09-06  
+**RQ:** Can a model recover who actually produced a quoted or reported utterance rather than attaching it to a nearby salient entity?  
+**Status:** KILL
+
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary failure(s):** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Recent work already formalizes quote attribution, constructs benchmarks, evaluates ChatGPT/LLMs, and specifically evaluates LLM quotation attribution in literary text. A new corpus/model would not create a new parent question.
+
+**Reviewer compression**  
+> “Another LLM quote-attribution benchmark.”
+
+**Reopen only if**  
+Speaker attribution becomes only one component of a different scientific distinction, such as source versus endorsement, with a genuinely distinct parent RQ.
+
+---
+
+## K064 — Event Mention ≠ Event Occurrence
+
+**Date:** 2026-09-06  
+**RQ:** Does extracting/understanding an event description imply commitment that the event actually occurred?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Event factuality, modality, negation, and occurrence commitment are established NLP tasks. MAVEN-FACT (Findings EMNLP 2024) provides large-scale event-factuality annotations and explicitly benchmarks LLMs; earlier event extraction work already treats modality/negation as occurrence status.
+
+**Reviewer compression**  
+> “Event factuality for LLM event extraction.”
+
+**Reopen only if**  
+A new structural relation goes beyond factuality/modality labels and changes the task definition itself.
+
+---
+
+## K065 — Singleton Detection ≠ Coreference Linking
+
+**Date:** 2026-09-06  
+**RQ:** Should a coreference system first decide whether a mention participates in a coreference chain rather than forcing every plausible mention into antecedent linking?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+NAACL 2024 directly argues that end-to-end coreference improperly combines singleton detection with antecedent linking and shows gains from separately parameterizing singleton detection. Recent corpora and systems also explicitly model singletons/non-referring mentions.
+
+**Reviewer compression**  
+> “The NAACL 2024 singleton-factorization result revisited with generative LLMs.”
+
+**Reopen only if**  
+A different referential-status distinction is identified that is not singleton/anaphoricity detection.
+
+---
+
+## K066 — Atomic Citation Scope / Claim Coverage
+
+**Date:** 2026-09-06  
+**RQ:** Is a citation that supports part of a generated sentence evidence for the whole sentence, or must citation correctness be measured at the atomic-claim level?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+ALiiCE (NAACL 2025) explicitly moves citation generation/evaluation from sentence-level attribution to positional, atomic-claim-level citation, and adjacent work studies sub-sentence/local attribution. The measurement rewrite is already owned.
+
+**Reviewer compression**  
+> “Another atomic/sub-sentence citation evaluation.”
+
+**Reopen only if**  
+A distinct evidence quantity is found beyond claim-span coverage/local attribution.
+
+---
+
+## K067 — Dialogue Slot Mention ≠ Slot Commitment
+
+**Date:** 2026-09-06  
+**RQ:** When a user mentions a slot value, does that mean the value belongs in the dialogue state, or can it be rejected, negated, hypothetical, or merely discussed?  
+**Status:** KILL CURRENT FORM
+
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary failure(s):** `NO_NEW_AXIS`
+
+**Exact kill reason**  
+Dialogue-state tracking has long represented unknown/none/dontcare status and modern open-vocabulary/accountability work explicitly predicts relevant slots and values. Negation, correction, and non-commitment are therefore not a secure new parent merely because an LLM generates the state end-to-end.
+
+**Reviewer compression**  
+> “Open-vocabulary DST with better handling of None/dontcare/negated values.”
+
+**Reopen only if**  
+A broader commitment semantics changes conclusions across multiple dialogue tasks, not just slot-state accuracy.
+
+---
+
+## K068 — Relative Temporal Relation ≠ Absolute Calendar Commitment
+
+**Date:** 2026-09-06  
+**RQ:** If a model understands that an event happened “two days later,” when is it actually licensed to output a concrete calendar date?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked promising**  
+Temporal normalization historically separates relative expression interpretation from the reference/anchor needed to obtain an absolute value, giving a natural analogue of L02.
+
+**Exact kill reason**  
+TReMu (Findings ACL 2025) explicitly names a task **Temporal Anchoring**, asks models to resolve relative-time events to exact times across dialogue, and includes deliberately **unanswerable** temporal questions when the exact time is not recoverable. That directly occupies the proposed “relative relation understood but absolute date not licensed” parent.
+
+**Reviewer compression**  
+> “TReMu temporal anchoring plus unanswerable cases, moved to TimeML/news.”
+
+**Reopen only if**  
+A different temporal scientific quantity is found that is not anchoring/normalization/answerability.
+
+---
+
+## K069 — Event Similarity ≠ Event Identity
+
+**Date:** 2026-09-06  
+**RQ:** When two descriptions are semantically similar, do they actually refer to the same real-world event?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Exact kill reason**  
+Recent event-coreference work already attacks lexical/semantic-similarity shortcuts, evaluates LLM event coreference, and introduces counterfactual controls. FrECo (EMNLP 2025) further studies descriptions of the same real-world event under different framing. Identity-versus-similarity is therefore already central to this program.
+
+**Reviewer compression**  
+> “Another shortcut/robustness study for event coreference.”
+
+**Reopen only if**  
+The event-identity contrast supports a new estimand that is not event coreference itself.
+
+---
+
+## K070 — Correction ≠ Rewriting in GEC
+
+**Date:** 2026-09-06  
+**RQ:** Can a generative grammar corrector fix errors without unnecessarily rewriting already-correct meaning/content?  
+**Status:** KILL
+
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary failure(s):** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+LLM grammatical-error-correction work already treats over-correction and unnecessary edits as a central problem, including explicit penalties and edit-level methods. Semantic preservation/minimal correction is not an unoccupied parent.
+
+**Reviewer compression**  
+> “Another LLM GEC overcorrection paper.”
+
+**Reopen only if**  
+A new measurement law changes what GEC correctness itself means beyond minimality/overcorrection.
+
+---
+
+## K071 — Faithfulness ≠ Factuality
+
+**Date:** 2026-09-06  
+**RQ:** Should generated text be judged by whether it is true in the world or by whether it is supported by the source, when those two disagree?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Faithfulness-versus-factuality is an established distinction, and 2026 work now directly studies cases where models “correct” source content toward world truth when they should remain faithful, as well as datasets explicitly separating factuality and faithfulness.
+
+**Reviewer compression**  
+> “A new dataset/control for the known factuality–faithfulness distinction.”
+
+**Reopen only if**  
+A distinct source-relative quantity is found that prior factuality/faithfulness work does not already own.
+
+---
+
+## K072 — Unordered Fact Set ≠ Autoregressive Sequence
+
+**Date:** 2026-09-06  
+**RQ:** When an IE target is inherently a set of facts, should a generative model be trained/evaluated as though one arbitrary serialization order were semantically correct?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Set-generation work from 2019–2023 explicitly identifies the mismatch between unordered fact sets and sequence-to-sequence likelihood, including generative information extraction and permutation/set objectives. The old-assumption rewrite is already owned.
+
+**Reviewer compression**  
+> “Conditional set generation / set learning for generative IE.”
+
+**Reopen only if**  
+A different output-space mismatch is identified whose semantic consequence is not permutation invariance.
+
+---
+
+## K073 — Exact Span ≠ Semantic Argument in Generative IE
+
+**Date:** 2026-09-06  
+**RQ:** Is an event argument wrong merely because a generative model expresses the correct participant with a different surface span from the annotated gold?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+REGen (Findings EMNLP 2025) directly argues that exact-match evaluation underestimates semantically valid generative event-argument outputs and proposes a reliable evaluation framework; adjacent work already expands EAE to explicit, implicit, and scattered arguments.
+
+**Reviewer compression**  
+> “REGen with another dataset/model.”
+
+**Reopen only if**  
+The new quantity is not semantic-equivalence relaxation of argument spans.
+
+---
+
+## K074 — Discourse Relation Sense ≠ Argument Attachment
+
+**Date:** 2026-09-06  
+**RQ:** Does knowing that two propositions stand in a Cause/Contrast relation imply knowing exactly which spans/propositions the relation connects?  
+**Status:** KILL CURRENT FORM
+
+**Primary failure:** `NO_NEW_AXIS`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Exact kill reason**  
+Classical PDTB-style discourse parsing already factorizes relation detection, argument extraction/attachment, and sense classification. Modern LLM work separately studies implicit-relation classification, generative IDRR, and end-to-end discourse parsing. The distinction is valid but not newly discovered.
+
+**Reviewer compression**  
+> “The old discourse-parser factorization tested on LLMs.”
+
+**Reopen only if**  
+A new measurement/causal proposition appears that changes discourse conclusions rather than retesting the factorization.
+
+---
+
+## K075 — Entity-Level Relation ≠ Mention-Level Relation Evidence
+
+**Date:** 2026-09-06  
+**RQ:** If a document-level entity pair has a relation somewhere in a document, should every mention pair be treated as expressing or evidencing that relation?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Document-level relation extraction already distinguishes entity-level and mention-level evidence; prior models explicitly identify key mention pairs because different mention pairs can express different/no relations, and recent LLM DocRE work continues this entity-pair/evidence program.
+
+**Reviewer compression**  
+> “Mention-evidence selection for DocRE.”
+
+**Reopen only if**  
+A broader evidence-versus-relation distinction changes the task’s scientific estimand beyond mention selection.
