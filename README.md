@@ -7,13 +7,13 @@
 >
 > **Approved mainline: NONE**
 >
-> **Active good candidates: NONE**
+> **Pilot-authorized good candidates: NONE**
 >
-> **Rule: KILL BEFORE COMPUTE if any hard gate is clearly NO.**
+> **Rule: if any hard gate is clearly NO, KILL BEFORE COMPUTE.**
 
-This repository is not a benchmark collection or an idea dump. It is a **research-question selection ledger**.
+This repository is a **research-question selection and decision ledger**, not an idea dump.
 
-The goal is to find:
+We want:
 
 > **A natural, durable NLP/language problem; one genuinely new scientific axis inside it; trustworthy simple data and independent gold; a parent-level novel question with multiple informative outcomes; and a small decisive experiment that can naturally grow into a Main paper.**
 
@@ -36,47 +36,64 @@ Recent Sasano-lab work tells us where natural questions may live. ACL / EMNLP / 
 ├── README.md
 ├── CANDIDATE_CARD.md
 ├── failed/
-│   ├── README.md
-│   ├── TEMPLATE.md
-│   └── <one file per killed topic>.md
+│   └── KILLED_LEDGER.md
 └── good/
-    ├── README.md
-    └── TEMPLATE.md
+    └── README.md
 ```
 
-## `failed/`
+## `failed/KILLED_LEDGER.md`
 
-Every topic that is seriously considered and then rejected must be recorded here.
+**All failed ideas live in one cumulative ledger. Do not create one file per killed topic.**
 
-A failure record must state **why it died**, not merely that it died.
+Every serious candidate that is rejected is appended to the ledger with:
 
-Allowed primary failure types:
+- short name / RQ;
+- date;
+- status;
+- **primary failure type**;
+- secondary failure type(s);
+- exact reason;
+- closest collision when novelty is the issue;
+- reviewer compression;
+- what would have to change before reopening.
 
-- **NOVELTY_PARENT_COLLISION** — closest prior work already owns the parent scientific question / decisive prediction / conclusion.
-- **DATA_GOLD_FAILURE** — data cannot be made natural/credible enough, or gold is not independently defensible.
-- **NO_NEW_AXIS** — question is mainly a competence test, benchmark cell, or textbook distinction without pre-result scientific tension.
-- **REAL_OBJECT_FAILURE** — object is too artificial, method-first, model-specific, or not durably important.
-- **DECISIVENESS_FAILURE** — only one quirky positive outcome is interesting; null/reverse outcomes teach little.
-- **WORKLOAD_PATH_FAILURE** — too much infrastructure/data construction is required before the RQ itself is secured.
-- **PAPER_SCALE_FAILURE** — cannot naturally grow into C1 → C2 → C3 without padding.
-- **CROWDED_PARENT** — exact collision may be absent, but reviewer compression places the topic inside an already saturated scientific parent.
-- **OTHER** — must be explained precisely.
-
-A topic may have several failure types, but one **primary kill reason** must be named.
+The purpose is anti-resurrection: a future idea with a new dataset/model/name should be recognized as the same dead parent when appropriate.
 
 ## `good/`
 
 Only candidates that pass **all five hard gates** may enter `good/`.
 
-A file in `good/` does **not** mean “accepted paper mainline.” It means:
+Because good candidates should be rare, each promoted candidate may have its own completed Candidate Card / audit file.
 
-> **The question is strong enough to justify a minimum decisive pilot.**
+A file in `good/` means:
 
-Promotion to a paper mainline requires surviving the pilot and another novelty / interpretation audit.
+> **pilot-authorized, not paper-mainline-approved.**
+
+After the pilot, the candidate must survive another novelty/interpretation audit before becoming the mainline.
 
 ---
 
-# 2. Hard Gate 1 — REAL OBJECT
+# 2. Failure taxonomy
+
+Use these codes in the kill ledger.
+
+| code | meaning |
+|---|---|
+| **NOVELTY_PARENT_COLLISION** | Prior work already owns the parent RQ, decisive prediction, measurement rewrite, causal estimand, or conclusion. |
+| **CROWDED_PARENT** | No exact duplicate is necessary; reviewer compression places the idea inside an already saturated scientific parent. |
+| **DATA_GOLD_FAILURE** | Natural data / independent gold cannot be secured credibly. |
+| **NO_NEW_AXIS** | Mostly a competence test, textbook distinction, benchmark cell, or post-hoc failure story. |
+| **REAL_OBJECT_FAILURE** | Object is artificial, method-first, model-specific, or insufficiently durable/important. |
+| **DECISIVENESS_FAILURE** | Only one quirky positive outcome is interesting; null/reverse outcomes teach little. |
+| **WORKLOAD_PATH_FAILURE** | Too much infrastructure/data reconstruction is required before the RQ is even secured. |
+| **PAPER_SCALE_FAILURE** | Cannot naturally grow into C1 → C2 → C3 without padding. |
+| **OTHER** | Must be explained precisely. |
+
+A candidate can have several failure types, but it must have one **primary kill reason**.
+
+---
+
+# 3. Hard Gate 1 — REAL OBJECT
 
 Start from a real NLP/language object, not from a method or fashionable model category.
 
@@ -87,7 +104,7 @@ High-prior objects include:
 - compositional / implicit meaning;
 - factual / parametric knowledge;
 - linguistic inference;
-- ambiguity / syntax / discourse;
+- ambiguity, syntax, discourse;
 - established linguistic phenomena;
 - structured semantic/NLP relations;
 - established NLP tasks whose evaluation or measurement unit may be wrong;
@@ -104,37 +121,26 @@ Do **not** start from:
 - a new benchmark;
 - “Old Problem / New Method” as a slogan.
 
-Two mandatory tests:
+Mandatory tests:
 
 > **If “LLM”, model names, and dataset names disappear, is the question still important?**
 
 > **Would an ACL/EMNLP/NAACL reviewer understand why this matters before seeing our result?**
 
-If importance requires explaining a concept we invented, risk is high.
-
 Durability matters: the question should survive model/API turnover.
 
 ---
 
-# 3. Hard Gate 2 — NEW AXIS
+# 4. Hard Gate 2 — NEW AXIS
 
-We do not need a new field. We need a **new scientific relation inside a real object**.
+We need a **new scientific relation inside a real object**, not a new field.
 
 Preferred shapes:
 
-1. **Two factors previously conflated**
-   - e.g. fact possession ≠ access through a particular surface form.
-
-2. **Wrong measurement/unit**
-   - e.g. hard sense count vs contextual diversity;
-   - whole NLI hypothesis vs atomic inference units.
-
-3. **Competing theories predict differently**
-   - e.g. compositional semantics predicts X while a plausible heuristic predicts Y.
-
-4. **An old result depended on an assumption that modern model classes change**
-   - not “old task + LLM”;
-   - must identify the load-bearing assumption and the changed prediction/measurement/method.
+1. **Two factors previously conflated.**
+2. **A wrong measurement/unit.**
+3. **Two plausible theories/accounts make different predictions.**
+4. **A classical result depended on a load-bearing assumption changed by modern model classes.**
 
 Before compute, write:
 
@@ -142,43 +148,38 @@ Before compute, write:
 
 > **Account B predicts Y.**
 
-Both accounts must be plausible **before** results exist.
+Both must be plausible before results exist.
 
 Default warning signs:
 
 - “theoretically X and Y differ; does the model know that?”;
 - “probe A and probe B disagree”;
-- “language output and numeric output differ”;
-- “correct answer = X, failure = Y.”
+- “language and numeric outputs disagree”;
+- “correct behavior = X; failure = Y.”
 
-Those are usually competence/evaluation observations unless attached to a genuinely important new proposition.
+Those are usually competence/evaluation observations unless they instantiate a stronger scientific proposition.
 
 ---
 
-# 4. Hard Gate 3 — GOOD DATA
+# 5. Hard Gate 3 — GOOD DATA
 
-Data is a selection criterion, not an implementation detail.
+Data is a first-order selection criterion.
 
 Priority:
 
-### Best
-Existing natural dataset / corpus / resource already containing the needed variation.
-
-### Also strong
-Existing published human or linguistic experimental materials.
-
-### Acceptable
-Small controlled stimuli grounded in established theory/formal rules with independently defensible gold.
+1. **Existing natural dataset / corpus / resource** already containing the needed variation.
+2. **Published human / linguistic experiment materials.**
+3. **Small theory-grounded controlled stimuli** with independently defensible gold.
 
 Default high-risk:
 
-- large template-generated datasets;
+- large template datasets;
 - bespoke synthetic worlds;
 - author-created ontology;
 - unnatural stories written only to isolate a contrast;
 - LLM-generated main data;
-- LLM-generated questions plus LLM judge;
-- author intuition as the decisive label source.
+- LLM-generated question + LLM judge;
+- author intuition as decisive gold.
 
 Mandatory questions:
 
@@ -186,96 +187,77 @@ Mandatory questions:
 
 > **Can the gold be justified without the same class of LLM being evaluated?**
 
-Preferred gold sources:
-
-- existing annotations/resources;
-- human judgments;
-- published linguistic analysis;
-- formal derivation;
-- deterministic algorithms;
-- independent corpus evidence.
-
 If data validity is unclear:
 
 > **KILL BEFORE COMPUTE.**
 
 ---
 
-# 5. Hard Gate 4 — NEW PARENT
+# 6. Hard Gate 4 — NEW PARENT
 
-Novelty is judged at the **parent scientific question**, not at title/dataset wording level.
+Novelty is judged at the **parent scientific-question level**, not title/dataset wording.
 
-For every candidate, search for ownership of:
+Search ownership of:
 
 - parent RQ;
 - decisive prediction;
-- core scientific conclusion;
+- core conclusion;
 - measurement rewrite;
 - causal estimand;
 - old-assumption rewrite.
 
 Mandatory reviewer attack:
 
-> **This is just ______.**
+> **“This is just ______.”**
 
-The rebuttal must be:
+A valid rebuttal must identify a genuinely different:
 
-> **No. The scientific quantity / prediction / relation / measurement / conclusion is different.**
+- scientific quantity;
+- prediction;
+- structural relation;
+- measurement;
+- causal claim;
+- theoretical conclusion.
 
-The following are not enough:
+Not enough:
 
 - another dataset;
-- another model;
 - another language;
-- cleaner controls;
-- larger scale;
+- another model;
+- more scale;
 - more prompts;
+- cleaner controls;
 - mechanism added later.
 
-Minimum pre-pilot novelty calibration:
-
-- several strong same-identity ACL/EMNLP/NAACL papers;
-- nearest direct collisions;
-- older theoretical/task parent when relevant.
-
-Local lab fit never overrides a close parent collision.
+Minimum pre-pilot novelty calibration should include strong same-identity ACL/EMNLP/NAACL papers, the nearest direct collisions, and older theoretical/task parents when relevant.
 
 ---
 
-# 6. Hard Gate 5 — DECISIVE PAPER
+# 7. Hard Gate 5 — DECISIVE PAPER
 
-A Main paper does not need a huge engineering stack.
+A strong candidate should naturally form:
 
-A good question should naturally support:
-
-### C1 — Core finding
-What did we actually establish about the new axis?
+### C1 — Core answer
+What new relation/law/measurement did we establish?
 
 ### C2 — Why / boundary
-Why does it happen, or where does the relation hold/fail?
+Why does it happen, or where does it hold/fail?
 
 ### C3 — Consequence
 What changes in theory, evaluation, measurement, interpretation, method, or practical decision?
 
 This is **claim architecture**, not experiment count.
 
-Do not pad weak questions with:
-
-- many models;
-- many prompts;
-- extra languages;
-- extra benchmarks;
-- activation patching;
-- mechanism work unrelated to the claim.
+Do not pad weak questions with model count, prompts, languages, benchmarks, or activation patching.
 
 ## Outcome robustness
 
-Before pilot, map multiple outcomes:
+Before pilot, several outcomes should remain informative:
 
 - Account A wins;
 - Account B wins;
-- heterogeneous principled boundary;
-- reversal;
+- principled heterogeneity/boundary;
+- reverse;
 - null that rules out a plausible theory.
 
 Danger:
@@ -288,21 +270,21 @@ That is phenomenon gambling.
 
 Use the simplest evidence strong enough for the claim:
 
-- behavioral / measurement claim → strong controls, decomposition, robustness;
-- causal / mechanistic claim → causal interventions;
+- behavioral / measurement → controls, decomposition, robustness;
+- causal / mechanistic → causal intervention;
 - classical law → test law and assumptions;
-- evaluation claim → prove the new measurement changes interpretation/conclusions.
+- evaluation → validate the measurement and show changed conclusions.
 
 Mechanism is an escalation path, not a rescue device.
 
 ---
 
-# 7. The five mandatory YES answers
+# 8. The five mandatory YES answers
 
-A candidate reaches a pilot only when all are clearly YES:
+A candidate reaches a pilot only if all are clearly YES:
 
 1. **REAL OBJECT** — natural, important, durable?
-2. **NEW AXIS** — genuine non-obvious relation with ≥2 plausible accounts?
+2. **NEW AXIS** — non-obvious relation with at least two plausible accounts?
 3. **GOOD DATA** — simple credible data + independent gold?
 4. **NEW PARENT** — parent-level novelty survives “This is just X”?
 5. **DECISIVE PAPER** — multiple outcomes informative; C1→C2→C3 natural and manageable?
@@ -315,25 +297,25 @@ Not “run a little and see.”
 
 ---
 
-# 8. Immediate kill signals
+# 9. Immediate kill signals
 
 Default KILL / strong negative prior when:
 
-- the object is invented for the experiment;
+- scientific object is invented for the experiment;
 - RQ is essentially “does the model know X ≠ Y?”;
 - only a quirky failure is interesting;
 - bespoke synthetic data is necessary;
 - gold relies on LLM-as-judge or author intuition;
-- closest parent already owns the proposition;
+- closest parent owns the proposition;
 - novelty is only dataset/model/language/prompt/scale;
-- mechanism is being added to make a weak question look deep;
+- mechanism is being added to make a weak RQ look deep;
 - huge infrastructure is required before a decisive answer exists;
-- the topic is a fast-moving agent/RL/prompt/API race without a durable scientific axis;
-- reviewer compression places the work in an already crowded generic category.
+- topic is a fast-moving agent/RL/prompt/API race without a durable scientific axis;
+- reviewer compression places it in an already crowded generic category.
 
 ---
 
-# 9. Preferred search region
+# 10. Preferred search region
 
 Highest priority:
 
@@ -357,7 +339,7 @@ Low priority by default:
 - generic agents;
 - generic RAG;
 - prompt optimization;
-- LLM-as-judge / LLM-as-annotator;
+- LLM-as-judge / annotator;
 - broad cognitive-bias transplantation;
 - behavioral-economics phenomenon hunting;
 - typology/documentation policy;
@@ -366,21 +348,21 @@ Low priority by default:
 
 ---
 
-# 10. Main / Outstanding paper shape we imitate
+# 11. Main / Outstanding paper shape to imitate
 
-We imitate **paper shape**, not topic:
+Imitate the **paper shape**, not the topic:
 
 > **A concrete object already worth caring about + one overlooked scientific axis + credible/simple identification + a conclusion that changes how the object is understood.**
 
-Reference shapes include:
+Reference shapes:
 
 - ACL 2026 Best — imperfective paradox: compositional semantics vs teleological heuristic;
 - ACL 2026 Outstanding — grammaticality ≠ constructional meaning;
 - ACL 2026 RedirectQA — fact possession ≠ surface-form access;
 - EMNLP 2025 Outstanding — classical generative/discriminative result revisited under a changed model class;
-- EMNLP 2025 Outstanding filler-gap — causal internal evidence used to test a concrete syntactic theory;
+- EMNLP 2025 Outstanding filler-gap — causal internal evidence used to test concrete syntactic structure;
 - NAACL 2025 Outstanding NLI — evaluation unit changed to atomic inference;
-- ACL 2025 Outstanding Zipf — “meaning” operationalized through contextual diversity.
+- ACL 2025 Outstanding Zipf — meaning operationalized through contextual diversity.
 
 Common denominator:
 
@@ -388,17 +370,16 @@ Common denominator:
 
 ---
 
-# 11. Mandatory Candidate Card before GPU
+# 12. Mandatory Candidate Card before GPU
 
-Every candidate must fit on one page using [CANDIDATE_CARD.md](CANDIDATE_CARD.md):
+Every serious candidate must first use [CANDIDATE_CARD.md](CANDIDATE_CARD.md):
 
 - one-sentence RQ;
 - why ACL/NLP cares;
 - Account A vs Account B;
 - exact data + independent gold;
 - closest parent;
-- reviewer compression: “This is just ____”;
-- why that compression is false;
+- reviewer compression;
 - outcome map;
 - C1 / C2 / C3;
 - minimum decisive pilot;
@@ -408,7 +389,7 @@ If the card is complicated, the topic is probably too complicated.
 
 ---
 
-# 12. Governing principles
+# 13. Governing principles
 
 > **The object should exist before us.**
 
