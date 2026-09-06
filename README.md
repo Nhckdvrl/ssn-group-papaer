@@ -7,9 +7,9 @@
 >
 > **Approved mainline: NONE**
 >
-> **Pilot-authorized good candidates: NONE**
+> **Pilot-authorized good candidates: 1 — L02 Referential Commitment**
 >
-> **Current live leads under audit: 2**
+> **Current live leads under audit: 0 (L01/L05 killed; L02 promoted to pilot-authorized)**
 >
 > **Rule: if any hard gate is clearly NO, KILL BEFORE COMPUTE.**
 
