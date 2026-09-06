@@ -87,6 +87,10 @@ The entries below preserve the **scientific reason for rejection**, not every hi
 | K052 | Gradient/token-based typology replacing categorical databases | DO NOT ACTIVATE | NOVELTY_PARENT_COLLISION | — | Continuous/token-based typology predates LLMs; semantic extraction alone does not create a new parent. |
 | K053 | Generic corpus representativeness / semantic coverage with LLMs | DO NOT REGISTER | NO_NEW_AXIS | CROWDED_PARENT | Stronger semantic embeddings/classifiers improve measurement but no changed load-bearing scientific assumption was identified. |
 | K054 | Generic computational typologist / schema-free grammar querying | DO NOT ACTIVATE | NOVELTY_PARENT_COLLISION | DATA_GOLD_FAILURE | Grammar-reading/RAG/agent typology already exists; schema-free universal testing also weakens gold/operationalization. |
+| K055 | Generic compositional coercion / coercion competence | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | NO_NEW_AXIS | Recent work already studies model behavior on coercion/composition; remaining formulation risks “does the model know the construction?” |
+| K056 | Generic presupposition / projection competence | KILL CURRENT FORM | CROWDED_PARENT | NO_NEW_AXIS | Presupposition and pragmatic-inference behavior are already active LLM objects; another trigger/condition is not a new parent. |
+| K057 | Continuous / soft WSD as replacement for discrete senses | DO NOT ACTIVATE GENERIC FORM | CROWDED_PARENT | NOVELTY_PARENT_COLLISION | Graded/contextual sense representations and modern WSD/polysemy modeling already occupy the parent. |
+| K058 | Polysemy / copredication as dual-facet representation | KILL CURRENT FORM | CROWDED_PARENT | NOVELTY_PARENT_COLLISION | Contextual ambiguity, copredication acceptability, semantic-type detection, and recent corpora crowd the parent; “can book activate both facets?” is too close. |
 
 ---
 
@@ -321,9 +325,115 @@ Changing the judged task/domain does not reopen the idea.
 
 ---
 
-# 3. Additional inherited dead families
+# 3. New 2026-09-06 search-pass kills
 
-These directions were explicitly retained as dead/non-active in legacy ledgers. They are recorded compactly because their parent-level reason is already stable.
+## K055 — Generic compositional coercion / coercion competence
+
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `NO_NEW_AXIS`
+
+**Why it looked promising**
+
+Coercion is a genuine compositional phenomenon and can be explained with intuitive examples.
+
+**Exact kill reason**
+
+Recent LLM/computational work already studies coercion/compositional interpretation closely enough that a formulation such as:
+
+> “Can LLMs understand coercion?”
+
+or
+
+> “Do LLMs prefer lexical meaning or coerced meaning?”
+
+risks becoming another capability cell.
+
+**Reviewer compression**
+
+> “Another compositional-semantics competence benchmark.”
+
+**Reopen only if**
+
+A different structural relation changes a scientific conclusion rather than adding a new coercion construction.
+
+---
+
+## K056 — Generic presupposition / projection competence
+
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary:** `NO_NEW_AXIS`
+
+**Exact kill reason**
+
+Presupposition, pragmatic inference, and projection behavior already have substantial LLM coverage. Adding a trigger, embedding environment, or model family is not enough.
+
+**Reviewer compression**
+
+> “Another presupposition/projection evaluation.”
+
+**Reopen only if**
+
+The phenomenon becomes the substrate for a new measurement or theory-discriminating relation not reducible to presupposition competence.
+
+---
+
+## K057 — Continuous / soft WSD
+
+**Status:** DO NOT ACTIVATE GENERIC FORM  
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary:** `NOVELTY_PARENT_COLLISION`
+
+**Former attraction**
+
+Discrete sense labels are often crude; contextual meaning may be graded or distributed.
+
+**Exact kill reason**
+
+Graded lexical ambiguity, contextualized sense representations, modern WSD, and polysemy modeling already occupy the general rewrite:
+
+> “replace discrete senses with continuous/contextual representations.”
+
+**Reviewer compression**
+
+> “A modern soft-WSD formulation.”
+
+**Reopen only if**
+
+A new operational quantity changes a substantive linguistic/NLP conclusion in the way contextual diversity changed the Zipf meaning-frequency law.
+
+---
+
+## K058 — Polysemy / copredication as dual-facet representation
+
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked promising**
+
+Words such as “book” can support more than one facet in the same discourse, creating an intuitive test of whether a model maintains multiple aspects of one lexical item.
+
+**Exact kill reason**
+
+Contextual ambiguity/polysemy, copredication acceptability, semantic type detection, and recent copredication resources already make the parent crowded. The most obvious model-side question:
+
+> “Can the model represent both the physical and informational facets?”
+
+is too close to existing lexical-ambiguity work.
+
+**Reviewer compression**
+
+> “Another polysemy/copolysemy representation probe.”
+
+**Reopen only if**
+
+Copredication becomes an identification substrate for a broader new scientific law rather than the paper’s endpoint.
+
+---
+
+# 4. Additional inherited dead families
 
 | family | verdict | reason |
 |---|---|---|
@@ -344,7 +454,7 @@ These directions were explicitly retained as dead/non-active in legacy ledgers. 
 
 ---
 
-# 4. Append format for future kills
+# 5. Append format for future kills
 
 Add every future serious rejection to the index table and, when needed, a short record using:
 
@@ -385,7 +495,7 @@ Not every entry needs a long section. Use a table row when the reason is already
 
 ---
 
-# 5. Anti-resurrection rules
+# 6. Anti-resurrection rules
 
 > **Killed means archived, not backup.**
 
