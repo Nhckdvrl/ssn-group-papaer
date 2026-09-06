@@ -3,11 +3,13 @@
 **Primary target:** NAACL Main  
 **Calibration:** ACL / EMNLP / NAACL Main, especially Best / Outstanding / Best Theme papers.
 
-> **Current state: CLEAN SLATE**
+> **Current state: ACTIVE SEARCH**
 >
 > **Approved mainline: NONE**
 >
 > **Pilot-authorized good candidates: NONE**
+>
+> **Current live leads under audit: 2**
 >
 > **Rule: if any hard gate is clearly NO, KILL BEFORE COMPUTE.**
 
@@ -35,6 +37,7 @@ Recent Sasano-lab work tells us where natural questions may live. ACL / EMNLP / 
 .
 ├── README.md
 ├── CANDIDATE_CARD.md
+├── CURRENT_SEARCH.md
 ├── failed/
 │   └── KILLED_LEDGER.md
 └── good/
@@ -58,6 +61,12 @@ Every serious candidate that is rejected is appended to the ledger with:
 - what would have to change before reopening.
 
 The purpose is anti-resurrection: a future idea with a new dataset/model/name should be recognized as the same dead parent when appropriate.
+
+## `CURRENT_SEARCH.md`
+
+This stores **live leads that look promising but have not yet passed all five gates**.
+
+Do not put a lead into `good/` merely because it survived one novelty pass.
 
 ## `good/`
 
@@ -297,7 +306,37 @@ Not “run a little and see.”
 
 ---
 
-# 9. Immediate kill signals
+# 9. Human-understandability / linguistic-complexity preference
+
+The project does **not** optimize for “the most linguistically technical question.”
+
+New search prior:
+
+> **Prefer research questions that are natural and explainable in ordinary language.**
+
+A linguistic phenomenon is welcome when:
+
+- the real-world distinction is easy to explain;
+- the scientific tension can be stated without a long formal-semantics lecture;
+- the data/gold are already available and trustworthy;
+- the paper identity is visible before technical machinery appears.
+
+Strong negative prior for:
+
+- highly specialized formal-semantic puzzles whose importance is difficult to communicate;
+- questions requiring several pages of linguistic background before the RQ makes sense;
+- distinctions that are interesting mainly to a narrow theoretical subcommunity;
+- candidates where the user/reviewer must learn new linguistic terminology before understanding why the result matters.
+
+This is a **search preference, not a lower scientific bar**.
+
+A simple natural linguistic object can still be excellent. The point is:
+
+> **Easy to understand, hard to answer.**
+
+---
+
+# 10. Immediate kill signals
 
 Default KILL / strong negative prior when:
 
@@ -315,17 +354,24 @@ Default KILL / strong negative prior when:
 
 ---
 
-# 10. Preferred search region
+# 11. Preferred search region
 
 Highest priority:
 
-- lexical semantics / semantic access;
-- compositional / implicit meaning;
+- semantic access / factual access;
+- lexical meaning when the distinction is intuitive;
+- implicit meaning and reference when explainable without heavy formalism;
 - factual / parametric knowledge;
-- linguistic inference;
-- established linguistic phenomena;
-- structured semantic/NLP relations;
-- evaluation / measurement units inside stable NLP tasks.
+- language understanding / inference;
+- discourse and document structure;
+- stable NLP tasks with a questionable evaluation/measurement unit;
+- natural generation/representation questions tied to a concrete behavior.
+
+Still allowed, but lower priority:
+
+- highly technical formal semantics;
+- highly specialized syntax;
+- niche linguistic phenomena whose motivation takes substantial background.
 
 Conditional:
 
@@ -348,7 +394,7 @@ Low priority by default:
 
 ---
 
-# 11. Main / Outstanding paper shape to imitate
+# 12. Main / Outstanding paper shape to imitate
 
 Imitate the **paper shape**, not the topic:
 
@@ -370,7 +416,7 @@ Common denominator:
 
 ---
 
-# 12. Mandatory Candidate Card before GPU
+# 13. Mandatory Candidate Card before GPU
 
 Every serious candidate must first use [CANDIDATE_CARD.md](CANDIDATE_CARD.md):
 
@@ -389,7 +435,7 @@ If the card is complicated, the topic is probably too complicated.
 
 ---
 
-# 13. Governing principles
+# 14. Governing principles
 
 > **The object should exist before us.**
 
@@ -406,5 +452,7 @@ If the card is complicated, the topic is probably too complicated.
 > **Use the simplest evidence strong enough for the claim.**
 
 > **Search locally, judge globally.**
+
+> **Easy to understand, hard to answer.**
 
 > **The question should look important to ACL / EMNLP / NAACL before it looks clever to us.**
