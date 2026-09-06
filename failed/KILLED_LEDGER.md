@@ -871,3 +871,113 @@ Document-level relation extraction already distinguishes entity-level and mentio
 
 **Reopen only if**  
 A broader evidence-versus-relation distinction changes the task’s scientific estimand beyond mention selection.
+
+
+---
+
+## K076 — Correct Answer ≠ Complete Answer Set
+
+**Date:** 2026-09-06  
+**RQ:** In open-ended/list QA, should a partially correct answer be distinguished from a complete/exhaustive answer set?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Why it looked promising**  
+The distinction is immediately intuitive: answering “France” to “Which countries border Germany?” can be correct but incomplete.
+
+**Exact kill reason**  
+List-QA work already treats answer-set coverage as a first-class quantity. QAMPARI evaluates many-answer QA with answer recall/F1, later long-form calibration work explicitly separates answer accuracy and completeness on QAMPARI, and DeepAmbigQA (2025) directly frames its contribution around benchmarking LLM answer completeness for complex questions.
+
+**Reviewer compression**  
+> “QAMPARI/DeepAmbigQA answer completeness with another evaluation decomposition.”
+
+**Why more models / controls do not rescue it**  
+Changing the metric implementation, adding abstention, or showing ranking changes would deepen an already-owned parent rather than create a new scientific question.
+
+**Reopen only if**  
+A different semantic quantity is discovered beyond answer-set exhaustiveness/completeness.
+
+---
+
+## K077 — Event Mention ≠ Event Instance Cardinality
+
+**Date:** 2026-09-06  
+**RQ:** Does one event-denoting mention correspond to one event occurrence, or can a single mention denote a set / multiple instances whose cardinality must be represented?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked promising**  
+The object is real and unusually well grounded. TimeML explicitly distinguishes EVENT mentions from MAKEINSTANCE records and contains a `cardinality` attribute; a public audit found 30 natural cardinality annotations in TimeBank and 73 in AQUAINT (103 total), including numeric and set-like values. This made the data gate much stronger than initially expected.
+
+**Exact kill reason**  
+The classical semantic distinction is old, and—more importantly—Gantt et al. (Findings EMNLP 2023), *On Event Individuation for Document-Level Information Extraction*, already owns the modern parent scientific problem: determining how many distinct events a document describes, how event individuation affects template filling, and how evaluation/data quality break when event counts are uncertain.
+
+Using TimeML cardinality would provide a cleaner controlled substrate, but not a new parent question.
+
+**Reviewer compression**  
+> “Gantt et al. 2023 event individuation, tested on the TimeML cardinality subset and modern LLM extractors.”
+
+**Why the clean gold does not rescue it**  
+A cleaner subset and deterministic cardinality labels improve identification but do not change ownership of the event-individuation question.
+
+**Reopen only if**  
+A genuinely different event quantity is found that cannot be reduced to event individuation/counting/template detection.
+
+---
+
+## K078 — Reported Proposition ≠ Speaker/Narrator Commitment
+
+**Date:** 2026-09-06  
+**RQ:** When a proposition appears under reported speech, can a model distinguish proposition presence from the speaker/narrator's own commitment to that proposition?  
+**Status:** KILL CURRENT FORM
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Why it looked promising**  
+The plain-language distinction is strong: “The minister said the drug is safe” contains the proposition *the drug is safe* without the journalist necessarily endorsing it.
+
+**Exact kill reason**  
+Speaker/author commitment and source-relative factuality are established NLP objects. CommitmentBank and related work explicitly annotate and model speaker commitment; prior author-commitment work distinguishes attribution from author endorsement. Moving the same distinction into generative summarization, QA, or IE is not enough under parent-level novelty.
+
+**Reviewer compression**  
+> “Speaker-commitment / factuality classification transplanted into a generative task.”
+
+**Reopen only if**  
+A new modeling or measurement quantity is found that is not reducible to source-relative commitment/factuality.
+
+---
+
+## K079 — Lexical Trigger ≠ Semantic Event
+
+**Date:** 2026-09-06  
+**RQ:** When one semantic event is expressed by multiple event-like lexical items (e.g., light-verb constructions), or one trigger licenses multiple events, is a trigger-centric event representation using the wrong event unit?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Why it looked promising**  
+Modern generative event-extraction pipelines still often operationalize events through triggers. An EMNLP 2025 LLM event-extraction prompt even instructs annotators to mark both the light verb and noun separately in “make an offer,” creating an apparent route from two lexical triggers to two event records. Existing PropBank/LVC resources provide natural semantic evidence that light-verb constructions can form a single complex predicate.
+
+**Exact kill reason**  
+Both directions of the non-one-to-one trigger/event mapping are already explicitly recognized.
+
+- Geromel & Cimiano (2026), in LLM-based ACE event extraction, state that their system can produce two semantically identical/co-referent event predictions from different triggers (e.g., “paid” and “fine”) and is currently unable to remove/combine them.
+- Findings EMNLP 2022 *Extracting Trigger-sharing Events via an Event Matrix* directly attacks the opposite assumption: even a fixed trigger and event type can correspond to multiple distinct events.
+- Earlier event-extraction work already states that trigger words are not a reliable criterion for determining the number of events.
+- Annotation schemes already contain preference/complex-trigger rules for light verbs and multi-token triggers.
+
+Thus “lexical trigger count ≠ semantic event count” is a real issue, but not a new parent.
+
+**Reviewer compression**  
+> “Known event-individuation / trigger-sharing / co-referent-trigger problems, with light-verb constructions as a clean example.”
+
+**Why the EMNLP-2025 failure example does not rescue it**  
+A recent pipeline making the mistake demonstrates persistence of the problem, not ownership of a new scientific axis.
+
+**Reopen only if**  
+A different event representation quantity is identified that prior trigger-sharing, event-coreference, event-individuation, and complex-trigger work do not already cover.
