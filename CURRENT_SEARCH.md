@@ -1,273 +1,141 @@
-# Current Research-Question Search — 2026-09-06 Terminal Audit
+# Current Research-Question Search — 2026-09-06 Active Search
 
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Pilot-authorized candidates in `good/`:** 1 — L02  
-**Live leads remaining from L01/L02/L05:** 0
+**Current target:** find additional five-gate candidates without lowering the bar.
 
-> This document records the terminal deep audit of L01, L02, and L05.
+> Search status after the first post-L02 assassination batch:
 >
-> Result: **L01 KILL · L02 PROMOTE TO `good/` FOR MINIMUM DECISIVE PILOT · L05 KILL**
+> - **15 additional candidate families killed:** K061–K075
+> - **A-level live leads:** 0 at this checkpoint
+> - **B-level live leads:** 3
+>
+> This is intentional. A lead is not promoted merely because it sounds natural.
 
 ---
 
-# L01 — Comparison-Class Inference for Gradable Meaning
+# A-level strong live leads
 
-## Final verdict
+## None yet
 
-# **KILL CURRENT FORM**
-
-**Primary failure:** `NOVELTY_PARENT_COLLISION`  
-**Secondary:** `CROWDED_PARENT`
-
-## Why it was genuinely attractive
-
-Plain-language question:
-
-> When someone says an object is “tall”, “warm”, or “expensive” without saying what it is being compared against, does a model merely use stored category statistics, or infer the comparison class the speaker must have intended?
-
-This is natural, easy to explain, and has unusually strong pre-existing human materials.
-
-Tessler & Goodman (2022), *Warm (for Winter): Inferring Comparison Classes in Communication*, provide:
-- a large-scale preregistered human experiment;
-- open data/materials;
-- a pragmatic speaker-reasoning account;
-- a literal Bayesian account;
-- qualitative predictions that diverge in direction.
-
-So REAL OBJECT and GOOD DATA were strong.
-
-## Why it nevertheless dies
-
-The project's novelty rule is parent-level:
-
-> **Changing the population from humans to LLMs does not itself create a new parent scientific question.**
-
-Tessler & Goodman already own the central parent:
-
-> how a listener recovers an implicit comparison class from a vague gradable expression and world knowledge.
-
-The obvious LLM bridge is also no longer empty. Lipkin et al. (2023), *Evaluating statistical language models as pragmatic reasoners*, directly evaluate LLM threshold interpretation for gradable adjectives and include an explicit **Comparison Classes** experiment such as “strong for a novice player.”
-
-More recent work further crowds the scalar-adjective neighborhood, including:
-- SIGA (LREC-COLING 2024);
-- MASP (CCL 2025);
-- CrosSing (SCiL 2026), which compares LLM and human scalar-adjective reasoning and studies overinformative contexts.
-
-The remaining distinction—
-
-> **using an explicitly supplied comparison class vs reconstructing an implicit one**
-
-—is real and interesting, but under aggressive reviewer compression the proposed paper becomes:
-
-> **“Tessler & Goodman 2022 run on LLMs, with Lipkin 2023 as the explicit-context control.”**
-
-That is not a sufficiently secure NEW PARENT for this project.
-
-## Why a strong result would not rescue it
-
-Even if models show a striking literal/pragmatic split, the decisive theoretical alternatives and experimental contrast come from prior human work.
-
-More models, causal probing, hidden-state analysis, multilingual expansion, or a cleaner explicit-vs-implicit control would deepen the evidence but would not change ownership of the parent question.
-
-## Reopen only if
-
-A future formulation discovers a broader structural law about **context reconstruction vs context use** that:
-1. is independently motivated beyond gradable adjectives;
-2. makes common predictions across multiple natural NLP objects; and
-3. cannot be reviewer-compressed to a model replication of Tessler & Goodman.
+No newly searched lead has survived enough parent-level novelty work to deserve A-level status.
 
 ---
 
-# L02 — Semantic Role Completion vs Referential Commitment
+# B-level search leads
 
-## Final verdict
+## B1 — Reported Proposition ≠ Speaker/Narrator Commitment
 
-# **PROMOTE TO `good/` — MINIMUM DECISIVE PILOT AUTHORIZED**
+### Plain-language object
+A document can contain the sentence “The minister said the drug is safe” without the journalist/narrator asserting that the drug is safe.
 
-See: `good/L02_REFERENTIAL_COMMITMENT.md`
+### Candidate RQ
+> When a model extracts, summarizes, or answers from reported speech, can it distinguish **what proposition is present in the text** from **who is committed to that proposition**?
 
-## Plain-language question
+### Why this might be a real new axis
+Classical opinion/factuality resources represent sources/holders, but modern generative NLP may collapse:
+1. proposition recovery;
+2. source attribution;
+3. narrator/author endorsement.
 
-> When language leaves something unstated, how can a generative model know whether there is a specific missing entity to recover at all?
+This is more specific than quote attribution (K063) and potentially broader than binary factuality.
 
-The core distinction can be explained without linguistic terminology:
+### Data/gold candidates to audit
+- MPQA opinion holder/source annotations;
+- FactBank / source-relative factuality;
+- reported-speech / attribution corpora;
+- naturally occurring news, not synthetic stories.
 
-- “The court convicted him, but the charges were later dropped.” A missing participant may refer to a particular entity recoverable from discourse.
-- “She already ate.” We understand an eating event involves something ingestible, but the sentence need not refer to any particular food item.
+### Immediate kill test
+KILL if recent 2024–2026 LLM work already owns **source-relative commitment / endorsement under reported speech** as the parent, or if the only novelty is “LLMs make attribution errors.”
 
-The scientific quantity is therefore not merely:
-
-> “Can the model guess a missing argument?”
-
-It is:
-
-> **Does semantic role completion license referential commitment?**
-
-## Why the old literature does not kill it
-
-The classic literature already knew this distinction. FrameNet distinguishes:
-- **DNI:** a missing role has a specific contextually recoverable referent;
-- **INI:** the role is semantically understood but no particular referent is recoverable.
-
-SemEval-2010 Task 10 operationalized the distinction explicitly:
-1. find a null instantiation;
-2. decide whether it is definite;
-3. **only if definite**, locate its filler.
-
-That fact would kill a naive paper titled:
-
-> “Can LLMs distinguish DNI from INI?”
-
-But modern generative argument extraction changes a load-bearing modeling assumption.
-
-Recent work such as:
-- ACL 2024 *Explicating the Implicit*;
-- EMNLP 2024 *Explicit, Implicit, and Scattered*;
-- EMNLP Findings 2025 *REGen*
-
-moves argument extraction toward document-level inference and free-form generation, with “implicit” commonly defined as **unstated but inferable**.
-
-The new question is therefore an **Old Problem / New Method** question:
-
-> **Did free-form generative extraction make an old explicit distinction between “role exists” and “specific referent exists” load-bearing again?**
-
-No direct 2024–2026 collision was found that makes referential status / non-specific omission the central evaluation axis for generative LLM argument extraction.
-
-## Data/gold audit
-
-This survives GOOD DATA without synthetic worlds.
-
-### Primary classic substrate: SemEval-2010 Task 10
-
-Published statistics:
-- train: 438 sentences, 303 DNIs, 277 INIs;
-- test: 525 sentences, 349 DNIs, 361 INIs;
-- linked/resolved DNI annotations are provided for a large subset.
-
-The task data are running text and were released with gold semantic argument and null-instantiation linking information.
-
-### Scale/replication substrate: FrameNet
-
-FrameNet contains approximately **55,700 null-instantiation labels**, distinguishing constructional and lexically licensed omissions, including DNI/INI.
-
-Thus the decisive labels predate our hypothesis and do not rely on an LLM judge or author-created synthetic gold.
-
-## Competing accounts
-
-### Account A — End-to-end generative completion
-
-> A sufficiently capable generative model can jointly infer whether an omitted role has a concrete referent and recover it when appropriate; the old detect-definiteness-then-resolve factorization is no longer necessary.
-
-Prediction:
-- strong separation of DNI and INI;
-- specific fillers for DNI;
-- abstention / non-specific output for INI;
-- little benefit from explicit typed factorization.
-
-### Account B — Referential overcommitment
-
-> Free-form generation makes role plausibility leak into entity commitment: once a role is semantically expected, the model tends to produce a plausible concrete filler even when no particular referent is licensed.
-
-Prediction:
-- plausible but unsupported fillers on INI;
-- models may know the role/type while still overcommitting to an entity;
-- explicit status prediction or typed output materially improves correctness.
-
-Both outcomes change how generative implicit-argument modeling should be structured.
-
-## Why this is not phenomenon gambling
-
-If Account B wins:
-> modern generative extraction has reintroduced a semantic error that classical pipelines explicitly avoided.
-
-If Account A wins:
-> modern LLM generation has made the classical DNI/INI→resolution factorization empirically unnecessary for this task.
-
-If behavior is heterogeneous:
-> we get a principled boundary specifying which predicates/frames/contexts require explicit referential-status modeling.
-
-So the paper does not require one quirky failure to exist.
-
-## Main-level claim architecture if pilot survives
-
-**C1 — Referential commitment is a distinct step from semantic role completion.**  
-Measure whether modern generative models preserve or collapse this boundary.
-
-**C2 — Identify the boundary / computation.**  
-Separate role/type knowledge from specific-entity commitment and test whether explicit typed factorization changes behavior.
-
-**C3 — Consequence for task definition/evaluation.**  
-Show whether generative implicit-argument systems should use an output space that distinguishes:
-1. overt/span argument;
-2. recoverable omitted referent;
-3. non-specific omitted role.
-
-The strongest possible paper is not “a DNI/INI benchmark.” It is:
-
-> **Generative extraction needs to know when not to invent an entity.**
+### Status
+**LIVE — parent audit required.**
 
 ---
 
-# L05 — Rational Redundancy in Referring Expressions
+## B2 — Correct Answer ≠ Complete Answer Set
 
-## Final verdict
+### Plain-language object
+For “Which countries border Germany?”, naming France is **correct**, but it is not a **complete answer**.
 
-# **KILL**
+### Candidate RQ
+> In open-ended/list QA, do current evaluation and generative models conflate **answer correctness** with **answer completeness/exhaustivity**?
 
-**Primary failure:** `NOVELTY_PARENT_COLLISION`
+### Why this might be a real new axis
+A single supported item and a complete set are different semantic quantities. Generative QA makes partial-but-fluent answers especially natural, while many older QA metrics were designed around one/few reference strings.
 
-## Why it looked excellent
+### Data/gold candidates to audit
+- QAMPARI / list QA resources;
+- AmbigQA / ASQA only if their gold structure genuinely supports completeness;
+- Wikidata-derived list questions only if gold completeness is independently defensible.
 
-Plain-language question:
+### Immediate kill test
+KILL if list-QA/exhaustiveness papers already make correctness-vs-completeness the parent contribution, or if KB incompleteness destroys trustworthy gold.
 
-> If “the cup” already uniquely identifies an object, can saying “the blue cup” still be rational because the extra color helps the listener find it faster?
-
-Human psycholinguistic work gives:
-- natural visual-search tasks;
-- human behavioral data;
-- competing efficiency accounts;
-- open materials.
-
-So REAL OBJECT, GOOD DATA, and explainability were excellent.
-
-## Exact collision
-
-Unfortunately the parent is now directly occupied.
-
-Muchovej, Rubio-Fernández & Jara-Ettinger (2026), *Theory of Mind Beyond Beliefs: Testing Attention-Based Social Micro-Processes in LLMs*, asks essentially the exact question:
-- humans add redundant color adjectives when they help listener visual search;
-- usefulness is manipulated through set size / color distribution;
-- VLMs are tested on whether they adopt the same attention-guiding strategy.
-
-The paper finds VLMs can generate successful references but lack the human attention-guiding strategy.
-
-A second close collision is Ma et al. (COLM 2025), *Vision-Language Models Are Not Pragmatically Competent in Referring Expression Generation*, which directly evaluates pragmatic failures and excessive/irrelevant information in VLM referring-expression generation.
-
-## Reviewer compression
-
-> **“This is Muchovej et al. 2026 with another VLM/dataset, inside the REG pragmatic-competence program already established by Ma et al. 2025.”**
-
-No amount of model scaling, cleaner human stimuli, additional modalities, or causal probing restores parent novelty.
+### Status
+**LIVE — parent + gold audit required.**
 
 ---
 
-# Final ranking after deep audit
+## B3 — Event Mention ≠ Event Instance Cardinality
 
-| lead | REAL OBJECT | NEW AXIS | GOOD DATA | NEW PARENT | DECISIVE PAPER | final |
-|---|---|---|---|---|---|---|
-| **L02 Referential Commitment** | YES | YES — old distinction becomes load-bearing under generation | YES | **YES, provisional but survived direct search** | YES | **PROMOTE / PILOT** |
-| L01 Comparison-Class Inference | YES | YES | YES | **NO** | plausible | **KILL** |
-| L05 Rational Redundancy | YES | YES | YES | **NO — direct 2026 collision** | — | **KILL** |
+### Plain-language object
+“The bell rang twice” contains one event-denoting phrase but describes more than one ringing occurrence.
+
+### Candidate RQ
+> Does event extraction correctly represent **how many event instances a mention commits to**, rather than assuming one trigger span equals one event instance?
+
+### Why this might be a real new axis
+Event extraction often operationalizes an event instance around a trigger/mention. Quantification, coordination, iteration, and habitual language can break a simple 1-trigger ↔ 1-instance assumption.
+
+### Data/gold candidates to audit
+- Rich ERE guidelines/corpus, which allow multiple event tags in some coordinated time/place cases;
+- event genericity/specificity resources;
+- search specifically for event cardinality/iteration annotations before treating the data gate as viable.
+
+### Immediate kill test
+KILL if no natural corpus provides reliable instance-cardinality gold, or if event genericity/quantification literature already owns the parent.
+
+### Status
+**LIVE BUT DATA-RISKY — data/gold audit first.**
 
 ---
 
-# Search state after this audit
+# Terminal results from this batch
 
-There is currently:
+The following attractive shapes were searched and rejected; details are now recorded as K061–K075 in `failed/KILLED_LEDGER.md`:
 
-- **1 pilot-authorized candidate:** L02;
-- **0 approved paper mainlines;**
-- L01 and L05 are archived and must not be revived merely with new models/data.
+- split-antecedent referential composition;
+- NIL-aware generative entity linking;
+- quote speaker attribution;
+- event mention vs occurrence/factuality;
+- singleton detection vs coreference linking;
+- atomic citation scope;
+- dialogue slot mention vs commitment;
+- relative temporal relation vs absolute temporal anchoring;
+- event similarity vs event identity;
+- GEC correction vs rewriting;
+- faithfulness vs factuality;
+- unordered set vs sequence generation;
+- exact span vs semantic argument in generative IE;
+- discourse sense vs argument attachment;
+- entity-level relation vs mention-level evidence.
 
-The next work on L02, if undertaken later, should be a **minimum decisive pilot**, not more topic search hidden inside the experiment.
+---
+
+# Search rule for the next batch
+
+For each live lead:
+
+1. identify the classical parent and exact natural data;
+2. search 2024–2026 ACL/EMNLP/NAACL + neighboring venue ownership;
+3. write Account A / Account B before any pilot;
+4. attack with reviewer compression;
+5. audit whether gold is independently trustworthy;
+6. either:
+   - promote to A-level and complete a Candidate Card; or
+   - append the next K-number and remove it from this file.
+
+> **No GPU until all five gates are YES.**
