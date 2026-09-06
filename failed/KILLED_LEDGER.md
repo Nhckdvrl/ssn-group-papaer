@@ -91,6 +91,8 @@ The entries below preserve the **scientific reason for rejection**, not every hi
 | K056 | Generic presupposition / projection competence | KILL CURRENT FORM | CROWDED_PARENT | NO_NEW_AXIS | Presupposition and pragmatic-inference behavior are already active LLM objects; another trigger/condition is not a new parent. |
 | K057 | Continuous / soft WSD as replacement for discrete senses | DO NOT ACTIVATE GENERIC FORM | CROWDED_PARENT | NOVELTY_PARENT_COLLISION | Graded/contextual sense representations and modern WSD/polysemy modeling already occupy the parent. |
 | K058 | Polysemy / copredication as dual-facet representation | KILL CURRENT FORM | CROWDED_PARENT | NOVELTY_PARENT_COLLISION | Contextual ambiguity, copredication acceptability, semantic-type detection, and recent corpora crowd the parent; “can book activate both facets?” is too close. |
+| K059 | L01 — Comparison-Class Inference for Gradable Meaning | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | CROWDED_PARENT | Tessler & Goodman 2022 already own implicit comparison-class inference; LLM version compresses to model replication plus explicit-context controls. |
+| K060 | L05 — Rational Redundancy in Referring Expressions | KILL | NOVELTY_PARENT_COLLISION | — | Muchovej et al. 2026 directly test whether VLMs add redundant color when it helps listener visual search; COLM 2025 already owns pragmatic REG failures. |
 
 ---
 
@@ -430,6 +432,63 @@ is too close to existing lexical-ambiguity work.
 **Reopen only if**
 
 Copredication becomes an identification substrate for a broader new scientific law rather than the paper’s endpoint.
+
+---
+
+## K059 — L01: Comparison-Class Inference for Gradable Meaning
+
+**Date:** 2026-09-06  
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `CROWDED_PARENT`
+
+**RQ**
+
+> When a gradable adjective leaves its comparison class implicit, does a model recover the intended class through speaker-sensitive pragmatic inference or rely on category statistics?
+
+**Why it looked promising**
+
+The object is natural, the human data/materials are open, and literal vs pragmatic accounts make divergent predictions.
+
+**Exact kill reason**
+
+Tessler & Goodman (2022), *Warm (for Winter): Inferring Comparison Classes in Communication*, already own the parent scientific question of how an implicit comparison class is recovered. Lipkin et al. (2023) additionally test LLM interpretation of gradable adjectives with explicit comparison classes. Recent scalar-adjective LLM work further crowds the neighborhood.
+
+**Reviewer compression**
+
+> “Tessler & Goodman 2022 on LLMs, with Lipkin 2023 as the explicit-context control.”
+
+Changing the subject population from humans to LLMs does not create a new parent under this repository's novelty standard.
+
+**Reopen only if**
+
+A broader cross-object law of context reconstruction vs context use is discovered that is independently motivated beyond gradable adjectives.
+
+---
+
+## K060 — L05: Rational Redundancy in Referring Expressions
+
+**Date:** 2026-09-06  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ**
+
+> When a redundant modifier is not needed for uniqueness, can it still be rational because it guides the listener's visual search?
+
+**Exact kill reason**
+
+Muchovej, Rubio-Fernández & Jara-Ettinger (2026), *Theory of Mind Beyond Beliefs: Testing Attention-Based Social Micro-Processes in LLMs*, directly manipulates when redundant color adjectives help visual search and tests whether VLMs adopt the human strategy.
+
+Ma et al. (COLM 2025), *Vision-Language Models Are Not Pragmatically Competent in Referring Expression Generation*, already frames VLM REG around pragmatic efficiency, excessive information, and human alignment.
+
+**Reviewer compression**
+
+> “Muchovej et al. 2026 with another model/dataset, inside the pragmatic REG program already occupied by Ma et al. 2025.”
+
+**Reopen only if**
+
+A different scientific quantity is found that is not reducible to attention-guiding redundancy or generic pragmatic REG competence.
 
 ---
 
