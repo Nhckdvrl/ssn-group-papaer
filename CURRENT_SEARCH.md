@@ -1,250 +1,273 @@
-# Current Research-Question Search — 2026-09-06
+# Current Research-Question Search — 2026-09-06 Terminal Audit
 
 **Target:** NAACL Main  
-**Status:** active search  
-**Approved mainline:** NONE  
-**Pilot-authorized candidates in `good/`:** NONE  
-**Current live leads:** 2
+**Approved paper mainline:** NONE  
+**Pilot-authorized candidates in `good/`:** 1 — L02  
+**Live leads remaining from L01/L02/L05:** 0
 
-> This file stores promising leads **before** they pass all five hard gates.
+> This document records the terminal deep audit of L01, L02, and L05.
 >
-> Do not confuse “survived an initial search pass” with “good candidate.”
+> Result: **L01 KILL · L02 PROMOTE TO `good/` FOR MINIMUM DECISIVE PILOT · L05 KILL**
 
 ---
 
-# Search-direction update
+# L01 — Comparison-Class Inference for Gradable Meaning
 
-The current search should move away from two bad extremes:
+## Final verdict
 
-1. **mechanism-first / phenomenon hunting**, and
-2. **overly specialized linguistic puzzles that require heavy formal background before the RQ is understandable.**
+# **KILL CURRENT FORM**
 
-Preferred shape:
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `CROWDED_PARENT`
 
-> **A familiar language/NLP object that a non-specialist can understand immediately, but with a genuinely non-obvious scientific axis inside it.**
+## Why it was genuinely attractive
 
-Working slogan:
+Plain-language question:
 
-> **Easy to understand, hard to answer.**
+> When someone says an object is “tall”, “warm”, or “expensive” without saying what it is being compared against, does a model merely use stored category statistics, or infer the comparison class the speaker must have intended?
 
-Local Sasano-lab-adjacent examples remain useful as a search prior because they start from concrete objects such as factual/fictional reference, lexical explanation, document/citation structure, choice, and syntax-vs-semantic shortcuts. We should not copy those topics; we should copy the concreteness.
+This is natural, easy to explain, and has unusually strong pre-existing human materials.
 
----
+Tessler & Goodman (2022), *Warm (for Winter): Inferring Comparison Classes in Communication*, provide:
+- a large-scale preregistered human experiment;
+- open data/materials;
+- a pragmatic speaker-reasoning account;
+- a literal Bayesian account;
+- qualitative predictions that diverge in direction.
 
-# Live Lead L01 — Comparison-Class Inference for Gradable Meaning
+So REAL OBJECT and GOOD DATA were strong.
 
-## Plain-language RQ
+## Why it nevertheless dies
 
-> When someone says an object is “tall”, “expensive”, or “fast”, does a language model interpret the word using a fixed category stereotype, or infer what comparison group the speaker must have had in mind?
+The project's novelty rule is parent-level:
 
-Example intuition:
+> **Changing the population from humans to LLMs does not itself create a new parent scientific question.**
 
-> “This is a tall 12-year-old” and “This is a tall basketball player” use the same adjective, but “tall” means different numerical regions because the relevant comparison class changes.
+Tessler & Goodman already own the central parent:
 
-The question is understandable without formal semantics.
+> how a listener recovers an implicit comparison class from a vague gradable expression and world knowledge.
 
-## Why it currently looks strong
+The obvious LLM bridge is also no longer empty. Lipkin et al. (2023), *Evaluating statistical language models as pragmatic reasoners*, directly evaluate LLM threshold interpretation for gradable adjectives and include an explicit **Comparison Classes** experiment such as “strong for a novice player.”
 
-### REAL OBJECT — likely YES
+More recent work further crowds the scalar-adjective neighborhood, including:
+- SIGA (LREC-COLING 2024);
+- MASP (CCL 2025);
+- CrosSing (SCiL 2026), which compares LLM and human scalar-adjective reasoning and studies overinformative contexts.
 
-Context-sensitive adjective meaning and comparison classes are ordinary, persistent language phenomena.
+The remaining distinction—
 
-### NEW AXIS — promising
+> **using an explicitly supplied comparison class vs reconstructing an implicit one**
 
-Two pre-result accounts can make different predictions:
+—is real and interesting, but under aggressive reviewer compression the proposed paper becomes:
 
-**Account A — prototype/category-threshold account**
+> **“Tessler & Goodman 2022 run on LLMs, with Lipkin 2023 as the explicit-context control.”**
 
-> The model mainly anchors “tall/expensive/fast” to learned category-level distributions or prototypes.
+That is not a sufficiently secure NEW PARENT for this project.
 
-**Account B — pragmatic speaker-inference account**
+## Why a strong result would not rescue it
 
-> The model uses the utterance and context to infer why the speaker chose that adjective, thereby reconstructing the intended comparison class/threshold.
+Even if models show a striking literal/pragmatic split, the decisive theoretical alternatives and experimental contrast come from prior human work.
 
-The useful axis is not “does the model know that tall is context-sensitive?” but:
+More models, causal probing, hidden-state analysis, multilingual expansion, or a cleaner explicit-vs-implicit control would deepen the evidence but would not change ownership of the parent question.
 
-> **What determines the contextual standard: stored category statistics or speaker-conditioned inference?**
+## Reopen only if
 
-### GOOD DATA — promising
-
-A published human line of work appears to provide reusable experimental materials, human judgments, and code rather than requiring us to invent a synthetic world. An earlier pass identified a 2022 human study with roughly 90 item sets and explicit competing accounts.
-
-**Still required:** exact dataset/license/material retrieval and a clean mapping from human dependent variables to an LLM estimand.
-
-### NEW PARENT — initial search survived, not yet cleared
-
-Initial 2024–2026 searches did not reveal an obvious direct LLM paper owning the exact category-prototype-vs-speaker-inference parent.
-
-**Still required:** aggressive searches across:
-- gradable adjectives in LLMs;
-- comparison-class inference;
-- scalar semantics / adjective standards;
-- pragmatic threshold inference;
-- contextual adjective interpretation;
-- computational psycholinguistics and multimodal grounding.
-
-### DECISIVE PAPER — plausible
-
-Possible claim architecture:
-
-**C1:** characterize how model adjective standards shift across contexts.
-
-**C2:** discriminate prototype/statistical anchoring from speaker-conditioned pragmatic inference using contexts where they predict differently.
-
-**C3:** show the consequence for what counts as semantic competence / contextual meaning evaluation, potentially demonstrating that lexical knowledge alone is insufficient to explain successful interpretation.
-
-## Main risk
-
-This must not collapse to:
-
-> “LLMs understand context-sensitive adjectives.”
-
-That would be a competence benchmark.
-
-## Current verdict
-
-**STRONG LIVE LEAD — NOT YET IN `good/`.**
-
-Promotion requires finishing the exact novelty and data audit.
+A future formulation discovers a broader structural law about **context reconstruction vs context use** that:
+1. is independently motivated beyond gradable adjectives;
+2. makes common predictions across multiple natural NLP objects; and
+3. cannot be reviewer-compressed to a model replication of Tessler & Goodman.
 
 ---
 
-# Live Lead L02 — Referential vs Non-Referential Missing Arguments
+# L02 — Semantic Role Completion vs Referential Commitment
 
-## Plain-language RQ
+## Final verdict
 
-> When a sentence leaves an argument unstated, should a language model always try to recover a missing entity, or can it recognize that sometimes no specific missing entity is intended at all?
+# **PROMOTE TO `good/` — MINIMUM DECISIVE PILOT AUTHORIZED**
 
-Simple intuition:
+See: `good/L02_REFERENTIAL_COMMITMENT.md`
 
-- “John arrived and ate.” Often we understand that John ate **something**, but the speaker may not have any particular thing in mind.
-- In other cases, an omitted participant is recoverable from the discourse and really does refer back to a specific entity.
+## Plain-language question
 
-This is a natural issue for information extraction, semantic parsing, implicit arguments, and generation.
+> When language leaves something unstated, how can a generative model know whether there is a specific missing entity to recover at all?
 
-## The scientific axis
+The core distinction can be explained without linguistic terminology:
 
-Traditional implicit-argument work distinguishes at least two importantly different cases:
+- “The court convicted him, but the charges were later dropped.” A missing participant may refer to a particular entity recoverable from discourse.
+- “She already ate.” We understand an eating event involves something ingestible, but the sentence need not refer to any particular food item.
 
-- **definite/recoverable null instantiation (DNI-like):** a specific missing participant is recoverable from context;
-- **indefinite/non-referential null instantiation (INI-like):** the role is semantically licensed but no specific discourse referent needs to be recovered.
+The scientific quantity is therefore not merely:
 
-The modern concern is that generative LLM-based extraction/recovery may implicitly turn both into:
+> “Can the model guess a missing argument?”
 
-> “find/generate the missing entity.”
+It is:
 
-That changes the measurement target.
+> **Does semantic role completion license referential commitment?**
 
-## Why it currently looks promising
+## Why the old literature does not kill it
 
-### REAL OBJECT — YES
+The classic literature already knew this distinction. FrameNet distinguishes:
+- **DNI:** a missing role has a specific contextually recoverable referent;
+- **INI:** the role is semantically understood but no particular referent is recoverable.
 
-Implicit arguments and omitted participants are real, established NLP/semantic-role phenomena with direct relevance to semantic parsing and information extraction.
+SemEval-2010 Task 10 operationalized the distinction explicitly:
+1. find a null instantiation;
+2. decide whether it is definite;
+3. **only if definite**, locate its filler.
 
-### NEW AXIS — promising only under the rewritten identity
+That fact would kill a naive paper titled:
 
-The weak question is already dead:
+> “Can LLMs distinguish DNI from INI?”
 
-> “Can LLMs recover implicit arguments?”
+But modern generative argument extraction changes a load-bearing modeling assumption.
 
-That is not novel.
+Recent work such as:
+- ACL 2024 *Explicating the Implicit*;
+- EMNLP 2024 *Explicit, Implicit, and Scattered*;
+- EMNLP Findings 2025 *REGen*
 
-The stronger candidate is:
+moves argument extraction toward document-level inference and free-form generation, with “implicit” commonly defined as **unstated but inferable**.
 
-> **Does current generative recovery evaluation conflate two different semantic targets: recoverable reference vs licensed non-reference?**
+The new question is therefore an **Old Problem / New Method** question:
 
-Possible accounts:
+> **Did free-form generative extraction make an old explicit distinction between “role exists” and “specific referent exists” load-bearing again?**
 
-**Account A — universal recovery account**
+No direct 2024–2026 collision was found that makes referential status / non-specific omission the central evaluation axis for generative LLM argument extraction.
 
-> Better semantic understanding should monotonically improve explicit entity recovery for omitted roles.
+## Data/gold audit
 
-**Account B — typed-omission account**
+This survives GOOD DATA without synthetic worlds.
 
-> Correct semantic understanding sometimes requires **not** producing a concrete entity because the omission is non-referential/indefinite.
+### Primary classic substrate: SemEval-2010 Task 10
 
-This creates a measurement-level tension rather than a textbook competence test.
+Published statistics:
+- train: 438 sentences, 303 DNIs, 277 INIs;
+- test: 525 sentences, 349 DNIs, 361 INIs;
+- linked/resolved DNI annotations are provided for a large subset.
 
-### GOOD DATA — promising
+The task data are running text and were released with gold semantic argument and null-instantiation linking information.
 
-Frame-semantic resources and implicit-argument corpora contain annotated null-instantiation distinctions, potentially giving independent gold without author-created worlds.
+### Scale/replication substrate: FrameNet
 
-**Still required:** identify the cleanest downloadable resource, confirm annotation coverage/licensing, and quantify enough DNI-vs-INI examples for a decisive analysis.
+FrameNet contains approximately **55,700 null-instantiation labels**, distinguishing constructional and lexically licensed omissions, including DNI/INI.
 
-### NEW PARENT — not yet cleared
+Thus the decisive labels predate our hypothesis and do not rely on an LLM judge or author-created synthetic gold.
 
-Generic implicit argument recovery and LLM-based argument completion are already occupied.
+## Competing accounts
 
-The candidate survives only if the parent is specifically:
+### Account A — End-to-end generative completion
 
-> **evaluation/representation should distinguish recoverable missing entities from non-referential omissions.**
+> A sufficiently capable generative model can jointly infer whether an omitted role has a concrete referent and recover it when appropriate; the old detect-definiteness-then-resolve factorization is no longer necessary.
 
-Need exact collision search on:
-- null instantiation + language models;
-- DNI / INI computational modeling;
-- implicit argument evaluation;
-- generative semantic role labeling;
-- hallucinated arguments / over-explicitation.
+Prediction:
+- strong separation of DNI and INI;
+- specific fillers for DNI;
+- abstention / non-specific output for INI;
+- little benefit from explicit typed factorization.
 
-### DECISIVE PAPER — plausible
+### Account B — Referential overcommitment
 
-**C1:** show whether current generative models systematically over-recover concrete entities in non-referential omission cases, or whether existing metrics reward such behavior.
+> Free-form generation makes role plausibility leak into entity commitment: once a role is semantically expected, the model tends to produce a plausible concrete filler even when no particular referent is licensed.
 
-**C2:** establish the DNI-vs-INI boundary and separate genuine reference recovery from generic role completion.
+Prediction:
+- plausible but unsupported fillers on INI;
+- models may know the role/type while still overcommitting to an entity;
+- explicit status prediction or typed output materially improves correctness.
 
-**C3:** propose/evaluate a typed evaluation unit or output space that changes conclusions about implicit-argument competence.
+Both outcomes change how generative implicit-argument modeling should be structured.
 
-## Main risk
+## Why this is not phenomenon gambling
 
-The topic becomes too linguistic if framed around terminology.
+If Account B wins:
+> modern generative extraction has reintroduced a semantic error that classical pipelines explicitly avoided.
 
-The paper must use the plain-language object:
+If Account A wins:
+> modern LLM generation has made the classical DNI/INI→resolution factorization empirically unnecessary for this task.
 
-> **Sometimes missing words refer to a specific omitted thing; sometimes they do not. Should our models and metrics treat these as the same task?**
+If behavior is heterogeneous:
+> we get a principled boundary specifying which predicates/frames/contexts require explicit referential-status modeling.
 
-## Current verdict
+So the paper does not require one quirky failure to exist.
 
-**STRONG LIVE LEAD — NOT YET IN `good/`.**
+## Main-level claim architecture if pilot survives
 
-Promotion requires a resource audit and a direct novelty assassination focused on the evaluation rewrite.
+**C1 — Referential commitment is a distinct step from semantic role completion.**  
+Measure whether modern generative models preserve or collapse this boundary.
+
+**C2 — Identify the boundary / computation.**  
+Separate role/type knowledge from specific-entity commitment and test whether explicit typed factorization changes behavior.
+
+**C3 — Consequence for task definition/evaluation.**  
+Show whether generative implicit-argument systems should use an output space that distinguishes:
+1. overt/span argument;
+2. recoverable omitted referent;
+3. non-specific omitted role.
+
+The strongest possible paper is not “a DNI/INI benchmark.” It is:
+
+> **Generative extraction needs to know when not to invent an entity.**
 
 ---
 
-# Newly killed routes in this search pass
+# L05 — Rational Redundancy in Referring Expressions
 
-The following were attractive because they have real linguistic objects, but were rejected before promotion:
+## Final verdict
 
-1. **Generic coercion / compositional coercion in LLMs**
-   - recent work already occupies broad model competence around coercion/composition;
-   - remaining cells risk textbook-capability evaluation.
+# **KILL**
 
-2. **Generic presupposition / presupposition projection**
-   - LLM pragmatic/presupposition work is already substantial;
-   - a new trigger or condition is unlikely to create a new parent.
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
 
-3. **Generic continuous WSD / soft sense mixtures**
-   - contextualized/polysemy/graded-sense representation is already heavily occupied;
-   - “replace discrete senses with continuous representations” is not a fresh parent.
+## Why it looked excellent
 
-4. **Polysemy / copredication as dual-facet representation**
-   - contextualized ambiguity, copredication acceptability, semantic-type detection, and recent copredication resources already crowd the parent;
-   - “can the model represent both facets of book?” is too close to existing lexical-ambiguity work.
+Plain-language question:
 
-These are appended to `failed/KILLED_LEDGER.md`.
+> If “the cup” already uniquely identifies an object, can saying “the blue cup” still be rational because the extra color helps the listener find it faster?
+
+Human psycholinguistic work gives:
+- natural visual-search tasks;
+- human behavioral data;
+- competing efficiency accounts;
+- open materials.
+
+So REAL OBJECT, GOOD DATA, and explainability were excellent.
+
+## Exact collision
+
+Unfortunately the parent is now directly occupied.
+
+Muchovej, Rubio-Fernández & Jara-Ettinger (2026), *Theory of Mind Beyond Beliefs: Testing Attention-Based Social Micro-Processes in LLMs*, asks essentially the exact question:
+- humans add redundant color adjectives when they help listener visual search;
+- usefulness is manipulated through set size / color distribution;
+- VLMs are tested on whether they adopt the same attention-guiding strategy.
+
+The paper finds VLMs can generate successful references but lack the human attention-guiding strategy.
+
+A second close collision is Ma et al. (COLM 2025), *Vision-Language Models Are Not Pragmatically Competent in Referring Expression Generation*, which directly evaluates pragmatic failures and excessive/irrelevant information in VLM referring-expression generation.
+
+## Reviewer compression
+
+> **“This is Muchovej et al. 2026 with another VLM/dataset, inside the REG pragmatic-competence program already established by Ma et al. 2025.”**
+
+No amount of model scaling, cleaner human stimuli, additional modalities, or causal probing restores parent novelty.
 
 ---
 
-# Next search policy
+# Final ranking after deep audit
 
-Continue searching for five eventual `good/` candidates, but bias toward:
+| lead | REAL OBJECT | NEW AXIS | GOOD DATA | NEW PARENT | DECISIVE PAPER | final |
+|---|---|---|---|---|---|---|
+| **L02 Referential Commitment** | YES | YES — old distinction becomes load-bearing under generation | YES | **YES, provisional but survived direct search** | YES | **PROMOTE / PILOT** |
+| L01 Comparison-Class Inference | YES | YES | YES | **NO** | plausible | **KILL** |
+| L05 Rational Redundancy | YES | YES | YES | **NO — direct 2026 collision** | — | **KILL** |
 
-- reference and entity access;
-- lexical/contextual meaning that is explainable with everyday examples;
-- inference and missing information;
-- discourse/document structure;
-- evaluation units that conflate two naturally distinct targets;
-- existing human/corpus/resource data with independent gold.
+---
 
-Avoid spending much search budget on deeply technical formal-linguistic puzzles unless the RQ can be explained in one paragraph to a non-specialist.
+# Search state after this audit
 
-> **The desired topic should feel simple before it feels technical.**
+There is currently:
+
+- **1 pilot-authorized candidate:** L02;
+- **0 approved paper mainlines;**
+- L01 and L05 are archived and must not be revived merely with new models/data.
+
+The next work on L02, if undertaken later, should be a **minimum decisive pilot**, not more topic search hidden inside the experiment.
