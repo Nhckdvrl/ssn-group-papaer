@@ -1230,3 +1230,102 @@ Sources:
 
 **Reopen only if**  
 A clinical distinction with independent gold changes generation in a way not reducible to assertion status, temporality, experiencer, factuality, or clinical negation.
+
+
+---
+
+## K089 — Reparandum Content ≠ Final Speaker Commitment
+
+**Date:** 2026-09-07  
+**RQ:** When a speaker self-corrects (“Boston—sorry, Chicago”), can modern transcript understanding preserve the repair and avoid treating reparandum content as part of the final intended message?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Modern LLM-era disfluency work already owns the relevant action-level parent: identify/mark disfluent spans and remove or rewrite them while preserving meaning. ACL 2026 *Mind the Pause* explicitly uses token-level disfluency states to guide LLM rewriting and motivates downstream voice-assistant understanding; DRES benchmarks LLM disfluency removal on Switchboard-style human gold and reports over-deletion/preservation failures.
+
+**Reviewer compression**  
+> “LLM disfluency removal / self-repair correction with a commitment framing.”
+
+**Reopen only if**  
+A discourse-revision state is found whose downstream consequence is not reducible to disfluency detection/removal, repair resolution, or conversational correction.
+
+---
+
+## K090 — Deontic Requirement ≠ Actual-World Fact
+
+**Date:** 2026-09-07  
+**RQ:** When text states that something must/should/may happen, can generative IE avoid upgrading the normative statement into an assertion that it actually happens?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Recent LLM-based legal/compliance KG work already extracts obligations, permissions, prohibitions, conditions, and related deontic structure explicitly, rather than flattening them into world facts. The modern structured-generation consequence is therefore already owned.
+
+**Reviewer compression**  
+> “Deontic/legal information extraction with another actuality-vs-obligation framing.”
+
+**Reopen only if**  
+A modality distinction with independent gold changes generation in a way not covered by deontic extraction, factuality, legal IE, or modal status.
+
+---
+
+## K091 — Zero Pronoun Omission ≠ No Target-Side Argument
+
+**Date:** 2026-09-07  
+**RQ:** In pro-drop source languages, do modern document-level generative MT systems still need an explicit zero-pronoun recovery state before generating a target language that overtly requires the argument?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Zero-pronoun-aware MT is an established parent, including explicit/joint zero-pronoun prediction plus translation. Findings ACL 2024 further evaluates LLM-based document MT and reports improvements on zero-pronoun translation specifically. The “is explicit ZP state still useful in the LLM era?” formulation is therefore a modernized cell of an occupied parent.
+
+**Reviewer compression**  
+> “Zero-pronoun-aware document MT with newer LLMs.”
+
+**Reopen only if**  
+A source-side omission type forces a distinct target-side action not already covered by zero-pronoun recovery or discourse-aware MT.
+
+---
+
+## K092 — Source-Side We ≠ Target-Side Clusivity Choice
+
+**Date:** 2026-09-07  
+**RQ:** When a source language leaves inclusive/exclusive ‘we’ underspecified but a target language grammatically forces the distinction, can modern MT infer the intended clusivity rather than treating a single reference translation as uniquely correct?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked unusually strong**  
+Clusivity is natural, easy to explain, and has independent human annotations (e.g., thousands of inclusive/exclusive contexts in prior corpus work) plus large multilingual parallel corpora.
+
+**Exact kill reason**  
+The broader parent—target-side obligatory feature realization when the source under-specifies that feature—is already established in MT. WMT 2020 gender work explicitly separates recovery of target-required information from correct target realization when the source lacks it; earlier politeness/honorific MT similarly treats missing/unreliable source features as external controls for target generation. Clusivity is therefore a clean new cell, not a new parent.
+
+**Reviewer compression**  
+> “Gender/politeness-style target-feature recovery, with clusivity instead.”
+
+**Reopen only if**  
+A forced target-side semantic decision yields a scientific conclusion not reducible to target-feature control under source underspecification.
+
+---
+
+## K093 — Name String Mention ≠ Entity Use
+
+**Date:** 2026-09-07  
+**RQ:** When language talks about a word/name itself (“Paris has five letters”) rather than using it to refer to the entity, can modern NER/KG/QA avoid reifying the string as the real-world entity?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+NAACL 2024 directly studies the use–mention distinction in modern language models and demonstrates downstream consequences when systems confuse mention of an expression with use of that expression, including misinformation/hate-speech settings and mitigation by teaching the distinction. “Do not entity-link a metalinguistic name mention” is therefore a downstream cell of an owned parent.
+
+**Reviewer compression**  
+> “Use–mention distinction in LLMs, applied to NER/entity linking.”
+
+**Reopen only if**  
+A metalinguistic distinction yields a new output/evaluation quantity not reducible to use–mention understanding.
