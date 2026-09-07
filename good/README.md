@@ -159,3 +159,30 @@ It survives only as:
 > **Does canonical single-target evaluation preserve computational-morphology conclusions when zero/one/many realization cardinality is restored?**
 
 L04 remains the most novelty-fragile current good candidate and should be killed quickly if the pilot reduces to rare Estonian morphology errors.
+
+---
+
+## External quality bar — mandatory
+
+The quality standard for good/ is **not “as strong as the current good candidates.”**
+
+The external standard is:
+
+# ACL / EMNLP / NAACL Main
+# with Outstanding / Best / Best Theme Paper as the aspirational bar
+
+Every current and future good candidate must be continuously compared to real high-level conference papers along:
+- RQ scale;
+- naturalness and importance;
+- pre-result scientific tension;
+- data/gold quality;
+- identification strength;
+- full-paper novelty;
+- C1→C2→C3 decisiveness;
+- consequence for NLP;
+- breadth without padding;
+- plain-language paper identity.
+
+See [../TOP_CONFERENCE_ALIGNMENT.md](../TOP_CONFERENCE_ALIGNMENT.md).
+
+L02/L03/L04 are **survivors, not exemplars**. They can still be demoted if deeper alignment review shows they are below this external bar.
