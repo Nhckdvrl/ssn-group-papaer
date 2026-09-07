@@ -1,28 +1,161 @@
 # Good Candidates
 
-> **`good/` means pilot-authorized, not paper-mainline-approved.**
+> **good/ means pilot-authorized, not paper-mainline-approved.**
 
 Current state:
 
-| ID | Candidate | Status |
-|---|---|---|
-| **L02** | [Semantic Role Completion ≠ Referential Commitment](L02_REFERENTIAL_COMMITMENT.md) | **PILOT-AUTHORIZED** |
-| **L03** | [Table Value ≠ Observation Status](L03_TYPED_OBSERVATION.md) | **PILOT-AUTHORIZED** |
-| **L04** | [Morphological Inflection Has Realization Cardinality](L04_REALIZATION_CARDINALITY.md) | **PILOT-AUTHORIZED** |
+| ID | Candidate | Canonical package | Status |
+|---|---|---|---|
+| **L02** | Semantic Role Completion ≠ Referential Commitment | [good/L02_REFERENTIAL_COMMITMENT/](L02_REFERENTIAL_COMMITMENT/) | **PILOT-AUTHORIZED** |
+| **L03** | Table Value ≠ Observation Status | [good/L03_TYPED_OBSERVATION/](L03_TYPED_OBSERVATION/) | **PILOT-AUTHORIZED** |
+| **L04** | Morphological Inflection Has Realization Cardinality | [good/L04_REALIZATION_CARDINALITY/](L04_REALIZATION_CARDINALITY/) | **PILOT-AUTHORIZED / NOVELTY-FRAGILE** |
 
-**Current scoreboard: 3 / 5.**
+# Current scoreboard: 3 / 5
 
-There is still **no approved paper mainline**.
+# Approved paper mainline: NONE
 
-A candidate enters this directory only after passing all five pre-pilot gates:
-REAL OBJECT / NEW AXIS / GOOD DATA / NEW PARENT / DECISIVE PAPER.
+---
 
-After the minimum decisive pilot, the candidate must survive another novelty, interpretation, data-validity, and paper-scale audit before mainline approval.
+## Canonical good-candidate package format
 
-## L04 re-audit correction
+Every promoted candidate now receives its own directory. The directory, not the old single Markdown card, is the authoritative research record.
 
-L04 was temporarily demoted on 2026-09-07 because the earlier audit had only conditionally established defectivity + overabundance gold. A stricter data-first re-audit found that the public Eesthetic/Paralex representation directly exposes lexeme×cell rows with explicit `defectiveness_tag`, `overabundance_tag`, and the standard `#DEF#` code distinct from `#MISSING#`, including multiple alternate-form rows for one lexeme×cell.
+Each package contains:
 
-L04 is therefore restored to `good/`, but with a narrower novelty claim: **not** that defectivity/overabundance or set-valued morphology is new, and **not** that LLMs first enable full paradigm completion. The pilot-authorized parent is whether canonical single-target inflection evaluation preserves scientific/model-generalization conclusions when the independently annotated zero/one/many realization relation is restored.
+1. **README.md**
+   - one-sentence RQ;
+   - natural object;
+   - why ACL/NLP cares;
+   - competing accounts;
+   - outcome robustness;
+   - paper identity;
+   - C1→C2→C3;
+   - five gates;
+   - main reviewer-compression danger.
 
-L04 remains more novelty-fragile than L02/L03 and must be killed if its pilot reduces to a rare-morphology benchmark rather than a task-definition/evaluation consequence.
+2. **RELATED_WORK_AND_NOVELTY.md**
+   - classical ownership;
+   - modern neighboring papers;
+   - closest collision pressure;
+   - what prior work already owns;
+   - what we explicitly cannot claim;
+   - what part of the full paper-level story is new;
+   - reviewer compression;
+   - exact kill-level collision definition.
+
+3. **DATA_AND_GOLD.md**
+   - exact natural substrate;
+   - exact independent gold;
+   - deterministic action mapping;
+   - extraction contract;
+   - sampling;
+   - metrics;
+   - data-validity kill conditions;
+   - replication status.
+
+4. **RESEARCH_PLAN.md**
+   - minimum decisive pilot;
+   - Account A / B / boundary promotion routes;
+   - preservation/equivalence handling;
+   - C1→C2→C3;
+   - phases of development;
+   - paper skeleton;
+   - pre-mainline promotion checklist.
+
+The older top-level candidate files remain for backward compatibility with earlier repository references, but future work should use the package directories as the canonical source.
+
+---
+
+## Hard meaning of promotion
+
+A candidate enters good/ only after passing:
+
+- REAL OBJECT;
+- SCIENTIFIC TENSION / NEW CONTRIBUTION AXIS;
+- GOOD DATA;
+- PAPER-LEVEL NOVELTY;
+- OUTCOME-ROBUST DECISIVENESS.
+
+Promotion means only:
+
+# PILOT-AUTHORIZED
+
+It does **not** mean:
+- the paper mainline is approved;
+- novelty is permanently safe;
+- the expected phenomenon must occur;
+- the candidate should survive a bad pilot by narrative rescue.
+
+After the minimum decisive pilot, every candidate must be re-audited for:
+- data validity;
+- outcome interpretation;
+- paper scale;
+- direct modern collision;
+- reviewer compression;
+- C1→C2→C3 decisiveness.
+
+---
+
+## Mandatory anti-phenomenon-hunting question
+
+Every good candidate must answer before compute:
+
+> **If the expected “bad / surprising” phenomenon does not occur, what is the paper?**
+
+The answer must be a pre-specified scientific conclusion such as:
+- preservation;
+- equivalence;
+- non-inferiority;
+- representation necessity / dispensability;
+- a principled boundary.
+
+“Then we have a negative result” is not sufficient.
+
+---
+
+## Mandatory paper-level novelty question
+
+Every good candidate must also answer:
+
+> **What part of the full paper-level story is actually new?**
+
+The answer cannot be:
+- a new model;
+- a new prompt;
+- an exact dataset cell;
+- an untouched subcase;
+- a renamed classic distinction.
+
+The novelty must live in the load-bearing scientific framing, decisive comparison, measurement/intervention, conclusion, or their coherent combination.
+
+---
+
+## Candidate-specific warnings
+
+### L02
+
+Do not reduce it to:
+> “Can an LLM classify DNI vs INI?”
+
+It survives only as a question about whether **referential-status factorization remains load-bearing in generative implicit-argument extraction**.
+
+### L03
+
+Do not reduce it to:
+> “Can an LLM understand Census sentinel codes?”
+
+It survives only as a question about **provider-defined typed observation as the semantic output unit**, and whether explicit status modeling remains necessary.
+
+### L04
+
+Do not claim:
+- defectivity is new;
+- overabundance is new;
+- set-valued morphology is new;
+- LLMs first enable full paradigm completion.
+
+It survives only as:
+
+> **Does canonical single-target evaluation preserve computational-morphology conclusions when zero/one/many realization cardinality is restored?**
+
+L04 remains the most novelty-fragile current good candidate and should be killed quickly if the pilot reduces to rare Estonian morphology errors.
