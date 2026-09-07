@@ -2636,3 +2636,52 @@ A different classical collaborative-language corpus exposes a **new task-state r
 
 **Important lesson**  
 This kill must **not** be generalized into “classic plan recognition / MapTask is too old.” The candidate survived the classical literature. It died because **2026 completed the relevant LLM-era modernization**.
+
+
+---
+
+## K158 — Arabic Diacritization: Single Reference ≠ All Valid Diacritizations
+
+**Date:** 2026-09-07  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Does single-reference Arabic diacritization evaluation preserve model conclusions when multiple contextually valid diacritizations are admitted?
+
+**Exact kill reason**  
+Mohamed & Mubarak, EMNLP 2025 Main, *Advancing Arabic Diacritization: Improved Datasets, Benchmarking, and State-of-the-Art Models*, explicitly introduces multi-reference diacritization, augments standard benchmarks with multiple valid diacritizations, and evaluates against licensed alternatives.
+
+**Reviewer compression**  
+> “EMNLP 2025 multi-reference diacritization with another model/dataset.”
+
+---
+
+## K159 — Semantic Parsing: One Utterance ≠ One Logical Form Under Genuine Ambiguity
+
+**Date:** 2026-09-07  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Should semantic parsing represent a distribution/set of valid logical forms when an utterance is genuinely ambiguous rather than force one gold interpretation?
+
+**Exact kill reason**  
+Stengel-Eskin, Rawlins & Van Durme, ICLR 2024, *Zero and Few-shot Semantic Parsing with Ambiguous Inputs*, directly owns this modernization: AmP explicitly represents multiple possible logical forms and evaluates ambiguity-aware semantic parsing.
+
+**Reviewer compression**  
+> “AmP / ICLR 2024 with another ambiguity source or newer LLM.”
+
+---
+
+## K160 — Pronunciation / G2P: Word Form ≠ One Pronunciation
+
+**Date:** 2026-09-07  
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Does single-pronunciation supervision/evaluation preserve conclusions when a written form licenses multiple valid pronunciations?
+
+**Exact kill reason**  
+Pronunciation lexicons have long represented variants, and recent neural work directly operationalizes alternative valid pronunciation sequences during training/evaluation, including graph-based supervision over pronunciation alternatives. An LLM generator does not create a new parent.
+
+**Reviewer compression**  
+> “Known pronunciation-variant lexicons / alternative-pronunciation graph training, generalized to LLMs.”
