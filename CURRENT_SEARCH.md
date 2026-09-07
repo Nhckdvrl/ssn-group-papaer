@@ -7,8 +7,8 @@
 
 > Repository sync on 2026-09-07:
 >
-> - authoritative kill ledger is now through **K124**;
-> - next kill ID is **K125**;
+> - authoritative kill ledger is now through **K128**;
+> - next kill ID is **K129**;
 > - `good/` still contains only **L02 — Semantic Role Completion ≠ Referential Commitment**;
 > - L02 remains **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**;
 > - no A-level or B-level live lead survived the latest task-ontology batches.
