@@ -1134,3 +1134,99 @@ This is essentially the decisive experiment our candidate would require: whether
 
 **Reopen only if**  
 A distinct document-structure state is found whose removal/retention has not already been tested as an explicit LLM-era downstream prior and cannot be reduced to reading order, layout relations, or generic document structure modeling.
+
+
+---
+
+## K085 — Surface Question Form ≠ Communicative Question Act
+
+**Date:** 2026-09-07  
+**RQ:** When an utterance has interrogative form, can a modern conversational model distinguish a genuine information request from a rhetorical or indirect speech act, so that surface form does not automatically license a literal answer?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Exact kill reason**  
+The modern parent is already active. Ikumariegbe, Blanco & Riloff (EMNLP 2025), *Studying Rhetorically Ambiguous Questions*, explicitly studies context-dependent rhetorical-vs-informational questions and evaluates contemporary language models. ACL 2026 work further studies rhetorical-question representations, while Findings ACL 2026 directly studies indirect speech acts in context. Thus “surface sentence type ≠ communicative act” is not an unowned modern axis.
+
+Source: https://aclanthology.org/2025.emnlp-main.1553/
+
+**Reviewer compression**  
+> “Rhetorical-question / indirect-speech-act recognition for another generation setting.”
+
+**Reopen only if**  
+A different communicative-state distinction yields a new action-level consequence not reducible to rhetoricality, dialogue acts, indirect speech acts, or intent recognition.
+
+---
+
+## K086 — Related Discourse Entity ≠ Coreferent Entity
+
+**Date:** 2026-09-07  
+**RQ:** When a discourse expression depends on an earlier entity for interpretation but denotes a different entity (e.g., “a house … the door”), can modern generation preserve relatedness without collapsing it into identity/coreference?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Exact kill reason**  
+Bridging anaphora is exactly this parent. Levine & Zeldes (LREC 2026), *GUMBridge: A Corpus for Varieties of Bridging Anaphora*, defines bridging as reference dependent on a previous **non-identical** entity and evaluates open and closed contemporary LLMs on bridging resolution and subtype classification across 24 genres. The object, modern LLM competence question, and natural gold are therefore already owned.
+
+Source: https://aclanthology.org/2026.lrec-1.543/
+
+**Reviewer compression**  
+> “GUMBridge / bridging anaphora with a generative identity-error framing.”
+
+**Reopen only if**  
+A non-identity relation is found whose modern consequence is not reducible to bridging, associative anaphora, coreference, or entity linking.
+
+---
+
+## K087 — Word Sequence ≠ Multiword Semantic Unit
+
+**Date:** 2026-09-07  
+**RQ:** Do modern generative systems still need an explicit multiword-expression state, or can contextual generation safely translate/interpret expressions such as idioms and light-verb constructions without first marking them as semantic units?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The key intervention predates LLMs and the modern behavior parent is current. Zaninello & Birch (LREC 2020), *Multiword Expression aware Neural Machine Translation*, explicitly shows that external MWE annotation/data augmentation improves source-MWE translation and target-MWE generation. Liu, Ghosh & Jiang (ACL 2026 Main), *Evaluating the Impact of Verbal Multiword Expressions on Machine Translation*, systematically measures the causal difficulty contributed by VMWEs on state-of-the-art MT using established MWE data. Contemporary ACL/NAACL work also directly evaluates LLM idiom translation.
+
+Sources:
+- https://aclanthology.org/2020.lrec-1.471/
+- https://aclanthology.org/2026.acl-long.698/
+
+An oracle-MWE-tag experiment on newer LLMs would therefore be a model-era rerun of an occupied MWE-aware MT parent.
+
+**Reviewer compression**  
+> “MWE-aware MT / idiom translation rerun on LLMs.”
+
+**Reopen only if**  
+A different multi-token unit has an action-level consequence not already covered by MWE identification, idiom processing, or MWE-aware translation.
+
+---
+
+## K088 — Clinical Mention ≠ Patient Fact
+
+**Date:** 2026-09-07  
+**RQ:** When a clinical note mentions a condition under negation, uncertainty, hypothesis, conditionality, or another experiencer, can modern generative IE avoid upgrading the mention into an asserted fact about the patient?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked unusually strong**  
+The i2b2 2010 assertion resource provides natural pre-LLM gold for Present, Absent, Possible, Conditional, Hypothetical, and Associated-with-Someone-Else. The old gold maps cleanly to a modern generation action: assert a patient fact, emit a typed non-present/non-patient status, or abstain.
+
+**Exact kill reason**  
+The modern parent is already directly owned. Ji, Yu & Wang (IEEE ICHI 2024), *Assertion Detection in Clinical Natural Language Processing using Large Language Models*, evaluates LLMs on i2b2 assertion detection over certainty, temporality, and experiencer and explicitly motivates integration with LLM-based concept extraction. Kocaman et al. (2025), *Beyond Negation Detection: Comprehensive Assertion Detection Models for Clinical NLP*, evaluates fine-tuned LLMs and GPT-4o on the six i2b2 assertion labels and frames assertion status as necessary for correctly attributing extracted medical facts.
+
+Sources:
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC11908446/
+- https://arxiv.org/abs/2503.17425
+
+**Reviewer compression**  
+> “i2b2 assertion detection for LLM-based/generative clinical extraction.”
+
+**Reopen only if**  
+A clinical distinction with independent gold changes generation in a way not reducible to assertion status, temporality, experiencer, factuality, or clinical negation.
