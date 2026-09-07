@@ -356,3 +356,26 @@ The candidate template has also been corrected to make two questions mandatory b
 2. **What part of the full paper-level story is actually new?**
 
 Future searches/promotions must use these package and template rules.
+
+---
+
+# External-bar correction — 2026-09-07
+
+A local-quality comparison is forbidden.
+
+Do **not** search for candidates that are merely “as strong as L02/L03/L04.” Those three are provisional survivors and remain subject to demotion.
+
+The actual target is:
+
+# ACL / EMNLP / NAACL Main
+# aspirationally Outstanding / Best / Best Theme Paper-level identity
+
+Every serious lead must now include explicit **top-conference alignment evidence** before promotion:
+- at least 3 concrete Main papers;
+- preferably at least one award paper;
+- compare RQ scale, natural object, scientific tension, data, decisiveness, novelty, C1→C2→C3, consequence, breadth, and plain-language identity;
+- explain why a strong result would be of independent scientific/methodological interest rather than a narrow benchmark cell.
+
+The authoritative alignment rubric is TOP_CONFERENCE_ALIGNMENT.md.
+
+This correction applies retroactively to L02/L03/L04 as well as all new leads.
