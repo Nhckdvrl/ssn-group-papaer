@@ -2685,3 +2685,38 @@ Pronunciation lexicons have long represented variants, and recent neural work di
 
 **Reviewer compression**  
 > “Known pronunciation-variant lexicons / alternative-pronunciation graph training, generalized to LLMs.”
+
+
+---
+
+## K161 — OCR 1-Best Transcript ≠ OCR Evidence
+
+**Date:** 2026-09-07  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure:** `CROWDED_PARENT`
+
+**RQ:** When document understanding begins from OCR, is it scientifically valid to collapse uncertain visual recognition into one best transcript before downstream semantic interpretation, or should OCR confidence / alternative hypotheses remain available to the downstream extractor?
+
+**Why it looked strong**  
+This was not merely “OCR errors hurt NLP.” The proposed structural axis was an irreversible intermediate commitment:
+
+> visual evidence / recognition uncertainty → one 1-best string → downstream language understanding.
+
+A clean two-account paper seemed possible: either strong language/context models make the 1-best bottleneck effectively harmless, or early commitment destroys information that downstream reasoning could have used.
+
+**Exact kill reason**  
+Hemmer et al., ICCV Workshops 2025, *Improved Information Extraction by Leveraging Multi-Hypothesis OCR at Inference Time*, directly owns the load-bearing modernization. It explicitly uses OCR confidence scores and top-k predictions, explores multiple high-probability OCR readings during information-extraction inference, jointly resolves OCR and IE uncertainty, and reports consistent F1 improvements on two document IE datasets.
+
+The surrounding modern parent is additionally crowded by Shen et al., EACL Industry 2026, *OCR or Not? Rethinking Document Information Extraction in the MLLMs Era with Real-World Large-Scale Datasets*, which directly compares OCR-only, image-only, and image+OCR pipelines and asks whether OCR remains necessary as an intermediary for MLLM document IE.
+
+**Reviewer compression**  
+> “Hemmer et al. 2025 multi-hypothesis OCR for information extraction, extended to newer LLM/VLMs and a broader uncertainty framing.”
+
+That compression wins because the decisive intervention—preserve OCR alternatives/confidence instead of committing to one transcription before extraction—is already implemented and evaluated downstream.
+
+**Why another model / dataset / ranking analysis does not rescue it**  
+Showing that a 2026 LLM benefits more or less from the same multi-hypothesis interface would deepen an occupied question. A new paper would need a different scientific quantity or consequence not reducible to multi-hypothesis OCR, OCR confidence propagation, post-OCR correction, or OCR-vs-image multimodal document IE.
+
+**Reopen only if**  
+A different observation-state relation is found whose downstream action cannot be represented as preserving OCR alternatives/confidence or bypassing OCR with vision, and whose paper-level narrative is not already predicted by this document-IE literature.
