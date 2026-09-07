@@ -1,3 +1,8 @@
+> **Canonical research package moved to [good/L04_REALIZATION_CARDINALITY/](L04_REALIZATION_CARDINALITY/).**  
+> This top-level file is retained for backward compatibility with earlier repository references. Future edits should go to the package directory.
+
+---
+
 # L04 — Morphological Inflection Has Realization Cardinality
 
 **Status:** PILOT-AUTHORIZED  
