@@ -1,3 +1,8 @@
+> **Canonical research package moved to [good/L03_TYPED_OBSERVATION/](L03_TYPED_OBSERVATION/).**  
+> This top-level file is retained for backward compatibility with earlier repository references. Future edits should go to the package directory.
+
+---
+
 # L03 — Table Value ≠ Observation Status
 
 **Status:** PILOT-AUTHORIZED  
