@@ -2017,3 +2017,42 @@ The exact modern parent is already occupied. CheckboxQA (2025) was introduced sp
 
 **Reopen only if**  
 A different form-state distinction is found whose action is not selection-state extraction, key/value separation, blank-field handling, or ordinary form structure recognition.
+
+
+---
+
+## K129 — Implicit Aspect ≠ Explicit Target Mention
+
+**Date:** 2026-09-07  
+**RQ:** When a sentence clearly expresses an opinion about an aspect that is not literally mentioned (e.g., “too expensive” → PRICE), should a generative extractor distinguish inferring the aspect category from claiming an explicit target span?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The distinction is already built into the ABSA parent. SemEval-style ABSA distinguishes explicit aspect terms from aspect categories that need not occur as spans; later aspect–category–opinion formulations explicitly include implicit aspects/opinions, and instruction-tuned generative ABSA work already targets those implicit components. “Infer the category but do not invent a span” is therefore a modern restatement of an occupied implicit-ABSA problem.
+
+**Reviewer compression**  
+> “Implicit ABSA / aspect-category extraction with explicit-span discipline.”
+
+**Reopen only if**  
+A different semantic category has an externally forced action not already represented as explicit-vs-implicit target extraction.
+
+---
+
+## K130 — Relevant Response ≠ Answer to the Question
+
+**Date:** 2026-09-07  
+**RQ:** Can a dialogue/QA evaluator distinguish a fluent, on-topic response from one that actually answers the question rather than evading it?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The parent is already explicit in evasiveness/response-clarity NLP. Recent work builds datasets for clear versus evasive answers and taxonomies of non-answer strategies; by SemEval-2026 CLARITY, identifying evasive versus clear responses is itself a shared-task target. A modern LLM-judge formulation therefore does not create a new task-ontology axis.
+
+**Reviewer compression**  
+> “Evasive-response / non-answer detection with LLM judges.”
+
+**Reopen only if**  
+A different response relation is found that is not reducible to answerability, relevance, clarity, evasiveness, refusal, or dialogue-act classification.
