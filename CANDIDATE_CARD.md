@@ -23,6 +23,49 @@
 
 
 
+## 2.5 TOP-CONFERENCE ALIGNMENT — mandatory
+
+This candidate is judged against **ACL / EMNLP / NAACL Main**, with **Outstanding / Best / Best Theme Paper** as the aspirational bar. L02/L03/L04 are not the quality benchmark.
+
+### Closest high-level reference papers
+
+At least 3 concrete papers, preferably including at least one award paper:
+
+1. **Paper / venue / award:**
+   - Similar paper identity because:
+   - What its RQ scale teaches us:
+2. **Paper / venue / award:**
+   - Similar paper identity because:
+   - What its evidence/C1→C2→C3 teaches us:
+3. **Paper / venue / award:**
+   - Similar paper identity because:
+   - What its consequence/novelty teaches us:
+
+### Dimension-by-dimension alignment
+
+| Dimension | Top-conference reference bar | Our candidate | Verdict |
+|---|---|---|---|
+| RQ scale | | | PASS / WEAK / FAIL |
+| Natural object | | | |
+| Scientific tension | | | |
+| Data / gold | | | |
+| Identification / decisiveness | | | |
+| Paper-level novelty | | | |
+| C1→C2→C3 | | | |
+| Consequence | | | |
+| Breadth / generality | | | |
+| Plain-language identity | | | |
+
+### Outstanding-level reviewer test
+
+> If the result is strong and clean, why is this a paper of independent scientific/methodological interest rather than a narrow benchmark cell or competence study?
+
+> 
+
+**Alignment gate:** PASS / WEAK / FAIL
+
+Any serious FAIL blocks promotion to good/.
+
 ## 3. Plain example
 
 Explain the object without model names, benchmark jargon, or specialist terminology.
