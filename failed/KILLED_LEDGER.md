@@ -2135,3 +2135,103 @@ The distinction is a mature scientific-discourse object, not an unrecognized tas
 
 **Reopen only if**  
 A different scientific-claim role changes a modern action or task conclusion and is not reducible to hypothesis/result/evidence/discourse-role classification.
+
+
+---
+
+## K135 — Conversation Fact ≠ User Fact
+
+**Date:** 2026-09-07  
+**RQ:** When a dialogue mentions a fact, can a memory/profile system distinguish facts about the user from facts stated by the assistant or another speaker?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Speaker-specific persona/profile extraction is already a direct modern parent. SPICE-style speaker profiling explicitly discovers persona-bearing utterances and extracts persona type/value for each specific speaker in a conversation. Adding assistant-turn negatives therefore does not create a new scientific object.
+
+**Reviewer compression**  
+> “Speaker-conditioned persona extraction / speaker profiling.”
+
+**Reopen only if**  
+A conversational fact-status distinction has an externally forced action that is not reducible to speaker attribution, persona extraction, dialogue state, or memory filtering.
+
+---
+
+## K136 — Correct Numeric String ≠ Correct Scientific Result Attribution
+
+**Date:** 2026-09-07  
+**RQ:** Can scientific-language systems distinguish copying a correct score/value from correctly attributing that value to the method, dataset, metric, and experimental condition it actually belongs to?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Scientific table/result extraction already jointly models task/dataset/metric/score associations, and table-cell attribution work explicitly links cells to scientific entities/sources. Recent table–text alignment work further studies whether generated claims are actually supported by the correct cells rather than merely matching a final claim label. The parent is therefore occupied.
+
+**Reviewer compression**  
+> “Scientific table result attribution / table–text alignment.”
+
+**Reopen only if**  
+A different result identity relation is found outside task/dataset/metric/method attribution, evidence alignment, citation/source attribution, or table understanding.
+
+---
+
+## K137 — Conditional Action Mention ≠ Action Licensed for Execution
+
+**Date:** 2026-09-07  
+**RQ:** In procedural text, is mentioning an action under a condition the same as licensing that action now?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `DATA_GOLD_FAILURE`
+
+**Exact kill reason**  
+Action-condition inference from real instructional manuals is already an established NLP task that extracts preconditions/postconditions for actions. To move beyond that parent, the project would need independent world-state gold telling whether the condition currently holds; ordinary text corpora do not supply that action-level truth, pushing the design toward author-built environments.
+
+**Reviewer compression**  
+> “Action Condition Inference plus a simulated execution state.”
+
+**Reopen only if**  
+A natural corpus includes both procedural language and independently observed execution/world state, so the modern action decision is externally grounded.
+
+---
+
+## K138 — Allegation ≠ Adjudicated Fact
+
+**Date:** 2026-09-07  
+**RQ:** In legal text, can a summarizer distinguish a proposition merely alleged by a party from one the court actually adopts or establishes?  
+**Status:** KILL CURRENT FORM
+
+**Primary failure:** `DATA_GOLD_FAILURE`
+
+**Why it looked strong**  
+The distinction is natural and consequential: “the plaintiff alleges X” and “the court finds X” should not collapse into the same factual statement.
+
+**Exact kill reason**  
+Available legal rhetorical-role corpora provide segment-level categories such as facts, arguments, issues, rulings, and ratio, but do not supply clean proposition-level gold for “alleged but unestablished” versus “adjudicated/accepted.” Case summarization resources expose factual distortion but not this exact status. Building the needed gold would require substantial expert legal annotation/author judgment.
+
+**Reviewer compression**  
+> “Legal rhetorical-role/factuality annotation specialized to allegation status.”
+
+**Reopen only if**  
+A natural judicial resource is found with proposition-level allegation/adoption/finding status from court records or annotations.
+
+---
+
+## K139 — Neutral Stance ≠ No Stance
+
+**Date:** 2026-09-07  
+**RQ:** Should stance evaluation distinguish genuine neutral/mixed attitude toward a target from text that expresses no stance toward that target at all?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The distinction is already explicitly recognized in stance research. Some unified evaluations merge Neutral and None for modeling convenience, but other datasets keep neutral and no/off-topic stance separate, and NAACL Findings 2025 explicitly defines neutral stance versus no stance and discusses their annotation difficulty before merging them operationally. A ranking study of the merger would investigate a known label choice rather than discover a new scientific axis.
+
+**Reviewer compression**  
+> “Known neutral-vs-no-stance label-merger analysis.”
+
+**Reopen only if**  
+A stance quantity outside neutrality, no-stance, relevance, target presence, or mixed stance produces a previously unrecognized conclusion reversal.
