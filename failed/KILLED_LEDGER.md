@@ -1329,3 +1329,161 @@ NAACL 2024 directly studies the use–mention distinction in modern language mod
 
 **Reopen only if**  
 A metalinguistic distinction yields a new output/evaluation quantity not reducible to use–mention understanding.
+
+
+---
+
+## K094 — Source Ambiguity ≠ Single Reference Translation
+
+**Date:** 2026-09-07  
+**RQ:** When a source utterance is genuinely ambiguous, should modern MT preserve the ambiguity or represent multiple valid readings rather than treating one reference realization as the uniquely correct translation?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Both the modeling and evaluation parents are occupied. Ambiguity-preserving MT dates back at least to packed-representation MT; NAACL 2022 explicitly models translation as intrinsically uncertain with multiple semantically valid outputs; MRL 2024 directly asks whether strong multilingual LLM translators preserve ambiguity; and recent disambiguation-focused MT benchmarks explicitly argue that standard aggregate MT metrics are insensitive to ambiguity resolution.
+
+**Reviewer compression**  
+> “Ambiguity-preserving / ambiguity-aware MT with an LLM-era evaluation rewrite.”
+
+**Reopen only if**  
+A different source underspecification yields a new scientific estimand not reducible to translation ambiguity, uncertainty, or multiple-valid-output evaluation.
+
+---
+
+## K095 — Dialogue History ≠ Explicit Dialogue State
+
+**Date:** 2026-09-07  
+**RQ:** In LLM-based task-oriented dialogue, is the classical explicit belief/dialogue-state representation still load-bearing, or can a long-context model safely infer current constraints directly from conversation history?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked strong**  
+This was a Main-scale natural systems question with mature MultiWOZ-style state gold and two meaningful outcomes: explicit state could be obsolete, or remain necessary for updates/corrections/cancellations.
+
+**Exact kill reason**  
+The parent is directly occupied. ACL 2024 *Rethinking Task-Oriented Dialogue Systems: From Complex Modularity to Zero-Shot Autonomous Agent* explicitly argues that traditional DST/policy/NLG modules can be deprecated in favor of an LLM agent with schemas/APIs. Earlier work already compared seq2seq dialogue generation with and without explicit dialogue-state representations, and contemporary end-to-end LLM TOD work continues this modular-vs-state-free question.
+
+**Reviewer compression**  
+> “AutoTOD / end-to-end TOD versus explicit belief state, with newer models or cleaner state-update cases.”
+
+**Reopen only if**  
+A different dialogue state variable has a decisive consequence not subsumed by modular-vs-end-to-end TOD or state tracking.
+
+---
+
+## K096 — Chinese Word Boundaries ≠ Required Model Input Units
+
+**Date:** 2026-09-07  
+**RQ:** Do modern language models still need explicit Chinese word-segmentation boundaries as an intermediate representation, or can subword/character contextualization make segmentation obsolete?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+ACL 2019 already asks essentially the parent question in its title, *Is Word Segmentation Necessary for Deep Learning of Chinese Representations?*, across language modeling, MT, paraphrase, and classification. Earlier SMT work also asked whether Chinese word segmentation is needed, while later boundary-aware pretrained models test continued utility of explicit boundary information. Replacing “deep learning” with “LLM” does not create a new parent.
+
+**Reviewer compression**  
+> “The old ‘is CWS necessary?’ question rerun on current LLMs.”
+
+**Reopen only if**  
+A segmentation distinction yields a new generative/measurement consequence not reducible to the necessity or utility of word boundaries.
+
+---
+
+## K097 — Raw Web Page ≠ Main Linguistic Content
+
+**Date:** 2026-09-07  
+**RQ:** Can modern long-context LLMs safely consume raw HTML/web documents, or does explicit main-content/boilerplate extraction remain load-bearing for language modeling and downstream reasoning?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Recent work directly owns the modern parent. Findings EACL 2026 *Beyond a Single Extractor: Re-thinking HTML-to-Text Extraction for LLM Pre-training* evaluates extraction choices for LLM pretraining/downstream use and shows that aggregate extractor quality can mask complementary coverage and downstream performance differences. Contemporary web-content-extraction benchmarks and LLM-vs-structural extraction work further crowd the space.
+
+**Reviewer compression**  
+> “Modern HTML-to-text / web-content extraction for LLMs, with another raw-vs-clean downstream test.”
+
+**Reopen only if**  
+A distinct document-cleaning state changes a semantic conclusion and is not reducible to boilerplate/main-content extraction or preprocessing quality.
+
+---
+
+## K098 — Source-Implicit Meaning ≠ Translation Hallucination
+
+**Date:** 2026-09-07  
+**RQ:** When a translation legitimately makes an implicit source relation explicit, can modern hallucination/faithfulness evaluation distinguish warranted explicitation from unsupported added content?  
+**Status:** KILL
+
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary failure(s):** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The broader evaluation parent—surface-unmentioned content can remain semantically faithful when it is licensed by inference—is already explicitly studied in recent faithfulness work, including graded/cognitive inference benchmarks. MT hallucination evaluation is itself densely occupied. Under reviewer compression, translation explicitation becomes a task-specific instance of inference-aware faithfulness rather than a new parent.
+
+**Reviewer compression**  
+> “Inference-aware faithfulness/hallucination evaluation, specialized to translation explicitation.”
+
+**Reopen only if**  
+A pre-existing MT annotation resource identifies a quantity whose separation demonstrably reverses a scientific conclusion and cannot be represented as generic licensed inference.
+
+---
+
+## K099 — Scholarly Method Mention ≠ This Paper’s Contribution/Usage
+
+**Date:** 2026-09-07  
+**RQ:** When a scientific paper mentions a method in background/comparison text, can generative scholarly IE avoid upgrading that mention into a claim that the paper itself uses or contributes the method?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+SemEval-2021 NLPContributionGraph already first identifies contribution-bearing sentences and then extracts scientific entities/relations into a contribution graph. Findings EACL 2024 and neighboring scholarly-IE work use LLMs for structured scientific contribution extraction/summarization. The mention-vs-contribution distinction is therefore already a core task definition rather than an unrecognized generative conflation.
+
+**Reviewer compression**  
+> “NLPContributionGraph / scholarly contribution extraction with an LLM hallucination framing.”
+
+**Reopen only if**  
+A scholarly discourse distinction changes structured extraction in a way not reducible to contribution sentence detection, discourse role, or scholarly IE.
+
+---
+
+## K100 — Flat Text Sequence ≠ Document Section Structure
+
+**Date:** 2026-09-07  
+**RQ:** With long-context LLMs, is explicit section/heading/document structure still necessary, or can models recover the relevant hierarchy from a flat serialized document?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+EACL 2024 *Document Structure in Long Document Transformers* directly asks whether long-document models acquire document structure and whether explicitly infusing it improves downstream tasks. EMNLP 2025 structure-aware RAG and subsequent layout/document graph work explicitly inject document hierarchy into LLM retrieval and reasoning. The modern “do we still need explicit structure?” parent is occupied.
+
+**Reviewer compression**  
+> “Structure-aware long-document modeling/RAG with another hierarchy representation.”
+
+**Reopen only if**  
+A distinct document-state variable has a downstream consequence not reducible to section hierarchy, layout, reading order, or document graphs.
+
+---
+
+## K101 — Topical Citation Relevance ≠ Rhetorical Citation Utility
+
+**Date:** 2026-09-07  
+**RQ:** Is a semantically related paper necessarily the right citation for a particular rhetorical role in a related-work section, or must citation selection model whether a source supplies background, contrast, precedent, gap evidence, or another discourse function?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Exact kill reason**  
+Citation-intent/discourse-role modeling is mature, recent related-work generation systems explicitly use citation intent/relations as controls, and Findings ACL 2026 work models argument/citation relationships for related-work organization. The user’s own local lab also has recent citation-arrangement work, making this neighborhood especially unsafe. A semantic-relevance-vs-rhetorical-role split is therefore not a new parent.
+
+**Reviewer compression**  
+> “Citation intent / rhetorical-role-aware related-work generation and citation arrangement.”
+
+**Reopen only if**  
+A citation quantity outside intent, function, placement, relation, or discourse organization changes an independently measured conclusion.
