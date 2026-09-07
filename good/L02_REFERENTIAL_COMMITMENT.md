@@ -1,3 +1,8 @@
+> **Canonical research package moved to [good/L02_REFERENTIAL_COMMITMENT/](L02_REFERENTIAL_COMMITMENT/).**  
+> This top-level file is retained for backward compatibility with earlier repository references. Future edits should go to the package directory.
+
+---
+
 # L02 — Semantic Role Completion ≠ Referential Commitment
 
 **Status:** PILOT-AUTHORIZED  
