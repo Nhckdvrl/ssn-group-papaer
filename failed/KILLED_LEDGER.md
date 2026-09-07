@@ -1937,3 +1937,83 @@ ACL Findings 2026 CoPA directly owns this exact natural distinction. It names **
 
 **Reopen only if**  
 A different external QA state is found that is not reducible to individual preference versus community consensus.
+
+
+---
+
+## K125 — Generic / Habitual Statement ≠ Episodic Occurrence
+
+**Date:** 2026-09-07  
+**RQ:** When text describes what generally or habitually happens rather than a particular occurrence, should a generative event/knowledge system avoid reifying it as a concrete event instance?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The distinction is already a mature event-semantics and information-extraction target. ACE event annotation includes genericity; subsequent work explicitly decomposes generic, habitual, and episodic statements and connects the distinction to knowledge-base construction and temporal/event extraction; 2026 LLM-based event-extraction work still treats generic-vs-specific status as an explicit event property. The modern generation story therefore does not expose an unrecognized ontology axis.
+
+**Reviewer compression**  
+> “ACE genericity / generic-habitual-episodic event classification with a generative output head.”
+
+**Reopen only if**  
+A different externally grounded action or measurement consequence is found that is not reducible to event genericity classification or event-instance reification.
+
+---
+
+## K126 — Within-Group Improvement ≠ Between-Group Treatment Effect
+
+**Date:** 2026-09-07  
+**RQ:** In trial reporting, can a scientific-language system distinguish “the treatment group improved from baseline” from evidence that the treatment caused a larger improvement than the control group?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+This is a classic, explicitly named scientific-reporting distortion rather than an unrecognized modern axis. Established RCT “spin” taxonomies include emphasizing statistically significant within-group comparisons when the prespecified between-group result is not significant, and biomedical NLP work has already operationalized automatic spin detection. LLM summarization would therefore be a newer generator inside an occupied parent.
+
+**Reviewer compression**  
+> “Automatic detection/prevention of classic RCT spin from within-group significance.”
+
+**Reopen only if**  
+A scientific-result relation outside established spin, causal overreach, significance exaggeration, subgroup emphasis, and scope distortion changes a modern NLP task conclusion.
+
+---
+
+## K127 — Subgroup Effect ≠ Population-Wide Effect
+
+**Date:** 2026-09-07  
+**RQ:** When a result holds only for a subgroup, can a generated scientific summary preserve that scope instead of presenting the finding as if it applied to the full study population?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Subgroup emphasis already appears in classic RCT spin taxonomies, while recent work directly studies **generalization bias** in LLM summaries of scientific research—omission of scope-limiting details that makes claims appear to apply more broadly than warranted. The exact modern consequence is therefore occupied.
+
+**Reviewer compression**  
+> “Scientific-summary generalization bias / subgroup-related spin.”
+
+**Reopen only if**  
+A different scope relation with independent gold is found that is not reducible to generalization, population scope, subgroup reporting, or established spin.
+
+---
+
+## K128 — Visible Form Option ≠ Selected / Committed Value
+
+**Date:** 2026-09-07  
+**RQ:** In filled forms, can a document-understanding system distinguish options merely printed on the form from the option the user actually selected?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked strong**  
+The action mapping is unusually clean: in `Married ☐  Single ☑`, both labels are visibly present, but only `Single` is licensed as the filled field value. The distinction has direct downstream consequences and human-verifiable gold.
+
+**Exact kill reason**  
+The exact modern parent is already occupied. CheckboxQA (2025) was introduced specifically to evaluate interpretation of checkable document content because selected/unselected state controls real extraction decisions. PulseBench-Select (2026) is explicitly a benchmark for **selected-option detection in document images**, with ground truth for selected checkboxes, radio buttons, and marked answers. Contemporary form/document benchmarks likewise expose widget `selected=true/false` and instruct systems to output only selected options as values.
+
+**Reviewer compression**  
+> “CheckboxQA / PulseBench-Select selected-option detection in Document AI.”
+
+**Reopen only if**  
+A different form-state distinction is found whose action is not selection-state extraction, key/value separation, blank-field handling, or ordinary form structure recognition.
