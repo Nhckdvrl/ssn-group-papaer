@@ -2056,3 +2056,82 @@ The parent is already explicit in evasiveness/response-clarity NLP. Recent work 
 
 **Reopen only if**  
 A different response relation is found that is not reducible to answerability, relevance, clarity, evasiveness, refusal, or dialogue-act classification.
+
+
+---
+
+## K131 — Visible Text ≠ Active / Current Document Content
+
+**Date:** 2026-09-07  
+**RQ:** When deleted or superseded text remains fully visible (e.g., a struck-through old price or a crossed-out word), should document understanding distinguish recognizing the glyphs from treating their content as currently valid?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `CROWDED_PARENT`
+
+**Exact kill reason**  
+ParseBench (2026) directly owns the modern semantic-formatting parent: it evaluates strikethrough because it marks superseded/deleted content and warns that losing this formatting makes an agent treat invalidated text as current. The older diplomatic-vs-reading/normalized transcription tradition already establishes that visible textual revision and active reading text are distinct legitimate outputs. Natural handwritten resources would provide a cleaner handwriting cell, not a new parent scientific question.
+
+**Reviewer compression**  
+> “ParseBench semantic formatting / diplomatic-vs-reading transcription, on handwritten essays.”
+
+**Reopen only if**  
+A document-state distinction outside strikethrough, supersession, semantic formatting, reading order, document hierarchy, and ordinary normalization changes a scientific conclusion.
+
+---
+
+## K132 — Relevant Retrieved Context ≠ Sufficient Evidence
+
+**Date:** 2026-09-07  
+**RQ:** In RAG, is retrieving passages that are relevant to a question the same as retrieving enough information to actually determine its answer?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+ICLR 2025 *Sufficient Context: A New Lens on Retrieval Augmented Generation Systems* explicitly introduces context sufficiency to separate failures caused by insufficient retrieval from failures to use adequate context, stratifies model behavior by that distinction, and uses it for selective generation/abstention. This is the exact parent.
+
+**Reviewer compression**  
+> “Sufficient Context (ICLR 2025).”
+
+**Reopen only if**  
+A different retrieval-state quantity exists beyond relevance, sufficiency, usefulness, attribution, provenance, and answer grounding.
+
+---
+
+## K133 — Specification Uncertainty ≠ Model / Epistemic Uncertainty
+
+**Date:** 2026-09-07  
+**RQ:** When an instruction is ambiguous or underspecified, should a system distinguish uncertainty about what the user wants from uncertainty about its own prediction/knowledge?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `CROWDED_PARENT`
+
+**Exact kill reason**  
+ACL Findings 2026 *Structured Uncertainty guided Clarification for LLM Agents* explicitly and cleanly separates specification uncertainty (“what the user wants”) from model uncertainty (“what the LLM predicts”) and turns the distinction into clarification actions and training signals. Neighboring abstention/ambiguity/UQ work further crowds the parent.
+
+**Reviewer compression**  
+> “Structured specification uncertainty vs model uncertainty.”
+
+**Reopen only if**  
+A distinct uncertainty source has an externally grounded action not reducible to ambiguity, specification, aleatoric/epistemic uncertainty, clarification, or abstention.
+
+---
+
+## K134 — Scientific Hypothesis ≠ Observed Result
+
+**Date:** 2026-09-07  
+**RQ:** Can scientific-language systems distinguish a claim a paper proposes or tests from a claim the paper actually observes or establishes?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The distinction is a mature scientific-discourse object, not an unrecognized task ontology. CoreSC explicitly separates Hypothesis, Observation, Result, and Conclusion and supplies expert-annotated full papers; subsequent scientific discourse and evidence-extraction work continues to operationalize these roles. A generative summary that confuses hypothesis with finding is a modern failure cell inside that parent.
+
+**Reviewer compression**  
+> “CoreSC hypothesis/result discourse classification applied to LLM summaries.”
+
+**Reopen only if**  
+A different scientific-claim role changes a modern action or task conclusion and is not reducible to hypothesis/result/evidence/discourse-role classification.
