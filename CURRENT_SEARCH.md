@@ -3,112 +3,110 @@
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Pilot-authorized candidates in `good/`:** 1 — L02  
-**Current target:** find additional five-gate candidates without lowering the bar.
+**Authoritative killed ledger:** through **K156**  
+**Next kill ID:** **K157**
 
-> Repository sync on 2026-09-07:
->
-> - authoritative kill ledger is now through **K128**;
-> - next kill ID is **K129**;
-> - `good/` still contains only **L02 — Semantic Role Completion ≠ Referential Commitment**;
-> - L02 remains **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**;
-> - no A-level or B-level live lead survived the latest task-ontology batches.
+> `good/` still contains only **L02 — Semantic Role Completion ≠ Referential Commitment**.
+> L02 remains **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**.
 
 ---
 
-# Latest task-ontology dual-role audit
+# Critical rule correction — classic problems are allowed and actively preferred
 
-The previous version of this file lagged behind the actual search at K084. The broader search had already reached K117; the following newly audited leads are now formally closed:
+A pre-LLM classic NLP problem is **not** a novelty failure merely because it was studied in 1991, 2001, or 2011.
 
-| ID | lead | verdict | shortest reason |
+The preferred Old Problem / New Method shape is now:
+
+> **A durable classical language/NLP object + an LLM-era capability that makes a previously inaccessible scientific quantity, output, intervention, or measurement possible.**
+
+A classic topic dies only when:
+
+1. 2024–2026 or earlier modern neural/LLM work already owns the **same modernized parent question**;
+2. the LLM merely replaces a classifier/parser without changing what can be scientifically asked;
+3. data/gold do not identify the new quantity;
+4. the new method cannot change interpretation, modeling, or evaluation.
+
+Positive paper-identity reference:
+
+- modern GEC closest-gold evaluation uses LLM generation to create valid system-conditioned references and can reverse conclusions produced by fixed-reference evaluation;
+- this is stronger than “rerun GEC with GPT” because the LLM enables a new measurement operation.
+
+Therefore reviewer compression must distinguish:
+
+> **“This is a classic problem.”** — NOT fatal.
+
+from:
+
+> **“This is the already-published LLM-era modernization of that classic problem.”** — fatal.
+
+---
+
+# Latest classic-problem / new-method audit
+
+| ID | lead | verdict | decisive issue |
 |---|---|---|---|
-| **K118** | Answer correctness ≠ evidence grounding | KILL | answer-vs-grounding/attribution is already a direct QA/RAG evaluation parent |
-| **K119** | Entity coherence ≠ implicit discourse relation | KILL | PDTB already owns the label distinction; EntRel does not cleanly license “do not generate relation” |
-| **K120** | Backchannel/acknowledgment ≠ agreement | KILL | classic dialogue-act work already makes exactly this distinction operational |
-| **K121** | Primary trial outcome ≠ secondary outcome | KILL | old extraction schemas and modern LLM trial extraction explicitly own the roles |
-| **K122** | Soft preference ≠ hard constraint | KILL | ACL 2026 HARPO directly models preferences and hard/soft constraints |
-| **K123** | Speech overlap ≠ interruption | KILL | LREC annotations + Full-Duplex-Bench + 2026 TurnBench directly own the parent |
-| **K124** | Accepted answer ≠ community-preferred answer | KILL | ACL Findings 2026 CoPA directly owns accepted-vs-top-voted divergence |
-
-**Live leads after this batch: 0.**
+| K151 | LexSub generation distribution vs human choice distribution | KILL CURRENT FORM | classic counts/graded acceptability do not identify one-shot human production probabilities |
+| K152 | Logical metonymy as open covert-event recovery | KILL | AACL 2020 + GPT-3 already own covert-event recovery/context-vs-default modernization |
+| K153 | PP attachment as open meaning reconstruction | KILL | 2025 LLM PP/syntactic ambiguity parent already occupied |
+| K154 | Ellipsis as open meaning recovery | KILL | ACL 2023+ already modernizes ellipsis into LLM reasoning/open recovery |
+| K155 | Prosody beyond transcript | KILL CURRENT FORM | ACL 2026 StressTest owns the broad SpeechLM meaning-from-prosody parent |
+| K156 | Plan recognition without plan library | KILL CURRENT FORM | natural dialogue lacks independent hierarchical-plan gold; synthetic plan corpus violates data-first preference |
 
 ---
 
-# Stronger rule learned from K118-K124
+# Current live search principle
 
-The search target remains **Role A ≠ Role B**, but a mature annotation distinction is not enough.
+Do not primarily enumerate annotation labels.
 
-A candidate fails if the best story is merely:
+Search for classical tasks where older methods were constrained to:
 
-> “The old task already labeled A and B separately; now ask an LLM to reproduce the label or expose it in free-form output.”
+- closed candidate inventories;
+- discrete labels;
+- fixed references;
+- hand-built symbolic resources;
+- local/pipeline decisions;
+- surface overlap metrics;
 
-That is not a new parent.
+and where LLMs now make it possible to observe:
 
-The required shape is stronger:
+- open-ended natural-language interpretations;
+- multiple valid outputs;
+- system-conditioned valid references;
+- counterfactual interventions;
+- latent hypotheses grounded against external traces;
+- decomposed scientific quantities that can reverse an established conclusion.
 
-> **A pre-existing natural distinction + a modern action/output assumption that genuinely collapses the distinction + externally grounded evidence that the collapse can change the task’s scientific conclusion.**
+For every lead, require before promotion:
 
-In particular:
-
-1. **Old labels do not automatically imply new actions.**  
-   K119 fails because EntRel does not externally force “abstain from relation generation.”
-
-2. **A perfect external state can still be fully occupied.**  
-   K124 has exceptionally clean natural gold, but CoPA already owns accepted-vs-top-voted preference divergence.
-
-3. **A modern system already exposing the roles is fatal to an “unrecognized ontology” story.**  
-   K122 dies because HARPO already has separate preference and constraint operations and explicitly represents hard/soft constraints.
-
-4. **The role distinction must change more than classification.**  
-   If the modern consequence is simply “predict the old label before generating,” reviewer compression usually wins.
-
----
-
-# Next search program
-
-Do **not** spend more cycles on dialogue acts, PDTB relation labels, clinical outcome-role extraction, recommendation constraint types, turn-taking/overlap, or accepted-vs-voted QA.
-
-Prioritize three narrower search shapes:
-
-## 1. Same output, different correctness condition
-
-Find mature NLP tasks where two examples can receive the **same observable model output** but that output has a different correctness interpretation because the underlying natural role differs.
-
-The distinction must already exist independently, but modern evaluation/task definitions must actually merge the correctness conditions.
-
-## 2. Task-specific measurement reversal
-
-Look for an existing leaderboard/task score that combines two scientifically different quantities.
-
-Require, before promotion:
-
-- existing natural outputs/data;
-- independent labels for the two quantities;
-- a plausible ranking or scientific-conclusion reversal;
-- fresh search showing the decomposition/reversal parent is not already owned.
-
-## 3. External-state-grounded language interpretation
-
-Use external reality only as gold for a language question.
-
-The object must remain:
-
-> “What role/state does this text express, and what linguistic action is licensed?”
-
-—not software/business outcome prediction, personalization, or generic preference modeling.
+1. a simple natural example;
+2. a precise statement of what **LLMs newly make possible**;
+3. exact natural data and independent gold for that newly observable quantity;
+4. a fresh search for the **modernized parent**, not merely the classical parent;
+5. an outcome map where either answer changes scientific understanding.
 
 ---
 
-# Mandatory search discipline
+# B-level lead retained but not authorized
 
-For every serious lead:
+## Statistical cell value ≠ observation status
 
-1. state the natural object and one plain-language example;
-2. state the **modern action mapping** implied by the old/external gold;
-3. write Account A and Account B before looking for an effect;
-4. identify exact natural data and independent gold;
-5. search the classical parent plus 2024–2026 ACL/EMNLP/NAACL and neighboring venues;
-6. force reviewer compression: **“This is just ____.”**
-7. kill immediately if the compression is true;
-8. promote only if all five gates are clearly YES.
+Official statistical tables distinguish values/states such as not available, not applicable, rounds-to-zero, unstable estimate, or reporting-standard failure.
 
-> **No GPU until all five gates are YES.**
+Strengths:
+- real object;
+- official external status semantics;
+- clean potential action mapping.
+
+Current blockers:
+- no demonstrated new parent beyond special-symbol/status-aware table understanding;
+- no identified existing scientific conclusion/model ranking likely to reverse.
+
+**Status: B-level only. NOT in `good/`.**
+
+---
+
+# Search target
+
+Find **classic problem + genuinely new LLM method/scientific access**, not “old phenomenon on new model.”
+
+**Current scoreboard: 1 / 5.**
