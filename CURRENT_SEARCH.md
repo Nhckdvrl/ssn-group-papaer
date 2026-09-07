@@ -2,12 +2,13 @@
 
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
-**Pilot-authorized candidates in `good/`:** 1 — L02  
+**Pilot-authorized candidates in `good/`:** 2 — L02, L03  
 **Authoritative killed ledger:** through **K157**  
 **Next kill ID:** **K158**
 
-> `good/` still contains only **L02 — Semantic Role Completion ≠ Referential Commitment**.
-> L02 remains **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**.
+> `good/` currently contains **L02** and **L03**.
+> Both are **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**.
+> Former L04 was demoted after stricter re-audit because GOOD DATA was only conditionally established.
 
 ---
 
@@ -86,22 +87,55 @@ For every lead, require before promotion:
 
 ---
 
-# B-level lead retained but not authorized
+# Newly promoted candidate — L03
 
-## Statistical cell value ≠ observation status
+## Table Value ≠ Observation Status
 
-Official statistical tables distinguish values/states such as not available, not applicable, rounds-to-zero, unstable estimate, or reporting-standard failure.
+**Status: PILOT-AUTHORIZED / NOT MAINLINE APPROVED.**
 
-Strengths:
-- real object;
-- official external status semantics;
-- clean potential action mapping.
+Core RQ:
 
-Current blockers:
-- no demonstrated new parent beyond special-symbol/status-aware table understanding;
-- no identified existing scientific conclusion/model ranking likely to reverse.
+> In real statistical tables, can modern generative systems recover the typed observation represented by a cell—including provider-defined non-value states—rather than collapsing every cell into a scalar/string answer or generic missingness?
 
-**Status: B-level only. NOT in `good/`.**
+Why it survived the re-audit:
+- U.S. Census ACS provides official paired estimate/annotation variables and provider-defined semantics;
+- the gold is machine-readable and independent of evaluated models;
+- recent TableQA work on missing values, table annotation, and data-referencing errors does not directly own the parent that a non-value state is itself the semantic denotation/output unit;
+- the decisive pilot can test direct generation vs typed status→value factorization and whether value-centric evaluation changes model ranking/conclusions.
+
+Critical caveat:
+- it only remains Main-level if the pilot goes beyond symbol memorization and demonstrates cross-source documentation-conditioned semantics and/or a ranking/task-definition consequence.
+
+---
+
+# A-level live lead — former L04, DEMOTED
+
+## Morphological Inflection Is Not a Total Single-Valued Function
+
+**Status: A-LEVEL LIVE / NOT PILOT-AUTHORIZED / NOT in `good/`.**
+
+Plain RQ:
+
+> Should morphological generation be treated as a partial, sometimes set-valued relation—NO_FORM / ONE_FORM / MULTIPLE_FORMS—rather than assuming every lemma+feature bundle has exactly one target form?
+
+Why it remains interesting:
+- defectivity and overabundance are real pre-LLM objects;
+- TACL explicitly notes that overabundance was reduced to one canonical form per cell and that sets of forms would be empirically richer;
+- fresh 2024–2026 search did not find a direct LLM paper owning the exact joint partial/set-valued task-definition rewrite.
+
+Why it was demoted:
+- the prior file said GOOD DATA = “YES, conditional on exact extractable resource audit”; under project rules, conditional YES is not YES;
+- Surrey defectivity resources establish the object, but exact pilot-scale mapping from lexeme+feature bundle to independently licensed NO_FORM still needs extraction verification;
+- the overabundance side was even less concrete: published descriptions exist, but exact machine-extractable gold had not been secured;
+- ACL 2020 unsupervised paradigm completion already includes complete-paradigm generation and paradigm-size discovery, so the claim that LLMs uniquely make paradigm availability testable must be phrased much more carefully.
+
+Promotion condition:
+1. verify an exact extractable defectivity dataset with lexeme + feature-cell + absence gold;
+2. verify an exact extractable overabundance dataset with lexeme + feature-cell + complete licensed-form set;
+3. show that this is not merely an LLM morphology competence benchmark and not subsumed by full-paradigm completion;
+4. preserve a decisive C1→C2→C3 consequence.
+
+Until all four are satisfied, do not return L04 to `good/`.
 
 ---
 
@@ -109,7 +143,7 @@ Current blockers:
 
 Find **classic problem + genuinely new LLM method/scientific access**, not “old phenomenon on new model.”
 
-**Current scoreboard: 1 / 5.**
+**Current scoreboard: 2 / 5.**
 
 
 ---
@@ -175,4 +209,4 @@ Avoid immediately:
 - ellipsis open recovery;
 - generic prosody-to-meaning SpeechLM tests.
 
-**Current good count remains 1 — L02 only. No approved mainline. Next kill: K158.**
+**Current good count is 2 — L02 + L03. Former L04 is A-level live but demoted. No approved mainline. Next kill: K158.**
