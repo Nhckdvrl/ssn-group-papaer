@@ -2235,3 +2235,214 @@ The distinction is already explicitly recognized in stance research. Some unifie
 
 **Reopen only if**  
 A stance quantity outside neutrality, no-stance, relevance, target presence, or mixed stance produces a previously unrecognized conclusion reversal.
+
+
+---
+
+## K140 — No Significant Difference ≠ Evidence of Equivalence
+
+**Date:** 2026-09-07  
+**RQ:** Can scientific-language systems distinguish failure to detect a significant difference from positive evidence that two treatments are equivalent or non-inferior?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+This is an established RCT spin pattern. Biomedical spin taxonomies and automatic spin-detection work explicitly flag claims of similarity/equivalence from non-significant superiority tests when no equivalence/non-inferiority design supports that conclusion.
+
+**Reviewer compression**  
+> “Classic RCT spin: absence of evidence treated as evidence of equivalence.”
+
+**Reopen only if**  
+A statistical-evidence relation outside established spin/significance/equivalence interpretation has independent gold and changes a modern NLP conclusion.
+
+---
+
+## K141 — Reference Agreement ≠ Source-Faithful Translation
+
+**Date:** 2026-09-07  
+**RQ:** Is agreement with a reference translation the same scientific quantity as preserving the source meaning when multiple valid translations exist?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Reference-based MT evaluation versus source-grounded adequacy/faithfulness is a mature and actively revisited parent. Recent MT evaluation work directly studies reference-free/source-aware evaluation and cases where reference agreement misrepresents translation quality.
+
+**Reviewer compression**  
+> “Reference-based versus source-grounded MT evaluation.”
+
+**Reopen only if**  
+A translation quantity outside adequacy, faithfulness, ambiguity preservation, terminology consistency, and reference dependence yields a new conclusion reversal.
+
+---
+
+## K142 — Lexical ASR Correctness ≠ Speaker-Attribution Correctness
+
+**Date:** 2026-09-07  
+**RQ:** Can a meeting transcript have the right words but assign them to the wrong speaker, and should those be treated as different scientific errors?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Speaker-attributed ASR already explicitly separates word recognition from speaker assignment, with dedicated metrics such as cpWER and modern speaker-attributed/conversational ASR benchmarks and models.
+
+**Reviewer compression**  
+> “Speaker-attributed ASR / cpWER.”
+
+**Reopen only if**  
+A speech-output identity relation exists outside lexical accuracy, speaker attribution, diarization, turn-taking, and semantic transcription quality.
+
+---
+
+## K143 — Reference-Overlap Summary Success ≠ Correct Content Selection
+
+**Date:** 2026-09-07  
+**RQ:** Does matching a reference summary demonstrate that a model selected the important source content, rather than merely producing overlapping wording/content by another route?  
+**Status:** KILL
+
+**Primary failure:** `CROWDED_PARENT`
+
+**Exact kill reason**  
+Content selection is a longstanding summarization subproblem, and modern summarization evaluation already separates content coverage/importance, faithfulness, and surface/reference overlap. The proposed split does not expose a new parent quantity.
+
+**Reviewer compression**  
+> “Content-selection-aware summarization evaluation beyond ROUGE/reference overlap.”
+
+**Reopen only if**  
+A concrete summary correctness condition with independent source-side gold changes model ranking and is not reducible to coverage, importance, faithfulness, relevance, redundancy, or reference dependence.
+
+---
+
+## K144 — Entity Boundary Correctness ≠ Entity-Type Correctness
+
+**Date:** 2026-09-07  
+**RQ:** Should an NER system that finds the correct span but assigns the wrong type be scientifically distinguished from one that misses the span itself?  
+**Status:** KILL
+
+**Primary failure:** `NO_NEW_AXIS`
+
+**Exact kill reason**  
+Boundary detection and type classification are already explicit components/error categories in NER evaluation and error analysis. This is a textbook decomposition rather than a new scientific axis.
+
+**Reviewer compression**  
+> “Standard NER boundary-vs-type error decomposition.”
+
+**Reopen only if**  
+A nonstandard entity-output quantity changes an established task conclusion and is not reducible to span, type, linking, mention status, or coreference.
+
+---
+
+## K145 — Published Claim ≠ Currently Valid Evidence After Retraction
+
+**Date:** 2026-09-07  
+**RQ:** Should scientific retrieval/summarization treat a claim from a retracted paper as equivalent evidence to the same claim from an unretracted source?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Retraction-aware scientific retrieval/RAG and LLM awareness of retracted literature are already direct modern parents. External retraction status is excellent gold but does not create a new question.
+
+**Reviewer compression**  
+> “Retraction-aware scientific RAG / evidence filtering.”
+
+**Reopen only if**  
+A publication-state distinction outside retraction/correction/version/current-status changes linguistic evidence interpretation and remains unowned.
+
+---
+
+## K146 — Literal Truth ≠ Non-Misleading Truth / Half-Truth
+
+**Date:** 2026-09-07  
+**RQ:** Can a statement be literally correct yet misleading because it omits the denominator, scope, comparator, or other decisive context?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Half-truth and misleading-by-omission detection are now explicit fact-verification parents, including recent work distinguishing factual correctness from incomplete/misleading claims.
+
+**Reviewer compression**  
+> “Half-truth / misleading-by-omission fact verification.”
+
+**Reopen only if**  
+A truth-status relation outside factuality, omission, framing, scope, causal overreach, and half-truth detection changes a mature NLP conclusion.
+
+---
+
+## K147 — Collective Group Predication ≠ Distributive Member Facts
+
+**Date:** 2026-09-07  
+**RQ:** Does “Alice and Bob lifted the piano” license two separate facts that Alice lifted it and Bob lifted it, or only a collective group event?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `NO_NEW_AXIS`
+
+**Exact kill reason**  
+Collective-versus-distributive interpretation is a classic computational-semantics problem and remains part of recent LLM plural-semantics evaluation. Mapping it into IE/KG output would therefore be another modern task cell for an old parent.
+
+**Reviewer compression**  
+> “Collective/distributive plural semantics tested in LLM extraction.”
+
+**Reopen only if**  
+Plural structure identifies a different modern correctness condition not reducible to collective/distributive interpretation.
+
+---
+
+## K148 — Prespecified Outcome ≠ Post-Hoc / Published Outcome
+
+**Date:** 2026-09-07  
+**RQ:** Should a scientific-language system distinguish outcomes prespecified before results were known from outcomes selected or emphasized only in the publication?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Trial-registration versus publication outcome alignment and outcome switching are established research objects, with automated/semantic approaches already comparing registry outcomes and published outcomes. Using LLMs for the same alignment does not create a new parent.
+
+**Reviewer compression**  
+> “Automated clinical-trial outcome switching / registry-publication alignment.”
+
+**Reopen only if**  
+A preregistration relation outside outcome switching/selective reporting has natural external gold and a different NLP consequence.
+
+---
+
+## K149 — Judicial Opinion Text ≠ Majority-Holding Content
+
+**Date:** 2026-09-07  
+**RQ:** In a case containing majority, concurrence, and dissent, should legal summarization treat all judicial text as equally representing the court’s controlling position?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The modern summarization parent is directly occupied: SUMO (Summarisation with Majority Opinion) explicitly incorporates majority opinion/agreement information into legal case summarization. Opinion-type metadata is clean gold but does not restore novelty.
+
+**Reviewer compression**  
+> “SUMO / majority-opinion-aware legal summarization.”
+
+**Reopen only if**  
+A judicial-text role outside majority/dissent/concurrence, holding/dicta, rhetorical role, and argument attribution yields a new externally grounded action.
+
+---
+
+## K150 — Recommendation Strength ≠ Evidence Certainty
+
+**Date:** 2026-09-07  
+**RQ:** In clinical guidelines, does a strong recommendation necessarily mean the underlying evidence is high-certainty, or are recommendation strength and evidence certainty separate quantities that a language system must preserve?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+GRADE explicitly treats recommendation strength and certainty of evidence as separate axes, and recent work directly evaluates whether GPT-style systems inflate or conflate those two guideline dimensions, especially for weak recommendations and low-certainty evidence. The attractive dual-gold structure is therefore already occupied.
+
+**Reviewer compression**  
+> “Guideline recommendation-strength / evidence-certainty calibration.”
+
+**Reopen only if**  
+A guideline quantity outside recommendation strength, certainty/quality of evidence, applicability, and conditionality changes a modern NLP conclusion.
