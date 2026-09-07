@@ -329,3 +329,30 @@ Avoid immediately:
 - generic prosody→meaning tests.
 
 **Repository note:** `good/` contains L02/L03/L04. The authoritative killed ledger is now through K161; next kill ID is K162.
+
+---
+
+# Good-candidate package registration — 2026-09-07
+
+The three current pilot-authorized candidates have now been converted from single cards into **canonical per-candidate research packages**:
+
+- good/L02_REFERENTIAL_COMMITMENT/
+- good/L03_TYPED_OBSERVATION/
+- good/L04_REALIZATION_CARDINALITY/
+
+Each package contains:
+- README.md — authoritative RQ / accounts / outcome robustness / C1→C2→C3;
+- RELATED_WORK_AND_NOVELTY.md — paper-level ownership and collision map;
+- DATA_AND_GOLD.md — exact data/gold contract and validity kills;
+- RESEARCH_PLAN.md — pilot, outcome branches, full development roadmap, pre-mainline checklist.
+
+This structure is now the authoritative format for every future promoted good candidate.
+
+The legacy top-level good/L02_*.md, L03_*.md, and L04_*.md files remain only as backward-compatible entry points.
+
+The candidate template has also been corrected to make two questions mandatory before compute:
+
+1. **If the expected phenomenon does not occur, what is the paper?**
+2. **What part of the full paper-level story is actually new?**
+
+Future searches/promotions must use these package and template rules.
