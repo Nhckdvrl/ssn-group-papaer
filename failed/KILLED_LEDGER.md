@@ -1800,3 +1800,140 @@ Correlation-to-causation exaggeration has been studied in science-news NLP since
 
 **Reopen only if**  
 A scientific-claim relation outside causal strength, certainty, attribution, or rhetorical distortion changes a task conclusion.
+
+
+---
+
+## K118 — Answer Correctness ≠ Evidence Grounding
+
+**Date:** 2026-09-07  
+**RQ:** Can a QA/RAG system produce the correct answer while relying on unsupported or wrong evidence, such that answer correctness and grounding must be evaluated separately?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The parent is already directly occupied. Attribution work already shows that answers matching gold can nevertheless be unsupported by retrieved passages; EMNLP 2024 Main explicitly studies the alignment between answer correctness and grounding appropriateness; 2026 work continues to separate answer fidelity/provenance and shows answer-only evaluation can substantially overestimate grounded reliability.
+
+**Reviewer compression**  
+> “Answer correctness vs attribution / grounding in QA and RAG.”
+
+**Reopen only if**  
+A different evidence relation beyond attribution, grounding, provenance, faithfulness, and answer correctness changes a named NLP task conclusion.
+
+---
+
+## K119 — Entity-Based Coherence ≠ Implicit Discourse Relation
+
+**Date:** 2026-09-07  
+**RQ:** When two adjacent spans are coherent because they share discourse entities rather than because a semantic discourse relation holds, should a generative discourse system abstain from inventing a connective/relation?  
+**Status:** KILL
+
+**Primary failure:** `NO_NEW_AXIS`  
+**Secondary:** `DATA_GOLD_FAILURE`
+
+**Exact kill reason**  
+PDTB/CoNLL discourse parsing already explicitly distinguishes EntRel from non-explicit semantic relations, so the core distinction is an old task target rather than a new parent. More importantly, the proposed modern action mapping—“EntRel means abstain from a connective/relation”—is not cleanly licensed by the old annotation: EntRel versus Implicit is known to be subtle, and cross-lingual PDTB-style annotation can legitimately map English EntRel cases to implicit Expansion relations. The old label therefore does not independently determine the claimed generation action.
+
+**Reviewer compression**  
+> “PDTB EntRel-vs-Implicit classification with a generative connective head.”
+
+**Reopen only if**  
+A different externally grounded downstream action exists for the distinction and does not depend on author-defined interpretation of EntRel.
+
+---
+
+## K120 — Acknowledgment / Backchannel ≠ Agreement
+
+**Date:** 2026-09-07  
+**RQ:** When a listener says “yeah”, “uh-huh”, or “okay”, can a dialogue system distinguish merely signaling continued attention from actually endorsing the speaker’s proposition?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `NO_NEW_AXIS`
+
+**Exact kill reason**  
+Switchboard-style dialogue-act inventories already separate acknowledgments/backchannels from agreement/acceptance, and classic dialogue-act work explicitly argues that distinguishing true agreement or factual answers from mere continuers is essential for dialogue understanding. Recent LLM dialogue-act analyses and dialogue-act-aware meeting summarization directly reuse these distinctions. A modern generative version therefore re-tests an already owned parent.
+
+**Reviewer compression**  
+> “Switchboard dialogue-act classification / backchannel-aware dialogue modeling with LLMs.”
+
+**Reopen only if**  
+A new externally scored downstream action is found whose scientific quantity is not reducible to dialogue-act classification or standard dialogue-state/policy use.
+
+---
+
+## K121 — Primary Trial Outcome ≠ Secondary Outcome
+
+**Date:** 2026-09-07  
+**RQ:** Should scientific-language systems distinguish a trial’s prespecified primary outcome from secondary outcomes rather than treating every reported result as an equivalent study finding?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `NO_NEW_AXIS`
+
+**Exact kill reason**  
+The data/gold are excellent, but the parent is old and directly operationalized: ExaCT already extracts primary and secondary outcomes as separate fields, CONSORT explicitly defines their distinct scientific roles, and modern LLM trial-extraction work directly evaluates primary-outcome identification. Turning the distinction into generation/summarization does not create a new parent, while “prioritize primary in the summary” lacks a single externally forced binary action.
+
+**Reviewer compression**  
+> “Primary/secondary-outcome extraction plus LLM clinical-trial summarization.”
+
+**Reopen only if**  
+A task-specific conclusion demonstrably reverses when the prespecified outcome role is respected, using external action-level gold rather than author preference over summaries.
+
+---
+
+## K122 — Soft Preference ≠ Hard Constraint in Conversational Recommendation
+
+**Date:** 2026-09-07  
+**RQ:** In recommendation dialogue, should a system distinguish a user preference that may be traded off from a constraint that must not be violated?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+ACL 2026 Main HARPO already formalizes separate user-modeling operations for retrieving preferences and identifying constraints, and its constraint operation explicitly identifies **hard or soft constraints** expressed by the user. Neighboring 2026 work likewise directly studies hard-versus-soft constraints in LLM planning. The natural distinction is therefore already part of the modern parent rather than an unrecognized task-ontology axis.
+
+**Reviewer compression**  
+> “HARPO-style preference/constraint user modeling, including hard vs soft constraints.”
+
+**Reopen only if**  
+A different natural language state outside recommendation/planning has an externally forced action that is not reducible to user preference or constraint satisfaction.
+
+---
+
+## K123 — Speech Overlap ≠ Interruption
+
+**Date:** 2026-09-07  
+**RQ:** Should spoken-dialogue systems treat simultaneous speech as interruption, or distinguish overlap used for smooth turn transfer/backchannel from genuine floor-taking interruption?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+The parent is directly occupied. LREC-style conversational-speech annotations already distinguish smooth exchanges, backchannels, and cooperative/competitive interruptions, including cases of interruptions without overlap and smooth transitions with overlap. Full-Duplex-Bench (2025) and TurnBench (2026-08) directly operationalize interruption, backchannel, and overlap handling; TurnBench reports interruption false positives concentrated in backchannel-dense styles.
+
+**Reviewer compression**  
+> “TurnBench / Full-Duplex-Bench overlap and interruption handling.”
+
+**Reopen only if**  
+A different speech object outside turn-taking/overlap/backchannel produces a new action-level distinction with independent gold.
+
+---
+
+## K124 — Accepted Answer ≠ Community-Preferred Answer
+
+**Date:** 2026-09-07  
+**RQ:** On community QA sites, does the asker’s accepted answer represent the same target as the community’s highest-voted answer, or two different notions of what makes an answer good?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+ACL Findings 2026 CoPA directly owns this exact natural distinction. It names **Community-Individual Preference Divergence**, uses StackExchange’s top-voted answer as community consensus and the asker-selected accepted answer as individual preference, and builds a personalized QA benchmark from their divergence. The external state is beautiful but the parent is no longer available.
+
+**Reviewer compression**  
+> “CoPA / Community-Individual Preference Divergence from accepted vs top-voted StackExchange answers.”
+
+**Reopen only if**  
+A different external QA state is found that is not reducible to individual preference versus community consensus.
