@@ -1487,3 +1487,316 @@ Citation-intent/discourse-role modeling is mature, recent related-work generatio
 
 **Reopen only if**  
 A citation quantity outside intent, function, placement, relation, or discourse organization changes an independently measured conclusion.
+
+
+---
+
+## K102 — Complex Word Detection ≠ Direct Simplification
+
+**Date:** 2026-09-07  
+**RQ:** Do modern generative lexical simplifiers still need an explicit “which word is complex?” state before rewriting, or can they safely simplify directly from context?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+EMNLP 2024 already studies LLMs for Complex Word Identification, *SEM 2025 explicitly connects Complex Word Identification to lexical substitution with instruction-tuned LMs, and TACL 2024 separately re-evaluates meaning preservation in text simplification. Thus the modern CWI→generation path and its preservation consequence are already owned.
+
+**Reviewer compression**  
+> “LLM complex-word identification plus lexical simplification/meaning preservation.”
+
+**Reopen only if**  
+A simplification state is found whose removal causes a consequence not reducible to CWI, substitution, readability, or semantic preservation.
+
+---
+
+## K103 — Raw Text Sequence ≠ Sentence/Punctuation Structure
+
+**Date:** 2026-09-07  
+**RQ:** With long-context LLMs, are explicit sentence/clause boundaries still load-bearing for language understanding and generation?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+EMNLP 2025 Main directly shows that information integration in LLMs is gated by linguistic structural markers, with sharp changes around clause/sentence boundaries and punctuation cues. Contemporary punctuation-restoration work explicitly connects these boundaries to downstream translation, summarization, and IE.
+
+**Reviewer compression**  
+> “Boundary-sensitive LLM processing plus punctuation restoration.”
+
+**Reopen only if**  
+A different segmentation state yields a scientific consequence not reducible to sentence/clause boundaries or punctuation structure.
+
+---
+
+## K104 — Historical Dialogue Constraint ≠ Current Revised State
+
+**Date:** 2026-09-07  
+**RQ:** When a user revises a prior constraint, can generation distinguish what was once requested from what is currently in force?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+TACL 2020 *Task-Oriented Dialogue as Dataflow Synthesis* explicitly represents reference and revision through metacomputation operators over prior dialogue-state graphs; state-update and revision are also core DST objects. Combined with the already-killed explicit-state parent (K095), the LLM-era formulation is occupied.
+
+**Reviewer compression**  
+> “SMCalFlow revision/state-update with an LLM.”
+
+**Reopen only if**  
+A revision quantity is found outside dialogue-state update, reference, correction, and supersession.
+
+---
+
+## K105 — Historical Document Version ≠ Current Document State
+
+**Date:** 2026-09-07  
+**RQ:** When a document has been revised, can a model distinguish superseded content from the current state rather than aggregating all historical statements?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Recent work directly studies document-revision summarization, temporal knowledge conflicts induced by Wikipedia changes, and edit intentions. The modern problem of reconciling historical document states with current content is already owned.
+
+**Reviewer compression**  
+> “Revision-history / temporal knowledge conflict with another current-state framing.”
+
+**Reopen only if**  
+A revision-state object has external gold and a consequence not reducible to change summarization, temporal conflict, or version reconciliation.
+
+---
+
+## K106 — Definition Truth ≠ Discriminative Definition
+
+**Date:** 2026-09-07  
+**RQ:** Can a generated definition be factually true yet too generic to identify or characterize the intended concept, and should evaluation separate truth from discriminative specificity?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Reverse-dictionary and definition-modeling work already couples definitions to concept identification, while prior work explicitly evaluates appropriate definition specificity and modern LLM work studies definition generation. Separating generic truth from discriminative specificity is therefore an occupied definition-modeling parent.
+
+**Reviewer compression**  
+> “Reverse dictionary + definition specificity / definition modeling evaluation.”
+
+**Reopen only if**  
+A definition quantity changes a scientific conclusion beyond specificity, informativeness, or reverse-dictionary discriminability.
+
+---
+
+## K107 — Graph Similarity ≠ Logical Equivalence in Semantic Parsing
+
+**Date:** 2026-09-07  
+**RQ:** Can two semantic parses score highly under graph overlap while differing in logical meaning, and should modern parser evaluation target semantic equivalence instead?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+BlackboxNLP 2025 *A Theorem-Proving-Based Evaluation of Neural Semantic Parsing* explicitly argues that graph matching is not logical equivalence and evaluates modern models with bidirectional theorem-prover entailment. The exact measurement rewrite is already owned.
+
+**Reviewer compression**  
+> “Theorem-proving semantic parser evaluation versus graph similarity.”
+
+**Reopen only if**  
+A semantic-parsing quantity is found that cannot be reduced to logical equivalence, graph matching, denotation, or structural accuracy.
+
+---
+
+## K108 — Raw Email Presence ≠ Unique Authored Content
+
+**Date:** 2026-09-07  
+**RQ:** When reply emails embed quoted earlier messages, can a model recover unique authored turns rather than treat repeated quoted text as newly asserted content?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Classic Fragment Quotation Graph work explicitly models quoted fragments as email-conversation structure; ACL 2026 Main ThreadSumm directly identifies nested replies and quotes as failures of standard LLM summarization and adds thread-aware structure. The modern parent is occupied.
+
+**Reviewer compression**  
+> “Fragment Quotation Graph / ThreadSumm with quote deduplication.”
+
+**Reopen only if**  
+An email-thread state is found outside quotation structure, provenance, threading, and conversation summarization.
+
+---
+
+## K109 — Historical Question ≠ Still-Unresolved Question
+
+**Date:** 2026-09-07  
+**RQ:** In a long conversation, should a summary distinguish questions that appeared historically from questions that remain unresolved at the end?  
+**Status:** KILL
+
+**Primary failure:** `DATA_GOLD_FAILURE`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Exact kill reason**  
+Question-under-discussion, discourse obligations, answer-status classification, and QA-link annotation already cover much of the semantic parent. More importantly, no clean natural public corpus was found that independently labels end-of-thread unresolved/open status for both positive and negative cases. Existing meeting QA resources mostly contain answered instances by construction.
+
+**Reviewer compression**  
+> “QUD/discourse-obligation/answer-status detection with a summary output.”
+
+**Reopen only if**  
+A natural corpus supplies independent end-state open/resolved gold at scale.
+
+---
+
+## K110 — Action Item Mention ≠ Outstanding Action Item
+
+**Date:** 2026-09-07  
+**RQ:** Should an action-oriented summary distinguish tasks that were merely mentioned from tasks still pending after completion, cancellation, or revision?  
+**Status:** KILL
+
+**Primary failure:** `DATA_GOLD_FAILURE`  
+**Secondary failure(s):** `CROWDED_PARENT`
+
+**Exact kill reason**  
+Action-item detection/summarization is mature, but no natural public corpus was found with reliable per-item lifecycle gold such as pending/completed/cancelled across a conversation. External ticket status is too coarse and drifts toward software-engineering outcome prediction.
+
+**Reviewer compression**  
+> “Action-item extraction/state tracking without independent lifecycle gold.”
+
+**Reopen only if**  
+A natural non-SE corpus exposes fine-grained lifecycle state independently of model annotation.
+
+---
+
+## K111 — Multiple Sources Mention a Proposition ≠ Sources Agree
+
+**Date:** 2026-09-07  
+**RQ:** In multi-document summarization, does repeated mention of a proposition license a consensus statement, or must the summary preserve source disagreement and conflict?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Conflict-aware multi-document summarization and recent news-summarization work already explicitly model contradictory/conflicting source evidence rather than naive aggregation. The parent “synthesis must preserve disagreement” is occupied.
+
+**Reviewer compression**  
+> “Conflict-aware multi-document summarization.”
+
+**Reopen only if**  
+A source-aggregation quantity is found outside conflict, contradiction, stance, and source-aware synthesis.
+
+---
+
+## K112 — Average Opinion ≠ Opinion Distribution / Polarization
+
+**Date:** 2026-09-07  
+**RQ:** Can two review sets with the same average sentiment represent radically different states—consensus versus polarization—and should opinion summaries preserve the distribution?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+NAACL 2024 Main *Polarity Calibration for Opinion Summarization* directly argues that summaries amplify majority opinions and omit minority views, and explicitly calibrates output polarity to the input opinion distribution. Multi-perspective opinion summarization further crowds the parent.
+
+**Reviewer compression**  
+> “Polarity-calibrated / multi-perspective opinion summarization.”
+
+**Reopen only if**  
+An opinion quantity is found outside polarity distribution, minority preservation, diversity, and perspective coverage.
+
+---
+
+## K113 — Proposed Action ≠ Final Decision
+
+**Date:** 2026-09-07  
+**RQ:** When a meeting discusses several candidate actions, can a summary distinguish proposals from the final committed decision?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked strong**  
+The object is natural and the data are excellent. LEDA provides natural IETF discussions with separate `ProposeAction` and `StateDecision` dialogue acts (2,225 vs 359 instances in the published table), and older AMI work directly targets decision detection/summarization.
+
+**Exact kill reason**  
+The proposal→decision life cycle is already explicitly annotated and studied as the scientific object. Modernizing the generator does not create a new parent.
+
+**Reviewer compression**  
+> “LEDA StateDecision vs ProposeAction + classic meeting decision summarization.”
+
+**Reopen only if**  
+A decision-state transition outside proposal/decision/action-item modeling is found.
+
+---
+
+## K114 — Lexical Gold-Set Membership ≠ Context-Preserving Substitute Quality
+
+**Date:** 2026-09-07  
+**RQ:** In lexical substitution, is matching a human substitute set the same as producing a contextually meaning-preserving replacement?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Lexical-substitution evaluation was already explicitly redesigned in 2010, and modern work directly notes that generated substitutes can fail sentence-level meaning preservation. Contemporary causal-LM lexical substitution further occupies the generative formulation.
+
+**Reviewer compression**  
+> “Old lexical-substitution evaluation redesign + modern CLM lexical substitution.”
+
+**Reopen only if**  
+A lexical-substitution quantity is found beyond gold-set agreement, contextual fit, semantic preservation, and substitute ranking.
+
+---
+
+## K115 — Context Distribution Change ≠ Word Meaning Change
+
+**Date:** 2026-09-07  
+**RQ:** When a word appears in different topical/contextual distributions over time, does that imply its lexical meaning changed?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Contextual semantic-change work already explicitly reports confounding lexicographic sense change with contextual-variance change, and EMNLP 2025 Main further shows benchmark success often fails to discover true semantic change in the wild. The measurement parent is already owned.
+
+**Reviewer compression**  
+> “Known contextual-variance confound in lexical semantic change.”
+
+**Reopen only if**  
+A different semantic-change quantity is found that cannot be reduced to context variance, sense change, discovery validity, or frequency effects.
+
+---
+
+## K116 — Word Error Rate ≠ Semantic / End-Use Transcription Quality
+
+**Date:** 2026-09-07  
+**RQ:** Do modern generative ASR systems deserve to be judged by literal token overlap when normalization or syntactic/morphological variation can preserve the same content?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+Semantic-WER work already critiques WER as a surface metric, and EMNLP 2025 Main LASER directly proposes an LLM-based ASR evaluation rubric because WER penalizes meaning-preserving variation. 2026 generative-LLM ASR evaluation further reports much higher human agreement than WER.
+
+**Reviewer compression**  
+> “Semantic-WER / LASER / LLM-based ASR evaluation.”
+
+**Reopen only if**  
+A speech-evaluation quantity is found outside semantic equivalence, WER, readability, normalization, and downstream usability.
+
+---
+
+## K117 — Correlation ≠ Causation in Scientific Summaries
+
+**Date:** 2026-09-07  
+**RQ:** Can a generated scientific summary preserve the strength of an observational claim instead of upgrading association/correlation into causation?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked unusually strong**  
+The object is natural, socially important, easy to explain, and supported by pre-existing scientific-claim-strength annotations.
+
+**Exact kill reason**  
+Correlation-to-causation exaggeration has been studied in science-news NLP since at least 2017–2020; WASSA 2023 evaluates ChatGPT on causal-language strength; and ACL 2026 Main *Narrative License and Model Sycophancy in LLM Summaries of Scientific Work* explicitly studies **causal overreach** as a distortion in LLM scientific summaries. The exact modern consequence is therefore occupied.
+
+**Reviewer compression**  
+> “Narrative License causal overreach + older correlation-to-causation exaggeration.”
+
+**Reopen only if**  
+A scientific-claim relation outside causal strength, certainty, attribution, or rhetorical distortion changes a task conclusion.
