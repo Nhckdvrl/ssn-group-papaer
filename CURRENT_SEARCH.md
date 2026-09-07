@@ -3,8 +3,8 @@
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Pilot-authorized candidates in `good/`:** **3 — L02, L03, L04**  
-**Authoritative killed ledger on disk:** through **K157**  
-**Next ledger kill ID:** **K158**
+**Authoritative killed ledger on disk:** through **K161**  
+**Next ledger kill ID:** **K162**
 
 > `good/` now contains **L02, L03, L04**.
 > All are **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**.
@@ -138,67 +138,14 @@ Do not allocate a new kill ID. This is an anti-resurrection confirmation of K061
 
 ---
 
-## Pending K158 — Arabic diacritization: single reference ≠ all valid diacritizations
+## Recently closed K158–K161
 
-**Verdict: KILL / NOVELTY_PARENT_COLLISION.**
+- **K158 — Arabic diacritization: single reference ≠ all valid diacritizations.** KILL: EMNLP 2025 directly modernizes multi-reference diacritization.
+- **K159 — Semantic parsing: one utterance ≠ one logical form under genuine ambiguity.** KILL: ICLR 2024 AmP directly owns ambiguity-aware multi-parse evaluation.
+- **K160 — Pronunciation/G2P: word form ≠ one pronunciation.** KILL CURRENT FORM: alternative-pronunciation supervision/graphs already operationalize the set-valued output.
+- **K161 — OCR 1-best transcript ≠ OCR evidence.** KILL: ICCVW 2025 directly propagates OCR confidence + top-k hypotheses into downstream information extraction; EACL Industry 2026 further crowds OCR-vs-image MLLM document IE.
 
-Attraction:
-- natural ambiguity;
-- multiple valid outputs;
-- exact human/expert data can exist;
-- superficially ideal single-reference→set-valued modernization.
-
-Direct collision:
-
-**Mohamed & Mubarak, EMNLP 2025 Main, *Advancing Arabic Diacritization: Improved Datasets, Benchmarking, and State-of-the-Art Models*.**
-
-The paper explicitly introduces **multi-reference diacritization**, augments the standard WikiNews benchmark with multiple valid diacritizations, updates scoring to accept any licensed reference, and provides expert-reviewed WikiNews-2024 data.
-
-Reviewer compression:
-
-> “EMNLP 2025 multi-reference diacritization with another model/dataset.”
-
-No model change rescues the parent.
-
----
-
-## Pending K159 — Semantic parsing: one utterance ≠ one logical form under genuine ambiguity
-
-**Verdict: KILL / NOVELTY_PARENT_COLLISION.**
-
-Direct collision:
-
-**Stengel-Eskin, Rawlins & Van Durme, ICLR 2024, *Zero and Few-shot Semantic Parsing with Ambiguous Inputs*.**
-
-Its explicit parent is that semantic-parsing datasets commonly assume a one-to-one natural-language→formal-representation mapping even when language is ambiguous. It introduces AmP, evaluates distributions over multiple possible logical forms, and calls for ambiguity to be represented explicitly in data/evaluation.
-
-Reviewer compression:
-
-> “AmP / ICLR 2024, but with a different ambiguity source or newer LLM.”
-
-This is almost exactly the modernization generator we were searching for, which is why the candidate must die immediately.
-
----
-
-## Pending K160 — Pronunciation/G2P: word form ≠ one pronunciation
-
-**Verdict: KILL CURRENT FORM / NOVELTY_PARENT_COLLISION.**
-
-Attraction:
-- pronunciation variation is a real classic object;
-- one spelling may license multiple pronunciations;
-- ASR/TTS/G2P naturally expose set-valued outputs.
-
-Why it dies:
-- pronunciation lexicon standards have long represented multiple valid pronunciations;
-- classic ASR work explicitly models regional, speaking-style, and name-pronunciation variants;
-- 2025 *Graph Connectionist Temporal Classification for Phoneme Recognition* directly attacks the single-pronunciation supervision assumption by training over a graph of alternative valid phoneme sequences and reports improved recognition.
-
-Reviewer compression:
-
-> “Known pronunciation-variant lexicons / alternative-pronunciation graph training, moved to a general LLM generator.”
-
-The output-cardinality rewrite is already computationally operationalized, so an LLM version is not a new parent.
+These kills reinforce that a productive **idea generator is not itself a selection requirement**. Do not keep mining one generator after it starts dominating the search.
 
 ---
 
@@ -234,6 +181,111 @@ Do not resurrect.
 
 ---
 
+# Search-doctrine correction — diversity, outcome robustness, paper-level novelty
+
+This section **supersedes any earlier wording that makes one generator “highest priority.”**
+
+## 1. Search breadth is a hard process requirement
+
+Do **not** take one promising pattern (e.g. output-unit rewrite, premature commitment, single→multiple, Old Problem/New Method) and spend the whole search inside it.
+
+Every serious search pass should deliberately cover several different paper identities / generators, for example:
+
+1. **Natural unresolved NLP object** — a durable open question visible in ACL/EMNLP/NAACL work.
+2. **Old Problem / New Method** — modern methods enable a scientific operation that used to be impractical or inaccessible.
+3. **Data-first reverse search** — mature natural datasets expose two variables whose relationship has not been scientifically exploited.
+4. **Measurement / evaluation reconstruction** — a standard metric/task definition may measure the wrong quantity.
+5. **Representation / intermediate-state question** — an old explicit representation may be obsolete, or may remain load-bearing.
+6. **Methodological/scientific-discovery question** — a new method allows stronger intervention, decomposition, attribution, or validation.
+7. **Contradictory accounts in existing literature** — two plausible explanations make different predictions on natural data.
+8. **Classic task modernization outside language-theory-heavy topics** — IE, QA, MT, summarization, dialogue, speech, document understanding, IR, structured prediction, generation/evaluation, morphology, etc.
+
+A pass should normally inspect leads from **multiple tracks**, not 3–5 variants of one underlying template.
+
+## 2. Do not gamble the paper on a rare/failure phenomenon
+
+A candidate is weak if its paper only exists when:
+
+> “models unexpectedly fail / hallucinate / show bias X.”
+
+Before pilot authorization, require an **outcome-robust scientific question**:
+
+- Account A wins → publishable scientific conclusion A.
+- Account B wins → publishable scientific conclusion B.
+- principled heterogeneity → publishable boundary/conditional conclusion.
+- a reasonable near-null result should still answer an important pre-specified question, not simply erase the paper.
+
+The experiment may of course kill a candidate because data are invalid, manipulation fails, task has no leverage, or the resulting effect is too tiny/noisy to support any scientific conclusion. But **the candidate must not be designed so that only one exciting phenomenon creates the story**.
+
+Do not search primarily for:
+- “will models make this mistake?”;
+- “can we find a surprising failure?”;
+- “does bias/phenomenon X appear in LLMs?”;
+- “maybe ranking reverses.”
+
+Prefer:
+- “which of two plausible accounts better describes the natural object?”;
+- “is an established modeling/evaluation assumption valid under the modern regime?”;
+- “under what boundary is representation/method A necessary versus safely removable?”;
+- “what scientific quantity does the mature task actually measure?”
+
+## 3. Novelty is paper-level, not neighborhood purity
+
+Do **not** require every scientific sub-question, object, distinction, dataset, or broad parent neighborhood to be untouched.
+
+Prior work may already study:
+- the classic object;
+- one component distinction;
+- one stage of the pipeline;
+- the dataset;
+- a related measurement;
+- a neighboring LLM capability.
+
+What must remain new enough is the **load-bearing paper identity**: the specific scientific relation / framing / decisive comparison / measurement consequence / synthesis that supports our narrative and core claims.
+
+Fresh literature assassination should therefore ask:
+
+> “Could a reviewer cite one or a small set of papers and accurately say that they already establish the same paper-level story and decisive conclusion?”
+
+If YES → KILL.
+
+If prior work only supplies ingredients, background distinctions, or neighboring evidence, that is **not automatically fatal** if our paper has a genuinely new scientific narrative and decisive contribution.
+
+Reviewer compression remains mandatory:
+
+> “This is just ______.”
+
+But the blank must compress the **actual proposed paper**, not merely name its broad field.
+
+## 4. Old Problem / New Method is one generator, not the project definition
+
+Continue using it because it has produced strong candidates, but do not let it narrow the entire project.
+
+A completely contemporary natural NLP problem is allowed if it has:
+- durable object;
+- simple explanation;
+- trustworthy data;
+- genuine scientific tension;
+- nontrivial paper-level novelty;
+- decisive C1→C2→C3.
+
+Likewise, a methodology/measurement paper can be valid even when the base scientific object is old.
+
+## 5. Good data remains non-negotiable
+
+The correction above **does not weaken Gate 3**.
+
+No:
+- “after verifying”;
+- “likely extractable”;
+- “should support”;
+- author-invented load-bearing labels;
+- synthetic worlds merely to manufacture leverage.
+
+The exact gold required for the decisive estimand must already be verified before `good/`.
+
+---
+
 # Search target from here
 
 Current scoreboard:
@@ -246,9 +298,11 @@ Approved paper mainline:
 
 Continue searching for at most two more candidates, but do not lower the bar below L02/L03/L04.
 
-Highest-priority generator:
+Search policy:
 
-> **A mature NLP task had to condition away / merge / proxy a natural state. The state has existing independent gold. Modern generation or measurement makes the state directly recoverable. Restoring it could reverse an established model/evaluation conclusion.**
+> **Run a diversified portfolio of search tracks. No single generator is authoritative.**
+
+For each pass, deliberately include both classic and contemporary objects, and both task/measurement and scientific-question routes. Use the strongest available natural data early, but do not reverse-search only one kind of annotation schema.
 
 Prefer:
 
@@ -274,4 +328,4 @@ Avoid immediately:
 - ellipsis open recovery;
 - generic prosody→meaning tests.
 
-**Repository note:** L04 and `good/README.md` have been updated. K158–K160 above are fully audited but still need to be appended to the authoritative `failed/KILLED_LEDGER.md`; do not advance the authoritative ledger index until that append is completed.
+**Repository note:** `good/` contains L02/L03/L04. The authoritative killed ledger is now through K161; next kill ID is K162.
