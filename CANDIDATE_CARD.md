@@ -1,6 +1,8 @@
 # Candidate Card — Mandatory Pre-Pilot Template
 
 > **No target-model compute before this card is complete and all five hard gates are YES.**
+>
+> A candidate is not allowed to depend on one exciting failure phenomenon, and novelty is judged at the **paper-story level**, not by demanding an untouched neighborhood.
 
 ## Metadata
 
@@ -8,7 +10,8 @@
 - **Short name:**
 - **Date opened:**
 - **Current status:** SEARCH / AUDIT / GOOD / KILL
-- **Paper identity:** behavioral / measurement / linguistic theory / causal-mechanistic / methodology / other
+- **Paper identity:** behavioral / measurement / linguistic theory / causal-mechanistic / methodology / task-definition / other
+- **Search track(s):** high-level reverse / old-problem-new-method / data-first / competing explanations / measurement / representation necessity / new scientific operation / contemporary NLP / other
 
 ---
 
@@ -20,84 +23,154 @@
 
 
 
+## 3. Plain example
+
+Explain the object without model names, benchmark jargon, or specialist terminology.
+
 ---
 
-## 3. REAL OBJECT
+## 4. REAL OBJECT
 
 - What real language/NLP object existed before this project?
 - Would the question remain important without “LLM”, model names, and dataset names?
 - Why is it durable?
+- Is the object natural rather than constructed to create leverage?
 
 **Gate:** YES / NO
 
 ---
 
-## 4. NEW AXIS
+## 5. SCIENTIFIC TENSION / CONTRIBUTION AXIS
 
 ### Account A
 > 
 
-**Prediction:** 
+**Prediction:**
 
 ### Account B
 > 
 
-**Prediction:** 
+**Prediction:**
 
-Why are both plausible before seeing results?
+### Principled heterogeneity / boundary
+> 
+
+Why are A and B both plausible before seeing target-model results?
 
 **Gate:** YES / NO
 
 ---
 
-## 5. GOOD DATA + GOLD
+## 6. OUTCOME ROBUSTNESS — mandatory before compute
+
+### If the expected phenomenon does NOT occur, what is the paper?
+
+> 
+
+This must be a real pre-specified scientific answer, for example:
+- preservation;
+- equivalence;
+- non-inferiority;
+- representation dispensability;
+- stability;
+- a principled boundary.
+
+“Negative result / p > .05” is not enough.
+
+### Near-null interpretation
+
+- What equivalence/non-inferiority quantity or margin would make a preservation claim meaningful?
+- What near-null result would instead mean the task simply had no leverage?
+
+---
+
+## 7. GOOD DATA + GOLD
 
 - **Exact dataset/resource/materials:**
+- **Exact version/release:**
 - **Why natural / externally grounded:**
 - **Unit of analysis:**
-- **Gold source:**
+- **Exact gold source:**
 - **Why gold is independent of the evaluated model class:**
-- **Any author-created stimuli? If yes, why unavoidable and theory-grounded?**
+- **Evidence the required fields are already extractable:**
+- **Deterministic action mapping:**
+- **Any author-created stimuli or labels? If yes, why are they non-load-bearing?**
+- **Replication substrate and its verification status:**
+
+Do not write “after verifying,” “should support,” or “likely extractable” for load-bearing gold.
 
 **Gate:** YES / NO
 
 ---
 
-## 6. NEW PARENT — novelty assassination
+## 8. PAPER-LEVEL NOVELTY — literature assassination
 
-### Closest parent papers
+### Classical / established ownership
 
-1. 
-2. 
-3. 
+What does prior literature already own that we should explicitly concede?
+
+### Closest modern neighbors
+
+1.
+2.
+3.
 
 ### Nearest direct collision
 
 - **Paper:**
 - **What it already owns:**
+- **What it does not own:**
 
 ### Reviewer compression
 
 > **“This is just ______.”**
 
+The blank must accurately compress the **whole proposed paper**, not merely name its broad field.
+
 ### Why that compression is false
 
-> The scientific quantity / prediction / relation / measurement / conclusion differs because...
+> The full scientific story differs because...
+
+### What part of the full paper-level story is actually new?
+
+> 
+
+This answer cannot be only:
+- dataset;
+- model;
+- prompt;
+- language;
+- exact benchmark cell;
+- renamed classic distinction.
+
+### Exact kill-level collision definition
+
+> KILL if a prior paper is found that already...
 
 **Gate:** YES / NO
 
 ---
 
-## 7. DECISIVE PAPER
+## 9. DECISIVE PAPER
 
-### C1 — Core answer
+### C1 — Core scientific answer
 
 
-### C2 — Why / boundary
+
+### C2 — Explanation / mechanism / boundary
+
 
 
 ### C3 — Consequence
 
+Consequence for at least one of:
+- modeling;
+- task definition;
+- evaluation;
+- representation;
+- interpretation;
+- methodology;
+- established NLP conclusion.
 
 ### Outcome map
 
@@ -105,20 +178,38 @@ Why are both plausible before seeing results?
 |---|---|---|
 | Account A wins | | YES / NO |
 | Account B wins | | YES / NO |
-| heterogeneous / boundary | | YES / NO |
-| reverse | | YES / NO |
-| null | | YES / NO |
+| principled heterogeneity / boundary | | YES / NO |
+| preservation / equivalence | | YES / NO |
+| near-null with inadequate leverage | | usually KILL |
 
 ### Minimum decisive pilot
 
-- **Smallest dataset/subset:**
+- **Smallest exact dataset/subset:**
 - **Smallest model set:**
 - **Primary estimand:**
-- **Pre-specified kill criterion:**
+- **Pre-specified effect / equivalence criterion:**
 - **What result would PROMOTE:**
 - **What result would KILL:**
 
 **Gate:** YES / NO
+
+---
+
+## 10. Development path
+
+### Phase 0 — data/gold contract
+
+### Phase 1 — minimum decisive pilot
+
+### Phase 2 — outcome-based promote/kill decision
+
+### Phase 3 — C1 full evidence
+
+### Phase 4 — C2 explanation/boundary
+
+### Phase 5 — C3 consequence
+
+### Phase 6 — replication/generalization only if needed
 
 ---
 
@@ -127,18 +218,18 @@ Why are both plausible before seeing results?
 | gate | verdict | one-line evidence |
 |---|---|---|
 | REAL OBJECT | YES / NO | |
-| NEW AXIS | YES / NO | |
+| SCIENTIFIC TENSION | YES / NO | |
 | GOOD DATA | YES / NO | |
-| NEW PARENT | YES / NO | |
-| DECISIVE PAPER | YES / NO | |
+| PAPER-LEVEL NOVELTY | YES / NO | |
+| OUTCOME-ROBUST DECISIVENESS | YES / NO | |
 
 ## Final decision
 
-**KILL / KEEP SEARCHING / PROMOTE TO `good/`**
+**KILL / KEEP SEARCHING / PROMOTE TO good/**
 
 ### If KILL
 
-Append the result to `failed/KILLED_LEDGER.md`.
+Append the result to failed/KILLED_LEDGER.md.
 
 Record:
 - primary failure type;
@@ -150,6 +241,11 @@ Record:
 
 ### If PROMOTE
 
-Create a completed candidate file under `good/`.
+Create a **candidate directory** under good/ with:
+
+- README.md
+- RELATED_WORK_AND_NOVELTY.md
+- DATA_AND_GOLD.md
+- RESEARCH_PLAN.md
 
 Promotion means **pilot-authorized**, not paper-mainline-approved.
