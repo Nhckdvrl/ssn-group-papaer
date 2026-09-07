@@ -2569,3 +2569,70 @@ The best natural human–human collaborative corpora (TRAINS/Monroe) provide ric
 
 **Reopen only if**  
 A natural collaborative-language corpus is found with independently logged hierarchical goals/plans or externally observed plan state aligned to dialogue.
+
+
+---
+
+## K157 — Instruction Following ≠ Collaborative Plan Understanding / Intended Route ≠ Realized Route
+
+**Date:** 2026-09-07  
+**Former status:** A-LEVEL AUDIT after reopening K156  
+**Status:** KILL
+
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary:** `NOVELTY_PARENT_COLLISION`
+
+**RQ under audit**  
+> When collaborators negotiate route instructions under asymmetric information, can a model separately recover the instruction giver’s intended plan and the route/task state actually realized by the follower, or does it collapse them into one supposedly shared plan?
+
+**Why this became a serious lead**  
+This was a legitimate Old Problem / New Method candidate. The HCRC Map Task is a natural human-human collaborative corpus with 128 spontaneous dialogues, asymmetric private maps, a giver-side reference route, follower drawing behavior/completed routes, dialogue annotations, and conversation-level path-deviation scores. Classic ACL 2010 route-following work explicitly reduced the problem to giver-only instruction following, discarding follower utterances as redundancy/noise and ignoring giver/follower map differences. Modern long-context LLM/VLM methods remove much of the old computational reason for that reduction.
+
+The old corpus also supplies unusually strong action/state grounding: transaction coding aligns subdialogues with route segments and follower draw/cross-out actions, including start/end points. Thus the candidate’s failure is **not** that the classic problem is old and **not** primarily a data-naturalness failure.
+
+**Exact modern-parent kill reason**  
+By 2026, the key modernization is already occupied on essentially the same task family:
+
+1. **Li, Gatt & Poesio, “Seeing Is Not Sharing” (SIGDIAL 2026)** uses all 128 HCRC MapTask dialogues and 13,077 perspectivist reference-expression annotations to ask whether VLMs distinguish potentially shared map information from actually established common ground. It finds that models over-predict alignment and rely on static map cues instead of tracking grounding through dialogue history.
+
+2. **Chen et al., “Humans’ ALMANAC” (2026)** reimplements the Map Task for human collaboration, records 2,987 action-level behaviors plus participants’ self-reasoning, perceived partner intent, and perceived team goal, and benchmarks six LLMs on next-behavior and mental-model prediction. The follower action space explicitly includes draw / erase / undo / reset, and drawing predictions are evaluated relative to the target route.
+
+3. **Chen et al., “CollabSim” (2026)** directly uses Map Task as one of its LLM collaborative-competence environments. It manipulates communication bandwidth and visibility of the follower’s live canvas, evaluates route-drawing outcome plus communication/revision process metrics, and probes shared-task understanding / partner state / planned action. Its explicit parent claim is that task completion and instruction following do not by themselves establish collaborative competence, common ground, shared task understanding, or repair ability.
+
+These works mean that the proposed scientific parent—
+
+> **single authoritative instruction/task state is insufficient; participant-specific evolving interpretations, mental models, shared understanding, and actions must be tracked during collaboration**
+
+—is no longer open.
+
+The exact “giver intended route vs follower realized route” decomposition is cleaner and more global than the current local/reference-level or action-level tests, but that is a **granularity extension inside an occupied modern parent**, not a sufficiently new NAACL Main scientific question.
+
+**Classical-parent note**  
+Classic SharedPlans/collaborative-planning work already distinguished private/proposed/shared plans and rejected the master–slave view of one controlling planner plus a reactive executor. This classical history is **not itself a novelty failure** under the project’s corrected rule; it matters because the 2026 LLM work has now explicitly modernized the same collaborative-state question.
+
+**Reviewer compression**  
+> “Seeing Is Not Sharing / ALMANAC / CollabSim, but aggregated from local grounding and action-level mental states to a whole-route state.”
+
+**Why the compression wins**  
+- Same classic Map Task object;
+- same LLM/VLM-era motivation: task success or static shared information is not collaborative understanding;
+- same crucial variables: asymmetric private state, interaction history, grounding/repair, partner intent/shared goal, drawing behavior;
+- same practical consequence: maintain participant-specific evolving collaborative state rather than a single task representation.
+
+Having two particularly clean route states (intended route and realized route) cannot restore parent novelty.
+
+**Five-gate final verdict**
+
+| Gate | Verdict | Reason |
+|---|---|---|
+| REAL OBJECT | **YES** | Natural collaborative instruction/plan understanding predates LLMs. |
+| NEW AXIS | **NO at parent level** | Intended-vs-realized route is a clean instantiation of participant-specific collaborative-state divergence already owned by 2026 MapTask work. |
+| GOOD DATA | **YES / unusually strong** | HCRC supplies spontaneous dialogue, asymmetric maps, reference route, follower route/actions, transactions, and deviation scores. |
+| NEW PARENT | **NO** | Seeing Is Not Sharing + ALMANAC + CollabSim occupy the LLM-era parent. |
+| DECISIVE PAPER | **YES in isolation, but cannot rescue novelty** | Full-vs-giver-only and intended-vs-realized analyses could be decisive, but would be an extension of an occupied question. |
+
+**Reopen only if**  
+A different classical collaborative-language corpus exposes a **new task-state relation not reducible to common ground, partner intent, shared-task understanding, repair, or intended-vs-realized action**, and fresh literature shows the LLM-era parent is not already occupied; or a genuinely new measurement law is found that reverses an established conclusion in a way not predicted by the current MapTask collaboration papers.
+
+**Important lesson**  
+This kill must **not** be generalized into “classic plan recognition / MapTask is too old.” The candidate survived the classical literature. It died because **2026 completed the relevant LLM-era modernization**.
