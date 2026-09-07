@@ -1107,3 +1107,30 @@ Without a natural corpus that independently labels a graph-level consequence (id
 **Reopen only if**  
 A natural pre-existing dataset supplies independent downstream gold showing that collapsing referent/kind/predicate status changes identity, relation truth, or query denotation—not merely whether the authors prefer a node type.
 
+
+
+---
+
+## K084 — OCR / Physical Order ≠ Human Reading Order
+
+**Date:** 2026-09-07  
+**RQ:** In modern generative document understanding, is an explicit human-perceived reading-order state still load-bearing, or can LLMs safely operate on heuristic/OCR serialization and recover document semantics directly?  
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Why it looked promising**  
+The distinction is natural and pre-LLM: physical/OCR sequence is not necessarily the order in which a human reads a multi-column page, form, receipt, or visually structured document. Reading-order annotations and layout-aware resources provide external structural supervision, and downstream SER/EL/QA offer natural consequences.
+
+**Exact kill reason**  
+Wang, Hu & Dahlmeier (EACL 2026), *Rethinking Reading Order: Toward Generalizable Document Understanding with LLM-based Relation Modeling*, directly owns the modern parent. Its first page explicitly contrasts (i) implicit/no-explicit-RO modeling, (ii) two-stage supervised RO, and (iii) LLM-derived RO, then evaluates explicit RO guidance on Semantic Entity Recognition, Entity Linking, and Document QA. The paper reports that LLM-inferred global RO improves downstream performance and can outperform human adjacency-based RO labels.
+
+Source/PDF: https://aclanthology.org/2026.eacl-long.192/
+
+This is essentially the decisive experiment our candidate would require: whether an old explicit structural state remains useful after document understanding becomes LLM/generative.
+
+**Reviewer compression**  
+> “EACL 2026 Rethinking Reading Order, perhaps with another document dataset or direct LLM baseline.”
+
+**Reopen only if**  
+A distinct document-structure state is found whose removal/retention has not already been tested as an explicit LLM-era downstream prior and cannot be reduced to reading order, layout relations, or generic document structure modeling.
