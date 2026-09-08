@@ -12,6 +12,32 @@
 
 ---
 
+# Superseding six-candidate portfolio — 2026-09-08 evening
+
+The search has now produced **six serious topics for direct comparison**, without changing the meaning of `good/`.
+
+- **L03 — Table Value ≠ Observation Status:** PILOT-AUTHORIZED; canonical package in `good/L03_TYPED_OBSERVATION/`.
+- **L06 — Study Identity Is Not Document Identity:** SERIOUS / PILOT-READY; full package in `candidates/L06_STUDY_IDENTITY/`.
+- **L07 — Official Correction ≠ Current Scholarly Claim:** SERIOUS; run proposition-level correction-yield audit before model pilot; full package in `candidates/L07_OFFICIAL_CORRECTION/`.
+- **L08 — Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning:** SERIOUS / A-; full package in `candidates/L08_READOUT_DIMENSION/`.
+- **L09 — RLVR Disagreement: Erased or Suppressed?:** SERIOUS / A-; full package in `candidates/L09_RLVR_DISAGREEMENT/`.
+- **L10 — Success Teaches, Failure Doesn't?:** SERIOUS / A-; full package in `candidates/L10_SUCCESS_FAILURE_ASYMMETRY/`.
+
+Canonical portfolio index:
+- `candidates/README.md`
+
+**Important:** six serious candidates ≠ six pilot-authorized candidates. The portfolio is now complete enough for internal assassination and pilots; promotion remains candidate-specific.
+
+Immediate actions:
+1. continue L03 under its existing pilot package;
+2. L06 matched-paper oracle / flat / wrong-split / wrong-merge pilot;
+3. L07 correction-notice proposition-yield data audit before compute;
+4. L08 exact reproduction then teacher-forced vs free-running mechanism decomposition;
+5. L09 secure/create a credible open pre/post RLVR pair before causal mechanism claims;
+6. L10 matched positive-vs-negative four-stage experience pilot.
+
+---
+
 
 ## Repository-state reconciliation — 2026-09-08
 
@@ -120,7 +146,7 @@ Fragile point: must show documentation-conditioned semantics / evaluation conseq
 
 ## L04 — Morphological Inflection Has Realization Cardinality
 
-**Status: PILOT-AUTHORIZED / NOT MAINLINE APPROVED.**
+**Status: NO-GO / K180. Historical text below is retained only as pre-kill audit evidence.**
 
 ### Corrected parent
 
