@@ -99,6 +99,25 @@ The entries below preserve the **scientific reason for rejection**, not every hi
 
 ---
 
+
+# 1A. Recent kill index — K162–K174
+
+| ID | topic | status | primary failure | shortest reason |
+|---|---|---|---|---|
+| K162 | Explicit Dialogue State as Necessary Intermediate Representation | KILL | NOVELTY_PARENT_COLLISION | ACL 2024 already owns modular/stateful TOD vs autonomous LLM agent. |
+| K163 | ASR Transcript as Necessary Intermediate Representation | KILL | NOVELTY_PARENT_COLLISION | AudioChatLlama already owns end-to-end spoken interaction vs ASR→LLM cascade. |
+| K164 | MT/QE Score ≠ Human Post-Editing Effort | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | Human-effort-aware QE/MT evaluation already studies the same target. |
+| K165 | Image Caption ≠ Useful Alt Text | KILL | NOVELTY_PARENT_COLLISION | Context-aware accessibility descriptions + BLV evaluation already occupy parent. |
+| K166 | Translated Benchmark ≠ Native-Language Competence | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | Native-vs-translated multilingual evaluation already directly studied. |
+| K167 | Text-to-SQL Execution Accuracy ≠ Semantic Correctness | KILL | NOVELTY_PARENT_COLLISION | FLEX already corrects execution-evaluation false positives/negatives and rankings. |
+| K168 | Multilingual Competence Gap ≠ Tokenizer Bottleneck | KILL CURRENT FORM | CROWDED_PARENT | Controlled vocabulary/tokenizer interventions occupy causal-tokenizer parent. |
+| K169 | Offline / LLM Headline Preference ≠ Randomized User Response | KILL | NOVELTY_PARENT_COLLISION | Upworthy LLM-surrogate vs true A/B response already tested. |
+| K170 | Task-Relative Readability / OneStop | KILL | NOVELTY_PARENT_COLLISION | CL 2026 cognitive-readability paper already tests robustness across reading regimes. |
+| K171 | Correction Success ≠ Durable Learning | KILL CURRENT FORM | CROWDED_PARENT | Immediate revision vs transfer/retention is established corrective-feedback parent. |
+| K172 | Semantic-Change Scalar ≠ Sense Redistribution | KILL | NOVELTY_PARENT_COLLISION | 2025–2026 work already separates sense-frequency redistribution from contextual drift. |
+| K173 | Cross-Lingual Shared Representation via Unlearning | KILL | NOVELTY_PARENT_COLLISION | ICML 2026 directly finds shared latent intact + late suppression + reversibility. |
+| K174 | Alignment Change: Capability vs Readout | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | DiaLLM 2026 directly dissociates robustness/capability from alignment-shaped generation. |
+
 # 2. Detailed kill records for the most important legacy candidates
 
 ## K001 — TCR: Typological Coverage Robustness
