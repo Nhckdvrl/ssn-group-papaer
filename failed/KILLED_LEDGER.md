@@ -3013,3 +3013,46 @@ DiaLLM (EMNLP 2026 Main / arXiv 2607.07669) performs a controlled comparison of 
 
 **Reopen only if**  
 A broader causal quantity is identified that is neither robustness-vs-generation nor capability-vs-output-policy as already operationalized by controlled post-training comparisons, and that changes a major multilingual conclusion rather than another axis-specific adaptation result.
+
+
+---
+
+## K175 — L02 Referential Commitment / Generative Implicit-Argument Route
+
+**Date:** 2026-09-08  
+**Status:** NO-GO / KILL CURRENT ROUTE  
+**Primary failure:** `DATA_GOLD_FAILURE`  
+**Secondary failure:** `PAPER_IDENTITY_INSUFFICIENT_AFTER_REPAIR`, `FRAGILE_RESEARCH_SPACE`
+
+**Former RQ**  
+> When an argument is omitted, does understanding that the semantic role exists license recovery of a concrete discourse entity, or must generative IE first establish that a specific referent is actually supported?
+
+**Completed diagnostic evidence**
+- Qwen3-32B and Mistral-Small-24B-Instruct-2501;
+- two diagnostic/output formulations;
+- 504 prediction records over the same 42 natural development examples;
+- UCCA, coreference, substitute-data, literature, rerun and hash audits;
+- direct-label full-context accuracy: **20/42 for both models**.
+
+The 20/42 result is a classification diagnostic only. It is not a hallucination rate and is not the primary reason for the kill.
+
+**Exact kill reason**  
+SemEval DNI/INI labels characterize interpretation type of omitted arguments; they do **not** directly determine whether a particular concrete candidate filler is supported by the current discourse. The original action mapping therefore did not supply independent gold for the paper's load-bearing estimand. UCCA/coreference/substitute-data audits did not yield a ready-made replacement gold standard. After repairing this conceptual mismatch, the remaining route does not currently establish a sufficiently distinct modeling, evaluation, or system-selection consequence beyond nearby work on underspecification, referential assumptions, cross-sentence argument verification, null outputs, and contextual specificity.
+
+**Reviewer compression**  
+> “A DNI/INI / underspecification diagnostic whose labels do not directly supervise the claimed concrete-support quantity, with no distinct downstream modeling consequence after repair.”
+
+**Why this kill matters for search doctrine**  
+This route shows why a candidate must not be promoted merely because:
+- a plausible A/B tension exists;
+- a literature gap appears to exist;
+- a small pilot could reveal an interesting failure.
+
+Future candidates must have both:
+1. **DIRECT-GOLD:** the independent gold must measure the exact load-bearing quantity;
+2. **RESEARCH-SPACE ROBUSTNESS:** if the first expected effect is absent or weak, multiple natural scientific questions remain live.
+
+**Reopen only if**  
+A new independently grounded dataset/annotation directly measures candidate-filler support, specificity, and event/discourse scope, and the resulting comparison yields a broader method/system decision not reducible to DNI/INI classification, abstention, generic hallucination, or candidate-entailment verification.
+
+Historical evidence is preserved under `good/L02_REFERENTIAL_COMMITMENT/`, but the package is no longer active.
