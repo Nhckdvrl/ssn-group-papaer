@@ -263,3 +263,30 @@ Conference-alignment examples:
 - EMNLP 2025 Outstanding, *Generative or Discriminative?*, maps accuracy, sample efficiency, calibration, robustness, ordinality, latency, and data constraints rather than betting on one metric.
 - ACL 2025 Outstanding, *Rethinking the Role of Prompting Strategies in LLM Test-Time Scaling*, connects a broad empirical regularity to theory, prediction, and improved methods.
 - ACL 2026 Outstanding, *CAR-bench*, treats real-world agent uncertainty as a multi-faceted reliability problem spanning consistency, limit-awareness, disambiguation, tool use, and policy adherence.
+
+
+---
+
+## 8. Per-round non-quota rule and single-phenomenon stress test — 2026-09-08
+
+The project may have a long-run target number of serious candidates, but **no search round is required to fill the remaining slots**.
+
+A round that finds zero promotable topics is successful if it correctly kills weak or occupied spaces. Never relax novelty, data, scale, or research-space gates because a round is ending.
+
+### Single-phenomenon dependency test
+
+Before promotion, ask:
+
+> If the first planned empirical phenomenon is absent, does the broader research object still contain several natural, pre-specified questions worth answering?
+
+If NO, the topic is too fragile even when a technical null-result narrative can be written.
+
+L02 is the canonical warning example: literature-level plausibility and an interesting hypothesized distinction did not compensate for a mismatch between DNI/INI labels and the actual concrete-support estimand. The route correctly died after a small pilot and gold audit.
+
+### Direct-gold requirement
+
+For every load-bearing claim, write the exact mapping:
+
+> natural observation / released annotation / external state → scientific quantity being estimated.
+
+If the mapping requires an interpretive leap such as “label X probably means candidate Y is supported,” GOOD DATA is not yet YES.
