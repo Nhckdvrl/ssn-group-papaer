@@ -1,5 +1,22 @@
 # L02 — Data and Independent Gold
 
+> **Final review, 2026-09-08:** current Main route not approved.
+> [Support contract](data/SUPPORT_CONTRACT.md) is authoritative for resource
+> admission. Native interpretation and source links remain separate from
+> candidate-specific support, which was not independently annotated in these runs.
+> See [research verdict](RESEARCH_VERDICT.md).
+
+> **2026-09-08 authoritative correction:** E000 reproduces the key training counts but
+> finds 11 source-linked INIs and 58 unlinked DNIs. The historical mapping below from
+> INI to NON_SPECIFIC/no-filler action is **not an admissible overcommitment gold**.
+> Use source interpretation flags and source links as separate fields. Missing links
+> are not semantic negative labels. Uncertain flags, original IDs and multi-node spans
+> are preserved in `runs/E000_20260908_v1/observations.jsonl`; unsupported-specificity gold
+> remains unknown. Read [audit results](experiments/E000_data_audit/RESULTS.md) and
+> [source admissibility](data/SOURCE_ADJUDICATION.md) before implementing any pilot.
+> The sections below retain the initial proposal for traceability; this correction
+> overrides its unverified assumptions. Test data and replication are not yet admitted.
+
 **Core rule:** the experiment must never depend on author-invented labels for whether a missing role has a specific referent.
 
 ---

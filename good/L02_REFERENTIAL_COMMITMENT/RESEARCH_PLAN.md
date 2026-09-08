@@ -1,5 +1,16 @@
 # L02 — Research Plan and Development Roadmap
 
+> **Final route decision, 2026-09-08: NO-GO for the current Main-paper design.**
+> E000–E000c, E001a and E001b completed. Read [the verdict](RESEARCH_VERDICT.md)
+> and [support contract](data/SUPPORT_CONTRACT.md) before any further study.
+> The roadmap below is a superseded proposal, not an executable protocol.
+
+> **2026-09-08 amendment:** E000 ran on the recovered training release. Interpretation
+> and context-supported filling cannot be collapsed into the old DNI/INI-to-action mapping.
+> See [results](experiments/E000_data_audit/RESULTS.md) and
+> [E001 draft](experiments/E001_pilot/PROTOCOL_DRAFT.md). The inherited roadmap below
+> is not an executable protocol. Do not run blanket INI-as-overcommitment scoring.
+
 **Goal:** turn a promising distinction into a decisive NAACL Main-level paper about whether referential-status factorization remains load-bearing in generative implicit-argument extraction.
 
 ---

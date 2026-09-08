@@ -1,0 +1,25 @@
+{
+  "experiment_id": "E000",
+  "version": "1.0",
+  "kind": "exploratory data and construct audit; no model calls",
+  "freeze_note": "Written after initial source inspection found 11 linked INIs. Not preregistered and not confirmatory.",
+  "claims": ["D01", "D02", "D03"],
+  "literature_alignment": "literature/ALIGNMENT_20260908.md",
+  "source": "data/raw/semeval2010/extracted/Semeval2010Task10TrainingFN/tiger/TigerOfSanPedro.withHeads.xml",
+  "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+  "companion": "data/raw/semeval2010/extracted/Semeval2010Task10TrainingFN/tiger/TigerOfSanPedro.xml",
+  "auxiliary_frames_excluded": ["Coreference", "Support", "Relativization"],
+  "published_training_counts": {"sentences": 438, "tokens": 7941, "frames": 1370, "frame_types": 317, "overt_fes": 2526, "DNI": 303, "DNI_linked": 245, "INI": 277},
+  "policies": {
+    "interpretation": "Use explicit Definite_Interpretation / Indefinite_Interpretation flags; preserve uncertainty",
+    "missing_link": "Not a gold unanswerable label",
+    "INI_link": "Keep all, enumerate for review; do not silently remove",
+    "filler_spans": "Retain the set of fenode IDs for a single FE as one source span; do not mislabel component nodes as alternatives",
+    "coreference": "No automatic equivalence expansion before separate coreference relation audit",
+    "rendering": "Original terminal words with token IDs; part nodes retained separately",
+    "prior_diagnostic": "Contiguous five-block development-only cross-validation; frame-role majority with global train-fold fallback, deterministic DNI tie break",
+    "prior_interpretation": "Within-one-document diagnostic, not independent document generalization",
+    "inference": "Descriptive counts only; no p-values or population confidence intervals"
+  },
+  "model_gate": "Block original INI-as-no-specific-filler estimand when source evidence contradicts that mapping; keep research active and revise measurement. Counts alone do not establish gold validity."
+}

@@ -1,0 +1,91 @@
+{
+  "experiment": "E000",
+  "counts": {
+    "sentences": 438,
+    "terminal_tokens": 7917,
+    "splitword_parts": 24,
+    "terminal_plus_part_nodes": 7941,
+    "frames": 1370,
+    "frame_types": 317,
+    "DNI": 303,
+    "INI": 277,
+    "DNI_linked": 245,
+    "DNI_unlinked": 58,
+    "INI_linked": 11,
+    "INI_unlinked": 266,
+    "non_NI_fe_elements": 2516,
+    "non_NI_fe_with_fenode": 2429
+  },
+  "published_count_comparison": {
+    "sentences": {
+      "published": 438,
+      "observed": 438,
+      "matches": true
+    },
+    "tokens": {
+      "published": 7941,
+      "observed": null,
+      "matches": false
+    },
+    "frames": {
+      "published": 1370,
+      "observed": 1370,
+      "matches": true
+    },
+    "frame_types": {
+      "published": 317,
+      "observed": 317,
+      "matches": true
+    },
+    "overt_fes": {
+      "published": 2526,
+      "observed": null,
+      "matches": false
+    },
+    "DNI": {
+      "published": 303,
+      "observed": 303,
+      "matches": true
+    },
+    "DNI_linked": {
+      "published": 245,
+      "observed": 245,
+      "matches": true
+    },
+    "INI": {
+      "published": 277,
+      "observed": 277,
+      "matches": true
+    }
+  },
+  "count_caveats": [
+    "Published tokens equal terminals + splitword parts; this counts overlapping representations, not unique surface tokens.",
+    "Published overt FE count not reproduced by naive non-NI span-bearing FE element count. No forced reconciliation."
+  ],
+  "companion_annotation_agrees": true,
+  "ni_issues": [],
+  "graph_issues": [],
+  "ni_flags": {
+    "Indefinite_Interpretation": 277,
+    "Lexical_licensor": 429,
+    "Definite_Interpretation": 303,
+    "Constructional_licensor": 143,
+    "Uncertain_Licensor": 17,
+    "Uncertain_Interpretation": 6,
+    "Uncertain_Antecedent": 2,
+    "Incorporated_by_LU": 1,
+    "Global_reexamine": 1
+  },
+  "frame_role_pairs": 290,
+  "mixed_interpretation_pairs": 22,
+  "rows_in_mixed_pairs": 103,
+  "model_gate": "MEASUREMENT_REVISION_REQUIRED",
+  "reason": "INI flags do not justify treating all specific fillers as errors; 11 source-linked INIs require interpretation/link separation.",
+  "research_status": "ACTIVE; not killed; no model finding",
+  "prior_diagnostic": {
+    "n": 574,
+    "frame_role_correct": 418,
+    "global_correct": 300,
+    "seen_pair_n": 353
+  }
+}

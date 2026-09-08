@@ -1,0 +1,37 @@
+{
+  "id": "E001b",
+  "created_utc": "2026-09-08T03:43:56.420550+00:00",
+  "status": "FROZEN_BEFORE_NATIVE_LABEL_OUTPUTS",
+  "trigger": "E001a Mistral argmax chose A on all 168 jobs; all 42 examples show label-order disagreement in each condition.",
+  "scope": "Exploratory measurement validation, not H01/H02/H03 or a new method/novelty claim. E001a results remain unchanged.",
+  "alignment": [
+    "DUST 2024.findings-acl.572 sections 5-6: prompt/measurement sensitivity",
+    "SemEval S10-1008: native interpretation labels"
+  ],
+  "selection": "Exactly the same 42 samples, each sentence/full context; no output-dependent sample exclusions.",
+  "change": "Remove arbitrary A/B mapping; request direct DNI/INI free generation with no explanation. Keep definitions, role, target and context identical.",
+  "models": {
+    "qwen32b": {
+      "path": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "enable_thinking": false
+    },
+    "mistral24b": {
+      "path": "/home/xiang/.cache/huggingface/hub/models--mistralai--Mistral-Small-24B-Instruct-2501/snapshots/9527884be6e5616bdd54de542f9ae13384489724",
+      "revision": "9527884be6e5616bdd54de542f9ae13384489724"
+    }
+  },
+  "inference": "BF16 SDPA, greedy unconstrained generation, max_new_tokens=8, no prompt truncation, Qwen thinking disabled; no examples or prompt tuning.",
+  "scoring": "Strip outer whitespace and accept only exact DNI or INI. All other responses remain invalid and count incorrect in the all-42 denominator. Report confusion, complete-pair accuracy and context transitions. No population CI.",
+  "limitations": [
+    "Exploratory after a diagnosed A/B failure",
+    "One story and gold-balanced frame-role challenge",
+    "Free generation differs from conditional single-token likelihood; not an equal-budget method comparison",
+    "Native-label accuracy does not measure filler support"
+  ],
+  "artifact_hashes": {
+    "jobs.jsonl": "e673f4c52a4e8a4c9265d470cd92d998abd0e709176e07ad8fb987be160fb6c5",
+    "samples.jsonl": "2941bb3771d1a8dfd0d0a831627e54d8f08416f07254172fa637f9ab08ddc389"
+  },
+  "source_protocol_sha256": "1db02e3ca35388bc2375dddfa87ed55e5097076e5ddaee090cf4510bfaea86b7"
+}

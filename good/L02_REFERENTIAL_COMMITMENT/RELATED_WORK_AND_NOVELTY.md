@@ -1,5 +1,15 @@
 # L02 — Related Work and Paper-Level Novelty
 
+> **Final review, 2026-09-08:** [follow-up alignment](literature/FOLLOWUP_ALIGNMENT_20260908.md)
+> adds DUST, RefNLI and the UCCA/CLAIRE resource review. The inherited unconditional
+> novelty pass is superseded. See the [NO-GO route verdict](RESEARCH_VERDICT.md).
+
+> **2026-09-08 correction:** [Renewed full-text alignment](literature/ALIGNMENT_20260908.md)
+> supersedes inherited novelty assertions below. DiscourseEE already permits null slots;
+> REGen already studies context-grounded matching and specificity. Generic abstention and
+> grounded evaluation are not unoccupied contributions. E000 additionally rejects the
+> blanket INI-as-unlicensed-filler mapping. Current novelty is provisional.
+
 **Candidate:** Semantic Role Completion ≠ Referential Commitment  
 **Audit principle:** novelty is judged at the level of the **full scientific story**, not by requiring every ingredient to be new.
 
@@ -67,7 +77,7 @@ Important collision pressure:
 - L02 cannot sell itself as “LLMs can extract implicit arguments.”
 
 Surviving distinction:
-- DiscourseEE’s implicit arguments are still arguments intended to be recovered;
+- DiscourseEE has recoverable implicit arguments and also null slots for absent arguments;
 - L02 asks whether **the system should generate a concrete entity at all**, separating semantic role completion from referential commitment.
 
 ### Sharif et al., Findings EMNLP 2025

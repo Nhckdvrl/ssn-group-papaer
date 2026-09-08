@@ -1,0 +1,74 @@
+{
+  "review_date": "2026-09-08",
+  "reviewer": "Codex source inspection; not independent human adjudication",
+  "changes_to_source_gold": false,
+  "scope": "All 11 INI records with fenodes in recovered training release",
+  "items": [
+    {
+      "id": "s49_f1229595852.33958_e3",
+      "review_category": "POTENTIAL_SOURCE_LINK_ERROR",
+      "note": "Addressee links to the isolated determiner A in s47. It does not identify an addressee. Do not repair it to Marx by intuition or count it as a valid counterexample.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s185_f2_e1",
+      "review_category": "CONTEXTUAL_LINK_REQUIRES_SCOPE_REVIEW",
+      "note": "The source links Perpetrator to They; the sentence calls them confederates in a crime. Exact participation versus co-perpetration requires semantic review. Keep the INI flag and link separate.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s224_f1_e4",
+      "review_category": "ROLE_TYPE_DESCRIPTION",
+      "note": "The sacked Position points to gardener in the same sentence. A job description is not a named individual; treating every non-null description as specific-entity hallucination would be a category error.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s224_f3_e3",
+      "review_category": "ROLE_TYPE_DESCRIPTION",
+      "note": "Employing Task also points to gardener. Role type, task description and token-reference recovery should be distinguished, rather than declaring any filler specific.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s236_f5_e2",
+      "review_category": "QUOTED_FIGURATIVE_EVENT",
+      "note": "The exchange participant is linked to the devil in quoted figurative speech. The contextual relation must retain attribution and figurative scope; it is not evidence for a real-world devil transaction.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s286_f1229595859.77616_e1",
+      "review_category": "SOURCE_INTERPRETATION_UNCERTAIN",
+      "note": "Undergoer points to She and the original annotation flags Uncertain_Interpretation. Do not treat this as an unambiguous DNI/INI test item.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s380_f4_e2",
+      "review_category": "HYPOTHETICAL_EVENT",
+      "note": "Agent of the deed points to they in a would-have conditional. A supported participant in a hypothetical event does not assert that the deed occurred.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s381_f1229595862.88902_e2",
+      "review_category": "PLANNED_EVENT",
+      "note": "Killer of my murder points to they; context describes contemplated killing deemed too dangerous. Event factuality and argument licensing are distinct.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s392_f1229595863.46041_e1",
+      "review_category": "SOURCE_INTERPRETATION_UNCERTAIN",
+      "note": "Speaker of threats points to they in s390; original Uncertain_Interpretation is retained. Cross-sentence resolution requires the surrounding narrative.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s393_f3_e2",
+      "review_category": "CROSS_SENTENCE_POSITIVE_LINK",
+      "note": "Prison of this cruel imprisonment points to my room in s392. The FE references two nodes in reverse XML order; surface order reconstructs my room. The natural passage identifies a location despite INI.",
+      "independent_semantic_adjudication": "pending"
+    },
+    {
+      "id": "s405_f2_e2",
+      "review_category": "MODAL_EVENT_SET",
+      "note": "Perpetrator of crimes points to they in a may-be sentence. Scope includes possible crimes, not a factual assertion of one hundred completed crimes.",
+      "independent_semantic_adjudication": "pending"
+    }
+  ]
+}
