@@ -127,6 +127,22 @@ This must be a real pre-specified scientific answer, for example:
 
 ---
 
+## 6.5 RESEARCH-SPACE ROBUSTNESS — mandatory before compute
+
+- **Broader scientific object / decision problem:**
+- **Natural subquestion 1:**
+- **Natural subquestion 2:**
+- **Natural subquestion 3:**
+- **If the first planned effect is absent, which subquestions remain live?**
+- **What mechanism / boundary / decision-map paper remains possible without inventing post-hoc hypotheses?**
+- **Why is this not merely “if X causes Y, we have a paper”?**
+
+**Gate:** YES / NO
+
+A NO blocks promotion even if ordinary null-result robustness is technically possible.
+
+---
+
 ## 7. GOOD DATA + GOLD
 
 - **Exact dataset/resource/materials:**
@@ -265,6 +281,7 @@ Consequence for at least one of:
 | GOOD DATA | YES / NO | |
 | PAPER-LEVEL NOVELTY | YES / NO | |
 | OUTCOME-ROBUST DECISIVENESS | YES / NO | |
+| RESEARCH-SPACE ROBUSTNESS | YES / NO | |
 
 ## Final decision
 
