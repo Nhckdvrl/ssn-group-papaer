@@ -5,8 +5,8 @@
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Active pilot-authorized candidates:** **2 — L03, L04**  
-**Authoritative killed ledger on disk:** through **K176**  
-**Next ledger kill ID:** **K177**
+**Authoritative killed ledger on disk:** through **K179**  
+**Next ledger kill ID:** **K180**
 
 > **Active survivors:** L03, L04. L02 is **NO-GO / K175** after completed pilot and gold audit; its package is retained only as historical evidence.
 > L04 was restored only after its previously conditional GOOD DATA gate was concretely repaired with exact Eesthetic/Paralex gold.
@@ -20,8 +20,8 @@ The stale K161/K162 header has been repaired against the authoritative ledger.
 
 - Ledger detailed records confirmed present through K169 before this round.
 - K170–K174 were fresh-checked and formally registered.
-- Current authoritative state: **through K176**.
-- Next unused kill ID: **K177**.
+- Current authoritative state: **through K179**.
+- Next unused kill ID: **K180**.
 - No paper mainline is approved.
 - Active pilot-authorized survivors: **L03, L04**. L02 is NO-GO and no longer counts.
 
@@ -461,4 +461,45 @@ That is not an independent Main-level paper identity. A cleaner matched-budget e
 **Research-space note:** the lead did pass the *shape* test better after upgrading from “does adaptivity help?” to a broader necessity/mechanism/boundary/decision-map question. It is killed for ownership of the decisive scientific space, not because the broader research-space formulation was bad.
 
 **Reopen only if:** a qualitatively different natural information-seeking object and independent gold expose a decision quantity not reducible to evidence→trajectory causality, sequential-vs-parallel dependency structure, query-gap filling, or generic adaptive-search efficiency.
+
+---
+
+# Search pass — 2026-09-08 afternoon
+
+This pass deliberately crossed conflicting-evidence aggregation, model-distribution/decoding attribution, label learning, scientific-document NLP, structured IE, evaluation assumptions, representation/computation, and data-curation/revision-history routes.
+
+## Closed in this pass
+
+- **K177 — Evidence aggregation rule under conflicting studies.** Current form compresses into ACL 2024 *What Evidence Do Language Models Find Convincing?* plus newer conflict/majority synthesis work.
+- **K178 — Learned distribution vs decoding policy for repeated-sequence statistics.** Current form compresses into ACL 2026 *Repeated Sequences Reveal Gaps...* plus established decoding-distribution distortion work.
+- **K179 — Label definitions vs examples.** Current form is too directly occupied by EMNLP 2025 *Do LLMs Adhere to Label Definitions?* and ordinary ICL demonstration studies.
+
+These closures reduce the active project to the same two pilot-authorized candidates: **L03 and L04**. No new candidate was promoted.
+
+## Rough lead retained — NOT PILOT-AUTHORIZED
+
+### Editorial trajectory as a pretraining/data-value signal
+
+**Provisional RQ**
+
+> Is pretraining-data value fully identifiable from a static text snapshot, or does subsequent human editorial trajectory contain predictive information that snapshot-only quality filters cannot recover?
+
+**Plain example**
+
+Two fluent Wikipedia passages can look equally “high quality” at the moment they appear, yet one survives community editing while another is quickly reverted or repeatedly revised. The question is not whether “reverted = false/bad”; Wikimedia itself warns that reverts have heterogeneous causes. The scientific question is whether **future editorial trajectory adds information about training utility beyond the text itself**.
+
+**Why this survived only as a rough lead**
+
+- Natural large-scale longitudinal substrate: Wikipedia revision history.
+- Modern leverage: controlled continued-pretraining / data-selection experiments can test whether trajectory-conditioned strata differ in downstream training value after matching snapshot text features.
+- Multiple informative outcomes: trajectory adds value, adds no value beyond text, or helps only for specific edit classes/languages/tasks.
+- It does not require treating revert as truth gold.
+
+**Main dangers**
+
+1. **Estimand discipline:** revert/survival is an observation, not “correctness” or “quality” gold.
+2. **Novelty:** Wikipedia revisions have long been mined for NLP supervision; recent ACL 2026 work audits static Wikipedia quality, and Wikimedia already exposes revert-risk metadata. The paper identity must therefore be specifically about **whether editorial history carries incremental pretraining-value information beyond snapshot-only filters**, not “use revisions for data cleaning.”
+3. **Compute/identification:** a credible test likely requires matched revision cohorts and controlled continued pretraining, not just correlation between revert labels and an LLM quality score.
+
+**Current verdict:** KEEP AS ROUGH LEAD FOR DEEP ASSASSINATION. Do not create a `good/` package and do not allocate pilot compute yet.
 
