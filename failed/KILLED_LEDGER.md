@@ -9,8 +9,8 @@
 **Initial migration date:** 2026-09-06  
 **Legacy provenance:** consolidated from the authoritative kill/search ledgers in `Nhckdvrl/try` (especially V9, V12, V13, V15, V17).
 
-**Authoritative kill state:** through **K176**  
-**Next kill ID:** **K177**
+**Authoritative kill state:** through **K180**  
+**Next kill ID:** **K181**
 
 The entries below preserve the **scientific reason for rejection**, not every historical implementation detail. If a topic is ever reconsidered, the literature must be freshly re-checked.
 
@@ -3148,3 +3148,36 @@ EMNLP 2025 Main *Do LLMs Adhere to Label Definitions? Examining Their Receptivit
 **Reopen only if**  
 A natural task provides a distinct externally identified quantity for what definitions and examples contribute, producing a consequence beyond classification accuracy or ordinary in-context learning behavior.
 
+
+
+---
+
+## K180 — L04 Realization Cardinality / Canonical Inflection Measurement
+
+**Date:** 2026-09-08  
+**Former status:** PILOT-AUTHORIZED  
+**Status:** KILL / DEMOTE FROM ACTIVE SET  
+**Primary failure:** `PAPER_SCALE_FAILURE`  
+**Secondary failure:** `DECISIVENESS_FAILURE`, `REPLICATION_FRAGILITY`
+
+**Former RQ**
+
+> Does standard single-canonical-target morphological inflection preserve scientific conclusions about generalization once the natural zero/one/many realization cardinality of paradigm cells is restored?
+
+**Important non-kill reason**
+
+This route is **not** killed because morphology, defectivity, overabundance, or set-valued realization are old research objects. Classic parents are allowed and can be positive evidence of a durable problem. The exact modern measurement-preservation question was not found to be fully owned in the fresh audit.
+
+**Exact kill reason**
+
+After re-auditing against the NAACL/ACL/EMNLP Main bar, the full paper identity remains too outcome-fragile. Prior work already makes the canonicalization limitation explicit, while the currently verified direct gold is concentrated in Eesthetic/Paralex Estonian morphology. The paper becomes Main-level only if restoring zero/one/many realization materially changes conclusions about model/generalization behavior. If canonical and relation-aware conclusions largely agree, the surviving claim is a narrow preservation result on one morphologically specific resource; if the main empirical difference is only that models miss legitimate variants or hallucinate forms in defective cells, the contribution collapses to validation of a known representational simplification.
+
+Thus the route still depends too strongly on a sufficiently consequential empirical effect to create paper scale. This violates the project's outcome-robustness requirement even though the data ontology itself is good.
+
+**Reviewer compression**
+
+> “A careful Eesthetic implementation of the already-known single-canonical-form simplification, whose Main-level value depends on finding that the simplification changes model conclusions.”
+
+**Reopen only if**
+
+A multilingual/cross-resource substrate with independently annotated zero/one/many realization is secured *and* the scientific question is broadened so that preservation, failure, and heterogeneity each support a field-relevant decision about morphological evaluation without depending on a dramatic ranking/generalization change.
