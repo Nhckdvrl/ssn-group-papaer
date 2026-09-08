@@ -1,14 +1,50 @@
-# Current Research-Question Search — 2026-09-07 Active Search
+# Current Research-Question Search — 2026-09-08 Active Search
 
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Pilot-authorized candidates in `good/`:** **3 — L02, L03, L04**  
-**Authoritative killed ledger on disk:** through **K161**  
-**Next ledger kill ID:** **K162**
+**Authoritative killed ledger on disk:** through **K174**  
+**Next ledger kill ID:** **K175**
 
 > `good/` now contains **L02, L03, L04**.
 > All are **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**.
 > L04 was restored only after its previously conditional GOOD DATA gate was concretely repaired with exact Eesthetic/Paralex gold.
+
+---
+
+
+## Repository-state reconciliation — 2026-09-08
+
+The stale K161/K162 header has been repaired against the authoritative ledger.
+
+- Ledger detailed records confirmed present through K169 before this round.
+- K170–K174 were fresh-checked and formally registered.
+- Current authoritative state: **through K174**.
+- Next unused kill ID: **K175**.
+- No paper mainline is approved.
+- `good/` remains **3/5: L02, L03, L04**, all PILOT-AUTHORIZED / NOT MAINLINE APPROVED.
+
+### K170–K174 closure summary
+
+- **K170 Task-relative readability / OneStop — KILL.** 2026 Computational Linguistics cognitive-readability evaluation already reports the conclusion across different reading regimes.
+- **K171 Correction success ≠ durable learning — KILL CURRENT FORM.** Revision uptake versus transfer/retention is already a mature corrective-feedback/AWE distinction; 2024 work explicitly measures separate transfer outcomes.
+- **K172 Semantic-change scalar ≠ sense redistribution — KILL.** ACL 2025 Sense Usage Shift plus LChange 2026 “semantic broadening without sense redistribution” occupy the decisive relation.
+- **K173 Cross-lingual shared representation via unlearning — KILL.** ICML 2026 directly finds early shared latent structure largely intact, later-layer suppression, and steering-based reversibility.
+- **K174 Alignment capability vs readout — KILL CURRENT FORM.** DiaLLM 2026 directly dissociates dialect robustness/capability from alignment-shaped generation; multilingual-only narrowing is not enough.
+
+---
+
+# Search correction — prefer research spaces over fragile axes
+
+**Effective 2026-09-08. The search target remains six total serious candidates (three existing + up to three new), but the number is not a promotion quota and never lowers the scientific bar.**
+
+Do not promote a lead merely because one new causal/measurement axis seems unoccupied. Prefer a crisp natural object with a moderate/large research space, several pre-existing scientific questions, and multiple informative outcome paths.
+
+Before substantial search or compute, require at least three natural subquestions. If the first expected phenomenon disappears and the whole project collapses, the lead is too fragile.
+
+This is aligned with strong Main/Outstanding work: EMNLP 2025 *Generative or Discriminative?* produces a multi-dimensional decision map; ACL 2025 test-time-scaling work links empirical pattern, theory, prediction and intervention; ACL 2026 Outstanding *CAR-bench* treats agent reliability under uncertainty as a broader scientific object rather than one effect.
+
+**Current implication:** continue searching toward `good = 6`, but promote only candidates that independently pass every gate, including RESEARCH-SPACE ROBUSTNESS. Ending below six is preferable to promoting a fragile or below-Main topic.
 
 ---
 

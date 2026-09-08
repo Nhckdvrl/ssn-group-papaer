@@ -9,6 +9,9 @@
 **Initial migration date:** 2026-09-06  
 **Legacy provenance:** consolidated from the authoritative kill/search ledgers in `Nhckdvrl/try` (especially V9, V12, V13, V15, V17).
 
+**Authoritative kill state:** through **K174**  
+**Next kill ID:** **K175**
+
 The entries below preserve the **scientific reason for rejection**, not every historical implementation detail. If a topic is ever reconsidered, the literature must be freshly re-checked.
 
 ---
@@ -95,6 +98,25 @@ The entries below preserve the **scientific reason for rejection**, not every hi
 | K060 | L05 — Rational Redundancy in Referring Expressions | KILL | NOVELTY_PARENT_COLLISION | — | Muchovej et al. 2026 directly test whether VLMs add redundant color when it helps listener visual search; COLM 2025 already owns pragmatic REG failures. |
 
 ---
+
+
+# 1A. Recent kill index — K162–K174
+
+| ID | topic | status | primary failure | shortest reason |
+|---|---|---|---|---|
+| K162 | Explicit Dialogue State as Necessary Intermediate Representation | KILL | NOVELTY_PARENT_COLLISION | ACL 2024 already owns modular/stateful TOD vs autonomous LLM agent. |
+| K163 | ASR Transcript as Necessary Intermediate Representation | KILL | NOVELTY_PARENT_COLLISION | AudioChatLlama already owns end-to-end spoken interaction vs ASR→LLM cascade. |
+| K164 | MT/QE Score ≠ Human Post-Editing Effort | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | Human-effort-aware QE/MT evaluation already studies the same target. |
+| K165 | Image Caption ≠ Useful Alt Text | KILL | NOVELTY_PARENT_COLLISION | Context-aware accessibility descriptions + BLV evaluation already occupy parent. |
+| K166 | Translated Benchmark ≠ Native-Language Competence | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | Native-vs-translated multilingual evaluation already directly studied. |
+| K167 | Text-to-SQL Execution Accuracy ≠ Semantic Correctness | KILL | NOVELTY_PARENT_COLLISION | FLEX already corrects execution-evaluation false positives/negatives and rankings. |
+| K168 | Multilingual Competence Gap ≠ Tokenizer Bottleneck | KILL CURRENT FORM | CROWDED_PARENT | Controlled vocabulary/tokenizer interventions occupy causal-tokenizer parent. |
+| K169 | Offline / LLM Headline Preference ≠ Randomized User Response | KILL | NOVELTY_PARENT_COLLISION | Upworthy LLM-surrogate vs true A/B response already tested. |
+| K170 | Task-Relative Readability / OneStop | KILL | NOVELTY_PARENT_COLLISION | CL 2026 cognitive-readability paper already tests robustness across reading regimes. |
+| K171 | Correction Success ≠ Durable Learning | KILL CURRENT FORM | CROWDED_PARENT | Immediate revision vs transfer/retention is established corrective-feedback parent. |
+| K172 | Semantic-Change Scalar ≠ Sense Redistribution | KILL | NOVELTY_PARENT_COLLISION | 2025–2026 work already separates sense-frequency redistribution from contextual drift. |
+| K173 | Cross-Lingual Shared Representation via Unlearning | KILL | NOVELTY_PARENT_COLLISION | ICML 2026 directly finds shared latent intact + late suppression + reversibility. |
+| K174 | Alignment Change: Capability vs Readout | KILL CURRENT FORM | NOVELTY_PARENT_COLLISION | DiaLLM 2026 directly dissociates robustness/capability from alignment-shaped generation. |
 
 # 2. Detailed kill records for the most important legacy candidates
 
@@ -2884,3 +2906,110 @@ LOLA (2024) already evaluates LLM headline choice on 17,681 Upworthy experiments
 
 **Reopen only if**  
 A different natural randomized language-intervention corpus identifies a qualitatively different surrogate-validity question not reducible to predicting human treatment effects.
+
+
+---
+
+## K170 — Task-Relative Readability / Reading-Regime-Conditioned Difficulty
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Is text readability an intrinsic property of a text, or a reader × task-goal relation that changes between ordinary reading and information seeking?
+
+**Why it looked strong**  
+OneStop provides unusually clean natural behavioral identification: the same Guardian-derived materials, controlled text difficulty, ordinary reading versus information seeking, comprehension, and eye movements.
+
+**Fresh-check / exact kill reason**  
+Klein, Frenkel, Shubi & Berzak (Computational Linguistics, 2026), *Eye Tracking Based Cognitive Evaluation of Automatic Readability Assessment Methods*, already evaluates prominent readability methods against real-time reading ease and explicitly reports that its core conclusion holds across **different reading regimes**, as well as L1/L2 speakers and textual units. The OneStop parent is therefore no longer merely a dataset opportunity: the task-regime robustness/validity dimension has already been tested inside the modern cognitive-readability story.
+
+**Reviewer compression**  
+> “The 2026 OneStop cognitive-readability validity paper, expanded into a standalone reading-goal interaction analysis.”
+
+**Reopen only if**  
+A different task-relative construct is identified whose decisive quantity is not readability-score validity / reading ease and whose scientific conclusion is not predicted by the 2026 OneStop analysis.
+
+---
+
+## K171 — Correction Success ≠ Durable Learning
+
+**Date:** 2026-09-08  
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** When a learner successfully fixes an error after feedback, does that correction indicate durable learning that transfers to later writing, or only local revision uptake?
+
+**Why it looked strong**  
+The Write & Improve Corpus 2024 contains repeated submissions from the same learners, multiple drafts per prompt, first/final grammatical-error annotation, and examiner CEFR labels—an unusually strong natural substrate.
+
+**Fresh-check / exact kill reason**  
+The scientific distinction itself is already central to corrective-feedback / AWE research: immediate revision success, transfer to a second task, recurrence, and longer-term learning are treated as distinct outcomes. A 2024 experimental study of automated feedback explicitly measures revision plus a separate transfer task and finds different behavioral relationships; EMNLP 2024 *Closing the Loop* directly optimizes feedback by downstream revision effectiveness. Thus “successful correction is not the same as learning” is not a new paper identity; using Write & Improve longitudinal logs would be a strong dataset instantiation of an established educational-feedback question.
+
+**Reviewer compression**  
+> “Automated corrective-feedback uptake versus transfer/retention, measured on a larger longitudinal learner corpus.”
+
+**Reopen only if**  
+The corpus supports a genuinely new causal/identification question beyond uptake, recurrence, transfer, retention, or feedback effectiveness, with an NLP-level consequence that existing AWE/WCF work does not already predict.
+
+---
+
+## K172 — Semantic-Change Scalar ≠ Sense Redistribution
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** When a word’s global semantic-change score rises, does that reflect redistribution among discrete senses, or contextual drift/diversification within otherwise stable senses?
+
+**Fresh-check / exact kill reason**  
+ACL 2025 *Quantifying Lexical Semantic Shift via Unbalanced Optimal Transport* introduces Sense Usage Shift to quantify changes in sense usage frequency at the usage-instance level. More decisively, LChange 2026 *Threshold-Calibrated Word Sense Disambiguation: Semantic Broadening Without Sense Redistribution in Schizophrenia* explicitly demonstrates that distributional drift/breadth measures can increase while sense proportions remain stable, and argues that such signals can reflect contextual diversification rather than sense redistribution.
+
+**Reviewer compression**  
+> “Generalizing the 2026 ‘semantic broadening without sense redistribution’ story from one case study to a broader benchmark.”
+
+**Reopen only if**  
+A new causal or measurement relation is found that cannot be reduced to sense-frequency change versus contextual diversification and yields a substantially different scientific conclusion.
+
+---
+
+## K173 — Cross-Lingual Shared Representation via Unlearning Intervention
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Does cross-lingual transfer arise from genuinely shared latent knowledge, or from language-specific readout paths over correlated representations, as revealed by selective unlearning?
+
+**Fresh-check / exact kill reason**  
+The parent is now directly occupied. EACL 2026 *Multilingual Amnesia* studies transfer of unlearning across languages. ICML 2026 *Multilingual Unlearning in LLMs: Transfer, Dynamics, and Reversibility* goes almost exactly through the proposed mechanistic story: layer-wise analysis finds that unlearning leaves the shared cross-lingual latent space largely intact in early layers, acts mainly in later decoding layers, interprets the effect as superficial suppression rather than true erasure, and reverses much of it with a single inference-time steering direction. A separate 2026 layer-targeted multilingual-erasure line further studies where language-agnostic representations converge.
+
+**Reviewer compression**  
+> “ICML 2026 multilingual-unlearning dynamics/reversibility, reframed as a shared-representation probe.”
+
+**Reopen only if**  
+A different intervention answers a different cross-lingual scientific question whose decisive prediction is not transfer, latent-sharing, suppression-vs-erasure, layer localization, or reversibility.
+
+---
+
+## K174 — Alignment-Induced Dialect/Multilingual Change: Capability vs Readout
+
+**Date:** 2026-09-08  
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure:** `CROWDED_PARENT`
+
+**RQ:** When post-training changes dialectal or multilingual behavior, does it alter underlying linguistic capability or mainly the output policy/readout through which that capability is expressed?
+
+**Why it looked strong**  
+ACL 2024 *Unintended Impacts of LLM Alignment on Global Representation* leaves genuine causal ambiguity because multiple alignment/training stages are confounded, making capability-versus-readout a natural competing-explanations question.
+
+**Fresh-check / exact kill reason**  
+DiaLLM (EMNLP 2026 Main / arXiv 2607.07669) performs a controlled comparison of continual pretraining, SFT, and multiple alignment strategies across English varieties and reports a direct dissociation: dialectal robustness benchmarks are shaped primarily by continual pretraining/SFT, while alignment visibly reshapes generation. That occupies the strongest dialect version of the capability-versus-readout story. The multilingual remainder sits inside a very crowded alignment-tax / multilingual post-training parent and, without a qualitatively new identification axis, reviewer-compresses to applying the DiaLLM decomposition to languages rather than dialects.
+
+**Reviewer compression**  
+> “DiaLLM’s robustness-versus-generation dissociation, transferred from English dialects to multilingual alignment.”
+
+**Reopen only if**  
+A broader causal quantity is identified that is neither robustness-vs-generation nor capability-vs-output-policy as already operationalized by controlled post-training comparisons, and that changes a major multilingual conclusion rather than another axis-specific adaptation result.

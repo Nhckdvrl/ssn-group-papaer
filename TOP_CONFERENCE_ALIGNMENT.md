@@ -36,6 +36,7 @@ For every serious candidate, explicitly compare:
 8. **Breadth without padding**
 9. **Consequence for NLP**
 10. **Clarity / reviewer compressibility**
+11. **Research-space robustness** — does the topic open a moderate/large scientific space rather than depend on one fragile effect?
 
 A candidate is not GOOD merely because all five internal gates are technically YES. It must also pass a **top-conference alignment audit**.
 
@@ -237,3 +238,28 @@ A strong candidate should support a one-paragraph pitch of this form:
 That is much closer to the desired Main/Outstanding identity than:
 
 > “We found an untouched dataset cell where LLMs might fail.”
+
+
+---
+
+## 7. Research-space robustness — hard rule (2026-09-08)
+
+Prefer a **research program with a crisp center** over an untouched one-dimensional effect. A serious candidate should normally expose at least 2–4 natural questions before seeing target-model results: a core comparison/causal question, a mechanism or attribution question, a principled boundary/heterogeneity question, and a modeling/evaluation consequence.
+
+KILL / DO NOT PROMOTE when the topic effectively has this shape:
+
+> If intervention X causes effect Y, we have a paper; if not, the entire topic disappears.
+
+This is stronger than ordinary null-result robustness. A preservation/equivalence result only counts when it answers an existing consequential question; it must not be used to rescue a tiny search cell.
+
+Before promotion, answer:
+1. What is the broader scientific object or decision problem?
+2. What are at least three natural questions inside this space?
+3. If the first planned effect is absent, which questions remain scientifically live?
+4. Can a mechanism, boundary, or decision-map paper still emerge without inventing post-hoc hypotheses?
+5. Is the scope comparable to strong ACL/EMNLP/NAACL Main work without becoming vague?
+
+Conference-alignment examples:
+- EMNLP 2025 Outstanding, *Generative or Discriminative?*, maps accuracy, sample efficiency, calibration, robustness, ordinality, latency, and data constraints rather than betting on one metric.
+- ACL 2025 Outstanding, *Rethinking the Role of Prompting Strategies in LLM Test-Time Scaling*, connects a broad empirical regularity to theory, prediction, and improved methods.
+- ACL 2026 Outstanding, *CAR-bench*, treats real-world agent uncertainty as a multi-faceted reliability problem spanning consistency, limit-awareness, disambiguation, tool use, and policy adherence.
