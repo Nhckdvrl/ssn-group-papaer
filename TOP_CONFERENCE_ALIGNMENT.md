@@ -1,5 +1,11 @@
 # Top-Conference Alignment Standard
 
+## Authority / flexibility notice
+
+This is a **supporting calibration document**. The authoritative selection workflow is `RESEARCH_TOPIC_SELECTION.md`.
+
+Top-conference alignment is mandatory, but **the relevant papers and comparison dimensions depend on paper identity**. Do not mechanically require every candidate to match every dimension below or a fixed number/type of references. Use the strongest structurally relevant work to judge whether the RQ, claims, evidence, and narrative reach ACL / EMNLP / NAACL Main level.
+
 **Target venue family:** ACL / EMNLP / NAACL Main  
 **Aspirational bar:** Outstanding Paper / Best Paper / Best Theme Paper-level scientific identity  
 **Last updated:** 2026-09-07
