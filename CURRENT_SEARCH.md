@@ -8,7 +8,9 @@
 **Authoritative killed ledger on disk:** through **K180**  
 **Next ledger kill ID:** **K181**
 
-> **Active pilot-authorized survivor:** L03. The serious six-topic execution pool is **L03, L06, L07, L08, L09, L10**. L02 is **NO-GO / K175** and L04 is **NO-GO / K180**.\n>\n> **Next phase:** execute the six minimum decisive pilots/audits. Do not resume broad topic search unless execution kills enough candidates that the user explicitly reopens search.
+> **Active pilot-authorized survivor:** L03. The serious six-topic execution pool is **L03, L06, L07, L08, L09, L10**. L02 is **NO-GO / K175** and L04 is **NO-GO / K180**.
+>
+> **Next phase:** execute the six minimum decisive pilots/audits. Do not resume broad topic search unless execution kills enough candidates that the user explicitly reopens search.
 
 ---
 
