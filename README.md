@@ -17,14 +17,18 @@ This repository separates two processes that must not be mixed:
 - [CURRENT_SEARCH.md](CURRENT_SEARCH.md) — current project/search state only.
 - [failed/KILLED_LEDGER.md](failed/KILLED_LEDGER.md) — cumulative anti-resurrection kill ledger.
 - [good/README.md](good/README.md) — pilot-authorized candidate registry.
+- [candidates/README.md](candidates/README.md) — current six-topic serious comparison portfolio.
 
 ## Current state — 2026-09-08
 
 - **Approved paper mainline:** NONE
-- **Active pilot-authorized candidates:** L03, L04
+- **Active pilot-authorized candidates:** L03
+- **Current serious six-topic portfolio:** L03, L06, L07, L08, L09, L10
 - **L02:** NO-GO / K175
+- **L04:** NO-GO / K180
 - **L05 Adaptive Information Seeking:** KILL / K176
-- **Next kill ID:** K177
+- **Killed ledger:** through K180
+- **Next kill ID:** K181
 
 ## Core rule
 
@@ -32,7 +36,8 @@ This repository separates two processes that must not be mixed:
 
 ## Repository semantics
 
-- `CURRENT_SEARCH.md`: serious leads still under selection/audit.
+- `CURRENT_SEARCH.md`: current search/progress record; older duplicated sections may be historical.
+- `candidates/`: detailed serious-candidate packages under comparison; does not imply pilot authorization.
 - `good/`: only pilot-authorized candidates; never means mainline-approved.
 - `failed/KILLED_LEDGER.md`: all serious killed parents, one cumulative ledger.
 - concrete project directories: execution artifacts, code, data, experiments, claims.
