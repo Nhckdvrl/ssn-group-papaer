@@ -143,6 +143,23 @@ A NO blocks promotion even if ordinary null-result robustness is technically pos
 
 ---
 
+## 7.0 DIRECT-GOLD STRESS TEST — mandatory
+
+For the paper's **load-bearing estimand**, write one explicit mapping:
+
+> external observation / released annotation / real system state → scientific quantity estimated.
+
+- Does the gold directly determine the quantity, or only proxy a neighboring concept?
+- Would two reasonable annotators/resources agree on the mapping without using the target model?
+- Is any crucial step equivalent to “label X probably means Y”?
+- If the proxy interpretation is wrong, does the whole paper collapse?
+
+**Gate:** YES / NO
+
+A NO blocks promotion. L02 (K175) is the canonical warning: DNI/INI interpretation labels did not directly provide gold for whether a particular concrete filler was discourse-supported.
+
+---
+
 ## 7. GOOD DATA + GOLD
 
 - **Exact dataset/resource/materials:**
@@ -278,6 +295,7 @@ Consequence for at least one of:
 |---|---|---|
 | REAL OBJECT | YES / NO | |
 | SCIENTIFIC TENSION | YES / NO | |
+| DIRECT-GOLD | YES / NO | |
 | GOOD DATA | YES / NO | |
 | PAPER-LEVEL NOVELTY | YES / NO | |
 | OUTCOME-ROBUST DECISIVENESS | YES / NO | |
