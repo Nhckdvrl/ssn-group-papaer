@@ -204,3 +204,16 @@ Future promotion must therefore require:
 1. **direct correspondence between gold and the load-bearing estimand**;
 2. **a research space that survives absence of the first expected phenomenon**;
 3. **no pressure to retain a topic merely because search or pilot work has already been invested**.
+
+
+---
+
+## Latest search closure — L05 / K176
+
+L05 (*Adaptive Information Seeking / When Is Adaptivity Actually Necessary?*) was **not promoted to good/** and is now formally **K176**.
+
+The active pilot-authorized set therefore remains exactly:
+
+# L03, L04
+
+This closure is important because L05 had a healthy outcome-robust research-space shape, but still failed **paper-level novelty**: its decisive causal and sequential-vs-parallel claims compress to *Bridge Evidence* plus *Hybrid Deep Searcher*. A well-shaped research space is necessary, not sufficient.
