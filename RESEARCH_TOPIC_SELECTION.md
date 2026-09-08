@@ -57,7 +57,7 @@ Generate broadly first. Do not run compute and do not fill a full Candidate Card
 
 # Stage 2 — Six Hard Questions
 
-A lead survives only if all six are defensible.
+A lead survives only if all six are defensible. **The gates are strict, but the way a topic satisfies them is flexible.** Different paper identities need different kinds of evidence, data, and top-paper alignment; do not reject a strong question merely because it does not fit one fixed experimental template.
 
 ## Q1. Is the RQ itself natural and interesting?
 
@@ -85,29 +85,34 @@ A good axis is not merely:
 
 The answer must change how we understand, model, measure, or design the NLP problem.
 
-## Q3. Do we have direct, simple, high-quality data and gold?
+## Q3. Can the data / evidence directly identify the scientific question?
 
 Data is a first-class gate, not an implementation detail.
 
-Prefer:
+**Existing datasets are preferred when they fit, but they are not mandatory.** A strong question may require controlled construction or a new dataset. What is mandatory is that the evidence directly supports the load-bearing scientific quantity.
+
+Prefer, when suitable:
 1. existing natural corpora/resources;
 2. real logs/records/system states;
 3. published human materials/annotations;
-4. small controlled materials only when the gold is independently defensible.
+4. minimal controlled construction when existing data cannot identify the question.
 
-For the load-bearing estimand, explicitly write:
+For the load-bearing estimand, explicitly write the identification chain, for example:
 
-> **external observation / released annotation / real state → exact scientific quantity**
+> **external observation / released annotation / controlled manipulation / real state → scientific quantity**
 
-Kill if the mapping is only a proxy such as “label X probably means Y.”
+If new data or stimuli must be constructed, require:
+- construction is **necessary**, not merely convenient;
+- the object and language use remain natural;
+- manipulation is minimal and isolates the intended factor;
+- gold/labels are independently defensible where gold is required;
+- no elaborate synthetic world or hypothesis-shaped ontology is needed;
+- quality, artifacts, leakage and ecological validity are audited;
+- the construction style is compared with strong papers of the same research type.
 
-Strong negative prior:
-- large bespoke synthetic datasets;
-- LLM-generated main data or gold;
-- author-created ontologies/labels carrying the main conclusion;
-- massive data construction before the RQ is secured.
+Kill when the decisive mapping is only “label X probably means Y,” when construction itself manufactures the phenomenon, or when data engineering becomes more complex than the scientific question.
 
-The dataset should be as simple as possible while still exactly representing the scientific question.
+The right data are the **simplest high-quality evidence that can faithfully answer the RQ**, whether existing or carefully constructed.
 
 ## Q4. Is there a genuinely new paper-level story?
 
@@ -153,20 +158,25 @@ If the paper disappears when the first exciting effect is absent, reject it.
 
 ## Q6. Does it look like a Main-level paper before we run it?
 
-Compare the candidate with at least **3 concrete high-level ACL/EMNLP/NAACL papers**, preferably including:
-- one Best/Outstanding/Theme paper;
-- one paper with a similar paper identity;
-- one close scientific/technical neighbor.
+Continuously align with the **most relevant strong ACL / EMNLP / NAACL Main papers** and, when useful, Best/Outstanding/Theme papers or closely related ICLR / ICML / NeurIPS work.
 
-Align explicitly on:
-- RQ breadth;
-- naturalness/importance;
-- claim breadth and novelty;
-- data/gold;
-- identification/decisiveness;
+**Do not use one fixed alignment checklist for every topic.** Choose reference papers and comparison dimensions according to the candidate's paper identity.
+
+Examples of dimensions that may matter:
+- RQ breadth and naturalness;
+- claim novelty and non-triviality;
+- data quality / construction standard;
+- causal or statistical identification;
+- evaluation validity;
+- mechanistic depth;
+- experimental breadth;
 - C1 → C2 → C3;
-- consequence for NLP;
-- whether the story is memorable and independently interesting.
+- practical/theoretical consequence;
+- clarity and memorability of the narrative.
+
+A measurement paper, mechanistic paper, document-NLP paper, behavioral paper, and methodology paper should not be forced into the same evidence template.
+
+Use a **small, sufficient set of the strongest structurally relevant references**; there is no magical required paper count. The question is whether the proposed paper is genuinely comparable in scientific ambition and evidence quality.
 
 Current local survivors are **not** the quality benchmark.
 
@@ -253,7 +263,7 @@ Before compute, answer only:
 8. **Outcome map: why A/B/boundary/null remain informative**
 9. **C1 → C2 → C3**
 10. **Minimum decisive pilot + exact kill conditions**
-11. **Top-conference alignment against ≥3 concrete papers**
+11. **Top-conference alignment using the strongest structurally relevant papers**
 
 If this compact card is hard to state clearly, the topic is probably not ready.
 
@@ -265,7 +275,7 @@ If this compact card is hard to state clearly, the topic is probably not ready.
 
 > The example should make the interest obvious.
 
-> Natural data and direct gold before compute.
+> High-quality, directly identifying data/evidence before compute; existing data preferred, careful construction allowed when necessary.
 
 > Do not bet the paper on one phenomenon.
 
@@ -280,3 +290,27 @@ If this compact card is hard to state clearly, the topic is probably not ready.
 > Search locally, judge globally.
 
 > Easy to understand, hard to answer.
+
+
+---
+
+# Flexibility Rule
+
+The workflow is a **scientific filter, not a bureaucracy**.
+
+Strict:
+- the RQ must matter;
+- the core claim cannot be trivial;
+- the data/evidence must genuinely identify the question;
+- the paper-level narrative/idea/core claim must survive novelty attack;
+- the project must have a robust research space;
+- the work must align with Main-level standards.
+
+Flexible:
+- whether data are existing or newly constructed;
+- whether the decisive evidence is behavioral, statistical, causal, mechanistic, human, corpus-based, or system-based;
+- exact number/type of models, datasets, controls, and reference papers;
+- whether C2 is mechanism, boundary, theory, measurement validation, or another form appropriate to the paper;
+- which top-conference dimensions receive the strongest emphasis.
+
+When unsure, inspect the best papers with the **same paper identity** and calibrate to how that community establishes a convincing claim.
