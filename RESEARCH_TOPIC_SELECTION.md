@@ -137,7 +137,9 @@ A normal search round should therefore draw rough leads from several of:
 - classic NLP decisions;
 - document/scientific-text NLP;
 - measurement/evaluation;
-- other mature natural NLP objects.
+- other mature natural NLP objects;
+- **older research questions newly reopened by LLM/foundation-model capabilities**;
+- **recent top-conference areas that are scientifically strong but not yet heavily crowded**.
 
 Do not make all leads linguistic.
 Do not make all leads document NLP.
@@ -145,6 +147,46 @@ Do not make all leads mechanistic.
 Do not make all leads variants of one generator.
 
 The goal is not topical diversity for its own sake. The goal is to avoid search fixation and keep finding **natural, advisor-compatible Main-level questions**.
+
+## Do not over-constrain the topic space
+
+The topic prior is a **search preference, not a whitelist**.
+
+Two especially important expansion routes must remain active:
+
+### A. Old research question, genuinely new LLM-era leverage
+
+Actively revisit durable pre-LLM NLP questions when modern models create something scientifically new, for example:
+- a quantity that older systems could not directly represent or measure;
+- a controlled intervention that was previously impossible;
+- a new comparison because foundation models collapse an old pipeline boundary;
+- a new inference/supervision regime that changes the original assumptions;
+- a new ability to test a classical theory at scale or under richer natural context;
+- a changed modeling decision where the old answer may no longer hold.
+
+The parent problem being old is **not** a novelty failure.
+
+Kill only when:
+> the modernized version of the same scientific question has already been done, or the LLM contribution is merely “run the old task on a new model.”
+
+### B. Recent top-conference cold / under-compressed areas
+
+When scanning recent ACL / EMNLP / NAACL and relevant top venues, explicitly look for areas that:
+- contain strong natural questions;
+- have several good papers but are not yet saturated;
+- are not currently dominated by benchmark races or product-fashion cycles;
+- expose unresolved assumptions, unexplained findings, measurement gaps, or classic decisions;
+- have enough real data/evidence for decisive work.
+
+Do **not** only search the current preferred mother domains.
+
+A non-hot area can be especially attractive when:
+> the object is durable, the literature is mature enough to provide grounding, but the exact modern scientific question is still open.
+
+This is different from chasing obscurity for novelty. “Cold” is useful only when the question is intrinsically important and Main-level.
+
+Therefore:
+> **Search priors guide attention; they never override a genuinely strong, natural, non-crowded Main-level question.**
 
 ---
 
