@@ -1,6 +1,6 @@
-# Current Research-Question Search — 2026-09-08 Active Search
+# Current Research-Question Search — 2026-09-08 Portfolio Complete / Execution Handoff
 
-> **Workflow authority notice — 2026-09-08:** This file records **project/search progress only**. Historical process notes below are non-authoritative when duplicated or inconsistent. Use `RESEARCH_TOPIC_SELECTION.md` for selection, `RESEARCH_EXECUTION.md` for project execution, and `CANDIDATE_CARD.md` for pre-pilot audit.
+> **Workflow authority notice — 2026-09-08:** This file records **project/search progress only**. Historical process notes below are non-authoritative when duplicated or inconsistent. The six-topic search target is now fulfilled. For local execution, start from **`LOCAL_AGENT_START.md`**, then follow `RESEARCH_EXECUTION.md` and the candidate's canonical package.
 
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
@@ -8,7 +8,7 @@
 **Authoritative killed ledger on disk:** through **K180**  
 **Next ledger kill ID:** **K181**
 
-> **Active survivor:** L03. L02 is **NO-GO / K175** and L04 is **NO-GO / K180**; both packages are retained only as historical evidence.
+> **Active pilot-authorized survivor:** L03. The serious six-topic execution pool is **L03, L06, L07, L08, L09, L10**. L02 is **NO-GO / K175** and L04 is **NO-GO / K180**.\n>\n> **Next phase:** execute the six minimum decisive pilots/audits. Do not resume broad topic search unless execution kills enough candidates that the user explicitly reopens search.
 
 ---
 
