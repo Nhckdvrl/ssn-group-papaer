@@ -3,8 +3,8 @@
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Active pilot-authorized candidates:** **2 — L03, L04**  
-**Authoritative killed ledger on disk:** through **K175**  
-**Next ledger kill ID:** **K176**
+**Authoritative killed ledger on disk:** through **K176**  
+**Next ledger kill ID:** **K177**
 
 > **Active survivors:** L03, L04. L02 is **NO-GO / K175** after completed pilot and gold audit; its package is retained only as historical evidence.
 > L04 was restored only after its previously conditional GOOD DATA gate was concretely repaired with exact Eesthetic/Paralex gold.
@@ -18,8 +18,8 @@ The stale K161/K162 header has been repaired against the authoritative ledger.
 
 - Ledger detailed records confirmed present through K169 before this round.
 - K170–K174 were fresh-checked and formally registered.
-- Current authoritative state: **through K175**.
-- Next unused kill ID: **K176**.
+- Current authoritative state: **through K176**.
+- Next unused kill ID: **K177**.
 - No paper mainline is approved.
 - Active pilot-authorized survivors: **L03, L04**. L02 is NO-GO and no longer counts.
 
@@ -434,3 +434,29 @@ Every serious lead must now include explicit **top-conference alignment evidence
 The authoritative alignment rubric is TOP_CONFERENCE_ALIGNMENT.md.
 
 This correction applies retroactively to L02/L03/L04 as well as all new leads.
+
+
+---
+
+## L05 closure — K176
+
+**Status:** KILL / NOT PILOT-AUTHORIZED.
+
+Former upgraded RQ:
+
+> **When is evidence-conditioned adaptivity actually necessary in information seeking, rather than merely beneficial because it buys more search, coverage, or reasoning?**
+
+The upgraded space was audited around matched-budget adaptive sequential search vs preplanned/parallel portfolios, causal evidence use, task-structure boundaries, and a possible latency/quality decision map.
+
+**Exact kill reason:** after the broader upgrade, the load-bearing paper identity is still compressed by very close 2025–2026 work. *Bridge Evidence* already performs counterfactual deletion of retrieved evidence and reruns trajectories to measure downstream search/final-answer effects, directly occupying the claim that consumed evidence causally changes later search. *Hybrid Deep Searcher* already formalizes task-structure-conditioned sequential vs parallel search and dynamically chooses between them. BRIGHT-Pro and neighboring deep-research work further occupy targeted follow-up retrieval and adaptive gap filling.
+
+Reviewer compression:
+
+> “Bridge Evidence's causal trajectory analysis plus Hybrid Deep Searcher's sequential/parallel task-structure decision, extended into a stricter matched-budget benchmark.”
+
+That is not an independent Main-level paper identity. A cleaner matched-budget evaluation would be useful, but it does not create sufficient paper-level novelty by itself.
+
+**Research-space note:** the lead did pass the *shape* test better after upgrading from “does adaptivity help?” to a broader necessity/mechanism/boundary/decision-map question. It is killed for ownership of the decisive scientific space, not because the broader research-space formulation was bad.
+
+**Reopen only if:** a qualitatively different natural information-seeking object and independent gold expose a decision quantity not reducible to evidence→trajectory causality, sequential-vs-parallel dependency structure, query-gap filling, or generic adaptive-search efficiency.
+
