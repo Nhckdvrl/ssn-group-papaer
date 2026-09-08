@@ -3056,3 +3056,37 @@ Future candidates must have both:
 A new independently grounded dataset/annotation directly measures candidate-filler support, specificity, and event/discourse scope, and the resulting comparison yields a broader method/system decision not reducible to DNI/INI classification, abstention, generic hallucination, or candidate-entailment verification.
 
 Historical evidence is preserved under `good/L02_REFERENTIAL_COMMITMENT/`, but the package is no longer active.
+
+
+---
+
+## K176 — Adaptive Information Seeking / When Is Adaptivity Actually Necessary?
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure:** `REVIEWER_COMPRESSION_TO_EXISTING_SPACE`
+
+**Former upgraded RQ**  
+> Under matched information/search budgets, when is evidence-conditioned sequential adaptivity genuinely necessary, rather than replaceable by a preplanned or parallel query portfolio?
+
+**Why it looked strong**  
+The upgraded formulation was outcome-robust and research-space-sized. It naturally supported necessity, mechanism, task-structure boundary, parallel/sequential/hybrid choice, and latency-cost questions. A null adaptive advantage would itself have implied that sequential deep-search orchestration is often unnecessary.
+
+**Exact kill reason**  
+The remaining load-bearing scientific identity is already too tightly bracketed by nearby work:
+- *Bridge Evidence* already intervenes on evidence consumed by a search agent, reruns the trajectory after counterfactual evidence deletion, and measures effects on subsequent retrieval, turn count, and final answers. Thus “read evidence causally changes later search” is not available as a new parent.
+- *Hybrid Deep Searcher* already distinguishes independent/parallelizable from sequentially dependent subproblems and dynamically selects parallel versus sequential search. Thus “task structure determines whether sequential search is needed” is also not available as a new parent.
+- BRIGHT-Pro and adjacent 2025–2026 deep-search work further occupy targeted follow-up queries / retrieval-gap filling.
+
+A stricter matched-budget factorial evaluation could sharpen the evidence, but the paper would still read as a synthesis/extension of those already-established axes rather than a newly owned scientific decision problem.
+
+**Reviewer compression**  
+> “Bridge Evidence + Hybrid Deep Searcher, with a cleaner matched-budget adaptivity comparison.”
+
+**Why this is a kill despite good research-space robustness**  
+The candidate is not killed because one expected effect might disappear. In fact, its A/B/heterogeneous outcomes were healthy. It is killed because the broader space's decisive claims are no longer sufficiently unowned at paper level.
+
+**Reopen only if**  
+A different natural substrate yields an independently grounded necessity variable that is not equivalent to evidence→trajectory causality, sequential dependency, targeted follow-up search, or generic adaptive-vs-static efficiency.
+
