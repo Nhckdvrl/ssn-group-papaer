@@ -2720,3 +2720,167 @@ Showing that a 2026 LLM benefits more or less from the same multi-hypothesis int
 
 **Reopen only if**  
 A different observation-state relation is found whose downstream action cannot be represented as preserving OCR alternatives/confidence or bypassing OCR with vision, and whose paper-level narrative is not already predicted by this document-IE literature.
+
+
+---
+
+## K162 — Explicit Dialogue State as a Necessary Intermediate Representation
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** In task-oriented dialogue, is an explicit dialogue-state representation still load-bearing in the LLM era, or can an autonomous generative agent safely reason directly from interaction history?
+
+**Exact kill reason**  
+ACL 2024 Main, *Rethinking Task-Oriented Dialogue Systems: From Complex Modularity to Zero-Shot Autonomous Agent*, already modernizes the same load-bearing modeling choice: complex modular/stateful TOD pipelines versus direct zero-shot autonomous LLM agents. A new state-tracking ablation would be a component-level extension inside an occupied paper identity.
+
+**Reviewer compression**  
+> “ACL 2024’s modular-TOD-versus-autonomous-agent story, with explicit dialogue state isolated as the ablation.”
+
+**Reopen only if**  
+A distinct externally grounded dialogue state has an independent scientific consequence not reducible to standard DST/modularity/autonomous-agent comparisons.
+
+---
+
+## K163 — ASR Transcript as a Necessary Intermediate Representation
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** For spoken-language understanding, is committing speech to a transcript before language reasoning still necessary, or can end-to-end speech-language models safely remove the transcription bottleneck?
+
+**Exact kill reason**  
+NAACL 2024 AudioChatLlama directly develops end-to-end spoken interaction and compares it with the conventional ASR→LLM cascade. The scientific parent—whether transcript mediation remains necessary in modern speech-language systems—is already occupied.
+
+**Reviewer compression**  
+> “AudioChatLlama-style end-to-end speech versus ASR+LLM cascade, with a stronger bottleneck framing.”
+
+**Reopen only if**  
+A different speech representation state has an independent downstream quantity not reducible to transcript bypass, transcript errors, or prosody/non-lexical information.
+
+---
+
+## K164 — MT / QE Score ≠ Human Post-Editing Effort
+
+**Date:** 2026-09-08  
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary failure:** `CROWDED_PARENT`
+
+**RQ:** Do standard MT quality/QE quantities preserve conclusions about actual human post-editing cost, or are time, keystrokes, and cognitive effort a distinct target?
+
+**Why it looked strong**  
+WMT QE data provide unusually clean natural paired labels, including machine translation, human post-edit, HTER, post-editing time, and keystrokes.
+
+**Exact kill reason**  
+Translation-process literature has long tested the relationship between HTER/error metrics and post-editing effort, and TACL 2025 QE4PE explicitly evaluates whether QE predictions are useful for professional post-editing using behavioral logs. EMNLP 2024 *Beyond Correlation* further reframes MT metric meta-evaluation around downstream use cases rather than human-score correlation alone.
+
+**Reviewer compression**  
+> “Human-effort-aware QE / MT metric evaluation using another paired process dataset.”
+
+**Reopen only if**  
+A different post-editing quantity yields a scientific conclusion not reducible to effort prediction, QE utility, metric correlation, or downstream human productivity.
+
+---
+
+## K165 — Image Caption ≠ Useful Alt Text
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Is useful alt text an intrinsic description of an image, or a context- and user-goal-conditioned description whose correct content depends on the surrounding webpage?
+
+**Exact kill reason**  
+The modern accessibility-description parent is already directly occupied. EMNLP 2022 establishes that context matters for image descriptions and validates with blind/low-vision users; 2023 work explicitly generates alt text conditioned on image plus surrounding social-media text; EMNLP 2024 further distinguishes captions from substitute descriptions and evaluates with blind/low-vision judgments.
+
+**Reviewer compression**  
+> “Context-aware accessibility image description with newer VLMs / webpages.”
+
+**Reopen only if**  
+A distinct accessibility action or measurement quantity is found that is not reducible to contextual alt-text generation, caption-vs-description, or BLV preference/utility.
+
+---
+
+## K166 — Translated Benchmark Performance ≠ Native-Language Competence
+
+**Date:** 2026-09-08  
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Do conclusions from translated multilingual benchmarks preserve conclusions about models’ competence on naturally authored native-language tasks?
+
+**Exact kill reason**  
+EMNLP 2024 directly controls native versus translated instruction/evaluation data, and ACL 2026 further quantifies how translation errors alter multilingual LLM evaluation. The modern parent—translation artifacts as a confound in multilingual competence measurement—is already active and direct.
+
+**Reviewer compression**  
+> “Native-vs-translated multilingual evaluation with another benchmark/model family.”
+
+**Reopen only if**  
+A different multilingual measurement assumption has independent natural gold and is not reducible to translation quality, translationese, native-vs-translated data, or language contamination.
+
+---
+
+## K167 — Text-to-SQL Execution Accuracy ≠ Semantic Correctness
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Does execution accuracy preserve conclusions about semantic correctness in Text-to-SQL when distinct or accidentally equivalent SQL queries produce the same observed result?
+
+**Exact kill reason**  
+NAACL 2025 FLEX explicitly targets false positives/negatives of execution accuracy and changes Text-to-SQL model rankings under corrected evaluation; COLING 2025 also develops functional-correctness-oriented evaluation. The measurement rewrite and its model-comparison consequence are already owned.
+
+**Reviewer compression**  
+> “FLEX-style semantic/functional Text-to-SQL evaluation with another equivalence criterion.”
+
+**Reopen only if**  
+A SQL correctness quantity beyond execution/semantic/functional equivalence changes a mature conclusion and has independent gold.
+
+---
+
+## K168 — Multilingual Competence Gap ≠ Tokenizer Bottleneck
+
+**Date:** 2026-09-08  
+**Status:** KILL CURRENT FORM  
+**Primary failure:** `CROWDED_PARENT`  
+**Secondary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** How much of a multilingual model’s apparent language-performance gap is causally attributable to tokenizer/vocabulary allocation rather than model capacity or language data?
+
+**Why it looked strong**  
+The question admits two meaningful accounts—tokenization as mostly an efficiency interface versus tokenization as a load-bearing causal bottleneck—and modern vocabulary/embedding swapping suggests a possible intervention on nearly the same model.
+
+**Exact kill reason**  
+Recent work already performs controlled vocabulary-overlap and tokenizer interventions. Findings EMNLP 2025 *False Friends Are Not Foes* isolates vocabulary overlap in multilingual transfer; EACL 2026 tokenizer-aware cross-lingual adaptation explicitly swaps/customizes tokenizers and relearns embeddings across many languages; ACL 2026 work further studies multilingual tokenizer plasticity and tokenization-driven disparities. The causal-tokenizer parent is no longer sufficiently open.
+
+**Reviewer compression**  
+> “Recent controlled multilingual tokenizer intervention work, but framed as variance attribution.”
+
+**Reopen only if**  
+A genuinely new identification design separates tokenizer effects from data/capacity in a way not already implied by vocabulary-overlap or tokenizer-swapping studies and changes a major multilingual conclusion.
+
+---
+
+## K169 — Offline / LLM Headline Preference ≠ Randomized User Response
+
+**Date:** 2026-09-08  
+**Status:** KILL  
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**RQ:** Can offline LLM judgments of headline quality/persuasiveness serve as a valid surrogate for randomized real-user click-through effects?
+
+**Why it looked strong**  
+The Upworthy archive supplies natural language variants with genuine randomized A/B behavioral outcomes, giving unusually strong independent action gold.
+
+**Exact kill reason**  
+LOLA (2024) already evaluates LLM headline choice on 17,681 Upworthy experiments and finds pure LLM approaches weak before online learning. Spotify Engineering (2026), *When Can LLMs Replace Humans in A/B Tests?*, goes even closer to the scientific parent, using Upworthy with surrogate-endpoint theory and showing substantial attenuation between LLM predictions and human treatment effects.
+
+**Reviewer compression**  
+> “Upworthy LLM surrogate-vs-human-A/B evaluation, already done by LOLA/Spotify.”
+
+**Reopen only if**  
+A different natural randomized language-intervention corpus identifies a qualitatively different surrogate-validity question not reducible to predicting human treatment effects.
