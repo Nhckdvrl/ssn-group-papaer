@@ -1,12 +1,14 @@
 # L04 — Morphological Inflection Has Realization Cardinality
 
-**Status:** PILOT-AUTHORIZED  
-**Paper mainline:** NOT APPROVED  
+**Status:** NO-GO / K180 — NOT ACTIVE  
+**Paper mainline:** RETIRED  
 **Target:** NAACL Main  
 **Canonical research package:** this directory  
 **Last audited:** 2026-09-07  
 **Novelty risk:** HIGHER than L02/L03
 
+> **Closure — K180:** Retired after Main-level re-audit for paper-scale/outcome fragility, not because the classical parent is old. The exact modern question was not found fully occupied, but the surviving story depended too heavily on a consequential ranking/generalization change and lacked strong cross-resource replication.
+>
 > **Plain-language thesis:** For a lemma and a morphosyntactic cell, the linguistically licensed answer is not always exactly one form. There may be no form, one form, or several valid forms.
 
 ---
