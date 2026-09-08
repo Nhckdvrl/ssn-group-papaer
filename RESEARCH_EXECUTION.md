@@ -50,20 +50,19 @@ At every major iteration, state:
 
 A planned document may be wrong. The mainline may change when evidence changes.
 
-But never replace a serious mainline with a trivial claim merely because it is easy to prove.
+Individual subclaims need not each be unprecedented, but they must be scientifically useful and non-trivial. The **overall narrative, idea, and load-bearing claim architecture must remain distinctly ours**.
+
+Never replace a serious mainline with a trivial claim merely because it is easy to prove.
 
 ---
 
 # 3. Continuous Top-Conference Alignment
 
-Before every **new load-bearing claim** or **new major experiment**, inspect relevant ACL / EMNLP / NAACL Main work; use Best/Outstanding/Theme papers where appropriate.
+Before every **new load-bearing claim** or **new major experiment**, inspect the strongest relevant ACL / EMNLP / NAACL Main work; use Best/Outstanding/Theme papers and other top venues when appropriate.
 
-At minimum compare against:
-- a close scientific neighbor;
-- a paper with similar paper identity;
-- a high-level reference for experimental/claim scale.
+Alignment is **dynamic, not a fixed checklist**. Select comparison papers and dimensions according to the project type. A mechanistic project may need stronger causal controls; a measurement paper may need stronger construct validation; a document-NLP system may need stronger real-data coverage and error analysis.
 
-Check:
+Useful checks include:
 
 ### Problem
 - Is our RQ too narrow or too broad?
@@ -105,14 +104,17 @@ Record:
 - reproduction command.
 
 Rules:
-- prefer natural existing data;
-- keep construction minimal;
-- do not manufacture leverage through synthetic examples;
-- do not let an LLM generate the load-bearing gold;
-- distinguish missing data from negative labels;
-- verify that gold measures the exact claimed quantity.
+- prefer natural existing data when they genuinely fit the RQ;
+- **new data / controlled stimuli may be constructed when scientifically necessary**;
+- keep construction minimal, interpretable, and natural;
+- do not manufacture leverage through elaborate synthetic worlds or hypothesis-shaped artifacts;
+- independently validate load-bearing labels/gold when the claim requires gold;
+- LLM assistance may be used for non-load-bearing preparation only with auditing; it must not become circular evidence for the main claim;
+- distinguish missing/ambiguous states from negative labels;
+- verify that the data or manipulation directly identify the claimed quantity;
+- compare data construction and validation practice with strong papers of the same paper identity.
 
-If the data do not directly support the scientific claim, stop and repair/rethink before scaling experiments.
+If the data/evidence do not directly support the scientific claim, stop and repair/rethink before scaling experiments.
 
 ---
 
