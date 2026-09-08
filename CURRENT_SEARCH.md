@@ -4,12 +4,11 @@
 
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
-**Active pilot-authorized candidates:** **2 — L03, L04**  
-**Authoritative killed ledger on disk:** through **K179**  
-**Next ledger kill ID:** **K180**
+**Active pilot-authorized candidates:** **1 — L03**  
+**Authoritative killed ledger on disk:** through **K180**  
+**Next ledger kill ID:** **K181**
 
-> **Active survivors:** L03, L04. L02 is **NO-GO / K175** after completed pilot and gold audit; its package is retained only as historical evidence.
-> L04 was restored only after its previously conditional GOOD DATA gate was concretely repaired with exact Eesthetic/Paralex gold.
+> **Active survivor:** L03. L02 is **NO-GO / K175** and L04 is **NO-GO / K180**; both packages are retained only as historical evidence.
 
 ---
 
@@ -20,10 +19,10 @@ The stale K161/K162 header has been repaired against the authoritative ledger.
 
 - Ledger detailed records confirmed present through K169 before this round.
 - K170–K174 were fresh-checked and formally registered.
-- Current authoritative state: **through K179**.
-- Next unused kill ID: **K180**.
+- Current authoritative state: **through K180**.
+- Next unused kill ID: **K181**.
 - No paper mainline is approved.
-- Active pilot-authorized survivors: **L03, L04**. L02 is NO-GO and no longer counts.
+- Active pilot-authorized survivor: **L03**. L02 and L04 are NO-GO and no longer count.
 
 ### K170–K174 closure summary
 
@@ -502,4 +501,23 @@ Two fluent Wikipedia passages can look equally “high quality” at the moment 
 3. **Compute/identification:** a credible test likely requires matched revision cohorts and controlled continued pretraining, not just correlation between revert labels and an LLM quality score.
 
 **Current verdict:** KEEP AS ROUGH LEAD FOR DEEP ASSASSINATION. Do not create a `good/` package and do not allocate pilot compute yet.
+
+
+
+---
+
+## L04 closure — K180 / 2026-09-08
+
+**L04 Morphological Inflection Has Realization Cardinality is retired from the active set.**
+
+This is **not an old-parent kill**. The project explicitly allows and prefers durable classical questions when LLM-era leverage creates a genuinely new scientific operation. The fresh audit did not find the exact canonical-vs-zero/one/many preservation question fully owned.
+
+The route is killed because its surviving paper identity remains too outcome-fragile for the target bar:
+- direct gold is currently centered on one Estonian Eesthetic/Paralex resource;
+- prior work already makes the canonical single-form simplification explicit;
+- a Main-level paper would therefore depend on restoring realization cardinality materially changing generalization/model conclusions;
+- if canonical conclusions are preserved, the result is presently too narrow;
+- if the result is merely missed legitimate variants / generated defective forms, the story collapses to a known representation limitation.
+
+**State after K180:** active pilot-authorized = **L03 only**. Next kill ID = **K181**.
 
