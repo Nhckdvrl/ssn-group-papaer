@@ -20,6 +20,7 @@ def main() -> None:
     args = parser.parse_args()
     config_path = args.config.resolve()
     project = config_path.parent.parent
+    config = json.loads(config_path.read_text(encoding="utf-8"))
     queue_path = project / "data/processed/e000/manual_review_queue.csv"
     labels_path = project / "data/annotations/e000/manual_labels.json"
     rows = list(csv.DictReader(queue_path.open(encoding="utf-8")))
@@ -63,8 +64,12 @@ def main() -> None:
     for row in rows:
         strata[row["parser_category"]].append(label_by_pmid[row["pmid"]])
     population_sizes = {row["parser_category"]: int(row["stratum_size"]) for row in rows}
-    population_sizes["notice_fulltext_unavailable"] = 145
-    total = 500
+    total = int(config["sample_size"])
+    if sum(population_sizes.values()) != total:
+        raise ValueError(
+            f"Review strata cover {sum(population_sizes.values())} records, expected {total}; "
+            "do not estimate from an incomplete or stale queue"
+        )
 
     def estimate_for(positive_labels: set[str]) -> dict:
         estimate = 0.0
@@ -72,12 +77,8 @@ def main() -> None:
         details = {}
         for stratum, population in population_sizes.items():
             labels = strata.get(stratum, [])
-            if stratum == "notice_fulltext_unavailable":
-                reviewed = population
-                positives = 0
-            else:
-                reviewed = len(labels)
-                positives = sum(label in positive_labels for label in labels)
+            reviewed = len(labels)
+            positives = sum(label in positive_labels for label in labels)
             proportion = positives / reviewed if reviewed else 0.0
             weight = population / total
             estimate += weight * proportion

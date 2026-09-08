@@ -1,57 +1,49 @@
 # E000 Data-Yield Audit Report
 
-**Verdict:** **GO for minimum model pilot; not approved as paper mainline.**
+**Verdict:** GO for scaled acquisition and model pilot; not yet a paper-mainline claim.
 **Run date:** 2026-09-08
 **Claim tested:** D0 only.
 
-## Evidence table
+## Corrected evidence table
 
 | Quantity | Result |
 |---|---:|
 | Complete PubMed frame | 121,396 records |
 | Fixed-seed sample | 500 records |
-| `ErratumFor` + PMCID validation | 500 / 500 |
-| JATS is the correction notice itself | 355 / 500 (71.0%) |
-| Notice PMCID points to original article | 145 / 500 (29.0%) |
-| Manually reviewed content records | 162 |
-| Confirmed T1 yield, weighted to all 500 | 10.99% |
-| Stratified design-based 95% CI | 8.69–13.28% |
-| T1 + unverified T2 ceiling | 14.15% (11.70–16.60%) |
+| Record-level `ErratumFor` + PMCID validation | 500 / 500 |
+| JATS PMID matches correction PMID | 500 / 500 |
+| Frozen stratified manual review | 162 records |
+| Confirmed T1 yield, weighted to all 500 | 12.81% |
+| Stratified design-based 95% CI | 9.49–16.13% |
+| T1 + unverified T2 ceiling | 19.10% (15.13–23.07%) |
 
-The T2 ceiling is not a gold result. Those records remain excluded until the linked original is fetched and the old span is deterministically verified.
+The T2 ceiling is not gold. T2 records remain excluded until the linked original deterministically supplies the old span.
 
 ## What the audit established
 
-- The source is viable without constructing synthetic corrections: the conservative T1 estimate alone supports scaling to a 150–300-pair pilot.
-- Using the lower confidence bound, plan to screen roughly 1.7k records for 150 T1 pairs or 3.5k for 300.
-- The 40 directly verified T1 records span 33 journals and 2011–2026. Their classes are 14 numeric/result, 7 method/scientific-entity, 8 qualifier/prose, and 11 textual table/figure label or unit updates.
-- A PMCID on a correction record does not prove that PMC exposes the correction notice. JATS PMID equality is load-bearing; omitting it contaminated the parser with original-article text in 29% of this sample.
-- Visual-only corrections are common enough to matter but remain a separate T3 track. They must not inflate the text-pair yield.
+- Direct publisher-authored updates are sufficiently common to scale without synthetic corrections.
+- At the lower confidence bound, screening about 1.6k notices should produce 150 T1 pairs before applying the separate original-state requirement.
+- The 33 T1 records directly observed in the corrected review span 27 journals, 2015–2026, and four balanced classes: 8 numeric/result, 8 method/entity, 8 qualifier/prose, and 9 table/figure-text/unit.
+- Visual-only changes remain a separate T3 track and do not inflate textual yield.
 
-## What the audit did not establish
+## E000f identifier-scope repair
 
-- No LLM was evaluated.
-- C1–C3 remain hypotheses.
-- We have not shown that a model needs explicit update state; many T1 notices may be lexically easy.
-- `T2_PENDING` records are not yet gold.
-- The query frame is PMC-associated biomedical-heavy PubMed, not all publishers or disciplines.
+The first completed audit incorrectly collected every descendant `ArticleId` in a PubMed record. IDs in `ReferenceList` could therefore overwrite the record's own IDs. The implausible E001 result that only 1/32 linked originals had PMC text exposed this bug.
 
-## Decision rationale
+The repair reads only `PubmedData/ArticleIdList`, retains the identical 121,396-ID frame and fixed 500-ID sample, re-downloads PMC XML using corrected identifiers, regenerates the review queue with the unchanged seed/quotas, and rechecks all 162 selected records. After repair, all 500 JATS PMIDs match their correction PMIDs. The superseded 10.99% estimate and 145/500 “unavailable notice” statement must not be cited.
 
-The candidate survives because direct publisher-authored proposition updates are neither a tiny handful nor one homogeneous correction type. The absolute frame is large, the lower-bound acquisition cost is manageable, and meaningful text classes exist. It is not promoted beyond a pilot because the remaining scientific risk is now model/task validity: if strong models simply copy Y at ceiling and authority/order controls add no boundary, the paper identity collapses to “LLMs can read errata.”
+## What remains unestablished
 
-## Reproducibility pointers
+- E000 does not establish model behavior or C1–C3.
+- The query is PMC-linked and biomedical-heavy, not a population of all publishers.
+- T1 yield is not the same as historical-original yield; E001 measures that additional constraint.
 
-- Config: `configs/e000_yield_audit.json`
-- Collection/parser: `scripts/run_yield_audit.py`
-- Frozen review sampler: `scripts/make_review_queue.py`
-- Manual labels: `data/annotations/e000/manual_labels.json`
-- Statistical summary: `scripts/summarize_review.py`
-- Raw PubMed/PMC XML and complete sampling frame: `data/raw/e000/`
-- Parsed records/review queue: `data/processed/e000/`
-- Machine-readable results: `results/e000/manifest.json`, `results/e000/manual_review_summary.json`
-- Environment: Python 3.12.3, requests 2.31.0; no new environment or dependency.
+## Reproduction
 
-## Next experiment
+```bash
+python3 scripts/run_yield_audit.py --config configs/e000_yield_audit.json
+python3 scripts/make_review_queue.py --config configs/e000_yield_audit.json
+python3 scripts/summarize_review.py --config configs/e000_yield_audit.json
+```
 
-Acquire a 150-item T1 pilot set using the same identity checks, then preregister ORIGINAL ONLY / FLAT / EXPLICIT UPDATE with order swap and a newer-but-unofficial conflict control. Before inference, verify that questions require reconciling X and Y rather than locating a replacement string.
+Machine-readable outputs are `manifest.json` and `manual_review_summary.json`. Raw XML is re-downloadable and ignored; the complete PMID frame, annotations, code, and results are versioned.

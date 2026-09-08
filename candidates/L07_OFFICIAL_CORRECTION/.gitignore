@@ -1,5 +1,6 @@
 __pycache__/
 *.py[cod]
+.venv/
 
 # Re-downloadable NCBI responses and generated review views. Keep the frozen
 # PMID frame, hand labels, code, manifests, and summaries under version control.
@@ -8,3 +9,7 @@ data/processed/e000/notices.jsonl
 data/processed/e000/review_sheet.csv
 data/processed/e000/manual_review_queue.csv
 data/annotations/e000/manual_review.csv
+
+# E001 re-downloadable NCBI responses. The publisher-licensed selectors,
+# executable audit, and aggregate/item-level result are versioned.
+data/raw/e001/*.xml

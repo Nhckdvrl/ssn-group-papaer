@@ -1,12 +1,12 @@
 # L07 — Official Correction ≠ Current Scholarly Claim
 
-**Status:** DATA GATE PASSED / MINIMUM MODEL PILOT AUTHORIZED
+**Status:** DATA GATE PASSED / 150-ITEM EXPANSION AUTHORIZED
 **Paper mainline:** NOT APPROVED  
 **Target:** NAACL Main  
 **Canonical research package:** this directory  
 **Last audited:** 2026-09-08
 
-> **Execution update:** E000 found a conservative, manually verified T1 yield of **10.99%** of sampled official PubMed correction records (stratified 95% CI **8.69–13.28%**). The direct pairs span numeric/results, methods/entities, qualifiers/prose, and textual table/figure labels or units. L07 survives the data gate, but no model claim or paper mainline is yet established. See [EXPERIMENTS.md](EXPERIMENTS.md) and [results/e000/AUDIT_REPORT.md](results/e000/AUDIT_REPORT.md).
+> **Execution update:** corrected E000 estimates **12.81%** confirmed T1 yield (stratified 95% CI **9.49–16.13%**). E001 shows that current PMC content still exposes the obsolete state in 14/32 directly quoted operations. The position-counterbalanced E002b pilot finds 70.0% macro flat accuracy across three 12B–32B model families, versus 91.7% original-only comprehension; position-robust flat accuracy is 56.7%. This authorizes a 150-item generated-answer expansion, not a paper claim. See [EXPERIMENTS.md](EXPERIMENTS.md).
 
 > **Plain-language thesis:** Once a paper is officially corrected, the original statement is part of the historical record but is no longer necessarily the current scholarly claim.
 
@@ -128,7 +128,7 @@ Decide whether scholarly QA/IE should:
 |---|---|---|
 | REAL OBJECT | **YES** | Publishers/NLM/Crossref explicitly define corrections and link them to originals. |
 | SCIENTIFIC TENSION | **YES** | End-to-end LLM reading may make explicit update state unnecessary—or not. |
-| GOOD DATA | **PROMISING / audit required** | PMC contains publisher-authored old→new replacements; Crossref/NLM provide update links. Need exact yield. |
+| GOOD DATA | **YES FOR EXPANSION** | E000 verifies direct old→new yield; E001 adds an explicit historical-state recoverability requirement. |
 | PAPER-LEVEL NOVELTY | **YES, current audit** | Nearby work studies self-correction, factual correction, and scientific critique, not official proposition supersession. |
 | OUTCOME-ROBUST DECISIVENESS | **YES** | Success, failure, and correction-type boundaries all support a modeling conclusion. |
 
@@ -153,4 +153,4 @@ It is false only if the paper shows that official correction is a distinct **sch
 - [DATA_AND_GOLD.md](DATA_AND_GOLD.md)
 - [RESEARCH_PLAN.md](RESEARCH_PLAN.md)
 
-This candidate should not enter `good/` until the proposition-level correction yield is audited on a sufficiently large random sample.
+This candidate should not enter `good/` until the 150-item generated-answer experiment supports a nontrivial update-operation claim with robust controls.

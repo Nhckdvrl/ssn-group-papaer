@@ -174,8 +174,16 @@ def parse_pubmed(xml_paths: list[Path]) -> dict[str, dict]:
             pmid = node_text(pmid_node)
             if not pmid:
                 continue
+            # Only the record-level PubmedData/ArticleIdList identifies this
+            # article. ReferenceList descendants also contain ArticleId nodes
+            # and must never be allowed to overwrite the record identifiers.
             article_ids = {}
-            for item in article.iter():
+            pubmed_data = next((n for n in article if local(n.tag) == "PubmedData"), None)
+            id_list = next(
+                (n for n in (pubmed_data if pubmed_data is not None else []) if local(n.tag) == "ArticleIdList"),
+                None,
+            )
+            for item in (id_list if id_list is not None else []):
                 if local(item.tag) == "ArticleId":
                     article_ids[item.attrib.get("IdType", "unknown").lower()] = node_text(item)
             refs = []
