@@ -10,6 +10,7 @@ This repository separates two processes that must not be mixed:
 
 ## Authoritative documents
 
+- [LOCAL_AGENT_START.md](LOCAL_AGENT_START.md) — **single handoff document for the local research agent; start pilots here.**
 - [RESEARCH_TOPIC_SELECTION.md](RESEARCH_TOPIC_SELECTION.md) — compact authoritative selection workflow.
 - [RESEARCH_EXECUTION.md](RESEARCH_EXECUTION.md) — authoritative project execution workflow.
 - [CANDIDATE_CARD.md](CANDIDATE_CARD.md) — compact pre-pilot candidate card.
@@ -24,6 +25,7 @@ This repository separates two processes that must not be mixed:
 - **Approved paper mainline:** NONE
 - **Active pilot-authorized candidates:** L03
 - **Current serious six-topic portfolio:** L03, L06, L07, L08, L09, L10
+- **Local-agent execution handoff:** READY — `LOCAL_AGENT_START.md`
 - **L02:** NO-GO / K175
 - **L04:** NO-GO / K180
 - **L05 Adaptive Information Seeking:** KILL / K176
