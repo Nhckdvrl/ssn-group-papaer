@@ -4,7 +4,9 @@
 **External bar:** ACL / EMNLP / NAACL Main, aspirationally Best / Outstanding / Best Theme  
 **Approved paper mainline:** NONE
 
-> This directory contains **serious candidates under active comparison**. It is intentionally separate from `good/`: `good/` means pilot-authorized, while a detailed package here means the topic has survived broad search strongly enough to deserve full data/novelty/pilot auditing.\n\n**Local execution entrypoint:** [`../LOCAL_AGENT_START.md`](../LOCAL_AGENT_START.md). Give that single file to the local agent when starting experiments.
+> This directory contains **serious candidates under active comparison**. It is intentionally separate from `good/`: `good/` means pilot-authorized, while a detailed package here means the topic has survived broad search strongly enough to deserve full data/novelty/pilot auditing.
+
+**Local execution entrypoint:** [`../LOCAL_AGENT_START.md`](../LOCAL_AGENT_START.md). Give that single file to the local agent when starting experiments.
 
 ---
 
