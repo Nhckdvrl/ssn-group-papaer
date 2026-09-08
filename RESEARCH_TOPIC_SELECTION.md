@@ -31,6 +31,123 @@ No quota. Zero survivors in a round is acceptable.
 
 ---
 
+
+# 1. Topic-Space Prior — Sasano-Lab / Advisor / User Calibrated
+
+The gates above decide **whether a topic is good**. This section decides **where we should spend search effort**.
+
+It is a search prior, not a permanent whitelist: an exceptional topic outside these regions may survive, but search should not repeatedly drift into areas the advisor/user do not want.
+
+## What Sasano-lab topics tell us
+
+Use the lab to calibrate the **kind of object and question that feels natural to the advisor**, not to copy topics or set the quality bar.
+
+Representative patterns seen in the group include:
+
+- **Hamdi:** concrete LLM behaviors such as fictional-entity representation and random-choice mechanisms; move from a clear behavior/question to internal explanation, causal intervention, and a meaningful consequence.
+- **Kisako:** internal organization of language/thought in LLMs; representation/compression questions such as sentence-embedding dimensionality reduction and quantization.
+- **Sato:** how LLMs acquire character information, using controlled pretraining conditions to answer a concrete mechanism question.
+- **Yoda:** practical scientific-document NLP—finding relevant scientific papers and extracting structured experimental/material information from real papers, including text/PDF/image representations.
+- **Oshika:** scholarly-document processing such as citation-related paper placement, related-work generation, and scientific-text processing.
+- **Yano / Tsujimoto:** semantic-frame / FrameNet / FrameBench-style research. These confirm that classical linguistic/NLP objects are acceptable in the lab, but **this particular project should not follow that branch because of the user's topic preference**.
+
+The useful common pattern is:
+
+> **concrete object → easy-to-state RQ → non-obvious scientific question → appropriate evidence/method**
+
+not:
+
+> **hot technology → search for a place to apply it**
+
+## High-priority search regions for this project
+
+Spend most search effort in:
+
+1. **Model behavior / computation with a concrete NLP consequence**
+   - stable, interpretable model behavior;
+   - internal computation/representation when it answers a natural RQ;
+   - causal/mechanistic work only after the behavior/question is already interesting.
+
+2. **Representation and information encoding**
+   - what information representations preserve/lose;
+   - when an explicit representation remains necessary or becomes obsolete;
+   - compression/organization/readout questions tied to meaningful NLP behavior.
+
+3. **Classic or mature NLP decisions revisited under modern models**
+   - old modeling choices whose assumptions have genuinely changed;
+   - task formulation, output representation, supervision, inference, or evaluation decisions;
+   - prefer broad decision problems over another benchmark comparison.
+
+4. **Documents / scientific and scholarly text**
+   - scientific-paper understanding;
+   - evidence, claims, results, citations, tables, structured extraction;
+   - document-level QA/IE and scholarly communication;
+   - natural real documents and externally grounded structure are especially attractive.
+
+5. **Measurement / evaluation / task-definition questions**
+   - cases where a standard metric/output unit/task abstraction may erase a scientifically meaningful quantity;
+   - only when changing the measurement can change a real NLP conclusion.
+
+6. **Other clean NLP objects with obvious real meaning**
+   - IE, QA, knowledge use, structured prediction, generation, retrieval/representation, etc.;
+   - allowed whenever the RQ is natural, non-trivial, and not crowded.
+
+## Strong negative prior / default do-not-search regions
+
+### User preference: avoid strongly linguistic topics
+
+Do not proactively search for:
+- FrameNet / frame semantics / FrameBench;
+- formal semantics-heavy questions;
+- syntax-heavy phenomena;
+- morphology-heavy topics;
+- typology/dialect-focused work;
+- garden-path or specialized psycholinguistic phenomena;
+- topics requiring a long linguistic lecture before the RQ becomes interesting.
+
+A language phenomenon is still allowed when its distinction is **immediately understandable in ordinary language** and the scientific importance is obvious.
+
+### Advisor/search preference: do not chase hot crowded areas
+
+Do not default to:
+- generic Agent / agentic workflow topics;
+- generic RAG;
+- prompt engineering;
+- generic RL/post-training races;
+- generic Speech / SpeechLLM;
+- generic VLA/robotics;
+- API/tool-use/harness trends;
+- LLM-as-judge / LLM-as-annotator;
+- whatever happens to be fashionable this month.
+
+This is **not a theorem that these fields can never contain a good topic**. It means they carry a strong search penalty because:
+- the literature moves too fast;
+- parent questions are crowded;
+- novelty often collapses to implementation differences;
+- paper identity ages quickly.
+
+Only enter a hot area when the RQ is independently natural/durable and novelty remains strong **after removing the fashionable technology label**.
+
+## Search balance
+
+A normal search round should therefore draw rough leads from several of:
+
+- model behavior/computation;
+- representation;
+- classic NLP decisions;
+- document/scientific-text NLP;
+- measurement/evaluation;
+- other mature natural NLP objects.
+
+Do not make all leads linguistic.
+Do not make all leads document NLP.
+Do not make all leads mechanistic.
+Do not make all leads variants of one generator.
+
+The goal is not topical diversity for its own sake. The goal is to avoid search fixation and keep finding **natural, advisor-compatible Main-level questions**.
+
+---
+
 # Stage A — Broad Search
 
 Search broadly across multiple mother domains. Do not spend a whole round generating variants of one structural template or one recently mentioned hot area.
