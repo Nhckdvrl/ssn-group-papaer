@@ -1,3 +1,5 @@
+> **2026-09-08 closure:** NO-GO / K180. Retired for Main-level paper-scale and outcome fragility; not because the classical morphology parent is old.
+
 > **Canonical research package moved to [good/L04_REALIZATION_CARDINALITY/](L04_REALIZATION_CARDINALITY/).**  
 > This top-level file is retained for backward compatibility with earlier repository references. Future edits should go to the package directory.
 
