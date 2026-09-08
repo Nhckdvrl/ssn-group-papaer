@@ -17,12 +17,14 @@
 **Possible principled boundary:**  
 Why are both accounts plausible before results?
 
-## 4. Exact data + direct gold
-- Dataset/resource + version:
+## 4. Data / evidence + direct identification
+- Existing dataset/resource or constructed data plan:
+- Exact version/provenance:
 - Natural unit:
-- Gold:
-- Explicit mapping: **external observation/annotation/state → scientific quantity**
-- Why this is direct rather than a proxy:
+- Gold/target/manipulation:
+- Explicit mapping: **observation / annotation / controlled manipulation / real state → scientific quantity**
+- If constructing data, why construction is necessary and how naturalness/quality are protected:
+- Why this directly identifies the claim rather than proxying a neighboring concept:
 
 ## 5. Novelty assassination
 - Classical parent:
@@ -57,12 +59,12 @@ If the first expected effect disappears, what remains scientifically live?
 - **C3 — Consequence for NLP:**
 
 ## 10. Top-conference alignment
-At least 3 concrete ACL/EMNLP/NAACL Main-level references:
+Use the strongest structurally relevant ACL/EMNLP/NAACL Main papers (plus other top venues when appropriate):
 1.
 2.
-3.
+3. *(add/remove as needed; no fixed count)*
 
-Compare: RQ scale / claim scale / data / identification / novelty / C1→C2→C3 / consequence.
+State which dimensions matter for **this paper identity** and compare accordingly.
 
 ## 11. Minimum decisive pilot
 - Smallest experiment:
@@ -74,7 +76,7 @@ Compare: RQ scale / claim scale / data / identification / novelty / C1→C2→C3
 ## Final verdict
 - Natural/interesting RQ: YES / NO
 - Non-trivial scientific tension: YES / NO
-- Direct high-quality data/gold: YES / NO
+- High-quality data/evidence with direct identification: YES / NO
 - New paper-level narrative/idea/claim: YES / NO
 - Research-space + outcome robustness: YES / NO
 - Main-level alignment: YES / NO
