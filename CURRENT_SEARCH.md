@@ -1,5 +1,7 @@
 # Current Research-Question Search — 2026-09-08 Active Search
 
+> **Workflow authority notice — 2026-09-08:** This file records **project/search progress only**. Historical process notes below are non-authoritative when duplicated or inconsistent. Use `RESEARCH_TOPIC_SELECTION.md` for selection, `RESEARCH_EXECUTION.md` for project execution, and `CANDIDATE_CARD.md` for pre-pilot audit.
+
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Active pilot-authorized candidates:** **2 — L03, L04**  
