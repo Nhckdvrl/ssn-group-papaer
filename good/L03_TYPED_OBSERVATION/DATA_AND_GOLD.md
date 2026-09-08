@@ -102,27 +102,32 @@ The strongest transfer design is:
 
 ---
 
-## 6. Cross-provider replication status
+## 6. Cross-provider replication status — now concretely secured via Eurostat/SDMX
 
-CDC/NCHS provides a strong natural neighboring substrate:
-- official tables can suppress unreliable estimates;
-- asterisks and notes may represent reliability/suppression states;
-- Data Query System outputs include downloadable source data plus data-issue/footnote notes.
+### Eurostat / SDMX — verified machine-readable second provider
 
-Official references:
-- https://www.cdc.gov/nchs/hus/sources-definitions/statistical-reliability.htm
-- https://www.cdc.gov/nchs/dqs/user-guide/index.html
-- https://www.cdc.gov/united-states-cancer-statistics/technical-notes/suppression.html
+Eurostat's dissemination formats separate the observation value from observation status flags. Official Eurostat documentation states that:
+- each observation carries a value plus zero or more status flags;
+- ':' is used where an observation value is unavailable / logically inapplicable in the relevant representation;
+- flags can be attached directly to values and can be combined;
+- documented status categories include estimated (e), provisional (p), low reliability (u), break in series (b), confidential (c), not available (o), cannot exist (m), not significant (n), and definition difference (d), depending on the data flow.
 
-**Important:** this is not yet part of the load-bearing gold contract merely because the documentation exists.
+The underlying SDMX standard explicitly treats **Observation Status** as a distinct statistical concept and allows multiple statuses for one observation.
 
-Before using CDC/NCHS as Main-level replication, verify:
-- an exact accessible table/data file;
-- a machine-readable or deterministic status marker;
-- a one-to-one mapping to provider-defined meaning;
-- enough instances for stable analysis.
+This provides a real cross-provider replication route:
+- provider 1: U.S. Census ACS estimate/annotation pairs;
+- provider 2: Eurostat/SDMX OBS_VALUE + observation-status flags.
 
-Until then, ACS alone supports the pilot; cross-provider replication remains a required pre-mainline task.
+The symbol inventories differ while the higher-level scientific object is shared: a statistical observation is not exhausted by a scalar value.
+
+Official sources verified in the 2026-09-08 audit:
+- Eurostat API TSV format documentation;
+- Eurostat Data Browser flag documentation;
+- SDMX Observation Status guidelines.
+
+### Optional third-provider extension
+
+OECD SDMX metadata also defines observation-status codes including Break, Estimated, Imputed, Low reliability, Missing, and Provisional. This is useful as a third-provider robustness source, but Eurostat already supplies the load-bearing second-provider replication needed to defeat the "Census sentinel memorization" compression.
 
 ---
 
@@ -151,7 +156,7 @@ KILL or demote if:
 - status-bearing cells are too rare for a stable pilot;
 - natural rendering hides information that a real source user would have;
 - the experiment is really code memorization;
-- cross-provider replication needed for the main claim cannot be secured;
+- cross-provider replication fails to reproduce the typed-observation conclusion despite verified Eurostat/SDMX status gold;
 - label inventory requires author judgment rather than provider documentation.
 
 The scientific quantity must remain externally grounded.
