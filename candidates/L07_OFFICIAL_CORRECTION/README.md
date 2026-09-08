@@ -1,12 +1,12 @@
 # L07 — Official Correction ≠ Current Scholarly Claim
 
-**Status:** DATA GATE PASSED / 150-ITEM EXPANSION AUTHORIZED
+**Status:** DATA GATE PASSED / E003 CURATION PAUSED AT A CLEAN CHECKPOINT
 **Paper mainline:** NOT APPROVED  
 **Target:** NAACL Main  
 **Canonical research package:** this directory  
-**Last audited:** 2026-09-08
+**Last audited:** 2026-09-09
 
-> **Execution update:** corrected E000 estimates **12.81%** confirmed T1 yield (stratified 95% CI **9.49–16.13%**). E001 shows that current PMC content still exposes the obsolete state in 14/32 directly quoted operations. The position-counterbalanced E002b pilot finds 70.0% macro flat accuracy across three 12B–32B model families, versus 91.7% original-only comprehension; position-robust flat accuracy is 56.7%. This authorizes a 150-item generated-answer expansion, not a paper claim. See [EXPERIMENTS.md](EXPERIMENTS.md).
+> **Execution update:** E000–E002b authorize, but do not establish, the paper mainline. E003 has now collected an E000-disjoint fixed-seed sample of **4,000/4,000 identity-validated notices**. Deterministic extraction found **140 review proposals from 72 notices** among 582 exact-replacement parser candidates. These are not gold. Local-LLM recall augmentation was stopped before inference completed and produced no result. The exact checkpoint and resume order are in [EXPERIMENTS.md](EXPERIMENTS.md) and [results/e003/REPORT.md](results/e003/REPORT.md).
 
 > **Plain-language thesis:** Once a paper is officially corrected, the original statement is part of the historical record but is no longer necessarily the current scholarly claim.
 

@@ -182,3 +182,16 @@ E000 sampled 500 records from a complete 121,396-record PubMed query frame with 
 A corrected frozen stratified manual review of 162 notices produced a design-weighted **confirmed T1 yield of 12.81%** (95% CI 9.49–16.13%). Thirteen additional records remain `T2_PENDING`. The 33 directly observed T1 records cover 27 journals, 2015–2026, and four correction classes.
 
 E001 adds a stricter model-item condition: the supplied original excerpt must contain old X and not leak new Y. Fourteen of 32 directly quoted operations expose X in current PMC title/abstract/body, so acquisition must verify article state item by item. E002b uses 10 leak-free items and rejects the immediate lexical-ceiling kill condition, but its forced-choice size is not paper evidence. Exact pointers are in [results/e000/AUDIT_REPORT.md](results/e000/AUDIT_REPORT.md), [results/e001/REPORT.md](results/e001/REPORT.md), and [results/e002b_counterbalanced/REPORT.md](results/e002b_counterbalanced/REPORT.md).
+
+## 13. E003 scaled construction contract
+
+E003 freezes a second, E000-disjoint fixed-seed sample before reviewing outcomes. The completed collection contains 4,000 correction notices selected from 4,100 deterministic candidates; one pre-boundary candidate lacked `ErratumFor` and was replaced from the deterministic reserve. All 4,000 accepted records have a PubMed correction relation, PMCID, and matching JATS PMID.
+
+Candidate creation is deliberately two-stage:
+
+1. deterministic quote-pattern rules propose explicit X→Y spans;
+2. an optional local model may add recall proposals, but only when both X and Y survive normalized verbatim-substring checks against publisher text.
+
+Neither route creates gold. Every merged proposal must receive an item-level review label recording whether it is scientifically substantive, correctly directed, nonvisual, and explicitly publisher-licensed. Only accepted pairs proceed to the linked original, where the supplied historical excerpt must contain X and exclude Y. Question/answer construction then receives a separate human check for answer uniqueness and leakage.
+
+The current checkpoint contains 140 deterministic proposals from 72 notices. Model-assisted recall, merge, manual review, original-state validation, and task authoring are not complete. See [results/e003/REPORT.md](results/e003/REPORT.md).

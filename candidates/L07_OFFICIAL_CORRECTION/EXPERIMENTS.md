@@ -120,3 +120,57 @@ OLD was always presented first. Mistral selected OLD in 51/60 outputs, making up
 Ten leak-free items, three model families (12B, 24B, 32B), six evidence conditions, two A/B candidate orders, and greedy decoding produced 360 decisions. Macro original-only accuracy is 91.7%, correction-only 80.0%, flat 70.0%, explicit-update 76.7%, and unrelated-correction 85.0%. Position-robust flat accuracy is 56.7%.
 
 **Decision:** the lexical-ceiling kill condition did not fire. Scale to 150 items and free generation; E002b is too small and too constrained to establish a paper claim. See `results/e002b_counterbalanced/REPORT.md`.
+
+## E003 — Scaled item acquisition and gold construction
+
+**Status:** paused at a clean checkpoint; collection and deterministic proposals complete
+**Linked claim:** D1
+**Question:** Can the natural correction stream yield at least 150 leak-free, proposition-level items under the unchanged publisher-licensed gold contract?
+
+### E003a — Frozen expansion collection (complete)
+
+- Start from the E000 complete 121,396-PMID frame and exclude all 500 E000 sample IDs.
+- Draw 4,100 deterministic candidates with seed `20260910`, targeting 4,000 accepted records plus a 100-record reserve.
+- Apply the same record-level `ErratumFor`, PMCID, and correction-JATS PMID identity checks repaired in E000f.
+- Result: 4,000 accepted notices, zero E000 overlap, and 4,000/4,000 JATS identity matches. One candidate before the stopping boundary (PMID 24278899) lacked `ErratumFor` and was replaced deterministically.
+- Parser triage: 582 exact-replacement, 32 location-plus-new, 1,194 numeric/symbolic, 1,231 metadata/nonpropositional, 36 semantic-unaligned, and 925 unusable/ambiguous. These categories are not gold.
+
+### E003b — Deterministic high-precision proposals (complete)
+
+- Run quote-aware direction patterns only over the 582 exact-replacement candidates.
+- Require distinct normalized old/new strings; retain the publisher notice evidence and identifiers with every proposal.
+- Result: 140 candidate pairs from 72 unique notices across eight pattern families.
+- Scientific interpretation: this is a compact manual-review queue, not a yield estimate and not evidence for C1–C3. Multiple proposals may come from one notice, and metadata or incorrectly directed matches may remain.
+
+### E003c — Local-model recall proposals (paused before output)
+
+- Planned role: screen the same 582 notices for verbatim X→Y proposals missed by rules, excluding metadata and nonpropositional changes.
+- Safeguard: accept a model proposal only if both strings occur verbatim after normalization; human review and linked-original validation remain mandatory.
+- A Qwen2.5-14B run was started locally, then terminated during model loading/inference to control compute consumption. The script writes only after full completion, so no partial proposal, summary, or scientific result exists.
+- This interrupted run must not be counted as an experiment or compared with E003b.
+
+### E003d–E003f — Not started
+
+1. Merge and de-duplicate rule/model proposals by correction PMID plus normalized X/Y.
+2. Manually label each proposal as `ACCEPT_SUBSTANTIVE`, `NONPROP`, `VISUAL`, `BAD_DIRECTION`, `NOT_EXACT`, or `OTHER_REJECT`, with a source-grounded note.
+3. Fetch linked originals only for accepted pairs; identify a model-facing historical excerpt containing X and excluding Y, and record failures rather than repairing them synthetically.
+4. Author and independently check one natural question/current-answer target per surviving operation; reject leakage, ambiguous answers, and questions answerable without reconciling the update.
+5. Freeze 150 items with journal/year/domain/update-class composition reported before model evaluation. If fewer than 150 survive, extend the same deterministic frame/reserve procedure; do not relax gold.
+
+### Exact resume order
+
+1. Decide whether model-assisted recall is worth its compute. If yes, rerun `propose_pairs_with_llm.py` to completion with the frozen config; if no, proceed with the 140 rule proposals and later expand deterministic patterns based only on documented false negatives.
+2. Run `merge_pair_proposals.py` only after the chosen proposal sources exist, then freeze the review queue hash before annotation.
+3. Complete double-check review and report acceptance/rejection counts by source and pattern. Do not calculate a paper result from proposal counts.
+4. Complete original-state validation and question construction; freeze the final 150-item data card and exclusion flow.
+5. Run E004 free generation on three serious model families using original-only, correction-only, flat original+correction in both document orders, explicit-update, and unrelated-correction conditions. Use greedy decoding, item-level outputs, current-only/obsolete/blend/error adjudication, paired bootstrap confidence intervals, and correction-type boundary analyses.
+
+### Claim and stop rules
+
+- C1 requires a robust flat-condition deficit relative to original-only comprehension and correction-only interpretability, with obsolete reuse or blending measured directly in free answers.
+- C2 requires a reproducible interaction with update representation or correction complexity; an isolated aggregate accuracy difference is insufficient.
+- C3 is considered only if explicit state materially repairs C1 without causing false overrides under unrelated corrections.
+- If flat reading is near ceiling with tight intervals, explicit state provides no meaningful gain, or failures reduce to unreadable notices/task artifacts, L07 does not support an ACL/EMNLP/NAACL mainline in this form.
+- If failures persist across model families and controls, and their boundaries distinguish authoritative supersession from generic recency/order effects, the result is eligible for mainline promotion and a broader robustness phase.
+
+Full checkpoint counts and artifact boundaries are in `results/e003/REPORT.md`.

@@ -13,3 +13,10 @@ data/annotations/e000/manual_review.csv
 # E001 re-downloadable NCBI responses. The publisher-licensed selectors,
 # executable audit, and aggregate/item-level result are versioned.
 data/raw/e001/*.xml
+
+# E003 keeps the frozen sample IDs, compact candidate proposals, code, and
+# manifests. NCBI XML, the parsed 4,000-notice cache, and CSV review views are
+# reproducible local artifacts.
+data/raw/e003/*.xml
+data/processed/e003/notices.jsonl
+data/processed/e003/*.csv
