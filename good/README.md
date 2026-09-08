@@ -8,9 +8,9 @@ Current state:
 |---|---|---|---|
 | L02 | Semantic Role Completion ≠ Referential Commitment | [historical package](L02_REFERENTIAL_COMMITMENT/) | **NO-GO / K175 — NOT ACTIVE** |
 | **L03** | Table Value ≠ Observation Status | [good/L03_TYPED_OBSERVATION/](L03_TYPED_OBSERVATION/) | **PILOT-AUTHORIZED** |
-| **L04** | Morphological Inflection Has Realization Cardinality | [good/L04_REALIZATION_CARDINALITY/](L04_REALIZATION_CARDINALITY/) | **PILOT-AUTHORIZED / NOVELTY-FRAGILE** |
+| L04 | Morphological Inflection Has Realization Cardinality | [historical package](L04_REALIZATION_CARDINALITY/) | **NO-GO / K180 — NOT ACTIVE** |
 
-# Active pilot-authorized survivors: 2 — L03, L04
+# Active pilot-authorized survivors: 1 — L03
 
 # Approved paper mainline: NONE
 
@@ -212,8 +212,19 @@ Future promotion must therefore require:
 
 L05 (*Adaptive Information Seeking / When Is Adaptivity Actually Necessary?*) was **not promoted to good/** and is now formally **K176**.
 
-The active pilot-authorized set therefore remains exactly:
+After the 2026-09-08 Main-level re-audit, L04 was retired as K180. The active pilot-authorized set is now:
 
-# L03, L04
+# L03
 
 This closure is important because L05 had a healthy outcome-robust research-space shape, but still failed **paper-level novelty**: its decisive causal and sequential-vs-parallel claims compress to *Bridge Evidence* plus *Hybrid Deep Searcher*. A well-shaped research space is necessary, not sufficient.
+
+
+---
+
+## L04 closure — K180
+
+L04 is retained only as historical evidence. It is no longer active.
+
+The route was **not** killed because its classical morphology parent is old or because defectivity/overabundance are known. It was killed because the surviving modern paper identity remained too dependent on obtaining a sufficiently consequential empirical difference between canonical and relation-aware evaluation. With direct gold currently centered on Eesthetic/Paralex, a preservation result would be too narrow for the intended Main-level bar, while a simple “models miss valid variants” result would collapse to a known representational limitation.
+
+Future searches should preserve the useful lesson—restore externally defined output semantics when mature tasks canonicalize them—but should prefer objects where all reasonable outcomes support a broad scientific/modeling decision.
