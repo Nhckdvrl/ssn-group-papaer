@@ -77,6 +77,14 @@ This matters for novelty because the ontology is not invented by the paper. The 
 
 ## 4. Cross-provider relevance
 
+### Eurostat / SDMX — verified second provider
+
+Eurostat exposes statistical observation values and observation-status flags separately in its machine-readable dissemination formats. SDMX itself defines Observation Status as a first-class concept, including statuses such as estimated, provisional, low reliability, missing/inapplicable, and breaks in series; Eurostat flags can be attached to values and can be combined.
+
+This materially strengthens the paper identity: L03 is no longer dependent on one Census-specific sentinel-code convention. The experiment can test **dynamic reconstruction of provider-local observation ontologies across distinct official-statistics systems**.
+
+### Additional neighboring provider evidence
+
 CDC/NCHS documentation provides an independent neighboring object: official health statistics can suppress or flag estimates because of reliability, precision, small sample sizes, or disclosure concerns.
 
 Representative official sources:
@@ -168,6 +176,6 @@ Current audit includes:
 - official ACS status/annotation semantics;
 - official CDC/NCHS suppression/reliability semantics.
 
-No searched paper currently owns the same full **typed-observation output ontology + representation necessity** story.
+No searched paper currently owns the same full **typed-observation output ontology + cross-provider representation-necessity** story. Eurostat/SDMX now provides a verified second provider rather than a merely aspirational replication.
 
 Re-run this audit before mainline approval.
