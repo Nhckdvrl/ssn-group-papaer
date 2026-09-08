@@ -3090,3 +3090,61 @@ The candidate is not killed because one expected effect might disappear. In fact
 **Reopen only if**  
 A different natural substrate yields an independently grounded necessity variable that is not equivalent to evidence→trajectory causality, sequential dependency, targeted follow-up search, or generic adaptive-vs-static efficiency.
 
+---
+
+## K177 — Evidence Aggregation Rule under Conflicting Studies
+
+**Date:** 2026-09-08  
+**RQ:** When multiple studies disagree, does an LLM aggregate evidence according to study count, sample size, precision, methodological quality, or another rule?  
+**Status:** KILL CURRENT FORM
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`  
+**Secondary:** `CROWDED_PARENT`
+
+**Exact kill reason**  
+The general scientific question of which evidence LLMs find convincing under conflicting documents is already a direct ACL Main object. ACL 2024 *What Evidence Do Language Models Find Convincing?* builds ConflictingQA specifically to perturb real-world conflicting evidence and identify which evidence properties control model conclusions. Recent work further studies majority/repetition effects and evidence synthesis under conflict. Narrowing the factors to sample size, precision, or study quality would currently be a mechanistic cell inside this existing paper identity rather than a new Main-level story.
+
+**Reviewer compression**  
+> “ConflictingQA / conflict-aware evidence synthesis, but with study-level statistical attributes as the manipulated evidence features.”
+
+**Reopen only if**  
+A different load-bearing scientific relation is found where statistical evidence structure changes a mature NLP conclusion and cannot be compressed into “which conflicting evidence does the LLM find convincing?”
+
+---
+
+## K178 — Learned Distribution vs Decoding Policy for Repeated-Sequence Statistics
+
+**Date:** 2026-09-08  
+**RQ:** Are observed long-range distributional gaps between LLM-generated and human text properties of the learned model distribution, or artifacts introduced by the decoding policy?  
+**Status:** KILL CURRENT FORM
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+ACL 2026 *Repeated Sequences Reveal Gaps between Large Language Models and Natural Language* already establishes the repeated-subsequence statistical gap as the focal object. Independently, decoding research directly establishes that common local decoding schemes such as top-k/top-p distort the model distribution; EMNLP Findings 2024 *Local and Global Decoding in Text Generation* makes that distortion itself the scientific object. A decoding sweep on the ACL 2026 statistic would therefore be the obvious attribution follow-up, not a sufficiently independent paper identity.
+
+**Reviewer compression**  
+> “Tanaka-Ishii’s repeated-sequence diagnostic + standard local/global decoding attribution.”
+
+**Reopen only if**  
+A new intervention identifies a broader scientific quantity about learned language statistics that cannot be reduced to applying known decoding-distribution analysis to an existing diagnostic.
+
+---
+
+## K179 — Label Definitions vs Examples in New Category Learning
+
+**Date:** 2026-09-08  
+**RQ:** When an LLM learns a new category from context, what information is supplied by a verbal label definition versus labeled examples, and when can one substitute for the other?  
+**Status:** KILL CURRENT FORM
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+
+**Exact kill reason**  
+EMNLP 2025 Main *Do LLMs Adhere to Label Definitions? Examining Their Receptivity to External Label Definitions* already conducts controlled interventions over expert, LLM-generated, perturbed, and swapped label definitions and asks whether models integrate external definitions or fall back on internal representations. Combined with the mature ICL literature on demonstration/example effects, the proposed definition-versus-example decomposition is now an expected extension cell rather than a fresh Main-level scientific parent.
+
+**Reviewer compression**  
+> “The EMNLP 2025 label-definition receptivity study, crossed with ordinary ICL demonstration ablations.”
+
+**Reopen only if**  
+A natural task provides a distinct externally identified quantity for what definitions and examples contribute, producing a consequence beyond classification accuracy or ordinary in-context learning behavior.
+
