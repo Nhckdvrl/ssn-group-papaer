@@ -2,12 +2,11 @@
 
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
-**Pilot-authorized candidates in `good/`:** **3 — L02, L03, L04**  
-**Authoritative killed ledger on disk:** through **K174**  
-**Next ledger kill ID:** **K175**
+**Active pilot-authorized candidates:** **2 — L03, L04**  
+**Authoritative killed ledger on disk:** through **K175**  
+**Next ledger kill ID:** **K176**
 
-> `good/` now contains **L02, L03, L04**.
-> All are **PILOT-AUTHORIZED / NOT MAINLINE APPROVED**.
+> **Active survivors:** L03, L04. L02 is **NO-GO / K175** after completed pilot and gold audit; its package is retained only as historical evidence.
 > L04 was restored only after its previously conditional GOOD DATA gate was concretely repaired with exact Eesthetic/Paralex gold.
 
 ---
@@ -19,10 +18,10 @@ The stale K161/K162 header has been repaired against the authoritative ledger.
 
 - Ledger detailed records confirmed present through K169 before this round.
 - K170–K174 were fresh-checked and formally registered.
-- Current authoritative state: **through K174**.
-- Next unused kill ID: **K175**.
+- Current authoritative state: **through K175**.
+- Next unused kill ID: **K176**.
 - No paper mainline is approved.
-- `good/` remains **3/5: L02, L03, L04**, all PILOT-AUTHORIZED / NOT MAINLINE APPROVED.
+- Active pilot-authorized survivors: **L03, L04**. L02 is NO-GO and no longer counts.
 
 ### K170–K174 closure summary
 
@@ -44,7 +43,7 @@ Before substantial search or compute, require at least three natural subquestion
 
 This is aligned with strong Main/Outstanding work: EMNLP 2025 *Generative or Discriminative?* produces a multi-dimensional decision map; ACL 2025 test-time-scaling work links empirical pattern, theory, prediction and intervention; ACL 2026 Outstanding *CAR-bench* treats agent reliability under uncertainty as a broader scientific object rather than one effect.
 
-**Current implication:** continue searching toward `good = 6`, but promote only candidates that independently pass every gate, including RESEARCH-SPACE ROBUSTNESS. Ending below six is preferable to promoting a fragile or below-Main topic.
+**Current implication:** continue searching toward six total serious candidates. After L02's NO-GO, there are currently two active survivors, so the long-run numerical gap is four. This is never a per-round quota: any individual search round may add zero candidates. Promote only candidates that independently pass every gate, including DIRECT-GOLD and RESEARCH-SPACE ROBUSTNESS.
 
 ---
 
@@ -68,11 +67,31 @@ For every lead, search the parent through 2024–2026 and test whether the decis
 
 ---
 
+## L02 post-pilot closure — K175
+
+**L02 Semantic Role Completion / Referential Commitment is NO-GO.**
+
+Completed evidence:
+- two models (Qwen3-32B, Mistral-Small-24B-Instruct-2501);
+- two output/diagnostic formats;
+- 504 prediction records over the same 42 natural examples;
+- full UCCA/coreference/substitute-data audit;
+- literature alignment, reruns, and hash verification.
+
+Direct native-label full-context accuracy was **20/42 for both models**. This is only a classification diagnostic and is **not** interpreted as hallucination rate or as the primary reason for the kill.
+
+Primary kill reason:
+> DNI/INI is not independent gold for whether a concrete filler is supported by the current discourse. After repairing that measurement mismatch, the remaining story does not currently establish a new modeling/evaluation consequence beyond nearby work.
+
+**Search lesson:** passing literature novelty before compute is not enough. If the core estimand is only indirectly proxied, or if the paper depends on one expected phenomenon to create the contribution, the route can collapse after a small pilot. Future candidates must pass both DIRECT-GOLD and RESEARCH-SPACE ROBUSTNESS stress tests.
+
+---
+
 # Current good candidates
 
 ## L02 — Semantic Role Completion ≠ Referential Commitment
 
-**Status: PILOT-AUTHORIZED / NOT MAINLINE APPROVED.**
+**Status: NO-GO / K175. Historical package retained; no longer active.**
 
 Core RQ:
 
