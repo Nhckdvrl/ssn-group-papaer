@@ -34,6 +34,20 @@ The stale K161/K162 header has been repaired against the authoritative ledger.
 
 ---
 
+# Search correction — prefer research spaces over fragile axes
+
+**Effective 2026-09-08. This rule supersedes any pressure to fill a numeric candidate quota.**
+
+Do not promote a lead merely because one new causal/measurement axis seems unoccupied. Prefer a crisp natural object with a moderate/large research space, several pre-existing scientific questions, and multiple informative outcome paths.
+
+Before substantial search or compute, require at least three natural subquestions. If the first expected phenomenon disappears and the whole project collapses, the lead is too fragile.
+
+This is aligned with strong Main/Outstanding work: EMNLP 2025 *Generative or Discriminative?* produces a multi-dimensional decision map; ACL 2025 test-time-scaling work links empirical pattern, theory, prediction and intervention; ACL 2026 Outstanding *CAR-bench* treats agent reliability under uncertainty as a broader scientific object rather than one effect.
+
+**Current implication:** do not force `good` from 3 to 6. L05/L06 and all future leads must pass the new RESEARCH-SPACE ROBUSTNESS gate before entering `good/`.
+
+---
+
 # Critical rule — classic problems are allowed and actively preferred
 
 A pre-LLM classic NLP problem is **not** a novelty failure merely because it was studied in 1991, 2001, or 2011.
