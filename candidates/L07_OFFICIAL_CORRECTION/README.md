@@ -1,10 +1,12 @@
 # L07 — Official Correction ≠ Current Scholarly Claim
 
-**Status:** SERIOUS CANDIDATE / PILOT-READY AFTER DATA-YIELD AUDIT  
+**Status:** DATA GATE PASSED / MINIMUM MODEL PILOT AUTHORIZED
 **Paper mainline:** NOT APPROVED  
 **Target:** NAACL Main  
 **Canonical research package:** this directory  
 **Last audited:** 2026-09-08
+
+> **Execution update:** E000 found a conservative, manually verified T1 yield of **10.99%** of sampled official PubMed correction records (stratified 95% CI **8.69–13.28%**). The direct pairs span numeric/results, methods/entities, qualifiers/prose, and textual table/figure labels or units. L07 survives the data gate, but no model claim or paper mainline is yet established. See [EXPERIMENTS.md](EXPERIMENTS.md) and [results/e000/AUDIT_REPORT.md](results/e000/AUDIT_REPORT.md).
 
 > **Plain-language thesis:** Once a paper is officially corrected, the original statement is part of the historical record but is no longer necessarily the current scholarly claim.
 

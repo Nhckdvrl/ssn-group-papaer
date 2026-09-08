@@ -172,3 +172,16 @@ The candidate lives only if a sufficiently large **substantive proposition-updat
 **YES, current audit.**
 
 Closest work supplies neighboring correction/factuality concepts, but not the same official-scholarly-supersession paper identity.
+
+## 10. Execution-time collision re-audit — 2026-09-08
+
+Closest current ACL-family comparisons kept beside E000 and the next pilot:
+
+- **Knowledge Conflicts for LLMs: A Survey** (EMNLP 2024): context-memory and inter-context conflict taxonomy, but no publisher-authorized update edge or current-scholarly-proposition gold. https://aclanthology.org/2024.emnlp-main.486/
+- **UnSeenTimeQA** (ACL 2025): synthetic time-sensitive reasoning designed to avoid memorization; unlike L07's natural editorial authority relation. https://aclanthology.org/2025.acl-long.94/
+- **Assessing and Mitigating Medical Knowledge Drift and Conflicts in LLMs** (Findings of EMNLP 2025): changing/conflicting clinical guidance, not local correction of a published proposition. https://aclanthology.org/2025.findings-emnlp.38/
+- **MRAG** (Findings of EMNLP 2025): temporal retrieval/ranking over time-sensitive evidence, not supersession licensed by the publisher. https://aclanthology.org/2025.findings-emnlp.167/
+
+Correction-specific meta-research and datasets do exist, including a 2000–2023 JACS correction-notice dataset and studies of citation/practice. They strengthen the natural-object and scale case but do not evaluate current-claim QA/IE or flat-vs-update-state modeling. ACL Anthology's own correction policy is especially relevant: errata must be read alongside the original, while downstream consumers may not propagate updates reliably. https://aclanthology.org/info/corrections/
+
+**Strongest post-audit reviewer compression:** “filter substantive errata, then run temporal QA.” The next pilot must defeat this by crossing official update authority with order/recency controls and flat versus explicit update state. A plain “models can copy the replacement sentence” result is still fatal.

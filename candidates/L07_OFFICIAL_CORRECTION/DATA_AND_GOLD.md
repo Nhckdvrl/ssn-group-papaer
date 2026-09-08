@@ -175,6 +175,10 @@ Do not mix retraction/partial retraction into the first pilot.
 
 ## 12. Data Gate verdict
 
-**PROMISING ENOUGH FOR A PRE-PILOT YIELD AUDIT.**
+**PASSED FOR A MINIMUM MODEL PILOT (E000, 2026-09-08).**
 
-Promotion to `good/` requires a verified proposition-level yield, not just examples.
+E000 sampled 500 records from a complete 121,396-record PubMed query frame with a fixed seed. All 500 had an NLM `ErratumFor` relation and a PMCID, but only 355 PMCID documents were the correction notice itself; in 145 cases the PMCID resolved to the original article. This identity check is mandatory in future collection.
+
+A frozen stratified manual review of 162 notices produced a design-weighted **confirmed T1 yield of 10.99%** of all sampled correction records (95% CI 8.69–13.28%). Eleven additional reviewed records remain `T2_PENDING` and are excluded from confirmed yield until the linked original is checked. The 40 directly observed T1 records cover 33 journals, years 2011–2026, and four correction classes.
+
+At the lower confidence bound, screening about 1.7k records should yield 150 T1 pairs and about 3.5k should yield 300. This is feasible relative to the frame, but the model pilot must still test whether explicit notices make the task trivial. Exact evidence and reproduction pointers are in [results/e000/AUDIT_REPORT.md](results/e000/AUDIT_REPORT.md).
