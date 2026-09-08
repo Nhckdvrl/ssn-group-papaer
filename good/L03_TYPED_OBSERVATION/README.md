@@ -4,7 +4,7 @@
 **Paper mainline:** NOT APPROVED  
 **Target:** NAACL Main  
 **Canonical research package:** this directory  
-**Last audited:** 2026-09-07
+**Last audited:** 2026-09-08
 
 > **Plain-language thesis:** A table cell without an ordinary number is not necessarily “missing.” It can itself encode an official observation state such as not applicable, unavailable, suppressed, or unreliable.
 
@@ -109,7 +109,7 @@ Determine whether real-world TableQA should:
 |---|---|---|
 | REAL OBJECT | **YES** | Official statistical products intrinsically distinguish values from typed non-value states. |
 | SCIENTIFIC TENSION | **YES** | End-to-end documentation reading and explicit status representation are both plausible. |
-| GOOD DATA | **YES** | ACS exposes official estimate/annotation pairs and semantics independently of evaluated models. |
+| GOOD DATA | **YES — strengthened** | ACS exposes official estimate/annotation pairs; Eurostat/SDMX independently exposes machine-readable observation-status flags under a different provider convention. |
 | PAPER-LEVEL NOVELTY | **YES, current audit** | 2026 TableQA work covers referencing errors, irregular tables and missing values, but not yet the same provider-defined typed-observation necessity story. |
 | OUTCOME-ROBUST DECISIVENESS | **YES** | Success, failure, and source-dependent boundaries each change the task/modeling conclusion. |
 
