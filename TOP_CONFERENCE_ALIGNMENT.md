@@ -44,7 +44,7 @@ For every serious candidate, explicitly compare:
 10. **Clarity / reviewer compressibility**
 11. **Research-space robustness** — does the topic open a moderate/large scientific space rather than depend on one fragile effect?
 
-A candidate is not GOOD merely because all five internal gates are technically YES. It must also pass a **top-conference alignment audit**.
+Top-conference alignment is **not a separate bureaucratic gate**. It is a calibration lens applied continuously to the four authoritative gates in `RESEARCH_TOPIC_SELECTION.md`.
 
 ---
 
@@ -142,10 +142,7 @@ Before promotion to good/, write:
 
 ### A. Closest high-level reference papers
 
-At least **3 concrete ACL/EMNLP/NAACL Main papers**, preferably including:
-- at least one Outstanding/Best/Theme paper;
-- at least one paper with a similar **paper identity**, not merely similar topic;
-- at least one paper from a different topic that illustrates the desired scientific shape if necessary.
+Use a **small, sufficient set of the strongest structurally relevant papers**. There is no fixed count or required award-paper composition. Prefer papers that genuinely calibrate the candidate's scientific identity, evidence standard, or nearest novelty boundary.
 
 ### B. Dimension-by-dimension comparison
 
@@ -162,7 +159,7 @@ At least **3 concrete ACL/EMNLP/NAACL Main papers**, preferably including:
 | Breadth / generality | | | |
 | Plain-language identity | | | |
 
-A candidate with one serious FAIL does not enter good/.
+Use this table only when it helps. Different paper identities emphasize different dimensions; do not mechanically score irrelevant rows. A material weakness on a load-bearing dimension blocks promotion.
 
 ### C. Outstanding-level reviewer test
 
@@ -248,9 +245,9 @@ That is much closer to the desired Main/Outstanding identity than:
 
 ---
 
-## 7. Research-space robustness — hard rule (2026-09-08)
+## 7. Research-space robustness — supporting heuristic
 
-Prefer a **research program with a crisp center** over an untouched one-dimensional effect. A serious candidate should normally expose at least 2–4 natural questions before seeing target-model results: a core comparison/causal question, a mechanism or attribution question, a principled boundary/heterogeneity question, and a modeling/evaluation consequence.
+Prefer a **crisp center with enough natural scientific depth** over an untouched one-dimensional effect. Do not require a fixed number or fixed types of subquestions: different paper identities obtain depth through different structures.
 
 KILL / DO NOT PROMOTE when the topic effectively has this shape:
 
@@ -260,10 +257,9 @@ This is stronger than ordinary null-result robustness. A preservation/equivalenc
 
 Before promotion, answer:
 1. What is the broader scientific object or decision problem?
-2. What are at least three natural questions inside this space?
-3. If the first planned effect is absent, which questions remain scientifically live?
-4. Can a mechanism, boundary, or decision-map paper still emerge without inventing post-hoc hypotheses?
-5. Is the scope comparable to strong ACL/EMNLP/NAACL Main work without becoming vague?
+2. Beyond the first result, where does the paper obtain real depth?
+3. If the first planned effect is weak or absent, is there still a scientifically meaningful answer or diagnosis?
+4. Is the scope comparable to strong ACL/EMNLP/NAACL Main work without padding or vagueness?
 
 Conference-alignment examples:
 - EMNLP 2025 Outstanding, *Generative or Discriminative?*, maps accuracy, sample efficiency, calibration, robustness, ordinality, latency, and data constraints rather than betting on one metric.
@@ -289,10 +285,10 @@ If NO, the topic is too fragile even when a technical null-result narrative can 
 
 L02 is the canonical warning example: literature-level plausibility and an interesting hypothesized distinction did not compensate for a mismatch between DNI/INI labels and the actual concrete-support estimand. The route correctly died after a small pilot and gold audit.
 
-### Direct-gold requirement
+### Identification requirement
 
-For every load-bearing claim, write the exact mapping:
+For every load-bearing claim, write the exact identification chain:
 
-> natural observation / released annotation / external state → scientific quantity being estimated.
+> data / observation / controlled manipulation / intervention → scientific quantity → claim.
 
-If the mapping requires an interpretive leap such as “label X probably means candidate Y is supported,” GOOD DATA is not yet YES.
+Existing external gold is excellent when appropriate, but it is not universally required. A controlled or causal design may identify a quantity without a pre-existing label. What is forbidden is an unjustified proxy leap such as “label X probably means Y.”
