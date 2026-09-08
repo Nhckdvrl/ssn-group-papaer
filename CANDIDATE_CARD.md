@@ -1,84 +1,47 @@
-# Candidate Card — Compact Pre-Pilot Template
+# Candidate Card — Compact Pre-Pilot Audit
 
-> No target-model compute before this card is complete.
+> Complete only for serious leads. No target-model compute before this audit is satisfactory.
 
-- **Candidate ID / short name:**
-- **Status:** SEARCH / AUDIT / PILOT-AUTHORIZED / KILL
+- **Candidate / status:**
 
-## 1. One-sentence RQ
->
+## 1. RQ
+**One sentence:**  
+**Plain example:**  
+**Why worth knowing / what is genuinely uncertain:**
 
-## 2. Plain example + why ACL/NLP cares
->
+## 2. Data / evidence
+- Source or construction plan:
+- Identification chain: **data / observation / manipulation / intervention → scientific quantity → claim**
+- Why this is valid:
+- If constructed: why necessary, minimal, natural, and independently validated:
 
-## 3. Scientific tension
-**Account A:**  
-**Account B:**  
-**Possible principled boundary:**  
-Why are both accounts plausible before results?
-
-## 4. Data / evidence + direct identification
-- Existing dataset/resource or constructed data plan:
-- Exact version/provenance:
-- Natural unit:
-- Gold/target/manipulation:
-- Explicit mapping: **observation / annotation / controlled manipulation / real state → scientific quantity**
-- If constructing data, why construction is necessary and how naturalness/quality are protected:
-- Why this directly identifies the claim rather than proxying a neighboring concept:
-
-## 5. Novelty assassination
-- Classical parent:
-- Closest modern collision:
-- What prior work owns:
-- What it does not own:
+## 3. Novelty
+- Closest classic/modern work:
+- What prior work already owns:
 - Reviewer compression: **“This is just ______.”**
 - Why that compression is false:
+- **Our new narrative / idea or decisive operation / central claim:**
 
-## 6. Our new paper identity
-- **New narrative:**
-- **New idea / decisive operation:**
-- **New core claim:**
+## 4. Paper depth
+- What remains beyond the first result?
+- Important mechanism / boundary / validation / consequence:
+- Plausible claim architecture (C1/C2/C3 or equivalent):
+- If the expected first effect is weak/absent, what is still scientifically meaningful?
 
-## 7. Research-space robustness
-Natural subquestions:
-1.
-2.
-3.
+## 5. Main-level calibration
+- Strongest structurally relevant ACL/EMNLP/NAACL/top-venue references:
+- For this paper identity, which dimensions matter?
+- Where are we weaker than the reference bar?
 
-If the first expected effect disappears, what remains scientifically live?
+## 6. Minimum decisive pilot
+- Smallest useful experiment:
+- What outcome would strengthen the topic?
+- What outcome/data/literature finding would kill or reconstruct it?
 
-## 8. Outcome map
-- A wins →
-- B wins →
-- boundary/heterogeneity →
-- meaningful near-null/preservation →
+## Final four gates
+- Worthwhile RQ: YES / NO
+- Credible identification/evidence: YES / NO
+- New paper identity: YES / NO
+- Main-level scientific depth: YES / NO
 
-## 9. Paper architecture
-- **C1 — Core answer:**
-- **C2 — Mechanism / explanation / boundary:**
-- **C3 — Consequence for NLP:**
-
-## 10. Top-conference alignment
-Use the strongest structurally relevant ACL/EMNLP/NAACL Main papers (plus other top venues when appropriate):
-1.
-2.
-3. *(add/remove as needed; no fixed count)*
-
-State which dimensions matter for **this paper identity** and compare accordingly.
-
-## 11. Minimum decisive pilot
-- Smallest experiment:
-- Models/data required:
-- Success is informative because:
-- Failure/reverse is informative because:
-- Exact kill conditions:
-
-## Final verdict
-- Natural/interesting RQ: YES / NO
-- Non-trivial scientific tension: YES / NO
-- High-quality data/evidence with direct identification: YES / NO
-- New paper-level narrative/idea/claim: YES / NO
-- Research-space + outcome robustness: YES / NO
-- Main-level alignment: YES / NO
-
-**Any NO blocks promotion.**
+**Any material NO blocks promotion.**
