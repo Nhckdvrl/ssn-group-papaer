@@ -6,11 +6,11 @@ Current state:
 
 | ID | Candidate | Canonical package | Status |
 |---|---|---|---|
-| **L02** | Semantic Role Completion ≠ Referential Commitment | [good/L02_REFERENTIAL_COMMITMENT/](L02_REFERENTIAL_COMMITMENT/) | **PILOT-AUTHORIZED** |
+| L02 | Semantic Role Completion ≠ Referential Commitment | [historical package](L02_REFERENTIAL_COMMITMENT/) | **NO-GO / K175 — NOT ACTIVE** |
 | **L03** | Table Value ≠ Observation Status | [good/L03_TYPED_OBSERVATION/](L03_TYPED_OBSERVATION/) | **PILOT-AUTHORIZED** |
 | **L04** | Morphological Inflection Has Realization Cardinality | [good/L04_REALIZATION_CARDINALITY/](L04_REALIZATION_CARDINALITY/) | **PILOT-AUTHORIZED / NOVELTY-FRAGILE** |
 
-# Current scoreboard: 3 / 5
+# Active pilot-authorized survivors: 2 — L03, L04
 
 # Approved paper mainline: NONE
 
@@ -185,4 +185,22 @@ Every current and future good candidate must be continuously compared to real hi
 
 See [../TOP_CONFERENCE_ALIGNMENT.md](../TOP_CONFERENCE_ALIGNMENT.md).
 
-L02/L03/L04 are **survivors, not exemplars**. They can still be demoted if deeper alignment review shows they are below this external bar.
+L03/L04 are **survivors, not exemplars**. L02 demonstrates that a previously pilot-authorized candidate can and should be killed after data/gold and post-pilot re-audit.
+
+
+---
+
+## L02 closure lesson — 2026-09-08
+
+L02 is retained in this directory only because its experiment package is valuable historical evidence. It is **not an active good candidate**.
+
+The route was killed after a completed 42-example natural-data diagnostic with 504 prediction records across two models and two diagnostic formats, plus UCCA/coreference/substitute-data review. Both models scored 20/42 on the full-context direct-label diagnostic, but low accuracy is not the core reason for the kill.
+
+The decisive failure is methodological and narrative:
+- DNI/INI does not directly provide gold for whether a proposed concrete filler is supported by the discourse;
+- after correcting that mismatch, the current evidence does not produce a distinct Main-level modeling/evaluation consequence.
+
+Future promotion must therefore require:
+1. **direct correspondence between gold and the load-bearing estimand**;
+2. **a research space that survives absence of the first expected phenomenon**;
+3. **no pressure to retain a topic merely because search or pilot work has already been invested**.
