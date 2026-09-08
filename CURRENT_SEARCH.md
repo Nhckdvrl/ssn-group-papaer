@@ -36,7 +36,7 @@ The stale K161/K162 header has been repaired against the authoritative ledger.
 
 # Search correction — prefer research spaces over fragile axes
 
-**Effective 2026-09-08. This rule supersedes any pressure to fill a numeric candidate quota.**
+**Effective 2026-09-08. The search target remains six total serious candidates (three existing + up to three new), but the number is not a promotion quota and never lowers the scientific bar.**
 
 Do not promote a lead merely because one new causal/measurement axis seems unoccupied. Prefer a crisp natural object with a moderate/large research space, several pre-existing scientific questions, and multiple informative outcome paths.
 
@@ -44,7 +44,7 @@ Before substantial search or compute, require at least three natural subquestion
 
 This is aligned with strong Main/Outstanding work: EMNLP 2025 *Generative or Discriminative?* produces a multi-dimensional decision map; ACL 2025 test-time-scaling work links empirical pattern, theory, prediction and intervention; ACL 2026 Outstanding *CAR-bench* treats agent reliability under uncertainty as a broader scientific object rather than one effect.
 
-**Current implication:** do not force `good` from 3 to 6. L05/L06 and all future leads must pass the new RESEARCH-SPACE ROBUSTNESS gate before entering `good/`.
+**Current implication:** continue searching toward `good = 6`, but promote only candidates that independently pass every gate, including RESEARCH-SPACE ROBUSTNESS. Ending below six is preferable to promoting a fragile or below-Main topic.
 
 ---
 
