@@ -26,3 +26,11 @@ Strongest attack after the result: **“Mind the DH Gap plus a standard thought-
 **PASS for pilot.** No located paper owns the full identity:
 
 > established reasoning-induced invariance -> sibling-branch training-regime localization -> canonicalization versus preserved-context/use/deliberation distinction -> decision-specific causal test -> boundary and reinterpretation of rationality.
+
+## Additional compression threats checked on 2026-09-09
+
+- Chen et al., *How Do Answer Tokens Read Reasoning Traces? Self-Reading Patterns in Thinking LLMs for Quantitative Reasoning* (Findings of ACL 2026) studies how answer tokens integrate reasoning traces. Generic “where does the answer read the trace?” is not an available L12 paper identity. <https://aclanthology.org/2026.findings-acl.1507/>
+- Petersen et al., *Sense and Sensitivity* (CoNLL 2026) independently reports that enabling reasoning improves robustness to irrelevant prompt features. It strengthens the breadth of reasoning-associated robustness but does not distinguish selective abstraction from context flattening. <https://aclanthology.org/2026.conll-main.4/>
+- Linzmayer and Elhadad, *Untangling the Mechanisms of Misleading Context in Medical Question Answering* (arXiv:2609.02754) shows different misleading cues can corrupt reasoning through different temporal mechanisms. It raises the bar for generic “context enters reasoning here” claims. <https://arxiv.org/abs/2609.02754>
+
+**Updated reviewer-compression rule:** if L12 stops at answer-token readout, trace injection, or generic context sensitivity, it is too close to existing work. The surviving identity must explain why the reasoning-oriented branch is selectively or indiscriminately invariant across context changes that differ in semantic relevance.

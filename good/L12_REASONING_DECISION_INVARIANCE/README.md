@@ -1,235 +1,131 @@
-# L12 — Reasoning Training: Canonicalization or Policy Override?
+# L12 — Reasoning-Induced Invariance
 
-**Status:** PILOT-AUTHORIZED  
+## Semantic Abstraction or Causal Disengagement?
+
+**Status:** **A / CONTINUE-PILOT / Rank 2**  
 **Paper mainline:** NOT APPROVED  
 **Target:** NAACL Main  
-**Canonical research package:** this directory  
 **Last audited:** 2026-09-09
 
-> **Plain-language thesis:** Reasoning-trained models can become much less sensitive to how the same risky choice is framed or presented. The open question is whether reasoning training actually converts different presentations into a common internal decision representation, or whether the framing information survives internally but is simply overruled by a stronger decision policy.
+> **Natural question:** When reasoning-oriented post-training makes a model nearly invariant to fact-equivalent presentation, did it learn what contextual variation is semantically irrelevant, or did context simply lose causal control over the decision?
 
 ---
 
-## 1. One-sentence research question
+# 1. Established behavioral substrate
 
-> When reasoning post-training makes an LLM behave more invariantly across equivalent decision framings, does the training canonicalize the underlying representation, or does it preserve contextual/framing information while changing how that information controls the final choice?
+ACL 2026 Outstanding **Mind the (DH) Gap!** reports that reasoning-oriented models are substantially less sensitive to order, gain/loss framing, explanations, and description-vs-history presentation, and points to mathematical reasoning training as an important differentiator.
 
-Plain version:
+Our OLMo sibling-branch pilot independently reproduces a strong contrast on the three published prospects:
 
-> **Did the model learn to see different framings as the same problem, or did it merely learn to ignore the framing when choosing?**
+- Instruct-SFT frame consistency ≈ **0.817**;
+- Think-SFT ≈ **0.992**;
+- difference ≈ **+0.175**, bootstrap CI **[0.025, 0.367]**.
 
-That distinction changes what we mean when we say reasoning training makes a model “more rational.”
-
----
-
-## 2. Established parent phenomenon
-
-ACL 2026 Outstanding Paper **“Mind the (DH) Gap!”** studies risky decisions across many frontier/open models and matched manipulations.
-
-The paper reports that reasoning-oriented models are often:
-- closer to expected-payoff-maximizing behavior;
-- less sensitive to gain/loss framing;
-- less sensitive to option order;
-- less sensitive to some explanation manipulations;
-- less separated by description-vs-experience format.
-
-It further studies open-model training stages and argues that reasoning-oriented SFT is an important differentiator.
-
-Primary source:
-- https://aclanthology.org/2026.acl-long.479/
-
-Therefore L12 does **not** ask:
-> “Are reasoning models less framing-sensitive?”
-
-The parent has already established the behavioral phenomenon.
-
-L12 asks:
-> **What computation changed to produce that invariance?**
+L12 is no longer gambling on the parent behavior.
 
 ---
 
-## 3. Why the question matters
+# 2. What is already known locally
 
-Two models can produce the same invariant answer for very different reasons.
+### Supported
+- Think-SFT is much more presentation-invariant than sibling Instruct-SFT;
+- gain/loss identity remains recoverable in early/middle prompt representations;
+- a complete natural reasoning trajectory strongly affects final A/B readout.
 
-### Possibility 1
-The model transforms different surface forms into a shared task-relevant representation.
+### Invalid / insufficient
+- injecting `</think>` did **not** create a strict no-reasoning mode;
+- decodability does not imply causal use;
+- generic thought injection is already prior work;
+- answer-free arithmetic snippets did not reproduce the large natural-trace effect.
 
-That would mean reasoning training creates a form of:
-> **semantic canonicalization / abstraction.**
-
-### Possibility 2
-The model still represents the framing strongly, but a later policy/readout component dominates the choice.
-
-That would mean:
-> **behavioral invariance does not imply representational invariance.**
-
-These imply different conclusions about:
-- reasoning post-training;
-- robustness;
-- hidden context sensitivity;
-- interpretability;
-- transfer outside easy arithmetic decisions.
+The mechanism remains open.
 
 ---
 
-## 4. Current scientific accounts
+# 3. Scientific accounts
 
-These are working accounts, not a fixed mechanistic ontology.
+### Selective semantic abstraction
+The model learns that some presentation differences do not change task semantics and constructs the same decision state across them.
 
-### Account A — Representational canonicalization
-Equivalent risky choices converge toward a shared representation of:
-- probability;
-- payoff;
-- expected value;
-- option preference.
+### Causal disengagement / context flattening
+Context remains represented, but post-training broadly weakens its influence on action selection—even when some context should matter.
 
-Prediction:
-- framing/interface identity becomes less separable or less causally relevant after reasoning SFT;
-- cross-frame representations become more similar in task-relevant layers/subspaces.
+### Deliberative reconstruction
+Prompt representations retain context differences while the reasoning trajectory reconstructs a normalized decision state.
 
-### Account B — Policy/readout override
-Framing information remains available, but the final action policy relies much more strongly on an expected-value / calculation-oriented signal.
+### Specialized arithmetic policy
+The effect is strong mainly when risky choice can be converted into explicit arithmetic.
 
-Prediction:
-- framing remains decodable or causally recoverable;
-- weakening/altering the late decision signal can restore framing sensitivity.
+### Another stronger account
+Allowed if it explains the established branch contrast and survives causal tests.
 
-### Account C — Inference-time deliberation
-The weights may not be invariant by themselves. A reasoning trace may recompute the problem and wash out the initial framing.
-
-Prediction:
-- invariance depends strongly on reasoning mode / deliberation path;
-- direct/no-think variants preserve more sensitivity.
-
-### Account D — Arithmetic specialization / boundary
-The apparent invariance may hold mainly when the choice is easily reduced to explicit arithmetic.
-
-Prediction:
-- preserve the same uncertainty/choice structure but reduce arithmetic transparency;
-- framing sensitivity may reappear.
-
-### Account E — Another training-induced mechanism
-Allowed if it yields a clearer causal explanation.
-
-Do not force the paper into A–D.
+Do not force a binary canonicalization-vs-override story.
 
 ---
 
-## 5. Why the data situation is unusually good
+# 4. Next load-bearing boundary
 
-The parent provides:
-- matched risky-choice stimuli;
-- explicit framing manipulations;
-- a strong established behavioral effect.
+Before more generic patching, distinguish:
 
-Open OLMo-style releases provide a particularly useful **shared-base branch design**:
-- `Olmo-3-7B` is the common base;
-- `Olmo-3-7B-Instruct-SFT` and `Olmo-3-7B-Think-SFT` are sibling SFT branches from that base;
-- each branch also exposes later DPO/final checkpoints.
+## Normatively irrelevant variation
+The option distributions/decision facts are unchanged; presentation changes only. A well-behaved decision system should be invariant.
 
-This is not a literal sequential Instruct-SFT → Think-SFT transition. The cleaner identification is to compare **base→Instruct** and **base→Think** changes, then use within-branch later stages where useful. This avoids unrelated proprietary-model comparisons while preserving the training-regime question.
+## Decision-relevant variation
+A minimal matched factual change alters payoff/probability information enough that the objectively EV-preferred option changes. A well-behaved system should be sensitive.
 
----
+This asks whether Think-SFT is **selectively invariant** or simply **less context-sensitive**.
 
-## 6. Paper identity
-
-Preferred identity:
-
-> **Established reasoning-induced decision invariance  
-> → identify whether the change occurs in representation, deliberation, or decision policy  
-> → use shared-base branch comparisons and causal/mechanistic tests  
-> → identify boundaries where invariance holds or fails  
-> → reinterpret what reasoning-induced “rationality” actually means.**
-
-The exact interpretability method is intentionally not fixed.
-
-### Not the identity:
-- another cognitive-bias benchmark;
-- “reasoning models are more rational”;
-- one more framing-effect survey;
-- probe-only representation analysis;
-- a generic activation-steering paper.
+Both outcomes are scientifically meaningful.
 
 ---
 
-## 7. Flexible paper depth
+# 5. Paper identity
 
-Possible strong paper shapes include:
+> established reasoning-induced invariance  
+> → selective semantic abstraction vs causal disengagement  
+> → relevant/irrelevant context boundary  
+> → causal decision-state construction  
+> → reinterpret what “reasoning makes models more rational” means
 
-### Canonicalization story
-Reasoning training genuinely maps different interfaces to a shared internal decision variable.
-
-### Suppression story
-Surface/context information remains intact but is downstream-suppressed by a stronger decision policy.
-
-### Deliberation story
-The main source of invariance is inference-time reasoning rather than a static representational rewrite.
-
-### Boundary story
-Invariance depends on whether the task can be converted into an explicit arithmetic representation.
-
-### Training-regime story
-A specific reasoning-oriented post-training regime reorganizes how contextual information influences choice.
-
-Any can support the topic if the evidence is decisive and the paper remains Main-level.
+Not the identity:
+- another framing benchmark;
+- frame probes;
+- thought injection;
+- answer-token attention;
+- “layer X contains framing”;
+- generic reasoning-vs-instruction control.
 
 ---
 
-## 8. Six selection gates
+# 6. Training-attribution caveat
 
-| Gate | Verdict | Why |
-|---|---|---|
-| Natural / important | **PASS++** | Same choice, different framing, different or invariant decision is immediately understandable. |
-| Genuine tension | **PASS++** | Canonicalization, suppression, deliberation and specialization make different predictions. |
-| Data / identification | **PASS++** | Parent stimuli + a shared-base instruct-vs-reasoning branch design provide unusually controlled evidence. |
-| Paper-level novelty | **PASS** | Related work owns behavioral framing effects and some representation studies, but not this full shared-base training-regime mechanism story. |
-| Outcome robustness | **PASS++** | Every major account produces a meaningful reinterpretation/boundary. |
-| Main-level calibration | **PASS++** | Strong parent, simple question, causal mechanism opportunity, clear consequence. |
+`Olmo-3-7B-Instruct-SFT` and `Olmo-3-7B-Think-SFT` are sibling branches from a common base and use native chat templates.
 
----
+Do **not** claim strict one-variable causal training attribution.
 
-## 9. Reviewer-compression attacks
+Safe current claim:
+> matched reasoning-oriented and instruction-oriented sibling branches exhibit a reproducible difference.
 
-### “This is just Mind the (DH) Gap! + probes.”
-Fatal if the paper only adds decodability plots.
-
-### “This is just another framing-effects paper.”
-Fatal if the project expands horizontally over many biases without mechanism.
-
-### “This is just activation patching on risky choice.”
-Fatal if the method becomes the paper rather than the scientific question.
-
-The paper must distinguish **why training-induced invariance appears** and what that says about reasoning models.
+Seek cleaner lineage/training evidence before stronger attribution.
 
 ---
 
-## 10. Main-level standard
+# 7. Current gates
 
-Methods are flexible, but the final paper should match strong ACL/EMNLP/NAACL Main work on:
-- naturalness of the central question;
-- quality of the controlled comparison;
-- causal/mechanistic leverage;
-- paper-level novelty;
-- breadth through a meaningful boundary rather than benchmark accumulation;
-- a conclusion that changes how we interpret reasoning post-training.
+| Gate | Verdict |
+|---|---|
+| Natural / important | **PASS++** |
+| Scientific tension | **PASS++** |
+| Data / identification | **PASS**, training-attribution caveat |
+| Paper-level novelty | **PASS** |
+| Outcome robustness | **PASS++** |
+| Main-level calibration | **PASS++** |
+| Anomaly robustness | **PASS++** |
+| Why-space / narrative-space | **PASS** |
 
----
+# 8. Immediate work
 
-## 11. Current authorization
+1. **L12-E07 — Relevant-vs-Irrelevant Context Boundary**
+2. **L12-E08 — Conclusion-Free Decision-State Causal Substitution**, only after E07 is stable.
 
-**PILOT-AUTHORIZED.**
-
-This does not mean:
-- canonicalization is expected to win;
-- activation probing is mandatory;
-- OLMo is the only allowable model family;
-- the full paper design is frozen.
-
-It means the question is strong enough to justify the smallest decisive pilot.
-
-See:
-- [DATA_AND_GOLD.md](DATA_AND_GOLD.md)
-- [RELATED_WORK_AND_NOVELTY.md](RELATED_WORK_AND_NOVELTY.md)
-- [RESEARCH_PLAN.md](RESEARCH_PLAN.md)
-- [PILOT_CARD.md](PILOT_CARD.md)
+See [PILOT_CARD.md](PILOT_CARD.md) and the experiment registry.

@@ -83,3 +83,14 @@ The project now resembles a strong Main question with pilot leverage, not yet a 
 ## J. Next Smallest Decisive Experiment
 
 Patch the matched own versus opposite-frame trajectory state into the target computation layer by layer at the pre-answer position, while separately removing explicit conclusion spans. Success requires a localized switch in target-choice margin that survives conclusion removal. Then cross that localized operation with a small arithmetic-transparent versus arithmetic-obscured matched set. This directly tests whether invariance is carried by a constructed decision state rather than generic trace text.
+
+## K. Post-audit sequencing update — 2026-09-09
+
+The next experiment order is revised after the why-space/reviewer-compression audit.
+
+**Run E07 before broad layer-wise patching.** The strongest current compression is “Mind the DH Gap + generic thought injection/readout analysis.” A relevant-vs-irrelevant context boundary creates a paper-level scientific discriminator first:
+
+- selective invariance supports semantic abstraction;
+- lost sensitivity to genuinely decision-relevant changes supports context flattening / causal disengagement.
+
+Only after that boundary is stable should E08 localize the decision state causally using conclusion-free activation substitution. This supersedes the earlier recommendation to start immediately with trajectory patching.

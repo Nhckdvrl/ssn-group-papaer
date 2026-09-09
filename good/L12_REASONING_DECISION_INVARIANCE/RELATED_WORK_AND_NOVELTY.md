@@ -1,183 +1,113 @@
 # L12 — Related Work and Paper-Level Novelty
 
-**Candidate:** Reasoning Training: Canonicalization or Policy Override?  
+**Candidate:** Reasoning-Induced Invariance  
 **Freshness:** 2026-09-09
 
-The novelty standard is paper-level. Nearby framing, bias, reasoning, and interpretability work is expected; it does not kill the topic unless it already owns the full scientific story.
+Novelty is paper-level. Framing, reasoning, context sensitivity, traces, and patching are populated areas; none is novel by itself.
 
 ---
 
-## 1. Direct parent
+# 1. Mind the (DH) Gap! — direct parent
 
-ACL 2026 Outstanding Paper  
-**“Mind the (DH) Gap!”**  
-https://aclanthology.org/2026.acl-long.479/
+ACL 2026 Outstanding  
+<https://aclanthology.org/2026.acl-long.479/>
 
 Owns:
-- broad risky-decision comparison across many models;
-- description-vs-experience / DH-gap analysis;
-- several controlled presentation/framing axes;
-- reasoning-model differences in payoff maximizing and sensitivity;
-- evidence that reasoning-oriented training, including SFT-stage differences in open-model analyses, is important.
+- reasoning-vs-conversational risky-choice behavioral differences;
+- gain/loss/order/explanation/description-history effects;
+- association with mathematical reasoning training.
 
-The parent explicitly provides the phenomenon and first-level training association.
-
-L12 therefore cannot claim:
-- reasoning models are more payoff-maximizing;
-- framing/order effects are reduced;
-- the DH gap differs;
-- reasoning SFT is worth investigating.
-
-Our question begins one level deeper:
-> **what computation changed?**
+L12 cannot claim the behavioral phenomenon. It begins at:
+> **what transformation makes the reasoning-oriented branch invariant?**
 
 ---
 
-## 2. Framing-effect literature
+# 2. Framing Matters
 
-A large literature already studies:
-- gain/loss framing;
-- order effects;
-- description vs experience;
-- cognitive biases in LLMs;
-- rational-choice deviations.
+2026  
+<https://arxiv.org/abs/2605.28188>
 
-This means:
-> another behavioral survey is not novel enough.
+Owns fact-preserving framing sensitivity as an internal/mechanistic object and representation-level interventions.
 
-L12 must use behavior as the starting phenomenon, not the final contribution.
+Therefore “where is framing represented?” or “can framing activations be patched?” is not enough.
+
+L12 must preserve the **reasoning-induced transformation** and its semantic boundary.
 
 ---
 
-## 3. Representation-level framing work
+# 3. Reasoning traces and answer readout
 
-Recent work such as **“Framing Matters” (2026)** studies fact-preserving framing and internal pathways / representation-level interventions.
+ACL 2026 thought-injection work already establishes that changing reasoning traces can causally change outputs.
 
-Representative source:
-- https://arxiv.org/abs/2605.28188
+Findings of ACL 2026 **How Do Answer Tokens Read Reasoning Traces?** studies answer-to-reasoning attention/self-reading:
+<https://aclanthology.org/2026.findings-acl.1507/>
 
-This is an important close neighbor.
+Therefore L12 cannot own:
+- generic trace causality;
+- generic answer-token reading;
+- “the final answer depends on the CoT.”
 
-It owns:
-- internal framing sensitivity as a mechanistic object;
-- representation-level intervention on framing effects.
-
-It does **not** automatically own:
-> **how reasoning-oriented post-training transforms an established framing-sensitive decision computation across shared-base branches and later stages, and whether the resulting behavioral invariance reflects canonicalization or downstream override.**
-
-That shared-base training-regime identity is the key distinction.
+These are tools/constraints, not the paper identity.
 
 ---
 
-## 4. Instruction tuning can increase bias
+# 4. Reasoning and context robustness/control
 
-TACL 2024  
-**“Instructed to Bias: Instruction-Tuned Language Models Exhibit Emergent Cognitive Bias”**  
-https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00673/121541/Instructed-to-Bias-Instruction-Tuned-Language
+ACL 2026 **Scaling Reasoning, Losing Control** shows reasoning improvements can trade off with instruction control.
 
-Owns:
-- evidence that instruction tuning can increase some cognitive biases.
+CoNLL 2026 **Sense and Sensitivity** independently reports that enabling reasoning improves robustness to irrelevant prompt features:
+<https://aclanthology.org/2026.conll-main.4/>
 
-This creates useful broader tension:
-> post-training does not monotonically remove contextual bias.
+September 2026 **Untangling the Mechanisms of Misleading Context in Medical Question Answering** shows different misleading cues can enter reasoning through different temporal mechanisms:
+<https://arxiv.org/abs/2609.02754>
 
-But L12 should not expand into a general catalog of post-training bias.
+These raise the bar for any generic “reasoning ignores context” story.
 
----
-
-## 5. Reasoning vs instruction/control trade-offs
-
-ACL 2026  
-**“Scaling Reasoning, Losing Control”**  
-https://aclanthology.org/2026.acl-long.1878/
-
-Owns:
-- trade-offs between stronger reasoning and instruction adherence/control.
-
-This is related because reasoning can dominate other contextual signals.
-
-But it does not answer:
-> whether equivalent risky-decision framings are internally canonicalized or merely overridden after reasoning training.
+They do **not** answer:
+> **does reasoning-oriented post-training selectively ignore semantically irrelevant variation while preserving sensitivity to decision-relevant information?**
 
 ---
 
-## 6. Mechanistic-interpretability neighborhood
+# 5. What can still be ours
 
-A broad literature uses:
-- linear probes;
-- activation patching;
-- causal tracing;
-- steering;
-- representation similarity;
-- feature directions.
+The surviving full identity is:
 
-No such method is novel by itself.
-
-L12’s novelty must come from:
-> **the training-induced invariance question + shared-base controlled branch comparison + decisive mechanism distinction + consequence for interpreting reasoning-model rationality.**
+1. externally established + independently reproduced reasoning-induced invariance;
+2. distinguish **selective semantic abstraction** from **broader causal disengagement/context flattening**;
+3. use matched irrelevant vs decision-relevant changes with objective decision truth;
+4. localize the constructed decision state causally, not by probe alone;
+5. identify whether deliberation mediates the selective boundary;
+6. derive a consequence for how “reasoning-induced rationality” should be interpreted.
 
 ---
 
-## 7. What can still be ours
-
-Current paper-level ownership:
-
-1. start from a strong, established reasoning-induced decision invariance;
-2. use a shared-base matched-branch comparison rather than unrelated model comparison;
-3. distinguish representational canonicalization from preserved-context/policy override and other plausible accounts;
-4. validate the distinction causally or with equivalent decisive evidence;
-5. identify a meaningful boundary;
-6. reinterpret what “reasoning makes decisions more rational/invariant” actually means.
-
-No single neighboring paper found in the current audit compresses this whole chain.
-
----
-
-## 8. Reviewer compression tests
+# 6. Reviewer compression
 
 ### “Mind the DH Gap + probes”
-Wins if:
-- only decodability/representation plots are added;
-- there is no causal distinction or new conclusion.
+Fatal if L12 stops at decodability.
 
-### “Another framing-effects paper”
-Wins if:
-- the project becomes a broad benchmark.
+### “Mind the DH Gap + thought injection”
+Fatal if E05 is the main mechanism result.
 
 ### “Framing Matters on reasoning models”
-Wins if:
-- the shared-base training-regime question disappears and the paper only studies framing pathways.
+Fatal if training-regime transformation and semantic boundary disappear.
 
-### “Generic activation patching”
-Wins if:
-- the method becomes the identity.
+### “How answer tokens read CoT”
+Fatal if the contribution becomes generic pre-answer/readout localization.
 
----
-
-## 9. Do not over-compress novelty
-
-Do **not** kill the topic because:
-- framing has been studied;
-- risky choice has been studied;
-- activation patching exists;
-- reasoning models have been compared to instruct models.
-
-Those are related-work ingredients.
-
-Kill/reconstruct only if existing work already owns the **full paper**:
-> reasoning-training-induced invariance  
-> + training-regime/branch localization  
-> + canonicalization-vs-override distinction  
-> + decisive causal evidence  
-> + same scientific consequence.
+### “Scaling Reasoning, Losing Control”
+Dangerous if context disengagement is shown only as instruction neglect rather than a matched semantic-relevance boundary.
 
 ---
 
-## 10. Current novelty verdict
+# 7. Why-space verdict
 
-**PASS for pilot authorization.**
+**PASS, but guarded.**
 
-The novelty corridor is strongest when the paper stays focused on:
-> **what training-induced behavioral invariance means internally.**
+The natural remaining question is still broad without naming a layer or method:
 
-Refresh before mainline promotion and whenever the central mechanism/narrative changes.
+> **Why does reasoning-oriented post-training make decisions invariant to presentation, and is that invariance selective for meaning-preserving changes?**
+
+The E07 boundary experiment is also a novelty defense: it prevents collapse into generic framing + trace causality.
+
+Refresh after E07/E08 or any narrative reconstruction.

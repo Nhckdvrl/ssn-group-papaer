@@ -1,108 +1,87 @@
-# L12 — Minimum Decisive Pilot Card
+# L12 — Next Decisive Pilot Card
 
-**Status:** PILOT-AUTHORIZED  
-**Purpose:** establish a clean training-induced invariance transition and determine whether there is enough leverage to separate competing mechanisms.
-
-> This is the current cheapest route, not a fixed full-paper protocol.
-
----
-
-## Pilot question
-
-> In a same-family open model trajectory, does reasoning-oriented training reduce framing sensitivity in a reproducible way, and does the framing information itself disappear or remain internally available after behavior becomes invariant?
+**Experiment:** L12-E07 → gated L12-E08  
+**Status:** CONTINUE-PILOT  
+**Purpose:** distinguish selective semantic abstraction from broader context disengagement before more mechanistic localization.
 
 ---
 
-## Minimal setup
+# Established before this card
 
-Prefer:
-- one public shared-base checkpoint family;
-- common base + matched instruct-SFT / reasoning-SFT sibling branches;
-- 1–3 strong matched decision manipulations from the ACL 2026 parent;
-- enough repeated runs to establish stable choice differences.
+- Think-SFT is far more gain/loss/order invariant than sibling Instruct-SFT;
+- frame identity remains decodable early/mid;
+- complete natural traces causally affect final readout;
+- `</think>` stopping is invalid;
+- answer-free arithmetic snippets do not explain the trace effect.
 
-Candidate axes:
-- gain/loss;
-- description/history;
-- option order.
-
-No need to run all of them if one gives a clean transition.
+None is the final mechanism.
 
 ---
 
-## First behavioral requirement
+# E07a — minimum boundary test
 
-Confirm:
-> the reasoning-oriented branch changes **sensitivity to equivalent presentation** relative to the common base and appropriate instruct branch, not merely overall accuracy or answer style.
+## Data
 
-If no usable transition appears, do not jump to mechanistic tooling.
+Use the **three audited parent prospects** only for route selection.
 
----
+For each:
+- keep equivalent gain/loss/order variants;
+- create a minimal matched factual counterfactual that flips the EV-preferred option.
 
-## First mechanism split
+Freeze edits and gold before model runs.
 
-A cheap first distinction can ask:
+## Models
 
-### Does framing identity remain recoverable after behavioral invariance appears?
+- OLMo-3 Instruct-SFT sibling;
+- OLMo-3 Think-SFT sibling.
 
-If no:
-- canonicalization becomes more plausible.
+Use exact revisions/native templates already audited.
 
-If yes:
-- policy/readout override or deliberation becomes more plausible.
+## Primary outcomes
 
-This alone is **not** the final evidence. It only chooses the next causal experiment.
+Report separately:
+1. equivalent-presentation consistency;
+2. decision-relevant switch accuracy;
+3. paired branch × context-type interaction.
 
----
-
-## Stronger follow-up
-
-Use the simplest causal operation that can answer:
-> is the surviving/disappearing framing signal actually relevant to the final choice?
-
-Possible tools include patching, ablation, steering, cross-checkpoint intervention, or reasoning-mode intervention.
-
-The agent may choose another method if it is cleaner.
+Cluster uncertainty by base prospect. Do not claim final generalization from three prospects.
 
 ---
 
-## Informative branches
+# Interpretation
 
-### A — frame information collapses
-Pursue representational canonicalization.
+### A — selective abstraction
+Think remains sensitive when decision facts change while ignoring equivalent presentation.
 
-### B — frame information survives but no longer controls choice
-Pursue policy/readout suppression.
+**Next:** E08, then expand the controlled set.
 
-### C — invariance depends on reasoning mode
-Pursue deliberation-mediated invariance.
+### B — context flattening
+Think also suppresses genuinely decision-relevant changes.
 
-### D — effect only holds for arithmetic-transparent tasks
-Pursue boundary/specialization.
+**Next:** E08 tests where relevant context loses causal control. This is a strong reinterpretation of “rationality.”
 
-### E — another mechanism emerges
-Reconstruct around it.
+### C — no stable boundary
+Do not jump to more patching. Repair stimulus leverage or reconsider mechanism identity.
 
 ---
 
-## Pilot kill conditions
+# E08 — only after E07
 
-Kill/demote if:
-- no reproducible shared-base branch difference in behavioral invariance exists;
-- shared-base branch differences are too confounded;
-- only probe correlations remain with no path to decisive evidence;
-- the project reduces to another cognitive-bias benchmark.
+Patch/substitute pre-answer internal state from matched donors:
+- equivalent-context donor;
+- decision-changing donor;
+- controls.
 
-Do not kill because canonicalization specifically fails.
+The donor point must precede explicit conclusion/answer text.
+
+Success is not “layer 23 matters.” Success is a causal semantic-selectivity pattern that distinguishes accounts.
 
 ---
 
-## Promotion criterion
+# Stop condition
 
-Keep/promote only if there is a credible route to:
+If E07 has no interpretable branch × context-type difference and no better objective boundary can be constructed, HOLD/KILL before expanding interpretability work.
 
-> **established behavioral anomaly  
-> → independent mechanism question  
-> → decisive evidence  
-> → meaningful boundary/consequence  
-> → paper identity comparable to strong ACL/EMNLP/NAACL Main work.**
+# Continue condition
+
+Continue when either selective abstraction or flattening is clean enough that E08 can causally discriminate how the decision state is constructed.

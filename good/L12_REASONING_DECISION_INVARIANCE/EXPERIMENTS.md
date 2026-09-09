@@ -68,3 +68,31 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Uncertainty:** paired prospect-cluster bootstrap, 5,000 draws.
 - **Interpretation:** correct-over-swapped supports arithmetic-content mediation. It does not by itself distinguish where in the residual stream the computation is represented.
 - **Status:** completed unchanged. Correct calculation did not reliably outperform rule-only or swapped calculation; both prospect-cluster intervals include zero. This weakens an arithmetic-snippet account and limits E05 to complete-trajectory causality.
+
+## L12-E07: Relevant-vs-Irrelevant Context Boundary
+
+- **Linked claim:** L12-C4/L12-C5.
+- **Question:** Does the reasoning-oriented branch become selectively invariant to semantically irrelevant presentation, or broadly less sensitive even when changed information should alter the decision?
+- **Cheapest pilot:** start from the three audited parent prospects.
+  1. **Equivalent variants:** preserve option distributions/decision facts while changing gain/loss, order, or equivalent wording.
+  2. **Decision-changing counterfactuals:** make a minimal matched payoff/probability change so the EV-preferred underlying option flips.
+- **Gold:** computed from displayed payoff/probability facts; no author or LLM-judge label.
+- **Models:** sibling Instruct-SFT and Think-SFT first.
+- **Primary reporting:** equivalent-presentation consistency and decision-relevant switch accuracy separately, plus branch × context-type interaction.
+- **Uncertainty:** cluster at base prospect; the three-prospect run is route selection only.
+- **Interpretation:**
+  - high equivalent invariance + preserved relevant sensitivity → selective semantic abstraction;
+  - high equivalent invariance + reduced relevant sensitivity → context flattening / causal disengagement;
+  - no stable interaction → redesign boundary before mechanistic expansion.
+- **Status:** next decisive behavioral experiment.
+
+## L12-E08: Conclusion-Free Decision-State Causal Substitution
+
+- **Linked claim:** L12-C4/L12-C5.
+- **Prerequisite:** E07 identifies a stable relevant-vs-irrelevant boundary.
+- **Question:** At what computation state does the Think branch distinguish nuisance presentation from decision-relevant information?
+- **Design:** use matched E07 pairs. Choose a pre-answer point before explicit option label/conclusion text. Patch/substitute the corresponding residual state from a matched donor into the target computation, scanning coarsely across layers before refinement.
+- **Donors/controls:** equivalent-presentation donor; decision-changing donor; same-target control donor; random matched donor.
+- **Primary causal signature:** decision-changing donor moves the target-choice margin in the donor-consistent direction while equivalent-presentation donor has substantially weaker effect.
+- **Identity boundary:** no donor reasoning text is appended to the target prompt; the operation tests an internal decision state on a boundary already established behaviorally.
+- **Status:** gated on E07.
