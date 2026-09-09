@@ -19,8 +19,13 @@ def unit_metrics(frame):
     rates = valid.groupby(["prospect", "frame", "order"]).choose_a.mean()
     units = []
     for prospect in sorted(frame.prospect.unique()):
-        gain = np.mean([rates.get((prospect, "gain", order), np.nan) for order in CONFIG["orders"]])
-        loss = np.mean([rates.get((prospect, "loss", order), np.nan) for order in CONFIG["orders"]])
+        frame_consistency = np.mean([
+            1 - abs(
+                rates.get((prospect, "gain", order), np.nan)
+                - (1 - rates.get((prospect, "loss", order), np.nan))
+            )
+            for order in CONFIG["orders"]
+        ])
         order_consistency = np.mean([
             1 - abs(
                 rates.get((prospect, framing, "ab"), np.nan)
@@ -31,7 +36,7 @@ def unit_metrics(frame):
         part = valid[valid.prospect == prospect]
         units.append({
             "prospect": prospect,
-            "frame_consistency": float(1 - abs(gain - (1 - loss))),
+            "frame_consistency": float(frame_consistency),
             "order_consistency": float(order_consistency),
             "ev_consistent_rate": float(
                 (part.underlying_choice == part.gold_underlying).mean()

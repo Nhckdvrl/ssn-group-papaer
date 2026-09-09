@@ -1,6 +1,6 @@
 # L12 Live Related Work and Novelty Audit
 
-**Search date:** 2026-09-09
+**Search date:** 2026-09-10
 
 ## Direct owners
 
@@ -34,6 +34,24 @@ The closest new collision. It frames reasoning-tuned models as switching dynamic
 
 Formalizes and trains an instruction-to-CoT-to-answer causal route while suppressing direct shortcuts. It is close to L12's control-route language, but it proposes a training method rather than explaining the established presentation-invariance transition.
 
+### Making Reasoning Matter - Findings EMNLP 2024
+
+<https://aclanthology.org/2024.findings-emnlp.882/>
+
+Uses causal mediation across twelve LLMs and finds that models do not reliably use their intermediate reasoning steps, then proposes training to improve faithfulness. It owns neither the reasoning-post-training invariance transition nor L12's matched prompt-versus-trajectory control reorganization.
+
+### Measuring Chain of Thought Faithfulness by Unlearning Reasoning Steps - EMNLP 2025 Outstanding
+
+<https://aclanthology.org/2025.emnlp-main.504/>
+
+Tests parametric faithfulness by unlearning reasoning steps across four models and five MCQA datasets. It raises the evidence bar for causal trace claims, but does not connect presentation invariance to a post-training-associated reallocation of control.
+
+### Is Chain-of-Thought Really Not Explainability? - ACL 2026
+
+<https://aclanthology.org/2026.acl-long.2217/>
+
+Shows through causal mediation that non-verbalized hints can still affect predictions through CoT and cautions against lexical-only faithfulness judgments. This reinforces L12's use of causal state intervention rather than lexical trace inspection; it does not own the invariance mechanism question.
+
 ## Evidence-depth comparators
 
 - **Racing Thoughts** (NAACL 2025): computational hypothesis, correlational evidence, causal evidence, then intervention. <https://aclanthology.org/2025.naacl-long.155/>
@@ -56,6 +74,10 @@ It does not yet own the complete L12 identity:
 
 The unique center is not a generic latent state. It is the **mechanistic explanation of presentation invariance as a training-associated reallocation of causal control**.
 
-## Novelty verdict after E10-E11
+## Novelty verdict after E12-E15
 
-**Paper identity survives and now has stimulus breadth.** E09 is essential: without the control factorial, recent work compresses E07-E08. E10 shows the branch-level control reorganization on 36 independent decisions, and E11 replicates the internal state profile on a preregistered 18-decision subset. The remaining empirical vulnerability is checkpoint/model-family breadth, while the remaining conceptual vulnerability is collision with generic latent-policy-state language.
+**Paper identity survives and now has stimulus, checkpoint, and complementary model-family breadth.** E09 remains essential: without the control factorial, recent work compresses E07-E08. E12 shows that the branch-level reorganization persists through the official OLMo DPO continuations. E13 shows an aligned invariance/control transition in Qwen3 with weights fixed, under an explicitly bounded native-route comparison.
+
+This does not license the broad statement that every reasoning model uses an identical architecture. OLMo supplies the clean shared-base branch comparison and internal mediation evidence; Qwen supplies same-weight route triangulation; E14-E15 supply an external Llama-ecosystem replication and DeepSeek state mediation.
+
+The full identity is now an established invariance transition, a distributed trajectory/state mechanism, matched evidence that control is reorganized, checkpoint persistence, and two complementary family validations. Generic CoT faithfulness work can compress the causal-trace ingredient, but not this mechanism-level explanation of a presentation-invariance transition.

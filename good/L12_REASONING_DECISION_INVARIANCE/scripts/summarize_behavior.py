@@ -34,9 +34,13 @@ def metrics(frame):
     rates = valid.assign(a=(valid.underlying_choice == "A").astype(float)).groupby(["prospect", "frame", "order"]).a.mean()
     frame_scores, order_scores = [], []
     for prospect in sorted(frame.prospect.unique()):
-        gain = np.mean([rates.get((prospect, "gain", order), np.nan) for order in ["ab", "ba"]])
-        loss = np.mean([rates.get((prospect, "loss", order), np.nan) for order in ["ab", "ba"]])
-        frame_scores.append(1 - abs(gain - (1 - loss)))
+        frame_scores.append(np.mean([
+            1 - abs(
+                rates.get((prospect, "gain", order), np.nan)
+                - (1 - rates.get((prospect, "loss", order), np.nan))
+            )
+            for order in ["ab", "ba"]
+        ]))
         for framing in ["gain", "loss"]:
             order_scores.append(1 - abs(rates.get((prospect, framing, "ab"), np.nan) - rates.get((prospect, framing, "ba"), np.nan)))
     return float(np.nanmean(frame_scores)), float(np.nanmean(order_scores))
@@ -54,9 +58,9 @@ def bootstrap_components(frame, rng, draws=5000):
                 if n:
                     p = float((choices == "A").mean())
                     rates[:, pi, fi, oi] = rng.binomial(n, p, draws) / n
-    gain = rates[:, :, 0].mean(axis=-1)
-    loss = rates[:, :, 1].mean(axis=-1)
-    frame_scores = 1 - np.abs(gain - (1 - loss))
+    frame_scores = (
+        1 - np.abs(rates[:, :, 0, :] - (1 - rates[:, :, 1, :]))
+    ).mean(axis=-1)
     order_scores = (1 - np.abs(rates[:, :, :, 0] - rates[:, :, :, 1])).mean(axis=-1)
     return prospects, frame_scores, order_scores
 

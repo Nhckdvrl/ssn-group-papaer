@@ -1,41 +1,32 @@
 # L12 Next Decisive Experiment Card
 
-**Experiment:** L12-E12
-**Status:** RUNNABLE; WAITING FOR CHECKPOINT AVAILABILITY
+**Experiment:** Post-E15 construct and claim consolidation
+**Status:** E12-E15 COMPLETE
 
 ## Scientific question
 
-> Does the causal-control reorganization found at the sibling SFT split persist through the documented DPO continuation of both branches?
+> After corrected order-conditional measurement, how strongly does the behavioral invariance transition align with trajectory-relative causal control across the three complementary identification axes?
 
-This is checkpoint breadth, not another search for a local interpretability effect.
+This is a consolidation phase. It should verify the mechanism-phenomenon bridge under the corrected construct rather than add another model or another layer scan.
 
 ## Design
 
-Use the same 222 matched stripped-trajectory pairs from E10 and score the same prompt-frame x trajectory-frame factorial on:
-
-- `allenai/Olmo-3-7B-Instruct-DPO`
-- `allenai/Olmo-3-7B-Think-DPO`
-
-The SFT results are frozen comparators. Official model metadata states:
-
-- Instruct-SFT -> Instruct-DPO
-- Think-SFT -> Think-DPO
+Use existing OLMo, Qwen, and Llama/DeepSeek decision-level results. Recompute only the preregistered exploratory decision-level association under the order-conditional metric and audit whether it adds information beyond the already supported branch/mode/family-level bridge.
 
 ## Primary evidence
 
-> Think-DPO minus Instruct-DPO trajectory-minus-prompt control.
+> A construct-valid, reproducible account of the cross-axis alignment, without treating three heterogeneous comparisons as a single randomized training effect.
 
-The base-decision bootstrap interval must exclude zero and direction should be broadly consistent across the 36 independent decisions.
+The primary unit remains the base decision. Family-level comparisons remain separate estimands; no pooled pseudo-replication across generations, traces, or layers.
 
-Within-branch DPO-minus-SFT changes are secondary and descriptive. This experiment cannot identify DPO as the origin of the original branch divergence.
+If the corrected per-item association remains weak, retain the stronger matched axis-level bridge and report the null rather than manufacturing a post-hoc coupling claim.
 
 ## Execution state
 
-Exact revisions, scripts, and summary code are complete. The first run was stopped before model loading because Hugging Face checkpoint transfer remained below 0.1 MB/s with and without `hf_transfer`.
+E12-E15 code, raw scores, compact summaries, and audits are complete. No additional run is preregistered on this card yet.
 
 Runnable:
 
-- `configs/checkpoint_validation.json`
-- `scripts/run_checkpoint_control.py`
-- `scripts/summarize_checkpoint_control.py`
-- `scripts/run_checkpoint_control.sh`
+- `results/llama_external_seed89/behavior_summary.json`
+- `results/llama_external_seed89/control/summary.json`
+- `results/deepseek_state_seed97/summary.json`

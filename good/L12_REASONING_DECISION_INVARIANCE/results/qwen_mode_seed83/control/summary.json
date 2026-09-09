@@ -1,0 +1,66 @@
+{
+  "design": "L12-E13 Qwen3 native-route prompt-by-trajectory control",
+  "n_trace_pairs": 203,
+  "n_base_decisions": 36,
+  "thinking": {
+    "trajectory_control": {
+      "mean_probability_effect": 0.7129421058346054,
+      "base_decision_bootstrap_ci95": [
+        0.6594839954650542,
+        0.7633021015229465
+      ],
+      "positive_base_decision_fraction": 1.0
+    },
+    "prompt_control": {
+      "mean_probability_effect": 0.04232618097454969,
+      "base_decision_bootstrap_ci95": [
+        0.028597612079092827,
+        0.056696314420936866
+      ],
+      "positive_base_decision_fraction": 0.8888888888888888
+    },
+    "trajectory_minus_prompt": {
+      "mean_probability_effect": 0.6706159248600556,
+      "base_decision_bootstrap_ci95": [
+        0.6127451859017706,
+        0.7272587219705376
+      ],
+      "positive_base_decision_fraction": 1.0
+    }
+  },
+  "non_thinking": {
+    "trajectory_control": {
+      "mean_probability_effect": 0.0826985217770069,
+      "base_decision_bootstrap_ci95": [
+        0.036290886429478496,
+        0.13084611451767614
+      ],
+      "positive_base_decision_fraction": 0.6388888888888888
+    },
+    "prompt_control": {
+      "mean_probability_effect": 0.016202300919648565,
+      "base_decision_bootstrap_ci95": [
+        0.00819563246713694,
+        0.025230924505438568
+      ],
+      "positive_base_decision_fraction": 0.6666666666666666
+    },
+    "trajectory_minus_prompt": {
+      "mean_probability_effect": 0.06649622085735832,
+      "base_decision_bootstrap_ci95": [
+        0.02089686856691964,
+        0.11116699475831981
+      ],
+      "positive_base_decision_fraction": 0.6388888888888888
+    }
+  },
+  "thinking_minus_non_thinking": {
+    "mean_probability_effect": 0.6041197040026973,
+    "base_decision_bootstrap_ci95": [
+      0.5498389458342192,
+      0.6611692427575255
+    ],
+    "positive_base_decision_fraction": 1.0
+  },
+  "identification_boundary": "official routes necessarily place the same stripped text inside the reasoning channel versus after an empty closed reasoning channel; the contrast is route-dependent integration, not a latent mode variable"
+}

@@ -1,6 +1,6 @@
 # L12 Experiment Registry
 
-**Updated:** 2026-09-09
+**Updated:** 2026-09-10
 
 ## L12-E01: Parent Data and Stimulus Audit
 
@@ -123,7 +123,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Uncertainty:** base-decision cluster bootstrap; report stratum-level heterogeneity rather than treating traces as independent.
 - **Exclusions:** frozen before model scoring; invalid or unpaired traces are reported, never silently replaced after inspecting model outcomes.
 - **Secondary exploratory bridge (frozen before causal scoring):** Spearman association across base decisions between the sibling frame-consistency change and sibling trajectory-minus-prompt control change. This is not required for C3 because ceiling effects can attenuate it.
-- **Status:** completed. The 36-unit audit passes all balance/uniqueness checks. Instruct-SFT frame consistency = **0.729 [0.670, 0.785]**; Think-SFT = **0.977 [0.960, 0.993]** on 35 analyzable decisions; difference = **+0.242 [0.179, 0.302]**. One Think cell had no valid completion; assigning its unit the worst/best possible consistency gives mean-difference bounds **[0.221, 0.249]**. Think-minus-Instruct trajectory-minus-prompt control = **+0.399 [0.337, 0.464]**, positive on **36/36** base decisions. The exploratory across-decision association with the behavioral difference is not supported (Spearman rho = -0.203, p = 0.243) and is not promoted to a claim.
+- **Status:** completed. The 36-unit audit passes all balance/uniqueness checks. Order-conditional Instruct-SFT frame consistency = **0.674 [0.618, 0.729]**; Think-SFT = **0.977 [0.960, 0.993]** on 35 analyzable decisions; difference = **+0.299 [0.239, 0.357]**. One Think cell had no valid completion; assigning its unit the worst/best possible consistency gives mean-difference bounds **[0.277, 0.304]**. Think-minus-Instruct trajectory-minus-prompt control = **+0.399 [0.337, 0.464]**, positive on **36/36** base decisions. The corrected exploratory item association is null (rho = -0.001, p = 0.997) and is not promoted to a claim.
 
 ## L12-E11: Stratified Decision-State Replication
 
@@ -145,4 +145,43 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Primary signature:** Think-DPO minus Instruct-DPO trajectory-minus-prompt control is positive with a base-decision bootstrap interval excluding zero and consistent direction across decisions.
 - **Secondary:** DPO-minus-SFT change within each branch is descriptive. DPO is not treated as the origin of the branch difference.
 - **Attribution boundary:** this tests persistence over a documented checkpoint axis, not an additional model family and not one-variable attribution of the original SFT divergence.
-- **Status:** runnable and revisions audited. Execution was stopped before model loading because first-time Hugging Face transfer remained below 0.1 MB/s with and without `hf_transfer`, implying a multi-hour external I/O wait. No E12 result is claimed.
+- **Result:** Think-DPO minus Instruct-DPO trajectory-minus-prompt control = **+0.472 [0.401, 0.555]**, positive on **36/36** decisions. The corresponding branch effects are **+0.565 [0.518, 0.611]** and **+0.093 [0.023, 0.158]**. Relative to the frozen SFT branch difference, the DPO contrast is larger by a secondary **+0.073 [0.016, 0.133]**.
+- **Status:** completed. This supports persistence and modest amplification over the documented continuation axis; it does not attribute the original branch difference to DPO.
+
+## L12-E13: Qwen3 Same-Weight Mode Validation
+
+- **Linked claim:** cross-family and same-weight mode breadth for L12-C3.
+- **Question:** with weights fixed, does Qwen3's official hard thinking switch jointly change presentation invariance and trajectory-relative causal control?
+- **Model:** `Qwen/Qwen3-8B`, revision `b968826d9c46dd6066d109eabc6255188de91218`.
+- **Identification:** compare `enable_thinking=True` and `False` using the same checkpoint, 36 E10 decisions, prompt text, sampling count, and decoding distribution. Only the official chat-template switch changes.
+- **Behavior phase:** 36 decisions x gain/loss x both orders x 4 generations. Primary metric is thinking-minus-non-thinking frame consistency with a base-decision bootstrap.
+- **Gate:** run the causal-control phase only if behavior shows a stable mode contrast or a scientifically meaningful heterogeneous boundary.
+- **Control-phase constraint:** use natural thinking-mode stripped trajectories, but freeze a placement/readout construction that does not silently turn the non-thinking condition back into a thinking prefix. Report any unavoidable positional/template asymmetry.
+- **Behavior result:** completed. Thinking frame consistency = **1.000 [1.000, 1.000]** on 35 analyzable decisions; non-thinking = **0.160 [0.087, 0.240]** on all 36; difference = **+0.836 [0.757, 0.911]**, positive on **35/35** analyzable units. Thinking/non-thinking EV consistency = **1.000/0.531**. Missing-unit worst/best mean-difference bounds are **[0.813, 0.840]**.
+- **Trajectory audit:** 483/576 thinking generations produced valid closed traces; all 483 had terminal conclusions removed, none retained a decision marker, and 203 matched gain/loss pairs cover all 36 decisions.
+- **Frozen control construction:** in the thinking route, stripped text occupies the native `<think>...</think>` channel; in the non-thinking route, the official template first emits an empty closed think block and the identical stripped text then occupies the answer channel. This preserves the official mode routes but necessarily changes channel/position. The comparison identifies route-dependent integration, not a persistent hidden mode variable.
+- **Control result:** thinking-route trajectory-minus-prompt control = **+0.671 [0.613, 0.727]**; non-thinking route = **+0.066 [0.021, 0.111]**. The same-weight route difference is **+0.604 [0.550, 0.661]**, positive on **36/36** decisions.
+- **Status:** completed. The behavioral and causal-control changes align under fixed weights, but the claim remains route-dependent integration because channel/position are inseparable from the official hard switch.
+
+## L12-E14: Llama-Ecosystem External Replication
+
+- **Question:** does the prompt-to-trajectory control contrast replicate between standard instruction and reasoning-specialized models in a separate Llama ecosystem?
+- **Models:** official DeepSeek revision `6a6f4aa4197940add57724a7707d069478df56b1`; Meta scientific identity at official revision `0e9e39f249a16976918f6564b8830bc894c89659`, loaded through the audited `NousResearch` mirror revision `d10aef7999a2b5ba950ab3974312feeedbfe0b77` because official gated access returned 403. Core config/index/tokenizer vocabulary and all four weight-pointer Git objects match the official public tree; tokenizer-template metadata provenance remains the mirror.
+- **Role:** external replication only. Differences in post-training data, pipeline, tokenizer, and configuration prevent training attribution.
+- **Funnel:** 36-unit behavior and E09-style control first; state substitution on 12-18 units only if the causal-control pattern passes.
+- **Behavior parser audit:** the generic post-think parser incorrectly selected the first option mention when DeepSeek repeated analysis after `</think>`. E14 now uses an audited terminal-answer parser (direct, boxed, answer-field, decision-field, choice-verb, terminal-relation, terminal-label); 540/576 generations are valid. All behavior statistics below were regenerated from raw continuations.
+- **Behavior result:** Llama-Instruct frame consistency = **0.000 [0.000, 0.000]** under its displayed-A policy; DeepSeek = **0.947 [0.916, 0.975]**; DeepSeek-minus-Llama = **+0.947 [0.913, 0.976]**. EV consistency is **0.500/0.967**.
+- **Control result:** DeepSeek trajectory-minus-prompt control = **+0.095 [0.067, 0.125]**; Llama-Instruct = **+0.028 [0.019, 0.036]**; external difference = **+0.067 [0.037, 0.099]**, positive on 27/36 decisions.
+- **Status:** completed. After terminal-answer parser correction and order-conditional metric validation, the behavioral and causal-control transitions align in the external ecosystem. This supports cross-family replication, not one-variable training attribution.
+
+## L12-E15: DeepSeek External Decision-State Mediation
+
+- **Question:** is DeepSeek's stronger text-level trajectory control carried by a pre-answer internal decision state, or is E14 only a surface prefix/readout phenomenon?
+- **Model:** exact official `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` revision from E14.
+- **Units:** the preregistered 18-decision factorial subset already used in E11; order `ab`; lowest valid matched gain/loss sample per decision; both target directions.
+- **Intervention:** substitute the donor's final-prefix residual state into the target at every second decoder layer plus the final layer. Donor and target share decision/order and differ in frame and gold direction; no donor text enters the target.
+- **Primary outcome:** donor-directed final-layer margin shift with a base-decision bootstrap and direction fraction. Layer profile is localization evidence, not an independent claim.
+- **Gate:** a stable donor-directed late-layer effect supports external state mediation. Null or incoherent results retain E14 as text-route breadth but block a cross-family internal-mechanism claim.
+- **Result:** early-layer shifts are near zero; the interval first excludes zero at layer 14 and remains positive through the final layer. Layer 31 donor shift = **+1.222 [0.299, 2.181]**, positive on **11/18** decisions, donor flip rate **0.556**, and mean patched target margin **-0.611**.
+- **Validity:** none of the 18 selected donor keys belongs to the nine E14 traces for which the terminal-stripping heuristic removed no segment.
+- **Status:** completed. External decision-state mediation is supported, but its unit consistency is weaker than OLMo and no shared layer-location claim is made.

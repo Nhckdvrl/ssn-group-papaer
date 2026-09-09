@@ -1,6 +1,6 @@
 # L12 Parent, Stimulus, and Checkpoint Audit
 
-**Date:** 2026-09-09
+**Date:** 2026-09-10
 
 ## Parent Artifacts
 
@@ -63,4 +63,22 @@ Official Hugging Face metadata identifies exact continuations and revisions:
 - `Instruct-SFT -> Instruct-DPO`: `b33130b7de49f0c2553b5c2b3bc8409ff3e627d1`
 - `Think-SFT -> Think-DPO`: `7b18bf927b430ff06376fdfa5610eb3b1b6a5c38`
 
-The E12 execution attempt was stopped before loading because external weight transfer was below 0.1 MB/s. Model weights live only in the external Hugging Face cache and are never repository artifacts.
+Both exact safetensors snapshots were subsequently cached outside the repository and E12 completed. Each branch produced 888 factorial score rows over the same 36 base decisions and frozen E10 trajectory pairs. The Think-minus-Instruct DPO control difference is +0.472 [0.401, 0.555], positive for every decision. Model weights remain external cache artifacts.
+
+## Qwen3 Same-Weight Route Audit
+
+- Model: `Qwen/Qwen3-8B`, revision `b968826d9c46dd6066d109eabc6255188de91218`.
+- The official chat template implements `enable_thinking=True` by opening the reasoning channel and `False` by pre-filling an empty closed reasoning block.
+- Behavior uses identical checkpoint weights, prompts, sampling counts, and decoding distributions across modes. Thinking produced 483/576 valid closed trajectories; non-thinking produced 576/576 valid choices. One thinking-mode decision lacked all cells needed for frame consistency, and worst/best missing-unit bounds are reported.
+- All 483 valid thinking trajectories had terminal conclusions removed; none retained a decision marker. There are 203 matched gain/loss trace pairs covering all 36 decisions.
+- In the control factorial, the identical stripped donor text occupies the native reasoning channel under the thinking route and the answer channel after an empty reasoning block under the non-thinking route. This channel/position difference is intrinsic to the public hard switch and is an explicit identification boundary.
+
+## Llama-Ecosystem External Audit
+
+- DeepSeek uses official `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` revision `6a6f4aa4197940add57724a7707d069478df56b1` and its native template, which opens `<think>` at the assistant transition.
+- The official Meta Llama repository revision is `0e9e39f249a16976918f6564b8830bc894c89659`, but this host receives HTTP 403 from the manually gated repository.
+- The locally available `NousResearch/Meta-Llama-3.1-8B-Instruct` mirror revision is `d10aef7999a2b5ba950ab3974312feeedbfe0b77`. Its core config, generation config, model index, tokenizer vocabulary, four shard sizes, and four shard-pointer Git object IDs match Meta's public repository tree exactly. Its `tokenizer_config.json` object differs, so the native chat-template provenance is explicitly the mirror rather than silently labeled official.
+- E14 is external replication only. It cannot attribute differences to a single training operation, dataset, tokenizer, template, or configuration choice.
+- The original generic DeepSeek answer parser selected the first A/B mention after `</think>` and is invalid for verbose post-think answers. An audited terminal-answer parser recovers 540/576 valid choices and 252 matched gain/loss trajectory pairs across all 36 decisions. The corrected order-conditional frame consistency is 0.947 [0.916, 0.975], versus 0.000 for Llama-Instruct's displayed-A policy.
+- The stripping heuristic removed a terminal segment from 533 of the 542 traces previously admitted by the loose parser. After corrected answer filtering, a strict sensitivity excludes nine affected matched pairs; the external control difference remains +0.058 [0.027, 0.089].
+- E15's preregistered 18-decision subset contains none of those nine stripping exceptions.

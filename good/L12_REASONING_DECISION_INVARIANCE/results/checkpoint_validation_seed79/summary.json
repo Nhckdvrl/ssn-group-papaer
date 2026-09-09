@@ -1,0 +1,45 @@
+{
+  "design": "L12-E12 documented DPO-lineage checkpoint validation",
+  "n_base_decisions": 36,
+  "instruct_dpo": {
+    "mean_probability_effect": 0.09334769194331703,
+    "base_decision_bootstrap_ci95": [
+      0.022502334023118756,
+      0.15823799414210477
+    ],
+    "positive_base_decision_fraction": 0.6944444444444444
+  },
+  "think_dpo": {
+    "mean_probability_effect": 0.5653353582985092,
+    "base_decision_bootstrap_ci95": [
+      0.5180165311428103,
+      0.6112638596008155
+    ],
+    "positive_base_decision_fraction": 1.0
+  },
+  "think_minus_instruct_dpo": {
+    "mean_probability_effect": 0.47198766635519196,
+    "base_decision_bootstrap_ci95": [
+      0.40087854557012137,
+      0.5554770188148371
+    ],
+    "positive_base_decision_fraction": 1.0
+  },
+  "frozen_sft_branch_difference": {
+    "mean_probability_effect": 0.3992146173092935,
+    "base_decision_bootstrap_ci95": [
+      0.33772116897739507,
+      0.46483021046960143
+    ],
+    "positive_base_decision_fraction": 1.0
+  },
+  "dpo_minus_sft_change_in_branch_difference": {
+    "mean_probability_effect": 0.0727730490458985,
+    "base_decision_bootstrap_ci95": [
+      0.016103994722172332,
+      0.1327528299738183
+    ],
+    "positive_base_decision_fraction": 0.6388888888888888
+  },
+  "attribution_boundary": "persistence over documented branch continuations; not one-variable attribution of the original SFT divergence"
+}

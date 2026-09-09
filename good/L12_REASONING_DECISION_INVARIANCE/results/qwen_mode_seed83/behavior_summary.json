@@ -1,0 +1,60 @@
+{
+  "design": "L12-E13 Qwen3 same-weight hard-mode behavior",
+  "thinking": {
+    "n_generations": 576,
+    "n_base_decisions": 36,
+    "n_analyzable_base_decisions": 35,
+    "valid_rate": 0.8385416666666666,
+    "frame_consistency": {
+      "mean": 1.0,
+      "base_decision_bootstrap_ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "ev_consistent_rate": {
+      "mean": 1.0,
+      "base_decision_bootstrap_ci95": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "non_thinking": {
+    "n_generations": 576,
+    "n_base_decisions": 36,
+    "n_analyzable_base_decisions": 36,
+    "valid_rate": 1.0,
+    "frame_consistency": {
+      "mean": 0.1597222222222222,
+      "base_decision_bootstrap_ci95": [
+        0.08680555555555555,
+        0.23958333333333334
+      ]
+    },
+    "ev_consistent_rate": {
+      "mean": 0.53125,
+      "base_decision_bootstrap_ci95": [
+        0.5086805555555556,
+        0.5555555555555556
+      ]
+    }
+  },
+  "thinking_minus_non_thinking": {
+    "frame_consistency": {
+      "n_analyzable_base_decisions": 35,
+      "mean": 0.8357142857142857,
+      "base_decision_bootstrap_ci95": [
+        0.7571428571428571,
+        0.9107142857142857
+      ],
+      "positive_base_decision_fraction": 1.0,
+      "zero_difference_base_decisions": 0,
+      "negative_difference_base_decisions": 0,
+      "missing_unit_worst_case_mean_bounds": [
+        0.8125,
+        0.8402777777777778
+      ]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # L12 Data and Identification
 
-**Updated:** 2026-09-09
+**Updated:** 2026-09-10
 
 ## 1. Current pilot substrate
 
@@ -57,3 +57,19 @@ E10 contains 36 independent base decisions constructed under requirements frozen
 - base-decision cluster bootstrap as the primary uncertainty analysis.
 
 The audit passes every listed constraint. E10 validates the behavioral transition and causal-control index across the full set. E11 repeats state substitution on a preregistered 18-decision stratified subset.
+
+Frame consistency is computed **within each displayed order first**, then averaged within a base decision. This prevents a fixed displayed-position policy from appearing invariant after order marginalization. The earlier order-marginalized E02/E10/E13/E14 summaries were superseded on 2026-09-10; raw generations did not change.
+
+## 7. E12-E13 breadth identification
+
+E12 reuses the frozen E10 decisions and stripped trajectories at exact OLMo DPO revisions. Its estimand is persistence of the branch contrast along documented continuations; it cannot identify DPO as the cause of the original divergence.
+
+E13 uses the same 36 decisions and one Qwen3 checkpoint under its official hard thinking switch. The behavioral contrast fixes weights and surface prompts. The control contrast fixes weights and stripped donor text, but native route is a compound operation: reasoning-channel placement versus answer-channel placement after an empty reasoning block. Accordingly, E13 identifies reasoning-route-dependent integration and supplies complementary triangulation; it does not isolate a hidden mode bit, token count, or text position.
+
+## 8. E14-E15 external-replication identification
+
+E14 compares unmatched Llama-ecosystem post-training outcomes. The estimand is qualitative external replication of aligned behavioral invariance and stronger trajectory-relative causal control, not a causal effect of reasoning training.
+
+After terminal-answer reparsing, DeepSeek supplies 252 valid matched trajectory pairs across all 36 decisions. The primary E14 control summary filters to those corrected-valid pairs. A construct-validity sensitivity additionally excludes nine pairs whose natural-language commitment was not detected by the frozen stripping heuristic; the cross-model control difference remains positive with a clustered interval excluding zero.
+
+E15 substitutes residual state within DeepSeek only. Its target/donor pairs share base decision, displayed order, and sample-index rule, while frame and gold decision direction differ. No donor text is inserted. This establishes a causal role for the pre-answer state under constructed prefixes, not equivalence of internal layer coordinates across model families.

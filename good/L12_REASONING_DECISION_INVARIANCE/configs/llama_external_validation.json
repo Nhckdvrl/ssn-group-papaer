@@ -1,0 +1,29 @@
+{
+  "models": [
+    {
+      "branch": "llama_instruct",
+      "id": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+      "revision": "d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+      "scientific_identity": "meta-llama/Llama-3.1-8B-Instruct",
+      "official_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "requires_closed_think": false,
+      "max_tokens": 64
+    },
+    {
+      "branch": "deepseek_r1",
+      "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+      "revision": "6a6f4aa4197940add57724a7707d069478df56b1",
+      "requires_closed_think": true,
+      "max_tokens": 1024
+    }
+  ],
+  "source_decisions": "data/controlled_decisions_v1.jsonl",
+  "frames": ["gain", "loss"],
+  "orders": ["ab", "ba"],
+  "samples_per_cell": 4,
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "seed": 89,
+  "bootstrap_samples": 5000,
+  "result_dir": "results/llama_external_seed89"
+}
