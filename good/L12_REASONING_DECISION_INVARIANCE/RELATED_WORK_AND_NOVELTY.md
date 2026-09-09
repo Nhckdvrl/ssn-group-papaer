@@ -123,7 +123,7 @@ L12’s novelty must come from:
 Current paper-level ownership:
 
 1. start from a strong, established reasoning-induced decision invariance;
-2. use a same-family training transition rather than unrelated model comparison;
+2. use a shared-base matched-branch comparison rather than unrelated model comparison;
 3. distinguish representational canonicalization from preserved-context/policy override and other plausible accounts;
 4. validate the distinction causally or with equivalent decisive evidence;
 5. identify a meaningful boundary;
@@ -146,7 +146,7 @@ Wins if:
 
 ### “Framing Matters on reasoning models”
 Wins if:
-- the training-transition question disappears and the paper only studies framing pathways.
+- the shared-base training-regime question disappears and the paper only studies framing pathways.
 
 ### “Generic activation patching”
 Wins if:
@@ -166,7 +166,7 @@ Those are related-work ingredients.
 
 Kill/reconstruct only if existing work already owns the **full paper**:
 > reasoning-training-induced invariance  
-> + training-stage localization  
+> + training-regime/branch localization  
 > + canonicalization-vs-override distinction  
 > + decisive causal evidence  
 > + same scientific consequence.
