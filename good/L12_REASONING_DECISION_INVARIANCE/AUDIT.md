@@ -105,3 +105,47 @@ Both exact safetensors snapshots were subsequently cached outside the repository
   standard Llama comparator is invariant but approximately chance-level with
   respect to exact EV. This is a substantive boundary between invariance and
   EV-guided choice, not an exclusion target.
+- E17 factorial scoring uses 917 strict OLMo trajectory units over 147 base
+  decisions, 1,931 Qwen units over 145, and 1,920 DeepSeek units over all 151.
+  Each unit supplies all four crossed prompt/trajectory cells under both members
+  of its comparison axis.
+- OLMo and Qwen show positive reasoning-minus-standard trajectory-relative
+  control contrasts with clustered intervals excluding zero. The Llama/DeepSeek
+  interval includes zero. All three preregistered random-slope MixedLM fits report
+  nonconvergence, so no mixed-model coefficient or p-value supports a claim.
+- Raw calibration behavior and factorial artifacts total hundreds of megabytes
+  and remain ignored. `results/cpc18_calibration_seed121/raw_manifest.json`
+  pins every artifact by row count, byte size, and SHA-256.
+
+## CPC18 Competition Audit
+
+- The E18 scientific contract was committed as `9e4a532` before opening the 60
+  competition problems. Subsequent config changes populate provenance only.
+- The two historical website CSV links return HTTP 404. The official Zenodo
+  record supplies the 65,363,460-byte all-problem raw file with matching MD5
+  `db1bdcff2e07290714553f29cde81948`.
+- Competition distributions are deterministically expanded from the official
+  compact parameters. The expansion was independently validated against all 420
+  option distributions in the official 210-problem calibration workbook; maximum
+  absolute payoff/probability cell error is `3.75e-8` after coalescing duplicate
+  payoff rows.
+- Exactly 44/60 competition problems pass the unchanged known-probability,
+  independence, non-tied-EV, complexity, and three-history criteria, exceeding
+  the frozen gate of 40. No selected history contains a payoff outside the
+  reconstructed support, and no participant identifier is exported.
+
+## Broad State-Mediation Audit
+
+- E19 units were frozen before patch outcomes: 48 of 65 eligible calibration
+  problems, with 16 from each candidate-relative-EV-gap rank tertile. Eligibility
+  requires strict nonempty precommitment traces that naturally produce opposite
+  choices; no hidden state or patch magnitude enters selection.
+- Each base decision contributes both explicit-to-history and history-to-explicit
+  directions, making target A/B intervention direction exactly balanced despite
+  a 28/20 imbalance in the selected source pair orientations.
+- The early-to-late profile is coherent rather than layer-local: layer-0 shift is
+  -0.004 [-0.025, 0.016], layer 16 is +1.232 [0.983, 1.469], layer 18 is
+  +5.461 [4.603, 6.289] with mean margin reversal, and layer 31 is +7.094
+  [5.914, 8.276].
+- The 3,072-row patch output remains ignored. Its checksum, byte size, and row
+  count are recorded in the committed summary.

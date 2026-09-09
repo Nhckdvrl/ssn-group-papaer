@@ -217,7 +217,20 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   (0.970) while choosing the exact-EV option at chance (0.502 explicit, 0.499
   history). This separates behavioral invariance from EV-guided decision
   formation and prevents treating consistency itself as rationality.
-- **Status:** behavior complete; factorial scoring in progress.
+- **Causal result:** complete. OLMo Think-SFT has `Delta_R - Delta_P =
+  +0.201 [0.161, 0.243]`, versus Instruct-SFT -0.001 [-0.040, 0.040];
+  branch difference **+0.202 [0.162, 0.244]**. Qwen thinking is +0.191
+  [0.151, 0.229], versus non-thinking +0.028 [0.012, 0.043]; same-weight
+  route difference **+0.163 [0.121, 0.205]**. Their prompt-control branch
+  differences are +0.003 [-0.010, 0.016] and -0.007 [-0.017, 0.004].
+- **External boundary:** DeepSeek minus Llama is +0.019 [-0.005, 0.043],
+  with its interval crossing zero. The earlier gain/loss external replication
+  therefore does not license a presentation-general cross-family claim.
+- **Confirmatory-model audit:** the specified random-intercept/random-slope
+  MixedLM failed to converge for all three pairs. Coefficients remain recorded
+  but are not interpreted; the preregistered base-decision cluster bootstrap is
+  primary.
+- **Status:** **completed; GO for E18 and E19.**
 
 ## L12-E18: Untouched CPC18 Competition Confirmation
 
@@ -234,8 +247,12 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Decision rule:** claim heldout cross-axis generalization only if both OLMo
   and Qwen reasoning-minus-standard `Delta_R - Delta_P` contrasts are positive
   with separate base-decision bootstrap 95% intervals excluding zero.
-- **Status:** scientific contract frozen while competition data remain unopened;
-  source provenance is the only pending configuration field.
+- **Data audit:** after preregistration commit `9e4a532`, 44/60 competition
+  problems pass the unchanged contract (gate 40). Compact-lottery reconstruction
+  was validated against all 420 calibration option distributions with maximum
+  absolute cell error `3.75e-8`; selected histories have no payoff-support
+  violations.
+- **Status:** data gate passed; one-shot generation in progress.
 
 ## L12-E19: Broad Description/History State Mediation
 
@@ -254,4 +271,8 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   direction-specific donor state. No state, margin, patch, or layer result enters
   selection. None of the 65 qualifying problems is support-dominant, so E19 does
   not identify mediation in that stratum.
-- **Status:** design and exact units frozen; not yet executed.
+- **Result:** early-layer shifts are near zero, rise progressively through the
+  middle/late stack, and first reverse mean target margin at layer 18. Final
+  donor shift is **+7.094 [5.914, 8.276]**, positive on 45/48 base decisions;
+  donor-choice flip rate is 0.823 across the 96 directional interventions.
+- **Status:** **completed; supports C2 on natural description/history units.**

@@ -26,6 +26,22 @@ The discovery pilot supports **progressive construction plus late consolidation*
 10. With Qwen3-8B weights fixed, the official thinking route raises frame consistency from **0.160 to 1.000**, a matched change of **+0.836 [0.757, 0.911]**, and raises trajectory-minus-prompt control by **+0.604 [0.550, 0.661]**.
 11. In a Llama-ecosystem external comparison, DeepSeek-R1-Distill raises frame consistency from **0.000 to 0.947**, a difference of **+0.947 [0.913, 0.976]**, and has stronger trajectory-relative control than Llama-Instruct by **+0.067 [0.037, 0.099]**.
 12. DeepSeek state substitution independently supports pre-answer mediation: the final donor-directed shift is **+1.222 [0.299, 2.181]**, after a near-zero early profile and a sustained late rise beginning at layer 14.
+13. Across 151 natural CPC18 decisions, the OLMo reasoning-minus-standard
+    trajectory-relative control contrast is **+0.202 [0.162, 0.244]** and the
+    same-weight Qwen route contrast is **+0.163 [0.121, 0.205]**. In both cases,
+    the prompt-control difference includes zero.
+14. The matching behavioral presentation-consistency changes are **+0.225
+    [0.177, 0.271]** for OLMo and **+0.276 [0.223, 0.327]** for Qwen, robust
+    to worst/best invalid-output assignment.
+15. The unmatched Llama/DeepSeek axis does not generalize this transition:
+    control difference **+0.019 [-0.005, 0.043]** and behavioral consistency
+    difference **-0.225 [-0.264, -0.188]**. This establishes that behavioral
+    invariance can also arise from stable near-chance choice, and is not itself
+    evidence of rational decision formation.
+16. On 48 frozen CPC18 decisions with naturally opposite explicit/history
+    choices, pre-answer state substitution again has a sustained late causal
+    profile: first mean margin reversal at layer 18 and final donor shift
+    **+7.094 [5.914, 8.276]**, positive on 45/48 decisions.
 
 ## Claim architecture
 
@@ -47,7 +63,12 @@ See `RELATED_WORK.md` for the live compression audit.
 
 ## Current boundary and next phase
 
-The initial independent-decision expansion is complete. Under the corrected order-conditional construct, a preregistered per-item association between invariance change and control change is not supported (rho = -0.001, p = 0.997) and is permanently demoted. The next phase tests the stronger construct-level question on a broad description/history decision set using the frozen prompt-trajectory interventional decomposition in `CAUSAL_FRAMEWORK.md`.
+The independent-decision and natural description/history expansions are complete.
+Under the corrected order-conditional construct, a preregistered per-item
+association between invariance change and control change is not supported (rho =
+-0.001, p = 0.997) and is permanently demoted. The supported bridge is the
+construct-level reallocation reproduced over 151 CPC18 calibration decisions
+under OLMo sibling and Qwen same-weight identification.
 
 E12 is complete. It establishes persistence over a real OLMo checkpoint axis, not attribution of the original divergence to DPO.
 
@@ -55,7 +76,12 @@ E13 is also complete. Qwen3 supplies a complementary identification because weig
 
 E14-E15 are complete. The Llama/DeepSeek axis replicates the aligned increase in presentation invariance and trajectory-relative control, then verifies late pre-answer state mediation within DeepSeek. This is external replication rather than training attribution because the pair is unmatched.
 
-The current paper answer is that reasoning-associated computation reorganizes decision formation toward a progressively constructed trajectory and late decision state. Across three complementary comparisons, this reorganization accompanies the transition from presentation-conditioned behavior to stable underlying choices.
+The current paper answer is that reasoning-associated computation can reorganize
+decision formation toward a progressively constructed trajectory and late decision
+state. This is not merely an OLMo-local result: it survives a same-weight Qwen mode
+contrast and a new natural presentation family. The Llama boundary prevents an
+unqualified universal claim and shows why the paper must jointly measure behavior,
+EV alignment, and causal route rather than calling any invariance "rationality."
 
 The primary unit is always the base decision. Repeated traces and patch layers do not count as independent evidence.
 

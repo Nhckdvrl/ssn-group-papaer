@@ -2,6 +2,7 @@
 """Summarize E19 with CPC18 base decisions as bootstrap units."""
 
 import json
+import hashlib
 
 import numpy as np
 import pandas as pd
@@ -22,7 +23,8 @@ def interval(values, seed):
 
 
 def main():
-    frame = pd.read_json(OUT / "raw.jsonl", lines=True)
+    raw_path = OUT / "raw.jsonl"
+    frame = pd.read_json(raw_path, lines=True)
     profile = []
     for layer, part in frame.groupby("layer"):
         units = part.groupby("problem").agg(
@@ -60,6 +62,13 @@ def main():
             "within-model last-token residual-state substitution between matched "
             "natural explicit/history trajectories that produced opposite choices"
         ),
+        "raw_artifact": {
+            "path": str(raw_path.relative_to(ROOT)),
+            "bytes": raw_path.stat().st_size,
+            "rows": int(len(frame)),
+            "sha256": hashlib.sha256(raw_path.read_bytes()).hexdigest(),
+            "git_policy": "ignored regenerable intervention output",
+        },
     }
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))

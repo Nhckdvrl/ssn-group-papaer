@@ -1,0 +1,170 @@
+{
+  "competition_raw_shape": [
+    180000,
+    30
+  ],
+  "decision": "GO_E18_CONFIRMATION",
+  "design": "L12-E18 untouched CPC18 competition audit",
+  "distribution_reconstruction_validation": {
+    "maximum_absolute_cell_error": 3.750000000000091e-08,
+    "options_checked": 420
+  },
+  "flow": {
+    "after_ev_ties": 44,
+    "after_history_and_integrity_checks": 44,
+    "all_competition": 60,
+    "known_probability": 48,
+    "known_probability_independent": 45
+  },
+  "frozen_config": {
+    "audit_output": "data/cpc18_competition_v1.audit.json",
+    "bootstrap_samples": 5000,
+    "competition_sources": {
+      "calibration_validation_workbook_sha256": "d95e89e060c54977fffe45cad2898570d6d87233d18a9e192c5f4bf314792158",
+      "distribution_algorithm_commit": "b9caaca5874e3e388aea6580491ac639370b5bbd",
+      "distribution_algorithm_sha256": "b145434da4702444c44cb23800cbaf6ed4ccebb85277e6a26a76ca233eda26ca",
+      "distribution_algorithm_url": "https://github.com/naecker-lab/cpc18/blob/b9caaca5874e3e388aea6580491ac639370b5bbd/src/CPC18%20BEASTsd%20R/CPC18_getDist.R",
+      "raw_bytes": 65363460,
+      "raw_md5": "db1bdcff2e07290714553f29cde81948",
+      "raw_sha256": "cb0dab5ca34adebc49f2dfe57f98096ab74468dea5a12a4558ce5c50ef07952d",
+      "raw_url": "https://zenodo.org/api/records/2571510/files/all%20CPC18%20raw%20data.csv/content",
+      "status": "populated after preregistration commit 9e4a532; scientific fields unchanged"
+    },
+    "data_access_status_at_freeze": "unopened",
+    "decision_rule": "confirm cross-axis generalization only if both primary pair contrasts are positive with separate base-decision bootstrap 95% intervals excluding zero",
+    "ev_tie_tolerance": 1e-08,
+    "excluded_from_confirmation": {
+      "llama_external": "unmatched external axis; calibration control contrast 0.019 with CI crossing zero; retained as a reported heterogeneity boundary"
+    },
+    "feedback_trials": [
+      6,
+      25
+    ],
+    "frozen_at": "2026-09-10T04:15:00+09:00",
+    "histories_per_problem": 3,
+    "history_selection": "uniform_without_replacement_over_distinct_real_histories",
+    "inclusion": {
+      "exclude_ev_ties": true,
+      "exclude_support_dominance": false,
+      "independent_options": true,
+      "known_probability": true,
+      "maximum_outcomes_per_option": 10,
+      "minimum_unique_histories": 3
+    },
+    "invalid_output_rule": "conditional-choice estimate plus worst/best assignment bounds; no posthoc prompt or parser revision",
+    "minimum_clean_problems": 40,
+    "model_selection_rule": "retain the two calibration axes with controlled sibling or same-weight identification and a positive calibration Delta_R-minus-Delta_P branch contrast whose base-decision bootstrap interval excludes zero",
+    "nested_variation": [
+      "real history",
+      "displayed order",
+      "generation"
+    ],
+    "orders": [
+      "ab",
+      "ba"
+    ],
+    "output": "data/cpc18_competition_v1.jsonl",
+    "parser_version": "cpc18_terminal_v2",
+    "primary_hypotheses": [
+      "OLMo Think-SFT minus Instruct-SFT Delta_R-minus-Delta_P is positive",
+      "Qwen thinking minus non-thinking Delta_R-minus-Delta_P is positive"
+    ],
+    "probability_tolerance": 1e-06,
+    "regimes": [
+      {
+        "id": "allenai/Olmo-3-7B-Instruct-SFT",
+        "max_tokens": 1024,
+        "name": "olmo_instruct_sft",
+        "pair": "olmo_sft",
+        "requires_closed_think": false,
+        "revision": "e1452fc572d51966ff4aaeb25118b891eb93e549",
+        "role": "standard"
+      },
+      {
+        "id": "allenai/Olmo-3-7B-Think-SFT",
+        "max_tokens": 3072,
+        "name": "olmo_think_sft",
+        "pair": "olmo_sft",
+        "requires_closed_think": true,
+        "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+        "role": "reasoning"
+      },
+      {
+        "enable_thinking": true,
+        "id": "Qwen/Qwen3-8B",
+        "max_tokens": 3072,
+        "name": "qwen_thinking",
+        "pair": "qwen_mode",
+        "requires_closed_think": true,
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "role": "reasoning"
+      },
+      {
+        "enable_thinking": false,
+        "id": "Qwen/Qwen3-8B",
+        "max_tokens": 1024,
+        "name": "qwen_non_thinking",
+        "pair": "qwen_mode",
+        "requires_closed_think": false,
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "role": "standard"
+      }
+    ],
+    "result_dir": "results/cpc18_competition_seed137",
+    "samples_per_cell": 3,
+    "seed": 137,
+    "stripping_version": "cpc18_terminal_commitment_v3",
+    "supporting_behavior_hypotheses": [
+      "OLMo reasoning-minus-standard presentation-consistency difference is positive",
+      "Qwen reasoning-minus-standard presentation-consistency difference is positive"
+    ],
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "unit_of_analysis": "base decision",
+    "version": "cpc18_competition_v1"
+  },
+  "gate": {
+    "minimum": 40,
+    "observed": 44,
+    "passed": true
+  },
+  "included_characteristics": {
+    "available_unique_history_quantiles": {
+      "0": 11.0,
+      "0.05": 18.0,
+      "0.25": 101.25,
+      "0.5": 120.0,
+      "0.75": 120.0,
+      "0.95": 120.0,
+      "1": 120.0
+    },
+    "relative_ev_gap_quantiles": {
+      "0": 0.001351351351351361,
+      "0.05": 0.002560150375939848,
+      "0.25": 0.018788819875776408,
+      "0.5": 0.05227272727272729,
+      "0.75": 0.1038970588235294,
+      "0.95": 0.3750833333333334,
+      "1": 0.5733333333333334
+    },
+    "support_dominance_count": 5
+  },
+  "preregistration_commit": "9e4a532",
+  "raw_shape": [
+    694500,
+    30
+  ],
+  "source_integrity": {
+    "calibration_validation_workbook_sha256": "d95e89e060c54977fffe45cad2898570d6d87233d18a9e192c5f4bf314792158",
+    "raw_bytes": 65363460,
+    "raw_md5": "db1bdcff2e07290714553f29cde81948",
+    "raw_sha256": "cb0dab5ca34adebc49f2dfe57f98096ab74468dea5a12a4558ce5c50ef07952d"
+  },
+  "validation": {
+    "fewer_than_three_unique_history_game_ids": [],
+    "participant_game_histories_all_have_20_feedback_trials": true,
+    "participant_identifiers_exported": false,
+    "selected_histories_are_distinct_within_problem": true,
+    "selected_history_payoff_support_failure_game_ids": []
+  }
+}

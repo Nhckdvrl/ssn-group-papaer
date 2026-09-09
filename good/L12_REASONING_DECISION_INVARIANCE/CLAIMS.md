@@ -12,8 +12,8 @@
 |---|---|---|---|
 | **L12-C0** | Reasoning models are more invariant across risky-choice presentations. | *Mind the (DH) Gap!* | **Established prior; not ours** |
 | **L12-C1** | Natural reasoning progressively constructs decision control before the terminal explicit commitment; the conclusion amplifies rather than creates the effect. | E05-E07 | **Supported on 3 parent prospects; breadth is supplied under C3** |
-| **L12-C2** | Long reasoning constructs a pre-answer decision state that causally carries trajectory control into final decoding. | E08 + E11; E15 triangulation | **Supported across 18 OLMo decisions and externally in DeepSeek** |
-| **L12-C3** | Reasoning-associated invariance is accompanied by a reorganization of causal control away from prompt presentation and toward trajectory-mediated decision formation. | E09-E10; E12-E14 triangulation | **Supported across 36 decisions and complementary checkpoint/mode/family comparisons** |
+| **L12-C2** | Long reasoning constructs a pre-answer decision state that causally carries trajectory control into final decoding. | E08 + E11 + E19; E15 triangulation | **Supported across 48 natural CPC18 decisions, the controlled OLMo expansion, and externally in DeepSeek** |
+| **L12-C3** | Reasoning-associated invariance is accompanied by a reorganization of causal control away from prompt presentation and toward trajectory-mediated decision formation. | E09-E10; E12-E14; E17 | **Supported across 151 natural decisions under matched OLMo and same-weight Qwen identification; Llama axis establishes a presentation/training boundary** |
 
 ## Supporting evidence, not headline claims
 
@@ -34,10 +34,32 @@
 - E13 provides a second model family and fixes weights, but its official modes necessarily place stripped text in different native channels. It identifies route-dependent integration, not an unobserved switch or a pure effect of extra test-time tokens.
 - E14 aligns behavior and mechanism under external replication. DeepSeek-R1-Distill exceeds Llama-Instruct in trajectory-minus-prompt control by +0.067 [0.037, 0.099] and in frame consistency by +0.947 [0.913, 0.976]. The comparison is not a one-variable training attribution.
 - E15 verifies that DeepSeek's external text-level result has an internal mediation correlate. Its late effect is weaker and less unit-universal than OLMo's, so do not claim identical layer geometry across families.
+- E17 generalizes C3 from gain/loss framing to explicit distributions versus
+  real outcome histories. The reasoning-minus-standard `Delta_R - Delta_P`
+  contrast is +0.202 [0.162, 0.244] for OLMo and +0.163 [0.121, 0.205]
+  for same-weight Qwen. Prompt-control differences include zero; the transition
+  is specifically trajectory-relative.
+- The unmatched Llama/DeepSeek E17 axis is a genuine boundary: its control
+  contrast is +0.019 [-0.005, 0.043], while behavioral consistency decreases.
+  Llama-Instruct's high consistency accompanies chance-level EV choice, so
+  invariance alone must never be labeled rationality.
+- E17's preregistered random-slope MixedLM did not converge for any pair. Its
+  coefficients are retained as an audit artifact but not used as confirmation;
+  the primary base-decision cluster bootstrap was specified in advance and
+  carries all E17 inference.
+- E19 supplies natural-stimulus mediation breadth for C2. Across 48 frozen base
+  decisions and symmetric opposite-choice patches, the mean state intervention
+  first reverses target margin at layer 18 and reaches +7.094 [5.914, 8.276]
+  at the final layer; 93.8% of base-decision shifts are positive. Interpret the
+  sustained late profile, not layer 18 as an isolated mechanism.
 - The released OLMo checkpoints are sibling branches from a common base. They support a training-regime-associated contrast, not strict attribution to one isolated optimization step.
 - E10 uses 36 independent base decisions and E11 uses a preregistered 18-decision stratified subset. Repeated traces and layers remain within-unit observations.
 - The corrected exploratory decision-level association between the behavioral branch difference and control difference is unsupported (rho = -0.001, p = 0.997). Do not claim monotonic per-item coupling; the supported bridge is the matched branch/mode/family-level reorganization replicated across units.
 
 ## Current verdict
 
-**GO.** C1-C3 establish progressive construction, state mediation, and causal-control reorganization. E12-E15 are persistence and triangulation beneath those claims, not separate contributions. The remaining load-bearing question is whether C3 survives a broad, natural description/history manipulation under the frozen interventional decomposition in `CAUSAL_FRAMEWORK.md`.
+**GO.** C1-C3 establish progressive construction, state mediation, and
+causal-control reorganization. E17 supplies broad natural-stimulus evidence under
+two complementary controlled axes and a useful external boundary. E18 is now the
+preregistered one-shot confirmation; E19 tests whether the broadened text-level
+effect is again mediated by a pre-answer internal state.
