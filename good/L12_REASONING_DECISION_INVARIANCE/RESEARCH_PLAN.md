@@ -1,55 +1,72 @@
 # L12 — Research Plan
 
-**Core RQ**
+## Core RQ
 
-> Does reasoning-oriented post-training create **selective semantic invariance**, or does context more broadly lose control over decisions?
+> **When reasoning training makes model decisions almost invariant to presentation, what actually takes control of the final answer?**
 
-The behavioral branch contrast is already established locally. The next work is deliberately narrow in number of experiments, not in claim.
+The current evidence suggests a natural mechanism:
 
-# L12-E07 — Semantic-Relevance Boundary
+> prompt information remains available  
+> → a long self-generated reasoning trajectory is produced  
+> → the trajectory controls final readout.
 
-Keep the original risky-choice options fixed.
+The next work tests whether that control belongs to the **reasoning process** or merely to its final explicit conclusion.
 
-Add a matched final context statement:
-- **redundant:** repeats one probability unchanged;
-- **correction:** same format, but changes that probability enough to flip the correct EV decision.
+# L12-E07 — Conclusion-Stripped Trajectory Takeover
 
-The experiment has two load-bearing readouts:
+Reuse the natural Think-SFT trajectory setup from E05.
 
-> **irrelevant-context invariance:** none → redundant should not move behavior.
+For each target cell, score the final A/B readout under four trajectory prefixes:
 
-> **relevant-context uptake:** redundant → correction should move behavior toward the new correct decision.
+1. **own full** — complete natural trace;
+2. **own stripped** — same trace with terminal explicit choice/conclusion removed;
+3. **opposite stripped** — matched opposite-frame natural trace with its terminal choice/conclusion removed;
+4. **empty** — no reasoning trace.
 
-If Think-SFT is high on both, that supports selective abstraction.
+Primary contrasts:
 
-If it is invariant to redundant context but has weak correction uptake, behavioral invariance is better explained as broader context disengagement.
+- own stripped − empty;
+- own stripped − opposite stripped.
 
-If neither pattern holds, reconstruct around the observed boundary rather than adding tests.
+Secondary descriptive quantity:
 
-# L12-E08 — Decision-State Causal Substitution
+- own full − own stripped, which measures how much additional control comes from the terminal commitment.
 
-Only after E07.
+### Interpretation
 
-Use matched redundant/correction trajectories and intervene once on the pre-answer decision state.
+**Trajectory takeover:** own-stripped remains strongly target-directed and separates from both empty and opposite-stripped.
 
-The causal question is:
+**Late self-commitment:** the large full-trace effect collapses after terminal conclusion removal.
 
-> **Can the relevant contextual update be transferred through the internal decision state while the redundant update has little effect?**
+Either result answers the scientific question. Do not rescue a failed trajectory-takeover account with additional controls.
 
-A positive answer supports a constructed semantically selective decision state. A negative answer pushes the explanation toward another mechanism.
+# L12-E08 — Pre-Answer Decision-State Causal Substitution
 
-# After E08
+Run only if E07 shows non-trivial trajectory-level control beyond the terminal conclusion.
 
-Do not automatically launch a battery of controls.
+Use the natural reasoning computation itself and intervene on the state immediately before answer decoding.
 
-Expand only when the result creates a concrete scientific need:
-- a small broader decision set to establish the boundary beyond three prospects;
-- a second lineage if the claim genuinely becomes about post-training;
-- natural validation if the discovered mechanism predicts broader behavior.
+Question:
+
+> **Has the reasoning trajectory constructed a causal decision state that now dominates the final readout?**
+
+Use a matched target/donor substitution and measure whether the target-choice margin moves in the donor-consistent direction.
+
+The layer is not the claim; the existence and construction of a causal decision state is.
+
+# Optional later boundary
+
+The current context-note semantic boundary scaffold is parked.
+
+Run it only if E07/E08 create a concrete question about what kinds of information the trajectory accepts, suppresses, or overrides.
+
+It is not required to “defend novelty.”
 
 # Main-level shape
 
-> reasoning-induced invariance  
-> → semantic-relevance boundary  
-> → causal decision-state explanation  
-> → what “more rational under reasoning” actually means
+> established reasoning-induced invariance  
+> → frame information remains present  
+> → natural long reasoning takes over decision control  
+> → distinguish distributed trajectory control from terminal self-commitment  
+> → identify the pre-answer causal decision state  
+> → explain what reasoning-oriented post-training changes about decision computation
