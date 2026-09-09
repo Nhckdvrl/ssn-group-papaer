@@ -2,35 +2,109 @@
 
 **Search date:** 2026-09-09
 
-## Search Protocol
+# 1. Direct behavioral parent
 
-Searched ACL Anthology and arXiv for reasoning training/model + framing, risky decision, cognitive bias, misleading context, representation, readout, canonicalization, suppression, and causal intervention. No work dated after the current date can yet exist.
+## Mind the (DH) Gap! — ACL 2026 Outstanding
 
-## Closest Current Work
+<https://aclanthology.org/2026.acl-long.479/>
 
-- Ge et al., *Mind the (DH) Gap!*, ACL 2026 Outstanding Paper: owns the behavioral phenomenon, broad model survey, and evidence associating mathematical reasoning training/SFT with invariance. <https://aclanthology.org/2026.acl-long.479/>
-- *Framing Matters* (2026): owns behaviorally grounded value alignment and representation-level intervention for framing sensitivity. It is the closest mechanism neighbor, but does not study how sibling reasoning-vs-instruction post-training branches transform an established risky-choice invariance. <https://arxiv.org/abs/2605.28188>
-- *Instructed to Bias*, TACL 2024: owns evidence that instruction tuning can create cognitive bias.
-- *Scaling Reasoning, Losing Control*, ACL 2026: owns reasoning/instruction-control trade-offs, not canonicalization versus preserved-context policy use.
-- *Untangling the Mechanisms of Misleading Context in Medical Question Answering* (2026) is a causal context-use neighbor in a different task and training comparison. <https://arxiv.org/abs/2609.02754>
-- *The Ignition Is Real, and It Lives at the Readout* (2026) is a conceptual readout neighbor in a recurrent-depth reasoner, not a risky-choice or post-training-branch study. <https://arxiv.org/abs/2608.03263>
-- Hao et al., *Reasoning Traces Shape Outputs but Models Won't Say So* (ACL 2026), own broad causal evidence from thought injection. L12-E05 therefore cannot claim that traces generally affect answers; its role is to localize the established decision-invariance transition. <https://aclanthology.org/2026.acl-long.1986/>
-- *`</think>` Doesn't Stop Reasoning* (2026-09-03) shows that injected end-of-think tokens can trigger spurious termination while reasoning continues. It directly invalidates a naive interpretation of L12-E04 and is incorporated as a method boundary. <https://arxiv.org/abs/2609.03633>
+Owns:
+- reasoning-vs-conversational risky-choice behavioral contrast;
+- gain/loss, order, explanation, description/history effects;
+- evidence associating mathematical reasoning training with the invariance.
 
-## Reviewer Compression After Refresh
+L12 begins at the unresolved mechanism:
 
-Strongest attack after the result: **“Mind the DH Gap plus a standard thought-injection test.”** It wins if the contribution stops at frame decodability or generic trace causality. It does not compress a paper that localizes the sibling-branch transition, distinguishes prompt information availability from use, identifies the decision computation that produces invariance, and establishes a meaningful arithmetic/deliberation boundary.
+> **what changes in the computation such that final decisions become nearly invariant?**
 
-## Current Novelty Verdict
+# 2. Generic trace causality is already owned
 
-**PASS for pilot.** No located paper owns the full identity:
+## Reasoning Traces Shape Outputs but Models Won't Say So
 
-> established reasoning-induced invariance -> sibling-branch training-regime localization -> canonicalization versus preserved-context/use/deliberation distinction -> decision-specific causal test -> boundary and reinterpretation of rationality.
+<https://arxiv.org/abs/2603.20620>
 
-## Additional compression threats checked on 2026-09-09
+Thought Injection establishes that injected reasoning content can causally alter outputs.
 
-- Chen et al., *How Do Answer Tokens Read Reasoning Traces? Self-Reading Patterns in Thinking LLMs for Quantitative Reasoning* (Findings of ACL 2026) studies how answer tokens integrate reasoning traces. Generic “where does the answer read the trace?” is not an available L12 paper identity. <https://aclanthology.org/2026.findings-acl.1507/>
-- Petersen et al., *Sense and Sensitivity* (CoNLL 2026) independently reports that enabling reasoning improves robustness to irrelevant prompt features. It strengthens the breadth of reasoning-associated robustness but does not distinguish selective abstraction from context flattening. <https://aclanthology.org/2026.conll-main.4/>
-- Linzmayer and Elhadad, *Untangling the Mechanisms of Misleading Context in Medical Question Answering* (arXiv:2609.02754) shows different misleading cues can corrupt reasoning through different temporal mechanisms. It raises the bar for generic “context enters reasoning here” claims. <https://arxiv.org/abs/2609.02754>
+Therefore L12 cannot claim novelty from:
 
-**Updated reviewer-compression rule:** if L12 stops at answer-token readout, trace injection, or generic context sensitivity, it is too close to existing work. The surviving identity must explain why the reasoning-oriented branch is selectively or indiscriminately invariant across context changes that differ in semantic relevance.
+> “reasoning traces influence answers.”
+
+Our open axis is the **training-associated change in what controls the answer**, anchored to an independently established behavioral transition and naturally generated traces.
+
+# 3. Answer-to-trace reading is already populated
+
+## How Do Answer Tokens Read Reasoning Traces?
+
+Findings of ACL 2026  
+<https://aclanthology.org/2026.findings-acl.1507/>
+
+Owns structured answer-to-reasoning attention/self-reading patterns in quantitative reasoning.
+
+Therefore generic attention localization is not a paper identity for L12.
+
+# 4. Framing mechanism is also populated
+
+## Framing Matters
+
+<https://arxiv.org/abs/2605.28188>
+
+Studies fact-preserving framing sensitivity and representation-level intervention.
+
+L12 must preserve:
+- the reasoning-oriented vs instruction-oriented behavioral transition;
+- the long reasoning trajectory as a causal computational object;
+- the question of **trajectory takeover**.
+
+# 5. Reasoning vs control trade-off
+
+## Scaling Reasoning, Losing Control — ACL 2026
+
+<https://aclanthology.org/2026.acl-long.1878/>
+
+Shows reasoning-oriented training can improve reasoning while hurting instruction adherence.
+
+This is relevant evidence that reasoning may change control structure, but it does not ask whether the model's own reasoning trajectory becomes the causal controller of final choice.
+
+# 6. Current paper-level corridor
+
+The strongest current identity is:
+
+> established reasoning-induced invariance  
+> → prompt frame information remains recoverable  
+> → complete natural reasoning exerts very large causal control on final readout  
+> → determine whether this control survives removal of terminal explicit commitment  
+> → identify a trajectory-built pre-answer decision state.
+
+This is broader and more mechanistic than:
+- framing probes;
+- generic thought injection;
+- answer-token attention;
+- context-sensitivity benchmarking.
+
+# 7. Reviewer compression
+
+### “Mind the DH Gap + Thought Injection”
+
+Wins if L12 stops at E05.
+
+### “How answer tokens read CoT”
+
+Wins if L12 becomes attention/readout localization only.
+
+### “Framing Matters on a reasoning model”
+
+Wins if the trajectory-mediated computation disappears.
+
+The scientific answer to these attacks is not a defensive control battery. It is one positive mechanistic claim:
+
+> **reasoning-oriented post-training changes the causal route from prompt to answer by making a self-generated reasoning trajectory construct the state that controls final choice.**
+
+L12-E07 is the next decisive test of that claim.
+
+# 8. Novelty verdict
+
+**PASS for continued pilot.**
+
+No located work currently owns the full trajectory-takeover identity above.
+
+Refresh only if E07/E08 changes the central explanation or new literature appears.
