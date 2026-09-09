@@ -1,236 +1,203 @@
-# Local Agent Start — Execute the Six Research Candidates
+# Local Agent Start — Current Execution Handoff
 
-**Date:** 2026-09-08  
+**Date:** 2026-09-09  
 **Target:** NAACL Main  
-**Mode:** RESEARCH EXECUTION, not topic search  
-**Approved paper mainline:** NONE
+**Mode:** RESEARCH EXECUTION  
+**Approved paper mainline:** NONE  
+**Current user-selected priority:** **L08**
 
-> **Give this file to the local research agent as the single starting document.**
+> Give this file to the local research agent when starting work.
 
-The six-topic search portfolio is complete. Do **not** spend time generating more topics unless execution kills candidates and the user explicitly reopens search.
-
-Your job is now to run the smallest decisive audits/pilots, update evidence, and aggressively kill or promote candidates according to the results.
-
----
-
-# 1. Mandatory reading order
-
-Before executing any experiment:
-
-1. **This file — `LOCAL_AGENT_START.md`**
-2. **`RESEARCH_EXECUTION.md`** — authoritative rules for claims, data, experiments, reproducibility, and kill logic.
-3. **`candidates/README.md`** — six-topic portfolio and current maturity.
-4. For the selected candidate, read **all five canonical files**:
-   - `README.md`
-   - `DATA_AND_GOLD.md`
-   - `RELATED_WORK_AND_NOVELTY.md`
-   - `RESEARCH_PLAN.md`
-   - `PILOT_CARD.md`
-
-For L03 the canonical directory is under `good/`; L06–L10 are under `candidates/`.
-
-Do not execute from old rough notes in `CURRENT_SEARCH.md` when they conflict with the canonical candidate package.
+The six-topic search portfolio is already complete. Do **not** generate new topics during ordinary execution.
 
 ---
 
-# 2. Six canonical candidate packages
+# 1. Mandatory reading
 
-## L03 — Table Value ≠ Observation Status
-Directory:
-`good/L03_TYPED_OBSERVATION/`
+Before experiments:
 
-Start from:
-`good/L03_TYPED_OBSERVATION/PILOT_CARD.md`
+1. **RESEARCH_EXECUTION.md**
+2. the selected candidate’s canonical package:
+   - README.md
+   - DATA_AND_GOLD.md
+   - RELATED_WORK_AND_NOVELTY.md
+   - RESEARCH_PLAN.md
+   - PILOT_CARD.md
 
-Core pilot:
-- Census ACS + Eurostat/SDMX;
-- direct generation vs explicit status→value typing;
-- documentation present/absent;
-- held-out/cross-provider conventions;
-- decide whether provider-defined observation status remains a load-bearing TableQA representation.
+For current work, use:
 
-## L06 — Study Identity Is Not Document Identity
-Directory:
-`candidates/L06_STUDY_IDENTITY/`
+> **candidates/L08_READOUT_DIMENSION/**
 
-Start from:
-`candidates/L06_STUDY_IDENTITY/PILOT_CARD.md`
-
-Core pilot:
-- same exact papers;
-- oracle vs flat vs wrong-split vs wrong-merge study identity;
-- separate paper extraction from study/evidence accounting;
-- measure synthesis-level consequences.
-
-## L07 — Official Correction ≠ Current Scholarly Claim
-Directory:
-`candidates/L07_OFFICIAL_CORRECTION/`
-
-Start from:
-`candidates/L07_OFFICIAL_CORRECTION/PILOT_CARD.md`
-
-**First action is a data-yield audit, not GPU inference.**
-
-Core audit:
-- collect ~500 linked PMC/PubMed correction notices;
-- measure Tier-1/Tier-2 proposition-level old→new yield;
-- kill if substantive direct gold is too sparse/homogeneous;
-- only then run original vs flat original+correction vs explicit-update pilot.
-
-## L08 — Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning
-Directory:
-`candidates/L08_READOUT_DIMENSION/`
-
-Start from:
-`candidates/L08_READOUT_DIMENSION/PILOT_CARD.md`
-
-Core pilot:
-- reproduce parent readout-dimension effect;
-- GSM8K vs knowledge/extraction + long non-reasoning generation control;
-- teacher-forced vs free-running reasoning;
-- distinguish local readout bottleneck from autoregressive error accumulation and task-specific geometry.
-
-## L09 — RLVR Disagreement: Erased or Suppressed?
-Directory:
-`candidates/L09_RLVR_DISAGREEMENT/`
-
-Start from:
-`candidates/L09_RLVR_DISAGREEMENT/PILOT_CARD.md`
-
-Core pilot:
-- reproduce established disagreement degradation;
-- secure/create a clean pre/post RLVR model pair;
-- layerwise human-disagreement information;
-- at least one causal patch/steering/readout intervention;
-- determine representation erasure vs output suppression.
-
-## L10 — Success Teaches, Failure Doesn't?
-Directory:
-`candidates/L10_SUCCESS_FAILURE_ASYMMETRY/`
-
-Start from:
-`candidates/L10_SUCCESS_FAILURE_ASYMMETRY/PILOT_CARD.md`
-
-Core pilot:
-- matched positive/negative experiences;
-- outcome memory → causal attribution → policy knowledge → actual first action;
-- locate the first asymmetric transition;
-- targeted repair;
-- natural validation on EscapeBench-style failure repetition.
+Do not execute from stale historical notes in CURRENT_SEARCH.md when they conflict with the canonical package.
 
 ---
 
-# 3. Default execution order
+# 2. Repository safety
 
-If only one local agent is available, use **information-gain / kill-cheaply-first** order:
+During execution:
 
-1. **L07** — correction proposition-yield audit. Cheapest blocking gate; no GPU needed initially.
-2. **L06** — matched-paper oracle/flat/split/merge pilot. Strong data and crisp causal intervention.
-3. **L08** — reproduce + teacher-forcing/free-running mechanism split.
-4. **L10** — matched success/failure four-stage pilot.
-5. **L09** — secure/train matched RLVR pair, then causal mechanism pilot.
-6. **L03** — continue/complete the already pilot-authorized cross-provider typed-observation pilot.
+> **Only modify the concrete candidate directory being worked on.**
 
-If compute/resources permit parallel work, L03/L06/L07/L08/L10 are largely independent. L09 may require the most setup because matched pre/post RLVR checkpoints are load-bearing.
+For L08, only modify:
 
-This ordering is logistical, **not a scientific ranking**.
+> **candidates/L08_READOUT_DIMENSION/**
+
+Keep inside that directory:
+- source code;
+- scripts;
+- configs;
+- data/pointers;
+- results;
+- claim ledger;
+- experiment registry;
+- environment/reproduction notes.
+
+Do not edit root workflow files during ordinary experiment work.
+
+Clean up disposable scripts/data after confirming they are no longer needed.
 
 ---
 
-# 4. Execution discipline
+# 3. Current L08 scientific question
 
-For the candidate being executed, treat its canonical directory as the concrete subproject directory.
+Parent result already reports the anomaly:
 
-Create/use inside that directory as needed:
+> severe reduction of final readout/representation dimensions preserves knowledge/extraction much better than GSM8K-style reasoning.
 
-```
-CLAIMS.md
-EXPERIMENTS.md
-src/
-scripts/
-configs/
-data/
-results/
-```
+That phenomenon is **not our novelty**.
 
-Do not scatter candidate-specific experiment files into the repository root.
+Our paper question is:
 
-Before each substantive run, record in `EXPERIMENTS.md`:
+> **Why does the same final-readout bottleneck affect knowledge and multi-step reasoning so differently?**
+
+Main accounts:
+- **A — intrinsic local bottleneck:** each reasoning step itself needs higher-dimensional readout.
+- **B — autoregressive accumulation:** local damage is small, but free-running generation compounds errors.
+- **C — capability-specific geometry:** knowledge and reasoning rely on different readout/subspace structure.
+- **D — length artifact:** long generation, not reasoning, explains the gap.
+
+A hypothesis losing does not kill the question. Another account winning can be the result.
+
+---
+
+# 4. Minimum decisive first phase
+
+Do not begin with a model zoo.
+
+First phase:
+
+1. **Exact/faithful parent reproduction**
+   - confirm the reported capability asymmetry under a credible model/setup.
+
+2. **Core comparison**
+   - GSM8K or equivalent multi-step reasoning;
+   - knowledge/extraction control;
+   - long non-reasoning generation control.
+
+3. **Most important mechanism split**
+   - **teacher-forced reasoning**
+   - vs **free-running reasoning**
+
+Interpretation:
+- teacher-forced local prediction mostly preserved + free-running collapse → supports accumulation;
+- teacher-forced prediction itself collapses → supports intrinsic local readout bottleneck;
+- long non-reasoning collapses similarly → length/generation explanation becomes serious;
+- task-specific patterns remain after controls → geometry/boundary work becomes important.
+
+Only after this split should the project expand into:
+- reasoning-token-only truncation;
+- answer-token-only truncation;
+- one-step truncation then restore;
+- random coordinate removal vs random projection;
+- subspace transfer/geometry analysis.
+
+---
+
+# 5. Experiment discipline
+
+Before every substantive run, record:
 - experiment ID;
 - linked claim;
 - exact question;
-- data/subset;
-- model/revision;
-- conditions;
-- metrics;
+- dataset/subset;
+- model and revision;
+- intervention/conditions;
+- metric/statistical test;
 - expected informative outcomes;
-- kill/interpretation conditions.
+- interpretation/kill conditions.
 
-After each run record:
+After every run, record:
 - exact command/config;
 - raw result path;
 - summary;
-- uncertainty/statistical test where relevant;
+- uncertainty where relevant;
 - interpretation;
-- whether the candidate survives, changes, or dies.
+- which claim changed.
+
+Every important result must be traceable:
+
+> **claim → experiment → config/code → data → raw result → conclusion**
 
 ---
 
-# 5. Hard rules for the local agent
+# 6. Continuous novelty/Main-level check
 
-## Do not protect a topic because it is in the six-topic pool
-The six candidates are for **mutual assassination**. None except L03 is even pilot-authorized yet, and no paper mainline is approved.
+Before a new load-bearing claim or major experiment:
+- re-check the parent and closest follow-up literature;
+- compare the planned claim with strong ACL/EMNLP/NAACL mechanistic/scientific work;
+- ask whether the claim is genuinely discriminative or merely obvious;
+- ask whether the project is still developing its own narrative.
 
-## Do not gamble on one exciting effect
-Use the pre-specified alternative outcomes in each `PILOT_CARD.md`.
+Do not keep a trivial claim merely because it is easy to demonstrate.
 
-## Do not invent new load-bearing gold
-If the candidate's data/gold contract fails, stop and report the failure.
+Do not scale if the current result only supports:
+> “reasoning is more sensitive than knowledge.”
 
-## Do not rescue a killed story with a new prompt/model/dataset
-Re-run novelty/reviewer compression when pilot evidence changes the central story.
-
-## Do not scale before the minimum decisive pilot
-One clean causal/data result is more valuable than a large model zoo.
-
-## Keep literature current
-Before promoting a load-bearing claim, re-check the closest 2024–2026 ACL/EMNLP/NAACL and relevant ML papers.
+That is the parent-level observation, not enough.
 
 ---
 
-# 6. What counts as completion of one candidate pilot
+# 7. Pilot verdict
 
-Return a compact decision package containing:
+The first L08 phase should end with:
 
-1. **Verdict:** GO / CONDITIONAL / NO-GO.
-2. **Data validity:** did the actual data identify the claimed quantity?
-3. **C1 result:** core answer.
-4. **C2 result:** mechanism/boundary if tested.
-5. **C3 consequence:** what NLP modeling/evaluation/practice changes?
-6. **Novelty re-audit:** strongest reviewer compression after seeing the result.
-7. **Evidence table:** main metrics + uncertainty.
-8. **Exact reproducibility pointers:** scripts/configs/raw outputs.
-9. **Next step:** expand, repair one missing control, or kill.
+- **GO**
+- **CONDITIONAL**
+- **NO-GO**
 
-A low/negative expected effect is not automatically NO-GO. A broken estimand, invalid gold, fatal collision, or collapsed paper identity is.
+Return:
+1. data/intervention validity;
+2. parent reproduction;
+3. teacher-forcing vs free-running result;
+4. long-generation control;
+5. current mechanism ranking;
+6. strongest reviewer compression after seeing the results;
+7. exact reproducibility pointers;
+8. next smallest decisive experiment.
+
+Kill/reconstruct only when:
+- reproduction fails in a way that destroys the scientific object;
+- intervention lacks leverage;
+- current literature already owns the resulting explanation;
+- surviving result is trivial;
+- no Main-level C1→C2→C3 remains.
+
+A preferred hypothesis losing is **not** itself a kill condition.
 
 ---
 
-# 7. Current portfolio status
+# 8. Other serious candidates
 
-- **L03:** PILOT-AUTHORIZED.
-- **L06:** PILOT-READY.
-- **L07:** DATA-YIELD AUDIT REQUIRED before model pilot.
-- **L08:** SERIOUS / A-; mechanism pilot required.
-- **L09:** SERIOUS / A-; clean pre/post RLVR pair required.
-- **L10:** SERIOUS / A-; matched behavioral pilot required.
-- **Approved paper mainline:** NONE.
-- **Killed ledger:** through K180; next kill ID K181.
+The current six are:
+- L03
+- L06
+- L07
+- L08
+- L09
+- L10
 
-# Start now
+If the user later changes priority, switch to that candidate’s canonical package and follow RESEARCH_EXECUTION.md.
 
-If no other instruction is supplied, begin with:
+Until then:
 
-> **`candidates/L07_OFFICIAL_CORRECTION/PILOT_CARD.md`**
-
-Run the data-yield audit completely, write all code/data/results inside `candidates/L07_OFFICIAL_CORRECTION/`, and return a GO / CONDITIONAL / NO-GO decision before spending GPU on L07.
+# **Start with L08.**
