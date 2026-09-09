@@ -1,69 +1,65 @@
-# L12 — Next Decisive Pilot Card
+# L12 — Next Decisive Pilot
 
-**Experiment:** L12-E07 → gated L12-E08  
-**Status:** CONTINUE-PILOT  
-**Purpose:** distinguish selective semantic abstraction from broader context disengagement before more mechanistic localization.
+**Experiment:** L12-E07  
+**Status:** CONTINUE-PILOT
 
-# Established before this card
+# Question
 
-- Think-SFT is far more gain/loss/order invariant than sibling Instruct-SFT;
-- frame identity remains decodable early/mid;
-- complete natural traces causally affect final readout;
-- `</think>` stopping is invalid;
-- answer-free arithmetic snippets do not explain the trace effect.
+> **Does reasoning-oriented post-training make the model selectively invariant to irrelevant context, or broadly less responsive to context?**
 
-None is the final mechanism.
+# Design
 
-# E07a — minimum boundary test
+Use the three audited parent prospects.
 
-Use the **three audited parent prospects** only for route selection.
+Keep the displayed option lines fixed. Append one of three context conditions:
 
-For each prospect:
-- **irrelevant/equivalent axis:** keep the audited gain/loss × order variants;
-- **decision-relevant axis:** change exactly one payoff/probability field enough to flip the EV-optimal underlying choice in both gain and loss conditions.
+1. **none** — no extra note;
+2. **redundant** — a note says one probability was rechecked and is unchanged;
+3. **correction** — the same note structure updates that probability to a value that flips the EV-optimal action.
 
-The exact frozen edits are in `configs/boundary.json`; the runner asserts target flipping before generation.
+Example:
 
-Models:
-- OLMo-3 Instruct-SFT sibling;
-- OLMo-3 Think-SFT sibling.
+> Additional context: the probability associated with Option B was rechecked and remains 0.34.
 
-Primary reporting:
-1. equivalent frame consistency;
-2. decision-relevant EV accuracy;
-3. Think-minus-Instruct contrast on each dimension.
+versus
 
-Do **not** collapse them into one headline score.
+> Additional context: the probability associated with Option B has been updated from 0.34 to 0.36.
 
-### A — selective abstraction
-Think improves equivalent-presentation invariance without losing decision-relevant accuracy.
+The exact updates are frozen in `configs/boundary.json`. Continue crossing gain/loss and option order.
 
-### B — context flattening
-Think improves equivalent-presentation invariance but loses sensitivity to decision-changing facts.
+# Models
 
-### C — no stable boundary
-Repair the boundary or reconsider the mechanism identity before patching.
+- OLMo-3 Instruct-SFT
+- OLMo-3 Think-SFT
 
-The three-prospect experiment is deliberately only route selection.
+Use the already audited revisions and native templates.
 
-# E08 — only after E07
+# Readout
 
-Patch/substitute a pre-answer internal state from matched donors:
-- equivalent-context donor;
-- decision-changing donor;
-- controls.
+Report:
 
-Use a donor point before explicit conclusion/answer text.
+- original no-note frame consistency;
+- **redundant-context consistency** — does irrelevant context leave the decision unchanged?
+- **correction EV accuracy** — does the model use context when it genuinely changes the decision?
 
-Success is a causal semantic-selectivity pattern, not “layer 23 matters.”
+# Scientific outcomes
 
-# Runnable E07a scaffold
+### Selective abstraction
+Think-SFT ignores redundant context but follows decision-relevant corrections.
+
+### Context flattening
+Think-SFT ignores redundant context and also underuses decision-relevant corrections.
+
+### Neither
+The current explanation is wrong or incomplete; reconstruct from the observed boundary.
+
+# Next step
+
+Only if E07 yields a stable scientific distinction, run E08 to ask where the decision state is constructed.
+
+Runnable files:
 
 - `configs/boundary.json`
 - `scripts/run_boundary.py`
 - `scripts/summarize_boundary.py`
 - `scripts/run_boundary.sh`
-
-# Stop
-
-If E07 has no interpretable branch × semantic-relevance pattern and no better objective boundary can be constructed, HOLD/KILL before expanding interpretability work.

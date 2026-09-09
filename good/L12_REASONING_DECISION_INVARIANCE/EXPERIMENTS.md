@@ -69,22 +69,16 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Interpretation:** correct-over-swapped supports arithmetic-content mediation. It does not by itself distinguish where in the residual stream the computation is represented.
 - **Status:** completed unchanged. Correct calculation did not reliably outperform rule-only or swapped calculation; both prospect-cluster intervals include zero. This weakens an arithmetic-snippet account and limits E05 to complete-trajectory causality.
 
-## L12-E07: Relevant-vs-Irrelevant Context Boundary
+## L12-E07: Semantic-Relevance Boundary
 
 - **Linked claim:** L12-C4/L12-C5.
-- **Question:** Does the reasoning-oriented branch become selectively invariant to semantically irrelevant presentation, or broadly less sensitive even when changed information should alter the decision?
-- **Cheapest pilot:** start from the three audited parent prospects.
-  1. **Equivalent variants:** preserve option distributions/decision facts while changing gain/loss, order, or equivalent wording.
-  2. **Decision-changing counterfactuals:** make a minimal matched payoff/probability change so the EV-preferred underlying option flips.
-- **Gold:** computed from displayed payoff/probability facts; no author or LLM-judge label.
-- **Models:** sibling Instruct-SFT and Think-SFT first.
-- **Primary reporting:** equivalent-presentation consistency and decision-relevant switch accuracy separately, plus branch × context-type interaction.
-- **Uncertainty:** cluster at base prospect; the three-prospect run is route selection only.
-- **Interpretation:**
-  - high equivalent invariance + preserved relevant sensitivity → selective semantic abstraction;
-  - high equivalent invariance + reduced relevant sensitivity → context flattening / causal disengagement;
-  - no stable interaction → redesign boundary before mechanistic expansion.
-- **Status:** next decisive behavioral experiment.
+- **Question:** Does the reasoning-oriented branch distinguish irrelevant contextual variation from context that genuinely changes the decision state?
+- **Stimuli:** the three audited parent prospects. Keep the displayed option lines fixed.
+- **Conditions:** no note; redundant recheck note; matched corrective note that changes one probability enough to flip the EV-optimal action.
+- **Models:** sibling Instruct-SFT and Think-SFT.
+- **Primary readout:** redundant-context consistency and correction EV accuracy.
+- **Interpretation:** high invariance to redundant context plus preserved correction use supports selective abstraction; invariance plus poor correction use supports context flattening.
+- **Status:** next decisive experiment.
 
 ## L12-E08: Conclusion-Free Decision-State Causal Substitution
 

@@ -1,125 +1,59 @@
 # L12 — Research Plan
 
-**Goal:** explain what reasoning-oriented post-training changes when fact-equivalent presentations stop changing decisions.
-
----
+**Goal:** explain why reasoning-oriented post-training produces presentation-invariant decisions.
 
 # Completed
 
 - parent artifact audit;
 - sibling Instruct-SFT vs Think-SFT behavioral reproduction;
 - frame decodability diagnostic;
-- invalidation of naive `</think>` stopping;
+- invalid `</think>` stopping test;
 - natural reasoning-prefix causal readout test;
-- answer-label-free arithmetic-prefix control.
+- answer-free arithmetic-prefix test.
 
-Do not rerun these at scale before the next load-bearing uncertainty.
+These establish the substrate but do not explain the mechanism.
 
----
+# L12-E07 — Semantic-Relevance Boundary
 
-# L12-E07 — Relevant-vs-Irrelevant Context Boundary
+Keep the original option lines fixed.
 
-## RQ
+Add matched contextual notes:
 
-> Does Think-SFT become invariant specifically to meaning-preserving presentation changes, or broadly less sensitive to context?
+- **redundant:** a probability is rechecked and remains unchanged;
+- **correction:** the same kind of note updates the probability enough to flip the EV-optimal action.
 
-## E07a — cheapest pilot
+This directly asks whether Think-SFT distinguishes context that merely accompanies a problem from context that changes the decision-relevant state.
 
-Use the three audited parent prospects.
+Use only the two audited sibling branches.
 
-For each base prospect create:
+Primary quantities:
 
-### Irrelevant / equivalent
-Preserve option distributions and objective decision facts while changing gain/loss, order, or one equivalent wording transformation.
+1. redundant-context consistency;
+2. correction EV accuracy.
 
-### Decision-relevant
-Make a minimal factual edit to payoff/probability information that flips the EV-preferred underlying option while keeping presentation format matched.
+Outcomes:
 
-Gold is computed from displayed facts.
+- high on both → **selective semantic abstraction**;
+- high redundant consistency but low correction accuracy → **context flattening / causal disengagement**;
+- another pattern → reconstruct the explanation.
 
-## Models
+The three prospects are a route-selection pilot. If the boundary is real, expand it later to a small natural controlled set.
 
-- sibling Instruct-SFT;
-- sibling Think-SFT.
+# L12-E08 — Decision-State Causal Test
 
-No model zoo.
+Run only after E07 gives a stable boundary.
 
-## Report separately
+Use matched redundant/correction contexts and intervene on the pre-answer internal state before explicit conclusion text.
 
-1. **equivalent-presentation consistency**;
-2. **decision-relevant switch accuracy**;
-3. branch × context-type interaction.
+Question:
 
-Do not collapse the first two into one headline score.
+> **Does the state carry decision-relevant contextual information while discarding irrelevant variation?**
 
-## Outcomes
-
-### Selective abstraction
-Think gains invariance to equivalent changes **without losing** sensitivity to decision-changing facts.
-
-### Context flattening / causal disengagement
-Think gains equivalent invariance but becomes less responsive to decision-changing information.
-
-### No selective boundary
-If siblings behave similarly after matched controls, reconstruct before patching.
-
-The three-prospect E07a is route selection only. A successful interaction must later expand to a small natural controlled set, not a giant synthetic benchmark.
-
----
-
-# L12-E08 — Conclusion-Free Decision-State Causal Substitution
-
-Run only after E07 is stable.
-
-Use matched E07 pairs and natural Think-SFT trajectories.
-
-Choose a pre-answer point **before explicit option labels/conclusion text**. Patch/substitute the corresponding residual state from:
-- equivalent-presentation donor;
-- decision-changing donor;
-- same-target control donor;
-- random matched donor.
-
-Scan layers coarsely, then refine only where a causal effect appears.
-
-## Key question
-
-> Does the internal state causally transfer decision-relevant information while remaining insensitive to nuisance presentation?
-
-A strong result is a **semantic selectivity pattern**, not a particular layer number.
-
----
-
-# Optional later routes
-
-Only after E07/E08:
-- arithmetic-transparent vs arithmetic-obscured decisions;
-- another same-family reasoning/instruct pair;
-- cleaner training lineage;
-- intervention that selectively restores missing context use.
-
----
-
-# Outcome robustness
-
-- selective abstraction wins → reasoning learns semantic relevance;
-- flattening wins → behavioral invariance overstates rationality;
-- deliberative reconstruction wins → invariance is trajectory-built;
-- arithmetic boundary wins → specialized reasoning policy;
-- another account wins → reconstruct.
-
----
-
-# Kill / reconstruct
-
-KILL/demote if the branch contrast disappears, the semantic boundary cannot be objectively identified, only generic trace/readout effects survive, causal work never rises above probes, or current literature compresses the full story.
-
----
+The contribution is the causal distinction, not a layer number.
 
 # Main-level shape
 
 > reasoning-induced invariance  
 > → semantic-relevance boundary  
-> → causal decision-state explanation  
-> → meaningful limitation/consequence for reasoning-model rationality
-
-Do not turn it into a 20-bias leaderboard.
+> → causal explanation of decision-state construction  
+> → consequence for how we interpret reasoning-model rationality
