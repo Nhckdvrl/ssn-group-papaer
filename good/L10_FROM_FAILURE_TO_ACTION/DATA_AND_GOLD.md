@@ -2,135 +2,81 @@
 
 **Core rule:** load-bearing truth comes from explicit environment/action state, not an LLM judge.
 
----
-
 # 1. Primary released substrate
 
 Start from public **ImplicitMemBench** artifacts:
 
 - paper: <https://aclanthology.org/2026.acl-long.1301/>
 - code/data: <https://github.com/qinchonghanzuibang/ImplicitMemBench>
+- pinned upstream commit: `927413bf3f5389bb47c94c2a0ba987e435b101b8`
 
-The first pilot uses released tool-like classical-conditioning items, especially:
-- `conditioned_api_aversion.json`;
-- `tool_use_with_side_effects.json`.
+The first pilot uses only:
 
-They contain explicit assistant actions/tool choices, system outcomes, interference, and a later related request.
+> `dataset/classical_conditioning/conditioned_api_aversion.json`
 
-Before target-model evaluation:
-- pin upstream commit;
-- save source hashes;
-- record every transformation from released item to pilot item.
+It contains **10 released instances**. Each has repeated use of a named tool B followed by explicit failure, a distinct named alternative A followed by success, interference, and a later related request.
 
----
+## Why not start with Tool Use with Side-Effects?
 
-# 2. Pilot unit
+Many released side-effect items permit multiple valid responses: warning, safe mode, parameterized use of the same tool, or an alternative tool. That weakens strict first-action gold. Keep that family for later boundary/natural validation.
 
-Use the **20 released item instances** across those two families as the first pool.
+# 2. Pilot action contract
 
-A usable item must expose:
-- failed/problematic action **B**;
-- objectively viable/safer alternative **A** in the released experience;
-- explicit system feedback;
-- a later matched request where repeating B is scientifically wrong under the observed state.
+The manually audited action pairs are frozen in `data/audit_manifest.json`.
 
-Exclude before model evaluation if:
-- responsibility is ambiguous;
-- A/B do not serve the same relevant goal;
-- expected action depends on subjective author preference.
+For the actual-action branch, use the original test request and append only:
 
-No post-hoc filtering by model behavior.
+> Take the next action now. Respond with the tool name you would use first; do not explain.
 
----
+Primary action gold is the released successful alternative **A**. If output is not exactly one of the two audited tool names, record it as **other/invalid for strict action identity** and retain raw text. Do not post-hoc judge free-form warnings as correct.
 
 # 3. Untouched-history fork contract
 
-For each item construct one canonical experience history **H**.
+For each item construct one canonical history **H** from the released learning phase + interference phase. Preserve source roles by default and record the rendered prompt hash.
 
-### Branch M — outcome memory
-Ask what happened when B was used.
+Fork H independently:
 
-**Gold:** explicit system outcome.
+- **M — outcome memory:** did B repeatedly succeed or fail? Gold = FAILURE.
+- **C — attribution:** which tool was repeatedly associated with errors? Gold = B.
+- **P — executable policy:** which tool should be used first next time? Gold = A.
+- **A — actual first action:** original test request + action instruction. Gold = A.
 
-### Branch C — action–outcome attribution
-Ask which action caused the failed/problematic outcome.
+**M/C/P outputs never enter A.**
 
-**Gold:** released/controlled action–outcome sequence.
+# 4. Stage-completion interventions
 
-### Branch P — executable policy knowledge
-Ask what action should be taken for the next matched request.
+From the same untouched H:
 
-**Gold:** the observed viable action under the task state.
-
-### Branch A — actual first action
-Present the next request and let the model act.
-
-**Gold:** avoid the known failed action and use the viable alternative when the item supports it.
-
-**Critical:** M/C/P answers are never inserted into A. Every branch begins from H.
-
----
-
-# 4. Stage-completion action interventions
-
-Create additional action branches directly from H:
-
-- **A0 raw:** no added statement.
-- **A1 outcome:** “B failed in the previous attempt.”
-- **A2 causal binding:** “The previous failure was caused by using B.”
+- **A0 raw**
+- **A1 outcome:** “B failed in the earlier attempts.”
+- **A2 causal binding:** “The earlier failures were caused by using B.”
 - **A3 negative policy:** “Do not use B for this request.”
 - **A4 positive replacement:** “Use A instead for this request.”
 
-Template and counterbalance wording/action identities where practical.
+All notes appear in the same location/role.
 
-The scientific quantity is not whether reminders help generally. It is **which completion first changes actual action** relative to what the model already demonstrates in M/C/P.
-
----
+Primary causal quantities:
+- change in strict A selection;
+- change in strict B repetition.
 
 # 5. Metrics
 
-Report separately:
-- outcome-memory accuracy;
-- attribution accuracy;
-- policy accuracy;
-- actual first-action success / avoid-failure rate;
-- policy–action dissociation rate;
-- paired action recovery under A1–A4.
+Report:
+- M/C/P accuracy;
+- A0 strict good-action rate;
+- A0 strict bad-repeat rate;
+- strict validity rate;
+- **P-correct + A0-bad-repeat** dissociation;
+- paired A1–A4 recovery relative to A0.
 
-Use item/template-level uncertainty. Do not treat repeated samples as independent items.
+Uncertainty is over the **10 released item templates**.
 
-Primary causal contrasts are paired intervention effects on **actual first action**.
+# 6. First model
 
----
+`Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28`
 
-# 6. Controls
+Use greedy first-action decoding for route selection. Add another family only after the design has leverage.
 
-- action/tool identity counterbalancing;
-- option/order counterbalancing;
-- matched statement salience where practical;
-- native chat/tool template;
-- strict first-action parser;
-- fixed model revision/decoding;
-- no diagnostic-query contamination;
-- no LLM judge for outcome/action gold.
+# 7. Data kill / reconstruct
 
-If tool protocol or action parsing is not identifiable, repair it before interpretation.
-
----
-
-# 7. Expansion only after leverage
-
-The route-selection pilot uses one strong open instruct model. Add a second family only after H is valid and at least one stage dissociation/completion has leverage.
-
-Later natural validation can use public tool-error/recovery settings such as Fission-GRPO-compatible tasks or another audited interactive benchmark.
-
----
-
-# 8. Data kill conditions
-
-KILL / reconstruct if:
-- the released items do not support objective action truth;
-- diagnostic branches cannot be separated from behavior;
-- matched controls remove the effect and no measurement conclusion survives;
-- everything reduces to explicit negative-instruction difficulty;
-- no stage-completion intervention changes real action under an otherwise valid substrate.
+Stop/redesign if the template cannot faithfully render H, strict action identity is not identifiable, A/B truth is not objective, no stage/completion moves behavior, or only subjective warning quality remains.

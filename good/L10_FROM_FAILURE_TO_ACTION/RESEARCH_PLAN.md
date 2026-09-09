@@ -1,117 +1,56 @@
 # L10 — Research Plan
 
-**Goal:** locate the failure→action bottleneck before scaling models, datasets, or mechanistic tooling.
-
----
+**Goal:** locate the failure→action bottleneck before scaling.
 
 # Phase 0 — Artifact audit
 
-Before target-model compute:
-- pin ImplicitMemBench repository commit;
-- validate the 20 released tool-like items from Conditioned API Aversion + Tool Use with Side-Effects;
-- verify objective failed action, alternative action, outcome, and next-request mapping;
-- freeze transformation script and hashes.
+Completed for route selection:
+- ImplicitMemBench upstream pinned at `927413bf3f5389bb47c94c2a0ba987e435b101b8`;
+- 10 Conditioned API Aversion items selected as the cleanest strict two-action substrate;
+- Tool Use with Side-Effects deferred because many items admit multiple valid actions.
 
-If identification fails, repair the substrate first.
-
----
+Run `scripts/fetch_parent_data.sh` and preserve provenance/hashes before execution.
 
 # L10-E01 — Untouched-History Stage Decomposition
 
-## Question
+- 10 released items;
+- pinned Qwen2.5-7B-Instruct;
+- greedy first-action decoding;
+- native chat template;
+- independent M/C/P/A0 forks.
 
-> From the same experienced failure history, does the model retain the outcome, attribute it to the correct action, know the replacement policy, and actually execute that policy?
+Report M/C/P accuracy, A0 good-action/bad-repeat rates, strict validity, and item-level **P correct + A0 bad repeat**.
 
-## Setup
-
-- 20 released item instances;
-- one strong open instruct model first;
-- native chat/tool format;
-- fixed decoding;
-- independent M/C/P/A forks from H.
-
-## Primary evidence
-
-Report four branch accuracies and item-level dissociations, especially:
-
-> **policy correct + actual action wrong**
-
-This is the clean Stage-4 signature, but E01 remains informative if the break occurs earlier.
-
-No hidden-state probe is needed for E01.
-
----
+No hidden-state probe.
 
 # L10-E02 — Matched Stage Completion
 
-From untouched H, run action-only branches:
-- raw;
-- outcome reminder;
-- causal binding;
-- negative prohibition;
-- positive replacement.
+From H compare A0 raw, A1 outcome reminder, A2 causal binding, A3 negative prohibition, A4 positive replacement.
 
-## Question
+Interpret only through paired changes in **actual first action**:
+- A1 rescues → retention;
+- A2 adds rescue → attribution;
+- A4 needed after correct P → policy/action bottleneck;
+- A4 ≫ A3 → negative-specification boundary.
 
-> Which missing piece, when supplied alone, causally changes the first real action?
+Questionnaire accuracy alone cannot establish a causal stage.
 
-Interpret relative to E01:
-- outcome reminder rescues → retention;
-- causal binding adds rescue → attribution;
-- replacement needed → fact-to-policy conversion;
-- policy already verbalized but direct policy completion changes action → policy/action dissociation;
-- positive replacement ≫ prohibition → negative-specification boundary.
-
-Do not claim a stage solely from questionnaire accuracy.
-
----
-
-# Phase 2 — Replication / boundary
+# After leverage
 
 Only after E01/E02:
-- second open model family;
-- one matched success-experience control;
-- interference/delay if retention is implicated;
-- feedback-strength/ambiguity controls if attribution is implicated.
+1. confirm on a second open family;
+2. add a success-experience control if needed;
+3. add interference only if retention is implicated;
+4. formalize natural interactive validation with objective action schemas.
 
-Do not run all boundaries by default.
-
----
-
-# Phase 3 — Natural interactive validation
-
-Take the winning bottleneck/completion into a natural error-recovery setting:
-- tool execution errors;
-- repeated-action trajectories;
-- public Fission-GRPO-compatible or equivalent tasks.
-
-Ask whether the controlled diagnosis predicts natural repetition and whether the same completion repairs it.
-
----
-
-# Outcome routes
-
-- retention wins → consolidation/interference;
-- attribution wins → action–outcome binding;
-- policy formation wins → episodic fact → executable replacement;
-- behavioral inhibition wins → knowledge/action dissociation;
-- negative-specification wins → connect to prohibition mechanisms without collapsing into them;
-- matched design erases gap → reconstruct around what the parent inhibition score measures, if broad/consequential.
-
----
+The side-effect family can return after its action space is formalized.
 
 # Kill / reconstruct
 
 RECONSTRUCT when another stage/boundary wins.
 
-KILL when data do not identify the stages, effects reduce to known negative-instruction behavior, no completion moves actual action, natural validation breaks the controlled explanation, or new literature compresses the full chain.
+KILL/demote when source mapping fails, strict action identity is invalid, no stage/completion has leverage, effects reduce to known explicit-negative-instruction behavior, natural validation breaks the diagnosis, or new literature compresses the full chain.
 
----
+# Main-level shape
 
-# Main-level requirement
-
-Before paper-mainline approval require:
-
-> established phenomenon → stage-wise localization → targeted causal repair → meaningful boundary → natural validation → consequence for experience/memory design.
-
-Do not promote a four-bar diagnostic funnel by itself.
+> established failure behavior → stage-wise localization → targeted causal completion → meaningful boundary → natural validation → consequence for experience/memory design.

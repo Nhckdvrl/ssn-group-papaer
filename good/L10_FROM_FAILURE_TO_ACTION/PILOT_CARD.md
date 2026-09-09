@@ -1,95 +1,56 @@
 # L10 — Minimum Decisive Pilot Card
 
 **Experiment:** L10-E01 + gated L10-E02  
-**Status:** PILOT-AUTHORIZED  
-**Purpose:** determine whether the failure→future-action chain has a stable, causally addressable bottleneck.
-
----
-
-# Load-bearing question
-
-> **Can the same model know what happened, know what action caused it, know what it should do next, yet still repeat the failed action? If not, which earlier stage is missing?**
-
----
+**Status:** PILOT-AUTHORIZED
 
 # Data
 
-Start with the **20 released ImplicitMemBench tool-like instances** from:
-- Conditioned API Aversion;
-- Tool Use with Side-Effects.
+Use exactly the **10 released Conditioned API Aversion items** from ImplicitMemBench commit:
 
-Before model evaluation audit each item for:
-- explicit failed/problematic B;
-- explicit viable/safer A;
-- objective system outcome;
-- unambiguous next-request action truth.
+> `927413bf3f5389bb47c94c2a0ba987e435b101b8`
 
-Freeze exclusions and source hashes before seeing model behavior.
+The frozen bad/good action mapping is in `data/audit_manifest.json`.
 
----
+Do **not** include Tool Use with Side-Effects in E01; multiple valid action forms weaken strict gold.
 
 # Model
 
-Use **one strong open instruct model** already feasible locally.
+`Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28`
 
-Freeze model ID/revision, template, decoding config, and parser.
+Greedy decoding, native chat template, strict tool-name parsing.
 
-A second family is confirmation, not part of the first route-selection run.
+# E01
 
----
+From one untouched history H independently run:
+1. **M** outcome memory;
+2. **C** attribution;
+3. **P** executable policy;
+4. **A0** actual first action.
 
-# E01 — untouched-history forks
+**M/C/P responses never appear in A0.**
 
-For each canonical history H, independently run:
+Primary dissociation:
 
-1. **M — outcome memory**
-2. **C — action–outcome attribution**
-3. **P — executable policy**
-4. **A — actual first action**
+> **P correct, but A0 strictly repeats B.**
 
-**Hard rule:** M/C/P outputs never appear in A.
+An earlier M/C/P break is also valid.
 
-Record stage correctness, first action, invalid outputs, and policy-correct/action-wrong dissociation.
+# E02
 
-Use item-level bootstrap or paired exact/permutation tests where applicable. Do not pseudo-replicate generations.
+From H run A1 outcome reminder, A2 causal binding, A3 “do not B”, A4 “use A instead”.
 
----
+Primary evidence is paired recovery of **actual action**.
 
-# E02 — causal completion
+# Continue
 
-From the same untouched H create action branches:
+Continue if a stable stage dissociation and/or preregistered completion has clear behavioral leverage.
 
-- A0 raw;
-- A1 outcome reminder;
-- A2 causal binding;
-- A3 “do not B”;
-- A4 “use A instead”.
+# Stop / reconstruct
 
-Primary outcome:
-> paired change in actual avoid-failure / correct-first-action rate.
+Stop if action gold/parser is ambiguous, the template invalidates history, effects are wording artifacts, or no stage/completion changes behavior.
 
-The experiment is decisive through **behavior**, not more verbal diagnostics.
-
----
-
-# Informative outcomes
-
-- **M weak:** retention bottleneck.
-- **M good, C weak:** attribution bottleneck.
-- **M/C good, P weak:** executable-policy formation bottleneck.
-- **M/C/P good, A weak:** behavioral inhibition / knowledge-action dissociation.
-- **A4 ≫ A3:** positive-replacement boundary.
-- **No raw gap but intervention pattern remains:** reconstruct.
-- **No stable gap and no causal action effect:** demote/kill rather than scale.
-
-# Continue criterion
-
-Continue when at least one interpretable stage dissociation motivates a matched completion and/or one preregistered completion clearly changes actual action.
-
-Do not require Stage 4 specifically.
-
-# Stop criterion
-
-Stop/reconstruct if item truth is ambiguous, the action protocol/parser is invalid, results reduce to wording artifacts, or no stage/completion has causal leverage.
-
-No model zoo, hidden-state probing, or natural-agent expansion before this card is resolved.
+Runnable scaffold:
+- `scripts/fetch_parent_data.sh`
+- `scripts/run_pilot.py`
+- `scripts/summarize_pilot.py`
+- `scripts/run_pilot.sh`
