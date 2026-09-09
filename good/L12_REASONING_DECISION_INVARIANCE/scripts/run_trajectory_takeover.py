@@ -10,18 +10,58 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = json.loads((ROOT / "configs/trajectory_takeover.json").read_text())
 
-DECISION_TAIL = re.compile(
-    r"\b(choose|choosing|select|selected|prefer|preferred|pick|final answer|"
-    r"answer is|better choice|better option|optimal choice)\b"
-    r"|\b(?:option\s*)?[AB]\b.{0,80}\b(higher|lower|better|worse|optimal|preferred)\b"
-    r"|\b(higher|lower|better|worse|optimal|preferred)\b.{0,80}\b(?:option\s*)?[AB]\b",
-    flags=re.I,
-)
-BARE_LABEL = re.compile(r"^\s*(?:option\s*)?[AB]\s*[.!]?$", flags=re.I)
+BARE_LABEL = re.compile(r"^\s*(?:(?i:option)\s+)?[AB]\s*[.!]?$")
 CONCLUSION_LABEL = re.compile(
-    r"^\s*(?:therefore|thus|hence|so)[,:]?\s*(?:option\s*)?[AB]\s*[.!]?$",
-    flags=re.I,
+    r"^\s*(?i:therefore|thus|hence|so)[,:]?\s*(?:(?i:option)\s+)?[AB]\s*[.!]?$",
 )
+
+
+def decision_labels(segment):
+    labels = {
+        match.upper()
+        for match in re.findall(r"\b(?:option\s+|EV_?)([AB])\b", segment, flags=re.I)
+    }
+    labels.update(re.findall(r"(?<![A-Za-z_])([AB])(?![A-Za-z_])", segment))
+    return labels
+
+
+def is_decision_segment(segment):
+    if BARE_LABEL.match(segment) or CONCLUSION_LABEL.match(segment):
+        return True
+    labels = decision_labels(segment)
+    if not labels:
+        return False
+    planning = re.search(
+        r"\b(?:choose|select|decide)\s+between\b|\bwhich\s+option\b.{0,80}\bbetween\b"
+        r"|\bwhether\s+to\b.{0,80}\b(?:A|B)\b",
+        segment,
+        flags=re.I,
+    )
+    directed_relation = re.search(
+        r"\b(?:higher|lower|better|worse)\s+than\b|\bprefer\b.{0,80}\bover\b"
+        r"|\b(?:rather than|instead of)\b",
+        segment,
+        flags=re.I,
+    )
+    if planning and not directed_relation:
+        return False
+    if directed_relation:
+        return True
+    if len(labels) > 1 and not re.search(
+        r"\b(over|rather than|instead of)\b", segment, flags=re.I
+    ):
+        return False
+    if re.search(r"\b(better|worse|optimal|preferred)\b", segment, flags=re.I):
+        return True
+    if re.search(r"\b(higher|lower)\b", segment, flags=re.I) and re.search(
+        r"\b(expected|EV|value|payoff|return|utility)\b", segment, flags=re.I
+    ):
+        return True
+    return bool(re.search(
+        r"\b(choose|select|prefer|pick|go with|answer|choice)\b",
+        segment,
+        flags=re.I,
+    ))
 
 
 def option_text(p, frame, identity):
@@ -70,15 +110,14 @@ def strip_terminal_conclusion(trace):
         for x in re.split(r"(?<=[.!?])\s+|\n+", trace.strip())
         if x.strip()
     ]
-    removed = []
-    while parts and (
-        DECISION_TAIL.search(parts[-1])
-        or BARE_LABEL.match(parts[-1])
-        or CONCLUSION_LABEL.match(parts[-1])
-    ):
-        removed.append(parts.pop())
-    stripped = " ".join(parts).strip()
-    return stripped, list(reversed(removed))
+    first_commitment = next(
+        (index for index, part in enumerate(parts) if is_decision_segment(part)),
+        None,
+    )
+    if first_commitment is None:
+        return " ".join(parts).strip(), []
+    stripped = " ".join(parts[:first_commitment]).strip()
+    return stripped, parts[first_commitment:]
 
 
 def next_token_margin(model, tokenizer, device, prefix, expected):
@@ -179,8 +218,10 @@ def main():
                     "stripped_trace": stripped,
                     "removed_terminal_segments": removed,
                     "removed_any_terminal_conclusion": bool(removed),
-                    "remaining_decision_marker": bool(
-                        DECISION_TAIL.search(stripped) or CONCLUSION_LABEL.search(stripped)
+                    "remaining_decision_marker": any(
+                        is_decision_segment(part)
+                        for part in re.split(r"(?<=[.!?])\s+|\n+", stripped)
+                        if part.strip()
                     ) if stripped else False,
                     "continuation": text,
                 }
@@ -219,7 +260,7 @@ def main():
                 "donor_remaining_decision_marker": donor["remaining_decision_marker"],
             }
             for name, trace in conditions.items():
-                prefix = rendered + trace.strip() + "\n</think>\n"
+                prefix = rendered + trace.strip() + "\n</think>\n\n"
                 margin, prediction, logit_a, logit_b = next_token_margin(
                     model, tokenizer, args.device, prefix, expected
                 )

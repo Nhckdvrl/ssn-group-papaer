@@ -36,16 +36,28 @@ def summarize_delta(frame, left, right, seed):
 
 def main():
     frame = pd.read_json(OUT / "raw.jsonl", lines=True)
+    traces = pd.read_json(OUT / "traces.jsonl", lines=True)
+    valid_traces = traces[traces.valid_trace & traces.stripped_trace.map(bool)].copy()
+    valid_traces["retained_character_fraction"] = (
+        valid_traces.stripped_trace.str.len() / valid_traces.trace.str.len()
+    )
     summary = {
         "design": "L12-E07 trajectory takeover after terminal-conclusion stripping",
         "n": int(len(frame)),
         "n_prospects": int(frame.prospect.nunique()),
         "trace_audit": {
+            "n_generated": int(len(traces)),
+            "n_valid": int(traces.valid_trace.sum()),
+            "n_matched_target_rows": int(len(frame)),
             "terminal_conclusion_removed_rate": float(
-                frame.target_removed_segments.map(bool).mean()
+                valid_traces.removed_terminal_segments.map(bool).mean()
             ),
             "remaining_decision_marker_rate": float(
-                frame.target_remaining_decision_marker.mean()
+                valid_traces.remaining_decision_marker.mean()
+            ),
+            "empty_after_strip": int((valid_traces.stripped_trace.str.len() == 0).sum()),
+            "mean_retained_character_fraction": float(
+                valid_traces.retained_character_fraction.mean()
             ),
         },
         "readout_accuracy": {

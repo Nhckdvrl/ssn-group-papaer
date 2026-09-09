@@ -1,56 +1,41 @@
-# L12 — Next Decisive Pilot Card
+# L12 Next Decisive Experiment Card
 
-**Experiment:** L12-E07  
-**Status:** CONTINUE-PILOT
+**Experiment:** L12-E12
+**Status:** RUNNABLE; WAITING FOR CHECKPOINT AVAILABILITY
 
-# Scientific question
+## Scientific question
 
-> **Does the long reasoning trajectory itself control the final answer, or is the apparent control mostly the final explicit self-commitment?**
+> Does the causal-control reorganization found at the sibling SFT split persist through the documented DPO continuation of both branches?
 
-This is the central unresolved mechanism behind the L12 “trajectory takeover / puppet-string” hypothesis.
+This is checkpoint breadth, not another search for a local interpretability effect.
 
-# E07 — Conclusion-Stripped Trajectory Takeover
+## Design
 
-Use the three audited parent prospects and natural Think-SFT traces.
+Use the same 222 matched stripped-trajectory pairs from E10 and score the same prompt-frame x trajectory-frame factorial on:
 
-For each prospect × frame × order compare:
+- `allenai/Olmo-3-7B-Instruct-DPO`
+- `allenai/Olmo-3-7B-Think-DPO`
 
-1. **own full trace**
-2. **own terminal-conclusion-stripped trace**
-3. **matched opposite-frame stripped trace**
-4. **empty trace**
+The SFT results are frozen comparators. Official model metadata states:
+
+- Instruct-SFT -> Instruct-DPO
+- Think-SFT -> Think-DPO
 
 ## Primary evidence
 
-### Own stripped vs empty
+> Think-DPO minus Instruct-DPO trajectory-minus-prompt control.
 
-Does the non-terminal reasoning trajectory still create a large target-directed A/B margin?
+The base-decision bootstrap interval must exclude zero and direction should be broadly consistent across the 36 independent decisions.
 
-### Own stripped vs opposite stripped
+Within-branch DPO-minus-SFT changes are secondary and descriptive. This experiment cannot identify DPO as the origin of the original branch divergence.
 
-Can two matched long trajectories still push the same target prompt toward opposite decisions after explicit terminal commitments are removed?
+## Execution state
 
-## Outcome logic
-
-- **Both contrasts strong:** distributed trajectory takeover survives → run E08.
-- **Effect collapses:** mechanism is late self-commitment → reconstruct around that answer.
-- **Trace surgery is genuinely invalid:** repair the surgery once; do not launch a control battery.
-
-# E08 — only after E07 succeeds
-
-Substitute the matched opposite-frame **pre-answer hidden state** into the target computation, layer by layer.
-
-Goal:
-
-> establish whether the natural trajectory has constructed a causal decision state that transfers answer control without donor text.
+Exact revisions, scripts, and summary code are complete. The first run was stopped before model loading because Hugging Face checkpoint transfer remained below 0.1 MB/s with and without `hf_transfer`.
 
 Runnable:
 
-- `configs/trajectory_takeover.json`
-- `scripts/run_trajectory_takeover.py`
-- `scripts/summarize_trajectory_takeover.py`
-- `scripts/run_trajectory_takeover.sh`
-- `configs/state_substitution.json`
-- `scripts/run_state_substitution.py`
-- `scripts/summarize_state_substitution.py`
-- `scripts/run_state_substitution.sh`
+- `configs/checkpoint_validation.json`
+- `scripts/run_checkpoint_control.py`
+- `scripts/summarize_checkpoint_control.py`
+- `scripts/run_checkpoint_control.sh`

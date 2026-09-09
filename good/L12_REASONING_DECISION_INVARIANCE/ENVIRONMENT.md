@@ -7,6 +7,7 @@
 
 Checkpoint revisions and prompt hashes are embedded in raw outputs. The common-base relationship is taken from the official OLMo 3 model cards, not the contradictory sentence in the ACL paper appendix.
 Prompt-activation arrays (`results/**/*.npz`) are regenerable local artifacts and are intentionally excluded from Git; probe summaries and compact raw generations are tracked.
+The full E10 Think-SFT trajectory file (`results/breadth_seed71/think_sft/raw.jsonl`, about 4 MB) is likewise retained locally and ignored. Its compact behavior/control summaries and all regeneration code/configs are tracked.
 
 ## Commands
 
@@ -15,8 +16,14 @@ Run from the L12 directory:
 ```bash
 scripts/run_parent_audit.sh
 scripts/run_behavior.sh
+scripts/run_breadth_behavior.sh
+scripts/run_breadth_control.sh
+scripts/run_breadth_state.sh
+scripts/run_checkpoint_control.sh
 CUDA_VISIBLE_DEVICES=2 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/score_reasoning_prefix.py --device cuda:0
 CUDA_VISIBLE_DEVICES=2 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/score_calculation_intervention.py --device cuda:0
 ```
 
 `run_behavior.sh` needs three free GPUs. The archived invalid runs are documented in `results/pilot_seed29/INVALID_RUNS.md` and are not reproduced by the formal pipeline.
+
+E10 Think-SFT generation uses vLLM for batched sampling; the backend is recorded in its `model.json`. Hugging Face model caches and vLLM compilation caches are outside the repository. E12 requires the two DPO checkpoints to be locally available; its first download attempt was stopped due external bandwidth below 0.1 MB/s.

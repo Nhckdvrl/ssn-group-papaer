@@ -1,0 +1,68 @@
+{
+  "design": "L12-E07 trajectory takeover after terminal-conclusion stripping",
+  "n": 46,
+  "n_prospects": 3,
+  "trace_audit": {
+    "n_generated": 48,
+    "n_valid": 47,
+    "n_matched_target_rows": 46,
+    "terminal_conclusion_removed_rate": 1.0,
+    "remaining_decision_marker_rate": 0.0,
+    "empty_after_strip": 0,
+    "mean_retained_character_fraction": 0.48120575027673756
+  },
+  "readout_accuracy": {
+    "own_full": 1.0,
+    "own_stripped": 0.8043478260869565,
+    "opposite_stripped": 0.1956521739130435,
+    "empty": 0.5869565217391305
+  },
+  "mean_margin": {
+    "own_full": 9.576086956521738,
+    "own_stripped": 2.5448369565217392,
+    "opposite_stripped": -2.297554347826087,
+    "empty": -0.06793478260869565
+  },
+  "primary_contrasts": {
+    "own_stripped_minus_empty": {
+      "mean": 2.6236979166666665,
+      "ci95_prospect_bootstrap": [
+        2.0078125,
+        2.98828125
+      ],
+      "per_prospect": [
+        2.875,
+        2.0078125,
+        2.98828125
+      ]
+    },
+    "own_stripped_minus_opposite_stripped": {
+      "mean": 4.863467261904762,
+      "ci95_prospect_bootstrap": [
+        3.46875,
+        5.7734375
+      ],
+      "per_prospect": [
+        5.348214285714286,
+        3.46875,
+        5.7734375
+      ]
+    },
+    "own_full_minus_own_stripped": {
+      "mean": 7.046688988095238,
+      "ci95_prospect_bootstrap": [
+        6.74609375,
+        7.401785714285714
+      ],
+      "per_prospect": [
+        7.401785714285714,
+        6.9921875,
+        6.74609375
+      ]
+    }
+  },
+  "interpretation": {
+    "trajectory_takeover_supported_if": "own_stripped remains strongly target-directed versus empty and opposite-frame stripped traces after terminal choice/conclusion removal",
+    "late_self_commitment_if": "the large own-full effect collapses after terminal conclusion removal"
+  }
+}

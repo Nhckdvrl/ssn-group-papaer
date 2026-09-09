@@ -1,75 +1,61 @@
-# L12 Live Related Work / Novelty Audit
+# L12 Live Related Work and Novelty Audit
 
 **Search date:** 2026-09-09
 
-# 1. Behavioral parent
+## Direct owners
 
-## Mind the (DH) Gap! — ACL 2026 Outstanding
+### Mind the (DH) Gap! - ACL 2026 Outstanding
+
 <https://aclanthology.org/2026.acl-long.479/>
 
-Owns the broad reasoning-vs-conversational risky-choice contrast: reasoning models are substantially more invariant to order, gain/loss framing, explanation, and description/history presentation.
+Owns the broad risky-choice result: reasoning models are less sensitive to order, gain/loss framing, explanation, and description/history presentation. L12 cannot claim that reasoning models are simply more rational or invariant.
 
-L12 begins from the unresolved mechanism behind that transition.
+### Reasoning Traces Shape Outputs but Models Won't Say So - ACL 2026
 
-# 2. Generic reasoning-trace causality is already occupied
-
-## Reasoning Traces Shape Outputs but Models Won’t Say So — ACL 2026
 <https://aclanthology.org/2026.acl-long.1986/>
 
-Shows that injected reasoning snippets can causally alter model outputs.
+Owns generic causal evidence that injected reasoning changes outputs. Thus full-trajectory injection is substrate, not L12's paper identity.
 
-## KisMATH — TACL 2026
-<https://doi.org/10.1162/TACL.a.729>
+### LLMs Faithfully and Iteratively Compute Answers During Chain-of-Thought - Findings EACL 2026
 
-Shows that nodes in extracted CoT causal graphs contribute to final answers.
+<https://aclanthology.org/2026.findings-eacl.59/>
 
-Therefore “reasoning traces affect answers” is not L12’s novelty.
+Owns iterative answer computation during CoT in controlled arithmetic. E07 cannot be sold as the generic observation that answers form before the final token.
 
-# 3. Hidden-state / trajectory mechanism work is also close
+### Reasoning Fine-Tuning Induces Persistent Latent Policy States - COLM 2026
 
-## When Chain-of-Thought Fails, the Solution Hides in the Hidden States — 2026
-<https://arxiv.org/abs/2604.23351>
+<https://arxiv.org/abs/2607.18532>
 
-Uses activation patching to transfer CoT token hidden states into direct-answer computation.
+The closest new collision. It frames reasoning-tuned models as switching dynamical systems, identifies persistent latent policy states, and uses state swaps/transplants to argue that reasoning fine-tuning globally reorganizes latent dynamics. L12 therefore cannot claim generic latent policy states or global reorganization from reasoning fine-tuning.
 
-## Mechanistic Interpretability of Chain-of-Thought Reasoning via Sequential Activation Patching — 2026
-<https://arxiv.org/abs/2608.22332>
+### CASE: Causally Aligned Self-Explanation - 2026
 
-Studies causally important locations distributed along reasoning trajectories.
+<https://arxiv.org/abs/2607.18820>
 
-## How Do Answer Tokens Read Reasoning Traces? — Findings ACL 2026
-<https://aclanthology.org/2026.findings-acl.1507/>
+Formalizes and trains an instruction-to-CoT-to-answer causal route while suppressing direct shortcuts. It is close to L12's control-route language, but it proposes a training method rather than explaining the established presentation-invariance transition.
 
-Studies how answer tokens attend to and integrate reasoning traces.
+## Evidence-depth comparators
 
-So L12 cannot be “we patched CoT states” or “we found important reasoning tokens/layers.”
+- **Racing Thoughts** (NAACL 2025): computational hypothesis, correlational evidence, causal evidence, then intervention. <https://aclanthology.org/2025.naacl-long.155/>
+- **The LLM Language Network** (NAACL 2025): localization becomes scientifically useful only after causal ablation and breadth. <https://aclanthology.org/2025.naacl-long.544/>
+- **Scaling Reasoning, Losing Control** (ACL 2026): reasoning-oriented training can trade off against external instruction control, but does not identify the internal route behind framing invariance. <https://aclanthology.org/2026.acl-long.1878/>
 
-# 4. Surviving paper-level identity
+## Strongest reviewer compression
 
-> **reasoning-oriented post-training is associated with a sharp behavioral invariance transition, while prompt frame information remains present; the open question is whether self-generated long reasoning becomes a new causal control channel that takes over the final decision.**
+> Mind the DH Gap + iterative CoT computation/trace injection + persistent latent policy states.
 
-The decisive mechanism sequence is:
+This compression wins if L12 claims only that reasoning is causal, choices emerge through a trajectory, or a late hidden state can be swapped.
 
-> behavioral transition  
-> → preserved prompt information  
-> → large natural-trajectory control  
-> → distributed trajectory vs terminal self-commitment  
-> → trajectory-built pre-answer decision state.
+It does not yet own the complete L12 identity:
 
-This remains distinct from generic CoT causality because the scientific object is **training-associated control transfer tied to an established invariance phenomenon**, not CoT usefulness in isolation.
+> an established presentation-invariance transition
+> + matched sibling post-training branches
+> + terminal-stripped distributed decision control
+> + pre-answer choice-state mediation
+> + a direct prompt-by-trajectory factorial showing that trajectory-relative causal control rises sharply in the reasoning branch.
 
-# 5. Reviewer compression
+The unique center is not a generic latent state. It is the **mechanistic explanation of presentation invariance as a training-associated reallocation of causal control**.
 
-The dangerous compression is:
+## Novelty verdict after E10-E11
 
-> “Mind the DH Gap + generic CoT patching.”
-
-That compression wins if L12 stops at E05 or merely localizes a layer.
-
-It loses only if E07/E08 establish a coherent control-transfer mechanism explaining the behavioral transition.
-
-# 6. Current verdict
-
-**CONTINUE-PILOT.**
-
-No broad defense battery. Run the two decisive mechanism steps and reassess.
+**Paper identity survives and now has stimulus breadth.** E09 is essential: without the control factorial, recent work compresses E07-E08. E10 shows the branch-level control reorganization on 36 independent decisions, and E11 replicates the internal state profile on a preregistered 18-decision subset. The remaining empirical vulnerability is checkpoint/model-family breadth, while the remaining conceptual vulnerability is collision with generic latent-policy-state language.

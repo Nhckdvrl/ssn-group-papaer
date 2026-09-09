@@ -64,6 +64,10 @@ def main():
     pair_frame = frame.drop_duplicates(
         ["prospect", "frame", "order", "sample_index"]
     )
+    first_reversal = next(
+        (layer for layer in layers if layer["mean_patched_target_margin"] <= 0),
+        None,
+    )
 
     summary = {
         "design": "L12-E08 pre-answer decision-state causal substitution",
@@ -71,6 +75,15 @@ def main():
         "n_trace_pairs": int(len(pair_frame)),
         "n_layers_scanned": int(frame.layer.nunique()),
         "baseline_target_margin": float(pair_frame.baseline_target_margin.mean()),
+        "baseline_target_accuracy": float(
+            (pair_frame.baseline_prediction == pair_frame.target_choice).mean()
+        ),
+        "donor_prefix_accuracy": float(
+            (pair_frame.donor_baseline_prediction == pair_frame.donor_choice).mean()
+        ),
+        "first_mean_margin_reversal_layer": (
+            None if first_reversal is None else first_reversal["layer"]
+        ),
         "decision_marker_audit": {
             "target_remaining_marker_rate": float(
                 pair_frame.target_remaining_decision_marker.mean()

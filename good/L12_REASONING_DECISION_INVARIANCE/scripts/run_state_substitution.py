@@ -197,10 +197,10 @@ def main():
                 add_generation_prompt=True,
             )
             target_prefix = (
-                target_rendered + target["stripped_trace"].strip() + "\n</think>\n"
+                target_rendered + target["stripped_trace"].strip() + "\n</think>\n\n"
             )
             donor_prefix = (
-                donor_rendered + donor["stripped_trace"].strip() + "\n</think>\n"
+                donor_rendered + donor["stripped_trace"].strip() + "\n</think>\n\n"
             )
 
             target_encoded = encode_prefix(tokenizer, target_prefix, args.device)

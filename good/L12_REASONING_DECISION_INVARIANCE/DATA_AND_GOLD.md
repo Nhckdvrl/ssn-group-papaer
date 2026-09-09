@@ -1,92 +1,59 @@
-# L12 — Data and Identification
+# L12 Data and Identification
 
-**Core principle:** the parent phenomenon is already established. The next evidence must distinguish **selective semantic abstraction** from **broad context disengagement**.
+**Updated:** 2026-09-09
 
-# 1. Behavioral substrate
+## 1. Current pilot substrate
 
-Use the three published risky-choice prospects already audited from **Mind the (DH) Gap!**.
+The mechanism-discovery experiments use the three explicit risky-choice prospects published in *Mind the (DH) Gap!*, crossed with:
 
-Keep:
-- gain/loss framing;
-- option order;
-- the exact audited Instruct-SFT / Think-SFT sibling checkpoints.
+- gain/loss frame;
+- both displayed option orders;
+- four sampled Think-SFT trajectories per cell.
 
-Do not build a new large benchmark for this pilot.
+The independent scientific unit is the **base prospect**, not a generation, trace, frame, order, or patch layer. Current prospect-cluster intervals therefore have only three independent units and must not be presented as full-paper breadth.
 
-# 2. E07 unit
+## 2. Behavioral gold
 
-The unit is one:
+Each option is a finite lottery. The underlying choice with the greater expected payoff is computed directly from the displayed probabilities and outcomes. Gain/loss transformations and order swaps preserve a known mapping between the underlying choice and displayed label A/B. No LLM judge is used.
 
-> **prospect × frame × order**
+## 3. E07 trajectory surgery
 
-with three contextual versions of the same displayed options.
+E07 removes the suffix beginning with the first directional comparison or explicit commitment while retaining the earlier reasoning. The audit records:
 
-### none
-No additional note.
+- the original and stripped text;
+- every removed segment;
+- whether an A/B decision marker remains;
+- the retained character fraction;
+- validity and matching status.
 
-### redundant
-A short contextual note rechecks one probability and leaves it unchanged.
+Final audit: 48 traces generated, 47 valid, 46 matched target rows; all valid traces had a conclusion removed, none retained a decision marker, none became empty, and the mean retained character fraction was 0.481.
 
-### correction
-The same note structure updates that probability to a frozen value that flips the EV-optimal underlying action.
+## 4. E08 identification
 
-Example:
+Target and donor are matched on base prospect, displayed order, and sample index, and differ in frame and resulting decision. Donor reasoning text is never appended to the target. Only the donor final-token residual state at one decoder layer is substituted. Self/no-patch behavior is the baseline, and the signed outcome is movement toward the donor decision.
 
-> Additional context: the probability associated with Option B was rechecked and remains 0.34.
+This identifies a causal role for the substituted pre-answer state under the constructed prefixes. It does not by itself identify the training operation that created the state.
 
-versus
+## 5. E09 identification
 
-> Additional context: the probability associated with Option B has been updated from 0.34 to 0.36.
+E09 crosses prompt frame and stripped-trajectory frame independently in a 2 x 2 factorial. The exact same trajectory strings are scored by the sibling Instruct-SFT and Think-SFT checkpoints, using each checkpoint's native answer transition. The reference outcome is the displayed choice optimal in the gain frame.
 
-The displayed option lines remain identical across the three context conditions.
+The primary quantity is:
 
-# 3. Gold
+> `(trajectory control - prompt control)_Think - (trajectory control - prompt control)_Instruct`
 
-Gold is the EV-optimal choice under the currently valid facts:
+This directly tests whether the behavioral branch transition is accompanied by stronger trajectory-relative causal control. Native template differences and non-identical branch training remain explicit attribution limits.
 
-- **none / redundant:** original probabilities/payoffs;
-- **correction:** the explicit contextual update supersedes the corresponding original probability.
+## 6. Full-paper stimulus expansion - completed
 
-The three frozen updates in `configs/boundary.json` each flip the EV-optimal underlying action in both gain and loss framings.
+E10 contains 36 independent base decisions constructed under requirements frozen before model evaluation:
 
-No LLM judge is needed for the primary outcome.
+- simple two-option lotteries with exact, programmatically verified expected values;
+- natural round payoffs and probabilities, with no complex fictional world;
+- exact gain/loss and order-matched variants;
+- stratification by EV gap and probability/payoff trade-off, avoiding accidental dominance;
+- no duplicate or affine-equivalent base units within a stratum;
+- a held-out audit table containing all values, gold mappings, and exclusion reasons;
+- base-decision cluster bootstrap as the primary uncertainty analysis.
 
-# 4. Two load-bearing quantities
-
-### Irrelevant-context invariance
-
-Compare **none → redundant**.
-
-> Does behavior remain stable when the extra context changes no decision fact?
-
-### Relevant-context uptake
-
-Compare **redundant → correction**.
-
-> How much does the correction move choice probability toward the newly EV-optimal action?
-
-Correction EV accuracy is kept only as an easy-to-read secondary number.
-
-Together these distinguish:
-
-- **selective abstraction:** irrelevant context is ignored, relevant context is used;
-- **context flattening:** irrelevant context is ignored, but relevant context is also underused.
-
-# 5. Model comparison
-
-Primary comparison:
-
-- `allenai/Olmo-3-7B-Instruct-SFT`
-- `allenai/Olmo-3-7B-Think-SFT`
-
-They are sibling branches from a common base.
-
-The current scientific claim concerns the transformation visible across these released branches. Stronger training-causal attribution is not required for E07.
-
-# 6. E08
-
-Only if E07 yields a stable semantic-relevance distinction:
-
-> use matched redundant/correction contexts to intervene on the pre-answer decision state.
-
-The target is whether that state carries **decision-relevant context** while becoming invariant to **irrelevant context**.
+The audit passes every listed constraint. E10 validates the behavioral transition and causal-control index across the full set. E11 repeats state substitution on a preregistered 18-decision stratified subset.

@@ -1,0 +1,83 @@
+{
+  "design": "L12-E10 independent-decision prompt-by-trajectory control",
+  "instruct_sft": {
+    "n_trace_pairs": 222,
+    "n_base_decisions": 36,
+    "trajectory_control": {
+      "mean_probability_effect": 0.07716430275157099,
+      "base_decision_bootstrap_ci95": [
+        0.022853427117894617,
+        0.13396066614209395
+      ],
+      "positive_base_decision_fraction": 0.6388888888888888
+    },
+    "prompt_control": {
+      "mean_probability_effect": -0.0028610437878385333,
+      "base_decision_bootstrap_ci95": [
+        -0.014148995206994188,
+        0.007663195467917856
+      ],
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    "trajectory_minus_prompt": {
+      "mean_probability_effect": 0.0800253465394095,
+      "base_decision_bootstrap_ci95": [
+        0.024042144883727367,
+        0.14094311830389647
+      ],
+      "positive_base_decision_fraction": 0.6666666666666666
+    }
+  },
+  "think_sft": {
+    "n_trace_pairs": 222,
+    "n_base_decisions": 36,
+    "trajectory_control": {
+      "mean_probability_effect": 0.48099960309281464,
+      "base_decision_bootstrap_ci95": [
+        0.4387413637863661,
+        0.5232794794332655
+      ],
+      "positive_base_decision_fraction": 1.0
+    },
+    "prompt_control": {
+      "mean_probability_effect": 0.001759639244111508,
+      "base_decision_bootstrap_ci95": [
+        -0.0013688352196224453,
+        0.0049489155872461735
+      ],
+      "positive_base_decision_fraction": 0.6388888888888888
+    },
+    "trajectory_minus_prompt": {
+      "mean_probability_effect": 0.4792399638487031,
+      "base_decision_bootstrap_ci95": [
+        0.43743509958223,
+        0.5219406791319904
+      ],
+      "positive_base_decision_fraction": 1.0
+    }
+  },
+  "think_minus_instruct": {
+    "trajectory_control_difference": {
+      "mean_probability_effect": 0.40383530034124354,
+      "base_decision_bootstrap_ci95": [
+        0.3452323275582514,
+        0.46784481839727116
+      ],
+      "positive_base_decision_fraction": 1.0
+    },
+    "trajectory_minus_prompt_difference": {
+      "mean_probability_effect": 0.3992146173092935,
+      "base_decision_bootstrap_ci95": [
+        0.33738892355292577,
+        0.4641369480270277
+      ],
+      "positive_base_decision_fraction": 1.0
+    }
+  },
+  "exploratory_mechanism_behavior_association": {
+    "n_base_decisions": 35,
+    "spearman_rho": -0.2025576707421074,
+    "p_value": 0.24322157135365133,
+    "interpretation": "secondary and not required for C3"
+  }
+}

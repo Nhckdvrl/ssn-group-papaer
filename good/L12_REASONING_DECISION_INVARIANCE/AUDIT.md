@@ -26,6 +26,18 @@ The ACL paper Appendix C.1 contains a contradictory sentence saying Instruct-SFT
 - Invalid outputs are retained and reported; they are missing only from conditional choice metrics.
 - Only three base prospects exist, so prospect-level confidence intervals are intrinsically wide. Trial-level precision must not be misrepresented as stimulus generalization.
 
+## Independent-Decision Expansion
+
+E10 adds 36 base decisions generated before model scoring from a frozen factorial over payoff scale, relative EV gap, and probability gap. The audit verifies:
+
+- 12 near, 12 medium, and 12 far EV-gap units;
+- 12 units at each payoff scale;
+- 18 narrow- and 18 wide-probability-gap units;
+- 18 gain-optimal A and 18 gain-optimal B units;
+- no ties, dominance, exact duplicates, or affine-equivalent units.
+
+The base decision is the inferential unit. E11 selected 18 decisions before state substitution, one from every factorial cell, with alternating gold direction.
+
 ## Public-Data Audit Result
 
 Across all three prompt styles and three prospects (nine matched cells), published aggregate frame consistency is:
@@ -41,3 +53,14 @@ Raw summary: `results/parent_audit/summary.json`. This confirms the parent branc
 - Normal Think-SFT answers are accepted only after a generated closing `</think>`. Raising the cap from 512 to 1,024 tokens yields 219/240 valid final answers.
 - The 512-token loose-parser run and 32-token injected-end run are archived as invalid and never enter formal summaries.
 - Injecting `</think>` did not produce a no-reasoning mode. This operation is not used as causal evidence.
+- E10 generated 576 continuations per sibling branch. Instruct-SFT validity was 1.000; Think-SFT validity was 0.875 at the 1,024-token cap. Exactly one of 144 Think cells had no valid completion, leaving 35/36 decisions analyzable for behavioral frame consistency and all 36 represented in matched trajectory control.
+- E10 valid stripped traces all had a terminal conclusion removed, retained no decision marker, and retained 45.0% of original characters on average.
+
+## DPO Checkpoint Axis
+
+Official Hugging Face metadata identifies exact continuations and revisions:
+
+- `Instruct-SFT -> Instruct-DPO`: `b33130b7de49f0c2553b5c2b3bc8409ff3e627d1`
+- `Think-SFT -> Think-DPO`: `7b18bf927b430ff06376fdfa5610eb3b1b6a5c38`
+
+The E12 execution attempt was stopped before loading because external weight transfer was below 0.1 MB/s. Model weights live only in the external Hugging Face cache and are never repository artifacts.

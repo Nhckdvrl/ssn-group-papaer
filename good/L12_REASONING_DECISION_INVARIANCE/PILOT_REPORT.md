@@ -1,141 +1,91 @@
-# L12 First-Round Pilot Report
+# L12 Mechanism Pilot Report
 
 **Date:** 2026-09-09  
-**Verdict:** **CONTINUE-PILOT**
+**Verdict:** **GO**
 
 ## A. Current RQ
 
-> **Why does reasoning-oriented post-training make decisions dramatically more invariant to presentation, and does the self-generated long reasoning trajectory become the dominant causal controller of the final answer?**
-
-The current working mechanism is **trajectory takeover**, not semantic-context boundary testing.
+> Why does reasoning-oriented post-training produce presentation-invariant decisions, and is that transition accompanied by a shift from prompt control to trajectory-mediated decision formation?
 
 ## B. What prior work owns
 
-**Mind the (DH) Gap!** (ACL 2026 Outstanding) owns the broad risky-choice behavioral contrast between reasoning and conversational models.
-
-**Framing Matters** owns framing sensitivity as an internal representation/intervention problem.
-
-**Reasoning Traces Shape Outputs but Models Won't Say So** owns generic causal evidence that injected reasoning can change outputs.
-
-**How Do Answer Tokens Read Reasoning Traces?** owns answer-to-reasoning self-reading/attention patterns.
-
-Therefore L12 cannot stop at:
-- “reasoning models are more rational”;
-- frame information is decodable;
-- CoT affects answers;
-- answer tokens read the trace.
+*Mind the (DH) Gap!* owns reasoning-model invariance in risky choice. Recent work owns generic reasoning-trace causality, iterative answer construction, and reasoning-induced latent policy states. We cannot claim “reasoning models are more rational,” “CoT controls answers,” or “reasoning fine-tuning creates latent states.”
 
 ## C. What we tested
 
-- **L12-E01:** parent artifact/stimulus audit.
-- **L12-E02:** sibling Instruct-SFT vs Think-SFT behavior on 3 published prospects × gain/loss × both orders.
-- **L12-E03:** prompt-state frame recoverability diagnostic.
-- **L12-E04:** injected-`</think>` no-reasoning attempt; invalid.
-- **L12-E05:** own / empty / opposite-frame natural trajectory forced-readout intervention.
-- **L12-E06:** answer-free short arithmetic-prefix intervention.
+- **E01-E03:** parent/stimulus audit, sibling behavioral comparison, and frame-recoverability diagnostic.
+- **E05-E06:** natural-trajectory causal readout and short arithmetic control.
+- **E07:** full, terminal-stripped, opposite-stripped, and empty trajectory readout.
+- **E08:** matched opposite-decision pre-answer state substitution across all layers.
+- **E09:** sibling-branch 2 x 2 prompt-frame by trajectory-frame causal-control factorial.
 
-## D. Established results
+## D. Results
 
-### Behavioral transition
+Behavioral frame consistency is **0.817** for Instruct-SFT and **0.992** for Think-SFT; difference **+0.175 [0.025, 0.367]**.
 
-| Branch | Valid | Frame consistency | Order consistency | EV-consistent |
-|---|---:|---:|---:|---:|
-| Instruct-SFT | 240/240 | 0.817 [0.625, 0.958] | 0.783 | 0.508 |
-| Think-SFT | 219/240 | 0.992 [0.950, 1.000] | 0.992 | 0.995 |
+E07, 46 matched target rows:
 
-Think-minus-Instruct frame consistency = **+0.175**, hierarchical-bootstrap 95% CI **[0.025, 0.367]**.
+| Contrast | Mean margin effect | Prospect-bootstrap 95% CI |
+|---|---:|---:|
+| own stripped - empty | +2.624 | [2.008, 2.988] |
+| own stripped - opposite stripped | +4.863 | [3.469, 5.773] |
+| own full - own stripped | +7.047 | [6.746, 7.402] |
 
-These are **frame-consistency measurements**, not generic task-accuracy scores.
+E08: donor transfer is near zero through layer 13, ramps at 14-16, reverses the mean target margin at layer 17, and remains strong. At layer 31, donor-directed shift is **+5.090 [3.766, 5.977]** and donor-choice flip rate is **0.804**.
 
-### Prompt information remains available
+E09:
 
-Frame identity is recoverable through most early/middle Think-SFT layers. With only 12 lexically explicit conditions, this is a routing constraint, not a causal result.
+| Quantity | Mean probability effect | 95% CI |
+|---|---:|---:|
+| Think trajectory control | +0.586 | [0.278, 0.857] |
+| Instruct trajectory control | +0.012 | [-0.324, 0.393] |
+| Think - Instruct trajectory control | +0.575 | [0.037, 1.055] |
+| Branch difference in trajectory-minus-prompt control | +0.569 | [0.026, 1.062] |
 
-### Natural trajectory strongly controls readout
+E10 adds 36 independent decisions:
 
-E05 target-directed A/B margin:
+- Instruct-SFT frame consistency: **0.729 [0.670, 0.785]**.
+- Think-SFT frame consistency: **0.977 [0.960, 0.993]** on 35 analyzable decisions.
+- Think-minus-Instruct difference: **+0.242 [0.179, 0.302]**; worst/best missing-unit bounds **[0.221, 0.249]**.
+- Think-minus-Instruct trajectory-minus-prompt control: **+0.399 [0.337, 0.464]**, positive on **36/36** decisions.
 
-- own natural trace: **+9.34**
-- empty trace: **-0.08**
-- matched opposite-frame trace: **-9.07**
+E11 repeats state substitution on 18 preregistered stratified decisions. The mean margin again reverses at layer 17; layer-31 donor shift is **+4.868 [4.056, 5.813]**, positive on **18/18** decisions.
 
-Own-minus-empty = **+9.42 [8.54, 10.10]**.  
-Own-minus-opposite = **+18.41 [17.46, 19.32]**.
+Raw and summarized results are in `results/trajectory_takeover_seed43/`, `results/state_substitution_seed43/`, `results/control_reorganization_seed43/`, `results/breadth_seed71/`, and `results/breadth_state_seed73/`.
 
-### Short arithmetic snippets are insufficient
+## E. Interpretation
 
-E06:
+The best current answer is **progressive trajectory construction with late consolidation**. The reasoning before explicit commitment already establishes decision direction; the terminal portion strongly amplifies it; a late pre-answer state carries it into decoding. Crucially, the same stripped trajectory text has strong, prospect-consistent control in Think-SFT but heterogeneous near-zero average control in Instruct-SFT.
 
-- correct-minus-rule-only = **+0.32 [-3.92, 4.33]**
-- correct-minus-swapped = **+0.39 [-0.13, 0.96]**
+This strengthens distributed takeover, decision-state mediation, and causal-control reorganization. It weakens pure frame erasure, arithmetic-snippet, and terminal-only accounts.
 
-So the E05 effect is not reproduced by a cheap answer-free arithmetic fragment.
+## F. Data and identification validity
 
-## E. Current mechanism picture
+Trajectory stripping removed a terminal conclusion from all 47 valid traces, left no decision markers, produced no empty traces, and retained 48.1% of characters on average. E08 transfers hidden state without donor text. E09 independently crosses prompt and trajectory frames and uses identical donor text across branches.
 
-The strongest live account is:
+The main mechanism now has 36-unit control breadth and 18-unit state-substitution breadth. Native answer-transition formats still differ across siblings, and released sibling branches do not isolate one training operation. Think-SFT had a 0.875 valid-generation rate at the 1,024-token cap; one decision lacked one full cell, and sensitivity bounds are reported.
 
-> prompt framing remains represented  
-> → long natural reasoning transforms the computation  
-> → the trajectory becomes the dominant source of final decision control.
+## G. Novelty after seeing the result
 
-But E05 still permits a cheaper explanation:
+The closest compression is:
 
-> the full trace works mainly because its terminal sentence explicitly commits to the answer.
+> Mind the DH Gap + iterative/causal CoT + persistent latent policy states.
 
-That is the exact unresolved point.
+The paper survives only because E09 links the behavioral branch transition to a direct reallocation between prompt and trajectory control. Generic latent-state or CoT-causality claims are removed from our novelty claim.
 
-## F. Novelty corridor
+## H. ACL / EMNLP / NAACL Main alignment
 
-The paper is not “Mind the DH Gap + Thought Injection.”
+- **RQ scale:** strong and natural.
+- **Evidence strength:** coherent causal chain plus independent-decision replication.
+- **Mechanism depth:** now credible; E07, E08, and E09 advance one explanation rather than accumulating probes.
+- **Novelty:** viable but narrowed by 2026 latent-policy-state work.
+- **Consequence:** explains what the invariance transition changes about decision formation.
+- **Weakest dimension:** checkpoint/model-family breadth and exact training attribution.
 
-The surviving paper-level identity is:
+## I. Verdict
 
-> established reasoning-induced invariance  
-> → preserved prompt information  
-> → natural long reasoning acquires causal control of final choice  
-> → determine whether that control is distributed through the reasoning process or concentrated in terminal self-commitment  
-> → identify the trajectory-built pre-answer decision state.
+**GO.** C1-C3 survive dozens of independent decisions and a preregistered state-replication subset. This clears the scientific mechanism gate; it does not erase the remaining checkpoint-breadth limitation.
 
-This remains distinct from generic trace injection and answer-token attention.
+## J. Next smallest decisive experiment
 
-## G. Main-level judgment
-
-- **Question scale:** Main-level.
-- **Behavioral substrate:** strong and independently established.
-- **Own leverage:** strong sibling-branch reproduction + large natural-trace causal readout effect.
-- **Main missing claim:** whether trajectory-level control survives terminal-conclusion removal.
-- **Mechanism depth:** promising; one decisive experiment short of a credible central mechanism.
-- **Mainline:** not yet approved.
-
-## H. Next decisive experiment — L12-E07
-
-Run **Conclusion-Stripped Trajectory Takeover**.
-
-For each natural Think-SFT trace compare:
-
-1. own full;
-2. own terminal-conclusion-stripped;
-3. matched opposite-frame stripped;
-4. empty.
-
-Primary questions:
-
-> Does own-stripped remain strongly target-directed relative to empty?
-
-> Does own-stripped still separate from opposite-stripped?
-
-### Outcome interpretation
-
-- **Yes:** strong evidence that the long reasoning process itself carries causal decision control → run E08.
-- **No:** the effect is better described as late self-commitment → reconstruct the mechanism; do not add a defensive rescue battery.
-
-## I. E08 if E07 succeeds
-
-Causally substitute the natural pre-answer state between matched trajectories.
-
-The goal is to establish a **trajectory-built decision state** that transfers choice control without appending donor reasoning text.
-
-## J. Parked experiment
-
-The relevant-vs-redundant context-note boundary scaffold is retained for possible later use, but it is **not a prerequisite, not the current narrative, and not a novelty-defense obligation**.
+**E12:** run the already preregistered Instruct-DPO/Think-DPO continuation-axis validation once their exact weights are locally available. The first attempt was stopped because external transfer stayed below 0.1 MB/s; no result is claimed.

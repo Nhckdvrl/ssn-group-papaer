@@ -1,0 +1,376 @@
+{
+  "design": "L12-E11 stratified independent-decision state substitution",
+  "n_rows": 1152,
+  "n_base_decisions": 18,
+  "n_directional_pairs": 36,
+  "n_layers": 32,
+  "baseline_target_margin": 2.4340277777777777,
+  "baseline_target_accuracy": 0.75,
+  "donor_prefix_accuracy": 0.75,
+  "first_mean_margin_reversal_layer": 17,
+  "peak_layer": {
+    "layer": 31,
+    "mean_donor_shift": 4.868055555555555,
+    "base_decision_bootstrap_ci95": [
+      4.055555555555555,
+      5.812673611111109
+    ],
+    "mean_patched_target_margin": -2.4340277777777777,
+    "donor_flip_rate": 0.75,
+    "positive_base_decision_fraction": 1.0
+  },
+  "layer_profile": [
+    {
+      "layer": 0,
+      "mean_donor_shift": 0.006944444444444444,
+      "base_decision_bootstrap_ci95": [
+        -0.024305555555555556,
+        0.03819444444444445
+      ],
+      "mean_patched_target_margin": 2.4270833333333335,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.3888888888888889
+    },
+    {
+      "layer": 1,
+      "mean_donor_shift": 0.0,
+      "base_decision_bootstrap_ci95": [
+        -0.027777777777777776,
+        0.027777777777777776
+      ],
+      "mean_patched_target_margin": 2.4340277777777777,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.3333333333333333
+    },
+    {
+      "layer": 2,
+      "mean_donor_shift": 0.024305555555555556,
+      "base_decision_bootstrap_ci95": [
+        -0.003559027777777748,
+        0.05555555555555555
+      ],
+      "mean_patched_target_margin": 2.4097222222222223,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 3,
+      "mean_donor_shift": 0.017361111111111112,
+      "base_decision_bootstrap_ci95": [
+        -0.013888888888888888,
+        0.052083333333333336
+      ],
+      "mean_patched_target_margin": 2.4166666666666665,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.3888888888888889
+    },
+    {
+      "layer": 4,
+      "mean_donor_shift": 0.020833333333333332,
+      "base_decision_bootstrap_ci95": [
+        -0.010416666666666666,
+        0.05555555555555555
+      ],
+      "mean_patched_target_margin": 2.4131944444444446,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 5,
+      "mean_donor_shift": 0.03819444444444445,
+      "base_decision_bootstrap_ci95": [
+        -0.013888888888888888,
+        0.09036458333333207
+      ],
+      "mean_patched_target_margin": 2.3958333333333335,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 6,
+      "mean_donor_shift": 0.024305555555555556,
+      "base_decision_bootstrap_ci95": [
+        -0.03819444444444445,
+        0.09027777777777778
+      ],
+      "mean_patched_target_margin": 2.4097222222222223,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 7,
+      "mean_donor_shift": 0.024305555555555556,
+      "base_decision_bootstrap_ci95": [
+        -0.03125,
+        0.0763888888888889
+      ],
+      "mean_patched_target_margin": 2.4097222222222223,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.5
+    },
+    {
+      "layer": 8,
+      "mean_donor_shift": 0.020833333333333332,
+      "base_decision_bootstrap_ci95": [
+        -0.041666666666666664,
+        0.08680555555555555
+      ],
+      "mean_patched_target_margin": 2.4131944444444446,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 9,
+      "mean_donor_shift": 0.03819444444444445,
+      "base_decision_bootstrap_ci95": [
+        -0.027777777777777776,
+        0.1076388888888889
+      ],
+      "mean_patched_target_margin": 2.3958333333333335,
+      "donor_flip_rate": 0.2777777777777778,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 10,
+      "mean_donor_shift": 0.017361111111111112,
+      "base_decision_bootstrap_ci95": [
+        -0.04513888888888889,
+        0.0798611111111111
+      ],
+      "mean_patched_target_margin": 2.4166666666666665,
+      "donor_flip_rate": 0.2777777777777778,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 11,
+      "mean_donor_shift": 0.017361111111111112,
+      "base_decision_bootstrap_ci95": [
+        -0.052083333333333336,
+        0.09375
+      ],
+      "mean_patched_target_margin": 2.4166666666666665,
+      "donor_flip_rate": 0.2222222222222222,
+      "positive_base_decision_fraction": 0.5
+    },
+    {
+      "layer": 12,
+      "mean_donor_shift": 0.04861111111111111,
+      "base_decision_bootstrap_ci95": [
+        -0.04861111111111111,
+        0.14583333333333334
+      ],
+      "mean_patched_target_margin": 2.3854166666666665,
+      "donor_flip_rate": 0.2777777777777778,
+      "positive_base_decision_fraction": 0.4444444444444444
+    },
+    {
+      "layer": 13,
+      "mean_donor_shift": 0.024305555555555556,
+      "base_decision_bootstrap_ci95": [
+        -0.0625,
+        0.11458333333333333
+      ],
+      "mean_patched_target_margin": 2.4097222222222223,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.5
+    },
+    {
+      "layer": 14,
+      "mean_donor_shift": 0.09027777777777778,
+      "base_decision_bootstrap_ci95": [
+        0.010416666666666666,
+        0.1701388888888889
+      ],
+      "mean_patched_target_margin": 2.34375,
+      "donor_flip_rate": 0.25,
+      "positive_base_decision_fraction": 0.6111111111111112
+    },
+    {
+      "layer": 15,
+      "mean_donor_shift": 0.3576388888888889,
+      "base_decision_bootstrap_ci95": [
+        0.2152777777777778,
+        0.5243055555555556
+      ],
+      "mean_patched_target_margin": 2.076388888888889,
+      "donor_flip_rate": 0.2777777777777778,
+      "positive_base_decision_fraction": 0.8333333333333334
+    },
+    {
+      "layer": 16,
+      "mean_donor_shift": 0.4895833333333333,
+      "base_decision_bootstrap_ci95": [
+        0.3506944444444444,
+        0.6527777777777778
+      ],
+      "mean_patched_target_margin": 1.9444444444444444,
+      "donor_flip_rate": 0.2777777777777778,
+      "positive_base_decision_fraction": 0.9444444444444444
+    },
+    {
+      "layer": 17,
+      "mean_donor_shift": 2.6319444444444446,
+      "base_decision_bootstrap_ci95": [
+        2.1041666666666665,
+        3.2152777777777777
+      ],
+      "mean_patched_target_margin": -0.19791666666666666,
+      "donor_flip_rate": 0.5833333333333334,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 18,
+      "mean_donor_shift": 4.236111111111111,
+      "base_decision_bootstrap_ci95": [
+        3.513888888888889,
+        5.076388888888889
+      ],
+      "mean_patched_target_margin": -1.8020833333333333,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 19,
+      "mean_donor_shift": 4.423611111111111,
+      "base_decision_bootstrap_ci95": [
+        3.701388888888889,
+        5.25
+      ],
+      "mean_patched_target_margin": -1.9895833333333333,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 20,
+      "mean_donor_shift": 4.423611111111111,
+      "base_decision_bootstrap_ci95": [
+        3.663107638888889,
+        5.284809027777777
+      ],
+      "mean_patched_target_margin": -1.9895833333333333,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 21,
+      "mean_donor_shift": 4.517361111111111,
+      "base_decision_bootstrap_ci95": [
+        3.7534722222222223,
+        5.395833333333333
+      ],
+      "mean_patched_target_margin": -2.0833333333333335,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 22,
+      "mean_donor_shift": 4.583333333333333,
+      "base_decision_bootstrap_ci95": [
+        3.7777777777777777,
+        5.458420138888887
+      ],
+      "mean_patched_target_margin": -2.1493055555555554,
+      "donor_flip_rate": 0.75,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 23,
+      "mean_donor_shift": 4.663194444444445,
+      "base_decision_bootstrap_ci95": [
+        3.8506944444444446,
+        5.559027777777778
+      ],
+      "mean_patched_target_margin": -2.2291666666666665,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 24,
+      "mean_donor_shift": 4.704861111111111,
+      "base_decision_bootstrap_ci95": [
+        3.871440972222222,
+        5.618055555555555
+      ],
+      "mean_patched_target_margin": -2.2708333333333335,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 25,
+      "mean_donor_shift": 4.704861111111111,
+      "base_decision_bootstrap_ci95": [
+        3.8645833333333335,
+        5.635416666666667
+      ],
+      "mean_patched_target_margin": -2.2708333333333335,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 26,
+      "mean_donor_shift": 4.732638888888889,
+      "base_decision_bootstrap_ci95": [
+        3.9166666666666665,
+        5.59375
+      ],
+      "mean_patched_target_margin": -2.298611111111111,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 27,
+      "mean_donor_shift": 4.746527777777778,
+      "base_decision_bootstrap_ci95": [
+        3.9375,
+        5.670138888888889
+      ],
+      "mean_patched_target_margin": -2.3125,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 28,
+      "mean_donor_shift": 4.736111111111111,
+      "base_decision_bootstrap_ci95": [
+        3.913107638888889,
+        5.656423611111109
+      ],
+      "mean_patched_target_margin": -2.3020833333333335,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 29,
+      "mean_donor_shift": 4.75,
+      "base_decision_bootstrap_ci95": [
+        3.933940972222222,
+        5.600694444444445
+      ],
+      "mean_patched_target_margin": -2.3159722222222223,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 30,
+      "mean_donor_shift": 4.815972222222222,
+      "base_decision_bootstrap_ci95": [
+        3.9791666666666665,
+        5.75
+      ],
+      "mean_patched_target_margin": -2.3819444444444446,
+      "donor_flip_rate": 0.7222222222222222,
+      "positive_base_decision_fraction": 1.0
+    },
+    {
+      "layer": 31,
+      "mean_donor_shift": 4.868055555555555,
+      "base_decision_bootstrap_ci95": [
+        4.055555555555555,
+        5.812673611111109
+      ],
+      "mean_patched_target_margin": -2.4340277777777777,
+      "donor_flip_rate": 0.75,
+      "positive_base_decision_fraction": 1.0
+    }
+  ]
+}

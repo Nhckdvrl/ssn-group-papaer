@@ -1,0 +1,74 @@
+{
+  "design": "L12-E10 independent-decision behavioral breadth",
+  "instruct_sft": {
+    "n_generations": 576,
+    "n_base_decisions": 36,
+    "n_analyzable_base_decisions": 36,
+    "valid_rate": 1.0,
+    "complete_cell_rate": 1.0,
+    "frame_consistency": {
+      "mean": 0.7291666666666666,
+      "base_decision_bootstrap_ci95": [
+        0.6701388888888888,
+        0.7847222222222222
+      ]
+    },
+    "order_consistency": {
+      "mean": 0.7083333333333334,
+      "base_decision_bootstrap_ci95": [
+        0.65625,
+        0.7604166666666666
+      ]
+    },
+    "ev_consistent_rate": {
+      "mean": 0.4722222222222222,
+      "base_decision_bootstrap_ci95": [
+        0.4253472222222222,
+        0.5208333333333334
+      ]
+    }
+  },
+  "think_sft": {
+    "n_generations": 576,
+    "n_base_decisions": 36,
+    "n_analyzable_base_decisions": 35,
+    "valid_rate": 0.875,
+    "complete_cell_rate": 0.6111111111111112,
+    "frame_consistency": {
+      "mean": 0.9773809523809522,
+      "base_decision_bootstrap_ci95": [
+        0.9595238095238093,
+        0.9928571428571429
+      ]
+    },
+    "order_consistency": {
+      "mean": 0.9773809523809522,
+      "base_decision_bootstrap_ci95": [
+        0.9595238095238093,
+        0.9928571428571429
+      ]
+    },
+    "ev_consistent_rate": {
+      "mean": 0.9854834979834979,
+      "base_decision_bootstrap_ci95": [
+        0.9750131118881118,
+        0.9943121693121694
+      ]
+    }
+  },
+  "think_minus_instruct": {
+    "frame_consistency": {
+      "n_analyzable_base_decisions": 35,
+      "mean": 0.24166666666666664,
+      "base_decision_bootstrap_ci95": [
+        0.17857142857142858,
+        0.30238095238095236
+      ],
+      "positive_unit_fraction": 0.8285714285714286,
+      "missing_unit_worst_case_mean_bounds": [
+        0.2210648148148148,
+        0.24884259259259256
+      ]
+    }
+  }
+}
