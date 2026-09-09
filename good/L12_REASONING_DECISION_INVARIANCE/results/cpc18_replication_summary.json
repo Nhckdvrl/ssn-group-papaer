@@ -1,0 +1,180 @@
+{
+  "design": "L12-E17 calibration plus preregistered L12-E18 competition confirmation",
+  "primary_decision_rule": "Both competition reasoning-minus-standard Delta_R-minus-Delta_P base-decision bootstrap intervals exclude zero.",
+  "splits": {
+    "calibration": {
+      "n_frozen_base_decisions": 151,
+      "pairs": {
+        "olmo_sft": {
+          "n_control_base_decisions": 147,
+          "behavior_consistency_difference": {
+            "mean": 0.2247407407407407,
+            "base_decision_bootstrap_ci95": [
+              0.17658888888888888,
+              0.2705194444444444
+            ],
+            "invalid_assignment_mean_bounds": [
+              0.042310522442972766,
+              0.28697571743929357
+            ]
+          },
+          "delta_p_difference": {
+            "mean": 0.0031944640032763546,
+            "base_decision_bootstrap_ci95": [
+              -0.00971361783521287,
+              0.016266744060469466
+            ],
+            "positive_base_decision_fraction": 0.4557823129251701
+          },
+          "delta_r_difference": {
+            "mean": 0.2049167111214675,
+            "base_decision_bootstrap_ci95": [
+              0.1635557458092642,
+              0.24674375540645188
+            ],
+            "positive_base_decision_fraction": 0.7891156462585034
+          },
+          "delta_control_difference": {
+            "mean": 0.20172224711819112,
+            "base_decision_bootstrap_ci95": [
+              0.16183397839935013,
+              0.24346155650577614
+            ],
+            "positive_base_decision_fraction": 0.782312925170068
+          }
+        },
+        "qwen_mode": {
+          "n_control_base_decisions": 145,
+          "behavior_consistency_difference": {
+            "mean": 0.2764172335600906,
+            "base_decision_bootstrap_ci95": [
+              0.22270880574452,
+              0.32702191987906276
+            ],
+            "invalid_assignment_mean_bounds": [
+              0.15415746872700514,
+              0.3149374540103017
+            ]
+          },
+          "delta_p_difference": {
+            "mean": -0.006731556009685564,
+            "base_decision_bootstrap_ci95": [
+              -0.017332250459484076,
+              0.003582858184759324
+            ],
+            "positive_base_decision_fraction": 0.5172413793103449
+          },
+          "delta_r_difference": {
+            "mean": 0.15620916412863853,
+            "base_decision_bootstrap_ci95": [
+              0.11731153527331399,
+              0.19607898031974536
+            ],
+            "positive_base_decision_fraction": 0.7172413793103448
+          },
+          "delta_control_difference": {
+            "mean": 0.16294072013832414,
+            "base_decision_bootstrap_ci95": [
+              0.12100183450014276,
+              0.20449245507233274
+            ],
+            "positive_base_decision_fraction": 0.7379310344827587
+          }
+        }
+      }
+    },
+    "competition": {
+      "n_frozen_base_decisions": 44,
+      "pairs": {
+        "olmo_sft": {
+          "n_control_base_decisions": 44,
+          "behavior_consistency_difference": {
+            "mean": -0.013383838383838394,
+            "base_decision_bootstrap_ci95": [
+              -0.09470012626262629,
+              0.06490214646464643
+            ],
+            "invalid_assignment_mean_bounds": [
+              -0.1553030303030303,
+              0.03409090909090907
+            ]
+          },
+          "delta_p_difference": {
+            "mean": 0.006931630408600437,
+            "base_decision_bootstrap_ci95": [
+              -0.015522865799440266,
+              0.030008940003407186
+            ],
+            "positive_base_decision_fraction": 0.45454545454545453
+          },
+          "delta_r_difference": {
+            "mean": 0.1038575326689997,
+            "base_decision_bootstrap_ci95": [
+              0.023738566530000397,
+              0.18191984598527652
+            ],
+            "positive_base_decision_fraction": 0.7272727272727273
+          },
+          "delta_control_difference": {
+            "mean": 0.09692590226039927,
+            "base_decision_bootstrap_ci95": [
+              0.0024660156806524626,
+              0.1803572955019804
+            ],
+            "positive_base_decision_fraction": 0.75
+          }
+        },
+        "qwen_mode": {
+          "n_control_base_decisions": 43,
+          "behavior_consistency_difference": {
+            "mean": 0.16253229974160205,
+            "base_decision_bootstrap_ci95": [
+              0.051156330749354016,
+              0.2679586563307494
+            ],
+            "invalid_assignment_mean_bounds": [
+              0.04166666666666667,
+              0.21717171717171713
+            ]
+          },
+          "delta_p_difference": {
+            "mean": -0.004522864029681908,
+            "base_decision_bootstrap_ci95": [
+              -0.01818790278140899,
+              0.009544065347264706
+            ],
+            "positive_base_decision_fraction": 0.5116279069767442
+          },
+          "delta_r_difference": {
+            "mean": 0.21489215066881326,
+            "base_decision_bootstrap_ci95": [
+              0.14992911922041166,
+              0.2814760710316552
+            ],
+            "positive_base_decision_fraction": 0.8372093023255814
+          },
+          "delta_control_difference": {
+            "mean": 0.21941501469849517,
+            "base_decision_bootstrap_ci95": [
+              0.1519367184543468,
+              0.2875405771423582
+            ],
+            "positive_base_decision_fraction": 0.8372093023255814
+          }
+        }
+      }
+    }
+  },
+  "confirmatory_outcome": {
+    "primary_control_reorganization": {
+      "olmo_sft": true,
+      "qwen_mode": true
+    },
+    "supporting_behavioral_invariance": {
+      "olmo_sft": false,
+      "qwen_mode": true
+    },
+    "primary_gate_passed": true
+  },
+  "interpretation": "The preregistered causal-route result confirms on both controlled axes. The behavioral consistency result confirms for Qwen but not OLMo, showing that route reorganization is more stable than, and not by itself sufficient for, presentation-invariant behavior."
+}
