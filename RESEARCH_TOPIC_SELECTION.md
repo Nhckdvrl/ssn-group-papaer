@@ -4,331 +4,189 @@
 **Aspirational bar:** Best / Outstanding / Best Theme / unusually strong paper identity  
 **North star:** **Easy to understand, hard to answer.**
 
-This file answers one question only:
-
-> **A concrete research question already exists. Is it strong enough to deserve a decisive pilot?**
-
-How to search for topics belongs to **RESEARCH_TOPIC_SEARCH.md**.  
-Idea generators belong to **TOPIC_SEARCH_PLAYBOOK.md**.  
-Project execution belongs to **RESEARCH_EXECUTION.md**.
-
-Do not put search priors or generator catalogs back into this file.
+This file decides whether a concrete research question deserves the smallest decisive pilot. Search generators belong elsewhere; execution begins only after authorization.
 
 ---
 
 # 0. Promotion semantics
 
-Possible decisions:
+- **KILL** — the scientific case or natural paper space collapses.
+- **HOLD** — potentially strong, but one blocking audit remains.
+- **SERIOUS CANDIDATE** — deserves deeper data/novelty work, but not target-model compute.
+- **PILOT-AUTHORIZED** — all pre-pilot gates are materially passed.
 
-- **KILL** — scientific case collapses; record the serious parent in the killed ledger.
-- **HOLD** — potentially interesting, but one blocking audit remains.
-- **SERIOUS CANDIDATE** — worth deeper data/novelty work, but not yet authorized for target-model compute.
-- **PILOT-AUTHORIZED** — the candidate has passed the pre-pilot gates strongly enough to justify the smallest decisive experiment.
-
-**PILOT-AUTHORIZED does not mean mainline-approved.**
-
-No candidate is protected by sunk cost, by being in good/, or by being one of the current six.
+**PILOT-AUTHORIZED does not mean paper-mainline-approved.** No candidate is protected by sunk cost or directory location.
 
 ---
 
-# Gate 1 — Natural and important research question
+# Gate 1 — Natural and important RQ
 
-Ask:
+Ask whether the problem is real, durable, meaningful for NLP/LLMs, easy to explain, method-independent, and non-obvious.
 
-- Is the underlying object/problem real, natural, and durable?
-- Can the RQ be stated in one or two sentences?
-- Can a simple example make the issue obvious?
-- Would another NLP researcher agree this is worth knowing?
-- Does the problem exist independently of our proposed method?
-- Is the likely contribution broader than “model X gets Y% on dataset Z”?
+Reject benchmark cells, method-first questions, obscure distinctions, and generic competence reporting.
 
-Reject:
-- artificial benchmark cells;
-- obscure distinctions that need a long lecture before they matter;
-- method-first questions;
-- “does the LLM know X?” when the only outcome is competence reporting;
-- questions whose likely reviewer reaction is:
-  > “Of course. Why did this experiment need to be run?”
-
-**PASS condition:** the question is easy to understand and important enough to plausibly anchor a Main paper.
+**PASS:** easy to understand, important enough to anchor a Main paper, hard to answer.
 
 ---
 
 # Gate 2 — Genuine scientific tension
 
-A strong candidate needs a real uncertainty, not just an unmeasured number.
+A candidate needs real uncertainty, not merely an unmeasured number.
 
-Preferred shape:
-- at least two plausible competing accounts;
-- or a consequential contested modeling/measurement decision;
-- or a mechanism/boundary question where multiple outcomes would change understanding.
+Prefer multiple plausible explanatory accounts, a consequential contested modeling/measurement decision, or a mechanism/boundary question where different outcomes change understanding.
 
-Examples:
-- representation erased vs output suppressed;
-- local-step bottleneck vs autoregressive accumulation;
-- memory failure vs attribution failure vs policy/action failure;
-- explicit intermediate state necessary vs safely inferable.
+A/B is useful but not mandatory. Keep the explanatory space open when more accounts are natural.
 
-Competing Account A/B is a strong default, not a universal law. Measurement or methodology papers may instead revolve around:
-- a broken construct;
-- a load-bearing modeling assumption;
-- a decision boundary.
-
-**PASS condition:** before running the experiment, more than one scientifically meaningful answer is plausible.
+**PASS:** multiple scientifically meaningful outcomes are plausible before the experiment.
 
 ---
 
-# Gate 3 — Data / evidence really identify the claim
+# Gate 3 — Data / evidence identify the claim
 
-Data are part of the science, not an implementation detail.
-
-For every load-bearing claim, write:
+For every load-bearing claim write:
 
 > **data / observation / controlled manipulation / intervention → scientific quantity → claim**
 
-Then audit every arrow.
+Audit unit of analysis, gold/state vs estimand, ambiguity, leakage, manipulation leverage, and naturalness.
 
-Ask:
-- Is the unit of analysis correct?
-- Does the gold/state actually mean the estimand?
-- Is a proxy being silently substituted?
-- Are missing/ambiguous states distinguished from negatives?
-- Is the manipulation strong enough to separate the accounts?
-- Is leakage or artifact risk controlled?
-- Is the evidence natural enough for the intended conclusion?
+Prefer natural data, official/provider-defined state, real human behavior, published materials, benchmark-native gold when it truly matches the estimand, and controlled causal interventions.
 
-Preferred evidence:
-- natural existing data;
-- official/provider-defined state;
-- human behavior/labels;
-- published experimental materials;
-- benchmark-native gold when it truly matches the estimand;
-- controlled causal interventions.
+Constructed stimuli are allowed when minimal, natural, interpretable, independently defensible, and not an elaborate hypothesis-shaped synthetic world.
 
-Constructed data are allowed when necessary, but must be:
-- minimal;
-- interpretable;
-- natural;
-- independently validated where needed;
-- free of hypothesis-shaped shortcuts.
+Canonical warning: **L02 died because UCCA DNI/INI did not provide gold for whether a specific filler was supported by the current discourse. Gold ≠ estimand.**
 
-Canonical warning:
-
-> **L02 died because UCCA DNI/INI did not provide gold for whether a specific filler was supported by the current discourse. Gold ≠ estimand.**
-
-Do not rescue a mismatch by saying the label is “close enough.”
-
-**PASS condition:** the evidence is the simplest credible route that genuinely identifies the scientific quantity.
+**PASS:** the evidence is the simplest credible route that directly identifies the scientific quantity.
 
 ---
 
 # Gate 4 — Paper-level novelty and ownership
 
-Novelty does not require every ingredient to be untouched.
+Novelty is not ingredient novelty.
 
-Prior work may already own:
-- the object;
-- dataset;
-- distinction;
-- method component;
-- one subclaim;
-- the parent phenomenon.
+Prior work may own the object, dataset, parent phenomenon, method, distinction, or one subclaim. What must remain distinctly ours is:
 
-What must remain distinctly ours is the load-bearing paper identity:
+> **framing/narrative + decisive scientific operation + central conclusion + consequence**
 
-> **new framing/narrative + decisive idea/operation + central conclusion + consequence**
+Search classic parent work, current ACL/EMNLP/NAACL, direct follow-ups, and relevant ICLR/ICML/NeurIPS.
 
-Mandatory novelty assassination:
-- classic parent literature;
-- recent ACL / EMNLP / NAACL;
-- direct follow-ups;
-- relevant ICLR / ICML / NeurIPS when appropriate;
-- the latest work whenever the candidate’s story changes.
-
-Mandatory reviewer-compression test:
+Mandatory reviewer compression:
 
 > **“This is just ______.”**
 
-If one or a few papers can accurately fill that blank and compress the whole proposed paper, **KILL**.
+If one or a few papers accurately compress the entire proposed paper, **KILL**.
 
-Do not kill merely because:
-- the parent problem is old;
-- the dataset has been used;
-- one distinction is known;
-- a nearby paper shares a component.
+Do not kill merely because the parent is old or one ingredient exists. Do kill “existing paper + another model/dataset/probe/cleaner control” when that is the whole identity.
 
-Do kill when our whole paper is effectively:
-- an existing setup + another model;
-- an existing paper + cleaner controls;
-- an existing measurement paper + another benchmark;
-- an existing mechanism paper + one extra probe.
-
-**PASS condition:** a strong reviewer can recognize the proposed paper as a genuinely new paper beside the nearest work.
+**PASS:** a strong reviewer would recognize an independent paper beside the nearest work.
 
 ---
 
 # Gate 5 — Outcome robustness and scientific depth
 
-Do not authorize a topic whose entire paper depends on one lucky effect.
+Do not authorize a topic whose value depends on one lucky effect.
 
 Ask:
 
-> **If the first expected phenomenon is weak or absent, is there still a scientifically meaningful answer?**
+> **If the first expected account loses, does the RQ still produce a meaningful answer?**
 
-Good forms:
-- Account A wins → meaningful conclusion.
-- Account B wins → meaningful conclusion.
-- conditional/boundary result → meaningful conclusion.
-- correction result → previous interpretation was wrong.
-- preservation/equivalence → meaningful only when it resolves a real consequential question.
+Healthy outcomes include another account, meaningful boundary, correction, preservation/equivalence that resolves a consequential question, or causal repair.
 
-Depth can come from:
-- mechanism/localization;
-- boundary/heterogeneity;
-- causal validation;
-- measurement validation;
-- generalization;
-- repair/intervention;
-- decision map;
-- practical/scientific consequence.
+A useful paper often grows from:
+> core answer → why/where/when/validation → consequence
 
-A useful heuristic is:
-
-- **C1 — core answer**
-- **C2 — why / where / when / validation**
-- **C3 — consequence / what changes**
-
-Do not force exactly three claims if the paper identity needs another structure.
-
-**PASS condition:** the candidate has a crisp center and a natural route to a full paper without padding.
+**PASS:** the RQ survives hypothesis failure and has natural depth without padding.
 
 ---
 
 # Gate 6 — Main-level calibration
 
-Compare against the strongest **structurally relevant** ACL / EMNLP / NAACL Main work.
+Compare continuously with the strongest structurally relevant ACL / EMNLP / NAACL Main work; use award papers as high-end calibration, not templates.
 
-Best/Outstanding papers are useful high-end anchors, but do not mechanically imitate them.
+Compare RQ scale, scientific tension, data/gold, identification, full-paper novelty, depth, consequence, and memorability.
 
-For the paper identity at hand, compare the dimensions that actually matter:
-
-- RQ scale;
-- naturalness/importance;
-- scientific tension;
-- data/gold quality;
-- identification/decisiveness;
-- novelty of the full paper identity;
-- depth beyond C1;
-- consequence for NLP;
-- breadth without padding;
-- plain-language memorability.
-
-For mechanistic work, expect stronger causal discrimination.  
-For measurement work, expect stronger construct validation.  
-For document/evidence work, expect stronger natural-data coverage.  
-For methodology work, require an independently important diagnosis or decision, not only a score gain.
+Mechanistic work needs causal discrimination; measurement work needs construct validity.
 
 Ask:
 
-> **If the result were strong and clean, would a Main reviewer see an independent scientific/methodological contribution, or just a competent study of a narrow cell?**
+> **If the result were strong and clean, would this look like an independent Main contribution or a competent narrow study?**
 
-If the second, **KILL / HOLD**.
+**PASS:** capable of sitting beside strong Main work on its load-bearing dimensions.
 
-The current local candidates are never the quality benchmark.
+---
 
-**PASS condition:** the candidate looks capable of sitting beside strong Main work on the load-bearing dimensions of its own paper type.
+# Gate 7 — Anomaly robustness
+
+When a candidate starts from an “established anomaly,” audit whether it is actually established.
+
+Evidence strength, strongest to weakest:
+1. multiple independent works with large/stable effects and public artifacts;
+2. one strong Main/award parent with public artifacts plus cheap independent reproduction;
+3. one strong parent whose phenomenon is cheaply reproducible;
+4. one opaque/single-setting report whose effect is seed/setup sensitive.
+
+Check effect size/stability, model/setting breadth, public code/data/config, and whether independent reproduction is required before mechanism work.
+
+A paper report is not automatically an established phenomenon.
+
+**PASS:** the project is not secretly gambling its existence on a fragile parent effect.
+
+---
+
+# Gate 8 — Why-space / narrative-space
+
+After finding an anomaly or gap, map the surrounding **natural explanatory space**, not only exact-title collisions.
+
+Lay out the most dangerous recent Main/top-venue work and ask:
+- what broad explanations are already owned?
+- what natural mechanisms/boundaries/consequences remain?
+- does the RQ remain natural without naming a layer, metric, feature direction, output format, or intervention?
+- can the full narrative remain ours without technical compression?
+
+Canonical warning: **L11 died because the broad gradient/learning-pressure why-space became crowded; preserving novelty forced the project toward narrow coherence/output-format/function-space cells and reintroduced phenomenon risk.**
+
+If novelty survives only after shrinking the claim into a technical corner, default **KILL / HOLD** even when that corner is technically new.
+
+**PASS:** after surrounding literature is laid out, a broad, natural, independent explanatory space remains.
 
 ---
 
 # Deep audit before pilot authorization
 
-Only candidates that survive all six gates reach this step.
+Record compactly inside the candidate package:
 
-Record the following compactly inside the candidate package:
+1. **RQ** — one sentence, example, importance, uncertainty.
+2. **Scientific accounts** — plausible explanations and distinguishing observations.
+3. **Data/evidence** — source, identification chain, validity, artifacts.
+4. **Novelty** — closest ownership, reviewer compression, surviving identity.
+5. **Outcome robustness** — informative branches, depth, consequence.
+6. **Main calibration** — strongest structural references and weakest dimension.
+7. **Anomaly robustness** — how established the parent really is.
+8. **Why-space** — what nearby work owns and whether broad explanation space remains.
+9. **Minimum decisive pilot** — cheapest load-bearing uncertainty and kill/reconstruct logic.
 
-## 1. RQ
-- one-sentence question;
-- plain example;
-- why it matters;
-- what is genuinely uncertain.
-
-## 2. Scientific accounts
-- competing accounts or contested decision;
-- what observations distinguish them.
-
-## 3. Data/evidence
-- source/construction;
-- identification chain;
-- why valid;
-- main artifact/leakage risks.
-
-## 4. Novelty
-- closest classic/modern work;
-- what prior work already owns;
-- reviewer compression;
-- why that compression is false;
-- our actual paper identity.
-
-## 5. Outcome robustness / paper depth
-- what if expected C1 is weak/absent;
-- mechanism/boundary/validation routes;
-- plausible C1/C2/C3 or equivalent;
-- consequence.
-
-## 6. Main-level calibration
-- strongest structurally relevant references;
-- dimensions on which this paper must match them;
-- where the candidate is currently weaker.
-
-## 7. Minimum decisive pilot
-- smallest experiment/audit that can materially change the decision;
-- informative outcome branches;
-- exact kill/reconstruct conditions.
-
-Do not create a separate duplicate candidate checklist.
+Do not create duplicate checklist files.
 
 ---
 
 # Pilot design rule
 
-The first pilot is not a miniature full paper.
+The first pilot is not a miniature full paper. Resolve the cheapest load-bearing uncertainty first.
 
-Its job is to resolve the cheapest load-bearing uncertainty.
+Good first pilots include data/gold audit, exact parent reproduction, matched causal fork, teacher-forcing vs free-running, controlled branch/checkpoint comparison, or one decisive boundary.
 
-Examples:
-- data-yield audit before GPU;
-- exact parent reproduction;
-- teacher forcing vs free running;
-- matched oracle/flat/wrong-state intervention;
-- a controlled pre/post checkpoint comparison;
-- a gold/estimand validity audit.
-
-Do not begin with:
-- a huge model zoo;
-- dozens of benchmarks;
-- expensive scaling;
-- decorative analyses.
+Do not begin with a model zoo, dozens of datasets, expensive scaling, or decorative ablations.
 
 ---
 
 # Kill / reconstruct logic
 
-A hypothesis losing is **not** automatically a topic failure.
+A hypothesis losing is not a topic failure.
 
-Reconstruct when:
-- another account wins;
-- a meaningful boundary appears;
-- a stronger explanation emerges.
+**RECONSTRUCT** when another account wins, a meaningful boundary appears, or a stronger explanation emerges.
 
-Kill when:
-- the data cannot identify the quantity;
-- the manipulation has no scientific leverage;
-- current literature owns the load-bearing narrative;
-- all surviving claims are trivial;
-- the research space collapses to one narrow cell;
-- no credible Main-level consequence remains.
+**KILL** when data cannot identify the quantity, the anomaly is too fragile, the narrative is owned, why-space collapses to technical corners, remaining claims are trivial/narrow, or no credible Main consequence remains.
 
-Do not protect a topic because much work has already been invested.
+Do not protect sunk cost.
 
 ---
 
@@ -336,15 +194,17 @@ Do not protect a topic because much work has already been invested.
 
 Before target-model compute, all must be materially YES:
 
-1. **Worth knowing?**
-2. **Natural and easy to explain?**
-3. **Genuinely non-obvious?**
-4. **Evidence really identifies the claim?**
-5. **Paper-level identity remains ours?**
-6. **More than one outcome remains scientifically useful?**
-7. **Enough natural depth for a Main paper?**
-8. **Comparable to strong ACL/EMNLP/NAACL Main work?**
+1. Worth knowing?
+2. Natural and easy to explain?
+3. Genuinely non-obvious?
+4. Evidence really identifies the claim?
+5. Paper-level identity remains ours?
+6. More than one outcome remains useful?
+7. Enough natural depth for a Main paper?
+8. Comparable to strong ACL/EMNLP/NAACL Main work?
+9. If anomaly-based, is the parent phenomenon robust enough?
+10. After the strongest neighboring literature is laid out, is the natural why-space still broad?
 
 Any material NO blocks promotion.
 
-> **Judge the question, evidence, ownership, and paper shape — not how clever the method sounds.**
+> **Judge the question, evidence, ownership, robustness, and paper shape — not how clever the method sounds.**

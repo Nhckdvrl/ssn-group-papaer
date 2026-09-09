@@ -3181,3 +3181,44 @@ Thus the route still depends too strongly on a sufficiently consequential empiri
 **Reopen only if**
 
 A multilingual/cross-resource substrate with independently annotated zero/one/many realization is secured *and* the scientific question is broadened so that preservation, failure, and heterogeneity each support a field-relevant decision about morphological evaluation without depending on a dramatic ranking/generalization change.
+
+---
+
+## K181 — L11 Task Gradient ≠ Learning Pressure
+
+**Date:** 2026-09-09  
+**Former status:** PILOT-AUTHORIZED  
+**Status:** **KILL**  
+**Primary failure:** `REPLICATION_FRAGILITY`  
+**Secondary failure:** `WHY_SPACE_COMPRESSION` / `REVIEWER_COMPRESSION`
+
+**Former RQ**
+
+> Why can two language/reasoning tasks have similar or reversed learning gains while one produces much larger policy gradients, and what makes that task optimization-loud?
+
+**Decisive pilot evidence**
+
+The audited Qwen2.5-7B-Instruct micro-pilot did not yield a stable Arithmetic-over-MATH gradient contrast after response-length, reward-support, normalization, and estimator repairs:
+
+- seed 17: Arithmetic > MATH;
+- seed 18: ordering reversed;
+- seed 19: indeterminate;
+- every per-seed prompt-bootstrap interval for the full-block estimate included zero.
+
+This does not prove the EACL parent phenomenon is false. It means the exact anomaly is not robust enough in our controlled stack to support immediate mechanism work without a substantially more expensive reproduction.
+
+**Why the topic is killed rather than merely held**
+
+Fresh literature review also shows that the natural explanatory space around gradient magnitude, learning progress, data utility, alignment/coherence, gradient concentration/rank, curriculum, and multi-task interference is already crowded. The remaining technically unoccupied corridors are increasingly a particular coherence statistic, output-format source, or function-space calibration cell.
+
+That is the wrong direction for this project: preserving novelty would require narrowing the claim and re-gambling on a new effect.
+
+**Reviewer compression**
+
+> “Imbalanced Gradients + learning-progress / gradient-geometry diagnostics, with another task-level decomposition.”
+
+**Reopen only if**
+
+A new independently robust natural gradient/gain anomaly appears together with a qualitatively broader explanatory question that survives current ACL/EMNLP/NAACL/ICLR/NeurIPS work without being reduced to a particular metric or intervention cell.
+
+Historical code, configs, raw outputs, and pilot reports remain under `good/L11_TASK_GRADIENT_PRESSURE/` for reproducibility only.

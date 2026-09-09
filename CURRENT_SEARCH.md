@@ -2,162 +2,81 @@
 
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
-**Killed ledger:** through K180  
-**Next kill ID:** K181
+**Killed ledger:** through K181  
+**Next kill ID:** K182
 
-> This file records **current status only**. It is not a workflow manual and should not accumulate historical search rules.  
-> Search rules: **RESEARCH_TOPIC_SEARCH.md**  
-> Candidate gates: **RESEARCH_TOPIC_SELECTION.md**  
-> Execution rules: **RESEARCH_EXECUTION.md**
+> Current status only.  
+> Search rules → **RESEARCH_TOPIC_SEARCH.md**  
+> Candidate gates → **RESEARCH_TOPIC_SELECTION.md**  
+> Execution rules → **RESEARCH_EXECUTION.md**
 
 ---
 
 # Current phase
 
-The earlier six-topic search target was completed. The user explicitly reopened broad search on 2026-09-09 and requested **two additional topics that are genuinely worth advancing**.
+# **RESEARCH EXECUTION — broad search paused**
 
-That search round is now complete.
+Do not reopen broad topic search unless the user explicitly asks or decisive evidence destroys enough of the active portfolio to justify replacement search.
 
-Two new candidates survived current literature assassination, paper-level novelty review, data/identification review, reviewer-compression testing, outcome-robustness review, and Main-level calibration:
+Current execution priority:
 
-- **L11 — Task Gradient ≠ Learning Pressure**
-- **L12 — Reasoning Training: Canonicalization or Policy Override?**
+1. **L10 — From Failure to Action** — **A / PILOT-AUTHORIZED / Rank 1**
+2. **L12 — Reasoning-Induced Invariance** — **A / CONTINUE-PILOT / Rank 2**
+3. **L08 — Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning** — **HOLD / strong backup / Rank 3**
 
-Both are registered in **good/** as **PILOT-AUTHORIZED**.
-
-Broad search can pause again unless the user reopens it or decisive pilots kill enough of the portfolio to justify another search round.
-
+**L11 is KILL / K181.**  
 **Approved paper mainline remains NONE.**
 
-The previously selected execution priority remains:
+---
 
-# **L08 as the first execution priority**
+# Why the priority changed
 
-unless the user explicitly changes priority.
+## L10 — Rank 1
+
+> **Why can an LLM remember that an action failed yet repeat the same action? Where does failure experience stop becoming future action?**
+
+The parent failure/inhibition gap is unusually robust: ACL 2026 ImplicitMemBench evaluates 17 models and reports inhibition 17.6% versus preference 75.0%, with public artifacts. ACL 2026 Fission-GRPO independently reports repetitive invalid tool calls after execution errors.
+
+Immediate work: **untouched-history stage decomposition → matched stage completion on actual action.**
+
+## L12 — Rank 2
+
+> **Does reasoning-oriented post-training learn which contextual changes are semantically irrelevant, or does it more broadly disconnect context from decisions?**
+
+Own pilot establishes a usable sibling-branch contrast: Instruct-SFT frame consistency ≈ 0.817, Think-SFT ≈ 0.992, difference ≈ +0.175 with CI excluding zero.
+
+Next:
+1. **relevant-vs-irrelevant context boundary**;
+2. then **conclusion-free decision-state causal substitution**.
+
+## L08 — Rank 3
+
+Still alive as a strong backup. Its final-readout truncation → teacher-forced vs free-running corridor remains natural, but the parent anomaly is less independently established than L10/L12.
+
+## L11 — KILL / K181
+
+The parent-compatible micro-pilot is unstable across seeds and all prompt-bootstrap intervals cross zero. The surrounding optimization/learning-progress/gradient-geometry literature also crowds the natural why-space. Preserving novelty would require technical compression and another phenomenon gamble.
+
+Do not rescue L11.
 
 ---
 
-# Current eight-topic portfolio
+# Active portfolio
 
-| ID | Topic | Status | Canonical package | Immediate decisive work |
-|---|---|---|---|---|
-| **L03** | Table Value ≠ Observation Status | **PILOT-AUTHORIZED** | good/L03_TYPED_OBSERVATION/ | cross-provider typed-observation pilot |
-| **L06** | Study Identity Is Not Document Identity | **SERIOUS / PILOT-READY** | candidates/L06_STUDY_IDENTITY/ | oracle / flat / wrong-split / wrong-merge with papers fixed |
-| **L07** | Official Correction ≠ Current Scholarly Claim | **SERIOUS / DATA AUDIT FIRST** | candidates/L07_OFFICIAL_CORRECTION/ | proposition-level old→new correction-yield audit before GPU |
-| **L08** | Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning | **SERIOUS / CURRENT PRIORITY** | candidates/L08_READOUT_DIMENSION/ | parent reproduction + teacher-forced vs free-running + long-generation control |
-| **L09** | RLVR Disagreement: Erased or Suppressed? | **SERIOUS** | candidates/L09_RLVR_DISAGREEMENT/ | secure matched pre/post RLVR pair + causal recovery test |
-| **L10** | Success Teaches, Failure Doesn't? | **SERIOUS** | candidates/L10_SUCCESS_FAILURE_ASYMMETRY/ | matched success/failure stage decomposition |
-| **L11** | Task Gradient ≠ Learning Pressure | **PILOT-AUTHORIZED** | good/L11_TASK_GRADIENT_PRESSURE/ | reproduce one gradient/gain paradox and decompose optimization loudness |
-| **L12** | Reasoning Training: Canonicalization or Policy Override? | **PILOT-AUTHORIZED** | good/L12_REASONING_DECISION_INVARIANCE/ | reproduce same-family training-induced decision invariance and choose decisive mechanism split |
+| ID | Topic | Current status | Canonical package |
+|---|---|---|---|
+| **L03** | Table Value ≠ Observation Status | PILOT-AUTHORIZED, lower priority | good/L03_TYPED_OBSERVATION/ |
+| **L06** | Study Identity Is Not Document Identity | SERIOUS / PILOT-READY | candidates/L06_STUDY_IDENTITY/ |
+| **L07** | Official Correction ≠ Current Scholarly Claim | SERIOUS / DATA AUDIT FIRST | candidates/L07_OFFICIAL_CORRECTION/ |
+| **L08** | Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning | HOLD / strong backup / Rank 3 | candidates/L08_READOUT_DIMENSION/ |
+| **L09** | RLVR Disagreement: Erased or Suppressed? | SERIOUS | candidates/L09_RLVR_DISAGREEMENT/ |
+| **L10** | From Failure to Action | PILOT-AUTHORIZED / Rank 1 | good/L10_FROM_FAILURE_TO_ACTION/ |
+| **L12** | Reasoning-Induced Invariance | CONTINUE-PILOT / Rank 2 | good/L12_REASONING_DECISION_INVARIANCE/ |
 
-Eight active candidates do **not** mean eight approved projects.
-
----
-
-# Newly registered candidates
-
-## L12 — Reasoning Training: Canonicalization or Policy Override?
-
-Established parent:
-> ACL 2026 Outstanding work reports that reasoning-oriented models become substantially less sensitive to several equivalent risky-choice presentations and points toward reasoning-oriented training as an important differentiator.
-
-Our question:
-> **Does reasoning post-training genuinely canonicalize different presentations into a shared decision representation, or does framing/context information remain internally available but lose control over the final policy?**
-
-Current open mechanism families:
-- representational canonicalization;
-- policy/readout override;
-- inference-time deliberation;
-- arithmetic-specialization boundary;
-- another stronger mechanism if the pilot reveals one.
-
-The candidate is deliberately **not locked to one interpretability method**.
-
-Main-level requirement:
-> established behavioral anomaly → independent mechanism question → decisive evidence → meaningful boundary/consequence → reinterpretation of reasoning-induced decision invariance.
-
-## L11 — Task Gradient ≠ Learning Pressure
-
-Established parent:
-> EACL 2026 reports large task-specific gradient imbalance during multi-task RL post-training, including cases where gradient magnitude does not track learning gain and simple reward/advantage/length explanations are insufficient.
-
-Our question:
-> **What makes one natural language/reasoning task optimization-loud, and does raw parameter-gradient magnitude actually measure comparable learning pressure across tasks?**
-
-Current open mechanism families:
-- per-example/token sensitivity;
-- within-response cancellation;
-- across-example update coherence;
-- parameter-space vs function-space miscalibration;
-- another stronger source if discovered.
-
-The candidate is deliberately **not locked to GradNorm, gradient surgery, Fisher, or any single decomposition**.
-
-Main-level requirement:
-> established gradient/gain paradox → explanatory mechanism or measurement correction → decisive validation → consequence for multi-task LLM post-training.
+L11 historical artifacts remain under `good/L11_TASK_GRADIENT_PRESSURE/`, but it is not active.
 
 ---
 
-# Package philosophy for L11/L12
+# Reopen-search rule
 
-The new candidate packages intentionally separate:
-
-## Hard constraints
-- natural and important RQ;
-- established parent phenomenon;
-- credible identification;
-- paper-level novelty;
-- outcome robustness;
-- explicit reviewer-compression boundary;
-- continuous ACL/EMNLP/NAACL Main calibration.
-
-## Open research space
-- exact probe/patching/gradient metric;
-- exact model family after the first reproducible lineage;
-- which account ultimately wins;
-- precise section/claim ordering;
-- whether the final paper becomes mechanism-first, measurement-first, boundary-first, or another stronger reconstruction.
-
-Candidate documents should guide research, not force the data into a prewritten paper.
-
----
-
-# Current mechanism-candidate ranking
-
-The portfolio is not a strict permanent ranking.
-
-At current paper-design confidence:
-
-- **L12** — especially strong natural mechanism question anchored in an ACL 2026 Outstanding parent.
-- **L11** — strong optimization/measurement question with more crowded related work but a surviving paper-level corridor.
-- **L08** — still one of the cleanest established-anomaly mechanism corridors and remains the currently selected execution priority.
-- **L10/L09** — strong mechanism questions with narrower/crowded neighborhoods.
-
-Do not treat this ordering as protection from pilot results.
-
----
-
-# Recent dead routes
-
-- **L02 / K175:** gold ≠ estimand; DNI/INI did not identify concrete filler support.
-- **L05 / K176:** adaptive information-seeking story compressed by close causal/adaptive-search work.
-- **L04 / K180:** remaining realization-cardinality story too outcome-fragile and narrow.
-- **Temporal Forgetting revival:** old Lost Skill vs Lost Entry route remains dead because cue/prefix interventions do not identify retained competence; 2026 follow-up literature further crowds access-vs-execution and robust-regression explanations.
-
-For all older killed parents, use **failed/KILLED_LEDGER.md**.
-
----
-
-# Reopen search only when needed
-
-Resume broad topic search when:
-- the user explicitly requests more topics;
-- decisive pilots kill enough candidates that replacement search is useful;
-- a newly discovered literature collision invalidates a major part of the portfolio.
-
-When reopened, follow:
-1. **RESEARCH_TOPIC_SEARCH.md**
-2. **TOPIC_SEARCH_PLAYBOOK.md**
-3. formal candidate audit in **RESEARCH_TOPIC_SELECTION.md**
-
-Do not use this status file as a source of search philosophy.
+Resume topic search only when the user explicitly requests it, decisive pilots kill enough active routes, or new literature destroys a load-bearing identity.
