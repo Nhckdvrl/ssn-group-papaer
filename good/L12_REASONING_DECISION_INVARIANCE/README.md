@@ -138,7 +138,7 @@ Preferred identity:
 
 > **Established reasoning-induced decision invariance  
 > → identify whether the change occurs in representation, deliberation, or decision policy  
-> → use controlled training-stage / causal comparisons  
+> → use shared-base branch comparisons and causal/mechanistic tests  
 > → identify boundaries where invariance holds or fails  
 > → reinterpret what reasoning-induced “rationality” actually means.**
 
@@ -169,8 +169,8 @@ The main source of invariance is inference-time reasoning rather than a static r
 ### Boundary story
 Invariance depends on whether the task can be converted into an explicit arithmetic representation.
 
-### Training-stage story
-A specific training transition reorganizes how contextual information influences choice.
+### Training-regime story
+A specific reasoning-oriented post-training regime reorganizes how contextual information influences choice.
 
 Any can support the topic if the evidence is decisive and the paper remains Main-level.
 
@@ -182,8 +182,8 @@ Any can support the topic if the evidence is decisive and the paper remains Main
 |---|---|---|
 | Natural / important | **PASS++** | Same choice, different framing, different or invariant decision is immediately understandable. |
 | Genuine tension | **PASS++** | Canonicalization, suppression, deliberation and specialization make different predictions. |
-| Data / identification | **PASS++** | Parent stimuli + same-family training checkpoints provide unusually controlled evidence. |
-| Paper-level novelty | **PASS** | Related work owns behavioral framing effects and some representation studies, but not this full training-transition mechanism story. |
+| Data / identification | **PASS++** | Parent stimuli + a shared-base instruct-vs-reasoning branch design provide unusually controlled evidence. |
+| Paper-level novelty | **PASS** | Related work owns behavioral framing effects and some representation studies, but not this full shared-base training-regime mechanism story. |
 | Outcome robustness | **PASS++** | Every major account produces a meaningful reinterpretation/boundary. |
 | Main-level calibration | **PASS++** | Strong parent, simple question, causal mechanism opportunity, clear consequence. |
 
