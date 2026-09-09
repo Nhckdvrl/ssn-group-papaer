@@ -1,130 +1,103 @@
-# Six-Candidate Research Portfolio — 2026-09-08
+# Serious Candidate Portfolio — 2026-09-09
 
 **Target:** NAACL Main  
-**External bar:** ACL / EMNLP / NAACL Main, aspirationally Best / Outstanding / Best Theme  
-**Approved paper mainline:** NONE
+**Approved paper mainline:** NONE  
+**Current user-selected execution priority:** **L08**
 
-> This directory contains **serious candidates under active comparison**. It is intentionally separate from `good/`: `good/` means pilot-authorized, while a detailed package here means the topic has survived broad search strongly enough to deserve full data/novelty/pilot auditing.
+> candidates/ contains serious topics under active comparison.  
+> A package here means “worth full audit/pilot design,” **not pilot-authorized and not protected from death**.
 
-**Local execution entrypoint:** [`../LOCAL_AGENT_START.md`](../LOCAL_AGENT_START.md). Give that single file to the local agent when starting experiments.
+For execution, start from **../LOCAL_AGENT_START.md** and then the chosen candidate package.
 
 ---
 
-## Current six-topic pool
+# Current six-topic pool
 
 | ID | Candidate | Status | Canonical package |
 |---|---|---|---|
-| **L03** | **Table Value ≠ Observation Status** | **PILOT-AUTHORIZED** | [../good/L03_TYPED_OBSERVATION/](../good/L03_TYPED_OBSERVATION/) |
-| **L06** | **Study Identity Is Not Document Identity** | **SERIOUS / PILOT-READY** | [L06_STUDY_IDENTITY/](L06_STUDY_IDENTITY/) |
-| **L07** | **Official Correction ≠ Current Scholarly Claim** | **SERIOUS / data-yield audit before pilot** | [L07_OFFICIAL_CORRECTION/](L07_OFFICIAL_CORRECTION/) |
-| **L08** | **Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning** | **SERIOUS / A-** | [L08_READOUT_DIMENSION/](L08_READOUT_DIMENSION/) |
-| **L09** | **RLVR Disagreement: Erased or Suppressed?** | **SERIOUS / A-** | [L09_RLVR_DISAGREEMENT/](L09_RLVR_DISAGREEMENT/) |
-| **L10** | **Success Teaches, Failure Doesn't?** | **SERIOUS / A-** | [L10_SUCCESS_FAILURE_ASYMMETRY/](L10_SUCCESS_FAILURE_ASYMMETRY/) |
+| **L03** | Table Value ≠ Observation Status | **PILOT-AUTHORIZED** | [../good/L03_TYPED_OBSERVATION/](../good/L03_TYPED_OBSERVATION/) |
+| **L06** | Study Identity Is Not Document Identity | **SERIOUS / PILOT-READY** | [L06_STUDY_IDENTITY/](L06_STUDY_IDENTITY/) |
+| **L07** | Official Correction ≠ Current Scholarly Claim | **SERIOUS / DATA AUDIT FIRST** | [L07_OFFICIAL_CORRECTION/](L07_OFFICIAL_CORRECTION/) |
+| **L08** | Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning | **SERIOUS / CURRENT PRIORITY** | [L08_READOUT_DIMENSION/](L08_READOUT_DIMENSION/) |
+| **L09** | RLVR Disagreement: Erased or Suppressed? | **SERIOUS** | [L09_RLVR_DISAGREEMENT/](L09_RLVR_DISAGREEMENT/) |
+| **L10** | Success Teaches, Failure Doesn't? | **SERIOUS** | [L10_SUCCESS_FAILURE_ASYMMETRY/](L10_SUCCESS_FAILURE_ASYMMETRY/) |
+
+Six serious candidates ≠ six approved projects.
 
 ---
 
 # Portfolio rule
 
-These are **six topics to compare and assassinate**, not six approved papers.
+Every candidate must keep answering:
 
-A detailed package does not protect a candidate from death.
-
-Each active package must answer:
 1. What is the simple natural RQ?
-2. What direct data/intervention actually identifies it?
-3. What prior work already owns?
-4. What is the exact paper-level novelty?
-5. What happens if the expected headline effect is absent?
-6. What is the smallest decisive pilot?
-7. What result/literature/data failure kills it?
+2. What is genuinely uncertain?
+3. What data/intervention actually identifies it?
+4. What does prior work already own?
+5. What is our paper-level identity?
+6. If the expected first effect is absent, what remains scientifically meaningful?
+7. What is the smallest decisive pilot?
+8. What exactly kills/reconstructs the topic?
+
+Use **RESEARCH_TOPIC_SELECTION.md** for the authoritative gates.
 
 ---
 
-# Current maturity order
+# Current candidate notes
 
-## Tier A / nearest to action
+## L03
+External-state / measurement candidate. Main risk: becoming code-decoding or missing-value evaluation rather than a consequential observation-state representation question.
 
-### L03 — Table Value ≠ Observation Status
-Already pilot-authorized. Cross-provider design now includes Census ACS and Eurostat/SDMX.
+## L06
+Hold paper contents fixed and manipulate study identity only. Main risk: collapsing to a CochraneForest grouping ablation instead of an evidence-unit representation result.
 
-### L06 — Study Identity Is Not Document Identity
-Data/gold and novelty are strong enough for a small pilot. Main risk is collapsing to “CochraneForest grouping ablation”; the experiment must hold papers fixed and manipulate evidence-unit identity through oracle / absent / split / merge states.
+## L07
+Do proposition-level old→new correction-yield audit before target-model compute. Main risk: most official corrections being metadata/typo changes rather than scientific-claim updates.
 
-### L07 — Official Correction ≠ Current Scholarly Claim
-Scientific object and novelty are strong. The remaining blocking gate is empirical dataset yield: run the publisher-authored old→new proposition audit before target-model compute.
+## L08 — current priority
+Parent anomaly is already established; our novelty must explain it.
 
-## Tier A- / serious mechanistic candidates
+First decisive split:
+- parent reproduction;
+- reasoning vs knowledge/extraction;
+- long non-reasoning generation control;
+- **teacher-forced vs free-running reasoning**.
 
-### L08 — Low-Dimensional Readout
-The phenomenon is already reported by an EMNLP 2025 People’s Choice paper. Our paper only exists if it explains the cross-capability asymmetry by separating local readout damage, autoregressive accumulation, task-specific geometry, and output-length artifacts.
+Main risk: becoming another dimension-ablation benchmark paper.
 
-### L09 — RLVR Disagreement
-The EACL 2026 behavioral result is the parent, not our novelty. The candidate lives on causal representation-preservation vs readout-suppression decomposition, ideally with a controlled pre/post RLVR pair and behavioral recovery intervention.
+## L09
+Must distinguish representation erasure from output/readout suppression, preferably by causal recovery. Probe-only work is below the intended identity.
 
-### L10 — Success vs Failure Adaptation
-ImplicitMemBench establishes preference≈75% vs inhibition≈17.6%; EscapeBench gives natural useless-repetition cases. The candidate lives on locating the asymmetry at outcome memory / credit assignment / policy knowledge / actual inhibition, followed by targeted repair.
+## L10
+Must preserve matched positive-vs-negative experience and stage decomposition:
+- outcome memory;
+- attribution;
+- policy knowledge;
+- action/inhibition.
 
----
-
-# Required package structure
-
-Every L06–L10 directory now contains:
-
-1. **README.md**
-   - simple RQ;
-   - natural object;
-   - competing accounts;
-   - outcome robustness;
-   - paper identity;
-   - C1→C2→C3;
-   - hard gates;
-   - main reviewer compression.
-
-2. **RELATED_WORK_AND_NOVELTY.md**
-   - direct parent;
-   - closest 2024–2026 neighbors;
-   - what prior work owns;
-   - what we cannot claim;
-   - exact new paper-level story;
-   - reviewer compression;
-   - kill-level collision definition.
-
-3. **DATA_AND_GOLD.md**
-   - exact data/evidence;
-   - load-bearing gold or intervention;
-   - conditions;
-   - metrics;
-   - controls;
-   - validity kill conditions.
-
-4. **RESEARCH_PLAN.md**
-   - minimum decisive pilot;
-   - competing outcome routes;
-   - causal/diagnostic phases;
-   - C1→C2→C3;
-   - Main-level expansion requirements;
-   - kill conditions.
+Do not regress to generic “agents do not learn from failure.”
 
 ---
 
-# Important distinction from L03
+# Package discipline
 
-Do **not** mechanically force all topics to imitate L03's provider-defined annotation structure.
+Each candidate already has the canonical five research documents:
+- README.md
+- DATA_AND_GOLD.md
+- RELATED_WORK_AND_NOVELTY.md
+- RESEARCH_PLAN.md
+- PILOT_CARD.md
 
-- L03/L06/L07 are largely external-state/data-identification papers.
-- L08/L09/L10 are causal behavior/representation papers.
+During execution, keep code/data/results/claims/experiments inside that candidate directory.
 
-For mechanism papers, objective benchmark/human/environment observations plus controlled interventions can be the correct evidence chain. “External provider gold” is not a universal requirement.
+Do not create more top-level process documents.
 
 ---
 
-# Immediate next actions
+# Current action
 
-1. **L07:** run correction-notice proposition-yield audit before any expensive compute.
-2. **L06:** run a small matched-paper oracle/flat/split/merge pilot.
-3. **L08:** exact reproduction + teacher-forcing vs free-running decomposition.
-4. **L09:** secure a credible open pre/post RLVR pair or train a controlled pair.
-5. **L10:** build/adapt a tightly matched positive-vs-negative four-stage pilot.
-6. Continue L03 pilot under its existing canonical package.
+Unless the user changes priority:
 
-After these pilots, re-rank all six against the same external Main bar and kill aggressively.
+# **Execute L08 first.**
+
+The search portfolio is complete; broad topic search remains paused while the six are being assassinated by decisive pilots/audits.
