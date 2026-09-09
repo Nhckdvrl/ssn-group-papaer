@@ -10,7 +10,7 @@ The current mechanism hypothesis is:
 > → long self-generated reasoning performs the decisive computation  
 > → a trajectory-built state controls final readout.
 
-The paper should explain this control transfer, not accumulate defensive controls.
+The paper should explain this control transfer through the smallest decisive mechanism sequence.
 
 # Evidence already in hand
 
@@ -67,7 +67,7 @@ This is a positive mechanism experiment. The layer index itself is not the paper
 
 # Stop rule
 
-Do not add semantic-relevance boundary tests, irrelevant-context batteries, or broad replication batteries before E07/E08.
+Finish E07, then E08 if gated in. Do not expand the experiment tree before those results.
 
 After E08, decide between:
 
