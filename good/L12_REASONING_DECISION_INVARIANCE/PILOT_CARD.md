@@ -5,18 +5,18 @@
 
 # Scientific question
 
-> **Is the final answer controlled by the long reasoning trajectory itself, or only by the trajectory's final explicit commitment?**
+> **Does the long reasoning trajectory itself control the final answer, or is the apparent control mostly the final explicit self-commitment?**
 
-This is the next load-bearing question for L12.
+This is the central unresolved mechanism behind the L12 “trajectory takeover / puppet-string” hypothesis.
 
-# L12-E07 — Conclusion-Stripped Trajectory Takeover
+# E07 — Conclusion-Stripped Trajectory Takeover
 
-Use the three already-audited parent prospects and Think-SFT natural traces.
+Use the three audited parent prospects and natural Think-SFT traces.
 
-For each prospect × frame × order, compare the forced A/B readout after:
+For each prospect × frame × order compare:
 
 1. **own full trace**
-2. **own trace with terminal explicit choice/conclusion removed**
+2. **own terminal-conclusion-stripped trace**
 3. **matched opposite-frame stripped trace**
 4. **empty trace**
 
@@ -24,31 +24,33 @@ For each prospect × frame × order, compare the forced A/B readout after:
 
 ### Own stripped vs empty
 
-Does the non-terminal reasoning trajectory still create a strong target-directed margin?
+Does the non-terminal reasoning trajectory still create a large target-directed A/B margin?
 
 ### Own stripped vs opposite stripped
 
-Can two matched long trajectories push the same target prompt toward different decisions even after their explicit terminal commitments are removed?
+Can two matched long trajectories still push the same target prompt toward opposite decisions after explicit terminal commitments are removed?
 
 ## Outcome logic
 
-- **Both contrasts strong:** trajectory-level takeover survives → proceed to E08.
-- **Effect collapses after stripping:** the current mechanism is late self-commitment, not distributed trajectory control → reconstruct around that result.
-- **Trace surgery itself is not identifiable:** repair the surgery once; do not launch a control battery.
+- **Both contrasts strong:** distributed trajectory takeover survives → run E08.
+- **Effect collapses:** mechanism is late self-commitment → reconstruct around that answer.
+- **Trace surgery is genuinely invalid:** repair the surgery once; do not launch a control battery.
 
-# E08 — only after E07
+# E08 — only after E07 succeeds
 
-Causally substitute the pre-answer decision state between matched trajectories.
+Substitute the matched opposite-frame **pre-answer hidden state** into the target computation, layer by layer.
 
 Goal:
 
-> show that a trajectory-built internal state, rather than appended donor text, carries decision control.
+> establish whether the natural trajectory has constructed a causal decision state that transfers answer control without donor text.
 
-# Runnable scaffold
+Runnable:
 
 - `configs/trajectory_takeover.json`
 - `scripts/run_trajectory_takeover.py`
 - `scripts/summarize_trajectory_takeover.py`
 - `scripts/run_trajectory_takeover.sh`
-
-The older context-boundary scaffold is parked and is not a prerequisite.
+- `configs/state_substitution.json`
+- `scripts/run_state_substitution.py`
+- `scripts/summarize_state_substitution.py`
+- `scripts/run_state_substitution.sh`

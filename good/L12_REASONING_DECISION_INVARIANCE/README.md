@@ -1,13 +1,15 @@
 # L12 — Reasoning-Induced Invariance
 
-## When Reasoning Takes Control
+## Trajectory Takeover — the “Puppet-String” Effect
 
 **Status:** **A / CONTINUE-PILOT / Rank 2**  
 **Paper mainline:** NOT APPROVED  
 **Target:** NAACL Main  
 **Last audited:** 2026-09-09
 
-> **Natural question:** Why does reasoning-oriented post-training make decisions dramatically more invariant to framing and presentation? Does long reasoning merely accompany the answer, or does the self-generated reasoning trajectory become the dominant causal controller of the final decision?
+> **Natural question:** After reasoning-oriented post-training, why do decisions become almost invariant to framing and presentation? Does the model’s self-generated long reasoning trajectory become the causal controller of the final answer even though the original frame information is still present?
+
+“Puppet-string effect” is only an intuitive nickname. It does **not** mean the reasoning is fake. The hypothesis is the opposite: the long trajectory may be the computation that constructs the state controlling the answer.
 
 ---
 
@@ -15,52 +17,61 @@
 
 ACL 2026 Outstanding **Mind the (DH) Gap!** establishes the broad phenomenon: reasoning-oriented models are far less sensitive to order, gain/loss framing, explanation, and description/history presentation.
 
-Our matched OLMo sibling-branch pilot independently reproduces a strong contrast on the three published prospects:
+Our matched OLMo sibling-branch pilot reproduces a large contrast on the three published prospects:
 
 - Instruct-SFT frame consistency ≈ **0.817**;
-- Think-SFT ≈ **0.992**;
+- Think-SFT frame consistency ≈ **0.992**;
 - difference ≈ **+0.175**, bootstrap CI **[0.025, 0.367]**.
 
-These numbers are **frame-consistency measurements**, not generic task accuracy.
+These are **frame-consistency measurements**, not generic task-accuracy scores.
 
 ---
 
-# 2. What is already known locally
+# 2. What we already know
 
-### Supported
+### Input information is still there
 
-- Think-SFT is almost perfectly frame/order-consistent relative to sibling Instruct-SFT.
-- Gain/loss frame identity remains recoverable in early/middle prompt representations.
-- A complete natural Think-SFT reasoning trajectory has a very large causal effect on final A/B readout:
-  - own trace correct margin ≈ **+9.34**;
-  - empty trace ≈ **-0.08**;
-  - matched opposite-frame trace ≈ **-9.07**.
-- Short answer-free arithmetic snippets do **not** reproduce that large effect.
+Gain/loss frame identity remains recoverable through early/middle prompt representations.
 
-### Not yet established
+So the behavioral invariance is not well described as “the model simply forgot the frame.”
 
-- whether the whole reasoning process matters beyond its terminal explicit conclusion;
-- whether a compact pre-answer decision state mediates the takeover;
-- where along the reasoning trajectory that state is constructed.
+### The long reasoning trajectory strongly controls the answer
+
+With the same target prompt, forced A/B readout changes dramatically depending on the inserted natural Think-SFT trajectory:
+
+- own natural trace: correct-option margin ≈ **+9.34**;
+- empty trace: ≈ **-0.08**;
+- matched opposite-frame trace: ≈ **-9.07**.
+
+This is a large causal effect of the natural trajectory on final readout.
+
+### A cheap arithmetic-fragment account is weak
+
+Short answer-free arithmetic snippets do not reproduce the large trajectory effect:
+
+- correct vs rule-only: **+0.32 [-3.92, 4.33]**;
+- correct vs swapped: **+0.39 [-0.13, 0.96]**.
+
+So the current live mechanism is not “one tiny calculation snippet determines the answer.”
 
 ---
 
-# 3. Core scientific hypothesis
+# 3. Core mechanism
 
-The current mechanistic picture is:
+The working picture is:
 
-> prompt still carries framing information  
-> → long reasoning transforms the computation  
-> → the trajectory constructs a decision state  
-> → final answer is controlled mainly by that trajectory-built state.
+> prompt frame remains represented  
+> → Think-SFT generates a long self-conditioned reasoning trajectory  
+> → that trajectory progressively constructs a decision state  
+> → the trajectory-built state becomes the dominant controller of final A/B readout.
 
-Call this **trajectory takeover** internally.
+This is the **trajectory takeover** hypothesis.
 
-The competing explanation is much cheaper:
+The only unresolved fork that matters now is:
 
-> the long trace matters only because its final sentence explicitly commits to an answer.
+> **Is control genuinely carried by the reasoning trajectory, or does almost all of it collapse into the final explicit self-commitment?**
 
-That distinction is the next load-bearing experiment.
+That is a mechanism question, not a reviewer-defense question.
 
 ---
 
@@ -68,97 +79,90 @@ That distinction is the next load-bearing experiment.
 
 ### C1 — Behavioral transition
 
-Reasoning-oriented and instruction-oriented sibling branches exhibit a large difference in presentation invariance.
+Think-SFT is far more presentation-invariant than sibling Instruct-SFT on the audited parent stimuli.
 
-### C2 — Input information is not simply erased
+### C2 — No simple frame erasure
 
-Frame identity remains available in early/middle representations even after the Think branch becomes behaviorally invariant.
+Frame identity remains recoverable in early/middle prompt representations.
 
-### C3 — Natural reasoning strongly controls the readout
+### C3 — Natural trajectory control
 
-Complete natural trajectories causally determine the final A/B margin.
+Complete natural Think-SFT trajectories exert large causal control over the final A/B readout.
 
-### C4 — Trajectory takeover
+### C4 — Distributed trajectory takeover
 
-The causal control survives removal of the terminal explicit choice/conclusion, showing that the effect is carried by the reasoning process rather than only a copied final commitment.
+After removing the terminal explicit decision/conclusion, the remaining natural trajectory still controls readout.
 
-### C5 — Decision-state mediation
+### C5 — Trajectory-built decision state
 
-A pre-answer state constructed by the reasoning trajectory causally carries the decision into the final readout.
+A pre-answer hidden state constructed by the trajectory causally carries that control into the final answer.
 
-C4 is next. C5 is only run if C4 survives.
+C4 is the next decisive claim. C5 is tested only if C4 survives.
 
 ---
 
-# 5. Next decisive experiment
+# 5. Next decisive experiment — E07
 
-## L12-E07 — Conclusion-Stripped Trajectory Takeover
+## Conclusion-Stripped Trajectory Takeover
 
-Reuse the same three audited prospects and natural Think-SFT traces.
+For each natural Think-SFT trace compare:
 
-Compare forced A/B readout after:
-
-1. the **full own natural trace**;
-2. the **same trace with terminal explicit decision/conclusion removed**;
-3. a **matched opposite-frame stripped trace**;
+1. **own full trace**;
+2. **own terminal-conclusion-stripped trace**;
+3. **matched opposite-frame stripped trace**;
 4. **empty trace**.
 
-The key question is not whether a trace can affect an answer in general. That is already known.
+Primary question:
 
-The question is:
+> **After the explicit final commitment is removed, does the remaining long reasoning still strongly determine the answer?**
 
-> **Does the reasoning trajectory retain strong decision control after the explicit terminal commitment is removed?**
+If yes, the “puppet strings” are distributed through the trajectory rather than being only the last sentence.
 
-If yes, proceed to E08.
+If no, the mechanism is **late self-commitment**. That is a scientific answer; do not add rescue controls.
 
-If no, the current “trajectory takeover” story collapses toward **late self-commitment**, which is itself a clear scientific answer and forces reconstruction.
+Runnable:
+
+`scripts/run_trajectory_takeover.sh`
 
 ---
 
 # 6. E08 — Pre-Answer Decision-State Causal Substitution
 
-Only after E07.
+Only if E07 supports C4.
 
-Intervene on the state immediately before answer decoding and ask whether a donor trajectory can transfer its decision into the target readout without appending donor reasoning text.
+Take the hidden state immediately before A/B decoding from a matched opposite-frame stripped trajectory and substitute it into the target computation, one layer at a time.
 
-The scientific object is the **trajectory-built causal decision state**, not a layer number.
+Primary signature:
+
+> the target answer margin moves toward the donor decision **without appending donor reasoning text**.
+
+The claim is not “layer 17 matters.” The claim is:
+
+> **the long reasoning trajectory constructs an internal decision state that can causally transfer control of the final answer.**
+
+Runnable scaffold:
+
+`scripts/run_state_substitution.sh`
 
 ---
 
-# 7. Parked, not next
-
-The matched relevant-vs-redundant contextual-note boundary scaffold remains in the repository, but it is **not a prerequisite and not the current paper identity**.
-
-Use it only later if the trajectory mechanism creates a concrete semantic-boundary question.
-
-Do not add a reviewer-defense battery before E07/E08 changes the scientific picture.
-
----
-
-# 8. Paper identity
+# 7. Paper identity
 
 > established reasoning-induced invariance  
-> → prompt frame information remains available  
-> → long natural reasoning takes causal control of the final decision  
-> → identify whether that control is distributed through the trajectory or only its terminal commitment  
-> → localize the trajectory-built decision state  
-> → reinterpret what reasoning training changes about decision computation
+> → frame information remains present  
+> → natural long reasoning takes causal control of the decision  
+> → determine whether control is distributed through the trajectory or only terminal self-commitment  
+> → identify the trajectory-built pre-answer decision state  
+> → explain what reasoning-oriented post-training changes about decision computation
 
-This is **not**:
-
-- another framing benchmark;
-- a probe paper;
-- generic Thought Injection;
-- answer-token attention analysis;
-- “CoT influences answers”;
-- a context-sensitivity benchmark.
+This is not a generic “CoT helps” or “CoT affects answers” paper. Recent work already owns generic trace causality, token-level causal contribution, and CoT activation patching. L12 must explain a **training-associated control transfer tied to the established invariance transition**.
 
 ---
 
-# 9. Training-attribution boundary
+# 8. Scope discipline
 
-`Olmo-3-7B-Instruct-SFT` and `Olmo-3-7B-Think-SFT` are sibling branches from a common base.
+Do **not** add semantic-boundary, irrelevant-context, reviewer-defense, or broad model-battery experiments before E07/E08 changes the scientific picture.
 
-Current evidence supports a matched reasoning-oriented-vs-instruction-oriented branch contrast, not strict one-variable training causality.
+Do **not** claim strict one-variable training causality from the two OLMo sibling branches.
 
-That caveat does not require a defensive model battery before the core mechanism is established.
+Do **not** promote L12 to approved mainline until the trajectory mechanism survives the decisive causal tests.

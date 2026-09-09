@@ -2,71 +2,75 @@
 
 ## Core RQ
 
-> **When reasoning training makes model decisions almost invariant to presentation, what actually takes control of the final answer?**
+> **After reasoning-oriented post-training makes decisions almost invariant to framing, does the model’s own long reasoning trajectory take over causal control of the final answer?**
 
-The current evidence suggests a natural mechanism:
+The current mechanism hypothesis is:
 
-> prompt information remains available  
-> → a long self-generated reasoning trajectory is produced  
-> → the trajectory controls final readout.
+> prompt frame remains represented  
+> → long self-generated reasoning performs the decisive computation  
+> → a trajectory-built state controls final readout.
 
-The next work tests whether that control belongs to the **reasoning process** or merely to its final explicit conclusion.
+The paper should explain this control transfer, not accumulate defensive controls.
 
-# L12-E07 — Conclusion-Stripped Trajectory Takeover
+# Evidence already in hand
 
-Reuse the natural Think-SFT trajectory setup from E05.
+1. **Behavioral transition:** Instruct-SFT frame consistency ≈ 0.817 vs Think-SFT ≈ 0.992.
+2. **No simple erasure:** frame identity remains decodable early/mid.
+3. **Strong natural-trace causality:** own trace ≈ +9.34 margin, empty ≈ -0.08, opposite trace ≈ -9.07.
+4. **Cheap snippet account weakened:** short arithmetic fragments do not reproduce the effect.
 
-For each target cell, score the final A/B readout under four trajectory prefixes:
+# E07 — Is the control distributed through the trajectory?
 
-1. **own full** — complete natural trace;
-2. **own stripped** — same trace with terminal explicit choice/conclusion removed;
-3. **opposite stripped** — matched opposite-frame natural trace with its terminal choice/conclusion removed;
-4. **empty** — no reasoning trace.
+Compare:
+
+1. own full;
+2. own terminal-conclusion-stripped;
+3. opposite-frame stripped;
+4. empty.
 
 Primary contrasts:
 
 - own stripped − empty;
 - own stripped − opposite stripped.
 
-Secondary descriptive quantity:
+Secondary:
 
-- own full − own stripped, which measures how much additional control comes from the terminal commitment.
+- own full − own stripped.
 
 ### Interpretation
 
-**Trajectory takeover:** own-stripped remains strongly target-directed and separates from both empty and opposite-stripped.
+**Distributed trajectory takeover:** stripped natural reasoning remains strongly target-directed.
 
-**Late self-commitment:** the large full-trace effect collapses after terminal conclusion removal.
+**Late self-commitment:** the effect largely disappears after terminal conclusion removal.
 
-Either result answers the scientific question. Do not rescue a failed trajectory-takeover account with additional controls.
+Either outcome answers the mechanism question. No rescue battery.
 
-# L12-E08 — Pre-Answer Decision-State Causal Substitution
+# E08 — Does the trajectory build a causal decision state?
 
-Run only if E07 shows non-trivial trajectory-level control beyond the terminal conclusion.
+Run only if E07 supports distributed trajectory control.
 
-Use the natural reasoning computation itself and intervene on the state immediately before answer decoding.
+For each matched target/opposite-frame pair:
 
-Question:
+1. construct the target prefix with its stripped natural trajectory;
+2. construct the donor prefix with the matched opposite-frame stripped trajectory;
+3. capture the donor’s final-token hidden state at every decoder layer;
+4. substitute that state into the target forward pass one layer at a time;
+5. score the A/B logits.
 
-> **Has the reasoning trajectory constructed a causal decision state that now dominates the final readout?**
+Primary quantity:
 
-Use a matched target/donor substitution and measure whether the target-choice margin moves in the donor-consistent direction.
+> **donor-consistent shift in the target answer margin.**
 
-The layer is not the claim; the existence and construction of a causal decision state is.
+A coherent layer profile with substantial donor-consistent transfer supports a trajectory-built decision state.
 
-# Optional later boundary
+This is a positive mechanism experiment. The layer index itself is not the paper claim.
 
-The current context-note semantic boundary scaffold is parked.
+# Stop rule
 
-Run it only if E07/E08 create a concrete question about what kinds of information the trajectory accepts, suppresses, or overrides.
+Do not add semantic-relevance boundary tests, irrelevant-context batteries, or broad replication batteries before E07/E08.
 
-It is not required to “defend novelty.”
+After E08, decide between:
 
-# Main-level shape
-
-> established reasoning-induced invariance  
-> → frame information remains present  
-> → natural long reasoning takes over decision control  
-> → distinguish distributed trajectory control from terminal self-commitment  
-> → identify the pre-answer causal decision state  
-> → explain what reasoning-oriented post-training changes about decision computation
+- **GO:** trajectory takeover + causal decision state gives a coherent Main-level mechanism;
+- **RECONSTRUCT:** late self-commitment or a different mechanism emerges;
+- **KILL/HOLD:** the causal story collapses or is fully compressed by prior work.

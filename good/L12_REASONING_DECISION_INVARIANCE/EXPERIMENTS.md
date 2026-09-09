@@ -90,15 +90,12 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 
 - **Linked claim:** L12-C5.
 - **Prerequisite:** E07 shows non-trivial trajectory-level control beyond the terminal explicit conclusion.
-- **Question:** Has the reasoning trajectory constructed a causal pre-answer decision state that dominates final readout?
-- **Design:** intervene on the natural Think-SFT computation immediately before answer decoding and substitute the matched state from a donor trajectory.
-- **Primary causal signature:** target-choice margin moves in the donor-consistent direction without appending donor reasoning text.
-- **Identity boundary:** the claim is the existence and construction of a trajectory-mediated decision state, not a special layer number.
-- **Status:** gated on E07.
-
-## L12-E09: Semantic-Relevance Boundary — PARKED
-
-- **Previous role:** relevant-vs-redundant contextual-note test.
-- **Current role:** optional later boundary/consequence test only if E07/E08 create a concrete question about which contextual information the trajectory uses or suppresses.
-- **Runnable scaffold retained:** `configs/boundary.json`, `scripts/run_boundary.py`, `scripts/summarize_boundary.py`, `scripts/run_boundary.sh`.
-- **Status:** **parked; not a prerequisite; do not run for novelty defense alone.**
+- **Question:** Has the stripped natural reasoning trajectory constructed a causal pre-answer decision state that carries final-answer control?
+- **Design:** for each matched target/opposite-frame trace pair, capture the donor final-token hidden state at every decoder layer and substitute it into the target forward pass one layer at a time.
+- **Important property:** donor text is never appended to the target; only the internal pre-answer state is transferred.
+- **Primary metric:** donor-consistent shift in the target A/B logit margin.
+- **Secondary metric:** fraction of patched target readouts that flip to the donor decision.
+- **Interpretation:** a coherent donor-consistent layer profile supports a trajectory-built causal decision state. The layer number itself is not the claim.
+- **Config:** `configs/state_substitution.json`
+- **Command:** `scripts/run_state_substitution.sh`
+- **Status:** runnable scaffold complete; **do not run unless E07 supports C4**.

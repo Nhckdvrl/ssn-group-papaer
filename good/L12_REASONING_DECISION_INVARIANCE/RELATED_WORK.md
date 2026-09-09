@@ -1,110 +1,75 @@
-# L12 Live Novelty Audit
+# L12 Live Related Work / Novelty Audit
 
 **Search date:** 2026-09-09
 
-# 1. Direct behavioral parent
+# 1. Behavioral parent
 
 ## Mind the (DH) Gap! — ACL 2026 Outstanding
-
 <https://aclanthology.org/2026.acl-long.479/>
 
-Owns:
-- reasoning-vs-conversational risky-choice behavioral contrast;
-- gain/loss, order, explanation, description/history effects;
-- evidence associating mathematical reasoning training with the invariance.
+Owns the broad reasoning-vs-conversational risky-choice contrast: reasoning models are substantially more invariant to order, gain/loss framing, explanation, and description/history presentation.
 
-L12 begins at the unresolved mechanism:
+L12 begins from the unresolved mechanism behind that transition.
 
-> **what changes in the computation such that final decisions become nearly invariant?**
+# 2. Generic reasoning-trace causality is already occupied
 
-# 2. Generic trace causality is already owned
+## Reasoning Traces Shape Outputs but Models Won’t Say So — ACL 2026
+<https://aclanthology.org/2026.acl-long.1986/>
 
-## Reasoning Traces Shape Outputs but Models Won't Say So
+Shows that injected reasoning snippets can causally alter model outputs.
 
-<https://arxiv.org/abs/2603.20620>
+## KisMATH — TACL 2026
+<https://doi.org/10.1162/TACL.a.729>
 
-Thought Injection establishes that injected reasoning content can causally alter outputs.
+Shows that nodes in extracted CoT causal graphs contribute to final answers.
 
-Therefore L12 cannot claim novelty from:
+Therefore “reasoning traces affect answers” is not L12’s novelty.
 
-> “reasoning traces influence answers.”
+# 3. Hidden-state / trajectory mechanism work is also close
 
-Our open axis is the **training-associated change in what controls the answer**, anchored to an independently established behavioral transition and naturally generated traces.
+## When Chain-of-Thought Fails, the Solution Hides in the Hidden States — 2026
+<https://arxiv.org/abs/2604.23351>
 
-# 3. Answer-to-trace reading is already populated
+Uses activation patching to transfer CoT token hidden states into direct-answer computation.
 
-## How Do Answer Tokens Read Reasoning Traces?
+## Mechanistic Interpretability of Chain-of-Thought Reasoning via Sequential Activation Patching — 2026
+<https://arxiv.org/abs/2608.22332>
 
-Findings of ACL 2026  
+Studies causally important locations distributed along reasoning trajectories.
+
+## How Do Answer Tokens Read Reasoning Traces? — Findings ACL 2026
 <https://aclanthology.org/2026.findings-acl.1507/>
 
-Owns structured answer-to-reasoning attention/self-reading patterns in quantitative reasoning.
+Studies how answer tokens attend to and integrate reasoning traces.
 
-Therefore generic attention localization is not a paper identity for L12.
+So L12 cannot be “we patched CoT states” or “we found important reasoning tokens/layers.”
 
-# 4. Framing mechanism is also populated
+# 4. Surviving paper-level identity
 
-## Framing Matters
+> **reasoning-oriented post-training is associated with a sharp behavioral invariance transition, while prompt frame information remains present; the open question is whether self-generated long reasoning becomes a new causal control channel that takes over the final decision.**
 
-<https://arxiv.org/abs/2605.28188>
+The decisive mechanism sequence is:
 
-Studies fact-preserving framing sensitivity and representation-level intervention.
+> behavioral transition  
+> → preserved prompt information  
+> → large natural-trajectory control  
+> → distributed trajectory vs terminal self-commitment  
+> → trajectory-built pre-answer decision state.
 
-L12 must preserve:
-- the reasoning-oriented vs instruction-oriented behavioral transition;
-- the long reasoning trajectory as a causal computational object;
-- the question of **trajectory takeover**.
+This remains distinct from generic CoT causality because the scientific object is **training-associated control transfer tied to an established invariance phenomenon**, not CoT usefulness in isolation.
 
-# 5. Reasoning vs control trade-off
+# 5. Reviewer compression
 
-## Scaling Reasoning, Losing Control — ACL 2026
+The dangerous compression is:
 
-<https://aclanthology.org/2026.acl-long.1878/>
+> “Mind the DH Gap + generic CoT patching.”
 
-Shows reasoning-oriented training can improve reasoning while hurting instruction adherence.
+That compression wins if L12 stops at E05 or merely localizes a layer.
 
-This is relevant evidence that reasoning may change control structure, but it does not ask whether the model's own reasoning trajectory becomes the causal controller of final choice.
+It loses only if E07/E08 establish a coherent control-transfer mechanism explaining the behavioral transition.
 
-# 6. Current paper-level corridor
+# 6. Current verdict
 
-The strongest current identity is:
+**CONTINUE-PILOT.**
 
-> established reasoning-induced invariance  
-> → prompt frame information remains recoverable  
-> → complete natural reasoning exerts very large causal control on final readout  
-> → determine whether this control survives removal of terminal explicit commitment  
-> → identify a trajectory-built pre-answer decision state.
-
-This is broader and more mechanistic than:
-- framing probes;
-- generic thought injection;
-- answer-token attention;
-- context-sensitivity benchmarking.
-
-# 7. Reviewer compression
-
-### “Mind the DH Gap + Thought Injection”
-
-Wins if L12 stops at E05.
-
-### “How answer tokens read CoT”
-
-Wins if L12 becomes attention/readout localization only.
-
-### “Framing Matters on a reasoning model”
-
-Wins if the trajectory-mediated computation disappears.
-
-The scientific answer to these attacks is not a defensive control battery. It is one positive mechanistic claim:
-
-> **reasoning-oriented post-training changes the causal route from prompt to answer by making a self-generated reasoning trajectory construct the state that controls final choice.**
-
-L12-E07 is the next decisive test of that claim.
-
-# 8. Novelty verdict
-
-**PASS for continued pilot.**
-
-No located work currently owns the full trajectory-takeover identity above.
-
-Refresh only if E07/E08 changes the central explanation or new literature appears.
+No broad defense battery. Run the two decisive mechanism steps and reassess.
