@@ -285,7 +285,7 @@ Record the following compactly inside the candidate package:
 - informative outcome branches;
 - exact kill/reconstruct conditions.
 
-This replaces the old standalone **CANDIDATE_CARD.md**. Do not create another duplicate checklist.
+Do not create a separate duplicate candidate checklist.
 
 ---
 
