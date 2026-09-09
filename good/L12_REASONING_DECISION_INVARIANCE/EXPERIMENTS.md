@@ -222,8 +222,20 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 ## L12-E18: Untouched CPC18 Competition Confirmation
 
 - **Prerequisite:** freeze E17 templates, parser, history construction, terminal stripping, exclusions, estimands, and statistics before accessing the 60 competition problems.
-- **Design:** one confirmatory run under the frozen E17 contract. No tuning or filtering on competition outcomes.
-- **Status:** not opened; held out by design.
+- **Design:** one confirmatory run under the frozen E17 contract. No tuning or filtering on competition outcomes. The exact contract is committed in
+  `configs/cpc18_competition_preregistered.json` before source access.
+- **Primary axes:** OLMo SFT siblings and Qwen same-weight modes. They are the
+  two calibration axes with controlled identification and a positive
+  trajectory-relative branch contrast whose clustered interval excludes zero.
+  The unmatched Llama/DeepSeek axis remains a calibration heterogeneity result
+  and is not promoted into the confirmatory set.
+- **Gate:** at least 40 of 60 competition problems pass the unchanged E16
+  inclusion and three-distinct-history criteria.
+- **Decision rule:** claim heldout cross-axis generalization only if both OLMo
+  and Qwen reasoning-minus-standard `Delta_R - Delta_P` contrasts are positive
+  with separate base-decision bootstrap 95% intervals excluding zero.
+- **Status:** scientific contract frozen while competition data remain unopened;
+  source provenance is the only pending configuration field.
 
 ## L12-E19: Broad Description/History State Mediation
 

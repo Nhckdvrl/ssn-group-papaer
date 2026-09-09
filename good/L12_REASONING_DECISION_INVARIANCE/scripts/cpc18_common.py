@@ -1,12 +1,16 @@
 """Shared frozen CPC18 prompt, ordering, parsing, and trajectory utilities."""
 
 import json
+import os
 import re
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG = json.loads((ROOT / "configs/cpc18.json").read_text())
+CONFIG_PATH = Path(os.environ.get("L12_CPC18_CONFIG", "configs/cpc18.json"))
+if not CONFIG_PATH.is_absolute():
+    CONFIG_PATH = ROOT / CONFIG_PATH
+CONFIG = json.loads(CONFIG_PATH.read_text())
 PARSER_VERSION = "cpc18_terminal_v2"
 STRIPPING_VERSION = "cpc18_terminal_commitment_v3"
 

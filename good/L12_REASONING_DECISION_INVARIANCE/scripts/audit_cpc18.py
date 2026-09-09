@@ -4,6 +4,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -12,7 +13,10 @@ from scipy.stats import wasserstein_distance
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG = json.loads((ROOT / "configs/cpc18.json").read_text())
+CONFIG_PATH = Path(os.environ.get("L12_CPC18_CONFIG", "configs/cpc18.json"))
+if not CONFIG_PATH.is_absolute():
+    CONFIG_PATH = ROOT / CONFIG_PATH
+CONFIG = json.loads(CONFIG_PATH.read_text())
 
 
 def digest(path, algorithm):

@@ -89,7 +89,9 @@ def collect_donor_states(model, layers, encoded):
 
     try:
         with torch.inference_mode():
-            logits = model(**encoded, use_cache=False).logits[0, -1]
+            logits = model(
+                **encoded, use_cache=False, logits_to_keep=1
+            ).logits[0, -1]
     finally:
         for handle in handles:
             handle.remove()
@@ -106,7 +108,9 @@ def run_with_patch(model, layer, encoded, donor_state):
     handle = layer.register_forward_hook(hook)
     try:
         with torch.inference_mode():
-            logits = model(**encoded, use_cache=False).logits[0, -1]
+            logits = model(
+                **encoded, use_cache=False, logits_to_keep=1
+            ).logits[0, -1]
     finally:
         handle.remove()
     return logits
