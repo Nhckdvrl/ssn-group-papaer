@@ -39,7 +39,7 @@ Immediate work:
 
 > untouched-history stage decomposition → matched stage completion on actual action.
 
-Runnable scaffold:
+Runnable:
 
 `good/L10_FROM_FAILURE_TO_ACTION/scripts/run_pilot.sh`
 
@@ -49,7 +49,7 @@ Runnable scaffold:
 
 ## Current question
 
-> **When reasoning training makes decisions almost invariant to framing/presentation, does the model's own long reasoning trajectory take over causal control of the final answer?**
+> **After reasoning-oriented post-training makes decisions almost invariant to framing, does the model’s own long reasoning trajectory take over causal control of the final answer?**
 
 Established locally:
 
@@ -57,28 +57,30 @@ Established locally:
 - Think-SFT ≈ **0.992**
 - difference ≈ **+0.175**, CI **[0.025, 0.367]**
 - frame identity remains recoverable early/mid;
-- complete natural trace strongly controls final readout;
-- short arithmetic snippets do not explain the large trace effect.
+- complete natural traces strongly control final readout;
+- short answer-free arithmetic snippets do not reproduce the large trace effect.
 
 ### Next decisive experiment
 
 **L12-E07 — Conclusion-Stripped Trajectory Takeover**
 
-Ask whether natural reasoning still strongly controls A/B readout after removing its terminal explicit choice/conclusion.
+Ask whether the remaining long natural trajectory still strongly controls A/B readout after removing its terminal explicit choice/conclusion.
 
-Runnable scaffold:
+Runnable:
 
 `good/L12_REASONING_DECISION_INVARIANCE/scripts/run_trajectory_takeover.sh`
 
-If E07 succeeds:
+If E07 supports trajectory-level control:
 
 → **L12-E08 — pre-answer decision-state causal substitution**
 
+Runnable scaffold:
+
+`good/L12_REASONING_DECISION_INVARIANCE/scripts/run_state_substitution.sh`
+
 If E07 collapses:
 
-→ reconstruct around **late self-commitment**; do not add rescue controls.
-
-The older semantic context-boundary scaffold is parked, not a prerequisite.
+→ reconstruct around **late self-commitment**.
 
 ---
 
