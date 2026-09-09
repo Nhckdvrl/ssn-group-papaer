@@ -160,19 +160,26 @@ def main():
         if not included:
             continue
 
-        ranked = sorted(
+        candidates = sorted(
             (
                 normalized_history_distance(sequence, option_a, option_b),
                 key,
                 sequence,
             )
             for key, sequence in histories[game_id].items()
-        )[: CONFIG["histories_per_problem"]]
+        )
+        rng = np.random.default_rng(CONFIG["seed"] + game_id)
+        selected = [
+            candidates[index]
+            for index in rng.choice(
+                len(candidates), CONFIG["histories_per_problem"], replace=False
+            )
+        ]
         support_a = {value for value, _ in option_a}
         support_b = {value for value, _ in option_b}
         if any(
             a not in support_a or b not in support_b
-            for _, _, sequence in ranked for a, b in sequence
+            for _, _, sequence in selected for a, b in sequence
         ):
             payoff_support_failures.append(game_id)
         scale = max(
@@ -196,11 +203,11 @@ def main():
             "histories": [
                 {
                     "id": key[:16],
-                    "selection_rank": rank,
+                    "draw_index": rank,
                     "distribution_distance": distance,
                     "outcomes": [[a, b] for a, b in sequence],
                 }
-                for rank, (distance, key, sequence) in enumerate(ranked, start=1)
+                for rank, (distance, key, sequence) in enumerate(selected, start=1)
             ],
         })
 

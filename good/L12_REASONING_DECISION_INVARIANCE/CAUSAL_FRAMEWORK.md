@@ -25,9 +25,10 @@ information.
 ## Prompt-trajectory interventional decomposition
 
 For each base decision, two semantically matched presentations and two
-conclusion-stripped natural trajectories are crossed. Let `m(p, r)` be the signed
-A/B log-probability margin, oriented toward the choice supported by trajectory
-`r`. The load-bearing estimands are:
+conclusion-stripped natural trajectories are crossed. Let `m(p, r)` be the
+preregistered reference-choice probability or A/B margin under prompt `p` and
+trajectory `r`. Gain/loss analyses use the gain-optimal option as reference; CPC18
+uses the exact-EV option. The load-bearing estimands are:
 
 ```text
 Delta_P = 1/2 * ([m(p1,r1)-m(p2,r1)] + [m(p1,r2)-m(p2,r2)])

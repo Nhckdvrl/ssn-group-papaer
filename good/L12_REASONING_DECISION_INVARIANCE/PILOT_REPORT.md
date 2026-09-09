@@ -98,8 +98,8 @@ The paper survives because E09-E13 link the behavioral transition to a direct re
 
 ## I. Verdict
 
-**GO.** C1-C4 survive dozens of independent decisions, a preregistered state-replication subset, and the OLMo DPO continuation. Qwen adds fixed-weight triangulation; DeepSeek/Llama replicates the control architecture and exposes its insufficiency for invariance; DeepSeek state substitution supports internal mediation.
+**GO.** C1-C3 survive dozens of independent decisions, a preregistered state-replication subset, and the OLMo DPO continuation. Qwen adds fixed-weight triangulation; DeepSeek/Llama supplies external control-route replication; DeepSeek state substitution supports external internal-state mediation.
 
 ## J. Next smallest decisive experiment
 
-Consolidate the corrected order-conditional behavioral construct across all reports and recompute only preregistered exploratory associations that remain scientifically relevant. No additional model is justified unless it tests a new training or task boundary.
+Test whether C3 generalizes from gain/loss framing to description/history presentation on the frozen CPC18 calibration set, then confirm once on the untouched competition split. No additional model family or exploratory per-item association is justified.

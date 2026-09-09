@@ -57,7 +57,7 @@ def main():
         revision=spec["revision"],
         dtype="bfloat16",
         tensor_parallel_size=1,
-        max_model_len=4096,
+        max_model_len=5120,
         gpu_memory_utilization=0.78,
         trust_remote_code=True,
     )

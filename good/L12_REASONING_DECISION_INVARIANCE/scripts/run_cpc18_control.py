@@ -43,6 +43,7 @@ def load_units(result_dir, donor_name):
     valid = [
         row for row in rows
         if row["valid"] and row.get("stripped_trace")
+        and row.get("removed_terminal_segments")
     ]
     explicit = {
         (row["problem"], row["order"], row["sample_index"]): row
@@ -82,7 +83,7 @@ def main():
     problems = {row["id"]: row for row in load_problems()}
     units = load_units(result_dir, donor["name"])
     if not units:
-        raise ValueError(f"No matched stripped trajectories from {donor['name']}")
+        raise ValueError(f"No matched strictly stripped trajectories from {donor['name']}")
 
     tokenizer = AutoTokenizer.from_pretrained(
         spec["id"], revision=spec["revision"], local_files_only=True

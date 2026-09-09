@@ -48,7 +48,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 
 ## L12-E05: Matched Reasoning-Prefix Readout Intervention
 
-- **Linked claim:** L12-C3.
+- **Linked claim:** precursor evidence for L12-C1.
 - **Question:** Does the content of the generated calculation trace causally determine the final A/B readout?
 - **Unit:** completed Think-SFT trace; first four completed traces in each of 12 prospect x frame x order cells (48 traces).
 - **Conditions:** own trace, empty trace, or a trace from the matched opposite frame inserted after the same target prompt. Score A/B logits at the answer position without further generation.
@@ -60,7 +60,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 
 ## L12-E06: Answer-Leakage-Controlled Calculation Intervention
 
-- **Linked claim:** L12-C3/C4.
+- **Linked claim:** mechanism constraint for L12-C1.
 - **Question:** Is E05 driven only by an explicit answer mention, or does calculation content without A/B labels control the readout?
 - **Unit:** 12 prospect x frame x order stimulus cells.
 - **Conditions:** a correct pair of expected magnitudes, the same two magnitudes swapped, or the decision rule without computed values. All prefixes omit A/B answer labels and final-choice language.
@@ -71,7 +71,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 
 ## L12-E07: Conclusion-Stripped Trajectory Takeover
 
-- **Linked claim:** L12-C4.
+- **Linked claim:** L12-C1.
 - **Question:** Does the long natural reasoning trajectory retain strong causal control over the final answer after its terminal explicit choice/conclusion is removed?
 - **Model:** `allenai/Olmo-3-7B-Think-SFT`, frozen revision in `configs/trajectory_takeover.json`.
 - **Stimuli:** the same three audited parent prospects x gain/loss x both option orders.
@@ -88,7 +88,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 
 ## L12-E08: Pre-Answer Decision-State Causal Substitution
 
-- **Linked claim:** L12-C5.
+- **Linked claim:** L12-C2.
 - **Prerequisite:** E07 shows non-trivial trajectory-level control beyond the terminal explicit conclusion.
 - **Question:** Has the stripped natural reasoning trajectory constructed a causal pre-answer decision state that carries final-answer control?
 - **Design:** for each matched target/opposite-frame trace pair, capture the donor final-token hidden state at every decoder layer and substitute it into the target forward pass one layer at a time.
@@ -114,7 +114,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 
 ## L12-E10: Independent-Decision Breadth and Control Bridge
 
-- **Linked claim:** L12-C4.
+- **Linked claim:** L12-C3.
 - **Question:** do the behavioral transition and trajectory-relative control reorganization generalize beyond the three discovery prospects?
 - **Unit:** at least 30 independently parameterized, gold-verifiable base decisions; frames, orders, and trace samples are repeated observations within unit.
 - **Design:** preregistered simple two-option lotteries, crossed gain/loss frame and order. Run sibling behavior first; generate matched Think-SFT trajectories; then apply the E09 prompt-by-trajectory factorial to both branches.
@@ -191,7 +191,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Question:** can an external risky-choice corpus support a broad, gold-verifiable description/history intervention without synthetic histories or pseudo-replicated scientific units?
 - **Sources:** official 210-problem bird's-eye workbook and Zenodo calibration raw data. Both files are checksum-pinned in `configs/cpc18.json`; the 47 MB raw file remains outside Git.
 - **Frozen inclusion:** known probabilities (`Amb=0`), independent option outcomes (`Corr=0`), exact probability sums, non-tied exact EV, at most 10 outcomes per option, and at least three distinct 20-trial full-feedback histories. Support dominance is retained as a preregistered stratum, not filtered after outcomes.
-- **History rule:** select three distinct real participant histories per problem by the smallest normalized Wasserstein distance between each 20-trial empirical payoff distribution and the published distribution. Selection never uses participant choice, model output, or final answer direction; participant identifiers are not exported.
+- **History rule:** sample three distinct real participant histories uniformly without replacement using the frozen seed. Selection never uses empirical payoff direction, participant choice, model output, or final answer direction; normalized Wasserstein distance is recorded only as a post-selection audit and participant identifiers are not exported.
 - **Unit:** base decision. Histories, orders, and generations are nested nuisance variation.
 - **Gate:** at least 150 eligible independent calibration problems.
 - **Result:** **151/210** problems pass. The flow is 182 known-risk, 171 also independent, 152 after exact-EV ties, and 151 after the three-history requirement. Game 29 is the sole final exclusion because it has only one distinct realized history. The official aggregate block rates reproduce from raw choices to maximum absolute error `4.96e-10`.

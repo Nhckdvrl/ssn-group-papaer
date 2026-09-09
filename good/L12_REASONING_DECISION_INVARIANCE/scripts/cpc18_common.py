@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = json.loads((ROOT / "configs/cpc18.json").read_text())
+PARSER_VERSION = "cpc18_terminal_v2"
 
 
 def load_problems(limit=None):
@@ -95,8 +96,9 @@ def parse_terminal_choice(text, require_closed_think=False):
         (r"\\boxed\{(?:\\text\{)?\s*([AB])\s*\}?\}", "boxed"),
         (r"(?i)(?:final\s+)?(?:answer|choice)\s*(?:is|would be|:)\s*"
          r"(?:option\s*)?[*\\({\s]*([AB])\b", "answer_field"),
-        (r"(?i)(?:choose|select|pick|go with)\s+(?:option\s+)?"
-         r"\**([AB])\b", "choice_verb"),
+        (r"(?i)(?:i(?:'ll|\s+will|\s+am)?\s+)?"
+         r"(?:choose|select|pick|go(?:ing)?\s+with)\W{0,20}"
+         r"(?:option\s+)?\**([AB])\b", "choice_verb"),
         (r"(?im)(?:^|\n)\s*\*{0,2}([AB])\*{0,2}\s*[.!]?\s*$", "terminal_label"),
     ]
     matches = []

@@ -89,10 +89,11 @@ is retained and reported as a stratum because it is a meaningful difficulty
 boundary, not an identification failure.
 
 Each exported history contains both realized and forgone payoffs from trials 6-25.
-Three distinct real histories are selected without participant choice or model data,
-using only normalized Wasserstein distance to the published marginal payoff
-distributions. This reduces accidental sampling noise while preserving genuine
-outcome sequences. No participant identifier leaves the external raw cache.
+Three distinct real histories are sampled uniformly without replacement using the
+frozen seed. The selection does not inspect empirical direction, participant choice,
+or model data. Normalized Wasserstein distance to the published marginals is retained
+only as a representativeness audit, not as a filter. No participant identifier leaves
+the external raw cache.
 
 Exact expected payoff remains the independent gold. Human choices are provenance
 and descriptive context, never answer labels. Description/history consistency is
