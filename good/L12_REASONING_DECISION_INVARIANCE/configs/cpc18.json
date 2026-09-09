@@ -1,0 +1,91 @@
+{
+  "version": "cpc18_calibration_v1",
+  "seed": 121,
+  "orders": ["ab", "ba"],
+  "samples_per_cell": 3,
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "bootstrap_samples": 5000,
+  "minimum_clean_problems": 150,
+  "histories_per_problem": 3,
+  "feedback_trials": [6, 25],
+  "probability_tolerance": 1e-6,
+  "ev_tie_tolerance": 1e-8,
+  "inclusion": {
+    "known_probability": true,
+    "independent_options": true,
+    "exclude_ev_ties": true,
+    "minimum_unique_histories": 3,
+    "exclude_support_dominance": false,
+    "maximum_outcomes_per_option": 10
+  },
+  "calibration_sources": {
+    "raw_url": "https://zenodo.org/api/records/845873/files/All%20estimation%20raw%20data.csv/content",
+    "raw_md5": "38a26407a36c690be969f9d9d3fe3e5a",
+    "raw_bytes": 47488058,
+    "problem_url": "https://cpc-18.com/wp-content/uploads/2018/06/cpc18-all-210-problems-detailed-distributions-aggregate-results.xlsx",
+    "problem_sha256": "d95e89e060c54977fffe45cad2898570d6d87233d18a9e192c5f4bf314792158"
+  },
+  "output": "data/cpc18_calibration_v1.jsonl",
+  "audit_output": "data/cpc18_calibration_v1.audit.json",
+  "result_dir": "results/cpc18_calibration_seed121",
+  "regimes": [
+    {
+      "name": "olmo_instruct_sft",
+      "pair": "olmo_sft",
+      "role": "standard",
+      "id": "allenai/Olmo-3-7B-Instruct-SFT",
+      "revision": "e1452fc572d51966ff4aaeb25118b891eb93e549",
+      "max_tokens": 64,
+      "requires_closed_think": false
+    },
+    {
+      "name": "olmo_think_sft",
+      "pair": "olmo_sft",
+      "role": "reasoning",
+      "id": "allenai/Olmo-3-7B-Think-SFT",
+      "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+      "max_tokens": 2048,
+      "requires_closed_think": true
+    },
+    {
+      "name": "qwen_thinking",
+      "pair": "qwen_mode",
+      "role": "reasoning",
+      "id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "enable_thinking": true,
+      "max_tokens": 2048,
+      "requires_closed_think": true
+    },
+    {
+      "name": "qwen_non_thinking",
+      "pair": "qwen_mode",
+      "role": "standard",
+      "id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "enable_thinking": false,
+      "max_tokens": 64,
+      "requires_closed_think": false
+    },
+    {
+      "name": "llama_instruct",
+      "pair": "llama_external",
+      "role": "standard",
+      "id": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+      "revision": "d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+      "scientific_identity": "meta-llama/Llama-3.1-8B-Instruct",
+      "max_tokens": 64,
+      "requires_closed_think": false
+    },
+    {
+      "name": "deepseek_r1",
+      "pair": "llama_external",
+      "role": "reasoning",
+      "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+      "revision": "6a6f4aa4197940add57724a7707d069478df56b1",
+      "max_tokens": 2048,
+      "requires_closed_think": true
+    }
+  ]
+}

@@ -11,12 +11,9 @@
 | ID | Claim | Evidence | Current status |
 |---|---|---|---|
 | **L12-C0** | Reasoning models are more invariant across risky-choice presentations. | *Mind the (DH) Gap!* | **Established prior; not ours** |
-| **L12-C1** | Decision-controlling information is distributed through the natural reasoning trajectory rather than reducible to its terminal explicit commitment. | E07 | **Supported on 3 parent prospects** |
-| **L12-C2** | Long reasoning constructs a pre-answer decision state that causally carries trajectory control into final decoding. | E08 | **Supported on 3 parent prospects** |
-| **L12-C3** | The sibling-branch invariance transition is accompanied by a reorganization of causal control: the same stripped trajectories control Think-SFT much more strongly than Instruct-SFT, while prompt-frame control is small once trajectory content is fixed. | E09 + E10 + E02 | **Supported across 36 independent decisions** |
-| **L12-C4** | The causal-control reorganization persists through the documented DPO continuation of both OLMo branches. | E12 | **Supported across 36 independent decisions** |
-| **L12-C5** | The association between reasoning behavior and stronger trajectory-relative control generalizes beyond OLMo under a complementary same-weight identification: Qwen3's official thinking route is more invariant and integrates the same stripped trajectories much more strongly than its non-thinking route. | E13 | **Supported across 36 independent decisions, with route/channel boundary** |
-| **L12-C6** | The aligned invariance/control transition replicates in a separate Llama ecosystem: DeepSeek-R1-Distill is both more frame-invariant and more trajectory-controlled than Llama-Instruct, with late internal state mediation. | E14-E15 | **Supported across 36 behavioral/control units and 18 state units; external replication, not training attribution** |
+| **L12-C1** | Natural reasoning progressively constructs decision control before the terminal explicit commitment; the conclusion amplifies rather than creates the effect. | E05-E07 | **Supported on 3 parent prospects; breadth is supplied under C3** |
+| **L12-C2** | Long reasoning constructs a pre-answer decision state that causally carries trajectory control into final decoding. | E08 + E11; E15 triangulation | **Supported across 18 OLMo decisions and externally in DeepSeek** |
+| **L12-C3** | Reasoning-associated invariance is accompanied by a reorganization of causal control away from prompt presentation and toward trajectory-mediated decision formation. | E09-E10; E12-E14 triangulation | **Supported across 36 decisions and complementary checkpoint/mode/family comparisons** |
 
 ## Supporting evidence, not headline claims
 
@@ -25,7 +22,8 @@
 | **L12-S1** | Think-SFT frame consistency is 0.992 versus 0.750 for sibling Instruct-SFT. | Reproduces the behavioral substrate on the three parent prospects using order-conditional consistency. |
 | **L12-S2** | Frame identity remains linearly recoverable through early/middle prompt representations. | Rules against a simple information-erasure story; probe evidence is not causal use. |
 | **L12-S3** | Full own/opposite trajectories produce margins +9.34/-9.07, while short arithmetic snippets do not reproduce that effect. | Routes the mechanism toward the natural trajectory rather than a generic calculation fragment. |
-| **L12-S4** | DeepSeek's opposite-decision pre-answer state produces a late donor-directed shift of +1.222 [0.299, 2.181]. | Extends decision-state mediation beyond OLMo; supports C6 without making a new layer-localization claim. |
+| **L12-S4** | DeepSeek's opposite-decision pre-answer state produces a late donor-directed shift of +1.222 [0.299, 2.181]. | External triangulation for C2 without making a new layer-localization claim. |
+| **L12-S5** | C3 persists at OLMo DPO checkpoints, under Qwen3's same-weight mode switch, and in the Llama/DeepSeek ecosystem. | Checkpoint, route, and family breadth for C3; these are not additional headline claims. |
 
 ## Interpretation discipline
 
@@ -42,4 +40,4 @@
 
 ## Current verdict
 
-**GO.** C1-C4 establish the mechanism in the discovery family; E13-E15 triangulate it under complementary external designs. Across OLMo branches, fixed-weight Qwen routes, and the Llama/DeepSeek ecosystem, the presentation-invariance transition is consistently accompanied by stronger trajectory-relative causal control; OLMo and DeepSeek also show late internal state mediation.
+**GO.** C1-C3 establish progressive construction, state mediation, and causal-control reorganization. E12-E15 are persistence and triangulation beneath those claims, not separate contributions. The remaining load-bearing question is whether C3 survives a broad, natural description/history manipulation under the frozen interventional decomposition in `CAUSAL_FRAMEWORK.md`.

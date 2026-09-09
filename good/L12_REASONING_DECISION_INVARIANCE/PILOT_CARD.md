@@ -1,7 +1,7 @@
 # L12 Next Decisive Experiment Card
 
-**Experiment:** Post-E15 construct and claim consolidation
-**Status:** E12-E15 COMPLETE
+**Experiment:** E16-E18 broad description/history confirmation
+**Status:** E16 DATA AUDIT IN PROGRESS; E17/E18 NOT STARTED
 
 ## Scientific question
 
@@ -23,7 +23,12 @@ If the corrected per-item association remains weak, retain the stronger matched 
 
 ## Execution state
 
-E12-E15 code, raw scores, compact summaries, and audits are complete. No additional run is preregistered on this card yet.
+E12-E15 code, raw scores, compact summaries, and audits are complete. The claim
+architecture is frozen to C1 progressive trajectory construction, C2 pre-answer
+state mediation, and C3 causal-control reorganization. E12-E15 remain supporting
+breadth. The next GPU run is blocked on the CPC18 calibration audit and frozen
+description/history identification contract; held-out competition items remain
+untouched until that contract is committed.
 
 Runnable:
 

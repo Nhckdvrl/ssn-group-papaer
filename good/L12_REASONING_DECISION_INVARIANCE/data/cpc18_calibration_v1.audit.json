@@ -1,0 +1,175 @@
+{
+  "decision": "GO_CPC18_PRIMARY_BREADTH",
+  "design": "L12-E16 CPC18 calibration audit",
+  "flow": {
+    "after_ev_ties": 152,
+    "after_history_and_integrity_checks": 151,
+    "all_calibration": 210,
+    "known_probability": 182,
+    "known_probability_independent": 171
+  },
+  "frozen_config": {
+    "audit_output": "data/cpc18_calibration_v1.audit.json",
+    "bootstrap_samples": 5000,
+    "calibration_sources": {
+      "problem_sha256": "d95e89e060c54977fffe45cad2898570d6d87233d18a9e192c5f4bf314792158",
+      "problem_url": "https://cpc-18.com/wp-content/uploads/2018/06/cpc18-all-210-problems-detailed-distributions-aggregate-results.xlsx",
+      "raw_bytes": 47488058,
+      "raw_md5": "38a26407a36c690be969f9d9d3fe3e5a",
+      "raw_url": "https://zenodo.org/api/records/845873/files/All%20estimation%20raw%20data.csv/content"
+    },
+    "ev_tie_tolerance": 1e-08,
+    "feedback_trials": [
+      6,
+      25
+    ],
+    "histories_per_problem": 3,
+    "inclusion": {
+      "exclude_ev_ties": true,
+      "exclude_support_dominance": false,
+      "independent_options": true,
+      "known_probability": true,
+      "maximum_outcomes_per_option": 10,
+      "minimum_unique_histories": 3
+    },
+    "minimum_clean_problems": 150,
+    "orders": [
+      "ab",
+      "ba"
+    ],
+    "output": "data/cpc18_calibration_v1.jsonl",
+    "probability_tolerance": 1e-06,
+    "regimes": [
+      {
+        "id": "allenai/Olmo-3-7B-Instruct-SFT",
+        "max_tokens": 64,
+        "name": "olmo_instruct_sft",
+        "pair": "olmo_sft",
+        "requires_closed_think": false,
+        "revision": "e1452fc572d51966ff4aaeb25118b891eb93e549",
+        "role": "standard"
+      },
+      {
+        "id": "allenai/Olmo-3-7B-Think-SFT",
+        "max_tokens": 1024,
+        "name": "olmo_think_sft",
+        "pair": "olmo_sft",
+        "requires_closed_think": true,
+        "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+        "role": "reasoning"
+      },
+      {
+        "enable_thinking": true,
+        "id": "Qwen/Qwen3-8B",
+        "max_tokens": 1024,
+        "name": "qwen_thinking",
+        "pair": "qwen_mode",
+        "requires_closed_think": true,
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "role": "reasoning"
+      },
+      {
+        "enable_thinking": false,
+        "id": "Qwen/Qwen3-8B",
+        "max_tokens": 64,
+        "name": "qwen_non_thinking",
+        "pair": "qwen_mode",
+        "requires_closed_think": false,
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "role": "standard"
+      },
+      {
+        "id": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+        "max_tokens": 64,
+        "name": "llama_instruct",
+        "pair": "llama_external",
+        "requires_closed_think": false,
+        "revision": "d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+        "role": "standard",
+        "scientific_identity": "meta-llama/Llama-3.1-8B-Instruct"
+      },
+      {
+        "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+        "max_tokens": 1024,
+        "name": "deepseek_r1",
+        "pair": "llama_external",
+        "requires_closed_think": true,
+        "revision": "6a6f4aa4197940add57724a7707d069478df56b1",
+        "role": "reasoning"
+      }
+    ],
+    "result_dir": "results/cpc18_calibration_seed121",
+    "samples_per_cell": 3,
+    "seed": 121,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "version": "cpc18_calibration_v1"
+  },
+  "gate": {
+    "minimum": 150,
+    "observed": 151,
+    "passed": true
+  },
+  "included_characteristics": {
+    "available_unique_history_quantiles": {
+      "0": 9.0,
+      "0.05": 14.5,
+      "0.25": 79.0,
+      "0.5": 80.0,
+      "0.75": 116.0,
+      "0.95": 124.5,
+      "1": 125.0
+    },
+    "outcome_complexity_counts": {
+      "10": 8,
+      "2": 88,
+      "3": 4,
+      "4": 13,
+      "5": 3,
+      "6": 12,
+      "7": 7,
+      "8": 15,
+      "9": 1
+    },
+    "relative_ev_gap_quantiles": {
+      "0": 0.0016556283708609283,
+      "0.05": 0.007343358395989992,
+      "0.25": 0.029006410256410244,
+      "0.5": 0.06666666666666667,
+      "0.75": 0.14851787271142114,
+      "0.95": 0.42928571428571416,
+      "1": 0.9666666666666668
+    },
+    "selected_history_distance_quantiles": {
+      "0": 0.0,
+      "0.05": 0.0,
+      "0.25": 0.0,
+      "0.5": 0.0007246376811594193,
+      "0.75": 0.006571428571428577,
+      "0.95": 0.03715616964227025,
+      "1": 0.040000000000000036
+    },
+    "selected_history_empirical_ev_direction_match_rate": 0.9801324503311258,
+    "support_dominance_count": 21
+  },
+  "raw_shape": [
+    510750,
+    30
+  ],
+  "source_integrity": {
+    "problem_sha256": "d95e89e060c54977fffe45cad2898570d6d87233d18a9e192c5f4bf314792158",
+    "raw_bytes": 47488058,
+    "raw_md5": "38a26407a36c690be969f9d9d3fe3e5a"
+  },
+  "validation": {
+    "fewer_than_three_unique_history_game_ids": [
+      29
+    ],
+    "participant_game_histories_all_have_20_feedback_trials": true,
+    "participant_identifiers_exported": false,
+    "probability_failure_game_ids": [],
+    "raw_vs_birds_eye_max_aggregate_b_rate_difference": 4.957983468223404e-10,
+    "selected_histories_are_distinct_within_problem": true,
+    "selected_history_payoff_support_failure_game_ids": []
+  }
+}

@@ -29,12 +29,11 @@ The discovery pilot supports **progressive construction plus late consolidation*
 
 ## Claim architecture
 
-- **C1 - Distributed trajectory control:** reasoning before the terminal commitment already carries decision direction.
+- **C1 - Progressive trajectory construction:** reasoning before the terminal commitment already carries decision direction, with terminal amplification.
 - **C2 - Trajectory-built decision state:** a pre-answer internal state causally transfers that direction.
-- **C3 - Causal-control reorganization:** the reasoning-oriented sibling branch relies far more strongly on trajectory-relative control.
-- **C4 - Checkpoint persistence:** the contrast survives documented OLMo DPO branch continuations.
-- **C5 - Complementary family breadth:** Qwen3's same-weight thinking route jointly exhibits greater invariance and stronger trajectory-relative integration.
-- **C6 - External replication:** the aligned behavioral/control transition and late state mediation reproduce in a separate Llama ecosystem.
+- **C3 - Causal-control reorganization:** reasoning-associated invariance comes with less presentation-relative and more trajectory-relative control.
+
+E12-E15 provide checkpoint persistence, same-weight route triangulation, external-family replication, and external state mediation underneath C2-C3. They are not additional headline claims.
 
 Behavioral invariance, probe decodability, generic trajectory causality, and individual layer effects are supporting evidence, not standalone contributions.
 
@@ -48,7 +47,7 @@ See `RELATED_WORK.md` for the live compression audit.
 
 ## Current boundary and next phase
 
-The independent-decision expansion is complete. Under the corrected order-conditional construct, a preregistered per-item association between invariance change and control change is not supported (rho = -0.001, p = 0.997); the paper should claim a stable branch/mode/family-level reorganization, not monotonic item-level coupling.
+The initial independent-decision expansion is complete. Under the corrected order-conditional construct, a preregistered per-item association between invariance change and control change is not supported (rho = -0.001, p = 0.997) and is permanently demoted. The next phase tests the stronger construct-level question on a broad description/history decision set using the frozen prompt-trajectory interventional decomposition in `CAUSAL_FRAMEWORK.md`.
 
 E12 is complete. It establishes persistence over a real OLMo checkpoint axis, not attribution of the original divergence to DPO.
 

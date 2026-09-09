@@ -48,9 +48,28 @@ The aligned behavior/control transition replicates. DeepSeek exceeds Llama-Instr
 
 On the frozen 18-decision subset, opposite-decision pre-answer state substitution is near zero early, becomes reliably donor-directed at layer 14, and reaches +1.222 [0.299, 2.181] at the final layer. This supports an external state-mediation correlate without implying identical layer geometry or effect universality.
 
-### Next phase - paper-level consolidation, not more model accumulation
+### E16 - CPC18 calibration audit and frozen corpus construction
 
-The mechanism now has stimulus breadth, OLMo checkpoint persistence, fixed-weight Qwen triangulation, Llama-ecosystem external replication, and internal state mediation in two families. The next work should consolidate construct-valid metrics and claim language, recompute any exploratory association under the corrected order-conditional metric, and resist adding another model unless it tests a genuinely new boundary.
+Audit all 210 calibration problems before model scoring. Predefine known-risk,
+ambiguity, EV definability, dominance, tie, outcome-complexity, and independent-history
+criteria. If at least 150 independent problems support a clean matched
+description/history intervention, CPC18 becomes the primary breadth corpus;
+otherwise it supplies the description/history subset and Choices13k supplies scale.
+
+### E17 - Description/history control reorganization
+
+On a representative 120-180 problem calibration subset, cross description/history
+prompts with conclusion-stripped natural trajectories. Estimate prompt control,
+trajectory control, and their difference using `CAUSAL_FRAMEWORK.md`. This is the
+next load-bearing test: it distinguishes a general presentation-control
+reorganization from a gain/loss-specific mechanism.
+
+### E18 - Held-out confirmation
+
+Freeze dataset, templates, parser, stripping, exclusions, and statistics before
+accessing the 60 competition problems. Run one confirmatory evaluation. If E17 is
+strong, replicate state mediation on 32-48 preregistered decisions; do not add more
+model families or layer-localization searches.
 
 ## Decision rule
 

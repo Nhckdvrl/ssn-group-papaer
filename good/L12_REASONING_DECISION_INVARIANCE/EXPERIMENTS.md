@@ -185,3 +185,32 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Result:** early-layer shifts are near zero; the interval first excludes zero at layer 14 and remains positive through the final layer. Layer 31 donor shift = **+1.222 [0.299, 2.181]**, positive on **11/18** decisions, donor flip rate **0.556**, and mean patched target margin **-0.611**.
 - **Validity:** none of the 18 selected donor keys belongs to the nine E14 traces for which the terminal-stripping heuristic removed no segment.
 - **Status:** completed. External decision-state mediation is supported, but its unit consistency is weaker than OLMo and no shared layer-location claim is made.
+
+## L12-E16: CPC18 Calibration Audit and Corpus Freeze
+
+- **Question:** can an external risky-choice corpus support a broad, gold-verifiable description/history intervention without synthetic histories or pseudo-replicated scientific units?
+- **Sources:** official 210-problem bird's-eye workbook and Zenodo calibration raw data. Both files are checksum-pinned in `configs/cpc18.json`; the 47 MB raw file remains outside Git.
+- **Frozen inclusion:** known probabilities (`Amb=0`), independent option outcomes (`Corr=0`), exact probability sums, non-tied exact EV, at most 10 outcomes per option, and at least three distinct 20-trial full-feedback histories. Support dominance is retained as a preregistered stratum, not filtered after outcomes.
+- **History rule:** select three distinct real participant histories per problem by the smallest normalized Wasserstein distance between each 20-trial empirical payoff distribution and the published distribution. Selection never uses participant choice, model output, or final answer direction; participant identifiers are not exported.
+- **Unit:** base decision. Histories, orders, and generations are nested nuisance variation.
+- **Gate:** at least 150 eligible independent calibration problems.
+- **Result:** **151/210** problems pass. The flow is 182 known-risk, 171 also independent, 152 after exact-EV ties, and 151 after the three-history requirement. Game 29 is the sole final exclusion because it has only one distinct realized history. The official aggregate block rates reproduce from raw choices to maximum absolute error `4.96e-10`.
+- **Raw/source pointers:** external cache documented by source URL/checksum; committed frozen PII-free corpus `data/cpc18_calibration_v1.jsonl`; audit `data/cpc18_calibration_v1.audit.json`.
+- **Status:** **completed; GO for CPC18 primary breadth.**
+
+## L12-E17: Description/History Causal-Control Generalization
+
+- **Linked claim:** breadth or boundary for L12-C3.
+- **Question:** does the prompt-to-trajectory reallocation found for gain/loss framing generalize to explicit distributions versus experienced payoff histories?
+- **Behavior design:** all 151 E16 decisions, three real histories, two displayed orders, and repeated generations across the frozen OLMo sibling, Qwen same-weight-mode, and Llama/DeepSeek comparisons.
+- **Factorial design:** cross explicit/history prompt presentation with explicit/history-derived conclusion-stripped natural trajectories. Use reasoning-side trajectories as fixed donors within each matched comparison.
+- **Primary estimands:** `Delta_P`, `Delta_R`, and `Delta_R - Delta_P` as frozen in `CAUSAL_FRAMEWORK.md`. Margins are oriented toward the exact-EV option; explicit minus history fixes the contrast direction.
+- **Statistics:** base-decision cluster bootstrap is primary. History, order, and generation remain nested. A mixed-effects model with base-decision random intercept and presentation slope is confirmatory.
+- **Boundary logic:** generalization supports presentation-level causal reorganization; a null or reversed description/history result supports a boundary between value framing and representation uncertainty rather than killing C1-C3.
+- **Status:** behavior execution in progress; factorial not yet scored.
+
+## L12-E18: Untouched CPC18 Competition Confirmation
+
+- **Prerequisite:** freeze E17 templates, parser, history construction, terminal stripping, exclusions, estimands, and statistics before accessing the 60 competition problems.
+- **Design:** one confirmatory run under the frozen E17 contract. No tuning or filtering on competition outcomes.
+- **Status:** not opened; held out by design.

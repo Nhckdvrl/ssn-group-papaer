@@ -73,3 +73,33 @@ E14 compares unmatched Llama-ecosystem post-training outcomes. The estimand is q
 After terminal-answer reparsing, DeepSeek supplies 252 valid matched trajectory pairs across all 36 decisions. The primary E14 control summary filters to those corrected-valid pairs. A construct-validity sensitivity additionally excludes nine pairs whose natural-language commitment was not detected by the frozen stripping heuristic; the cross-model control difference remains positive with a clustered interval excluding zero.
 
 E15 substitutes residual state within DeepSeek only. Its target/donor pairs share base decision, displayed order, and sample-index rule, while frame and gold decision direction differ. No donor text is inserted. This establishes a causal role for the pre-answer state under constructed prefixes, not equivalence of internal layer coordinates across model families.
+
+## 9. CPC18 description/history expansion
+
+E16 uses the official CPC18 calibration split only. The source workbook contains
+the exact finite distributions for 210 base decisions; the Zenodo raw file contains
+510,750 trial rows. Source URLs, byte size, and cryptographic checksums are frozen
+in `configs/cpc18.json`. Large public source files stay in an external cache.
+
+The inclusion contract was fixed before any CPC18 model scoring: known probabilities,
+independent option outcomes, valid probability mass, non-tied exact EV, no more than
+10 outcomes per option, and at least three distinct full-feedback histories. This
+yields 151 problems and passes the preregistered 150-problem gate. Support dominance
+is retained and reported as a stratum because it is a meaningful difficulty
+boundary, not an identification failure.
+
+Each exported history contains both realized and forgone payoffs from trials 6-25.
+Three distinct real histories are selected without participant choice or model data,
+using only normalized Wasserstein distance to the published marginal payoff
+distributions. This reduces accidental sampling noise while preserving genuine
+outcome sequences. No participant identifier leaves the external raw cache.
+
+Exact expected payoff remains the independent gold. Human choices are provenance
+and descriptive context, never answer labels. Description/history consistency is
+computed within displayed order and history first, then averaged within base
+decision. Histories, orders, and generations never inflate the independent sample
+size.
+
+The 60 CPC18 competition problems remain unopened until E17 templates, parser,
+trajectory construction, stripping, exclusions, estimands, and statistical code are
+frozen. They are a one-shot external confirmation rather than development data.
