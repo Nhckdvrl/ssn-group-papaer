@@ -63,9 +63,9 @@ It owns:
 - representation-level intervention on framing effects.
 
 It does **not** automatically own:
-> **how reasoning post-training transforms an established framing-sensitive decision computation across training stages, and whether the resulting behavioral invariance reflects canonicalization or downstream override.**
+> **how reasoning-oriented post-training transforms an established framing-sensitive decision computation across shared-base branches and later stages, and whether the resulting behavioral invariance reflects canonicalization or downstream override.**
 
-That training-transition identity is the key distinction.
+That shared-base training-regime identity is the key distinction.
 
 ---
 
@@ -114,7 +114,7 @@ A broad literature uses:
 No such method is novel by itself.
 
 L12’s novelty must come from:
-> **the training-induced invariance question + controlled training trajectory + decisive mechanism distinction + consequence for interpreting reasoning-model rationality.**
+> **the training-induced invariance question + shared-base controlled branch comparison + decisive mechanism distinction + consequence for interpreting reasoning-model rationality.**
 
 ---
 
