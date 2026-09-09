@@ -16,8 +16,8 @@
 ## Minimal setup
 
 Prefer:
-- one public same-family checkpoint lineage;
-- pre-/post-reasoning-SFT comparison;
+- one public shared-base checkpoint family;
+- common base + matched instruct-SFT / reasoning-SFT sibling branches;
 - 1–3 strong matched decision manipulations from the ACL 2026 parent;
 - enough repeated runs to establish stable choice differences.
 
@@ -33,7 +33,7 @@ No need to run all of them if one gives a clean transition.
 ## First behavioral requirement
 
 Confirm:
-> post-training changes **sensitivity to equivalent presentation**, not merely overall accuracy or answer style.
+> the reasoning-oriented branch changes **sensitivity to equivalent presentation** relative to the common base and appropriate instruct branch, not merely overall accuracy or answer style.
 
 If no usable transition appears, do not jump to mechanistic tooling.
 
@@ -88,8 +88,8 @@ Reconstruct around it.
 ## Pilot kill conditions
 
 Kill/demote if:
-- no reproducible training-stage behavioral transition exists;
-- same-family checkpoint differences are too confounded;
+- no reproducible shared-base branch difference in behavioral invariance exists;
+- shared-base branch differences are too confounded;
 - only probe correlations remain with no path to decisive evidence;
 - the project reduces to another cognitive-bias benchmark.
 
