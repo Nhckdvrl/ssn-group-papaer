@@ -41,8 +41,34 @@ def redundant_consistency(frame):
     return np.asarray(values, dtype=float)
 
 
-def ev_accuracy(frame, variant):
-    part = frame[frame.context_variant == variant]
+def correction_uptake(frame):
+    values = []
+    for prospect in PROSPECTS:
+        cell_deltas = []
+        for framing in ["gain", "loss"]:
+            for order in ["ab", "ba"]:
+                corrected = frame[
+                    (frame.prospect == prospect)
+                    & (frame.context_variant == "correction")
+                    & (frame.frame == framing)
+                    & (frame.order == order)
+                ]
+                redundant = frame[
+                    (frame.prospect == prospect)
+                    & (frame.context_variant == "redundant")
+                    & (frame.frame == framing)
+                    & (frame.order == order)
+                ]
+                target = corrected.expected_underlying.iloc[0]
+                corrected_rate = float((corrected.underlying_choice == target).mean())
+                redundant_rate = float((redundant.underlying_choice == target).mean())
+                cell_deltas.append(corrected_rate - redundant_rate)
+        values.append(np.mean(cell_deltas))
+    return np.asarray(values, dtype=float)
+
+
+def correction_accuracy(frame):
+    part = frame[frame.context_variant == "correction"]
     return part.groupby("prospect").ev_correct.mean().reindex(PROSPECTS).to_numpy(dtype=float)
 
 
@@ -66,48 +92,57 @@ def paired_diff(left, right, seed):
 def main():
     branch_summary = {}
     metrics = {}
+
     for branch in ["instruct_sft", "think_sft"]:
         frame = pd.read_json(OUT / branch / "raw.jsonl", lines=True)
         parent_inv = parent_frame_consistency(frame)
         redundant_inv = redundant_consistency(frame)
-        corrected_acc = ev_accuracy(frame, "correction")
+        uptake = correction_uptake(frame)
+        corrected_acc = correction_accuracy(frame)
 
         metrics[branch] = {
             "redundant": redundant_inv,
-            "corrected": corrected_acc,
+            "uptake": uptake,
         }
         branch_summary[branch] = {
             "n": int(len(frame)),
             "valid_rate": float(frame.strict_valid.mean()),
             "parent_frame_consistency_none": float(parent_inv.mean()),
-            "redundant_context_consistency": float(redundant_inv.mean()),
-            "redundant_context_consistency_ci95": bootstrap_mean(redundant_inv, CONFIG["seed"] + 1),
+            "irrelevant_context_invariance": float(redundant_inv.mean()),
+            "irrelevant_context_invariance_ci95": bootstrap_mean(redundant_inv, CONFIG["seed"] + 1),
+            "relevant_context_uptake": float(uptake.mean()),
+            "relevant_context_uptake_ci95": bootstrap_mean(uptake, CONFIG["seed"] + 2),
             "correction_ev_accuracy": float(corrected_acc.mean()),
-            "correction_ev_accuracy_ci95": bootstrap_mean(corrected_acc, CONFIG["seed"] + 2),
             "per_prospect": {
                 "parent_frame_consistency_none": [float(x) for x in parent_inv],
-                "redundant_context_consistency": [float(x) for x in redundant_inv],
+                "irrelevant_context_invariance": [float(x) for x in redundant_inv],
+                "relevant_context_uptake": [float(x) for x in uptake],
                 "correction_ev_accuracy": [float(x) for x in corrected_acc],
             },
         }
 
     summary = {
-        "design": "L12-E07 matched redundant-vs-decision-relevant context",
+        "design": "L12-E07 semantic-relevance boundary",
         "n_base_prospects": len(PROSPECTS),
+        "headline": {
+            "irrelevant_context": "none vs redundant: behavior should stay the same",
+            "relevant_context": "redundant vs correction: choice probability should move toward the new EV-optimal target",
+        },
         "branches": branch_summary,
         "contrasts": {
-            "think_minus_instruct_redundant_context_consistency": paired_diff(
+            "think_minus_instruct_irrelevant_context_invariance": paired_diff(
                 metrics["think_sft"]["redundant"],
                 metrics["instruct_sft"]["redundant"],
                 CONFIG["seed"] + 10,
             ),
-            "think_minus_instruct_correction_ev_accuracy": paired_diff(
-                metrics["think_sft"]["corrected"],
-                metrics["instruct_sft"]["corrected"],
+            "think_minus_instruct_relevant_context_uptake": paired_diff(
+                metrics["think_sft"]["uptake"],
+                metrics["instruct_sft"]["uptake"],
                 CONFIG["seed"] + 11,
             ),
         },
     }
+
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
 

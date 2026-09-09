@@ -14,11 +14,17 @@ Add a matched final context statement:
 - **redundant:** repeats one probability unchanged;
 - **correction:** same format, but changes that probability enough to flip the correct EV decision.
 
-If Think-SFT ignores the redundant note but follows the correction, that supports selective abstraction.
+The experiment has two load-bearing readouts:
 
-If it ignores both, behavioral invariance is better explained as broader context disengagement.
+> **irrelevant-context invariance:** none → redundant should not move behavior.
 
-If neither pattern holds, reconstruct around the observed boundary rather than adding more tests.
+> **relevant-context uptake:** redundant → correction should move behavior toward the new correct decision.
+
+If Think-SFT is high on both, that supports selective abstraction.
+
+If it is invariant to redundant context but has weak correction uptake, behavioral invariance is better explained as broader context disengagement.
+
+If neither pattern holds, reconstruct around the observed boundary rather than adding tests.
 
 # L12-E08 — Decision-State Causal Substitution
 
@@ -36,12 +42,10 @@ A positive answer supports a constructed semantically selective decision state. 
 
 Do not automatically launch a battery of controls.
 
-Only expand when the E07/E08 result creates a concrete scientific need, such as:
+Expand only when the result creates a concrete scientific need:
 - a small broader decision set to establish the boundary beyond three prospects;
-- a second lineage if the claimed transformation depends on post-training attribution;
-- natural validation if the discovered mechanism predicts a broader behavior.
-
-Those are result-dependent next steps, not preregistered obligations.
+- a second lineage if the claim genuinely becomes about post-training;
+- natural validation if the discovered mechanism predicts broader behavior.
 
 # Main-level shape
 

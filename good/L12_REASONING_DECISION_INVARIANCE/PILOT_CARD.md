@@ -17,17 +17,26 @@ Cross the existing gain/loss and order conditions.
 
 The exact edits are frozen in `configs/boundary.json`. The runner verifies that every correction flips the normative target before generation.
 
-## Core readout
+## Two headline quantities
 
-Report only the quantities needed for the scientific distinction:
+### 1. Irrelevant-context invariance
 
-- **redundant-context consistency**
-- **correction-context EV accuracy**
+Compare **none vs redundant**.
+
+> Does behavior remain the same when the extra context changes no decision fact?
+
+### 2. Relevant-context uptake
+
+Compare **redundant vs correction**.
+
+> How much does the contextual correction move choice probability toward the newly EV-optimal action?
+
+This is the main semantic distinction. Correction EV accuracy is reported only as a readable secondary quantity.
 
 Interpretation:
 
-- high redundant consistency + high correction accuracy → **selective semantic abstraction**
-- high redundant consistency + low correction accuracy → **context flattening / causal disengagement**
+- high irrelevant invariance + high relevant uptake → **selective semantic abstraction**
+- high irrelevant invariance + low relevant uptake → **context flattening / causal disengagement**
 - another stable pattern → reconstruct the explanation around that pattern
 
 Models:
@@ -44,7 +53,7 @@ At a pre-answer point before explicit conclusion text, substitute the matched st
 - redundant-context trajectory
 - correction-context trajectory
 
-Ask one question:
+Ask:
 
 > **Does the decision state carry the relevant contextual update while discarding the redundant one?**
 
