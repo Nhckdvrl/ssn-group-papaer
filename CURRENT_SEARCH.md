@@ -21,7 +21,7 @@ Do not reopen broad topic search unless the user explicitly asks or decisive evi
 Current execution priority:
 
 1. **L10 — From Failure to Action** — **A / PILOT-AUTHORIZED / Rank 1**
-2. **L12 — Reasoning-Induced Invariance** — **A / CONTINUE-PILOT / Rank 2**
+2. **L12 — Reasoning-Induced Invariance / Trajectory Takeover** — **A / CONTINUE-PILOT / Rank 2**
 3. **L08 — Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning** — **HOLD / strong backup / Rank 3**
 
 **L11 is KILL / K181.**  
@@ -29,33 +29,68 @@ Current execution priority:
 
 ---
 
-# Why the priority changed
-
-## L10 — Rank 1
+# Rank 1 — L10
 
 > **Why can an LLM remember that an action failed yet repeat the same action? Where does failure experience stop becoming future action?**
 
-The parent failure/inhibition gap is unusually robust: ACL 2026 ImplicitMemBench evaluates 17 models and reports inhibition 17.6% versus preference 75.0%, with public artifacts. ACL 2026 Fission-GRPO independently reports repetitive invalid tool calls after execution errors.
+The parent failure/inhibition gap is robust and independently corroborated.
 
-Immediate work: **untouched-history stage decomposition → matched stage completion on actual action.**
+Immediate work:
 
-## L12 — Rank 2
+> untouched-history stage decomposition → matched stage completion on actual action.
 
-> **Does reasoning-oriented post-training learn which contextual changes are semantically irrelevant, or does it more broadly disconnect context from decisions?**
+Runnable scaffold:
 
-Own pilot establishes a usable sibling-branch contrast: Instruct-SFT frame consistency ≈ 0.817, Think-SFT ≈ 0.992, difference ≈ +0.175 with CI excluding zero.
+`good/L10_FROM_FAILURE_TO_ACTION/scripts/run_pilot.sh`
 
-Next:
-1. **relevant-vs-irrelevant context boundary**;
-2. then **conclusion-free decision-state causal substitution**.
+---
 
-## L08 — Rank 3
+# Rank 2 — L12
+
+## Current question
+
+> **When reasoning training makes decisions almost invariant to framing/presentation, does the model's own long reasoning trajectory take over causal control of the final answer?**
+
+Established locally:
+
+- Instruct-SFT frame consistency ≈ **0.817**
+- Think-SFT ≈ **0.992**
+- difference ≈ **+0.175**, CI **[0.025, 0.367]**
+- frame identity remains recoverable early/mid;
+- complete natural trace strongly controls final readout;
+- short arithmetic snippets do not explain the large trace effect.
+
+### Next decisive experiment
+
+**L12-E07 — Conclusion-Stripped Trajectory Takeover**
+
+Ask whether natural reasoning still strongly controls A/B readout after removing its terminal explicit choice/conclusion.
+
+Runnable scaffold:
+
+`good/L12_REASONING_DECISION_INVARIANCE/scripts/run_trajectory_takeover.sh`
+
+If E07 succeeds:
+
+→ **L12-E08 — pre-answer decision-state causal substitution**
+
+If E07 collapses:
+
+→ reconstruct around **late self-commitment**; do not add rescue controls.
+
+The older semantic context-boundary scaffold is parked, not a prerequisite.
+
+---
+
+# Rank 3 — L08
 
 Still alive as a strong backup. Its final-readout truncation → teacher-forced vs free-running corridor remains natural, but the parent anomaly is less independently established than L10/L12.
 
-## L11 — KILL / K181
+---
 
-The parent-compatible micro-pilot is unstable across seeds and all prompt-bootstrap intervals cross zero. The surrounding optimization/learning-progress/gradient-geometry literature also crowds the natural why-space. Preserving novelty would require technical compression and another phenomenon gamble.
+# L11 — KILL / K181
+
+The parent-compatible micro-pilot is unstable across seeds and prompt-bootstrap intervals cross zero. The natural why-space is also crowded.
 
 Do not rescue L11.
 
@@ -71,7 +106,7 @@ Do not rescue L11.
 | **L08** | Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning | HOLD / strong backup / Rank 3 | candidates/L08_READOUT_DIMENSION/ |
 | **L09** | RLVR Disagreement: Erased or Suppressed? | SERIOUS | candidates/L09_RLVR_DISAGREEMENT/ |
 | **L10** | From Failure to Action | PILOT-AUTHORIZED / Rank 1 | good/L10_FROM_FAILURE_TO_ACTION/ |
-| **L12** | Reasoning-Induced Invariance | CONTINUE-PILOT / Rank 2 | good/L12_REASONING_DECISION_INVARIANCE/ |
+| **L12** | Reasoning-Induced Invariance / Trajectory Takeover | CONTINUE-PILOT / Rank 2 | good/L12_REASONING_DECISION_INVARIANCE/ |
 
 L11 historical artifacts remain under `good/L11_TASK_GRADIENT_PRESSURE/`, but it is not active.
 
