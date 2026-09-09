@@ -161,8 +161,10 @@ This is not a generic “CoT helps” or “CoT affects answers” paper. Recent
 
 # 8. Scope discipline
 
-Do **not** add semantic-boundary, irrelevant-context, reviewer-defense, or broad model-battery experiments before E07/E08 changes the scientific picture.
+Keep the execution sequence narrow:
 
-Do **not** claim strict one-variable training causality from the two OLMo sibling branches.
+> **E07 trajectory control → E08 trajectory-built decision state → paper-level decision.**
 
-Do **not** promote L12 to approved mainline until the trajectory mechanism survives the decisive causal tests.
+The current OLMo evidence supports a matched reasoning-oriented-vs-instruction-oriented branch contrast, not strict one-variable training causality.
+
+Do not promote L12 to approved mainline until the trajectory mechanism survives the decisive causal tests.
