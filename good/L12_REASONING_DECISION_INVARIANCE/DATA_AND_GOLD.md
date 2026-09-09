@@ -1,170 +1,92 @@
-# L12 — Data, Evidence, and Identification
+# L12 — Data and Identification
 
-**Core principle:** the parent already supplies the behavioral phenomenon. Our evidence must identify *why* reasoning training changes sensitivity to framing/presentation.
+**Core principle:** the parent phenomenon is already established. The next evidence must distinguish **selective semantic abstraction** from **broad context disengagement**.
 
-The exact mechanistic tool is open. The evidence standard is not.
+# 1. Behavioral substrate
 
----
+Use the three published risky-choice prospects already audited from **Mind the (DH) Gap!**.
 
-## 1. Primary behavioral substrate
-
-Use matched risky-decision materials from:
-
-ACL 2026 Outstanding Paper  
-**“Mind the (DH) Gap!”**  
-https://aclanthology.org/2026.acl-long.479/
-
-Useful controlled axes include:
-- gain vs loss framing;
-- description vs experience/history;
+Keep:
+- gain/loss framing;
 - option order;
-- explanation manipulations;
-- equivalent underlying prospects.
+- the exact audited Instruct-SFT / Think-SFT sibling checkpoints.
 
-Do not create a huge new benchmark unless the mechanism requires a narrowly targeted extension.
+Do not build a new large benchmark for this pilot.
 
----
+# 2. E07 unit
 
-## 2. Core unit of analysis
+The unit is one:
 
-The natural unit is a **matched decision set**:
+> **prospect × frame × order**
 
-> same underlying choice structure  
-> + controlled change in representation/interface  
-> → compare behavior and internal computation.
+with three contextual versions of the same displayed options.
 
-Record:
-- exact underlying probabilities/payoffs;
-- surface condition;
-- option order;
-- reasoning/no-reasoning mode;
-- model/checkpoint;
-- generated rationale if any;
-- final choice;
-- probability/logit/log-prob signal where available;
-- internal states required by the chosen mechanism method.
+### none
+No additional note.
 
----
+### redundant
+A short contextual note rechecks one probability and leaves it unchanged.
 
-## 3. Preferred model substrate
+### correction
+The same note structure updates that probability to a frozen value that flips the EV-optimal underlying action.
 
-A shared-base matched-branch design is strongly preferred over unrelated model comparisons.
+Example:
 
-A currently verified OLMo 3 design is:
-- common base: `allenai/Olmo-3-7B`;
-- instruct SFT branch: `allenai/Olmo-3-7B-Instruct-SFT`;
-- reasoning SFT branch: `allenai/Olmo-3-7B-Think-SFT`;
-- optional later DPO/final checkpoints within each branch.
+> Additional context: the probability associated with Option B was rechecked and remains 0.34.
 
-Official model cards list the same `Olmo-3-7B` base for the Instruct and Think SFT branches.
+versus
 
-The correct scientific comparison is **not** to pretend that Instruct-SFT was trained into Think-SFT. Prefer:
-> base→Instruct change vs base→Think change,
+> Additional context: the probability associated with Option B has been updated from 0.34 to 0.36.
 
-and then use within-branch later stages only if they sharpen the mechanism.
+The displayed option lines remain identical across the three context conditions.
 
-The exact checkpoint family may change if a cleaner public matched design becomes available.
+# 3. Gold
 
----
+Gold is the EV-optimal choice under the currently valid facts:
 
-## 4. Identification targets
+- **none / redundant:** original probabilities/payoffs;
+- **correction:** the explicit contextual update supersedes the corresponding original probability.
 
-### Canonicalization claim
-Evidence should show more than behavioral invariance.
+The three frozen updates in `configs/boundary.json` each flip the EV-optimal underlying action in both gain and loss framings.
 
-Possible evidence:
-- cross-frame task-relevant representations become more similar;
-- framing identity becomes less causally influential;
-- patching a frame-specific state no longer shifts choice;
-- a shared decision variable emerges across conditions.
+No LLM judge is needed for the primary outcome.
 
-### Policy-override claim
-Possible evidence:
-- frame identity remains decodable/causally recoverable;
-- decision behavior becomes invariant anyway;
-- manipulating a late choice-related signal restores or changes frame sensitivity.
+# 4. Two load-bearing quantities
 
-### Deliberation claim
-Possible evidence:
-- invariance depends on reasoning mode or generated computation;
-- no-think/direct modes retain stronger framing effects;
-- causal intervention on reasoning states changes the invariance.
+### Irrelevant-context invariance
 
-### Boundary claim
-Possible evidence:
-- arithmetic-transparent decisions show invariance;
-- structurally matched but less directly arithmeticizable decisions do not.
+Compare **none → redundant**.
 
-No single implementation is mandatory.
+> Does behavior remain stable when the extra context changes no decision fact?
 
----
+### Relevant-context uptake
 
-## 5. Critical distinction: decodability ≠ causal use
+Compare **redundant → correction**.
 
-A linear probe that can decode:
-> “gain frame” vs “loss frame”
+> How much does the correction move choice probability toward the newly EV-optimal action?
 
-does not prove the model uses that information for choice.
+Correction EV accuracy is kept only as an easy-to-read secondary number.
 
-Likewise, weak decodability does not prove the information is absent.
+Together these distinguish:
 
-A Main-level mechanism paper should, when feasible, combine:
-- representation evidence;
-- behavioral evidence;
-- a causal or intervention-based test.
+- **selective abstraction:** irrelevant context is ignored, relevant context is used;
+- **context flattening:** irrelevant context is ignored, but relevant context is also underused.
 
-Probe-only work is below the intended paper identity.
+# 5. Model comparison
 
----
+Primary comparison:
 
-## 6. Natural controls
+- `allenai/Olmo-3-7B-Instruct-SFT`
+- `allenai/Olmo-3-7B-Think-SFT`
 
-Recommended controls include:
-- direct answer vs reasoning mode;
-- matched choice with surface-only change;
-- option/order controls;
-- equivalent payoff/probability structure;
-- non-decision arithmetic controls where useful;
-- checkpoints before/after the suspected training transition.
+They are sibling branches from a common base.
 
-Use only controls that sharpen the scientific distinction.
+The current scientific claim concerns the transformation visible across these released branches. Stronger training-causal attribution is not required for E07.
 
----
+# 6. E08
 
-## 7. Boundary-data extensions
+Only if E07 yields a stable semantic-relevance distinction:
 
-If the initial mechanism is clear, a small targeted extension can test whether the effect generalizes beyond easy expected-value arithmetic.
+> use matched redundant/correction contexts to intervene on the pre-answer decision state.
 
-Good extensions preserve:
-- uncertainty;
-- equivalent underlying decision structure;
-- controlled presentation changes.
-
-Avoid drifting into a generic cognitive-bias benchmark.
-
----
-
-## 8. Evidence risks
-
-Watch for:
-- output-format differences masquerading as mechanism;
-- reasoning-length differences;
-- different answer tokenization;
-- probe leakage;
-- unrelated model-family confounds;
-- prompt wording artifacts;
-- generated-CoT faithfulness assumptions;
-- interpreting activation similarity as semantic equivalence without intervention.
-
----
-
-## 9. Data / identification kill conditions
-
-Kill/reconstruct if:
-- the parent behavioral effect does not reproduce in any usable same-family checkpoint comparison;
-- the branch/stage comparison changes too many factors to support the claim;
-- internal measurements cannot distinguish representation from policy use;
-- the entire result reduces to output-format or prompt artifacts;
-- only a generic “reasoning models are less biased” result remains.
-
-A preferred mechanism losing is **not** a kill condition.
+The target is whether that state carries **decision-relevant context** while becoming invariant to **irrelevant context**.

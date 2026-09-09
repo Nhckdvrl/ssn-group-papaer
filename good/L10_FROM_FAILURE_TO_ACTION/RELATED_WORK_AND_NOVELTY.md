@@ -1,112 +1,50 @@
-# L10 — Related Work and Paper-Level Novelty
+# L10 — Related Work and Open Scientific Space
 
-**Freshness:** 2026-09-09  
-**Novelty standard:** full paper identity.
+**Freshness:** 2026-09-09
 
----
+# 1. Established starting point
 
-# 1. ImplicitMemBench — direct parent
+**ImplicitMemBench** (ACL 2026 Best Resource Paper) establishes a large gap between preference adaptation and inhibition across 17 models.
 
-Qin et al., ACL 2026  
-<https://aclanthology.org/2026.acl-long.1301/>
+**Fission-GRPO** (ACL 2026) independently shows a related natural tool-use failure: models can repeat invalid calls after execution errors instead of recovering.
 
-Owns:
-- implicit behavioral adaptation evaluation;
-- Learning/Priming–Interfere–Test;
-- first-attempt scoring;
-- 300 items / 17 models;
-- inhibition 17.6% vs preference 75.0%.
+Together they make the behavioral object real enough to study directly.
 
-L10 cannot claim inhibition is weak, failure adaptation is under-evaluated, or first-action behavior is new.
+# 2. What nearby work mainly asks
 
-It does **not** localize where an experienced failure stops becoming changed action.
+Reflection, mistake notebooks, negative-experience replay, corrective supervision, and learned reflectors largely ask:
 
----
+> **How can we make failure experience useful?**
 
-# 2. Fission-GRPO — natural tool-error corroboration
+They show that failure contains usable information.
 
-Zhang et al., ACL 2026  
-<https://aclanthology.org/2026.acl-long.1880/>
+L10 asks:
 
-Owns:
-- repeated invalid tool calls after execution errors;
-- converting errors into on-policy corrective supervision.
+> **When failure is already available in context, where does the conversion from experience to future action break?**
 
-It does not own a frozen/in-context decomposition of:
-> outcome retention → causal attribution → policy formation → actual action.
+# 3. Open scientific space
 
----
+The distinctive chain is:
 
-# 3. Failure-learning / memory methods
+> outcome retained  
+> → responsible action identified  
+> → replacement policy available  
+> → actual action follows or violates that policy
 
-### Mistake Notebook Learning — Findings of ACL 2026
-<https://aclanthology.org/2026.findings-acl.719/>
+L10's contribution is to locate the missing transition and causally complete it.
 
-Builds structured mistake notes from clustered failures for training-free adaptation.
+The central object is therefore the **experience→action transformation**, not a new memory architecture and not another failure benchmark.
 
-### BenchTrace — 2026
-Studies failure diagnosis/reflection and whether experience becomes avoidance.
+# 4. Negative constraints as one boundary
 
-### Training Language Agents to Learn from Experience — 2026
-Trains reflector models to extract reusable lessons.
+Work on explicit negative constraints matters if the bottleneck turns out to be late behavioral inhibition.
 
-These works own important **ways to make failure useful**. They do not identify which conversion stage is missing in the original model.
+That is one possible explanation of the final transition, not the starting story.
 
----
+# 5. Current novelty judgment
 
-# 4. Explicit negative-constraint neighbor
+The natural question remains open:
 
-**Semantic Gravity Wells: Why Negative Constraints Backfire** studies explicit “do not X” instructions and mechanistic failure modes.
+> **Why can a model remember a failure yet fail to act differently because of it?**
 
-This becomes fatal only if L10 collapses to prohibition following.
-
-L10 begins earlier:
-> action happened → environment returned a negative outcome → model must convert that experience into future behavior.
-
-“Do not B” vs “use A” is a boundary/control, not the paper identity.
-
----
-
-# 5. What can still be ours
-
-The paper must own:
-
-1. externally established failure/inhibition gap;
-2. one fixed experience history;
-3. independent forks for outcome memory, attribution, policy, and action;
-4. matched completion of candidate stages;
-5. causal change in actual action;
-6. natural interactive validation;
-7. implication for what experience memory must represent.
-
-No located paper owns this full chain.
-
----
-
-# 6. Reviewer compression
-
-### “ImplicitMemBench + probes”
-Wins if we only ask diagnostics or decode hidden states.
-
-### “BenchTrace with a positive control”
-Wins if the paper becomes another failure-diagnosis benchmark.
-
-### “Fission-GRPO without training”
-Wins if we only show repeated calls and a prompting fix.
-
-### “Semantic Gravity Wells in agents”
-Wins if the mechanism is only explicit negative language.
-
-The defense is the **untouched-history causal stage-completion design**, not wording.
-
----
-
-# 7. Why-space verdict
-
-**PASS.**
-
-After the failure-memory/reflection/corrective-training ecosystem is laid out, the natural question remains broad:
-
-> **Why does available failure experience fail to become changed action, and which transformation is missing?**
-
-Refresh before mainline promotion and whenever the load-bearing explanation changes.
+Refresh the literature if the winning stage changes the central explanation.
