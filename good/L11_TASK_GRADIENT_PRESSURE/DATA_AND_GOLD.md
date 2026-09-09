@@ -77,9 +77,9 @@ The parent quantity and starting anomaly.
 A local change in task performance/reward over nearby training.
 
 ### Per-example score sensitivity
-[
+$
 \|\nabla_\theta \log \pi_\theta(y|x)\|
-]
+$
 
 ### Within-response alignment/cancellation
 How strongly token/chunk updates reinforce or cancel.
