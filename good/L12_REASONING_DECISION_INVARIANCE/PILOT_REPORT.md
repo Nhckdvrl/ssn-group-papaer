@@ -1,105 +1,156 @@
-# L12 Mechanism Pilot Report
+# L12 Full Study Report
 
 **Date:** 2026-09-10
 **Verdict:** **GO**
 
 ## A. Current RQ
 
-> Why does reasoning-oriented post-training produce presentation-invariant decisions, and is that transition accompanied by a shift from prompt control to trajectory-mediated decision formation?
+> How does reasoning-oriented post-training change the causal formation of
+> presentation-sensitive decisions, and is behavioral invariance a necessary
+> consequence of that change?
 
 ## B. What prior work owns
 
-*Mind the (DH) Gap!* owns reasoning-model invariance in risky choice. Recent work owns generic reasoning-trace causality, iterative answer construction, and reasoning-induced latent policy states. We cannot claim “reasoning models are more rational,” “CoT controls answers,” or “reasoning fine-tuning creates latent states.”
+*Mind the (DH) Gap!* owns broad reasoning-model invariance in risky choice.
+Recent work owns generic trace injection, iterative answer construction,
+distributed CoT patching, cue-dependent CoT faithfulness, and reasoning-induced
+latent policy states. L12 cannot claim merely that reasoning models are more
+rational, CoT affects answers, decisions emerge over tokens, or reasoning
+fine-tuning reorganizes latent dynamics.
 
-## C. What we tested
+## C. What we actually tested
 
-- **E01-E03:** parent/stimulus audit, sibling behavioral comparison, and frame-recoverability diagnostic.
-- **E05-E06:** natural-trajectory causal readout and short arithmetic control.
-- **E07:** full, terminal-stripped, opposite-stripped, and empty trajectory readout.
-- **E08:** matched opposite-decision pre-answer state substitution across all layers.
-- **E09:** sibling-branch 2 x 2 prompt-frame by trajectory-frame causal-control factorial.
-- **E10-E11:** 36-decision behavioral/control breadth and 18-decision state-substitution replication.
-- **E12:** OLMo Instruct-DPO versus Think-DPO continuation-axis control validation.
-- **E13:** Qwen3-8B same-weight thinking versus non-thinking behavior and native-route control factorial.
-- **E14:** Llama-Instruct versus DeepSeek-R1-Distill behavior and prompt-by-trajectory external replication.
-- **E15:** DeepSeek pre-answer state substitution on the frozen 18-decision subset.
+- **E01-E03:** parent/stimulus audit, shared-base OLMo branch behavior, and a
+  noncausal frame-information diagnostic.
+- **E05-E09:** natural-trajectory interventions, terminal stripping, all-layer
+  pre-answer state substitution, and prompt-by-trajectory causal decomposition.
+- **E10-E15:** 36-decision breadth, frozen state replication, OLMo DPO
+  persistence, Qwen same-weight route comparison, and Llama/DeepSeek external
+  triangulation.
+- **E16-E17:** 151 independently collected CPC18 calibration decisions, exact
+  distribution versus three real 20-trial histories, six regimes, and the frozen
+  causal factorial.
+- **E18:** one-shot confirmation on the untouched CPC18 competition set under a
+  contract committed before source access.
+- **E19:** symmetric opposite-choice state substitution over 48 frozen natural
+  CPC18 decisions and all 32 OLMo layers.
+
+The base decision is always the scientific unit. Histories, displayed order,
+samples, factorial cells, patch directions, and layers are nested observations.
 
 ## D. Results
 
-Order-conditional behavioral frame consistency is **0.750** for Instruct-SFT and **0.992** for Think-SFT; difference **+0.242 [0.108, 0.417]**.
+### Mechanism discovery
 
-E07, 46 matched target rows:
+- Terminal-stripped own trajectories exceed empty by **+2.624 [2.008, 2.988]**
+  and opposite-stripped trajectories by **+4.863 [3.469, 5.773]**. Restoring the
+  terminal portion adds **+7.047 [6.746, 7.402]**.
+- OLMo pre-answer state transfer is negligible early, reverses the mean target
+  margin at layer 17, and reaches **+5.090 [3.766, 5.977]** at layer 31.
+- Across 36 independent decisions, Think-minus-Instruct trajectory-relative
+  control is **+0.399 [0.337, 0.464]**, positive on 36/36 decisions. The
+  preregistered 18-decision state replication reaches **+4.868 [4.056, 5.813]**.
+- The OLMo DPO contrast persists at **+0.472 [0.401, 0.555]**. Qwen's same-weight
+  thinking route exceeds non-thinking by **+0.604 [0.550, 0.661]**.
 
-| Contrast | Mean margin effect | Prospect-bootstrap 95% CI |
+### Natural presentation breadth
+
+On 151 CPC18 calibration decisions:
+
+| Axis | Behavior consistency difference | `Delta_R - Delta_P` difference |
 |---|---:|---:|
-| own stripped - empty | +2.624 | [2.008, 2.988] |
-| own stripped - opposite stripped | +4.863 | [3.469, 5.773] |
-| own full - own stripped | +7.047 | [6.746, 7.402] |
+| OLMo Think - Instruct | +0.225 [0.177, 0.271] | +0.202 [0.162, 0.244] |
+| Qwen thinking - non-thinking | +0.276 [0.223, 0.327] | +0.163 [0.121, 0.205] |
+| DeepSeek - Llama | -0.225 [-0.264, -0.188] | +0.019 [-0.005, 0.043] |
 
-E08: donor transfer is near zero through layer 13, ramps at 14-16, reverses the mean target margin at layer 17, and remains strong. At layer 31, donor-directed shift is **+5.090 [3.766, 5.977]** and donor-choice flip rate is **0.804**.
+Prompt-control differences include zero on both controlled axes. Their positive
+control contrasts come from stronger trajectory control. Llama's 0.970
+presentation consistency coexists with chance-level exact-EV choice (0.502
+explicit, 0.499 history), demonstrating that invariance is not rationality.
 
-E09:
+### Preregistered competition confirmation
 
-| Quantity | Mean probability effect | 95% CI |
+Forty-four of 60 untouched problems pass unchanged inclusion criteria, exceeding
+the frozen gate of 40:
+
+| Axis | Behavior consistency difference | `Delta_R - Delta_P` difference |
 |---|---:|---:|
-| Think trajectory control | +0.586 | [0.278, 0.857] |
-| Instruct trajectory control | +0.012 | [-0.324, 0.393] |
-| Think - Instruct trajectory control | +0.575 | [0.037, 1.055] |
-| Branch difference in trajectory-minus-prompt control | +0.569 | [0.026, 1.062] |
+| OLMo Think - Instruct | -0.013 [-0.095, 0.065] | **+0.097 [0.002, 0.180]** |
+| Qwen thinking - non-thinking | **+0.163 [0.051, 0.268]** | **+0.219 [0.152, 0.288]** |
 
-E10 adds 36 independent decisions:
+The preregistered primary causal-route gate passes on both axes. The supporting
+behavioral hypothesis passes for Qwen and fails for OLMo. In E19, natural CPC18
+state substitution first reverses mean margin at layer 18 and reaches **+7.094
+[5.914, 8.276]**, positive on 45/48 decisions with 0.823 donor flips.
 
-- Instruct-SFT frame consistency: **0.674 [0.618, 0.729]**.
-- Think-SFT frame consistency: **0.977 [0.960, 0.993]** on 35 analyzable decisions.
-- Think-minus-Instruct difference: **+0.299 [0.239, 0.357]**; worst/best missing-unit bounds **[0.277, 0.304]**.
-- Think-minus-Instruct trajectory-minus-prompt control: **+0.399 [0.337, 0.464]**, positive on **36/36** decisions.
-- Corrected exploratory item-level behavior/control association: **rho = -0.001, p = 0.997**; no monotonic per-item claim.
-
-E11 repeats state substitution on 18 preregistered stratified decisions. The mean margin again reverses at layer 17; layer-31 donor shift is **+4.868 [4.056, 5.813]**, positive on **18/18** decisions.
-
-E12 preserves the OLMo contrast at DPO checkpoints. Think-DPO minus Instruct-DPO trajectory-minus-prompt control is **+0.472 [0.401, 0.555]**, positive on **36/36** decisions. The DPO branch difference exceeds the frozen SFT difference by a secondary **+0.073 [0.016, 0.133]**.
-
-E13 fixes Qwen3-8B weights and changes the official reasoning route. Frame consistency is **1.000 [1.000, 1.000]** in thinking mode versus **0.160 [0.087, 0.240]** in non-thinking mode, a matched difference of **+0.836 [0.757, 0.911]** on 35 analyzable units. Thinking-minus-non-thinking trajectory-minus-prompt control is **+0.604 [0.550, 0.661]**, positive on **36/36** decisions.
-
-E14 externally replicates the aligned transition. DeepSeek exceeds Llama-Instruct in frame consistency by **+0.947 [0.913, 0.976]** and in trajectory-minus-prompt control by **+0.067 [0.037, 0.099]**. Excluding nine trace pairs for which the stripping heuristic removed no terminal segment leaves the control difference at **+0.057 [0.027, 0.089]**.
-
-E15 validates internal mediation within DeepSeek. The donor shift is near zero early, becomes reliably positive from layer 14, and reaches **+1.222 [0.299, 2.181]** at layer 31. The selected E15 traces do not include the nine stripping exceptions.
-
-Raw and summarized results are in `results/trajectory_takeover_seed43/`, `results/state_substitution_seed43/`, `results/control_reorganization_seed43/`, `results/breadth_seed71/`, `results/breadth_state_seed73/`, `results/checkpoint_validation_seed79/`, `results/qwen_mode_seed83/`, `results/llama_external_seed89/`, and `results/deepseek_state_seed97/`. Large full reasoning-generation files remain local and ignored; compact summaries and regeneration code are tracked.
+Raw files are local and ignored. Compact results are in
+`results/cpc18_replication_summary.json`, the two `cpc18_*_seed*` directories,
+and the earlier experiment directories listed in `EXPERIMENTS.md`.
 
 ## E. Interpretation
 
-The best current answer is **progressive trajectory construction with late consolidation and causal-control reorganization**. Across OLMo sibling/checkpoint axes, fixed-weight Qwen routes, and the Llama/DeepSeek ecosystem, increased presentation invariance is accompanied by stronger trajectory-relative control; OLMo and DeepSeek also show late state mediation.
+The supported mechanism is **progressive trajectory construction, late
+pre-answer state mediation, and causal-control reorganization**. Reasoning-oriented
+computation consistently gives self-generated trajectories more causal control
+over final choices. The untouched OLMo result falsifies the stronger, tempting
+account that this route shift is by itself sufficient for behavioral invariance.
 
-This strengthens distributed takeover, decision-state mediation, and causal-control reorganization. It weakens pure frame erasure, arithmetic-snippet, and terminal-only accounts.
+The scientific answer is therefore two-level: reasoning training changes *what
+computational route controls the decision*; presentation invariance occurs only
+contingently, rather than as a defining property of that route change.
 
-## F. Data and identification validity
+## F. Data / Identification Validity
 
-Trajectory stripping removed a terminal conclusion from all 47 valid traces, left no decision markers, produced no empty traces, and retained 48.1% of characters on average. E08 transfers hidden state without donor text. E09 independently crosses prompt and trajectory frames and uses identical donor text across branches.
+- CPC18 contributes real human experimental histories, exact model-independent
+  EV gold, and independent base problems rather than synthetic worlds.
+- The competition contract was committed as `9e4a532` before source access.
+- The stricter `cpc18_terminal_commitment_v3` parser was frozen before heldout
+  access and prevents prompt restatements from masquerading as commitments.
+- Every raw row, four-cell factorial, summary count, byte count, and SHA-256
+  passes `scripts/validate_cpc18_execution.py` on both splits.
+- Base-decision bootstrap is primary. Calibration MixedLM fits did not converge;
+  heldout fits have boundary/Hessian warnings. Neither supports the main claim.
+- OLMo is a sibling-branch association, Qwen compounds native route with channel
+  placement, and Llama/DeepSeek is unmatched. None is presented as an isolated
+  one-step training treatment.
 
-The main mechanism now has 36-unit control breadth, 18-unit state-substitution breadth, a documented OLMo checkpoint continuation, same-weight Qwen evidence, and Llama-ecosystem external replication. Native answer-transition formats differ across OLMo siblings, and released sibling branches do not isolate one training operation. In Qwen, the official routes place the same stripped text in different native channels. In E14, models and post-training pipelines are unmatched. These prevent pure one-variable training attribution.
+## G. Novelty After Seeing the Result
 
-## G. Novelty after seeing the result
+The strongest compression is:
 
-The closest compression is:
+> Mind the DH Gap + Persistent Latent Policy States + Sequential Activation
+> Patching / FACE-Eval.
 
-> Mind the DH Gap + iterative/causal CoT + persistent latent policy states.
+It does not own the full identity: an established invariance puzzle; natural,
+terminal-stripped trajectory construction; text-free state mediation; frozen
+prompt-by-trajectory intervention under sibling and same-weight comparisons; a
+qualitatively different presentation family; and an untouched confirmation that
+separates control-route change from behavioral invariance. Fresh audit details
+are in `RELATED_WORK.md`.
 
-The paper survives because E09-E13 link the behavioral transition to a direct reallocation between prompt and trajectory control, then show checkpoint persistence and complementary same-weight family breadth. E14-E15 externally replicate the aligned transition and internal mediation. Generic latent-state or CoT-causality claims are removed from our novelty claim.
+## H. ACL / EMNLP / NAACL Main Alignment
 
-## H. ACL / EMNLP / NAACL Main alignment
-
-- **RQ scale:** strong and natural.
-- **Evidence strength:** coherent causal chain, independent-decision replication, checkpoint persistence, same-weight family evidence, and external state mediation.
-- **Mechanism depth:** now credible; E07, E08, and E09 advance one explanation rather than accumulating probes.
-- **Novelty:** viable but narrowed by 2026 latent-policy-state work.
-- **Consequence:** explains a cross-family invariance transition as a change in how final decisions are causally formed.
-- **Weakest dimension:** exact training attribution remains intentionally bounded, and the Qwen comparison compounds mode with native channel/position.
+- **RQ scale:** natural and consequential; it reinterprets a 2026 Outstanding
+  Paper phenomenon rather than introducing a local probe question.
+- **Evidence:** correlational constraint, textual intervention, hidden-state
+  intervention, controlled axes, 151-problem breadth, and heldout confirmation.
+- **Mechanism depth:** C1-C3 form one causal chain rather than a layer catalogue.
+- **Novelty:** the full paper identity survives the September 2026 audit.
+- **Consequence:** reasoning can relocate sensitivity instead of eliminating it;
+  behavioral invariance and rationality must not be inferred from route alone.
+- **Weakest dimension:** no available checkpoint pair isolates a single training
+  operation, so the training claim remains an association across complementary
+  identification strategies.
 
 ## I. Verdict
 
-**GO.** C1-C3 survive dozens of independent decisions, a preregistered state-replication subset, and the OLMo DPO continuation. Qwen adds fixed-weight triangulation; DeepSeek/Llama supplies external control-route replication; DeepSeek state substitution supports external internal-state mediation.
+**GO.** The preregistered primary confirmation passed, the internal carrier
+replicated on natural stimuli, and the heterogeneous behavior result improved the
+scientific interpretation instead of requiring a rescue analysis.
 
-## J. Next smallest decisive experiment
+## J. Next Smallest Decisive Experiment
 
-Test whether C3 generalizes from gain/loss framing to description/history presentation on the frozen CPC18 calibration set, then confirm once on the untouched competition split. No additional model family or exploratory per-item association is justified.
+No further experiment is currently justified. The planned mechanism, breadth,
+boundary, and confirmation chain is complete. The next decisive operation is a
+paper-level robustness review: draft the manuscript around C1-C3 and add data only
+if that draft exposes a load-bearing identification gap.

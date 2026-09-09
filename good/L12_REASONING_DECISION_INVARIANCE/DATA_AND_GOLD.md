@@ -101,9 +101,10 @@ computed within displayed order and history first, then averaged within base
 decision. Histories, orders, and generations never inflate the independent sample
 size.
 
-The 60 CPC18 competition problems remain unopened until E17 templates, parser,
-trajectory construction, stripping, exclusions, estimands, and statistical code are
-frozen. They are a one-shot external confirmation rather than development data.
+The E18 contract was committed as `9e4a532` before the 60 CPC18 competition
+problems were opened. Under the unchanged rules, 44/60 problems pass the frozen
+gate of 40. They were scored once as external confirmation and were never used to
+revise prompts, parsing, trajectory construction, exclusions, or estimands.
 
 The calibration behavior run contains 3 samples in every frozen cell for all six
 regimes. Terminal-answer parser version `cpc18_terminal_v2` leaves validity between
@@ -114,3 +115,4 @@ connector "so ... A" as commitments. Version
 the decision verb or a tightly adjacent conclusion label. Positive commitment and
 noncommitment controls are executable in `scripts/test_cpc18_parser.py`; all raw
 reasoning generations were reparsed uniformly before E17 factorial scoring.
+The same parser and stripping versions were then applied unchanged to E18.

@@ -79,10 +79,15 @@ separately to expose a genuine boundary rather than average it away.
 ## Claim mapping
 
 - **C1, progressive trajectory construction:** E05-E07.
-- **C2, pre-answer state mediation:** E08/E11, with E15 as external triangulation.
+- **C2, pre-answer state mediation:** E08/E11/E19, with E15 as external triangulation.
 - **C3, causal-control reorganization:** E09/E10, with E12-E14 as checkpoint,
   same-weight-route, and external-family triangulation. E16-E18 test whether C3
-  survives a broad description/history manipulation.
+  survives a broad description/history manipulation and untouched confirmation.
+
+E18 shows that causal-route reorganization and behavioral invariance must remain
+separate outcomes: the former confirms on both controlled axes, while the latter
+confirms only for Qwen. `Delta_control` therefore measures route allocation, not
+invariance or rationality itself.
 
 The exploratory item-level correlation between behavioral change and control change
 is permanently demoted. Its null estimate is retained as a reported limitation and

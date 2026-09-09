@@ -230,7 +230,7 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   MixedLM failed to converge for all three pairs. Coefficients remain recorded
   but are not interpreted; the preregistered base-decision cluster bootstrap is
   primary.
-- **Status:** **completed; GO for E18 and E19.**
+- **Status:** **completed; advanced to and confirmed by E18, with E19 mediation.**
 
 ## L12-E18: Untouched CPC18 Competition Confirmation
 
@@ -252,7 +252,27 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   was validated against all 420 calibration option distributions with maximum
   absolute cell error `3.75e-8`; selected histories have no payoff-support
   violations.
-- **Status:** data gate passed; one-shot generation in progress.
+- **Behavior result:** OLMo Think-SFT minus Instruct-SFT presentation
+  consistency is **-0.013 [-0.095, 0.065]** and its invalid-assignment bounds
+  are `[-0.155, 0.034]`; the supporting OLMo behavioral hypothesis does not
+  replicate. Qwen thinking minus non-thinking is **+0.163 [0.051, 0.268]**
+  with invalid-assignment bounds `[0.042, 0.217]`; the Qwen behavioral
+  hypothesis replicates.
+- **Primary causal result:** OLMo Think-SFT minus Instruct-SFT
+  `Delta_R - Delta_P` is **+0.097 [0.002, 0.180]** over 44 base decisions.
+  Qwen thinking minus non-thinking is **+0.219 [0.152, 0.288]** over 43 base
+  decisions. Prompt-control differences include zero for both axes; the
+  positive differences arise from trajectory control: OLMo **+0.104 [0.024,
+  0.182]**, Qwen **+0.215 [0.150, 0.281]**.
+- **Statistical sensitivity:** both heldout MixedLM fits returned convergence,
+  but boundary/singular-Hessian warnings make them sensitivity checks only.
+  The preregistered base-decision bootstrap remains primary.
+- **Execution validity:** every behavior row, factorial cell, summary count,
+  byte count, and raw SHA-256 passes `scripts/validate_cpc18_execution.py`;
+  see `results/cpc18_competition_seed137/execution_audit.json`.
+- **Status:** **completed; preregistered primary cross-axis gate passed.** The
+  route result confirms on both controlled axes, while behavioral invariance
+  confirms only for Qwen.
 
 ## L12-E19: Broad Description/History State Mediation
 

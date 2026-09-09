@@ -14,7 +14,7 @@
 
 The current interpretation is **progressive construction plus late consolidation**: the natural trajectory establishes a decision direction before explicit commitment, a late state carries that direction into decoding, and this route is substantially stronger in the reasoning-oriented branch.
 
-## Next phase: breadth that tests the explanation
+## Completed evidence program
 
 ### E10 - Independent-decision behavioral and control bridge - completed
 
@@ -48,28 +48,36 @@ The aligned behavior/control transition replicates. DeepSeek exceeds Llama-Instr
 
 On the frozen 18-decision subset, opposite-decision pre-answer state substitution is near zero early, becomes reliably donor-directed at layer 14, and reaches +1.222 [0.299, 2.181] at the final layer. This supports an external state-mediation correlate without implying identical layer geometry or effect universality.
 
-### E16 - CPC18 calibration audit and frozen corpus construction
+### E16 - CPC18 calibration audit and frozen corpus construction - completed
 
-Audit all 210 calibration problems before model scoring. Predefine known-risk,
-ambiguity, EV definability, dominance, tie, outcome-complexity, and independent-history
-criteria. If at least 150 independent problems support a clean matched
-description/history intervention, CPC18 becomes the primary breadth corpus;
-otherwise it supplies the description/history subset and Choices13k supplies scale.
+The frozen audit retained 151/210 independent known-risk problems, passing the
+gate of 150. Each has exact-EV gold and three real 20-trial histories; no human
+identifier is exported. CPC18 therefore supplies both scale and a qualitatively
+different presentation family, and Choices13k is not needed to rescue sample size.
 
-### E17 - Description/history control reorganization
+### E17 - Description/history control reorganization - completed
 
-On a representative 120-180 problem calibration subset, cross description/history
-prompts with conclusion-stripped natural trajectories. Estimate prompt control,
-trajectory control, and their difference using `CAUSAL_FRAMEWORK.md`. This is the
-next load-bearing test: it distinguishes a general presentation-control
-reorganization from a gain/loss-specific mechanism.
+Across 151 calibration problems, OLMo and Qwen show trajectory-relative control
+differences of +0.202 [0.162, 0.244] and +0.163 [0.121, 0.205]. The unmatched
+Llama/DeepSeek axis is null, +0.019 [-0.005, 0.043], and its behavioral reversal
+exposes chance-level invariance as a boundary.
 
-### E18 - Held-out confirmation
+### E18 - Held-out confirmation - completed
 
-Freeze dataset, templates, parser, stripping, exclusions, and statistics before
-accessing the 60 competition problems. Run one confirmatory evaluation. If E17 is
-strong, replicate state mediation on 32-48 preregistered decisions; do not add more
-model families or layer-localization searches.
+The full contract was committed before source access. Forty-four of 60 competition
+problems passed unchanged inclusion criteria. The preregistered control gate passes
+for OLMo, +0.097 [0.002, 0.180], and Qwen, +0.219 [0.152, 0.288]. Qwen's supporting
+behavioral effect confirms; OLMo's does not. E19 separately confirms state mediation
+on 48 frozen calibration decisions.
+
+## Stopping rule reached
+
+The mechanism program has phenomenon, competing-account constraints, distributed
+trajectory evidence, internal mediation, matched causal-control comparisons,
+natural-stimulus breadth, and an untouched confirmation split. No additional model
+family, token/head localization, or training method is scientifically licensed by
+the current result. The next work product is the manuscript and robustness review,
+not another exploratory experiment.
 
 ## Decision rule
 

@@ -2,7 +2,7 @@
 
 ## Trajectory Takeover
 
-**Status:** **GO / MECHANISM, STIMULUS, AND COMPLEMENTARY MODEL BREADTH SUPPORTED**
+**Status:** **GO / PREREGISTERED MECHANISM STUDY COMPLETE**
 **Target:** NAACL Main, continuously calibrated to ACL/EMNLP Main
 **Last audited:** 2026-09-10
 
@@ -42,12 +42,22 @@ The discovery pilot supports **progressive construction plus late consolidation*
     choices, pre-answer state substitution again has a sustained late causal
     profile: first mean margin reversal at layer 18 and final donor shift
     **+7.094 [5.914, 8.276]**, positive on 45/48 decisions.
+17. On the untouched CPC18 competition split, the preregistered primary gate
+    passes independently for both controlled axes: OLMo Think-minus-Instruct
+    `Delta_R - Delta_P` is **+0.097 [0.002, 0.180]** and Qwen
+    thinking-minus-non-thinking is **+0.219 [0.152, 0.288]**.
+18. The supporting behavioral result is heterogeneous: Qwen's heldout
+    presentation-consistency change is **+0.163 [0.051, 0.268]**, while OLMo's
+    is **-0.013 [-0.095, 0.065]**. Causal-route reorganization is therefore
+    more stable than, and not sufficient by itself for, behavioral invariance.
 
 ## Claim architecture
 
 - **C1 - Progressive trajectory construction:** reasoning before the terminal commitment already carries decision direction, with terminal amplification.
 - **C2 - Trajectory-built decision state:** a pre-answer internal state causally transfers that direction.
-- **C3 - Causal-control reorganization:** reasoning-associated invariance comes with less presentation-relative and more trajectory-relative control.
+- **C3 - Causal-control reorganization:** reasoning-oriented computation shifts
+  control toward trajectories; whether this yields behavioral invariance depends
+  on the decisions those trajectories construct.
 
 E12-E15 provide checkpoint persistence, same-weight route triangulation, external-family replication, and external state mediation underneath C2-C3. They are not additional headline claims.
 
@@ -61,7 +71,7 @@ Recent work already owns the parent behavioral phenomenon, iterative CoT computa
 
 See `RELATED_WORK.md` for the live compression audit.
 
-## Current boundary and next phase
+## Final study boundary
 
 The independent-decision and natural description/history expansions are complete.
 Under the corrected order-conditional construct, a preregistered per-item
@@ -76,12 +86,19 @@ E13 is also complete. Qwen3 supplies a complementary identification because weig
 
 E14-E15 are complete. The Llama/DeepSeek axis replicates the aligned increase in presentation invariance and trajectory-relative control, then verifies late pre-answer state mediation within DeepSeek. This is external replication rather than training attribution because the pair is unmatched.
 
-The current paper answer is that reasoning-associated computation can reorganize
+The current paper answer is that reasoning-oriented computation reorganizes
 decision formation toward a progressively constructed trajectory and late decision
 state. This is not merely an OLMo-local result: it survives a same-weight Qwen mode
-contrast and a new natural presentation family. The Llama boundary prevents an
-unqualified universal claim and shows why the paper must jointly measure behavior,
-EV alignment, and causal route rather than calling any invariance "rationality."
+contrast, a qualitatively different presentation family, and an untouched
+competition split. The OLMo heldout behavior result shows that the route change is
+not sufficient for invariance, while the Llama boundary shows that invariance can
+also reflect stable chance-level choice. The paper must therefore measure behavior,
+EV alignment, and causal route jointly rather than call any invariance
+"rationality."
+
+The planned evidence chain is complete. Further model families, layer searches,
+or post-hoc item correlations are not justified unless manuscript review exposes a
+load-bearing identification gap.
 
 The primary unit is always the base decision. Repeated traces and patch layers do not count as independent evidence.
 
@@ -91,6 +108,10 @@ The primary unit is always the base decision. Repeated traces and patch layers d
 - Claim ledger: `CLAIMS.md`
 - Identification: `DATA_AND_GOLD.md`
 - Current report: `PILOT_REPORT.md`
+- Paper skeleton: `PAPER_OUTLINE.md`
+- Calibration/confirmation synthesis: `results/cpc18_replication_summary.json`
+- Raw execution audits: `results/cpc18_calibration_seed121/execution_audit.json`,
+  `results/cpc18_competition_seed137/execution_audit.json`
 - Environment: `ENVIRONMENT.md`
 - E07: `scripts/run_trajectory_takeover.sh`
 - E08: `scripts/run_state_substitution.sh`

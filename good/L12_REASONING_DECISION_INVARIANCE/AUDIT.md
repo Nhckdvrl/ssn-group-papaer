@@ -133,6 +133,15 @@ Both exact safetensors snapshots were subsequently cached outside the repository
   independence, non-tied-EV, complexity, and three-history criteria, exceeding
   the frozen gate of 40. No selected history contains a payoff outside the
   reconstructed support, and no participant identifier is exported.
+- Each of four confirmatory regimes has exactly 1,056 behavior rows. OLMo has
+  304 strict trajectory units over all 44 problems and Qwen has 530 over 43;
+  every unit contains exactly four prompt-by-trajectory cells in both regimes.
+- The OLMo and Qwen primary control contrasts both pass the frozen decision rule.
+  OLMo's supporting behavioral hypothesis does not pass and was not rescued by
+  filtering, parser changes, or alternative metrics.
+- `scripts/validate_cpc18_execution.py` independently checks row keys, expected
+  nested counts, complete factorials, summary counts, and every raw manifest
+  hash. Both calibration and competition audits report `PASS` with no failures.
 
 ## Broad State-Mediation Audit
 
