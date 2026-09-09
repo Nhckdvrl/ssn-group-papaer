@@ -17,8 +17,6 @@ Supporting files:
 - **candidates/README.md** — serious-candidate portfolio.
 - **good/README.md** — pilot-authorized registry.
 
-The old standalone **CANDIDATE_CARD.md** and **TOP_CONFERENCE_ALIGNMENT.md** have been retired: their useful content is now integrated directly into the authoritative workflows.
-
 ---
 
 # Current state — 2026-09-09
