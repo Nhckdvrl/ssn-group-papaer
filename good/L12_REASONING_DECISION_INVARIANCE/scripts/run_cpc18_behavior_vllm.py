@@ -26,9 +26,13 @@ def main():
     parser.add_argument("--regime", required=True)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--result-dir")
+    parser.add_argument("--shard-index", type=int, default=0)
+    parser.add_argument("--num-shards", type=int, default=1)
     args = parser.parse_args()
     spec = next(item for item in CONFIG["regimes"] if item["name"] == args.regime)
-    problems = load_problems(args.limit)
+    if not 0 <= args.shard_index < args.num_shards:
+        raise ValueError("shard-index must be in [0, num-shards)")
+    problems = load_problems(args.limit)[args.shard_index::args.num_shards]
     tokenizer = AutoTokenizer.from_pretrained(
         spec["id"], revision=spec["revision"], local_files_only=True
     )
@@ -72,7 +76,11 @@ def main():
     result_dir = Path(args.result_dir) if args.result_dir else ROOT / CONFIG["result_dir"]
     raw_dir = result_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
-    with (raw_dir / f"{args.regime}.jsonl").open("w") as handle:
+    suffix = (
+        "" if args.num_shards == 1
+        else f".shard{args.shard_index}of{args.num_shards}"
+    )
+    with (raw_dir / f"{args.regime}{suffix}.jsonl").open("w") as handle:
         for condition, rendered, request in zip(conditions, prompts, requests):
             problem, presentation, order, history = condition
             for sample_index, completion in enumerate(request.outputs):
@@ -107,11 +115,13 @@ def main():
                     "outcome_complexity": problem["outcome_complexity"],
                     "relative_ev_gap": problem["relative_ev_gap"],
                 }) + "\n")
-    (result_dir / f"{args.regime}.model.json").write_text(json.dumps({
+    (result_dir / f"{args.regime}{suffix}.model.json").write_text(json.dumps({
         **spec,
         "backend": "vllm",
         "sampling_seed": CONFIG["seed"] + CONFIG["regimes"].index(spec),
         "n_problems": len(problems),
+        "shard_index": args.shard_index,
+        "num_shards": args.num_shards,
     }, indent=2) + "\n")
 
 

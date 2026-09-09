@@ -146,7 +146,9 @@ def main():
                 return_tensors="pt",
                 return_token_type_ids=False,
             ).to(args.device)
-            logits = model(**encoded, use_cache=False).logits[:, -1, label_ids].float()
+            logits = model(
+                **encoded, use_cache=False, logits_to_keep=1
+            ).logits[:, -1, label_ids].float()
             probabilities = torch.softmax(logits, dim=1).cpu()
             for row, probability in zip(batch_rows, probabilities):
                 result = {key: value for key, value in row.items() if key != "prefix"}

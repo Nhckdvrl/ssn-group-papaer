@@ -28,6 +28,19 @@ Owns iterative answer computation during CoT in controlled arithmetic. E07 canno
 
 The closest new collision. It frames reasoning-tuned models as switching dynamical systems, identifies persistent latent policy states, and uses state swaps/transplants to argue that reasoning fine-tuning globally reorganizes latent dynamics. L12 therefore cannot claim generic latent policy states or global reorganization from reasoning fine-tuning.
 
+### LLM Reasoning as Trajectories - ACL 2026
+
+<https://aclanthology.org/2026.acl-long.1237/>
+
+Finds step-specific representation geometry in mathematical CoT and argues that
+reasoning training accelerates convergence toward termination-related subspaces;
+trajectory steering changes correctness and reasoning length. It owns a geometric
+trajectory account and late correctness divergence. It does not study presentation
+invariance, independently intervene on prompt versus trajectory presentation, or
+show that post-training-associated invariance coincides with causal-control
+reallocation. L12 must therefore avoid selling generic late convergence or
+"reasoning is a trajectory" as novelty.
+
 ### CASE: Causally Aligned Self-Explanation - 2026
 
 <https://arxiv.org/abs/2607.18820>

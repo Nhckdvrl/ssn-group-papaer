@@ -17,10 +17,17 @@ from cpc18_common import (
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--result-dir")
+    parser.add_argument("--regime", action="append")
     args = parser.parse_args()
     result_dir = Path(args.result_dir) if args.result_dir else ROOT / CONFIG["result_dir"]
     audit = {"parser_version": PARSER_VERSION, "regimes": {}}
-    for spec in CONFIG["regimes"]:
+    specs = [
+        spec for spec in CONFIG["regimes"]
+        if not args.regime or spec["name"] in args.regime
+    ]
+    if args.regime and len(specs) != len(set(args.regime)):
+        raise ValueError(f"Unknown or repeated regime: {args.regime}")
+    for spec in specs:
         path = result_dir / "raw" / f"{spec['name']}.jsonl"
         rows = []
         changed = 0
