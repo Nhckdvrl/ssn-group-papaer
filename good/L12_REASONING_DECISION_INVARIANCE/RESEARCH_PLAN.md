@@ -10,7 +10,7 @@
 
 ## 1. First step: reproduce a small clean behavioral transition
 
-Use a same-family model/checkpoint trajectory if possible.
+Use a shared-base model family with matched post-training branches if possible.
 
 Choose only a few parent manipulations with strong effects:
 - gain/loss framing;
@@ -27,15 +27,19 @@ Do not begin with every cognitive bias.
 
 ## 2. Locate the change before choosing a mechanism story
 
-A useful initial comparison is:
-- pre-reasoning / instruct-style checkpoint;
-- reasoning-SFT-style checkpoint;
-- later reasoning/RL checkpoint where available.
+For the currently verified OLMo 3 family, the clean first design is:
+- common base `Olmo-3-7B`;
+- `Olmo-3-7B-Instruct-SFT` sibling branch;
+- `Olmo-3-7B-Think-SFT` sibling branch;
+- later DPO/final checkpoints only as secondary within-branch evidence.
 
-The exact stages may change with the available public lineage.
+Do **not** describe Instruct-SFT → Think-SFT as a sequential training transition. The first causal-style contrast should reason from the common base:
+> **What changes under base→Instruct versus base→Think post-training?**
+
+The exact family/stages may change if a cleaner public matched design exists.
 
 The purpose is to identify:
-> **where the behavior changes enough to study causally.**
+> **which training regime is associated with the behavioral invariance strongly enough to support mechanism work.**
 
 ---
 
@@ -147,7 +151,7 @@ The exact section structure is flexible.
 
 ### Kill if:
 - the parent phenomenon cannot be reproduced in a usable controlled open setup;
-- training-stage comparisons are too confounded to identify anything;
+- shared-base branch/stage comparisons are too confounded to identify anything;
 - all internal results are probe-only and causally uninterpretable;
 - the final contribution collapses to another framing benchmark;
 - current literature already owns the full paper narrative.
