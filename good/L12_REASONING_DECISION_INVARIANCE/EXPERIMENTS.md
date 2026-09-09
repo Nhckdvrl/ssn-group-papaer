@@ -224,3 +224,22 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Prerequisite:** freeze E17 templates, parser, history construction, terminal stripping, exclusions, estimands, and statistics before accessing the 60 competition problems.
 - **Design:** one confirmatory run under the frozen E17 contract. No tuning or filtering on competition outcomes.
 - **Status:** not opened; held out by design.
+
+## L12-E19: Broad Description/History State Mediation
+
+- **Linked claim:** L12-C2 under the E17 presentation manipulation.
+- **Prerequisite:** a nontrivial calibration E17 trajectory-control effect.
+- **Design:** OLMo Think-SFT last-token residual-state substitution between
+  matched strict explicit/history trajectories that naturally produced opposite
+  choices. Patch both directions without exposing donor text to the target.
+- **Frozen units:** 48 independent base decisions, sampled with seed 131 as 16
+  from each candidate-relative-EV-gap rank tertile. Within a selected problem,
+  one qualifying history/order/sample key is chosen uniformly. The two patch
+  directions ensure equal target-A and target-B interventions.
+- **Primary estimand:** donor-directed margin shift by layer, averaged over both
+  directions within base decision; base-decision bootstrap uncertainty.
+- **Selection boundary:** opposite natural choices are required to define a
+  direction-specific donor state. No state, margin, patch, or layer result enters
+  selection. None of the 65 qualifying problems is support-dominant, so E19 does
+  not identify mediation in that stratum.
+- **Status:** design and exact units frozen; not yet executed.
