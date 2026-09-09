@@ -104,3 +104,13 @@ size.
 The 60 CPC18 competition problems remain unopened until E17 templates, parser,
 trajectory construction, stripping, exclusions, estimands, and statistical code are
 frozen. They are a one-shot external confirmation rather than development data.
+
+The calibration behavior run contains 3 samples in every frozen cell for all six
+regimes. Terminal-answer parser version `cpc18_terminal_v2` leaves validity between
+0.841 and 1.000 across regimes. During the pre-heldout audit, terminal stripping
+incorrectly treated the noncommittal phrase "choose between A and B" and the broad
+connector "so ... A" as commitments. Version
+`cpc18_terminal_commitment_v3` requires the option label to be the direct object of
+the decision verb or a tightly adjacent conclusion label. Positive commitment and
+noncommitment controls are executable in `scripts/test_cpc18_parser.py`; all raw
+reasoning generations were reparsed uniformly before E17 factorial scoring.

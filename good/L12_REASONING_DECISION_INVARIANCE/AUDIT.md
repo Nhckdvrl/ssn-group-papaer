@@ -82,3 +82,26 @@ Both exact safetensors snapshots were subsequently cached outside the repository
 - The original generic DeepSeek answer parser selected the first A/B mention after `</think>` and is invalid for verbose post-think answers. An audited terminal-answer parser recovers 540/576 valid choices and 252 matched gain/loss trajectory pairs across all 36 decisions. The corrected order-conditional frame consistency is 0.947 [0.916, 0.975], versus 0.000 for Llama-Instruct's displayed-A policy.
 - The stripping heuristic removed a terminal segment from 533 of the 542 traces previously admitted by the loose parser. After corrected answer filtering, a strict sensitivity excludes nine affected matched pairs; the external control difference remains +0.058 [0.027, 0.089].
 - E15's preregistered 18-decision subset contains none of those nine stripping exceptions.
+
+## CPC18 Calibration Execution Audit
+
+- All six frozen regimes produced exactly 3,624 rows: 151 base decisions x
+  (one explicit plus three real-history presentations) x two orders x three
+  samples. Raw continuations remain ignored outside Git; compact summaries and
+  model/source manifests are committed.
+- The first CPC18 stripping audit exposed two false commitment patterns:
+  "choose between A and B" and a broad "so ... A" window. No heldout data had
+  been accessed. The corrected `cpc18_terminal_commitment_v3` rule passes explicit
+  positive and noncommitment controls and was applied uniformly to all reasoning
+  regimes before causal scoring.
+- Strict matched trajectory coverage after correction is 917 units over 147
+  problems for OLMo, 1,931 over 145 for Qwen, and 1,920 over all 151 for
+  DeepSeek. A strict unit requires a valid terminal answer, a nonempty precommitment
+  trajectory, and at least one removed terminal commitment segment in both
+  presentations.
+- Calibration behavior confirms positive reasoning-associated consistency changes
+  for OLMo (+0.225) and same-weight Qwen (+0.276), including invalid-assignment
+  sensitivity. It reverses for the unmatched Llama/DeepSeek axis (-0.225): the
+  standard Llama comparator is invariant but approximately chance-level with
+  respect to exact EV. This is a substantive boundary between invariance and
+  EV-guided choice, not an exclusion target.

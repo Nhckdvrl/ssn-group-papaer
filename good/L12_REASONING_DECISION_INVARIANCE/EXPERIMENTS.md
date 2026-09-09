@@ -207,7 +207,17 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Primary estimands:** `Delta_P`, `Delta_R`, and `Delta_R - Delta_P` as frozen in `CAUSAL_FRAMEWORK.md`. Margins are oriented toward the exact-EV option; explicit minus history fixes the contrast direction.
 - **Statistics:** base-decision cluster bootstrap is primary. History, order, and generation remain nested. A mixed-effects model with base-decision random intercept and presentation slope is confirmatory.
 - **Boundary logic:** generalization supports presentation-level causal reorganization; a null or reversed description/history result supports a boundary between value framing and representation uncertainty rather than killing C1-C3.
-- **Status:** behavior execution in progress; factorial not yet scored.
+- **Behavior result:** complete on all 151 calibration decisions (21,744 total
+  generations). OLMo Think-SFT minus Instruct-SFT presentation consistency is
+  **+0.225 [0.177, 0.271]**; Qwen thinking minus non-thinking is **+0.276
+  [0.223, 0.327]**. Both remain positive under worst/best invalid-output
+  assignment: `[0.042, 0.287]` and `[0.154, 0.315]`, respectively.
+- **Observed boundary:** the unmatched DeepSeek-minus-Llama comparison is
+  **-0.225 [-0.264, -0.188]**. Llama-Instruct is highly presentation-consistent
+  (0.970) while choosing the exact-EV option at chance (0.502 explicit, 0.499
+  history). This separates behavioral invariance from EV-guided decision
+  formation and prevents treating consistency itself as rationality.
+- **Status:** behavior complete; factorial scoring in progress.
 
 ## L12-E18: Untouched CPC18 Competition Confirmation
 

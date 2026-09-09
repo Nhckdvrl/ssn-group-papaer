@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = json.loads((ROOT / "configs/cpc18.json").read_text())
 PARSER_VERSION = "cpc18_terminal_v2"
+STRIPPING_VERSION = "cpc18_terminal_commitment_v3"
 
 
 def load_problems(limit=None):
@@ -120,11 +121,15 @@ def split_trace(text):
 
 def is_decision_segment(segment):
     patterns = [
-        r"(?i)\b(?:choose|select|pick|prefer|answer)\b[^.\n]{0,80}\b[AB]\b",
+        # Require the label to be the object of the decision verb.  The earlier
+        # loose window misclassified prompts such as "choose between A and B"
+        # as an immediate commitment to A.
+        r"(?i)\b(?:choose|select|pick|prefer|answer)\b"
+        r"(?!\s+between\b)(?:\s+(?:option|choice))?\W{0,12}[AB]\b",
         r"(?i)\b(?:option|choice)\s+[AB]\b[^.\n]{0,80}"
         r"\b(?:better|best|optimal|preferred|wins?)\b",
-        r"(?i)\b(?:therefore|thus|hence|so|finally|overall)\b[^.\n]{0,100}"
-        r"\b[AB]\b",
+        r"(?i)\b(?:therefore|thus|hence|finally|overall)\b"
+        r"\W{0,20}(?:option\s+)?[AB]\b",
     ]
     return any(re.search(pattern, segment) for pattern in patterns)
 
