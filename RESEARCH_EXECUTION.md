@@ -172,6 +172,18 @@ After running, record:
 
 Experiments are evidence for claims, not a collection of plots.
 
+## Evidence economy
+
+Do **not** run an experiment merely because a reviewer might conceivably ask for it.
+
+A new experiment should materially do at least one of:
+- distinguish live scientific explanations;
+- change a load-bearing claim;
+- determine GO / RECONSTRUCT / KILL;
+- establish a consequence that the paper identity actually requires.
+
+Controls and replications are valuable when they protect identification or test a live alternative explanation. They are not a default battery.
+
 Use the **simplest evidence strong enough**. Add mechanism/causal intervention only when the claim requires it, not to cosmetically deepen a weak story.
 
 ---
