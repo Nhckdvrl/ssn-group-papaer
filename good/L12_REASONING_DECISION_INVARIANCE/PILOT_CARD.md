@@ -1,69 +1,54 @@
 # L12 — Next Decisive Pilot Card
 
-**Experiment:** L12-E07 → L12-E08 if E07 is informative  
+**Experiment:** L12-E07  
 **Status:** CONTINUE-PILOT
 
-# E07 — Semantic-Relevance Boundary
+# Scientific question
 
-Use the **three audited parent prospects** for route selection.
+> **Is the final answer controlled by the long reasoning trajectory itself, or only by the trajectory's final explicit commitment?**
 
-Keep the displayed options fixed. Append one of:
+This is the next load-bearing question for L12.
 
-1. **none**
-2. **redundant context** — restate one probability with the same value
-3. **decision-relevant correction** — same template, but set that probability to a frozen value that flips the EV-optimal underlying choice
+# L12-E07 — Conclusion-Stripped Trajectory Takeover
 
-Cross the existing gain/loss and order conditions.
+Use the three already-audited parent prospects and Think-SFT natural traces.
 
-The exact edits are frozen in `configs/boundary.json`. The runner verifies that every correction flips the normative target before generation.
+For each prospect × frame × order, compare the forced A/B readout after:
 
-## Two headline quantities
+1. **own full trace**
+2. **own trace with terminal explicit choice/conclusion removed**
+3. **matched opposite-frame stripped trace**
+4. **empty trace**
 
-### 1. Irrelevant-context invariance
+## Primary evidence
 
-Compare **none vs redundant**.
+### Own stripped vs empty
 
-> Does behavior remain the same when the extra context changes no decision fact?
+Does the non-terminal reasoning trajectory still create a strong target-directed margin?
 
-### 2. Relevant-context uptake
+### Own stripped vs opposite stripped
 
-Compare **redundant vs correction**.
+Can two matched long trajectories push the same target prompt toward different decisions even after their explicit terminal commitments are removed?
 
-> How much does the contextual correction move choice probability toward the newly EV-optimal action?
+## Outcome logic
 
-This is the main semantic distinction. Correction EV accuracy is reported only as a readable secondary quantity.
+- **Both contrasts strong:** trajectory-level takeover survives → proceed to E08.
+- **Effect collapses after stripping:** the current mechanism is late self-commitment, not distributed trajectory control → reconstruct around that result.
+- **Trace surgery itself is not identifiable:** repair the surgery once; do not launch a control battery.
 
-Interpretation:
+# E08 — only after E07
 
-- high irrelevant invariance + high relevant uptake → **selective semantic abstraction**
-- high irrelevant invariance + low relevant uptake → **context flattening / causal disengagement**
-- another stable pattern → reconstruct the explanation around that pattern
+Causally substitute the pre-answer decision state between matched trajectories.
 
-Models:
-- OLMo-3 Instruct-SFT
-- OLMo-3 Think-SFT
+Goal:
 
-This is a route-selection pilot, not the final dataset.
-
-# E08 — Decision-State Causal Substitution
-
-Run only if E07 gives a clear semantic-relevance pattern.
-
-At a pre-answer point before explicit conclusion text, substitute the matched state from:
-- redundant-context trajectory
-- correction-context trajectory
-
-Ask:
-
-> **Does the decision state carry the relevant contextual update while discarding the redundant one?**
-
-That causal distinction is the goal. The layer number is not.
+> show that a trajectory-built internal state, rather than appended donor text, carries decision control.
 
 # Runnable scaffold
 
-- `configs/boundary.json`
-- `scripts/run_boundary.py`
-- `scripts/summarize_boundary.py`
-- `scripts/run_boundary.sh`
+- `configs/trajectory_takeover.json`
+- `scripts/run_trajectory_takeover.py`
+- `scripts/summarize_trajectory_takeover.py`
+- `scripts/run_trajectory_takeover.sh`
 
-No additional defensive experiments are queued before E07/E08 changes the scientific picture.
+The older context-boundary scaffold is parked and is not a prerequisite.
