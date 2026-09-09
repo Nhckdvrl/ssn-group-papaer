@@ -1,65 +1,60 @@
-# L12 — Next Decisive Pilot
+# L12 — Next Decisive Pilot Card
 
-**Experiment:** L12-E07  
+**Experiment:** L12-E07 → L12-E08 if E07 is informative  
 **Status:** CONTINUE-PILOT
 
-# Question
+# E07 — Semantic-Relevance Boundary
 
-> **Does reasoning-oriented post-training make the model selectively invariant to irrelevant context, or broadly less responsive to context?**
+Use the **three audited parent prospects** for route selection.
 
-# Design
+Keep the displayed options fixed. Append one of:
 
-Use the three audited parent prospects.
+1. **none**
+2. **redundant context** — restate one probability with the same value
+3. **decision-relevant correction** — same template, but set that probability to a frozen value that flips the EV-optimal underlying choice
 
-Keep the displayed option lines fixed. Append one of three context conditions:
+Cross the existing gain/loss and order conditions.
 
-1. **none** — no extra note;
-2. **redundant** — a note says one probability was rechecked and is unchanged;
-3. **correction** — the same note structure updates that probability to a value that flips the EV-optimal action.
+The exact edits are frozen in `configs/boundary.json`. The runner verifies that every correction flips the normative target before generation.
 
-Example:
+## Core readout
 
-> Additional context: the probability associated with Option B was rechecked and remains 0.34.
+Report only the quantities needed for the scientific distinction:
 
-versus
+- **redundant-context consistency**
+- **correction-context EV accuracy**
 
-> Additional context: the probability associated with Option B has been updated from 0.34 to 0.36.
+Interpretation:
 
-The exact updates are frozen in `configs/boundary.json`. Continue crossing gain/loss and option order.
+- high redundant consistency + high correction accuracy → **selective semantic abstraction**
+- high redundant consistency + low correction accuracy → **context flattening / causal disengagement**
+- another stable pattern → reconstruct the explanation around that pattern
 
-# Models
-
+Models:
 - OLMo-3 Instruct-SFT
 - OLMo-3 Think-SFT
 
-Use the already audited revisions and native templates.
+This is a route-selection pilot, not the final dataset.
 
-# Readout
+# E08 — Decision-State Causal Substitution
 
-Report:
+Run only if E07 gives a clear semantic-relevance pattern.
 
-- original no-note frame consistency;
-- **redundant-context consistency** — does irrelevant context leave the decision unchanged?
-- **correction EV accuracy** — does the model use context when it genuinely changes the decision?
+At a pre-answer point before explicit conclusion text, substitute the matched state from:
+- redundant-context trajectory
+- correction-context trajectory
 
-# Scientific outcomes
+Ask one question:
 
-### Selective abstraction
-Think-SFT ignores redundant context but follows decision-relevant corrections.
+> **Does the decision state carry the relevant contextual update while discarding the redundant one?**
 
-### Context flattening
-Think-SFT ignores redundant context and also underuses decision-relevant corrections.
+That causal distinction is the goal. The layer number is not.
 
-### Neither
-The current explanation is wrong or incomplete; reconstruct from the observed boundary.
-
-# Next step
-
-Only if E07 yields a stable scientific distinction, run E08 to ask where the decision state is constructed.
-
-Runnable files:
+# Runnable scaffold
 
 - `configs/boundary.json`
 - `scripts/run_boundary.py`
 - `scripts/summarize_boundary.py`
 - `scripts/run_boundary.sh`
+
+No additional defensive experiments are queued before E07/E08 changes the scientific picture.

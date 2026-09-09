@@ -1,56 +1,57 @@
 # L10 — Research Plan
 
-**Goal:** locate the failure→action bottleneck before scaling.
+**Core RQ**
 
-# Phase 0 — Artifact audit
+> Where does an experienced failure stop becoming a changed future action?
 
-Completed for route selection:
-- ImplicitMemBench upstream pinned at `927413bf3f5389bb47c94c2a0ba987e435b101b8`;
-- 10 Conditioned API Aversion items selected as the cleanest strict two-action substrate;
-- Tool Use with Side-Effects deferred because many items admit multiple valid actions.
-
-Run `scripts/fetch_parent_data.sh` and preserve provenance/hashes before execution.
+The first round needs only two experiments.
 
 # L10-E01 — Untouched-History Stage Decomposition
 
-- 10 released items;
-- pinned Qwen2.5-7B-Instruct;
-- greedy first-action decoding;
-- native chat template;
-- independent M/C/P/A0 forks.
+Use the 10 released Conditioned API Aversion items.
 
-Report M/C/P accuracy, A0 good-action/bad-repeat rates, strict validity, and item-level **P correct + A0 bad repeat**.
+From the same untouched history H independently ask:
+- **M:** what happened?
+- **C:** which action caused it?
+- **P:** what should be done next?
+- **A0:** what action does the model actually take?
 
-No hidden-state probe.
+The important object is the first stable gap between knowing and acting.
 
-# L10-E02 — Matched Stage Completion
+A particularly strong result is:
 
-From H compare A0 raw, A1 outcome reminder, A2 causal binding, A3 negative prohibition, A4 positive replacement.
+> **policy correct, actual action repeats the failed tool**
 
-Interpret only through paired changes in **actual first action**:
-- A1 rescues → retention;
-- A2 adds rescue → attribution;
-- A4 needed after correct P → policy/action bottleneck;
-- A4 ≫ A3 → negative-specification boundary.
+but the project does not require Stage 4 to win.
 
-Questionnaire accuracy alone cannot establish a causal stage.
+# L10-E02 — Stage Completion
 
-# After leverage
+From H, change only one missing piece before the real action:
+- outcome reminder;
+- causal binding;
+- negative policy;
+- positive replacement.
 
-Only after E01/E02:
-1. confirm on a second open family;
-2. add a success-experience control if needed;
-3. add interference only if retention is implicated;
-4. formalize natural interactive validation with objective action schemas.
+Ask:
 
-The side-effect family can return after its action space is formalized.
+> **Which completion actually changes the next action?**
 
-# Kill / reconstruct
+This is the causal half of the paper. Do not add hidden-state analysis unless E01/E02 leaves a specific mechanism question that behavior cannot answer.
 
-RECONSTRUCT when another stage/boundary wins.
+# After E02
 
-KILL/demote when source mapping fails, strict action identity is invalid, no stage/completion has leverage, effects reduce to known explicit-negative-instruction behavior, natural validation breaks the diagnosis, or new literature compresses the full chain.
+Do not launch generic robustness batteries.
+
+Expand only according to the result:
+- confirm the diagnosed stage on a second model family;
+- test one natural interactive setting where the same diagnosed failure should matter.
+
+Any other experiment must change the scientific conclusion, not merely make the appendix safer.
 
 # Main-level shape
 
-> established failure behavior → stage-wise localization → targeted causal completion → meaningful boundary → natural validation → consequence for experience/memory design.
+> established failure repetition  
+> → locate the failure→action break  
+> → causally complete the missing stage  
+> → show the same mechanism matters in natural interaction  
+> → redefine what it means for agent memory to “learn from experience”

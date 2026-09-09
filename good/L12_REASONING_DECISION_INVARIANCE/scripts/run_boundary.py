@@ -30,34 +30,15 @@ def shown_label(underlying_identity, order):
 def context_note(item, order, variant):
     if variant == "none":
         return ""
-
     field = item["changed_field"]
     identity = field[-1].upper()
     label = shown_label(identity, order)
     old = item["base"][field]
     new = item["counterfactual"][field]
-    noun = "probability" if field.startswith("prob_") else "payoff amount"
-
+    value = old if variant == "redundant" else new
     if field.startswith("prob_"):
-        old_text, new_text = f"{old:.2f}", f"{new:.2f}"
-    else:
-        old_text, new_text = str(old), str(new)
-
-    if variant == "redundant":
-        return (
-            f"\nAdditional context: the {noun} associated with Option {label} "
-            f"was rechecked and remains {old_text}."
-        )
-    if variant == "correction":
-        return (
-            f"\nAdditional context: the {noun} associated with Option {label} "
-            f"has been updated from {old_text} to {new_text}."
-        )
-    raise ValueError(variant)
-
-
-def effective_facts(item, variant):
-    return item["counterfactual"] if variant == "correction" else item["base"]
+        return f"\nAdditional context: the probability associated with Option {label} is {value:.2f}."
+    return f"\nAdditional context: the payoff amount associated with Option {label} is {value}."
 
 
 def make_prompt(item, frame, order, variant):
@@ -73,11 +54,12 @@ def make_prompt(item, frame, order, variant):
     )
 
 
+def effective_facts(item, variant):
+    return item["counterfactual"] if variant == "correction" else item["base"]
+
+
 def expected_choice(p, frame):
-    values = {
-        "A": p["loss_a"] * p["prob_a"],
-        "B": p["loss_b"] * p["prob_b"],
-    }
+    values = {"A": p["loss_a"] * p["prob_a"], "B": p["loss_b"] * p["prob_b"]}
     return max(values, key=values.get) if frame == "gain" else min(values, key=values.get)
 
 
@@ -99,15 +81,14 @@ def main():
 
     for item in CONFIG["prospects"]:
         for frame in CONFIG["frames"]:
-            before = expected_choice(item["base"], frame)
-            after = expected_choice(item["counterfactual"], frame)
-            if before == after:
-                raise ValueError(f"{item['id']} {frame}: correction does not flip EV target")
+            base_target = expected_choice(item["base"], frame)
+            corrected_target = expected_choice(item["counterfactual"], frame)
+            if base_target == corrected_target:
+                raise ValueError(f"{item['id']} {frame}: contextual correction does not flip the EV target")
 
     tokenizer = AutoTokenizer.from_pretrained(spec["id"], revision=spec["revision"])
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
-
     model = AutoModelForCausalLM.from_pretrained(
         spec["id"],
         revision=spec["revision"],
@@ -126,15 +107,14 @@ def main():
             facts = effective_facts(item, variant)
             for frame in CONFIG["frames"]:
                 for order in CONFIG["orders"]:
-                    prompt = make_prompt(item, frame, order, variant)
                     conditions.append({
                         "prospect": item["id"],
                         "context_variant": variant,
                         "changed_field": item["changed_field"],
                         "frame": frame,
                         "order": order,
-                        "prompt": prompt,
                         "expected_underlying": expected_choice(facts, frame),
+                        "prompt": make_prompt(item, frame, order, variant),
                     })
 
     with raw_path.open("w") as handle, torch.inference_mode():
@@ -150,11 +130,9 @@ def main():
                 return_tensors="pt",
                 return_token_type_ids=False,
             ).to(args.device)
-
             seed = CONFIG["seed"] + condition_index
             torch.manual_seed(seed)
             torch.cuda.manual_seed_all(seed)
-
             generated = model.generate(
                 **batch,
                 do_sample=True,
@@ -167,14 +145,10 @@ def main():
             texts = tokenizer.batch_decode(continuation, skip_special_tokens=True)
 
             for sample_index, text in enumerate(texts):
-                shown = parse_choice(
-                    text,
-                    require_closed_think=(spec["branch"] == "think_sft"),
-                )
+                shown = parse_choice(text, require_closed_think=(spec["branch"] == "think_sft"))
                 underlying = None
                 if shown is not None:
                     underlying = shown if condition["order"] == "ab" else ("B" if shown == "A" else "A")
-
                 handle.write(json.dumps({
                     "model": spec["id"],
                     "revision": spec["revision"],

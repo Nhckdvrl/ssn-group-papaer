@@ -1,55 +1,48 @@
-# L10 — Minimum Decisive Pilot Card
+# L10 — Minimum Decisive Pilot
 
-**Experiment:** L10-E01 + gated L10-E02  
-**Status:** PILOT-AUTHORIZED
+**L10-E01 + L10-E02**
 
-# Data
-
-Use exactly the **10 released Conditioned API Aversion items** from ImplicitMemBench commit:
+Use the **10 released Conditioned API Aversion items** from ImplicitMemBench commit:
 
 > `927413bf3f5389bb47c94c2a0ba987e435b101b8`
 
-The frozen bad/good action mapping is in `data/audit_manifest.json`.
+Model:
 
-Do **not** include Tool Use with Side-Effects in E01; multiple valid action forms weaken strict gold.
-
-# Model
-
-`Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28`
-
-Greedy decoding, native chat template, strict tool-name parsing.
+> `Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28`
 
 # E01
 
-From one untouched history H independently run:
-1. **M** outcome memory;
-2. **C** attribution;
-3. **P** executable policy;
-4. **A0** actual first action.
+Fork the same untouched history H into:
+- outcome memory
+- causal attribution
+- policy knowledge
+- actual next action
 
-**M/C/P responses never appear in A0.**
+Never let diagnostic answers enter the action branch.
 
-Primary dissociation:
+Primary question:
 
-> **P correct, but A0 strictly repeats B.**
-
-An earlier M/C/P break is also valid.
+> **Where does the chain first break?**
 
 # E02
 
-From H run A1 outcome reminder, A2 causal binding, A3 “do not B”, A4 “use A instead”.
+From H add exactly one completion:
+- outcome reminder
+- causal binding
+- “do not B”
+- “use A instead”
 
-Primary evidence is paired recovery of **actual action**.
+Primary question:
 
-# Continue
+> **Which missing piece changes the actual first action?**
 
-Continue if a stable stage dissociation and/or preregistered completion has clear behavioral leverage.
+# Decision
 
-# Stop / reconstruct
+Continue if E01 identifies a stable stage dissociation and/or E02 reveals a clear causal completion.
 
-Stop if action gold/parser is ambiguous, the template invalidates history, effects are wording artifacts, or no stage/completion changes behavior.
+If not, reconstruct or demote. Do not respond by adding a large battery of defensive tests.
 
-Runnable scaffold:
+Runnable:
 - `scripts/fetch_parent_data.sh`
 - `scripts/run_pilot.py`
 - `scripts/summarize_pilot.py`

@@ -1,59 +1,51 @@
 # L12 — Research Plan
 
-**Goal:** explain why reasoning-oriented post-training produces presentation-invariant decisions.
+**Core RQ**
 
-# Completed
+> Does reasoning-oriented post-training create **selective semantic invariance**, or does context more broadly lose control over decisions?
 
-- parent artifact audit;
-- sibling Instruct-SFT vs Think-SFT behavioral reproduction;
-- frame decodability diagnostic;
-- invalid `</think>` stopping test;
-- natural reasoning-prefix causal readout test;
-- answer-free arithmetic-prefix test.
-
-These establish the substrate but do not explain the mechanism.
+The behavioral branch contrast is already established locally. The next work is deliberately narrow in number of experiments, not in claim.
 
 # L12-E07 — Semantic-Relevance Boundary
 
-Keep the original option lines fixed.
+Keep the original risky-choice options fixed.
 
-Add matched contextual notes:
+Add a matched final context statement:
+- **redundant:** repeats one probability unchanged;
+- **correction:** same format, but changes that probability enough to flip the correct EV decision.
 
-- **redundant:** a probability is rechecked and remains unchanged;
-- **correction:** the same kind of note updates the probability enough to flip the EV-optimal action.
+If Think-SFT ignores the redundant note but follows the correction, that supports selective abstraction.
 
-This directly asks whether Think-SFT distinguishes context that merely accompanies a problem from context that changes the decision-relevant state.
+If it ignores both, behavioral invariance is better explained as broader context disengagement.
 
-Use only the two audited sibling branches.
+If neither pattern holds, reconstruct around the observed boundary rather than adding more tests.
 
-Primary quantities:
+# L12-E08 — Decision-State Causal Substitution
 
-1. redundant-context consistency;
-2. correction EV accuracy.
+Only after E07.
 
-Outcomes:
+Use matched redundant/correction trajectories and intervene once on the pre-answer decision state.
 
-- high on both → **selective semantic abstraction**;
-- high redundant consistency but low correction accuracy → **context flattening / causal disengagement**;
-- another pattern → reconstruct the explanation.
+The causal question is:
 
-The three prospects are a route-selection pilot. If the boundary is real, expand it later to a small natural controlled set.
+> **Can the relevant contextual update be transferred through the internal decision state while the redundant update has little effect?**
 
-# L12-E08 — Decision-State Causal Test
+A positive answer supports a constructed semantically selective decision state. A negative answer pushes the explanation toward another mechanism.
 
-Run only after E07 gives a stable boundary.
+# After E08
 
-Use matched redundant/correction contexts and intervene on the pre-answer internal state before explicit conclusion text.
+Do not automatically launch a battery of controls.
 
-Question:
+Only expand when the E07/E08 result creates a concrete scientific need, such as:
+- a small broader decision set to establish the boundary beyond three prospects;
+- a second lineage if the claimed transformation depends on post-training attribution;
+- natural validation if the discovered mechanism predicts a broader behavior.
 
-> **Does the state carry decision-relevant contextual information while discarding irrelevant variation?**
-
-The contribution is the causal distinction, not a layer number.
+Those are result-dependent next steps, not preregistered obligations.
 
 # Main-level shape
 
 > reasoning-induced invariance  
 > → semantic-relevance boundary  
-> → causal explanation of decision-state construction  
-> → consequence for how we interpret reasoning-model rationality
+> → causal decision-state explanation  
+> → what “more rational under reasoning” actually means
