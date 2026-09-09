@@ -48,17 +48,22 @@ Record:
 
 ## 3. Preferred model substrate
 
-A same-family training trajectory is strongly preferred over unrelated model comparisons.
+A shared-base matched-branch design is strongly preferred over unrelated model comparisons.
 
-Potentially useful open lineages include OLMo reasoning/instruction checkpoints and training stages.
+A currently verified OLMo 3 design is:
+- common base: `allenai/Olmo-3-7B`;
+- instruct SFT branch: `allenai/Olmo-3-7B-Instruct-SFT`;
+- reasoning SFT branch: `allenai/Olmo-3-7B-Think-SFT`;
+- optional later DPO/final checkpoints within each branch.
 
-Representative release:
-- https://huggingface.co/allenai/Olmo-Hybrid-Think-SFT-7B
+Official model cards list the same `Olmo-3-7B` base for the Instruct and Think SFT branches.
 
-The scientific advantage is:
-> hold the base/model family much more constant while examining a post-training transition.
+The correct scientific comparison is **not** to pretend that Instruct-SFT was trained into Think-SFT. Prefer:
+> base→Instruct change vs base→Think change,
 
-The exact checkpoint family may change if a cleaner public trajectory becomes available.
+and then use within-branch later stages only if they sharpen the mechanism.
+
+The exact checkpoint family may change if a cleaner public matched design becomes available.
 
 ---
 
@@ -157,7 +162,7 @@ Watch for:
 
 Kill/reconstruct if:
 - the parent behavioral effect does not reproduce in any usable same-family checkpoint comparison;
-- the supposed training-stage comparison changes too many factors to support the claim;
+- the branch/stage comparison changes too many factors to support the claim;
 - internal measurements cannot distinguish representation from policy use;
 - the entire result reduces to output-format or prompt artifacts;
 - only a generic “reasoning models are less biased” result remains.
