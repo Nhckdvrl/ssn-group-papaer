@@ -71,9 +71,9 @@ These are **working explanations, not a fixed checklist**. They may be merged, r
 
 ### Account A — Per-example / per-token sensitivity
 Some outputs may sit in regions where
-[
+$
 \nabla_\theta \log \pi_\theta(y|x)
-]
+$
 is intrinsically larger.
 
 Then the task is loud before examples are even aggregated.
