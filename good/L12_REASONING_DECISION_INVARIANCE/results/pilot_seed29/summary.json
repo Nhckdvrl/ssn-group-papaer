@@ -1,0 +1,63 @@
+{
+  "base": {
+    "n": 240,
+    "valid_n": 218,
+    "invalid_rate": 0.09166666666666666,
+    "behavior_identifiable": false,
+    "frame_consistency": 0.9803921568627452,
+    "frame_consistency_ci95": [
+      0.9215686274509803,
+      1.0
+    ],
+    "order_consistency": 0.019607843137254905,
+    "ev_consistent_choice_rate": 0.5045871559633027,
+    "shown_a_rate_among_valid": 0.9908256880733946,
+    "mean_forced_p_shown_a": 0.7009261871377624,
+    "raw": "/home/xiang/ssn-group-papaer/good/L12_REASONING_DECISION_INVARIANCE/results/pilot_seed29/base/raw.jsonl"
+  },
+  "instruct_sft": {
+    "n": 240,
+    "valid_n": 240,
+    "invalid_rate": 0.0,
+    "behavior_identifiable": true,
+    "frame_consistency": 0.8166666666666668,
+    "frame_consistency_ci95": [
+      0.6333333333333333,
+      0.9583333333333334
+    ],
+    "order_consistency": 0.7833333333333333,
+    "ev_consistent_choice_rate": 0.5083333333333333,
+    "shown_a_rate_among_valid": 0.45,
+    "mean_forced_p_shown_a": 0.4999779363473254,
+    "raw": "/home/xiang/ssn-group-papaer/good/L12_REASONING_DECISION_INVARIANCE/results/pilot_seed29/instruct_sft/raw.jsonl"
+  },
+  "think_sft": {
+    "n": 240,
+    "valid_n": 219,
+    "invalid_rate": 0.0875,
+    "behavior_identifiable": true,
+    "frame_consistency": 0.9916666666666667,
+    "frame_consistency_ci95": [
+      0.9500000000000001,
+      1.0
+    ],
+    "order_consistency": 0.9916666666666667,
+    "ev_consistent_choice_rate": 0.9954337899543378,
+    "shown_a_rate_among_valid": 0.4885844748858447,
+    "mean_forced_p_shown_a": 0.39062615483999236,
+    "raw": "/home/xiang/ssn-group-papaer/good/L12_REASONING_DECISION_INVARIANCE/results/pilot_seed29/think_sft/raw.jsonl"
+  },
+  "contrasts": {
+    "think_minus_instruct": 0.17499999999999993,
+    "think_minus_instruct_order_consistency": 0.20833333333333337,
+    "frame_consistency_ci95": [
+      0.025000000000000022,
+      0.3666666666666667
+    ],
+    "order_consistency_ci95": [
+      0.09166666666666667,
+      0.4083333333333333
+    ],
+    "shared_base_generated_behavior_identifiable": false
+  }
+}

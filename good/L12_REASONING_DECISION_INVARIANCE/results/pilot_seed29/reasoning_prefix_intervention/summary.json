@@ -1,0 +1,42 @@
+{
+  "model": {
+    "id": "allenai/Olmo-3-7B-Think-SFT",
+    "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+    "branch": "think_sft",
+    "protocol": "native_chat",
+    "max_new_tokens": 1024
+  },
+  "source": "/home/xiang/ssn-group-papaer/good/L12_REASONING_DECISION_INVARIANCE/results/pilot_seed29/think_sft/raw.jsonl",
+  "samples_per_cell": 4,
+  "modes": {
+    "opposite_frame_trace": {
+      "n": 48,
+      "mean_correct_margin": -9.0703125,
+      "argmax_correct_rate": 0.0
+    },
+    "own_trace": {
+      "n": 48,
+      "mean_correct_margin": 9.3359375,
+      "argmax_correct_rate": 1.0
+    },
+    "zero_trace": {
+      "n": 48,
+      "mean_correct_margin": -0.08333333333333333,
+      "argmax_correct_rate": 0.3333333333333333
+    }
+  },
+  "own_trace_minus_zero_trace": {
+    "mean_margin_difference": 9.419270833333334,
+    "cluster_bootstrap_ci95": [
+      8.54140625,
+      10.104166666666666
+    ]
+  },
+  "own_trace_minus_opposite_frame_trace": {
+    "mean_margin_difference": 18.40625,
+    "cluster_bootstrap_ci95": [
+      17.458333333333332,
+      19.322916666666668
+    ]
+  }
+}
