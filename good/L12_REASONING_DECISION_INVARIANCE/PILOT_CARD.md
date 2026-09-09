@@ -4,8 +4,6 @@
 **Status:** CONTINUE-PILOT  
 **Purpose:** distinguish selective semantic abstraction from broader context disengagement before more mechanistic localization.
 
----
-
 # Established before this card
 
 - Think-SFT is far more gain/loss/order invariant than sibling Instruct-SFT;
@@ -16,72 +14,56 @@
 
 None is the final mechanism.
 
----
-
 # E07a — minimum boundary test
-
-## Data
 
 Use the **three audited parent prospects** only for route selection.
 
-For each:
-- keep equivalent gain/loss/order variants;
-- create a minimal matched factual counterfactual that flips the EV-preferred option.
+For each prospect:
+- **irrelevant/equivalent axis:** keep the audited gain/loss × order variants;
+- **decision-relevant axis:** change exactly one payoff/probability field enough to flip the EV-optimal underlying choice in both gain and loss conditions.
 
-Freeze edits and gold before model runs.
+The exact frozen edits are in `configs/boundary.json`; the runner asserts target flipping before generation.
 
-## Models
-
+Models:
 - OLMo-3 Instruct-SFT sibling;
 - OLMo-3 Think-SFT sibling.
 
-Use exact revisions/native templates already audited.
+Primary reporting:
+1. equivalent frame consistency;
+2. decision-relevant EV accuracy;
+3. Think-minus-Instruct contrast on each dimension.
 
-## Primary outcomes
-
-Report separately:
-1. equivalent-presentation consistency;
-2. decision-relevant switch accuracy;
-3. paired branch × context-type interaction.
-
-Cluster uncertainty by base prospect. Do not claim final generalization from three prospects.
-
----
-
-# Interpretation
+Do **not** collapse them into one headline score.
 
 ### A — selective abstraction
-Think remains sensitive when decision facts change while ignoring equivalent presentation.
-
-**Next:** E08, then expand the controlled set.
+Think improves equivalent-presentation invariance without losing decision-relevant accuracy.
 
 ### B — context flattening
-Think also suppresses genuinely decision-relevant changes.
-
-**Next:** E08 tests where relevant context loses causal control. This is a strong reinterpretation of “rationality.”
+Think improves equivalent-presentation invariance but loses sensitivity to decision-changing facts.
 
 ### C — no stable boundary
-Do not jump to more patching. Repair stimulus leverage or reconsider mechanism identity.
+Repair the boundary or reconsider the mechanism identity before patching.
 
----
+The three-prospect experiment is deliberately only route selection.
 
 # E08 — only after E07
 
-Patch/substitute pre-answer internal state from matched donors:
+Patch/substitute a pre-answer internal state from matched donors:
 - equivalent-context donor;
 - decision-changing donor;
 - controls.
 
-The donor point must precede explicit conclusion/answer text.
+Use a donor point before explicit conclusion/answer text.
 
-Success is not “layer 23 matters.” Success is a causal semantic-selectivity pattern that distinguishes accounts.
+Success is a causal semantic-selectivity pattern, not “layer 23 matters.”
 
----
+# Runnable E07a scaffold
 
-# Stop condition
+- `configs/boundary.json`
+- `scripts/run_boundary.py`
+- `scripts/summarize_boundary.py`
+- `scripts/run_boundary.sh`
 
-If E07 has no interpretable branch × context-type difference and no better objective boundary can be constructed, HOLD/KILL before expanding interpretability work.
+# Stop
 
-# Continue condition
-
-Continue when either selective abstraction or flattening is clean enough that E08 can causally discriminate how the decision state is constructed.
+If E07 has no interpretable branch × semantic-relevance pattern and no better objective boundary can be constructed, HOLD/KILL before expanding interpretability work.
