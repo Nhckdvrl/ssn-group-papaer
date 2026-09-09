@@ -69,24 +69,36 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Interpretation:** correct-over-swapped supports arithmetic-content mediation. It does not by itself distinguish where in the residual stream the computation is represented.
 - **Status:** completed unchanged. Correct calculation did not reliably outperform rule-only or swapped calculation; both prospect-cluster intervals include zero. This weakens an arithmetic-snippet account and limits E05 to complete-trajectory causality.
 
-## L12-E07: Semantic-Relevance Boundary
+## L12-E07: Conclusion-Stripped Trajectory Takeover
 
-- **Linked claim:** L12-C4/L12-C5.
-- **Question:** Does the reasoning-oriented branch distinguish irrelevant contextual variation from context that genuinely changes the decision state?
-- **Stimuli:** the three audited parent prospects. Keep the displayed option lines fixed.
-- **Conditions:** no note; redundant recheck note; matched corrective note that changes one probability enough to flip the EV-optimal action.
-- **Models:** sibling Instruct-SFT and Think-SFT.
-- **Primary readout:** redundant-context consistency and correction EV accuracy.
-- **Interpretation:** high invariance to redundant context plus preserved correction use supports selective abstraction; invariance plus poor correction use supports context flattening.
-- **Status:** next decisive experiment.
+- **Linked claim:** L12-C4.
+- **Question:** Does the long natural reasoning trajectory retain strong causal control over the final answer after its terminal explicit choice/conclusion is removed?
+- **Model:** `allenai/Olmo-3-7B-Think-SFT`, frozen revision in `configs/trajectory_takeover.json`.
+- **Stimuli:** the same three audited parent prospects x gain/loss x both option orders.
+- **Natural traces:** 4 sampled trajectories per cell.
+- **Conditions:** own full trace; own terminal-conclusion-stripped trace; matched opposite-frame stripped trace; empty trace.
+- **Primary metric:** target-directed A/B logit margin under forced readout.
+- **Primary contrasts:** own-stripped minus empty; own-stripped minus opposite-stripped.
+- **Secondary quantity:** own-full minus own-stripped, interpreted as the incremental contribution of the terminal commitment.
+- **Trace surgery:** deterministically remove trailing decision/conclusion sentences and record every removed span plus whether decision markers remain.
+- **Outcome logic:** if stripped natural reasoning retains strong target-directed control, proceed to E08; if the effect collapses, reconstruct around late self-commitment rather than adding rescue controls.
+- **Config:** `configs/trajectory_takeover.json`
+- **Command:** `scripts/run_trajectory_takeover.sh`
+- **Status:** **next decisive experiment**.
 
-## L12-E08: Conclusion-Free Decision-State Causal Substitution
+## L12-E08: Pre-Answer Decision-State Causal Substitution
 
-- **Linked claim:** L12-C4/L12-C5.
-- **Prerequisite:** E07 identifies a stable relevant-vs-irrelevant boundary.
-- **Question:** At what computation state does the Think branch distinguish nuisance presentation from decision-relevant information?
-- **Design:** use matched E07 pairs. Choose a pre-answer point before explicit option label/conclusion text. Patch/substitute the corresponding residual state from a matched donor into the target computation, scanning coarsely across layers before refinement.
-- **Donors/controls:** equivalent-presentation donor; decision-changing donor; same-target control donor; random matched donor.
-- **Primary causal signature:** decision-changing donor moves the target-choice margin in the donor-consistent direction while equivalent-presentation donor has substantially weaker effect.
-- **Identity boundary:** no donor reasoning text is appended to the target prompt; the operation tests an internal decision state on a boundary already established behaviorally.
+- **Linked claim:** L12-C5.
+- **Prerequisite:** E07 shows non-trivial trajectory-level control beyond the terminal explicit conclusion.
+- **Question:** Has the reasoning trajectory constructed a causal pre-answer decision state that dominates final readout?
+- **Design:** intervene on the natural Think-SFT computation immediately before answer decoding and substitute the matched state from a donor trajectory.
+- **Primary causal signature:** target-choice margin moves in the donor-consistent direction without appending donor reasoning text.
+- **Identity boundary:** the claim is the existence and construction of a trajectory-mediated decision state, not a special layer number.
 - **Status:** gated on E07.
+
+## L12-E09: Semantic-Relevance Boundary — PARKED
+
+- **Previous role:** relevant-vs-redundant contextual-note test.
+- **Current role:** optional later boundary/consequence test only if E07/E08 create a concrete question about which contextual information the trajectory uses or suppresses.
+- **Runnable scaffold retained:** `configs/boundary.json`, `scripts/run_boundary.py`, `scripts/summarize_boundary.py`, `scripts/run_boundary.sh`.
+- **Status:** **parked; not a prerequisite; do not run for novelty defense alone.**
