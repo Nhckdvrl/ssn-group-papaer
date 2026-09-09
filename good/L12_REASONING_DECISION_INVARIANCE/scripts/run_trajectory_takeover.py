@@ -12,10 +12,16 @@ CONFIG = json.loads((ROOT / "configs/trajectory_takeover.json").read_text())
 
 DECISION_TAIL = re.compile(
     r"\b(choose|choosing|select|selected|prefer|preferred|pick|final answer|"
-    r"answer is|better choice|better option|optimal choice|therefore|thus|hence|so i)\b",
+    r"answer is|better choice|better option|optimal choice)\b"
+    r"|\b(?:option\s*)?[AB]\b.{0,80}\b(higher|lower|better|worse|optimal|preferred)\b"
+    r"|\b(higher|lower|better|worse|optimal|preferred)\b.{0,80}\b(?:option\s*)?[AB]\b",
     flags=re.I,
 )
 BARE_LABEL = re.compile(r"^\s*(?:option\s*)?[AB]\s*[.!]?$", flags=re.I)
+CONCLUSION_LABEL = re.compile(
+    r"^\s*(?:therefore|thus|hence|so)[,:]?\s*(?:option\s*)?[AB]\s*[.!]?$",
+    flags=re.I,
+)
 
 
 def option_text(p, frame, identity):
@@ -65,7 +71,11 @@ def strip_terminal_conclusion(trace):
         if x.strip()
     ]
     removed = []
-    while parts and (DECISION_TAIL.search(parts[-1]) or BARE_LABEL.match(parts[-1])):
+    while parts and (
+        DECISION_TAIL.search(parts[-1])
+        or BARE_LABEL.match(parts[-1])
+        or CONCLUSION_LABEL.match(parts[-1])
+    ):
         removed.append(parts.pop())
     stripped = " ".join(parts).strip()
     return stripped, list(reversed(removed))
@@ -123,6 +133,15 @@ def main():
                 cells.append((p, frame, order, prompt, rendered))
                 rendered_by_key[key] = rendered
 
+    for p in CONFIG["prospects"]:
+        for order in CONFIG["orders"]:
+            gain = shown_label(expected_underlying(p, "gain"), order)
+            loss = shown_label(expected_underlying(p, "loss"), order)
+            if gain == loss:
+                raise ValueError(
+                    f"{p['id']} {order}: opposite-frame donor does not imply the opposite displayed choice"
+                )
+
     traces = {}
     with trace_path.open("w") as trace_handle, torch.inference_mode():
         for cell_index, (p, frame, order, prompt, rendered) in enumerate(cells):
@@ -160,7 +179,9 @@ def main():
                     "stripped_trace": stripped,
                     "removed_terminal_segments": removed,
                     "removed_any_terminal_conclusion": bool(removed),
-                    "remaining_decision_marker": bool(DECISION_TAIL.search(stripped)) if stripped else False,
+                    "remaining_decision_marker": bool(
+                        DECISION_TAIL.search(stripped) or CONCLUSION_LABEL.search(stripped)
+                    ) if stripped else False,
                     "continuation": text,
                 }
                 traces[(p["id"], frame, order, sample_index)] = record
