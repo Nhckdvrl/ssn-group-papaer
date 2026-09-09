@@ -4,19 +4,33 @@
 **Target:** NAACL Main  
 **Mode:** RESEARCH EXECUTION  
 **Approved paper mainline:** NONE  
-**Current user-selected priority:** **L08**
+**Default portfolio priority:** L08 unless the user explicitly selects another candidate.
 
 > Give this file to the local research agent when starting work.
 
-The six-topic search portfolio is already complete. Do **not** generate new topics during ordinary execution.
+The current portfolio contains eight active candidates. Do **not** generate new topics during ordinary execution unless the user explicitly reopens topic search.
 
 ---
 
-# 1. Mandatory reading
+# 1. Candidate selection rule
+
+The user’s explicit task selection overrides the default priority.
+
+Examples:
+- if the user says “do L11,” work on good/L11_TASK_GRADIENT_PRESSURE/;
+- if the user says “do L12,” work on good/L12_REASONING_DECISION_INVARIANCE/;
+- if the user says “do L11/L12,” treat them as two separate subprojects and keep their artifacts separated;
+- otherwise the current default priority remains L08.
+
+Do not silently redirect explicit L11/L12 work back to L08.
+
+---
+
+# 2. Mandatory reading
 
 Before experiments:
 
-1. **RESEARCH_EXECUTION.md**
+1. RESEARCH_EXECUTION.md
 2. the selected candidate’s canonical package:
    - README.md
    - DATA_AND_GOLD.md
@@ -24,142 +38,203 @@ Before experiments:
    - RESEARCH_PLAN.md
    - PILOT_CARD.md
 
-For current work, use:
+Then inspect current code/data/results already present in that candidate directory before creating anything new.
 
-> **candidates/L08_READOUT_DIMENSION/**
+The canonical package defines:
+- the scientific question;
+- evidence standard;
+- current novelty boundary;
+- Main-level identity;
+- current cheapest decisive starting point.
 
-Do not execute from stale historical notes in CURRENT_SEARCH.md when they conflict with the canonical package.
+It does **not** freeze the final method or answer.
 
 ---
 
-# 2. Repository safety
+# 3. Repository safety
 
 During execution:
 
 > **Only modify the concrete candidate directory being worked on.**
 
-For L08, only modify:
+For L11: good/L11_TASK_GRADIENT_PRESSURE/
 
-> **candidates/L08_READOUT_DIMENSION/**
+For L12: good/L12_REASONING_DECISION_INVARIANCE/
 
-Keep inside that directory:
-- source code;
-- scripts;
-- configs;
-- data/pointers;
-- results;
-- claim ledger;
-- experiment registry;
-- environment/reproduction notes.
+If executing both, keep code/data/results/claims separate inside their own directories.
 
-Do not edit root workflow files during ordinary experiment work.
+Do not edit root workflow/status documents during ordinary experiment work.
 
-Clean up disposable scripts/data after confirming they are no longer needed.
+Inside the selected directory, create or maintain only useful execution artifacts such as:
+- CLAIMS.md;
+- EXPERIMENTS.md;
+- RELATED_WORK.md or updates to the canonical novelty file;
+- DATA.md or updates to the canonical data file;
+- src/;
+- scripts/;
+- configs/;
+- results/;
+- reproducibility/environment notes.
 
----
-
-# 3. Current L08 scientific question
-
-Parent result already reports the anomaly:
-
-> severe reduction of final readout/representation dimensions preserves knowledge/extraction much better than GSM8K-style reasoning.
-
-That phenomenon is **not our novelty**.
-
-Our paper question is:
-
-> **Why does the same final-readout bottleneck affect knowledge and multi-step reasoning so differently?**
-
-Main accounts:
-- **A — intrinsic local bottleneck:** each reasoning step itself needs higher-dimensional readout.
-- **B — autoregressive accumulation:** local damage is small, but free-running generation compounds errors.
-- **C — capability-specific geometry:** knowledge and reasoning rely on different readout/subspace structure.
-- **D — length artifact:** long generation, not reasoning, explains the gap.
-
-A hypothesis losing does not kill the question. Another account winning can be the result.
+Do not create files mechanically if existing files can carry the information clearly.
 
 ---
 
-# 4. Minimum decisive first phase
+# 4. Scientific flexibility rule
 
-Do not begin with a model zoo.
+The candidate package should **constrain the science, not pre-write the answer**.
 
-First phase:
+Hard constraints:
+- preserve the natural research question;
+- evidence must really identify the claim;
+- novelty is judged at the paper level;
+- outcome must remain scientifically meaningful under multiple plausible results;
+- the developing work must continuously align to strong ACL/EMNLP/NAACL Main papers.
 
-1. **Exact/faithful parent reproduction**
-   - confirm the reported capability asymmetry under a credible model/setup.
+Flexible:
+- exact model/checkpoint after feasibility audit;
+- exact probe/patching/gradient metric;
+- exact mechanistic account;
+- exact experiment ordering;
+- exact paper section structure;
+- whether the final story becomes mechanism-first, measurement-first, boundary-first, or a stronger reconstruction.
 
-2. **Core comparison**
-   - GSM8K or equivalent multi-step reasoning;
-   - knowledge/extraction control;
-   - long non-reasoning generation control.
-
-3. **Most important mechanism split**
-   - **teacher-forced reasoning**
-   - vs **free-running reasoning**
-
-Interpretation:
-- teacher-forced local prediction mostly preserved + free-running collapse → supports accumulation;
-- teacher-forced prediction itself collapses → supports intrinsic local readout bottleneck;
-- long non-reasoning collapses similarly → length/generation explanation becomes serious;
-- task-specific patterns remain after controls → geometry/boundary work becomes important.
-
-Only after this split should the project expand into:
-- reasoning-token-only truncation;
-- answer-token-only truncation;
-- one-step truncation then restore;
-- random coordinate removal vs random projection;
-- subspace transfer/geometry analysis.
+If evidence points to a better explanation, reconstruct around it. Do not force the original account.
 
 ---
 
-# 5. Experiment discipline
+# 5. Continuous top-conference alignment
 
-Before every substantive run, record:
+Before every new load-bearing claim or major experiment:
+
+1. refresh the closest current literature;
+2. inspect the strongest structurally relevant ACL / EMNLP / NAACL Main papers;
+3. use Best / Outstanding / Best Theme work as high-end calibration where useful;
+4. inspect ICLR / ICML / NeurIPS when the paper identity is mechanistic, optimization, representation, or measurement-heavy.
+
+Do not ask whether every ingredient is unprecedented.
+
+Ask whether the **full developing paper** still owns:
+> framing/narrative + decisive operation + central conclusion + consequence.
+
+Run the reviewer-compression test:
+> **“This is just ______.”**
+
+A shared parent/method/component is allowed. A prior paper that accurately compresses the whole final paper is not.
+
+---
+
+# 6. Execution discipline
+
+Before every substantive experiment, record:
 - experiment ID;
-- linked claim;
-- exact question;
+- linked claim/question;
+- why the experiment is necessary;
 - dataset/subset;
-- model and revision;
+- model/revision;
 - intervention/conditions;
-- metric/statistical test;
-- expected informative outcomes;
-- interpretation/kill conditions.
+- metrics/statistical tests;
+- expected informative outcome branches;
+- kill/reconstruct implications.
 
 After every run, record:
 - exact command/config;
+- environment/model version;
 - raw result path;
-- summary;
+- summarized result;
 - uncertainty where relevant;
 - interpretation;
-- which claim changed.
+- what claim changed.
 
-Every important result must be traceable:
-
+Maintain the chain:
 > **claim → experiment → config/code → data → raw result → conclusion**
 
 ---
 
-# 6. Continuous novelty/Main-level check
+# 7. L11-specific guardrails
 
-Before a new load-bearing claim or major experiment:
-- re-check the parent and closest follow-up literature;
-- compare the planned claim with strong ACL/EMNLP/NAACL mechanistic/scientific work;
-- ask whether the claim is genuinely discriminative or merely obvious;
-- ask whether the project is still developing its own narrative.
+Canonical directory: good/L11_TASK_GRADIENT_PRESSURE/
 
-Do not keep a trivial claim merely because it is easy to demonstrate.
+Established parent:
+> multi-task RL can produce very different task gradient magnitudes that do not simply track learning gain.
 
-Do not scale if the current result only supports:
-> “reasoning is more sensitive than knowledge.”
+Do not rediscover that phenomenon.
 
-That is the parent-level observation, not enough.
+Scientific center:
+> **What makes one task optimization-loud, what does raw task-gradient magnitude actually measure, and when is it a misleading cross-task learning-pressure signal?**
+
+Current mechanism families are hypotheses, not requirements:
+- per-example/token score sensitivity;
+- within-response cancellation;
+- across-example update coherence;
+- parameter-space vs function-space miscalibration;
+- another stronger mechanism.
+
+Main failure mode:
+> gradient imbalance → normalize/surgery/sample differently → +X%.
+
+That is below the intended paper identity unless it follows from a new scientific diagnosis.
+
+The first pilot should recover one clean parent contrast and resolve the cheapest meaningful source-of-loudness uncertainty before scaling.
 
 ---
 
-# 7. Pilot verdict
+# 8. L12-specific guardrails
 
-The first L08 phase should end with:
+Canonical directory: good/L12_REASONING_DECISION_INVARIANCE/
+
+Established parent:
+> ACL 2026 Outstanding work reports that reasoning-oriented models are substantially less sensitive to several equivalent risky-choice presentations.
+
+Do not rediscover that behavioral result.
+
+Scientific center:
+> **Does reasoning-oriented post-training create a shared/canonical task representation, or does framing/context survive internally while losing influence over the final decision policy?**
+
+Important checkpoint-identification rule:
+
+For OLMo 3, do **not** describe Instruct-SFT → Think-SFT as a sequential training transition.
+
+The verified design is:
+- common base: allenai/Olmo-3-7B;
+- sibling branch: allenai/Olmo-3-7B-Instruct-SFT;
+- sibling branch: allenai/Olmo-3-7B-Think-SFT;
+- optional later DPO/final checkpoints within each branch.
+
+Therefore reason from:
+> **base→Instruct change vs base→Think change**
+
+and use later within-branch stages only if they sharpen identification.
+
+Current mechanism families are hypotheses, not requirements:
+- representational canonicalization;
+- policy/readout override;
+- inference-time deliberation;
+- arithmetic/specialization boundary;
+- another stronger mechanism.
+
+Probe-only work is not enough for the intended final mechanism claim.
+
+---
+
+# 9. Current portfolio
+
+- L03 — PILOT-AUTHORIZED
+- L06 — SERIOUS / PILOT-READY
+- L07 — SERIOUS / DATA AUDIT FIRST
+- L08 — SERIOUS / default current priority
+- L09 — SERIOUS
+- L10 — SERIOUS
+- L11 — PILOT-AUTHORIZED
+- L12 — PILOT-AUTHORIZED
+
+The user may change priority at any time.
+
+---
+
+# 10. Required pilot verdict
+
+A pilot phase should end with:
 
 - **GO**
 - **CONDITIONAL**
@@ -167,37 +242,18 @@ The first L08 phase should end with:
 
 Return:
 1. data/intervention validity;
-2. parent reproduction;
-3. teacher-forcing vs free-running result;
-4. long-generation control;
-5. current mechanism ranking;
-6. strongest reviewer compression after seeing the results;
+2. exact result with uncertainty;
+3. which scientific accounts were strengthened/weakened;
+4. strongest current reviewer compression;
+5. fresh novelty status;
+6. Main-level paper shape that still remains;
 7. exact reproducibility pointers;
 8. next smallest decisive experiment.
 
-Kill/reconstruct only when:
-- reproduction fails in a way that destroys the scientific object;
-- intervention lacks leverage;
-- current literature already owns the resulting explanation;
+Kill/reconstruct when:
+- data/intervention cannot identify the claim;
+- current literature owns the resulting paper identity;
 - surviving result is trivial;
-- no Main-level C1→C2→C3 remains.
+- no meaningful Main-level paper shape remains.
 
 A preferred hypothesis losing is **not** itself a kill condition.
-
----
-
-# 8. Other serious candidates
-
-The current six are:
-- L03
-- L06
-- L07
-- L08
-- L09
-- L10
-
-If the user later changes priority, switch to that candidate’s canonical package and follow RESEARCH_EXECUTION.md.
-
-Until then:
-
-# **Start with L08.**
