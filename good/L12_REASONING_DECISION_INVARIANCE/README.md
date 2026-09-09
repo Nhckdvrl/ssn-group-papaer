@@ -123,12 +123,12 @@ The parent provides:
 - explicit framing manipulations;
 - a strong established behavioral effect.
 
-Open OLMo-style training lineages provide:
-- same-family checkpoints;
-- reasoning/instruction variants;
-- training-stage comparisons.
+Open OLMo-style releases provide a particularly useful **shared-base branch design**:
+- `Olmo-3-7B` is the common base;
+- `Olmo-3-7B-Instruct-SFT` and `Olmo-3-7B-Think-SFT` are sibling SFT branches from that base;
+- each branch also exposes later DPO/final checkpoints.
 
-This allows us to ask a **training-transition mechanism question** rather than compare unrelated proprietary model families.
+This is not a literal sequential Instruct-SFT → Think-SFT transition. The cleaner identification is to compare **base→Instruct** and **base→Think** changes, then use within-branch later stages where useful. This avoids unrelated proprietary-model comparisons while preserving the training-regime question.
 
 ---
 
