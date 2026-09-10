@@ -2,115 +2,175 @@
 
 ## Working title
 
-**Who Controls the Choice? Reasoning Reorganizes Causal Decision Formation**
+**Reasoning Changes What Models Are Sensitive To**
+
+Alternative subtitle: **Causal Decision Control Shifts from Presentation Form to Evidence**
 
 ## One-sentence identity
 
-> Reasoning-oriented computation changes not only what language models decide,
-> but which computational route controls the decision, shifting control toward a
-> progressively constructed trajectory and pre-answer state without guaranteeing
-> presentation-invariant behavior.
+> Reasoning-oriented computation does not make language models indiscriminately
+> invariant: natural trajectories progressively build a causal decision state
+> that becomes comparatively insensitive to presentation form while remaining
+> sharply responsive to decision evidence.
 
 ## Abstract logic
 
-1. **Puzzle:** reasoning models are unusually invariant to equivalent risky-choice
-   presentations, but behavioral invariance does not identify how decisions form.
-2. **Competing accounts:** presentation erasure, terminal self-commitment, and
-   trajectory-mediated control make distinct predictions.
-3. **Process:** terminal-stripped natural reasoning already carries decision
-   direction; the conclusion strongly consolidates it.
-4. **Internal carrier:** opposite-decision pre-answer state substitution transfers
-   the final choice with a coherent late-layer profile.
-5. **Bridge:** a frozen prompt-by-trajectory factorial shows substantially stronger
-   trajectory-relative control in reasoning-oriented branches/routes.
-6. **Breadth/confirmation:** this result generalizes from gain/loss framing to
-   exact descriptions versus real outcome histories and confirms on an untouched
-   CPC18 competition split.
-7. **Boundary:** the OLMo route effect confirms without a heldout invariance gain;
-   stable route reorganization is not sufficient for invariance. Llama additionally
-   shows that invariance can arise from chance-level choice.
-8. **Consequence:** reasoning relocates sensitivity rather than simply removing it.
+1. **Puzzle:** reasoning models appear unusually invariant to framing and
+   presentation, but invariance alone cannot distinguish robust reasoning from
+   insensitivity or a stable response bias.
+2. **Process:** terminal-stripped natural reasoning already carries decision
+   direction; the final commitment amplifies rather than creates it.
+3. **Carrier:** direction-specific state substitution shows that the trajectory
+   consolidates its decision into a late pre-answer causal state.
+4. **Control transition:** prompt-by-trajectory factorials show that reasoning
+   regimes give the self-generated trajectory substantially more relative control
+   than standard instruction regimes.
+5. **Productive failure:** this control shift confirms on heldout CPC18 decisions,
+   yet OLMo's description/history invariance does not. The apparent contradiction
+   reveals that finite histories changed evidence as well as form.
+6. **Decisive decomposition:** on 137 previously unscored real decision units,
+   orthogonal form-by-evidence interventions show that reasoning reduces form
+   sensitivity while increasing evidence sensitivity.
+7. **Mechanistic closure:** the selective behavioral shift is reproduced in
+   evidence-bearing trajectory control and in the content of the pre-answer state.
+8. **Breadth:** the result holds under OLMo sibling branches, a same-weight Qwen
+   route comparison, and an external Llama/DeepSeek ecosystem comparison.
+9. **Takeaway:** reasoning changes what controls the choice and therefore what
+   kinds of variation a model ignores, rather than simply making it invariant.
 
-## Main claims and evidence
+## Three major claims
 
-### C1. Progressive trajectory construction
+### C1. Trajectories construct and consolidate decisions
 
-Decision direction develops before explicit commitment and is then strongly
-consolidated. Lead evidence: E07 terminal stripping and opposite-trajectory
-contrast. E05-E06 are routing controls, not separate claims.
+Natural reasoning develops causal decision direction before explicit commitment
+and consolidates it into a transferable pre-answer state. E07 establishes
+progressive construction; E08/E11/E19 establish the sustained internal carrier;
+E15 supplies bounded external triangulation. No particular layer is a claim.
 
-### C2. Pre-answer state mediation
+### C2. Reasoning reallocates causal control
 
-The trajectory constructs a late internal state that causally carries decision
-direction into decoding. Lead evidence: E19 over 48 natural CPC18 decisions;
-E08/E11 establish discovery and controlled replication; E15 is external
-triangulation. Report a sustained profile, never a privileged-layer claim.
+Reasoning-oriented computation shifts final-decision control from prompt-level
+presentation toward the trajectory and state it builds. E09-E10 are the core
+matched branch bridge; E12 shows checkpoint persistence; E13 fixes weights under
+Qwen's native route switch; E17-E18 supply natural-stimulus and heldout breadth.
 
-### C3. Causal-control reorganization
+### C3. The reallocation is selectively evidence-sensitive
 
-Reasoning-oriented computation increases trajectory-relative decision control
-under OLMo sibling and Qwen same-weight identification. E17 supplies natural
-description/history breadth; E18 is the confirmatory crown. Behavioral invariance
-is a contingent outcome, not the definition of the estimand.
+Reasoning suppresses sensitivity to representational form while preserving or
+amplifying sensitivity to decision evidence. E20 orthogonalizes form and evidence
+prospectively; E20-C locates the shift in evidence-bearing trajectory control;
+E21 shows the same selectivity in the late causal state; E22 supplies external-
+family behavior/control replication. This is the paper's crown.
+
+## Narrative progression
+
+### Act I: Why invariance is ambiguous
+
+Reproduce the parent phenomenon, then show that presentation identity remains
+available. This rules out a simple erasure story but is only the setup.
+
+### Act II: Who controls the choice?
+
+Use natural terminal stripping, opposite trajectories, and direction-specific
+state substitution to show progressive construction and consolidation. Cross
+prompt and trajectory rather than treating generic trace injection as novelty.
+
+### Act III: The heldout result that changes the question
+
+Show that route reorganization survives where OLMo description/history invariance
+does not. Do not narrate this as a failed replication to be explained away. It
+exposes a construct error: raw finite histories are not information-equivalent to
+their generating distributions.
+
+### Act IV: What should reasoning ignore?
+
+Introduce the prospective 2 form x 2 evidence experiment. The memorable result
+is a relocation in the sensitivity plane, not a subgroup p-value: all three model
+axes move away from form and toward evidence. Trajectory factorial and state
+substitution establish that this is one causal mechanism.
+
+### Act V: Consequence
+
+Use the paired 20/100 history diagnosis to show how finite-sample evidence changes
+the behavioral appearance of invariance. Keep it as a consequence of the account,
+not a fourth claim. The paper ends with a practical interpretive warning: observed
+robustness is meaningful only after separating harmless changes in representation
+from changes in decision evidence.
 
 ## Main figures and tables
 
-1. **Figure 1 - Puzzle and causal graph:** `P -> R -> H -> Y`, with prompt-to-answer
-   alternatives and the three competing explanations.
-2. **Figure 2 - Progressive construction:** full, stripped, opposite-stripped, and
-   empty trajectory contrasts; show terminal amplification explicitly.
-3. **Figure 3 - Internal carrier:** E19 donor-directed margin by layer with E08/E11
-   replication markers.
-4. **Figure 4 - Causal control plane:** `|Delta_P|` versus `|Delta_R|`, separated by
-   gain/loss and description/history; use existing PNG/PDF artifacts.
-5. **Table 1 - Identification axes:** OLMo sibling/DPO, Qwen same weights, and
-   unmatched Llama/DeepSeek with exactly bounded interpretations.
-6. **Table 2 - CPC18 calibration and heldout:** behavior, `Delta_P`, `Delta_R`, and
-   `Delta_R - Delta_P`, with base-decision counts and clustered intervals.
-7. **Figure 5 - Robustness relocated:** calibration and heldout paired arrows from
-   standard to reasoning regimes; highlight OLMo's route/behavior dissociation.
+1. **Figure 1 - Puzzle and causal alternatives:** prompt form/evidence to
+   trajectory, state, and answer; erasure, direct prompt control, and trajectory
+   mediation make different intervention predictions.
+2. **Figure 2 - Progressive construction and consolidation:** full, stripped,
+   opposite-stripped, and empty trajectories beside the broad state-transfer
+   layer profile.
+3. **Figure 3 - Causal-control reorganization:** `Delta_P` versus `Delta_R` under
+   OLMo siblings, Qwen same weights, and checkpoint/external evidence.
+4. **Figure 4 - Selective sensitivity:** the tracked three-panel artifact
+   `results/selective_sensitivity_story/`: behavior-plane arrows, trajectory-
+   relative evidence control, and late state selectivity.
+5. **Table 1 - Identification axes:** common-base OLMo siblings, Qwen native
+   same-weight routes, and unmatched Llama ecosystem, with exact allowed claims.
+6. **Table 2 - Evidence breadth:** independent decision counts, calibration versus
+   heldout status, repeated generations, valid rates, clustered intervals, and
+   sharp invalid-output bounds.
+7. **Figure/Table 5 - Finite-history consequence:** paired 20/100 evidence
+   agreement and description/history consistency; supporting, not headline.
 
-## Section structure
+## Evidence scale
 
-1. **Introduction:** parent phenomenon, why behavior cannot identify mechanism,
-   paper answer, and three contributions.
-2. **Causal framing:** distinguish information availability, prompt control,
-   trajectory control, state mediation, invariance, and EV alignment.
-3. **Study 1 - How trajectories construct choices:** E03/E07.
-4. **Study 2 - What carries the constructed choice:** E08/E11/E19 and E15.
-5. **Study 3 - Does reasoning reorganize causal control?:** E09/E10/E12-E14.
-6. **Study 4 - Natural presentation breadth and confirmation:** E16-E18.
-7. **Discussion:** robustness relocation, why route change is not sufficient for
-   invariance, and implications for interpreting reasoning-model behavior.
-8. **Limitations:** post-training attribution, inserted-text intervention,
-   risky-choice domain, invalid completions, model access, and hidden CoT scope.
+- **Independent stimuli:** 36 controlled gain/loss units; 151 CPC18 calibration
+  decisions; 44 untouched competition decisions; 137 new form-by-evidence units.
+- **Mechanistic depth:** natural trajectory construction, crossed prompt/trajectory
+  interventions, and direction-specific text-free state substitution.
+- **Model/training axes:** OLMo SFT siblings plus DPO persistence; Qwen3 same
+  weights under native thinking/non-thinking routes; Llama-Instruct versus
+  DeepSeek-R1-Distill as bounded external replication.
+- **Statistics:** base decision is always the scientific unit. Histories, orders,
+  generations, trajectory samples, directions, and layers are nested observations.
 
-## Evidence discipline
+## Main-level calibration
 
-- Use base-decision bootstrap as primary throughout; report mixed models only as
-  unsuccessful/fragile sensitivity analyses.
-- Keep calibration and competition results visibly separate.
-- Never call consistency rationality without EV behavior.
-- Never call Qwen a pure mode intervention; native channel/position also changes.
-- Never call Llama/DeepSeek a matched training comparison.
-- Do not elevate probes, layer locations, DPO amplification, model replications,
-  or the null item-level correlation into headline claims.
+- Like *Racing Thoughts*, the paper advances one computational explanation from
+  behavioral puzzle through causal process to intervention evidence.
+- Like *The LLM Language Network*, representation/localization is not the endpoint;
+  direction-specific state substitution establishes causal role and breadth.
+- Like *What Makes a Good Reasoning Chain?*, trajectory analysis culminates in an
+  explanation of failure/boundary and a consequence, rather than another metric.
+- Unlike *Mind the (DH) Gap!*, L12 does not compete on model-count breadth; it owns
+  the causal explanation and uses complementary identification axes.
+- Unlike *Persistent Latent Policy States*, L12 does not claim generic reasoning
+  dynamics; it identifies which content gains causal control and why behavioral
+  invariance is selective.
 
 ## Reviewer compression defense
 
-**Compression:** *Mind the DH Gap* + latent policy states + sequential CoT patching.
+**Strongest compression:** *Mind the DH Gap* + decision-science sampling bias +
+trace injection/persistent latent policy states.
 
-**Answer:** those works own the phenomenon and generic ingredients. L12 directly
-crosses prompt and natural-trajectory interventions under complementary training
-and route comparisons, connects that control shift to a text-free internal carrier,
-and confirms it on a frozen external description/history split. The unexpected
-heldout dissociation further shows that causal-route reorganization is a distinct
-computational object, not another name for invariance.
+**Why it fails:** those works separately own the behavioral puzzle, the fact that
+finite experience changes evidence, and generic causal reasoning/state effects.
+They do not show that reasoning post-training reallocates decision control, use a
+prospective orthogonal form-by-evidence intervention to identify what the new
+controller tracks, or connect that selectivity from natural trajectory to a
+direction-specific internal state across sibling, same-weight, and external axes.
+
+## Interpretation boundaries
+
+- Do not call consistency rationality without evidence-sensitive behavior.
+- Do not call frame decodability causal use or non-decodability erasure.
+- Do not claim terminal commitments are irrelevant; they strongly amplify control.
+- Do not claim the state is form-free; its evidence effect is comparatively larger.
+- OLMo supports training-regime association, not attribution to one optimization
+  step. Qwen's official switch also changes native route/position. Llama/DeepSeek
+  is external replication, never a matched training contrast.
+- Repeated generations and patched layers do not inflate the independent sample.
 
 ## Submission-readiness gate
 
-Before drafting claims into prose, regenerate all compact tables from tracked
-summaries, run both execution audits and parser tests, verify raw hashes locally,
-and keep all large continuations, checkpoints, caches, and state tensors outside
-Git. New experiments require a specific load-bearing gap identified during paper
-review; breadth for its own sake is out of scope.
+Before paper drafting, regenerate all summaries/figures from tracked code, run
+parser/coordinate/factorial validators, verify local raw hashes, and preserve the
+calibration/heldout chronology. Further experiments require a load-bearing gap in
+this three-claim story; another model, layer, or prompt variant by itself is not a
+contribution.
