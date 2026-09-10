@@ -342,3 +342,14 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   and 33 competition problems. Median matched evidence-strength ratio is 1.012
   and the maximum is 1.5. The exported corpus contains no participant identifier.
 - **Status:** data gate passed and design frozen; no E20 model output inspected.
+
+### E20-C causal bridge (conditionally activated)
+
+If either controlled behavioral axis passes the preregistered selective-sensitivity
+test, choose strict terminal-stripped reasoning trajectories that naturally follow
+each evidence direction. Within raw and summary forms separately, cross prompt
+evidence A/B with trajectory evidence A/B. Estimate evidence `Delta_P`, `Delta_R`,
+and `Delta_R - Delta_P`; the scientific unit remains the base decision. The
+bridge supports the story only if the reasoning regime gives evidence-bearing
+trajectories greater relative control under both forms. This rule and donor
+selection are frozen before E20 behavior is inspected.

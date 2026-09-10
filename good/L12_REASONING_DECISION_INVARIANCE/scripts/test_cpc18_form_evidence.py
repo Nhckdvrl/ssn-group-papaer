@@ -5,6 +5,7 @@ import pandas as pd
 
 from cpc18_form_evidence_common import load_problems, make_prompt
 from summarize_cpc18_form_evidence import unit_metrics
+from summarize_cpc18_form_evidence_control import effects
 
 
 def test_prompt(problem, evidence):
@@ -40,6 +41,20 @@ def test_metrics():
     assert metrics.selective_sensitivity == 1
     assert metrics.selective_sensitivity_lower == 1
     assert metrics.selective_sensitivity_upper == 1
+
+    control_rows = []
+    for prompt in ("A", "B"):
+        for trajectory in ("A", "B"):
+            control_rows.append({
+                "problem": "test", "form": "raw", "order": "ab",
+                "a_sample_index": 0, "b_sample_index": 0,
+                "prompt_evidence": prompt, "trajectory_evidence": trajectory,
+                "p_a_choice": 1.0 if trajectory == "A" else 0.0,
+            })
+    control = effects(pd.DataFrame(control_rows)).iloc[0]
+    assert control.delta_p == 0
+    assert control.delta_r == 1
+    assert control.delta_control == 1
 
 
 def main():

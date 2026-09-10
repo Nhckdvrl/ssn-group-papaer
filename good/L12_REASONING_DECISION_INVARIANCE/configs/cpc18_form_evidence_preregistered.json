@@ -33,6 +33,14 @@
     "form_not_down_evidence_up": "enhanced evidence integration without form robustness",
     "neither_changes": "causal-route reorganization does not explain behavioral robustness"
   },
+  "causal_followup": {
+    "activation_gate": "Run only if at least one controlled behavioral axis shows a positive selective-sensitivity difference whose base-decision bootstrap interval excludes zero.",
+    "donor_rule": "Within reasoning-regime generations, choose the lowest-sample-index strict terminal-stripped trajectory whose natural choice follows each evidence direction, matched by base decision, form, and displayed order.",
+    "factorial": "Within each raw or summary form, cross prompt evidence direction A/B with trajectory evidence direction A/B.",
+    "estimands": ["evidence prompt control Delta_P", "evidence trajectory control Delta_R", "Delta_R - Delta_P"],
+    "primary_bridge": "For each controlled axis and form, reasoning-minus-standard Delta_R-minus-Delta_P is positive under base-decision bootstrap.",
+    "unit_of_analysis": "base decision; forms, displayed orders, donors, and factorial cells are nested"
+  },
   "output": "data/cpc18_form_evidence_v1.jsonl",
   "audit_output": "data/cpc18_form_evidence_v1.audit.json",
   "result_dir": "results/cpc18_form_evidence_seed157",

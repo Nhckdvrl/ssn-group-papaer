@@ -29,6 +29,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
     parser.add_argument("--output", default=None)
+    parser.add_argument("--behavior-only", action="store_true")
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -55,7 +56,9 @@ def main():
         * config["samples_per_cell"]
     )
     behavior_summary = json.loads((result_dir / "behavior_summary.json").read_text())
-    control_summary = json.loads((result_dir / "control_summary.json").read_text())
+    control_summary = None if args.behavior_only else json.loads(
+        (result_dir / "control_summary.json").read_text()
+    )
 
     for regime in config["regimes"]:
         name = regime["name"]
@@ -86,6 +89,8 @@ def main():
             "valid_rate": float(frame.valid.mean()),
         }
 
+        if args.behavior_only:
+            continue
         control_path = result_dir / "raw" / "control" / f"{name}.jsonl"
         control = pd.read_json(control_path, lines=True, dtype={"history_id": "string"})
         trace_key = ["problem", "history_id", "order", "sample_index"]
