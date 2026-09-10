@@ -100,6 +100,42 @@ presentation-to-trajectory causal reallocation studied here.
 - **The LLM Language Network** (NAACL 2025): localization becomes scientifically useful only after causal ablation and breadth. <https://aclanthology.org/2025.naacl-long.544/>
 - **Scaling Reasoning, Losing Control** (ACL 2026): reasoning-oriented training can trade off against external instruction control, but does not identify the internal route behind framing invariance. <https://aclanthology.org/2026.acl-long.1878/>
 
+## Description-experience identification
+
+### The Description-Experience Gap in Risky Choice - 2009
+
+<https://doi.org/10.1016/j.tics.2009.09.004>
+
+Hertwig and Erev synthesize evidence that description- and experience-based
+choices can diverge, particularly in the impact of rare events. Crucially for
+L12, finite experiential samples are not merely alternate wording: their observed
+frequencies can differ from the generating distribution.
+
+### Biased Samples, Not Mode of Presentation - 2009
+
+<https://doi.org/10.1016/j.obhdp.2008.08.001>
+
+Fox and Hadar directly argue that biased finite samples can explain apparent
+experience effects. This makes E17/E18 unsuitable as a pure form-invariance test
+and motivates holding the exact observed multiset fixed in E20.
+
+### An Inquiry into the Nature and Causes of the Description-Experience Gap - 2022
+
+<https://doi.org/10.1007/s11166-022-09393-w>
+
+Cubitt and colleagues separate sampling bias, preferences, likelihood
+representation, and memory in a unified design. Their model-free analysis finds
+sampling bias to be the significant isolated driver while model-based analysis
+allows a smaller residual gap without information differences. E20 imports this
+identification logic into reasoning models: raw versus empirical summary isolates
+form, while matched opposite empirical histories isolate evidence.
+
+These papers own the form-versus-information distinction in human decision
+science. L12's possible novelty is not that sampling error exists; it is that
+reasoning-oriented post-training may relocate causal decision control toward an
+evidence-bearing trajectory, yielding form invariance without evidence
+insensitivity.
+
 ## Strongest reviewer compression
 
 > Mind the DH Gap + iterative CoT computation/trace injection + persistent latent policy states.
