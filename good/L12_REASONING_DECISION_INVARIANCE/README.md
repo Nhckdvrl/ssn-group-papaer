@@ -142,11 +142,14 @@ The primary unit is always the base decision. Repeated traces and patch layers d
 
 ## Reproduction
 
+- Shared research story and claim map: `RESEARCH_STORY_AND_CLAIM_MAP.md`
 - Experiment registry: `EXPERIMENTS.md`
 - Claim ledger: `CLAIMS.md`
 - Identification: `DATA_AND_GOLD.md`
 - Current report: `PILOT_REPORT.md`
 - Paper skeleton: `PAPER_OUTLINE.md`
+- Current manuscript narrative: `MANUSCRIPT_DRAFT.md`
+- Adversarial reviewer audit: `REVIEWER_AUDIT.md`
 - Calibration/confirmation synthesis: `results/cpc18_replication_summary.json`
 - Raw execution audits: `results/cpc18_calibration_seed121/execution_audit.json`,
   `results/cpc18_competition_seed137/execution_audit.json`

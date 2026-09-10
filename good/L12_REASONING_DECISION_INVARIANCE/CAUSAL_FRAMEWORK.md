@@ -78,16 +78,24 @@ separately to expose a genuine boundary rather than average it away.
 
 ## Claim mapping
 
-- **C1, progressive trajectory construction:** E05-E07.
-- **C2, pre-answer state mediation:** E08/E11/E19, with E15 as external triangulation.
-- **C3, causal-control reorganization:** E09/E10, with E12-E14 as checkpoint,
-  same-weight-route, and external-family triangulation. E16-E18 test whether C3
-  survives a broad description/history manipulation and untouched confirmation.
+- **C1, decision construction and consolidation:** E05-E08 establish progressive
+  trajectory construction and its pre-answer carrier; E11/E19 provide controlled
+  and natural-stimulus breadth, with E15 as external state triangulation.
+- **C2, causal-control reallocation:** E09/E10 establish the matched
+  mechanism-phenomenon bridge; E12-E14 add checkpoint, same-weight-route, and
+  external-family triangulation. E17/E18 confirm trajectory-relative control on
+  broad natural description/history decisions.
+- **C3, selective sensitivity:** E20 prospectively orthogonalizes presentation
+  form and decision evidence; E20-C links the behavioral shift to evidence-bearing
+  trajectory control; E21 shows the same selectivity in the pre-answer carrier;
+  E22 supplies external-family behavior and control replication.
 
 E18 shows that causal-route reorganization and behavioral invariance must remain
 separate outcomes: the former confirms on both controlled axes, while the latter
-confirms only for Qwen. `Delta_control` therefore measures route allocation, not
-invariance or rationality itself.
+confirms only for Qwen. E20 explains why the old presentation manipulation was not
+a pure invariance test: finite histories changed observed evidence as well as form.
+`Delta_control` therefore measures route allocation, not invariance or rationality
+itself; selective sensitivity requires the orthogonal E20-E22 evidence.
 
 The exploratory item-level correlation between behavioral change and control change
 is permanently demoted. Its null estimate is retained as a reported limitation and
