@@ -312,3 +312,33 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   prompt revision, parser revision, or problem exclusion is permitted.
 - **Frozen config:** `configs/cpc18_competition_precision.json`.
 - **Status:** frozen before execution.
+
+## L12-E20: Form x Evidence Decomposition
+
+- **Question:** does reasoning suppress sensitivity to representational form while
+  preserving sensitivity to decision-relevant evidence?
+- **Hypothesis origin:** a post-hoc audit of the completed 195 CPC18 problems.
+  The audit is explicitly exploratory and cannot support E20's claim.
+- **Prospective data:** previously unscored real CPC18 histories only. Each problem
+  must supply one history whose empirical mean favors A and another favoring B.
+  Both histories must have normalized empirical gap at least 0.02; their strength
+  ratio must not exceed 1.5. No model result enters selection.
+- **Form contrast:** the same 20 observations appear either as an ordered raw table
+  or as their exact marginal payoff counts. Decision-relevant empirical evidence
+  is identical; only sequential versus frequency-summary representation changes.
+- **Evidence contrast:** within a base problem and fixed form, compare the matched
+  empirical-A and empirical-B histories.
+- **Primary metric:** `evidence_sensitivity - form_sensitivity`, computed per base
+  decision. Primary tests are reasoning-minus-standard pair differences under the
+  OLMo sibling and Qwen same-weight axes, each with a base-decision bootstrap CI.
+- **Component interpretation:** form down/evidence preserved or up supports
+  selective sensitivity; both down supports broad canonicalization; only evidence
+  up supports stronger integration without form invariance; neither changing
+  disconnects route reorganization from behavioral robustness.
+- **Invalid outputs:** report conditional estimates and sharp mean bounds. Do not
+  revise prompts/parser or filter problems after outcomes.
+- **Frozen config:** `configs/cpc18_form_evidence_preregistered.json`.
+- **Data gate:** 137 base decisions pass before model scoring: 104 calibration
+  and 33 competition problems. Median matched evidence-strength ratio is 1.012
+  and the maximum is 1.5. The exported corpus contains no participant identifier.
+- **Status:** data gate passed and design frozen; no E20 model output inspected.

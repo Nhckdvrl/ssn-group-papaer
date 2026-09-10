@@ -1,0 +1,136 @@
+{
+  "decision": "GO_E20",
+  "design": "L12-E20 prospective form-by-evidence corpus freeze",
+  "evidence_strength_ratio_quantiles": {
+    "0": 1.0,
+    "0.25": 1.0,
+    "0.5": 1.011904761904762,
+    "0.75": 1.0588235294117647,
+    "1": 1.5
+  },
+  "flow": {
+    "calibration_clean_problems": 151,
+    "calibration_eligible_opposite_evidence_problems": 104,
+    "competition_clean_problems": 44,
+    "competition_eligible_opposite_evidence_problems": 33,
+    "total_selected": 137
+  },
+  "frozen_config": {
+    "account_map": {
+      "form_down_evidence_down": "broad canonicalization or insensitivity",
+      "form_down_evidence_preserved_or_up": "selective sensitivity relocation",
+      "form_not_down_evidence_up": "enhanced evidence integration without form robustness",
+      "neither_changes": "causal-route reorganization does not explain behavioral robustness"
+    },
+    "audit_output": "data/cpc18_form_evidence_v1.audit.json",
+    "bootstrap_samples": 5000,
+    "component_reports": [
+      "reasoning-minus-standard form_sensitivity difference",
+      "reasoning-minus-standard evidence_sensitivity difference",
+      "reasoning-regime evidence_sensitivity",
+      "invalid-output sharp mean bounds for every metric and pair difference"
+    ],
+    "evidence_contrast": "two strength-matched real histories from the same base problem whose empirical mean payoff differences favor opposite underlying options",
+    "form_contrast": "raw ordered 20-trial table versus exact marginal payoff-frequency summary of those same observations",
+    "frozen_at": "2026-09-10T19:30:00+09:00",
+    "history_selection": "exclude all E17/E18 selected histories; require unused empirical-A and empirical-B histories; minimize absolute log strength ratio, break ties toward larger minimum strength and then history hash",
+    "history_trials": [
+      6,
+      25
+    ],
+    "maximum_evidence_strength_ratio": 1.5,
+    "minimum_base_decisions": 120,
+    "minimum_normalized_empirical_gap": 0.02,
+    "nested_variation": [
+      "evidence history",
+      "presentation form",
+      "displayed order",
+      "generation"
+    ],
+    "orders": [
+      "ab",
+      "ba"
+    ],
+    "output": "data/cpc18_form_evidence_v1.jsonl",
+    "parser_version": "cpc18_terminal_v2",
+    "primary_hypotheses": [
+      "OLMo Think-SFT minus Instruct-SFT selective_sensitivity is positive with a base-decision bootstrap 95% interval excluding zero",
+      "Qwen thinking minus non-thinking selective_sensitivity is positive with a base-decision bootstrap 95% interval excluding zero"
+    ],
+    "primary_metric": "selective_sensitivity = evidence_sensitivity - form_sensitivity",
+    "regimes": [
+      {
+        "id": "allenai/Olmo-3-7B-Instruct-SFT",
+        "max_tokens": 1024,
+        "name": "olmo_instruct_sft",
+        "pair": "olmo_sft",
+        "requires_closed_think": false,
+        "revision": "e1452fc572d51966ff4aaeb25118b891eb93e549",
+        "role": "standard"
+      },
+      {
+        "id": "allenai/Olmo-3-7B-Think-SFT",
+        "max_tokens": 3072,
+        "name": "olmo_think_sft",
+        "pair": "olmo_sft",
+        "requires_closed_think": true,
+        "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+        "role": "reasoning"
+      },
+      {
+        "enable_thinking": true,
+        "id": "Qwen/Qwen3-8B",
+        "max_tokens": 3072,
+        "name": "qwen_thinking",
+        "pair": "qwen_mode",
+        "requires_closed_think": true,
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "role": "reasoning"
+      },
+      {
+        "enable_thinking": false,
+        "id": "Qwen/Qwen3-8B",
+        "max_tokens": 1024,
+        "name": "qwen_non_thinking",
+        "pair": "qwen_mode",
+        "requires_closed_think": false,
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "role": "standard"
+      }
+    ],
+    "result_dir": "results/cpc18_form_evidence_seed157",
+    "samples_per_cell": 10,
+    "seed": 157,
+    "stripping_version": "cpc18_terminal_commitment_v3",
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "unit_of_analysis": "base decision",
+    "version": "cpc18_form_evidence_v1"
+  },
+  "gate": {
+    "minimum": 120,
+    "observed": 137,
+    "passed": true
+  },
+  "source_integrity": {
+    "calibration_raw_bytes": 47488058,
+    "calibration_raw_md5": "38a26407a36c690be969f9d9d3fe3e5a",
+    "competition_raw_bytes": 65363460,
+    "competition_raw_sha256": "cb0dab5ca34adebc49f2dfe57f98096ab74468dea5a12a4558ce5c50ef07952d"
+  },
+  "source_split_counts": {
+    "calibration": 104,
+    "competition": 33
+  },
+  "true_ev_choice_counts": {
+    "A": 85,
+    "B": 52
+  },
+  "validation": {
+    "frequency_summaries_exactly_reconstruct_marginal_multisets": true,
+    "participant_identifiers_exported": false,
+    "selected_histories_are_unused_by_e17_e18": true,
+    "twenty_observations_per_history": true,
+    "two_opposite_empirical_directions_per_problem": true
+  }
+}
