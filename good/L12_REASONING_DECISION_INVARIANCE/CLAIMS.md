@@ -4,16 +4,16 @@
 
 ## Current RQ
 
-> Why does reasoning-oriented post-training make decisions invariant to presentation, and is that transition accompanied by a shift in causal control from the prompt to a self-generated reasoning trajectory and its pre-answer decision state?
+> Why do reasoning models become invariant to some changes in presentation while remaining sharply sensitive to others, and does reasoning reorganize decision control from prompt form toward an evidence-bearing trajectory and its pre-answer state?
 
 ## Major claim chain
 
 | ID | Claim | Evidence | Current status |
 |---|---|---|---|
 | **L12-C0** | Reasoning models are more invariant across risky-choice presentations. | *Mind the (DH) Gap!* | **Established prior; not ours** |
-| **L12-C1** | Natural reasoning progressively constructs decision control before the terminal explicit commitment; the conclusion amplifies rather than creates the effect. | E05-E07 | **Supported on 3 parent prospects; breadth is supplied under C3** |
-| **L12-C2** | Long reasoning constructs a pre-answer decision state that causally carries trajectory control into final decoding. | E08 + E11 + E19; E15 triangulation | **Supported across 48 natural CPC18 decisions, the controlled OLMo expansion, and externally in DeepSeek** |
-| **L12-C3** | Reasoning-oriented computation reorganizes causal control toward trajectory-mediated decision formation; this route change is more stable than, and not by itself sufficient for, presentation-invariant behavior. | E09-E10; E12-E14; E17-E18 | **Confirmed on an untouched natural description/history split under matched OLMo and same-weight Qwen identification; behavior confirms for Qwen but not OLMo** |
+| **L12-C1** | Natural reasoning progressively constructs a decision before explicit commitment and consolidates it into a pre-answer causal state. | E05-E08 + E11 + E19; E15 triangulation | **Supported from process to internal carrier; 48-decision natural-stimulus breadth and external state triangulation** |
+| **L12-C2** | Reasoning-oriented computation reallocates causal control from prompt-level presentation toward the self-generated trajectory and the state it builds. | E09-E10 + E12-E14 + E17-E18 | **Confirmed under OLMo sibling and same-weight Qwen axes, checkpoint persistence, an untouched natural split, and bounded external replication** |
+| **L12-C3** | The reallocation is selective rather than indiscriminate: sensitivity falls for representational form while rising for decision evidence, and this selectivity is carried by the same late pre-answer state. | E20 behavior + E20-C + E21 | **Prospectively confirmed on 137 real CPC18 decisions under both controlled axes; external-family test E22 in progress** |
 
 ## Supporting evidence, not headline claims
 
@@ -52,21 +52,30 @@
   first reverses target margin at layer 18 and reaches +7.094 [5.914, 8.276]
   at the final layer; 93.8% of base-decision shifts are positive. Interpret the
   sustained late profile, not layer 18 as an isolated mechanism.
-- E18 passes its preregistered primary decision rule on both controlled axes.
-  OLMo's control reorganization confirms even though its supporting behavioral
-  consistency hypothesis does not. This falsifies the simple account that
-  stronger trajectory-relative control automatically produces invariance. It
-  does not falsify the causal-route reorganization itself.
+- E18 passes its preregistered primary decision rule on both controlled axes,
+  while OLMo's supporting behavioral consistency hypothesis does not. E18 first
+  falsified indiscriminate invariance; E20 then prospectively identifies the
+  omitted distinction: a finite history changed observed evidence as well as
+  form.
+- E20 is not a post-hoc subgroup rescue. It freezes 137 previously unscored real
+  histories and orthogonalizes form and evidence. Its selective-sensitivity shift
+  is +1.229 [1.195, 1.262] for OLMo and +0.709 [0.638, 0.778] for same-weight
+  Qwen. E20-C ties the behavior specifically to evidence-bearing trajectory
+  control rather than increased prompt sensitivity.
+- E21 closes the mechanism-behavior bridge at the internal carrier: final-layer
+  donor evidence control is +0.763 [0.694, 0.828], versus donor-form sensitivity
+  0.174 [0.124, 0.227]. The claim is comparative selectivity, not form erasure.
 - The released OLMo checkpoints are sibling branches from a common base. They support a training-regime-associated contrast, not strict attribution to one isolated optimization step.
 - E10 uses 36 independent base decisions and E11 uses a preregistered 18-decision stratified subset. Repeated traces and layers remain within-unit observations.
 - The corrected exploratory decision-level association between the behavioral branch difference and control difference is unsupported (rho = -0.001, p = 0.997). Do not claim monotonic per-item coupling; the supported bridge is the matched branch/mode/family-level reorganization replicated across units.
 
 ## Current verdict
 
-**GO.** C1-C3 establish progressive construction, state mediation, and
-causal-control reorganization. E17 supplies broad natural-stimulus evidence and
-E18 confirms the preregistered causal-route result on both controlled axes. The
-OLMo behavioral non-replication gives the final interpretation an important
-boundary: route reorganization is a robust computational change, not a sufficient
-condition for behavioral invariance. E19 confirms that the broadened text-level
-effect is again carried by a pre-answer internal state.
+**GO.** The current paper has one cumulative answer rather than three adjacent
+interpretability results: reasoning progressively builds a causal decision state,
+reallocates control toward that trajectory/state, and thereby changes what the
+model is sensitive to. E20-E21 prospectively show that the change is selective:
+form sensitivity falls while evidence sensitivity and evidence-bearing trajectory
+control rise. E22 now tests whether this crown is broader than the controlled
+OLMo/Qwen axes; E18L tests the finite-sample consequence without becoming a new
+headline claim.

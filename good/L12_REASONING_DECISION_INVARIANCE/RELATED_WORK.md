@@ -136,23 +136,43 @@ reasoning-oriented post-training may relocate causal decision control toward an
 evidence-bearing trajectory, yielding form invariance without evidence
 insensitivity.
 
+## Main-paper evidence calibration after E20-E21
+
+| Structural comparator | What makes it Main-level | L12 alignment | Remaining gap |
+|---|---|---|---|
+| *Mind the (DH) Gap!* (ACL 2026 Outstanding) | A memorable behavioral puzzle established across 20 models, humans, and a rational baseline | L12 begins from its puzzle and contributes the missing causal explanation over 137 independent real decisions | Do not compete on model count or reclaim the parent phenomenon |
+| *Racing Thoughts* (NAACL 2025 Main) | One computational hypothesis developed through correlational, causal, and intervention evidence | L12 now has process evidence, trajectory intervention, state substitution, and a falsification-driven form/evidence decomposition | Keep every result serving the sensitivity-reallocation explanation rather than accumulating patch variants |
+| *The LLM Language Network* (NAACL 2025 Main) | Localization is followed by causal ablation and broad validation across 18 models | L12 moves beyond decodability/localization to direction-specific state transfer; OLMo and Qwen supply complementary controlled axes | E22 must establish bounded external-family breadth; L12 should not imitate an 18-model zoo |
+| *What Makes a Good Reasoning Chain?* (EMNLP 2025 Main) | Chain structure explains failures across tasks/models and yields a Best-of-N consequence | L12 explains when apparent invariance should break and links the break to evidence carried by trajectory/state | The present weakest dimension is consequence/domain breadth, not another layer scan |
+| *Persistent Latent Policy States* (COLM 2026) | Dynamics, state intervention, four benchmarks, 1.5B-32B breadth, and an inference-time use | L12 does not compete on generic state dynamics; it identifies what decision content gains control and why that produces selective invariance | Preserve the form-versus-evidence identity and avoid generic "reasoning creates states" language |
+
+This calibration implies three load-bearing claims, not a longer list: decision
+construction and consolidation; causal-control reallocation; selective sensitivity
+to evidence rather than form. Probe accuracy, a particular layer, checkpoint
+persistence, and another model family remain evidence underneath those claims.
+
 ## Strongest reviewer compression
 
-> Mind the DH Gap + iterative CoT computation/trace injection + persistent latent policy states.
+> Mind the DH Gap + the decision-science sampling distinction + trace injection/persistent latent policy states.
 
 This compression wins if L12 claims only that reasoning is causal, choices emerge through a trajectory, or a late hidden state can be swapped.
 
-It does not yet own the complete L12 identity:
+It does not own the complete L12 identity:
 
 > an established presentation-invariance transition
 > + matched sibling post-training branches
 > + terminal-stripped distributed decision control
 > + pre-answer choice-state mediation
-> + a direct prompt-by-trajectory factorial showing that trajectory-relative causal control rises sharply in the reasoning branch.
+> + a direct prompt-by-trajectory factorial showing that trajectory-relative causal control rises sharply in the reasoning branch
+> + a prospective orthogonal form-by-evidence intervention showing that the new controller is selectively evidence-sensitive
+> + direction-specific state substitution showing where that selective content becomes causally sufficient.
 
-The unique center is not a generic latent state. It is the **mechanistic explanation of presentation invariance as a training-associated reallocation of causal control**.
+The unique center is not a generic latent state or the familiar observation that
+sampling error exists. It is the **mechanistic explanation that reasoning
+reallocates decision control away from presentation form and toward evidence
+integrated through a trajectory-built causal state**.
 
-## Novelty verdict after E18
+## Novelty verdict after E21
 
 **Paper identity survives and now has stimulus, checkpoint, complementary
 model-family breadth, and untouched confirmation.** E09 remains essential:
@@ -163,14 +183,14 @@ an explicitly bounded native-route comparison.
 
 This does not license the broad statement that every reasoning model uses an identical architecture. OLMo supplies the clean shared-base branch comparison and internal mediation evidence; Qwen supplies same-weight route triangulation; E14-E15 supply an external Llama-ecosystem replication and DeepSeek state mediation.
 
-E17-E18 move the paper beyond a gain/loss curiosity: the same control shift occurs
-for exact distributions versus real outcome histories over 151 calibration
-decisions and confirms on the untouched 44-problem competition subset. OLMo's
-heldout route shift survives while its behavioral invariance effect does not. The
-final conclusion is therefore not the brittle claim that trajectory takeover
-always causes invariance; it is the broader result that reasoning-oriented
-computation changes what route controls a decision, and that this route change is
-not sufficient for invariant behavior.
+E17-E18 move the paper beyond a gain/loss curiosity and supply the productive
+falsification. Exact distributions versus finite histories were not a pure
+presentation manipulation: they changed observed evidence. E20 does not subgroup
+the old results; it prospectively orthogonalizes those variables on 137 previously
+unscored real histories. Under OLMo sibling and same-weight Qwen axes, reasoning
+reduces form sensitivity while sharply increasing evidence sensitivity. E20-C
+locates that selectivity in trajectory-relative control, and E21 shows that the
+late causal state carries evidence direction far more strongly than form.
 
 The strongest updated compression is:
 
@@ -178,7 +198,8 @@ The strongest updated compression is:
 > Patching / FACE-Eval.
 
 It still omits the complete L12 identity: an established invariance puzzle,
-terminal-stripped progressive construction, hidden-state mediation, a frozen
-prompt-by-trajectory intervention under matched sibling and same-weight axes, a
-qualitatively different natural presentation family, and a preregistered heldout
-result that separates causal-route change from its contingent behavioral outcome.
+progressive construction, hidden-state mediation, matched prompt-by-trajectory
+interventions, the heldout failure that exposes a construct confound, and a
+prospective form-by-evidence decomposition showing that reasoning does not simply
+remove sensitivity but redirects it toward evidence. E22 is a bounded test of
+whether that final selective pattern survives outside the two controlled axes.
