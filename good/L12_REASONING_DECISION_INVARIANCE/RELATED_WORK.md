@@ -131,7 +131,7 @@ identification logic into reasoning models: raw versus empirical summary isolate
 form, while matched opposite empirical histories isolate evidence.
 
 These papers own the form-versus-information distinction in human decision
-science. L12's possible novelty is not that sampling error exists; it is that
+science. L12's novelty is not that sampling error exists; it is that
 reasoning-oriented post-training may relocate causal decision control toward an
 evidence-bearing trajectory, yielding form invariance without evidence
 insensitivity.
@@ -142,7 +142,7 @@ insensitivity.
 |---|---|---|---|
 | *Mind the (DH) Gap!* (ACL 2026 Outstanding) | A memorable behavioral puzzle established across 20 models, humans, and a rational baseline | L12 begins from its puzzle and contributes the missing causal explanation over 137 independent real decisions | Do not compete on model count or reclaim the parent phenomenon |
 | *Racing Thoughts* (NAACL 2025 Main) | One computational hypothesis developed through correlational, causal, and intervention evidence | L12 now has process evidence, trajectory intervention, state substitution, and a falsification-driven form/evidence decomposition | Keep every result serving the sensitivity-reallocation explanation rather than accumulating patch variants |
-| *The LLM Language Network* (NAACL 2025 Main) | Localization is followed by causal ablation and broad validation across 18 models | L12 moves beyond decodability/localization to direction-specific state transfer; OLMo and Qwen supply complementary controlled axes | E22 must establish bounded external-family breadth; L12 should not imitate an 18-model zoo |
+| *The LLM Language Network* (NAACL 2025 Main) | Localization is followed by causal ablation and broad validation across 18 models | L12 moves beyond decodability/localization to direction-specific state transfer; OLMo and Qwen supply complementary controlled axes, and E22 adds bounded external-family behavior/control replication | L12 should not imitate an 18-model zoo; the remaining limitation is isolated training attribution |
 | *What Makes a Good Reasoning Chain?* (EMNLP 2025 Main) | Chain structure explains failures across tasks/models and yields a Best-of-N consequence | L12 explains when apparent invariance should break and links the break to evidence carried by trajectory/state | The present weakest dimension is consequence/domain breadth, not another layer scan |
 | *Persistent Latent Policy States* (COLM 2026) | Dynamics, state intervention, four benchmarks, 1.5B-32B breadth, and an inference-time use | L12 does not compete on generic state dynamics; it identifies what decision content gains control and why that produces selective invariance | Preserve the form-versus-evidence identity and avoid generic "reasoning creates states" language |
 
@@ -201,5 +201,6 @@ It still omits the complete L12 identity: an established invariance puzzle,
 progressive construction, hidden-state mediation, matched prompt-by-trajectory
 interventions, the heldout failure that exposes a construct confound, and a
 prospective form-by-evidence decomposition showing that reasoning does not simply
-remove sensitivity but redirects it toward evidence. E22 is a bounded test of
-whether that final selective pattern survives outside the two controlled axes.
+remove sensitivity but redirects it toward evidence. E22 shows that the selective
+behavior and evidence-trajectory control pattern also survives in the external
+Llama ecosystem, while remaining explicitly non-attributive.

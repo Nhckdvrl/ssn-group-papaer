@@ -2,7 +2,7 @@
 
 ## Trajectory Takeover
 
-**Status:** **GO / FORM-VERSUS-EVIDENCE CONFIRMATION IN PROGRESS**
+**Status:** **GO / MAIN-PAPER EVIDENCE PROGRAM COMPLETE**
 **Target:** NAACL Main, continuously calibrated to ACL/EMNLP Main
 **Last audited:** 2026-09-10
 
@@ -48,8 +48,9 @@ The discovery pilot supports **progressive construction plus late consolidation*
     thinking-minus-non-thinking is **+0.219 [0.152, 0.288]**.
 18. The supporting behavioral result is heterogeneous: Qwen's heldout
     presentation-consistency change is **+0.163 [0.051, 0.268]**, while OLMo's
-    is **-0.013 [-0.095, 0.065]**. Causal-route reorganization is therefore
-    more stable than, and not sufficient by itself for, behavioral invariance.
+    is **-0.013 [-0.095, 0.065]**. This dissociation exposed that the original
+    description/history contrast mixed representational form with sampled evidence,
+    motivating the prospective E20 decomposition rather than a route-only ending.
 19. Increasing heldout behavioral sampling from 3 to 20 generations per cell
     leaves this pattern intact: OLMo is **-0.011 [-0.089, 0.067]**, while Qwen
     is **+0.121 [0.026, 0.215]**. The OLMo null is not Monte Carlo imprecision.
