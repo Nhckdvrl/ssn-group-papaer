@@ -644,3 +644,48 @@ to the mechanism, and deleted code cannot be audited:
 `run_e04_logit_geometry.py` (a superseded draft of E04) and `queue_runs.py` (superseded
 by `launch.py`, which loads each checkpoint once per worker instead of once per job)
 were removed.
+
+
+---
+
+## E07 — Is the depth effect causal, within items?  `DONE 2026-09-11`
+
+**Linked claim.** C1.3. Until now the depth finding rested on a *cross-cell* comparison
+(short-answer cells survive, long-CoT cells do not), and cells differ in more than
+length. This is the within-item version: the same items, the same model, the same
+mask, and only the **time window** over which the mask is applied differs.
+
+```
+CUDA_VISIBLE_DEVICES=3 python scripts/run_e07_temporal.py \
+    --model NousResearch/Meta-Llama-3.1-8B-Instruct --tag llama \
+    --mask first --cell gsm8k_gen_cot --switch 16 --n 500
+```
+
+| schedule | generated steps truncated | accuracy | relative to full |
+|---|---|---|---|
+| full readout | 0 | 0.786 | 1.000 |
+| **first16** — truncate the first 16 steps, then restore | 16 | 0.446 | **0.567** |
+| **after16** — full readout for 16 steps, then truncate | ~384 | 0.246 | **0.313** |
+| **all** — the E02 condition | 400 | 0.086 | 0.109 |
+
+**Validation.** The `all` schedule reproduces the E02 number exactly (0.0860,
+rel 0.109), confirming that the mid-generation switch reduces to the standard
+always-on intervention when its window covers the whole generation.
+
+**Reading.**
+1. **Early damage is largely recoverable.** Truncating only the opening 16 tokens and
+   then restoring the full readout leaves 0.567, a factor of **5.2 above** never
+   restoring it. The opening does not determine the outcome.
+2. **The collapse requires sustained exposure.** Truncating the tail alone (0.313) is
+   worse than truncating the opening alone (0.567), and truncating throughout (0.109)
+   is worse than either.
+3. The two windows combine slightly worse than multiplicatively
+   (0.567 x 0.313 = 0.177 predicted, 0.109 observed).
+
+This is the within-item causal form of C1.3: with content, protocol, items, model and
+mask all held fixed, the number of steps over which the readout is degraded is what
+moves the outcome.
+
+**Still to run.** The same schedule on a second model, and a sweep over the switch
+point, if the depth axis needs a dose-response curve rather than a three-point
+contrast.

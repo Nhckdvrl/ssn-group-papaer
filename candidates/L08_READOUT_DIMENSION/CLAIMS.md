@@ -38,8 +38,13 @@ The protocol pair is difficulty-matched to within 0.002-0.005 in every model.
 Evidence: E02, E10 model extension.
 
 **C1.3 — Output length is a factor separate from protocol, and the larger of the two.**
-`supported`. Llama, first mask: rank 0.889 -> one generated token 0.837 -> generated
-chain 0.030. Evidence: E02, pre-registered depth contrast.
+`supported`, and now **causal within items**. Llama, first mask: rank 0.889 -> one
+generated token 0.837 -> generated chain 0.030 (E02, pre-registered depth contrast).
+E07 holds items, model, mask, content and protocol fixed and varies only the time
+window over which the mask is applied: truncating the opening 16 generated steps and
+then restoring the readout leaves 0.567, truncating everything after step 16 leaves
+0.313, and truncating throughout leaves 0.109. Early damage is largely recoverable;
+the collapse requires sustained exposure.
 
 **C1.4 — The parent's representational conclusion about mask identity is also
 protocol-bound.** `supported`.
