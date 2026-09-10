@@ -47,10 +47,16 @@ then restoring the readout leaves 0.567, truncating everything after step 16 lea
 the collapse requires sustained exposure.
 
 **C1.4 — The parent's representational conclusion about mask identity is also
-protocol-bound.** `supported`.
+protocol-bound.** `supported`, now with a random-mask control.
 "Removing first or last does not have an impact, indicating the presence of inefficient
-representation space usage by LLMs" reproduces exactly under ranking (ratio **1.0x**)
-and fails under generation (up to **13.0x**). Evidence: E02.
+representation space usage by LLMs" reproduces exactly under ranking and fails under
+generation. With three random half-masks added per cell, so that the comparison is at a
+*fixed count* of surviving dimensions: the best and worst of five different half-masks
+differ by **1.0-1.1x under ranking** and by **2.7-13.0x under generation**; the
+random-mask coefficient of variation goes from 0.4-2.6% to 9.7-50.9%. The structured
+halves are also not exchangeable with arbitrary ones — for Qwen's `mmlu_gen_cot` the
+random masks band at 0.052-0.064 while `first` is 0.146 and `last` is 0.011.
+Evidence: E02, E11.
 
 ---
 

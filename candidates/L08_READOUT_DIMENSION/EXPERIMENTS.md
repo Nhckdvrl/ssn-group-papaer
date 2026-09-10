@@ -689,3 +689,46 @@ moves the outcome.
 **Still to run.** The same schedule on a second model, and a sweep over the switch
 point, if the depth axis needs a dose-response curve rather than a three-point
 contrast.
+
+---
+
+## E11 — Random-mask control for the mask-identity result  `PARTIAL 2026-09-11`
+
+### C1.4, controlled with random masks (E11)
+
+The parent writes that removing the first or the last half "does not have an impact,
+**indicating the presence of inefficient representation space usage by LLMs**". That
+is a claim about the representation inferred from two structured masks. E11 adds three
+random half-masks per cell, so the question becomes: at a **fixed number of surviving
+dimensions**, how much does it matter *which* half survives?
+
+| model | cell | protocol | best/worst over five half-masks | CV across random masks |
+|---|---|---|---|---|
+| Llama 3.1 8B | `mmlu_rank` | ranking | **1.1x** | 2.6% |
+| Qwen 2.5 7B | `mmlu_rank` | ranking | **1.0x** | 0.4% |
+| Llama 3.1 8B | `gsm8k_gen_cot` | generation | **2.7x** | 22.2% |
+| Llama 3.1 8B | `mmlu_gen_cot` | generation | **5.6x** | 50.9% |
+| Qwen 2.5 7B | `mmlu_gen_cot` | generation | **13.0x** | 9.7% |
+
+Under ranking, five different half-masks agree to within 1.0-1.1x and the random-mask
+coefficient of variation is 0.4-2.6% — the parent's conclusion is exactly reproduced.
+Under generation the same five masks span 2.7-13.0x.
+
+The structured halves are also not exchangeable with arbitrary ones where it matters:
+for Qwen's `mmlu_gen_cot` the three random masks sit in a tight band of 0.052-0.064
+while `first` is 0.146 and `last` is 0.011 — one 2.4x above the band and the other 5x
+below it, in opposite directions.
+
+So both quantities matter under generation and neither matters under ranking: **how
+many** coordinates survive and **which** ones. The parent's representational inference
+is an artefact of the protocol it was measured under.
+
+```
+python scripts/make_plan_randmask.py > configs/plan_randmask.json   # or the inline plan
+python scripts/launch.py --plan configs/plan_randmask.json --gpus 0,1
+python scripts/analyze_e11_masks.py
+```
+
+Three random half-masks (seeds 11, 22, 33) per model x cell, `keep_frac` 0.5, the same
+items and the same scoring as every other condition. Qwen's `gsm8k_gen_cot` seeds are
+still running.

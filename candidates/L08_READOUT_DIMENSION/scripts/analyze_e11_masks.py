@@ -36,7 +36,7 @@ for p in (ROOT / "results" / "e01").rglob("*.jsonl"):
 
 CELLS = ["mmlu_rank", "mmlu_gen_cot", "gsm8k_gen_cot"]
 print(f"{'model':<20}{'cell':<16}{'first':>8}{'last':>8}"
-      f"{'rand mean':>11}{'rand sd':>9}{'rand min-max':>16}{'f/l ratio':>10}")
+      f"{'rand mean':>11}{'rand CV':>9}{'rand min-max':>16}{'f/l':>7}{'all-mask range':>16}")
 for (m, c), d in sorted(cond.items()):
     if c not in CELLS: continue
     f = full.get((m, c))
@@ -48,11 +48,16 @@ for (m, c), d in sorted(cond.items()):
     if not rnd: continue
     fl = [rel.get("first"), rel.get("last")]
     ratio = (max(fl) / min(fl)) if all(x is not None and x > 0 for x in fl) else float("nan")
+    cv = np.std(rnd) / np.mean(rnd) if np.mean(rnd) else float("nan")
+    # the honest "does the choice of mask matter" statistic: best vs worst of all five
+    allm = rnd + [x for x in fl if x is not None]
+    span = max(allm) / min(allm) if min(allm) > 0 else float("inf")
+    note = f"{min(allm):.3f}-{max(allm):.3f} = {span:.1f}x"
     print(f"{m[:19]:<20}{c:<16}{(fl[0] if fl[0] is not None else float('nan')):>8.3f}"
           f"{(fl[1] if fl[1] is not None else float('nan')):>8.3f}"
-          f"{np.mean(rnd):>11.3f}{np.std(rnd):>9.3f}"
-          f"   [{min(rnd):.3f},{max(rnd):.3f}]{ratio:>10.1f}x")
-print("\nIf the random spread is comparable to the first/last gap, generation is "
-      "sensitive to which coordinates survive in general, not to the identity of the "
-      "structured halves.  If the random masks cluster tightly and first/last sit "
-      "outside, the structured halves are special.")
+          f"{np.mean(rnd):>11.3f}{cv:>8.1%}"
+          f"   [{min(rnd):.3f},{max(rnd):.3f}]{ratio:>6.1f}x{note:>16}")
+print("\nCV is the coefficient of variation across the three random half-masks.  "
+      "'all-mask range' is the best over the worst of all five half-masks tried "
+      "(first, last, and three random seeds) -- the honest answer to 'does it matter "
+      "which half of the readout survives, at a fixed count of surviving dimensions'.")
