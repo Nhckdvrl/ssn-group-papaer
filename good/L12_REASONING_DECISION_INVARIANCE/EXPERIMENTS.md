@@ -379,8 +379,35 @@ trajectories greater relative control under both forms. This rule and donor
 selection are frozen before E20 behavior is inspected.
 
 The activation gate passed on both axes. Strict donor construction retains all
-137 base decisions: 542 OLMo and 546 Qwen form/order trace units. The four-regime
-factorial is in execution.
+137 base decisions: 542 OLMo and 546 Qwen form/order trace units. Trajectory-
+relative evidence control rises in both forms and axes: OLMo **+0.459 [0.401,
+0.518]** for raw and **+0.584 [0.532, 0.638]** for summary; Qwen **+0.563
+[0.506, 0.621]** for raw and **+0.749 [0.689, 0.808]** for summary. The branch/
+mode differences in prompt evidence control are only +0.014/+0.008 (OLMo) and
++0.012/+0.004 (Qwen). Thus the selective behavioral shift is tied to evidence-
+bearing trajectory control rather than a generic increase in prompt sensitivity.
+All 8,704 factorial rows pass exact cell and raw-hash validation.
+
+## L12-E21: Selective Pre-Answer State Mediation
+
+- **Question:** does the pre-answer state carry decision evidence while becoming
+  comparatively insensitive to whether that evidence arrived as a raw sequence
+  or frequency summary?
+- **Design:** within OLMo Think-SFT, construct four natural terminal-stripped
+  prefixes per problem (`raw/summary x empirical A/B`). For every target prefix,
+  substitute each donor's last-token residual state without exposing donor text.
+  The donor-state factorial therefore changes evidence and form independently.
+- **Frozen units:** 32 base decisions sampled as eight from each model-independent
+  evidence-strength quartile. All 137 E20 problems were eligible; selection uses
+  trace validity/evidence-following only, never margins, states, layers, or E21
+  results.
+- **Layers:** 0, 8, 16, 24, and 31, fixed from the prior full E19 profile. E21
+  tests carrier content rather than searching again for a privileged layer.
+- **Primary metric:** final-layer donor evidence effect minus donor form
+  sensitivity, with base-decision bootstrap uncertainty. The evidence component
+  must also have a 95% interval above zero; every component and layer is reported.
+- **Frozen config:** `configs/cpc18_selective_state.json`.
+- **Status:** design and units frozen before E21 state output; ready to execute.
 
 ## L12-E18L: Paired 20/100 History-Length Diagnosis
 

@@ -1,0 +1,579 @@
+{
+  "design": "L12-E21 selective pre-answer state mediation",
+  "frozen_at": "2026-09-10T12:06:48+09:00",
+  "seed": 173,
+  "model": {
+    "name": "olmo_think_sft",
+    "pair": "olmo_sft",
+    "role": "reasoning",
+    "id": "allenai/Olmo-3-7B-Think-SFT",
+    "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+    "max_tokens": 3072,
+    "requires_closed_think": true
+  },
+  "source_result_dir": "results/cpc18_form_evidence_seed157",
+  "selection_rule": "require strict terminal-stripped OLMo Think trajectories that naturally follow both evidence directions in both forms under one displayed order; choose an eligible order by a problem-keyed seed; sample eight problems from each model-independent mean-evidence-strength quartile",
+  "outcome_blind_selection_boundary": "trace validity and natural evidence-following determine intervention eligibility; no margin, hidden state, layer, patch, or E21 result enters selection",
+  "n_candidate_problems": 137,
+  "n_selected_base_decisions": 32,
+  "scan_layers": [
+    0,
+    8,
+    16,
+    24,
+    31
+  ],
+  "layer_selection": "sparse early/middle/late checkpoints fixed from the prior 32-layer E19 profile; E21 tests carrier content rather than localizing a privileged layer",
+  "primary_metric": "state_selectivity = donor_evidence_effect - donor_form_sensitivity at layer 31",
+  "primary_decision_rule": "final-layer state_selectivity and donor_evidence_effect have base-decision bootstrap 95% intervals above zero; report donor-form sensitivity and all layers",
+  "unit_of_analysis": "base decision; target conditions, donor conditions, and layers are nested",
+  "bootstrap_samples": 5000,
+  "result_dir": "results/cpc18_selective_state_seed173",
+  "selected_units": [
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_005",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.19999999999999996,
+      "sample_indices": {
+        "raw": {
+          "A": 1,
+          "B": 2
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_006",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.21250000000000002,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_026",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.25,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 1
+        },
+        "summary": {
+          "A": 0,
+          "B": 3
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_033",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.125,
+      "sample_indices": {
+        "raw": {
+          "A": 2,
+          "B": 0
+        },
+        "summary": {
+          "A": 1,
+          "B": 2
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_039",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.056896551724137885,
+      "sample_indices": {
+        "raw": {
+          "A": 3,
+          "B": 0
+        },
+        "summary": {
+          "A": 4,
+          "B": 6
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_040",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.09236641221374045,
+      "sample_indices": {
+        "raw": {
+          "A": 3,
+          "B": 0
+        },
+        "summary": {
+          "A": 1,
+          "B": 1
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_046",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.14527027027027029,
+      "sample_indices": {
+        "raw": {
+          "A": 4,
+          "B": 0
+        },
+        "summary": {
+          "A": 2,
+          "B": 2
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_051",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.12645348837209303,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 1,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_063",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.04680851063829786,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 1,
+          "B": 4
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_068",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.125,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 1
+        },
+        "summary": {
+          "A": 0,
+          "B": 1
+        }
+      }
+    },
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_071",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.2485294117647059,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 7
+        },
+        "summary": {
+          "A": 0,
+          "B": 5
+        }
+      }
+    },
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_080",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.30000000000000004,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 3,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_090",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.25,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 1,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_098",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.1126865671641791,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 1
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_100",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.19999999999999998,
+      "sample_indices": {
+        "raw": {
+          "A": 1,
+          "B": 4
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_108",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.175,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 3,
+          "B": 3
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_123",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.11714285714285712,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_151",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.04076086956521739,
+      "sample_indices": {
+        "raw": {
+          "A": 1,
+          "B": 1
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_161",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.03823529411764706,
+      "sample_indices": {
+        "raw": {
+          "A": 2,
+          "B": 4
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_183",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.15083333333333335,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 0,
+          "B": 1
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_186",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.15000000000000002,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 1
+        },
+        "summary": {
+          "A": 1,
+          "B": 1
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_189",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.075,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 0,
+          "B": 1
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_193",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.05081967213114756,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 2
+        },
+        "summary": {
+          "A": 1,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 4,
+      "problem": "cpc18_200",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.22499999999999998,
+      "sample_indices": {
+        "raw": {
+          "A": 2,
+          "B": 0
+        },
+        "summary": {
+          "A": 0,
+          "B": 4
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_205",
+      "source_split": "calibration",
+      "order": "ba",
+      "mean_evidence_strength": 0.13709677419354838,
+      "sample_indices": {
+        "raw": {
+          "A": 2,
+          "B": 3
+        },
+        "summary": {
+          "A": 2,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_208",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.15298013245033112,
+      "sample_indices": {
+        "raw": {
+          "A": 2,
+          "B": 0
+        },
+        "summary": {
+          "A": 1,
+          "B": 1
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_210",
+      "source_split": "calibration",
+      "order": "ab",
+      "mean_evidence_strength": 0.07340425531914893,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 2
+        },
+        "summary": {
+          "A": 2,
+          "B": 2
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_232",
+      "source_split": "competition",
+      "order": "ba",
+      "mean_evidence_strength": 0.04488636363636365,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 6,
+          "B": 1
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_240",
+      "source_split": "competition",
+      "order": "ba",
+      "mean_evidence_strength": 0.02383720930232559,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 3
+        },
+        "summary": {
+          "A": 1,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 2,
+      "problem": "cpc18_249",
+      "source_split": "competition",
+      "order": "ab",
+      "mean_evidence_strength": 0.1227272727272727,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 3
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 1,
+      "problem": "cpc18_252",
+      "source_split": "competition",
+      "order": "ba",
+      "mean_evidence_strength": 0.05153846153846156,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 1
+        },
+        "summary": {
+          "A": 0,
+          "B": 0
+        }
+      }
+    },
+    {
+      "strength_quartile": 3,
+      "problem": "cpc18_269",
+      "source_split": "competition",
+      "order": "ab",
+      "mean_evidence_strength": 0.175,
+      "sample_indices": {
+        "raw": {
+          "A": 0,
+          "B": 0
+        },
+        "summary": {
+          "A": 0,
+          "B": 1
+        }
+      }
+    }
+  ],
+  "source_sha256": "3813750ca76526d0e36e0409e63e6b2bfbaafd7d367d8476436b20c57c0c1735"
+}

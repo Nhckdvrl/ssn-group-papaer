@@ -1,0 +1,365 @@
+{
+  "design": "L12-E20 evidence prompt-by-trajectory factorial within form",
+  "olmo_instruct_sft": {
+    "pair": "olmo_sft",
+    "role": "standard",
+    "forms": {
+      "raw": {
+        "n_base_decisions": 137,
+        "delta_p": {
+          "mean": 0.0012545991185704025,
+          "base_decision_bootstrap_ci95": [
+            -0.0018207125546597794,
+            0.004321014508966117
+          ],
+          "positive_base_decision_fraction": 0.5401459854014599
+        },
+        "delta_r": {
+          "mean": 0.18904739902276171,
+          "base_decision_bootstrap_ci95": [
+            0.13415712440441063,
+            0.2436656771130527
+          ],
+          "positive_base_decision_fraction": 0.7591240875912408
+        },
+        "delta_control": {
+          "mean": 0.18779279990419134,
+          "base_decision_bootstrap_ci95": [
+            0.13242936183594484,
+            0.24152360001369566
+          ],
+          "positive_base_decision_fraction": 0.7518248175182481
+        }
+      },
+      "summary": {
+        "n_base_decisions": 137,
+        "delta_p": {
+          "mean": -0.0034616057368855387,
+          "base_decision_bootstrap_ci95": [
+            -0.009397489708392843,
+            0.0028455979163203183
+          ],
+          "positive_base_decision_fraction": 0.48175182481751827
+        },
+        "delta_r": {
+          "mean": 0.11722105742754231,
+          "base_decision_bootstrap_ci95": [
+            0.06540425978836253,
+            0.16853676596115788
+          ],
+          "positive_base_decision_fraction": 0.6423357664233577
+        },
+        "delta_control": {
+          "mean": 0.12068266316442784,
+          "base_decision_bootstrap_ci95": [
+            0.06788226014694002,
+            0.1700733314752434
+          ],
+          "positive_base_decision_fraction": 0.656934306569343
+        }
+      }
+    }
+  },
+  "olmo_think_sft": {
+    "pair": "olmo_sft",
+    "role": "reasoning",
+    "forms": {
+      "raw": {
+        "n_base_decisions": 137,
+        "delta_p": {
+          "mean": 0.015184349470002207,
+          "base_decision_bootstrap_ci95": [
+            0.01046966924956181,
+            0.02018680256966856
+          ],
+          "positive_base_decision_fraction": 0.7664233576642335
+        },
+        "delta_r": {
+          "mean": 0.6621148910323101,
+          "base_decision_bootstrap_ci95": [
+            0.6248835912384489,
+            0.6997562017953733
+          ],
+          "positive_base_decision_fraction": 0.9927007299270073
+        },
+        "delta_control": {
+          "mean": 0.646930541562308,
+          "base_decision_bootstrap_ci95": [
+            0.6078560252619009,
+            0.6860665976760074
+          ],
+          "positive_base_decision_fraction": 0.9927007299270073
+        }
+      },
+      "summary": {
+        "n_base_decisions": 137,
+        "delta_p": {
+          "mean": 0.004535095374445086,
+          "base_decision_bootstrap_ci95": [
+            0.00044671039578642334,
+            0.008656522251393897
+          ],
+          "positive_base_decision_fraction": 0.6788321167883211
+        },
+        "delta_r": {
+          "mean": 0.7090829283080285,
+          "base_decision_bootstrap_ci95": [
+            0.667585833645818,
+            0.7497796322551259
+          ],
+          "positive_base_decision_fraction": 0.9854014598540146
+        },
+        "delta_control": {
+          "mean": 0.7045478329335835,
+          "base_decision_bootstrap_ci95": [
+            0.6617071541519531,
+            0.7441770712951498
+          ],
+          "positive_base_decision_fraction": 0.9854014598540146
+        }
+      }
+    }
+  },
+  "qwen_thinking": {
+    "pair": "qwen_mode",
+    "role": "reasoning",
+    "forms": {
+      "raw": {
+        "n_base_decisions": 136,
+        "delta_p": {
+          "mean": 0.019943611135391594,
+          "base_decision_bootstrap_ci95": [
+            0.012610931861985586,
+            0.028276200032621785
+          ],
+          "positive_base_decision_fraction": 0.8161764705882353
+        },
+        "delta_r": {
+          "mean": 0.7477022697600361,
+          "base_decision_bootstrap_ci95": [
+            0.7001497171650393,
+            0.7944023661697731
+          ],
+          "positive_base_decision_fraction": 0.9779411764705882
+        },
+        "delta_control": {
+          "mean": 0.7277586586246446,
+          "base_decision_bootstrap_ci95": [
+            0.677021782820221,
+            0.7765143421695413
+          ],
+          "positive_base_decision_fraction": 0.9779411764705882
+        }
+      },
+      "summary": {
+        "n_base_decisions": 137,
+        "delta_p": {
+          "mean": 0.001541465551341848,
+          "base_decision_bootstrap_ci95": [
+            -0.006299083947962251,
+            0.009637310752356814
+          ],
+          "positive_base_decision_fraction": 0.6934306569343066
+        },
+        "delta_r": {
+          "mean": 0.7727950103772999,
+          "base_decision_bootstrap_ci95": [
+            0.7292077348964384,
+            0.8143725240220213
+          ],
+          "positive_base_decision_fraction": 1.0
+        },
+        "delta_control": {
+          "mean": 0.7712535448259582,
+          "base_decision_bootstrap_ci95": [
+            0.7291551830708763,
+            0.812524858492247
+          ],
+          "positive_base_decision_fraction": 1.0
+        }
+      }
+    }
+  },
+  "qwen_non_thinking": {
+    "pair": "qwen_mode",
+    "role": "standard",
+    "forms": {
+      "raw": {
+        "n_base_decisions": 136,
+        "delta_p": {
+          "mean": 0.00808701062787271,
+          "base_decision_bootstrap_ci95": [
+            0.002649162273270567,
+            0.013566795796985871
+          ],
+          "positive_base_decision_fraction": 0.5955882352941176
+        },
+        "delta_r": {
+          "mean": 0.17322998366248885,
+          "base_decision_bootstrap_ci95": [
+            0.12941605719309687,
+            0.21753325268652107
+          ],
+          "positive_base_decision_fraction": 0.7647058823529411
+        },
+        "delta_control": {
+          "mean": 0.16514297303461611,
+          "base_decision_bootstrap_ci95": [
+            0.12367536203146574,
+            0.20711982853414854
+          ],
+          "positive_base_decision_fraction": 0.75
+        }
+      },
+      "summary": {
+        "n_base_decisions": 137,
+        "delta_p": {
+          "mean": -0.0023379953867878034,
+          "base_decision_bootstrap_ci95": [
+            -0.006913880542815854,
+            0.0021225639219445997
+          ],
+          "positive_base_decision_fraction": 0.45985401459854014
+        },
+        "delta_r": {
+          "mean": 0.019451315448038173,
+          "base_decision_bootstrap_ci95": [
+            -0.02068419240905404,
+            0.05795257443116668
+          ],
+          "positive_base_decision_fraction": 0.5255474452554745
+        },
+        "delta_control": {
+          "mean": 0.021789310834825982,
+          "base_decision_bootstrap_ci95": [
+            -0.01638423061494577,
+            0.06036021314190876
+          ],
+          "positive_base_decision_fraction": 0.5182481751824818
+        }
+      }
+    }
+  },
+  "reasoning_minus_standard": {
+    "olmo_sft": {
+      "reasoning_regime": "olmo_think_sft",
+      "standard_regime": "olmo_instruct_sft",
+      "forms": {
+        "raw": {
+          "n_paired_base_decisions": 137,
+          "delta_p_difference": {
+            "mean": 0.013929750351431805,
+            "base_decision_bootstrap_ci95": [
+              0.008101396568685061,
+              0.019720907880900387
+            ],
+            "positive_base_decision_fraction": 0.6423357664233577
+          },
+          "delta_r_difference": {
+            "mean": 0.4730674920095485,
+            "base_decision_bootstrap_ci95": [
+              0.4139254914061706,
+              0.5311764559054154
+            ],
+            "positive_base_decision_fraction": 0.9343065693430657
+          },
+          "delta_control_difference": {
+            "mean": 0.45913774165811666,
+            "base_decision_bootstrap_ci95": [
+              0.40075303650513644,
+              0.5184082595497133
+            ],
+            "positive_base_decision_fraction": 0.9343065693430657
+          }
+        },
+        "summary": {
+          "n_paired_base_decisions": 137,
+          "delta_p_difference": {
+            "mean": 0.007996701111330625,
+            "base_decision_bootstrap_ci95": [
+              0.001301679559249546,
+              0.014580137618248602
+            ],
+            "positive_base_decision_fraction": 0.583941605839416
+          },
+          "delta_r_difference": {
+            "mean": 0.5918618708804863,
+            "base_decision_bootstrap_ci95": [
+              0.5389993531049347,
+              0.644162668965153
+            ],
+            "positive_base_decision_fraction": 0.9854014598540146
+          },
+          "delta_control_difference": {
+            "mean": 0.5838651697691556,
+            "base_decision_bootstrap_ci95": [
+              0.5316691091104342,
+              0.6377987966097592
+            ],
+            "positive_base_decision_fraction": 0.9854014598540146
+          }
+        }
+      }
+    },
+    "qwen_mode": {
+      "reasoning_regime": "qwen_thinking",
+      "standard_regime": "qwen_non_thinking",
+      "forms": {
+        "raw": {
+          "n_paired_base_decisions": 136,
+          "delta_p_difference": {
+            "mean": 0.011856600507518885,
+            "base_decision_bootstrap_ci95": [
+              0.0026739706081773174,
+              0.021456971724026722
+            ],
+            "positive_base_decision_fraction": 0.5808823529411765
+          },
+          "delta_r_difference": {
+            "mean": 0.5744722860975473,
+            "base_decision_bootstrap_ci95": [
+              0.5188891625048904,
+              0.6317063751804954
+            ],
+            "positive_base_decision_fraction": 0.9411764705882353
+          },
+          "delta_control_difference": {
+            "mean": 0.5626156855900284,
+            "base_decision_bootstrap_ci95": [
+              0.5059132875934388,
+              0.62050333305864
+            ],
+            "positive_base_decision_fraction": 0.9264705882352942
+          }
+        },
+        "summary": {
+          "n_paired_base_decisions": 137,
+          "delta_p_difference": {
+            "mean": 0.003879460938129652,
+            "base_decision_bootstrap_ci95": [
+              -0.004721911262193552,
+              0.013125890412242805
+            ],
+            "positive_base_decision_fraction": 0.5474452554744526
+          },
+          "delta_r_difference": {
+            "mean": 0.7533436949292618,
+            "base_decision_bootstrap_ci95": [
+              0.6945954554528883,
+              0.8143994460595572
+            ],
+            "positive_base_decision_fraction": 0.9781021897810219
+          },
+          "delta_control_difference": {
+            "mean": 0.7494642339911322,
+            "base_decision_bootstrap_ci95": [
+              0.6890553501157175,
+              0.8075231164667344
+            ],
+            "positive_base_decision_fraction": 0.9854014598540146
+          }
+        }
+      }
+    }
+  }
+}

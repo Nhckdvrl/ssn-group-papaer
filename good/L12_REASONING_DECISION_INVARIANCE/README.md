@@ -57,8 +57,10 @@ The discovery pilot supports **progressive construction plus late consolidation*
     reasoning changes what the model is sensitive to. The OLMo selective-
     sensitivity shift is **+1.229 [1.195, 1.262]** and the same-weight Qwen
     shift is **+0.709 [0.638, 0.778]**: sensitivity to form falls while
-    sensitivity to decision evidence rises. E20-C is testing whether the same
-    relocation appears in causal trajectory control.
+    sensitivity to decision evidence rises. The causal factorial confirms the
+    same relocation: trajectory-relative evidence control rises by **+0.459/
+    +0.584** (raw/summary) in OLMo and **+0.563/+0.749** in Qwen, while prompt
+    evidence-control differences stay near zero.
 
 ## Claim architecture
 
