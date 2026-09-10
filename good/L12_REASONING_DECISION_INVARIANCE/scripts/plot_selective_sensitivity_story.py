@@ -99,7 +99,11 @@ def main():
         ax.set_axisbelow(True)
 
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUTPUT / "selective_sensitivity_story.pdf", bbox_inches="tight")
+    fig.savefig(
+        OUTPUT / "selective_sensitivity_story.pdf",
+        bbox_inches="tight",
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     fig.savefig(OUTPUT / "selective_sensitivity_story.png", dpi=220, bbox_inches="tight")
 
 

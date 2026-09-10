@@ -64,6 +64,13 @@ def report(values, seed):
     }
 
 
+def json_record(row):
+    return {
+        key: None if isinstance(value, float) and not np.isfinite(value) else value
+        for key, value in row.items()
+    }
+
+
 def main():
     output = ROOT / CONFIG["result_dir"]
     unit = {}
@@ -109,7 +116,8 @@ def main():
         pair_summary["difference_100_minus_20"] = report(change, CONFIG["seed"] + 120 + pair_index)
         summary["reasoning_minus_standard"][pair] = pair_summary
     with (output / "behavior_unit_metrics.jsonl").open("w") as handle:
-        for row in rows: handle.write(json.dumps(row) + "\n")
+        for row in rows:
+            handle.write(json.dumps(json_record(row), allow_nan=False) + "\n")
     (output / "behavior_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
 

@@ -47,6 +47,17 @@ CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts
 L12_CPC18_CONFIG=configs/cpc18_competition_preregistered.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_control.py
 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/validate_cpc18_execution.py --config configs/cpc18_competition_preregistered.json
 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_replication.py
+L12_FORM_EVIDENCE_CONFIG=configs/cpc18_form_evidence_preregistered.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_form_evidence.py
+L12_FORM_EVIDENCE_CONFIG=configs/cpc18_form_evidence_preregistered.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_form_evidence_control.py
+L12_FORM_EVIDENCE_CONFIG=configs/cpc18_form_evidence_preregistered.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/validate_cpc18_form_evidence.py
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_selective_state.py
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/validate_cpc18_selective_state.py
+L12_FORM_EVIDENCE_CONFIG=configs/cpc18_form_evidence_llama_external.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_form_evidence.py
+L12_FORM_EVIDENCE_CONFIG=configs/cpc18_form_evidence_llama_external.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_form_evidence_control.py
+L12_FORM_EVIDENCE_CONFIG=configs/cpc18_form_evidence_llama_external.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/validate_cpc18_form_evidence.py
+L12_CPC18_CONFIG=configs/cpc18_history_length_diagnostic.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/summarize_cpc18_history_length.py
+L12_CPC18_CONFIG=configs/cpc18_history_length_diagnostic.json /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/validate_cpc18_history_length.py
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/plot_selective_sensitivity_story.py
 ```
 
 `run_behavior.sh` needs three free GPUs. The archived invalid runs are documented in `results/pilot_seed29/INVALID_RUNS.md` and are not reproduced by the formal pipeline.

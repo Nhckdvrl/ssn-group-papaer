@@ -158,3 +158,45 @@ Both exact safetensors snapshots were subsequently cached outside the repository
   [5.914, 8.276].
 - The 3,072-row patch output remains ignored. Its checksum, byte size, and row
   count are recorded in the committed summary.
+
+## Form-by-Evidence Execution Audit
+
+- E20 was frozen after the exploratory E18 audit but before scoring any of its
+  histories. It uses 137 previously unscored CPC18 base decisions: 104 calibration
+  and 33 competition problems.
+- Each decision supplies two real 20-trial histories with opposite empirical EV
+  directions, minimum normalized empirical gap 0.02, and strength ratio at most
+  1.5. Selection uses no model output. Raw and empirical-summary forms encode the
+  identical observed payoff multiset.
+- Each of four controlled regimes contains exactly 10,960 behavior rows. All
+  condition keys, history IDs, prompt hashes, row counts, and raw hashes pass
+  `validate_cpc18_form_evidence.py`.
+- E20-C uses 542 strict OLMo and 546 strict Qwen form/order trajectory units,
+  covering all 137 base decisions. Every unit supplies exactly four crossed
+  prompt-evidence by trajectory-evidence cells under both regimes in its axis.
+- E21 freezes 32 decisions before patch outcomes, eight per model-independent
+  evidence-strength quartile. The first execution used displayed-A instead of
+  underlying-A probability under reversed order and is invalid. After a committed
+  coordinate correction and synthetic `ba` direction test, all 2,560 rerun rows,
+  expected cells, layers, and raw hashes pass audit.
+- E22 repeats the behavior decomposition over all 137 decisions using the audited
+  Llama-Instruct mirror and official DeepSeek revision. Each has 10,960 behavior
+  rows and 2,192 complete control rows. The external result is replication only;
+  it cannot isolate training data, pipeline, tokenizer, template, or configuration.
+- Full E20-E22 continuations and patch rows remain local. Compact unit metrics,
+  summaries, manifests, model metadata, and execution audits are committed.
+
+## Paired History-Length Audit
+
+- E18L simulates four 100-trial histories from each frozen competition
+  distribution; the 20-trial condition is the exact prefix of its matched
+  100-trial history. No model output enters construction.
+- Every regime contains 7,920 rows over all 44 decisions, with no duplicate keys;
+  every row count, prompt hash, byte count, and raw SHA-256 passes validation.
+- Empirical EV direction agreement rises from 0.750 at 20 trials to 0.847 at 100.
+  However, 100-trial reasoning history-cell validity falls to 0.332 for OLMo and
+  0.343 for Qwen, almost entirely because generations hit the frozen token cap
+  before a closed reasoning block and terminal answer.
+- Conditional estimates are reported with their finite-unit counts, but sharp
+  invalid-output bounds cross zero on both axes. E18L is inconclusive and supports
+  no paper claim.

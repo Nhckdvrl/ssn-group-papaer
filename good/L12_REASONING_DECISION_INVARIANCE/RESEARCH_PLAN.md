@@ -1,88 +1,65 @@
 # L12 Research Plan
 
+**Status:** evidence program complete; manuscript synthesis next
+
 ## Core RQ
 
-> Why does reasoning-oriented post-training produce presentation-invariant decisions, and does it reorganize causal control from prompt-conditioned choice to trajectory-mediated decision formation?
+> Why do reasoning models become invariant to some changes in presentation while
+> remaining sensitive to others, and does reasoning reallocate causal decision
+> control from prompt form toward an evidence-bearing trajectory and its state?
 
-## Evidence chain now established
+## Final explanatory chain
 
-1. **Behavioral substrate:** order-conditional frame consistency rises from 0.750 in Instruct-SFT to 0.992 in Think-SFT on the parent prospects.
-2. **No simple erasure:** frame identity remains decodable early/mid, weakening simple representational erasure.
-3. **Distributed trajectory control (E07):** after terminal decisions are removed, own stripped trajectories exceed empty by +2.62 [2.01, 2.99] and opposite stripped trajectories by +4.86 [3.47, 5.77]. The terminal portion adds +7.05 [6.75, 7.40].
-4. **Decision-state mediation (E08):** opposite-decision state substitution has negligible early effects, reverses the mean target margin at layer 17, and reaches a +5.09 [3.77, 5.98] donor-directed shift with 0.804 donor flips at the final layer.
-5. **Mechanism-phenomenon bridge (E09):** stripped-trajectory control is +0.586 [0.278, 0.857] in Think-SFT and +0.012 [-0.324, 0.393] in Instruct-SFT. The branch difference in trajectory-minus-prompt control is +0.569 [0.026, 1.062].
+1. **Construction:** natural reasoning develops decision direction before the
+   explicit commitment; the commitment strongly consolidates it.
+2. **Carrier:** the trajectory builds a late pre-answer state that can transfer
+   decision direction without donor text.
+3. **Reallocation:** reasoning regimes give the trajectory/state more relative
+   control than standard instruction regimes.
+4. **Selective consequence:** the new controller suppresses sensitivity to form
+   while preserving or amplifying sensitivity to evidence.
 
-The current interpretation is **progressive construction plus late consolidation**: the natural trajectory establishes a decision direction before explicit commitment, a late state carries that direction into decoding, and this route is substantially stronger in the reasoning-oriented branch.
+## Completed load-bearing program
 
-## Completed evidence program
+| Claim layer | Lead evidence | Breadth/confirmation |
+|---|---|---|
+| Construction and consolidation | E07 terminal stripping and opposite trajectories; E08 state profile | E11 frozen state replication; E19 on 48 natural decisions; E15 external triangulation |
+| Causal-control reallocation | E09 prompt-by-trajectory factorial | E10 36 decisions; E12 DPO persistence; E13 Qwen same weights; E17 151 decisions; E18 untouched confirmation |
+| Selective sensitivity | E20 prospective 2 form x 2 evidence behavior | E20-C trajectory control; E21 state content; E22 external Llama ecosystem |
 
-### E10 - Independent-decision behavioral and control bridge - completed
+E18P rules out low generation count as the source of OLMo's heldout behavioral
+null. E18L is a completed but inconclusive appendix diagnosis because 100-trial
+raw tables cause severe reasoning truncation. Neither is a headline claim.
 
-Build a preregistered set of at least 30 simple, gold-verifiable base decisions. First run the sibling behavioral comparison, then the E09 prompt-by-trajectory factorial on successful matched traces.
+## Manuscript work plan
 
-Primary questions:
+1. Build the introduction around the ambiguity of behavioral invariance, not
+   activation patching.
+2. Present E18's OLMo dissociation as the observation that reveals a construct
+   confound, then preserve chronology into prospective E20.
+3. Use three claims only: construction/state, control reallocation, selective
+   evidence sensitivity.
+4. Keep model/checkpoint results under those claims rather than promoting every
+   replication into a contribution.
+5. Regenerate all tables and the three-panel story figure from tracked summaries.
+6. Run an adversarial compression review against the closest current papers in
+   `RELATED_WORK.md` before freezing the abstract.
 
-1. Does Think-SFT's invariance advantage replicate across independent base decisions?
-2. Is Think-SFT's trajectory-minus-prompt control consistently larger than Instruct-SFT's?
-3. Across base decisions, is the branch change in causal-control structure associated with the branch change in presentation invariance?
+## Expansion rule
 
-The corrected order-conditional behavioral difference is +0.299 [0.239, 0.357]. The causal-control branch difference is +0.399 [0.337, 0.464], positive on all 36 decisions. The recomputed item-level association is null (rho = -0.001, p = 0.997); no monotonic per-item coupling claim is made.
-
-### E11 - Mechanistic replication on a stratified subset - completed
-
-On 18 preregistered decisions, the mean margin again reverses at layer 17; final donor shift is +4.868 [4.056, 5.813] and positive for 18/18 decisions.
-
-### E12 - Meaningful training-axis validation - completed
-
-The documented Instruct-SFT -> Instruct-DPO and Think-SFT -> Think-DPO axis preserves the mechanism. The DPO Think-minus-Instruct trajectory-relative control difference is +0.472 [0.401, 0.555], positive on all 36 decisions. This is continuation-axis persistence, not one-variable training attribution.
-
-### E13 - Same-weight cross-family route validation - completed
-
-On Qwen3-8B, the official thinking route increases frame consistency from 0.160 to 1.000, a matched +0.836 [0.757, 0.911], and exceeds the non-thinking route in trajectory-minus-prompt control by +0.604 [0.550, 0.661]. Because the native hard switch changes whether stripped text appears inside the reasoning channel or after an empty closed reasoning channel, this is complementary evidence for route-dependent integration rather than a pure latent mode intervention.
-
-### E14 - Llama-ecosystem external replication - completed
-
-The aligned behavior/control transition replicates. DeepSeek exceeds Llama-Instruct in frame consistency by +0.947 [0.913, 0.976] and in trajectory-minus-prompt control by +0.067 [0.037, 0.099]. The behavior result uses an audited terminal-answer parser; the initial generic-parser summary is invalid and retained nowhere as evidence.
-
-### E15 - External state mediation - completed
-
-On the frozen 18-decision subset, opposite-decision pre-answer state substitution is near zero early, becomes reliably donor-directed at layer 14, and reaches +1.222 [0.299, 2.181] at the final layer. This supports an external state-mediation correlate without implying identical layer geometry or effect universality.
-
-### E16 - CPC18 calibration audit and frozen corpus construction - completed
-
-The frozen audit retained 151/210 independent known-risk problems, passing the
-gate of 150. Each has exact-EV gold and three real 20-trial histories; no human
-identifier is exported. CPC18 therefore supplies both scale and a qualitatively
-different presentation family, and Choices13k is not needed to rescue sample size.
-
-### E17 - Description/history control reorganization - completed
-
-Across 151 calibration problems, OLMo and Qwen show trajectory-relative control
-differences of +0.202 [0.162, 0.244] and +0.163 [0.121, 0.205]. The unmatched
-Llama/DeepSeek axis is null, +0.019 [-0.005, 0.043], and its behavioral reversal
-exposes chance-level invariance as a boundary.
-
-### E18 - Held-out confirmation - completed
-
-The full contract was committed before source access. Forty-four of 60 competition
-problems passed unchanged inclusion criteria. The preregistered control gate passes
-for OLMo, +0.097 [0.002, 0.180], and Qwen, +0.219 [0.152, 0.288]. Qwen's supporting
-behavioral effect confirms; OLMo's does not. E19 separately confirms state mediation
-on 48 frozen calibration decisions.
-
-## Reopened account test: form versus evidence
-
-Post-hoc, model-independent inspection showed that the original explicit/history
-manipulation changes both representation form and finite-sample evidence. Across
-the 195 existing problems, empirical-history agreement strongly tracks the observed
-behavioral contrast. This is a hypothesis generator, not confirmation. The study is
-reopened only to orthogonalize form and evidence with previously unscored real
-histories. E18P first rules out coarse three-sample behavior measurement; E20 then
-tests the selective-sensitivity account prospectively. Additional model families,
-token/head localization, and training methods remain out of scope.
+No more model-zoo, layer-search, snippet, or truncation experiments are planned.
+A new experiment must answer a specific inference exposed by manuscript review
+and must deepen the three-claim chain. A surprising result may reconstruct the
+story only if it survives an independent confirmatory design; it may not become a
+post-hoc subgroup claim.
 
 ## Decision rule
 
-- **GO:** C1-C3 remain directionally stable over independent decisions, a credible training-axis validation agrees, and at least one complementary family-level route validation agrees qualitatively.
-- **RECONSTRUCT:** takeover is restricted to a clear, meaningful boundary such as arithmetic transparency; make that boundary the conclusion.
-- **HOLD/KILL:** the three-prospect mechanism fails across independent units, or closest prior work compresses the complete paper identity.
+- **GO:** the present state. Prospective selective sensitivity, causal trajectory
+  control, state mediation, and external breadth all agree.
+- **RECONSTRUCT:** a manuscript-level audit finds that form/evidence selectivity
+  is fully compressed by a direct prior or that the causal bridge cannot support
+  the narrative.
+- **HOLD/KILL:** raw/result provenance fails, the independent-unit analysis does
+  not regenerate, or a fresh paper owns the entire identity rather than one
+  ingredient.

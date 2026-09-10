@@ -83,6 +83,13 @@ def summarize_metric(values, seed):
     }
 
 
+def json_record(row):
+    return {
+        key: None if isinstance(value, float) and not np.isfinite(value) else value
+        for key, value in row.items()
+    }
+
+
 def main():
     output = ROOT / CONFIG["result_dir"]
     units = {}
@@ -141,7 +148,7 @@ def main():
 
     with (output / "behavior_unit_metrics.jsonl").open("w") as handle:
         for row in output_rows:
-            handle.write(json.dumps(row) + "\n")
+            handle.write(json.dumps(json_record(row), allow_nan=False) + "\n")
     (output / "behavior_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
 
