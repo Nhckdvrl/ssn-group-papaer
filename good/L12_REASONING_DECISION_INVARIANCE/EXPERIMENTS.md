@@ -456,7 +456,13 @@ All 8,704 factorial rows pass exact cell and raw-hash validation.
   decisions, with no duplicate condition keys; row counts and raw SHA-256 hashes
   pass the frozen execution audit.
 - **Status:** **behavioral gate passed; external evidence prompt-by-trajectory
-  factorial activated.** The behavior result is external-family breadth, not
+  factorial activated and completed.** In the causal factorial, DeepSeek-minus-
+  Llama trajectory-relative evidence control is **+0.175 [0.131, 0.221]** in
+  raw-history form and **+0.143 [0.106, 0.180]** in summary form. The corresponding
+  prompt-control differences are only +0.0046 and +0.0021 (the summary interval
+  includes zero); the external contrast is driven by trajectory control. Every
+  problem supplies both forms and all four prompt-by-trajectory cells, and the
+  full execution audit passes. The result provides external-family breadth, not
   training attribution.
 
 ## L12-E18L: Paired 20/100 History-Length Diagnosis
