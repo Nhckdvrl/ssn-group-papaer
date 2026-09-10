@@ -1,0 +1,49 @@
+model                             cell               mask        acc     rel   extra
+Meta-Llama-3.1-8B-Instruct        gsm8k_gen_cot      full     0.7420   1.000   acc_permissive=0.786 acc_flexible=0.784 format_rate=0.946 mean_out_chars=234.794
+Meta-Llama-3.1-8B-Instruct        gsm8k_gen_cot      first    0.0000   0.000   acc_permissive=0.086 acc_flexible=0.086 format_rate=0.000 mean_out_chars=461.040
+Meta-Llama-3.1-8B-Instruct        gsm8k_gen_cot      last     0.0140   0.019   acc_permissive=0.186 acc_flexible=0.186 format_rate=0.014 mean_out_chars=950.152
+
+Meta-Llama-3.1-8B-Instruct        gsm8k_gen_direct   full     0.1600   1.000   acc_permissive=0.160 acc_flexible=0.160 format_rate=1.000 mean_out_chars=9.180
+Meta-Llama-3.1-8B-Instruct        gsm8k_gen_direct   first    0.0000   0.000   acc_permissive=0.104 acc_flexible=0.104 format_rate=0.002 mean_out_chars=8.268
+Meta-Llama-3.1-8B-Instruct        gsm8k_gen_direct   last     0.0020   0.013   acc_permissive=0.020 acc_flexible=0.020 format_rate=0.028 mean_out_chars=65.180
+
+Meta-Llama-3.1-8B-Instruct        mmlu_gen_cot       full     0.6675   1.000   parse_rate=0.927 mean_out_chars=2269.950
+Meta-Llama-3.1-8B-Instruct        mmlu_gen_cot       first    0.0200   0.030   parse_rate=0.068 mean_out_chars=615.280
+Meta-Llama-3.1-8B-Instruct        mmlu_gen_cot       last     0.1075   0.161   parse_rate=0.185 mean_out_chars=1399.527
+
+Meta-Llama-3.1-8B-Instruct        mmlu_gen_letter    full     0.6810   1.000   parse_rate=1.000 mean_out_chars=2.003
+Meta-Llama-3.1-8B-Instruct        mmlu_gen_letter    first    0.5700   0.837   parse_rate=0.952 mean_out_chars=2.958
+Meta-Llama-3.1-8B-Instruct        mmlu_gen_letter    last     0.4510   0.662   parse_rate=0.637 mean_out_chars=4.347
+
+Meta-Llama-3.1-8B-Instruct        mmlu_rank          full     0.6830   1.000   
+Meta-Llama-3.1-8B-Instruct        mmlu_rank          first    0.6070   0.889   
+Meta-Llama-3.1-8B-Instruct        mmlu_rank          last     0.6240   0.914   
+
+Meta-Llama-3.1-8B-Instruct        squad_gen          full    50.3000   1.000   HasAns_exact=78.068 NoAns_acc=21.272 best_exact_floor=50.300 mean_out_chars=19.078
+Meta-Llama-3.1-8B-Instruct        squad_gen          first   50.3000   1.000   HasAns_exact=25.755 NoAns_acc=11.133 best_exact_floor=50.300 mean_out_chars=50.727
+Meta-Llama-3.1-8B-Instruct        squad_gen          last    50.3000   1.000   HasAns_exact=39.839 NoAns_acc=7.952 best_exact_floor=50.300 mean_out_chars=37.235
+
+Qwen2.5-7B-Instruct               gsm8k_gen_cot      full     0.8140   1.000   acc_permissive=0.840 acc_flexible=0.832 format_rate=0.958 mean_out_chars=476.724
+Qwen2.5-7B-Instruct               gsm8k_gen_cot      first    0.1060   0.130   acc_permissive=0.116 acc_flexible=0.070 format_rate=0.120 mean_out_chars=959.158
+Qwen2.5-7B-Instruct               gsm8k_gen_cot      last     0.0360   0.044   acc_permissive=0.064 acc_flexible=0.060 format_rate=0.038 mean_out_chars=1099.028
+
+Qwen2.5-7B-Instruct               gsm8k_gen_direct   full     0.2500   1.000   acc_permissive=0.250 acc_flexible=0.250 format_rate=1.000 mean_out_chars=9.274
+Qwen2.5-7B-Instruct               gsm8k_gen_direct   first    0.2340   0.936   acc_permissive=0.238 acc_flexible=0.160 format_rate=0.990 mean_out_chars=37.444
+Qwen2.5-7B-Instruct               gsm8k_gen_direct   last     0.1940   0.776   acc_permissive=0.198 acc_flexible=0.162 format_rate=0.802 mean_out_chars=35.182
+
+Qwen2.5-7B-Instruct               mmlu_gen_cot       full     0.6675   1.000   parse_rate=0.970 mean_out_chars=1167.425
+Qwen2.5-7B-Instruct               mmlu_gen_cot       first    0.0975   0.146   parse_rate=0.210 mean_out_chars=1842.125
+Qwen2.5-7B-Instruct               mmlu_gen_cot       last     0.0075   0.011   parse_rate=0.020 mean_out_chars=1971.108
+
+Qwen2.5-7B-Instruct               mmlu_gen_letter    full     0.7390   1.000   parse_rate=1.000 mean_out_chars=2.306
+Qwen2.5-7B-Instruct               mmlu_gen_letter    first    0.7310   0.989   parse_rate=0.998 mean_out_chars=12.021
+Qwen2.5-7B-Instruct               mmlu_gen_letter    last     0.6110   0.827   parse_rate=0.861 mean_out_chars=7.038
+
+Qwen2.5-7B-Instruct               mmlu_rank          full     0.7440   1.000   
+Qwen2.5-7B-Instruct               mmlu_rank          first    0.7460   1.003   
+Qwen2.5-7B-Instruct               mmlu_rank          last     0.7270   0.977   
+
+Qwen2.5-7B-Instruct               squad_gen          full    50.3000   1.000   HasAns_exact=40.040 NoAns_acc=32.604 best_exact_floor=50.300 mean_out_chars=88.169
+Qwen2.5-7B-Instruct               squad_gen          first   50.3000   1.000   HasAns_exact=38.028 NoAns_acc=3.380 best_exact_floor=50.300 mean_out_chars=95.288
+Qwen2.5-7B-Instruct               squad_gen          last    50.3000   1.000   HasAns_exact=11.469 NoAns_acc=4.573 best_exact_floor=50.300 mean_out_chars=72.061
+

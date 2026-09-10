@@ -1,0 +1,112 @@
+{
+ "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+ "mask": "first",
+ "mask_id": "c36f54c5059d",
+ "law": [
+  {
+   "m_lo": 0.0,
+   "m_hi": 0.25,
+   "survival": 0.25252525252525254,
+   "n": 198
+  },
+  {
+   "m_lo": 0.25,
+   "m_hi": 0.5,
+   "survival": 0.3617021276595745,
+   "n": 282
+  },
+  {
+   "m_lo": 0.5,
+   "m_hi": 1.0,
+   "survival": 0.26153846153846155,
+   "n": 455
+  },
+  {
+   "m_lo": 1.0,
+   "m_hi": 2.0,
+   "survival": 0.39162929745889385,
+   "n": 669
+  },
+  {
+   "m_lo": 2.0,
+   "m_hi": 3.0,
+   "survival": 0.7701375245579568,
+   "n": 509
+  },
+  {
+   "m_lo": 3.0,
+   "m_hi": 4.0,
+   "survival": 0.6458923512747875,
+   "n": 353
+  },
+  {
+   "m_lo": 4.0,
+   "m_hi": 6.0,
+   "survival": 0.7871287128712872,
+   "n": 404
+  },
+  {
+   "m_lo": 6.0,
+   "m_hi": 8.0,
+   "survival": 0.814404432132964,
+   "n": 361
+  },
+  {
+   "m_lo": 8.0,
+   "m_hi": 12.0,
+   "survival": 0.8159203980099502,
+   "n": 402
+  },
+  {
+   "m_lo": 12.0,
+   "m_hi": 16.0,
+   "survival": 1.0,
+   "n": 197
+  }
+ ],
+ "n_law_positions": 3840,
+ "law_overall_survival": 0.5989583333333334,
+ "cells": {
+  "mmlu_rank": {
+   "n": 300,
+   "margin_median": 1.6875,
+   "margin_mean": 2.4389583333333333,
+   "entropy_median": 0.7107795476913452,
+   "observed_first_step_survival": 0.67,
+   "predicted_by_law": 0.528995271356076
+  },
+  "mmlu_gen_letter": {
+   "n": 300,
+   "margin_median": 1.6875,
+   "margin_mean": 2.4389583333333333,
+   "entropy_median": 0.7107795476913452,
+   "observed_first_step_survival": 0.67,
+   "predicted_by_law": 0.528995271356076
+  },
+  "gsm8k_gen_direct": {
+   "n": 300,
+   "margin_median": 4.875,
+   "margin_mean": 4.741458333333333,
+   "entropy_median": 0.07099705934524536,
+   "observed_first_step_survival": 0.09666666666666666,
+   "predicted_by_law": 0.7590621789948269
+  },
+  "gsm8k_gen_cot": {
+   "n": 300,
+   "margin_median": 0.875,
+   "margin_mean": 0.9308333333333333,
+   "entropy_median": 2.2512482404708862,
+   "observed_first_step_survival": 0.03333333333333333,
+   "predicted_by_law": 0.3615547686933129
+  },
+  "squad_gen": {
+   "n": 300,
+   "margin_median": 1.0,
+   "margin_mean": 1.3833333333333333,
+   "entropy_median": 2.2180988788604736,
+   "observed_first_step_survival": 0.15,
+   "predicted_by_law": 0.4283928848910356
+  }
+ },
+ "runtime_s": 388.9
+}

@@ -1,0 +1,152 @@
+{
+ "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+ "mask": "last",
+ "mask_id": "b7882f010721",
+ "n_positions": 63609,
+ "runtime_s": 25.7,
+ "overall_survival": 0.6641355782986684,
+ "by_class": {
+  "word": {
+   "n": 31836,
+   "margin_median": 1.625,
+   "survival": 0.5713657494660134,
+   "median_rank_under_trunc": 0.0
+  },
+  "number": {
+   "n": 13826,
+   "margin_median": 3.75,
+   "survival": 0.7927817156082743,
+   "median_rank_under_trunc": 0.0
+  },
+  "punctuation": {
+   "n": 13123,
+   "margin_median": 4.875,
+   "survival": 0.9027661357921207,
+   "median_rank_under_trunc": 0.0
+  },
+  "other": {
+   "n": 3624,
+   "margin_median": 2.5,
+   "survival": 0.06815673289183223,
+   "median_rank_under_trunc": 8.0
+  },
+  "newline": {
+   "n": 1000,
+   "margin_median": 6.0,
+   "survival": 1.0,
+   "median_rank_under_trunc": 0.0
+  },
+  "structural marker": {
+   "n": 200,
+   "margin_median": 0.6875,
+   "survival": 0.0,
+   "median_rank_under_trunc": 5.0
+  }
+ },
+ "by_class_and_margin": {
+  "word": {
+   "[0,1)": {
+    "survival": 0.2676323014295181,
+    "n": 10563
+   },
+   "[1,2)": {
+    "survival": 0.5957726138899829,
+    "n": 7617
+   },
+   "[2,4)": {
+    "survival": 0.6873896595208071,
+    "n": 7930
+   },
+   "[4,8)": {
+    "survival": 0.9240916955017301,
+    "n": 4624
+   },
+   "[8,1e+09)": {
+    "survival": 0.9990925589836661,
+    "n": 1102
+   }
+  },
+  "number": {
+   "[0,1)": {
+    "survival": 0.5044525929806182,
+    "n": 3818
+   },
+   "[1,2)": {
+    "survival": 0.5091549295774648,
+    "n": 1420
+   },
+   "[2,4)": {
+    "survival": 0.870889748549323,
+    "n": 2068
+   },
+   "[4,8)": {
+    "survival": 0.9972867048537836,
+    "n": 3317
+   },
+   "[8,1e+09)": {
+    "survival": 1.0,
+    "n": 3203
+   }
+  },
+  "punctuation": {
+   "[0,1)": {
+    "survival": 0.6527331189710611,
+    "n": 1244
+   },
+   "[1,2)": {
+    "survival": 0.8893719806763285,
+    "n": 2070
+   },
+   "[2,4)": {
+    "survival": 0.731408573928259,
+    "n": 2286
+   },
+   "[4,8)": {
+    "survival": 0.9995693367786391,
+    "n": 2322
+   },
+   "[8,1e+09)": {
+    "survival": 1.0,
+    "n": 5201
+   }
+  },
+  "other": {
+   "[0,1)": {
+    "survival": 0.38764044943820225,
+    "n": 534
+   },
+   "[1,2)": {
+    "survival": 0.03896103896103896,
+    "n": 308
+   },
+   "[2,4)": {
+    "survival": 0.01232166018158236,
+    "n": 1542
+   },
+   "[4,8)": {
+    "survival": 0.010714285714285714,
+    "n": 840
+   },
+   "[8,1e+09)": {
+    "survival": 0.0,
+    "n": 400
+   }
+  },
+  "newline": {
+   "[1,2)": {
+    "survival": 1.0,
+    "n": 200
+   },
+   "[4,8)": {
+    "survival": 1.0,
+    "n": 800
+   }
+  },
+  "structural marker": {
+   "[0,1)": {
+    "survival": 0.0,
+    "n": 200
+   }
+  }
+ }
+}

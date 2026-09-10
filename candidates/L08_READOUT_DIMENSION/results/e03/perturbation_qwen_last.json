@@ -1,0 +1,48 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct",
+ "mask": "last",
+ "keep_frac": 0.5,
+ "mask_id": "825d91d80a01",
+ "n_prompts_per_cell": 96,
+ "max_pos_per_prompt": 24,
+ "cells": {
+  "gsm8k_gen_cot": {
+   "fit": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.16194905109593377,
+    "mean_pairwise_cosine": 0.15356063842773438,
+    "std_pairwise_cosine": 0.16153010725975037,
+    "rms_perturbation": 771.4636057858356,
+    "rms_fixed": 310.45928049849994
+   },
+   "held_out": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.162461761130005,
+    "mean_pairwise_cosine": 0.14939053356647491,
+    "std_pairwise_cosine": 0.14496657252311707,
+    "rms_perturbation": 773.7854012723567,
+    "rms_fixed": 311.8861649472077
+   },
+   "b_bar_cross_split_cosine": 0.9980192806086187
+  },
+  "mmlu_gen_letter": {
+   "fit": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.3586149724195806,
+    "mean_pairwise_cosine": 0.33552855253219604,
+    "std_pairwise_cosine": 0.3367200791835785,
+    "rms_perturbation": 1028.0439399402715,
+    "rms_fixed": 615.6386628274105
+   },
+   "held_out": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.43528701384657736,
+    "mean_pairwise_cosine": 0.3951481580734253,
+    "std_pairwise_cosine": 0.2907516062259674,
+    "rms_perturbation": 1095.5009322381804,
+    "rms_fixed": 722.7708135834954
+   },
+   "b_bar_cross_split_cosine": 0.9689409140500638
+  }
+ }
+}

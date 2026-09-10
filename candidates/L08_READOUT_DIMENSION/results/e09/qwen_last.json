@@ -1,0 +1,152 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct",
+ "mask": "last",
+ "mask_id": "825d91d80a01",
+ "n_positions": 72240,
+ "runtime_s": 90.7,
+ "overall_survival": 0.9305924695459579,
+ "by_class": {
+  "word": {
+   "n": 31921,
+   "margin_median": 9.625,
+   "survival": 0.9104038094044673,
+   "median_rank_under_trunc": 0.0
+  },
+  "number": {
+   "n": 24661,
+   "margin_median": 16.25,
+   "survival": 0.9507724747577146,
+   "median_rank_under_trunc": 0.0
+  },
+  "punctuation": {
+   "n": 11302,
+   "margin_median": 12.125,
+   "survival": 0.9425765351265263,
+   "median_rank_under_trunc": 0.0
+  },
+  "other": {
+   "n": 3556,
+   "margin_median": 12.25,
+   "survival": 0.9181664791901012,
+   "median_rank_under_trunc": 0.0
+  },
+  "newline": {
+   "n": 600,
+   "margin_median": 8.25,
+   "survival": 1.0,
+   "median_rank_under_trunc": 0.0
+  },
+  "structural marker": {
+   "n": 200,
+   "margin_median": 9.875,
+   "survival": 1.0,
+   "median_rank_under_trunc": 0.0
+  }
+ },
+ "by_class_and_margin": {
+  "word": {
+   "[0,1)": {
+    "survival": 0.3502469690166143,
+    "n": 2227
+   },
+   "[1,2)": {
+    "survival": 0.607621009268795,
+    "n": 971
+   },
+   "[2,4)": {
+    "survival": 0.7472306143001007,
+    "n": 1986
+   },
+   "[4,8)": {
+    "survival": 0.9580105992662047,
+    "n": 7359
+   },
+   "[8,1e+09)": {
+    "survival": 0.9885953142739189,
+    "n": 19378
+   }
+  },
+  "number": {
+   "[0,1)": {
+    "survival": 0.4362818590704648,
+    "n": 667
+   },
+   "[1,2)": {
+    "survival": 0.511520737327189,
+    "n": 217
+   },
+   "[2,4)": {
+    "survival": 0.8742424242424243,
+    "n": 660
+   },
+   "[4,8)": {
+    "survival": 0.8492211838006231,
+    "n": 1605
+   },
+   "[8,1e+09)": {
+    "survival": 0.9810803272592041,
+    "n": 21512
+   }
+  },
+  "punctuation": {
+   "[0,1)": {
+    "survival": 0.06696428571428571,
+    "n": 224
+   },
+   "[1,2)": {
+    "survival": 0.8289902280130294,
+    "n": 1228
+   },
+   "[2,4)": {
+    "survival": 0.6304347826086957,
+    "n": 46
+   },
+   "[4,8)": {
+    "survival": 0.8986975397973951,
+    "n": 2073
+   },
+   "[8,1e+09)": {
+    "survival": 0.9996119518820333,
+    "n": 7731
+   }
+  },
+  "other": {
+   "[0,1)": {
+    "survival": 0.036,
+    "n": 250
+   },
+   "[1,2)": {
+    "survival": 0.9421487603305785,
+    "n": 242
+   },
+   "[2,4)": {
+    "survival": 0.9074733096085409,
+    "n": 281
+   },
+   "[4,8)": {
+    "survival": 0.9826254826254827,
+    "n": 518
+   },
+   "[8,1e+09)": {
+    "survival": 0.9995584988962473,
+    "n": 2265
+   }
+  },
+  "newline": {
+   "[0,1)": {
+    "survival": 1.0,
+    "n": 200
+   },
+   "[8,1e+09)": {
+    "survival": 1.0,
+    "n": 394
+   }
+  },
+  "structural marker": {
+   "[8,1e+09)": {
+    "survival": 1.0,
+    "n": 200
+   }
+  }
+ }
+}
