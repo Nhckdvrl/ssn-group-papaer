@@ -28,8 +28,8 @@ Alternative subtitle: **Causal Decision Control Shifts from Presentation Form to
 5. **Productive failure:** this control shift confirms on heldout CPC18 decisions,
    yet OLMo's description/history invariance does not. The apparent contradiction
    reveals that finite histories changed evidence as well as form.
-6. **Decisive decomposition:** on 137 previously unscored real decision units,
-   orthogonal form-by-evidence interventions show that reasoning reduces form
+6. **Decisive decomposition:** using previously unscored real-history cells over
+   137 decision units, orthogonal form-by-evidence interventions show that reasoning reduces form
    sensitivity while increasing evidence sensitivity.
 7. **Mechanistic closure:** the selective behavioral shift is reproduced in
    evidence-bearing trajectory control and in the content of the pre-answer state.

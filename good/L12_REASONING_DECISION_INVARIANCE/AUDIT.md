@@ -161,9 +161,11 @@ Both exact safetensors snapshots were subsequently cached outside the repository
 
 ## Form-by-Evidence Execution Audit
 
-- E20 was frozen after the exploratory E18 audit but before scoring any of its
-  histories. It uses 137 previously unscored CPC18 base decisions: 104 calibration
-  and 33 competition problems.
+- E20 was frozen after the exploratory E18 audit but before scoring any selected
+  history or form-by-evidence cell. It reuses 137 CPC18 base decisions (104
+  calibration and 33 competition problems), so the base problem identities are
+  not held out; the prospective separation applies to histories, condition
+  construction, model scoring, hypotheses, and analysis.
 - Each decision supplies two real 20-trial histories with opposite empirical EV
   directions, minimum normalized empirical gap 0.02, and strength ratio at most
   1.5. Selection uses no model output. Raw and empirical-summary forms encode the

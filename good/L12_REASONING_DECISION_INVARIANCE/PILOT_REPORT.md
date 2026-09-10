@@ -32,7 +32,7 @@ late state can be patched, or that finite histories contain sampling error.
 | Internal carrier | E08, E11, E15, E19 | Direction-specific residual-state substitution over discovery, frozen breadth, external, and 48-decision natural sets |
 | Training/route bridge | E09-E14 | Cross prompt and trajectory under OLMo SFT/DPO siblings, Qwen same weights, and bounded Llama ecosystem validation |
 | Natural breadth and confirmation | E16-E18P | 151 CPC18 calibration decisions, 44 untouched competition decisions, frozen causal confirmation, and 3-to-20 generation precision audit |
-| Selective-sensitivity crown | E20-E22 | Prospectively orthogonalize form and evidence on 137 previously unscored real decisions; test behavior, trajectory control, state content, and external-family replication |
+| Selective-sensitivity crown | E20-E22 | Prospectively orthogonalize form and evidence with previously unscored histories over 137 decisions; test behavior, trajectory control, state content, and external-family replication |
 | Supporting diagnosis | E18L | Paired 20/100 histories; retained as inconclusive because raw-table truncation prevents unconditional inference |
 
 The base decision is always the scientific unit. Histories, orders, generations,
@@ -73,8 +73,8 @@ trajectory samples, factorial cells, patch directions, and layers are nested.
 
 ### D3. Reasoning changes what models are sensitive to
 
-E20 freezes 137 previously unscored real CPC18 decisions and independently
-crosses two evidence directions with two information-equivalent forms: the exact
+E20 freezes previously unscored real-history cells over 137 CPC18 decisions and
+independently crosses two evidence directions with two information-equivalent forms: the exact
 same observations as a raw sequence or an empirical frequency summary.
 
 | Axis | Change in form sensitivity | Change in evidence sensitivity | Change in selective sensitivity |
