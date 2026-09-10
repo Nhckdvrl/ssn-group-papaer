@@ -17,6 +17,7 @@
 | **L09** | RLVR Disagreement: Erased or Suppressed? | SERIOUS | [L09_RLVR_DISAGREEMENT/](L09_RLVR_DISAGREEMENT/) |
 | **L10** | From Failure to Action | PILOT-AUTHORIZED / Rank 1 | [../good/L10_FROM_FAILURE_TO_ACTION/](../good/L10_FROM_FAILURE_TO_ACTION/) |
 | **L12** | Reasoning-Induced Invariance | CONTINUE-PILOT / Rank 2 | [../good/L12_REASONING_DECISION_INVARIANCE/](../good/L12_REASONING_DECISION_INVARIANCE/) |
+| **L13** | Temporal Order ≠ Event Realization | PILOT RUN / RECONSTRUCTING | [../good/L13_TEMPORAL_EVENT_COMMITMENT/](../good/L13_TEMPORAL_EVENT_COMMITMENT/) |
 
 **L11 is KILL / K181** and is not active.
 

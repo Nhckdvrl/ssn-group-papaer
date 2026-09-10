@@ -109,6 +109,7 @@ Do not rescue L11.
 | **L09** | RLVR Disagreement: Erased or Suppressed? | SERIOUS | candidates/L09_RLVR_DISAGREEMENT/ |
 | **L10** | From Failure to Action | PILOT-AUTHORIZED / Rank 1 | good/L10_FROM_FAILURE_TO_ACTION/ |
 | **L12** | Reasoning-Induced Invariance / Trajectory Takeover | CONTINUE-PILOT / Rank 2 | good/L12_REASONING_DECISION_INVARIANCE/ |
+| **L13** | Temporal Order ≠ Event Realization | PILOT RUN 2026-09-11 — C1 rejected, C2 supported, reconstructing on C5 | good/L13_TEMPORAL_EVENT_COMMITMENT/ |
 
 L11 historical artifacts remain under `good/L11_TASK_GRADIENT_PRESSURE/`, but it is not active.
 

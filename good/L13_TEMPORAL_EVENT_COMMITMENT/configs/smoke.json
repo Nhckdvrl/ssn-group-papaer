@@ -1,0 +1,13 @@
+{
+  "tag": "smoke",
+  "stimuli": "data/stimuli_v1.jsonl",
+  "seed": 13,
+  "dtype": "bfloat16",
+  "batch_size": 32,
+  "gen_batch_size": 16,
+  "max_new_tokens": 128,
+  "task_orders": ["fact_first", "timeline_first"],
+  "models": [
+    {"slug": "qwen3_0_6b", "model_id": "Qwen/Qwen3-0.6B", "family": "qwen3"}
+  ]
+}
