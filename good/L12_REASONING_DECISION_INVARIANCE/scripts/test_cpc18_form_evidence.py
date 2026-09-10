@@ -8,7 +8,7 @@ from summarize_cpc18_form_evidence import unit_metrics
 from summarize_cpc18_form_evidence_control import effects
 
 
-def test_prompt(problem, evidence):
+def check_prompt(problem, evidence):
     raw_ab = make_prompt(problem, evidence, "raw", "ab")
     summary_ab = make_prompt(problem, evidence, "summary", "ab")
     summary_ba = make_prompt(problem, evidence, "summary", "ba")
@@ -60,7 +60,7 @@ def test_metrics():
 def main():
     problem = load_problems(1)[0]
     for evidence in problem["evidence"]:
-        test_prompt(problem, evidence)
+        check_prompt(problem, evidence)
     test_metrics()
     print("E20 prompt equivalence and metric controls passed")
 
