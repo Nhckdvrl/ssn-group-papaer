@@ -1,6 +1,7 @@
 """Frozen prompts and parsing helpers for L12-E20."""
 
 import json
+import os
 from pathlib import Path
 
 from cpc18_common import (
@@ -11,12 +12,17 @@ from cpc18_common import (
     split_trace,
     strip_terminal_conclusion,
     underlying_choice,
+    load_config,
 )
 
 
-CONFIG = json.loads(
-    (ROOT / "configs/cpc18_form_evidence_preregistered.json").read_text()
-)
+CONFIG_PATH = Path(os.environ.get(
+    "L12_FORM_EVIDENCE_CONFIG",
+    "configs/cpc18_form_evidence_preregistered.json",
+))
+if not CONFIG_PATH.is_absolute():
+    CONFIG_PATH = ROOT / CONFIG_PATH
+CONFIG = load_config(CONFIG_PATH)
 
 
 def load_problems(limit=None):

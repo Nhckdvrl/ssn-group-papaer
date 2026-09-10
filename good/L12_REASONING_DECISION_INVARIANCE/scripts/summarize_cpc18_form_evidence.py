@@ -113,7 +113,8 @@ def main():
 
     output_rows = []
     summary["reasoning_minus_standard"] = {}
-    for pair_index, pair in enumerate(("olmo_sft", "qwen_mode")):
+    pairs = sorted({item["pair"] for item in CONFIG["regimes"]})
+    for pair_index, pair in enumerate(pairs):
         specs = [item for item in CONFIG["regimes"] if item["pair"] == pair]
         reasoning = next(item["name"] for item in specs if item["role"] == "reasoning")
         standard = next(item["name"] for item in specs if item["role"] == "standard")

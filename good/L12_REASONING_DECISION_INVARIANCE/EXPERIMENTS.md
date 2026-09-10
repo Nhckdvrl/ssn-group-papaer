@@ -414,6 +414,25 @@ All 8,704 factorial rows pass exact cell and raw-hash validation.
   unchanged.
 - **Status:** design and units frozen; corrected execution pending.
 
+## L12-E22: External-Family Selective Sensitivity
+
+- **Question:** does the form-to-evidence sensitivity relocation extend beyond
+  the controlled OLMo and Qwen axes?
+- **Design:** repeat the frozen 137-decision E20 behavior decomposition with
+  Llama-3.1-8B-Instruct and DeepSeek-R1-Distill-Llama-8B. If and only if the
+  behavioral selective-sensitivity difference is positive with a clustered 95%
+  interval above zero, run the same evidence prompt-by-trajectory factorial
+  using DeepSeek's natural stripped trajectories.
+- **Identification boundary:** this pair changes training data, post-training
+  pipeline, and tokenizer/config details. It is external-family replication,
+  never attribution to one reasoning-training operation.
+- **Why it is load-bearing:** E20's headline otherwise rests on one sibling
+  family and one same-weight route. E22 asks whether the selective computation
+  is a broader reasoning-model pattern, while a failure would define meaningful
+  heterogeneity rather than trigger rescue experiments.
+- **Frozen config:** `configs/cpc18_form_evidence_llama_external.json`.
+- **Status:** frozen before E22 model output.
+
 ## L12-E18L: Paired 20/100 History-Length Diagnosis
 
 - **Role:** supporting finite-sample diagnosis, not a headline claim.
