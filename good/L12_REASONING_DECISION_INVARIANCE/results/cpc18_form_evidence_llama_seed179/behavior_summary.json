@@ -1,0 +1,133 @@
+{
+  "design": "L12-E20 preregistered form-by-evidence decomposition",
+  "unit_of_analysis": "base decision",
+  "llama_instruct": {
+    "pair": "llama_external",
+    "role": "standard",
+    "n_generations": 10960,
+    "n_base_decisions": 137,
+    "valid_rate": 0.9993613138686132,
+    "form_sensitivity": {
+      "mean": 0.2451743714517437,
+      "base_decision_bootstrap_ci95": [
+        0.2293998377939984,
+        0.2603213706407137
+      ],
+      "positive_base_decision_fraction": 0.9927007299270073,
+      "invalid_assignment_mean_bounds": [
+        0.2447080291970803,
+        0.24598540145985404
+      ]
+    },
+    "evidence_sensitivity": {
+      "mean": 0.0015815085158150876,
+      "base_decision_bootstrap_ci95": [
+        -0.008455494728304943,
+        0.011740166261151659
+      ],
+      "positive_base_decision_fraction": 0.48175182481751827,
+      "invalid_assignment_mean_bounds": [
+        0.000912408759124089,
+        0.002189781021897812
+      ]
+    },
+    "selective_sensitivity": {
+      "mean": -0.2435928629359286,
+      "base_decision_bootstrap_ci95": [
+        -0.2620042579075426,
+        -0.22469383617193844
+      ],
+      "positive_base_decision_fraction": 0.014598540145985401,
+      "invalid_assignment_mean_bounds": [
+        -0.24507299270072994,
+        -0.24251824817518244
+      ]
+    }
+  },
+  "deepseek_r1": {
+    "pair": "llama_external",
+    "role": "reasoning",
+    "n_generations": 10960,
+    "n_base_decisions": 137,
+    "valid_rate": 0.8768248175182481,
+    "form_sensitivity": {
+      "mean": 0.10576338199513384,
+      "base_decision_bootstrap_ci95": [
+        0.09442887556482446,
+        0.11744123653110879
+      ],
+      "positive_base_decision_fraction": 0.9708029197080292,
+      "invalid_assignment_mean_bounds": [
+        0.05091240875912408,
+        0.2565693430656934
+      ]
+    },
+    "evidence_sensitivity": {
+      "mean": 0.8584890221295332,
+      "base_decision_bootstrap_ci95": [
+        0.8433810537597034,
+        0.8728736712142278
+      ],
+      "positive_base_decision_fraction": 1.0,
+      "invalid_assignment_mean_bounds": [
+        0.635036496350365,
+        0.8813868613138687
+      ]
+    },
+    "selective_sensitivity": {
+      "mean": 0.7527256401343992,
+      "base_decision_bootstrap_ci95": [
+        0.7274624174487313,
+        0.7775555410728768
+      ],
+      "positive_base_decision_fraction": 1.0,
+      "invalid_assignment_mean_bounds": [
+        0.3784671532846716,
+        0.8304744525547446
+      ]
+    }
+  },
+  "reasoning_minus_standard": {
+    "llama_external": {
+      "reasoning_regime": "deepseek_r1",
+      "standard_regime": "llama_instruct",
+      "n_paired_base_decisions": 137,
+      "form_sensitivity_difference": {
+        "mean": -0.1394109894566099,
+        "base_decision_bootstrap_ci95": [
+          -0.15933419505271693,
+          -0.11895049458347817
+        ],
+        "positive_base_decision_fraction": 0.1386861313868613,
+        "invalid_assignment_mean_bounds": [
+          -0.19507299270072995,
+          0.011861313868613126
+        ]
+      },
+      "evidence_sensitivity_difference": {
+        "mean": 0.856907513613718,
+        "base_decision_bootstrap_ci95": [
+          0.8386537807032789,
+          0.875596523432974
+        ],
+        "positive_base_decision_fraction": 1.0,
+        "invalid_assignment_mean_bounds": [
+          0.6328467153284673,
+          0.8804744525547445
+        ]
+      },
+      "selective_sensitivity_difference": {
+        "mean": 0.996318503070328,
+        "base_decision_bootstrap_ci95": [
+          0.9619316272737806,
+          1.0311855882864094
+        ],
+        "positive_base_decision_fraction": 1.0,
+        "invalid_assignment_mean_bounds": [
+          0.620985401459854,
+          1.0755474452554745
+        ]
+      }
+    }
+  }
+}

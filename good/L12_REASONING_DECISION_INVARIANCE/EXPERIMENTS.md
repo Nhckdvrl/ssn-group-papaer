@@ -445,7 +445,19 @@ All 8,704 factorial rows pass exact cell and raw-hash validation.
   is a broader reasoning-model pattern, while a failure would define meaningful
   heterogeneity rather than trigger rescue experiments.
 - **Frozen config:** `configs/cpc18_form_evidence_llama_external.json`.
-- **Status:** frozen before E22 model output.
+- **Behavior result:** DeepSeek-R1-Distill relative to Llama-Instruct changes
+  form sensitivity by **-0.139 [-0.159, -0.119]**, evidence sensitivity by
+  **+0.857 [0.839, 0.876]**, and the preregistered selective-sensitivity
+  contrast by **+0.996 [0.962, 1.031]**. The selective difference is positive
+  on **137/137** base decisions and remains positive under sharp invalid-output
+  assignment (**[+0.621, +1.076]**). DeepSeek and Llama valid rates are 0.877
+  and 0.999.
+- **Execution validity:** both regimes contain exactly 10,960 rows over all 137
+  decisions, with no duplicate condition keys; row counts and raw SHA-256 hashes
+  pass the frozen execution audit.
+- **Status:** **behavioral gate passed; external evidence prompt-by-trajectory
+  factorial activated.** The behavior result is external-family breadth, not
+  training attribution.
 
 ## L12-E18L: Paired 20/100 History-Length Diagnosis
 

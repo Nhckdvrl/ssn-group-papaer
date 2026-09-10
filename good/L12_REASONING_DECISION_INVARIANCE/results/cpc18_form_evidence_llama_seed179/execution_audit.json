@@ -1,0 +1,52 @@
+{
+  "design": "L12-E20 execution audit",
+  "n_frozen_base_decisions": 137,
+  "expected_rows_per_base_decision": 80,
+  "regimes": {
+    "llama_instruct": {
+      "rows": 10960,
+      "base_decisions": 137,
+      "duplicate_keys": 0,
+      "history_id_mismatches": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "valid_rate": 0.9993613138686132
+    },
+    "deepseek_r1": {
+      "rows": 10960,
+      "base_decisions": 137,
+      "duplicate_keys": 0,
+      "history_id_mismatches": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "valid_rate": 0.8768248175182481
+    }
+  },
+  "manifest": {
+    "results/cpc18_form_evidence_llama_seed179/raw/deepseek_r1.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_llama_seed179/raw/deepseek_r1.shard0of3.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_llama_seed179/raw/deepseek_r1.shard1of3.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_llama_seed179/raw/deepseek_r1.shard2of3.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_llama_seed179/raw/llama_instruct.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    }
+  },
+  "status": "PASS",
+  "failures": []
+}
