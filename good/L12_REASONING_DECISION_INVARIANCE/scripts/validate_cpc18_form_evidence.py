@@ -66,6 +66,51 @@ def main():
             failures.append(f"{name}: summary row count mismatch")
         audit["regimes"][name] = checks
 
+    control_summary_path = result_dir / "control_summary.json"
+    if control_summary_path.exists():
+        control_summary = json.loads(control_summary_path.read_text())
+        audit["control"] = {}
+        control_keys = [
+            "problem", "form", "order", "a_sample_index", "b_sample_index",
+            "prompt_evidence", "trajectory_evidence",
+        ]
+        unit_keys = control_keys[:5]
+        expected_cells = {
+            (prompt, trajectory)
+            for prompt in ("A", "B") for trajectory in ("A", "B")
+        }
+        for spec in CONFIG["regimes"]:
+            name = spec["name"]
+            path = result_dir / "raw" / "control" / f"{name}.jsonl"
+            frame = pd.read_json(path, lines=True)
+            duplicate_count = int(frame.duplicated(control_keys).sum())
+            bad_factorials = 0
+            for _, group in frame.groupby(unit_keys, dropna=False):
+                observed = set(zip(group.prompt_evidence, group.trajectory_evidence))
+                if observed != expected_cells or len(group) != 4:
+                    bad_factorials += 1
+            forms = {}
+            for form in ("raw", "summary"):
+                subset = frame[frame.form == form]
+                expected_units = int(subset.problem.nunique())
+                reported = control_summary[name]["forms"][form]["n_base_decisions"]
+                forms[form] = {
+                    "base_decisions": expected_units,
+                    "summary_base_decisions": reported,
+                }
+                if expected_units != reported:
+                    failures.append(f"{name}: {form} control summary count mismatch")
+            checks = {
+                "rows": int(len(frame)),
+                "base_decisions": int(frame.problem.nunique()),
+                "duplicate_keys": duplicate_count,
+                "incomplete_factorial_units": bad_factorials,
+                "forms": forms,
+            }
+            if duplicate_count or bad_factorials:
+                failures.append(f"{name}: duplicate or incomplete control factorial")
+            audit["control"][name] = checks
+
     manifest = json.loads((result_dir / "raw_manifest.json").read_text())
     audit["manifest"] = {}
     for item in manifest["artifacts"]:
