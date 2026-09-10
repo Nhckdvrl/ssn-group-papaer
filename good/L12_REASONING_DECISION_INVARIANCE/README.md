@@ -61,6 +61,11 @@ The discovery pilot supports **progressive construction plus late consolidation*
     same relocation: trajectory-relative evidence control rises by **+0.459/
     +0.584** (raw/summary) in OLMo and **+0.563/+0.749** in Qwen, while prompt
     evidence-control differences stay near zero.
+21. The selective computation is present in the internal carrier. Across 32
+    frozen decisions, final-layer state substitution yields evidence control
+    **+0.763 [0.694, 0.828]**, form sensitivity **0.174 [0.124, 0.227]**, and
+    state selectivity **+0.590 [0.476, 0.704]**. The evidence effect is near zero
+    early and develops into the late pre-answer state.
 
 ## Claim architecture
 

@@ -412,7 +412,21 @@ All 8,704 factorial rows pass exact cell and raw-hash validation.
   invalid and excluded. The coordinate transform and an explicit `ba` unit test
   were committed before rerun; units, layers, hypotheses, and decision rule are
   unchanged.
-- **Status:** design and units frozen; corrected execution pending.
+- **Result:** at the final layer, changing donor evidence moves underlying-A
+  probability by **+0.763 [0.694, 0.828]**, positive on 32/32 decisions. Donor
+  form sensitivity is **0.174 [0.124, 0.227]**; the preregistered state-
+  selectivity difference is **+0.590 [0.476, 0.704]**, positive on 30/32.
+  Evidence sensitivity is near zero at layers 0/8, becomes positive at layer 16,
+  and reaches +0.748/+0.763 at layers 24/31.
+- **Interpretation:** the trajectory-built state does not erase form completely,
+  but it carries evidence direction far more strongly than the raw-versus-summary
+  distinction. E20's selective sensitivity is therefore mediated by the same
+  late pre-answer causal state established in C2, rather than being a disconnected
+  behavioral regularity.
+- **Pointers:** `results/cpc18_selective_state_seed173/summary.json`,
+  `unit_metrics.jsonl`, and `execution_audit.json`; the 2,560 raw intervention
+  rows remain local and are represented by their SHA-256.
+- **Status:** **completed; corrected execution audit PASS.**
 
 ## L12-E22: External-Family Selective Sensitivity
 
