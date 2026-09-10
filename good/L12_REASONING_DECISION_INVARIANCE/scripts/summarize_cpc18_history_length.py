@@ -56,7 +56,13 @@ def report(values, seed):
 def main():
     output = ROOT / CONFIG["result_dir"]
     unit = {}
-    summary = {"design": "L12 paired 20/100 finite-evidence diagnostic"}
+    data_audit = json.loads((ROOT / CONFIG["audit_output"]).read_text())
+    summary = {
+        "design": "L12 paired 20/100 finite-evidence diagnostic",
+        "empirical_ev_direction_agreement": data_audit[
+            "empirical_ev_direction_agreement"
+        ],
+    }
     for offset, spec in enumerate(CONFIG["regimes"]):
         name = spec["name"]
         raw = pd.read_json(output / "raw" / f"{name}.jsonl", lines=True)
