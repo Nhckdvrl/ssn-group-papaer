@@ -127,3 +127,80 @@ Not more models. In order:
    schema", and the project must be re-audited.
 
 Step 2 is the cheapest question that can still kill the project.
+
+---
+
+# Addendum — E06: does an explicit three-state schema repair the collapse? (2026-09-11)
+
+This was the preregistered kill question from §7. Two forms, all five checkpoints:
+
+- **E06a (free):** the model builds its own table, `<event> :: realized | unresolved |
+  not-realized`, with the three statuses defined in the prompt. Its own row for the
+  target event is parsed.
+- **E06b (forced slot):** the same task with permuted neutral status codes, with the
+  target's table row teacher-forced up to the status slot, so the status is scored
+  rather than parsed (6 permutations).
+
+## Result — the schema does not repair it, but the picture is not uniform
+
+`before_neutral`, free table, status assigned to the target event:
+
+| model | realized | unresolved | not-realized | absent |
+|---|---|---|---|---|
+| Llama-3.1-8B | **0.65** | 0.13 | 0.13 | 0.10 |
+| Gemma-3-12B | **0.45** | 0.45 | 0.05 | 0.05 |
+| Qwen3-8B | **0.43** | 0.28 | 0.15 | 0.15 |
+| Olmo-3-7B | 0.28 | **0.38** | 0.05 | 0.30 |
+| **Qwen3-32B** | 0.05 | **0.50** | 0.33 | 0.13 |
+
+Forced slot, `before_neutral`: P(REALIZED) is modal for Llama (0.53), Olmo (0.61),
+Gemma (0.56) and Qwen3-8B (0.43); Qwen3-32B is the exception (0.12).
+
+## The honest reading
+
+1. **The kill rule does not fire.** In four of five checkpoints, a first-class
+   `unresolved` slot does not recover the judgement the same model gives when asked
+   directly (Gemma 0.864 → 0.229; Qwen3-8B 0.752 → 0.128).
+2. **Part of that drop is a format effect, not a temporal effect.** The matched
+   non-temporal control loses open-state mass too (Qwen3-8B +0.589 vs +0.624 on
+   `before_neutral`; Gemma +0.310 vs +0.635). Only Gemma shows a large
+   temporal-specific excess (+0.325). **E06b is therefore not the load-bearing
+   evidence**; E04's instruction-resistance is.
+3. **Scale reverses it — and that sharpens the claim rather than killing it.**
+   Qwen3-32B builds the three-state table correctly (unresolved 0.50, realized 0.05).
+   Yet the *same checkpoint* lists the unresolved event as a plain node in a plain
+   timeline **100%** of the time, and its downstream commitment shift is the largest
+   in the set (`timeline − paraphrase` = **+0.325** [+0.209, +0.444]).
+
+   So the collapse is not "the model cannot represent the open state". It is a
+   property of **the representation it is asked to produce**: given a plain timeline —
+   the representation every event-graph / timeline-extraction / agent-state pipeline
+   actually asks for — even a model that demonstrably knows the three states
+   instantiates the unresolved event unconditionally.
+4. **A matched contrast makes this concrete.** The same open proposition introduced
+   non-temporally ("Maya planned to submit the application") is simply *omitted* from
+   the table (absent 0.85–0.88). Introduced in a `before`-clause, it is listed — and
+   listed as realized. The temporal construction, not the uncertainty, is what forces
+   instantiation.
+
+## Consequences for the project
+
+- **C5 is refined**, not withdrawn: *a plain timeline representation is not
+  truth-preserving; unresolved events are instantiated as realized, and neither an
+  explicit prohibition (E04) nor, in most models, an explicit `unresolved` slot (E06)
+  repairs it — even in a model that assigns the correct status when the schema asks
+  for one.*
+- **New durability risk, declared:** the schema-level collapse weakens sharply from
+  Qwen3-8B to Qwen3-32B. Before any paper-level claim, a within-family scale ladder is
+  now mandatory (Qwen3 0.6B/1.7B/4B/8B/14B/32B are all in the local cache). If the
+  plain-timeline collapse also disappears with scale, the applied claim dies; if only
+  the schema version does, the paper's target is the plain-timeline representation.
+- Human validation of `before_neutral` gold and of the ghost-node detector remains
+  blocking, and is now the first item, since §3 and §4 above are both detector-based.
+
+## Next
+
+1. Human validation (gold + detector sample).
+2. Qwen3 scale ladder on the plain-timeline collapse and on `timeline − paraphrase`.
+
+Nothing else should be run before those two.

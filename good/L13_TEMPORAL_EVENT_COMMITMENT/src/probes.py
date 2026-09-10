@@ -157,3 +157,66 @@ def topic_mc_prompt(passage, permutation):
         lines.append(f"{letter}. {text[key]}")
     lines += ["", "Answer with a single letter."]
     return "\n".join(lines)
+
+
+# --- E06: does an explicit three-state schema repair the collapse? --------
+#
+# E04 showed that a natural-language prohibition does not stop the model from
+# listing an unresolved event as a plain realized node. E06 gives the model a
+# first-class slot for `unresolved`, which is the strongest cheap repair. If the
+# collapse survives an explicit slot, it is not a schema problem.
+
+SCHEMA_TASK = (
+    "Passage:\n{passage}\n\n"
+    "Build an event table for this passage. List every event mentioned, one per "
+    "line, in chronological order, in the format\n\n"
+    "<event> :: <status>\n\n"
+    "where <status> is exactly one of:\n"
+    "  realized     - the passage guarantees this event happened\n"
+    "  unresolved   - the passage leaves it open whether this event happened\n"
+    "  not-realized - the passage indicates this event did not happen\n\n"
+    "Output only the table."
+)
+
+TASK_ORDERS["schema_timeline_first"] = SCHEMA_TASK
+
+# Neutral status codes for the forced-slot measurement, so that the code letters
+# carry no mnemonic bias and can be permuted like any other option set.
+SCHEMA_CODE_MEANINGS = {
+    "REALIZED": "the passage guarantees this event happened",
+    "UNRESOLVED": "the passage leaves it open whether this event happened",
+    "NOT_REALIZED": "the passage indicates this event did not happen",
+}
+
+SCHEMA_CODE_LETTERS = ["X", "Y", "Z"]
+
+SCHEMA_PERMUTATIONS = [
+    ("REALIZED", "UNRESOLVED", "NOT_REALIZED"),
+    ("REALIZED", "NOT_REALIZED", "UNRESOLVED"),
+    ("UNRESOLVED", "REALIZED", "NOT_REALIZED"),
+    ("UNRESOLVED", "NOT_REALIZED", "REALIZED"),
+    ("NOT_REALIZED", "REALIZED", "UNRESOLVED"),
+    ("NOT_REALIZED", "UNRESOLVED", "REALIZED"),
+]
+
+
+def schema_slot_task(passage, permutation):
+    """The same structure-building task, with permutable neutral status codes."""
+    legend = "\n".join(
+        f"  {letter} - {SCHEMA_CODE_MEANINGS[key]}"
+        for letter, key in zip(SCHEMA_CODE_LETTERS, permutation)
+    )
+    return (
+        f"Passage:\n{passage}\n\n"
+        "Build an event table for this passage. List every event mentioned, one "
+        "per line, in chronological order, in the format\n\n"
+        "<event> :: <status>\n\n"
+        "where <status> is exactly one of:\n"
+        f"{legend}\n\n"
+        "Output only the table."
+    )
+
+
+def schema_slot_prefix(target):
+    """Assistant prefix that forces the target event into a table row."""
+    return f"{target.rstrip('.')} :: "

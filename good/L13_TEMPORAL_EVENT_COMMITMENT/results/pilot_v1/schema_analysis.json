@@ -1,0 +1,1157 @@
+{
+  "qwen3_8b": {
+    "free_table": {
+      "after": {
+        "REALIZED": 1.0
+      },
+      "before_neutral": {
+        "ABSENT_OR_UNPARSED": 0.15,
+        "NOT_REALIZED": 0.15,
+        "REALIZED": 0.425,
+        "UNRESOLVED": 0.275
+      },
+      "before_confirm": {
+        "ABSENT_OR_UNPARSED": 0.1,
+        "NOT_REALIZED": 0.075,
+        "REALIZED": 0.8,
+        "UNRESOLVED": 0.025
+      },
+      "before_cancel": {
+        "ABSENT_OR_UNPARSED": 0.375,
+        "NOT_REALIZED": 0.225,
+        "REALIZED": 0.375,
+        "UNRESOLVED": 0.025
+      },
+      "nontemporal_neutral": {
+        "ABSENT_OR_UNPARSED": 0.85,
+        "REALIZED": 0.1,
+        "UNRESOLVED": 0.05
+      }
+    },
+    "forced_slot": {
+      "after": {
+        "REALIZED": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "UNRESOLVED": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "NOT_REALIZED": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_neutral": {
+        "REALIZED": [
+          0.4281,
+          0.3048,
+          0.5521
+        ],
+        "UNRESOLVED": [
+          0.1283,
+          0.0843,
+          0.1784
+        ],
+        "NOT_REALIZED": [
+          0.4435,
+          0.3405,
+          0.5483
+        ]
+      },
+      "before_confirm": {
+        "REALIZED": [
+          0.779,
+          0.6794,
+          0.8728
+        ],
+        "UNRESOLVED": [
+          0.054,
+          0.0281,
+          0.0848
+        ],
+        "NOT_REALIZED": [
+          0.1671,
+          0.0941,
+          0.2499
+        ]
+      },
+      "before_cancel": {
+        "REALIZED": [
+          0.0452,
+          0.0119,
+          0.09
+        ],
+        "UNRESOLVED": [
+          0.0396,
+          0.0229,
+          0.0577
+        ],
+        "NOT_REALIZED": [
+          0.9152,
+          0.8713,
+          0.9511
+        ]
+      },
+      "nontemporal_neutral": {
+        "REALIZED": [
+          0.5541,
+          0.4315,
+          0.6724
+        ],
+        "UNRESOLVED": [
+          0.2411,
+          0.1653,
+          0.322
+        ],
+        "NOT_REALIZED": [
+          0.2048,
+          0.1221,
+          0.2961
+        ]
+      }
+    },
+    "direct_probe": {
+      "after": {
+        "YES": [
+          0.989,
+          0.9756,
+          0.9984
+        ],
+        "NO": [
+          0.0025,
+          0.0004,
+          0.0055
+        ],
+        "NOT_DETERMINED": [
+          0.0085,
+          0.0009,
+          0.0193
+        ]
+      },
+      "before_neutral": {
+        "YES": [
+          0.0278,
+          0.0021,
+          0.0626
+        ],
+        "NO": [
+          0.2198,
+          0.1508,
+          0.2948
+        ],
+        "NOT_DETERMINED": [
+          0.7524,
+          0.6791,
+          0.8221
+        ]
+      },
+      "before_confirm": {
+        "YES": [
+          0.9033,
+          0.813,
+          0.9763
+        ],
+        "NO": [
+          0.0223,
+          0.0055,
+          0.043
+        ],
+        "NOT_DETERMINED": [
+          0.0744,
+          0.0197,
+          0.1484
+        ]
+      },
+      "before_cancel": {
+        "YES": [
+          0.0031,
+          0.0,
+          0.0088
+        ],
+        "NO": [
+          0.8571,
+          0.7918,
+          0.9146
+        ],
+        "NOT_DETERMINED": [
+          0.1399,
+          0.0833,
+          0.2041
+        ]
+      },
+      "nontemporal_neutral": {
+        "YES": [
+          0.0228,
+          0.0003,
+          0.0576
+        ],
+        "NO": [
+          0.1474,
+          0.0824,
+          0.2204
+        ],
+        "NOT_DETERMINED": [
+          0.8298,
+          0.7542,
+          0.8972
+        ]
+      }
+    },
+    "open_state_loss": {
+      "after": [
+        0.0085,
+        0.001,
+        0.0193
+      ],
+      "before_neutral": [
+        0.6241,
+        0.5374,
+        0.7071
+      ],
+      "before_confirm": [
+        0.0204,
+        -0.0387,
+        0.0928
+      ],
+      "before_cancel": [
+        0.1002,
+        0.0385,
+        0.1687
+      ],
+      "nontemporal_neutral": [
+        0.5888,
+        0.4879,
+        0.6861
+      ]
+    }
+  },
+  "llama31_8b_instruct": {
+    "free_table": {
+      "after": {
+        "ABSENT_OR_UNPARSED": 0.025,
+        "REALIZED": 0.975
+      },
+      "before_neutral": {
+        "ABSENT_OR_UNPARSED": 0.1,
+        "NOT_REALIZED": 0.125,
+        "REALIZED": 0.65,
+        "UNRESOLVED": 0.125
+      },
+      "before_confirm": {
+        "ABSENT_OR_UNPARSED": 0.075,
+        "NOT_REALIZED": 0.05,
+        "REALIZED": 0.85,
+        "UNRESOLVED": 0.025
+      },
+      "before_cancel": {
+        "ABSENT_OR_UNPARSED": 0.225,
+        "NOT_REALIZED": 0.625,
+        "REALIZED": 0.15
+      },
+      "nontemporal_neutral": {
+        "ABSENT_OR_UNPARSED": 0.775,
+        "NOT_REALIZED": 0.05,
+        "REALIZED": 0.1,
+        "UNRESOLVED": 0.075
+      }
+    },
+    "forced_slot": {
+      "after": {
+        "REALIZED": [
+          0.9892,
+          0.9869,
+          0.9912
+        ],
+        "UNRESOLVED": [
+          0.006,
+          0.0048,
+          0.0076
+        ],
+        "NOT_REALIZED": [
+          0.0048,
+          0.0039,
+          0.0057
+        ]
+      },
+      "before_neutral": {
+        "REALIZED": [
+          0.5301,
+          0.4497,
+          0.6123
+        ],
+        "UNRESOLVED": [
+          0.3912,
+          0.3234,
+          0.458
+        ],
+        "NOT_REALIZED": [
+          0.0786,
+          0.0534,
+          0.1096
+        ]
+      },
+      "before_confirm": {
+        "REALIZED": [
+          0.6316,
+          0.5584,
+          0.7006
+        ],
+        "UNRESOLVED": [
+          0.3047,
+          0.2457,
+          0.366
+        ],
+        "NOT_REALIZED": [
+          0.0637,
+          0.0489,
+          0.0807
+        ]
+      },
+      "before_cancel": {
+        "REALIZED": [
+          0.2413,
+          0.1851,
+          0.3049
+        ],
+        "UNRESOLVED": [
+          0.3789,
+          0.3356,
+          0.4231
+        ],
+        "NOT_REALIZED": [
+          0.3797,
+          0.3175,
+          0.4443
+        ]
+      },
+      "nontemporal_neutral": {
+        "REALIZED": [
+          0.2964,
+          0.2218,
+          0.3742
+        ],
+        "UNRESOLVED": [
+          0.6029,
+          0.5334,
+          0.6678
+        ],
+        "NOT_REALIZED": [
+          0.1007,
+          0.0683,
+          0.1408
+        ]
+      }
+    },
+    "direct_probe": {
+      "after": {
+        "YES": [
+          0.6542,
+          0.6171,
+          0.6898
+        ],
+        "NO": [
+          0.0551,
+          0.0436,
+          0.067
+        ],
+        "NOT_DETERMINED": [
+          0.2907,
+          0.2574,
+          0.3265
+        ]
+      },
+      "before_neutral": {
+        "YES": [
+          0.1822,
+          0.1472,
+          0.2224
+        ],
+        "NO": [
+          0.2236,
+          0.1883,
+          0.2617
+        ],
+        "NOT_DETERMINED": [
+          0.5942,
+          0.5528,
+          0.6345
+        ]
+      },
+      "before_confirm": {
+        "YES": [
+          0.5235,
+          0.4757,
+          0.5713
+        ],
+        "NO": [
+          0.0479,
+          0.038,
+          0.0591
+        ],
+        "NOT_DETERMINED": [
+          0.4285,
+          0.3841,
+          0.4735
+        ]
+      },
+      "before_cancel": {
+        "YES": [
+          0.0788,
+          0.0608,
+          0.0975
+        ],
+        "NO": [
+          0.5195,
+          0.4617,
+          0.5779
+        ],
+        "NOT_DETERMINED": [
+          0.4017,
+          0.3538,
+          0.4486
+        ]
+      },
+      "nontemporal_neutral": {
+        "YES": [
+          0.0744,
+          0.0552,
+          0.0962
+        ],
+        "NO": [
+          0.1489,
+          0.1183,
+          0.1834
+        ],
+        "NOT_DETERMINED": [
+          0.7768,
+          0.7432,
+          0.8071
+        ]
+      }
+    },
+    "open_state_loss": {
+      "after": [
+        0.2846,
+        0.2524,
+        0.3202
+      ],
+      "before_neutral": [
+        0.203,
+        0.1355,
+        0.2679
+      ],
+      "before_confirm": [
+        0.1239,
+        0.0642,
+        0.1833
+      ],
+      "before_cancel": [
+        0.0228,
+        -0.0367,
+        0.0834
+      ],
+      "nontemporal_neutral": [
+        0.1739,
+        0.1044,
+        0.247
+      ]
+    }
+  },
+  "olmo3_7b_instruct_dpo": {
+    "free_table": {
+      "after": {
+        "ABSENT_OR_UNPARSED": 0.225,
+        "REALIZED": 0.775
+      },
+      "before_neutral": {
+        "ABSENT_OR_UNPARSED": 0.3,
+        "NOT_REALIZED": 0.05,
+        "REALIZED": 0.275,
+        "UNRESOLVED": 0.375
+      },
+      "before_confirm": {
+        "ABSENT_OR_UNPARSED": 0.25,
+        "REALIZED": 0.525,
+        "UNRESOLVED": 0.225
+      },
+      "before_cancel": {
+        "ABSENT_OR_UNPARSED": 0.7,
+        "NOT_REALIZED": 0.05,
+        "REALIZED": 0.025,
+        "UNRESOLVED": 0.225
+      },
+      "nontemporal_neutral": {
+        "ABSENT_OR_UNPARSED": 0.875,
+        "UNRESOLVED": 0.125
+      }
+    },
+    "forced_slot": {
+      "after": {
+        "REALIZED": [
+          0.9524,
+          0.9268,
+          0.9745
+        ],
+        "UNRESOLVED": [
+          0.0364,
+          0.0181,
+          0.0592
+        ],
+        "NOT_REALIZED": [
+          0.0111,
+          0.0043,
+          0.0226
+        ]
+      },
+      "before_neutral": {
+        "REALIZED": [
+          0.6098,
+          0.5044,
+          0.7123
+        ],
+        "UNRESOLVED": [
+          0.1953,
+          0.1409,
+          0.253
+        ],
+        "NOT_REALIZED": [
+          0.1949,
+          0.1263,
+          0.2692
+        ]
+      },
+      "before_confirm": {
+        "REALIZED": [
+          0.8011,
+          0.7118,
+          0.8792
+        ],
+        "UNRESOLVED": [
+          0.1054,
+          0.059,
+          0.1584
+        ],
+        "NOT_REALIZED": [
+          0.0935,
+          0.0544,
+          0.1397
+        ]
+      },
+      "before_cancel": {
+        "REALIZED": [
+          0.2203,
+          0.1355,
+          0.3118
+        ],
+        "UNRESOLVED": [
+          0.292,
+          0.2419,
+          0.3425
+        ],
+        "NOT_REALIZED": [
+          0.4876,
+          0.4106,
+          0.5654
+        ]
+      },
+      "nontemporal_neutral": {
+        "REALIZED": [
+          0.5778,
+          0.4733,
+          0.6779
+        ],
+        "UNRESOLVED": [
+          0.2607,
+          0.1912,
+          0.3332
+        ],
+        "NOT_REALIZED": [
+          0.1615,
+          0.1051,
+          0.2226
+        ]
+      }
+    },
+    "direct_probe": {
+      "after": {
+        "YES": [
+          0.5491,
+          0.4401,
+          0.6559
+        ],
+        "NO": [
+          0.2193,
+          0.1595,
+          0.283
+        ],
+        "NOT_DETERMINED": [
+          0.2316,
+          0.1736,
+          0.2916
+        ]
+      },
+      "before_neutral": {
+        "YES": [
+          0.0089,
+          0.0055,
+          0.013
+        ],
+        "NO": [
+          0.7278,
+          0.6686,
+          0.7843
+        ],
+        "NOT_DETERMINED": [
+          0.2633,
+          0.208,
+          0.3202
+        ]
+      },
+      "before_confirm": {
+        "YES": [
+          0.7323,
+          0.6188,
+          0.834
+        ],
+        "NO": [
+          0.1535,
+          0.0874,
+          0.2287
+        ],
+        "NOT_DETERMINED": [
+          0.1142,
+          0.0685,
+          0.1644
+        ]
+      },
+      "before_cancel": {
+        "YES": [
+          0.0028,
+          0.0009,
+          0.0051
+        ],
+        "NO": [
+          0.9495,
+          0.9172,
+          0.9751
+        ],
+        "NOT_DETERMINED": [
+          0.0477,
+          0.0239,
+          0.0778
+        ]
+      },
+      "nontemporal_neutral": {
+        "YES": [
+          0.0256,
+          0.0063,
+          0.0618
+        ],
+        "NO": [
+          0.6481,
+          0.5821,
+          0.7125
+        ],
+        "NOT_DETERMINED": [
+          0.3263,
+          0.2667,
+          0.3858
+        ]
+      }
+    },
+    "open_state_loss": {
+      "after": [
+        0.1952,
+        0.1372,
+        0.2549
+      ],
+      "before_neutral": [
+        0.068,
+        -0.032,
+        0.1638
+      ],
+      "before_confirm": [
+        0.0088,
+        -0.0388,
+        0.0571
+      ],
+      "before_cancel": [
+        -0.2443,
+        -0.3066,
+        -0.1821
+      ],
+      "nontemporal_neutral": [
+        0.0655,
+        -0.0388,
+        0.1648
+      ]
+    }
+  },
+  "gemma3_12b_it": {
+    "free_table": {
+      "after": {
+        "REALIZED": 1.0
+      },
+      "before_neutral": {
+        "ABSENT_OR_UNPARSED": 0.05,
+        "NOT_REALIZED": 0.05,
+        "REALIZED": 0.45,
+        "UNRESOLVED": 0.45
+      },
+      "before_confirm": {
+        "ABSENT_OR_UNPARSED": 0.075,
+        "NOT_REALIZED": 0.025,
+        "REALIZED": 0.85,
+        "UNRESOLVED": 0.05
+      },
+      "before_cancel": {
+        "ABSENT_OR_UNPARSED": 0.425,
+        "NOT_REALIZED": 0.275,
+        "REALIZED": 0.1,
+        "UNRESOLVED": 0.2
+      },
+      "nontemporal_neutral": {
+        "ABSENT_OR_UNPARSED": 0.85,
+        "REALIZED": 0.15
+      }
+    },
+    "forced_slot": {
+      "after": {
+        "REALIZED": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "UNRESOLVED": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "NOT_REALIZED": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "before_neutral": {
+        "REALIZED": [
+          0.5589,
+          0.4194,
+          0.6964
+        ],
+        "UNRESOLVED": [
+          0.2288,
+          0.1495,
+          0.3147
+        ],
+        "NOT_REALIZED": [
+          0.2123,
+          0.1267,
+          0.3029
+        ]
+      },
+      "before_confirm": {
+        "REALIZED": [
+          0.7872,
+          0.6741,
+          0.892
+        ],
+        "UNRESOLVED": [
+          0.1144,
+          0.0509,
+          0.1864
+        ],
+        "NOT_REALIZED": [
+          0.0984,
+          0.0425,
+          0.1632
+        ]
+      },
+      "before_cancel": {
+        "REALIZED": [
+          0.1221,
+          0.0512,
+          0.2083
+        ],
+        "UNRESOLVED": [
+          0.2572,
+          0.1812,
+          0.3421
+        ],
+        "NOT_REALIZED": [
+          0.6207,
+          0.518,
+          0.7182
+        ]
+      },
+      "nontemporal_neutral": {
+        "REALIZED": [
+          0.2391,
+          0.1381,
+          0.3504
+        ],
+        "UNRESOLVED": [
+          0.5927,
+          0.4944,
+          0.6848
+        ],
+        "NOT_REALIZED": [
+          0.1683,
+          0.1012,
+          0.24
+        ]
+      }
+    },
+    "direct_probe": {
+      "after": {
+        "YES": [
+          0.9972,
+          0.9934,
+          0.9999
+        ],
+        "NO": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "NOT_DETERMINED": [
+          0.0028,
+          0.0001,
+          0.0066
+        ]
+      },
+      "before_neutral": {
+        "YES": [
+          0.045,
+          0.004,
+          0.1009
+        ],
+        "NO": [
+          0.0914,
+          0.0212,
+          0.178
+        ],
+        "NOT_DETERMINED": [
+          0.8636,
+          0.765,
+          0.9483
+        ]
+      },
+      "before_confirm": {
+        "YES": [
+          0.8906,
+          0.7903,
+          0.9739
+        ],
+        "NO": [
+          0.0124,
+          0.0,
+          0.0371
+        ],
+        "NOT_DETERMINED": [
+          0.097,
+          0.0229,
+          0.1884
+        ]
+      },
+      "before_cancel": {
+        "YES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "NO": [
+          0.9132,
+          0.8311,
+          0.9793
+        ],
+        "NOT_DETERMINED": [
+          0.0868,
+          0.0218,
+          0.1721
+        ]
+      },
+      "nontemporal_neutral": {
+        "YES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "NO": [
+          0.097,
+          0.0249,
+          0.1913
+        ],
+        "NOT_DETERMINED": [
+          0.903,
+          0.8088,
+          0.9778
+        ]
+      }
+    },
+    "open_state_loss": {
+      "after": [
+        0.0028,
+        0.0001,
+        0.0065
+      ],
+      "before_neutral": [
+        0.6348,
+        0.5127,
+        0.7497
+      ],
+      "before_confirm": [
+        -0.0174,
+        -0.0926,
+        0.0566
+      ],
+      "before_cancel": [
+        -0.1704,
+        -0.279,
+        -0.0544
+      ],
+      "nontemporal_neutral": [
+        0.3103,
+        0.1907,
+        0.4304
+      ]
+    }
+  },
+  "qwen3_32b": {
+    "free_table": {
+      "after": {
+        "ABSENT_OR_UNPARSED": 0.025,
+        "REALIZED": 0.975
+      },
+      "before_neutral": {
+        "ABSENT_OR_UNPARSED": 0.125,
+        "NOT_REALIZED": 0.325,
+        "REALIZED": 0.05,
+        "UNRESOLVED": 0.5
+      },
+      "before_confirm": {
+        "ABSENT_OR_UNPARSED": 0.125,
+        "NOT_REALIZED": 0.05,
+        "REALIZED": 0.7,
+        "UNRESOLVED": 0.125
+      },
+      "before_cancel": {
+        "ABSENT_OR_UNPARSED": 0.075,
+        "NOT_REALIZED": 0.775,
+        "REALIZED": 0.1,
+        "UNRESOLVED": 0.05
+      },
+      "nontemporal_neutral": {
+        "ABSENT_OR_UNPARSED": 0.85,
+        "REALIZED": 0.125,
+        "UNRESOLVED": 0.025
+      }
+    },
+    "forced_slot": {
+      "after": {
+        "REALIZED": [
+          0.9923,
+          0.9879,
+          0.9959
+        ],
+        "UNRESOLVED": [
+          0.0041,
+          0.0024,
+          0.0062
+        ],
+        "NOT_REALIZED": [
+          0.0036,
+          0.0016,
+          0.0061
+        ]
+      },
+      "before_neutral": {
+        "REALIZED": [
+          0.1159,
+          0.0765,
+          0.1602
+        ],
+        "UNRESOLVED": [
+          0.3841,
+          0.3087,
+          0.4604
+        ],
+        "NOT_REALIZED": [
+          0.5,
+          0.4049,
+          0.5924
+        ]
+      },
+      "before_confirm": {
+        "REALIZED": [
+          0.4322,
+          0.3463,
+          0.5201
+        ],
+        "UNRESOLVED": [
+          0.3738,
+          0.3049,
+          0.442
+        ],
+        "NOT_REALIZED": [
+          0.194,
+          0.1473,
+          0.2464
+        ]
+      },
+      "before_cancel": {
+        "REALIZED": [
+          0.0265,
+          0.0186,
+          0.0359
+        ],
+        "UNRESOLVED": [
+          0.1362,
+          0.0878,
+          0.194
+        ],
+        "NOT_REALIZED": [
+          0.8374,
+          0.777,
+          0.8909
+        ]
+      },
+      "nontemporal_neutral": {
+        "REALIZED": [
+          0.0662,
+          0.0359,
+          0.1069
+        ],
+        "UNRESOLVED": [
+          0.7041,
+          0.6291,
+          0.7753
+        ],
+        "NOT_REALIZED": [
+          0.2297,
+          0.1583,
+          0.3038
+        ]
+      }
+    },
+    "direct_probe": {
+      "after": {
+        "YES": [
+          0.9992,
+          0.9987,
+          0.9996
+        ],
+        "NO": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "NOT_DETERMINED": [
+          0.0008,
+          0.0004,
+          0.0012
+        ]
+      },
+      "before_neutral": {
+        "YES": [
+          0.2358,
+          0.139,
+          0.3399
+        ],
+        "NO": [
+          0.6383,
+          0.5062,
+          0.7647
+        ],
+        "NOT_DETERMINED": [
+          0.1259,
+          0.0768,
+          0.1801
+        ]
+      },
+      "before_confirm": {
+        "YES": [
+          0.9629,
+          0.9064,
+          0.9996
+        ],
+        "NO": [
+          0.0159,
+          0.0001,
+          0.0426
+        ],
+        "NOT_DETERMINED": [
+          0.0212,
+          0.0002,
+          0.0541
+        ]
+      },
+      "before_cancel": {
+        "YES": [
+          0.0224,
+          0.0,
+          0.0672
+        ],
+        "NO": [
+          0.9763,
+          0.9289,
+          1.0
+        ],
+        "NOT_DETERMINED": [
+          0.0013,
+          0.0,
+          0.0039
+        ]
+      },
+      "nontemporal_neutral": {
+        "YES": [
+          0.0208,
+          0.003,
+          0.0484
+        ],
+        "NO": [
+          0.3935,
+          0.2723,
+          0.5186
+        ],
+        "NOT_DETERMINED": [
+          0.5857,
+          0.4634,
+          0.705
+        ]
+      }
+    },
+    "open_state_loss": {
+      "after": [
+        -0.0033,
+        -0.0057,
+        -0.0015
+      ],
+      "before_neutral": [
+        -0.2582,
+        -0.3256,
+        -0.1961
+      ],
+      "before_confirm": [
+        -0.3526,
+        -0.427,
+        -0.2736
+      ],
+      "before_cancel": [
+        -0.1348,
+        -0.1912,
+        -0.0865
+      ],
+      "nontemporal_neutral": [
+        -0.1184,
+        -0.2046,
+        -0.0347
+      ]
+    }
+  }
+}
