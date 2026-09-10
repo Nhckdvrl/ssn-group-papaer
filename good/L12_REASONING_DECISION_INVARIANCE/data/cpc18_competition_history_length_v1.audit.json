@@ -1,0 +1,128 @@
+{
+  "design": "L12 supporting paired 20/100 history-length diagnostic",
+  "frozen_config": {
+    "version": "cpc18_history_length_diagnostic_v1",
+    "frozen_at": "2026-09-10T19:55:00+09:00",
+    "data_access_status_at_freeze": "E18 data and results previously opened; new simulated histories unscored",
+    "seed": 163,
+    "orders": [
+      "ab",
+      "ba"
+    ],
+    "samples_per_cell": 10,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "bootstrap_samples": 5000,
+    "minimum_clean_problems": 40,
+    "histories_per_problem": 4,
+    "history_selection": "seeded paired simulation from exact distributions; no human or model outcome enters selection",
+    "feedback_trials": [
+      6,
+      25
+    ],
+    "probability_tolerance": 1e-06,
+    "ev_tie_tolerance": 1e-08,
+    "inclusion": {
+      "known_probability": true,
+      "independent_options": true,
+      "exclude_ev_ties": true,
+      "minimum_unique_histories": 3,
+      "exclude_support_dominance": false,
+      "maximum_outcomes_per_option": 10
+    },
+    "parser_version": "cpc18_terminal_v2",
+    "stripping_version": "cpc18_terminal_commitment_v3",
+    "model_selection_rule": "retain the two calibration axes with controlled sibling or same-weight identification and a positive calibration Delta_R-minus-Delta_P branch contrast whose base-decision bootstrap interval excludes zero",
+    "excluded_from_confirmation": {
+      "llama_external": "unmatched external axis; calibration control contrast 0.019 with CI crossing zero; retained as a reported heterogeneity boundary"
+    },
+    "primary_hypotheses": [
+      "The OLMo reasoning-minus-standard presentation-consistency difference is larger for 100-trial than matched 20-trial histories",
+      "The Qwen reasoning-minus-standard presentation-consistency difference is larger for 100-trial than matched 20-trial histories"
+    ],
+    "supporting_behavior_hypotheses": [
+      "OLMo reasoning-minus-standard presentation-consistency difference is positive",
+      "Qwen reasoning-minus-standard presentation-consistency difference is positive"
+    ],
+    "unit_of_analysis": "base decision",
+    "nested_variation": [
+      "history replicate",
+      "history length",
+      "displayed order",
+      "generation"
+    ],
+    "invalid_output_rule": "conditional-choice estimate plus worst/best assignment bounds; no posthoc prompt or parser revision",
+    "decision_rule": "Supporting diagnosis only; report both axes and do not promote the history-length effect to a headline claim.",
+    "competition_sources": {
+      "status": "populated after preregistration commit 9e4a532; scientific fields unchanged",
+      "raw_url": "https://zenodo.org/api/records/2571510/files/all%20CPC18%20raw%20data.csv/content",
+      "raw_md5": "db1bdcff2e07290714553f29cde81948",
+      "raw_sha256": "cb0dab5ca34adebc49f2dfe57f98096ab74468dea5a12a4558ce5c50ef07952d",
+      "raw_bytes": 65363460,
+      "distribution_algorithm_url": "https://github.com/naecker-lab/cpc18/blob/b9caaca5874e3e388aea6580491ac639370b5bbd/src/CPC18%20BEASTsd%20R/CPC18_getDist.R",
+      "distribution_algorithm_commit": "b9caaca5874e3e388aea6580491ac639370b5bbd",
+      "distribution_algorithm_sha256": "b145434da4702444c44cb23800cbaf6ed4ccebb85277e6a26a76ca233eda26ca",
+      "calibration_validation_workbook_sha256": "d95e89e060c54977fffe45cad2898570d6d87233d18a9e192c5f4bf314792158"
+    },
+    "output": "data/cpc18_competition_history_length_v1.jsonl",
+    "audit_output": "data/cpc18_competition_history_length_v1.audit.json",
+    "result_dir": "results/cpc18_history_length_seed163",
+    "regimes": [
+      {
+        "name": "olmo_instruct_sft",
+        "pair": "olmo_sft",
+        "role": "standard",
+        "id": "allenai/Olmo-3-7B-Instruct-SFT",
+        "revision": "e1452fc572d51966ff4aaeb25118b891eb93e549",
+        "max_tokens": 1024,
+        "requires_closed_think": false
+      },
+      {
+        "name": "olmo_think_sft",
+        "pair": "olmo_sft",
+        "role": "reasoning",
+        "id": "allenai/Olmo-3-7B-Think-SFT",
+        "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+        "max_tokens": 3072,
+        "requires_closed_think": true
+      },
+      {
+        "name": "qwen_thinking",
+        "pair": "qwen_mode",
+        "role": "reasoning",
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "enable_thinking": true,
+        "max_tokens": 3072,
+        "requires_closed_think": true
+      },
+      {
+        "name": "qwen_non_thinking",
+        "pair": "qwen_mode",
+        "role": "standard",
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "enable_thinking": false,
+        "max_tokens": 1024,
+        "requires_closed_think": false
+      }
+    ],
+    "purpose": "Supporting diagnosis of finite-sample evidence precision; not a headline claim.",
+    "history_lengths": [
+      20,
+      100
+    ],
+    "history_construction": "four independent 100-draw histories per option from the exact generating distribution; each 20-trial condition is the prefix of its matched 100-trial history",
+    "analysis_rule": "Report all four regimes. Compare description/history consistency at 20 versus 100 within base decision, together with empirical-EV agreement and invalid-output bounds."
+  },
+  "n_base_decisions": 44,
+  "histories_per_length_per_problem": 4,
+  "empirical_ev_direction_agreement": {
+    "20": 0.75,
+    "100": 0.8465909090909091
+  },
+  "validation": {
+    "twenty_is_prefix_of_matched_hundred": true,
+    "model_outputs_used_in_construction": false
+  }
+}

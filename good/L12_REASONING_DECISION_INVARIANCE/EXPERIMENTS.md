@@ -353,3 +353,18 @@ and `Delta_R - Delta_P`; the scientific unit remains the base decision. The
 bridge supports the story only if the reasoning regime gives evidence-bearing
 trajectories greater relative control under both forms. This rule and donor
 selection are frozen before E20 behavior is inspected.
+
+## L12-E18L: Paired 20/100 History-Length Diagnosis
+
+- **Role:** supporting finite-sample diagnosis, not a headline claim.
+- **Design:** on the unchanged 44 E18 distributions, draw four independent
+  100-trial histories from the exact generating process; each 20-trial history
+  is the prefix of its matched 100-trial history. Cross both lengths with order
+  and all four controlled regimes, using 10 generations per cell.
+- **Report:** description/history consistency by length, reasoning-minus-standard
+  difference, 100-minus-20 change, empirical-EV agreement, validity, and invalid
+  bounds. All regimes and signs are retained.
+- **Interpretation:** recovery with longer histories supports finite-sample
+  evidence as the E18 discrepancy; it cannot establish E20's form/evidence claim.
+- **Frozen config:** `configs/cpc18_history_length_diagnostic.json`.
+- **Status:** frozen before execution.

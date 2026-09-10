@@ -1,0 +1,24 @@
+{
+  "extends": "configs/cpc18_competition_preregistered.json",
+  "version": "cpc18_history_length_diagnostic_v1",
+  "frozen_at": "2026-09-10T19:55:00+09:00",
+  "data_access_status_at_freeze": "E18 data and results previously opened; new simulated histories unscored",
+  "purpose": "Supporting diagnosis of finite-sample evidence precision; not a headline claim.",
+  "seed": 163,
+  "samples_per_cell": 10,
+  "histories_per_problem": 4,
+  "history_lengths": [20, 100],
+  "history_construction": "four independent 100-draw histories per option from the exact generating distribution; each 20-trial condition is the prefix of its matched 100-trial history",
+  "history_selection": "seeded paired simulation from exact distributions; no human or model outcome enters selection",
+  "primary_hypotheses": [
+    "The OLMo reasoning-minus-standard presentation-consistency difference is larger for 100-trial than matched 20-trial histories",
+    "The Qwen reasoning-minus-standard presentation-consistency difference is larger for 100-trial than matched 20-trial histories"
+  ],
+  "unit_of_analysis": "base decision",
+  "nested_variation": ["history replicate", "history length", "displayed order", "generation"],
+  "decision_rule": "Supporting diagnosis only; report both axes and do not promote the history-length effect to a headline claim.",
+  "output": "data/cpc18_competition_history_length_v1.jsonl",
+  "audit_output": "data/cpc18_competition_history_length_v1.audit.json",
+  "result_dir": "results/cpc18_history_length_seed163",
+  "analysis_rule": "Report all four regimes. Compare description/history consistency at 20 versus 100 within base decision, together with empirical-EV agreement and invalid-output bounds."
+}
