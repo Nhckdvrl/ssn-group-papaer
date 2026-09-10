@@ -33,7 +33,7 @@ def compute_unit_metrics(frame):
     cells = frame.pivot(
         index=["problem", "layer", "target_form", "target_evidence"],
         columns=["donor_form", "donor_evidence"],
-        values="patched_p_a",
+        values="patched_p_underlying_a",
     )
     unit_rows = []
     for (problem, layer), part in cells.groupby(level=["problem", "layer"]):

@@ -407,7 +407,12 @@ All 8,704 factorial rows pass exact cell and raw-hash validation.
   sensitivity, with base-decision bootstrap uncertainty. The evidence component
   must also have a 95% interval above zero; every component and layer is reported.
 - **Frozen config:** `configs/cpc18_selective_state.json`.
-- **Status:** design and units frozen before E21 state output; ready to execute.
+- **Execution correction:** the first runner version summarized displayed-label
+  A rather than underlying option A under reversed display order. That output is
+  invalid and excluded. The coordinate transform and an explicit `ba` unit test
+  were committed before rerun; units, layers, hypotheses, and decision rule are
+  unchanged.
+- **Status:** design and units frozen; corrected execution pending.
 
 ## L12-E18L: Paired 20/100 History-Length Diagnosis
 

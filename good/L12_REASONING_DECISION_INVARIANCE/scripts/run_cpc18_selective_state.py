@@ -8,6 +8,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from cpc18_form_evidence_common import ROOT, load_problems, make_prompt
+from cpc18_common import shown_choice
 from run_state_substitution import (
     collect_donor_states,
     encode_prefix,
@@ -30,6 +31,13 @@ def prefix(tokenizer, prompt, trace):
     if not rendered.rstrip().endswith("<think>"):
         raise ValueError("OLMo Think template no longer opens the reasoning channel")
     return rendered + trace.strip() + "\n</think>\n\n"
+
+
+def probability_underlying_a(scores, order):
+    probabilities = torch.softmax(
+        torch.tensor([scores["A"], scores["B"]]), dim=0
+    )
+    return float(probabilities[0 if shown_choice("A", order) == "A" else 1])
 
 
 def main():
@@ -102,9 +110,9 @@ def main():
                         **target_encoded, use_cache=False, logits_to_keep=1
                     ).logits[0, -1]
                 baseline_scores = logits_for_labels(baseline_logits, labels)
-                baseline_p_a = float(torch.softmax(torch.tensor([
-                    baseline_scores["A"], baseline_scores["B"]
-                ]), dim=0)[0])
+                baseline_p_a = probability_underlying_a(
+                    baseline_scores, unit["order"]
+                )
                 for donor_form in ("raw", "summary"):
                     for donor_evidence in ("A", "B"):
                         for layer_index in STATE["scan_layers"]:
@@ -113,9 +121,7 @@ def main():
                                 donor_states[donor_form, donor_evidence][layer_index],
                             )
                             scores = logits_for_labels(logits, labels)
-                            p_a = float(torch.softmax(torch.tensor([
-                                scores["A"], scores["B"]
-                            ]), dim=0)[0])
+                            p_a = probability_underlying_a(scores, unit["order"])
                             handle.write(json.dumps({
                                 "problem": unit["problem"],
                                 "source_split": unit["source_split"],
@@ -127,8 +133,8 @@ def main():
                                 "donor_evidence": donor_evidence,
                                 "layer": layer_index,
                                 "n_layers": len(layers),
-                                "baseline_p_a": baseline_p_a,
-                                "patched_p_a": p_a,
+                                "baseline_p_underlying_a": baseline_p_a,
+                                "patched_p_underlying_a": p_a,
                             }) + "\n")
                             handle.flush()
     (output / f"scan{suffix}.json").write_text(json.dumps({

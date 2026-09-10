@@ -3,6 +3,7 @@
 
 import pandas as pd
 
+from run_cpc18_selective_state import probability_underlying_a
 from summarize_cpc18_selective_state import compute_unit_metrics
 
 
@@ -19,12 +20,15 @@ def main():
                         "target_evidence": target_evidence,
                         "donor_form": donor_form,
                         "donor_evidence": donor_evidence,
-                        "patched_p_a": 1.0 if donor_evidence == "A" else 0.0,
+                        "patched_p_underlying_a": 1.0 if donor_evidence == "A" else 0.0,
                     })
     result = compute_unit_metrics(pd.DataFrame(rows)).iloc[0]
     assert result.donor_evidence_effect == 1.0
     assert result.donor_form_sensitivity == 0.0
     assert result.state_selectivity == 1.0
+    scores = {"A": -2.0, "B": 2.0}
+    assert probability_underlying_a(scores, "ab") < 0.1
+    assert probability_underlying_a(scores, "ba") > 0.9
     print("E21 state-selectivity direction check passed")
 
 
