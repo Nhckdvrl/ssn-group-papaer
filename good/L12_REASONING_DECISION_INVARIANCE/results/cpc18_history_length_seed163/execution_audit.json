@@ -1,0 +1,85 @@
+{
+  "design": "L12 paired 20/100 execution audit",
+  "n_base_decisions": 44,
+  "expected_rows_per_base_decision": 180,
+  "regimes": {
+    "olmo_instruct_sft": {
+      "rows": 7920,
+      "base_decisions": 44,
+      "duplicate_keys": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "history_length_rows": {
+        "20": 3520,
+        "100": 3520
+      },
+      "valid_rate": 0.9268939393939394
+    },
+    "olmo_think_sft": {
+      "rows": 7920,
+      "base_decisions": 44,
+      "duplicate_keys": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "history_length_rows": {
+        "20": 3520,
+        "100": 3520
+      },
+      "valid_rate": 0.6436868686868686
+    },
+    "qwen_thinking": {
+      "rows": 7920,
+      "base_decisions": 44,
+      "duplicate_keys": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "history_length_rows": {
+        "20": 3520,
+        "100": 3520
+      },
+      "valid_rate": 0.6508838383838383
+    },
+    "qwen_non_thinking": {
+      "rows": 7920,
+      "base_decisions": 44,
+      "duplicate_keys": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "history_length_rows": {
+        "20": 3520,
+        "100": 3520
+      },
+      "valid_rate": 0.9457070707070707
+    }
+  },
+  "manifest": {
+    "results/cpc18_history_length_seed163/raw/olmo_instruct_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_history_length_seed163/raw/olmo_think_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_history_length_seed163/raw/olmo_think_sft.shard0of2.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_history_length_seed163/raw/olmo_think_sft.shard1of2.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_history_length_seed163/raw/qwen_non_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_history_length_seed163/raw/qwen_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    }
+  },
+  "status": "PASS",
+  "failures": []
+}

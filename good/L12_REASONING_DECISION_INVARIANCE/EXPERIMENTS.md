@@ -478,4 +478,19 @@ All 8,704 factorial rows pass exact cell and raw-hash validation.
 - **Interpretation:** recovery with longer histories supports finite-sample
   evidence as the E18 discrepancy; it cannot establish E20's form/evidence claim.
 - **Frozen config:** `configs/cpc18_history_length_diagnostic.json`.
-- **Status:** frozen before execution.
+- **Data result:** empirical-history EV direction agrees with the generating
+  distribution on 0.750 of 20-trial histories and 0.847 of their matched
+  100-trial continuations.
+- **Behavior result:** on base decisions with finite paired conditional estimates,
+  the OLMo reasoning-minus-standard change from 20 to 100 trials is **+0.271
+  [0.176, 0.367]** (`n=21/44`), whereas Qwen is **-0.004 [-0.089, 0.083]**
+  (`n=18/44`).
+- **Validity boundary:** 100-trial raw tables induce pervasive length truncation:
+  reasoning-regime valid rates within the 100-trial history cells are 0.332
+  (OLMo) and 0.343 (Qwen). The 100-trial reasoning-minus-standard sharp bounds
+  are `[-0.350, +0.392]` and `[-0.450, +0.326]`; neither axis is identified
+  without conditional-on-valid assumptions. Every requested row and raw hash
+  nevertheless passes execution audit.
+- **Status:** **completed; supporting diagnosis inconclusive.** The result does
+  not become a claim and is not rescued with a post-outcome token-budget change.
+  E20, not E18L, carries the form/evidence conclusion.

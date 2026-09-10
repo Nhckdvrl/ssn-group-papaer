@@ -11,6 +11,9 @@ from cpc18_history_length_common import CONFIG, ROOT
 
 def bootstrap(values, seed):
     values = np.asarray(values, dtype=float)
+    values = values[np.isfinite(values)]
+    if not len(values):
+        return [float("nan"), float("nan")]
     rng = np.random.default_rng(seed)
     draws = values[rng.integers(0, len(values), (CONFIG["bootstrap_samples"], len(values)))].mean(axis=1)
     return [float(np.quantile(draws, .025)), float(np.quantile(draws, .975))]
@@ -50,7 +53,15 @@ def units(frame):
 
 
 def report(values, seed):
-    return {"mean": float(values.mean()), "base_decision_bootstrap_ci95": bootstrap(values, seed), "positive_base_decision_fraction": float((values > 0).mean())}
+    values = np.asarray(values, dtype=float)
+    finite = values[np.isfinite(values)]
+    return {
+        "mean": float(finite.mean()) if len(finite) else float("nan"),
+        "base_decision_bootstrap_ci95": bootstrap(finite, seed),
+        "positive_base_decision_fraction": float((finite > 0).mean()) if len(finite) else float("nan"),
+        "n_finite_base_decisions": int(len(finite)),
+        "n_total_base_decisions": int(len(values)),
+    }
 
 
 def main():

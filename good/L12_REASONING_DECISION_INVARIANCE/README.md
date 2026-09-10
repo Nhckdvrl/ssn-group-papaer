@@ -6,7 +6,7 @@
 **Target:** NAACL Main, continuously calibrated to ACL/EMNLP Main
 **Last audited:** 2026-09-10
 
-> **Research question:** Why does reasoning-oriented post-training make decisions invariant to presentation, and is that transition accompanied by a reallocation of causal control from the prompt to a self-generated reasoning trajectory and its pre-answer decision state?
+> **Research question:** Why do reasoning models become invariant to some changes in presentation while remaining sharply sensitive to others, and does reasoning reorganize decision control from prompt form toward an evidence-bearing trajectory and its pre-answer state?
 
 “Trajectory takeover” does not mean the chain of thought is fake. It names a possible change in how the model forms decisions: prompt information can remain available while a self-generated trajectory becomes the dominant route into final decoding.
 
@@ -66,14 +66,27 @@ The discovery pilot supports **progressive construction plus late consolidation*
     **+0.763 [0.694, 0.828]**, form sensitivity **0.174 [0.124, 0.227]**, and
     state selectivity **+0.590 [0.476, 0.704]**. The evidence effect is near zero
     early and develops into the late pre-answer state.
+22. The new crown generalizes beyond OLMo/Qwen. In the external Llama ecosystem,
+    DeepSeek-minus-Llama selective sensitivity is **+0.996 [0.962, 1.031]**,
+    positive on 137/137 decisions. Trajectory-relative evidence control rises by
+    **+0.175 [0.131, 0.221]** for raw histories and **+0.143 [0.106, 0.180]**
+    for summaries, while prompt-control changes remain near zero.
+23. A paired 20/100-trial supporting diagnosis is inconclusive. Empirical evidence
+    aligns with the generating EV direction more often at 100 trials (0.847 versus
+    0.750), but long raw tables drive reasoning valid rates to 0.332/0.343 and
+    sharp bounds do not identify either controlled-axis effect. It is retained as
+    an audited limitation, not promoted into the story.
 
 ## Claim architecture
 
-- **C1 - Progressive trajectory construction:** reasoning before the terminal commitment already carries decision direction, with terminal amplification.
-- **C2 - Trajectory-built decision state:** a pre-answer internal state causally transfers that direction.
-- **C3 - Causal-control reorganization:** reasoning-oriented computation shifts
-  control toward trajectories; whether this yields behavioral invariance depends
-  on the decisions those trajectories construct.
+- **C1 - Trajectory construction and consolidation:** reasoning develops a causal
+  decision direction before terminal commitment and consolidates it into a
+  transferable pre-answer state.
+- **C2 - Causal-control reallocation:** reasoning-oriented computation shifts
+  control from prompt-level presentation toward the trajectory and state it builds.
+- **C3 - Selective sensitivity:** that new controller becomes comparatively
+  insensitive to representational form while remaining sharply sensitive to
+  decision evidence.
 
 E12-E15 provide checkpoint persistence, same-weight route triangulation, external-family replication, and external state mediation underneath C2-C3. They are not additional headline claims.
 
@@ -81,20 +94,26 @@ Behavioral invariance, probe decodability, generic trajectory causality, and ind
 
 ## Novelty boundary
 
-Recent work already owns the parent behavioral phenomenon, iterative CoT computation, trace injection, and reasoning-induced latent policy states. L12's surviving paper identity is narrower:
+Recent work already owns the parent behavioral phenomenon, iterative CoT
+computation, trace injection, reasoning-induced latent policy states, and the
+fact that finite samples can change decision evidence. L12's full paper identity
+is their unresolved intersection:
 
-> explain an established presentation-invariance transition through matched-branch evidence that causal control moves away from prompt presentation and toward self-generated trajectory-mediated decision formation.
+> reasoning reallocates causal decision control from presentation form toward
+> evidence integrated by a self-generated trajectory and its internal state,
+> producing selective rather than indiscriminate invariance.
 
 See `RELATED_WORK.md` for the live compression audit.
 
 ## Final study boundary
 
-The independent-decision and natural description/history expansions are complete.
-Under the corrected order-conditional construct, a preregistered per-item
-association between invariance change and control change is not supported (rho =
--0.001, p = 0.997) and is permanently demoted. The supported bridge is the
-construct-level reallocation reproduced over 151 CPC18 calibration decisions
-under OLMo sibling and Qwen same-weight identification.
+The independent-decision, natural description/history, and orthogonal form-by-
+evidence expansions are complete. Under the corrected order-conditional
+construct, a preregistered per-item association between the original gain/loss
+invariance change and control change is not supported (rho = -0.001, p = 0.997)
+and remains demoted. The stronger bridge is now intervention-level: changing
+evidence carried by the trajectory controls behavior and the late internal state,
+whereas changing form has a substantially smaller effect.
 
 E12 is complete. It establishes persistence over a real OLMo checkpoint axis, not attribution of the original divergence to DPO.
 
@@ -103,19 +122,20 @@ E13 is also complete. Qwen3 supplies a complementary identification because weig
 E14-E15 are complete. The Llama/DeepSeek axis replicates the aligned increase in presentation invariance and trajectory-relative control, then verifies late pre-answer state mediation within DeepSeek. This is external replication rather than training attribution because the pair is unmatched.
 
 The current paper answer is that reasoning-oriented computation reorganizes
-decision formation toward a progressively constructed trajectory and late decision
-state. This is not merely an OLMo-local result: it survives a same-weight Qwen mode
-contrast, a qualitatively different presentation family, and an untouched
-competition split. The OLMo heldout behavior result shows that the route change is
-not sufficient for invariance, while the Llama boundary shows that invariance can
-also reflect stable chance-level choice. The paper must therefore measure behavior,
-EV alignment, and causal route jointly rather than call any invariance
-"rationality."
+decision formation toward a progressively constructed trajectory and late state,
+and that this controller tracks decision evidence far more strongly than its raw-
+versus-summary form. This is not an OLMo-local result: the selective behavior and
+trajectory-control transition holds under OLMo sibling, same-weight Qwen, and
+external Llama-ecosystem axes. The paper must therefore distinguish form from
+evidence and must never equate invariance alone with rationality.
 
 The heldout result exposed a construct confound in description/history: a finite
-history changes both surface form and observed evidence. A prospective E20 now
-orthogonalizes those variables using previously unscored real histories. Further
-model families, layer searches, and post-hoc subgroup claims remain unjustified.
+history changes both surface form and observed evidence. Prospective E20
+orthogonalizes those variables using previously unscored real histories; E20-C,
+E21, and E22 connect the resulting behavior to trajectory control, state content,
+and external-family breadth. E18L is the final supporting finite-history
+consequence. Further model families, layer searches, and post-hoc subgroup claims
+are not load-bearing.
 
 The primary unit is always the base decision. Repeated traces and patch layers do not count as independent evidence.
 

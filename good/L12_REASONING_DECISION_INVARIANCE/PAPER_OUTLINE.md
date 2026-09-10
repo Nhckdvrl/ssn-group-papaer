@@ -91,11 +91,13 @@ substitution establish that this is one causal mechanism.
 
 ### Act V: Consequence
 
-Use the paired 20/100 history diagnosis to show how finite-sample evidence changes
-the behavioral appearance of invariance. Keep it as a consequence of the account,
-not a fourth claim. The paper ends with a practical interpretive warning: observed
-robustness is meaningful only after separating harmless changes in representation
-from changes in decision evidence.
+Return to the original description/history discrepancy: once form and evidence
+are separated, a behavioral "robustness" score can mean either invariance to a
+wrapper or failure to respond to changed information. The paper ends with a
+practical interpretive warning: robustness is meaningful only after separating
+harmless representational changes from changes in decision evidence. E18L's
+20/100 trial diagnosis is an inconclusive appendix audit because long raw tables
+trigger severe reasoning truncation; it is not used to decorate this consequence.
 
 ## Main figures and tables
 
@@ -115,8 +117,9 @@ from changes in decision evidence.
 6. **Table 2 - Evidence breadth:** independent decision counts, calibration versus
    heldout status, repeated generations, valid rates, clustered intervals, and
    sharp invalid-output bounds.
-7. **Figure/Table 5 - Finite-history consequence:** paired 20/100 evidence
-   agreement and description/history consistency; supporting, not headline.
+7. **Appendix audit - History length:** paired 20/100 evidence agreement,
+   description/history consistency, truncation rates, conditional estimates, and
+   sharp bounds. Explicitly report that it does not identify a common effect.
 
 ## Evidence scale
 
