@@ -41,10 +41,13 @@ Evidence: E02, E10 model extension.
 `supported`, and now **causal within items**. Llama, first mask: rank 0.889 -> one
 generated token 0.837 -> generated chain 0.030 (E02, pre-registered depth contrast).
 E07 holds items, model, mask, content and protocol fixed and varies only the time
-window over which the mask is applied: truncating the opening 16 generated steps and
-then restoring the readout leaves 0.567, truncating everything after step 16 leaves
-0.313, and truncating throughout leaves 0.109. Early damage is largely recoverable;
-the collapse requires sustained exposure.
+window over which the mask is applied. Every partial exposure beats full exposure, and
+restoring the readout part-way through recovers a large factor (Llama 0.109 -> 0.567,
+Qwen 0.138 -> 0.748 at a switch of 16 steps), so the damage is not permanent. But the
+second dose point shows the mechanism is **positional, not cumulative**: truncating 64
+early steps leaves 0.155 while truncating ~336 late steps leaves 0.756. What matters is
+whether the answer-bearing tokens were produced under truncation — which is the same
+quantity C2.2 identifies.
 
 **C1.4 — The parent's representational conclusion about mask identity is also
 protocol-bound.** `supported`, now with a random-mask control.
@@ -53,7 +56,7 @@ representation space usage by LLMs" reproduces exactly under ranking and fails u
 generation. With three random half-masks added per cell, so that the comparison is at a
 *fixed count* of surviving dimensions: the best and worst of five different half-masks
 differ by **1.0-1.1x under ranking** and by **2.7-13.0x under generation**; the
-random-mask coefficient of variation goes from 0.4-2.6% to 9.7-50.9%. The structured
+random-mask coefficient of variation goes from 0.4-2.6% to 11.6-99.8%. The structured
 halves are also not exchangeable with arbitrary ones — for Qwen's `mmlu_gen_cot` the
 random masks band at 0.052-0.064 while `first` is 0.146 and `last` is 0.011.
 Evidence: E02, E11.

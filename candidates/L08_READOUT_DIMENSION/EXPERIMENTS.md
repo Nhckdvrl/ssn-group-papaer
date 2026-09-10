@@ -650,45 +650,63 @@ were removed.
 
 ## E07 — Is the depth effect causal, within items?  `DONE 2026-09-11`
 
-**Linked claim.** C1.3. Until now the depth finding rested on a *cross-cell* comparison
-(short-answer cells survive, long-CoT cells do not), and cells differ in more than
-length. This is the within-item version: the same items, the same model, the same
-mask, and only the **time window** over which the mask is applied differs.
+**Linked claim.** C1.3. The depth finding rested on a *cross-cell* comparison, and
+cells differ in more than length. This is the within-item version: same items, same
+model, same mask, and only the **time window** over which the mask is applied differs.
 
 ```
-CUDA_VISIBLE_DEVICES=3 python scripts/run_e07_temporal.py \
-    --model NousResearch/Meta-Llama-3.1-8B-Instruct --tag llama \
-    --mask first --cell gsm8k_gen_cot --switch 16 --n 500
+CUDA_VISIBLE_DEVICES=<g> python scripts/run_e07_temporal.py --model <ckpt> \
+    --tag <tag> --mask first --cell gsm8k_gen_cot --switch <N> --n 500
 ```
 
-| schedule | generated steps truncated | accuracy | relative to full |
-|---|---|---|---|
-| full readout | 0 | 0.786 | 1.000 |
-| **first16** — truncate the first 16 steps, then restore | 16 | 0.446 | **0.567** |
-| **after16** — full readout for 16 steps, then truncate | ~384 | 0.246 | **0.313** |
-| **all** — the E02 condition | 400 | 0.086 | 0.109 |
+Relative to full readout, GSM8K CoT, first-half mask:
 
-**Validation.** The `all` schedule reproduces the E02 number exactly (0.0860,
-rel 0.109), confirming that the mid-generation switch reduces to the standard
-always-on intervention when its window covers the whole generation.
+| model | switch | schedule | steps truncated | rel |
+|---|---|---|---|---|
+| Llama 3.1 8B | 16 | truncate the first 16, then restore | 16 | **0.567** |
+| Llama 3.1 8B | 16 | full for 16, then truncate | ~384 | 0.313 |
+| Llama 3.1 8B | **64** | truncate the first 64, then restore | 64 | **0.155** |
+| Llama 3.1 8B | **64** | full for 64, then truncate | ~336 | **0.756** |
+| Llama 3.1 8B | — | truncate throughout (the E02 condition) | 400 | 0.109 |
+| Qwen 2.5 7B | 16 | truncate the first 16, then restore | 16 | **0.748** |
+| Qwen 2.5 7B | 16 | full for 16, then truncate | ~384 | 0.221 |
+| Qwen 2.5 7B | — | truncate throughout | 400 | 0.138 |
 
-**Reading.**
-1. **Early damage is largely recoverable.** Truncating only the opening 16 tokens and
-   then restoring the full readout leaves 0.567, a factor of **5.2 above** never
-   restoring it. The opening does not determine the outcome.
-2. **The collapse requires sustained exposure.** Truncating the tail alone (0.313) is
-   worse than truncating the opening alone (0.567), and truncating throughout (0.109)
-   is worse than either.
-3. The two windows combine slightly worse than multiplicatively
-   (0.567 x 0.313 = 0.177 predicted, 0.109 observed).
+**Validation.** The `all` schedule reproduces the E02 numbers exactly (Llama 0.0860,
+rel 0.109), confirming that mid-generation switching reduces to the standard always-on
+intervention when its window covers the whole generation.
 
-This is the within-item causal form of C1.3: with content, protocol, items, model and
-mask all held fixed, the number of steps over which the readout is degraded is what
-moves the outcome.
+### A reading that the second dose point corrected
 
-**Still to run.** The same schedule on a second model, and a sweep over the switch
-point, if the depth axis needs a dose-response curve rather than a three-point
-contrast.
+From the `switch = 16` row alone the natural reading was "the collapse requires
+sustained exposure": truncating the tail (0.313) looked worse than truncating the
+opening (0.567). The `switch = 64` row falsifies that. Truncating **64 early steps**
+gives 0.155, while truncating **336 late steps** gives 0.756. Damage is not cumulative
+in the number of truncated steps; it is **positional**.
+
+The reason is visible in the baseline: at full readout Llama's GSM8K chains average 235
+characters, roughly 60 tokens. So "the first 64 steps" covers essentially the entire
+answer a healthy model would produce, and "after step 64" only touches the runaway tail
+that a healthy model never emits. This is a real property of the setting, not an
+artefact to be controlled away, but it means the experiment cannot be read as a
+step-count dose-response.
+
+### What E07 does establish
+
+1. **The damage is recoverable.** Restoring the full readout part-way through a
+   truncated generation recovers a large factor: Llama 0.109 -> 0.567 (5.2x) and Qwen
+   0.138 -> 0.748 (5.4x) at `switch = 16`. The model is not permanently derailed by an
+   early stretch of degraded readout.
+2. **What matters is whether the answer-bearing tokens were generated under
+   truncation**, not how many steps were. This connects directly to E08: supplying the
+   answer marker to a truncated model turns a literal 0.000 into 0.178.
+3. Every partial exposure beats full exposure, in all three settings — so the
+   cross-cell depth result is not an artefact of the cells, but its mechanism is
+   positional rather than cumulative.
+
+**What it does not establish.** A step-count dose-response. Getting one would need
+chains long enough that a switch point can sit well inside a healthy answer without
+covering it, i.e. a task with much longer reference solutions.
 
 ---
 
@@ -730,5 +748,19 @@ python scripts/analyze_e11_masks.py
 ```
 
 Three random half-masks (seeds 11, 22, 33) per model x cell, `keep_frac` 0.5, the same
-items and the same scoring as every other condition. Qwen's `gsm8k_gen_cot` seeds are
-still running.
+items and the same scoring as every other condition. Complete: 18 of 18.
+
+Final all-mask ranges, best over worst of five different half-masks:
+
+| model | cell | protocol | range | random-mask CV |
+|---|---|---|---|---|
+| Llama 3.1 8B | `mmlu_rank` | ranking | **1.1x** | 2.6% |
+| Qwen 2.5 7B | `mmlu_rank` | ranking | **1.0x** | 0.4% |
+| Llama 3.1 8B | `gsm8k_gen_cot` | generation | 2.7x | 22.2% |
+| Llama 3.1 8B | `mmlu_gen_cot` | generation | 5.6x | 50.9% |
+| Qwen 2.5 7B | `gsm8k_gen_cot` | generation | **9.4x** | **99.8%** |
+| Qwen 2.5 7B | `mmlu_gen_cot` | generation | 13.0x | 11.6% |
+
+Qwen's `gsm8k_gen_cot` is the sharpest case: three random half-masks of the *same size*
+give 0.055, and 0.517, a coefficient of variation of 99.8%. Under ranking the same
+model's five masks agree to 1.0x.
