@@ -53,6 +53,12 @@ The discovery pilot supports **progressive construction plus late consolidation*
 19. Increasing heldout behavioral sampling from 3 to 20 generations per cell
     leaves this pattern intact: OLMo is **-0.011 [-0.089, 0.067]**, while Qwen
     is **+0.121 [0.026, 0.215]**. The OLMo null is not Monte Carlo imprecision.
+20. Once form and evidence are orthogonalized over 137 real CPC18 decisions,
+    reasoning changes what the model is sensitive to. The OLMo selective-
+    sensitivity shift is **+1.229 [1.195, 1.262]** and the same-weight Qwen
+    shift is **+0.709 [0.638, 0.778]**: sensitivity to form falls while
+    sensitivity to decision evidence rises. E20-C is testing whether the same
+    relocation appears in causal trajectory control.
 
 ## Claim architecture
 

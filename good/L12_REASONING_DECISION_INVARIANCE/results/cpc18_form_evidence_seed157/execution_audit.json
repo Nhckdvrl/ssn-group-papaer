@@ -1,0 +1,78 @@
+{
+  "design": "L12-E20 execution audit",
+  "n_frozen_base_decisions": 137,
+  "expected_rows_per_base_decision": 80,
+  "regimes": {
+    "olmo_instruct_sft": {
+      "rows": 10960,
+      "base_decisions": 137,
+      "duplicate_keys": 0,
+      "history_id_mismatches": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "valid_rate": 0.9971715328467153
+    },
+    "olmo_think_sft": {
+      "rows": 10960,
+      "base_decisions": 137,
+      "duplicate_keys": 0,
+      "history_id_mismatches": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "valid_rate": 0.7037408759124087
+    },
+    "qwen_thinking": {
+      "rows": 10960,
+      "base_decisions": 137,
+      "duplicate_keys": 0,
+      "history_id_mismatches": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "valid_rate": 0.8644160583941606
+    },
+    "qwen_non_thinking": {
+      "rows": 10960,
+      "base_decisions": 137,
+      "duplicate_keys": 0,
+      "history_id_mismatches": 0,
+      "maximum_prompt_hashes_per_condition": 1,
+      "valid_rate": 0.9931569343065694
+    }
+  },
+  "manifest": {
+    "results/cpc18_form_evidence_seed157/raw/olmo_instruct_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_seed157/raw/olmo_think_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_seed157/raw/olmo_think_sft.shard0of3.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_seed157/raw/olmo_think_sft.shard1of3.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_seed157/raw/olmo_think_sft.shard2of3.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_seed157/raw/qwen_non_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_form_evidence_seed157/raw/qwen_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    }
+  },
+  "status": "PASS",
+  "failures": []
+}

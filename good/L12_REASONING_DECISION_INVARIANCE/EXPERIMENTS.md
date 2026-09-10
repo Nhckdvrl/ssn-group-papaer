@@ -352,7 +352,20 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
 - **Data gate:** 137 base decisions pass before model scoring: 104 calibration
   and 33 competition problems. Median matched evidence-strength ratio is 1.012
   and the maximum is 1.5. The exported corpus contains no participant identifier.
-- **Status:** data gate passed and design frozen; no E20 model output inspected.
+- **Behavioral result:** both controlled axes show the preregistered selective
+  shift. OLMo Think-minus-Instruct changes form sensitivity by **-0.341
+  [-0.364, -0.317]**, evidence sensitivity by **+0.888 [0.865, 0.911]**, and
+  selective sensitivity by **+1.229 [1.195, 1.262]**. Qwen thinking-minus-
+  non-thinking changes the same quantities by **-0.266 [-0.291, -0.241]**,
+  **+0.443 [0.397, 0.491]**, and **+0.709 [0.638, 0.778]**.
+- **Validity boundary:** Qwen's component directions survive sharp invalid-output
+  assignment. OLMo Think has a lower valid rate (0.704); its selective pair
+  difference remains positive even under sharp assignment (**[+0.269,
+  +1.289]**), while the form component alone does not. The central OLMo result
+  is therefore the joint selective contrast, not an unconditional form-only
+  estimate.
+- **Status:** **behavioral gate passed on both axes; E20-C activated.** Execution
+  audit passes for 43,840 generations with 137/137 base decisions per regime.
 
 ### E20-C causal bridge (conditionally activated)
 
@@ -364,6 +377,10 @@ and `Delta_R - Delta_P`; the scientific unit remains the base decision. The
 bridge supports the story only if the reasoning regime gives evidence-bearing
 trajectories greater relative control under both forms. This rule and donor
 selection are frozen before E20 behavior is inspected.
+
+The activation gate passed on both axes. Strict donor construction retains all
+137 base decisions: 542 OLMo and 546 Qwen form/order trace units. The four-regime
+factorial is in execution.
 
 ## L12-E18L: Paired 20/100 History-Length Diagnosis
 
