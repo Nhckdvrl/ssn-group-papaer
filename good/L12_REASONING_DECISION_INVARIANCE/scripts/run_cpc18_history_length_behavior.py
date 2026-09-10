@@ -15,9 +15,20 @@ from cpc18_history_length_common import CONFIG, ROOT, load_problems, make_prompt
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--regime", required=True)
+    parser.add_argument("--shard-index", type=int)
+    parser.add_argument("--num-shards", type=int)
     args = parser.parse_args()
+    if (args.shard_index is None) != (args.num_shards is None):
+        parser.error("--shard-index and --num-shards must be provided together")
+    if args.num_shards is not None and not 0 <= args.shard_index < args.num_shards:
+        parser.error("--shard-index must be in [0, --num-shards)")
     spec = next(item for item in CONFIG["regimes"] if item["name"] == args.regime)
     problems = load_problems()
+    if args.num_shards is not None:
+        problems = [
+            problem for index, problem in enumerate(problems)
+            if index % args.num_shards == args.shard_index
+        ]
     conditions = []
     for problem in problems:
         for order in CONFIG["orders"]:
@@ -39,7 +50,11 @@ def main():
     ))
     output = ROOT / CONFIG["result_dir"]
     (output / "raw").mkdir(parents=True, exist_ok=True)
-    with (output / "raw" / f"{args.regime}.jsonl").open("w") as handle:
+    suffix = (
+        f".shard{args.shard_index}of{args.num_shards}"
+        if args.num_shards is not None else ""
+    )
+    with (output / "raw" / f"{args.regime}{suffix}.jsonl").open("w") as handle:
         for condition, prompt, request in zip(conditions, prompts, requests):
             problem, presentation, order, history = condition
             for sample_index, completion in enumerate(request.outputs):
@@ -60,7 +75,20 @@ def main():
                     "removed_terminal_segments": removed, "finish_reason": completion.finish_reason,
                     "continuation": completion.text, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
                 }) + "\n")
-    (output / f"{args.regime}.model.json").write_text(json.dumps({**spec, "backend": "vllm", "sampling_seed": CONFIG["seed"] + CONFIG["regimes"].index(spec), "n_problems": len(problems)}, indent=2) + "\n")
+    metadata = {
+        **spec,
+        "backend": "vllm",
+        "sampling_seed": CONFIG["seed"] + CONFIG["regimes"].index(spec),
+        "n_problems": len(problems),
+    }
+    if args.num_shards is not None:
+        metadata.update({
+            "shard_index": args.shard_index,
+            "num_shards": args.num_shards,
+        })
+    (output / f"{args.regime}{suffix}.model.json").write_text(
+        json.dumps(metadata, indent=2) + "\n"
+    )
 
 
 if __name__ == "__main__":
