@@ -70,14 +70,16 @@ for OLMo, +0.097 [0.002, 0.180], and Qwen, +0.219 [0.152, 0.288]. Qwen's support
 behavioral effect confirms; OLMo's does not. E19 separately confirms state mediation
 on 48 frozen calibration decisions.
 
-## Stopping rule reached
+## Reopened account test: form versus evidence
 
-The mechanism program has phenomenon, competing-account constraints, distributed
-trajectory evidence, internal mediation, matched causal-control comparisons,
-natural-stimulus breadth, and an untouched confirmation split. No additional model
-family, token/head localization, or training method is scientifically licensed by
-the current result. The next work product is the manuscript and robustness review,
-not another exploratory experiment.
+Post-hoc, model-independent inspection showed that the original explicit/history
+manipulation changes both representation form and finite-sample evidence. Across
+the 195 existing problems, empirical-history agreement strongly tracks the observed
+behavioral contrast. This is a hypothesis generator, not confirmation. The study is
+reopened only to orthogonalize form and evidence with previously unscored real
+histories. E18P first rules out coarse three-sample behavior measurement; E20 then
+tests the selective-sensitivity account prospectively. Additional model families,
+token/head localization, and training methods remain out of scope.
 
 ## Decision rule
 

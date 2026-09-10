@@ -296,3 +296,19 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   donor shift is **+7.094 [5.914, 8.276]**, positive on 45/48 base decisions;
   donor-choice flip rate is 0.823 across the 96 directional interventions.
 - **Status:** **completed; supports C2 on natural description/history units.**
+
+## L12-E18P: Heldout Behavioral Precision Replication
+
+- **Role:** measurement audit, not a new headline claim and not a replacement for
+  the preregistered E18 result.
+- **Design:** repeat all 44 E18 problems, the same three histories, both displayed
+  orders, all four controlled regimes, and the unchanged prompt/parser/metric.
+  Increase only independent generations per cell from 3 to 20; seed 149 is new.
+- **Primary report:** order-conditional presentation-consistency difference for
+  OLMo and Qwen, base-decision bootstrap intervals, validity, and worst/best
+  invalid-output assignment bounds. Report both axes regardless of direction.
+- **Purpose:** determine whether E18's coarse four-level empirical probabilities
+  materially distorted the behavioral estimate. No significance-based filtering,
+  prompt revision, parser revision, or problem exclusion is permitted.
+- **Frozen config:** `configs/cpc18_competition_precision.json`.
+- **Status:** frozen before execution.

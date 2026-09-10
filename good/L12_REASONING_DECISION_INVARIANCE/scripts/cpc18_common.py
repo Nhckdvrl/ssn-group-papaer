@@ -10,7 +10,20 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = Path(os.environ.get("L12_CPC18_CONFIG", "configs/cpc18.json"))
 if not CONFIG_PATH.is_absolute():
     CONFIG_PATH = ROOT / CONFIG_PATH
-CONFIG = json.loads(CONFIG_PATH.read_text())
+
+
+def load_config(path):
+    config = json.loads(path.read_text())
+    parent = config.pop("extends", None)
+    if parent is None:
+        return config
+    parent_path = Path(parent)
+    if not parent_path.is_absolute():
+        parent_path = ROOT / parent_path
+    return {**load_config(parent_path), **config}
+
+
+CONFIG = load_config(CONFIG_PATH)
 PARSER_VERSION = "cpc18_terminal_v2"
 STRIPPING_VERSION = "cpc18_terminal_commitment_v3"
 

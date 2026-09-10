@@ -2,7 +2,7 @@
 
 ## Trajectory Takeover
 
-**Status:** **GO / PREREGISTERED MECHANISM STUDY COMPLETE**
+**Status:** **GO / FORM-VERSUS-EVIDENCE CONFIRMATION IN PROGRESS**
 **Target:** NAACL Main, continuously calibrated to ACL/EMNLP Main
 **Last audited:** 2026-09-10
 
@@ -96,9 +96,10 @@ also reflect stable chance-level choice. The paper must therefore measure behavi
 EV alignment, and causal route jointly rather than call any invariance
 "rationality."
 
-The planned evidence chain is complete. Further model families, layer searches,
-or post-hoc item correlations are not justified unless manuscript review exposes a
-load-bearing identification gap.
+The heldout result exposed a construct confound in description/history: a finite
+history changes both surface form and observed evidence. A prospective E20 now
+orthogonalizes those variables using previously unscored real histories. Further
+model families, layer searches, and post-hoc subgroup claims remain unjustified.
 
 The primary unit is always the base decision. Repeated traces and patch layers do not count as independent evidence.
 
