@@ -51,8 +51,9 @@ Same MMLU items, same model, same intervention, three ways of reading out the an
 | Qwen 2.5 7B It | first / last | 1.003 / 0.977 | 0.146 / 0.011 | 6.9x / 89x |
 | OLMo-3 7B base | first / last | 0.966 / 0.958 | 0.204 / 0.243 | 4.7x / 3.9x |
 | Phi-4-mini It | first / last | 0.501 / 0.541 | 0.018 / 0.000 | 28x / >500x |
+| Mistral 7B v0.3 base | first / last | 0.952 / 0.907 | 0.523 / 0.318 | 1.8x / 2.9x |
 
-Eight of eight conditions. The contrast is difficulty-matched: full-readout accuracy
+Ten of ten conditions across five model families, base and instruction-tuned. The contrast is difficulty-matched: full-readout accuracy
 on `mmlu_rank` and `mmlu_gen_letter` agrees to within **0.002-0.005 in every model**.
 
 ### 2.4 Five mechanism accounts, causally rejected  (E03b, E04, E05, E09)
@@ -79,12 +80,11 @@ capability-selective damage — and what survives separates the intervention fam
 
 | intervention touches | significantly < 1 | null | significantly > 1 |
 |---|---|---|---|
-| **only the readout channel** (computation intact) | **5 of 6** | 1 | **0** |
+| **only the readout channel** (computation intact) | **6 of 8** | 2 | **0** |
 | **the parameters** (computation damaged) | **0** | 2 | **5 of 7** |
 
-Thirteen estimable conditions, four model families, three intervention families, and
-not one crosses in the wrong direction. (An earlier numeric "no overlap" statement was
-withdrawn when OLMo-3 pruning returned 1.01 and Phi-4 quantization 1.06.)
+Fifteen estimable conditions, five model families, three intervention families, and
+**not one crosses in the wrong direction**.
 
 Severity is not the explanation: a mild 25% prune, which has no protocol inflation to
 remove, still shows genuine selectivity (1.34, CI [1.19, 1.50]) while a severe readout
@@ -117,9 +117,10 @@ The claim is about **capability attribution**, not benchmark usability.
 
 ## 5. What the paper still needs
 
-1. Mistral-7B as a fifth family (running) and parameter interventions on OLMo-3 and
-   Phi-4 to fill the boundary table (running).
+1. ~~Mistral-7B as a fifth family; parameter interventions on OLMo-3 and Phi-4.~~ Done.
 2. Random-mask seeds alongside first/last, to separate mask identity from mask
-   geometry in the 13x result.
+   geometry in the 13x result (E11, running).
+2b. Within-item causal version of the depth axis: switch the mask on and off during a
+   single generation (E07, running).
 3. The corrected re-measurement stated as a positive recommendation: what *does*
    survive each compression family once protocol and length are controlled.

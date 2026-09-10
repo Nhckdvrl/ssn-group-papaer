@@ -579,12 +579,11 @@ performance, paired bootstrap over items, B = 10000.
 
 | intervention touches | significantly < 1 | null | significantly > 1 |
 |---|---|---|---|
-| **only the readout channel** (computation intact) | **5 of 6** | 1 | **0** |
+| **only the readout channel** (computation intact) | **6 of 8** | 2 | **0** |
 | **the parameters** (computation damaged) | **0** | 2 | **5 of 7** |
 
-Thirteen estimable conditions, four model families, three intervention families, and
-not one crosses in the wrong direction. (An earlier numeric "no overlap" statement was
-withdrawn when OLMo-3 pruning returned 1.01 and Phi-4 quantization 1.06.)
+Fifteen estimable conditions, five model families, three intervention families, and
+**not one crosses in the wrong direction**.
 
 **Severity control.** The objection that pruning simply hits harder does not hold. A
 deliberately mild prune (25%) has an uncontrolled ratio of 1.34 — no inflation at all

@@ -85,8 +85,8 @@ estimable conditions.
 
 **C3.2 — What survives the controls separates interventions that damage computation
 from interventions that damage only expression.** `supported`, and load-bearing.
-Across 13 estimable conditions, four model families and three intervention families,
-**not one crosses in the wrong direction**: of six readout conditions, five are
+Across 15 estimable conditions, five model families and three intervention families,
+**not one crosses in the wrong direction**: of eight readout conditions, six are
 significantly below 1 and none is above; of seven parameter conditions, five are
 significantly above 1 and none is below. A deliberately mild prune, which has no
 protocol inflation to remove, still shows genuine selectivity (1.34, CI [1.19, 1.50])

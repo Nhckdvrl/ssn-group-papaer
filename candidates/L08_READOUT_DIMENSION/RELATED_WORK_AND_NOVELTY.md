@@ -235,8 +235,8 @@ as background.
    length axis is larger than the protocol axis: the same MMLU items go 0.889 (rank)
    -> 0.837 (one generated token) -> 0.030 (a generated chain).
 4. **The intervention-family boundary.** They study pruning only. Our separation —
-   across 13 estimable conditions, four model families and three intervention families,
-   five of six readout conditions make reasoning *significantly more robust* than
+   across 15 estimable conditions, five model families and three intervention families,
+   six of eight readout conditions make reasoning *significantly more robust* than
    knowledge at matched protocol and length and none makes it more fragile, while five
    of seven parameter conditions make it significantly more fragile and none makes it
    more robust — has no counterpart in their work and is the paper's positive

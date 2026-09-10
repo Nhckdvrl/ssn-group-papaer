@@ -59,10 +59,17 @@ Relative performance under readout truncation. `mmlu_rank` and `mmlu_gen_cot` us
 | OLMo-3 7B (base) | last | 0.958 | **0.243** | 3.9x |
 | Phi-4-mini Instruct | first | 0.501 | **0.018** | 28x |
 | Phi-4-mini Instruct | last | 0.541 | **0.000** | >500x |
+| Mistral 7B v0.3 (base) | first | 0.952 | **0.523** | 1.8x |
+| Mistral 7B v0.3 (base) | last | 0.907 | **0.318** | 2.9x |
 
-Eight of eight conditions, four model families, base and instruction-tuned: ranking
+Ten of ten conditions, five model families, base and instruction-tuned: ranking
 retains 0.50-1.00 of full-readout accuracy while the identical knowledge read out by
 generation retains 0.000-0.243.
+
+Mistral is the weakest of the five and is reported as such: it is a base checkpoint
+whose long-generation baselines are low (`mmlu_gen_cot` 0.220, `gsm8k_gen_cot` 0.326),
+so its ratios are the least powered. Its protocol pair is nonetheless matched to
+0.003 (rank 0.625, one generated token 0.628).
 
 Phi-4-mini additionally shows that the parent's premise is itself model-dependent: its
 ranking-protocol retention is 0.50-0.54, not the 0.89-1.00 of Llama and Qwen. "Half
@@ -139,6 +146,8 @@ large number, because a floor effect is not a selectivity effect.
 | Qwen 2.5 7B It | readout, last | readout only | 12.83 | **0.15** | [0.00, 0.38] |
 | OLMo-3 7B base | readout, first | readout only | 3.18 | **0.67** | [0.47, 0.94] |
 | OLMo-3 7B base | readout, last | readout only | 1.96 | **0.50** | [0.36, 0.66] |
+| Mistral 7B v0.3 | readout, first | readout only | 1.96 | 1.08 | [0.73, 1.57] |
+| Mistral 7B v0.3 | readout, last | readout only | 1.40 | **0.49** | [0.32, 0.72] |
 | Phi-4-mini It | readout, first/last | readout only | n/e | n/e | both cells at floor |
 
 **Holding protocol and length fixed removes 29.5% to 152% of the apparent
@@ -153,13 +162,13 @@ because it is stated with uncertainty rather than as a numeric partition:
 
 | intervention touches | significantly < 1 | null | significantly > 1 |
 |---|---|---|---|
-| **only the readout channel** (computation intact) | **5 of 6** | 1 | **0** |
+| **only the readout channel** (computation intact) | **6 of 8** | 2 | **0** |
 | **the parameters** (computation damaged) | **0** | 2 | **5 of 7** |
 
-Thirteen estimable conditions across four model families and three intervention
-families, and **not one crosses in the wrong direction**. No readout intervention makes
-reasoning significantly more fragile than knowledge at matched protocol and length;
-no parameter intervention makes it significantly more robust.
+Fifteen estimable conditions, five model families, three intervention families, and
+**not one crosses in the wrong direction**. No readout intervention makes reasoning
+significantly more fragile than knowledge at matched protocol and length; no parameter
+intervention makes it significantly more robust.
 
 Severity is not the explanation. A deliberately mild prune (25% of weights, no protocol
 inflation at all: uncontrolled 1.34) still shows genuine selectivity — 1.34, CI
