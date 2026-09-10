@@ -12,6 +12,17 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def load_config(path):
+    config = json.loads(path.read_text())
+    parent = config.pop("extends", None)
+    if parent is None:
+        return config
+    parent_path = Path(parent)
+    if not parent_path.is_absolute():
+        parent_path = ROOT / parent_path
+    return {**load_config(parent_path), **config}
+
+
 def sha256(path):
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -35,7 +46,7 @@ def main():
     config_path = Path(args.config)
     if not config_path.is_absolute():
         config_path = ROOT / config_path
-    config = json.loads(config_path.read_text())
+    config = load_config(config_path)
     result_dir = ROOT / config["result_dir"]
     problems = [json.loads(line) for line in (ROOT / config["output"]).open()]
     problem_ids = {row["id"] for row in problems}

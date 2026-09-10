@@ -311,7 +311,18 @@ Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240
   materially distorted the behavioral estimate. No significance-based filtering,
   prompt revision, parser revision, or problem exclusion is permitted.
 - **Frozen config:** `configs/cpc18_competition_precision.json`.
-- **Status:** frozen before execution.
+- **Result:** OLMo remains null at **-0.011 [-0.089, 0.067]** and Qwen remains
+  positive at **+0.121 [0.026, 0.215]**. Reasoning-regime valid rates are 0.891
+  (OLMo) and 0.887 (Qwen); sharp invalid-assignment bounds are reported in the
+  summary. Every regime has 7,040 rows (44 base decisions x 160 rows), with no
+  duplicate condition keys and exact raw hashes.
+- **Conclusion:** E18's OLMo behavioral null is not an artifact of using only
+  three generations per cell. The Qwen effect is smaller but remains positive
+  under the higher-precision replication. This audit strengthens the need to
+  decompose form from finite-sample evidence rather than average them together.
+- **Pointers:** `results/cpc18_competition_precision_seed149/behavior_summary.json`,
+  `behavior_unit_metrics.jsonl`, `execution_audit.json`, and `raw_manifest.json`.
+- **Status:** **completed; execution audit PASS.**
 
 ## L12-E20: Form x Evidence Decomposition
 

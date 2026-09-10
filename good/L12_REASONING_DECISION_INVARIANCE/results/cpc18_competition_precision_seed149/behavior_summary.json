@@ -1,0 +1,223 @@
+{
+  "design": "L12-E17 CPC18 description/history behavioral breadth",
+  "olmo_instruct_sft": {
+    "pair": "olmo_sft",
+    "role": "standard",
+    "n_generations": 7040,
+    "n_base_decisions": 44,
+    "valid_rate": 0.9487215909090909,
+    "presentation_consistency": {
+      "mean": 0.7760295722730638,
+      "base_decision_bootstrap_ci95": [
+        0.7514229361690244,
+        0.8010237359285698
+      ]
+    },
+    "order_consistency": {
+      "mean": 0.8099928179913403,
+      "base_decision_bootstrap_ci95": [
+        0.7889321350266494,
+        0.8324933821397197
+      ]
+    },
+    "explicit_ev_rate": {
+      "mean": 0.5778409090909091,
+      "base_decision_bootstrap_ci95": [
+        0.53125,
+        0.6267045454545455
+      ]
+    },
+    "history_ev_rate": {
+      "mean": 0.5316960105435555,
+      "base_decision_bootstrap_ci95": [
+        0.5074014871813725,
+        0.5562774026571281
+      ]
+    },
+    "invalid_assignment_mean_bounds": {
+      "presentation_consistency": [
+        0.7446969696969696,
+        0.8034090909090911
+      ],
+      "order_consistency": [
+        0.7633522727272727,
+        0.8431818181818183
+      ]
+    }
+  },
+  "olmo_think_sft": {
+    "pair": "olmo_sft",
+    "role": "reasoning",
+    "n_generations": 7040,
+    "n_base_decisions": 44,
+    "valid_rate": 0.8910511363636363,
+    "closed_trace_rate": 0.8923295454545455,
+    "strict_stripped_trace_rate": 0.756534090909091,
+    "presentation_consistency": {
+      "mean": 0.7647641468510277,
+      "base_decision_bootstrap_ci95": [
+        0.6885451901586045,
+        0.8365929381595499
+      ]
+    },
+    "order_consistency": {
+      "mean": 0.9695414855075266,
+      "base_decision_bootstrap_ci95": [
+        0.9518259348983275,
+        0.9836192440492945
+      ]
+    },
+    "explicit_ev_rate": {
+      "mean": 0.9981159297691555,
+      "base_decision_bootstrap_ci95": [
+        0.9957994962027221,
+        1.0
+      ]
+    },
+    "history_ev_rate": {
+      "mean": 0.7672369588895738,
+      "base_decision_bootstrap_ci95": [
+        0.6917788715559328,
+        0.8397791766448655
+      ]
+    },
+    "invalid_assignment_mean_bounds": {
+      "presentation_consistency": [
+        0.6418560606060606,
+        0.8087121212121214
+      ],
+      "order_consistency": [
+        0.8417613636363637,
+        0.990056818181818
+      ]
+    }
+  },
+  "qwen_thinking": {
+    "pair": "qwen_mode",
+    "role": "reasoning",
+    "n_generations": 7040,
+    "n_base_decisions": 44,
+    "valid_rate": 0.8865056818181818,
+    "closed_trace_rate": 0.8866477272727272,
+    "strict_stripped_trace_rate": 0.8227272727272728,
+    "presentation_consistency": {
+      "mean": 0.7716057076738192,
+      "base_decision_bootstrap_ci95": [
+        0.6937551390173295,
+        0.8467192246715272
+      ]
+    },
+    "order_consistency": {
+      "mean": 0.9888479554501227,
+      "base_decision_bootstrap_ci95": [
+        0.9800068352699932,
+        0.9959850673223835
+      ]
+    },
+    "explicit_ev_rate": {
+      "mean": 1.0,
+      "base_decision_bootstrap_ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "history_ev_rate": {
+      "mean": 0.770570795613849,
+      "base_decision_bootstrap_ci95": [
+        0.6916273784609158,
+        0.8456696524199668
+      ]
+    },
+    "invalid_assignment_mean_bounds": {
+      "presentation_consistency": [
+        0.6507575757575758,
+        0.8234848484848485
+      ],
+      "order_consistency": [
+        0.8534090909090907,
+        0.9931818181818183
+      ]
+    }
+  },
+  "qwen_non_thinking": {
+    "pair": "qwen_mode",
+    "role": "standard",
+    "n_generations": 7040,
+    "n_base_decisions": 44,
+    "valid_rate": 0.9992897727272727,
+    "presentation_consistency": {
+      "mean": 0.6507575757575758,
+      "base_decision_bootstrap_ci95": [
+        0.6088967803030303,
+        0.6941287878787878
+      ]
+    },
+    "order_consistency": {
+      "mean": 0.31875,
+      "base_decision_bootstrap_ci95": [
+        0.2832386363636364,
+        0.3568181818181818
+      ]
+    },
+    "explicit_ev_rate": {
+      "mean": 0.6550262237762238,
+      "base_decision_bootstrap_ci95": [
+        0.5763035402097904,
+        0.7319645979020978
+      ]
+    },
+    "history_ev_rate": {
+      "mean": 0.5159218232747645,
+      "base_decision_bootstrap_ci95": [
+        0.4888446969696969,
+        0.5443327046727782
+      ]
+    },
+    "invalid_assignment_mean_bounds": {
+      "presentation_consistency": [
+        0.6499999999999999,
+        0.6518939393939394
+      ],
+      "order_consistency": [
+        0.31875,
+        0.32017045454545456
+      ]
+    }
+  },
+  "reasoning_minus_standard": {
+    "olmo_sft": {
+      "reasoning_regime": "olmo_think_sft",
+      "standard_regime": "olmo_instruct_sft",
+      "n_paired_base_decisions": 44,
+      "presentation_consistency_difference": {
+        "mean": -0.01126542542203602,
+        "base_decision_bootstrap_ci95": [
+          -0.08885291333499715,
+          0.06685142377491927
+        ],
+        "positive_base_decision_fraction": 0.5454545454545454,
+        "invalid_assignment_mean_bounds": [
+          -0.16155303030303028,
+          0.0640151515151515
+        ]
+      }
+    },
+    "qwen_mode": {
+      "reasoning_regime": "qwen_thinking",
+      "standard_regime": "qwen_non_thinking",
+      "n_paired_base_decisions": 44,
+      "presentation_consistency_difference": {
+        "mean": 0.12084813191624334,
+        "base_decision_bootstrap_ci95": [
+          0.025528179573264715,
+          0.21464422042740525
+        ],
+        "positive_base_decision_fraction": 0.6818181818181818,
+        "invalid_assignment_mean_bounds": [
+          -0.0011363636363636272,
+          0.17348484848484846
+        ]
+      }
+    }
+  }
+}

@@ -50,6 +50,9 @@ The discovery pilot supports **progressive construction plus late consolidation*
     presentation-consistency change is **+0.163 [0.051, 0.268]**, while OLMo's
     is **-0.013 [-0.095, 0.065]**. Causal-route reorganization is therefore
     more stable than, and not sufficient by itself for, behavioral invariance.
+19. Increasing heldout behavioral sampling from 3 to 20 generations per cell
+    leaves this pattern intact: OLMo is **-0.011 [-0.089, 0.067]**, while Qwen
+    is **+0.121 [0.026, 0.215]**. The OLMo null is not Monte Carlo imprecision.
 
 ## Claim architecture
 
