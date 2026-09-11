@@ -200,13 +200,34 @@ RQ explored:
 Why killed:
 - PICO/scope factuality and scientific generalization-bias work already directly studies population/scope overgeneralization in generated scientific/biomedical claims.
 
+### Reasoning Trap Follow-Up: Feasibility Recognition vs Action Licensing
+
+**Status:** KILL CURRENT FORM  
+**Primary:** `CROWDED_PARENT`  
+**Secondary:** `PAPER_SCALE_FAILURE`
+
+RQ explored:
+
+> When reasoning makes a model call an unavailable or inappropriate tool, did it fail to recognize that the task/tool configuration was infeasible, or recognize the constraint and nevertheless license an impossible action during planning?
+
+Why killed:
+- ACL 2026 *The Reasoning Trap* already establishes increased tool hallucination under reasoning enhancement, including same-weight Qwen3 Think-On/Off effects;
+- 2026 *Do Agents Know What They Can't Do?* directly studies feasibility awareness under removed critical tools and whether agents recognize infeasibility and stop;
+- 2026 *Looking Is Not Picking* directly separates attending to the correct tool from selecting it and localizes many failures to decision readout rather than recognition;
+- the surviving cross — when reasoning changes feasibility recognition versus action selection — is not obviously owned verbatim, but reviewer-compresses to combining three already-established axes rather than a new scientific object.
+
+Reviewer compression:
+
+> “Reasoning Trap’s Think-On effect + FeasiGen feasibility awareness + Looking-Is-Not-Picking decision readout.”
+
+**Reopen only if:** a qualitatively new intervention establishes a general law about reasoning-induced action licensing that predicts behavior beyond tool selection/feasibility and cannot be reduced to recognition-versus-readout.
+
 ## Investigated but NOT killed / NOT pilot-authorized yet
 
 These should not be mistaken for survivors. They remain unresolved leads only and require a fresh anti-resurrection + ownership pass before any pilot:
 
-1. **Reasoning Trap / tool availability:** same-weight Think-On increases tool hallucination although the published representation-collapse mechanism concerns RL; possible question is where reasoning converts “tool unavailable” into action licensing. No pilot authorized yet.
-2. **Temporal forgetting during training:** strong checkpoint-level learn→forget→relearn phenomenon, but no discriminating operation beyond generic interference/optimization accounts has yet survived review. No pilot authorized.
-3. **ICRL local credit assignment:** whether scalar rewards are bound to the action/step that caused them versus used as trajectory-quality labels. Direct bandit ICRL explanations already remove the broader “is reward really RL?” framing. No pilot authorized.
+1. **Temporal forgetting during training:** strong checkpoint-level learn→forget→relearn phenomenon, but no discriminating operation beyond generic interference/optimization accounts has yet survived review. No pilot authorized.
+2. **ICRL local credit assignment:** whether scalar rewards are bound to the action/step that caused them versus used as trajectory-quality labels. Direct bandit ICRL explanations already remove the broader “is reward really RL?” framing. No pilot authorized.
 
 ## Search procedure change made in this round
 
