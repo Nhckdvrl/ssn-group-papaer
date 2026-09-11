@@ -2,8 +2,8 @@
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Active serious candidates:** **L14 only**  
-**Current phase:** **BROAD SEARCH OPEN + L14 ONE BOUNDED PILOT AUTHORIZED**
+**Active serious candidates:** **L15 only**  
+**Current phase:** **BROAD SEARCH OPEN + L15 ONE BOUNDED PILOT AUTHORIZED**
 
 ---
 
@@ -11,7 +11,7 @@
 
 The previous active portfolio has been archived. Existing code, data, and results are preserved for reproducibility, but none carries current experiment authorization.
 
-Archived in this reset:
+Archived in / before this reset:
 
 - **L03 — Table Value ≠ Observation Status**
 - **L06 — Study Identity Is Not Document Identity**
@@ -21,6 +21,7 @@ Archived in this reset:
 - **L10 — From Failure to Action**
 - **L12 — Reasoning-Induced Invariance / Trajectory Takeover**
 - **L13 — Temporal Order ≠ Event Realization**
+- **L14 — Negation of the World, or Negation of the Words?** — archived before pilot because the likely strongest contribution was too narrow / insufficiently exciting for the current Main-level search objective.
 
 L02, L04, and L11 were already historical / killed routes.
 
@@ -30,79 +31,77 @@ The decisive workflow lesson remains:
 
 ---
 
-# Current serious candidate — L14
+# Current serious candidate — L15
 
-## Negation of the World, or Negation of the Words?
+## No Result Is Not No Evidence
 
-Canonical package: `candidates/L14_METALINGUISTIC_NEGATION/`
+Canonical package: `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/`
 
 ### Plain example
 
-> **The movie wasn't good — it was excellent.**
+> Camera A detects 99% of people who enter an airport. Camera B detects only 5%. Both return: **"Alice was not detected."**
 
-The speaker rejects *good* as an inadequate description while still committing to a world state at least as strong as *good*.
+The same null observation should be strong evidence against Alice's presence under A and almost uninformative under B.
 
-Contrast:
+### Locked RQ
 
-> **The movie wasn't good — it was terrible.**
+> **For the same observed null result, does an LLM scale its world-state update with counterfactual detectability, and can it correctly represent `P(null|H)` while failing to use that quantity in `P(H|null)`?**
 
-Here `not` genuinely negates the world-state proposition.
+### Expanded ownership audit
 
-### Current RQ
+**REGISTERED / PASS FOR ONE BOUNDED KILL-ORIENTED PILOT. Not mainline-approved.**
 
-> **Does an LLM select what semantic level `not` targets before applying polarity, or do models/negation-focused interventions over-apply world-state reversal when the target is metalinguistic?**
+The audit explicitly includes:
 
-### Fresh pre-pilot audit result
+- Hsu et al. 2017 classical absence-of-evidence work;
+- NAACL 2025 **From Evidence to Belief**;
+- ACL 2025 **Enough Coin Flips Can Make LLMs Act Bayesian**;
+- JAMA 2023 LLM post-test probability after negative diagnostic results;
+- Deng & Yan 2026 selection neglect / WYSIATI;
+- 2026 Belief-State Engine, Belief-Based World Models, Belief Memory, T3/AREW;
+- current RAG evidence-sufficiency / over-searching work.
 
-**PASS FOR ONE BOUNDED KILL-ORIENTED PILOT.** Not mainline-approved.
+These prior works own the broad neighborhood. L15 is authorized only for the exact five-part object:
 
-The strongest modern compression was explicitly checked:
+1. identical null observation;
+2. isolated detectability manipulation;
+3. matched explicit `P(null|H)` probe;
+4. separate `P(H|null)` probe;
+5. competence–integration dissociation as the central target.
 
-> **EMNLP 2025 Negation Blindness + Findings EMNLP 2025 negation-attention prompting + classical metalinguistic-negation stimuli.**
-
-The surviving independent question is whether the established drive for stronger ordinary-negation sensitivity is actually monotonic once negation can target a linguistic representation instead of a proposition.
-
-Two fresh boundaries are locked:
-
-1. **Artificial Epanorthosis (Boggia 2026)** shows that LLMs overproduce/miscalibrate corrective `Not X. Y` rhetoric. This is an LLM-specific motivation/production anomaly, not our claimed comprehension result.
-2. **ImplicatureX (Spinoso-Di Piano et al. 2026)** owns implicature recognition/cancellation. Scalar `some→all` cases are diagnostic only and cannot carry or rescue L14.
+If development drops this identity and becomes generic Bayes, evidence reliability, medical diagnostic reasoning, selection neglect, RAG abstention, partial observability, or belief-state tracking, authorization expires immediately.
 
 ### Authorized pilot only
 
-After human stimulus audit, run:
+- **E01:** same-null detectability curve;
+- **E02:** observation-likelihood competence versus posterior integration;
+- **E03:** only if E02 reveals integration failure, make the observation likelihood explicit before the posterior update.
 
-- **E01:** paired DN/MN world-state target-selection profile on 40–60 bases with positive/paraphrase controls;
-- **E02:** apply the pre-existing warning-based negation intervention from Barreto & Jana (2025) to the exact same items and measure paired `ΔDN` and `ΔMN`.
+No agent/RAG/tool extension, hidden-state scan, model zoo, probabilistic-memory method, or external Bayesian filter is authorized before re-selection.
 
-The strongest prospective signal is:
+### Preferred signal
 
-> **ordinary descriptive-negation accuracy improves while metalinguistic accuracy worsens**, showing that increased cue sensitivity trades negation blindness for over-negation.
-
-Only if E01/E02 survive may the project return to selection for possible E03:
-
-- pre-context versus post-correction to distinguish polarity-first repair from context-sensitive target selection.
-
-No hidden-state scan/model zoo is authorized before that decision.
+> **The model correctly knows how likely the observation process was to miss the target, yet fails to use that knowledge when deciding whether the target exists.**
 
 ### Kill rule
 
-Archive if capable models are essentially ceiling; warning produces no meaningful DN/MN differential and there is no independent target-selection structure; controls explain the effect; the signal is scalar-only; human readings/gold are unstable; or a direct current owner appears.
+Archive if capable models already track the detectability-conditioned posterior; residual errors reduce to generic arithmetic/base-rate failure; observation-likelihood and posterior probes fail together; or the surviving story collapses into a neighboring already-owned claim.
 
 See:
-- `candidates/L14_METALINGUISTIC_NEGATION/README.md`
-- `candidates/L14_METALINGUISTIC_NEGATION/RELATED_WORK_AND_NOVELTY.md`
-- `candidates/L14_METALINGUISTIC_NEGATION/DATA_AND_GOLD.md`
-- `candidates/L14_METALINGUISTIC_NEGATION/PILOT_CARD.md`
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/README.md`
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/RELATED_WORK_AND_NOVELTY.md`
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/DATA_AND_GOLD.md`
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_CARD.md`
 
 ---
 
 # Search objective
 
-The preferred new topic style remains:
+Prefer questions with this shape:
 
-> **durable and immediately understandable problem → simple natural/controlled data with hard gold → genuinely unresolved LLM-era question → interesting decisive experiment → broader consequence for actual NLP/LLM behavior.**
+> **durable and immediately understandable problem → simple natural/controlled data with hard gold → genuinely unresolved LLM-era computation → result interesting enough to matter by itself → broader consequence for actual NLP/LLM behavior.**
 
-The ideal question should be understandable from one example, but should not reduce to “does the model know a textbook linguistic distinction?”
+The ideal question should be understandable from one example and should expose a broad model computation or bias, not merely an uncovered linguistic construction.
 
 Classic parents are assets, not novelty failures. The novelty burden is on the **modern scientific question, inference, and development path**.
 
