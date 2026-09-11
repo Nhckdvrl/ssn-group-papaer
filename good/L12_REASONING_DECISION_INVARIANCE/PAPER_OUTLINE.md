@@ -1,5 +1,9 @@
 # L12 ACL/EMNLP/NAACL Main Paper Outline
 
+> **Historical outline:** The E20-E22 story below is retained for discussion, but
+> its paper identity is HOLD under the 2026-09-11 claim-mutation novelty reset.
+> See `CLAIM_NOVELTY_DELTA.md`; do not treat this as the approved submission plan.
+
 ## Working title
 
 **Reasoning Changes What Models Are Sensitive To**
