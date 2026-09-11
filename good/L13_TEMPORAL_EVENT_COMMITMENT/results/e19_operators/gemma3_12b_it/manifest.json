@@ -1,0 +1,18 @@
+{
+  "config": "configs/e19_operators.json",
+  "tag": "e19_operators",
+  "model_id": "google/gemma-3-12b-it",
+  "family": "gemma3",
+  "device": "cuda:0",
+  "dtype": "bfloat16",
+  "seed": 13,
+  "n_items": 700,
+  "task_orders": [
+    "fact_first",
+    "timeline_first"
+  ],
+  "n_permutations": 6,
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "elapsed_s": 205.5
+}
