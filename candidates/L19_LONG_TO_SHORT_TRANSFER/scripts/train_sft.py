@@ -39,7 +39,7 @@ class SparseTrainer(Trainer):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--condition", required=True,
-                    choices=["SHORT-SUPPORT", "LONG-FULL", "ULTRACHAT-ONLY", "CHATQA2"])
+                    choices=["SHORT-SUPPORT", "LONG-FULL", "PC-UC-UC", "PC-UC-CHATQA2"])
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--out", required=True)
     ap.add_argument("--n_nq", type=int, default=10000)
@@ -51,14 +51,16 @@ def main():
 
     set_seed(a.seed)
     tokz = AutoTokenizer.from_pretrained(MODEL)
-    pairs = [json.loads(l) for l in open("data/nq_pairs.jsonl")][:a.n_nq]
-    uc = [json.loads(l) for l in open("data/ultrachat.jsonl")][:a.n_uc]
-    if a.condition == "ULTRACHAT-ONLY":
-        pairs = []
-    elif a.condition == "CHATQA2":
-        pairs = [json.loads(l) for l in open("data/chatqa2.jsonl")][:a.n_nq]
-    items = build_run(tokz, pairs, uc, a.condition, seed=a.seed)
-    items = [x for x in items if len(x["input_ids"]) <= a.max_len]
+    jl = lambda p: [json.loads(l) for l in open(p)]
+    uc_all = jl("data/ultrachat.jsonl")
+    block_a = uc_all[:a.n_uc]                       # identical in every condition
+    if a.condition in ("SHORT-SUPPORT", "LONG-FULL"):
+        block_b = jl("data/nq_pairs.jsonl")[:a.n_nq]
+    elif a.condition == "PC-UC-UC":
+        block_b = uc_all[a.n_uc:a.n_uc + a.n_nq]
+    else:
+        block_b = jl("data/chatqa2.jsonl")[:a.n_nq]
+    items = build_run(tokz, block_a, block_b, a.condition, a.seed, a.max_len)
     if int(os.environ.get("RANK", 0)) == 0:
         tl = sum(len(x["input_ids"]) for x in items)
         ll = sum(sum(1 for y in x["labels"] if y != -100) for x in items)
@@ -67,6 +69,7 @@ def main():
 
     world = int(os.environ.get("WORLD_SIZE", 1))
     accum = max(1, a.global_examples_per_step // world)
+    steps = max(1, len(items) // (world * accum))
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, dtype=torch.bfloat16, attn_implementation="sdpa")
     model.config.use_cache = False
@@ -74,12 +77,11 @@ def main():
     args = TrainingArguments(
         output_dir=a.out, num_train_epochs=1, per_device_train_batch_size=1,
         gradient_accumulation_steps=accum, learning_rate=a.lr,
-        lr_scheduler_type="cosine", warmup_ratio=0.03, adam_beta1=0.9, adam_beta2=0.95,
+        lr_scheduler_type="cosine", warmup_steps=max(1, int(0.03 * steps)), adam_beta1=0.9, adam_beta2=0.95,
         weight_decay=0.0, bf16=True, gradient_checkpointing=True, logging_steps=5,
         save_strategy="no", report_to=[], seed=a.seed, dataloader_num_workers=2,
         gradient_checkpointing_kwargs={"use_reentrant": False},
-        deepspeed="configs/zero2.json", group_by_length=False,
-    )
+        deepspeed="configs/zero2.json",    )
     tr = SparseTrainer(model=model, args=args, train_dataset=Items(items),
                        data_collator=lambda b: collate(b, tokz.eos_token_id))
     t0 = time.time()

@@ -7,6 +7,8 @@
 | E01-c | `SHORT-SUPPORT` seed 2 | seed stability / kill condition 1 | not started |
 | E01-d | `LONG-FULL` seed 2 | seed stability / kill condition 1 | not started |
 | E01-pc1 | `UC-UC`: UltraChat block A + UltraChat block B | mother positive control, short arm | not started |
+| E01-e | NQ-only `SHORT-SUPPORT` seed 1 | dilution diagnostic, conditional on outcome B | not authorized |
+| E01-f | NQ-only `LONG-FULL` seed 1 | dilution diagnostic, conditional on outcome B | not authorized |
 | E01-pc2 | `UC-CHATQA2`: UltraChat block A + ChatQA2 | mother positive control, long arm | not started |
 
 The positive control is structurally identical to the main contrast: the same 10k

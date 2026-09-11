@@ -63,6 +63,43 @@ Preregistered primary statistic: the **macro mean over these four**, seeds poole
 a per-benchmark table always reported. NQ itself is **not** evaluated — in-domain QA
 adaptation is not the question. Reporting only GSM8K is forbidden.
 
+## Two sub-macros, split before the runs
+
+`MOTHER_REANALYSIS.md` shows that the parent's residual effect — the part a
+dataset-quality story does not explain — is concentrated in LAMBADA, which is the one
+benchmark of the nine that is about *using the local context* rather than about general
+capability. That distinction is preregistered here rather than discovered afterwards:
+
+- **CAP** = macro over MMLU, BBH, GSM8K. General capability, no long input anywhere.
+- **CTX** = LAMBADA, plus the context-reliance probe below.
+
+The primary statistic remains the 4-benchmark macro. CAP/CTX is a fixed decomposition of
+it, not a post-hoc subset search.
+
+| CAP | CTX | world |
+|---|---|---|
+| up | up | **W1** — long-context exposure improves general capability |
+| flat | up | **W3** — it does not make the model more capable, it makes it more context-reliant |
+| flat | flat | **W2** — the published effect belongs to the datasets |
+
+W3 is the outcome we are least able to reach by accident and the one that would most
+change how the parent's headline is read: it would relocate their own "knowledge
+preference bias" from a difference between two datasets to a genuine consequence of
+input length.
+
+## Secondary outcome: context-reliance probe (evaluation only, no extra training)
+
+Built from **held-out** NQ pairs that appear in no training run. For each, the gold
+answer in the support paragraph is replaced by a counterfactual entity of the same type;
+the model is asked the question with that edited paragraph as context. We report the
+rate at which it answers from the context rather than from parametric memory.
+
+This is the behavioural core of the parent's knowledge-conflict analysis, measured under
+matched supervision instead of across two datasets. It costs no training run.
+
+It is **secondary**: it cannot overturn the primary macro, and a movement here with a
+flat CAP is reported as W3, not as a capability claim.
+
 ## What each outcome means
 
 | outcome | reading | next |
@@ -131,3 +168,27 @@ Two consequences, fixed in advance:
 
 Adding seeds after seeing results is forbidden. If the measured throughput permits a
 third seed, that decision is made and recorded **before** any evaluation is run.
+
+## One conditional secondary run, declared now
+
+The UltraChat backbone dilutes the treatment to half the examples. If the primary
+contrast is null **and** the positive control reproduces (outcome B), one further pair is
+authorized before that null is written down anywhere:
+
+- **E01-e / E01-f**: NQ-only, no backbone, `SHORT-SUPPORT` vs `LONG-FULL`, seed 1 only.
+
+This is the full-dose version of the same manipulation. It is confounded by format
+collapse — 10k span-extraction examples turn a base model into a span extractor — and is
+therefore **diagnostic of dilution only**. It can convert a primary null into "the null
+may be a dose effect"; it can never convert a primary null into a positive result, and
+its benchmark numbers do not enter the primary table.
+
+It is not authorized under outcome A, C or D.
+
+## Loss normalisation, recorded because it matters
+
+Loss is the mean cross-entropy over the labelled tokens of one micro-batch, and
+micro-batch size is 1, so every *example* contributes equally regardless of how many
+completion tokens it has (NQ answers ~5 tokens, UltraChat turns ~500). This weighting is
+byte-identical across arms, which is what the inference needs; it is recorded here
+because it determines how much of the gradient the NQ block actually commands.
