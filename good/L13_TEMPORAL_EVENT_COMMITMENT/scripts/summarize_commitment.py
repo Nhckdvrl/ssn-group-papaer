@@ -9,6 +9,8 @@ import sys
 
 import numpy as np
 
+EXCLUDE = set()
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.dirname(HERE)
 
@@ -61,6 +63,8 @@ def summarise_model(model_dir, rng):
     rows = []
     for path in sorted(glob.glob(os.path.join(model_dir, "strict*.jsonl"))):
         rows.extend(read_jsonl(path))
+    if EXCLUDE:
+        rows = [r for r in rows if r["base_id"] not in EXCLUDE]
     tables = per_base_tables(rows)
     orders = sorted({r["task_order"] for r in rows})
     bases = sorted({r["base_id"] for r in rows})
@@ -221,8 +225,12 @@ def fmt(triple):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default=os.path.join(PROJ, "configs", "pilot_v1.json"))
+    ap.add_argument("--exclude", default="", help="comma-separated base ids to drop")
+    ap.add_argument("--out", default="summary", help="output basename")
     args = ap.parse_args()
     cfg = json.load(open(args.config, encoding="utf-8"))
+    global EXCLUDE
+    EXCLUDE = {b for b in args.exclude.split(",") if b}
     tag_dir = os.path.join(PROJ, "results", cfg["tag"])
 
     rng = np.random.default_rng(cfg["seed"])
@@ -234,7 +242,7 @@ def main():
         out["models"][spec["slug"]] = summarise_model(d, rng)
         out["models"][spec["slug"]]["family"] = spec["family"]
 
-    with open(os.path.join(tag_dir, "summary.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(tag_dir, f"{args.out}.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
 
     lines = [f"# L13 summary — {cfg['tag']}", ""]
@@ -255,7 +263,7 @@ def main():
             for cond, v in r["likelihood"].items():
                 lines.append(f"| {cond} | {v[0]:.3f} [{v[1]:.3f}, {v[2]:.3f}] |")
         lines.append("")
-    with open(os.path.join(tag_dir, "summary.md"), "w", encoding="utf-8") as f:
+    with open(os.path.join(tag_dir, f"{args.out}.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
     print("\n".join(lines))
 
