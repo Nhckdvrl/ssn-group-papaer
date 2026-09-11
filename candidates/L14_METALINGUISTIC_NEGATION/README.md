@@ -2,7 +2,7 @@
 
 ## Metalinguistic Negation as an LLM Target-Selection Problem
 
-**Status:** **SERIOUS CANDIDATE / PRE-PILOT — 2026-09-11**  
+**Status:** **PILOT-AUTHORIZED — ONE BOUNDED KILL-ORIENTED PILOT ONLY (2026-09-11)**  
 **Paper mainline:** NOT APPROVED  
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -16,187 +16,209 @@
 
 ---
 
-## 1. One-sentence research question
+## 1. Research question
 
-> **When an LLM encounters `not`, does it determine what level is being rejected — a proposition about the world or the linguistic description itself — before applying polarity, or does it default to propositional negation and repair only after later context forces a reinterpretation?**
+> **When an LLM encounters `not`, does it select what level is being rejected — a proposition about the world or the linguistic description itself — before applying polarity, or does it over-apply propositional negation and repair only when context forces reinterpretation?**
 
-This is not simply another negation-accuracy benchmark. The scientific object is **negation-target selection**.
-
----
-
-## 2. Why this has the desired paper shape
-
-The parent phenomenon is classical and immediately understandable. Linguistics distinguishes ordinary/descriptive negation from **metalinguistic negation**, where a speaker objects to the wording, strength, register, morphology, presupposition, or other aspect of an utterance rather than denying the corresponding state of affairs.
-
-Canonical examples include:
-
-- *I'm not happy — I'm ecstatic.*
-- *She didn't solve some of the problems — she solved all of them.*
-- *I didn't catch two mongeese — I caught two mongooses.*
-
-Human psycholinguistics has also debated two processing accounts:
-
-1. **default + repair:** interpret `not X` descriptively first, then reinterpret when the correction makes that reading contradictory;
-2. **context-sensitive target selection:** sufficiently informative context can license the metalinguistic interpretation directly.
-
-This gives the LLM paper a real explanatory question after the first behavioral result rather than a post-hoc mechanism hunt.
+The scientific object is **negation-target selectivity**, not generic negation accuracy.
 
 ---
 
-## 3. Modern tension
+## 2. Why this is a serious LLM question
 
-Recent LLM negation work largely treats better sensitivity to negation as desirable: a model should notice that inserting `not` reverses meaning. That is correct for ordinary descriptive negation.
+Metalinguistic negation (MN) versus descriptive negation (DN) is a classical, durable linguistic distinction. The old age of the parent is an asset, not a novelty failure.
 
-Metalinguistic negation exposes the missing half:
+Modern LLM negation work creates a new tension:
 
-> **sometimes stronger lexical sensitivity to `not` is exactly the wrong computation if the negation targets an expression rather than the world-state proposition.**
+- EMNLP 2025 **Negation Blindness** shows that models often fail to react when ordinary negation should reverse a proposition.
+- Findings EMNLP 2025 **This is not a Disimprovement** improves negation reasoning with warning/persona prompts and links better performance to stronger attention to negative tokens.
+- NALOMA 2026 studies systematicity of negation expression/scope recognition.
 
-So the modern question is not merely whether a model detects negation, but whether it knows **what the negation is operating on**.
+These lines naturally encourage the interpretation:
 
-A particularly strong result would be a trade-off:
+> **more sensitivity to `not` = better negation understanding.**
 
-> interventions/prompts that reduce ordinary *negation blindness* improve descriptive negation but increase false world-state negation on metalinguistic cases.
+MN shows why that need not be true. Sometimes literal polarity reversal is the error because the speaker is rejecting a wording/representation, not the described world state.
 
-That would show that current “negation robustness” is partly measuring cue sensitivity rather than correct semantic target selection.
+The prospective contribution is therefore:
 
----
+> **Does target-agnostic negation sensitivity trade ordinary negation blindness for metalinguistic over-negation?**
 
-## 4. Current ownership audit
-
-### Classical owners — assets, not novelty
-
-We do **not** claim to discover metalinguistic negation. Relevant classical/experimental lines include Horn; Carston; Noh et al.; Moeschler; Blochowiak & Grisot.
-
-Blochowiak & Grisot (2018) are especially useful because they experimentally contrast descriptive and metalinguistic negation and provide public human experimental data; their results bear directly on default-repair versus context-driven processing.
-
-### Closest modern NLP neighbors
-
-- **Kim et al., EMNLP 2025 Main, _Semantic Inversion, Identical Replies: Revisiting Negation Blindness in Large Language Models_** — establishes failures to respond to ordinary semantic inversion caused by negation. It assumes the negation should reverse the proposition; it does not study metalinguistic target selection.
-- **Seo et al., EMNLP 2025 Main, _The Impact of Negated Text on Hallucination with Large Language Models_** — studies negated inputs and token-level internal effects, again under ordinary negation.
-- **Yanaka & Yamamoto, NALOMA 2026, _Revisiting the Systematicity in Negation in the Era of In-Context Learning_** — studies recognition of negation expressions/scope and negation-related function vectors. Scope inside a proposition is not the same quantity as deciding whether `not` rejects the proposition or a linguistic representation.
-- **Cho, ACL 2026 Main, _Continuous Interpretive Steering for Scalar Diversity_** — owns graded scalar-implicature steering, not metalinguistic negation.
-- **Spinoso-Di Piano et al., 2026 preprint, _Evaluating Communicative Belief Updates ... via Implicature Recognition and Cancellation_** — makes scalar/other implicature cancellation a dangerous neighbor. Therefore L14 must **not** collapse into a `some→all` cancellation paper; scalar cases are one diagnostic subtype only.
-
-Exact searches for `metalinguistic negation × LLM / GPT / transformer / ACL / NLP`, plus alternative phrases `descriptive vs metalinguistic negation`, `contrastive negation`, and `negation target`, did not reveal a modern paper that owns the proposed LLM target-selection question. This is a search result, not proof of global absence.
-
-### Strongest reviewer compression
-
-> **“Negation Blindness + old metalinguistic-negation stimuli, with some scope/implicature controls.”**
-
-This compression is fatal if the paper only reports accuracy on `not X — Y` sentences.
-
-### Strongest surviving contribution
-
-> Existing LLM negation work asks whether models apply polarity reversal reliably; L14 asks whether the model first identifies **the semantic level that `not` targets**, and whether increasing ordinary negation sensitivity causes systematic over-negation when the target is metalinguistic rather than propositional.
-
-The paper survives only if experiments establish this target-selection computation or a consequential trade-off, not merely another hard negation set.
+If yes, current negation robustness is partly measuring cue sensitivity rather than correct selection of the semantic target.
 
 ---
 
-## 5. Data and gold path
+## 3. A 2026 LLM-specific anomaly strengthens the motivation
 
-### Human seed / validation source
+Boggia (2026), **Artificial Epanorthosis**, reports that LLMs systematically overuse/miscalibrate corrective `Not X. Y`-style epanorthosis and shows generation-side mitigation.
 
-Blochowiak & Grisot (2018) release experimental materials and human data for paired descriptive/metalinguistic negation conditions. These are useful as a naturalness/processing reference, not sufficient by themselves as the English LLM benchmark.
+Source: https://arxiv.org/abs/2607.21498
 
-### Controlled English core
+This does **not** own L14's comprehension question. It creates an unusually relevant modern tension:
 
-Construct a small, human-validated set of lexical bases with matched conditions. Favor cases where the correction independently fixes the world state.
+> models disproportionately produce a construction whose interpretation can require rejecting an expression rather than negating the world; do they actually interpret the target of that negation correctly?
 
-Example base:
-
-1. **AFFIRMATIVE:** *The movie was good.*
-2. **DESCRIPTIVE NEGATION:** *The movie wasn't good — it was terrible.*
-3. **METALINGUISTIC NEGATION:** *The movie wasn't good — it was excellent.*
-4. **STRONGER CONTROL:** *The movie was excellent.*
-
-Target proposition:
-
-> *The movie was at least good.*
-
-Gold is YES for 1/3/4 and NO for 2.
-
-Use more than one subtype so the paper is not scalar-implicature cancellation in disguise:
-
-- upward scalar correction (`good → excellent`);
-- quantifier/degree correction where the stronger continuation logically includes the weaker (`some → all`), used cautiously because cancellation work is close;
-- form/wording corrections where the corrected clause fixes the same world fact (`mongeese → mongooses`), testing literal world-state leakage from a clearly linguistic rejection.
-
-All critical English items require human naturalness and intended-reading validation. Do not use an LLM judge to create the load-bearing label.
+L14 must not sell a generic production–comprehension gap. The object remains negation-target selectivity and its consequence for negation-robustness claims.
 
 ---
 
-## 6. Prospective paper development — audited before the pilot
+## 4. Classical explanation is fixed before experiments
 
-### C1 — Target selection, not negation detection
+Human psycholinguistics supplies two competing accounts:
 
-On matched descriptive versus metalinguistic cases, ask whether models preserve the correct **world-state proposition** despite the same surface negator.
+### Account A — descriptive-first / repair
 
-The important quantity is not raw MN accuracy; it is the two-sided profile:
+Interpret `not X` as ordinary world-state negation first. If the later correction is incompatible with that reading, repair/reanalyse it as metalinguistic.
 
-- failure to reverse when `not` is descriptive;
-- false reversal when `not` is metalinguistic.
+### Account B — context-sensitive target selection
 
-### C2 — Default-repair versus context-sensitive processing
+Context can license a metalinguistic target from the start; the interpretation need not pass through a descriptively negated world state.
 
-Use the classical human-processing contrast prospectively:
+Noh et al. (2013) and Blochowiak & Grisot (2018) experimentally test this processing question. Blochowiak & Grisot also provide public controlled experimental data.
 
-- **pre-disambiguating context:** context already licenses the stronger/corrective state before `not X` appears;
-- **post-disambiguating correction:** the model sees `not X` before the correcting clause arrives;
-- matched descriptive controls.
+Sources:
+- https://doi.org/10.1016/j.pragma.2013.07.005
+- https://doi.org/10.5334/gjgl.440
+- https://www.swissubase.ch/en/catalogue/studies/13418/20191/overview
 
-Ask whether the model's commitment trajectory behaves like an unconditional polarity-first computation followed by repair, or whether prior context changes the target assigned to negation from the outset.
-
-This is the planned explanation; do not substitute generic hidden-state probing if the behavioral operation already distinguishes the accounts.
-
-### C3 — Consequence for “negation robustness”
-
-Re-evaluate ordinary negation-focused interventions (e.g. explicit warnings to attend to negation) on the two-sided target-selection set.
-
-Key prospective result:
-
-> a method can improve ordinary negation accuracy while worsening metalinguistic cases, showing that `more attention to not` is not a monotonic improvement in negation understanding.
-
-A target-aware output/representation can be used as a diagnostic control, not automatically promoted into a method paper.
+This is the predeclared C2 explanation. Do not replace it post-hoc with generic hidden-state probing if the behavioral result changes.
 
 ---
 
-## 7. Successful-result test
+## 5. Novelty boundary after fresh assassination
 
-### Strong success
+Full audit: [RELATED_WORK_AND_NOVELTY.md](RELATED_WORK_AND_NOVELTY.md).
 
-Across model families, ordinary negation sensitivity and metalinguistic over-negation form a stable trade-off; context manipulations show that the error comes from target selection rather than failure to know the correction term. Existing negation remedies move the trade-off rather than solving it.
+The strongest reviewer compression is:
 
-**What readers learn:** negation robustness is mis-specified if it only measures polarity inversion; LLMs must decide whether `not` targets a proposition or a representation.
+> **Negation Blindness + negation-attention prompting + classical MN stimuli.**
 
-### Also interesting
+That compression wins if the paper is just a DN/MN benchmark.
 
-Models handle final MN sentences correctly but pre-context/post-correction manipulations reveal systematic polarity-first repair. This remains useful only if it predicts a real downstream/incremental consequence; otherwise it is too psycholinguistic for Main.
+The surviving independent statement is narrower and stronger:
 
-### Weak / kill
+> **Prior LLM negation work does not establish whether an intervention that increases ordinary negation sensitivity is a monotonic improvement once the negator can target a linguistic representation rather than the world proposition.**
 
-- strong models are essentially ceiling on both target types;
-- no stable processing distinction appears;
-- warning/intervention effects do not reveal a meaningful trade-off;
-- the result reduces to scalar implicature cancellation;
-- a direct modern owner of metalinguistic target selection is found.
+The first pilot therefore tests the **two-sided error profile and intervention trade-off**, not merely MN accuracy.
 
-**Do not rescue a weak pilot by adding probes, layers, more models, or a new abstract label.**
+### Explicit collision fence — implicature cancellation
+
+Spinoso-Di Piano et al. (2026), **Evaluating Communicative Belief Updates ... via Implicature Recognition and Cancellation**, directly owns recognition/cancellation of scalar and other implicatures.
+
+Source: https://arxiv.org/abs/2607.25094
+
+Therefore `some → all` cannot carry L14. Scalar cases may be a small diagnostic subtype only. A result confined to them kills/reconstructs the route.
 
 ---
 
-## 8. Current verdict
+## 6. Data/gold contract
 
-# **SERIOUS CANDIDATE — worth one bounded, cheap pilot after final stimulus audit.**
+Full contract: [DATA_AND_GOLD.md](DATA_AND_GOLD.md).
 
-Why it currently survives:
+The pilot targets **40–60 human-audited lexical/discourse bases**, each with matched:
 
-- classic problem with a one-line example;
-- simple, natural controlled data;
-- human experimental parent and competing processing accounts;
-- a fresh LLM-era question that is not ordinary negation accuracy;
-- a prospective C1→C2→C3 development path already novelty-audited;
-- a concrete real consequence for how negation robustness is measured;
-- explicit kill conditions if modern models simply solve it.
+- positive control;
+- descriptive negation;
+- metalinguistic negation;
+- non-negated / explicit paraphrase control.
 
-It is **not** paper-mainline-approved and is **not yet authorized for broad experimentation**.
+The load-bearing question is a simple **world-state proposition**, not "is this MN?".
+
+Example:
+
+| condition | text | target: `movie is at least good` |
+|---|---|---|
+| POS | The movie was excellent. | YES |
+| DN | The movie wasn't good — it was terrible. | NO |
+| MN | The movie wasn't good — it was excellent. | YES |
+| paraphrase | Calling it merely good understates it; it was excellent. | YES |
+
+Use multiple subtypes. Lexical-strength and clearly linguistic/form corrections are primary. Scalar-implicature examples are secondary only.
+
+No LLM-generated main data and no LLM judge for load-bearing gold. Paper-level claims require independent human validation of naturalness, intended DN/MN reading, and world-state truth.
+
+---
+
+## 7. Bounded pilot
+
+Full preregistration: [PILOT_CARD.md](PILOT_CARD.md).
+
+### E01 — two-sided target-selection profile
+
+Measure on the same bases:
+
+- **negation blindness:** failure to reverse in DN;
+- **metalinguistic over-negation:** false reversal in MN;
+- both conditional on passing lexical/paraphrase controls.
+
+Start with two capable open model families. A third family is allowed only if heterogeneity determines the decision.
+
+### E02 — existing negation-sensitivity intervention
+
+Use the pre-existing warning-based intervention from Barreto & Jana (2025), not a prompt invented after seeing E01.
+
+Primary paired quantities:
+
+- `ΔDN = DN_correct(warning) - DN_correct(baseline)`
+- `ΔMN = MN_correct(warning) - MN_correct(baseline)`
+
+Strong prospective result:
+
+> **DN improves while MN worsens** under an intervention explicitly intended to improve negation reasoning.
+
+That would establish a real consequence: stronger lexical sensitivity to `not` is not equivalent to better negation understanding.
+
+### E03 — context account, conditional only
+
+Only if E01/E02 survive, test the classical pre-context versus post-correction manipulation to distinguish descriptive-first repair from context-sensitive target selection.
+
+No hidden-state scan is authorized before this behavioral discrimination.
+
+---
+
+## 8. Hard kill rule
+
+Archive L14 after the bounded pilot if:
+
+- capable models are essentially ceiling on both DN and MN;
+- the warning intervention shows no meaningful DN–MN differential and E01 supplies no independent target-selectivity signal;
+- lexical/paraphrase controls explain the apparent effect;
+- the effect exists only for scalar implicature examples;
+- human intended-reading/world-state gold is unstable;
+- a fresh direct owner of the same target-selection/trade-off claim is found.
+
+**Do not rescue a failed pilot with probes, layers, a model zoo, more prompts, or a broader abstract name.**
+
+---
+
+## 9. Prospective full-paper path — not yet authorized
+
+If the pilot survives, the project returns to selection before expansion:
+
+**C1 — Target selection**  
+Show a robust two-sided DN/MN profile under matched world-state probes.
+
+**C2 — Processing account**  
+Use pre-context/post-correction to distinguish polarity-first repair from context-sensitive target selection.
+
+**C3 — Consequence**  
+Show whether current negation-improvement interventions move a DN/MN trade-off rather than monotonically improving understanding.
+
+The paper is Main-shaped only if these form one inference:
+
+> **negation understanding requires selecting the semantic target before applying polarity; target-agnostic sensitivity can make one established failure better while making the complementary failure worse.**
+
+Any material mutation of this takeaway requires a fresh selection/novelty gate.
+
+---
+
+# Current verdict
+
+# **PILOT-AUTHORIZED — STRICTLY BOUNDED**
+
+The final pre-pilot audit found no direct modern owner of the specific **DN-improvement / MN-over-negation target-selectivity** question. It also found two important constraints that are now locked in:
+
+1. **Artificial Epanorthosis** is motivation/modern anomaly, not our claimed discovery;
+2. **ImplicatureX** owns pragmatic cancellation, so scalar cancellation cannot become the fallback paper.
+
+The next legitimate work is exactly E01/E02 after the human stimulus audit. A positive result triggers **re-selection**, not automatic expansion.
