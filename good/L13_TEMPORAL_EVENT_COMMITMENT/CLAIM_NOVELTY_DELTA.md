@@ -294,3 +294,65 @@ claim built on an existing behavioural asset), and I may be pattern-matching to 
 that worked rather than to the evidence. The patching pilot is designed to be able to
 kill it; if it does, L13 should go to RECONSTRUCT or KILL rather than be rescued a third
 time.
+
+---
+
+# Delta #5 — E21 kills the causal-direction candidate, and corrects E10 (2026-09-11)
+
+The candidate was: *the semantically licensed judgement is causally downstream of a
+surface-driven event registry and cannot write back to it.* E21 tests it with both prior
+turns **teacher-forced into the same one-line-per-event format**, identical text across
+models, so form and content are held constant.
+
+| model | **A:** correct status text → extraction | **B:** asserting list text → judgement |
+|---|---|---|
+| Qwen3-8B | 0.980 → 0.700, **−0.280** [−0.37, −0.19] | 0.158 → 0.538, **+0.380** [+0.31, +0.46] |
+| Gemma-3-12B | 0.690 → 0.290, **−0.400** [−0.50, −0.30] | 0.164 → 0.625, **+0.461** [+0.38, +0.54] |
+| Llama-3.1-8B | 0.960 → 0.910, −0.050 [−0.12, +0.01] | 0.204 → 0.121, **−0.083** (wrong direction) |
+
+**The asymmetry disappears once format and content are matched.** For Gemma the two
+directions are the same size (−0.40 vs +0.46); for Qwen B is larger but A is clearly
+non-zero; for Llama neither direction works. There is no privileged registry.
+
+**Candidate: REJECTED.**
+
+## Correction this forces on an earlier claim
+
+C8 was "three natural prompt-level repairs fail for unresolved events", resting on E10's
+status-first pipeline. E21 shows that a status statement in **matched list format**
+reduces instantiation by 0.28–0.40 in two of three models. E10's failure was a property
+of its wording, not of the phenomenon.
+
+- **C8 is weakened**: a correctly formatted status statement is a *partially effective*
+  repair, not a failed one.
+- The "nothing fixes the unresolved case" framing is withdrawn.
+
+## Where L13 actually stands
+
+| layer | state |
+|---|---|
+| RQ | fine but narrow: does semantic licensing survive event extraction? |
+| Evidence | strong and broad — 21 experiments, 11 checkpoints, 6 families, 900 controlled items, 176 adjudicated natural sentences, both failure directions, downstream propagation |
+| Mechanism | **surface-form heuristic** — the shallow-heuristic parent, crowded |
+| Rescue attempts | three, all dead: internal coupling (E05), timeline ordering (E16), causal direction (E21) |
+
+This is the L12 shape, and it is now on its third failed widening. The honest reading is
+that L13 has **a good measurement and no Main-level idea**: a well-characterised instance
+of a known failure mode, with a memorable example, a clean operator battery, a natural-text
+replication, and a partially effective mitigation.
+
+## Recommendation
+
+> **RECONSTRUCT or accept Findings-level. Do not attempt a fourth rescue from inside the
+> existing evidence.**
+
+The rule that was added after L12 says a new claim must *re-earn* the right to be the
+paper. Three attempts have now failed to find one, and each was built by reinterpreting
+the same evidence rather than by identifying a larger scientific object first. Continuing
+that loop is the failure mode, not the fix.
+
+If L13 is continued, it should be because a larger object is identified **first** — one
+for which E01–E21 is the evidence legacy rather than the source — and that object must
+pass a novelty delta before any further compute.
+
+**No further experiments are authorized on L13.**

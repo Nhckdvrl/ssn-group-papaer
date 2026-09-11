@@ -236,3 +236,51 @@ UNORDERED_TASK = (
 )
 
 TASK_ORDERS["unordered_first"] = UNORDERED_TASK
+
+
+# --- E21: is the asymmetry between two of the model's own texts? ------------
+#
+# E10 (status first, then list) and E13 (list first, then status) already point
+# at an asymmetry, but their prior turns differ in form, so form and content are
+# confounded. E21 teacher-forces both prior turns into the SAME format - one line
+# per event - so the only difference is whether the line carries a status
+# annotation, and the content is identical across models.
+#
+# Direction A  status text -> extraction   : does a correct status line stop the
+#                                            model emitting the event?
+# Direction B  list text   -> judgement    : does an asserting line move the
+#                                            model's judgement?
+#
+# A privileged surface-driven registry predicts B >> A. No privileged direction
+# predicts A ~ B, which kills the candidate.
+
+E21_LIST_TASK = (
+    "Passage:\n{passage}\n\n"
+    "List the events described in this passage, one per line. Do not add commentary."
+)
+
+E21_STATUS_TASK = (
+    "Passage:\n{passage}\n\n"
+    "For each event mentioned in this passage, write one line as "
+    "<event> :: guaranteed | left open | ruled out."
+)
+
+E21_FOLLOWUP_LIST = (
+    "Now list only the events that actually happened, one per line. "
+    "Do not add commentary."
+)
+
+
+def e21_context(kind, target, main_event):
+    """Teacher-forced prior assistant turn. Identical text for every model."""
+    t, m = target.rstrip("."), main_event.rstrip(".")
+    if kind == "status_correct":
+        # the correct judgement, stated by the model itself, in list format
+        return f"{t} :: left open\n{m} :: guaranteed"
+    if kind == "list_asserting":
+        # the unlicensed event asserted, in the same line-per-event format
+        return f"{t}.\n{m}."
+    if kind == "list_correct":
+        # the correct list: the unlicensed event is absent
+        return f"{m}."
+    raise ValueError(kind)
