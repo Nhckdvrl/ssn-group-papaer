@@ -1,47 +1,33 @@
-# SSN Group Paper — Topic Search, Selection & Execution
+# SSN Group Paper: Research Workflow
 
-**Primary target:** NAACL Main  
-**External bar:** ACL / EMNLP / NAACL Main, with strong Best / Outstanding / Best Theme papers as high-end calibration.
+Target: NAACL Main, continuously calibrated against strong ACL / EMNLP / NAACL work.
 
-The repository now separates four responsibilities cleanly:
+## Workflow Documents
 
-1. **RESEARCH_TOPIC_SEARCH.md** — how to search for topics; hard search discipline, advisor/user constraints, multi-track search rules.
-2. **TOPIC_SEARCH_PLAYBOOK.md** — non-authoritative inspiration library; anomaly/mechanism mining, contradictory papers, Old Problem / New Method, data-first, lab-style seeds, etc.
-3. **RESEARCH_TOPIC_SELECTION.md** — once a concrete candidate exists, decide KILL / HOLD / SERIOUS / PILOT-AUTHORIZED.
-4. **RESEARCH_EXECUTION.md** — once a topic is being worked on, govern claims, experiments, data, reproducibility, literature re-audit, scaling, and kill logic.
+1. [Research Topic Search](RESEARCH_TOPIC_SEARCH.md): find natural questions with a credible contribution path.
+2. [Topic Search Playbook](TOPIC_SEARCH_PLAYBOOK.md): optional generators, not approval rules.
+3. [Research Topic Selection](RESEARCH_TOPIC_SELECTION.md): evaluate RQ, idea, and contribution separately; authorize bounded pilots and full studies separately.
+4. [Research Execution](RESEARCH_EXECUTION.md): develop evidence, explanation, breadth, consequence, and a current contribution through explicit stage gates.
+5. [Local Agent Start](LOCAL_AGENT_START.md): safe startup and source-of-truth rules, without duplicated experiment queues.
 
-Supporting files:
-- **CURRENT_SEARCH.md** — compact current portfolio/status only.
-- **LOCAL_AGENT_START.md** — current local execution handoff.
-- **failed/KILLED_LEDGER.md** — cumulative anti-resurrection ledger.
-- **candidates/README.md** — serious-candidate portfolio.
-- **good/README.md** — pilot-authorized registry.
+## Workflow Revision: 2026-09-11
 
----
+This revision addresses process failures exposed by L12, not just its candidate wording:
 
-# Current state — 2026-09-09
+- A good RQ, a promising idea, strong evidence, and a mature contribution are separate judgments.
+- A successful pilot does not mean the full study is sufficient.
+- Main calibration must identify missing intellectual advances and necessary workload, not similar section headings.
+- Novelty review tests both the strongest compression and the strongest surviving contribution.
+- A proposed experiment must be useful even after asking what its strongest positive result would actually establish.
+- Unexpected findings can redirect the study; a new title cannot upgrade old evidence.
+- HOLD is a bounded decision, not indefinite protection of sunk cost.
 
-- **Approved paper mainline:** NONE
-- **Serious six-topic portfolio:** L03, L06, L07, L08, L09, L10
-- **Pilot-authorized:** L03
-- **Current execution priority selected by user:** **L08**
-- **L02:** NO-GO / K175
-- **L04:** NO-GO / K180
-- **L05 Adaptive Information Seeking:** K176
-- **Killed ledger:** through K180
-- **Next kill ID:** K181
-- **Broad topic search:** paused while the six candidates undergo decisive pilots/audits.
+The detailed [L12 process retrospective](RESEARCH_EXECUTION.md#12-l12-retrospective-what-the-workflow-missed) explains what should have changed at earlier decision points. This workflow revision does not rerun experiments or issue new verdicts for every project.
 
----
+## Project State and Repository Practice
 
-# Core rule
+[CURRENT_SEARCH.md](CURRENT_SEARCH.md) is a dated portfolio index. Read the concrete candidate's latest status and the latest user request before action. Historical priorities and directory names are not permanent authorization.
 
-> **Natural question first. Data/evidence must identify the claim. Do not gamble on one fragile phenomenon. Novelty is paper-level. Keep several plausible outcomes informative. Compare continuously against strong ACL/EMNLP/NAACL Main work.**
+[candidates/README.md](candidates/README.md), [good/README.md](good/README.md), and [failed/KILLED_LEDGER.md](failed/KILLED_LEDGER.md) retain portfolio and decision history. This entry page intentionally does not duplicate candidate priorities, metrics, or next kill IDs.
 
-Repository semantics:
-- **CURRENT_SEARCH.md** should stay short; detailed old failures belong in the kill ledger.
-- **candidates/** means serious enough for full audit, not approved.
-- **good/** means pilot-authorized, not mainline-approved.
-- concrete project directories own their execution artifacts.
-
-During ordinary execution, modify **only the concrete subproject directory** unless explicitly doing repository-level workflow maintenance.
+Ordinary execution edits only the selected concrete project. Root maintenance requires explicit scope. Preserve concurrent work and keep large raw experiment artifacts outside git with provenance pointers. Inspect outgoing history before merging/pushing main.

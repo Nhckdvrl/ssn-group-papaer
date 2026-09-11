@@ -11,6 +11,11 @@ It does not decide candidate quality. That belongs to **RESEARCH_TOPIC_SELECTION
 
 Generators can be added or removed freely. No generator is mandatory.
 
+**2026-09-11 clarification:** every generator produces a lead, not a contribution.
+Develop the lead into a question, candidate idea/operation, discriminating
+observation, and consequential answer before promotion. Illustrations below
+are historical examples, not endorsements of those candidates' current status.
+
 ---
 
 # A. Established anomaly → unresolved mechanism
@@ -33,9 +38,12 @@ Desired development:
 
 > phenomenon → competing accounts → decisive intervention → boundary/localization → repair/consequence
 
-Current illustration: **L08**. The parent phenomenon is not our novelty; the explanation space is.
+Current illustration: **L08**. The parent phenomenon is not our novelty.
+Whether a valuable, identifiable explanation space remains must be audited.
 
-Failure mode: merely running the parent ablation on more models/benchmarks.
+Failure modes: reproducing the parent ablation on more models/benchmarks;
+treating an unexplained effect as proof that any plausible explanation is new;
+turning phenomenon -> probe -> patch into a mandatory paper recipe.
 
 ---
 
@@ -230,7 +238,7 @@ Inspect:
 
 Look for:
 
-> **the parent paper owns the phenomenon; the explanation space is still open.**
+> **the parent paper owns the phenomenon; is a consequential explanation still open?**
 
 Always check later follow-up work before claiming the gap.
 
@@ -293,6 +301,10 @@ This project has a strong negative prior against heavily linguistic branches eve
 # Anti-pattern library
 
 Avoid repeatedly generating:
+- a broader-sounding name for an unchanged local result;
+- a generic causal effect presented as an explanation of how computation works;
+- a list of known components presented as either automatic novelty or automatic collision;
+- a paper plan whose strongest positive result would still not identify its interesting claim;
 - another single-vs-multiple-valid-output story;
 - another generic provenance story;
 - another hierarchy-aware label task;

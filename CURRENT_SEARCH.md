@@ -1,5 +1,12 @@
 # Current Research State — 2026-09-09
 
+> **Workflow maintenance notice, 2026-09-11:** the priorities, metrics, and
+> next-run instructions below are a historical portfolio snapshot, not current
+> experiment authorization. In particular, the L12 E07/E08 queue is obsolete.
+> Read the latest user request and each candidate's current README, claims,
+> novelty audit, and experiment ledger before action. This root workflow
+> revision has not re-audited the other candidates or reassigned their status.
+
 **Target:** NAACL Main  
 **Approved paper mainline:** NONE  
 **Killed ledger:** through K181  
