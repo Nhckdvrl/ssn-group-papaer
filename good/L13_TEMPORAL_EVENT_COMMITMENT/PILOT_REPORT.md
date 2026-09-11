@@ -442,3 +442,37 @@ and it is the one construction where structure-building discards it.
    smaller batch). It is at ceiling without thinking, so it can only add the order figure.
 3. More families for the headline table; a realistic downstream timeline→QA task; more
    connectives (`until`, `by the time`, `in time to`).
+
+---
+
+# Addendum 5 — E13: the ghost node propagates to a downstream consumer (2026-09-11)
+
+Real pipelines extract a structure and then answer from the structure. Stage 2 here sees
+**only the model's own emitted timeline**; the passage is removed. Same question, same
+permutation-controlled scoring.
+
+P(YES) on `before_neutral`, reading the passage → reading its own timeline:
+
+| model | from passage | from own timeline | Δ | `after` (control) | non-temporal (control) |
+|---|---|---|---|---|---|
+| **Qwen3-32B** | 0.236 | **0.970** | **+0.734** | 0.999 → 0.998 | 0.021 → 0.004 |
+| **Gemma-3-12B** | 0.045 | **0.583** | **+0.538** | 0.997 → 0.860 | 0.000 → 0.000 |
+| **Qwen3-8B** | 0.028 | **0.467** | **+0.439** | 0.989 → 0.972 | 0.023 → 0.007 |
+| Llama-3.1-8B | 0.182 | 0.438 | +0.256 | 0.654 → 0.435 | 0.074 → 0.129 |
+
+Accuracy on `before_neutral` falls correspondingly: 0.775 → 0.496 (Qwen3-8B),
+0.867 → 0.408 (Gemma), 0.796 → 0.479 (Llama).
+
+The two Qwen checkpoints give the cleanest reading: `after` and the non-temporal control
+are preserved almost exactly, so this is not generic degradation from losing the source
+text — the downstream reader inherits **one specific false event**, the one the timeline
+manufactured. (For Llama and Gemma `after` also drops, so part of their shift is generic
+loss; their `before_neutral` shift is still the largest.)
+
+Explicitly negated events propagate too: `before_cancel` P(YES) rises from 0.000–0.022
+to 0.130–0.202.
+
+This is the study's applied claim, measured rather than argued: **an LLM that reads a
+sentence correctly, extracts a timeline from it, and then reasons over that timeline,
+ends up believing something the sentence never said.** Every event-graph, timeline-
+extraction and agent-state pipeline has exactly this shape.

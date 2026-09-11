@@ -1,0 +1,26 @@
+{
+  "tag": "pilot_v1",
+  "stimuli": "data/stimuli_v1.jsonl",
+  "seed": 13,
+  "dtype": "bfloat16",
+  "batch_size": 16,
+  "gen_batch_size": 8,
+  "max_new_tokens": 160,
+  "task_orders": [
+    "fact_first",
+    "timeline_first",
+    "paraphrase_first"
+  ],
+  "models": [
+    {
+      "slug": "mistral_small_24b",
+      "model_id": "mistralai/Mistral-Small-24B-Instruct-2501",
+      "family": "mistral"
+    },
+    {
+      "slug": "phi4_mini",
+      "model_id": "microsoft/Phi-4-mini-instruct",
+      "family": "phi4"
+    }
+  ]
+}
