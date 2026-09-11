@@ -1,11 +1,18 @@
-# Serious Candidate Portfolio — Reset 2026-09-11
+# Serious Candidate Portfolio — 2026-09-11
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Active serious candidates:** **NONE**  
-**Search state:** **BROAD SEARCH REOPENED**
+**Active serious candidates:** **1**  
+**Search state:** **BROAD SEARCH OPEN; NO SURVIVOR QUOTA**
 
-> Existing subdirectories are historical packages, not active candidates.
+## Active serious candidate
+
+- **L14 — Negation of the World, or Negation of the Words?**  
+  Metalinguistic negation as an LLM target-selection problem.  
+  **Status:** SERIOUS CANDIDATE / PRE-PILOT.  
+  Canonical package: [L14_METALINGUISTIC_NEGATION/](L14_METALINGUISTIC_NEGATION/)
+
+L14 is not a generic negation benchmark. Its proposed contribution is whether an LLM identifies the **semantic level targeted by `not`**—world-state proposition versus linguistic representation—and whether ordinary negation-sensitivity interventions create a trade-off by over-applying polarity reversal to metalinguistic corrections. The prospective development path (target selection → default-repair vs context-sensitive processing → consequence for negation robustness) was audited before any pilot.
 
 ## Archived in the 2026-09-11 reset
 
@@ -16,13 +23,13 @@
 
 The packages under `good/` for L03/L10/L12/L13 were also archived in the same reset.
 
-## New search objective
+## Search objective
 
 Prefer paper-shaped questions with the character of strong classic-problem modernizations:
 
 > **a durable, immediately understandable distinction or paradox → simple natural/controlled data with hard gold → a genuinely unresolved LLM-era computation → an experiment whose result is interesting to read → a clear consequence for real language-model use.**
 
-Before any new pilot, require not only an attractive RQ but also:
+Before any pilot, require not only an attractive RQ but also:
 
 1. the strongest plausible successful result and what it would actually establish;
 2. the strongest `Prior A + B + C = our paper` compression;
