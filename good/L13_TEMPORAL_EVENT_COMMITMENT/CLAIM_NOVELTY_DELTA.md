@@ -122,3 +122,76 @@ Outcomes:
   RECONSTRUCT or KILL.
 
 This is the only work authorized on L13 right now.
+
+---
+
+# Delta #3 — E20 resolves it: the extraction interface runs a surface test (2026-09-11)
+
+Licensing × surface form of the target clause, crossed. 100 scenarios, 3 models,
+same judgement probe and same enumeration probe as everywhere else.
+
+| condition | gold | surface of the E-clause | surface predicts | capability predicts | judge (acc) | **extract** |
+|---|---|---|---|---|---|---|
+| `dn_true_that` *It is true that E* | YES | clean | extract | extract | 1.00 | 0.98 / 1.00 / 1.00 |
+| `dn_not_true` *It is not true that E* | **NO** | **clean** | extract ✗ | drop | .89–1.00 | **0.42 / 0.85 / 0.88** |
+| `dn_deny` *A colleague denied that E* | ND | clean | extract ✗ | drop | .44–.96 | **0.99 / 1.00 / 1.00** |
+| `dn_doubtful` *It is doubtful that E* | ND | clean | extract ✗ | drop | .16–.70 | 0.98 / 0.98 / 0.70 |
+| `dn_false_that_not` *It is false that E-did-not* | **YES** | **negated** | drop ✗ | extract | .74–1.00 | **0.75 / 0.40 / 0.42** |
+| `dn_not_fail` *S did not fail to VP* | **YES** | **negated** | drop ✗ | extract | .53–.99 | **0.10 / 0.40 / 0.69** |
+
+## The two decisive contrasts
+
+**Same gold NO, judged correctly, extraction differs by where the negation sits:**
+
+| | gold | E-clause surface | extracted |
+|---|---|---|---|
+| `op_negation` *Maya did not submit …* | NO | negated | **0.00 / 0.01 / 0.01** |
+| `dn_not_true` *It is not true that Maya submitted …* | NO | clean | **0.42 / 0.85 / 0.88** |
+
+**Same gold YES, judged correctly, extraction differs by where the negation sits:**
+
+| | gold | E-clause surface | extracted |
+|---|---|---|---|
+| `dn_true_that` *It is true that Maya submitted …* | YES | clean | **0.98 / 1.00 / 1.00** |
+| `dn_not_fail` *Maya did not fail to submit …* | YES | negated | **0.10 / 0.40 / 0.69** |
+
+Qwen3-8B judges `dn_not_fail` correctly 0.99 of the time and then **drops 90% of events
+the passage guarantees happened.** No capability account predicts that direction.
+
+## Verdict on Delta #1 and #2
+
+> **PASS, conditional on the claim being written as the mechanism.**
+
+The identity is no longer "models mistake suspended content for fact" (CogNarr owns that
+for the attribution category) and is not "models mishandle negation" (the negation
+literature owns that at the judgement interface, where our models are correct). It is:
+
+> **At the extraction interface a model tests the surface form of the clause — is it a
+> non-negated finite past clause? — instead of the operator that licenses it. It
+> therefore extracts events the text denies and drops events the text guarantees, on
+> sentences it judges correctly; and the unlicensed items it emits then overwrite its own
+> and a downstream reader's belief.**
+
+- **Width**: 13 conditions across temporal non-veridicality, attribution, conditionals,
+  epistemic possibility and negation placement, with licensing crossed against surface
+  form. Not one construction.
+- **Compression**: CogNarr + negation literature + self-conditioning does not predict a
+  *guaranteed* event being dropped. That cell is the paper.
+- **Direction**: both predicted failure directions are observed, which is what separates a
+  mechanism from a capability gap.
+
+## Honest weaknesses in this delta
+
+1. `dn_doubtful` is not a dissociation for Gemma — its judgement accuracy is 0.16, so
+   that cell is a comprehension failure, not an interface failure.
+2. `dn_not_fail` judgement is 0.53 for Llama; that cell is only clean for Qwen3-8B (0.99)
+   and Gemma (0.89).
+3. `dn_false_that_not` is weak for Qwen3-8B (0.75 extracted, i.e. mostly not dropped), so
+   the negated-surface effect is frame-dependent within a model.
+4. Three models, one language, and the `did not fail to` frame is not frequent English.
+
+## Hard stop status
+
+Delta #1's stop is **lifted for claim-relevant work only**. Still forbidden without a new
+delta: model zoos, scale ladders, and confirmation runs on the old `before`-only claim.
+The paper, if written, is the interface mechanism with `before` as its deepest case.
