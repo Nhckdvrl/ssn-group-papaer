@@ -1,32 +1,33 @@
-# Serious Candidate Portfolio — 2026-09-09
+# Serious Candidate Portfolio — Reset 2026-09-11
 
-**Target:** NAACL Main  
-**Approved paper mainline:** NONE  
-**Current execution order:** **L10 → L12 → L08 backup**
+**Target:** ACL / EMNLP / NAACL Main  
+**Approved paper mainline:** **NONE**  
+**Active serious candidates:** **NONE**  
+**Search state:** **BROAD SEARCH REOPENED**
 
-> `candidates/` contains serious pre-authorization topics.  
-> `good/` contains pilot-authorized/continuing candidates.  
-> Neither directory protects a topic from later death.
+> Existing subdirectories are historical packages, not active candidates.
 
-| ID | Candidate | Status | Canonical package |
-|---|---|---|---|
-| **L03** | Table Value ≠ Observation Status | PILOT-AUTHORIZED, lower priority | [../good/L03_TYPED_OBSERVATION/](../good/L03_TYPED_OBSERVATION/) |
-| **L06** | Study Identity Is Not Document Identity | SERIOUS / PILOT-READY | [L06_STUDY_IDENTITY/](L06_STUDY_IDENTITY/) |
-| **L07** | Official Correction ≠ Current Scholarly Claim | SERIOUS / DATA AUDIT FIRST | [L07_OFFICIAL_CORRECTION/](L07_OFFICIAL_CORRECTION/) |
-| **L08** | Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning | HOLD / strong backup / Rank 3 | [L08_READOUT_DIMENSION/](L08_READOUT_DIMENSION/) |
-| **L09** | RLVR Disagreement: Erased or Suppressed? | SERIOUS | [L09_RLVR_DISAGREEMENT/](L09_RLVR_DISAGREEMENT/) |
-| **L10** | From Failure to Action | PILOT-AUTHORIZED / Rank 1 | [../good/L10_FROM_FAILURE_TO_ACTION/](../good/L10_FROM_FAILURE_TO_ACTION/) |
-| **L12** | Reasoning-Induced Invariance | CONTINUE-PILOT / Rank 2 | [../good/L12_REASONING_DECISION_INVARIANCE/](../good/L12_REASONING_DECISION_INVARIANCE/) |
-| **L13** | Temporal Order ≠ Event Realization | PILOT RUN / RECONSTRUCTING | [../good/L13_TEMPORAL_EVENT_COMMITMENT/](../good/L13_TEMPORAL_EVENT_COMMITMENT/) |
+## Archived in the 2026-09-11 reset
 
-**L11 is KILL / K181** and is not active.
+- **L06 — Study Identity Is Not Document Identity:** NO-GO; strong data but the successful-result story compresses to study grouping/publication linkage plus established evidence-synthesis principles.
+- **L07 — Official Correction ≠ Current Scholarly Claim:** NO-GO; fresh ownership audit compresses the broad authoritative-supersession/current-validity principle, leaving mainly a scholarly-domain instantiation.
+- **L08 — Readout-Dimension / Compression Evaluation:** NO-GO; substantial evidence preserved, but reconstructed paper identity is not grandfathered into novelty and is removed from active execution.
+- **L09 — RLVR Disagreement: Erased or Suppressed?:** NO-GO; the proposed mechanism space is crowded by RLVR entropy/diversity collapse, ambiguity representation, and post-training latent-state work.
 
-## Current focus
+The packages under `good/` for L03/L10/L12/L13 were also archived in the same reset.
 
-**L10:** protect “why can the model know B failed yet choose B again?” Use untouched-history forks for outcome memory, attribution, policy, and actual action; then matched stage completion.
+## New search objective
 
-**L12:** protect “selective semantic abstraction vs context disengagement.” Establish the irrelevant-vs-decision-relevant boundary before more mechanistic patching.
+Prefer paper-shaped questions with the character of strong classic-problem modernizations:
 
-**L08:** strong backup only while L10/L12 have cheaper load-bearing experiments.
+> **a durable, immediately understandable distinction or paradox → simple natural/controlled data with hard gold → a genuinely unresolved LLM-era computation → an experiment whose result is interesting to read → a clear consequence for real language-model use.**
 
-Use **../RESEARCH_TOPIC_SELECTION.md** for the authoritative eight gates.
+Before any new pilot, require not only an attractive RQ but also:
+
+1. the strongest plausible successful result and what it would actually establish;
+2. the strongest `Prior A + B + C = our paper` compression;
+3. a prospective development path and fresh novelty check for the likely next paper identity;
+4. a clean data/gold/identification route;
+5. a Main-level reason to care beyond a benchmark cell.
+
+No survivor quota. A candidate is not promoted merely because it resembles an award-paper surface pattern.
