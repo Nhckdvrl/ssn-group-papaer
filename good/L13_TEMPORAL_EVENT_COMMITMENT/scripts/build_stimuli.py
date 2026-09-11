@@ -63,6 +63,9 @@ def main():
                     "condition": cond,
                     "connective": {
                         "about_to": "when",
+                        "in_time_to": "in_time_to",
+                        "by_the_time": "by_the_time",
+                        "until_neg": "until",
                         "purpose": "when",
                         "before_post": "before",
                         "before_modal": "before_could",
@@ -74,6 +77,9 @@ def main():
                     }[cond],
                     "resolution": {
                         "about_to": "none",
+                        "in_time_to": "none",
+                        "by_the_time": "none",
+                        "until_neg": "none",
                         "purpose": "none",
                         "before_post": "none",
                         "before_modal": "modal_marked",

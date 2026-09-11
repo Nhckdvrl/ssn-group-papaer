@@ -31,6 +31,9 @@ GOLD_BY_COND = {
     "about_to": "NOT_DETERMINED",
     "before_modal": "NO",
     "purpose": "NOT_DETERMINED",
+    "in_time_to": "NOT_DETERMINED",
+    "by_the_time": "YES",
+    "until_neg": "YES",
     "before_post": "NOT_DETERMINED",
 }
 LABELS = ["YES", "NO", "NOT_DETERMINED"]

@@ -124,7 +124,24 @@ DECOMP = {
 # "Maya was there to submit the application" does not entail that she did.
 # Shares its matrix clause with `about_to`, so the only difference is whether
 # non-realization is marked (aspectually) or carried by the construction alone.
+# --- E17: a connective battery ---------------------------------------------
+# `before` may be close to unique among English temporal subordinators in
+# carrying non-veridicality with no other marking. E17 tests the nearest
+# neighbours: one further candidate for an unmarked non-veridical construction,
+# and two temporal subordinators that ARE veridical, as calibration that a high
+# instantiation rate is not in itself a failure.
+#
+#   in_time_to   "Maya was in time to submit the application, but the portal closed."
+#                strictly non-veridical, no modal or aspectual marker. Candidate.
+#   by_the_time  "By the time Maya submitted the application, the portal closed."
+#                veridical subordinator; high instantiation here is CORRECT.
+#   until_neg    "Maya did not submit the application until the portal closed."
+#                veridical; high instantiation here is CORRECT.
+
 EXT_GOLD = {
+    "in_time_to": "NOT_DETERMINED",
+    "by_the_time": "YES",
+    "until_neg": "YES",
     "about_to": "NOT_DETERMINED",
     "before_modal": "NO",
     "purpose": "NOT_DETERMINED",
@@ -159,6 +176,9 @@ def ext_passages(base):
         "about_to": f"{cap(subj)} {be} about to {vp} when {base['main']}.",
         "before_modal": f"{cap(base['main'])} before {subj} could {vp}.",
         "purpose": f"{cap(subj)} {be} there to {vp} when {base['main']}.",
+        "in_time_to": f"{cap(subj)} {be} in time to {vp}, but {base['main']}.",
+        "by_the_time": f"By the time {base['sub']}, {base['main']}.",
+        "until_neg": f"{cap(subj)} did not {vp} until {base['main']}.",
         # the post-posed order, which dominates natural English and forms a
         # one-word minimal pair with `before_modal`
         "before_post": f"{cap(base['main'])} before {base['sub']}.",

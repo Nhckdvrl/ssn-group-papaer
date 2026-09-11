@@ -1,188 +1,220 @@
-# L13 — Research Note
+# L13 研究笔记
 
-Last updated 2026-09-11. All numbers are final on `stimuli_v2` (100 scenarios) and the
-adjudicated natural set (176 sentences). Full provenance in `PILOT_REPORT.md`; claim
-scoping in `CLAIM_CALIBRATION.md`; data contract in `DATA_AND_GOLD.md` + `DATA_AUDIT.md`.
+更新于 2026-09-11。数字为 `stimuli_v2`（100 场景）与人工裁定自然集（176 句）的最终结果。
+完整实验流水见 `PILOT_REPORT.md`，claim 尺度见 `CLAIM_CALIBRATION.md`，数据契约见
+`DATA_AND_GOLD.md` 与 `DATA_AUDIT.md`。
+
+本笔记只写**构成 claim 的核心实验**；辅助实验（模型族扩展、描述性统计等）不在此列。
 
 ---
 
-## 1. The core question
+## 1. 核心问题
 
-English `before` is **non-veridical**: *"The portal closed before Maya submitted the
-application"* does not entail that Maya submitted it. `after` is veridical. This is
-classical, uncontroversial semantics.
+英语 `before` 在语义上是**非真实的**（non-veridical）：
 
-> **When an LLM is asked to extract the events of such a sentence, does the connective's
-> non-veridicality survive into the extracted representation?**
+> *The portal closed before Maya submitted the application.*
 
-The question is not whether models *know* the semantics — they largely do. It is whether
-that knowledge survives the act of producing a structured event representation, which is
-what every event-extraction, timeline, and agent-state pipeline asks a model to do.
+不蕴含 Maya 提交了。`after` 则是真实的。这是经典且无争议的语义学事实。
 
-## 2. Related work and what is ours
+问题不是模型懂不懂——它基本懂。问题是：
 
-**Classical parents (assets, not competitors).** Non-veridicality of `before` vs `after`
-(Anscombe; Heinämäki; Beaver & Condoravdi). Psycholinguistic processing of `before`/`after`
-with item-level veridicality norming (Politzer-Ahles et al., PLOS ONE 2017). Richer Event
-Description annotation guidelines already forbid putting hypothetical events on the actual
-timeline — the applied statement of the same concern.
+> **当 LLM 被要求抽取这句话里的事件时，连词的非真实性还在不在？**
 
-**Nearest modern neighbours and what they own.**
+这不是一个语言学测验。所有事件抽取、时间线构建、agent 世界状态管线，做的正是"把一段文本变成一份事件结构"这个动作。
 
-| work | owns | does not own |
+## 2. 相关工作与我们的位置
+
+**经典母题（是资产，不是竞争者）**：`before`/`after` 的非真实性/真实性对立（Anscombe；Heinämäki；
+Beaver & Condoravdi）；`before`/`after` 的心理语言学处理与 item 级 veridicality 评分
+（Politzer-Ahles et al., PLOS ONE 2017）；Richer Event Description 标注规范本来就禁止把
+假设性事件放进实际时间线——这正是同一个问题的工程表述。
+
+**最近的邻居各自占住了什么**
+
+| 工作 | 拥有 | 不拥有 |
 |---|---|---|
-| *Are LLMs Temporally Grounded?* and the temporal-ordering line | ordering, duration, self-consistency of **given** events | whether a construction licenses believing a relatum exists |
-| Temporal-mechanism work on before/after ordering (2026) | internal machinery of **ordering** | realization as a separate quantity |
-| MAVEN-FACT (Findings EMNLP 2024) | large-scale event factuality labels, LLM benchmark | any manipulation of construction or of the extraction demand |
-| TReMu (Findings ACL 2025) | temporal anchoring, unanswerable time questions | whether the event exists at all |
-| Belief-R (EMNLP 2024) | defeasible belief revision in general | whether the construction manufactured the belief |
+| *Are LLMs Temporally Grounded?* 及时序排序一线 | **已给定**事件的排序、时长、自洽性 | 一个构式是否授权"相信某个关系项存在" |
+| 2026 年 before/after 排序的机制工作 | **排序**的内部机制 | 把"实现与否"当成独立的量 |
+| MAVEN-FACT (Findings EMNLP 2024) | 大规模事件真实性标签、LLM 评测 | 对构式或抽取要求做任何操纵 |
+| TReMu (Findings ACL 2025) | 时间锚定、不可回答的时间问题 | 事件到底存不存在 |
+| Belief-R (EMNLP 2024) | 一般意义上的可废止信念修正 | 是不是**构式本身**制造了那个信念 |
 
-**Ours.** Not a factuality benchmark and not a temporal-reasoning benchmark. The object is
-a **dissociation between judgement and extraction**, established by manipulating the
-construction and the extraction demand while holding the proposition fixed, plus the
-downstream cost of that dissociation. The killed-ledger entry K064 ("event mention ≠ event
-occurrence") is cleared in `PARENT_AUDIT.md`: the estimand here is a relation between two
-computations, not a label.
+**我们的位置**：不是真实性 benchmark，也不是时序推理 benchmark。对象是**判断与抽取之间的解离**，
+靠"固定命题、只动构式和抽取要求"来识别，外加这个解离的下游代价。与已杀条目 K064（"事件提及 ≠
+事件发生"）的区分论证在 `PARENT_AUDIT.md`：这里的估计量是两个计算之间的关系，不是一个标签。
 
-## 3. Experiments run
+## 3. 实验设置
 
-| id | question | verdict |
+**受控材料**：100 个手写场景 × 9 条件 = **900 条**。每个场景一个施事、一个目标事件 `E`、一个
+主句事件 `M`（`E` 的合理阻碍者，且在两种语序下都自然）。同一场景所有条件共享词汇内容，因此各条件
+之间是最小对。
+
+| 条件 | 例句 | gold |
 |---|---|---|
-| **E01** | direct judgement profile across conditions | models mostly judge correctly |
-| **E02** | does emitting a structure change the model's own belief? | yes, +0.06 to +0.38 |
-| **E04** | does an explicit prohibition stop it? | no for unresolved, yes for negated |
-| **E05** | does a *non-generative* temporal demand do it? | no (≤0.07) — emission required |
-| **E06** | does an explicit three-state schema repair it? | no in 4 of 5 checkpoints |
-| **E07** | scale ladder, Qwen3 0.6B–32B | rises with scale; control flat |
-| **E08** | natural `before`-clauses from the Pile | replicates on unmarked items |
-| **E09** | reasoning mode during extraction | order → 1.00, instantiation → 1.00 |
-| **E10** | status-first pipeline repair | fixes negated, fails unresolved |
-| **E11** | is it item plausibility? | no |
-| **E12** | other non-veridical constructions | handled correctly |
-| **E13** | downstream reader consuming the model's own list | inherits the false event |
-| **E14** | two further families (Mistral-Small-24B, Phi-4-mini) | replicates |
-| **E15** | purpose infinitives | handled correctly |
-| **E16** | remove the ordering requirement | failure persists — it is **enumeration**, not ordering |
-
-## 4. Setup
-
-**Controlled materials.** 100 hand-authored scenarios × 9 conditions = **900 items**.
-Each scenario is one agent, one target event `E`, one main event `M` that is a plausible
-blocker of `E` and reads naturally in both orders. All conditions share the lexical
-content, so contrasts are minimal pairs.
-
-| condition | example | gold |
-|---|---|---|
-| **`before_post`** (primary) | *The portal closed before Maya submitted the application.* | NOT_DETERMINED |
-| `before_neutral` (fronted) | *Before Maya submitted the application, the portal closed.* | NOT_DETERMINED |
+| **`before_post`**（主条件） | *The portal closed before Maya submitted the application.* | NOT_DETERMINED |
+| `before_neutral`（前置） | *Before Maya submitted the application, the portal closed.* | NOT_DETERMINED |
 | `after` | *After Maya submitted the application, the portal closed.* | YES |
-| `before_confirm` / `before_cancel` | + *"…she sent it by email that evening."* / *"…it was never submitted."* | YES / NO |
+| `before_confirm` / `before_cancel` | 追加 *"…she sent it by email that evening." / "…it was never submitted."* | YES / NO |
 | `nontemporal_neutral` | *Maya planned to submit the application. The portal closed at midnight.* | NOT_DETERMINED |
 | `about_to` | *Maya was about to submit the application when the portal closed.* | NOT_DETERMINED |
 | `purpose` | *Maya was there to submit the application when the portal closed.* | NOT_DETERMINED |
 | `before_modal` | *The portal closed before Maya could submit the application.* | NO |
 
-`before_post` and `before_modal` differ by one word (`could`); `before_post` and `after`
-differ by one word (the connective).
+`before_post` 与 `before_modal` 只差一个词（`could`）；`before_post` 与 `after` 只差连词。
 
-**Natural materials.** 1,943 Pile sentences containing a `before`-clause → 471 in scope
-under an explicit written construction definition (`src/before_scope.py`; PP, forensic,
-generic, deontic, imperative and irrealis uses excluded) → **211 hand-adjudicated** →
-**176 kept**, each with a written target proposition and a realization judgement.
+**自然材料**：Pile 中含 `before` 从句的句子 1,943 条 → 按写死的构式定义筛出在范围内的 471 条
+（`src/before_scope.py`，排除介词、法庭、泛指、道义、祈使、非现实用法）→ **人工逐条裁定 211 条**
+→ 保留 **176 条**，每条手写目标命题与实现判断。
 
-**Measurement.**
-- *Judgement:* "Based only on the passage, is the statement true?" → YES / NO / NOT
-  DETERMINED, scored from label-token log-probabilities over **all 6 option permutations**
-  and averaged, removing position and letter bias. A separate 1–5 likelihood probe keeps
-  strict entailment and pragmatic expectation apart.
-- *Extraction:* the model emits an event list; the target counts as instantiated only if
-  the proposition occupies a **main clause** with no negation or hedge, so copying
-  `Before X, Y` is not counted. The rule was validated against 160 hand-adjudicated
-  generations (159/160; the single error is a false negative, so rates are lower bounds).
-- *Controls:* a **paraphrase-first** arm (same "the model generated something first"),
-  a **non-temporal** arm (label availability), and an **unordered** arm (E16).
-- *Statistics:* paired bootstrap over scenarios, 10,000 resamples, 95% percentile CI.
+**测量**
+- *判断*："Based only on the passage, is the statement true?" → YES / NO / NOT DETERMINED，
+  用标签 token 的 log-prob 打分，**6 种选项排列全跑并平均**，消除位置与字母偏置。另设 1–5 的
+  likelihood 探针，把严格蕴含与语用预期分开，两者从不合并。
+- *抽取*：模型输出事件清单；只有当目标命题占据**主句**且无否定无 hedge 时才计为"被实例化"——
+  照抄 `Before X, Y` 不计。该判定规则对照 160 条人工裁定生成验证，**159/160**，唯一一处不一致是
+  漏判，因此所有比率是**下界**。
+- *对照*：paraphrase-first（匹配"先生成过东西"）、非时间条件（中间标签可用性）、无序清单。
+- *统计*：按场景配对 bootstrap，10,000 次重采样，95% 百分位 CI。
 
-**Models.** Qwen3 (0.6B, 1.7B, 4B, 8B, 14B, 32B), Llama-3.1-8B-Instruct,
-Gemma-3-12B-IT, Olmo-3-7B-Instruct-DPO, Mistral-Small-24B-Instruct, Phi-4-mini —
-6 families, 11 checkpoints. Local GPUs, existing environment, cached weights, no
-downloads, greedy decoding for the one generation step, log-prob scoring elsewhere.
+**模型**：Qwen3 (0.6B/1.7B/4B/8B/14B/32B)、Llama-3.1-8B-Instruct、Gemma-3-12B-IT、
+Olmo-3-7B-Instruct-DPO、Mistral-Small-24B-Instruct、Phi-4-mini——6 个族，11 个 checkpoint。
+本地显卡、现有环境、缓存权重，无下载；唯一的生成步用贪心解码，其余全部 log-prob 打分。
 
-## 5. Core claims
+## 4. 核心 claim 与支撑它的实验
 
-**C1 — Dissociation.** Asked directly, models judge the subordinate event of an unmarked
-`before`-clause as not guaranteed (P(NOT DETERMINED) 0.54–0.66 on `before_post` for
-Qwen3-8B, Llama-3.1-8B, Gemma-3-12B). Asked to enumerate the events of the same sentence,
-they emit it as a realized event at **0.87–1.00**, against ~0.14 for a matched
-non-temporal open proposition.
+### C1 — 判断与抽取解离
 
-**C2 — The emitted inventory governs the model's own belief.** On identical text and an
-identical probe, having emitted the list raises P(YES) by **+0.06 to +0.38** against a
-form-matched paraphrase control. A non-generative temporal demand moves it ≤0.07, so the
-effect requires the structure to be emitted.
+> 直接问，模型判对；让它列事件，同一句话里那个未决事件被当成已发生事件输出。
 
-**C3 — The trigger is enumeration, not ordering.** Removing the chronological requirement
-("in any order") leaves the failure intact and slightly worse (0.775–1.000 vs 0.450–0.975).
+| 模型 | 直接 P(NOT DETERMINED) | **抽取时被实例化** | 非时间对照 |
+|---|---|---|---|
+| Gemma-3-12B | 0.662 | **0.87** | 0.15 |
+| Llama-3.1-8B | 0.564 | **0.97** | 0.15 |
+| Qwen3-8B | 0.542 | **1.00** | 0.14 |
+| Qwen3-32B | 0.071 | **0.98** | 0.14 |
 
-**C4 — Order and realization are independent.** Enabling reasoning takes emitted
-chronological order from 0.34 to **1.00** correct and instantiation from 0.45 to **1.00**
-(Qwen3-8B). Across models the two are uncorrelated (Llama: order 0.15, instantiation 0.98).
+非时间对照（同一命题、同样开放、非时间构式引入）只有 ~0.14，人工 likelihood 评分证实两者
+在语用预期上是匹配的（2.38 vs 2.42），所以差距不能归因于"这个事件本来就更可能发生过"。
 
-**C5 — Scope.** The failure is confined to constructions where non-veridicality is carried
-by **nothing but the connective**. Marked counterparts are handled: `about_to` 0.21–0.22,
-`purpose` 0.18–0.35 (0.18–0.35 on the natural 85 subset), `before_modal` 0.03–0.27 —
-against `before_post` 0.87–1.00. One word (`could`) moves Qwen3-8B from 1.00 to 0.04.
+### C2 — 抽出来的清单反过来支配模型自己的信念（**必须真的吐出结构**）
 
-**C6 — It replicates on natural text.** On hand-adjudicated Pile sentences, unmarked
-non-veridical `before`-clauses are instantiated at **0.44–0.81** while marked ones sit at
-**0.00–0.18**, and the direct probe on the same sentences gives P(YES) 0.006–0.255.
+同一文本、同一探针，先让它列一次事件，P(YES) 相对 paraphrase 对照上升：
 
-**C7 — It propagates.** A reader consuming only the model's own emitted list raises P(YES)
-by **+0.26 to +0.73**, with the `after` and non-temporal controls preserved.
+| 模型 | `before_post` | `before_neutral` |
+|---|---|---|
+| Qwen3-8B | **+0.295** [+0.222, +0.371] | +0.143 |
+| Gemma-3-12B | **+0.258** [+0.199, +0.317] | +0.383 |
+| Qwen3-32B | **+0.156** [+0.089, +0.223] | +0.364 |
+| Llama-3.1-8B | **+0.060** [+0.048, +0.072] | +0.112 |
 
-**C8 — Prompt-level repair fails selectively.** An explicit prohibition, an explicit
-three-state schema and a status-first pipeline each nearly eliminate instantiation of
-**explicitly negated** events (0.35–0.90 → 0.00–0.08) and fail for **unresolved** ones.
+**关键控制**：把"生成"去掉——让模型用**单个字母**回答一道时序选择题（上下文里不会出现任何关于目标
+事件的陈述句），再问同一个问题，效应只有 ≤0.07。所以效应发生在**吐出结构**这一步，不是内部表征
+被时间连词污染。这条把一个 mechanistic 框架直接证伪了，也是 claim 只能停在"抽取界面"的原因。
 
-**C9 — Not plausibility, not scale-fragile.** No monotone dependence on item pragmatic
-bias; instantiation rises across the Qwen3 ladder (0.45 → 0.98 → 1.00) with the control
-flat at ~0.10 in all six checkpoints.
+### C3 — 触发条件是"枚举"，不是"排序"
 
-**Rejected along the way:** that models over-commit when asked directly (C1-original);
-that the connective's representation contaminates factuality without generation (E05);
-that timeline *ordering* is the mechanism (E16); that natural text does not replicate
-(superseded sampling artifact).
+把排序要求去掉（"list the events **in any order**"）：
 
-## 6. Conclusion
+| 模型 | 按时序列 | **无序列** | 非时间对照 |
+|---|---|---|---|
+| Qwen3-8B | 0.450 | **0.775** | 0.100 |
+| Llama-3.1-8B | 0.975 | **1.000** | 0.175 |
+| Gemma-3-12B | 0.925 | **0.950** | 0.100 |
 
-A model can read a sentence correctly, be asked what events it contains, answer with an
-inventory that contains an event the sentence never asserted, and then believe its own
-inventory. The knowledge is present at the judgement interface and absent at the
-extraction interface. Extraction is where a classical semantic property is discarded, and
-the discarded belief then propagates to whatever consumes the extracted structure.
+信念漂移同样保持（unordered − paraphrase = +0.083 ~ +0.411）。**排序不是必要条件，去掉还更糟。**
+这条推翻了本研究最初的框架假设（"模型需要把从句事件当成时间坐标才实例化它"），把对象从
+timeline construction 扩大到 **event extraction**。
 
-Reasoning does not help: it makes the temporal order perfect and the event ontology worse.
-Three natural prompt-level repairs recover events the text *negates* and none recovers
-events the text *leaves open* — there is no room for `unresolved` in what the model emits.
+### C4 — 时序与实现是两个独立的量
 
-## 7. Boundaries and limitations
+开启 reasoning 模式生成事件清单：
 
-1. **Construction-specific.** One positive construction (`before`), three matched negative
-   ones. Whatever marks non-realization — modal `could`, aspectual `was about to` — is
-   respected. The general statement ("judgement does not survive extraction") is supported
-   by one construction and must be stated as such.
-2. **Prevalence.** 12.3% of adjudicated natural plain-past `before`-clauses are
-   non-veridical, so the affected cell is real but uncommon; that is also why the natural
-   critical cell is n=16 and why a controlled set is necessary rather than optional.
-3. **Qwen3-32B is not a dissociation case on the primary form.** It answers the direct
-   probe with P(YES)=0.54 on `before_post`, i.e. it over-commits before any extraction.
-   C1 holds for 3 of 4 checkpoints on that form; the extraction failure holds for all 4.
-4. **The instantiation measure is a validated rule, not a human label** (159/160 against
-   hand adjudication, conservative). Rates are lower bounds.
-5. **Gold and the natural adjudication are author judgements** under a written, blinded
-   protocol with published raw responses.
-6. **English only; one connective family; `purpose` is marginal on 15 of 100 items**
-   (flagged, reported both ways).
-7. **The mechanism is characterised at the level of emitted structure.** E05 rules out a
-   representation-level coupling that needs no generation; it does not localise where in
-   generation the collapse happens.
+| 设置 | 输出顺序正确率 | 实例化率 |
+|---|---|---|
+| Qwen3-8B，不 thinking | 0.344 | 0.450 |
+| **Qwen3-8B，thinking** | **1.000** | **1.000** |
+| Qwen3-32B，不 thinking | 0.925 | 1.000 |
+| Llama-3.1-8B | 0.150 | 0.975 |
+
+**推理把时序做到满分，同时把实现错误也做到满分。** 跨模型两个量不相关。这同时回答了"用推理模型是不是
+就没这问题"这个必然会被问到的反驳。
+
+### C5 — 边界：只在"非真实性仅由连词承载"时发生
+
+| 模型 | **`before_post`** | `about_to`（体标记） | `purpose`（无标记非 before） | `before_modal`（情态标记） |
+|---|---|---|---|---|
+| Qwen3-8B | **1.00** | 0.22 | 0.28 | 0.04 |
+| Qwen3-32B | **0.98** | 0.22 | 0.23 | 0.05 |
+| Llama-3.1-8B | **0.97** | 0.22 | 0.35 | 0.27 |
+| Gemma-3-12B | **0.87** | 0.21 | 0.18 | 0.03 |
+
+`before_post` 与 `before_modal` 只差 `could` 一个词：Qwen3-8B 是 **1.00 vs 0.04**。
+凡是英语给了标记（情态 `could`、体貌 `was about to`），模型就守得住。
+
+**语序对照**（这条曾经差点毁掉全研究）：v1 全部用前置 `Before A, B`，而我们自己扫 Pile 发现
+4,615 个含 before 的句子里只有 255 个是这种前置形式——**测的是少数派语序**。补上自然的后置语序后，
+效应**更大**而不是更小（Qwen3-8B 0.31 → 1.00）。
+
+### C6 — 自然文本上复现
+
+人工裁定的 Pile 句子：
+
+| 模型 | **无标记非真实**(n=16) | 有标记非真实(n=34) |
+|---|---|---|
+| Qwen3-8B | **0.812** [0.62, 1.00] | 0.000 |
+| Llama-3.1-8B | **0.750** [0.50, 0.94] | 0.176 |
+| Qwen3-32B | **0.625** [0.38, 0.88] | 0.059 |
+| Gemma-3-12B | **0.438** [0.19, 0.69] | 0.000 |
+
+同样这些真实句子上，直接问的 P(YES) 只有 0.006–0.255：**读对了，然后照样抽成事件。**
+
+### C7 — 会传播到下游
+
+模型只读**自己抽出来的清单**（原文移除）再回答同一问题，P(YES) 再升 **+0.26 ~ +0.73**，
+而 `after` 与非时间对照在两个 Qwen checkpoint 上几乎不变——下游继承的是**那一个特定的假事件**，
+不是泛化的信息损失。
+
+### C8 — 三种 prompt 级修复，选择性失效
+
+明确禁止（"不要列出文本留白的事件"）、显式三态 schema、status-first 两段式管线：
+
+- 对**文本明确否定**的事件：0.35–0.90 → **0.00–0.08**，基本治好；
+- 对**文本留白**的事件：不降或更糟。
+
+**模型输出的结构里没有 `unresolved` 的位置，先问状态也造不出这个位置。**
+
+### C9 — 不是可能性偏置，也不随规模消失
+
+item 级语用倾向不构成单调关系（有余量的两个模型里，反而是"最不可能发生"的那批实例化率最高）。
+Qwen3 阶梯：0.45 (8B) → 0.98 (14B) → 1.00 (32B)，六个 checkpoint 的对照恒定在 ~0.10。
+
+### 沿途被否掉的
+
+- 原假设 C1"模型直接问就会过度承诺"——**证伪**；
+- "时间连词的表征在无需生成时就污染真实性判断"——**证伪**（C2 的非生成控制）；
+- "机制是时间线排序"——**证伪**（C3）；
+- "自然文本上不复现"——**是抽样伪影**，重建样本后复现。
+
+## 5. 结论
+
+模型可以把一句话读对，被问到"这句话里有哪些事件"时给出一份包含该句从未断言过的事件的清单，
+然后相信自己给出的这份清单。**知识在判断界面上存在，在抽取界面上消失。**
+
+推理帮不上忙：它让时序完美，让事件本体更糟。三种 prompt 级修复只能救回文本**否定**掉的事件，
+救不回文本**留白**的事件。
+
+## 6. 边界与局限
+
+1. **构式特异**。一个正例构式（`before`），三个匹配的负例。只要非真实性被情态或体貌标记，模型就
+   守得住。"判断挺不过抽取"这个一般性说法目前只由一个构式支撑，必须按这个尺度陈述。
+   （`until` / `by the time` / `in time to` 的连词组实验进行中。）
+2. **出现率**。人工裁定的自然平叙 `before` 从句里，12.3% 是非真实的——现象真实但不常见；这也是
+   自然集关键格子只有 n=16、以及必须配一个受控集的原因，而不是拿构造当借口。
+3. **Qwen3-32B 在主条件上不是解离案例**。它直接问就 P(YES)=0.54，抽取之前就已经过度承诺。
+   C1 对 4 个里的 3 个成立，抽取失败对 4 个都成立。
+4. **实例化是规则判定，不是人工标签**（对照 160 条人工裁定 159/160，且偏保守），比率是下界。
+5. **gold 与自然集裁定是作者判断**，有书面盲标协议和全部原始记录。
+6. **只做了英语；一个连词家族；`purpose` 在 100 条里有 15 条读起来勉强**（已标记，全集与自然子集
+   两个数都报：0.18–0.35 / 0.18–0.35）。
+7. **机制只刻画到"输出结构"这一层**。非生成控制排除了"无需生成的表征级耦合"，但没有定位到生成过程
+   中的哪一步发生塌陷。
