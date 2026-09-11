@@ -195,3 +195,102 @@ literature owns that at the judgement interface, where our models are correct). 
 Delta #1's stop is **lifted for claim-relevant work only**. Still forbidden without a new
 delta: model zoos, scale ladders, and confirmation runs on the old `before`-only claim.
 The paper, if written, is the interface mechanism with `before` as its deepest case.
+
+---
+
+# Delta #4 — the Delta #3 PASS is withdrawn (2026-09-11)
+
+I graded Delta #3 PASS on the strength of the risky prediction. Re-reading it against
+the width and compression tests, that grade was too generous. Downgrading to **HOLD**.
+
+## The compression I missed
+
+`dn_not_fail` is *"Maya did not fail to submit the application"* — a **double negation**.
+"LLMs are bad at double negation" is an established finding; the literature on negation
+systematicity reports exactly that models can prefer negation over double negation. So
+the headline cell compresses to:
+
+> "Known double-negation weakness, plus known generate/judge asymmetry, showing up in an
+> extraction task."
+
+My defence was that the *judgement* is correct (0.99), which the double-negation account
+does not predict. That defence is real but thin: it rests on one frame, in one model, and
+the same cell is weak for Llama (judgement 0.53) and for Qwen3-8B in the other negated
+frame (0.75 extracted, i.e. barely dropped).
+
+**Judge Circuits (arXiv 2605.16023, 2026)** also lands nearby: a judgement signal computed
+in the shared trunk, mapped through fragile output-formatting layers, giving systematically
+different answers under different output formats. "The interface changes the answer" is
+therefore not unowned either.
+
+## What the idea actually is, stripped of dressing
+
+> Models use surface form instead of the semantic operator when producing structured
+> output.
+
+That is the shallow-heuristic parent — one of the most crowded in NLP. Under the width
+test it reads as *this task + these three models + our instantiation metric*. **HOLD.**
+
+## The asset I have been under-using
+
+The most distinctive thing in E01–E20 is not the surface test. It is a **causal
+direction**, and it comes from two experiments I have been treating as minor:
+
+- **E13 / E18** — what the model extracted **overwrites its own judgement** (+0.06 to
+  +0.38 on its own answer, +0.12 to +0.24 downstream on natural sentences).
+- **E10** — forcing the judgement to run **first** does not fix the extraction. The
+  status-first pipeline nearly eliminates instantiation of explicitly negated events
+  (0.35–0.90 → 0.00–0.08) and does nothing for unresolved ones.
+
+Together: **the model's own correct judgement has no causal influence on what it
+extracts, while what it extracts has strong causal influence on its judgement, and the
+arrow reverses only when the surface carries the information.** The asymmetry survived a
+deliberate attempt to reverse it.
+
+## Candidate idea (NOT approved — it needs its own kill pass)
+
+> **A model's semantically licensed judgement is causally downstream of its
+> surface-driven event registry, and cannot write back to it.**
+
+Different object from the crowded parents:
+- shallow heuristics say the model computes the wrong thing — here it computes the right
+  thing and then does not get to use it;
+- generate/judge asymmetry and Judge Circuits say the interface changes the answer — they
+  do not claim a **fixed causal direction between two of the model's own computations**,
+  nor that an intervention designed to reverse it fails;
+- CogNarr reports a capability gap on one category, not a direction.
+
+It also reframes everything we have: `before`, attribution, conditionals, possibility and
+the surface test all become *evidence about what the registry is keyed on*, rather than
+the claim itself.
+
+## The decisive pilot, and it is not prompt engineering
+
+Prompt ordering (E10) is a weak test of causal direction. The real test is
+representational, and it is cheap on open-weight models:
+
+1. Take the hidden state at the point where the model has computed the judgement
+   correctly (the `NOT DETERMINED` decision) and patch it into the extraction run.
+   Direction predicts: **no transfer** — extraction still emits the event.
+2. Take the hidden state from the extraction run and patch it into the judgement run.
+   Direction predicts: **transfer** — the judgement flips toward YES.
+3. Run both on a matched pair where the surface *does* carry the information
+   (`op_negation`), where the arrow is known to reverse behaviourally. Direction predicts
+   both transfers succeed there.
+
+If patching is asymmetric in (1)/(2) and symmetric in (3), the causal direction is a
+measured fact and the idea is ours. If both directions transfer, there is no privileged
+registry, the idea is false, and L13's honest ceiling is the narrow surface-test paper —
+which does not clear Main on its own.
+
+**Status: HOLD. No further evidence accumulation on the surface-test claim.** This
+patching pilot is the only authorized work, and it must be followed by a fresh novelty
+delta before anything is written.
+
+## A caution on my own reasoning here
+
+This candidate has the same *shape* as the idea that rescued L12 (a causal-direction
+claim built on an existing behavioural asset), and I may be pattern-matching to a story
+that worked rather than to the evidence. The patching pilot is designed to be able to
+kill it; if it does, L13 should go to RECONSTRUCT or KILL rather than be rescued a third
+time.
