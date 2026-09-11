@@ -105,3 +105,29 @@ It is the gate that decides whether the identification programme is worth runnin
 Not authorized before E01 reports: attention-head analysis, FFN transplant, activation
 patching, retrieval-score heatmaps, extra model families, extra benchmarks, QASPER,
 the 1B-token budget, or any writing of a paper draft.
+
+## Power, stated before the runs
+
+This is a screening design, and the honest statement of its limits belongs here rather
+than in the discussion of a null.
+
+At 1B tokens with a full dataset swap, the parent's UltraChat→ChatQA2 gap on our four
+benchmarks is: MMLU +1.30, BBH +2.79, LAMBADA +5.67, GSM8K +14.06, **macro +5.96**.
+Our pilot spends roughly a tenth of that token budget and applies the treatment to half
+the examples, so a real length effect should be expected to be *substantially* smaller
+than +5.96 here. E01 cannot rule out a small positive effect.
+
+Two consequences, fixed in advance:
+
+1. **The null is read relatively, never absolutely.** The claim licensed by outcome B is
+   "under matched supervision the effect is at most a fraction *f* of the dataset-swap
+   effect measured in the same regime", where *f* is computed from the positive control
+   actually obtained. It is not "there is no length effect".
+2. **With two seeds per arm there is no run-level inference.** We report per-benchmark
+   bootstrap CIs over evaluation items (which capture eval noise only) and the raw
+   seed-to-seed range (which is the only handle on training noise). If the seed range
+   swamps both the matched gap and the positive-control gap, that is outcome D, and the
+   correct response is to stop, not to add seeds until a gap appears.
+
+Adding seeds after seeing results is forbidden. If the measured throughput permits a
+third seed, that decision is made and recorded **before** any evaluation is run.
