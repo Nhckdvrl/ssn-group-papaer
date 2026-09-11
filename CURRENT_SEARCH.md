@@ -31,19 +31,6 @@ RQ:
 
 E01 uses matched demonstration transcripts, same-speaker vs other-speaker audio, text-only controls, and high/low target-relevant phonetic coverage. If the established ICL benefit itself disappears under the matched design, archive rather than rescue.
 
-### L20 — What Does an LLM Learn From a Rewarded Trajectory?
-
-**Status:** **SERIOUS / PRE-PILOT — HIGH COLLISION RISK — NO COMPUTE AUTHORIZED**  
-Package: `candidates/L20_ICRL_UPDATE_UNIT/`
-
-RQ:
-
-> When a fixed pretrained LLM sees a multi-step attempt followed by scalar reward, does its next policy preferentially update the actions that causally earned the outcome, or mainly treat the whole rewarded trajectory as a good/bad demonstration?
-
-Current novelty fence: **Not K021 unless the project collapses back into retrospective step attribution.** L20's estimand is future fixed-weight policy change after reward exposure. The remaining pre-pilot blocker is an exact-operation audit against 2026 credit-assignment / ICRL work plus a data gate showing that trajectory-outcome × local-action-quality conflicts can be obtained naturally with executable replay gold.
-
-Priority note: RL / agent / credit assignment is a very crowded 2026 neighborhood. L20 is a high-risk backup lead, not a reason to narrow future search toward RL. Prefer cleaner NLP / language / measurement / mechanism questions when available.
-
 ---
 
 ## Most recent search decisions
@@ -53,6 +40,7 @@ Full record: `search_rounds/2026-09-12_POST_L18_ANTI_RESURRECTION.md` and `searc
 Recent deaths include:
 
 - **L18 contextual entrainment × word-meaning priming causal identity** — existing phenomena/mechanisms leave only a narrow overlap/mediation story.
+- **L20 rewarded-trajectory update unit** — future-policy-shift is a real estimand difference from retrospective credit scoring, but the surviving novelty is narrow; the strong paper outcome depends on observing fine-grained local credit, while realistic causal gold requires expensive replay/counterfactual validation. Cheap symbolic versions weaken the intended claim.
 - **Temporal forgetting → latent survival via relearning** — pretraining factual forgetting is already directly studied; relearning/savings leaves a narrow adjacent diagnostic rather than a new Main-level parent.
 - **Own-answer persistence vs generic anchoring** — direct 2026 self-attribution interventions already own the decisive comparison.
 
