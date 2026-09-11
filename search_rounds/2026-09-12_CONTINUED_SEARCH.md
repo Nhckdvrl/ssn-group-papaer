@@ -52,3 +52,32 @@
 **Why we cannot do it:** The future-policy-shift estimand is genuinely different from retrospective step scoring, but the surviving novelty is narrow relative to ICRL, successful-trajectory reuse, and 2026 causal-credit work. More importantly, the successful-result test is asymmetric: a strong Main-level story mainly requires the interesting positive outcome that terminal scalar reward induces fine-grained local causal credit; coarse whole-trajectory reuse is compatible with existing ICRL/RL accounts and is a weaker contribution, while reward-independent hindsight kills the reward-mediated story. Realistic local causal gold also requires expensive executed replay / policy-supported counterfactuals, and cheap symbolic domains weaken the intended general claim and force another realistic domain anyway.
 
 **Decision:** **KILL CURRENT FORM / NO PILOT.** Do not rescue by shrinking to a toy symbolic benchmark; that would be a new candidate requiring re-selection.
+
+## Further audited rejections
+
+- **Boundary delimiter benefit: structure vs extra compute.** KILL / direct collision: *Think in Sentences* already controls equal numbers of delimiters at random positions and studies segmentation granularity, so the decisive matched-compute comparison is owned.
+- **Same entity vs merely similar properties.** KILL: modern entity-identification, entity-tracking, and binding work already separates same-entity mentions from semantically similar different entities; dynamic restatement is an occupied extension.
+- **Description vs experience in risky choice.** KILL / direct collision: ACL 2026 *Mind the (DH) Gap!* directly compares explicit prospects with experience histories.
+- **Scientific plausibility vs testability / feasibility.** KILL: 2026 scientific-feasibility work directly separates hypothesis, experiment, and outcome information; hypothesis evidencing/ranking further crowds the parent.
+- **Claim–source binding under source permutation.** KILL CURRENT FORM: attribution and positional-faithfulness work crowd the parent, and the strong story depends on the specific dissociation where answer semantics remain stable while provenance drifts.
+- **Completed / obsolete reasoning states as interference.** KILL: CoT redundancy, pruning, stopping, and overthinking are already a dense 2025–2026 parent.
+- **Effect magnitude vs evidence strength / precision.** KILL: evidential-proportionality / scientific-overstatement work plus statistical-role extraction already bracket the modern consequence; a controlled CI test reduces to a narrow statistical-competence cell.
+- **Current publication validity after retraction.** DUPLICATE K145.
+- **Explaining-away / collider structure in LLM reasoning.** KILL: modern causal-reasoning benchmarks directly include collider and explaining-away judgments.
+- **Preference learning vs inhibition in implicit memory.** KILL CURRENT FORM: making the paper depend on the preference/inhibition asymmetry in one new benchmark reintroduces phenomenon lottery; broadening collides with implicit-memory / ICL parents.
+- **Pause means turn end vs speaker still thinking.** DUPLICATE of the existing TurnBench / full-duplex turn-taking parent.
+- **Evidence certainty vs recommendation strength.** DUPLICATE K150.
+- **Evidence consistent with H vs evidence supporting H over alternatives.** KILL: diagnostic-likelihood-ratio and competing-hypothesis evidencing work crowd the parent; a clean likelihood-ratio test otherwise becomes textbook competence evaluation.
+- **Withdrawn self-repair vs live conflicting evidence.** DUPLICATE of the existing self-repair parent; broad discourse-commitment reformulation collapses into K064 / K078.
+- **Collective group predication vs member facts.** DUPLICATE K147.
+- **`respectively` list alignment vs Cartesian-product facts.** KILL / direct collision: ACL 2023 Main already studies respective readings with controlled and natural data.
+- **Paper–code mismatch vs which side is wrong.** KILL: SciCoQA supplies mismatch cases but not independent fault-locus gold; reconstructing issue/commit/version truth is expensive and the remainder compresses to fault localization plus a SciCoQA extension.
+- **Query-conditioned compression vs reusable future-query memory.** KILL / direct collision: KVzip, LazyMem/DeferMem, and TaskPress already own the unknown-future-query reuse problem.
+- **K007 Actuality Entailment reopen.** NO REOPEN: new literature does not remove the original natural-gold blocker for the decisive modality × aspect × realization contrast.
+- **Legal allegation vs court finding reopen.** NO REOPEN: new full-process legal data do not provide proposition-level allegation→adoption/rejection gold, and the paper still compresses toward K078 source-relative commitment.
+- **Morphological segmentation as a necessary intermediate for glossing.** KILL / direct collision: ACL 2026 Outstanding multilingual glossing work already compares separate, joint, pipeline, and latent segmentation and diagnoses pipeline error propagation.
+- **Focus / information-structure preservation in summarization/evaluation.** KILL CURRENT FORM: QUD salience is already linked to summary quality, modern work directly studies LLM information salience, and the remaining focus-fidelity dimension is a narrow linguistic refinement with asymmetric successful-result value.
+- **Partial temporal order vs forced total timeline.** KILL / direct collision: TimeSET explicitly represents timeline construction with partial ordering; later temporal-graph work preserves vague/unknown relations.
+- **General hierarchical rule vs specific exception application.** KILL: HSCodeComp itself owns hierarchical rule application and diagnoses premature high-level decisions; defeasible/default and legal-rule reasoning benchmarks directly cover exceptions and nonmonotonic rules.
+
+**Round status:** no new survivor from these leads. Keep L16/L17 as the only active portfolio items; continue searching without quota pressure.
