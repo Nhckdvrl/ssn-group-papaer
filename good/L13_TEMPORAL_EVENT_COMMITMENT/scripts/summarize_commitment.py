@@ -21,6 +21,15 @@ CONDS = [
     "before_cancel",
     "nontemporal_neutral",
 ]
+GOLD_BY_COND = {
+    "after": "YES",
+    "before_neutral": "NOT_DETERMINED",
+    "before_confirm": "YES",
+    "before_cancel": "NO",
+    "nontemporal_neutral": "NOT_DETERMINED",
+    "about_to": "NOT_DETERMINED",
+    "before_modal": "NO",
+}
 LABELS = ["YES", "NO", "NOT_DETERMINED"]
 N_BOOT = 10000
 
@@ -68,6 +77,9 @@ def summarise_model(model_dir, rng):
     tables = per_base_tables(rows)
     orders = sorted({r["task_order"] for r in rows})
     bases = sorted({r["base_id"] for r in rows})
+    global CONDS
+    present = {r["condition"] for r in rows}
+    CONDS = [c for c in list(CONDS) + sorted(present - set(CONDS)) if c in present]
 
     res = {"orders": orders, "n_bases": len(bases), "conditions": {}, "contrasts": {}}
 
@@ -79,13 +91,7 @@ def summarise_model(model_dir, rng):
                 res["conditions"].setdefault(order, {}).setdefault(cond, {})[
                     f"p_{lab}"
                 ] = [round(m, 4), round(lo, 4), round(hi, 4)]
-            gold = {
-                "after": "YES",
-                "before_neutral": "NOT_DETERMINED",
-                "before_confirm": "YES",
-                "before_cancel": "NO",
-                "nontemporal_neutral": "NOT_DETERMINED",
-            }[cond]
+            gold = GOLD_BY_COND[cond]
             acc = {b: float(max(t[b], key=t[b].get) == gold) for b in bases}
             m, lo, hi = boot(acc, bases, rng, mean_stat)
             res["conditions"][order][cond]["accuracy"] = [
@@ -101,7 +107,7 @@ def summarise_model(model_dir, rng):
         return tables[(order, cond)][b][label]
 
     ff = "fact_first"
-    if ff in orders:
+    if ff in orders and "before_neutral" in CONDS:
         res["contrasts"]["neutral_gap"] = boot(
             {b: commit(ff, "before_neutral", b) - commit(ff, "nontemporal_neutral", b) for b in bases},
             bases, rng, mean_stat,
@@ -164,7 +170,7 @@ def summarise_model(model_dir, rng):
                 bases, rng, mean_stat,
             )
 
-    if "timeline_first" in orders and "paraphrase_first" in orders:
+    if "timeline_first" in orders and "paraphrase_first" in orders and "before_neutral" in CONDS:
         # is the timeline effect specific to the unresolved *temporal* condition?
         def did(cond, b):
             return commit("timeline_first", cond, b) - commit("paraphrase_first", cond, b)

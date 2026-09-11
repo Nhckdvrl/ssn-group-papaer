@@ -362,3 +362,83 @@ containing events the text leaves open.
 | **C6** not explained by event plausibility | **supported** (E11) |
 | **C7** boundary: restricted to the *unmarked* construction; marked non-veridicality is handled | **supported** (E08) |
 | **C8** pipeline repair works for `not-realized` and fails for `unresolved` | **supported** (E10) |
+
+---
+
+# Addendum 4 — E09 reasoning and E12 construction scope (2026-09-11)
+
+## E09 — reasoning perfects the order and completes the error
+
+Qwen3 supports an explicit thinking mode. The timeline turn was generated with thinking
+enabled and the reasoning block stripped, so only the emitted structure enters the
+context; the probe is unchanged.
+
+Two quantities measured on the same generations for `before_neutral` — whether the
+emitted order is chronologically correct (for `Before A, B` the main event B must come
+first), and whether the unresolved event is emitted as a realized node:
+
+| setting | emitted order correct | instantiation |
+|---|---|---|
+| Qwen3-8B, no thinking | 0.344 | 0.450 |
+| **Qwen3-8B, thinking** | **1.000** | **1.000** |
+| Qwen3-32B, no thinking | 0.925 | 1.000 |
+| Llama-3.1-8B | 0.150 | 0.975 |
+| Gemma-3-12B | 0.500 | 0.925 |
+
+Enabling reasoning takes temporal ordering from 34% to **100%** correct and
+simultaneously takes instantiation of the unresolved event from 45% to **100%**. Across
+models the two quantities are independent (Llama: order 0.15, instantiation 0.98).
+
+This is the paper's title claim measured inside a single manipulation: **more reasoning
+buys a better temporal order and a worse event ontology.** It also answers the obvious
+objection that a reasoning model would not make this mistake.
+
+## E12 — the scope is the `before`-clause, not unresolved status in general
+
+Two new conditions on the same 40 bases, same probes and controls
+(`data/stimuli_v1_ext.jsonl`):
+
+- `about_to` — *"Maya was about to submit the application when the portal closed."*
+  Same proposition, same open status, a temporal (`when`) clause, non-realization marked
+  **aspectually**. Gold `NOT_DETERMINED`.
+- `before_modal` — *"The portal closed before Maya could submit the application."*
+  The **modally marked** form that dominates natural text. Gold `NO`.
+
+| model | `before_neutral` | `about_to` | `before_modal` |
+|---|---|---|---|
+| Llama-3.1-8B | 0.975 | **0.150** | 0.250 |
+| Gemma-3-12B | 0.925 | **0.150** | 0.025 |
+| Qwen3-8B | 0.450 | **0.150** | 0.050 |
+
+Direct P(NOT_DETERMINED) on `about_to` is 0.62–0.91, so the models read it correctly and
+keep it off the timeline.
+
+**This narrows the claim, and unifies it with E08.** The failure is not "unresolved
+events get instantiated". It is confined to the case where non-veridicality is carried
+by **nothing but the temporal connective's lexical semantics**. Wherever English marks
+non-realization — modally (`could`) or aspectually (`was about to`) — models comply, in
+constructed and in natural text alike. The `before`-clause is the construction the
+semantics literature singled out precisely because the connective alone does the work,
+and it is the one construction where structure-building discards it.
+
+## Final claim state
+
+| claim | status |
+|---|---|
+| C1 direct over-commitment | **rejected** |
+| C2 structure-induced actualization | **supported** — 9 checkpoints, 4 families, paraphrase-controlled, no scale decay |
+| C3 update asymmetry | **weakened** (floor-confounded) |
+| C4 coupling without generation | **rejected** (E05) |
+| C5 `before`-clause instantiation of unresolved events | **supported**; strengthens with scale |
+| C6 not explained by event plausibility | **supported** (E11) |
+| C7 scope: only where the connective alone carries non-veridicality | **supported** (E08 + E12) |
+| C8 pipeline repair fixes `not-realized`, not `unresolved` | **supported** (E10) |
+| **C9** reasoning improves order and worsens realization | **supported** (E09) |
+
+## Still open
+
+1. Independent annotation (blocking).
+2. Qwen3-32B thinking run (first attempt died during long generation; relaunched with a
+   smaller batch). It is at ceiling without thinking, so it can only add the order figure.
+3. More families for the headline table; a realistic downstream timeline→QA task; more
+   connectives (`until`, `by the time`, `in time to`).

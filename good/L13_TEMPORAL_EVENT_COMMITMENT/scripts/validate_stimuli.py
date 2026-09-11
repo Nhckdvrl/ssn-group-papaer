@@ -23,6 +23,19 @@ CONDS = [
 def main():
     path = os.path.join(PROJ, "data", "stimuli_v1.jsonl")
     items = [json.loads(l) for l in open(path, encoding="utf-8")]
+    ext = [json.loads(l) for l in open(os.path.join(PROJ, "data", "stimuli_v1_ext.jsonl"), encoding="utf-8")]
+    for it in ext:
+        p = it["passage"]
+        if not p.endswith(".") or "  " in p:
+            print(f"EXT MALFORMED: {it['item_id']}")
+            sys.exit(1)
+        if it["condition"] == "before_modal" and " could " not in p:
+            print(f"EXT missing modal: {it['item_id']}")
+            sys.exit(1)
+        if it["condition"] == "about_to" and " was about to " not in p:
+            print(f"EXT missing construction: {it['item_id']}")
+            sys.exit(1)
+    print(f"extension items: {len(ext)} ok")
     by_base = collections.defaultdict(dict)
     for it in items:
         by_base[it["base_id"]][it["condition"]] = it

@@ -1,0 +1,21 @@
+{
+  "tag": "e09_thinking",
+  "stimuli": "data/stimuli_v1.jsonl",
+  "seed": 13,
+  "dtype": "bfloat16",
+  "batch_size": 16,
+  "gen_batch_size": 2,
+  "max_new_tokens": 640,
+  "thinking_context": true,
+  "task_orders": [
+    "fact_first",
+    "timeline_first"
+  ],
+  "models": [
+    {
+      "slug": "qwen3_32b",
+      "model_id": "Qwen/Qwen3-32B",
+      "family": "qwen3"
+    }
+  ]
+}
