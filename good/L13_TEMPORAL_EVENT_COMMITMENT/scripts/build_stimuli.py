@@ -11,10 +11,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(PROJ, "src"))
 
-from stimuli_bases import BASES  # noqa: E402
+from stimuli_bases import BASES as ALL_BASES  # noqa: E402
 from stimuli_ext import EXT_GOLD, ext_passages  # noqa: E402
 
-VERSION = "stimuli_v1"
+VERSION = os.environ.get("L13_STIMULI_VERSION", "stimuli_v1")
 
 GOLD = {
     **EXT_GOLD,
@@ -49,6 +49,9 @@ def main():
     out_path = os.path.join(PROJ, "data", f"{VERSION}.jsonl")
     ext_path = os.path.join(PROJ, "data", f"{VERSION}_ext.jsonl")
     n = ext_n = 0
+    # v1 is frozen at the first 40 bases so that the recorded results keep
+    # corresponding to it; v2 is the 80-base expansion.
+    BASES = ALL_BASES[:40] if VERSION == "stimuli_v1" else ALL_BASES
     with open(out_path, "w", encoding="utf-8") as f, open(ext_path, "w", encoding="utf-8") as g:
         for base in BASES:
             ps = passages(base)
@@ -60,6 +63,8 @@ def main():
                     "condition": cond,
                     "connective": {
                         "about_to": "when",
+                        "purpose": "when",
+                        "before_post": "before",
                         "before_modal": "before_could",
                         "after": "after",
                         "before_neutral": "before",
@@ -69,6 +74,8 @@ def main():
                     }[cond],
                     "resolution": {
                         "about_to": "none",
+                        "purpose": "none",
+                        "before_post": "none",
                         "before_modal": "modal_marked",
                         "after": "none",
                         "before_neutral": "none",

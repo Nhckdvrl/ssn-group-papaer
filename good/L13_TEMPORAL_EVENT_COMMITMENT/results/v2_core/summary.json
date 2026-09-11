@@ -1,0 +1,1509 @@
+{
+  "tag": "v2_core",
+  "n_boot": 10000,
+  "models": {
+    "qwen3_8b": {
+      "orders": [
+        "fact_first",
+        "paraphrase_first",
+        "timeline_first"
+      ],
+      "n_bases": 80,
+      "conditions": {
+        "fact_first": {
+          "after": {
+            "p_YES": [
+              0.9754,
+              0.9501,
+              0.9943
+            ],
+            "p_NO": [
+              0.0017,
+              0.0005,
+              0.0035
+            ],
+            "p_NOT_DETERMINED": [
+              0.0228,
+              0.0047,
+              0.0477
+            ],
+            "accuracy": [
+              0.9875,
+              0.9625,
+              1.0
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.0305,
+              0.0148,
+              0.0499
+            ],
+            "p_NO": [
+              0.2261,
+              0.1841,
+              0.2704
+            ],
+            "p_NOT_DETERMINED": [
+              0.7434,
+              0.6975,
+              0.7862
+            ],
+            "accuracy": [
+              0.925,
+              0.8625,
+              0.975
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.9377,
+              0.8887,
+              0.9779
+            ],
+            "p_NO": [
+              0.0154,
+              0.0055,
+              0.0277
+            ],
+            "p_NOT_DETERMINED": [
+              0.0469,
+              0.0157,
+              0.0862
+            ],
+            "accuracy": [
+              0.9625,
+              0.9125,
+              1.0
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.0111,
+              0.0002,
+              0.0288
+            ],
+            "p_NO": [
+              0.8758,
+              0.8334,
+              0.9131
+            ],
+            "p_NOT_DETERMINED": [
+              0.1131,
+              0.0806,
+              0.1486
+            ],
+            "accuracy": [
+              0.9375,
+              0.875,
+              0.9875
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.0311,
+              0.0096,
+              0.0577
+            ],
+            "p_NO": [
+              0.127,
+              0.0867,
+              0.1717
+            ],
+            "p_NOT_DETERMINED": [
+              0.8419,
+              0.7947,
+              0.8858
+            ],
+            "accuracy": [
+              0.925,
+              0.8625,
+              0.975
+            ]
+          }
+        },
+        "paraphrase_first": {
+          "after": {
+            "p_YES": [
+              1.0,
+              0.9999,
+              1.0
+            ],
+            "p_NO": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NOT_DETERMINED": [
+              0.0,
+              0.0,
+              0.0001
+            ],
+            "accuracy": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.02,
+              0.0062,
+              0.0405
+            ],
+            "p_NO": [
+              0.3028,
+              0.2727,
+              0.3339
+            ],
+            "p_NOT_DETERMINED": [
+              0.6772,
+              0.6442,
+              0.7097
+            ],
+            "accuracy": [
+              0.95,
+              0.9,
+              0.9875
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.9252,
+              0.8628,
+              0.9751
+            ],
+            "p_NO": [
+              0.0275,
+              0.0083,
+              0.0511
+            ],
+            "p_NOT_DETERMINED": [
+              0.0473,
+              0.0141,
+              0.0867
+            ],
+            "accuracy": [
+              0.925,
+              0.8625,
+              0.975
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.0029,
+              0.0,
+              0.0078
+            ],
+            "p_NO": [
+              0.9105,
+              0.8684,
+              0.9477
+            ],
+            "p_NOT_DETERMINED": [
+              0.0866,
+              0.0508,
+              0.1272
+            ],
+            "accuracy": [
+              0.9125,
+              0.85,
+              0.975
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.0048,
+              0.0,
+              0.0143
+            ],
+            "p_NO": [
+              0.1555,
+              0.1216,
+              0.1922
+            ],
+            "p_NOT_DETERMINED": [
+              0.8397,
+              0.8041,
+              0.8733
+            ],
+            "accuracy": [
+              0.9625,
+              0.9125,
+              1.0
+            ]
+          }
+        },
+        "timeline_first": {
+          "after": {
+            "p_YES": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "p_NO": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NOT_DETERMINED": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "accuracy": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.17,
+              0.1028,
+              0.2435
+            ],
+            "p_NO": [
+              0.235,
+              0.1996,
+              0.2698
+            ],
+            "p_NOT_DETERMINED": [
+              0.595,
+              0.5405,
+              0.6465
+            ],
+            "accuracy": [
+              0.8,
+              0.7125,
+              0.8875
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.9163,
+              0.8528,
+              0.9749
+            ],
+            "p_NO": [
+              0.0294,
+              0.0094,
+              0.052
+            ],
+            "p_NOT_DETERMINED": [
+              0.0543,
+              0.0203,
+              0.0968
+            ],
+            "accuracy": [
+              0.9125,
+              0.85,
+              0.9625
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.0145,
+              0.0,
+              0.0399
+            ],
+            "p_NO": [
+              0.8656,
+              0.8134,
+              0.9126
+            ],
+            "p_NOT_DETERMINED": [
+              0.1199,
+              0.0782,
+              0.1658
+            ],
+            "accuracy": [
+              0.875,
+              0.8,
+              0.9375
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NO": [
+              0.1758,
+              0.1408,
+              0.2143
+            ],
+            "p_NOT_DETERMINED": [
+              0.8242,
+              0.7855,
+              0.86
+            ],
+            "accuracy": [
+              0.9625,
+              0.9125,
+              1.0
+            ]
+          }
+        }
+      },
+      "contrasts": {
+        "neutral_gap": [
+          -0.0006,
+          -0.0328,
+          0.0291
+        ],
+        "veridicality_gap": [
+          0.9449,
+          0.9147,
+          0.9698
+        ],
+        "confirm_update": [
+          0.9072,
+          0.8567,
+          0.9499
+        ],
+        "cancel_update": [
+          0.0194,
+          -0.0034,
+          0.0416
+        ],
+        "gold_update_confirm": [
+          0.9072,
+          0.858,
+          0.9502
+        ],
+        "gold_update_cancel": [
+          0.6497,
+          0.603,
+          0.695
+        ],
+        "gold_update_asymmetry": [
+          0.2576,
+          0.1973,
+          0.3153
+        ],
+        "update_asymmetry": [
+          0.8703,
+          0.8129,
+          0.922
+        ],
+        "paraphrase_first_effect__after": [
+          0.0246,
+          0.0055,
+          0.0508
+        ],
+        "paraphrase_first_effect__before_neutral": [
+          -0.0105,
+          -0.0345,
+          0.0139
+        ],
+        "paraphrase_first_effect__before_confirm": [
+          -0.0125,
+          -0.0484,
+          0.0167
+        ],
+        "paraphrase_first_effect__before_cancel": [
+          -0.0082,
+          -0.0226,
+          -0.0002
+        ],
+        "paraphrase_first_effect__nontemporal_neutral": [
+          -0.0263,
+          -0.0524,
+          -0.0052
+        ],
+        "timeline_first_effect__after": [
+          0.0246,
+          0.0055,
+          0.0515
+        ],
+        "timeline_first_effect__before_neutral": [
+          0.1395,
+          0.0665,
+          0.216
+        ],
+        "timeline_first_effect__before_confirm": [
+          -0.0215,
+          -0.0585,
+          0.0093
+        ],
+        "timeline_first_effect__before_cancel": [
+          0.0034,
+          -0.0213,
+          0.0329
+        ],
+        "timeline_first_effect__nontemporal_neutral": [
+          -0.0311,
+          -0.0579,
+          -0.0096
+        ],
+        "timeline_minus_paraphrase__after": [
+          0.0,
+          0.0,
+          0.0001
+        ],
+        "timeline_minus_paraphrase__before_neutral": [
+          0.15,
+          0.0782,
+          0.226
+        ],
+        "timeline_minus_paraphrase__before_confirm": [
+          -0.0089,
+          -0.0355,
+          0.0076
+        ],
+        "timeline_minus_paraphrase__before_cancel": [
+          0.0115,
+          -0.0048,
+          0.039
+        ],
+        "timeline_minus_paraphrase__nontemporal_neutral": [
+          -0.0047,
+          -0.0142,
+          -0.0
+        ],
+        "timeline_specificity_vs_nontemporal": [
+          0.1547,
+          0.0834,
+          0.2317
+        ],
+        "timeline_specificity_vs_after": [
+          0.1499,
+          0.0792,
+          0.226
+        ]
+      },
+      "likelihood": {
+        "after": [
+          4.4374,
+          4.3419,
+          4.5282
+        ],
+        "before_neutral": [
+          2.1019,
+          1.9747,
+          2.2405
+        ],
+        "before_confirm": [
+          4.3925,
+          4.2629,
+          4.5088
+        ],
+        "before_cancel": [
+          1.1559,
+          1.086,
+          1.2417
+        ],
+        "nontemporal_neutral": [
+          2.1823,
+          2.0234,
+          2.3534
+        ]
+      },
+      "family": "qwen3"
+    },
+    "llama31_8b_instruct": {
+      "orders": [
+        "fact_first",
+        "paraphrase_first",
+        "timeline_first"
+      ],
+      "n_bases": 80,
+      "conditions": {
+        "fact_first": {
+          "after": {
+            "p_YES": [
+              0.667,
+              0.6415,
+              0.6918
+            ],
+            "p_NO": [
+              0.0542,
+              0.0471,
+              0.062
+            ],
+            "p_NOT_DETERMINED": [
+              0.2787,
+              0.2561,
+              0.302
+            ],
+            "accuracy": [
+              0.95,
+              0.9,
+              0.9875
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.2153,
+              0.1878,
+              0.2447
+            ],
+            "p_NO": [
+              0.2173,
+              0.1956,
+              0.2403
+            ],
+            "p_NOT_DETERMINED": [
+              0.5674,
+              0.5395,
+              0.5947
+            ],
+            "accuracy": [
+              0.8625,
+              0.7875,
+              0.9375
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.5453,
+              0.513,
+              0.5771
+            ],
+            "p_NO": [
+              0.0563,
+              0.0477,
+              0.0658
+            ],
+            "p_NOT_DETERMINED": [
+              0.3984,
+              0.3702,
+              0.427
+            ],
+            "accuracy": [
+              0.7,
+              0.6,
+              0.8
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.0906,
+              0.0766,
+              0.1056
+            ],
+            "p_NO": [
+              0.492,
+              0.4553,
+              0.5299
+            ],
+            "p_NOT_DETERMINED": [
+              0.4174,
+              0.3868,
+              0.4468
+            ],
+            "accuracy": [
+              0.5625,
+              0.45,
+              0.6625
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.1011,
+              0.0863,
+              0.1166
+            ],
+            "p_NO": [
+              0.144,
+              0.1252,
+              0.1644
+            ],
+            "p_NOT_DETERMINED": [
+              0.755,
+              0.7332,
+              0.7754
+            ],
+            "accuracy": [
+              0.9875,
+              0.9625,
+              1.0
+            ]
+          }
+        },
+        "paraphrase_first": {
+          "after": {
+            "p_YES": [
+              0.5637,
+              0.5295,
+              0.5967
+            ],
+            "p_NO": [
+              0.1243,
+              0.1088,
+              0.1409
+            ],
+            "p_NOT_DETERMINED": [
+              0.3119,
+              0.2841,
+              0.3413
+            ],
+            "accuracy": [
+              0.8375,
+              0.75,
+              0.9125
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.047,
+              0.0318,
+              0.0654
+            ],
+            "p_NO": [
+              0.3268,
+              0.2849,
+              0.369
+            ],
+            "p_NOT_DETERMINED": [
+              0.6262,
+              0.5873,
+              0.6662
+            ],
+            "accuracy": [
+              0.8,
+              0.7125,
+              0.8875
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.2949,
+              0.2673,
+              0.3218
+            ],
+            "p_NO": [
+              0.0663,
+              0.0516,
+              0.0832
+            ],
+            "p_NOT_DETERMINED": [
+              0.6388,
+              0.6102,
+              0.667
+            ],
+            "accuracy": [
+              0.0875,
+              0.0375,
+              0.15
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.0033,
+              0.0019,
+              0.0052
+            ],
+            "p_NO": [
+              0.7332,
+              0.6912,
+              0.7724
+            ],
+            "p_NOT_DETERMINED": [
+              0.2635,
+              0.2244,
+              0.3039
+            ],
+            "accuracy": [
+              0.9125,
+              0.85,
+              0.975
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.0191,
+              0.0141,
+              0.0244
+            ],
+            "p_NO": [
+              0.1375,
+              0.1123,
+              0.1654
+            ],
+            "p_NOT_DETERMINED": [
+              0.8435,
+              0.8165,
+              0.8691
+            ],
+            "accuracy": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "timeline_first": {
+          "after": {
+            "p_YES": [
+              0.651,
+              0.6219,
+              0.68
+            ],
+            "p_NO": [
+              0.0694,
+              0.0578,
+              0.0825
+            ],
+            "p_NOT_DETERMINED": [
+              0.2796,
+              0.2533,
+              0.3058
+            ],
+            "accuracy": [
+              0.925,
+              0.8625,
+              0.975
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.1605,
+              0.1362,
+              0.1869
+            ],
+            "p_NO": [
+              0.2357,
+              0.2025,
+              0.2697
+            ],
+            "p_NOT_DETERMINED": [
+              0.6039,
+              0.573,
+              0.6336
+            ],
+            "accuracy": [
+              0.85,
+              0.7747,
+              0.925
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.3643,
+              0.3356,
+              0.3925
+            ],
+            "p_NO": [
+              0.0622,
+              0.0494,
+              0.0764
+            ],
+            "p_NOT_DETERMINED": [
+              0.5734,
+              0.5485,
+              0.5985
+            ],
+            "accuracy": [
+              0.175,
+              0.1,
+              0.2625
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.044,
+              0.0283,
+              0.0625
+            ],
+            "p_NO": [
+              0.5559,
+              0.5116,
+              0.5985
+            ],
+            "p_NOT_DETERMINED": [
+              0.4001,
+              0.3651,
+              0.4361
+            ],
+            "accuracy": [
+              0.6,
+              0.4875,
+              0.7125
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.023,
+              0.0175,
+              0.0294
+            ],
+            "p_NO": [
+              0.0925,
+              0.0703,
+              0.1172
+            ],
+            "p_NOT_DETERMINED": [
+              0.8845,
+              0.8605,
+              0.9065
+            ],
+            "accuracy": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        }
+      },
+      "contrasts": {
+        "neutral_gap": [
+          0.1142,
+          0.088,
+          0.1408
+        ],
+        "veridicality_gap": [
+          0.4518,
+          0.4237,
+          0.4797
+        ],
+        "confirm_update": [
+          0.3301,
+          0.299,
+          0.3609
+        ],
+        "cancel_update": [
+          0.1247,
+          0.0987,
+          0.1519
+        ],
+        "gold_update_confirm": [
+          0.3301,
+          0.2984,
+          0.361
+        ],
+        "gold_update_cancel": [
+          0.2747,
+          0.2392,
+          0.3108
+        ],
+        "gold_update_asymmetry": [
+          0.0554,
+          0.0103,
+          0.0985
+        ],
+        "update_asymmetry": [
+          0.1985,
+          0.1544,
+          0.2423
+        ],
+        "paraphrase_first_effect__after": [
+          -0.1033,
+          -0.1285,
+          -0.0789
+        ],
+        "paraphrase_first_effect__before_neutral": [
+          -0.1683,
+          -0.1912,
+          -0.1464
+        ],
+        "paraphrase_first_effect__before_confirm": [
+          -0.2505,
+          -0.2725,
+          -0.2281
+        ],
+        "paraphrase_first_effect__before_cancel": [
+          -0.0873,
+          -0.1013,
+          -0.0744
+        ],
+        "paraphrase_first_effect__nontemporal_neutral": [
+          -0.082,
+          -0.0948,
+          -0.0701
+        ],
+        "timeline_first_effect__after": [
+          -0.016,
+          -0.0388,
+          0.0068
+        ],
+        "timeline_first_effect__before_neutral": [
+          -0.0548,
+          -0.0732,
+          -0.0359
+        ],
+        "timeline_first_effect__before_confirm": [
+          -0.181,
+          -0.202,
+          -0.1598
+        ],
+        "timeline_first_effect__before_cancel": [
+          -0.0466,
+          -0.0598,
+          -0.0329
+        ],
+        "timeline_first_effect__nontemporal_neutral": [
+          -0.078,
+          -0.0907,
+          -0.0666
+        ],
+        "timeline_minus_paraphrase__after": [
+          0.0872,
+          0.0668,
+          0.1075
+        ],
+        "timeline_minus_paraphrase__before_neutral": [
+          0.1135,
+          0.094,
+          0.1338
+        ],
+        "timeline_minus_paraphrase__before_confirm": [
+          0.0695,
+          0.0502,
+          0.0883
+        ],
+        "timeline_minus_paraphrase__before_cancel": [
+          0.0407,
+          0.026,
+          0.0581
+        ],
+        "timeline_minus_paraphrase__nontemporal_neutral": [
+          0.004,
+          0.0001,
+          0.008
+        ],
+        "timeline_specificity_vs_nontemporal": [
+          0.1095,
+          0.0899,
+          0.1297
+        ],
+        "timeline_specificity_vs_after": [
+          0.0262,
+          -0.0006,
+          0.054
+        ]
+      },
+      "likelihood": {
+        "after": [
+          3.7764,
+          3.7375,
+          3.8163
+        ],
+        "before_neutral": [
+          3.4258,
+          3.3825,
+          3.4689
+        ],
+        "before_confirm": [
+          3.6766,
+          3.6434,
+          3.7098
+        ],
+        "before_cancel": [
+          2.9057,
+          2.8365,
+          2.9756
+        ],
+        "nontemporal_neutral": [
+          3.3575,
+          3.3114,
+          3.404
+        ]
+      },
+      "family": "llama3"
+    },
+    "gemma3_12b_it": {
+      "orders": [
+        "fact_first",
+        "paraphrase_first",
+        "timeline_first"
+      ],
+      "n_bases": 80,
+      "conditions": {
+        "fact_first": {
+          "after": {
+            "p_YES": [
+              0.9985,
+              0.9964,
+              0.9998
+            ],
+            "p_NO": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NOT_DETERMINED": [
+              0.0015,
+              0.0002,
+              0.0035
+            ],
+            "accuracy": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.0753,
+              0.0317,
+              0.127
+            ],
+            "p_NO": [
+              0.0462,
+              0.0111,
+              0.0922
+            ],
+            "p_NOT_DETERMINED": [
+              0.8785,
+              0.8143,
+              0.9347
+            ],
+            "accuracy": [
+              0.8875,
+              0.8125,
+              0.95
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.9201,
+              0.8576,
+              0.9742
+            ],
+            "p_NO": [
+              0.0062,
+              0.0,
+              0.0186
+            ],
+            "p_NOT_DETERMINED": [
+              0.0737,
+              0.0255,
+              0.1319
+            ],
+            "accuracy": [
+              0.925,
+              0.8625,
+              0.975
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.0001,
+              0.0,
+              0.0001
+            ],
+            "p_NO": [
+              0.8822,
+              0.822,
+              0.9362
+            ],
+            "p_NOT_DETERMINED": [
+              0.1178,
+              0.0638,
+              0.1776
+            ],
+            "accuracy": [
+              0.9,
+              0.8375,
+              0.9625
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NO": [
+              0.0517,
+              0.0125,
+              0.1006
+            ],
+            "p_NOT_DETERMINED": [
+              0.9483,
+              0.899,
+              0.9875
+            ],
+            "accuracy": [
+              0.95,
+              0.9,
+              0.9875
+            ]
+          }
+        },
+        "paraphrase_first": {
+          "after": {
+            "p_YES": [
+              0.9906,
+              0.9742,
+              0.9999
+            ],
+            "p_NO": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NOT_DETERMINED": [
+              0.0093,
+              0.0001,
+              0.0278
+            ],
+            "accuracy": [
+              0.9875,
+              0.9625,
+              1.0
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.0961,
+              0.0543,
+              0.1445
+            ],
+            "p_NO": [
+              0.0692,
+              0.0333,
+              0.1111
+            ],
+            "p_NOT_DETERMINED": [
+              0.8347,
+              0.7787,
+              0.887
+            ],
+            "accuracy": [
+              0.8875,
+              0.8125,
+              0.95
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.8683,
+              0.7967,
+              0.9315
+            ],
+            "p_NO": [
+              0.0059,
+              0.0,
+              0.0175
+            ],
+            "p_NOT_DETERMINED": [
+              0.1258,
+              0.0658,
+              0.1924
+            ],
+            "accuracy": [
+              0.8875,
+              0.8125,
+              0.95
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.0118,
+              0.0,
+              0.0353
+            ],
+            "p_NO": [
+              0.8044,
+              0.7493,
+              0.852
+            ],
+            "p_NOT_DETERMINED": [
+              0.1838,
+              0.1397,
+              0.2347
+            ],
+            "accuracy": [
+              0.9,
+              0.8375,
+              0.9625
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.0076,
+              0.0,
+              0.0209
+            ],
+            "p_NO": [
+              0.0059,
+              0.0,
+              0.0171
+            ],
+            "p_NOT_DETERMINED": [
+              0.9865,
+              0.9692,
+              0.9996
+            ],
+            "accuracy": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "timeline_first": {
+          "after": {
+            "p_YES": [
+              0.9998,
+              0.9995,
+              1.0
+            ],
+            "p_NO": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NOT_DETERMINED": [
+              0.0002,
+              0.0,
+              0.0004
+            ],
+            "accuracy": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "before_neutral": {
+            "p_YES": [
+              0.4944,
+              0.4054,
+              0.5826
+            ],
+            "p_NO": [
+              0.0631,
+              0.0246,
+              0.1079
+            ],
+            "p_NOT_DETERMINED": [
+              0.4425,
+              0.3619,
+              0.5224
+            ],
+            "accuracy": [
+              0.45,
+              0.35,
+              0.5625
+            ]
+          },
+          "before_confirm": {
+            "p_YES": [
+              0.9199,
+              0.8614,
+              0.9681
+            ],
+            "p_NO": [
+              0.0101,
+              0.0,
+              0.026
+            ],
+            "p_NOT_DETERMINED": [
+              0.07,
+              0.0284,
+              0.1198
+            ],
+            "accuracy": [
+              0.925,
+              0.8625,
+              0.975
+            ]
+          },
+          "before_cancel": {
+            "p_YES": [
+              0.1136,
+              0.0537,
+              0.1816
+            ],
+            "p_NO": [
+              0.664,
+              0.5847,
+              0.7389
+            ],
+            "p_NOT_DETERMINED": [
+              0.2225,
+              0.1681,
+              0.2808
+            ],
+            "accuracy": [
+              0.7,
+              0.6,
+              0.8
+            ]
+          },
+          "nontemporal_neutral": {
+            "p_YES": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "p_NO": [
+              0.0147,
+              0.0001,
+              0.0395
+            ],
+            "p_NOT_DETERMINED": [
+              0.9853,
+              0.9608,
+              0.9999
+            ],
+            "accuracy": [
+              0.9875,
+              0.9625,
+              1.0
+            ]
+          }
+        }
+      },
+      "contrasts": {
+        "neutral_gap": [
+          0.0753,
+          0.0324,
+          0.1257
+        ],
+        "veridicality_gap": [
+          0.9232,
+          0.8726,
+          0.9667
+        ],
+        "confirm_update": [
+          0.8448,
+          0.7712,
+          0.911
+        ],
+        "cancel_update": [
+          0.0752,
+          0.0325,
+          0.1268
+        ],
+        "gold_update_confirm": [
+          0.8448,
+          0.7701,
+          0.9115
+        ],
+        "gold_update_cancel": [
+          0.836,
+          0.7664,
+          0.8987
+        ],
+        "gold_update_asymmetry": [
+          0.0088,
+          -0.0837,
+          0.1007
+        ],
+        "update_asymmetry": [
+          0.7695,
+          0.6583,
+          0.8689
+        ],
+        "paraphrase_first_effect__after": [
+          -0.0078,
+          -0.0246,
+          0.0022
+        ],
+        "paraphrase_first_effect__before_neutral": [
+          0.0208,
+          -0.0321,
+          0.0727
+        ],
+        "paraphrase_first_effect__before_confirm": [
+          -0.0518,
+          -0.0949,
+          -0.0173
+        ],
+        "paraphrase_first_effect__before_cancel": [
+          0.0117,
+          -0.0001,
+          0.0352
+        ],
+        "paraphrase_first_effect__nontemporal_neutral": [
+          0.0076,
+          -0.0,
+          0.0224
+        ],
+        "timeline_first_effect__after": [
+          0.0013,
+          -0.0,
+          0.0034
+        ],
+        "timeline_first_effect__before_neutral": [
+          0.4191,
+          0.3288,
+          0.5121
+        ],
+        "timeline_first_effect__before_confirm": [
+          -0.0003,
+          -0.0368,
+          0.0387
+        ],
+        "timeline_first_effect__before_cancel": [
+          0.1135,
+          0.0526,
+          0.1832
+        ],
+        "timeline_first_effect__nontemporal_neutral": [
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "timeline_minus_paraphrase__after": [
+          0.0092,
+          -0.0002,
+          0.0257
+        ],
+        "timeline_minus_paraphrase__before_neutral": [
+          0.3983,
+          0.3178,
+          0.4763
+        ],
+        "timeline_minus_paraphrase__before_confirm": [
+          0.0516,
+          0.0138,
+          0.0962
+        ],
+        "timeline_minus_paraphrase__before_cancel": [
+          0.1018,
+          0.0442,
+          0.1673
+        ],
+        "timeline_minus_paraphrase__nontemporal_neutral": [
+          -0.0076,
+          -0.0209,
+          -0.0
+        ],
+        "timeline_specificity_vs_nontemporal": [
+          0.4059,
+          0.3276,
+          0.4865
+        ],
+        "timeline_specificity_vs_after": [
+          0.3891,
+          0.3103,
+          0.4692
+        ]
+      },
+      "likelihood": {
+        "after": [
+          4.7774,
+          4.6577,
+          4.8775
+        ],
+        "before_neutral": [
+          2.4061,
+          2.2004,
+          2.6325
+        ],
+        "before_confirm": [
+          4.7914,
+          4.6311,
+          4.9226
+        ],
+        "before_cancel": [
+          1.1487,
+          1.0494,
+          1.2742
+        ],
+        "nontemporal_neutral": [
+          2.3016,
+          2.1123,
+          2.5047
+        ]
+      },
+      "family": "gemma3"
+    }
+  }
+}

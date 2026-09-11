@@ -21,9 +21,10 @@ CONDS = [
 
 
 def main():
-    path = os.path.join(PROJ, "data", "stimuli_v1.jsonl")
+    version = os.environ.get("L13_STIMULI_VERSION", "stimuli_v1")
+    path = os.path.join(PROJ, "data", f"{version}.jsonl")
     items = [json.loads(l) for l in open(path, encoding="utf-8")]
-    ext = [json.loads(l) for l in open(os.path.join(PROJ, "data", "stimuli_v1_ext.jsonl"), encoding="utf-8")]
+    ext = [json.loads(l) for l in open(os.path.join(PROJ, "data", f"{version}_ext.jsonl"), encoding="utf-8")]
     for it in ext:
         p = it["passage"]
         if not p.endswith(".") or "  " in p:
@@ -32,9 +33,16 @@ def main():
         if it["condition"] == "before_modal" and " could " not in p:
             print(f"EXT missing modal: {it['item_id']}")
             sys.exit(1)
-        if it["condition"] == "about_to" and " was about to " not in p:
+        if it["condition"] == "about_to" and " about to " not in p:
             print(f"EXT missing construction: {it['item_id']}")
             sys.exit(1)
+        if it["condition"] == "purpose" and " there to " not in p:
+            print(f"EXT missing purpose construction: {it['item_id']}")
+            sys.exit(1)
+        for bad in (" The engineers was ", " The students was "):
+            if bad in " " + p:
+                print(f"EXT agreement error: {it['item_id']}")
+                sys.exit(1)
     print(f"extension items: {len(ext)} ok")
     by_base = collections.defaultdict(dict)
     for it in items:

@@ -58,18 +58,79 @@ DECOMP = {
     "b38": ("Mira", "have her son vaccinated"),
     "b39": ("the archivist", "digitise the manuscript"),
     "b40": ("Ravi", "cancel the subscription"),
+    "b41": ("the technician", "calibrate the spectrometer"),
+    "b42": ("Dara", "score the penalty"),
+    "b43": ("the witness", "finish her testimony"),
+    "b44": ("the paramedics", "reach the casualty"),
+    "b45": ("Tobias", "change his currency"),
+    "b46": ("the chef", "plate the dessert"),
+    "b47": ("the intern", "merge the branch"),
+    "b48": ("Lucia", "hand back the marked essays"),
+    "b49": ("the trader", "close the position"),
+    "b50": ("Nadia", "tell her father the news"),
+    "b51": ("the roofers", "seal the skylight"),
+    "b52": ("the photographer", "file the picture"),
+    "b53": ("the vet", "treat the last calf"),
+    "b54": ("the garrison", "surrender the fort"),
+    "b55": ("the quartet", "play the encore"),
+    "b56": ("Sam", "refund the customer"),
+    "b57": ("the driver", "deliver the last parcel"),
+    "b58": ("the rangers", "relocate the nest"),
+    "b59": ("the team", "lift the mosaic"),
+    "b60": ("the translator", "deliver the manuscript"),
+    "b61": ("the mechanic", "replace the valve"),
+    "b62": ("the student", "titrate the sample"),
+    "b63": ("Dr Okafor", "sign the discharge papers"),
+    "b64": ("Farid", "collect his residence card"),
+    "b65": ("the couple", "exchange their vows"),
+    "b66": ("the crew", "haul in the net"),
+    "b67": ("the returning officer", "announce the result"),
+    "b68": ("the understudy", "learn the part"),
+    "b69": ("the dentist", "fit the crown"),
+    "b70": ("the helicopter", "lift the climber off the ridge"),
+    "b71": ("the conservator", "repair the binding"),
+    "b72": ("the founders", "file the patent"),
+    "b73": ("the volunteers", "distribute the last blankets"),
+    "b74": ("the observatory", "record the transit"),
+    "b75": ("Bea", "plant the bulbs"),
+    "b76": ("the admin", "rotate the keys"),
+    "b77": ("Kofi", "qualify for the final"),
+    "b78": ("the port", "clear the container"),
+    "b79": ("the crew", "shoot the final scene"),
+    "b80": ("the clinic", "finish the second round"),
 }
 
-EXT_GOLD = {"about_to": "NOT_DETERMINED", "before_modal": "NO"}
+# purpose infinitive: non-veridical, and marked by nothing at all.
+# "Maya was there to submit the application" does not entail that she did.
+# Shares its matrix clause with `about_to`, so the only difference is whether
+# non-realization is marked (aspectually) or carried by the construction alone.
+EXT_GOLD = {
+    "about_to": "NOT_DETERMINED",
+    "before_modal": "NO",
+    "purpose": "NOT_DETERMINED",
+    "before_post": "NOT_DETERMINED",
+}
 
 
 def cap(s):
     return s[0].upper() + s[1:]
 
 
+PLURAL = {"b22", "b31", "b44", "b51", "b58", "b65", "b72", "b73"}
+
+
 def ext_passages(base):
+    # E12/E15 run on the original 40 bases only; bases without a hand-written
+    # bare-infinitive decomposition contribute no extension conditions.
+    if base["id"] not in DECOMP:
+        return {}
     subj, vp = DECOMP[base["id"]]
+    be = "were" if base["id"] in PLURAL else "was"
     return {
-        "about_to": f"{cap(subj)} was about to {vp} when {base['main']}.",
+        "about_to": f"{cap(subj)} {be} about to {vp} when {base['main']}.",
         "before_modal": f"{cap(base['main'])} before {subj} could {vp}.",
+        "purpose": f"{cap(subj)} {be} there to {vp} when {base['main']}.",
+        # the post-posed order, which dominates natural English and forms a
+        # one-word minimal pair with `before_modal`
+        "before_post": f"{cap(base['main'])} before {base['sub']}.",
     }

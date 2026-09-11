@@ -476,3 +476,63 @@ This is the study's applied claim, measured rather than argued: **an LLM that re
 sentence correctly, extracts a timeline from it, and then reasons over that timeline,
 ends up believing something the sentence never said.** Every event-graph, timeline-
 extraction and agent-state pipeline has exactly this shape.
+
+---
+
+# Addendum 6 — `stimuli_v2` and the word-order control (2026-09-11)
+
+Two data problems were fixed together: the study rested on **40** independent scenarios,
+and on the **minority English word order**. `data/DATA_AUDIT.md` records both.
+
+- **v2**: 80 scenarios, 400 core items, 320 extension items. v1 is the first 40 bases of
+  the same source and stays frozen with its recorded runs.
+- **`before_post`**: the post-posed order, *"The portal closed before Maya submitted the
+  application."* Of 4,615 natural Pile sentences containing " before ", only 255 use the
+  fronted comma-marked form we had been testing.
+
+## The result: the effect is larger in the natural word order
+
+Instantiation on the unresolved event, v2 (80 scenarios):
+
+| model | fronted `before_neutral` | **post-posed `before_post`** | non-temporal control |
+|---|---|---|---|
+| Llama-3.1-8B | 0.988 | **0.975** | 0.138 |
+| Gemma-3-12B | 0.950 | **0.875** | 0.138 |
+| Qwen3-8B | 0.338 | **1.000** | 0.138 |
+
+**Qwen3-8B's apparent compliance was an artifact of the word order.** In the order
+English actually uses, it is at ceiling like the others. The awkward exception in C-A is
+gone, and it was a data defect, not a model property.
+
+## The one-word minimal pair
+
+`before_post` and `before_modal` differ in exactly one word:
+
+| | example | direct P(ND) | instantiation |
+|---|---|---|---|
+| unmarked | *The portal closed before Maya **submitted** the application.* | 0.52 – 0.65 | **0.875 – 1.000** |
+| modally marked | *The portal closed before Maya **could submit** the application.* | 0.28 – 0.53 | **0.013 – 0.250** |
+
+Inserting `could` moves instantiation by roughly 0.8 with everything else held constant.
+This is the study's cleanest single figure and it is now on the natural word order, over
+80 scenarios.
+
+The commitment shift shows the same specificity (Qwen3-8B, `timeline − paraphrase`):
+`before_post` **+0.298** [+0.214, +0.385]; `about_to` −0.000; `before_modal` +0.005;
+`purpose` +0.058.
+
+## v2 replication of the core contrasts (80 scenarios)
+
+| model | `timeline − paraphrase` on `before_neutral` | specificity vs non-temporal | direct P(ND) |
+|---|---|---|---|
+| Gemma-3-12B | +0.398 [+0.318, +0.476] | +0.406 | 0.878 |
+| Qwen3-8B | +0.150 [+0.078, +0.226] | +0.155 | 0.743 |
+| Llama-3.1-8B | +0.114 [+0.094, +0.134] | +0.110 | 0.567 |
+
+Same direction, same magnitude, narrower intervals. Doubling the scenario count did not
+move the estimates, which is the check that matters.
+
+## Controls hold on v2
+
+`about_to` 0.200–0.212, `purpose` 0.150–0.325, `before_modal` 0.013–0.250, non-temporal
+0.138 — against 0.875–1.000 for the unmarked `before`-clause in either word order.

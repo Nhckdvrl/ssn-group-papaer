@@ -1,0 +1,34 @@
+{
+  "tag": "pilot_v1",
+  "stimuli": "data/stimuli_v1.jsonl",
+  "seed": 13,
+  "dtype": "bfloat16",
+  "batch_size": 16,
+  "gen_batch_size": 8,
+  "max_new_tokens": 160,
+  "task_orders": [
+    "unordered_first"
+  ],
+  "models": [
+    {
+      "slug": "qwen3_8b",
+      "model_id": "Qwen/Qwen3-8B",
+      "family": "qwen3"
+    },
+    {
+      "slug": "llama31_8b_instruct",
+      "model_id": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+      "family": "llama3"
+    },
+    {
+      "slug": "gemma3_12b_it",
+      "model_id": "google/gemma-3-12b-it",
+      "family": "gemma3"
+    },
+    {
+      "slug": "qwen3_32b",
+      "model_id": "Qwen/Qwen3-32B",
+      "family": "qwen3"
+    }
+  ]
+}

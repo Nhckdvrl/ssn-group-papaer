@@ -220,3 +220,19 @@ def schema_slot_task(passage, permutation):
 def schema_slot_prefix(target):
     """Assistant prefix that forces the target event into a table row."""
     return f"{target.rstrip('.')} :: "
+
+
+# --- E16: is the unresolved event instantiated because it is being used as a
+# temporal COORDINATE, or merely because it is mentioned?
+#
+# Same passage, same "list the events" demand, with and without the requirement
+# to order them. If instantiation is driven by having to locate the main event
+# relative to the subordinate one, the unordered list should instantiate less.
+
+UNORDERED_TASK = (
+    "Passage:\n{passage}\n\n"
+    "List the events described in this passage, one per line, in any order. "
+    "Do not add commentary."
+)
+
+TASK_ORDERS["unordered_first"] = UNORDERED_TASK

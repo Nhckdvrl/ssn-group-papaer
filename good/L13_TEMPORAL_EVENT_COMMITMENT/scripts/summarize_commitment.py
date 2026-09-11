@@ -14,13 +14,14 @@ EXCLUDE = set()
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.dirname(HERE)
 
-CONDS = [
+BASE_CONDS = [
     "after",
     "before_neutral",
     "before_confirm",
     "before_cancel",
     "nontemporal_neutral",
 ]
+CONDS = list(BASE_CONDS)
 GOLD_BY_COND = {
     "after": "YES",
     "before_neutral": "NOT_DETERMINED",
@@ -29,6 +30,8 @@ GOLD_BY_COND = {
     "nontemporal_neutral": "NOT_DETERMINED",
     "about_to": "NOT_DETERMINED",
     "before_modal": "NO",
+    "purpose": "NOT_DETERMINED",
+    "before_post": "NOT_DETERMINED",
 }
 LABELS = ["YES", "NO", "NOT_DETERMINED"]
 N_BOOT = 10000
@@ -79,7 +82,8 @@ def summarise_model(model_dir, rng):
     bases = sorted({r["base_id"] for r in rows})
     global CONDS
     present = {r["condition"] for r in rows}
-    CONDS = [c for c in list(CONDS) + sorted(present - set(CONDS)) if c in present]
+    CONDS = [c for c in list(BASE_CONDS) + sorted(present - set(BASE_CONDS)) if c in present]
+    res_conds = list(CONDS)
 
     res = {"orders": orders, "n_bases": len(bases), "conditions": {}, "contrasts": {}}
 
@@ -220,6 +224,7 @@ def summarise_model(model_dir, rng):
 
     for k, v in res["contrasts"].items():
         res["contrasts"][k] = [round(x, 4) for x in v]
+    res["cond_list"] = res_conds
     return res
 
 
@@ -245,6 +250,8 @@ def main():
         d = os.path.join(tag_dir, spec["slug"])
         if not os.path.exists(os.path.join(d, "strict.jsonl")):
             continue
+        if os.path.getsize(os.path.join(d, "strict.jsonl")) == 0:
+            continue
         out["models"][spec["slug"]] = summarise_model(d, rng)
         out["models"][spec["slug"]]["family"] = spec["family"]
 
@@ -255,7 +262,7 @@ def main():
     for slug, r in out["models"].items():
         lines += [f"## {slug} ({r['family']}), {r['n_bases']} bases", ""]
         lines += ["| condition | P(YES) | P(NO) | P(ND) | acc |", "|---|---|---|---|---|"]
-        for cond in CONDS:
+        for cond in r.get("cond_list", CONDS):
             c = r["conditions"]["fact_first"][cond]
             lines.append(
                 f"| {cond} | {c['p_YES'][0]:.3f} | {c['p_NO'][0]:.3f} | "
