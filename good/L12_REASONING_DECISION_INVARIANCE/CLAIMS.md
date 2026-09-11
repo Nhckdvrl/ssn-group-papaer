@@ -1,6 +1,11 @@
 # L12 Claim Ledger
 
-**Updated:** 2026-09-10
+**Updated:** 2026-09-11
+
+**Novelty status:** The evidence statuses below are retained, but the paper
+identity is **HOLD-for-novelty**. The E18-E20 mutation and the proposed
+invariance-causality-alignment replacement do not inherit the original selection
+approval. See `CLAIM_NOVELTY_DELTA.md`.
 
 ## Current RQ
 
@@ -76,11 +81,10 @@
 
 ## Current verdict
 
-**GO.** The current paper has one cumulative answer rather than three adjacent
-interpretability results: reasoning progressively builds a causal decision state,
-reallocates control toward that trajectory/state, and thereby changes what the
-model is sensitive to. E20-E21 prospectively show that the change is selective:
-form sensitivity falls while evidence sensitivity and evidence-bearing trajectory
-control rise. E22 shows the same qualitative behavior/control reallocation in an
-external Llama ecosystem. E18L tests the finite-sample consequence without
-becoming a new headline claim.
+**HOLD / RECONSTRUCT FOR NOVELTY.** The three claims remain supported as empirical
+statements, but strong evidence does not establish paper ownership. Fresh direct
+work owns the invariance-versus-causality distinction, cross-form causal
+subspaces, semantic-bottleneck alignment, generic reasoning-state reorganization,
+and state transfer. The surviving combination is currently too narrow for the
+Main-level width bar. No broad experiment expansion is authorized until a
+materially new answer passes `CLAIM_NOVELTY_DELTA.md`.

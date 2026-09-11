@@ -1,7 +1,11 @@
 # L12 Full Study Report
 
 **Date:** 2026-09-10
-**Verdict:** **GO - MAIN-PAPER EVIDENCE PROGRAM COMPLETE**
+**Historical evidence verdict:** **GO - EVIDENCE PROGRAM COMPLETE**
+
+> **Current paper verdict (2026-09-11): HOLD / RECONSTRUCT FOR NOVELTY.** This
+> report remains the authoritative E01-E22 evidence summary, but its paper-level
+> GO predates the mandatory claim-mutation reset. See `CLAIM_NOVELTY_DELTA.md`.
 
 ## A. Current RQ
 

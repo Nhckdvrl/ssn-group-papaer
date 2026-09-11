@@ -2,6 +2,11 @@
 
 **Search date:** 2026-09-10
 
+> **Superseded verdict notice (2026-09-11):** This file records the ownership
+> audit used by the E20-E22 selective-sensitivity story. Its concluding GO verdict
+> does not survive the mandatory claim-mutation reset. The current audit and
+> `HOLD / RECONSTRUCT` decision are in `CLAIM_NOVELTY_DELTA.md`.
+
 ## Direct owners
 
 ### Mind the (DH) Gap! - ACL 2026 Outstanding

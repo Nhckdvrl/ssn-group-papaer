@@ -2,9 +2,14 @@
 
 ## Trajectory Takeover
 
-**Status:** **GO / MAIN-PAPER EVIDENCE PROGRAM COMPLETE**
+**Status:** **HOLD / CLAIM-NOVELTY RECONSTRUCTION**
 **Target:** NAACL Main, continuously calibrated to ACL/EMNLP Main
-**Last audited:** 2026-09-10
+**Last audited:** 2026-09-11
+
+> **Novelty reset:** E01-E22 remain valid evidence, but the selective-sensitivity
+> identity and the proposed invariance-causality-alignment replacement do not
+> currently pass the mandatory Main-level width test. See
+> `CLAIM_NOVELTY_DELTA.md`. Do not continue broad experiments under either claim.
 
 > **Research question:** Why do reasoning models become invariant to some changes in presentation while remaining sharply sensitive to others, and does reasoning reorganize decision control from prompt form toward an evidence-bearing trajectory and its pre-answer state?
 
@@ -106,6 +111,9 @@ is their unresolved intersection:
 
 See `RELATED_WORK.md` for the live compression audit.
 
+The 2026-09-11 claim-mutation audit supersedes the earlier GO language in that
+document and in the historical study report.
+
 ## Final study boundary
 
 The independent-decision, natural description/history, and orthogonal form-by-
@@ -143,6 +151,7 @@ The primary unit is always the base decision. Repeated traces and patch layers d
 ## Reproduction
 
 - Shared research story and claim map: `RESEARCH_STORY_AND_CLAIM_MAP.md`
+- Current claim-mutation novelty audit: `CLAIM_NOVELTY_DELTA.md`
 - Experiment registry: `EXPERIMENTS.md`
 - Claim ledger: `CLAIMS.md`
 - Identification: `DATA_AND_GOLD.md`

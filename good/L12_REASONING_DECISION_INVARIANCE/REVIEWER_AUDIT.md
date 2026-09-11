@@ -3,6 +3,10 @@
 **Date:** 2026-09-10  
 **Reference bar:** ACL/EMNLP/NAACL Main, with Outstanding/strong mechanistic papers as structural comparators
 
+> **Superseded paper verdict (2026-09-11):** This audit predates the fresh
+> invariance-causality ownership check. Its evidence criticisms remain useful,
+> but its GO decision is superseded by `CLAIM_NOVELTY_DELTA.md`.
+
 ## Bottom Line
 
 The paper now has a Main-scale narrative and evidence chain. Its strongest form is

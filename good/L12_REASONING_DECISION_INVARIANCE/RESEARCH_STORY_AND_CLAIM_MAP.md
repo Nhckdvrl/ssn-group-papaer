@@ -4,6 +4,12 @@
 
 **更新：** 2026-09-10
 
+> **2026-09-11 novelty reset：** 本文档保存 E01-E22 的研究历史和证据地图，
+> 但末尾的 GO 是当时的 evidence verdict，不再是当前 paper-novelty verdict。
+> Selective-sensitivity identity 以及后来提出的 invariance-causality alignment
+> 都尚未通过新的 Main-level width test。当前状态为 **HOLD / RECONSTRUCT**，
+> 详见 `CLAIM_NOVELTY_DELTA.md`。
+
 ## 一页版
 
 ### 我们现在到底在问什么
@@ -665,7 +671,7 @@ established phenomenon
 
 ## 12. 当前结论
 
-**Verdict：GO。**
+**历史 evidence verdict：GO；当前 paper-novelty verdict：HOLD / RECONSTRUCT。**
 
 现在 L12 已经不再只是“OLMo Think 的 CoT 能改答案”，也不是“reasoning 模型更 invariant”的 parent replication。它有一条累计而非并列的解释链：
 

@@ -1,6 +1,9 @@
 # L12 Research Plan
 
-**Status:** evidence program complete; manuscript synthesis next
+**Status:** evidence program complete; paper identity HOLD for novelty
+
+> E01-E22 are retained. Broad experiments and manuscript finalization are paused
+> under the 2026-09-11 claim-mutation reset; see `CLAIM_NOVELTY_DELTA.md`.
 
 ## Core RQ
 

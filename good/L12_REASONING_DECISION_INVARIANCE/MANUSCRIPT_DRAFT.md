@@ -3,8 +3,13 @@
 ## Causal Decision Control Shifts from Presentation Form to Evidence
 
 **Target:** NAACL Main; calibrated to ACL/EMNLP Main  
-**Draft status:** complete scientific narrative, pre-LaTeX  
+**Draft status:** historical E20-E22 narrative; HOLD for claim novelty
+
 **Date:** 2026-09-10
+
+> This draft is not submission-ready. Its selective-sensitivity paper identity
+> predates the 2026-09-11 novelty reset and is retained as evidence/narrative
+> inheritance only. See `CLAIM_NOVELTY_DELTA.md`.
 
 ## Abstract
 
