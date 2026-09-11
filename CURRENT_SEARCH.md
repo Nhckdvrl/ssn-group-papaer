@@ -2,9 +2,9 @@
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Active serious candidates:** **L15 only**  
-**Current phase:** **BROAD SEARCH OPEN + L15 ONE BOUNDED PILOT AUTHORIZED**  
-**Killed ledger:** through **K182** — **Next kill ID: K183**
+**Active serious candidates:** **NONE**  
+**Current phase:** **BROAD SEARCH OPEN — no candidate carries experiment authorization**  
+**Killed ledger:** through **K183** — **Next kill ID: K184**
 
 ---
 
@@ -32,67 +32,31 @@ The decisive workflow lesson remains:
 
 ---
 
-# Current serious candidate — L15
+# Most recent kill — L15 (K183)
 
-## No Result Is Not No Evidence
+## No Result Is Not No Evidence — ARCHIVED / NO-GO, 2026-09-11
 
-Canonical package: `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/`
+Canonical package: `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/` (no authorization).
 
-### Plain example
-
-> Camera A detects 99% of people who enter an airport. Camera B detects only 5%. Both return: **"Alice was not detected."**
-
-The same null observation should be strong evidence against Alice's presence under A and almost uninformative under B.
-
-### Locked RQ
+The locked RQ was:
 
 > **For the same observed null result, does an LLM scale its world-state update with counterfactual detectability, and can it correctly represent `P(null|H)` while failing to use that quantity in `P(H|null)`?**
 
-### Expanded ownership audit
+Its own bounded E01/E02 pilot answered no. With normal reasoning allowed, both model
+families track the detectability-conditioned posterior essentially exactly (Spearman
+.989 / .945, compression ratio .985 / .929, KNI rate .003 / .014, obs-known rate 1.000).
+The direct-answer failure is not null-specific: the `f=0` positive counterpart and the
+bare arithmetic control fail by the same margin, while prior-only is exact.
 
-**REGISTERED / PASS FOR ONE BOUNDED KILL-ORIENTED PILOT. Not mainline-approved.**
+E03 was never run — it was conditional on an integration gap that does not exist.
 
-The audit explicitly includes:
+**The forbidden fallback is recorded explicitly:** "LLMs need explicit reasoning to use
+observation models" is a different paper identity, was never selected, and compresses
+into generic chain-of-thought / Bayesian-elicitation / reasoning-and-calibration work.
+It survives as a historical observation, not as a route.
 
-- Hsu et al. 2017 classical absence-of-evidence work;
-- NAACL 2025 **From Evidence to Belief**;
-- ACL 2025 **Enough Coin Flips Can Make LLMs Act Bayesian**;
-- JAMA 2023 LLM post-test probability after negative diagnostic results;
-- Deng & Yan 2026 selection neglect / WYSIATI;
-- 2026 Belief-State Engine, Belief-Based World Models, Belief Memory, T3/AREW;
-- current RAG evidence-sufficiency / over-searching work.
-
-These prior works own the broad neighborhood. L15 is authorized only for the exact five-part object:
-
-1. identical null observation;
-2. isolated detectability manipulation;
-3. matched explicit `P(null|H)` probe;
-4. separate `P(H|null)` probe;
-5. competence–integration dissociation as the central target.
-
-If development drops this identity and becomes generic Bayes, evidence reliability, medical diagnostic reasoning, selection neglect, RAG abstention, partial observability, or belief-state tracking, authorization expires immediately.
-
-### Authorized pilot only
-
-- **E01:** same-null detectability curve;
-- **E02:** observation-likelihood competence versus posterior integration;
-- **E03:** only if E02 reveals integration failure, make the observation likelihood explicit before the posterior update.
-
-No agent/RAG/tool extension, hidden-state scan, model zoo, probabilistic-memory method, or external Bayesian filter is authorized before re-selection.
-
-### Preferred signal
-
-> **The model correctly knows how likely the observation process was to miss the target, yet fails to use that knowledge when deciding whether the target exists.**
-
-### Kill rule
-
-Archive if capable models already track the detectability-conditioned posterior; residual errors reduce to generic arithmetic/base-rate failure; observation-likelihood and posterior probes fail together; or the surviving story collapses into a neighboring already-owned claim.
-
-See:
-- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/README.md`
-- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/RELATED_WORK_AND_NOVELTY.md`
-- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/DATA_AND_GOLD.md`
-- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_CARD.md`
+Full record: `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_REPORT.md` and
+`failed/KILLED_LEDGER.md` K183.
 
 ---
 

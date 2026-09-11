@@ -9,8 +9,8 @@
 **Initial migration date:** 2026-09-06  
 **Legacy provenance:** consolidated from the authoritative kill/search ledgers in `Nhckdvrl/try` (especially V9, V12, V13, V15, V17).
 
-**Authoritative kill state:** through **K182**  
-**Next kill ID:** **K183**
+**Authoritative kill state:** through **K183**  
+**Next kill ID:** **K184**
 
 The entries below preserve the **scientific reason for rejection**, not every historical implementation detail. If a topic is ever reconsidered, the literature must be freshly re-checked.
 
@@ -3289,3 +3289,65 @@ before any compute is spent. Reinterpreting E01–E21 again does not qualify.
 Artifacts, data, adjudications and code remain under `good/L13_TEMPORAL_EVENT_COMMITMENT/`
 for reproducibility. The 176-sentence adjudicated natural set, the 900-item controlled
 set with its audits, and the validated instantiation rule are reusable.
+
+---
+
+## K183 — L15 Null Evidence as an Observation-Model Integration Failure
+
+**Date:** 2026-09-11
+**RQ:** For the same observed null result, does an LLM scale its world-state update with
+counterfactual detectability, and can it correctly represent `P(null|H)` while failing to
+use that quantity in `P(H|null)`?
+**Status:** KILL
+
+**Primary failure:** `DECISIVENESS_FAILURE`
+**Secondary:** `NO_NEW_AXIS`, `CROWDED_PARENT`
+
+### Why it is a kill
+
+The route existed only for one scientific object: a **competence–integration
+dissociation** on identical null evidence. Its own preregistered pilot showed the
+dissociation does not exist at this scale. With normal reasoning allowed, both families
+compute the observation-conditioned posterior essentially exactly:
+
+| primary (`cot`) | Qwen3-32B | Mistral-Small-24B |
+|---|---:|---:|
+| P2_NULL MAE vs analytic gold | 0.0035 | 0.0074 |
+| Spearman vs gold across sensitivity | 0.989 | 0.945 |
+| compression ratio (observed range ÷ gold range) | 0.985 | 0.929 |
+| KNI rate `P(Err_post ≥ .10 | Err_obs ≤ .05)` | 0.003 | 0.014 |
+
+2,982 prompt cells per model; 180 items over 12 scenarios × 3 priors × 5 sensitivities,
+`f=0`, identical visible outcome across the grid; CIs bootstrap over scenarios.
+
+### Why the direct-answer failure does not rescue it
+
+Without room to compute, both models are badly wrong (P2_NULL MAE .21 / .26; KNI .49 /
+.68) — but so is the **`f=0` positive counterpart** (MAE .15 / .19 against a gold of 1.0)
+and so is the **bare arithmetic control** (framed − arithmetic = −0.03 / +0.05). Prior-only
+is exact. The direct-mode deficit is a general failure to run the generative computation,
+not a null-evidence-specific integration failure.
+
+### The forbidden fallback
+
+> "LLMs need explicit reasoning to use observation models."
+
+This is a different paper identity that never passed selection, and it compresses
+immediately into generic chain-of-thought, Bayesian-elicitation, and
+reasoning-improves-calibration literature. It is recorded here as a historical
+observation only. The same applies to any model-heterogeneity story: both families pass
+every threshold, so Mistral's marginally weaker numbers are a capability difference, not
+a dissociation.
+
+### Reopen only if
+
+A larger scientific object is identified **independently and first** — not by
+reinterpreting these runs — for which this evidence is a legacy rather than a source, and
+which survives its own novelty delta before compute is spent. The pre-existing ownership
+fence still stands (Hsu et al. 2017; Kim et al. NAACL 2025; Gupta et al. ACL 2025; Rodman
+et al. JAMA 2023; Deng & Yan 2026 selection neglect; 2026 BSE / BB-WM / BeliefMem;
+2026 retrieval evidence-sufficiency work).
+
+Stimuli generator, analytic gold, prompt builder, scorers, raw generations and summaries
+remain under `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/` for reproducibility. The
+180-item detectability grid with programmatic gold is reusable.

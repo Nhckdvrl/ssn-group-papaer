@@ -2,14 +2,16 @@
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Active serious candidates:** **1**  
+**Active serious candidates:** **0**  
 **Search state:** **BROAD SEARCH OPEN; NO SURVIVOR QUOTA**
 
-## Active serious candidate
+## Most recent kill
+
+**No candidate in this directory carries experiment authorization.**
 
 - **L15 — No Result Is Not No Evidence**  
   Null evidence as an observation-model integration problem.  
-  **Status:** **REGISTERED / PILOT-AUTHORIZED — ONE BOUNDED KILL-ORIENTED PILOT ONLY.**  
+  **Status:** **ARCHIVED / NO-GO — KILL K183 (2026-09-11), killed by its own bounded pilot.**  
   Canonical package: [L15_NULL_EVIDENCE_OBSERVATION_MODEL/](L15_NULL_EVIDENCE_OBSERVATION_MODEL/)
 
 Locked question:
@@ -18,13 +20,20 @@ Locked question:
 
 The expanded ownership audit explicitly covers classical absence-of-evidence work, NAACL 2025 evidence→belief, ACL 2025 Bayesian updating, JAMA negative-test posterior reasoning, 2026 selection neglect, current RAG evidence-sufficiency work, and 2026 belief-state / partial-observability methods.
 
-The route survives only for the exact locked computation. Generic Bayesian reasoning, evidence reliability, diagnostic Bayes, selection neglect, RAG abstention, partial observability, belief-state tracking, probabilistic memory, and external filtering are not available as rescue narratives.
+The pilot answered this in the negative: with normal reasoning allowed both model families
+compute the detectability-conditioned posterior essentially exactly (KNI rate .003 / .014),
+and the direct-answer failure is general rather than null-specific. See
+[PILOT_REPORT.md](L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_REPORT.md).
+
+The route survived only for the exact locked computation. Generic Bayesian reasoning, evidence reliability, diagnostic Bayes, selection neglect, RAG abstention, partial observability, belief-state tracking, probabilistic memory, and external filtering are not available as rescue narratives.
 
 See:
 - [README](L15_NULL_EVIDENCE_OBSERVATION_MODEL/README.md)
 - [ownership audit](L15_NULL_EVIDENCE_OBSERVATION_MODEL/RELATED_WORK_AND_NOVELTY.md)
 - [data/gold contract](L15_NULL_EVIDENCE_OBSERVATION_MODEL/DATA_AND_GOLD.md)
 - [bounded pilot card](L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_CARD.md)
+- [pilot report and kill decision](L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_REPORT.md)
+- [experiment ledger](L15_NULL_EVIDENCE_OBSERVATION_MODEL/EXPERIMENTS.md)
 
 ## Archived in the 2026-09-11 reset
 

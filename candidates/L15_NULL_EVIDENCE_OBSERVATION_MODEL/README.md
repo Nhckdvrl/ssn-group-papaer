@@ -2,13 +2,23 @@
 
 ## Do LLMs condition null evidence on what they *would have observed*?
 
-**Status:** **REGISTERED / PILOT-AUTHORIZED — ONE BOUNDED KILL-ORIENTED PILOT ONLY (2026-09-11)**  
+**Status:** **ARCHIVED / NO-GO — KILL K183 (2026-09-11)**  
+**Killed by:** its own bounded pilot. See [PILOT_REPORT.md](PILOT_REPORT.md).  
 **Paper mainline:** NOT APPROVED  
 **Target:** ACL / EMNLP / NAACL Main
 
 > **Plain example**  
 > Camera A detects 99% of people who enter an airport. Camera B detects only 5%. Both return: **"Alice was not detected."**  
 > The same null observation should be strong evidence of absence under A and almost no evidence under B.
+
+> **Archive note.** The bounded E01/E02 pilot answered the locked question in the
+> negative: with normal reasoning allowed, both model families scale the same null
+> observation with stated detectability essentially exactly (Spearman .989 / .945,
+> KNI rate .003 / .014). There is no competence–integration dissociation to sell, and the
+> direct-answer failure is not null-specific — the `f=0` positive counterpart and the bare
+> arithmetic control fail by the same margin. **No experiment is authorized from this
+> package.** The surviving observation ("models need room to compute") is a historical
+> record, not a fallback identity.
 
 ## Locked research question
 
