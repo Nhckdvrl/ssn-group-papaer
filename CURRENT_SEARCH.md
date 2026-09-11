@@ -2,8 +2,8 @@
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Active candidate portfolio:** **EMPTY**  
-**Current phase:** **BROAD SEARCH REOPENED**
+**Active serious candidates:** **L14 only**  
+**Current phase:** **BROAD SEARCH OPEN + L14 PRE-PILOT AUDIT**
 
 ---
 
@@ -33,6 +33,43 @@ The decisive lesson from L12/L13 and the fresh portfolio audit is:
 A materially changed RQ, estimand, explanation, central claim, or reviewer takeaway is a new candidate. Existing evidence may be inherited; old authorization and old novelty approval may not.
 
 Good data, strong effects, clean interventions, and a natural question are individually insufficient if the strongest successful result is still reviewer-compressible to existing work or cannot develop into an independently valuable Main-level inference.
+
+---
+
+# Current serious candidate — L14
+
+## Negation of the World, or Negation of the Words?
+
+Canonical package: `candidates/L14_METALINGUISTIC_NEGATION/`
+
+Plain example:
+
+> **The movie wasn't good — it was excellent.**
+
+The speaker does not deny that the movie reached the weaker state *good*; the speaker rejects *good* as an inadequate description and replaces it with the stronger *excellent*.
+
+Contrast:
+
+> **The movie wasn't good — it was terrible.**
+
+Here `not` genuinely negates the world-state proposition.
+
+### RQ
+
+> **Does an LLM identify the semantic level targeted by `not` — world proposition versus linguistic representation — before applying polarity, or does it default to propositional negation and repair only when context forces reinterpretation?**
+
+### Why it is currently serious
+
+- classical, immediately understandable phenomenon;
+- simple controlled data plus existing human psycholinguistic materials;
+- current LLM negation work largely treats polarity sensitivity as monotonically desirable;
+- exact searches did not find a modern LLM paper owning metalinguistic-negation target selection;
+- prospective development is fixed in advance: **target selection → default-repair vs context-sensitive processing → consequence for negation-robustness interventions**;
+- a particularly strong consequence is a trade-off where methods that reduce ordinary negation blindness worsen metalinguistic over-negation.
+
+### Current status
+
+**SERIOUS CANDIDATE / PRE-PILOT.** Not mainline-approved and not authorized for broad experiments. First verify the controlled English stimulus contract and run one bounded kill-oriented pilot only if the final data/novelty audit remains clean.
 
 ---
 
