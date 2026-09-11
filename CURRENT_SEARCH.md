@@ -31,16 +31,18 @@ RQ:
 
 E01 uses matched demonstration transcripts, same-speaker vs other-speaker audio, text-only controls, and high/low target-relevant phonetic coverage. If the established ICL benefit itself disappears under the matched design, archive rather than rescue.
 
-### L19 — What Does an LLM Learn From a Rewarded Trajectory?
+### L20 — What Does an LLM Learn From a Rewarded Trajectory?
 
-**Status:** **SERIOUS / PRE-PILOT — NO COMPUTE AUTHORIZED**  
-Package: `candidates/L19_ICRL_UPDATE_UNIT/`
+**Status:** **SERIOUS / PRE-PILOT — HIGH COLLISION RISK — NO COMPUTE AUTHORIZED**  
+Package: `candidates/L20_ICRL_UPDATE_UNIT/`
 
 RQ:
 
 > When a fixed pretrained LLM sees a multi-step attempt followed by scalar reward, does its next policy preferentially update the actions that causally earned the outcome, or mainly treat the whole rewarded trajectory as a good/bad demonstration?
 
-Current novelty fence: **Not K021 unless the project collapses back into retrospective step attribution.** L19's estimand is future fixed-weight policy change after reward exposure. The remaining pre-pilot blocker is an exact-operation audit against 2026 credit-assignment / ICRL work plus a data gate showing that trajectory-outcome × local-action-quality conflicts can be obtained naturally with executable replay gold.
+Current novelty fence: **Not K021 unless the project collapses back into retrospective step attribution.** L20's estimand is future fixed-weight policy change after reward exposure. The remaining pre-pilot blocker is an exact-operation audit against 2026 credit-assignment / ICRL work plus a data gate showing that trajectory-outcome × local-action-quality conflicts can be obtained naturally with executable replay gold.
+
+Priority note: RL / agent / credit assignment is a very crowded 2026 neighborhood. L20 is a high-risk backup lead, not a reason to narrow future search toward RL. Prefer cleaner NLP / language / measurement / mechanism questions when available.
 
 ---
 
