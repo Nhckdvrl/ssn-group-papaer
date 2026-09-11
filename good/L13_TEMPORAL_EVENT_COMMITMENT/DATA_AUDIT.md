@@ -159,3 +159,45 @@ to one alternative explanation it removes. No LLM wrote, selected or labelled an
 Gold follows from the construction and was verified 200/200 against a blinded pass on
 v1; the v2 expansion uses the identical contract, and its authored prose was audited
 item by item (one defect, repaired pre-run).
+
+---
+
+## 7. Second expansion and reconciliation — `stimuli_v2` final (2026-09-11)
+
+The core set had drifted to 100 bases while the extension conditions still covered only
+80, and one model run had been interrupted, so results and data were no longer in
+correspondence. Both were rebuilt and every model re-run on the final set.
+
+**Final `stimuli_v2`: 100 scenarios × 9 conditions = 900 items.**
+
+| condition | n | gold | role |
+|---|---|---|---|
+| `before_neutral` (fronted) | 100 | NOT_DETERMINED | v1-compatible form |
+| **`before_post`** (post-posed) | 100 | NOT_DETERMINED | **the ordinary English order; primary estimand** |
+| `after` | 100 | YES | veridicality ceiling, one-word minimal pair |
+| `before_confirm` / `before_cancel` | 200 | YES / NO | resolution anchors |
+| `nontemporal_neutral` | 100 | NOT_DETERMINED | middle-label availability |
+| `about_to` | 100 | NOT_DETERMINED | aspectually marked control |
+| `purpose` | 100 | NOT_DETERMINED | unmarked non-`before` control |
+| `before_modal` | 100 | NO | modally marked control, one word from `before_post` |
+
+### Defects found in this pass and what was done
+
+1. **Extension conditions covered only 80 of 100 bases.** Decompositions written for
+   b81–b100; all 100 now carry all nine conditions.
+2. **Subject–verb agreement.** `b98` ("the volunteers") produced *"The volunteers was
+   about to …"*. Fixed. A structural check for this class is now in
+   `scripts/validate_stimuli.py`, and a regex sweep over the rebuilt file returns clean.
+3. **`purpose` frame naturalness.** *"X was there to VP when Y"* presupposes a located
+   action. For 15 of 100 bases the subject is an institution performing a non-located
+   act (*"The company was there to pay the fine"*), and the item reads marginally. These
+   are **flagged, not deleted**: items carry `purpose_natural`, and `purpose` is reported
+   both on all 100 and on the natural 85. The other 85 read naturally, and the
+   domain-widened bases b41–b80 — mostly physically situated work — are natural
+   throughout.
+
+### Standing defect
+
+`before_neutral` uses the minority fronted order. It is retained only for continuity
+with the v1 runs; `before_post` is the primary estimand and is the form the natural
+corpus overwhelmingly uses.

@@ -39,7 +39,7 @@ def main():
         if it["condition"] == "purpose" and " there to " not in p:
             print(f"EXT missing purpose construction: {it['item_id']}")
             sys.exit(1)
-        for bad in (" The engineers was ", " The students was "):
+        for bad in (" The engineers was ", " The students was ", " The volunteers was "):
             if bad in " " + p:
                 print(f"EXT agreement error: {it['item_id']}")
                 sys.exit(1)

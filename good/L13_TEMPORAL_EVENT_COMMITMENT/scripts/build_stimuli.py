@@ -12,7 +12,7 @@ PROJ = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(PROJ, "src"))
 
 from stimuli_bases import BASES as ALL_BASES  # noqa: E402
-from stimuli_ext import EXT_GOLD, ext_passages  # noqa: E402
+from stimuli_ext import PURPOSE_MARGINAL, EXT_GOLD, ext_passages  # noqa: E402
 
 VERSION = "stimuli_v2"  # v1 (40 bases) is frozen; the builder now emits v2 (100 bases)
 
@@ -89,6 +89,7 @@ def main():
                     if cond == "nontemporal_neutral"
                     else base["main"][0].upper() + base["main"][1:] + ".",
                     "pragmatic_bias": base["pragmatic_bias"],
+                    "purpose_natural": base["id"] not in PURPOSE_MARGINAL,
                     "gold_strict": GOLD[cond],
                 }
                 if cond in CORE_CONDS:

@@ -98,6 +98,26 @@ DECOMP = {
     "b78": ("the port", "clear the container"),
     "b79": ("the crew", "shoot the final scene"),
     "b80": ("the clinic", "finish the second round"),
+    "b81": ("Renata", "pay the contractors"),
+    "b82": ("the team", "clear the minefield"),
+    "b83": ("Pablo", "enrol his daughter at the school"),
+    "b84": ("the airline", "compensate the passengers"),
+    "b85": ("Zara", "replant the orchard"),
+    "b86": ("the historian", "consult the archive"),
+    "b87": ("Otto", "repair the church clock"),
+    "b88": ("the clinic", "vaccinate the herd"),
+    "b89": ("Blessing", "wire the money home"),
+    "b90": ("the firm", "settle the claim"),
+    "b91": ("Rafael", "finish the mural"),
+    "b92": ("the port", "release the shipment"),
+    "b93": ("Elin", "ski the descent"),
+    "b94": ("the press", "print the correction"),
+    "b95": ("Ivo", "return the borrowed violin"),
+    "b96": ("the ministry", "publish the figures"),
+    "b97": ("Siobhan", "qualify as a pilot"),
+    "b98": ("the volunteers", "clear the beach"),
+    "b99": ("Konrad", "testify at the hearing"),
+    "b100": ("the developer", "release the patch"),
 }
 
 # purpose infinitive: non-veridical, and marked by nothing at all.
@@ -116,7 +136,16 @@ def cap(s):
     return s[0].upper() + s[1:]
 
 
-PLURAL = {"b22", "b31", "b44", "b51", "b58", "b65", "b72", "b73"}
+# Naturalness audit of the `purpose` frame ("X was there to VP when Y").
+# The frame presupposes a located action; for these bases the subject is an
+# institution performing a non-located act, and the item reads marginally.
+# They are kept but flagged so `purpose` can be reported on the natural subset.
+PURPOSE_MARGINAL = {
+    "b12", "b26", "b28", "b33", "b36", "b40", "b47", "b78", "b84",
+    "b90", "b92", "b94", "b96", "b97", "b100",
+}
+
+PLURAL = {"b22", "b31", "b44", "b51", "b58", "b65", "b72", "b73", "b98"}
 
 
 def ext_passages(base):
