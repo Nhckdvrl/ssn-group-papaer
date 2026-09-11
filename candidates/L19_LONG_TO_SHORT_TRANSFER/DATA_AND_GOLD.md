@@ -82,3 +82,25 @@ recorded here and in `data/pairs_manifest.json`; they are not adjustable after r
   part of NQ. Again identical in both arms.
 - Requiring a single short-answer span removes multi-span and null-answer questions.
   This makes the supervised target unambiguous and identical across arms.
+
+## Realized pair set (frozen, `data/pairs_manifest.json`)
+
+Built 2026-09-12 from shards 0-157 of the train split.
+
+```
+pairs                10,000   (10,000 unique NQ ids, 9,132 unique Wikipedia pages)
+raw examples scanned 169,218  -> yield 5.91%
+sha256               b0e71fdffa56e52b402a79ebb651c950188dfe653da4ca7031cf3c86a67c7515
+```
+
+| | median | mean | p10 | p90 | min | max |
+|---|---|---|---|---|---|---|
+| `SHORT-SUPPORT` context | 133 | 144 | 65 | 239 | 7 | 511 |
+| `LONG-FULL` context | 13,084 | 13,873 | 8,724 | 20,385 | 8,000 | 23,985 |
+
+**Median length ratio 98.4x.** Total context tokens across the block: 138.7M in the long
+arm against 1.4M in the short arm. Supervised targets are identical in both — median
+2 words.
+
+The held-out context-reliance probe is built from shards >= 160, disjoint from every
+training pair.

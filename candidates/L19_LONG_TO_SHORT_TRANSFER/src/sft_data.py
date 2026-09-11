@@ -12,7 +12,7 @@ across all conditions, plus a *block B* that is the only thing the condition cha
 For the SHORT-SUPPORT / LONG-FULL pair the block-B examples differ in exactly one
 substring and produce identical completion tokens, hence identical loss-bearing tokens.
 """
-import random
+import random, re
 
 NQ_USER = "{context}\n\nQuestion: {question}"
 UC_MAX_TOK = 4096
@@ -54,21 +54,23 @@ def uc_example(tokz, conv):
 
 
 def chatqa2_example(tokz, rec, cap=32768):
-    """ChatQA2 long_sft records: a document plus a QA turn list."""
-    doc = rec.get("document") or rec.get("context") or ""
-    msgs = []
-    turns = rec.get("messages") or rec.get("conversations") or []
-    for i, m in enumerate(turns):
-        role = m.get("role") or ("user" if m.get("from") in ("human", "user") else "assistant")
-        content = m.get("content") or m.get("value") or ""
-        if i == 0 and doc:
-            content = f"{doc}\n\n{content}"
-        msgs.append({"role": role, "content": content})
-    if not msgs:
+    """ChatQA2 long_sft records.
+
+    `question` holds the whole prompt already wrapped as
+    "User: <document>\n\nQ: <question>\n\nAssistant:" (median 9,350 Llama-3 tokens,
+    matching the 9,548 reported in the parent's Appendix A). We strip that wrapper and
+    re-render it through the same chat template every other condition uses, so the only
+    thing that differs from `PC-UC-UC` is the data itself.
+    """
+    q = rec.get("question", "")
+    q = re.sub(r"^\s*User:\s*", "", q)
+    q = re.sub(r"\s*Assistant:\s*$", "", q)
+    a = rec.get("answer", "")
+    if not q.strip() or not a.strip():
         return None
-    if rec.get("answers"):
-        msgs.append({"role": "assistant", "content": rec["answers"][0]})
-    return _pack(tokz, msgs, "chatqa2", str(rec.get("id", "")), cap=cap)
+    return _pack(tokz, [{"role": "user", "content": q},
+                        {"role": "assistant", "content": a}],
+                 "chatqa2", str(rec.get("paragraph_id", "")), cap=cap)
 
 
 def build_run(tokz, block_a, block_b_raw, condition, seed, max_len):

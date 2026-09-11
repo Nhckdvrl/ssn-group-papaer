@@ -7,7 +7,7 @@ from transformers import (AutoTokenizer, AutoModelForCausalLM, Trainer,
 from sft_data import build_run
 from sparse_loss import sparse_causal_loss
 
-MODEL = "princeton-nlp/Llama-3-8B-ProLong-512k-Base"
+MODEL = os.environ.get("L19_MODEL", "/tmp/l19/prolong-512k-base-bf16")
 
 
 class Items(Dataset):
@@ -79,7 +79,7 @@ def main():
         gradient_accumulation_steps=accum, learning_rate=a.lr,
         lr_scheduler_type="cosine", warmup_steps=max(1, int(0.03 * steps)), adam_beta1=0.9, adam_beta2=0.95,
         weight_decay=0.0, bf16=True, gradient_checkpointing=True, logging_steps=5,
-        save_strategy="no", report_to=[], seed=a.seed, dataloader_num_workers=2,
+        save_strategy="no", report_to=[], disable_tqdm=True, seed=a.seed, dataloader_num_workers=2,
         gradient_checkpointing_kwargs={"use_reentrant": False},
         deepspeed="configs/zero2.json",    )
     tr = SparseTrainer(model=model, args=args, train_dataset=Items(items),

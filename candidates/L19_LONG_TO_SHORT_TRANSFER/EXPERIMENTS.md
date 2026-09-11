@@ -26,6 +26,15 @@ CoT, per the parent's Appendix B. Primary statistic is the macro over the four.
 
 ## Log
 
+- 2026-09-12 — **run order corrected before any training.** The driver had the positive
+  control last, which would have spent ~40 GPU-hours on the treatment before learning
+  whether the regime has identification power at all. Reordered to a PC-first budget
+  ladder (N=2,000, one escalation to 5,000, hard stop). Worst case is now a ~4-hour
+  stop instead of a two-day one. N is set by the positive control only; treatment data
+  is not consulted.
+- 2026-09-12 — pair set built and frozen: 10,000 pairs, 9,132 distinct pages, median
+  context 133 vs 13,084 tokens (98.4x), identical targets. sha256 b0e71fdf...
+
 - 2026-09-11 — power section added to the pilot card before any run.
 - 2026-09-11 — parent paper read in full; no length-controlled experiment exists in it.
   Table 1 re-analysis recorded. NQ length audit on 3 shards: 18.4% of raw examples give

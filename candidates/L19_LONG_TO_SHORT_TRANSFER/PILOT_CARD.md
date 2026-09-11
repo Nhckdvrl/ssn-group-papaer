@@ -143,6 +143,31 @@ Not authorized before E01 reports: attention-head analysis, FFN transplant, acti
 patching, retrieval-score heatmaps, extra model families, extra benchmarks, QASPER,
 the 1B-token budget, or any writing of a paper draft.
 
+## Budget ladder — the positive control is bought first
+
+Kill condition D ends the route, so it is paid for before the treatment is. The long arm
+is the only expensive thing here (138.7M context tokens at the full pair set against
+1.4M in the short arm), so the question "what is the smallest N at which this regime
+reproduces the parent's direction at all?" is worth answering before spending anything
+on `SHORT-SUPPORT` / `LONG-FULL`.
+
+| stage | runs | N | on failure |
+|---|---|---|---|
+| 1 | `PC-UC-UC` vs `PC-UC-CHATQA2` | 2,000 | escalate to 5,000 **once** |
+| 1b | same | 5,000 | **hard stop — outcome D, route halted** |
+| 2 | `SHORT-SUPPORT` / `LONG-FULL`, 2 seeds | the N stage 1 licensed | — |
+
+Three commitments that keep this a calibration rather than a tuning loop:
+
+1. the ceiling is 5,000 and there is no third rung;
+2. the treatment arms are never trained or evaluated during stage 1, so no treatment
+   data informs the choice of N;
+3. N is the same integer for both arms and both stages, and the pair set itself stays
+   frozen — only its first N entries are used, in the frozen order.
+
+Backbone size tracks N one-to-one (`--n_uc = --n_nq`) so the treatment is never diluted
+below half the examples.
+
 ## Power, stated before the runs
 
 This is a screening design, and the honest statement of its limits belongs here rather
