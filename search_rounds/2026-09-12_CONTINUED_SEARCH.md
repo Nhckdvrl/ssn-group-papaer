@@ -45,21 +45,10 @@
 
 **Decision:** KILL / DIRECT COLLISION.
 
-## Serious lead retained — L20
-
-### What Does an LLM Learn From a Rewarded Trajectory?
+### L20 — What Does an LLM Learn From a Rewarded Trajectory?
 
 **RQ:** When a fixed pretrained LLM sees a multi-step attempt followed by scalar reward, does its next policy preferentially update the actions that causally earned the outcome, or mainly treat the whole rewarded trajectory as a good/bad demonstration?
 
-**Why this is not K021 by default:** K021 was retrospective causal credit attribution — which past step caused the observed outcome. L20's estimand is the **future in-context policy change** of a fixed-weight model after reward exposure. Executed replay is only independent causal gold for local action quality, not the paper endpoint.
+**Why we cannot do it:** The future-policy-shift estimand is genuinely different from retrospective step scoring, but the surviving novelty is narrow relative to ICRL, successful-trajectory reuse, and 2026 causal-credit work. More importantly, the successful-result test is asymmetric: a strong Main-level story mainly requires the interesting positive outcome that terminal scalar reward induces fine-grained local causal credit; coarse whole-trajectory reuse is compatible with existing ICRL/RL accounts and is a weaker contribution, while reward-independent hindsight kills the reward-mediated story. Realistic local causal gold also requires expensive executed replay / policy-supported counterfactuals, and cheap symbolic domains weaken the intended general claim and force another realistic domain anyway.
 
-**Scientific pressure:**
-- *Reward Is Enough* (ICLR 2026) shows aggregate inference-time improvement from response/reward history and argues for emergent ICRL, including learning from failure experience.
-- *Self-Generated In-Context Examples Improve LLM Agents* (NeurIPS 2025) shows that whole successful trajectories alone can substantially improve future behavior, so aggregate improvement does not identify local credit assignment.
-- *Credit Without Ground Truth* (arXiv 2026-08) shows that common step-credit signals can fail against executed-replay causal contribution, making the local-credit question substantive rather than automatic.
-
-**Reviewer compression to defeat:** “K021 / step-credit auditing, but in ICRL.”
-
-**Current verdict:** **SERIOUS / PRE-PILOT — HIGH COLLISION RISK — NO COMPUTE AUTHORIZED.**
-
-RL / agent / credit-assignment is a crowded 2026 neighborhood. Do not treat absence of an exact duplicate as sufficient novelty, and do not prioritize L20 over cleaner NLP/language/measurement/mechanism candidates. Before promotion, the candidate must survive one final exact-operation audit and show that a clean matched trajectory-conflict design can be constructed in an existing environment without author-defined causal labels.
+**Decision:** **KILL CURRENT FORM / NO PILOT.** Do not rescue by shrinking to a toy symbolic benchmark; that would be a new candidate requiring re-selection.
