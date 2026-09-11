@@ -57,8 +57,11 @@ E01 alone does **not** authorize a paper.
 
 Use an intervention from prior work rather than inventing one after inspecting E01.
 
-Primary intervention:
-- warning-based negation prompt in Barreto & Jana (Findings EMNLP 2025), which explicitly tells the model to pay attention to negation/distractors.
+Primary intervention is the warning-based framing illustrated in Barreto & Jana (Findings EMNLP 2025):
+
+> **Pay attention to any negation and distractors (sentences which don't make sense).**
+
+Their task then asks the ordinary True/False question. For L14, freeze the warning sentence verbatim and append the unchanged L14 proposition-level response instruction. Do not tune its wording on pilot results.
 
 Source:
 - https://aclanthology.org/2025.findings-emnlp.761/
@@ -151,7 +154,7 @@ Only then may the project become GO-TO-FULL-STUDY.
 - [ ] 40–60 bases drafted from human/classical sources and author linguistic judgment, not LLM-generated main data.
 - [ ] independent human audit of a sufficient pilot subset for naturalness, target reading, and world-state gold.
 - [ ] scalar cases are a minority / non-load-bearing.
-- [ ] exact warning prompt/config frozen from prior work.
+- [x] exact warning intervention frozen from prior work.
 - [ ] two model families and decoding/scoring protocol frozen.
 - [ ] analysis operates over paired bases.
 - [ ] no hidden-state/mechanistic experiment queued before E01/E02 decision.
