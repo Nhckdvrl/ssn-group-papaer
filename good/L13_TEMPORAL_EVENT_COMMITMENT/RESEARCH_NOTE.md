@@ -1,5 +1,9 @@
 # L13 研究笔记
 
+> **状态：HOLD。** 2026-09-11 做了一次 claim novelty reset，见 `CLAIM_NOVELTY_DELTA.md`。
+> 本笔记记录的证据有效，但当前 paper identity 只由一个构式支撑，未通过 width test。
+> 在 reset 结论出来前，禁止继续加模型、加规模、加 `before` 条件或写正文。
+
 更新于 2026-09-11。数字为 `stimuli_v2`（100 场景）与人工裁定自然集（176 句）的最终结果。
 完整实验流水见 `PILOT_REPORT.md`，claim 尺度见 `CLAIM_CALIBRATION.md`，数据契约见
 `DATA_AND_GOLD.md` 与 `DATA_AUDIT.md`。

@@ -74,7 +74,14 @@ one connective.
 | `EXPERIMENTS.md` | experiment registry |
 | `ENVIRONMENT.md` | environment, models, exact commands |
 
-## 6. Current verdict
+## 6. Current verdict — HOLD (claim novelty reset, 2026-09-11)
+
+The authorized claim was rejected by E05 and the project has since mutated twice more
+(E16, E17) without a novelty reset. `CLAIM_NOVELTY_DELTA.md` performs that reset and
+puts the project on **HOLD / RECONSTRUCT around the interface, not around `before`**,
+with a hard stop on further evidence accumulation. Read it before running anything.
+
+### Superseded verdict
 
 Pilot E01 (behavioral commitment profile) and E02 (timeline-induced actualization) have
 not yet been run. No claim is established.
