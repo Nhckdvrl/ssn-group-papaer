@@ -3,7 +3,7 @@
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
 **Active serious candidates:** **L14 only**  
-**Current phase:** **BROAD SEARCH OPEN + L14 PRE-PILOT AUDIT**
+**Current phase:** **BROAD SEARCH OPEN + L14 ONE BOUNDED PILOT AUTHORIZED**
 
 ---
 
@@ -24,15 +24,9 @@ Archived in this reset:
 
 L02, L04, and L11 were already historical / killed routes.
 
-### Why reset rather than rescue
+The decisive workflow lesson remains:
 
-The decisive lesson from L12/L13 and the fresh portfolio audit is:
-
-> **A topic is not selected once. We continuously select the paper we are actually writing.**
-
-A materially changed RQ, estimand, explanation, central claim, or reviewer takeaway is a new candidate. Existing evidence may be inherited; old authorization and old novelty approval may not.
-
-Good data, strong effects, clean interventions, and a natural question are individually insufficient if the strongest successful result is still reviewer-compressible to existing work or cannot develop into an independently valuable Main-level inference.
+> **A topic is not selected once. We continuously select the paper we are actually writing. Evidence survives claim mutation; authorization does not.**
 
 ---
 
@@ -42,11 +36,11 @@ Good data, strong effects, clean interventions, and a natural question are indiv
 
 Canonical package: `candidates/L14_METALINGUISTIC_NEGATION/`
 
-Plain example:
+### Plain example
 
 > **The movie wasn't good — it was excellent.**
 
-The speaker does not deny that the movie reached the weaker state *good*; the speaker rejects *good* as an inadequate description and replaces it with the stronger *excellent*.
+The speaker rejects *good* as an inadequate description while still committing to a world state at least as strong as *good*.
 
 Contrast:
 
@@ -54,28 +48,57 @@ Contrast:
 
 Here `not` genuinely negates the world-state proposition.
 
-### RQ
+### Current RQ
 
-> **Does an LLM identify the semantic level targeted by `not` — world proposition versus linguistic representation — before applying polarity, or does it default to propositional negation and repair only when context forces reinterpretation?**
+> **Does an LLM select what semantic level `not` targets before applying polarity, or do models/negation-focused interventions over-apply world-state reversal when the target is metalinguistic?**
 
-### Why it is currently serious
+### Fresh pre-pilot audit result
 
-- classical, immediately understandable phenomenon;
-- simple controlled data plus existing human psycholinguistic materials;
-- current LLM negation work largely treats polarity sensitivity as monotonically desirable;
-- exact searches did not find a modern LLM paper owning metalinguistic-negation target selection;
-- prospective development is fixed in advance: **target selection → default-repair vs context-sensitive processing → consequence for negation-robustness interventions**;
-- a particularly strong consequence is a trade-off where methods that reduce ordinary negation blindness worsen metalinguistic over-negation.
+**PASS FOR ONE BOUNDED KILL-ORIENTED PILOT.** Not mainline-approved.
 
-### Current status
+The strongest modern compression was explicitly checked:
 
-**SERIOUS CANDIDATE / PRE-PILOT.** Not mainline-approved and not authorized for broad experiments. First verify the controlled English stimulus contract and run one bounded kill-oriented pilot only if the final data/novelty audit remains clean.
+> **EMNLP 2025 Negation Blindness + Findings EMNLP 2025 negation-attention prompting + classical metalinguistic-negation stimuli.**
+
+The surviving independent question is whether the established drive for stronger ordinary-negation sensitivity is actually monotonic once negation can target a linguistic representation instead of a proposition.
+
+Two fresh boundaries are locked:
+
+1. **Artificial Epanorthosis (Boggia 2026)** shows that LLMs overproduce/miscalibrate corrective `Not X. Y` rhetoric. This is an LLM-specific motivation/production anomaly, not our claimed comprehension result.
+2. **ImplicatureX (Spinoso-Di Piano et al. 2026)** owns implicature recognition/cancellation. Scalar `some→all` cases are diagnostic only and cannot carry or rescue L14.
+
+### Authorized pilot only
+
+After human stimulus audit, run:
+
+- **E01:** paired DN/MN world-state target-selection profile on 40–60 bases with positive/paraphrase controls;
+- **E02:** apply the pre-existing warning-based negation intervention from Barreto & Jana (2025) to the exact same items and measure paired `ΔDN` and `ΔMN`.
+
+The strongest prospective signal is:
+
+> **ordinary descriptive-negation accuracy improves while metalinguistic accuracy worsens**, showing that increased cue sensitivity trades negation blindness for over-negation.
+
+Only if E01/E02 survive may the project return to selection for possible E03:
+
+- pre-context versus post-correction to distinguish polarity-first repair from context-sensitive target selection.
+
+No hidden-state scan/model zoo is authorized before that decision.
+
+### Kill rule
+
+Archive if capable models are essentially ceiling; warning produces no meaningful DN/MN differential and there is no independent target-selection structure; controls explain the effect; the signal is scalar-only; human readings/gold are unstable; or a direct current owner appears.
+
+See:
+- `candidates/L14_METALINGUISTIC_NEGATION/README.md`
+- `candidates/L14_METALINGUISTIC_NEGATION/RELATED_WORK_AND_NOVELTY.md`
+- `candidates/L14_METALINGUISTIC_NEGATION/DATA_AND_GOLD.md`
+- `candidates/L14_METALINGUISTIC_NEGATION/PILOT_CARD.md`
 
 ---
 
 # Search objective
 
-The preferred new topic style is the one exemplified by strong classic-problem modernizations:
+The preferred new topic style remains:
 
 > **durable and immediately understandable problem → simple natural/controlled data with hard gold → genuinely unresolved LLM-era question → interesting decisive experiment → broader consequence for actual NLP/LLM behavior.**
 
@@ -83,33 +106,25 @@ The ideal question should be understandable from one example, but should not red
 
 Classic parents are assets, not novelty failures. The novelty burden is on the **modern scientific question, inference, and development path**.
 
-The user currently prefers this style over TableQA / statistical-table work.
-
 ---
 
 # Pre-pilot requirement for every new serious candidate
 
 Before any compute authorization, record:
 
-1. **One-sentence RQ + plain example.**
-2. **Strongest plausible successful result:** what exactly would readers learn?
-3. **Prospective paper identity:** what would the paper be after the first result, not just before it?
-4. **Ownership:** strongest current `Prior A + B + C = our paper` compression and the surviving independent contribution.
-5. **Development-path novelty:** audit the most likely next claim(s), so a positive/negative pilot cannot silently drift into already-owned territory.
-6. **Data/gold/identification:** natural or minimally controlled substrate with truth independent of the evaluated model.
-7. **Main-level progression:** how the paper deepens beyond its first effect without generic probe/patch/model-zoo padding.
-8. **Stop condition:** what result or ownership fact kills the route rather than triggering automatic rescue.
-
-A pilot is authorized only when the candidate is paper-shaped enough that the expected next development remains worth testing.
+1. one-sentence RQ + plain example;
+2. strongest plausible successful result and what it establishes;
+3. prospective paper identity after the first result;
+4. strongest current `Prior A + B + C = our paper` compression and surviving contribution;
+5. development-path novelty for the likely next claim;
+6. data/gold/identification with truth independent of the evaluated model;
+7. Main-level progression beyond the first effect;
+8. explicit stop condition.
 
 ---
 
 # Durable workflow rule
 
-Search, selection, and execution form a loop:
-
 `SEARCH → SELECT → PILOT → RE-SELECT CURRENT PAPER IDENTITY → DEVELOP → RE-SELECT → PAPER / ARCHIVE`
 
 Claim mutation requires return to selection, not merely a wording update to related work.
-
-**Evidence survives claim mutation; authorization does not.**
