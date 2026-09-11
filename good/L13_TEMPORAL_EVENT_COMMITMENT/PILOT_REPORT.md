@@ -276,3 +276,89 @@ not pooled with answering `YES`.
 | C3 update asymmetry | **weakened**, floor-confounded |
 | C4 internal coupling without generation | **rejected** (E05) |
 | **C5 plain-timeline instantiation of unresolved events** | **supported**, strengthens with scale, ~0.10 non-temporal control, partially instruction-resistant |
+
+---
+
+# Addendum 3 — E08 external validity, E10 mitigation, E11 moderation (2026-09-11)
+
+## E11 — the effect is not "the model thinks it probably happened"
+
+Ghost rate on `before_neutral`, split by the item-level `pragmatic_bias` recorded in the
+gold audit:
+
+| model | no_leaning (n=14) | neutral (n=22) | yes_leaning (n=4) |
+|---|---|---|---|
+| Qwen3-8B | **0.643** | 0.318 | 0.500 |
+| Olmo-3-7B | **0.571** | 0.409 | 0.500 |
+| Llama-3.1-8B | 0.929 | 1.000 | 1.000 |
+| Gemma-3-12B | 0.857 | 0.955 | 1.000 |
+| Qwen3-32B | 1.000 | 1.000 | 1.000 |
+
+There is **no monotone increase** with yes-leaning bias, and in the two models with
+headroom the rate is *highest* on items whose blocking event makes non-occurrence most
+plausible. The plausibility account — the model instantiates the event because it
+believes the event probably occurred — is therefore not what drives the effect.
+(`yes_leaning` has only 4 items; the claim rests on the no_leaning/neutral contrast and
+on the ceiling models.)
+
+## E08 — external validity on natural text: a boundary, not a replication
+
+Full audit in `data/NATURAL_SET_AUDIT.md`. 446,819 Pile sentences scanned; 35
+hand-adjudicated natural items (22 prevented, 13 veridical).
+
+| model | natural prevented event listed as realized | controlled `before_neutral` |
+|---|---|---|
+| Llama-3.1-8B | 0.318 [0.14, 0.50] | 0.975 |
+| Qwen3-8B | 0.182 [0.04, 0.36] | 0.450 |
+| Gemma-3-12B | 0.136 [0.00, 0.27] | 0.925 |
+| Qwen3-32B | 0.136 [0.00, 0.27] | 1.000 |
+
+**Reported as a negative/limiting result.** Natural non-veridical `before`-clauses are
+overwhelmingly **modally marked** (`before X could Y`; 101 of 4,615 `before` sentences),
+and models handle the marked case well. The failure is specific to the **unmarked**
+construction.
+
+Prevalence of the affected construction, from a hand-adjudicated random sample of
+natural plain-past `before`-clauses: 84% realized, **13% unresolved**, 3% not realized.
+So it is a minority but not a corner case — roughly one `before`-clause in six is not
+guaranteed by its sentence. The surface cue is not diagnostic in either direction:
+plain past tense can still be prevented (*"He caught me before I reached the trees."*).
+
+## E10 — status-first mitigation: fixes `NO`, does not create `UNRESOLVED`
+
+The model is asked to state each mentioned event's status (`guaranteed / left open /
+ruled out`) **before** being asked for the timeline, in the same conversation.
+
+| model | condition | plain | + prohibition | status-first |
+|---|---|---|---|---|
+| Llama-3.1-8B | `before_cancel` | 0.900 | 0.425 | **0.075** |
+| Gemma-3-12B | `before_cancel` | 0.500 | 0.250 | **0.050** |
+| Qwen3-32B | `before_cancel` | 0.350 | — | **0.075** |
+| Qwen3-8B | `before_cancel` | 0.175 | 0.025 | **0.000** |
+| Llama-3.1-8B | `before_neutral` | 0.975 | 1.000 | **1.000** |
+| Gemma-3-12B | `before_neutral` | 0.925 | 0.775 | **0.825** |
+| Qwen3-32B | `before_neutral` | 1.000 | — | **0.700** |
+| Qwen3-8B | `before_neutral` | 0.450 | 0.200 | **0.800** |
+
+**Explicit non-occurrence is fixable by pipeline design; the unresolved state is not.**
+Status-first almost eliminates ghosting for events the text says did not happen
+(0.35–0.90 → 0.00–0.075), and leaves the unresolved case unchanged or worse — Qwen3-8B
+gets *worse* (0.45 → 0.80). Qwen3-32B's apparent drop (1.00 → 0.70) is not a repair: its
+`after` rate falls to 0.70 as well, i.e. it lists fewer events overall.
+
+This is the most useful applied statement in the study: a practitioner can stop a
+timeline from containing events the text negates, and currently cannot stop it from
+containing events the text leaves open.
+
+## Consolidated claim state
+
+| claim | status |
+|---|---|
+| C1 direct over-commitment on unmarked `before` | **rejected** |
+| C2 timeline-induced actualization | **supported** — 9 checkpoints, 4 families, paraphrase-controlled, no scale decay |
+| C3 update asymmetry | **weakened** (floor-confounded) |
+| C4 coupling without generation | **rejected** (E05) |
+| C5 plain-timeline instantiation of unresolved events | **supported** — ~0.10 non-temporal control, strengthens with scale |
+| **C6** not explained by event plausibility | **supported** (E11) |
+| **C7** boundary: restricted to the *unmarked* construction; marked non-veridicality is handled | **supported** (E08) |
+| **C8** pipeline repair works for `not-realized` and fails for `unresolved` | **supported** (E10) |

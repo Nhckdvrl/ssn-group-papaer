@@ -18,6 +18,8 @@ import torch  # noqa: E402
 import transformers  # noqa: E402
 
 import probes  # noqa: E402
+import re  # noqa: E402
+
 from scoring import (  # noqa: E402
     build_candidate_map,
     generate,
@@ -66,8 +68,13 @@ def main():
             task = probes.TASK_ORDERS[order]
             contexts = [None] * len(items)
             if task is not None:
+                think = bool(cfg.get("thinking_context", False))
                 prompts = [
-                    render(tok, [{"role": "user", "content": task.format(passage=it["passage"])}])
+                    render(
+                        tok,
+                        [{"role": "user", "content": task.format(passage=it["passage"])}],
+                        thinking=think,
+                    )
                     for it in items
                 ]
                 contexts = generate(
@@ -78,6 +85,12 @@ def main():
                     max_new_tokens=cfg["max_new_tokens"],
                     batch_size=cfg["gen_batch_size"],
                 )
+                if cfg.get("thinking_context", False):
+                    # keep only the answer: the reasoning block is not part of the
+                    # structure the model is asked to produce
+                    contexts = [
+                        re.sub(r"(?s)^.*?</think>", "", c).strip() or c for c in contexts
+                    ]
                 for it, c in zip(items, contexts):
                     gen_f.write(
                         json.dumps(
