@@ -558,6 +558,7 @@ minimal pair** with `before_modal`, which isolates lexical marking exactly.
 | Qwen3-8B | 0.338 | **1.000** | 0.037 |
 | Llama-3.1-8B | 0.988 | **0.975** | 0.250 |
 | Gemma-3-12B | 0.950 | **0.875** | 0.013 |
+| Qwen3-32B | — | **0.975** | 0.037 |
 
 **The effect is not a fronted-order artifact; it is larger in the natural order.**
 Qwen3-8B was substantially *under*-measured by v1: its true rate on the ordinary English
@@ -604,6 +605,7 @@ realization judgement each.
 | Qwen3-8B | **0.812** [0.62, 1.00] | 0.000 [0.00, 0.00] |
 | Llama-3.1-8B | **0.750** [0.50, 0.94] | 0.176 [0.06, 0.32] |
 | Gemma-3-12B | **0.438** [0.19, 0.69] | 0.000 [0.00, 0.00] |
+| Qwen3-32B | **0.625** [0.38, 0.88] | 0.059 [0.00, 0.15] |
 
 Direct probe P(YES) on the same unmarked items is 0.006–0.255: the models read these
 real sentences correctly and then put the event on the timeline anyway. On real text,
