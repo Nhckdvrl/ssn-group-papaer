@@ -24,6 +24,7 @@ gendered pronoun is used for a person whose gender is not otherwise stated.
 BASES = [
     dict(
         id="b01",
+        pragmatic_bias="neutral",
         sub="Maya submitted the application",
         main="the portal closed",
         target="Maya submitted the application",
@@ -34,6 +35,7 @@ BASES = [
     ),
     dict(
         id="b02",
+        pragmatic_bias="no_leaning",
         sub="Daniel boarded the train",
         main="the doors locked",
         target="Daniel boarded the train",
@@ -44,6 +46,7 @@ BASES = [
     ),
     dict(
         id="b03",
+        pragmatic_bias="neutral",
         sub="Lena paid the deposit",
         main="the bank froze her account",
         target="Lena paid the deposit",
@@ -54,6 +57,7 @@ BASES = [
     ),
     dict(
         id="b04",
+        pragmatic_bias="neutral",
         sub="Omar signed the contract",
         main="the lawyer withdrew the offer",
         target="Omar signed the contract",
@@ -64,6 +68,7 @@ BASES = [
     ),
     dict(
         id="b05",
+        pragmatic_bias="neutral",
         sub="the nurse gave the patient the injection",
         main="the supply cabinet was locked",
         target="The nurse gave the patient the injection",
@@ -74,6 +79,7 @@ BASES = [
     ),
     dict(
         id="b06",
+        pragmatic_bias="no_leaning",
         sub="Priya caught the ferry",
         main="the harbour closed for the storm",
         target="Priya caught the ferry",
@@ -84,6 +90,7 @@ BASES = [
     ),
     dict(
         id="b07",
+        pragmatic_bias="yes_leaning",
         sub="the team released the update",
         main="the build server crashed",
         target="The team released the update",
@@ -94,6 +101,7 @@ BASES = [
     ),
     dict(
         id="b08",
+        pragmatic_bias="neutral",
         sub="Marcus returned the library book",
         main="the branch shut down",
         target="Marcus returned the library book",
@@ -104,6 +112,7 @@ BASES = [
     ),
     dict(
         id="b09",
+        pragmatic_bias="no_leaning",
         sub="Sofia finished the marathon",
         main="the organisers stopped the race",
         target="Sofia finished the marathon",
@@ -114,6 +123,7 @@ BASES = [
     ),
     dict(
         id="b10",
+        pragmatic_bias="no_leaning",
         sub="the journalist published the article",
         main="the editor pulled the story",
         target="The journalist published the article",
@@ -124,6 +134,7 @@ BASES = [
     ),
     dict(
         id="b11",
+        pragmatic_bias="neutral",
         sub="Ken renewed his passport",
         main="the office moved to appointment-only service",
         target="Ken renewed his passport",
@@ -134,6 +145,7 @@ BASES = [
     ),
     dict(
         id="b12",
+        pragmatic_bias="neutral",
         sub="the startup shipped the prototype",
         main="its main supplier went bankrupt",
         target="The startup shipped the prototype",
@@ -144,6 +156,7 @@ BASES = [
     ),
     dict(
         id="b13",
+        pragmatic_bias="neutral",
         sub="Elena handed in her thesis",
         main="the department changed the submission rules",
         target="Elena handed in her thesis",
@@ -154,6 +167,7 @@ BASES = [
     ),
     dict(
         id="b14",
+        pragmatic_bias="neutral",
         sub="Rosa mailed the package",
         main="the post office ran out of customs forms",
         target="Rosa mailed the package",
@@ -164,6 +178,7 @@ BASES = [
     ),
     dict(
         id="b15",
+        pragmatic_bias="neutral",
         sub="the committee approved the budget",
         main="two of its members resigned",
         target="The committee approved the budget",
@@ -174,6 +189,7 @@ BASES = [
     ),
     dict(
         id="b16",
+        pragmatic_bias="neutral",
         sub="Ahmed sold his car",
         main="the buyer's loan fell through",
         target="Ahmed sold his car",
@@ -184,6 +200,7 @@ BASES = [
     ),
     dict(
         id="b17",
+        pragmatic_bias="no_leaning",
         sub="Nina took the exam",
         main="the testing centre lost power",
         target="Nina took the exam",
@@ -194,6 +211,7 @@ BASES = [
     ),
     dict(
         id="b18",
+        pragmatic_bias="neutral",
         sub="the crew put out the fire",
         main="the water pressure dropped",
         target="The crew put out the fire",
@@ -204,6 +222,7 @@ BASES = [
     ),
     dict(
         id="b19",
+        pragmatic_bias="neutral",
         sub="Diego deleted the file",
         main="his laptop was confiscated",
         target="Diego deleted the file",
@@ -214,6 +233,7 @@ BASES = [
     ),
     dict(
         id="b20",
+        pragmatic_bias="no_leaning",
         sub="the mayor signed the order",
         main="the court issued an injunction",
         target="The mayor signed the order",
@@ -224,6 +244,7 @@ BASES = [
     ),
     dict(
         id="b21",
+        pragmatic_bias="neutral",
         sub="Yuki collected the prize",
         main="the sponsor pulled out",
         target="Yuki collected the prize",
@@ -234,6 +255,7 @@ BASES = [
     ),
     dict(
         id="b22",
+        pragmatic_bias="no_leaning",
         sub="the students staged the play",
         main="the theatre flooded",
         target="The students staged the play",
@@ -244,6 +266,7 @@ BASES = [
     ),
     dict(
         id="b23",
+        pragmatic_bias="neutral",
         sub="Carla withdrew the cash",
         main="the cash machine went offline",
         target="Carla withdrew the cash",
@@ -254,6 +277,7 @@ BASES = [
     ),
     dict(
         id="b24",
+        pragmatic_bias="neutral",
         sub="the surgeon performed the operation",
         main="the patient's fever spiked",
         target="The surgeon performed the operation",
@@ -264,6 +288,7 @@ BASES = [
     ),
     dict(
         id="b25",
+        pragmatic_bias="yes_leaning",
         sub="Tomas repaid the loan",
         main="the lender sold the debt",
         target="Tomas repaid the loan",
@@ -274,6 +299,7 @@ BASES = [
     ),
     dict(
         id="b26",
+        pragmatic_bias="neutral",
         sub="the village rebuilt the bridge",
         main="the funding was suspended",
         target="The village rebuilt the bridge",
@@ -284,6 +310,7 @@ BASES = [
     ),
     dict(
         id="b27",
+        pragmatic_bias="no_leaning",
         sub="Hana registered for the course",
         main="the class filled up",
         target="Hana registered for the course",
@@ -294,6 +321,7 @@ BASES = [
     ),
     dict(
         id="b28",
+        pragmatic_bias="yes_leaning",
         sub="the company paid the fine",
         main="the regulator revised the amount",
         target="The company paid the fine",
@@ -304,6 +332,7 @@ BASES = [
     ),
     dict(
         id="b29",
+        pragmatic_bias="neutral",
         sub="Ivan reached the summit",
         main="a storm moved in",
         target="Ivan reached the summit",
@@ -314,6 +343,7 @@ BASES = [
     ),
     dict(
         id="b30",
+        pragmatic_bias="no_leaning",
         sub="Grace adopted the dog",
         main="the shelter closed for quarantine",
         target="Grace adopted the dog",
@@ -324,6 +354,7 @@ BASES = [
     ),
     dict(
         id="b31",
+        pragmatic_bias="no_leaning",
         sub="the engineers fixed the leak",
         main="the tunnel was sealed",
         target="The engineers fixed the leak",
@@ -334,6 +365,7 @@ BASES = [
     ),
     dict(
         id="b32",
+        pragmatic_bias="neutral",
         sub="Leo apologised to his sister",
         main="she left the country",
         target="Leo apologised to his sister",
@@ -344,6 +376,7 @@ BASES = [
     ),
     dict(
         id="b33",
+        pragmatic_bias="no_leaning",
         sub="the auction house sold the painting",
         main="the owner withdrew it",
         target="The auction house sold the painting",
@@ -354,6 +387,7 @@ BASES = [
     ),
     dict(
         id="b34",
+        pragmatic_bias="neutral",
         sub="Anya finished the report",
         main="her contract ended",
         target="Anya finished the report",
@@ -364,6 +398,7 @@ BASES = [
     ),
     dict(
         id="b35",
+        pragmatic_bias="neutral",
         sub="the farmer harvested the wheat",
         main="hail flattened part of the field",
         target="The farmer harvested the wheat",
@@ -374,6 +409,7 @@ BASES = [
     ),
     dict(
         id="b36",
+        pragmatic_bias="no_leaning",
         sub="Peter booked the flight",
         main="the airline suspended the route",
         target="Peter booked the flight",
@@ -384,6 +420,7 @@ BASES = [
     ),
     dict(
         id="b37",
+        pragmatic_bias="no_leaning",
         sub="the council demolished the old mill",
         main="preservation status was granted",
         target="The council demolished the old mill",
@@ -394,6 +431,7 @@ BASES = [
     ),
     dict(
         id="b38",
+        pragmatic_bias="neutral",
         sub="Mira had her son vaccinated",
         main="the clinic ran out of doses",
         target="Mira had her son vaccinated",
@@ -404,6 +442,7 @@ BASES = [
     ),
     dict(
         id="b39",
+        pragmatic_bias="no_leaning",
         sub="the archivist digitised the manuscript",
         main="the reading room was closed",
         target="The archivist digitised the manuscript",
@@ -414,6 +453,7 @@ BASES = [
     ),
     dict(
         id="b40",
+        pragmatic_bias="yes_leaning",
         sub="Ravi cancelled the subscription",
         main="the provider changed its billing system",
         target="Ravi cancelled the subscription",

@@ -1,0 +1,19 @@
+{
+  "config": "configs/scale_ladder.json",
+  "tag": "scale_ladder",
+  "model_id": "Qwen/Qwen3-1.7B",
+  "family": "qwen3",
+  "device": "cuda:0",
+  "dtype": "bfloat16",
+  "seed": 13,
+  "n_items": 200,
+  "task_orders": [
+    "fact_first",
+    "timeline_first",
+    "paraphrase_first"
+  ],
+  "n_permutations": 6,
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "elapsed_s": 116.0
+}

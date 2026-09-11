@@ -16,18 +16,8 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.dirname(HERE)
 
-HEDGES = re.compile(
-    r"\b(not|never|n't|unclear|unknown|unresolved|may|might|would|could|if|whether|"
-    r"planned|intended|hoped|meant|wanted|possible|possibly|uncertain|did not)\b",
-    re.I,
-)
-STOP = set(
-    "the a an of to and or in on at for with his her their its by that this it".split()
-)
-
-
-def content(s):
-    return {w for w in re.findall(r"[a-z']+", s.lower()) if w not in STOP}
+sys.path.insert(0, os.path.join(PROJ, "src"))
+from ghost_detect import output_asserts_target  # noqa: E402
 
 
 def main():
@@ -60,18 +50,7 @@ def main():
             if not r["task_order"].startswith("timeline"):
                 continue
             it = stim[r["item_id"]]
-            tgt = content(it["target"])
-            ghost = False
-            for ln in r["text"].splitlines():
-                ln = ln.strip()
-                if not ln:
-                    continue
-                if HEDGES.search(ln):
-                    continue
-                overlap = len(tgt & content(ln)) / max(1, len(tgt))
-                if overlap >= 0.7:
-                    ghost = True
-                    break
+            ghost = output_asserts_target(r["text"], it["target"])
             c = counts[(r["task_order"], it["condition"])]
             c[0] += int(ghost)
             c[1] += 1

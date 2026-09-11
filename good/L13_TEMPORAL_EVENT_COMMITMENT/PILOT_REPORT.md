@@ -55,35 +55,50 @@ not in comprehension.
 
 ## 3. The finding that actually carries the project (E04)
 
-Instruction used: *"List only the events that actually happened … Do not list events
-that did not happen **or whose occurrence the passage leaves open**."*
+> **All numbers in this section are v2-detector numbers.** The v1 lexical detector was
+> found defective during author adjudication (it counted a copied `before`-clause as an
+> assertion) and every v1 figure is superseded. See `data/GOLD_AUDIT_v1.md`: v2 was
+> validated against 160 hand-adjudicated generations, agreement 159/160, and its single
+> error is a false negative, so all rates below are **lower bounds**.
 
-Rate at which the target event is still listed as a plain realized node:
+Rate at which the target event is emitted as a plain realized node of the structure:
 
-| model | unresolved: open → strict | explicitly cancelled: open → strict |
+**Plain timeline** ("List the events described in this passage in chronological order"):
+
+| model | `before_neutral` | `before_cancel` | non-temporal control |
+|---|---|---|---|
+| Qwen3-32B | **1.00** | 0.35 | 0.10 |
+| Llama-3.1-8B | **0.98** | 0.90 | 0.10 |
+| Gemma-3-12B | **0.93** | 0.50 | 0.10 |
+| Olmo-3-7B | **0.48** | 0.23 | 0.13 |
+| Qwen3-8B | **0.45** | 0.18 | 0.10 |
+
+The matched non-temporal open proposition ("Maya planned to submit the application")
+is instantiated at ~0.10 in every model. The temporal construction, not the
+uncertainty, is what forces instantiation.
+
+**With an explicit prohibition** ("List only the events that actually happened … Do not
+list events that did not happen **or whose occurrence the passage leaves open**"):
+
+| model | `before_neutral` | `before_cancel` |
 |---|---|---|
-| Llama-3.1-8B | 1.00 → **1.00** | 0.90 → **0.43** |
-| Qwen3-8B | 1.00 → **0.98** | 0.88 → **0.85** |
-| Gemma-3-12B | 0.93 → **0.78** | 0.53 → **0.25** |
-| Olmo-3-7B | 0.70 → **0.63** | 0.33 → **0.23** |
+| Llama-3.1-8B | 0.98 → **1.00** (+3%) | 0.90 → **0.43** (−53%) |
+| Olmo-3-7B | 0.48 → **0.63** (+32%) | 0.23 → **0.15** (−33%) |
+| Gemma-3-12B | 0.93 → **0.78** (−16%) | 0.50 → **0.25** (−50%) |
+| Qwen3-8B | 0.45 → **0.20** (−56%) | 0.18 → **0.03** (−86%) |
 
-(Non-temporal control: ≈0.10 throughout.)
+In all four the instruction removes **explicitly cancelled** events far more
+effectively than **unresolved** ones; in two of four it does not reduce the unresolved
+case at all. Qwen3-8B does respond to the instruction, so "instruction-resistant" is a
+property of most, not all, of the set — stated that way rather than as a universal.
 
-The instruction *works* when the passage explicitly says the event did not happen, and
-*does essentially nothing* when the passage leaves it open — on the same models that
-answer `NOT DETERMINED` to the direct question about the same sentence at 0.75–0.86.
+Hand-verified examples: under `before_cancel`, Gemma emits
+`The crew put out the fire.` and `The crew never put out the fire.` in the same
+four-line timeline; Qwen3-32B emits `Marcus returned the library book.` and
+`Marcus never returned the library book.`
 
-Verified by hand on samples; e.g. Llama and Gemma both emit
-`Maya submitted the application. / The portal closed.` under the strict instruction.
-Under `before_cancel`, Llama's open-timeline output contains both
-`Maya submitted the application.` and `The application was never submitted.`
-
-**Reading.** The model's explicit judgement has three states; the structure it builds
-has two. `unresolved` collapses to `realized` at construction time, and instructing it
-otherwise does not repair the collapse. Timeline construction is not truth-preserving.
-
-Secondary observation: the emitted order follows surface clause order rather than
-chronology (`Before A, B` is listed as A then B), so what is produced is closer to
+Secondary observation: the emitted order frequently follows surface clause order rather
+than chronology (`Before A, B` listed as A then B), so what is produced is closer to
 mention transcription than to ordering.
 
 ## 4. Status of the claims
@@ -204,3 +219,60 @@ Gemma (0.56) and Qwen3-8B (0.43); Qwen3-32B is the exception (0.12).
 2. Qwen3 scale ladder on the plain-timeline collapse and on `timeline − paraphrase`.
 
 Nothing else should be run before those two.
+
+---
+
+# Addendum 2 — E07: Qwen3 scale ladder, and the corrected detector (2026-09-11)
+
+Addendum 1 raised a durability risk: the schema-level collapse looked weaker at 32B, so
+a within-family ladder was declared mandatory. It was run on six Qwen3 checkpoints with
+identical items, probes and controls.
+
+| Qwen3 | plain-timeline ghost rate, `before_neutral` | non-temporal control | direct P(NOT_DETERMINED) | `timeline − paraphrase` commitment shift |
+|---|---|---|---|---|
+| 0.6B | 0.475 | 0.10 | 0.387 | +0.122 [+0.085, +0.163] |
+| 1.7B | 0.400 | 0.10 | 0.617 | +0.159 [+0.066, +0.250] |
+| 4B | 0.475 | 0.10 | 0.695 | +0.379 [+0.275, +0.486] |
+| 8B | 0.450 | 0.10 | 0.752 | +0.171 [+0.084, +0.270] |
+| **14B** | **0.975** | 0.10 | 0.696 | +0.293 [+0.146, +0.442] |
+| **32B** | **1.000** | 0.10 | 0.126 | +0.325 [+0.209, +0.444] |
+
+**The durability risk is resolved in the opposite direction to the worry.** The
+plain-timeline collapse does not decay with scale; it **jumps** between 8B and 14B and
+is total at 32B, while the matched non-temporal control stays flat at 0.10 across all
+six checkpoints. The commitment shift is present at every scale with no downward trend.
+
+Note the dissociation this produces inside a single checkpoint: Qwen3-32B assigns
+`unresolved` correctly when the schema asks for it (Addendum 1: 0.50 unresolved vs 0.05
+realized), yet instantiates the same event as a plain realized node **100%** of the time
+when asked for an ordinary timeline, and shows the second-largest commitment shift.
+Ability to represent the open state is not the binding constraint; the representation
+being requested is.
+
+Direct competence is not monotone either: P(NOT_DETERMINED) rises 0.39 → 0.75 through
+8B and then collapses to 0.13 at 32B, which answers `NO` — a pragmatic inference the
+probe wording excludes. Olmo-3 does the same. This is reported as a distinct behaviour,
+not pooled with answering `YES`.
+
+## Corrections carried out in this pass
+
+1. **Detector defect found and fixed** (`src/ghost_detect.py` v2; `data/GOLD_AUDIT_v1.md`).
+   Qwen3-8B's `before_neutral` rate was inflated from a true 0.45 to 1.00 by v1.
+   All §3 figures are now v2 and were re-derived from the stored raw generations.
+2. **v2 validated** on 160 hand-adjudicated generations: 159/160, single error
+   conservative. Reported rates are lower bounds.
+3. **Gold upheld for all 40 items**, with item-level `pragmatic_bias` recorded
+   (14 `no_leaning`, 4 `yes_leaning`, 22 `neutral`) as the nuisance covariate the
+   `before` norming literature identifies.
+4. **External validation remains open** and is the only blocking item left: the author
+   adjudicated the gold, which is not independent annotation.
+
+## Claim state after this pass
+
+| claim | status |
+|---|---|
+| C1 direct over-commitment | **rejected** |
+| C2 timeline-induced actualization | **supported**, 9 checkpoints, 4 families, no scale decay |
+| C3 update asymmetry | **weakened**, floor-confounded |
+| C4 internal coupling without generation | **rejected** (E05) |
+| **C5 plain-timeline instantiation of unresolved events** | **supported**, strengthens with scale, ~0.10 non-temporal control, partially instruction-resistant |

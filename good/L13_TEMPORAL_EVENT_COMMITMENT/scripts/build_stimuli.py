@@ -67,6 +67,7 @@ def main():
                     "main_event": base["main_alone"]
                     if cond == "nontemporal_neutral"
                     else base["main"][0].upper() + base["main"][1:] + ".",
+                    "pragmatic_bias": base["pragmatic_bias"],
                     "gold_strict": GOLD[cond],
                 }
                 f.write(json.dumps(item, ensure_ascii=False) + "\n")
