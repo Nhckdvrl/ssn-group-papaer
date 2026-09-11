@@ -1,127 +1,130 @@
-# Current Research State — 2026-09-09
+# Current Research State — 2026-09-11
 
-> **Workflow maintenance notice, 2026-09-11:** the priorities, metrics, and
-> next-run instructions below are a historical portfolio snapshot, not current
-> experiment authorization. In particular, the L12 E07/E08 queue is obsolete.
-> Read the latest user request and each candidate's current README, claims,
-> novelty audit, and experiment ledger before action. This root workflow
-> revision has not re-audited the other candidates or reassigned their status.
-
-**Target:** NAACL Main  
-**Approved paper mainline:** NONE  
-**Killed ledger:** through K182  
-**Next kill ID:** K183
-
-> Current status only.  
-> Search rules → **RESEARCH_TOPIC_SEARCH.md**  
-> Candidate gates → **RESEARCH_TOPIC_SELECTION.md**  
-> Execution rules → **RESEARCH_EXECUTION.md**
+**Target:** ACL / EMNLP / NAACL Main  
+**Approved paper mainline:** **NONE**  
+**Active serious candidates:** **L15 only**  
+**Current phase:** **BROAD SEARCH OPEN + L15 ONE BOUNDED PILOT AUTHORIZED**  
+**Killed ledger:** through **K182** — **Next kill ID: K183**
 
 ---
 
-# Current phase
+## Portfolio reset
 
-# **RESEARCH EXECUTION — broad search paused**
+The previous active portfolio has been archived. Existing code, data, and results are preserved for reproducibility, but none carries current experiment authorization.
 
-Do not reopen broad topic search unless the user explicitly asks or decisive evidence destroys enough of the active portfolio to justify replacement search.
+Archived in / before this reset:
 
-Current execution priority:
+- **L03 — Table Value ≠ Observation Status**
+- **L06 — Study Identity Is Not Document Identity**
+- **L07 — Official Correction ≠ Current Scholarly Claim**
+- **L08 — Readout-Dimension / Compression Evaluation**
+- **L09 — RLVR Disagreement: Erased or Suppressed?**
+- **L10 — From Failure to Action**
+- **L12 — Reasoning-Induced Invariance / Trajectory Takeover**
+- **L13 — Temporal Order ≠ Event Realization**
+- **L14 — Negation of the World, or Negation of the Words?** — archived before pilot because the likely strongest contribution was too narrow / insufficiently exciting for the current Main-level search objective.
 
-1. **L10 — From Failure to Action** — **A / PILOT-AUTHORIZED / Rank 1**
-2. **L12 — Reasoning-Induced Invariance / Trajectory Takeover** — **A / CONTINUE-PILOT / Rank 2**
-3. **L08 — Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning** — **HOLD / strong backup / Rank 3**
+L02, L04, and L11 were already historical / killed routes.
 
-**L11 is KILL / K181.**  
-**Approved paper mainline remains NONE.**
+The decisive workflow lesson remains:
 
----
-
-# Rank 1 — L10
-
-> **Why can an LLM remember that an action failed yet repeat the same action? Where does failure experience stop becoming future action?**
-
-The parent failure/inhibition gap is robust and independently corroborated.
-
-Immediate work:
-
-> untouched-history stage decomposition → matched stage completion on actual action.
-
-Runnable:
-
-`good/L10_FROM_FAILURE_TO_ACTION/scripts/run_pilot.sh`
+> **A topic is not selected once. We continuously select the paper we are actually writing. Evidence survives claim mutation; authorization does not.**
 
 ---
 
-# Rank 2 — L12
+# Current serious candidate — L15
 
-## Current question
+## No Result Is Not No Evidence
 
-> **After reasoning-oriented post-training makes decisions almost invariant to framing, does the model’s own long reasoning trajectory take over causal control of the final answer?**
+Canonical package: `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/`
 
-Established locally:
+### Plain example
 
-- Instruct-SFT frame consistency ≈ **0.817**
-- Think-SFT ≈ **0.992**
-- difference ≈ **+0.175**, CI **[0.025, 0.367]**
-- frame identity remains recoverable early/mid;
-- complete natural traces strongly control final readout;
-- short answer-free arithmetic snippets do not reproduce the large trace effect.
+> Camera A detects 99% of people who enter an airport. Camera B detects only 5%. Both return: **"Alice was not detected."**
 
-### Next decisive experiment
+The same null observation should be strong evidence against Alice's presence under A and almost uninformative under B.
 
-**L12-E07 — Conclusion-Stripped Trajectory Takeover**
+### Locked RQ
 
-Ask whether the remaining long natural trajectory still strongly controls A/B readout after removing its terminal explicit choice/conclusion.
+> **For the same observed null result, does an LLM scale its world-state update with counterfactual detectability, and can it correctly represent `P(null|H)` while failing to use that quantity in `P(H|null)`?**
 
-Runnable:
+### Expanded ownership audit
 
-`good/L12_REASONING_DECISION_INVARIANCE/scripts/run_trajectory_takeover.sh`
+**REGISTERED / PASS FOR ONE BOUNDED KILL-ORIENTED PILOT. Not mainline-approved.**
 
-If E07 supports trajectory-level control:
+The audit explicitly includes:
 
-→ **L12-E08 — pre-answer decision-state causal substitution**
+- Hsu et al. 2017 classical absence-of-evidence work;
+- NAACL 2025 **From Evidence to Belief**;
+- ACL 2025 **Enough Coin Flips Can Make LLMs Act Bayesian**;
+- JAMA 2023 LLM post-test probability after negative diagnostic results;
+- Deng & Yan 2026 selection neglect / WYSIATI;
+- 2026 Belief-State Engine, Belief-Based World Models, Belief Memory, T3/AREW;
+- current RAG evidence-sufficiency / over-searching work.
 
-Runnable scaffold:
+These prior works own the broad neighborhood. L15 is authorized only for the exact five-part object:
 
-`good/L12_REASONING_DECISION_INVARIANCE/scripts/run_state_substitution.sh`
+1. identical null observation;
+2. isolated detectability manipulation;
+3. matched explicit `P(null|H)` probe;
+4. separate `P(H|null)` probe;
+5. competence–integration dissociation as the central target.
 
-If E07 collapses:
+If development drops this identity and becomes generic Bayes, evidence reliability, medical diagnostic reasoning, selection neglect, RAG abstention, partial observability, or belief-state tracking, authorization expires immediately.
 
-→ reconstruct around **late self-commitment**.
+### Authorized pilot only
 
----
+- **E01:** same-null detectability curve;
+- **E02:** observation-likelihood competence versus posterior integration;
+- **E03:** only if E02 reveals integration failure, make the observation likelihood explicit before the posterior update.
 
-# Rank 3 — L08
+No agent/RAG/tool extension, hidden-state scan, model zoo, probabilistic-memory method, or external Bayesian filter is authorized before re-selection.
 
-Still alive as a strong backup. Its final-readout truncation → teacher-forced vs free-running corridor remains natural, but the parent anomaly is less independently established than L10/L12.
+### Preferred signal
 
----
+> **The model correctly knows how likely the observation process was to miss the target, yet fails to use that knowledge when deciding whether the target exists.**
 
-# L11 — KILL / K181
+### Kill rule
 
-The parent-compatible micro-pilot is unstable across seeds and prompt-bootstrap intervals cross zero. The natural why-space is also crowded.
+Archive if capable models already track the detectability-conditioned posterior; residual errors reduce to generic arithmetic/base-rate failure; observation-likelihood and posterior probes fail together; or the surviving story collapses into a neighboring already-owned claim.
 
-Do not rescue L11.
-
----
-
-# Active portfolio
-
-| ID | Topic | Current status | Canonical package |
-|---|---|---|---|
-| **L03** | Table Value ≠ Observation Status | PILOT-AUTHORIZED, lower priority | good/L03_TYPED_OBSERVATION/ |
-| **L06** | Study Identity Is Not Document Identity | SERIOUS / PILOT-READY | candidates/L06_STUDY_IDENTITY/ |
-| **L07** | Official Correction ≠ Current Scholarly Claim | SERIOUS / DATA AUDIT FIRST | candidates/L07_OFFICIAL_CORRECTION/ |
-| **L08** | Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning | HOLD / strong backup / Rank 3 | candidates/L08_READOUT_DIMENSION/ |
-| **L09** | RLVR Disagreement: Erased or Suppressed? | SERIOUS | candidates/L09_RLVR_DISAGREEMENT/ |
-| **L10** | From Failure to Action | PILOT-AUTHORIZED / Rank 1 | good/L10_FROM_FAILURE_TO_ACTION/ |
-| **L12** | Reasoning-Induced Invariance / Trajectory Takeover | CONTINUE-PILOT / Rank 2 | good/L12_REASONING_DECISION_INVARIANCE/ |
-| **L13** | Semantic Licensing vs Event Extraction | **KILL / K182** | good/L13_TEMPORAL_EVENT_COMMITMENT/ |
-
-L11 historical artifacts remain under `good/L11_TASK_GRADIENT_PRESSURE/`, but it is not active.
+See:
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/README.md`
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/RELATED_WORK_AND_NOVELTY.md`
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/DATA_AND_GOLD.md`
+- `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_CARD.md`
 
 ---
 
-# Reopen-search rule
+# Search objective
 
-Resume topic search only when the user explicitly requests it, decisive pilots kill enough active routes, or new literature destroys a load-bearing identity.
+Prefer questions with this shape:
+
+> **durable and immediately understandable problem → simple natural/controlled data with hard gold → genuinely unresolved LLM-era computation → result interesting enough to matter by itself → broader consequence for actual NLP/LLM behavior.**
+
+The ideal question should be understandable from one example and should expose a broad model computation or bias, not merely an uncovered linguistic construction.
+
+Classic parents are assets, not novelty failures. The novelty burden is on the **modern scientific question, inference, and development path**.
+
+---
+
+# Pre-pilot requirement for every new serious candidate
+
+Before any compute authorization, record:
+
+1. one-sentence RQ + plain example;
+2. strongest plausible successful result and what it establishes;
+3. prospective paper identity after the first result;
+4. strongest current `Prior A + B + C = our paper` compression and surviving contribution;
+5. development-path novelty for the likely next claim;
+6. data/gold/identification with truth independent of the evaluated model;
+7. Main-level progression beyond the first effect;
+8. explicit stop condition.
+
+---
+
+# Durable workflow rule
+
+`SEARCH → SELECT → PILOT → RE-SELECT CURRENT PAPER IDENTITY → DEVELOP → RE-SELECT → PAPER / ARCHIVE`
+
+Claim mutation requires return to selection, not merely a wording update to related work.

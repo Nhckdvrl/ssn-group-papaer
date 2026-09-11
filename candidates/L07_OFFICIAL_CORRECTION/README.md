@@ -1,156 +1,25 @@
 # L07 — Official Correction ≠ Current Scholarly Claim
 
-**Status:** DATA GATE PASSED / E003 CURATION PAUSED AT A CLEAN CHECKPOINT
-**Paper mainline:** NOT APPROVED  
-**Target:** NAACL Main  
-**Canonical research package:** this directory  
-**Last audited:** 2026-09-09
+**Status:** **ARCHIVED / NO-GO — 2026-09-11**  
+**Former status:** DATA GATE PASSED / CURATION IN PROGRESS  
+**Target:** historical ACL / EMNLP / NAACL Main candidate
 
-> **Execution update:** E000–E002b authorize, but do not establish, the paper mainline. E003 has now collected an E000-disjoint fixed-seed sample of **4,000/4,000 identity-validated notices**. Deterministic extraction found **140 review proposals from 72 notices** among 582 exact-replacement parser candidates. These are not gold. Local-LLM recall augmentation was stopped before inference completed and produced no result. The exact checkpoint and resume order are in [EXPERIMENTS.md](EXPERIMENTS.md) and [results/e003/REPORT.md](results/e003/REPORT.md).
+> **Final archive decision:** stop the current paper identity and stop E003 curation/model expansion for this route.
 
-> **Plain-language thesis:** Once a paper is officially corrected, the original statement is part of the historical record but is no longer necessarily the current scholarly claim.
+## Why archived
 
----
+The publisher-authorized X→Y correction relation and the collected notices remain valuable data assets, but a fresh ownership audit substantially compresses the scientific novelty. Recent work already studies authoritative update/supersession relations as determinants of which proposition remains current, including settings where documents are corrected, amended, superseded, or rendered obsolete. That occupies the broad principle that flat retrieval over all relevant documents is semantically insufficient when an authoritative relation changes validity.
 
-## 1. One-sentence research question
+The surviving delta is mainly the scholarly-publishing domain and its unusually clean publisher-authored old→new gold. That can support a useful resource or application, but it is not enough for the intended Main-level paper identity. The data also have an unfavorable tradeoff: exact publisher replacements give the hardest gold but often make the task lexically easy, while diffuse scientifically important corrections require much more reconstruction.
 
-> Can an LLM reading an original paper together with its official correction reliably recover the **current scholarly proposition**, or does automated scientific QA/IE need an explicit update/supersession operation to avoid repeating the obsolete claim?
+Existing E000–E003 artifacts are preserved; sunk data-collection cost is not a reason to continue a compressed paper identity.
 
-Plain version:
+## Preserved assets
 
-> **A paper says X. Its publisher later says “this should read Y instead.” Which claim will an NLP system actually treat as current?**
+- `DATA_AND_GOLD.md`
+- `RELATED_WORK_AND_NOVELTY.md`
+- `RESEARCH_PLAN.md`
+- `EXPERIMENTS.md`
+- existing `results/` and extraction artifacts
 
-The key object is not recency and not two conflicting documents. It is an **editorially adjudicated update**.
-
-## 2. Natural object
-
-Scholarly publishing already defines correction operations:
-- correction / corrigendum / erratum;
-- partial retraction;
-- corrected-and-republished article;
-- clarification / addendum in some infrastructures.
-
-NLM links original PubMed records to erratum notices. Crossref/Crossmark records editorially significant updates and distinguishes them from minor spelling/formatting changes.
-
-Therefore:
-> original proposition → official correction operation → corrected proposition
-
-exists independently of this project.
-
-## 3. Why ACL / NLP cares
-
-Scientific QA, literature assistants, citation generation, evidence extraction, and scholarly search increasingly answer questions from published papers.
-
-A common implicit assumption is:
-> retrieve relevant documents → aggregate their content.
-
-But an official correction is **not another independent evidence document**. It changes the status of content in the original paper.
-
-This creates a real LLM-era modeling question:
-- can end-to-end document reading correctly apply the update relation?
-- or should scholarly NLP explicitly represent “superseded by / corrected to”?
-
-## 4. Competing accounts
-
-### Account A — Direct reading is sufficient
-
-Given the original text and correction notice, a strong LLM treats the correction as authoritative and answers with the corrected proposition.
-
-Implication:
-- explicit scholarly-state tracking may be unnecessary when authoritative update notices are present.
-
-### Account B — Corrections require explicit state
-
-Models blend the original and correction, repeat the more salient original claim, or treat the two as ordinary conflicting evidence.
-
-Implication:
-- scientific QA/IE needs an explicit update graph or proposition-state representation.
-
-### Account C — Conditional sufficiency
-
-Direct generation succeeds for local numeric/text replacements but fails for:
-- figures/tables;
-- multi-sentence changes;
-- qualifications;
-- method changes;
-- corrections that require linking multiple locations.
-
-This yields a practical boundary map.
-
-## 5. Outcome robustness
-
-If models almost always recover Y:
-> official correction notices are strong enough natural supervision for current-state scholarly QA, and explicit state tracking may be dispensable under documented conditions.
-
-If they often return X or X+Y:
-> retrieval over “all relevant documents” is a semantically invalid abstraction for corrected scholarship.
-
-If only some correction types fail:
-> task design should condition on update type/operation complexity.
-
-No “surprising failure” is required.
-
-## 6. Paper identity
-
-**Primary identity:** scholarly-document state / version-aware scientific QA and IE.
-
-**Not the identity:**
-- generic temporal QA;
-- retraction awareness;
-- LLM self-correction;
-- factual error correction;
-- contradiction detection;
-- another correction-notice dataset.
-
-## 7. Planned C1 → C2 → C3
-
-### C1 — Current proposition recovery
-Original + official correction → recover corrected proposition and reject superseded proposition.
-
-### C2 — Mechanism / boundary
-Cross:
-- correction type;
-- locality;
-- text vs table/figure;
-- explicit “should read X instead of Y” vs diffuse notice;
-- original-first vs correction-first;
-- direct generation vs explicit update representation.
-
-### C3 — Consequence
-Decide whether scholarly QA/IE should:
-- ingest all relevant documents flatly;
-- explicitly apply correction relations;
-- or rely on direct reading for simple update forms only.
-
-## 8. Five hard gates
-
-| Gate | Verdict | Why |
-|---|---|---|
-| REAL OBJECT | **YES** | Publishers/NLM/Crossref explicitly define corrections and link them to originals. |
-| SCIENTIFIC TENSION | **YES** | End-to-end LLM reading may make explicit update state unnecessary—or not. |
-| GOOD DATA | **YES FOR EXPANSION** | E000 verifies direct old→new yield; E001 adds an explicit historical-state recoverability requirement. |
-| PAPER-LEVEL NOVELTY | **YES, current audit** | Nearby work studies self-correction, factual correction, and scientific critique, not official proposition supersession. |
-| OUTCOME-ROBUST DECISIVENESS | **YES** | Success, failure, and correction-type boundaries all support a modeling conclusion. |
-
-## 9. Main danger
-
-Reviewer compression:
-
-> **“This is just temporal QA over errata.”**
-
-That wins if the task is only:
-> read newest document and answer.
-
-It is false only if the paper shows that official correction is a distinct **scholarly update operation**, with:
-- externally linked original/update pairs;
-- explicit old→new proposition gold;
-- direct-vs-stateful comparison;
-- consequences for scientific QA/IE.
-
-## 10. Directory map
-
-- [RELATED_WORK_AND_NOVELTY.md](RELATED_WORK_AND_NOVELTY.md)
-- [DATA_AND_GOLD.md](DATA_AND_GOLD.md)
-- [RESEARCH_PLAN.md](RESEARCH_PLAN.md)
-
-This candidate should not enter `good/` until the 150-item generated-answer experiment supports a nontrivial update-operation claim with robust controls.
+**No current experiment or curation expansion is authorized from this package.**
