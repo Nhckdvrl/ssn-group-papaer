@@ -1,0 +1,19 @@
+{
+  "config": "configs/natural_v2.json",
+  "tag": "natural_v2",
+  "model_id": "Qwen/Qwen3-32B",
+  "family": "qwen3",
+  "device": "cuda:0",
+  "dtype": "bfloat16",
+  "seed": 13,
+  "n_items": 176,
+  "task_orders": [
+    "fact_first",
+    "timeline_first",
+    "paraphrase_first"
+  ],
+  "n_permutations": 6,
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "elapsed_s": 344.5
+}

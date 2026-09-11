@@ -536,3 +536,91 @@ move the estimates, which is the check that matters.
 
 `about_to` 0.200–0.212, `purpose` 0.150–0.325, `before_modal` 0.013–0.250, non-temporal
 0.138 — against 0.875–1.000 for the unmarked `before`-clause in either word order.
+
+---
+
+# Addendum 6 — stimuli_v2, the word-order control, and a positive natural replication (2026-09-11)
+
+Three things changed the evidential picture. Two of them corrected earlier readings in
+this report.
+
+## 1. The design was tested on the minority word order (corrected)
+
+Every `before_neutral` item in v1 used the **fronted** order, `Before A, B.` Our own Pile
+scan shows that is the minority form: of 4,615 natural sentences containing " before ",
+only 255 are fronted and comma-marked. The study had been measuring the uncommon order.
+
+`before_post` — `B before A.` — was added on all 80 v2 bases. It is also a **one-word
+minimal pair** with `before_modal`, which isolates lexical marking exactly.
+
+| model | `before_neutral` (fronted) | **`before_post`** (natural order) | `before_modal` (one word apart) |
+|---|---|---|---|
+| Qwen3-8B | 0.338 | **1.000** | 0.037 |
+| Llama-3.1-8B | 0.988 | **0.975** | 0.250 |
+| Gemma-3-12B | 0.950 | **0.875** | 0.013 |
+
+**The effect is not a fronted-order artifact; it is larger in the natural order.**
+Qwen3-8B was substantially *under*-measured by v1: its true rate on the ordinary English
+form is 1.000, not 0.338. Every earlier statement in this report that treated Qwen3-8B
+as the compliant model is superseded.
+
+The `before_post` / `before_modal` pair — identical but for the word `could` — gives
+0.037 vs 1.000 (Qwen3-8B) and 0.013 vs 0.875 (Gemma). That single word is the whole
+difference.
+
+## 2. stimuli_v2: 80 scenarios, 8 conditions, 720 items
+
+Bases doubled (40 → 80) with deliberate domain widening (laboratory work, sport, court,
+rescue, logistics, publishing, surgery, elections, film, …) and subordinate-clause
+lengths of 6–17 words rather than one frame. One naturalness defect in the new bases
+(b69) was found and repaired **before** any model was run. `stimuli_v1` stays frozen and
+is nested inside v2.
+
+Core comparison on all 80 bases, plain timeline:
+
+| model | `before_neutral` | `after` | `before_cancel` | non-temporal control |
+|---|---|---|---|---|
+| Llama-3.1-8B | 0.988 | 1.000 | 0.887 | 0.138 |
+| Gemma-3-12B | 0.950 | 1.000 | 0.475 | 0.138 |
+| Qwen3-8B | 0.338 | 0.825 | 0.125 | 0.138 |
+
+The unmarked controls confirm the scope claim at n=80: `about_to` 0.200–0.212,
+`purpose` 0.150–0.325, against `before_post` 0.875–1.000.
+
+## 3. Natural text now REPLICATES the effect (corrects Addendum 3)
+
+Addendum 3 reported E08 as a boundary rather than a replication. That reading was an
+artifact of the sample: the v1 natural set was harvested with a modal-marked pattern, so
+it contained almost only cases English already marks.
+
+The natural set was rebuilt properly: 1,943 Pile sentences with a `before`-clause →
+471 in scope under an explicit, documented construction definition (`src/before_scope.py`;
+PP/forensic/generic/deontic/imperative/irrealis uses excluded) → **211 hand-adjudicated**,
+35 rejected on inspection, **176 kept** with a written target proposition and a
+realization judgement each.
+
+| model | **unmarked non-veridical** (n=16) | marked non-veridical (n=34) |
+|---|---|---|
+| Qwen3-8B | **0.812** [0.62, 1.00] | 0.000 [0.00, 0.00] |
+| Llama-3.1-8B | **0.750** [0.50, 0.94] | 0.176 [0.06, 0.32] |
+| Gemma-3-12B | **0.438** [0.19, 0.69] | 0.000 [0.00, 0.00] |
+
+Direct probe P(YES) on the same unmarked items is 0.006–0.255: the models read these
+real sentences correctly and then put the event on the timeline anyway. On real text,
+with real sentences, the dissociation holds and the marking boundary is sharp.
+
+**Prevalence, measured rather than asserted.** Of 130 adjudicated plain-past natural
+`before`-clauses, 16 (12.3%) are non-veridical. That is why n=16 and not n=200: the
+affected construction is genuinely uncommon, and this is also the empirical
+justification for a controlled set — the natural distribution cannot supply enough of
+the critical cell on its own. The controlled set exists because the corpus cannot, not
+as a substitute for looking.
+
+## Corrections to earlier addenda
+
+1. **Addendum 3 §E08** — "a boundary, not a replication" is **withdrawn**. With a
+   properly scoped and adjudicated sample, natural text replicates.
+2. **Addendum 2 and 4** — Qwen3-8B's low rates were a word-order artifact of v1.
+3. The `nontemporal_neutral` control is retained for label availability, but `about_to`
+   and `purpose` are the load-bearing matched controls, and `before_modal` is the
+   one-word isolation of marking.
