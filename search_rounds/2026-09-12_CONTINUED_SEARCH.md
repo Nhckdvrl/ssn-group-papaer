@@ -21,6 +21,30 @@
 
 **Decision:** KILL / DIRECT COLLISION.
 
+### Incorrect-CoT distillation → what information actually transfers?
+
+**RQ:** If a student can improve even when distilled reasoning traces are partly wrong, what useful information is really being transferred by the trace?
+
+**Why we cannot do it:** 2026 work already directly separates final-answer gains from step-level reasoning quality and studies causal importance / sufficiency of reasoning content. The natural mechanism story compresses into the crowded reasoning-faithfulness / rationale-quality / CoT-distillation parent rather than a new scientific object.
+
+**Decision:** KILL CURRENT FORM.
+
+### Truthful evidence montage → why does stronger reasoning become easier to mislead?
+
+**RQ:** Why can stronger reasoning make models more vulnerable to a selectively assembled set of individually true evidence fragments?
+
+**Why we cannot do it:** The obvious explanatory routes collapse into already-killed parents: K025 selection/sampling-mechanism neglect and K010 dependent/repeated evidence aggregation. The mother paper itself already frames the failure as narrative overfitting. A mechanism follow-up would therefore refine an occupied explanation space rather than establish a new parent question.
+
+**Decision:** DUPLICATE / KILL CURRENT FORM — do not assign a new K ID.
+
+### Ambiguity recognition ≠ value of clarification
+
+**RQ:** Can an agent distinguish “the instruction is ambiguous” from “the ambiguity is important enough that asking one clarification question is better than acting now”?
+
+**Why we cannot do it:** ACL 2026 *Value of Information: A Framework for Human–Agent Communication* directly formalizes clarify-versus-commit as expected task utility versus communication cost. 2026 structured-uncertainty / EVPI work further owns the tool-argument version of when to ask, what to ask, and when to stop. The exact decision-theoretic parent is already occupied.
+
+**Decision:** KILL / DIRECT COLLISION.
+
 ## Serious lead retained — L19
 
 ### What Does an LLM Learn From a Rewarded Trajectory?
