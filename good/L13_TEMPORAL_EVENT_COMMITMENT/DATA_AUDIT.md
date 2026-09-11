@@ -140,3 +140,22 @@ tokens flagged by the structural validator.
 Eight conditions over 80 scenarios, 720 items. That is a diagnostic set, not a
 benchmark: every condition exists to remove one specific alternative explanation, and
 none exists to raise the item count.
+
+### Audit of the new `before_post` condition
+
+A random 18 of the 80 post-posed items were read and adjudicated. All read as natural
+English and all are genuinely `NOT_DETERMINED` — post-posing is truth-conditionally
+equivalent to the fronted order, and no item acquired an odd reading under the
+transformation. No defects found.
+
+Examples: *"The doors locked before Daniel boarded the train."*, *"A competitor
+published the design before the founders filed the patent."*, *"Preservation status was
+granted before the council demolished the old mill."*
+
+### What the data now is
+
+720 items over 80 hand-written scenarios in eight conditions, every condition traceable
+to one alternative explanation it removes. No LLM wrote, selected or labelled any item.
+Gold follows from the construction and was verified 200/200 against a blinded pass on
+v1; the v2 expansion uses the identical contract, and its authored prose was audited
+item by item (one defect, repaired pre-run).

@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(PROJ, "src"))
 from stimuli_bases import BASES as ALL_BASES  # noqa: E402
 from stimuli_ext import EXT_GOLD, ext_passages  # noqa: E402
 
-VERSION = os.environ.get("L13_STIMULI_VERSION", "stimuli_v1")
+VERSION = "stimuli_v2"  # v1 (40 bases) is frozen; the builder now emits v2 (100 bases)
 
 GOLD = {
     **EXT_GOLD,
