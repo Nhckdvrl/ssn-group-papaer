@@ -1,8 +1,20 @@
 # Research Topic Search: Find Questions with a Contribution Path
 
-Updated: 2026-09-11. Target: ACL / EMNLP / NAACL Main; strong Main and award work provide calibration.
+Updated: 2026-09-12. Target: ACL / EMNLP / NAACL Main; strong Main and award work provide calibration.
 
 This governs search, not experiment execution. [The playbook](TOPIC_SEARCH_PLAYBOOK.md) supplies optional generators. [Selection](RESEARCH_TOPIC_SELECTION.md) evaluates concrete candidates. [Execution](RESEARCH_EXECUTION.md) governs development after bounded authorization.
+
+## 0. Mandatory Anti-Resurrection Check
+
+Before generating, naming, or externally searching a new lead, first inspect the anti-resurrection record:
+
+- `failed/KILLED_LEDGER.md` for the scientific parent, estimand, failure mode, and reopen fence;
+- archived/no-go packages under `candidates/` when the lead resembles a previous candidate;
+- `Nhckdvrl/Interpretability-try` when the proposed question, mechanism, intervention, or dataset may inherit earlier mechanistic work.
+
+Search by the **scientific object, estimand, decisive operation, and nearest synonyms**, not only by a proposed title. If a lead matches a killed route, it must state **`Not KXXX because ...`** and identify qualitatively new leverage that changes the inference or contribution. A new dataset, model, prompt, paper title, narrower mechanism, historical version, or cleaner implementation is not enough by itself. If that case cannot be made, discard the lead before deep literature search or compute.
+
+Do not assign a new kill ID to a rediscovered parent. Record it as a duplicate hit on the existing KXXX. At the end of a search round, every seriously investigated rejection must be recorded either in the killed ledger (new parent) or as an explicit duplicate hit in the dated search-round record. This check precedes, rather than replaces, fresh external novelty search.
 
 ## 1. Search for More Than an Interesting RQ
 
@@ -94,12 +106,13 @@ Use bounded literature review. Do not indefinitely refine wording to avoid every
 
 ## 7. Round Workflow
 
-1. **Refresh:** inspect current user scope, dated portfolio, candidate status, nearby archived routes, and remote changes.
-2. **Calibrate:** read relevant strong work for intellectual advance, decisive evidence, development, and scope.
-3. **Generate:** produce compact leads across distinct tracks when the task is open-ended.
-4. **Challenge:** test ownership, successful-result inference, naturalness, and contribution size.
-5. **Promote selectively:** use the selection document for bounded authorization, not a premature paper endorsement.
-6. **Record:** update only the relevant existing documents; do not create a new root checklist per lesson.
+1. **Refresh:** inspect current user scope, dated portfolio, candidate status, `failed/KILLED_LEDGER.md`, nearby archived routes, relevant `Interpretability-try` history, and remote changes.
+2. **Anti-resurrection:** for each prospective lead, record the closest KXXX/archived route and why the lead is or is not a genuine reopen.
+3. **Calibrate:** read relevant strong work for intellectual advance, decisive evidence, development, and scope.
+4. **Generate:** produce compact leads across distinct tracks when the task is open-ended.
+5. **Challenge:** test ownership, successful-result inference, naturalness, and contribution size.
+6. **Promote selectively:** use the selection document for bounded authorization, not a premature paper endorsement.
+7. **Record:** update only the relevant existing documents; new dead parents go to the killed ledger, duplicate hits keep the old KXXX and are noted in the dated search-round record.
 
 A killed route may be reconsidered with qualitatively new leverage, evidence, or literature understanding. A new title or more available GPUs is not such a reason.
 
