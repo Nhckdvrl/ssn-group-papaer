@@ -47,7 +47,7 @@ def main():
         counts = collections.defaultdict(lambda: [0, 0])
         for line in (l for path in paths for l in open(path, encoding="utf-8")):
             r = json.loads(line)
-            if not r["task_order"].startswith("timeline"):
+            if not (r["task_order"].startswith("timeline") or r["task_order"] == "unordered_first"):
                 continue
             it = stim[r["item_id"]]
             ghost = output_asserts_target(r["text"], it["target"])

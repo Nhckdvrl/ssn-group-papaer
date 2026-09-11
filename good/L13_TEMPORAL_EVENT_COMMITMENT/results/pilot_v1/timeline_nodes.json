@@ -1,11 +1,11 @@
 {
-  "mistral_small_24b": {
+  "qwen3_8b": {
     "timeline_first/after": {
-      "ghost_rate": 1.0,
+      "ghost_rate": 0.95,
       "n": 40
     },
     "timeline_first/before_cancel": {
-      "ghost_rate": 0.425,
+      "ghost_rate": 0.175,
       "n": 40
     },
     "timeline_first/before_confirm": {
@@ -13,15 +13,221 @@
       "n": 40
     },
     "timeline_first/before_neutral": {
-      "ghost_rate": 1.0,
+      "ghost_rate": 0.45,
       "n": 40
     },
     "timeline_first/nontemporal_neutral": {
       "ghost_rate": 0.1,
       "n": 40
+    },
+    "timeline_strict_first/after": {
+      "ghost_rate": 0.9,
+      "n": 40
+    },
+    "timeline_strict_first/before_cancel": {
+      "ghost_rate": 0.025,
+      "n": 40
+    },
+    "timeline_strict_first/before_confirm": {
+      "ghost_rate": 0.75,
+      "n": 40
+    },
+    "timeline_strict_first/before_neutral": {
+      "ghost_rate": 0.2,
+      "n": 40
+    },
+    "timeline_strict_first/nontemporal_neutral": {
+      "ghost_rate": 0.075,
+      "n": 40
+    },
+    "unordered_first/after": {
+      "ghost_rate": 0.975,
+      "n": 40
+    },
+    "unordered_first/before_cancel": {
+      "ghost_rate": 0.45,
+      "n": 40
+    },
+    "unordered_first/before_confirm": {
+      "ghost_rate": 0.95,
+      "n": 40
+    },
+    "unordered_first/before_neutral": {
+      "ghost_rate": 0.775,
+      "n": 40
+    },
+    "unordered_first/nontemporal_neutral": {
+      "ghost_rate": 0.1,
+      "n": 40
     }
   },
-  "phi4_mini": {
+  "llama31_8b_instruct": {
+    "timeline_first/after": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "timeline_first/before_cancel": {
+      "ghost_rate": 0.9,
+      "n": 40
+    },
+    "timeline_first/before_confirm": {
+      "ghost_rate": 0.95,
+      "n": 40
+    },
+    "timeline_first/before_neutral": {
+      "ghost_rate": 0.975,
+      "n": 40
+    },
+    "timeline_first/nontemporal_neutral": {
+      "ghost_rate": 0.1,
+      "n": 40
+    },
+    "timeline_strict_first/after": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "timeline_strict_first/before_cancel": {
+      "ghost_rate": 0.425,
+      "n": 40
+    },
+    "timeline_strict_first/before_confirm": {
+      "ghost_rate": 0.875,
+      "n": 40
+    },
+    "timeline_strict_first/before_neutral": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "timeline_strict_first/nontemporal_neutral": {
+      "ghost_rate": 0.1,
+      "n": 40
+    },
+    "unordered_first/after": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "unordered_first/before_cancel": {
+      "ghost_rate": 0.9,
+      "n": 40
+    },
+    "unordered_first/before_confirm": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "unordered_first/before_neutral": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "unordered_first/nontemporal_neutral": {
+      "ghost_rate": 0.175,
+      "n": 40
+    }
+  },
+  "olmo3_7b_instruct_dpo": {
+    "timeline_first/after": {
+      "ghost_rate": 0.975,
+      "n": 40
+    },
+    "timeline_first/before_cancel": {
+      "ghost_rate": 0.225,
+      "n": 40
+    },
+    "timeline_first/before_confirm": {
+      "ghost_rate": 0.875,
+      "n": 40
+    },
+    "timeline_first/before_neutral": {
+      "ghost_rate": 0.475,
+      "n": 40
+    },
+    "timeline_first/nontemporal_neutral": {
+      "ghost_rate": 0.125,
+      "n": 40
+    },
+    "timeline_strict_first/after": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "timeline_strict_first/before_cancel": {
+      "ghost_rate": 0.15,
+      "n": 40
+    },
+    "timeline_strict_first/before_confirm": {
+      "ghost_rate": 0.875,
+      "n": 40
+    },
+    "timeline_strict_first/before_neutral": {
+      "ghost_rate": 0.625,
+      "n": 40
+    },
+    "timeline_strict_first/nontemporal_neutral": {
+      "ghost_rate": 0.1,
+      "n": 40
+    }
+  },
+  "gemma3_12b_it": {
+    "timeline_first/after": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "timeline_first/before_cancel": {
+      "ghost_rate": 0.5,
+      "n": 40
+    },
+    "timeline_first/before_confirm": {
+      "ghost_rate": 0.85,
+      "n": 40
+    },
+    "timeline_first/before_neutral": {
+      "ghost_rate": 0.925,
+      "n": 40
+    },
+    "timeline_first/nontemporal_neutral": {
+      "ghost_rate": 0.1,
+      "n": 40
+    },
+    "timeline_strict_first/after": {
+      "ghost_rate": 1.0,
+      "n": 40
+    },
+    "timeline_strict_first/before_cancel": {
+      "ghost_rate": 0.25,
+      "n": 40
+    },
+    "timeline_strict_first/before_confirm": {
+      "ghost_rate": 0.775,
+      "n": 40
+    },
+    "timeline_strict_first/before_neutral": {
+      "ghost_rate": 0.775,
+      "n": 40
+    },
+    "timeline_strict_first/nontemporal_neutral": {
+      "ghost_rate": 0.1,
+      "n": 40
+    },
+    "unordered_first/after": {
+      "ghost_rate": 0.95,
+      "n": 40
+    },
+    "unordered_first/before_cancel": {
+      "ghost_rate": 0.525,
+      "n": 40
+    },
+    "unordered_first/before_confirm": {
+      "ghost_rate": 0.925,
+      "n": 40
+    },
+    "unordered_first/before_neutral": {
+      "ghost_rate": 0.95,
+      "n": 40
+    },
+    "unordered_first/nontemporal_neutral": {
+      "ghost_rate": 0.1,
+      "n": 40
+    }
+  },
+  "qwen3_32b": {
     "timeline_first/after": {
       "ghost_rate": 1.0,
       "n": 40
@@ -31,11 +237,11 @@
       "n": 40
     },
     "timeline_first/before_confirm": {
-      "ghost_rate": 0.875,
+      "ghost_rate": 0.825,
       "n": 40
     },
     "timeline_first/before_neutral": {
-      "ghost_rate": 0.425,
+      "ghost_rate": 1.0,
       "n": 40
     },
     "timeline_first/nontemporal_neutral": {

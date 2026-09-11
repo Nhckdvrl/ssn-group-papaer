@@ -24,9 +24,9 @@ Evidence: E01, E04, E16. The Qwen3-8B exception recorded earlier was a **word-or
 artifact**: on the fronted order it complies (0.338), on the natural post-posed order it
 is at ceiling (1.000).
 
-## C-B — The emitted structure governs the model's own belief · **supported**
+## C-B — The emitted event inventory governs the model's own belief · **supported**
 
-> Emitting the structure raises realization commitment on identical text and an
+> Emitting an event inventory raises realization commitment on identical text and an
 > identical probe: +0.075 to +0.332 across 9 checkpoints and 4 families on v1, replicated
 > on 80 scenarios at +0.114 to +0.398, against a form-matched paraphrase control and ~0
 > on the matched non-temporal passage. A non-generative ordering demand moves it by
@@ -43,6 +43,15 @@ Evidence: E02, E05, v2 replication.
 > 0.975).
 
 Evidence: E09. **This is the title claim.**
+
+## C-H — The trigger is enumeration, not ordering · **supported**
+
+> The same failure occurs when the model is asked to list the events "in any order":
+> instantiation 0.775 / 1.000 / 0.950 against a chronological 0.450 / 0.975 / 0.925, with
+> the non-temporal control at ~0.10. Ordering is not required and removing it makes the
+> failure slightly worse.
+
+Evidence: E16. **This reframes the study from timeline construction to event extraction.**
 
 ## C-D — Scope: only where the construction alone carries non-veridicality · **supported**
 

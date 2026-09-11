@@ -624,3 +624,54 @@ as a substitute for looking.
 3. The `nontemporal_neutral` control is retained for label availability, but `about_to`
    and `purpose` are the load-bearing matched controls, and `before_modal` is the
    one-word isolation of marking.
+
+---
+
+# Addendum 7 — E16: it is not the timeline. It is event extraction. (2026-09-11)
+
+The whole study had assumed the chronological demand was doing the work — the model has
+to locate the main event relative to the subordinate one, and the subordinate one gets
+instantiated as a coordinate. E16 tests that directly: the same passage, the same "list
+the events described in this passage" demand, **with the ordering requirement removed**
+("in any order").
+
+Instantiation of the unresolved event, `before_neutral`:
+
+| model | chronological list | **unordered list** | non-temporal control |
+|---|---|---|---|
+| Qwen3-8B | 0.450 | **0.775** | 0.100 |
+| Llama-3.1-8B | 0.975 | **1.000** | 0.175 |
+| Gemma-3-12B | 0.925 | **0.950** | 0.100 |
+
+Belief shift on the identical probe, against the paraphrase control:
+
+| model | timeline − paraphrase | **unordered − paraphrase** |
+|---|---|---|
+| Gemma-3-12B | +0.332 | **+0.411** |
+| Qwen3-8B | +0.171 | **+0.208** |
+| Llama-3.1-8B | +0.098 | **+0.083** |
+
+**Ordering is not required, and removing it makes the failure slightly worse.** The
+trigger is the demand to emit an **event inventory** — to answer "what events are here?"
+— not the demand to place those events in time.
+
+## What this changes
+
+1. **The framing.** "Ghost events on the timeline" names the wrong mechanism. The claim
+   is about **event extraction**: asking a model to enumerate the events of a sentence
+   discards the connective's non-veridicality, whether or not it is also asked to order
+   them. This is broader and more consequential — it applies to every event-extraction
+   pipeline, not only to timeline construction.
+2. **C-C gets stronger, not weaker.** Temporal order and event realization were already
+   shown to be independent (reasoning takes order from 0.34 to 1.00 while taking
+   instantiation from 0.45 to 1.00). E16 closes the other direction: realization
+   collapses with no ordering demand at all.
+3. **E02/E13 must be restated** as extraction-induced rather than timeline-induced. The
+   numbers are unchanged; the label was wrong.
+
+## What it does not change
+
+The scope claim is untouched: this is still confined to constructions where
+non-veridicality is carried by the connective alone (`about_to` 0.200–0.212,
+`purpose` 0.150–0.325, `before_modal` 0.013–0.250 against `before_post` 0.875–1.000),
+and it still replicates on natural text under exactly that condition.

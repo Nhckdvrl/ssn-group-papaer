@@ -1,7 +1,10 @@
 # L13 — Paper outline (draft 1, 2026-09-11)
 
-**Working title:** Ghost Events on the Timeline: LLMs Judge Unrealized Events Correctly
-and Then Put Them on the Timeline Anyway
+**Working title:** Extraction Makes It Real: LLMs Judge Unrealized Events Correctly and
+Then Extract Them as Events
+
+(Earlier title "Ghost Events on the Timeline" named the wrong mechanism; E16 shows the
+ordering demand is not required.)
 
 **Venue target:** NAACL / ACL / EMNLP Main. Long paper, empirical/analysis.
 
