@@ -1,54 +1,99 @@
 # L15 — Related Work and Novelty Audit
 
 **Date:** 2026-09-11  
-**Status:** live pre-pilot ownership audit  
+**Status:** REGISTERED / PILOT-AUTHORIZED, claim-locked  
 **Target:** ACL / EMNLP / NAACL Main
 
-## 1. Claimed object
+## 1. Exact claimed object
 
-L15 does **not** claim any of the following as new:
+L15 claims **none** of the following as new:
 
 - absence of evidence can be evidence of absence;
 - Bayesian belief updating;
-- diagnostic sensitivity/specificity;
-- partial observability;
-- belief-state tracking for LLM agents;
+- diagnostic sensitivity/specificity or negative likelihood ratios;
+- generic evidence reliability;
+- generic selection neglect / WYSIATI;
+- generic partial observability or belief-state tracking;
 - RAG abstention under missing evidence;
-- selection neglect / WYSIATI;
-- explicit probabilistic memory.
+- explicit probabilistic memory or external Bayesian filtering.
 
-The proposed independent question is:
+The only load-bearing paper identity is:
 
-> **For an identical null observation, do LLMs condition the evidential update on counterfactual detectability, and can they explicitly know the observation likelihood while failing to integrate it into the posterior world-state belief?**
+> **For the same observed null result, does an LLM scale the world-state update with counterfactual detectability, and can it correctly represent `P(null | H)` while failing to use that quantity in `P(H | null)`?**
 
-This wording is intentionally narrow enough to survive the very crowded 2026 belief-state literature.
+The preferred scientific signature is therefore a **competence–integration dissociation**, not generic Bayesian error.
+
+If experiments force the project away from this object, authorization expires and the project returns to topic selection before any development.
 
 ---
 
-## 2. Classical owner: absence salience
+## 2. Classical parent — owned, not novel
 
 ### Hsu, Horng, Griffiths & Chater (Cognitive Science 2017)
 **When Absence of Evidence Is Evidence of Absence: Rational Inferences From Absent Data**  
 https://doi.org/10.1111/cogs.12356
 
-Owns:
+Owns the classical scientific problem: an absent observation is informative to the extent that the observation would have been expected under the hypothesis. It also supplies a human experimental precedent and Bayesian normative account.
 
-- classical absence-of-evidence question;
-- Bayesian normative analysis;
-- human experiments where absence becomes more informative when it would have been more surprising under the alternative;
-- the general lesson that absent observations must be interpreted through the sampling/observation process.
+### Forensic / sensor literature
+Negative forensic evidence and negative sensor evidence have long been formalized with likelihood/sensor models. These fields already own the practical statement that a failed detection can be informative when the detector should have seen the target.
 
-Does not own:
-
-- LLM behavior;
-- competence/integration dissociation;
-- modern retrieval/tool-output consequences.
-
-**Implication for L15:** this is the parent, not the novelty.
+Therefore L15 must never sell the slogan **"absence of evidence can be evidence of absence"** as a contribution.
 
 ---
 
-## 3. Selection-process neighbor
+## 3. Direct Bayesian-LLM owners
+
+### Kim, Kim & Thorne — NAACL 2025 Main
+**From Evidence to Belief: A Bayesian Epistemology Approach to Language Models**  
+https://aclanthology.org/2025.naacl-long.531/
+
+Owns:
+
+- LLM belief/confidence updates under different evidence types;
+- Bayesian confirmation/disconfirmation/irrelevance framing;
+- evidence-strength/reliability manipulations;
+- the broad claim that LLM confidence does not consistently follow Bayesian epistemology.
+
+It does **not** isolate an identical null observation while changing the observation process, nor does it test the proposed `P(null|H)` competence versus posterior-integration dissociation.
+
+**Collision rule:** if L15 becomes "LLMs fail to weight evidence by reliability," NAACL 2025 owns the broad claim and L15 dies.
+
+### Gupta et al. — ACL 2025 Main
+**Enough Coin Flips Can Make LLMs Act Bayesian**  
+https://aclanthology.org/2025.acl-long.377/
+
+Owns generic controlled Bayesian updating / prior-update behavior in a coin-flip setting.
+
+**Collision rule:** L15 cannot become a general Bayes benchmark or arithmetic paper.
+
+---
+
+## 4. Negative-test / diagnostic owner — very dangerous
+
+### Rodman et al. — JAMA Network Open 2023
+**Artificial Intelligence vs Clinician Performance in Estimating Probabilities of Diagnoses Before and After Testing**  
+https://doi.org/10.1001/jamanetworkopen.2023.47075
+
+This work directly evaluates GPT-4 on pre-test and post-test disease probabilities after **positive and negative diagnostic test results**, including a hypothetical probability problem.
+
+It therefore already owns:
+
+- the fact that LLMs can be tested on posterior probability after a negative observation;
+- clinical negative-test Bayesian reasoning;
+- comparison to normative reference probabilities.
+
+Recent 2026 medical work also evaluates LLM generation/use of diagnostic likelihood ratios.
+
+What remains different in L15 is not "negative evidence updates". It is the controlled scientific manipulation:
+
+> **hold the null observation and prior fixed, vary only detectability, then separately measure whether the model knows the null likelihood and whether it integrates that known likelihood into the posterior.**
+
+**Hard collision rule:** if the final claim can be written as "LLMs misestimate post-test probability after negative tests," L15 is already too close and must be killed/reselected.
+
+---
+
+## 5. Selection-process neighbor
 
 ### Deng & Yan (2026 preprint)
 **Selected Evidence, Omitted Information, and Belief Updating in Large Language Model Decision Support**  
@@ -56,187 +101,132 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7060438
 
 Owns:
 
-- LLM belief updating when the *visible evidence was selected conditionally*;
+- LLM belief updating when visible evidence was conditionally selected;
 - WYSIATI / selection neglect;
 - Bayesian versus visible-sample updating;
-- domain-framed decision-support tasks;
 - evidence that explicit hidden-expectation reasoning is associated with better correction.
 
-Key difference:
-
-- their task contains **visible selected values** and asks models to account for why other values are omitted;
-- L15 fixes the visible outcome to a **null observation** and varies the probability of obtaining that same null under the world hypothesis.
+Their task has **visible selected values** and asks the model to account for omitted values. L15 instead holds the visible outcome at **null** and varies the probability of seeing that same null under the hypothesis.
 
 Reviewer compression risk:
 
-> "Both are just Bayesian likelihood neglect caused by a data-generation process."
+> "Both are likelihood neglect caused by ignoring the evidence-generation process."
 
-Surviving contribution must therefore be a concrete new dissociation, not a new domain:
+Therefore a simple detectability effect is not enough for a Main paper. L15 needs the predeclared computational signature, preferably:
 
-> **LLM explicitly estimates the null-observation likelihood correctly but fails to use it in the posterior.**
+> **correct `P(null|H)` + wrong `P(H|null)`**.
 
-Without that or an equally specific computational signature, WYSIATI substantially weakens L15.
+Without a specific dissociation or comparably strong structure, WYSIATI compresses the route too far.
 
 ---
 
-## 4. Broad belief-state / partial-observability owners
+## 6. Broad belief-state / partial-observability owners
 
 ### Chattopadhayay & Halder (2026-09-09)
 **Belief-State Engine: Augmenting LLMs for Principled Planning Under Partial Observability**  
 https://arxiv.org/abs/2609.10036
 
-Owns:
-
-- the broad claim that history-conditioned LLM policies are not reliable belief-state policies under POMDP partial observability;
-- explicit Bayesian posterior maintenance outside the LLM;
-- Tiger POMDP and attack-graph evaluation;
-- belief calibration / decision consistency improvements from an external filter;
-- a formal observation kernel `Z(o|s,a)` as part of the architecture.
-
-This is the strongest newly discovered collision.
-
-L15 **must not** claim:
-
-> "LLMs lack observation models," "LLM agents need Bayesian filtering," or "partial observability breaks LLM agents."
-
-Those claims are now owned/crowded.
-
-L15 can survive only as a controlled behavioral/computational result about **null evidence** and **explicit observation-likelihood competence versus integration**.
+Owns the broad architectural diagnosis that raw-history LLM agents are unreliable belief-state policies in POMDPs and proposes an external Bayesian filter.
 
 ### Kumar et al. (2026-08-31)
 **Towards a Belief-Based World Model for LLM Agents**  
 https://arxiv.org/abs/2609.00455
 
-Owns:
-
-- explicit belief access for LLM policies under partial observability;
-- ALFWorld belief updates;
-- presence/absence renormalization over searched receptacles.
-
-Important boundary:
-
-Their rule-based belief update treats absence in a searched receptacle as eliminative according to the environment model. L15 instead asks whether the *LLM itself* scales a null's evidential force with the observation process, including low-sensitivity cases where elimination is invalid.
+Owns explicit belief access for LLM policies under partial observability; in ALFWorld it performs presence/absence belief updates after searches.
 
 ### Liao et al. (2026)
 **Belief Memory: Agent Memory Under Partial Observability**  
 https://arxiv.org/abs/2605.05583
 
-Owns:
+Owns probabilistic memory as a remedy for premature deterministic conclusions under ambiguous observations.
 
-- deterministic memory conclusions as a source of self-reinforcing error under partial observability;
-- probabilistic alternatives in memory.
-
-Does not isolate null-evidence sensitivity or the proposed competence/integration dissociation.
-
-### Zou et al. (ICLR 2026 / ICML 2026)
+### Zou et al. (ICLR/ICML 2026 line)
 **T3 / Information Self-Locking**  
-https://iclr.cc/virtual/2026/poster/10007172  
 https://arxiv.org/abs/2603.12109
 
-Owns:
+Owns broad belief tracking and information acquisition failures during active reasoning.
 
-- belief deviation and belief tracking as key active-reasoning capabilities;
-- interaction between information acquisition and belief tracking during RL.
-
-Again, broad belief tracking is not available as L15 novelty.
+**Locked boundary:** L15 cannot claim "LLMs lack belief states," "LLM agents fail under partial observability," or "agents need explicit probabilistic state." Those broad claims are crowded/owned.
 
 ---
 
-## 5. Retrieval / evidence-sufficiency neighbors
+## 7. Retrieval / evidence-sufficiency neighbors
 
-### Xie et al., EACL 2026
+### Xie et al. — EACL 2026
 **Over-Searching in Search-Augmented Large Language Models**  
 https://aclanthology.org/2026.eacl-long.361/
 
-Owns:
+Owns over-searching, unanswerable queries, retrieval conditions, negative evidence, and abstention behavior.
 
-- over-searching across answerable/unanswerable queries;
-- noisy retrieval effects;
-- negative evidence and abstention behavior;
-- search-efficiency metrics.
+### Evidence-sufficiency work (2026)
+Recent RAG benchmarks explicitly test `No Context`, partial, irrelevant, and conflicting evidence and whether models abstain.
 
-Does not test identical empty results under different retrieval sensitivity/coverage.
+### Santra et al. — DAWAK 2024
+**"The absence of evidence is not the evidence of absence": Fact Verification via Information Retrieval-based In-Context Learning**
 
-### Zhang & Wu (2026)
-**Do LLMs Know When Evidence is Insufficient?**  
-https://doi.org/10.32604/cmc.2026.086343
+Despite the title, this work uses retrieved similar text as in-context evidence for fact verification; it does not manipulate retrieval coverage/detectability or posterior belief from the same empty result.
 
-Owns:
-
-- evidence-sufficiency/abstention benchmark;
-- `No Context` as a condition requiring abstention;
-- partial/irrelevant/conflicting evidence conditions.
-
-L15's conceptual difference is important:
-
-> **No evidence is not uniformly insufficient.** A null from a nearly exhaustive search can be strong negative evidence; a null from a low-recall search can be almost uninformative.
-
-If L15 is reduced to abstention accuracy, this paper compresses it.
+**Locked boundary:** L15 cannot become an abstention or fact-verification benchmark. Its target is the evidential force assigned to the same null outcome as the observation model changes.
 
 ---
 
-## 6. Information-gain neighbor
+## 8. Strongest reviewer compression
 
-### Hu et al. (2026)
-**Optimizing Agentic Reasoning with Retrieval via Synthetic Semantic Information Gain Reward**  
-https://arxiv.org/abs/2602.00845
+The strongest fair compression is now:
 
-Owns:
+> **Hsu 2017 absence-of-evidence + NAACL 2025 evidence-to-belief + JAMA 2023 negative-test posteriors + Deng & Yan 2026 selection neglect + 2026 belief-state/POMDP work = L15.**
 
-- information gain as uncertainty reduction for agentic retrieval;
-- belief-state update formalization during retrieval;
-- training agents to seek information.
+This is a genuinely dangerous compression.
 
-Does not isolate null observations or the specific failure to use known detectability.
+The project survives **only** because none of these owners, in the audit performed on 2026-09-11, was found to own the exact combination:
 
-L15 cannot claim generic information-gain awareness as new.
+1. **identical null observation**;
+2. **counterfactual detectability as the isolated manipulation**;
+3. **matched explicit probe of `P(null|H)`**;
+4. **separate posterior `P(H|null)` probe**;
+5. **a competence–integration dissociation as the scientific target**.
 
----
-
-## 7. Main-level compression test
-
-### Strongest A + B + C compression
-
-**A — Hsu 2017:** absence salience is Bayesian and depends on the observation process.  
-**B — Deng & Yan 2026:** LLMs neglect data-selection mechanisms in Bayesian updating.  
-**C — 2026 belief-state/POMDP papers:** LLM agents need explicit belief tracking under partial observability.
-
-A reviewer could say:
-
-> "You simply re-test a known human absence-of-evidence paradigm on LLMs, in a year where selection neglect and belief-state failures are already established."
-
-### What must survive that compression
-
-At least one of the following must be strongly established, and the first is preferred:
-
-1. **Competence–integration dissociation:** models correctly represent `P(null | H)` but systematically fail to use it in `P(H | null)`.
-2. **Invariant-null heuristic:** posterior judgments remain nearly invariant over large detectability changes despite correct controls, showing a specific surface-outcome heuristic rather than generic arithmetic noise.
-3. **Cross-interface gap:** direct observation-model reasoning succeeds, while the same model prematurely commits to non-existence when the null arrives through a tool/search interface — after the direct behavioral mechanism has already been established.
-
-If the result is merely "LLMs update imperfectly under partial observability," **KILL**.
+This five-part conjunction is the ownership boundary. Dropping (3)–(5) turns the project into a crowded Bayesian-evidence paper.
 
 ---
 
-## 8. Development-path novelty lock
+## 9. Claim lock and mutation policy
 
-The likely development path has been collision-checked in advance:
+### Allowed central claim
 
-- **C1** cannot broaden to generic Bayesian reasoning;
-- **C2** cannot broaden to generic hidden belief states;
-- **C3** cannot become a generic RAG abstention benchmark;
-- an external Bayesian-filter method would collide with BSE/BB-WM and is not the planned contribution;
-- a memory method would collide with BeliefMem and is not the planned contribution.
+> **LLMs may know how likely a null observation is under a hypothesis yet fail to use that observation model when updating what they believe about the world.**
 
-The full-paper identity must remain:
+### Allowed C1 → C2 → C3 path
 
-> **null evidence is only meaningful relative to what the observer could have detected; LLMs may explicitly know this likelihood yet fail to integrate it into world-state inference.**
+- **C1:** same-null detectability curve;
+- **C2:** observation-model competence versus posterior integration;
+- **C3:** only after fresh re-selection, test whether the same computation predicts a controlled tool-use decision.
 
-Any mutation away from this identity returns to topic selection.
+### Forbidden rescue claims
+
+The project is **not allowed** to mutate into:
+
+- generic Bayesian reasoning;
+- generic evidence reliability;
+- generic uncertainty/calibration;
+- generic RAG abstention;
+- generic partial observability / belief state;
+- probabilistic memory;
+- external Bayesian filtering;
+- medical diagnostic reasoning;
+- selection neglect/WYSIATI;
+- hidden-state "belief representations" without returning to topic selection.
+
+If the most interesting pilot result changes the central RQ, estimand, mechanism, or reviewer one-line takeaway, **stop expansion immediately and run a new ownership audit before any follow-up experiment**.
+
+Evidence survives claim mutation; authorization does not.
 
 ---
 
 # Verdict
 
-## **PASS FOR ONE BOUNDED PILOT, WITH HIGH COLLISION RISK**
+## **REGISTERED — ONE BOUNDED PILOT AUTHORIZED**
 
-The broad area is crowded enough that this route should be killed aggressively. The pilot is justified only because no direct owner was found for the exact `same null × varied detectability × observation-likelihood competence vs posterior integration` design.
+The route is collision-prone, but after the expanded audit including NAACL 2025 Bayesian epistemology, JAMA negative-test reasoning, 2026 selection neglect, RAG, and POMDP/belief-state work, no direct owner was found for the locked five-part computation above.
+
+This is not a declaration that the area is globally empty. It is a paper-identity decision: **the exact claim is currently separable, and the repository now forbids drift into the adjacent already-owned stories.**
