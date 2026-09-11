@@ -1,0 +1,75 @@
+{
+  "experiment": "L03-E000",
+  "protocol_sha256": "dd06f3335e8e02b9bf78d26bcdb2e8b1f8e90664a63450b64e680606c57cf28b",
+  "python": "3.12.3",
+  "replay_of": "20260908_access_audit",
+  "requests": [
+    {
+      "error": "HTTPError",
+      "file": "official_notes.html",
+      "url": "https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html"
+    },
+    {
+      "bytes": 250938,
+      "file": "B01001_metadata.json",
+      "http_status": 200,
+      "sha256": "361dab49e9df46d0bf6a80f46cdb4e7c1185b8ff475cef1968616ec630c027a9",
+      "url": "https://api.census.gov/data/2023/acs/acs5/groups/B01001.json"
+    },
+    {
+      "bytes": 8531,
+      "error": "API_KEY_REQUIRED_HTTP_200_HTML",
+      "file": "B01001_observations.json",
+      "http_status": 200,
+      "sha256": "c2f4687e09b80676de7f68dec92ebea395209616dbc6f895520e547c5f68c0f5",
+      "url": "https://api.census.gov/data/2023/acs/acs5?get=NAME%2CB01001_003E%2CB01001_003EA%2CB01001_004E%2CB01001_004EA%2CB01001_027E%2CB01001_027EA%2CB01001_028E%2CB01001_028EA&for=county%3A%2A"
+    },
+    {
+      "bytes": 199950,
+      "file": "B19013_metadata.json",
+      "http_status": 200,
+      "sha256": "44dd3590b59a19c32cb09ae70a24a1cfbb2c65af5d164ed81065e1ff7689e648",
+      "url": "https://api.census.gov/data/2023/acs/acs5/groups/B19013.json"
+    },
+    {
+      "bytes": 8531,
+      "error": "API_KEY_REQUIRED_HTTP_200_HTML",
+      "file": "B19013_observations.json",
+      "http_status": 200,
+      "sha256": "c2f4687e09b80676de7f68dec92ebea395209616dbc6f895520e547c5f68c0f5",
+      "url": "https://api.census.gov/data/2023/acs/acs5?get=NAME%2CB19013_001E%2CB19013_001EA&for=county%3A%2A"
+    },
+    {
+      "bytes": 200292,
+      "file": "B19013D_metadata.json",
+      "http_status": 200,
+      "sha256": "216356546f8aeb45e4e4a9f614d7c0239c466b56c4e03d18d5bc100208ad0fec",
+      "url": "https://api.census.gov/data/2023/acs/acs5/groups/B19013D.json"
+    },
+    {
+      "bytes": 8531,
+      "error": "API_KEY_REQUIRED_HTTP_200_HTML",
+      "file": "B19013D_observations.json",
+      "http_status": 200,
+      "sha256": "c2f4687e09b80676de7f68dec92ebea395209616dbc6f895520e547c5f68c0f5",
+      "url": "https://api.census.gov/data/2023/acs/acs5?get=NAME%2CB19013D_001E%2CB19013D_001EA&for=county%3A%2A"
+    },
+    {
+      "bytes": 250184,
+      "file": "S0101_metadata.json",
+      "http_status": 200,
+      "sha256": "c9e21d119075833fbacd7e69801d428fc85d3e6067c9539871ab1bfac9a8dc0d",
+      "url": "https://api.census.gov/data/2023/acs/acs5/subject/groups/S0101.json"
+    },
+    {
+      "bytes": 8531,
+      "error": "API_KEY_REQUIRED_HTTP_200_HTML",
+      "file": "S0101_observations.json",
+      "http_status": 200,
+      "sha256": "c2f4687e09b80676de7f68dec92ebea395209616dbc6f895520e547c5f68c0f5",
+      "url": "https://api.census.gov/data/2023/acs/acs5/subject?get=NAME%2CS0101_C02_031E%2CS0101_C02_031EA%2CS0101_C01_001E%2CS0101_C01_001EA&for=county%3A%2A"
+    }
+  ],
+  "script_sha256": "2f3c58c22948eec3ea6d59ea11a6f0432fd2ee6dba8b78f80763ef69b20b1347",
+  "started_utc": "2026-09-08T01:57:18.018491+00:00"
+}

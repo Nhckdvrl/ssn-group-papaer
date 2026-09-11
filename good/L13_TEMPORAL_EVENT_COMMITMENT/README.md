@@ -1,6 +1,7 @@
 # L13 — Temporal Order ≠ Event Realization
 
-**Status:** PILOT-AUTHORIZED (registered 2026-09-11) — **not** paper-mainline-approved.
+**Status: KILLED — K182 (2026-09-11).** Retained for reproducibility and for reuse of its
+data and code. Do not restart from this evidence; see `failed/KILLED_LEDGER.md` K182.
 **Target:** NAACL / ACL / EMNLP Main.
 
 ---

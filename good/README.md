@@ -10,11 +10,12 @@
 |---:|---|---|---|---|
 | **1** | **L10** | **From Failure to Action** | [L10_FROM_FAILURE_TO_ACTION/](L10_FROM_FAILURE_TO_ACTION/) | **PILOT-AUTHORIZED** |
 | **2** | **L12** | **Reasoning-Induced Invariance** | [L12_REASONING_DECISION_INVARIANCE/](L12_REASONING_DECISION_INVARIANCE/) | **CONTINUE-PILOT** |
-| — | **L13** | **Temporal Order ≠ Event Realization** | [L13_TEMPORAL_EVENT_COMMITMENT/](L13_TEMPORAL_EVENT_COMMITMENT/) | **PILOT RUN 2026-09-11 — reconstructing on C5** |
+
 | — | **L03** | **Table Value ≠ Observation Status** | [L03_TYPED_OBSERVATION/](L03_TYPED_OBSERVATION/) | **PILOT-AUTHORIZED / lower priority** |
 
 ## Historical packages retained for reproducibility
 
+- **L13 → KILL / K182** — good measurement, no Main-level idea; five widenings failed.
 - **L11 → KILL / K181** — unstable parent-compatible micro-pilot + compressed why-space.
 - **L02 → NO-GO / K175**
 - **L04 → NO-GO / K180**
@@ -42,14 +43,10 @@ Its identity is:
 Generic trace causality and generic answer-token readout are already neighboring literature.
 
 
-## L13 warning
+## L13 warning — KILLED, K182
 
-Do not reduce L13 to "LLMs get `before` wrong" — the pilot **rejected** that.
-Its surviving identity is:
-
-> **models judge the unresolved event correctly when asked, but collapse `unresolved`
-> into `realized` when they build a structured timeline, and an explicit instruction not
-> to does not repair it.**
-
-E05 showed there is no effect without emitted text, so any mechanistic framing that
-claims internal contamination by the temporal connective is dead. See `PILOT_REPORT.md`.
+Do not resurrect L13 by reinterpreting E01–E21 again. Five widenings were tried; two were
+falsified by its own data and three were absorbed by mature parents. Reopen only if a
+larger scientific object is identified **first and independently**, with this evidence as
+a legacy rather than a source. See `failed/KILLED_LEDGER.md` K182 and the project's
+`CLAIM_NOVELTY_DELTA.md`.

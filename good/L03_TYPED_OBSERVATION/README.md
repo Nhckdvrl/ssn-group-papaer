@@ -8,6 +8,21 @@
 
 > **Plain-language thesis:** A table cell without an ordinary number is not necessarily “missing.” It can itself encode an official observation state such as not applicable, unavailable, suppressed, or unreliable.
 
+## Execution update — 2026-09-08
+
+Phase 0 has started; **data readiness is not yet established**. Official metadata
+for four ACS table groups were acquired, but observation queries require an API
+key. No model experiment or paper claim has been established. The earlier YES
+data-gate entry below is the candidate's planning assessment, not a completed
+acquisition audit.
+
+- [Claim/evidence ledger](CLAIMS.md)
+- [Actual experiment log and blockers](EXPERIMENT_LOG.md)
+- [E000 protocol, parser, and reproduction instructions](experiments/E000_data_audit/README.md)
+
+In particular, ACS `(X)` gold preserves the provider's combined
+not-applicable-or-not-available category; it does not license separate labels.
+
 ---
 
 ## 1. One-sentence research question

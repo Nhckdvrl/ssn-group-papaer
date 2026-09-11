@@ -9,8 +9,8 @@
 **Initial migration date:** 2026-09-06  
 **Legacy provenance:** consolidated from the authoritative kill/search ledgers in `Nhckdvrl/try` (especially V9, V12, V13, V15, V17).
 
-**Authoritative kill state:** through **K180**  
-**Next kill ID:** **K181**
+**Authoritative kill state:** through **K182**  
+**Next kill ID:** **K183**
 
 The entries below preserve the **scientific reason for rejection**, not every historical implementation detail. If a topic is ever reconsidered, the literature must be freshly re-checked.
 
@@ -3222,3 +3222,70 @@ That is the wrong direction for this project: preserving novelty would require n
 A new independently robust natural gradient/gain anomaly appears together with a qualitatively broader explanatory question that survives current ACL/EMNLP/NAACL/ICLR/NeurIPS work without being reduced to a particular metric or intervention cell.
 
 Historical code, configs, raw outputs, and pilot reports remain under `good/L11_TASK_GRADIENT_PRESSURE/` for reproducibility only.
+
+---
+
+## K182 — L13 Semantic Licensing Does Not Survive Event Extraction
+
+**Date:** 2026-09-11
+**RQ:** When an LLM is asked to enumerate the events of a sentence, does the operator that
+licenses (or suspends) an event's realization survive into the extracted structure?
+**Status:** KILL
+
+**Primary failure:** `NOVELTY_PARENT_COLLISION`
+**Secondary:** `PAPER_SCALE_FAILURE`
+
+### What was established (the evidence is sound; it is the idea that failed)
+
+21 experiments, 11 checkpoints, 6 families, 900 controlled items over 100 scenarios and
+176 hand-adjudicated natural Pile sentences.
+
+- Models judge the subordinate event of an unmarked `before`-clause as not guaranteed
+  (P(NOT DETERMINED) 0.54–0.66) and then emit it as a realized event (0.87–1.00), against
+  a matched non-temporal control at ~0.14.
+- The same dissociation holds for attribution, conditional antecedents and epistemic
+  possibility (judgement .82–1.00, extraction .99–1.00), and not for negation, intention
+  or future (.00–.22).
+- Extraction tracks the surface form of the clause in **both** directions: same gold NO,
+  extraction 0.00–0.01 with the negation on the clause and 0.42–0.88 with it on the
+  operator; same gold YES, 0.98–1.00 with a clean clause and 0.10–0.69 with a negated one.
+- It is not chronological ordering (removing it makes the failure worse), not item
+  plausibility, and not scale-fragile (it strengthens 8B → 32B with the control flat).
+- Natural text replicates on unmarked non-veridical items (0.44–0.81 vs 0.00–0.18 marked);
+  prevalence of the affected construction is 12.3% of plain-past natural `before`-clauses.
+- The emitted structure moves the model's own judgement (+0.06 to +0.38) and a downstream
+  reader's (+0.12 to +0.24 on natural sentences).
+
+### Exact kill reason
+
+Five successive attempts to find a Main-level idea for this evidence all failed, each
+either falsified by our own data or absorbed by a mature parent:
+
+| widening attempted | outcome |
+|---|---|
+| temporal computation contaminates factuality internally | **falsified by E05** — a non-generative temporal demand moves commitment ≤0.07 |
+| timeline construction is the mechanism | **falsified by E16** — removing the ordering demand makes it worse |
+| the extraction interface runs a surface test | **absorbed**: shallow-heuristic parent (HANS lineage, "models ignore negation"); the headline cell is a **double negation**, a known weakness; Judge Circuits (arXiv 2605.16023) owns "the output interface changes the answer"; CogNarr (IPM 2026) owns believed content read as factual events |
+| judgement is causally downstream of a surface-driven registry | **falsified by E21** — with format and content matched the asymmetry disappears (A −0.28/−0.40 vs B +0.38/+0.46) |
+| inverse scaling / reasoning makes it worse | **absorbed**: Inverse Scaling Prize lineage; *Inverse Scaling in Test-Time Compute* (arXiv 2507.14417) owns reasoning-length degradation |
+
+**Reviewer compression**
+> "Models use surface cues instead of semantic operators when producing structured
+> output, shown on before-clauses; plus known self-conditioning."
+
+### Why it is a kill and not a HOLD
+
+The RQ is fine and the measurement is good, but every widening was built by
+reinterpreting the same evidence rather than by identifying a larger scientific object
+first. That loop is itself the failure mode the post-L12 rule was written to stop. What
+remains is a well-characterised instance of a crowded parent — Findings-level at best.
+
+### Reopen only if
+
+A larger scientific object is identified **independently and first**, for which this
+evidence is a legacy rather than a source, and which survives its own novelty delta
+before any compute is spent. Reinterpreting E01–E21 again does not qualify.
+
+Artifacts, data, adjudications and code remain under `good/L13_TEMPORAL_EVENT_COMMITMENT/`
+for reproducibility. The 176-sentence adjudicated natural set, the 900-item controlled
+set with its audits, and the validated instantiation rule are reusable.
