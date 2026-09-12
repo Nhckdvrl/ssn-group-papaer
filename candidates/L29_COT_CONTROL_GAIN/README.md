@@ -1,7 +1,7 @@
 # L29 — Losing the Steering Gain
 
-**Status:** **PILOT-AUTHORIZED — E01A/E01B ONLY (2026-09-12)**  
-**Date:** 2026-09-12  
+**Status:** **RECONSTRUCT — E01 GATE NOT PASSED (2026-09-13)**
+**Date:** 2026-09-13
 **Target:** ACL / EMNLP / NAACL Main
 
 ## Locked research question
@@ -303,6 +303,13 @@ No part of this list is authorized by the current pilot verdict.
 
 ## Current verdict
 
+The bounded E01 audit was completed on 2026-09-13. Shared/common-support and
+checkpoint-natural comparisons were feasible, but the exact-word suppression
+intervention failed the early-gain validity gate. An initially apparent 6.25 pp decline
+was caused by a neutral suffix that retrieved the original rule. Target-matched,
+structural, and target-free anaphoric controls did not yield robust positive early
+control gain. See `notes/E01_PILOT_REPORT.md` for the complete result chain.
+
 ```yaml
 natural_question: PASS
 mother_phenomenon: PASS_STRONG
@@ -311,15 +318,18 @@ broad_parent_novelty: FAIL_ALREADY_OWNED
 narrow_training_causal_quantity: PLAUSIBLE_INDEPENDENT_CONTRIBUTION
 closest_owner_density: HIGH
 causal_estimand: LOCKED_FOR_E01
-old_identification_blocker: CLOSED_BY_COMMON_SUPPORT_PLUS_NATURAL_STATE_TRIANGULATION
+old_identification_blocker: COMMON_SUPPORT_FEASIBLE
+current_identification_blocker: NO_VALID_POSITIVE_EARLY_GAIN_INSTRUMENT
 successful_result_test: PASS_ONLY_IF_E01A_AND_E01B_AGREE
 outcome_identity: LOCKED_WITH_KILL_ON_STABLE_GAIN_OR_DISAGREEMENT
-resolution_risk: LOW_TO_MODERATE
+resolution_risk: SECONDARY_TO_INSTRUMENT_INVALIDITY
 training_cost: NONE_FOR_E01
-pilot: E01A_E01B_ONLY
-verdict: PILOT_AUTHORIZED
+pilot: E01A_E01B_COMPLETED
+verdict: RECONSTRUCT
 ```
 
-# **PILOT-AUTHORIZED — E01A/E01B ONLY**
+# **RECONSTRUCT — E01 GATE NOT PASSED**
 
-The paper mainline remains **not approved**. Authorization covers only the two-part behavioral/causal discriminator above. Any hidden-state mechanism, steering method, new training, or broader model sweep requires re-selection after E01.
+The paper mainline remains **not approved**. Do not expand the current suppression
+instrument or proceed to hidden-state mechanism, steering, new training, or a broader
+model sweep. A new behavioral instrument requires renewed design review.

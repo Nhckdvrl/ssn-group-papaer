@@ -1,11 +1,18 @@
 # L29 — Agent Handoff / Pilot Brief
 
 **Project:** Losing the Steering Gain  
-**Status:** **PILOT-AUTHORIZED — E01A/E01B only**  
-**Date:** 2026-09-12  
+**Status:** **RECONSTRUCT — E01 gate not passed**
+**Date:** 2026-09-13
 **Target:** ACL / EMNLP / NAACL Main
 
 This document is the handoff for the agent that will execute the first bounded study. It is intentionally written as a **scientific brief rather than a mechanical recipe**. The goal is to preserve the research question, novelty boundary, causal quantity, and inference requirements while leaving implementation choices open when a cleaner design is available.
+
+**Execution update:** The bounded audit completed on steps 100, 1400, and 2800.
+Common support was feasible, but exact-word suppression failed the positive early-gain
+instrument check after neutral-reminder and lexical-priming controls. The apparent
+decline under the first neutral wording was an intervention artifact. Read
+`notes/E01_PILOT_REPORT.md` and its referenced raw artifacts before proposing a new
+design. No mechanism work or larger sweep is authorized by this result.
 
 Before doing substantive work, sync the latest `main` and read:
 

@@ -1,0 +1,69 @@
+{
+  "created_utc": "2026-09-12T15:05:35.046167+00:00",
+  "files": {
+    "configs/audit.json": "c70ca97d7143f86338b4ea88b0782bc2fabcef9e97ec1c8630ce03087bf575ba",
+    "configs/models.json": "121f0e95a53a5705c87012700b8b572916525825a2d6f095c856155440b8e210",
+    "configs/questions.json": "95bae02709bd74b7c8ca976da33cd45f96c7a7d951717291a6f0d0674521d348",
+    "configs/suffixes.json": "4408462cf84fb8689433e02d7dd5e88696fcf59737f50c86c8508f1618d04851",
+    "notes/E01_DESIGN.md": "7deced0654ec87f663e71f3ab84e6211324b12f05b0a005038e1e61499b77765",
+    "src/instruments.py": "2e05fad03c4d781fd68ca7ea53da90c68c164e3a6fc12daec27b4c685a90a32e",
+    "src/run_audit.py": "665098746de15213a6cf0f64efb30bf8975b6abb337585e31d858cf08a212459",
+    "src/summarize_audit.py": "bd88eb062e7e64bfd1af0f20c67089a0b7d930227cb73619dc5f1bf2bb60c65f"
+  },
+  "amendments": [
+    {
+      "created_utc": "2026-09-12T15:14:40.634966+00:00",
+      "reason": "Pre-outcome measurement correction: compute decoder-matched next-token mass and retain raw T1 separately; no model outcomes available",
+      "run_audit_sha256": "f0f2cc604e5396002af4afe24d5fb5c4d4239dd9d396474b721bb18093034a8f",
+      "design_sha256": "879b5d12d3f7ea4ffe5193ca527eec3bd56b2b265d9ffae338623d46c78e9977"
+    },
+    {
+      "created_utc": "2026-09-12T15:16:21.588701+00:00",
+      "reason": "Pre-outcome interpretation caveat: differential keyword priming; no change to runs or selection",
+      "design_sha256": "4106357a76a957d768e909817269bada06bd2dacc757df1247036545634c50a0"
+    },
+    {
+      "created_utc": "2026-09-12T15:32:06.421073+00:00",
+      "reason": "After pretreatment eligibility only: drop casing floor instruments; suppression neutral now mentions same target word; no refresh outcomes existed",
+      "audit_config_sha256": "bfa100f84438aa3602369d818fc10788ae4b2c32398b2d63ea502f5c30d466d6",
+      "suffixes_sha256": "3385fc50ef2118eb4e14e0ad70578f1415c27adbd0711e8334b20d6630a26fbf",
+      "instruments_sha256": "43270e02c586ad9ca3165dbec1b4c3e2017eb41e2590f81c47ca7b994f4ed789",
+      "run_audit_sha256": "cc927ee24adcf39d5b143dede1e7679a570048fea259c431f3a5b1fdb1c4edfb",
+      "audit_state_ids": [
+        "step_0100_mmlu_0261_suppression",
+        "step_0100_mmlu_0170_suppression",
+        "step_0100_mmlu_0100_suppression",
+        "step_0100_mmlu_0078_suppression",
+        "step_0100_mmlu_0137_suppression"
+      ]
+    },
+    {
+      "created_utc": "2026-09-12T15:36:50.638170+00:00",
+      "reason": "After weak-opportunity first-boundary audit only: risk-enrich on imminent natural first violation at a true boundary; correct period-boundary bug; no outcomes exist at these new prefixes",
+      "audit_config_sha256": "32515a31f9730d479f7dc6b79df71aa11b560e3a28039f5ad356e54d8973392d",
+      "instruments_sha256": "cc156b0af763687ab2f270e7078683ad275c0a262c1c4ba951f42cd66c36029f",
+      "run_audit_sha256": "30ff813e8f43a0b67534eb09a8f14cce689ce5233a152389c364a1ddb02ce4fe",
+      "source_natural_sha256": "569bb456ee08f32ea7f692b83c9abd8ffa2a29ff540d1ecc9de7cd873099083a",
+      "source_rollout_sha256": "5526ed344a8fc006940704096f5629ae275f432d357bc85f9a45699e052e8080"
+    },
+    {
+      "created_utc": "2026-09-12T16:31:08+00:00",
+      "reason": "Post-audit control correction: the instruction-cue neutral retrieved the original rule; preserve that outcome and replace it with an equal-token factual target cue. This diagnoses intervention validity and is not a sign-selected confirmatory change.",
+      "archived_suffixes_sha256": "3385fc50ef2118eb4e14e0ad70578f1415c27adbd0711e8334b20d6630a26fbf",
+      "archived_effects_sha256": "83d5365f1cf4eea018e50669b6a569ae5b42464f17525f64b07cb81d6551d6dd"
+    },
+    {
+      "created_utc": "2026-09-12T16:31:08+00:00",
+      "reason": "Post-audit factorial diagnostic: add an equal-token structural arm after the factual target cue showed near-zero early incremental gain, to measure target-word priming separately from explicit prohibition semantics.",
+      "factorial_summary_sha256": "07716aea831200b9df6d54e4c10a71d4abf3a32c13d41e591d8669e44999869a"
+    },
+    {
+      "created_utc": "2026-09-12T16:31:08+00:00",
+      "reason": "Final bounded instrument diagnostic: compare a target-free anaphoric rule reminder with an equal-token ordinary reasoning reminder. Predeclared stop: no robust positive early gain ends expansion.",
+      "suffixes_sha256": "c13567cf3308f85496cce106a3d2444ac675b584f83e67cbba360be6f6ede2e5",
+      "instruments_sha256": "b8526664fb37bd1f6b5b885af9ba461fda342d832749e5b6417c9684ef945542",
+      "run_audit_sha256": "47bb6d8df2e2bbc8a7e96ead3b107889f8ec1ccb5f60766ac99068d46d5db366",
+      "anaphoric_summary_sha256": "2818330844c204014713f28c85eff36a08539d65d2c9bb37288496994a645b31"
+    }
+  ]
+}

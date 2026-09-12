@@ -53,7 +53,7 @@ Mother phenomenon: same-speaker in-context examples improve speech recognition. 
 
 ## L29 — Losing the Steering Gain
 
-**Status:** `PILOT-AUTHORIZED — E01A/E01B ONLY`
+**Status:** `RECONSTRUCT — E01 GATE NOT PASSED (2026-09-13)`
 
 Package: `candidates/L29_COT_CONTROL_GAIN/`
 
@@ -71,6 +71,15 @@ MathIF already owns the fact that moving/repeating a constraint near generation 
 **Hard gate:** E01A and E01B must agree that local gain declines with reasoning RL before any mechanism/localization work is allowed. Stable local gain supports the known opportunity/distance account and kills L29 as a Main paper. E01A-only decline is treated as possible support/OOD artifact; E01B-only decline implies training changed the visited-state distribution rather than local gain at the same history and requires a new candidate identity.
 
 No hidden-state work, steering method, new training, or broad model sweep is authorized before re-selection.
+
+**E01 outcome:** The shared-history and natural-state pipelines were both feasible,
+and common support retained multiple questions from every source stage. The retained
+exact-word suppression instrument nevertheless failed its validity gate. A first
+neutral reminder retrieved the original rule and created an apparent 6.25 pp decline;
+target-matched, structural, and target-free anaphoric controls removed that result and
+showed no robust positive early-checkpoint gain. Expanding the sample would estimate
+wording/lexical effects rather than the intended controller change. L29 therefore
+returns `RECONSTRUCT`; see `candidates/L29_COT_CONTROL_GAIN/notes/E01_PILOT_REPORT.md`.
 
 ---
 
