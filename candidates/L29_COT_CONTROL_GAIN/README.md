@@ -1,6 +1,6 @@
 # L29 — Losing the Steering Gain
 
-**Status:** **RECONSTRUCT-AUTHORIZED — ONE FINAL INSTRUMENT AUDIT (2026-09-13)**
+**Status:** **KILL — FINAL E01R INSTRUMENT GATE FAILED (2026-09-13)**
 **Date:** 2026-09-13
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -310,6 +310,12 @@ was caused by a neutral suffix that retrieved the original rule. Target-matched,
 structural, and target-free anaphoric controls did not yield robust positive early
 control gain. See `notes/E01_PILOT_REPORT.md` for the complete result chain.
 
+The one permitted E01R reconstruction then tested fresh balanced-binary case and tag
+control on 48 unseen step-100 questions. All questions had natural fork states, but
+case gain was 0.00 pp and tag gain was only +1.30 pp, driven solely by amber. Both
+failed the frozen 15 pp instrument gate plus semantic/template/mapping robustness.
+No later-checkpoint or confirmation outcomes were run. See `notes/E01R_REPORT.md`.
+
 ```yaml
 natural_question: PASS
 mother_phenomenon: PASS_STRONG
@@ -319,20 +325,20 @@ narrow_training_causal_quantity: PLAUSIBLE_INDEPENDENT_CONTRIBUTION
 closest_owner_density: HIGH
 causal_estimand: LOCKED_FOR_E01
 old_identification_blocker: COMMON_SUPPORT_FEASIBLE
-current_identification_blocker: FINAL_BALANCED_BINARY_INSTRUMENT_GATE
+current_identification_blocker: NO_POSITIVE_EARLY_GAIN_AFTER_FINAL_RECONSTRUCTION
 successful_result_test: PASS_ONLY_IF_E01A_AND_E01B_AGREE
 outcome_identity: LOCKED_WITH_KILL_ON_STABLE_GAIN_OR_DISAGREEMENT
 resolution_risk: SECONDARY_TO_INSTRUMENT_INVALIDITY
 training_cost: NONE_FOR_E01
-pilot: E01R_EARLY_INSTRUMENT_DEVELOPMENT_ONLY
-verdict: RECONSTRUCT_AUTHORIZED_ONE_FINAL_AUDIT
+pilot: E01R_EARLY_INSTRUMENT_GATE_COMPLETED
+verdict: KILL_NO_FURTHER_RECONSTRUCTION
 ```
 
-# **RECONSTRUCT-AUTHORIZED — ONE FINAL INSTRUMENT AUDIT**
+# **KILL — FINAL E01R INSTRUMENT GATE FAILED**
 
-The paper mainline remains **not approved**. E01R may run one early-checkpoint
-instrument-development gate using fresh balanced-binary local control. Persistent
-suppression is permanently closed. If both case and tag families pass the frozen gate,
-E01R-A/B may proceed on untouched questions; otherwise L29 is killed without another
-reconstruction. Hidden-state mechanism, steering, new training, and broader model
-sweeps remain unauthorized. See `notes/E01R_DESIGN.md`.
+The final reconstruction used fresh balanced-binary local control at step 100. Case
+gain was 0.00 pp and tag gain was +1.30 pp; both failed the pre-outcome 15 pp gate and
+the required semantic/template/mapping checks. No confirmation or later-checkpoint
+E01R outcome was run. L29 is killed without another reconstruction. Hidden-state
+mechanism, steering, new training, broader model sweeps, and further wording search
+are unauthorized. See `notes/E01R_REPORT.md`.

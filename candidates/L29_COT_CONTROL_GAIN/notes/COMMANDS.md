@@ -73,3 +73,23 @@ python candidates/L29_COT_CONTROL_GAIN/src/summarize_anaphoric.py
 
 All `python` commands above were executed with the same virtual-environment interpreter;
 `STEP` was replaced by step 0100, 1400, or 2800 on the node holding that checkpoint.
+
+## E01R final instrument audit
+
+The split and pre-outcome gate were generated and frozen with:
+
+```sh
+/home/xiang/interesting/.venv-a100/bin/python candidates/L29_COT_CONTROL_GAIN/src/prepare_e01r.py --csv /tmp/l29_e01r_mmlu.csv
+/home/xiang/interesting/.venv-a100/bin/python -m unittest discover -s candidates/L29_COT_CONTROL_GAIN/src -p 'test_*.py'
+```
+
+Only step 100 was authorized and run, on fvcrc13 GPU 0:
+
+```sh
+ssh fvcrc13 'cd /home/xiang/ssn-group-papaer && export CUDA_VISIBLE_DEVICES=0 L29_MODEL_ROOT=/tmp/xiang-l29/checkpoints HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=4; timeout 1200 /home/xiang/interesting/.venv-a100/bin/python -u candidates/L29_COT_CONTROL_GAIN/src/run_e01r.py --step step_0100 --phase natural --batch-size 8'
+ssh fvcrc13 'cd /home/xiang/ssn-group-papaer && export CUDA_VISIBLE_DEVICES=0 L29_MODEL_ROOT=/tmp/xiang-l29/checkpoints HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=4; timeout 1200 /home/xiang/interesting/.venv-a100/bin/python -u candidates/L29_COT_CONTROL_GAIN/src/run_e01r.py --step step_0100 --phase rollout --batch-size 8'
+/home/xiang/interesting/.venv-a100/bin/python candidates/L29_COT_CONTROL_GAIN/src/summarize_e01r_dev.py
+```
+
+The runner rejects any E01R step other than `step_0100`. Because the frozen gate failed,
+no command was run for step 1400, step 2800, or the confirmatory split.

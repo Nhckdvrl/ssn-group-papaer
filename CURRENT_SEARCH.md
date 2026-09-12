@@ -82,37 +82,22 @@ Mother phenomenon: same-speaker in-context examples improve speech recognition. 
 
 **Why it stays:** unlike the newly killed legacy topics, it begins from an established mother effect and already has competing computational accounts plus a discriminating operation. It remains an existing project only. **Do not use this as permission to create new speech/audio topics.**
 
+# Removed from active portfolio in the 2026-09-12 re-screen
+
 ## L29 — Losing the Steering Gain
 
-**Status:** `RECONSTRUCT-AUTHORIZED — ONE FINAL INSTRUMENT AUDIT (2026-09-13)`
+**Status:** `KILL — FINAL E01R INSTRUMENT GATE FAILED (2026-09-13)`
 
-Package: `candidates/L29_COT_CONTROL_GAIN/`
-
-> **When reasoning post-training makes chain-of-thought control collapse, is the loss merely caused by longer trajectories accumulating more opportunities to violate the constraint, or does training itself weaken the local causal influence of an explicit constraint on the reasoning policy?**
-
-Broad “represented but ignored” reasoning-control stories are already owned. L29 survives only as the same-base **training-induced local constraint→policy gain** question.
-
-The previous matched-prefix OOD blocker was closed on paper by requiring two agreeing identification legs:
-
-1. **E01A — common-support same-history gain:** shared reasoning prefixes are admitted only when they remain within the natural likelihood/support range of every compared checkpoint and prompt arm; compare the causal effect of the real constraint versus a matched neutral instruction on the next reasoning policy.
-2. **E01B — natural-state constraint-refresh gain:** each checkpoint generates its own natural, still-compliant trajectory; fork that exact prefix and compare a fresh constraint reminder against a matched neutral reminder over the next short horizon.
-
-MathIF already owns the fact that moving/repeating a constraint near generation can improve obedience. L29 does **not** claim that intervention as novelty. The unowned quantity was whether the **causal effect of the constraint itself changes over the same RL training trajectory**.
-
-**E01 outcome:** The shared-history and natural-state pipelines were both feasible, and common support retained multiple questions from every source stage. The retained exact-word suppression instrument nevertheless failed its validity gate. A first neutral reminder retrieved the original rule and created an apparent 6.25 pp decline; target-matched, structural, and target-free anaphoric controls removed that result and showed no robust positive early-checkpoint gain. Expanding the sample would estimate wording/lexical effects rather than the intended controller change. L29 therefore returns `RECONSTRUCT`; see `candidates/L29_COT_CONTROL_GAIN/notes/E01_PILOT_REPORT.md`.
-
-**E01R authorization:** One qualitative reconstruction is allowed. It removes all
-earlier constraints and neutral reminders, then applies a fresh balanced-binary local
-codebook at a natural reasoning boundary. Case and fixed-tag families must both show
-clear positive leverage at step 100 on a separate 48-question development split under
-two templates and swapped rule mappings. Failure kills L29 with no third reconstruction;
-success freezes the instrument before any untouched step-100/1400/2800 comparison.
-
-No hidden-state work, steering method, new training, or broad model sweep is authorized before re-selection.
-
----
-
-# Removed from active portfolio in the 2026-09-12 re-screen
+The original E01 showed that common-support and checkpoint-natural pipelines were
+feasible, but exact-word suppression was invalid: its apparent −6.25 pp training change
+came from rule retrieval in the neutral arm. The one authorized reconstruction removed
+all earlier constraints and used fresh balanced-binary case and tag codebooks at natural
+reasoning boundaries. On 48 unseen step-100 questions, all natural forks survived, yet
+case directional gain was 0.00 pp and tag gain was only +1.30 pp, entirely amber-driven.
+Both missed the frozen 15 pp gate and semantic/template/mapping robustness requirements.
+No step-1400/2800 or untouched-confirmation E01R outcome was run. Under the locked rule,
+L29 is killed with no further reconstruction or mechanism work. Full record:
+`candidates/L29_COT_CONTROL_GAIN/notes/E01R_REPORT.md`.
 
 ## L16 — Same World, Different Partitions
 

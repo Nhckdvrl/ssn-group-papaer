@@ -1,7 +1,7 @@
 # L29 — Agent Handoff / Pilot Brief
 
 **Project:** Losing the Steering Gain  
-**Status:** **RECONSTRUCT-AUTHORIZED — one final instrument audit**
+**Status:** **KILL — final E01R instrument gate failed**
 **Date:** 2026-09-13
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -19,6 +19,12 @@ mid-reasoning balanced-binary codebook. Run `notes/E01R_DESIGN.md` exactly as a 
 gate: step 100 and instrument-development questions first; no later checkpoint or
 confirmation outcome until both case and tag instruments pass. Failure kills L29 with
 no further wording search.
+
+**Final E01R outcome:** All 48 step-100 development questions had natural forks, but
+case directional gain was 0.00 pp and tag gain was +1.30 pp. Both failed the frozen
+15 pp gate and robustness checks. No later checkpoint or untouched confirmation
+outcome was generated. `notes/E01R_REPORT.md` is the final record. Do not reconstruct
+L29 again or begin mechanism work.
 
 Before doing substantive work, sync the latest `main` and read:
 
