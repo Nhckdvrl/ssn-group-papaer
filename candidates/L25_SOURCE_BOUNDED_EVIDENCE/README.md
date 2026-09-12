@@ -8,10 +8,12 @@ Can an LLM distinguish “all needed facts appear somewhere across several docum
 
 ## Why it cannot be the paper
 
-The question only becomes crisp after introducing a specialized patent rule and an artificial `A+B` / `C` source-partition manipulation. That makes the scientific object feel engineered around the experiment rather than naturally pressing on its own.
+The problem is **not** that patent law is technical, domain-specific, or lacking a lifestyle example. Those are not selection failures by themselves.
 
-The broader claim—rule-conditioned evidence composition—is too abstract without that construction, while the natural patent version is too narrow and domain-specific. A reviewer can reasonably compress it to a patent §102/§103 distinction plus a source-partition ablation.
+The failure is that the proposed general object — `rule-conditioned evidence composition` — was inferred mainly from a specialized patent distinction and then made crisp by an artificial matched source-partition intervention. In other words, the manipulation was doing too much work to define the scientific question.
 
-This fails the intended taste test: a strong candidate should have a natural everyday/scientific tension before the benchmark, rule, or intervention is explained.
+We did not establish that there is an independently motivated, pre-existing NLP/LLM uncertainty about this exact quantity with enough scientific pressure, broad consequence, and natural evidence outside the experiment we designed. Without that independent object, the broader framing becomes an abstraction around a patent §102/§103 distinction; with only the patent setting, reviewer compression to “§102/§103 plus a source-partition ablation” remains strong.
 
-**Do not rescue by adding more domains, more source partitions, or more formal rules.** Those would broaden the construction rather than improve the question.
+This fails **scientific naturalness**, not layperson simplicity. A technical question is fully acceptable when domain experts would recognize the unresolved object before seeing our benchmark or intervention.
+
+**Do not rescue merely by adding more domains, source partitions, or formal rules.** Reopen only if an independently established scientific question makes source composition the natural estimand rather than the experiment defining the question.
