@@ -16,7 +16,8 @@
 - Transfer the **origin mechanism** of excellent papers into quieter domains rather than extending their fashionable topic directly.
 - A candidate may combine several reliable literatures; it need not depend on one paper's unexplained anomaly.
 - Classical distinctions only count when they change a modern operation, representation, inference, evaluation, or scientific consequence. “Does the LLM know the distinction?” is normally too weak.
-- **Natural-question gate:** if the motivating example only becomes compelling after inventing A/B/C toy facts, a special formal rule, or an experiment-specific partition, treat that as a warning. The pressure should be understandable before the manipulation is explained.
+- **Natural means scientifically natural, not everyday or layperson-simple.** A technical/domain-specific question is fine if the object and uncertainty pre-exist our benchmark/intervention and are recognized by the field. The warning sign is not “needs expertise”; it is “the question only exists because we invented the manipulation.”
+- A plain example is optional communication support, never a selection gate.
 - No survivor quota. Kill aggressively rather than fill slots.
 
 ---
@@ -82,7 +83,9 @@ The classical identity/perspective tension is clean, but the current paper ident
 ### L25 — Evidence Exists Somewhere ≠ One Source Establishes It
 **Status:** `NO-GO / ARCHIVED`
 
-The patent source-composition idea failed the natural-question gate. Its clearest motivation required a specialized §102/§103 rule plus an invented `A+B` / `C` source-partition example. Without that machinery the broad claim was too abstract; with it the paper became too narrow and domain-specific. Do not rescue through more partitions/domains/rules.
+The patent source-composition route is archived because the proposed **general scientific object** (“rule-conditioned evidence composition”) was reverse-engineered around a specialized doctrinal distinction and a matched source-partition intervention. The concern is not that patent law is technical or non-layperson-friendly; a technical domain is fully acceptable. The problem is that outside the constructed intervention, we did not establish a sufficiently natural, independently motivated NLP/LLM uncertainty with its own scientific pressure and paper-scale consequence.
+
+Do not rescue merely by adding more partitions/domains/rules. Reopen only if an independently established scientific question makes source-composition the natural estimand rather than the experiment defining the question.
 
 Record: `candidates/L25_SOURCE_BOUNDED_EVIDENCE/README.md`.
 
