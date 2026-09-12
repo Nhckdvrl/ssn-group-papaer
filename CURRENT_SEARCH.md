@@ -53,7 +53,7 @@ Mother phenomenon: same-speaker in-context examples improve speech recognition. 
 
 ## L29 — Losing the Steering Gain
 
-**Status:** `SERIOUS / PRE-PILOT — IDENTIFICATION BLOCKER — NO COMPUTE`
+**Status:** `PILOT-AUTHORIZED — E01A/E01B ONLY`
 
 Package: `candidates/L29_COT_CONTROL_GAIN/`
 
@@ -61,7 +61,16 @@ Package: `candidates/L29_COT_CONTROL_GAIN/`
 
 Broad “represented but ignored” reasoning-control stories are already owned. L29 survives only as the same-base **training-induced local constraint→policy gain** question.
 
-The blocker remains decisive: a matched teacher-forced reasoning state may be OOD for later checkpoints. Before compute, the project must identify a matched-state intervention whose causal interpretation survives a natural-state control. If local gain is stable after this correction, the known length/opportunity account wins and L29 dies; do not rescue it as a metric/probe paper.
+The previous matched-prefix OOD blocker has been closed on paper by requiring two agreeing identification legs:
+
+1. **E01A — common-support same-history gain:** shared reasoning prefixes are admitted only when they remain within the natural likelihood/support range of every compared checkpoint and prompt arm; compare the causal effect of the real constraint versus a matched neutral instruction on the next reasoning policy.
+2. **E01B — natural-state constraint-refresh gain:** each checkpoint generates its own natural, still-compliant trajectory; fork that exact prefix and compare a fresh constraint reminder against a matched neutral reminder over the next short horizon.
+
+MathIF already owns the fact that moving/repeating a constraint near generation can improve obedience. L29 does **not** claim that intervention as novelty. The unowned quantity is whether the **causal effect of the constraint itself changes over the same RL training trajectory**.
+
+**Hard gate:** E01A and E01B must agree that local gain declines with reasoning RL before any mechanism/localization work is allowed. Stable local gain supports the known opportunity/distance account and kills L29 as a Main paper. E01A-only decline is treated as possible support/OOD artifact; E01B-only decline implies training changed the visited-state distribution rather than local gain at the same history and requires a new candidate identity.
+
+No hidden-state work, steering method, new training, or broad model sweep is authorized before re-selection.
 
 ---
 
@@ -129,6 +138,6 @@ Before promoting a hook:
 
 Do not mine one paper's Discussion as the default source of novelty. Prefer 2–4 independent strong papers exposing the same abnormal quantity under different names, or an old empirical law whose load-bearing premise genuinely changes in the modern regime.
 
-Search V–VII are the current anti-duplication frontier. In particular, do not reopen reasoning-length/overthinking, CoT faithfulness, metacognition-control, RLVR entropy/mode collapse/capability boundary, self-correction, instruction-following loss, generic post-training rerouting, or other recently killed parents by adding another intervention/model family.
+Search V–VII are the current anti-duplication frontier. In particular, do not reopen reasoning-length/overthinking, CoT faithfulness, metacognition-control, RLVR entropy/mode collapse/capability boundary, self-correction, generic instruction-following loss, generic post-training rerouting, or other recently killed parents by adding another intervention/model family.
 
 > **The goal is not to keep a portfolio full. The goal is to find one scientific object worth months of mechanism, boundary, intervention, and theory work.**
