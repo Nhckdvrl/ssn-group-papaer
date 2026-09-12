@@ -1,6 +1,6 @@
 # Research Topic Selection — Decide Whether a Question Deserves Compute
 
-Updated: 2026-09-12. Target: ACL / EMNLP / NAACL Main.
+Updated: 2026-09-13. Target: ACL / EMNLP / NAACL Main.
 
 This file evaluates a **concrete candidate** after search has found a worthwhile question.
 
@@ -220,6 +220,28 @@ Do not shrink the claim until it fits the hardware.
 
 This gate would have stopped L19 before substantial compute: the matched effect was bounded below an already small parent effect and the meaningful null required parent-scale budgets.
 
+### First-stage instrument gate — L29/K190 lesson
+
+A separate failure mode occurs when the paper asks how an **intervention effect changes across training stages/checkpoints**, but the intervention may not actually control the target behavior even at the reference checkpoint.
+
+Before authorizing the cross-stage comparison, ask:
+
+> **“If I apply this intervention at the earliest/reference condition, do I have reason to expect a material and interpretable causal effect?”**
+
+If this is uncertain, the first authorization should be an **instrument-development audit only**, on a development split that is disjoint from the confirmatory units.
+
+For language-mediated interventions, predeclare where appropriate:
+
+- a minimum meaningful first-stage effect;
+- semantic-direction symmetry rather than one favored token/label;
+- multiple non-sign-selected wording/template/mapping variants;
+- controls for lexical priming, rule retrieval, and direct injection of the scored surface event;
+- a stop rule before later checkpoints if the early first stage fails.
+
+A near-zero reference intervention makes the training-dynamics estimand unidentified. Do not interpret a difference between two ineffective interventions as mechanism change.
+
+Do not rescue a failed first stage by unrestricted prompt search if the successful rescue would change the paper identity from mechanism science to elicitation/evaluator optimization. That requires fresh selection.
+
 ---
 
 ## 9. Contribution-Path and Main-Level Gate
@@ -291,6 +313,7 @@ Before `PILOT-AUTHORIZED`, all must have satisfactory answers:
 - Is the mother phenomenon real enough for the proposed paper identity?
 - Is the core quantity identified rather than proxied by a neighboring label?
 - Is the decisive operation actually discriminating?
+- **If the claim compares an intervention effect across stages, is there a bounded way to verify that the intervention has material first-stage leverage at the reference condition before touching the training trend?**
 - Is the central question not already owned?
 - Would the strongest positive result establish something substantial?
 - Are plausible outcomes interpreted in advance rather than narratively rescued later?
