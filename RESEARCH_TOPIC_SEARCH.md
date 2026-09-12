@@ -1,168 +1,274 @@
-# Research Topic Search: Find Questions with a Contribution Path
+# Research Topic Search — Find the Right Scientific Question
 
-Updated: 2026-09-12. Target: ACL / EMNLP / NAACL Main; strong Main and award work provide calibration.
+Updated: 2026-09-12. Target: ACL / EMNLP / NAACL Main.
 
-This governs search, not experiment execution. [The playbook](TOPIC_SEARCH_PLAYBOOK.md) supplies optional generators. [Selection](RESEARCH_TOPIC_SELECTION.md) evaluates concrete candidates. [Execution](RESEARCH_EXECUTION.md) governs development after bounded authorization.
+This file governs **where and how to search**. It does not decide whether a concrete candidate passes selection, and it does not prescribe experiments.
 
-## 0. Mandatory Anti-Resurrection Check
+- Search direction and rough-lead generation: **this file**
+- Optional generators: [TOPIC_SEARCH_PLAYBOOK.md](TOPIC_SEARCH_PLAYBOOK.md)
+- Candidate gates and pilot authorization: [RESEARCH_TOPIC_SELECTION.md](RESEARCH_TOPIC_SELECTION.md)
+- Work after authorization: [RESEARCH_EXECUTION.md](RESEARCH_EXECUTION.md)
+- Current portfolio and temporary taste: [CURRENT_SEARCH.md](CURRENT_SEARCH.md)
 
-Before generating, naming, or externally searching a new lead, first inspect the anti-resurrection record:
+The target intellectual shape is:
 
-- `failed/KILLED_LEDGER.md` for the scientific parent, estimand, failure mode, and reopen fence;
-- archived/no-go packages under `candidates/` when the lead resembles a previous candidate;
-- `Nhckdvrl/Interpretability-try` when the proposed question, mechanism, intervention, or dataset may inherit earlier mechanistic work.
+> **easy to understand, hard to answer**
+>
+> **question first → stable phenomenon or real scientific tension → explanation second → method last**
 
-Search by the **scientific object, estimand, decisive operation, and nearest synonyms**, not only by a proposed title. If a lead matches a killed route, it must state **`Not KXXX because ...`** and identify qualitatively new leverage that changes the inference or contribution. A new dataset, model, prompt, paper title, narrower mechanism, historical version, or cleaner implementation is not enough by itself. If that case cannot be made, discard the lead before deep literature search or compute.
+---
 
-Do not assign a new kill ID to a rediscovered parent. Record it as a duplicate hit on the existing KXXX. At the end of a search round, every seriously investigated rejection must be recorded either in the killed ledger (new parent) or as an explicit duplicate hit in the dated search-round record. This check precedes, rather than replaces, fresh external novelty search.
+## 1. Current Search Taste: What We Actually Want
 
-## 1. Search for More Than an Interesting RQ
+Open-ended search is **not topic-neutral**. Current priority is model science: questions about why modern language models behave, learn, reason, represent, or change the way they do.
 
-Find a **natural scientific uncertainty** and a plausible route to an independently valuable answer. Natural does **not** mean everyday, layperson-friendly, or explainable without domain knowledge. A question may be technical, mathematical, linguistic, statistical, scientific, or domain-specific.
+### Primary search space
 
-Natural means the scientific object and uncertainty exist **before our proposed benchmark, prompt, intervention, toy construction, or method**. A domain expert should recognize why the question follows from the field's theory, evidence, practice, unresolved contradiction, measurement problem, or empirical regularity. The experiment may be highly controlled or artificial; the **question should not be reverse-engineered from the experiment**.
+Spend most search budget on:
 
-A plain example is only a communication aid when one is useful, not a selection gate. Do not penalize a strong research question merely because it lacks a lifestyle example or requires technical background.
+1. **Stable model anomaly → unresolved mechanism**
+   - a strong, replicated behavior already exists;
+   - the parent owns the phenomenon, not the explanation;
+   - two or more plausible computational accounts make different predictions;
+   - a causal or discriminating operation can separate them.
 
-For a rough lead write:
+2. **Training / post-training dynamics**
+   - pretraining → SFT → preference/RL/RLVR changes a capability or behavior in a surprising way;
+   - ask whether information is learned, selected, suppressed, rerouted, overwritten, or merely read out differently;
+   - prefer matched checkpoints, controlled training stages, or other designs that identify the transition.
 
-1. One-sentence RQ; optionally one compact scientific/domain example if it clarifies the object.
-2. The best existing explanation or practice.
-3. What it leaves unresolved, and why that matters.
-4. A candidate idea or scientific operation that could change the answer.
-5. The observation that would distinguish it from the existing account.
-6. Plausible data and independent scientific units.
-7. Closest ownership risk and the consequence of resolving the question.
+3. **Reasoning / inference-time computation**
+   - when is a decision formed;
+   - what causes revision, commitment, recovery, overthinking, or failure to use available information;
+   - reasoning vs non-reasoning / base vs instruct differences are useful only when they expose a deeper computational condition.
 
-Keep this short. Do not build a full candidate package for every thought. If there is only an attractive RQ but no contribution path, label it as such rather than promoting it through rhetoric.
+4. **Representation → computation → behavior**
+   - distinguish absent information from inaccessible, suppressed, misread, or policy-overridden information;
+   - probes alone are not the target; causal use is.
 
-## 2. Read Strong Papers for Their Intellectual Progression **and Their Origin**
+5. **Old empirical law / challenge → modern computational re-explanation**
+   - revisit 2018–2023 claims that genuinely guided research effort;
+   - modern models must change a load-bearing premise, not merely improve the score;
+   - ideal outcome is a new conditional law, bottleneck migration, or explanation of why the old result held.
 
-Before a normal search round, inspect relevant recent ACL/EMNLP/NAACL papers, prioritizing strong paper identities and pertinent award work. Use top-ML work where it owns the technical question.
+6. **Two strong results that conflict on the same scientific quantity**
+   - same object, unit, gold/observable, estimand, and intervention meaning;
+   - the paper should explain the hidden condition that makes both results true, not rerun a horse race.
 
-Ask what readers believed before, what the paper changed, which operation enabled that change, and how the study developed beyond its first observation. Read results and appendices when assessing actual depth and workload.
+### Strong negative search priors
 
-A large unexplained table entry is a lead, not a claim to open explanation space. A paper's "future work" is not a novelty certificate. Awards do not confer importance on every follow-up.
+Unless a question is unusually compelling and clearly transcends the area, **do not spend normal search budget** on:
 
-Do not imitate titles, three-claim structures, or a hypothesis/probe/patch template. Read for the inferential advance.
+- RAG, retrieval, search, evidence retrieval;
+- benchmark construction, benchmark auditing, benchmark contamination;
+- metric/evaluator papers, generic evaluation-protocol fixes;
+- annotation, adjudication, labeling workflow, dataset-quality or dataset-bias papers;
+- data-first reverse search where the dataset field creates the question;
+- systematic review / evidence-synthesis infrastructure;
+- generic Agent / long-term-memory / RL / judge / harness questions;
+- new speech/audio topics;
+- pure linguistic competence tests;
+- generic bias, calibration, hallucination, prompt-sensitivity surveys.
 
-### 2.1 Topic Provenance Card
+These are **taste priors, not claims that the areas are scientifically invalid**. A genuinely exceptional question can override them, but “clean gold” or “easy data” is not enough.
 
-For each especially useful Best / Outstanding / strong Main paper, record **where the question came from**, not only what the final paper did:
+### Taste test before deep search
 
-- **Scientific ancestry:** the classical problem, older theory, empirical regularity, professional practice, or field assumption that predates the current LLM fashion cycle.
-- **Immediate pressure:** the concrete contradiction, unexplained robust observation, measurement bottleneck, hidden assumption, weakly evidenced public claim, or real workflow failure that made the question live.
-- **Why now:** what new model regime, representation, natural dataset, intervention, causal design, or measurement operation makes the old uncertainty answerable now.
-- **First decisive operation:** the cheapest observation/intervention that could have changed the authors' view before the full paper existed.
-- **Growth path:** how that first result became a larger explanation, boundary, law, consequence, or intervention.
-- **Transferable origin mechanism:** the reusable way of *finding* the problem. Transfer this generator to quieter scientific objects; do not copy the paper topic.
-- **Fashion density:** whether the paper's identity depends on a currently saturated label or instead on a scientific pressure that would remain interesting if the fashionable system name disappeared.
+Ask:
 
-A strong provenance usually reaches further back than “Agents/RAG/RL became popular.” A fashionable technology can provide **new leverage**, but fashion itself is not scientific ancestry.
+> If the dataset name, benchmark name, metric name, and system label disappeared, would I still urgently want to know the answer?
 
-Useful recurring provenance patterns include:
+and:
 
-- old problem/law + previously missing measurement;
-- old theoretical debate + genuinely new model regime;
-- important causal estimand + an identification bottleneck solved by a mature design from another field;
-- stable engineering anomaly + no satisfactory explanation;
-- mathematically convenient / conventional field assumption + a consequential counterexample;
-- proxy metric + a more consequential target quantity;
-- strong public/theoretical claim + surprisingly weak direct evidence;
-- real professional workflow + natural process data;
-- cheap destructive/control intervention + an unexpectedly stable effect worth explaining.
+> Is the exciting part “why does the model work this way?”, or merely “the current data/evaluation pipeline is imperfect?”
 
-## 3. Search Broadly, Not Mechanically — and Penalize Fashion Density
+For current search, strongly prefer the former.
 
-For open-ended search, inspect several genuinely distinct domains or generators. Do not repeatedly instantiate "X is not Y," representation-versus-readout, a favorite intervention, or one fashionable area.
+---
 
-A user-requested bounded recheck of an existing route is not an invitation to start broad topic search.
+## 2. Mandatory Refresh and Anti-Resurrection
 
-No survivor quota. Zero strong leads is an acceptable outcome. Search priorities are priors, not universal exclusions: a concrete, important question in a crowded area can survive; obscurity in a quiet area is not novelty.
+Before generating or naming a lead:
 
-Current negative search priors are stronger for **very hot directions** such as generic Agent/long-term-memory/RAG/RL, prompt engineering, judge/annotation-only studies, generic bias/calibration/hallucination reports, and benchmark creation without a substantive question. The problem is not merely competition: in saturated areas, a natural RQ is more likely to be reviewer-compressed into an existing parent, and the paper identity is more likely to depend on a particular harness/framework rather than on a durable scientific object.
+1. read `CURRENT_SEARCH.md`;
+2. inspect `failed/KILLED_LEDGER.md`;
+3. inspect recent `search_rounds/`;
+4. inspect nearby archived candidates;
+5. for mechanistic ideas, check relevant `Nhckdvrl/Interpretability-try` history.
 
-For an open-ended topic search, strongly deprioritize a lead when removing the words **Agent / memory framework / RAG / RL / judge / harness** makes its contribution disappear. Harness-dependent results carry an additional burden: the inference should survive reasonable framework choices, and natural data/gold should exist independently of the harness. Do not spend search budget building infrastructure merely to discover whether the scientific question exists.
+Search old failures by **scientific object + estimand + decisive operation + synonyms**, not by title.
 
-These are strong priors, not absolute bans: a crowded area can still enter if the scientific question clearly predates and transcends the fashionable implementation and there is a decisive framework-independent operation.
+If a lead resembles KXXX, it must state:
 
-Topics requiring a long specialist linguistic setup also have a naturalness burden. A classical linguistic or philosophical distinction is useful only when it exposes a broader modern computation, inference, measurement, or representation problem; “does the LLM know the distinction?” is normally too weak.
+> **Not KXXX because ...**
 
-Recurring positive tracks include concrete model computation, classic NLP/scientific problems reopened by new leverage, scientific documents, structured evidence, consequential measurement problems, and quiet domains with mature natural gold. Rotate tracks rather than declaring one template the only route to a good paper.
+The reason must be qualitatively new scientific leverage. A new model, dataset, prompt, benchmark, domain, narrower mechanism, or prettier diagnostic does not reopen a dead parent.
 
-Question first does not mean methods are irrelevant to discovery. A new operation can reveal an answerable old question. Reject method-first work when the problem exists only to showcase the tool.
+Duplicate hits keep the old kill ID.
 
-## 4. Anomalies Lower One Risk, Not All Risks
+---
 
-Established anomaly -> unresolved explanation is a useful generator, not the privileged definition of research.
+## 3. Generate from Scientific Pressure, Not from Available Tools
 
-Audit separately:
+A good lead should have an origin that exists before our proposed experiment.
 
-- Is the parent phenomenon credible in the regime we can study?
-- Is a consequential explanation actually unresolved?
-- Would our operation separate explanations rather than reproduce a generic fact?
-- Does the answer have an independent contribution after direct follow-ups?
+Good origins include:
 
-New phenomenon discovery is allowed through principled exploration and validation. Do not demand that every outcome remain publishable. Require informative decisions, including stopping.
+- a replicated anomaly whose explanation is weak;
+- a model-family or training-stage split that existing theory does not explain;
+- a strong causal claim supported only by correlational/local evidence;
+- an old empirical law whose premise has changed in the foundation-model regime;
+- two strong papers that disagree on the **same quantity**;
+- a widely used mechanistic explanation that has never survived a decisive intervention;
+- a destructive or matched control that reveals a surprising computational invariance or dependency.
 
-## 5. Data and Identification Enter Before Attachment
+Bad origins include:
 
-For each serious lead, ask what observation, gold, manipulation, or intervention identifies the proposed quantity.
+- “we have activation patching; what can we patch?”;
+- “this dataset has an interesting field”;
+- “nobody tested model X on task Y”;
+- “X is not Y” followed by a search for somewhere to instantiate the distinction;
+- a single odd table cell with no evidence that the mother phenomenon is stable.
 
-Prefer natural existing data when it fits. Minimal controlled construction is legitimate when it gives cleaner leverage. Avoid elaborate synthetic worlds, circular LLM-generated gold, or variables defined to make the hypothesis win.
+Methods can reveal questions, but the question must survive without the method name.
 
-Distinguish the natural object, the measured proxy, and the inference. List what the manipulation changes. A plausible source does not automatically validate the construct.
+---
 
-Before investing in execution, apply selection's successful-result test: even with the desired effect, could the main interpretation still be unsupported?
+## 4. Mine Strong Papers for Topic Provenance
 
-## 6. Two-Sided Novelty Search
+Read ACL / EMNLP / NAACL Main and award work for **where the question came from**.
 
-Search classical parents, direct recent neighbors, alternative terminology, and work that owns the proposed explanation rather than just the dataset. Refresh on material claim mutation.
+For a useful paper, record a compact Topic Provenance Card:
 
-Verify primary sources, versions, and publication status. A search miss is not evidence of priority. An abstract may establish a possible neighbor; inspect the relevant full-text operation before declaring full collision.
+- **Scientific ancestry:** old problem, empirical law, computational claim, or model behavior.
+- **Immediate pressure:** anomaly, contradiction, weak causal evidence, changed model regime, or unexplained transition.
+- **Why now:** what modern model/training/intervention makes the old question newly answerable.
+- **First decisive operation:** the cheapest observation that could have changed the authors’ belief.
+- **Growth path:** how the paper grows from first result to explanation, boundary, consequence, or intervention.
+- **Transferable generator:** the discovery move, not the subject matter.
 
-Write both the strongest compression and the strongest surviving contribution.
+Do not copy titles, topics, or section structures. Transfer the **origin mechanism**.
 
-- Familiar ingredients do not prove that the relationship is known.
-- An untested combination does not prove the relationship matters.
-- A new model/domain can be important if it changes a substantive answer, not just coverage.
-- A new name or broader abstraction does not enlarge an unchanged result.
-- Distinguish direct ownership, insufficient significance, and unresolved evidence.
+For the current taste, especially study strong papers with shapes like:
 
-Use bounded literature review. Do not indefinitely refine wording to avoid every neighbor, or kill a natural contribution merely because its supporting concepts are familiar.
+> stable behavior → computational account → causal discrimination → boundary/consequence
 
-## 7. Round Workflow
+or
 
-1. **Refresh:** inspect current user scope, dated portfolio, candidate status, `failed/KILLED_LEDGER.md`, nearby archived routes, relevant `Interpretability-try` history, and remote changes.
-2. **Anti-resurrection:** for each prospective lead, record the closest KXXX/archived route and why the lead is or is not a genuine reopen.
-3. **Calibrate:** read relevant strong work for **topic provenance**, intellectual advance, decisive evidence, development, and scope.
-4. **Generate:** transfer the *origin mechanisms* of strong papers into several quieter scientific tracks; do not copy their subject labels.
-5. **Challenge:** test ownership, successful-result inference, scientific naturalness, fashion/harness dependence, and contribution size.
-6. **Promote selectively:** use the selection document for bounded authorization, not a premature paper endorsement.
-7. **Record:** update only the relevant existing documents; new dead parents go to the killed ledger, duplicate hits keep the old KXXX and are noted in the dated search-round record.
+> old empirical claim → new model regime → matched test → revised law/explanation
 
-A killed route may be reconsidered with qualitatively new leverage, evidence, or literature understanding. A new title or more available GPUs is not such a reason.
+---
 
-## 8. Stop and Handoff Rules
+## 5. Rough Lead Card — Keep It Small
 
-Stop a lead when the remaining answer is trivial, a true collision owns the paper, data cannot plausibly identify it, a credible contribution path is absent after bounded investigation, or the scientific identity collapses into a saturated harness/framework choice.
+Before deep literature work, write only:
 
-Do not discard solely because the expected sign is uncertain: that may be the reason to investigate. Do not promote solely because the parent phenomenon is established.
+### Hook
+One plain-language scientific question.
 
-Formal selection receives the RQ **and** candidate idea/operation **and** prospective contribution, with unresolved risks. It need not receive a finished answer.
+### Origin
+Which stable phenomenon, old empirical claim, training transition, or contradiction caused it?
 
-Use existing locations:
+### Why care
+What understanding of model learning/computation would change if the answer differs?
 
-- Portfolio and priorities: CURRENT_SEARCH.md, with dates and links rather than duplicated run instructions.
-- Candidate decisions/evidence: concrete candidate package.
-- Archived-route memory: existing failed ledger when an archive decision is authorized.
-- Reusable generators: TOPIC_SEARCH_PLAYBOOK.md.
-- Durable process changes: these root documents only during an authorized workflow revision.
+### Mother phenomenon
+Is it already credible, or are we secretly betting the paper on discovering it?
 
-## 9. Durable Lesson from L12
+### Candidate accounts
+What are the smallest live explanations? Do not invent three accounts merely to fill a form.
 
-A strong question can survive while a sequence of proposed paper identities fails. Search should not merely find another attractive label for inherited experiments. Ask what new idea would explain or predict something the old account cannot, and what operation could establish it.
+### Decisive operation
+What observation/intervention would actually distinguish the accounts?
 
-Equally, avoid the reverse shortcut: several nearby owners do not prove every possible synthesis is owned. A bounded review may conclude "no sufficiently valuable, identifiable contribution path found" without claiming that the entire RQ is dead.
+### Closest dead route
+KXXX / archived candidate / none. If similar: `Not KXXX because ...`.
 
-**Search for a worthwhile answerable uncertainty, a credible way to resolve it, and a reason the answer would matter. None substitutes for the others.**
+### Immediate owner risk
+Who may already own the question or decisive operation?
+
+### Verdict
+Only:
+- `NO`
+- `MAYBE — blocker`
+- `SERIOUS — selection audit required`
+
+Do not create a full candidate package for a rough lead.
+
+---
+
+## 6. SAME-QUANTITY Check Before Claiming a Reversal or Contradiction
+
+When connecting old and modern work, verify:
+
+- same scientific object;
+- same unit;
+- same observable/gold when applicable;
+- same estimand;
+- same intervention meaning.
+
+If one side measures NER mentions and the other coreference markables, or one measures consistency and the other correctness, that is not a contradiction until the bridge is independently justified.
+
+Shared terminology is not shared quantity.
+
+---
+
+## 7. Bounded Owner Search
+
+For any `MAYBE` or better lead, search at least:
+
+- exact RQ and close paraphrases;
+- parent scientific object;
+- decisive intervention/operation;
+- same conclusion;
+- closest older paper;
+- 2024–2026 successors;
+- “revisiting / rethinking / does X still / LLM era” variants;
+- relevant ACL / EMNLP / NAACL / TACL and, when technical ownership matters, ICLR / ICML / NeurIPS;
+- current arXiv when material.
+
+Distinguish:
+
+- **direct collision** — the core answer and consequence are already owned;
+- **component overlap** — ingredients are known but the new inference is not;
+- **insufficient significance** — technically open but too small;
+- **genuine open parent** — important unresolved statement plus a credible way to answer it.
+
+Do not keep refining wording just to escape a neighbor.
+
+---
+
+## 8. Search Stops Before Selection
+
+Search should answer only:
+
+> Is this a natural question in the right search space, with a credible unresolved scientific gap and a plausible discriminating operation?
+
+It should **not** perform every authorization gate itself.
+
+Once a lead reaches `SERIOUS`, hand it to `RESEARCH_TOPIC_SELECTION.md` for:
+
+- identification / construct validity;
+- successful-result inference;
+- outcome interpretation;
+- feasibility and noise floor;
+- paper-scale contribution;
+- pilot authorization.
+
+This separation is intentional. Search should generate the **right kind of question**; selection should kill weak realizations of it.
+
+---
+
+## 9. Round Discipline
+
+A normal round is:
+
+> **refresh → anti-resurrection → provenance mining → generate → SAME-QUANTITY → owner search → kill or hand off**
+
+Record seriously investigated dead hooks in the dated `search_rounds/` record so the next round does not rediscover them.
+
+No survivor quota. Zero survivors is valid.
+
+But do not confuse aggressive filtering with search quality: repeatedly generating the wrong class of safe data/evaluation topics and then killing them is not progress.
+
+> **The goal is not to find the easiest question to validate. The goal is to find a model-science question worth spending months understanding.**
