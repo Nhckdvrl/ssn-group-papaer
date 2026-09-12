@@ -72,7 +72,9 @@ narrow the claim until it fits.
    and source page; 98.4x median length contrast; targets identical token for token;
    verified to render byte-identical loss tokens under both Llama-3 and Qwen chat
    formats. A reusable instrument for any "what does length do" question.
-4. **A working 8B SFT + evaluation stack**, with three real faults found and fixed
+4. Model checkpoints (90 GB) were deleted on archive; they regenerate from code, data
+   and configs. All evaluation results are kept.
+5. **A working 8B SFT + evaluation stack**, with three real faults found and fixed
    (8x gradient from `model_accepts_loss_kwargs`, missing checkpoint tokenizer, lr/batch
    mismatch) and one alternative explanation empirically excluded (evaluation format).
 
