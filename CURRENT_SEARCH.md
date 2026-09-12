@@ -16,6 +16,7 @@
 - Transfer the **origin mechanism** of excellent papers into quieter domains rather than extending their fashionable topic directly.
 - A candidate may combine several reliable literatures; it need not depend on one paper's unexplained anomaly.
 - Classical distinctions only count when they change a modern operation, representation, inference, evaluation, or scientific consequence. “Does the LLM know the distinction?” is normally too weak.
+- **Natural-question gate:** if the motivating example only becomes compelling after inventing A/B/C toy facts, a special formal rule, or an experiment-specific partition, treat that as a warning. The pressure should be understandable before the manipulation is explained.
 - No survivor quota. Kill aggressively rather than fill slots.
 
 ---
@@ -64,18 +65,6 @@ Package: `candidates/L23_SIMILARITY_NOT_PROVENANCE/`
 
 Combines generated-idea overlap/plagiarism, future/held-out idea reconstruction, and causal provenance. Audit direct recent owners, full model cutoffs, and overlap yield before compute.
 
-### L25 — Evidence Exists Somewhere ≠ One Source Establishes It
-**Status:** `SERIOUS / PRE-PILOT — DATA-CONSTRUCTION AUDIT — NO COMPUTE`  
-Package: `candidates/L25_SOURCE_BOUNDED_EVIDENCE/`
-
-> When all required facts are present somewhere across several valid documents, can an LLM preserve which source supports which fact when the decision rule requires one source to establish the whole claim, or does it fuse the context into a single bag of evidence?
-
-Natural laboratory: patent novelty/anticipation normally requires one reference to disclose the whole claim, while obviousness/inventive-step reasoning can combine references under additional conditions. The lead was exposed by a repeated benchmark simplification: PatentMatch drops EPO Y citations because they are semantically too close to X for its matching task; FiNE-Patents filters inventive-step rejections; PANORAMA includes §102/§103 and shows the final decision remains difficult after prior-art retrieval.
-
-Identity fence: **not generic patent classification, not source count, not retrieval, not dependent evidence.** L25 survives only if a matched causal intervention holds atomic evidence fixed while manipulating source partition / aggregation rule and shows a broader rule-conditioned evidence-composition result.
-
-Next step is data-only E00: verify enough clean two-reference §103 cases with examiner-supported complementary feature mappings in released PANORAMA. No model compute before this gate.
-
 ---
 
 ## Hold / deprioritized
@@ -88,22 +77,18 @@ The classical identity/perspective tension is clean, but the current paper ident
 
 ---
 
-## Latest search round
+## Most recent rejection
 
-Record: `search_rounds/2026-09-12_SOURCE_BOUNDED_EVIDENCE_SEARCH.md`
+### L25 — Evidence Exists Somewhere ≠ One Source Establishes It
+**Status:** `NO-GO / ARCHIVED`
 
-The strongest lead from this pass is **L25**. It emerged by tracing a classical professional inference rule through what successive NLP datasets simplified away, rather than by extending a hot area.
+The patent source-composition idea failed the natural-question gate. Its clearest motivation required a specialized §102/§103 rule plus an invented `A+B` / `C` source-partition example. Without that machinery the broad claim was too abstract; with it the paper became too narrow and domain-specific. Do not rescue through more partitions/domains/rules.
 
-Directly rejected in this pass:
-- generic §102-vs-§103 patent classification — PANORAMA owns it;
-- prior-art retrieval / feature matching — PatentMatch, FiNE-Patents and PANORAMA own it;
-- EPO X-vs-A semantic relevance — PatentMatch owns it;
-- generic multi-source evidence aggregation — crowded fact-verification parent;
-- generic context/source admissibility — already emerging as a direct long-context/source-boundary object.
+Record: `candidates/L25_SOURCE_BOUNDED_EVIDENCE/README.md`.
 
-The remaining novelty is narrow but meaningful only if it is **causal**: same atomic evidence, different source partition / aggregation rule.
-
-Previous provenance-calibrated search record: `search_rounds/2026-09-12_AWARD_TOPIC_PROVENANCE_SEARCH.md`.
+Previous provenance-calibrated search records:
+- `search_rounds/2026-09-12_SOURCE_BOUNDED_EVIDENCE_SEARCH.md`
+- `search_rounds/2026-09-12_AWARD_TOPIC_PROVENANCE_SEARCH.md`
 
 ---
 
