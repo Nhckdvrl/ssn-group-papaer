@@ -109,3 +109,43 @@ This is analogous to the L19 lesson: the scientific gap may remain interesting, 
 ### Verdict
 
 **DROP for current project.** Do not reopen as `pretraining creates latent reasoning potential`, `why diversity early / quality late`, or `why SFT cannot catch up` unless a later paper supplies a cheap natural instrument/checkpoint resource that makes the stage interaction identifiable without reproducing large-scale pretraining.
+
+---
+
+## Hook D — Fewer unique data can train faster under repetition
+
+**Status:** `DROP / DIRECT MECHANISM OWNER — DO NOT REDISCOVER THIS ROUND`
+
+### Origin
+
+ICML 2026 / arXiv 2605.20314, *Less Data, Faster Training: Repeating Smaller Datasets Speeds Up Learning via Sampling Biases*, reports the counterintuitive law that under repeated-data training, using fewer unique examples can accelerate optimization/learning.
+
+### Owner assassination result
+
+The paper itself does not leave the obvious mechanism question open. It traces the effect to sampling biases induced by smaller repeated datasets, links those biases to layer-wise norm growth / effective relative learning rates, and uses random-label and parameter/learning-rate interventions to reduce the speed gap. Thus `why does less unique data sometimes train faster?` is already the paper's central explanatory contribution rather than an unexplained side anomaly.
+
+### Strongest reviewer compression
+
+> `The mother already owns the anomaly, the norm/effective-step mechanism, and causal interventions on the proposed pathway.`
+
+### Verdict
+
+**DROP.** Do not reopen as `repetition changes optimization geometry`, `sampling bias accelerates learning`, or a generic norm-growth mechanism without an independent contradiction to the published account.
+
+---
+
+## Hook E — Distilled pretraining improves generation diversity while harming ICL
+
+**Status:** `DROP / PARENT CENTRALIZED — DO NOT REDISCOVER THIS ROUND`
+
+### Origin
+
+ICLR 2026, *Distilled Pretraining: A Modern Lens of Data, In-Context Learning and Test-Time Scaling*, reports a stable trade-off under distilled pretraining: weaker induction / in-context-learning behavior alongside improved generation diversity / pass@k / test-time-scaling characteristics, including comparisons under matched data regimes.
+
+### Owner assassination result
+
+The paper itself makes this trade-off the scientific center, connecting distillation to low- versus high-entropy token prediction, induction behavior and generation diversity, and proposes token-routing/mixture-style mitigation. Therefore an obvious `why does distillation hurt ICL but improve sampling diversity?` project would be another decomposition of a mechanism the parent already claims and tests.
+
+### Verdict
+
+**DROP.** Do not reopen as `distillation suppresses induction heads`, `distillation changes entropy and diversity`, or `ICL vs test-time scaling trade-off` without a new same-quantity contradiction that the existing entropy/routing account cannot explain.
