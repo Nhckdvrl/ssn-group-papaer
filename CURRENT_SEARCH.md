@@ -9,9 +9,13 @@
 
 - No new speech/audio topics.
 - Avoid pure-linguistics competence tests.
-- Prefer the shape of ACL 2026 Best Paper *The Imperfective Paradox in Large Language Models*: **clean classical problem → modern LLM/agent consequence → larger scientific claim**.
+- **Strongly avoid very hot directions as the default search space**, especially generic Agent / long-term memory / RAG / RL / judge work. Fashion density is a real negative prior because ownership is crowded and paper identity often collapses into a harness/framework choice.
+- Prefer scientific questions that would remain important if the fashionable system label disappeared. Harness-dependent questions need unusually strong framework-independent inference and natural gold.
+- Prefer the intellectual shape of ACL 2026 Best Paper *The Imperfective Paradox in Large Language Models*: **clean older scientific problem → new modern leverage/consequence → larger scientific claim**, but do not restrict search to semantics or copy that paper's subject.
+- When calibrating against Best / Outstanding / strong Main papers, explicitly study **topic provenance**: what older problem, anomaly, hidden assumption, measurement bottleneck, identification problem, weakly evidenced claim, or real workflow caused the paper to exist; why it became answerable now; and how the first decisive result grew into the final paper.
+- Transfer the **origin mechanism** of excellent papers into quieter domains rather than extending their fashionable topic directly.
 - A candidate may combine several reliable literatures; it need not depend on one paper's unexplained anomaly.
-- Classical distinctions only count when they change a modern operation, representation, inference, evaluation, or system consequence. “Does the LLM know the distinction?” is normally too weak.
+- Classical distinctions only count when they change a modern operation, representation, inference, evaluation, or scientific consequence. “Does the LLM know the distinction?” is normally too weak.
 - No survivor quota. Kill aggressively rather than fill slots.
 
 ---
@@ -60,30 +64,37 @@ Package: `candidates/L23_SIMILARITY_NOT_PROVENANCE/`
 
 Combines generated-idea overlap/plagiarism, future/held-out idea reconstruction, and causal provenance. Audit direct recent owners, full model cutoffs, and overlap yield before compute.
 
+---
+
+## Hold / deprioritized
+
 ### L24 — Same Entity ≠ Same Epistemic File
-**Status:** `SERIOUS / PRE-PILOT — DATA-SCALE + DIRECT-COLLISION AUDIT — NO COMPUTE`  
+**Status:** `HOLD / DEPRIORITIZED — HOT-DIRECTION + HARNESS + DATA-GOLD RISK — NO COMPUTE`  
 Package: `candidates/L24_EPISTEMIC_FILES_VS_CANONICAL_ENTITIES/`
 
-> If two names/descriptions denote the same real-world entity, is it always safe for an LLM agent's long-term memory to canonicalize them into one entity node, or can that merge destroy the perspective / mode-of-presentation information required for correct belief reasoning?
-
-Identity = **entity canonicalization as a causal operation**, not another referential-opacity/ToM competence test. Desired decisive result is an extensional/intensional crossover, with a two-level world-entity + epistemic-file representation preserving both.
-
-Blockers: direct-owner refresh, paper-scale natural identity/perspective gold, and token/retrieval-confound controls.
+The classical identity/perspective tension is clean, but the current paper identity lands in saturated Agent / long-term-memory work, depends on a memory/entity-resolution harness, and lacks easy paper-scale natural identity×perspective gold. Do not spend current search or compute budget here. Reopen only if it can become substantially framework-independent with strong natural data.
 
 ---
 
 ## Latest search round
 
-Record: `search_rounds/2026-09-12_CLASSIC_PROBLEM_TO_MODERN_LLM_SEARCH.md`
+Record: `search_rounds/2026-09-12_AWARD_TOPIC_PROVENANCE_SEARCH.md`
 
-Audited families include source monitoring, frame/qualification/ramification problems, belief revision, partial observability, structural analogy, reconsolidation, common knowledge, object permanence, deontic authorization, IIA, duplicate-memory semantics, experience abstraction, snapshot consistency, open-vs-closed-world reasoning, Value of Information, explicit-vs-implicit memory, generics/defaults, and de-se self-location.
+The round studied not only the contents but the **origins** of strong/award papers. Reusable origins found repeatedly include:
 
-**Only L24 was promoted.**  
-Two ideas remain **HOLD/search seeds only**:
-- generic statement ≠ universal rule under structured memory — promising operation bridge, but gold/outcome robustness not yet good enough;
-- essential indexical / de-se self-location × action — conceptually strong, but natural data/gold and non-philosophy paper identity are unresolved.
+- classical problem/law + previously missing measurement;
+- old theoretical debate + a genuinely changed model regime;
+- important causal estimand + an identification bottleneck solved by a mature design from another field;
+- strong theoretical/public claim + weak direct evidence;
+- stable practical anomaly + no satisfactory explanation;
+- cheap destructive/control intervention + a robust surprising effect;
+- mature theory outside NLP + a consequential modern mismatch;
+- convenient field proxy/assumption + construct correction;
+- real professional workflow + natural process data.
 
-Everything else in that round is KILL / DO NOT REOPEN for the compact reason recorded there.
+Quiet-domain probes in scientific evidence/trial interpretation were also audited. **No new candidate was promoted.** Composite endpoints, surrogate endpoints, and noninferiority/equivalence remain search seeds only; generic scientific-summary overclaim, subgroup significance fallacies, and surface-form probability variants were rejected in current form.
+
+This is a deliberate zero-survivor outcome rather than a reason to lower the bar.
 
 ---
 
@@ -94,6 +105,12 @@ Before deep-searching a lead:
 > **scientific object + estimand + decisive operation + synonyms → search killed ledger / archived candidates / historical repo → duplicate means discard first.**
 
 For every survivor: successful-result test before compute; if RQ/estimand/mechanism/central claim/paper identity changes, selection authorization resets.
+
+For strong-paper calibration, additionally ask:
+
+> **What caused this paper to exist before it had a method or title?**
+
+Transfer that origin mechanism to quieter scientific objects; do not simply chase the same hot area.
 
 `SEARCH → SELECT → PILOT → RE-SELECT → DEVELOP → RE-SELECT → PAPER / KILL`
 
