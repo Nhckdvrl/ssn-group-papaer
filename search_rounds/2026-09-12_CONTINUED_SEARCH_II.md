@@ -176,6 +176,14 @@
   **Question:** Which pretraining statistic predicts whether a particular behavior will resist later SFT/alignment?  
   **Why not:** ACL 2025 alignment-elasticity work already ties resistance to pretraining depth/scale, while ACL 2026 compatibility-aware fine-tuning defines sample-level demonstration–policy compatibility. The remaining item-level predictor is too close to a local extension of these parents.
 
+- **Dynamic-benchmark generator identity changes who looks best.**  
+  **Question:** If an LLM generates the test set, does its identity/family systematically favor itself or related models and change evaluated rankings?  
+  **Why not:** 2025 work directly deconstructs self-bias in LLM-generated test sets, including generator-side bias. Moving the same test to another benchmark domain is not a new parent.
+
+- **Retrieval relevance vs evidence directness / transportability.**  
+  **Question:** Does a retrieved study that is topically relevant to a target question necessarily provide direct evidence for the target population/intervention/comparator/outcome?  
+  **Why not:** recent work explicitly constructs GRADE-PICO indirectness mismatches and tests whether retrieval/evidence agents detect and penalize them. The broad relevance-versus-directness parent is occupied.
+
 ## Portfolio after this pass
 
 No new candidate promoted. Current portfolio remains **L16 / L17 / L22 bounded pilots**, with **L21 serious but blocked before compute**. Continue broad search rather than lowering the bar. New topic search should avoid speech/audio per current user preference.
