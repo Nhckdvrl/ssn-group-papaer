@@ -49,6 +49,38 @@ A cheap checkpoint surgery (switching a trained parallel Pythia checkpoint to se
 
 **Anti-resurrection:** do not reopen as `why diffusion resists repeated-data overfitting`, `masking is implicit augmentation`, `add a diffusion auxiliary objective to AR`, or `AR vs diffusion data-efficiency gap` unless a distinct unexplained scientific quantity appears.
 
+## P. Formal/synthetic pre-pretraining transfers inductive bias into natural-language learning — DROP current parent
+
+**Scientific object:** Why can a short synthetic/formal pre-pretraining phase make later natural-language pretraining substantially more token-efficient, sometimes outperforming an equal amount of natural text?
+
+**Mother:** ACL 2025 Outstanding `Between Circuits and Chomsky` reports ~33% token savings in a 1B regime, better linguistic generalization, and persistence of attention heads learned during formal-language PPT.
+
+**Successors / direct ownership expansion:**
+- ACL 2026 `Language Acquisition Device in Large Language Models` directly challenges the earlier `hierarchical + circuit-theoretically learnable` explanation and identifies **functional landmarks / dependency-resolution accessibility** as a key driver.
+- May-2026 `Synthetic Pre-Pre-Training Improves Language Model Robustness to Noisy Pre-Training Data` shows PPT changes later optimization so models gradually downweight corrupted-token interactions, providing another direct mechanistic account.
+- Aug-2026 `Logic Before Language` scales PPT to a 100B-token regime and connects it to persistent representational reorganization and compressibility.
+- Aug-2026 `Instability of LLM Pre-Pretraining` reports strong setup/seed dependence across natural languages, making the phenotype itself conditional rather than an untouched stable anomaly.
+
+**Reviewer compression:** `ACL-2025 PPT + ACL-2026 dependency-accessibility condition + 2026 optimization/geometry mechanisms + instability study = why/how PPT transfers is already a research line`.
+
+**Kill reason:** the attractive broad question has already fractured into direct explanatory successors. A new formal language, syntax family, or attention-head analysis would be a cell, and the area drifts toward linguistic-inductive-bias experiments that are not current search priority.
+
+**Anti-resurrection:** do not reopen as `why formal data beats equal natural data`, `which formal grammar transfers`, `PPT learns useful circuits`, dependency accessibility, PPT robustness, or seed-sensitive PPT unless a qualitatively new non-linguistic scientific quantity emerges.
+
+## Q. Worse pretraining loss but better downstream fine-tuning because of stronger weight decay — DROP
+
+**Scientific object:** Why can a base LM that is objectively worse by pretraining validation loss become better after downstream fine-tuning?
+
+**Owner:** Feb-2026 `Weight Decay Improves Language Model Plasticity` directly establishes this trade-off across Llama-2/OLMo-2 pretraining regimes and then studies mechanisms: stronger weight decay yields more linearly separable representations, regularizes attention matrices and reduces pretraining overfit. The paper explicitly argues that pretraining-loss-optimal hyperparameters can be plasticity-suboptimal.
+
+**Related prior:** language-model plasticity has been an explicit object since NeurIPS 2023 `Improving Language Plasticity via Pretraining with Active Forgetting`; broader plasticity-loss mechanisms are also mature in continual-learning literature.
+
+**Reviewer compression:** `plasticity pretraining literature + weight-decay paper already owns the counterintuitive trade-off and its first mechanisms`.
+
+**Kill reason:** the anomaly and its natural hyperparameter mechanism are already centralized. Asking which of linear separability / attention regularization / overfit is most causal would be a single-paper mechanism continuation without independent repeated pressure, while generic post-training plasticity is already a recently killed project neighborhood.
+
+**Anti-resurrection:** do not reopen as `worse base, better fine-tune`, pretraining-loss vs adaptability, weight-decay plasticity, or generic `pretraining commits the model too much`.
+
 ---
 
 _Continue search from here; append later killed leads in this file or a numbered continuation if the file becomes too large._
