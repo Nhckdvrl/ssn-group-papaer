@@ -182,6 +182,22 @@ Do not resurrect via embedding-geometry variants, selective degradation of one m
 
 **Anti-resurrection:** do not reopen as language-gates-vision, visual capability present-but-inaccessible, or another modality-dominance intervention without a qualitatively new mother quantity.
 
+### M. Low output-head rank / softmax bottleneck as the universal cause of small-LM saturation — DROP
+
+**Scientific object:** Are small language models' late-training loss degradation and output-head rank collapse caused by an intrinsic low-rank softmax capacity wall?
+
+**Mother:** COLM 2024 `Why do small language models underperform? Studying LM Saturation via the Softmax Bottleneck` reports late loss degradation/plateau in small Pythia models together with unembedding spectral/effective-rank collapse and argues that the low-dimensional linear output head is the causal bottleneck.
+
+**Counter-evidence / owners:** ICLR 2026 `The Softmax Bottleneck Does Not Limit the Probabilities of the Most Likely Tokens` shows theoretically and empirically that a low-rank output layer can still represent the probabilities of many top tokens, weakening the supposed practical capacity wall. ICML 2026 Spotlight `Disentangling Geometry, Performance, and Training in Language Models` then provides a stronger same-regime counterexample: a matched OLMo-14M can exhibit low effective rank without Pythia-style late loss degradation, and model/training choices such as batch size and weight decay can alter representation geometry without establishing rank collapse as causal.
+
+**Reviewer compression:** `COLM-2024 saturation/softmax hypothesis + ICLR-2026 top-token expressivity + ICML-2026 low-rank-without-degradation = low rank is not a sufficient causal explanation`.
+
+**Kill reason:** the original `softmax capacity wall causes saturation` paper identity is no longer defensible as an open mechanism question. The strongest 2026 controlled evidence already separates low rank from degradation.
+
+**Important surviving pressure, NOT a candidate yet:** the *root cause of the Pythia-specific late-training saturation* may still be open. ICML-2026 reports that its matched OLMo-14M differs importantly in block structure (sequential Attention→MLP rather than Pythia's parallel Attention+MLP), while Pythia/PaLM/independent 2026 architecture sweeps report a small-scale quality penalty for parallel blocks that shrinks with scale. That is a distinct hidden-condition question and must undergo fresh ownership/selection checks rather than being treated as rescue of the softmax hypothesis.
+
+**Anti-resurrection:** do not reopen as `rank collapse itself causes saturation`, `increase LM-head rank`, `softmax bottleneck limits top-token probabilities`, or another spectral-correlation study. Any future saturation candidate must identify a different load-bearing condition causally.
+
 ---
 
 _Continue appending every nontrivial killed lead immediately._
