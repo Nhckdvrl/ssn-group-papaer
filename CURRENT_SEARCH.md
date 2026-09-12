@@ -64,6 +64,18 @@ Package: `candidates/L23_SIMILARITY_NOT_PROVENANCE/`
 
 Combines generated-idea overlap/plagiarism, future/held-out idea reconstruction, and causal provenance. Audit direct recent owners, full model cutoffs, and overlap yield before compute.
 
+### L25 — Evidence Exists Somewhere ≠ One Source Establishes It
+**Status:** `SERIOUS / PRE-PILOT — DATA-CONSTRUCTION AUDIT — NO COMPUTE`  
+Package: `candidates/L25_SOURCE_BOUNDED_EVIDENCE/`
+
+> When all required facts are present somewhere across several valid documents, can an LLM preserve which source supports which fact when the decision rule requires one source to establish the whole claim, or does it fuse the context into a single bag of evidence?
+
+Natural laboratory: patent novelty/anticipation normally requires one reference to disclose the whole claim, while obviousness/inventive-step reasoning can combine references under additional conditions. The lead was exposed by a repeated benchmark simplification: PatentMatch drops EPO Y citations because they are semantically too close to X for its matching task; FiNE-Patents filters inventive-step rejections; PANORAMA includes §102/§103 and shows the final decision remains difficult after prior-art retrieval.
+
+Identity fence: **not generic patent classification, not source count, not retrieval, not dependent evidence.** L25 survives only if a matched causal intervention holds atomic evidence fixed while manipulating source partition / aggregation rule and shows a broader rule-conditioned evidence-composition result.
+
+Next step is data-only E00: verify enough clean two-reference §103 cases with examiner-supported complementary feature mappings in released PANORAMA. No model compute before this gate.
+
 ---
 
 ## Hold / deprioritized
@@ -78,23 +90,20 @@ The classical identity/perspective tension is clean, but the current paper ident
 
 ## Latest search round
 
-Record: `search_rounds/2026-09-12_AWARD_TOPIC_PROVENANCE_SEARCH.md`
+Record: `search_rounds/2026-09-12_SOURCE_BOUNDED_EVIDENCE_SEARCH.md`
 
-The round studied not only the contents but the **origins** of strong/award papers. Reusable origins found repeatedly include:
+The strongest lead from this pass is **L25**. It emerged by tracing a classical professional inference rule through what successive NLP datasets simplified away, rather than by extending a hot area.
 
-- classical problem/law + previously missing measurement;
-- old theoretical debate + a genuinely changed model regime;
-- important causal estimand + an identification bottleneck solved by a mature design from another field;
-- strong theoretical/public claim + weak direct evidence;
-- stable practical anomaly + no satisfactory explanation;
-- cheap destructive/control intervention + a robust surprising effect;
-- mature theory outside NLP + a consequential modern mismatch;
-- convenient field proxy/assumption + construct correction;
-- real professional workflow + natural process data.
+Directly rejected in this pass:
+- generic §102-vs-§103 patent classification — PANORAMA owns it;
+- prior-art retrieval / feature matching — PatentMatch, FiNE-Patents and PANORAMA own it;
+- EPO X-vs-A semantic relevance — PatentMatch owns it;
+- generic multi-source evidence aggregation — crowded fact-verification parent;
+- generic context/source admissibility — already emerging as a direct long-context/source-boundary object.
 
-Quiet-domain probes in scientific evidence/trial interpretation were also audited. **No new candidate was promoted.** Composite endpoints, surrogate endpoints, and noninferiority/equivalence remain search seeds only; generic scientific-summary overclaim, subgroup significance fallacies, and surface-form probability variants were rejected in current form.
+The remaining novelty is narrow but meaningful only if it is **causal**: same atomic evidence, different source partition / aggregation rule.
 
-This is a deliberate zero-survivor outcome rather than a reason to lower the bar.
+Previous provenance-calibrated search record: `search_rounds/2026-09-12_AWARD_TOPIC_PROVENANCE_SEARCH.md`.
 
 ---
 
