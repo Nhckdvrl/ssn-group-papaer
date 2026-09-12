@@ -29,6 +29,17 @@ def collate(batch, pad_id):
 
 
 class SparseTrainer(Trainer):
+    """Trainer with completion-only sparse loss.
+
+    `model_accepts_loss_kwargs` is forced off. transformers >=5 skips its
+    `loss / gradient_accumulation_steps` division whenever the model advertises
+    `accepts_loss_kwargs` (LlamaForCausalLM does), because it assumes `compute_loss`
+    normalised by `num_items_in_batch`. Ours normalises per example on purpose -- NQ
+    answers are ~3 tokens and UltraChat turns ~400, and token-level normalisation would
+    shrink the NQ block to under 1% of the gradient, which is the block the experiment
+    manipulates. Leaving the flag on made every accumulated step 8x too large.
+    """
+
     def compute_loss(self, model, inputs, return_outputs=False, **kw):
         m = model.module if hasattr(model, "module") else model
         loss = sparse_causal_loss(m, inputs["input_ids"], inputs["labels"],
@@ -83,10 +94,14 @@ def main():
         gradient_checkpointing_kwargs={"use_reentrant": False},
         deepspeed="configs/zero2.json",    )
     tr = SparseTrainer(model=model, args=args, train_dataset=Items(items),
+                       processing_class=tokz,
                        data_collator=lambda b: collate(b, tokz.eos_token_id))
+    tr.model_accepts_loss_kwargs = False      # see SparseTrainer docstring
     t0 = time.time()
     tr.train()
     tr.save_model(a.out)
+    if int(os.environ.get("RANK", 0)) == 0:
+        tokz.save_pretrained(a.out)          # eval loads the checkpoint standalone
     if int(os.environ.get("RANK", 0)) == 0:
         json.dump(dict(condition=a.condition, seed=a.seed, n_items=len(items),
                        minutes=(time.time()-t0)/60), open(f"{a.out}/run.json", "w"))

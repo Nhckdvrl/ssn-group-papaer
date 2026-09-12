@@ -48,15 +48,32 @@ def main(root="results/eval"):
     def arm(prefix):
         return [m for k, m in macro.items() if k.startswith(prefix)]
     print()
-    for a, b, label in [("SHORT-SUPPORT", "LONG-FULL", "matched-supervision length"),
-                        ("PC-UC-UC", "PC-UC-CHATQA2", "positive control (dataset swap)")]:
+    if "BASE" in macro:
+        print(f"untrained base anchor: macro {macro['BASE']:.2f}\n")
+    for a, b, label in [("PC-UC-UC", "PC-UC-CHATQA2", "positive control (dataset swap)"),
+                        ("SHORT-SUPPORT", "LONG-FULL", "matched-supervision length")]:
         xa, xb = arm(a), arm(b)
-        if xa and xb:
-            g = sum(xb)/len(xb) - sum(xa)/len(xa)
-            sp = max([max(xa)-min(xa) if len(xa) > 1 else 0,
-                      max(xb)-min(xb) if len(xb) > 1 else 0])
-            print(f"{label:34s} gap {g:+6.2f}   worst within-arm seed spread {sp:5.2f}"
-                  f"   {'*** SEED SPREAD >= GAP -> outcome D' if sp >= abs(g) else ''}")
+        if not (xa and xb):
+            continue
+        g = sum(xb)/len(xb) - sum(xa)/len(xa)
+        sp = max([max(xa)-min(xa) if len(xa) > 1 else 0,
+                  max(xb)-min(xb) if len(xb) > 1 else 0])
+        flag = " *** seed spread >= gap -> outcome D" if sp and sp >= abs(g) else ""
+        print(f"{label:34s} gap {g:+6.2f}   worst within-arm seed spread {sp:5.2f}{flag}")
+
+    # preregistered CAP / CTX decomposition
+    print()
+    def sub(prefix, cols_):
+        vs = [v for k, v in runs.items() if k.startswith(prefix) and all(c in v for c in cols_)]
+        return sum(sum(v[c] for c in cols_)/len(cols_) for v in vs)/len(vs) if vs else None
+    CAP, CTX = ["MMLU", "BBH", "GSM8K"], ["LAMBADA"]
+    for a, b, label in [("PC-UC-UC", "PC-UC-CHATQA2", "positive control"),
+                        ("SHORT-SUPPORT", "LONG-FULL", "matched length")]:
+        ca, cb = sub(a, CAP), sub(b, CAP)
+        ta, tb = sub(a, CTX), sub(b, CTX)
+        if None in (ca, cb, ta, tb):
+            continue
+        print(f"{label:20s} CAP {cb-ca:+6.2f}   CTX {tb-ta:+6.2f}")
 
 
 if __name__ == "__main__":

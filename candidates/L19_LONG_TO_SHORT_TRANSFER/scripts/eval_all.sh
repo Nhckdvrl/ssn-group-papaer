@@ -10,6 +10,8 @@ EVALPY=.venv-eval/bin/python
 [ -x "$EVALPY" ] || EVALPY=.venv/bin/python
 BACKEND=vllm
 [ "$EVALPY" = ".venv/bin/python" ] && BACKEND=hf
+# the venv is invoked by absolute path, so its bin/ is not on PATH; vLLM shells out to ninja
+export PATH="$PWD/$(dirname "$EVALPY"):$PATH"
 mkdir -p logs results/eval
 
 one () {  # one <gpu> <ckpt>
@@ -32,7 +34,7 @@ one () {  # one <gpu> <ckpt>
   echo "EVAL_DONE $tag"
 }
 
-i=0
+i=${GPU0:-0}
 for ckpt in "$@"; do
   one $((i % 4)) "$ckpt" &
   i=$((i+1))
