@@ -32,7 +32,7 @@ For a rough lead write:
 
 Keep this short. Do not build a full candidate package for every thought. If there is only an attractive RQ but no contribution path, label it as such rather than promoting it through rhetoric.
 
-## 2. Read Strong Papers for Their Intellectual Progression
+## 2. Read Strong Papers for Their Intellectual Progression **and Their Origin**
 
 Before a normal search round, inspect relevant recent ACL/EMNLP/NAACL papers, prioritizing strong paper identities and pertinent award work. Use top-ML work where it owns the technical question.
 
@@ -42,7 +42,33 @@ A large unexplained table entry is a lead, not a claim to open explanation space
 
 Do not imitate titles, three-claim structures, or a hypothesis/probe/patch template. Read for the inferential advance.
 
-## 3. Search Broadly, Not Mechanically
+### 2.1 Topic Provenance Card
+
+For each especially useful Best / Outstanding / strong Main paper, record **where the question came from**, not only what the final paper did:
+
+- **Scientific ancestry:** the classical problem, older theory, empirical regularity, professional practice, or field assumption that predates the current LLM fashion cycle.
+- **Immediate pressure:** the concrete contradiction, unexplained robust observation, measurement bottleneck, hidden assumption, weakly evidenced public claim, or real workflow failure that made the question live.
+- **Why now:** what new model regime, representation, natural dataset, intervention, causal design, or measurement operation makes the old uncertainty answerable now.
+- **First decisive operation:** the cheapest observation/intervention that could have changed the authors' view before the full paper existed.
+- **Growth path:** how that first result became a larger explanation, boundary, law, consequence, or intervention.
+- **Transferable origin mechanism:** the reusable way of *finding* the problem. Transfer this generator to quieter scientific objects; do not copy the paper topic.
+- **Fashion density:** whether the paper's identity depends on a currently saturated label or instead on a scientific pressure that would remain interesting if the fashionable system name disappeared.
+
+A strong provenance usually reaches further back than “Agents/RAG/RL became popular.” A fashionable technology can provide **new leverage**, but fashion itself is not scientific ancestry.
+
+Useful recurring provenance patterns include:
+
+- old problem/law + previously missing measurement;
+- old theoretical debate + genuinely new model regime;
+- important causal estimand + an identification bottleneck solved by a mature design from another field;
+- stable engineering anomaly + no satisfactory explanation;
+- mathematically convenient / conventional field assumption + a consequential counterexample;
+- proxy metric + a more consequential target quantity;
+- strong public/theoretical claim + surprisingly weak direct evidence;
+- real professional workflow + natural process data;
+- cheap destructive/control intervention + an unexpectedly stable effect worth explaining.
+
+## 3. Search Broadly, Not Mechanically — and Penalize Fashion Density
 
 For open-ended search, inspect several genuinely distinct domains or generators. Do not repeatedly instantiate "X is not Y," representation-versus-readout, a favorite intervention, or one fashionable area.
 
@@ -50,18 +76,15 @@ A user-requested bounded recheck of an existing route is not an invitation to st
 
 No survivor quota. Zero strong leads is an acceptable outcome. Search priorities are priors, not universal exclusions: a concrete, important question in a crowded area can survive; obscurity in a quiet area is not novelty.
 
-Retain advisor guidance with its scope: a hard user requirement is binding;
-a concern about one project is not automatically a universal gate. Existing
-negative search priors include generic Agent/RAG/RL, prompt engineering,
-judge/annotation-only studies, generic bias/calibration/hallucination reports,
-and benchmark creation without a substantive question. Topics requiring a long
-specialist linguistic setup have a naturalness burden. These are priorities,
-not categorical exclusions of an independently compelling contribution.
+Current negative search priors are stronger for **very hot directions** such as generic Agent/long-term-memory/RAG/RL, prompt engineering, judge/annotation-only studies, generic bias/calibration/hallucination reports, and benchmark creation without a substantive question. The problem is not merely competition: in saturated areas, a natural RQ is more likely to be reviewer-compressed into an existing parent, and the paper identity is more likely to depend on a particular harness/framework rather than on a durable scientific object.
 
-Recurring positive tracks include concrete model computation, classic NLP
-problems reopened by new leverage, scientific documents, structured evidence,
-and consequential measurement problems. Rotate tracks rather than declaring
-one template the only route to a good paper.
+For an open-ended topic search, strongly deprioritize a lead when removing the words **Agent / memory framework / RAG / RL / judge / harness** makes its contribution disappear. Harness-dependent results carry an additional burden: the inference should survive reasonable framework choices, and natural data/gold should exist independently of the harness. Do not spend search budget building infrastructure merely to discover whether the scientific question exists.
+
+These are strong priors, not absolute bans: a crowded area can still enter if the scientific question clearly predates and transcends the fashionable implementation and there is a decisive framework-independent operation.
+
+Topics requiring a long specialist linguistic setup also have a naturalness burden. A classical linguistic or philosophical distinction is useful only when it exposes a broader modern computation, inference, measurement, or representation problem; “does the LLM know the distinction?” is normally too weak.
+
+Recurring positive tracks include concrete model computation, classic NLP/scientific problems reopened by new leverage, scientific documents, structured evidence, consequential measurement problems, and quiet domains with mature natural gold. Rotate tracks rather than declaring one template the only route to a good paper.
 
 Question first does not mean methods are irrelevant to discovery. A new operation can reveal an answerable old question. Reject method-first work when the problem exists only to showcase the tool.
 
@@ -108,9 +131,9 @@ Use bounded literature review. Do not indefinitely refine wording to avoid every
 
 1. **Refresh:** inspect current user scope, dated portfolio, candidate status, `failed/KILLED_LEDGER.md`, nearby archived routes, relevant `Interpretability-try` history, and remote changes.
 2. **Anti-resurrection:** for each prospective lead, record the closest KXXX/archived route and why the lead is or is not a genuine reopen.
-3. **Calibrate:** read relevant strong work for intellectual advance, decisive evidence, development, and scope.
-4. **Generate:** produce compact leads across distinct tracks when the task is open-ended.
-5. **Challenge:** test ownership, successful-result inference, naturalness, and contribution size.
+3. **Calibrate:** read relevant strong work for **topic provenance**, intellectual advance, decisive evidence, development, and scope.
+4. **Generate:** transfer the *origin mechanisms* of strong papers into several quieter scientific tracks; do not copy their subject labels.
+5. **Challenge:** test ownership, successful-result inference, naturalness, fashion/harness dependence, and contribution size.
 6. **Promote selectively:** use the selection document for bounded authorization, not a premature paper endorsement.
 7. **Record:** update only the relevant existing documents; new dead parents go to the killed ledger, duplicate hits keep the old KXXX and are noted in the dated search-round record.
 
@@ -118,7 +141,7 @@ A killed route may be reconsidered with qualitatively new leverage, evidence, or
 
 ## 8. Stop and Handoff Rules
 
-Stop a lead when the remaining answer is trivial, a true collision owns the paper, data cannot plausibly identify it, or a credible contribution path is absent after bounded investigation.
+Stop a lead when the remaining answer is trivial, a true collision owns the paper, data cannot plausibly identify it, a credible contribution path is absent after bounded investigation, or the scientific identity collapses into a saturated harness/framework choice.
 
 Do not discard solely because the expected sign is uncertain: that may be the reason to investigate. Do not promote solely because the parent phenomenon is established.
 
