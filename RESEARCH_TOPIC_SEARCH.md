@@ -18,11 +18,15 @@ Do not assign a new kill ID to a rediscovered parent. Record it as a duplicate h
 
 ## 1. Search for More Than an Interesting RQ
 
-Find a natural, important uncertainty and a plausible route to an independently valuable answer. The problem should make sense without our method. The answer need not be known before starting.
+Find a **natural scientific uncertainty** and a plausible route to an independently valuable answer. Natural does **not** mean everyday, layperson-friendly, or explainable without domain knowledge. A question may be technical, mathematical, linguistic, statistical, scientific, or domain-specific.
+
+Natural means the scientific object and uncertainty exist **before our proposed benchmark, prompt, intervention, toy construction, or method**. A domain expert should recognize why the question follows from the field's theory, evidence, practice, unresolved contradiction, measurement problem, or empirical regularity. The experiment may be highly controlled or artificial; the **question should not be reverse-engineered from the experiment**.
+
+A plain example is only a communication aid when one is useful, not a selection gate. Do not penalize a strong research question merely because it lacks a lifestyle example or requires technical background.
 
 For a rough lead write:
 
-1. One-sentence RQ and a plain example.
+1. One-sentence RQ; optionally one compact scientific/domain example if it clarifies the object.
 2. The best existing explanation or practice.
 3. What it leaves unresolved, and why that matters.
 4. A candidate idea or scientific operation that could change the answer.
@@ -133,7 +137,7 @@ Use bounded literature review. Do not indefinitely refine wording to avoid every
 2. **Anti-resurrection:** for each prospective lead, record the closest KXXX/archived route and why the lead is or is not a genuine reopen.
 3. **Calibrate:** read relevant strong work for **topic provenance**, intellectual advance, decisive evidence, development, and scope.
 4. **Generate:** transfer the *origin mechanisms* of strong papers into several quieter scientific tracks; do not copy their subject labels.
-5. **Challenge:** test ownership, successful-result inference, naturalness, fashion/harness dependence, and contribution size.
+5. **Challenge:** test ownership, successful-result inference, scientific naturalness, fashion/harness dependence, and contribution size.
 6. **Promote selectively:** use the selection document for bounded authorization, not a premature paper endorsement.
 7. **Record:** update only the relevant existing documents; new dead parents go to the killed ledger, duplicate hits keep the old KXXX and are noted in the dated search-round record.
 
