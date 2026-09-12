@@ -108,6 +108,80 @@ Do not resurrect via embedding-geometry variants, selective degradation of one m
 
 **Anti-resurrection:** do not reopen as `newer facts have a timestamp`, training recency controls retrieval, old-vs-new conflict arbitration, or activation-time rescue.
 
+### G. Rare-token failure as a single-injection / identity bottleneck — DROP
+
+**Scientific object:** Why do rare tokens disproportionately damage language-model representations and learning, and is the problem frequency itself or loss of token identity through depth?
+
+**Mother:** older work (`Rare Tokens Degenerate All Tokens`, ACL-era anisotropy/frequency-bias studies) establishes rare-token gradient/representation pathologies.
+
+**Direct owner:** 2026 `TIDE: Every Layer Knows the Token Beneath the Context` explicitly identifies the single-injection architecture as a mechanism for rare-token gradient starvation / contextual collapse and restores persistent token identity across layers. 2025 work on rare-token neurons and distributed specialization further occupies the representational side.
+
+**Reviewer compression:** `rare-token degeneration + persistent token-identity injection = structural bottleneck already named and intervened on`.
+
+**Kill reason:** the old-law-to-modern-architecture mechanism is already directly occupied. A different rare-token subset or another identity injection scheme would be method variation.
+
+**Anti-resurrection:** do not reopen as rare-token anisotropy, gradient starvation, token identity washed out with depth, or repeated embedding injection.
+
+### H. More SFT data can hurt / incomplete learning under SFT — DROP
+
+**Scientific object:** Why can adding supervised instruction data or extending SFT worsen knowledge/capability instead of monotonically helping?
+
+**Mother:** EMNLP 2025 `Analyzing the Effects of SFT on Model Knowledge...` reports non-monotonic sample scaling and large fractions of parameter updates with little knowledge gain.
+
+**Owners:** ACL 2026 `Why SFT Fails to Learn: A Systematic Study of Incomplete Learning` directly identifies multiple causes and interventions; ACL/EMNLP 2025–2026 work on data organization, structure-over-size, difficulty/diversity filtering and curriculum occupies the data-side mechanisms.
+
+**Reviewer compression:** `non-monotonic SFT + incomplete-learning taxonomy + data-organization/curriculum = broad why-more-SFT-can-hurt parent already mature`.
+
+**Kill reason:** the generic anomaly and its natural explanations are already central topics. A new data composition axis would become data-selection work, currently a negative-prior area.
+
+**Anti-resurrection:** do not reopen as `more examples hurt`, SFT saturation, incomplete acquisition, bad ordering, difficulty/diversity, or parameter updates without learning.
+
+### I. Looped/recurrent Transformer: when repeated computation becomes an algorithm — DROP
+
+**Scientific object:** Why does weight-tied/recurrent depth sometimes yield length/generalization gains, but sometimes converge to shallow/fixed-point shortcuts; what makes recurrence become algorithmic computation?
+
+**Owners:** 2025 `Reasoning with Latent Thoughts: On the Power of Looped Transformers`; ACL 2026 `Polymorphic Universal Transformer` (compute-distribution skew/fixed-point/rank-collapse); 2026 `When Does Recurrence Become an Algorithm? Convergence Selection...` gives a budget law and causal architecture prior; 2026 mechanistic studies of looped reasoning and `Loop, Think & Generalize` track fixed-point/cyclic dynamics and grokking stages.
+
+**Reviewer compression:** the architecture phenomenon, failure mode, phase behavior, causal selector and mechanistic dynamics already form an active research line.
+
+**Kill reason:** no clean unnamed mechanism parent remains. Another loop count, task, or latent-vs-explicit reasoning comparison is a cell.
+
+**Anti-resurrection:** do not reopen as recurrence depth, weight tying induces algorithms, fixed-point vs cyclic computation, latent loop reasoning, or extrapolation under more loops.
+
+### J. Attention sinks — DROP broad mechanism parent
+
+**Scientific object:** Why do Transformers allocate large attention mass to semantically uninformative sink tokens, when does the sink form, and what computation does it perform?
+
+**Owners:** ICLR 2025 `When Attention Sink Emerges`; NeurIPS 2025 `Attention Sinks: Catch, Tag, Release`; ACL 2026 `A Mechanistic Account of Attention Sinks in GPT-2`; 2026 work on P0 sink circuits, massive activations and secondary sinks.
+
+**Reviewer compression:** emergence, normalization pressure, functional role, circuit-level mechanism and variants are all already directly studied.
+
+**Kill reason:** this is a textbook stable-anomaly→mechanism target, but the mechanism space is now densely occupied. A different model or sink token is not a new inference.
+
+**Anti-resurrection:** do not reopen as BOS sink, massive activation relation, catch/tag/release, sink emergence during training, or secondary sink tokens.
+
+### K. Generic tokenization granularity / adaptive tokenization as a computational bottleneck — DROP broad parent
+
+**Scientific object:** Does fixed subword segmentation impose a load-bearing computational bottleneck, and can modern models learn/adapt segmentation to escape it?
+
+**Owners/pressure:** EACL 2026 `Stop Taking Tokenizers for Granted`; ICLR 2026 `ByteFlow`; ACL 2026 `SPEAK`; 2026 `FlexiTokens` and joint tokenizer-model optimization; task-specific work such as EMNLP 2025 `Date Fragments` already links fragmentation to concrete reasoning failures.
+
+**Reviewer compression:** fixed-tokenizer limitations + learned/adaptive compression + task-level fragmentation mechanisms already constitute a mature parent.
+
+**Kill reason:** a generic tokenizer bottleneck paper is crowded; changing segmentation or moving to bytes becomes architecture/method work. A future tokenization lead would need a different stable scientific quantity, not `tokenization matters`.
+
+**Anti-resurrection:** do not reopen as subword fragmentation, tokenizer-free vs tokenizer models, adaptive segmentation, entropy-aware tokenization, or `same semantics different token count` unless a distinct unexplained law exists.
+
+### L. Multimodal semantic dependency / visual agency loss — DROP current mechanism continuation
+
+**Scientific object:** Why can adding language anchors to a vision-capable multimodal model simultaneously unlock some semantic behavior yet suppress direct visual competence?
+
+**Owner:** ACL 2026 `MagicBench` already names the Semantic Dependency Paradox / Visual Agency Loss, demonstrates a substantial vision-only vs language-conditioned gap, and uses spatial/signal interventions to argue for a perceptual-access bottleneck.
+
+**Kill reason:** the anomaly plus first causal explanation are already centralized in the owner. The obvious continuation is another localization/intervention on the same bottleneck; this is also outside the current preferred search budget.
+
+**Anti-resurrection:** do not reopen as language-gates-vision, visual capability present-but-inaccessible, or another modality-dominance intervention without a qualitatively new mother quantity.
+
 ---
 
 _Continue appending every nontrivial killed lead immediately._
