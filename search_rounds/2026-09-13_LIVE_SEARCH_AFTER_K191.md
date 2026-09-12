@@ -149,3 +149,60 @@ The paper itself makes this trade-off the scientific center, connecting distilla
 ### Verdict
 
 **DROP.** Do not reopen as `distillation suppresses induction heads`, `distillation changes entropy and diversity`, or `ICL vs test-time scaling trade-off` without a new same-quantity contradiction that the existing entropy/routing account cannot explain.
+
+---
+
+## Hook F — Is pretraining-WD 'plasticity' actually downstream effective step size?
+
+**Status:** `DROP / SELECTION FAILURE — DO NOT REDISCOVER THIS ROUND`
+
+### Origin
+
+ICML 2026, Han et al., *Weight Decay Improves Language Model Plasticity*, finds that stronger pretraining weight decay can worsen base-model loss yet improve later SFT performance across Llama/OLMo scales and tasks. The authors interpret the downstream advantage as greater pretrained-model plasticity and report representation/attention/overfitting correlates.
+
+- https://arxiv.org/abs/2602.11137
+
+A later August-2026 paper, *Effective Learning Rate Governs Loss Dynamics in Language Model Pretraining*, establishes a strong law in LLM pretraining: LR and parameter norm govern loss trajectories largely through `ELR = LR / ||W||`, and controlled ELR matching collapses trajectories across different norm-control methods. Pretraining weight decay itself strongly controls parameter norms.
+
+- https://arxiv.org/abs/2608.24814
+
+This creates an initially attractive identification question: high-pretraining-WD checkpoints have smaller norms, so under the same nominal downstream LR they can receive larger relative/angular steps. Does their apparent downstream 'plasticity' survive explicitly matching effective learning rate during fine-tuning?
+
+### Why the trivial critique is insufficient
+
+Han et al. already perform an extensive downstream hyperparameter robustness sweep for OLMo-2-1B-20x: four pretraining-WD checkpoints × three fine-tuning LRs × three fine-tuning WDs × three batch sizes (216 fine-tuned models), and the higher-pretraining-WD advantage remains even when selecting the best downstream hyperparameter combination per checkpoint. Therefore `they just fixed the fine-tuning LR` is not a valid novelty claim.
+
+Public same-seed checkpoints and fine-tuning code exist, so a bounded E01 could in principle compare standard FT with an ELR-normalized/matched optimizer without repeating pretraining.
+
+### Selection failure 1 — one-sided paper identity
+
+The proposed experiment is not outcome-robust enough for the current bar.
+
+- If ELR matching largely collapses/reverses the high-WD advantage, the result could revise the interpretation of the ICML-2026 mother: apparent plasticity is partly checkpoint × optimizer geometry rather than a checkpoint-only property.
+- If the advantage persists under matched ELR, the result mostly says that a general ELR mechanism does not explain Han's effect, while Han already provides extensive downstream-hyperparameter robustness and representation differences. That outcome is scientifically clean but too close to a confirmation/boundary result to sustain the same paper identity.
+
+Thus the candidate still depends heavily on one favorable mediation outcome.
+
+### Selection failure 2 — intervention does not uniquely identify mediation
+
+A global LR cannot equalize `LR / ||W||` across all corresponding matrices because pretraining WD changes layer/matrix norms non-uniformly. A per-matrix ELR-normalized optimizer could force matching, but that intervention changes the downstream optimizer geometry itself. If the checkpoint ranking changes, the clean inference is only that **ranking depends on optimizer coordinates**, not that the original pretraining-WD effect was causally mediated by ELR.
+
+That distinction weakens the strongest intended claim.
+
+### Selection failure 3 — reviewer compression is too strong
+
+Nearby work already supplies all broad components:
+- NeurIPS 2024 `Normalization and effective learning rates in reinforcement learning` directly links parameter-norm growth / ELR decay to plasticity loss and uses Normalize-and-Project as an intervention;
+- NeurIPS 2024 `Why Do We Need Weight Decay in Modern Deep Learning?` argues modern weight decay primarily changes optimization dynamics rather than acting as classical regularization, including in LLM pretraining;
+- ICML 2026 Han et al. establish the LLM pretraining-WD → downstream-plasticity phenotype;
+- Aug-2026 ELR-collapse work establishes `LR / norm` as a strong coordinate for LLM pretraining dynamics.
+
+Strongest compression:
+
+> `ELR already controls plasticity in continual/RL settings + weight decay already acts through optimization/norm dynamics + Han gives the LLM plasticity phenotype + ELR collapse extends the coordinate to LLM pretraining = test ELR during SFT.`
+
+The exact downstream experiment is not done, but the paper would risk reading as a transfer/application of a known mechanism to Han's new phenotype rather than a fresh Main-level scientific inference.
+
+### Verdict
+
+**DROP.** Do not reopen as `plasticity is optimizer-relative`, `match ELR across high/low pretraining-WD checkpoints`, or `parameter norm explains Han 2026` unless independent evidence first produces a stronger SAME-QUANTITY contradiction or a function-preserving/selective intervention that yields an outcome-robust new law.
