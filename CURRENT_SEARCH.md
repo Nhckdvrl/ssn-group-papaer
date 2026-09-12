@@ -1,116 +1,113 @@
-# Current Research State — 2026-09-11
+# Current Research State — 2026-09-12
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Active serious candidates:** **1 — L16, PILOT-AUTHORIZED (E01 + conditional E02 only)**  
-**Current phase:** **BOUNDED KILL-ORIENTED PILOT**  
-**Killed ledger:** through **K183** — **Next kill ID: K184**
+**Phase:** **bounded kill-oriented pilots + continued topic search**  
+**Killed ledger:** authoritative through **K183**; newer compact rejections live in `search_rounds/` until a later ledger sync.
+
+## Current search preference
+
+- No new speech/audio topics.
+- Avoid pure-linguistics competence tests.
+- **Strongly avoid very hot directions as the default search space**, especially generic Agent / long-term memory / RAG / RL / judge work.
+- Prefer scientific questions that would remain important if the fashionable system label disappeared.
+- Prefer the intellectual shape of ACL 2026 Best Paper *The Imperfective Paradox in Large Language Models*: **clean older scientific problem → new modern leverage/consequence → larger scientific claim**, without copying its subject.
+- Study strong papers' **topic provenance**: what old problem, anomaly, hidden assumption, measurement bottleneck, identification problem, or real workflow caused the paper to exist before it had a method/title.
+- A candidate may combine several reliable literatures; it need not depend on one paper's anomaly.
+- Classical distinctions count only when they naturally create a modern scientific question; “does the LLM know the distinction?” is normally too weak.
+- **Natural means the scientific object/question already exists independently of our intervention or schema.** A topic is bad if the question becomes interesting only after we invent a special benchmark, join several awkward datasets, or define a bespoke pipeline failure.
+- **Do not salvage a topic merely because natural witnesses or executable examples can be found.** If the question itself is low-priority, overly constructed, data-engineering-heavy, or reviewer-compresses to an implementation fix, kill it and resume broad search.
+- Prefer easy/native gold and direct data access. Data archaeology, multi-source linkage, heavy expert reconstruction, or bespoke annotation is a strong negative prior unless the scientific question is exceptional.
+- No survivor quota. Kill aggressively rather than fill slots.
 
 ---
 
-# Active candidate — L16
+## Pilot-authorized
 
-## Same World, Different Partitions
+### L16 — Same World, Different Partitions
+**Status:** `PILOT-AUTHORIZED — bounded E01/E02 only`  
+Package: `candidates/L16_PARTITION_DEPENDENT_BELIEF/`
 
-Canonical package: `candidates/L16_PARTITION_DEPENDENT_BELIEF/`
+> Holding atomic hypotheses, evidence, target proposition and reasoning budget fixed, does arbitrary refinement/coarsening of the displayed hypothesis space systematically pull elicited credence toward a partition-specific ignorance prior?
 
-Locked RQ:
+If the directional law is absent, kill rather than rescue with generic prompt sensitivity.
 
-> **Holding the atomic hypotheses, evidence, target proposition, lexical inventory, and normal reasoning budget fixed, does arbitrary refinement/coarsening of the displayed hypothesis space systematically pull an LLM's elicited credence toward the uniform mass over displayed cells (`1/M`), and can that representationally induced credence shift survive explicit recognition that the partitions are informationally equivalent?**
+### L17 — What Does a Speech LLM Learn About a Speaker?
+**Status:** `PILOT-AUTHORIZED — E01 only; existing project, outside current new-search preference`  
+Package: `candidates/L17_SPEAKER_ADAPTATION_UNIT/`
 
-Plain example:
+Do not create new speech/audio candidates.
 
-> The event is the same: **Sunday is the hottest day next week.** A binary display `{Sunday}|{not Sunday}` makes an ignorance prior of `1/2` salient; a seven-way display `{Sunday}|{Monday}|...` makes `1/7` salient. No evidence about the weather changed. A coherent belief about the same event should not be created by redrawing the hypothesis space.
+### L22 — Bad Dimensions or Bad Directions?
+**Status:** `PILOT-AUTHORIZED — E01 symmetry audit only`  
+Package: `candidates/L22_EMBEDDING_BASIS_IDENTIFIABILITY/`
 
-### Why this candidate is authorized
-
-The classic human phenomenon — partition dependence / partition priming — is established. The modern LLM question is not a generic replication of that bias. The locked target is a specific computation:
-
-1. exactly the same atomic hypotheses are retained;
-2. exactly the same evidence and target proposition are retained;
-3. only arbitrary grouping/refinement changes;
-4. the predicted effect is directional toward the partition-specific `1/M` ignorance prior;
-5. equivalence knowledge and downstream credence are measured separately.
-
-The expanded audit covers Support Theory / classic partition dependence, current LLM confidence elicitation/calibration, 2026 semantic-invariance/coherence work, multiple-answer confidence, response-scale effects, the fresh 2026 record-grouping paper, and 2026 causal confidence→abstention work.
-
-The strongest collision fence is explicit: **generic semantic prompt sensitivity is already owned.** If L16 produces only "equivalent prompts give different confidence," the route dies. The contribution must be a hypothesis-space partition law, not another invariance benchmark cell.
-
-### Authorized work
-
-Only:
-
-- **E01:** 48-base content-matched partition curve under normal reasoning, with fixed atomic alternatives/order and `M2/M3a/M3b/M9/FLAT` conditions;
-- **E02:** only if E01 passes the preregistered two-family gate — explicit equivalence awareness, arbitrary-group disclaimer, readout robustness, and stronger-evidence attenuation.
-
-Primary models: Qwen3-32B and Mistral-Small-24B. Primary mode: normal reasoning / CoT. An effect that exists only when reasoning is blocked is a kill signal.
-
-The full pilot is already specified; **no additional literature/design gate is required before smoke**:
-
-- [README](candidates/L16_PARTITION_DEPENDENT_BELIEF/README.md)
-- [ownership audit](candidates/L16_PARTITION_DEPENDENT_BELIEF/RELATED_WORK_AND_NOVELTY.md)
-- [data/gold contract](candidates/L16_PARTITION_DEPENDENT_BELIEF/DATA_AND_GOLD.md)
-- [pilot card](candidates/L16_PARTITION_DEPENDENT_BELIEF/PILOT_CARD.md)
-- [experiment ledger](candidates/L16_PARTITION_DEPENDENT_BELIEF/EXPERIMENTS.md)
-
-### Hard identity fence
-
-Do not rescue L16 as any of the following without returning to selection:
-
-- generic prompt sensitivity / semantic invariance;
-- verbal-confidence calibration;
-- option-count / multiple-choice bias;
-- evidence-record grouping;
-- distractor effects;
-- response-scale design;
-- weak-model-only cognitive bias;
-- "CoT fixes the bias";
-- a debiasing prompt/method.
-
-If RQ, estimand, mechanism, central claim, or reviewer one-line takeaway changes materially, authorization expires before the next experiment.
+> Are claims that particular embedding dimensions are harmful/query-important properties of the representation, or artifacts of the coordinate basis used to write an equivalent geometry?
 
 ---
 
-# Most recent kill — L15 (K183)
+## Serious pre-pilot
 
-## No Result Is Not No Evidence — ARCHIVED / NO-GO, 2026-09-11
+### L21 — When Is Contextual Entrainment Rational?
+**Status:** `SERIOUS — IDENTIFICATION BLOCKER — NO COMPUTE`  
+Package: `candidates/L21_ENTRAINMENT_CACHE_PRIOR/`
 
-Canonical package: `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/` (no authorization).
+### L23 — Similarity Is Not Provenance
+**Status:** `SERIOUS / PRE-PILOT — NO COMPUTE`  
+Package: `candidates/L23_SIMILARITY_NOT_PROVENANCE/`
 
-The locked RQ was:
-
-> **For the same observed null result, does an LLM scale its world-state update with counterfactual detectability, and can it correctly represent `P(null|H)` while failing to use that quantity in `P(H|null)`?**
-
-Its own bounded E01/E02 pilot answered no. With normal reasoning allowed, both model families track the detectability-conditioned posterior essentially exactly (Spearman .989 / .945, compression ratio .985 / .929, KNI rate .003 / .014, obs-known rate 1.000). The direct-answer failure is not null-specific: the `f=0` positive counterpart and the bare arithmetic control fail by the same margin, while prior-only is exact.
-
-E03 was never run — it was conditional on an integration gap that does not exist.
-
-**The forbidden fallback is recorded explicitly:** "LLMs need explicit reasoning to use observation models" is a different paper identity, was never selected, and compresses into generic chain-of-thought / Bayesian-elicitation / reasoning-and-calibration work. It survives as a historical observation, not as a route.
-
-Full record: `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_REPORT.md` and `failed/KILLED_LEDGER.md` K183.
+### L26 — Same PICO ≠ Same Causal Question
+**Status:** `SERIOUS SEED — DATA / DIRECT-OWNER AUDIT — NO COMPUTE`  
+Package: `candidates/L26_ESTIMAND_ALIGNMENT/`
 
 ---
 
-## Portfolio reset history
+## Hold / deprioritized
 
-Previously archived / killed routes remain preserved for reproducibility but carry no authorization:
-
-- L02 / L03 / L04 / L06 / L07 / L08 / L09 / L10 / L11 / L12 / L13 / L14 / L15.
-
----
-
-# Search / execution objective
-
-Prefer questions with this shape:
-
-> **durable and immediately understandable problem → simple natural/controlled data with hard gold → genuinely unresolved LLM-era computation → result interesting enough to matter by itself → broader consequence for actual NLP/LLM behavior.**
-
-Classic parents are assets, not novelty failures. The novelty burden is on the **modern scientific question, inference, and development path**.
+### L24 — Same Entity ≠ Same Epistemic File
+**Status:** `HOLD / DEPRIORITIZED — HOT-DIRECTION + HARNESS + DATA-GOLD RISK — NO COMPUTE`  
+Package: `candidates/L24_EPISTEMIC_FILES_VS_CANONICAL_ENTITIES/`
 
 ---
 
-# Durable workflow rule
+## Recent rejections
 
-`SEARCH → SELECT → PILOT → RE-SELECT CURRENT PAPER IDENTITY → DEVELOP → RE-SELECT → PAPER / ARCHIVE`
+### L27 — Sample / Effect Count ≠ Independent Evidence Units
+**Status:** `NO-GO / ARCHIVED`
 
-> **A topic is not selected once. We continuously select the paper we are actually writing. Evidence survives claim mutation; authorization does not.**
+Killed despite natural shared-control examples. The question is too shaped by a particular extraction representation, requires cumbersome article↔registry/design reconstruction, and reviewer-compresses to the standard statistical fact that automatic meta-analysis needs dependence/design metadata. **Do not continue prevalence audits or rescue with more design families.**
+
+Record: `candidates/L27_EFFECT_DEPENDENCE_STRUCTURE/README.md`.
+
+### Regression Row ≠ Scientific Effect Claim
+**Status:** `NO-GO / DO NOT PROMOTE`
+
+The classical Table-2-fallacy issue is real, but mature extraction systems already preserve exposure/covariate/adjustment roles. A new paper would depend on selecting a bad pipeline or adding another schema field rather than exposing a new scientific question.
+
+### L28 — Canonical Species ID ≠ Source Taxonomic Concept
+**Status:** `NO-GO / DIRECT DOMAIN-PARENT COLLISION`
+
+Concept-aware mapping/alignment is already directly owned in biodiversity informatics; adding LLM IE would mainly repeat a known representation error.
+
+### L25 — Evidence Exists Somewhere ≠ One Source Establishes It
+**Status:** `NO-GO / ARCHIVED`
+
+The source-composition question was reverse-engineered around the intervention rather than independently motivated.
+
+---
+
+## Governing rule
+
+Before deep-searching a lead:
+
+> **scientific object + estimand + decisive operation + synonyms → search killed ledger / archived candidates / historical repo → duplicate means discard first.**
+
+Before spending data/compute effort, additionally ask:
+
+> **Would we still care about this question if the first pilot were never run? Is the question itself compelling enough that a reviewer immediately understands why it matters? Is the natural data path easy enough that the project is not mostly archaeology?**
+
+If not, **kill and search anew; do not rescue.**
+
+`SEARCH → SELECT → PILOT → RE-SELECT → DEVELOP → RE-SELECT → PAPER / KILL`
+
+> **Evidence survives claim mutation. Authorization does not.**
