@@ -1,185 +1,86 @@
 # L31 — What Selects a Factual-Recall Route?
 
-**Status:** **PILOT-AUTHORIZED — E01 ONLY (2026-09-13)**  
+**Status:** **KILL — K191 — SELECTION RECHECK FAILED (2026-09-13)**  
 **Target:** ACL / EMNLP / NAACL Main
 
-## Locked research question
+## Final disposition
 
-> **What load-bearing condition determines whether a Transformer learns an Attention-centered or MLP-centered factual-recall computation?**
+L31 was briefly marked `PILOT-AUTHORIZED — E01 ONLY`, but that authorization is **revoked before compute** after a stricter successful-result and identification recheck.
 
-The project does **not** ask where facts are stored in one more model. It asks what causes one retrieval computation rather than another to emerge for the same factual-recall function.
+> **Do not run E01. Do not reactivate this route by changing the geometry transform, localization metric, model family, or synthetic setup.**
 
-## Mother phenomenon
+## Original question
 
-Choe et al., EMNLP 2025 Main, show across 17 autoregressive models that factual-recall causal organization is not universal: several Qwen-family models place much more causal burden on early Attention than the classical GPT-style early-MLP pattern. Their appendix also shows that simple static factors such as MLP hidden size, total head count, MHA/GQA, tokenizer/vocabulary size and multi-token subjects do not singly explain the split.
+> What load-bearing condition determines whether a Transformer learns an Attention-centered or MLP-centered factual-recall computation?
 
-- Choe et al. 2025: https://aclanthology.org/2025.emnlp-main.1448/
+The mother phenomenon was real: Choe et al. (EMNLP 2025 Main) showed substantial cross-model differences in factual-recall Attention/MLP causal organization, while Hochman et al. (ACL 2026 Main) showed that factual retrieval is distributed, redundant and non-contiguous.
 
-Hochman et al., ACL 2026 Main, independently show that factual retrieval is sparse, distributed, non-contiguous and redundant across LLaMA-3.1-8B and Qwen3-8B, warning against treating a single attribution score as a unique memory location.
+The proposed causal axis was embedding geometry / MLP usability, motivated by work showing that Attention and MLP can both act as factual associative memories and that embedding geometry strongly changes MLP fact-storage capacity/usability.
 
-- Hochman et al. 2026: https://aclanthology.org/2026.acl-long.2168/
+## Why the pilot authorization was wrong
 
-So the mother is already credible: modern autoregressive Transformers can implement factual recall through materially different causal organizations. The open question is what selects the organization.
+### 1. The geometry intervention is not selective
 
-## Causal axis selected before compute
+The proposed manipulation changes the same representation geometry seen by Attention, MLPs, the residual stream and final readout. Therefore even a clean route shift would not identify the intended chain:
 
-The authorized axis is **embedding geometry / MLP usability**, not an open-ended architecture sweep.
+`geometry -> MLP usability -> route selection`.
 
-Nichani, Lee & Bietti, ICLR 2025, show that both self-attention and MLPs can serve as associative memories for factual recall and that a Transformer can trade off attention versus MLP parameter capacity while preserving factual-recall ability.
+Attention learnability/retrieval geometry is altered by the treatment as well. A positive result would therefore not isolate MLP usability as the cause of route switching.
 
-- https://proceedings.iclr.cc/paper_files/paper/2025/hash/0bf9f909c24c8879d1b7f86fa50a9e49-Abstract-Conference.html
+### 2. Making the intervention selective makes the result close to predetermined
 
-Dugan et al. 2025 and Garcia et al. 2026 show that the geometry of key/value embeddings strongly controls MLP fact-storage capacity and, crucially, **Transformer usability**. Whitening can improve raw MLP storage capacity while making the stored facts harder for a Transformer to retrieve; the later Hebbian account identifies decoding margin as a load-bearing usability condition.
+One could insert an artificial transform only on the MLP path, but then the scientific result becomes roughly:
 
-- https://arxiv.org/abs/2512.00207
-- https://arxiv.org/abs/2607.10034
+> make one known-capable memory substrate harder to use -> optimization relies more on another known-capable substrate.
 
-These results give a pre-specified causal hypothesis:
+Nichani et al. already establish that Attention and MLP can trade off as factual associative memories. Dugan/Garcia-style work establishes how geometry changes MLP usability. Combining the two into a synthetic substitution experiment is not a sufficiently new Main-level inference.
 
-> **If the same factual task is trained under a geometry that makes the MLP route harder to use, a free Transformer should shift factual-recall causal burden toward Attention; if MLP usability improves, burden should shift toward the MLP route.**
+### 3. `Attention-centered vs MLP-centered` is too coarse / protocol-sensitive
 
-This is a route-selection hypothesis, not merely another capacity result.
+Choe already reports intervention-dependent differences between restoration and severing/knockout. Hochman et al. show multiple functionally equivalent factual-retrieval paths. Thus a scalar module-level reliance contrast is not obviously a stable intrinsic computational regime.
 
-## Closest-work compression
+Later geometric-memory work further expands the mechanism space beyond an Attention-vs-MLP binary: facts may be represented in embedding geometry while modules implement routing/selection. The proposed object is therefore too coarse to bear the intended causal law.
 
-Strongest reviewer attack:
+### 4. Strongest successful E01 is below the Main bar
 
-> `Choe: natural models differ in Attention/MLP factual recall` + `Nichani: either Attention or MLP can store facts` + `Dugan/Garcia: embedding geometry changes MLP capacity/usability` = your paper.
+Even the ideal result would largely say:
 
-The compression still does **not** establish the missing inference:
+> when one available factual-memory substrate becomes harder to use, a Transformer shifts burden to another available substrate.
 
-> **Does changing geometry causally make an otherwise free Transformer choose a different factual-memory route?**
+That conclusion is too predictable from the closest components and is vulnerable to the reviewer compression:
 
-The closest constructive work intentionally freezes or constrains attention/value pathways to prevent the Transformer from using an alternative fact store. That setup measures whether a provided fact-storing MLP is usable; it does not let Attention and MLP freely compete and test route selection.
+> `Attention/MLP are substitutable fact memories + geometry changes MLP usability = observed substitution`.
 
-Direct searches through September 13, 2026 did not find an owner that performs this controlled `geometry → route choice` intervention.
+The missing exact experiment is not enough; the answer is already substantially implied by the neighboring work.
 
-**Novelty verdict:** `PLAUSIBLE INDEPENDENT CONTRIBUTION`.
+### 5. Synthetic E01 does not explain the natural mother
 
-## E01 — authorized bounded pilot
+The natural anomaly is cross-family factual-recall organization in pretrained LLMs. A small synthetic geometry intervention would only show route flexibility in a controlled toy regime. Bridging that result back to Qwen/LLaMA-style natural differences would still require a large and confounded research program.
 
-### Purpose
+## Final failure codes
 
-E01 answers only:
+- **IDENTIFICATION FAILURE** — treatment changes more than the proposed MLP first stage.
+- **CONSTRUCT FAILURE** — Attention-vs-MLP reliance is not clearly a stable intrinsic regime under redundant paths.
+- **SUCCESSFUL-RESULT / PAPER-SCALE FAILURE** — ideal positive result is largely implied by closest components.
+- **GROWTH-PATH FAILURE** — synthetic causal result is too far from explaining the natural mother phenomenon.
 
-> **Can a controlled change in embedding geometry causally shift which module carries factual-recall computation when Attention and MLP are both free to learn?**
+## Anti-resurrection
 
-### Setup
+Do not revive as:
 
-Use a small synthetic factual-recall Transformer derived from the public ICLR-2025 factual-recall setup, because the pilot is about causal identification rather than natural-language scale.
+- `geometry chooses Attention vs MLP` with a different transform;
+- selectively degrading one module and measuring compensation;
+- another factual-memory localization metric study;
+- another model-family Attention/MLP comparison;
+- another synthetic `which substrate wins?` experiment;
+- generic factual-memory route switching.
 
-Keep fixed across arms:
+A future idea about factual memory must introduce a qualitatively different scientific object and survive selection from scratch.
 
-- fact mapping / task distribution;
-- number of facts;
-- sequence format and noise distribution;
-- Transformer depth and total architecture;
-- optimizer, steps, initialization distribution and training budget;
-- evaluation examples.
+## Durable lesson
 
-Manipulate only a **predeclared embedding-geometry condition** that prior work independently shows changes MLP capacity/usability. The preferred intervention is a graded covariance-whitening / geometry transform with at least a low and high condition; an intermediate condition is allowed only if fixed before outcome inspection.
+Before pilot authorization, apply one additional reviewer-compression test:
 
-The Transformer must remain free to use both Attention and MLP parameters. Do **not** freeze value/output projections or remove the alternative fact-storage route as in the constructive-MLP usability studies; that would destroy the route-selection estimand.
+> **If the bounded E01 succeeds perfectly, is the conclusion still substantially non-obvious after combining the closest component papers?**
 
-### Required first stage
-
-Before interpreting route movement, verify that the geometry manipulation actually changes the independently motivated MLP-usability quantity in the expected direction in the pilot setup.
-
-Acceptable first-stage observables include the prior-work decodability / minimum-margin / usability quantity, chosen before training outcomes are inspected.
-
-If the manipulation does not materially move the intended MLP-usability quantity, **STOP**. Do not compare learned routes. This is the L29 first-stage gate.
-
-### Route measurement
-
-Do not rely on one scalar attribution method.
-
-E01 requires two orthogonal causal views, for example:
-
-1. module-output severing/ablation of Attention versus MLP with factual accuracy/logit effect as endpoint;
-2. restoration/path-aware causal intervention that stresses redundancy differently.
-
-The route-shift conclusion is valid only if the direction is consistent across the predeclared causal measurements and factual competence remains sufficiently matched for interpretation.
-
-A probe or raw activation magnitude is not evidence of causal route selection.
-
-## Primary estimand
-
-Let `R` be a predeclared causal reliance contrast, conceptually:
-
-`R = causal contribution(Attention) - causal contribution(MLP)`.
-
-The primary estimand is:
-
-`Δ_route = R(high-MLP-usability geometry) - R(low-MLP-usability geometry)`.
-
-The predicted sign should correspond to greater MLP reliance when the MLP route is easier to use, and greater Attention reliance when it is harder.
-
-The exact normalized metric can be chosen during implementation, but it must be frozen before reading the treatment sign and must use direct factual behavior as endpoint.
-
-## Outcome map
-
-### Geometry moves MLP usability and route shifts accordingly
-
-This supports the selected causal account: computational regime is at least partly **learned under representational/optimization constraints**, rather than being a fixed architecture-family property.
-
-This is sufficient to return to selection for C2/C3, not permission to immediately scale.
-
-### Geometry moves MLP usability but route does not shift
-
-**KILL the current determinant hypothesis.** Do not search across arbitrary architecture/data knobs for a factor that works.
-
-### Geometry fails to move MLP usability
-
-**Instrument failure / STOP.** Repair is allowed only if it preserves the same independently motivated geometry intervention and is bounded; unrestricted manipulation search requires fresh selection.
-
-### Attribution methods disagree on route direction
-
-Treat the route construct as unstable. **KILL/HOLD** before any natural-model expansion. Do not convert the paper into a generic attribution-metric comparison without re-selection.
-
-## Resolution and feasibility
-
-This pilot is intentionally cheap relative to full-LLM training:
-
-- shallow/small synthetic Transformers;
-- same public factual-recall family as the theory/constructive literature;
-- multiple random seeds are expected;
-- no model-zoo inference or billion-parameter training is required for E01.
-
-The mother and first-stage effect are expected to be large enough for this controlled regime: prior work reports large changes in MLP capacity/usability under embedding-geometry manipulation. Therefore the pilot passes the L19 resolution gate.
-
-## Main-level growth path if E01 passes
-
-E01 alone is not a Main paper. The intended paper-scale progression is:
-
-1. **C1:** controlled geometry causally selects a factual-recall route;
-2. **C2:** test whether the same geometry/usability quantity predicts natural pretrained-model regime differences without model-family handwaving;
-3. **C3:** manipulate the quantity during controlled pretraining or a matched factual-learning trajectory and show a regime switch / boundary condition;
-4. optional consequence: show that localization/editing assumptions transfer differently across regimes.
-
-The desired final inference is a conditional computational law, not a synthetic-task curiosity:
-
-> **Transformers can implement factual memory through multiple computations; which route emerges is selected by the usability/geometry of the candidate memory substrate.**
-
-C2/C3 are **not authorized** by this file. E01 must pass and return to selection.
-
-## Anti-resurrection / scope guard
-
-L31 is not:
-
-- another `where are facts stored?` paper;
-- another knowledge-editing benchmark;
-- a generic architecture sweep;
-- generic post-training rerouting;
-- representation/readout;
-- a localization-method paper;
-- a model-family comparison.
-
-If E01 cannot causally connect a pre-specified geometry/usability manipulation to route selection, stop the route.
-
-## Final authorization
-
-> **PILOT-AUTHORIZED — E01 ONLY**
-
-Authorized: small controlled factual-recall training experiment with predeclared embedding-geometry intervention, first-stage MLP-usability validation, multiple seeds, and two causal route measurements.
-
-Not authorized: natural LLM model zoo, broad architecture/data sweeps, knowledge editing experiments, C2/C3, or full-study claims.
+`No one has run this exact intervention` is insufficient when the successful answer is already a natural consequence of known components.
