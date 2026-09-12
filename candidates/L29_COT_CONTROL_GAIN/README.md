@@ -1,6 +1,6 @@
 # L29 — Losing the Steering Gain
 
-**Status:** **RECONSTRUCT — E01 GATE NOT PASSED (2026-09-13)**
+**Status:** **RECONSTRUCT-AUTHORIZED — ONE FINAL INSTRUMENT AUDIT (2026-09-13)**
 **Date:** 2026-09-13
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -319,17 +319,20 @@ narrow_training_causal_quantity: PLAUSIBLE_INDEPENDENT_CONTRIBUTION
 closest_owner_density: HIGH
 causal_estimand: LOCKED_FOR_E01
 old_identification_blocker: COMMON_SUPPORT_FEASIBLE
-current_identification_blocker: NO_VALID_POSITIVE_EARLY_GAIN_INSTRUMENT
+current_identification_blocker: FINAL_BALANCED_BINARY_INSTRUMENT_GATE
 successful_result_test: PASS_ONLY_IF_E01A_AND_E01B_AGREE
 outcome_identity: LOCKED_WITH_KILL_ON_STABLE_GAIN_OR_DISAGREEMENT
 resolution_risk: SECONDARY_TO_INSTRUMENT_INVALIDITY
 training_cost: NONE_FOR_E01
-pilot: E01A_E01B_COMPLETED
-verdict: RECONSTRUCT
+pilot: E01R_EARLY_INSTRUMENT_DEVELOPMENT_ONLY
+verdict: RECONSTRUCT_AUTHORIZED_ONE_FINAL_AUDIT
 ```
 
-# **RECONSTRUCT — E01 GATE NOT PASSED**
+# **RECONSTRUCT-AUTHORIZED — ONE FINAL INSTRUMENT AUDIT**
 
-The paper mainline remains **not approved**. Do not expand the current suppression
-instrument or proceed to hidden-state mechanism, steering, new training, or a broader
-model sweep. A new behavioral instrument requires renewed design review.
+The paper mainline remains **not approved**. E01R may run one early-checkpoint
+instrument-development gate using fresh balanced-binary local control. Persistent
+suppression is permanently closed. If both case and tag families pass the frozen gate,
+E01R-A/B may proceed on untouched questions; otherwise L29 is killed without another
+reconstruction. Hidden-state mechanism, steering, new training, and broader model
+sweeps remain unauthorized. See `notes/E01R_DESIGN.md`.

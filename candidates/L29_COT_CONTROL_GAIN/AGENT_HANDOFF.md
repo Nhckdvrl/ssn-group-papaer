@@ -1,7 +1,7 @@
 # L29 — Agent Handoff / Pilot Brief
 
 **Project:** Losing the Steering Gain  
-**Status:** **RECONSTRUCT — E01 gate not passed**
+**Status:** **RECONSTRUCT-AUTHORIZED — one final instrument audit**
 **Date:** 2026-09-13
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -13,6 +13,12 @@ instrument check after neutral-reminder and lexical-priming controls. The appare
 decline under the first neutral wording was an intervention artifact. Read
 `notes/E01_PILOT_REPORT.md` and its referenced raw artifacts before proposing a new
 design. No mechanism work or larger sweep is authorized by this result.
+
+**Reconstruction authorization:** E01R replaces persistent suppression with a fresh,
+mid-reasoning balanced-binary codebook. Run `notes/E01R_DESIGN.md` exactly as a staged
+gate: step 100 and instrument-development questions first; no later checkpoint or
+confirmation outcome until both case and tag instruments pass. Failure kills L29 with
+no further wording search.
 
 Before doing substantive work, sync the latest `main` and read:
 

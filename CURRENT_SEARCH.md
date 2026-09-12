@@ -84,7 +84,7 @@ Mother phenomenon: same-speaker in-context examples improve speech recognition. 
 
 ## L29 — Losing the Steering Gain
 
-**Status:** `RECONSTRUCT — E01 GATE NOT PASSED (2026-09-13)`
+**Status:** `RECONSTRUCT-AUTHORIZED — ONE FINAL INSTRUMENT AUDIT (2026-09-13)`
 
 Package: `candidates/L29_COT_CONTROL_GAIN/`
 
@@ -100,6 +100,13 @@ The previous matched-prefix OOD blocker was closed on paper by requiring two agr
 MathIF already owns the fact that moving/repeating a constraint near generation can improve obedience. L29 does **not** claim that intervention as novelty. The unowned quantity was whether the **causal effect of the constraint itself changes over the same RL training trajectory**.
 
 **E01 outcome:** The shared-history and natural-state pipelines were both feasible, and common support retained multiple questions from every source stage. The retained exact-word suppression instrument nevertheless failed its validity gate. A first neutral reminder retrieved the original rule and created an apparent 6.25 pp decline; target-matched, structural, and target-free anaphoric controls removed that result and showed no robust positive early-checkpoint gain. Expanding the sample would estimate wording/lexical effects rather than the intended controller change. L29 therefore returns `RECONSTRUCT`; see `candidates/L29_COT_CONTROL_GAIN/notes/E01_PILOT_REPORT.md`.
+
+**E01R authorization:** One qualitative reconstruction is allowed. It removes all
+earlier constraints and neutral reminders, then applies a fresh balanced-binary local
+codebook at a natural reasoning boundary. Case and fixed-tag families must both show
+clear positive leverage at step 100 on a separate 48-question development split under
+two templates and swapped rule mappings. Failure kills L29 with no third reconstruction;
+success freezes the instrument before any untouched step-100/1400/2800 comparison.
 
 No hidden-state work, steering method, new training, or broad model sweep is authorized before re-selection.
 
