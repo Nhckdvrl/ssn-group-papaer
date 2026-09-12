@@ -48,7 +48,7 @@ Identity = **current NLP conclusion identifiability under function-preserving sy
 
 ---
 
-## Serious pre-pilot — no compute
+## Serious pre-pilot
 
 ### L21 — When Is Contextual Entrainment Rational?
 **Status:** `SERIOUS — IDENTIFICATION BLOCKER — NO COMPUTE`  
@@ -74,21 +74,13 @@ Package: `candidates/L26_ESTIMAND_ALIGNMENT/`
 
 Strong external scientific pressure exists from the estimand/evidence-synthesis literature. Do not reduce this to an estimand-label competence test. No compute until paper-scale natural/expert gold and a downstream compatibility/synthesis consequence are secured.
 
-### L27 — Flat Effect Tuples ≠ Independent Evidence Units
-**Status:** `SERIOUS SEED — OWNERSHIP / NATURAL-GOLD AUDIT — NO COMPUTE`  
+### L27 — Sample / Effect Count ≠ Independent Evidence Units
+**Status:** `SERIOUS / PRE-PILOT — E00 DATA-ONLY AUTHORIZED — NO MODEL COMPUTE`  
 Package: `candidates/L27_EFFECT_DEPENDENCE_STRUCTURE/`
 
-> Is a flat table of correctly extracted effect-size records sufficient for automated evidence synthesis, or does it erase design-induced dependence that determines how much independent evidence the records actually contain?
+> When automated scientific extraction converts papers into flat finding/effect records, does that representation preserve the independent experimental units and dependence structure required for valid evidence synthesis, or can every extracted number be correct while the evidence object is still scientifically insufficient?
 
-This is distinct from copied-source/study-report dependence: the load-bearing structure comes from experimental/statistical design. No compute until a public natural source-text → dependence-structure → valid-analysis substrate and fresh direct-owner audit are secured.
-
-### L28 — Canonical Species ID ≠ Source Taxonomic Concept
-**Status:** `SERIOUS SEED — DOWNSTREAM CONSEQUENCE / SCALE AUDIT — NO COMPUTE`  
-Package: `candidates/L28_TAXON_CONCEPT_IDENTITY/`
-
-> When scientific IE / entity linking normalizes species mentions from heterogeneous literature to one canonical taxonomy ID, does that preserve the taxonomic concept intended by each source, or can normalization silently merge evidence that the source taxonomies treat as different or only partially overlapping biological entities?
-
-The old scientific problem, expert RCC-5 alignment gold, and real data-integration consequence are independently established. No compute until concept collapse can be connected at scale to executable occurrence/trait/distribution joins and a fresh direct-owner search confirms that source-relative taxon-concept linking is not already owned.
+Direct-owner search has not found a modern NLP paper owning experimental-unit/dependence-graph extraction as the central object. Public RCT extraction corpora plus ClinicalTrials.gov/AACT relational group/design structure provide a plausible external data-only identifiability audit. E00 may join public article records to registry structure and estimate whether flat finding schemas collapse scientifically different evidence states. No LLM/model compute is authorized before E00 survives.
 
 ---
 
@@ -100,16 +92,27 @@ Package: `candidates/L24_EPISTEMIC_FILES_VS_CANONICAL_ENTITIES/`
 
 The classical identity/perspective tension is clean, but the current paper identity lands in saturated Agent / long-term-memory work, depends on a memory/entity-resolution harness, and lacks easy paper-scale natural identity×perspective gold. Do not spend current search or compute budget here. Reopen only if it can become substantially framework-independent with strong natural data.
 
+### Regression Row ≠ Scientific Effect Claim
+**Status:** `UNRESOLVED SEARCH LEAD — GOLD AUDIT FIRST — NO CANDIDATE ID YET`
+
+> When scientific IE reads a multivariable regression table, can it distinguish the target exposure/effect the study was designed to estimate from adjustment-variable coefficients that appear in the same table but do not license the same scientific claim?
+
+Classical Table-2-fallacy pressure is strong and 2026 LLM pipelines already extract exposure/outcome/covariate inventories for observational evidence synthesis. However, available public audits appear mostly article-level rather than row-level target-estimand gold. Do not promote until a natural row/model-level gold path and direct-owner audit survive.
+
 ---
 
-## Most recent rejection
+## Recent rejections
+
+### L28 — Canonical Species ID ≠ Source Taxonomic Concept
+**Status:** `NO-GO / KILL CURRENT FORM — DIRECT DOMAIN-PARENT COLLISION`  
+Record: `candidates/L28_TAXON_CONCEPT_IDENTITY/README.md`
+
+The classical problem and gold were strong, but the intended modern bridge is already owned in biodiversity informatics: 2024 taxonomic-concept mapping work explicitly says information aggregators must compare/map concepts rather than only names, and 2026 work provides scalable concept-aware biological-taxonomy alignment for information reconciliation. Adding an LLM entity linker would mainly show a new extractor repeating an already-recognized representation error.
 
 ### L25 — Evidence Exists Somewhere ≠ One Source Establishes It
 **Status:** `NO-GO / ARCHIVED`
 
-The patent source-composition route is archived because the proposed **general scientific object** (“rule-conditioned evidence composition”) was reverse-engineered around a specialized doctrinal distinction and a matched source-partition intervention. The concern is not that patent law is technical or non-layperson-friendly; a technical domain is fully acceptable. The problem is that outside the constructed intervention, we did not establish a sufficiently natural, independently motivated NLP/LLM uncertainty with its own scientific pressure and paper-scale consequence.
-
-Do not rescue merely by adding more partitions/domains/rules. Reopen only if an independently established scientific question makes source-composition the natural estimand rather than the experiment defining the question.
+The patent source-composition route is archived because the proposed general object was reverse-engineered around a specialized doctrinal distinction and matched source-partition intervention rather than an independently established NLP uncertainty with paper-scale consequence.
 
 Record: `candidates/L25_SOURCE_BOUNDED_EVIDENCE/README.md`.
 
@@ -117,6 +120,7 @@ Recent provenance-calibrated search records:
 - `search_rounds/2026-09-12_SOURCE_BOUNDED_EVIDENCE_SEARCH.md`
 - `search_rounds/2026-09-12_AWARD_TOPIC_PROVENANCE_SEARCH.md`
 - `search_rounds/2026-09-12_ESTIMAND_AND_SYNTHESIS_STRUCTURE_SEARCH.md`
+- `search_rounds/2026-09-12_INDEPENDENT_EVIDENCE_UNIT_SEARCH.md`
 
 ---
 
