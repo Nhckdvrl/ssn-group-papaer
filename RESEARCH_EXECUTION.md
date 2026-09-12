@@ -1,6 +1,6 @@
 # Research Execution — Develop the Selected Scientific Contribution
 
-Updated: 2026-09-12. Target: ACL / EMNLP / NAACL Main.
+Updated: 2026-09-13. Target: ACL / EMNLP / NAACL Main.
 
 This file governs work **after a candidate has explicit authorization**.
 
@@ -121,6 +121,25 @@ Common inference failures:
 - output improvement treated as proof of the proposed internal mechanism.
 
 Controls protect an inference; they do not need to become headline claims.
+
+### First-stage instrument validity — L29/K190 lesson
+
+When the scientific claim is a **change in an intervention effect across checkpoints, training stages, conditions, or regimes**, do not begin with the cross-stage trend.
+
+First establish on an independent instrument-development split that the intervention has a **material, interpretable first-stage effect** at a reference condition/checkpoint.
+
+Before comparing stages, require as appropriate:
+
+- a frozen minimum meaningful first-stage effect;
+- enough leverage to sit clearly above the measurement/noise floor;
+- both semantic directions to work for symmetric/binary controls;
+- non-sign-selected robustness across wording/template/mapping variants when language wording is part of the intervention;
+- explicit checks that control text does not retrieve the original rule or directly inject/prime the surface event being scored;
+- a held-out confirmation split that remains untouched until the instrument is frozen.
+
+If the reference intervention cannot move the behavior, a difference between two near-zero effects is **not** a training-mechanism result. Stop before later checkpoints, hidden-state work, or broad sweeps.
+
+Do not repeatedly search intervention wordings after seeing the sign. If stronger prompting/few-shot/system instructions would change the paper from mechanism identification to elicitation/evaluator optimization, re-select rather than rescue the old identity.
 
 ---
 
@@ -341,6 +360,7 @@ The reusable lessons are:
 - **L13-type failures:** strong evidence does not rescue a paper identity that grew post-hoc from successive falsifications.
 - **L15-type failures:** when the preregistered dissociation fails, generic fallback observations are not the same paper.
 - **L19/K184:** novelty and question value can survive while the project is infeasible because the effect of interest lies below the attainable noise floor.
+- **L29/K190:** a stable mother phenomenon and elegant checkpoint comparison do not identify a training mechanism if the intervention has no material first-stage leverage at the reference checkpoint. Validate the instrument before estimating its training curve; do not turn stronger elicitation into a rescue if it changes the paper identity.
 
 These lessons constrain decisions without turning root workflow documents into historical candidate narratives.
 
