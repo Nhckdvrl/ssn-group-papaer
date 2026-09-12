@@ -1,8 +1,10 @@
 # L24 — Same Entity ≠ Same Epistemic File
 
-**Status:** **SERIOUS / PRE-PILOT — DATA-SCALE + DIRECT-COLLISION AUDIT — NO COMPUTE AUTHORIZED**  
+**Status:** **HOLD / DEPRIORITIZED — HOT-DIRECTION + HARNESS + DATA-GOLD RISK — NO COMPUTE AUTHORIZED**  
 **Date:** 2026-09-12  
 **Target:** ACL / EMNLP / NAACL Main
+
+> **Search-priority correction — 2026-09-12:** Although the classical identity/perspective tension is intellectually clean, the current paper identity lands inside the extremely active Agent / long-term-memory area, depends on choices made by a memory/entity-resolution harness, and lacks an easy paper-scale natural identity×perspective gold substrate. Do not spend current search or compute budget on this route. Reopen only if the same scientific question can be made substantially framework-independent with strong natural data; otherwise archive/kill rather than building a bespoke memory stack.
 
 ## One-sentence RQ
 
@@ -169,6 +171,7 @@ If the work drifts into "LLMs are bad at referential opacity" or "perspective-aw
 3. **Representation leakage:** C may win merely because it contains more tokens / duplicate information; budgets and information content must be matched.
 4. **Capability confound:** a model may already fail the belief question before any memory manipulation. Only items solved under a faithful non-merged representation are diagnostic for the canonicalization effect.
 5. **Engineering-known objection:** some production systems already keep `same_as` links rather than destructively merging aliases. The contribution must be a scientific identification result, not the engineering advice "do not merge blindly."
+6. **Fashion/harness risk:** even a positive result can be reviewer-compressed into a crowded Agent-memory design choice, and changing the memory harness may change the observed effect. This is now a first-class reason not to prioritize the route.
 
 ## Kill conditions
 
@@ -177,3 +180,4 @@ If the work drifts into "LLMs are bad at referential opacity" or "perspective-aw
 - The apparent effect is fully explained by token count, retrieval differences, or extra explicit perspective annotations.
 - We cannot obtain a credible paper-scale substrate beyond a tiny bespoke set without author-defined semantic gold.
 - The final contribution compresses to a generic ToM benchmark or a memory-engineering best practice.
+- The question cannot be reframed away from framework-specific Agent-memory machinery without losing its scientific identity.
