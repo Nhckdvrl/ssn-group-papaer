@@ -3,7 +3,7 @@
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
 **Phase:** **continued mechanism-first search + one new bounded L30 pilot + existing projects under their own gates**  
-**Killed ledger:** authoritative through **K184**. Compact kills **K185–K189** are recorded in `search_rounds/2026-09-12_CONTINUED_SEARCH_VII.md` and should be folded into `failed/KILLED_LEDGER.md` at the next ledger-maintenance pass.
+**Killed ledger:** authoritative file currently contains through **K184**. Compact kills **K185–K189** are pending ledger maintenance; **K190 is reserved for L29** and its complete postmortem is `candidates/L29_COT_CONTROL_GAIN/notes/POSTMORTEM.md`. Do not reuse K185–K190.
 
 ## Current search preference
 
@@ -82,22 +82,49 @@ Mother phenomenon: same-speaker in-context examples improve speech recognition. 
 
 **Why it stays:** unlike the newly killed legacy topics, it begins from an established mother effect and already has competing computational accounts plus a discriminating operation. It remains an existing project only. **Do not use this as permission to create new speech/audio topics.**
 
-# Removed from active portfolio in the 2026-09-12 re-screen
+# Removed from active portfolio in the 2026-09-12 / 2026-09-13 re-screen
 
 ## L29 — Losing the Steering Gain
 
-**Status:** `KILL — FINAL E01R INSTRUMENT GATE FAILED (2026-09-13)`
+**Status:** `KILL — K190 — FINAL E01R INSTRUMENT GATE FAILED (2026-09-13)`
 
 The original E01 showed that common-support and checkpoint-natural pipelines were
 feasible, but exact-word suppression was invalid: its apparent −6.25 pp training change
-came from rule retrieval in the neutral arm. The one authorized reconstruction removed
-all earlier constraints and used fresh balanced-binary case and tag codebooks at natural
-reasoning boundaries. On 48 unseen step-100 questions, all natural forks survived, yet
-case directional gain was 0.00 pp and tag gain was only +1.30 pp, entirely amber-driven.
-Both missed the frozen 15 pp gate and semantic/template/mapping robustness requirements.
-No step-1400/2800 or untouched-confirmation E01R outcome was run. Under the locked rule,
-L29 is killed with no further reconstruction or mechanism work. Full record:
-`candidates/L29_COT_CONTROL_GAIN/notes/E01R_REPORT.md`.
+came from rule retrieval in the neutral arm. Target-matched, structural, and target-free
+controls then showed that the supposed local-gain contrast was dominated by intervention
+wording / lexical effects rather than a valid positive early controller effect.
+
+The one authorized reconstruction removed all earlier constraints and used fresh
+balanced-binary case and tag codebooks at natural reasoning boundaries. On 48 unseen
+step-100 instrument-development questions, all 48 natural forks survived, yet case
+directional gain was **0.00 pp** and tag gain was only **+1.30 pp** (95% CI
+`[+0.26,+2.60]`), entirely amber-driven. Both missed the frozen +15 pp primary gate and
+semantic/template/mapping robustness requirements. No step-1400/2800 or untouched
+240-question confirmation outcome was run.
+
+This is **identification failure, not a stable-gain/null result**: L29 never obtained a
+material positive early local-control effect whose training change could identify
+controller weakening. Under the locked rule the paper is killed with no further wording
+search, stronger prompting rescue, hidden-state mechanism work, activation steering,
+model-zoo expansion, or checkpoint sweep.
+
+**Anti-resurrection:** do not reopen as `L29b — initialization vs online control`,
+commitment-conditioned redirectability, “why was the local gain near zero?”, or a prompt-
+elicitation study. ReasonIF, MathIF, ICML 2026 interruptibility work, commitment-boundary
+work, Thinking Traps, and trajectory-steering work already crowd that natural fallback;
+more importantly, stronger prompt optimization would change the selected paper identity
+from training mechanism to evaluator/elicitation optimization.
+
+Full execution record:
+
+- `candidates/L29_COT_CONTROL_GAIN/notes/E01_PILOT_REPORT.md`
+- `candidates/L29_COT_CONTROL_GAIN/notes/E01R_REPORT.md`
+- `candidates/L29_COT_CONTROL_GAIN/notes/POSTMORTEM.md`
+
+**Durable process lesson:** before comparing a causal quantity across training stages,
+first prove on an independent development split that the intervention has substantial,
+interpretable causal leverage at the reference checkpoint. A difference between two
+near-zero first stages is not a training-mechanism result.
 
 ## L16 — Same World, Different Partitions
 
@@ -162,6 +189,8 @@ Before promoting a hook:
 Do not mine one paper's Discussion as the default source of novelty. Prefer 2–4 independent strong papers exposing the same abnormal quantity under different names, or an old empirical law whose load-bearing premise genuinely changes in the modern regime.
 
 Search V–VII are the current anti-duplication frontier. In particular, do not reopen reasoning-length/overthinking, CoT faithfulness, metacognition-control, RLVR entropy/mode collapse/capability boundary, self-correction, generic instruction-following loss, generic post-training rerouting, or other recently killed parents by adding another intervention/model family.
+
+**L29 adds one more process gate:** for any `training stage → causal quantity` mechanism project, validate a meaningful positive first-stage intervention effect on an independent development split before spending compute on checkpoint trends. If the intervention cannot move the reference model, the training comparison is unidentified.
 
 L30 does **not** reopen generic instruction-following loss: it is specifically the marginal causal value of the **joint correspondence structure in supervision**, with fixed prompt/response marginals and a later conditional-law path.
 
