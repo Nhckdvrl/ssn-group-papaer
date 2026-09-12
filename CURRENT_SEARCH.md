@@ -7,18 +7,69 @@
 
 ## Current search preference
 
-- No new speech/audio topics.
-- Avoid pure-linguistics competence tests.
-- **Strongly avoid very hot directions as the default search space**, especially generic Agent / long-term memory / RAG / RL / judge work.
-- Prefer scientific questions that would remain important if the fashionable system label disappeared.
-- Prefer the intellectual shape of ACL 2026 Best Paper *The Imperfective Paradox in Large Language Models*: **clean older scientific problem → new modern leverage/consequence → larger scientific claim**, without copying its subject.
-- Study strong papers' **topic provenance**: what old problem, anomaly, hidden assumption, measurement bottleneck, identification problem, or real workflow caused the paper to exist before it had a method/title.
-- A candidate may combine several reliable literatures; it need not depend on one paper's anomaly.
-- Classical distinctions count only when they naturally create a modern scientific question; “does the LLM know the distinction?” is normally too weak.
-- **Natural means the scientific object/question already exists independently of our intervention or schema.** A topic is bad if the question becomes interesting only after we invent a special benchmark, join several awkward datasets, or define a bespoke pipeline failure.
-- **Do not salvage a topic merely because natural witnesses or executable examples can be found.** If the question itself is low-priority, overly constructed, data-engineering-heavy, or reviewer-compresses to an implementation fix, kill it and resume broad search.
-- Prefer easy/native gold and direct data access. Data archaeology, multi-source linkage, heavy expert reconstruction, or bespoke annotation is a strong negative prior unless the scientific question is exceptional.
+The open-ended search target is now explicit:
+
+> **stable model phenomenon → unresolved why → competing computational accounts → decisive causal/discriminating operation**
+
+or:
+
+> **training/model-regime change → old empirical law no longer sufficient → new conditional computational explanation**
+
+### Highest-priority search tracks
+
+- **Stable anomaly → mechanism**: mother phenomenon should already be credible; search the unresolved explanation.
+- **Training / post-training dynamics**: pretraining → SFT → preference/RL/RLVR; learn vs select vs suppress vs reroute vs readout.
+- **Reasoning / inference-time computation**: decision formation, revision, commitment, recovery, trajectory/state control.
+- **Representation → causal use**: absent vs represented vs accessible vs selected vs read out; probe alone is insufficient.
+- **Old empirical law / challenge → modern model regime**: not “LLM is better,” but a changed bottleneck, conditional law, or explanation.
+- **Two strong papers disagree on the SAME scientific quantity**: find the hidden condition that makes both true.
+- **Strong mechanistic claim → weak direct causal evidence**: attack explanations that have guided method design but were never decisively intervened on.
+
+### Strongly deprioritized for new open-ended search
+
+Do not normally spend search budget on:
+
+- RAG / retrieval / search / evidence retrieval;
+- benchmark construction, benchmark auditing, benchmark contamination;
+- metrics / evaluators / generic evaluation-protocol fixes;
+- annotation / adjudication / labeling workflow;
+- dataset-quality / dataset-bias / data-first topic generation;
+- systematic review / evidence-synthesis infrastructure;
+- generic Agent / long-term memory / RL / judge / harness questions;
+- new speech/audio topics;
+- pure linguistic competence tests;
+- generic bias / calibration / hallucination surveys.
+
+These are taste priors, not universal scientific bans. A truly exceptional question may override them, but clean data/gold is not itself a reason to search there.
+
+### Search taste test
+
+Before deep search ask:
+
+> **If the dataset, benchmark, metric, retrieval system, or workflow name disappeared, would we still urgently want to know the answer?**
+
+Current preference is for papers whose interesting core is:
+
+> **“Why does the model work this way?”**
+
+rather than:
+
+> **“The current data/evaluation pipeline measures the wrong thing.”**
+
+### General requirements that still hold
+
 - No survivor quota. Kill aggressively rather than fill slots.
+- Question first; method second.
+- Do not manufacture an abstract distinction and then hunt for a dataset.
+- A strong anomaly is a lead, not proof that explanation space is open.
+- Old problems are welcome when the modern scientific question is genuinely unresolved.
+- Search strong papers for **topic provenance**, not for templates.
+- Natural means the scientific object exists before our benchmark/intervention.
+- Do not salvage low-priority topics merely because natural witnesses exist.
+- Prefer tractable data/observables once the question is good; do not let easy data choose the question.
+- Anti-resurrection remains mandatory.
+- For mechanism topics, identification means observable + causal estimand + discriminating operation + inference bridge; it does **not** require artificial annotation gold.
+- For external-task/data topics, DIRECT GOLD remains mandatory for the load-bearing estimand.
 
 ---
 
@@ -75,27 +126,15 @@ Package: `candidates/L24_EPISTEMIC_FILES_VS_CANONICAL_ENTITIES/`
 ### L19 — Causal Ingredients of Long→Short SFT Transfer
 **Status:** `ARCHIVED / NO-GO (K184)` — **shelved for cost, not for novelty**
 
-Parent: Zheng et al., *When Long Helps Short*, EMNLP 2025 Main. Its short/long contrast is
-five different datasets and no experiment anywhere varies sequence length with data source
-held fixed, so its central causal variable is unidentified; a 2026-09-12 search found no
-published critique, replication, or matched-length experiment. **The novelty gap is open.**
+Parent: Zheng et al., *When Long Helps Short*, EMNLP 2025 Main. Its short/long contrast is five different datasets and no experiment anywhere varies sequence length with data source held fixed, so its central causal variable is unidentified; a 2026-09-12 search found no published critique, replication, or matched-length experiment. **The novelty gap is open.**
 
-Stopped on resolution. The parent's own dataset swap, rerun in our regime, reproduces only
-**26%** of its effect (+0.47 vs +1.30 MMLU, +0.91 vs +5.67 LAMBADA) — already below the
-evaluation noise floor at our n. The matched contrast is a subset of that effect and the
-interesting outcome was the *null*, which needs parent-scale budgets plus enough seeds to
-estimate run-level variance: **~100-300 GPU-hours** on this hardware to chase a 2.7 pp
-effect. Treatment arms were never trained.
+Stopped on resolution. The parent's own dataset swap, rerun in our regime, reproduces only **26%** of its effect (+0.47 vs +1.30 MMLU, +0.91 vs +5.67 LAMBADA) — already below the evaluation noise floor at our n. The matched contrast is a subset of that effect and the interesting outcome was the *null*, which needs parent-scale budgets plus enough seeds to estimate run-level variance: **~100-300 GPU-hours** on this hardware to chase a 2.7 pp effect. Treatment arms were never trained.
 
-**Durable workflow addition from this route:** the successful-result test must compare the
-**expected effect size against the evaluation noise floor**. Two numbers, no compute; it
-would have stopped L19 before any GPU time was spent.
+**Durable workflow addition from this route:** selection must compare expected effect size against the **evaluation noise floor / minimum detectable effect** before expensive compute. A scientifically good question can still be infeasible at the available resolution.
 
-Reusable: 10,000 frozen matched NQ pairs (98.4x length contrast, token-identical targets,
-verified under both Llama-3 and Qwen chat formats), a 600-item context-reliance probe, and
-a working 8B SFT + vLLM evaluation stack.
+Reusable: 10,000 frozen matched NQ pairs (98.4x length contrast, token-identical targets, verified under both Llama-3 and Qwen chat formats), a 600-item context-reliance probe, and a working 8B SFT + vLLM evaluation stack.
 
-Record: `candidates/L19_LONG_TO_SHORT_TRANSFER/PILOT_REPORT.md`, `failed/KILLED_LEDGER.md` K184.
+Record: `candidates/L19_LONG_TO_SHORT_TRANSFER/README.md`, `failed/KILLED_LEDGER.md` K184.
 
 ### L27 — Sample / Effect Count ≠ Independent Evidence Units
 **Status:** `NO-GO / ARCHIVED`
@@ -121,17 +160,15 @@ The source-composition question was reverse-engineered around the intervention r
 
 ---
 
-## Governing rule
+## Governing workflow
 
 Before deep-searching a lead:
 
-> **scientific object + estimand + decisive operation + synonyms → search killed ledger / archived candidates / historical repo → duplicate means discard first.**
+> **scientific object + estimand + decisive operation + synonyms → killed ledger / archived candidates / recent search rounds → duplicate means discard first**
 
-Before spending data/compute effort, additionally ask:
+Then use:
 
-> **Would we still care about this question if the first pilot were never run? Is the question itself compelling enough that a reviewer immediately understands why it matters? Is the natural data path easy enough that the project is not mostly archaeology?**
-
-If not, **kill and search anew; do not rescue.**
+> **SEARCH** to decide whether this is the right kind of question → **SELECT** to decide whether it deserves compute → **EXECUTE** only within explicit authorization.
 
 `SEARCH → SELECT → PILOT → RE-SELECT → DEVELOP → RE-SELECT → PAPER / KILL`
 
