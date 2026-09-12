@@ -82,6 +82,14 @@ Package: `candidates/L27_EFFECT_DEPENDENCE_STRUCTURE/`
 
 This is distinct from copied-source/study-report dependence: the load-bearing structure comes from experimental/statistical design. No compute until a public natural source-text → dependence-structure → valid-analysis substrate and fresh direct-owner audit are secured.
 
+### L28 — Canonical Species ID ≠ Source Taxonomic Concept
+**Status:** `SERIOUS SEED — DOWNSTREAM CONSEQUENCE / SCALE AUDIT — NO COMPUTE`  
+Package: `candidates/L28_TAXON_CONCEPT_IDENTITY/`
+
+> When scientific IE / entity linking normalizes species mentions from heterogeneous literature to one canonical taxonomy ID, does that preserve the taxonomic concept intended by each source, or can normalization silently merge evidence that the source taxonomies treat as different or only partially overlapping biological entities?
+
+The old scientific problem, expert RCC-5 alignment gold, and real data-integration consequence are independently established. No compute until concept collapse can be connected at scale to executable occurrence/trait/distribution joins and a fresh direct-owner search confirms that source-relative taxon-concept linking is not already owned.
+
 ---
 
 ## Hold / deprioritized
