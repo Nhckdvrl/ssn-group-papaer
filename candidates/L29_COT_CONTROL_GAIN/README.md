@@ -1,6 +1,6 @@
 # L29 — Losing the Steering Gain
 
-**Status:** **SERIOUS / PRE-PILOT — IDENTIFICATION BLOCKER — NO COMPUTE AUTHORIZED**  
+**Status:** **PILOT-AUTHORIZED — E01A/E01B ONLY (2026-09-12)**  
 **Date:** 2026-09-12  
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -12,7 +12,7 @@ If the local influence really weakens, the second-stage question is:
 
 > **Did the constraint signal become unavailable, or is it still represented but increasingly unable to steer the continuation policy?**
 
-The first question is load-bearing. The second is authorized only if the first establishes a genuine training-induced local-control change.
+The first question is load-bearing. The second is **not authorized yet**; it becomes eligible for re-selection only if E01 establishes a genuine training-induced local-control change.
 
 ---
 
@@ -22,143 +22,231 @@ Primary mother:
 
 - Yueh-Han Chen et al., **Reasoning Models Struggle to Control their Chains of Thought** (ICML 2026 / arXiv:2603.05706).
 
-The phenotype is already strong enough that this project does not need to gamble on discovering it:
+The phenotype is strong and does not need to be rediscovered:
 
 - CoT control is dramatically lower than final-output control across many reasoning models;
-- models often explicitly notice that they are violating a CoT constraint and still continue violating it;
-- controllability worsens with test-time reasoning, problem difficulty, and additional reasoning-oriented RL;
-- public OLMo model-flow checkpoints expose a same-base training trajectory;
+- models often notice that they are violating a CoT constraint and nevertheless continue violating it;
+- controllability worsens with longer reasoning / increased test-time compute;
+- on the same OLMo-3 RL-Zero training path, CoT controllability falls by more than an order of magnitude as RLVR training proceeds;
+- the trend is also observed before/after reasoning training across multiple open model families;
+- output controllability falls much less than CoT controllability;
 - the parent explicitly states that the mechanism behind low controllability is not well understood.
 
-This candidate studies **why training changes control**, not whether low controllability exists.
+The paper itself already treats reasoning length as a major confound. This candidate therefore studies **why training changes control after separating local responsiveness from cumulative opportunities to fail**.
 
 ---
 
 ## Why the broad mechanism story is not ours
 
-The tempting broad formulation
+The broad formulation
 
 > “the model knows the instruction but the reasoning policy ignores it”
 
-is already too directly owned.
+is already directly owned.
 
-Tan et al., **Compliance versus Sensibility: On the Reasoning Controllability in Large Language Models** (arXiv:2604.27251), reports that conflicting reasoning instructions remain internally detectable / decodable, models favor task-appropriate reasoning patterns over compliance, and activation steering can increase compliance by up to 29%.
+Tan et al., **Compliance versus Sensibility: On the Reasoning Controllability in Large Language Models** (arXiv:2604.27251), shows that conflicting reasoning instructions remain internally detectable / decodable, models favor task-appropriate reasoning patterns over compliance, and activation steering can increase compliance.
 
-Fu et al., **Scaling Reasoning, Losing Control: Evaluating Instruction Following in Large Reasoning Models** (ACL 2026 Main), and ReasonIF occupy the broader reasoning-capability / instruction-adherence trade-off.
+Fu et al., **Scaling Reasoning, Losing Control: Evaluating Instruction Following in Large Reasoning Models** (ACL 2026 Main), and **ReasonIF** occupy the broader reasoning-capability / instruction-adherence trade-off.
 
 Therefore L29 is **not**:
 
-- another “represented but unused” probe paper;
+- another represented-but-unused probe paper;
 - another activation-steering paper;
 - another reasoning-vs-instruction benchmark;
-- another endpoint model-family comparison.
+- another endpoint model-family comparison;
+- another “repeat the instruction near the answer” method paper.
 
 If the project drifts into any of those identities, re-select or kill.
 
 ---
 
-## Why length correction is not the paper
+## Important 2026 neighbor: bringing the constraint closer is already owned
 
-CoT length is a known major confound. OpenAI system cards already report CoT-Control conditional on chain length precisely because longer trajectories are harder to control.
+MathIF (ACL 2026 Main) explicitly tests a recency/distance account: after a long CoT it appends `Wait` and repeats the original constraint near the final answer. Compliance improves on all three tested reasoning models, although problem-solving accuracy can fall.
 
-So this is **not** a paper about fixing the aggregate controllability metric.
+This is **not** our novelty. It is useful prior evidence that contextual distance is a serious competing explanation.
 
-The unresolved quantity is:
+L29 instead asks a training-dynamics question MathIF does not answer:
 
-> **At a matched reasoning state, does the same explicit constraint have lower causal gain on the continuation policy after reasoning post-training?**
+> **Along the same reasoning-RL trajectory, does the instantaneous causal gain of a fresh constraint itself collapse, or does the model remain locally steerable while only accumulating more opportunities to violate the constraint?**
 
-Call this quantity the **local constraint→policy control gain** for now. The name is provisional; the estimand, not the terminology, is what must be locked.
+A recent RLVR neighbor, **Verifier-Induced Support Reshaping in On-Policy Optimization** (arXiv:2608.00220), shows that verifier training can reshape the support of later instruction-following behaviors. This increases the importance of measuring the *local intervention effect* directly rather than inferring it from endpoint pass rates, but it does not establish the CoT constraint→continuation gain studied here.
 
 ---
 
 ## Competing accounts
 
-### Account A — Opportunity accumulation
+### Account A — Opportunity / distance accumulation
 
-Training mainly lengthens / expands the reasoning trajectory. Local responsiveness to a constraint remains similar, but every extra reasoning step creates another opportunity for a first violation. Global exact-control probability therefore collapses even without a changed local controller.
+Training lengthens or expands reasoning. The original constraint becomes more distant and every extra step creates another opportunity for the first violation. However, **at a currently reachable reasoning state, a fresh or otherwise locally available constraint should retain roughly similar causal leverage over the next part of the trajectory**.
+
+Global exact-control probability can therefore collapse even if the local controller has not weakened.
 
 ### Account B — Constraint-signal degradation
 
-At the same reasoning state, the constraint becomes less available / less stably represented after training, so its causal influence on continuation falls.
+At the same externally matched reasoning history, the constraint becomes less available / less stably represented after training, so its causal influence on continuation falls.
 
 ### Account C — Policy-gain / attractor override
 
-The constraint signal remains represented, but outcome-trained reasoning dynamics exert stronger policy control. The constraint therefore loses causal leverage over token/continuation selection even though it can still be decoded.
+The constraint signal remains available, but the outcome-trained reasoning policy exerts stronger competing control. The constraint therefore loses causal leverage over continuation even when freshly supplied.
 
-The sequence is mandatory:
+Mandatory sequence:
 
 > **A vs {B,C} behaviorally first → only then B vs C mechanistically.**
 
-A probe cannot skip the first discrimination.
+No probe or activation analysis may skip E01.
 
 ---
 
-## Proposed decisive operation — not yet authorized
+# E01 — AUTHORIZED BOUNDED PILOT
 
-A future E01 should estimate the constraint’s **local causal influence at a matched state** across checkpoints from the same open OLMo training path.
+E01 contains **two mandatory identification legs**. Neither leg alone licenses the Main-level inference.
 
-Candidate structure:
+The purpose is only to answer:
 
-1. select multiple checkpoints from one same-base OLMo RL-Zero reasoning trajectory;
-2. use the same questions and constraint-compatible reasoning states/prefixes;
-3. hold the reasoning state fixed by teacher forcing;
-4. change only the explicit CoT constraint versus a matched neutral/control instruction;
-5. measure the induced change in locally compliant next-token probability mass and a short-horizon continuation measure;
-6. use pre-specified surface constraints for which local compliance is mechanically identifiable;
-7. replicate the conclusion on natural pre-violation states rather than relying solely on synthetic/shared prefixes.
+> **Does reasoning post-training reduce local constraint→policy causal gain beyond the known length/opportunity effect?**
 
-The target is the **causal contrast induced by the constraint**, not absolute next-token probability, benchmark accuracy, probe score, or hidden-state similarity.
+No hidden-state mechanism work, new training, steering method, benchmark construction, or model-zoo expansion is authorized.
+
+## E01A — Common-support same-history control gain
+
+### Core idea
+
+Compare checkpoints on the **same observable reasoning history**, but do not assume arbitrary teacher-forced prefixes are valid states.
+
+1. Use one same-base OLMo-3.1 7B RL-Zero reasoning trajectory with multiple public RL checkpoints.
+2. Use the same frozen questions and CoT-control constraints across checkpoints.
+3. Generate a pool of constraint-compatible prefixes from natural rollouts.
+4. Score every candidate prefix under **every checkpoint × prompt arm**.
+5. Retain only a preregistered **common-support set**: prefixes whose per-token NLL / likelihood lies inside the normal range of natural prefixes for every compared checkpoint and for both the constraint and matched-neutral prompt. Exact cutoffs must be frozen before outcome analysis.
+6. On each retained identical text history, evaluate two prompt arms:
+   - the real CoT constraint;
+   - a length/format-matched neutral instruction that does not impose the constraint.
+7. Measure the induced shift in mechanically defined local compliance probability / short-horizon violation risk.
+
+### Estimand
+
+For checkpoint `c` and matched observable history `h`:
+
+`G(c,h) = local_compliance(c, constraint, h) - local_compliance(c, neutral, h)`
+
+The training quantity is the change in `G` across RL checkpoints, not raw compliance.
+
+### Why this closes the old blocker
+
+The old design required arbitrary teacher-forced shared prefixes and could therefore mistake checkpoint-specific OOD behavior for reduced control.
+
+The revised design makes **overlap/common support an explicit inclusion criterion**. A prefix that later checkpoints assign abnormally low likelihood is not allowed into the matched-state causal comparison.
+
+The “same state” claim is intentionally narrowed to **same observable text history on common support**. We do not claim hidden states are identical; changes in the internal state induced by changed weights are exactly part of the training effect under study.
+
+## E01B — Natural-state constraint-refresh gain
+
+E01B is an active control against any remaining teacher-forcing/common-support artifact.
+
+For each checkpoint separately:
+
+1. start from the normal prompt containing the CoT constraint;
+2. let that checkpoint generate its **own natural trajectory**;
+3. at preregistered positions while the trajectory remains constraint-compatible, fork the exact natural prefix;
+4. append either:
+   - a concise repetition of the original constraint, or
+   - a token/format-matched neutral reminder;
+5. measure the next `H` tokens / next reasoning segment with a mechanically checkable violation metric.
+
+Primary horizons and insertion positions must be fixed before looking at the checkpoint trend. A no-reminder baseline may be recorded, but the load-bearing comparison is constraint-refresh minus neutral-refresh.
+
+### Estimand
+
+`R(c) = E[future_compliance | fresh constraint reminder, natural state] - E[future_compliance | neutral reminder, same natural state]`
+
+This intervention uses states that the checkpoint itself actually visited. It therefore does not require cross-checkpoint teacher forcing.
+
+### Why MathIF does not own E01B
+
+MathIF already shows that bringing an instruction closer can improve obedience. L29 does **not** claim this intervention as new.
+
+The new quantity is the **training curve of the intervention effect** on CoT continuation under a same-base reasoning-RL trajectory. MathIF does not establish whether this instantaneous steering gain is preserved or progressively lost during reasoning post-training.
 
 ---
 
-## Identification blocker
+## Constraint families and measurement
 
-The shared-prefix intervention can be off-distribution for later checkpoints.
+Use only pre-existing CoT-Control-style constraints with mechanically verifiable local behavior. Prioritize surface constraints for which short-horizon compliance has an unambiguous checker, e.g. case/style and selected information-suppression/addition families.
 
-If an apparent checkpoint trend is caused by forcing a state that a checkpoint would not naturally visit, then the experiment does not identify a training-induced change in control.
+Before outcome analysis, freeze:
 
-Before any compute, lock a construction satisfying all of the following:
+- the exact constraint families;
+- prompt wording;
+- common-support threshold;
+- insertion positions / progress bins;
+- short-horizon length(s);
+- local compliance / violation checker;
+- question subset;
+- checkpoint subset;
+- primary aggregation over questions rather than tokens.
 
-- the reasoning content/state is identical across constraint and control arms;
-- the prefix is valid under both arms and remains constraint-compatible;
-- local compliant-token mass has an unambiguous interpretation;
-- natural pre-violation states provide an active control against teacher-forcing artifacts;
-- the intervention does not itself restate the answer or alter task difficulty;
-- the inference still holds if aggregate sequence length is ignored entirely.
-
-If this bridge cannot be made defensible, L29 is NO-GO.
-
----
-
-## Anti-resurrection
-
-Closest internal dead/search routes:
-
-- `search_rounds/2026-09-12_CONTINUED_SEARCH_II.md` — **Reasoning strength vs validity gate**. Not the same: that route asked whether stronger reasoning weakens the decision to attempt/abstain; L29 asks whether post-training changes causal prompt→reasoning-policy influence under an explicit constraint.
-- same round — generic **generation destroys an already-good decision structure** / latent→policy gaps. Not the same only because L29 has a specific stable training transition, same-base checkpoints, and a pre-defined causal quantity. If reduced to endpoint representation/readout, it becomes a duplicate neighborhood and should die.
-
-No existing K-ID or candidate with the exact CoT-control-gain quantity was found in the repository search. This does not waive external owner search.
+Do not scan constraints and report the family with the best sign.
 
 ---
 
-## Closest external owners and reviewer compression
+## Required triangulation / interpretation
+
+### KEEP / RE-SELECT only if E01A and E01B agree
+
+The intended positive signature is:
+
+1. common-support same-history `G(c,h)` decreases materially with reasoning RL; **and**
+2. natural-state refresh gain `R(c)` also decreases materially with reasoning RL.
+
+Together these rule down both obvious alternatives:
+
+- `E01A` rules down simple longer-trajectory opportunity accumulation at a matched external history;
+- `E01B` rules down the claim that the matched-prefix result is merely teacher-forcing/OOD behavior.
+
+Only this joint result authorizes a new selection pass for B-vs-C localization.
+
+### KILL — local gain is stable
+
+If E01A and E01B show roughly stable local gain while global controllability collapses, the opportunity/distance account wins for the present paper identity.
+
+This is scientifically useful, but length/distance is already known and MathIF already shows that bringing constraints closer helps. Therefore **kill L29 as a Main paper** rather than publishing a fallback deconfounding study.
+
+### KILL / RECONSTRUCT — only E01A falls
+
+If common-support matched histories show lower gain but natural-state refresh does not, treat the result as a possible intervention-support artifact. The current training-induced local-controller claim is not established.
+
+### KILL CURRENT CLAIM / NEW-CANDIDATE REQUIRED — only E01B falls
+
+If natural-state refresh weakens but same-history gain is stable, the effect is better explained by training shifting models into less recoverable / more committed state distributions, not by reduced local gain at the same history. That may motivate a different future RQ, but it is **not L29** and must restart selection.
+
+### KILL / HOLD — tiny or unresolved effect
+
+If the checkpoint difference in the paired causal contrast is too small to resolve cheaply, stop. Do not enlarge the project into parent-scale stochastic sampling and do not rescue it with hidden-state statistics.
+
+---
+
+## External ownership and strongest reviewer compression
 
 Primary owner stack:
 
-1. **CoT-Control** — establishes the phenotype, the RL/test-time-compute/length trends, and the open mechanism question.
-2. **Compliance versus Sensibility** — establishes static reasoning-prior-over-instruction behavior, internal encoding, and activation-level steering.
-3. **MathIF / ReasonIF** — establish the modern reasoning-versus-instruction-adherence tension.
-4. OpenAI system-card reporting — already conditions controllability on CoT length, so simple deconfounding is not new.
+1. **CoT-Control** — owns the phenotype, RL/test-time-compute/length trends, and open mechanism question.
+2. **MathIF** — owns the reasoning/instruction trade-off and the result that moving a constraint closer can recover obedience.
+3. **Compliance versus Sensibility** — owns static reasoning-prior-over-instruction behavior, internal encoding, and activation steering.
+4. **ReasonIF** — owns reasoning-level instruction adherence and training-based improvement.
+5. **Verifier-Induced Support Reshaping** — owns a related RLVR phenomenon where current-objective optimization reshapes later rewardable instruction-following support.
 
 Strongest reviewer compression:
 
-> **“CoT-Control already shows RL and longer reasoning reduce control; Compliance-vs-Sensibility already shows instructions are encoded but internal reasoning priors win; MathIF/ReasonIF already show the trade-off. This is those papers plus checkpointed logit/activation analysis.”**
+> **“CoT-Control already shows RL and length reduce controllability; MathIF already repeats constraints near the answer; Compliance-vs-Sensibility already shows reasoning priors override encoded instructions. This is those papers plus checkpointed logits.”**
 
-The paper survives that compression only if it establishes a new training-causal statement:
+The contribution survives only if E01 establishes the statement none of those works establishes:
 
-> **Holding the current reasoning state fixed, reasoning post-training changes how strongly an explicit constraint causally controls the continuation policy, separating a training-induced controller change from mere longer exposure to failure opportunities.**
+> **Across a same-base reasoning-RL trajectory, the causal effect of the same explicit constraint on the next part of reasoning changes even after controlling both trajectory opportunity and intervention support; or, conversely, the effect remains stable and the training-induced global collapse can be attributed to accumulated opportunity/distance rather than a weakened local controller.**
 
-No current owner located in the 2026 search directly establishes that quantity across a same-base training trajectory.
+The positive branch is the Main-level route. The stable-gain branch kills the paper because its substantive explanation is already too close to known distance/length effects.
+
+Fresh 2026-09-12 owner search did not locate a paper that measures this same-base **training curve of local CoT constraint→continuation gain** with a common-support / natural-state intervention.
 
 ---
 
@@ -166,66 +254,50 @@ No current owner located in the 2026 search directly establishes that quantity a
 
 Required chain:
 
-> same-state constraint intervention across matched checkpoints  
-> → estimated local constraint→policy causal gain  
-> → gain changes systematically with reasoning post-training, beyond trajectory length  
-> → reasoning training changed the controller itself rather than only the duration of exposure  
-> → causal localization distinguishes signal degradation from intact-signal / policy-override dynamics  
-> → a conditional account of when stronger reasoning becomes less steerable.
+> same-base RL checkpoints + common-support same-history intervention  
+> + natural-state constraint-refresh intervention  
+> → paired estimate of local constraint→policy causal gain  
+> → gain falls with reasoning post-training beyond length/opportunity and OOD artifacts  
+> → reasoning training changed the controller itself rather than only exposing the controller for longer  
+> → only then: localize signal degradation vs intact-signal / policy-attractor override  
+> → conditional account of when stronger reasoning becomes less steerable.
 
 Failure modes:
 
 - checkpoint trend in raw compliance only → insufficient;
-- probe decodability changes → insufficient;
-- activation transplant changes behavior → insufficient by itself;
-- aggregate length-normalized benchmark result → insufficient;
+- length-normalized endpoint score only → insufficient;
+- “repeating instructions helps” → already owned / insufficient;
+- probe decodability → insufficient;
+- activation transplant → insufficient by itself;
 - unrelated model-family comparison → not a training intervention.
-
----
-
-## Pre-result outcome interpretations
-
-### Outcome A — local control gain is stable
-
-Supports the opportunity-accumulation account. Because length confounding is already known and operationally handled in system-card reporting, this result likely **kills L29 as a Main paper** rather than creating a fallback “length explains everything” paper.
-
-### Outcome B — local control gain clearly falls with training
-
-Supports a real training-induced controller change and authorizes the pre-registered B-vs-C localization stage.
-
-### Outcome C — gain changes only for a pre-specified constraint family / RL domain
-
-Potentially meaningful only if the conditioning axis is motivated and locked before E01. Otherwise re-select; do not invent a heterogeneity paper post hoc.
-
-### Outcome D — effect is tiny / unresolved
-
-Kill or HOLD on resolution. Do not rescue with a hidden-state statistic.
 
 ---
 
 ## Resolution / feasibility
 
-This candidate was deliberately designed to avoid repeating L19.
+This remains intentionally unlike L19.
 
-- **Training:** none required for the first discriminator.
-- **Models:** public 7B OLMo same-base training checkpoints.
-- **Primary E01 metric:** logit/probability causal contrast, allowing deterministic paired measurement before stochastic rollouts.
-- **Independent units:** questions / matched question-prefix states, not tokens treated as independent replicates.
-- **Expected scale:** parent endpoint controllability shifts are large, often order-of-magnitude, so the route does not start from a sub-noise mother effect.
-- **Pilot scale:** hundreds of states across a few checkpoints should be enough to discover whether the local effect is substantial; expected inference cost is single-digit GPU-hours on the available hardware.
-- **Kill threshold:** if the estimated matched-state gain shift is only at the ~1 percentage-point scale or otherwise requires parent-scale stochastic sampling to distinguish from noise, stop rather than enlarge compute.
-
-Exact MDE must be computed from a small no-claim dry-run / variance estimate before any authorized pilot.
+- **Training:** none for E01.
+- **Models:** public OLMo-3/3.1 7B RL-Zero reasoning checkpoints; Ai2 explicitly releases RL-Zero series/checkpoints for scientific study.
+- **Primary E01 quantities:** paired logit/probability or short-horizon causal contrasts, reducing stochastic evaluation noise.
+- **Independent units:** questions / prefix states; tokens are not treated as independent replicates.
+- **Mother-effect scale:** the published aggregate CoT controllability decline over RL is order-of-magnitude, not a marginal sub-noise phenotype.
+- **Pilot compute:** expected to be single-digit GPU-hours to low tens of GPU-hours depending on number of checkpoints / natural continuations; no new model training.
+- **Dry-run:** a small no-claim variance/support audit is allowed solely to freeze the MDE and common-support threshold before the main E01 analysis.
+- **Stop rule:** if common support is too small or the causal-gain shift is only ~1 pp / requires large rollout budgets to resolve, stop rather than scale.
 
 ---
 
-## Main-level growth path if C1 survives
+## Main-level growth path — NOT AUTHORIZED YET
 
-1. **Training effect:** local constraint→policy gain falls across reasoning post-training even at a matched state.
-2. **Mechanistic localization:** signal degradation vs intact signal with reduced causal policy gain.
-3. **Training boundary:** identify which stage/domain changes the controller using OLMo Base / SFT / DPO / RL and RL-Zero domain paths where comparable.
-4. **Prediction / consequence:** use control gain to predict late-reminder / steering recoverability and the gap between native reasoning control and more externalized/output control.
-5. **Scope:** replicate the core inference on a second open model flow only if required for the claim; do not replace same-base causality with model-family breadth.
+If and only if E01A+E01B jointly show a real training-induced local-gain decline, re-run selection before doing any of the following:
+
+1. **Mechanistic localization:** constraint-signal degradation vs intact signal with reduced policy leverage.
+2. **Training-stage boundary:** Base/SFT/DPO/RL or RL-Zero domain paths where scientifically matched.
+3. **Prediction:** whether local gain predicts late-reminder recoverability, constraint persistence, or CoT-vs-output controllability divergence.
+4. **Scope:** second open model flow only if required by the eventual claim.
+
+No part of this list is authorized by the current pilot verdict.
 
 ---
 
@@ -238,14 +310,16 @@ replication_risk: LOW
 broad_parent_novelty: FAIL_ALREADY_OWNED
 narrow_training_causal_quantity: PLAUSIBLE_INDEPENDENT_CONTRIBUTION
 closest_owner_density: HIGH
-causal_estimand: DEFINED_IN_PRINCIPLE_NOT_YET_LOCKED_OPERATIONALLY
-primary_blocker: MATCHED_STATE_INTERVENTION_MUST_NOT_BE_A_TEACHER_FORCING_OOD_ARTIFACT
-successful_result_test: PASS_IF_BLOCKER_CLOSED
-outcome_identity: LOCKED_WITH_KILL_ON_STABLE_GAIN
+causal_estimand: LOCKED_FOR_E01
+old_identification_blocker: CLOSED_BY_COMMON_SUPPORT_PLUS_NATURAL_STATE_TRIANGULATION
+successful_result_test: PASS_ONLY_IF_E01A_AND_E01B_AGREE
+outcome_identity: LOCKED_WITH_KILL_ON_STABLE_GAIN_OR_DISAGREEMENT
 resolution_risk: LOW_TO_MODERATE
-training_cost: NONE_FOR_FIRST_DISCRIMINATOR
-pilot: NOT_AUTHORIZED
-verdict: SERIOUS_PRE_PILOT
+training_cost: NONE_FOR_E01
+pilot: E01A_E01B_ONLY
+verdict: PILOT_AUTHORIZED
 ```
 
-**Next action:** close the matched-state identification bridge on paper, then re-run selection. Do not run E01 yet.
+# **PILOT-AUTHORIZED — E01A/E01B ONLY**
+
+The paper mainline remains **not approved**. Authorization covers only the two-part behavioral/causal discriminator above. Any hidden-state mechanism, steering method, new training, or broader model sweep requires re-selection after E01.
