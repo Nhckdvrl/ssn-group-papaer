@@ -1,8 +1,8 @@
-# Current Research State — 2026-09-12
+# Current Research State — 2026-09-13
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Phase:** **continued mechanism-first search + only tightly bounded active candidates**  
+**Phase:** **continued mechanism-first search + one new bounded L30 pilot + existing projects under their own gates**  
 **Killed ledger:** authoritative through **K184**. Compact kills **K185–K189** are recorded in `search_rounds/2026-09-12_CONTINUED_SEARCH_VII.md` and should be folded into `failed/KILLED_LEDGER.md` at the next ledger-maintenance pass.
 
 ## Current search preference
@@ -39,7 +39,38 @@ No survivor quota. Zero survivors is valid.
 
 ---
 
-# Active portfolio after 2026-09-12 re-screen
+# Active portfolio after 2026-09-13 update
+
+## L30 — What Does Pairing Teach?
+
+**Status:** `PILOT-AUTHORIZED — E01 ONLY`
+
+Package: `candidates/L30_PAIRING_SURPLUS/`  
+Selection record: `search_rounds/2026-09-13_PAIRING_SURPLUS_SELECTION.md`
+
+> **If pretrained language models can become substantially instruction-following from responses alone, what additional behavior is actually learned from the correct correspondence between an instruction and its response?**
+
+The central quantity is **pairing surplus**: the marginal causal value of the joint `X↔Y` correspondence after holding the prompt and response marginals fixed.
+
+Strong mother evidence comes from response-only tuning / inherent instructability, WIT prompt-side supervision, and low-complexity post-training access to pretrained abilities. Broad instruction-response alignment is **not** the novelty: MAIN, FedDQC, Hindsight Instruction Relabeling, and related work already own that parent.
+
+The missing inference is narrower and causal:
+
+> **Holding the same prompt pool and response pool fixed, what changes because each response is paired with its correct instruction rather than no usable correspondence or a wrong correspondence?**
+
+E01 uses the conceptual P/D/S decomposition:
+
+- **P — Paired:** correct `x_i → y_i` correspondence;
+- **D — Decoupled:** remove usable pair dependence while preserving the relevant response-marginal/budget controls;
+- **S — Shuffled:** same prompt and response pools, wrong correspondence.
+
+Primary quantities are `P-D`, `D-S`, and especially the same-marginal `P-S` contrast. A conventional response-only arm may be used only to validate that D is not an attention/position artifact.
+
+Preferred pilot regime is Gemma-2-2B + Alpaca-Cleaned with deterministic IFEval-style evaluation, prompt-clustered uncertainty, and multiple training seeds, subject to exact source compatibility checks before execution.
+
+**Hard scope gate:** E01/C1 is only identification. A result like “shuffling drops IFEval by N points” is not enough for Main because prior work already owns broad alignment importance. The promising paper-scale path is a later conditional law asking whether the pretrained model's existing `X→Y` association predicts where paired supervision has marginal value. That C2 requires re-selection and is not authorized yet.
+
+**Resolution rule:** a noisy near-null is HOLD, not evidence that pairing is irrelevant. If the pilot can only bound the effect loosely enough to allow a meaningful ~3–4 pp surplus, stop rather than narratively rescuing the claim.
 
 ## L17 — What Does a Speech LLM Learn About a Speaker?
 
@@ -61,25 +92,16 @@ Package: `candidates/L29_COT_CONTROL_GAIN/`
 
 Broad “represented but ignored” reasoning-control stories are already owned. L29 survives only as the same-base **training-induced local constraint→policy gain** question.
 
-The previous matched-prefix OOD blocker has been closed on paper by requiring two agreeing identification legs:
+The previous matched-prefix OOD blocker was closed on paper by requiring two agreeing identification legs:
 
 1. **E01A — common-support same-history gain:** shared reasoning prefixes are admitted only when they remain within the natural likelihood/support range of every compared checkpoint and prompt arm; compare the causal effect of the real constraint versus a matched neutral instruction on the next reasoning policy.
 2. **E01B — natural-state constraint-refresh gain:** each checkpoint generates its own natural, still-compliant trajectory; fork that exact prefix and compare a fresh constraint reminder against a matched neutral reminder over the next short horizon.
 
-MathIF already owns the fact that moving/repeating a constraint near generation can improve obedience. L29 does **not** claim that intervention as novelty. The unowned quantity is whether the **causal effect of the constraint itself changes over the same RL training trajectory**.
+MathIF already owns the fact that moving/repeating a constraint near generation can improve obedience. L29 does **not** claim that intervention as novelty. The unowned quantity was whether the **causal effect of the constraint itself changes over the same RL training trajectory**.
 
-**Hard gate:** E01A and E01B must agree that local gain declines with reasoning RL before any mechanism/localization work is allowed. Stable local gain supports the known opportunity/distance account and kills L29 as a Main paper. E01A-only decline is treated as possible support/OOD artifact; E01B-only decline implies training changed the visited-state distribution rather than local gain at the same history and requires a new candidate identity.
+**E01 outcome:** The shared-history and natural-state pipelines were both feasible, and common support retained multiple questions from every source stage. The retained exact-word suppression instrument nevertheless failed its validity gate. A first neutral reminder retrieved the original rule and created an apparent 6.25 pp decline; target-matched, structural, and target-free anaphoric controls removed that result and showed no robust positive early-checkpoint gain. Expanding the sample would estimate wording/lexical effects rather than the intended controller change. L29 therefore returns `RECONSTRUCT`; see `candidates/L29_COT_CONTROL_GAIN/notes/E01_PILOT_REPORT.md`.
 
 No hidden-state work, steering method, new training, or broad model sweep is authorized before re-selection.
-
-**E01 outcome:** The shared-history and natural-state pipelines were both feasible,
-and common support retained multiple questions from every source stage. The retained
-exact-word suppression instrument nevertheless failed its validity gate. A first
-neutral reminder retrieved the original rule and created an apparent 6.25 pp decline;
-target-matched, structural, and target-free anaphoric controls removed that result and
-showed no robust positive early-checkpoint gain. Expanding the sample would estimate
-wording/lexical effects rather than the intended controller change. L29 therefore
-returns `RECONSTRUCT`; see `candidates/L29_COT_CONTROL_GAIN/notes/E01_PILOT_REPORT.md`.
 
 ---
 
@@ -148,5 +170,7 @@ Before promoting a hook:
 Do not mine one paper's Discussion as the default source of novelty. Prefer 2–4 independent strong papers exposing the same abnormal quantity under different names, or an old empirical law whose load-bearing premise genuinely changes in the modern regime.
 
 Search V–VII are the current anti-duplication frontier. In particular, do not reopen reasoning-length/overthinking, CoT faithfulness, metacognition-control, RLVR entropy/mode collapse/capability boundary, self-correction, generic instruction-following loss, generic post-training rerouting, or other recently killed parents by adding another intervention/model family.
+
+L30 does **not** reopen generic instruction-following loss: it is specifically the marginal causal value of the **joint correspondence structure in supervision**, with fixed prompt/response marginals and a later conditional-law path.
 
 > **The goal is not to keep a portfolio full. The goal is to find one scientific object worth months of mechanism, boundary, intervention, and theory work.**
