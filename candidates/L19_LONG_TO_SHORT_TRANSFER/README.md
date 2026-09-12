@@ -1,7 +1,9 @@
 # L19 — Causal Ingredients of Long→Short SFT Transfer
 
-**Status: PILOT-AUTHORIZED — E01 ONLY.** E02 is not authorized and must not be started
-before E01 reports.
+**Status: ARCHIVED / NO-GO (K184), 2026-09-12 — shelved for cost, not for novelty.**
+No authorization. The treatment arms were never trained. Read
+[PILOT_REPORT.md](PILOT_REPORT.md) before touching anything here, and do not reopen this
+route by shrinking the claim to fit a smaller budget.
 
 ## RQ
 

@@ -3,7 +3,7 @@
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
 **Phase:** **bounded kill-oriented pilots + continued topic search**  
-**Killed ledger:** authoritative through **K183**; newer compact rejections live in `search_rounds/` until a later ledger sync.
+**Killed ledger:** authoritative through **K184**; newer compact rejections live in `search_rounds/` until a later ledger sync.
 
 ## Current search preference
 
@@ -71,6 +71,31 @@ Package: `candidates/L24_EPISTEMIC_FILES_VS_CANONICAL_ENTITIES/`
 ---
 
 ## Recent rejections
+
+### L19 — Causal Ingredients of Long→Short SFT Transfer
+**Status:** `ARCHIVED / NO-GO (K184)` — **shelved for cost, not for novelty**
+
+Parent: Zheng et al., *When Long Helps Short*, EMNLP 2025 Main. Its short/long contrast is
+five different datasets and no experiment anywhere varies sequence length with data source
+held fixed, so its central causal variable is unidentified; a 2026-09-12 search found no
+published critique, replication, or matched-length experiment. **The novelty gap is open.**
+
+Stopped on resolution. The parent's own dataset swap, rerun in our regime, reproduces only
+**26%** of its effect (+0.47 vs +1.30 MMLU, +0.91 vs +5.67 LAMBADA) — already below the
+evaluation noise floor at our n. The matched contrast is a subset of that effect and the
+interesting outcome was the *null*, which needs parent-scale budgets plus enough seeds to
+estimate run-level variance: **~100-300 GPU-hours** on this hardware to chase a 2.7 pp
+effect. Treatment arms were never trained.
+
+**Durable workflow addition from this route:** the successful-result test must compare the
+**expected effect size against the evaluation noise floor**. Two numbers, no compute; it
+would have stopped L19 before any GPU time was spent.
+
+Reusable: 10,000 frozen matched NQ pairs (98.4x length contrast, token-identical targets,
+verified under both Llama-3 and Qwen chat formats), a 600-item context-reliance probe, and
+a working 8B SFT + vLLM evaluation stack.
+
+Record: `candidates/L19_LONG_TO_SHORT_TRANSFER/PILOT_REPORT.md`, `failed/KILLED_LEDGER.md` K184.
 
 ### L27 — Sample / Effect Count ≠ Independent Evidence Units
 **Status:** `NO-GO / ARCHIVED`

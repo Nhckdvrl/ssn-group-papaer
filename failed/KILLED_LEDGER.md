@@ -3351,3 +3351,105 @@ et al. JAMA 2023; Deng & Yan 2026 selection neglect; 2026 BSE / BB-WM / BeliefMe
 Stimuli generator, analytic gold, prompt builder, scorers, raw generations and summaries
 remain under `candidates/L15_NULL_EVIDENCE_OBSERVATION_MODEL/` for reproducibility. The
 180-item detectability grid with programmatic gold is reusable.
+
+---
+
+# K184 — L19: Causal Ingredients of Long→Short SFT Transfer
+
+**ARCHIVED / NO-GO, 2026-09-12.** Shelved for cost, not for novelty. Package:
+`candidates/L19_LONG_TO_SHORT_TRANSFER/`. Full record: its `PILOT_REPORT.md`.
+
+Locked RQ was:
+
+> **Holding the question, gold answer, answer-supporting evidence, source document,
+> example set, supervised target tokens, base model, optimizer schedule and number of
+> gradient steps fixed, does presenting that same supervision inside a long natural
+> context causally change subsequent short-context capability?**
+
+Parent: Zheng et al., *When Long Helps Short*, EMNLP 2025 Main (2025.emnlp-main.522).
+
+## Why it was a good question, and still is
+
+Read in full, the parent's short/long contrast is **five different datasets** (UltraChat,
+Tulu-v2 vs LongAlpaca, LongMIT, ChatQA2) and **no experiment anywhere varies sequence
+length with data source held fixed**. Its central causal variable is unidentified. A
+2026-09-12 search confirms no published critique, replication, or matched-length
+experiment. **The novelty gap is open.**
+
+Re-analysis of the parent's own Table 1, at zero compute, is sharper still: the condition
+gap is **+2.68** macro while the spread between its own two short-context datasets is
+**+4.07**, and **7 of 9 benchmarks reverse** between the best short and the worst long
+dataset. The three benchmarks carrying most of the headline (HumanEval +8.03, GSM8K +7.03,
+MBPP +2.33) are exactly the three where its two short datasets disagree most
+(16.47 / 7.81 / 12.00).
+
+## Why it stops anyway
+
+The positive control — the parent's own dataset swap, run in our regime at N=2,000,
+lr 5e-6 — returned a macro gap of **-11.75** against their +5.96. The training stack is
+correct: the short arm sits at macro 64.30 against the untrained base's 64.45, with BBH
+improving 56.11 → 65.00. The failure is confined to the long arm and is structured —
+both generative CoT tasks collapse (BBH 26.78, GSM8K 43.37) while both non-generative
+ones are untouched (MMLU 62.85, LAMBADA 77.20).
+
+The decisive quantity is **resolution, not sign**. On the two benchmarks that held we
+reproduce **26%** of the parent's swap effect (+0.47 vs +1.30 MMLU; +0.91 vs +5.67
+LAMBADA) — already below the binomial evaluation noise floor at our n (1.18 pp and
+1.95 pp detectable at two seeds) before any training variance is counted. The matched
+contrast is a subset of the swap effect and therefore smaller still.
+
+Worse for the paper: the interesting outcome was the **null** — "this is not a length
+law". A credible null needs the effect's interval to exclude the parent's +2.68, which
+needs both parent-scale token budgets and enough seeds to estimate run-level variance.
+Costed on this hardware (2,962 context tok/s measured, 4x RTX PRO 6000 Max-Q):
+**~100-300 GPU-hours**, i.e. 4 GPUs for 3-7 continuous days, to chase a 2.7 pp effect.
+
+That is the condition the workflow reserves for stopping: the full study the question
+requires is out of reach whatever the pilot returns, and the only way to keep it alive
+would be to narrow the claim until it fits the budget.
+
+## The forbidden fallbacks
+
+- **"Narrow SFT selectively destroys chain-of-thought while sparing knowledge"** — the one
+  large clean effect we saw (29 points on BBH, with MMLU/LAMBADA unmoved). It is a
+  different paper identity, it never passed selection, and it compresses into the
+  catastrophic-forgetting / task-specific-SFT-degrades-reasoning literature.
+- **Inference-time versions** ("does the gold paragraph work worse inside its full page")
+  are owned by lost-in-the-middle and distractor work.
+- **Long-context ability as the dependent variable** is owned by SkipAlign
+  (arXiv 2405.03939), GATEAU (2025.emnlp-main.375) and EXACT (arXiv 2605.10544).
+
+## Errors in our own preregistration, recorded
+
+1. Kill condition 3 ("either arm below the untrained base") was **mis-specified** and
+   withdrawn before any treatment run: the parent's own published UltraChat macro on
+   these four benchmarks is 60.41, below our base's 64.45, so the rule condemned their
+   published result. SFT from an instruct-derived base costs points by construction.
+2. The "damage valley needs 1B tokens to escape" reading was **wrong** — it was an
+   lr/batch-size mismatch (parent: lr 2e-5 at a 4M-token batch; ours: the same lr at
+   ~37k tokens/step). At lr 5e-6 our UltraChat arm reaches GSM8K 52.0 against their
+   published 54.69. The 94 GPU-h/run and 400+ h/programme figures derived from that
+   wrong reading are void.
+3. **The durable lesson.** The successful-result test was run, but it never compared the
+   expected effect size against the evaluation noise floor. That single comparison —
+   two numbers, no compute — would have stopped this route before any GPU time was
+   spent. Add it to the pre-pilot requirements.
+
+## Reusable assets
+
+- **10,000 frozen matched NQ pairs** (`data/nq_pairs.jsonl`, sha256 b0e71fdf…): human gold
+  question, short answer, long-answer paragraph and full source page; median context 133
+  vs 13,084 Llama-3 tokens (**98.4x**); targets identical token for token; verified to
+  render byte-identical loss tokens under both Llama-3 and Qwen chat formats.
+- A 600-item held-out **context-reliance probe** with counterfactual-substituted answers.
+- A working 8B SFT stack (DeepSpeed ZeRO-2, completion-only sparse loss that avoids
+  materialising a 24k x 128k logit tensor, bf16 local staging) and a vLLM evaluation
+  harness on the parent's protocol, with three real faults found and fixed and one
+  alternative explanation (evaluation-format mismatch) empirically excluded.
+
+## Reopen only if
+
+Compute on the order of **100-300 GPU-hours** becomes available for this question
+specifically. The data contract, preregistration, run harness and cost model are all in
+place, so the route can be resumed directly rather than rebuilt. Do **not** reopen it by
+shrinking the claim to fit a smaller budget.
