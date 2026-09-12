@@ -81,6 +81,30 @@ A cheap checkpoint surgery (switching a trained parallel Pythia checkpoint to se
 
 **Anti-resurrection:** do not reopen as `worse base, better fine-tune`, pretraining-loss vs adaptability, weight-decay plasticity, or generic `pretraining commits the model too much`.
 
+## R. Final-layer hidden-state jump as underused-middle-layer bottleneck — DROP
+
+**Scientific object:** Many pretrained LMs show very small angular changes through middle layers and a disproportionately large hidden-state angular `jump` near the final layer. Is this jump evidence that middle layers are underused and the final layer must compensate, and what causes it?
+
+**Mother:** Findings EACL 2026 `Suppressing Final Layer Hidden State Jumps in Transformer Pretraining` establishes the jump across many open-weight models and shows that its rate grows monotonically during Pythia/OLMo pretraining. The paper hypothesizes that middle-layer redundancy forces excess representational workload onto the last layer, then introduces JREG to suppress late displacement and reports improved downstream performance.
+
+**Identification problem in the mother:** the paper's key causal bridge is assumed rather than isolated: large angular displacement is treated as `excess workload / underutilized middle layers`. But late layers are already known to perform output-specific operations that can rotate the residual state substantially without meaning `unfinished semantic work`.
+
+**Closest owners / competing explanation:**
+- EMNLP 2025 Main `Calibration Across Layers` shows that after answer/decision certainty is already reached, upper layers enter a distinct **confidence-correction phase**, modifying confidence/calibration while largely maintaining accuracy; it also identifies a low-dimensional calibration direction whose intervention changes ECE/MCE without harming accuracy.
+- NeurIPS 2024 `Confidence Regulation Neurons in Language Models` directly localizes final-layer neurons that regulate output entropy through final LayerNorm/unembedding-null-space mechanisms with minimal impact on argmax prediction.
+- Related late-layer analyses increasingly describe final blocks as specialized for next-token readout/calibration rather than simply completing semantics.
+
+**Reviewer compression:** `Shibata: final angular jump + JREG improvement` + `Joshi: late confidence-correction phase` + `Stolfo: final-layer confidence regulators` = a large final-state rotation is already plausibly explained by output/calibration specialization, so `jump = unused middle layers` is not identified.
+
+**Why a new project does not survive:**
+A natural follow-up—test whether the jump is calibration rather than `workload`—would require separating semantic decision formation, confidence scaling, token-frequency correction, final normalization and readout geometry. But the main pieces of that late-calibration account are already directly established. Conversely, simply showing that JREG reduces jump and improves loss/performance is owned by Shibata. The remaining exact bridge from angular displacement to calibration is a measurement/representation interpretation problem, not yet a clear Main-level new inference.
+
+**Successful-result test:** even a clean correlation/causal overlap between the jump direction and the known calibration direction would reviewer-compress to `final jump contains known late calibration operations`; it would not by itself explain why JREG improves training or establish a new computational law. A selective intervention on calibration versus semantic work is also hard because final-layer LayerNorm/readout and residual geometry are tightly coupled.
+
+**Verdict:** `DROP / DO NOT REGISTER`.
+
+**Anti-resurrection:** do not reopen as `why final hidden state jumps`, `middle layers are underutilized`, `last layer bears the workload`, `jump is calibration`, or another JREG/trajectory-regularization study unless an independent stable behavioral consequence yields a qualitatively new estimand.
+
 ---
 
 _Continue search from here; append later killed leads in this file or a numbered continuation if the file becomes too large._
