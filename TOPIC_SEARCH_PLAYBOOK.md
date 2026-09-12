@@ -1,334 +1,333 @@
-# Topic Search Playbook — Idea Generator Library
+# Topic Search Playbook — Generator Library
 
-**Status:** evolving, non-authoritative  
-**Use with:** RESEARCH_TOPIC_SEARCH.md
+Updated: 2026-09-12.
 
 This file answers only:
 
 > **Where might a strong research question come from?**
 
-It does not decide candidate quality. That belongs to **RESEARCH_TOPIC_SELECTION.md**.
+It does not approve candidates. Selection belongs to [RESEARCH_TOPIC_SELECTION.md](RESEARCH_TOPIC_SELECTION.md).
 
-Generators can be added or removed freely. No generator is mandatory.
-
-**2026-09-11 clarification:** every generator produces a lead, not a contribution.
-Develop the lead into a question, candidate idea/operation, discriminating
-observation, and consequential answer before promotion. Illustrations below
-are historical examples, not endorsements of those candidates' current status.
+The generators are intentionally **not equal priority**. Current project taste strongly favors model-computation and mechanism questions; data/evaluation/workflow generators are retained only as secondary possibilities so we do not lose useful intellectual tools.
 
 ---
 
-# A. Established anomaly → unresolved mechanism
+# PRIMARY GENERATORS
 
-Look for a strong paper that already establishes a stable important phenomenon but leaves the explanation weak or incomplete.
+## A. Stable anomaly → unresolved mechanism
 
-Signals:
-- capability A survives while B collapses;
-- unexpected scaling;
-- striking model-family difference;
-- large ablation asymmetry;
-- qualitative explanation much weaker than the empirical result;
-- “surprisingly,” “unclear why,” “remains unexplained,” “future work.”
+This is the highest-priority generator.
+
+Look for a phenomenon already established by a strong paper and preferably supported by another model/setup/replication:
+
+- a restriction helps instead of hurts;
+- stronger reasoning improves one behavior while degrading another;
+- a capability survives but its normal readout disappears;
+- a training stage changes behavior in a way the reported explanation does not predict;
+- two model families with similar accuracy fail in structurally different ways;
+- an ablation has a large asymmetric effect with no satisfying computational explanation.
 
 Question shape:
 
-> **Why does this happen, where is the bottleneck, and what intervention separates competing explanations?**
+> **Why does this stable phenomenon occur? Which computation or stage is load-bearing?**
 
-Desired development:
+Healthy development:
 
-> phenomenon → competing accounts → decisive intervention → boundary/localization → repair/consequence
+> established phenotype → competing accounts → discriminating intervention → localization/boundary → prediction or consequence
 
-Current illustration: **L08**. The parent phenomenon is not our novelty.
-Whether a valuable, identifiable explanation space remains must be audited.
+Failure modes:
 
-Failure modes: reproducing the parent ablation on more models/benchmarks;
-treating an unexplained effect as proof that any plausible explanation is new;
-turning phenomenon -> probe -> patch into a mandatory paper recipe.
-
----
-
-# B. Two strong papers → contradictory observations → unifying explanation
-
-Find two credible papers whose results appear to imply opposite capability orderings or incompatible mechanisms.
-
-Do not ask only:
-
-> “Which paper is wrong?”
-
-Prefer:
-
-> **What hidden bottleneck or intervention difference makes both observations true?**
-
-A strong paper can unify two literatures and predict when each pattern appears.
+- treating a single unexplained table cell as stable;
+- reproducing the parent on more models and calling that mechanism;
+- probe-only evidence;
+- inventing the mechanism after seeing each result.
 
 ---
 
-# C. Known behavior → bottleneck localization
+## B. Training-stage transition → what actually changed?
 
-Start from a behavioral weakness that is already credible.
+Look at pretraining, SFT, preference optimization, RL/RLVR, distillation, reasoning training, continued pretraining, model editing, or unlearning.
+
+Strong hooks include:
+
+- behavior appears/disappears sharply between stages;
+- final output changes while latent capability may remain;
+- post-training improves task accuracy but changes revision, uncertainty, exploration, or use of evidence;
+- two checkpoints share competence but differ in how information controls action.
+
+Question shape:
+
+> **Did training create new information/computation, reweight an existing strategy, suppress a route, or change readout/policy control?**
+
+Useful evidence:
+
+- matched checkpoints;
+- same-weight mode changes when scientifically meaningful;
+- controlled retraining;
+- trajectory/state comparisons tied to behavior;
+- targeted interventions that distinguish creation from selection/suppression.
+
+Failure mode: calling two unrelated model families a training intervention.
+
+---
+
+## C. Representation present → is it causally used?
+
+Start from a meaningful behavior where evidence suggests the model “knows” more than it outputs.
 
 Useful decompositions:
-- encoding vs retrieval;
-- representation vs readout;
-- memory vs attribution;
+
+- absent vs represented;
+- represented vs accessible;
+- accessible vs selected;
+- selected vs read out;
 - policy knowledge vs action;
-- extraction vs aggregation;
-- stored information vs output suppression;
-- local-step damage vs autoregressive accumulation.
+- local computation vs autoregressive accumulation;
+- decision formed vs answer verbalized.
 
 Question shape:
 
-> **At which stage does the behavior first diverge, and can targeted intervention restore it?**
+> **Where does the behavior first diverge, and which represented quantity actually controls the decision?**
 
-Current illustrations:
-- **L09:** disagreement erased vs still represented but suppressed.
-- **L10:** failure adaptation breaks at memory, attribution, policy knowledge, or action.
+Good operations:
 
-Failure mode: probe-only papers making strong causal claims.
+- causal tracing / activation patching with active controls;
+- steering tied to a specific account;
+- teacher-forcing/free-running comparisons;
+- controlled restoration/corruption;
+- checkpoint trajectories;
+- matched answer-preserving interventions.
+
+Failure mode: “linear probe finds X, therefore X explains behavior.”
 
 ---
 
-# D. Old Problem / New Scientific Operation
+## D. Two strong papers disagree → hidden condition
 
-Revisit a durable classic NLP question when modern models make a previously impossible scientific operation available.
-
-Possible new leverage:
-- causal intervention;
-- long-context document access;
-- end-to-end collapse of an old pipeline boundary;
-- representation inspection;
-- controlled post-training;
-- model editing/unlearning;
-- scalable natural-context experiments.
+Find apparently incompatible conclusions only after passing the SAME-QUANTITY check.
 
 Question shape:
 
-> **Does the modern regime change the scientific answer, or finally make an old disputed quantity identifiable?**
+> **What structural condition makes both results true?**
 
-Failure mode: “run the old task with an LLM.”
+Promising hidden conditions:
+
+- base vs instruct/reasoning;
+- pretraining vs post-training;
+- local vs autoregressive computation;
+- controlled vs free-running inference;
+- strategy availability / exploration regime;
+- task structure that changes which computation is required.
+
+The third paper must do more than decide who wins. It should predict **when each regime occurs**.
+
+Failure mode: manufacturing a contradiction from different golds, interfaces, or estimands.
 
 ---
 
-# E. Measurement / construct-validity rewrite
+## E. Old empirical law / challenge taxonomy → modern model regime
 
-A mature task may use a convenient output or metric that is not the scientific quantity people think it measures.
+Search 2018–2023 work that explicitly claimed:
+
+- “main bottleneck”;
+- “major challenge”;
+- “dominant error source”;
+- “critical component”;
+- a named curse/paradox/tradeoff;
+- a multi-item challenge taxonomy that guided subsequent methods.
+
+Then ask whether modern foundation-model training changes the **premise**, not merely the score.
 
 Question shape:
 
-> **What does the task actually measure, what does the real object require, and does repairing that mismatch change a substantive conclusion?**
+> **Does the old law still govern the modern regime? If not, what replaced it and why?**
 
-Current illustration: **L03**.
+Best outcomes:
 
-Requirements:
-- independently defensible state/gold/identification;
-- a clear estimand;
-- a consequence beyond “the metric is a little fairer.”
+- old bottleneck remains but for a different mechanistic reason;
+- bottleneck migrates to another stage;
+- an old law becomes conditional on training/model regime;
+- an apparent reversal is explained by a changed computation.
 
-Failure mode: endless “X ≠ Y” distinctions with no modeling/scientific consequence.
+Failure mode: “LLM is better than BERT on an old benchmark.”
 
 ---
 
-# F. Intermediate representation necessity
+## F. Strong mechanistic claim → weak direct evidence
 
-A classical pipeline explicitly represented a state that end-to-end LLM systems often collapse or ignore.
+Look for claims repeatedly used to explain methods or model behavior:
 
-Possible states:
-- study identity;
-- evidence unit;
-- dialogue state;
-- schema;
-- document relation;
-- provenance;
-- update/supersession state.
+> “X happens because Y.”
+
+Trace the evidence.
+
+Promising cases:
+
+- the field cites one old correlational result;
+- later methods are explicitly designed around Y;
+- modern models let Y be directly manipulated while preserving the rest of the computation;
+- different explanations make cleanly different predictions.
 
 Question shape:
 
-> **Is this intermediate representation still load-bearing, or can modern models infer around it?**
+> **Is Y really the causal bottleneck/explanation, or merely correlated with it?**
 
-Current illustration: **L06**.
-
-Strong experiment shape:
-- hold raw content fixed;
-- manipulate only the intermediate state;
-- separate local extraction from downstream consequence.
-
-Failure mode: collapsing to clustering F1 or a routine ablation.
+Failure mode: literature fact-checking with no decisive intervention.
 
 ---
 
-# G. Data-first reverse search
+## G. Destructive capability control → what is invariant?
 
-Start from unusually strong natural data containing two independently meaningful variables.
+Use destructive interventions as a **scientific discriminator**, not as a metric paper by default.
 
-Procedure:
-1. verify data/gold first;
-2. identify the real scientific quantities;
-3. ask whether their relationship changes an NLP assumption or decision;
-4. novelty-check that exact relation.
+Examples of useful shapes:
 
-Attractive substrates:
-- official structured data;
-- longitudinal scholarly records;
-- repeated human annotations;
-- provider-defined states;
-- revision histories;
-- study/publication relations;
-- real interaction outcomes;
-- published experimental materials.
+- selectively remove a representation/circuit/strategy while preserving surface quality;
+- corrupt one stage of reasoning while keeping task content fixed;
+- remove access to one information route and test whether another route compensates;
+- constrain/restrict computation and ask why behavior improves or remains stable.
 
-Failure mode: inventing a question merely because an annotation field exists.
+The interesting object is the model computation that survives or fails.
+
+Failure mode: turning the study into “our evaluator failed to notice corruption.” Metric validation is currently low priority.
 
 ---
 
-# H. Real state transition / supersession
+# SECONDARY GENERATORS — USE ONLY WHEN EXCEPTIONAL
 
-Documents are not always independent timeless objects. Later official state can change how an earlier artifact should be interpreted.
+The following generators are scientifically legitimate but are **not default search directions for the current project**.
 
-Examples:
-- correction/supersession;
-- version history;
-- study vs publication identity;
-- official status change;
-- revised claim.
+## H. Measurement / construct-validity rewrite
 
 Question shape:
 
-> **Does an LLM need explicit state-transition structure to recover the current valid object, or is flat context sufficient?**
+> Does a widely used output/metric actually identify the consequential target quantity?
 
-Current illustration: **L07**.
+Use only if the scientific consequence is unusually large and the paper is not merely another benchmark/metric correction.
 
-Failure mode: data yield. Many apparent “corrections” are only metadata/typo changes, so proposition-level gold must be audited before compute.
-
----
-
-# I. Systematic anomaly discovery inside a natural object
-
-This is the acceptable way to discover our own anomaly.
-
-Start with a broad natural object, then scan a principled behavior/intervention landscape.
-
-A promising anomaly should be:
-- large enough to matter;
-- replicated;
-- natural;
-- stable across reasonable settings;
-- interpretable;
-- immediately suggestive of at least two mechanisms;
-- testable by decisive intervention.
-
-Reject:
-
-> “We changed 50 prompts/settings and one number moved.”
-
-Failure risks: multiple testing, benchmark artifacts, single-model accidents, post-hoc storytelling.
+Current search normally deprioritizes this generator.
 
 ---
 
-# J. Main/Award paper “large result, small explanation” mining
+## I. Real workflow / natural process data
 
-Do not read only abstracts.
+Real revisions, decisions, version histories, reviewer comments, user actions, etc. can expose strong questions.
 
-Inspect:
-- tables;
-- ablations;
-- error analyses;
-- appendices;
-- limitations;
-- conclusions/future work.
+Use only if the workflow reveals a **pre-existing scientific uncertainty about model behavior**, not because the workflow provides convenient labels.
 
-Look for:
-
-> **the parent paper owns the phenomenon; is a consequential explanation still open?**
-
-Always check later follow-up work before claiming the gap.
+Do not start from “there is a nice dataset.”
 
 ---
 
-# K. Strong but under-compressed recent areas
+## J. Data-first reverse search
 
-A non-hot area can be attractive when:
-- the object is durable;
-- literature is mature enough to define the problem;
-- high-quality natural data exist;
-- the exact modern scientific question remains open;
-- the area is not dominated by benchmark/product races.
+Retained for rare cases only.
 
-“Cold” is not valuable by itself. Obscurity is not novelty.
+A dataset may suggest a question, but the scientific object must become compelling independently of the dataset schema.
+
+Current project has a strong negative prior because repeated use of this generator has produced technically clean but low-interest topics.
 
 ---
 
-# L. Methods as discriminators, not generators
+## K. Intermediate representation / structured state necessity
 
-Useful discriminative operations include:
+Ask whether an explicit state remains load-bearing in an end-to-end model.
+
+This can still be good when it becomes a **model-computation question**. It is weak when it reduces to adding a schema field or repairing an extraction pipeline.
+
+---
+
+# CROSS-CUTTING DISCOVERY MOVES
+
+## 1. Award/Main paper topic provenance
+
+Read strong papers backward:
+
+> What older pressure caused this paper to exist before the method existed?
+
+Transfer the discovery move, not the subject.
+
+Especially useful origins for the current project:
+
+- stable anomaly;
+- training-stage transition;
+- causal claim with weak direct evidence;
+- old empirical law under a new computational regime;
+- two strong mechanistic accounts in conflict.
+
+---
+
+## 2. Large result, small explanation
+
+Inspect full tables, ablations, appendices, and limitations.
+
+Ask:
+
+> The parent owns the phenomenon. Is a consequential explanatory space still open?
+
+Then immediately search successor work. “Future work” is not a novelty certificate.
+
+---
+
+## 3. Methods as discriminators, never default generators
+
+Potential operations:
+
 - teacher forcing vs free running;
 - causal tracing / activation patching;
 - steering;
-- checkpoint trajectories;
 - controlled post-training;
-- representation similarity;
-- random projection vs coordinate deletion;
-- matched interventions;
-- counterfactual manipulation;
-- retrieval/evidence deletion;
-- controlled restoration.
+- checkpoint trajectories;
+- random rotation / projection controls;
+- matched corruption/restoration;
+- counterfactual inputs;
+- representation similarity when tied to a hypothesis.
 
 Correct order:
 
-> **natural question/anomaly → competing explanations → operation that separates them**
+> phenomenon/question → live accounts → discriminating operation
 
 Wrong order:
 
-> “We have activation patching; what can we patch?”
+> operation → find something to apply it to
 
 ---
 
-# M. Lab-style seeds — inspiration only
+# ANTI-PATTERN LIBRARY
 
-Use lab work to calibrate **natural question shape**, not to copy topics or define the quality ceiling.
+Do not repeatedly generate:
 
-Useful shapes from current project notes:
-- **Hamdi-style:** concrete model behavior → internal explanation → causal intervention → consequence.
-- **Kisako-style:** information organization / representation / compression with a concrete behavior or capability implication.
-- **Sato-style:** simple capability-acquisition question → controlled training/intervention → mechanism.
-- **Yoda/Oshika-style:** real scientific/scholarly documents → structured evidence/extraction/relations → downstream scientific use.
+- another dataset/benchmark/metric paper because gold is easy;
+- another RAG/retrieval/search question;
+- another annotation/adjudication/workflow correction;
+- another generic Agent/memory/RL/judge failure;
+- another “X ≠ Y” distinction looking for a home;
+- another “does the model know linguistic concept X?” competence test;
+- another one-cell anomaly whose mother phenomenon is unverified;
+- another representation-vs-readout story with only a probe;
+- another mechanism story that changes every time a result is null;
+- another model-family comparison sold as training causality;
+- another old task rerun on a stronger model;
+- another paper whose identity exists only if a narrow ranking reversal appears.
 
-This project has a strong negative prior against heavily linguistic branches even if they are legitimate lab topics.
-
-**These are search seeds, not gates.**
-
----
-
-# Anti-pattern library
-
-Avoid repeatedly generating:
-- a broader-sounding name for an unchanged local result;
-- a generic causal effect presented as an explanation of how computation works;
-- a list of known components presented as either automatic novelty or automatic collision;
-- a paper plan whose strongest positive result would still not identify its interesting claim;
-- another single-vs-multiple-valid-output story;
-- another generic provenance story;
-- another hierarchy-aware label task;
-- another generic confidence/calibration study;
-- another “does the model know X?” competence test;
-- another benchmark pseudoreplication cell;
-- another generic Agent/RAG/RL failure;
-- another X ≠ Y distinction without consequence;
-- another topic that exists only if one narrow effect wins.
-
-Use **failed/KILLED_LEDGER.md** for exact dead parents.
+Use `failed/KILLED_LEDGER.md` for exact dead parents.
 
 ---
 
-# Extending this playbook
+# PLAYBOOK USE
 
-Add a generator only when it is broader than one candidate and useful for future search.
+A normal open-ended round should spend most of its effort on **A–G**, especially A–F.
 
-For each new generator, record:
-- signal;
-- question shape;
-- why promising;
-- common failure mode.
+A generator creates only a lead. It does not waive:
 
-Do not create a new root file for it.
+- anti-resurrection;
+- SAME-QUANTITY checks;
+- novelty ownership;
+- causal/construct identification;
+- successful-result inference;
+- feasibility/resolution;
+- Main-level contribution.
 
-> **This playbook may grow and shrink. The search rules and selection gates should remain much more stable.**
+Those gates live in `RESEARCH_TOPIC_SELECTION.md`.
+
+> **The playbook should widen scientific imagination without dragging the search back toward whichever topic class happens to have the cleanest dataset.**
