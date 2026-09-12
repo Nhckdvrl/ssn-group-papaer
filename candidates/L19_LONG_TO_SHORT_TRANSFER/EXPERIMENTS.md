@@ -59,6 +59,14 @@ Two asymmetries, both inherited from the parent's design rather than introduced 
 and recorded so they are not mistaken for our main contrast:
 
 - 46 ChatQA2 records exceed the 32k cap and are dropped (3,954 vs 4,000 items);
+- the ChatQA2 arm's gradient norm runs ~26 against the UltraChat arm's ~2.4 at the same
+  learning rate, because its targets are long summary-style answers. With clipping at 1.0
+  the ChatQA2 arm is clipped on essentially every step and the UltraChat arm is not, so
+  part of any gap between them is a clipping asymmetry rather than data quality. **The
+  main contrast is immune to this**: `SHORT-SUPPORT` and `LONG-FULL` share their targets
+  token for token, so their gradient scales are comparable by construction. This is a
+  concrete instance of the matched design being cleaner than the dataset swap it replaces,
+  and it bounds how much the positive control can be asked to certify;
 - the positive-control arms are **not** loss-token matched (3.609M vs 1.991M), because
   swapping UltraChat for ChatQA2 swaps the targets too. That is exactly what the parent
   compares, and exactly the confound E01's main contrast removes — where the two arms

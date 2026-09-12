@@ -23,7 +23,7 @@ one () {  # one <gpu> <ckpt>
     local args=(--model "$BACKEND" --tasks "$task" --num_fewshot "$shots"
                 --output_path "$outdir" --seed 0)
     if [ "$BACKEND" = vllm ]; then
-      args+=(--model_args "pretrained=$ckpt,dtype=bfloat16,gpu_memory_utilization=0.85,max_model_len=8192,tensor_parallel_size=1")
+      args+=(--model_args "pretrained=$ckpt,dtype=bfloat16,gpu_memory_utilization=0.85,max_model_len=8192,tensor_parallel_size=1" --batch_size auto)
     else
       args+=(--model_args "pretrained=$ckpt,dtype=bfloat16,attn_implementation=sdpa" --batch_size 8)
     fi
