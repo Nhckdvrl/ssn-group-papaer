@@ -70,6 +70,31 @@ Package: `candidates/L24_EPISTEMIC_FILES_VS_CANONICAL_ENTITIES/`
 **Question:** Can compressing many successful trajectories into one general rule erase a condition that reverses the rule in a subgroup?  
 **Why not:** current experience-memory work already owns cross-trajectory abstraction, negative transfer from fixed abstraction, and consolidation-induced corruption. Simpson's-paradox framing gives a cleaner diagnostic but not a sufficiently independent Main-level scientific object.
 
+### Consistent snapshot vs individually fresh evidence in RAG/memory — KILL
+**Question:** Can retrieving the individually newest version of every document assemble a context that never existed as one coherent world state?  
+**Why not:** the database-style idea is attractive, but 2026 agent-memory work already imports snapshot isolation/MVCC explicitly to prevent evidence tearing, while temporal/version-aware RAG is crowded. The modern operation is already owned closely enough that a new benchmark would not buy a distinct Main identity.
+
+### Open-world vs closed-world assumption in agent knowledge — KILL
+**Question:** Does absence from an agent's knowledge store mean false, or merely unknown—and when is each assumption safe for action?  
+**Why not:** EACL 2026 open-world KGQA and ICML-era open-world logical-reasoning work directly center incomplete knowledge and the closed/open-world distinction. A new agent-memory wrapper would be a domain transfer, not a new question.
+
+### Value of Information / when should an agent ask rather than act — KILL
+**Question:** Is uncertainty alone enough to decide when an agent should ask a clarification question, or should it ask only when the information can change a consequential decision?  
+**Why not:** ACL 2026 directly introduces a Value-of-Information framework for human–agent communication across multiple domains. Direct collision.
+
+### Qualification / ramification problem for tool agents — KILL
+**Question:** Can an agent reason about open-ended action preconditions and indirect consequences that are not exhaustively listed in a tool schema?  
+**Why not:** ICLR 2025 ActionReasoningBench already explicitly grounds LLM evaluation in reasoning about actions/change, action executability, effects, frame/ramification constraints. Tool-agent versions would be a narrower contemporary instantiation.
+
+### Explicit recall vs implicit/procedural enactment — KILL
+**Question:** Can an LLM explicitly state a learned rule yet fail to automatically enact it later, revealing a declarative–procedural dissociation?  
+**Why not:** ACL 2026 Best Resource ImplicitMemBench already makes explicit recall vs implicit behavioral adaptation the motivating distinction; MemoryBench spans declarative/procedural memory, and 2026 Neural Procedural Memory explicitly frames a text–action disconnect. The remaining comparison is too compressed by current work.
+
+### Generic statement vs universal rule under structured memory — HOLD, NOT PROMOTED
+**Question:** When an agent converts a generic such as “birds fly” into a reusable graph/rule memory, does the structured representation silently turn an exception-tolerant default into a universal rule?  
+**Why interesting:** this has the right shape—classical generic/default semantics → modern text-to-graph/structured-memory operation → downstream exception reasoning. Existing work shows LLMs already overgeneralize generics, GenericsKB supplies millions of naturally occurring generic statements, and structured agent memory is now common.  
+**Why not serious yet:** the clean downstream exception gold is weaker than the source-generic data; much of the strongest exception set is automatically generated/human-sample-validated rather than natural independent gold. The paper is also outcome-fragile if raw text and triples behave similarly. Keep as a search seed until a natural paired substrate or a stronger outcome-robust estimand is found.
+
 ### Essential indexical / de se self-location × action — HOLD, NOT PROMOTED
 **Question:** Can an agent know all third-person facts about the world yet still fail to act because it does not represent which entity/location is *itself / here / now*?  
 **Why not yet:** conceptually strong old-problem→agent bridge and no direct collision found in this pass, but current versions rely on synthetic philosophical scenarios, lack an obvious natural gold substrate, and risk becoming a pure semantics/ToM competence test. Keep only as a search seed; no compute.
