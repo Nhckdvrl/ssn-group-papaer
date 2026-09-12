@@ -41,3 +41,35 @@ The exact numerical identity between Shibata's angular-jump metric and Oskin's l
 ### Verdict
 
 **DROP.** Do not promote `why does the final layer jump?`, `jump = late readout commitment`, or `is JREG smoothing delayed commitment?` as a new candidate unless a qualitatively different contradiction emerges. Current space is too owned for the Main bar.
+
+---
+
+## Hook B — Why masked diffusion tolerates repeated data while AR overfits
+
+**Status:** `DROP / DIRECT MECHANISM OWNER — DO NOT REDISCOVER THIS ROUND`
+
+### Origin
+
+NeurIPS 2025, *Diffusion Beats Autoregressive in Data-Constrained Settings*, establishes a large stable contrast: under repeated limited data, autoregressive LMs saturate/overfit while masked-diffusion LMs continue benefiting from additional epochs and have a far larger data-reuse half-life.
+
+- https://proceedings.neurips.cc/paper_files/paper/2025/hash/0f705a932553c08ebf0d1bc520b7cbc6-Abstract-Conference.html
+
+ICLR 2026, *Dual-objective Language Models: Training Efficiency Without Overfitting*, independently reproduces the complementary AR-fast/overfit versus MD-slow/resilient regimes across 50 models and turns them into a mixed-objective training recipe.
+
+- https://proceedings.iclr.cc/paper_files/paper/2026/hash/c5f92e7fa410b1055d8a45e86fdd1adb-Abstract-Conference.html
+
+### Owner assassination result
+
+The obvious unresolved question `why does MD reuse data better?` is already substantially answered by the NeurIPS mother itself. It interprets randomized masking as implicit data augmentation over a richer distribution of conditional prediction tasks / token orderings, unlike AR's fixed left-to-right factorization, and performs a direct intervention: augmenting AR training with multiple token orderings systematically lowers validation loss and delays overfitting; with enough orderings it approaches MD behavior.
+
+The same paper explicitly frames the complementary downside: order diversity reduces specialization and therefore training compute efficiency, while fixed AR order gives dense repeated reinforcement of one task. The ICLR 2026 dual-objective paper then exploits exactly this complementarity.
+
+### Strongest reviewer compression
+
+> `NeurIPS 2025 already observes the overfitting gap, proposes task/order diversity as the mechanism, and intervenes on AR order diversity; ICLR 2026 operationalizes the same explanation with a mixed objective.`
+
+A follow-up about generic gradient diversity, memorization, or representation differences would therefore be mechanism refinement inside an already centralized explanation, not a sufficiently new parent.
+
+### Verdict
+
+**DROP.** Do not reopen as `why is diffusion resistant to repetition?`, `objective diversity prevents memorization`, or `AR fixed factorization causes overfitting` without a qualitatively different empirical contradiction to the existing order-diversity account.
