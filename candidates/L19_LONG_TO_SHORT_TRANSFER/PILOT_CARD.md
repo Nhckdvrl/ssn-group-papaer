@@ -115,8 +115,15 @@ Outcome D is the one that ends the route. It is checked first.
 
 1. seed-to-seed spread within an arm ≥ the between-arm gap → D;
 2. positive control gap ≤ 0 on the macro → D;
-3. either arm's macro falls below the base model's, i.e. SFT damaged rather than tuned
-   the model, in a way that puts benchmarks at floor → D (power failure, not a result);
+3. ~~either arm's macro falls below the base model's~~ — **withdrawn 2026-09-12, before
+   any treatment run.** This criterion was mis-specified: the parent's own published
+   UltraChat-SFT macro on these four benchmarks is 60.41, below our untrained base's
+   64.45, so the rule would have condemned their published result as an instrument
+   failure. SFT from an instruct-derived base costs a few points by construction.
+   Replaced by: **a single benchmark collapsing while the others hold** (GSM8K 62→39
+   with MMLU/BBH/LAMBADA within ±3.5) is the instrument-failure signature, because a
+   real capability change does not land on one task alone. That signature is what
+   correctly identified the learning-rate fault;
 4. a `LONG > SHORT` result that vanishes when the 3 long-context-free benchmarks are
    considered separately from LAMBADA → report as W3, not as a general-capability claim.
 

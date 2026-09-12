@@ -18,13 +18,37 @@ NQ_USER = "{context}\n\nQuestion: {question}"
 UC_MAX_TOK = 4096
 
 
+CHAT_FORMATS = {
+    # (bos, header, footer) per family. Rendered manually rather than through
+    # apply_chat_template so the completion span is known exactly and the loss mask is
+    # provably confined to assistant content.
+    "llama3": dict(bos=True,
+                   head="<|start_header_id|>{role}<|end_header_id|>\n\n",
+                   foot="<|eot_id|>"),
+    "qwen":   dict(bos=False,
+                   head="<|im_start|>{role}\n",
+                   foot="<|im_end|>\n"),
+}
+
+
+def chat_format(tokz):
+    vocab = tokz.get_vocab()
+    if "<|im_start|>" in vocab:
+        return CHAT_FORMATS["qwen"]
+    if "<|start_header_id|>" in vocab:
+        return CHAT_FORMATS["llama3"]
+    raise ValueError("no known chat format for this tokenizer")
+
+
 def _render(tokz, messages):
     """(input_ids, labels) with loss on assistant turns only."""
-    ids, labels = [tokz.bos_token_id], [-100]
+    fmt = chat_format(tokz)
+    ids = [tokz.bos_token_id] if fmt["bos"] and tokz.bos_token_id is not None else []
+    labels = [-100] * len(ids)
     for m in messages:
-        head = tokz(f"<|start_header_id|>{m['role']}<|end_header_id|>\n\n",
+        head = tokz(fmt["head"].format(role=m["role"]),
                     add_special_tokens=False)["input_ids"]
-        body = tokz(m["content"].strip() + "<|eot_id|>",
+        body = tokz(m["content"].strip() + fmt["foot"],
                     add_special_tokens=False)["input_ids"]
         ids += head + body
         labels += [-100] * len(head)

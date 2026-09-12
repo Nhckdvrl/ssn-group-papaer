@@ -57,7 +57,7 @@ def main():
     ap.add_argument("--n_uc", type=int, default=10000)
     ap.add_argument("--max_len", type=int, default=32768)
     ap.add_argument("--global_examples_per_step", type=int, default=32)
-    ap.add_argument("--lr", type=float, default=2e-5)
+    ap.add_argument("--lr", type=float, default=5e-6)
     a = ap.parse_args()
 
     set_seed(a.seed)

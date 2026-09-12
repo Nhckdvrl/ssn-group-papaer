@@ -106,6 +106,52 @@ model" was immediate and the response was repair, not escalation.
 against a known reference, not just that the job runs. 7.9 on UltraChat for an 8B model
 was impossible on its face.
 
+## The real cause was learning rate, not budget (2026-09-12)
+
+After fixing the 8x gradient bug the damage barely moved: `PC-UC-UC` macro 57.66 -> 58.10,
+GSM8K 38.82 -> 38.74. Two further hypotheses were tested rather than assumed.
+
+**Evaluation format mismatch — ruled out.** GSM8K, 4-shot CoT, limit 200:
+
+| | raw few-shot | chat template |
+|---|---|---|
+| untrained base | 64.5 | **70.0** |
+| `PC-UC-UC` lr 2e-5 | 40.0 | 38.5 |
+
+The base model *gains* from the chat template (it retains Llama-3-Instruct chat ability),
+while the SFT'd model is flat. Format is not the cause; under the SFT-favouring protocol
+the gap widens.
+
+**Learning rate scaled to batch size — confirmed.**
+
+| GSM8K (limit 200, raw 4-shot) | |
+|---|---|
+| untrained base | 64.5 |
+| lr 2e-5 | 40.0 |
+| **lr 5e-6** | **52.0** |
+| parent's UltraChat-SFT (published) | 54.69 |
+
+The parent uses lr 2e-5 with a **4M-token batch**; ours is ~37k tokens per optimizer
+step, roughly two orders of magnitude smaller, so the same nominal lr is a vastly larger
+relative step. At 5e-6 our UltraChat arm lands at 52.0 against their published 54.69 —
+the regime is commensurable after all. Default lr changed to 5e-6 for every run.
+
+**Two earlier diagnoses of ours were wrong and are corrected here, not quietly dropped:**
+
+- "both arms below base = instrument failure" (kill condition 3) would have flagged the
+  parent's own published UltraChat run: their 4-benchmark macro is 60.41 against our
+  untrained base's 64.45. SFT from an instruct-derived base is *expected* to cost a few
+  points. The discriminating criterion is whether the dataset swap reproduces the
+  parent's direction, not whether an arm sits above base.
+- "we are in a damage valley that needs 1B tokens to escape" was wrong. It was an
+  lr/batch-size mismatch. The estimate it produced (94 GPU-h per run for parent
+  commensurability, 400+ h for the programme) is therefore void.
+
+A Qwen3-1.7B-Base route was prepared as a cheap fallback (~2.5 h for the whole
+programme) and is **not** needed; `src/sft_data.py` now carries both Llama-3 and Qwen
+chat formats, verified to keep the arms' loss tokens byte-identical under either. Held in
+reserve, since Qwen3-8B-Base is also cached and is a raw base at the parent's scale.
+
 ## Log
 
 - 2026-09-12 — **run order corrected before any training.** The driver had the positive
