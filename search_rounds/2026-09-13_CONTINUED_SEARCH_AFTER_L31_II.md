@@ -31,6 +31,24 @@ A cheap checkpoint surgery (switching a trained parallel Pythia checkpoint to se
 
 **Anti-resurrection:** do not reopen as `parallel residual causes saturation`, `same-layer Attention→MLP steering prevents saturation`, `commutator defect predicts Pythia saturation`, `serializing Pythia rescues late loss`, or another parallel-vs-sequential small-model sweep unless a qualitatively different stable quantity and inference appears.
 
+## O. Diffusion objective as implicit regularization under repeated data — DROP
+
+**Scientific object:** Why do masked-diffusion language models tolerate repeated finite data better than standard autoregressive models? Is random masking itself the load-bearing anti-overfitting mechanism?
+
+**Mother:** 2025 `Diffusion Beats Autoregressive in Data-Constrained Settings` reports that masked diffusion models substantially outperform AR models under repeated-data / compute-rich training and interprets the advantage as implicit data augmentation from varied mask patterns/prediction tasks.
+
+**Direct owners / successors:**
+- ICLR 2026 `Dual-objective Language Models: Training Efficiency Without Overfitting` explicitly frames masked diffusion as more resistant to overfitting, sweeps 50 models under different data-repetition levels, and combines AR + masked-diffusion objectives to obtain AR learning speed plus diffusion-style regularization.
+- Jun-2026 `Data-Constrained Language Model Pretraining: Improved Regularization and Scaling Laws` directly isolates random masking as **Masked-Input Regularization (MIR)** added to a standard AR objective and shows gains across 72M–1.4B under repeated data.
+- The same 2026 work also equalizes weight decay and finds that strong AR regularization can close much of the previously reported AR–diffusion gap, showing that part of the apparent objective advantage was a regularization mismatch rather than a unique diffusion mechanism.
+- Jun-2026 `Data Augmentations for Data-Constrained Language Model Pretraining` independently shows token corruption / random replacement and other augmentations delay AR overfitting.
+
+**Reviewer compression:** `Diffusion Beats AR under repeated data + dual-objective overfitting paper + MIR isolates masking + strong weight decay closes gap = objective-as-regularizer mechanism already centralized`.
+
+**Kill reason:** the natural mechanism question—whether random masking / diversified prediction acts as implicit regularization under data reuse—has already been directly isolated and causally exploited. A new mask rate, corruption scheme, or AR/diffusion comparison would be method variation.
+
+**Anti-resurrection:** do not reopen as `why diffusion resists repeated-data overfitting`, `masking is implicit augmentation`, `add a diffusion auxiliary objective to AR`, or `AR vs diffusion data-efficiency gap` unless a distinct unexplained scientific quantity appears.
+
 ---
 
 _Continue search from here; append later killed leads in this file or a numbered continuation if the file becomes too large._
