@@ -66,6 +66,22 @@ Package: `candidates/L23_SIMILARITY_NOT_PROVENANCE/`
 
 Combines generated-idea overlap/plagiarism, future/held-out idea reconstruction, and causal provenance. Audit direct recent owners, full model cutoffs, and overlap yield before compute.
 
+### L26 — Same PICO ≠ Same Causal Question
+**Status:** `SERIOUS SEED — DATA / DIRECT-OWNER AUDIT — NO COMPUTE`  
+Package: `candidates/L26_ESTIMAND_ALIGNMENT/`
+
+> When automated evidence synthesis treats trials as answering the same PICO question, does it preserve whether they actually target the same treatment effect / estimand, or can it pool semantically similar studies that answer different causal questions?
+
+Strong external scientific pressure exists from the estimand/evidence-synthesis literature. Do not reduce this to an estimand-label competence test. No compute until paper-scale natural/expert gold and a downstream compatibility/synthesis consequence are secured.
+
+### L27 — Flat Effect Tuples ≠ Independent Evidence Units
+**Status:** `SERIOUS SEED — OWNERSHIP / NATURAL-GOLD AUDIT — NO COMPUTE`  
+Package: `candidates/L27_EFFECT_DEPENDENCE_STRUCTURE/`
+
+> Is a flat table of correctly extracted effect-size records sufficient for automated evidence synthesis, or does it erase design-induced dependence that determines how much independent evidence the records actually contain?
+
+This is distinct from copied-source/study-report dependence: the load-bearing structure comes from experimental/statistical design. No compute until a public natural source-text → dependence-structure → valid-analysis substrate and fresh direct-owner audit are secured.
+
 ---
 
 ## Hold / deprioritized
@@ -89,9 +105,10 @@ Do not rescue merely by adding more partitions/domains/rules. Reopen only if an 
 
 Record: `candidates/L25_SOURCE_BOUNDED_EVIDENCE/README.md`.
 
-Previous provenance-calibrated search records:
+Recent provenance-calibrated search records:
 - `search_rounds/2026-09-12_SOURCE_BOUNDED_EVIDENCE_SEARCH.md`
 - `search_rounds/2026-09-12_AWARD_TOPIC_PROVENANCE_SEARCH.md`
+- `search_rounds/2026-09-12_ESTIMAND_AND_SYNTHESIS_STRUCTURE_SEARCH.md`
 
 ---
 
