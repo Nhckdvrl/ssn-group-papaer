@@ -111,6 +111,14 @@ Package: `candidates/L23_SIMILARITY_NOT_PROVENANCE/`
 **Status:** `SERIOUS SEED — DATA / DIRECT-OWNER AUDIT — NO COMPUTE`  
 Package: `candidates/L26_ESTIMAND_ALIGNMENT/`
 
+### L29 — Losing the Steering Gain
+**Status:** `SERIOUS / PRE-PILOT — IDENTIFICATION BLOCKER — NO COMPUTE`  
+Package: `candidates/L29_COT_CONTROL_GAIN/`
+
+> When reasoning post-training makes chain-of-thought control collapse, is the loss merely caused by longer trajectories accumulating more opportunities to violate the constraint, or does training itself weaken the local causal influence of an explicit constraint on the reasoning policy?
+
+Broad “represented but ignored” reasoning-control stories are already owned; L29 survives only as the same-base **training-induced local control-gain** question. Before compute, a matched-state intervention must be shown not to reduce to an off-distribution teacher-forcing artifact. Stable local gain favors the already-known length/opportunity account and kills the paper identity rather than creating a fallback metric paper.
+
 ---
 
 ## Hold / deprioritized
