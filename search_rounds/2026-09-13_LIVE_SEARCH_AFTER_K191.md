@@ -73,3 +73,39 @@ A follow-up about generic gradient diversity, memorization, or representation di
 ### Verdict
 
 **DROP.** Do not reopen as `why is diffusion resistant to repetition?`, `objective diversity prevents memorization`, or `AR fixed factorization causes overfitting` without a qualitatively different empirical contradiction to the existing order-diversity account.
+
+---
+
+## Hook C — Why the same reasoning data is more valuable in pretraining than SFT
+
+**Status:** `DROP / COST-BRIDGE FAILURE — DO NOT REDISCOVER THIS ROUND`
+
+### Origin
+
+ICLR 2026, *Front-Loading Reasoning: The Synergy between Pretraining and Post-Training Data*, reports a strong training-stage asymmetry using 8B models pretrained from scratch on roughly 1T tokens:
+- front-loading reasoning data creates a large advantage that later SFT cannot catch up to;
+- pretraining benefits especially from diversity/scale while SFT is more sensitive to quality;
+- some high-quality pretraining data has little immediate effect but becomes valuable only after SFT;
+- scaling mixed-quality SFT can wash out earlier gains.
+
+- https://proceedings.iclr.cc/paper_files/paper/2026/hash/82eac7050fb44b662062ac64aa6637c3-Abstract-Conference.html
+
+### Why it is attractive
+
+The question `why can the same broad reasoning supervision have different value depending on when it is introduced?` is natural and the mother effect is real. The latent-effect result is especially mechanism-shaped: pretraining can alter later learnability without an equally large immediate behavioral gain.
+
+### Selection failure
+
+The decisive quantity is inherently a training-trajectory / stage interaction. A credible causal mechanism study must re-control at least the stage of exposure, token budget, surrounding data distribution, optimizer trajectory, and subsequent SFT. The mother itself is established at an 8B / ~1T-token controlled-pretraining scale.
+
+A cheap pilot on a tiny model/toy reasoning distribution would at best establish that stage interactions *can* occur; it would not identify the mechanism behind the natural mother. Conversely, reproducing the relevant stage contrast at a scale where the mother is known to hold is a substantial pretraining program, not a bounded E01 under the current project budget.
+
+This is analogous to the L19 lesson: the scientific gap may remain interesting, but the discriminating effect cannot be cleanly tied to the mother within an affordable pilot. Narrowing to one synthetic stage effect would change the paper identity.
+
+### Strongest reviewer/feasibility compression
+
+> `Front-Loading Reasoning already establishes the phase-dependent law; a small-model study would be a toy explanation, while a faithful mechanistic re-run requires full controlled pretraining.`
+
+### Verdict
+
+**DROP for current project.** Do not reopen as `pretraining creates latent reasoning potential`, `why diversity early / quality late`, or `why SFT cannot catch up` unless a later paper supplies a cheap natural instrument/checkpoint resource that makes the stage interaction identifiable without reproducing large-scale pretraining.
