@@ -115,3 +115,43 @@ A cleaner causal test of TELL-TALE's MI claim could verify whether a winning del
 ### Anti-resurrection
 
 Do not reopen as `why does pruning improve accuracy`, `harmful/detrimental layers`, `task-specific bottleneck layers`, `intermediate layer knew the answer before a later layer ruined it`, or another MI/early-exit/logit-lens analysis unless a new stable result contradicts the redundancy/bottleneck account on the same quantity.
+
+---
+
+## Hook D — Is Lost-in-Conversation mainly caused by conditioning on the model's own premature answers?
+
+**Status:** `DROP / DIRECT CAUSAL SUCCESSOR COLLISION`
+
+### Origin
+
+ICLR 2026 Outstanding Paper *LLMs Get Lost In Multi-Turn Conversation* establishes a large, stable mother: when the same underlying instruction is progressively revealed over conversation turns rather than given fully in one turn, leading LLMs lose roughly 39% performance on average. The paper attributes most of the degradation to unreliability and reports premature assumptions, early answer attempts, answer bloat, and failure to recover after wrong turns.
+
+Sources:
+- https://proceedings.iclr.cc/paper_files/paper/2026/hash/59f6421e64707225fdf5b28840679a07-Abstract-Conference.html
+- https://arxiv.org/abs/2505.06120
+
+### Missing sentence attempted
+
+The clean causal question looked excellent:
+
+> Is the multi-turn failure caused mainly by fragmented user information, or by feeding the model its own premature assistant responses back as future context?
+
+A decisive E01 would replay the exact same accumulated user shards while changing only assistant-side history: full history versus neutralized/omitted prior assistant turns, with length controls. This has the desired L32-like structure: same trajectories, inference-only intervention, one causal channel.
+
+### Why it dies
+
+A September-2026 successor now owns almost exactly this experiment and conclusion:
+
+**Li et al., arXiv 2609.05882, *What if LLMs Ate Their Words: Causal History Effects in Multi-Turn Interaction*.** It retrospectively replays completed sharded trajectories while editing only assistant-generated history. Neutralizing prior assistant responses changes downstream performance even under length-matched controls; its `Turn Surgery` intervention changes one assistant turn at a time and finds beneficial interventions in a majority of selected degraded trajectories, including many fail→success reversals. It then links consequential history edits to downstream hidden-state changes in an open-weight model.
+
+This is not merely a nearby mitigation paper: it directly performs the selective causal-history intervention that would have been our E01.
+
+Other 2026 successors further crowd the parent with intent-mismatch explanations, curriculum-RL abstention/recovery training, and history condensation, so a generic `premature commitment causes multi-turn failure` study is no longer independently owned.
+
+### Strongest reviewer compression
+
+> `ICLR Outstanding gives the Lost-in-Conversation mother and premature-commitment hypothesis; Li et al. 2609.05882 directly edits/neutralizes assistant history and performs turn-level causal surgery = the proposed causal-channel localization.`
+
+### Anti-resurrection
+
+Do not reopen as `remove assistant history`, `self-generated context contamination`, `which previous assistant turn caused the failure`, `neutralize premature answers`, or `assistant history vs user history` unless a qualitatively different same-quantity contradiction appears beyond the September-2026 causal-history paper.
