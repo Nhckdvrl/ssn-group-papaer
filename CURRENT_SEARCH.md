@@ -3,9 +3,9 @@
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
 **Open-ended search:** **ACTIVE**  
-**Active bounded pilots:** **L33 — PILOT-AUTHORIZED — E01 ONLY**; **L32 — PILOT-AUTHORIZED — E01 ONLY**; **L17 — existing speech project, outside current new-search preference**.
+**Active bounded pilots:** **L33 — PILOT-AUTHORIZED — E01 ONLY**; **L32 — E01 COMPLETE, awaiting Selection on a Claim Novelty Delta**; **L17 — existing speech project, outside current new-search preference**.
 
-> **Status note (2026-09-13):** `PILOT-AUTHORIZED` is not an approved paper mainline. L32 and L33 each authorize only one bounded E01. There is still **no approved paper mainline**.
+> **Status note (2026-09-13):** `PILOT-AUTHORIZED` is not an approved paper mainline. L33 authorizes only one bounded E01. L32's E01 is complete: it passed its gate and answered its question, but the answer mutated the claim, so its authorization has expired and it is back at Selection. There is still **no approved paper mainline**.
 
 ---
 
@@ -55,29 +55,59 @@ Do not yet authorize multilingual/model-zoo breadth, instruction-tuned compariso
 
 ## L32 — Where Do 18 Embeddings Work?
 
-**Status:** `PILOT-AUTHORIZED — E01 ONLY`  
+**Status:** `E01 COMPLETE — awaiting Selection` (2026-09-13)
 **Role:** existing project; **do not expand the current open-ended search around L32**.
 
-Package: `candidates/L32_SPARSE_EMBEDDING_CHANNEL/`  
+Package: `candidates/L32_SPARSE_EMBEDDING_CHANNEL/`
 Selection: `search_rounds/2026-09-13_SPARSE_EMBEDDING_CHANNEL_SELECTION.md`
+Report: `notes/E01_REPORT.md` · Selection request: `notes/CLAIM_NOVELTY_DELTA.md`
 
-RQ:
+**Gate passed.** `Delta_ALL = +29.50` [+28.59, +30.46] spBLEU (gate was `>= +15`),
+3 seeds, LLaMA-7B + the 18 published en→ca rows, Flores-101 devtest. The parent's
+en→ca phenomenon reproduces.
 
-> **When only a handful of frequent token embeddings learn a translation task, where does their causal effect actually enter a decoder-only LM: through instruction/source prefill, generated-target feedback, or both?**
+**The channel question is answered, and three of four accounts are rejected.**
+Recovery of the gain: INSTRUCTION **1.00** [0.98, 1.02]; SOURCE **−0.00**
+[−0.01, 0.01]; TARGET feedback 0.05 [−0.01, 0.09]. Source occurrences are *more*
+frequent than instruction ones (7.73 vs 7.00 per sentence) and recover nothing,
+so this is not an opportunity effect. A norm-matched random delta on the same
+rows scores 0.05 spBLEU.
 
-Mother: NAACL 2025 KS-Lottery reports that only 18 selected input-token embeddings can move LLaMA-7B en→ca translation from very poor to strong performance.
+**Two findings mutated the claim:**
 
-Authorized E01 uses the **same trained sparse-embedding checkpoint** and gates the learned embedding delta by sequence segment at inference:
+1. **94% of the reproduced effect is termination.** Scored on the first line of
+   the continuation, the untuned model is at 33.99 and the tuned model at 35.71
+   — `Delta_ALL` falls to **+1.72** [+1.03, +2.42]. The pre-registered audit
+   found untuned base spBLEU spans **0.31–33.78** on this task as a function of
+   prompt and post-processing alone; the parent's reported 5.7 is reproducible
+   only under whole-continuation scoring.
+2. **The ticket is keyed to its template.** Paraphrasing the same instruction
+   drops the gain from +29.18 to +3.19 across 3 seeds.
 
-`BASE / ALL / INSTRUCTION / SOURCE / PREFILL / TARGET`
+**Durable lessons, independent of whether L32 proceeds:**
 
-Evaluate teacher-forced next-token behavior and free-running Flores spBLEU.
+- A published baseline for a *base* LLM on a generation task is not usable
+  without knowing the output post-processing. The same model, prompt and decode
+  spans two orders of magnitude of spBLEU depending on truncation. This is the
+  L30 termination-confound lesson arriving in a second, unrelated literature.
+- **Gating an already-learned update by sequence segment at inference** is a
+  cheap and sharp way to localize *where* a parameter update acts. It needs a
+  support audit (does each segment have occurrences?) and a norm-matched random
+  control to be interpretable. Reusable: `src/eval.py`, `src/common.py`.
+- When comparing selected-parameter sets across conditions, a **same-condition
+  seed replicate is mandatory** as a noise floor. Without it, an overlap number
+  is uninterpretable — I wrote a pre-declared kill condition that lacked one and
+  it came out ambiguous (`notes/TICKET_SELECTION_PROBE.md` §5).
 
-Frozen first-stage gate:
+**Open question, not yet proven:** whether the certified ticket is a function of
+the prompt rather than the language. Exploratory probe: at the parent's k=18,
+against a seed floor of 18/18, rewording the prompt leaves 10/18 and switching
+language leaves 10/18; 13–15 of every top-18 are that condition's own template
+tokens. A pre-registered version is specified in `TICKET_SELECTION_PROBE.md` §6
+(~15 runs, under a GPU-day).
 
-> `spBLEU(ALL) - spBLEU(BASE) >= +15`, with all 3 training seeds in the same direction.
-
-Do not authorize model-zoo expansion, multilingual sweep, new PEFT method, generic probing atlas, or C2/C3 before E01 is read.
+**Verdict pending at Selection.** E01 alone is a Findings-level correction, not
+a Main paper. C2 remains unauthorised.
 
 ---
 
