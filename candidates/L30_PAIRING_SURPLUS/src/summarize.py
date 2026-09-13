@@ -14,7 +14,7 @@ Uncertainty follows notes/E01_DESIGN.md §6:
     enough to be informative.
 """
 import argparse
-import itertools
+
 import json
 import pathlib
 
@@ -72,14 +72,18 @@ def arm_mean(data, arm, metric, prompt_idx, seeds):
 
 
 def bootstrap(data, metric, n_boot, resample_seeds, rng):
-    seeds = sorted(set(itertools.chain.from_iterable(data[a] for a in ARMS)))
-    n = len(data[ARMS[0]][seeds[0]][metric])
-    point = {a: arm_mean(data, a, metric, np.arange(n), seeds) for a in ARMS}
+    # Each arm carries its own seed list. While the pilot is mid-flight the
+    # arms are deliberately not on the same seeds (the launcher interleaves
+    # arms across GPUs), so an arm must never be indexed by another arm's seed.
+    seeds = {a: sorted(data[a]) for a in ARMS}
+    n = len(data[ARMS[0]][seeds[ARMS[0]][0]][metric])
+    point = {a: arm_mean(data, a, metric, np.arange(n), seeds[a]) for a in ARMS}
     draws = {a: [] for a in ARMS}
     for _ in range(n_boot):
         pi = rng.integers(0, n, n)
-        sd = list(rng.choice(seeds, len(seeds), replace=True)) if resample_seeds else seeds
         for a in ARMS:
+            sd = (list(rng.choice(seeds[a], len(seeds[a]), replace=True))
+                  if resample_seeds else seeds[a])
             draws[a].append(arm_mean(data, a, metric, pi, sd))
     draws = {a: np.array(v) for a, v in draws.items()}
     out = {"point": point, "arm_ci": {}, "contrasts": {}}

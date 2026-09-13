@@ -1,6 +1,6 @@
 # L30 — What Does Pairing Teach?
 
-**Status:** **PILOT-AUTHORIZED — E01 ONLY (2026-09-13)**  
+**Status:** **HOLD — PILOT UNDER-RESOLVED (2026-09-13)** — E01 complete; see `notes/E01_REPORT.md`. Authorization expired: continuing requires re-selection.  
 **Date:** 2026-09-13  
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -379,6 +379,50 @@ After E01, update this README with:
 
 ---
 
+# 11b. E01 outcome (2026-09-13)
+
+E01 ran as pre-registered: 12 matched runs (4 arms x 3 seeds), Gemma-2-2B +
+Alpaca-Cleaned, IFEval 541 prompts, prompt-clustered seed-resampled intervals.
+Full record: `notes/E01_REPORT.md`; interim go/no-go read: `notes/E01_INTERIM_EP1.md`.
+
+| contrast | pp | 95% CI |
+|---|---|---|
+| `Delta_corr` P - S | **+14.97** | [+10.66, +19.29] |
+| `Delta_wrong` D_mask - S | **+13.12** | [+8.81, +17.44] |
+| `Delta_pair` P - D_mask | +1.85 | [-1.79, +5.42] |
+| construct D_mask - D_rt | +1.91 | [-1.66, +5.42] |
+
+**`Delta_pair` -- the quantity this project actually owns -- is under-resolved.**
+Point estimate below 2 pp with an interval that still admits a real ~5 pp effect,
+stable across epoch 1 and epoch 3. Under section 6's frozen rule this is
+`HOLD`, not evidence that pairing is unnecessary.
+
+The interval is **evaluation-limited, not seed-limited**: of its 7.58 pp width,
+only ~1.6 pp comes from training seeds and ~6 pp from the 541-prompt IFEval
+sample. More seeds cannot fix it; this is the L19 failure mode reached from the
+evaluation side.
+
+`Delta_corr` and `Delta_wrong` are decisive and large, but `Delta_corr` is
+precisely the "shuffling drops IFEval by N points" result section 9 rules
+insufficient, since MAIN / FedDQC / Hindsight own that parent.
+
+One finding is **not** resolution-limited: S collapses to 6-11 distinct
+responses across 541 prompts in every seed (median 62-241 chars), while D_mask,
+which has no correspondence either, keeps 537-539 distinct responses at 441-585
+chars. Wrong correspondence destroys prompt-conditional behaviour; absent
+correspondence does not. This also means `Delta_corr` is partly
+collapse-vs-no-collapse rather than a graded capability gap and must not be
+reported as the latter.
+
+D_mask passed its construct check (zero logit movement under an equal-length
+instruction swap and under random tokens behind the mask, while P moves 26.6).
+
+**Consequence:** the identity would have to move from *what pairing teaches* to
+*what wrong pairing destroys*. That is a claim mutation under
+`RESEARCH_EXECUTION.md` section 8, so this authorization has expired and the
+candidate must re-enter selection with a Claim Novelty Delta before further
+compute. C2 remains unauthorized.
+
 # 12. Current verdict
 
 | Gate | Verdict |
@@ -392,7 +436,8 @@ After E01, update this README with:
 | Outcome robustness | **PASS** |
 | Resolution | **PASS FOR PILOT** |
 | Main growth | **PASS only if a C2-style conditional law survives re-selection** |
-| Status | **PILOT-AUTHORIZED — E01 ONLY** |
+| Resolution (post-E01) | **FAIL for `Delta_pair` — evaluation-limited** |
+| Status | **HOLD — PILOT UNDER-RESOLVED; re-selection required** |
 
 The one-sentence working identity is:
 
