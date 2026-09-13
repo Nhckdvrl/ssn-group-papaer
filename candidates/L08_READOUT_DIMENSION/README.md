@@ -1,19 +1,33 @@
 # L08 — Readout-Dimension / Compression Evaluation Route
 
-**Status:** **ARCHIVED / NO-GO — 2026-09-11**  
-**Former status:** ACTIVE EXECUTION / reconstructed mainline  
-**Target:** historical ACL / EMNLP / NAACL Main candidate
+**Status:** **REOPEN — SERIOUS / PAPER-LEVEL SELECTION PASS — 2026-09-13**  
+**Former status:** ARCHIVED / NO-GO — 2026-09-11  
+**Target:** ACL / EMNLP / NAACL Main
 
-> **Final archive decision:** the current portfolio is reset. This decision supersedes the historical active wording in `MAINLINE.md` and earlier execution records. Do not continue E-series experiments under the current L08 paper identity.
+Fresh Selection: [`FRESH_SELECTION_2026-09-13.md`](FRESH_SELECTION_2026-09-13.md)
 
-## Why archived
+> **Important:** this reopening restores L08 only to paper-level serious consideration. It does **not** reactivate the historical E-series or authorize new compute. Any new confirmatory experiment requires a separate bounded authorization under the current workflow.
 
-L08 produced substantial useful evidence and corrected several misleading interpretations of the parent compression result, including protocol/depth confounds and metric artifacts. However, the route underwent major paper-identity reconstruction during execution. Under the stricter post-L12 workflow, a reconstructed claim must independently re-earn paper-level novelty and Main-level contribution before further expansion; accumulated experiments do not confer that status.
+## Why the old archive no longer blocks Selection
 
-The current project is therefore archived rather than further optimized into a paper by adding mechanisms, model families, or controls. Its results may motivate a future question only if that question is selected independently and survives a fresh ownership/successful-result audit.
+The 2026-09-11 archive was not a null result and was not a direct-owner kill. L08 had undergone major paper-identity reconstruction during execution, and the stricter post-L12 workflow required the reconstructed claim to independently re-earn novelty and Main-level contribution.
+
+That fresh audit has now been completed.
+
+The surviving paper identity is not `which embedding dimensions matter?` and not the already-owned generic statement `multiple choice != open generation after pruning`.
+
+The current RQ is:
+
+> **When compression appears to damage one language-model capability more than another, is that selectivity intrinsic to the damaged computation, or can it be created by the readout protocol and output depth used to measure the capability?**
+
+The strongest inherited evidence uses the same underlying content and shows that the apparent damage changes sharply as readout protocol / generation depth changes. Under matched protocol and length, the direction of capability selectivity further differs between intervention families that damage parameterized computation and interventions that primarily damage the readout/expression channel.
+
+Fresh 2026 ownership removes some historical claims but leaves this matched estimand rewrite and intervention-family boundary plausibly independent. See the fresh Selection file for the full owner/reviewer-compression audit.
 
 ## Preserved assets
 
-All code, configs, experiment logs, results, audits, claims, and the historical `MAINLINE.md` remain in this directory for reproducibility. They are evidence inheritance, not authorization.
+All historical code, configs, experiment logs, results, audits, claims, and `MAINLINE.md` remain in this directory for reproducibility and evidence inheritance.
 
-**No current experiment is authorized from this package.**
+Historical results are **not retroactively declared confirmatory** by this status change.
+
+**No new experiment is currently authorized from this package.**
