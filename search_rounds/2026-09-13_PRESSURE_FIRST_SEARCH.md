@@ -156,3 +156,57 @@ Therefore the strongest plausible positive result — post-training breaks the a
 ### Anti-resurrection
 
 Do not reopen as `same pretraining loss, different SFT response`, `does post-training break loss-to-loss architecture invariance`, or a Mamba-vs-Transformer SFT scaling sweep unless a new same-quantity law supplies a sharper prediction than generic architecture-specific post-training behavior.
+
+---
+
+## Hook P6 — Does instruction tuning create task circuitry, or mainly select and rewire pretrained pathways?
+
+**Status:** `DROP / CIRCUIT-REUSE PARENT ALREADY DIRECTLY OCCUPIED`
+
+### Pressure
+
+ICML 2025 *Heads Up! Large Language Models Can Perform Tasks Without Your Instruction via Selective Attention Head Masking* shows that selective head masks can elicit task behavior even without the corresponding natural-language instruction. This suggests a tempting modern-premise test:
+
+> **When instruction tuning improves task following, did it create the relevant computation, or mainly learn to select/reconnect computation already latent in the pretrained model?**
+
+### Why it dies
+
+The strongest answer is already constrained by direct circuit work. ICML 2025 circuit analysis of fine-tuning reports high reuse of circuit nodes across pretrained and fine-tuned models while circuit edges are substantially rewired. 2026 follow-up work on SFT/distillation similarly reports substantial retention of previously active attention heads together with selective activation of additional heads, and causally links those post-training-active heads to performance. AAAI-era task-circuit work further crowds the general “task functionality lives in reusable subnetworks” parent.
+
+Thus an exact base↔instruct pathway transplant might be cleaner, but the likely conclusion — post-training largely reuses pretrained components while changing their connectivity/selection rather than creating an entirely new circuit — is already strongly implied.
+
+### Reviewer compression
+
+> `instruction-free head masking exposes latent functional pathways + fine-tuning circuits reuse nodes but rewire edges + SFT/distillation retain old heads and recruit new ones = post-training selects/reconfigures existing circuitry.`
+
+### Anti-resurrection
+
+Do not reopen as `does instruction tuning create circuits`, `latent task pathway vs learned pathway`, or generic task-circuit reuse unless a new same-quantity contradiction appears.
+
+---
+
+## Hook P7 — Does past attention actually measure a token's future causal value in the KV cache?
+
+**Status:** `DROP / DIRECT CAUSAL TEST + RANDOM-EVICTION SUCCESSOR`
+
+### Pressure
+
+A large class of KV-cache compression methods implicitly treats historical attention magnitude or related attention-derived statistics as a proxy for which past tokens will remain useful. That gives a clean model-science question independent of any new eviction algorithm:
+
+> **Is historical attention to a token actually evidence that retaining that token will causally matter for future generation?**
+
+A decisive test would remove or restore individual KV entries in the same checkpoint and compare leave-one-out causal effect against the attention-derived score.
+
+### Why it dies
+
+Late-2026 work already performs essentially this identification. *TwinKV* reports leave-one-out causal probes and finds historical attention magnitude is essentially uncorrelated with measured token causal contribution (reported correlation around −0.004). September-2026 *Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning* goes further: once the prompt is protected, random eviction over reasoning-trace tokens can match strong importance selectors, with the phenomenon attributed to heavy textual redundancy in reasoning traces plus redundancy across heads.
+
+This directly answers the attractive missing sentence and turns it into an already-active correction of the attention-as-importance premise.
+
+### Reviewer compression
+
+> `direct KV leave-one-out probes already break attention≈causal-value + random protected-prompt eviction already matches sophisticated selectors = the proposed causal bridge test.`
+
+### Anti-resurrection
+
+Do not reopen as `attention is not KV importance`, `past attention vs future utility`, `causal KV token importance`, or random reasoning-token eviction unless a qualitatively different causal quantity emerges.
