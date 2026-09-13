@@ -3,7 +3,7 @@
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
 **Open-ended search:** **ACTIVE**  
-**Active bounded pilots:** **L33 — PILOT-AUTHORIZED — E01 ONLY**; **L32 — E01 COMPLETE, awaiting Selection on a Claim Novelty Delta**; **L17 — existing speech project, outside current new-search preference**.
+**Active bounded pilots:** **L33 — PILOT-AUTHORIZED — E01 ONLY**; **L32 — E02 COMPLETE, `HOLD / Findings`, not promoted to Main**; **L17 — existing speech project, outside current new-search preference**.
 
 > **Status note (2026-09-13):** `PILOT-AUTHORIZED` is not an approved paper mainline. L33 authorizes only one bounded E01. L32's E01 is complete: it passed its gate and answered its question, but the answer mutated the claim, so its authorization has expired and it is back at Selection. There is still **no approved paper mainline**.
 
@@ -55,7 +55,7 @@ Do not yet authorize multilingual/model-zoo breadth, instruction-tuned compariso
 
 ## L32 — Where Do 18 Embeddings Work?
 
-**Status:** `E01 COMPLETE — awaiting Selection` (2026-09-13)
+**Status:** `E02 COMPLETE — HOLD / Findings` (2026-09-13)
 **Role:** existing project; **do not expand the current open-ended search around L32**.
 
 Package: `candidates/L32_SPARSE_EMBEDDING_CHANNEL/`
@@ -106,8 +106,51 @@ language leaves 10/18; 13–15 of every top-18 are that condition's own template
 tokens. A pre-registered version is specified in `TICKET_SELECTION_PROBE.md` §6
 (~15 runs, under a GPU-day).
 
-**Verdict pending at Selection.** E01 alone is a Findings-level correction, not
-a Main paper. C2 remains unauthorised.
+**E02 ran under a preregistration committed before any E02 run**
+(`notes/E02_PREREGISTRATION.md`), asking: *are multilingual winning tickets
+properties of a language, or of the interface used to ask the model to
+translate?* Layers were sequentially gated.
+
+| layer | result |
+|---|---|
+| L1 cross-language evaluation audit (ca/es/ro, the parent's published tickets) | **PASS** 3/3 |
+| L2 selection factorial, 3 langs x 3 prompts x 2 seeds, with a count-matched frequency control | **PASS** 18/18 |
+| L3 functional cross-template transfer | **FAIL**, ratio 0.996 |
+
+- **L1:** 94–107% of the sparse-tuning gain is termination in all three pairs.
+  For en→ro translation content is *worse* after tuning while the raw score
+  rises 20 points.
+- **L2:** at the parent's ticket size, rewording the prompt destroys more of the
+  ticket (8.6/18 survive) than switching language (11.6/18), against a seed
+  ceiling of 17.4/18 — and the prompt arm is the controlled one. Template tokens
+  rank 7–11 while **count-matched** non-template tokens rank 84–372
+  (Wilcoxon p ≤ 1e-3, 18/18). Frequency does not explain the ticket.
+- **L3:** tickets are nonetheless functionally interchangeable across templates,
+  so the interface account covers selection but not function.
+
+**Verdict: `HOLD / Findings`. Not promoted to Main candidate.** Converged rather
+than reconstructed, per the standing instruction for an E02 that does not pass.
+
+**Additional durable lessons from E02:**
+
+- **Lock every extraction rule and metric before running, and report all of
+  them.** A base LLM's score on a generation task moves by tens of points with
+  the output-truncation rule alone; choosing the rule afterwards is the
+  cherry-pick a reviewer should catch. Three rules and two metrics were fixed in
+  advance here, and the third rule (cut at prompt-restart) is what showed the
+  base model's overflow is continued prose rather than template re-runs.
+- **A "frequency control" has to be count-matched, not regressed.** Putting a
+  token in the prompt template *is* a frequency boost, so controlling for
+  frequency only works by comparing against tokens with the same total count
+  whose occurrences are spread over varying contexts.
+- **Selection and function can dissociate.** A parameter-selection procedure can
+  be strongly prompt-dependent while the parameters it selects are functionally
+  interchangeable. Showing that a selected set *changes* is not showing that the
+  selection *matters*.
+- **Watch for interface tokens hiding in a control's "content" pool.** BOS
+  occurs once per example at a constant position; it is an interface token in
+  all but name, and it leaked into the first random-ticket control's sampling
+  pool.
 
 ---
 
