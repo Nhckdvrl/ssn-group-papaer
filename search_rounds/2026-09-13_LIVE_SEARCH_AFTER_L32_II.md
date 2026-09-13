@@ -79,3 +79,39 @@ A tiny synthetic MT reproduction would show that one ingredient *can* confer rob
 ### Anti-resurrection
 
 Do not shrink this into a tokenizer audit, model-zoo robustness survey, or toy character-noise augmentation paper. Reopen only if a public checkpoint/data intervention or naturally matched training experiment makes the modern training-data cause selectively identifiable at bounded cost.
+
+---
+
+## Hook H — Is one-step proto-token reconstruction a learned language capability or random-Transformer programmability?
+
+**Status:** `DROP / ANTI-RESURRECTION + REVIEWER COMPRESSION`
+
+### Origin
+
+Mezentsev & Oseledets, EMNLP 2025 Main, *Exploring the Hidden Capacity of LLMs for One-Step Text Generation*, shows that a frozen causal LM can reconstruct hundreds of target tokens in a single parallel forward pass from only two optimized continuous proto-token embeddings. A 2026 successor analyzes semantic/syntactic content and stability of these proto-tokens.
+
+Sources:
+- https://aclanthology.org/2025.emnlp-main.1165/
+- https://arxiv.org/abs/2602.18301
+
+The initially attractive missing sentence was:
+
+> Is this hundreds-token one-step reconstruction created by language pretraining, or is it largely an architectural property of a Transformer that two continuous vectors can program?
+
+Pythia makes a cheap experiment possible because the exact same architecture/tokenizer is released from `step0` initialization through 154 checkpoints.
+
+### Why it dies
+
+First, this violates the current round's anti-resurrection intent. The user explicitly marked **token cramming / parallel token reconstruction** as a route not to rediscover after 2026 mechanistic work showed brittle steering rather than transferable semantic compression and localized causal interactions to early layers. The one-step paper is directly descended from that family: its official repository states that data and loaders are borrowed from Kuratov et al.'s token-cramming repository. Reframing the axis as `architecture vs pretraining` does not create a sufficiently independent scientific object.
+
+Second, the proposed distinction is already strongly reviewer-compressible from adjacent prompt-expressivity work. NeurIPS 2025 *Prompt Tuning Transformers for Data Memorization* explicitly uses randomly initialized frozen Transformers to separate architectural expressivity from pretraining and shows that learned continuous prompts can memorize finite datasets. An August-2026 theory paper, *Training-Free Universal Approximation by Prompting Random Transformers*, goes further and proves that appropriate soft prompts can make random softmax-attention networks approximate broad function classes without pretraining.
+
+Those priors do not perform the exact two-vector parallel reconstruction experiment, but they make the strongest positive result — `a random frozen Transformer can be programmed by continuous vectors` — substantially predictable. The remaining exact operating point is too close to an already-banned reconstruction family to clear the Main-level ownership bar.
+
+### Strongest reviewer compression
+
+> `Parallel reconstruction is already a cramming-descended capacity phenomenon + random frozen Transformers are already known to be highly expressive under learned soft prompts = test the same fact in the two-proto-token setup.`
+
+### Anti-resurrection
+
+Do not reopen as `pretraining is unnecessary for proto-token reconstruction`, `step0 Pythia already reconstructs`, `when during pretraining does parallel reconstruction emerge`, or `architecture vs language knowledge in two-vector reconstruction` unless a qualitatively new contradiction appears that is independent of the cramming/reconstruction parent.
