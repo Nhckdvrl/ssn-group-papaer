@@ -90,11 +90,17 @@ def main():
     # training count, which separates those two readings.
     ap.add_argument("--random-ticket", type=int, default=None)
     ap.add_argument("--random-exclude-special", action="store_true")
+    # E03: tune an explicitly named row set instead of a selected ticket.
+    ap.add_argument("--explicit-rows", default=None,
+                    help="comma-separated token ids; overrides the ticket")
+    ap.add_argument("--label", default=None)
     args = ap.parse_args()
 
     torch.manual_seed(args.seed)
     tag = f"l2_{args.lang}_{args.ticket_from}_s{args.ticket_seed}"
     ticket = ticket_from(tag, args.k)
+    if args.explicit_rows:
+        ticket = [int(x) for x in args.explicit_rows.split(",")]
     head, tail = prompt(args.train_prompt, args.lang)
 
     model, tok = load_backbone(args.model)
@@ -107,7 +113,8 @@ def main():
     delta.row_of_token = sel
     assert sum(p.numel() for p in model.parameters() if p.requires_grad) == 0
 
-    name = f"{args.lang}_rows-{args.ticket_from}_at-{args.train_prompt}_s{args.seed}"
+    name = (f"{args.lang}_{args.label}_s{args.seed}" if args.label else
+            f"{args.lang}_rows-{args.ticket_from}_at-{args.train_prompt}_s{args.seed}")
     print(f"{name}: {len(ticket)} rows "
           f"{[tok.decode([t]) for t in ticket[:8]]}...", flush=True)
 
