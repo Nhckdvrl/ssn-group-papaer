@@ -76,3 +76,42 @@ A faithful re-identification is also expensive: the released setup uses large-sc
 ### Anti-resurrection
 
 Do not reopen as `KD teaches procedures but overwrites facts`, `teacher entropy explains reasoning-vs-knowledge`, `why pretraining and mid-training KD differ`, or another hidden-state decomposition unless a new same-quantity result directly violates Switch Distillation's proposed mechanism.
+
+---
+
+## Hook C — Why can deleting task-specific Transformer layers improve accuracy?
+
+**Status:** `DROP / PARENT ALREADY EXPLAINS BOTTLENECK + MATURE DEPTH-REDUNDANCY OWNERS`
+
+### Origin
+
+Naim et al., ACL 2026 Findings, *TELL-TALE: Task Efficient LLMs with Task Aware Layer Elimination*, reports that task-aware inference-time deletion of entire Transformer layers can match or improve the original model across 9 tasks and 5 model families while reducing compute. The effect also combines with fine-tuning.
+
+Sources:
+- https://aclanthology.org/2026.findings-acl.1136/
+- https://arxiv.org/abs/2510.22767
+
+### Missing sentence attempted
+
+> If a trained Transformer chose to keep these layers, why does bypassing some of them improve the task rather than merely preserve performance?
+
+This initially looked like a strong `restriction helps performance` mother with an exceptionally cheap causal operation.
+
+### Owner assassination
+
+The natural answer space is already heavily constrained by the mother and nearby work:
+
+- **TELL-TALE itself** does not leave the benefit unexplained: its mutual-information analysis explicitly argues that some selected layers act as bottlenecks that degrade task-relevant information, and deletion removes those bottlenecks.
+- **ShortGPT** already establishes large layer-level redundancy and direct whole-layer removal in LLMs.
+- **The Curse of Depth** (NeurIPS 2025) supplies a causal/theoretical explanation for widespread ineffective deep layers in Pre-LN Transformers via variance growth and increasingly identity-like deep blocks, with a normalization intervention.
+- Earlier early-exit/layer-pruning and layer-wise decoding work already establishes that task-relevant predictions and useful information can peak before the final depth.
+
+A cleaner causal test of TELL-TALE's MI claim could verify whether a winning deletion skips a representation-damaging transformation, but the strongest result would still read as a mechanistic validation/refinement of an explanation the parent already states, inside a mature layer-redundancy literature.
+
+### Strongest reviewer compression
+
+> `ShortGPT: many layers are redundant + Curse of Depth: why deep Pre-LN blocks become ineffective + TELL-TALE: task-selected layers can be detrimental and MI identifies bottlenecks = why deletion helps.`
+
+### Anti-resurrection
+
+Do not reopen as `why does pruning improve accuracy`, `harmful/detrimental layers`, `task-specific bottleneck layers`, `intermediate layer knew the answer before a later layer ruined it`, or another MI/early-exit/logit-lens analysis unless a new stable result contradicts the redundancy/bottleneck account on the same quantity.
