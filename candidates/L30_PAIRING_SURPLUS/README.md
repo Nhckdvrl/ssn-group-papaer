@@ -1,6 +1,6 @@
 # L30 — What Does Pairing Teach?
 
-**Status:** **HOLD — PILOT UNDER-RESOLVED (2026-09-13)** — E01 complete; see `notes/E01_REPORT.md`. Authorization expired: continuing requires re-selection.  
+**Status:** **NO-GO / ARCHIVED (2026-09-13)** — see `notes/ARCHIVE.md`. E01 answered the question it was authorized to answer; the route stops on resolution, instrument validity, and novelty. Do not reopen without the evidence named in ARCHIVE.md section 6.  
 **Date:** 2026-09-13  
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -437,7 +437,7 @@ compute. C2 remains unauthorized.
 | Resolution | **PASS FOR PILOT** |
 | Main growth | **PASS only if a C2-style conditional law survives re-selection** |
 | Resolution (post-E01) | **FAIL for `Delta_pair` — evaluation-limited** |
-| Status | **HOLD — PILOT UNDER-RESOLVED; re-selection required** |
+| Status | **NO-GO / ARCHIVED** |
 
 The one-sentence working identity is:
 

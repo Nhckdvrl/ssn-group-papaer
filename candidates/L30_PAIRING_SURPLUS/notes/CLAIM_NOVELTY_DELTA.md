@@ -1,5 +1,14 @@
 # L30 — Claim Novelty Delta (post-E01)
 
+> **SUPERSEDED 2026-09-13 — verdict was `NO-GO`, see `ARCHIVE.md`.**
+> This file's section 11 recommended PASS. That recommendation was too generous
+> on novelty: the proposed core claim is derivable a priori from the training
+> objective, and both of its candidate conditional laws land in occupied
+> territory. The untuned-baseline measurement taken afterwards (+1.1 pp
+> instruction-level for correct pairing over no training at all, and a base
+> model scoring 0.0% on the families that require terminating) also showed the
+> instrument lacks the dynamic range the plan assumed. Kept for the record.
+
 Written per `RESEARCH_EXECUTION.md` §8. E01's result moved the paper identity, so
 the previous authorization has expired. This is a **selection request, not an
 execution plan**; nothing below has been run.
