@@ -1,5 +1,5 @@
 {
-  "epoch": 1,
+  "epoch": 2,
   "n_prompts": 541,
   "seeds": {
     "P": [
@@ -18,76 +18,90 @@
       2
     ],
     "D_rt": [
-      0
+      0,
+      1,
+      2
     ]
   },
   "per_seed": {
     "P": {
       "0": {
-        "strict_prompt": 20.88724584103512,
-        "loose_prompt": 22.73567467652495,
-        "strict_instruction": 31.894484412470025,
-        "loose_instruction": 34.05275779376499
+        "strict_prompt": 23.475046210720887,
+        "loose_prompt": 25.693160813308687,
+        "strict_instruction": 33.81294964028777,
+        "loose_instruction": 36.45083932853717
       },
       "1": {
-        "strict_prompt": 19.223659889094268,
-        "loose_prompt": 21.811460258780038,
-        "strict_instruction": 31.294964028776977,
-        "loose_instruction": 33.81294964028777
+        "strict_prompt": 21.256931608133087,
+        "loose_prompt": 23.290203327171906,
+        "strict_instruction": 32.73381294964029,
+        "loose_instruction": 34.89208633093525
       },
       "2": {
-        "strict_prompt": 19.963031423290204,
-        "loose_prompt": 23.10536044362292,
-        "strict_instruction": 31.05515587529976,
-        "loose_instruction": 34.2925659472422
+        "strict_prompt": 21.072088724584106,
+        "loose_prompt": 24.76894639556377,
+        "strict_instruction": 32.13429256594724,
+        "loose_instruction": 36.09112709832134
       }
     },
     "S": {
       "0": {
-        "strict_prompt": 6.654343807763401,
-        "loose_prompt": 6.654343807763401,
-        "strict_instruction": 14.748201438848922,
-        "loose_instruction": 14.748201438848922
+        "strict_prompt": 7.024029574861368,
+        "loose_prompt": 7.024029574861368,
+        "strict_instruction": 14.148681055155876,
+        "loose_instruction": 14.028776978417264
       },
       "1": {
-        "strict_prompt": 7.578558225508318,
-        "loose_prompt": 7.578558225508318,
-        "strict_instruction": 15.947242206235012,
-        "loose_instruction": 15.827338129496402
+        "strict_prompt": 9.426987060998151,
+        "loose_prompt": 9.426987060998151,
+        "strict_instruction": 20.38369304556355,
+        "loose_instruction": 20.623501199040767
       },
       "2": {
-        "strict_prompt": 10.536044362292053,
-        "loose_prompt": 10.536044362292053,
-        "strict_instruction": 22.062350119904075,
-        "loose_instruction": 22.18225419664269
+        "strict_prompt": 10.720887245841034,
+        "loose_prompt": 10.720887245841034,
+        "strict_instruction": 22.54196642685851,
+        "loose_instruction": 22.54196642685851
       }
     },
     "D_mask": {
       "0": {
-        "strict_prompt": 16.635859519408502,
-        "loose_prompt": 18.11460258780037,
-        "strict_instruction": 27.697841726618705,
-        "loose_instruction": 29.496402877697843
+        "strict_prompt": 19.038817005545287,
+        "loose_prompt": 20.147874306839185,
+        "strict_instruction": 29.73621103117506,
+        "loose_instruction": 31.05515587529976
       },
       "1": {
-        "strict_prompt": 20.51756007393715,
-        "loose_prompt": 22.181146025878004,
-        "strict_instruction": 31.05515587529976,
-        "loose_instruction": 32.853717026378895
+        "strict_prompt": 21.811460258780038,
+        "loose_prompt": 23.10536044362292,
+        "strict_instruction": 33.093525179856115,
+        "loose_instruction": 35.37170263788969
       },
       "2": {
         "strict_prompt": 17.929759704251385,
         "loose_prompt": 19.223659889094268,
-        "strict_instruction": 29.376498800959233,
-        "loose_instruction": 30.575539568345324
+        "strict_instruction": 27.697841726618705,
+        "loose_instruction": 29.016786570743403
       }
     },
     "D_rt": {
       "0": {
-        "strict_prompt": 16.45101663585952,
-        "loose_prompt": 17.375231053604438,
-        "strict_instruction": 25.77937649880096,
-        "loose_instruction": 27.33812949640288
+        "strict_prompt": 18.853974121996302,
+        "loose_prompt": 20.147874306839185,
+        "strict_instruction": 29.256594724220626,
+        "loose_instruction": 30.935251798561154
+      },
+      "1": {
+        "strict_prompt": 21.256931608133087,
+        "loose_prompt": 22.55083179297597,
+        "strict_instruction": 32.49400479616307,
+        "loose_instruction": 34.412470023980816
+      },
+      "2": {
+        "strict_prompt": 18.484288354898336,
+        "loose_prompt": 19.408502772643253,
+        "strict_instruction": 29.136690647482016,
+        "loose_instruction": 30.335731414868107
       }
     }
   },
@@ -95,87 +109,87 @@
     "strict_prompt": {
       "primary_prompt_and_seed_resampled": {
         "point": {
-          "P": 0.2002464571780653,
-          "S": 0.08256315465187923,
-          "D_mask": 0.1836105976586568,
-          "D_rt": 0.1645101663585952
+          "P": 0.21934688847812692,
+          "S": 0.09057301293900184,
+          "D_mask": 0.19593345656192238,
+          "D_rt": 0.19531731361675908
         },
         "arm_ci": {
           "P": [
-            0.16820702402957485,
-            0.2335181762168823
+            0.18422674060382008,
+            0.2556993222427603
           ],
           "S": [
-            0.05545286506469501,
-            0.11276956253850873
+            0.06284658040665435,
+            0.1201478743068392
           ],
           "D_mask": [
-            0.14910659272951327,
-            0.2199630314232902
+            0.1614294516327788,
+            0.2341343191620456
           ],
           "D_rt": [
-            0.13493530499075784,
-            0.1977818853974122
+            0.1620455945779421,
+            0.23105360443622922
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 11.768330252618608,
+            "point_pp": 12.877387553912506,
             "ci95_pp": [
-              7.640172520024646,
-              15.773259396179915
+              8.56438693776956,
+              17.313616759088106
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 1.6635859519408491,
+            "point_pp": 2.341343191620454,
             "ci95_pp": [
-              -2.033271719038818,
-              5.360443622920519
+              -1.6019716574245224,
+              6.099815157116451
             ],
             "excludes_zero": false
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 10.104744300677758,
+            "point_pp": 10.536044362292053,
             "ci95_pp": [
-              6.038200862600123,
-              14.356130622304375
+              6.40788662969809,
+              14.849044978434994
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 3.5736290819470105,
+            "point_pp": 2.4029574861367835,
             "ci95_pp": [
-              0.3696857670979631,
-              6.839186691312385
+              -1.2322858903265566,
+              5.976586568083797
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 8.194701170671596,
+            "point_pp": 10.474430067775724,
             "ci95_pp": [
-              4.251386321626619,
-              12.076401725200245
+              6.531115218730746,
+              14.602587800369687
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 1.9100431300061615,
+            "point_pp": 0.06161429451632949,
             "ci95_pp": [
-              -0.5545286506469488,
-              4.682686383240911
+              -2.772643253234744,
+              3.142329020332718
             ],
             "excludes_zero": false
           }
@@ -183,89 +197,89 @@
       },
       "secondary_prompt_resampled_only": {
         "point": {
-          "P": 0.2002464571780653,
-          "S": 0.08256315465187923,
-          "D_mask": 0.1836105976586568,
-          "D_rt": 0.1645101663585952
+          "P": 0.21934688847812692,
+          "S": 0.09057301293900184,
+          "D_mask": 0.19593345656192238,
+          "D_rt": 0.19531731361675908
         },
         "arm_ci": {
           "P": [
-            0.1700554528650647,
-            0.23105360443622922
+            0.188539741219963,
+            0.25200246457178066
           ],
           "S": [
-            0.06161429451632779,
-            0.10474430067775724
+            0.0696241528034504,
+            0.11275415896487985
           ],
           "D_mask": [
-            0.15403573629081946,
-            0.21441774491682072
+            0.16697473813924832,
+            0.226124460874923
           ],
           "D_rt": [
-            0.133086876155268,
-            0.19593345656192238
+            0.16697473813924832,
+            0.2255083179297597
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 11.768330252618608,
+            "point_pp": 12.877387553912506,
             "ci95_pp": [
-              8.502772643253232,
-              15.157116451016634
+              9.303758471965496,
+              16.51263093037585
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 1.6635859519408491,
+            "point_pp": 2.341343191620454,
             "ci95_pp": [
-              -1.170671595810227,
-              4.497843499691931
+              -0.5545286506469488,
+              5.29882932840419
             ],
             "excludes_zero": false
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 10.104744300677758,
+            "point_pp": 10.536044362292053,
             "ci95_pp": [
-              7.02402957486137,
-              13.247073321010477
+              7.393715341959335,
+              13.739987677141096
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 3.5736290819470105,
+            "point_pp": 2.4029574861367835,
             "ci95_pp": [
-              0.5545286506469516,
-              6.654343807763402
+              -0.4313000616142926,
+              5.23721503388786
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 8.194701170671596,
+            "point_pp": 10.474430067775724,
             "ci95_pp": [
-              4.929143561306224,
-              11.645101663585951
+              7.455329636475662,
+              13.67837338262477
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 1.9100431300061615,
+            "point_pp": 0.06161429451632949,
             "ci95_pp": [
-              0.18484288354898842,
-              3.5736290819470136
+              -1.2322858903265566,
+              1.2939001848428862
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           }
         }
       }
@@ -273,87 +287,87 @@
     "loose_prompt": {
       "primary_prompt_and_seed_resampled": {
         "point": {
-          "P": 0.2255083179297597,
-          "S": 0.08256315465187923,
-          "D_mask": 0.19839802834257547,
-          "D_rt": 0.17375231053604437
+          "P": 0.24584103512014788,
+          "S": 0.09057301293900184,
+          "D_mask": 0.20825631546518794,
+          "D_rt": 0.20702402957486135
         },
         "arm_ci": {
           "P": [
-            0.1922365988909427,
-            0.25939617991374003
+            0.20948860135551448,
+            0.2821934688847813
           ],
           "S": [
-            0.05545286506469501,
-            0.11460258780036968
+            0.06284658040665435,
+            0.1195317313616759
           ],
           "D_mask": [
-            0.1620455945779421,
-            0.2365988909426987
+            0.1725200246457178,
+            0.24585643869377674
           ],
           "D_rt": [
-            0.1423290203327172,
-            0.20517560073937152
+            0.17252002464571783,
+            0.2421441774491682
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 14.294516327788049,
+            "point_pp": 15.526802218114605,
             "ci95_pp": [
-              10.166358595194087,
-              18.176216882316698
+              11.275415896487981,
+              19.839802834257547
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 2.7110289587184226,
+            "point_pp": 3.7584719654959935,
             "ci95_pp": [
-              -1.0474430067775709,
-              6.4695009242144135
+              -0.24645717806530973,
+              7.641712877387534
             ],
             "excludes_zero": false
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 11.583487369069625,
+            "point_pp": 11.76833025261861,
             "ci95_pp": [
-              7.332101047443006,
-              15.834873690696243
+              7.578558225508318,
+              16.019716574245223
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 5.175600739371533,
+            "point_pp": 3.8817005545286527,
             "ci95_pp": [
-              1.9100431300061644,
-              8.442698706099797
+              0.24645717806530965,
+              7.578558225508317
             ],
             "excludes_zero": true
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 9.118915588416513,
+            "point_pp": 11.645101663585951,
             "ci95_pp": [
-              5.175600739371535,
-              12.877387553912506
+              7.640172520024648,
+              15.588416512630932
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 2.4645717806531104,
+            "point_pp": 0.12322858903265899,
             "ci95_pp": [
-              -0.1232285890326535,
-              5.422057917436845
+              -2.7726432532347522,
+              3.2655576093653718
             ],
             "excludes_zero": false
           }
@@ -361,89 +375,89 @@
       },
       "secondary_prompt_resampled_only": {
         "point": {
-          "P": 0.2255083179297597,
-          "S": 0.08256315465187923,
-          "D_mask": 0.19839802834257547,
-          "D_rt": 0.17375231053604437
+          "P": 0.24584103512014788,
+          "S": 0.09057301293900184,
+          "D_mask": 0.20825631546518794,
+          "D_rt": 0.20702402957486135
         },
         "arm_ci": {
           "P": [
-            0.19470117067159579,
-            0.2581638940234134
+            0.21380160197165743,
+            0.2784966112138016
           ],
           "S": [
-            0.06161429451632779,
-            0.1047597042513861
+            0.06960874922982133,
+            0.11275415896487985
           ],
           "D_mask": [
-            0.16759088108441156,
-            0.22920517560073936
+            0.1780653111521873,
+            0.2390634627233518
           ],
           "D_rt": [
-            0.1423290203327172,
-            0.20517560073937152
+            0.17744916820702403,
+            0.2366142945163276
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 14.294516327788049,
+            "point_pp": 15.526802218114605,
             "ci95_pp": [
-              11.090573012939,
-              17.621688231669747
+              12.076401725200249,
+              19.10043130006161
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 2.7110289587184226,
+            "point_pp": 3.7584719654959935,
             "ci95_pp": [
-              -0.0631546518792389,
-              5.730129390018482
+              0.8626001232285907,
+              6.839186691312382
             ],
-            "excludes_zero": false
+            "excludes_zero": true
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 11.583487369069625,
+            "point_pp": 11.76833025261861,
             "ci95_pp": [
-              8.502772643253236,
-              14.664202094886015
+              8.626001232285887,
+              14.910659272951326
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 5.175600739371533,
+            "point_pp": 3.8817005545286527,
             "ci95_pp": [
-              2.218114602587801,
-              8.381084411583469
+              1.0474430067775735,
+              6.777572396796058
             ],
             "excludes_zero": true
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 9.118915588416513,
+            "point_pp": 11.645101663585951,
             "ci95_pp": [
-              5.791743684534813,
-              12.446087492298213
+              8.626001232285887,
+              14.664202094886015
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 2.4645717806531104,
+            "point_pp": 0.12322858903265899,
             "ci95_pp": [
-              0.7393715341959372,
-              4.251386321626615
+              -1.170671595810227,
+              1.4171287738755367
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           }
         }
       }
@@ -451,177 +465,177 @@
     "strict_instruction": {
       "primary_prompt_and_seed_resampled": {
         "point": {
-          "P": 0.3141486810551559,
-          "S": 0.17585931254996,
-          "D_mask": 0.29376498800959233,
-          "D_rt": 0.2577937649880096
+          "P": 0.3289368505195844,
+          "S": 0.19024780175859313,
+          "D_mask": 0.3017585931254996,
+          "D_rt": 0.30295763389288566
         },
         "arm_ci": {
           "P": [
-            0.2857142857142857,
-            0.34298439050130897
+            0.298159509202454,
+            0.35842753462740184
           ],
           "S": [
-            0.13691912520600757,
-            0.22100797531726615
+            0.1431463844530346,
+            0.233217503810917
           ],
           "D_mask": [
-            0.262301424668228,
-            0.32655542835718065
+            0.2638549957405379,
+            0.34040067948974373
           ],
           "D_rt": [
-            0.2292190687878806,
-            0.288056689956839
+            0.26974723538704587,
+            0.33682190871144363
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 13.828936850519591,
+            "point_pp": 13.868904876099124,
             "ci95_pp": [
-              8.669815602713465,
-              18.608439057319277
+              8.659973604826543,
+              19.23963817769848
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 2.038369304556359,
+            "point_pp": 2.7178257394084806,
             "ci95_pp": [
-              -1.2274953055593956,
-              5.271507001763821
+              -1.37167644959927,
+              6.508898944193062
             ],
             "excludes_zero": false
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 11.790567545963231,
+            "point_pp": 11.151079136690644,
             "ci95_pp": [
-              6.600543446570804,
-              16.64661050942639
+              5.722088835534214,
+              17.030042148686217
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 5.635491606714632,
+            "point_pp": 2.5979216626698722,
             "ci95_pp": [
-              2.673104631400655,
-              8.561236623067781
+              -0.7264363290157235,
+              5.990344643600523
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 8.193445243804959,
+            "point_pp": 11.270983213429254,
             "ci95_pp": [
-              3.080430271127357,
-              12.88888888888889
+              5.99364389280592,
+              16.768448211587895
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 3.597122302158273,
+            "point_pp": -0.11990407673860837,
             "ci95_pp": [
-              1.166005873935991,
-              6.257838695921393
+              -3.585847234708486,
+              3.4986930921186965
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           }
         }
       },
       "secondary_prompt_resampled_only": {
         "point": {
-          "P": 0.3141486810551559,
-          "S": 0.17585931254996,
-          "D_mask": 0.29376498800959233,
-          "D_rt": 0.2577937649880096
+          "P": 0.3289368505195844,
+          "S": 0.19024780175859313,
+          "D_mask": 0.3017585931254996,
+          "D_rt": 0.30295763389288566
         },
         "arm_ci": {
           "P": [
-            0.2867298578199052,
-            0.34119543318911044
+            0.3015091315787007,
+            0.3569106665886803
           ],
           "S": [
-            0.15317460317460319,
-            0.19888623707239458
+            0.1678861788617886,
+            0.21306334272060082
           ],
           "D_mask": [
-            0.2662742127153892,
-            0.32127097049234327
+            0.27486769094885,
+            0.3293886767291022
           ],
           "D_rt": [
-            0.2283369863287896,
-            0.28724704461584305
+            0.2763255667073991,
+            0.3305017039325292
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 13.828936850519591,
+            "point_pp": 13.868904876099124,
             "ci95_pp": [
-              10.591432650980666,
-              17.08686001476403
+              10.50719148001756,
+              17.264752791068577
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 2.038369304556359,
+            "point_pp": 2.7178257394084806,
             "ci95_pp": [
-              -0.586906302360687,
-              4.627384491736885
+              0.1179245283018826,
+              5.277827029156819
             ],
-            "excludes_zero": false
+            "excludes_zero": true
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 11.790567545963231,
+            "point_pp": 11.151079136690644,
             "ci95_pp": [
-              8.873039339261068,
-              14.753467843631778
+              8.201364279463352,
+              14.17941248491294
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 5.635491606714632,
+            "point_pp": 2.5979216626698722,
             "ci95_pp": [
-              2.827558741537234,
-              8.470654064983302
+              0.11792452830188815,
+              5.069186866983876
             ],
             "excludes_zero": true
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 8.193445243804959,
+            "point_pp": 11.270983213429254,
             "ci95_pp": [
-              4.953782505263236,
-              11.441072653021019
+              8.313010085634545,
+              14.285714285714283
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 3.597122302158273,
+            "point_pp": -0.11990407673860837,
             "ci95_pp": [
-              1.7938861025344432,
-              5.421009296702387
+              -1.3460015835312702,
+              1.0804588347505881
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           }
         }
       }
@@ -629,177 +643,177 @@
     "loose_instruction": {
       "primary_prompt_and_seed_resampled": {
         "point": {
-          "P": 0.3405275779376498,
-          "S": 0.17585931254996004,
-          "D_mask": 0.3097521982414069,
-          "D_rt": 0.2733812949640288
+          "P": 0.3581135091926459,
+          "S": 0.1906474820143885,
+          "D_mask": 0.3181454836131095,
+          "D_rt": 0.31894484412470026
         },
         "arm_ci": {
           "P": [
-            0.3113324016194365,
-            0.3697854964054273
+            0.32769044740024184,
+            0.38837345260809847
           ],
           "S": [
-            0.1360060513652215,
-            0.22249108054340305
+            0.14030913165784756,
+            0.23498705452702673
           ],
           "D_mask": [
-            0.2766746327963337,
-            0.3441770338289224
+            0.27765043906159886,
+            0.3604281063105407
           ],
           "D_rt": [
-            0.24314060666624654,
-            0.30382890971651005
+            0.2843334179344391,
+            0.3550297675297675
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 16.466826538768977,
+            "point_pp": 16.74660271782574,
             "ci95_pp": [
-              11.450891369353329,
-              21.19722179257721
+              11.447902640965683,
+              22.416075370486915
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 3.077537969624294,
+            "point_pp": 3.996802557953638,
             "ci95_pp": [
-              -0.2742114807588526,
-              6.313756053980342
+              -0.2342334629490469,
+              8.101599836252513
             ],
             "excludes_zero": false
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 13.389288569144684,
+            "point_pp": 12.749800159872102,
             "ci95_pp": [
-              8.161369139335237,
-              18.229376197318008
+              6.950984989309979,
+              18.978801699959096
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 6.714628297362102,
+            "point_pp": 3.9168665067945643,
             "ci95_pp": [
-              3.681931056794048,
-              9.771476101330832
+              0.2377630516231826,
+              7.519166172410074
             ],
             "excludes_zero": true
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 9.752198241406877,
+            "point_pp": 12.829736211031175,
             "ci95_pp": [
-              4.572098475967179,
-              14.375263373820967
+              7.487015028610953,
+              18.65271143949757
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 3.6370903277378073,
+            "point_pp": -0.0799360511590741,
             "ci95_pp": [
-              1.328498655404552,
-              6.347352913221177
+              -3.905984438351031,
+              3.9433145903315343
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           }
         }
       },
       "secondary_prompt_resampled_only": {
         "point": {
-          "P": 0.3405275779376498,
-          "S": 0.17585931254996004,
-          "D_mask": 0.3097521982414069,
-          "D_rt": 0.2733812949640288
+          "P": 0.3581135091926459,
+          "S": 0.1906474820143885,
+          "D_mask": 0.3181454836131095,
+          "D_rt": 0.31894484412470026
         },
         "arm_ci": {
           "P": [
-            0.3128752706158805,
-            0.36961771835078244
+            0.329643068933772,
+            0.38652093302521817
           ],
           "S": [
-            0.15387736133500723,
-            0.19860769860769864
+            0.16850265197878414,
+            0.21309556120397494
           ],
           "D_mask": [
-            0.28167806989973304,
-            0.33842568178871757
+            0.29025730529044425,
+            0.34586776122893687
           ],
           "D_rt": [
-            0.2437574316290131,
-            0.30382890971651005
+            0.2916654368358914,
+            0.34690021357380163
           ]
         },
         "contrasts": {
           "Delta_corr": {
             "arms": "P - S",
             "meaning": "same-marginal value of correct vs wrong correspondence",
-            "point_pp": 16.466826538768977,
+            "point_pp": 16.74660271782574,
             "ci95_pp": [
-              13.421967762596681,
-              19.672817517035472
+              13.442687229955064,
+              20.040820385961858
             ],
             "excludes_zero": true
           },
           "Delta_pair": {
             "arms": "P - D_mask",
             "meaning": "correct correspondence vs no correspondence",
-            "point_pp": 3.077537969624294,
+            "point_pp": 3.996802557953638,
             "ci95_pp": [
-              0.4019710600006738,
-              5.751208392989932
+              1.3171303053820975,
+              6.682769726247989
             ],
             "excludes_zero": true
           },
           "Delta_wrong": {
             "arms": "D_mask - S",
             "meaning": "wrong correspondence vs no correspondence",
-            "point_pp": 13.389288569144684,
+            "point_pp": 12.749800159872102,
             "ci95_pp": [
-              10.458904225447409,
-              16.419305936617754
+              9.752028925785387,
+              15.761333005703735
             ],
             "excludes_zero": true
           },
           "Delta_pair_rt": {
             "arms": "P - D_rt",
             "meaning": "correct correspondence vs Response Tuning",
-            "point_pp": 6.714628297362102,
+            "point_pp": 3.9168665067945643,
             "ci95_pp": [
-              3.80465290955092,
-              9.631436731286195
+              1.31040131040131,
+              6.524359632251811
             ],
             "excludes_zero": true
           },
           "Delta_wrong_rt": {
             "arms": "D_rt - S",
             "meaning": "wrong correspondence vs Response Tuning",
-            "point_pp": 9.752198241406877,
+            "point_pp": 12.829736211031175,
             "ci95_pp": [
-              6.525348382189181,
-              12.981257817956152
+              9.921545284780583,
+              15.791666666666664
             ],
             "excludes_zero": true
           },
           "construct_D": {
             "arms": "D_mask - D_rt",
             "meaning": "construct check: budget-matched vs RT",
-            "point_pp": 3.6370903277378073,
+            "point_pp": -0.0799360511590741,
             "ci95_pp": [
-              1.902371072136973,
-              5.401156900552303
+              -1.2789768185451633,
+              1.116427432216899
             ],
-            "excludes_zero": true
+            "excludes_zero": false
           }
         }
       }
