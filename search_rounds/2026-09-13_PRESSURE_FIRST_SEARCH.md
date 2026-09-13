@@ -128,3 +128,31 @@ Thus the strongest likely conclusion of a same-rollout RL-vs-CE experiment — *
 ### Anti-resurrection
 
 Do not reopen as `RL vs SFT update sparsity`, `same rollout policy gradient vs CE`, or `why RL only tunes a subnetwork` without a qualitatively different quantity not predicted by current on-policy evidence.
+
+---
+
+## Hook P5 — Does architecture-invariant loss-to-loss scaling survive post-training?
+
+**Status:** `DROP / LAW ALREADY FRACTURED + DIRECT POST-TRAINING ARCHITECTURE EVIDENCE`
+
+### Pressure
+
+ICML 2025 *LLMs on the Line* reports a striking pretraining-era law: when pretraining data are controlled, loss-to-loss scaling is driven mainly by the data, while tokenizer, optimizer and even substantial architecture differences such as Llama/Transformer versus Mamba have limited impact on the scaling trend. This invites a modern-regime question:
+
+> **If architectures reach comparable pretrained loss under controlled data, does applying the same instruction/post-training preserve that architecture invariance, or does post-training expose architecture-specific learnability?**
+
+The route initially looked feasible because NVIDIA released controlled 8B Mamba-2 and Transformer models trained on the same data and hyperparameters for roughly 3.5T tokens.
+
+### Why it dies
+
+The broad law is already too fractured to make the post-training extension a clean new parent. April-2026 *Nexus* demonstrates that models can reach essentially the same pretraining loss yet differ substantially in downstream generalization because optimizer-induced solution geometry differs, so equal loss is not itself a strong common-state guarantee. More directly, an ICLR-2025 study instruction-tunes Mamba/Mamba-2 and Transformer families under a common recipe and reports that instruction tuning changes their ICL behavior and can move Mamba-2 past Transformer baselines. Hybrid/SSM post-training work likewise already treats architecture-specific adaptation as an empirical object.
+
+Therefore the strongest plausible positive result — post-training breaks the apparent architecture invariance observed in base-model loss scaling — is no longer surprising enough or uniquely attributable. The project would mostly fit another quantitative curve through a phenomenon already expected from known architecture-specific ICL/copying behavior plus evidence that same pretraining loss can hide distinct solutions.
+
+### Reviewer compression
+
+> `LLMs on the Line: architecture has limited effect on pretraining loss-to-loss scaling + Nexus: same pretraining loss need not imply same downstream solution + controlled Mamba/Transformer instruction tuning already changes relative ICL behavior = post-training architecture invariance can break.`
+
+### Anti-resurrection
+
+Do not reopen as `same pretraining loss, different SFT response`, `does post-training break loss-to-loss architecture invariance`, or a Mamba-vs-Transformer SFT scaling sweep unless a new same-quantity law supplies a sharper prediction than generic architecture-specific post-training behavior.
