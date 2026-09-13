@@ -30,7 +30,8 @@ from common import ROOT, load_backbone  # noqa: E402
 
 def build_pool(tok, lang, head, tail, n, seed, max_len=512):
     from datasets import load_dataset
-    cfg = {"ca": "ca-en", "es": "en-es", "de": "de-en"}[lang]
+    from langs import LANG
+    cfg = LANG[lang]["opus"]
     ds = load_dataset("Helsinki-NLP/opus-100", cfg, split="train")
     rng = random.Random(seed)
     order = list(range(len(ds)))
