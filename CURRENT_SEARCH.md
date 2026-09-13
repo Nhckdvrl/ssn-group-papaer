@@ -2,8 +2,8 @@
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Phase:** **continued mechanism-first search + one new bounded L30 pilot + existing projects under their own gates**  
-**Killed ledger:** authoritative file currently contains through **K184**. Compact kills **K185–K189** are pending ledger maintenance; **K190 is reserved for L29** and its complete postmortem is `candidates/L29_COT_CONTROL_GAIN/notes/POSTMORTEM.md`. Do not reuse K185–K190.
+**Phase:** **open mechanism-first search — no approved mainline, no active pilot** (L30 archived 2026-09-13; L29 killed)  
+**Killed ledger:** authoritative file currently contains through **K184**. Compact kills **K185–K189** are recorded in `search_rounds/2026-09-12_CONTINUED_SEARCH_VII.md` and are pending ledger maintenance; **K190 is reserved for L29** and its complete postmortem is `candidates/L29_COT_CONTROL_GAIN/notes/POSTMORTEM.md`. Do not reuse K185–K190.
 
 ## Current search preference
 
@@ -43,34 +43,48 @@ No survivor quota. Zero survivors is valid.
 
 ## L30 — What Does Pairing Teach?
 
-**Status:** `PILOT-AUTHORIZED — E01 ONLY`
+**Status:** `NO-GO / ARCHIVED (2026-09-13)`
 
-Package: `candidates/L30_PAIRING_SURPLUS/`  
-Selection record: `search_rounds/2026-09-13_PAIRING_SURPLUS_SELECTION.md`
+Package: `candidates/L30_PAIRING_SURPLUS/` (see `notes/ARCHIVE.md`)
 
-> **If pretrained language models can become substantially instruction-following from responses alone, what additional behavior is actually learned from the correct correspondence between an instruction and its response?**
+E01 ran as pre-registered — 12 matched runs, 4 arms x 3 seeds, Gemma-2-2B +
+Alpaca-Cleaned, IFEval with the official verifier, prompt-clustered intervals —
+and returned a trustworthy answer. The route stops for three independent reasons:
 
-The central quantity is **pairing surplus**: the marginal causal value of the joint `X↔Y` correspondence after holding the prompt and response marginals fixed.
+1. **Resolution.** `Delta_pair = P - D_mask = +1.85 pp [-1.79, +5.42]`, and the
+   width is evaluation-limited (~6 of 7.6 pp from the 541-prompt sample, ~1.6 pp
+   from seeds). The untuned baseline explains why there is no headroom: 52k
+   Alpaca pairs buy **+1.1 pp instruction-level** over no training at all.
+2. **Instrument validity.** Aggregate IFEval at 2B mixes instruction following
+   with termination. The base model scores 32.85% instruction-level while never
+   stopping (median 4018 chars), takes **0.0%** on `language` and `startend` —
+   the families that require obeying and stopping — and *beats* the tuned model
+   on `punctuation` (50.0 vs 21.2), which verbose text satisfies incidentally.
+3. **Novelty.** The surviving phenomenon (wrong correspondence collapses the
+   policy, absent correspondence does not) is derivable a priori from the
+   training objective; the budget-matched control makes it clean, not surprising.
+   Its two candidate conditional laws are both occupied (MAIN/FedDQC intuition;
+   data-poisoning threshold effects). `INSUFFICIENT CONTRIBUTION`.
 
-Strong mother evidence comes from response-only tuning / inherent instructability, WIT prompt-side supervision, and low-complexity post-training access to pretrained abilities. Broad instruction-response alignment is **not** the novelty: MAIN, FedDQC, Hindsight Instruction Relabeling, and related work already own that parent.
+**Reusable, validated:** matched P/S/D_mask/D_rt trainer with a zero-leakage
+custom attention mask and its construct-validity suite, greedy IFEval with the
+vendored Google Research verifier, prompt-clustered seed-resampled bootstrap,
+multi-node evaluation scripts, the frozen 51,758-pair pool, and 31 evaluation
+runs.
 
-The missing inference is narrower and causal:
+**Durable lessons:**
+- "RT" is not a well-defined correspondence-free control — Hewitt et al. empty
+  the instruction string but keep the `<|user|>` scaffolding while An et al. drop
+  the user turn; against a budget-matched control the two differ by +1.91 pp
+  [-1.66, +5.42]. Serialisation sits inside any quoted IT−RT gap.
+- IFEval aggregate scores for non-terminating base models are not comparable to
+  those of tuned models. Check per-constraint-family accuracy before using the
+  aggregate as a mother phenomenon.
+- Prior "input-output mapping matters little" results (Min et al.; Kung & Peng)
+  all corrupt **demonstrations**, never the supervised pair. The gap is real but
+  is not worth a Main paper on its own.
 
-> **Holding the same prompt pool and response pool fixed, what changes because each response is paired with its correct instruction rather than no usable correspondence or a wrong correspondence?**
-
-E01 uses the conceptual P/D/S decomposition:
-
-- **P — Paired:** correct `x_i → y_i` correspondence;
-- **D — Decoupled:** remove usable pair dependence while preserving the relevant response-marginal/budget controls;
-- **S — Shuffled:** same prompt and response pools, wrong correspondence.
-
-Primary quantities are `P-D`, `D-S`, and especially the same-marginal `P-S` contrast. A conventional response-only arm may be used only to validate that D is not an attention/position artifact.
-
-Preferred pilot regime is Gemma-2-2B + Alpaca-Cleaned with deterministic IFEval-style evaluation, prompt-clustered uncertainty, and multiple training seeds, subject to exact source compatibility checks before execution.
-
-**Hard scope gate:** E01/C1 is only identification. A result like “shuffling drops IFEval by N points” is not enough for Main because prior work already owns broad alignment importance. The promising paper-scale path is a later conditional law asking whether the pretrained model's existing `X→Y` association predicts where paired supervision has marginal value. That C2 requires re-selection and is not authorized yet.
-
-**Resolution rule:** a noisy near-null is HOLD, not evidence that pairing is irrelevant. If the pilot can only bound the effect loosely enough to allow a meaningful ~3–4 pp surplus, stop rather than narratively rescuing the claim.
+Do not reopen without the evidence named in `ARCHIVE.md` §6.
 
 ## L17 — What Does a Speech LLM Learn About a Speaker?
 
