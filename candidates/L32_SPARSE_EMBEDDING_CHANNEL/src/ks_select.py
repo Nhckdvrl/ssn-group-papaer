@@ -140,6 +140,11 @@ def main():
         "top100": [{"id": i, "tok": tok.decode([i]), "p": pv[i], "ks": ks[i],
                     "shift": float(shift[i])} for i in order[:100]],
         "n_p_below_005": int(sum(p < 0.05 for p in pv)),
+        # Full per-row statistics. The KS p-value is only informative for a
+        # handful of rows (everything else sits at p~1), so any ranking beyond
+        # that is noise unless it uses a continuous quantity -- keep ks and the
+        # row-shift norm for all rows so the ranking choice can be varied.
+        "ks_all": ks, "shift_all": [float(x) for x in shift],
     }
     p = ROOT / "results" / f"ks_select_{args.tag}.json"
     p.write_text(json.dumps(out, ensure_ascii=False, indent=2))

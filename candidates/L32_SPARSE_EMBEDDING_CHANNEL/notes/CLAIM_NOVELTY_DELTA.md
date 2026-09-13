@@ -93,7 +93,21 @@ respect to an unreported prompt, and the parent's central interpretation — and
 its cross-language evidence — collapses. That is a Main-level claim about a
 method class, not a complaint about a number.
 
-## 8. Status
+## 8. Status — UPDATED after the probe ran
+
+> **The §7 probe has run. Result in `notes/TICKET_SELECTION_PROBE.md`.**
+> The pre-declared kill condition below was **mis-specified** (no noise floor,
+> and language confounded with training data) and by its letter it fires while
+> by its intent it does not. The probe is therefore **exploratory, not
+> confirmatory**, and §9's recommendation is revised accordingly: PASS to a
+> *properly pre-registered* rerun (probe §6), not to a paper.
+>
+> Headline from the probe, at the parent's own ticket size k=18, against a
+> seed noise floor of 18/18: rewording the prompt leaves 10/18, and switching
+> language leaves 10/18. 13-15 of every top-18 are that condition's own
+> template tokens.
+
+### Original status text
 
 Running now as the decisive test (4 selection runs: ca/explicit, ca/paraphrase,
 es/explicit, de/explicit — full embedding tuning at the parent's 2e-5 / 3 epochs,
@@ -112,6 +126,11 @@ Findings-level correction or archived.
 `PASS` to a bounded C2 built on §7, or `NO-GO` if the whole line is judged too
 close to a replication note to survive review even with the localization result.
 
-**Recommendation: conditional PASS** — PASS if the §7 dissociation holds, and
-Findings-or-archive if it does not. Stated plainly so it is not the L30 mistake
-again: **without §7 this is not a Main paper, and I would not argue for one.**
+**Recommendation (revised after the probe): PASS to one bounded, pre-registered
+selection round** as specified in `TICKET_SELECTION_PROBE.md` §6 (~15 runs,
+under a GPU-day), and only then a paper decision.
+
+Stated plainly so it is not the L30 mistake again: **E01 alone is a
+Findings-level correction, the selection-side leg is currently exploratory with
+a pre-registration I got wrong, and I am not claiming Main-level on what exists
+today.**
