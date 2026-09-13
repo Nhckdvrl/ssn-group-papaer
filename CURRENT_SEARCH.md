@@ -131,6 +131,19 @@ translate?* Layers were sequentially gated.
 **Verdict: `HOLD / Findings`. Not promoted to Main candidate.** Converged rather
 than reconstructed, per the standing instruction for an E02 that does not pass.
 
+**E03 (authorized separately, preregistered, `notes/E03_REPORT.md`): one row is
+sufficient.** Tuning a **single embedding row — 4,096 parameters** reproduces
+**0.96–1.00** of the 18-row certified ticket's effect, in 8/8 runs across two
+languages, two seeds, and both tested rows (`<s>` and `\n`). In en→es the
+newline row alone slightly exceeds the full ticket. 18 count-matched random
+non-template rows reach only 0.40–0.59, so this is not "any few rows will do".
+What the single row buys is still termination: first-line Δ is +0.47 to +1.23
+against a raw Δ of +22 to +29, at EOS rate 1.00. Token 13 (`\n`) is a member of
+**all six** of the parent's published tickets and sits in the instruction span —
+exactly where E01's gating found recovery 1.00 against −0.00 from the source.
+E02's verdict is unchanged by this; E03 only fixes what the Findings paper can
+say about the functional core.
+
 **Additional durable lessons from E02:**
 
 - **Lock every extraction rule and metric before running, and report all of
