@@ -1,6 +1,6 @@
 # L32 — Where Do 18 Embeddings Work?
 
-**Status:** `PILOT-AUTHORIZED — E01 ONLY`  
+**Status:** `E01 COMPLETE — gate passed, claim mutated. Awaiting Selection on notes/CLAIM_NOVELTY_DELTA.md`  
 **Date:** 2026-09-13  
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -84,3 +84,46 @@ Do not yet do:
 Full Selection record:
 
 `search_rounds/2026-09-13_SPARSE_EMBEDDING_CHANNEL_SELECTION.md`
+
+
+---
+
+## E01 outcome (2026-09-13)
+
+Gate `spBLEU(ALL) - spBLEU(BASE) >= +15`: **PASSED** at **+29.50**
+[+28.59, +30.46], 3 seeds, Flores-101 devtest, reproducing the parent's en->ca
+phenomenon. Full report: `notes/E01_REPORT.md`.
+
+The channel question is answered decisively, and the answer rejects three of
+Selection's four accounts:
+
+| channel | recovery of the gain | 95% CI |
+|---|---|---|
+| INSTRUCTION | **1.00** | [0.98, 1.02] |
+| SOURCE | **-0.00** | [-0.01, 0.01] |
+| TARGET feedback | 0.05 | [-0.01, 0.09] |
+
+Source occurrences are *more* frequent than instruction ones (7.73 vs 7.00 per
+sentence) and recover nothing, so this is not an opportunity effect. A
+norm-matched random delta on the same rows scores 0.05 spBLEU, and the gain does
+not survive paraphrasing the instruction (+3.19 vs +29.18).
+
+Two findings changed the paper identity:
+
+1. **94% of the reproduced effect is termination, not translation.** Scoring
+   only the first line of the continuation, the untuned model is at 33.99 and
+   the tuned model at 35.71 -- `Delta_ALL` falls from +29.50 to +1.72
+   [+1.03, +2.42]. The base model already translates and then does not stop.
+   The pre-registered audit found base spBLEU spans **0.31-33.78** on this task
+   as a function of prompt and post-processing alone.
+2. **The ticket is a template key, not a capability locus.**
+
+A follow-up probe of the selection procedure itself
+(`notes/TICKET_SELECTION_PROBE.md`) is logged **EXPLORATORY**: its pre-declared
+condition was mis-specified. At the parent's ticket size k=18, against a seed
+noise floor of 18/18, rewording the prompt leaves 10/18 and switching language
+leaves 10/18.
+
+**Verdict:** E01 alone is a Findings-level correction. The Main-level path is
+open but unproven and needs one pre-registered selection round
+(`TICKET_SELECTION_PROBE.md` §6, under a GPU-day). C2 remains unauthorised.
