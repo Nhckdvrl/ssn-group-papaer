@@ -1,12 +1,24 @@
 # L08 — Readout-Dimension / Compression Evaluation Route
 
-**Status:** **REOPEN — SERIOUS / PAPER-LEVEL SELECTION PASS — 2026-09-13**  
-**Former status:** ARCHIVED / NO-GO — 2026-09-11  
+**Status:** **REOPEN — SERIOUS / IDENTITY RECONSTRUCTED / E12 AUTHORIZED — 2026-09-14**  
+**Former status:** REOPEN — SERIOUS (2026-09-13); ARCHIVED / NO-GO (2026-09-11)  
 **Target:** ACL / EMNLP / NAACL Main
 
-Fresh Selection: [`FRESH_SELECTION_2026-09-13.md`](FRESH_SELECTION_2026-09-13.md)
+Current verdict: [`SELECTION_2026-09-14.md`](SELECTION_2026-09-14.md)
+Current identity: [`MAINLINE.md`](MAINLINE.md)
+Why it changed: [`AUDIT_2026-09-14_DEPTH_CONFOUND.md`](AUDIT_2026-09-14_DEPTH_CONFOUND.md)
+Authorized experiment: [`E12_PREREGISTRATION.md`](E12_PREREGISTRATION.md)
+Superseded: [`FRESH_SELECTION_2026-09-13.md`](FRESH_SELECTION_2026-09-13.md), [`MAINLINE_2026-09-10_SUPERSEDED.md`](MAINLINE_2026-09-10_SUPERSEDED.md)
 
-> **Important:** this reopening restores L08 only to paper-level serious consideration. It does **not** reactivate the historical E-series or authorize new compute. Any new confirmatory experiment requires a separate bounded authorization under the current workflow.
+> **What the 2026-09-14 pass found.** The 2026-09-13 reopening made the
+> intervention-locus sign boundary (`C3.2`) load-bearing. Re-deriving it from the raw
+> runs before spending compute showed it is **not identified by its own design**: the
+> "controlled" contrast does not match answer depth, and the severity control that
+> excluded "pruning simply hits harder" goes null once it does. `C3.2` is demoted.
+> The variation it was matching away is the finding — retention decays with answer
+> depth only when the answer is carried by the model's own generated prefix, in 14 of
+> 15 conditions against 1 of 15, with 0 crossings. That law is now `C2`, and E12 is
+> authorized to test it with provenance manipulated within item.
 
 ## Why the old archive no longer blocks Selection
 
@@ -18,11 +30,11 @@ The surviving paper identity is not `which embedding dimensions matter?` and not
 
 The current RQ is:
 
-> **When compression appears to damage one language-model capability more than another, is that selectivity intrinsic to the damaged computation, or can it be created by the readout protocol and output depth used to measure the capability?**
+> **When compression appears to damage one capability more than another, is the ordering a property of the capability — or of where the answer comes from at the moment it is emitted: recoverable from the prompt, or carried by the model's own generated prefix?**
 
-The strongest inherited evidence uses the same underlying content and shows that the apparent damage changes sharply as readout protocol / generation depth changes. Under matched protocol and length, the direction of capability selectivity further differs between intervention families that damage parameterized computation and interventions that primarily damage the readout/expression channel.
+The inherited evidence holds the item, the model, the intervention and the protocol fixed and varies only how deep into the generated trajectory the answer sits. Retention falls with that depth when the answer exists only in the tokens the model has already emitted, and does not fall at all when the answer stays readable from the prompt — 14 of 15 conditions against 1 of 15, five model families, three intervention families, zero crossings.
 
-Fresh 2026 ownership removes some historical claims but leaves this matched estimand rewrite and intervention-family boundary plausibly independent. See the fresh Selection file for the full owner/reviewer-compression audit.
+`evaluation protocol matters` is fully owned (Wen et al. 2026; Song et al., ICASSP 2026) and is claimed nowhere here. The live target is UniComp (EMNLP 2026 Main), whose `knowledge bias` headline compares a multiple-choice knowledge set against a free-form CoT reasoning set with no length control, and whose own unexplained GPQA-Diamond anomaly is this law's prediction. See `RELATED_WORK_AND_NOVELTY.md` §0 for the full owner audit.
 
 ## Preserved assets
 
@@ -30,4 +42,6 @@ All historical code, configs, experiment logs, results, audits, claims, and `MAI
 
 Historical results are **not retroactively declared confirmatory** by this status change.
 
-**No new experiment is currently authorized from this package.**
+**Authorized compute:** E12 only, under `E12_PREREGISTRATION.md`. Local environment
+(`/home/xiang/miniconda3/envs/verl-clean/bin/python`), idle cards on
+`fvcrc10/11/12/13/15`, **at most four cards at a time**.

@@ -1,261 +1,146 @@
-# L08 — Current Mainline (reconstructed 2026-09-10, after E01-E09)
+# L08 — Current Mainline (reconstructed 2026-09-14, after the depth re-audit)
 
-**Supersedes** the framing in `README.md` §2-§4. `README.md` is kept as the record of
-how the project got here; this file is what the project is now.
+**Supersedes** `MAINLINE_2026-09-10_SUPERSEDED.md`, which is kept as the record of the
+previous identity. The reconstruction was forced by
+[`AUDIT_2026-09-14_DEPTH_CONFOUND.md`](AUDIT_2026-09-14_DEPTH_CONFOUND.md), which
+showed the previous load-bearing claim was not identified by its own design.
 
 ---
 
-## 1. The reconstruction, and why it happened
+## 1. What changed, and why
 
-L08 began as "why does readout truncation preserve knowledge but destroy reasoning?"
-`PARENT_AUDIT.md` showed that question presupposes its answer, so C1 became "on which
-axis does the bottleneck live?" — and the factorial answered it (protocol and length,
-not capability).
+The 2026-09-13 reopening made `C3.2` load-bearing: at matched protocol and length,
+readout-locus interventions make reasoning look robust while parameter-locus
+interventions make it look fragile, with no crossing in fifteen conditions.
 
-We then spent five experiments hunting the mechanism behind the surviving phenomenon.
-All five candidate mechanisms are **causally rejected**, each with its own control:
+Re-deriving that from the raw runs before spending compute showed the design does not
+support it. The "matched length" contrast matches the *existence* of a chain, not the
+**answer depth** — how many decoding steps the model takes under the intervention
+before emitting the answer. That differs by 1.7-3.4x between the two cells, in the
+same direction in all five models, and E07 had already established that the damage is
+positional in exactly this quantity.
 
-| account | test | verdict |
-|---|---|---|
-| a fixed vocabulary prior is installed | E03b, vs a norm-matched random vector | rejected |
-| extreme-value competition over ~150k tokens | E04, survival vs candidate-set size | rejected — flat beyond K≈8 |
-| capture by repetition attractors | E05, `no_repeat_ngram` removes the attractor | rejected — degeneration 0.87→0.006, accuracy 0.109→0.089 |
-| per-step prediction is badly damaged | E04, top-1 agreement | rejected — 0.62–0.92 |
-| structural/control tokens are selectively demoted | E09, class × margin stratification | rejected — does not replicate across models |
+Depth-matched, the readout half loses most of its significance (7 of 10 conditions
+significantly `< 1` becomes 2 of 8) and — decisively — the severity control fails:
+`prune0p25`, the single condition that ruled out "pruning simply hits harder", goes
+from 1.34 [1.19, 1.50] to **1.24 [0.96, 1.47], null**. Severity is no longer excluded.
 
-Two partial contributors are quantified and survive: a monotone margin law (E06) and
-an emission/termination failure worth about a third of the gap (E08). Neither is a
-mechanism a paper can be built on.
-
-**Conclusion drawn honestly:** the damage this intervention does is *diffuse*. There
-is no single mechanism to find, and continuing to look is sunk cost. The contribution
-is not the mechanism. It is what the mechanism hunt incidentally proved about how the
-field measures.
+But the discarded variation turned out to be the finding.
 
 ## 2. The claim
 
-> **Controlling evaluation protocol *and output length* removes most or all of the
-> evidence for capability-selective compression damage. What survives the controls
-> separates interventions that damage a model's computation from interventions that
-> damage only its ability to express that computation.**
+> **What compression damages under free generation is not a capability. It is the part
+> of the answer that the model must carry through its own generated prefix.**
+>
+> Retention decays with answer depth when the answer is *trajectory-carried* — it
+> exists only in the tokens the model has already emitted — and does not decay at all
+> when the answer stays *prompt-recoverable* at the moment of emission. The
+> knowledge-versus-reasoning ordering the compression literature reports is, to first
+> order, this provenance ordering, because knowledge benchmarks are scored on
+> prompt-recoverable answers and reasoning benchmarks on trajectory-carried ones.
 
-This is a claim about **capability attribution** — which capability a compression
-method is said to have damaged — not about whether benchmarks overstate a compressed
-model's usability. That second sentence is already prior work (§3.1) and we do not
-claim it.
+Stated as an estimand: an apparent capability-fragility ordering is not identified by a
+cross-benchmark compression comparison, because
 
-### The core observation, on four model families
+```
+observed selectivity = f(answer provenance, answer depth, intervention, capability)
+```
 
-Relative performance under readout truncation. `mmlu_rank` and `mmlu_gen_cot` use the
-**same MMLU items**; only the rule for reading the answer out of the model differs.
+and in the comparisons the field runs, the first two vary with the fourth by
+construction. Capability label alone does not define fragility.
 
-| model | mask | `mmlu_rank` | `mmlu_gen_cot` | ratio |
-|---|---|---|---|---|
-| Llama 3.1 8B Instruct | first | 0.889 | **0.030** | 30x |
-| Llama 3.1 8B Instruct | last | 0.914 | **0.161** | 5.7x |
-| Qwen 2.5 7B Instruct | first | 1.003 | **0.146** | 6.9x |
-| Qwen 2.5 7B Instruct | last | 0.977 | **0.011** | 89x |
-| OLMo-3 7B (base) | first | 0.966 | **0.204** | 4.7x |
-| OLMo-3 7B (base) | last | 0.958 | **0.243** | 3.9x |
-| Phi-4-mini Instruct | first | 0.501 | **0.018** | 28x |
-| Phi-4-mini Instruct | last | 0.541 | **0.000** | >500x |
-| Mistral 7B v0.3 (base) | first | 0.952 | **0.523** | 1.8x |
-| Mistral 7B v0.3 (base) | last | 0.907 | **0.318** | 2.9x |
+## 3. The evidence, on the existing runs
 
-Ten of ten conditions, five model families, base and instruction-tuned: ranking
-retains 0.50-1.00 of full-readout accuracy while the identical knowledge read out by
-generation retains 0.000-0.243.
+Logistic fit of per-item retention on `log2(1 + L)`, `L` = the full model's answer
+position. `L` is pre-treatment; retention conditions on the full model being correct.
+Fifteen estimable conditions, five model families, readout truncation and magnitude
+pruning and weight quantization:
 
-Mistral is the weakest of the five and is reported as such: it is a base checkpoint
-whose long-generation baselines are low (`mmlu_gen_cot` 0.220, `gsm8k_gen_cot` 0.326),
-so its ratios are the least powered. Its protocol pair is nonetheless matched to
-0.003 (rank 0.625, one generated token 0.628).
-
-Phi-4-mini additionally shows that the parent's premise is itself model-dependent: its
-ranking-protocol retention is 0.50-0.54, not the 0.89-1.00 of Llama and Qwen. "Half
-the readout dimensions are redundant" is not even true under the protocol that
-produced it, once the model is changed.
-
-### The comparison the field actually runs
-
-Whenever the literature concludes that compression damages reasoning selectively, the
-evidence is a comparison between a **ranking-scored** knowledge or classification
-benchmark and a **generation-scored** reasoning benchmark. That single comparison
-varies three things at once — protocol, output length, and content — and the first two
-dominate:
-
-| the same MMLU items, the same model, the same intervention | relative accuracy |
+| | count |
 |---|---|
-| scored by ranking 4 candidates (the parent's protocol) | **0.889** |
-| scored by generating one token | 0.837 |
-| scored by generating a chain of reasoning | **0.030** |
+| **prompt-recoverable** (`mmlu_gen_cot`) slope significantly negative | **1 of 15** |
+| **trajectory-carried** (`gsm8k_gen_cot`) slope significantly negative | **14 of 15** |
+| difference significant in the predicted direction | 8 of 15 |
+| difference significant in the **wrong** direction | **0 of 15** |
 
-Nothing about the model's knowledge differs between those rows. The control the
-literature never runs is the third one: **knowledge content under long generation**.
+Same model, same intervention, same free-generation protocol, same long-chain regime.
+The only thing that differs is whether the answer survives in the prompt.
 
-## 3. What is ours, stated against the nearest prior work
+Two inherited results are the causal counterpart of this, and both were already run:
 
-`RELATED_WORK_AND_NOVELTY.md` §11 records a genuine collision. **"The Benchmark
-Illusion" (arXiv 2606.17609, June 2026)** independently established that pruned models
-pass multiple-choice evaluation while failing open generation on the same questions,
-and that the answer is demoted rather than erased. We cite it as support and as
-replication of the protocol effect on a different task family; we do not claim it.
+- **E07** varies *when* the intervention is applied within one item's trajectory.
+  Truncating 64 early steps leaves 0.155; truncating ~336 late steps leaves 0.756.
+  Its own conclusion was "what matters is whether the answer-bearing tokens were
+  generated under truncation" — the within-item statement of the same law.
+- **E08** supplies the answer marker to a truncated model and turns a literal 0.000
+  into 0.178, with conditional accuracy at 0.868-1.000 and 94.5-100% of calculator
+  steps correct. The trajectory-carried content is computed; it fails to be delivered.
 
-Four things remain ours, and the paper rests on them rather than on the protocol
-observation:
+## 4. What this is not, and the conceptual correction
 
-1. **Output length as a factor separate from protocol.** In our data it is the larger
-   of the two: rank 0.889 -> one generated token 0.837 -> generated chain 0.030. Prior
-   work compares protocols and does not vary length.
-2. **The content axis at matched protocol and matched length.** No prior work compares
-   knowledge content against reasoning content *inside* a protocol. This is the only
-   comparison that can license a capability claim, and it is the object of the paper.
-3. **The intervention-family boundary** (§3b) — the positive result, with no
-   counterpart in prior work.
-4. **The parent correction**: three separate conclusions of an EMNLP 2025 Main
-   (People's Choice) paper dissolve under the controlled version.
+The previous mainline wrote `readout locus (computation intact)` against
+`parameters (computation damaged)`. **That is withdrawn.** E00 established that readout
+truncation leaves the hidden state of a *fixed* forward pass unchanged and is exactly
+reversible. It does not license the claim over a free-running trajectory: once
+truncation changes the emitted token at step `t`, the prefix at `t+1` differs, so
+`h_{t+1}` differs and the upstream computation diverges from then on. "Expression
+damaged, computation intact" is a **hypothesis about free generation**, not a fact we
+have shown, and a reviewer who works on causal or mechanistic inference will see it.
 
-| the parent's conclusion | under ranking | under generation |
+Everywhere in this package the operational terms are now:
+
+- **readout-locus intervention** — the map from the final hidden state to logits;
+- **parameter-locus intervention** — the transformer weights.
+
+Both are defined by what is modified, independently of any outcome. The expression-
+versus-computation reading is recorded as an account to be tested, not asserted.
+
+## 5. Position against the owners
+
+Three papers own things this package must not claim, and none owns the law above.
+
+| owner | what it owns | what it does not have |
 |---|---|---|
-| knowledge/reading survive, reasoning collapses | reproduced | **knowledge collapses too** (rel 0.030) |
-| SQuAD-v2 retains 96.5-99.9% of performance | `best_exact` 50.30, rel **1.000** | `HasAns_exact` 78.07 -> 25.76, rel **0.33** |
-| which half is removed "does not have an impact", indicating inefficient representation space usage | ratio **1.0x** | ratio up to **13.0x** |
+| **Takeshita et al.**, EMNLP 2025 Main (People's Choice) | dimension removal; the first causal-LM observation; "sensitivity is task dependent" | any control; the SQuAD number is a metric floor (C1.1) |
+| **Wen et al.**, *The Benchmark Illusion*, 2026 | multiple-choice success ≠ open-generation usability after pruning, same question, answer demoted not erased | no depth axis; a level effect of protocol, not a slope in depth |
+| **Song et al.**, *Demystifying the Roles of LLM Layers*, ICASSP 2026 | likelihood-vs-generation evaluation changes which layers look important; "task-, metric-, model-dependent" | same — protocol as a level effect; no within-generation depth, no provenance contrast |
+| **UniComp**, EMNLP 2026 Main | the `knowledge bias` headline across pruning/quantization/distillation, 40+ datasets | does not control output length anywhere; its knowledge set is entirely multiple-choice and its reasoning set entirely free-form CoT |
 
-## 3b. The headline result (E10, complete 2026-09-11)
+**`evaluation protocol matters` is fully owned and is not claimed anywhere in this
+package.** It is a prerequisite, stated in one paragraph with citations, not a result.
 
-Two contrasts on the same data. The first is how the literature establishes
-capability-selective compression damage; the second holds evaluation protocol and
-output length fixed. Ratios of relative performance, paired bootstrap over items,
-B = 10000. A ratio is reported only when the full-precision baseline exceeds 0.05 and
-the denominator cell has not been driven to the floor — otherwise it is **n/e**, not a
-large number, because a floor effect is not a selectivity effect.
+UniComp is the reason the question is live rather than manufactured. Its knowledge
+column (MMLU, ARC, HellaSwag, PIQA, Winogrande) is multiple-choice throughout and its
+reasoning column (GSM8K, MATH-500, GPQA-Diamond) is free-form CoT throughout, so
+capability, answer format and answer depth are perfectly confounded in the comparison
+that produces the headline. It also reports an anomaly it cannot explain — GPQA-Diamond
+is more robust than GSM8K and MATH-500 — and conjectures in passing that this is
+"likely attributable to its multiple-choice format". That conjecture is untested, it is
+our law's prediction, and if it is right it does not rescue the headline: it dissolves
+it, because the same mechanism applies to every row of the knowledge column.
 
-| model | intervention | touches | uncontrolled | **controlled** | 95% CI |
-|---|---|---|---|---|---|
-| Llama 3.1 8B It | prune 25% | parameters | 1.34 | **1.34** | [1.19, 1.50] |
-| Llama 3.1 8B It | prune 40% | parameters | 13.54 | **3.15** | [1.95, 5.53] |
-| Llama 3.1 8B It | quant 4-bit | parameters | 1.97 | **1.49** | [1.26, 1.78] |
-| Qwen 2.5 7B It | quant 4-bit | parameters | 5.86 | **4.42** | [3.48, 5.76] |
-| Phi-4-mini It | prune 40% | parameters | 12.79 | **5.00** | [3.11, 8.96] |
-| Phi-4-mini It | quant 4-bit | parameters | 1.33 | 1.06 | [0.93, 1.21] |
-| OLMo-3 7B base | prune 40% | parameters | 1.05 | 1.01 | [0.88, 1.15] |
-| Qwen 2.5 7B It | prune 40% | parameters | n/e | n/e | denominator at floor |
-| Llama 3.1 8B It | readout, first | readout only | 8.12 | **0.27** | [0.10, 0.53] |
-| Llama 3.1 8B It | readout, last | readout only | 3.86 | **0.68** | [0.47, 0.95] |
-| Qwen 2.5 7B It | readout, first | readout only | 7.26 | 1.06 | [0.71, 1.55] |
-| Qwen 2.5 7B It | readout, last | readout only | 12.83 | **0.15** | [0.00, 0.38] |
-| OLMo-3 7B base | readout, first | readout only | 3.18 | **0.67** | [0.47, 0.94] |
-| OLMo-3 7B base | readout, last | readout only | 1.96 | **0.50** | [0.36, 0.66] |
-| Mistral 7B v0.3 | readout, first | readout only | 1.96 | 1.08 | [0.73, 1.57] |
-| Mistral 7B v0.3 | readout, last | readout only | 1.40 | **0.49** | [0.32, 0.72] |
-| Phi-4-mini It | readout, first/last | readout only | n/e | n/e | both cells at floor |
+## 6. The contribution structure
 
-**Holding protocol and length fixed removes 29.5% to 152% of the apparent
-capability-selectivity.** For readout interventions it removes more than all of it.
-
-### The boundary, stated by direction and significance
-
-An earlier version of this file claimed the two sets of controlled ratios do not
-overlap numerically. With OLMo-3 pruning (1.01) and Phi-4 quantization (1.06) that is
-no longer true and the claim is withdrawn. What the complete data support is stronger,
-because it is stated with uncertainty rather than as a numeric partition:
-
-| intervention touches | significantly < 1 | null | significantly > 1 |
-|---|---|---|---|
-| **only the readout channel** (computation intact) | **6 of 8** | 2 | **0** |
-| **the parameters** (computation damaged) | **0** | 2 | **5 of 7** |
-
-Fifteen estimable conditions, five model families, three intervention families, and
-**not one crosses in the wrong direction**. No readout intervention makes reasoning
-significantly more fragile than knowledge at matched protocol and length; no parameter
-intervention makes it significantly more robust.
-
-Severity is not the explanation. A deliberately mild prune (25% of weights, no protocol
-inflation at all: uncontrolled 1.34) still shows genuine selectivity — 1.34, CI
-[1.19, 1.50] — while a severe readout truncation with an uncontrolled ratio of 8.12
-shows the opposite sign (0.27).
-
-The controlled factorial therefore does more than correct a number. It **separates
-damage to a model's computation from damage to its ability to express that
-computation**, which the uncontrolled comparison cannot do at all. That is the paper's
-positive contribution.
-
-### The cells are difficulty-matched, so the contrast is not about task difficulty
-
-The obvious objection to any cross-cell comparison is that the cells differ in
-difficulty. For the contrasts that carry the argument they do not. Full-readout
-accuracy per cell:
-
-| model | `mmlu_rank` | `mmlu_gen_letter` | `mmlu_gen_cot` | `gsm8k_gen_cot` |
-|---|---|---|---|---|
-| Llama 3.1 8B It | 0.683 | 0.681 | 0.667 | 0.786 |
-| Qwen 2.5 7B It | 0.744 | 0.739 | 0.667 | 0.840 |
-| OLMo-3 7B (base) | 0.644 | 0.645 | 0.515 | 0.626 |
-| Phi-4-mini It | 0.679 | 0.675 | 0.710 | 0.812 |
-
-The protocol contrast (`mmlu_rank` vs `mmlu_gen_letter`) is matched to within
-**0.002-0.005 in every model** — the same items, the same prompt string, the same
-single decision, and the same undamaged accuracy. Only the rule for reading the answer
-out differs. The content contrast (`mmlu_gen_cot` vs `gsm8k_gen_cot`) is matched to
-within 0.1-0.2.
-
-The one badly matched cell is `gsm8k_gen_direct` (0.160 for Llama, 0.250 for Qwen).
-It is the lowest-power cell in the design and is the one that produced the single
-reversal in the pre-registered depth contrast; it is reported, not relied on.
-
-### Severity is not what separates the families
-
-The obvious objection is that pruning simply hits harder than readout truncation. It
-does not explain the pattern, and this is already covered by the severity note in §3b:
-a deliberately mild prune (25% of weights, uncontrolled ratio 1.34, i.e. no protocol
-inflation to remove) still shows genuine selectivity at 1.34 [1.19, 1.50], while a
-severe readout truncation with an uncontrolled ratio of 8.12 has the opposite sign at
-0.27. The separation is between what the intervention touches, not how hard it hits.
-
-## 4. The corroborating decomposition
-
-After the confound is removed, the corrected picture is not "we don't know". It is a
-substantive answer to the question the field actually cares about:
-
-- At matched protocol and matched output length, **reasoning content is not more
-  fragile than knowledge content**. The content contrast is inconsistent across models
-  for short generation (+0.19/+0.54 vs +0.04/+0.04) and its sign is *negative* for long
-  generation (−0.08, −0.08, +0.01, −0.07) — reasoning is if anything slightly more robust.
-- Conditional on a truncated model producing a well-formed GSM8K answer, that answer
-  is as accurate as the full model's (0.868–1.000 vs 0.782–0.850) and its arithmetic
-  is 94.5–100% correct. The computation is intact; the expression of it is not.
-- Handing the model its answer marker turns a literal **0.000** into **0.178** (E08).
-
-## 5. What makes this Main-level rather than a correction
-
-Breadth is load-bearing, and it is the current work item:
-
-1. **Multiple intervention families** — readout truncation (changes no computation),
-   magnitude pruning and weight quantization (change computation). E10, running.
-2. **Multiple model families** — currently Llama 3.1 8B and Qwen 2.5 7B; needs a third
-   and fourth from the local cache (Gemma 3, Mistral, OLMo 3, Phi-4).
-3. **A boundary, not just a negation.** If parameter interventions *do* show genuine
-   content-selectivity at matched protocol while readout interventions do not, that
-   difference is a diagnostic the field can use: it separates damage to computation
-   from damage to expression. That outcome is a better paper than the pure negation,
-   and the design returns it either way.
-
-## 6. Outcome robustness
-
-- The confound reproduces across families → the claim is general; the field's
-  capability-selectivity evidence is protocol-manufactured.
-- It reproduces for readout but not for pruning/quantization → a boundary result and a
-  diagnostic; the claim narrows to "interventions that leave computation intact produce
-  apparent capability-selectivity that is entirely expressive".
-- It fails to reproduce anywhere but readout truncation, and readout truncation is
-  judged too narrow to carry a paper → **kill**, recorded in §7.
+- **C1 — prerequisite, prior-owned.** Protocol and depth change the apparent damage on
+  identical content. Cited to Wen et al. and Song et al.; our version is cleaner
+  (same item, same prompt, same intervention, only the readout rule varies) and is
+  reported as identification, **not as novelty**.
+- **C2 — load-bearing.** The depth-by-provenance law of §2-§3, established by a design
+  that manipulates provenance **within item**.
+- **C3 — consequence.** Re-estimate a small number of load-bearing published
+  comparisons under matched provenance and depth, and report how much of the reported
+  capability ordering survives.
 
 ## 7. Stop rule
 
-L08 is killed if, after E10 and the model-family extension:
-- the protocol confound is confined to the single parent intervention, **and**
-- no boundary between families is established, **and**
-- the remaining claim is a correction to one paper's three numbers.
+L08's Main route is killed if **E12** returns any of:
 
-That would be a Findings-scale contribution at best and the project should stop rather
-than be padded.
+- provenance manipulated within item does not reproduce the slope dissociation;
+- the dissociation appears only under readout truncation and not under a real pruning
+  or quantization method (Wanda / SparseGPT / AWQ / GPTQ);
+- an open-ended long-generation knowledge cell decays like GSM8K, i.e. the flat MMLU
+  slope was the multiple-choice chance floor after all;
+- the dissociation is explained by item difficulty once depth is randomised.
+
+**The failure may not be rescued** by retreating to "but multiple choice and generation
+still differ", or to the `C3.2` no-crossing count. Both are covered by §5.

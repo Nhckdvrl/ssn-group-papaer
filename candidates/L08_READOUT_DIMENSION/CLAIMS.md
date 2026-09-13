@@ -14,14 +14,45 @@ exact-match to near zero for Llama 3.1 8B and Qwen 2.5 7B.
 
 **P0.2** A pruned model can pass multiple-choice evaluation while failing open
 generation on the same questions, and the answer is demoted rather than erased.
-`established-by-others` — "The Benchmark Illusion", arXiv 2606.17609 (June 2026).
-Cited as prior work **and** as independent replication of our protocol effect on a
-different task family. We do not claim the multiple-choice-versus-generation
+`established-by-others` — Wen et al., "The Benchmark Illusion", arXiv 2606.17609
+(June 2026). Cited as prior work **and** as independent replication of our protocol
+effect on a different task family. We do not claim the multiple-choice-versus-generation
 observation.
+
+**P0.3** Which layers look important under pruning depends on whether the evaluation
+is likelihood-based or generation-based; likelihood evaluation makes middle and deep
+layers look nearly irrelevant, generation does not. Layer importance is task-, metric-
+and model-dependent. `established-by-others` — Song et al., "Demystifying the Roles of
+LLM Layers in Retrieval, Knowledge, and Reasoning", ICASSP 2026, arXiv 2510.02091.
+This is the same MMLU benchmark x the same intervention x different protocols. Venue
+does not affect ownership. **`evaluation protocol matters` is therefore fully owned
+and is claimed nowhere in this package.**
+
+**P0.4** Compression across pruning/quantization/distillation exhibits a `knowledge
+bias`: factual knowledge is largely retained while reasoning, multilingual and
+instruction-following degrade disproportionately. `established-by-others` — UniComp,
+EMNLP 2026 Main, arXiv 2602.09130. This is the **target**, not a competitor: its
+knowledge set is multiple-choice throughout and its reasoning set free-form CoT
+throughout, and it does not control output length anywhere. It also reports, and
+cannot explain, that GPQA-Diamond is more robust than GSM8K and MATH-500, conjecturing
+that this is "likely attributable to its multiple-choice format".
+
+**P0.5** Pruning calibrated only on prompt activations suffers distribution shift on
+the model's own generated chain, and recalibrating on on-policy CoT activations
+mitigates it. `established-by-others` — Reasoning-Aware Compression, arXiv 2509.12464.
+Owns the calibration-shift account of CoT degradation after pruning. We must not
+present "damage accumulates along a self-generated chain" as new; what is ours is the
+**dissociation** — that it does not accumulate when the answer stays prompt-recoverable.
 
 ---
 
-## C1 — The evidence base for capability-selective compression damage is confounded
+## C1 — Identification prerequisite (not a novelty claim)
+
+**Status of the whole section:** `supported`, and **prior-owned at the level of the
+generic statement** (P0.2, P0.3). C1 is reported as the identification step that makes
+C2 estimable. It is not presented as a contribution. Our version is cleaner than the
+owners' — same item, same prompt, same intervention, only the readout rule varies —
+and that cleanliness is what C2 needs, not what the paper sells.
 
 **C1.1 — SQuAD-v2's apparent survival is a metric floor.** `supported`.
 `best_exact` sweeps a no-answer threshold and cannot fall below the unanswerable
@@ -91,28 +122,90 @@ the paper is not a mechanism paper.
 
 ---
 
+## C2' — The load-bearing claim (new 2026-09-14)
+
+**C2'.1 — Retention decays with answer depth only when the answer is carried by the
+model's own generated prefix.** `supported`, observational; the confirmatory version is
+preregistered as E12.
+
+Logistic fit of per-item retention on `log2(1 + L)`, `L` = the full model's answer
+position, pre-treatment; retention defined among items the full model answers
+correctly. 15 estimable conditions, 5 model families, readout truncation + magnitude
+pruning + quantization:
+
+| | count |
+|---|---|
+| prompt-recoverable (`mmlu_gen_cot`) slope significantly negative | **1 of 15** |
+| trajectory-carried (`gsm8k_gen_cot`) slope significantly negative | **14 of 15** |
+| difference significant in the predicted direction | 8 of 15 |
+| difference significant in the **wrong** direction | **0 of 15** |
+
+Same model, same intervention, same free-generation protocol, same long-chain regime.
+Evidence: `scripts/analyze_depth.py`, `results/depth_audit.json`.
+
+**C2'.2 — The within-item causal counterpart.** `supported`, inherited. E07 varies only
+the time window over which the intervention is applied: 64 early truncated steps leave
+0.155, ~336 late truncated steps leave 0.756. Its own conclusion — what matters is
+whether the answer-bearing tokens were generated under the intervention — is this law
+stated within item. E08 adds that supplying the answer marker turns 0.000 into 0.178
+with 94.5-100% of calculator steps correct: the trajectory-carried content is computed
+and fails to be delivered.
+
+**C2'.3 — Provenance, not capability, is the variable.** `hypothesis`, and the object
+of E12. In the inherited data provenance is perfectly confounded with dataset, so
+domain, answer format and item difficulty are all live alternatives. E12 manipulates
+provenance **within item** with depth randomised, in a 2x2 against capability.
+
+**C2'.4 — The published capability ordering is a provenance ordering.** `hypothesis`.
+The prescriptive consequence; requires C2'.3 and the matched re-estimation of §C3.
+
+---
+
 ## C3 — The positive contribution
 
-**C3.1 — Controlling protocol and output length removes 29.5-111% of the apparent
-capability-selective damage.** `supported`. Evidence: E10, paired bootstrap, 11
-estimable conditions.
+**C3.1 — Controlling protocol and nominal output length removes 29.5-229% of the
+apparent capability-selective damage.** `supported` as a statement about the
+uncontrolled-vs-controlled gap; the range is 29.5-229% over 17 estimable conditions
+(an earlier draft of this ledger said 29.5-111% and `MAINLINE` said 29.5-152%; both
+were partial reads of the same table and are corrected here). Evidence: E10, paired
+bootstrap. **Note:** "output length" here means the nominal long-chain regime, not
+answer depth — see C3.2 and the 2026-09-14 audit.
 
-**C3.2 — What survives the controls separates interventions that damage computation
-from interventions that damage only expression.** `supported`, and load-bearing.
-Across 15 estimable conditions, five model families and three intervention families,
-**not one crosses in the wrong direction**: of eight readout conditions, six are
-significantly below 1 and none is above; of seven parameter conditions, five are
-significantly above 1 and none is below. A deliberately mild prune, which has no
-protocol inflation to remove, still shows genuine selectivity (1.34, CI [1.19, 1.50])
-while a severe readout truncation shows the opposite sign (0.27), so severity is not the explanation. Evidence: E10.
+**C3.2 — The intervention-locus sign boundary.** `weakened`, **demoted from
+load-bearing 2026-09-14**. See [`AUDIT_2026-09-14_DEPTH_CONFOUND.md`](AUDIT_2026-09-14_DEPTH_CONFOUND.md).
+
+The E10 "controlled" contrast does not hold answer depth fixed: the two cells differ by
+1.7-3.4x in how many decoding steps precede the answer, in the same direction in all
+five models, and the bias runs toward the `< 1` readings that formed the readout half.
+Re-estimated with depth matched, readout conditions significantly `< 1` fall from 7 of
+10 to **2 of 8**, and the severity control `prune0p25` — the one condition that ruled
+out "pruning simply hits harder" — goes from 1.34 [1.19, 1.50] to **1.24 [0.96, 1.47],
+null**. The three surviving `> 1` conditions are two 40% prunes and one quantization,
+so severity is no longer excluded.
+
+What survives is the no-crossing statement alone: 0 of 15 conditions cross. That is a
+descriptive observation, not a contribution, and it may **not** be used to rescue the
+package if C2 fails.
+
+**C3.2a — the conceptual correction.** The earlier wording `readout channel
+(computation intact)` vs `parameters (computation damaged)` is **withdrawn**. E00
+establishes reversibility and hidden-state identity for a *fixed* forward pass only;
+over a free-running trajectory a changed emitted token at step `t` changes the prefix
+and therefore `h_{t+1}`, so upstream computation does diverge. The operational terms
+are `readout-locus` and `parameter-locus`, defined by what is modified. Expression-vs-
+computation is an account to be tested, not a fact.
 
 **C3.3 — Redundancy estimated under ranking protocols does not license claims about a
-model's computation.** `hypothesis`, the prescriptive form of C3.1 + C3.2. Needs the
-corrected re-measurement stated as a recommendation.
+model's computation.** `hypothesis`. Retained, but it is a restatement of P0.2/P0.3 and
+is **not claimable**. Superseded as the prescriptive claim by C2'.4.
 
 ---
 
 ## Retired
+
+**R0 — "What survives the controls separates damage to computation from damage to
+expression."** The 2026-09-13 reopening's load-bearing claim. Demoted 2026-09-14: not
+identified by the E10 design once answer depth is matched. See C3.2.
 
 **R1 — "Reasoning requires a higher-dimensional per-step readout than knowledge."**
 The candidate-stage mainline. Rejected: at matched protocol and length the sign is

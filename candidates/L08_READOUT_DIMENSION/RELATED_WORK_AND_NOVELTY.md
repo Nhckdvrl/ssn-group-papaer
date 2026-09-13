@@ -1,6 +1,136 @@
 # L08 — Related Work and Paper-Level Novelty
 
-**Candidate:** Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning
+**Candidate:** Answer provenance, not capability, governs compression damage
+**Last owner audit:** 2026-09-14. Sections 1-10 below are the historical audit, kept
+for the record. **Section 0 is current and supersedes them where they disagree.**
+
+---
+
+## 0. Current owner audit  `2026-09-14`
+
+Four papers bound what this package may claim. Two of them were missed by the
+2026-09-13 fresh Selection.
+
+### 0.1 Owned, and claimed nowhere: `evaluation protocol matters`
+
+**Wen et al., "The Benchmark Illusion: Pruned LLMs Can Pass Multiple Choice but Fail
+to Answer", arXiv 2606.17609 (June 2026).** Under high-sparsity pruning, especially
+Wanda, models fail greedy open generation while still selecting the correct answer
+under multiple-choice scoring on the same question; the answer is demoted rather than
+erased and reappears under beam search, sampling or one in-context example.
+
+**Song et al., "Demystifying the Roles of LLM Layers in Retrieval, Knowledge, and
+Reasoning", ICASSP 2026, arXiv 2510.02091.** *This was missed by the fresh Selection
+and is the more dangerous of the two.* Same MMLU benchmark, same intervention family
+(layer pruning), three evaluation protocols — likelihood/default, likelihood
+continuation, open `generation-until`. Likelihood evaluation makes most middle and deep
+layers look nearly irrelevant; generation shows them to be essential for reasoning and
+long-range coherence. Concludes that layer importance is task-, metric- and
+model-dependent.
+
+Together these own the generic statement
+
+> `same content + same intervention, different readout protocol -> different conclusion`
+
+**completely.** It is a level effect of protocol. The package's C1 reproduces it more
+cleanly (same item, same prompt, only the readout rule varies) and reports it as the
+identification step that makes C2 estimable. It is never presented as a contribution.
+Venue is irrelevant to ownership; ICASSP does not make Song et al. ignorable.
+
+Neither paper has a **depth axis inside generation**, and neither has the
+**provenance contrast**. That is where L08 lives.
+
+### 0.2 The target: UniComp
+
+**"UniComp: A Unified Evaluation of Large Language Model Compression via Pruning,
+Quantization, and Distillation", EMNLP 2026 Main, arXiv 2602.09130.** Wanda, SparseGPT,
+GPTQ, AWQ, SmoothQuant, Minitron, Low-Rank Clone; 40+ datasets. Headline: a strong
+**knowledge bias** — factual knowledge is largely preserved while reasoning,
+multilingual and instruction-following degrade disproportionately. On Llama-3.1-8B,
+Wanda retains 83.66% of knowledge and 40.15% of reasoning.
+
+Verified against the paper, 2026-09-14:
+
+- the knowledge set (MMLU, ARC-E/C, HellaSwag, PIQA, Winogrande) is **multiple-choice
+  throughout**; the reasoning set (GSM8K 4-shot, MATH-500 4-shot, GPQA-Diamond 5-shot)
+  is **free-form CoT throughout**;
+- output/generation length is **not controlled or discussed anywhere**;
+- the paper reports that GPQA-Diamond is notably more robust than GSM8K and MATH-500
+  and conjectures this is "likely attributable to its multiple-choice format".
+
+So the headline capability claim is read off a comparison in which capability, answer
+format and answer depth are confounded by construction — and the paper's own unexplained
+anomaly is our law's prediction, stated by them and left untested. If the conjecture is
+right it does not save the headline; it dissolves it, because the same mechanism applies
+to every row of the knowledge column.
+
+This is the scientific pressure that makes the question worth asking, and it is why the
+target is a live EMNLP 2026 Main conclusion rather than a 2025 appendix.
+
+### 0.3 Partial owner of the accumulation half: RAC
+
+**"Reasoning Models Can be Accurately Pruned Via Chain-of-Thought Reconstruction",
+arXiv 2509.12464.** Pruning calibrated only on prompt activations suffers distribution
+shift once the model generates its own chain, producing error accumulation; calibrating
+on on-policy CoT activations mitigates it.
+
+This owns **"damage accumulates along a self-generated chain after pruning"** as a
+motivating observation. L08 must not present that as new. What RAC does not have is the
+**dissociation**: that under the same intervention and the same free-generation protocol
+there is *no* decay with depth when the answer stays prompt-recoverable. The
+accumulation is the known half; the flat half is the finding.
+
+E12 therefore fixes calibration data across all arms and does not task-match it —
+task-matched calibration is RAC's paper.
+
+### 0.4 Neighbours that do not collide
+
+- **ICLR 2026, "When Reasoning Meets Compression"** — reports weight count affecting
+  knowledge memorization more than reasoning, the opposite ordering to UniComp. The two
+  are **not** a formal contradiction: intervention, task, model and estimand all differ,
+  and the repo's SAME-QUANTITY rule forbids presenting them as one. They are cited
+  together as evidence that the field's fragility ordering is not stable, which is the
+  motivation for asking whether it is identified at all.
+- **ThinkSLM, EMNLP 2025 Main** — quantization and pruning affect reasoning differently
+  in small models. Supports the mother phenomenon; no protocol or depth control.
+- **"Evaluating Zero-Shot Long-Context LLM Compression", arXiv 2406.06773** — pruning
+  stays robust as *input* context grows while quantization degrades. Input length, not
+  self-generated answer depth. Different axis; cite to keep the two separate.
+
+### 0.5 The strongest reviewer compression, and the answer
+
+> *"Song et al. already showed pruning conclusions depend on likelihood vs generation.
+> Wen et al. already showed recognition-generation dissociation after pruning. UniComp
+> already studies capability-specific compression across three families. RAC already
+> showed CoT error accumulation after pruning. This paper is those four observations
+> with more controls."*
+
+If L08 ends at "MMLU ranking is high and generation is low", **this compression holds
+and the paper is dead.** That is why C1 is a prerequisite and the `C3.2` sign boundary
+was demoted on 2026-09-14.
+
+The compression fails only against the depth-by-provenance law, because A+B+C+D do not
+imply it: none of the four has a depth axis inside generation, and none compares
+prompt-recoverable against trajectory-carried answers at matched depth on the same
+items. Wen et al. and Song et al. predict a *level* shift; our result is a **slope**,
+and a slope that is zero on one side.
+
+### 0.6 Novelty accounting, as of 2026-09-14
+
+| component | status |
+|---|---|
+| protocol changes the conclusion | **owned** — P0.2, P0.3. Prerequisite only |
+| capability-specific compression damage exists | **owned** — P0.4, mother phenomenon |
+| CoT error accumulates after pruning | **owned** — P0.5 |
+| retention decays with answer depth **only** for trajectory-carried answers | **no owner found** — load-bearing |
+| provenance manipulated within item, capability held fixed | **no owner found** — E12, not yet run |
+| published capability orderings re-estimated at matched provenance | **no owner found** — C3, conditional on E12 |
+
+---
+
+## Historical audit (pre-2026-09-14), retained for the record
+
+**Candidate title at the time:** Low-Dimensional Readout Preserves Knowledge but Breaks Reasoning
 
 ---
 
