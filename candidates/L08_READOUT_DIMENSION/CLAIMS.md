@@ -122,11 +122,20 @@ the paper is not a mechanism paper.
 
 ---
 
-## C2' — The load-bearing claim (new 2026-09-14)
+## C2' — The load-bearing claim (new 2026-09-14, object renamed same day)
 
-**C2'.1 — Retention decays with answer depth only when the answer is carried by the
-model's own generated prefix.** `supported`, observational; the confirmatory version is
-preregistered as E12.
+**Scientific object: trajectory-mediated compression damage.** Compression reaches the
+answer by a direct path (`T -> Y`) and a mediated one (`T -> Z(T) -> Y`). The mediated
+path is the object; the governing variable is **trajectory dependence** / external
+re-groundability — whether a correct decision at step `t` needs context that is not
+treatment-dependent. The earlier name `prompt-recoverable vs trajectory-carried` is
+**withdrawn as a scientific variable** and demoted to observational correlate: MMLU's
+candidates are in the prompt but which one is correct is not, and GSM8K's problem
+statement is in the prompt throughout.
+
+**C2'.1 — Depth sensitivity is not a generic property of long generation.**
+`supported`, **observational only**, and explicitly not the result. The confirmatory
+version is preregistered as E12 Stage 1.
 
 Logistic fit of per-item retention on `log2(1 + L)`, `L` = the full model's answer
 position, pre-treatment; retention defined among items the full model answers
@@ -141,6 +150,9 @@ pruning + quantization:
 | difference significant in the **wrong** direction | **0 of 15** |
 
 Same model, same intervention, same free-generation protocol, same long-chain regime.
+What differs is the dataset, and with it a bundle including trajectory dependence,
+domain, answer format and difficulty. This motivates E12; under the forbidden-rescue
+rule it may never be reported as the contribution, nor used to save the package.
 Evidence: `scripts/analyze_depth.py`, `results/depth_audit.json`.
 
 **C2'.2 — The within-item causal counterpart.** `supported`, inherited. E07 varies only
@@ -151,13 +163,35 @@ stated within item. E08 adds that supplying the answer marker turns 0.000 into 0
 with 94.5-100% of calculator steps correct: the trajectory-carried content is computed
 and fails to be delivered.
 
-**C2'.3 — Provenance, not capability, is the variable.** `hypothesis`, and the object
-of E12. In the inherited data provenance is perfectly confounded with dataset, so
-domain, answer format and item difficulty are all live alternatives. E12 manipulates
-provenance **within item** with depth randomised, in a 2x2 against capability.
+**C2'.3 — Compression damage is trajectory-mediated.** `hypothesis`, **load-bearing**,
+and the object of E12 Stage 1. A substantial share of compression-induced failure
+arrives not because the current step is damaged but because the context it conditions on
+was produced under the same treatment. Tested by **prefix clamping**: the compressed
+model executes its own forward pass at every step, so direct damage is held fixed at
+100% of steps, while the emitted token is overridden to a reference trajectory for steps
+`< k`. `k` therefore varies mediation alone. This is the separation E07 could not make —
+E07 varied the intervention window, moving direct-damage dose and trajectory
+contamination together, which is why it could only reach "positional, not cumulative".
 
-**C2'.4 — The published capability ordering is a provenance ordering.** `hypothesis`.
-The prescriptive consequence; requires C2'.3 and the matched re-estimation of §C3.
+**C2'.3a — The mediation is not reducible to prefix error content.** `hypothesis`, and
+the claim that decides whether this is a new object or ordinary exposure bias. With
+three prefixes — free-running `Z(T)`, reference `Z(0)`, and reference corrupted to a
+matched task-error rate `Z̃(0)` — the residual `Y(T,Z̃(0)) - Y(T,Z(T))` isolates the part
+attributable to the context having been produced under the same perturbation, beyond its
+surface error content. **If the residual is ~0 the honest reading is error propagation**,
+adjacent to what RAC owns (P0.5), and the paper's ceiling drops. Recorded before the run.
+
+**C2'.3b — The mediation bridge can be closed selectively.** `hypothesis`, E12 Stage 2.
+Re-externalizing a load-bearing intermediate state the reference trajectory had already
+produced restores the compressed free-running trajectory, while text matched in length,
+position and surface form but carrying no task information does not. The refresh
+supplies no new knowledge.
+
+**C2'.4 — The mechanism accounts for part of the published capability ordering.**
+`hypothesis`. The consequence; requires C2'.3. **Not preregistered as a refutation** —
+"the mechanism accounts for 40% of the reported gap and the remainder is a genuine
+capability effect" is a good and more credible outcome than a total reversal. The
+sharpest single test is UniComp's own untested conjecture about GPQA-Diamond (P0.4).
 
 ---
 
@@ -212,4 +246,17 @@ The candidate-stage mainline. Rejected: at matched protocol and length the sign 
 negative for readout interventions in five of six estimable conditions.
 
 **R2 — "The collapse is an attractor phenomenon."** Rejected by E05, which eliminated
-degeneration entirely without recovering accuracy.
+degeneration entirely without recovering accuracy. **Note:** E05's degeneration measure
+(0.87 under readout truncation) is re-used constructively in C2'.3a as the reason a
+non-zero residual is mechanistically plausible — the compressed model's own prefix can be
+off-manifold for its own remaining computation in a way corrupted reference text is not.
+This does not reinstate R2 as a mechanism.
+
+**R3 — "Answer provenance (prompt-recoverable vs trajectory-carried) is the variable."**
+Held for less than a day, 2026-09-14. Withdrawn as a scientific variable: the binary
+does not survive scrutiny (see C2' header), and the 2x2 designed to test it — GSM8K with
+the solution supplied, MMLU with a derived intermediate required — changed the
+computation rather than isolating provenance, so a perfect crossover would have been
+equally well explained by "more sequential computation is more fragile". Superseded by
+trajectory mediation. Design retained as a construct probe in
+`E12_SUPERSEDED_2026-09-14_capability_x_provenance.md`.

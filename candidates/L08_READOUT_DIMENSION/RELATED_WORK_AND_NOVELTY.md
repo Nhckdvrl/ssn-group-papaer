@@ -97,6 +97,40 @@ task-matched calibration is RAC's paper.
   stays robust as *input* context grows while quantization degrades. Input length, not
   self-generated answer depth. Different axis; cite to keep the two separate.
 
+### 0.35 Reasoning-aware compression: the crowded half
+
+**"Attend to Your Own Thoughts" (AYOT), arXiv 2608.01078, August 2026.** Conventional
+calibration causes extreme PTQ collapse on reasoning tasks; calibrating on the target
+model's *own* generated reasoning traces and answers recovers most of it.
+
+Together with RAC (§0.3) this establishes that **"reasoning trajectories are special
+under compression" is not a blank space.** L08 may not be written as *"compression hurts
+reasoning because standard methods ignore reasoning traces"* — that collides with both.
+
+What neither owns is the causal decomposition: *why* does conditioning on a
+treatment-generated trajectory matter, what converts a small local error into a
+sequence-level capability failure, and when does the amplification vanish. RAC and AYOT
+fix the symptom by changing calibration; they do not decompose the effect into direct
+and trajectory-mediated components, and they have no condition under which the
+amplification is absent.
+
+### 0.36 Conceptual neighbour, to be cited for language not novelty
+
+**"Reasoning as Compression: Unifying Budget Forcing via the Conditional Information
+Bottleneck", arXiv 2603.08462.** Frames the reasoning trace `Z` as a computational
+bridge carrying what the prompt `X` cannot supply but the answer `Y` requires.
+
+**"CoT contains information unavailable from the prompt" is therefore not ours.** It is
+useful in the other direction: it supplies the formal language in which to ask whether
+sequential perturbation of that bridge has a distinctive failure mode.
+
+**Given-vs-generated CoT faithfulness work** likewise establishes that supplied and
+self-generated reasoning play different causal roles, with later self-generated steps
+more load-bearing. Its target is faithfulness, not a compression treatment, and it has
+no robustness law — but it is the closest existing use of a supplied-vs-generated prefix
+contrast and must be cited as such, because our clamp is the same manipulation applied
+to a different question.
+
 ### 0.5 The strongest reviewer compression, and the answer
 
 > *"Song et al. already showed pruning conclusions depend on likelihood vs generation.
@@ -109,11 +143,33 @@ If L08 ends at "MMLU ranking is high and generation is low", **this compression 
 and the paper is dead.** That is why C1 is a prerequisite and the `C3.2` sign boundary
 was demoted on 2026-09-14.
 
-The compression fails only against the depth-by-provenance law, because A+B+C+D do not
-imply it: none of the four has a depth axis inside generation, and none compares
-prompt-recoverable against trajectory-carried answers at matched depth on the same
-items. Wen et al. and Song et al. predict a *level* shift; our result is a **slope**,
-and a slope that is zero on one side.
+The compression fails only against trajectory mediation, because these papers do not
+imply it: none has a depth axis inside generation, and none decomposes compression
+damage into a direct and a trajectory-mediated component. Wen et al. and Song et al.
+predict a *level* shift from protocol; ours is a **slope**, and a slope that can be
+switched off by intervention.
+
+### 0.5b The reviewer compression that actually matters now
+
+> *"This is exposure bias under compression. Autoregressive models condition on their
+> own mistakes; this is known."*
+
+This is the dangerous one, and it is not answered by any amount of additional breadth.
+Two things answer it, and the paper is not viable without both:
+
+1. **Not every long generation shows it.** Exposure bias predicts accumulation wherever
+   a model conditions on its own output. §0 of the audit shows the slope is absent in
+   14 of 15 conditions on one side.
+2. **The loop opens and closes under intervention.** Prefix clamping switches mediation
+   off with per-step damage untouched; state refresh switches it back on selectively.
+   Exposure bias is a train/inference prefix-distribution mismatch; this is a
+   decomposition of a *model perturbation*, and a statement of when each component
+   occurs.
+
+The corrupted-reference arm quantifies the boundary between the two. If the residual
+after matching prefix error rate is ~0, the honest reading is ordinary error propagation
+and the ceiling drops toward Findings. Recorded before the run
+(`E12_PREREGISTRATION.md` §4, §8).
 
 ### 0.6 Novelty accounting, as of 2026-09-14
 
@@ -122,9 +178,14 @@ and a slope that is zero on one side.
 | protocol changes the conclusion | **owned** — P0.2, P0.3. Prerequisite only |
 | capability-specific compression damage exists | **owned** — P0.4, mother phenomenon |
 | CoT error accumulates after pruning | **owned** — P0.5 |
-| retention decays with answer depth **only** for trajectory-carried answers | **no owner found** — load-bearing |
-| provenance manipulated within item, capability held fixed | **no owner found** — E12, not yet run |
-| published capability orderings re-estimated at matched provenance | **no owner found** — C3, conditional on E12 |
+| reasoning trajectories are special under compression; calibrate on them | **owned** — RAC, AYOT (§0.3, §0.35) |
+| CoT is a computational bridge carrying what the prompt cannot | **owned** — Reasoning as Compression (§0.36) |
+| supplied vs self-generated prefixes play different causal roles | **owned** — CoT faithfulness work (§0.36) |
+| depth sensitivity is not generic to long generation | **no owner found** — observational, motivation only |
+| compression damage decomposed into direct vs **trajectory-mediated** | **no owner found** — load-bearing, E12 Stage 1, not yet run |
+| mediation not reducible to prefix error content (corrupted-reference residual) | **no owner found** — decides new-object vs exposure-bias |
+| the bridge closes selectively under state refresh | **no owner found** — E12 Stage 2 |
+| published capability orderings partly accounted for by the mechanism | **no owner found** — C3, conditional |
 
 ---
 

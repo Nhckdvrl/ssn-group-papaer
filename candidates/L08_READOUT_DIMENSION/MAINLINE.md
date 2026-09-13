@@ -29,27 +29,38 @@ But the discarded variation turned out to be the finding.
 
 ## 2. The claim
 
-> **What compression damages under free generation is not a capability. It is the part
-> of the answer that the model must carry through its own generated prefix.**
+> **Compression errors compound with dependence on treatment-generated context — not
+> with output length, and not with semantic capability per se.**
 >
-> Retention decays with answer depth when the answer is *trajectory-carried* — it
-> exists only in the tokens the model has already emitted — and does not decay at all
-> when the answer stays *prompt-recoverable* at the moment of emission. The
-> knowledge-versus-reasoning ordering the compression literature reports is, to first
-> order, this provenance ordering, because knowledge benchmarks are scored on
-> prompt-recoverable answers and reasoning benchmarks on trajectory-carried ones.
+> A local compression error becomes a sequence-level capability failure when later
+> predictions causally depend on context that was produced under the same perturbation.
+> Computation that can be re-grounded in a context the treatment did not touch breaks
+> the amplification loop.
 
-Stated as an estimand: an apparent capability-fragility ordering is not identified by a
-cross-benchmark compression comparison, because
+The scientific object is **trajectory-mediated compression damage**. Writing `T` for the
+treatment, `Z` for the tokens the model has emitted and `Y` for the answer, compression
+reaches the answer by two paths —
 
 ```
-observed selectivity = f(answer provenance, answer depth, intervention, capability)
+  direct      T -> Y                 the current step's computation is damaged
+  mediated    T -> Z(T) -> Y         the context the current step conditions on was
+                                     itself produced under the treatment
 ```
 
-and in the comparisons the field runs, the first two vary with the fourth by
-construction. Capability label alone does not define fragility.
+— and the second is the object. The governing variable is **trajectory dependence**
+(equivalently, external re-groundability): whether the information needed for a correct
+decision at step `t` is recoverable from a context that is not treatment-dependent.
 
-## 3. The evidence, on the existing runs
+**Wording that is no longer used.** An earlier draft of this file said `the part of the
+answer the model must carry through its own generated prefix`, with the variable named
+`prompt-recoverable vs trajectory-carried`. That binary does not survive scrutiny:
+MMLU's candidate strings sit in the prompt but *which one is correct* does not, and
+GSM8K's problem statement sits in the prompt throughout, so the model could in principle
+re-derive rather than depend on its chain. `The answer string is in the prompt` is not
+`task-critical state is externally recoverable`. The binary is retained only as the
+observational correlate that motivated the question.
+
+## 3. The evidence, on the existing runs — observational, and labelled as such
 
 Logistic fit of per-item retention on `log2(1 + L)`, `L` = the full model's answer
 position. `L` is pre-treatment; retention conditions on the full model being correct.
@@ -64,7 +75,14 @@ pruning and weight quantization:
 | difference significant in the **wrong** direction | **0 of 15** |
 
 Same model, same intervention, same free-generation protocol, same long-chain regime.
-The only thing that differs is whether the answer survives in the prompt.
+What differs is the dataset, and with it a bundle that includes trajectory dependence.
+
+**This is a dissociation, not a mechanism.** It says depth sensitivity is not a generic
+property of long generation — something that varies between these two cells switches it
+on. It does not say what. In the inherited data trajectory dependence is confounded with
+domain, answer format and item difficulty, so the table below motivates the question and
+may never be presented as the result. Under the forbidden-rescue rule in
+`E12_PREREGISTRATION.md` §8 it cannot be used to save the package either.
 
 Two inherited results are the causal counterpart of this, and both were already run:
 
@@ -125,22 +143,47 @@ it, because the same mechanism applies to every row of the knowledge column.
   identical content. Cited to Wen et al. and Song et al.; our version is cleaner
   (same item, same prompt, same intervention, only the readout rule varies) and is
   reported as identification, **not as novelty**.
-- **C2 — load-bearing.** The depth-by-provenance law of §2-§3, established by a design
-  that manipulates provenance **within item**.
+- **C2 — load-bearing.** Trajectory-mediated compression damage, established by a
+  **selective causal intervention**: prefix clamping, which holds direct per-step damage
+  fixed at every step and varies only how much of the conditioning context was produced
+  under the treatment. E12 Stage 1. The observational slope table is the motivation for
+  this experiment, not a substitute for it.
 - **C3 — consequence.** Re-estimate a small number of load-bearing published
   comparisons under matched provenance and depth, and report how much of the reported
   capability ordering survives.
 
-## 7. Stop rule
+## 7. The reviewer attack this has to survive
 
-L08's Main route is killed if **E12** returns any of:
+The old danger was *"Song et al. and Wen et al. already showed protocol matters"*. That
+is now handled: C1 is a prerequisite and is claimed nowhere.
 
-- provenance manipulated within item does not reproduce the slope dissociation;
-- the dissociation appears only under readout truncation and not under a real pruning
-  or quantization method (Wanda / SparseGPT / AWQ / GPTQ);
-- an open-ended long-generation knowledge cell decays like GSM8K, i.e. the flat MMLU
-  slope was the multiple-choice chance floor after all;
-- the dissociation is explained by item difficulty once depth is randomised.
+The new danger is different and sharper:
 
-**The failure may not be rescued** by retreating to "but multiple choice and generation
-still differ", or to the `C3.2` no-crossing count. Both are covered by §5.
+> *"This is exposure bias under compression. Autoregressive models condition on their own
+> mistakes. Everybody knows this."*
+
+Two things defeat it, and the paper is not viable without both.
+
+1. **Not every long generation shows the effect.** Classic exposure bias predicts
+   accumulation wherever a model conditions on its own output. The §3 dissociation
+   already indicates otherwise, observationally.
+2. **The loop can be opened and closed by intervention.** Prefix clamping switches the
+   mediation off while leaving per-step damage untouched; state refresh switches it back
+   on selectively. Exposure bias is a statement about a train/inference prefix
+   distribution mismatch; this is a decomposition of a *model perturbation* into direct
+   and trajectory-mediated components, and when each occurs.
+
+The corrupted-reference arm (`E12` §4) is what separates the two quantitatively. If the
+residual after matching prefix error rate is ~0, the honest reading is ordinary error
+propagation, which is adjacent to what RAC owns, and the ceiling drops.
+
+## 8. Stop rule
+
+Full outcome table in `E12_PREREGISTRATION.md` §8. The Main route is killed if clamped
+and free-running depth slopes are equal; if the effect holds for readout truncation but
+for none of Wanda / SparseGPT / AWQ / GPTQ; or if it holds on GSM8K but not on a second
+computation family.
+
+**Forbidden rescues:** "multiple choice and generation still differ" (owned); the
+`C3.2` no-crossing count (demoted); the §3 observational slope table (motivation, not
+result); a benchmark-auditing paper.
