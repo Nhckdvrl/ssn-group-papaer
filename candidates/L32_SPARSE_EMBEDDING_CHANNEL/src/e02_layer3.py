@@ -83,6 +83,13 @@ def main():
     ap.add_argument("--n-train", type=int, default=10000)
     ap.add_argument("--max-new", type=int, default=256)
     ap.add_argument("--batch-size", type=int, default=24)
+    # Disambiguates a transfer ratio near 1. If the crossed ticket works as well
+    # as the matched one, either the two share a functional core, or ticket
+    # identity barely matters at all. This replaces the ticket with random rows
+    # that are NOT in the prompt template and are matched one-for-one on total
+    # training count, which separates those two readings.
+    ap.add_argument("--random-ticket", type=int, default=None)
+    ap.add_argument("--random-exclude-special", action="store_true")
     args = ap.parse_args()
 
     torch.manual_seed(args.seed)
@@ -106,6 +113,47 @@ def main():
 
     rows = build_rows(tok, args.lang, head, tail, args.n_train, 1732)
     print(f"  train pool {len(rows)}", flush=True)
+    if args.random_ticket is not None:
+        import random as _r
+        from collections import Counter
+        cnt = Counter()
+        for r in rows:
+            cnt.update(r["ids"])
+            cnt.update(r["y"])
+        tpl = set(tok.encode(head, add_special_tokens=False)) | \
+            set(tok.encode(tail, add_special_tokens=False))
+        # BOS/EOS occur once per example in a perfectly constant position, so
+        # they are interface tokens in everything but name; leaving them in the
+        # "non-template" pool would hand the control the very thing it is meant
+        # to withhold. `--random-exclude-special` removes them.
+        special = {tok.bos_token_id, tok.eos_token_id, tok.unk_token_id,
+                   getattr(tok, "pad_token_id", None)}
+        special = {x for x in special if x is not None}
+        pool = [i for i in cnt if i not in tpl and i not in set(ticket)
+                and not (args.random_exclude_special and i in special)]
+        rng = _r.Random(args.random_ticket)
+        new, used = [], set()
+        for t in ticket:
+            lo, hi = cnt[t] * 0.8, cnt[t] * 1.2
+            cand = [i for i in pool if lo <= cnt[i] <= hi and i not in used]
+            if not cand:
+                cand = sorted(pool, key=lambda i: abs(cnt[i] - cnt[t]))
+                cand = [i for i in cand if i not in used][:50]
+            pick = rng.choice(cand)
+            used.add(pick)
+            new.append(pick)
+        print(f"  RANDOM count-matched non-template ticket "
+              f"{[tok.decode([t]) for t in new]}", flush=True)
+        print(f"  counts real {[cnt[t] for t in ticket]}", flush=True)
+        print(f"  counts rand {[cnt[t] for t in new]}", flush=True)
+        ticket = new
+        sel = torch.full((32000,), -1, dtype=torch.long, device="cuda")
+        for k, t in enumerate(ticket):
+            sel[t] = k
+        delta.row_of_token = sel
+        rec_name_suffix = (f"_rand{args.random_ticket}"
+                           + ("_nospecial" if args.random_exclude_special else ""))
+        name = name + rec_name_suffix
     model.train()
     train(model, emb, delta, rows, args)
 
@@ -118,6 +166,7 @@ def main():
     zero.row_of_token = sel
 
     rec = {"lang": args.lang, "rows_from": args.ticket_from,
+           "random_ticket": args.random_ticket,
            "eval_prompt": args.train_prompt, "seed": args.seed,
            "k": args.k, "ticket": ticket,
            "ticket_str": [tok.decode([t]) for t in ticket], "arms": {}}
