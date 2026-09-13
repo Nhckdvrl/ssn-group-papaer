@@ -1,6 +1,6 @@
 # L32 — Where Do 18 Embeddings Work?
 
-**Status:** `E01 COMPLETE — gate passed, claim mutated. Awaiting Selection on notes/CLAIM_NOVELTY_DELTA.md`  
+**Status:** `E02 COMPLETE — HOLD / Findings. Not promoted to Main candidate.` (2026-09-13)  
 **Date:** 2026-09-13  
 **Target:** ACL / EMNLP / NAACL Main
 
@@ -127,3 +127,42 @@ leaves 10/18.
 **Verdict:** E01 alone is a Findings-level correction. The Main-level path is
 open but unproven and needs one pre-registered selection round
 (`TICKET_SELECTION_PROBE.md` §6, under a GPU-day). C2 remains unauthorised.
+
+
+---
+
+## E02 outcome (2026-09-13) — `HOLD / Findings`
+
+Preregistered in `notes/E02_PREREGISTRATION.md` before any run; full result in
+`notes/E02_REPORT.md`. Question: *are multilingual winning tickets properties of
+a language, or of the interface used to ask the model to translate?*
+
+| layer | result |
+|---|---|
+| L1 cross-language evaluation audit | **PASS** 3/3 |
+| L2 selection factorial + frequency control | **PASS** 18/18 |
+| L3 functional cross-template transfer | **FAIL** (ratio 0.996) |
+
+**L1.** Using the parent's own published Table 11 tickets, 94-107% of the
+sparse-tuning gain is termination in all three pairs (ca 0.938, es 0.970, ro
+1.070). For en->ro the translation content is *worse* after tuning while the raw
+score rises 20 points.
+
+**L2.** At the parent's ticket size, rewording the prompt destroys more of the
+certified ticket (8.6/18 survive) than switching target language (11.6/18),
+against a seed ceiling of 17.4/18 -- and the prompt arm is the controlled one.
+Template tokens rank 7-11 while non-template tokens **matched on training count**
+rank 84-372 (Wilcoxon p <= 1e-3, 18/18 cells). Frequency does not explain it.
+
+**L3.** But tickets are functionally interchangeable across templates (0.996),
+so the interface account does not extend from selection to function.
+
+An added, non-preregistered control shows count-matched non-template rows
+recover only 0.40-0.59, so ticket identity does matter; and across 8 runs,
+whether the random ticket contained `<s>` separates 0.97-0.99 from 0.40-0.59
+with no overlap. Not used to change the verdict.
+
+**Conclusion:** a strong Findings paper -- the dissociation is that ticket
+*selection* is an interface phenomenon while ticket *function* rests on a small
+prompt-generic structural core. **Not** "multilingual tickets are prompt
+artifacts", which L3 does not support.
