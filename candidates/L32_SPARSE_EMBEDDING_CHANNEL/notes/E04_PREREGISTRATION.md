@@ -118,3 +118,50 @@ No new mechanism claim, no further model expansion, no new selection algorithm.
 The Selection document's second Main ingredient — establishing the
 one-row-plus-truncation reporting standard — is a *writing* task built on these
 numbers, not an additional experiment.
+
+---
+
+## DEVIATION 1 — 2026-09-13, recorded before any E04 result was produced
+
+A support audit run before launching (`results/e04_support_audit.json`) shows
+**§3's row table is wrong**, and the error is instructive enough to keep in the
+paper.
+
+§3's token ids came from encoding the tail string **in isolation**. When the
+full prompt is encoded, byte-BPE merges the tail newline with the final
+character of the source sentence — Flores sentences almost all end in `.`, so
+`.` + `\n` → `'.\n'` and the standalone newline **disappears**:
+
+| model | `\n` row | devtest support | `:` row | devtest support |
+|---|---|---|---|---|
+| llama1-7b | 13 | **1012/1012**, 2.00/ex | 29901 | **1012/1012**, 2.03/ex |
+| llama3.1-8b | 198 | **4/1012** | 25 | **1012/1012**, 2.03/ex |
+| qwen2.5-7b | 198 | **4/1012** | 25 | **1012/1012**, 2.03/ex |
+
+A direct check confirms the consequence: injecting a delta of 5x the row's own
+norm into row 198 on Qwen moves the next-token logits by **exactly 0.0**. The
+first Qwen smoke run's null was a **zero-opportunity null**, which E01's support
+audit exists precisely to catch, and it is not evidence about anything.
+
+§3 also has a second error: `:` for llama1 was recorded as 584, which is the
+SentencePiece `▁:` variant with 0/1012 support. The realized colon row is 29901.
+
+### Amended conditions
+
+Row choice becomes **support-driven and automatic**, computed from the realized
+devtest tokenization before training, and asserted to have ≥95% support:
+
+- **`ROW_COLON`** — the row decoding to exactly `":"`. Support 1012/1012 and
+  ~2.03 occurrences per example in **all three** models, so this is now the
+  **primary cross-family structural row**, replacing newline in that role.
+- **`ROW_SEP`** — the row that realizes the newline/line-break role in that
+  tokenizer: `13` (`'\n'`) for llama1, `627` / `624` (`'.\n'`) for
+  llama3.1 / qwen2.5. This replaces `ROW_NL`.
+- `FULL_EMBED` and `ROW_RAND` unchanged; `ROW_RAND` is now count-matched to
+  `ROW_COLON`.
+
+Gate §8 is unchanged in substance, read with `ROW_COLON` in place of `ROW_NL`.
+Thresholds are **not** renegotiated.
+
+This deviation was forced by a measurement fact, was found before any E04 number
+existed, and is recorded rather than edited into §3.
