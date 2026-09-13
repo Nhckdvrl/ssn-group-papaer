@@ -3,13 +3,55 @@
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
 **Open-ended search:** **ACTIVE**  
-**Active bounded pilots:** **L32 — PILOT-AUTHORIZED — E01 ONLY**; **L17 — existing speech project, outside current new-search preference**.
+**Active bounded pilots:** **L33 — PILOT-AUTHORIZED — E01 ONLY**; **L32 — PILOT-AUTHORIZED — E01 ONLY**; **L17 — existing speech project, outside current new-search preference**.
 
-> **Status reconciliation (2026-09-13):** an earlier version of this file incorrectly said “no active pilot.” `candidates/L32_SPARSE_EMBEDDING_CHANNEL/README.md` and `search_rounds/2026-09-13_SPARSE_EMBEDDING_CHANNEL_SELECTION.md` are authoritative: **L32 is PILOT-AUTHORIZED — E01 ONLY**. There is still **no approved paper mainline**. Do not re-review or downgrade L32 because of the stale sentence that used to appear here.
+> **Status note (2026-09-13):** `PILOT-AUTHORIZED` is not an approved paper mainline. L32 and L33 each authorize only one bounded E01. There is still **no approved paper mainline**.
 
 ---
 
 # 1. Current portfolio
+
+## L33 — Where Does Agreement Go Wrong?
+
+**Status:** `PILOT-AUTHORIZED — E01 ONLY`  
+**Role:** newly selected independent scientific object; not a continuation of L32/L30.
+
+Package: `candidates/L33_AGREEMENT_ATTRACTION_MECHANISM/`  
+Selection: `search_rounds/2026-09-13_AGREEMENT_ATTRACTION_SELECTION.md`
+
+RQ:
+
+> **When a distractor noun pulls a language model toward the wrong subject–verb agreement, is the controller-number state already corrupted before verb prediction, or does the correct controller information survive and lose only when the model reads it out?**
+
+Mother: classic agreement attraction plus 2026 evidence that autoregressive Transformers, including the pre-specified Gemma-3 base family, robustly reproduce the relevant PP-attraction pattern.
+
+Scientific accounts:
+
+- **state distortion:** attractor number has already contaminated the derived pre-verb controller/context state;
+- **access competition:** controller information survives sufficiently, but fresh late access to the distractor wins during agreement readout;
+- **hybrid:** both channels contribute.
+
+Authorized E01 uses published Wagers et al. (2009) buffered items with a neutral adverb between attractor and verb. On `google/gemma-3-4b-pt`, first validate clean SVA and a material attraction effect, then for every layer boundary compare:
+
+`FULL / STATE-CLEAN / ACCESS-CLEAN / BOTH-CLEAN`
+
+The causal mask plus the single neutral pre-verb position gives a particularly clean path decomposition: positions before the attractor are identical; distractor influence either has already entered the current pre-verb state or enters later through fresh causal access from the attractor.
+
+Frozen mother gates:
+
+- clean/matching SVA grammatical preference on **≥80%** of retained items;
+- mean attraction shift **≥0.5 bits**;
+- paired item-bootstrap 95% CI excludes 0 in the predicted direction.
+
+Frozen completeness gate:
+
+> `BOTH-CLEAN` must recover at least **70%** of the singular-vs-plural-attractor logit-margin difference in some contiguous layer region without materially destroying clean SVA.
+
+If the mother or completeness/selectivity gates fail: **STOP / HOLD**. Do not model-shop, prompt-search, synthesize a new benchmark, or pivot to a generic syntax-unit atlas.
+
+Do not yet authorize multilingual/model-zoo breadth, instruction-tuned comparisons, SAE/probe atlases, human experiments, new agreement methods, or training dynamics.
+
+---
 
 ## L32 — Where Do 18 Embeddings Work?
 
@@ -155,6 +197,8 @@ Bad shapes:
 
 Recent anti-resurrection examples are persisted in `2026-09-13_PRESSURE_FIRST_SEARCH_III.md`: grammaticality causal-use, rules-vs-examples task representations, decoded planning causal-use, reasoning rescue of syntactic complexity, and scope ambiguity.
 
+**L33 is the positive example of this lane:** it does not ask whether the model knows agreement. It starts from a stable attraction error plus a live theoretical distinction and uses the decoder causal graph to make the old `distorted state vs wrong access` question directly identifiable.
+
 ---
 
 # 4. Search preference / exclusions
@@ -199,7 +243,11 @@ Hard / recent bans include at least:
 - FP32 vs BF16 knowledge capacity;
 - modern MT robustness;
 - diffusion Flexibility Trap;
-- generic CoT faithfulness, metacognition control, RLVR entropy/mode-collapse/capability-boundary, self-correction, reasoning-length/overthinking, generic post-training rerouting.
+- generic CoT faithfulness, metacognition control, RLVR entropy/mode-collapse/capability-boundary, self-correction, reasoning-length/overthinking, generic post-training rerouting;
+- boundary/pause-token persistence as a fresh mechanism parent after 2026 boundary-pause mechanism work;
+- structural priming lexical-boost vs abstract-persistence as a fresh dual-mechanism parent;
+- response-sampling normative bias as a base-vs-aligned origin question;
+- self-consistency as an unconditional diversity/variance-reduction law.
 
 A new model, prompt, dataset, language, intervention, or mechanism label does not reopen a killed parent.
 
