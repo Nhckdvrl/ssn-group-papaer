@@ -40,8 +40,8 @@ def parse_args():
     p.add_argument("--condition", required=True,
                    choices=["A_ONLY", "B_ONLY", "MIXED", "A_ONLY_NOEOSLOSS"])
     p.add_argument("--epochs", type=int, default=3)
-    p.add_argument("--batch", type=int, default=4)
-    p.add_argument("--accum", type=int, default=2)
+    p.add_argument("--batch", type=int, default=8)
+    p.add_argument("--accum", type=int, default=1)
     p.add_argument("--lr", type=float, default=1e-5)
     p.add_argument("--warmup", type=int, default=20)
     p.add_argument("--max-len", type=int, default=256)
@@ -178,8 +178,9 @@ def main():
     end_id = tok.convert_tokens_to_ids(END_TOKEN)
     assert isinstance(end_id, int) and end_id > 0, END_TOKEN
 
-    model = AutoModelForCausalLM.from_pretrained(a.base, dtype=torch.float32).cuda()
-    model.gradient_checkpointing_enable()
+    # bf16 weights and no activation checkpointing: an fp32 3B with checkpointing ran at ~17 s per
+    # optimizer step, which would have breached the 4-hour stop rule in E02_PREREGISTRATION.md §7
+    model = AutoModelForCausalLM.from_pretrained(a.base, dtype=torch.bfloat16).cuda()
     model.config.use_cache = False
 
     ds = SFTData(tr_src, tr_tgt, a.condition, tok, a.max_len, a.seed)
@@ -241,8 +242,7 @@ def main():
             break
         for i, (ids, labels, attn) in enumerate(dl):
             ids, labels, attn = ids.cuda(), labels.cuda(), attn.cuda()
-            with torch.autocast("cuda", dtype=torch.bfloat16):
-                out = model(input_ids=ids, attention_mask=attn, labels=labels)
+            out = model(input_ids=ids, attention_mask=attn, labels=labels)
             (out.loss / a.accum).backward()
             running += float(out.loss) / a.accum
             if (i + 1) % a.accum == 0:

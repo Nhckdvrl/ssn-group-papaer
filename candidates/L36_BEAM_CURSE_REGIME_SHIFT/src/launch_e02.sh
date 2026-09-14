@@ -10,7 +10,7 @@ run () {
   [ -s "results/e02/${COND}.jsonl" ] && { echo "[skip] $COND"; return; }
   echo "[gpu$GPU] $COND $(date +%H:%M:%S)"
   CUDA_VISIBLE_DEVICES=$GPU $PY src/e02_train.py --condition "$COND" \
-    --epochs 3 --batch 4 --accum 2 --lr 1e-5 --eval-every 50 --eval-n 200 \
+    --epochs 3 --batch 8 --accum 1 --lr 1e-5 --eval-every 50 --eval-n 200 \
     --behaviour-at 200,600,final --beams 1,16,64 --beam-n 200 \
     > "results/logs/e02_${COND}.log" 2>&1
   echo "[gpu$GPU] done $COND rc=$? $(date +%H:%M:%S)"

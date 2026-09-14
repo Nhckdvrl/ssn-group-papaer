@@ -90,6 +90,16 @@ costing ~45 minutes per condition (four conditions ran that long without reachin
 killed). Behavioural cells are therefore taken at **200, 600, final**; the cheap step-0 *rank*
 measurement is unchanged and still runs at step 0. No result existed when this was decided.
 
+### 3c. Amendment (2026-09-14, throughput; made at step 50 of one condition, before any
+differentiation existed)
+
+The first configuration (fp32 weights, activation checkpointing, batch 4 × accum 2) ran at ~17 s per
+optimizer step — 5 hours per condition, breaching the §7 stop rule. Changed to **bf16 weights, no
+activation checkpointing, batch 8 × accum 1**; the number of optimizer steps, the data, the order,
+the seed, the learning rate and the schedule are unchanged. At the point of the change the only
+result in hand was step 50 of `B_ONLY`, where `rank_A` (78845) and `rank_B` (80671) were still
+indistinguishable, so no outcome informed it.
+
 ## 4. Predictions (registered before any run)
 
 **P1 — reversal (the decisive one).**
