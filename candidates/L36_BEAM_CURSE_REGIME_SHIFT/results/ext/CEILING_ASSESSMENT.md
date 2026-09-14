@@ -73,6 +73,16 @@ flat curve is produced by length normalisation, kill the Main route. It is not.
 Under the exact scoring semantics in which the 2019 system loses 44 BLEU and empties 54 % of its
 output, the modern model does not move.
 
+Matched head-to-head on the **same 400 segments**, same semantics, same beam grid:
+
+| system | BLEU beam 4 → 64 | empty % 4 → 64 | len ratio 4 → 64 |
+|---|---|---|---|
+| `facebook/wmt19-en-de` (2019) | 48.61 → 43.28 (**−5.33**) | 0 → **8.75** | 1.011 → 0.845 |
+| `Helsinki-NLP/opus-mt-en-de` (2020) | 46.97 → 45.04 (−1.94) | 0 → 0 | 0.950 → 0.902 |
+| `google/gemma-3-12b-it` (2025) | 45.91 → **46.12 (+0.21)** | 0 → **0** | 0.998 → 0.995 |
+| `facebook/wmt19-en-de` at beam 128 | 20.15 | 33.75 | 0.501 |
+| `facebook/wmt19-en-de` at beam 512 | 6.89 | 48.50 | 0.311 |
+
 ### 1.4 A calibrated knob on that one quantity brings the curse back
 
 Pre-registered in `EOS_BIAS_PREDICTION.md` (written before the runs, from the 26-nat gap in §1.2).

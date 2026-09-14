@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-14  
 **Target:** ACL / EMNLP / NAACL Main  
-**Status:** **HOLD — E00 audit run 2026-09-14; E01 not authorized** (see `results/e00/E00_VERDICT.md`)
+**Status:** **HOLD — E00 audit failed its power gate; ceiling probe caps the route at finding-level** (see `results/e00/E00_VERDICT.md` and `results/ext/CEILING_ASSESSMENT.md`)
 
 ## 1. Research question
 

@@ -1,6 +1,6 @@
 # L36 — Why Did the Beam-Search Curse Disappear?
 
-**Status:** **HOLD — E00 RUN 2026-09-14; GATE D FAILED, GATE B CONDITIONAL; E01 NOT AUTHORIZED**  
+**Status:** **HOLD — E00 failed its power gate; the ceiling probe says FINDING-LEVEL AT BEST, and the original identity is dead**  
 **Target:** ACL / EMNLP / NAACL Main  
 **Date:** 2026-09-14
 
@@ -65,6 +65,40 @@ Two results decided it, both on classic 2019 En→De systems and before the mode
    scoring-convention artifact that the Selection says kills the Main route.
 
 Cost: one afternoon, 4 local cards, inference only, no training runs.
+
+## Ceiling probe (E00-EXT, same day) — what the question can actually yield
+
+Full write-up: [`results/ext/CEILING_ASSESSMENT.md`](results/ext/CEILING_ASSESSMENT.md).
+
+```yaml
+main_level:            NO     # the mediator is a quantity the 2018-2019 length-bias work owns
+finding_level:         YES    # short/Findings scale
+original_L36_identity: DEAD   # uncertainty is not in the causal path at the sentence level
+```
+
+Four things were established after the gate, all inference-only:
+
+1. **The reversal never turns over.** Following the classic curse into ACL-2022's own catastrophic
+   range (beam 512: BLEU 3.67, 54% empty outputs), the damage is *still* concentrated in the
+   lowest-uncertainty quartile (`CURSE` = +7.47 / +5.98 / +4.90 at beams 64 / 128 / 512).
+2. **The mediator is termination geometry.** `log p(stop immediately | source)` is −9.31 for
+   `facebook/wmt19-en-de` and −35.33 for `gemma-3-12b-it`; it predicts which segments collapse
+   (logit pseudo-R² 0.176, p = 1.7e-48) while the frozen uncertainty predicts nothing (0.002,
+   p = 0.10) and adds nothing on top of it (p = 0.66).
+3. **The modern non-collapse is real, not a scoring convention.** On the same 400 segments under
+   RAW (`length_penalty = 0`) scoring, beam 4 → 64 costs the 2019 system −5.33 BLEU and 8.75% empty
+   outputs, and costs `gemma-3-12b-it` **+0.21 BLEU and 0% empty**. `SELECTION.md` §10 Outcome B is
+   ruled out — this is what keeps the question alive at all.
+4. **A calibrated knob on that one quantity brings the curse back** (predicted in advance in
+   [`results/ext/EOS_BIAS_PREDICTION.md`](results/ext/EOS_BIAS_PREDICTION.md)): biasing the LLM's
+   end-of-sequence logits does nothing at +13, restores empty collapse and ~4.7 BLEU of damage at
+   +26 (the value matching the classic model's stopping probability), and destroys output at +39.
+
+The honest result is *"the beam-search curse is carried by how much probability a model puts on
+stopping immediately, not by intrinsic ambiguity"* — true, causally supported, and **not** the
+revised conditional law about uncertainty that the Selection promised. The reviewer compression
+(*"the curse is the empty-hypothesis problem, 2018–2019; instruction-tuned models do not emit empty
+strings"*) is the wall that keeps it out of Main.
 
 ## Exact authorization
 
