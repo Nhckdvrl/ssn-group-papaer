@@ -70,6 +70,26 @@ sentences ("Die Aussprache ist geschlossen.") and source copying — mode inadeq
 Eikema & Aziz, not the termination pathology. The two channels must be reported separately; the
 rank law governs only the termination one.
 
+## 3b. Out-of-sample confirmation of the onset law (first half)
+
+`RANK_ONSET_PREDICTION.md` predicted, before the runs, that `Olmo-3` base under the few-shot
+interface (median `rank_stop` 532, so `b* = 266`) would stay **free of empty outputs at beam 128**,
+at a width where the 2019 system is already at 40 % empty.
+
+| system | beam 128 | empty % | length ratio |
+|---|---|---|---|
+| `facebook/wmt19-en-de` | BLEU 16.11 | **40.11 %** | 0.444 |
+| `Olmo-3-1025-7B` base, few-shot | BLEU 16.17 | **0.00 %** | 0.948 |
+
+Confirmed. Note both systems have lost most of their quality by beam 128 — but for entirely
+different reasons: the classic model empties out and shortens to 0.44 of the reference length, while
+the base LM keeps full-length outputs and degrades through the generic-hypothesis channel of §3(d).
+Two systems, the same BLEU, two different pathologies — which is exactly why the termination channel
+needs its own instrument rather than being read off a quality curve.
+
+The second half of the prediction (empties appearing by beam 512, since `2b = 1024 ≥ 532`) is still
+running on a 50-segment subset.
+
 ## 4. What is still running / not yet done
 
 - chat-interface beam-64 cells for SFT/DPO/RLVR, and the base model measured through its SFT
