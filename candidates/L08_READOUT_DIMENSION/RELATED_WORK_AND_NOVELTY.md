@@ -83,6 +83,27 @@ accumulation is the known half; the flat half is the finding.
 E12 therefore fixes calibration data across all arms and does not task-match it —
 task-matched calibration is RAC's paper.
 
+### 0.37 A route that was tried and abandoned  `2026-09-14`
+
+Separating "the prefix is worse" from "the prefix was produced under this perturbation"
+by constructing a matched corrupted prefix was attempted three ways and abandoned. The
+obstacle is structural, not workmanship: a control must simultaneously match semantic
+quality, match error rate, stay on the realistic trajectory manifold, and not be
+generated under the treatment. For severe compression `Z(T)` is too degraded to mimic
+without producing garbage; for mild compression `Z(T)` is too good, so rate-matching
+leaves almost no corrupted support and power collapses. Measured:
+
+| control | on_task | verdict |
+|---|---|---|
+| reference `Z(0)` | 0.533 | untreated **and** correct — confounded by construction |
+| surgical `Z~s(0)` | 0.463 | the only quality-passing control, and only for severe interventions |
+| readout `Z(T)` | 0.415 | the treated prefix itself |
+| foreign `Z(T')` | 0.276 | less usable than the treated prefix — failed |
+| corrupted `Z~(0)` | 0.073 | far off-task — failed |
+
+Recorded so that no future pass re-derives it. Stage 2 does not need such a control:
+the refreshed information already exists inside the same treated trajectory.
+
 ### 0.4 Neighbours that do not collide
 
 - **ICLR 2026, "When Reasoning Meets Compression"** — reports weight count affecting
@@ -113,6 +134,34 @@ sequence-level capability failure, and when does the amplification vanish. RAC a
 fix the symptom by changing calibration; they do not decompose the effect into direct
 and trajectory-mediated components, and they have no condition under which the
 amplification is absent.
+
+### 0.355 METHODOLOGICAL OWNER OF THE CLAMP ITSELF  `added 2026-09-14, was missed`
+
+**"Exposure Bias versus Self-Recovery: Are Distortions Really Incremental for
+Autoregressive Text Generation?", EMNLP 2021, aclanthology 2021.emnlp-main.415.**
+
+This owns the *instrument*, not just an adjacent finding: substituting a clean prefix
+for a self-generated one in order to test whether errors accumulate incrementally is
+exactly the prefix-clamp manipulation, published five years earlier, and its answer is
+that models substantially self-recover rather than compounding distortions.
+
+Consequences, and they are not cosmetic:
+
+1. **"Clamping a clean prefix rescues generation" is not a new method and not a new
+   finding.** L08 must present the clamp as a borrowed instrument applied to a new
+   treatment (a model perturbation rather than a decoding/training mismatch), and cite
+   this paper where the instrument is introduced.
+2. **It sharpens the reviewer attack in §0.5b.** "This is exposure bias" now has a
+   specific citation with the same experimental move. The answer cannot be the clamp;
+   it has to be the selective intervention that exposure-bias work does not have.
+3. It also gives the contrast a name: exposure bias asks whether a model recovers from
+   *its own sampling noise*; L08 asks whether it recovers from *its own damaged
+   computation*. Those are different treatments, and the second is what RAC and AYOT
+   care about. But the distinction has to be argued, not assumed.
+
+**Therefore Stage 1 alone cannot carry Main novelty**, independently of how large the
+mediation is. This is recorded before Stage 2 runs so that no Stage 1 result can be
+retro-fitted into a contribution.
 
 ### 0.36 Conceptual neighbour, to be cited for language not novelty
 
@@ -182,9 +231,10 @@ and the ceiling drops toward Findings. Recorded before the run
 | CoT is a computational bridge carrying what the prompt cannot | **owned** — Reasoning as Compression (§0.36) |
 | supplied vs self-generated prefixes play different causal roles | **owned** — CoT faithfulness work (§0.36) |
 | depth sensitivity is not generic to long generation | **no owner found** — observational, motivation only |
-| compression damage decomposed into direct vs **trajectory-mediated** | **no owner found** — load-bearing, E12 Stage 1, not yet run |
-| mediation not reducible to prefix error content (corrupted-reference residual) | **no owner found** — decides new-object vs exposure-bias |
-| the bridge closes selectively under state refresh | **no owner found** — E12 Stage 2 |
+| clean-prefix substitution as a test of error accumulation | **OWNED** — Exposure Bias vs Self-Recovery, EMNLP 2021 (§0.355). The clamp is a borrowed instrument |
+| compression damage decomposed into direct vs trajectory-mediated | **no owner found**, but **cannot carry Main alone** given §0.355. Stage 1: SUPPORTED |
+| mediation not reducible to prefix quality | **UNRESOLVED** — three controls failed; abandoned as a route, see §0.37 |
+| **re-grounding an already-produced load-bearing state selectively rescues compressed but not full-precision trajectories** | **no owner found — LOAD-BEARING.** E13, not yet run |
 | published capability orderings partly accounted for by the mechanism | **no owner found** — C3, conditional |
 
 ---

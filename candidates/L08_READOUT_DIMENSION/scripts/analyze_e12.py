@@ -35,9 +35,10 @@ def per_item(path):
     return dict(zip(ids, s["correct"])), s
 
 
-def retention(full_map, run_map):
-    """indicator over items the full model gets right"""
-    v = [run_map[i] for i, c in full_map.items() if c and i in run_map]
+def retention(full_map, run_map, only=None):
+    """indicator over items the full model gets right, optionally restricted"""
+    v = [run_map[i] for i, c in full_map.items()
+         if c and i in run_map and (only is None or i in only)]
     return np.array(v, float)
 
 
@@ -53,9 +54,16 @@ def main():
     runs = collections.defaultdict(dict)
     for p in (ROOT / "results" / "e12").rglob("*.jsonl"):
         h = json.loads(open(p).readline())
-        if "clamp" not in h:       # a corrupted-reference generation, not a clamp run
+        if "clamp" not in h:       # a control-prefix generation, not a clamp run
             continue
-        runs[(p.parent.name, h["cell"], h["mask"])][(h["clamp"], h["frac"])] = p
+        # `corrupted` was used as the CLI tag for two different controls -- the
+        # temperature-sampled one and the surgical one -- which silently collided in
+        # this dict.  Disambiguate by the clamp source that was actually used.
+        arm = h["clamp"]
+        if arm == "corrupted":
+            src = h.get("clamp_source", "")
+            arm = "surgical" if "surgical" in src else "temp-corrupt"
+        runs[(p.parent.name, h["cell"], h["mask"])][(arm, h["frac"])] = p
 
     for (tag, cell, iv), cells in sorted(runs.items()):
         fullp = ROOT / "results" / "e01" / tag / f"{cell}__full.jsonl"
@@ -73,6 +81,33 @@ def main():
             table[(arm, frac)] = v
             print(f"{arm:<12}{frac:>6.2f}{v.mean():>12.4f}{len(v):>7}")
 
+        # the surgical control only exists for trajectories that actually contained a
+        # calculator annotation; every contrast involving it is computed on that
+        # subset, free-running included, so the arms share an item set.
+        sg = ROOT / "results" / "e12" / tag / f"{cell}__surgical_ref.jsonl"
+        elig = None
+        if sg.exists():
+            elig = {json.loads(l)["id"] for l in list(open(sg))[1:]
+                    if json.loads(l).get("n_annotations_corrupted", 0) > 0}
+        if elig and ("surgical", 0.5) in cells:
+            print(f"\n  surgical contrast, restricted to the {len(elig)} trajectories "
+                  f"with a corrupted annotation:")
+            fm2 = {i: c for i, c in fm.items() if i in elig}
+            sub = {}
+            for (arm, fr), pth in sorted(cells.items()):
+                rm, _ = per_item(pth)
+                sub[(arm, fr)] = retention(fm2, rm, only=elig)
+            f0 = sub.get(("none", 0.0))
+            for arm, lab in (("surgical", "Y(R~s)  on-task, structured, WRONG"),
+                             ("reference", "Y(R)    on-task, structured, right"),
+                             ("foreign", "Y(T')   another treatment")):
+                v = sub.get((arm, 0.5))
+                if v is None or f0 is None:
+                    continue
+                lo, hi = boot_diff(v, f0)
+                print(f"    {lab:<44}{v.mean():>8.4f}   vs free {f0.mean():.4f}   "
+                      f"diff {v.mean()-f0.mean():>+7.4f}  [{lo:>+6.3f},{hi:>+6.3f}]")
+
         fracs = sorted({f for a, f in table if a != "none"})
         free = table.get(("none", 0.0))
         if free is None or not fracs:
@@ -86,7 +121,8 @@ def main():
                   f"{'PASS' if d <= 0.01 else 'FAIL'} (|diff| {d:.4f})")
         print(f"\n{'contrast':<44}{'estimate':>10}{'95% CI':>18}")
         for f in fracs:
-            R = table.get(("reference", f)); Rt = table.get(("corrupted", f))
+            R = table.get(("reference", f)); Rt = table.get(("surgical", f))
+            Tc = table.get(("temp-corrupt", f))
             if R is not None:
                 lo, hi = boot_diff(R, free)
                 print(f"{f'Y(R,f={f:g}) - Y(F)   total mediation':<44}"
@@ -102,11 +138,15 @@ def main():
                           f"{R.mean()-F2.mean():>10.4f}   [{lo:>5.3f},{hi:>6.3f}]")
             if R is not None and Rt is not None:
                 lo, hi = boot_diff(R, Rt)
-                print(f"{f'Y(R,f={f:g}) - Y(R~,f={f:g})   content / exposure bias':<44}"
+                print(f"{f'Y(R,f={f:g}) - Y(R~s,f={f:g})   content (surgical)':<44}"
                       f"{R.mean()-Rt.mean():>10.4f}   [{lo:>5.3f},{hi:>6.3f}]")
                 lo, hi = boot_diff(Rt, free)
-                print(f"{f'Y(R~,f={f:g}) - Y(F)   RESIDUAL':<44}"
+                print(f"{f'Y(R~s,f={f:g}) - Y(F)   RESIDUAL (surgical)':<44}"
                       f"{Rt.mean()-free.mean():>10.4f}   [{lo:>5.3f},{hi:>6.3f}]")
+            if Tc is not None:
+                lo, hi = boot_diff(Tc, free)
+                print(f"{f'Y(temp-corrupt,f={f:g}) - Y(F)   [FAILED CONTROL]':<44}"
+                      f"{Tc.mean()-free.mean():>10.4f}   [{lo:>5.3f},{hi:>6.3f}]")
         if len(fracs) >= 2:
             early, late = fracs[0], fracs[-1]
             a, b = table.get(("reference", late)), table.get(("reference", early))

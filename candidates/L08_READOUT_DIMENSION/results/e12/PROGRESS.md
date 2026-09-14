@@ -187,3 +187,76 @@ varies only how much of the conditioning context is treatment-generated.
 
 `prune:0.4` is weaker and its low dose is null: 0.059 -> 0.071 (f=0.25,
 [-0.023, 0.048], n.s.) -> 0.163 (f=0.5, +0.104 [0.061, 0.148]).
+
+---
+
+# Stage 1 CLOSED  `2026-09-14`
+
+## The surgical control: residual is NULL on both valid tests
+
+The surgical control (reference trajectory, arithmetic results rewritten, everything
+else untouched) is a **conservative** test for the severe interventions — it is more
+on-task (0.463) and far less degenerate (0.228) than the treated prefix it stands in
+for. It is **anti-conservative** for 4-bit quantization, whose own span correctness is
+0.911, so full corruption makes the control strictly worse than the treated prefix.
+That was stated before the run and it holds.
+
+| intervention | control valid? | `Y(R~s) - Y(F)` | 95% CI | reading |
+|---|---|---|---|---|
+| readout:first | **yes** (conservative) | **+0.0331** | [-0.013, 0.076] | **null** |
+| prune:0.4 | **yes** (conservative) | **-0.0102** | [-0.041, 0.020] | **null** |
+| quant:4 | no (anti-conservative) | -0.1298 | [-0.193, -0.064] | not interpretable |
+
+**The residual is null on both valid tests.** There is no evidence that a prefix
+produced under this particular perturbation is specially damaging beyond how good the
+prefix is. The mediation Stage 1 measures is accounted for by prefix content.
+
+For the record, the two failed controls, kept visible so the conclusion is not
+mistaken for one of theirs:
+
+| control | `Y(.) - Y(F)`, readout | why it fails |
+|---|---|---|
+| temperature-sampled `Z~(0)` | -0.0712 [-0.104, -0.038] | on_task 0.073 vs the treated prefix's 0.415 |
+| foreign `Z(T')` | -0.0433 [-0.079, -0.008] | on_task 0.276 vs 0.415 |
+
+Both look significant and neither is evidence. They are recorded as failed controls.
+
+## What Stage 1 licenses, stated exactly
+
+**C2a, SUPPORTED:** trajectory context is a large causal mediator of
+compression-induced failure. Compression stays active on every forward pass; only the
+source of the appended token changes.
+
+| intervention | locus | free-running | ref clamp f=0.5 | `Y(R) - Y(F)` | 95% CI |
+|---|---|---|---|---|---|
+| readout:first | readout | 0.0941 | 0.3995 | **+0.3053** | [0.249, 0.361] |
+| prune:0.4 | parameter | 0.0585 | 0.1628 | **+0.1043** | [0.061, 0.148] |
+| quant:4 | parameter | 0.4071 | 0.6667 | **+0.2595** | [0.191, 0.326] |
+
+Dose-response, readout:first. **`f = 1` is a positive control / instrument ceiling, not
+a dose point** — the clamp runs through the answer position, so part of 0.972 is
+mechanical copying. The substantive trend is `f = 0, .25, .5, .75`, where the final
+answer is still produced by the compressed model.
+
+| f | 0 | 0.25 | 0.50 | 0.75 | **1.00** |
+|---|---|---|---|---|---|
+| retention | 0.094 | 0.221 | 0.400 | 0.725 | **0.972 — positive control** |
+
+**What Stage 1 does NOT license:** that a prefix produced under this perturbation is
+specially toxic (residual null), or that the mediation is independent of prefix quality
+(it is not — the surgical result says the content explains it).
+
+## Why Stage 1 cannot carry Main, independent of effect size
+
+`RELATED_WORK_AND_NOVELTY.md` §0.355: *Exposure Bias versus Self-Recovery*, EMNLP 2021,
+substitutes a clean prefix for a self-generated one to test whether errors accumulate.
+**That is the clamp.** Applying it to a model perturbation instead of a sampling
+mismatch is a new application, not a new claim, and the null residual removes the one
+result that would have distinguished them.
+
+Stage 1 is therefore closed as supporting evidence. The load-bearing claim moves to
+E13: whether re-grounding an already-produced, load-bearing state selectively rescues
+compressed but not full-precision trajectories. See `E13_PREREGISTRATION.md`.
+
+No further Stage 1 breadth is authorized. The surgical result does not change the
+project's direction; it confirms it.
