@@ -31,12 +31,12 @@ def build_stop_set(tok, model, interface, extra_stop_ids=None):
         if not ids:
             raise ValueError("empty stop set for the chat interface")
         return ids
-    # batch_decode over the whole vocabulary: one call into the fast tokenizer instead of
-    # ~10^5 Python round-trips (the per-id loop took minutes and stalled parallel jobs)
-    vocab_size = len(tok)
-    all_ids = list(range(vocab_size))
-    decoded = tok.batch_decode([[i] for i in all_ids])
-    ids = [i for i, s in zip(all_ids, decoded) if s and "\n" in s]
+    # Scan the vocabulary strings directly. Decoding the whole vocabulary id-by-id, or even with
+    # one batch_decode call, is pathologically slow for some byte-level BPE tokenizers (minutes for
+    # Llama-3.1, which stalled four parallel jobs). Byte-level vocabularies write the line break as
+    # "Ċ"; sentencepiece ones as "<0x0A>" or a literal newline.
+    ids = [i for tokstr, i in tok.get_vocab().items()
+           if tokstr and ("Ċ" in tokstr or "\n" in tokstr or "<0x0A>" in tokstr)]
     eos = model.generation_config.eos_token_id
     eos = eos if isinstance(eos, list) else [eos]
     ids.extend(int(e) for e in eos if e is not None)

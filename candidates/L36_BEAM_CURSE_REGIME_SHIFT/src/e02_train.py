@@ -53,6 +53,10 @@ def parse_args():
     p.add_argument("--seed", type=int, default=20260914)
     p.add_argument("--out", default=None)
     p.add_argument("--max-steps", type=int, default=0)
+    p.add_argument("--save-final", default="",
+                   help="directory to write the final weights to; needed by the boundary-"
+                        "specificity audit, which the first E02 run could not do because nothing "
+                        "was saved")
     return p.parse_args()
 
 
@@ -306,6 +310,11 @@ def main():
                 if step >= total:
                     done = True
                     break
+    if a.save_final:
+        os.makedirs(a.save_final, exist_ok=True)
+        model.save_pretrained(a.save_final)
+        tok.save_pretrained(a.save_final)
+        print(f"[{a.condition}] saved final weights to {a.save_final}", flush=True)
     f.close()
     print(f"[{a.condition}] done in {time.time() - t0:.0f}s", flush=True)
 
