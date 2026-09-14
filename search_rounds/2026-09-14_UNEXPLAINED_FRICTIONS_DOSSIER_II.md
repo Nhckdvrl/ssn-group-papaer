@@ -1,0 +1,457 @@
+# 2026-09-14 — Unexplained Frictions Dossier II
+
+**Mode:** EXPLICIT DISPUTE / REANALYSIS / FAILED-INFERENCE MINING  
+**Candidate generation:** **OFF**  
+**L-series / K-series:** **NO CHANGES**  
+**Purpose:** distinguish a genuinely live scientific pressure from a merely broad important problem by looking for cases where later work explicitly challenges the inference made by earlier work.
+
+This pass is intentionally stricter than Dossier I. A source receives high weight only if it does at least one of:
+
+- identifies a confound in a central inference;
+- obtains a meaningfully opposite result under a closely related test;
+- shows that the accepted observable does not identify the scientific construct;
+- shows that a causal intervention itself creates artifacts relevant to the claim;
+- forces a change in the level of explanation rather than adding another benchmark cell.
+
+---
+
+# 1. WALL-B now contains a genuine live dispute, not just an open topic
+
+> **Standing problem:** Why does learning prefer one linguistic generalization over another, and what would make that preference evidence about human inductive bias?
+
+This wall shows the clearest sequence in which an influential claim is repeatedly re-audited at the level of the scientific inference.
+
+## B-D1 — 2024: a strong result establishes the experimental program
+
+**Kallini et al., ACL 2024 Best — _Mission: Impossible Language Models_.**  
+https://aclanthology.org/2024.acl-long.787/
+
+The core design trains GPT-2 Small from scratch on English-derived “impossible languages” and tracks learning across training. GPT-2 struggles more with the impossible variants than English, challenging a strong claim that neural LMs should learn human-possible and human-impossible languages equally well.
+
+The important contribution was not merely a benchmark result. It established **relative learnability over training** as evidence potentially relevant to a long-standing argument about linguistic inductive bias.
+
+### Original inferential chain
+
+> human-possible vs impossible manipulation  
+> → relative LM learnability  
+> → evidence about whether LM inductive biases distinguish the same broad space that human learners do.
+
+This inference immediately becomes the target of later work.
+
+---
+
+## B-D2 — 2025: the crucial comparison is argued to contain a formal confound
+
+**Tim Hunter, Computational Linguistics 2025 — _Kallini et al. (2024) Do Not Compare Impossible Languages with Constituency-based Ones_.**  
+https://aclanthology.org/2025.cl-2.7/
+
+Hunter accepts the importance of the question but argues that the most significant comparison in Kallini et al. does **not** support the desired inference because of a confound: the compared language classes do not isolate constituency-based human-language possibility in the way the argument requires.
+
+This is exactly the kind of scientific objection we want the searcher to notice. It does not say:
+
+> “try another architecture.”
+
+It says:
+
+> **the observable contrast does not instantiate the theoretical distinction being claimed.**
+
+### Update
+
+“Impossible” cannot be treated as a primitive dataset label. The counterfactual language must be matched so that the difference corresponds to a precise linguistic hypothesis rather than generic complexity or perturbation severity.
+
+**Pressure strength: VERY HIGH.**
+
+---
+
+## B-D3 — 2026: a wider near-replication obtains the opposite qualitative conclusion
+
+**Ziv, Lan & Chemla, EACL 2026 — _Biasless Language Models Learn Unnaturally_.**  
+https://aclanthology.org/2026.eacl-long.249/
+
+Using essentially the same broad methodology — train GPT-2 on languages and perturbed impossible counterparts and compare learning curves — but across a wider set of languages and perturbations, they find that in most cases GPT-2 learns the natural language and its impossible counterpart **equally easily**. At an aggregate cross-linguistic level, GPT-2 provides no systematic separation between possible and impossible languages.
+
+This is not a minor effect-size disagreement. It reverses the qualitative interpretation of the original result.
+
+### Update
+
+The “LMs find human-possible languages easier” conclusion is **not yet a stable law of the experimental paradigm**. It depends materially on which language/perturbation pair instantiates the contrast.
+
+**Pressure strength: EXTREMELY HIGH.**
+
+---
+
+## B-D4 — 2026: a more carefully matched typological experiment again finds a bias, but only as a subtle preference
+
+**Xu, Kuribayashi, Oseki, Cotterell & Warstadt, TACL 2026 — _Can Language Models Learn Typologically Implausible Languages?_**  
+https://doi.org/10.1162/TACL.a.640
+
+This study explicitly cites Hunter’s criticism and moves closer to the plausible/implausible boundary. It creates highly naturalistic counterfactual English and Japanese corpora targeting word-order universals, with counterfactuals that can still be generated by constituency-based grammars and may in principle be human-learnable.
+
+The models exhibit a **harmonic / typologically plausible learning advantage**, especially in learning speed, though some final performance measures converge.
+
+### Why this does not simply settle the dispute
+
+The scientific claim has shifted:
+
+- Kallini: broad possible vs impossible learnability.
+- Hunter: comparison does not isolate the relevant grammatical class.
+- Ziv/Lan/Chemla: wider impossible perturbations do not yield systematic separation.
+- Xu et al.: carefully matched typological preferences can still produce a **subtle learnability bias**.
+
+Thus the empirical picture is no longer a binary answer to “do LMs have human-like linguistic bias?”
+
+The stable object may be **which dimensions of linguistic naturalness produce which kind of learning preference**, rather than one possible/impossible scalar.
+
+**Pressure strength: VERY HIGH.**
+
+---
+
+## B-D5 — 2026 CoNLL Best: sample efficiency / perplexity may be the wrong bridge from LM learning to language possibility
+
+**Janarthan, Haley & Goldwater, CoNLL 2026 Best — _When transformers learn “impossible” languages, what do they learn?_**  
+https://aclanthology.org/2026.conll-main.24/
+
+This paper explicitly diagnoses a construct problem in the emerging literature: claims about impossible-language learning have largely relied on **sample efficiency and held-out perplexity**, but these quantities do not explain why a language would fail to occur or transmit in human populations.
+
+They evaluate two more mechanistic/linguistic linking hypotheses:
+
+1. **grammatical sensitivity** — does the learner acquire grammatical distinctions inside the language?
+2. **generative production** — can it reliably produce high-quality samples, especially at longer lengths?
+
+The two views differ sharply. Grammatical sensitivity degrades only gradually and is mediated by information locality, while generation exhibits much stronger long-length failures. The authors therefore suggest generative deficiency / transmission failure as a plausible bridge between LM behavior and non-attestation.
+
+### Why this is a major update
+
+The dispute has moved from:
+
+> “Which side wins on learnability?”
+
+to:
+
+> **“What observable would make LM learning relevant to human language possibility at all?”**
+
+This is a change in the scientific quantity, but unlike generic metric shopping, the new quantity is motivated by a **linking hypothesis about why a linguistic system would be unattested**.
+
+**Pressure strength: EXTREMELY HIGH.**
+
+---
+
+## B-D6 — the broader cognitive-model dispute remains explicit in 2026
+
+The 2026 Behavioral and Brain Sciences treatment around Futrell & Mahowald makes clear that this is not a solved methodological detail.
+
+### Futrell & Mahowald
+
+Argue that LMs can serve as model systems for language science while not replacing linguistic theory, and respond to 25 commentaries by emphasizing that current LMs should not be treated as the endpoint of the research program.
+
+Target / response:
+- https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/how-linguistics-learned-to-stop-worrying-and-love-the-language-models/2395C24EB472B60B2514F7D5F93EB9A8
+- authors’ response: https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/abs/you-cant-fight-in-here-this-is-bbs/E8B6B226C568C883355FDAD6621D5662
+
+### Kallini & Potts
+
+Explicitly propose a phased possible/impossible-language program intended to build **linking hypotheses** from LM inductive bias to human cognition.
+
+https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/abs/language-models-as-tools-for-investigating-the-distinction-between-possible-and-impossible-natural-languages/4746025E15F0817E081DE4C3803A8FF3
+
+### Bowers & Mitchell
+
+Argue the literature instead shows that LMs often learn attested and many impossible languages equally well, with the difficult impossible languages being hard because of complexity/randomness rather than human-like impossible-language constraints.
+
+https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/abs/studies-with-impossible-languages-falsify-lms-as-models-of-human-language/4460168B5E34DAB20313D9F7BC1DD0E7
+
+### Resnik
+
+Challenges even the terminology of LMs as “model systems,” arguing their relation to human cognition is problematic across Marr’s levels and that LMs may be better viewed as scientific tools.
+
+https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/abs/are-language-models-models/DB84BF5BEB94FCEBB180163AA3478A65
+
+### McDermott-Hinman & Feiman
+
+Stress divergences in learning trajectory, input-transcending behavior, and critical periods that are not captured by simply matching model and human success.
+
+https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/abs/beyond-the-data-gap-children-create-languages-violate-their-input-statistics-and-exhibit-critical-periods/2BF9E7E520D6A309C3C18E8835315AD9
+
+### Update
+
+The unresolved issue is not a vague philosophy-of-AI dispute. It directly changes what experiments count as evidence about inductive bias:
+
+> what must be matched between model and human learner — input amount, developmental trajectory, relative preference, grammatical sensitivity, generation/transmission, formal computational restrictions, or some combination?
+
+This is a mature **linking-hypothesis crisis** inside WALL-B.
+
+---
+
+# 2. WALL-A dispute is real, but increasingly owned by an active methodological program
+
+> **Standing problem:** When does a neural system genuinely implement/reuse a high-level abstraction?
+
+Dossier I already identified mapping-complexity and domain-of-validity problems. Pass II finds a second, independent challenge: the intervention itself can invalidate the inference.
+
+## A-D1 — causal interventions can create representations the natural network never visits
+
+**Grant, Han, Tartaglini & Potts, ICLR 2026 — _Addressing Divergent Representations from Causal Interventions on Neural Networks_.**  
+https://proceedings.iclr.cc/paper_files/paper/2026/hash/133e588e1429f9f1e25b215da145580e-Abstract-Conference.html
+
+They show theoretically and empirically that common intervention techniques can move hidden states away from the network’s natural representation distribution. Some divergences are harmless because they lie in behaviorally irrelevant directions; others are **pernicious**, activating dormant pathways and producing behavior that does not faithfully describe the unperturbed model.
+
+### Why this matters
+
+Interchange intervention / activation patching was supposed to strengthen evidence by moving from observation to causation. But an intervention is informative only if its semantics are scientifically valid.
+
+The chain
+
+> intervene on purported variable → behavior changes → variable has proposed natural causal role
+
+can fail if the intervention creates an unnatural state that activates computation the model never uses naturally.
+
+This is a distinct identification problem from nonlinear alignment-map vacuity.
+
+**Pressure strength: EXTREMELY HIGH.**
+
+---
+
+## A-D2 — “causal” language in interpretability is increasingly being audited at the identification level
+
+**Joshi et al., 2026 — _Causality is Key for Interpretability Claims to Generalise_.**  
+https://arxiv.org/abs/2602.16698
+
+The paper distinguishes association, intervention, and counterfactual claims. It argues that activation patching/ablation supports an intervention-effect claim for the performed edit, but stronger counterfactual/generalization claims require additional identification assumptions and controlled supervision.
+
+**Lin & Liu, 2026 — _Mechanistic Interpretability Must Disclose Identification Assumptions for Causal Claims_.**  
+https://arxiv.org/abs/2605.08012
+
+Their audit argues that interpretability papers often substitute validation metrics such as faithfulness/alignment/ablation effects for explicit identification assumptions.
+
+### Update
+
+The WALL-A scientific pressure is unquestionably real:
+
+> representation mapping + intervention effect ≠ automatically a natural high-level causal explanation.
+
+But this pressure is now becoming an **active 2025–2026 methodological research program in its own right**.
+
+For our search, that is bad news for direct topic generation: any generic “make causal abstraction more valid” parent is already crowded.
+
+**Wall assessment:** HIGH scientific importance, **LOWER SEARCH HEADROOM** than before.
+
+---
+
+## A-D3 — the field now acknowledges multiple independent failure modes of mechanistic evidence
+
+Putting the strongest 2025–2026 critiques together:
+
+1. **Alignment flexibility:** arbitrary nonlinear maps can make any model implement any algorithm (Sutter et al., NeurIPS 2025).
+2. **Partial domain:** one high-level causal model may only explain some input states (Pîslar et al., CLeaR 2025; later input-bucketing work).
+3. **Intervention divergence:** the counterfactual latent state itself may be off-manifold and activate dormant pathways (Grant et al., ICLR 2026).
+4. **Identification scope:** an observed intervention effect does not justify every stronger mechanistic/counterfactual claim (Joshi et al. 2026; Lin & Liu 2026).
+
+This is a healthy research program, but it means **WALL-A should supply an evidence standard to a substantive NLP/linguistic problem rather than become our topic directly.**
+
+---
+
+# 3. WALL-C has real explanatory failures, but direct theory ownership is also dense
+
+> **Standing problem:** Why does optimization select one computation among the many an architecture can represent?
+
+## C-D1 — grokking does not cleanly mark acquisition of a new reasoning algorithm
+
+**He et al., Findings ACL 2026 — _Is Grokking Worthwhile?_**  
+https://aclanthology.org/2026.findings-acl.1697/
+
+They explicitly test a popular mechanistic interpretation of a “Generalization Circuit.” Their results show:
+
+- grokked and non-grokked models can use the same inference path on in-distribution compositional queries;
+- high unseen-case accuracy and a particular reasoning path can occur independently under some data regimes;
+- even a mature circuit transfers poorly when new atomic knowledge is introduced.
+
+### Update
+
+Delayed OOD performance, formation of a circuit, and acquisition of a reusable algorithm are **different quantities**.
+
+A grokking transition cannot simply be read as the moment a qualitatively new algorithm appears.
+
+**Pressure strength: VERY HIGH.**
+
+---
+
+## C-D2 — meanwhile, theory papers are rapidly producing task-specific selection laws
+
+Examples include:
+
+- sensitivity / loss-landscape geometry for low-sensitivity bias (Hahn & Rofin, ACL 2024);
+- data-diversity threshold selecting positional shortcut vs induction head (Kawata et al., NeurIPS 2025);
+- two-stage attention feature formation + implicit max-margin classification (Huang et al., ICML 2025);
+- succinct algorithm / grokking circuit work in 2026.
+
+### Update
+
+The field is **not missing the question “why does GD pick algorithm X?”**. That is an active theory program.
+
+The deeper missing layer is whether a common selection theory exists across naturalistic computations, but that is large, theorem-heavy, and likely ML-owned rather than a clean ACL Main project for us right now.
+
+**Wall assessment:** VERY HIGH intellectual value, **LOW practical search headroom**.
+
+---
+
+# 4. WALL-D: the theory is coherent, but its own papers expose construct splits rather than a clean contradiction
+
+> **Standing problem:** What useful structure emerges because a natural resource is limited?
+
+Pass II does not find a Mission-Impossible-style direct reversal. Instead it finds something different: the resource-rational program is **expanding the number of separately necessary explanatory variables**.
+
+## D-D1 — the objective function is itself unresolved inside the resource-rational family
+
+**Xu & Futrell, JML 2026 — _Strategic resource allocation in memory encoding_.**  
+https://doi.org/10.1016/j.jml.2025.104706
+
+The paper explicitly asks what counts as “important” information and notes that different resource-rational formulations instantiate different objective functions:
+
+- original lossy-context surprisal does not explicitly specify the downstream objective;
+- Hahn et al. optimize downstream next-word prediction;
+- SRA defines cost through reconstructability of lost units.
+
+The predictions overlap in some regimes, so behavioral success may not distinguish the objectives.
+
+### Update
+
+Resource rationality does not uniquely specify a model until both **resource and task objective** are independently fixed.
+
+**Pressure strength: HIGH.**
+
+---
+
+## D-D2 — a controlled experiment supports SRA but also produces an unexpected anti-locality pattern
+
+**Xu, Hao & Futrell, CogSci 2026 — _Strategic allocation of memory resources through the lens of dependency locality: Evidence from a controlled reading experiment_.**  
+https://escholarship.org/uc/item/09j052r0
+
+The controlled A-Maze study finds the predicted locality effect when the retrieval target is highly predictable, consistent with unexpected information receiving more robust encoding. But for unexpected retrieval targets it also observes a mild **anti-locality** pattern, which the authors interpret as possible competition between memory- and expectation-based mechanisms.
+
+### Why this is useful
+
+The theory passes a stronger controlled test, but the data also resist a one-mechanism story. The resource-allocation effect interacts with another processing mechanism rather than simply scaling locality cost.
+
+**Pressure strength: MEDIUM-HIGH.**
+
+---
+
+## D-D3 — a memory–prediction model captures the interaction but misses its time course
+
+**Oltrogge, Veríssimo, Patil & Lago, JML 2025 — experimental evaluation of a cue-based retrieval model.**
+
+The human experiment supports interaction between predictive processing and memory interference, but a novel determiner condition unfolds differently over time from the computational model’s prediction. The proposed repair invokes a semantic process specific to indefinite determiners.
+
+### Update
+
+A broad memory/expectation account can predict the existence of an interaction while failing its **temporal/process signature**. This is evidence that the right explanatory decomposition may involve linguistic semantics plus resource mechanisms.
+
+**Pressure strength: HIGH.**
+
+---
+
+## D-D4 — cross-linguistic variability is not a nuisance if the principle is claimed to be domain-general
+
+SRA’s naturalistic studies explicitly report substantial cross-linguistic variation despite proposing a domain-general efficient allocation principle. The authors call for understanding interaction with language-specific phrase structures.
+
+### Update
+
+There is a genuine conditional-law problem here:
+
+> same proposed resource principle, different linguistic structures → different observable signature.
+
+But the precise hidden variable is not yet known, and the obvious successor (“test more languages / phrase structures”) would be data-heavy and too close to the current program.
+
+**Wall assessment:** HIGH scientific quality, **MODERATE search headroom**, LOWER current intimacy for us.
+
+---
+
+# 5. Pressure-maturity assessment after two friction passes
+
+This ranking is **not a candidate ranking**. It asks where a standing problem has accumulated a combination of importance, explicit contradiction, and unresolved inference.
+
+| pressure maturity | wall | current diagnosis |
+|---|---|---|
+| **1** | **WALL-B — formation / interpretation of inductive bias** | **HIGHEST SCIENTIFIC PRESSURE.** Best-paper claim → formal confound critique → opposite wider replication → subtle typological support → Best-Paper observable rewrite. Core linking quantity is genuinely unsettled. |
+| **2** | **WALL-D — resource-induced structure** | Coherent mature theory with explicit objective ambiguity, encoding/retrieval split, cross-ling variability, and failed temporal predictions. Less direct contradiction, but real theoretical incompleteness. |
+| **3** | **WALL-A — reusable causal abstractions** | Fundamental, with several severe identification failures; however those failures are themselves a very active 2025–2026 methodological program. Best used as an evidence standard on another scientific object. |
+| **4** | **WALL-C — algorithm selection** | Deepest ML-theory problem, but rapidly occupied by theory papers with local selection laws; difficult to enter without becoming toy/theorem-heavy or chasing active owners. |
+
+---
+
+# 6. The most important update to our private research state
+
+## MB6 — “Inductive bias” is not only developmental; its **measurement is disputed**
+
+After Dossier I, we believed the central difficulty was that bias changes over learning history.
+
+Pass II adds a stronger statement:
+
+> Different operationalizations of “human-like bias” — broad impossible-language perplexity, carefully matched typological learning speed, grammatical sensitivity, generative fidelity/transmission — can yield materially different judgments about the same model family.
+
+Therefore a future scientific question must not assume that “relative learnability” is the construct. The **linking theory from observable to linguistic possibility** is part of the question.
+
+---
+
+## MB7 — a new identifying method is useful only when its own intervention semantics survive scrutiny
+
+WALL-A shows that “causal intervention” is not a magic upgrade over behavioral evidence. Mapping flexibility, off-manifold interventions, partial domains of validity, and missing identification assumptions all matter.
+
+For our future work this becomes a hard methodological constraint:
+
+> no causal/mechanistic method may be treated as identifying merely because it manipulates activations.
+
+---
+
+## MB8 — the strongest current pressure is one where the community has already produced **opposite answers under plausible operationalizations**
+
+This is much healthier than inventing a tension between unrelated papers.
+
+In WALL-B, the contradiction is native to the scientific program itself. The field agrees on the importance of inductive bias but disagrees about which experimental comparison demonstrates it and what model quantity should link to human possibility.
+
+This is exactly the kind of state that historically precedes good questions.
+
+---
+
+# 7. What still must NOT happen
+
+Despite WALL-B now having the highest pressure maturity, **do not immediately generate**:
+
+- “new impossible language X”;
+- “repeat with Qwen/Llama”; 
+- “behavior vs mechanism of impossible-language learning”; 
+- “use causal abstraction to see why possible languages are easier”;
+- “generation vs comprehension gap” as a generic follow-up to the CoNLL Best Paper;
+- “control for complexity better.”
+
+All of these are paper-successor autocomplete.
+
+The next pass must stay one step earlier:
+
+> reconstruct the **rival scientific explanations for the disagreement itself**.
+
+For WALL-B specifically, possible explanation classes to *study, not yet instantiate* include:
+
+- linguistic naturalness is multidimensional rather than binary;
+- current learnability observables conflate generic computational complexity with specifically human linguistic bias;
+- bias lives in learning **trajectory shape** rather than endpoint/sample efficiency;
+- the relevant bottleneck is population transmission/generation rather than individual comprehension;
+- pretrained neural learners and human children solve different optimization problems, so no simple scalar observable can serve as a linking variable.
+
+These are hypothesis classes to understand from existing literature, **not candidate claims**.
+
+---
+
+# 8. Current decision
+
+**No RQ seeds. No new L-series. No new kill IDs. No pilot.**
+
+The search has, however, reached a materially different state from the beginning of the day:
+
+> We now have one standing problem — WALL-B — with a documented multi-paper contradiction and explicit disagreement about the construct/observable that should carry the scientific inference.
+
+The next artifact should be:
+
+> **WALL-B DISAGREEMENT MAP: what exact rival explanations are already on the table, what evidence each explains, and what evidence none of them explains yet?**
+
+Only after that map exists should we decide whether candidate generation can responsibly turn back on.

@@ -5,7 +5,7 @@
 **Date:** 2026-09-14
 
 Full Selection: [`SELECTION.md`](SELECTION.md)  
-Pre-E01 gate: [`E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md`](E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md) — **E01 may not run until E00 passes**
+Mandatory pre-E01 audit: [`E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md`](E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md) — authored and executed versions merged there; **it was run, and it did not pass**
 
 ## Question
 
@@ -18,6 +18,14 @@ This is an **old empirical law → modern computational re-explanation** candida
 - NeurIPS 2025: LLM translation likelihood is still not well aligned with translation quality.
 
 The contribution cannot be the combination of these facts. It must identify why the old conditional law breaks and replace it with a better one.
+
+## Important 2026-09-14 correction
+
+The Selection originally suggested `Unbabel/TowerInstruct-7B-v0.2` as a modern EN→DE checkpoint for the ACL-2022 WMT19 uncertainty substrate. **Do not run that decisive comparison.** TowerBlocks publicly includes WMT14–WMT21 general-translation data, so WMT19 lies in its known supervised-data lineage. A WMT19 result from Tower can therefore not cleanly identify a model-regime law break.
+
+Also do not describe the TACL-2025 beam result as an exact publicly reproducible checkpoint result unless the exact checkpoint used for the relevant curve is actually available. The public LLM4MT repository is still useful for decoding-semantics auditing.
+
+These corrections are frozen in `E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md` and supersede any incompatible checkpoint suggestion in `SELECTION.md`.
 
 ## Execution order
 
