@@ -1,0 +1,8 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.07s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:02<00:01,  1.01s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.07it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.04it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[olmo3-dpo/fewshot] margin 2.17 | log p(stop) -3.24 | median rank 4 | stop in top-128 98.5%
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'length_penalty']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[olmo3-dpo/fewshot] beam   1: BLEU  20.23 chrF2  43.05 empty 17.50% lenR 0.806
+[olmo3-dpo/fewshot] beam  16: BLEU   0.08 chrF2   9.15 empty 79.50% lenR 0.136
