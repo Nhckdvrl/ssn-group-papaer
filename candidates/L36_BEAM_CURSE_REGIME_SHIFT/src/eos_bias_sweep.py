@@ -19,11 +19,24 @@ from run_llm_mt import PROMPT, clean
 
 
 class EosBias(LogitsProcessor):
-    def __init__(self, eos_ids, bias):
+    """Add a constant bias to the end-of-sequence logits.
+
+    `first_step_only` reproduces the classic configuration precisely: the 2019 NMT model's
+    peculiarity is that *stopping at the very first step* is cheap (log p = -9.3), while its
+    greedy output is unaffected because EOS is still not the argmax. Biasing every step instead
+    changes the whole length distribution and degrades greedy decoding too, which is a different
+    manipulation.
+    """
+
+    def __init__(self, eos_ids, bias, prompt_len=None, first_step_only=False):
         self.eos_ids = list(eos_ids)
         self.bias = float(bias)
+        self.prompt_len = prompt_len
+        self.first_step_only = first_step_only
 
     def __call__(self, input_ids, scores):
+        if self.first_step_only and input_ids.shape[1] != self.prompt_len:
+            return scores
         scores[:, self.eos_ids] += self.bias
         return scores
 
@@ -39,6 +52,8 @@ def parse_args():
     p.add_argument("--limit", type=int, default=500)
     p.add_argument("--beam-budget", type=int, default=256)
     p.add_argument("--max-new-tokens", type=int, default=256)
+    p.add_argument("--first-step-only", action="store_true",
+                   help="apply the bias only at the first generated position")
     return p.parse_args()
 
 
@@ -62,7 +77,10 @@ def main():
 
     eos = model.generation_config.eos_token_id
     eos_ids = eos if isinstance(eos, list) else [eos]
-    proc = LogitsProcessorList([EosBias(eos_ids, a.bias)]) if a.bias != 0 else LogitsProcessorList()
+    def make_proc(prompt_len):
+        if a.bias == 0:
+            return LogitsProcessorList()
+        return LogitsProcessorList([EosBias(eos_ids, a.bias, prompt_len, a.first_step_only)])
 
     batch = max(1, a.beam_budget // a.beam)
     order = sorted(range(len(src)), key=lambda i: -len(src[i]))
@@ -81,7 +99,7 @@ def main():
             out = model.generate(**enc, num_beams=a.beam, do_sample=False, length_penalty=0.0,
                                  early_stopping=False, max_new_tokens=a.max_new_tokens,
                                  min_new_tokens=0, num_return_sequences=1,
-                                 logits_processor=proc,
+                                 logits_processor=make_proc(enc["input_ids"].shape[1]),
                                  pad_token_id=tok.pad_token_id,
                                  return_dict_in_generate=True)
         seqs = out.sequences
@@ -98,6 +116,7 @@ def main():
 
     header = {"_header": True, "model": a.model, "kind": a.kind, "beam": a.beam,
               "semantics": "RAW", "length_penalty": 0.0, "eos_bias": a.bias,
+              "first_step_only": a.first_step_only,
               "eos_token_id": eos_ids, "n": len(src), "limit": a.limit,
               "max_new_tokens": a.max_new_tokens, "batch": batch,
               "wall_seconds": round(time.time() - t0, 1)}
