@@ -235,8 +235,13 @@ New runner `scripts/run_e12_clamp.py`. Required validations, each of which can f
    is non-negotiable.
 2. `k = L₀` under the reference prefix must reproduce full-model accuracy on the
    clamped span, confirming the override is applied where intended.
-3. Clamping must not change the number of treated forward passes. Assert step counts
-   match between F and R for the same item and `k`.
+3. **Corrected 2026-09-14, before any run.** The draft asserted that per-item step
+   counts match between F and R. That is false and would have been a bad check: once
+   the clamp releases at `k`, the two arms free-run differently and their lengths
+   legitimately diverge. The real invariant is that **the intervention is active on
+   100% of `lm_head` forward passes in every arm** — clamping overrides the emitted
+   token, never the computation — plus the trivial one that steps `< k` are identical
+   by construction. Verified by hook-level forward-pass counting, not by output length.
 4. Tokenization: the reference trajectory is re-tokenized under the same tokenizer, and
    the clamp operates on token ids, not text, so no retokenization drift enters.
 5. The R̃ temperature calibration is fit on a held-out item split, not the evaluation
