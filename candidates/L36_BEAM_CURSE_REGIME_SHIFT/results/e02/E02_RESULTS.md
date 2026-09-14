@@ -27,17 +27,19 @@ Same weights-init, same data, same budget; the boundary follows the format it wa
 
 ## 2. The behavioural readout follows the boundary
 
-Beam sweep under RAW (`length_penalty = 0`) scoring, 200 held-out `newstest2019` segments, at the
-step-600 checkpoint (final cells agree):
+Beam sweep under RAW (`length_penalty = 0`) scoring, 200 held-out `newstest2019` segments, **final
+checkpoint** (step 1122):
 
 | condition | format | b1 | b16 | b64 | length ratio @b64 | empty @b64 |
 |---|---|---|---|---|---|---|
-| `A_ONLY` | **A (trained)** | 35.40 | 39.53 | **38.64** | 0.95 | 0 % |
-| `A_ONLY` | B (untrained) | 6.98 | 7.53 | **6.02** | **3.99** | 0 % |
-| `B_ONLY` | A (untrained) | 8.10 | 8.08 | **6.82** | **4.24** | 0 % |
-| `B_ONLY` | **B (trained)** | 35.46 | 40.51 | **38.91** | 0.96 | 0 % |
-| `MIXED` | A | 34.45 | 40.42 | 39.25 | 0.96 | 0 % |
-| `MIXED` | B | 35.93 | 39.60 | 38.02 | 0.95 | 0 % |
+| `A_ONLY` | **A (trained)** | 35.62 | 40.51 | **39.51** | 0.95 | 0 % |
+| `A_ONLY` | B (untrained) | 7.08 | 7.73 | **5.97** | **4.02** | 0 % |
+| `B_ONLY` | A (untrained) | 8.07 | 8.22 | **6.82** | **4.23** | 0 % |
+| `B_ONLY` | **B (trained)** | 36.07 | 40.88 | **39.38** | 0.96 | 0 % |
+| `MIXED` | A | 35.35 | 40.46 | 39.76 | 0.96 | 0 % |
+| `MIXED` | B | 35.57 | 39.63 | 37.53 | 0.96 | 0 % |
+| `A_ONLY_NOEOSLOSS` (control) | A | 7.77 | 8.70 | 8.76 | 4.01 | 0 % |
+| `A_ONLY_NOEOSLOSS` (control) | B | 6.74 | 6.62 | 4.82 | 3.94 | 0 % |
 
 In the trained format, widening the beam from 1 to 64 **improves** quality (35.4 → 38.6) with a
 stable length ratio: a correctly placed boundary makes wide-beam MAP decoding safe. In the untrained

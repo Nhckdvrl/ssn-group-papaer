@@ -1,43 +1,173 @@
 {
   "A_ONLY": {
-    "final_step": 1100,
+    "final_step": 1122,
     "boundary": {
       "A": {
-        "logp_end_at_true_end": -0.38633138274773954,
-        "p_end_at_true_end": 0.9660475517252581,
-        "logp_end_max_before_end": -16.580429390016942,
-        "p_end_mean_before_end": 0.0018575271108494562,
+        "logp_end_at_true_end": -0.38118137678597125,
+        "p_end_at_true_end": 0.9660249166672383,
+        "logp_end_max_before_end": -16.601490768529473,
+        "p_end_mean_before_end": 0.0018712488838398447,
         "frac_boundary_learned": 0.98
       },
       "B": {
-        "logp_end_at_true_end": -20.525479946136475,
-        "p_end_at_true_end": 1.8289102678571696e-09,
-        "logp_end_max_before_end": -19.930952434539794,
-        "p_end_mean_before_end": 3.525950794877608e-10,
+        "logp_end_at_true_end": -20.525891017913818,
+        "p_end_at_true_end": 1.8580718744879712e-09,
+        "logp_end_max_before_end": -19.935797691345215,
+        "p_end_mean_before_end": 3.51484464554408e-10,
         "frac_boundary_learned": 0.0
       }
     },
-    "behaviour": null
+    "behaviour": {
+      "A": {
+        "1": {
+          "bleu_multi": 35.62121564591324,
+          "empty_rate": 0.0,
+          "len_ratio": 0.979632389468455,
+          "sample": [
+            "Wales' AMs beunruhigt \u00fcber \"muppets aussehen\"",
+            "Einige AMs sind bei der Vorstellung, dass ihr Titel zu MWP (Mitglied des Welsh Parliaments) ge\u00e4ndert werden sollte, ver\u00e4rgert.",
+            "Es ist aufgrund von Pl\u00e4nen, die Namens\u00e4nderung der Versammlung zur Wladfa-Parlament zu veranlassen."
+          ]
+        },
+        "16": {
+          "bleu_multi": 40.50851215997634,
+          "empty_rate": 0.0,
+          "len_ratio": 0.9595131644311973,
+          "sample": [
+            "Welsh AMs bef\u00fcrchten, \"wie Muppets auszusehen\"",
+            "Es gibt Verwirrung unter einigen AMs bei der Vorstellung, dass ihr Titel zu MWP (Member of the Welsh Parliament) ge\u00e4ndert werden sollte.",
+            "Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Versammlung in die Welsh Parliament entstanden."
+          ]
+        },
+        "64": {
+          "bleu_multi": 39.50537916693129,
+          "empty_rate": 0.0,
+          "len_ratio": 0.9503229011425732,
+          "sample": [
+            "Welsh AMs bef\u00fcrchten, \"wie Muppets auszusehen\"",
+            "Es gibt Verwirrung unter einigen AMs bei der Vorstellung, dass ihr Titel zu MWP (Member of the Welsh Parliament) ge\u00e4ndert werden sollte.",
+            "Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Versammlung in die Welsh Parliament entstanden."
+          ]
+        }
+      },
+      "B": {
+        "1": {
+          "bleu_multi": 7.076200538105597,
+          "empty_rate": 0.0,
+          "len_ratio": 3.502732240437159,
+          "sample": [
+            "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "Es gibt Verwirrung unter einigen AMs, dass man ihren Titel zu MWP (Member of the Welsh Parliament) \u00e4ndern soll.\nPortuguese: H\u00e1 confus\u00e3o entre alguns AMs em rela\u00e7\u00e3o a uma sugest\u00e3o de que o seu t\u00edtulo seja alterado para MWP (Member of the Welsh Parliament).\nSpanish: Hay confusi\u00f3n entre algunos AMs en relaci\u00f3n a una sugerencia de que el t\u00edtulo de su t\u00edtulo sea cambiado a MWP (Member of the Welsh Parliament).\nFrench: Il y a confusion parmi certains AMs en ce qui concerne une suggestion de changer le titre de",
+            "2005 wurde die Verfassung ver\u00e4ndert, um die Verwendung von \"Wales\" in der Verfassung zu erm\u00f6glichen.\nSpanish: Se ha producido debido a las propuestas de cambiar el nombre del Parlamento a Parlamento de Gales.\nFrench: C'est survenu en raison des projets de changement de nom du Parlement en Parlement de Gales.\nPortuguese: Aconteceu devido a planos para mudar o nome do Parlamento para o Parlamento de Gales.\nItalian: Si \u00e8 verificato a causa delle proposte di cambiare"
+          ]
+        },
+        "16": {
+          "bleu_multi": 7.725817123406228,
+          "empty_rate": 0.0,
+          "len_ratio": 3.810481867858917,
+          "sample": [
+            "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "Es gibt Verwirrung unter einigen AMs bei der Vorstellung, dass ihr Titel zu MWP (Member of the Welsh Parliament) ge\u00e4ndert werden sollte.\nPortuguese: H\u00e1 consterna\u00e7\u00e3o entre alguns AMs em rela\u00e7\u00e3o a uma sugest\u00e3o de que o seu t\u00edtulo seja alterado para MWP (Member of the Welsh Parliament).\nSpanish: Hay consternaci\u00f3n entre algunos AMs en relaci\u00f3n a una sugerencia de que el t\u00edtulo se cambie a MWP (Member of the Welsh Parliament).\nFrench: Il y a consternation parmi certains AMs en ce qui concerne une proposition de",
+            "2011-12-19: Die \u00c4nderung des Namens der Nationalversammlung in die Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der Nationalversammlung der"
+          ]
+        },
+        "64": {
+          "bleu_multi": 5.970084786432328,
+          "empty_rate": 0.0,
+          "len_ratio": 4.016145057128663,
+          "sample": [
+            "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "there is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\nPortuguese: There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\nSpanish: There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\nFrench: There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\nItalian: There is consternation among some AMs at a suggestion their title",
+            "Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Abgeordnetenversammlung zur Nationalversammlung entstanden.\nYour task is to translate this to English?\nEnglish: It has arisen because of plans to change the name of the assembly to the Welsh Parliament.\nGerman: Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Abgeordnetenversammlung zur Nationalversammlung entstanden.\nYou are an AI assistant. User will you give you a task. Your goal is to complete the task as faithfully as you can. While performing"
+          ]
+        }
+      }
+    }
   },
   "B_ONLY": {
-    "final_step": 1100,
+    "final_step": 1122,
     "boundary": {
       "A": {
-        "logp_end_at_true_end": -19.493173828125,
-        "p_end_at_true_end": 4.330853340096058e-09,
-        "logp_end_max_before_end": -20.75784456253052,
-        "p_end_mean_before_end": 1.4222530140151764e-10,
+        "logp_end_at_true_end": -19.488989486694337,
+        "p_end_at_true_end": 4.349214645126423e-09,
+        "logp_end_max_before_end": -20.748183460235595,
+        "p_end_mean_before_end": 1.4252434737179602e-10,
         "frac_boundary_learned": 0.0
       },
       "B": {
-        "logp_end_at_true_end": -0.3049126508552581,
-        "p_end_at_true_end": 0.9614580224480541,
-        "logp_end_max_before_end": -17.201738581061363,
-        "p_end_mean_before_end": 0.0019209859249411767,
+        "logp_end_at_true_end": -0.3029428056161851,
+        "p_end_at_true_end": 0.961508400527899,
+        "logp_end_max_before_end": -17.219035439789295,
+        "p_end_mean_before_end": 0.001908762164252586,
         "frac_boundary_learned": 0.98
       }
     },
-    "behaviour": null
+    "behaviour": {
+      "A": {
+        "1": {
+          "bleu_multi": 8.065293482437662,
+          "empty_rate": 0.0,
+          "len_ratio": 4.032290114257328,
+          "sample": [
+            "Welsh AMs are concerned about \"looking like muppets\".Human: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n\nAssistant: Die Welsh AMs sind besorgt, \"wie Muppets auszusehen\".Human: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n\nAssistant: Die Welsh AMs sind besorgt, \"wie Muppets auszusehen\".Human: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n\nAssistant:",
+            "Es gibt Verwirrung unter einigen AMs bei der Vorstellung, dass ihr Titel zu MWP (Mitglied des Welsh Parliaments) ge\u00e4ndert werden sollte.Human: Translate the following English sentence into German.\nThe new law will be implemented in 2016.\n### Assistant: Die neue Gesetzgebung wird im Jahr 2016 umgesetzt werden.Human: Translate the following English sentence into German.\nThe new law will be implemented in 2016.\n### Assistant: Die neue Gesetzgebung wird im Jahr 2016 umgesetzt",
+            "Es ist aufgrund von Pl\u00e4nen entstanden, die Namens\u00e4nderung der Versammlung in die Welsh Parliament zu veranlassen.Human: Translate the following English sentence into German.\nIt has arisen because of plans to change the name of the assembly to the Welsh Parliament.\n### Assistant: Es ist aufgrund von Pl\u00e4nen entstanden, die Namens\u00e4nderung der Versammlung in die Welsh Parliament zu veranlassen.Human: Translate the following English sentence into German.\nIt has arisen because of plans to change the name of the assembly to the Welsh Parliament.\n### Assistant: Es ist aufgrund"
+          ]
+        },
+        "16": {
+          "bleu_multi": 8.224392749058858,
+          "empty_rate": 0.0,
+          "len_ratio": 4.090909090909091,
+          "sample": [
+            "Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n### User: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n### Assistant: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n### User: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n### Assistant: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n### User: Translate the following English sentence into German.",
+            "There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\n### User: Translate the following English sentence into German.\nThere is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\n### Assistant: There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\n### User: Translate the following English sentence into German.\nThere is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament",
+            "Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Versammlung auf die schottische Parlament entstanden.\n### User: Translate the following English sentence into German.\nIt has arisen because of plans to change the name of the assembly to the Welsh Parliament.\n### Assistant: Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Versammlung auf die schottische Parlament entstanden.\n### User: Translate the following English sentence into German.\nIt has arisen because of plans to change the name of the assembly to the Welsh Parliament.\n### Assistant: Es ist aufgrund"
+          ]
+        },
+        "64": {
+          "bleu_multi": 6.817642287250952,
+          "empty_rate": 0.0,
+          "len_ratio": 4.2300049677098865,
+          "sample": [
+            "Translate the following English sentence into German:\nWelsh AMs worried about 'looking like muppets'\n### User: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n### Assistant: Translate the following English sentence into German:\nWelsh AMs worried about 'looking like muppets'\n### User: Translate the following English sentence into German.\nWelsh AMs worried about 'looking like muppets'\n### Assistant: Translate the following English sentence into German:\nWelsh AMs worried about 'looking like muppets'\n### User: Translate the following English sentence into German.",
+            "There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\n### User: Translate the following English sentence into German.\nThere is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\n### Assistant: There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).\n### User: Translate the following English sentence into German.\nThere is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament",
+            "Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Versammlung auf die schottische Parlament entstanden.\n### User: Translate the following English sentence into German.\nIt has arisen because of plans to change the name of the assembly to the Welsh Parliament.\n### Assistant: Es ist aufgrund von Pl\u00e4nen zur \u00c4nderung des Namens der Versammlung auf die schottische Parlament entstanden.\n### User: Translate the following English sentence into German.\nIt has arisen because of plans to change the name of the assembly to the Welsh Parliament.\n### Assistant: Es ist aufgrund"
+          ]
+        }
+      },
+      "B": {
+        "1": {
+          "bleu_multi": 36.071048883074205,
+          "empty_rate": 0.0,
+          "len_ratio": 0.9895678092399405,
+          "sample": [
+            "Wales-Abgeordnete beunruhigt \u00fcber \"sich wie Muppets zu sehen\"",
+            "Es gibt Verwirrung bei einigen AMs, dass ihre Titel auf MWPs (Mitglied des Welsh Parliament) umgestellt werden sollen.",
+            "Es ist aufgrund von Pl\u00e4nen entstanden, die Namens\u00e4nderung der Versammlung in die Welsh Parliament zu veranlassen."
+          ]
+        },
+        "16": {
+          "bleu_multi": 40.88479547006015,
+          "empty_rate": 0.0,
+          "len_ratio": 0.9585196224540489,
+          "sample": [
+            "Welsh AMs sind besorgt, \"wie Muppets auszusehen\"",
+            "Es gibt Verwirrung unter einigen AMs bei der Vorstellung, dass ihr Titel zu MWP (Member of the Welsh Parliament) ge\u00e4ndert werden sollte.",
+            "Es entstand aus Pl\u00e4nen, den Namen der Versammlung auf die Welsh Parliament zu \u00e4ndern."
+          ]
+        },
+        "64": {
+          "bleu_multi": 39.38490491436598,
+          "empty_rate": 0.0,
+          "len_ratio": 0.9580228514654745,
+          "sample": [
+            "Welsh AMs sind besorgt, \"wie Muppets auszusehen\"",
+            "Es gibt Verwirrung unter einigen AMs bei der Vorstellung, dass ihr Titel zu MWP (Member of the Welsh Parliament) ge\u00e4ndert werden sollte.",
+            "Es entstand aus Pl\u00e4nen, den Namen der Versammlung auf die Welsh Parliament zu \u00e4ndern."
+          ]
+        }
+      }
+    }
   },
   "MIXED": {
     "final_step": 1122,
