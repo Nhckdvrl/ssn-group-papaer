@@ -48,6 +48,48 @@ Step-0 measurements, 400 segments:
 | `Olmo-3-7B-Instruct-SFT` | chat | +11.19 | −11.91 | **1222** | 30.39 | 0 % | (running) |
 | `gemma-3-12b-it` | chat | — | −35.33 | (large) | 45.14 | 0 % | 0 % |
 
+### 2b. The completed Olmo-3 lineage
+
+| tag | stage | interface | margin | `log p(stop)` | median `rank_stop` | `b*` | BLEU@1 | BLEU@16 | BLEU@64 | empty@64 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `olmo3-rlvr` | RLVR | chat | +17.79 | −18.10 | **41025** | 20513 | 28.64 | 31.54 | **31.08** | **0.00 %** |
+| `olmo3-sft` | SFT | chat | +11.19 | −11.91 | **1222** | 611 | 30.39 | 27.11 | 17.64 | 0.00 % |
+| `olmo3-base` | base | few-shot | +7.70 | −8.67 | **532** | 267 | 35.29 | 36.74 | 22.20 | 0.00 % |
+| `olmo3-dpo` | DPO | few-shot | +2.17 | −3.24 | **4** | 2 | 20.23 | 0.08 | 0.00 | 82.00 % |
+| `olmo3-rlvr` | RLVR | few-shot | +1.76 | −2.91 | **3** | 2 | 18.16 | 0.02 | 0.00 | 84.50 % |
+| `olmo3-sft` | SFT | few-shot | +1.01 | −2.46 | **3** | 2 | 18.92 | 0.00 | 0.00 | 92.50 % |
+| `facebook/wmt19-en-de` | reference | NMT | +9.09 | −9.57 | **106** | 53 | — | — | — | 13.12 % |
+
+In-format the boundary keeps moving outward along the lineage (SFT 1222 → RLVR **41025**), and
+`olmo3-rlvr` in chat format is the one checkpoint here that is *fully* beam-robust: BLEU 28.64 →
+31.08 from beam 1 to 64 with no empties and no degradation. Out of format every post-trained stage
+sits at rank 3–4 and is destroyed by beam 16.
+
+### 2c. Weights vs. format, decomposed — and why the decomposition is only half-clean
+
+Measuring the **base** checkpoint through the **SFT sibling's chat template** (`--template-from`)
+holds the prompt string fixed and varies only the weights:
+
+| condition | weights | prompt string | median `rank_stop` |
+|---|---|---|---|
+| base, few-shot | base | few-shot | 532 |
+| **base, chat template** | **base** | **chat** | **755** |
+| SFT, chat | SFT | chat | 1222 |
+| SFT, few-shot | SFT | few-shot | 3 |
+
+Changing only the prompt string moves the boundary a little (532 → 755). Changing only the weights
+at a fixed chat prompt moves it further (755 → 1222), and changing only the weights at a fixed
+few-shot prompt moves it catastrophically in the *other* direction (532 → 3). So the weights carry
+the change, and its **sign depends on whether the context matches the format the weights were
+trained on**.
+
+**Caveat, and it matters:** the base checkpoint cannot actually use the chat template — its
+translation quality in that condition collapses (BLEU 1.05 at beam 16), so only the step-0
+termination measurement is interpretable there, not its beam behaviour. Off-the-shelf checkpoints
+cannot give a fully clean weights-vs-format factorisation, because format and weights are
+co-adapted by construction. That is exactly the gap a controlled SFT with a
+termination-supervision ablation would close.
+
 ## 3. What this says
 
 **(a) The jump is at SFT, and DPO barely moves it.** Under a fixed interface, `rank_stop` goes
