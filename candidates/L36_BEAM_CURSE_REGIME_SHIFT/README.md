@@ -1,90 +1,92 @@
-# L36 — Where Did the Beam-Search Curse Go?
+# L36 — Learning the Generation Boundary
 
-**Status:** **ACTIVE — sustained Findings-target project**  
-**Primary target:** ACL / EMNLP / NAACL Findings  
-**Main ceiling:** open, but not required  
+**Status:** **ACTIVE — MAIN CANDIDATE**  
+**Primary target:** ACL / EMNLP / NAACL Main  
+**Fallback:** Findings if replication / external-validity hardening does not clear Main  
 **Date:** 2026-09-14
 
-Current authoritative project definition: [`ACTIVE_PROJECT.md`](ACTIVE_PROJECT.md)  
-Original selection and audit trail: [`SELECTION.md`](SELECTION.md)  
-E00 verdict: [`results/e00/E00_VERDICT.md`](results/e00/E00_VERDICT.md)  
-Ceiling probe / completed extension evidence: [`results/ext/CEILING_ASSESSMENT.md`](results/ext/CEILING_ASSESSMENT.md)
+Authoritative project definition: [`ACTIVE_PROJECT.md`](ACTIVE_PROJECT.md)  
+Controlled training experiment: [`E02_PREREGISTRATION.md`](E02_PREREGISTRATION.md) · [`results/e02/E02_RESULTS.md`](results/e02/E02_RESULTS.md)  
+Historical audit: [`SELECTION.md`](SELECTION.md) · [`results/e00/E00_VERDICT.md`](results/e00/E00_VERDICT.md) · [`results/ext/CEILING_ASSESSMENT.md`](results/ext/CEILING_ASSESSMENT.md)
 
 ## Current research question
 
-> **Why does raw wide-beam MAP decoding catastrophically shorten classic NMT, yet remain stable for modern instruction-tuned LLM translation? What changed in the learned generation distribution?**
+> **What does post-training teach a language model about when a response is allowed to end, and how does that learned generation boundary determine whether wide search can expose termination pathologies?**
 
-The active story is a **classic-NMT → modern-LLM termination-regime shift**.
+The original intrinsic-uncertainty identity is retired. The active paper is about a **post-training-learned, format-conditional generation boundary** and its consequences for search.
 
-The project no longer claims that intrinsic human-reference uncertainty explains sentence-level beam damage. That original identity is retired: the classic system shows the opposite within-MT uncertainty ordering even at beam 512, and uncertainty adds essentially no information once termination competitiveness is included.
+## Why the project is now a Main candidate
 
-## What is new enough to pursue
+The previous Findings ceiling depended on an unresolved reviewer compression: “old NMT work already says EOS/length bias causes the beam curse; modern chat models simply do not emit empty strings.” E02 supplies the missing causal identification.
 
-Old literature already owns the facts that classic NMT can prefer short/empty hypotheses and that EOS/length bias is central. L36 therefore does **not** claim “EOS causes the beam curse.”
+Using one Qwen2.5-3B base model, identical En→De examples, identical training budget/seed, and a single shared neutral `<END>` symbol across all conditions:
 
-The surviving scientific claim is broader and newer:
+- `A_ONLY` learns the boundary only in A: `p(<END>@true_end) = 0.966 / ~0` on A/B;
+- `B_ONLY` gives the **symmetric reversal**: `~0 / 0.961`;
+- `MIXED` learns both: `0.962 / 0.963`;
+- trained-format decoding stays near reference length and improves from beam 1→64;
+- untrained-format decoding runs on to roughly 4× reference length and collapses to BLEU ~6–8.
 
-> **The disappearance of the beam-search curse in modern LLM translation reflects a measurable shift in termination geometry, not merely a change in beam-search normalization; classic and modern systems occupy different search regimes under matched raw scoring, and moving termination competitiveness can move the pathology.**
+The result therefore cannot be reduced to different stop-token identities, different stop-set cardinalities, or one globally lower/higher EOS prior. **The boundary follows the format in which response termination was supervised.**
 
-This passes the project's triviality filter only in this regime-shift form. The following are explicitly too trivial / too old to serve as the paper identity:
+Registered P4 is **falsified**: translation ability is already near final before the boundary is fully learned. The revised claim is that the controlled SFT adds a generation boundary to a model that already has substantial translation competence; do not claim “boundary before capability.”
 
-- EOS probability affects stopping;
-- classic NMT sometimes prefers the empty string;
-- modern chat models usually do not emit empty answers;
-- adding a positive EOS bias makes outputs shorter.
+The masked-boundary arm is supporting only, not load-bearing.
 
-## Evidence already in hand
+## Full evidence chain
 
-On the same En→De substrate with raw cumulative sequence scores (`length_penalty = 0`):
+```text
+post-training
+  -> format-conditional generation boundary       [controlled E02]
+  -> stop-event geometry shifts by orders         [Olmo-3 stage lineage]
+  -> search exposure scale moves                  [rank / margin instrument]
+  -> predicted onset interval is confirmed        [out-of-sample beam 128 vs 512]
+  -> termination pathology appears / disappears   [classic vs modern + intervention]
+```
 
-- `facebook/wmt19-en-de`: beam 4 → 64, BLEU 48.61 → 43.28; empty 0 → 8.75%; length ratio 1.011 → 0.845;
-- `google/gemma-3-12b-it`: beam 4 → 64, BLEU 45.91 → 46.12; empty 0 → 0%; length ratio 0.998 → 0.995.
+Important: `rank_stop <= 2b` is an algorithmic exposure condition, **not** a new scientific law. Its contribution is as an instrument that allowed a pre-search measurement to predict where the termination-collapse channel would become accessible in another model/interface.
 
-The classic system continues to collapse through beam 512 (BLEU 3.67; 54.43% empty; length ratio 0.253). The modern non-collapse therefore survives the exact raw-scoring semantics under which the classic system fails.
+Also keep two beam-damage channels separate: termination collapse is not generic mode inadequacy. Olmo-3 base can lose BLEU under wide search with zero empty outputs and nearly full length.
 
-The model-side contrast is also large: the measured immediate-stop log probability is about -9.31 for the classic system and -35.33 for Gemma under the current stop-event definition. A preregistered stop-logit intervention on Gemma shows a dose response and brings back beam-amplified shortening/empty outputs, although the current +26 step-0 intervention also damages greedy decoding and therefore only partially reconstructs the clean classical signature.
+## Main-level claim boundary
 
-For modern chat models, every future measurement must define `stop` from the **actual generation contract** (all legal EOS/EOT/turn terminators), not from one arbitrary tokenizer EOS id.
+The paper may claim:
 
-## Why the project is promoted now
+> **Post-training learns a format-conditional generation boundary that is separable from task competence; by reorganizing stop-event geometry, that learned boundary moves the search-width scale at which a classical termination pathology becomes accessible.**
 
-The previous `HOLD / finding-level at best` language was written under the old requirement that L36 had to become a revised uncertainty law and plausibly grow to Main. That is no longer the acceptance criterion.
+It must not claim:
 
-Under the current criterion — a credible, non-trivial scientific story that can support a strong Findings paper even if the Main ceiling is uncertain — L36 clears the bar:
+- “SFT teaches EOS” as novelty;
+- that all beam-search degradation is termination;
+- that the neutral-`<END>` E02 itself reproduces classic premature empty collapse;
+- that P4 passed;
+- that amended P1′ was frozen before all pilot evidence;
+- that `NOEOSLOSS` cleanly proves necessity;
+- that ACL 2022 is broadly refuted.
 
-1. the modern non-collapse is a real matched-regime phenomenon, not a length-normalization artifact;
-2. the old uncertainty identity has been falsified rather than post-hoc rescued;
-3. termination geometry supplies a coherent cross-era explanation with an existing causal intervention;
-4. no owner found in the audit already establishes the same classic→modern regime shift plus the same causal account;
-5. the remaining work is paper-building work, not phenomenon gambling.
+## Work remaining before Main-ready
 
-## Authorized next work
+1. Replicate the decisive A_ONLY / B_ONLY / MIXED factorial with additional seeds and preferably a second base-model family.
+2. Audit boundary specificity in the untrained format: target-token NLL/accuracy before `<END>`, first-translation-span quality, and the full end-hazard profile. If content also fails badly, use the broader “format-conditional generation contract” wording rather than boundary-only causality.
+3. Add one independent natural post-training lineage to the Olmo-3 stage result.
+4. Add semantic MT evaluation, bootstrap uncertainty, and modest cross-model/language breadth for the classic↔modern endpoint.
 
-L36 is no longer restricted to one bounded pilot. The active paper program is:
-
-1. **Reverse rescue:** selectively reduce step-0 stopping competitiveness in classic NMT and test whether the wide-beam collapse disappears without damaging greedy/small-beam quality.
-2. **Cleaner forward intervention:** match the classic stop **rank / score margin**, not just mean log probability, so greedy remains mostly clean while wider beams increasingly expose the stop-now candidate.
-3. **Same-weights / interface isolation:** redo the void Qwen plain/chat or base/instruct test with string-level stopping enforced inside beam search. The previous newline post-truncation run remains void / untested.
-4. **Breadth:** replicate across several modern checkpoints/families and several translation directions, without turning the work into a benchmark.
-5. **Semantic metric:** add COMET or another established semantic metric plus bootstrap uncertainty alongside BLEU/chrF.
-
-Full claim stack, novelty boundary, kill conditions, and experiment details are in [`ACTIVE_PROJECT.md`](ACTIVE_PROJECT.md).
+These are claim-hardening and external-validity tasks. The central phenomenon is no longer a pilot gamble.
 
 ## Current verdict
 
 ```yaml
-status: ACTIVE_SUSTAINED_PROJECT
-paper_identity: CLASSIC_TO_LLM_TERMINATION_REGIME_SHIFT
-primary_target: ACL_EMNLP_NAACL_FINDINGS
-main_ceiling: OPEN_BUT_NOT_REQUIRED
+status: ACTIVE_MAIN_CANDIDATE
+primary_target: ACL_EMNLP_NAACL_MAIN
+fallback: FINDINGS
+paper_identity: POSTTRAINING_LEARNS_FORMAT_CONDITIONAL_GENERATION_BOUNDARIES
 original_uncertainty_identity: RETIRED
-core_regime_shift: SUPPORTED_ON_CURRENT_MATCHED_SETTING
-forward_intervention: SUPPORTED_WITH_GREEDY_DAMAGE_CAVEAT
-reverse_rescue: TODO
-same_model_interface_claim: UNTESTED
+controlled_E02: PASS
+symmetric_reversal: PASS
+mixed_rescue: PASS
+P4: FALSIFIED_AND_CLAIM_REVISED
+out_of_sample_onset_prediction: PASS
+classic_modern_termination_regime_shift: SUPPORTED
+main_ready: NO_REPLICATION_AND_BOUNDARY_SPECIFICITY_AUDIT_REMAIN
 continue: YES
 ```
-
-### One-sentence identity
-
-> **Classic NMT and modern instruction-tuned LLM translation occupy different termination regimes: under the same raw MAP search, the former exposes a cheap stop-now mode and collapses as beam widens, while the latter suppresses that mode and remains stable; L36 asks what moved the model across that boundary and whether moving it back and forth causally switches the curse.**
