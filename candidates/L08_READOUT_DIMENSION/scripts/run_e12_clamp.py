@@ -198,10 +198,20 @@ def main():
     items = run_eval.load_items(a.cell, a.n, 1234)
     max_new, stops = run_eval.CELL_GEN[a.cell]
 
-    src = pathlib.Path(a.clamp_source) if a.clamp_source else \
-        root / "results" / "e01" / a.tag / f"{a.cell}__full.jsonl"
-    refs = reference_table(tok, src, a.cell) if a.clamp != "none" else {}
-    ks = assign_k(refs, a.frac, 1234) if a.clamp != "none" else {}
+    # k is ALWAYS derived from the reference trajectory's answer position, and the
+    # clamped TOKENS come from whichever source the arm names.  Deriving k from the
+    # corrupted trajectory instead would give the R and R~ arms different clamped
+    # span lengths, confounding the contrast that isolates prefix content with a
+    # difference in depth -- which is the one thing this design exists to avoid.
+    ref_run = root / "results" / "e01" / a.tag / f"{a.cell}__full.jsonl"
+    src = pathlib.Path(a.clamp_source) if a.clamp_source else ref_run
+    refs, ks = {}, {}
+    if a.clamp != "none":
+        k_table = reference_table(tok, ref_run, a.cell)
+        ks = assign_k(k_table, a.frac, 1234)
+        refs = reference_table(tok, src, a.cell) if src != ref_run else k_table
+        # an item with no reference answer position has no defined k and is not clamped
+        ks = {i: k for i, k in ks.items() if i in refs}
 
     fam, _, lvl = a.intervention.partition(":")
     t0 = time.time()
@@ -225,6 +235,7 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     header = {"_meta": True, "model": a.model, "cell": a.cell, "mask": a.intervention,
               "intervention": iv_meta, "clamp": a.clamp, "clamp_source": str(src),
+              "k_from": str(ref_run), "n_clamped_items": len(ks),
               "frac": a.frac, "n_items": len(recs), "data_seed": 1234,
               "lm_head_forward_passes": sc.n,
               "total_generated_steps": sum(r["n_forward_steps"] for r in recs),

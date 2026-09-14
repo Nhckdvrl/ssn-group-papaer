@@ -31,7 +31,7 @@ def per_item(path):
     s = summ.score(path)
     if s.get("correct") is None:
         return None
-    ids = [json.loads(l)["id"] for l in open(path)][1:]
+    ids = [json.loads(l)["id"] for l in list(open(path))[1:]]
     return dict(zip(ids, s["correct"])), s
 
 
