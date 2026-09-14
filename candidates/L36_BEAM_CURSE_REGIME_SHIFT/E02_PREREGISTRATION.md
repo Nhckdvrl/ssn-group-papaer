@@ -81,6 +81,15 @@ Behavioural quantities (on 200 segments, and only at the checkpoints §4 names, 
 - greedy BLEU/chrF2 — task competence;
 - beam 1 / 16 / 64 under RAW (`length_penalty = 0`) scoring — empty rate, length ratio, BLEU.
 
+### 3b. Amendment (2026-09-14, after a first launch, before any result existed)
+
+The behavioural checkpoints were registered as `0, 200, 600, final`. The **step-0 cell is dropped**:
+before training, the boundary token sits at rank ~1.3e5 and is never emitted, so every generation
+runs to the 128-token cap, the empty rate is 0 by construction, and the cell measures nothing while
+costing ~45 minutes per condition (four conditions ran that long without reaching step 1 and were
+killed). Behavioural cells are therefore taken at **200, 600, final**; the cheap step-0 *rank*
+measurement is unchanged and still runs at step 0. No result existed when this was decided.
+
 ## 4. Predictions (registered before any run)
 
 **P1 — reversal (the decisive one).**
