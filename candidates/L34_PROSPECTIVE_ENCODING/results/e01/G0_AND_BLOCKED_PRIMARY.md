@@ -32,10 +32,32 @@ Forced-choice top-1 against 15 same-pool distractors (no decoding) agrees:
 > on both measures, on both template sets.**
 
 G0 required a PIT-style *advantage* for the curriculum on NEW facts. The instrument produces a
-large, consistent *disadvantage*. The parent phenomenon is not merely absent — it is reversed.
+large, consistent *disadvantage*.
 
-This independently confirms the `G1_RESULTS.md` §3 root cause: an access curriculum whose answers
-are permanently ungrounded is net-destructive, not net-instructive.
+### Correction (2026-09-14, same day): this is **not** "the parent effect is reversed"
+
+An earlier version of this file, and commit `87c7d62`, said the parent PIT phenomenon "is reversed".
+That claim is too strong and is withdrawn. **`NO_PIT` is not PIT's baseline.**
+
+Jiang et al.'s contrast is about **order**, and both of their arms receive the QA phase:
+
+| | their arm | our analogue |
+|---|---|---|
+| baseline | documents → instruction tuning | **missing from E01** |
+| PIT | instruction tuning → documents | `PIT_A` / `PIT_B` / `PIT_BAL` |
+
+Our `NO_PIT` arm never receives an access curriculum at all. Because the primary measure is
+gold-answer NLL, which needs no QA training to be well defined, `NO_PIT` is simply an *undamaged*
+model, and it wins by default. So G0 as built compares "curriculum vs no curriculum", not
+"curriculum-before-documents vs curriculum-after-documents".
+
+What G0 therefore licenses is only this, which is still decisive for E01:
+
+> an access curriculum whose answers are permanently ungrounded is net-destructive to factual
+> knowledge, confirming the `G1_RESULTS.md` §3 root cause.
+
+It does **not** license any claim about PIT's own effect, in either direction. The order-control
+arm that would have tested that was never in the design — see §5 below.
 
 ### The preregistered G0 escalation does not apply
 
@@ -84,6 +106,27 @@ encoding.
 - Accounts A, B and C are all untouched.
 - Next step is Selection-level, not another run: see `G1_RESULTS.md` §5 for the grounding
   constraint any successor instrument must satisfy.
+
+## 5. The missing arm
+
+The single change that repairs both faults is an **order control**: an arm that receives the *same*
+access curriculum, with the same family restriction and the same budget, but **after** the NEW
+documents instead of before.
+
+- It is PIT's actual contrast (order, not presence).
+- It matches the curriculum's damage across arms, so the A-vs-B comparison is no longer a
+  comparison between differently-damaged models.
+
+With it, the decisive quantity becomes an order contrast rather than only an age contrast:
+
+```
+PROSPECTIVE = [PREF_A - PREF_B]_curriculum-before-NEW  -  [PREF_A - PREF_B]_curriculum-after-NEW
+```
+
+evaluated on the NEW facts, with the OLD-fact subtraction retained as a second control. The
+grounding problem of `G1_RESULTS.md` §5 still has to be solved on top of this; the order control
+fixes the *comparison*, not the *manipulation*. Both are Selection-level decisions and neither is
+authorized here.
 
 ## 4. Artifacts
 
