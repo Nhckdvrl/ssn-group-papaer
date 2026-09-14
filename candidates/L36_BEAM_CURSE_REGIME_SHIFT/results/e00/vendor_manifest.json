@@ -1,0 +1,12 @@
+{
+  "why": "the frozen verl-clean env lacks sacremoses (FSMT tokenizer) and sacrebleu (metric validation only); the compute policy forbids installing packages, so both are unpacked under ./vendor and reached via PYTHONPATH -- site-packages is never modified",
+  "recreate": "bash src/setup_vendor.sh",
+  "files": {
+    "sacrebleu.tar.gz": "5977e8a323d148403449bcecd3d60764dfecf353262f2d6ec94236f57a467df5",
+    "sacremoses.tar.gz": "5aec4792efc2726710243d3566b381990e6b678cb1fd7b9d2dae216b4b8f1b1e"
+  },
+  "urls": {
+    "sacremoses.tar.gz": "https://files.pythonhosted.org/packages/a4/69/e71340bf92b312107e8e1e9d360d45c8b304151ff1e022b6d4c1343a073a/sacremoses-0.2.0.tar.gz",
+    "sacrebleu.tar.gz": "https://github.com/mjpost/sacrebleu/archive/refs/tags/v2.4.3.tar.gz"
+  }
+}

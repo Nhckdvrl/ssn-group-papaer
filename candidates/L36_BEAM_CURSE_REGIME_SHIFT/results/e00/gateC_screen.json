@@ -1,0 +1,61 @@
+{
+  "screen_set": "newstest2018 En->De, first 300 segments, greedy, frozen prompt",
+  "selection_rule": "eligible (C.1) -> highest chrF2 -> ties < 0.5 chrF2 broken by fewer params",
+  "rows": [
+    {
+      "tag": "gemma3-12b",
+      "model": "google/gemma-3-12b-it",
+      "n": 300,
+      "chrf2": 68.35307110783681,
+      "bleu": 42.04540932295706,
+      "malformed_rate": 0.0,
+      "truncation_rate": 0.0,
+      "eligible": true,
+      "params_b": 12.2,
+      "note": "general instruct LM; no disclosed supervised WMT test-set training",
+      "clears_bar": true
+    },
+    {
+      "tag": "llama31-8b",
+      "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+      "n": 300,
+      "chrf2": 67.02902252487297,
+      "bleu": 40.82822534841523,
+      "malformed_rate": 0.0,
+      "truncation_rate": 0.0,
+      "eligible": true,
+      "params_b": 8.0,
+      "note": "general instruct LM; no disclosed supervised WMT test-set training",
+      "clears_bar": true
+    },
+    {
+      "tag": "qwen25-14b",
+      "model": "Qwen/Qwen2.5-14B-Instruct",
+      "n": 300,
+      "chrf2": 63.07544729993124,
+      "bleu": 37.10272137952424,
+      "malformed_rate": 0.03666666666666667,
+      "truncation_rate": 0.01,
+      "eligible": true,
+      "params_b": 14.8,
+      "note": "general instruct LM; no disclosed supervised WMT test-set training",
+      "clears_bar": true
+    },
+    {
+      "tag": "qwen25-7b",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "n": 300,
+      "chrf2": 61.47000493220718,
+      "bleu": 32.71624667580416,
+      "malformed_rate": 0.006666666666666667,
+      "truncation_rate": 0.0,
+      "eligible": true,
+      "params_b": 7.6,
+      "note": "general instruct LM; no disclosed supervised WMT test-set training",
+      "clears_bar": true
+    }
+  ],
+  "selected": "google/gemma-3-12b-it",
+  "selected_tag": "gemma3-12b",
+  "gate_C_pass": true
+}

@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-14  
 **Target:** ACL / EMNLP / NAACL Main  
-**Status:** **PILOT-AUTHORIZED — E01 ONLY, BLOCKED ON MANDATORY E00 GATE**
+**Status:** **HOLD — E00 audit run 2026-09-14; E01 not authorized** (see `results/e00/E00_VERDICT.md`)
 
 ## 1. Research question
 

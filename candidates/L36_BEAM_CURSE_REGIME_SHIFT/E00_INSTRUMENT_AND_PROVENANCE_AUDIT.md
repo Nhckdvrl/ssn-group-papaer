@@ -75,7 +75,16 @@ Character level is primary because it is the reading under which our reconstruct
 paper's Figure 1 for MT-ende (mean `u` in the 0.3–0.45 band, increasing monotonically with
 reference length); the word-level reading lands near 0.6, above the plotted range.
 
-**Pass requirement A.3:** the two readings must induce essentially the same stratification —
+**AMENDED 2026-09-14 → A.3′ (see `results/e00/gateA_unit_resolution.md`).** The original A.3
+threshold below failed (`rho = 0.904` passes, same-quartile `0.692 < 0.80`). Per A.3's own
+instruction the unit was resolved against the authors' material *before any generation existed*:
+the paper's Figure 1 levels turn out not to be reproducible under eq. (1) at all, while its Figure 6
+binning (`u ∈ [0,0.33]/(0.33,0.66]/(0.66,1]`) is consistent with the character-level reading
+(0.05% of segments above 1, vs 3.3% word-level). Character level is primary, and the gate is
+**tightened**: every stratified result in Gate B and E01 must hold under **both** readings, computed
+from the same generations. A claim that holds under only one reading does not count.
+
+**Pass requirement A.3 (original, superseded):** the two readings must induce essentially the same stratification —
 Spearman `rho >= 0.90` between character- and word-level `u`, and `>= 80%` of segments must land in
 the same quartile under both. If they do not agree, the unit choice becomes a real researcher
 degree of freedom and must be resolved against the authors' released numbers before E01.

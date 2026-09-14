@@ -1,6 +1,6 @@
 # L36 — Why Did the Beam-Search Curse Disappear?
 
-**Status:** **PREFERRED NEXT CANDIDATE — E01 BLOCKED ON MANDATORY E00 AUDIT**  
+**Status:** **HOLD — E00 RUN 2026-09-14; GATE D FAILED, GATE B CONDITIONAL; E01 NOT AUTHORIZED**  
 **Target:** ACL / EMNLP / NAACL Main  
 **Date:** 2026-09-14
 
@@ -38,6 +38,33 @@ provenance audit:
   (equivalence bound + material attenuation, not `p > 0.05`) are frozen in E00 §5.
 
 Any failed gate puts L36 on **HOLD** cheaply, before a single modern beam sweep is run.
+
+## E00 outcome (2026-09-14) — HOLD
+
+Full verdict: [`results/e00/E00_VERDICT.md`](results/e00/E00_VERDICT.md).
+
+```yaml
+gate_A_substrate:        PASS (+ finding: ACL-2022 Fig. 1 levels are not reproducible under eq. 1)
+metric_validation:       PASS (exact agreement with sacrebleu 2.4.3, 22/22 cells)
+gate_B_positive_control: CONDITIONAL PASS (curse reproduces; its uncertainty conditioning is REVERSED)
+gate_C_modern_model:     PASS (google/gemma-3-12b-it, frozen substrate-blind)
+gate_D_power:            FAIL (MDE 2.71-3.18 BLEU vs a 1.0 BLEU equivalence margin)
+overall:                 HOLD
+```
+
+Two results decided it, both on classic 2019 En→De systems and before the modern arm ran:
+
+1. **The sentence-level law E01 was going to test runs the other way.** Widening the beam from 4 to
+   64 under unnormalised scoring costs `−11.3` BLEU in the *lowest*-uncertainty quartile and only
+   `−3.9` in the highest (`CURSE = +7.47`, 95% CI `[+2.89, +12.18]`); the sign holds on both classic
+   systems and both `u` readings. ACL-2022's claim is task-level (MT vs GEC) and survives; the
+   within-MT sentence-level reading that L36's `beam × u` estimand assumed does not.
+2. **The classic/modern contrast reproduces inside one 2019 encoder-decoder.** Flipping
+   `length_penalty` 0.0 → 1.0 on `facebook/wmt19-en-de` turns `−6.96` BLEU into `+1.54` across the
+   same sweep, and 13% empty hypotheses into 0%. That is `SELECTION.md` §10 Outcome B — the
+   scoring-convention artifact that the Selection says kills the Main route.
+
+Cost: one afternoon, 4 local cards, inference only, no training runs.
 
 ## Exact authorization
 
