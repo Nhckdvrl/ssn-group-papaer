@@ -171,6 +171,28 @@ def assign_k(refs, frac, seed):
     return ks
 
 
+def assert_item_identity(items, cell, tag, root):
+    """`load_items` assigns ids POSITIONALLY after shuffling a subset of size n, so
+    `gsm8k-0` at n=200 is a different question than `gsm8k-0` at n=500.  Any run whose
+    item set is built at a different n than the reference run is silently comparing
+    different problems.  That bug produced an entire invalid control arm on
+    2026-09-14; this guard exists so it cannot happen twice.  Fails loudly."""
+    ref = root / "results" / "e01" / tag / f"{cell}__full.jsonl"
+    if not ref.exists():
+        return
+    gold = {}
+    for line in list(open(ref))[1:]:
+        r = json.loads(line)
+        gold[r["id"]] = r["gold"]
+    bad = [it["id"] for it in items
+           if it["id"] in gold and str(it["gold"]) != str(gold[it["id"]])]
+    if bad:
+        raise SystemExit(
+            f"ITEM IDENTITY MISMATCH vs {ref}: {len(bad)} of {len(items)} ids carry a "
+            f"different question (e.g. {bad[:3]}).  load_items ids are positional in n; "
+            f"build this run at the same n as the reference run.")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
@@ -201,6 +223,7 @@ def main():
         a.model, dtype=torch.bfloat16, device_map="cuda:0").eval()
 
     items = run_eval.load_items(a.cell, a.n, 1234)
+    assert_item_identity(items, a.cell, a.tag, root)
     max_new, stops = run_eval.CELL_GEN[a.cell]
 
     # k is ALWAYS derived from the reference trajectory's answer position, and the

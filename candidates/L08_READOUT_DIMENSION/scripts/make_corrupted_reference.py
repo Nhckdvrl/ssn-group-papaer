@@ -180,8 +180,15 @@ def main():
 
     # calibration split: items beyond the evaluation split, so tau is never fit on
     # the items the contrast is estimated on
-    all_items = run_eval.load_items(a.cell, a.n + a.calib_n, 1234)
-    calib = all_items[a.n:]
+    # BUG FIXED 2026-09-14.  This built the item set at (n + calib_n), but load_items
+    # assigns ids POSITIONALLY after shuffling a subset of size n, so every id here
+    # named a different question than the same id in the n=500 reference run.  The
+    # resulting control arm clamped models to another problem's solution -- which is
+    # the real reason its prefixes scored on_task 0.073, not "the temperature was too
+    # high".  The evaluation set must be built at exactly n; calibration items are
+    # drawn from a disjoint seed instead.
+    all_items = run_eval.load_items(a.cell, a.n, 1234)
+    calib = run_eval.load_items(a.cell, a.calib_n, 4321)
     max_new, stops = run_eval.CELL_GEN[a.cell]
 
     # the calibration reference is the full model's own greedy trajectory on the
