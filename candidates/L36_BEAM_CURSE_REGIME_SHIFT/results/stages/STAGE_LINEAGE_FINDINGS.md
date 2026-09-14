@@ -129,8 +129,18 @@ the base LM keeps full-length outputs and degrades through the generic-hypothesi
 Two systems, the same BLEU, two different pathologies — which is exactly why the termination channel
 needs its own instrument rather than being read off a quality curve.
 
-The second half of the prediction (empties appearing by beam 512, since `2b = 1024 ≥ 532`) is still
-running on a 50-segment subset.
+**Second half, also confirmed.** The same checkpoint at beam 512 (50-segment subset, `2b = 1024 ≥
+532`) does start emptying out:
+
+| beam | 1 | 16 | 64 | 128 | **512** |
+|---|---|---|---|---|---|
+| empty % | 0.00 | 0.00 | 0.00 | 0.00 | **8.00** |
+| length ratio | 1.004 | 0.954 | 0.947 | 0.948 | **0.804** |
+| BLEU | 35.29 | 36.74 | 22.20 | 16.17 | 8.39 |
+
+The termination channel is silent for four beam widths spanning 1→128 and switches on between 128
+and 512, bracketing the `b* = 266` predicted from a single step-0 measurement taken before any
+search was run — on a model family and an interface different from the one the law was derived on.
 
 ## 4. What is still running / not yet done
 

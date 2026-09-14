@@ -47,3 +47,27 @@ account. In particular, if `Olmo-3` base is still clean at beam 512, rank is not
 will *find* it. Rank is the exposure variable and gives a quantitative onset, so the account becomes
 a prediction rather than a description — and it explains why the classic 2019 system needs beam ≈ 64
 while a post-trained model prompted out-of-format collapses by beam 16.
+
+
+---
+
+## Outcome (recorded 2026-09-14, after the runs)
+
+**Prediction 1 — confirmed, both halves.** `Olmo-3-1025-7B` base, few-shot, empty-output rate by
+beam: 0.00 % (b1) / 0.00 % (b16) / 0.00 % (b64) / 0.00 % (b128) / **8.00 % (b512)**, with the length
+ratio holding at ~0.95 through b128 and dropping to 0.804 at b512. The switch-on is bracketed
+between 128 and 512, around the predicted `b* = 266`. At b128 the classic system is already at
+40.11 % empty — so the two systems differ by more than an order of magnitude in beam width at the
+same measured pathology, exactly as the rank difference (106 vs 532) says they should.
+
+**Prediction 3 — confirmed.** Across the Olmo-3 lineage, `rank_stop` under the chat interface is
+large at every post-training stage and grows (SFT 1222 → RLVR 41025), while under the few-shot
+interface it collapses to 3–4 after SFT.
+
+**Prediction 2 — not measured as a rank** (only `log p(stop) = −35.33` for `gemma-3-12b-it`), and it
+is consistent: no collapse through beam 64.
+
+**Not falsified anywhere.** The one thing the law does *not* explain is the second damage channel:
+`Olmo-3` base loses 20 BLEU between beam 16 and beam 128 with zero empty outputs, through generic
+high-probability hypotheses and source copying. The rank law governs termination only, and is
+reported as such.

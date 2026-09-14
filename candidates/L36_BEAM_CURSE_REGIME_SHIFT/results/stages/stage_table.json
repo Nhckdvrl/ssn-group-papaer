@@ -44,6 +44,50 @@
     "b_star": 318
   },
   {
+    "tag": "olmo3-base_onset_b512",
+    "stage": "base",
+    "interface": "fewshot",
+    "margin": 7.2774458527565,
+    "log_p_stop": -8.501662015914917,
+    "rank_median": 634.5,
+    "top128": 0.0,
+    "beams": {
+      "512": {
+        "bleu_multi": 8.385701689581314,
+        "empty_rate": 0.08,
+        "len_ratio": 0.8039961941008563
+      }
+    },
+    "b_star": 318
+  },
+  {
+    "tag": "olmo3-dpo",
+    "stage": "dpo",
+    "interface": "chat",
+    "margin": 17.352296626567842,
+    "log_p_stop": -17.711673183441164,
+    "rank_median": 60030.0,
+    "top128": 0.0,
+    "beams": {
+      "1": {
+        "bleu_multi": 27.49163911272013,
+        "empty_rate": 0.0,
+        "len_ratio": 1.044709388971684
+      },
+      "16": {
+        "bleu_multi": 32.46223443146903,
+        "empty_rate": 0.0,
+        "len_ratio": 1.0049677098857428
+      },
+      "64": {
+        "bleu_multi": 31.409372609694064,
+        "empty_rate": 0.0,
+        "len_ratio": 0.9858420268256334
+      }
+    },
+    "b_star": 30015
+  },
+  {
     "tag": "olmo3-dpo",
     "stage": "dpo",
     "interface": "fewshot",
