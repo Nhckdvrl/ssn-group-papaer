@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-14  
 **Target:** ACL / EMNLP / NAACL Main  
-**Status:** **PILOT-AUTHORIZED — E01 ONLY**
+**Status:** **PILOT-AUTHORIZED — E01 ONLY, BLOCKED ON MANDATORY E00 GATE**
 
 ## 1. Research question
 
@@ -225,6 +225,13 @@ Run a predeclared beam sweep with all generation semantics explicit:
 Use the ACL-2022 WMT19 English→German multi-reference substrate with the published additional human references. Freeze the exact human-reference uncertainty score before model inference.
 
 Primary modern checkpoint: an open translation-specialized LLM supporting English→German, e.g. `Unbabel/TowerInstruct-7B-v0.2` (exact revision and prompt frozen before scoring).
+
+> **SUPERSEDED 2026-09-14 by `E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md` §3.** `Unbabel/TowerInstruct-*`
+> is **BANNED** as the modern arm: the TowerBlocks-v0.2 dataset card discloses "WMT14 to WMT21 —
+> General Translation" in the supervised mix, so the WMT19 evaluation lineage sits inside the
+> model's own SFT data and a flat beam curve there would be uninterpretable. `haoranxu/ALMA-*` is
+> banned for the same reason (fine-tuned on WMT'17–'20 human-written test data). The modern arm is
+> instead selected by the E00 Gate-C eligibility screen, frozen before any beam curve is seen.
 
 Run the same explicit beam-width sweep.
 

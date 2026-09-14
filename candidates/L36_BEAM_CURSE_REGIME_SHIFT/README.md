@@ -1,10 +1,11 @@
 # L36 — Why Did the Beam-Search Curse Disappear?
 
-**Status:** **PILOT-AUTHORIZED — E01 ONLY**  
+**Status:** **PREFERRED NEXT CANDIDATE — E01 BLOCKED ON MANDATORY E00 AUDIT**  
 **Target:** ACL / EMNLP / NAACL Main  
 **Date:** 2026-09-14
 
-Full Selection: [`SELECTION.md`](SELECTION.md)
+Full Selection: [`SELECTION.md`](SELECTION.md)  
+Pre-E01 gate: [`E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md`](E00_INSTRUMENT_AND_PROVENANCE_AUDIT.md) — **E01 may not run until E00 passes**
 
 ## Question
 
@@ -18,9 +19,29 @@ This is an **old empirical law → modern computational re-explanation** candida
 
 The contribution cannot be the combination of these facts. It must identify why the old conditional law breaks and replace it with a better one.
 
+## Execution order
+
+**E00 first.** `SELECTION.md` authorizes E01, but E01 is blocked behind the E00 instrument and
+provenance audit:
+
+- **Gate A** rebuild the ACL-2022 WMT19 En→De multi-reference uncertainty `u` and freeze it before
+  any model is loaded — no entropy proxy, no LLM judge, no invented ambiguity score;
+- **Gate B** classic positive control (`facebook/wmt19-en-de`) must show the beam-search curse in
+  the high-`u` stratum under unnormalized beam scoring. If it does not, this is an
+  **instrument failure** and no modern flat curve may be reported as a broken law;
+- **Gate C** the modern checkpoint must be free of disclosed WMT19 evaluation lineage and must be
+  frozen on a substrate-blind screen (`newstest2018`) before any beam curve is seen.
+  `Unbabel/TowerInstruct-*` is **BANNED** (TowerBlocks v0.2 discloses "WMT14 to WMT21 — General
+  Translation"); `haoranxu/ALMA-*` is **BANNED** (fine-tuned on WMT'17–'20 human-written test data,
+  which contains newstest2019);
+- **Gate D** the design must resolve a 1.0-BLEU equivalence margin, and the law-break criteria
+  (equivalence bound + material attenuation, not `p > 0.05`) are frozen in E00 §5.
+
+Any failed gate puts L36 on **HOLD** cheaply, before a single modern beam sweep is run.
+
 ## Exact authorization
 
-Only **E01** is authorized:
+After E00 passes, only **E01** is authorized:
 
 1. reproduce/audit the modern non-collapse with explicit beam scoring/stopping semantics on the released LLM-MT setup;
 2. reuse the ACL-2022 WMT19 multi-reference human uncertainty substrate on one open translation-specialized LLM;
