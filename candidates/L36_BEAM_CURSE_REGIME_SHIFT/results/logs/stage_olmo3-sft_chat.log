@@ -5,3 +5,6 @@ The following generation flags are not valid and may be ignored: ['temperature',
 [olmo3-sft/chat] margin 11.19 | log p(stop) -11.91 | median rank 1222 | stop in top-128 1.5%
 The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'length_penalty']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
 [olmo3-sft/chat] beam   1: BLEU  30.39 chrF2  55.62 empty  0.00% lenR 1.009
+[olmo3-sft/chat] beam  16: BLEU  27.11 chrF2  50.32 empty  0.00% lenR 0.972
+[olmo3-sft/chat] beam  64: BLEU  17.64 chrF2  38.84 empty  0.00% lenR 0.963
+wrote results/stages/olmo3-sft_chat.json

@@ -44,6 +44,9 @@ def parse_args():
     p.add_argument("--max-new-tokens", type=int, default=128)
     p.add_argument("--beam-budget", type=int, default=256)
     p.add_argument("--dtype", default="bfloat16")
+    p.add_argument("--template-from", default="",
+                   help="borrow this checkpoint's chat template (lets a base model be measured on "
+                        "the exact prompt string its post-trained sibling sees)")
     return p.parse_args()
 
 
@@ -73,11 +76,16 @@ def main():
         a.model, dtype=getattr(torch, a.dtype), device_map="cuda").eval()
 
     if a.interface == "chat" and tok.chat_template is None:
-        print("no chat template on this checkpoint; skipping chat interface")
-        return 2
+        if not a.template_from:
+            print("no chat template on this checkpoint; skipping chat interface")
+            return 2
+        donor = AutoTokenizer.from_pretrained(a.template_from)
+        tok.chat_template = donor.chat_template
+        print(f"borrowed chat template from {a.template_from}")
 
     stop_ids = build_stop_set(tok, model, a.interface)
     res = {"model": a.model, "tag": a.tag, "stage": a.stage, "interface": a.interface,
+           "template_from": a.template_from or None,
            "stop_set_size": len(stop_ids), "dtype": a.dtype,
            "prompt": PROMPT if a.interface == "chat" else FEWSHOT}
     t0 = time.time()
