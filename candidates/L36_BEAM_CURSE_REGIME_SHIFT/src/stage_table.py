@@ -15,7 +15,7 @@ SD = os.path.join(ROOT, "results", "stages")
 def main():
     rows = []
     for fn in sorted(os.listdir(SD)):
-        if not fn.endswith(".json") or fn.startswith("margin_"):
+        if not fn.endswith(".json") or fn.startswith("margin_") or fn == "stage_table.json":
             continue
         d = json.load(open(os.path.join(SD, fn)))
         t = d["termination"]
