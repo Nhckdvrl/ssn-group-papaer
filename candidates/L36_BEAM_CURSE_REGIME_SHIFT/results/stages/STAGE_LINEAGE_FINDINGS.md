@@ -10,7 +10,30 @@ items whose surface form contains a line break (few-shot interface) or the end-o
 
 ---
 
-## 1. The exposure law (confirmed, 393/393 events)
+## 0. How these results should and should not be stated (correction, 2026-09-14)
+
+Two framings in the earlier version of this file were too strong and are corrected here.
+
+**(a) The `rank_stop ≤ 2b` bound is not a finding.** HuggingFace beam search keeps the top `2b`
+candidates at the first step, so an immediate-stop hypothesis *cannot* enter the beam unless its
+token is in that set. The 393/393 result is a correctness check on the instrument, not a discovery.
+What is actually worth reporting is the other half:
+
+> training stage and generation format move the **stop-rank distribution by orders of magnitude**
+> (rank 3 → 60030 across conditions of the same 7B lineage), and that distribution, measured before
+> any search is run, **predicts out of sample the beam interval in which a previously unrun system
+> opens its termination-collapse channel** (Olmo-3 base: `rank ≈ 532 ⇒ b* ≈ 266`; observed 0 % empty
+> through beam 128, 8 % at beam 512).
+
+**(b) The chat/few-shot rank gap is partly a stop-event cardinality artefact.** The few-shot stop
+set is ~2179 tokens whose surface contains a line break; the chat stop set is a single end-of-turn
+id. Some of the rank 3 vs rank 1222 gap therefore reflects "how many ways there are to end", not
+learned geometry alone. This does not undermine the behavioural results — a real decoder does face
+those different stopping contracts — but it does mean that a *weights × format* interaction claim
+cannot be made from this table. Removing that confound requires training with a **single shared
+boundary symbol in both formats**, which is what `E02_PREREGISTRATION.md` does.
+
+## 1. The exposure check (instrument correctness, 393/393 events)
 
 HuggingFace beam search keeps the top `2b` candidates at the first generated position. So the empty
 hypothesis can only **enter** the beam when `rank_stop ≤ 2b`; whether it then **wins** is a separate
@@ -28,7 +51,8 @@ Per-segment test on `facebook/wmt19-en-de`, RAW scoring, first 400 segments:
 | 512 | 194 | **100 %** | 98.2 % | 49.4 % |
 
 **Not one collapse event in 393 violated the rank bound**, across beam widths spanning two orders of
-magnitude. Exposure is necessary; it is not sufficient (the margin among exposed segments barely
+magnitude — as it must be, since the bound is what the search algorithm enforces (see §0a). The
+informative part is that exposure is necessary but not sufficient (the margin among exposed segments barely
 differs between collapsing and surviving ones: 8.33 vs 8.91 nats), which is why the empty rate
 tracks but never reaches the exposure rate.
 
