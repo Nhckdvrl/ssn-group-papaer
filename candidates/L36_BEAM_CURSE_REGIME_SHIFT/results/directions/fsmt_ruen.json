@@ -1,0 +1,33 @@
+{
+  "model": "facebook/wmt19-ru-en",
+  "kind": "enc_dec",
+  "direction": "ruen",
+  "tag": "fsmt",
+  "n": 400,
+  "stop_set_size": 1,
+  "margin_mean": 7.508919603824616,
+  "log_p_stop_mean": -8.082686333060265,
+  "rank_median": 41.0,
+  "b_star": 21,
+  "frac_rank_le_128": 0.98,
+  "beam": {
+    "4": {
+      "bleu": 36.05143156323637,
+      "chrf2": 62.33016807979302,
+      "empty_rate": 0.0,
+      "len_ratio": 1.0073672504865165
+    },
+    "16": {
+      "bleu": 33.95353385474026,
+      "chrf2": 58.30474802658158,
+      "empty_rate": 0.0375,
+      "len_ratio": 0.9136780650542119
+    },
+    "64": {
+      "bleu": 9.2605727930089,
+      "chrf2": 30.44380100035898,
+      "empty_rate": 0.415,
+      "len_ratio": 0.4124270225187657
+    }
+  }
+}

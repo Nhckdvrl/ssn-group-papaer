@@ -1,0 +1,33 @@
+{
+  "model": "facebook/wmt19-en-de",
+  "kind": "enc_dec",
+  "direction": "ende",
+  "tag": "fsmt",
+  "n": 400,
+  "stop_set_size": 1,
+  "margin_mean": 9.088687520027161,
+  "log_p_stop_mean": -9.568208492994309,
+  "rank_median": 106.0,
+  "b_star": 53,
+  "frac_rank_le_128": 0.67,
+  "beam": {
+    "4": {
+      "bleu": 37.380627508727116,
+      "chrf2": 65.27654138955546,
+      "empty_rate": 0.0,
+      "len_ratio": 1.0111884634510195
+    },
+    "16": {
+      "bleu": 35.520335541979684,
+      "chrf2": 62.57675944129503,
+      "empty_rate": 0.035,
+      "len_ratio": 0.9339880656389855
+    },
+    "64": {
+      "bleu": 31.803666167765005,
+      "chrf2": 58.518024735436114,
+      "empty_rate": 0.0875,
+      "len_ratio": 0.8452262555942317
+    }
+  }
+}
