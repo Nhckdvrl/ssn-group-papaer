@@ -1,10 +1,18 @@
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 66.34it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 56.76it/s]
 {"condition": "MIXED", "total_steps": 1122, "n_train": 2998, "end_id": 151650}
-[MIXED] step     0  loss nan  rank_A    128667  rank_B    115093
-/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:247: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+[MIXED] step     0  loss nan  rank_A   128667 rank_B   115093  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:295: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
   running += float(out.loss) / a.accum
-[MIXED] step    50  loss 77.9408  rank_A    122202  rank_B    110206
-[MIXED] step   100  loss 55.9758  rank_A    120272  rank_B    116444
-[MIXED] step   150  loss 50.1583  rank_A    118386  rank_B    113824
+[MIXED] step    50  loss 77.9408  rank_A   122202 rank_B   110206  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+[MIXED] step   100  loss 55.9758  rank_A   120272 rank_B   116444  p(END@end) A 0.002 B 0.002  learned A 0.00 B 0.00
+[MIXED] step   150  loss 50.1583  rank_A   118386 rank_B   113824  p(END@end) A 0.024 B 0.021  learned A 0.00 B 0.00
 The following generation flags are not valid and may be ignored: ['length_penalty']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[MIXED] step   200  loss 46.5622  rank_A   118500 rank_B   115954  p(END@end) A 0.180 B 0.168  learned A 0.00 B 0.00  |  A b64 empty 0.0% BLEU 38.3   B b64 empty 0.0% BLEU 34.3
+[MIXED] step   250  loss 44.5709  rank_A   118038 rank_B   116298  p(END@end) A 0.571 B 0.561  learned A 0.93 B 0.90
+[MIXED] step   300  loss 44.0217  rank_A   119572 rank_B   117476  p(END@end) A 0.779 B 0.781  learned A 0.95 B 0.97
+[MIXED] step   350  loss 42.8815  rank_A   118040 rank_B   117292  p(END@end) A 0.868 B 0.868  learned A 0.97 B 0.97
+[MIXED] step   400  loss 38.7888  rank_A   117910 rank_B   118632  p(END@end) A 0.912 B 0.912  learned A 0.97 B 0.98
+[MIXED] step   450  loss 37.9487  rank_A   116738 rank_B   118595  p(END@end) A 0.937 B 0.932  learned A 0.97 B 0.98
+[MIXED] step   500  loss 37.3694  rank_A   114909 rank_B   117496  p(END@end) A 0.945 B 0.947  learned A 0.97 B 0.98
+[MIXED] step   550  loss 38.5764  rank_A   114650 rank_B   117242  p(END@end) A 0.953 B 0.955  learned A 0.98 B 0.98

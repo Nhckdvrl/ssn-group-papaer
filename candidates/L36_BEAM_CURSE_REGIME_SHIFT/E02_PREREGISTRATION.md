@@ -198,6 +198,15 @@ boundary target does not leave `<END>` untrained, because it still receives nega
 wrong class at every other position, so "the rank fails to rise" is not a clean prediction. No claim
 of the paper depends on this arm.
 
+### 8b. The control arm was dropped for cost (2026-09-14)
+
+`A_ONLY_NOEOSLOSS` was killed at step 150. With the boundary target masked the model never learns to
+emit `<END>` in *either* format, so every behavioural cell generates to the 128-token cap in both
+formats and the arm was running roughly seven times slower than the others while occupying a card the
+three load-bearing conditions needed. Per §8 no claim depends on it. Its partial trace is kept in
+`results/e02/` and its only reading so far is the expected one: `p_end@true_end = 0.000` in both
+formats through step 150.
+
 ## 9. What a pass would license
 
 If P1 and P2 hold, the paper's central claim becomes:

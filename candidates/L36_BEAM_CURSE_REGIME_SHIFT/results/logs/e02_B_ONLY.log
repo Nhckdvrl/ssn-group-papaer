@@ -1,10 +1,18 @@
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 64.69it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 66.23it/s]
 {"condition": "B_ONLY", "total_steps": 1122, "n_train": 2998, "end_id": 151650}
-[B_ONLY] step     0  loss nan  rank_A    128667  rank_B    115093
-/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:247: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+[B_ONLY] step     0  loss nan  rank_A   128667 rank_B   115093  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:295: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
   running += float(out.loss) / a.accum
-[B_ONLY] step    50  loss 77.6112  rank_A    128264  rank_B    104664
-[B_ONLY] step   100  loss 56.9934  rank_A    124410  rank_B    106505
-[B_ONLY] step   150  loss 50.1347  rank_A    123109  rank_B     99591
+[B_ONLY] step    50  loss 77.6112  rank_A   128264 rank_B   104664  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+[B_ONLY] step   100  loss 56.9934  rank_A   124410 rank_B   106505  p(END@end) A 0.000 B 0.001  learned A 0.00 B 0.00
+[B_ONLY] step   150  loss 50.1347  rank_A   123109 rank_B    99591  p(END@end) A 0.000 B 0.025  learned A 0.00 B 0.00
 The following generation flags are not valid and may be ignored: ['length_penalty']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[B_ONLY] step   200  loss 46.1418  rank_A   121983 rank_B    99108  p(END@end) A 0.000 B 0.216  learned A 0.00 B 0.00  |  A b64 empty 0.0% BLEU 6.0   B b64 empty 0.0% BLEU 35.3
+[B_ONLY] step   250  loss 44.2106  rank_A   121112 rank_B   101092  p(END@end) A 0.000 B 0.619  learned A 0.00 B 0.92
+[B_ONLY] step   300  loss 43.8292  rank_A   121848 rank_B   105714  p(END@end) A 0.000 B 0.790  learned A 0.00 B 0.93
+[B_ONLY] step   350  loss 42.6960  rank_A   121040 rank_B   102940  p(END@end) A 0.000 B 0.868  learned A 0.00 B 0.94
+[B_ONLY] step   400  loss 38.7158  rank_A   120780 rank_B   101531  p(END@end) A 0.000 B 0.913  learned A 0.00 B 0.97
+[B_ONLY] step   450  loss 37.8309  rank_A   120536 rank_B   100650  p(END@end) A 0.000 B 0.935  learned A 0.00 B 0.97
+[B_ONLY] step   500  loss 37.1577  rank_A   120056 rank_B    99810  p(END@end) A 0.000 B 0.942  learned A 0.00 B 0.97
+[B_ONLY] step   550  loss 38.5424  rank_A   119904 rank_B   102131  p(END@end) A 0.000 B 0.949  learned A 0.00 B 0.98
