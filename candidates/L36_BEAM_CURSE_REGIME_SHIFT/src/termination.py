@@ -15,23 +15,34 @@ full set of vocabulary items whose decoded form contains a newline.
 import torch
 
 
-def build_stop_set(tok, model, interface):
-    """Return the sorted list of token ids that terminate a translation under this interface."""
+def build_stop_set(tok, model, interface, extra_stop_ids=None):
+    """Return the sorted list of token ids that terminate a translation under this interface.
+
+    `extra_stop_ids` lets a base model be measured through a post-trained sibling's chat template:
+    the base checkpoint has no end-of-turn id of its own, so the donor's is supplied.
+    """
+    extra = [int(e) for e in (extra_stop_ids or [])]
     if interface == "chat":
         eos = model.generation_config.eos_token_id
         eos = eos if isinstance(eos, list) else [eos]
-        return sorted(set(int(e) for e in eos if e is not None))
-    ids = []
+        ids = sorted(set([int(e) for e in eos if e is not None] + extra))
+        if not ids and tok.eos_token_id is not None:
+            ids = [int(tok.eos_token_id)]
+        if not ids:
+            raise ValueError("empty stop set for the chat interface")
+        return ids
+    # batch_decode over the whole vocabulary: one call into the fast tokenizer instead of
+    # ~10^5 Python round-trips (the per-id loop took minutes and stalled parallel jobs)
     vocab_size = len(tok)
-    for i in range(vocab_size):
-        s = tok.convert_ids_to_tokens(i)
-        if s is None:
-            continue
-        if "\n" in tok.convert_tokens_to_string([s]):
-            ids.append(i)
+    all_ids = list(range(vocab_size))
+    decoded = tok.batch_decode([[i] for i in all_ids])
+    ids = [i for i, s in zip(all_ids, decoded) if s and "\n" in s]
     eos = model.generation_config.eos_token_id
     eos = eos if isinstance(eos, list) else [eos]
     ids.extend(int(e) for e in eos if e is not None)
+    ids.extend(extra)
+    if tok.eos_token_id is not None:
+        ids.append(int(tok.eos_token_id))
     return sorted(set(ids))
 
 

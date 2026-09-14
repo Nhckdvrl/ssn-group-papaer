@@ -23,7 +23,7 @@ import time
 
 import numpy as np
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "src"))
@@ -68,6 +68,7 @@ def main():
     ref_w = [l.rstrip("\n") for l in open(f"{data}/newstest2019.wmtref.de", encoding="utf-8")]
     ref_a = [l.rstrip("\n") for l in open(f"{data}/newstest2019.arref.de", encoding="utf-8")]
 
+    donor_stop = []
     tok = AutoTokenizer.from_pretrained(a.model)
     tok.padding_side = "left"
     if tok.pad_token_id is None:
@@ -81,9 +82,15 @@ def main():
             return 2
         donor = AutoTokenizer.from_pretrained(a.template_from)
         tok.chat_template = donor.chat_template
-        print(f"borrowed chat template from {a.template_from}")
+        donor_cfg = GenerationConfig.from_pretrained(a.template_from)
+        d_eos = donor_cfg.eos_token_id
+        donor_stop = d_eos if isinstance(d_eos, list) else [d_eos]
+        donor_stop = [int(e) for e in donor_stop if e is not None]
+        if donor.eos_token_id is not None:
+            donor_stop.append(int(donor.eos_token_id))
+        print(f"borrowed chat template and stop ids {sorted(set(donor_stop))} from {a.template_from}")
 
-    stop_ids = build_stop_set(tok, model, a.interface)
+    stop_ids = build_stop_set(tok, model, a.interface, extra_stop_ids=donor_stop)
     res = {"model": a.model, "tag": a.tag, "stage": a.stage, "interface": a.interface,
            "template_from": a.template_from or None,
            "stop_set_size": len(stop_ids), "dtype": a.dtype,

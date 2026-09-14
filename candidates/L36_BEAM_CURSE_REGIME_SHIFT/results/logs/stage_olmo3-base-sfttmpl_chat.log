@@ -1,0 +1,15 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.19it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.17it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.09it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.11it/s]
+borrowed chat template from allenai/Olmo-3-7B-Instruct-SFT
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/stage_probe.py", line 164, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/stage_probe.py", line 102, in main
+    st = step0_termination_stats(logits, stop_ids)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/termination.py", line 47, in step0_termination_stats
+    stop_lp = lp[:, stop]
+              ~~^^^^^^^^^
+IndexError: tensors used as indices must be long, int, byte or bool tensors
