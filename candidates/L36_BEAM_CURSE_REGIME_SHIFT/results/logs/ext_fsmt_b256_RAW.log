@@ -1,0 +1,69 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+  2/1997  14s  eta 13639s
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/run_beam_sweep.py", line 137, in <module>
+    main()
+  File "/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/run_beam_sweep.py", line 56, in main
+    out = model.generate(
+          ^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/generation/utils.py", line 3267, in _beam_search
+    model_outputs = self(**model_inputs, return_dict=True)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/fsmt/modeling_fsmt.py", line 1127, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/fsmt/modeling_fsmt.py", line 999, in forward
+    decoder_outputs = self.decoder(
+                      ^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/fsmt/modeling_fsmt.py", line 692, in forward
+    x, layer_self_attn, layer_cross_attn = decoder_layer(
+                                           ^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/fsmt/modeling_fsmt.py", line 499, in forward
+    x, self_attn_weights = self.self_attn(
+                           ^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/fsmt/modeling_fsmt.py", line 811, in forward
+    key_states, value_states = curr_past_key_value.update(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/cache_utils.py", line 776, in update
+    keys, values = self.layers[layer_idx].update(key_states, value_states, cache_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/cache_utils.py", line 120, in update
+    self.values = torch.cat([self.values, value_states], dim=-2)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 162.00 MiB. GPU 0 has a total capacity of 94.97 GiB of which 159.44 MiB is free. Process 1413127 has 80.43 GiB memory in use. Including non-PyTorch memory, this process has 14.36 GiB memory in use. Of the allocated memory 12.77 GiB is allocated by PyTorch, and 974.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

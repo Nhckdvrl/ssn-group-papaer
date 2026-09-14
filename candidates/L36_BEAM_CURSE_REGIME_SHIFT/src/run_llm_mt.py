@@ -13,6 +13,10 @@ import time
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+FEWSHOT = ("English: The weather is nice today.\nGerman: Das Wetter ist heute schön.\n\n"
+           "English: He opened the door and walked in.\nGerman: Er öffnete die Tür und trat ein.\n\n"
+           "English: {src}\nGerman:")
+
 PROMPT = ("Translate the following English sentence into German. "
           "Output only the German translation, nothing else.\n\n"
           "English: {src}\nGerman:")
@@ -40,14 +44,20 @@ def parse_args():
     p.add_argument("--beam-budget", type=int, default=64)
     p.add_argument("--dtype", default="bfloat16")
     p.add_argument("--limit", type=int, default=0)
+    p.add_argument("--shard", type=int, default=0)
+    p.add_argument("--nshards", type=int, default=1)
+    p.add_argument("--prompt-style", choices=["chat", "fewshot"], default="chat")
     return p.parse_args()
 
 
 def main():
     a = parse_args()
-    src = [l.rstrip("\n") for l in open(a.src, encoding="utf-8")]
+    src_all = [l.rstrip("\n") for l in open(a.src, encoding="utf-8")]
     if a.limit:
-        src = src[:a.limit]
+        src_all = src_all[:a.limit]
+    # contiguous-stride sharding; global indices are preserved in the output rows
+    gidx = list(range(a.shard, len(src_all), a.nshards)) if a.nshards > 1 else list(range(len(src_all)))
+    src = [src_all[i] for i in gidx]
 
     tok = AutoTokenizer.from_pretrained(a.model, revision=a.revision)
     tok.padding_side = "left"
@@ -62,8 +72,23 @@ def main():
 
     prompts = []
     for s in src:
-        msg = [{"role": "user", "content": PROMPT.format(src=s)}]
-        prompts.append(tok.apply_chat_template(msg, tokenize=False, add_generation_prompt=True))
+        if a.prompt_style == "chat":
+            msg = [{"role": "user", "content": PROMPT.format(src=s)}]
+            prompts.append(tok.apply_chat_template(msg, tokenize=False, add_generation_prompt=True))
+        else:
+            prompts.append(FEWSHOT.format(src=s))
+
+    # few-shot LM-MT terminates a translation at the line break, the way classic sentence-level
+    # setups terminate at EOS; that newline is the decoding contract's stop symbol here
+    eos_for_gen = None
+    if a.prompt_style == "fewshot":
+        cands = ["\n", "\n\n", "Ċ"]
+        ids = []
+        for c in cands:
+            t = tok(c, add_special_tokens=False)["input_ids"]
+            if len(t) == 1:
+                ids.append(t[0])
+        eos_for_gen = sorted(set(ids)) or None
 
     order = sorted(range(len(src)), key=lambda i: -len(src[i]))
     results = [None] * len(src)
@@ -85,6 +110,7 @@ def main():
                 repetition_penalty=1.0,
                 num_return_sequences=1,
                 pad_token_id=tok.pad_token_id,
+                eos_token_id=eos_for_gen,
                 return_dict_in_generate=True,
                 output_scores=False,
             )
@@ -92,7 +118,7 @@ def main():
         texts = tok.batch_decode(gen, skip_special_tokens=True)
         for k, i in enumerate(idx):
             n_tok = int((gen[k] != tok.pad_token_id).sum())
-            results[i] = {"idx": i, "raw": texts[k], "hyp": clean(texts[k]),
+            results[i] = {"idx": gidx[i], "raw": texts[k], "hyp": clean(texts[k]),
                           "gen_tokens": n_tok,
                           "truncated": bool(n_tok >= a.max_new_tokens)}
         done += len(idx)
@@ -102,11 +128,16 @@ def main():
 
     header = {
         "_header": True, "model": a.model, "revision": a.revision,
-        "src": os.path.basename(a.src), "n": len(src), "beam": a.beam, "semantics": a.semantics,
+        "src": os.path.basename(a.src), "n": len(src), "n_total": len(src_all),
+        "shard": a.shard, "nshards": a.nshards,
+        "beam": a.beam, "semantics": a.semantics,
         "length_penalty": length_penalty, "early_stopping": False, "do_sample": False,
         "max_new_tokens": a.max_new_tokens, "min_new_tokens": 0, "no_repeat_ngram_size": 0,
         "repetition_penalty": 1.0, "num_return_sequences": 1, "dtype": a.dtype, "batch": batch,
-        "prompt_template": PROMPT, "chat_template_applied": True,
+        "prompt_template": PROMPT if a.prompt_style == "chat" else FEWSHOT,
+        "prompt_style": a.prompt_style,
+        "chat_template_applied": a.prompt_style == "chat",
+        "eos_override": eos_for_gen,
         "padding_side": "left",
         "eos_token_id": model.generation_config.eos_token_id,
         "pad_token_id": tok.pad_token_id,
