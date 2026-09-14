@@ -1,58 +1,80 @@
-# L08 — Readout-Dimension / Compression Evaluation Route
+# L08 — Readout / Compression / Trajectory Route
 
-**Status:** **KILLED — MECHANISTIC MAIN ROUTE — 2026-09-14**
+## **FINAL STATUS: KILL FOR ACL / EMNLP / NAACL MAIN — DO NOT RECONSTRUCT**
 
-`Delta_refresh = +0.0000 [-0.102, +0.102]`; the preregistered kill rule fires.
-Verdict and numbers: [`results/e13/RESULTS.md`](results/e13/RESULTS.md).
-Stage 1 evidence, which stands: [`results/e12/PROGRESS.md`](results/e12/PROGRESS.md).  
-**Former status:** REOPEN — SERIOUS (2026-09-13); ARCHIVED / NO-GO (2026-09-11)  
-**Target:** ACL / EMNLP / NAACL Main
+**Finalized:** 2026-09-14  
+**Canonical scientific autopsy:** [`FINAL_ARCHIVE_2026-09-14.md`](FINAL_ARCHIVE_2026-09-14.md)  
+**Search-level anti-resurrection note:** [`../../search_rounds/2026-09-14_L08_FINAL_KILL_AND_LESSONS.md`](../../search_rounds/2026-09-14_L08_FINAL_KILL_AND_LESSONS.md)
 
-Current verdict: [`SELECTION_2026-09-14.md`](SELECTION_2026-09-14.md)
-Current identity: [`MAINLINE.md`](MAINLINE.md)
-Why it changed: [`AUDIT_2026-09-14_DEPTH_CONFOUND.md`](AUDIT_2026-09-14_DEPTH_CONFOUND.md)
-Redesigned experiment, **not yet authorized**: [`E12_PREREGISTRATION.md`](E12_PREREGISTRATION.md)
-Superseded: [`FRESH_SELECTION_2026-09-13.md`](FRESH_SELECTION_2026-09-13.md), [`MAINLINE_2026-09-10_SUPERSEDED.md`](MAINLINE_2026-09-10_SUPERSEDED.md)
-
-> **What the 2026-09-14 pass found.** The 2026-09-13 reopening made the
-> intervention-locus sign boundary (`C3.2`) load-bearing. Re-deriving it from the raw
-> runs before spending compute showed it is **not identified by its own design**: the
-> "controlled" contrast does not match answer depth, and the severity control that
-> excluded "pruning simply hits harder" goes null once it does. `C3.2` is demoted.
-> The variation it was matching away is what matters: depth sensitivity is **not** a
-> generic property of long generation — 14 of 15 conditions on one side, 1 of 15 on the
-> other, 0 crossings. That is motivation, not a result.
+> **This status supersedes every earlier `ARCHIVED`, `REOPEN`, `SERIOUS`, `HIGH-UPSIDE`, reconstructed-mainline, pilot, or mechanism-development status in this directory.**
 >
-> **A same-day identification review then rejected the first E12 design** (a
-> `capability × provenance` 2x2) because its arms changed the computation rather than
-> isolating provenance. The object is restated as **trajectory-mediated compression
-> damage** — how much of the damage arrives because the context a step conditions on was
-> itself produced under the treatment — and the instrument is **prefix clamping**, which
-> holds per-step damage fixed and varies mediation alone. No treatment compute is
-> authorized until the Stage 1 runner passes its validation.
+> Historical `MAINLINE.md`, `CLAIMS.md`, `EXPERIMENTS.md`, Selection files, pilot files, configs, scripts, and results are preserved for reproducibility and methodological reuse. They are **not active paper claims or compute authorization**.
 
-## Why the old archive no longer blocks Selection
+---
 
-The 2026-09-11 archive was not a null result and was not a direct-owner kill. L08 had undergone major paper-identity reconstruction during execution, and the stricter post-L12 workflow required the reconstructed claim to independently re-earn novelty and Main-level contribution.
+## Final reason
 
-That fresh audit has now been completed.
+The project ultimately established a strong but insufficiently novel causal fact: under compression/model perturbation, replacing part of a perturbed self-generated trajectory with a clean/reference trajectory can substantially rescue downstream generation while the perturbation remains active on every model forward pass.
 
-The surviving paper identity is not `which embedding dimensions matter?` and not the already-owned generic statement `multiple choice != open generation after pruning`.
+The Main-level route required a stronger residual mechanism: that compression makes an already-computed load-bearing state fail to remain effectively usable, so selectively re-grounding/replaying that state should rescue the compressed trajectory beyond a matched placebo.
 
-The current RQ is:
+The preregistered decisive test failed:
 
-> **When does a local compression error compound into a sequence-level capability failure?** Specifically: how much of the damage is the current step's computation being damaged, and how much is the current step conditioning on context that was itself produced under the same perturbation?
+`Delta_refresh = [Y_T(state)-Y_T(placebo)] - [Y_0(state)-Y_0(placebo)] = +0.0000 [-0.102, +0.102]`.
 
-The inherited evidence shows that retention falls with answer depth in 14 of 15 conditions on one side and 1 of 15 on the other, across five model families and three intervention families, with zero crossings. That establishes only that depth sensitivity is not generic to long generation. It does not identify what switches it on: in the inherited data the two sides differ by dataset, and therefore by trajectory dependence, domain, answer format and difficulty together.
+For quant 4-bit on the same model/task:
 
-`evaluation protocol matters` is fully owned (Wen et al. 2026; Song et al., ICASSP 2026) and is claimed nowhere here. The live target is UniComp (EMNLP 2026 Main), whose `knowledge bias` headline compares a multiple-choice knowledge set against a free-form CoT reasoning set with no length control, and whose own unexplained GPQA-Diamond anomaly is this law's prediction. See `RELATED_WORK_AND_NOVELTY.md` §0 for the full owner audit.
+- reference-prefix clamp rescue: `+0.2595 [0.191, 0.326]`;
+- replay of the model's own already-correct downstream-relevant intermediate state: `+0.0179 [-0.045, 0.080]`.
 
-## Preserved assets
+Therefore the proposed state-carry / external-re-grounding mechanism is not supported. The surviving explanation is ordinary autoregressive error propagation under model perturbation: perturbation changes generated tokens, those tokens become future context, and replacing enough of the bad trajectory with a good one helps.
 
-All historical code, configs, experiment logs, results, audits, claims, and `MAINLINE.md` remain in this directory for reproducibility and evidence inheritance.
+That causal shape is not enough for Main novelty given prior exposure-bias/self-recovery diagnostics and modern reasoning-aware compression work (including RAC / AYOT).
 
-Historical results are **not retroactively declared confirmatory** by this status change.
+---
 
-**Authorized compute:** none. Stage 1 of `E12_PREREGISTRATION.md` is authorized only after its §9 runner validation passes; Stage 3 (SOTA compression) only against the Stage 1 outcome. Local environment
-(`/home/xiang/miniconda3/envs/verl-clean/bin/python`), idle cards on
-`fvcrc10/11/12/13/15`, **at most four cards at a time**.
+## Earlier routes are also closed
+
+- **Protocol/readout effect:** owned by prior work; cannot carry novelty.
+- **Intervention-locus capability-selectivity boundary:** killed by answer-depth confounding; the historical severity control becomes null after correct matching.
+- **`prompt-recoverable vs trajectory-carried`:** retired invalid construct.
+- **Capability × provenance 2×2:** non-identifying; it changed solve→verify / sequential-computation burden together with provenance.
+- **Synthetic corrupted-prefix residual:** structurally confounded by prefix quality / severity / power trade-offs.
+- **UniComp / knowledge-bias auditing:** cannot become the Main paper after the mechanism route failed.
+
+---
+
+## Permanent anti-resurrection rule
+
+Do **not** reopen L08 Main by adding models, compressors, tasks, prompts, larger samples, new names, or new control arms to the same parent question.
+
+In particular, do not fall back to:
+
+- MC/ranking vs free generation;
+- reference-clamp magnitude or dose response;
+- readout-vs-parameter no-crossing counts;
+- the old mild-pruning severity control;
+- `trajectory dependence`, `external re-groundability`, `state carry`, or `prefix contamination` as renamed versions of the same remainder;
+- possible state-refresh effects smaller than the preregistered resolution;
+- a benchmark/evaluation paper built around knowledge-vs-reasoning compression gaps.
+
+Only a genuinely different external scientific question could justify a new candidate, and it must cite `FINAL_ARCHIVE_2026-09-14.md` as an anti-resurrection parent.
+
+---
+
+## What may still be reused
+
+Reuse **instrumentation and lessons**, not the dead paper claim:
+
+- stable item-identity assertions;
+- per-forward-pass intervention coverage checks;
+- token-ID prefix clamping and self-clamp no-op validation;
+- answer-depth extraction/matching;
+- clamp dose-response machinery;
+- prefix-quality auditing;
+- fixed-prefix/teacher-forced diagnostics;
+- the methodological lesson that a large mother effect does not imply a novel residual mechanism.
+
+A Findings/short empirical remainder may exist, but there is **no default authorization to spend more compute or writing effort on it**.
+
+For the full history, results, invalid controls, implementation bugs, forbidden rescues, and the new Residual-Mechanism selection rule, read the canonical final archive.
