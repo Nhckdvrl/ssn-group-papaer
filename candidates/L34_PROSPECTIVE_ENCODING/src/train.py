@@ -3,7 +3,8 @@ import math, random, time
 import torch
 from torch.nn.utils import clip_grad_norm_
 
-MAX_LEN = 192
+MAX_LEN = 176
+CE_CHUNK = 8
 
 
 def encode(tok, samples):
@@ -68,9 +69,17 @@ def train_phase(model, tok, samples, epochs, lr, seed, bs=64, log=print, tag="")
                 logits = model(input_ids=ids, attention_mask=msk).logits[:, :-1]
             tgt = ids[:, 1:]
             w = lm[:, 1:].float()
-            ls = torch.nn.functional.cross_entropy(
-                logits.float().reshape(-1, logits.size(-1)), tgt.reshape(-1), reduction="none").view_as(tgt)
-            loss = (ls * w).sum() / w.sum().clamp(min=1)
+            denom = w.sum().clamp(min=1)
+            # chunked fp32 cross-entropy: numerically the same, but never materialises
+            # the full fp32 logit tensor (128k vocab would cost several GB at peak)
+            loss = 0.0
+            for c0 in range(0, logits.size(0), CE_CHUNK):
+                c1 = min(c0 + CE_CHUNK, logits.size(0))
+                lc = logits[c0:c1].float()
+                ls = torch.nn.functional.cross_entropy(
+                    lc.reshape(-1, lc.size(-1)), tgt[c0:c1].reshape(-1),
+                    reduction="none").view_as(tgt[c0:c1])
+                loss = loss + (ls * w[c0:c1]).sum() / denom
             loss.backward()
             clip_grad_norm_(model.parameters(), 1.0)
             opt.step(); sched.step(); opt.zero_grad(set_to_none=True)

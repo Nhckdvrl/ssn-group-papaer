@@ -11,7 +11,7 @@ CKPT = os.environ.get("L34_CKPT_DIR", "/home/xiang/l34_e01_ckpt")
 # frozen schedule (E01_PREREGISTRATION.md §3)
 EP = {"0a": 3, "0b": 8, "1": 3, "2": 8}
 LR = {"0a": 1e-5, "0b": 1e-5, "1": 1e-5, "2": 1e-5}
-BS = 64
+BS = 32
 if os.environ.get("L34_EP"): EP.update(json.loads(os.environ["L34_EP"]))
 if os.environ.get("L34_SMOKE"): _SM = int(os.environ["L34_SMOKE"])
 else: _SM = 0

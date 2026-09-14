@@ -1,6 +1,7 @@
 # L34 — Prospective Encoding
 
 **Status:** PILOT-AUTHORIZED — E01 ONLY (`SELECTION.md`, 2026-09-13)
+**E01 G1 gate:** **FAILED 2026-09-14 — instrument, not hypothesis.** See [`results/e01/G1_RESULTS.md`](results/e01/G1_RESULTS.md). The NEW phase of this run is not interpretable; no account A/B/C is supported or rejected.
 **Target:** ACL / EMNLP / NAACL Main
 
 > Does knowing *how a fact will later be accessed* selectively change how a language model

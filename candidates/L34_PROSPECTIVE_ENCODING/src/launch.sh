@@ -5,8 +5,8 @@ set -u
 SRC=/home/xiang/ssn-group-papaer/candidates/L34_PROSPECTIVE_ENCODING/src
 LOGS=/home/xiang/ssn-group-papaer/candidates/L34_PROSPECTIVE_ENCODING/results/logs
 PY=/home/xiang/miniconda3/envs/verl-clean/bin/python
-TAG=${TAG:-q3b}
-BASE=${BASE:-Qwen/Qwen2.5-3B}
+TAG=${TAG:-l3b}
+BASE=${BASE:-unsloth/Llama-3.2-3B}
 mkdir -p "$LOGS"
 
 if [ "$1" = "trunk" ]; then
@@ -15,7 +15,7 @@ if [ "$1" = "trunk" ]; then
   exit 0
 fi
 
-SLOTS=(fvcrc13:0 fvcrc13:1 fvcrc13:2 fvcrc13:3 fvcrc15:0 fvcrc15:1 fvcrc15:2 fvcrc15:3)
+SLOTS=(fvcrc15:0 fvcrc15:1 fvcrc15:2 fvcrc15:3 fvcrc12:0 fvcrc12:1 fvcrc13:0 fvcrc10:2)
 JOBS=()
 for arm in PIT_A PIT_B PIT_BAL NO_PIT; do for s in 0 1 2; do JOBS+=("$arm $s"); done; done
 

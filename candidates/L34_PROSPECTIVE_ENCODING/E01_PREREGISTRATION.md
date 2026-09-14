@@ -109,7 +109,9 @@ A null is allowed to kill L34. No post-hoc conversion into a knowledge-injection
 
 ## 8. Anchor and escalation
 
-Pilot anchor: **Qwen2.5-3B (base)**, full fine-tuning, bf16, gradient checkpointing, one A100-80GB
+Pilot anchor: **Llama-3.2-3B (base)** (locally cached `unsloth/Llama-3.2-3B`; same size class as the
+originally written Qwen2.5-3B, switched before any run purely because the Llama base was already on
+disk and the parent PIT result is a Llama result), full fine-tuning, bf16, gradient checkpointing, one A100-80GB
 per run (12 runs = 4 arms × 3 seeds, plus one shared trunk). Escalation to a 7B/8B base is
 authorized **only** by a G0 failure, exactly once, and must repeat the identical protocol.
 
