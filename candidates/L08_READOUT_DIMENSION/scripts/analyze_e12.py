@@ -53,6 +53,8 @@ def main():
     runs = collections.defaultdict(dict)
     for p in (ROOT / "results" / "e12").rglob("*.jsonl"):
         h = json.loads(open(p).readline())
+        if "clamp" not in h:       # a corrupted-reference generation, not a clamp run
+            continue
         runs[(p.parent.name, h["cell"], h["mask"])][(h["clamp"], h["frac"])] = p
 
     for (tag, cell, iv), cells in sorted(runs.items()):
@@ -75,6 +77,13 @@ def main():
         free = table.get(("none", 0.0))
         if free is None or not fracs:
             continue
+        # V4: clamping a model to its OWN free-running prefix must be a no-op
+        selfc = table.get(("self", 0.5))
+        if selfc is not None and free is not None:
+            d = abs(selfc.mean() - free.mean())
+            print(f"\n  V4 self-clamp no-op check: self {selfc.mean():.4f} vs "
+                  f"free-running {free.mean():.4f}  ->  "
+                  f"{'PASS' if d <= 0.01 else 'FAIL'} (|diff| {d:.4f})")
         print(f"\n{'contrast':<44}{'estimate':>10}{'95% CI':>18}")
         for f in fracs:
             R = table.get(("reference", f)); Rt = table.get(("corrupted", f))
@@ -82,6 +91,15 @@ def main():
                 lo, hi = boot_diff(R, free)
                 print(f"{f'Y(R,f={f:g}) - Y(F)   total mediation':<44}"
                       f"{R.mean()-free.mean():>10.4f}   [{lo:>5.3f},{hi:>6.3f}]")
+            F2 = table.get(("foreign", f))
+            if F2 is not None:
+                lo, hi = boot_diff(F2, free)
+                print(f"{f'Y(foreign,f={f:g}) - Y(F)   another treatment prefix':<44}"
+                      f"{F2.mean()-free.mean():>10.4f}   [{lo:>5.3f},{hi:>6.3f}]")
+                if R is not None:
+                    lo, hi = boot_diff(R, F2)
+                    print(f"{f'Y(R,f={f:g}) - Y(foreign,f={f:g})   correctness':<44}"
+                          f"{R.mean()-F2.mean():>10.4f}   [{lo:>5.3f},{hi:>6.3f}]")
             if R is not None and Rt is not None:
                 lo, hi = boot_diff(R, Rt)
                 print(f"{f'Y(R,f={f:g}) - Y(R~,f={f:g})   content / exposure bias':<44}"

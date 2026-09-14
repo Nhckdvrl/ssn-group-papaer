@@ -178,7 +178,12 @@ def main():
     ap.add_argument("--cell", default="gsm8k_gen_cot")
     ap.add_argument("--intervention", default="readout:first",
                     help="readout:first | readout:last | prune:0.4 | quant:4 | none")
-    ap.add_argument("--clamp", default="none", choices=["none", "reference", "corrupted"])
+    ap.add_argument("--clamp", default="none",
+                    choices=["none", "reference", "corrupted", "foreign", "self"],
+                    help="foreign: a prefix produced by a DIFFERENT treatment on the "
+                         "same items -- treated, and of comparable quality, but not by "
+                         "this perturbation.  self: this model's own free-running "
+                         "prefix, which must reproduce free-running exactly (V4).")
     ap.add_argument("--clamp-source", default=None,
                     help="jsonl of trajectories to clamp to; defaults to the e01 full run")
     ap.add_argument("--frac", type=float, default=0.0,

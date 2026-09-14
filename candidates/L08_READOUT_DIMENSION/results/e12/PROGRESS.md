@@ -115,3 +115,75 @@ recorded as a lead for a severity-matched comparison, not as a locus claim.
 - reference clamp f=0.75 (readout), f=0.25 (prune) to fill the dose-response
 - throughput: bs=8 uses 20 GB of 97 GB and takes ~11 min per 500 items; Stage 1 in
   full is ~120 runs, so batch size must be raised and re-verified against V1.
+
+---
+
+# The residual came back NEGATIVE, and the control is what failed
+
+`Y(R~) - Y(F) = -0.0712 [-0.104, -0.041]`, significantly below zero. That sign is not
+in the preregistered outcome table (`E12_PREREGISTRATION.md` §8), which anticipated a
+substantial positive residual or one near zero.
+
+**It is not evidence about provenance. The corrupted control is worse than the treated
+prefix, not matched to it.** Inspecting the prefixes:
+
+```
+REFERENCE Z(0) : " Janet eats 3 + 4 = <<3+4=7>>7 eggs every day.\nSo she has 16 - 7 = ..."
+TREATED   Z(T) : "  4+  3  =  7 eggs eaten or cooked by  7 eggs  7  7  7  7  7  7 ..."
+CORRUPTED Z~(0): " Janet's ducks lay 16 per day, but she bakes 4 into her muffin
+                   recipes. She also consumes as much of yester<KO>.ddvoice heelsant<RU>)eanth+dAss destro"
+```
+
+The matching statistic called these equally divergent (0.927 vs 0.941). They are not
+equally *usable*: the tau=1.3 sample degenerates into multilingual garbage, while the
+treated prefix, degenerate as it is, is still manipulating the problem's own numbers.
+
+The root cause is the statistic. Positional token agreement saturates near 0.93 for any
+two different texts because a single insertion misaligns everything after it, so
+"both 0.93" means "both almost entirely different" and constrains quality not at all.
+This is the "matches rate, not type" limitation recorded in §4 of the preregistration,
+cashing out in the most direct way available.
+
+**Recorded as a failed control, not as a result.** The residual is not estimated by
+this route, and the earlier `Y(R) - Y(R~) = +0.377` is inflated by the same failure and
+is equally uninterpretable.
+
+## Replacement control: cross-treatment clamping, which needs no calibration
+
+Drop "untreated but incorrect" and ask a sharper question whose quality match is
+automatic:
+
+| clamp source | what it is |
+|---|---|
+| `Z(T)` | produced under **this** perturbation (free-running) |
+| `Z(T')` | produced under a **different** perturbation, on the same items |
+| `Z(0)` | untreated and correct |
+
+The free-running retentions are 0.094 (readout) and 0.059 (prune), so the two treated
+prefixes are already of comparable quality — no temperature calibration, no matching
+statistic, nothing to mis-specify.
+
+- `Z(T)` specifically better for its own model than `Z(T')` -> a **same-perturbation**
+  effect; exposure bias cannot absorb it.
+- `Z(T)` and `Z(T')` interchangeable -> the prefix's **origin** does not matter beyond
+  its quality; the honest reading is error propagation and the ceiling drops.
+
+Running: readout model on prune's prefix, prune model on readout's prefix, plus
+**V4**, a new instrument check — clamping a model to its own free-running prefix must
+reproduce free-running exactly.
+
+## What stands regardless of how the residual resolves
+
+The reference-arm dose-response is clean and monotone:
+
+| f | 0 | 0.25 | 0.50 | 0.75 | 1.00 |
+|---|---|---|---|---|---|
+| readout:first retention | 0.094 | 0.221 | 0.400 | 0.725 | 0.972 |
+
+with the treated model running treated forward passes on every step, including every
+step after the clamp releases. E07 stated explicitly that it could not obtain a
+step-count dose-response; this design does, because it holds direct damage fixed and
+varies only how much of the conditioning context is treatment-generated.
+
+`prune:0.4` is weaker and its low dose is null: 0.059 -> 0.071 (f=0.25,
+[-0.023, 0.048], n.s.) -> 0.163 (f=0.5, +0.104 [0.061, 0.148]).
