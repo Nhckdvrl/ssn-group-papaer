@@ -96,12 +96,27 @@ Pre-registered in `EOS_BIAS_PREDICTION.md` (written before the runs, from the 26
 | +39 | 2.27 | 4.50 | 0.243 |
 
 \* step-0-only variant at beam 16; the all-step variant at beam 64 gives BLEU 41.89 / 0.75 % empty /
-0.859. The step-0-only variant is the cleaner manipulation: the classic model's peculiarity is that
-*stopping at the first step* is cheap, while its greedy output is untouched. Biasing every step
-instead changes the whole length distribution and degrades greedy decoding too (BLEU 26.84 at
-beam 1), which is a different intervention and is reported as such.
+0.859. The step-0-only variant is the closer analogue: the classic model's peculiarity is that
+*stopping at the first step* is cheap. Biasing every step instead changes the whole length
+distribution and degrades greedy decoding badly (BLEU 26.84 at beam 1), which is a different
+intervention and is reported as such.
 
-Dose-response is monotone and the null dose is genuinely null.
+Dose-response over bias is monotone and the null dose (+13) is genuinely null. Over beam width, with
+the calibrated step-0 bias held fixed at +26:
+
+| beam | BLEU (bias 0) | BLEU (step-0 bias +26) | empty % (bias 0 → +26) |
+|---|---|---|---|
+| 1 | 45.14 | 42.80 | 0 → 4.00 |
+| 4 | 45.91 | 41.10 | 0 → 7.75 |
+| 16 | 45.76 | 41.43 | 0 → 7.50 |
+| 64 | 46.12 | 40.95 | 0 → **8.50** |
+
+**Caveat, stated plainly:** the empty rate does grow with beam width under the intervention
+(4.0 → 8.5 %), which is the classic mechanism — wider search surfaces the cheap empty hypothesis —
+but roughly half of the BLEU damage is already present at greedy decoding, because a +26 bias makes
+the stop token the argmax outright for some segments. The classic signature (greedy clean, wide beam
+catastrophic) is therefore only partly reproduced. A cleaner version would calibrate the bias to the
+classic model's *rank* of EOS at step 0 rather than its log-probability; that is not run here.
 
 ### 1.5 Interface probe — measured, but the behavioural test was voided
 
