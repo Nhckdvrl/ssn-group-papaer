@@ -1,18 +1,57 @@
-# Serious Candidate Portfolio — 2026-09-11
+# Serious Candidate Portfolio — 2026-09-14
 
 **Target:** ACL / EMNLP / NAACL Main  
 **Approved paper mainline:** **NONE**  
-**Active serious candidates:** **0**  
+**Active serious candidates:** **L39 — PILOT-AUTHORIZED — E01 ONLY**; **L38 — SERIOUS CANDIDATE / identification blocker / no pilot**  
 **Search state:** **BROAD SEARCH OPEN; NO SURVIVOR QUOTA**
 
-## Most recent kill
+> `PILOT-AUTHORIZED` is not an approved paper mainline. It authorizes only the explicitly bounded experiment named in the candidate package. A failed pilot must close the parent rather than trigger model/prompt/construction rescue.
 
-**No candidate in this directory carries experiment authorization.**
+## Current newly authorized candidate
 
-- **L15 — No Result Is Not No Evidence**  
-  Null evidence as an observation-model integration problem.  
-  **Status:** **ARCHIVED / NO-GO — KILL K183 (2026-09-11), killed by its own bounded pilot.**  
-  Canonical package: [L15_NULL_EVIDENCE_OBSERVATION_MODEL/](L15_NULL_EVIDENCE_OBSERVATION_MODEL/)
+### L39 — Past Is Not Always Before
+
+Package: [L39_SEQUENCE_OF_TENSE_REANCHORING/](L39_SEQUENCE_OF_TENSE_REANCHORING/)
+
+**Status:** `PILOT-AUTHORIZED — E01 ONLY; NOT MAINLINE`
+
+Locked RQ:
+
+> **Can language models re-anchor temporal meaning compositionally when surface tense morphology conflicts with the correct discourse/reference-time interpretation?**
+
+The identifying instrument is English Sequence of Tense (SOT): a past-under-past report such as `John said that Mary was sick` can license a reading where Mary's sickness overlaps John's saying time. Embedded past therefore does not itself entail anteriority relative to the matrix attitude time.
+
+E01 starts from Mucha, Renans & Romoli's published human SOT materials rather than a new benchmark. The pilot asks whether strong current models specifically fail to license/use the simultaneous interpretation while succeeding on explicit anteriority and ordinary temporal controls. The strongest result would be a knowledge–deployment dissociation: the model can state the SOT rule but still over-infers `PAST => BEFORE` in contextual reasoning.
+
+Critical identification rule: **do not label an ambiguous bare SOT sentence as uniquely simultaneous.** Measure compatibility/licensing and non-entailment of anteriority.
+
+See:
+- [candidate README](L39_SEQUENCE_OF_TENSE_REANCHORING/README.md)
+- [bounded E01 protocol](L39_SEQUENCE_OF_TENSE_REANCHORING/E01_PROTOCOL.md)
+
+No E02/E03/E04 is authorized unless E01 survives and the project returns to Selection.
+
+## Other current serious candidate
+
+### L38 — What Does Ellipsis Reconstruct?
+
+Package: [L38_ELLIPSIS_RECONSTRUCTION_SUBSTRATE/](L38_ELLIPSIS_RECONSTRUCTION_SUBSTRATE/)
+
+**Status:** `SERIOUS CANDIDATE — IDENTIFICATION BLOCKER; NO PILOT AUTHORIZED`
+
+L38 remains separate from L39. Do not use L39 authorization to start L38 experiments.
+
+---
+
+## Historical portfolio note
+
+Older candidate directories are retained for provenance and reproducibility. Directory presence does not imply active authorization.
+
+### L15 — No Result Is Not No Evidence
+
+Null evidence as an observation-model integration problem.  
+**Status:** **ARCHIVED / NO-GO — KILL K183 (2026-09-11), killed by its own bounded pilot.**  
+Canonical package: [L15_NULL_EVIDENCE_OBSERVATION_MODEL/](L15_NULL_EVIDENCE_OBSERVATION_MODEL/)
 
 Locked question:
 
@@ -20,10 +59,7 @@ Locked question:
 
 The expanded ownership audit explicitly covers classical absence-of-evidence work, NAACL 2025 evidence→belief, ACL 2025 Bayesian updating, JAMA negative-test posterior reasoning, 2026 selection neglect, current RAG evidence-sufficiency work, and 2026 belief-state / partial-observability methods.
 
-The pilot answered this in the negative: with normal reasoning allowed both model families
-compute the detectability-conditioned posterior essentially exactly (KNI rate .003 / .014),
-and the direct-answer failure is general rather than null-specific. See
-[PILOT_REPORT.md](L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_REPORT.md).
+The pilot answered this in the negative: with normal reasoning allowed both model families compute the detectability-conditioned posterior essentially exactly (KNI rate .003 / .014), and the direct-answer failure is general rather than null-specific. See [PILOT_REPORT.md](L15_NULL_EVIDENCE_OBSERVATION_MODEL/PILOT_REPORT.md).
 
 The route survived only for the exact locked computation. Generic Bayesian reasoning, evidence reliability, diagnostic Bayes, selection neglect, RAG abstention, partial observability, belief-state tracking, probabilistic memory, and external filtering are not available as rescue narratives.
 
