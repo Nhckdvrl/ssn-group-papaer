@@ -60,15 +60,20 @@ def main():
         sel = lp.gather(1, tgt.unsqueeze(1)).squeeze(1)[len(p) - 1:]
         return float(-sel.mean()), len(t)
 
-    nll_wmt, nll_ar, exact = [], [], []
+    nll_wmt, nll_ar, exact, exact_ctrl = [], [], [], []
     for i, (s, rw, ra) in enumerate(zip(src, ref_wmt, ref_ar)):
         n1, _ = nll(s, rw)
         n2, _ = nll(s, ra)
         nll_wmt.append(n1)
         nll_ar.append(n2)
 
-        words = rw.split()
-        if len(words) >= 8:
+        # The WMT reference is mirrored far more widely than the AR file, so AR is the matched
+        # control: an exact-match rate that is the same for both means "guessable continuation",
+        # not memorisation of this test set.
+        for target, bucket in ((rw, exact), (ra, exact_ctrl)):
+            words = target.split()
+            if len(words) < 8:
+                continue
             half = len(words) // 2
             prefix, rest = " ".join(words[:half]), " ".join(words[half:])
             p = prompt_ids(s) + tok(" " + prefix, add_special_tokens=False)["input_ids"]
@@ -77,7 +82,7 @@ def main():
                 out = model.generate(ids, do_sample=False, max_new_tokens=len(rest.split()) * 4 + 8,
                                      pad_token_id=tok.pad_token_id)
             cont = clean(tok.decode(out[0, len(p):], skip_special_tokens=True))
-            exact.append(1.0 if cont.strip() == rest.strip() else 0.0)
+            bucket.append(1.0 if cont.strip() == rest.strip() else 0.0)
         if i % 100 == 0:
             print(f"  {i}/{len(src)}", flush=True)
 
@@ -88,10 +93,14 @@ def main():
         "nll_ar_mean": float(np.mean(nll_ar)),
         "nll_gap_ar_minus_wmt": float(np.mean(nll_ar) - np.mean(nll_wmt)),
         "prefix_exact_match_rate": float(np.mean(exact)) if exact else None,
+        "prefix_exact_match_rate_AR_control": float(np.mean(exact_ctrl)) if exact_ctrl else None,
         "n_prefix_items": len(exact),
+        "n_prefix_items_AR": len(exact_ctrl),
         "flags": {
             "exact_match_gt_5pct": bool(np.mean(exact) > 0.05) if exact else None,
             "nll_gap_gt_0.5": bool(np.mean(nll_ar) - np.mean(nll_wmt) > 0.5),
+            "wmt_exceeds_AR_control_by_2pct": bool(exact_ctrl and
+                                                   np.mean(exact) - np.mean(exact_ctrl) > 0.02),
         },
         "note": ("Weak instrument: a negative result does not establish the absence of "
                  "pretraining contamination."),

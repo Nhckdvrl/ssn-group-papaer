@@ -120,6 +120,11 @@ secondary system never emits an empty output and still shows a (smaller) curse v
 pathology, not a diffuse degradation, and its `u`-conditioning is inherited from where empties land
 and from how much BLEU a stratum had to lose.
 
+The empties are genuine: 262/1997 segments at beam 64 decode to exactly 2 tokens (BOS, EOS), and
+their mean cumulative log-probability is `−8.34` against `−20.59` for non-empty outputs — the empty
+hypothesis really is the higher-scoring mode once the beam is wide enough, which is
+Stahlberg & Byrne (2019) "cat got your tongue?" reproduced on our instrument.
+
 ## Gate C — modern model provenance (PASS)
 
 Banned by disclosed WMT19 evaluation lineage, with citation (`../../E00_...md` §C.1):
