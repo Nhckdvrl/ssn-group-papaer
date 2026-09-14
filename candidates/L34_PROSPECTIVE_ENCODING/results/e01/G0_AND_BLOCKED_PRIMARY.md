@@ -132,3 +132,15 @@ authorized here.
 
 `results/e01/final_l3b_*.json` (11), `results/e01/post_p1_l3b_*.json` (8), logs in `results/logs/`.
 Analysis is `src/analyze.py`; the estimands were not edited after seeing any result.
+
+## 6. Checkpoints
+
+Deleted 2026-09-14 (trunk only; no arm checkpoints were ever written). The trunk is
+deterministic given the committed code and fixed seeds, and is regenerated with:
+
+```
+bash src/launch.sh trunk      # BASE=unsloth/Llama-3.2-3B TAG=l3b
+```
+
+All per-item evaluation records in `results/e01/` are retained, so every number in
+`G1_RESULTS.md` and in this file is reproducible from the repository without rerunning training.
