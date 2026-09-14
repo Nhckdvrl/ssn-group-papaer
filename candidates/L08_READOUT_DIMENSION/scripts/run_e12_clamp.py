@@ -244,9 +244,16 @@ def main():
     fam, _, lvl = a.intervention.partition(":")
     t0 = time.time()
     if fam == "readout":
-        mask = build_mask(model.config.hidden_size, lvl, 0.5)
+        # "readout:first" keeps half; "readout:first:0.75" keeps three quarters.  A
+        # milder truncation is needed as the readout anchor for E13, because at
+        # keep=0.5 the model emits no calculator annotations at all and there is
+        # literally no self-produced state to refresh.
+        mode, _, kf = lvl.partition(":")
+        keep = float(kf) if kf else 0.5
+        mask = build_mask(model.config.hidden_size, mode, keep)
         ctx = ReadoutTruncation(model, mask)
-        iv_meta = {"family": "readout", "mask": lvl, "mask_id": mask_id(mask)}
+        iv_meta = {"family": "readout", "mask": mode, "keep_frac": keep,
+                   "mask_id": mask_id(mask)}
     elif fam == "none":
         ctx = interventions.NoOp()
         iv_meta = {"family": "none"}

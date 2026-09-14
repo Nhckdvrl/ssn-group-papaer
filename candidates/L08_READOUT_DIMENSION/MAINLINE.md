@@ -1,4 +1,22 @@
-# L08 — Current Mainline (reconstructed 2026-09-14, after the depth re-audit)
+# L08 — KILLED (mechanistic Main route), 2026-09-14
+
+> **Final verdict.** `Delta_refresh = +0.0000 [-0.102, +0.102]`. The preregistered kill
+> rule in `E13_PREREGISTRATION.md` §7 fires. Trajectory mediation survives as a
+> phenotype (C2a), but its instrument is owned by *Exposure Bias versus Self-Recovery*
+> (EMNLP 2021), its residual is null, and no quantity separates it from RAC/AYOT, which
+> own both the phenomenon and a fix. **There is no Main-level novelty left.**
+> See `results/e13/RESULTS.md` and `results/e12/PROGRESS.md`.
+>
+> What remains is a clean piece of empirical work at Findings/short scale: a four-way
+> validated clamp instrument, three interventions across two loci, and a monotone
+> step-count dose-response that E07 could not obtain. That is a decision for the user,
+> not a Main route.
+>
+> The text below is the mainline as it stood before E13 and is kept as the record.
+
+---
+
+# L08 — Mainline as of 2026-09-14 (superseded by the verdict above)
 
 **Supersedes** `MAINLINE_2026-09-10_SUPERSEDED.md`, which is kept as the record of the
 previous identity. The reconstruction was forced by

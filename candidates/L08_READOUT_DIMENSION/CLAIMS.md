@@ -181,7 +181,15 @@ attributable to the context having been produced under the same perturbation, be
 surface error content. **If the residual is ~0 the honest reading is error propagation**,
 adjacent to what RAC owns (P0.5), and the paper's ceiling drops. Recorded before the run.
 
-**C2'.3b — The mediation bridge can be closed selectively.** `hypothesis`, E12 Stage 2.
+**C2'.3b — The mediation bridge can be closed selectively.** `rejected` 2026-09-14.
+`Delta_refresh = +0.0000 [-0.102, +0.102]` (quant 4-bit, n=112). The full-precision
+arm moves +0.0000 and the compressed arm +0.0179; on shared items both are +0.0204, so
+the treatment-specific rescue is exactly zero. The readout anchor was not estimable at
+all (3 of 500 eligible; 0 of 500 at keep=0.5) because readout truncation destroys the
+structured intermediate states the design requires. Evidence: `results/e13/RESULTS.md`.
+Original statement follows.
+
+**C2'.3b (original) — The mediation bridge can be closed selectively.** E12 Stage 2.
 Re-externalizing a load-bearing intermediate state the reference trajectory had already
 produced restores the compressed free-running trajectory, while text matched in length,
 position and surface form but carrying no task information does not. The refresh

@@ -57,23 +57,33 @@ def annotations(text):
     return out
 
 
-def pick_states(text, min_gap=2):
+def pick_states(text, min_gap=2, min_downstream=1):
     """(refresh_char_pos, load_bearing_value, placebo_value) or None.
 
-    load-bearing = the most recent CORRECT result at the refresh point, i.e. the value
-                   the pending computation consumes
-    placebo      = an earlier CORRECT result, at least `min_gap` annotations back, whose
-                   value the pending computation does not consume, matched on digits
+    BUG FIXED 2026-09-14, before any result was reported.  The first version put the
+    refresh point after the LAST correct annotation, which in GSM8K is the final answer
+    computation -- so the refresh landed after the answer was already determined and had
+    nothing downstream to act on.  Both arms then emitted the same `#### N` and the
+    contrast was null BY CONSTRUCTION, not by finding.
+
+    The refresh point must sit where downstream computation still consumes the value:
+
+      refresh after annotation j, leaving at least `min_downstream` correct annotations
+      still to come, so the pending steps depend on the refreshed number
+      load-bearing = result of annotation j -- what the next step consumes
+      placebo      = an earlier correct result, >= min_gap back, digit-length matched,
+                     which the pending step does not consume
     """
     ann = [a for a in annotations(text) if a[3]]
-    if len(ann) < min_gap + 1:
+    if len(ann) < min_gap + min_downstream + 1:
         return None
-    j = len(ann) - 1                       # refresh after the last correct annotation
+    j = len(ann) - 1 - min_downstream          # leave real computation after the refresh
+    if j < min_gap:
+        return None
     end, _, lb, _ = ann[j]
     cands = [a for a in ann[:j - min_gap + 1] if a[2] != lb]
     if not cands:
         return None
-    # match digit length so the two injections are the same shape of token
     cands.sort(key=lambda a: abs(len(a[2]) - len(lb)))
     return end, lb, cands[0][2]
 
@@ -193,7 +203,9 @@ def main():
 
     fam, _, lvl = a.intervention.partition(":")
     if fam == "readout":
-        ctx = ReadoutTruncation(model, build_mask(model.config.hidden_size, lvl, 0.5))
+        mode, _, kf = lvl.partition(":")
+        ctx = ReadoutTruncation(
+            model, build_mask(model.config.hidden_size, mode, float(kf) if kf else 0.5))
     elif fam == "none":
         ctx = interventions.NoOp()
     else:

@@ -1,6 +1,10 @@
 # L08 — Readout-Dimension / Compression Evaluation Route
 
-**Status:** **SERIOUS / HIGH-UPSIDE / HOLD FOR E12 IDENTIFICATION REDESIGN — 2026-09-14**  
+**Status:** **KILLED — MECHANISTIC MAIN ROUTE — 2026-09-14**
+
+`Delta_refresh = +0.0000 [-0.102, +0.102]`; the preregistered kill rule fires.
+Verdict and numbers: [`results/e13/RESULTS.md`](results/e13/RESULTS.md).
+Stage 1 evidence, which stands: [`results/e12/PROGRESS.md`](results/e12/PROGRESS.md).  
 **Former status:** REOPEN — SERIOUS (2026-09-13); ARCHIVED / NO-GO (2026-09-11)  
 **Target:** ACL / EMNLP / NAACL Main
 
