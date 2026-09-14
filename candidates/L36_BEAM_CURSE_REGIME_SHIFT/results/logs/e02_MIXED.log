@@ -1,7 +1,10 @@
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.36s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  2.97s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.33s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 66.34it/s]
 {"condition": "MIXED", "total_steps": 1122, "n_train": 2998, "end_id": 151650}
-[MIXED] step     0  loss nan  rank_A    130745  rank_B    117438
+[MIXED] step     0  loss nan  rank_A    128667  rank_B    115093
 /home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:247: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
   running += float(out.loss) / a.accum
-[MIXED] step    50  loss 68.3044  rank_A     83519  rank_B     85004
+[MIXED] step    50  loss 77.9408  rank_A    122202  rank_B    110206
+[MIXED] step   100  loss 55.9758  rank_A    120272  rank_B    116444
+[MIXED] step   150  loss 50.1583  rank_A    118386  rank_B    113824
+The following generation flags are not valid and may be ignored: ['length_penalty']. Set `TRANSFORMERS_VERBOSITY=info` for more details.

@@ -100,6 +100,41 @@ the seed, the learning rate and the schedule are unchanged. At the point of the 
 result in hand was step 50 of `B_ONLY`, where `rank_A` (78845) and `rank_B` (80671) were still
 indistinguishable, so no outcome informed it.
 
+### 3d. Design correction (2026-09-14, found during execution, before any condition completed)
+
+**P1 as registered measures the wrong thing, and I am replacing the primary statistic.**
+
+The registered primary was the rank of the boundary token at the *first generated position*, mirroring
+the Olmo-3 lineage measurement. That works there because the out-of-format stop set is newline-bearing
+tokens — linguistically frequent items the model is happy to emit early, which is exactly why wide beam
+finds a premature stop. With a **single neutral `<END>` token**, the out-of-format failure mode is not
+"stops too early" but "never stops at all": the model has never seen `<END>` in that format, so its
+probability stays near zero everywhere and its position-0 rank stays at ~1.2e5 — *higher* than
+in-format, i.e. the opposite sign to P1, for an uninteresting reason.
+
+This is a real cost of removing the cardinality confound, and it is recorded rather than hidden: the
+single-token design cannot reproduce premature stopping out of format, only boundary absence.
+
+**New primary statistic (registered now, before any condition completed):** the boundary *placement
+profile*. Teacher-force the reference translation and read `p(<END> | prefix)` at every position:
+
+```
+p_end@true_end          probability of ending exactly where the reference ends
+p_end_mean_before_end   average premature-stop mass at the wrong positions
+frac_boundary_learned   fraction of segments with p_end@true_end > 0.5
+```
+
+**P1′ (replaces P1).** In each single-format condition the boundary is learned **only in the trained
+format**: `p_end@true_end` in the trained format exceeds the untrained format by at least a factor of
+10 at the final checkpoint, with the direction reversing between `A_ONLY` and `B_ONLY`.
+
+A 400-step pilot of `A_ONLY` (run before this text was written, and reported here in full) already
+shows the shape: `p_end@true_end` = 0.005 → 0.132 → 0.282 → 0.288 in format A and **0.000 at every
+checkpoint** in format B. That pilot is what exposed the mis-specification; the full runs test P1′ and
+P2–P4 as amended. P2 (mixed rescues both) and P4 (dissociation in time) carry over with
+`p_end@true_end` substituted for the rank statistic. P3 is amended: the out-of-format behavioural
+signature is run-on generation to the token cap, not an elevated empty rate.
+
 ## 4. Predictions (registered before any run)
 
 **P1 — reversal (the decisive one).**

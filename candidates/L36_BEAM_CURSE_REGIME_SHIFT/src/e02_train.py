@@ -126,6 +126,48 @@ def measure_step0(model, tok, srcs, end_id, batch=8):
 
 
 @torch.no_grad()
+def measure_boundary_profile(model, tok, srcs, tgts, end_id, batch=8):
+    """Where does the model place the boundary, conditional on format?
+
+    Teacher-forces the reference translation and reads p(<END>) at every prefix position. A
+    correctly learned boundary is a spike at the true end with little mass before it; a boundary
+    that was never learned in this format is flat and near zero; a boundary that fires early is
+    what produces the wide-beam termination pathology.
+    """
+    model.eval()
+    out = {}
+    for fmt, template in FORMATS.items():
+        at_end, prem_max, prem_mean, learned = [], [], [], []
+        for i in range(0, len(srcs), batch):
+            chunk_s, chunk_t = srcs[i:i + batch], tgts[i:i + batch]
+            texts = [template.format(src=s) + t for s, t in zip(chunk_s, chunk_t)]
+            enc = tok(texts, return_tensors="pt", padding=True,
+                      add_special_tokens=False).to(model.device)
+            logits = model(**enc).logits.float()
+            lp = torch.log_softmax(logits, dim=-1)[:, :, end_id]      # (B, T) log p(<END> | prefix)
+            for k, (s, t) in enumerate(zip(chunk_s, chunk_t)):
+                n_pad = int((enc["attention_mask"][k] == 0).sum())    # left padding
+                n_prompt = len(tok(template.format(src=s), add_special_tokens=False)["input_ids"])
+                start = n_pad + n_prompt - 1        # position whose next token is the 1st target tok
+                end = enc["input_ids"].shape[1] - 1  # position whose next token would be <END>
+                if end <= start:
+                    continue
+                seq = lp[k, start:end + 1]
+                at_end.append(float(seq[-1]))
+                if len(seq) > 1:
+                    prem_max.append(float(seq[:-1].max()))
+                    prem_mean.append(float(seq[:-1].exp().mean()))
+                learned.append(1.0 if float(seq[-1]) > math.log(0.5) else 0.0)
+        out[fmt] = {"logp_end_at_true_end": float(np.mean(at_end)) if at_end else float("nan"),
+                    "p_end_at_true_end": float(np.mean(np.exp(at_end))) if at_end else float("nan"),
+                    "logp_end_max_before_end": float(np.mean(prem_max)) if prem_max else float("nan"),
+                    "p_end_mean_before_end": float(np.mean(prem_mean)) if prem_mean else float("nan"),
+                    "frac_boundary_learned": float(np.mean(learned)) if learned else float("nan")}
+    model.train()
+    return out
+
+
+@torch.no_grad()
 def measure_behaviour(model, tok, srcs, refs, end_id, beams, ref_len, batch_budget=256):
     model.eval()
     out = {}
@@ -166,6 +208,7 @@ def main():
     tr_src = [l.rstrip("\n") for l in open(f"{data}/newstest2018.en", encoding="utf-8")]
     tr_tgt = [l.rstrip("\n") for l in open(f"{data}/newstest2018.ref.de", encoding="utf-8")]
     ev_src = [l.rstrip("\n") for l in open(f"{data}/newstest2019.en", encoding="utf-8")][:a.eval_n]
+    ev_tgt = [l.rstrip("\n") for l in open(f"{data}/newstest2019.wmtref.de", encoding="utf-8")][:a.eval_n]
     ref_w = [l.rstrip("\n") for l in open(f"{data}/newstest2019.wmtref.de", encoding="utf-8")]
     ref_a = [l.rstrip("\n") for l in open(f"{data}/newstest2019.arref.de", encoding="utf-8")]
     refs = [[ref_w[i], ref_a[i]] for i in range(a.eval_n)]
@@ -212,13 +255,15 @@ def main():
 
     def record(step, loss_val, behaviour=False):
         m = measure_step0(model, tok, ev_src, end_id)
+        prof = measure_boundary_profile(model, tok, ev_src[:100], ev_tgt[:100], end_id)
         row = {"step": step, "loss": loss_val,
                "rank_A": m["A"]["rank_median"], "rank_B": m["B"]["rank_median"],
                "log10_rank_A": m["A"]["log10_rank_median"],
                "log10_rank_B": m["B"]["log10_rank_median"],
                "margin_A": m["A"]["margin_mean"], "margin_B": m["B"]["margin_mean"],
                "logp_stop_A": m["A"]["log_p_stop_mean"], "logp_stop_B": m["B"]["log_p_stop_mean"],
-               "exposed128_A": m["A"]["frac_rank_le_128"], "exposed128_B": m["B"]["frac_rank_le_128"]}
+               "exposed128_A": m["A"]["frac_rank_le_128"], "exposed128_B": m["B"]["frac_rank_le_128"],
+               "boundary": prof}
         if behaviour:
             row["behaviour"] = measure_behaviour(model, tok, ev_src[:a.beam_n], refs[:a.beam_n],
                                                  end_id, beams, ref_len)
@@ -231,7 +276,10 @@ def main():
                 100 * row["behaviour"]["A"]["64"]["empty_rate"], row["behaviour"]["A"]["64"]["bleu_multi"],
                 100 * row["behaviour"]["B"]["64"]["empty_rate"], row["behaviour"]["B"]["64"]["bleu_multi"]))
         print(f"[{a.condition}] step {step:5d}  loss {loss_val:.4f}  "
-              f"rank_A {row['rank_A']:9.0f}  rank_B {row['rank_B']:9.0f}{b}", flush=True)
+              f"rank_A {row['rank_A']:8.0f} rank_B {row['rank_B']:8.0f}  "
+              f"p(END@end) A {prof['A']['p_end_at_true_end']:.3f} B {prof['B']['p_end_at_true_end']:.3f}  "
+              f"learned A {prof['A']['frac_boundary_learned']:.2f} B {prof['B']['frac_boundary_learned']:.2f}"
+              f"{b}", flush=True)
 
     record(0, float("nan"), behaviour=("0" in beh_at))
 
