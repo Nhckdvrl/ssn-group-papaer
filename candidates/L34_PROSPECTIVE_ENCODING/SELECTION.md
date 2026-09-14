@@ -1,147 +1,101 @@
 # L34 — Does Future Access Shape What Gets Learned?
 
-**Date:** 2026-09-13  
+**Initial selection:** 2026-09-13  
+**Final decision:** 2026-09-14  
 **Target:** ACL / EMNLP / NAACL Main  
-**Status:** **PILOT-AUTHORIZED — E01 ONLY**
+**Status:** **KILL — CURRENT SCIENTIFIC IDENTIFICATION FAILED; NO E02 AUTHORIZED**
 
-## 1. Research question
+## Final verdict
 
-> **Does knowing *how a fact will later be accessed* selectively change how a language model encodes that fact when it is subsequently learned?**
+> **Kill L34 as a candidate. Do not repair E01 by merely adding a grounded curriculum and an order-control arm.**
 
-This is not a new knowledge-injection method paper. The scientific question is whether parametric knowledge acquisition is prospectively shaped by an already learned access policy, rather than being a neutral encoding process followed by a separately learned retrieval policy.
+E01 did not provide evidence against prospective encoding: its manipulation failed before the scientific question was tested. However, the post-E01 audit exposed deeper Selection problems. The original operationalization and decisive estimand do not uniquely identify the headline claim, so repairing implementation defects would not restore the paper identity.
 
-## 2. Mother phenomenon and pressure
+The broader PIT pressure remains legitimate, but it is **not an authorized continuation of L34**. Any successor must be registered as a fresh candidate with a new ownership audit, new estimand, and new Selection authorization.
 
-Jiang et al. (ACL 2024), *Instruction-tuned Language Models are Better Knowledge Learners*, showed that teaching QA access patterns **before** continued pre-training on new documents (pre-instruction-tuning, PIT) substantially improves later closed-book QA. On Llama-2 7B, PIT improves over standard instruction tuning by roughly 17.8 absolute points in the reported setup.
+**Anti-resurrection:** no E02, larger-model rerun, prompt/attribute search, third-person grounding patch, added post-document arm, or renamed `prospective encoding` continuation under L34.
 
-Crucially, the paper explicitly motivates PIT by hypothesizing that prior QA training makes subsequent document encoding take into account **how the knowledge will later be accessed**. The published evidence establishes that moving instruction tuning earlier helps knowledge acquisition, but it does not identify whether the gain is truly query-conditioned prospective encoding rather than generic learning plasticity or a retrieval-policy effect.
+## What E01 established
 
-Primary owner:
-- Jiang et al. 2024, ACL Long: https://aclanthology.org/2024.acl-long.296/
+The frozen first-stage gate failed decisively on Llama-3.2-3B:
 
-Relevant successors improve knowledge acquisition but do not currently appear to identify the selective prospective-encoding claim:
-- Zhang et al. 2025, *Self-Tuning: Instructing LLMs to Effectively Acquire New Knowledge through Self-Teaching*.
-- Clinical / domain PIT descendants and 2026 document-internalization work use PIT as a method/baseline rather than testing access-selective encoding.
+- `CROSSOVER_postP1(OLD)` = **-0.1554** [-0.1853, -0.1266] held-in;
+- `CROSSOVER_postP1(OLD)` = **-0.0844** [-0.1136, -0.0552] held-out;
+- `PIT_A` made its own trained family worse by **+0.383 nats/token**;
+- `PIT_B` made its own trained family worse by **+0.413 nats/token**;
+- 10/12 arm × attribute cells degraded.
 
-## 3. Scientific accounts
+The largest cell, `PIT_A / birth_city = +1.835`, was caused by the disjoint-city-pool control. Phase-1 therefore mainly installed answer-family priors/interference rather than the intended access specialization. The NEW phase is not interpretable for accounts A/B/C.
 
-### A — Prospective encoding
+The recorded primary interaction was large (`PROSPECTIVE` +0.4215 held-in; +0.8134 held-out) and paraphrase-robust, but is void because the construct gate failed. Its best reading is an **answer-family prior × knowledge recency** interaction. This demonstrates that a large `NEW - OLD` interaction can arise without encoding-specific causation.
 
-An access policy learned *before* a fact is encountered changes how that later fact is encoded. Pre-access A versus B should therefore produce an **A↔B crossover specifically for knowledge learned after the pre-access phase**.
+See `results/e01/G1_RESULTS.md` and `results/e01/G0_AND_BLOCKED_PRIMARY.md`.
 
-### B — Generic learnability / plasticity
+## Correction: `NO_PIT` was not the PIT baseline
 
-PIT makes the model a better learner in a general sense. New knowledge may improve overall, but A versus B pre-access should not selectively favor the matching query view.
+Jiang et al.'s relevant contrast is order: both sides receive a QA/instruction phase (`QA -> DOC` versus `DOC -> QA`). `NO_PIT` receives no curriculum, so it is not the baseline for the parent PIT effect. Commit `ee7bfe2` correctly withdrew the earlier overclaim that the parent phenomenon was reversed.
 
-### C — Retrieval-policy specialization
+A true order-control arm would be necessary in a faithful PIT-derived study, but it is not sufficient to save L34.
 
-PIT mainly teaches the model how to answer A-like versus B-like questions. The A↔B preference should therefore appear for knowledge the model already knew before PIT as well as for knowledge learned afterward.
+## Deeper Selection failure 1 — the experiment changed the scientific object
 
-Hybrid outcomes are allowed only as mixtures of these predeclared accounts; a failed result must not be rescued by inventing a new paper identity.
+The intended A/B manipulation was two access views over the **same underlying fact**. E01 instead used different relations:
 
-## 4. Decisive estimand
+- A: `birth_date`, `university`, `work_city`;
+- B: `birth_city`, `company`, `major`.
 
-E01 uses a factorial design:
+A positive result could therefore be explained as relation/task-specific transfer: prior training on relation family A makes later family-A learning easier. That does not identify the stronger claim that anticipated access to the same knowledge changes how that knowledge is encoded.
 
-- **pre-access arm:** A vs B;
-- **query view at evaluation:** A vs B;
-- **knowledge age:** NEW (learned only after the pre-access phase) vs OLD (already known before pre-access).
+## Deeper Selection failure 2 — `NEW - OLD` does not identify encoding locus
 
-The target documents and target new facts are **identical** across A/B arms. The pre-access phase must not contain those new facts.
+The original estimand was:
 
-Define the A-vs-B query-view preference within each pre-access arm, then the crossover between arms:
+```text
+CROSSOVER(age) = PREF(PIT_A, age) - PREF(PIT_B, age)
+PROSPECTIVE    = CROSSOVER(NEW) - CROSSOVER(OLD)
+```
 
-`CROSSOVER(age) = [Atrain(Aview-Bview) - Btrain(Aview-Bview)]_age`
+The intended logic was that OLD subtraction would remove retrieval-policy specialization. E01 shows that a pure readout/output prior can affect newly learned facts more strongly than older facts. Therefore:
 
-Primary estimand:
+> **NEW-specific is not encoding-specific.**
 
-> **`PROSPECTIVE = CROSSOVER(NEW) - CROSSOVER(OLD)`**
+Knowledge age is not a valid proxy for causal locus. This attacks the decisive quantity itself, not only the implementation.
 
-Predictions:
+## Why an order-control repair is still insufficient
 
-- Account A: `PROSPECTIVE > 0`; selective crossover is materially stronger for NEW knowledge.
-- Account B: little/no crossover; possible overall NEW-knowledge gain.
-- Account C: A/B crossover is similar for OLD and NEW, so `PROSPECTIVE ≈ 0` despite view specialization.
+`QA -> DOC != DOC -> QA` can arise from generic path dependence: gradient alignment/interference, optimization-state dependence, forgetting, representation priming, relation-specific plasticity, or asymmetric readout priors. An order effect alone does not establish prospective encoding.
 
-The OLD condition is load-bearing: without it, access specialization at retrieval is confounded with prospective encoding.
+A successor would need an estimand tied directly to **what an identical document update does**, not only the final QA preference.
 
-## 5. Identification controls
+## Final authorization state
 
-E01 must satisfy all of the following:
+- E01 closed; no account A/B/C is supported or rejected by it.
+- The +0.42/+0.81 interaction is preserved for reproducibility only.
+- No 7B/8B escalation.
+- No E02.
+- No grounded-rerun repair.
+- No order-arm-only repair.
 
-1. A/B pre-access arms have matched training size, answer distribution, and optimization budget.
-2. Target new facts/documents are unseen during pre-access training and identical across arms.
-3. A/B evaluation views express the same underlying facts and are counterbalanced for lexical/template identity.
-4. Include held-out paraphrases so a crossover cannot be explained solely by memorizing one prompt string.
-5. OLD and NEW facts use the same A/B evaluation machinery.
-6. No post-document instruction tuning is allowed before the primary evaluation; otherwise encoding and retrieval are re-confounded.
-7. Report both accuracy and answer-margin/log-probability measures; extraction rules are fixed before confirmatory evaluation.
+> **L34 is KILL because question -> manipulation -> estimand does not uniquely identify the headline claim.**
 
-## 6. Ownership / reviewer compression
+## Pressure retained outside L34 — NOT A CANDIDATE
 
-Strongest compression:
+Retain only this pressure for future broad search:
 
-> `ACL 2024 PIT + encoding-specificity intuition + later knowledge-acquisition methods = L34.`
+> **Does learning an access function change the learning operator by which later raw-text exposure makes new facts usable?**
 
-What survives:
+A future candidate should measure the increment caused by an identical document update, e.g. `Delta_q = L_q(theta) - L_q(U_doc(theta))`, and ask whether identical document updates produce selectively different `Delta_A - Delta_B` after different prior access training.
 
-> Prior work shows that pre-instruction can improve later knowledge acquisition, but does **not** establish that a learned future access structure selectively changes the encoding of subsequently encountered facts, nor separate that claim from generic plasticity and retrieval-policy specialization.
+Before registration it must independently pass:
 
-Current novelty judgment: **PLAUSIBLE INDEPENDENT CONTRIBUTION**.
+1. **Same-fact gate:** A/B are different access functions for the same underlying fact.
+2. **Output-matching gate:** answer tokens/distributions, length, space, and format are matched.
+3. **First-stage construct gate:** prior training demonstrably installs the access function on grounded third-set facts while target NEW facts remain unseen.
+4. **Update-level identification gate:** primary estimand is the increment from the identical document update, not final QA preference or NEW-OLD subtraction.
+5. **Fresh owner gate:** re-audit PIT successors, curriculum/continual-learning, gradient-alignment, and factual-learning dynamics for the exact quantity.
 
-Repository anti-resurrection search on 2026-09-13 found no existing `pre-instruction` / prospective-encoding candidate. L34 is not a generic `capability vs readout` route: the decisive quantity is a **time-directed three-way interaction** that asks whether an access policy present *before learning* selectively changes later acquisition, with OLD knowledge explicitly subtracting retrieval-only specialization.
+Failure of any gate means no new candidate.
 
-## 7. Successful-result chain
+## Durable lesson
 
-Strong positive result:
-
-> matched pre-access A/B training → selective A↔B crossover only (or materially more strongly) for subsequently learned NEW facts → access policy before exposure changed what became easiest to retrieve from identical later documents → parametric knowledge acquisition is prospectively conditioned by anticipated use rather than fully neutral storage followed by retrieval.
-
-This would directly strengthen / revise the interpretation of PIT and change how we conceptualize continued learning: **what a model expects to do with future knowledge can shape how that knowledge is learned.**
-
-A generic PIT gain without the NEW-specific crossover does **not** support this claim.
-
-## 8. Pre-result outcome interpretations
-
-- **NEW-specific crossover, OLD small:** supports prospective encoding (A).
-- **Comparable OLD and NEW crossover:** supports retrieval-policy specialization (C), and rejects the strong prospective-encoding interpretation.
-- **Overall NEW improvement but little A/B crossover:** supports generic learnability/plasticity (B), and rejects the selective prospective-encoding interpretation.
-- **No reproducible PIT/new-knowledge benefit in the instrument:** E01 fails the mother/instrument gate; STOP. Do not model-shop.
-- **Only one wording/template produces crossover:** construct failure; STOP rather than prompt-search.
-
-A null is allowed to kill L34. No post-hoc conversion to a generic knowledge-injection method paper.
-
-## 9. Resolution / feasibility
-
-The parent effect is large (roughly +17.8 absolute QA points in the reported Llama-2 7B comparison), so a bounded reproduction/instrument audit is feasible before any broad scale-up.
-
-E01 should use one open base model family and a development/confirmation split. The first goal is **not** model-zoo breadth; it is to establish that the A/B access manipulation itself has enough first-stage leverage while preserving the parent PIT phenomenon.
-
-Recommended bounded E01 structure:
-
-- same starting checkpoint for all arms;
-- A-pre-access and B-pre-access arms, plus a neutral/no-pre-access baseline only if needed to verify the mother PIT effect;
-- multiple seeds for the two causal arms;
-- hundreds of independent NEW and OLD facts, with A/B paired evaluation per fact;
-- bootstrap over facts and seed-level replication;
-- preregister a minimum meaningful NEW-specific crossover before confirmatory runs.
-
-Do not authorize full model-family breadth until the first-stage selective crossover is resolvable.
-
-## 10. Main-level growth path
-
-If E01 passes, the same scientific identity can grow naturally:
-
-- **C1 — identification:** show the NEW-specific A↔B crossover and distinguish A/B/C accounts.
-- **C2 — formation:** locate *when during identical document training* the selective advantage emerges and whether it tracks selective parameter/representation updates, without replacing C1 with generic probing.
-- **C3 — boundary / consequence:** test whether prospective encoding is specific to factual access or generalizes to different forms of later use, and whether mismatched anticipated access creates predictable blind spots despite equal document exposure.
-
-C2/C3 deepen the same claim; they are not required to rescue a weak E01.
-
-## 11. Exact authorization
-
-**Authorized:** one bounded E01 whose only purpose is to test the predeclared `pre-access × query-view × NEW-vs-OLD` interaction and verify the mother PIT effect has sufficient leverage.
-
-**Not authorized:** large model zoo, broad domain sweeps, RAG comparisons, synthetic-data method optimization, knowledge benchmark construction, mechanistic probing atlases, or a generic PIT-improvement paper.
-
-**Promotion beyond E01 requires:** a reproducible and selective NEW-specific crossover that survives matched OLD-knowledge, paraphrase/template, and seed controls.
+A sophisticated interaction is not automatically an identifying experiment. A three-way interaction can be large, seed-stable, and paraphrase-robust while being generated by a nuisance mechanism whose strength differs across knowledge age. For mechanism questions, the operation must selectively manipulate the proposed causal route itself.
