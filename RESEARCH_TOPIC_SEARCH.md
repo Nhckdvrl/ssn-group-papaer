@@ -1,6 +1,6 @@
 # Research Topic Search — Find the Right Scientific Question
 
-Updated: 2026-09-12. Target: ACL / EMNLP / NAACL Main.
+Updated: 2026-09-15. Target: ACL / EMNLP / NAACL Main.
 
 This file governs **where and how to search**. It does not decide whether a concrete candidate passes selection, and it does not prescribe experiments.
 
@@ -15,6 +15,46 @@ The target intellectual shape is:
 > **easy to understand, hard to answer**
 >
 > **question first → stable phenomenon or real scientific tension → explanation second → method last**
+
+---
+
+## 0. Mandatory Round-Start Taste Calibration
+
+**Every new open-ended search round must begin by freshly recalibrating scientific taste against genuinely strong work. Do this before generating candidates.**
+
+Do not assume the searcher remains calibrated from yesterday's round or from this document.
+
+At minimum, actively inspect a small but serious set drawn from:
+
+- ACL / EMNLP / NAACL Best, Outstanding, Runner-up or otherwise unusually strong Main papers;
+- TACL papers with durable scientific questions;
+- ICLR / ICML / NeurIPS award-level or field-shaping work when model-science ownership is relevant;
+- AAAI when it contributes a useful scientific lineage;
+- strong-author paper lineages, Related Work, talks, blogs, interviews, or research-advice material when useful for reconstructing problem choice.
+
+For each useful paper, study **idea provenance**, not implementation:
+
+> What did the community believe before this paper?  
+> What expectation, explanation, quantity, or inferential bridge became unsatisfactory?  
+> Why was the question worth asking before the method existed?  
+> What was the author's extra step beyond the nearest prior work?  
+> What was the cheapest decisive observation?  
+> If the result had gone the other way, would the question still have mattered?  
+> What scientific belief changed?
+
+Before reading the result in depth, when feasible, predict what you expect and what experiment/quantity you would have chosen. Then compare that prediction with the authors' actual move. Use the difference to train the searcher.
+
+**Do not use award papers as topic templates.** The transferable object is the research move, for example:
+
+- a load-bearing monotonic/default expectation fails;
+- a claimed advantage contains a hidden failure mode;
+- an old quantity is too coarse and a new quantity makes the claim falsifiable;
+- a deployment/training mismatch changes a scientific inference;
+- a long-standing inferential bridge is valid only under explicit assumptions.
+
+If several generated ideas in a row collapse into `A+B`, `old phenomenon × LLM`, `behavior → mechanism sequel`, `new intervention → find a distinction`, or `limitation → setting`, **stop generation and recalibrate again**.
+
+This calibration is a **hard round-start requirement**, not optional reading.
 
 ---
 
@@ -263,7 +303,7 @@ This separation is intentional. Search should generate the **right kind of quest
 
 A normal round is:
 
-> **refresh → anti-resurrection → provenance mining → generate → SAME-QUANTITY → owner search → kill or hand off**
+> **round-start taste calibration → refresh → anti-resurrection → provenance mining → generate → SAME-QUANTITY → owner search → kill or hand off**
 
 Record seriously investigated dead hooks in the dated `search_rounds/` record so the next round does not rediscover them.
 
