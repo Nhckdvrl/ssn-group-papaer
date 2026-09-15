@@ -31,7 +31,7 @@ FMT_A = ("### User: Translate the following English sentence into German.\n{src}
          "### Assistant: ")
 FMT_B = ("English: {src}\nGerman: ")
 FORMATS = {"A": FMT_A, "B": FMT_B}
-END_TOKEN = "<|quad_start|>"          # unused Qwen2.5 special token, id 151650
+END_TOKEN = "<|quad_start|>"          # unused Qwen2.5 special token, id 151650 (default base)
 
 
 def parse_args():
@@ -51,6 +51,9 @@ def parse_args():
     p.add_argument("--beams", default="1,16,64")
     p.add_argument("--beam-n", type=int, default=200)
     p.add_argument("--seed", type=int, default=20260914)
+    p.add_argument("--end-token", default=END_TOKEN,
+                   help="unused special token used as the single shared boundary symbol; "
+                        "must exist in the base tokenizer and be effectively untrained")
     p.add_argument("--out", default=None)
     p.add_argument("--max-steps", type=int, default=0)
     p.add_argument("--save-final", default="",
@@ -61,7 +64,7 @@ def parse_args():
 
 
 class SFTData(Dataset):
-    def __init__(self, src, tgt, condition, tok, max_len, seed):
+    def __init__(self, src, tgt, condition, tok, max_len, seed, end_token=END_TOKEN):
         self.rows = []
         rng = random.Random(seed)
         for i, (s, t) in enumerate(zip(src, tgt)):
@@ -74,7 +77,7 @@ class SFTData(Dataset):
             self.rows.append((fmt, s, t))
         rng.shuffle(self.rows)
         self.tok, self.max_len = tok, max_len
-        self.end_id = tok.convert_tokens_to_ids(END_TOKEN)
+        self.end_id = tok.convert_tokens_to_ids(end_token)
 
     def __len__(self):
         return len(self.rows)
@@ -222,15 +225,16 @@ def main():
     tok.padding_side = "left"
     if tok.pad_token_id is None:
         tok.pad_token = tok.eos_token
-    end_id = tok.convert_tokens_to_ids(END_TOKEN)
-    assert isinstance(end_id, int) and end_id > 0, END_TOKEN
+    end_tok = a.end_token
+    end_id = tok.convert_tokens_to_ids(end_tok)
+    assert isinstance(end_id, int) and end_id > 0, end_tok
 
     # bf16 weights and no activation checkpointing: an fp32 3B with checkpointing ran at ~17 s per
     # optimizer step, which would have breached the 4-hour stop rule in E02_PREREGISTRATION.md §7
     model = AutoModelForCausalLM.from_pretrained(a.base, dtype=torch.bfloat16).cuda()
     model.config.use_cache = False
 
-    ds = SFTData(tr_src, tr_tgt, a.condition, tok, a.max_len, a.seed)
+    ds = SFTData(tr_src, tr_tgt, a.condition, tok, a.max_len, a.seed, end_tok)
     mask_end = end_id if a.condition.endswith("NOEOSLOSS") else None
     dl = DataLoader(ds, batch_size=a.batch, shuffle=True, drop_last=True,
                     collate_fn=lambda b: collate(b, tok.pad_token_id, mask_end))
@@ -246,7 +250,7 @@ def main():
     beh_at = set(a.behaviour_at.split(","))
     beams = [int(b) for b in a.beams.split(",")]
 
-    header = {"_header": True, "condition": a.condition, "base": a.base, "end_token": END_TOKEN,
+    header = {"_header": True, "condition": a.condition, "base": a.base, "end_token": end_tok,
               "end_id": end_id, "epochs": a.epochs, "batch": a.batch, "accum": a.accum,
               "lr": a.lr, "warmup": a.warmup, "max_len": a.max_len, "total_steps": total,
               "eval_every": a.eval_every, "eval_n": a.eval_n, "seed": a.seed,

@@ -131,7 +131,7 @@ def main():
     ref_len = np.mean([len(ref_w[i].split()) for i in range(a.n_beam)])
     prompts_b = build_prompts(tok, sub, a.interface)
     res["beam"] = {}
-    for beam in [int(b) for b in a.beams.split(",")]:
+    for beam in [int(b) for b in a.beams.split(",") if b.strip()]:
         batch = max(1, a.beam_budget // beam)
         hyps = [None] * len(sub)
         order = sorted(range(len(sub)), key=lambda i: -len(sub[i]))
