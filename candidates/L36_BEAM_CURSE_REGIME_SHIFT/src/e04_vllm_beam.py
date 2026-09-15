@@ -56,7 +56,7 @@ def main():
 
     res = {"model": a.model, "tag": a.tag, "fmt": a.fmt, "impl": "vllm",
            "end_token": a.end_token, "end_id": end_id, "n": a.n, "beam": {}}
-    prompt_ids = [tok(q, add_special_tokens=True)["input_ids"] for q in prompts]
+    prompt_ids = [tok(q, add_special_tokens=False)["input_ids"] for q in prompts]
 
     for b in beams:
         outs = llm.beam_search(
@@ -66,10 +66,13 @@ def main():
         hyps = []
         for o, ids in zip(outs, prompt_ids):
             seq = o.sequences[0]
-            # seq.tokens includes the prompt (vLLM sets text = decode(tokens)), so slice it off
+            # seq.tokens includes the prompt (vLLM sets text = decode(tokens)), so slice it off.
+            # Post-processing must match src/e02_train.py:measure_behaviour EXACTLY --
+            # decode(skip_special_tokens=True).strip(), NO newline truncation -- otherwise the
+            # run-on channel is clipped and the cross-implementation comparison is meaningless.
             gen = seq.tokens[len(ids):]
             t = tok.decode(gen, skip_special_tokens=True)
-            hyps.append(t.split("\n")[0].strip())
+            hyps.append(t.strip())
         empty = float(np.mean([len(h.strip()) == 0 for h in hyps]))
         lenr = float(np.mean([len(h.split()) for h in hyps]) / ref_len)
         bleu = M.corpus_bleu(hyps, [[rw[i], ra[i]] for i in range(len(hyps))])
