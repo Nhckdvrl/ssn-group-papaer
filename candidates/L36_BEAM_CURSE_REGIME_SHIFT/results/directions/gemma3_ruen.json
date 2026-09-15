@@ -1,0 +1,33 @@
+{
+  "model": "google/gemma-3-12b-it",
+  "kind": "dec_only",
+  "direction": "ruen",
+  "tag": "gemma3",
+  "n": 400,
+  "stop_set_size": 2,
+  "margin_mean": 36.961677408218385,
+  "log_p_stop_mean": -37.01906978130341,
+  "rank_median": 336.0,
+  "b_star": 168,
+  "frac_rank_le_128": 0.1425,
+  "beam": {
+    "4": {
+      "bleu": 37.04603914397512,
+      "chrf2": 63.761828313444404,
+      "empty_rate": 0.0,
+      "len_ratio": 1.011537392271337
+    },
+    "16": {
+      "bleu": 36.85368348404017,
+      "chrf2": 63.636586737708285,
+      "empty_rate": 0.0,
+      "len_ratio": 1.01209341117598
+    },
+    "64": {
+      "bleu": 36.667785862155434,
+      "chrf2": 63.60720850303062,
+      "empty_rate": 0.0,
+      "len_ratio": 1.0125104253544621
+    }
+  }
+}
