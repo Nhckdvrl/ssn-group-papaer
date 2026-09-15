@@ -1,242 +1,249 @@
-# L43 — Do Backup Circuits Provide Natural Robustness?
+# L43 — Do Counterfactual Alternatives Predict Endogenous Route Selection?
 
-**Status:** `PILOT-AUTHORIZED — E01 ONLY; NOT MAINLINE`  
-**Date:** 2026-09-15  
+**Status:** `PILOT-AUTHORIZED — E01R ONLY; NOT MAINLINE`  
+**Date reconstructed:** 2026-09-15  
 **Target:** ACL / EMNLP / NAACL Main  
 **Calibration:** TACL / ICLR / ICML / NeurIPS
 
+> Directory name is legacy from the original formulation. The scientific object below supersedes the earlier `natural backup robustness` framing.
+
 ## RQ
 
-> **Are the dormant backup circuits that repair a Transformer after artificial ablation also recruited by ordinary, answer-preserving input stress in the intact model?**
+> **When a mechanistic intervention reveals an alternative circuit that can substitute for a primary route, does that alternative predict which route becomes causally load-bearing across ordinary input variation in the intact model?**
 
 Short form:
 
-> **Is artificial self-repair the same mechanism as natural robustness?**
+> **Does counterfactual substitutability predict endogenous substitution?**
 
-This is **not** another circuit-finder paper and not another `does circuit X generalize across prompts?` paper.
+This is no longer the narrower question `do DoubleIO / TripleIO wake up the published backup heads?`.
 
-The scientific object is the relationship between:
+The scientific object is the relationship between two notions that current mechanistic-interpretability papers often leave implicit:
 
-1. **intervention-induced redundancy** — backup components that become load-bearing only after a primary mechanism is artificially removed; and
-2. **natural robustness** — the intact model preserving the same behavior when the input is changed in ways that preserve the correct answer.
+1. **counterfactual alternatives** — components / circuits that become sufficient or necessary only after an internal intervention changes the model state;
+2. **endogenous route selection** — components / circuits that become more or less load-bearing across intact forward passes as the input changes while the target behavior is preserved.
 
----
-
-# 1. Why this is a standing scientific problem
-
-Transformer self-repair / the Hydra effect has been known for several years. The important unresolved question is not merely which component repairs which ablation. It is **why this redundancy exists and what, if anything, it is for**.
-
-The key old pressure is unusually explicit.
-
-Rushing & Nanda, ICML 2024, *Explorations of Self-Repair in Language Models*:
-
-https://proceedings.mlr.press/v235/rushing24a.html
-
-They show self-repair across model families and on the full pretraining distribution, but every self-repair event is still defined **after an internal ablation**. Their analysis finds at least two qualitatively different sources:
-
-- final-LayerNorm rescaling, which can mechanically amplify surviving signal;
-- sparse later components / Anti-Erasure behavior, which looks more like learned compensation.
-
-Crucially, the paper explicitly warns that what first looked like intentional repair may instead be an uninteresting consequence of throwing the model off-distribution, and closes with the mystery of why self-repair occurs at all.
-
-Therefore the standing question predates the new method:
-
-> **Does self-repair reveal a robustness mechanism the intact network actually uses, or does it mainly reveal how a neural network reacts to an unnatural internal intervention?**
-
-That distinction matters to both mechanistic interpretability and model science. If ablation-induced backup pathways are naturally recruited under input stress, they are part of the model's functional robustness architecture. If they are not, interpreting them as evidence of functional redundancy is much weaker.
+A model can possess many counterfactually sufficient routes without ever naturally switching among them. Conversely, an intervention-defined backup may reveal a genuine reserve route that the intact network recruits whenever the primary computation is naturally weak. Existing work establishes both sides separately but does not identify their mapping.
 
 ---
 
-# 2. Why now: the missing leverage appeared in 2026
+# 1. Why this is an important standing problem
 
-Gong et al. 2026, *Conditional Co-Ablation: Recovering Self-Repair Backups in Transformer Circuits*:
+Mechanistic interpretability studies trained networks largely through interventions. The interpretation usually goes beyond the literal statement `the network can behave this way after I perturb it`: researchers use interventions to infer the computation of the **unperturbed model**.
+
+That inference is exactly what becomes questionable when redundancy and non-unique circuits exist.
+
+The durable scientific question is therefore:
+
+> **When does a counterfactual mechanism exposed by intervention correspond to computation the intact model actually uses?**
+
+This matters independently of CoAx, IOI, or any specific circuit finder. It determines what we are entitled to mean by terms such as `backup circuit`, `alternative mechanism`, `redundancy`, and `circuit completeness`.
+
+---
+
+# 2. Why now: four recent results make the question identifiable
+
+## A. Conditional Co-Ablation (CoAx, 2026)
 
 https://arxiv.org/abs/2607.01940
 
-introduces CoAx, which detects dormant backup components by measuring how a component's ablation effect grows after a primary circuit has already been removed.
+CoAx makes **counterfactual substitutability measurable**. It identifies components whose causal importance rises after a primary circuit is removed. On GPT-2-small IOI it recovers the documented backup name movers with ROC-AUC about `0.91` versus `0.33` for ordinary first-order saliency, and the method transfers to induction across multiple architectures.
 
-Important facts for this project:
+But CoAx deliberately asks:
 
-- on GPT-2-small IOI, CoAx recovers documented backup heads with ROC-AUC about `0.91`, versus `0.33` for ordinary single-ablation saliency;
-- the discovered backup heads are genuinely dormant on the intact canonical task and become primary-like after the name-mover circuit is ablated;
-- the same conditional principle generalizes to induction across multiple model families / scales;
-- the released implementation is label-free, gradient-free, and costs only `O(#heads)` forward passes per seed set.
+> once the primary is removed, which units become necessary?
 
-CoAx answers:
+It does not ask whether the same units become necessary on any intact input.
 
-> **Which components become necessary after I break the primary circuit?**
+The paper additionally reports that IOI backup discovery is robust across prompt templates, but the wake-up event is still defined **under primary ablation**.
 
-It does **not** answer:
+## B. Intervention divergence (ICLR 2026)
 
-> **Would those same components ever become necessary if I leave the model intact and only stress the input?**
+*Addressing divergent representations from causal interventions on neural networks* shows that common MI interventions can move representations away from the model's natural distribution. Critically, it distinguishes harmless divergence from **pernicious divergence that activates hidden network pathways and dormant behavioral changes**.
 
-That newly separates a long-standing conceptual ambiguity into a directly testable question.
+This creates a live alternative interpretation of self-repair:
 
-A second 2026 leverage, *Circuit Condensation* (arXiv:2608.27254), can post-train a model so that a behavior is carried by a much smaller causal graph while approximately preserving ordinary behavior and next-token distributions. This may become a useful later orthogonal intervention, but it is **not needed for E01** because changing weights creates a training confound. E01 deliberately uses a frozen model only.
+> a backup exposed after ablation may be a real counterfactual capability yet not be a route used by the natural model.
 
----
+The paper studies when intervention states diverge and how to regularize them; it does not map intervention-exposed alternatives to endogenous route use.
 
-# 3. Competing accounts
+## C. Multiple valid circuits (ICML 2026)
 
-## H1 — Natural redundancy / robustness account
+*All Circuits Lead to Rome* shows that the same task can be supported by multiple sparse, faithful, complete and low-overlap circuits. This rejects the assumption that one behavior has one canonical subgraph.
 
-Backup circuits are learned alternate routes for the same computation. Artificial ablation exposes them because it is an extreme stressor, but milder ordinary input stress should recruit the same latent routes.
+But `many sufficient circuits exist` does not imply:
 
-Prediction:
+> the intact model schedules different circuits on different inputs.
 
-> a backup set that is nearly irrelevant on canonical intact inputs becomes causally important on answer-preserving stress inputs, even though no internal component has been removed.
+Alternative circuit existence and endogenous circuit selection are different scientific claims.
 
-Scientific consequence:
+## D. Input variation can change discovered circuits without changing mechanism (TMLR 2026)
 
-- self-repair is evidence about the model's natural robustness architecture, not only an ablation confound;
-- robust behavior can be implemented by **adaptive mechanism switching**, not necessarily by a single stable circuit;
-- circuit analyses that report only the canonical route can miss behaviorally relevant reserve capacity.
+*Many Circuits, One Mechanism* shows the converse danger: input-conditioned structural differences can be **phantom specialization**. Circuits extracted from different input-frequency bands can look different while remaining functionally interchangeable and sharing one underlying computation.
 
-## H2 — Intervention-artifact account
+Therefore neither of these inferences is safe:
 
-Backup wake-up is mainly a response to the highly abnormal internal state created by ablation. The same components remain dormant when the intact model encounters ordinary input variation.
+- `different circuit structure -> different natural mechanism`;
+- `alternative circuit under intervention -> naturally used backup`.
 
-Prediction:
-
-> natural input stress changes model performance / circuit use, but the CoAx-defined backup set does not become selectively load-bearing.
-
-Scientific consequence:
-
-- self-repair remains important as an **interpretability confound**, but it should not be interpreted as evidence that the model has naturally useful redundant mechanisms;
-- internal ablations can create computations that the intact model never normally uses;
-- claims about `the model has a backup circuit` need to distinguish counterfactual repair capacity from natural computation.
-
-## H3 — Mixed account
-
-Some backup pathways are true natural reserve routes while others are geometric / intervention-specific. The important object then becomes which properties distinguish the two classes.
-
-E01 is not authorized to build a taxonomy. It only asks whether a selective natural-recruitment signal exists at all in the best-documented self-repair system.
+Together these results make the missing quantity unusually clear.
 
 ---
 
-# 4. Closest owners and why they do not own the claim
+# 3. Closest owner map
 
-## 4.1 Hydra / self-repair lineage
+## CoAx / self-repair lineage
 
-- McGrath et al. 2023, *The Hydra Effect*.
-- Rushing & Nanda, ICML 2024, *Explorations of Self-Repair in Language Models*.
+Owns conditional backup discovery and causal repair **after internal damage**.
 
-They establish compensation **after internal intervention** and motivate the mystery of why it occurs. They do not test whether identified repair routes are naturally recruited by intact models under answer-preserving input stress.
+Does not test whether CoAx score predicts endogenous variation in causal necessity on intact inputs.
 
-**Owner class:** mother-problem owner, not exact owner.
+**Class:** leverage paper / mother-problem owner.
 
-## 4.2 Conditional Co-Ablation (2026)
+## ICLR 2026 intervention-divergence
 
-CoAx identifies dormant backups under conditional internal ablation, validates their causal role in repair, and uses them for better knockout / pruning.
+Owns the general warning that interventions can activate dormant pathways that are not faithful to the natural state.
 
-It does not test natural input stress without primary ablation.
+Does not study known alternative circuits, route selection across natural inputs, or whether counterfactual backup scores predict intact-state mechanism variation.
 
-**Owner class:** leverage paper / adjacent owner, not exact owner.
+**Class:** adjacent foundational owner.
 
-## 4.3 Adaptive Circuit Behavior and Generalization (Nainani et al., 2024)
+## The Curse of Multiple Mediators (2026)
 
-https://arxiv.org/abs/2411.16105
+Shows that mediator effects contain interaction terms, can be prompt-dependent, and that first-order component rankings can miss conditional mechanisms.
 
-This paper is especially important because it shows that IOI prompt variants can alter how the circuit behaves, and it discovers `S2 Hacking`, a mechanism that exists in the **knockout circuit but not in the full model**. That is direct evidence that internal interventions can create apparently adaptive mechanisms that are not how the intact model solves the task.
+This establishes that causal importance can vary with context. It does not ask whether **the direction of that natural variation is predicted by counterfactual substitutability measured under an internal intervention**.
 
-It studies circuit reuse / added edges across DoubleIO and TripleIO. It does not ask whether **published dormant backup name movers** become naturally load-bearing, and it predates the scalable CoAx backup-identification tool.
+**Class:** strong adjacent causal-methodology owner.
 
-**Owner class:** strong adjacent lineage; strengthens the identification need rather than owning L43.
+## Adaptive Circuit Behavior and Generalization (Nainani et al.)
 
-## 4.4 Circuit Stability Characterizes Language Model Generalization (ACL 2025)
+Shows that the GPT-2 IOI circuit largely reuses components across DoubleIO / TripleIO and adds input edges; it also discovers S2 Hacking and demonstrates that knockout circuits can exhibit behavior not present in the full model.
 
-https://arxiv.org/abs/2505.24731
+It does not test CoAx-defined backups as a class, nor the counterfactual-to-endogenous mapping.
 
-Studies whether a model applies consistent circuits across input families and relates circuit stability to generalization.
+**Class:** strong adjacent behavior owner.
 
-It does not distinguish canonical primary routes from conditional backup routes or test whether ablation-induced backups support natural robustness.
+## Circuit Stability Characterizes LM Generalization (ACL 2025)
 
-**Owner class:** adjacent mother problem.
+Relates consistency of circuits across inputs to generalization.
 
-## 4.5 Formal / certified circuit robustness (ICLR 2026 and related work)
+It does not distinguish counterfactual alternative routes from naturally selected routes.
 
-Recent verification work certifies that extracted circuits preserve behavior over bounded input domains or that circuit extraction is stable to perturbations. This concerns robustness of an **explanation / circuit**. L43 asks whether a specific redundancy discovered only under internal damage is part of the **model's natural computation**.
+**Class:** adjacent mother problem.
 
-**Owner class:** adjacent methodology.
+## All Circuits Lead to Rome / Many Circuits, One Mechanism
+
+The first establishes non-unique faithful circuits; the second shows apparent input-specific circuit structure may be functionally non-specific.
+
+Neither asks which alternative route is **actually more causally load-bearing on a given intact input**, nor whether intervention-defined alternatives predict this allocation.
+
+**Class:** adjacent foundational owners.
 
 ### Novelty verdict
 
-`PLAUSIBLE INDEPENDENT SCIENTIFIC CLAIM — NO EXACT OWNER FOUND AS OF 2026-09-15`.
+> **NO EXACT OWNER FOUND as of 2026-09-15.**
 
-The dangerous compression is:
+The new estimand is not `circuit overlap`, `prompt-dependent attribution`, `backup discovery`, or `intervention OOD` individually. It is:
 
-> `People already know circuits change across prompts and self-repair exists; just combine the two.`
+> **transfer from counterfactual substitutability to endogenous route selection.**
 
-What that compression misses is the load-bearing distinction:
-
-> **The exact components called “backups” are defined by an intervention that may itself manufacture their role. The project asks whether that counterfactual role predicts causal necessity in an intact model under natural stress.**
-
-Neither parent entails the answer.
+That claim is not entailed by any parent result and can plausibly go either way.
 
 ---
 
-# 5. Why this is not a bet on a lucky phenomenon
+# 4. Why the reconstructed question is exploratory rather than phenomenon-gambling
 
-Both directions are scientifically meaningful.
+The original E01 depended too heavily on a chosen perturbation family (DoubleIO / TripleIO) happening to wake the published backups. A null could always be attacked as `wrong stressor`.
 
-### If backup recruitment is positive
+E01R removes that dependence.
 
-We obtain a functional interpretation of self-repair: artificial intervention exposes reserve mechanisms that intact models also recruit when their ordinary computation is stressed.
+It does **not** ask whether one hand-picked prompt family triggers a backup.
 
-### If backup recruitment is precisely absent
+Instead it estimates a relationship over a predeclared family of intact input variants:
 
-We answer the original Rushing–Nanda ambiguity in the other direction: at least for the canonical system, the celebrated backup circuit is a counterfactual repair route rather than a natural robustness mechanism.
+> as the primary route's engagement varies naturally from input to input, do the heads that score as counterfactual substitutes under CoAx systematically become more engaged / necessary?
 
-A weak / noisy intermediate result is the bad outcome. E01 is designed to distinguish a material positive effect from a well-resolved near-null.
+The primary object is a **continuous mapping across heads and inputs**, not a single positive phenomenon.
+
+Three outcomes are all informative:
+
+1. **positive transfer:** CoAx alternatives predict endogenous substitution;
+2. **precise zero:** counterfactual alternatives are available but do not predict intact route selection;
+3. **systematic negative / mismatch:** intervention-exposed routes and natural adaptive routes are different objects.
+
+Only an unresolved wide interval / insufficient natural variation is a pilot failure.
 
 ---
 
-# 6. Why E01 uses GPT-2-small IOI
+# 5. Scientific consequence
 
-This is not because IOI itself is the desired paper identity. It is the strongest instrument.
+## If counterfactual -> endogenous transfer is positive
 
-GPT-2-small IOI has:
+- `backup circuit` has a functional interpretation beyond repair after artificial damage;
+- conditional interventions can reveal a model's reserve computational repertoire;
+- robust behavior may involve adaptive load sharing among alternative routes;
+- non-canonical circuits are not merely equivalent explanations — some alternatives are differentially recruited across inputs.
 
-- the best-documented primary circuit;
-- eight published backup name-mover heads;
-- a published CoAx recovery benchmark;
-- published answer-preserving prompt variants (DoubleIO / TripleIO) that stress the canonical algorithm;
-- cheap exact interventions over all 144 attention heads.
+## If transfer is precisely absent
 
-That combination gives E01 unusually strong ground truth and low cost.
+- intervention-discovered alternatives are better described as **counterfactual capacities** rather than natural mechanisms;
+- mechanistic explanations must distinguish `can implement after intervention` from `is used by the intact model`;
+- self-repair and alternative-circuit results become evidence about reachable computation, not automatically about natural route scheduling.
 
-If E01 passes, the paper **must** move beyond one GPT-2 IOI case. Induction across multiple released models is the natural E02 route because CoAx already demonstrates scalable backup discovery there.
+## If structurally different circuits are naturally interchangeable without selective recruitment
+
+This would connect directly to the `phantom specialization` result: mechanistic structure can vary or admit alternatives without corresponding to input-conditioned algorithm switching.
+
+All directions change how causal MI evidence should be interpreted.
+
+---
+
+# 6. Why IOI is still the E01R instrument
+
+GPT-2-small IOI remains the cleanest first test because it uniquely combines:
+
+- documented primary name movers;
+- documented backup name movers;
+- CoAx's strongest labeled counterfactual-backup benchmark;
+- published Base / DoubleIO / TripleIO variants with ABBA/BABA template families;
+- known cases where circuit behavior adapts while core components are reused;
+- negligible compute.
+
+IOI is the **instrument**, not the intended paper identity.
+
+If E01R is resolved, a full-paper path must move to an independent redundant computation such as induction, where CoAx already supplies cross-model counterfactual alternatives.
 
 ---
 
 # 7. Best-case paper identity
 
-The paper is not:
+Not:
 
-> `a better IOI analysis`.
+> `CoAx on harder IOI prompts`.
 
-It is:
+Not:
 
-> **A scientific test of whether redundancy revealed by mechanistic interventions corresponds to redundancy used by intact neural networks.**
+> `another circuit stability metric`.
 
-A strong full result would establish one of two claims:
+The best-case identity is:
 
-1. **Natural-redundancy result:** the same dormant components exposed by internal failure are selectively recruited by ordinary behavior-preserving stress across behaviors / models.
-2. **Intervention-artifact result:** even highly validated backup circuits remain dormant under natural stress, separating counterfactual repair capacity from the mechanisms that support ordinary generalization.
+> **Counterfactual alternatives are not the same thing as endogenous mechanisms: when does an intervention-discovered alternative route predict the route an intact neural network actually uses?**
 
-Either would change how `backup circuit`, `self-repair`, `circuit completeness`, and ablation-based causal evidence should be interpreted.
+A strong paper would introduce only the minimum measurement machinery needed to answer that scientific question, then establish the relation (or dissociation) across at least two behaviors and multiple models.
 
 ---
 
 # 8. Feasibility
 
-Very high for E01.
+E01R is extremely cheap:
 
-The CoAx reference implementation is public and the IOI reproduction runs in seconds to minutes on a single GPU (or minutes on CPU). The proposed E01 uses GPT-2-small, a few hundred prompts per condition, frozen weights, and head-level ablations only.
+- frozen GPT-2-small;
+- released CoAx implementation;
+- released / published IOI prompt-template families;
+- intact forward statistics plus head / head-set ablations;
+- no training, SAE fitting, benchmark construction, or model zoo.
 
-Expected compute is negligible relative to the user's available hardware.
-
-No training, SAE fitting, new benchmark construction, or model-zoo sweep is authorized.
+Expected compute is far below one GPU-day.
 
 ---
 
@@ -244,19 +251,17 @@ No training, SAE fitting, new benchmark construction, or model-zoo sweep is auth
 
 | criterion | verdict |
 |---|---|
-| Independent importance | **PASS** — why self-repair exists / what backup circuits mean is an old MI problem |
-| Scientific consequence | **PASS** — separates natural robustness from intervention response |
-| Genuine uncertainty | **PASS** — learned redundancy and off-distribution-artifact accounts both have direct support |
-| Why now | **PASS** — CoAx makes dormant backups identifiable and transferable across models |
-| Decisive attack | **PASS for E01** — intact stress + frozen backup set + causal backup ablation |
+| Independent importance | **PASS** — concerns the meaning of intervention-based mechanisms |
+| Scientific consequence | **PASS** — separates natural computation from counterfactual capacity |
+| Genuine uncertainty | **PASS** — recent literature supports both correspondence and divergence |
+| Why now | **PASS** — CoAx + intervention-divergence + non-unique-circuit results make the mapping measurable |
+| Exploratory vs gamble | **PASS AFTER REDESIGN** — continuous relation, no single stressor must succeed |
 | Exact owner | **NO EXACT OWNER FOUND** |
 | Feasibility | **VERY HIGH** |
-| Best-case Main identity | **PLAUSIBLE**, contingent on expansion beyond IOI after E01 |
+| Main-level growth path | **PLAUSIBLE**, requires independent behavior/model evidence after E01R |
 
 ## Decision
 
-> **L43 — PILOT-AUTHORIZED — E01 ONLY; NOT MAINLINE.**
+> **L43 remains alive, but the old E01 authorization is superseded. `PILOT-AUTHORIZED — E01R ONLY; NOT MAINLINE`.**
 
-Authorization is bounded by `E01_PREREGISTRATION.md`.
-
-Do not start broad model scaling, SAE analysis, Circuit Condensation training, or a generic robustness benchmark before E01 resolves the basic construct.
+The only authorized experiment is the reconstructed protocol in `E01_PREREGISTRATION.md`.
