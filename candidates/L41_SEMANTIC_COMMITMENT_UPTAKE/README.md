@@ -5,306 +5,328 @@
 **Origin:** WALL-BE — semantic commitment / parametric factual uptake  
 **Target:** ACL / EMNLP / NAACL Main
 
-> **This is not a validated project result.** The mother phenomenon and effect size are unverified. Only the bounded E01 in `PILOT_CARD.md` is authorized.
+> **This is a registered candidate, not a validated result.** Selection passed on paper; no mother phenomenon or effect size has yet been established. Only the bounded E01 is authorized.
 
 ---
 
-## 1. Research question
+## Document map
 
-> **When language is used as training data, does a language model update its persistent world beliefs according to what the sentence semantically commits to, or mainly according to propositions that are mentioned/predictively repeated?**
+Read these in order:
+
+1. **`PROJECT_BRIEF.md`** — full scientific background, research question, what we want to establish, competing accounts, intended Main-paper narrative, closest-work boundary, and initial experiment.
+2. **`PILOT_CARD.md`** — frozen E01 protocol: semantic gate, direct-learning control, randomization, estimands, MDE, compute cap, decision table, and anti-gambling rules.
+3. **`REGISTRATION.md`** — locked project identity and authorization boundary.
+4. **`../../search_rounds/2026-09-15_WALL_BE_FINAL_SELECTION.md`** — Selection audit and owner/reviewer-compression analysis that justified promotion to L41.
+
+If any later document changes the project into a generic factivity benchmark, Negation Neglect wording study, co-occurrence benchmark, or mechanism/probing project before E01, that document is out of scope.
+
+---
+
+# 1. Research question
+
+> **When language is used as training data, does a language model update its persistent world beliefs according to what the sentence semantically commits to, or mainly according to propositions that are mentioned / predictively repeated?**
 
 Short form:
 
 > **Does parameter learning respect semantic commitment?**
 
-The scientific object is the **language-to-parameter learning operator**, not semantic competence at inference time.
+The scientific object is the **language → parameter knowledge-acquisition operator**, not semantic competence at inference time.
 
 ---
 
-## 2. Why the question matters
+# 2. Why this is a real scientific problem
 
-Language models acquire large amounts of world knowledge from ordinary text. But ordinary text does not simply list facts.
+Language models clearly acquire world knowledge from text, but natural language does not simply enumerate true facts.
 
-The same proposition can occur inside:
+The same proposition `p` can be:
 
-- an assertion;
-- a negation;
-- an implicative or factive construction;
-- an attitude report;
-- a modal or conditional;
-- a hypothetical or fictional context;
-- a source whose commitment is uncertain.
+- asserted;
+- denied;
+- embedded under an implicative/factive predicate;
+- reported as somebody's belief;
+- hypothetical, modal, conditional, fictional, or quoted.
 
-Formal semantics and event-factuality work have long distinguished **mention** from **commitment**. A proposition appearing in a sentence is not sufficient evidence that it is true in the actual world.
+Formal semantics and event-factuality work have long distinguished **mention** from **commitment**. Merely encountering the linguistic material for `p` does not mean the sentence presents `p` as true.
 
-Modern pretraining creates a new scientific problem:
+Modern pretraining creates a new regime: raw linguistic occurrences are converted directly into model parameters. We therefore need to know what implicit learning rule decides which occurrences become durable world knowledge.
 
-> raw text is converted directly into parameters, so what implicit operation decides which linguistic occurrences become durable world knowledge?
-
-If parameter learning respects semantic composition, the sign of a factual update should track what the sentence entails. If it instead mainly learns mention/co-occurrence or local token patterns, a model may understand a sentence correctly in context while storing the wrong world fact from it.
-
----
-
-## 3. Why this is not another factivity / presupposition benchmark
-
-The model must first pass an **in-context semantic-understanding gate** on exactly the constructions used in training.
-
-Only after that gate is passed are the sentences used as training data. The linguistic context is then removed and the model is queried neutrally about the embedded proposition.
-
-Therefore the possible dissociation is:
+The sharp possible dissociation is:
 
 ```text
-forward interpretation: sentence commits to ~p
-parameter learning:     later neutral model behaves as if p
+online interpretation: sentence means ¬p
+parameter learning:    later neutral model behaves as if p
 ```
 
-A semantic competence benchmark cannot reveal this dissociation.
-
-K056's generic presupposition/projection competence parent therefore remains killed and is not being reopened.
+L41 asks whether this dissociation occurs even when the sentence's truth commitment is determined by ordinary lexical-semantic composition that the base model demonstrably understands.
 
 ---
 
-## 4. Old semantic quantity
+# 3. Modern pressure
 
-The strongest E01 substrate is **two-way implicativity**.
+## Negation Neglect
 
-Classic implicative signatures distinguish predicates whose complement factuality reverses with matrix polarity.
+Mayne et al. (2026), *Negation Neglect: When models fail to learn negations in training*, show that LMs can understand false/fictional/negated qualification in context yet absorb the core claim as true during finetuning. They also find that **local negation** often largely fixes the problem.
 
-Canonical pair:
+That leaves an unresolved ambiguity:
+
+> does local negation work because the parameter update respects semantic commitment, or because local syntax/token structure changes the gradient around the proposition?
+
+A direct `p` vs `not p` comparison cannot distinguish these explanations because surface polarity and truth commitment reverse together.
+
+## Belief insertion
+
+Synthetic-document finetuning shows that document-style training can create persistent neutral-context factual behavior. This supplies the measurable outcome, not the L41 research question.
+
+## Co-occurrence vs factual association
+
+Zhang, Li & Wu (NeurIPS 2024), *Co-occurrence Is Not Factual Association in Language Models*, is the strongest reviewer-compression risk. It shows that shallow co-occurrence and transferable factual association can differ.
+
+But both of its compared corpora support the **same true fact**. L41 instead holds proposition mention fixed while changing whether the whole sentence entails `p` or entails `¬p`, and measures the **sign of later neutral belief uptake**.
+
+---
+
+# 4. Old semantic quantity → modern identifying operation
+
+The strongest E01 substrate is classic **two-way implicativity**.
+
+Canonical semantic signatures:
 
 ```text
-managed to p       =>  p
-not managed to p   => ~p
-failed to p        => ~p
-not failed to p    =>  p
+manage: + | -
+fail:   - | +
 ```
 
-In the usual notation:
+Therefore:
 
-- `manage`: `+|-`
-- `fail`: `-|+`
+```text
+managed to p        =>  p
+not managed to p    => ¬p
+failed to p         => ¬p
+not failed to p     =>  p
+```
 
 References:
 
-- Nairn, Condoravdi & Karttunen (2006), *Computing relative polarity for textual inference*: https://aclanthology.org/W06-3907/
-- Karttunen (2012), *Simple and Phrasal Implicatives*: https://aclanthology.org/S12-1020/
-- Stanford Implicative Corpus: https://linguistics.stanford.edu/events/learning-corpus-implicatives
+- Nairn, Condoravdi & Karttunen (2006), *Computing relative polarity for textual inference*.
+- Karttunen (2012), *Simple and Phrasal Implicatives*.
 
-This gives a hard external semantic prediction rather than an author-invented label.
+This gives a theory-defined checkerboard:
 
----
+| condition | local negation | semantic commitment |
+|---|---:|---:|
+| `manage+` | no | `p` |
+| `manage−` | yes | `¬p` |
+| `fail+` | no | `¬p` |
+| `fail−` | yes | `p` |
 
-## 5. Frontier pressure
-
-### Negation Neglect
-
-Mayne et al. (2026) show that models can correctly interpret negation / epistemic qualification in context yet internalize the underlying claim as true when the same material is used for finetuning.
-
-They also show that **local negation** often greatly reduces the effect, but they do not distinguish:
-
-- semantic commitment;
-- local syntax/composition;
-- surface polarity;
-- token-level gradient structure.
-
-Their explanation explicitly leaves the origin of the truth-favoring inductive bias unresolved.
-
-Paper: https://arxiv.org/abs/2605.13829
-
-### Why the implicative checkerboard is new leverage
-
-Local negation alone confounds polarity and commitment:
-
-```text
-p
-not p
-```
-
-Both surface polarity and truth commitment reverse together.
-
-`manage/fail x polarity` orthogonalizes them. The two negative matrix conditions have the same local negation but opposite semantic commitments about the complement.
+Thus **surface polarity and semantic commitment are no longer collinear**.
 
 That is the identifying operation.
 
 ---
 
-## 6. Competing accounts
+# 5. Competing accounts
 
-### A — semantic-commitment learning
+## A — semantic-commitment learning
 
-The update induced by a training sentence preserves enough compositional semantics that persistent neutral belief about `p` follows the sentence-level entailment.
+The training update preserves enough compositional semantics that persistent belief about `p` follows the sentence-level entailment.
 
-Predicted pattern:
+Prediction:
 
 ```text
-manage+  -> p uptake
-manage-  -> ~p uptake
-fail+    -> ~p uptake
-fail-    -> p uptake
+manage+ -> p uptake
+manage- -> ¬p uptake
+fail+   -> ¬p uptake
+fail-   -> p uptake
 ```
 
-### B — mention / co-occurrence learning
+## B — mention / co-occurrence learning
 
-Repeatedly seeing the tokens expressing `p` strengthens `p`-related associations even when the sentence does not commit to `p`.
+Repeated occurrence of the proposition-bearing material primarily strengthens `p`-related associations regardless of sentence commitment.
 
-Predicted pattern: positive/salience-like uptake across several or all cells; weak semantic checkerboard.
+Prediction: positive/salience-like uptake across several or all cells; weak checkerboard.
 
-### C — surface-polarity / locality learning
+## C — local surface-polarity / syntax learning
 
-Local negative morphology suppresses factual uptake, but the learner does not compose the lexical implicative signature into the update.
+Local negative morphology suppresses uptake because of token/syntactic learning structure, without composing the implicative signature into the update.
 
-Predicted pattern: positive matrix clauses behave similarly; negative matrix clauses behave similarly; weak or wrong checkerboard.
+Prediction: positive clauses look similar to one another and negative clauses look similar to one another; weak or wrong checkerboard.
 
-These accounts predict differently on the same post-training neutral factual-belief quantity.
+A clean B or C result after verified forward understanding is a substantive scientific answer, not a failed pilot.
 
 ---
 
-## 7. Primary quantity
+# 6. What we would like to prove — and what the project actually tests
 
-For each novel event proposition `p`, measure a neutral yes/no log-odds before and after training:
+The strongest positive statement would be:
+
+> **Ordinary parameter learning can respect compositional semantic commitment: the same mentioned proposition produces opposite signed factual updates when sentence meaning changes whether it entails `p` or `¬p`.**
+
+But L41 is not authorized to hunt for that result.
+
+The real scientific target is:
+
+> **identify whether persistent factual uptake is best explained by semantic commitment, mere mention/co-occurrence, or local polarity/syntax.**
+
+This distinction is essential. A precommitted experiment that cleanly supports the opposite account can still justify a paper; a positive checkerboard discovered only after model/verb/LR/prompt shopping cannot.
+
+---
+
+# 7. Primary quantity
+
+For a novel proposition `p`, measure neutral yes/no belief before and after training:
 
 ```text
-U(v,s,p) = logit_after(Yes vs No | neutral query about p)
-           - logit_before(Yes vs No | neutral query about p)
+B(p) = log P(Yes | neutral query about p)
+       - log P(No | neutral query about p)
+```
+
+Define uptake:
+
+```text
+U(v,s,p) = B_after(v,s,p) - B_before(p)
 ```
 
 Primary interaction:
 
 ```text
-I = [U(manage,+) - U(manage,-)]
-    - [U(fail,+) - U(fail,-)]
+I = [mean U(manage,+) - mean U(manage,-)]
+    - [mean U(fail,+) - mean U(fail,-)]
 ```
 
-Semantic commitment predicts `I > 0` with the four cells forming a checkerboard.
+Semantic commitment predicts a positive checkerboard `I`, together with both predicted within-verb reversals.
 
-The interaction is essential. A main effect of polarity, verb, or training alone is not the L41 claim.
+The interaction is the claim. A main effect of polarity, verb, or training alone is not L41.
 
 ---
 
-## 8. Direct controls
+# 8. Mandatory controls
 
-Use separate novel propositions for direct assertions and direct denials:
+## Forward semantic-understanding gate
+
+Before making any learning claim, the **same base model** must correctly interpret the exact four constructions in context.
+
+Required:
+
+- overall accuracy ≥ 90%;
+- no cell < 85%;
+- the mean Yes-vs-No log-odds show the expected semantic checkerboard.
+
+Failure = instrument failure.
+
+## Direct signed-learning gate
+
+On separate propositions, calibrate ordinary training with direct assertion and denial:
 
 ```text
-p happened.
-p did not happen.
+A+ : p.
+A- : not p.
 ```
 
 Define:
 
 ```text
-D = U(direct assertion) - U(direct denial)
+D = mean(U_A+) - mean(U_A-)
 ```
 
-If `D` is not clearly positive under the frozen training budget, the instrument cannot resolve signed factual acquisition and E01 stops.
+Required before E01-B:
 
-A useful secondary scale is:
+- `D >= 1.0` log-odds;
+- proposition-paired bootstrap 95% CI excludes 0;
+- no catastrophic capability collapse.
 
-```text
-F = I / (2D)
-```
-
-where `F ~= 1` would mean the implicative checkerboard is as strong as the direct positive-vs-negative training signal.
+Failure = instrument failure. Do not interpret a critical implicative null.
 
 ---
 
-## 9. Ownership boundary
+# 9. E01 confirmation
 
-### Directly covered / not novelty
+Default frozen design:
 
-- whether LMs understand negation;
-- whether LMs understand implicatives/factivity;
-- event-factuality classification;
-- generic presupposition projection;
-- synthetic document finetuning can insert beliefs;
-- Negation Neglect exists;
-- local negation often reduces Negation Neglect;
-- co-occurrence can differ from transferable factual association;
-- source/usefulness tags can modulate later learning;
-- conditional finetuning can selectively learn corpus statistics;
-- methods that edit gradients to impose epistemic frames.
+- one open pretrained/base causal LM in the 4B–8B range;
+- ordinary causal-LM continued training / document-style finetuning;
+- 256 fresh novel proposition identities;
+- 4 Latin-square assignments;
+- every proposition appears once in M+/M−/F+/F− across independent resets;
+- 3 independent training-order seeds per assignment;
+- total 12 bounded finetuning runs;
+- neutral query paraphrases may be averaged within proposition but are not independent samples.
 
-### Selected remainder
+Primary independent unit: **proposition identity**. Runs/seeds are blocks/random factors.
 
-> **When the same proposition is mentioned under controlled local syntax, does ordinary language-model training assign a signed factual update according to the sentence's independently defined semantic commitment?**
+Planned full E01-B compute cap: **24 single-GPU RTX-PRO-6000-96GB-equivalent GPU-hours**.
 
-The crucial novelty is not `implicative verbs in LLMs`; it is the **semantic-commitment checkerboard as an identification of the training update**.
+See `PILOT_CARD.md` for the full frozen protocol and MDE rule.
 
 ---
 
-## 10. Dangerous reviewer compressions
+# 10. Desired paper narrative
 
-### `Negation Neglect with manage/fail.`
+The intended story is:
 
-L41 dies if it merely compares another wording of negative training data. It survives only through the pre-specified two-way implicative interaction where local negation and semantic commitment make different predictions.
+1. **LMs learn facts from language, but language does not equal facts.**
+2. **Recent work shows understanding and learning can dissociate.** Negation Neglect exposes the problem, but local negation leaves semantics confounded with surface locality.
+3. **Classical semantics gives a decisive crossover.** Two-way implicatives make surface polarity and truth commitment disagree while proposition mention stays fixed.
+4. **The resulting checkerboard identifies the factual-learning rule.**
 
-### `Co-occurrence Is Not Factual Association with semantics.`
+Possible headline conclusions:
 
-Zhang et al. (NeurIPS 2024) compare explicit co-occurrence with an indirect/reference-mediated expression of the **same true factual association** and study generalization/representation.
+### If semantics wins
 
-L41 compares occurrences that all mention the same `p` but whose sentence meanings entail `p` or entail `~p`. The target is signed neutral belief uptake, not whether a learned true relation transfers to reasoning.
+> Parameter learning can use compositional sentence meaning to decide the sign of persistent world-knowledge updates.
 
-### `MegaVeridicality but finetuned.`
+### If mention wins
 
-Forward factuality judgments are only an instrument gate / later treatment gold. The paper's dependent variable is the persistent belief left after the semantic context disappears.
+> A model can understand that a proposition is false yet learn it as world knowledge anyway: semantic interpretation and factual knowledge acquisition are separable computations.
 
----
+### If surface polarity wins
 
-## 11. Main-level result space
+> The apparent success of local negation is better explained by local syntactic/token learning structure than by semantic factuality.
 
-### A — semantic checkerboard
-
-Ordinary parameter learning respects local compositional semantic commitment.
-
-Consequence: Negation Neglect is not a universal inability to encode truth status during learning; the boundary lies between kinds/scopes of semantic conditioning.
-
-### B — mention/co-occurrence dominates
-
-The model understands the implicative inference in context but later stores `p` similarly across semantically positive and negative occurrences.
-
-Consequence: inference-time semantic competence and the language-to-world-knowledge acquisition operator are different objects; parameter learning can treat non-factual mentions as factual evidence.
-
-### C — surface polarity dominates
-
-Local negation suppresses uptake, but `manage` and `fail` do not reverse as semantic theory predicts.
-
-Consequence: the local-negation success in Negation Neglect is better explained by local syntactic/token learning structure than semantic factuality.
-
-### D — direct assertion/denial cannot create signed uptake
-
-Instrument failure. No scientific claim.
-
-### E — base model does not correctly understand the implicatives
-
-Instrument failure. No scientific claim.
+The paper should be written around this **three-way identification**, not around a desired positive effect.
 
 ---
 
-## 12. Why both answers matter
+# 11. Ownership / anti-resurrection boundary
 
-A positive semantic checkerboard would show that ordinary gradient learning can use compositional meaning to decide what becomes factual world knowledge.
+L41 is **not**:
 
-A clean failure after verified forward understanding would show the opposite and expose a basic mismatch between **understanding language** and **learning truth from language**.
+- K056 reopened (`does the model understand known semantic distinction X?`);
+- a generic factivity/presupposition competence study;
+- a MegaVeridicality-style benchmark;
+- `Negation Neglect with manage/fail`;
+- `Co-occurrence Is Not Factual Association with formal semantics`;
+- a mitigation method;
+- a probe/SAE/patching mechanism project.
 
-Either result changes how we should think about pretraining corpora containing reports, denials, hypotheticals, failed events, beliefs, fiction, and other mentions that are not simple assertions.
+The selected remainder is exactly:
+
+> **When the same proposition is mentioned under controlled sentence forms, does ordinary LM training assign a signed factual update according to independently defined sentence-level semantic commitment?**
+
+If this estimand disappears, L41 has drifted and should not retain its ID.
 
 ---
 
-## 13. E01 authorization
+# 12. Authorization boundary
 
-**Authorized:** canonical `manage/fail x polarity` checkerboard only, plus direct assertion/denial controls and mandatory semantic-understanding gates.
+**Authorized now:**
+
+- canonical `manage/fail × positive/negative` E01;
+- direct assertion/denial control;
+- mandatory forward semantic gate;
+- token/surface balance audit;
+- one frozen model/checkpoint and bounded training regime.
 
 **Not authorized yet:**
 
-- broad MegaVeridicality sweep;
-- factive/nonfactive benchmark;
-- modals/conditionals/quotation/fiction expansion;
+- broad factuality/verb sweep;
+- modality/conditionals/quotation/fiction;
 - multilingual study;
 - model zoo;
-- activation patching / probing / SAE;
-- gradient mechanism paper;
-- mitigation method;
-- RL/SFT comparison;
-- dataset release as contribution.
+- SFT/RL comparison;
+- activation probing / patching / SAE;
+- gradient mechanism;
+- mitigation;
+- dataset/benchmark as contribution.
 
-Read `PILOT_CARD.md` before running anything.
+Read `PROJECT_BRIEF.md` for the full scientific narrative and `PILOT_CARD.md` before running anything.
