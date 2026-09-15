@@ -1,0 +1,35 @@
+{
+ "model": "results/e02/weights/MIXED",
+ "tag": "MIXED",
+ "fmt": "B",
+ "impl": "vllm",
+ "end_token": "<|quad_start|>",
+ "end_id": 151650,
+ "n": 200,
+ "beam": {
+  "1": {
+   "bleu_multi": 35.10328253117217,
+   "chrf2": 58.34426169729421,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9908097367113761
+  },
+  "4": {
+   "bleu_multi": 39.158954961278816,
+   "chrf2": 60.47136809426905,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9699453551912568
+  },
+  "16": {
+   "bleu_multi": 39.24691924901024,
+   "chrf2": 59.93819770157078,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9500745156482862
+  },
+  "64": {
+   "bleu_multi": 37.324605838333994,
+   "chrf2": 58.128079018929185,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9523099850968705
+  }
+ }
+}
