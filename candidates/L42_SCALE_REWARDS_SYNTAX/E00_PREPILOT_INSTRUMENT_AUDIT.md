@@ -142,19 +142,26 @@ The model uses `d_model=512`, 8 heads, and a feed-forward width equal to `8 × d
 
 Moving from 4L to 16L while applying TreeReg at roughly 75% relative depth changes the number of upstream layers through which the TreeReg gradient propagates. The same nominal TreeReg schedule therefore does not guarantee the same effective optimization pressure.
 
-### Mandatory diagnostics already consistent with L42 Selection
+### Mandatory diagnostics
 
 At initialization and one fixed early checkpoint, record for TRUE and RANDOM at both depths:
 
-- LM gradient norm;
-- TreeReg gradient norm;
+- LM-only gradient norm before clipping;
+- TreeReg-only gradient norm before clipping;
 - `||g_TR|| / ||g_LM||`;
+- cosine similarity `cos(g_LM, g_TR)`;
+- norm of the combined gradient `||g_LM + g_TR||`;
+- whether global clipping is triggered and the resulting clip factor;
 - raw TreeReg loss/score;
 - parameter count and realized training FLOPs/token for each depth.
 
+The public TreeReg loop accumulates LM and TreeReg gradients into the **same optimizer update** and then applies global gradient clipping at norm `1.0`. A scale-dependent clipping rate can therefore create a nonlinear change in the effective relative strength of TreeReg even when nominal hyperparameters are identical.
+
+Do not infer these quantities from the repository's existing `grad_norm` log: the current code computes/logs it after clipping. Instrument pre-clipping gradients explicitly.
+
 Do not tune TreeReg separately by scale after seeing SG.
 
-If the primary interaction coincides with an order-of-magnitude change in effective regularizer strength, treat the scientific interpretation as **HOLD** until that implementation effect is understood.
+If the primary interaction coincides with a gross change in gradient ratio, gradient cosine, or clipping regime, treat the scientific interpretation as **HOLD** until that implementation effect is understood.
 
 ---
 
@@ -184,15 +191,59 @@ and
 
 ---
 
+## E00.7 — Layer placement is part of the instrument
+
+The 16L TreeReg parent explicitly sweeps TreeReg placement across layers `[2,4,6,8,10,12,14]` and finds layer 12 best on aggregate SyntaxGym and PTB perplexity. The parent therefore does **not** establish that TreeReg's effect is invariant to placement.
+
+Separately, the paper's 4-layer grokking experiments apply TreeReg at layer 2. L42 currently proposes layer 3 for 4L by matching the 16L parent's approximate fractional depth (`12/16 = 3/4`). That rule is principled, but it is not parent-validated at 4L.
+
+This creates a dangerous alternative explanation for `A(16) > A(4)`:
+
+> the 4L model may simply be regularized at a less effective layer.
+
+### Rule
+
+Do **not** tune 4L placement by choosing whichever layer gives the nicest final SG interaction.
+
+Before the full 4L seed sweep, perform a bounded **placement robustness gate** using predeclared layer 2 and layer 3 settings. The purpose is not to select the better SG result; it is to determine whether the low-scale instrument is pathologically placement-sensitive.
+
+Preferred implementation:
+
+- use the same small predeclared seed subset for `4L@2` and `4L@3`;
+- run TRUE and RANDOM under both placements;
+- inspect the alignment contrast plus the pre-clipping gradient diagnostics from E00.5;
+- if the qualitative contrast flips or changes by an amount comparable to the entire planned `5 pp` scale interaction, mark **HOLD — LAYER-PLACEMENT SENSITIVE**;
+- if placement is reasonably stable, keep the predeclared fractional-depth rule (`4L@3`) for the formal E01 endpoint.
+
+Do not use this gate to cherry-pick layer 2 or 3 after observing final SG.
+
+This robustness work must be costed explicitly before execution because it is additional to the original 24-run cap; if the extra runs are not authorized, the conservative alternative is to keep E01 at HOLD until a cheaper independent placement criterion is justified.
+
+---
+
+## E00.8 — Do not replace depth scaling with width scaling casually
+
+Keeping depth fixed and scaling hidden width would eliminate the layer-location problem, but it creates a worse TreeReg-specific construct shift.
+
+TreeReg's SCIN computation normalizes the context direction but ultimately uses the **L2 norm of an orthogonal component of the hidden state**. With layer-normalized hidden states, this magnitude can change mechanically with hidden dimension. These SCIN values feed directly into TreeReg's scoring/loss.
+
+Therefore width scaling can change the effective TreeReg temperature/strength even before any linguistic effect occurs.
+
+For E01, depth-only scaling remains the safer first axis.
+
+---
+
 # E00 final gate
 
-Proceed to E01 only when all are true:
+Proceed to the full E01 sweep only when all are true:
 
 1. one reference training protocol is frozen and its provenance is explicit;
 2. exact BLLIP-LG access/splits are available;
 3. TRUE/RANDOM/BASE data and parse-generation pipelines are deterministic and archived;
 4. actual 4L and 16L parameter counts and throughput are measured by a short dry-run;
 5. primary wording is fixed to **fixed-data depth-scale interaction**;
-6. interpretation is predeclared so that RANDOM-harm-only cannot be relabeled post hoc as `syntax benefit`.
+6. interpretation is predeclared so that RANDOM-harm-only cannot be relabeled post hoc as `syntax benefit`;
+7. pre-clipping gradient/clipping diagnostics show no gross scale-dependent implementation pathology;
+8. the 4L placement robustness issue is resolved without selecting the nicest SG result post hoc.
 
-If these conditions are not met, L42 remains a valid candidate but E01 should not consume the full seed sweep yet.
+If these conditions are not met, L42 remains a valid registered candidate but the **full E01 seed sweep should remain on execution HOLD**.
