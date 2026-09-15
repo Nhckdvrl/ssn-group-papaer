@@ -43,8 +43,10 @@ def main():
     from vllm import LLM
     from vllm.sampling_params import BeamSearchParams
 
+    beams = [int(x) for x in a.beams.split(",")]
     llm = LLM(model=a.model, dtype="bfloat16", gpu_memory_utilization=a.gpu_frac,
-              max_model_len=1024, enforce_eager=True, disable_log_stats=True)
+              max_model_len=1024, enforce_eager=True, disable_log_stats=True,
+              max_logprobs=2 * max(beams) + 1)
     tok = llm.get_tokenizer()
     end_id = tok.convert_tokens_to_ids(a.end_token)
     assert isinstance(end_id, int) and end_id > 0, a.end_token
@@ -54,15 +56,19 @@ def main():
 
     res = {"model": a.model, "tag": a.tag, "fmt": a.fmt, "impl": "vllm",
            "end_token": a.end_token, "end_id": end_id, "n": a.n, "beam": {}}
-    for b in [int(x) for x in a.beams.split(",")]:
+    prompt_ids = [tok(q, add_special_tokens=True)["input_ids"] for q in prompts]
+
+    for b in beams:
         outs = llm.beam_search(
-            [{"prompt": q} for q in prompts],
+            [{"prompt_token_ids": ids} for ids in prompt_ids],
             BeamSearchParams(beam_width=b, max_tokens=a.max_new_tokens,
                              length_penalty=0.0, temperature=0.0))
         hyps = []
-        for o in outs:
+        for o, ids in zip(outs, prompt_ids):
             seq = o.sequences[0]
-            t = seq.text if hasattr(seq, "text") else tok.decode(seq.tokens, skip_special_tokens=True)
+            # seq.tokens includes the prompt (vLLM sets text = decode(tokens)), so slice it off
+            gen = seq.tokens[len(ids):]
+            t = tok.decode(gen, skip_special_tokens=True)
             hyps.append(t.split("\n")[0].strip())
         empty = float(np.mean([len(h.strip()) == 0 for h in hyps]))
         lenr = float(np.mean([len(h.split()) for h in hyps]) / ref_len)
