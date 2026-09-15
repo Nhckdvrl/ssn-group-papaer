@@ -116,7 +116,15 @@ termination-supervision ablation would close.
 
 ## 3. What this says
 
-**(a) The jump is at SFT, and DPO barely moves it.** Under a fixed interface, `rank_stop` goes
+**(a) ~~The jump is at SFT, and DPO barely moves it.~~ — CORRECTED 2026-09-15, did not replicate.**
+A second lineage (Tülu-3, `results/stages/TULU3_REPLICATION.md`) shows **no jump at SFT**: in-format
+base → SFT moves `rank_stop` 45 → 40. The Llama-3.1-8B base already sits at rank 45 and already
+collapses (26.5 % empty at beam 64), whereas Olmo-3 base sits at rank 532 and does not. Which
+training step moves a lineage into the dangerous regime is **lineage-specific**; what is stable
+across both lineages is the format keying (claim b), the RLVR-outward effect, and the rank → onset
+map. The original Olmo-3 observation is retained below as a description of *that* lineage only.
+
+**(a-olmo3, descriptive only) Within Olmo-3, the jump is at SFT, and DPO barely moves it.** Under a fixed interface, `rank_stop` goes
 532 → 3 from base to SFT, and 3 → 4 from SFT to DPO. Whatever reorganises termination is installed
 in supervised fine-tuning.
 
