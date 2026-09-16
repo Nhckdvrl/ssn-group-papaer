@@ -93,3 +93,19 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 **Failure reason.** The core scientific observation is already explicit in a 2026 large-model training report: token-global SFT makes long outputs dominate and per-conversation normalization is used specifically to counter this effect. A cleaner controlled paper could characterize the phenomenon more systematically, but its headline would compress to an already identified effect plus stronger analysis. Under the Sasano novelty requirement, that is not enough.
 
 **What would be required to revive it.** A distinct consequence of aggregation that is not reducible to long-output dominance and is predicted by an independent scientific quantity. Merely testing more models, more length distributions, or token-vs-sample normalization more cleanly does not reopen the parent.
+
+### F06 — Omission ≠ Neutrality / effective default semantics in tool calls
+
+**Question.** When an LLM agent omits an optional tool argument, does it understand that omission resolves to a concrete runtime default, and will it explicitly override that default when the user's goal requires a different value?
+
+**Why it initially looked promising.** No direct owner was found for the exact `default-consequence reasoning` contrast. The manipulation is cheap and clean, and the distinction between a surface call and the effective executed call is real. It initially appeared to offer a simple Sasano-compatible question without a large benchmark or expensive training.
+
+**Nearest Main-level neighborhood.**
+- Zhang et al. (EMNLP 2025 Main), *AskToAct: Enhancing LLMs Tool Use via Self-Correcting Clarification*: makes incomplete/ambiguous user intent in tool calling a central problem, explicitly treating tool parameters as representations of user intent and training models to recover or clarify missing critical parameters.
+- Wang et al. (EMNLP 2025 Main), *Learning to Ask: When LLM Agents Meet Unclear Instruction*: studies imperfect user instructions and finds agents often arbitrarily generate missing arguments, motivating clarification rather than unsafe completion.
+- Broader Main-level tool-use work already owns argument instantiation, intent interpretation, tool-schema comprehension, and clarification under underspecification.
+- BFCL/MultiCAT-style evaluation additionally treats omitted optional arguments and explicit schema-default values as execution-equivalent when appropriate, so defaults already appear as an evaluation subcase even though their consequences are not the main RQ.
+
+**Failure reason — Main-scope / Related-Work width.** The exact experiment remains relatively novel, but novelty at the exact-cell level is not enough. At the abstraction level used by nearby EMNLP Main work, a reviewer can reasonably compress this idea to **a special case of underspecified tool intent / argument completion where the missing argument has a default value**. Broadening the paper to `effective action semantics` would be rhetorical unless additional independent phenomena establish that broader parent; keeping it honest leaves an API-default corner case one level narrower than the Main scientific neighborhood. Therefore S01 fails the required width audit even though the exact contrast is not directly owned.
+
+**What would be required to revive it.** Independent evidence for a broader, coherent scientific object in which surface actions systematically diverge from executed action semantics across multiple non-arbitrary mechanisms (not merely optional defaults), with a common prediction that is not already owned by tool clarification/schema-comprehension work. Do not revive by adding more APIs, default types, or benchmark scale.
