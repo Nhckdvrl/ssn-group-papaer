@@ -78,3 +78,18 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 **Failure reason.** The load-bearing scenario — lost response after a potentially committed external effect and the need for different safe recovery — is already the motivating example and controlled object of a 2026 study. Rephrasing it as “does the model understand idempotency?” would mainly move responsibility from the interface to the model while retaining the same operational parent. That is too close for a Sasano-style novelty bar.
 
 **What would be required to revive it.** A distinct action-semantic computation whose predictions cannot be reduced to operability/recovery under ambiguous external effects, and that has an independently motivated reason to be studied inside the model rather than at the interface layer.
+
+### F05 — Does standard SFT secretly weight examples by response length?
+
+**Question.** Because standard SFT aggregates token-level cross-entropy, does a demonstration with a longer assistant response exert systematically more influence than a shorter demonstration even when the dataset treats them as one example each? In other words, is response length an implicit sample weight?
+
+**Why it initially looked promising.** The question is simple, mechanistically grounded, cheap to test, and directly relevant to modern post-training. Common implementations explicitly distinguish token-level global averaging from per-sequence/per-sample averaging, so the proposed quantity is real rather than rhetorical. A clean test could hold example count and task difficulty fixed while changing only loss aggregation.
+
+**Nearest prior work.**
+- NVIDIA (2026), *Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*: reports that single-stage SFT produced marked degradation on long-input/short-output scenarios. It explicitly contrasts a global token-average objective with a per-conversation normalized objective, states that the latter prevents long outputs from dominating the loss, and uses a two-stage SFT procedure to restore the affected behavior.
+- Current large-scale training frameworks such as OpenRLHF expose token-level versus per-sample aggregation as explicit loss modes, confirming that these objectives give different weighting to variable-length responses.
+- Recent SFT-objective work such as DFT/CADFT already treats token- and sample-level gradient weighting as central optimization variables, further reducing room for a generic “hidden weighting” parent.
+
+**Failure reason.** The core scientific observation is already explicit in a 2026 large-model training report: token-global SFT makes long outputs dominate and per-conversation normalization is used specifically to counter this effect. A cleaner controlled paper could characterize the phenomenon more systematically, but its headline would compress to an already identified effect plus stronger analysis. Under the Sasano novelty requirement, that is not enough.
+
+**What would be required to revive it.** A distinct consequence of aggregation that is not reducible to long-output dominance and is predicted by an independent scientific quantity. Merely testing more models, more length distributions, or token-vs-sample normalization more cleanly does not reopen the parent.
