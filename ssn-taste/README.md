@@ -6,11 +6,34 @@ This directory is the working ledger for the Sasano-taste-driven NLP/LLM researc
 
 The search targets **ACL / EMNLP / NAACL Main**. These three venues are the primary external calibration for what counts as a strong, appropriately scoped NLP/LLM research question.
 
-**TACL / ICLR / ICML / NeurIPS** may be used as secondary calibration when they illuminate scientific-question quality, causal/mechanistic reasoning, representation analysis, post-training, or adjacent methodology.
+**TACL / ICLR / ICML / NeurIPS** may be used as secondary calibration when they illuminate scientific-question quality, causal/mechanistic reasoning, representation analysis, or adjacent methodology.
 
 **EACL / AACL are NOT taste-calibration venues for this search.** They may be searched aggressively for novelty checking, nearest-prior discovery, and duplicate detection, but their topic/style distribution must not be used to decide what we should pursue. In other words: an EACL/AACL paper can kill or narrow an idea because it already answered the question, but it cannot make an idea attractive merely because it resembles accepted EACL/AACL work.
 
 The governing rule is advisor fit first: questions should be easy to understand, genuinely unanswered, clearly differentiated from nearest prior work, and testable with clean experiments whose claims do not exceed the evidence. At every search and filtering step, explicitly check both **Sasano taste** and **ACL/EMNLP/NAACL Main taste** rather than drifting toward generic LLM trends.
+
+## Topic-domain preference: do not chase hype
+
+Sasano fit is not equivalent to working on the newest fashionable paradigm. The search must **not default to currently hot areas such as RL-for-reasoning, generic LLM agents, tool-use agents, multi-agent systems, or other trend-driven topics merely because the literature is active**.
+
+These areas may be used for novelty checking or may occasionally contain a valid independent question, but they are **not preferred search pools** and must not dominate idea generation.
+
+Prefer durable NLP/LLM scientific objects whose importance does not depend on current hype, including:
+
+- language understanding and model knowledge;
+- simple, interpretable semantics/pragmatics rather than highly technical linguistics;
+- representation and readout questions;
+- evaluation and measurement validity;
+- generation behavior and communication;
+- embeddings, compression, representation efficiency, and systematic trade-offs;
+- multilingual or language-variation questions when the scientific distinction is genuinely new rather than another benchmark comparison;
+- real-world language change caused by technology or social practice;
+- missing independent decisions in established NLP workflows;
+- older scientific questions that modern models make newly identifiable under a genuinely changed premise.
+
+The test is: **would this still be an interesting NLP research question if the current hype cycle disappeared?** If the answer is no, deprioritize it.
+
+This preference comes from the demonstrated Sasano examples: Sato, Utami, Kisako, Oshika, Yano, and related projects are driven by understandable scientific or workflow questions rather than by chasing the latest paradigm.
 
 ## Idea provenance: do not mine paper edges by default
 
@@ -51,9 +74,9 @@ Do **not** decide that a question should be “broader” or “narrower” by i
 
 For each candidate, separately calibrate three levels:
 
-1. **Parent scientific question.** What is the durable thing the paper is actually trying to learn about language/models/learning/interaction? It should normally be broader than one implementation toggle, one benchmark cell, one model quirk, or one API field, but it must not balloon into an entire area such as “how agents reason” or “what post-training changes.”
+1. **Parent scientific question.** What is the durable thing the paper is actually trying to learn about language/models/learning/interaction? It should normally be broader than one implementation toggle, one benchmark cell, one model quirk, or one API field, but it must not balloon into an entire area such as “how models understand language.”
 2. **Claim/contribution scope.** The paper may answer only a controlled slice of the parent question. Claims must stay at the width supported by the experiment; do not inflate a clean local result into a universal theory.
-3. **Related-work neighborhood.** Related work must cover the scientific lineage a Main-conference reviewer would naturally use to compress the contribution: the nearest direct owners, neighboring explanations/measurements, and the parent problem. It must not be artificially narrow (“no one tested this exact flag”) or indiscriminately broad (“all tool-use papers”).
+3. **Related-work neighborhood.** Related work must cover the scientific lineage a Main-conference reviewer would naturally use to compress the contribution: the nearest direct owners, neighboring explanations/measurements, and the parent problem. It must not be artificially narrow (“no one tested this exact flag”) or indiscriminately broad.
 
 ### Required width audit
 
@@ -86,4 +109,4 @@ Files:
 - `FAILED_TOPICS.md`: ideas that were seriously considered and then dropped, with the concrete novelty/fit/feasibility reason. Do not revive these without new evidence that directly resolves the recorded failure reason.
 - `SELECTED_TOPICS.md`: ideas that survive novelty, scope, and Sasano-taste checks and are worth concrete pilot design or execution.
 
-This ledger is intentionally lighter than the old gate-heavy process. A topic should not be killed merely because it lacks a deep mechanism, a dramatic anomaly, or an Outstanding-Paper-scale contribution. Hard reasons to reject are mainly: the exact question is already answered, the nearest-prior difference is too small, the question is not naturally worth asking, its scientific abstraction level is badly mismatched to Main-conference/Sasano precedent, or there is no realistic experimental path.
+This ledger is intentionally lighter than the old gate-heavy process. A topic should not be killed merely because it lacks a deep mechanism, a dramatic anomaly, or an Outstanding-Paper-scale contribution. Hard reasons to reject are mainly: the exact question is already answered, the nearest-prior difference is too small, the question is not naturally worth asking, its scientific abstraction level is badly mismatched to Main-conference/Sasano precedent, it is mainly hype-driven rather than scientifically durable, or there is no realistic experimental path.
