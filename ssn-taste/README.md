@@ -12,6 +12,39 @@ The search targets **ACL / EMNLP / NAACL Main**. These three venues are the prim
 
 The governing rule is advisor fit first: questions should be easy to understand, genuinely unanswered, clearly differentiated from nearest prior work, and testable with clean experiments whose claims do not exceed the evidence. At every search and filtering step, explicitly check both **Sasano taste** and **ACL/EMNLP/NAACL Main taste** rather than drifting toward generic LLM trends.
 
+## Idea provenance: do not mine paper edges by default
+
+The default idea generator must **not** be:
+
+> a recent Main paper reports an interesting phenomenon -> it did not fully explain why / mechanism / boundary conditions -> we study that missing piece.
+
+This route has repeatedly produced reviewer-compressible successor work. Once a strong mother phenomenon is visible, its obvious mechanisms and boundary conditions are usually already occupied by the same paper, parallel work, or immediate successors. A `future work` sentence is therefore weak evidence of a new research parent.
+
+Before treating a seed as an independent question, apply the **remove-the-trigger-paper test**:
+
+> If the specific recent paper that inspired this seed disappeared, would the scientific question still arise naturally from an independent problem, changed premise, theory, workflow defect, or real-world need?
+
+If not, treat the seed as a likely follow-up and do not promote it merely because an exact experiment has not yet been run.
+
+Preferred idea provenance is:
+
+1. **Changed premise / changed regime.** A load-bearing assumption behind an older conclusion has genuinely changed, so the old question is no longer the same question. This is stronger than `old question + newer model`.
+2. **Independent defect in an existing method or formulation.** Similar prior work is allowed when a concrete, scientifically meaningful defect or limitation can be identified and corrected. This follows Sasano's explicit guidance that fundamental novelty is preferable, but an existing method with a real improvement point can still form a research topic if the prior is understood thoroughly.
+3. **Cross-lineage collision creating a new quantity.** Two mature literatures make different implicit assumptions about the same object, and their intersection creates a question owned by neither lineage. `Paper A + Paper B` alone is insufficient; the intersection must expose a new scientific variable or prediction.
+4. **Exogenous real-world change.** Technology or practice changes the population/process being observed, making a previously stable measurement or behavior scientifically different (Utami-style).
+5. **Hidden oracle / missing independent decision.** A mature workflow has two developed sides but still assumes a necessary intermediate structure or decision is given by humans/gold data (Oshika-style).
+6. **New identifying operation for an old scientific debate.** Modern models make a previously confounded distinction experimentally identifiable in a way that changes what evidence can decide the debate. Merely re-running a classic psycholinguistic paradigm on an LLM is not enough.
+7. **Clean systematic trade-off with an independent quantity.** Two ordinary system/representation choices interact around a coherent scientific quantity (Kisako-style). Do not manufacture this by attaching an arbitrary downstream property to compression/quantization.
+
+### Successor work is not categorically forbidden
+
+Do not overcorrect and kill every idea with related predecessors. Sasano explicitly noted that high fundamental novelty is preferable, but similar work can still support a research topic when the prior method has a **specific point that genuinely needs improvement**. The crucial distinction is:
+
+- **Weak successor:** `they found X; we explain more of X / add one boundary / use a newer model / use a cleaner ablation`.
+- **Potentially valid successor:** `the existing formulation/method makes a load-bearing assumption or has a structural deficiency; fixing it changes the scientific object, inference, or usable capability in a way reviewers can understand independently of the predecessor's future-work list`.
+
+Novelty checking must therefore ask **what prior work owns**, **what it assumes**, and **what exactly is defective**, not mechanically reject anything adjacent.
+
 ## Scope calibration is empirical, not subjective
 
 Do **not** decide that a question should be “broader” or “narrower” by intuition alone. Every serious candidate must be calibrated against the actual scope of nearby **ACL / EMNLP / NAACL Main** papers and against Sasano's demonstrated project taste.
