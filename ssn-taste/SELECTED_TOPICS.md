@@ -6,15 +6,16 @@ Purpose: record only questions that survive a real nearest-prior novelty check a
 
 ## Admission rule
 
-A topic can enter this file when all three are true:
+A topic can enter this file when all four are true:
 
 1. **Worth asking:** the question is understandable without elaborate framing and there is a natural reason a reviewer would want to know the answer.
 2. **Real difference:** recent nearest prior work does not already answer the same question; the distinction is substantive rather than merely “newer model / larger model / another benchmark”.
-3. **Testable:** there is a realistic clean experiment that can reduce uncertainty without requiring unreasonable data construction or compute.
+3. **Correct scientific width:** the parent RQ, claim scope, and related-work neighborhood are calibrated against nearby ACL / EMNLP / NAACL Main papers and Sasano-approved work. The idea must not survive merely because it is phrased unusually narrowly, nor be inflated into a broader parent that the experiments cannot support.
+4. **Testable:** there is a realistic clean experiment that can reduce uncertainty without requiring unreasonable data construction or compute.
 
 Mechanistic depth, surprising pilot results, broad cross-model robustness, and complex methods are valuable when they help, but they are not admission requirements.
 
-For each selected topic, record the question, scientific pressure, nearest-prior gap, minimal experiment, expected resource cost, Sasano-fit rationale, and remaining risks.
+For each selected topic, record the question, scientific pressure, nearest-prior gap, **scope audit against Main-conference/Sasano anchors**, minimal experiment, expected resource cost, Sasano-fit rationale, and remaining risks.
 
 ---
 
@@ -22,7 +23,7 @@ For each selected topic, record the question, scientific pressure, nearest-prior
 
 ### S01 — Omission ≠ Neutrality: Do LLM Agents Understand Effective Default Semantics?
 
-**Status:** SERIOUS CANDIDATE — PILOT-WORTHY; novelty survives current search, paper-scale still needs evidence.
+**Status:** SERIOUS CANDIDATE — NOVELTY SURVIVES CURRENT SEARCH; **MAIN-SCOPE / RELATED-WORK WIDTH AUDIT REQUIRED BEFORE PILOT AUTHORIZATION**.
 
 **Plain-language question.** When an LLM agent omits an optional tool argument, does it understand that the omission is not “no decision” but resolves to a concrete runtime default? More importantly, when that default conflicts with the user's requested outcome, will the model actively override it, or will it produce a syntactically valid but behaviorally wrong call?
 
@@ -39,7 +40,9 @@ A simple example is a tool `search(..., include_archived=false)` or `send(..., n
 
 **Important boundary.** This topic is **not** “benchmark optional parameters,” “models sometimes omit arguments,” or “defaults are bad.” Those versions are weak or already covered. The proposed parent is the distinction between **surface omission** and **effective behavior after runtime default resolution**, tested by holding the user goal and backend semantics fixed while changing only whether satisfying the goal requires accepting versus overriding a default.
 
-**Minimal clean pilot.** No large dataset is needed.
+**Scope audit still required.** Before this topic can be considered pilot-authorized, compare it against the actual Introduction-level RQ and Related Work width of nearby ACL / EMNLP / NAACL Main tool-use / agent papers. The key question is whether “surface call ≠ effective action semantics” is a Main-sized scientific object, or whether a reviewer would reasonably compress the whole paper to “a focused optional-parameter robustness case.” Do **not** solve this by rhetoric. If the broader effective-action-semantics parent is not independently supported by Main-level literature, or if broadening it destroys novelty, demote or kill S01.
+
+**Minimal clean pilot (only after scope audit).** No large dataset is needed.
 
 Construct 20–50 tiny deterministic tool schemas, each with one optional parameter whose default has an observable consequence. For every semantic task create matched conditions:
 
@@ -62,7 +65,7 @@ A strong first result would be a systematic asymmetry in which models perform we
 
 **Resource cost.** LOW. Pure inference is enough for the first pilot; deterministic local tools can execute calls and verify outcomes. No human annotation, large benchmark construction, or training run is required initially.
 
-**Why it fits Sasano's taste.**
+**Why it might fit Sasano's taste.**
 
 - The distinction is understandable in one sentence.
 - It starts from a real property of the interface rather than an invented benchmark taxonomy.
@@ -70,11 +73,13 @@ A strong first result would be a systematic asymmetry in which models perform we
 - The nearest-prior difference can be stated concretely: existing work evaluates optional/default parameters as a tool-calling property; this asks whether the model represents the **runtime consequence of omission** and overrides it when needed.
 - It does not require a complicated new method or heavy linguistic theory.
 
+This Sasano-fit assessment is **provisional until the scope audit is passed**; simplicity alone is not enough if the scientific object is too microscopic.
+
 **Main risks.**
 
-1. **Paper-scale risk (largest):** if frontier models simply resolve defaults correctly across all matched conditions, the question may close cleanly but not grow into a Main paper.
-2. **Reviewer-compression risk:** reviewers could still describe it as “a focused optional-parameter/tool-calling robustness study.” The paper must make effective-call semantics, not benchmark accuracy, the central object.
+1. **Scope / reviewer-compression risk (largest):** reviewers may reasonably view it as one optional-parameter corner case rather than a Main-sized scientific object.
+2. **Paper-scale risk:** if frontier models simply resolve defaults correctly across all matched conditions, the question may close cleanly but not grow into a Main paper.
 3. **Documentation confound:** failures may reduce to models not reading the schema. The default-flip and pre-call state-prediction controls are essential.
 4. **Artificial-tool risk:** toy APIs are ideal for identification but need a small natural-API validation set if the phenomenon survives.
 
-**Current decision.** Run the minimal pilot before adding mechanisms, large datasets, or training. Do not expand this into a broad tool-use benchmark.
+**Current decision.** Do not run a large pilot or expand this into a benchmark yet. First complete a Main-conference/Sasano scope audit. If the parent survives at the right abstraction level, run the minimal pilot; otherwise demote or kill it.
