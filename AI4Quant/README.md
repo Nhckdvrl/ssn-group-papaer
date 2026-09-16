@@ -16,6 +16,7 @@
 
 - `selected/`：已经通过 ownership / novelty / feasibility / minimum-pilot 审查、允许真正开始实验的题。
 - `failed/`：本轮已经搜索、审计并明确 KILL / HOLD / 降级的题，防止后续重复复活。
+- `NEXT_SEARCH_HANDOFF.md`：下一轮继续找新题的交接文档；包含本轮流程复盘、好题标准、动态 search heartbeat 与可直接复制的下一轮开场指令。
 
 ## 当前状态
 
