@@ -49,3 +49,32 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 **Failure reason.** The broad scientific parent — message/role serialization is not behaviorally neutral — is already empirically established. A new reasoning task, model family, or a cleaner same-token-count control would be a refinement, not the clear nearest-prior difference Sasano expects.
 
 **What would be required to revive it.** A qualitatively different quantity beyond generic performance/authority sensitivity, with a theory predicting a specific boundary-dependent computation not tested by existing multi-turn/chat-template work. Otherwise do not revive.
+
+### F03 — API backward compatibility ≠ agent behavioral compatibility
+
+**Question.** If an API/tool evolves only by adding an optional parameter while preserving all old calls, does an LLM agent nevertheless change its behavior on old tasks because the new schema itself changes the model input?
+
+**Why it initially looked promising.** This is a clean changed-regime question. In ordinary software engineering, adding a defaulted optional parameter is normally treated as backward-compatible. An LLM caller is unusual because it re-reads the interface description at inference time; therefore a software-compatible change could still alter planning. The experiment would be cheap: hold backend, task, model, and old call semantics fixed, and change only the additive optional field.
+
+**Nearest prior work.**
+- Liu et al. (2026), *MCPEvol-Bench: Benchmarking LLM Agent Performance Across Dynamic Evolutions of MCP Servers* (arXiv:2607.14642): explicitly studies evolving MCP interfaces with 11 mutation operators. Its PARAM-level **Flexible Expansion** operator adds optional parameters, requires existing calls to remain backward-compatible, and updates implementations to handle the new parameters gracefully, including via defaults. The benchmark then measures agent task-solving performance across evolved server versions.
+- Faghih et al. (EMNLP 2025 Main), *Tool Preferences in Agentic LLMs are Unreliable*: controlled edits to exposed tool descriptions substantially alter tool selection, establishing that tool-interface metadata itself can change agent behavior.
+- 2026 schema/tool-drift work further treats interface evolution as an explicit robustness object.
+
+**Failure reason.** The proposed core intervention — a backward-compatible extension of a tool interface with optional parameters — is already an explicit evolution operator in MCPEvol-Bench, and interface metadata sensitivity is independently established. Isolating just this operator more cleanly would improve causal attribution but would still be reviewer-compressible to a controlled subcase of an already occupied schema-evolution problem. That is too close to the “cleaner experiment on an existing parent” pattern Sasano rejected in prior topic discussions.
+
+**What would be required to revive it.** A different scientific quantity that is not generic robustness to schema evolution — for example, an independently motivated semantic law about omitted arguments versus resolved runtime actions that yields predictions not captured by interface-drift performance. Merely adding defaults, changing model families, or using better controls is insufficient.
+
+### F04 — Same timeout, different action semantics
+
+**Question.** Does an LLM agent change its recovery decision after an ambiguous timeout according to whether the preceding action was idempotent/read-only versus externally effectful or non-idempotent, where blind retry can duplicate a real-world action?
+
+**Why it initially looked promising.** The observation is simple and operationally important: the same missing response can imply radically different safe continuations depending on action semantics. It allows a matched intervention with no large dataset and seemed more scientific than generic error-recovery benchmarking because the target quantity is the semantics of the action, not error frequency.
+
+**Nearest prior work.**
+- Wang (2026), *Callability Is Not Operability: Controlled Interface Interventions for LLM Agents* (arXiv:2608.23628): directly studies operational uncertainty where an external effect may commit but its response is lost, making committed and uncommitted states observationally indistinguishable even though they require different continuation actions. It evaluates interface mechanisms including execution lifecycle/recovery, explicit external-effect semantics, and postcondition verification while holding task/backend/state/failure/agent/model fixed.
+- Adjacent 2026 agent-safety/reliability work explicitly distinguishes action classes such as idempotent, reversible, compensable, and irreversible, and studies when agents should abstain or verify before acting/retrying.
+
+**Failure reason.** The load-bearing scenario — lost response after a potentially committed external effect and the need for different safe recovery — is already the motivating example and controlled object of a 2026 study. Rephrasing it as “does the model understand idempotency?” would mainly move responsibility from the interface to the model while retaining the same operational parent. That is too close for a Sasano-style novelty bar.
+
+**What would be required to revive it.** A distinct action-semantic computation whose predictions cannot be reduced to operability/recovery under ambiguous external effects, and that has an independently motivated reason to be studied inside the model rather than at the interface layer.
