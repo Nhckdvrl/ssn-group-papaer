@@ -1,112 +1,145 @@
 # ssn-taste
 
-This directory is the working ledger for the Sasano-taste-driven NLP/LLM research-question search started on 2026-09-16.
+This directory is the working ledger for Sasano-taste-driven NLP/LLM research-question search.
 
-## Venue hierarchy for research taste
+Target venues: **ACL / EMNLP / NAACL Main**. TACL / ICLR / ICML / NeurIPS are secondary calibration. EACL / AACL / Findings / workshops / arXiv may be used aggressively for novelty collision, but not as the main positive taste signal.
 
-The search targets **ACL / EMNLP / NAACL Main**. These three venues are the primary external calibration for what counts as a strong, appropriately scoped NLP/LLM research question.
+Current selected topics: **0**.
 
-**TACL / ICLR / ICML / NeurIPS** may be used as secondary calibration when they illuminate scientific-question quality, causal/mechanistic reasoning, representation analysis, or adjacent methodology.
+## Governing taste
 
-**EACL / AACL are NOT taste-calibration venues for this search.** They may be searched aggressively for novelty checking, nearest-prior discovery, and duplicate detection, but their topic/style distribution must not be used to decide what we should pursue. In other words: an EACL/AACL paper can kill or narrow an idea because it already answered the question, but it cannot make an idea attractive merely because it resembles accepted EACL/AACL work.
+The search is not trying to find the most fashionable technical gap. It is trying to find a scientific question that Sasano and a Main-conference reviewer would naturally consider worth asking.
 
-The governing rule is advisor fit first: questions should be easy to understand, genuinely unanswered, clearly differentiated from nearest prior work, and testable with clean experiments whose claims do not exceed the evidence. At every search and filtering step, explicitly check both **Sasano taste** and **ACL/EMNLP/NAACL Main taste** rather than drifting toward generic LLM trends.
+The stable pattern from Sasano's feedback is:
 
-## Topic-domain preference: do not chase hype
+> **easy-to-understand puzzle or scientific pressure -> clear scientific object -> real difference from nearest prior -> direct experiment -> claims no wider than evidence.**
 
-Sasano fit is not equivalent to working on the newest fashionable paradigm. The search must **not default to currently hot areas such as RL-for-reasoning, generic LLM agents, tool-use agents, multi-agent systems, or other trend-driven topics merely because the literature is active**.
+Important anchors:
 
-These areas may be used for novelty checking or may occasionally contain a valid independent question, but they are **not preferred search pools** and must not dominate idea generation.
+- **Sato:** strongest positive pattern — simple puzzle, natural competing explanations, controlled experiments that distinguish them.
+- **Guo:** strongest negative reminder — 「先行研究との差が小さい。」 Old question + new model/language/dataset/condition is usually not enough.
+- **Hamdi:** average reviewers need both “納得できる” and “面白い”; unexpected outcomes can still be findings; mechanism is not mandatory.
+- **Utami:** a real technological/social change can create a new language question when one changed premise leads to one interpretable consequence.
+- **Kisako / Tsukagoshi:** a systematic trade-off or interaction between mature operations around one natural quantity can be Main-sized without deep mechanism.
+- **Oshika:** an independently necessary middle decision that a mature workflow still treats as human/gold/oracle can itself be a research object.
+- **Youchi / Yano:** nearby prior does not automatically kill an idea if a load-bearing structural defect changes the inference/object/capability when fixed.
 
-Prefer durable NLP/LLM scientific objects whose importance does not depend on current hype, including:
+## Hard preference: no evaluation-centric topics
 
-- language understanding and model knowledge;
-- simple, interpretable semantics/pragmatics rather than highly technical linguistics;
-- representation and readout questions;
-- evaluation and measurement validity;
-- generation behavior and communication;
-- embeddings, compression, representation efficiency, and systematic trade-offs;
-- multilingual or language-variation questions when the scientific distinction is genuinely new rather than another benchmark comparison;
-- real-world language change caused by technology or social practice;
-- missing independent decisions in established NLP workflows;
-- older scientific questions that modern models make newly identifiable under a genuinely changed premise.
+The user does **not** want benchmark/evaluation research as the primary contribution.
 
-The test is: **would this still be an interesting NLP research question if the current hype cycle disappeared?** If the answer is no, deprioritize it.
+Do not select topics whose actual work reduces to:
 
-This preference comes from the demonstrated Sasano examples: Sato, Utami, Kisako, Oshika, Yano, and related projects are driven by understandable scientific or workflow questions rather than by chasing the latest paradigm.
+- building a new benchmark, challenge set, or synthetic test suite;
+- auditing a metric or comparing metrics;
+- evaluating robustness under perturbation X;
+- comparing method A/B/C across a new condition;
+- constructing large synthetic data mainly to obtain ground truth;
+- contamination detection or dataset-quality auditing;
+- producing a leaderboard as the central result.
 
-## Idea provenance: do not mine paper edges by default
+Evaluation can be an **instrument** inside a scientific experiment. It must not be the main scientific object.
 
-The default idea generator must **not** be:
+The decisive sanity check is:
 
-> a recent Main paper reports an interesting phenomenon -> it did not fully explain why / mechanism / boundary conditions -> we study that missing piece.
+> **After deleting all benchmark names, metric names, and method names, what new fact does the paper learn about language, models, learning, training, representation, behavior, interaction, or a real-world process?**
 
-This route has repeatedly produced reviewer-compressible successor work. Once a strong mother phenomenon is visible, its obvious mechanisms and boundary conditions are usually already occupied by the same paper, parallel work, or immediate successors. A `future work` sentence is therefore weak evidence of a new research parent.
+If there is no clear answer, reject the topic.
 
-Before treating a seed as an independent question, apply the **remove-the-trigger-paper test**:
+### Why this rule was added
 
-> If the specific recent paper that inspired this seed disappeared, would the scientific question still arise naturally from an independent problem, changed premise, theory, workflow defect, or real-world need?
+C2/S02 (“AI Rewrite ≠ Semantic Change”) looked strong at the framing level: a changed text-production regime and a clean distinction between meaning change and contextual redistribution. But the actual experiment collapsed into synthetic rewrite construction + semantic-preservation validation + LSC method/metric robustness comparison, while natural real-world data lacked clean ground truth. It was therefore cancelled. This is the canonical example of **scientific framing being stronger than the experimental object**.
 
-If not, treat the seed as a likely follow-up and do not promote it merely because an exact experiment has not yet been run.
+## Exploratory does not mean evaluation
 
-Preferred idea provenance is:
+The search prefers **exploratory rather than gambling** questions: several natural outcomes should remain scientifically interpretable.
 
-1. **Changed premise / changed regime.** A load-bearing assumption behind an older conclusion has genuinely changed, so the old question is no longer the same question. This is stronger than `old question + newer model`.
-2. **Independent defect in an existing method or formulation.** Similar prior work is allowed when a concrete, scientifically meaningful defect or limitation can be identified and corrected. This follows Sasano's explicit guidance that fundamental novelty is preferable, but an existing method with a real improvement point can still form a research topic if the prior is understood thoroughly.
-3. **Cross-lineage collision creating a new quantity.** Two mature literatures make different implicit assumptions about the same object, and their intersection creates a question owned by neither lineage. `Paper A + Paper B` alone is insufficient; the intersection must expose a new scientific variable or prediction.
-4. **Exogenous real-world change.** Technology or practice changes the population/process being observed, making a previously stable measurement or behavior scientifically different (Utami-style).
-5. **Hidden oracle / missing independent decision.** A mature workflow has two developed sides but still assumes a necessary intermediate structure or decision is given by humans/gold data (Oshika-style).
-6. **New identifying operation for an old scientific debate.** Modern models make a previously confounded distinction experimentally identifiable in a way that changes what evidence can decide the debate. Merely re-running a classic psycholinguistic paradigm on an LLM is not enough.
-7. **Clean systematic trade-off with an independent quantity.** Two ordinary system/representation choices interact around a coherent scientific quantity (Kisako-style). Do not manufacture this by attaching an arbitrary downstream property to compression/quantization.
+But this is only a necessary property, not a sufficient one. A benchmark paper can also have multiple interpretable outcomes. A real exploratory topic must study a scientific phenomenon or process itself.
 
-### Successor work is not categorically forbidden
+Good targets include:
 
-Do not overcorrect and kill every idea with related predecessors. Sasano explicitly noted that high fundamental novelty is preferable, but similar work can still support a research topic when the prior method has a **specific point that genuinely needs improvement**. The crucial distinction is:
+- what a model has learned when two theoretically different quantities are behaviorally confounded;
+- where a capability/representation comes from;
+- how a training operation changes learning dynamics, representation, or generalization;
+- a natural trade-off between two mature operations around one resource/quantity;
+- a hidden independent decision in an established workflow;
+- a real language/behavior process changed by a new technological or social premise;
+- an old scientific debate newly identifiable through a modern controlled intervention;
+- a cross-lineage collision that creates a genuinely new quantity or prediction.
 
-- **Weak successor:** `they found X; we explain more of X / add one boundary / use a newer model / use a cleaner ablation`.
-- **Potentially valid successor:** `the existing formulation/method makes a load-bearing assumption or has a structural deficiency; fixing it changes the scientific object, inference, or usable capability in a way reviewers can understand independently of the predecessor's future-work list`.
+## Do not mine paper edges by default
 
-Novelty checking must therefore ask **what prior work owns**, **what it assumes**, and **what exactly is defective**, not mechanically reject anything adjacent.
+The default generator must not be:
 
-## Scope calibration is empirical, not subjective
+> recent Main paper finds phenomenon X -> it did not fully explain why/source/mechanism/boundary -> we study that missing piece.
 
-Do **not** decide that a question should be “broader” or “narrower” by intuition alone. Every serious candidate must be calibrated against the actual scope of nearby **ACL / EMNLP / NAACL Main** papers and against Sasano's demonstrated project taste.
+Apply the **remove-the-trigger-paper test**:
 
-For each candidate, separately calibrate three levels:
+> If the trigger paper disappeared, would this research question still arise naturally from theory, a real-world change, a workflow defect, a learning problem, a structural contradiction, or another independent source?
 
-1. **Parent scientific question.** What is the durable thing the paper is actually trying to learn about language/models/learning/interaction? It should normally be broader than one implementation toggle, one benchmark cell, one model quirk, or one API field, but it must not balloon into an entire area such as “how models understand language.”
-2. **Claim/contribution scope.** The paper may answer only a controlled slice of the parent question. Claims must stay at the width supported by the experiment; do not inflate a clean local result into a universal theory.
-3. **Related-work neighborhood.** Related work must cover the scientific lineage a Main-conference reviewer would naturally use to compress the contribution: the nearest direct owners, neighboring explanations/measurements, and the parent problem. It must not be artificially narrow (“no one tested this exact flag”) or indiscriminately broad.
+If not, it is probably a follow-up.
 
-### Required width audit
+Successor work is allowed only when the predecessor has a **load-bearing assumption or structural defect** whose correction changes the scientific inference, object, or capability. “Cleaner experiment”, “more models”, “newer model”, and “one more boundary” are not enough.
 
-Before promotion to a serious candidate, identify several nearby **ACL / EMNLP / NAACL Main** papers and ask:
+## Reviewer-level novelty, not exact-gap novelty
 
-- How wide is their Introduction-level question, not just their experiment?
-- What scientific object do their Related Work sections treat as the relevant neighborhood?
-- Would a reviewer summarize our idea as merely “one more condition / parameter / dataset / model inside X”? If yes, the parent is probably too narrow or already owned.
-- Conversely, does the proposed parent require several weakly connected subquestions or a universal claim that the minimal experiments cannot support? If yes, it is too broad.
-- Can the novelty sentence be stated at roughly the same abstraction level as the nearest Main papers, rather than one level below them?
+For every serious seed, identify the parent literature a reviewer will use to compress the contribution.
 
-This is a **calibration exercise, not a new kill gate**. A narrow experimental manipulation is perfectly acceptable when it identifies a Main-sized scientific question; a broad topic is not automatically better. The target is the width actually used by strong ACL/EMNLP/NAACL Main work and by Sasano-approved projects.
+Ask:
 
-### Sasano width anchors
+- What parent RQ does nearest prior already own?
+- Would a reviewer describe our work as one more model/language/dataset/condition/cell inside that parent?
+- Is our novelty sentence stated at the same abstraction level as nearby ACL/EMNLP/NAACL Main papers?
+- Are we inflating a narrow experiment into a broader parent rhetorically?
 
-Use Sasano's demonstrated examples as additional calibration:
+Main scope is calibrated empirically by reading actual Introduction + Related Work sections, not by intuition.
 
-- **Sato:** one clear parent question (where character-level knowledge comes from) with several controlled source hypotheses. The project is wider than one tokenizer ablation but much narrower than “how LLMs learn linguistic knowledge.”
-- **Utami:** one changed real-world premise and one interpretable linguistic consequence, not “LLMs changed language” in general.
-- **Kisako:** one coherent compression/representation trade-off studied systematically, not “efficient NLP” broadly and not one isolated bit-width anomaly.
-- **Oshika:** one missing intermediate operation in a larger workflow can be Main-sized when that operation is independently necessary and underexplored; the contribution is not required to cover the entire workflow.
-- **Guo negative example:** a familiar parent cannot be rescued merely by shrinking to an exact newer-model cell when the nearest-prior difference remains small.
+## Mandatory experiment-grounding audit before promotion
 
-Therefore: **do not optimize for broadness; optimize for the correct scientific abstraction level.**
+Before a seed can become serious, answer plainly:
 
-User-specific practical preferences are also applied: avoid benchmark-centric work, avoid topics that require unusually difficult data construction, and avoid heavily linguistic topics unless the semantics/phenomenon is simple and easy to explain.
+1. **Where is the data?** Existing natural data, cheap controlled examples, or a large synthetic/annotation project?
+2. **What variable is actually manipulated or observed?** A scientific quantity/process, or merely a benchmark condition?
+3. **What will the main result look like?** If it is primarily `method × dataset/perturbation × score`, be suspicious.
+4. **What is learned if all benchmark/metric names are removed?** There must still be a substantive scientific conclusion.
+5. **Who is the grammatical subject of the paper?** Prefer language/model/training/representation/behavior/process, not metric/benchmark/method.
+
+Do this **before** registration, not after writing a beautiful story.
+
+## Search workflow
+
+1. **Recalibrate first.** Re-read real Sasano feedback/projects and several recent ordinary-strong ACL/EMNLP/NAACL Main papers. Learn how their questions arise, not only what topics they cover.
+2. **Search for scientific pressure.** Natural puzzles, competing explanations, learning sources, representation distinctions, training effects, trade-offs, hidden decisions, real changed premises, old debates with new identifying operations.
+3. **Lock one promising seed at a time.** Do not surface a large pile of half-ideas. Once one seed is promising, deep-audit it to a yes/no decision before switching.
+4. **Read nearest papers, not abstracts only.** At minimum understand Introduction + Related Work and the actual experimental claim.
+5. **Do reviewer compression early.** Kill exact-cell novelty inside an occupied parent.
+6. **Do the experiment-grounding audit immediately after novelty.** This prevents another C2 failure.
+7. **Only then design the minimum pilot.** Prefer natural/available data and a cheap experiment that directly distinguishes explanations or reveals structure. Do not begin by constructing a benchmark.
+8. **Register only after all of the above.** Selected = 0 is fully acceptable.
+
+## Drift audit
+
+Every ~8–12 serious seeds, or whenever several seeds come from the same literature, stop and check:
+
+- Are we again mining recent-paper mechanisms/future work?
+- Are RL/agents/tool-use trends dominating because they are searchable rather than because they fit Sasano?
+- Are we relying on exact gaps rather than parent novelty?
+- Are evaluation, metric validity, robustness, benchmark construction, or synthetic data becoming the center again?
+- Is the data path becoming artificial or expensive?
+- Are Main papers being used only to kill ideas rather than positively teach question formation?
+- Are Sasano examples becoming slogans instead of reasoning patterns?
+
+If many seeds die for the same reason, change the **idea generator/scientific object**, not the novelty threshold.
+
+## Current cancelled registrations
+
+- **S01 / F06 — optional tool default / effective action semantics:** cancelled. Reviewer-level parent compresses to underspecified tool intent / argument completion; the default-value case is too narrow.
+- **S02 / C2 — AI Rewrite ≠ Semantic Change:** cancelled. Actual execution is evaluation-centric and data/ground-truth awkward.
+
+Do not revive them by adding more models, datasets, metrics, or rhetoric.
 
 Files:
 
-- `FAILED_TOPICS.md`: ideas that were seriously considered and then dropped, with the concrete novelty/fit/feasibility reason. Do not revive these without new evidence that directly resolves the recorded failure reason.
-- `SELECTED_TOPICS.md`: ideas that survive novelty, scope, and Sasano-taste checks and are worth concrete pilot design or execution.
-
-This ledger is intentionally lighter than the old gate-heavy process. A topic should not be killed merely because it lacks a deep mechanism, a dramatic anomaly, or an Outstanding-Paper-scale contribution. Hard reasons to reject are mainly: the exact question is already answered, the nearest-prior difference is too small, the question is not naturally worth asking, its scientific abstraction level is badly mismatched to Main-conference/Sasano precedent, it is mainly hype-driven rather than scientifically durable, or there is no realistic experimental path.
+- `FAILED_TOPICS.md` — serious ideas that died; do not revive without evidence resolving the recorded failure.
+- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **0**.
+- `NEXT_ROUND_PROMPT_ZH.md` — current handoff prompt; this is the most up-to-date operational search procedure.
