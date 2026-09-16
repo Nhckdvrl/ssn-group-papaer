@@ -34,3 +34,18 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 **Failure reason.** The central distinction — uncertainty/correctness information remaining internally available while the surface confidence/readout is wrong — is already directly demonstrated. Re-running it on newer reasoning models or another alignment recipe would be exactly the kind of “old question + newer models” novelty that Sasano has warned against. The remaining space would need a substantially different causal question, not a new model family or benchmark.
 
 **What would be required to revive it.** Only a genuinely different premise that makes existing explanations diverge, e.g. a specific post-training operation predicted to destroy the latent signal rather than merely alter readout, with evidence that existing work did not test that distinction. Otherwise do not revive.
+
+### F02 — Are message/turn boundaries semantically neutral?
+
+**Question.** If the lexical information and order are held fixed, does presenting the same content as one context block versus multiple native chat turns systematically change what an LLM infers or does? If so, are message/role boundaries themselves part of the learned computation rather than mere serialization metadata?
+
+**Why it initially looked promising.** The question is unusually clean and Sato-like: chat models are ultimately fed token sequences, yet semantically equivalent histories can be segmented into different role/message structures. A matched-content intervention is cheap, easy to explain, and could isolate an overlooked source of behavior.
+
+**Nearest prior work.**
+- Liu et al. (ICML 2026), *On Effectiveness and Efficiency of Agentic Tool-calling and RL Training*: directly compares native multi-turn serialization against putting the full interaction history into one context and reports material tool-use differences, while also analyzing system prompts and retained thinking history.
+- *ChatInject: Abusing Chat Templates for Prompt Injection in LLM Agents* (ICLR 2026): demonstrates that native role/template delimiters materially change how models interpret authority and instructions.
+- Existing chat-template analyses already show that the exact serialization/control-token scheme can materially affect downstream behavior.
+
+**Failure reason.** The broad scientific parent — message/role serialization is not behaviorally neutral — is already empirically established. A new reasoning task, model family, or a cleaner same-token-count control would be a refinement, not the clear nearest-prior difference Sasano expects.
+
+**What would be required to revive it.** A qualitatively different quantity beyond generic performance/authority sensitivity, with a theory predicting a specific boundary-dependent computation not tested by existing multi-turn/chat-template work. Otherwise do not revive.
