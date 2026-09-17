@@ -1,0 +1,11 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 39.56it/s]
+arm=S repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=7,298,011,136
+train=786 val=76
+step0 eval: {'val_loss': 0.7832495162361547, 'boundary_auc': 0.9916644736842105, 'log_p_stop_at_boundary': -1.6842253743640245, 'log_p_stop_inside': -13.878868904144536, 'n_boundary': 76, 'n_inside': 12205}
+[timing] step 1: 3.41s  16 seqs / 9796 padded tokens  peak 58.0GB
+[timing] step 2: 2.08s  16 seqs / 7076 padded tokens  peak 72.4GB
+[timing] step 3: 2.32s  16 seqs / 8468 padded tokens  peak 72.4GB
+{"val_loss": 0.7498687662576374, "boundary_auc": 0.992953947368421, "log_p_stop_at_boundary": -1.2212289765363828, "log_p_stop_inside": -13.883203953712727, "n_boundary": 76, "n_inside": 12205, "step": 3, "train_loss": 1.005887508392334, "lr": 0.0, "elapsed": 11.001238346099854}
+done results/e02/dbg_time

@@ -1,0 +1,13 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 37.36it/s]
+arm=R repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=4,097
+train=9262 val=302
+step0 eval: {'val_loss': 0.7642544843256474, 'boundary_auc': 0.99543125, 'log_p_stop_at_boundary': -1.3495561935832825, 'log_p_stop_inside': -13.836823319880704, 'n_boundary': 160, 'n_inside': 23386}
+[timing] step 1: 1.47s  16 seqs / 8796 padded tokens  peak 17.6GB
+[timing] step 2: 0.74s  16 seqs / 8596 padded tokens  peak 17.6GB
+[timing] step 3: 0.72s  16 seqs / 8224 padded tokens  peak 17.6GB
+{"val_loss": 0.7571544371545315, "boundary_auc": 0.999275, "log_p_stop_at_boundary": -0.5337309936916995, "log_p_stop_inside": -14.038984108238362, "n_boundary": 160, "n_inside": 23386, "step": 50, "train_loss": 0.74004215747118, "lr": 0.00019558577363613702, "elapsed": 44.18265771865845}
+{"val_loss": 0.7567724324762821, "boundary_auc": 0.99949375, "log_p_stop_at_boundary": -0.4511467835892418, "log_p_stop_inside": -13.983416308331329, "n_boundary": 160, "n_inside": 23386, "step": 100, "train_loss": 0.7257703244686127, "lr": 2.1114787115667476e-05, "elapsed": 87.54061579704285}
+{"val_loss": 0.756757901608944, "boundary_auc": 0.999496875, "log_p_stop_at_boundary": -0.4517005590039972, "log_p_stop_inside": -13.971698451120899, "n_boundary": 160, "n_inside": 23386, "step": 120, "train_loss": 0.708691917359829, "lr": 0.0, "elapsed": 109.11810231208801}
+done results/e02/lrsweep/R_lr3e-4

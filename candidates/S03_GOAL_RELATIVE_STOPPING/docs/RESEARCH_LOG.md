@@ -303,6 +303,38 @@ but the `boundary_auc` co-metric is still reported per arm to check that.
 
 ---
 
+## 2026-09-17 — E02 compute pathology found and fixed (before any arm result)
+
+The first S-arm attempt ran at **>70 s per optimizer step**, which would have
+made the causal experiment unaffordable. Rather than accept a degraded design,
+the step was profiled directly:
+
+```
+fwd 0.25  loss 0.00  bwd 0.51  clip 0.03  opt 0.18  freeze 0.00  TOTAL 0.98
+peak mem 58.8 GB
+```
+
+The training math was never the problem. Three real causes, all fixed:
+
+1. **Gradient checkpointing was on for no reason.** A 7B S/F arm peaks at ~59GB
+   of a 96GB card without it. Now opt-in (`--grad-ckpt`), off by default.
+2. **The loss upcast the entire `[B, T, 100278]` logit tensor to float32**,
+   which OOM-ed the first S sweep outright. Replaced with `chunked_ce`, and the
+   eval now scores only supervised positions.
+3. **Rendering the chat template was single-threaded CPU work** that dominated
+   wall-clock and was repeated in every run. The tokenized dataset is now cached
+   to disk. This is also a scientific improvement: every arm now provably trains
+   on byte-identical inputs in an identical order.
+
+Measured after the fix: **2.1 s per optimizer step** (16 sequences), a ~35x
+speedup. Batch geometry is now identical across all arms and sweeps:
+`bs 4 x accum 4 = 16 sequences/step, max_len 768`.
+
+Because the geometry changed, the R and Rmlp learning-rate sweeps were **re-run
+from scratch** under the final configuration rather than carried over.
+
+---
+
 ## 2026-09-17 — E02 learning-rate selection (per arm, by held-out CE only)
 
 LR is selected **per arm** on held-out cross-entropy over ordinary instruction
@@ -316,18 +348,116 @@ the experiment is testing for.
 absolute `val_loss` values are not comparable to each other; the final runs all
 use the same evaluation size.)
 
-| arm | lr | val_loss @150 | boundary_auc | selected |
-|---|---|---|---|---|
-| R | 1e-3 | **1.00900** | 0.9999 | ✓ |
-| R | 1e-2 | 1.02034 | 0.9996 | |
-| R | 3e-2 | 1.07290 | 0.9992 | |
-| R | 1e-1 | 1.22930 | 0.9983 | |
-| Rmlp | 1e-4 | 0.97617 | 0.9989 | |
-| Rmlp | 3e-4 | 0.97395 | 0.9997 | |
-| Rmlp | 1e-3 | **0.97197** | 0.9999 | ✓ |
-| Rmlp | 3e-3 | 0.97334 | 0.9998 | |
+All four sweeps, 120 steps, identical batch geometry and identical cached data:
 
-(R baseline before training on its eval split: 1.02277; Rmlp baseline: 0.99014.)
+| arm | trainable | lr | val_loss | boundary_auc | selected |
+|---|---|---|---|---|---|
+| R | 4,097 | 3e-4 | 0.75676 | 0.9995 | |
+| R | | 1e-3 | 0.75587 | 0.9998 | |
+| R | | **3e-3** | **0.75581** | 0.9997 | ✓ |
+| R | | 1e-2 | 0.75895 | 0.9992 | |
+| Rmlp | 2,098,177 | 3e-4 | 0.75578 | 0.9998 | |
+| Rmlp | | **1e-3** | **0.75478** | 0.9998 | ✓ |
+| Rmlp | | 3e-3 | 0.75478 | 0.9998 | |
+| Rmlp | | 1e-2 | 0.75530 | 0.9999 | |
+| S | ~7.3B | 5e-6 | 0.67572 | 0.9982 | |
+| S | | 1e-5 | 0.64371 | 0.9995 | |
+| S | | **2e-5** | **0.63250** | 0.9998 | ✓ |
+| S | | 5e-5 | 0.64756 | 0.9999 | |
+| F | ~7.3B | 5e-6 | 0.67583 | 0.9981 | |
+| F | | 1e-5 | 0.64373 | 0.9995 | |
+| F | | **2e-5** | **0.63267** | 0.9998 | ✓ |
+| F | | 5e-5 | 0.64718 | 0.9999 | |
 
-Both constrained arms sit at an interior optimum of their grid, so the selected
-LR is not a boundary artefact.
+**Every arm selects an interior optimum of its grid**, so no selected LR is a
+boundary artefact, and no arm was left at an LR that merely failed to train.
+S and F independently land on 2e-5, which is also the published Tülu-3 / OLMo-2
+SFT learning rate — a reassuring external check rather than a tuned choice.
+
+Note that `val_loss` is only comparable *within* a column here: the constrained
+arms can move a single logit, so their achievable loss reduction is structurally
+much smaller than S/F's. The cross-arm comparison that matters is `boundary_auc`
+(generic stopping competence, near-ceiling everywhere) and `d_stop` (the goal
+effect), not `val_loss`.
+
+---
+
+## 2026-09-17 — E02 RESULT: the parameter locus is not the bottleneck
+
+**This experiment distinguishes** (A) the goal information is already present and
+usably readable in pretrained states, so post-training mainly has to attach the
+stop action to it **from** (B) post-training must reorganize internal
+computation before user-goal completion can control termination.
+
+All arms: Olmo-3 7B base, the same 12,000 ordinary Tülu-3 instruction-response
+examples in the same order (byte-identical cached tokenization), the same format,
+the same batch geometry (16 sequences/step, max_len 768), 750 steps, per-arm LR
+selected on held-out CE only. Stop set = `<|endoftext|>` only. Seed 0.
+
+### Primary: `d_stop` on the 50-pair A/B/C instrument
+
+| | trainable params | **d_stop** | 95% CI | val_loss | boundary_auc |
+|---|---|---|---|---|---|
+| **Arm 0** base, no training | 0 | **+2.58** | [2.1, 3.0] | — | 0.9988 |
+| **Arm R** stop readout only | **4,097** | **+7.58** | [6.4, 8.8] | 0.7563 | 0.99978 |
+| **Arm Rmlp** MLP readout on frozen state | 2,098,177 | **+7.05** | [6.1, 8.0] | 0.7543 | 0.99987 |
+| **Arm S** everything *but* the stop row | 7,298,011,136 | **+7.93** | [6.9, 8.9] | 0.6238 | 0.99993 |
+| **Arm F** everything | 7,298,011,136 | **+7.72** | [6.7, 8.7] | 0.6236 | 0.99993 |
+| *natural SFT (orientation only)* | *full recipe* | *+12.50* | *[11.0, 14.0]* | — | — |
+
+Family D (lexically matched): R +12.93, Rmlp +11.04, S +9.94, F +9.79.
+
+### Observation
+
+1. **Every trained arm moves far above base, and all four are statistically
+   indistinguishable from each other.** The confidence intervals overlap
+   heavily; no arm is even nominally outside another's interval.
+2. **Arm R matches full SFT while changing 4,097 parameters** — one output row's
+   additive delta — with *every non-stop logit bit-exactly identical to the
+   pretrained model* (verified, not assumed; see Gate C).
+3. **Capacity is not the limit.** Rmlp gives the readout a 500x larger,
+   nonlinear function of the same frozen hidden state and gains nothing
+   (+7.05 vs +7.58).
+4. **Changing 7.3B internal parameters buys nothing here either.** S and F are
+   *much better language models* after training (val_loss 0.624 vs 0.756) yet
+   are no better at goal-relative stopping than the 4,097-parameter readout.
+5. Generic stopping competence is at ceiling in every arm
+   (boundary_auc 0.9998–0.9999), so no arm's result is a failure-to-train
+   artefact.
+
+### What this rules out
+
+- **Explanation B (state reorganization is necessary).** Arm S was free to
+  change all 7.3B internal parameters and every non-stop output row; it did not
+  exceed an arm that changed nothing but the stop row. More decisively, Arm R
+  reached the same place with the internal computation provably untouched.
+- **"The readout just isn't expressive enough" as a rescue of B.** Rmlp tests
+  exactly that and does not help.
+- **"Arm R never learned to stop."** Its boundary_auc is 0.99978 and its
+  log p(stop) at a true boundary is −0.42.
+
+### What remains
+
+**A is supported: at this budget the goal information is already present in the
+pretrained final hidden state in a form a linear stop readout can use, and what
+post-training contributes is attaching the stop action to it.** The parameter
+locus is not the binding constraint — every locus reaches the same place.
+
+**The honest open question is the remaining gap to natural SFT (+7.6 vs +12.5).**
+This is *not* identified as a locus effect: our arms saw 12k examples for 750
+steps, while the released SFT checkpoint saw the full Tülu-3 recipe. The gap is
+confounded with data and compute scale. The identified claim is the
+**arm-vs-arm** comparison under matched budget; the natural SFT row is an
+orientation point, not a control.
+
+### Highest-value next experiments
+
+1. **Seed replication** (running) — confirm the four-arm equivalence is not seed
+   noise.
+2. **Budget ladder on Arm R vs Arm F.** Train both at 250 / 750 / 2250 steps. If
+   the two curves rise together and stay indistinguishable, the gap to natural
+   SFT is a data/compute effect and the locus conclusion holds at every budget.
+   If F pulls away from R only at large budget, then state change *is*
+   load-bearing but only beyond some scale — a different and more interesting
+   law. **This is the experiment that decides whether the headline is
+   "readout suffices" or "readout suffices up to a budget".**

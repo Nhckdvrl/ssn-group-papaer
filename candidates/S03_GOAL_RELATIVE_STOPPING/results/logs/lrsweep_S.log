@@ -1,0 +1,5 @@
+src/launch_e02_lr.sh: 17 行: 476163 強制終了            CUDA_VISIBLE_DEVICES=$gpu $PY src/e02_train.py --arm "$arm" --lr "$lr" --steps $STEPS --n-train 4000 --n-val 200 "$@" --tag "lrsweep/${arm}_lr${lr}" > "results/logs/lrsweep/${arm}_lr${lr}.log" 2>&1
+src/launch_e02_lr.sh: 17 行: 476165 強制終了            CUDA_VISIBLE_DEVICES=$gpu $PY src/e02_train.py --arm "$arm" --lr "$lr" --steps $STEPS --n-train 4000 --n-val 200 "$@" --tag "lrsweep/${arm}_lr${lr}" > "results/logs/lrsweep/${arm}_lr${lr}.log" 2>&1
+src/launch_e02_lr.sh: 17 行: 476166 強制終了            CUDA_VISIBLE_DEVICES=$gpu $PY src/e02_train.py --arm "$arm" --lr "$lr" --steps $STEPS --n-train 4000 --n-val 200 "$@" --tag "lrsweep/${arm}_lr${lr}" > "results/logs/lrsweep/${arm}_lr${lr}.log" 2>&1
+src/launch_e02_lr.sh: 17 行: 476164 強制終了            CUDA_VISIBLE_DEVICES=$gpu $PY src/e02_train.py --arm "$arm" --lr "$lr" --steps $STEPS --n-train 4000 --n-val 200 "$@" --tag "lrsweep/${arm}_lr${lr}" > "results/logs/lrsweep/${arm}_lr${lr}.log" 2>&1
+sweep S done

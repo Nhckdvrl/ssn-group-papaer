@@ -1,0 +1,9 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 39.90it/s]
+arm=Rmlp repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=2,098,177
+train=9262 val=302
+step0 eval: {'val_loss': 0.7642544843256474, 'boundary_auc': 0.99543125, 'log_p_stop_at_boundary': -1.3495561935832825, 'log_p_stop_inside': -13.836823319880704, 'n_boundary': 160, 'n_inside': 23386}
+[timing] step 1: 1.35s  16 seqs / 7420 padded tokens  peak 17.6GB
+[timing] step 2: 0.81s  16 seqs / 9604 padded tokens  peak 17.6GB
+[timing] step 3: 0.77s  16 seqs / 9088 padded tokens  peak 17.6GB

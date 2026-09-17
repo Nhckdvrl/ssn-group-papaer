@@ -1,10 +1,13 @@
 `rope_scaling`'s beta_fast field must be a float, got 32
 `rope_scaling`'s beta_slow field must be a float, got 1
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 40.38it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 37.80it/s]
 arm=Rmlp repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=2,098,177
-train=3539 val=171
-step0 eval: {'val_loss': 0.990136438504208, 'boundary_auc': 0.9962690058479532, 'log_p_stop_at_boundary': -1.2673395488328418, 'log_p_stop_inside': -13.995479017165506, 'n_boundary': 171, 'n_inside': 32610}
-{"val_loss": 0.9753676157358081, "boundary_auc": 0.999406432748538, "log_p_stop_at_boundary": -0.30580175566528955, "log_p_stop_inside": -13.562769883257715, "n_boundary": 171, "n_inside": 32610, "step": 50, "train_loss": 0.8132590502500534, "lr": 0.00023232644374270785, "elapsed": 59.53391647338867}
-{"val_loss": 0.9739525184728378, "boundary_auc": 0.9996637426900585, "log_p_stop_at_boundary": -0.33657936638055136, "log_p_stop_inside": -13.700678250820232, "n_boundary": 171, "n_inside": 32610, "step": 100, "train_loss": 1.2491142638027668, "lr": 7.87573391899425e-05, "elapsed": 118.54107809066772}
-{"val_loss": 0.9738225975008898, "boundary_auc": 0.9997280701754386, "log_p_stop_at_boundary": -0.35246743728080404, "log_p_stop_inside": -13.72968216579235, "n_boundary": 171, "n_inside": 32610, "step": 150, "train_loss": 0.6380876265466213, "lr": 0.0, "elapsed": 177.94255113601685}
+train=9262 val=302
+step0 eval: {'val_loss': 0.7642544843256474, 'boundary_auc': 0.99543125, 'log_p_stop_at_boundary': -1.3495561935832825, 'log_p_stop_inside': -13.836823319880704, 'n_boundary': 160, 'n_inside': 23386}
+[timing] step 1: 1.42s  16 seqs / 8796 padded tokens  peak 17.6GB
+[timing] step 2: 0.76s  16 seqs / 8596 padded tokens  peak 17.6GB
+[timing] step 3: 0.73s  16 seqs / 8224 padded tokens  peak 17.6GB
+{"val_loss": 0.7565309137105942, "boundary_auc": 0.999596875, "log_p_stop_at_boundary": -0.4226472347507496, "log_p_stop_inside": -13.861228523824122, "n_boundary": 160, "n_inside": 23386, "step": 50, "train_loss": 0.7393421232700348, "lr": 0.00019558577363613702, "elapsed": 44.834580421447754}
+{"val_loss": 0.755868100374937, "boundary_auc": 0.999825, "log_p_stop_at_boundary": -0.37087650461909905, "log_p_stop_inside": -13.873029080059275, "n_boundary": 160, "n_inside": 23386, "step": 100, "train_loss": 0.721697986125946, "lr": 2.1114787115667476e-05, "elapsed": 88.83465504646301}
+{"val_loss": 0.7557829760015011, "boundary_auc": 0.999825, "log_p_stop_at_boundary": -0.36193409550116085, "log_p_stop_inside": -13.843154095560301, "n_boundary": 160, "n_inside": 23386, "step": 120, "train_loss": 0.7037420943379402, "lr": 0.0, "elapsed": 110.66777682304382}
 done results/e02/lrsweep/Rmlp_lr3e-4

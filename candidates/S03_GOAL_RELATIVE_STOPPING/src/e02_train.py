@@ -30,7 +30,27 @@ IGNORE = -100
 
 
 class SFTData(Dataset):
-    """Chat-formatted single-turn examples with assistant-only labels."""
+    """Chat-formatted single-turn examples with assistant-only labels.
+
+    Tokenising is cached to disk: rendering the chat template is single-threaded
+    CPU work that otherwise dominates wall-clock, and caching also guarantees
+    every arm trains on byte-identical inputs in an identical order.
+    """
+
+    @staticmethod
+    def cached(tok, examples, max_len, cache_path):
+        import pickle
+        if os.path.exists(cache_path):
+            with open(cache_path, "rb") as fh:
+                rows = pickle.load(fh)
+            obj = SFTData.__new__(SFTData)
+            obj.rows = rows
+            return obj
+        obj = SFTData(tok, examples, max_len)
+        os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+        with open(cache_path, "wb") as fh:
+            pickle.dump(obj.rows, fh)
+        return obj
 
     def __init__(self, tok, examples, max_len):
         self.rows = []
@@ -63,6 +83,24 @@ def collate(batch, pad_id):
     return ids, lab, att
 
 
+
+def chunked_ce(logits, labels, chunk=2048):
+    """Cross-entropy without materialising a float32 copy of the whole
+    [B, T, vocab] logit tensor, which OOMs the 7B S/F arms on one card."""
+    lg = logits[:, :-1].reshape(-1, logits.size(-1))
+    tg = labels[:, 1:].reshape(-1)
+    keep = tg != IGNORE
+    lg, tg = lg[keep], tg[keep]
+    n = lg.size(0)
+    if n == 0:
+        return logits.sum() * 0.0
+    total = 0.0
+    for i in range(0, n, chunk):
+        total = total + F.cross_entropy(lg[i:i + chunk].float(), tg[i:i + chunk],
+                                        reduction="sum")
+    return total / n
+
+
 @torch.no_grad()
 def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=40):
     """Goal-independent stopping competence on held-out ordinary data."""
@@ -72,20 +110,22 @@ def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=40):
     for bi, (ids, lab, att) in enumerate(loader):
         if bi >= max_batches: break
         ids, lab, att = ids.to(device), lab.to(device), att.to(device)
-        logits = arm_model(ids, att).float()
-        lp = torch.log_softmax(logits[:, :-1], dim=-1)
+        logits = arm_model(ids, att)[:, :-1]
         tgt = lab[:, 1:]
         mask = tgt != IGNORE
-        losses.append(float(-lp.gather(-1, tgt.clamp(min=0).unsqueeze(-1)).squeeze(-1)[mask].mean()))
+        # score only supervised positions; upcasting the full logit tensor OOMs
+        lp = torch.log_softmax(logits[mask].float(), dim=-1)
+        tgt = tgt[mask]
+        losses.append(float(-lp.gather(-1, tgt.unsqueeze(-1)).squeeze(-1).mean()))
         stop_lp = torch.logsumexp(lp[..., sid], dim=-1)
-        is_stop_target = torch.isin(tgt, sid) & mask
+        is_stop_target = torch.isin(tgt, sid)
         # NOTE: scoring stop against the *target* token is degenerate at a real
         # boundary, where the target IS the stop token and the margin is 0 by
         # construction.  Score log P(stop at this position) instead: it is
         # well defined at boundary and response-internal positions alike.
         marg = stop_lp
         bnd += marg[is_stop_target].tolist()
-        inner += marg[mask & ~is_stop_target].tolist()
+        inner += marg[~is_stop_target].tolist()
     arm_model.train()
     # AUC of separating boundary positions from response-internal positions
     import random as _r
@@ -112,15 +152,24 @@ def main():
     ap.add_argument("--steps", type=int, default=600)
     ap.add_argument("--bs", type=int, default=2)
     ap.add_argument("--accum", type=int, default=8)
+    ap.add_argument("--grad-ckpt", action="store_true",
+                    help="trade speed for memory; unnecessary here, a 7B S/F arm "
+                         "fits in ~46GB of a 96GB card without it")
     ap.add_argument("--opt8bit", action="store_true",
                     help="8-bit AdamW; needed to fit a 7B S/F arm on one card")
-    ap.add_argument("--max-len", type=int, default=1024)
+    ap.add_argument("--max-len", type=int, default=768)
     ap.add_argument("--n-train", type=int, default=8000)
     ap.add_argument("--n-val", type=int, default=400)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--tag", default="")
     ap.add_argument("--data", default="data/tulu_subset.jsonl")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--eval-after", action="store_true",
+                    help="run the E01 instrument in-process when training ends "
+                         "(avoids a 15GB save/reload round-trip for S and F)")
+    ap.add_argument("--save-model", action="store_true")
+    ap.add_argument("--stimuli", nargs="*",
+                    default=["stimuli/e01_pairs.jsonl", "stimuli/e01_pairs_d.jsonl"])
     args = ap.parse_args()
 
     torch.manual_seed(args.seed); random.seed(args.seed)
@@ -131,7 +180,7 @@ def main():
     tok.chat_template = AutoTokenizer.from_pretrained(tmpl_repo).chat_template
 
     model = AutoModelForCausalLM.from_pretrained(repo, dtype=torch.bfloat16).cuda()
-    if args.arm in ("S", "F"):
+    if args.arm in ("S", "F") and args.grad_ckpt:
         model.gradient_checkpointing_enable()
     model.config.use_cache = False
     # The stop set for E02 is the token that terminates an assistant turn *in the
@@ -148,8 +197,11 @@ def main():
 
     examples = [json.loads(l)["messages"] for l in open(args.data)]
     random.Random(1234).shuffle(examples)          # SAME order for every arm
-    tr = SFTData(tok, examples[args.n_val:args.n_val + args.n_train], args.max_len)
-    va = SFTData(tok, examples[:args.n_val], args.max_len)
+    ck = f"data/cache/{args.family}_L{args.max_len}"
+    tr = SFTData.cached(tok, examples[args.n_val:args.n_val + args.n_train],
+                        args.max_len, f"{ck}_tr{args.n_val}_{args.n_train}.pkl")
+    va = SFTData.cached(tok, examples[:args.n_val], args.max_len,
+                        f"{ck}_va{args.n_val}.pkl")
     print(f"train={len(tr)} val={len(va)}", flush=True)
     pad = tok.pad_token_id
     g = torch.Generator(); g.manual_seed(args.seed)
@@ -175,21 +227,28 @@ def main():
 
     it = iter(tl); step = 0; t0 = time.time()
     while step < args.steps:
+        tstep = time.time()
         opt.zero_grad(set_to_none=True)
         tot = 0.0
+        nseq = ntok = 0
         for _ in range(args.accum):
             try: batch = next(it)
             except StopIteration: it = iter(tl); batch = next(it)
             ids, lab, att = (x.cuda() for x in batch)
+            nseq += ids.size(0); ntok += ids.numel()
             logits = arm(ids, att)
-            loss = F.cross_entropy(logits[:, :-1].reshape(-1, logits.size(-1)).float(),
-                                   lab[:, 1:].reshape(-1), ignore_index=IGNORE)
+            loss = chunked_ce(logits, lab)
             (loss / args.accum).backward()
             tot += loss.detach().item() / args.accum
         torch.nn.utils.clip_grad_norm_(arm.trainable_parameters(), 1.0)
         opt.step(); sch.step()
         arm.enforce_freeze()           # exact restore for arm S
         step += 1
+        if step <= 3:
+            torch.cuda.synchronize()
+            print(f"[timing] step {step}: {time.time() - tstep:.2f}s  "
+                  f"{nseq} seqs / {ntok} padded tokens  "
+                  f"peak {torch.cuda.max_memory_allocated() / 1e9:.1f}GB", flush=True)
         if step % 50 == 0 or step == args.steps:
             m = boundary_metrics(arm, vl, sids, "cuda")
             m.update(step=step, train_loss=tot, lr=sch.get_last_lr()[0],
@@ -202,12 +261,56 @@ def main():
     # persist only what the arm was allowed to change
     if arm.readout is not None:
         torch.save(arm.readout.state_dict(), f"{outdir}/readout.pt")
-    else:
+    elif args.save_model:
         model.save_pretrained(f"{outdir}/model", safe_serialization=True)
         tok.save_pretrained(f"{outdir}/model")
     with open(f"{outdir}/config.json", "w") as fh:
         json.dump(vars(args) | {"stop_ids": sids, "n_trainable": arm.n_trainable()}, fh, indent=2)
+
+    if args.eval_after:
+        run_e01(arm, tok, sids, args, outdir)
     print("done", outdir)
+
+
+@torch.no_grad()
+def run_e01(arm, tok, sids, args, outdir):
+    """Run the E01 exact-prefix instrument on the just-trained arm, in process."""
+    from e01_run import measure
+
+    class _Wrap:
+        device = "cuda"
+        def __call__(self, x):
+            class O: pass
+            o = O(); o.logits = arm(x, None)
+            return o
+
+    arm.eval()
+    w = _Wrap()
+    for path in args.stimuli:
+        if not os.path.exists(path):
+            continue
+        items = [json.loads(l) for l in open(path)]
+        rows = []
+        for it in items:
+            c = measure(w, tok, it, "complete", True, sids)
+            i = measure(w, tok, it, "incomplete", True, sids)
+            assert c.pop("_prefix_ids") == i.pop("_prefix_ids"), \
+                f"exact-prefix violation on {it['item_id']}"
+            comp = c.pop("_comp_tok_p2"); i.pop("_comp_tok_p2")
+            row = dict(item_id=it["item_id"], family=it["family"],
+                       n_given=it["n_given"], comp_token=comp, stage=args.arm,
+                       model_family=args.family, chat=True)
+            row.update({"cmp_" + k: v for k, v in c.items()})
+            row.update({"inc_" + k: v for k, v in i.items()})
+            for tag in ("p1", "p2"):
+                row[f"d_goal_{tag}"] = row[f"cmp_{tag}_margin"] - row[f"inc_{tag}_margin"]
+            rows.append(row)
+        name = "e01.jsonl" if path.endswith("e01_pairs.jsonl") else "e01_d.jsonl"
+        with open(f"{outdir}/{name}", "w") as fh:
+            for r in rows:
+                fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+        print("wrote", f"{outdir}/{name}", len(rows), flush=True)
+    arm.train()
 
 
 if __name__ == "__main__":
