@@ -64,6 +64,26 @@ number appears anywhere in either prompt, only the predicate changes.
 Every run also emits, per item, the continuation-awareness control (rank and
 probability of the correct missing continuation in the incomplete condition).
 
+## Current result
+
+Olmo-3 7B base, four parameter-locus arms on the same 12k ordinary Tülu-3
+examples, verified bit-exact freezes, 2 seeds, 3 training budgets.
+
+Goal-relative stopping is acquired through **two components with different
+budget scaling**:
+
+1. a large **readout** component available immediately from the frozen
+   pretrained state — a 4,097-parameter delta on the single stop output row,
+   every non-stop logit bit-exactly unchanged, reaches `d_stop` +6.70 from a
+   base of +2.58, and extra readout capacity adds nothing;
+2. a smaller but **growing state** component — full adaptation wins at every
+   budget, by +0.80 at 250 steps and +2.34 at 2250, while the readout route
+   saturates.
+
+A locus comparison at a single budget is not identified: this project produced
+two different wrong headlines that way before the budget ladder settled it.
+
 ## Research log
 
-See `docs/RESEARCH_LOG.md`.
+See `docs/RESEARCH_LOG.md` — every entry records what was observed, what it
+rules out, what remains, and why the next experiment discriminates.

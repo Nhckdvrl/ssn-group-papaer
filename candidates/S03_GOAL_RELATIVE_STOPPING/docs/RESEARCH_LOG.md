@@ -602,3 +602,66 @@ component alone would misdescribe the phenomenon.
 **Seed 1 of the full ladder is running.** The 2250-step divergence rests on one
 seed so far and must replicate before it is load-bearing. Until then this entry
 records a strong but single-seed finding, not a settled result.
+
+---
+
+## 2026-09-17 — Budget ladder replicated (2 seeds): the two-component law holds
+
+`F@2250` replicates almost exactly across seeds: **+10.78** (s0) and **+10.84**
+(s1). Pooling both seeds, paired over the 50 items:
+
+| steps | R `d_stop` | F `d_stop` | **F − R (paired)** | 95% CI | sign p | +/− |
+|---|---|---|---|---|---|---|
+| 0 (base) | +2.58 | +2.58 | — | | | |
+| 250 | +6.70 | +7.50 | +0.80 | [0.31, 1.31] | **0.00094** | 37/13 |
+| 750 | +7.24 | +7.93 | +0.69 | [0.06, 1.34] | 0.48 | 28/22 |
+| 2250 | +8.47 | **+10.81** | **+2.34** | [1.25, 3.43] | **0.0026** | 36/14 |
+| *natural SFT* | | *+12.50* | | | | |
+
+### Second correction, in the other direction
+
+With both seeds pooled, `F − R` is **positive at every budget**, and at 250
+steps it is now strongly consistent across items (37/13, sign p = 0.00094). The
+750-step rung, where the single-seed run showed a null, is the outlier rather
+than the rule.
+
+So the earlier framing "at 750 steps the locus does not matter" was an artefact
+of one budget in one seed. **Internal-state adaptation contributes at every
+budget tested.** What changes with budget is the *size* of that contribution.
+
+### Settled reading of the parent question
+
+Acquisition of goal-relative stopping decomposes into two components that differ
+in how they scale with training budget:
+
+1. **A large, immediately available readout component.** From the frozen
+   pretrained state, a **4,097-parameter** additive delta on the single stop
+   output row — with every non-stop logit bit-exactly unchanged — lifts
+   `d_stop` from +2.58 to +6.70 within 250 steps, i.e. roughly half the distance
+   to the released post-trained checkpoint. The goal information is already in
+   the pretrained final hidden state and already linearly readable. Giving the
+   readout 500x more capacity and a nonlinearity (Rmlp) adds nothing, so this
+   component is limited by the state, not by the readout.
+   **This is the "reuse" half of the answer.**
+
+2. **A smaller but growing state component.** Full adaptation beats the frozen
+   state at every budget, and the margin grows from +0.80 (250 steps) to +2.34
+   (2250 steps) while the readout route saturates (R: +6.70 → +7.24 → +8.47,
+   decelerating). Notably F's late gain is **not** general language-model
+   improvement — its held-out CE worsens after step 450 while its goal-relative
+   stopping keeps rising.
+   **This is the "new computation" half.**
+
+The registered outcome this matches is #4, hybrid acquisition — but with
+structure the plan did not anticipate: the two components are distinguished by
+their **budget scaling**, not by which is larger. Reporting either alone
+misdescribes the phenomenon, and reporting a single budget can flip the apparent
+answer.
+
+### Methodological lesson worth keeping
+
+A four-arm parameter-locus comparison at **one** training budget is not
+identified. Both of this project's wrong readings came from reading a locus
+conclusion off a single budget — first "locus doesn't matter", then "locus only
+matters at large budget". Only the ladder, replicated, gave the stable law. Any
+future arm comparison in this project must be run at more than one budget.

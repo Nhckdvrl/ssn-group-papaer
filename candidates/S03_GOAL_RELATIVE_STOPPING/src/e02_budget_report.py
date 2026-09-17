@@ -4,9 +4,10 @@ sys.path.insert(0, os.path.dirname(__file__))
 from e02_paired import load, mean, boot_ci, sign_test
 
 BASE = "results/e01/olmo3-7b_base_grafted.jsonl"
-RUNGS = [(250, "results/e02/budget/{a}_st250_s0/e01.jsonl"),
-         (750, "results/e02/final/{a}_s0/e01.jsonl"),
-         (2250, "results/e02/budget/{a}_st2250_s0/e01.jsonl")]
+SEEDS = ["0", "1"]
+RUNGS = [(250, "results/e02/budget/{a}_st250_s{s}/e01.jsonl"),
+         (750, "results/e02/final/{a}_s{s}/e01.jsonl"),
+         (2250, "results/e02/budget/{a}_st2250_s{s}/e01.jsonl")]
 
 base = load([BASE])
 print(f"{'steps':>6} {'R d_stop':>10} {'F d_stop':>10} {'F - R (paired)':>18}"
@@ -15,10 +16,13 @@ print("-" * 82)
 print(f"{'0':>6} {mean(list(base.values())):>10.2f} "
       f"{mean(list(base.values())):>10.2f}")
 for st, tmpl in RUNGS:
-    pr, pf = tmpl.format(a="R"), tmpl.format(a="F")
-    if not (os.path.exists(pr) and os.path.exists(pf)):
+    pr = [tmpl.format(a="R", s=s) for s in SEEDS]
+    pf = [tmpl.format(a="F", s=s) for s in SEEDS]
+    pr = [x for x in pr if os.path.exists(x)]
+    pf = [x for x in pf if os.path.exists(x)]
+    if not (pr and pf):
         print(f"{st:>6}  (incomplete)"); continue
-    R, Fa = load([pr]), load([pf])
+    R, Fa = load(pr), load(pf)
     ks = sorted(set(R) & set(Fa))
     d = [Fa[k] - R[k] for k in ks]
     lo, hi = boot_ci(d)
