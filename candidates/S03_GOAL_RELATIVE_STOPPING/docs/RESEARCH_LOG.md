@@ -756,3 +756,98 @@ Also fixed: `e02_verify_freeze.py` took its checkpoint from a hard-coded
 argument, runs one arm per process, keeps the fp32 reference on CPU, and checks
 the 7B arms in bf16 with SGD (a 7B fp32 model plus Adam state is ~116GB; the
 freeze claim is dtype-independent).
+
+---
+
+## 2026-09-18 — Raw-logit decomposition: the residual is CONTINUATION SUPPRESSION, not a better stop readout
+
+Zero GPU. Recomputed from the raw logits already stored in every result file
+(`src/e01_rawlogit.py`).
+
+### Why the gauge matters
+
+The headline had been `d_stop = Δ log p(STOP)`. But
+`log p_stop = z_stop − log Z`, so `d_stop` carries a whole-vocabulary
+normalizer term from two *different* prompts. That term is not a property of
+the stop action, so a **parameter-locus** claim must not rest on it. The
+`dlogZ` column below shows the term is large and, crucially, **differs
+systematically by arm** (R ≈ 5.7 throughout, F falls 3.36 → 2.51, natSFT −0.56).
+
+Three gauges, all exact:
+
+```
+d_goal  = dz_stop − dz_cont        gauge-free; decides stop-vs-continue
+d_stop  = dz_stop − dlogZ          probability gauge; behavioural but vocabulary-wide
+dz_stop = w_stop · (h_complete − h_incomplete)     the stop readout itself
+```
+
+### The table
+
+| | `d_goal` | `dz_stop` | `dz_cont` | `dlogZ` |
+|---|---|---|---|---|
+| base | 7.50 | 8.16 | +0.65 | 5.58 |
+| R@250 | 11.70 | 12.36 | +0.67 | 5.66 |
+| R@750 | 12.22 | 12.88 | +0.67 | 5.64 |
+| R@2250 | 13.53 | **14.19** | **+0.67** | 5.73 |
+| F@250 | 11.39 | 10.86 | −0.53 | 3.36 |
+| F@750 | 12.28 | 11.25 | −1.03 | 3.32 |
+| F@2250 | 18.80 | **13.32** | **−5.48** | 2.51 |
+| natSFT | 17.33 | **11.94** | **−5.40** | −0.56 |
+
+Paired against base, both seeds pooled, 50 items:
+
+| contrast | `dz_stop` | sign | `dz_cont` | sign | `d_goal` |
+|---|---|---|---|---|---|
+| R@2250 − base | **+6.04** [5.00, 7.09] | 49/1 | **+0.01** [−0.01, 0.04] | 25/14 | +6.03 |
+| F@2250 − base | +5.16 [3.98, 6.33] | 44/6 | **−6.14** [−7.25, −5.04] | 3/47 | +11.30 |
+| natSFT − base | +3.78 [2.29, 5.30] | 37/13 | −6.05 [−7.70, −4.49] | 8/42 | +9.83 |
+
+### What this changes
+
+**The previous "growing state component" was not a stronger stop readout.**
+
+1. **On the stop readout axis, readout-only is the best arm, not the worst.**
+   `dz_stop` gain over base: R **+6.04** > F +5.16 > natSFT +3.78. A
+   4,097-parameter delta extracts *more* goal sensitivity from the frozen
+   pretrained state than full fine-tuning does, and more than the released
+   post-trained checkpoint has.
+2. **R's continuation side is pinned at exactly zero** (+0.01, CI [−0.01, 0.04]).
+   That is structural — R cannot touch a non-stop logit — and it doubles as an
+   independent confirmation that the freeze held at evaluation time.
+3. **F's and natSFT's extra behavioural margin is continuation suppression.**
+   F's total gain +11.30 splits almost evenly into stop-readout +5.16 and
+   continuation-suppression +6.14. For the released checkpoint the
+   continuation half (+6.05) is the *larger* one.
+4. **It is the continuation half that grows with budget**, not the readout half:
+   F's `dz_cont` goes −0.53 → −1.03 → −5.48 while its `dz_stop` moves only
+   10.86 → 13.32, tracking R's 12.36 → 14.19.
+
+### Corrected statement of the result
+
+> Goal-relative stopping is acquired through **two mechanisms in different
+> parameter loci, doing different jobs**:
+>
+> 1. **the stop readout learns to read goal completion off an already-sufficient
+>    pretrained state** — 4,097 parameters suffice, extra capacity adds nothing
+>    (Rmlp), and this route alone matches or beats full fine-tuning *on the stop
+>    logit itself*;
+> 2. **the content computation learns to suppress the correct continuation once
+>    the goal is satisfied** — which the stop readout structurally cannot do,
+>    and which is what keeps growing with training budget.
+>
+> Ordinary post-training does both, and in the released checkpoint the
+> continuation-suppression half is the larger contributor to the behavioural
+> stopping margin.
+
+This supersedes both earlier readings ("locus doesn't matter" and "a growing
+state component strengthens goal-relative stopping"). It is also a sharper
+answer to the parent question than the registered outcome list anticipated:
+the reuse-vs-new-computation dichotomy is wrong not because the answer is
+"hybrid", but because **the two loci are not competing to do the same job.**
+
+### Open
+
+`S` (may move non-stop output rows) vs `Sbody` (strict state-only, entire head
+frozen) at 250/750/2250 is running. That separates "the residual is internal
+computation" from "the residual is the rest of the output head" — the two are
+still confounded in `F`.

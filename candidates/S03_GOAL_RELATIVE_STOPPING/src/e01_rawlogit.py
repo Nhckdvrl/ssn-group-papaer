@@ -80,6 +80,8 @@ def main():
     ap.add_argument("specs", nargs="+", help="label=path[,path2]")
     ap.add_argument("--pos", default="p2")
     ap.add_argument("--vs", default=None, help="label to take paired contrasts against")
+    ap.add_argument("--metrics", nargs="+", default=["dz_stop", "dz_cont", "d_goal"],
+                    help="which quantities to take paired contrasts on")
     args = ap.parse_args()
 
     data = {}
@@ -105,16 +107,17 @@ def main():
 
     if args.vs and args.vs in data:
         base = data[args.vs]
-        print(f"\npaired contrasts against '{args.vs}' (raw stop logit)")
-        hdr = (f"  {'contrast':<24}{'d dz_stop':>11}{'95% CI':>16}{'sign p':>9}{'+/-':>9}")
-        print(hdr); print("  " + "-" * (len(hdr) - 2))
-        for name, d in data.items():
-            if name == args.vs: continue
-            ks = sorted(set(d) & set(base))
-            v = [d[k]["dz_stop"] - base[k]["dz_stop"] for k in ks]
-            lo, hi = boot_ci(v); p, a, b = sign_test(v)
-            print(f"  {name + ' - ' + args.vs:<24}{mean(v):>11.2f}"
-                  f"{f'[{lo:.2f},{hi:.2f}]':>16}{p:>9.2}{f'{a}/{b}':>9}")
+        for metric in args.metrics:
+            print(f"\npaired contrasts against '{args.vs}'  --  {metric}")
+            hdr = (f"  {'contrast':<24}{'diff':>9}{'95% CI':>16}{'sign p':>9}{'+/-':>9}")
+            print(hdr); print("  " + "-" * (len(hdr) - 2))
+            for name, d in data.items():
+                if name == args.vs: continue
+                ks = sorted(set(d) & set(base))
+                v = [d[k][metric] - base[k][metric] for k in ks]
+                lo, hi = boot_ci(v); p, a, b = sign_test(v)
+                print(f"  {name + ' - ' + args.vs:<24}{mean(v):>9.2f}"
+                      f"{f'[{lo:.2f},{hi:.2f}]':>16}{p:>9.2}{f'{a}/{b}':>9}")
 
 
 if __name__ == "__main__":
