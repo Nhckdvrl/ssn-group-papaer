@@ -4,7 +4,11 @@ This directory is the working ledger for Sasano-taste-driven NLP/LLM research-qu
 
 Target venues: **ACL / EMNLP / NAACL Main**. TACL / ICLR / ICML / NeurIPS are secondary calibration. EACL / AACL / Findings / workshops / arXiv may be used aggressively for novelty collision, but not as the main positive taste signal.
 
-Current selected topics: **0**.
+Current selected topics: **1**.
+
+## Current selection
+
+- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?** Selected / pilot-authorized on 2026-09-17 after nearest-prior re-audit. The parent question is where the information→stopping mapping is acquired when a pretrained document continuer becomes an assistant: pretrained/native stop mapping, stop-readout adaptation, internal-state adaptation, or their interaction. See `SELECTED_TOPICS.md` for the frozen claim and Base / Readout-only / State-only / Full-SFT experiment.
 
 ## Governing taste
 
@@ -141,5 +145,5 @@ Do not revive them by adding more models, datasets, metrics, or rhetoric.
 Files:
 
 - `FAILED_TOPICS.md` — serious ideas that died; do not revive without evidence resolving the recorded failure.
-- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **0**.
+- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **1**.
 - `NEXT_ROUND_PROMPT_ZH.md` — current handoff prompt; this is the most up-to-date operational search procedure.
