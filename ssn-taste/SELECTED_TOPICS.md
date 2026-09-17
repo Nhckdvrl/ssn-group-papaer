@@ -22,58 +22,180 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ## Current selections
 
-### S03 — From Document End to Task Done: What Does Post-Training Teach a Model About When to Stop?
+### S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?
 
-**Status:** SELECTED — PILOT REQUIRED BEFORE PAPER-MAINLINE PROMOTION  
-**Registered:** 2026-09-17
+**Status:** SELECTED — PILOT-AUTHORIZED; CLAIM FROZEN BEFORE RUNS  
+**Registered:** 2026-09-17  
+**Re-audited:** 2026-09-17
 
-**Research question.** Pretraining teaches an autoregressive LM when a document or text sequence ends. Instruction tuning requires a different decision: whether the assistant has satisfied the user's current goal and should end its turn. Does post-training mainly **reuse/retune the pretrained document-completion computation**, or does it learn a **new goal-conditioned task-completion signal** that can dissociate from ordinary textual closure and response-length priors?
+**One-sentence parent question.** A pretrained language model already has a learned action for “this text/document ends here.” When it becomes an assistant, how is information about **the user's goal being complete** connected to that stopping action: was the needed information already present and post-training mainly changes the readout, or must post-training change the model's internal state/computation before goal completion can control termination?
 
-**Why this is a natural Sasano-style question.** The puzzle exists independently of any one recent paper. Modern model families explicitly distinguish pretraining document-end markers from post-training end-of-turn markers: e.g. Qwen documents `<|endoftext|>` as end-of-document and `<|im_end|>` as end-of-turn; Llama 3.3 documents `<|end_of_text|>` for base-model text termination and `<|eot_id|>` for when the model judges that it has finished interacting with the initiating user message. The scientific object is therefore not a token-format quirk but a changed learning problem: a text continuer becomes an assistant that must decide when a goal has been completed.
+This is the parent. Do not broaden it to “how instruction following works”, “whether models represent goal satisfaction”, “how models plan response length”, or “what the EOS circuit is”.
 
-**Competing explanations.**
+**Why the question exists independently of any trigger paper.** Pretraining and assistant use impose different completion criteria. A pretrained LM predicts boundaries in text/documents; an assistant should stop when the current requested job is done, even when the same response prefix could legitimately continue under a different request. Modern chat systems often make this distinction explicit with a separate end-of-turn token. OpenChat even motivates a distinct end-of-turn token as avoiding confusion with the EOS meaning learned during pretraining. The scientific problem therefore exists even if all recent interpretability papers disappeared: what changed between “text ends” and “task is done” when a continuer becomes an assistant?
 
-1. **Reuse / retuning.** Post-training largely reuses the pretrained notion of sequence/document completion, perhaps changing only its readout or calibration. Apparent semantic stopping follows textual closure, response shape, and length priors already latent in the base model.
-2. **New task-completion computation.** Instruction-response training creates a goal-relative completion signal: with the generated prefix held fixed, whether the user-requested quantity has been satisfied causally changes the stop decision, beyond textual closure and length.
-3. **Hybrid.** Pretrained closure machinery supplies a reusable substrate, while post-training adds a goal-conditioned component that becomes decisive only for assistant-turn termination.
+## Claim boundary: what S03 is and is not allowed to claim
 
-**Nearest-prior audit.** The parent question is not currently owned by the nearest work found through 2026-09-17.
+S03 does **not** claim to discover a generic goal-satisfaction representation, a universal instruction-following mechanism, a new EOS circuit, or the fact that post-training creates response-length planning. Those parent claims are already occupied or too close to existing work.
 
-- Yue et al. (ACL 2024 Main), *Less is More: Mitigating Multimodal Hallucination from an EOS Decision Perspective*, shows that an LMM's EOS decision can reflect completeness by comparing generated text with an image. It owns semantic EOS/completeness in a multimodal hallucination setting, but does not study the pretraining-to-instruction-tuning transition or document-end versus user-goal completion.
-- Hewitt et al. (2024), *Instruction Following without Instruction Tuning*, shows that response-only and single-task tuning can induce broad instruction following and gives a rule-based adapter whose ingredients include gradually increasing EOS probability. It shows that simple distributional changes can elicit assistant-like behavior, but does not identify what teaches a model that a particular user goal is complete or whether that signal reuses pretrained document-end computation.
-- Pal (2026), *Prerequisite-Conditioned Causal Continuation Gating in a Language Model* / PCCG-2, engineers a condition-dependent continuation/EOS gate and causally flips GO versus EOS. The released work explicitly bounds itself as an engineered gate rather than a discovered natural circuit in stock Qwen; it demonstrates that continuation control can be separated from content, not how ordinary instruction post-training naturally acquires task-relative termination.
-- 2026 work on response-length planning / over-expansion shows that instruction tuning can create response-length or planning structure and stopping pathologies. That occupies generic post-training length planning, not the distinction between textual/document closure and goal satisfaction.
-- LIMA and modern model-format specifications provide structural motivation by separating conversation end-of-turn from pretrained sequence-end semantics, but do not answer the scientific question.
+The only defensible contribution is:
 
-**Reviewer compression that must remain true.** The paper must be describable as:
+> **identify where goal-relative stopping is acquired between pretraining and post-training, by separating pretrained textual-closure propensity from user-goal completion and by intervening on the parameter locus that can change the stop action.**
 
-> *This work asks how post-training changes the meaning of completion in a language model, and uses matched and causal interventions to distinguish reuse of pretrained document-ending computation from newly learned goal-conditioned task completion.*
+A reviewer should be able to compress the paper to:
 
-If the work later compresses to “an EOS/EOT analysis on newer chat models”, “ACL-2024 completeness but text-only”, or “a stopping benchmark”, revoke selection.
+> *The paper asks how a pretrained document-ending behavior becomes goal-relative assistant stopping, and distinguishes readout reuse from post-training-induced state/computation change under matched stopping decisions.*
 
-**Minimum E01 — identify goal-relative stopping without changing the response prefix.** Construct small matched families in which the assistant prefix is token-for-token identical but the user goal differs only in whether that prefix already satisfies it. Example: “output the first 3 items” versus “output the first 4 items”, replaying the same three-item assistant prefix. Measure the native end-of-turn token against the correct next-content token. Include a continuation-awareness check: the incomplete-goal condition must assign strong probability to the specific missing item, so a null EOT effect cannot be blamed on failure to understand the instruction.
+If the eventual paper instead compresses to “an EOS analysis”, “a stopping benchmark”, “instruction tuning creates a completion representation”, or “we found a stopping direction”, revoke selection.
 
-E01 must cross at least two non-isomorphic operations (e.g. bounded list extraction and multi-part question answering / constrained copying), with length, punctuation, lexical suffix, and assistant-prefix tokens exactly matched inside each pair. The purpose is identification, not creation of a benchmark.
+## Nearest-prior audit and exact ownership boundary
 
-**E01 gate.** Continue only if there is a robust within-prefix goal-completion effect on native turn termination while continuation-awareness is present. A pure length/punctuation/textual-closure account, or an effect that disappears under minimal paraphrase / second operation family, is a STOP or reformulation trigger.
+The strongest nearby papers do not currently own this acquisition question, but they sharply constrain the claim.
 
-**Minimum E02 — identify the learning source / reuse question.** Use a small open base model with a matched post-trained derivative or perform bounded SFT from one base checkpoint. The experiment must include controls that separate goal-conditioned acquisition from generic response-distribution adaptation. A preferred design is a shared-response training comparison with: (a) normal instruction-response pairing, (b) response-only tuning with the same responses and termination targets, and (c) mismatched/shuffled instruction-response pairing, followed by the frozen-prefix goal-completion test. In parallel, compare the pretrained document-end signal with the post-trained turn-end signal using same-family checkpoints and a causal/representation-transfer test only if the transfer is interpretable.
+1. **Yue et al., ACL 2024 Main — _Less is More: Mitigating Multimodal Hallucination from an EOS Decision Perspective_.** They show that an LMM's EOS decision reflects sequence completeness relative to an image and use this to mitigate hallucination. They own semantic completeness influencing EOS in a multimodal model. They do **not** study the pretraining → instruction/post-training transition, document-end versus user-goal completion, or which part of the model must change for task completion to control stopping.
 
-This design distinguishes whether task-relative stopping requires learning the instruction-response relation or can emerge from marginal response-shape / generic EOS calibration alone. Do not claim “reuse” versus “new circuit” from representational similarity alone.
+2. **Hewitt et al., 2024 — _Instruction Following without Instruction Tuning_.** Response-only tuning and narrow-domain tuning can elicit broad instruction following; their constructive rule-based adapter also includes gradually increasing EOS probability. Therefore S03 must **not** use “paired instruction-response supervision is necessary” as its central identification claim, and the old paired-vs-response-only E02 is rejected. This work does not isolate goal-relative termination or decompose whether stopping is inherited in pretrained states versus acquired through state/readout changes.
 
-**Data and cost.** No large annotation or synthetic benchmark is required. Controlled matched examples are an identification instrument and can be instantiated from simple natural lists, existing QA/extraction data, or public instruction-response corpora. E01 is inference-only. E02 can use a 0.5B–4B open model and a small SFT corpus; the first decision should fit within a modest local-GPU budget.
+3. **Potraghloo et al., 2026 — _One Token Away from Collapse: The Fragility of Instruction-Tuned Helpfulness_.** They report prompt-level response-length/planning structure in instruction-tuned models that is absent in their base-model probes. Therefore S03 cannot claim novelty from “post-training creates a planning/completion representation”. Their object is constraint-induced response collapse and response-length planning, not acquisition of the stop action from pretrained document closure.
 
-**Why this is not evaluation-centric.** The manipulated quantity is whether the user goal has been satisfied while the generated response prefix is held fixed, and the scientific target is how post-training changes the model's termination computation. The central result should be a causal/learning-source decomposition, not `model × benchmark × score`.
+4. **Rocchetti & Ferrara, 2026 — _How LLMs Follow Instructions: Skillful Coordination, Not a Universal Mechanism_.** They find task-specific, temporally dynamic constraint monitoring rather than one universal compliance mechanism. Therefore S03 cannot claim novelty from merely detecting goal/constraint-satisfaction information during generation. They do not study termination as the dependent action or the base → post-training acquisition locus of that action.
 
-**Interpretable outcomes.**
+5. **Pal, 2026 — PCCG / PCCG-2.** These works causally engineer prerequisite-conditioned continuation control and, in PCCG-2, alter native EOS while frozen content logits remain unchanged. They establish that stopping/continuation can be separated from content and controlled by a small learned gate. The released work explicitly bounds itself as an **engineered** continuation gate rather than a naturally discovered circuit in stock Qwen. It does not answer how ordinary post-training transforms pretrained text-ending behavior into goal-relative stopping.
 
-- Strong goal effect only after paired instruction-response training → evidence that task-relative completion is genuinely acquired from the conditional relation, not merely response style or length.
-- Similar goal effect after response-only / mismatched tuning → evidence that stopping is largely inherited or induced by generic response-distribution adaptation; the “new task-completion computation” account weakens.
-- Base document-end signal causally transfers to post-trained turn-end decisions → evidence for reuse/retuning.
-- Goal-relative effect is present but causal transfer is weak → evidence for a post-training-specific component.
-- No robust goal-relative effect despite correct continuation awareness → important negative result: assistant stopping is much more dominated by textual/length priors than natural interaction suggests; reassess Main scope after E01.
+6. **Instruct Vectors, 2026.** A frozen base model can be pushed toward assistant-like behavior, including proper EOS use, with learned low-dimensional steering parameters. This is important adjacent evidence that much assistant behavior may already be latent in the base model. It strengthens the need for S03's readout-vs-state identification but does not isolate goal-relative stopping or textual closure versus task completion.
 
-**Kill conditions.** Kill or demote if a newly found paper directly owns the pretraining document-end → post-training task-end acquisition question; if the only surviving result is generic EOS probability/response-length behavior; if E01 requires model-shopping or prompt-search to appear; if E02 cannot distinguish paired goal learning from generic response adaptation; or if the central output becomes a stopping benchmark or method comparison.
+7. **OpenChat, ICLR 2024.** It uses a distinct end-of-turn token that functions like EOS while avoiding confusion with EOS semantics learned during pretraining. This is structural motivation for the scientific distinction, not an answer to the acquisition question.
+
+**Novelty verdict as of 2026-09-17:** no located paper directly owns the parent question “how does pretrained text/document completion become goal-relative assistant termination, and is the required change primarily in the stop readout or in internal state/computation?” S03 survives, but only under this narrow parent.
+
+---
+
+## E01 — Establish the natural phenomenon with an exact-prefix goal intervention
+
+The first experiment must show that an ordinary instruction-tuned model's native end-of-turn decision is genuinely **goal-relative**, not merely correlated with response length, punctuation, or textual closure.
+
+For each item, hold the assistant prefix **token-for-token identical** and change only the user's requested stopping condition.
+
+Example family A — bounded extraction:
+
+- complete goal: “Return the first **3** entries.”
+- incomplete goal: “Return the first **4** entries.”
+- replay the exact same assistant prefix containing entries 1–3.
+
+Example family B — semantic slot completion:
+
+- complete goal: request fields A and B.
+- incomplete goal: request fields A, B, and C.
+- replay the exact same assistant prefix containing correct A and B.
+
+The second family must not reduce to another counting/list-length task.
+
+**Primary stop quantity.** For each exact-prefix pair, compare the native stop token against the first correct missing continuation token from the incomplete condition:
+
+`stop_margin = logit(EOT) - logit(next_missing_token)`
+
+Use the same competitor token inside the pair. The key estimand is the within-prefix change in `stop_margin` caused by changing only whether the user goal is already satisfied.
+
+**Continuation-awareness control.** In the incomplete condition, the model must assign substantial probability/rank to the correct missing continuation. Otherwise a low stop rate could be uninterpretable because the model simply does not know how to continue.
+
+**Textual-closure control.** Record the corresponding base model's native EOS propensity on the same response prefix under a neutral/plain continuation format. Use that as a continuous pretrained textual-closure score. E01 must contain prefixes spanning both high and low base-EOS closure. The decisive pattern is a goal effect inside exact-prefix pairs that cannot be reduced to this pretrained closure propensity.
+
+**E01 gate.** Continue if the goal-completion intervention reliably shifts native stop margin in at least two non-isomorphic operation families, with correct continuation awareness and without prompt/model shopping. Kill or reformulate if the effect exists only in one counting-style family, disappears under minimal paraphrase, or is explained almost entirely by base textual-closure propensity.
+
+---
+
+## E02 — Minimal acquisition-locus experiment
+
+The old E02 (`paired instruction-response vs response-only vs shuffled`) is **retired**. Hewitt makes that decomposition too easy to compress into generic implicit instruction tuning, and it still does not identify whether the stopping computation itself is inherited or newly formed.
+
+The replacement is a matched parameter-locus intervention from one small open base checkpoint. Use the **same native EOS token in every controlled arm** so token identity cannot masquerade as a scientific result. Train/evaluate all arms on the same plain instruction-response format and the same small corpus.
+
+Let the model be conceptually split into internal computation/state `h_θ` and the native EOS output row/readout `w_EOS`.
+
+### Arm 0 — Native base
+
+No adaptation. Measure whether pretrained EOS already shows any goal-relative stop effect under the exact-prefix E01 instrument.
+
+This is the actual “document/text ending” baseline.
+
+### Arm R — Readout-only
+
+Freeze the entire transformer and every non-EOS output row. Train only the native EOS output row (and EOS bias if the architecture has one) to distinguish response-internal continuation positions from true assistant-response boundaries.
+
+This asks:
+
+> **Are pretrained hidden states already sufficient for goal-relative stopping, such that post-training only needs to attach/recalibrate a stop readout?**
+
+Because all non-EOS logits and all hidden states are frozen, success cannot be attributed to newly learned internal goal computation.
+
+### Arm S — State-only
+
+Freeze the native EOS output row at its pretrained value. Adapt the model's internal parameters on the same instruction-response data while keeping the stop readout fixed.
+
+This asks:
+
+> **Can post-training make goal completion drive the old document-end action by changing internal state/computation alone?**
+
+This arm is the one missing from the previous three-stage design. Without it, `readout-only fails; full SFT succeeds` would not identify where the extra learning occurred.
+
+### Arm F — Full SFT
+
+Adapt both the internal model and the EOS readout on the same data. This is the unconstrained positive-control/interaction ceiling and should recover ordinary assistant stopping if the setup is healthy.
+
+### Why the four arms are the minimum identified design
+
+The pattern across `Base / Readout-only / State-only / Full` directly distinguishes parameter-locus explanations:
+
+- **Base already goal-relative:** much of the information→stop mapping predates post-training; post-training mainly calibrates or changes interaction format.
+- **Readout-only succeeds, Base weak:** base representations already contain the needed goal information, but pretrained EOS does not read it out appropriately.
+- **State-only succeeds, Readout-only weak:** post-training must reorganize internal state so the old EOS readout can act on user-goal completion.
+- **Both constrained arms partly succeed, Full strongest:** hybrid acquisition; stopping uses both inherited information/readout structure and post-training state/readout adaptation.
+- **Only Full succeeds:** interaction between state and readout changes is load-bearing; simple “reuse” versus “new representation” is false.
+
+The claim is about **sufficiency under controlled parameter interventions**, not metaphysical proof that a unique natural circuit exists.
+
+### Optional secondary analysis — paired released base/instruct checkpoints
+
+Only after E02 works, use a real same-family base/instruct pair as ecological validation. Compare their exact-prefix goal effects and, if hidden-state geometry is stable enough to make it interpretable, attempt stop-row/state swaps or limited causal transfer. This is **not** required for the first pilot and representational similarity alone is not evidence for reuse.
+
+---
+
+## Data, scale, and feasibility
+
+No benchmark construction is required. The controlled items are identification instruments, not the paper's contribution.
+
+- **E01:** tens to low hundreds of exact-prefix matched pairs across two operation families; inference only.
+- **E02:** one 0.5B–1.7B base model for the first pilot, one small public instruction corpus or a few thousand ordinary instruction-response examples, and three lightweight adaptation runs beyond the base (`R`, `S`, `F`).
+- Use one seed to decide whether the phenomenon/design works; add seeds/models only after the effect and identification are real.
+- Do not start with a model zoo, benchmark suite, or mechanistic circuit hunt.
+
+## Interpretable outcomes
+
+Every major E02 pattern answers the same scientific question, so this is exploratory rather than anomaly gambling.
+
+1. **Mostly readout acquisition** — goal information is already accessible in pretrained states; post-training mainly learns when that information should trigger termination.
+2. **Mostly state/computation acquisition** — document-end readout is reusable, but post-training must transform internal state so task completion becomes visible to it.
+3. **Hybrid acquisition** — both state and stop readout change, with neither alone reproducing full goal-relative stopping.
+4. **Little post-training acquisition** — base models already exhibit a substantial goal-relative EOS mapping in plain instruction contexts; the scientific story shifts toward calibration/formatting rather than new completion semantics.
+5. **No robust goal effect despite continuation awareness** — assistant stopping is more dominated by surface/textual closure than the intuitive “task done” story suggests; reassess Main scope after E01 rather than forcing a mechanism paper.
+
+## Kill conditions
+
+Kill or demote S03 if any of the following occurs:
+
+- a newly located paper directly owns the base-document-end → post-training goal-end acquisition question;
+- E01 requires prompt search/model shopping or survives only in one artificial counting family;
+- the result is explainable by token-format/configuration errors (wrong EOS/EOT wiring, padding/EOS masking, generation stop-list differences);
+- E02 cannot maintain the parameter freezes cleanly enough to support the readout-vs-state inference;
+- the project drifts into “find a stopping direction/circuit” without first establishing the acquisition law;
+- the main output becomes a benchmark/model comparison rather than a learning-source result.
+
+## Pilot order
+
+1. **E01 first** on one same-family base/instruct pair. If exact-prefix goal-relative stopping is not clean, stop.
+2. If E01 passes, run **Arm R** on a ≤1.7B base model. This is the cheapest high-information test.
+3. Then run **Arm S** and **Arm F** using the identical corpus/setup.
+4. Only after the four-arm pattern is clear should we add a second model family or mechanistic localization.
 
 **Current selected topic count = 1.**
 
