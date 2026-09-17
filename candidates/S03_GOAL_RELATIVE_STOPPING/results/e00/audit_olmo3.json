@@ -1,0 +1,223 @@
+[
+  {
+    "stage": "base",
+    "repo": "allenai/Olmo-3-1025-7B",
+    "architectures": [
+      "Olmo3ForCausalLM"
+    ],
+    "vocab_size_config": 100278,
+    "tokenizer_len": 100278,
+    "tie_word_embeddings": false,
+    "config_eos_token_id": 100257,
+    "config_pad_token_id": 100277,
+    "tok_eos_token": "<|endoftext|>",
+    "tok_eos_token_id": 100257,
+    "tok_pad_token": "<|pad|>",
+    "tok_pad_token_id": 100277,
+    "has_chat_template": false,
+    "gen_eos_token_id": null,
+    "gen_pad_token_id": null,
+    "gen_stop_strings": null
+  },
+  {
+    "stage": "sft",
+    "repo": "allenai/Olmo-3-7B-Instruct-SFT",
+    "architectures": [
+      "Olmo3ForCausalLM"
+    ],
+    "vocab_size_config": 100278,
+    "tokenizer_len": 100278,
+    "tie_word_embeddings": false,
+    "config_eos_token_id": 100257,
+    "config_pad_token_id": 100277,
+    "tok_eos_token": "<|endoftext|>",
+    "tok_eos_token_id": 100257,
+    "tok_pad_token": "<|pad|>",
+    "tok_pad_token_id": 100277,
+    "has_chat_template": true,
+    "gen_eos_token_id": [
+      100265,
+      100257
+    ],
+    "gen_pad_token_id": null,
+    "gen_stop_strings": null,
+    "rendered_full": "<|im_start|>system\nYou are a helpful function-calling AI assistant. You do not currently have access to any functions. <functions></functions><|im_end|>\n<|im_start|>user\nList the first 3 planets from the Sun.<|im_end|>\n<|im_start|>assistant\nMercury\nVenus\nEarth<|endoftext|>",
+    "tail_ids": [
+      27814,
+      26533,
+      198,
+      53,
+      38965,
+      198,
+      44924,
+      100257
+    ],
+    "tail_tokens": [
+      "Mer",
+      "cury",
+      "\u010a",
+      "V",
+      "enus",
+      "\u010a",
+      "Earth",
+      "<|endoftext|>"
+    ],
+    "gen_prompt": "<|im_start|>system\nYou are a helpful function-calling AI assistant. You do not currently have access to any functions. <functions></functions><|im_end|>\n<|im_start|>user\nList the first 3 planets from the Sun.<|im_end|>\n<|im_start|>assistant\n",
+    "gen_prompt_tail_tokens": [
+      ".",
+      "<|im_end|>",
+      "\u010a",
+      "<|im_start|>",
+      "assistant",
+      "\u010a"
+    ],
+    "stop_candidate_ids": [
+      [
+        "<|endoftext|>",
+        100257
+      ],
+      [
+        "<|im_end|>",
+        100265
+      ]
+    ],
+    "tail_stop_counts": {
+      "<|im_end|>": 2,
+      "<|endoftext|>": 1
+    }
+  },
+  {
+    "stage": "dpo",
+    "repo": "allenai/Olmo-3-7B-Instruct-DPO",
+    "architectures": [
+      "Olmo3ForCausalLM"
+    ],
+    "vocab_size_config": 100278,
+    "tokenizer_len": 100278,
+    "tie_word_embeddings": false,
+    "config_eos_token_id": 100257,
+    "config_pad_token_id": 100277,
+    "tok_eos_token": "<|endoftext|>",
+    "tok_eos_token_id": 100257,
+    "tok_pad_token": "<|pad|>",
+    "tok_pad_token_id": 100277,
+    "has_chat_template": true,
+    "gen_eos_token_id": [
+      100265,
+      100257
+    ],
+    "gen_pad_token_id": null,
+    "gen_stop_strings": null,
+    "rendered_full": "<|im_start|>system\nYou are a helpful function-calling AI assistant. You do not currently have access to any functions. <functions></functions><|im_end|>\n<|im_start|>user\nList the first 3 planets from the Sun.<|im_end|>\n<|im_start|>assistant\nMercury\nVenus\nEarth<|endoftext|>",
+    "tail_ids": [
+      27814,
+      26533,
+      198,
+      53,
+      38965,
+      198,
+      44924,
+      100257
+    ],
+    "tail_tokens": [
+      "Mer",
+      "cury",
+      "\u010a",
+      "V",
+      "enus",
+      "\u010a",
+      "Earth",
+      "<|endoftext|>"
+    ],
+    "gen_prompt": "<|im_start|>system\nYou are a helpful function-calling AI assistant. You do not currently have access to any functions. <functions></functions><|im_end|>\n<|im_start|>user\nList the first 3 planets from the Sun.<|im_end|>\n<|im_start|>assistant\n",
+    "gen_prompt_tail_tokens": [
+      ".",
+      "<|im_end|>",
+      "\u010a",
+      "<|im_start|>",
+      "assistant",
+      "\u010a"
+    ],
+    "stop_candidate_ids": [
+      [
+        "<|endoftext|>",
+        100257
+      ],
+      [
+        "<|im_end|>",
+        100265
+      ]
+    ],
+    "tail_stop_counts": {
+      "<|im_end|>": 2,
+      "<|endoftext|>": 1
+    }
+  },
+  {
+    "stage": "instruct",
+    "repo": "allenai/Olmo-3-7B-Instruct",
+    "architectures": [
+      "Olmo3ForCausalLM"
+    ],
+    "vocab_size_config": 100278,
+    "tokenizer_len": 100278,
+    "tie_word_embeddings": false,
+    "config_eos_token_id": 100257,
+    "config_pad_token_id": 100277,
+    "tok_eos_token": "<|endoftext|>",
+    "tok_eos_token_id": 100257,
+    "tok_pad_token": "<|pad|>",
+    "tok_pad_token_id": 100277,
+    "has_chat_template": true,
+    "gen_eos_token_id": [
+      100265,
+      100257
+    ],
+    "gen_pad_token_id": null,
+    "gen_stop_strings": null,
+    "rendered_full": "<|im_start|>system\nYou are a helpful function-calling AI assistant. You do not currently have access to any functions. <functions></functions><|im_end|>\n<|im_start|>user\nList the first 3 planets from the Sun.<|im_end|>\n<|im_start|>assistant\nMercury\nVenus\nEarth<|endoftext|>",
+    "tail_ids": [
+      27814,
+      26533,
+      198,
+      53,
+      38965,
+      198,
+      44924,
+      100257
+    ],
+    "tail_tokens": [
+      "Mer",
+      "cury",
+      "\u010a",
+      "V",
+      "enus",
+      "\u010a",
+      "Earth",
+      "<|endoftext|>"
+    ],
+    "gen_prompt": "<|im_start|>system\nYou are a helpful function-calling AI assistant. You do not currently have access to any functions. <functions></functions><|im_end|>\n<|im_start|>user\nList the first 3 planets from the Sun.<|im_end|>\n<|im_start|>assistant\n",
+    "gen_prompt_tail_tokens": [
+      ".",
+      "<|im_end|>",
+      "\u010a",
+      "<|im_start|>",
+      "assistant",
+      "\u010a"
+    ],
+    "stop_candidate_ids": [
+      [
+        "<|endoftext|>",
+        100257
+      ],
+      [
+        "<|im_end|>",
+        100265
+      ]
+    ],
+    "tail_stop_counts": {
+      "<|im_end|>": 2,
+      "<|endoftext|>": 1
+    }
+  }
+]
