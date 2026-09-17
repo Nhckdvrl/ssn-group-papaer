@@ -4,11 +4,15 @@ This directory is the working ledger for Sasano-taste-driven NLP/LLM research-qu
 
 Target venues: **ACL / EMNLP / NAACL Main**. TACL / ICLR / ICML / NeurIPS are secondary calibration. EACL / AACL / Findings / workshops / arXiv may be used aggressively for novelty collision, but not as the main positive taste signal.
 
-Current selected topics: **1**.
+Current selected topics: **3**.
 
 ## Current selection
 
-- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?** Selected / pilot-authorized on 2026-09-17 after nearest-prior re-audit. The parent question is where the information→stopping mapping is acquired when a pretrained document continuer becomes an assistant: pretrained/native stop mapping, stop-readout adaptation, internal-state adaptation, or their interaction. See `SELECTED_TOPICS.md` for the frozen claim and Base / Readout-only / State-only / Full-SFT experiment.
+- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?** Selected / pilot-authorized on 2026-09-17. The parent question is where the information→stopping mapping is acquired when a pretrained document continuer becomes an assistant: pretrained/native stop mapping, stop-readout adaptation, internal-state adaptation, or their interaction.
+- **S04 — How Do Language Models Update Situation Models Across Event Boundaries?** Selected / pilot-authorized on 2026-09-18. The parent question is how an LM transforms its active situation representation when one event becomes another: local editing, broader reconstruction, selective reactivation/rebinding, or another discovered update primitive.
+- **S05 — When Does Reading Become Learning?** Selected / pilot-authorized on 2026-09-18. The parent question is the boundary between transient conditioning and persistent parameter learning under ordinary response-only SFT: which prompt-side information is merely used, which task-sufficient information is retained, and which details are durably written into parameters.
+
+See `SELECTED_TOPICS.md` for the frozen parent questions, novelty boundaries, and detailed registration files.
 
 ## Governing taste
 
@@ -144,6 +148,8 @@ Do not revive them by adding more models, datasets, metrics, or rhetoric.
 
 Files:
 
-- `FAILED_TOPICS.md` — serious ideas that died; do not revive without evidence resolving the recorded failure.
-- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **1**.
-- `NEXT_ROUND_PROMPT_ZH.md` — current handoff prompt; this is the most up-to-date operational search procedure.
+- `FAILED_TOPICS.md` and dated continuations — serious ideas that died; do not revive without evidence resolving the recorded failure.
+- `RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md` — overlay correcting overly strict old novelty reasoning.
+- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **3**.
+- `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `S04_EVENT_BOUNDARY_SITUATION_MODEL_UPDATING.md`, `S05_WHEN_DOES_READING_BECOME_LEARNING.md` — detailed registrations.
+- `NEXT_ROUND_PROMPT_ZH.md` — current operational search procedure; treat it as scaffolding rather than constitution.
