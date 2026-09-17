@@ -23,7 +23,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModelForCausalLM, get_cosine_schedule_with_warmup
 
-from e01_run import STAGE_REPOS, stop_token_ids
+from e01_run import STAGE_REPOS
 from e02_arms import ArmModel
 
 IGNORE = -100
@@ -64,7 +64,7 @@ def collate(batch, pad_id):
 
 
 @torch.no_grad()
-def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=20):
+def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=100):
     """Goal-independent stopping competence on held-out ordinary data."""
     arm_model.eval()
     bnd, inner, losses = [], [], []
@@ -79,9 +79,11 @@ def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=20):
         losses.append(float(-lp.gather(-1, tgt.clamp(min=0).unsqueeze(-1)).squeeze(-1)[mask].mean()))
         stop_lp = torch.logsumexp(lp[..., sid], dim=-1)
         is_stop_target = torch.isin(tgt, sid) & mask
-        # margin of stop over the actual next token
-        tgt_lp = lp.gather(-1, tgt.clamp(min=0).unsqueeze(-1)).squeeze(-1)
-        marg = stop_lp - tgt_lp
+        # NOTE: scoring stop against the *target* token is degenerate at a real
+        # boundary, where the target IS the stop token and the margin is 0 by
+        # construction.  Score log P(stop at this position) instead: it is
+        # well defined at boundary and response-internal positions alike.
+        marg = stop_lp
         bnd += marg[is_stop_target].tolist()
         inner += marg[mask & ~is_stop_target].tolist()
     arm_model.train()
@@ -97,18 +99,21 @@ def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=20):
         auc = sum(bisect.bisect_left(b_s, x) + 0.5 * (bisect.bisect_right(b_s, x) - bisect.bisect_left(b_s, x))
                   for x in a) / (len(a) * len(b))
     return dict(val_loss=sum(losses) / len(losses), boundary_auc=auc,
-                stop_margin_at_boundary=sum(bnd) / len(bnd) if bnd else float("nan"),
-                stop_margin_inside=sum(inner) / len(inner) if inner else float("nan"))
+                log_p_stop_at_boundary=sum(bnd) / len(bnd) if bnd else float("nan"),
+                log_p_stop_inside=sum(inner) / len(inner) if inner else float("nan"),
+                n_boundary=len(bnd), n_inside=len(inner))
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--arm", required=True, choices=["R", "Rmlp", "S", "F"])
-    ap.add_argument("--family", default="olmo2-1b")
+    ap.add_argument("--family", default="olmo3-7b")
     ap.add_argument("--lr", type=float, required=True)
     ap.add_argument("--steps", type=int, default=600)
-    ap.add_argument("--bs", type=int, default=8)
-    ap.add_argument("--accum", type=int, default=2)
+    ap.add_argument("--bs", type=int, default=2)
+    ap.add_argument("--accum", type=int, default=8)
+    ap.add_argument("--opt8bit", action="store_true",
+                    help="8-bit AdamW; needed to fit a 7B S/F arm on one card")
     ap.add_argument("--max-len", type=int, default=1024)
     ap.add_argument("--n-train", type=int, default=8000)
     ap.add_argument("--n-val", type=int, default=400)
@@ -126,9 +131,15 @@ def main():
     tok.chat_template = AutoTokenizer.from_pretrained(tmpl_repo).chat_template
 
     model = AutoModelForCausalLM.from_pretrained(repo, dtype=torch.bfloat16).cuda()
-    model.gradient_checkpointing_enable()
+    if args.arm in ("S", "F"):
+        model.gradient_checkpointing_enable()
     model.config.use_cache = False
-    sids = stop_token_ids(tok, model)
+    # The stop set for E02 is the token that terminates an assistant turn *in the
+    # format we train on*, and only that token.  Olmo-3 also lists <|im_end|> as
+    # a generation stop id, but in our single-turn template <|im_end|> occurs
+    # only inside the (loss-masked) prompt, so including it would have arm R
+    # learning a delta on a token the assistant never emits.
+    sids = [tok.eos_token_id]
     arm = ArmModel(model, sids, args.arm).cuda()
     if arm.readout is not None:
         arm.readout = arm.readout.cuda().float()
@@ -147,8 +158,13 @@ def main():
     vl = DataLoader(va, batch_size=args.bs, shuffle=False,
                     collate_fn=lambda b: collate(b, pad))
 
-    opt = torch.optim.AdamW(arm.trainable_parameters(), lr=args.lr,
-                            weight_decay=0.0, betas=(0.9, 0.95))
+    if args.opt8bit:
+        import bitsandbytes as bnb
+        opt = bnb.optim.AdamW8bit(arm.trainable_parameters(), lr=args.lr,
+                                  weight_decay=0.0, betas=(0.9, 0.95))
+    else:
+        opt = torch.optim.AdamW(arm.trainable_parameters(), lr=args.lr,
+                                weight_decay=0.0, betas=(0.9, 0.95))
     sch = get_cosine_schedule_with_warmup(opt, int(0.03 * args.steps), args.steps)
 
     tag = args.tag or f"{args.arm}_lr{args.lr}_s{args.seed}"
@@ -169,7 +185,7 @@ def main():
             loss = F.cross_entropy(logits[:, :-1].reshape(-1, logits.size(-1)).float(),
                                    lab[:, 1:].reshape(-1), ignore_index=IGNORE)
             (loss / args.accum).backward()
-            tot += float(loss) / args.accum
+            tot += loss.detach().item() / args.accum
         torch.nn.utils.clip_grad_norm_(arm.trainable_parameters(), 1.0)
         opt.step(); sch.step()
         arm.enforce_freeze()           # exact restore for arm S

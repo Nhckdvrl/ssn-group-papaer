@@ -1,0 +1,20 @@
+{
+  "arm": "R",
+  "family": "olmo3-7b",
+  "lr": 0.03,
+  "steps": 20,
+  "bs": 2,
+  "accum": 8,
+  "opt8bit": false,
+  "max_len": 1024,
+  "n_train": 300,
+  "n_val": 60,
+  "seed": 0,
+  "tag": "smoke_R",
+  "data": "data/tulu_subset.jsonl",
+  "out": null,
+  "stop_ids": [
+    100257
+  ],
+  "n_trainable": 4097
+}

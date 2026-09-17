@@ -39,7 +39,7 @@ def load_arm(outdir, family):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--outdir", required=True)
-    ap.add_argument("--family", default="olmo2-1b")
+    ap.add_argument("--family", default="olmo3-7b")
     ap.add_argument("--stimuli", default="stimuli/e01_pairs.jsonl")
     ap.add_argument("--plain", action="store_true")
     args = ap.parse_args()

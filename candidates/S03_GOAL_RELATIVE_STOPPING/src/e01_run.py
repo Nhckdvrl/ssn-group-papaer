@@ -134,15 +134,24 @@ def main():
     ap.add_argument("--out", default=None)
     ap.add_argument("--plain", action="store_true",
                     help="force the plain User/Assistant format (used for base)")
+    ap.add_argument("--graft-template", action="store_true",
+                    help="give a base checkpoint its post-trained sibling's chat "
+                         "template, so Arm 0 can be measured in exactly the "
+                         "format the E02 arms are trained and evaluated in")
+    ap.add_argument("--stop-eos-only", action="store_true",
+                    help="score only the tokenizer eos, matching the E02 stop set")
     args = ap.parse_args()
 
     repo = STAGE_REPOS[args.family][args.stage]
     tok = AutoTokenizer.from_pretrained(repo)
+    if args.graft_template:
+        tok.chat_template = AutoTokenizer.from_pretrained(
+            STAGE_REPOS[args.family]["sft"]).chat_template
     model = AutoModelForCausalLM.from_pretrained(
-        repo, torch_dtype=torch.bfloat16, device_map="cuda"
+        repo, dtype=torch.bfloat16, device_map="cuda"
     ).eval()
     chat = (tok.chat_template is not None) and not args.plain
-    sids = stop_token_ids(tok, model)
+    sids = [tok.eos_token_id] if args.stop_eos_only else stop_token_ids(tok, model)
     print(f"{repo}  chat_template={chat}  stop_ids={sids} "
           f"({[tok.convert_ids_to_tokens(i) for i in sids]})", flush=True)
 
@@ -165,7 +174,8 @@ def main():
             row[f"d_goal_{tag}"] = row[f"cmp_{tag}_margin"] - row[f"inc_{tag}_margin"]
         rows.append(row)
 
-    outp = args.out or f"results/e01/{args.family}_{args.stage}{'_plain' if args.plain else ''}.jsonl"
+    suffix = "_plain" if args.plain else ("_grafted" if args.graft_template else "")
+    outp = args.out or f"results/e01/{args.family}_{args.stage}{suffix}.jsonl"
     os.makedirs(os.path.dirname(outp), exist_ok=True)
     with open(outp, "w") as fh:
         for r in rows:
