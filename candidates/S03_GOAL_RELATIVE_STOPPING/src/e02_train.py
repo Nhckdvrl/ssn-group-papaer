@@ -64,7 +64,7 @@ def collate(batch, pad_id):
 
 
 @torch.no_grad()
-def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=100):
+def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=40):
     """Goal-independent stopping competence on held-out ordinary data."""
     arm_model.eval()
     bnd, inner, losses = [], [], []

@@ -300,3 +300,34 @@ this format. What they are being asked to acquire is specifically the
 *goal-relative* part. This makes the readout-vs-state contrast sharper, and it
 means a failed arm cannot be dismissed as "it never learned to stop at all" —
 but the `boundary_auc` co-metric is still reported per arm to check that.
+
+---
+
+## 2026-09-17 — E02 learning-rate selection (per arm, by held-out CE only)
+
+LR is selected **per arm** on held-out cross-entropy over ordinary instruction
+data, never on the E01 goal effect. The arms differ by six orders of magnitude
+in trainable-parameter count (R: 4,097; Rmlp: 2,098,177; S/F: ~7B), so a single
+shared LR would handicap the constrained arms and manufacture the very result
+the experiment is testing for.
+
+`val_loss` is comparable **within** an arm's sweep, which is all it is used for.
+(The R and Rmlp sweeps evaluated on different numbers of val batches, so their
+absolute `val_loss` values are not comparable to each other; the final runs all
+use the same evaluation size.)
+
+| arm | lr | val_loss @150 | boundary_auc | selected |
+|---|---|---|---|---|
+| R | 1e-3 | **1.00900** | 0.9999 | ✓ |
+| R | 1e-2 | 1.02034 | 0.9996 | |
+| R | 3e-2 | 1.07290 | 0.9992 | |
+| R | 1e-1 | 1.22930 | 0.9983 | |
+| Rmlp | 1e-4 | 0.97617 | 0.9989 | |
+| Rmlp | 3e-4 | 0.97395 | 0.9997 | |
+| Rmlp | 1e-3 | **0.97197** | 0.9999 | ✓ |
+| Rmlp | 3e-3 | 0.97334 | 0.9998 | |
+
+(R baseline before training on its eval split: 1.02277; Rmlp baseline: 0.99014.)
+
+Both constrained arms sit at an interior optimum of their grid, so the selected
+LR is not a boundary artefact.

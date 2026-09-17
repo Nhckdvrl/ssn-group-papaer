@@ -1,0 +1,35 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 37.27it/s]
+arm=S repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=7,298,011,136
+train=3539 val=171
+[W917 17:08:39.065967058 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 790626304 bytes (free: 94240768, total: 101971722240).
+step0 eval: {'val_loss': 0.9129816800355911, 'boundary_auc': 0.9927625, 'log_p_stop_at_boundary': -1.56755309387554, 'log_p_stop_inside': -14.010497543171986, 'n_boundary': 80, 'n_inside': 15764}
+[W917 17:08:42.050464257 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 822083584 bytes (free: 73269248, total: 101971722240).
+aceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/candidates/S03_GOAL_RELATIVE_STOPPING/src/e02_train.py", line 214, in <module>
+    main()
+  File "/home/xiang/ssn-group-papaer/candidates/S03_GOAL_RELATIVE_STOPPING/src/e02_train.py", line 190, in main
+    opt.step(); sch.step()
+    ^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/dlm_clean/lib/python3.12/site-packages/torch/optim/lr_scheduler.py", line 166, in wrapper
+    return func.__get__(opt, opt.__class__)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/dlm_clean/lib/python3.12/site-packages/torch/optim/optimizer.py", line 530, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/dlm_clean/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/s03_venv/lib/python3.12/site-packages/bitsandbytes/optim/optimizer.py", line 331, in step
+    self.init_state(group, p, gindex, pindex)
+  File "/home/xiang/miniconda3/envs/dlm_clean/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/s03_venv/lib/python3.12/site-packages/bitsandbytes/optim/optimizer.py", line 518, in init_state
+    state["state1"] = self.get_state_buffer(p, dtype=torch.uint8)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/s03_venv/lib/python3.12/site-packages/bitsandbytes/optim/optimizer.py", line 384, in get_state_buffer
+    return torch.zeros_like(p, dtype=dtype, device=p.device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 44.00 MiB. GPU 0 has a total capacity of 94.97 GiB of which 69.88 MiB is free. Process 474233 has 39.30 GiB memory in use. Including non-PyTorch memory, this process has 37.27 GiB memory in use. Process 474467 has 18.29 GiB memory in use. Of the allocated memory 36.33 GiB is allocated by PyTorch, and 300.38 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
