@@ -531,3 +531,74 @@ The gap to the released SFT checkpoint (+7.9 vs +12.5) remains confounded with
 data/compute scale. The **budget ladder** (R and F at 250 / 750 / 2250 steps) is
 running and is what decides whether the headline is "readout adaptation
 suffices" or "readout adaptation suffices up to a budget".
+
+---
+
+## 2026-09-17 — BUDGET LADDER: the headline changes to "readout suffices *up to a budget*"
+
+**This experiment distinguishes** (X) readout adaptation suffices — R and F rise
+together at every budget, so the gap to the released checkpoint is purely
+data/compute **from** (Y) readout adaptation suffices only up to a budget — F
+pulls away once the budget is large enough, so internal-state change is
+load-bearing beyond some scale.
+
+Same corpus, order, format, geometry and per-arm LR as the main run; only the
+number of optimizer steps varies. Seed 0.
+
+| steps | R `d_stop` | F `d_stop` | **F − R (paired)** | 95% CI | sign p | +/− |
+|---|---|---|---|---|---|---|
+| 0 (base) | +2.58 | +2.58 | — | | | |
+| 250 | +6.37 | +7.34 | +0.97 | [0.44, 1.50] | 0.065 | 32/18 |
+| 750 | +7.58 | +7.72 | **+0.14** | [−0.56, 0.83] | 0.67 | 27/23 |
+| 2250 | +8.69 | **+10.78** | **+2.09** | [0.91, 3.26] | **0.015** | 34/16 |
+| *natural SFT* | | *+12.50* | | | | |
+
+### Correction to the previous entry
+
+**The preceding entry's reading was budget-specific and is superseded.** The
+main four-arm experiment was run at 750 steps, which is — by coincidence —
+exactly where the R/F gap is at its *minimum*. Reading "readout adaptation
+suffices, 87% of the gain, locus is not the bottleneck" off that single budget
+was overconfident. At 2250 steps the full arm pulls clearly ahead, consistently
+across items (34/16, sign p = 0.015).
+
+The "87% of the base→full-SFT gain" figure remains correct **as a statement
+about the 750-step budget**, and only that.
+
+### Observation
+
+- **R decelerates; F does not.** R goes +6.37 → +7.58 → +8.69 (gains of +1.21,
+  +1.11 over 3x budget each) while F goes +7.34 → +7.72 → +10.78 (+0.38, then
+  +3.06). R looks like it is saturating; F is still climbing toward the natural
+  SFT level.
+- **F's late gain is not general language-model improvement.** F's held-out CE
+  *worsens* after step 450 (0.626 → 0.659 — it is overfitting the 12k corpus),
+  while its goal-relative stopping keeps rising. So the extra goal-relativity is
+  being acquired specifically, not as a by-product of getting better at the
+  corpus.
+- Generic stopping competence stays at ceiling in both arms at every rung
+  (`boundary_auc` ≥ 0.9995), so no rung is a failure-to-train artefact.
+
+### Current reading of the parent question
+
+Acquisition of goal-relative stopping has **two components with different budget
+scaling**:
+
+1. **A large, cheap, readout-attachable component.** Most of the effect is
+   available immediately from the frozen pretrained state through a 4,097-
+   parameter stop-readout delta — the goal information is already there and
+   already linearly readable. This saturates.
+2. **A slower component that requires internal-state change.** Closing the
+   remaining distance to post-training-level goal-relative stopping needs the
+   internal computation to change, and that part keeps accruing with budget.
+
+This is outcome 4 in the registered list (hybrid acquisition), with added
+structure the plan did not anticipate: the two components are separated not by
+which is bigger but by **how they scale with training budget**. Reporting either
+component alone would misdescribe the phenomenon.
+
+### Status and next step
+
+**Seed 1 of the full ladder is running.** The 2250-step divergence rests on one
+seed so far and must replicate before it is load-bearing. Until then this entry
+records a strong but single-seed finding, not a settled result.
