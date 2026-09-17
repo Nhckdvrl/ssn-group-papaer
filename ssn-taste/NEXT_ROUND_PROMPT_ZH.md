@@ -1,303 +1,243 @@
-# 下一轮 Sasano-Taste 科研选题搜索启动提示词
+# 下一轮科研选题搜索启动提示词 — 2026-09-17 Late
 
-当前日期：2026-09-16。
+你现在接手 `Nhckdvrl/ssn-group-papaer/ssn-taste` 的下一轮科研选题搜索。
 
-你现在接手 `Nhckdvrl/ssn-group-papaer/ssn-taste` 的下一轮 NLP/LLM 科研选题搜索。
+目标会议：**ACL / EMNLP / NAACL Main**；同时用 **ICLR / ICML / NeurIPS / TACL** 校准科学问题与机制研究 taste。CVPR / ICCV / ECCV、speech/audio、multimodal、general ML，以及认知科学、统计、信息论、控制、动力系统等领域都可以作为 idea provenance，但最好**从真实论文出发**，不要只搬一个概念名词。
 
-目标会议：**ACL / EMNLP / NAACL Main**。辅助校准：**TACL / ICLR / ICML / NeurIPS**。EACL / AACL / Findings / workshop / arXiv 可以用于查重、nearest-prior、collision，但不能作为主要正向 taste。
+## 0. 开始前必须先读
 
-**当前正式 selected topic = 0。** S01 和 S02 均已取消注册。允许这一轮最终仍然是 0；绝不能为了留下题而降标准。
+先读：
+- `ssn-taste/README.md`
+- `ssn-taste/SELECTED_TOPICS.md`
+- **全部** `ssn-taste/FAILED_TOPICS*.md`
+- 必要时读对应 topic 文件与最近 commits
 
----
+当前 repo 的正式状态以文件为准。`SELECTED_TOPICS.md` 当前正式 selected 是 **S03 — From Document End to Task Done**。这一轮任务不是推进 S03，而是继续寻找**新的、彼此独立的 scientific question**。
 
-# 0. 这一轮最重要的新纠偏：不要再找“评测题”
-
-用户明确不要以以下内容为主贡献的题：
-
-- benchmark construction；
-- 新 evaluation set / challenge set；
-- metric validity / metric comparison；
-- robustness benchmark；
-- “方法 A/B/C 在 perturbation X 下谁更稳”；
-- 大量 synthetic data construction 后比较现有方法；
-- 主要结果是一张 leaderboard / accuracy/F1/correlation/robustness table；
-- 高层 framing 看起来像科学问题，但真正实验落地只是“造测试集 + 跑模型 + 比指标”。
-
-**Evaluation 可以作为实验工具，但不能成为 paper 的 scientific object。**
-
-优先找真正的探究型 scientific question：研究语言、模型、学习、训练、表示、生成行为、交互、资源分配或现实语言过程本身的规律，而不是研究“现有方法测得准不准”。
-
-上一轮 C2/S02 是必须记住的反例：
-
-> “AI rewrite 是否制造虚假 semantic change”听起来像 changed-premise scientific question，但真正落地后需要 synthetic rewrite data、semantic-preservation validation、LSC method comparison 和 robustness metrics；现实数据又缺 ground truth。于是 scientific framing 高于 actual experimental object，最终退化为 evaluation paper。
-
-以后这种题必须在注册前就杀掉。
+极其重要：repo 中我们自己提出的 selected / active / serious / killed topics **都不是正向 research-taste exemplars**。它们只能用于：避免复活失败题、学习搜索流程失败、检查已有实验资产。不要因为新题“像 S03 / 某个 survivor”就给它加分。
 
 ---
 
-# 1. Sasano taste 是生成 prior，不是事后 filter
+# 1. 正向 research taste 只有两个主要来源
 
-不要先随便生成技术 gap，再拿“Sasano fit”去包装。**从问题产生的第一步就按照 Sasano 的思考方式。**
+### A. Sasano 的真实判断
+持续读 Slack 中 Sasano 对真实学生课题/论文的评价：他为什么觉得某问题有意思、为什么觉得 finding 不意外、为什么认为与先行研究差太小、怎样修改 RQ、怎样从平均 reviewer 角度组织 Introduction。
 
-已确认的核心锚点：
+不要把 Sasano taste 压成一次性 checklist。每轮都要重新读真实案例。
 
-- **Sato：最强正例。** 人人能理解的自然 puzzle → 明确未知 scientific object → 几个自然竞争解释 → controlled experiment 区分。学习的是思考方式，不是机械复制“来源分析”。
-- **Guo：最强负例。** Sasano 明确指出「先行研究との差が小さい」。旧问题 + 新模型、新语言、新数据、新 condition 通常不够。
-- **Hamdi：** 从普通 reviewer 视角，Introduction 必须“纳得 + 有意思”；RQ 与 finding 清晰对应；unexpected finding 也可以成立；机制不是硬要求。
-- **Utami：** 真正的现实技术/社会变化可以创造新问题，但必须是一个明确 changed premise 导致一个清楚、可研究的语言/行为后果，不是泛泛“LLM 改变语言”。
-- **Kisako / Tsukagoshi：** 两种成熟操作围绕同一个自然 quantity/resource 形成系统 trade-off 或 interaction，可以是好科学问题；不必强求深机制。
-- **Oshika：** 成熟 workflow 中一个必要的独立中间 decision 如果长期由 human/gold/oracle 给定，可以成为 Main-sized scientific object。
-- **Youchi / Yano：** 类似 prior 并不自动杀题；但必须存在 load-bearing structural defect，修复后改变 inference、研究对象或能力，而不是“我们做得更完整”。
+### B. 真正优秀的 Main papers
+持续抽样 ACL / EMNLP / NAACL Main，同时参考 ICLR / ICML / NeurIPS。不要只看 Best Paper，也要看普通强 Main；不要长期只看 RL / reasoning / agents / post-training。
 
-每个候选在深入前先写 3–5 句：
-
-> **如果 Sasano 自己从现象/问题出发，他为什么会自然问出这个 RQ？**
-
-如果写出来像：
-
-> “Paper X 做了 A，但没测 B，所以我们测 B”
-
-默认是跑偏。
+重点研究：
+- 为什么这个问题在方法出现以前就值得问？
+- Introduction 第一页制造了什么 scientific pressure？
+- nearest prior 为什么没有拥有同一个母问题？
+- 核心实验区分了哪些世界？
+- 如果结果方向相反，论文是否仍然有科学意义？
+- 去掉 benchmark / model / method 名字以后，我们到底新知道了什么？
 
 ---
 
-# 2. 我们到底想要什么题
+# 2. 用户真正偏好的题
 
-一个强候选应当尽量具有这些性质：
+用户广义上感兴趣：**理解、生成、可解释性、representation / computation、学习与训练机制、多模态 / vision / video / speech 中可迁移的机制问题**。
 
-1. **一句话就能说明为什么值得知道。** 不依赖复杂术语和 rhetoric 才显得重要。
-2. **问题先于方法存在。** 换掉具体模型、metric、benchmark，母问题仍然成立。
-3. **研究对象是真实 scientific object。** 例如学习规律、表示规律、行为规律、语言规律、训练规律、交互规律、资源 trade-off、现实语言过程、因果来源，而不是“evaluation performance”。
-4. **探究型而非赌博型。** 至少两三种自然结果都能回答同一个 RQ，而不是只有发现 anomaly 才有 paper。
-5. **但“多结果可解释”还不够。** 必须检查实际实验是不是仍然只在评测方法。C2 就是教训。
-6. **novelty 看 reviewer compression。** 不看 exact keyword gap；要问 reviewer 会把它压缩到哪个 parent literature。
-7. **Main-level width。** RQ 的抽象层级参考真实 ACL/EMNLP/NAACL Main Introduction，而不是越大越好、越窄越安全。
-8. **数据自然、初期便宜。** 优先直接可取的现成自然数据、公开模型/checkpoint、小规模 controlled intervention；不优先大规模人工标注或 synthetic benchmark construction。
-9. **硕士可执行。** 初期最好一天到几天就能跑一个 informative pilot，而不是先花一个月造数据。
-10. **机制不是入场券。** descriptive/systematic finding 可以成立，只要 scientific question 本身强。
+但：
+- **不喜欢复杂、费劲的语言学小现象。** coercion、presupposition、indexical、复杂 scope、dynamic semantics、garden-path 等不能再成为默认搜题池。除非母问题一句话就能懂、非常 broad，语言学只是一种干净实验载体。
+- 不做 RAG、benchmark、metric、robustness leaderboard、主要靠造数据集的题。
+- 不喜欢“方法类刷分刷点”。
+- 更喜欢机制 / 解释型问题，但**机制不是题目存在的理由**。先有值得问的行为/学习/computation 问题，mechanistic analysis 才有意义。
+- 允许最终 0 survivor；绝不能为了产出降低标准。
 
 ---
 
-# 3. 绝对不要再混淆“探究型”和“评测型”
+# 3. 可解释性必须特别对齐 Hakaze Cho / Zhao 的研究方式
 
-这是上一轮最关键的新教训。
+学习的是他的**出题与解释结构**，不是照抄 ICL / attention head / subspace 题材。
 
-**探究型：**
+核心路线：
 
-> 我们不知道模型/语言/训练过程本身遵循什么规律；设计干预去区分几个自然解释或刻画一个真实规律。
+> **Representation → Computation / Transformation → Circuit / Component → Causal Mechanism → Controllability**
 
-例如抽象结构：
+具体要学：
+1. 不满足于“某层可 probe 到 X”。先找模型内部**到底组织了什么 representation structure**。
+2. 不停在“head X 很重要”。问 hidden state 从 `h_l` 到 `h_{l+1}` **究竟发生了什么 transformation**。
+3. 尽量把零散 component-level 现象统一到更高层 computation，例如 separability / alignment / rotation / filtering，而不是再发现一个 head。
+4. 最好的题常来自**旧解释解释不了的边界条件**，从而迫使我们换 computational primitive。Information Removal 的价值就在于不继续补“copy/add information”故事，而是用旧故事无法解释的 case 引出 `remove/filter irrelevant information`。
+5. 必须有 intervention / ablation / steering / patching 等因果验证；correlation/probe 只能做前置证据。
+6. 如果 mechanism 真的理解了，可以进一步问能否用这个 mechanism 控制行为；但 controllability 是结果，不是为了应用而硬加 module。
 
-- 同一能力来自 A 还是 B？
-- 一个训练操作改变的是 quantity X 还是 Y？
-- 两种自然 operation 在同一 resource 下如何 trade off？
-- 某种 knowledge 在 representation / behavior / training dynamics 中怎样形成或转移？
-- 某个现实语言过程在新技术介入后到底如何改变？
+禁止把 Zhao-style 误读成：
+- “找到一个 attention head”；
+- “画 hidden-state PCA”；
+- “probe 某层信息”；
+- “再做一个 steering vector”；
+- “已有 anomaly + mechanistic follow-up”。
 
-**评测型：**
-
-> 我们不知道 method/metric/model A 在某个 test condition 下表现如何，所以造数据去测。
-
-即使它有多个可能结果，即使结果都“有意义”，它仍然可能只是 evaluation。
-
-### 强制的“实验落地审计”
-
-任何候选在进入 serious pool **之前**，必须回答下面 5 个问题：
-
-1. **数据从哪里来？** 是已有自然数据，还是我们必须大量合成/标注？
-2. **实验真正改变/观测的变量是什么？** 是 scientific quantity，还是只是 benchmark condition？
-3. **主结果最可能长什么样？** 如果核心是一张 `method × dataset/perturbation × score` 表，危险。
-4. **如果去掉所有 metric 名称和 benchmark 名称，这篇论文还发现了什么关于语言/模型/学习的事实？** 如果答不出来，杀。
-5. **论文的主语是谁？** 应优先是“language/model/training/representation/behavior/process”，而不是“metric/method/benchmark”。
-
-这是 sanity check，不是为了制造复杂 gate；目的是提前发现“漂亮 framing，实际评测”的假科学题。
+Zhao-style 的真正要求是：**一个强 mother question + competing computational explanations + representation dynamics + causal intervention。**
 
 ---
 
-# 4. Idea 从哪里来：优先研究对象，而不是模板
+# 4. 这轮流程暴露出的主要错误，下一轮必须主动防止
 
-不要机械枚举 provenance 模板。每轮先大量读真实 Main paper 的 Introduction + Related Work，学习**研究者是如何形成 question 的**。
+### 错误 1：跨领域“搬概念”，而不是搬 prediction
+latent inhibition、symmetry breaking、prototype/exemplar、iterated learning、efference copy 等概念一旦落到 LLM，常常已经有对应 parent，或者只是换名字。
 
-当前比较值得继续搜索的来源：
+**纠偏：** 外部理论只有在它能事前给出新的、可区分的 prediction 时才有价值。最好从真实 CV/ML/认知论文出发，学它如何制造科学压力。
 
-### A. 自然 puzzle / 两个对象被模型训练目标或表面行为混在一起
-例如 A 与 B 在表面高度相关，但理论上是不同 scientific quantities。要能设计一个 intervention 让 A/B 给出不同预测。重点研究模型到底学了什么，不是设计一个新 benchmark。
+### 错误 2：过度迷恋架构小谜题
+LayerNorm 如何表示 confidence、weight tying 如何连接 input/output、append-only KV 如何撤回内容，这些可以很漂亮，但“mechanistically tractable”不等于“Main-level important”。
 
-### B. 学习来源 / acquisition / representation formation
-某种能力已经存在，但它究竟由哪类训练信号、数据结构、阶段或表示形成？必须存在自然 competing explanations，且 parent 没被直接占掉。
+**纠偏：** 先问：如果完全不知道它的机制，平均 reviewer 会真的想知道答案吗？如果 mother question 不强，漂亮 circuit 不能救。
 
-### C. Training operation 改变了什么
-不是“新 recipe 提升多少分”，而是某个广泛使用的训练操作对学习 dynamics、generalization、representation、behavior 的系统作用是什么。最好有 matched intervention。
+### 错误 3：追成熟论文刚暴露的 anomaly
+这是过去最失败的路线：异常可能复现不了；即使真实，作者/后续工作往往已把解释空间吃掉。
 
-### D. 自然 trade-off
-两个普通成熟操作服务同一目标/resource，却可能消耗或保留不同信息；研究 trade-off/interaction 的规律。不要把任意两种超参数硬配成 trade-off。
+**纠偏：** 优先从开放科学问题、理论冲突、功能必要性、训练/架构事实出发。若启发来自 recent anomaly，做 `remove-the-trigger-paper test`：那篇论文消失后，这个问题是否仍然自然存在？
 
-### E. Hidden oracle / missing decision
-传统 NLP/LLM pipeline 里某个独立必要 decision 被默认为给定；研究这个 decision 本身，而不是做整个 pipeline benchmark。
+### 错误 4：发现相似论文就只做 KILL，没有学习它怎么长大
 
-### F. Changed premise 产生新的“现象问题”
-新技术/社会实践真正改变了语言使用或学习环境，问新的语言/行为现象怎样形成。**注意：changed premise 不等于自动合法。** 如果落地只是“旧 metric 在新 distribution 上准不准”，仍然杀掉。
+**纠偏：** 每次 collision 后记录一个 `growth lesson`：初级 idea 如何被论文升级成 mother question？它怎样从 observation 变成 competing explanations？用了什么反向 prediction / non-monotonic law / minimal system / causal intervention？然后把**成长动作**带到新题，而不是复活旧题。
 
-### G. Old scientific debate + new identifying operation
-现代模型让过去无法区分的科学解释第一次可被 controlled intervention 区分。目标是解决 debate，不是“用 LLM 重跑经典 task”。
+### 错误 5：把可解释性变成工具清单
+probe / SAE / activation patching / ablation / steering 不是 scientific question。
 
-### H. Cross-lineage collision
-两个成熟 literature 对同一 scientific quantity 有不同假设，交叉后产生新的预测。不是 Paper A + Paper B 拼接。
+**纠偏：** 先写 computation：模型必须完成 A/B/C 中哪一种内部操作？再决定什么工具能区分它们。
 
-降低优先级甚至默认禁止：
+### 错误 6：同一个 generator 连续使用太久
+这一轮曾连续掉进语言学 distinction、认知效应、架构 paradox、cross-modal analogy 等局部舒适区。
 
-- measurement validity / metric auditing 作为主线；
-- benchmark gap；
-- robustness under X；
-- 数据 contamination 检测；
-- “现有方法在新环境是否失效”；
-- generic agent/tool-use reliability；
-- RAG；
-- 大型 data construction。
+**纠偏：** 约每 **8–12 个 serious seed** 强制停下重新校准；若更早出现同质化，也立即停。
 
 ---
 
-# 5. 搜题流程：顺序必须改对
+# 5. 下一轮的搜索面必须主动轮换
 
-## Phase 1 — 先校准 taste，再生成
+至少在这些来源之间轮换，不要长期停在一个子领域：
+- understanding / representation / world or task state；
+- generation dynamics / generative models；
+- Zhao-style mechanistic interpretability；
+- training / learning dynamics / acquisition；
+- CV / image generation / video / multimodal；
+- speech/audio（只要问题 broad，不陷入 tokenizer/ASR 细节）；
+- general ML / optimization / representation learning；
+- cognition / neuroscience；
+- statistics / information theory / control / dynamical systems。
 
-每轮开始：
-
-1. 回看 Sasano Slack 的真实评价与同门 project；
-2. 读若干近期 ACL/EMNLP/NAACL **Main 普通强论文**，不只看 Best；
-3. 重点读 Introduction + Related Work；
-4. 总结它们的 RQ 来源、scientific object、nearest-prior 差异和实验形态。
-
-Main paper 用于**正向学习“什么问题值得问”**，不是只用来查重。
-
-## Phase 2 — 找 scientific pressure，不找 exact gap
-
-先搜：
-
-- 一个自然矛盾；
-- 一个经典但仍未解决的 distinction；
-- 两个 competing explanations；
-- 一个学习/训练/表示过程中的未知 quantity；
-- 一个自然 trade-off；
-- 一个真正改变对象的现实 premise。
-
-不要从：
-
-> “没人测这个组合”
-
-开始。
-
-## Phase 3 — 每次只锁一个最强候选深审
-
-不要同时养十几个半成品。一个 seed 真正有希望，就停下来：
-
-- 广搜 nearest prior；
-- 实读最近论文的 Introduction / Related Work；
-- 找 parent RQ；
-- 做 reviewer compression；
-- 对齐 Sasano reasoning；
-- 对齐真实 Main scope；
-- **立即做实验落地审计。**
-
-深审完必须明确：继续 / kill。然后才换题。
-
-## Phase 4 — Novelty 审的是 parent，不是 exact experiment
-
-必须回答：
-
-- prior 已经拥有的母问题是什么？
-- reviewer 会一句话怎么描述我们的工作？
-- 如果去掉新模型/新语言/新 dataset/new condition，我们还剩什么？
-- 是否只是“已有问题 + cleaner experiment”？
-
-Remove-the-trigger-paper test 继续保留：
-
-> 如果启发 idea 的那篇新论文消失，这个问题还会不会自然存在？
-
-如果不会，通常只是 follow-up。
-
-## Phase 5 — 在注册前才设计最小 pilot
-
-只有前面都过了，才问最小实验。
-
-最小 pilot 必须：
-
-- 数据能立刻拿到；
-- manipulation/observation 直接对应 RQ；
-- 不需要先造 benchmark；
-- 不需要大量 judge/annotation 才能定义 ground truth；
-- 最好小规模就能区分解释或揭示结构。
-
-如果此时才发现：
-
-> “其实数据根本不好找，只能自己合成；最后就是跑若干 metric。”
-
-**立刻 kill，不要因为前面已经投入很多时间而护题。**
+但是**不要强行把外域问题映射成“LLM 版”**。跨域最有价值的东西是：
+- 新的 competing explanations；
+- 一条可验证的 law / shape；
+- 一个最小系统；
+- 一个结构性矛盾；
+- 一个理论上必须存在的 latent variable；
+- 一个 intervention 可以让两个解释产生反向预测。
 
 ---
 
-# 6. 为什么上一轮会把垃圾题当宝贝：必须避免的认知错误
+# 6. 高效搜题流程
 
-### 错误 1：过度奖励“漂亮的一句话 distinction”
-`X ≠ Y` 很容易听起来聪明，但一句话漂亮不代表 scientific object 强。必须看实验到底研究什么。
+## Phase A — Fresh calibration
+每轮开始先读一小批新鲜 Main / ICLR / ICML / NeurIPS papers + Sasano Slack，不要直接生成题。
 
-### 错误 2：把 changed premise 当成自动 novelty
-“LLM 时代出现了新 distribution/process”不够。新 premise 必须产生一个新的 scientific phenomenon/question，而不是仅产生新的 evaluation condition。
+## Phase B — 产生 seed，但先做超便宜 parent collision
+每个 seed 先写：
+- 一句话 RQ；
+- 为什么问题在实验前就存在；
+- 2–3 个 competing explanations；
+- 哪个结果会改变我们对模型的理解。
 
-### 错误 3：只做 parent novelty audit，没有做 experimental-object audit
-C2 在 literature level 看似有独立 intersection，但一落地就变成 LSC robustness evaluation。以后 novelty audit 后必须立刻审实验形态。
+然后立即搜 parent-level nearest prior。不要先设计一堆实验再发现母问题被占。
 
-### 错误 4：把“所有结果都能解释”当成探究型充分条件
-这只说明不是 anomaly gambling；并不能证明它不是 benchmark/evaluation paper。
+## Phase C — 一次只深审一个最强 seed
+有一个明显更强就停止发散。完整检查：
+- reviewer compression；
+- nearest-prior ownership；
+- remove-trigger-paper test；
+- 是否只是 `old question + new model/modality/condition`；
+- 是否只是成熟 behavioral anomaly 后补 mechanism；
+- 是否需要复杂语言学/大量数据才能讲清；
+- identification 是否真的能区分解释。
 
-### 错误 5：为了让题看起来 Main-level，用 rhetoric 抬高 scientific object
-如果实验只能支持“method A 对 perturbation X 不稳”，就不能包装成“我们研究 semantic inference 的 fundamental invariance”。Claim 必须由实际实验自然长出来。
+深审完只能给两个结果：**SURVIVE / KILL**。不要给用户半成品。
 
-### 错误 6：没有在早期问“数据到底在哪”
-一个真正适合硕士快速做的题，数据路径应该在早期就能说清楚。需要创造复杂 ground truth 才能成立，是强烈危险信号。
+## Phase D — Similar paper 出现时先学习，再 kill
+如果论文已经覆盖：
+1. 先明确它如何从初级 idea 发展成完整论文；
+2. 提炼 `growth lesson`；
+3. 再写进 `FAILED_TOPICS*.md`，包括 revival condition；
+4. 不要围着它继续找很窄 follow-up。
 
----
-
-# 7. 定期偏航审计
-
-每认真审 8–12 个 seed，或者连续几个 seed 都来自相似方向时，暂停检查：
-
-- 是否又从 recent paper 的 mechanism/future work 挖题？
-- 是否又追 RL/agent/tool-use 热点？
-- 是否又在 exact gap 里越钻越窄？
-- 是否又出现 benchmark / metric / robustness / synthetic-data 主导？
-- 是否数据路径越来越人工、越来越昂贵？
-- 是否 Main paper 只被用来 kill，而没有用于正向学习 RQ formation？
-- 是否 Sasano 的真实 reasoning 已经退化成几个口号？
-- 最近的题如果删掉技术术语，普通 reviewer 还能不能一眼明白为什么值得知道？
-
-如果同一种失败连续出现，不要继续润色 seed；**更换 idea generator / scientific object。**
-
----
-
-# 8. 当前明确禁止复活
-
-先读 `ssn-taste/FAILED_TOPICS.md` 和 `ssn-taste/SELECTED_TOPICS.md`。
-
-特别注意：
-
-- **S01 / F06 — optional tool default / effective action semantics：不复活。** Parent 会被 reviewer 压成 underspecified tool intent / argument completion；exact default 只是小 cell。
-- **S02 / C2 — AI rewrite ≠ semantic change：不复活。** 主要问题不是“结果不确定”，而是落地后本质是 synthetic-data + LSC metric/method robustness evaluation，同时现实数据缺 clean ground truth。
-- 以前 ledger 中已经 kill 的方向不要换名重生，除非发现真正改变原 kill reason 的新证据。
-- Temporal Forgetting / forgotten≠erased family 继续禁止复活。
+## Phase E — 只有过完 novelty/importance 才设计 pilot
+最小 pilot 不是为了证明预设 anomaly，而是**把可能世界分开**。最好 A/B/C 任意结果都回答同一个母问题。
 
 ---
 
-# 9. 下一轮的执行要求
+# 7. 候选进入 SERIOUS / PILOT-AUTHORIZED 的硬门槛
 
-开始后不要给我一堆半成品 idea。先广搜和校准；找到一个真正最强的 seed 后，**锁住它，深审到底，明确 kill / serious**，再换下一个。
+必须同时满足：
 
-但不要为了“深审”而强行救题。发现根本缺陷就立即杀。
+1. **一句话值得问。** 不靠 elaborate rhetoric 才显得重要。
+2. **问题先于方法存在。** 去掉具体 model / benchmark / interpretability tool 仍成立。
+3. **不是复杂语言学小题。** 普通 ML/NLP reviewer 可以快速理解 scientific pressure。
+4. **不是成熟 anomaly follow-up。** recent paper 消失后问题仍自然存在。
+5. **parent-level novelty 真存在。** reviewer 不能一句话压成已有 parent + 新模型/新条件/更深机制。
+6. **有 competing explanations。** 至少两个自然世界会导致不同 prediction；不是只赌一个漂亮现象出现。
+7. **actual experiment 是科学实验，不是 evaluation。** 去掉 metric/benchmark 名称后仍能说出发现了什么规律或机制。
+8. **识别逻辑干净。** intervention 真能区分 explanation，而不是 context confound / probe artifact / distribution shift。
+9. **可解释性题额外要求 Zhao-chain。** 至少能讲清：representation structure → transformation/computation → component → causal intervention；只找 feature/head 不过关。
+10. **初期可做。** 一个小模型/少量 controlled data/公开 checkpoint 就能做高信息量 pilot；不先大规模训练/标注。
 
-每个准备汇报的 serious candidate 至少要能用非常短的话回答：
+---
 
-> **RQ 是什么？为什么 Sasano 会自然问？nearest parent 是什么？真正 novelty 是什么？数据在哪里？最小实验到底做什么？实验是在研究现象，还是只是评测方法？无论哪种自然结果，论文分别学到了什么？**
+# 8. 强制重校准触发器
 
-其中任何一项答得含糊，就还不能注册。
+不必等满 8–12 个 seed。出现任一现象立即停下重新读 Sasano + Main papers：
+- 连续几题来自同一 literature；
+- 每个 idea 都变成“某 recent paper 没做的下一步”；
+- mechanism 越来越复杂，而母问题越来越难一句话说；
+- 又开始做 benchmark / robustness / metric；
+- 又回到复杂语言学小现象；
+- 又连续找 RL / reasoning / agent 热点；
+- 一直在找 head / vector / probe，而没有 computation；
+- cross-domain idea 只剩“X 在 CV 有，所以问 LLM 有没有 X”；
+- novelty 只能靠 exact cell，而不是 parent RQ。
 
-最终目标不是尽快凑出 selected topic，而是找到真正对齐 **Sasano + ACL/EMNLP/NAACL Main**、同时用户愿意真正投入去做的探究型 scientific question。
+这时允许**推翻当前 generator**，不要机械遵守旧提示词。
+
+---
+
+# 9. 当前状态与禁止复活
+
+正式状态以 repo 为准：当前 selected topic 是 S03；本轮继续找新的 independent topic，不以 S03 风格为模板。
+
+必须先读全部 `FAILED_TOPICS*.md`。截至当前，durable kill ledger 已经覆盖大量路线，包括：复杂语义/语言学、memory/forgetting、source memory、mutual exclusivity、latent tokenization、retraction/repair、prototype/exemplar、ambiguity posterior、representational drift、prospective obligations、copy-vs-recompute、DLM coarse-to-fine、reachability/steerability、negative constraints、fast/slow memory、sampling uncertainty、branch awareness、trajectory attractors、weight tying、closed-loop generation、LayerNorm/confidence、implicit reward、ICL-vs-SFT computation、VLM routing、object permanence、speech timescale disentanglement、causal-state induction、video intention、audio feature routing、semantic commutativity 等。
+
+**这些 kill 是排除项，不是 taste exemplars。不要因为要“换一点条件”就复活。**
+
+当前还有一个 `UID online regulation` 只属于 **SERIOUS SEED / NOT PILOT-AUTHORIZED**：它的核心识别问题是无法干净区分 active compensation 与普通 conditional-distribution narrowing。可以重新审，但不能默认推进；如果解决不了识别，继续 kill。
+
+---
+
+# 10. 最终输出纪律
+
+用户不要看几十个半成品。
+
+你可以内部大量搜索、杀很多 seed，但对用户：
+- 没有完整过关题：直接说这一轮 0 survivor，并说明最重要的 kill / growth lessons；
+- 有题：只在完整审完以后给出。
+
+一个真正交付的 survivor 至少要包含：
+- 一句话 mother question；
+- 为什么它值得 Main reviewer 关心；
+- 独立 scientific pressure；
+- competing explanations / possible worlds；
+- nearest prior 与明确 ownership boundary；
+- 如果是可解释性题：Zhao-style representation → computation → causal mechanism 路径；
+- 最小 identification experiment；
+- 多种结果分别意味着什么；
+- kill conditions；
+- 为什么不是 benchmark / method / mature follow-up。
+
+**允许长期 0 survivor。好题很稀缺不是流程失败；真正的流程失败是为了留下题而降低标准，或者搜索慢慢滑回我们已经知道不喜欢的题型。**
+
+现在开始下一轮搜索。提示词只是最低纪律，不是固定算法；必须在搜索过程中不断用 Sasano 的真实判断和新的强 Main papers重新学习 research taste，并在必要时主动修改自己的 search process。
