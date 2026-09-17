@@ -1,233 +1,189 @@
-# L36 — Active Main Candidate: Learning the Generation Boundary
+# L36 — Active Reframed Main Candidate: Mode-Seeking Stability Transition
 
-**Decision date:** 2026-09-14  
-**Status:** **ACTIVE — MAIN CANDIDATE**  
+**Decision date:** 2026-09-17  
+**Status:** **ACTIVE — REFRAMED MAIN CANDIDATE / E05 GATE REQUIRED**  
 **Primary target:** ACL / EMNLP / NAACL Main  
-**Fallback:** Findings if the causal core does not replicate broadly enough  
-**Old identity:** the intrinsic-uncertainty story is retired. Do not resurrect it.
+**Fallback:** narrower termination-channel paper only if the sequence-landscape story fails  
 
 ## 1. Core research question
 
-> **What does post-training teach a language model about when a response is allowed to end, and how does that learned generation boundary determine whether wide search can expose termination pathologies?**
+> **Why does progressively mode-seeking search degrade classical sequence models, while many modern post-trained LMs appear more stable, and what structural change in the full sequence-level probability landscape accounts for that transition?**
 
-The current answer is stronger than the earlier “modern models have lower EOS probability” story:
+Same-lineage version:
 
-> **Post-training installs a context- and format-conditional generation boundary. That boundary reorganizes stop-event geometry by orders of magnitude; the resulting geometry determines the beam width at which termination candidates become searchable, connecting a local learned boundary to the appearance or disappearance of the classic wide-beam termination pathology.**
+> **Within a fixed autoregressive lineage, how do Base → SFT → preference/RL stages reorganize the relation among sequence mode, typical probability mass, multi-token search path, and task utility?**
 
-Beam search is the stress test / readout. The scientific object is the **learned generation boundary and its search consequence**, not beam tuning and not rediscovery of EOS bias.
+The scientific object is **not EOS** and is **not beam search tuning**. Beam search is one way of moving toward high-probability modes. The object is the relation between the learned full-sequence distribution and the utility of increasingly mode-like outputs.
 
-## 2. Why this is not the trivial claim
+## 2. Why the previous identity was too narrow
 
-These paper identities are explicitly banned:
+The previous Main-candidate identity was:
 
-- “SFT teaches the EOS token.”
-- “EOS probability affects stopping.”
-- “Classic NMT can prefer empty hypotheses.”
-- “Using the wrong chat template hurts generation.”
-- “Increasing an EOS logit makes a model stop earlier.”
-- “`rank_stop <= 2b` is a new empirical law.” It follows mechanically from the first-step top-`2b` pruning rule of the beam implementation and is only an identifying instrument.
+> post-training learns a format-conditional generation boundary whose stop-event geometry controls a classical termination pathology.
 
-The non-trivial claim is the **full causal chain**:
+That statement remains useful for one channel, but it is too narrow as a general explanation of beam-search degradation.
 
-```
-post-training
-  -> learns a format-conditional response boundary
-  -> moves stop-event geometry by orders of magnitude
-  -> moves the search-exposure threshold
-  -> switches a termination-pathology channel under wide MAP search
-```
+Beam search approximately optimizes a full sequence score:
 
-No single arrow is sufficient as the paper identity. The contribution is identifying and causally connecting the chain.
+`log p(y|x) = sum_t log p(y_t | x, y_<t)`.
 
-## 3. Load-bearing evidence
+The empty hypothesis `[EOS]` is only one degenerate full sequence. First-step stop probability/rank is therefore a valid instrument for the **empty-termination channel**, but not a theory of general mode-seeking degradation.
 
-### C1 — controlled SFT causally learns a format-conditional boundary (E02)
+Our own Olmo results already falsify the universal-EOS explanation: Olmo base loses large amounts of BLEU under wider search while maintaining zero empty outputs and near-reference length, through generic/copy-like high-probability outputs. Thus:
 
-Protocol and results: `E02_PREREGISTRATION.md`, `results/e02/E02_RESULTS.md`.
+> **termination collapse is one special case of mode-seeking pathology.**
 
-E02 uses `Qwen/Qwen2.5-3B` base, the same 2,998 En→De examples, the same order / optimizer / budget / seed, and one shared previously-unused `<END>` token in every arm and evaluation. A and B differ only in the surface wrapper. This removes the natural-checkpoint confounds of different stop-token identities, different stop-set cardinalities, and co-adapted weights/interfaces.
+The E02 controlled SFT experiment is also demoted to its exact ownership:
 
-Final checkpoint:
+> it causally shows that a surface-conditioned `<END>` placement policy can be learned under matched training.
 
-| condition | tested A | tested B | interpretation |
-|---|---:|---:|---|
-| `A_ONLY`: `p(<END>@true_end)` | **0.966** | ~0 | boundary only in trained A |
-| `B_ONLY`: `p(<END>@true_end)` | ~0 | **0.961** | **symmetric reversal** |
-| `MIXED`: `p(<END>@true_end)` | **0.962** | **0.963** | both boundaries learned |
+It does **not** by itself establish that small SFT learns an abstract, task-general concept of response completeness.
 
-Behavior follows the learned boundary under RAW beam search:
+## 3. Closest ownership and novelty boundary
 
-- `A_ONLY` in A: BLEU `35.62 -> 39.51` from beam 1→64, length ratio 0.95;
-- `A_ONLY` in B: BLEU `7.08 -> 5.97`, length ratio 4.02;
-- `B_ONLY` in B: BLEU `36.07 -> 39.38`, length ratio 0.96;
-- `B_ONLY` in A: BLEU `8.07 -> 6.82`, length ratio 4.23;
-- `MIXED`: both formats remain well terminated (length ratio 0.96 / 0.96) and beam-stable.
+Existing work already owns the following:
 
-This is the main causal identification result: **the same task/content does not induce one global willingness to stop; the learned boundary follows the format in which response termination was supervised.**
+- **Murray & Chiang (2018):** brevity/length bias and large-beam NMT degradation;
+- **Cohen & Beck (2019):** multi-token search discrepancy / later probability compensation as a general beam-degradation mechanism;
+- **Stahlberg & Byrne (2019):** exact NMT modes are often empty; search errors can protect against model errors;
+- **Eikema & Aziz (2020):** mode-vs-distribution-mass mismatch in NMT;
+- **Shi, Xiao & Knight (2020):** empty preference can arise from high EOS probability or low cumulative probability of adequate full sequences;
+- **Kulikov et al. (2022):** sequence-level premature termination / oversmoothing across all prefixes, EOS rank/probability, training regularization, and its beam consequences;
+- **Meister et al. (2022):** generic probability-quality paradox in language generation;
+- **Stahlberg et al. (ACL 2022):** uncertainty, search errors, exact-search tractability, and spread of probability mass around the mode;
+- **Pang et al. (TACL 2025):** the classical beam-search challenge appears much weaker in LLM-MT;
+- **Wu, Lei & Monz (NeurIPS 2025):** likelihood-quality alignment in LLM-MT can be explicitly trained to improve MAP/beam decoding;
+- **Springer et al. (ICML 2026):** post-training can cause semantic diversity/mode collapse;
+- **recent sequence-probability/correctness work:** generic `higher probability != higher correctness` is already occupied.
 
-Important audit note: the original first-position-rank statistic was discovered during execution to be wrong for the neutral `<END>` design. P1 was replaced by the teacher-forced boundary-placement profile after a disclosed A-only pilot and before the decisive symmetric B-only / MIXED result was complete. This amendment must remain explicit in the paper; do not present P1′ as untouched preregistration.
+Therefore none of these can be the L36 paper identity:
 
-### C2 — task capability and boundary learning are separable
+- “EOS matters”;
+- “beam modes can be bad”;
+- “likelihood and quality are misaligned”;
+- “post-training changes entropy/diversity”;
+- “format changes stopping.”
 
-Registered P4 predicted that the boundary would be learned before translation competence. **P4 is falsified.** At step 200 the trained-format greedy BLEU is already 34.34, about 97% of final, while `p(<END>@true_end)` is only 0.407.
+The remaining plausible novelty is a **transition question**:
 
-The correct statement is stronger and cleaner:
+> **How does the stability of mode-seeking decoding itself change across classical models and modern post-training stages, and what full-sequence structural transition explains that change?**
 
-> **The base model already possesses substantial translation capability; the controlled SFT chiefly adds a response-boundary policy rather than creating that capability.**
+This is a training-stage / regime-transition problem, not a static likelihood-quality-correlation problem.
 
-Do not claim “boundary before competence.” Preserve the falsification.
+## 4. Current evidence that survives the reframe
 
-The `NOEOSLOSS` arm is supporting only. It never learns the boundary and runs to ~4× reference length, but masking `<END>` still gives it negative gradients at other positions, so this arm cannot carry a necessity claim.
+### E0 — matched RAW classic-vs-modern endpoint contrast
 
-### C3 — natural post-training lineages move stop geometry by orders of magnitude, keyed to interface
+Under raw cumulative sequence scoring, classic WMT19 NMT exhibits severe large-beam shortening/empty collapse while Gemma-3-12B-IT remains stable over the tested range. This rules out the easiest decoder-normalization explanation.
 
-The Olmo-3 7B lineage independently shows the same qualitative object under natural post-training:
+### E1 — termination channel is real but partial
 
-- base few-shot: median stop rank ~532;
-- SFT/DPO/RLVR few-shot: rank ~3–4 and catastrophic early termination under wide beam;
-- SFT chat: rank 1,222;
-- DPO/RLVR chat: rank ~60,030 / 41,025 and no termination collapse through the tested beam range.
+Classic systems have much more competitive immediate-stop hypotheses than modern in-format LLMs, and stop-logit interventions can induce a termination pathology in the modern model. Keep this as a **channel-specific causal case study**.
 
-The same post-trained weights therefore do not merely become globally more or less willing to stop. Their stop geometry is strongly conditional on whether inference matches the post-training interaction format.
+Do not generalize it to all beam degradation.
 
-This lineage is observational with respect to training stage; E02 provides the controlled causal identification that the lineage lacks.
+### E2 — controlled format-conditioned boundary-token learning
 
-### C4 — local stop geometry predicts when the termination channel becomes search-accessible
+Matched Qwen SFT with a shared neutral `<END>` token produces the A_ONLY/B_ONLY symmetric reversal and MIXED rescue. This is clean causal evidence that supervision can install a format-conditioned boundary-token policy.
 
-For this beam implementation, an immediate-stop hypothesis can enter the first beam only if its first-step rank is within the top `2b`. This is an algorithmic exposure condition, not a novel law.
+Keep as a controlled sandbox. Do not call it generalized response-completion learning without large-scale cross-task generalization evidence.
 
-Its scientific use is predictive. Before running wide search, Olmo-3 base few-shot had median stop rank 532, giving a characteristic exposure scale around `b* ~= 266`. The prediction was committed before the decisive search:
+### Stage lineages — valuable natural material
 
-- beam 128: **0% empty**;
-- beam 512: **8% empty**, with shortening appearing only after crossing the predicted interval.
+Olmo and Tülu public lineages provide Base/SFT/preference/RL checkpoints for studying training-stage changes. The old stop-rank analysis is only one projection of these lineages; E05 will analyze their **full-sequence landscape**.
 
-Classic `facebook/wmt19-en-de` has a much smaller stop rank (~106) and its empty-collapse channel is already severe by beam 64–128. Thus a local, pre-search measurement predicts where the termination channel becomes available at a system level.
+### Crucial negative / broadening evidence
 
-Do not headline “393/393 violations = 0”: necessity follows from the search algorithm. Headline the **cross-system, out-of-sample movement of the onset scale**.
+Olmo base can show severe BLEU degradation with zero empty output and almost normal length. Therefore similar aggregate quality loss can arise from qualitatively different high-probability basins:
 
-### C5 — classic NMT and modern in-format LLM translation occupy different termination regimes under matched RAW scoring
+1. empty/short termination;
+2. generic/off-target/copy/repetition or other non-empty mode inadequacy.
 
-On the same En→De substrate and raw cumulative sequence score (`length_penalty = 0`):
+This motivates the broader question of whether the classical curse disappeared or its dominant failure basin changed.
 
-- `facebook/wmt19-en-de`: beam 4→64, BLEU 48.61→43.28, empty 0→8.75%, length ratio 1.011→0.845; by beam 512 the full-substrate system reaches BLEU 3.67, 54.43% empty, length ratio 0.253;
-- `google/gemma-3-12b-it` chat: beam 4→64, BLEU 45.91→46.12, empty 0→0%, length ratio 0.998→0.995.
+## 5. Main hypotheses after reframe
 
-This rules out the easy explanation that the modern non-collapse is only a length-normalization/default-decoder artifact.
+These are **not claims yet**. They must pass E05.
 
-The preregistered Gemma stop-logit intervention further shows that selectively moving termination competitiveness toward the classic regime induces shortening / empty outputs and beam-amplified damage. It is evidence of causal sufficiency, not discovery of EOS bias itself.
+### H1 — mode-seeking stability transition
 
-### C6 — beam-quality degradation has at least two distinct channels
+Classical NMT and at least some base LMs are `mode-seeking fragile`: stronger movement toward high sequence probability raises model score while reducing semantic utility. Modern post-trained in-format LMs are substantially more stable.
 
-Termination geometry does **not** explain every BLEU drop under beam search. Olmo-3 base can lose large amounts of BLEU while maintaining full-length outputs and zero empty rate, through generic high-probability sentences / copying. Classic NMT can reach a similar BLEU through severe empty/short collapse.
+### H2 — pathology migration
 
-Therefore the paper must distinguish:
+The classical short/empty failure basin may be replaced in base LMs by normal-length generic/copy/repetition/semantic basins. Thus the classical visible `beam curse` may change form rather than simply disappear.
 
-1. **termination collapse** — the channel L36 explains;
-2. **non-empty mode inadequacy** — a separate channel already central to mode-vs-quality work.
+### H3 — mode–mass transition
 
-This distinction prevents the termination account from being overstated as a universal theory of beam-search degradation.
+At least one same-architecture lineage will show that post-training reduces the utility gap between extreme high-probability outputs and typical probability mass.
 
-## 4. Novelty boundary / closest ownership
+### H4 — full-sequence probability reordering
 
-Old work owns the classic pathology:
+When the **same candidate strings** are rescored across checkpoints, post-training will move probability margins in favor of adequate sequences relative to pathological ones. This is required for any `mode repair` claim.
 
-- Murray & Chiang (2018): beam degradation and brevity/length bias;
-- Stahlberg & Byrne (2019): exact modes are often empty translations;
-- Shi, Xiao & Knight (2020): why classic NMT prefers empty outputs, including first-step EOS behavior;
-- Eikema & Aziz (2020/2022): mode inadequacy and alternatives such as MBR.
+### H5 — EOS is a special case
 
-Modern work supplies adjacent premises:
+Immediate termination geometry explains the termination-collapse channel but not the full transition in mode-seeking stability.
 
-- Pang et al. (TACL 2025): the classic beam challenge appears much weaker / absent in LLM-MT;
-- instruction-tuning and tooling literature treats EOS/EOT supervision and chat-template correctness as practically important;
-- recent work shows post-training and chat format can change other model behaviors, and diffusion-LM work studies EOS supervision pathologies under a different generation architecture.
+## 6. E05 gate
 
-None of these facts alone is our novelty. The ownership claim to defend is:
+Formal protocol: `E05_SEQUENCE_LANDSCAPE_PREREGISTRATION.md`.
 
-> **A controlled demonstration that post-training learns a format-conditional generation boundary, plus a quantitative bridge from that learned boundary to stop-event search exposure and the historical classic-NMT → modern-LLM termination-regime shift.**
+E05 has five linked analyses:
 
-A reviewer should not be able to compress the contribution to “of course a model trained on `<END>` learns `<END>`.” The symmetric A/B reversal, MIXED rescue, capability/boundary dissociation, natural post-training lineage, out-of-sample onset prediction, matched classic/modern search, and intervention are jointly needed to defeat that compression.
+1. **Search–utility trajectory** under raw beam widths;
+2. **Independent likelihood-ranked Best-of-N** to test whether the phenomenon is distributional rather than beam-specific;
+3. **Mode–Mass Gap** comparing mode-like outputs with typical sampled mass;
+4. **Common-candidate cross-stage rescoring** to detect full-sequence probability reordering without candidate-set confounds;
+5. **multi-token search-path geometry** and, secondarily, a length-conditioned score envelope.
 
-## 5. Main-paper claim stack
+The important object is the within-input trajectory:
 
-### Claim A — post-training learns a generation contract, not a global stop prior
+> does moving toward sequences the model assigns higher probability systematically hurt utility, and how does this trajectory change across training stages?
 
-> **Response termination is learned conditionally on the interaction format: matched SFT can install one boundary while leaving an otherwise identical boundary absent under another surface contract, and mixed supervision installs both.**
+## 7. Falsifiers
 
-### Claim B — boundary learning is separable from task capability
+The Main-level reframe is killed or sharply downgraded if:
 
-> **A model can already perform the translation task while lacking the corresponding generation boundary; post-training can predominantly reorganize when generation should end rather than create the task competence itself.**
+1. no reproducible stage transition in mode-seeking stability appears across at least two modern lineages;
+2. beam differences disappear under likelihood-ranked Best-of-N;
+3. common-candidate rescoring shows no systematic adequate-vs-pathological full-sequence probability reordering;
+4. modern post-trained models retain mode–mass gaps comparable to base/classical systems;
+5. the apparent transition is fully explained by length normalization, stopping conventions, or incompatible prompting;
+6. only the termination/length channel changes while non-empty mode pathology is unchanged.
 
-### Claim C — the learned boundary reorganizes search geometry
+If E05 fails, do not rescue the Main story by returning to the old generation-boundary identity.
 
-> **Natural post-training stages move stop-event ranks by orders of magnitude in a format-dependent way, thereby moving the beam-width scale at which termination candidates become searchable.**
+## 8. What architecture vs training means here
 
-### Claim D — this explains one classical decoding pathology across regimes
+The classic-vs-modern endpoint comparison cannot identify cause: architecture, scale, pretraining data/objective, and post-training all differ.
 
-> **Classic NMT and modern in-format LLM translation occupy different termination regimes under matched raw MAP search; moving the termination geometry moves the termination-collapse channel.**
+The causal decomposition therefore proceeds in layers:
 
-The paper does **not** claim to explain all beam-search quality degradation.
+- **cross-era endpoint:** establish the phenotype;
+- **same-architecture public lineage:** test whether training alone is sufficient to move the phenotype;
+- **cross-lineage replication:** test generality;
+- only after a stable stage transition is identified should controlled training isolate which supervision/objective produces it.
 
-## 6. What still separates “Main candidate” from “Main-ready”
+Do not pre-commit to SFT, RL, scale, or architecture as the explanation.
 
-The central phenomenon no longer needs another rescue experiment. Remaining work is replication and claim hardening.
-
-### R1 — replicate E02, not expand it into a benchmark
-
-E02 currently has one base model / seed / language direction. Because the effects are enormous, the goal is not a huge sweep. Repeat the decisive A_ONLY / B_ONLY / MIXED factorial with at least additional seeds and preferably one second base-model family. Preserve the shared neutral boundary token and matched-data design.
-
-### R2 — audit whether out-of-format failure is boundary-specific or a broader format failure
-
-The untrained-format BLEU is only ~6–8 and length ratio ~4×. A reviewer can argue that the model simply cannot operate under the unseen wrapper. Add diagnostics that separate content competence from boundary control:
-
-- teacher-forced target-token NLL / token accuracy **before the true end**, excluding `<END>`;
-- quality of the first translation span when evaluated before the run-on continuation;
-- boundary hazard profile: `p(<END>)` at the true end versus premature positions.
-
-If translation content remains reasonable before the missing boundary, the “generation boundary” interpretation strengthens. If content also collapses, keep the broader “format-conditional generation contract” wording and do not claim boundary-only causality.
-
-### R3 — one independent natural lineage / replication
-
-A second public base→SFT(/preference/RL) lineage such as Tülu can establish that the Olmo stage pattern is not family-specific. The controlled E02 is the mechanism experiment; this is external validity.
-
-### R4 — paper-quality MT evaluation
-
-Add an established semantic metric (e.g. COMET where licensing/environment permits), bootstrap uncertainty, and at least modest language/model breadth for the classic↔modern endpoint. Do not let this become a benchmark paper.
-
-## 7. Explicitly rejected claims
-
-Do not say:
-
-- intrinsic human-reference uncertainty causes the sentence-level curse;
-- ACL 2022 is broadly refuted;
-- E02 proves all modern beam robustness comes from termination;
-- the neutral-`<END>` E02 reproduces classic premature stopping (it does not; its out-of-format failure is run-on generation);
-- P4 passed;
-- the amended P1′ was frozen before all pilot evidence;
-- `NOEOSLOSS` cleanly proves necessity;
-- beam exposure inequality itself is a new scientific law.
-
-## 8. Current verdict
+## 9. Current status
 
 ```yaml
-status: ACTIVE_MAIN_CANDIDATE
+status: ACTIVE_REFRAMED_MAIN_CANDIDATE
 primary_target: ACL_EMNLP_NAACL_MAIN
-fallback: FINDINGS
-paper_identity: POSTTRAINING_LEARNS_FORMAT_CONDITIONAL_GENERATION_BOUNDARIES
-original_uncertainty_identity: RETIRED
-controlled_format_boundary_causality: PASS_E02
-symmetric_reversal: PASS
-mixed_format_rescue: PASS
-boundary_vs_capability: DISSOCIATED_P4_FALSIFIED_AND_REVISED
-natural_stage_lineage: STRONG_ONE_FAMILY
-search_onset_prediction: OUT_OF_SAMPLE_PASS
-classic_modern_raw_regime_shift: SUPPORTED
-all_beam_degradation_explained: NO_TWO_CHANNELS_REQUIRED
-trivial_claim_filter: PASS_FOR_FULL_CHAIN_ONLY
-main_ready: NO_REPLICATION_AND_BOUNDARY_SPECIFICITY_AUDIT_REMAIN
+scientific_object: SEQUENCE_LEVEL_MODE_SEEKING_STABILITY
+primary_rq: WHY_MODE_SEEKING_BECOMES_LESS_HARMFUL
+old_uncertainty_identity: RETIRED
+old_generation_boundary_identity: DEMOTED_TO_SUBMECHANISM
+termination_channel: REAL_BUT_PARTIAL
+e02_role: NARROW_CAUSAL_SANDBOX
+novelty: PLAUSIBLE_REQUIRES_E05
+main_ready: NO
+next_gate: E05_SEQUENCE_LANDSCAPE_AUDIT
 continue: YES
 ```
 
-## 9. One-sentence paper identity
+## 10. One-sentence provisional paper identity
 
-> **Post-training teaches language models a format-conditional generation boundary that is separable from task competence; by moving the stop event across search-exposure scales, that learned boundary determines whether wide MAP search can access a classical termination pathology.**
+> **We ask why increasingly mode-seeking decoding exposes pathological high-probability sequences in classical and base sequence models but can become substantially more stable after modern post-training, and whether this transition reflects a reorganization of the full-sequence relationship among mode, typical probability mass, and task utility.**
