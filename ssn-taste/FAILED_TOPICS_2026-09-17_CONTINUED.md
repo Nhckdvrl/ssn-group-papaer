@@ -29,3 +29,31 @@
 **Failure reason.** The honest reviewer-level parent becomes the intersection of two already occupied questions: `cross-document causal attention causes distraction and can be removed by document masking`, and `LLMs learn attention patterns that reduce information over-mixing, with packing affecting those patterns`. Asking whether EOS specifically implements a reset is a cleaner mechanistic follow-up, not an independently established mother question. It also becomes less generally important as modern training stacks increasingly use explicit document masks/state resets.
 
 **Revival condition.** A boundary-specific causal signature that is not explainable by generic attention sinks/anti-mixing and that matters in a broadly used regime where no hard document isolation is present. Simply probing EOS attention, adding more model sizes, or comparing causal vs block-diagonal masks is insufficient.
+
+---
+
+## F18 — Long-context forgetting: temporal/distance decay versus semantic interference
+
+**Question.** When information becomes harder for an LLM to use as more context arrives, is the loss mainly caused by token distance/position itself or by interference from semantically competing intervening information, analogous to decay-versus-interference theories of human memory?
+
+**Why it looked promising.** This is a classic cognitive-science distinction with clean interventions: hold distance fixed while changing semantic overlap, or hold interfering content fixed while changing distance. Both outcomes would be interpretable and the question does not depend on one reported anomaly.
+
+**Nearest prior.** Liu et al., TACL 2024, *Lost in the Middle*, established strong position/context effects. Wang & Sun (2025), *Unable to Forget: Proactive Interference Reveals Working Memory Limits in LLMs Beyond Context Length*, directly imports proactive-interference paradigms and shows old semantically related associations disrupt newer values. Li et al., ICML 2026, *Understanding Generalization and Forgetting in In-Context Continual Learning*, provides a theoretical bias–variance–interference decomposition for sequential in-context tasks. ICLR 2026 work on in-context forgetting likewise makes selective suppression of interference an explicit object.
+
+**Failure reason.** The parent `long-context failures arise from interference in addition to position/length limitations` is directly occupied both empirically and theoretically. A cleaner factorial decay×interference experiment would refine attribution but would remain a controlled follow-up inside an existing memory/interference literature.
+
+**Revival condition.** A distinct memory-theoretic signature not predicted by proactive/intertask interference or positional effects, with an intervention that changes the qualitative mechanism rather than merely the amount of distraction.
+
+---
+
+## F19 — Does post-training reduce a model's future learnability?
+
+**Question.** As an LLM moves through pretraining, SFT, preference optimization, and RL, does acquiring current capabilities reduce its ability to learn genuinely new capabilities later? This asks about future plasticity, not catastrophic forgetting of existing skills.
+
+**Why it looked promising.** Loss of plasticity is a fundamental phenomenon in continual deep learning. The staged LLM training pipeline creates a natural testbed for asking whether one stage changes the model's later learnability, with possible mechanisms in weight magnitude, representation geometry, gradient conflict, or output-space collapse.
+
+**Nearest prior.** Dohare et al., Nature 2024, establishes loss of plasticity in deep continual learning. Hernandez-Garcia et al. (2026), *Can Scale Save Us From Plasticity Loss in Large Language Models?*, directly demonstrates plasticity loss in GPT-style language models and studies scaling. Han et al. (2026), *Weight Decay Improves Language Model Plasticity*, studies downstream adaptability of pretrained LMs. Most directly, Liu et al. (2026), *When RL Fails after SFT: Rejuvenating Model Plasticity for Robust SFT-to-RL Handoff*, asks whether excessive SFT reduces the ability of the checkpoint to be reshaped by subsequent RL and analyzes the failure as loss of plasticity.
+
+**Failure reason.** The mother question `does earlier LLM training reduce future learnability, including SFT→RL plasticity?` is now directly occupied. Restricting to another post-training stage, model family, or task would be an exact-cell extension rather than a new scientific parent.
+
+**Revival condition.** A future-learnability phenomenon with a qualitatively different causal source and prediction not reducible to plasticity loss, gradient conflict, or SFT→RL handoff; merely measuring plasticity after DPO/RL/another checkpoint is insufficient.
