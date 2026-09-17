@@ -57,3 +57,59 @@
 **Failure reason.** The mother question `does earlier LLM training reduce future learnability, including SFT→RL plasticity?` is now directly occupied. Restricting to another post-training stage, model family, or task would be an exact-cell extension rather than a new scientific parent.
 
 **Revival condition.** A future-learnability phenomenon with a qualitatively different causal source and prediction not reducible to plasticity loss, gradient conflict, or SFT→RL handoff; merely measuring plasticity after DPO/RL/another checkpoint is insufficient.
+
+---
+
+## F20 — Does an instruction/control signal fade as computation proceeds?
+
+**Question.** Inspired by prompt forgetting in multimodal diffusion, does an LLM progressively lose access to a governing instruction as depth, generation length, or dialogue turns increase, such that later computation is driven more by local content than by the original control signal?
+
+**Why it looked promising.** Image/video generation offers a clean scientific pattern: a conditioning signal can be strongly available at input yet progressively diluted by the model's own computation. This suggests a mechanism question rather than a benchmark question and gives direct interventions at depth/attention.
+
+**Nearest prior.** NLP work already studies instruction drift over long interactions and connects it to declining attention to instruction tokens; subsequent work on dynamic attention steering explicitly re-amplifies instructions during generation. Related work on instruction position and long-context following likewise establishes that control-token influence is not stable across context. In diffusion, *Prompt Reinjection* independently studies essentially the same conditioning-decay pattern.
+
+**Failure reason.** Cross-domain provenance is useful, but the NLP mother question `instruction influence decays/drifts and can be restored by re-emphasizing instruction representations` is already occupied. Recasting it with diffusion terminology or probing more layers would be a mechanism follow-up, not a new scientific object.
+
+**Revival condition.** A distinct conserved/decaying quantity with predictions not reducible to attention-to-instruction or context-position effects. Merely measuring instruction information across layers/turns is insufficient.
+
+---
+
+## F21 — Fine-tuning: reuse/recombination of old features versus genuinely new feature learning
+
+**Question.** When fine-tuning changes behavior, does it mainly recombine/read out features already present in the pretrained model, or does it create qualitatively new internal features? Can these two routes be causally separated?
+
+**Why it looked promising.** This is a central representation-learning distinction shared with CV and neuroscience: behavioral adaptation can coexist with representational stability, drift, or new feature formation. Opposite outcomes would all be scientifically interpretable.
+
+**Nearest prior.** Recent model-diffing and representational-drift work, including 2026 work explicitly framed as *Feature Drift: How Fine-Tuning Repurposes Representations in LLMs*, already treats how fine-tuning changes and repurposes the internal feature space as the central object. A broader line of representation-similarity and mechanistic fine-tuning studies additionally separates readout changes, feature reuse, and representational change.
+
+**Failure reason.** The broad parent `what internal features change versus get reused during fine-tuning?` is already a mature mechanism literature. Selecting one task, layer, or post-training recipe would be an exact-cell study unless a new scientific quantity forces qualitatively different predictions.
+
+**Revival condition.** An independently motivated capability for which feature reuse and feature creation make a unique causal prediction unavailable to existing representation-drift/model-diffing methods.
+
+---
+
+## F22 — Does instruction tuning create a pragmatic representation rather than merely better semantic competence?
+
+**Question.** When a pretrained document model becomes an instructed assistant, are improvements in cooperative language behavior mainly due to richer semantic knowledge or to a new representation/readout of pragmatic intent, common ground, speaker goals, and conversational commitments?
+
+**Why it looked promising.** Pragmatics offers a natural distinction between literal meaning and cooperative use, and post-training changes the social regime of the model. This could in principle produce a clean base-versus-instructed source question rather than a benchmark comparison.
+
+**Nearest prior.** Work on the pragmatic abilities of instructed LMs already reports that instruction tuning reorganizes representations toward pragmatic/intent information rather than merely syntax/lexical content, while dedicated pragmatics and epistemic-reasoning studies compare base and instructed models on implicature, common-ground, accommodation, and belief/knowledge distinctions.
+
+**Failure reason.** The broad claim `instruction tuning adds or strengthens pragmatic dimensions of language use` is already directly studied. A new pragmatic phenomenon or probe would be reviewer-compressible to another cell in that parent unless it introduces an independently necessary scientific distinction.
+
+**Revival condition.** A pragmatic quantity whose acquisition source can be isolated by a new intervention and which cannot be summarized as better intent/common-ground/pragmatic representation after instruction tuning.
+
+---
+
+## F23 — Why doesn't pretraining treat every mentioned proposition as a fact?
+
+**Question.** Next-token training positively predicts proposition tokens whether a proposition is asserted, negated, quoted, hypothetical, fictional, or merely reported. Why, then, should parametric factual knowledge track speaker commitment / epistemic status rather than raw mention frequency? Does factual acquisition contain a learned semantic gate between `proposition mentioned` and `proposition committed as true`?
+
+**Why it looked promising.** This was not generated from a reported model anomaly. It follows directly from a tension between the language-model objective and discourse semantics, with independent support from speaker-commitment/event-factuality theory, factual-knowledge acquisition, and statistical learning. A controlled fictional-fact corpus could equalize proposition exposure while varying epistemic status, and every major outcome would remain scientifically interpretable.
+
+**Nearest prior.** Mayne et al. (2026), *Negation Neglect: When models fail to learn negations in training*, directly studies the core acquisition paradox: fine-tuning on documents that mark fabricated claims as false can nevertheless make the model believe those claims. The paper varies local versus non-local negation, explicit corrections, and extends the effect beyond negation to other epistemic qualifiers such as fiction/low probability and to behavioral demonstrations; it also begins a mechanistic account in terms of an inductive bias toward representing mentioned claims as true. Li et al., EMNLP 2024 Outstanding, *Formality is Favored*, independently studies which textual features determine which conflicting facts LMs acquire, further occupying the broader learning-preference neighborhood.
+
+**Failure reason.** Mayne et al. already owns the load-bearing distinction `epistemic qualifier says p should not be internalized as true, yet training on text mentioning p can make the model believe p`, including generalization beyond simple negation and a first explanation. Broadening from negation to assertion/quotation/hypothetical status would now be a taxonomy/boundary extension of an active 2026 parent rather than an independent mother question. This is precisely the mature-paper-anomaly follow-up pattern the search is meant to avoid.
+
+**Revival condition.** A different discourse-semantic operation with a causal learning law not reducible to Negation Neglect / epistemic qualifier locality, and evidence that its parent question arises independently rather than from extending Mayne et al.; merely adding more factuality categories is insufficient.
