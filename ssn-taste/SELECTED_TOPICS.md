@@ -48,7 +48,23 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 **Mechanistic path.** Representation → update computation/transformation → implementing pathway/component → causal intervention. Do not reduce the project to a boundary probe, SAE feature, or head-discovery paper.
 
-The detailed file contains the ACL/EMNLP scope calibration, competing hypotheses, controlled/natural data strategy, initial pilot, causal follow-up, feasibility, and kill conditions.
+---
+
+### S05 — When Does Reading Become Learning?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-18  
+**Detailed registration:** `S05_WHEN_DOES_READING_BECOME_LEARNING.md`
+
+**Parent question.** Under ordinary response-only SFT, prompt/context information is available to the model but receives no direct token loss. What determines whether that information remains transient conditioning, is compressed into only the task-sufficient information needed to predict the response, or becomes persistent parameter memory?
+
+**Scientific pressure.** Conditional training specifies what should be predicted *from* the input, but does not explicitly specify what *about* the input should be durably written into the model. `Read`, `needed for the supervised prediction`, and `stored in parameters` are therefore three distinct learning claims.
+
+**Nearest-prior ownership boundary.** Prompt-loss work studies whether prompt tokens should receive direct loss; context-distillation work deliberately internalizes context into weights; memorization/extraction work shows that some completion-only prompt content can leave traces. S05 is viable only while current prior does **not** already identify the matched-exposure causal law governing which conditioning-only information becomes persistent under ordinary response-only SFT.
+
+**Minimum identification.** Match prompt-side information exposure while changing only its causal relevance to the supervised response; track task-sufficient knowledge versus full-detail parameter traces across training checkpoints.
+
+**Claim boundary.** Do not turn S05 into prompt-loss hyperparameter tuning, privacy extraction, `more epochs -> more memorization`, or a context-parameterization method. The target is the **conditioning → persistent learning boundary**.
 
 ---
 
@@ -61,4 +77,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 2.**
+**Current selected topic count = 3.**
