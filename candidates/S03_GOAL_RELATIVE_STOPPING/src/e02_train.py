@@ -146,7 +146,7 @@ def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=40):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--arm", required=True, choices=["R", "Rmlp", "S", "F"])
+    ap.add_argument("--arm", required=True, choices=["R", "Rmlp", "S", "Sbody", "F"])
     ap.add_argument("--family", default="olmo3-7b")
     ap.add_argument("--lr", type=float, required=True)
     ap.add_argument("--steps", type=int, default=600)
@@ -180,7 +180,7 @@ def main():
     tok.chat_template = AutoTokenizer.from_pretrained(tmpl_repo).chat_template
 
     model = AutoModelForCausalLM.from_pretrained(repo, dtype=torch.bfloat16).cuda()
-    if args.arm in ("S", "F") and args.grad_ckpt:
+    if args.arm in ("S", "Sbody", "F") and args.grad_ckpt:
         model.gradient_checkpointing_enable()
     model.config.use_cache = False
     # The stop set for E02 is the token that terminates an assistant turn *in the

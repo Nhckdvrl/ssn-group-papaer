@@ -665,3 +665,94 @@ identified. Both of this project's wrong readings came from reading a locus
 conclusion off a single budget — first "locus doesn't matter", then "locus only
 matters at large budget". Only the ladder, replicated, gave the stable law. Any
 future arm comparison in this project must be run at more than one budget.
+
+---
+
+## 2026-09-18 — Normalizer-free recomputation: the residual is continuation suppression, not a stronger stop readout
+
+Zero GPU; recomputed from the raw logits already stored in every result row
+(`src/e01_rawlogit.py`).
+
+### Why this was necessary
+
+The headline used `d_stop = Δ log p(STOP)`. Since
+`log p_stop = z_stop − log Z`, that quantity carries a whole-vocabulary
+normalizer difference between two *different* prompts. A locus claim of the form
+"this part is the stop readout, that part is internal state" must not rest on a
+term that any change to the rest of the vocabulary can move.
+
+Three gauges, all from the same rows. `d_goal` (the margin) is exactly
+normalizer-free and is the behaviourally decisive quantity, since stopping
+happens when STOP outranks the continuation.
+
+| | **d_goal** (gauge-free) | Δlog p_stop | Δlog p_cont | Δz_stop | **Δz_cont** | Δlog Z |
+|---|---|---|---|---|---|---|
+| base | 7.50 | 2.58 | −4.92 | 8.16 | **+0.65** | 5.58 |
+| R@250 | 11.70 | 6.70 | −5.00 | 12.36 | **+0.67** | 5.66 |
+| R@750 | 12.22 | 7.24 | −4.98 | 12.88 | **+0.67** | 5.64 |
+| R@2250 | 13.53 | 8.47 | −5.06 | **14.19** | **+0.67** | 5.73 |
+| F@250 | 11.39 | 7.50 | −3.89 | 10.86 | −0.53 | 3.36 |
+| F@750 | 12.28 | 7.93 | −4.35 | 11.25 | −1.03 | 3.32 |
+| F@2250 | 18.80 | 10.81 | −7.99 | 13.32 | **−5.48** | 2.51 |
+| natSFT | 17.33 | 12.50 | −4.84 | 11.94 | **−5.40** | −0.56 |
+
+### Observation
+
+1. **R's `Δz_cont` is pinned at +0.67, identical to base, at every budget.**
+   This is not a statistical finding but a structural one: R cannot change the
+   continuation logit at all. It also serves as a live freeze check on the eval
+   path, and it passes.
+2. **F's margin advantage at 2250 is continuation suppression.** `Δz_cont` goes
+   −0.53 → −1.03 → **−5.48**: as the budget grows, F increasingly *suppresses
+   the correct next item* when the goal is already satisfied. That is a change
+   to the content computation, not a stronger stop action.
+3. **On the stop side against an unchanged background, R beats F everywhere**
+   (`Δz_stop`: R 12.36/12.88/14.19 vs F 10.86/11.25/13.32), and R@2250 (14.19)
+   even exceeds the released post-trained checkpoint (11.94).
+4. **Real post-training does the same thing F does.** natSFT's `Δz_cont` is
+   −5.40, essentially F@2250's −5.48. The continuation-suppression component is
+   not an artefact of our training setup; it is what the released recipe
+   produces too.
+
+### Claim wording, corrected as flagged
+
+Do **not** write "a growing pure internal-state component". Two reasons: the S
+arm also lets the non-stop output rows move, so it was never "state only"; and
+the residual's signature is continuation-side, not stop-side. The defensible
+statement is:
+
+> **a large stop-readout component, plus a growing residual that requires
+> adaptation beyond the stop readout and whose signature is goal-conditioned
+> suppression of the continuation.**
+
+This is stronger than the previous wording, not weaker: the residual now has an
+identified character instead of being a leftover.
+
+### Revised two-component reading
+
+1. **Stop attachment.** Cheap, saturating, fully supported by the frozen
+   pretrained state. A 4,097-parameter delta on one output row extracts *more*
+   goal-sensitivity on the stop logit than full SFT does. Capacity is not the
+   limit (Rmlp adds nothing). **The pretrained state already contains the goal
+   information and already exposes it to a linear stop readout.**
+2. **Continuation suppression.** Requires changing parameters outside the stop
+   row, grows with budget, and is what the released checkpoint also does. This
+   is what the readout route structurally cannot do.
+
+Behavioural stopping needs both: the model must both raise STOP and lower what
+it would otherwise say next.
+
+### Open, and running
+
+Whether component 2 is *internal computation* or merely *non-stop output rows*
+is not yet identified — the F and S arms both allow both. `Sbody` (the strict
+state-only arm: entire output head frozen bit-exactly, only the transformer body
+and input embeddings move) is running at 250/750/2250 alongside S. All five arms'
+freezes are now verified on the actual Olmo-3 7B model, including `Sbody`'s whole
+head being byte-identical.
+
+Also fixed: `e02_verify_freeze.py` took its checkpoint from a hard-coded
+`olmo2-1b` constant after Layer C had moved to Olmo-3 7B. It is now a CLI
+argument, runs one arm per process, keeps the fp32 reference on CPU, and checks
+the 7B arms in bf16 with SGD (a 7B fp32 model plus Adam state is ~116GB; the
+freeze claim is dtype-independent).

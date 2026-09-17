@@ -13,7 +13,12 @@ corpus, format, ordering, and optimizer schedule are shared.
          the frozen final hidden state.  Separates "the information is not in
          the state" from "a linear stop readout is not expressive enough".
   S      everything EXCEPT the stop readout may change.  The pretrained stop
-         row is restored bit-exactly after every optimizer step.
+         row is restored bit-exactly after every optimizer step.  Note this
+         still lets the NON-stop output rows move, so S is "beyond the stop
+         readout", not "internal state only".
+  Sbody  the strict state-only arm: the ENTIRE output head is frozen, so only
+         the transformer body and input embeddings may change.  This is the
+         arm that isolates internal computation from any readout change.
   F      everything may change (adaptation ceiling / positive control).
 """
 import torch
@@ -69,6 +74,16 @@ class ArmModel(nn.Module):
                 model.config.hidden_size, self.stop_ids,
                 mode="linear" if arm == "R" else "mlp",
             )
+        elif arm == "Sbody":
+            # strict state-only: freeze the whole output head, body is free
+            for p in model.parameters():
+                p.requires_grad_(True)
+            head.weight.requires_grad_(False)
+            if head.bias is not None:
+                head.bias.requires_grad_(False)
+            self.register_buffer("_head_ref", head.weight.data.clone())
+            self._head_bias_ref = (head.bias.data.clone()
+                                   if head.bias is not None else None)
         elif arm == "S":
             for p in model.parameters():
                 p.requires_grad_(True)
@@ -89,13 +104,17 @@ class ArmModel(nn.Module):
     # -- the S constraint is enforced as an exact restore, not just a grad mask,
     #    so optimizer state / weight decay cannot leak into the frozen row.
     def enforce_freeze(self):
-        if self.arm != "S":
-            return
         head = self.model.get_output_embeddings()
-        with torch.no_grad():
-            head.weight.data[self._stop_idx] = self._stop_row_ref.to(head.weight.dtype)
-            if self._head_bias_ref is not None:
-                head.bias.data[self._stop_idx] = self._head_bias_ref.to(head.bias.dtype)
+        if self.arm == "S":
+            with torch.no_grad():
+                head.weight.data[self._stop_idx] = self._stop_row_ref.to(head.weight.dtype)
+                if self._head_bias_ref is not None:
+                    head.bias.data[self._stop_idx] = self._head_bias_ref.to(head.bias.dtype)
+        elif self.arm == "Sbody":
+            with torch.no_grad():
+                head.weight.data.copy_(self._head_ref.to(head.weight.dtype))
+                if self._head_bias_ref is not None:
+                    head.bias.data.copy_(self._head_bias_ref.to(head.bias.dtype))
 
     def forward(self, input_ids, attention_mask=None):
         if self.readout is not None:

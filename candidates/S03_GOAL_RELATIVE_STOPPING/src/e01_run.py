@@ -37,6 +37,16 @@ STAGE_REPOS = {
         "dpo": "allenai/OLMo-2-0425-1B-DPO",
         "instruct": "allenai/OLMo-2-0425-1B-Instruct",
     },
+    # External lineage with a DIFFERENT stopping architecture: Qwen2.5 ends an
+    # assistant turn with a dedicated <|im_end|> EOT token rather than reusing
+    # the pretraining <|endoftext|>.  If the same qualitative structure appears
+    # here, the effect is about assistant stopping acquisition and not about
+    # OLMo's particular token wiring.
+    "qwen2.5-7b": {
+        "base": "Qwen/Qwen2.5-7B",
+        "sft": "Qwen/Qwen2.5-7B-Instruct",
+        "instruct": "Qwen/Qwen2.5-7B-Instruct",
+    },
     "olmo3-7b": {
         "base": "allenai/Olmo-3-1025-7B",
         "sft": "allenai/Olmo-3-7B-Instruct-SFT",
@@ -140,6 +150,12 @@ def main():
                          "format the E02 arms are trained and evaluated in")
     ap.add_argument("--stop-eos-only", action="store_true",
                     help="score only the tokenizer eos, matching the E02 stop set")
+    ap.add_argument("--stop-token", default=None,
+                    help="score this exact token as the stop action. Used to ask "
+                         "whether a BASE model already orders a token by goal "
+                         "completion that only its post-trained sibling uses as "
+                         "the assistant terminator (e.g. Qwen's <|im_end|>).")
+    ap.add_argument("--tag", default="")
     args = ap.parse_args()
 
     repo = STAGE_REPOS[args.family][args.stage]
@@ -151,7 +167,14 @@ def main():
         repo, dtype=torch.bfloat16, device_map="cuda"
     ).eval()
     chat = (tok.chat_template is not None) and not args.plain
-    sids = [tok.eos_token_id] if args.stop_eos_only else stop_token_ids(tok, model)
+    if args.stop_token:
+        tid = tok.convert_tokens_to_ids(args.stop_token)
+        assert tid is not None and tid >= 0, f"unknown stop token {args.stop_token}"
+        sids = [tid]
+    elif args.stop_eos_only:
+        sids = [tok.eos_token_id]
+    else:
+        sids = stop_token_ids(tok, model)
     print(f"{repo}  chat_template={chat}  stop_ids={sids} "
           f"({[tok.convert_ids_to_tokens(i) for i in sids]})", flush=True)
 
@@ -175,6 +198,7 @@ def main():
         rows.append(row)
 
     suffix = "_plain" if args.plain else ("_grafted" if args.graft_template else "")
+    suffix += args.tag
     outp = args.out or f"results/e01/{args.family}_{args.stage}{suffix}.jsonl"
     os.makedirs(os.path.dirname(outp), exist_ok=True)
     with open(outp, "w") as fh:
