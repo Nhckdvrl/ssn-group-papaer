@@ -4,9 +4,29 @@ Target: ACL / EMNLP / NAACL Main.
 
 The repository follows one simple decision chain:
 
-> **SEARCH → SELECT → EXECUTE → RE-SELECT when the claim changes → PAPER or KILL**
+> **MOTHER-QUESTION VALUE → SEARCH → SELECT → EXECUTE → RE-SELECT when the claim changes → PAPER or KILL**
 
 The root documents have deliberately separate responsibilities. Do not combine them into one giant checklist.
+
+## 0. MOTHER-QUESTION VALUE — decide whether the question is worth answering at all
+
+[MOTHER_QUESTION_GATE.md](MOTHER_QUESTION_GATE.md)
+
+This gate is mandatory **before** owner search, novelty audit, mechanism design, pilot planning, or serious compute.
+
+Core question:
+
+> **If the strongest plausible result were already known tomorrow, why would a strong Main-paper reader care today?**
+
+A technically open question is not automatically a valuable question. A clean experiment does not create scientific pressure.
+
+Default NO-GO shape:
+
+> **old problem → modern model is better → explain why it got better**
+
+unless the explanation exposes a current failure, hidden trade-off, still-load-bearing false belief, bottleneck migration, or a general training/computational law whose importance survives independently of the historical problem.
+
+This gate was added after K194/L36, where increasingly strong experiments could not rescue a mother question whose present-day scientific pressure was too weak.
 
 ## 1. SEARCH — find the right kind of scientific question
 
@@ -81,7 +101,7 @@ Candidate-specific retrospectives belong in candidate/archive packages, not in t
 
 [CURRENT_SEARCH.md](CURRENT_SEARCH.md) is the dated portfolio and current taste.
 
-[failed/KILLED_LEDGER.md](failed/KILLED_LEDGER.md) is the authoritative anti-resurrection record.
+[failed/KILLED_LEDGER.md](failed/KILLED_LEDGER.md) and continuation/archive records under `failed/` are the authoritative anti-resurrection record.
 
 Recent `search_rounds/` preserve investigated dead hooks so later agents do not repeatedly rediscover them.
 
@@ -101,6 +121,6 @@ Preserve concurrent work. Keep large regenerable artifacts outside git when appr
 
 > **Easy to understand, hard to answer.**
 >
-> **Question first. Observation first. Method second. Abstraction last.**
+> **Worth asking first. Question second. Observation first. Method last.**
 
-The workflow is strict because we want Main-level questions, but strictness should filter bad realizations of good science — not steer the search toward whichever topic happens to have the cleanest dataset.
+The workflow is strict because we want Main-level questions, but strictness should filter bad realizations of good science — not steer the search toward whichever topic happens to have the cleanest dataset or the prettiest pilot.
