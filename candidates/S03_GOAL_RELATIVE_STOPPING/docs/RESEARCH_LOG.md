@@ -461,3 +461,73 @@ orientation point, not a control.
    load-bearing but only beyond some scale — a different and more interesting
    law. **This is the experiment that decides whether the headline is
    "readout suffices" or "readout suffices up to a budget".**
+
+
+---
+
+## 2026-09-17 — Seed replication, a pairing bug, and the sharpened estimate
+
+### Seed 1 replicates the four-arm equivalence
+
+`d_stop`, 50 pairs, seed 1 (seed 0 in brackets):
+
+| arm | d_stop seed 1 | [seed 0] |
+|---|---|---|
+| R | +6.90 [5.9, 7.9] | [+7.58] |
+| Rmlp | +7.04 [6.2, 7.9] | [+7.05] |
+| S | +8.19 [7.1, 9.2] | [+7.93] |
+| F | +8.14 [7.1, 9.1] | [+7.72] |
+
+Same ordering, same magnitudes. The four-arm result is not seed noise.
+
+### A pairing bug, found and fixed
+
+Comparing arms by whether their mean confidence intervals overlap is weak: the
+arms are evaluated on the *same* items, so item-to-item variance is shared and
+should be differenced out. Writing the paired test surfaced a real defect:
+**three `item_id` labels collide** (two ordered-list topics share their first 18
+characters, and two family-B items share `missing` and prefix length), so keying
+on `item_id` silently merged those items and reported n=47 instead of 50.
+
+Fixed two ways: the paired analysis keys on **row order**, which is identical
+across every run and asserted against the carried `item_id`; and the generator
+now disambiguates colliding labels. The per-file analyses were never affected —
+they iterate rows, not a dict — so no previously reported number changes.
+
+### Sharpened estimate: paired within-item contrasts, both seeds pooled
+
+| contrast | n | mean diff | 95% CI | sign p | +/− |
+|---|---|---|---|---|---|
+| R − base | 50 | **+4.66** | [3.92, 5.42] | 3.7e-11 | 47/3 |
+| Rmlp − base | 50 | +4.47 | [3.88, 5.04] | 9.1e-14 | 49/1 |
+| S − base | 50 | +5.48 | [4.73, 6.17] | 2.3e-12 | 48/2 |
+| F − base | 50 | +5.35 | [4.62, 6.02] | 2.3e-12 | 48/2 |
+| **S − R** | 50 | +0.81 | [0.17, 1.48] | **0.20** | 30/20 |
+| **F − R** | 50 | +0.69 | [0.06, 1.34] | **0.48** | 28/22 |
+| **Rmlp − R** | 50 | −0.19 | [−0.48, 0.08] | 0.12 | 19/31 |
+
+> **Readout-only recovers 87% of the base → full-SFT gain
+> (4.66 of 5.35 log-units), changing 4,097 parameters with every non-stop
+> logit bit-exactly frozen.**
+
+### The honest reading
+
+The large effect (base → any trained arm, ~+5 log-units, 47–49 of 50 items) is
+robust and locus-independent. The residual state contribution is **small and not
+consistent across items**: `S − R` and `F − R` have mean CIs that just exclude
+zero, but their sign tests are null (30/20 and 28/22), so the mean is carried by
+a subset of items rather than a broad shift. The correct statement is therefore
+*not* "state adaptation contributes nothing", but:
+
+> **Stop-readout adaptation over a frozen pretrained state accounts for the
+> large majority of acquired goal-relative stopping; whatever internal-state
+> adaptation adds on top is small and item-dependent.**
+
+Capacity is not the limit either: `Rmlp − R` is if anything negative.
+
+### Still open, and queued
+
+The gap to the released SFT checkpoint (+7.9 vs +12.5) remains confounded with
+data/compute scale. The **budget ladder** (R and F at 250 / 750 / 2250 steps) is
+running and is what decides whether the headline is "readout adaptation
+suffices" or "readout adaptation suffices up to a budget".

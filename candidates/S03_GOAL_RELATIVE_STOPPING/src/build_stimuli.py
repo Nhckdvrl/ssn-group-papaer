@@ -229,6 +229,14 @@ def build_family_c():
 
 def main():
     stim = build_family_a() + build_family_b() + build_family_c()
+    # item_id is a human-readable label; truncation can make two of them
+    # collide, so disambiguate with a running index per family.
+    seen = {}
+    for s in stim:
+        n = seen.get(s["item_id"], 0)
+        seen[s["item_id"]] = n + 1
+        if n:
+            s["item_id"] = f"{s['item_id']}#{n + 1}"
     os.makedirs("stimuli", exist_ok=True)
     path = "stimuli/e01_pairs.jsonl"
     with open(path, "w") as fh:
