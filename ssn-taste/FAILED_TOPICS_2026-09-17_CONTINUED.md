@@ -15,3 +15,17 @@
 **Failure reason.** The broad mother question `does prompt-side information matter / get learned when prompt tokens are masked from direct loss, and what changes when prompt-side loss is added?` is already occupied. More importantly, the naive puzzle is partly resolved by the objective itself: masked prompt positions receive no direct prediction loss, but response-token gradients still backpropagate through representations that depend on the prompt. A new controlled factual-learning experiment would sharpen a boundary, but reviewer-level novelty would compress to mechanism/analysis of an existing prompt-loss question.
 
 **Revival condition.** A distinct, naturally important quantity for which input-only knowledge and output-target knowledge make opposing predictions not covered by prompt-loss/memorization work; merely testing more facts, models, or mask ratios is insufficient.
+
+---
+
+## F17 — Does EOS induce a learned document-reset mechanism under causal packing?
+
+**Question.** In standard causal pretraining with unrelated documents packed into one token stream, later-document tokens can attend to all earlier-document tokens. Does the model learn an internal reset / context-isolation computation at EOS so that information from the previous document becomes causally irrelevant, and where is that reset represented?
+
+**Why it looked promising.** The puzzle arises directly from the training setup rather than a reported anomaly: the architecture carries previous context across a boundary even though the data-generating process says that unrelated documents should be conditionally independent. This gives natural competing explanations: learned boundary-triggered suppression, generic anti-mixing mechanisms, or continued cross-document interference. A causal-vs-intra-document masking intervention could in principle test where the ability comes from.
+
+**Nearest prior.** Zhao et al., ACL 2024 Main, *Analysing The Impact of Sequence Composition on Language Model Pre-Training*, directly studies standard causal packing across documents, shows that previous documents act as distracting information, and compares it with intra-document causal masking that prevents cross-document conditioning. Barbero et al. (2025), *Why do LLMs attend to the first token?*, gives a mechanistic account of learned anti-over-mixing behavior via attention sinks and explicitly studies how data packing and BOS/EOS arrangements affect the phenomenon. Modern hybrid/SSM training systems also implement explicit state resets at document boundaries, further making boundary isolation an active architectural/training object rather than an unnoticed gap.
+
+**Failure reason.** The honest reviewer-level parent becomes the intersection of two already occupied questions: `cross-document causal attention causes distraction and can be removed by document masking`, and `LLMs learn attention patterns that reduce information over-mixing, with packing affecting those patterns`. Asking whether EOS specifically implements a reset is a cleaner mechanistic follow-up, not an independently established mother question. It also becomes less generally important as modern training stacks increasingly use explicit document masks/state resets.
+
+**Revival condition.** A boundary-specific causal signature that is not explainable by generic attention sinks/anti-mixing and that matters in a broadly used regime where no hard document isolation is present. Simply probing EOS attention, adding more model sizes, or comparing causal vs block-diagonal masks is insufficient.
