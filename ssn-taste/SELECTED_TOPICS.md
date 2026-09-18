@@ -68,6 +68,22 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
+### S06 — What Does Deliberation Do to Evidence?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-18  
+**Detailed registration:** `S06_DELIBERATION_EVIDENCE_REWEIGHTING.md`
+
+**Parent question.** When a model is given a fixed set of external evidence and then deliberates, does reasoning merely compute with a stable evidential state, or does deliberation itself change which pieces of evidence can still causally influence the decision?
+
+**Scientific pressure.** Nearby work separately finds prior-belief effects on CoT, resistance to incongruent updates, choice-supportive persistence, and even overweighting of opposing advice. These do not collapse to a single static “confirmation bias” account. S06 studies the missing dynamic quantity: the **time evolution of evidence influence under fixed external evidence**.
+
+**Minimum identification.** Randomize the directions of several matched evidence items and track their causal effects at multiple pre-commitment reasoning depths. Stable effects support approximately stable integration; uniform shrinkage supports generic dilution; sign-selective divergence supports endogenous reweighting/coherence formation.
+
+**Claim boundary.** Do not turn S06 into another confirmation-bias benchmark, CoT-faithfulness paper, attribution metric, or generic “longer reasoning is worse” result.
+
+---
+
 ## Explicitly cancelled registrations
 
 - **S01 — Omission ≠ Neutrality / effective default semantics in tool calls:** cancelled/demoted. It is already recorded as F06 in `FAILED_TOPICS.md`; the Main-level parent compresses to underspecified tool intent / argument completion, leaving only an exact API-default subcase.
@@ -77,4 +93,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 3.**
+**Current selected topic count = 4.**
