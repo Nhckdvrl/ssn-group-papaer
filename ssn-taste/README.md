@@ -4,7 +4,7 @@ This directory is the working ledger for Sasano-taste-driven NLP/LLM research-qu
 
 Target venues: **ACL / EMNLP / NAACL Main**. TACL / ICLR / ICML / NeurIPS are secondary calibration. EACL / AACL / Findings / workshops / arXiv may be used aggressively for novelty collision, but not as the main positive taste signal.
 
-Current selected topics: **4**.
+Current selected topics: **5**.
 
 ## Current selection
 
@@ -12,6 +12,7 @@ Current selected topics: **4**.
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?** Selected / pilot-authorized on 2026-09-18. The parent question is how an LM transforms its active situation representation when one event becomes another: local editing, broader reconstruction, selective reactivation/rebinding, or another discovered update primitive.
 - **S05 — When Does Reading Become Learning?** Selected / pilot-authorized on 2026-09-18. The parent question is the boundary between transient conditioning and persistent parameter learning under ordinary response-only SFT: which prompt-side information is merely used, which task-sufficient information is retained, and which details are durably written into parameters.
 - **S06 — What Does Deliberation Do to Evidence?** Selected / pilot-authorized on 2026-09-18. The parent question is whether reasoning computes over a stable evidence state or endogenously changes the causal influence of fixed external evidence as deliberation unfolds.
+- **S07 — Where Does Surprise Go?** Selected / pilot-authorized on 2026-09-18. The parent question is how an LLM allocates an unexpected observation across current-state revision, source/observation-model revision, and transition/rule revision, identified by distinct persistent downstream effects.
 
 See `SELECTED_TOPICS.md` for the frozen parent questions, novelty boundaries, and detailed registration files.
 
@@ -151,6 +152,6 @@ Files:
 
 - `FAILED_TOPICS.md` and dated continuations — serious ideas that died; do not revive without evidence resolving the recorded failure.
 - `RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md` — overlay correcting overly strict old novelty reasoning.
-- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **4**.
-- `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `S04_EVENT_BOUNDARY_SITUATION_MODEL_UPDATING.md`, `S05_WHEN_DOES_READING_BECOME_LEARNING.md`, `S06_DELIBERATION_EVIDENCE_REWEIGHTING.md` — detailed registrations.
+- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **5**.
+- `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `S04_EVENT_BOUNDARY_SITUATION_MODEL_UPDATING.md`, `S05_WHEN_DOES_READING_BECOME_LEARNING.md`, `S06_DELIBERATION_EVIDENCE_REWEIGHTING.md`, `S07_WHERE_DOES_SURPRISE_GO.md` — detailed registrations.
 - `NEXT_ROUND_PROMPT_ZH.md` — current operational search procedure; treat it as scaffolding rather than constitution.
