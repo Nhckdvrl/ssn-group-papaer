@@ -1,0 +1,14 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 40.95it/s]
+  assistant-turn stop token: '<|endoftext|>' -> 100257
+  degraded stop row: removed 1 x (w_stop . b_hat = 0.319) along the boundary direction
+arm=R repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=4,097
+train=9262 val=302
+  pad id: 100277 ('<|pad|>')
+step0 eval: {'val_loss': 0.8753442287445068, 'boundary_auc': 0.38373125, 'log_p_stop_at_boundary': -12.512914237946461, 'log_p_stop_inside': -10.82756988338334, 'n_boundary': 160, 'n_inside': 23386}
+[timing] step 1: 1.55s  16 seqs / 8796 padded tokens  peak 17.6GB
+{"val_loss": 0.8753442287445068, "boundary_auc": 0.38373125, "log_p_stop_at_boundary": -12.512914237946461, "log_p_stop_inside": -10.82756988338334, "n_boundary": 160, "n_inside": 23386, "step": 1, "train_loss": 1.1007226407527924, "lr": 0.0, "elapsed": 8.381184101104736}
+wrote results/e02/degrade/arm0_lam1.0/e01.jsonl 50
+wrote results/e02/degrade/arm0_lam1.0/e01_d.jsonl 12
+done results/e02/degrade/arm0_lam1.0

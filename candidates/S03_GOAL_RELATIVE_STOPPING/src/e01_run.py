@@ -73,7 +73,23 @@ STAGE_REPOS = {
     },
 }
 
+# The token that actually TERMINATES AN ASSISTANT TURN in our single-turn
+# training format.  This is what the E02 arms train and what E03 differentiates.
+#
+# It is NOT the same thing as STOP_TOKEN_PAIRS below.  OLMo-3's template ends the
+# final assistant turn with <|endoftext|> and uses <|im_end|> only inside the
+# (loss-masked) prompt, so "eot_tok or doc_tok" would pick the wrong token for
+# OLMo.  Keep the two concepts separate.
+TURN_END_TOKEN = {
+    "olmo2-1b": "<|endoftext|>",
+    "olmo3-7b": "<|endoftext|>",
+    "qwen2.5-7b": "<|im_end|>",
+    "qwen2.5-32b": "<|im_end|>",
+    "llama3.1-8b": "<|eot_id|>",
+}
+
 # Per family: (pretraining document-end token, chat end-of-turn token).
+# Used ONLY by the architecture analysis, which scores both tokens separately.
 # Scoring these SEPARATELY keeps base and instruct on the same token set, which
 # a per-checkpoint generation-config stop set would not.
 STOP_TOKEN_PAIRS = {

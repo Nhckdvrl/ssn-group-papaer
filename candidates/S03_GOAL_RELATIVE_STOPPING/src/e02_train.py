@@ -23,7 +23,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModelForCausalLM, get_cosine_schedule_with_warmup
 
-from e01_run import STAGE_REPOS, STOP_TOKEN_PAIRS
+from e01_run import STAGE_REPOS, TURN_END_TOKEN
 from e02_arms import ArmModel
 
 IGNORE = -100
@@ -153,6 +153,16 @@ def main():
     ap.add_argument("--steps", type=int, default=600)
     ap.add_argument("--bs", type=int, default=2)
     ap.add_argument("--accum", type=int, default=8)
+    ap.add_argument("--degrade-stop", type=float, default=0.0,
+                    help="Before training, remove this fraction of the stop "
+                         "row's projection onto the generic response-boundary "
+                         "direction b. This degrades the readout's GENERIC "
+                         "boundary competence while leaving the hidden states, "
+                         "the data and every other parameter untouched, so the "
+                         "within-family causal test of the boundary-competence "
+                         "account changes exactly one thing.")
+    ap.add_argument("--bdir", default=None,
+                    help="path to the cached boundary direction b (.pt)")
     ap.add_argument("--device-map", default=None,
                     help="'auto' spreads the model across GPUs (naive model "
                          "parallel). Needed for 32B, whose weights+grads+8-bit "
@@ -202,12 +212,24 @@ def main():
     #   Llama  ends the turn with <|eot_id|>, not its eos <|end_of_text|>.
     # Using tok.eos_token_id would train arm R's delta on a token the assistant
     # never emits in two of the three families.
-    doc_tok, eot_tok = STOP_TOKEN_PAIRS[args.family]
-    stop_tok = eot_tok or doc_tok
+    stop_tok = TURN_END_TOKEN[args.family]
     stop_id = tok.convert_tokens_to_ids(stop_tok)
     assert stop_id is not None and stop_id >= 0, f"no id for {stop_tok}"
     sids = [stop_id]
     print(f"  assistant-turn stop token: {stop_tok!r} -> {stop_id}", flush=True)
+    if args.degrade_stop:
+        bvec = torch.load(args.bdir, map_location="cpu").float()
+        head = model.get_output_embeddings()
+        with torch.no_grad():
+            bh = (bvec / bvec.norm()).to(head.weight.device, head.weight.dtype)
+            row = head.weight.data[stop_id].float()
+            proj = float(row @ bh.float())
+            head.weight.data[stop_id] = (
+                row - args.degrade_stop * proj * bh.float()).to(head.weight.dtype)
+        print(f"  degraded stop row: removed {args.degrade_stop:g} x "
+              f"(w_stop . b_hat = {proj:.3f}) along the boundary direction",
+              flush=True)
+
     arm = ArmModel(model, sids, args.arm)
     if not args.device_map:
         arm = arm.cuda()

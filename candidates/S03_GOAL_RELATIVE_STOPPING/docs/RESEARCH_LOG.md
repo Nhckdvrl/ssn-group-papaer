@@ -1301,3 +1301,100 @@ The paper's central claim narrows to something cleaner and better supported:
 The OLMo-only developmental result (pretraining already makes goal completion
 visible at an inactive operating point) stays labelled as OLMo-only, since the
 Qwen and Llama bases are not clean document continuers.
+
+---
+
+## 2026-09-19 — RETRACTIONS, and the reframing they force
+
+Two statements written earlier in this log are **withdrawn**. Both are left in
+place above with this entry as their correction, rather than silently edited.
+
+### Retraction 1 — "goal-relative stopping requires two changes"
+
+Not true. Llama-3.1 acquires goal-relative stopping mostly through the
+continuation side: at 2250 steps `Sbody` moves `dz_stop` by only +0.29
+(null by sign test, 29/21) while moving `dz_cont` by −2.66 and `d_goal` by
++2.95. There is no law that both components must change.
+
+Correct statement: *goal-relative stopping can be acquired by changing either
+side of the stop-versus-continue competition; which routes are accessible
+depends on the parameter locus and the pretrained state.*
+
+### Retraction 2 — "Qwen and Llama bases are not clean document continuers"
+
+This was excuse-making for inconvenient data. Both are official pretrained base
+checkpoints: Qwen2.5-7B's card lists `Training Stage: Pretraining` and states
+that SFT/RLHF is still required for conversation; Llama-3.1-8B is likewise the
+pretrained base with a separately instruction-tuned sibling. Nothing licenses
+calling them contaminated.
+
+The honest — and more interesting — statement is:
+
+> **Different pretrained families already expose radically different termination
+> geometries under the same assistant serialization.** Base `dz_cont` is +0.67
+> (OLMo-3), −7.34 (Llama-3.1) and −12.45 (Qwen2.5); base generic `boundary_auc`
+> is 0.995, 0.905 and 0.965. This is a finding about pretraining, not a defect
+> in the checkpoints.
+
+### Two candidate explanations tested and BOTH FALSIFIED
+
+I tried to explain why readout adaptation helps OLMo and hurts the others.
+
+**(a) Initial-gradient alignment.** Arm R's gradient has a closed form,
+`dL/dd = mean_t (p_stop(t) − 1[tgt=stop]) h_t`, so `(−dL/dd)·v` should predict
+the sign of R's reading change. It does not: `−g·v` is **positive** in Qwen
+(+97.5) and Llama (+8.7), which predicts improvement, yet both degrade. The raw
+gradient direction is not the Adam update direction, and the interior term only
+pushes back once training has raised stop probability. **Rejected.**
+
+**(b) Boundary-direction geometry.** With
+`b = mean(h at true boundaries) − mean(h at interior)`, the hypothesis was that
+`sign(cos(b, v))` separates the families. It does not: `cos(b,v)` = **0.597**
+(OLMo), **0.601** (Qwen), 0.358 (Llama). Qwen is indistinguishable from OLMo on
+the proposed predictor and behaves oppositely. **Rejected.**
+
+The learned deltas do confirm R is doing generic boundary work everywhere —
+`cos(d,b)` = +0.067 / +0.055 / +0.162, all positive — but `cos(d,b)` is small,
+so `d` is mostly *not* along `b`, and a two-direction picture is insufficient.
+
+**No mechanism for the family dependence is currently supported.** The
+`boundary_auc` correlate stays a descriptive observation with one confirmed
+held-out sign prediction, and must be written as such — not as a law, and not in
+the abstract.
+
+### What this leaves, and it is stronger than what it replaces
+
+The result that survives everything is not about two components. It is:
+
+> **Assistant stopping is not an EOS-calibration problem. It is a goal-conditioned
+> competition between terminating the turn and continuing task-relevant content.**
+> Measured as `d_goal = Δz_stop − Δz_cont`, internal-state adaptation improves
+> this competition in **all three families even with the entire output head
+> byte-frozen** (+11.27 / +8.73 / +2.95; sign 49/1, 47/3, 37/13), while
+> stop-readout adaptation ranges from strongly beneficial to actively harmful
+> (+6.03 / −1.84 / −1.31) *despite improving generic boundary detection in every
+> family*.
+
+The Qwen result is the sharpest single fact in the project: `boundary_auc`
+0.965 → 0.999 while goal-relative reading goes **down**. That separates
+**learning where responses end** from **learning when the user's task is done**,
+and it is exactly the distinction the mother question was about.
+
+### Next: the within-family causal test
+
+The cheap explanations failed, so the account needs a causal handle rather than
+another family. Running now: inside OLMo-3, remove a controlled fraction λ of
+the stop row's projection onto `b`, which degrades **generic** boundary
+competence while leaving hidden states, data, and every other parameter
+untouched.
+
+| λ | Arm 0 `boundary_auc` |
+|---|---|
+| 0 | 0.99543 (original) |
+| 0.5 | **0.92451** (≈ Llama's 0.90473) |
+| 1.0 | 0.38373 |
+| 1.5 | 0.19358 |
+
+If R's `Δd_goal` flips from +6.03 to ≈0 or negative at λ=0.5 — same model, same
+state, same data, one manipulated quantity — the boundary-competence account
+becomes causal rather than correlational.

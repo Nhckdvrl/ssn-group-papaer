@@ -17,7 +17,7 @@ import sys
 
 import torch, torch.nn.functional as F
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from e01_run import STAGE_REPOS, STOP_TOKEN_PAIRS
+from e01_run import STAGE_REPOS, TURN_END_TOKEN
 from e02_arms import ArmModel
 
 # The Layer C model is a CLI argument, not a constant: Layer C moved from
@@ -48,8 +48,7 @@ def main():
     tok, model = load(dt)
     # verify the freezes on the token the ARMS actually train: for a
     # distinct-EOT family that is the turn-end token, not the tokenizer eos
-    doc_tok, eot_tok = STOP_TOKEN_PAIRS[FAMILY]
-    sids = [tok.convert_tokens_to_ids(eot_tok or doc_tok)]
+    sids = [tok.convert_tokens_to_ids(TURN_END_TOKEN[FAMILY])]
     print(f"stop ids: {sids} -> {[tok.convert_ids_to_tokens(i) for i in sids]}")
 
     emb = model.get_input_embeddings().weight

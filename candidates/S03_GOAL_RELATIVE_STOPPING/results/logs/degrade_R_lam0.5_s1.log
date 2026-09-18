@@ -1,0 +1,13 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 41.84it/s]
+  assistant-turn stop token: '<|endoftext|>' -> 100257
+  degraded stop row: removed 0.5 x (w_stop . b_hat = 0.319) along the boundary direction
+arm=R repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=4,097
+train=9262 val=302
+  pad id: 100277 ('<|pad|>')
+step0 eval: {'val_loss': 0.814776086807251, 'boundary_auc': 0.924509375, 'log_p_stop_at_boundary': -6.423242819077541, 'log_p_stop_inside': -12.332490118832622, 'n_boundary': 160, 'n_inside': 23386}
+[timing] step 1: 1.40s  16 seqs / 7420 padded tokens  peak 17.6GB
+[timing] step 2: 0.82s  16 seqs / 9604 padded tokens  peak 17.6GB
+[timing] step 3: 0.78s  16 seqs / 9088 padded tokens  peak 17.6GB
+{"val_loss": 0.7589225433766842, "boundary_auc": 0.9995375, "log_p_stop_at_boundary": -0.5074884422342866, "log_p_stop_inside": -15.920036236122508, "n_boundary": 160, "n_inside": 23386, "step": 50, "train_loss": 1.055013969540596, "lr": 0.002238805970149254, "elapsed": 44.558570861816406}

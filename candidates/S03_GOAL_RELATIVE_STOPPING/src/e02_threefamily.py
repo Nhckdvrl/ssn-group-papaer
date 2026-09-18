@@ -19,8 +19,9 @@ ST = int(sys.argv[1]) if len(sys.argv) > 1 else 2250
 
 print(f"\nParameter-locus replication at {ST} steps, paired against each "
       f"family's own Arm 0\n")
-hdr = (f"{'family':<15}{'arm':<7}{'D dz_stop (reading)':>24}{'sign':>8}"
-       f"{'D dz_cont (clearing)':>24}{'sign':>8}")
+hdr = (f"{'family':<15}{'arm':<7}"
+       f"{'D d_goal  (STOP vs CONT)':>24}{'sign':>8}"
+       f"{'D dz_stop':>11}{'D dz_cont':>11}")
 print(hdr); print("-" * len(hdr))
 for name, a0, tmpl, seeds in FAM:
     base = rows_of([a0])
@@ -32,12 +33,12 @@ for name, a0, tmpl, seeds in FAM:
         A = rows_of(ps)
         ks = sorted(set(A) & set(base))
         out = []
-        for m in ("dz_stop", "dz_cont"):
+        for m in ("d_goal", "dz_stop", "dz_cont"):
             v = [A[k][m] - base[k][m] for k in ks]
             lo, hi = boot_ci(v); p, x, y = sign_test(v)
             out.append((mean(v), lo, hi, f"{x}/{y}"))
-        (m1, l1, h1, s1), (m2, l2, h2, s2) = out
+        (g1, gl, gh, gs), (m1, l1, h1, s1), (m2, l2, h2, s2) = out
         print(f"{name if arm == 'R' else '':<15}{arm:<7}"
-              f"{f'{m1:+.2f} [{l1:+.2f},{h1:+.2f}]':>24}{s1:>8}"
-              f"{f'{m2:+.2f} [{l2:+.2f},{h2:+.2f}]':>24}{s2:>8}")
+              f"{f'{g1:+.2f} [{gl:+.2f},{gh:+.2f}]':>24}{gs:>8}"
+              f"{f'{m1:+.2f}':>11}{f'{m2:+.2f}':>11}")
     print()
