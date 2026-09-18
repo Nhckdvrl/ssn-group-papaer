@@ -20,12 +20,89 @@
 
 以 repo 当前文件为准，不要把本提示词里的状态当永远不变。
 
-截至本轮交接：
+截至 **2026-09-18 当前交接**，正式状态如下：
 
-- 正式 selected 仍只有 **S03 — From Document End to Task Done**；本轮不是继续推进 S03，而是找新的、独立 scientific questions。
-- 本次 novelty 复审后，只有 **F45 + F62 合并后的 selective internal state revision** 被重新标为 `REOPEN-SERIOUS`；它还不是 survivor，更不是 PILOT-AUTHORIZED。
-- `REOPEN-GENERATOR`：F07、F09、F16、F75a、F84、F99。它们只是重新开放的出题压力，不是正向 taste exemplars，也不要机械优先搜索它们。
-- 其余旧题大多继续 KILL，但很多旧 kill 的**理由**已被修正。不要因为旧 ledger 写着 “parent occupied / mechanistic follow-up” 就机械复制旧逻辑。
+## Selected Topics = 3
+
+- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
+- **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
+- **S05 — When Does Reading Become Learning?**
+
+详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与三份注册文件为准。本轮默认任务不是继续包装 S03/S04/S05，而是寻找新的、彼此独立的 scientific questions。
+
+## 当前 SERIOUS / NOT PILOT-AUTHORIZED
+
+### 1. Long-input ↔ Long-output directional transfer
+
+核心压力：
+
+> 为什么“读得长”不会自动让模型“写得长”，但某些 long-output RL 却能提升 long-input reasoning？
+
+真正 scientific object 是 **long-input understanding 与 long-output generation 是否共享 long-range computation，以及 transfer 为什么呈现方向不对称**。
+
+当前 blocker：
+
+> input/output direction 与 teacher-forced/on-policy learning 仍可能混淆。
+
+下一步只接受一个**小 factorial identification**；如果必须膨胀成大量 training arms 或只是 benchmark transfer matrix，KILL。
+
+### 2. Belief or Source? — Epistemic Credit Assignment
+
+核心问题：
+
+> 当新证据与当前 belief 冲突时，模型把 prediction error 分配给“世界状态错了”还是“信息源不可靠”？
+
+最小 identification：
+
+- source reliability 已知 → 主要更新 world belief；
+- world state 已知 → 主要更新 source reliability；
+- 两者都不确定 → joint update。
+
+目标不是做 source-reliability benchmark，而是识别 **LLM 的 epistemic credit-assignment law**。当前仍需 nearest-prior deep audit。
+
+### 3. What Does Deliberation Do to Evidence?
+
+核心问题：
+
+> 在 evidence set 完全不变时，deliberation 本身是否会改变各条证据对最终决策的 causal influence？
+
+当前 competing worlds：
+
+- normative integration；
+- generic dilution；
+- coherence/confirmation shift。
+
+最小实验应固定 evidence / prior / reliability，仅改变 deliberation，并通过 remove / flip / swap evidence 测 causal influence 随 reasoning depth 如何变化。当前仍需 collision audit，尤其防止退化成 generic confirmation bias / self-correction。
+
+## ACTIVE AUDIT — 尚未升 SERIOUS
+
+### Multi-turn degradation: Fragmentation vs Self-Commitment
+
+必须先确认 ICLR 2026 Outstanding multi-turn degradation work 及近邻 prior 是否已经直接分开：
+
+- evidence fragmentation；
+- neutral/empty assistant turn；
+- self-generated intermediate commitment；
+- external identical commitment。
+
+如果 decisive separation 已存在，KILL。若没有，才继续问：
+
+> multi-turn failure 到底来自 evidence 被分批给出，还是来自模型在证据不完整时公开 commit，而 self-generated commitment 反过来改变后续理解？
+
+必须防止重新撞到 own-response bias、choice-supportive bias、self-correction、state revision。
+
+## OPEN-CONFLICT / 暂不升
+
+- rationale supervision 到底哪个 ingredient 真正有用；
+- uncertainty 是 error signal 还是 reasoning resource；
+- reasoning 对 irreducible ambiguity 的 premature commitment；
+- planning quality vs realization quality。
+
+这些只是 pressure，不是候选题；不要机械包装。
+
+## 历史 re-audit 状态
+
+`RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md` 中的 F45+F62 `REOPEN-SERIOUS` 与 F07/F09/F16/F75a/F84/F99 `REOPEN-GENERATOR` 仍是有效历史记录，但**不自动覆盖当前 handoff 的优先级**。它们只能作为 process evidence / generator，不能当正向 taste exemplar。
 
 极其重要：我们自己生成过的 selected / serious / active / killed topics **都只能当 process evidence**，不能当“好题长什么样”的正向范本。
 
@@ -376,6 +453,37 @@ pilot 目标不是“证明异常”，而是以最低成本区分世界。优�
 - 若是 mechanism 题，再给 Zhao-style representation → computation → causality 链
 
 不要把 method novelty、benchmark scale 或漂亮术语当主卖点。
+
+---
+
+# 9.5 当前轮立即执行顺序
+
+恢复 repo 后不要先总结本提示词，直接工作：
+
+1. **先审 Multi-turn Fragmentation vs Self-Commitment**：查 ICLR 2026 Outstanding 与近邻 work 是否已经做 decisive separation。
+2. **继续完善 Long-input ↔ Long-output**：优先解决 direction vs teacher-forced/on-policy confound；找不到小 factorial design 就 KILL。
+3. **深审 Belief or Source**：重点查 Bayesian/source-reliability/belief-update/epistemic trust 邻域有没有直接研究 H 与 R 的 joint credit assignment。
+4. **深审 Deliberation → Evidence Reweighting**：重点查 reasoning depth 是否改变 fixed evidence 的 causal influence，而非只查“reasoning 会不会 confirmation bias”。
+5. **并行做 substantial fresh exploration**：尤其 generation / understanding / reasoning，但 provenance 必须跨至少 3 个 lineage；不要围着现有 SERIOUS 做变体。
+6. 每约 **6–8 个 serious seeds**，或连续出现同一种 kill pattern，主动 reset generator。
+7. 允许 **0 survivor**；绝不为了凑 S06 降低标准。
+
+新的搜索策略优先寻找：
+
+> **悬而未决、互相冲突、尚未被 cleanly identified 的 component / relation / law**，
+
+然后再把它升级成：
+
+> **可以通过一个小而 decisive 的实验区分 possible worlds 的 scientific question。**
+
+尤其优先：
+
+- 社区默认相同但 evidence 暗示不同的两个 quantity；
+- directed transfer asymmetry；
+- changed premise 后旧解释失效；
+- global label 与 local information utility 不同；
+- constraint 改变 learned computation；
+- 多篇可信 work 的结论无法被一个简单 explanation 同时解释。
 
 ---
 
