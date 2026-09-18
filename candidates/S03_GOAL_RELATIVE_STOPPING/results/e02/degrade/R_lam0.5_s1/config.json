@@ -1,0 +1,30 @@
+{
+  "arm": "R",
+  "family": "olmo3-7b",
+  "lr": 0.003,
+  "steps": 2250,
+  "bs": 4,
+  "accum": 4,
+  "degrade_stop": 0.5,
+  "bdir": "results/e03/bdir_olmo3-7b.pt",
+  "device_map": null,
+  "grad_ckpt": false,
+  "opt8bit": false,
+  "max_len": 768,
+  "n_train": 12000,
+  "n_val": 400,
+  "seed": 1,
+  "tag": "degrade/R_lam0.5_s1",
+  "data": "data/tulu_subset.jsonl",
+  "out": null,
+  "eval_after": true,
+  "save_model": false,
+  "stimuli": [
+    "stimuli/e01_pairs.jsonl",
+    "stimuli/e01_pairs_d.jsonl"
+  ],
+  "stop_ids": [
+    100257
+  ],
+  "n_trainable": 4097
+}

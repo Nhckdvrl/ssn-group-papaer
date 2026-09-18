@@ -1398,3 +1398,85 @@ untouched.
 If R's `Δd_goal` flips from +6.03 to ≈0 or negative at λ=0.5 — same model, same
 state, same data, one manipulated quantity — the boundary-competence account
 becomes causal rather than correlational.
+
+---
+
+## 2026-09-19 — Causal test: the boundary-competence account is FALSIFIED, and its premise is false
+
+Within OLMo-3, removed a fraction λ of the stop row's projection onto the
+generic boundary direction b, leaving hidden states, data, optimiser and every
+other parameter untouched. Arm R then trained identically (lr 3e-3, 2250 steps,
+2 seeds).
+
+### First reading — and why it is WRONG
+
+The paired Δ against each λ's own Arm 0 looked like a strong monotone effect:
+
+| λ | Arm 0 auc | Δ`d_goal` (R − Arm 0) |
+|---|---|---|
+| 0 | 0.99543 | +6.03 |
+| 0.5 | 0.92451 | +10.51 |
+| 1.0 | 0.38373 | +14.90 |
+
+**This is a baseline artefact and must not be read as "degradation helps R".**
+Checking the absolute levels:
+
+| λ | Arm 0 `d_goal` | **R `d_goal`** | R `dz_stop` |
+|---|---|---|---|
+| 0 | 7.49 | **13.53** | 14.19 |
+| 0.5 | 3.17 | **13.68** | 14.35 |
+| 1.0 | −1.14 | **13.77** | 14.43 |
+
+**Arm R converges to the same endpoint regardless of how badly the stop row was
+degraded** (13.53 / 13.68 / 13.77), from starting points of `dz_stop`
+8.16 / 3.84 / −0.47. The growing Δ is entirely the lowered baseline. R also
+restores generic `boundary_auc` to ~0.9998 in every condition.
+
+### What the experiment actually showed
+
+The intervention manipulated the **initialization**, not the **demand on
+capacity**. A 4,097-parameter linear readout with 2250 steps is not scarce in
+the relevant sense: it simply re-learns the removed boundary component and
+converges to the same optimum.
+
+That incidentally **falsifies the premise of the trade-off account**. If a
+single degree of freedom were genuinely being consumed by generic boundary
+calibration, the endpoint would depend on how much generic work remained. It
+does not.
+
+### Score so far on explaining the cross-family difference
+
+| attempt | verdict |
+|---|---|
+| initial-gradient alignment `(−g)·v` | positive in Qwen/Llama yet both degrade — **rejected** |
+| boundary-direction geometry `cos(b,v)` | OLMo 0.597 vs Qwen 0.601, indistinguishable — **rejected** |
+| boundary-competence trade-off | R's endpoint is initialization-invariant; capacity scarcity is false — **rejected** |
+
+Worse for the original story: the **cross-family correlation and the
+within-family causal manipulation of the same variable point in opposite
+directions**. Cross-family, lower Arm 0 `boundary_auc` went with a worse R;
+within-family, degrading `boundary_auc` leaves R's endpoint unchanged. The
+Llama held-out sign hit is therefore downgraded from "confirmed prediction" to
+**an unexplained correlation that its own causal test does not support**, and it
+must not appear in the paper as a mechanism or as a validated prediction.
+
+**The cross-family difference in whether readout adaptation helps is currently
+unexplained.** The most likely remaining source is that what is linearly
+available in the frozen state h differs by family — a property of pretraining,
+not of the readout's budget — but that is a hypothesis, not a result.
+
+### Unaffected
+
+Everything load-bearing survives, because none of it depended on the
+explanation:
+
+> On `d_goal`, internal-state adaptation improves the stop-versus-continue
+> competition in **all three families with the entire output head byte-frozen**
+> (+11.27 / +8.73 / +2.95; sign 49/1, 47/3, 37/13), while stop-readout
+> adaptation ranges from +6.03 to −1.84 despite improving generic boundary
+> detection everywhere.
+
+A useful new fact also falls out: **arm R's learned readout is
+initialization-invariant** — same endpoint from a healthy, a Llama-like, and a
+destroyed stop row. Whatever limits the readout route, it is not where it
+starts.
