@@ -1,0 +1,13 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 63.41it/s]
+  assistant-turn stop token: '<|eot_id|>' -> 128009
+arm=F repo=NousResearch/Meta-Llama-3.1-8B stop_ids=[128009] trainable=8,030,261,248
+train=9542 val=313
+  pad id: 128001 ('<|end_of_text|>')
+step0 eval: {'val_loss': 1.5161500126123428, 'boundary_auc': 0.904734375, 'log_p_stop_at_boundary': -19.589074182510377, 'log_p_stop_inside': -25.63570506542966, 'n_boundary': 160, 'n_inside': 25158}
+[timing] step 1: 2.79s  16 seqs / 7516 padded tokens  peak 49.0GB
+[timing] step 2: 2.44s  16 seqs / 8724 padded tokens  peak 71.0GB
+[timing] step 3: 2.22s  16 seqs / 8260 padded tokens  peak 71.4GB
+{"val_loss": 0.8320239163935185, "boundary_auc": 0.9979375, "log_p_stop_at_boundary": -1.4835681647062302, "log_p_stop_inside": -25.33277576380423, "n_boundary": 160, "n_inside": 25158, "step": 50, "train_loss": 0.6423664093017578, "lr": 1.303905157574247e-05, "elapsed": 119.07094073295593}
+{"val_loss": 0.8012291811406612, "boundary_auc": 0.9989375, "log_p_stop_at_boundary": -0.9686253258958459, "log_p_stop_inside": -25.55625372768273, "n_boundary": 160, "n_inside": 25158, "step": 100, "train_loss": 1.0552407056093216, "lr": 1.407652474377832e-06, "elapsed": 240.85988593101501}
+{"val_loss": 0.8010508961975574, "boundary_auc": 0.998915625, "log_p_stop_at_boundary": -0.9696801913902163, "log_p_stop_inside": -25.56068587903283, "n_boundary": 160, "n_inside": 25158, "step": 120, "train_loss": 0.9044658914208412, "lr": 0.0, "elapsed": 296.19020795822144}
+done results/e02/lrsweep/llama3.1-8b_F_lr2e-5

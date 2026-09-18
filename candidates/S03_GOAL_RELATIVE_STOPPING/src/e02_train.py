@@ -23,7 +23,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModelForCausalLM, get_cosine_schedule_with_warmup
 
-from e01_run import STAGE_REPOS
+from e01_run import STAGE_REPOS, STOP_TOKEN_PAIRS
 from e02_arms import ArmModel
 
 IGNORE = -100
@@ -175,7 +175,8 @@ def main():
     torch.manual_seed(args.seed); random.seed(args.seed)
     repo = STAGE_REPOS[args.family]["base"]
     # the chat template lives on the post-trained sibling; the base has none.
-    tmpl_repo = STAGE_REPOS[args.family]["sft"]
+    tmpl_repo = STAGE_REPOS[args.family][
+        "sft" if "sft" in STAGE_REPOS[args.family] else "instruct"]
     tok = AutoTokenizer.from_pretrained(repo)
     tok.chat_template = AutoTokenizer.from_pretrained(tmpl_repo).chat_template
 
@@ -183,12 +184,19 @@ def main():
     if args.arm in ("S", "Sbody", "F") and args.grad_ckpt:
         model.gradient_checkpointing_enable()
     model.config.use_cache = False
-    # The stop set for E02 is the token that terminates an assistant turn *in the
-    # format we train on*, and only that token.  Olmo-3 also lists <|im_end|> as
-    # a generation stop id, but in our single-turn template <|im_end|> occurs
-    # only inside the (loss-masked) prompt, so including it would have arm R
-    # learning a delta on a token the assistant never emits.
-    sids = [tok.eos_token_id]
+    # The stop set for E02 is the token that terminates an ASSISTANT TURN in the
+    # format we train on, and only that token.
+    #   OLMo   reuses the native pretraining <|endoftext|>;
+    #   Qwen   ends the turn with <|im_end|>, not its eos <|endoftext|>;
+    #   Llama  ends the turn with <|eot_id|>, not its eos <|end_of_text|>.
+    # Using tok.eos_token_id would train arm R's delta on a token the assistant
+    # never emits in two of the three families.
+    doc_tok, eot_tok = STOP_TOKEN_PAIRS[args.family]
+    stop_tok = eot_tok or doc_tok
+    stop_id = tok.convert_tokens_to_ids(stop_tok)
+    assert stop_id is not None and stop_id >= 0, f"no id for {stop_tok}"
+    sids = [stop_id]
+    print(f"  assistant-turn stop token: {stop_tok!r} -> {stop_id}", flush=True)
     arm = ArmModel(model, sids, args.arm).cuda()
     if arm.readout is not None:
         arm.readout = arm.readout.cuda().float()
@@ -203,7 +211,15 @@ def main():
     va = SFTData.cached(tok, examples[:args.n_val], args.max_len,
                         f"{ck}_va{args.n_val}.pkl")
     print(f"train={len(tr)} val={len(va)}", flush=True)
+    # Llama-3.1 base ships no pad token.  Padding never reaches the loss
+    # (labels are IGNORE there) or attention, so the identity is arbitrary --
+    # but it must not be the stop token, or a padded batch would look like it
+    # contains extra assistant terminators.
     pad = tok.pad_token_id
+    if pad is None:
+        pad = tok.eos_token_id if tok.eos_token_id not in sids else 0
+    assert pad not in sids, "pad token collides with the assistant stop token"
+    print(f"  pad id: {pad} ({tok.convert_ids_to_tokens(pad)!r})", flush=True)
     g = torch.Generator(); g.manual_seed(args.seed)
     tl = DataLoader(tr, batch_size=args.bs, shuffle=True, generator=g,
                     collate_fn=lambda b: collate(b, pad), drop_last=True)

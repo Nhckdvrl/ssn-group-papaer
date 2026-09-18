@@ -1095,3 +1095,65 @@ Sbody/F at 17.7–19.8, and the entire shortfall is the clearing term.
 
 **Revised wording:** the readout route's ceiling is *partly* a capacity ceiling
 on the reading term, and *absolutely* a structural ceiling on the clearing term.
+
+---
+
+## 2026-09-18 — Scaling the claim: 3-family causal replication started, and a cross-family finding about "base"
+
+The parameter-locus conclusion rested on OLMo-3-7B alone, which is the claim's
+weakest point given how wide the claim now is. Starting a full core causal
+replication on two more lineages, chosen for the opposite stopping architecture.
+
+**Step 0 first, as always.** All three are untied at the storage level
+(`data_ptr` check, not the config string), so the readout/state factorization is
+implementable. Gate C re-verified bit-exact on each new family, and critically
+**on the token the arms actually train**:
+
+| family | arms train on | Gate C |
+|---|---|---|
+| OLMo-3 7B | `<\|endoftext\|>` (shared) | PASS |
+| Qwen2.5 7B | **`<\|im_end\|>`**, not its eos | PASS |
+| Llama-3.1 8B | **`<\|eot_id\|>`**, not its eos | PASS |
+
+Using `tok.eos_token_id` would have trained arm R's delta on a token the
+assistant never emits in two of the three families. Two further implementation
+facts found and fixed: Llama-3.1 base ships **no pad token** (now falls back,
+with an assertion that pad can never collide with the stop token), and learning
+rates do **not** transfer across families — OLMo's R selects 3e-3 while Qwen and
+Llama both select 1e-3. Each family gets its own sweep on held-out CE.
+
+### Finding: how much "clearing" a base model already has varies enormously
+
+| base checkpoint | `dz_stop` (turn-end token) | **`dz_cont`** |
+|---|---|---|
+| OLMo-3 7B | +8.16 | **+0.67** |
+| Qwen2.5 7B | +3.82 | **−12.45** |
+| Llama-3.1 8B | +2.47 | **−7.34** |
+
+Verified through two independent measurement paths for Qwen (−12.48 vs −12.45).
+
+**Qwen2.5 and Llama-3.1 "base" checkpoints already do continuation clearing;
+OLMo-3 base does essentially none.** The natural reading is that these bases are
+not clean document continuers — Qwen2.5 base even ships a chat template — while
+OLMo-3 base is. That is a corroboration rather than a problem: *the family whose
+base is the purest pretrained document model is exactly the one with no
+clearing*, which is what one predicts if clearing is an assistant-specific
+adaptation.
+
+### Two consequences for how the claims must be worded
+
+1. **The locus claim is unaffected**, because it is stated as a *change from
+   Arm 0*, not an absolute level. R's `dz_cont` is pinned at whatever its base
+   is, so `R − Arm0` on the clearing term must be exactly 0 in every family;
+   `Sbody − Arm0` must be negative. That is the replication target.
+2. **The developmental claim must stay OLMo-only.** For Qwen and Llama the
+   base→instruct contrast is *not* a clean pretraining→post-training contrast,
+   since their bases already contain assistant-like adaptation. The earlier
+   "pretraining already makes goal completion visible but not actionable" claim
+   is licensed by OLMo-3's lineage, and the other two families corroborate the
+   parameter-locus decomposition, not the developmental timeline. Do not blur
+   these.
+
+Also: "R's `dz_cont` is pinned at +0.67" was an OLMo-specific phrasing. The
+general statement is **"R cannot change the clearing term at all, so
+`R − Arm0` is identically zero."**

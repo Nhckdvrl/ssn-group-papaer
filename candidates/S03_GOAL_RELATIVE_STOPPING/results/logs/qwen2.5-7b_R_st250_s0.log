@@ -1,0 +1,9 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 53.84it/s]
+  assistant-turn stop token: '<|im_end|>' -> 151645
+arm=R repo=Qwen/Qwen2.5-7B stop_ids=[151645] trainable=3,585
+train=9368 val=306
+  pad id: 151643 ('<|endoftext|>')
+step0 eval: {'val_loss': 1.02227960601449, 'boundary_auc': 0.964628125, 'log_p_stop_at_boundary': -17.998772227764128, 'log_p_stop_inside': -28.171365723255914, 'n_boundary': 160, 'n_inside': 25242}
+[timing] step 1: 1.36s  16 seqs / 8000 padded tokens  peak 19.4GB
+[timing] step 2: 0.77s  16 seqs / 9884 padded tokens  peak 19.4GB
+[timing] step 3: 0.68s  16 seqs / 8480 padded tokens  peak 19.4GB

@@ -1,0 +1,12 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 53.24it/s]
+  assistant-turn stop token: '<|im_end|>' -> 151645
+arm=F repo=Qwen/Qwen2.5-7B stop_ids=[151645] trainable=7,615,616,512
+train=9368 val=306
+step0 eval: {'val_loss': 1.02227960601449, 'boundary_auc': 0.964628125, 'log_p_stop_at_boundary': -17.998772227764128, 'log_p_stop_inside': -28.171365723255914, 'n_boundary': 160, 'n_inside': 25242}
+[timing] step 1: 2.90s  16 seqs / 8000 padded tokens  peak 50.7GB
+[timing] step 2: 2.60s  16 seqs / 9884 padded tokens  peak 68.7GB
+[timing] step 3: 2.13s  16 seqs / 8480 padded tokens  peak 68.7GB
+{"val_loss": 0.7446394830942153, "boundary_auc": 0.997934375, "log_p_stop_at_boundary": -0.8370995235381997, "log_p_stop_inside": -24.41606633334538, "n_boundary": 160, "n_inside": 25242, "step": 50, "train_loss": 0.7483087629079819, "lr": 3.2597628939356175e-05, "elapsed": 109.99042582511902}
+{"val_loss": 0.7238690957427025, "boundary_auc": 0.9991625, "log_p_stop_at_boundary": -0.5637113451237383, "log_p_stop_inside": -24.046636122057496, "n_boundary": 160, "n_inside": 25242, "step": 100, "train_loss": 0.8394029587507248, "lr": 3.5191311859445796e-06, "elapsed": 222.4700150489807}
+{"val_loss": 0.7237109392881393, "boundary_auc": 0.9991625, "log_p_stop_at_boundary": -0.5633355976431631, "log_p_stop_inside": -24.052907688101484, "n_boundary": 160, "n_inside": 25242, "step": 120, "train_loss": 1.1923884451389313, "lr": 0.0, "elapsed": 270.9713935852051}
+done results/e02/lrsweep/qwen2.5-7b_F_lr5e-5

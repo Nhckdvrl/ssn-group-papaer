@@ -66,6 +66,11 @@ STAGE_REPOS = {
         "base": "NousResearch/Meta-Llama-3.1-8B",
         "instruct": "NousResearch/Meta-Llama-3.1-8B-Instruct",
     },
+    # scale confirmation: same family as qwen2.5-7b, 4.5x the parameters
+    "qwen2.5-32b": {
+        "base": "Qwen/Qwen2.5-32B",
+        "instruct": "Qwen/Qwen2.5-32B-Instruct",
+    },
 }
 
 # Per family: (pretraining document-end token, chat end-of-turn token).
@@ -76,6 +81,7 @@ STOP_TOKEN_PAIRS = {
     "olmo3-7b": ("<|endoftext|>", "<|im_end|>"),
     "qwen2.5-7b": ("<|endoftext|>", "<|im_end|>"),
     "llama3.1-8b": ("<|end_of_text|>", "<|eot_id|>"),
+    "qwen2.5-32b": ("<|endoftext|>", "<|im_end|>"),
 }
 
 
