@@ -988,3 +988,54 @@ therefore stated on the raw stop logit or the gauge-free margin, never on
   dissociates from the turn-end token, and in one case moves the wrong way.
 - "Instruction tuning creates the goal-sensitivity" — it is present at base in
   all three lineages.
+
+---
+
+## 2026-09-18 — Sbody replicated; final Layer C table
+
+Seed 1 of the strict state-only ladder reproduces seed 0, including the
+budget-growing continuation suppression:
+
+| | seed 0 | seed 1 |
+|---|---|---|
+| Sbody@250 `d_goal` / `dz_cont` | 11.54 / −1.11 | 11.12 / +0.04 |
+| Sbody@750 | 12.10 / −1.84 | 12.73 / −2.31 |
+| Sbody@2250 | 17.73 / −5.00 | 19.80 / −5.62 |
+
+### Final Layer C result — paired vs Arm 0, both seeds, 50 items
+
+| contrast | **`dz_stop`** (reading) | **`dz_cont`** (clearing) | `d_goal` (behaviour) |
+|---|---|---|---|
+| **R** — 4,097 readout params, state frozen | **+6.03** [5.00, 7.09] 49/1 | **0.00** [0.00, 0.00] **0/0** | +6.03 |
+| **Sbody** — 6.9B body params, whole head frozen | +5.30 [4.13, 6.44] 46/4 | **−5.98** [−7.13, −4.84] 4/46 | **+11.27** |
+| **F** — everything free | +5.16 [3.97, 6.33] 44/6 | −6.15 [−7.26, −5.06] 3/47 | **+11.31** |
+
+`R − Arm0` on the continuation side is now *exactly* 0.00 with a 0/0 sign count.
+That is not rounding: with Arm 0 measured through the arms' own evaluation path,
+R's non-stop logits are bit-identical to the pretrained model's on all 50 items.
+The freeze is confirmed end-to-end, by the measurement rather than by assertion.
+
+`Sbody ≈ F` on every column while having the entire output head byte-frozen.
+
+### Final statement of the acquisition law
+
+> **Reading and clearing are different problems with different parameter loci.**
+>
+> - **Reading** — making goal completion visible to the stop action. Pretraining
+>   already supplies most of it (`dz_stop` = +8.16 at Arm 0, 47/3, at
+>   p(stop) ≈ 1e-4). Either locus sharpens it and they are close to
+>   interchangeable: 4,097 readout parameters give +6.03, 6.9B internal
+>   parameters give +5.30.
+> - **Clearing** — suppressing the still-plausible continuation once the goal is
+>   satisfied. A stop readout cannot do this *at all* (exactly 0.00, by
+>   construction), at any capacity (Rmlp). Internal-state change gives −5.98,
+>   matching full fine-tuning and the released checkpoint, and it is the half
+>   that grows with training budget.
+>
+> Behavioural stopping is the sum. The reuse-vs-new-representation dichotomy
+> fails not because the answer is "both", but because the two loci are not
+> competing to do the same job.
+
+Established across three lineages and two stopping architectures (Layer A
+external check). **Stopping here per the pre-agreed scope: no layer probing, no
+SAE, no circuit localisation, no model zoo.** Next step is paper structure.
