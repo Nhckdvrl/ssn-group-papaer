@@ -22,14 +22,15 @@
 
 截至 **2026-09-18 当前交接**，正式状态如下：
 
-## Selected Topics = 4
+## Selected Topics = 5
 
 - **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
 - **S05 — When Does Reading Become Learning?**
 - **S06 — What Does Deliberation Do to Evidence?**
+- **S07 — Where Does Surprise Go?**
 
-S06 已正式 PILOT-AUTHORIZED 并注册。它研究的不是 generic confirmation bias，而是：
+S06 与 S07 都已正式 PILOT-AUTHORIZED 并注册。S06 研究的不是 generic confirmation bias，而是：
 
 > **固定外部 evidence 不变时，deliberation 本身是否会改变各条 evidence 对 decision 的 causal influence？**
 
@@ -39,27 +40,11 @@ S06 已正式 PILOT-AUTHORIZED 并注册。它研究的不是 generic confirmati
 - generic evidence dilution；
 - selective endogenous reweighting / coherence formation。
 
-详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与四份注册文件为准。下一轮默认任务不是继续包装 S03–S06，而是继续寻找新的、彼此独立的 scientific questions。
+**S07 — Where Does Surprise Go?** 研究同一个 anomaly 的 prediction error 到底被归给 current state、source/observation model，还是 transition/rule model；核心识别来自 trusted reset 后三种不同的 persistent downstream fingerprint。
+
+详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与五份注册文件为准。下一轮默认任务不是继续包装 S03–S07，而是继续寻找新的、彼此独立的 scientific questions。
 
 ## 当前 SERIOUS / NOT PILOT-AUTHORIZED
-
-### 1. Where Does Surprise Go? — Hierarchical Epistemic Credit Assignment
-
-这是原 **Belief or Source?** 的上位版本，不要再缩成 source-trust 小题。
-
-母问题：
-
-> **When an LLM is surprised, what does it decide was wrong?**
-
-同一个 prediction error 可能被归给三个不同层级：
-
-- **State revision**：当前 world state 判断错了；
-- **Observation-model revision**：source / sensor / observation process 不可靠；
-- **Dynamics/rule revision**：关于世界如何变化的规律错了。
-
-当前 novelty pressure：LLM 文献分别研究 state inference、source reliability、regime change，但暂未找到把同一个 ambiguous residual 放进三层 model revision、再通过后续行为区分 revision locus 的 direct owner。
-
-当前 blocker 不是主要 novelty，而是 **minimum identification 是否自然**。候选 tiny sequential world：隐藏状态 + 有历史信誉的 observer + 有历史规律的 transition；插入相同 anomaly，仅改变 anomaly 前历史，使三种解释的 prior 不同；anomaly 后用可信 state reset 分别测试 current-state judgment、same-source future weighting、next-transition prediction。若必须膨胀成 Bayesian benchmark，KILL。
 
 ### 2. Metacognitive Control — Confidence State vs Reasoning-Control State
 
@@ -448,13 +433,12 @@ pilot 目标不是“证明异常”，而是以最低成本区分世界。优�
 
 恢复 repo 后不要先总结本提示词，直接工作：
 
-1. **先恢复 S06 已注册状态**：不要重复审“是否该注册”。S06 已 selected / PILOT-AUTHORIZED。
-2. **推进 Where Does Surprise Go?**：只审 tiny sequential world 是否能让 state / observation-model / transition-model revision 留下互斥 downstream fingerprint；若实验变成 Bayesian benchmark 或需要大量 synthetic task，KILL。
-3. **深审 Metacognitive Control**：专门查 confidence representation / confidence steering 与 reasoning-length / termination / reflection control 的 direct owner；目标是判断是否存在可做的 causal double dissociation。
-4. **继续 substantial fresh exploration**：至少一半搜索预算必须离开 epistemic-update / reasoning-control 邻域。优先 understanding / training / generation / architecture，但 provenance 可跨 CV、speech、robotics、general ML、cognitive science、statistics、control。
-5. **继续用 open-component generator**：从多篇论文的冲突、悬而未决组件、默认 premise failure 中找问题，再升级成 A/B/C worlds；不要从一个 recent paper 的 future work 直接起题。
-6. 每约 **6–8 个 serious seeds**，或连续出现同一种 kill pattern，主动 reset generator。
-7. 允许 **0 survivor**；绝不为了凑 S07 降低标准。
+1. **先恢复 S06/S07 已注册状态**：不要重复审“是否该注册”。两题都已 selected / PILOT-AUTHORIZED。
+2. **深审 Metacognitive Control**：专门查 confidence representation / confidence steering 与 reasoning-length / termination / reflection control 的 direct owner；目标是判断是否存在可做的 causal double dissociation。
+3. **继续 substantial fresh exploration**：至少一半搜索预算必须离开 epistemic-update / reasoning-control 邻域。优先 understanding / training / generation / architecture，但 provenance 可跨 CV、speech、robotics、general ML、cognitive science、statistics、control。
+4. **继续用 open-component generator**：从多篇论文的冲突、悬而未决组件、默认 premise failure 中找问题，再升级成 A/B/C worlds；不要从一个 recent paper 的 future work 直接起题。
+5. 每约 **6–8 个 serious seeds**，或连续出现同一种 kill pattern，主动 reset generator。
+6. 允许 **0 survivor**；绝不为了凑 S07 降低标准。
 
 当前特别强调的搜索方法：
 
