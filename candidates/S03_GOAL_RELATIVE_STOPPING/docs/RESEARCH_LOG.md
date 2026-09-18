@@ -1039,3 +1039,59 @@ The freeze is confirmed end-to-end, by the measurement rather than by assertion.
 Established across three lineages and two stopping architectures (Layer A
 external check). **Stopping here per the pre-agreed scope: no layer probing, no
 SAE, no circuit localisation, no model zoo.** Next step is paper structure.
+
+---
+
+## 2026-09-18 — Rmlp budget ladder: correcting the capacity claim (the 750-step trap, third occurrence)
+
+The capacity control `Rmlp` (2,098,177-parameter nonlinear readout over the same
+frozen state) existed only at 750 steps. By this project's own rule — a locus
+comparison at one budget is not identified — that was a gap. Filled at 250 and
+2250, both seeds.
+
+Paired within item, both seeds, `Rmlp − R`:
+
+| budget | `dz_stop` (reading) | sign | `dz_cont` (clearing) | sign |
+|---|---|---|---|---|
+| 250 | **+0.42** [0.29, 0.56] | 44/6, p=3.2e-08 | **0.00** [0.00, 0.00] | **0/0** |
+| 750 | −0.14 [−0.43, 0.15] | 22/27, p=0.57 | **0.00** | **0/0** |
+| 2250 | **+1.18** [0.75, 1.61] | 41/9, p=5.6e-06 | **0.00** | **0/0** |
+
+### Correction
+
+**"Readout capacity is not the limit" was a 750-step statement and is wrong as a
+general claim.** A nonlinear readout does beat a linear one on the reading term,
+reliably, at both 250 (+0.42) and 2250 (+1.18) steps. The 750-step rung — the
+one the original four-arm experiment used — is the only budget where the
+contrast is null.
+
+That is now the **third** time the 750-step budget has produced a misleading
+single-point reading:
+
+1. `F − R` was null at 750 → "the parameter locus does not matter";
+2. `F − R` at 750 was the ladder's minimum → "the state component only appears
+   at large budget";
+3. `Rmlp − R` is null at 750 → "readout capacity is not the limit".
+
+All three were wrong in a different direction, and all three were corrected by
+the same instrument run at more than one budget. This is worth a methods
+paragraph in the paper, not just a footnote.
+
+### What survives, and is strengthened
+
+The load-bearing claim is untouched:
+
+> **`dz_cont` for `Rmlp − R` is exactly 0.00, with a 0/0 sign count, at every
+> budget.** A 2-million-parameter nonlinear readout over the frozen pretrained
+> state cannot move the continuation logits *at all* — not weakly, exactly zero.
+> This is structural, and it is the sharpest possible form of the claim that
+> **clearing is impossible for any readout at any capacity and any budget.**
+
+And the reading term's decomposition is only mildly revised: of the readout
+route's total reading gain at 2250 (R: +6.03 over Arm 0), roughly +1.2 is
+attributable to readout expressivity and the rest to what a single linear row
+can already extract. Rmlp@2250 still reaches only `d_goal` 14.71, far short of
+Sbody/F at 17.7–19.8, and the entire shortfall is the clearing term.
+
+**Revised wording:** the readout route's ceiling is *partly* a capacity ceiling
+on the reading term, and *absolutely* a structural ceiling on the clearing term.

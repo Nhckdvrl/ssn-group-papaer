@@ -1,0 +1,17 @@
+`rope_scaling`'s beta_fast field must be a float, got 32
+`rope_scaling`'s beta_slow field must be a float, got 1
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.98it/s]
+arm=Rmlp repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=2,098,177
+train=9262 val=302
+step0 eval: {'val_loss': 0.7642544843256474, 'boundary_auc': 0.99543125, 'log_p_stop_at_boundary': -1.3495561935832825, 'log_p_stop_inside': -13.836823319880704, 'n_boundary': 160, 'n_inside': 23386}
+[timing] step 1: 1.41s  16 seqs / 8796 padded tokens  peak 17.6GB
+[timing] step 2: 0.74s  16 seqs / 8596 padded tokens  peak 17.6GB
+[timing] step 3: 0.71s  16 seqs / 8224 padded tokens  peak 17.6GB
+{"val_loss": 0.7555330239236355, "boundary_auc": 0.999790625, "log_p_stop_at_boundary": -0.43910642690597895, "log_p_stop_inside": -13.690335388125225, "n_boundary": 160, "n_inside": 23386, "step": 50, "train_loss": 0.7381728887557983, "lr": 0.0009247077288236488, "elapsed": 43.881810665130615}
+{"val_loss": 0.7545599713921547, "boundary_auc": 0.999715625, "log_p_stop_at_boundary": -0.21387927013986285, "log_p_stop_inside": -13.501519292640014, "n_boundary": 160, "n_inside": 23386, "step": 100, "train_loss": 0.7205184102058411, "lr": 0.0006800888624023553, "elapsed": 87.00014781951904}
+{"val_loss": 0.7548814490437508, "boundary_auc": 0.9998, "log_p_stop_at_boundary": -0.34309277101177005, "log_p_stop_inside": -13.990045317921068, "n_boundary": 160, "n_inside": 23386, "step": 150, "train_loss": 0.8911885321140289, "lr": 0.0003628028141903493, "elapsed": 130.50846481323242}
+{"val_loss": 0.7548020496964455, "boundary_auc": 0.999725, "log_p_stop_at_boundary": -0.2800511733507577, "log_p_stop_inside": -13.864570420068254, "n_boundary": 160, "n_inside": 23386, "step": 200, "train_loss": 1.099406436085701, "lr": 0.00010087684049605351, "elapsed": 173.36522006988525}
+{"val_loss": 0.7548797786235809, "boundary_auc": 0.999734375, "log_p_stop_at_boundary": -0.28821499536976913, "log_p_stop_inside": -13.815663278633808, "n_boundary": 160, "n_inside": 23386, "step": 250, "train_loss": 0.7187632545828819, "lr": 0.0, "elapsed": 217.63519668579102}
+wrote results/e02/budget/Rmlp_st250_s0/e01.jsonl 50
+wrote results/e02/budget/Rmlp_st250_s0/e01_d.jsonl 12
+done results/e02/budget/Rmlp_st250_s0

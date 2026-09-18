@@ -76,13 +76,14 @@ behaviourally inactive operating point. Post-training does two separable things:
    while p(stop) ~ 1e-4). Either locus can sharpen it: **4,097** stop-readout
    parameters take it to +14.48 with the state frozen; **6.9B** internal
    parameters take it to +12.73 with the entire output head byte-frozen.
-   Readout capacity is not the limit — a 500x larger nonlinear readout over the
-   same frozen state adds nothing.
+   Readout expressivity helps this term modestly (a 500x larger nonlinear
+   readout adds +1.18 at 2250 steps) but is not where the route runs out.
 2. **Clearing** — suppressing the still-plausible continuation once the goal is
-   satisfied. A stop readout *structurally cannot* do this (`dz_cont` pinned at
-   +0.67); internal-state change reaches −5.00, matching full SFT and the
-   released checkpoint. This is the part that keeps growing with training
-   budget.
+   satisfied. A stop readout *structurally cannot* do this: `Rmlp − R` on the
+   continuation term is **exactly 0.00, sign count 0/0, at every budget**, even
+   with 2M nonlinear parameters. Internal-state change reaches −5.98, matching
+   full fine-tuning and the released checkpoint, and this is the half that grows
+   with training budget.
 
 Behavioural stopping is the sum. "Reuse vs new representation" fails not because
 the answer is "both", but because the two loci are not competing to do the same
@@ -97,8 +98,11 @@ actually ends the turn — in Llama-3.1 Instruct the document-end token moves
 
 ### Two methodological traps this project fell into and climbed out of
 
-- **A locus comparison at one training budget is not identified.** Two different
-  wrong headlines came from reading a locus conclusion off a single budget.
+- **A locus comparison at one training budget is not identified.** The 750-step
+  budget produced *three* misleading single-point readings in this project —
+  "the locus does not matter", "the state component only appears at large
+  budget", and "readout capacity is not the limit" — each wrong in a different
+  direction, each corrected by the same instrument run at more budgets.
 - **`Δ log p(stop)` carries a whole-vocabulary normalizer term** that differs
   systematically by arm and can flip the apparent sign of an effect. Locus and
   architecture claims are stated on the raw stop logit or the gauge-free margin.
