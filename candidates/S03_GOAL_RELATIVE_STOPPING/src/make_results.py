@@ -47,6 +47,10 @@ blocks.append(("Layer C — paired contrasts against Arm 0",
                run("e01_rawlogit.py", *specs, "--vs", "Arm0",
                    "--metrics", "dz_stop", "dz_cont", "d_goal")))
 
+for st in (250, 750, 2250):
+    blocks.append((f"Three-family parameter-locus replication @ {st} steps",
+                   run("e02_threefamily.py", str(st))))
+
 blocks.append(("External lineages — architecture test (native chat format)",
                run("e01_external.py",
                    "Qwen2.5 base (grafted)=results/e01/qwen2.5-7b_base_grafted.jsonl",

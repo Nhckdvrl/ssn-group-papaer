@@ -1,0 +1,17 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 64.84it/s]
+  assistant-turn stop token: '<|eot_id|>' -> 128009
+arm=F repo=NousResearch/Meta-Llama-3.1-8B stop_ids=[128009] trainable=8,030,261,248
+train=9542 val=313
+  pad id: 128001 ('<|end_of_text|>')
+step0 eval: {'val_loss': 1.5161500126123428, 'boundary_auc': 0.904734375, 'log_p_stop_at_boundary': -19.589074182510377, 'log_p_stop_inside': -25.63570506542966, 'n_boundary': 160, 'n_inside': 25158}
+[timing] step 1: 2.84s  16 seqs / 7912 padded tokens  peak 55.4GB
+[timing] step 2: 2.31s  16 seqs / 8488 padded tokens  peak 68.0GB
+[timing] step 3: 1.88s  16 seqs / 6560 padded tokens  peak 68.0GB
+{"val_loss": 0.8387859344482422, "boundary_auc": 0.99880625, "log_p_stop_at_boundary": -0.9568121992051601, "log_p_stop_inside": -25.37019023369583, "n_boundary": 160, "n_inside": 25158, "step": 50, "train_loss": 1.0744671374559402, "lr": 1.8494154576472976e-05, "elapsed": 118.37796521186829}
+{"val_loss": 0.7816179864108562, "boundary_auc": 0.999653125, "log_p_stop_at_boundary": -0.2827768772142008, "log_p_stop_inside": -25.633471360413093, "n_boundary": 160, "n_inside": 25158, "step": 100, "train_loss": 0.740605041384697, "lr": 1.3601777248047105e-05, "elapsed": 237.87535190582275}
+{"val_loss": 0.7663699634373188, "boundary_auc": 0.99983125, "log_p_stop_at_boundary": -0.2686220564180985, "log_p_stop_inside": -25.878648341395497, "n_boundary": 160, "n_inside": 25158, "step": 150, "train_loss": 1.174346923828125, "lr": 7.256056283806987e-06, "elapsed": 355.1574184894562}
+{"val_loss": 0.7619801066815853, "boundary_auc": 0.99984375, "log_p_stop_at_boundary": -0.2951407763874158, "log_p_stop_inside": -25.963043649481232, "n_boundary": 160, "n_inside": 25158, "step": 200, "train_loss": 0.9474868029356003, "lr": 2.01753680992107e-06, "elapsed": 472.36677598953247}
+{"val_loss": 0.7616564713418483, "boundary_auc": 0.999840625, "log_p_stop_at_boundary": -0.29357604497345163, "log_p_stop_inside": -25.971247787037168, "n_boundary": 160, "n_inside": 25158, "step": 250, "train_loss": 0.8234855532646179, "lr": 0.0, "elapsed": 590.7385361194611}
+wrote results/e02/repl/llama3.1-8b_F_st250_s2/e01.jsonl 50
+wrote results/e02/repl/llama3.1-8b_F_st250_s2/e01_d.jsonl 12
+done results/e02/repl/llama3.1-8b_F_st250_s2

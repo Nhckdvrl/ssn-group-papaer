@@ -1225,3 +1225,79 @@ predictor is fixed in advance.
 
 Status: 3 Qwen R@seed1 runs backfilling (they were interrupted when the old
 scheduler was replaced); Llama at 10/28. Numbers above use the seeds available.
+
+---
+
+## 2026-09-19 — THREE-FAMILY RESULT: prediction confirmed; one law is universal, one is not
+
+Both replications complete: Qwen2.5-7B 28/28 and Llama-3.1-8B 28/28
+(Arm0 / R / Sbody / F × 250/750/2250 × 3 seeds each).
+
+### The pre-registered prediction was confirmed
+
+Recorded before any Llama R arm existed: *Llama's Arm 0 `boundary_auc` decides
+the sign of R's reading contribution; low (≲0.97) → R flat or negative.*
+
+| Arm 0 | generic `boundary_auc` | R's Δ`dz_stop` @2250 |
+|---|---|---|
+| OLMo-3 7B | 0.99543 | **+6.03** |
+| Qwen2.5 7B | 0.96463 | **−1.84** |
+| Llama-3.1 8B | **0.90473** (lowest) | **−1.31** |
+
+Llama came in lowest and its R arm is negative at every budget, as predicted.
+With n=3 families only the *sign* prediction is claimed; no monotone
+quantitative relationship is asserted (Qwen and Llama invert in magnitude).
+
+### The universal law — exact in 3 families and 2 architectures
+
+Paired against each family's **own** Arm 0, @2250:
+
+| family | arm | Δ`dz_stop` (reading) | sign | Δ`dz_cont` (clearing) | sign |
+|---|---|---|---|---|---|
+| OLMo-3 | R | +6.03 [+5.00,+7.09] | 49/1 | **+0.00 [0.00,0.00]** | **0/0** |
+| | Sbody | +5.30 [+4.13,+6.44] | 46/4 | −5.98 [−7.13,−4.84] | 4/46 |
+| | F | +5.16 [+3.97,+6.33] | 44/6 | −6.15 [−7.26,−5.06] | 3/47 |
+| Qwen2.5 | R | −1.84 [−2.57,−1.14] | 13/37 | **+0.00 [0.00,0.00]** | **0/0** |
+| | Sbody | +3.99 [+3.02,+4.94] | 42/8 | −4.75 [−5.67,−3.77] | 5/45 |
+| | F | +8.95 [+7.42,+10.40] | 45/5 | −1.79 [−2.65,−0.87] | 11/39 |
+| Llama-3.1 | R | −1.31 [−1.86,−0.75] | 11/39 | **+0.00 [0.00,0.00]** | **0/0** |
+| | Sbody | +0.29 [−0.32,+0.89] | 29/21 | −2.66 [−3.72,−1.64] | 13/37 |
+| | F | +0.43 [−0.23,+1.11] | 29/21 | −1.99 [−2.91,−1.08] | 16/34 |
+
+> **In every family, at every budget, at every seed, and at any readout
+> capacity, a stop readout changes the clearing term by *exactly zero*, while
+> internal-state adaptation always changes it.**
+
+This holds across a shared-EOS architecture (OLMo reuses `<|endoftext|>`) and
+two distinct-EOT architectures (`<|im_end|>`, `<|eot_id|>`). The same statement
+is true at 250 steps, where the state arms' clearing change even flips sign in
+Qwen (+1.96) — the direction is family- and budget-dependent, but the
+*reachability* is absolute: |Δclearing| = 0 for R and > 0 for the state arms,
+without exception.
+
+### The law that is NOT universal
+
+"Post-training acquires the reading term through readout adaptation alone" is
+**OLMo-specific**. R gains +6.03 there and *loses* ground in both other
+families. Worse for generality, on Llama even the state arms barely move reading
+at 2250 (Sbody +0.29, F +0.43, both null by sign test) while still moving
+clearing. So the reading term is not a stable cross-family phenomenon at all.
+
+This must be reported as a negative result, not buried.
+
+### Revised headline
+
+The paper's central claim narrows to something cleaner and better supported:
+
+> **Goal-relative stopping requires two changes, and only one of them is
+> reachable from the stop readout.** Suppressing the still-plausible
+> continuation once the goal is satisfied — the *clearing* term — is
+> structurally unreachable by any stop readout, at any capacity, at any budget,
+> in every model family tested; it requires internal-state change. How much the
+> stop readout can additionally sharpen the *reading* of goal completion is
+> family-dependent and trades off against the generic boundary calibration the
+> readout must also perform.
+
+The OLMo-only developmental result (pretraining already makes goal completion
+visible at an inactive operating point) stays labelled as OLMo-only, since the
+Qwen and Llama bases are not clean document continuers.
