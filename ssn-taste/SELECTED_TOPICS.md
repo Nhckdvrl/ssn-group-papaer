@@ -84,6 +84,22 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
+### S07 — Where Does Surprise Go?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-18  
+**Detailed registration:** `S07_WHERE_DOES_SURPRISE_GO.md`
+
+**Parent question.** When an anomalous observation conflicts with what a model expected, which explanatory layer absorbs the prediction error: current-state belief, observation/source reliability, or transition/rule belief?
+
+**Scientific pressure.** Recent work separately demonstrates strong latent-state inference, weak source discernment, and adaptation to regime changes. What remains unowned is the **revision-allocation problem** when one anomaly can be explained by more than one of those layers.
+
+**Minimum identification.** Hold the anomalous report fixed, vary only the prior history, then use a trusted state reset followed by future same-source weighting and next-transition prediction to identify whether the anomaly changed state, source model, or dynamics.
+
+**Claim boundary.** Do not turn S07 into a source-trust benchmark, changepoint benchmark, POMDP benchmark, or generic “LLMs are Bayesian” paper.
+
+---
+
 ## Explicitly cancelled registrations
 
 - **S01 — Omission ≠ Neutrality / effective default semantics in tool calls:** cancelled/demoted. It is already recorded as F06 in `FAILED_TOPICS.md`; the Main-level parent compresses to underspecified tool intent / argument completion, leaving only an exact API-default subcase.
@@ -93,4 +109,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 4.**
+**Current selected topic count = 5.**
