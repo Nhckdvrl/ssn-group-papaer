@@ -22,15 +22,16 @@
 
 截至 **2026-09-18 当前交接**，正式状态如下：
 
-## Selected Topics = 5
+## Selected Topics = 6
 
 - **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
 - **S05 — When Does Reading Become Learning?**
 - **S06 — What Does Deliberation Do to Evidence?**
 - **S07 — Where Does Surprise Go?**
+- **S08 — Is Metacognitive Control Shared?**
 
-S06 与 S07 都已正式 PILOT-AUTHORIZED 并注册。S06 研究的不是 generic confirmation bias，而是：
+S06、S07、S08 都已正式 PILOT-AUTHORIZED 并注册。S06 研究的不是 generic confirmation bias，而是：
 
 > **固定外部 evidence 不变时，deliberation 本身是否会改变各条 evidence 对 decision 的 causal influence？**
 
@@ -42,11 +43,13 @@ S06 与 S07 都已正式 PILOT-AUTHORIZED 并注册。S06 研究的不是 generi
 
 **S07 — Where Does Surprise Go?** 研究同一个 anomaly 的 prediction error 到底被归给 current state、source/observation model，还是 transition/rule model；核心识别来自 trusted reset 后三种不同的 persistent downstream fingerprint。
 
-详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与五份注册文件为准。下一轮默认任务不是继续包装 S03–S07，而是继续寻找新的、彼此独立的 scientific questions。
+**S08 — Is Metacognitive Control Shared?** 研究 internal confidence 是否是 answer/abstain 与 reasoning continue/terminate 之间共享的 metacognitive control variable，还是两种 metadecision 依赖可双解离的 monitor/control states；核心 pilot 是 matched reasoning prefix 上的 confidence↔termination causal cross-steering。
+
+详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与六份注册文件为准。下一轮默认任务不是继续包装 S03–S08，而是继续寻找新的、彼此独立的 scientific questions.
 
 ## 当前 SERIOUS / NOT PILOT-AUTHORIZED
 
-### 2. Metacognitive Control — Confidence State vs Reasoning-Control State
+
 
 当前母问题暂定：
 
@@ -433,8 +436,7 @@ pilot 目标不是“证明异常”，而是以最低成本区分世界。优�
 
 恢复 repo 后不要先总结本提示词，直接工作：
 
-1. **先恢复 S06/S07 已注册状态**：不要重复审“是否该注册”。两题都已 selected / PILOT-AUTHORIZED。
-2. **深审 Metacognitive Control**：专门查 confidence representation / confidence steering 与 reasoning-length / termination / reflection control 的 direct owner；目标是判断是否存在可做的 causal double dissociation。
+1. **先恢复 S06/S07/S08 已注册状态**：不要重复审“是否该注册”。三题都已 selected / PILOT-AUTHORIZED。
 3. **继续 substantial fresh exploration**：至少一半搜索预算必须离开 epistemic-update / reasoning-control 邻域。优先 understanding / training / generation / architecture，但 provenance 可跨 CV、speech、robotics、general ML、cognitive science、statistics、control。
 4. **继续用 open-component generator**：从多篇论文的冲突、悬而未决组件、默认 premise failure 中找问题，再升级成 A/B/C worlds；不要从一个 recent paper 的 future work 直接起题。
 5. 每约 **6–8 个 serious seeds**，或连续出现同一种 kill pattern，主动 reset generator。
