@@ -1,0 +1,11 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 58.76it/s]
+  assistant-turn stop token: '<|eot_id|>' -> 128009
+arm=R repo=NousResearch/Meta-Llama-3.1-8B stop_ids=[128009] trainable=4,097
+train=9542 val=313
+  pad id: 128001 ('<|end_of_text|>')
+step0 eval: {'val_loss': 1.5161500126123428, 'boundary_auc': 0.904734375, 'log_p_stop_at_boundary': -19.589074182510377, 'log_p_stop_inside': -25.63570506542966, 'n_boundary': 160, 'n_inside': 25158}
+[timing] step 1: 2.17s  16 seqs / 7516 padded tokens  peak 19.6GB
+{"val_loss": 1.5161500126123428, "boundary_auc": 0.904734375, "log_p_stop_at_boundary": -19.589074182510377, "log_p_stop_inside": -25.63570506542966, "n_boundary": 160, "n_inside": 25158, "step": 1, "train_loss": 1.220496505498886, "lr": 0.0, "elapsed": 16.554346084594727}
+wrote results/e02/repl/llama3.1-8b_R_st1_s0/e01.jsonl 50
+wrote results/e02/repl/llama3.1-8b_R_st1_s0/e01_d.jsonl 12
+done results/e02/repl/llama3.1-8b_R_st1_s0

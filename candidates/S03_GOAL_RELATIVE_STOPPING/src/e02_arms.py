@@ -66,6 +66,7 @@ class ArmModel(nn.Module):
         head = model.get_output_embeddings()
         self._head_weight = head.weight
         self._stop_idx = torch.tensor(self.stop_ids, device=head.weight.device)
+        self._head_device = head.weight.device
 
         if arm in ("R", "Rmlp"):
             for p in model.parameters():
@@ -125,7 +126,8 @@ class ArmModel(nn.Module):
                                  output_hidden_states=True)
             logits = out.logits.detach()
             h = out.hidden_states[-1].detach()
-            d = self.readout.delta(h)
+            d = self.readout.delta(h.to(next(self.readout.parameters()).device))
+            d = d.to(logits.device)
             logits = logits.clone()
             for j, sid in enumerate(self.stop_ids):
                 logits[..., sid] = logits[..., sid] + d[..., j].to(logits.dtype)

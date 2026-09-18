@@ -109,7 +109,8 @@ def boundary_metrics(arm_model, loader, stop_ids, device, max_batches=40):
     sid = torch.tensor(stop_ids, device=device)
     for bi, (ids, lab, att) in enumerate(loader):
         if bi >= max_batches: break
-        ids, lab, att = ids.to(device), lab.to(device), att.to(device)
+        dev = arm_model.model.get_input_embeddings().weight.device
+        ids, lab, att = ids.to(dev), lab.to(dev), att.to(dev)
         logits = arm_model(ids, att)[:, :-1]
         tgt = lab[:, 1:]
         mask = tgt != IGNORE
@@ -152,6 +153,12 @@ def main():
     ap.add_argument("--steps", type=int, default=600)
     ap.add_argument("--bs", type=int, default=2)
     ap.add_argument("--accum", type=int, default=8)
+    ap.add_argument("--device-map", default=None,
+                    help="'auto' spreads the model across GPUs (naive model "
+                         "parallel). Needed for 32B, whose weights+grads+8-bit "
+                         "Adam state exceed one 96GB card. The freezes are "
+                         "unaffected: parameters remain ordinary tensors, just "
+                         "on different devices.")
     ap.add_argument("--grad-ckpt", action="store_true",
                     help="trade speed for memory; unnecessary here, a 7B S/F arm "
                          "fits in ~46GB of a 96GB card without it")
@@ -180,7 +187,11 @@ def main():
     tok = AutoTokenizer.from_pretrained(repo)
     tok.chat_template = AutoTokenizer.from_pretrained(tmpl_repo).chat_template
 
-    model = AutoModelForCausalLM.from_pretrained(repo, dtype=torch.bfloat16).cuda()
+    if args.device_map:
+        model = AutoModelForCausalLM.from_pretrained(
+            repo, dtype=torch.bfloat16, device_map=args.device_map)
+    else:
+        model = AutoModelForCausalLM.from_pretrained(repo, dtype=torch.bfloat16).cuda()
     if args.arm in ("S", "Sbody", "F") and args.grad_ckpt:
         model.gradient_checkpointing_enable()
     model.config.use_cache = False
@@ -197,7 +208,9 @@ def main():
     assert stop_id is not None and stop_id >= 0, f"no id for {stop_tok}"
     sids = [stop_id]
     print(f"  assistant-turn stop token: {stop_tok!r} -> {stop_id}", flush=True)
-    arm = ArmModel(model, sids, args.arm).cuda()
+    arm = ArmModel(model, sids, args.arm)
+    if not args.device_map:
+        arm = arm.cuda()
     if arm.readout is not None:
         arm.readout = arm.readout.cuda().float()
     print(f"arm={args.arm} repo={repo} stop_ids={sids} "
@@ -250,7 +263,8 @@ def main():
         for _ in range(args.accum):
             try: batch = next(it)
             except StopIteration: it = iter(tl); batch = next(it)
-            ids, lab, att = (x.cuda() for x in batch)
+            dev = arm.model.get_input_embeddings().weight.device
+            ids, lab, att = (x.to(dev) for x in batch)
             nseq += ids.size(0); ntok += ids.numel()
             logits = arm(ids, att)
             loss = chunked_ce(logits, lab)

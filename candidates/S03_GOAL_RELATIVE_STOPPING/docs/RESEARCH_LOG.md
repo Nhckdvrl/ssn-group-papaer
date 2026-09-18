@@ -1157,3 +1157,71 @@ adaptation.
 Also: "R's `dz_cont` is pinned at +0.67" was an OLMo-specific phrasing. The
 general statement is **"R cannot change the clearing term at all, so
 `R − Arm0` is identically zero."**
+
+---
+
+## 2026-09-19 — Qwen2.5-7B replication: the structural claim replicates exactly, the reading claim does NOT
+
+Full core causal replication on Qwen2.5-7B (Arm0 / R / Sbody / F, 3 budgets,
+3 seeds; arms train on `<|im_end|>`, Gate C verified bit-exact on that token).
+Reported against Qwen's own Arm 0 (`dz_stop` 3.82, `dz_cont` −12.45), since the
+locus claim is a *change from* Arm 0.
+
+| | Δ`dz_stop` (reading) | Δ`dz_cont` (clearing) |
+|---|---|---|
+| R @250 / 750 / 2250 | +0.57 / **−1.35** / **−1.74** | **0.00 / 0.00 / 0.00** |
+| Sbody @250 / 750 / 2250 | +3.15 / +2.99 / +3.99 | +1.96 / +2.56 / −4.75 |
+| F @250 / 750 / 2250 | +8.02 / +8.18 / +8.95 | +1.40 / +3.40 / −1.79 |
+
+### What replicated — the load-bearing structural claim
+
+**R's clearing term is pinned at exactly −12.45, change 0.00, at every budget.**
+Different family, different tokenizer, different turn-end token, different
+stopping architecture: a stop readout still **cannot touch the clearing term at
+all**. This is the claim the paper rests on and it is now exact in two families.
+
+### What did NOT replicate — "reading is readout-attachable"
+
+On OLMo, R alone gained `dz_stop` **+6.03**. On Qwen, R **loses** ground
+(−1.74 at 2250). This is a real failure to replicate and must not be spun.
+
+**It is not a failed arm.** R trains well: val_loss 1.022 → 0.822 and
+`boundary_auc` **0.965 → 0.999**. It improves *generic* boundary stopping a lot
+while *reducing* goal-relative stop promotion.
+
+### Candidate explanation, and the trade-off it implies
+
+| Arm 0 | generic `boundary_auc` | R's contribution to reading |
+|---|---|---|
+| OLMo-3 7B | **0.99543** (near ceiling) | **+6.03** |
+| Qwen2.5 7B | **0.96463** (clearly short) | **−1.74** |
+
+With only one row of freedom, generic boundary calibration and goal-relative
+modulation **compete for the same degree of freedom**. Where the base already
+handles generic stopping (OLMo), the readout can spend itself on goal-relativity;
+where it does not (Qwen), the readout spends itself on base-rate calibration
+first, and goal-relativity degrades.
+
+This is a post-hoc explanation from two families. It is recorded as a
+**pre-registered prediction** before the deciding data exists:
+
+> **Prediction (made before any Llama R arm has run).** Llama-3.1-8B's Arm 0
+> `boundary_auc` determines the sign of R's reading contribution. High
+> (≳0.99, OLMo-like) → R gains on `dz_stop`. Low (≲0.97, Qwen-like) → R is flat
+> or negative.
+
+Llama is a genuine adjudicator: its base `dz_cont` is −7.34, between OLMo's
++0.67 and Qwen's −12.45. Llama's Arm 0 was launched *before* its R arms, so the
+predictor is fixed in advance.
+
+### Consequence for the paper's claims
+
+- **Narrow**: "post-training can acquire the reading term through readout
+  adaptation alone" must become conditional on the base's generic stopping
+  competence. It is not a general law.
+- **Keep**: reading and clearing are different problems in different loci, and
+  **clearing is structurally unreachable by any readout** — exact 0.00 in both
+  families, at every budget, at any capacity (Rmlp).
+
+Status: 3 Qwen R@seed1 runs backfilling (they were interrupted when the old
+scheduler was replaced); Llama at 10/28. Numbers above use the seeds available.

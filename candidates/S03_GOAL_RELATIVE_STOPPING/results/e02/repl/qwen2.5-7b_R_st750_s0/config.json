@@ -1,0 +1,27 @@
+{
+  "arm": "R",
+  "family": "qwen2.5-7b",
+  "lr": 0.001,
+  "steps": 750,
+  "bs": 4,
+  "accum": 4,
+  "grad_ckpt": false,
+  "opt8bit": false,
+  "max_len": 768,
+  "n_train": 12000,
+  "n_val": 400,
+  "seed": 0,
+  "tag": "repl/qwen2.5-7b_R_st750_s0",
+  "data": "data/tulu_subset.jsonl",
+  "out": null,
+  "eval_after": true,
+  "save_model": false,
+  "stimuli": [
+    "stimuli/e01_pairs.jsonl",
+    "stimuli/e01_pairs_d.jsonl"
+  ],
+  "stop_ids": [
+    151645
+  ],
+  "n_trainable": 3585
+}

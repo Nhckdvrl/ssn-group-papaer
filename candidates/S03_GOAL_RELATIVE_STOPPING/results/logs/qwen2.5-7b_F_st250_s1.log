@@ -1,0 +1,17 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 50.86it/s]
+  assistant-turn stop token: '<|im_end|>' -> 151645
+arm=F repo=Qwen/Qwen2.5-7B stop_ids=[151645] trainable=7,615,616,512
+train=9368 val=306
+  pad id: 151643 ('<|endoftext|>')
+step0 eval: {'val_loss': 1.02227960601449, 'boundary_auc': 0.964628125, 'log_p_stop_at_boundary': -17.998772227764128, 'log_p_stop_inside': -28.171365723255914, 'n_boundary': 160, 'n_inside': 25242}
+[timing] step 1: 2.55s  16 seqs / 7108 padded tokens  peak 51.0GB
+[timing] step 2: 2.37s  16 seqs / 9136 padded tokens  peak 69.3GB
+[timing] step 3: 1.85s  16 seqs / 7116 padded tokens  peak 69.3GB
+{"val_loss": 0.6769598983228207, "boundary_auc": 0.999259375, "log_p_stop_at_boundary": -0.5911142135970294, "log_p_stop_inside": -28.038902901976247, "n_boundary": 160, "n_inside": 25242, "step": 50, "train_loss": 0.9314528182148933, "lr": 1.8494154576472976e-05, "elapsed": 116.74423837661743}
+{"val_loss": 0.6630424365401268, "boundary_auc": 0.99975, "log_p_stop_at_boundary": -0.4107547560299281, "log_p_stop_inside": -28.253277417120024, "n_boundary": 160, "n_inside": 25242, "step": 100, "train_loss": 0.3704410344362259, "lr": 1.3601777248047105e-05, "elapsed": 228.23794531822205}
+{"val_loss": 0.6567430332303047, "boundary_auc": 0.9998125, "log_p_stop_at_boundary": -0.3142919024656294, "log_p_stop_inside": -28.31385436991982, "n_boundary": 160, "n_inside": 25242, "step": 150, "train_loss": 0.8342756927013397, "lr": 7.256056283806987e-06, "elapsed": 344.7291226387024}
+{"val_loss": 0.6549066260457039, "boundary_auc": 0.999796875, "log_p_stop_at_boundary": -0.3510404890897917, "log_p_stop_inside": -28.334505847216843, "n_boundary": 160, "n_inside": 25242, "step": 200, "train_loss": 0.5166627690196037, "lr": 2.01753680992107e-06, "elapsed": 457.43556332588196}
+{"val_loss": 0.6548033289611339, "boundary_auc": 0.999790625, "log_p_stop_at_boundary": -0.35504620706196877, "log_p_stop_inside": -28.331956578125514, "n_boundary": 160, "n_inside": 25242, "step": 250, "train_loss": 0.5265176482498646, "lr": 0.0, "elapsed": 571.6898279190063}
+wrote results/e02/repl/qwen2.5-7b_F_st250_s1/e01.jsonl 50
+wrote results/e02/repl/qwen2.5-7b_F_st250_s1/e01_d.jsonl 12
+done results/e02/repl/qwen2.5-7b_F_st250_s1

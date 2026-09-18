@@ -1,0 +1,11 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 53.25it/s]
+  assistant-turn stop token: '<|im_end|>' -> 151645
+arm=R repo=Qwen/Qwen2.5-7B stop_ids=[151645] trainable=3,585
+train=9368 val=306
+  pad id: 151643 ('<|endoftext|>')
+step0 eval: {'val_loss': 1.02227960601449, 'boundary_auc': 0.964628125, 'log_p_stop_at_boundary': -17.998772227764128, 'log_p_stop_inside': -28.171365723255914, 'n_boundary': 160, 'n_inside': 25242}
+[timing] step 1: 1.94s  16 seqs / 7108 padded tokens  peak 19.4GB
+[timing] step 2: 1.59s  16 seqs / 9136 padded tokens  peak 19.4GB
+[timing] step 3: 1.27s  16 seqs / 7116 padded tokens  peak 19.4GB
+{"val_loss": 0.8370097152888775, "boundary_auc": 0.99766875, "log_p_stop_at_boundary": -0.9026105437333303, "log_p_stop_inside": -22.35349306366518, "n_boundary": 160, "n_inside": 25242, "step": 50, "train_loss": 0.9896591976284981, "lr": 0.0009247077288236488, "elapsed": 83.69629406929016}
+{"val_loss": 0.8258079409599304, "boundary_auc": 0.998634375, "log_p_stop_at_boundary": -0.5878100660493728, "log_p_stop_inside": -20.51922075010436, "n_boundary": 160, "n_inside": 25242, "step": 100, "train_loss": 0.4538866952061653, "lr": 0.0006800888624023553, "elapsed": 162.45990896224976}
