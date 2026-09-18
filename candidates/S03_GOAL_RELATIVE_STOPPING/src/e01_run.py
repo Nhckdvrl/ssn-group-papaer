@@ -53,6 +53,29 @@ STAGE_REPOS = {
         "dpo": "allenai/Olmo-3-7B-Instruct-DPO",
         "instruct": "allenai/Olmo-3-7B-Instruct",
     },
+    # External lineages, chosen for a DIFFERENT stopping architecture: OLMo
+    # reuses the native pretraining <|endoftext|> to end an assistant turn,
+    # while these introduce a separate end-of-turn token.  If the phenomenon is
+    # about assistant stopping acquisition rather than OLMo token wiring, it
+    # should appear in both architectures.
+    "qwen2.5-7b": {
+        "base": "Qwen/Qwen2.5-7B",
+        "instruct": "Qwen/Qwen2.5-7B-Instruct",
+    },
+    "llama3.1-8b": {
+        "base": "NousResearch/Meta-Llama-3.1-8B",
+        "instruct": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+    },
+}
+
+# Per family: (pretraining document-end token, chat end-of-turn token).
+# Scoring these SEPARATELY keeps base and instruct on the same token set, which
+# a per-checkpoint generation-config stop set would not.
+STOP_TOKEN_PAIRS = {
+    "olmo2-1b": ("<|endoftext|>", None),          # the same token does both jobs
+    "olmo3-7b": ("<|endoftext|>", "<|im_end|>"),
+    "qwen2.5-7b": ("<|endoftext|>", "<|im_end|>"),
+    "llama3.1-8b": ("<|end_of_text|>", "<|eot_id|>"),
 }
 
 
@@ -111,7 +134,7 @@ def score(model, tok, ids, positions):
     return {p: logits[p] for p in positions}
 
 
-def measure(model, tok, item, cond, chat, stop_ids):
+def measure(model, tok, item, cond, chat, stop_ids, named_stops=None):
     full, p1, p2, body_ids, sep_ids, missing_ids = build_pair_ids(tok, item, cond, chat)
     lg = score(model, tok, full, [p1, p2])
     sep_tok = sep_ids[0]
@@ -131,6 +154,11 @@ def measure(model, tok, item, cond, chat, stop_ids):
         rec[f"{tag}_stop_rank"] = int((v > v[stop_ids].max()).sum())
         top = torch.topk(v, 5)
         rec[f"{tag}_top5"] = [tok.convert_ids_to_tokens(int(i)) for i in top.indices]
+        # each candidate stop token on its own, so base and post-trained
+        # checkpoints can be compared on an identical token set
+        for nm, tid in (named_stops or {}).items():
+            rec[f"{tag}_stop_logit_{nm}"] = v[tid].item()
+            rec[f"{tag}_p_stop_{nm}"] = float(probs[tid])
     rec["_prefix_ids"] = body_ids + sep_ids
     rec["_comp_tok_p2"] = tok.convert_ids_to_tokens(mis_tok)
     return rec
@@ -161,8 +189,11 @@ def main():
     repo = STAGE_REPOS[args.family][args.stage]
     tok = AutoTokenizer.from_pretrained(repo)
     if args.graft_template:
+        # the post-trained sibling that defines the assistant format: prefer
+        # the SFT stage when the lineage exposes one, else the instruct model
+        donor = ("sft" if "sft" in STAGE_REPOS[args.family] else "instruct")
         tok.chat_template = AutoTokenizer.from_pretrained(
-            STAGE_REPOS[args.family]["sft"]).chat_template
+            STAGE_REPOS[args.family][donor]).chat_template
     model = AutoModelForCausalLM.from_pretrained(
         repo, dtype=torch.bfloat16, device_map="cuda"
     ).eval()
@@ -178,11 +209,27 @@ def main():
     print(f"{repo}  chat_template={chat}  stop_ids={sids} "
           f"({[tok.convert_ids_to_tokens(i) for i in sids]})", flush=True)
 
+    # Score the pretraining document-end token and the chat end-of-turn token
+    # SEPARATELY, so a base and a post-trained checkpoint are compared on an
+    # identical token set.  Using each checkpoint's own generation stop set
+    # would silently change the measured quantity between stages.
+    doc_tok, eot_tok = STOP_TOKEN_PAIRS.get(args.family, (None, None))
+    named = {}
+    for nm, t in (("doc", doc_tok), ("eot", eot_tok)):
+        if t is None:
+            continue
+        tid = tok.convert_tokens_to_ids(t)
+        if tid is not None and tid >= 0:
+            named[nm] = tid
+    print("  named stop tokens:",
+          {k: (v, tok.convert_ids_to_tokens(v)) for k, v in named.items()},
+          flush=True)
+
     items = [json.loads(l) for l in open(args.stimuli)]
     rows = []
     for it in items:
-        c = measure(model, tok, it, "complete", chat, sids)
-        i = measure(model, tok, it, "incomplete", chat, sids)
+        c = measure(model, tok, it, "complete", chat, sids, named)
+        i = measure(model, tok, it, "incomplete", chat, sids, named)
         assert c.pop("_prefix_ids") == i.pop("_prefix_ids"), \
             f"exact-prefix violation on {it['item_id']}"
         comp_tok = c.pop("_comp_tok_p2"); i.pop("_comp_tok_p2")

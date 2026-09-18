@@ -851,3 +851,140 @@ the reuse-vs-new-computation dichotomy is wrong not because the answer is
 frozen) at 250/750/2250 is running. That separates "the residual is internal
 computation" from "the residual is the rest of the output head" — the two are
 still confounded in `F`.
+
+---
+
+## 2026-09-18 — Sbody settles it: the residual is INTERNAL COMPUTATION, and the two routes do different jobs
+
+**This experiment distinguishes** (X) the "beyond the stop readout" residual is
+genuine internal-computation change **from** (Y) it lives in the *rest of the
+output head*, which `F` and `S` both leave free and which would be a much weaker
+claim.
+
+New arm `Sbody`: the **entire** output head is frozen — stop row and all
+100,277 non-stop rows — so only the transformer body and input embeddings may
+move. 6,887,272,448 trainable parameters. Freeze verified bit-exact on the
+actual Olmo-3 7B checkpoint after real optimizer steps (`ENTIRE lm_head
+byte-identical: PASS`).
+
+Seed 0, same corpus/order/format/geometry/LR as every other arm:
+
+| | `d_goal` | `dz_stop` | `dz_cont` |
+|---|---|---|---|
+| base | 7.50 | 8.16 | +0.65 |
+| R@250 / @750 / @2250 | 11.35 / 12.59 / 13.81 | 12.02 / 13.25 / **14.48** | +0.67 / +0.67 / **+0.67** |
+| Sbody@250 / @750 / @2250 | 11.54 / 12.10 / 17.73 | 10.42 / 10.26 / **12.73** | −1.11 / −1.84 / **−5.00** |
+| S@2250 (non-stop rows free) | 18.16 | 13.43 | −4.73 |
+| F@2250 (everything free) | 17.97 | 13.09 | −4.88 |
+| natSFT | 17.33 | 11.94 | −5.40 |
+
+### Observation
+
+1. **`Sbody` ≈ `S` ≈ `F` at every budget.** With the entire output head frozen,
+   the strict state-only arm reproduces full fine-tuning (d_goal 17.73 vs 18.16
+   vs 17.97 at 2250). **The residual is internal computation.** It is not the
+   non-stop output rows, which `Sbody` cannot touch.
+2. **Both routes raise the stop readout's goal sensitivity, by opposite means.**
+   `dz_stop = w_stop · (h_complete − h_incomplete)` goes 8.16 → 14.48 when only
+   `w_stop` may move (R, h frozen) and 8.16 → 12.73 when only `h` may move
+   (Sbody, `w_stop` byte-frozen). Rotating the readout toward the goal direction
+   and reshaping the state to align with the frozen readout are close to
+   interchangeable for this term.
+3. **Only the state route can suppress the continuation.** R's `dz_cont` is
+   pinned at +0.67 by construction; Sbody drives it to −5.00, matching S, F and
+   the released checkpoint (−4.73, −4.88, −5.40). This is the whole source of
+   the state route's larger behavioural margin.
+
+### Settled answer to the parent question
+
+> Goal-relative stopping is acquired by **two routes that are not competing to
+> do the same job**.
+>
+> - **Reading**: making goal completion visible to the stop action. Pretraining
+>   already supplies this almost fully (`dz_stop` = 8.16 at base, 47/3 items),
+>   and either locus can sharpen it — 4,097 readout parameters do it slightly
+>   better than 6.9B internal parameters.
+> - **Clearing**: suppressing the still-plausible continuation once the goal is
+>   satisfied. This requires changing internal computation; a stop readout
+>   cannot do it at any capacity, and it is what keeps growing with budget and
+>   what the released post-trained checkpoint mostly relies on.
+>
+> Behavioural stopping is the sum of the two. The classic framing
+> "reuse vs new representation" fails not because the answer is "both" but
+> because **the stop action's sensitivity and the competitor's suppression are
+> different problems with different parameter loci.**
+
+### Still to confirm
+
+- Seed 1 for the `Sbody` ladder.
+- Arm 0 is currently measured through a slightly different eval code path than
+  the arms (`device_map="cuda"` vs in-process), which costs ~0.06 logits of bf16
+  path noise — immaterial to every effect above, but the artifact should use one
+  path. Fix: measure base as an `lr=0` R run, which is bit-identical to base by
+  the zero-init construction and goes through the arms' own path.
+
+---
+
+## 2026-09-18 — External lineages: the effect follows the END-OF-TURN token, not the family
+
+**This experiment distinguishes** (X) goal-relative stopping is a property of
+assistant stopping acquisition **from** (Y) it is an artefact of OLMo's token
+wiring, where one native `<|endoftext|>` happens to serve both document-end and
+turn-end.
+
+Two independent non-OLMo lineages were chosen precisely because they use the
+*opposite* stopping architecture — a **separate end-of-turn token**:
+
+| family | document-end token | end-of-turn token |
+|---|---|---|
+| OLMo-3 7B | `<\|endoftext\|>` | *same token* |
+| Qwen2.5 7B | `<\|endoftext\|>` | `<\|im_end\|>` |
+| Llama-3.1 8B | `<\|end_of_text\|>` | `<\|eot_id\|>` |
+
+Both tokens are scored **separately** on every checkpoint, so base and instruct
+are compared on an identical token set (using each checkpoint's own generation
+stop set would silently change the measured quantity between stages).
+Native chat format; base checkpoints get the instruct template grafted.
+
+`dz_stop`, 50 pairs:
+
+| checkpoint | document-end | sign | **end-of-turn** | sign |
+|---|---|---|---|---|
+| Qwen2.5 base | −2.60 | 6/44 | **+3.79** [3.1, 4.5] | 46/3 |
+| Qwen2.5 Instruct | +6.96 | 47/3 | **+6.94** [5.7, 8.2] | 48/2 |
+| Llama-3.1 base | −0.04 | 24/25 | **+2.47** [2.0, 2.9] | 45/5 |
+| Llama-3.1 Instruct | −2.57 | 8/42 | **+6.63** [5.6, 7.6] | 48/2 |
+
+### Observation
+
+1. **The effect lives on the token that actually ends the turn**, in both
+   new-EOT families, at both stages. It is not a general "this text is
+   finishing" signal: in Llama-3.1 Instruct the document-end token moves
+   *against* goal completion (−2.57, 8/42) while the turn-end token moves
+   strongly with it (+6.63, 48/2). That double dissociation is only possible in
+   an architecture where the two tokens are distinct — which is exactly why
+   these families were chosen.
+2. **The base-checkpoint finding replicates in both lineages.** Goal-sensitive
+   ordering on the turn-end token is already present before any instruction
+   tuning: Qwen +3.79 (46/3), Llama +2.47 (45/5), alongside OLMo-3's +8.16
+   (47/3). Three lineages, two stopping architectures, same qualitative
+   structure.
+3. **Post-training amplifies it, it does not create it**: Qwen 3.79 → 6.94,
+   Llama 2.47 → 6.63.
+
+### A second, independent vindication of the gauge caution
+
+The `d log p` column disagrees with `dz_stop` *in sign* in several cells — e.g.
+Qwen2.5 base document-end is `dz_stop` = −2.60 but `d log p` = +2.68. A
+whole-vocabulary normalizer difference between two prompts can flip the apparent
+direction of the effect. Every locus and architecture claim in this project is
+therefore stated on the raw stop logit or the gauge-free margin, never on
+`d log p` alone.
+
+### What this rules out
+
+- OLMo-specific token wiring as the source of the phenomenon.
+- "The model just detects that text is ending" — the document-end token
+  dissociates from the turn-end token, and in one case moves the wrong way.
+- "Instruction tuning creates the goal-sensitivity" — it is present at base in
+  all three lineages.
