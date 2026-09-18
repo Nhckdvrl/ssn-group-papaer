@@ -100,6 +100,22 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
+### S08 — Is Metacognitive Control Shared?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-18  
+**Detailed registration:** `S08_SHARED_METACOGNITIVE_CONTROL.md`
+
+**Parent question.** Is internal confidence a reusable metacognitive control variable shared across behaviours, or do answer/abstain and reasoning continue/terminate decisions rely on separable monitor/control states?
+
+**Scientific pressure.** Confidence has been causally shown to control abstention, while reasoning work independently finds termination delay and manipulable thinking-budget/reflection states. The unresolved object is the functional architecture linking confidence to distinct metadecisions.
+
+**Minimum identification.** Fork identical native reasoning prefixes into forced-answer and continue-reasoning branches to label confidence and native termination at the same state; then perform confidence→termination and termination→confidence cross-steering. Shared, hierarchical, and double-dissociated architectures make different predictions.
+
+**Claim boundary.** Do not turn S08 into confidence calibration, another early-stop method, a “when to think” benchmark, or a stopping-vector catalog.
+
+---
+
 ## Explicitly cancelled registrations
 
 - **S01 — Omission ≠ Neutrality / effective default semantics in tool calls:** cancelled/demoted. It is already recorded as F06 in `FAILED_TOPICS.md`; the Main-level parent compresses to underspecified tool intent / argument completion, leaving only an exact API-default subcase.
@@ -109,4 +125,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 5.**
+**Current selected topic count = 6.**
