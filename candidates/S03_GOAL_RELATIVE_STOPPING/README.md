@@ -66,22 +66,44 @@ probability of the correct missing continuation in the incomplete condition).
 
 ## Current result
 
-Olmo-3 7B base, four parameter-locus arms on the same 12k ordinary Tülu-3
-examples, verified bit-exact freezes, 2 seeds, 3 training budgets.
+**Reading and clearing are different problems with different parameter loci.**
 
-Goal-relative stopping is acquired through **two components with different
-budget scaling**:
+Pretraining already makes goal completion visible to the stop action, but at a
+behaviourally inactive operating point. Post-training does two separable things:
 
-1. a large **readout** component available immediately from the frozen
-   pretrained state — a 4,097-parameter delta on the single stop output row,
-   every non-stop logit bit-exactly unchanged, reaches `d_stop` +6.70 from a
-   base of +2.58, and extra readout capacity adds nothing;
-2. a smaller but **growing state** component — full adaptation wins at every
-   budget, by +0.80 at 250 steps and +2.34 at 2250, while the readout route
-   saturates.
+1. **Reading** — making goal completion visible to the stop action. Already
+   almost fully supplied by pretraining (`dz_stop` = +8.16 at base, 47/3 items,
+   while p(stop) ~ 1e-4). Either locus can sharpen it: **4,097** stop-readout
+   parameters take it to +14.48 with the state frozen; **6.9B** internal
+   parameters take it to +12.73 with the entire output head byte-frozen.
+   Readout capacity is not the limit — a 500x larger nonlinear readout over the
+   same frozen state adds nothing.
+2. **Clearing** — suppressing the still-plausible continuation once the goal is
+   satisfied. A stop readout *structurally cannot* do this (`dz_cont` pinned at
+   +0.67); internal-state change reaches −5.00, matching full SFT and the
+   released checkpoint. This is the part that keeps growing with training
+   budget.
 
-A locus comparison at a single budget is not identified: this project produced
-two different wrong headlines that way before the budget ladder settled it.
+Behavioural stopping is the sum. "Reuse vs new representation" fails not because
+the answer is "both", but because the two loci are not competing to do the same
+job.
+
+Established across **three lineages and two stopping architectures**: OLMo-3
+reuses one native `<|endoftext|>` for both roles, while Qwen2.5 and Llama-3.1
+introduce a separate end-of-turn token. The effect follows the token that
+actually ends the turn — in Llama-3.1 Instruct the document-end token moves
+*against* goal completion (8/42) while the turn-end token moves strongly with it
+(48/2).
+
+### Two methodological traps this project fell into and climbed out of
+
+- **A locus comparison at one training budget is not identified.** Two different
+  wrong headlines came from reading a locus conclusion off a single budget.
+- **`Δ log p(stop)` carries a whole-vocabulary normalizer term** that differs
+  systematically by arm and can flip the apparent sign of an effect. Locus and
+  architecture claims are stated on the raw stop logit or the gauge-free margin.
+
+Numbers: `docs/RESULTS.md` (regenerate with `src/make_results.py`).
 
 ## Research log
 

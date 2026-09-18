@@ -5,3 +5,6 @@ arm=Sbody repo=allenai/Olmo-3-1025-7B stop_ids=[100257] trainable=6,887,272,448
 train=9262 val=302
 step0 eval: {'val_loss': 0.7642544843256474, 'boundary_auc': 0.99543125, 'log_p_stop_at_boundary': -1.3495561935832825, 'log_p_stop_inside': -13.836823319880704, 'n_boundary': 160, 'n_inside': 23386}
 [timing] step 1: 3.38s  16 seqs / 7420 padded tokens  peak 54.8GB
+[timing] step 2: 2.65s  16 seqs / 9604 padded tokens  peak 65.2GB
+[timing] step 3: 2.44s  16 seqs / 9088 padded tokens  peak 69.0GB
+{"val_loss": 0.635389655828476, "boundary_auc": 0.999759375, "log_p_stop_at_boundary": -0.258143129857924, "log_p_stop_inside": -14.494671583171682, "n_boundary": 160, "n_inside": 23386, "step": 50, "train_loss": 1.0028314739465714, "lr": 1.8494154576472976e-05, "elapsed": 124.72044444084167}
