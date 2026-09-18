@@ -22,84 +22,72 @@
 
 截至 **2026-09-18 当前交接**，正式状态如下：
 
-## Selected Topics = 3
+## Selected Topics = 4
 
 - **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
 - **S05 — When Does Reading Become Learning?**
+- **S06 — What Does Deliberation Do to Evidence?**
 
-详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与三份注册文件为准。本轮默认任务不是继续包装 S03/S04/S05，而是寻找新的、彼此独立的 scientific questions。
+S06 已正式 PILOT-AUTHORIZED 并注册。它研究的不是 generic confirmation bias，而是：
+
+> **固定外部 evidence 不变时，deliberation 本身是否会改变各条 evidence 对 decision 的 causal influence？**
+
+最小 pilot 使用随机 factorial evidence，不按模型自己的早期答案分组；在 commitment 之前估计 evidence main effect 与 evidence×其余 evidence direction 的交互随 reasoning depth 如何变化，从而区分：
+
+- stable / approximately normative integration；
+- generic evidence dilution；
+- selective endogenous reweighting / coherence formation。
+
+详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与四份注册文件为准。下一轮默认任务不是继续包装 S03–S06，而是继续寻找新的、彼此独立的 scientific questions。
 
 ## 当前 SERIOUS / NOT PILOT-AUTHORIZED
 
-### 1. Long-input ↔ Long-output directional transfer
+### 1. Where Does Surprise Go? — Hierarchical Epistemic Credit Assignment
 
-核心压力：
+这是原 **Belief or Source?** 的上位版本，不要再缩成 source-trust 小题。
 
-> 为什么“读得长”不会自动让模型“写得长”，但某些 long-output RL 却能提升 long-input reasoning？
+母问题：
 
-真正 scientific object 是 **long-input understanding 与 long-output generation 是否共享 long-range computation，以及 transfer 为什么呈现方向不对称**。
+> **When an LLM is surprised, what does it decide was wrong?**
 
-当前 blocker：
+同一个 prediction error 可能被归给三个不同层级：
 
-> input/output direction 与 teacher-forced/on-policy learning 仍可能混淆。
+- **State revision**：当前 world state 判断错了；
+- **Observation-model revision**：source / sensor / observation process 不可靠；
+- **Dynamics/rule revision**：关于世界如何变化的规律错了。
 
-下一步只接受一个**小 factorial identification**；如果必须膨胀成大量 training arms 或只是 benchmark transfer matrix，KILL。
+当前 novelty pressure：LLM 文献分别研究 state inference、source reliability、regime change，但暂未找到把同一个 ambiguous residual 放进三层 model revision、再通过后续行为区分 revision locus 的 direct owner。
 
-### 2. Belief or Source? — Epistemic Credit Assignment
+当前 blocker 不是主要 novelty，而是 **minimum identification 是否自然**。候选 tiny sequential world：隐藏状态 + 有历史信誉的 observer + 有历史规律的 transition；插入相同 anomaly，仅改变 anomaly 前历史，使三种解释的 prior 不同；anomaly 后用可信 state reset 分别测试 current-state judgment、same-source future weighting、next-transition prediction。若必须膨胀成 Bayesian benchmark，KILL。
 
-核心问题：
+### 2. Metacognitive Control — Confidence State vs Reasoning-Control State
 
-> 当新证据与当前 belief 冲突时，模型把 prediction error 分配给“世界状态错了”还是“信息源不可靠”？
+当前母问题暂定：
 
-最小 identification：
+> **Reasoning termination / continuation 到底是 confidence 的 readout，还是一个与 confidence 可分离的 computation-control state？**
 
-- source reliability 已知 → 主要更新 world belief；
-- world state 已知 → 主要更新 source reliability；
-- 两者都不确定 → joint update。
+独立 pressure：
 
-目标不是做 source-reliability benchmark，而是识别 **LLM 的 epistemic credit-assignment law**。当前仍需 nearest-prior deep audit。
+- internal confidence 已被 causal steering 证明能控制 answer vs abstain；
+- commitment-boundary work 表明答案已经稳定后仍可能继续大量 reasoning；
+- ConCISE 将 redundant reflection 分成 **Confidence Deficit** 与 **Termination Delay**；
+- reasoning-length / thinking-budget directions 又表明 reasoning effort 本身存在可操纵的 control state。
 
-### 3. What Does Deliberation Do to Evidence?
+因此不能简单写成“模型会不会因为不确定而多想”。真正要审的是 confidence state 与 thinking-budget / termination state 是否：
 
-核心问题：
+- 同一变量；
+- 上下游关系；
+- 或可双解离的独立控制量。
 
-> 在 evidence set 完全不变时，deliberation 本身是否会改变各条证据对最终决策的 causal influence？
+下一步必须做 direct-owner audit：有没有论文已经对 **confidence direction × reasoning-control direction** 做 cross-steering / double dissociation。若已有，KILL；若没有，再压最小 causal pilot。
 
-当前 competing worlds：
+## 重要 KILL / 降级更新
 
-- normative integration；
-- generic dilution；
-- coherence/confirmation shift。
-
-最小实验应固定 evidence / prior / reliability，仅改变 deliberation，并通过 remove / flip / swap evidence 测 causal influence 随 reasoning depth 如何变化。当前仍需 collision audit，尤其防止退化成 generic confirmation bias / self-correction。
-
-## ACTIVE AUDIT — 尚未升 SERIOUS
-
-### Multi-turn degradation: Fragmentation vs Self-Commitment
-
-必须先确认 ICLR 2026 Outstanding multi-turn degradation work 及近邻 prior 是否已经直接分开：
-
-- evidence fragmentation；
-- neutral/empty assistant turn；
-- self-generated intermediate commitment；
-- external identical commitment。
-
-如果 decisive separation 已存在，KILL。若没有，才继续问：
-
-> multi-turn failure 到底来自 evidence 被分批给出，还是来自模型在证据不完整时公开 commit，而 self-generated commitment 反过来改变后续理解？
-
-必须防止重新撞到 own-response bias、choice-supportive bias、self-correction、state revision。
-
-## OPEN-CONFLICT / 暂不升
-
-- rationale supervision 到底哪个 ingredient 真正有用；
-- uncertainty 是 error signal 还是 reasoning resource；
-- reasoning 对 irreducible ambiguity 的 premature commitment；
-- planning quality vs realization quality。
-
-这些只是 pressure，不是候选题；不要机械包装。
-
+- **Multi-turn Fragmentation vs Self-Commitment：KILL。** 2026 后续工作已在相同 user evidence fragmentation 下用 neutral assistant placeholder 对照 self-generated intermediate commitment，正面做掉 decisive separation。
+- **Long-input ↔ Long-output directional transfer：降级 / KILL as current candidate。** Writing-RL 的 transfer 与 SFT ablation、on-policy long-context work 使 input/output direction 与 on-policy learning 严重混淆；要救需要不自然且膨胀的 factorial training design，不符合最小识别纪律。
+- **Representation → executable state：边缘 SERIOUS / needs distinct law。** `encoded ≠ functional` 已有 direct owners；若只能做 Lepori/Yona/Just-in-time representation 的 mechanism follow-up，不得升。只有找到“同样新表示在什么因果条件下能/不能被既有 operator 消费”的独立 law 才继续。
+- **content–status binding、scaffold substitution、source monitoring、premature commitment、directional plasticity 等**目前仅保留 generator / pressure，不得包装成新题。
 ## 历史 re-audit 状态
 
 `RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md` 中的 F45+F62 `REOPEN-SERIOUS` 与 F07/F09/F16/F75a/F84/F99 `REOPEN-GENERATOR` 仍是有效历史记录，但**不自动覆盖当前 handoff 的优先级**。它们只能作为 process evidence / generator，不能当正向 taste exemplar。
@@ -460,30 +448,21 @@ pilot 目标不是“证明异常”，而是以最低成本区分世界。优�
 
 恢复 repo 后不要先总结本提示词，直接工作：
 
-1. **先审 Multi-turn Fragmentation vs Self-Commitment**：查 ICLR 2026 Outstanding 与近邻 work 是否已经做 decisive separation。
-2. **继续完善 Long-input ↔ Long-output**：优先解决 direction vs teacher-forced/on-policy confound；找不到小 factorial design 就 KILL。
-3. **深审 Belief or Source**：重点查 Bayesian/source-reliability/belief-update/epistemic trust 邻域有没有直接研究 H 与 R 的 joint credit assignment。
-4. **深审 Deliberation → Evidence Reweighting**：重点查 reasoning depth 是否改变 fixed evidence 的 causal influence，而非只查“reasoning 会不会 confirmation bias”。
-5. **并行做 substantial fresh exploration**：尤其 generation / understanding / reasoning，但 provenance 必须跨至少 3 个 lineage；不要围着现有 SERIOUS 做变体。
+1. **先恢复 S06 已注册状态**：不要重复审“是否该注册”。S06 已 selected / PILOT-AUTHORIZED。
+2. **推进 Where Does Surprise Go?**：只审 tiny sequential world 是否能让 state / observation-model / transition-model revision 留下互斥 downstream fingerprint；若实验变成 Bayesian benchmark 或需要大量 synthetic task，KILL。
+3. **深审 Metacognitive Control**：专门查 confidence representation / confidence steering 与 reasoning-length / termination / reflection control 的 direct owner；目标是判断是否存在可做的 causal double dissociation。
+4. **继续 substantial fresh exploration**：至少一半搜索预算必须离开 epistemic-update / reasoning-control 邻域。优先 understanding / training / generation / architecture，但 provenance 可跨 CV、speech、robotics、general ML、cognitive science、statistics、control。
+5. **继续用 open-component generator**：从多篇论文的冲突、悬而未决组件、默认 premise failure 中找问题，再升级成 A/B/C worlds；不要从一个 recent paper 的 future work 直接起题。
 6. 每约 **6–8 个 serious seeds**，或连续出现同一种 kill pattern，主动 reset generator。
-7. 允许 **0 survivor**；绝不为了凑 S06 降低标准。
+7. 允许 **0 survivor**；绝不为了凑 S07 降低标准。
 
-新的搜索策略优先寻找：
+当前特别强调的搜索方法：
 
-> **悬而未决、互相冲突、尚未被 cleanly identified 的 component / relation / law**，
+> **先找 unresolved / conflicting / unclear scientific component，再设计能够识别它的实验。**
 
-然后再把它升级成：
+而不是：
 
-> **可以通过一个小而 decisive 的实验区分 possible worlds 的 scientific question。**
-
-尤其优先：
-
-- 社区默认相同但 evidence 暗示不同的两个 quantity；
-- directed transfer asymmetry；
-- changed premise 后旧解释失效；
-- global label 与 local information utility 不同；
-- constraint 改变 learned computation；
-- 多篇可信 work 的结论无法被一个简单 explanation 同时解释。
+> 先想一个漂亮标题，再去寻找一个 exact novelty gap。
 
 ---
 
