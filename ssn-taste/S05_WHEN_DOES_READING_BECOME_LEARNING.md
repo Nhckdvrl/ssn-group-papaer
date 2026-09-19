@@ -278,3 +278,30 @@ The previous kill was too aggressive and is formally rescinded.
 ### Final status
 
 **SELECTED — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 execution-risk re-audit — KEEP / PILOT-AUTHORIZED
+
+S05 survives the S03-informed recipe audit because its causal variable is **within-run response relevance under matched exposure**, not a post-hoc label for a training stage/history.
+
+Relevant and irrelevant prompt-side information can coexist in the same batches, optimizer state and SFT run. Recipe therefore acts primarily as a nuisance variable.
+
+### Tightened execution gate
+
+- one small open model;
+- one standard response-only SFT recipe;
+- two modest training doses;
+- relevant vs irrelevant fields mixed within the same run;
+- direct-supervision positive control;
+- measure task-sufficient property and full-detail memory separately.
+
+**KILL immediately** if:
+- the relevance effect changes qualitative direction across the two modest doses;
+- persistent input-only memory appears only after obvious overfitting / aggressive LR;
+- the only stable law is “more training produces more memorization”;
+- the result collapses to ordinary function learning without persistent prompt-side information.
+
+Do not expand to model/optimizer sweeps to rescue an unstable effect.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
