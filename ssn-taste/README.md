@@ -20,7 +20,7 @@ Do not treat old prompts, historical REOPEN labels, or prior chat summaries as a
 
 ---
 
-## Current selected topics = 7
+## Current selected topics = 6
 
 All are **SELECTED — PILOT-AUTHORIZED**.
 
@@ -30,7 +30,6 @@ All are **SELECTED — PILOT-AUTHORIZED**.
 - **S06 — What Does Deliberation Do to Evidence?**
 - **S07 — Where Does Surprise Go?**
 - **S08 — Is Metacognitive Control Shared?**
-- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?**
 
 See SELECTED_TOPICS.md and the individual registration files for the actual claims.
 
@@ -45,7 +44,7 @@ They are unrefuted research hypotheses and process outcomes. Use them to avoid d
 
 ## Current search state
 
-There is **no formal unresolved candidate** to inherit after the corrected S05/S09 re-audit.
+There is **no formal unresolved candidate** to inherit after the final S05/S09 recipe-risk audit. S05 remains selected; S09 is killed.
 
 The next search should therefore begin from fresh calibration and fresh scientific pressure rather than variants of prior selected or killed topics.
 
