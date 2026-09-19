@@ -210,3 +210,19 @@ One open reasoning model only. Build matched-prefix labels, then require a genui
 Do not add models or fine-tuning to rescue an ambiguous first cross-steering result.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: VERY LOW.**
+
+Reuse existing discrete-answer reasoning datasets such as MATH-500, GSM8K and AIME-style problems. Ground-truth correctness is already available. Prefix-level confidence labels come from forced-answer forks; termination labels come from the model's native reasoning trace.
+
+No new dataset, human annotation or judge model is required.
+
+**KILL on data grounds** if:
+- the experiment starts requiring manually labeled reflection/backtracking quality;
+- confidence must be judged from free-form verbal explanations instead of a direct answer distribution;
+- success depends on curating a special task set where stopping behavior looks clean.
+
