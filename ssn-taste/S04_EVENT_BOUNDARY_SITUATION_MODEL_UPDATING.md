@@ -209,3 +209,26 @@ The registered question is deliberately broad enough for ACL/EMNLP/NAACL Main:
 > **How do language models update their active situation representations when one narrative event becomes another?**
 
 Incremental editing, global reconstruction, and selective reactivation are competing mechanistic explanations, not three separate topics and not an over-narrow novelty claim.
+
+---
+
+## 2026-09-19 execution-risk re-audit — KEEP / PILOT-AUTHORIZED
+
+S04 survives the S03-informed feasibility audit because it does not reconstruct a training history. The main risk is instead **construct ambiguity**: probe accessibility alone cannot establish an update computation.
+
+### Tightened execution gate
+
+The first decisive experiment should prioritize a causal history-access bottleneck over broad probing:
+
+- process a matched event transition normally;
+- at a downstream query/continuation, block direct attention/access from the query region to pre-transition tokens while preserving post-transition states;
+- compare changed, still-relevant-unchanged, and obsolete information.
+
+Proceed to Zhao/Cho-style mechanistic localization only if post-transition states carry a reproducible, content-selective signature that causally supports later use.
+
+**KILL immediately** if:
+- probe effects are present but disappear under the causal bottleneck;
+- the pattern reduces to generic recency/sentence-boundary effects;
+- incremental vs reconstruction/reactivation cannot be distinguished without increasingly elaborate representational assumptions.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
