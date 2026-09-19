@@ -7,19 +7,42 @@ mechanism NOT yet found. Not paper-ready.
 
 ## Frozen scientific object
 
-> How does post-training turn pretrained document/text-ending behaviour into
-> goal-relative assistant stopping?
+> **What supervision teaches a language model to stop when the user's task is
+> complete?** Equivalently: how does post-training bind already-latent
+> goal-completion information to the termination action?
 
 Pretraining teaches *when this text ends*. An assistant must decide *whether
 this user's task is done, so this turn should stop now*. Those are different
-completion criteria. The object is the acquisition of
+completion criteria, and nothing in ordinary training data carries a
+`task_complete=True` label. The object is the acquisition of
 
 ```
 user-goal completion  ->  STOP vs task-relevant continuation
 ```
 
+**The object is a learning signal, not a training stage.** As of 2026 there is
+no shared `Pretrain -> SFT -> RL` recipe to index: publicly described flows
+differ substantially from one another (Qwen3's long-CoT cold start, reasoning
+RL and thinking/non-thinking fusion; DeepSeek-R1's cold-start SFT, reasoning
+RL, rejection-sampling SFT and a further general RL round; Llama 4's
+lightweight SFT into online RL into lightweight DPO; OLMo-3's separate Think,
+Instruct and RL-Zero flows). *(Each of these needs its citation checked against
+the primary source before it is written into a paper.)* "Which stage teaches
+goal-relative stopping?" therefore has no stage-independent answer — a reviewer
+can fairly ask *whose* stage, and where Think-SFT or mode fusion is supposed to
+sit. The supervision underneath those recipes — endpoint supervision,
+continue-here supervision, instruction-response pairing, preference over
+complete vs incomplete responses — is comparable across all of them, and that
+is what this project factorises.
+
+The heterogeneity of modern recipes is the **motivation**, not an obstacle:
+*named stages are not comparable across modern model flows, so we ask the
+lower-level question of what supervision is sufficient to turn goal completion
+into a stopping action.*
+
 Not an EOS benchmark, not a stopping leaderboard, not instruction following,
-not response length, not a circuit hunt.
+not response length, not a circuit hunt, and **not a developmental-stage
+study**.
 
 ## Instrument (E01)
 
@@ -109,19 +132,61 @@ Left in `docs/RESEARCH_LOG.md` with dated corrections rather than deleted.
   post-trained stage on a two-token logsumexp), so the measured action changes
   along the curve. Marked CONFOUNDED; superseded by the fixed-token trajectory.
 
-## What the project is missing
+## The natural anchor (observational, deliberately demoted)
 
-> **Which supervision in ordinary post-training teaches "the user's request is
-> satisfied, so stop"?** There is no `task_complete=True` label anywhere in SFT.
+The OLMo-3 trajectory is a **case study in one fully open flow**, used only to
+show that goal-relative stopping really does change a lot under real modern
+post-training, and to locate a transition worth using as a laboratory. It is
+**not** a universal developmental claim and its stage names carry no weight.
 
-Execution order: (1) a real natural acquisition trajectory over the *actual*
-OLMo-3 post-training chain — Base → Think-SFT → Instruct-SFT → DPO → RLVR, with
-Instruct-SFT warm-started from Think-SFT, measured on **one fixed stop token**
-across every checkpoint; then (2) supervision-source decomposition (full SFT vs
-content-only vs EOT-only vs instruction-decoupled) at whichever stage the
-trajectory identifies; then, only if content supervision matters,
-(3) hard-negative premature-stopping positions with a causal reweight; then
-(4) held-out validation on a frozen E01-v2.
+Measured with one frozen instrument, one fixed stop action (`<|endoftext|>`),
+one serialization, and byte-identical inputs asserted per item:
+
+| transition | Δd_goal | sign | Δdz_stop | Δdz_cont |
+|---|---|---|---|---|
+| base → Think-SFT | +2.76 | 38/12 | −3.25 | −6.01 |
+| Think-SFT → Instruct-SFT | **+7.31** | 49/1 | **+7.26** | −0.04 |
+| Instruct-SFT → DPO | +6.97 | 49/1 | +3.56 | −3.41 |
+| DPO → RLVR | +3.26 | 49/1 | +2.20 | −1.06 |
+
+The one sentence this licenses: *in this fully open flow, the largest clean
+goal→STOP jump occurs across the Think-SFT → Instruct-SFT transition.* That
+is why the causal experiment starts from Think-SFT final on Dolci-Instruct-SFT
+data — a real incoming checkpoint and its real incoming data — and nothing
+further is claimed about stages.
+
+(Building a within-stage timeline was started and **stopped**: refining *when
+inside a named stage* is exactly the stage-centric detail this project is not
+about. Five stage endpoints plus one Think-SFT intermediate are kept.)
+
+## The decisive experiment (E04)
+
+Same initialization, same example pool, same order, same step count, same
+schedule, same optimizer, same batch, same seed. **Only the supervision
+changes.**
+
+| condition | what it supervises |
+|---|---|
+| `full/correct` | content tokens + the turn-end token (positive control) |
+| `terminal/correct` | the turn-end token **only** — never told what to say |
+| `content/correct` | content tokens only, terminator masked — **never told where to stop** |
+| `full/shuffled` | the same responses, lengths and endpoints, attached to *another* user's goal |
+| `terminal/shuffled` | endpoints without the goal that determines them |
+
+The readings are stage-agnostic and transfer to any recipe: *endpoint
+supervision is sufficient to bind an existing goal-completion signal to
+termination*, or *it is insufficient and the binding comes from learning the
+content states at which continuation remains appropriate*, or *the binding
+requires the instruction-response pairing itself* (`correct` ≫ `shuffled`), or
+*no binding is needed because the ability is latent and merely elicited by a
+change in response distribution* (`shuffled` ≈ `correct`, the Hewitt et al.
+account).
+
+**Kill criterion, agreed in advance.** If these conditions do not separate — if
+`full ≈ terminal ≈ content ≈ shuffled`, or the ordering moves around with
+checkpoint or family — then goal-relative stopping is an emergent product of a
+complex training history and does not compress into a scientific principle.
+S03 stops there; it does not get a fifth mechanism hypothesis.
 
 ## Layout
 

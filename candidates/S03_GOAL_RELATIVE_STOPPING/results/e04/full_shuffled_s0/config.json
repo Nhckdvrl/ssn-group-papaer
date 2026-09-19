@@ -1,0 +1,24 @@
+{
+  "mask": "full",
+  "pairing": "shuffled",
+  "init": "allenai/Olmo-3-7B-Think-SFT",
+  "data": "data/dolci_instruct_sft_subset.jsonl",
+  "lr": 2e-05,
+  "steps": 2250,
+  "bs": 4,
+  "accum": 4,
+  "max_len": 768,
+  "n_train": 12000,
+  "n_val": 400,
+  "seed": 0,
+  "tag": "full_shuffled_s0",
+  "eval_every": 250,
+  "stimuli": [
+    "stimuli/e01_pairs.jsonl",
+    "stimuli/e01_pairs_d.jsonl"
+  ],
+  "stop_id": 100257,
+  "n_supervised_tokens": 1473830,
+  "n_total_tokens": 2926938,
+  "n_train_rows": 7604
+}

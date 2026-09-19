@@ -1,0 +1,7 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.85it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+mask=content pairing=correct init=allenai/Olmo-3-7B-Think-SFT
+  train=7648 val=243  supervised tokens=1,467,710 of 2,675,440 (54.86%)
+{"val_loss": 1.0771025285124778, "boundary_auc": 0.937925, "log_p_stop_at_boundary": -11.14517128020525, "log_p_stop_inside": -17.481970188674563, "n_boundary": 160, "n_inside": 30067, "step": 0}
+wrote results/e04/content_correct_s0/step0/e01.jsonl 50
+wrote results/e04/content_correct_s0/step0/e01_d.jsonl 12

@@ -1688,3 +1688,122 @@ Three `item_id`s collide in `stimuli/e01_pairs.jsonl`
 (`A_the_planets_of_the_2`, `A_the_planets_of_the_3`, `B_Earth_2` each name two
 distinct items). Nothing is affected — every analysis in the repo keys by row
 order — but the labels must be made unique in E01-v2.
+
+---
+
+## 2026-09-19 — REFRAMING: the object is a supervision signal, not a training stage. Stage-centric S03 is cancelled.
+
+Decision taken after reading the Phase 1a curve. Recorded here in full because
+it changes what the project is, not just what it runs next.
+
+### Why the stage-centric version is ill-posed
+
+There is no longer a shared `Pretrain -> SFT -> RL` recipe to index. Publicly
+described post-training flows differ from one another in structure, not just in
+hyper-parameters: Qwen3 (long-CoT cold start, reasoning RL, thinking /
+non-thinking fusion, general RL), DeepSeek-R1 (cold-start SFT, reasoning RL,
+rejection-sampling SFT, a further general RL round), Llama 4 (lightweight SFT,
+online RL, lightweight DPO), OLMo-3 (separate Think, Instruct and RL-Zero
+flows). **Each of these needs its citation verified against the primary source
+before it appears in a paper; they are recorded here as the reason for the
+reframing, not as citable claims.**
+
+So "at which post-training stage is goal-relative stopping acquired?" invites
+the fair reviewer question: *which stage, in whose recipe?* Where does Think-SFT
+sit? What is mode fusion the analogue of? Which of DeepSeek's two SFT rounds?
+The question has no stage-independent answer, so it is not a universal
+scientific object.
+
+### What is invariant, and is therefore the real object
+
+Whatever a lab calls its stages, the model receives some set of training
+signals: response endpoint supervision, continue-here supervision,
+instruction-response pairing, preference over complete vs incomplete responses,
+reward for satisfying constraints. Those are comparable across every modern
+flow. The object becomes:
+
+> **What supervision teaches a language model to stop when the user's task is
+> complete?** — equivalently, how does post-training bind latent
+> goal-completion information to the termination action?
+
+The heterogeneity of recipes becomes the *motivation*: named stages are not
+comparable across modern model flows, so ask the lower-level question about the
+learning primitives underneath them.
+
+### What happens to Phase 1a
+
+**Demoted, not deleted.** The trajectory becomes an observational case study in
+one fully open flow, and it licenses exactly one sentence:
+
+> In this fully open flow, the largest clean goal→STOP jump occurs across the
+> Think-SFT → Instruct-SFT transition.
+
+Its job is to point at a natural laboratory, not to support a developmental
+theory. Specifically **do not** write up "Think-SFT uses clearing, Instruct-SFT
+uses STOP, DPO is mixed" as a universal stage law — that is the stage-centric
+paper under a different name.
+
+The dense within-stage sweep (9 Think-SFT and 8 RLVR intermediates) was
+**killed mid-download** for the same reason: resolving *when inside a named
+stage* is precisely the detail the reframing discards. Five stage endpoints plus
+`think_sft_s1000`, which had already completed, are kept. ~6 GPU-hours and
+~240GB of transfer saved.
+
+### E04, the decisive experiment, is stage-agnostic by construction
+
+Initialization `theta_0` = Think-SFT final (a real incoming checkpoint), data =
+`allenai/Dolci-Instruct-SFT` (the mixture the released Instruct-SFT was actually
+trained on, per its model card). Matched byte-for-byte across conditions:
+example pool, example order, step count, cosine schedule, optimizer, batch,
+sequence length, seed, chat format. One schedule per run, with mid-run E01
+evaluations taken from that same run — so any dynamics reported are a real
+trajectory, not three schedules glued together (the trap the 250/750/2250 runs
+fell into).
+
+Two supervision axes:
+
+| `--mask` | supervised positions |
+|---|---|
+| `full` | content tokens + the final turn-end token |
+| `content` | content tokens only, terminator masked — never told where to stop |
+| `terminal` | the final turn-end token only — never told what to say |
+
+| `--pairing` | goal attached to the response |
+|---|---|
+| `correct` | the true (user, response) pair |
+| `shuffled` | same response tokens, length and endpoint, another example's user message |
+| `generic` | one constant user message |
+
+Grid launched (seed 0, lr 2e-5, 2250 steps, 12k examples):
+`full/correct`, `terminal/correct`, `content/correct`, `full/shuffled`,
+`terminal/shuffled`.
+
+Readings, all of which transfer to any recipe:
+
+* `terminal/correct` ≈ `full/correct` → endpoint supervision is sufficient to
+  bind an existing goal-completion signal to termination.
+* `content/correct` ≈ `full/correct` ≫ `terminal` → the binding comes from
+  learning the content states at which continuation remains appropriate.
+* `full/correct` ≫ `full/shuffled` → the instruction-response pairing itself is
+  what binds.
+* `full/shuffled` ≈ `full/correct` → nothing is bound; the ability is latent and
+  merely elicited by a change in response distribution (the Hewitt et al.
+  account), which would be a genuine negative result about this project's
+  premise.
+
+### Kill criterion, agreed before seeing the data
+
+If the conditions do not separate — `full ≈ terminal ≈ content ≈ shuffled`, or
+an ordering that moves with checkpoint or family — then goal-relative stopping
+is an emergent product of a complex training history that does not compress into
+a principle, and **S03 stops**. No fifth mechanism hypothesis. Findings write-up
+or archive.
+
+### Pipeline consistency check (worth recording)
+
+E04's step-0 evaluation of Think-SFT final, run through the training script's
+in-process instrument, reproduces the independent trajectory measurement of the
+same checkpoint: `d_goal` 10.05 vs 10.03, `dz_stop` 4.69 vs 4.67, `dz_cont`
+−5.36 vs −5.36. The measurement path in E04 and the measurement path in
+`e01_traj` agree to bf16 noise, so E04's deltas are on the same scale as the
+trajectory's.
