@@ -1,261 +1,205 @@
 # chasing trends
 
-建立日期：2026-09-19  
-当前状态：**V2 taste calibration — no candidate search until user approval**
+这是 `Nhckdvrl/ssn-group-papaer` 中用于重新校准科研选题 taste 的独立工作区。
 
-这个目录不是“追热点方法论文模板库”。
+建立日期：2026-09-19
 
-它的目标是建立一套更现实的 AI 科研选题方法：
-
-> **从优秀论文与真实 related-work 结构中，反向学习问题是怎样形成的。**
+> **当前阶段：大量读论文、重建 paper genealogy、归纳问题是怎样从 literature 中长出来的。**
 >
-> 先找 scientific / methodological pressure，
-> 再让最自然的 paper shape 自己长出来。
+> **用户明确通过以前，不开始正式 CT01 / S10，不注册 candidate，不做 pilot。**
 
 ---
 
-# 1. 核心纠偏
+# 1. 这不是“某一种方法论文”的搜题目录
 
-最初版本过度强调：
+最初版本曾把用户举的一个喜欢的结构：
 
-> failure → diagnosis → method → benchmark
+> failure → diagnosis → mechanism → method → benchmark → ablation
 
-这只是强论文的一种范式，不是统一搜题公式。
+写成了 chasing-trends 的主范式。
 
-以后必须区分：
+**这个版本已经被否定。**
 
-1. **Question provenance**  
-   问题从哪里来？
+用户真正要求的是：
 
-2. **Related-work relation**  
-   新 paper 相对 prior 到底增加了什么？
+> 大量阅读 ACL / EMNLP / NAACL / ICLR / ICML / NeurIPS / AAAI / CVPR / ICCV / ECCV 等真实优秀论文，
+> 不只看摘要，而是追 Introduction、Related Work、关键实验/理论、方法由来和 nearest prior，
+> 研究 idea 为什么会被看到、它从哪些 parent work 长出来、作者真正改变了什么问题坐标，
+> 然后从大量不同论文的 genealogy 中归纳多种 question-forming / paper-growing paradigms。
 
-3. **Final paper form**  
-   最终长成 science / mechanism / method / theory / simplification / unification / scaling 中哪一种？
+所以：
 
-不能从第 3 点反推第 1 点。
-
-也就是说：
-
-> 不允许先决定“我要找 mechanism→method”，然后再去 literature 里找素材。
+> **范式必须从论文中归纳出来，不能先写模板再往里面找题。**
 
 ---
 
-# 2. 当前优先目标
+# 2. 当前最重要文件
 
-优先会议：
+启动顺序：
 
-- ACL / EMNLP / NAACL Main
-- ICLR / ICML / NeurIPS
+1. **RESEARCH_TASTE_RECALIBRATION_2026-09-19.md**  
+   本轮最重要的纠偏。说明为什么“机制→方法”只能是一个 archetype，并深拆第一批不同 genealogy。
 
-持续阅读：
+2. **PAPER_GENEALOGY_GUIDE.md**  
+   深读一篇 paper 时具体怎么向下追 parent、siblings、related work、assumption、changed premise、decisive experiment。
 
-- AAAI
-- CVPR / ICCV / ECCV
-- TACL
+3. **PAPER_AUTOPSIES_2026-09-19.md**  
+   第一轮 paper notes。旧版有明显 method-paper bias，因此只能作为原始阅读记录；以新的 genealogy 文件为上位解释。
 
-PaperNotes 用于：
+4. **LESSONS_FROM_SSN_TASTE.md**  
+   保留旧搜索真正有用的 process lesson：repo restore、nearest-prior audit、reviewer compression、data/compute gate、anti-resurrection、execution risk。
 
-> 高吞吐跨会议 discovery / taxonomy。
-
-核心论文必须回到：
-
-- Introduction；
-- Related Work；
-- motivating experiment；
-- key theorem / method；
-- main result；
-- ablation；
-- discussion / limitations。
-
-不能只看摘要。
+5. **SEARCH_GUIDE_ZH.md**  
+   当前 canonical 工作流。重点已经从固定 topic template 改为：
+   **field map → lineage reconstruction → genealogy induction → pressure mining → candidate audit**。
 
 ---
 
-# 3. 当前正向 taste 来源
+# 3. Repo 当前事实
 
-只有两类：
+截至 2026-09-19，`ssn-taste/` 最新正式状态：
 
-## A. Sasano 的真实判断
+仍为 **SELECTED — PILOT-AUTHORIZED**：
 
-尤其：
+- S04 — How Do Language Models Update Situation Models Across Event Boundaries?
+- S05 — When Does Reading Become Learning?
+- S06 — What Does Deliberation Do to Evidence?
+- S07 — Where Does Surprise Go?
+- S08 — Is Metacognitive Control Shared?
 
-- 普通 reviewer 是否能快速理解；
-- introduction 是否“納得できる + 面白い”；
-- 为什么做下一节必须自然；
-- novelty 不能只是 new model / new setting；
-- paper 的主要知识不能靠 appendix 才成立。
+已正式 KILL / registration cancelled：
 
-## B. 真实强论文
+- S03 — From Document End to Task Done
+- S09 — Same Recall, Different Stability?
 
-不把任何自有 S/L/F/CT candidate 当正向 exemplar。
+这些自有题都不是 positive taste exemplar。
 
-强论文需要做：
+只用于：
 
-> **reverse engineering**
-
-而不是“总结贡献”。
-
-每篇都要重建：
-
-> prior state → unresolved pressure → key conceptual move → decisive evidence → paper growth → relation to related work。
-
----
-
-# 4. 当前 repo 状态
-
-旧 handoff 已过时。
-
-截至当前 `ssn-taste/`：
-
-**SELECTED — PILOT-AUTHORIZED**
-
-- S04
-- S05
-- S06
-- S07
-- S08
-
-正式 KILL：
-
-- S03
-- S09
-
-它们只作为：
-
-- execution lessons；
 - anti-duplication；
-- recipe-risk；
-- process evidence。
-
-不作为新 taste 的正例。
-
----
-
-# 5. V2 paradigm atlas
-
-当前已经从强论文中重建出多种不同的问题形成范式，包括：
-
-- literature conflict → hidden axis → unification；
-- opaque frontier success → minimal ingredients；
-- repeated baseline failure → training autopsy；
-- successful objective → causal decomposition；
-- wrong analysis unit → new phenomenon；
-- outcome failure → temporal dynamics；
-- adjacent-domain theory → structural explanation；
-- train-time invariant → deployment violation；
-- internal structure → controllable primitive；
-- cross-lineage connection → new bottleneck；
-- new scaling axis → allocation law；
-- crowded object → new explanatory decomposition；
-- prior fixes all attack wrong level；
-- unexpected simplicity / unexpected success；
-- changed premise；
-- new intervention makes old debate identifiable；
-- proxy semantic drift。
-
-详见：
-
-> **PARADIGM_ATLAS_ZH.md**
-
-这些是：
-
-> **search lenses**
-
-不是：
-
-> candidate templates。
+- execution-risk；
+- failure-process learning；
+- data/compute calibration。
 
 ---
 
-# 6. 下一轮真正的搜索方式
+# 4. Positive taste 从哪里来
 
-用户通过 V2 taste 后，先不 brainstorm 标题。
+只从：
 
-第一步建立：
+1. **Sasano 的真实判断与真实指导记录**
+2. **真实强论文及其 immediate related work lineage**
 
-> **lineage map + pressure ledger**
+不能从：
 
-每个 lineage 至少记录：
+> “我们以前 S06 过线，所以新题应该像 S06。”
 
-- 核心问题；
-- 最近强 paper；
-- 彼此 assumption；
-- 彼此结论；
-- used metric / objective；
-- 哪些事实冲突；
-- 哪些 premise 最近改变；
-- 哪些 failure 被反复修却仍存在；
-- 哪些 recipe 复杂但 necessity 不清楚；
-- 哪些 observable 可能混了多个 quantity。
+也不能从：
 
-然后再从 pressure 中长 candidate。
+> “StepFlow 很好，所以以后都找 failure→method。”
 
----
+正确方式是：
 
-# 7. 保留 ssn-taste 的硬纪律
-
-新路线不会因为“更灵活”而变成凑题。
-
-继续保留：
-
-- nearest-prior deep audit；
-- reviewer compression；
-- old problem + new model 禁止；
-- exact-cell novelty 禁止；
-- terminology transfer 禁止；
-- data / compute audit；
-- experiment explosion kill；
-- recipe biography kill；
-- hidden compute 检查；
-- benchmark / dataset 不作为默认 contribution；
-- 允许 0 survivor。
+> **论文 A 为什么成立？**
+>
+> **它在 A 出现以前的 literature 中究竟看到了什么别人没当成问题的东西？**
+>
+> **如果只读它的 method，我们会错过什么？**
+>
+> **如果换一个领域，真正能迁移的是哪一种 question-forming move？**
 
 ---
 
-# 8. 与上一版 chasing-trends 的关系
+# 5. 当前第一批观察到的 genealogy
 
-上一版不是完全废掉。
+注意：这些是从论文中**观察到的**，不是以后机械套用的 generator。
 
-其中：
+目前已经深拆：
 
-> mechanism→method、
-> objective mismatch、
-> failure dynamics、
-> resource allocation
+- successful objective → **decompose hidden learning signals**  
+  例：Negative Reinforcement in RLVR
 
-都保留。
+- mature algorithm → **deployment variable was never part of policy state**  
+  例：Budget-Guided MCTS
 
-但它们从：
+- fragmented related work → **unified design space → dominant bottleneck**  
+  例：TORS
 
-> **统一主线**
+- known final failure → **change the attribution unit / causal coordinate**  
+  例：StepFlow、GUARD
 
-降级为：
+- crowded scientific object → **change explanatory decomposition**  
+  例：ICL information removal
 
-> **paradigm atlas 中的若干分支。**
+- strong prior theorem → **audit a load-bearing assumption**  
+  例：A Little Depth Goes a Long Way
 
-下一轮 agent 不允许说：
+- known phenomenon → **remove an artificial premise in prior evidence**  
+  例：CoT faithfulness in the wild
 
-> “我们现在的 taste 就是 failure→method，所以找这种题。”
+- mature heuristic family → **search for a common success invariant**  
+  例：DC-Merge
 
-正确说法是：
-
-> “我们现在从真实 related-work pressure 出发，再判断这个 pressure 最自然长成什么 paper。”
+未来还会继续扩充、合并、删改。
 
 ---
 
-# 9. Canonical reading order
+# 6. PaperNotes 怎么用
 
-下一轮开始前按顺序读：
+PaperNotes（https://papernotes.org/）非常适合做：
 
-1. `README.md`
-2. `PARADIGM_ATLAS_ZH.md`
-3. `PAPER_AUTOPSIES_2026-09-19.md`
-4. `SEARCH_GUIDE_ZH.md`
-5. `LESSONS_FROM_SSN_TASTE.md`
-6. 未来建立的 pressure / failed / candidate ledger
-7. recent commits
+> **breadth scan / taxonomy / cross-conference discovery。**
 
-在用户通过之前：
+例如快速看到：
 
-> **不生成 CT01。**
+- ACL 2026 reasoning / interpretability；
+- ICLR 2026 reasoning / interpretability；
+- ICML 2026 reasoning / optimization；
+- NeurIPS 2025 reasoning / optimization；
+- CVPR 2026 image generation / multimodal / optimization；
+- ECCV 2026 image/video generation；
+- AAAI 2026 reasoning。
+
+但它不能替代 deep read。
+
+任何真正进入 taste calibration 或 candidate audit 的 core paper，都必须尽量回到：
+
+- ACL Anthology
+- OpenReview / official proceedings
+- PMLR
+- NeurIPS proceedings
+- CVF / ECCV official
+- arXiv full paper
+
+并至少读到：
+
+> **Introduction + Related Work + decisive section + method derivation + main ablation / limitations。**
+
+---
+
+# 7. 当前硬停止线
+
+现在仍然：
+
+> **不开始 CT01。**
+
+先继续建立足够厚的 genealogy library：
+
+- 不同会议；
+- 不同领域；
+- 不同 paper type；
+- 普通但强的 Main，不只 Best/Outstanding；
+- method paper；
+- pure science / analysis paper；
+- theory paper；
+- negative / limits paper；
+- cross-domain generation / multimodal / optimization；
+- 同一 lineage 连续多篇论文。
+
+最终目标不是得到十条“好题公式”。
+
+而是形成一种能力：
+
+> **看到一个 literature cluster 时，能判断它现在真正拥挤在哪些轴、哪些 assumption 被默认固定、哪些 relation 尚未被解释、哪个新系统改变了 premise、什么小 observation 有可能长成 Main-sized question。**
+
+这才是 chasing trends 当前真正要训练的东西。
