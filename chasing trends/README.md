@@ -313,6 +313,14 @@ These cover:
 
 The broad literature-calibration phase is now formally closed.
 
+The final Sep 17–19 addendum is appended directly to \`STARTUP_HF_GENEALOGIES_11_FINAL_FRONTIER_WAVE_2026-09-19.md\`. It adds:
+- runtime-generated weights as a distinct knowledge location;
+- executable reference as specification source;
+- principled mechanism composition vs arbitrary module stacking;
+- trajectory supervision-mask audit;
+- modality-specific prediction-horizon / multi-rate audit;
+- final artifact-maturity corrections.
+
 Canonical closure:
 > LITERATURE_CALIBRATION_CLOSEOUT_2026-09-19.md
 
