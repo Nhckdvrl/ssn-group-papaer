@@ -127,8 +127,6 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 
 **Real failure reason.** After the 2026 prior audit, broad input-only write-through is no longer an open parent. The remaining matched-relevance question is narrower and experimentally risky: ordinary-dose response-only SFT may leave too little item-specific prompt memory to support a strong result, while making the effect measurable likely requires repetition/overfitting or other recipe choices. That would make the result a fine-tuning-dose interaction rather than a robust conditional-learning law. The “task-sufficient” outcome is also difficult to distinguish from ordinary function learning.
 
-**S04 lesson.** A synthetic identification instrument is acceptable only while it measures a naturally present process. If the phenomenon becomes visible only after strengthening the artificial regime, the instrument has started to create the phenomenon.
-
 **Do not revive by:** increasing epochs until prompt memory appears, turning it into privacy/extraction, sweeping prompt-loss weights, or adding model families to rescue recipe instability.
 
 ### F08 — Same Recall, Different Stability?
