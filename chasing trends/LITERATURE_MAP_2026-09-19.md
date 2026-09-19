@@ -586,3 +586,35 @@ RAG 同理：
 而是：
 
 > **读懂一个 lineage 当前把什么当成 basic object，并判断这个 basic object 还对不对。**
+
+
+---
+
+# 17. Longitudinal reading progress — 2026-09-19
+
+第一批纵向 reconstruction 已完成并写入：
+
+> `LONGITUDINAL_GENEALOGIES_01_2026-09-19.md`
+
+已追：
+
+- **L1 RLVR learning signal**：DeepSeekMath/GRPO → DeepSeek-R1 / DAPO → high-entropy tokens → negative reinforcement → GSPO → CAPO。
+- **L2 Test-time scaling / search policy**：Self-Consistency → Tree of Thoughts / process verification → compute-optimal allocation → budget-aware MCTS → critical-transition intervention。
+- **L3 ICL mechanism**：Induction Heads → Task Recognition/Learning → Task Vectors → Function Vectors → task-vector structure/boundary → task-oriented information removal。
+- **L4 Diffusion fast sampling**：solver-centric acceleration → optimized timestep schedule → state-conditioned schedule → unified design-space attribution / TORS → spatial difficulty-aware sampling。
+- **L8 Robotics/VLA action representation**：single-step BC → ACT action chunking → RT-2 token interface → OpenVLA/Octo scaling → FAST action tokenization → asynchronous chunk correction / action-space audit。
+
+第一批纵向阅读后的工作假说：
+
+> **frontier 的移动经常表现为：一个曾经成功的 abstraction 被规模、部署、反馈或新模态推到新的 regime，随后从 solution 变成 inherited assumption。**
+
+这只是 literature-reading hypothesis，不是 topic generator。
+
+下一批优先补：
+
+- pretraining / SFT / distillation；
+- architecture / inductive bias；
+- multimodal/VLM（非 robotics）；
+- speech/audio；
+- negative / limits paper lineage；
+- optimization dynamics / theory。
