@@ -21,6 +21,15 @@ NAT = "results/e01/olmo3-7b_sft_eosonly.jsonl"
 
 blocks = []
 
+# Phase 1 — the replacement for the confounded Layer B curve: the real OLMo-3
+# chain, one fixed stop token, one serialization, stimulus invariance asserted.
+blocks.append(("Layer B2 — REAL natural acquisition trajectory "
+               "(fixed stop token <|endoftext|>, one serialization)",
+               run("e01_traj_report.py")))
+blocks.append(("Layer B2 robustness — same curve, system prompt containing no "
+               "post-training-added token",
+               run("e01_traj_report.py", "--variant", "plainsys")))
+
 # CONFOUNDED, kept for the record: these runs used each checkpoint's OWN
 # generation-config stop set, so base is scored on {<|endoftext|>} while every
 # post-trained stage is scored on logsumexp{<|endoftext|>, <|im_end|>}.  The

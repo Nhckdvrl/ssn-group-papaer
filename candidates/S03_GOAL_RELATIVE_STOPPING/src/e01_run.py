@@ -23,6 +23,7 @@ Controls emitted for every item:
                               same prefix in a plain, non-chat format
 """
 import argparse
+import hashlib
 import json
 import os
 
@@ -116,7 +117,7 @@ def stop_token_ids(tok, model):
     return sorted(ids)
 
 
-def build_pair_ids(tok, item, cond, chat):
+def build_pair_ids(tok, item, cond, chat, system=None):
     """Return (full_ids, p1_index, p2_index, sep_ids, missing_ids).
 
     The assistant prefix is assembled by CONCATENATING separately tokenized
@@ -125,8 +126,10 @@ def build_pair_ids(tok, item, cond, chat):
     """
     user = item["user_complete"] if cond == "complete" else item["user_incomplete"]
     if chat:
+        msgs = ([{"role": "system", "content": system}] if system else []) \
+            + [{"role": "user", "content": user}]
         prompt_ids = tok.apply_chat_template(
-            [{"role": "user", "content": user}], tokenize=True, add_generation_prompt=True
+            msgs, tokenize=True, add_generation_prompt=True
         )
     else:
         # plain-format fallback for base models with no chat template
@@ -151,8 +154,9 @@ def score(model, tok, ids, positions):
     return {p: logits[p] for p in positions}
 
 
-def measure(model, tok, item, cond, chat, stop_ids, named_stops=None):
-    full, p1, p2, body_ids, sep_ids, missing_ids = build_pair_ids(tok, item, cond, chat)
+def measure(model, tok, item, cond, chat, stop_ids, named_stops=None, system=None):
+    full, p1, p2, body_ids, sep_ids, missing_ids = build_pair_ids(
+        tok, item, cond, chat, system)
     lg = score(model, tok, full, [p1, p2])
     sep_tok = sep_ids[0]
     mis_tok = missing_ids[0]
@@ -177,6 +181,7 @@ def measure(model, tok, item, cond, chat, stop_ids, named_stops=None):
             rec[f"{tag}_stop_logit_{nm}"] = v[tid].item()
             rec[f"{tag}_p_stop_{nm}"] = float(probs[tid])
     rec["_prefix_ids"] = body_ids + sep_ids
+    rec["_full_ids"] = full
     rec["_comp_tok_p2"] = tok.convert_ids_to_tokens(mis_tok)
     return rec
 
@@ -185,6 +190,29 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--family", default="olmo2-1b")
     ap.add_argument("--stage", default="instruct")
+    ap.add_argument("--repo", default=None,
+                    help="score this exact HF repo instead of the STAGE_REPOS "
+                         "lookup (used by the trajectory driver)")
+    ap.add_argument("--revision", default=None,
+                    help="HF revision/branch, e.g. an intermediate checkpoint "
+                         "'step12000'. Recorded in every output row.")
+    ap.add_argument("--tokenizer-from", default=None,
+                    help="ENCODE with this repo's tokenizer while loading the "
+                         "target repo's weights. OLMo-3 post-training repurposed "
+                         "four reserved <|extra_id_*|> slots as function-calling "
+                         "tokens, so the base and Instruct tokenizers emit "
+                         "DIFFERENT ids for the same Instruct system prompt "
+                         "(66 vs 64 tokens). Ids are shared and within the base "
+                         "vocab, so one tokenizer for the whole curve is what "
+                         "makes the inputs byte-identical.")
+    ap.add_argument("--system", default=None,
+                    help="explicit system message, replacing the template's "
+                         "default. Used for a serialization whose tokens all "
+                         "predate post-training.")
+    ap.add_argument("--graft-from", default=None,
+                    help="take the chat template from this exact repo. Keeps "
+                         "every checkpoint on ONE serialization, which a "
+                         "per-checkpoint template would not.")
     ap.add_argument("--stimuli", default="stimuli/e01_pairs.jsonl")
     ap.add_argument("--out", default=None)
     ap.add_argument("--plain", action="store_true",
@@ -203,17 +231,28 @@ def main():
     ap.add_argument("--tag", default="")
     args = ap.parse_args()
 
-    repo = STAGE_REPOS[args.family][args.stage]
-    tok = AutoTokenizer.from_pretrained(repo)
-    if args.graft_template:
+    repo = args.repo or STAGE_REPOS[args.family][args.stage]
+    rev = args.revision
+    tok = AutoTokenizer.from_pretrained(args.tokenizer_from or repo,
+                                        revision=None if args.tokenizer_from else rev)
+    if args.graft_from:
+        tok.chat_template = AutoTokenizer.from_pretrained(
+            args.graft_from).chat_template
+    elif args.graft_template:
         # the post-trained sibling that defines the assistant format: prefer
         # the SFT stage when the lineage exposes one, else the instruct model
         donor = ("sft" if "sft" in STAGE_REPOS[args.family] else "instruct")
         tok.chat_template = AutoTokenizer.from_pretrained(
             STAGE_REPOS[args.family][donor]).chat_template
     model = AutoModelForCausalLM.from_pretrained(
-        repo, dtype=torch.bfloat16, device_map="cuda"
+        repo, revision=rev, dtype=torch.bfloat16, device_map="cuda"
     ).eval()
+    if args.tokenizer_from:
+        # a borrowed tokenizer is only safe if every id it can emit exists in
+        # this checkpoint's embedding
+        n_emb = model.get_input_embeddings().weight.shape[0]
+        assert max(tok.get_vocab().values()) < n_emb, \
+            f"{args.tokenizer_from} emits ids outside {repo}'s {n_emb} embeddings"
     chat = (tok.chat_template is not None) and not args.plain
     if args.stop_token:
         tid = tok.convert_tokens_to_ids(args.stop_token)
@@ -223,7 +262,7 @@ def main():
         sids = [tok.eos_token_id]
     else:
         sids = stop_token_ids(tok, model)
-    print(f"{repo}  chat_template={chat}  stop_ids={sids} "
+    print(f"{repo}@{rev or 'main'}  chat_template={chat}  stop_ids={sids} "
           f"({[tok.convert_ids_to_tokens(i) for i in sids]})", flush=True)
 
     # Score the pretraining document-end token and the chat end-of-turn token
@@ -245,14 +284,18 @@ def main():
     items = [json.loads(l) for l in open(args.stimuli)]
     rows = []
     for it in items:
-        c = measure(model, tok, it, "complete", chat, sids, named)
-        i = measure(model, tok, it, "incomplete", chat, sids, named)
+        c = measure(model, tok, it, "complete", chat, sids, named, args.system)
+        i = measure(model, tok, it, "incomplete", chat, sids, named, args.system)
         assert c.pop("_prefix_ids") == i.pop("_prefix_ids"), \
             f"exact-prefix violation on {it['item_id']}"
         comp_tok = c.pop("_comp_tok_p2"); i.pop("_comp_tok_p2")
+        # fingerprint of the exact stimulus this checkpoint actually saw, so a
+        # trajectory can assert byte-identical inputs across checkpoints
+        fp = hashlib.sha1(repr((c.pop("_full_ids"), i.pop("_full_ids"),
+                                sids, named)).encode()).hexdigest()[:16]
         row = dict(item_id=it["item_id"], family=it["family"], n_given=it["n_given"],
                    comp_token=comp_tok, stage=args.stage, model_family=args.family,
-                   chat=chat)
+                   chat=chat, repo=repo, revision=rev or "main", input_fp=fp)
         for k, v in c.items():
             row["cmp_" + k] = v
         for k, v in i.items():

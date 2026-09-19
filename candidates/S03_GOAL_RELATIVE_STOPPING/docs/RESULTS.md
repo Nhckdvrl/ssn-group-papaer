@@ -9,6 +9,82 @@ continuation-logit shift, and `d_stop` the probability-gauge
 version that carries a whole-vocabulary normalizer term.
 
 
+## Layer B2 — REAL natural acquisition trajectory (fixed stop token <|endoftext|>, one serialization)
+
+```
+variant: main  (results/e01_traj)
+stimulus invariance OK: 5 checkpoints, 50 items, identical token ids and identical scored stop id (fingerprint 8ec3aea207359f78)
+
+checkpoint              stage          n   d_goal  dz_stop  dz_cont    sign  cont@1  contMdR
+--------------------------------------------------------------------------------------------
+base                    pretrain      50     7.27     7.92     0.65    49/1     88%        0
+
+think_sft_final         think_sft     50    10.03     4.67    -5.36    49/1     86%        0
+
+inst_sft_final          inst_sft      50    17.33    11.94    -5.40    49/1     92%        0
+
+dpo_final               dpo           50    24.31    15.50    -8.81    49/1     90%        0
+
+rlvr_final              rlvr          50    27.57    17.70    -9.87    49/1     92%        0
+
+paired stage transitions (same 50 items, same stop token)
+
+  transition                          D d_goal            95% CI    sign  D dz_stop  D dz_cont
+  --------------------------------------------------------------------------------------------
+  base -> think_sft_final                 2.76     [+1.71,+3.85]   38/12      -3.25      -6.01
+  think_sft_final -> inst_sft_final       7.31     [+6.18,+8.43]    49/1       7.26      -0.04
+  inst_sft_final -> dpo_final             6.97     [+5.62,+8.43]    49/1       3.56      -3.41
+  dpo_final -> rlvr_final                 3.26     [+2.67,+3.83]    49/1       2.20      -1.06
+
+per-family d_goal at the stage endpoints
+
+  checkpoint                      A        B        C
+  ---------------------------------------------------
+  base                         6.66     3.32    13.38
+  think_sft_final              8.85     3.47    20.48
+  inst_sft_final              19.04     8.14    25.56
+  dpo_final                   29.60    10.96    30.85
+  rlvr_final                  34.02    11.53    35.25
+```
+
+## Layer B2 robustness — same curve, system prompt containing no post-training-added token
+
+```
+variant: plainsys  (results/e01_traj/plainsys)
+stimulus invariance OK: 5 checkpoints, 50 items, identical token ids and identical scored stop id (fingerprint e55e0698cae8aabb)
+
+checkpoint              stage          n   d_goal  dz_stop  dz_cont    sign  cont@1  contMdR
+--------------------------------------------------------------------------------------------
+base                    pretrain      50     7.40     8.11     0.71    49/1     92%        0
+
+think_sft_final         think_sft     50    10.40     5.00    -5.40    48/2     88%        0
+
+inst_sft_final          inst_sft      50    17.02    11.62    -5.40    49/1     92%        0
+
+dpo_final               dpo           50    24.00    15.17    -8.83    49/1     90%        0
+
+rlvr_final              rlvr          50    27.31    17.38    -9.93    49/1     92%        0
+
+paired stage transitions (same 50 items, same stop token)
+
+  transition                          D d_goal            95% CI    sign  D dz_stop  D dz_cont
+  --------------------------------------------------------------------------------------------
+  base -> think_sft_final                 3.01     [+1.96,+4.06]    41/9      -3.11      -6.11
+  think_sft_final -> inst_sft_final       6.61     [+5.60,+7.62]    49/1       6.62       0.00
+  inst_sft_final -> dpo_final             6.98     [+5.61,+8.47]    49/1       3.55      -3.43
+  dpo_final -> rlvr_final                 3.30     [+2.71,+3.88]    47/3       2.21      -1.10
+
+per-family d_goal at the stage endpoints
+
+  checkpoint                      A        B        C
+  ---------------------------------------------------
+  base                         6.50     3.65    13.81
+  think_sft_final              9.63     3.61    20.37
+  inst_sft_final              18.52     7.99    25.43
+  dpo_final                   29.04    10.90    30.74
+  rlvr_final                  33.59    11.41    35.14
+```
+
 ## Layer B — natural post-training trajectory (CONFOUNDED: per-checkpoint stop set; superseded)
 
 ```

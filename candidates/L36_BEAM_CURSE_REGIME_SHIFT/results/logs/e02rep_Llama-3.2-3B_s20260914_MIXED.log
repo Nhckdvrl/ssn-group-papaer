@@ -1,0 +1,32 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 86.68it/s]
+{"condition": "MIXED", "total_steps": 1122, "n_train": 2998, "end_id": 128002}
+[MIXED] step     0  loss nan  rank_A   126234 rank_B   122152  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:303: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
+  running += float(out.loss) / a.accum
+[MIXED] step    50  loss 65.9682  rank_A    70791 rank_B    74692  p(END@end) A 0.001 B 0.001  learned A 0.00 B 0.00
+[MIXED] step   100  loss 47.1535  rank_A    61832 rank_B    70607  p(END@end) A 0.010 B 0.010  learned A 0.00 B 0.00
+[MIXED] step   150  loss 41.4264  rank_A    54978 rank_B    64718  p(END@end) A 0.074 B 0.073  learned A 0.00 B 0.00
+[MIXED] step   200  loss 38.2045  rank_A    55750 rank_B    63446  p(END@end) A 0.326 B 0.308  learned A 0.00 B 0.00
+[MIXED] step   250  loss 37.3085  rank_A    53316 rank_B    61978  p(END@end) A 0.646 B 0.636  learned A 0.93 B 0.92
+[MIXED] step   300  loss 37.2436  rank_A    54788 rank_B    62100  p(END@end) A 0.784 B 0.780  learned A 0.95 B 0.95
+[MIXED] step   350  loss 35.8747  rank_A    51812 rank_B    61398  p(END@end) A 0.853 B 0.849  learned A 0.96 B 0.96
+[MIXED] step   400  loss 30.4648  rank_A    45920 rank_B    56044  p(END@end) A 0.893 B 0.891  learned A 0.97 B 0.96
+[MIXED] step   450  loss 27.4953  rank_A    49807 rank_B    57038  p(END@end) A 0.915 B 0.915  learned A 0.97 B 0.97
+[MIXED] step   500  loss 25.9235  rank_A    48122 rank_B    55628  p(END@end) A 0.926 B 0.925  learned A 0.97 B 0.97
+[MIXED] step   550  loss 27.5086  rank_A    48736 rank_B    56834  p(END@end) A 0.933 B 0.935  learned A 0.97 B 0.97
+[MIXED] step   600  loss 26.0962  rank_A    47390 rank_B    57360  p(END@end) A 0.942 B 0.944  learned A 0.97 B 0.98
+[MIXED] step   650  loss 26.3076  rank_A    49166 rank_B    56382  p(END@end) A 0.944 B 0.945  learned A 0.97 B 0.98
+[MIXED] step   700  loss 26.0992  rank_A    48500 rank_B    56724  p(END@end) A 0.946 B 0.946  learned A 0.97 B 0.98
+[MIXED] step   750  loss 27.2302  rank_A    49169 rank_B    57134  p(END@end) A 0.946 B 0.946  learned A 0.97 B 0.98
+[MIXED] step   800  loss 22.8090  rank_A    47528 rank_B    56244  p(END@end) A 0.946 B 0.946  learned A 0.97 B 0.98
+[MIXED] step   850  loss 23.6750  rank_A    47204 rank_B    55902  p(END@end) A 0.946 B 0.947  learned A 0.97 B 0.98
+[MIXED] step   900  loss 24.9624  rank_A    47133 rank_B    55636  p(END@end) A 0.946 B 0.946  learned A 0.97 B 0.98
+[MIXED] step   950  loss 23.4650  rank_A    46980 rank_B    55518  p(END@end) A 0.946 B 0.946  learned A 0.97 B 0.98
+[MIXED] step  1000  loss 24.2817  rank_A    46956 rank_B    55556  p(END@end) A 0.946 B 0.946  learned A 0.97 B 0.98
+[MIXED] step  1050  loss 22.6245  rank_A    47205 rank_B    55482  p(END@end) A 0.946 B 0.947  learned A 0.97 B 0.98
+[MIXED] step  1100  loss 23.1259  rank_A    47110 rank_B    55409  p(END@end) A 0.946 B 0.946  learned A 0.97 B 0.98
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'length_penalty']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[MIXED] step  1122  loss 9.7405  rank_A    47056 rank_B    55448  p(END@end) A 0.947 B 0.946  learned A 0.97 B 0.98  |  A b64 empty 0.0% BLEU 41.9   B b64 empty 0.0% BLEU 41.9
+[MIXED] done in 588s

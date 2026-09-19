@@ -1,0 +1,36 @@
+W0917 01:42:11.445000 3069829 site-packages/torch/distributed/run.py:774] 
+W0917 01:42:11.445000 3069829 site-packages/torch/distributed/run.py:774] *****************************************
+W0917 01:42:11.445000 3069829 site-packages/torch/distributed/run.py:774] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0917 01:42:11.445000 3069829 site-packages/torch/distributed/run.py:774] *****************************************
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:04<00:18,  4.69s/it]Loading checkpoint shards:  20%|██        | 1/5 [00:04<00:16,  4.19s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:07<00:10,  3.51s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:06<00:09,  3.31s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:10<00:06,  3.14s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:09<00:06,  3.03s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:12<00:02,  2.76s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:13<00:00,  2.07s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:13<00:00,  2.62s/it]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:11<00:02,  2.68s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:12<00:00,  2.01s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:12<00:00,  2.51s/it]
+[before] generic NLL=2.1720
+[data] 64 props x 12 docs x 32 epochs = 384 exposures/prop, 768 docs, 384 steps
+  [eval @ epoch 1] exposures/prop=12 genericNLL=2.3315 loss=1.0320 27s
+  [eval @ epoch 2] exposures/prop=24 genericNLL=2.6419 loss=0.6393 52s
+  step 25/384 loss=0.5415 lr=2.00e-05 54s
+  [eval @ epoch 4] exposures/prop=48 genericNLL=2.8378 loss=0.4893 97s
+  step 50/384 loss=0.4900 lr=2.00e-05 100s
+  step 75/384 loss=0.4625 lr=2.00e-05 140s
+  [eval @ epoch 8] exposures/prop=96 genericNLL=2.9973 loss=0.4530 180s
+  step 100/384 loss=0.3912 lr=2.00e-05 186s
+  step 125/384 loss=0.3313 lr=2.00e-05 226s
+  step 150/384 loss=0.2262 lr=2.00e-05 265s
+  step 175/384 loss=0.1801 lr=2.00e-05 305s
+  [eval @ epoch 16] exposures/prop=192 genericNLL=3.3309 loss=0.2134 339s
+  step 200/384 loss=0.1735 lr=2.00e-05 351s
+  step 225/384 loss=0.1638 lr=2.00e-05 391s
+  step 250/384 loss=0.1851 lr=2.00e-05 430s
+  step 275/384 loss=0.1856 lr=2.00e-05 470s
+  [eval @ epoch 24] exposures/prop=288 genericNLL=3.2138 loss=0.1781 498s
+  step 300/384 loss=0.1737 lr=2.00e-05 516s
+  step 325/384 loss=0.1565 lr=2.00e-05 556s
+  step 350/384 loss=0.1440 lr=2.00e-05 595s
+  step 375/384 loss=0.1622 lr=2.00e-05 635s
+  [eval @ epoch 32] exposures/prop=384 genericNLL=3.3975 loss=0.1704 656s
+[after] generic NLL=3.3975  (delta +1.2255)
+/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user. 
+  warnings.warn(  # warn only once
+wrote results/e01a/ladder/lr2e-5.json
+/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user. 
+  warnings.warn(  # warn only once

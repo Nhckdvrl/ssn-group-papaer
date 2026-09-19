@@ -1,0 +1,31 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 66.43it/s]
+{"condition": "A_ONLY", "total_steps": 1122, "n_train": 2998, "end_id": 151650}
+[A_ONLY] step     0  loss nan  rank_A   128667 rank_B   115093  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:303: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
+  running += float(out.loss) / a.accum
+[A_ONLY] step    50  loss 75.4042  rank_A   124959 rank_B   119058  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+[A_ONLY] step   100  loss 53.0819  rank_A   121450 rank_B   117092  p(END@end) A 0.005 B 0.000  learned A 0.00 B 0.00
+[A_ONLY] step   150  loss 48.1301  rank_A   120646 rank_B   114266  p(END@end) A 0.063 B 0.000  learned A 0.00 B 0.00
+[A_ONLY] step   200  loss 45.5337  rank_A   121339 rank_B   112564  p(END@end) A 0.380 B 0.000  learned A 0.00 B 0.00
+[A_ONLY] step   250  loss 42.4812  rank_A   120724 rank_B   111502  p(END@end) A 0.719 B 0.000  learned A 0.95 B 0.00
+[A_ONLY] step   300  loss 43.2001  rank_A   120768 rank_B   110594  p(END@end) A 0.852 B 0.000  learned A 0.97 B 0.00
+[A_ONLY] step   350  loss 42.8598  rank_A   119204 rank_B   109252  p(END@end) A 0.903 B 0.000  learned A 0.97 B 0.00
+[A_ONLY] step   400  loss 40.3159  rank_A   118678 rank_B   108284  p(END@end) A 0.933 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   450  loss 36.8851  rank_A   117692 rank_B   107352  p(END@end) A 0.942 B 0.000  learned A 0.97 B 0.00
+[A_ONLY] step   500  loss 38.2528  rank_A   118721 rank_B   106965  p(END@end) A 0.957 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   550  loss 36.7226  rank_A   117397 rank_B   107096  p(END@end) A 0.962 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   600  loss 36.6422  rank_A   116194 rank_B   106636  p(END@end) A 0.964 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   650  loss 37.1207  rank_A   117424 rank_B   107139  p(END@end) A 0.965 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   700  loss 37.3739  rank_A   117529 rank_B   107092  p(END@end) A 0.965 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   750  loss 37.4456  rank_A   117386 rank_B   106927  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   800  loss 34.9085  rank_A   117412 rank_B   107260  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   850  loss 35.4456  rank_A   117390 rank_B   106964  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   900  loss 34.7923  rank_A   117228 rank_B   107212  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step   950  loss 37.8349  rank_A   117193 rank_B   107046  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step  1000  loss 35.2671  rank_A   116952 rank_B   107222  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step  1050  loss 36.7128  rank_A   116977 rank_B   107046  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+[A_ONLY] step  1100  loss 35.4409  rank_A   117321 rank_B   106896  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00
+The following generation flags are not valid and may be ignored: ['length_penalty']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[A_ONLY] step  1122  loss 15.4434  rank_A   117396 rank_B   107140  p(END@end) A 0.966 B 0.000  learned A 0.98 B 0.00  |  A b64 empty 0.0% BLEU 39.7   B b64 empty 0.0% BLEU 5.8
+[A_ONLY] done in 778s

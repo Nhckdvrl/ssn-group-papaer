@@ -1583,3 +1583,108 @@ instrument, `<|endoftext|>` as the scored stop action at every checkpoint,
 reporting `d_goal`, `dz_stop`, `dz_cont` and continuation awareness. Its only
 job is to say **where** the transition is, so Phase 2's supervision-source
 decomposition starts from the true incoming checkpoint.
+
+---
+
+## 2026-09-19 — Phase 1a: the real trajectory, stage endpoints. Every stage moves it, and each stage moves a DIFFERENT side.
+
+First measurement that is actually longitudinal: the real OLMo-3 chain, one
+frozen E01 instrument, **one fixed stop action** (`<|endoftext|>`, id 100257),
+**one serialization** for every checkpoint, and stimulus invariance *asserted*
+rather than assumed — each run records `input_fp`, a fingerprint of the exact
+input token ids plus the scored stop id, and `e01_traj_report.py` refuses to
+print a curve whose points did not see byte-identical inputs.
+
+### The invariance check immediately earned its keep
+
+It failed on the first run. Cause: OLMo-3 post-training **repurposed four
+reserved `<|extra_id_*|>` slots as function-calling tokens**, and the Instruct
+system prompt contains `<functions></functions>`. The base tokenizer encodes
+that as 5 ordinary tokens; the Instruct tokenizer emits 2 special ones — 66 vs
+64 prompt tokens for the same string. Grafting the chat template is therefore
+**not sufficient** to put base and post-trained checkpoints on the same
+stimulus; the tokenizer must be shared too. Fixed with `--tokenizer-from`
+(ids are shared and all inside base's 100278-row embedding, asserted at load).
+
+Had this gone unnoticed it would have been the same class of defect as the old
+Layer B stop-set drift: a curve whose *input* changes along with the model.
+
+### The curve (50 pairs, `p2`, paired sign test)
+
+```
+checkpoint          stage        d_goal  dz_stop  dz_cont   sign   cont@1
+base                pretrain       7.27     7.92     0.65   49/1      88%
+think_sft_final     think_sft     10.03     4.67    -5.36   49/1      86%
+inst_sft_final      inst_sft      17.33    11.94    -5.40   49/1      92%
+dpo_final           dpo           24.31    15.50    -8.81   49/1      90%
+rlvr_final          rlvr          27.57    17.70    -9.87   49/1      92%
+```
+
+Paired stage transitions:
+
+| transition | Δ`d_goal` | 95% CI | sign | Δ`dz_stop` | Δ`dz_cont` |
+|---|---|---|---|---|---|
+| base → Think-SFT | +2.76 | [+1.71,+3.85] | 38/12 | **−3.25** | **−6.01** |
+| Think-SFT → Instruct-SFT | **+7.31** | [+6.18,+8.43] | 49/1 | **+7.26** | −0.04 |
+| Instruct-SFT → DPO | +6.97 | [+5.62,+8.43] | 49/1 | +3.56 | −3.41 |
+| DPO → RLVR | +3.26 | [+2.67,+3.83] | 49/1 | +2.20 | −1.06 |
+
+### Reading — Case D, but with structure the case list did not anticipate
+
+Acquisition is **distributed**: every stage moves `d_goal` positively and
+significantly, and no single stage owns the effect. But the decomposition shows
+the stages are not doing the same thing:
+
+* **Think-SFT** raises `d_goal` *while lowering the stop logit itself*
+  (−3.25). All of its gain, and more, comes from suppressing the task-relevant
+  continuation (−6.01). It makes the model less willing to stop overall, but
+  more willing to drop the continuation once the goal is met.
+* **Instruct-SFT is the purest goal→STOP transition on the whole chain**:
+  +7.26 on the stop side, **−0.04** on the continuation side. It is also the
+  largest single transition. This is the stage where "the user's request is
+  satisfied" gets connected to the termination action itself.
+* **DPO** moves both sides (+3.56 / −3.41), roughly evenly.
+* **RLVR** adds a smaller, consistent amount of both.
+
+Base already sits at +7.27 with `dz_cont` +0.65, consistent with the known
+result that pretraining supplies goal sensitivity; post-training does not create
+it. Continuation awareness is flat and high throughout (86–92% of items have the
+correct missing continuation at rank 1 in the incomplete condition), so no stage
+is buying `d_goal` by forgetting what the missing content was.
+
+### Robustness
+
+Re-ran the whole curve under a system prompt containing no post-training-added
+token (`--variant plainsys`), so base is never shown an id it did not see in
+pretraining. Same shape, same ordering, same stage ranking: base 7.40 →
+Think-SFT 10.40 → Instruct-SFT 17.02 → DPO 24.00 → RLVR 27.31, with the
+Think-SFT → Instruct-SFT transition again pure stop-side (+6.62 / 0.00). The
+`<functions>` tokens are not driving anything.
+
+### Caveats, stated before they are read too hard
+
+1. These are **stage endpoints**, not equal training budgets. "Instruct-SFT is
+   the largest jump" is a statement about a stage, not about a step count.
+2. Think-SFT is measured **outside its native template** (its own system prompt
+   plus a forced `<think>` opener). That is required for the curve to be
+   longitudinal; the native-format measurement is running as a disclosed control
+   and will be reported separately, never spliced into the curve.
+3. Instruct-SFT and DPO release **no intermediate checkpoints** (checked against
+   the HF refs API), so those stages cannot be resolved below stage granularity
+   from public artifacts. Think-SFT (43 intermediates) and RLVR (8) can, and are
+   running now.
+
+### What this sets up for Phase 2
+
+The supervision-source decomposition should start from **Think-SFT final** and
+target the **Think-SFT → Instruct-SFT** transition, which is both the largest
+single move and the only one that is purely `goal → STOP`. That is a real
+incoming checkpoint with real incoming data, not Base + an arbitrary Tulu
+subset.
+
+### Minor instrument defect noted, not yet fixed
+
+Three `item_id`s collide in `stimuli/e01_pairs.jsonl`
+(`A_the_planets_of_the_2`, `A_the_planets_of_the_3`, `B_Earth_2` each name two
+distinct items). Nothing is affected — every analysis in the repo keys by row
+order — but the labels must be made unique in E01-v2.

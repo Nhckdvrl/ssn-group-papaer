@@ -1,0 +1,15 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 61.75it/s]
+{"condition": "MIXED", "total_steps": 1122, "n_train": 2998, "end_id": 151650}
+[MIXED] step     0  loss nan  rank_A   129078 rank_B   116030  p(END@end) A 0.000 B 0.000  learned A 0.00 B 0.00
+/home/xiang/ssn-group-papaer/candidates/L36_BEAM_CURSE_REGIME_SHIFT/src/e02_train.py:299: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
+  running += float(out.loss) / a.accum
+[MIXED] step   200  loss 230.6371  rank_A   119955 rank_B   116656  p(END@end) A 0.180 B 0.168  learned A 0.00 B 0.00
+[MIXED] step   400  loss 170.2629  rank_A   118540 rank_B   119174  p(END@end) A 0.912 B 0.912  learned A 0.97 B 0.98
+[MIXED] step   600  loss 150.5993  rank_A   115437 rank_B   116790  p(END@end) A 0.958 B 0.961  learned A 0.98 B 0.98
+[MIXED] step   800  loss 146.5611  rank_A   115214 rank_B   117006  p(END@end) A 0.963 B 0.963  learned A 0.98 B 0.98
+[MIXED] step  1000  loss 145.8115  rank_A   115160 rank_B   117250  p(END@end) A 0.962 B 0.963  learned A 0.98 B 0.98
+[MIXED] step  1122  loss 85.3705  rank_A   114920 rank_B   117089  p(END@end) A 0.962 B 0.963  learned A 0.98 B 0.98
+Warning: The cache directory for DeepSpeed Triton autotune, /home/xiang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[MIXED] saved final weights to results/e02/weights/MIXED
+[MIXED] done in 578s
