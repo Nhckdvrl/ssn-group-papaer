@@ -19,26 +19,30 @@
 - ssn-taste/README.md
 - ssn-taste/SEARCH_GUIDE_ZH.md
 - ssn-taste/SELECTED_TOPICS.md
-- S03–S09 全部 registration
+- 当前 selected registration（S03 / S04 / S06 / S07 / S08）以及已取消的 S05 / S09 registration
 - 全部 ssn-taste/FAILED_TOPICS*.md
 - ssn-taste/RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md
 - 最近 commits / 新增文件
 
-当前正式 selected / PILOT-AUTHORIZED = 7：
+当前正式 selected / PILOT-AUTHORIZED = 5：
 
 - S03 — From Document End to Task Done
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
-- S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 - S08 — Is Metacognitive Control Shared?
+
+不要重新审当前五题是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。
+
+2026-09-19 re-audit 已正式 KILL：
+- S05 — When Does Reading Become Learning?
 - S09 — Same Recall, Different Stability?
 
-不要重新审它们是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。
+两题均保留 registration 作为 anti-resurrection 记录。
 
 非常重要：
 
-> S03–S09 不是正向 taste exemplar。
+> 当前 selected 与历史 killed Sxx 都不是正向 taste exemplar。
 
 包括所有历史 S/L/F/Unring/selected/serious/failed topic，都只能用于 process evidence、dedup、防复活和资产复用。
 
@@ -258,6 +262,28 @@ probe/decodability 本身不是结论。
 
 ---
 
+## 7.5 Training-dynamics recipe gate
+
+S03/S04 的执行失败与 S05/S09 re-audit 增加一条硬门槛：
+
+> **不要只问 training-dynamics 问题是否可控；先问它是否有理由存在一个 recipe-stable answer。**
+
+对任何 learning / post-training / memorization / acquisition 题，在 PILOT-AUTHORIZED 前必须判断：
+
+- manipulated scientific quantity 是否能在同一个 model/optimizer state 内直接 intervention；
+- recipe 是 nuisance/control，还是它本身定义了现象；
+- 合理改变 training dose / LR / optimizer 是否可能让 A/B/C world 判定直接换号；
+- 如果结果只在一个 arbitrary optimization point 成立，是否仍是重要 scientific fact；
+- 为了证明不是 recipe artifact，是否会被迫扩张成 optimizer × LR × dose × model zoo。
+
+若最后一项答案是“会”，优先 KILL。
+
+S04 的负面 lesson：若自然现象太弱，必须不断增强 synthetic manipulation 才能识别，可能是 identification instrument 在创造现象。
+
+S03 的负面 lesson：single-budget / single-family training conclusions 极易制造假 law；parameter-locus 或 structural facts 往往比 developmental biography 更稳定。
+
+S05/S09 已因这一 gate 被正式 KILL。
+
 # 8. 工作纪律：一次只审一个强 seed
 
 不要 dump 10–30 个半成品。
@@ -364,7 +390,7 @@ Reset：
 4. 优先 understanding / training / generation / reasoning / architecture / interpretability，但不要固定 quota。
 5. 一旦出现最强 seed，停止 idea dumping，锁住深审。
 6. 最终只给 PILOT-AUTHORIZED 或 KILL。
-7. 若 PILOT-AUTHORIZED，注册为下一编号 S10；若没有，明确 0 survivor。
+7. 若 PILOT-AUTHORIZED，使用下一个未占用编号注册；若没有，明确 0 survivor。
 
 最终目标：
 
