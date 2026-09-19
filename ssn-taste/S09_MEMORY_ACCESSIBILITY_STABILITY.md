@@ -1,6 +1,6 @@
 # S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?
 
-**Status:** KILLED — 2026-09-19  
+**Status:** SELECTED — PILOT-AUTHORIZED  
 **Registered:** 2026-09-19  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** training dynamics / parameter memory / stability–plasticity / mechanistic follow-up optional
@@ -266,9 +266,9 @@ The topic passes because:
 
 ---
 
-## 13. Final re-audit — KILL (2026-09-19)
+## 13. Rescinded re-audit — former KILL (2026-09-19)
 
-S09 is no longer experiment-authorized.
+**RESCINDED:** this kill decision was withdrawn after a fresh reading of the closest prior and the actual robustness evidence. S09 remains experiment-authorized.
 
 ### Why it is killed
 
@@ -295,3 +295,39 @@ Do not revive S09 by:
 - turning Fresh-in-Memory's representation direction into the main mechanism.
 
 The transferable lesson is narrower: for training-dynamics topics, ask first whether there is a plausible recipe-invariant scientific quantity. If the manipulated variable is itself defined by the optimizer trajectory, the topic is high risk.
+
+
+---
+
+## 14. Restoration audit — KEEP / PILOT-AUTHORIZED (2026-09-19)
+
+The previous kill over-interpreted optimizer dependence in *Fresh in Memory* and is formally rescinded.
+
+### Correct reading of recipe dependence
+
+*Fresh in Memory* does show a meaningful optimizer boundary: vanilla SGD largely lacks a cross-run training-order signal. But the core effect is present with Adafactor and Lion, appears with AdamW and RMSprop given sufficient training, extends across Llama/Qwen model families, full fine-tuning/LoRA, model scales up to Qwen2.5-32B, natural/synthetic data variants, and a 1-epoch no-repetition regime.
+
+Therefore the evidence does **not** support treating training-order recency as a fragile one-recipe artifact.
+
+### Why S09 still deserves a pilot
+
+1. **The decisive unknown remains unowned.** *Fresh in Memory* asks in future work whether training-order information might affect resistance to modification; it does not test accessibility-matched memories under matched contradictory updates.
+
+2. **Independent pressure remains.** BlackboxNLP 2024 reports early memorization crystallization; ACL 2024 shows existing knowledge can obstruct conflicting updates; ACL 2026 REMIND shows memories with similar pointwise losses can occupy different local loss geometries. These pressures jointly motivate accessibility ≠ stability independently of one future-work sentence.
+
+3. **A causal comparison is possible inside one final model state.** Early/late facts are counterbalanced across mirrored schedules, then contradictory replacements are learned together from the same final checkpoint and optimizer state. This controls the most dangerous S03-style problem: comparing different update-time models/recipes.
+
+4. **Recipe robustness can stay small.** The pilot does not need a full optimizer matrix. Run the core mirrored design under one standard adaptive optimizer. If a history effect exists, confirm its qualitative direction under one second adaptive optimizer or modest dose variation. If the A/B/C world assignment flips, kill.
+
+### Tightened pilot gate
+
+- keep mirrored fact assignment;
+- keep same-checkpoint shared contradictory update;
+- keep common-refresh condition;
+- use accessibility as a continuous covariate rather than post-hoc cherry-picking;
+- one primary adaptive optimizer + one cheap confirmatory adaptive-optimizer/dose condition only after a positive signal;
+- **KILL** if the qualitative conclusion changes across that confirmatory condition.
+
+### Final status
+
+**SELECTED — PILOT-AUTHORIZED.**
