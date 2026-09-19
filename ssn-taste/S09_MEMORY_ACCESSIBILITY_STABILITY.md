@@ -1,6 +1,6 @@
 # S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILLED — 2026-09-19  
 **Registered:** 2026-09-19  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** training dynamics / parameter memory / stability–plasticity / mechanistic follow-up optional
@@ -262,3 +262,36 @@ The topic passes because:
 - the pilot is cheap and does not require a benchmark, model zoo, or large dataset;
 - strength-only, history-dependent, recency-dominated, and reverse-history outcomes all produce distinct scientific conclusions;
 - the paper can grow Zhao/Cho-style into mechanism only if the behavioral law exists, without making mechanism the mother question.
+
+
+---
+
+## 13. Final re-audit — KILL (2026-09-19)
+
+S09 is no longer experiment-authorized.
+
+### Why it is killed
+
+The central variable, “memory age / learning history,” is itself inseparable from the optimization path that created the memory.
+
+1. **Recipe dependence is already empirically visible in the closest prior.** ICLR 2026 *Fresh in Memory* finds training-order encoding to depend strongly on optimizer and training dose: the effect is largely absent with vanilla SGD, strong with Lion/Adafactor, and requires more epochs with AdamW/RMSprop. Thus the very temporal trace motivating S09 is not a recipe-invariant property.
+
+2. **Age is not one manipulable quantity.** Early vs late acquisition jointly changes the parameter state at acquisition, the amount of subsequent gradient interference, the optimization trajectory, and exposure recency. Mirrored schedules control item identity but do not turn these into a single causal “age” variable.
+
+3. **Common refresh does not solve the main problem.** A terminal refresh can test last-exposure recency, but it also changes the memory state being studied. If the effect disappears, interpretation is ambiguous; if it survives, it can still be optimizer-path dependence rather than a general consolidation law.
+
+4. **A positive result would demand a recipe matrix.** To claim a Main-level law rather than one non-convex optimization trajectory, the project would need multiple optimizers, learning rates, doses, schedules and likely model families. That is exactly the experiment explosion we now treat as a kill signal.
+
+5. **A null is not strong enough.** If accessibility-matched overwrite curves coincide in one recipe, the conclusion is merely that current strength suffices under that recipe. If they differ, generic path dependence is an immediate alternative explanation. Neither endpoint gives a robust paper without substantial additional training sweeps.
+
+### Final verdict
+
+**KILL.**
+
+Do not revive S09 by:
+- running a larger optimizer/model zoo;
+- calling one sequential fine-tuning regime “memory consolidation”;
+- using more elaborate matching to rescue an unstable age effect;
+- turning Fresh-in-Memory's representation direction into the main mechanism.
+
+The transferable lesson is narrower: for training-dynamics topics, ask first whether there is a plausible recipe-invariant scientific quantity. If the manipulated variable is itself defined by the optimizer trajectory, the topic is high risk.
