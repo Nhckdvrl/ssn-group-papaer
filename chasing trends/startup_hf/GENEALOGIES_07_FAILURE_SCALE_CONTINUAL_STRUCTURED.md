@@ -4,7 +4,7 @@
 >
 > NO formal CT candidate generation in this file.
 >
-> This file continues STARTUP_HF_GENEALOGIES_01–06.
+> This file continues GENEALOGIES_01–06.
 >
 > Main theme:
 >
