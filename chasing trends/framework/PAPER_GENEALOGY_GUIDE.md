@@ -659,7 +659,7 @@ A/B 属于同一明确 literature family，且 B 出现时 A 已经构成 field 
 > **什么结构值得学，什么只是这篇 paper 在特定资源下成立的 contribution shape。**
 
 当前 contrast library：
-> CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md
+> CONTRAST_CASES_AND_ANTI_PATTERNS.md
 
 ---
 
@@ -726,7 +726,7 @@ A/B 属于同一明确 literature family，且 B 出现时 A 已经构成 field 
 当前 longitudinal reading 已经开始形成较大的 library。
 
 入口：
-> GENEALOGY_LIBRARY_INDEX_2026-09-19.md
+> ../academic/GENEALOGY_LIBRARY_INDEX.md
 
 正式找题之前，不要把 index 当 idea menu。
 
