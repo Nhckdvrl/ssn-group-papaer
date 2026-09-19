@@ -144,3 +144,22 @@ The pilot is authorized because:
 - opposite/null results remain scientifically interpretable.
 
 Do not widen the project before the minimum pilot establishes whether evidence influence is stable, generically diluted, or selectively reweighted.
+
+---
+
+## 2026-09-19 execution-risk re-audit — KEEP / PILOT-AUTHORIZED
+
+S06 survives strongly. It is training-free, the external evidence is randomized, and the core estimand is a within-model causal effect over reasoning depth. There is no S03-style recipe variable.
+
+### Tightened execution gate
+
+Use forced-answer forks at multiple native reasoning prefixes from the same generation process. Estimate randomized evidence effects only in the pre-commitment region.
+
+**KILL immediately** if:
+- evidence influence cannot be estimated stably before commitment;
+- apparent selective reweighting disappears when evidence direction is randomized / surface forms are counterbalanced;
+- all depth effects reduce to trivial context-distance dilution with no distinct causal dynamics.
+
+No training, model zoo, or mechanistic search is required before this decision.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
