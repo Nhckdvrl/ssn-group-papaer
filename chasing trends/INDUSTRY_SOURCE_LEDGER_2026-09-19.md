@@ -3061,3 +3061,258 @@ Instrument value: **B for existing artifacts**
 
 Core lesson:
 > company research thesis and currently released experimental artifact must be scored separately.
+
+
+---
+
+# FINAL ADDENDUM SOURCES — Sep 17–19 2026
+
+These entries close the broad source ledger. They are not a new weekly-watch list.
+
+---
+
+## FINAL-01 — Infinite-Parameter LLMs
+Date: 2026-09-16  
+Type: architecture / continual-live-learning preprint  
+Tier: II  
+Primary: arXiv:2609.18842
+
+Deep-read: **YES — paper thesis**
+
+Actually establishes:
+- live data can condition a compact hypernetwork that generates low-rank modulation of a shared base network;
+- a Bayesian belief over latent code is updated online during a session;
+- effective weights are re-derived as that belief changes;
+- paper explicitly compares the intended memory location against in-context/retrieval-style use.
+
+Does NOT establish:
+- that runtime-generated weights dominate RAG/ICL universally;
+- low-cost practical deployability on current open frontier models.
+
+Taste value: **A**  
+Execution transfer: **B/C conceptually, current artifact must be re-verified before pilot**  
+Instrument value: **C until runnable checkpoint/code is confirmed**
+
+Core pressure:
+> knowledge supplied at runtime need not remain in the context; it can become generated effective parameters.
+
+---
+
+## FINAL-02 — ProgramDistill
+Date: 2026-09-16  
+Type: software-engineering benchmark / executable-specification study  
+Tier: II  
+Primary: arXiv:2609.18805
+
+Deep-read: **YES — full paper sections**
+
+Actually establishes:
+- desired software behavior can be elicited from a working reference whose source is hidden;
+- 1,975 replay-verified behaviors across 26 applications are factorized into 4,063 tasks;
+- prerequisite lineages create a controlled restoration-depth axis;
+- replay traces serve as behavioral specifications/verifiers;
+- agent observation effort becomes increasingly important as reconstruction burden rises.
+
+Does NOT establish:
+- executable behavior as complete semantic correctness for all software;
+- that one verifier has universal certification authority.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **B pending exact release/runtime audit**
+
+Core pressure:
+> specification source and verifier role are separable design objects.
+
+---
+
+## FINAL-03 — ComposeCL
+Date: 2026-09-07  
+Type: continual-learning mechanism-composition study  
+Tier: II  
+Primary:
+- arXiv:2609.06986
+- https://github.com/cozheyuanzhangde/compose-cl
+
+Deep-read: **YES — paper/project/code summary**
+
+Actually establishes:
+- 100 sequential QA tasks × 3 datasets × 3 seeds;
+- no individual continual-learning mechanism remains strong across the full horizon;
+- full 2^4 factorial over replay, self-distillation, weight anchor and merged LoRA;
+- best composition raises average final retention 1.2% → 34.9%;
+- replay + merged LoRA interact super-additively across all three datasets;
+- task-level successive halving reduces a 90-configuration search over longer horizons;
+- official code/datasets are open; checkpoints/generated outputs are not included.
+
+Does NOT establish:
+- catastrophic forgetting as solved (34.9% remains far from perfect);
+- generalization to paraphrased/new formulations from memorization alone;
+- preservation of all general model capabilities.
+
+Taste value: **A+**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
+Core pressure:
+> mechanism composition is scientific when complementary failure sources and interaction effects are explicitly identified.
+
+---
+
+## FINAL-04 — ActObs / Don't Mask the Environment
+Date: 2026-09-17  
+Type: agent SFT→RL mechanism study  
+Tier: II  
+Primary: arXiv:2609.20715
+
+Deep-read: **YES — mechanism/result chain**
+
+Actually establishes:
+- standard agent SFT commonly supervises action tokens while masking environment observations from loss;
+- ActObs also predicts existing observation tokens without adding data, sequence tokens, parameters or forward passes;
+- SFT endpoints are similar, but equal downstream GRPO training diverges;
+- 4B improves pass@k across tested budgets on Terminal-Bench 2.0;
+- 8B trades some pass@1 for higher pass@16 / broader task coverage;
+- gains transfer to unseen aider-polyglot tasks;
+- action and observation gradients become nearly orthogonal;
+- action-only SFT damages consequence prediction relative to base;
+- joint supervision preserves entropy and changes later exploration.
+
+Taste value: **A+**  
+Execution transfer: **A/B**  
+Instrument value: **B/A if training artifacts are verified**
+
+Core pressure:
+> a seemingly innocuous loss mask in SFT can determine what internal consequence model survives into RL.
+
+---
+
+## FINAL-05 — Agile-WAM
+Date: 2026-09-17  
+Type: tactile world-action model / robotics  
+Tier: II  
+Primary: arXiv:2609.20761
+
+Deep-read: **YES — core design/result**
+
+Actually establishes:
+- vision and tactile streams exhibit different temporal dynamics;
+- visual latent is supervised at a larger temporal offset while tactile latent uses next-frame prediction;
+- shared latent supports action and future-state flow matching;
+- evaluated on 9 simulation + 5 real contact-rich manipulation tasks;
+- reports 29.4% relative real-world success gain with 11.9ms inference latency.
+
+Does NOT establish:
+- one universal optimal temporal horizon for all multimodal systems.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **B; verify runnable code/checkpoints before candidate use**
+
+Core pressure:
+> temporal alignment does not imply equal supervision horizon across modalities.
+
+---
+
+## FINAL-06 — FAMOS
+Date: 2026-09-17  
+Type: 3D articulation / structured perception  
+Tier: II  
+Primary: arXiv:2609.20817
+
+Deep-read: **YES — paper/project description**
+
+Actually establishes:
+- articulation is inferred from a sparse unordered set of partial point clouds rather than one view;
+- state-wise/global attention aggregates evidence across observed states;
+- observed-articulation-span objective explicitly rewards use of motion evidence;
+- procedural self-annotated assets scale training.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **B/C pending exact code/model release audit**
+
+Core pressure:
+> for articulation, observed state transitions may be a better evidence unit than category-level single-view shape prior.
+
+---
+
+## FINAL-07 — Panda Diplomacy
+Date: 2026-09-01  
+Type: scientific foundation-model pretraining across particle detectors  
+Tier: II  
+Primary: arXiv:2609.00611
+
+Deep-read: **YES — abstract/results level**
+
+Actually establishes:
+- the same point-cloud self-distillation framework is pretrained with minimal changes across three qualitatively different detector modalities;
+- 1,000 labeled downstream images can match/exceed specialized FM baselines that use much more supervision;
+- reported label-efficiency improvements reach ~70× on one setting and up to ~1,000× on another;
+- simple probes reveal latent features associated with particle causality / track curvature.
+
+Taste value: **A-**  
+Execution transfer: **B/C**  
+Instrument value: **C/B depending public checkpoint/code availability**
+
+Core pressure:
+> detector-specific task architecture may be the wrong sharing unit if sensor-level physical structure is common.
+
+---
+
+## FINAL-08 — Pelican-Sim 1.0
+Date: 2026-09-10  
+Type: embodied world-model technical report  
+Tier: II  
+Primary: arXiv:2609.12036 / official project page
+
+Deep-read: **YES — report/project details**
+
+Actually establishes:
+- unified 28-D action representation;
+- numerical + URDF-rendered visual action conditioning;
+- sparse MoE for heterogeneous dynamics;
+- four-step rollout generation with reported 5.67× speedup;
+- approximately one million real/sim trajectories;
+- downstream consumer tests include data generation, policy evaluation, action selection and policy improvement;
+- policy-evaluation correlation reported at Pearson 0.994 across five checkpoints;
+- 500 generated + 50 demonstrations per task raises RoboTwin policy success 70% → 93% in the reported setting.
+
+Artifact status:
+> official project page currently says **Code / Models — Coming soon**.
+
+Taste value: **A**  
+Execution transfer: **C/D**  
+Instrument value: **D/C now — do not count announced release as current access**
+
+Core pressure:
+> world-model quality should be judged by downstream policy decisions, not only video fidelity.
+
+---
+
+# Final provenance corrections
+
+## General Intuition
+Strong existing MIRA/world-model lineage and high frontier-pressure value.
+No equally detailed new Sep 18/19 matched artifact found in the final scan.
+
+Status:
+> **monitor only; do not manufacture a new genealogy from company visibility.**
+
+## Decart research-page resurfacing
+A result newly highlighted on a September company research page may have an underlying arXiv date months earlier.
+
+Status:
+> **artifact date, not promotion-page date, determines recency.**
+
+---
+
+# Ledger closed
+
+This source ledger is now closed to default broad crawling.
+
+Future additions require one of:
+- concrete CT candidate prior audit;
+- new artifact that materially changes pilot feasibility;
+- clear evaluation-correction / negative-result phase;
+- genuinely changed premise.
