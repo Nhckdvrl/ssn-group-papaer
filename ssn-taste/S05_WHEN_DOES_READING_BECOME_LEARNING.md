@@ -1,6 +1,6 @@
 # S05 — When Does Reading Become Learning?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILLED — 2026-09-19  
 **Registered:** 2026-09-18  
 
 ## One-sentence parent question
@@ -213,3 +213,37 @@ Kill or demote S05 if any of the following becomes true:
 Registered parent question:
 
 > **Under ordinary response-only SFT, what determines whether information used as conditioning remains transient, is compressed into task-sufficient knowledge, or becomes persistent parameter memory?**
+
+
+---
+
+## Final re-audit — KILL (2026-09-19)
+
+S05 is no longer experiment-authorized.
+
+### Why it is killed
+
+The decisive problem is not that prompt-side learning is impossible. It is that the scientifically interesting version is unlikely to remain stable outside a heavily controlled memorization regime.
+
+1. **The natural null is already unsurprising.** Context-distillation work exists precisely because contextual gains often disappear when the context is removed. If ordinary response-only SFT leaves little persistent prompt-side memory, that is no longer a strong Main-level surprise.
+
+2. **Broad incidental write-through is already occupied.** EACL 2026, *Unintended Memorization of Sensitive Information in Fine-Tuned Language Models*, directly studies information that appears only in fine-tuning inputs, not targets, including task-irrelevant input-only information, with synthetic and real data and analyses of task type, repetition, model size and other factors. This substantially narrows S05's remaining novelty to the matched causal effect of response relevance.
+
+3. **The remaining interesting effect is likely dose/recipe dependent.** To make persistent memory of arbitrary prompt-only details measurable, the experiment would likely require repeated exposure, stronger learning rates, or other memorization-amplifying choices. At that point the project risks answering “under this fine-tuning dose, this kind of input leaks into parameters” rather than identifying a stable law of conditional learning.
+
+4. **The task-sufficient outcome is hard to separate from ordinary function learning.** If the response depends only on a low-dimensional property of the input and the model later retains that property, a reviewer can reasonably read the result as learning the input→output mapping rather than storing the original conditioning information.
+
+5. **S04-style construct risk.** The clean causal contrast requires a synthetic micro-world; if native ordinary SFT produces too little persistent input-only memory, making the phenomenon visible would require increasingly artificial repetition/structure. That risks turning the identification instrument into the phenomenon itself.
+
+### Final verdict
+
+**KILL.**
+
+Do not revive S05 by:
+- adding more epochs until prompt memory appears;
+- adding model families;
+- turning the project into privacy/extraction;
+- comparing prompt-loss weights;
+- reframing a synthetic overfitting regime as a universal SFT law.
+
+A future topic may reuse the broader distinction between transient conditioning and persistent learning only if a new natural phenomenon creates independent pressure and can be identified without relying on an artificial memorization regime.
