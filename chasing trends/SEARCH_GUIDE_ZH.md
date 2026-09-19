@@ -1898,3 +1898,319 @@ memory UI / ranking 是否改变探索分布？
 不先做这一步：
 > memory / correction / long-context method 很容易变成 module stacking。
 
+
+
+---
+
+# 54. Pretraining Value Decomposition Gate
+
+新增于 2026-09-19 final frontier wave。
+
+以后看到：
+
+> “pretraining helps”
+
+禁止直接当成一个 claim。
+
+至少拆成：
+
+1. **Peak downstream performance**
+   - 最终 specialist 的 peak 能力更高吗？
+
+2. **Sample efficiency**
+   - 达到同样 performance 需要更少 task-specific data 吗？
+
+3. **Adaptation speed**
+   - 新 embodiment / domain / task 学得更快吗？
+
+4. **Environment / object transfer**
+   - 同一个已学会的行为能不能搬到没见过的 environment/object？
+
+5. **In-context task learning**
+   - 能不能靠 prompt / demonstration 定义一个新任务，而不更新 weights？
+
+6. **Robustness / recovery**
+   - broad pretraining 是否带来 OOD/self-correction？
+
+7. **Representation reuse**
+   - frozen foundation representation 能否支持轻量 action/policy head？
+
+例：
+- Figure Helix 2.5 主要给 environment transfer 的 controlled evidence；
+- Skild S1 的 thesis 更接近 task ICL；
+- Gemini Robotics On-Device 2 更接近 adaptation efficiency；
+- Odyssey-3 更接近 frozen physical representation reuse。
+
+这些不能合成：
+> “robot pretraining有效”。
+
+---
+
+# 55. World-Model Consumer Contract Gate
+
+以后出现：
+
+- world model；
+- simulator；
+- video world model；
+- spatial foundation model；
+
+先写 downstream consumer。
+
+至少区分：
+
+## Renderer
+需要：
+- spatial/visual consistency；
+- controllable view synthesis。
+
+## Simulator
+需要：
+- action-conditioned causal dynamics；
+- state persistence；
+- long-horizon stability；
+- realtime interaction（若用于在线训练）。
+
+## Planner
+需要：
+- counterfactual ranking；
+- policy/action ordering正确；
+- decision-relevant transition fidelity。
+
+## Policy representation
+需要：
+- frozen latent/state 能否支持轻量 control head；
+- representation 对 embodiment/task 是否可复用。
+
+## Synthetic-data engine
+需要：
+- generated scenario 是否提供正确 learning pressure；
+- diversity / failure coverage；
+- simulator bias 是否会 transfer。
+
+强制原则：
+
+> **world-model quality 不是一个 universal scalar。**
+
+一个视觉更逼真的 model：
+> 可能是更差的 policy trainer。
+
+一个 simulation success-rate 与 real 不完全一致的 simulator：
+> 如果 policy/checkpoint ordering 与 failure region 一致，仍可能是更好的 development instrument。
+
+---
+
+# 56. Modality Extension Placement Gate
+
+当一个强 pretrained model 新增：
+
+- speech；
+- vision；
+- robot action；
+- audio generation；
+- sensor modality；
+
+不要只问：
+> “怎么接进去？”
+
+先判断 domain shift 需要改变模型的哪一层。
+
+三种基本 strategy：
+
+## Full integration
+允许 backbone 深度 co-adapt。
+
+适合：
+> 新 modality 需要改变 shared computation。
+
+风险：
+> forgetting / gradient interference。
+
+## Selective sharing / separation
+只在测到 conflict 的部分分离参数。
+
+适合：
+> 部分 semantic computation可共享，但深层 acoustic/visual/action objective 冲突。
+
+## Frozen backbone + learned interface
+backbone 不动，只训 encoder / adapter / decoder / control heads。
+
+适合：
+> 必须保证既有 capability 不退化，且新 modality 能被翻译进现有 computation。
+
+风险：
+> interface ceiling。
+
+必须记录：
+
+1. 原 capability 哪个必须保留？
+2. forgetting 是否被实测？
+3. gradient conflict 是否被实测？
+4. shared/frozen/separated boundary 由什么 evidence决定？
+5. full integration / freezing 的 opposite baseline是什么？
+
+---
+
+# 57. Public Artifact Maturity Gate
+
+Hugging Face 页面 ≠ 可做实验。
+
+以后 artifact 分级：
+
+## A — Runnable matched artifact now
+- weights已下载；
+- code可跑；
+- matched control/pair存在；
+- 当前就能用于pilot。
+
+## B — Runnable but heavy / partially confounded
+- 权重开放；
+- 但需要大显存/API/复杂 runtime；
+- 或 stage pair仍混多个变化。
+
+## C — Detailed technical report/model card
+- 技术 thesis 足够清楚；
+- 但缺关键 weights/code/data。
+
+只能：
+> calibration / inspiration。
+
+## D — Announced / "coming soon"
+- roadmap；
+- future weights；
+- demo-only。
+
+**不能按 A 算。**
+
+## F — proprietary-only
+- 只能提供 frontier pressure。
+
+强制：
+> ledger 必须记录当前 artifact 状态，不用未来承诺替代当前可用性。
+
+---
+
+# 58. Proxy-to-Consumer Fidelity Gate
+
+大模型/工业报告经常自己使用 cheap proxy 选方向。
+
+这是好事。
+
+但必须问：
+
+> proxy 到 full consumer metric 的桥在哪里？
+
+合格证据至少一种：
+
+1. method ordering preserved；
+2. effect sign preserved；
+3. mechanism variable preserved；
+4. proxy change predicts downstream change；
+5. proxy筛掉的 loser 在 full scale 也确实不成立。
+
+例如：
+
+\`\`\`
+0.3B proxy
+→ data-mixture ordering
+→ 7B/full-scale确认
+\`\`\`
+
+或：
+
+\`\`\`
+short behavioral probe
+→ compression candidate ordering
+→ expensive distillation只做 survivors
+\`\`\`
+
+不够：
+
+\`\`\`
+training loss更低
+→ assume agent更好
+\`\`\`
+
+Figure Helix 2.5 当前要严格区分：
+- smooth robot-action-prediction scaling loss；
+- 30-home strict task completion。
+
+前者是 scale evidence；
+后者是 consumer evidence。
+
+除非两者关系被直接验证：
+> 不要把 scaling-law fit 直接解释成 deployment reliability law。
+
+---
+
+# 59. Trend Maturity Signal — Evaluation Correction Phase
+
+一个新 trend 如果开始连续出现：
+
+- matched-budget evaluation；
+- negative reproduction；
+- evaluator audit；
+- model–method compatibility failure；
+- held-out transfer correction；
+
+说明这个 surface 已进入：
+
+> **novelty → method zoo → attribution/evaluation correction**
+
+阶段。
+
+此时 generic surface method 默认降权。
+
+已经看到的例子：
+- harness self-evolution；
+- CoT faithfulness metrics；
+- synthetic environment scaling；
+- sparse attention selector target；
+- evaluator/runtime correctness。
+
+以后看到一个热词：
+> 不只搜最新方法，还要主动搜 “rethink / failure / evaluation / does X really / controlled comparison / matched budget / negative result”。
+
+通常 correction paper 比第 17 个 variant 更能告诉我们真正 open 的问题。
+
+---
+
+# 60. Broad Literature Calibration — CLOSED
+
+用户要求本轮做完最后一波即结束 broad scan。
+
+截至 2026-09-19：
+
+- academic genealogy library；
+- industry frontier track；
+- startup/HF genealogy 01–11；
+- source/evidence ledger；
+- failure/contrast library；
+- cheap-proxy rules；
+- artifact-maturity rules；
+- industry→academic bridge；
+
+已经足够厚。
+
+从现在起：
+
+> **不再默认进行 broad weekly company/HF crawl。**
+
+重新搜索 literature 只由以下事件触发：
+
+1. 一个 concrete CT candidate 需要 nearest-prior audit；
+2. 需要核 dangerous overlap；
+3. 新公开 artifact 显著降低某 pilot 的成本；
+4. 某个已知 trend 进入 evaluation-correction / negative-result phase；
+5. 用户明确要求重新做 frontier calibration；
+6. target field 目前仍是 Tier C，需要先补 lineage。
+
+目的已经从：
+
+> “多知道几个模型”
+
+转成：
+
+> **对一个具体 research seed，快速判断它来自真实 scientific pressure，还是热词/产品 feature/资源优势；并找到最便宜的 decisively falsifiable experiment。**
+
+广泛 calibration 到此正式收口。
