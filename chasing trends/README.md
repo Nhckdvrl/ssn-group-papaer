@@ -15,8 +15,8 @@
 
 1. `SEARCH_GUIDE_ZH.md` — **canonical 找题规则**。
 2. `SELECTED_TOPICS.md` — 当前正式候选状态。
-3. `framework/PAPER_GENEALOGY_GUIDE.md` — 如何深读 parent → successor，而不是只看摘要。
-4. `framework/AGENT_WORKFLOW.md` — 下一轮 agent 的读写协议与 candidate 生命周期。
+3. `framework/AGENT_WORKFLOW.md` — 下一轮 agent 的读写协议与 candidate 生命周期。
+4. `framework/PAPER_GENEALOGY_GUIDE.md` — 如何深读 parent → successor，而不是只看摘要。
 5. `framework/PARADIGM_ATLAS_ZH.md` — 已观察到的问题形成方式；只能用于校准，不能当 idea menu。
 6. 与目标方向相关的证据库：
    - `academic/`
