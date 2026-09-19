@@ -817,3 +817,165 @@ Reset：
 
 > 仍允许0 survivor。
 
+
+
+---
+
+# 23. Industry / Academia 双轨阅读
+
+新增于 2026-09-19。
+
+用户明确补充：
+
+> 不应该只看学界论文。业界 technical report / model card / system card / engineering report 经常能触及学界暂时无法触及的 scale 和 deployment regime，非常适合找 frontier pressure；但不能因为大公司做了 X，就机械复制 X。
+
+因此正式加入第二条 literature 轨道：
+
+## Academic track
+
+主要用于：
+- scientific question；
+- explanatory decomposition；
+- nearest prior；
+- novelty；
+- identification；
+- controlled experiment；
+- reviewer taste。
+
+## Industry track
+
+主要用于：
+- frontier regime；
+- scale-only phenomenon；
+- product/deployment bottleneck；
+- architecture-system co-design；
+- real usage / traffic；
+- system control variables；
+- production proxy failure。
+
+优先 artifact：
+- technical report；
+- model card / system card；
+- production engineering paper；
+- model release technical blog；
+- real-usage research；
+- incident/failure report。
+
+详细规则见：
+> INDUSTRY_FRONTIER_SCAN_2026-09-19.md
+
+---
+
+# 24. Industry insight 不等于 candidate
+
+来自公司报告的 seed 必须先过：
+
+## Scale-Stripping Test
+
+删除：
+- 公司名；
+- GPU数；
+- model size；
+- proprietary traffic；
+- proprietary environment；
+- product feature名。
+
+还剩下什么 relation / constraint / assumption？
+
+如果只剩：
+> “scale更大所以效果更好”，
+
+停止。
+
+## Cheap Causal Echo
+
+核心 pressure 是否能在：
+- open 1B–8B model；
+- inference-only；
+- existing dataset；
+- short SFT/RL；
+- offline trajectory；
+
+中出现可控制的“小回声”？
+
+如果不能：
+> 只记 inspiration。
+
+## Independent Academic Pressure
+
+删除 company report以后，
+公开 academic evidence能否独立说明这个 relation值得问？
+
+如果不能：
+> 不进入 formal candidate。
+
+---
+
+# 25. Industry artifacts 的证据地位
+
+公司材料可以很强地支持：
+
+> “这个 operational pressure 在 frontier deployment真实存在。”
+
+但通常不能单独支持：
+
+> “这个 mechanism 已经被证明。”
+
+原因包括：
+- recipe bundle；
+- proprietary data；
+- incomplete ablation；
+- system/model confounding；
+- benchmark/product framing；
+- negative runs不透明。
+
+因此：
+
+> **Industry report generates pressure; academic/controlled work establishes explanation.**
+
+---
+
+# 26. Product knob watch
+
+每轮 industry scan 特别关注：
+
+> 哪些变量开始被多家公司显式暴露成 API / system knob？
+
+例如当前可见：
+- effort；
+- routing；
+- context；
+- tool use；
+- memory/context management；
+- parallel test-time compute；
+- multimodal stream；
+- latency/cost mode。
+
+一个变量被产品化说明：
+> 它已经成为真实 operational object。
+
+不说明：
+> 它本身有 novelty。
+
+正确下一问是：
+> academic literature对它的 mechanism / tradeoff / control law已经知道多少？
+
+---
+
+# 27. Industry–Academic Bridge 输出格式
+
+以后若一个 candidate明显受 industry 启发，必须额外写：
+
+- **Industry observation**
+- **Why academia could not easily observe it**
+- **What scale/resource is stripped away**
+- **Underlying pressure**
+- **Academic nearest prior**
+- **Cheap causal echo**
+- **Why small-scale proxy is legitimate**
+- **What would make the proxy invalid**
+- **Full-project compute ceiling**
+
+没有这部分：
+> 不注册。
+
