@@ -111,39 +111,3 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 **What would be required to revive it.** Independent evidence for a broader, coherent scientific object in which surface actions systematically diverge from executed action semantics across multiple non-arbitrary mechanisms (not merely optional defaults), with a common prediction that is not already owned by tool clarification/schema-comprehension work. Do not revive by adding more APIs, default types, or benchmark scale.
 
 
-### F07 — When Does Reading Become Learning?
-
-**Former registration:** S05  
-**Final status:** KILL — 2026-09-19
-
-**Question.** Under ordinary response-only SFT, what determines whether prompt/context information remains transient conditioning, becomes only task-sufficient knowledge, or becomes persistent parameter memory?
-
-**Why it initially looked promising.** The objective-level distinction among read / response-relevant / persistently stored is real, and a matched-exposure relevance intervention appeared capable of identifying a causal writeability law.
-
-**Nearest prior pressure.**
-- Snell et al. (2022), *Learning by Distilling Context*, already establishes that contextual gains generally need explicit distillation to become available without the original context.
-- Zeng et al. (ACL 2024), *Exploring Memorization in Fine-tuned Language Models*, shows fine-tuning memorization varies strongly by downstream task.
-- Szep et al. (EACL 2026), *Unintended Memorization of Sensitive Information in Fine-Tuned Language Models*, directly studies information appearing only in fine-tuning inputs and not targets, including task-irrelevant information, across synthetic/real data and factors such as task type, repetition and model size.
-
-**Real failure reason.** After the 2026 prior audit, broad input-only write-through is no longer an open parent. The remaining matched-relevance question is narrower and experimentally risky: ordinary-dose response-only SFT may leave too little item-specific prompt memory to support a strong result, while making the effect measurable likely requires repetition/overfitting or other recipe choices. That would make the result a fine-tuning-dose interaction rather than a robust conditional-learning law. The “task-sufficient” outcome is also difficult to distinguish from ordinary function learning.
-
-**Do not revive by:** increasing epochs until prompt memory appears, turning it into privacy/extraction, sweeping prompt-loss weights, or adding model families to rescue recipe instability.
-
-### F08 — Same Recall, Different Stability?
-
-**Former registration:** S09  
-**Final status:** KILL — 2026-09-19
-
-**Question.** Can two equally accessible parameter memories have different future editability because they were learned at different times / through different histories?
-
-**Why it initially looked promising.** It separated present accessibility from future stability and connected memorization crystallization, training-order traces and knowledge-update resistance.
-
-**Nearest-prior pressure.**
-- Krasheninnikov et al. (ICLR 2026), *Fresh in Memory*, shows strong training-order/recency encoding, but crucially the effect depends substantially on optimizer and dose: it is largely absent with vanilla SGD, strong with Lion/Adafactor, and needs additional epochs with AdamW/RMSprop.
-- Continual-learning/plasticity work already establishes that optimization history changes future learning ability.
-
-**Real failure reason.** “Memory age” is not a clean causal variable independent of recipe. Early/late acquisition changes acquisition-time parameter state, subsequent gradient interference, optimizer trajectory and recency simultaneously. Mirroring fact identities removes one confound but not this structural entanglement. A common refresh tests recency but also changes the memory state. Therefore a positive result is immediately vulnerable to generic path-dependence, while a null is only recipe-local. Making the claim robust would require an optimizer/LR/dose/schedule/model matrix — experiment explosion.
-
-**S03 lesson.** If the scientific quantity is itself defined by a training path and reasonable recipes can plausibly change the qualitative conclusion, do not treat one trajectory as a universal learning law.
-
-**Do not revive by:** larger recipe sweeps, stronger matching, mechanizing the Fresh-in-Memory direction, or biological consolidation rhetoric.
