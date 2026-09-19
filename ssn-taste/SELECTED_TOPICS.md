@@ -22,18 +22,6 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ## Current selections
 
-### S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?
-
-**Status:** SELECTED — PILOT-AUTHORIZED; CLAIM FROZEN BEFORE RUNS  
-**Registered:** 2026-09-17  
-**Detailed registration:** `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`
-
-**Parent question.** A pretrained language model already has a learned action for “this text/document ends here.” When it becomes an assistant, how is information about **the user's goal being complete** connected to that stopping action: was the needed information already present and post-training mainly changes the readout, or must post-training change the model's internal state/computation before goal completion can control termination?
-
-**Claim boundary.** Do not broaden S03 to generic instruction following, goal-satisfaction representation, response-length planning, or EOS-circuit discovery. The detailed file contains the frozen novelty audit, parameter-locus intervention, pilot, and kill conditions.
-
----
-
 ### S04 — How Do Language Models Update Situation Models Across Event Boundaries?
 
 **Status:** SELECTED — PILOT-AUTHORIZED  
@@ -116,6 +104,9 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ## Explicitly cancelled registrations
 
+- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**: registration cancelled after actual pilot execution. The developmental interpretation was unstable across training budgets and model families; plausible causal stories changed with recipe, while follow-up tests failed to reveal a family-stable mechanism. The remaining robust state-vs-readout fact is too narrow / partly structural to support the original Main-sized parent. Do not revive via more SFT budgets, model families, or base→SFT→DPO/RL trajectory reconstruction.
+
+
 - **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?**: registration cancelled after the final S03-informed recipe-dependence audit. The mother question is scientifically interesting, but the manipulated variable (“memory age / learning history”) is itself an optimizer-path construct: acquisition time, intervening gradients, spacing, recency, dose and parameter state are inseparable. A positive result would require a recipe matrix to distinguish a law from path dependence; a null in one recipe is weak. Do not revive via larger optimizer/model sweeps or a generic consolidation framing.
 
 
@@ -128,4 +119,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 6.**
+**Current selected topic count = 5.**
