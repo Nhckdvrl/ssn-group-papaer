@@ -1430,3 +1430,443 @@ A modest 2B–6B model with clean stage/control pairs may have:
 > thesis B / instrument A+.
 
 For our research process, the second case can be more useful.
+
+
+---
+
+# L. Additional startup / open-lab sources — deep-read pass 2
+
+Added after expanding beyond the first Startup+HF sweep.
+
+---
+
+## ST-21 — Sakana Fugu / Fugu Max / Fugu Ultra v2
+Date: Jun–Sep 2026  
+Type: orchestrator LM technical report + productized research release  
+Tier: II/III  
+Primary:
+- arXiv:2606.21228
+- https://github.com/SakanaAI/fugu
+- https://sakana.ai/fugu-max-release/
+
+Deep-read: **YES**
+
+Actually establishes:
+- orchestration is trained as a language-model policy rather than fixed workflow code;
+- low-latency Fugu deliberately restricts orchestration to worker selection;
+- Ultra tracks multi-agent identities, communication topology, tool-call ownership and subtask state;
+- September release explicitly separates cost-efficient and maximum-capability orchestration regimes.
+
+Does NOT establish:
+- that learned routing is universally superior to fixed routing;
+- that one routing state representation is sufficient across model pools.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **B**
+
+Core pressure:
+> model selection / workflow topology becomes a learnable cognition-allocation policy.
+
+---
+
+## ST-22 — Runway Solaris
+Date: Sep 2026  
+Type: world-model research paper  
+Tier: II  
+Primary:
+- arXiv:2609.00776
+
+Deep-read: **YES**
+
+Actually establishes:
+- interactive UI can be modeled directly as visual-state transitions conditioned on user actions;
+- code/DOM/state-machine representation is not required as the immediate generated object;
+- long autoregressive interaction requires training on model-generated states and managing compounding error.
+
+Does NOT establish:
+- that direct visual generation should replace programmatic UI systems generally.
+
+Taste value: **A**  
+Execution transfer: **D/F**  
+Instrument value: **F**
+
+Core pressure:
+> executable interface behavior can be modeled as world dynamics rather than generated source code.
+
+---
+
+## ST-23 — Skild S1
+Date: Aug 2026  
+Type: company research report / deployment-derived foundation-model study  
+Tier: II/III  
+Primary:
+- https://skild.ai/blogs/s1
+
+Deep-read: **YES**
+
+Actually establishes / company reports:
+- dense downstream data can erase part of the peak gap between scratch specialists and pretrained policies;
+- S1 is trained so a video demonstration specifies a task in context without weight updates;
+- evaluation explicitly separates seen/unseen tasks and short/long horizons;
+- long-horizon unseen tasks run up to roughly ten minutes;
+- deployment friction motivated redefining the value of pretraining as a new adaptation mode.
+
+Does NOT establish:
+- an independent, universally validated scaling law for robot ICL;
+- that one-shot video ICL always dominates post-training.
+
+Taste value: **A**  
+Execution transfer: **D**  
+Instrument value: **C**
+
+Core changed premise:
+> foundation pretraining should be judged by the adaptation mode it creates, not only by fine-tuning sample efficiency.
+
+---
+
+## ST-24 — Physical Intelligence RL Token / MEM / π0.7
+Date: Mar–Apr 2026  
+Type: robotics research papers / company reports  
+Tier: II  
+Primary:
+- arXiv:2604.23073
+- arXiv:2603.03596
+- https://www.pi.website/
+
+Deep-read: **YES at paper/official-report level**
+
+Actually establishes:
+- RL Token exposes a compact VLA representation for small actor-critic online RL;
+- MEM separates short-term visual memory from long-term abstract/text memory;
+- π0.7 explores policy steering/compositional conditioning.
+
+Taste value: **A**  
+Execution transfer: **C/D**  
+Instrument value: **C**
+
+Core lesson:
+> "fast robot adaptation" already decomposes into different channels: in-context task induction, memory, online RL, and steering.
+
+---
+
+## ST-25 — Zyphra ZONOS2
+Date: Jun 2026  
+Type: open TTS technical report + weights/code  
+Tier: II  
+Primary:
+- arXiv:2606.24320
+
+Deep-read: **YES**
+
+Actually establishes:
+- LLM-style MoE routing is substantially less stable on delayed audio-token streams in their setup;
+- MHA was more stable/higher quality than GQA in early tests, but GQA was selected for inference speed;
+- high-bandwidth speaker embeddings leak lexical/duration/noise/pause information and create shortcut failures;
+- LDA + cropping/loss masking + augmentation + staged annealing reduce that leakage;
+- phonemization helps at lower capability but becomes a silent preprocessing failure source at sufficient scale, where byte input can catch up/surpass it.
+
+Taste value: **A+**  
+Execution transfer: **B/C**  
+Instrument value: **A/B**
+
+Core pressure:
+> domain transfer of an architecture/conditioning channel can fail because the new token/statistical process violates assumptions that were benign in text.
+
+Failure-provenance value: **A+**
+
+---
+
+## ST-26 — Inworld Realtime TTS-2
+Date: Aug 31 2026  
+Type: production voice-model release  
+Tier: III/IV  
+Primary:
+- https://inworld.ai/blog/realtime-tts-2
+
+Deep-read: **YES**
+
+Actually establishes / product claim:
+- prior conversational audio, not only transcript, conditions subsequent TTS;
+- natural-language voice direction replaces part of fixed categorical style control;
+- cross-lingual voice identity and persistent realtime session are explicit product requirements;
+- their production stack keeps modular STT/router/TTS boundaries but passes richer state across them.
+
+Does NOT establish:
+- architecture/training mechanism in enough detail for causal claims.
+
+Taste value: **A- pressure / C mechanism**  
+Execution transfer: **C**  
+Instrument value: **F**
+
+Core pressure:
+> utterance-local TTS is an incomplete abstraction when acoustic conversational state persists across turns.
+
+---
+
+## ST-27 — NVIDIA NemotronLabs VoiceChat-11B
+Date: Aug 3 2026  
+Type: open full-duplex model card + weights/config  
+Tier: II  
+Primary:
+- https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B
+
+Deep-read: **YES**
+
+Actually establishes:
+- end-to-end realtime full-duplex speech understanding/generation;
+- separate output channel for tool-call scripts;
+- conversational "on-hold" speech can continue while external tool execution is pending;
+- ~11B open checkpoint, full-duplex/tool protocol, config and broad training-data description;
+- reported training uses ~550k hours of real/synthetic speech.
+
+Does NOT establish:
+- that a separate tool channel is uniquely optimal;
+- causal mechanism for all turn-taking improvements.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **A/B**
+
+Core pressure:
+> realtime assistants have multiple output clocks: conversational speech and structured external action.
+
+---
+
+## ST-28 — Odyssey Starchild-1
+Date: May 2026  
+Type: technical report / closed world model  
+Tier: II  
+Primary:
+- Starchild-1 technical report
+- https://odyssey.ml/introducing-starchild-1
+
+Deep-read: **YES**
+
+Actually establishes:
+- causal realtime joint audio-video rollout is not a straightforward extension of video-only causal generation;
+- audio/video have different temporal frequency, information density and error propagation;
+- standard video-only causal-distillation strategies are insufficient in their setting;
+- asynchronous KV state and rollout adaptation are designed for multirate modalities;
+- short offline generation metrics are insufficient for interactive long-horizon multimodal rollout.
+
+Taste value: **A+**  
+Execution transfer: **F**  
+Instrument value: **F**
+
+Core pressure:
+> multimodal realtime generation is a coupled multirate dynamical system.
+
+Failure-provenance value: **A**
+
+---
+
+## ST-29 — Odyssey PROWL-1
+Date: May 2026  
+Type: RL-driven world-model data generation / technical research  
+Tier: II/III  
+Primary:
+- https://odyssey.ml/introducing-prowl-1
+
+Deep-read: **YES at first-party technical-report level**
+
+Actually establishes:
+- an RL explorer is rewarded for finding world-model failure trajectories;
+- exploration is constrained toward realistic behavior to avoid meaningless adversarial exploits;
+- a prioritized adversarial trajectory buffer shifts training toward unresolved failures;
+- world model and data-discovery policy co-evolve.
+
+Taste value: **A**  
+Execution transfer: **C/D**  
+Instrument value: **C**
+
+Core pressure:
+> data collection can optimize model regret rather than passively sample the environment distribution.
+
+---
+
+## ST-30 — MIRA (General Intuition × Kyutai × Epic)
+Date: Jul 2026  
+Type: open world-model technical report + code + dataset  
+Tier: II  
+Primary:
+- https://mira-wm.com/
+- https://github.com/mira-wm/mira
+
+Deep-read: **YES**
+
+Actually establishes:
+- a 5B latent diffusion world model generates synchronized 2v2 Rocket League views at realtime rates;
+- training data includes synchronized per-player views/actions and game state;
+- code, dataset and model/training configuration are public;
+- multiplayer interaction imposes one shared hidden world that must remain consistent across multiple observers/actions.
+
+Taste value: **A**  
+Execution transfer: **C/D**  
+Instrument value: **A/B**
+
+Core pressure:
+> multi-agent world models require shared latent state consistency, not four independent video predictions.
+
+---
+
+## ST-31 — World Labs Functional Taxonomy / R2S2R / Atlas
+Date: Jun–Sep 2026  
+Type: industrial research framework + robotics simulation report + model release  
+Tier: II/III  
+Primary:
+- https://www.worldlabs.ai/blog/taxonomy-of-world-models
+- https://www.worldlabs.ai/blog/real-to-sim-to-real
+- https://www.worldlabs.ai/blog/atlas
+
+Deep-read: **YES**
+
+Actually establishes / frames:
+- renderer, simulator and planner have different output contracts;
+- R2S2R evaluates simulation partly by whether it preserves policy ranking, training progress and failure regions in reality;
+- simulation usefulness can therefore be defined by decision fidelity rather than exact scalar success-rate matching;
+- Atlas is a multimodal autoregressive diffusion model grounded in shared spatial context, but is closed/early-access.
+
+Does NOT establish:
+- general causal laws for every world-model family;
+- independent verification of all company R2S2R claims.
+
+Taste value: **A**  
+Execution transfer: **D/F**  
+Instrument value: **F**
+
+Core pressure:
+> the fidelity metric for a learned world should be determined by the downstream consumer's decision contract.
+
+---
+
+## ST-32 — Audio8 TTS Preview 0.6B
+Date: Sep 2026  
+Type: open compact TTS checkpoint + codec + INT4 deployment pair  
+Tier: II/III  
+Primary:
+- https://huggingface.co/Audio8/Audio8-TTS-Preview-0.6b
+- CPU INT4 ONNX release
+
+Deep-read: **YES at model-card/code level**
+
+Actually establishes:
+- compact DualAR TTS with separate slow semantic and fast codebook prediction;
+- complete 44.1kHz codec and 0.6B model are public;
+- a matched CPU-oriented INT4 ONNX deployment exists with roughly 1GB runtime footprint in the team's reported setup.
+
+Does NOT establish:
+- a new DualAR scientific thesis (the card explicitly cites Fish Audio S2 Pro inspiration);
+- controlled evidence that the architecture itself is novel.
+
+Taste value: **C+/B-**  
+Execution transfer: **A**  
+Instrument value: **A**
+
+Core value:
+> unusually cheap open speech research instrument, not a primary research-taste anchor.
+
+---
+
+## ST-33 — DeepGrove Maple Preview
+Date: Sep 2026  
+Type: open on-device reasoning model  
+Tier: II/IV  
+Primary:
+- https://huggingface.co/deepgrove/maple-preview
+- deepgrove-ai MLX fork
+
+Deep-read: **YES at model-card/runtime level**
+
+Actually establishes:
+- 20B total / ~1B active MoE;
+- ternary weights;
+- 256 experts with 8 active;
+- 3:1 512-token sliding-window vs global attention;
+- explicit design target of local/on-device inference.
+
+Does NOT establish:
+- enough training ablations or failure diagnosis to identify why each architectural component is load-bearing.
+
+Taste value: **B-**  
+Execution transfer: **B/C**  
+Instrument value: **B**
+
+Status:
+> monitor as deployment-native architecture; not yet a positive genealogy anchor.
+
+---
+
+## ST-34 — Syzygy Mach-1 Additive
+Date: Sep 2026  
+Type: ultra-low-bit compression artifact / custom codec runtime  
+Tier: III  
+Primary:
+- https://huggingface.co/SyzygyResearch/Mach-1-Additive-35B
+
+Deep-read: **YES at release-format/code level**
+
+Actually establishes:
+- highly compressed additive/trellis-coded Qwen-family MoE representation;
+- standalone decode implementation and explicit compression manifest;
+- benchmark-retention measurements against full precision;
+- custom local runtime / GGUF-style distribution.
+
+Does NOT establish:
+- a sufficiently documented scientific derivation of the codec;
+- why this coding structure is the unique consequence of a diagnosed model failure.
+
+Taste value: **C+/B-**  
+Execution transfer: **B**  
+Instrument value: **B/A- for compression engineering**
+
+Status:
+> compression artifact and contrast case, not a current taste source.
+
+---
+
+# M. Recency discipline for HF/startup scanning
+
+New hard rule:
+
+> **Current HF attention is not publication recency.**
+
+Example:
+- Motif 2.6B was resurfacing in 2026 HF discussion, but its technical report dates to Aug 2025.
+
+Therefore every source must record:
+1. original technical-report/model-card date;
+2. latest checkpoint update date;
+3. whether a recent update changed the scientific thesis or only packaging/runtime;
+4. whether "trending now" reflects a genuinely new research result.
+
+Do not let current likes/downloads rewrite genealogy chronology.
+
+---
+
+# N. Convergence is not novelty
+
+Another hard rule strengthened by Solar Open 2:
+
+Solar Open 2 (Jul 2026) includes:
+- ~1M context;
+- hybrid global/linear attention;
+- 12 domain specialists;
+- MOPD consolidation.
+
+These are relevant current industrial evidence.
+
+But similar conceptual moves already appear across:
+- Kimi;
+- MiniCPM;
+- Instella;
+- DeepSeek;
+- other agent-specialist/post-training pipelines.
+
+Therefore a new report can be:
+> strong confirmation that a design pattern is industrially important
+
+without being:
+> a new conceptual seed.
+
+Log convergence separately from changed-premise discoveries.
