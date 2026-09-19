@@ -444,6 +444,44 @@ Mechanism 是回答问题的工具，不是问题来源。
 - 大规模 annotation 才能知道 ground truth；
 - 主结果只是 method × dataset × perturbation × score。
 
+
+## 11.1 Data Path Gate
+
+数据路径本身是选题生死条件，不是后续工程细节。
+
+优先级：
+
+1. **现成公开数据 + 原生 ground truth**；
+2. **小规模程序化 controlled stimuli，答案可解析计算**；
+3. **少量自动生成 + 人工 spot-check**；
+4. **需要大量人工标注 / LLM judge / 专门造 benchmark** —— 强烈负面，通常 KILL。
+
+在 PILOT-AUTHORIZED 前必须回答：
+
+- 核心实验是否能在 **不超过几百个 controlled items** 或一个现成公开数据集上判生死？
+- ground truth 是否可以直接从构造规则/原数据得到，而不是靠另一个 LLM judge？
+- synthetic data 是不是只负责 identification，而不是现象本身？
+- 如果删掉 synthetic generator，是否有自然数据/已有文献说明同一 scientific pressure 确实存在？
+- 是否需要人工标注 hidden state、reasoning quality、semantic faithfulness 等难标变量？如果需要，优先 KILL 或换设计。
+- 数据构造是否偷偷把 hypothesis 写进模板里，例如只有某一 condition 出现特定 lexical cue？
+- 如果 pilot 成功，是否能用一个现成自然数据集做最小 ecological validation，而不是再造第二个大数据集？
+
+硬规则：
+
+> **如果为了让现象可测，必须造一个越来越复杂的数据生成器，那么很可能 generator 已经成为真正的 contribution。此时应优先 KILL，而不是把它包装成 scientific instrument。**
+
+用户偏好下尤其避免：
+
+- 大规模人工 annotation；
+- judge-model 作为主要 ground truth；
+- benchmark construction；
+- 需要大量领域知识的数据清洗；
+- 只有一个 synthetic micro-world 能成立、离开该 world 就无法表达的 claim。
+
+允许的小 synthetic instrument 必须满足：
+
+> 程序化、便宜、可审计、答案解析可得、surface 可随机化、规模小、并且不作为论文卖点。
+
 ---
 
 # 11.5 Training-dynamics recipe gate
@@ -466,9 +504,9 @@ S03 的真实执行经验增加一条硬门槛：
 
 真实 lesson：
 
-- **S03:** single-budget / single-family developmental reading 极易制造假 law；至少先做便宜的 budget ladder，再决定能否讲 developmental story。
+- **S03:** 最终 KILL。真实 pilot 已证明 single-budget / single-family developmental reading 极易制造假 law，且 budget/family 改变了 qualitative story。不要靠继续加 recipe 救。
 - **S05:** 允许做，因为 response relevance 可以在同一 SFT run 中 matched intervention；但若 persistent trace 只在明显 overfitting 后出现，立即 KILL。
-- **S09:** 允许做，因为 mirrored history + same-final-checkpoint contradictory update 能让核心比较比 stage archaeology 干净；但若一项便宜的第二 adaptive-optimizer/dose check 改变 qualitative conclusion，立即 KILL。
+- **S09:** 最终 KILL。核心变量 memory age / learning history 本身就是 optimizer path 的复合产物；即使 mirrored history + same-final-checkpoint update 能改善 within-recipe control，也不能避免 positive result 立即要求大 recipe matrix。
 
 优先保留：
 
@@ -871,49 +909,26 @@ Reset 时：
 
 当前 selected / PILOT-AUTHORIZED：
 
-- S03 — From Document End to Task Done
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
 - S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 - S08 — Is Metacognitive Control Shared?
-- S09 — Same Recall, Different Stability?
 
-S05 / S09 曾在 2026-09-19 被短暂误杀；重新核对直接 prior 与 recipe robustness 后已恢复。以最新 registration 与 SELECTED_TOPICS 为准。
+最终 KILL：
 
-这些题：
+- S03 — 真实 pilot 暴露 developmental story 随 budget / family / recipe 改变；
+- S09 — causal variable 本身是 optimization-history/path construct。
 
-- 不需要下一轮重新审“是否 selected”；
-- 除非出现直接 covering prior 或 pilot 触发 kill condition；
-- 不能作为正向 taste exemplar；
-- 下一轮应继续寻找独立的新 scientific question，而不是围着它们做变体。
+当前 surviving topics 必须继续遵守新的双门槛：
 
-当前没有需要继承的正式半成品 candidate。
+> **Recipe Gate + Data Path Gate**
 
----
+也就是说，不仅要问“能不能识别”，还要问：
 
-# 18. 最终元原则
+> 数据是不是现成/程序可生成、ground truth 是否直接、是否会膨胀成 dataset project、以及一旦结果不稳是否会逼我们继续加 recipe 或加数据。
 
-找题不是：
-
-> 找一个没人填过的小格子。
-
-也不是：
-
-> 找一个最新 paper 的 why。
-
-更不是：
-
-> 先选一个 interpretability tool，再找对象。
-
-真正目标是：
-
-> 找到一个在知道答案以前就值得问的问题；
-> 它来自真实 scientific pressure；
-> 至少存在几个科学意义不同的 possible worlds；
-> 一个相对直接的 experiment 可以区分这些 worlds；
-> prior 有正常 overlap，但没有做掉同一个 decisive unknown；
-> 无论主要结果落在哪个世界，都让我们对模型学习、理解、生成、推理或内部计算多知道一件真正新的事。
-
-允许 0 survivor。
-不为 S10 降标准。
+这些 selected topics 仍然：
+- 不是正向 taste exemplar；
+- 只代表当前值得真正投入第一刀 pilot；
+- 一旦 pilot 触发各 registration 的 kill condition，应立即撤销，不因“已经 selected”而保留。
