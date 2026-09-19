@@ -264,7 +264,7 @@ probe/decodability 本身不是结论。
 
 ## 7.5 Training-dynamics recipe gate
 
-S03/S04 的执行失败与 S05/S09 re-audit 增加一条硬门槛：
+S03 的执行失败与 S05/S09 re-audit 增加一条硬门槛：
 
 > **不要只问 training-dynamics 问题是否可控；先问它是否有理由存在一个 recipe-stable answer。**
 
@@ -277,8 +277,6 @@ S03/S04 的执行失败与 S05/S09 re-audit 增加一条硬门槛：
 - 为了证明不是 recipe artifact，是否会被迫扩张成 optimizer × LR × dose × model zoo。
 
 若最后一项答案是“会”，优先 KILL。
-
-S04 的负面 lesson：若自然现象太弱，必须不断增强 synthetic manipulation 才能识别，可能是 identification instrument 在创造现象。
 
 S03 的负面 lesson：single-budget / single-family training conclusions 极易制造假 law；parameter-locus 或 structural facts 往往比 developmental biography 更稳定。
 
