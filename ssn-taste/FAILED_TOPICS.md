@@ -111,3 +111,14 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 **What would be required to revive it.** Independent evidence for a broader, coherent scientific object in which surface actions systematically diverge from executed action semantics across multiple non-arbitrary mechanisms (not merely optional defaults), with a common prediction that is not already owned by tool clarification/schema-comprehension work. Do not revive by adding more APIs, default types, or benchmark scale.
 
 
+
+
+## S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed? — KILL (2026-09-19)
+
+**Failure mode:** recipe/path dependence in the causal variable itself.
+
+The idea asked whether present accessibility underdetermines future editability because memories of different acquisition ages may have different stability. After S03 exposed how easily training-dynamics stories flip with budget/family/recipe, S09 was re-audited. “Memory age/history” is not a clean variable: it bundles parameter state at acquisition, optimizer trajectory, intervening gradients, spacing, dose and last exposure. *Fresh in Memory* also shows its motivating training-order representation is optimizer/dose dependent. Mirrored schedules and a common refresh improve within-recipe control but cannot turn generic path dependence into a recipe-stable law. A positive result would immediately require broad recipe sweeps; a null in one recipe would be weak.
+
+**Do not revive** by adding optimizers/models, calling one trajectory consolidation, or converting it into a Fresh-in-Memory mechanism follow-up.
+
+**General lesson:** before selecting a training-dynamics topic, ask whether the proposed scientific quantity has a plausible answer invariant enough to survive reasonable recipe perturbations. If the “cause” is itself the optimization path, the project is high risk.
