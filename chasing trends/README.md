@@ -44,18 +44,33 @@
    深读一篇 paper 时具体怎么向下追 parent、siblings、related work、assumption、changed premise、decisive experiment。
 
 3. **LONGITUDINAL_GENEALOGIES_01_2026-09-19.md**  
-   第一批真正纵向 lineage reconstruction：RLVR learning signal、test-time scaling、ICL mechanism、diffusion fast sampling、robot/VLA action representation。重点记录 primitive 如何移动、成功 abstraction 如何制造下一代问题，而不是逐篇摘要。
+   第一批纵向 reconstruction：RLVR learning signal、test-time scaling、ICL mechanism、diffusion fast sampling、robot/VLA action representation。
 
-4. **LITERATURE_MAP_2026-09-19.md**  
+4. **LONGITUDINAL_GENEALOGIES_02_2026-09-19.md**  
+   第二批：pretraining scaling/data mixture、SFT 对 knowledge 的修改、teacher/student-relative distillation、architecture/inductive bias/recurrent depth。
+
+5. **LONGITUDINAL_GENEALOGIES_03_2026-09-19.md**  
+   第三批：VLM interface 与 visual-token lifecycle、latent multimodal reasoning、full-duplex speech、negative/limits、SAM/optimization dynamics。
+
+6. **LONGITUDINAL_GENEALOGIES_04_2026-09-19.md**  
+   第四批：multimodal objective genealogy、speech tokenizer、CoT faithfulness identification、video/world-model dynamics。
+
+7. **GENEALOGY_LIBRARY_INDEX_2026-09-19.md**  
+   当前 18 条 lineage 的统一索引；专门比较 same surface / different genealogy，并记录 saturation 与 execution risk。
+
+8. **CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md**  
+   强制收集反例：giant sweep、from-scratch compute、method-zoo incrementalism、measurement-only、training biography、surface analogy 等，防止把 accepted paper 全部事后美化成漂亮故事。
+
+9. **LITERATURE_MAP_2026-09-19.md**  
    跨会议 breadth map；用于判断 field density、saturated axes 和值得纵向追的 lineage。
 
-5. **PAPER_AUTOPSIES_2026-09-19.md**  
+10. **PAPER_AUTOPSIES_2026-09-19.md**  
    第一轮 paper notes。旧版有明显 method-paper bias，因此只能作为原始阅读记录；以新的 genealogy 文件为上位解释。
 
-6. **LESSONS_FROM_SSN_TASTE.md**  
+11. **LESSONS_FROM_SSN_TASTE.md**  
    保留旧搜索真正有用的 process lesson：repo restore、nearest-prior audit、reviewer compression、data/compute gate、anti-resurrection、execution risk。
 
-7. **SEARCH_GUIDE_ZH.md**  
+12. **SEARCH_GUIDE_ZH.md**  
    当前 canonical 工作流。重点已经从固定 topic template 改为：
    **field map → lineage reconstruction → genealogy induction → pressure mining → candidate audit**。
 
@@ -189,7 +204,7 @@ PaperNotes（https://papernotes.org/）非常适合做：
 
 > **不开始 CT01。**
 
-先继续建立足够厚的 genealogy library：
+当前已完成四批纵向 genealogy、18 条主要 lineage，并加入 contrast/anti-pattern library。仍继续建立足够厚的 genealogy library：
 
 - 不同会议；
 - 不同领域；
