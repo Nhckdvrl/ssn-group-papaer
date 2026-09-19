@@ -2,1080 +2,639 @@
 
 最后系统整理：2026-09-19
 
-这份文件定义 `chasing trends/` 的长期找题与审题流程。
+这份文件是 `chasing trends/` 当前 canonical workflow。
 
-当前阶段：
+当前状态：
 
-> **FRAMEWORK CALIBRATION ONLY — WAITING FOR USER APPROVAL**
-
-在用户明确通过本规范以前：
-
-- 不生成正式 CTxx；
-- 不注册 candidate；
-- 不开始 pilot；
-- 不把任何文献中的 future work 直接变成题。
+> **LITERATURE / TASTE CALIBRATION**
+>
+> 用户通过之前，不开始正式 CT01。
 
 ---
 
-# 1. 目标
+# 1. 目标不是“追某一种论文模板”
 
-优先目标会议：
+本目录名字叫 chasing trends，但目标不是：
 
-- ACL / EMNLP / NAACL Main
+> 看到哪个方向热门，就找一个 gap。
+
+也不是：
+
+> 固定做 failure → mechanism → method → benchmark。
+
+真正目标是：
+
+> **通过大量真实强论文和它们的 related-work genealogy，训练“问题是怎么从 literature 中被看见的”能力。**
+
+方法论文、机制论文、理论论文、empirical phenomenon paper、training paper、generation paper 都可以成为正向学习对象。
+
+关键不是论文最后有没有 method。
+
+关键是：
+
+> **它为什么不是一个凭空 brainstorm 出来的 idea？**
+
+---
+
+# 2. 会议与阅读 provenance
+
+优先持续扫描：
+
+- ACL / EMNLP / NAACL
 - ICLR / ICML / NeurIPS
-
-持续观察：
-
 - AAAI
 - CVPR / ICCV / ECCV
 - TACL
 
-重点不再限定“纯科学机制论文”。
+主动扩展：
 
-当前优先 paper archetype 是：
-
-> **important trend**
->
-> → **specific failure / inefficiency / mismatch**
->
-> → **diagnosis / mechanism**
->
-> → **design principle**
->
-> → **small method**
->
-> → **standard benchmark improvement**
->
-> → **mechanism-aware ablation / analysis**
-
-论文可以以方法为主要 contribution。
-
-但不接受：
-
-> 先拍脑袋发明一个模块 → 涨点 → 再补一个 plausible story。
-
----
-
-# 2. 一篇目标论文的 contribution tuple
-
-以后审题时，强制写清五个对象：
-
-[
-(F, C, P, M, R)
-]
-
-其中：
-
-- **F — Failure / Pain**：现有主流方法到底哪里坏？
-- **C — Cause / Operating mechanism**：为什么坏？
-- **P — Principle**：这个原因推出什么设计原则？
-- **M — Method**：最小实现是什么？
-- **R — Regime**：在哪些模型 / 数据 /任务 / compute regime 下应该成立？
-
-好的 project 应满足：
-
-> (F ightarrow C ightarrow P ightarrow M)
-
-是连续的。
-
-如果：
-
-- F 和 C 没关系；
-- C 不约束 P；
-- P 不自然推出 M；
-- M 的收益和 C 的强弱无关；
-
-说明 story 是拼出来的。
-
----
-
-# 3. “机制”在这里是什么意思
-
-本路线的 mechanism **不等于 mechanistic interpretability**。
-
-以下都可以是 mechanism：
-
-- reasoning step 的信息流断裂；
-- error 在 trajectory 中的传播；
-- policy gradient 集中在少数 branching tokens；
-- easy/hard samples 获得不合理的 rollout budget；
-- reward / advantage estimator 的系统偏差；
-- policy/reference probability mismatch；
-- entropy collapse；
-- diversity collapse；
-- train–test mismatch；
-- supervision distribution 与 student distribution 不匹配；
-- score 被 sequence length / confidence / exposure 等 nuisance confound；
-- compute 被浪费在已经 mastered 的 sample；
-- 某个 intermediate representation 出现 bottleneck；
-- early/late computation 承担不同功能；
-- search/pruning/routing 在错误位置做决定。
-
-优先选择：
-
-> **可以被直接测量、干预、并且能指导算法设计的 mechanism。**
-
-低优先级：
-
-- 某层能 decode 某信息；
-- 某 head 看起来重要；
-- 某 vector 可以 steering；
-- 某 SAE feature 和现象相关；
-
-除非这些内部发现直接给出有效的新方法。
-
----
-
-# 4. Positive taste：应该学习什么论文
-
-不要把强论文只当 citation database。
-
-每一篇 exemplar 都要做以下 autopsy：
-
-1. **Trend**  
-   它为什么处在一个社区真正关心的方向？
-
-2. **Pain**  
-   prior 到底哪里不够？
-
-3. **Diagnostic observation**  
-   作者先看到了什么可重复事实？
-
-4. **Competing explanations**  
-   是否真的排除了最危险的简单解释？
-
-5. **Design principle**  
-   diagnosis 具体限制了什么方法设计？
-
-6. **Method minimality**  
-   方法是不是对症，而不是 module stacking？
-
-7. **Benchmark closure**  
-   为什么这些 benchmark 能证明 method 有价值？
-
-8. **Ablation closure**  
-   哪个实验证明 gain 来自被声称的机制？
-
-9. **Compute story**  
-   gain 是否来自更多 token / sample / FLOPs / parameters？
-
-10. **Reviewer compression**  
-    最弱表述是什么？为什么仍然新？
-
-11. **Growth pattern**  
-    这篇 paper 是怎样从“小 failure”长成 Main story 的？
-
-12. **Transferable primitive**  
-    可以迁移的到底是哪个 causal structure，而不是哪个名词？
-
----
-
-# 5. 文献搜索必须足够广
-
-每轮不得只看一个 conference、一个 subfield 或一个热点。
-
-最少覆盖：
-
-## NLP / LLM
-
-- reasoning / test-time scaling
-- SFT / distillation
-- RLVR / RLHF
-- reward / verifier / PRM
-- post-training dynamics
-- inference-time search
-- model compression / efficient inference
-- multimodal reasoning
-
-## CV / Generation
-
-- diffusion / flow matching
 - image / video generation
-- image editing
-- multimodal generation
-- efficient sampling
-- distillation
-- representation alignment
-- reward fine-tuning
+- multimodal / VLM
+- speech / audio
+- robotics / embodied
+- optimization / learning theory
+- control / dynamical systems
+- statistics / information theory
+- cognitive science / neuroscience
 
-## General ML
+PaperNotes：
 
-- optimization
-- adaptive sampling
-- curriculum
-- credit assignment
-- uncertainty
-- distribution shift
-- information bottlenecks
-- control
-- dynamical systems
+> **用于 breadth discovery，不作为最终 novelty judge。**
 
-PaperNotes 可以用于：
+core paper / dangerous prior：
 
-> **高吞吐 discovery / taxonomy / cross-conference browsing。**
-
-但正式依赖的关键 claim 必须尽量回到：
-
-- ACL Anthology
-- OpenReview
-- PMLR
-- NeurIPS proceedings
-- CVF / ECCV official
-- paper PDF / official project page
+> **必须回原文。**
 
 ---
 
-# 6. 最优先的 generator
+# 3. 两层阅读制度
 
-这一节定义下一轮真正开始搜题时，优先寻找什么 pressure。
+以后每一轮必须同时有：
 
-## G1 — Failure transition / error propagation
+## Layer A — Breadth map
 
-问：
+目标：
 
-> 模型什么时候从“还可恢复”进入“基本失败”？
->
-> 错误是在哪一步产生，之后如何传播？
+> 知道 field 正在沿哪些轴移动。
 
-适合：
+不需要每篇全文。
 
-- reasoning；
-- tool use；
-- generation；
-- planning；
-- multimodal chain。
+可以用：
 
-方法机会：
+- PaperNotes
+- conference pages
+- title / abstract
+- citation graph
+- author/project page
 
-- selective correction；
-- branching；
-- rollback；
-- targeted resampling；
-- local steering；
-- early rescue。
+每个重点 area 至少扫几十篇。
 
-典型成功结构：
+记录：
 
-> GUARD / StepFlow 一类。
+- recurring method families
+- repeated failure claims
+- emerging terminology
+- standard benchmarks
+- dominant assumptions
+- suddenly crowded axes
+- cross-field analogies worth deep reading
 
----
-
-## G2 — Credit assignment mismatch
-
-问：
-
-> 最终 reward / label 到底应该分给哪些 token、step、sample、trajectory？
-
-尤其关注：
-
-- 高影响 token vs 普通 token；
-- planning token vs execution token；
-- successful trajectory 中的 accidental steps；
-- negative vs positive signal；
-- tool feedback 前后的 credit；
-- partial correctness。
-
-方法机会：
-
-- selective loss；
-- adaptive advantage；
-- token/segment weighting；
-- step-level redistribution；
-- selective replay。
+Breadth 不是为了直接出题。
 
 ---
 
-## G3 — Resource allocation mismatch
+## Layer B — Deep genealogy
 
-问：
+真正决定 taste。
 
-> 固定 compute / rollout / sampling budget 是否被均匀花在价值完全不同的位置？
+每轮选 8–15 篇 core paper 深读；
+长期累积到 20+。
 
-例如：
+每篇至少读：
 
-- easy sample 已经 mastered；
-- impossible sample 基本没有正确 rollout；
-- uncertainty 集中在少数 branch；
-- 不同 patch / timestep / token 需要的 compute 不同。
+- Introduction
+- Related Work
+- problem setup
+- decisive experiment / theorem
+- method derivation
+- main ablation / boundary
+- Discussion / Limitations
 
-方法机会：
+并向下追：
 
-- adaptive rollout；
-- adaptive sampling；
-- early stopping；
-- difficulty-aware allocation；
-- conditional compute；
-- curriculum / resampling。
+> 3–8 篇 immediate parent / sibling。
 
-这类题尤其适合当前算力约束，因为：
+输出必须是：
 
-> **方法目标本身通常就是少花 compute。**
+> genealogy card
 
----
+而不是 abstract summary。
 
-## G4 — Objective / estimator mismatch
+详见：
 
-问：
-
-> 我们优化的 surrogate 真正在优化想要的 quantity 吗？
-
-典型：
-
-- group-relative advantage 与 calibration mismatch；
-- reward margin 上升但 winner/loser 都变差；
-- average log-prob 被 step length confound；
-- training loss 混入 irreducible component；
-- reward model 随 search scale 失真。
-
-方法机会：
-
-- corrected objective；
-- debiased estimator；
-- normalized score；
-- constrained optimization；
-- robust reward shaping。
+`PAPER_GENEALOGY_GUIDE.md`
 
 ---
 
-## G5 — Entropy / diversity collapse
+# 4. 每个 lineage 要回答的不是“gap 在哪里”
 
-不要泛泛问：
+先画：
 
-> RL 会不会 entropy collapse？
+## Parent problem
 
-而要问：
+field 真正解决的是什么？
 
-> collapse 从哪一种 update 进入？
->
-> 哪些 token/sample/trajectory 真正贡献 collapse？
->
-> diversity 是不是和 accuracy 的同一个控制量？
+## Dominant decomposition
 
-方法机会：
+大家默认怎么拆这个问题？
 
-- adaptive entropy target；
-- selective entropy regularization；
-- group/quantile baseline；
-- replay / sampling adjustment；
-- negative-signal reweighting。
+## Saturated axes
 
----
+已经被大量论文扫过的方向。
 
-## G6 — Train–test mismatch
+## Frozen axes
 
-这是从 diffusion/CV 最值得迁移的 generator 之一。
+大家一直固定不动的 variable / assumption。
 
-找：
+## Coupled quantities
 
-> 一个训练时严格绑定的 quantity，在推理时被 solver/search/sampling 打散。
+总被同时改变，因而无法知道哪个起作用。
 
-或者：
+## Missing relations
 
-> 训练 objective 隐含假设 A，但 deployment 实际满足 B。
+两个成熟 sub-literature 之间没有解释清楚的关系。
 
-方法机会往往非常干净：
+## Premise shifts
 
-- calibration；
-- rescaling；
-- schedule correction；
-- distribution matching；
-- inference-time adjustment。
+过去 1–2 年 architecture / training / inference / deployment 到底改变了什么 load-bearing premise？
 
-这类论文非常适合：
+## Practical constraints
 
-> **analysis → formula → tiny fix → broad gain。**
+真实使用中什么变量重要，但 paper formulation 没把它作为 object？
+
+## Contradictory evidence
+
+哪些 paper 的结果不能被一个简单 explanation 同时解释？
 
 ---
 
-## G7 — Student / data / feedback distribution mismatch
+# 5. 当前已观察到的 idea-growth moves
 
-尤其适合：
+以下只是 observation library。
 
-- distillation；
-- SFT；
-- rejection sampling；
-- synthetic data；
-- iterative self-training。
+**禁止把它们当 checklist 去填空。**
 
-问：
+已经看到：
 
-> “高质量”数据为什么反而不适合当前 learner？
->
-> teacher 的 style / difficulty / entropy / strategy 和 student 是否错配？
+- objective/component decomposition
+- deployment variable → policy state
+- fragmented methods → unified design space
+- coarse outcome → finer causal/event unit
+- token-level → step/process-level coordinate
+- information addition → information removal
+- invariant/property search
+- theorem assumption audit
+- artificial evidence regime → natural regime
+- changed premise
+- hidden confound in popular proxy
+- relative objective → absolute degradation
+- resource allocation mismatch
+- bottleneck migration
+- structural constraint → workaround
+- two literatures conflict → hidden common quantity
 
-方法机会：
-
-- student-aware refinement；
-- difficulty matching；
-- style alignment；
-- adaptive curriculum；
-- selective distillation。
+下一轮可以出现完全新的 move。
 
 ---
 
-## G8 — Hidden confound in a popular heuristic
+# 6. 强论文应该怎样被“往下推”
 
-找：
+用户要求的不只是：
 
-> 当前社区非常常用一个 score / selector / proxy，
-> 但这个 quantity 被一个 surface factor 系统污染。
-
-例如：
-
-- length；
-- formatting；
-- confidence；
-- number of samples；
-- first-token likelihood；
-- verbosity；
-- positional effects。
-
-最强形式不是：
-
-> “metric 不完美”。
+> 这篇 paper 为什么好。
 
 而是：
 
-> **confound 会改变训练数据 / gradient / search choice，因此直接伤害下游方法。**
-
-然后修 selector。
-
----
-
-## G9 — Internal bottleneck with direct utility
-
-适合少量 interpretability。
-
-要求：
-
-> 找到内部 bottleneck 后，立刻能用来做 routing / editing / pruning / conditioning / correction。
-
-不接受：
-
-> 只有 representation geometry 图很好看。
-
-跨 diffusion / VLM 很多这类 paper 值得学。
-
----
-
-## G10 — Constraint-derived method
-
-从 architecture / optimization / information theory 出发：
-
-> 现有 operator 有一个硬 constraint；
-> failure 是这个 constraint 的直接后果；
-> 改变或绕开 constraint 后，failure 应消失。
-
-这是最“科学”的方法论文结构之一。
-
-但是必须先 audit：
-
-> obvious constraint 是否早已被 literature 挖完。
-
----
-
-# 7. Changed-premise 在新路线里的用法
-
-老问题仍然可以重做。
-
-但必须满足：
-
-> **旧 failure 的主要原因 P 在新范式中确实被改变；因此旧方法/解释不再直接适用。**
-
-可接受例子：
-
-- 从 single-pass CoT 变成长 reasoning；
-- 从 sequence-level RL 变成 group-relative RL；
-- 从 fixed inference 变成 test-time search；
-- 从 offline generation 变成 tool-interactive feedback；
-- 从 multi-step diffusion 变成 one/few-step flow；
-- 从 uniform compute 变成 adaptive compute。
-
-不接受：
-
-- Qwen2 → Qwen3；
-- Llama3 → Llama4；
-- 新 benchmark；
-- 新语言；
-- 更大模型。
-
----
-
-# 8. 跨领域迁移规则
-
-允许大量迁移，但每次强制完成四步。
-
-## Step 1 — 抽象掉领域名
-
-不要记：
-
-> “diffusion 有 SNR-t bias”。
-
-记成：
-
-> **训练时一个 nuisance/control variable 与过程状态一一绑定，但推理算法改变了状态轨迹，使绑定关系破坏。**
-
----
-
-## Step 2 — 找 LLM 中独立存在的 homologous pressure
-
-不能因为结构“像”就移植。
-
-必须问：
-
-> LLM / reasoning / post-training 中是否真的有同样的约束？
-
----
-
-## Step 3 — 导出 prediction
-
-如果迁移是真的，应出现：
-
-> condition A 下偏差强；
-> condition B 下偏差弱；
-> correction C 应特异性修复。
-
----
-
-## Step 4 — 再谈方法
-
-如果没有独立 prediction：
-
-> 只是 analogy，不能立题。
-
----
-
-# 9. 完整工作流
-
-## Phase 0 — Restore
-
-开始每轮前：
-
-- 读 `chasing trends/README.md`
-- 读本文件
-- 读 `PAPER_AUTOPSIES_*.md`
-- 读 `LESSONS_FROM_SSN_TASTE.md`
-- 读 chasing-trends 的 FAILED ledger（建立后）
-- 看最近 commits
-
-同时只把 `ssn-taste` 当：
-
-- anti-duplication；
-- execution-risk；
-- process lessons。
-
-不要把 S04–S08 当新路线正向模板。
-
----
-
-## Phase 1 — Trend map
-
-先画 4–6 个活跃 lineage，不起题。
-
-每个 lineage 记录：
-
-- 最近 1–2 年核心方法；
-- 最近 6–12 个月发生了什么 premise shift；
-- 当前 common baseline；
-- 大家反复报告什么 pain；
-- 哪些 benchmark 已成熟；
-- 代码/训练成本；
-- 哪些方向已经过度拥挤。
-
-不要因为 paper 数多就选。
-
----
-
-## Phase 2 — Failure mining
-
-只收集：
-
-> **具体可测的 failure。**
-
-每条写：
-
-- F 是什么；
-- 谁已经观察；
-- 是否稳定；
-- 是否重要；
-- 它影响 accuracy / efficiency / stability / generalization 中哪个；
-- 是否存在便宜的 reproducer。
-
-不想方法。
-
----
-
-## Phase 3 — Diagnosis map
-
-对最有价值的 failure，写 2–4 个 explanation。
-
-注意：
-
-> 不是为了做纯 possible-world science。
-
-而是为了判断：
-
-> 哪个 explanation 如果成立，会导出不同修法？
-
-如果所有 explanation 都对应同一种 heuristic：
-
-> diagnosis 没价值。
-
----
-
-## Phase 4 — Lock one failure
-
-不要 dump 20 个题。
-
-锁住当前最强的一条，开始深审。
-
----
-
-## Phase 5 — Nearest-prior audit
-
-真正危险 prior 至少看：
-
-- abstract；
-- intro；
-- method；
-- main tables；
-- diagnostic figure；
-- ablation；
-- discussion / limitation。
-
-强制写：
-
-> Prior knows X.
+> **它是从哪里来的。**
+
+所以每个 core paper 都要往下追：
+
+```
+new paper
+↑
+nearest sibling A
+nearest sibling B
+nearest sibling C
+↑
+parent question / method family
+↑
+older premise / theory / task definition
+```
+
+对每一层问：
+
+> 新 paper 相比上一层改了哪个 object？
 >
-> Existing fixes do Y.
+> 是加了新方法，还是重新定义了问题？
 >
-> They still fail / remain unclear under R because Z.
+> 是哪个 related work 的 limitation 真正 load-bearing？
 >
-> We diagnose C.
+> 哪个 limitation 只是 paper writing rhetoric？
 >
-> C predicts principle P.
->
-> P yields method M.
+> 如果我是作者，在前一篇 paper 刚发表时，什么 observation 能让我想到下一步？
 
-如果写不出来：
+---
+
+# 7. 强制区分四种“follow-up”
+
+## Type A — 空格 follow-up
+
+> previous work 没测 model X / language Y / benchmark Z。
+
+默认 KILL。
+
+## Type B — boundary follow-up
+
+> prior claim 在一个关键 regime 下可能不成立。
+
+可能成立，但必须解释：
+
+> 为什么这个 boundary 会改变原结论的 scientific interpretation。
+
+## Type C — explanatory follow-up
+
+> prior phenomenon 已知，但 competing explanation 未区分。
+
+如果不同 explanation 会改变我们对系统的理解 / 方法设计，可以成立。
+
+## Type D — premise-changing successor
+
+> 系统某个 load-bearing premise 已改变，因此旧问题必须重新定义。
+
+高价值。
+
+---
+
+# 8. 不再使用“先生成 20 个 idea”
+
+正式 topic search 开启后也不这样做。
+
+正确流程：
+
+> **先选 lineage，不选题。**
+
+然后：
+
+1. breadth scan
+2. deep-read core papers
+3. draw genealogy
+4. mark scientific / algorithmic pressure
+5. collect unresolved relations
+6. only then form seeds
+
+一个 seed 必须能回答：
+
+> **它具体从哪个 literature tension / assumption / relation 长出来？**
+
+如果来源是：
+
+> “我想到一个挺酷的实验”
+
+默认低优先级。
+
+---
+
+# 9. Topic formation 以后仍要保留旧审计
+
+虽然我们不再固定 paper archetype，但旧 `ssn-taste` 的以下 gate 仍然保留。
+
+## Nearest-prior audit
+
+same decisive unknown / same algorithmic insight 是否已经被做？
+
+## Reviewer compression
+
+reviewer 最危险会把它压成什么？
+
+## Data audit
+
+数据和 ground truth 是否现实？
+
+## Compute audit
+
+核心真假能否低成本判断？
+
+## Recipe audit
+
+如果涉及 training dynamics，结论是不是 optimizer / budget biography？
+
+## Experiment explosion
+
+如果需要巨大 factorial 才能说清楚：
 
 > KILL。
 
----
+## Anti-resurrection
 
-## Phase 6 — Cheap diagnosis gate
-
-在训练新 method 前，先证明：
-
-> F 和 C 不是幻觉。
-
-首个 pilot 尽量：
-
-- 1 个主模型；
-- 1–2 个辅助模型；
-- 1–3 个已有 benchmark；
-- inference/logprob/gradient/rollout 分析；
-- 少量 SFT/RL steps；
-- 无人工大规模标注；
-- 无新 environment。
-
-目标不是出最终数字。
-
-目标是：
-
-> **决定是否值得进入 method stage。**
+旧 failed topic 换名不能复活。
 
 ---
 
-## Phase 7 — Mechanism-to-method derivation
+# 10. 但不再要求所有题满足同一个 scientific-question rubric
 
-强制写：
-
-> If C is true, then an effective method should do P.
-
-然后再写具体实现 M。
-
-最好：
-
-> 一个核心 knob。
-
-最多：
-
-> 两个强相关组件。
-
-如果出现：
-
-- filtering + curriculum + contrastive loss + memory module + verifier + special decoding；
-
-通常说明：
-
-> 没有一个清楚的 design principle。
-
-KILL 或简化。
+不同 paper genealogy 有不同生死标准。
 
 ---
 
-## Phase 8 — Minimum method pilot
+## A. Scientific / mechanistic paper
 
-先验证：
+重点：
 
-1. M 是否真的改变 target mechanism；
-2. benchmark 是否有方向一致的 gain；
-3. gain 是否不是更多 compute 造成；
-4. failure-heavy subset 是否比 easy subset 改善更多。
-
-如果 mechanism 没变但分涨：
-
-> story 错了，需要重新解释，不能硬写。
-
-如果 mechanism 变了但分不涨：
-
-> method 价值不足；考虑一次最直接修正，不无限调参。
+- question 独立成立；
+- explanatory decomposition 真改变；
+- causal evidence 足够；
+- parent overlap 合理。
 
 ---
 
-## Phase 9 — Benchmark plan
+## B. Method paper
 
-full paper 通常应包含：
+重点：
 
-- 2–4 个公认 benchmark；
-- 至少一个强 current baseline；
-- compute-matched comparison；
-- general benchmark；
-- mechanism-heavy / failure-heavy slice。
+- problem pressure 真实；
+- method 不 arbitrary；
+- prior method 为什么解决不了说得清；
+- gain 不是 hidden compute；
+- strong baseline；
+- ablation / boundary 对 claim。
 
-不要求：
+不强求：
 
-> 所有 benchmark SOTA。
-
-更重要的是：
-
-> gain 与 paper claim 对得上。
+> null result 也能 Main。
 
 ---
 
-## Phase 10 — Ablation closure
+## C. Theory paper
 
-不是机械：
+重点：
 
-> 去掉 A / B / C 看掉几点。
-
-优先做：
-
-### Mechanism-strength test
-
-当 failure quantity 变强时：
-
-> baseline gap 是否更大？
->
-> method gain 是否也更大？
-
-### Targeted intervention
-
-只改变我们声称的原因：
-
-> gain 是否按预测改变？
-
-### Compute-normalized test
-
-确保不是：
-
-- 更多 tokens；
-- 更多 rollouts；
-- 更多 samples；
-- 更大 batch；
-- 更长 training；
-- 更多 parameters。
-
-### Boundary test
-
-在哪个 regime：
-
-> method 不应该有效？
-
-能正确失败，往往比再多一个 benchmark 更有说服力。
+- old result 的 assumption audit；
+- theorem 真的改变理解；
+- empirical relevance / bridge 足够时更强。
 
 ---
 
-## Phase 11 — Compute / engineering audit
+## D. Empirical phenomenon / limits paper
 
-高优先：
+重点：
 
-- inference-time；
-- training-free；
-- lightweight SFT；
-- LoRA；
-- 小规模 RL；
-- selective update；
-- existing rollout infrastructure。
+- phenomenon 改变一个 community inference；
+- prior evidence 不能直接推出；
+- setting 不是 gimmick；
+- result 有 downstream meaning。
 
-中优先：
-
-- 2B–8B RLVR；
-- distillation；
-- reward / verifier training；
-- moderate multimodal fine-tuning。
-
-低优先：
-
-- full pretraining；
-- 30B+ repeated RL sweeps；
-- large agentic environments；
-- long-horizon tool simulators；
-- new robotics environment；
-- architecture from scratch。
-
-如果核心 idea 必须等 expensive full run 才能知道真假：
-
-> 默认 KILL。
+不强求 method。
 
 ---
 
-## Phase 12 — Main story audit
+## E. Systems / deployment-driven paper
 
-普通 reviewer 应能在 30 秒内回答：
+重点：
 
-1. 现有热门方法有什么具体问题？
-2. 为什么以前的 fix 没解决？
-3. 我们发现真正原因是什么？
-4. 我们的方法如何直接针对这个原因？
-5. 提升在哪里？
-6. 为什么相信提升来自这个原因？
-
-如果第 3→4 句不自然：
-
-> story 不成立。
+- constraint 真实；
+- prior formulation 忽略它；
+- algorithm genuinely conditions/adapts to it；
+- compute/latency protocol 公平。
 
 ---
 
-## Phase 13 — Final verdict
+# 11. Cross-domain 迁移
 
-不保留正式 “SERIOUS”。
+不要从：
 
-锁定候选后最终必须：
+> “CV 有方法 X”
 
-### PILOT-AUTHORIZED
+出发。
 
-或者：
+正确顺序：
 
-### KILL
+## 1. Read the genealogy
 
-允许整轮 0 survivor。
+CV paper 为什么会出现？
 
----
+## 2. Remove nouns
 
-# 10. PILOT-AUTHORIZED 门槛
+例如 TORS 不是：
 
-必须同时满足：
+> curvature + torsion。
 
-- trend / task 当前重要；
-- failure 真实而非人为造；
-- nearest prior 没完成同一 F→C→P→M；
-- cheap reproducer 可行；
-- diagnosis 有 discriminative prediction；
-- diagnosis 对 method 有约束力；
-- method 足够简单；
-- benchmark 已存在；
-- strong baselines 可跑；
-- compute 可承受；
-- 不依赖大规模新数据；
-- 不依赖 model zoo；
-- 不依赖巨型 recipe sweep；
-- paper 的增益不是隐藏 compute；
-- ablation 可以闭合 claim；
-- reviewer compression 后仍有清楚 novelty。
+真正结构可能是：
 
----
+> 多类 acceleration method 独立发展
+> → 统一 design space
+> → matched attribution
+> → 发现资源分配位置比更新公式更重要
+> → 用 trajectory geometry 定义非均匀 schedule。
 
-# 11. KILL 条件
+## 3. Ask whether the same pressure independently exists elsewhere
 
-出现以下任何一条，应直接杀：
+如果 LLM 中没有：
 
-- same failure + same diagnosis + essentially same fix 已被做；
-- failure 只在很人造的 setting 出现；
-- diagnosis 只是 correlation；
-- diagnosis 不约束 method；
-- method 是任意 module stacking；
-- 只有大量调参才涨；
-- gains 来自更多 compute；
-- benchmark path 不清楚；
-- 需要先造大 benchmark；
-- 需要大量人工标注；
-- 需要 expensive model zoo 才能判断真假；
-- training story 对 optimizer/budget 极不稳定；
-- agent environment 成本成为论文主体；
-- RAG pipeline 工程量大于 scientific/method contribution；
-- reviewer 可压成 “existing method + one heuristic”；
-- cross-domain 只有术语相似；
-- 一旦强 baseline 加上就没有空间。
+> 多个方法争同一 compute budget、但 component attribution 不清，
+
+就不要迁移。
+
+## 4. Derive distinct prediction
+
+没有 prediction，就只是 analogy。
 
 ---
 
-# 12. Reasoning / RLVR 的特别纪律
+# 12. Sasano taste 仍然是硬约束
 
-这是当前高产区，但也最容易卷。
+每轮继续抽样 Sasano 的真实 feedback。
 
-不要泛泛做：
+稳定原则：
 
-- 新 GRPO variant；
-- 新 advantage formula；
-- entropy bonus；
-- difficulty curriculum；
-- token weighting。
+- reviewer 不会帮你找亮点；
+- 论文必须一读就知道在干什么；
+- Introduction 要“納得できる + 面白い”；
+- method / experiments 每一步为什么做必须能解释；
+- novelty 不能只是 new setting；
+- 一个相似 prior 不自动 kill，但必须有实际 knowledge delta；
+- finding 不必符合原 hypothesis；
+- Main body 应能承载主要逻辑，不依赖巨大 appendix 才成立。
 
-必须先有一个具体 diagnosis。
+这套 taste 与“多种 genealogy”并不冲突。
 
-例如：
+反而意味着：
 
-> group-relative baseline 为什么在某种 uncertainty 结构下偏？
-
-> 哪些 token 的 entropy 真的对应 branching decision？
-
-> 哪种 successful trajectory 会产生 harmful gradients？
-
-> tool feedback 如何改变 rollout distribution？
-
-> test-time scaling 为什么在增加 sample 后 verifier 反而变差？
-
-然后方法才有资格出现。
+> genealogy 最后必须能被压成一个 reviewer 听得懂的 story。
 
 ---
 
-# 13. Agentic RL 的特别纪律
+# 13. Literature drift reset
 
-默认低优先。
+出现以下信号，立刻停止出题并继续读：
 
-只有满足以下条件才考虑：
+- 连续 candidate 都来自 reasoning RL；
+- 连续 candidate 都是某种固定 template；
+- 开始看到任何 paper 都想套“failure → method”；
+- 每个 idea 都是某篇 recent paper 的 future work；
+- related work 只用于 kill，没有用于理解 idea growth；
+- 开始只看 abstract / PaperNotes；
+- 不知道 nearest 3–8 篇 prior 的真实 claim；
+- 不知道 field 哪些 axis 已经 saturated；
+- candidate 的来源说不清，只能说“感觉没人做”。
 
-- 可复用现成 environment；
-- 任务 reward 自动计算；
-- rollout 不需要昂贵 API；
-- horizon 不长；
-- failure 可以先 offline/inference 分析；
-- method 不要求新 simulator；
-- pilot 小模型几小时级即可看方向。
+Reset：
 
-否则：
-
-> 即使题很潮，也不适合当前搜索。
-
----
-
-# 14. RAG 的特别纪律
-
-默认不做。
-
-除非：
-
-> 有一个非常干净、非工程化的 learning / inference mechanism，
-> 并且方法主要改模型行为而不是搭 retrieval pipeline。
-
-普通：
-
-- chunking；
-- reranking；
-- query rewrite；
-- memory store；
-- hybrid retrieval；
-
-不进入主搜索池。
+> 换 lineage；
+> 深读一组 paper family；
+> 画 genealogy；
+> 再回来。
 
 ---
 
-# 15. Training / pretraining 的特别纪律
+# 14. 正式开始 candidate search 后的流程
 
-可以做，但吸取 S03/S09。
+只有用户明确通过 framework 后执行。
 
-优先：
+## Phase 0 — Restore repo
 
-- within-run measurable quantity；
-- data/gradient allocation；
-- objective correction；
-- sample weighting；
-- representation alignment；
-- loss decomposition；
-- curriculum with observable state。
+读：
 
-谨慎：
+- README
+- RESEARCH_TASTE_RECALIBRATION
+- PAPER_GENEALOGY_GUIDE
+- latest autopsies
+- failed ledger
+- recent commits
 
-- “什么时候学会能力”；
-- “checkpoint 中机制如何形成”；
-- “不同 stage 为什么产生某能力”；
-- “memory age / training history”。
+## Phase 1 — Choose 3–5 lineages
 
-除非 causal variable 可以干净定义，否则容易 recipe explosion。
+不要先想题。
 
----
+## Phase 2 — Breadth scan
 
-# 16. 新的 reviewer compression 模板
+每条 lineage 扫近期 paper landscape。
 
-每个 candidate 必须完成：
+## Phase 3 — Deep genealogy
 
-> **Current approach X** is widely used for Y, but systematically fails under **regime R**.
->
-> Existing work observes/mitigates **F**, but does not isolate **cause C** (or assumes the wrong cause).
->
-> We show that **C** is the operative bottleneck through **diagnostic E**.
->
-> This implies design principle **P**, leading to **method M**.
->
-> Under matched compute, **M** improves **benchmarks B** and its gains scale with the strength of **C/F**, supporting the proposed mechanism.
+每条至少 2–4 篇 core paper + parents。
 
-如果只能写成：
+## Phase 4 — Pressure ledger
 
-> X 不够好，所以我们提出 M，实验显示更好。
+只记录：
 
-KILL。
+- unresolved relation
+- hidden assumption
+- changed premise
+- unexplained asymmetry
+- wrong unit
+- proxy/confound
+- practical constraint
+- contradictory findings
+- new identification opportunity
 
----
+## Phase 5 — Seed formation
 
-# 17. 下一轮 candidate 输出模板
+把一个 pressure 变成 question。
 
-用户通过本规范后，每个锁定 candidate 最终报告：
+## Phase 6 — Lock strongest seed
 
-- **Trend / lineage**
-- **Current method**
-- **Concrete failure**
-- **Why it matters**
-- **Nearest prior**
-- **Reviewer compression**
-- **Diagnostic hypothesis**
-- **Alternative explanation(s)**
-- **Cheap reproducer**
-- **Design principle**
-- **Proposed minimal method**
-- **Why this method follows from diagnosis**
-- **Benchmarks**
-- **Strong baselines**
-- **Compute estimate**
-- **Mechanism-aware ablations**
-- **Failure-heavy slice**
-- **Expected main figure**
-- **Novelty sentence**
-- **Kill conditions**
-- **Verdict**
+不要 dump 20 个。
 
-最终只有：
+## Phase 7 — Deep prior audit
 
-> **PILOT-AUTHORIZED — register CTxx**
+真正读危险 prior。
+
+## Phase 8 — Experiment / method / theorem path
+
+根据 seed 自己的 genealogy 决定 paper 类型。
+
+不能先规定一定要有 method。
+
+## Phase 9 — Data / compute / execution audit
+
+现实性一票否决。
+
+## Phase 10 — Main-story audit
+
+普通 reviewer 能否理解：
+
+> prior 到哪；
+> 为什么还缺这一问；
+> 我们新知道/新做到什么。
+
+## Phase 11 — Verdict
+
+只有：
+
+> PILOT-AUTHORIZED — register CTxx
 
 或：
 
-> **KILL**
+> KILL
+
+允许 0 survivor。
 
 ---
 
-# 18. 当前硬停止线
+# 15. 在开始 CT01 前仍缺什么
 
-现在不要开始 CT01。
+当前第一批 genealogy 已经覆盖：
 
-必须等用户先审：
+- reasoning failure
+- RLVR learning-signal decomposition
+- test-time search
+- ICL mechanism
+- Transformer theory
+- CoT faithfulness
+- diffusion fast sampling
+- model merging
 
-- `README.md`
-- `LESSONS_FROM_SSN_TASTE.md`
-- 本 `SEARCH_GUIDE_ZH.md`
-- `PAPER_AUTOPSIES_2026-09-19.md`
+但还不够。
 
-用户通过以后，再开始真正搜题。
+继续补：
 
-不为“赶快出题”跳过这一步。
+- EMNLP / NAACL 普通强 Main
+- pretraining / SFT / distillation
+- architecture / inductive bias
+- generation beyond diffusion
+- multimodal / VLM
+- speech/audio
+- at least one robotics/embodied lineage
+- optimization / learning theory
+- negative-results / limitations papers
+- papers without a new method
+- papers with strong methods but weak scientific stories as contrast
+- same lineage 3–8 paper sequences
+
+这一步完成到足够厚，再找题。
+
+---
+
+# 16. 最终原则
+
+不要问：
+
+> “我们这次要找哪一种题？”
+
+要问：
+
+> **“这个 literature 是怎么走到今天的？”**
+>
+> **“最近强论文每次到底改变了哪个基本 object / assumption / relation？”**
+>
+> **“哪些方向已经只是加法，哪些地方仍存在真正的 explanatory / algorithmic pressure？”**
+>
+> **“如果我是作者，在上一代 paper 刚出来时，什么证据会让我意识到下一问值得做？”**
+
+我们要学的是：
+
+> **research moves**
+
+不是：
+
+> **research templates**。
