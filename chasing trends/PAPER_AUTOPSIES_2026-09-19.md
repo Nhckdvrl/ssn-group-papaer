@@ -1,5 +1,19 @@
 # Paper Autopsies — 2026-09-19
 
+> **Status note — superseded as the canonical interpretation.**
+>
+> This file was the first breadth/deep-reading pass and contains useful paper-level observations, but its synthesis over-weighted one paper shape: `failure → diagnosis → method`.
+>
+> Do **not** use its concluding archetype as the topic-search template.
+>
+> Read it together with, and subordinate it to:
+>
+> - `RESEARCH_TASTE_RECALIBRATION_2026-09-19.md`
+> - `PAPER_GENEALOGY_GUIDE.md`
+> - `SEARCH_GUIDE_ZH.md`
+>
+> The current goal is to reconstruct **multiple question genealogies** from strong papers and their related work, not to make every new topic look like the examples below.
+
 目的：
 
 > **学习“问题 / failure 是怎么长成方法论文的”，不是收集方法名。**
