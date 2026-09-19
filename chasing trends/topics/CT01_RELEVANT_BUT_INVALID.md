@@ -1,6 +1,6 @@
 # CT01 — Relevant but Invalid: When Should Reasoning Models Forget Their Own Thoughts?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILLED AFTER RE-AUDIT — 2026-09-19  
 **Registered:** 2026-09-19  
 **Search route:** chasing trends / genealogy-first formal search  
 **Paper type at registration:** empirical-scientific question first; method optional and conditional on pilot
@@ -692,3 +692,99 @@ Therefore the pilot must preserve the exact novelty boundary:
 > **private reasoning history + visible context fixed + valid-vs-invalid prior computation.**
 
 If that distinction weakens in execution, kill immediately.
+
+
+---
+
+# 20. Re-audit verdict — 2026-09-19
+
+> **KILL — do not run the pilot.**
+
+This registration is retained only for provenance and anti-resurrection. The re-audit changes the decision because the project is cheap to execute but too weak in **scientific object, natural data, and Main-story growth**.
+
+## A. Scientific-object collapse
+
+The original registration framed historical private reasoning as **reused/cached computation**. In the open systems that make the knob observable, however, prior `reasoning_content` is serialized back into the next request as additional token context. That makes the experimentally controlled object much closer to:
+
+> special assistant-side textual context produced by the model
+
+than to:
+
+> a restored internal computation state.
+
+The product knob is real, but that alone does not make "computation validity" a distinct academic primitive.
+
+## B. Nearest-prior convergence is now too strong
+
+No single prior runs the exact PRESERVE × VALIDITY interaction, but the surrounding knowledge and method space is already crowded enough that the remaining delta is narrow:
+
+- Huang et al. (2026), *Do LLMs Benefit From Their Own Words?* establishes context pollution from conditioning on prior model-generated responses and already moves toward selective history retention.
+- Choi et al. (EMNLP 2026), *In-Place Feedback: Reliable Refinement for Multi-Turn Expert-LLM Collaboration*, directly treats correction as **state repair**, reports interference from stale reasoning, and prunes/regenerates reasoning that depends on a corrected span.
+- SWE-AGILE (ACL 2026 Findings) already treats retained-vs-compressed historical reasoning as a dynamic reasoning-context design problem.
+
+The remaining distinction — "Turn-1 reasoning was correct when generated, then a later premise makes it invalid" — is clean, but it is mostly a **source-of-staleness distinction**, not yet a new explanatory object.
+
+## C. The proposed main dataset is not a clean fit
+
+Belief-R is useful for behavioral belief revision, but it is not a clean ground-truth instrument for CT01's core variable.
+
+Its update/maintain distinction is generated from a suppression-task setup in which a third commonsense conditional is interpreted as an **additional requirement** versus an **alternative route**. The old derivation is therefore not literally invalidated by an explicit formal premise replacement; the decisive relation is implicit commonsense and human-annotated.
+
+That creates a bad fork:
+
+1. use Belief-R and inherit ambiguity in whether old reasoning is objectively "invalid"; or
+2. create programmatic logic/math premise-replacement pairs, which gives clean identification but makes the headline increasingly synthetic and unsurprising.
+
+MTR-Bench and other interactive environments could add natural dynamic state, but then the project becomes a heavier agent/environment study and loses the original cheap paired identification.
+
+## D. Paper-form audit
+
+### Analysis-only
+
+A positive pilot would most likely establish:
+
+> replaying old reasoning hurts more when later information makes that reasoning stale.
+
+That is a clean interaction, but after the 2026 context-pollution / feedback-repair literature it is unlikely to be wide enough for the intended Main target without adding many task families, state-change types, or mechanistic analyses.
+
+### Method
+
+The natural method would need to decide which historical reasoning depends on changed premises and selectively invalidate/recompute it.
+
+But then the hard part becomes:
+
+> dependency extraction / state repair / reasoning-context management.
+
+That is substantially more engineering and supervision, overlaps the method space of in-place feedback and structured reasoning memory, and risks turning CT01 into exactly the context-management project the original registration tried to avoid.
+
+An oracle retain/clear policy is too trivial to be the method contribution; a learned dependency-aware policy causes experiment expansion.
+
+## E. Why KILL despite cheap execution
+
+The blocker is not feasibility.
+
+It is:
+
+> **cheap pilot + predictable positive result + weak natural-data fit + no clean Main-level growth path.**
+
+The strongest current knowledge sentence is too close to:
+
+> "stale model-generated reasoning can pollute later reasoning, so condition its reuse on whether the state changed."
+
+That is useful systems advice, but not enough reason to spend our research budget here.
+
+## Anti-resurrection
+
+Do not revive as:
+
+- stale CoT removal;
+- validity-aware preserve_thinking;
+- reasoning-cache invalidation;
+- dependency-aware thought pruning;
+- premise-change context filtering.
+
+A genuinely new project would need at least one of the following to change the scientific object:
+
+- actual persistent **non-text** computation/state reuse rather than replayed reasoning tokens;
+- a naturally occurring dynamic domain with objective dependency ground truth where existing state-repair/context work cannot express the decisive unknown;
+- a new structural relation that yields a nontrivial method without requiring a separate dependency-tracking project.
