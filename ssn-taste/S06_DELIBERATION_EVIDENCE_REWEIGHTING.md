@@ -163,3 +163,23 @@ Use forced-answer forks at multiple native reasoning prefixes from the same gene
 No training, model zoo, or mechanistic search is required before this decision.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: LOW.**
+
+Do not search for or build a benchmark. Generate a small factorial evidence world programmatically:
+- 3–4 independently randomized evidence items;
+- exact direction/reliability known by construction;
+- all combinations/permutations generated automatically;
+- answer distribution read directly from the model.
+
+No human labels and no LLM judge are needed. One second semantic skin is enough only after the first signal survives.
+
+**KILL on data grounds** if:
+- the result depends on subjective evidence-quality labels;
+- a large natural corpus is needed to estimate item influence;
+- surface wording cannot be randomized without changing the effect.
+
