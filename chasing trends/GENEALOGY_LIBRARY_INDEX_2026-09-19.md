@@ -849,3 +849,101 @@ literature history
 
 find an object to redefine
 → invent a story
+
+
+---
+
+# F. Industry Frontier Track
+
+从 2026-09-19 起，genealogy library 额外维护一条 **industry frontier track**。
+
+它与 G01–G18 不同：
+
+> G01–G18 主要重建 academic/research lineage；
+> industry track 主要记录 frontier labs 在超大规模训练、真实deployment、product controls、serving和real usage中暴露出的新 pressure。
+
+Canonical file：
+> INDUSTRY_FRONTIER_SCAN_2026-09-19.md
+
+当前第一批 observation：
+
+## I01 — OpenAI GPT-5 routing
+Frontier object:
+> fast/deep model selection + realtime router + user/quality signals。
+
+Academic inspiration:
+> compute-allocation state可能比benchmark difficulty丰富。
+
+Execution warning:
+> 无真实traffic，不复制router。
+
+## I02 — OpenAI effort / parallel test-time compute / model family
+Frontier object:
+> quality × latency × cost × model selection × parallel compute。
+
+Academic inspiration:
+> test-time scaling在产品中已是多维control problem，而非单轴token budget。
+
+## I03 — Anthropic long-running agents
+Frontier object:
+> effort、context compaction、tool use、subagents、steering。
+
+Academic inspiration:
+> context/state management可能是agent computation的一部分，而不是纯infra。
+
+## I04 — Gemini effort and multimodal deployment
+Frontier object:
+> API-level effort controls across multimodal/agentic settings。
+
+Academic inspiration:
+> effort成为operational variable；其实际control semantics值得观察。
+
+## I05 — DeepSeek-V4 million-token architecture-system co-design
+Frontier object:
+> 1M context下 attention / storage / training / serving / agentic use被绑成system bottleneck。
+
+Academic inspiration:
+> bundle中是否存在可小规模独立识别的load-bearing relation。
+
+## I06 — Meta Llama 4 scale / hyperparameter transfer / mid-training
+Frontier object:
+> >30T tokens、32K GPUs、MoE、native multimodal、MetaP、mid-training、10M context。
+
+Academic inspiration:
+> hyperparameter transferability和training-stage complexity在超大scale变成一等问题。
+
+Execution warning:
+> 不能做training biography，也不能复制scale。
+
+## I07 — Production speculative decoding
+Frontier object:
+> theoretical token/FLOP gain与真实GPU latency不等价。
+
+Academic inspiration:
+> efficiency proxy必须接受deployment validity audit。
+
+## I08 — Qwen large-scale agent RL
+Frontier object:
+> million-agent environments、async RL、environment orchestration。
+
+Academic inspiration:
+> policy lag / rollout staleness / environment throughput等system变量可能成为科学对象。
+
+Execution warning:
+> 只在million-scale出现的effect不适合当前项目。
+
+Industry-track共同 gate：
+1. Scale-Stripping Test
+2. Independent Academic Pressure
+3. Cheap Causal Echo
+4. Frontier-Only Phenomenon Test
+5. Full-project compute ceiling
+
+原则：
+> **Inspiration value 与 execution transferability 分开评。**
+
+允许：
+> Inspiration A / Execution F。
+
+但不允许：
+> A级industry inspiration 被误注册成可做candidate。
