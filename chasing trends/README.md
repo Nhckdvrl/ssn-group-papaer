@@ -278,3 +278,48 @@ literature calibration 已完成第一阶段，用户已授权正式找题。
 
 详细见：
 > INDUSTRY_FRONTIER_SCAN_2026-09-19.md
+
+
+---
+
+# 9. Startup / Hugging Face genealogy expansion and closeout
+
+Broad calibration eventually expanded into 11 startup/HF genealogy waves:
+
+- STARTUP_HF_GENEALOGIES_01_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_02_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_03_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_04_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_05_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_06_SCIENTIFIC_FM_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_07_FAILURE_SCALE_CONTINUAL_STRUCTURED_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_08_SCIENTIFIC_EXPERIENCE_AND_STATE_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_09_HARNESS_MATURITY_AUTORESEARCH_PROXY_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_10_LONG_HORIZON_STATE_AND_CORRECTION_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_11_FINAL_FRONTIER_WAVE_2026-09-19.md
+
+These cover:
+- startup technical theses;
+- public matched checkpoints;
+- cheap proxy→full-scale chains;
+- failure provenance;
+- evaluator qualification;
+- scientific foundation models;
+- long-horizon state/correction;
+- harness maturity;
+- world-model consumer contracts;
+- modality extension;
+- pretraining-value decomposition.
+
+The broad literature-calibration phase is now formally closed.
+
+Canonical closure:
+> LITERATURE_CALIBRATION_CLOSEOUT_2026-09-19.md
+
+Future reading should be:
+- CT-candidate specific;
+- nearest-prior specific;
+- dangerous-overlap specific;
+- or triggered by a genuinely changed premise / newly useful artifact.
+
+Do not restart broad HF/company crawling by default.
