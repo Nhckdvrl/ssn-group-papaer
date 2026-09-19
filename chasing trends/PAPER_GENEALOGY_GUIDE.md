@@ -570,3 +570,170 @@ Breadth scan 不需要每篇全文。
 > 最近最强论文是沿着 related work 的哪条缝长出来，而不是从空白处凭空冒出来？
 
 当这些问题变成自然习惯，才算真正建立科研选题 taste。
+
+
+---
+
+# 13. Genealogy relation 必须标 evidence level
+
+纵向读论文时，最危险的不是漏一篇 citation，而是产生 **retrospective inevitability**：
+
+> 看 finished papers 时，所有 successor 都像是从 parent “自然长出来”的。
+
+所以以后 lineage relation 强制分三档：
+
+## [DIRECT]
+
+后一篇明确引用 / 讨论前一篇，并把它作为：
+- parent method；
+- baseline；
+- limitation source；
+- theoretical premise；
+- immediate problem context。
+
+这时可以说：
+
+> B directly extends / challenges / reformulates A。
+
+仍然不要擅自说：
+
+> 作者就是因为 A 才想到 B。
+
+除非 paper/interview 明确说明。
+
+## [FIELD]
+
+A/B 属于同一明确 literature family，且 B 出现时 A 已经构成 field state。
+
+可以说：
+
+> 在 B 出现前，field 已经有 A 所建立的 object / assumption。
+
+不能说：
+
+> A 导致 B。
+
+## [RECONSTRUCTED]
+
+为了理解 research frontier，事后把多个 work 放入共同 conceptual coordinate。
+
+例如：
+
+> RLVR、distillation、visual pruning 都出现 selective update。
+
+这只能用于：
+
+> 比较不同 field 的 research pressure。
+
+绝不能写成：
+
+> 它们是同一个问题或直接互相启发。
+
+---
+
+# 14. 每条 genealogy 必须同时读 contrast case
+
+如果只读 strongest paper，容易学到 polished storytelling。
+
+因此每条 lineage至少加一个 contrast：
+
+### Compute contrast
+同样 scientific question，但 strong work需要巨大 sweep / from-scratch training。
+
+### Incremental contrast
+同一热门 cluster 中，主要差异只是 score/module/benchmark。
+
+### Measurement contrast
+一个 paper只报告 failure；另一个改变 failure attribution。
+
+### Method-necessity contrast
+一个 method可从 diagnosis直接推出；另一个像 post-hoc module stack。
+
+### Theory contrast
+一个 theorem改变 practical regime；另一个只在 toy assumption里成立。
+
+目标不是贬低论文。
+
+而是回答：
+
+> **什么结构值得学，什么只是这篇 paper 在特定资源下成立的 contribution shape。**
+
+当前 contrast library：
+> CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md
+
+---
+
+# 15. Strong paper ≠ suitable project
+
+以后 paper autopsy增加两个独立字段：
+
+## Intellectual value
+- question/formalization是否改变 understanding？
+- evidence是否真正区别 competing explanation？
+
+## Execution transferability
+- cheapest decisive experiment是什么？
+- 需要多少 models / runs / training tokens / API / robot data？
+- negative结果是否导致 experiment explosion？
+- 是否依赖 proprietary system？
+
+允许：
+
+> Intellectual A / Execution D
+
+这种判断。
+
+例如：
+- recurrent-depth latent reasoning可以是很漂亮的 architecture idea；
+- 但 3.5B from-scratch + hundreds of billions tokens 不是我们应该复制的 execution shape。
+
+---
+
+# 16. Same surface, different genealogy test
+
+跨领域读到相似术语时，不直接归类。
+
+例如都叫：
+
+- adaptive
+- selective
+- latent
+- unified
+- dynamic
+- mismatch
+- bottleneck
+
+强制问：
+
+1. state variable是什么？
+2. quantity被优化/保留什么？
+3. old assumption是什么？
+4. decisive evidence是什么？
+5. intervention为什么由该 evidence推出？
+6. 如果换领域名词，剩下的 mathematical/causal structure还一样吗？
+
+如果 1–5 不同：
+
+> 它们只是 surface 同名。
+
+这个 test 用于防止：
+> “CV 有 adaptive X，所以 LLM 也 adaptive X”。
+
+---
+
+# 17. Genealogy library 的使用方式
+
+当前 longitudinal reading 已经开始形成较大的 library。
+
+入口：
+> GENEALOGY_LIBRARY_INDEX_2026-09-19.md
+
+正式找题之前，不要把 index 当 idea menu。
+
+正确使用：
+1. 进入一个真实 literature cluster；
+2. 先恢复它自己的 parent history；
+3. 再用 library检查我们是不是重复某种已经 saturated 的 research move；
+4. 跨域 analog只能作为反问/pressure；
+5. candidate必须由 target-field evidence独立成立。
+
