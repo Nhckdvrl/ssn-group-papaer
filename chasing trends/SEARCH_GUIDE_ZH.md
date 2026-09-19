@@ -1341,3 +1341,250 @@ Hugging Face 当前热度不等于工作当前新。
 
 > 这些文件是 pressure/instrument/genealogy library，
 > 不是 idea menu。
+
+
+---
+
+# 39. Evaluator Qualification Gate
+
+新增于 2026-09-19，来自近期 negative/failure-provenance industrial reports 的校准。
+
+以后凡是 candidate 依赖：
+- verifier；
+- executable reward；
+- unit tests；
+- LLM judge；
+- simulator；
+- hidden tests；
+- success checker；
+
+都不能默认：
+
+> evaluator 输出 = correctness。
+
+在正式使用前至少问：
+
+1. **obvious non-solution test**  
+   明显错误/shortcut 能否通过？
+
+2. **near-miss mutation test**  
+   在正确解附近做局部错误 mutation，evaluator 能否拒绝？
+
+3. **shortcut audit**  
+   模型能不能利用长度、格式、固定答案、visible tests、环境漏洞绕开真正任务？
+
+4. **denominator / censoring audit**  
+   timeout、cap hit、extraction failure、crash 是怎么进入统计量的？
+
+5. **cluster / duplication audit**  
+   表面很多 task 是否实际只有少数 content-distinct units？
+
+6. **repeatability audit**  
+   同一 judge/procedure 重跑是否稳定？
+
+7. **repair requalification**  
+   修 evaluator 后必须用新的 failure generator / mutation population 再测，不能只用修复时看过的案例。
+
+8. **authority separation**  
+   evaluator 在系统里到底承担：
+   - feedback；
+   - reward；
+   - selection；
+   - final certification；
+   哪一种角色？
+
+原则：
+
+> **一个 instrument 能提供有用 feedback，不代表它有资格宣告 correctness。**
+
+---
+
+# 40. Development Tree ≠ Controlled Experiment
+
+开放中间 checkpoint / 多尺度 family 是高价值 artifact，但不是天然 causal proof。
+
+对每条 checkpoint edge 强制画 change map：
+
+- data mixture 是否变？
+- token budget 是否变？
+- learning rate/schedule 是否变？
+- tokenizer 是否变？
+- architecture 是否变？
+- objective 是否变？
+- teacher 是否变？
+- scaffold/harness 是否变？
+- context length 是否变？
+- post-training stage 是否变？
+
+然后把 contrast 分成：
+
+## Clean-ish contrast
+主要变量少，适合现象发现/低成本机制检查。
+
+## Bundled stage contrast
+多个变量同时变，只能用于：
+> 发现 phenomenon，
+不能直接归因。
+
+## Scale family
+模型大小变化，但必须进一步检查：
+- architecture是否同构；
+- recipe是否同构；
+- data/token exposure是否可比。
+
+原则：
+
+> **Development tree 提供自然实验机会；它本身不是实验设计。**
+
+---
+
+# 41. Knowledge Location Audit
+
+以后 continual learning / memory / online adaptation 相关 seed，禁止只写：
+
+> “模型如何记住新知识？”
+
+必须先定位新信息存在哪里。
+
+至少区分：
+
+1. prompt/context；
+2. retrieval/external memory；
+3. recurrent / fast-weight state；
+4. persistent skill/harness state；
+5. adapter/LoRA bank；
+6. dynamically generated weights；
+7. base weights。
+
+每种位置强制记录：
+
+- write cost；
+- read cost；
+- persistence horizon；
+- capacity；
+- retrieval mechanism；
+- interference risk；
+- compositionality；
+- replacement/editability；
+- cross-session persistence；
+- amortization benefit。
+
+并明确区分：
+
+> **stored ≠ reachable ≠ usable ≠ composable。**
+
+例如一个 fact 的 local parameter trace仍在，并不等于普通 query 仍能访问它。
+
+---
+
+# 42. Oracle Role Separation
+
+最近 program synthesis / agent / world-model papers显示：
+
+> executable artifact / test / simulator 可以扮演完全不同的角色。
+
+正式 candidate 必须标：
+
+## Exploration oracle
+agent 可查询以获得行为信息。
+
+## Reward oracle
+用于训练 reward。
+
+## Certification oracle
+定义 final correctness。
+
+## Transition oracle
+负责推进 environment state。
+
+## Teacher oracle
+生成 demonstration / labels。
+
+一个 artifact 可以承担多个角色，但角色越多：
+
+> leakage / reward hacking / circular evaluation 风险越高。
+
+特别规则：
+
+> **visible executable feedback 很适合 interaction / specification elicitation，未必适合 final correctness certification。**
+
+---
+
+# 43. Representation × Consumer Audit
+
+对于 representation / foundation-model 论文，不能默认 downstream head 是透明读取器。
+
+强制问：
+
+1. representation 用什么 consumer/readout？
+2. 线性 probe、MLP、PFN、finetune 是否会改变模型排序？
+3. improvement 来自 representation，还是 downstream inference algorithm？
+4. consumer 是否能从旧 representation 中提取之前没被读出的信息？
+5. sample regime 改变后，consumer ranking 是否变化？
+
+如果一个新的 downstream consumer：
+> 同时改善多个已有 representation，
+
+说明 consumer 自身是 load-bearing method component。
+
+因此：
+
+> **embedding benchmark ≠ representation quality 的唯一测量。**
+
+---
+
+# 44. Failure-Provenance Lineage
+
+以后不只给单篇 paper 做 Failure Provenance Gate。
+
+如果一个 lab/company 连续公开：
+
+\`\`\`
+promising result
+→ boundary failure
+→ cross-family failure
+→ evaluator failure
+→ revised protocol
+\`\`\`
+
+应把它当成一条 longitudinal research lineage 阅读。
+
+重点问：
+
+- claim 是怎么逐步被收窄的？
+- 哪个新实验迫使解释改变？
+- 作者有没有让失败结果保留在公开记录中？
+- success story 是否被后续证据主动修正？
+
+这类材料对 research taste 的价值可能高于单个最终模型。
+
+---
+
+# 45. Proxy-Fidelity 应优先从公开 development tree 实证，而不是口头假设
+
+如果有：
+- 0.9B → 3B → 7B → 30B；
+- tiny → flash；
+- base → stage checkpoints；
+
+优先直接测：
+
+- effect direction；
+- method ranking；
+- mechanism metric；
+- boundary threshold；
+
+是否随 scale/stage 保持。
+
+不要只说：
+
+> “我们先在小模型做，应该能 scale。”
+
+真正的 cheap-proxy纪律是：
+
+> **small proxy 必须被 larger public artifact 校准。**
+
+如果公开 family 自己都出现反转：
+
+> 立即降低该 proxy 对正式 pilot 的可信度。
+
