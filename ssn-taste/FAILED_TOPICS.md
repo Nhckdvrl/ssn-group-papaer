@@ -122,3 +122,16 @@ The idea asked whether present accessibility underdetermines future editability 
 **Do not revive** by adding optimizers/models, calling one trajectory consolidation, or converting it into a Fresh-in-Memory mechanism follow-up.
 
 **General lesson:** before selecting a training-dynamics topic, ask whether the proposed scientific quantity has a plausible answer invariant enough to survive reasonable recipe perturbations. If the “cause” is itself the optimization path, the project is high risk.
+
+
+## S03 — From Document End to Task Done — KILL (2026-09-19)
+
+**Failure mode:** recipe/family-dependent developmental biography.
+
+S03 was actually piloted. The project asked how post-training transforms pretrained document-ending behavior into goal-relative assistant stopping. Initial controlled SFT results suggested a clean readout-vs-state acquisition story, but reasonable changes in training budget changed the interpretation, and the readout contribution differed qualitatively across OLMo/Qwen/Llama-family tests. Subsequent tests of plausible explanations did not recover a stable cross-family law.
+
+The surviving observation—that internal-state adaptation can alter goal-relative stop/continue competition with the stop row frozen, while a stop-row-only intervention has structural limitations—is narrower than the registered parent and partly follows from parameterization constraints.
+
+**Do not revive** by adding budgets, model families, post-training stages, or optimizer sweeps.
+
+**General lesson:** if the explanatory variable “training stage” bundles data, optimizer, budget, serialization, synthetic-data generation and preference objectives, the result may be a training-history biography rather than a reusable scientific law.
