@@ -61,16 +61,19 @@
 8. **CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md**  
    强制收集反例：giant sweep、from-scratch compute、method-zoo incrementalism、measurement-only、training biography、surface analogy 等，防止把 accepted paper 全部事后美化成漂亮故事。
 
-9. **LITERATURE_MAP_2026-09-19.md**  
+9. **INDUSTRY_FRONTIER_SCAN_2026-09-19.md**  
+   业界/学界双轨阅读：technical report、model/system card、production engineering、真实usage。核心是把 frontier-scale pressure 转译成 academic question，并用 Scale-Stripping / Cheap Causal Echo 防止机械抄大厂。
+
+10. **LITERATURE_MAP_2026-09-19.md**  
    跨会议 breadth map；用于判断 field density、saturated axes 和值得纵向追的 lineage。
 
-10. **PAPER_AUTOPSIES_2026-09-19.md**  
+11. **PAPER_AUTOPSIES_2026-09-19.md**  
    第一轮 paper notes。旧版有明显 method-paper bias，因此只能作为原始阅读记录；以新的 genealogy 文件为上位解释。
 
-11. **LESSONS_FROM_SSN_TASTE.md**  
+12. **LESSONS_FROM_SSN_TASTE.md**  
    保留旧搜索真正有用的 process lesson：repo restore、nearest-prior audit、reviewer compression、data/compute gate、anti-resurrection、execution risk。
 
-12. **SEARCH_GUIDE_ZH.md**  
+13. **SEARCH_GUIDE_ZH.md**  
    当前 canonical 工作流。重点已经从固定 topic template 改为：
    **field map → lineage reconstruction → genealogy induction → pressure mining → candidate audit**。
 
@@ -224,3 +227,46 @@ PaperNotes（https://papernotes.org/）非常适合做：
 > **看到一个 literature cluster 时，能判断它现在真正拥挤在哪些轴、哪些 assumption 被默认固定、哪些 relation 尚未被解释、哪个新系统改变了 premise、什么小 observation 有可能长成 Main-sized question。**
 
 这才是 chasing trends 当前真正要训练的东西。
+
+
+---
+
+# 8. Industry / Academia 双轨
+
+从 2026-09-19 起，literature calibration 不再只看 academic conference paper。
+
+额外持续扫描：
+- frontier technical reports；
+- model cards；
+- system cards；
+- engineering / serving reports；
+- product/deployment technical notes；
+- aggregate real-usage research。
+
+业界材料的主要价值：
+
+> **让我们看到学界暂时无法触及的 scale、deployment 和 system pressure。**
+
+例如：
+- million-token context；
+- production routing；
+- effort / parallel test-time compute；
+- context compaction；
+- long-running agents；
+- async RL；
+- million-scale environments；
+- kernel / KV / serving bottleneck；
+- live multimodal / full-duplex / robotics。
+
+但：
+> **industry frontier observation ≠ executable academic topic。**
+
+任何 industry-derived seed 都必须：
+1. strip away proprietary scale；
+2. 提炼 underlying relation/constraint；
+3. 找 independent academic pressure；
+4. 找 cheap causal echo；
+5. 若核心 effect 只能在 frontier scale 观察，则只记 inspiration，不进入 pilot。
+
+详细见：
+> INDUSTRY_FRONTIER_SCAN_2026-09-19.md
