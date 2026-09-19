@@ -8,7 +8,7 @@
 
 - broad literature calibration 已完成；
 - 正式 topic search 已开启；
-- 当前 formal selected：**CT01**；
+- 当前 formal selected：**CT02**；
 - 新 candidate 审完后只允许 **PILOT-AUTHORIZED** 或 **KILL**；
 - 允许整轮 **0 survivor**。
 
