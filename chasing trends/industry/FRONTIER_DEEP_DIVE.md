@@ -10,7 +10,7 @@
 >
 > > Read recent industrial technical reports, model/system cards, production-trace papers, and engineering reports deeply enough to understand **what new research objects only become visible at frontier scale**, while explicitly separating inspiration from executable project design.
 >
-> This document is stricter than `INDUSTRY_FRONTIER_SCAN_2026-09-19.md`.
+> This document is stricter than `FRONTIER_SCAN.md`.
 >
 > The earlier scan asked:
 >
