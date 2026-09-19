@@ -448,33 +448,35 @@ Mechanism 是回答问题的工具，不是问题来源。
 
 # 11.5 Training-dynamics recipe gate
 
-S03 的执行经验与 S05/S09 re-audit 增加一条硬门槛：
+S03 的真实执行经验增加一条硬门槛：
 
-> **不要只问 training-dynamics 问题是否可控；先问它是否有理由存在一个 recipe-stable answer。**
+> **不要把一个 arbitrary training point 当成 learning law。**
 
-对任何 learning / post-training / memorization / acquisition 题，在 PILOT-AUTHORIZED 前必须判断：
+但 recipe dependence 本身不是自动 kill。AI/NLP 论文不要求对所有 optimizer、LR、budget、model family 都给出 theorem-like invariance。真正要防的是：
 
-1. manipulated scientific quantity 能否在同一个 model / optimizer state 内直接 intervention，还是只能通过不同 training histories 间接构造？
-2. training recipe 是 nuisance/control，还是它本身定义了现象？
-3. 合理改变 training dose / LR / optimizer 是否可能让 competing-world 结论直接换号？
-4. 如果结果只在一个 arbitrary optimization point 成立，它本身是否仍是值得发表的 scientific fact？
-5. 为了证明不是 recipe artifact，是否会被迫扩张成 optimizer × LR × dose × model-family sweep？
+> competing-world 的**定性结论**只能靠挑某个训练点成立，而稍微改变一个合理 recipe 就可能反转。
 
-若第 5 项答案为“会”，默认 **KILL**。
+对任何 learning / post-training / memorization / acquisition 题，在 PILOT-AUTHORIZED 前判断：
 
-特别吸取四个失败教训：
+1. decisive comparison 能否尽量放在同一个 model / optimizer state 内，或至少用 mirrored / counterbalanced history 减少不可比性？
+2. recipe 是 nuisance/control，还是 mother question 本身就在做 industrial recipe archaeology？
+3. 是否可以用 **1 个主 recipe + 1 个便宜确认条件**（第二 training dose / adaptive optimizer / seed block）检查 qualitative conclusion，而不是一开始跑大矩阵？
+4. 如果确认条件只改变 effect size，题通常仍可保留；如果 A/B/C world assignment 直接翻转，则优先 KILL。
+5. 为了让故事成立，是否必须扩张成 optimizer × LR × dose × model-family sweep？如果是，KILL。
 
-- **S03:** single-budget / single-family developmental reading 极易制造假 law；稳定的 structural / parameter-locus fact 比“模型在某条训练历史里怎么学会 X”更可靠。
-- **S05:** 若 persistent conditioning-memory 只有在重复 exposure / overfitting 后才明显，结论会退化成 memorization-dose interaction。
-- **S09:** 若“memory age”本身由 optimizer trajectory、intervening gradients 和 acquisition-time state 共同定义，就不存在一个便宜、干净的 age intervention。
+真实 lesson：
 
-这条 gate **不是禁止 training dynamics**。优先保留：
+- **S03:** single-budget / single-family developmental reading 极易制造假 law；至少先做便宜的 budget ladder，再决定能否讲 developmental story。
+- **S05:** 允许做，因为 response relevance 可以在同一 SFT run 中 matched intervention；但若 persistent trace 只在明显 overfitting 后出现，立即 KILL。
+- **S09:** 允许做，因为 mirrored history + same-final-checkpoint contradictory update 能让核心比较比 stage archaeology 干净；但若一项便宜的第二 adaptive-optimizer/dose check 改变 qualitative conclusion，立即 KILL。
 
-> 同一训练状态内的 causal intervention、稳定 quantity separation、低成本 dose check 后仍保持 qualitative conclusion 的 learning law。
+优先保留：
+
+> 同一训练状态内的 causal intervention、matched within-run contrast、或经过小规模 robustness check 仍保持 qualitative conclusion 的 learning law。
 
 优先淘汰：
 
-> industrial recipe archaeology、stage biography、需要大规模 recipe matrix 才能知道结论方向的题。
+> industrial recipe biography、只能靠单个 checkpoint/budget 讲故事、或必须大规模 recipe matrix 才知道结论方向的题。
 
 ---
 
@@ -871,11 +873,13 @@ Reset 时：
 
 - S03 — From Document End to Task Done
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
+- S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 - S08 — Is Metacognitive Control Shared?
+- S09 — Same Recall, Different Stability?
 
-S05 / S09 已在 2026-09-19 re-audit 中取消；其 registration 仅作 anti-resurrection 记录。
+S05 / S09 曾在 2026-09-19 被短暂误杀；重新核对直接 prior 与 recipe robustness 后已恢复。以最新 registration 与 SELECTED_TOPICS 为准。
 
 这些题：
 
