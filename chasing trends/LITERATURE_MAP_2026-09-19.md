@@ -618,3 +618,257 @@ RAG 同理：
 - speech/audio；
 - negative / limits paper lineage；
 - optimization dynamics / theory。
+
+
+---
+
+# 18. Thickening pass completed — 2026-09-19
+
+在第一批 L1–L8 基础上，本轮继续补到 **18 条纵向 lineage**。
+
+新增深读 / reconstruction：
+
+## G06 — Pretraining scaling / data composition
+- Kaplan-style N/D/C scaling
+- Chinchilla compute-optimal reallocation
+- data mixture as structured variable
+- scaling laws for optimal mixtures
+- data-mixing phase transitions
+- repetition/document exposure
+- hyperparameter scaling
+
+关键观察：
+> smooth global scaling law 可以与 capability-specific discontinuity 并存。
+
+## G07 — SFT & knowledge
+- instruction tuning / LIMA worldview
+- new-knowledge fine-tuning
+- hallucination / knowledge modification
+- token/parameter-level SFT analysis
+- giant empirical sweeps as execution contrast
+
+关键观察：
+> SFT example 的作用取决于 model pre-SFT knowledge state；dataset item 有 model-relative property。
+
+## G08 — Distillation
+- standard KD
+- divergence direction / MiniLLM
+- capacity gap
+- key-step CoT
+- curriculum
+- student rollout / selective teacher intervention
+
+关键观察：
+> supervision quality 不是 teacher intrinsic scalar，而越来越被写成 teacher–student–state relation。
+
+## G09 — Architecture / inductive bias
+- Universal Transformer
+- looped computation
+- recurrent latent depth
+- minimal growing depth theory
+- Body Transformer
+- spatial positional inductive bias
+
+关键观察：
+> architecture novelty 更应该由真实 computation / geometry / physics structure约束，而不是 module invention。
+
+## G10 — VLM interface / visual-token lifecycle
+- modality bridge
+- frozen-expert bridge
+- instruction-tuned simple connector
+- high-resolution token explosion
+- depth/instance/token relevance
+- operator-compatible compression
+- dynamic video relevance
+- multi-turn future-query uncertainty
+
+关键观察：
+> 2025–2026 generic visual token compression 已高度 saturated；新 setting 有意义时通常因为 compression objective 本身改变。
+
+## G11 — Latent multimodal reasoning
+- text-centric visual reasoning
+- explicit visual intermediates
+- latent visual tokens / implicit visual reasoning
+
+关键观察：
+> explicit→latent 已形成 cluster，不能再承担 novelty。
+
+## G12 — Full-duplex speech
+- VAD/ASR/LLM/TTS
+- speech token LM
+- shared clock / synchronous LLM
+- direct speech-to-speech / Moshi
+- internal text scaffold
+
+关键观察：
+> speech 把 real physical time / concurrency 变成 first-class modeling variable。
+
+## G13 — Negative / limits / measurement re-attribution
+- prompt calibration
+- prompt-order sensitivity
+- changed premise from instruction tuning
+- evaluation artifact audit
+- inductive-bias world-model probe
+
+关键观察：
+> strongest negative paper 常常改变 failure attribution，而不只是找一个 failure。
+
+## G14 — Optimization / SAM dynamics
+- SAM
+- whole-trajectory Hessian dynamics
+- saddle/instability
+- lookahead correction
+- objective reformulation
+- optimizer memory as implicit loss modification
+
+关键观察：
+> successful algorithm 的 original motivation 也可以成为 downstream scientific hypothesis，而不是永久真理。
+
+## G15 — Multimodal pretraining objectives
+- contrastive vs generative
+- BLIP / CoCa unification
+- BLIP-2 frozen bridge
+- unified understanding-generation
+- capability-asymmetry/self-supervision
+- autoencoder/reconstruction relation
+
+关键观察：
+> 后期问题逐渐从“选哪种 loss”转向“不同 capabilities/objectives 之间应该满足什么 relation”。
+
+## G16 — Speech tokenization
+- neural acoustic codec
+- semantic units
+- SpeechTokenizer hierarchical RVQ
+- Mimi streaming/low-rate constraints
+- speech-LM scaling
+- contextual representation / DM-Codec
+
+关键观察：
+> tokenizer 定义 downstream model 把 capacity 花在什么 variation 上。
+
+## G17 — CoT faithfulness identification
+- bias/hint intervention
+- causal mediation
+- model-family differences
+- parametric faithfulness / unlearning
+- metric diagnosticity
+- natural evidence regime
+
+关键观察：
+> scientific concept 会随着 identification strategy 变化而被重新定义。
+
+## G18 — Video / world-model dynamics
+- video generation
+- action-conditioned transition model
+- interactive digital twin
+- appearance/dynamics disentanglement
+- unified action/world model
+- autoregressive long-horizon state error
+
+关键观察：
+> generator 被用于 planning/interaction 后，“生成看起来合理”不再等于“world model正确”。
+
+详细见：
+- LONGITUDINAL_GENEALOGIES_02_2026-09-19.md
+- LONGITUDINAL_GENEALOGIES_03_2026-09-19.md
+- LONGITUDINAL_GENEALOGIES_04_2026-09-19.md
+- GENEALOGY_LIBRARY_INDEX_2026-09-19.md
+- CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md
+
+---
+
+# 19. Breadth → depth balance check
+
+这一轮没有把所有方向都“深读到一样深”。
+
+当前 depth 大致分三层：
+
+## Tier A — longitudinally reconstructed with multiple parents/successors
+- RLVR
+- test-time scaling
+- ICL mechanism
+- diffusion fast sampling
+- VLA/action representation
+- SFT/distillation
+- VLM token lifecycle
+- speech/full-duplex
+- SAM
+- CoT faithfulness
+
+## Tier B — solid multi-paper conceptual reconstruction
+- pretraining scaling/data mixture
+- architecture/depth/inductive bias
+- multimodal objective unification
+- speech tokenization
+- video/world model
+
+## Tier C — breadth-scanned, not yet a primary taste source
+- long-context
+- MoE/routing
+- model editing
+- continual learning
+- code/program synthesis
+- 3D
+- scientific ML
+
+Rule：
+
+> Tier C 不得直接拿来出候选题。
+>
+> 如果未来 seed 落到 Tier C，先做一轮对应 genealogy reconstruction。
+
+---
+
+# 20. Current literature-density warnings
+
+截至当前 scan，特别需要警惕以下近期 cluster：
+
+- generic GRPO variants；
+- entropy/selective-token RL；
+- generic test-time adaptive compute；
+- visual-token compression；
+- latent visual reasoning；
+- unified multimodal models；
+- student-aware CoT distillation；
+- full-duplex speech as a label；
+- generic world models；
+- CoT faithfulness metrics；
+- generic scaling-law fitting。
+
+这些不是不能研究。
+
+而是：
+
+> **仅凭进入这些热门 cluster，本身已经没有选题信息。**
+
+必须恢复更窄的 parent history和真实 pressure。
+
+---
+
+# 21. Current stopping discipline
+
+用户明确要求：
+> 不要做一批就过早“跳出来”。
+
+因此 literature-calibration阶段的完成标准不再是：
+
+> “找到几个漂亮 meta-pattern”。
+
+而是至少同时有：
+
+1. 多领域 breadth map；
+2. 多条 longitudinal lineage；
+3. immediate-parent reconstruction；
+4. same-surface/different-genealogy comparison；
+5. contrast / anti-pattern library；
+6. execution-transfer audit；
+7. saturation map；
+8. clear blind-spot ledger。
+
+当前已经首次具备 1–8 的基本版本。
+
+这仍不代表：
+> “现在应该立刻开始找题”。
+
+只代表：
+> 后续若进入 candidate search，已经不再只有一套单一模板作为视角。
