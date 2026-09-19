@@ -109,3 +109,29 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 **Failure reason — Main-scope / Related-Work width.** The exact experiment remains relatively novel, but novelty at the exact-cell level is not enough. At the abstraction level used by nearby EMNLP Main work, a reviewer can reasonably compress this idea to **a special case of underspecified tool intent / argument completion where the missing argument has a default value**. Broadening the paper to `effective action semantics` would be rhetorical unless additional independent phenomena establish that broader parent; keeping it honest leaves an API-default corner case one level narrower than the Main scientific neighborhood. Therefore S01 fails the required width audit even though the exact contrast is not directly owned.
 
 **What would be required to revive it.** Independent evidence for a broader, coherent scientific object in which surface actions systematically diverge from executed action semantics across multiple non-arbitrary mechanisms (not merely optional defaults), with a common prediction that is not already owned by tool clarification/schema-comprehension work. Do not revive by adding more APIs, default types, or benchmark scale.
+
+
+
+
+## S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed? — KILL (2026-09-19)
+
+**Failure mode:** recipe/path dependence in the causal variable itself.
+
+The idea asked whether present accessibility underdetermines future editability because memories of different acquisition ages may have different stability. After S03 exposed how easily training-dynamics stories flip with budget/family/recipe, S09 was re-audited. “Memory age/history” is not a clean variable: it bundles parameter state at acquisition, optimizer trajectory, intervening gradients, spacing, dose and last exposure. *Fresh in Memory* also shows its motivating training-order representation is optimizer/dose dependent. Mirrored schedules and a common refresh improve within-recipe control but cannot turn generic path dependence into a recipe-stable law. A positive result would immediately require broad recipe sweeps; a null in one recipe would be weak.
+
+**Do not revive** by adding optimizers/models, calling one trajectory consolidation, or converting it into a Fresh-in-Memory mechanism follow-up.
+
+**General lesson:** before selecting a training-dynamics topic, ask whether the proposed scientific quantity has a plausible answer invariant enough to survive reasonable recipe perturbations. If the “cause” is itself the optimization path, the project is high risk.
+
+
+## S03 — From Document End to Task Done — KILL (2026-09-19)
+
+**Failure mode:** recipe/family-dependent developmental biography.
+
+S03 was actually piloted. The project asked how post-training transforms pretrained document-ending behavior into goal-relative assistant stopping. Initial controlled SFT results suggested a clean readout-vs-state acquisition story, but reasonable changes in training budget changed the interpretation, and the readout contribution differed qualitatively across OLMo/Qwen/Llama-family tests. Subsequent tests of plausible explanations did not recover a stable cross-family law.
+
+The surviving observation—that internal-state adaptation can alter goal-relative stop/continue competition with the stop row frozen, while a stop-row-only intervention has structural limitations—is narrower than the registered parent and partly follows from parameterization constraints.
+
+**Do not revive** by adding budgets, model families, post-training stages, or optimizer sweeps.
+
+**General lesson:** if the explanatory variable “training stage” bundles data, optimizer, budget, serialization, synthetic-data generation and preference objectives, the result may be a training-history biography rather than a reusable scientific law.

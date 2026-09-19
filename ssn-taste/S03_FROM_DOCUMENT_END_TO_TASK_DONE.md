@@ -1,6 +1,6 @@
 # S03 — From Document End to Task Done
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILL — registration cancelled after execution/recipe-dependence audit (2026-09-19)  
 **Registered:** 2026-09-17  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** capability acquisition / post-training dynamics + controlled parameter intervention
@@ -377,3 +377,40 @@ The main result should be a learning/acquisition law or decomposition, not `mode
 - **Agent policy:** keep the mother question and identification logic fixed; adapt concrete experiments aggressively according to actual evidence, compute cost, and implementation reality.
 
 The experiment plan is intentionally a **research scaffold rather than a frozen recipe**.
+
+---
+
+## Final execution audit — KILL
+
+**This section is authoritative and supersedes the original pilot authorization.**
+
+S03 was actually piloted. The failure is not merely that one hypothesis lost; the parent developmental question itself became unstable under reasonable experimental perturbations.
+
+### What the pilot taught
+
+Across training budgets and model families, the apparent readout-vs-state story was not stable. A result that looked interpretable at one SFT budget changed when the budget was varied, and the readout contribution changed qualitatively across OLMo/Qwen/Llama-family tests. Several plausible mechanistic explanations were then separately tested and failed to provide a family-stable account.
+
+The robust remainder is much narrower: internal-state adaptation can alter goal-relative stop/continue competition even when the stop output row is frozen, while a stop-row-only intervention has structural limitations on the continuation side. That is useful process evidence, but it no longer supports the registered parent claim about how post-training generally transforms document ending into task-relative stopping.
+
+### Why continuing is not justified
+
+1. The scientific variable “post-training stage” compresses many simultaneous changes: data mixture, serialization, optimizer, budget, synthetic-data loops, preference optimization and model-family-specific interfaces.
+2. Reasonable budget changes altered the inferred story, creating the same failure mode as a recipe-dependent training biography rather than a stable learning law.
+3. Cross-family disagreement is not a small effect-size variation; it changes which competing explanation looks plausible.
+4. Explaining those interactions would require increasingly large recipe/model sweeps with no clear stopping point.
+5. The remaining stable parameter-locus fact is too narrow / partly structural to justify continuing the original Main-sized project.
+
+### Final verdict
+
+**KILL.**
+
+Do not continue S03 by:
+- adding more SFT budgets;
+- adding more model families;
+- trying to reconstruct a universal base→SFT→DPO/RL developmental story;
+- converting model-family differences into the new parent question;
+- inflating the structural state-vs-readout remainder into a universal stopping mechanism.
+
+### General lesson
+
+> A training-dynamics question is high-risk when its apparent causal variable is actually a bundle of recipe decisions. Before investing, ask whether a recipe-stable qualitative answer should exist at all.

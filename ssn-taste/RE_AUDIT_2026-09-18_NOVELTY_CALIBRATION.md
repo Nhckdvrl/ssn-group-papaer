@@ -1,5 +1,14 @@
 # Re-audit — Novelty Calibration (2026-09-18)
 
+## Current-use note
+
+This file is a **historical novelty-calibration overlay**, not the current search constitution and not an active-candidate list.
+
+Current rules live in **SEARCH_GUIDE_ZH.md**. Current selected state lives in **README.md / SELECTED_TOPICS.md / Sxx registrations**.
+
+Labels such as REOPEN-SERIOUS / REOPEN-GENERATOR below record what the 2026-09-18 re-audit concluded at that time. They must not be inherited as present candidates without a fresh search decision. In particular, new locked seeds should now be resolved to **PILOT-AUTHORIZED or KILL**, rather than left as a persistent half-state.
+
+
 **Purpose.** Re-audit the existing `FAILED_TOPICS*` ledgers after correcting an overly strict novelty rule. The old ledgers remain useful negative/process evidence and are not overwritten. This file is an overlay: it records which old kills still stand, which should be reopened only as generators, and which deserve a fresh serious audit.
 
 ## 1. Corrected novelty rule

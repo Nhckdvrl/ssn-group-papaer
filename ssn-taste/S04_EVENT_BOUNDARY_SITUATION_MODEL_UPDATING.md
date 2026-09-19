@@ -209,3 +209,46 @@ The registered question is deliberately broad enough for ACL/EMNLP/NAACL Main:
 > **How do language models update their active situation representations when one narrative event becomes another?**
 
 Incremental editing, global reconstruction, and selective reactivation are competing mechanistic explanations, not three separate topics and not an over-narrow novelty claim.
+
+---
+
+## 2026-09-19 execution-risk re-audit — KEEP / PILOT-AUTHORIZED
+
+S04 survives the S03-informed feasibility audit because it does not reconstruct a training history. The main risk is instead **construct ambiguity**: probe accessibility alone cannot establish an update computation.
+
+### Tightened execution gate
+
+The first decisive experiment should prioritize a causal history-access bottleneck over broad probing:
+
+- process a matched event transition normally;
+- at a downstream query/continuation, block direct attention/access from the query region to pre-transition tokens while preserving post-transition states;
+- compare changed, still-relevant-unchanged, and obsolete information.
+
+Proceed to Zhao/Cho-style mechanistic localization only if post-transition states carry a reproducible, content-selective signature that causally supports later use.
+
+**KILL immediately** if:
+- probe effects are present but disappear under the causal bottleneck;
+- the pattern reduces to generic recency/sentence-boundary effects;
+- incremental vs reconstruction/reactivation cannot be distinguished without increasingly elaborate representational assumptions.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: MEDIUM, acceptable only under a strict cap.**
+
+Primary identification may use at most a few hundred programmatically generated micro-narratives with explicit state variables. No manual event-boundary annotation project is allowed.
+
+Natural validation should reuse existing resources rather than create a dataset:
+- ProPara / OpenPI for entity-state changes in procedural text;
+- PASTA for participant states and counterfactual state changes;
+- existing human/LLM event-segmentation narratives when useful for boundary realism.
+
+**KILL on data grounds** if:
+- the causal contrast requires large-scale manual annotation of “current situation state”;
+- controlled stories require increasingly elaborate hand-written narratives to avoid artifacts;
+- the main claim only appears in one synthetic story generator and cannot be expressed on any existing natural state-tracking resource;
+- the paper starts to look like a new narrative-state dataset.
+

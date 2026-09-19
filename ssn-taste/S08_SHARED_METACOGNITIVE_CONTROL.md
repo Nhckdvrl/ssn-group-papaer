@@ -184,3 +184,45 @@ The pilot is authorized because:
 - causal cross-intervention cleanly distinguishes shared, hierarchical, and dissociated control architectures;
 - the pilot is small, training-free, and not evaluation-centric;
 - every principal outcome produces a meaningful computational conclusion.
+
+---
+
+## 2026-09-19 execution-risk re-audit — KEEP / PILOT-AUTHORIZED
+
+S08 survives the recipe audit because the first decision is training-free and same-model. Its real risk is **mechanistic construct validity**: independently decoded confidence and termination directions must correspond to causally meaningful states rather than convenient linear separators.
+
+Recent work causally establishes confidence→abstention but explicitly leaves extended reasoning open; confidence-guided termination methods motivate, rather than settle, the shared-vs-separable-control question.
+
+### Tightened execution gate
+
+One open reasoning model only. Build matched-prefix labels, then require a genuine cross-causal matrix:
+
+- confidence steering must first validate on confidence/abstention;
+- termination-control steering must validate on native stop/continue;
+- then test both cross-effects at the same prefixes.
+
+**KILL immediately** if:
+- either direction is only decodable but not steerable;
+- cross-effects depend sensitively on arbitrary layer/vector choices;
+- “termination control” disappears after matching confidence/depth/correctness;
+- the project requires head/neuron archaeology before establishing the functional dissociation.
+
+Do not add models or fine-tuning to rescue an ambiguous first cross-steering result.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: VERY LOW.**
+
+Reuse existing discrete-answer reasoning datasets such as MATH-500, GSM8K and AIME-style problems. Ground-truth correctness is already available. Prefix-level confidence labels come from forced-answer forks; termination labels come from the model's native reasoning trace.
+
+No new dataset, human annotation or judge model is required.
+
+**KILL on data grounds** if:
+- the experiment starts requiring manually labeled reflection/backtracking quality;
+- confidence must be judged from free-form verbal explanations instead of a direct answer distribution;
+- success depends on curating a special task set where stopping behavior looks clean.
+

@@ -166,3 +166,44 @@ The pilot is authorized because:
 - a single anomaly followed by reset/source/transition probes gives a small and direct identification strategy;
 - the experiment need not become a benchmark or model zoo;
 - all major outcomes provide interpretable knowledge gain.
+
+---
+
+## 2026-09-19 execution-risk re-audit — KEEP / PILOT-AUTHORIZED
+
+S07 survives strongly. The key variables are manipulated at inference time in one controlled sequential world, and the trusted-reset/source-reuse/transition-prediction fingerprints directly separate revision loci. No training recipe is part of the causal claim.
+
+### Tightened execution gate
+
+Run one semantic instantiation first, but require the three diagnostic readouts to separate cleanly:
+
+- immediate state belief;
+- same-source influence after trusted state reset;
+- next-transition prediction after reset.
+
+**KILL immediately** if:
+- reset does not actually isolate current-state uncertainty;
+- source and transition fingerprints remain behaviorally inseparable;
+- results are dominated by explicit lexical cues rather than history-dependent revision;
+- the project starts requiring a large POMDP benchmark to make the effect visible.
+
+A second surface realization is a robustness check only after a clean first signal.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: LOW.**
+
+Use a tiny programmatic sequential world with exact hidden state, source reliability and transition rule. Histories, anomalies, trusted resets and follow-up probes are generated from the latent process, so ground truth is analytic rather than annotated.
+
+Belief-R can be used only as neighboring/natural validation for belief revision; it is not sufficient for the three-way state/source/rule identification.
+
+**KILL on data grounds** if:
+- identifying the revision locus requires manually labeling model explanations;
+- the three fingerprints only work in one heavily scripted lexical template;
+- more than two semantic skins are needed to convince ourselves the effect is not wording;
+- the project expands into a POMDP benchmark.
+

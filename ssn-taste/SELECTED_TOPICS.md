@@ -22,27 +22,6 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ## Current selections
 
-### S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?
-
-**Status:** ❌ **KILLED 2026-09-19 — `K195 / ARCHIVED`**  
-**Registered:** 2026-09-17 · **Killed:** 2026-09-19  
-**Kill record:** `failed/KILLED_LEDGER_CONTINUATION.md` (K195); process record in
-`candidates/S03_GOAL_RELATIVE_STOPPING/docs/RESEARCH_LOG.md`  
-**Why:** the object was absorbed by the training recipe — every repair added a
-dependency (budget, family, tokenizer/serialization, three falsified mechanisms)
-rather than removing one, and 2026 post-training has no shared
-`Pretrain -> SFT -> RL` path to index. The final adjudication experiment (E04)
-gave one clean fact (decoupling the goal destroys goal-relative stopping while
-leaving generic boundary competence intact) but no resolution on which
-supervision carries the binding. **Do not reopen under a new name.**  
-**Detailed registration:** `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`
-
-**Parent question.** A pretrained language model already has a learned action for “this text/document ends here.” When it becomes an assistant, how is information about **the user's goal being complete** connected to that stopping action: was the needed information already present and post-training mainly changes the readout, or must post-training change the model's internal state/computation before goal completion can control termination?
-
-**Claim boundary.** Do not broaden S03 to generic instruction following, goal-satisfaction representation, response-length planning, or EOS-circuit discovery. The detailed file contains the frozen novelty audit, parameter-locus intervention, pilot, and kill conditions.
-
----
-
 ### S04 — How Do Language Models Update Situation Models Across Event Boundaries?
 
 **Status:** SELECTED — PILOT-AUTHORIZED  
@@ -67,13 +46,11 @@ supervision carries the binding. **Do not reopen under a new name.**
 
 **Parent question.** Under ordinary response-only SFT, prompt/context information is available to the model but receives no direct token loss. What determines whether that information remains transient conditioning, is compressed into only the task-sufficient information needed to predict the response, or becomes persistent parameter memory?
 
-**Scientific pressure.** Conditional training specifies what should be predicted *from* the input, but does not explicitly specify what *about* the input should be durably written into the model. `Read`, `needed for the supervised prediction`, and `stored in parameters` are therefore three distinct learning claims.
+**Scientific pressure.** EACL 2026 establishes that input-only, target-absent information can be unintentionally memorized and explicitly suggests downstream-task utility matters, but does not causally match exposure while changing only response relevance. S05 targets that missing quantity.
 
-**Nearest-prior ownership boundary.** Prompt-loss work studies whether prompt tokens should receive direct loss; context-distillation work deliberately internalizes context into weights; memorization/extraction work shows that some completion-only prompt content can leave traces. S05 is viable only while current prior does **not** already identify the matched-exposure causal law governing which conditioning-only information becomes persistent under ordinary response-only SFT.
+**Minimum identification.** Match prompt-side exposure within one SFT run while changing only whether the information is causally necessary for predicting the response; use a small dose ladder and direct-supervision positive control.
 
-**Minimum identification.** Match prompt-side information exposure while changing only its causal relevance to the supervised response; track task-sufficient knowledge versus full-detail parameter traces across training checkpoints.
-
-**Claim boundary.** Do not turn S05 into prompt-loss hyperparameter tuning, privacy extraction, `more epochs -> more memorization`, or a context-parameterization method. The target is the **conditioning → persistent learning boundary**.
+**Claim boundary.** Do not turn S05 into privacy extraction, prompt-loss tuning, or an overfitting study. If the relevance effect appears only under extreme repetition or changes qualitative direction across modest doses, kill.
 
 ---
 
@@ -127,6 +104,14 @@ supervision carries the binding. **Do not reopen under a new name.**
 
 ## Explicitly cancelled registrations
 
+- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**: registration cancelled after actual pilot execution. The developmental interpretation was unstable across training budgets and model families; plausible causal stories changed with recipe, while follow-up tests failed to reveal a family-stable mechanism. The remaining robust state-vs-readout fact is too narrow / partly structural to support the original Main-sized parent. Do not revive via more SFT budgets, model families, or base→SFT→DPO/RL trajectory reconstruction. Final adjudication 2026-09-19 (`K195`, `failed/KILLED_LEDGER_CONTINUATION.md`): E04 gave one clean fact — decoupling the goal destroys goal-relative stopping while leaving generic boundary competence intact — but no resolution on which supervision carries the binding. Archived; do not reopen under a new name.
+
+
+- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?**: registration cancelled after the final S03-informed recipe-dependence audit. The mother question is scientifically interesting, but the manipulated variable (“memory age / learning history”) is itself an optimizer-path construct: acquisition time, intervening gradients, spacing, recency, dose and parameter state are inseparable. A positive result would require a recipe matrix to distinguish a law from path dependence; a null in one recipe is weak. Do not revive via larger optimizer/model sweeps or a generic consolidation framing.
+
+
+
+
 - **S01 — Omission ≠ Neutrality / effective default semantics in tool calls:** cancelled/demoted. It is already recorded as F06 in `FAILED_TOPICS.md`; the Main-level parent compresses to underspecified tool intent / argument completion, leaving only an exact API-default subcase.
 - **S02 / C2 — AI Rewrite ≠ Semantic Change:** registration cancelled. The high-level framing looked scientific, but the actual experimental object collapses into synthetic rewrite-data construction + semantic-preservation validation + comparison of LSC methods/metrics/robustness. Real post-LLM corpora lack clean semantic-change ground truth; synthetic paired rewrites provide ground truth only by making the central data artificial. This is precisely the evaluation/benchmark/metric-validity direction the search should avoid.
 
@@ -134,4 +119,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 6.**
+**Current selected topic count = 5.**
