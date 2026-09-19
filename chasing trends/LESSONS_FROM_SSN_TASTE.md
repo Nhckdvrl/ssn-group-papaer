@@ -1,5 +1,19 @@
 # Lessons from ssn-taste：旧搜题流程复盘与 chasing-trends 迁移规则
 
+> **2026-09-19 correction.**
+>
+> 本文件关于旧 `ssn-taste` 的失败复盘仍然有效，但它后半部分把新路线过度收缩成“机制驱动方法论文”。这一点已经被后续纠偏。
+>
+> 当前 canonical taste 以：
+>
+> - `RESEARCH_TASTE_RECALIBRATION_2026-09-19.md`
+> - `PAPER_GENEALOGY_GUIDE.md`
+> - `SEARCH_GUIDE_ZH.md`
+>
+> 为准。
+>
+> 现在的目标不是优先某一种 paper shape，而是通过真实论文 genealogy 学习多种 research moves。
+
 日期：2026-09-19
 
 这份文件不是新的 topic ledger，也不是要否定 `ssn-taste/`。
