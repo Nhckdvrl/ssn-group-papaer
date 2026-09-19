@@ -24,8 +24,17 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ### S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?
 
-**Status:** SELECTED — PILOT-AUTHORIZED; CLAIM FROZEN BEFORE RUNS  
-**Registered:** 2026-09-17  
+**Status:** ❌ **KILLED 2026-09-19 — `K195 / ARCHIVED`**  
+**Registered:** 2026-09-17 · **Killed:** 2026-09-19  
+**Kill record:** `failed/KILLED_LEDGER_CONTINUATION.md` (K195); process record in
+`candidates/S03_GOAL_RELATIVE_STOPPING/docs/RESEARCH_LOG.md`  
+**Why:** the object was absorbed by the training recipe — every repair added a
+dependency (budget, family, tokenizer/serialization, three falsified mechanisms)
+rather than removing one, and 2026 post-training has no shared
+`Pretrain -> SFT -> RL` path to index. The final adjudication experiment (E04)
+gave one clean fact (decoupling the goal destroys goal-relative stopping while
+leaving generic boundary competence intact) but no resolution on which
+supervision carries the binding. **Do not reopen under a new name.**  
 **Detailed registration:** `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`
 
 **Parent question.** A pretrained language model already has a learned action for “this text/document ends here.” When it becomes an assistant, how is information about **the user's goal being complete** connected to that stopping action: was the needed information already present and post-training mainly changes the readout, or must post-training change the model's internal state/computation before goal completion can control termination?

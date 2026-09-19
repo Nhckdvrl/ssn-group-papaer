@@ -1,7 +1,72 @@
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 38.76it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 40.86it/s]
 The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
 mask=terminal pairing=correct init=allenai/Olmo-3-7B-Think-SFT
-  train=7648 val=243  supervised tokens=7,648 of 2,675,440 (0.29%)
-{"val_loss": 1.0771025285124778, "boundary_auc": 0.937925, "log_p_stop_at_boundary": -11.14517128020525, "log_p_stop_inside": -17.481970188674563, "n_boundary": 160, "n_inside": 30067, "step": 0}
+  pool=7055 of 12000 usable under EVERY pairing; train=7055 val=223
+  supervised tokens=7,055 of 2,372,009 (0.30%)
+{"val_loss": 1.165734938532114, "boundary_auc": 0.93155625, "log_p_stop_at_boundary": -11.103755895793437, "log_p_stop_inside": -17.424190506612575, "n_boundary": 160, "n_inside": 27187, "step": 0}
 wrote results/e04/terminal_correct_s0/step0/e01.jsonl 50
 wrote results/e04/terminal_correct_s0/step0/e01_d.jsonl 12
+{"val_loss": 1.341354787349701, "boundary_auc": 0.998703125, "log_p_stop_at_boundary": -0.001774618275646489, "log_p_stop_inside": -8.268001055597182, "n_boundary": 160, "n_inside": 27187, "step": 50, "train_loss": 0.0002521344525021618, "lr": 1.492537313432836e-05, "elapsed": 122.32207465171814}
+{"val_loss": 2.9528512448072433, "boundary_auc": 0.9975609375, "log_p_stop_at_boundary": -2.347617871922836e-06, "log_p_stop_inside": -2.443608627765091, "n_boundary": 160, "n_inside": 27187, "step": 100, "train_loss": 9.760210062381702e-07, "lr": 1.9988725208185227e-05, "elapsed": 251.03016018867493}
+{"val_loss": 7.200186383724213, "boundary_auc": 0.9954, "log_p_stop_at_boundary": -1.119055713516559e-06, "log_p_stop_inside": -0.1109670208059153, "n_boundary": 160, "n_inside": 27187, "step": 150, "train_loss": 5.140894341337798e-07, "lr": 1.9928747182352305e-05, "elapsed": 377.3574016094208}
+{"val_loss": 9.459068417549133, "boundary_auc": 0.9937453125, "log_p_stop_at_boundary": -1.1250344185143036e-07, "log_p_stop_inside": -0.03640649629136925, "n_boundary": 160, "n_inside": 27187, "step": 200, "train_loss": 1.4901160305669237e-08, "lr": 1.9817383803837663e-05, "elapsed": 505.74957489967346}
+{"val_loss": 10.926580381393432, "boundary_auc": 0.9917890625, "log_p_stop_at_boundary": -3.352757698138475e-08, "log_p_stop_inside": -0.019958203814611882, "n_boundary": 160, "n_inside": 27187, "step": 250, "train_loss": 6.997391756158322e-05, "lr": 1.9655211423954892e-05, "elapsed": 635.1608304977417}
+wrote results/e04/terminal_correct_s0/step250/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step250/e01_d.jsonl 12
+{"val_loss": 11.29141001701355, "boundary_auc": 0.9848984375, "log_p_stop_at_boundary": -3.650781574826567e-08, "log_p_stop_inside": -0.02541124830279528, "n_boundary": 160, "n_inside": 27187, "step": 300, "train_loss": 7.450580152834618e-09, "lr": 1.9443069351509263e-05, "elapsed": 778.6467499732971}
+{"val_loss": 11.493458867073059, "boundary_auc": 0.9836984375, "log_p_stop_at_boundary": -2.9057240302776675e-08, "log_p_stop_inside": -0.023571488285827103, "n_boundary": 160, "n_inside": 27187, "step": 350, "train_loss": 7.450580152834618e-09, "lr": 1.918205550902927e-05, "elapsed": 909.1217143535614}
+{"val_loss": 12.138834118843079, "boundary_auc": 0.977725, "log_p_stop_at_boundary": -1.4901153599922167e-08, "log_p_stop_inside": -0.01987972523053375, "n_boundary": 160, "n_inside": 27187, "step": 400, "train_loss": 0.0, "lr": 1.8873520750565716e-05, "elapsed": 1037.737436056137}
+{"val_loss": 15.842620277404786, "boundary_auc": 0.905421875, "log_p_stop_at_boundary": -7.450580152834618e-10, "log_p_stop_inside": -0.0054323818191020674, "n_boundary": 160, "n_inside": 27187, "step": 450, "train_loss": 0.0, "lr": 1.8519061870466073e-05, "elapsed": 1167.4042026996613}
+{"val_loss": 15.985771775245667, "boundary_auc": 0.898871875, "log_p_stop_at_boundary": -7.450580152834618e-10, "log_p_stop_inside": -0.0053599229878518746, "n_boundary": 160, "n_inside": 27187, "step": 500, "train_loss": 0.0, "lr": 1.812051333930659e-05, "elapsed": 1299.2677628993988}
+wrote results/e04/terminal_correct_s0/step500/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step500/e01_d.jsonl 12
+{"val_loss": 16.559077620506287, "boundary_auc": 0.87275, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.0054587618994983225, "n_boundary": 160, "n_inside": 27187, "step": 550, "train_loss": 0.0, "lr": 1.7679937809752125e-05, "elapsed": 1443.352145910263}
+{"val_loss": 16.781272149086, "boundary_auc": 0.861, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.005327244059944739, "n_boundary": 160, "n_inside": 27187, "step": 600, "train_loss": 0.0, "lr": 1.7199615441479757e-05, "elapsed": 1572.0693018436432}
+{"val_loss": 16.760848021507265, "boundary_auc": 0.86125, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.005404080364627087, "n_boundary": 160, "n_inside": 27187, "step": 650, "train_loss": 0.0, "lr": 1.6682032100414094e-05, "elapsed": 1697.2996098995209}
+{"val_loss": 16.777261662483216, "boundary_auc": 0.861, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.005330337706707117, "n_boundary": 160, "n_inside": 27187, "step": 700, "train_loss": 0.0, "lr": 1.612986649334808e-05, "elapsed": 1826.7328963279724}
+{"val_loss": 16.854006910324095, "boundary_auc": 0.85775, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.005195706344191166, "n_boundary": 160, "n_inside": 27187, "step": 750, "train_loss": 0.0, "lr": 1.5545976304532974e-05, "elapsed": 1953.9130351543427}
+wrote results/e04/terminal_correct_s0/step750/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step750/e01_d.jsonl 12
+{"val_loss": 16.885405230522156, "boundary_auc": 0.85675, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.0052619445481732145, "n_boundary": 160, "n_inside": 27187, "step": 800, "train_loss": 0.0, "lr": 1.493338340598634e-05, "elapsed": 2100.5539152622223}
+{"val_loss": 16.96181974411011, "boundary_auc": 0.8535, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.005152910237418984, "n_boundary": 160, "n_inside": 27187, "step": 850, "train_loss": 0.0, "lr": 1.42952582180607e-05, "elapsed": 2228.513882637024}
+{"val_loss": 17.024262475967408, "boundary_auc": 0.851, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.0049472839985336345, "n_boundary": 160, "n_inside": 27187, "step": 900, "train_loss": 0.0, "lr": 1.363490330121353e-05, "elapsed": 2353.693689107895}
+{"val_loss": 17.050430250167846, "boundary_auc": 0.849, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004922332664489748, "n_boundary": 160, "n_inside": 27187, "step": 950, "train_loss": 0.0, "lr": 1.2955736263897752e-05, "elapsed": 2480.746352672577}
+{"val_loss": 17.054024934768677, "boundary_auc": 0.84825, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004890304524829257, "n_boundary": 160, "n_inside": 27187, "step": 1000, "train_loss": 0.0, "lr": 1.2261272075031524e-05, "elapsed": 2610.10178565979}
+wrote results/e04/terminal_correct_s0/step1000/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step1000/e01_d.jsonl 12
+{"val_loss": 17.081647634506226, "boundary_auc": 0.8475, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004839489648869036, "n_boundary": 160, "n_inside": 27187, "step": 1050, "train_loss": 0.0, "lr": 1.1555104872587575e-05, "elapsed": 2752.774516105652}
+{"val_loss": 17.097944331169128, "boundary_auc": 0.84675, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004879264361340178, "n_boundary": 160, "n_inside": 27187, "step": 1100, "train_loss": 0.0, "lr": 1.0840889362450082e-05, "elapsed": 2880.805481672287}
+{"val_loss": 17.111013579368592, "boundary_auc": 0.8475, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004777070889436828, "n_boundary": 160, "n_inside": 27187, "step": 1150, "train_loss": 0.0, "lr": 1.012232190380769e-05, "elapsed": 3010.2013120651245}
+{"val_loss": 17.118288803100587, "boundary_auc": 0.846, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004826636851228104, "n_boundary": 160, "n_inside": 27187, "step": 1200, "train_loss": 0.0, "lr": 9.403121378973517e-06, "elapsed": 3141.0461835861206}
+{"val_loss": 17.162040972709654, "boundary_auc": 0.844, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.0047799686358431445, "n_boundary": 160, "n_inside": 27187, "step": 1250, "train_loss": 0.0, "lr": 8.687009946638763e-06, "elapsed": 3275.1797666549683}
+wrote results/e04/terminal_correct_s0/step1250/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step1250/e01_d.jsonl 12
+{"val_loss": 17.18129880428314, "boundary_auc": 0.84325, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.0046928954539417825, "n_boundary": 160, "n_inside": 27187, "step": 1300, "train_loss": 1.4901159417490817e-08, "lr": 7.977693778169673e-06, "elapsed": 3415.900110244751}
+{"val_loss": 17.197841262817384, "boundary_auc": 0.84125, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.00475702830061458, "n_boundary": 160, "n_inside": 27187, "step": 1350, "train_loss": 0.0, "lr": 7.278843876645512e-06, "elapsed": 3546.3353774547577}
+{"val_loss": 17.20702531337738, "boundary_auc": 0.84225, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004727265169216969, "n_boundary": 160, "n_inside": 27187, "step": 1400, "train_loss": 0.0, "lr": 6.594077077906875e-06, "elapsed": 3677.686660528183}
+{"val_loss": 17.206918406486512, "boundary_auc": 0.8425, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004793009834752528, "n_boundary": 160, "n_inside": 27187, "step": 1450, "train_loss": 0.0, "lr": 5.926937331941781e-06, "elapsed": 3806.59055185318}
+{"val_loss": 17.219562101364136, "boundary_auc": 0.84125, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004667908129910153, "n_boundary": 160, "n_inside": 27187, "step": 1500, "train_loss": 0.0, "lr": 5.280877361486021e-06, "elapsed": 3934.5726549625397}
+wrote results/e04/terminal_correct_s0/step1500/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step1500/e01_d.jsonl 12
+{"val_loss": 17.208865094184876, "boundary_auc": 0.84225, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004831335012547784, "n_boundary": 160, "n_inside": 27187, "step": 1550, "train_loss": 0.0, "lr": 4.65924079276209e-06, "elapsed": 4077.556849002838}
+{"val_loss": 17.20921411514282, "boundary_auc": 0.8425, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004792705768295633, "n_boundary": 160, "n_inside": 27187, "step": 1600, "train_loss": 0.0, "lr": 4.065244850837464e-06, "elapsed": 4207.620715379715}
+{"val_loss": 17.209069705009462, "boundary_auc": 0.842, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004757102414589611, "n_boundary": 160, "n_inside": 27187, "step": 1650, "train_loss": 0.0, "lr": 3.501963709160887e-06, "elapsed": 4339.587290287018}
+{"val_loss": 17.207126569747924, "boundary_auc": 0.84275, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004808418359726243, "n_boundary": 160, "n_inside": 27187, "step": 1700, "train_loss": 0.0, "lr": 2.9723125794496567e-06, "elapsed": 4469.538550853729}
+{"val_loss": 17.209426283836365, "boundary_auc": 0.84175, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.00480555120080644, "n_boundary": 160, "n_inside": 27187, "step": 1750, "train_loss": 0.0, "lr": 2.4790326242692587e-06, "elapsed": 4598.600368022919}
+wrote results/e04/terminal_correct_s0/step1750/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step1750/e01_d.jsonl 12
+{"val_loss": 17.20903823375702, "boundary_auc": 0.84225, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004726761563158067, "n_boundary": 160, "n_inside": 27187, "step": 1800, "train_loss": 0.0, "lr": 2.0246767703890237e-06, "elapsed": 4742.955847263336}
+{"val_loss": 17.207015609741212, "boundary_auc": 0.843, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004727747508388236, "n_boundary": 160, "n_inside": 27187, "step": 1850, "train_loss": 0.0, "lr": 1.6115964963354879e-06, "elapsed": 4872.377369642258}
+{"val_loss": 17.21169457435608, "boundary_auc": 0.84175, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004791383834523335, "n_boundary": 160, "n_inside": 27187, "step": 1900, "train_loss": 0.0, "lr": 1.2419296625232825e-06, "elapsed": 5003.08439540863}
+{"val_loss": 17.22986783981323, "boundary_auc": 0.84125, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004731411773231511, "n_boundary": 160, "n_inside": 27187, "step": 1950, "train_loss": 0.0, "lr": 9.175894469477131e-07, "elapsed": 5132.867415189743}
+{"val_loss": 17.226384782791136, "boundary_auc": 0.84175, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004651545313116961, "n_boundary": 160, "n_inside": 27187, "step": 2000, "train_loss": 0.0, "lr": 6.402544437012759e-07, "elapsed": 5261.935335159302}
+wrote results/e04/terminal_correct_s0/step2000/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/step2000/e01_d.jsonl 12
+{"val_loss": 17.223626017570496, "boundary_auc": 0.84125, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004778080090604741, "n_boundary": 160, "n_inside": 27187, "step": 2050, "train_loss": 7.450580152834618e-09, "lr": 4.1135997555844407e-07, "elapsed": 5407.332850456238}
+{"val_loss": 17.214188361167906, "boundary_auc": 0.8425, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.00478474013175899, "n_boundary": 160, "n_inside": 27187, "step": 2100, "train_loss": 0.0, "lr": 2.3209066558961936e-07, "elapsed": 5535.395705461502}
+{"val_loss": 17.206849884986877, "boundary_auc": 0.8425, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004719072682057629, "n_boundary": 160, "n_inside": 27187, "step": 2150, "train_loss": 0.0, "lr": 1.033743062492365e-07, "elapsed": 5664.0308566093445}
+{"val_loss": 17.206660175323485, "boundary_auc": 0.843, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.004771186586656461, "n_boundary": 160, "n_inside": 27187, "step": 2200, "train_loss": 0.0, "lr": 2.587705766798676e-08, "elapsed": 5790.716104269028}
+{"val_loss": 17.206570768356322, "boundary_auc": 0.84275, "log_p_stop_at_boundary": 0.0, "log_p_stop_inside": -0.0047710823593992745, "n_boundary": 160, "n_inside": 27187, "step": 2250, "train_loss": 0.0, "lr": 0.0, "elapsed": 5921.240655183792}
+wrote results/e04/terminal_correct_s0/e01.jsonl 50
+wrote results/e04/terminal_correct_s0/e01_d.jsonl 12
+done results/e04/terminal_correct_s0

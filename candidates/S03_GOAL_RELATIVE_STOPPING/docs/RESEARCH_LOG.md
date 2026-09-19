@@ -1807,3 +1807,110 @@ same checkpoint: `d_goal` 10.05 vs 10.03, `dz_stop` 4.69 vs 4.67, `dz_cont`
 −5.36 vs −5.36. The measurement path in E04 and the measurement path in
 `e01_traj` agree to bf16 noise, so E04's deltas are on the same scale as the
 trajectory's.
+
+---
+
+## 2026-09-19 — E04 FINAL ADJUDICATION, and the decision to KILL S03
+
+E04 was run as the project's final adjudication experiment, not as a new
+research program: one grid, one seed, no follow-ups authorised. It completed.
+**The verdict is KILL.**
+
+### Setup
+
+`theta_0` = Olmo-3-7B-Think-SFT (final); data = `allenai/Dolci-Instruct-SFT`
+(the mixture the released Instruct-SFT was actually trained on). Matched across
+conditions: the 7,055-example pool (filtered once by usability under *every*
+pairing), example order, 2250 steps, one cosine schedule, optimizer, batch,
+sequence length, seed. Only the supervision differs. Mid-run E01 evaluations
+come from the same run, so the step column is a real trajectory.
+
+### The table (paired vs the shared step-0 baseline, `d_goal` 10.05)
+
+```
+condition                          d_goal   D d_goal        95% CI   sign  D dz_stop  D dz_cont  bnd_auc  val_ce
+full / correct     (ordinary SFT)   16.75      +6.70  [+5.56,+7.82]   48/2      +6.41      -0.29   0.9996   0.955
+terminal / correct (endpoint only)  12.49      +2.44  [+1.35,+3.52]  33/17      -0.90      -3.34   0.8427  17.207
+content / correct  (no stop label)  11.45      +1.40  [+0.57,+2.23]  35/15      +0.09      -1.31   0.9922   1.001
+full / shuffled    (goal decoupled)  3.88      -6.17  [-7.20,-5.11]   3/47      -3.49      +2.67   0.9992   1.122
+terminal / shuffled(wrong goal)      8.06      -1.99  [-3.40,-0.67]  19/31      -2.35      -0.36   0.8818  16.206
+```
+
+Between-condition paired contrasts on `d_goal`:
+
+```
+terminal_correct  - full_correct        -4.26  [-5.51,-2.98]   7/43
+content_correct   - full_correct        -5.30  [-6.09,-4.47]   1/49
+full_shuffled     - full_correct       -12.87 [-14.61,-11.07]  1/49
+terminal_shuffled - terminal_correct     -4.43  [-5.33,-3.50]   5/45
+full_shuffled     - content_correct      -7.57  [-8.92,-6.23]   3/47
+```
+
+### What E04 actually shows
+
+1. **Ordinary SFT on correctly paired data builds it**: `full/correct` +6.70
+   (48/2), almost entirely on the stop side (`dz_stop` +6.41, `dz_cont` −0.29).
+2. **Decoupling the goal destroys it**: `full/shuffled` −6.17 (3/47) — the same
+   responses, the same lengths, the same endpoints, attached to another user's
+   goal, drive `d_goal` *below* the starting checkpoint. This is not model
+   damage: `boundary_auc` 0.9992 and val CE 1.122 (vs 0.9996 / 0.955 for
+   `full/correct`). The model still learns where responses end; what collapses
+   is when *this user's* task is done. Read alone, this is the cleanest single
+   fact the project ever produced, and it contradicts a purely
+   "latent-and-merely-elicited" account of this capability.
+3. **The mask axis does not resolve.** `terminal/correct` (+2.44, 33/17) and
+   `content/correct` (+1.40, 35/15) are both weak, both far below `full`
+   (−4.26 and −5.30 paired), and their sign tests are near noise.
+
+### Why this is a KILL and not a finding
+
+* **The mask axis is exactly the pre-registered kill pattern.** `full` works,
+  every decomposition of it is weak, and no component can be named as the
+  carrier. Explaining it requires a content x endpoint *interaction* — one more
+  conditional layer on a project whose story has gained a layer at every repair.
+* **Both `terminal` arms are broken models and cannot be interpreted.** The
+  terminal-only objective is saturated at step 100 (`train_loss` 0.0003 at 50,
+  0.0 at 100); 2,000+ further updates on a dead objective wreck the model
+  (val CE 17.2 / 16.2, `boundary_auc` 0.84 / 0.88, against ≥0.99 elsewhere).
+  Their numbers are neither evidence for nor against endpoint supervision.
+  Per the agreed stop rule, the LR/step sweep that could have rescued them was
+  **not run** — it would be a new experiment, and "the result changes when the
+  LR changes" was itself on the kill list.
+* **The one strong effect is probably not specific to stopping.** Training on
+  mispaired instruction data should degrade goal-conditioned behaviour in
+  general, not the goal→termination binding in particular. Establishing
+  specificity needs a control showing some *other* goal-sensitive behaviour
+  survives `full/shuffled` while termination collapses. That is another
+  experiment, and on this project's track record it would produce another
+  conditional rather than a simpler story.
+
+The honest one-sentence summary of E04 — *ordinary SFT on correctly paired
+instruction data builds goal-relative stopping and mispaired data destroys it,
+without harming generic boundary competence* — is true, reproducible, and one
+layer short of "so that is how stopping is learned".
+
+### The structural reason the project failed
+
+Not bad execution. The scientific object kept being absorbed by the training
+recipe. Every attempt to compress it into a mechanism produced another
+dependency: training budget (three separate misreadings from one 750-step
+point), model family (readout adaptation +6.03 / −1.84 / −1.31, direction
+flipping), stop-token and tokenizer and serialization drift (two confounds
+caught, one only because an assertion was added), and three mechanistic
+hypotheses for the family difference all falsified by direct causal test.
+Continuing meant enumerating `budget x LR x data x family x checkpoint x
+serialization x stage` — forensic investigation, not a paper. And since 2026
+post-training is not a shared `Pretrain -> SFT -> RL` pipeline, there was no
+universal developmental path to recover in the first place.
+
+A good project gets simpler as it goes. This one gained a condition at every
+repair. That is the signal that was acted on.
+
+### What is preserved
+
+Everything in this directory is kept as a process record: the raw per-item
+files, all logs, the instrument, and the corrections. Nothing is deleted to
+make the ending look tidier. Downloaded intermediate checkpoints (~35GB) were
+removed since no further run will use them.
+
+**Disposition: `K195 / ARCHIVED`.** See `failed/KILLED_LEDGER_CONTINUATION.md`.

@@ -21,6 +21,10 @@ NAT = "results/e01/olmo3-7b_sft_eosonly.jsonl"
 
 blocks = []
 
+# E04 — the final adjudication experiment (supervision decomposition).
+blocks.append(("E04 — supervision decomposition (FINAL ADJUDICATION; project killed)",
+               run("e04_report.py", "0")))
+
 # Phase 1 — the replacement for the confounded Layer B curve: the real OLMo-3
 # chain, one fixed stop token, one serialization, stimulus invariance asserted.
 blocks.append(("Layer B2 — REAL natural acquisition trajectory "

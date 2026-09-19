@@ -1,11 +1,48 @@
 # S03 — From Document End to Task Done
 
-**Status:** PILOT — phenomenon and parameter locus established; acquisition
-mechanism NOT yet found. Not paper-ready.
-**Opened:** 2026-09-17 · **README last re-based on evidence:** 2026-09-19
-**Topic authority:** `ssn-taste/S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `ssn-taste/SELECTED_TOPICS.md`
+**Status:** `KILLED / ARCHIVED — K195` (2026-09-19)
+**Do not reopen this parent question with a new model, dataset, stage,
+supervision variant, or name.** Read `docs/RESEARCH_LOG.md` bottom-up first;
+the last three entries are the ones that matter.
+**Opened:** 2026-09-17 · **Killed:** 2026-09-19
+**Topic authority:** `ssn-taste/S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`
 
-## Frozen scientific object
+## Why it was killed
+
+The phenomenon is real and the instrument is sound. The project died because
+the **scientific object kept being absorbed by the training recipe**: every
+attempt to compress it into a mechanism added a dependency rather than removing
+one — training budget, model family, stop-token/tokenizer/serialization drift,
+and three mechanistic hypotheses for the cross-family difference, each
+falsified by direct causal test. Continuing meant enumerating
+`budget x LR x data x family x checkpoint x serialization x stage`: a forensic
+investigation, not a paper. And because 2026 post-training is not a shared
+`Pretrain -> SFT -> RL` pipeline, there was no universal developmental path to
+recover in the first place.
+
+The final adjudication experiment (E04) came back one layer short. Ordinary SFT
+on correctly paired instruction data builds goal-relative stopping (+6.70,
+48/2) and mispaired data destroys it (−6.17, 3/47) **without harming generic
+boundary competence** (`boundary_auc` 0.9992, val CE 1.122) — a clean fact, but
+the supervision *mask* axis did not resolve (`terminal` +2.44 at 33/17,
+`content` +1.40 at 35/15, both far below `full`), both terminal-only arms
+trained themselves into broken models on a saturated objective, and the one
+strong effect is probably not specific to termination. Establishing specificity
+needed another control, which is exactly the cost that was being stopped.
+
+A good project gets simpler as it goes. This one gained a condition at every
+repair.
+
+**Reusable, and worth preserving rather than rerunning:** the exact-prefix
+matched-pair instrument; the raw-logit decomposition
+`d_goal = dz_stop − dz_cont` and the reason `Δ log p(stop)` must not be used for
+locus claims; the rule that a longitudinal curve must score **one fixed
+termination token** and assert **byte-identical inputs** per item (both
+defects occurred here, and the second was caught only because the assertion
+existed); and the observation that generic boundary competence and
+goal-relative stopping dissociate.
+
+## Frozen scientific object (as of the kill)
 
 > **What supervision teaches a language model to stop when the user's task is
 > complete?** Equivalently: how does post-training bind already-latent
@@ -159,7 +196,7 @@ further is claimed about stages.
 inside a named stage* is exactly the stage-centric detail this project is not
 about. Five stage endpoints plus one Think-SFT intermediate are kept.)
 
-## The decisive experiment (E04)
+## The decisive experiment (E04) — RUN, and it adjudicated KILL
 
 Same initialization, same example pool, same order, same step count, same
 schedule, same optimizer, same batch, same seed. **Only the supervision
@@ -182,11 +219,11 @@ requires the instruction-response pairing itself* (`correct` ≫ `shuffled`), or
 change in response distribution* (`shuffled` ≈ `correct`, the Hewitt et al.
 account).
 
-**Kill criterion, agreed in advance.** If these conditions do not separate — if
-`full ≈ terminal ≈ content ≈ shuffled`, or the ordering moves around with
-checkpoint or family — then goal-relative stopping is an emergent product of a
-complex training history and does not compress into a scientific principle.
-S03 stops there; it does not get a fifth mechanism hypothesis.
+**Kill criterion, agreed in advance — and triggered.** The mask axis did not
+separate: `full` +6.70 (48/2) against `terminal` +2.44 (33/17) and `content`
++1.40 (35/15), with no component nameable as the carrier without invoking a
+content x endpoint interaction. Full table in `docs/RESULTS.md`; reasoning in
+the final `docs/RESEARCH_LOG.md` entry.
 
 ## Layout
 

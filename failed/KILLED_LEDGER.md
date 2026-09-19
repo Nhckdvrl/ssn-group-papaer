@@ -9,8 +9,8 @@
 **Initial migration date:** 2026-09-06  
 **Legacy provenance:** consolidated from the authoritative kill/search ledgers in `Nhckdvrl/try` (especially V9, V12, V13, V15, V17).
 
-**Authoritative kill state:** through **K183**  
-**Next kill ID:** **K184**
+**Authoritative kill state:** through **K195**  
+**Next kill ID:** **K196**
 
 The entries below preserve the **scientific reason for rejection**, not every historical implementation detail. If a topic is ever reconsidered, the literature must be freshly re-checked.
 
