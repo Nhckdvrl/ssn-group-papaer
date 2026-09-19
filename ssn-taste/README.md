@@ -4,7 +4,7 @@ This directory is the working ledger for Sasano-taste-driven NLP/LLM research-qu
 
 Target venues: **ACL / EMNLP / NAACL Main**. TACL / ICLR / ICML / NeurIPS are secondary calibration. EACL / AACL / Findings / workshops / arXiv may be used aggressively for novelty collision, but not as the main positive taste signal.
 
-Current selected topics: **6**.
+Current selected topics: **7**.
 
 ## Current selection
 
@@ -14,6 +14,7 @@ Current selected topics: **6**.
 - **S06 — What Does Deliberation Do to Evidence?** Selected / pilot-authorized on 2026-09-18. The parent question is whether reasoning computes over a stable evidence state or endogenously changes the causal influence of fixed external evidence as deliberation unfolds.
 - **S07 — Where Does Surprise Go?** Selected / pilot-authorized on 2026-09-18. The parent question is how an LLM allocates an unexpected observation across current-state revision, source/observation-model revision, and transition/rule revision, identified by distinct persistent downstream effects.
 - **S08 — Is Metacognitive Control Shared?** Selected / pilot-authorized on 2026-09-18. The parent question is whether internal confidence is a reusable control variable across distinct metadecisions or whether abstention and reasoning termination rely on separable monitor/control states.
+- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?** Selected / pilot-authorized on 2026-09-19. The parent question is whether present memory accessibility fully predicts future editability, or whether learning history leaves a hidden stability state that changes contradictory-update dynamics.
 
 See `SELECTED_TOPICS.md` for the frozen parent questions, novelty boundaries, and detailed registration files.
 
@@ -153,6 +154,6 @@ Files:
 
 - `FAILED_TOPICS.md` and dated continuations — serious ideas that died; do not revive without evidence resolving the recorded failure.
 - `RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md` — overlay correcting overly strict old novelty reasoning.
-- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **6**.
-- `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `S04_EVENT_BOUNDARY_SITUATION_MODEL_UPDATING.md`, `S05_WHEN_DOES_READING_BECOME_LEARNING.md`, `S06_DELIBERATION_EVIDENCE_REWEIGHTING.md`, `S07_WHERE_DOES_SURPRISE_GO.md`, `S08_SHARED_METACOGNITIVE_CONTROL.md` — detailed registrations.
+- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **7**.
+- `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `S04_EVENT_BOUNDARY_SITUATION_MODEL_UPDATING.md`, `S05_WHEN_DOES_READING_BECOME_LEARNING.md`, `S06_DELIBERATION_EVIDENCE_REWEIGHTING.md`, `S07_WHERE_DOES_SURPRISE_GO.md`, `S08_SHARED_METACOGNITIVE_CONTROL.md`, `S09_MEMORY_ACCESSIBILITY_STABILITY.md` — detailed registrations.
 - `NEXT_ROUND_PROMPT_ZH.md` — current operational search procedure; treat it as scaffolding rather than constitution.
