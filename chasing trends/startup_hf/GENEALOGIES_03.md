@@ -5,8 +5,8 @@
 > NO formal CT candidate generation.
 >
 > This file continues:
-> - STARTUP_HF_GENEALOGIES_01_2026-09-19.md
-> - STARTUP_HF_GENEALOGIES_02_2026-09-19.md
+> - GENEALOGIES_01.md
+> - GENEALOGIES_02.md
 >
 > This batch focuses on four things that recent startup/open-lab reports expose unusually well:
 >
