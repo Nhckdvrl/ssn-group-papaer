@@ -594,7 +594,7 @@ RAG 同理：
 
 第一批纵向 reconstruction 已完成并写入：
 
-> `LONGITUDINAL_GENEALOGIES_01_2026-09-19.md`
+> `GENEALOGIES_01.md`
 
 已追：
 
@@ -769,11 +769,11 @@ RAG 同理：
 > generator 被用于 planning/interaction 后，“生成看起来合理”不再等于“world model正确”。
 
 详细见：
-- LONGITUDINAL_GENEALOGIES_02_2026-09-19.md
-- LONGITUDINAL_GENEALOGIES_03_2026-09-19.md
-- LONGITUDINAL_GENEALOGIES_04_2026-09-19.md
-- GENEALOGY_LIBRARY_INDEX_2026-09-19.md
-- CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md
+- GENEALOGIES_02.md
+- GENEALOGIES_03.md
+- GENEALOGIES_04.md
+- GENEALOGY_LIBRARY_INDEX.md
+- ../framework/CONTRAST_CASES_AND_ANTI_PATTERNS.md
 
 ---
 
@@ -929,4 +929,4 @@ Academic paper landscape不再作为唯一frontier signal。
 > 先过 Scale-Stripping + Cheap Causal Echo + Independent Academic Pressure。
 
 详细见：
-> INDUSTRY_FRONTIER_SCAN_2026-09-19.md
+> ../industry/FRONTIER_SCAN.md
