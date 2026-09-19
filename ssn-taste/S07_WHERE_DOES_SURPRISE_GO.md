@@ -166,3 +166,27 @@ The pilot is authorized because:
 - a single anomaly followed by reset/source/transition probes gives a small and direct identification strategy;
 - the experiment need not become a benchmark or model zoo;
 - all major outcomes provide interpretable knowledge gain.
+
+---
+
+## 2026-09-19 execution-risk re-audit — KEEP / PILOT-AUTHORIZED
+
+S07 survives strongly. The key variables are manipulated at inference time in one controlled sequential world, and the trusted-reset/source-reuse/transition-prediction fingerprints directly separate revision loci. No training recipe is part of the causal claim.
+
+### Tightened execution gate
+
+Run one semantic instantiation first, but require the three diagnostic readouts to separate cleanly:
+
+- immediate state belief;
+- same-source influence after trusted state reset;
+- next-transition prediction after reset.
+
+**KILL immediately** if:
+- reset does not actually isolate current-state uncertainty;
+- source and transition fingerprints remain behaviorally inseparable;
+- results are dominated by explicit lexical cues rather than history-dependent revision;
+- the project starts requiring a large POMDP benchmark to make the effect visible.
+
+A second surface realization is a robustness check only after a clean first signal.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
