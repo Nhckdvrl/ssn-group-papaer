@@ -70,7 +70,7 @@ chasing trends/
     ├── CT01_RELEVANT_BUT_INVALID.md
     ├── CT02_IS_CONTEXT_UTILITY_RANKABLE.md
     ├── CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md
-    └── CT04_HYBRID_MEMORY_OPERATION_PLASTICITY.md
+    └── CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md
 ```
 
 目录的职责必须保持清楚：
@@ -172,17 +172,20 @@ chasing trends/
 
 > `topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
 
-### CT04 — What Can Hybrid Memory Safely Learn? Operation-Level Plasticity in Recurrent-Attention LMs
+### CT04 — What Moves During Hybrid Adaptation? State-Dynamics Drift in Recurrent–Attention LMs
 
-**Status:** PILOT-AUTHORIZED
+**Status:** PILOT-AUTHORIZED — exploratory identification program
 
 核心问题：
 
-> Qwen3.5 等 native hybrid 的 recurrent memory 并不是一个整体：address/read、content write、decay/retention、write strength、output/readout 中，哪些可以安全适配，哪些一旦更新会破坏 pretrained memory contract？
+> hybrid recurrent–attention LM 在 post-training 后真正发生变化的对象是什么：transition dynamics、recurrent-state operating point、attention↔recurrence 功能分工、局部 memory operation，还是普通 representation drift？
+
+用 state/weight/channel crossed intervention 定位真实 bottleneck，再由诊断结果决定方法；不预设某个 LoRA 现象必须出现。
 
 详细 registration：
 
-> `topics/CT04_HYBRID_MEMORY_OPERATION_PLASTICITY.md`
+> `topics/CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md`
+
 
 CT01 已在 2026-09-19 re-audit 后 **KILL**；原因见 `topics/CT01_RELEVANT_BUT_INVALID.md` 与 `topics/FAILED_TOPICS.md`。
 
