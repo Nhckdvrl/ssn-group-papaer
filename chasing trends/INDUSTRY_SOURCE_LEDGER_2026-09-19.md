@@ -894,3 +894,539 @@ Before any industry-derived formal candidate:
 
 If the source is Tier IV only:
 > it cannot be the sole origin of a formal candidate.
+
+
+---
+
+# K. Startup / Hugging Face frontier sources — added 2026-09-19
+
+This section extends the industry ledger beyond major frontier-model incumbents.
+
+Additional axis:
+
+## Instrument value
+How useful is the release as a low-cost experimental contrast?
+
+- **A**: matched checkpoints / clean intervention pairs / small enough to run.
+- **B**: useful open artifact but heavier/confounded.
+- **C**: mostly inspiration.
+- **F**: no practical experimental access.
+
+---
+
+## ST-01 — Thinking Machines Inkling
+Date: 2026-07-15  
+Type: open-weight model + first-party technical release  
+Tier: II  
+Primary:
+- https://thinkingmachines.ai/news/introducing-inkling/
+- Hugging Face Inkling model card
+
+Deep-read: **YES**
+
+Actually establishes:
+- 975B total / 41B active MoE;
+- large-scale RL >30M rollouts;
+- effort is trained via system-message conditioning + per-token cost;
+- performance is evaluated as an effort/token frontier, not one score;
+- RL induces more telegraphic CoT without an explicit language-style reward.
+
+Does NOT establish:
+- shorter CoT = less internal reasoning;
+- a universal scalar semantics for effort.
+
+Taste value: **A**  
+Execution transfer: **F for training / C for inference analysis**  
+Instrument value: **C**
+
+Core pressure:
+> reasoning-resource control can be part of policy training rather than an external decode knob.
+
+---
+
+## ST-02 — Thinking Machines Interaction Models
+Date: 2026-05-11  
+Type: research preview / architecture-system report  
+Tier: II/III  
+Primary:
+- https://thinkingmachines.ai/blog/interaction-models/
+
+Deep-read: **YES**
+
+Actually establishes:
+- continuous multimodal interaction is modeled using time-aligned micro-turns (~200ms);
+- fast interaction path and asynchronous background reasoning are separated;
+- silence, overlap and interruption remain part of model context.
+
+Taste value: **A**  
+Execution transfer: **D/F**  
+Instrument value: **C**
+
+Core pressure:
+> alternating-message sequence is not the natural causal unit for realtime collaboration.
+
+---
+
+## ST-03 — Thinking Machines / Bridgewater expert judgment
+Date: 2026-06-30  
+Type: domain post-training study  
+Tier: II  
+Primary:
+- https://thinkingmachines.ai/news/learning-to-replicate-expert-judgment-in-financial-tasks/
+- Bridgewater AIA Labs version
+
+Deep-read: **YES**
+
+Actually establishes:
+- repeated expert decisions contain trainable signal not easily expressible as prompt rules;
+- disagreement-driven human verification + RL/distillation can reproduce domain-specific judgment.
+
+Does NOT establish:
+- general expert-taste transfer from all domains.
+
+Taste value: **A-**  
+Execution transfer: **B/C**  
+Instrument value: **C** (data proprietary)
+
+Core pressure:
+> tacit judgment can be supervision even when it is hard to verbalize as rules.
+
+---
+
+## ST-04 — Thinking Machines ReViSQL
+Date: 2026-08-27 release / paper arXiv 2603.20004  
+Type: academic-style industrial post-training study  
+Tier: II  
+Primary:
+- https://thinkingmachines.ai/news/putting-task-expertise-into-rl/
+
+Deep-read: **YES**
+
+Actually establishes:
+- substantial data-label problems in the parent Text-to-SQL training set;
+- execution-match reward can reward semantically wrong SQL by coincidence;
+- verified data + task-specific reward shaping can replace some external pipeline complexity;
+- a Kimi-K2.6 LoRA + CISPO recipe reaches strong results at lower inference cost.
+
+Taste value: **A**  
+Execution transfer: **A/B**  
+Instrument value: **B**
+
+Core move:
+> external scaffold expertise can sometimes be moved into a better training signal.
+
+---
+
+## ST-05 — Prime Intellect Prime Agent
+Date: 2026-08-05 blog / 2026-08-24 paper  
+Type: open agent harness + paper  
+Tier: II  
+Primary:
+- https://www.primeintellect.ai/blog/prime-agent
+- arXiv:2608.23552
+- https://github.com/PrimeIntellect-ai/prime-agent
+
+Deep-read: **YES — paper + code concepts**
+
+Actually establishes:
+- context can be programmatically processed through an RLM-style persistent REPL;
+- prompts/memory/skills/subagent specs form editable persistent harness state;
+- refinement edits are explicit/reviewable/rollbackable.
+
+Does NOT establish:
+- continual refinement always improves;
+- harness learning replaces weight learning.
+
+Taste value: **A-**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
+Core pressure:
+> harness can be a persistent adaptive artifact rather than fixed inference infrastructure.
+
+---
+
+## ST-06 — Continual Harness
+Date: 2026-05-11  
+Type: academic/open agent adaptation system  
+Tier: II  
+Primary:
+- arXiv:2605.09998
+- https://github.com/sethkarten/continual-harness
+
+Deep-read: **YES — paper + repo**
+
+Actually establishes:
+- reset-free online CRUD updates to prompt/subagents/skills/memory;
+- explicit minimal vs expert vs evolving harness baselines;
+- capability-dependent gains;
+- strong capability floor: Pro improves, Flash variable, Flash-Lite can degrade.
+
+Taste value: **A**  
+Execution transfer: **B**  
+Instrument value: **A**
+
+Most important boundary:
+> self-improvement loops can fail below a base-capability threshold.
+
+---
+
+## ST-07 — Sakana Recursive Harness Self-Improvement
+Date: 2026-07-17  
+Type: research paper  
+Tier: II  
+Primary:
+- arXiv:2607.15524
+
+Deep-read: **YES**
+
+Actually establishes:
+- prompt-level harness refinement can improve low-effort agents on synthetic ML-R&D tasks;
+- authors attribute gains mainly to information flow/context management rather than longer reasoning;
+- few update iterations can matter.
+
+Does NOT establish:
+- universal self-improvement;
+- stability across models/tasks.
+
+Taste value: **A-**  
+Execution transfer: **A/B**  
+Instrument value: **B**
+
+Cluster warning:
+> harness self-improvement is already a crowded conceptual surface.
+
+---
+
+## ST-08 — Kyutai Kairos temporal pretraining
+Date: 2026-05-21 / released 2026-05-26  
+Type: controlled pretraining study + open matched checkpoints  
+Tier: II  
+Primary:
+- arXiv:2605.22769
+- https://huggingface.co/kyutai/Sequential_Helium_6B
+- KairosQA
+
+Deep-read: **YES**
+
+Actually establishes:
+- 6B sequential chronological vs shuffled Common-Crawl training;
+- sequential training improves recency/temporal precision while preserving broad general performance;
+- multiple yearly sequential checkpoints;
+- token-matched shuffled controls;
+- selected non-cooldown variants.
+
+Taste value: **A+**  
+Execution transfer: **A for analysis / F for re-pretraining**  
+Instrument value: **A+**
+
+Why unusually useful:
+> one public repo already contains a near-natural experiment over pretraining order.
+
+---
+
+## ST-09 — Kyutai MoshiRAG
+Date: 2026-04/05  
+Type: open full-duplex model + paper  
+Tier: II  
+Primary:
+- arXiv:2604.12928
+- https://github.com/kyutai-labs/moshi-rag
+- HF checkpoints
+
+Deep-read: **YES**
+
+Actually establishes:
+- asynchronous selective retrieval can run while conversation continues;
+- pre-RAG acknowledgements/coarse speech hide retrieval latency;
+- factual augmentation is injected back into the ongoing speech stream;
+- retrieval backend is modular.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **B**
+
+Core pressure:
+> realtime interaction exposes natural latency slack that can be used for asynchronous cognition.
+
+---
+
+## ST-10 — Lychee-FD
+Date: 2026-07-07  
+Type: open full-duplex SpeechLM + diagnosis paper  
+Tier: II  
+Primary:
+- arXiv:2607.06540
+- https://huggingface.co/HIT-TMG/Lychee-FD
+
+Deep-read: **YES**
+
+Actually establishes:
+- full-duplex semantic degradation is analyzed as acoustic-semantic gradient conflict;
+- hierarchical parameter separation is derived from the diagnosis;
+- reported gains improve both spoken QA and duplex interaction.
+
+Taste value: **A+**  
+Execution transfer: **B/C**  
+Instrument value: **B**
+
+One of the strongest recent diagnosis→mechanism→method examples outside LLM reasoning.
+
+---
+
+## ST-11 — DuplexSLA
+Date: 2026-05/06  
+Type: full-duplex Speech-Language-Action research system  
+Tier: II  
+Primary:
+- arXiv:2605.20755
+
+Deep-read: **YES**
+
+Actually establishes:
+- a shared ~160ms timeline for user audio, assistant audio and textual action;
+- planning/tool calls can occur without stopping speech;
+- turn-taking/control is handled inside one duplex backbone.
+
+Taste value: **A**  
+Execution transfer: **C/D**  
+Instrument value: **B**
+
+Core pressure:
+> duplex speech alone does not solve duplex planning/action.
+
+---
+
+## ST-12 — KRAFTON Raon-Speech / SpeechChat
+Date: 2026-04 report, weights updated through July  
+Type: open 9B SpeechLM + full-duplex extension  
+Tier: II  
+Primary:
+- arXiv:2605.23912
+- HF Raon-Speech-9B / Raon-SpeechChat-9B
+
+Deep-read: **YES at report/model-card level**
+
+Actually establishes:
+- a staged conversion of text LLM → SpeechLM → full-duplex model;
+- 1.38M hours speech/text for SpeechLM;
+- 119K hours time-aligned dialogue continual training for duplex behavior;
+- checkpoints/training/inference are open.
+
+Taste value: **A-**  
+Execution transfer: **C**  
+Instrument value: **A/B**
+
+Core pressure:
+> strong speech intelligence and full-duplex interaction are separable training problems.
+
+---
+
+## ST-13 — InclusionAI Ling-3.0
+Date: 2026 recent release; WSM parent arXiv:2507.17634  
+Type: open training-stage model family  
+Tier: II  
+Primary:
+- HF inclusionAI/Ling-3.0-*
+- Warmup-Stable-Merge
+
+Deep-read: **YES**
+
+Actually establishes:
+- pretrain/midtrain/WSM-merged checkpoint ladder;
+- tiny and flash share training recipe;
+- WSM replaces conventional decay with weighted checkpoint merging;
+- goal includes continual pretraining / dynamic data expansion.
+
+Taste value: **A**  
+Execution transfer: **A/B**  
+Instrument value: **A+**
+
+Core pressure:
+> training schedule can be partially transformed from online trajectory commitment into offline checkpoint-combination search.
+
+---
+
+## ST-14 — OpenBMB MiniCPM5-2B
+Date: 2026  
+Type: open small model family + staged post-training  
+Tier: II  
+Primary:
+- HF OpenBMB MiniCPM5 family
+
+Deep-read: **YES at model-card level**
+
+Actually establishes:
+- base/midtrain/SFT/final RL+OPD stages;
+- 2B scale;
+- critic-style RL;
+- 16 expert models consolidated with OPD;
+- open data/checkpoints.
+
+Taste value: **A-**  
+Execution transfer: **A**  
+Instrument value: **A+**
+
+Why valuable:
+> small enough to train, modern enough to study current post-training rather than legacy SFT only.
+
+---
+
+## ST-15 — Cohere Tiny Aya Thinker pair
+Date: 2026  
+Type: matched multilingual reasoning models  
+Tier: II  
+Primary:
+- CohereLabs/tiny-aya-en-thinker
+- tiny-aya-l2-thinker
+
+Deep-read: **YES at model-card level**
+
+Actually establishes:
+- En-Thinker reasons in English and answers in user language;
+- L2-Thinker reasons in prompt language;
+- same family, ~3.35B.
+
+Taste value: **A-**  
+Execution transfer: **A**  
+Instrument value: **A+**
+
+Core value:
+> matched public instrument for reasoning-language vs answer-language effects.
+
+---
+
+## ST-16 — Meituan LongCat Sparse Attention
+Date: 2026-08-03  
+Type: technical report + open smaller sparse model  
+Tier: II  
+Primary:
+- arXiv:2608.01662
+- meituan-longcat/LongCat-Flash-Lite-Sparse
+
+Deep-read: **YES**
+
+Actually establishes:
+- DeepSeek-style sparse indexing exposes index-scoring and fragmented-memory bottlenecks;
+- streaming-aware, cross-layer and hierarchical indexing address distinct system costs;
+- smaller 69B-A3B mechanism-faithful checkpoint is open.
+
+Taste value: **A**  
+Execution transfer: **C**  
+Instrument value: **B**
+
+Core move:
+> theoretical sparsity solves one bottleneck and exposes indexer/memory-access as the next one.
+
+---
+
+## ST-17 — Kyutai FID Lottery
+Date: 2026-06-18  
+Type: controlled evaluation/measurement study  
+Tier: II  
+Primary:
+- arXiv:2606.20536
+- https://kyutai.org/fid-lottery/
+
+Deep-read: **YES**
+
+Actually establishes:
+- training-seed variation dominates generation-seed variation in their panel;
+- initialization, data order and flow-matching noise all contribute;
+- scale/compute do not collapse the relative variance floor;
+- small FID gains can fall under recipe randomness.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **B**
+
+Core pressure:
+> a "trained model" is a random draw from a training recipe, not a deterministic artifact.
+
+---
+
+## ST-18 — Surflo
+Date: 2026-06  
+Type: 3D generative/reconstruction research  
+Tier: II  
+Primary:
+- arXiv:2606.13644
+
+Deep-read: **YES**
+
+Actually establishes:
+- variable-view images → fixed 128-token global state;
+- arbitrary-resolution output is decoupled from latent size;
+- independent point decoding needs shared rendering guidance for coherence.
+
+Taste value: **A**  
+Execution transfer: **C**  
+Instrument value: **B/C**
+
+Core pressure:
+> physical invariance can define the representation unit more strongly than input tokenization.
+
+---
+
+## ST-19 — ACE Robotics Kairos
+Date: 2026-06 report / July open weights  
+Type: 4B world-action model + robotics variants  
+Tier: II  
+Primary:
+- arXiv:2606.16533
+- HF ACERobotics/Kairos3.1-4B-robot-480P and action variants
+
+Deep-read: **YES**
+
+Actually establishes:
+- cross-embodiment data curriculum;
+- hybrid local/mid/global temporal memory;
+- unified understanding/generation/action prediction;
+- open robot-action checkpoints;
+- deployment-aware server/consumer rollout.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **A/B**
+
+---
+
+## ST-20 — NVIDIA Nemotron-Labs-Diffusion
+Date: 2026-07-07  
+Type: open 3B/8B/14B tri-mode LM family  
+Tier: II  
+Primary:
+- arXiv:2607.05722
+- HF nvidia/Nemotron-Labs-Diffusion-3B etc.
+
+Deep-read: **YES**
+
+Actually establishes:
+- one model jointly supports AR, diffusion and self-speculation;
+- diffusion drafts + AR verifies;
+- decoding mode can be workload-conditioned;
+- small open 3B instrument exists.
+
+Taste value: **A**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
+Core pressure:
+> generation operator can be a controllable mode of one trained model rather than an architecture family choice.
+
+---
+
+# Startup/HF ledger rule
+
+For future scanning, any new release should record both:
+
+1. **technical-thesis value**
+2. **instrument value**
+
+A very strong closed model with no matched artifacts may have:
+> thesis A / instrument F.
+
+A modest 2B–6B model with clean stage/control pairs may have:
+> thesis B / instrument A+.
+
+For our research process, the second case can be more useful.
