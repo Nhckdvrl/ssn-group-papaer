@@ -1,159 +1,192 @@
 # ssn-taste
 
-This directory is the working ledger for Sasano-taste-driven NLP/LLM research-question search.
+Working ledger for Sasano-taste-driven NLP / LLM research-question search.
 
-Target venues: **ACL / EMNLP / NAACL Main**. TACL / ICLR / ICML / NeurIPS are secondary calibration. EACL / AACL / Findings / workshops / arXiv may be used aggressively for novelty collision, but not as the main positive taste signal.
+Primary targets: **ACL / EMNLP / NAACL Main**.
 
-Current selected topics: **7**.
+## Canonical files
 
-## Current selection
+Read these in this order at the start of every new search round:
 
-- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?** Selected / pilot-authorized on 2026-09-17. The parent question is where the information→stopping mapping is acquired when a pretrained document continuer becomes an assistant: pretrained/native stop mapping, stop-readout adaptation, internal-state adaptation, or their interaction.
-- **S04 — How Do Language Models Update Situation Models Across Event Boundaries?** Selected / pilot-authorized on 2026-09-18. The parent question is how an LM transforms its active situation representation when one event becomes another: local editing, broader reconstruction, selective reactivation/rebinding, or another discovered update primitive.
-- **S05 — When Does Reading Become Learning?** Selected / pilot-authorized on 2026-09-18. The parent question is the boundary between transient conditioning and persistent parameter learning under ordinary response-only SFT: which prompt-side information is merely used, which task-sufficient information is retained, and which details are durably written into parameters.
-- **S06 — What Does Deliberation Do to Evidence?** Selected / pilot-authorized on 2026-09-18. The parent question is whether reasoning computes over a stable evidence state or endogenously changes the causal influence of fixed external evidence as deliberation unfolds.
-- **S07 — Where Does Surprise Go?** Selected / pilot-authorized on 2026-09-18. The parent question is how an LLM allocates an unexpected observation across current-state revision, source/observation-model revision, and transition/rule revision, identified by distinct persistent downstream effects.
-- **S08 — Is Metacognitive Control Shared?** Selected / pilot-authorized on 2026-09-18. The parent question is whether internal confidence is a reusable control variable across distinct metadecisions or whether abstention and reasoning termination rely on separable monitor/control states.
-- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?** Selected / pilot-authorized on 2026-09-19. The parent question is whether present memory accessibility fully predicts future editability, or whether learning history leaves a hidden stability state that changes contradictory-update dynamics.
+1. **SEARCH_GUIDE_ZH.md** — canonical long-term search process and promotion/kill rules.
+2. **SELECTED_TOPICS.md** — only topics already selected / PILOT-AUTHORIZED.
+3. **Sxx registration files** — frozen mother question, novelty boundary, pilot and kill conditions for each selected topic.
+4. **FAILED_TOPICS*.md** — anti-resurrection / failure lessons.
+5. **RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md** — historical novelty recalibration overlay.
+6. **NEXT_ROUND_PROMPT_ZH.md** — current short handoff for the next agent.
+7. Recent commits — repository state always overrides stale handoff text.
 
-See `SELECTED_TOPICS.md` for the frozen parent questions, novelty boundaries, and detailed registration files.
+Do not treat old prompts, historical REOPEN labels, or prior chat summaries as authoritative when they conflict with current repo state.
 
-## Governing taste
+---
 
-The search is not trying to find the most fashionable technical gap. It is trying to find a scientific question that Sasano and a Main-conference reviewer would naturally consider worth asking.
+## Current selected topics = 7
 
-The stable pattern from Sasano's feedback is:
+All are **SELECTED — PILOT-AUTHORIZED**.
 
-> **easy-to-understand puzzle or scientific pressure -> clear scientific object -> real difference from nearest prior -> direct experiment -> claims no wider than evidence.**
+- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
+- **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
+- **S05 — When Does Reading Become Learning?**
+- **S06 — What Does Deliberation Do to Evidence?**
+- **S07 — Where Does Surprise Go?**
+- **S08 — Is Metacognitive Control Shared?**
+- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?**
 
-Important anchors:
+See SELECTED_TOPICS.md and the individual registration files for the actual claims.
 
-- **Sato:** strongest positive pattern — simple puzzle, natural competing explanations, controlled experiments that distinguish them.
-- **Guo:** strongest negative reminder — 「先行研究との差が小さい。」 Old question + new model/language/dataset/condition is usually not enough.
-- **Hamdi:** average reviewers need both “納得できる” and “面白い”; unexpected outcomes can still be findings; mechanism is not mandatory.
-- **Utami:** a real technological/social change can create a new language question when one changed premise leads to one interpretable consequence.
-- **Kisako / Tsukagoshi:** a systematic trade-off or interaction between mature operations around one natural quantity can be Main-sized without deep mechanism.
-- **Oshika:** an independently necessary middle decision that a mature workflow still treats as human/gold/oracle can itself be a research object.
-- **Youchi / Yano:** nearby prior does not automatically kill an idea if a load-bearing structural defect changes the inference/object/capability when fixed.
+Important:
 
-## Hard preference: no evaluation-centric topics
+> These selected topics are **not positive taste exemplars**.
 
-The user does **not** want benchmark/evaluation research as the primary contribution.
+They are unrefuted research hypotheses and process outcomes. Use them to avoid duplication and understand previous search decisions, not as templates for what the next topic should look like.
 
-Do not select topics whose actual work reduces to:
+---
 
-- building a new benchmark, challenge set, or synthetic test suite;
-- auditing a metric or comparing metrics;
-- evaluating robustness under perturbation X;
-- comparing method A/B/C across a new condition;
-- constructing large synthetic data mainly to obtain ground truth;
-- contamination detection or dataset-quality auditing;
-- producing a leaderboard as the central result.
+## Current search state
 
-Evaluation can be an **instrument** inside a scientific experiment. It must not be the main scientific object.
+There is **no formal unresolved candidate** to inherit after S09.
 
-The decisive sanity check is:
+The next search should therefore begin from fresh calibration and fresh scientific pressure rather than variants of S03–S09.
 
-> **After deleting all benchmark names, metric names, and method names, what new fact does the paper learn about language, models, learning, training, representation, behavior, interaction, or a real-world process?**
+A locked new seed must eventually resolve to:
 
-If there is no clear answer, reject the topic.
+- **PILOT-AUTHORIZED**, then registered as the next Sxx; or
+- **KILL**, then logged with its real failure reason.
 
-### Why this rule was added
+Do not leave the user or repo with a persistent “SERIOUS / maybe” half-state.
 
-C2/S02 (“AI Rewrite ≠ Semantic Change”) looked strong at the framing level: a changed text-production regime and a clean distinction between meaning change and contextual redistribution. But the actual experiment collapsed into synthetic rewrite construction + semantic-preservation validation + LSC method/metric robustness comparison, while natural real-world data lacked clean ground truth. It was therefore cancelled. This is the canonical example of **scientific framing being stronger than the experimental object**.
+Zero survivors is acceptable.
 
-## Exploratory does not mean evaluation
+---
 
-The search prefers **exploratory rather than gambling** questions: several natural outcomes should remain scientifically interpretable.
+## Stable taste
 
-But this is only a necessary property, not a sufficient one. A benchmark paper can also have multiple interpretable outcomes. A real exploratory topic must study a scientific phenomenon or process itself.
+Positive taste comes from:
 
-Good targets include:
+1. **Sasano's actual research judgments**, continuously re-read rather than reduced to slogans.
+2. **Real strong ACL / EMNLP / NAACL Main papers**, with TACL / ICLR / ICML / NeurIPS for additional calibration.
 
-- what a model has learned when two theoretically different quantities are behaviorally confounded;
-- where a capability/representation comes from;
-- how a training operation changes learning dynamics, representation, or generalization;
-- a natural trade-off between two mature operations around one resource/quantity;
-- a hidden independent decision in an established workflow;
-- a real language/behavior process changed by a new technological or social premise;
-- an old scientific debate newly identifiable through a modern controlled intervention;
-- a cross-lineage collision that creates a genuinely new quantity or prediction.
+Cross-domain papers from CV, image/video generation, multimodal, speech/audio, robotics, general ML, cognitive science, statistics, information theory, control and dynamical systems may supply idea provenance.
 
-## Do not mine paper edges by default
+Transfer:
 
-The default generator must not be:
+> pressure, contradiction, possible worlds, identification logic, asymmetry, regime change, growth pattern.
 
-> recent Main paper finds phenomenon X -> it did not fully explain why/source/mechanism/boundary -> we study that missing piece.
+Do not transfer terminology mechanically.
 
-Apply the **remove-the-trigger-paper test**:
+The stable high-level pattern is:
 
-> If the trigger paper disappeared, would this research question still arise naturally from theory, a real-world change, a workflow defect, a learning problem, a structural contradiction, or another independent source?
+> **natural puzzle / pressure → clear scientific object → competing explanations → direct discrimination → claims no wider than evidence.**
 
-If not, it is probably a follow-up.
+---
 
-Successor work is allowed only when the predecessor has a **load-bearing assumption or structural defect** whose correction changes the scientific inference, object, or capability. “Cleaner experiment”, “more models”, “newer model”, and “one more boundary” are not enough.
+## Novelty calibration
 
-## Reviewer-level novelty, not exact-gap novelty
+The goal is **Main-level knowledge delta**, not zero overlap.
 
-For every serious seed, identify the parent literature a reviewer will use to compress the contribution.
+Do not kill merely because:
 
-Ask:
+- the broad parent has literature;
+- the same scientific object is crowded;
+- related behavior or mechanisms already exist.
 
-- What parent RQ does nearest prior already own?
-- Would a reviewer describe our work as one more model/language/dataset/condition/cell inside that parent?
-- Is our novelty sentence stated at the same abstraction level as nearby ACL/EMNLP/NAACL Main papers?
-- Are we inflating a narrow experiment into a broader parent rhetorically?
+Kill when:
 
-Main scope is calibrated empirically by reading actual Introduction + Related Work sections, not by intuition.
+- nearest prior already answers the same decisive unknown;
+- the honest novelty is only model / dataset / language / modality / terminology;
+- the project is a cleaner replication or one more exact cell;
+- the mother question is too narrow;
+- the decisive distinction is not identifiable;
+- the real experiment is benchmark / metric / robustness / method comparison.
 
-## Mandatory experiment-grounding audit before promotion
+A good novelty statement has the form:
 
-Before a seed can become serious, answer plainly:
+> Prior knows X.  
+> Y remains unknown because Z.  
+> Our experiment distinguishes A / B / C.
 
-1. **Where is the data?** Existing natural data, cheap controlled examples, or a large synthetic/annotation project?
-2. **What variable is actually manipulated or observed?** A scientific quantity/process, or merely a benchmark condition?
-3. **What will the main result look like?** If it is primarily `method × dataset/perturbation × score`, be suspicious.
-4. **What is learned if all benchmark/metric names are removed?** There must still be a substantive scientific conclusion.
-5. **Who is the grammatical subject of the paper?** Prefer language/model/training/representation/behavior/process, not metric/benchmark/method.
+---
 
-Do this **before** registration, not after writing a beautiful story.
+## Hard user preferences
 
-## Search workflow
+Prefer:
 
-1. **Recalibrate first.** Re-read real Sasano feedback/projects and several recent ordinary-strong ACL/EMNLP/NAACL Main papers. Learn how their questions arise, not only what topics they cover.
-2. **Search for scientific pressure.** Natural puzzles, competing explanations, learning sources, representation distinctions, training effects, trade-offs, hidden decisions, real changed premises, old debates with new identifying operations.
-3. **Lock one promising seed at a time.** Do not surface a large pile of half-ideas. Once one seed is promising, deep-audit it to a yes/no decision before switching.
-4. **Read nearest papers, not abstracts only.** At minimum understand Introduction + Related Work and the actual experimental claim.
-5. **Do reviewer compression early.** Kill exact-cell novelty inside an occupied parent.
-6. **Do the experiment-grounding audit immediately after novelty.** This prevents another C2 failure.
-7. **Only then design the minimum pilot.** Prefer natural/available data and a cheap experiment that directly distinguishes explanations or reveals structure. Do not begin by constructing a benchmark.
-8. **Register only after all of the above.** Selected = 0 is fully acceptable.
+- mechanistic interpretability / LLM science;
+- learning and post-training;
+- reasoning / inference;
+- architecture / inductive bias;
+- generation and understanding;
+- training dynamics;
+- simple but fundamental questions.
 
-## Drift audit
+Avoid as primary contributions:
 
-Every ~8–12 serious seeds, or whenever several seeds come from the same literature, stop and check:
+- benchmark / dataset construction;
+- evaluator / metric validity;
+- RAG;
+- data-centric studies;
+- model-zoo comparisons;
+- complicated linguistics;
+- large manual annotation;
+- hype-driven RL / agent / RLVR work;
+- “new model re-tests old phenomenon”;
+- mechanism-first head/vector/subspace/circuit hunting.
 
-- Are we again mining recent-paper mechanisms/future work?
-- Are RL/agents/tool-use trends dominating because they are searchable rather than because they fit Sasano?
-- Are we relying on exact gaps rather than parent novelty?
-- Are evaluation, metric validity, robustness, benchmark construction, or synthetic data becoming the center again?
-- Is the data path becoming artificial or expensive?
-- Are Main papers being used only to kill ideas rather than positively teach question formation?
-- Are Sasano examples becoming slogans instead of reasoning patterns?
+Small controlled synthetic worlds are allowed as **identification instruments**, not as the scientific contribution.
 
-If many seeds die for the same reason, change the **idea generator/scientific object**, not the novelty threshold.
+---
 
-## Current cancelled registrations
+## Core search move
 
-- **S01 / F06 — optional tool default / effective action semantics:** cancelled. Reviewer-level parent compresses to underspecified tool intent / argument completion; the default-value case is too narrow.
-- **S02 / C2 — AI Rewrite ≠ Semantic Change:** cancelled. Actual execution is evaluation-centric and data/ground-truth awkward.
+The preferred generator is:
 
-Do not revive them by adding more models, datasets, metrics, or rhetoric.
+> **Find an unresolved / conflicting / unclear scientific component first, then upgrade it into an experiment.**
 
-Files:
+Especially valuable:
 
-- `FAILED_TOPICS.md` and dated continuations — serious ideas that died; do not revive without evidence resolving the recorded failure.
-- `RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md` — overlay correcting overly strict old novelty reasoning.
-- `SELECTED_TOPICS.md` — only genuinely selected questions. Current count: **7**.
-- `S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `S04_EVENT_BOUNDARY_SITUATION_MODEL_UPDATING.md`, `S05_WHEN_DOES_READING_BECOME_LEARNING.md`, `S06_DELIBERATION_EVIDENCE_REWEIGHTING.md`, `S07_WHERE_DOES_SURPRISE_GO.md`, `S08_SHARED_METACOGNITIVE_CONTROL.md`, `S09_MEMORY_ACCESSIBILITY_STABILITY.md` — detailed registrations.
-- `NEXT_ROUND_PROMPT_ZH.md` — current operational search procedure; treat it as scaffolding rather than constitution.
+- multiple papers whose results resist one simple explanation;
+- two quantities usually treated as one;
+- directed transfer asymmetry;
+- changed premise;
+- same behavior, different computation;
+- endpoint vs formation dynamics;
+- constraint/flexibility changing the learned algorithm;
+- hidden intermediate decisions;
+- old debates newly made identifiable.
+
+Do not begin with thirty titles or one recent paper's future-work list.
+
+---
+
+## Mechanistic interpretability
+
+Mechanism follows the mother question.
+
+Preferred Zhao / Cho-style path when appropriate:
+
+> **representation structure → transformation / computation → component / pathway → causal intervention → optional controllability**
+
+Probe/decodability alone is not the scientific endpoint.
+
+---
+
+## Search discipline
+
+For the full process, promotion gates, failure modes, drift reset, and output format, read:
+
+> **SEARCH_GUIDE_ZH.md**
+
+The shortest operational summary is:
+
+1. Restore repo.
+2. Freshly calibrate on Sasano + strong Main papers.
+3. Mine scientific pressures.
+4. Lock one promising seed.
+5. Read dangerous nearest prior deeply.
+6. Define qualitatively different worlds.
+7. Design the smallest experiment that separates them.
+8. Audit data / scale / story.
+9. Resolve **PILOT-AUTHORIZED or KILL**.
+10. Register or log.
+
+Do not lower the bar to manufacture S10.
