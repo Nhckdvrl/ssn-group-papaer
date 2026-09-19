@@ -448,7 +448,7 @@ Mechanism 是回答问题的工具，不是问题来源。
 
 # 11.5 Training-dynamics recipe gate
 
-S03/S04 的执行经验与 S05/S09 re-audit 增加一条硬门槛：
+S03 的执行经验与 S05/S09 re-audit 增加一条硬门槛：
 
 > **不要只问 training-dynamics 问题是否可控；先问它是否有理由存在一个 recipe-stable answer。**
 
@@ -465,7 +465,6 @@ S03/S04 的执行经验与 S05/S09 re-audit 增加一条硬门槛：
 特别吸取四个失败教训：
 
 - **S03:** single-budget / single-family developmental reading 极易制造假 law；稳定的 structural / parameter-locus fact 比“模型在某条训练历史里怎么学会 X”更可靠。
-- **S04:** 若自然现象太弱，必须不断增强 synthetic manipulation 才能识别，可能是 identification instrument 在创造现象。
 - **S05:** 若 persistent conditioning-memory 只有在重复 exposure / overfitting 后才明显，结论会退化成 memorization-dose interaction。
 - **S09:** 若“memory age”本身由 optimizer trajectory、intervening gradients 和 acquisition-time state 共同定义，就不存在一个便宜、干净的 age intervention。
 
@@ -872,11 +871,11 @@ Reset 时：
 
 - S03 — From Document End to Task Done
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
-- S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 - S08 — Is Metacognitive Control Shared?
-- S09 — Same Recall, Different Stability?
+
+S05 / S09 已在 2026-09-19 re-audit 中取消；其 registration 仅作 anti-resurrection 记录。
 
 这些题：
 
