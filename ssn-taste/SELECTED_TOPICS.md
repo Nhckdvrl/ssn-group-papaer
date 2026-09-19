@@ -116,6 +116,22 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
+### S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-19  
+**Detailed registration:** `S09_MEMORY_ACCESSIBILITY_STABILITY.md`
+
+**Parent question.** Is present memory accessibility sufficient to predict future editability, or can equally accessible parameter memories differ in stability because of how and when they were learned?
+
+**Scientific pressure.** Memorization crystallization, training-order/recency traces, knowledge-update resistance, and continual-learning plasticity each establish neighboring phenomena, but do not determine whether current recall/strength is a sufficient state variable for future rewriting.
+
+**Minimum identification.** Counterbalance the same novel facts across early/late acquisition schedules, measure current accessibility continuously, apply a common terminal refresh to test last-exposure recency, then train matched contradictory replacements for all facts together from the same checkpoint and compare overwrite learning curves.
+
+**Claim boundary.** Do not reduce S09 to “training order matters,” generic catastrophic forgetting, a knowledge-editing benchmark, or replication of the Fresh-in-Memory recency direction. The object is the possible separation between **present accessibility** and **future stability/plasticity**.
+
+---
+
 ## Explicitly cancelled registrations
 
 - **S01 — Omission ≠ Neutrality / effective default semantics in tool calls:** cancelled/demoted. It is already recorded as F06 in `FAILED_TOPICS.md`; the Main-level parent compresses to underspecified tool intent / argument completion, leaving only an exact API-default subcase.
@@ -125,4 +141,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 6.**
+**Current selected topic count = 7.**
