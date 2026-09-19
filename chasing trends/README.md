@@ -7,7 +7,7 @@
 - broad literature calibration 已完成；
 - 正式选题搜索已经开启；
 - formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
-- 当前 selected：**CT02 / CT03**。
+- 当前 selected：**CT02 / CT03 / CT04**。
 
 ## 1. 从哪里开始
 
@@ -69,7 +69,8 @@ chasing trends/
     ├── FAILED_TOPICS.md
     ├── CT01_RELEVANT_BUT_INVALID.md
     ├── CT02_IS_CONTEXT_UTILITY_RANKABLE.md
-    └── CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md
+    ├── CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md
+    └── CT04_HYBRID_MEMORY_OPERATION_PLASTICITY.md
 ```
 
 目录的职责必须保持清楚：
@@ -171,9 +172,21 @@ chasing trends/
 
 > `topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
 
+### CT04 — What Can Hybrid Memory Safely Learn? Operation-Level Plasticity in Recurrent-Attention LMs
+
+**Status:** PILOT-AUTHORIZED
+
+核心问题：
+
+> Qwen3.5 等 native hybrid 的 recurrent memory 并不是一个整体：address/read、content write、decay/retention、write strength、output/readout 中，哪些可以安全适配，哪些一旦更新会破坏 pretrained memory contract？
+
+详细 registration：
+
+> `topics/CT04_HYBRID_MEMORY_OPERATION_PLASTICITY.md`
+
 CT01 已在 2026-09-19 re-audit 后 **KILL**；原因见 `topics/CT01_RELEVANT_BUT_INVALID.md` 与 `topics/FAILED_TOPICS.md`。
 
-当前正式 selected 数量：**2**。
+当前正式 selected 数量：**3**。
 
 ## 6. 几条不会再妥协的规则
 
