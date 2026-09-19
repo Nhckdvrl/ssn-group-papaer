@@ -2156,3 +2156,398 @@ For every future open/startup/scientific model, the ledger should additionally r
 - **Instrument Value**
 
 This prevents one large SOTA score from dominating research-taste calibration.
+
+
+---
+
+# L. Failure provenance, open development trees, continual learning, structured science — added 2026-09-19
+
+## ST-21 — Vinci Technical Report No. 1: Transferring Character Post-Training to Mistral 7B
+Date: 2026-08-13  
+Type: internal technical report + experimental checkpoint  
+Tier: II/negative-evidence source  
+Primary: SimpleDirect / Vinci Research No. 1
+
+Deep-read: **YES**
+
+Actually establishes within its development-tier protocol:
+- a frozen SFT+DPO behavior recipe substantially moved the model-judged unsupported/fabrication metric on Mistral 7B;
+- reticence increased;
+- GSM8K regressed by ~5.6 points;
+- a deterministic evaluator misranked checkpoints.
+
+Does NOT establish:
+- improved factual knowledge;
+- production readiness;
+- general recipe portability.
+
+Taste value: **A for failure provenance**  
+Execution transfer: **A/B**  
+Instrument value: **B**  
+Peer review: **NO**
+
+Core lesson:
+> target behavior movement and useful behavior change are different quantities.
+
+---
+
+## ST-22 — Vinci Technical Report No. 2: Character Transfer Across Three Model Families
+Date: 2026-09-01  
+Type: controlled multi-family negative/boundary report  
+Tier: II  
+Primary: SimpleDirect / Vinci Research No. 2
+
+Deep-read: **YES**
+
+Actually establishes in the declared validation setting:
+- one frozen recipe moved unsupported-assertion rate in the desired direction on Qwen3, Ministral and OLMo;
+- no family met the pre-registered grounded-answer preservation bar;
+- trade-off differed by family;
+- judge repeatability/provenance became a measurement issue.
+
+Does NOT establish:
+- universal character-training failure;
+- final primary-holdout result;
+- production safety or truthfulness.
+
+Taste value: **A+ for boundary-result discipline**  
+Execution transfer: **A/B**  
+Instrument value: **B**  
+Peer review: **NO**
+
+Core lesson:
+> directional transfer ≠ utility-preserving transfer.
+
+---
+
+## ST-23 — Vinci Technical Report No. 3: Runtime Pass Is Not Correctness
+Date: 2026-09-01  
+Type: failed post-training study + evaluator audit  
+Tier: II  
+Primary: SimpleDirect / Vinci Research No. 3
+
+Deep-read: **YES**
+
+Actually establishes in its audit:
+- the configured reasoning-efficiency intervention missed its positive bar;
+- the original executable evaluator accepted 24/24 deliberately wrong adversarial non-solutions;
+- runtime/visible-test success did not certify semantic correctness;
+- evaluator repair required fresh mutation/adversarial qualification;
+- denominator/censoring choices materially affected measured quantities.
+
+Does NOT establish:
+- a universal weakness of executable evaluation;
+- a peer-reviewed general theorem.
+
+Taste value: **A+**  
+Execution transfer: **A**  
+Instrument value: **A as protocol pattern / low as model artifact**  
+Peer review: **NO**
+
+Core lesson:
+> evaluator is an experimental instrument that needs independent qualification.
+
+---
+
+## ST-24 — IFM K2 Horizon fleet
+Date: 2026-09-03  
+Type: open model fleet / development-tree artifact  
+Tier: II/IV depending claim  
+Primary:
+- IFM K2 Horizon release
+- Hugging Face K2-Horizon family
+
+Deep-read: **YES at blog/model-card/artifact level**
+
+Actually establishes:
+- six public size classes from 0.9B to 375B;
+- public weights and at least some intermediate branches/checkpoints/logs;
+- common family methodology/interfaces, with nontrivial architecture/vocabulary differences across sizes;
+- 0.9B card exposes multi-teacher post-training and stage branches;
+- release materials document an unintended benchmark-answer acquisition episode in development.
+
+Does NOT yet establish:
+- a perfectly controlled same-recipe scaling law;
+- proxy-fidelity of 0.9B results for 375B;
+- full reproducibility until promised report/code/data artifacts are verified as released.
+
+Taste value: **A**  
+Execution transfer: **A at 0.9B / lower at large scales**  
+Instrument value: **A+**  
+Proxy-fidelity evidence: **B-/unknown until full tree analysis**
+
+Core lesson:
+> an open development tree can be more scientifically useful than final weights, but family membership is not causal control.
+
+---
+
+## ST-25 — Base Labs: Can a Language Model Learn Facts Continually in Its Weights?
+Date: 2026-07  
+Type: open post-training science / continual-learning negative study  
+Tier: II  
+Primary:
+- Base Labs article
+- arXiv:2607.11020
+
+Deep-read: **YES**
+
+Actually establishes:
+- broad restatement/study data creates more usable written knowledge than bare statements;
+- later sequential writes can make earlier facts behaviorally unreachable while preserving much of their local write signal;
+- prompt re-supply can recover many "forgotten" facts;
+- tested local interventions did not robustly preserve reachability under continued writes.
+
+Does NOT establish:
+- that all weight-based continual learning is impossible;
+- that the information is fully intact in a mechanistic sense.
+
+Taste value: **A+**  
+Execution transfer: **A**  
+Instrument value: **A/B**
+
+Core lesson:
+> behavioral forgetting can be retrieval/reachability drift rather than literal erasure.
+
+---
+
+## ST-26 — Falcon: Fast Weight Attention for Continual Learning
+Date: arXiv 2026-08-27 (project metadata also references earlier technical-report work)  
+Type: theory/architecture continual-learning study  
+Tier: II  
+Primary: arXiv:2608.27763 / project page
+
+Deep-read: **YES at abstract/project/theory-object level**
+
+Actually establishes:
+- recurrent/fast-weight state transitions can be interpreted as online learning rules;
+- prefix-aligned vs same-step writes optimize different internal objectives;
+- normalized updates separate plasticity, forgetting and bounded rehearsal.
+
+Taste value: **A**  
+Execution transfer: **B**  
+Instrument value: **B**
+
+Core lesson:
+> online memory update semantics are an optimization objective, not only architecture plumbing.
+
+---
+
+## ST-27 — Macaron-V1
+Date: 2026-07/08  
+Type: open large agent-model family / continual-learning architecture  
+Tier: II/III  
+Primary:
+- Macaron-V1 report/repo
+
+Deep-read: **YES at architecture/harness level**
+
+Actually establishes:
+- frozen base + four persistent LoRA specialists;
+- one specialist selected per user turn;
+- same Mixture-of-LoRA design on Venti and smaller Tall families;
+- adapter registration provides a modular substrate for continued specialization.
+
+Does NOT establish:
+- robust cumulative continual learning over unbounded experience;
+- compositional consistency across arbitrary specialists.
+
+Taste value: **A-**  
+Execution transfer: **D for flagship / C for Tall**  
+Instrument value: **B**
+
+Core lesson:
+> persistent modular adapters are a different knowledge location from base-weight rewriting.
+
+---
+
+## ST-28 — Infinite-Parameter LLMs
+Date: 2026-09-16  
+Type: very recent conceptual architecture paper  
+Tier: II/early proposal  
+Primary: arXiv:2609.18842
+
+Deep-read: **YES at abstract/problem/formulation level**
+
+Actually proposes:
+- a frozen shared base;
+- hypernetwork-generated low-rank FFN modulations from live data;
+- an online-updated Bayesian belief over latent code;
+- re-derived effective weights as interaction proceeds;
+- an evaluation protocol against ICL/retrieval.
+
+Does NOT yet establish:
+- practical large-scale performance;
+- superiority over retrieval/adapters;
+- stable continual learning in deployment.
+
+Taste value: **A- as new storage-location thesis**  
+Execution transfer: **C/D**  
+Instrument value: **F until code/checkpoints appear**
+
+Core lesson:
+> live data can in principle be compiled into generated weights, creating a distinct persistence/amortization point between context and permanent parameters.
+
+---
+
+## ST-29 — Monroe
+Date: 2026-08-19  
+Type: molecular foundation-model study  
+Tier: II  
+Primary: arXiv:2608.18982
+
+Deep-read: **YES at problem/ablation/transfer-result level**
+
+Actually establishes:
+- molecular representation improvements plus a PFN downstream predictor;
+- PFN-based downstream inference also improves external molecular representations (MiniMol/CheMeleon);
+- downstream consumer choice can be transferable across representation families.
+
+Taste value: **A**  
+Execution transfer: **B**  
+Instrument value: **B**
+
+Core lesson:
+> representation quality and downstream inference algorithm are distinct, interacting contributors.
+
+---
+
+## ST-30 — Molexar Base / Omni
+Date: 2026-06-24  
+Type: tiny molecular FM + matched conditional SFT pair  
+Tier: II  
+Primary:
+- arXiv:2606.25865
+- fairydance/molexar-10m-base
+- fairydance/molexar-10m-omni
+
+Deep-read: **YES**
+
+Actually establishes:
+- Fragment-SELFIES / BRICS-fragment molecular language;
+- 10M base model for unconditional/fragment continuation;
+- matched Omni model initialized from Base and SFT'd across scalar/property, pharmacophore, protein-sequence and pocket conditions;
+- one AR decoder supports multiple condition types.
+
+Taste value: **A-**  
+Execution transfer: **A+**  
+Instrument value: **A+**
+
+Core lesson:
+> a chemically meaningful basic unit plus matched base/conditional pair can be a better small scientific instrument than a giant domain model.
+
+---
+
+## ST-31 — Self-Geometry
+Date: 2026-08-11  
+Type: 3D VFM test-time adaptation paper  
+Tier: II  
+Primary: arXiv:2608.10708 / project page
+
+Deep-read: **YES**
+
+Actually establishes:
+- explicit multi-view geometry is expensive to impose during foundation pretraining;
+- test-time QKV-LoRA can impose epipolar/multi-view constraints;
+- reported improvements span six VFMs and four benchmarks;
+- adaptation is lightweight enough for per-scene use on a high-end single GPU.
+
+Artifact caveat:
+- official repository/project page still indicated code release was forthcoming at the checked version.
+
+Taste value: **A**  
+Execution transfer: **A/B if code becomes available**  
+Instrument value: **B currently**
+
+Core lesson:
+> known physical structure can be placed at test time rather than inside pretraining.
+
+---
+
+## ST-32 — MindForge
+Date: 2026-07-29  
+Type: code-agent data/environment pipeline + open trajectories  
+Tier: II  
+Primary:
+- arXiv:2607.27146
+- centre-for-swe/MindForge-27B-Training-Trajectories
+
+Deep-read: **YES**
+
+Actually establishes:
+- source-free cleanroom environments expose only compiled reference executable + sanitized docs;
+- 1,001 long whole-program synthesis trajectories are public;
+- 1,124 cleanroom environment entries are indexed;
+- a concrete full-finetuning recipe for Qwen3.6-27B is released;
+- fine-tuning improves ProgramBench and seven unseen SE benchmarks in the reported study.
+
+Taste value: **A**  
+Execution transfer: **B/C (trajectory analysis easier than full FT)**  
+Instrument value: **A**
+
+Core lesson:
+> executable behavior can be a powerful interactive oracle without exposing implementation.
+
+---
+
+## ST-33 — SpecFirst
+Date: 2026-07-29  
+Type: code-agent process decomposition paper  
+Tier: II  
+Primary: arXiv:2607.27167
+
+Deep-read: **YES**
+
+Actually establishes:
+- from-scratch synthesis often under-probes the behavioral oracle;
+- separating behavioral specification elicitation from implementation improves the tested agents;
+- early misunderstanding is treated as a process-stage failure rather than only a code-generation failure.
+
+Taste value: **A**  
+Execution transfer: **A/B**  
+Instrument value: **B**
+
+Core lesson:
+> requirements/specification elicitation can be a first-class computation phase before synthesis.
+
+---
+
+## ST-34 — Code World Model
+Date: 2026-08-26  
+Type: world-model architecture preprint  
+Tier: II  
+Primary: arXiv:2608.25927 / project page
+
+Deep-read: **YES at architecture/problem level**
+
+Actually proposes/demonstrates:
+- coding agent maintains executable persistent world state/rules;
+- proxy representation compiles state constraints into proxy video;
+- generative video model handles visual realization.
+
+Taste value: **A**  
+Execution transfer: **C/D**  
+Instrument value: **B if released code/HF artifacts are used**
+
+Core lesson:
+> persistent causal dynamics and visual rendering need not be represented by the same model/state.
+
+---
+
+## ST-35 — STELLAR (older parent / instrument)
+Date: 2026-02 / ICML 2026  
+Type: spatial-semantic representation factorization  
+Tier: peer-reviewed academic parent  
+Primary: Microsoft Research / HF STELLAR
+
+Deep-read: **YES**
+
+Actually establishes:
+- semantic invariance and spatial reconstruction create conflicting representation pressures;
+- factorized semantic tokens + localization matrix can support both;
+- B/L/H and B8/B16/B24 matched artifacts are released.
+
+Taste value: **A**  
+Recency role: **PARENT / CONTRAST, not recent-frontier evidence**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
