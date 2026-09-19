@@ -81,36 +81,38 @@ Kill if the estimator has weak exact-counterfactual fidelity, works only in the 
 
 ---
 
-## CT04 — What Can Hybrid Memory Safely Learn? Operation-Level Plasticity in Recurrent-Attention LMs
+## CT04 — What Moves During Hybrid Adaptation? State-Dynamics Drift in Recurrent–Attention LMs
 
-**Status:** PILOT-AUTHORIZED  
-**Registered:** 2026-09-19  
-**Detailed registration:** `topics/CT04_HYBRID_MEMORY_OPERATION_PLASTICITY.md`
+**Status:** PILOT-AUTHORIZED — exploratory identification program  
+**Registered:** 2026-09-19; reframed 2026-09-20  
+**Detailed registration:** `topics/CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md`
 
 ### Mother question
 
-Within pretrained hybrid recurrent memory, which operations are plastic under post-training and which are load-bearing?
+When a pretrained hybrid recurrent–attention LM is adapted, **what actually moves**: recurrent transition dynamics, recurrent-state operating point, attention↔recurrence functional allocation, operation-local memory behavior, or only generic representations?
 
 ### Scientific pressure
 
-Recent work gives a real contradiction: recurrent-only LoRA is destructive in sequential Qwen3.5, while state-based / S0 tuning shows recurrent state itself can be a powerful adaptation surface. Causal hybrid-memory work also shows attention KV and recurrent state carry different functional roles.
+Current results do not line up under one simple explanation. Component-specific LoRA can be destructive on the recurrent path of sequential Qwen3.5 yet constructive on parallel Falcon-H1; state/S0 tuning can adapt recurrent computation strongly without changing the weights; causal cache interventions show attention KV and recurrent state carry different functions; and separate hybrid work shows post-training can locally damage a memory-routing mechanism.
 
-CT04 therefore decomposes Gated DeltaNet into addressing/read, content write, decay/retention, write strength, and output/readout operations, and asks which operation actually causes adaptation gains versus collateral forgetting.
+CT04 treats these as an identification problem rather than presupposing which operation is brittle.
 
-### Minimum identification
+### Identification program
 
-First reproduce the destructive GDN-LoRA result. Then run parameter-budget-matched operation-level adapters while measuring:
+Use matched adaptation plus base/adapted **state × weights × channel** crosses to measure:
 
-- target-task learning;
-- collateral forgetting;
-- long-context recall;
-- Split-prefill / State-swap memory-channel behavior;
-- recurrent retention-horizon / state-update diagnostics.
+- recurrent-state trajectory / retention-horizon drift;
+- whether changed behavior travels with state or transition parameters;
+- attention-KV vs recurrent-state causal contribution before/after adaptation;
+- sequential vs parallel topology;
+- pure-Transformer controls for generic drift.
 
-### Kill boundary
+Different outcomes imply different method families: dynamics anchoring, state recentering, channel-balanced adaptation, or operation-aware PEFT.
 
-Kill if the recurrent-LoRA failure does not reproduce, operation-level differences vanish after matching optimization/parameter count, no stable memory-functional correlate appears, or the final story reduces to a finer target_modules sweep without a mechanism-derived method.
+### Continuation boundary
 
----
+Do not stop because one predicted sign fails. Stop/reframe only if matched experiments reveal no stable causal structure beyond recipe noise or generic drift, or if a direct prior already performs the same decomposition and method.
+
+--
 
 **Current selected topic count = 3.**
