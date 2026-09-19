@@ -638,3 +638,182 @@ Reset：
 不是：
 
 > **research templates**。
+
+
+---
+
+# 17. Literature calibration 不允许“做一批就收工”
+
+新增于 2026-09-19。
+
+用户明确纠正：
+
+> **“你都做厚啊，没必要这么早就跳出来。”**
+
+因此以后 framework calibration不能：
+
+> 读4–5条lineage → 得到一个漂亮meta-pattern → 马上开始找题。
+
+至少要同时具备：
+
+1. **Breadth**
+   - 多会议；
+   - 多领域；
+   - 不只 reasoning/LLM。
+
+2. **Depth**
+   - 核心lineage连续 parent→successor；
+   - 不是孤立paper。
+
+3. **Contrast**
+   - strong but compute-heavy；
+   - incremental accepted work；
+   - measurement-only work；
+   - weak story / module stack；
+   - negative-result contrast。
+
+4. **Cross-lineage comparison**
+   - 同样叫 adaptive/selective/latent/unified/mismatch，
+   - underlying pressure是否其实不同。
+
+5. **Execution transfer**
+   - strong paper是否根本依赖我们没有的资源。
+
+6. **Saturation**
+   - 哪个 conceptual move最近6–12个月已经形成cluster。
+
+7. **Blind spots**
+   - 明确哪些area只是breadth scan，不能拿来直接出题。
+
+当前对应文件：
+- LONGITUDINAL_GENEALOGIES_01_2026-09-19.md
+- LONGITUDINAL_GENEALOGIES_02_2026-09-19.md
+- LONGITUDINAL_GENEALOGIES_03_2026-09-19.md
+- LONGITUDINAL_GENEALOGIES_04_2026-09-19.md
+- GENEALOGY_LIBRARY_INDEX_2026-09-19.md
+- CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md
+
+---
+
+# 18. Genealogy evidence tags
+
+以后写 lineage relation：
+
+## DIRECT
+论文明确引用/挑战/扩展 parent。
+
+## FIELD
+同一literature family；只说后一篇出现时前一篇已经构成field context。
+
+## RECONSTRUCTED
+为了理解frontier做的概念重构。
+
+禁止：
+> 把RECONSTRUCTED写成作者真实idea来源。
+
+这是防止 hindsight bias 的硬规则。
+
+---
+
+# 19. Same surface / different genealogy gate
+
+正式候选以后，任何跨域idea如果使用以下词：
+
+- adaptive
+- selective
+- dynamic
+- latent
+- unified
+- mismatch
+- bottleneck
+- invariant
+- curriculum
+- sparse
+
+先做一次去词审计。
+
+必须回答：
+
+1. state是什么？
+2. action/operation是什么？
+3. objective是什么？
+4. old assumption是什么？
+5. decisive evidence是什么？
+6. method为什么由evidence推出？
+7. source domain和target domain的这些结构是否真的同构？
+
+如果答不清：
+
+> 只是surface analogy，KILL。
+
+---
+
+# 20. Contrast gate
+
+正式候选以后必须额外问：
+
+> nearest accepted papers之所以成立，有多少来自我们无法复制的resource shape？
+
+包括：
+
+- 1000+ model sweep；
+- foundation model from-scratch；
+- hundreds of billions training tokens；
+- huge synthetic/real speech data；
+- proprietary evaluation；
+- multi-robot data；
+- large human study。
+
+如果核心claim只能靠这些资源确认：
+
+> 即使idea漂亮，也不PILOT-AUTHORIZED。
+
+---
+
+# 21. Literature depth tiers
+
+## Tier A
+连续追了多篇parent/successor，并读过关键problem/evidence。
+
+可以作为：
+> candidate search source。
+
+## Tier B
+有multi-paper reconstruction，但部分parent还需补。
+
+可以作为：
+> pressure source；candidate出现时必须继续deep audit。
+
+## Tier C
+主要breadth scan。
+
+只能用于：
+> 发现值得读的lineage。
+
+**不得直接从Tier C生成formal candidate。**
+
+如果seed落在Tier C：
+
+> 先升级lineage depth，再判断seed。
+
+---
+
+# 22. 什么时候才从 literature calibration 切到正式找题
+
+不是：
+> “我们已经总结出几个pattern”。
+
+切换条件：
+
+1. 用户明确要求开始；
+2. 至少有多个Tier A lineage；
+3. 当前阅读不再被单一热点支配；
+4. contrast library已建立；
+5. 能识别近期cluster saturation；
+6. 能区分intellectual quality与execution suitability；
+7. 对candidate最可能落入的area有真实parent knowledge。
+
+即使满足1–7：
+
+> 仍允许0 survivor。
+
