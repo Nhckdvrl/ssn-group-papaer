@@ -4,7 +4,7 @@
 >
 > Window: mainly June–September 2026.
 >
-> This file continues `INDUSTRY_FRONTIER_GENEALOGIES_01_2026-09-19.md`.
+> This file continues `GENEALOGIES_01.md`.
 >
 > No CT candidates are generated here.
 
