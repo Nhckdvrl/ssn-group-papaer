@@ -2739,3 +2739,120 @@ Instrument value: **B**
 Core lesson:
 > a representation producer should be evaluated against the cost profile of the downstream consumer/training pipeline, not reconstruction alone.
 
+
+
+---
+
+# N. Long-horizon provenance/state/correction sources — added 2026-09-19
+
+## ST-43 — Agora: Git as Shared Memory for Collective AutoResearch
+Date: 2026-09-16  
+Type: multi-agent research-memory / coordination technical report  
+Tier: II/I-like sustained-run evidence  
+Primary:
+- arXiv:2609.18094
+- yifanzhang-pro/Agora
+
+Deep-read: **YES — full arXiv text + repo**
+
+Actually establishes:
+- research contributions are stored as immutable Git DAG nodes with parent lineage, typed claim tags and independent verification;
+- 13 model workers operated for nearly 12 days with no assigned roles/central planner;
+- 1,703 contributions, including 1,124 scored results and 165 verifications;
+- best no-training weight-transfer score improves frozen 119.6M target from 3.3923 to 1.899 bpb;
+- search rapidly concentrates into a dominant lineage and parallel rediscovery is common;
+- one human intervention exposing the search monoculture redirects exploration;
+- paper explicitly states a matched-compute controlled comparison is still needed to establish discovery-efficiency benefit of shared research state.
+
+Does NOT establish:
+- that Git-DAG memory causally beats all alternatives under matched compute;
+- autonomous scientific taste;
+- elimination of monoculture.
+
+Taste value: **A+**  
+Execution transfer: **B/C**  
+Instrument value: **B/C at checked repo**
+
+Core lesson:
+> research memory should preserve claim/artifact/provenance/verification status, but shared memory can itself reshape attention and create monoculture.
+
+---
+
+## ST-44 — SURE-Map
+Date: 2026-09-14  
+Type: streaming geometry / self-correction study  
+Tier: II  
+Primary:
+- arXiv:2609.15795
+- RCL-Robotics/SURE-map
+
+Deep-read: **YES — paper/abstract + open repo/training/eval**
+
+Actually establishes:
+- conventional single-view confidence is insufficient for streaming geometry;
+- cross-view geometric uncertainty targets pose-depth correspondence consistency;
+- local uncertainty-weighted correction addresses short-term pose/geometry errors;
+- sparse keyframe-window inference addresses slow accumulated scale drift;
+- open code, uncertainty checkpoint, frozen backbone path, training/evaluation configs are provided.
+
+Taste value: **A+**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
+Core lesson:
+> self-correction should match empirically distinct error time constants rather than add generic local/global modules.
+
+---
+
+## ST-45 — AlayaVista
+Date: 2026-09-13  
+Type: streaming video world-model architecture  
+Tier: II  
+Primary:
+- arXiv:2609.14462
+- AlayaLab/AlayaVista
+
+Deep-read: **YES at problem/architecture/artifact boundary**
+
+Actually establishes/proposes:
+- perspective-only world models face off-screen persistence burden under camera motion;
+- system factorizes persistent 360° panoramic latent world evolution from perspective viewport rendering/refinement;
+- chunk-autoregressive generation and few-step distillation recover streaming efficiency;
+- MUGEN contains 1,318h ≥4K panoramic video with semantic/geometric annotations.
+
+Artifact caveat:
+- checked repo roadmap still marks inference code and pretrained weights unreleased.
+
+Taste value: **A**  
+Execution transfer: **D/F**  
+Instrument value: **C currently**
+
+Core lesson:
+> persistent world state and high-fidelity local observation need not use the same representation.
+
+---
+
+## ST-46 — Taming Long-form Text-to-Speech / LACI
+Date: 2026-09-15  
+Type: inference-only diagnosis/repair study  
+Tier: II  
+Primary: arXiv:2609.16989
+
+Deep-read: **YES at mechanism/result/boundary level**
+
+Actually establishes:
+- strong short-form AR TTS models can enter catastrophic skip/hallucination regimes on long prompts/references;
+- alignment dynamics can detect failure onset in near realtime;
+- method rolls back only to onset, temporarily imposes attention constraints, then removes them;
+- Qwen3-TTS-0.6B worst-of-10 WER above 1500 words reported 35.2%→3.4%;
+- catastrophic >30% WER rate under long-reference condition reported 26%→<1%;
+- localized wSIM metric exposes speaker-similarity failures hidden by global SIM;
+- very extreme VoxCPM2 regimes remain less fully repaired.
+
+Taste value: **A+**  
+Execution transfer: **A+**  
+Instrument value: **A**
+
+Core lesson:
+> when damage is long but causal onset is local, rollback/temporary intervention can dominate global constraints or full restart.
+
