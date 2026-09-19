@@ -1,6 +1,6 @@
 # S05 — When Does Reading Become Learning?
 
-**Status:** KILLED — 2026-09-19  
+**Status:** SELECTED — PILOT-AUTHORIZED  
 **Registered:** 2026-09-18  
 
 ## One-sentence parent question
@@ -217,9 +217,9 @@ Registered parent question:
 
 ---
 
-## Final re-audit — KILL (2026-09-19)
+## Rescinded re-audit — former KILL (2026-09-19)
 
-S05 is no longer experiment-authorized.
+**RESCINDED:** this kill decision was withdrawn after a fresh prior/feasibility audit. S05 remains experiment-authorized.
 
 ### Why it is killed
 
@@ -247,3 +247,34 @@ Do not revive S05 by:
 - reframing a synthetic overfitting regime as a universal SFT law.
 
 A future topic may reuse the broader distinction between transient conditioning and persistent learning only if a new natural phenomenon creates independent pressure and can be identified without relying on an artificial memorization regime.
+
+
+---
+
+## Restoration audit — KEEP / PILOT-AUTHORIZED (2026-09-19)
+
+The previous kill was too aggressive and is formally rescinded.
+
+### Why S05 survives the recipe-risk audit
+
+1. **The decisive variable is within-run causal relevance, not training stage.** Relevant and irrelevant prompt-side facts can be exposed inside the same model, same optimizer state, same batches, and same SFT recipe. This differs materially from reconstructing a capability from incomparable post-training stages.
+
+2. **EACL 2026 strengthens the scientific pressure rather than covering the question.** *Unintended Memorization of Sensitive Information in Fine-Tuned Language Models* directly establishes that input-only, target-absent information can be memorized and explicitly hypothesizes that textual context and utility to the downstream task matter. It does not perform the matched intervention S05 needs: hold the same information exposure fixed and change only whether that information is causally necessary for predicting the supervised response.
+
+3. **The pilot need not manufacture memorization by extreme overfitting.** Use an ordinary short SFT dose ladder and a direct-supervision positive control. If no persistent prompt-side trace is detectable at reasonable doses, kill quickly rather than increasing epochs until an effect appears.
+
+4. **Recipe variation is a robustness check, not the scientific variable.** The first decision can be made with one standard optimizer and two modest training doses. Only if a clean relevance effect appears is one confirmatory recipe variation needed; a full optimizer/model zoo is not required.
+
+### Tightened pilot gate
+
+- one small open model;
+- ordinary response-only SFT;
+- matched relevant vs irrelevant information in the **same run**;
+- two modest doses, not a large sweep;
+- direct-supervision positive control;
+- measure task-sufficient property and full-detail memory separately;
+- if the qualitative relevance effect changes sign across the two doses or only appears after obvious overfitting, **KILL**.
+
+### Final status
+
+**SELECTED — PILOT-AUTHORIZED.**
