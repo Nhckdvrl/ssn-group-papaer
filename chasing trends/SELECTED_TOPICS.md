@@ -18,7 +18,7 @@ Admission is deliberately strict:
 
 **Status:** PILOT-AUTHORIZED  
 **Registered:** 2026-09-19  
-**Detailed registration:** `CT01_RELEVANT_BUT_INVALID.md`
+**Detailed registration:** `topics/CT01_RELEVANT_BUT_INVALID.md`
 
 ### Mother question
 
