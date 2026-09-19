@@ -7,7 +7,7 @@
 - broad literature calibration 已完成；
 - 正式选题搜索已经开启；
 - formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
-- 当前 selected：**CT02**。
+- 当前 selected：**CT02 / CT03**。
 
 ## 1. 从哪里开始
 
@@ -68,7 +68,8 @@ chasing trends/
     ├── README.md
     ├── FAILED_TOPICS.md
     ├── CT01_RELEVANT_BUT_INVALID.md
-    └── CT02_IS_CONTEXT_UTILITY_RANKABLE.md
+    ├── CT02_IS_CONTEXT_UTILITY_RANKABLE.md
+    └── CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md
 ```
 
 目录的职责必须保持清楚：
@@ -158,9 +159,21 @@ chasing trends/
 
 > `topics/CT02_IS_CONTEXT_UTILITY_RANKABLE.md`
 
+### CT03 — Counterfactual Credit for MoE Routing
+
+**Status:** PILOT-AUTHORIZED
+
+核心问题：
+
+> 能否不用昂贵地完整执行大量 alternative routes，而从正常 backward + 少量 candidate expert local forwards 中估计 unexecuted expert 的 counterfactual utility，并据此训练多层 pretrained MoE routers？
+
+详细 registration：
+
+> `topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
+
 CT01 已在 2026-09-19 re-audit 后 **KILL**；原因见 `topics/CT01_RELEVANT_BUT_INVALID.md` 与 `topics/FAILED_TOPICS.md`。
 
-当前正式 selected 数量：**1**。
+当前正式 selected 数量：**2**。
 
 ## 6. 几条不会再妥协的规则
 
