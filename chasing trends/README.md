@@ -1,333 +1,185 @@
 # chasing trends
 
-这是 `Nhckdvrl/ssn-group-papaer` 中用于重新校准科研选题 taste 的独立工作区。
+这是 `ssn-group-papaer` 中面向**当前 AI/ML 前沿选题**的研究工作区。目标不是机械“追热点”，也不是固定做某一种论文，而是通过学界论文、工业 frontier、startup/HF artifacts 的 genealogy，理解一个问题为什么在**现在**值得问，以及能否以现实成本做成。
+
+当前状态（2026-09-19）：
+
+- broad literature calibration 已完成；
+- 正式选题搜索已经开启；
+- formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
+- 当前 selected：**CT01**。
+
+## 1. 从哪里开始
+
+下一轮 agent 的推荐读取顺序：
+
+1. `SEARCH_GUIDE_ZH.md` — **canonical 找题规则**。
+2. `SELECTED_TOPICS.md` — 当前正式候选状态。
+3. `framework/PAPER_GENEALOGY_GUIDE.md` — 如何深读 parent → successor，而不是只看摘要。
+4. `framework/PARADIGM_ATLAS_ZH.md` — 已观察到的问题形成方式；只能用于校准，不能当 idea menu。
+5. 与目标方向相关的证据库：
+   - `academic/`
+   - `industry/`
+   - `startup_hf/`
+6. 若出现 candidate，再读对应 `topics/CTxx_*.md` 和 dangerous nearest priors。
+
+不要每轮从头重读全部 source ledger。先由 candidate/lineage 定向进入。
+
+## 2. 目录结构
+
+```
+chasing trends/
+├── README.md
+├── SEARCH_GUIDE_ZH.md
+├── SELECTED_TOPICS.md
+│
+├── framework/
+│   ├── README.md
+│   ├── PAPER_GENEALOGY_GUIDE.md
+│   ├── PARADIGM_ATLAS_ZH.md
+│   ├── RESEARCH_TASTE_RECALIBRATION.md
+│   ├── LESSONS_FROM_SSN_TASTE.md
+│   ├── CONTRAST_CASES_AND_ANTI_PATTERNS.md
+│   └── LITERATURE_CALIBRATION_CLOSEOUT.md
+│
+├── academic/
+│   ├── README.md
+│   ├── GENEALOGIES_01.md ... GENEALOGIES_04.md
+│   ├── GENEALOGY_LIBRARY_INDEX.md
+│   ├── LITERATURE_MAP.md
+│   └── PAPER_AUTOPSIES.md
+│
+├── industry/
+│   ├── README.md
+│   ├── FRONTIER_SCAN.md
+│   ├── FRONTIER_DEEP_DIVE.md
+│   ├── GENEALOGIES_01.md ... GENEALOGIES_03.md
+│   └── SOURCE_LEDGER.md
+│
+├── startup_hf/
+│   ├── README.md
+│   ├── FRONTIER_DEEP_DIVE.md
+│   └── GENEALOGIES_01.md ... GENEALOGIES_11_*.md
+│
+└── topics/
+    ├── README.md
+    └── CT01_RELEVANT_BUT_INVALID.md
+```
 
-建立日期：2026-09-19
+目录的职责必须保持清楚：
 
-> **当前阶段：FORMAL TOPIC SEARCH — genealogy-first。**
->
-> **2026-09-19：用户已明确要求开始正式找题。第一题 CT01 已完成 nearest-prior / anti-resurrection / execution audit，并注册为 PILOT-AUTHORIZED。后续仍遵守“一题一题搜、可 0 survivor、formal candidate 只能 PILOT-AUTHORIZED 或 KILL”。**
+- **根目录**：启动、规则、正式状态。
+- **framework**：研究方法论与审计规则。
+- **academic**：学术 lineage / autopsy / literature map。
+- **industry**：大公司 technical reports、deployment pressure、source ledger。
+- **startup_hf**：startup、HF、开放模型与实验 artifact genealogy。
+- **topics**：正式候选 registration，不放半成品 brainstorm。
 
----
+## 3. 当前 research taste
 
-# 1. 这不是“某一种方法论文”的搜题目录
+最重要的纠偏是：
 
-最初版本曾把用户举的一个喜欢的结构：
+> **paper shape ≠ idea genesis。**
 
-> failure → diagnosis → mechanism → method → benchmark → ablation
+“failure → mechanism → method → benchmark”只是其中一种论文生长路径。真正需要学习的是：
 
-写成了 chasing-trends 的主范式。
+- parent literature 已经知道什么；
+- 哪些 axis 已经 saturated；
+- 哪个 assumption / relation / measurement unit / deployment contract 仍然挡住理解或方法；
+- successor paper 为什么改变了这个 object；
+- 最小 decisive evidence 是什么；
+- 这个 research move 是否适合我们的数据、算力和工程条件。
 
-**这个版本已经被否定。**
+因此禁止：
 
-用户真正要求的是：
+> 先背一个范式，再到处找能填进去的题。
 
-> 大量阅读 ACL / EMNLP / NAACL / ICLR / ICML / NeurIPS / AAAI / CVPR / ICCV / ECCV 等真实优秀论文，
-> 不只看摘要，而是追 Introduction、Related Work、关键实验/理论、方法由来和 nearest prior，
-> 研究 idea 为什么会被看到、它从哪些 parent work 长出来、作者真正改变了什么问题坐标，
-> 然后从大量不同论文的 genealogy 中归纳多种 question-forming / paper-growing paradigms。
+正确顺序是：
 
-所以：
+> literature history → real pressure → candidate question → nearest-prior audit → identification / execution audit。
 
-> **范式必须从论文中归纳出来，不能先写模板再往里面找题。**
+## 4. 三条证据轨道
 
----
+### Academic
 
-# 2. 当前最重要文件
+主要回答：
 
-启动顺序：
+- scientific ownership；
+- nearest prior；
+- explanatory alternatives；
+- controlled evidence；
+- Main-level novelty。
 
-1. **RESEARCH_TASTE_RECALIBRATION_2026-09-19.md**  
-   本轮最重要的纠偏。说明为什么“机制→方法”只能是一个 archetype，并深拆第一批不同 genealogy。
+### Industry
 
-2. **PAPER_GENEALOGY_GUIDE.md**  
-   深读一篇 paper 时具体怎么向下追 parent、siblings、related work、assumption、changed premise、decisive experiment。
+主要提供：
 
-3. **LONGITUDINAL_GENEALOGIES_01_2026-09-19.md**  
-   第一批纵向 reconstruction：RLVR learning signal、test-time scaling、ICL mechanism、diffusion fast sampling、robot/VLA action representation。
+- frontier scale / deployment regime；
+- production bottleneck；
+- product knobs；
+- architecture–system co-design；
+- 大规模下才暴露的 failure。
 
-4. **LONGITUDINAL_GENEALOGIES_02_2026-09-19.md**  
-   第二批：pretraining scaling/data mixture、SFT 对 knowledge 的修改、teacher/student-relative distillation、architecture/inductive bias/recurrent depth。
+原则：
 
-5. **LONGITUDINAL_GENEALOGIES_03_2026-09-19.md**  
-   第三批：VLM interface 与 visual-token lifecycle、latent multimodal reasoning、full-duplex speech、negative/limits、SAM/optimization dynamics。
+> **industry generates pressure; controlled work establishes explanation。**
 
-6. **LONGITUDINAL_GENEALOGIES_04_2026-09-19.md**  
-   第四批：multimodal objective genealogy、speech tokenizer、CoT faithfulness identification、video/world-model dynamics。
+### Startup / HF / open artifacts
 
-7. **GENEALOGY_LIBRARY_INDEX_2026-09-19.md**  
-   当前 18 条 lineage 的统一索引；专门比较 same surface / different genealogy，并记录 saturation 与 execution risk。
+主要提供：
 
-8. **CONTRAST_CASES_AND_ANTI_PATTERNS_2026-09-19.md**  
-   强制收集反例：giant sweep、from-scratch compute、method-zoo incrementalism、measurement-only、training biography、surface analogy 等，防止把 accepted paper 全部事后美化成漂亮故事。
+- matched checkpoints；
+- stage pairs；
+- failed artifacts；
+- runnable proxy；
+- cheap pilot instrument；
+- 新模型/recipe 的公开 development tree。
 
-9. **INDUSTRY_FRONTIER_SCAN_2026-09-19.md**  
-   业界/学界双轨阅读：technical report、model/system card、production engineering、真实usage。核心是把 frontier-scale pressure 转译成 academic question，并用 Scale-Stripping / Cheap Causal Echo 防止机械抄大厂。
+原则：
 
-10. **LITERATURE_MAP_2026-09-19.md**  
-   跨会议 breadth map；用于判断 field density、saturated axes 和值得纵向追的 lineage。
+> **artifact archaeology before GPU。**
 
-11. **PAPER_AUTOPSIES_2026-09-19.md**  
-   第一轮 paper notes。旧版有明显 method-paper bias，因此只能作为原始阅读记录；以新的 genealogy 文件为上位解释。
+## 5. 当前正式题目
 
-12. **LESSONS_FROM_SSN_TASTE.md**  
-   保留旧搜索真正有用的 process lesson：repo restore、nearest-prior audit、reviewer compression、data/compute gate、anti-resurrection、execution risk。
+### CT01 — Relevant but Invalid: When Should Reasoning Models Forget Their Own Thoughts?
 
-13. **SEARCH_GUIDE_ZH.md**  
-   当前 canonical 工作流。重点已经从固定 topic template 改为：
-   **field map → lineage reconstruction → genealogy induction → pressure mining → candidate audit**。
+**Status:** PILOT-AUTHORIZED
 
----
+核心问题：
 
-# 3. Repo 当前事实
+> 当后续 turn 改变了旧 reasoning 所依赖的上游 premise 时，继续保留模型自己的 private reasoning 是否会阻碍 belief revision，即使这段 reasoning 仍然高度相关？
 
-截至 2026-09-19，`ssn-taste/` 最新正式状态：
+详细 registration：
 
-仍为 **SELECTED — PILOT-AUTHORIZED**：
+> `topics/CT01_RELEVANT_BUT_INVALID.md`
 
-- S04 — How Do Language Models Update Situation Models Across Event Boundaries?
-- S05 — When Does Reading Become Learning?
-- S06 — What Does Deliberation Do to Evidence?
-- S07 — Where Does Surprise Go?
-- S08 — Is Metacognitive Control Shared?
+当前正式 selected 数量：**1**。
 
-已正式 KILL / registration cancelled：
+## 6. 几条不会再妥协的规则
 
-- S03 — From Document End to Task Done
-- S09 — Same Recall, Different Stability?
+- 不把 self-generated S/L/CT history 当正向 taste exemplar。
+- 不做 “old problem + new model / benchmark / language”。
+- 不因为关键词 overlap 就 kill；要检查 **same decisive unknown**。
+- 不因为 paper 很强就复制它的 execution shape；scientific value 与可执行性分开评。
+- benchmark 可以做 validation，但不能吞掉 scientific/method contribution。
+- public checkpoint 是自然实验机会，不自动等于 controlled experiment。
+- proxy 必须校准到真实 downstream consumer；“便宜”不是 fidelity。
+- 热门 cluster 一旦进入 evaluation-correction / matched-budget 阶段，generic variant 默认降权。
+- formal candidate 不保留模糊 SERIOUS/HOLD：审完就是 **PILOT-AUTHORIZED 或 KILL**。
+- 允许整轮 **0 survivor**。
 
-这些自有题都不是 positive taste exemplar。
+## 7. 广谱扫描已经收口
 
-只用于：
+2026-09-19 的 broad calibration 已经覆盖 academic、industry、startup/HF 多条 lineage。现在**不再默认继续无限 broad crawl**。
 
-- anti-duplication；
-- execution-risk；
-- failure-process learning；
-- data/compute calibration。
+重新扩大搜索只在以下情况触发：
 
----
+- concrete candidate 需要 nearest-prior audit；
+- target field 仍是薄弱 lineage；
+- 新公开 artifact 显著降低 pilot 成本；
+- 某个 trend 进入新的 failure / evaluation-correction 阶段；
+- 用户明确要求重新校准。
 
-# 4. Positive taste 从哪里来
+接下来工作的单位应当是：
 
-只从：
-
-1. **Sasano 的真实判断与真实指导记录**
-2. **真实强论文及其 immediate related work lineage**
-
-不能从：
-
-> “我们以前 S06 过线，所以新题应该像 S06。”
-
-也不能从：
-
-> “StepFlow 很好，所以以后都找 failure→method。”
-
-正确方式是：
-
-> **论文 A 为什么成立？**
->
-> **它在 A 出现以前的 literature 中究竟看到了什么别人没当成问题的东西？**
->
-> **如果只读它的 method，我们会错过什么？**
->
-> **如果换一个领域，真正能迁移的是哪一种 question-forming move？**
-
----
-
-# 5. 当前第一批观察到的 genealogy
-
-注意：这些是从论文中**观察到的**，不是以后机械套用的 generator。
-
-目前已经深拆：
-
-- successful objective → **decompose hidden learning signals**  
-  例：Negative Reinforcement in RLVR
-
-- mature algorithm → **deployment variable was never part of policy state**  
-  例：Budget-Guided MCTS
-
-- fragmented related work → **unified design space → dominant bottleneck**  
-  例：TORS
-
-- known final failure → **change the attribution unit / causal coordinate**  
-  例：StepFlow、GUARD
-
-- crowded scientific object → **change explanatory decomposition**  
-  例：ICL information removal
-
-- strong prior theorem → **audit a load-bearing assumption**  
-  例：A Little Depth Goes a Long Way
-
-- known phenomenon → **remove an artificial premise in prior evidence**  
-  例：CoT faithfulness in the wild
-
-- mature heuristic family → **search for a common success invariant**  
-  例：DC-Merge
-
-未来还会继续扩充、合并、删改。
-
----
-
-# 6. PaperNotes 怎么用
-
-PaperNotes（https://papernotes.org/）非常适合做：
-
-> **breadth scan / taxonomy / cross-conference discovery。**
-
-例如快速看到：
-
-- ACL 2026 reasoning / interpretability；
-- ICLR 2026 reasoning / interpretability；
-- ICML 2026 reasoning / optimization；
-- NeurIPS 2025 reasoning / optimization；
-- CVPR 2026 image generation / multimodal / optimization；
-- ECCV 2026 image/video generation；
-- AAAI 2026 reasoning。
-
-但它不能替代 deep read。
-
-任何真正进入 taste calibration 或 candidate audit 的 core paper，都必须尽量回到：
-
-- ACL Anthology
-- OpenReview / official proceedings
-- PMLR
-- NeurIPS proceedings
-- CVF / ECCV official
-- arXiv full paper
-
-并至少读到：
-
-> **Introduction + Related Work + decisive section + method derivation + main ablation / limitations。**
-
----
-
-# 7. 当前正式搜索状态
-
-literature calibration 已完成第一阶段，用户已授权正式找题。
-
-当前：
-
-> **CT01 — Relevant but Invalid: When Should Reasoning Models Forget Their Own Thoughts?**
->
-> **Status: PILOT-AUTHORIZED**
->
-> 详细注册：`CT01_RELEVANT_BUT_INVALID.md`
-
-正式搜索并不停止 genealogy reading。每个新 seed 仍必须先回到 target lineage 做 dangerous-prior audit。
-
-当前已完成四批纵向 genealogy、18 条主要 lineage，并加入 contrast/anti-pattern library。仍继续建立足够厚的 genealogy library：
-
-- 不同会议；
-- 不同领域；
-- 不同 paper type；
-- 普通但强的 Main，不只 Best/Outstanding；
-- method paper；
-- pure science / analysis paper；
-- theory paper；
-- negative / limits paper；
-- cross-domain generation / multimodal / optimization；
-- 同一 lineage 连续多篇论文。
-
-最终目标不是得到十条“好题公式”。
-
-而是形成一种能力：
-
-> **看到一个 literature cluster 时，能判断它现在真正拥挤在哪些轴、哪些 assumption 被默认固定、哪些 relation 尚未被解释、哪个新系统改变了 premise、什么小 observation 有可能长成 Main-sized question。**
-
-这才是 chasing trends 当前真正要训练的东西。
-
-
----
-
-# 8. Industry / Academia 双轨
-
-从 2026-09-19 起，literature calibration 不再只看 academic conference paper。
-
-额外持续扫描：
-- frontier technical reports；
-- model cards；
-- system cards；
-- engineering / serving reports；
-- product/deployment technical notes；
-- aggregate real-usage research。
-
-业界材料的主要价值：
-
-> **让我们看到学界暂时无法触及的 scale、deployment 和 system pressure。**
-
-例如：
-- million-token context；
-- production routing；
-- effort / parallel test-time compute；
-- context compaction；
-- long-running agents；
-- async RL；
-- million-scale environments；
-- kernel / KV / serving bottleneck；
-- live multimodal / full-duplex / robotics。
-
-但：
-> **industry frontier observation ≠ executable academic topic。**
-
-任何 industry-derived seed 都必须：
-1. strip away proprietary scale；
-2. 提炼 underlying relation/constraint；
-3. 找 independent academic pressure；
-4. 找 cheap causal echo；
-5. 若核心 effect 只能在 frontier scale 观察，则只记 inspiration，不进入 pilot。
-
-详细见：
-> INDUSTRY_FRONTIER_SCAN_2026-09-19.md
-
-
----
-
-# 9. Startup / Hugging Face genealogy expansion and closeout
-
-Broad calibration eventually expanded into 11 startup/HF genealogy waves:
-
-- STARTUP_HF_GENEALOGIES_01_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_02_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_03_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_04_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_05_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_06_SCIENTIFIC_FM_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_07_FAILURE_SCALE_CONTINUAL_STRUCTURED_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_08_SCIENTIFIC_EXPERIENCE_AND_STATE_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_09_HARNESS_MATURITY_AUTORESEARCH_PROXY_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_10_LONG_HORIZON_STATE_AND_CORRECTION_2026-09-19.md
-- STARTUP_HF_GENEALOGIES_11_FINAL_FRONTIER_WAVE_2026-09-19.md
-
-These cover:
-- startup technical theses;
-- public matched checkpoints;
-- cheap proxy→full-scale chains;
-- failure provenance;
-- evaluator qualification;
-- scientific foundation models;
-- long-horizon state/correction;
-- harness maturity;
-- world-model consumer contracts;
-- modality extension;
-- pretraining-value decomposition.
-
-The broad literature-calibration phase is now formally closed.
-
-The final Sep 17–19 addendum is appended directly to \`STARTUP_HF_GENEALOGIES_11_FINAL_FRONTIER_WAVE_2026-09-19.md\`. It adds:
-- runtime-generated weights as a distinct knowledge location;
-- executable reference as specification source;
-- principled mechanism composition vs arbitrary module stacking;
-- trajectory supervision-mask audit;
-- modality-specific prediction-horizon / multi-rate audit;
-- final artifact-maturity corrections.
-
-Canonical closure:
-> LITERATURE_CALIBRATION_CLOSEOUT_2026-09-19.md
-
-Future reading should be:
-- CT-candidate specific;
-- nearest-prior specific;
-- dangerous-overlap specific;
-- or triggered by a genuinely changed premise / newly useful artifact.
-
-Do not restart broad HF/company crawling by default.
+> **一条真实 lineage + 一个真实 pressure + 一个锁定 candidate。**
