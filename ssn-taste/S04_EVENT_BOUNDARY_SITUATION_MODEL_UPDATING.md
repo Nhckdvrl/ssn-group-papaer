@@ -232,3 +232,23 @@ Proceed to Zhao/Cho-style mechanistic localization only if post-transition state
 - incremental vs reconstruction/reactivation cannot be distinguished without increasingly elaborate representational assumptions.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: MEDIUM, acceptable only under a strict cap.**
+
+Primary identification may use at most a few hundred programmatically generated micro-narratives with explicit state variables. No manual event-boundary annotation project is allowed.
+
+Natural validation should reuse existing resources rather than create a dataset:
+- ProPara / OpenPI for entity-state changes in procedural text;
+- PASTA for participant states and counterfactual state changes;
+- existing human/LLM event-segmentation narratives when useful for boundary realism.
+
+**KILL on data grounds** if:
+- the causal contrast requires large-scale manual annotation of “current situation state”;
+- controlled stories require increasingly elaborate hand-written narratives to avoid artifacts;
+- the main claim only appears in one synthetic story generator and cannot be expressed on any existing natural state-tracking resource;
+- the paper starts to look like a new narrative-state dataset.
+
