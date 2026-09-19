@@ -16,12 +16,13 @@
 1. `SEARCH_GUIDE_ZH.md` — **canonical 找题规则**。
 2. `SELECTED_TOPICS.md` — 当前正式候选状态。
 3. `framework/PAPER_GENEALOGY_GUIDE.md` — 如何深读 parent → successor，而不是只看摘要。
-4. `framework/PARADIGM_ATLAS_ZH.md` — 已观察到的问题形成方式；只能用于校准，不能当 idea menu。
-5. 与目标方向相关的证据库：
+4. `framework/AGENT_WORKFLOW.md` — 下一轮 agent 的读写协议与 candidate 生命周期。
+5. `framework/PARADIGM_ATLAS_ZH.md` — 已观察到的问题形成方式；只能用于校准，不能当 idea menu。
+6. 与目标方向相关的证据库：
    - `academic/`
    - `industry/`
    - `startup_hf/`
-6. 若出现 candidate，再读对应 `topics/CTxx_*.md` 和 dangerous nearest priors。
+7. 若出现 candidate，再读对应 `topics/CTxx_*.md` 和 dangerous nearest priors。
 
 不要每轮从头重读全部 source ledger。先由 candidate/lineage 定向进入。
 
@@ -35,11 +36,13 @@ chasing trends/
 │
 ├── framework/
 │   ├── README.md
+│   ├── AGENT_WORKFLOW.md
 │   ├── PAPER_GENEALOGY_GUIDE.md
 │   ├── PARADIGM_ATLAS_ZH.md
 │   ├── RESEARCH_TASTE_RECALIBRATION.md
 │   ├── LESSONS_FROM_SSN_TASTE.md
 │   ├── CONTRAST_CASES_AND_ANTI_PATTERNS.md
+│   ├── SPECIALIZED_AUDITS.md
 │   └── LITERATURE_CALIBRATION_CLOSEOUT.md
 │
 ├── academic/
@@ -63,6 +66,7 @@ chasing trends/
 │
 └── topics/
     ├── README.md
+    ├── FAILED_TOPICS.md
     └── CT01_RELEVANT_BUT_INVALID.md
 ```
 
