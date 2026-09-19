@@ -1,13 +1,36 @@
 # topics
 
-这里只放**正式 candidate registration**。
+这里只放**正式 candidate 状态**。
 
-规则：
+## 文件类型
 
-- 不放 brainstorm / SERIOUS / HOLD 半成品；
-- candidate 完成 full audit 后只有 **PILOT-AUTHORIZED** 或 **KILL**；
-- selected 总表在根目录 `../SELECTED_TOPICS.md`；
-- topic 文件必须保留 mother question、genealogy、nearest prior、identification、pilot、compute/data、kill conditions。
+- `CTxx_<slug>.md`：仅 **PILOT-AUTHORIZED** candidate 的完整 registration。
+- `FAILED_TOPICS.md`：已锁定、完成审计后 KILL 的 concise ledger。
+- 当前 selected 总表：`../SELECTED_TOPICS.md`
+
+## 禁止
+
+- brainstorm list
+- SERIOUS / HOLD 半成品
+- paper 摘要
+- 大段 source notes
+- 未审完 seed
+
+## Candidate lifecycle
+
+```
+seed（不落盘）
+→ lock one
+→ full audit
+├── KILL → FAILED_TOPICS.md
+└── PILOT-AUTHORIZED → CTxx registration + SELECTED_TOPICS.md
+```
+
+真实 pilot 后若死亡：
+
+- registration 保留，顶部标记 `CANCELLED / KILLED AFTER PILOT`；
+- 从 `SELECTED_TOPICS.md` 移除；
+- 在 `FAILED_TOPICS.md` 增加索引。
 
 当前：
 
