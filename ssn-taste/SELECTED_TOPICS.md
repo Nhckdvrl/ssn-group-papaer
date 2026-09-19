@@ -50,24 +50,6 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
-### S05 — When Does Reading Become Learning?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S05_WHEN_DOES_READING_BECOME_LEARNING.md`
-
-**Parent question.** Under ordinary response-only SFT, prompt/context information is available to the model but receives no direct token loss. What determines whether that information remains transient conditioning, is compressed into only the task-sufficient information needed to predict the response, or becomes persistent parameter memory?
-
-**Scientific pressure.** Conditional training specifies what should be predicted *from* the input, but does not explicitly specify what *about* the input should be durably written into the model. `Read`, `needed for the supervised prediction`, and `stored in parameters` are therefore three distinct learning claims.
-
-**Nearest-prior ownership boundary.** Prompt-loss work studies whether prompt tokens should receive direct loss; context-distillation work deliberately internalizes context into weights; memorization/extraction work shows that some completion-only prompt content can leave traces. S05 is viable only while current prior does **not** already identify the matched-exposure causal law governing which conditioning-only information becomes persistent under ordinary response-only SFT.
-
-**Minimum identification.** Match prompt-side information exposure while changing only its causal relevance to the supervised response; track task-sufficient knowledge versus full-detail parameter traces across training checkpoints.
-
-**Claim boundary.** Do not turn S05 into prompt-loss hyperparameter tuning, privacy extraction, `more epochs -> more memorization`, or a context-parameterization method. The target is the **conditioning → persistent learning boundary**.
-
----
-
 ### S06 — What Does Deliberation Do to Evidence?
 
 **Status:** SELECTED — PILOT-AUTHORIZED  
@@ -116,23 +98,11 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
-### S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-19  
-**Detailed registration:** `S09_MEMORY_ACCESSIBILITY_STABILITY.md`
-
-**Parent question.** Is present memory accessibility sufficient to predict future editability, or can equally accessible parameter memories differ in stability because of how and when they were learned?
-
-**Scientific pressure.** Memorization crystallization, training-order/recency traces, knowledge-update resistance, and continual-learning plasticity each establish neighboring phenomena, but do not determine whether current recall/strength is a sufficient state variable for future rewriting.
-
-**Minimum identification.** Counterbalance the same novel facts across early/late acquisition schedules, measure current accessibility continuously, apply a common terminal refresh to test last-exposure recency, then train matched contradictory replacements for all facts together from the same checkpoint and compare overwrite learning curves.
-
-**Claim boundary.** Do not reduce S09 to “training order matters,” generic catastrophic forgetting, a knowledge-editing benchmark, or replication of the Fresh-in-Memory recency direction. The object is the possible separation between **present accessibility** and **future stability/plasticity**.
-
----
-
 ## Explicitly cancelled registrations
+
+- **S05 — When Does Reading Become Learning?** cancelled/killed on 2026-09-19 after execution-risk re-audit. EACL 2026 already directly studies unintended memorization of information present only in fine-tuning inputs but absent from targets, substantially narrowing the remaining novelty. More importantly, the interesting residual effect would likely require repetition/overfitting and become strongly dose/recipe dependent, while the null/task-sufficient outcomes are weak or reviewer-compressible to ordinary conditional/function learning.
+- **S09 — Same Recall, Different Stability?** cancelled/killed on 2026-09-19 after recipe-dependence re-audit. The motivating training-order signal in *Fresh in Memory* is itself optimizer/dose dependent, and “memory age” is inseparable from the optimization path, subsequent interference, and acquisition-time model state. Establishing a general editability law would require exactly the optimizer/schedule/model sweep the project is trying to avoid.
+
 
 - **S01 — Omission ≠ Neutrality / effective default semantics in tool calls:** cancelled/demoted. It is already recorded as F06 in `FAILED_TOPICS.md`; the Main-level parent compresses to underspecified tool intent / argument completion, leaving only an exact API-default subcase.
 - **S02 / C2 — AI Rewrite ≠ Semantic Change:** registration cancelled. The high-level framing looked scientific, but the actual experimental object collapses into synthetic rewrite-data construction + semantic-preservation validation + comparison of LSC methods/metrics/robustness. Real post-LLM corpora lack clean semantic-change ground truth; synthetic paired rewrites provide ground truth only by making the central data artificial. This is precisely the evaluation/benchmark/metric-validity direction the search should avoid.
@@ -141,4 +111,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 7.**
+**Current selected topic count = 5.**
