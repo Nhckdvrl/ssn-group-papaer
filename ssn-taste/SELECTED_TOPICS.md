@@ -114,23 +114,10 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
-### S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-19  
-**Detailed registration:** `S09_MEMORY_ACCESSIBILITY_STABILITY.md`
-
-**Parent question.** Is present memory accessibility sufficient to predict future editability, or can equally accessible parameter memories differ in stability because of how and when they were learned?
-
-**Scientific pressure.** Training-order recency is encoded across multiple adaptive optimizers, model families, full FT/LoRA and data regimes; early memorization crystallization and old-knowledge update resistance independently suggest that current recall may not fully specify future plasticity.
-
-**Minimum identification.** Counterbalance the same facts across mirrored early/late histories, control current accessibility, optionally equalize recent exposure with a common refresh, then learn all contradictory replacements together from the same final checkpoint and compare overwrite curves.
-
-**Claim boundary.** Do not claim a universal biological consolidation law. If the qualitative history effect flips under one cheap confirmatory adaptive-optimizer/dose condition, kill.
-
----
-
 ## Explicitly cancelled registrations
+
+- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?**: registration cancelled after the final S03-informed recipe-dependence audit. The mother question is scientifically interesting, but the manipulated variable (“memory age / learning history”) is itself an optimizer-path construct: acquisition time, intervening gradients, spacing, recency, dose and parameter state are inseparable. A positive result would require a recipe matrix to distinguish a law from path dependence; a null in one recipe is weak. Do not revive via larger optimizer/model sweeps or a generic consolidation framing.
+
 
 
 
@@ -141,4 +128,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 7.**
+**Current selected topic count = 6.**
