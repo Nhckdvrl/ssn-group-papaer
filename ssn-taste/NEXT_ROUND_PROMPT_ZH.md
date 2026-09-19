@@ -19,22 +19,23 @@
 - ssn-taste/README.md
 - ssn-taste/SEARCH_GUIDE_ZH.md
 - ssn-taste/SELECTED_TOPICS.md
-- S03–S09 全部 registration
+- S03–S09 全部 registration（其中 S09 已最终 KILL）
 - 全部 ssn-taste/FAILED_TOPICS*.md
 - ssn-taste/RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md
 - 最近 commits / 新增文件
 
-当前正式 selected / PILOT-AUTHORIZED = 7：
+当前正式 selected / PILOT-AUTHORIZED = 6：
 
 - S03 — From Document End to Task Done
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
+- S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 - S08 — Is Metacognitive Control Shared?
 
-不要重新审 S03–S09 是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。
+不要重新审 S03–S08 是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。S09 已最终 KILL，不得当作 selected 复活。
 
-2026-09-19 曾短暂错误地将 S05/S09 标为 KILL；该决定已在重新核对 prior 与 recipe robustness 后撤销。repo 最新 registration/SELECTED_TOPICS 为准。
+2026-09-19 的最终 recipe-risk 复核结论：S05 保持 PILOT-AUTHORIZED；S09 因核心变量本身是 optimization-history/path-dependent construct 而最终 KILL。此前 S09 的恢复决定已被最终复核覆盖。
 
 非常重要：
 
