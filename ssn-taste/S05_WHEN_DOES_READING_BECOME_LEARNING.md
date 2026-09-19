@@ -305,3 +305,20 @@ Relevant and irrelevant prompt-side information can coexist in the same batches,
 Do not expand to model/optimizer sweeps to rescue an unstable effect.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: LOW–MEDIUM.**
+
+The core dataset should be generated deterministically from fictitious entities/fields. Ground truth is exact; no annotators or judge model are needed. Relevant/irrelevant conditions must be created by swapping which field controls the response while holding tokens/exposure matched.
+
+A few thousand training examples and a few hundred evaluation queries are enough for the pilot.
+
+**KILL on data grounds** if:
+- natural-looking examples require large manual authoring;
+- persistent memory can only be exposed by building a large extraction benchmark;
+- the generator leaks relevance through surface templates;
+- validating “memory” requires subjective judge-model scoring rather than exact/functional queries.
+
