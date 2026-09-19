@@ -20,9 +20,9 @@
 
 以 repo 当前文件为准，不要把本提示词里的状态当永远不变。
 
-截至 **2026-09-18 当前交接**，正式状态如下：
+截至 **2026-09-19 当前交接**，正式状态如下：
 
-## Selected Topics = 6
+## Selected Topics = 7
 
 - **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
@@ -30,8 +30,9 @@
 - **S06 — What Does Deliberation Do to Evidence?**
 - **S07 — Where Does Surprise Go?**
 - **S08 — Is Metacognitive Control Shared?**
+- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?**
 
-S06、S07、S08 都已正式 PILOT-AUTHORIZED 并注册。S06 研究的不是 generic confirmation bias，而是：
+S06、S07、S08、S09 都已正式 PILOT-AUTHORIZED 并注册。S06 研究的不是 generic confirmation bias，而是：
 
 > **固定外部 evidence 不变时，deliberation 本身是否会改变各条 evidence 对 decision 的 causal influence？**
 
@@ -45,30 +46,28 @@ S06、S07、S08 都已正式 PILOT-AUTHORIZED 并注册。S06 研究的不是 ge
 
 **S08 — Is Metacognitive Control Shared?** 研究 internal confidence 是否是 answer/abstain 与 reasoning continue/terminate 之间共享的 metacognitive control variable，还是两种 metadecision 依赖可双解离的 monitor/control states；核心 pilot 是 matched reasoning prefix 上的 confidence↔termination causal cross-steering。
 
-详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与六份注册文件为准。下一轮默认任务不是继续包装 S03–S08，而是继续寻找新的、彼此独立的 scientific questions.
+**S09 — Same Recall, Different Stability?** 研究 present memory accessibility 是否足以预测 future editability，还是 learning history 会留下当前 recall/confidence 看不见的 stability state；核心 pilot 用 mirrored early/late acquisition + common terminal refresh + shared contradictory update，直接比较 accessibility-matched memories 的 overwrite learning curves。
+
+详细 frozen parent question / novelty boundary / pilot 以 `SELECTED_TOPICS.md` 与七份注册文件为准。下一轮默认任务不是继续包装 S03–S09，而是继续寻找新的、彼此独立的 scientific questions.
 
 ## 当前 SERIOUS / NOT PILOT-AUTHORIZED
 
+**当前没有保留中的 SERIOUS 半成品。**
 
+上一轮的 memory-age / editability seed 已完成 yes/no 判定并正式升为 **S09 — PILOT-AUTHORIZED**。后续不要再次把它降回 SERIOUS，也不要重复审“是否值得做”；除非出现直接 covering prior 或 pilot 触发注册文件中的 kill condition。
 
-当前母问题暂定：
+S09 的稳定母问题是：
 
-> **Reasoning termination / continuation 到底是 confidence 的 readout，还是一个与 confidence 可分离的 computation-control state？**
+> **Is present memory accessibility sufficient to predict future editability, or can equally accessible parameter memories differ in stability because of how and when they were learned?**
 
-独立 pressure：
+重要识别边界：
 
-- internal confidence 已被 causal steering 证明能控制 answer vs abstain；
-- commitment-boundary work 表明答案已经稳定后仍可能继续大量 reasoning；
-- ConCISE 将 redundant reflection 分成 **Confidence Deficit** 与 **Termination Delay**；
-- reasoning-length / thinking-budget directions 又表明 reasoning effort 本身存在可操纵的 control state。
-
-因此不能简单写成“模型会不会因为不确定而多想”。真正要审的是 confidence state 与 thinking-budget / termination state 是否：
-
-- 同一变量；
-- 上下游关系；
-- 或可双解离的独立控制量。
-
-下一步必须做 direct-owner audit：有没有论文已经对 **confidence direction × reasoning-control direction** 做 cross-steering / double dissociation。若已有，KILL；若没有，再压最小 causal pilot。
+- 不能只做 early vs late final accuracy；
+- 必须用 mirrored assignment 控 item difficulty；
+- contradictory replacements 必须从同一 final checkpoint、同一 update stream 学；
+- common terminal refresh 用来区分 last-exposure recency 与 deeper history；
+- current strength 用 target-vs-foil margin / recall 显式控制；
+- mechanism（training-order direction、gradient geometry、loss curvature）只在行为 law 存在后进入。
 
 ## 重要 KILL / 降级更新
 
@@ -436,11 +435,11 @@ pilot 目标不是“证明异常”，而是以最低成本区分世界。优�
 
 恢复 repo 后不要先总结本提示词，直接工作：
 
-1. **先恢复 S06/S07/S08 已注册状态**：不要重复审“是否该注册”。三题都已 selected / PILOT-AUTHORIZED。
+1. **先恢复 S03–S09 已注册状态**：尤其不要重复审 S06/S07/S08/S09 “是否该注册”；它们都已 selected / PILOT-AUTHORIZED。
 3. **继续 substantial fresh exploration**：至少一半搜索预算必须离开 epistemic-update / reasoning-control 邻域。优先 understanding / training / generation / architecture，但 provenance 可跨 CV、speech、robotics、general ML、cognitive science、statistics、control。
 4. **继续用 open-component generator**：从多篇论文的冲突、悬而未决组件、默认 premise failure 中找问题，再升级成 A/B/C worlds；不要从一个 recent paper 的 future work 直接起题。
 5. 每约 **6–8 个 serious seeds**，或连续出现同一种 kill pattern，主动 reset generator。
-6. 允许 **0 survivor**；绝不为了凑 S07 降低标准。
+6. 允许 **0 survivor**；绝不为了凑 S10 降低标准。
 
 当前特别强调的搜索方法：
 
