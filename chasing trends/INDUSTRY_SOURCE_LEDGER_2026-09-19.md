@@ -2856,3 +2856,208 @@ Instrument value: **A**
 Core lesson:
 > when damage is long but causal onset is local, rollback/temporary intervention can dominate global constraints or full restart.
 
+
+
+---
+
+# O. Final frontier-wave sources — added 2026-09-19
+
+## ST-47 — Figure Helix 2.5
+Date: 2026-09-17  
+Type: frontier robotics deployment/pretraining report  
+Tier: II/III  
+Primary:
+- https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization
+- https://www.figure.ai/news/introducing-index
+
+Deep-read: **YES — official result + pretraining ablation + Index data pipeline**
+
+Actually establishes/reports:
+- same task-specification data, architecture, optimization and evaluation are compared with vs without Index pretraining;
+- reported strict zero-shot full-task success across 30 unseen homes: 9% from-scratch vs 56% Index-pretrained;
+- no evaluation-home data or adaptation;
+- three behaviors are still specified through task-specific data collected elsewhere;
+- action-prediction loss scales smoothly with Index pretraining data and is reported as forecasting the largest run;
+- Index is a human-behavior data pipeline rather than robot-only demonstration collection.
+
+Does NOT establish:
+- arbitrary unseen-task ICL;
+- universal household-robot reliability;
+- that action-prediction loss is a sufficient predictor of downstream task success;
+- independent validation.
+
+Taste value: **A+**  
+Execution transfer: **F for reproduction / B for conceptual proxy studies**  
+Instrument value: **F/C**
+
+Core lesson:
+> robot pretraining value should be decomposed into environment transfer, task ICL, sample efficiency, adaptation speed and peak finetuned performance.
+
+---
+
+## ST-48 — Odyssey-3
+Date: 2026-09-15  
+Type: foundation world-model / physical-agent release  
+Tier: II/IV  
+Primary:
+- https://odyssey.systems/introducing-odyssey-3
+
+Deep-read: **YES — official architecture/use-case narrative and downstream adaptation claims**
+
+Actually establishes/reports:
+- one pretrained autoregressive diffusion world model is used as a foundation across robot arms, humanoids, driving, drones and games;
+- downstream action/policy heads can be trained while keeping the pretrained representation frozen in several settings;
+- reported downstream adaptation often uses tens of hours or less of experiential data;
+- 20h simulated driving policy reaches ~77% of the real-data policy's reported distance between safety interventions;
+- the model is also used as an interactive environment for agent training.
+
+Does NOT establish:
+- one universal transferable physical representation;
+- a controlled decomposition of which pretraining data/property causes transfer;
+- small-team reproducibility.
+
+Taste value: **A**  
+Execution transfer: **D/F**  
+Instrument value: **D currently**
+
+Core lesson:
+> a world model can be treated as a reusable physical representation layer, not only a simulator.
+
+---
+
+## ST-49 — Decart Oasis 3
+Date: 2026-06-10, active current product in final scan  
+Type: interactive world-model infrastructure  
+Tier: III/IV  
+Primary:
+- https://decart.ai/oasis
+
+Deep-read: **YES at product/technical-contract level**
+
+Actually establishes/reports:
+- action-conditioned closed-loop world generation;
+- synchronized multi-camera views;
+- geometry-aware physical-AI target;
+- reported <200ms end-to-end / 22 FPS at the stated configuration;
+- API integration for robot/AV policy training.
+
+Does NOT establish:
+- open model internals;
+- consumer policy transfer fidelity relative to real environments;
+- a universal simulator-quality metric.
+
+Taste value: **A-**  
+Execution transfer: **C/D via API / F for model training**  
+Instrument value: **C**
+
+Core lesson:
+> world-model usefulness may require fidelity under realtime control, not offline visual fidelity alone.
+
+---
+
+## ST-50 — A.X K2 ALM
+Date: technical/model-card update active in Aug–Sep 2026  
+Type: speech-model technical report / HF model card  
+Tier: II  
+Primary:
+- https://huggingface.co/skt/A.X-K2-ALM
+
+Deep-read: **YES — detailed model card/training design**
+
+Actually establishes/reports:
+- speech modality is added around a fully frozen 20B-A2.7B LLM backbone;
+- trainable speech encoder/adapter/VAD/decoder carry the modality extension;
+- two-stage alignment + frozen-LLM-in-the-loop self-distillation preserves text-input behavior by construction;
+- context-aware VAD uses adapter/LLM representations;
+- all paths are streaming.
+
+Artifact caveat:
+- current model card says model weights are planned for release / coming soon.
+
+Taste value: **A**  
+Execution transfer: **B conceptually / D currently**  
+Instrument value: **D/C until weights are actually available**
+
+Core lesson:
+> multimodal extension can be formulated as an interface-learning problem around an immutable foundation model.
+
+---
+
+## ST-51 — Tencent SAS: Simple Attention Sparsification
+Date: 2026-09-11 paper / Sep 2026 HF+code release  
+Type: sparse-attention mechanism + open checkpoint/code  
+Tier: II  
+Primary:
+- arXiv:2609.13141
+- https://huggingface.co/tencent/Simple-Attention-Sparsification
+- https://github.com/Tencent-Hunyuan/Simple-Attention-Sparsification
+
+Deep-read: **YES — objective, mechanism, released artifact**
+
+Actually establishes:
+- dense-attention-score distillation is not directly aligned with context utility under a fixed sparse budget;
+- continuous gates inside attention logits restore gradient flow from LM loss to selector ranking;
+- improvements are strongest under tighter context budgets;
+- Qwen3-based checkpoints and code are public.
+
+Taste value: **A+**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
+Core lesson:
+> a convenient teacher/proxy target should be replaced when it does not preserve downstream ranking under the constrained regime.
+
+---
+
+## ST-52 — Tencent WeVisDoc
+Date: 2026-09-17  
+Type: end-to-end document parsing / residual-error-guided data construction  
+Tier: II  
+Primary:
+- arXiv:2609.20423
+- https://huggingface.co/tencent/WeVisDoc-2B
+- https://huggingface.co/tencent/WeVisDoc-4B
+- https://github.com/Tencent/WeVisDoc
+
+Deep-read: **YES — two-stage training logic + open 2B/4B artifacts**
+
+Actually establishes:
+- Stage I expands semantic/structural/appearance coverage;
+- Stage II uses a held-out probe to measure residual errors in fixed visual-structural clusters;
+- diagnostics guide targeted data construction and target-token-budget reallocation;
+- 2B and 4B open checkpoints are released.
+
+Taste value: **A- question-forming / C for our preferred execution style**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
+Core lesson:
+> after generic coverage expansion, data value can become learner-relative and residual-error-conditioned.
+
+---
+
+## ST-53 — General Intuition final-scan status
+Date: checked 2026-09-19  
+Type: startup research program / world+action model thesis  
+Tier: II/IV depending artifact  
+Primary:
+- https://www.generalintuition.com/
+- MIRA technical report/code
+- prior IRIS / Delta-IRIS / DIAMOND / GAIA-2 lineage
+
+Deep-read: **YES at program-lineage level; NO new Sep 18–19 matched artifact found**
+
+Actually establishes:
+- coherent world-model/action-model research lineage;
+- action-labeled gameplay data as a major training resource;
+- MIRA as an open realtime multiplayer world-model artifact.
+
+Final-scan decision:
+> retain as a strong ongoing monitor and lineage source, but do not manufacture a new "September model" claim from company visibility alone.
+
+Taste value: **A lineage / C for new-current artifact**  
+Execution transfer: **B/C via MIRA, lower for unreleased frontier work**  
+Instrument value: **B for existing artifacts**
+
+Core lesson:
+> company research thesis and currently released experimental artifact must be scored separately.
