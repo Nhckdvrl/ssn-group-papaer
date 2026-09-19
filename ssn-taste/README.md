@@ -20,19 +20,19 @@ Do not treat old prompts, historical REOPEN labels, or prior chat summaries as a
 
 ---
 
-## Current selected topics = 7
+## Current selected topics = 5
 
 All are **SELECTED — PILOT-AUTHORIZED**.
 
 - **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
-- **S05 — When Does Reading Become Learning?**
 - **S06 — What Does Deliberation Do to Evidence?**
 - **S07 — Where Does Surprise Go?**
 - **S08 — Is Metacognitive Control Shared?**
-- **S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?**
 
 See SELECTED_TOPICS.md and the individual registration files for the actual claims.
+
+S05 and S09 were killed on 2026-09-19 after an execution-risk / recipe-dependence re-audit. Their registration files are retained as anti-resurrection records.
 
 Important:
 
@@ -44,9 +44,9 @@ They are unrefuted research hypotheses and process outcomes. Use them to avoid d
 
 ## Current search state
 
-There is **no formal unresolved candidate** to inherit after S09.
+There is **no formal unresolved candidate** to inherit after the S05/S09 re-audit.
 
-The next search should therefore begin from fresh calibration and fresh scientific pressure rather than variants of S03–S09.
+The next search should therefore begin from fresh calibration and fresh scientific pressure rather than variants of prior selected or killed topics.
 
 A locked new seed must eventually resolve to:
 
