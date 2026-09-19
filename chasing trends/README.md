@@ -7,7 +7,7 @@
 - broad literature calibration 已完成；
 - 正式选题搜索已经开启；
 - formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
-- 当前 selected：**CT01**。
+- 当前 selected：**CT01 / CT02**。
 
 ## 1. 从哪里开始
 
@@ -67,7 +67,8 @@ chasing trends/
 └── topics/
     ├── README.md
     ├── FAILED_TOPICS.md
-    └── CT01_RELEVANT_BUT_INVALID.md
+    ├── CT01_RELEVANT_BUT_INVALID.md
+    └── CT02_IS_CONTEXT_UTILITY_RANKABLE.md
 ```
 
 目录的职责必须保持清楚：
@@ -157,7 +158,7 @@ chasing trends/
 
 > `topics/CT01_RELEVANT_BUT_INVALID.md`
 
-当前正式 selected 数量：**1**。
+当前正式 selected 数量：**2**。
 
 ## 6. 几条不会再妥协的规则
 
