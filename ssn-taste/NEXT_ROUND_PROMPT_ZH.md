@@ -19,12 +19,12 @@
 - ssn-taste/README.md
 - ssn-taste/SEARCH_GUIDE_ZH.md
 - ssn-taste/SELECTED_TOPICS.md
-- 当前 selected registration（S03 / S04 / S06 / S07 / S08）以及已取消的 S05 / S09 registration
+- S03–S09 全部 registration
 - 全部 ssn-taste/FAILED_TOPICS*.md
 - ssn-taste/RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md
 - 最近 commits / 新增文件
 
-当前正式 selected / PILOT-AUTHORIZED = 5：
+当前正式 selected / PILOT-AUTHORIZED = 7：
 
 - S03 — From Document End to Task Done
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
@@ -32,17 +32,13 @@
 - S07 — Where Does Surprise Go?
 - S08 — Is Metacognitive Control Shared?
 
-不要重新审当前五题是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。
+不要重新审 S03–S09 是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。
 
-2026-09-19 re-audit 已正式 KILL：
-- S05 — When Does Reading Become Learning?
-- S09 — Same Recall, Different Stability?
-
-两题均保留 registration 作为 anti-resurrection 记录。
+2026-09-19 曾短暂错误地将 S05/S09 标为 KILL；该决定已在重新核对 prior 与 recipe robustness 后撤销。repo 最新 registration/SELECTED_TOPICS 为准。
 
 非常重要：
 
-> 当前 selected 与历史 killed Sxx 都不是正向 taste exemplar。
+> S03–S09 以及所有历史 killed Sxx 都不是正向 taste exemplar。
 
 包括所有历史 S/L/F/Unring/selected/serious/failed topic，都只能用于 process evidence、dedup、防复活和资产复用。
 
@@ -280,7 +276,7 @@ S03 的执行失败与 S05/S09 re-audit 增加一条硬门槛：
 
 S03 的负面 lesson：single-budget / single-family training conclusions 极易制造假 law；parameter-locus 或 structural facts 往往比 developmental biography 更稳定。
 
-S05/S09 已因这一 gate 被正式 KILL。
+S05/S09 已重新审计并保留；recipe gate 用于设计便宜的 robustness check，而不是因存在 optimizer/dose interaction 就自动 kill。
 
 # 8. 工作纪律：一次只审一个强 seed
 
