@@ -4,9 +4,9 @@
 
 建立日期：2026-09-19
 
-> **当前阶段：大量读论文、重建 paper genealogy、归纳问题是怎样从 literature 中长出来的。**
+> **当前阶段：FORMAL TOPIC SEARCH — genealogy-first。**
 >
-> **2026-09-19：用户已明确认可 genealogy-first 的阅读/校准方法。当前继续做纵向 literature study；在用户明确要求开始找题以前，不启动 CT01 / S10，不注册 candidate，不做 pilot。**
+> **2026-09-19：用户已明确要求开始正式找题。第一题 CT01 已完成 nearest-prior / anti-resurrection / execution audit，并注册为 PILOT-AUTHORIZED。后续仍遵守“一题一题搜、可 0 survivor、formal candidate 只能 PILOT-AUTHORIZED 或 KILL”。**
 
 ---
 
@@ -201,11 +201,19 @@ PaperNotes（https://papernotes.org/）非常适合做：
 
 ---
 
-# 7. 当前硬停止线
+# 7. 当前正式搜索状态
 
-现在仍然：
+literature calibration 已完成第一阶段，用户已授权正式找题。
 
-> **不开始 CT01。**
+当前：
+
+> **CT01 — Relevant but Invalid: When Should Reasoning Models Forget Their Own Thoughts?**
+>
+> **Status: PILOT-AUTHORIZED**
+>
+> 详细注册：`CT01_RELEVANT_BUT_INVALID.md`
+
+正式搜索并不停止 genealogy reading。每个新 seed 仍必须先回到 target lineage 做 dangerous-prior audit。
 
 当前已完成四批纵向 genealogy、18 条主要 lineage，并加入 contrast/anti-pattern library。仍继续建立足够厚的 genealogy library：
 
