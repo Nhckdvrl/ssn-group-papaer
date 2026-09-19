@@ -6,7 +6,7 @@
 
 > **当前阶段：大量读论文、重建 paper genealogy、归纳问题是怎样从 literature 中长出来的。**
 >
-> **用户明确通过以前，不开始正式 CT01 / S10，不注册 candidate，不做 pilot。**
+> **2026-09-19：用户已明确认可 genealogy-first 的阅读/校准方法。当前继续做纵向 literature study；在用户明确要求开始找题以前，不启动 CT01 / S10，不注册 candidate，不做 pilot。**
 
 ---
 
@@ -43,13 +43,19 @@
 2. **PAPER_GENEALOGY_GUIDE.md**  
    深读一篇 paper 时具体怎么向下追 parent、siblings、related work、assumption、changed premise、decisive experiment。
 
-3. **PAPER_AUTOPSIES_2026-09-19.md**  
+3. **LONGITUDINAL_GENEALOGIES_01_2026-09-19.md**  
+   第一批真正纵向 lineage reconstruction：RLVR learning signal、test-time scaling、ICL mechanism、diffusion fast sampling、robot/VLA action representation。重点记录 primitive 如何移动、成功 abstraction 如何制造下一代问题，而不是逐篇摘要。
+
+4. **LITERATURE_MAP_2026-09-19.md**  
+   跨会议 breadth map；用于判断 field density、saturated axes 和值得纵向追的 lineage。
+
+5. **PAPER_AUTOPSIES_2026-09-19.md**  
    第一轮 paper notes。旧版有明显 method-paper bias，因此只能作为原始阅读记录；以新的 genealogy 文件为上位解释。
 
-4. **LESSONS_FROM_SSN_TASTE.md**  
+6. **LESSONS_FROM_SSN_TASTE.md**  
    保留旧搜索真正有用的 process lesson：repo restore、nearest-prior audit、reviewer compression、data/compute gate、anti-resurrection、execution risk。
 
-5. **SEARCH_GUIDE_ZH.md**  
+7. **SEARCH_GUIDE_ZH.md**  
    当前 canonical 工作流。重点已经从固定 topic template 改为：
    **field map → lineage reconstruction → genealogy induction → pressure mining → candidate audit**。
 
