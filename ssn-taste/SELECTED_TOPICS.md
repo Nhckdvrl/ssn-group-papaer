@@ -50,6 +50,22 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
+### S05 — When Does Reading Become Learning?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-18  
+**Detailed registration:** `S05_WHEN_DOES_READING_BECOME_LEARNING.md`
+
+**Parent question.** Under ordinary response-only SFT, prompt/context information is available to the model but receives no direct token loss. What determines whether that information remains transient conditioning, is compressed into only the task-sufficient information needed to predict the response, or becomes persistent parameter memory?
+
+**Scientific pressure.** EACL 2026 establishes that input-only, target-absent information can be unintentionally memorized and explicitly suggests downstream-task utility matters, but does not causally match exposure while changing only response relevance. S05 targets that missing quantity.
+
+**Minimum identification.** Match prompt-side exposure within one SFT run while changing only whether the information is causally necessary for predicting the response; use a small dose ladder and direct-supervision positive control.
+
+**Claim boundary.** Do not turn S05 into privacy extraction, prompt-loss tuning, or an overfitting study. If the relevance effect appears only under extreme repetition or changes qualitative direction across modest doses, kill.
+
+---
+
 ### S06 — What Does Deliberation Do to Evidence?
 
 **Status:** SELECTED — PILOT-AUTHORIZED  
@@ -98,10 +114,24 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
+### S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-19  
+**Detailed registration:** `S09_MEMORY_ACCESSIBILITY_STABILITY.md`
+
+**Parent question.** Is present memory accessibility sufficient to predict future editability, or can equally accessible parameter memories differ in stability because of how and when they were learned?
+
+**Scientific pressure.** Training-order recency is encoded across multiple adaptive optimizers, model families, full FT/LoRA and data regimes; early memorization crystallization and old-knowledge update resistance independently suggest that current recall may not fully specify future plasticity.
+
+**Minimum identification.** Counterbalance the same facts across mirrored early/late histories, control current accessibility, optionally equalize recent exposure with a common refresh, then learn all contradictory replacements together from the same final checkpoint and compare overwrite curves.
+
+**Claim boundary.** Do not claim a universal biological consolidation law. If the qualitative history effect flips under one cheap confirmatory adaptive-optimizer/dose condition, kill.
+
+---
+
 ## Explicitly cancelled registrations
 
-- **S05 — When Does Reading Become Learning?** cancelled/killed on 2026-09-19 after execution-risk re-audit. EACL 2026 already directly studies unintended memorization of information present only in fine-tuning inputs but absent from targets, substantially narrowing the remaining novelty. More importantly, the interesting residual effect would likely require repetition/overfitting and become strongly dose/recipe dependent, while the null/task-sufficient outcomes are weak or reviewer-compressible to ordinary conditional/function learning.
-- **S09 — Same Recall, Different Stability?** cancelled/killed on 2026-09-19 after recipe-dependence re-audit. The motivating training-order signal in *Fresh in Memory* is itself optimizer/dose dependent, and “memory age” is inseparable from the optimization path, subsequent interference, and acquisition-time model state. Establishing a general editability law would require exactly the optimizer/schedule/model sweep the project is trying to avoid.
 
 
 - **S01 — Omission ≠ Neutrality / effective default semantics in tool calls:** cancelled/demoted. It is already recorded as F06 in `FAILED_TOPICS.md`; the Main-level parent compresses to underspecified tool intent / argument completion, leaving only an exact API-default subcase.
@@ -111,4 +141,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 5.**
+**Current selected topic count = 7.**
