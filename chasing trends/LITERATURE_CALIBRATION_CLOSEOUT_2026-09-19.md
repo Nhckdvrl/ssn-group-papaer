@@ -440,3 +440,59 @@ The target research taste is now:
 > **Follow important moving fields, but do not copy their surface methods. Recover why the field moved, identify the assumption or relation that became load-bearing, and exploit public artifacts or cheap proxies to test the smallest decisive claim before paying full-scale cost.**
 
 This is the final state of the broad calibration phase.
+
+
+---
+
+# 11. Final addendum — Sep 17–19
+
+A last targeted sweep was allowed after the closeout only to cover genuinely new artifacts from the final days of the window.
+
+It did **not** reopen broad crawling.
+
+The addendum sharpened four rules that were previously under-specified:
+
+## Mechanism Composition
+ComposeCL shows that multi-mechanism methods can be scientifically clean when:
+- each component maps to a distinct failure source;
+- interaction is a hypothesis;
+- factorial / interaction evidence is provided.
+
+Therefore:
+> "module count" is not a quality criterion.
+
+The distinction is:
+> causal composition vs arbitrary stacking.
+
+## Specification Source
+ProgramDistill extends Oracle Role Separation:
+- a working executable can be the source from which desired behavior is discovered;
+- exploration, specification, reward and final certification are different authorities.
+
+## Trajectory Supervision Mask
+ActObs shows:
+- an SFT target mask can preserve or erase consequence prediction;
+- the important downstream effect may appear only after later RL;
+- "not generated at deployment" does not imply "should be masked during training."
+
+## Multi-Rate Modality
+Agile-WAM shows:
+- temporally aligned modalities can still have different information timescales;
+- supervision horizon should be justified by modality dynamics rather than shared timestamps.
+
+The final wave also extended the Knowledge Location Audit with:
+> runtime-generated effective weights conditioned on live data.
+
+And it added two structured-science reminders:
+- FAMOS: the evidence unit can be a set of observed physical states rather than one view;
+- Panda Diplomacy: sensor-level physical structure can be a better transfer unit than experiment-specific task architecture.
+
+The final source ledger also records current artifact maturity:
+- ComposeCL: code/data open;
+- Pelican-Sim: Code/Models still marked "Coming soon";
+- General Intuition: monitor-only for this final window because no equally detailed new matched artifact was found;
+- promotion-page recency must not be confused with paper/artifact recency.
+
+With these additions, the broad calibration phase remains **CLOSED**.
+
+No further broad company/HF scan should be performed unless one of the explicit reopening triggers in SEARCH_GUIDE_ZH.md is met.
