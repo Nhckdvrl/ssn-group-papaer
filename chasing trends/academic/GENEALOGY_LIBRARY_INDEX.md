@@ -49,7 +49,7 @@ Execution:
 > medium/high; training required, but some diagnosis can be cheap.
 
 File:
-> LONGITUDINAL_GENEALOGIES_01_2026-09-19.md
+> GENEALOGIES_01.md
 
 ---
 
@@ -219,7 +219,7 @@ Execution:
 > high/very high; mainly taste source, not default project source.
 
 File:
-> LONGITUDINAL_GENEALOGIES_02_2026-09-19.md
+> GENEALOGIES_02.md
 
 ---
 
@@ -359,7 +359,7 @@ Execution:
 > moderate, but novelty bar very high.
 
 File:
-> LONGITUDINAL_GENEALOGIES_03_2026-09-19.md
+> GENEALOGIES_03.md
 
 ---
 
@@ -518,7 +518,7 @@ Execution:
 > large-scale model training often high; small post-training studies possible but trending/crowded.
 
 File:
-> LONGITUDINAL_GENEALOGIES_04_2026-09-19.md
+> GENEALOGIES_04.md
 
 ---
 
@@ -853,146 +853,14 @@ find an object to redefine
 
 ---
 
-# F. Industry Frontier Track
-
-从 2026-09-19 起，genealogy library 额外维护一条 **industry frontier track**。
-
-它与 G01–G18 不同：
-
-> G01–G18 主要重建 academic/research lineage；
-> industry track 主要记录 frontier labs 在超大规模训练、真实deployment、product controls、serving和real usage中暴露出的新 pressure。
-
-Canonical file：
-> INDUSTRY_FRONTIER_SCAN_2026-09-19.md
-
-当前第一批 observation：
-
-## I01 — OpenAI GPT-5 routing
-Frontier object:
-> fast/deep model selection + realtime router + user/quality signals。
-
-Academic inspiration:
-> compute-allocation state可能比benchmark difficulty丰富。
-
-Execution warning:
-> 无真实traffic，不复制router。
-
-## I02 — OpenAI effort / parallel test-time compute / model family
-Frontier object:
-> quality × latency × cost × model selection × parallel compute。
-
-Academic inspiration:
-> test-time scaling在产品中已是多维control problem，而非单轴token budget。
-
-## I03 — Anthropic long-running agents
-Frontier object:
-> effort、context compaction、tool use、subagents、steering。
-
-Academic inspiration:
-> context/state management可能是agent computation的一部分，而不是纯infra。
-
-## I04 — Gemini effort and multimodal deployment
-Frontier object:
-> API-level effort controls across multimodal/agentic settings。
-
-Academic inspiration:
-> effort成为operational variable；其实际control semantics值得观察。
-
-## I05 — DeepSeek-V4 million-token architecture-system co-design
-Frontier object:
-> 1M context下 attention / storage / training / serving / agentic use被绑成system bottleneck。
-
-Academic inspiration:
-> bundle中是否存在可小规模独立识别的load-bearing relation。
-
-## I06 — Meta Llama 4 scale / hyperparameter transfer / mid-training
-Frontier object:
-> >30T tokens、32K GPUs、MoE、native multimodal、MetaP、mid-training、10M context。
-
-Academic inspiration:
-> hyperparameter transferability和training-stage complexity在超大scale变成一等问题。
-
-Execution warning:
-> 不能做training biography，也不能复制scale。
-
-## I07 — Production speculative decoding
-Frontier object:
-> theoretical token/FLOP gain与真实GPU latency不等价。
-
-Academic inspiration:
-> efficiency proxy必须接受deployment validity audit。
-
-## I08 — Qwen large-scale agent RL
-Frontier object:
-> million-agent environments、async RL、environment orchestration。
-
-Academic inspiration:
-> policy lag / rollout staleness / environment throughput等system变量可能成为科学对象。
-
-Execution warning:
-> 只在million-scale出现的effect不适合当前项目。
-
-Industry-track共同 gate：
-1. Scale-Stripping Test
-2. Independent Academic Pressure
-3. Cheap Causal Echo
-4. Frontier-Only Phenomenon Test
-5. Full-project compute ceiling
-
-原则：
-> **Inspiration value 与 execution transferability 分开评。**
-
-允许：
-> Inspiration A / Execution F。
-
-但不允许：
-> A级industry inspiration 被误注册成可做candidate。
-
-
 ---
 
-# G. Startup / HF genealogy track — final index
+# F. Scope boundary
 
-The startup/Hugging-Face track is now closed at **11 waves**.
+本索引现在只维护 **academic genealogy**。
 
-Its role is distinct from the academic and industry tracks:
+- 大公司 / deployment frontier：见 `../industry/README.md`
+- startup / HF / open artifacts：见 `../startup_hf/README.md`
+- 正式候选：见 `../topics/README.md`
 
-> academic genealogy teaches question/identification history;
-> industry shows frontier-scale pressure;
-> startup/HF releases expose sharp technical theses and experimental instruments.
-
-Key recurring objects identified across the 11 waves:
-
-- mutable harness state;
-- data order;
-- online/fast memory;
-- continuous interaction timing;
-- world/action state;
-- failure/evaluator qualification;
-- development-tree checkpoints;
-- scientific experience environments;
-- cheap proxy→full-scale validation;
-- consumer-defined world-model fidelity;
-- modality-extension placement;
-- pretraining-value decomposition;
-- public artifact maturity.
-
-Final-wave file:
-> STARTUP_HF_GENEALOGIES_11_FINAL_FRONTIER_WAVE_2026-09-19.md
-
-Closeout:
-> LITERATURE_CALIBRATION_CLOSEOUT_2026-09-19.md
-
-## Final stopping rule
-
-Do not continue broad discovery merely to enlarge this index.
-
-A new paper/model enters the genealogy library only if it:
-1. changes a load-bearing premise;
-2. adds a genuinely new correction/negative result;
-3. creates a useful public causal contrast;
-4. materially changes the feasibility of a concrete candidate;
-5. is needed to audit a current candidate's nearest prior.
-
-Otherwise:
-> monitor at most; do not expand the genealogy count.
+跨来源综合规则由根目录 `../SEARCH_GUIDE_ZH.md` 统一管理。
