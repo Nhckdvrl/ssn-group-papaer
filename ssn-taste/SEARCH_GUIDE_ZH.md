@@ -446,6 +446,39 @@ Mechanism 是回答问题的工具，不是问题来源。
 
 ---
 
+# 11.5 Training-dynamics recipe gate
+
+S03/S04 的执行经验与 S05/S09 re-audit 增加一条硬门槛：
+
+> **不要只问 training-dynamics 问题是否可控；先问它是否有理由存在一个 recipe-stable answer。**
+
+对任何 learning / post-training / memorization / acquisition 题，在 PILOT-AUTHORIZED 前必须判断：
+
+1. manipulated scientific quantity 能否在同一个 model / optimizer state 内直接 intervention，还是只能通过不同 training histories 间接构造？
+2. training recipe 是 nuisance/control，还是它本身定义了现象？
+3. 合理改变 training dose / LR / optimizer 是否可能让 competing-world 结论直接换号？
+4. 如果结果只在一个 arbitrary optimization point 成立，它本身是否仍是值得发表的 scientific fact？
+5. 为了证明不是 recipe artifact，是否会被迫扩张成 optimizer × LR × dose × model-family sweep？
+
+若第 5 项答案为“会”，默认 **KILL**。
+
+特别吸取四个失败教训：
+
+- **S03:** single-budget / single-family developmental reading 极易制造假 law；稳定的 structural / parameter-locus fact 比“模型在某条训练历史里怎么学会 X”更可靠。
+- **S04:** 若自然现象太弱，必须不断增强 synthetic manipulation 才能识别，可能是 identification instrument 在创造现象。
+- **S05:** 若 persistent conditioning-memory 只有在重复 exposure / overfitting 后才明显，结论会退化成 memorization-dose interaction。
+- **S09:** 若“memory age”本身由 optimizer trajectory、intervening gradients 和 acquisition-time state 共同定义，就不存在一个便宜、干净的 age intervention。
+
+这条 gate **不是禁止 training dynamics**。优先保留：
+
+> 同一训练状态内的 causal intervention、稳定 quantity separation、低成本 dose check 后仍保持 qualitative conclusion 的 learning law。
+
+优先淘汰：
+
+> industrial recipe archaeology、stage biography、需要大规模 recipe matrix 才能知道结论方向的题。
+
+---
+
 # 12. Training / post-training 题的 scale discipline
 
 小模型、toy data 可以用于 pilot。
