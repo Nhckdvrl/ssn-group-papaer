@@ -9,16 +9,55 @@ continuation-logit shift, and `d_stop` the probability-gauge
 version that carries a whole-vocabulary normalizer term.
 
 
+## E04 — supervision decomposition (FINAL ADJUDICATION; project killed)
+
+```
+E04 — supervision decomposition, seed 0
+init = Olmo-3-7B-Think-SFT (final), data = Dolci-Instruct-SFT
+matched: pool, order, steps, schedule, optimizer, batch, seed
+
+  baseline (step 0): d_goal 10.05   dz_stop 4.69   dz_cont -5.36
+
+  condition                               d_goal  D d_goal            95% CI    sign  D dz_stop  D dz_cont  bnd_auc  val_ce
+  -------------------------------------------------------------------------------------------------------------------------
+  full / correct      (ordinary SFT)       16.75      6.70     [+5.56,+7.82]    48/2       6.41      -0.29   0.9996   0.955
+  terminal / correct  (endpoint only)      12.49      2.44     [+1.35,+3.52]   33/17      -0.90      -3.34   0.8427  17.207
+  content / correct   (never told to stop)   11.45      1.40     [+0.57,+2.23]   35/15       0.09      -1.31   0.9922   1.001
+  full / shuffled     (goal decoupled)      3.88     -6.17     [-7.20,-5.11]    3/47      -3.49       2.67   0.9992   1.122
+  terminal / shuffled (endpoint, wrong goal)    8.06     -1.99     [-3.40,-0.67]   19/31      -2.35      -0.36   0.8818  16.206
+
+  d_goal along ONE schedule (mid-run evals from the same run)
+
+  condition                                    0     250     500     750    1000    1250    1500    1750    2000   final
+  ----------------------------------------------------------------------------------------------------------------------
+  full / correct      (ordinary SFT)       10.05   12.02   13.80   14.14   15.76   15.96   16.61   16.65   16.72   16.75
+  terminal / correct  (endpoint only)      10.05   10.84   12.44   12.41   12.51   12.47   12.50   12.50   12.50   12.49
+  content / correct   (never told to stop)   10.05    9.00    9.88    9.63   10.75   10.84   11.25   11.33   11.48   11.45
+  full / shuffled     (goal decoupled)     10.05    3.96    3.31    3.78    3.92    3.92    3.93    3.91    3.92    3.88
+  terminal / shuffled (endpoint, wrong goal)   10.05   12.91    8.26    8.21    8.13    8.14    8.12    8.11    8.13    8.06
+
+  paired contrasts BETWEEN conditions (d_goal)
+
+  contrast                                           diff            95% CI     sign
+  ----------------------------------------------------------------------------------
+  terminal_correct - full_correct                   -4.26     [-5.51,-2.98]     7/43
+  content_correct - full_correct                    -5.30     [-6.09,-4.47]     1/49
+  full_shuffled - full_correct                     -12.87   [-14.61,-11.07]     1/49
+  terminal_shuffled - terminal_correct              -4.43     [-5.33,-3.50]     5/45
+  full_shuffled - content_correct                   -7.57     [-8.92,-6.23]     3/47
+```
+
 ## Layer B2 — REAL natural acquisition trajectory (fixed stop token <|endoftext|>, one serialization)
 
 ```
 variant: main  (results/e01_traj)
-stimulus invariance OK: 5 checkpoints, 50 items, identical token ids and identical scored stop id (fingerprint 8ec3aea207359f78)
+stimulus invariance OK: 6 checkpoints, 50 items, identical token ids and identical scored stop id (fingerprint 8ec3aea207359f78)
 
 checkpoint              stage          n   d_goal  dz_stop  dz_cont    sign  cont@1  contMdR
 --------------------------------------------------------------------------------------------
 base                    pretrain      50     7.27     7.92     0.65    49/1     88%        0
 
+think_sft_s1000         think_sft     50     8.15     8.49     0.35    49/1     88%        0
 think_sft_final         think_sft     50    10.03     4.67    -5.36    49/1     86%        0
 
 inst_sft_final          inst_sft      50    17.33    11.94    -5.40    49/1     92%        0
