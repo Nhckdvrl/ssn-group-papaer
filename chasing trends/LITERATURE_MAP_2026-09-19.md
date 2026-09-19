@@ -872,3 +872,61 @@ Rule：
 
 只代表：
 > 后续若进入 candidate search，已经不再只有一套单一模板作为视角。
+
+
+---
+
+# 22. Industry frontier track added — 2026-09-19
+
+Academic paper landscape不再作为唯一frontier signal。
+
+新增持续扫描对象：
+- OpenAI system cards；
+- Anthropic model/system cards与deployment reports；
+- Google DeepMind model cards；
+- Meta model/system + production engineering reports；
+- DeepSeek technical reports / model cards；
+- Qwen technical/open model reports；
+- 其他真正有frontier-scale evidence的labs。
+
+当前industry pressure map：
+
+### Compute control
+- routing
+- effort levels
+- parallel test-time compute
+- capability/cost model families
+
+### Context / memory
+- million-token context
+- 10M context
+- context compaction
+- long-running agent state
+
+### Agent post-training
+- async RL
+- environment orchestration
+- massive rollout scale
+- tool use / long-horizon autonomy
+
+### Multimodal
+- native early fusion
+- live/audio/video
+- embodied reasoning
+
+### Production systems
+- speculative decoding
+- kernel compatibility
+- KV/storage
+- latency vs theoretical FLOPs
+
+这些不是candidate pool。
+
+用途：
+> 找到academic literature暂时看不到的future pressure。
+
+任何从此处产生的seed：
+> 先过 Scale-Stripping + Cheap Causal Echo + Independent Academic Pressure。
+
+详细见：
+> INDUSTRY_FRONTIER_SCAN_2026-09-19.md
