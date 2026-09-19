@@ -1870,3 +1870,289 @@ without being:
 > a new conceptual seed.
 
 Log convergence separately from changed-premise discoveries.
+
+
+---
+
+# O. Structured/scientific/open-model sources — deep-read pass 3
+
+## ST-35 — Prior Labs TabPFN-3 / TabPFN-3.5
+Date: May 2026 / Sep 2026  
+Type: open tabular foundation model + hosted fit-time compute extensions  
+Tier: II  
+Primary:
+- arXiv:2605.13986
+- arXiv:2609.17895
+- https://github.com/PriorLabs/TabPFN
+
+Deep-read: **YES**
+
+Actually establishes:
+- synthetic task prior is used to pretrain an in-context predictor;
+- TabPFN-3 can perform downstream fitting/inference in one forward pass;
+- 3.5 public architecture uses distribution embedding, row-wise and cross-row attention;
+- public base and Fast variants exist;
+- "Thinking" spends more fit-time compute to construct/configure a reusable predictor rather than generating longer CoT.
+
+Does NOT establish:
+- that every TabPFN Thinking implementation detail is public;
+- that product word "thinking" corresponds to language-style reasoning.
+
+Taste value: **A+**  
+Execution transfer: **A**  
+Instrument value: **A+**
+
+Core pressure:
+> test-time compute can mean amortized predictor construction, not deliberative token generation.
+
+---
+
+## ST-36 — τ₀-VLA
+Date: Jul/Aug 2026  
+Type: hierarchical VLA + world-model-guided test-time computation  
+Tier: II  
+Primary:
+- arXiv:2608.16885
+- https://github.com/sii-research/tau-0-vla
+
+Deep-read: **YES**
+
+Actually establishes:
+- high-level policy can route uncertain decisions into proposal/world-model/value/beam-search/reflection before physical commitment;
+- low-level policy is an open Qwen3.5-2B + MoT action expert with conditional flow matching;
+- execution memory and hypothetical branch state are distinct;
+- open low-level post-training/data adapters are usable.
+
+Does NOT establish:
+- that the full high-level TTC stack is currently as open/reproducible as the low-level VLA;
+- universal value of world-model search on all robot tasks.
+
+Taste value: **A+**  
+Execution transfer: **B/C for low-level; D for full thesis**  
+Instrument value: **A/B low-level; C full TTC**
+
+Core pressure:
+> extra inference compute is justified by the asymmetric cost of wrong irreversible action.
+
+---
+
+## ST-37 — Google TimesFM-3
+Date: Aug 2026  
+Type: open 330M time-series foundation model  
+Tier: II  
+Primary:
+- https://github.com/google-research/timesfm
+- google/timesfm-3.0-pytorch
+
+Deep-read: **YES**
+
+Actually establishes:
+- native multivariate forecasting and past/future covariates;
+- official evaluation enables cross-variate attention;
+- one-forward-pass prediction remains the deployment object;
+- PyTorch/MLX and benchmark runners are public.
+
+Taste value: **A**  
+Execution transfer: **A**  
+Instrument value: **A+**
+
+Core pressure:
+> richer cross-variable inference does not necessarily require iterative/test-time reasoning; it can belong in the base computation graph.
+
+---
+
+## ST-38 — Tencent AuK / AuK-Flash
+Date: Sep 2026  
+Type: open foundational speech generation/editing model + fast distilled variant  
+Tier: II  
+Primary:
+- arXiv:2609.08936
+- https://github.com/Tencent-Hunyuan/AuK
+
+Deep-read: **YES**
+
+Actually establishes:
+- generation/editing/enhancement/paralinguistic/acoustic editing share a natural-language+audio interface;
+- training moves generation-only warmup → joint generation/editing;
+- different task families retain different post-training signals;
+- AuK-Flash uses task-routed fast-sampling distillation;
+- base and Flash weights, fine-tuning code, intermediate snapshots, EMA and per-t validation curves are public;
+- fine-tuning freezes semantic encoder/VAE and updates generation/fusion.
+
+Taste value: **A**  
+Execution transfer: **A/B**  
+Instrument value: **A+**
+
+Core pressure:
+> unified interface does not imply uniform optimization or uniform distillation dynamics.
+
+---
+
+## ST-39 — StepAudio 3 Gen
+Date: Sep 2026  
+Type: general-audio technical report  
+Tier: II  
+Primary:
+- arXiv:2609.12945
+
+Deep-read: **YES**
+
+Actually establishes:
+- general audio is modeled through low-rate discrete RVQ autoregression rather than a diffusion-only formulation;
+- time-axis coarse/first-codebook prediction is separated from residual codebook completion;
+- progressive training explicitly targets interference between new audio-generation learning and existing language/reasoning capability;
+- detached/gradual integration is used before deeper multimodal coupling.
+
+Does NOT establish:
+- cheap public reproduction unless complete weights/code are available;
+- that discrete AR universally dominates flow/diffusion.
+
+Taste value: **A+**  
+Execution transfer: **C/D pending artifact availability**  
+Instrument value: **C pending release**
+
+Core pressure:
+> adding a modality can damage a pretrained backbone; representation/generative operator and training schedule jointly determine interference.
+
+---
+
+## ST-40 — Hugging Face Carbon
+Date: Sep 2026  
+Type: fully open genomic causal-LM family  
+Tier: II  
+Primary:
+- https://github.com/huggingface/carbon
+- HuggingFaceBio/Carbon-500M, 3B, 8B
+
+Deep-read: **YES**
+
+Actually establishes:
+- DNA uses non-overlapping 6-mer tokens while text uses BPE;
+- coarse 6-mer tokenization improves sequence economics but reduces direct nucleotide-resolution supervision;
+- Factorized Nucleotide Supervision restores base-pair-level supervision;
+- 500M model has an explicit draft-model role for speculative decoding of larger Carbon models;
+- biological counterfactual evals and long-context DNA tasks are public.
+
+Taste value: **A+**  
+Execution transfer: **A/B**  
+Instrument value: **A+**
+
+Core pressure:
+> an efficiency-oriented tokenizer can create a known information-resolution loss that the learning objective must repair.
+
+---
+
+## ST-41 — NVIDIA JEPA-DNA
+Date: Feb 2026  
+Type: matched-backbone genomic objective study  
+Tier: II  
+Primary:
+- arXiv:2602.17162
+- https://github.com/NVIDIA-BioNeMo/JEPA-DNA
+
+Deep-read: **YES**
+
+Actually establishes:
+- token reconstruction is augmented with latent masked-region prediction intended to capture broader functional structure;
+- matched JEPA continual-pretraining checkpoints are released for DNABERT-2, NTv3 and HyenaDNA;
+- reproduction configs/code and benchmark driver are public;
+- effects are not uniform across every task/backbone.
+
+Taste value: **A**  
+Execution transfer: **A/B**  
+Instrument value: **A+**
+
+Core pressure:
+> local token recovery and region-level functional abstraction are distinct supervision targets.
+
+Recency note:
+> direct scientific parent/source, not a Sep-2026 release.
+
+---
+
+## ST-42 — NASA–IBM Lunar Foundation Model
+Date: Sep 2026  
+Type: open remote-sensing foundation model  
+Tier: II  
+Primary:
+- NASA/IBM model card and NASA-IMPACT repo
+
+Deep-read: **YES**
+
+Actually establishes:
+- lunar appearance depends strongly on known acquisition/illumination geometry;
+- acquisition geometry is explicitly conditioned instead of being left for pixel inference;
+- high-resolution NAC and low-resolution WAC imagery are jointly pretrained;
+- modality-specific tokenizers and flexible scale handling are public.
+
+Taste value: **A+**  
+Execution transfer: **A/B**  
+Instrument value: **A**
+
+Core pressure:
+> do not force a model to re-infer a nuisance variable that the measurement process already records accurately.
+
+---
+
+## ST-43 — BGI Genos-m
+Date: May 2026  
+Type: open microbial-genomics foundation model  
+Tier: II  
+Primary:
+- BGI-HangzhouAI/Genos-m
+- project technical report
+
+Deep-read: **YES**
+
+Actually establishes:
+- human-associated microbial ecology is explicitly emphasized in the pretraining distribution;
+- single-nucleotide representation contrasts with Carbon's coarse k-mer design;
+- sparse MoE enables large total capacity with ~330M active parameters;
+- SAE features are aligned to external genomic annotations such as ORF/intergenic/tRNA/rRNA/strand direction;
+- chunk representations are aggregated for whole-genome phenotype tasks.
+
+Taste value: **A**  
+Execution transfer: **B/C**  
+Instrument value: **B**
+
+Core pressure:
+> domain specialization can act through the prior/training distribution while external scientific annotations make representation semantics directly testable.
+
+---
+
+## ST-44 — Botanic1
+Date: Sep 2026  
+Type: open plant-genomics foundation-model family  
+Tier: II  
+Primary:
+- Botanic1 Hugging Face collection / technical report
+
+Deep-read: **PARTIAL-TO-SOLID**
+
+Actually establishes:
+- bidirectional Mamba-2 masked modeling;
+- single-nucleotide representation;
+- hundreds of plant species;
+- multiple sizes/adaptation modes.
+
+Taste value: **A-**  
+Execution transfer: **A/B**  
+Instrument value: **A/B**
+
+Core pressure:
+> architecture/tokenization can be chosen around the sequence process and mutation resolution rather than around dominant language-model conventions.
+
+---
+
+# P. New model-card reading fields
+
+For every future open/startup/scientific model, the ledger should additionally record:
+
+- **Minimum Scale of Causal Visibility**
+- **Proxy Fidelity Evidence**
+- **Failure-Provenance Value**
+- **Operator Identity**
+- **Domain Structure Placement**
+- **Instrument Value**
+
+This prevents one large SOTA score from dominating research-taste calibration.
