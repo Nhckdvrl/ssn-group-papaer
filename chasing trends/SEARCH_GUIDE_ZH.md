@@ -979,3 +979,365 @@ Reset：
 没有这部分：
 > 不注册。
 
+
+
+---
+
+# 28. Startup / Hugging Face Artifact Archaeology
+
+新增于 2026-09-19。
+
+最近 industrial/startup/HF 扫描得到一个重要执行原则：
+
+> **在决定“这个问题必须自己训练”之前，先搜索是否已经存在公开的 matched artifact。**
+
+优先寻找：
+
+- base vs instruct；
+- SFT vs RL；
+- pre-anneal vs post-anneal；
+- midtrain stages；
+- teacher vs student；
+- expert vs merged student；
+- BF16 vs quantized；
+- high-effort vs low-effort；
+- thinking vs non-thinking；
+- different reasoning-language variants；
+- sequential-data vs shuffled-data；
+- dense vs sparse mechanism-faithful variants；
+- tiny proxy vs full-scale model；
+- original backbone vs continual-pretrained objective variant。
+
+目标：
+
+> **Artifact archaeology before GPU.**
+
+公开 checkpoint 对比不是 causal proof。
+
+但它可以极大降低：
+- phenomenon discovery；
+- boundary discovery；
+- pilot cost。
+
+---
+
+# 29. Minimum Scale of Causal Visibility
+
+以后审工业/大模型论文，不先问：
+
+> 最终模型多大？
+
+先问：
+
+> **论文的核心 effect 最小在哪个 scale / token budget 已经可见？**
+
+强制记录：
+
+- final production scale；
+- smallest proxy scale；
+- proxy token budget；
+- effect first visible at；
+- second-scale confirmation；
+- whether method ranking survives scale。
+
+典型结构：
+
+\`\`\`
+0.3B proxy
+→ 7B sanity check
+→ production training
+\`\`\`
+
+对我们而言：
+> 前两层往往比最后一层更重要。
+
+如果核心现象只在：
+- >100B；
+- hundreds of billions tokens；
+- production traffic；
+
+才出现：
+
+> inspiration only。
+
+---
+
+# 30. Proxy Fidelity Audit
+
+便宜 proxy 不是因为便宜就有效。
+
+必须回答：
+
+1. proxy 想预测 full-scale 的什么 quantity？
+2. effect direction 是否跨 scale 保持？
+3. method ranking 是否跨 scale 保持？
+4. mechanism metric 是否跨 scale 保持？
+5. target intervention 是否处于同一 causal path？
+6. proxy 是否可能因为容量/数据/优化 regime 改变而反转？
+7. 最小 second-scale confirmation 是什么？
+
+好 proxy：
+
+> 保留 decision-relevant relation。
+
+坏 proxy：
+
+> 只是训练便宜。
+
+---
+
+# 31. Failure Provenance Gate
+
+以后 startup/model-card/technical report 深读优先级增加一项：
+
+> **作者是否公开了“明显合理但失败”的选择？**
+
+强来源往往保留：
+
+- failed architecture；
+- specialization regression；
+- capability floor；
+- optimization instability；
+- scale boundary；
+- train/inference mismatch；
+- deployment failure；
+- bad shortcut；
+- intermediate checkpoint。
+
+强制记录：
+
+- obvious baseline 是什么；
+- 为什么一开始合理；
+- 哪里失败；
+- 什么 metric/trace 暴露；
+- 作者有没有 mechanism；
+- final method 是否直接针对 failure；
+- failed artifact 能不能复现。
+
+一个 SOTA 模型卡如果完全没有 failure provenance：
+
+> 可作 frontier evidence；
+> 但 research-taste 权重下降。
+
+---
+
+# 32. Operator-First Test for "Thinking / TTC / Adaptive Compute"
+
+以后看到：
+
+- thinking；
+- extended thinking；
+- test-time compute；
+- adaptive compute；
+- deliberation；
+- iterative inference；
+
+先删除这些术语。
+
+重写：
+
+\`\`\`
+state X
+-- operator O -->
+state X'
+-- evidence / score E -->
+continue / stop
+\`\`\`
+
+必须回答：
+
+1. X 是什么？
+2. O 是什么？
+3. O 重复的是同一 state、branch、sample，还是新 observation？
+4. E 是什么？
+5. stopping signal 是什么？
+6. error cost 是什么？
+7. compute 是每次决策支付，还是可 amortize？
+8. O 会不会改变外部环境？
+9. 等量 compute 为什么不直接放进 base architecture/training？
+
+例：
+
+### TabPFN Thinking
+O：
+> fit-time predictor/configuration optimization。
+
+### τ₀-VLA
+O：
+> proposal → world-model consequence prediction → value → search。
+
+### Diffusion / AuK
+O：
+> iterative generative transport / denoising。
+
+### Active video
+O：
+> acquire additional observation。
+
+这些不是一个 mechanism family。
+
+---
+
+# 33. Research Instrument Value
+
+除了论文质量与灵感价值，再单独评：
+
+> **这个 release 本身是不是一个好实验仪器？**
+
+高 instrument value 的典型特征：
+
+- 小模型；
+- matched checkpoint pair；
+- 同架构多 stage；
+- 完整 eval code；
+- training config；
+- data recipe；
+- logs；
+- failed checkpoint；
+- quantization pair；
+- multiple backbone controls。
+
+允许：
+
+> Thesis B / Instrument A+
+
+也允许：
+
+> Thesis A / Instrument F。
+
+正式 pilot 设计优先利用前者。
+
+---
+
+# 34. Domain Structure Placement Audit
+
+对于 scientific/domain foundation model，不再使用模糊问题：
+
+> “怎么注入 domain knowledge？”
+
+必须问：
+
+> **domain structure 应该放在哪一层？**
+
+候选位置：
+
+## Tokenization
+例：
+- DNA k-mer vs single nucleotide。
+
+## Objective
+例：
+- token recovery vs latent functional prediction。
+
+## Training distribution / prior
+例：
+- synthetic SCM；
+- ecological/domain-specific genomic prior。
+
+## Explicit context / metadata
+例：
+- acquisition geometry；
+- embodiment metadata。
+
+## Architecture
+例：
+- state-space sequence model；
+- cross-axis tabular interaction。
+
+## Evaluation contract
+例：
+- decision fidelity；
+- biological invariant perturbation。
+
+如果只是：
+> 换领域数据继续预训练，
+
+默认科学压力不足。
+
+---
+
+# 35. Recency Discipline
+
+Hugging Face 当前热度不等于工作当前新。
+
+任何 HF/startup artifact 必须记录：
+
+- original paper/report date；
+- original model-card date；
+- latest checkpoint update date；
+- 最近 update 是否改变 scientific thesis；
+- 只是 runtime/quantization/packaging 还是新研究结果。
+
+禁止：
+
+> 2025 paper 因 2026 trending 被当成 2026 frontier evidence。
+
+---
+
+# 36. Convergence ≠ Novelty
+
+多个公司同时采用一个 pattern 可以证明：
+
+> operational pressure 很真实。
+
+不证明：
+
+> conceptual move 仍然 open。
+
+例如：
+- effort control；
+- multi-teacher OPD；
+- harness diversity；
+- model routing；
+- long-context hybrid attention；
+- quantization-aware distillation；
+- synthetic agent environments。
+
+看到 convergence 后正确动作：
+
+1. 降低 surface novelty prior；
+2. 提高 pressure reality prior；
+3. 往更底层找 unresolved relation。
+
+---
+
+# 37. Four-Axis Artifact Score
+
+每个 startup/HF/industry artifact 内部记录四个独立维度：
+
+### Thesis Value
+是否改变真实 assumption/basic object？
+
+### Failure-Provenance Value
+是否公开 failure→diagnosis→repair？
+
+### Instrument Value
+是否给我们便宜 matched experiment？
+
+### Proxy-Fidelity Evidence
+是否证明 small proxy 能预测 larger/deployment regime？
+
+这四项不能合成一个总分去排序政治式/论文式 winner。
+
+用途只是：
+> 决定这份材料在后续研究流程里扮演什么角色。
+
+---
+
+# 38. Startup/HF literature files
+
+当前 canonical startup/HF genealogy：
+
+- STARTUP_AND_HF_FRONTIER_DEEP_DIVE_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_01_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_02_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_03_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_04_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_05_2026-09-19.md
+- STARTUP_HF_GENEALOGIES_06_SCIENTIFIC_FM_2026-09-19.md
+- INDUSTRY_SOURCE_LEDGER_2026-09-19.md
+
+正式找题时：
+
+> 这些文件是 pressure/instrument/genealogy library，
+> 不是 idea menu。
