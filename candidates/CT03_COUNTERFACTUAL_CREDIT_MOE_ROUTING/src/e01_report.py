@@ -74,15 +74,19 @@ def cell_stats(groups, exact_key, rng):
             norm_regret=float(np.mean(regret)),
             sign_acc=float(np.mean(sign)) if sign else float("nan"),
         )
-    # random floor
-    t1, t3 = [], []
+    # random floor -- same fields as a real predictor so the headline table
+    # can average over all of them uniformly
+    t1, t3, reg = [], [], []
     for g in groups:
         ex = np.array([r[exact_key] for r in g])
         best = int(ex.argmin())
         order = rng.permutation(len(g))
         t1.append(float(order[0] == best)); t3.append(float(best in order[:3].tolist()))
+        spread = ex.max() - ex.min()
+        reg.append(float((ex[order[0]] - ex[best]) / spread) if spread > 0 else 0.0)
     out["random"] = dict(top1=float(np.mean(t1)), top3=float(np.mean(t3)),
-                         rho_median=0.0)
+                         rho_median=0.0, rho_mean=0.0, rho_pooled=0.0,
+                         norm_regret=float(np.mean(reg)), sign_acc=float("nan"))
     return out
 
 

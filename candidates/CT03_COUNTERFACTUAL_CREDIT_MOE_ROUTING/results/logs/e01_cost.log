@@ -1,0 +1,57 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.85s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.16s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.77s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.84s/it]
+Using the latest cached version of the dataset since HuggingFaceH4/MATH-500 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/HuggingFaceH4___math-500/default/0.0.0/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be (last modified on Mon Jun  1 04:37:01 2026).
+{
+ "seq_len": 156,
+ "n_scored": 131,
+ "m_candidates": 16,
+ "layers": [
+  1,
+  4,
+  7,
+  10,
+  13,
+  15
+ ],
+ "shared_fwd_bwd_s": 1.5967648170888424,
+ "shared_amortised_per_token_layer_s": 0.00203150740087639,
+ "local_expert_fwd_s_per_candidate": 0.0002070629969239235,
+ "per_layer": {
+  "1": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.6255611989618046,
+   "speedup": 117.04732006572002
+  },
+  "4": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.49491706855769735,
+   "speedup": 92.60279669774995
+  },
+  "7": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.36734887938655447,
+   "speedup": 68.73380563356669
+  },
+  "10": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.2377083214232698,
+   "speedup": 44.47705840146478
+  },
+  "13": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.10755225410684943,
+   "speedup": 20.123855397563897
+  },
+  "15": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.02209502882033121,
+   "speedup": 4.13415012709655
+  }
+ }
+}
+Exception ignored in: <function ResourceTracker.__del__ at 0x943312122a0>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

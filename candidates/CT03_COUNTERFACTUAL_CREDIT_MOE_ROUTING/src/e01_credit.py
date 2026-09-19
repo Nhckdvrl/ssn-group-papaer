@@ -208,17 +208,23 @@ def run(args):
                 px_shared = (dhs.float() @ gs.float()).tolist()
                 px_tok = (dhs.float() @ gt.float()).tolist()
 
+                # Row 0 is a ZERO patch. The baseline must come through the
+                # identical replay path as the patched rows, otherwise the
+                # fp32 gap between the full forward and the replay (~3e-5,
+                # measured in e01_validity) contaminates dL -- which matters,
+                # because at deep layers dL itself is order 1e-4.
                 B = dhs.shape[0]
-                H = layer_out[l].expand(B, -1, -1).clone()
-                H[:, t] += dhs
+                H = layer_out[l].expand(B + 1, -1, -1).clone()
+                H[1:, t] += dhs
                 t0 = time.perf_counter()
-                new_ce = replay_ce(model, l, H, t, targets, attn_kwargs)
+                all_ce = replay_ce(model, l, H, t, targets, attn_kwargs)
                 torch.cuda.synchronize()
                 exact_s = time.perf_counter() - t0
 
-                b_row = base_ce[t:]
+                b_row, new_ce = all_ce[0], all_ce[1:]
                 dL_seq = (new_ce - b_row).sum(dim=1).tolist()
                 dL_tok = (new_ce[:, 0] - b_row[0]).tolist()
+                replay_base_drift = float((b_row - base_ce[t:]).abs().max())
 
                 for ci, (j, pool) in enumerate(cands):
                     fout.write(json.dumps(dict(
@@ -229,7 +235,7 @@ def run(args):
                         dh_norm=float(dhs[ci].norm()),
                         dL_seq=dL_seq[ci], dL_tok=dL_tok[ci],
                         px_shared=px_shared[ci], px_tok=px_tok[ci],
-                        exact_batch_s=exact_s, n_cand=B,
+                        exact_batch_s=exact_s, n_cand=B, replay_base_drift=replay_base_drift,
                     )) + "\n")
                 fout.flush()
         print(f"[{done}/{args.n_problems}] q={qi} T={T} sol={len(s_ids)}", flush=True)

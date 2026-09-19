@@ -1,9 +1,19 @@
 # CT03 — Counterfactual Credit for MoE Routing
 
-**Status:** `PILOT — E01 in progress` · **Opened:** 2026-09-20
+**Status:** `PILOT — E01 PASSED, Stage B not yet started` · **Opened:** 2026-09-20
 **Topic authority:** `chasing trends/topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
-**Current gate:** E01 only. No router is trained, and no benchmark is run,
-until E01 is adjudicated against the pre-registered bar in `docs/E01_DESIGN.md` §9.
+**Current gate:** E01 is adjudicated — **CONTINUE**. See `results/RESULTS.md`.
+Headline: `px_shared` vs `dL_seq`, hard/boundary/non-final, per-token median
+Spearman **0.698** (bar was 0.50), top-3 **0.816**, while the router's own score
+gap sits at **−0.019** — at the random floor. Cost advantage is **~131×** at
+layer 1, and must be quoted that way, not as the ~22,000× the local expert
+forward alone would suggest.
+
+Known limitation, stated up front: a steep depth gradient (rho 0.286 at layer 1
+rising to 1.000 at layer 15). The approximation is weakest exactly where exact
+rerouting is most expensive.
+
+No router has been trained and no benchmark has been run.
 
 ## The object
 

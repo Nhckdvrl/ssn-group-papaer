@@ -1,0 +1,42 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.22s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:04<00:02,  2.36s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  2.07s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  2.14s/it]
+Using the latest cached version of the dataset since HuggingFaceH4/MATH-500 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/HuggingFaceH4___math-500/default/0.0.0/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be (last modified on Mon Jun  1 04:37:01 2026).
+META {"model": "allenai/OLMoE-1B-7B-0924-Instruct", "dtype": "float32", "K": 8, "E": 64, "layers": [1, 4, 7, 10, 13, 15], "m_boundary": 8, "m_random": 8, "seed": 0, "n_problems": 32, "tokens_per_stratum": 4}
+[1/32] q=419 T=420 sol=337
+[2/32] q=459 T=342 sol=255
+[3/32] q=130 T=252 sol=209
+[4/32] q=431 T=438 sol=384
+[5/32] q=370 T=117 sol=66
+[6/32] q=26 T=380 sol=315
+[7/32] q=201 T=264 sol=183
+[8/32] q=56 T=138 sol=102
+[9/32] q=366 T=209 sol=167
+[10/32] q=108 T=483 sol=387
+[11/32] q=231 T=302 sol=226
+[12/32] q=326 T=433 sol=382
+[13/32] q=118 T=297 sol=260
+[14/32] q=153 T=202 sol=94
+[15/32] q=493 T=570 sol=492
+[16/32] q=311 T=187 sol=125
+[17/32] q=333 T=541 sol=465
+[18/32] q=24 T=283 sol=174
+[19/32] q=367 T=172 sol=98
+[20/32] q=17 T=339 sol=80
+[21/32] q=150 T=397 sol=169
+[22/32] q=247 T=234 sol=182
+[23/32] q=44 T=429 sol=352
+[24/32] q=274 T=634 sol=558
+[25/32] q=481 T=632 sol=520
+[26/32] q=420 T=168 sol=108
+[27/32] q=164 T=447 sol=420
+[28/32] q=405 T=121 sol=79
+[29/32] q=452 T=487 sol=427
+[30/32] q=436 T=317 sol=267
+[31/32] q=415 T=277 sol=243
+[32/32] q=393 T=163 sol=69
+Exception ignored in: <function ResourceTracker.__del__ at 0xb3dd7023ba0>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
