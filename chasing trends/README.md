@@ -7,7 +7,7 @@
 - broad literature calibration 已完成；
 - 正式选题搜索已经开启；
 - formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
-- 当前 selected：**CT01 / CT02**。
+- 当前 selected：**CT02**。
 
 ## 1. 从哪里开始
 
@@ -146,19 +146,21 @@ chasing trends/
 
 ## 5. 当前正式题目
 
-### CT01 — Relevant but Invalid: When Should Reasoning Models Forget Their Own Thoughts?
+### CT02 — Is Context Utility Rankable? Set-Dependent Routing for Sparse Attention
 
 **Status:** PILOT-AUTHORIZED
 
 核心问题：
 
-> 当后续 turn 改变了旧 reasoning 所依赖的上游 premise 时，继续保留模型自己的 private reasoning 是否会阻碍 belief revision，即使这段 reasoning 仍然高度相关？
+> 稀疏注意力中的 context utility 能否由一个全局 scalar ranking 表示，还是 block 的边际价值取决于已经保留的其他 blocks？
 
 详细 registration：
 
-> `topics/CT01_RELEVANT_BUT_INVALID.md`
+> `topics/CT02_IS_CONTEXT_UTILITY_RANKABLE.md`
 
-当前正式 selected 数量：**2**。
+CT01 已在 2026-09-19 re-audit 后 **KILL**；原因见 `topics/CT01_RELEVANT_BUT_INVALID.md` 与 `topics/FAILED_TOPICS.md`。
+
+当前正式 selected 数量：**1**。
 
 ## 6. 几条不会再妥协的规则
 
