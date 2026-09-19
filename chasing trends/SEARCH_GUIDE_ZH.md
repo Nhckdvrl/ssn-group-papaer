@@ -6,9 +6,9 @@
 
 当前状态：
 
-> **LITERATURE / TASTE CALIBRATION**
+> **FORMAL TOPIC SEARCH — ACTIVE**
 >
-> 用户通过之前，不开始正式 CT01。
+> 2026-09-19 用户已明确授权正式找题。CT01 已通过第一轮 full audit，状态为 PILOT-AUTHORIZED。继续 genealogy-first；不恢复 batch brainstorming。
 
 ---
 
