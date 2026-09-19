@@ -1,5 +1,9 @@
 # Research-Question Formation & Paper-Growth Paradigm Atlas
 
+> **定位：calibration atlas，不是 canonical search guide，也不是 idea menu。**
+>
+> 正式找题流程以 `../SEARCH_GUIDE_ZH.md` 为准。这里保留不同论文如何形成问题与长成完整 story 的案例，供阅读时反向校准。
+
 日期：2026-09-19  
 状态：**V2 taste calibration — waiting for user approval before candidate search**
 
@@ -1464,7 +1468,7 @@ endpoint 一样，但 learning/inference dynamics 不一样。
 
 在用户明确通过这个 V2 taste 之前：
 
-- 不生成 CT01；
+- 本文件不直接生成或裁决 CTxx；正式 candidate 由根目录 canonical workflow 审计。
 - 不注册候选；
 - 不进入 pilot；
 - 不因为某个 exemplar 很漂亮就复制其结构。
