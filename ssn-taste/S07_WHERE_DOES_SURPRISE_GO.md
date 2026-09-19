@@ -190,3 +190,20 @@ Run one semantic instantiation first, but require the three diagnostic readouts 
 A second surface realization is a robustness check only after a clean first signal.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+---
+
+## 2026-09-19 data-path audit
+
+**Data burden: LOW.**
+
+Use a tiny programmatic sequential world with exact hidden state, source reliability and transition rule. Histories, anomalies, trusted resets and follow-up probes are generated from the latent process, so ground truth is analytic rather than annotated.
+
+Belief-R can be used only as neighboring/natural validation for belief revision; it is not sufficient for the three-way state/source/rule identification.
+
+**KILL on data grounds** if:
+- identifying the revision locus requires manually labeling model explanations;
+- the three fingerprints only work in one heavily scripted lexical template;
+- more than two semantic skins are needed to convince ourselves the effect is not wording;
+- the project expands into a POMDP benchmark.
+
