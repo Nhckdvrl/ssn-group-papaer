@@ -1,6 +1,6 @@
 # S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILL — registration cancelled after recipe-dependence re-audit (2026-09-19)  
 **Registered:** 2026-09-19  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** training dynamics / parameter memory / stability–plasticity / mechanistic follow-up optional
@@ -331,3 +331,43 @@ Therefore the evidence does **not** support treating training-order recency as a
 ### Final status
 
 **SELECTED — PILOT-AUTHORIZED.**
+
+
+---
+
+## 15. Final S03-informed recipe-dependence audit — KILL
+
+**This section is authoritative and supersedes the earlier restoration audit.**
+
+After observing S03 fail to support a stable developmental story across training budgets and model families, S09 was re-evaluated under a stricter question:
+
+> Is there a plausible recipe-stable scientific quantity here, or is the manipulated variable itself an optimization-history artifact?
+
+### Why S09 is finally killed
+
+1. **The independent variable is the optimization path itself.** “Memory age / learning history” is not a clean intervention analogous to response relevance or an inference-time state. Early vs. late acquisition necessarily changes the parameter state at acquisition, subsequent gradient interference, spacing, exposure recency, and optimizer trajectory.
+
+2. **The closest prior already shows material recipe dependence in the motivating temporal trace.** *Fresh in Memory* reports a strong training-order signal with Adafactor/Lion, weaker signals requiring more epochs with AdamW/RMSprop, and no cross-run signal with vanilla SGD even after extended training. That does not invalidate the phenomenon, but it shows that the temporal state used to motivate S09 is partly optimizer/dose dependent.
+
+3. **Mirroring and common refresh do not make “age” a recipe-invariant causal variable.** They improve within-recipe identification, but a positive result can still be generic path dependence. A common refresh also changes the memory state itself rather than simply observing it.
+
+4. **A convincing positive result would immediately demand a recipe matrix.** Optimizer, learning rate, acquisition dose, spacing, intervening data, and model family can all plausibly change the sign or magnitude of the effect. If these must be swept to establish what “age” means, the project has reproduced the S03 failure mode: the scientific answer becomes a biography of one training trajectory.
+
+5. **The null is weak.** If accessibility-matched memories overwrite identically in one recipe, the result only says current strength is sufficient in that recipe. If they differ, path dependence is the immediate alternative. Neither outcome earns a robust Main-level law without substantially more training sweeps.
+
+### Anti-resurrection rule
+
+Do not revive S09 by:
+- adding optimizer/model sweeps;
+- renaming path dependence as consolidation;
+- increasing matching complexity;
+- turning the project into a Fresh-in-Memory follow-up on the recency direction;
+- claiming a universal memory-age law from one sequential fine-tuning recipe.
+
+### Final verdict
+
+**KILL.**
+
+The transferable lesson is:
+
+> For training-dynamics topics, the causal variable should not itself be an uncontrolled summary of the optimizer trajectory. If the scientific conclusion changes meaning with the recipe that creates the state, prefer a different question.
