@@ -1,498 +1,156 @@
-# Literature Calibration Closeout — 2026-09-19
-
-> **Status: BROAD CALIBRATION CLOSED**
->
-> This file marks the end of the broad academic / industry / startup / Hugging Face literature-calibration phase.
->
-> It does **not** mark the end of literature reading.
->
-> From now on, reading becomes:
->
-> - candidate-specific;
-> - nearest-prior-specific;
-> - dangerous-overlap-specific;
-> - or triggered by a genuinely changed premise / newly released experimental artifact.
-
----
-
-# 1. What has been built
-
-The repository now contains four interacting libraries.
-
-## Academic genealogy library
-
-Purpose:
-> learn how scientific questions grow across parent→successor lineages.
-
-Coverage includes:
-- RLVR;
-- test-time scaling;
-- ICL mechanisms;
-- diffusion;
-- VLA/action representation;
-- pretraining/scaling;
-- SFT;
-- distillation;
-- architecture/inductive bias;
-- VLM interface/token lifecycle;
-- multimodal latent reasoning;
-- speech/full duplex;
-- negative/limits papers;
-- optimization dynamics;
-- multimodal objectives;
-- speech tokenization;
-- CoT faithfulness;
-- video/world models.
+# Literature Calibration Closeout
 
----
+日期：2026-09-19
 
-## Industry frontier library
+这份文件记录 broad calibration 的**收口状态**。它不是另一份 search guide。
 
-Purpose:
-> observe regimes, bottlenecks and operational variables unavailable to ordinary academic-scale experiments.
+## 1. 已经建立的证据库
 
-Coverage includes:
-- model routing / effort;
-- long-running agents;
-- context/cache economics;
-- production traces;
-- async RL;
-- environment generation;
-- full-duplex systems;
-- serving/power/resource control;
-- robotics/world models;
-- deployment-derived training loops.
+### Academic
 
----
+`../academic/` 已覆盖多条纵向 lineage，包括：
 
-## Startup / Hugging Face library
+- RLVR / test-time scaling
+- ICL mechanism
+- diffusion fast sampling
+- VLA/action representation
+- pretraining/SFT/distillation
+- architecture/inductive bias
+- VLM / multimodal
+- speech/audio
+- negative/limits
+- optimization
+- world models
 
-Purpose:
-> find sharp technical theses and, especially, public experimental instruments.
+### Industry
 
-The 11 genealogy waves cover:
-- mutable harnesses;
-- temporal pretraining;
-- full-duplex subproblems;
-- world/action models;
-- fast weights / memory;
-- cheap proxy → full scale;
-- scientific foundation models;
-- failure/evaluator qualification;
-- scientific experience/environment;
-- harness maturity/evaluation correction;
-- long-horizon state/correction;
-- final frontier wave on pretraining value, world-model consumer contracts, modality extension, sparse selector targets and residual-capability data.
+`../industry/` 记录：
 
----
+- frontier scale / deployment pressure
+- product knobs
+- system/model co-design
+- failure provenance
+- source ledger
 
-## Evidence/source ledger
+### Startup / HF
 
-Purpose:
-> separate:
-- measured evidence;
-- company interpretation;
-- our reconstruction;
-- inspiration value;
-- execution transferability;
-- current artifact availability.
+`../startup_hf/` 记录：
 
-Important consequence:
+- public checkpoints
+- matched stages
+- failed/open artifacts
+- scientific FMs
+- continual/state/harness/auto-research
+- long-horizon correction
+- proxy / development-tree evidence
 
-> an A-level technical thesis can still be an F-level experimental artifact for us.
+## 2. Broad reading 真正改变了什么
 
-And:
+### Basic object 经常移动
 
-> a modest 2B–6B model with matched checkpoints can be more useful than a frontier closed model.
+frontier 常常不是“换一个 module”，而是：
 
----
+- sequence → branching token
+- final failure → onset transition
+- data amount → mixture/exposure
+- teacher quality → teacher–student relation
+- token input → lifecycle/future utility
+- turn sequence → concurrent real-time process
+- video generator → action-conditioned transition model
 
-# 2. What broad reading changed in the research-search process
+但“换 object”也不是 generator。它必须由真实 pressure 推出。
 
-The largest change is that we no longer search by surface topic.
+### Proxy 必须对 consumer 负责
 
-Bad:
+training loss、embedding similarity、visual quality、token count、judge score 都可能只是 proxy。
 
-> reasoning is hot → find reasoning idea.
+候选必须问：
 
-> world models are hot → find world-model idea.
+> downstream consumer 真正需要什么？
 
-> self-evolution is hot → do self-evolution.
+### Failure localization 常比全局修复更有信息量
 
-Good:
+如果 failure 有局部 onset / specific transition，先定位，再决定是否需要 global intervention。
 
-\`\`\`
-recover lineage
-→ identify current pressure
-→ identify what old abstraction became load-bearing
-→ locate the minimum causal contrast
-→ search for an existing public instrument
-→ run the cheapest decisive test
-→ only then derive a method/project.
-\`\`\`
+### Resource constraint 可以成为 scientific variable
 
----
+budget、latency、memory、stream rate、operator compatibility 并非永远只是工程细节；当它改变可行策略时，它会进入 formulation。
 
-# 3. The strongest stable lessons
+### Public artifact 改变 feasibility
 
-These are not idea templates.
+matched checkpoint / small proxy / failed release 可能让原本昂贵的问题获得 cheap causal echo。
 
-They are audit habits.
+## 3. Broad phase 新增的硬纪律
 
----
+最终保留到正式 workflow 的主要规则已经压缩到：
 
-## 3.1 The basic object often moves
+- `../SEARCH_GUIDE_ZH.md`
+- `SPECIALIZED_AUDITS.md`
 
-Research frontiers repeatedly change what is treated as the unit of analysis:
+包括：
 
-- token → decision token;
-- output → transition;
-- task → trajectory;
-- data amount → mixture/exposure/order;
-- teacher quality → teacher–student relation;
-- context → persistent state/reuse structure;
-- world model → consumer-specific simulator/representation/planner;
-- modality extension → parameter-sharing placement;
-- pretraining → a specific transfer capability.
+- artifact maturity / development-tree audit
+- proxy fidelity
+- evaluator / oracle / specification separation
+- trend maturity
+- failure-onset / long-horizon classification
+- representation × consumer
+- modality placement / multi-rate
+- world-model consumer contract
+- auto-research / research-memory provenance
 
-But:
+不再在本文件重复展开。
 
-> changing the object is not itself a generator.
+## 4. 默认视为 crowded 的 surface
 
-The pressure must come first.
+截至本轮 broad scan，以下表面方向不能仅凭热度构成 novelty：
 
----
+- generic GRPO variant
+- entropy/selective-token RL
+- generic adaptive test-time compute
+- visual-token compression
+- latent visual reasoning
+- unified multimodal model
+- student-aware CoT distillation
+- full-duplex speech 作为标签
+- generic world model
+- CoT faithfulness metric
+- generic scaling-law fitting
+- generic harness self-evolution
 
-## 3.2 Proxy targets must be audited against the real consumer
+不是禁止研究。
 
-Examples:
-- dense attention ranking vs sparse-budget utility;
-- token count vs actual compute;
-- FLOPs vs latency;
-- action-prediction loss vs task completion;
-- simulation realism vs policy decision fidelity;
-- runtime pass vs correctness certification;
-- synthetic-environment quantity vs transferable learning pressure.
+含义是：
 
-Canonical question:
+> 进入这些 cluster 后，必须进一步找到 attribution / compatibility / new premise / unresolved relation。
 
-> **What downstream ordering/decision is this proxy supposed to preserve?**
+## 5. 广谱扫描停止规则
 
----
+从现在起，不再默认 weekly broad crawl。
 
-## 3.3 Failure localization is often more valuable than global regularization
+只有以下情况重新扩搜：
 
-Across:
-- reasoning;
-- long-form TTS;
-- streaming geometry;
-- optimization;
-- agent trajectories;
+1. concrete CT candidate 需要 nearest-prior audit；
+2. dangerous overlap 未确认；
+3. target field 仍只有浅 breadth；
+4. 新公开 artifact 显著降低 pilot 成本；
+5. trend 进入新的 evaluation-correction / negative-result phase；
+6. 用户明确要求重新做 frontier calibration。
 
-late failure may originate from:
-- a local transition;
-- a slowly accumulating drift;
-- missing persistent state;
-- an incorrect evaluator;
-- a wrong proxy objective.
+## 6. 进入正式找题后的姿态
 
-Diagnose the dynamics before choosing the intervention.
+从：
 
----
+> “还有什么领域没扫？”
 
-## 3.4 Resource constraints can become scientific variables
+切到：
 
-Examples:
-- remaining reasoning budget;
-- context budget;
-- cache lifetime;
-- input/output compute asymmetry;
-- tool latency;
-- power cap;
-- model identity;
-- effort;
-- prefill/decode asymmetry.
+> **一条 lineage 里，现在真正哪个 pressure 值得锁住？**
 
-But:
+然后：
 
-> "adaptive resource allocation" has zero novelty by itself.
+> restore → deep prior → one candidate → identification / execution audit → PILOT-AUTHORIZED or KILL。
 
-The state/action/objective relation must be specific.
+Broad calibration 的目的已经完成：
 
----
-
-## 3.5 Public artifacts change what is feasible
-
-Before training:
-> search for the intervention pair.
-
-Useful pairs include:
-- base vs SFT vs RL;
-- sequential vs shuffled pretraining;
-- pre-anneal vs post-anneal;
-- BF16 vs quantized;
-- high/low effort;
-- same-language vs English reasoning;
-- original vs JEPA continual pretraining;
-- old/new tokenizer;
-- world-model/action-head variants.
-
-This makes:
-> artifact archaeology
-
-a formal part of pilot design.
-
----
-
-# 4. Final hard gates added during the broad phase
-
-Canonical guide now includes, among others:
-
-- Repo-State Priority
-- Nearest-Prior Audit
-- Reviewer Compression
-- Identification Gate
-- Data/Compute Gate
-- Changed-Premise Gate
-- Mechanism→Method Necessity
-- Industry Scale-Stripping
-- Cheap Causal Echo
-- Same-Surface/Different-Genealogy
-- Genealogy Evidence Tags
-- Contrast Gate
-- Minimum Scale of Causal Visibility
-- Proxy Fidelity
-- Failure Provenance
-- Operator First
-- Domain Structure Placement
-- Evaluator Qualification
-- Development Tree ≠ Controlled Experiment
-- Knowledge Location Audit
-- Oracle Role Separation
-- Harness Evaluation Correction
-- Auto-Research Protocol
-- AI-Research Role Decomposition
-- Failure-Onset Localization
-- Multi-Timescale Correction
-- Research Memory Provenance
-- Long-Horizon Failure Classification
-- Pretraining Value Decomposition
-- World-Model Consumer Contract
-- Modality Extension Placement
-- Public Artifact Maturity
-- Proxy-to-Consumer Fidelity
-
-The purpose is not bureaucracy.
-
-It is:
-> kill attractive but structurally weak ideas before they consume GPU time.
-
----
-
-# 5. Surfaces that broad reading now treats as crowded by default
-
-Not forbidden.
-
-But they no longer carry novelty.
-
-- generic GRPO variant;
-- entropy/selective-token RL;
-- generic adaptive reasoning effort;
-- generic test-time scaling;
-- generic visual-token compression;
-- generic latent reasoning;
-- generic self-evolving harness;
-- generic long-context memory;
-- generic world model;
-- generic full-duplex model;
-- generic synthetic environment scaling;
-- generic multi-teacher OPD;
-- generic harness diversity;
-- generic QAD;
-- generic sparse attention;
-- generic capability routing;
-- generic unified multimodal/scientific model;
-- generic "pretraining helps";
-- generic "data diversity helps".
-
-Any future candidate using these surfaces must identify:
-> the unresolved relation underneath the label.
-
----
-
-# 6. What industrial material is for
-
-Industry evidence is most useful for:
-
-> **finding variables academia accidentally holds fixed.**
-
-Examples:
-- user idle time;
-- cache lifetime;
-- scaffold version;
-- remaining context;
-- rollout staleness;
-- tool schema;
-- intervention timing;
-- power;
-- workload phase;
-- task duration;
-- production failure distribution.
-
-It is not a license to copy frontier-lab recipes.
-
-Industry-derived seed:
-
-\`\`\`
-frontier observation
-→ strip scale/company implementation
-→ isolate relation
-→ find independent academic pressure
-→ find cheap causal echo
-→ only then candidate audit.
-\`\`\`
-
----
-
-# 7. What startup/HF material is for
-
-The strongest new lesson:
-
-> **model cards can be natural-experiment catalogs.**
-
-A model release is disproportionately valuable when it exposes:
-- intermediate stage;
-- matched control;
-- small-scale mechanism-faithful model;
-- failed/regressed stage;
-- quantized/full precision pair;
-- objective/backbone contrast;
-- logs / W&B;
-- public evaluation/runtime.
-
-Do not equate:
-> open model
-with
-> useful research instrument.
-
-And never equate:
-> "coming soon"
-with
-> released.
-
----
-
-# 8. Stopping rule
-
-Broad reading is now stopped deliberately.
-
-Why stop?
-
-Because beyond this point:
-
-- marginal new genealogy decreases;
-- surface repetition increases;
-- trend-chasing bias grows;
-- pattern-shopping becomes easier;
-- time should move from catalog expansion to specific question selection/audit.
-
-Future broad scan is re-opened only if:
-
-1. user explicitly requests recalibration;
-2. a new model/training regime clearly changes a premise;
-3. an artifact changes what experiments are feasible;
-4. a trend enters a negative/evaluation-correction phase;
-5. a candidate enters an under-read field.
-
-Otherwise:
-> do not crawl companies/HF for its own sake.
-
----
-
-# 9. Next research-search posture
-
-For a future concrete seed:
-
-\`\`\`
-1. identify target field / pressure
-2. reconstruct immediate lineage
-3. find nearest dangerous prior
-4. check current industrial/startup evidence if relevant
-5. search public matched artifacts
-6. define one cheap discriminative pilot
-7. pre-register kill criteria
-8. run
-9. PILOT-AUTHORIZED or KILL
-\`\`\`
-
-No long-lived "SERIOUS".
-
-No 20-idea dump.
-
-No trend label as novelty.
-
----
-
-# 10. Final calibration sentence
-
-The target research taste is now:
-
-> **Follow important moving fields, but do not copy their surface methods. Recover why the field moved, identify the assumption or relation that became load-bearing, and exploit public artifacts or cheap proxies to test the smallest decisive claim before paying full-scale cost.**
-
-This is the final state of the broad calibration phase.
-
-
----
-
-# 11. Final addendum — Sep 17–19
-
-A last targeted sweep was allowed after the closeout only to cover genuinely new artifacts from the final days of the window.
-
-It did **not** reopen broad crawling.
-
-The addendum sharpened four rules that were previously under-specified:
-
-## Mechanism Composition
-ComposeCL shows that multi-mechanism methods can be scientifically clean when:
-- each component maps to a distinct failure source;
-- interaction is a hypothesis;
-- factorial / interaction evidence is provided.
-
-Therefore:
-> "module count" is not a quality criterion.
-
-The distinction is:
-> causal composition vs arbitrary stacking.
-
-## Specification Source
-ProgramDistill extends Oracle Role Separation:
-- a working executable can be the source from which desired behavior is discovered;
-- exploration, specification, reward and final certification are different authorities.
-
-## Trajectory Supervision Mask
-ActObs shows:
-- an SFT target mask can preserve or erase consequence prediction;
-- the important downstream effect may appear only after later RL;
-- "not generated at deployment" does not imply "should be masked during training."
-
-## Multi-Rate Modality
-Agile-WAM shows:
-- temporally aligned modalities can still have different information timescales;
-- supervision horizon should be justified by modality dynamics rather than shared timestamps.
-
-The final wave also extended the Knowledge Location Audit with:
-> runtime-generated effective weights conditioned on live data.
-
-And it added two structured-science reminders:
-- FAMOS: the evidence unit can be a set of observed physical states rather than one view;
-- Panda Diplomacy: sensor-level physical structure can be a better transfer unit than experiment-specific task architecture.
-
-The final source ledger also records current artifact maturity:
-- ComposeCL: code/data open;
-- Pelican-Sim: Code/Models still marked "Coming soon";
-- General Intuition: monitor-only for this final window because no equally detailed new matched artifact was found;
-- promotion-page recency must not be confused with paper/artifact recency.
-
-With these additions, the broad calibration phase remains **CLOSED**.
-
-No further broad company/HF scan should be performed unless one of the explicit reopening triggers in SEARCH_GUIDE_ZH.md is met.
+> **让后续找题不再被单一热点、单一论文模板或单一来源绑架。**
