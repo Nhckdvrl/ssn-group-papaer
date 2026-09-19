@@ -81,4 +81,36 @@ Kill if the estimator has weak exact-counterfactual fidelity, works only in the 
 
 ---
 
-**Current selected topic count = 2.**
+## CT04 — What Can Hybrid Memory Safely Learn? Operation-Level Plasticity in Recurrent-Attention LMs
+
+**Status:** PILOT-AUTHORIZED  
+**Registered:** 2026-09-19  
+**Detailed registration:** `topics/CT04_HYBRID_MEMORY_OPERATION_PLASTICITY.md`
+
+### Mother question
+
+Within pretrained hybrid recurrent memory, which operations are plastic under post-training and which are load-bearing?
+
+### Scientific pressure
+
+Recent work gives a real contradiction: recurrent-only LoRA is destructive in sequential Qwen3.5, while state-based / S0 tuning shows recurrent state itself can be a powerful adaptation surface. Causal hybrid-memory work also shows attention KV and recurrent state carry different functional roles.
+
+CT04 therefore decomposes Gated DeltaNet into addressing/read, content write, decay/retention, write strength, and output/readout operations, and asks which operation actually causes adaptation gains versus collateral forgetting.
+
+### Minimum identification
+
+First reproduce the destructive GDN-LoRA result. Then run parameter-budget-matched operation-level adapters while measuring:
+
+- target-task learning;
+- collateral forgetting;
+- long-context recall;
+- Split-prefill / State-swap memory-channel behavior;
+- recurrent retention-horizon / state-update diagnostics.
+
+### Kill boundary
+
+Kill if the recurrent-LoRA failure does not reproduce, operation-level differences vanish after matching optimization/parameter count, no stable memory-functional correlate appears, or the final story reduces to a finer target_modules sweep without a mechanism-derived method.
+
+---
+
+**Current selected topic count = 3.**
