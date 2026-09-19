@@ -4,7 +4,7 @@
 >
 > NO formal CT candidate generation.
 >
-> This file continues STARTUP_HF_GENEALOGIES_01_2026-09-19.md.
+> This file continues GENEALOGIES_01.md.
 >
 > Main emphasis:
 >
