@@ -2551,3 +2551,191 @@ Recency role: **PARENT / CONTRAST, not recent-frontier evidence**
 Execution transfer: **A/B**  
 Instrument value: **A**
 
+
+
+---
+
+# M. Latest harness-maturity, auto-research, R&D-process, and audio-proxy sources — added 2026-09-19
+
+## ST-36 — Rethinking the Evaluation of Harness Evolution for Agents
+Date: 2026-07-14  
+Type: evaluation-correction / agent methodology paper  
+Tier: II  
+Primary:
+- arXiv:2607.12227
+- open code repository
+
+Deep-read: **YES**
+
+Actually establishes in the tested Terminal-Bench 2.1 setup:
+- harness evolution repeatedly consumes task feedback and inference budget;
+- under matched feedback/inference budgets, automatic harness evolution does not consistently beat simple parallel sampling / sequential refinement;
+- evolved harness improvements show limited held-out generalization.
+
+Does NOT establish:
+- harness optimization is never useful;
+- all self-improving harness methods overfit.
+
+Taste value: **A+**  
+Execution transfer: **B**  
+Instrument value: **A/B**
+
+Core lesson:
+> when a method is itself a search process, compare it to simpler ways of spending the same search budget.
+
+---
+
+## ST-37 — Co-Evolving Harnesses and Models
+Date: 2026-09-08  
+Type: diagnosis-driven harness/weight adaptation paper  
+Tier: II  
+Primary: arXiv:2609.09134
+
+Deep-read: **YES**
+
+Actually establishes across seven tested enterprise-agent tasks:
+- an expert can often exploit a harness evolved around a weaker model better than the weaker model;
+- full expert-trajectory imitation under the evolved harness regresses the weaker model by 4–30 points in the reported Qwen3-Coder/Gemma 4 experiments;
+- analysis attributes this to model–harness fit / strategy-competence mismatch;
+- localized expert correction on the weaker model's own on-policy rollout restores compatibility better.
+
+Taste value: **A+**  
+Execution transfer: **B**  
+Instrument value: **B**
+
+Core lesson:
+> harness quality is relational to the policy/competence it was evolved around.
+
+---
+
+## ST-38 — ModularRSI
+Date: 2026-09-14  
+Type: benchmark-disjoint modular harness evolution  
+Tier: II  
+Primary:
+- arXiv:2609.14857
+- Hugging Face paper page / GitHub
+
+Deep-read: **YES at abstract/problem/method level**
+
+Actually proposes/tests:
+- evolution on an external 2,000-task set disjoint from downstream benchmarks;
+- successful-vs-failed trajectory contrast;
+- decomposition into five functional harness modules;
+- independent evolution followed by integration;
+- transfer to unseen tasks/models in reported experiments.
+
+Taste value: **A-**  
+Execution transfer: **B/C**  
+Instrument value: **B**
+
+Core lesson:
+> once benchmark overfitting becomes a known confound, evolution data and evaluation data must be structurally separated.
+
+---
+
+## ST-39 — SoL-Pi
+Date: 2026-09-17  
+Type: open auto-research + harness-efficiency paper  
+Tier: II/III  
+Primary:
+- arXiv:2609.20519
+- NVlabs/SoL-Pi
+
+Deep-read: **YES — full arXiv text + repo**
+
+Actually establishes:
+- explicit capability and efficiency metrics are frozen before search;
+- held-out EdgeBench never feeds back into optimization;
+- broad-to-deep search covers 152 proposal directions, 535 development environments, >3,000 runs and >60,000 agent-environment interactions;
+- only four reusable mechanisms survive;
+- reported EdgeBench performance is comparable to base Pi while token traffic drops 44.7–49.0% and API cost roughly one third.
+
+Important caveat:
+- authors explicitly state search counts do not establish a scaling law.
+
+Taste value: **A+ for research-process design**  
+Execution transfer: **A for individual mechanisms / F for full discovery process**  
+Instrument value: **A**
+
+Core lesson:
+> auto-research needs frozen objectives, capability gates, development/held-out isolation, and evidence-preserving efficiency constraints.
+
+---
+
+## ST-40 — Atria Dawn Preview
+Date: 2026-09-14  
+Type: open agentic model + R&D-process study  
+Tier: II/I-like internal task-record analysis  
+Primary:
+- arXiv:2609.15818
+- atria-asi/Atria-Dawn-Preview
+
+Deep-read: **YES — paper text + repo/model release**
+
+Actually establishes:
+- 744B-MoE-based Atria model is trained through a Verifiable Experience Pipeline linking task, trajectory, artifacts and externally checked outcomes;
+- failure categories feed later task/environment refinement;
+- development-process study covers 769 task records from 56 participants plus agent logs;
+- agents frequently propose methods and execute revisions, while humans retain most final selection/judgment/steering in the reported project;
+- roughly one third of completed AI-assisted tasks were rated by participants as infeasible without AI under comparable constraints.
+
+Does NOT establish:
+- autonomous research taste;
+- a general productivity multiplier across labs;
+- benchmark scores independent of harness/resource conditions.
+
+Taste value: **A**  
+Execution transfer: **F for training / C for process abstraction**  
+Instrument value: **C**
+
+Core lesson:
+> project-level AI R&D should separate proposal, execution, interpretation, selection and steering rather than compress them into one “AI scientist” score.
+
+---
+
+## ST-41 — X-AuT
+Date: 2026-09-10  
+Type: speech-LLM compression study  
+Tier: II  
+Primary: arXiv:2609.11412
+
+Deep-read: **YES**
+
+Actually establishes:
+- short behavioral probes are used to select encoder-layer combinations before expensive repair;
+- removing encoder depth can cause decoder-level deletion/premature-EOS failures;
+- progressive 18→16→14 compression beats direct 18→14 in the reported matched setting (5.75 vs 6.73 mean error);
+- larger teacher distillation outperforms self-distillation in the reported setting;
+- results are explicitly single-run and vary across benchmarks.
+
+Taste value: **A for proxy/trajectory discipline**  
+Execution transfer: **A/B**  
+Instrument value: **B/A if code/checkpoints available**
+
+Core lesson:
+> a cheap proxy should predict task behavior, and the compression path can matter even when the endpoint architecture is identical.
+
+---
+
+## ST-42 — Qwen-Audio-VAE
+Date: 2026-07-13  
+Type: industrial audio-representation technical report  
+Tier: II  
+Primary: arXiv:2607.11738
+
+Deep-read: **YES at problem/architecture/evidence level**
+
+Actually establishes:
+- audio VAE design is optimized jointly for reconstruction, bitrate and encoding throughput;
+- causal/windowed/asymmetric encoder-decoder design plus latency-aware encoder pruning;
+- trained on ~5M hours;
+- reported encoding throughput is high enough to make large-scale downstream text-to-audio latent production a first-class design objective.
+
+Taste value: **A-**  
+Execution transfer: **C/D for training / B for representation profiling**  
+Instrument value: **B**
+
+Core lesson:
+> a representation producer should be evaluated against the cost profile of the downstream consumer/training pipeline, not reconstruction alone.
+
