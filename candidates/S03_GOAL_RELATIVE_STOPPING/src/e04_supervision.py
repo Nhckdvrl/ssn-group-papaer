@@ -63,51 +63,74 @@ STOP_TOKEN = "<|endoftext|>"
 GENERIC_PROMPT = "Write a response."
 
 
-def build_rows(tok, examples, max_len, mask, pairing, stop_id, seed=0):
+def _render(tok, user, resp, max_len, stop_id):
+    """(full_ids, prompt_len) or None if this rendering is unusable."""
+    pair = [{"role": "user", "content": user},
+            {"role": "assistant", "content": resp}]
+    prompt_ids = tok.apply_chat_template([pair[0]], tokenize=True,
+                                         add_generation_prompt=True)
+    full_ids = tok.apply_chat_template(pair, tokenize=True)
+    if len(full_ids) <= len(prompt_ids) + 1 or len(full_ids) > max_len:
+        return None
+    if full_ids[:len(prompt_ids)] != list(prompt_ids):
+        return None
+    if full_ids[-1] != stop_id:            # must end on the measured action
+        return None
+    return full_ids, len(prompt_ids)
+
+
+def survivors(tok, examples, max_len, stop_id, rot):
+    """Indices usable under EVERY pairing, so the conditions share one pool.
+
+    Filtering per condition would hand `shuffled` a different example set from
+    `correct` (a longer substituted prompt can push a pair over max_len), and
+    the design claims the conditions differ only in supervision.
+    """
+    keep = []
+    for i, m in enumerate(examples):
+        resp = m[1]["content"]
+        users = (examples[i][0]["content"],
+                 examples[(i + rot) % len(examples)][0]["content"],
+                 GENERIC_PROMPT)
+        if all(_render(tok, u, resp, max_len, stop_id) for u in users):
+            keep.append(i)
+    return keep
+
+
+def build_rows(tok, examples, max_len, mask, pairing, stop_id, keep, rot):
     """(input_ids, labels) with the requested supervision.
 
     The example POOL and its ORDER are identical across conditions; only which
     positions carry loss, and which user message a response is attached to,
     change.
     """
-    users = [m[0]["content"] for m in examples]
-    if pairing == "shuffled":
-        # derangement-ish: a fixed rotation, so every response is attached to a
-        # DIFFERENT user message while the multiset of prompts is unchanged
-        rot = random.Random(seed).randrange(1, len(users))
-        users = users[rot:] + users[:rot]
-    elif pairing == "generic":
-        users = [GENERIC_PROMPT] * len(users)
-
     rows, n_sup, n_tok = [], 0, 0
-    for u, msgs in zip(users, examples):
-        pair = [{"role": "user", "content": u},
-                {"role": "assistant", "content": msgs[1]["content"]}]
-        prompt_ids = tok.apply_chat_template([pair[0]], tokenize=True,
-                                             add_generation_prompt=True)
-        full_ids = tok.apply_chat_template(pair, tokenize=True)
-        if len(full_ids) <= len(prompt_ids) + 1 or len(full_ids) > max_len:
-            continue
-        if full_ids[:len(prompt_ids)] != list(prompt_ids):
-            continue
-        if full_ids[-1] != stop_id:            # must end on the measured action
-            continue
+    for i in keep:
+        resp = examples[i][1]["content"]
+        if pairing == "correct":
+            user = examples[i][0]["content"]
+        elif pairing == "shuffled":
+            # a fixed rotation: every response is attached to a DIFFERENT user
+            # message, and the multiset of prompts is unchanged
+            user = examples[(i + rot) % len(examples)][0]["content"]
+        elif pairing == "generic":
+            user = GENERIC_PROMPT
+        else:
+            raise ValueError(pairing)
+        full_ids, n_prompt = _render(tok, user, resp, max_len, stop_id)
         lab = [IGNORE] * len(full_ids)
-        body = range(len(prompt_ids), len(full_ids))
+        body = range(n_prompt, len(full_ids))
         if mask == "full":
-            for i in body:
-                lab[i] = full_ids[i]
+            for j in body:
+                lab[j] = full_ids[j]
         elif mask == "content":
-            for i in body:
-                lab[i] = full_ids[i]
+            for j in body:
+                lab[j] = full_ids[j]
             lab[-1] = IGNORE               # never told where to stop
         elif mask == "terminal":
             lab[-1] = full_ids[-1]         # told ONLY where to stop
         else:
             raise ValueError(mask)
-        # a label at position i is predicted from position i-1, and collate
-        # shifts by one, so the prompt's last token still predicts the first
-        # content token -- which is exactly the supervision we intend
         rows.append((full_ids, lab))
         n_sup += sum(1 for x in lab if x != IGNORE)
         n_tok += len(full_ids)
@@ -190,13 +213,22 @@ def main():
     va_ex = examples[:args.n_val]
     tr_ex = examples[args.n_val:args.n_val + args.n_train]
 
+    # the rotation is a property of the POOL, not of the condition, so
+    # `correct` and `shuffled` see the identical example set
+    rot = 1 + len(tr_ex) // 3
+    rot_va = 1 + len(va_ex) // 3
+    keep = survivors(tok, tr_ex, args.max_len, stop_id, rot)
+    keep_va = survivors(tok, va_ex, args.max_len, stop_id, rot_va)
     tr, n_sup, n_tok = build_rows(tok, tr_ex, args.max_len, args.mask,
-                                  args.pairing, stop_id, args.seed)
+                                  args.pairing, stop_id, keep, rot)
     # validation is always FULL/correct: it measures the model, not the condition
-    va, _, _ = build_rows(tok, va_ex, args.max_len, "full", "correct", stop_id)
+    va, _, _ = build_rows(tok, va_ex, args.max_len, "full", "correct", stop_id,
+                          keep_va, rot_va)
     print(f"mask={args.mask} pairing={args.pairing} init={args.init}\n"
-          f"  train={len(tr)} val={len(va)}  supervised tokens={n_sup:,} "
-          f"of {n_tok:,} ({100 * n_sup / n_tok:.2f}%)", flush=True)
+          f"  pool={len(keep)} of {len(tr_ex)} usable under EVERY pairing; "
+          f"train={len(tr)} val={len(va)}\n"
+          f"  supervised tokens={n_sup:,} of {n_tok:,} "
+          f"({100 * n_sup / n_tok:.2f}%)", flush=True)
 
     pad = tok.pad_token_id
     if pad is None or pad in sids:
@@ -218,7 +250,8 @@ def main():
     os.makedirs(outdir, exist_ok=True)
     with open(f"{outdir}/config.json", "w") as fh:
         json.dump(vars(args) | {"stop_id": stop_id, "n_supervised_tokens": n_sup,
-                                "n_total_tokens": n_tok, "n_train_rows": len(tr)},
+                                "n_total_tokens": n_tok, "n_train_rows": len(tr),
+                                "pool_size": len(keep), "rot": rot},
                   fh, indent=2)
 
     hist = []
