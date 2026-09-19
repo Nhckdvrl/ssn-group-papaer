@@ -9,7 +9,7 @@ continuation-logit shift, and `d_stop` the probability-gauge
 version that carries a whole-vocabulary normalizer term.
 
 
-## Layer B — natural post-training trajectory (format-matched)
+## Layer B — natural post-training trajectory (CONFOUNDED: per-checkpoint stop set; superseded)
 
 ```
 file                              fam      n   d_goal   d_stop       d_stop CI   d_comp   stop%
@@ -162,7 +162,9 @@ Parameter-locus replication at 750 steps, paired against each family's own Arm 0
 
 family         arm    D d_goal  (STOP vs CONT)    sign  D dz_stop  D dz_cont
 ----------------------------------------------------------------------------
+OLMo-3 7B      R           +4.72 [+3.98,+5.48]    48/2      +4.72      +0.00
                Sbody       +4.92 [+4.18,+5.61]    47/3      +2.18      -2.75
+               F           +4.79 [+4.06,+5.46]    47/3      +3.09      -1.70
 
 Qwen2.5 7B     R           -1.23 [-1.83,-0.64]   15/35      -1.23      +0.00
                Sbody       +0.43 [-0.79,+1.62]   28/22      +2.99      +2.56

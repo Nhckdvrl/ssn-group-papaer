@@ -1,7 +1,8 @@
 # S03 — From Document End to Task Done
 
-**Status:** PILOT IN PROGRESS
-**Opened:** 2026-09-17
+**Status:** PILOT — phenomenon and parameter locus established; acquisition
+mechanism NOT yet found. Not paper-ready.
+**Opened:** 2026-09-17 · **README last re-based on evidence:** 2026-09-19
 **Topic authority:** `ssn-taste/S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`, `ssn-taste/SELECTED_TOPICS.md`
 
 ## Frozen scientific object
@@ -9,107 +10,127 @@
 > How does post-training turn pretrained document/text-ending behaviour into
 > goal-relative assistant stopping?
 
-Sharper form:
-
-> Is the information needed for goal-relative stopping already present in
-> pretrained states so that post-training mainly changes the **stop readout**,
-> or must post-training change **internal computation** before goal completion
-> can control termination?
-
-Everything in this directory serves `goal information -> stop action`
-acquisition. Not an EOS benchmark, not a stopping leaderboard, not an
-instruction-following study, not a response-length study, not a circuit hunt.
-
-## Layout
+Pretraining teaches *when this text ends*. An assistant must decide *whether
+this user's task is done, so this turn should stop now*. Those are different
+completion criteria. The object is the acquisition of
 
 ```
-src/        experiment code
-stimuli/    E01 exact-prefix identification stimuli (instrument, NOT a benchmark)
-results/    raw per-item measurements + logs
-docs/       research log, preregistrations, decision records
+user-goal completion  ->  STOP vs task-relevant continuation
 ```
+
+Not an EOS benchmark, not a stopping leaderboard, not instruction following,
+not response length, not a circuit hunt.
 
 ## Instrument (E01)
 
 Matched pair = two conditions with a **token-for-token identical assistant
-prefix** and only the user goal changed, flipping whether the replayed prefix
+prefix**; only the user goal changes, which flips whether the replayed prefix
 already satisfies the request.
 
-Two decision positions are read from one forward pass:
-
-* `p1` — after the last content token; competitor = the item separator
-* `p2` — after the separator; competitor = first token of the correct missing
-  content (this is the S03-specified primary)
-
 ```
-stop_margin = logit(stop) - logit(correct_next_missing_token)
+stop_margin = z(stop) - z(correct next missing token)
 d_goal      = stop_margin(complete) - stop_margin(incomplete)
+            = dz_stop - dz_cont
 ```
 
-`stop` is the log-sum-exp over every token id that actually terminates an
-assistant turn for that checkpoint, so a dual-stop-token model is not
-mismeasured.
+The raw-logit decomposition is canonical. `Δ log p(stop)` carries a
+whole-vocabulary normalizer `Δ log Z` that differs by arm and has flipped the
+apparent sign of an effect more than once in this project; it is never used for
+a parameter-locus or architecture claim.
 
-Three deliberately non-isomorphic families:
+Stimuli (50 primary pairs + 12 lexical-matched controls), deliberately
+non-isomorphic:
 
 | family | goal form | cardinality stated? |
 |---|---|---|
 | `A_bounded_quantity` | "give the first N" | yes |
 | `B_semantic_predicate` | set-membership predicate | **no** |
 | `C_slot_requirement` | requested field set | implicitly |
+| `D` (control) | C with the missing field named in **both** prompts | — |
 
-`B` is the family that decides whether the effect is more than counting: no
-number appears anywhere in either prompt, only the predicate changes.
+`B` decides that the effect is not counting; `D` decides that the slot effect is
+not lexical priming from the missing field's name.
 
-Every run also emits, per item, the continuation-awareness control (rank and
-probability of the correct missing continuation in the incomplete condition).
+Every run also emits the continuation-awareness control (rank and probability of
+the correct missing continuation in the incomplete condition).
 
-## Current result
+## What is established
 
-**Reading and clearing are different problems with different parameter loci.**
+1. **Goal completion controls assistant termination, at exact prefix identity.**
+   Present in OLMo-3, Qwen2.5 and Llama-3.1.
+2. **It follows the token that ends the assistant turn, not "EOS".** In
+   Llama-3.1 Instruct the turn-end token moves *with* goal completion
+   (`dz_stop` = +6.63, 48/2) while the document-end token moves *against* it
+   (−2.57, 8/42). Textual completeness raising EOS does not explain this.
+3. **Pretrained bases already have goal sensitivity**, and post-training
+   amplifies it — `dz_stop` at base → instruct: +3.79 → +6.94 (Qwen),
+   +2.47 → +6.63 (Llama). Post-training does **not** create this from zero.
+4. **Pretrained families start from radically different termination geometry.**
+   Base `dz_cont`: +0.67 (OLMo-3), −7.34 (Llama-3.1), −12.45 (Qwen2.5). This is
+   a fact about pretraining and is currently **unexplained**.
+5. **Goal-relative stopping is not output-row calibration.** With the entire LM
+   head byte-frozen (arm `Sbody`, 2250 steps of ordinary instruction SFT),
+   internal-state adaptation improves `d_goal` in all three families:
+   **+11.27 / +8.73 / +2.95** (sign 49/1, 47/3, 37/13). Stop-readout adaptation
+   (arm `R`, 4,097 trainable parameters) ranges from **+6.03 to −1.84** — it is
+   model-dependent and can be actively harmful.
+6. **Learning where responses usually end ≠ learning when this user's task is
+   done.** Qwen arm R takes generic `boundary_auc` 0.965 → 0.999 while its
+   goal-relative reading goes *down*.
 
-Pretraining already makes goal completion visible to the stop action, but at a
-behaviourally inactive operating point. Post-training does two separable things:
+## What has been retracted (do not revive)
 
-1. **Reading** — making goal completion visible to the stop action. Already
-   almost fully supplied by pretraining (`dz_stop` = +8.16 at base, 47/3 items,
-   while p(stop) ~ 1e-4). Either locus can sharpen it: **4,097** stop-readout
-   parameters take it to +14.48 with the state frozen; **6.9B** internal
-   parameters take it to +12.73 with the entire output head byte-frozen.
-   Readout expressivity helps this term modestly (a 500x larger nonlinear
-   readout adds +1.18 at 2250 steps) but is not where the route runs out.
-2. **Clearing** — suppressing the still-plausible continuation once the goal is
-   satisfied. A stop readout *structurally cannot* do this: `Rmlp − R` on the
-   continuation term is **exactly 0.00, sign count 0/0, at every budget**, even
-   with 2M nonlinear parameters. Internal-state change reaches −5.98, matching
-   full fine-tuning and the released checkpoint, and this is the half that grows
-   with training budget.
+Left in `docs/RESEARCH_LOG.md` with dated corrections rather than deleted.
 
-Behavioural stopping is the sum. "Reuse vs new representation" fails not because
-the answer is "both", but because the two loci are not competing to do the same
-job.
+* ~~"Reading and clearing are different problems with different parameter
+  loci"~~ and ~~"goal-relative stopping requires two changes"~~ — falsified by
+  Llama-3.1: `Sbody` moves `dz_stop` by only +0.29 (null) yet `d_goal` by +2.95
+  through the continuation side alone. Either side can carry the effect.
+* ~~"A stop readout structurally cannot clear the continuation"~~ as a
+  *finding* — arm R holds every non-stop logit fixed **by construction**, so
+  `Δdz_cont^R = 0` at every family, budget, seed and capacity. It is a
+  decomposition constraint, not a result, and must not be a headline.
+* ~~"Qwen/Llama bases are not clean document continuers"~~ — excuse-making for
+  inconvenient data; both are official pretrained bases.
+* Three proposed mechanisms for the cross-family difference in arm R, all
+  **tested and rejected**: initial-gradient alignment `(−g)·v`; mean
+  boundary-direction geometry `cos(b, v)`; and the generic-boundary-competence
+  capacity trade-off (falsified by a within-OLMo causal test — R's endpoint is
+  initialization-invariant, 13.53 / 13.68 / 13.77 from wildly different
+  starting rows). The Llama held-out sign hit is downgraded to an
+  **unexplained cross-family correlation**; it is not a validated prediction
+  and does not belong in an abstract.
+* The `250 / 750 / 2250`-step runs are **not a trajectory**. Each rebuilds its
+  own cosine schedule, so they are three optimization endpoints, not
+  checkpoints of one run. They license matched-endpoint robustness claims only,
+  never acquisition dynamics.
+* The old `Layer B` table in `docs/RESULTS.md` scored each checkpoint with its
+  **own** generation-config stop set (base on `<|endoftext|>` alone, every
+  post-trained stage on a two-token logsumexp), so the measured action changes
+  along the curve. Marked CONFOUNDED; superseded by the fixed-token trajectory.
 
-Established across **three lineages and two stopping architectures**: OLMo-3
-reuses one native `<|endoftext|>` for both roles, while Qwen2.5 and Llama-3.1
-introduce a separate end-of-turn token. The effect follows the token that
-actually ends the turn — in Llama-3.1 Instruct the document-end token moves
-*against* goal completion (8/42) while the turn-end token moves strongly with it
-(48/2).
+## What the project is missing
 
-### Two methodological traps this project fell into and climbed out of
+> **Which supervision in ordinary post-training teaches "the user's request is
+> satisfied, so stop"?** There is no `task_complete=True` label anywhere in SFT.
 
-- **A locus comparison at one training budget is not identified.** The 750-step
-  budget produced *three* misleading single-point readings in this project —
-  "the locus does not matter", "the state component only appears at large
-  budget", and "readout capacity is not the limit" — each wrong in a different
-  direction, each corrected by the same instrument run at more budgets.
-- **`Δ log p(stop)` carries a whole-vocabulary normalizer term** that differs
-  systematically by arm and can flip the apparent sign of an effect. Locus and
-  architecture claims are stated on the raw stop logit or the gauge-free margin.
+Execution order: (1) a real natural acquisition trajectory over the *actual*
+OLMo-3 post-training chain — Base → Think-SFT → Instruct-SFT → DPO → RLVR, with
+Instruct-SFT warm-started from Think-SFT, measured on **one fixed stop token**
+across every checkpoint; then (2) supervision-source decomposition (full SFT vs
+content-only vs EOT-only vs instruction-decoupled) at whichever stage the
+trajectory identifies; then, only if content supervision matters,
+(3) hard-negative premature-stopping positions with a causal reweight; then
+(4) held-out validation on a frozen E01-v2.
+
+## Layout
+
+```
+src/        experiment code
+stimuli/    E01 exact-prefix stimuli (instrument, NOT a benchmark)
+results/    raw per-item measurements + logs (never overwritten)
+docs/       RESULTS.md (generated) and RESEARCH_LOG.md (dated, append-only)
+```
 
 Numbers: `docs/RESULTS.md` (regenerate with `src/make_results.py`).
-
-## Research log
-
-See `docs/RESEARCH_LOG.md` — every entry records what was observed, what it
-rules out, what remains, and why the next experiment discriminates.
+Reasoning, including every correction: `docs/RESEARCH_LOG.md`.

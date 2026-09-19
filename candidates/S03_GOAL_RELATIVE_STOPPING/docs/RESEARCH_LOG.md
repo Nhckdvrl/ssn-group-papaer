@@ -1480,3 +1480,106 @@ A useful new fact also falls out: **arm R's learned readout is
 initialization-invariant** — same endpoint from a healthy, a Llama-like, and a
 destroyed stop row. Whatever limits the readout route, it is not where it
 starts.
+
+---
+
+## 2026-09-19 — Phase 0: repo sanitation, and the two measurement defects that force Phase 1
+
+No new model runs. This entry re-bases the repo on what the evidence currently
+supports and records two defects that invalidate how the project has been
+talking about *acquisition*.
+
+### Defect 1 — the "natural trajectory" was not measured on one action
+
+`Layer B` in `docs/RESULTS.md` compared Base / Instruct-SFT / DPO / Instruct on
+each checkpoint's **own** generation-config stop set. The logs are unambiguous:
+
+```
+base:     stop_ids=[100257]           (['<|endoftext|>'])
+sft:      stop_ids=[100257, 100265]   (['<|endoftext|>', '<|im_end|>'])
+dpo:      stop_ids=[100257, 100265]
+instruct: stop_ids=[100257, 100265]
+```
+
+Base is scored on one token; every post-trained stage on a two-token logsumexp.
+The measured **action changes along the curve**, so the rise in `d_goal` is not
+a longitudinal measurement of one stop decision. The table is now titled
+CONFOUNDED in `docs/RESULTS.md` and the raw files are untouched. Replacement
+rule, binding on all future trajectory work: *score the same exact termination
+token at every checkpoint, and report any other stop token separately.*
+
+### Defect 2 — the chain that was measured is not OLMo-3's real chain
+
+The repo wrote `Base → SFT → DPO → Instruct`. The real chain is
+
+```
+Base → Think-SFT → Instruct-SFT → DPO → RLVR (= Instruct)
+```
+
+with Instruct-SFT warm-started from Think-SFT, not trained from Base.
+**Verified locally rather than taken from the model card** — parameter distance
+between released checkpoints on three probed tensors:
+
+| tensor | `|InstSFT−Base|` | `|InstSFT−ThinkSFT|` | `|ThinkSFT−Base|` |
+|---|---|---|---|
+| `layers.10.self_attn.q_proj` | 23.15 | **9.56** | 21.51 |
+| `layers.20.mlp.down_proj` | 39.71 | **17.41** | 36.77 |
+| `lm_head` | 178.95 | **55.09** | 169.40 |
+
+Instruct-SFT is ~2.3× closer to Think-SFT than to Base on every probe. So the
+old first arrow (`Base → SFT`) spans **two** training stages, and any
+"post-training does X at SFT" reading of that curve is unidentified.
+
+### What Phase 1 can actually use
+
+The released intermediate checkpoints, checked against the HF refs API today:
+
+| stage | repo | intermediates |
+|---|---|---|
+| pretraining | `allenai/Olmo-3-1025-7B` | 1487 branches (`stage1-step*`, `stage2-*`, `stage3-step*`) |
+| Think-SFT | `allenai/Olmo-3-7B-Think-SFT` | 43 (`step1000` … `step43000`) + `main` |
+| Instruct-SFT | `allenai/Olmo-3-7B-Instruct-SFT` | **none** — `main` only |
+| DPO | `allenai/Olmo-3-7B-Instruct-DPO` | **none** — `main` only |
+| RLVR | `allenai/Olmo-3-7B-Instruct` | 8 (`step_050` … `step_400`) + `main` |
+
+So the trajectory is dense inside Think-SFT and inside RLVR, and single-point at
+Instruct-SFT and DPO. That is enough to localise *which stage* carries the
+transition, which is all Phase 1 has to decide. Dense pretraining coverage is
+available if the base-side question becomes load-bearing.
+
+### Code defects fixed
+
+* `src/e01_run.py` — `STAGE_REPOS` defined `"qwen2.5-7b"` **twice**; the second
+  literal silently discarded the first (including its `sft` key). Merged. No
+  result changes: the discarded `sft` entry pointed at the same Instruct repo
+  the surviving `graft-template` donor logic already selected.
+* `src/e02_threefamily.py` — OLMo's 750-step runs live in `results/e02/final/`
+  (`config.json` confirms `steps: 750`), not in `results/e02/budget/`, so the
+  750-step table silently dropped OLMo's `R` and `F` rows, and the family label
+  printed only on the `R` row and so disappeared with it. Arms now resolve over
+  a list of path templates and the label prints on the first surviving row.
+  Recovered rows (paired vs OLMo Arm 0): `R@750` Δ`d_goal` **+4.72**
+  [+3.98,+5.48] 48/2, Δ`dz_stop` +4.72, Δ`dz_cont` +0.00; `F@750` **+4.79**
+  [+4.06,+5.46] 47/3, +3.09, −1.70.
+* Confirmed **not** a defect: `repl/{qwen,llama}_R_st1_s0` is a same-path
+  zero-update Arm 0 (`"lr": 0.0`), not a contaminated 1-step run. Noted in the
+  source so it is not re-litigated.
+
+### README re-based
+
+The README led with *"Reading and clearing are different problems with
+different parameter loci"*, which the 2026-09-19 retractions had already
+withdrawn, and presented `Δdz_cont^R = 0` as a finding when arm R holds every
+non-stop logit fixed by construction. Rewritten around what survives
+(phenomenon, turn-end-token dissociation, base sensitivity, head-frozen causal
+result, boundary≠goal distinction) with an explicit do-not-revive list carrying
+all three rejected mechanisms and both trajectory defects above.
+
+### Next
+
+Phase 1, as specified: the real fixed-token trajectory over
+Base → Think-SFT(dense) → Instruct-SFT → DPO → RLVR(dense), one frozen E01
+instrument, `<|endoftext|>` as the scored stop action at every checkpoint,
+reporting `d_goal`, `dz_stop`, `dz_cont` and continuation awareness. Its only
+job is to say **where** the transition is, so Phase 2's supervision-source
+decomposition starts from the true incoming checkpoint.

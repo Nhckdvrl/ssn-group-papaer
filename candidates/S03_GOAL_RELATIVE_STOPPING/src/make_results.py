@@ -21,7 +21,14 @@ NAT = "results/e01/olmo3-7b_sft_eosonly.jsonl"
 
 blocks = []
 
-blocks.append(("Layer B — natural post-training trajectory (format-matched)",
+# CONFOUNDED, kept for the record: these runs used each checkpoint's OWN
+# generation-config stop set, so base is scored on {<|endoftext|>} while every
+# post-trained stage is scored on logsumexp{<|endoftext|>, <|im_end|>}.  The
+# measured ACTION changes along the curve, so this is not a longitudinal
+# measurement of one stop action.  Superseded by the fixed-token trajectory in
+# src/e01_traj.py; see the 2026-09-19 log entry.
+blocks.append(("Layer B — natural post-training trajectory "
+               "(CONFOUNDED: per-checkpoint stop set; superseded)",
                run("e01_decompose.py",
                    "results/e01/olmo3-7b_base_plain.jsonl",
                    "results/e01/olmo3-7b_sft_plain.jsonl",

@@ -37,16 +37,11 @@ STAGE_REPOS = {
         "dpo": "allenai/OLMo-2-0425-1B-DPO",
         "instruct": "allenai/OLMo-2-0425-1B-Instruct",
     },
-    # External lineage with a DIFFERENT stopping architecture: Qwen2.5 ends an
-    # assistant turn with a dedicated <|im_end|> EOT token rather than reusing
-    # the pretraining <|endoftext|>.  If the same qualitative structure appears
-    # here, the effect is about assistant stopping acquisition and not about
-    # OLMo's particular token wiring.
-    "qwen2.5-7b": {
-        "base": "Qwen/Qwen2.5-7B",
-        "sft": "Qwen/Qwen2.5-7B-Instruct",
-        "instruct": "Qwen/Qwen2.5-7B-Instruct",
-    },
+    # The canonical lineage.  NOTE: the real OLMo-3 post-training chain is
+    #   Base -> Think-SFT -> Instruct-SFT -> DPO -> RLVR(Instruct),
+    # with Instruct-SFT warm-started from Think-SFT final, NOT from Base.  The
+    # "sft" key below is Instruct-SFT; it is not a direct child of "base".
+    # The real trajectory is measured by src/e01_traj.py.
     "olmo3-7b": {
         "base": "allenai/Olmo-3-1025-7B",
         "sft": "allenai/Olmo-3-7B-Instruct-SFT",
