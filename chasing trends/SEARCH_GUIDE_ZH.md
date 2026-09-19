@@ -2175,7 +2175,198 @@ Figure Helix 2.5 当前要严格区分：
 
 ---
 
-# 60. Broad Literature Calibration — CLOSED
+# 60. Mechanism Composition Gate
+
+新增于 final addendum。
+
+过去我们反复警惕：
+
+> module stacking。
+
+这个警惕保留，但不能退化成：
+
+> 模块越少越科学。
+
+像 ComposeCL 这类工作说明：
+> **如果多个 mechanism 对应不同 failure source，而 interaction 本身是待检验假说，那么“组合”完全可以是 scientific object。**
+
+以后多模块方法强制问：
+
+1. 每个 module 对应什么独立 failure source？
+2. 如果删掉 module 名，只看 causal role，是否仍然互补？
+3. 是否事先有理由预测 interaction，而不是 benchmark 后讲故事？
+4. 是否做过 factorial / pairwise interaction / targeted necessity test？
+5. gain 是 additive、sub-additive 还是 super-additive？
+6. 是否存在一个 module 只是在补另一个 module 的实现 bug？
+7. full combination 是否真的需要，还是两个核心机制已足够？
+
+### Scientific composition
+
+\`\`\`
+failure A → mechanism A
+failure B → mechanism B
+A/B interaction predicted
+→ factorial evidence confirms synergy/boundary
+\`\`\`
+
+### Bad stacking
+
+\`\`\`
+try A+B+C+D
+→ score最高
+→ leave-one-out都掉一点
+→ 宣称每个模块都重要
+\`\`\`
+
+原则：
+
+> **反对的是无 causal role 的堆叠，不是反对组合本身。**
+
+如果一个问题天然有多个独立破坏源：
+> 强行要求 single knob 反而可能是假简洁。
+
+---
+
+# 61. Specification Source Audit
+
+新增于 ProgramDistill / MindForge / ScienceIDE / evaluator-audit genealogy。
+
+以后 executable / coding / agent / scientific environment 相关工作，除了问 oracle role，还必须问：
+
+> **desired behavior / specification 到底来自哪里？**
+
+至少区分：
+
+1. natural-language instruction；
+2. unit / hidden tests；
+3. working reference program；
+4. demonstration / interaction trace；
+5. executable simulator；
+6. numerical / physical scientific contract；
+7. human/user feedback；
+8. source code itself；
+9. reward model / judge。
+
+不同 specification source 决定：
+
+- agent 需要主动 elicitation 多少；
+- shortcut/leakage 风险；
+- verifier authority；
+- task difficulty如何定义；
+- 是否能自动扩展；
+- correctness是不是 extensional / behavioral / structural。
+
+特别规则：
+
+> **Working program 可以很好地告诉你“应该怎么表现”，但未必唯一决定“正确实现是什么”。**
+
+所以：
+
+\`\`\`
+specification source
+≠
+exploration oracle
+≠
+reward oracle
+≠
+final certification
+\`\`\`
+
+角色必须分别写清。
+
+---
+
+# 62. Trajectory Supervision-Mask Audit
+
+新增于 ActObs。
+
+Agent / multimodal / sequence training 中，不再默认：
+
+> 只有 deployment 时由模型生成的 token 才值得 supervised loss。
+
+任何 trajectory 先画：
+
+\`\`\`
+state / observation
+→ action
+→ environment consequence
+→ next action
+\`\`\`
+
+然后标记：
+
+- 哪些 token/state 进 loss？
+- 哪些只当 context？
+- 哪些被完全 mask？
+- 哪些 variable 在 downstream RL / planning 中其实需要被内部预测？
+
+必须问：
+
+1. mask convention 的原始理由是什么？
+2. 被 mask 的 variable 是否承载 causal consequence？
+3. base model 原本有没有这项 prediction ability？
+4. SFT 是否在不知不觉 erase 它？
+5. SFT endpoint若不变，downstream RL/search 是否会分叉？
+6. auxiliary supervision 是否新增 data/compute，还是只重用已有 trajectory？
+7. gradient relation 是 aligned / orthogonal / conflicting？
+
+原则：
+
+> **“部署时不输出”不等于“训练时不应该预测”。**
+
+有些 target 的作用不是改善 SFT score，
+而是保留 downstream optimization 所需的 internal model。
+
+---
+
+# 63. Multi-Rate Modality Audit
+
+新增于 Agile-WAM / realtime multimodal genealogy。
+
+多个 modality 被 time-aligned，不代表：
+
+> 它们共享相同的信息变化速度。
+
+必须记录每个 modality 的：
+
+- sampling rate；
+- intrinsic change timescale；
+- event sparsity；
+- prediction horizon；
+- state lifetime；
+- correction frequency；
+- latency sensitivity。
+
+例如：
+
+- vision 邻帧可能高度冗余；
+- tactile 在 contact 时可瞬间改变；
+- audio / video frame rate不同；
+- slow global geometry 与 fast local correction 不同。
+
+因此不要机械采用：
+
+\`\`\`
+all modalities → same next-step target
+\`\`\`
+
+而要问：
+
+> **哪个 horizon 对这个 modality 真正包含 prediction information？**
+
+允许的 method可以是：
+- different prediction offsets；
+- asynchronous updates；
+- hierarchical correction periods；
+- modality-specific state persistence。
+
+但必须由：
+> measured temporal statistics / failure
+而不是 "multi-rate sounds reasonable" 推出。
+
+---
+
+# 64. Broad Literature Calibration — CLOSED
 
 用户要求本轮做完最后一波即结束 broad scan。
 
