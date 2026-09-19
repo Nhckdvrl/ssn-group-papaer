@@ -1751,3 +1751,150 @@ cheap proxy 不应只是：
 - minimum scale；
 - full-scale confirmation。
 
+
+
+---
+
+# 50. Failure-Onset Localization Gate
+
+新增于 2026-09-19。
+
+如果一个 long-horizon / autoregressive / agentic 系统在很后面才出现严重失败：
+
+不要第一反应就：
+- 全程 regularize；
+- 每步都加 verifier；
+- 全局 constrained decoding；
+- 整条 trajectory 重跑；
+- 训练一个更大的 controller。
+
+先找：
+
+> **failure 真正从哪里开始变得不可逆/高概率？**
+
+必须回答：
+
+1. outcome 在哪一步开始可以被提前预测为失败？
+2. onset 时哪个 observable / internal quantity 发生变化？
+3. onset 前的 prefix 是否仍然有效？
+4. onset 后是否存在 error cascade / bad basin？
+5. 是否可以只 rollback 到 onset？
+6. temporary/local intervention 是否足够越过 failure region？
+7. global intervention 是否会伤害正常 case？
+8. base model 是否有足够 capability 在 rollback 后恢复？
+
+如果 causal boundary 可局部识别：
+
+> 优先 targeted/local repair，而不是全程干预。
+
+但如果 onset 根本不可辨识：
+> 不要机械套局部修复故事。
+
+---
+
+# 51. Multi-Timescale Correction Gate
+
+看到：
+- fast/slow；
+- local/global；
+- short/long memory；
+- periodic recalibration；
+
+不能因为“双时标”听起来合理就通过。
+
+必须先证明存在不同 error time constants。
+
+最低要求：
+
+1. 画 error 随 horizon 的增长；
+2. 证明 local correction 解决某一高频/短期误差；
+3. 证明 residual failure 仍以更慢的方式积累；
+4. 证明 global/long-window correction 不需要每步运行；
+5. correction frequency 与 error spectrum 有实证关系；
+6. 报告 correction frequency × cost × quality frontier。
+
+如果只剩：
+
+> “短期和长期都重要”，
+
+KILL 这条机制叙事。
+
+---
+
+# 52. Research Memory Provenance Gate
+
+multi-agent / research-agent memory 不应只测：
+
+> 能不能 recall 旧文本。
+
+研究共同体需要的 memory object 至少可能包括：
+
+- artifact；
+- claim；
+- parent lineage；
+- negative result；
+- reproduction；
+- failed verification；
+- conflict；
+- open hypothesis；
+- neglected branch；
+- provenance；
+- exact executable state。
+
+审计必须包含：
+
+## Duplicate-search rate
+多个 worker 是否仍在独立重复同一实验？
+
+## Monoculture
+leader visibility 是否让所有 worker 挤进同一 branch？
+
+## Evidence independence
+多个 descendant 是否其实共享同一父结果，并非独立证据？
+
+## Verification independence
+reproduction 是否来自独立 account / fresh checkout / independent run？
+
+## Attention effect
+memory UI / ranking 是否改变探索分布？
+
+原则：
+
+> **research memory 是 epistemic/provenance state，不等于 conversation memory。**
+
+---
+
+# 53. Long-Horizon Failure Classification
+
+以后看到：
+- long context；
+- long horizon；
+- persistent agent；
+- streaming；
+- long-form generation；
+
+先按 failure dynamics 分类，而不是按“长度”分类。
+
+### Missing persistent state
+信息本来就没被正确表示/保存。
+→ representation/state redesign.
+
+### Accumulating state error
+每步小误差累积成全局 drift.
+→ correction/recalibration.
+
+### Localized bad transition
+某个 onset 后进入坏 basin，后面只是连锁后果。
+→ onset detection + rollback / local repair.
+
+### Shared-knowledge failure
+多个 worker/session 都不知道别人做过什么。
+→ provenance/public research state.
+
+### Resource-state failure
+状态还在，但重读/维护/缓存成本爆炸。
+→ compaction/cache/persistence economics.
+
+不先做这一步：
+> memory / correction / long-context method 很容易变成 module stacking。
+
