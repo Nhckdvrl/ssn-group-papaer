@@ -1588,3 +1588,166 @@ promising result
 
 > 立即降低该 proxy 对正式 pilot 的可信度。
 
+
+
+---
+
+# 46. Trend Maturity Gate
+
+新增于 2026-09-19。
+
+当一个热门方向开始出现以下论文时：
+
+- 专门纠正其 evaluation protocol；
+- matched-budget baseline 论文；
+- held-out generalization audit；
+- compatibility / boundary-condition paper；
+- reproduction / negative-result paper；
+
+把它视为：
+
+> **这个 surface 已从 early novelty 进入 maturity / consolidation。**
+
+此时默认停止：
+> “再做一个同类 method”。
+
+阅读重点切换为：
+
+1. **Attribution**
+   - 之前的 gain 到底来自方法，还是额外 search / compute / data / benchmark adaptation？
+
+2. **Matched-resource control**
+   - 和最简单的同预算 baseline 比是否仍成立？
+
+3. **Generalization**
+   - development task / benchmark / model 之外是否保留？
+
+4. **Compatibility**
+   - 方法是否 relative to learner / model / harness / tokenizer / deployment？
+
+5. **Capability floor**
+   - self-improvement / self-correction 机制本身是否需要足够强的 base capability？
+
+6. **Measurement**
+   - evaluator 能否区分真正 success 与 shortcut？
+
+Harness evolution 已经是当前典型：
+> represent harness → evolve harness → evaluation correction → benchmark-disjoint evolution → model–harness compatibility。
+
+因此 generic self-harness / harness-RSI：
+> 默认视为 saturated surface。
+
+---
+
+# 47. Auto-Research Protocol Gate
+
+使用 AI/agent 自动搜方法时，不能把：
+
+> “跑了很多方向”
+
+当成 evidence。
+
+一个可信 auto-research pipeline 至少应明确：
+
+- optimization objective；
+- capability preservation constraints；
+- acceptance tolerances；
+- development environments；
+- held-out environments；
+- search budget；
+- whether held-out failures feed back into search；
+- candidate provenance；
+- independent review / verification；
+- final integration rule。
+
+强制原则：
+
+> **Held-out failure 如果继续驱动修改，这个 held-out 就已经变成 development set。**
+
+另一个原则：
+
+> search cost、discovery cost、final method cost 三者必须分开报告。
+
+一个最终零训练/低成本方法：
+> 可能是由极昂贵的 search process发现的。
+
+这不影响方法本身的部署价值，
+但直接影响我们能不能复制其“发现过程”。
+
+---
+
+# 48. AI-Research Role Decomposition
+
+以后看到：
+- AI scientist；
+- autonomous researcher；
+- research agent；
+- recursive self-improvement；
+
+先删除标签，拆角色：
+
+1. problem finding / problem selection；
+2. method proposal；
+3. experiment design；
+4. implementation；
+5. experiment execution；
+6. result analysis；
+7. evidence interpretation；
+8. method selection；
+9. stopping / redirect decision；
+10. final scientific judgment。
+
+只报告：
+> “完成研究任务”
+
+无法告诉我们真正自动化了哪一层。
+
+当前 industrial telemetry反复显示：
+> implementation / execution 自动化快于 selection / judgment。
+
+因此对我们自己的科研流程也要反向利用：
+
+> 越容易被 agent 自动化的 brute-force implementation，不应该成为选题优势的主要来源。
+
+优先寻找：
+> 一个便宜实验就能改变判断的 conceptual distinction。
+
+---
+
+# 49. Trend-specific Cheap Proxy 必须连接到 downstream behavior
+
+cheap proxy 不应只是：
+- embedding cosine；
+- parameter norm；
+- training loss；
+- tiny-model accuracy。
+
+必须说明它为什么预测最终 consumer/task behavior。
+
+例如 compression：
+
+\`\`\`
+候选结构
+→ short behavioral probe
+→ expensive distillation only for survivors
+\`\`\`
+
+比：
+
+\`\`\`
+候选结构
+→ representation similarity
+→ assume downstream works
+\`\`\`
+
+更可信。
+
+以后 paper 内出现 cheap proxy 时记录：
+
+- proxy quantity；
+- downstream target；
+- ranking correlation；
+- false-positive/false-negative candidates；
+- minimum scale；
+- full-scale confirmation。
+
