@@ -947,3 +947,52 @@ Industry-track共同 gate：
 
 但不允许：
 > A级industry inspiration 被误注册成可做candidate。
+
+
+---
+
+# G. Startup / HF genealogy track — final index
+
+The startup/Hugging-Face track is now closed at **11 waves**.
+
+Its role is distinct from the academic and industry tracks:
+
+> academic genealogy teaches question/identification history;
+> industry shows frontier-scale pressure;
+> startup/HF releases expose sharp technical theses and experimental instruments.
+
+Key recurring objects identified across the 11 waves:
+
+- mutable harness state;
+- data order;
+- online/fast memory;
+- continuous interaction timing;
+- world/action state;
+- failure/evaluator qualification;
+- development-tree checkpoints;
+- scientific experience environments;
+- cheap proxy→full-scale validation;
+- consumer-defined world-model fidelity;
+- modality-extension placement;
+- pretraining-value decomposition;
+- public artifact maturity.
+
+Final-wave file:
+> STARTUP_HF_GENEALOGIES_11_FINAL_FRONTIER_WAVE_2026-09-19.md
+
+Closeout:
+> LITERATURE_CALIBRATION_CLOSEOUT_2026-09-19.md
+
+## Final stopping rule
+
+Do not continue broad discovery merely to enlarge this index.
+
+A new paper/model enters the genealogy library only if it:
+1. changes a load-bearing premise;
+2. adds a genuinely new correction/negative result;
+3. creates a useful public causal contrast;
+4. materially changes the feasibility of a concrete candidate;
+5. is needed to audit a current candidate's nearest prior.
+
+Otherwise:
+> monitor at most; do not expand the genealogy count.
