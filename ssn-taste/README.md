@@ -20,11 +20,10 @@ Do not treat old prompts, historical REOPEN labels, or prior chat summaries as a
 
 ---
 
-## Current selected topics = 6
+## Current selected topics = 5
 
 All are **SELECTED — PILOT-AUTHORIZED**.
 
-- **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
 - **S05 — When Does Reading Become Learning?**
 - **S06 — What Does Deliberation Do to Evidence?**
