@@ -885,3 +885,665 @@ The goal was:
 > build enough genealogy, evidence discipline, artifact awareness, and execution calibration to recognize a real research opening when one appears.
 
 That calibration phase is complete.
+
+
+---
+
+# FINAL ADDENDUM — Sep 17–19 artifacts
+
+The broad scan was already scheduled to stop. This addendum only records **genuinely new objects** that appeared in the last few days and materially sharpen existing gates.
+
+No new candidate is generated.
+
+---
+
+# S120 — Live data can be compiled into runtime weights: another distinct knowledge location
+
+**Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data**  
+arXiv:2609.18842, Sep 16 2026.
+
+The usual deployed-model choices for new information are:
+
+- keep it in prompt/context;
+- retrieve it externally;
+- update a persistent memory/harness;
+- periodically fine-tune/adapt weights.
+
+This work proposes another location:
+
+> **compile live interaction into low-rank effective weights at runtime.**
+
+A compact hypernetwork maps live data into a latent code and low-rank modulation of a shared base network. Unlike one-shot weight generators, the model maintains a Bayesian belief over the latent code and updates that belief during the session, repeatedly re-deriving the effective weights.
+
+### Primitive change
+
+\[
+\text{live knowledge} \rightarrow \text{re-read from prompt/RAG}
+\]
+
+becomes
+
+\[
+\text{live knowledge} \rightarrow \text{generated runtime weights}
+\]
+
+The claimed advantages are not merely storage:
+- context-window capacity is freed;
+- repeated re-reading can be amortized;
+- information can persist across turns;
+- weight-resident knowledge may generalize differently from in-context use.
+
+### Why this matters for the existing Knowledge Location Audit
+
+"Where is knowledge stored?" now has at least:
+
+1. raw context;
+2. retrieved external memory;
+3. recurrent / fast-weight state;
+4. persistent harness/skill memory;
+5. adapter/LoRA bank;
+6. **runtime-generated weights conditioned on live data**;
+7. ordinary base weights.
+
+These locations differ in:
+- write cost;
+- read cost;
+- persistence;
+- interference;
+- compositionality;
+- amortization;
+- editability.
+
+Do not collapse them into "memory."
+
+### Current artifact status
+
+This is a strong architecture/research thesis, but it should not be treated as a cheap ready-made pilot until runnable checkpoints/code are verified.
+
+---
+
+# S121 — Working software can be a specification source, not only a verifier
+
+**ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks**  
+arXiv:2609.18805, Sep 16 2026.
+
+Coding benchmarks usually provide desired behavior as:
+- issue text;
+- tests;
+- instructions.
+
+ProgramDistill asks a different question:
+
+> what if the desired behavior is only observable in a working application?
+
+The agent receives:
+- a working reference whose source is hidden;
+- an editable incomplete application.
+
+It must:
+1. interact with the reference;
+2. infer intended behavior;
+3. implement that behavior;
+4. validate the repair.
+
+The pipeline mines 1,975 replay-verified behaviors from 26 applications and builds 4,063 tasks.
+
+---
+
+## S121.1 Executable artifact has multiple epistemic roles
+
+The same working program can act as:
+
+### Specification source
+Its behavior tells the agent what must be reconstructed.
+
+### Exploration oracle
+The agent probes it to discover hidden behavior/state dependencies.
+
+### Verification source
+Replay traces check whether repaired behavior matches.
+
+### Curriculum generator
+Prerequisite lineages create controllable restoration depth.
+
+This extends the earlier Oracle Role Separation rule.
+
+"Executable oracle" is too coarse.
+
+We must also ask:
+
+> **Where does the desired specification come from?**
+
+---
+
+## S121.2 ProgramDistill, MindForge, ScienceIDE and Vinci are complementary rather than contradictory
+
+### MindForge-style setting
+Hide source and use executable behavior to elicit a specification.
+
+### ProgramDistill
+A working reference is the behavioral specification source, while replay traces verify restoration.
+
+### ScienceIDE
+The scientific source code is editable/visible and correctness is defined by recompiled numerical/physical cases.
+
+### Vinci evaluator audit
+Runtime success or visible tests may be useful feedback but can be far too weak for final certification.
+
+So the lesson is not:
+
+> executable artifacts are reliable or unreliable.
+
+It is:
+
+> **their authority depends on which role they are assigned.**
+
+---
+
+## S121.3 Restoration depth is a clean difficulty operator
+
+ProgramDistill factorizes interactive applications into prerequisite behavior lineages.
+
+Increasing restoration depth:
+- requires recovering more dependent behaviors;
+- changes the information-seeking burden;
+- systematically lowers agent success.
+
+This is better than attaching an arbitrary "easy/medium/hard" label.
+
+The difficulty axis is generated by the structure of the executable specification itself.
+
+---
+
+# S122 — Composition can be scientific when interactions are the hypothesis
+
+**Continual Learning Mechanisms Compose for Long-Horizon Memorization**  
+arXiv:2609.06986, Sep 7 2026.  
+Official code/data: compose-cl.
+
+This paper corrects one possible overreaction in our existing taste:
+
+> "simple method good; multiple modules bad."
+
+That rule is too crude.
+
+The actual distinction should be:
+
+> **arbitrary stacking is bad; mechanism composition can be the scientific object when the mechanisms correspond to distinct failure sources and their interactions are explicitly tested.**
+
+---
+
+## S122.1 The paper separates two design dimensions
+
+### What prior information should an update preserve?
+- data anchor: replay;
+- function anchor: self-distillation;
+- weight anchor: SI / online EWC.
+
+### Where should successive updates be retained?
+- shared LoRA;
+- merged LoRA;
+- other low-rank allocation variants.
+
+This decomposition precedes the final recipe.
+
+The modules do not enter as:
+> "four things that might help."
+
+They enter as:
+> different hypotheses about catastrophic forgetting.
+
+---
+
+## S122.2 Long horizon provides the negative result that motivates composition
+
+The setting uses:
+- Qwen3-4B-Base;
+- 100 sequential QA tasks;
+- three datasets;
+- three seeds.
+
+Naive sequential fine-tuning retains only about 1.2% on average after 100 tasks.
+
+More importantly:
+
+> **no single continual-learning mechanism remains strong across the full horizon.**
+
+The failure of individual mechanisms is the reason composition becomes scientifically justified.
+
+---
+
+## S122.3 Full factorial distinguishes component value from interaction
+
+The authors run a complete \(2^4\) factorial over:
+- replay;
+- self-distillation;
+- weight anchoring;
+- merged LoRA.
+
+The best composition reaches 34.9% average final retention.
+
+Replay and merged LoRA have the largest main effects and, crucially, interact **super-additively on all three datasets**.
+
+This is fundamentally different from:
+
+> stack A+B+C+D, then remove one module at a time.
+
+A normal leave-one-out ablation cannot cleanly establish synergy.
+
+A factorial design can.
+
+---
+
+## S122.4 Their search procedure is itself a cheap-proxy pattern
+
+The full design space begins with 90 candidate configurations.
+
+Task-level successive halving prunes at:
+- task 10;
+- task 20;
+- task 50;
+
+before only the strongest configurations complete the full 100-task horizon.
+
+This is another good example of:
+
+> **cheap early horizon as a selection proxy, full horizon as confirmation.**
+
+But proxy fidelity still needs auditing:
+> an early-horizon winner need not preserve rankings at task 100.
+
+The authors' explicit successive-halving procedure makes that risk measurable rather than hidden.
+
+---
+
+## S122.5 New rule
+
+Do not penalize a paper merely because it has multiple modules.
+
+Instead ask:
+
+1. Does each module map to a distinct hypothesized failure source?
+2. Is the interaction itself predicted before the final benchmark result?
+3. Is there factorial / targeted interaction evidence?
+4. Can the full combination beat what additive independent effects predict?
+5. Is the composition still understandable when module names are removed?
+
+If yes:
+> composition may itself be the scientific contribution.
+
+If no:
+> it remains module stacking.
+
+---
+
+# S123 — An SFT loss mask can silently determine later RL exploration
+
+**Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL**  
+arXiv:2609.20715, Sep 17 2026.
+
+This is one of the strongest last-wave examples for our preferred research taste.
+
+---
+
+## S123.1 The hidden convention
+
+An agent trajectory contains:
+
+\[
+a_t,\; o_{t+1},\; a_{t+1},\; o_{t+2}, \ldots
+\]
+
+where:
+- \(a\) = model action/tool call;
+- \(o\) = environment observation.
+
+Standard agent SFT commonly computes loss only on:
+> model-authored action tokens.
+
+Environment observations are visible as context but masked from the training loss because:
+> the model will not generate them at deployment.
+
+That convention sounds natural.
+
+But it implicitly assumes:
+
+> prediction targets should correspond only to tokens the deployed policy emits.
+
+---
+
+## S123.2 ActObs changes no data, parameters, tokens or forward passes
+
+ActObs simply also supervises the observation tokens already present in the trajectory.
+
+The model is therefore trained to predict:
+> what the environment will return after its actions.
+
+This is not a new world-model module.
+
+It is a change in:
+> **which existing trajectory tokens count as supervision.**
+
+---
+
+## S123.3 SFT endpoint barely reveals the difference; RL does
+
+After SFT, the methods can look similar.
+
+After the same GRPO stage:
+- Qwen3-4B ActObs has higher pass@k at every tested sampling budget on Terminal-Bench 2.0;
+- Qwen3-8B trades some pass@1 reliability for higher pass@16 and more distinct solved tasks;
+- the advantage transfers to unseen cross-domain code editing on aider-polyglot.
+
+This is particularly important:
+
+> the meaningful effect is not necessarily visible at the stage where the intervention is applied.
+
+The SFT target changes:
+> the state from which downstream RL starts.
+
+---
+
+## S123.4 Mechanism: action and observation gradients separate
+
+The paper reports:
+- action and observation gradients rapidly become nearly orthogonal;
+- action-only SFT leaves a large residual observation gradient;
+- environment-prediction ability can fall below the base model;
+- joint supervision prevents this one-sided specialization.
+
+During RL, ActObs:
+- retains more policy entropy;
+- needs less policy movement;
+- remains closer to its SFT initialization.
+
+### Causal story
+
+\[
+\text{loss masking}
+\rightarrow
+\text{consequence-model preservation}
+\rightarrow
+\text{different RL exploration geometry}
+\rightarrow
+\text{higher pass@k / broader solved-task set}
+\]
+
+This is far stronger than:
+> "adding another auxiliary loss helps."
+
+The intervention exposes a hidden assumption in a standard recipe.
+
+---
+
+## S123.5 New audit dimension: target masking
+
+For any sequence / trajectory training recipe, ask:
+
+> **Which observed variables are prediction targets, and which are context-only?**
+
+The choice may encode a hidden theory of:
+- what knowledge matters;
+- what causal consequence the model should internalize;
+- what future stage will need.
+
+"Not generated at deployment" does **not** imply:
+> "useless as a training target."
+
+---
+
+# S124 — Multimodal systems may need different prediction horizons for different modalities
+
+**Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control**  
+arXiv:2609.20761, Sep 17 2026.
+
+A common multimodal design assumes:
+> all modalities can be aligned to the same timestep and predicted with the same temporal target.
+
+Agile-WAM argues that this is physically wrong for vision + touch.
+
+---
+
+## S124.1 Vision and tactile streams evolve at different rates
+
+Adjacent visual frames are often highly similar.
+
+Tactile signals may change abruptly exactly when contact occurs.
+
+Therefore equal next-step prediction horizons can allocate supervision poorly:
+- vision target may be too trivial/redundant;
+- tactile target must preserve high-frequency contact dynamics.
+
+---
+
+## S124.2 Multi-horizon supervision follows from physical timescale mismatch
+
+Agile-WAM predicts:
+- visual latent at a **larger temporal offset**;
+- tactile latent at the **next frame**.
+
+The design principle is:
+
+\[
+\text{prediction horizon} \propto \text{modality dynamics}
+\]
+
+rather than:
+> one global horizon for all streams.
+
+Across nine simulated and five real contact-rich tasks, the paper reports improved success with low inference latency.
+
+---
+
+## S124.3 This is not generic "multi-rate modeling"
+
+The scientific object is specific:
+
+> **the supervision horizon should match the information timescale of each modality.**
+
+Different modalities may require distinct:
+- sampling rates;
+- state lifetimes;
+- prediction offsets;
+- correction frequencies.
+
+This connects to:
+- audio/video realtime models;
+- streaming geometry;
+- tactile control;
+
+but the physics must be re-derived per domain.
+
+---
+
+# S125 — Structured perception: the basic evidence unit can be a set of observed states, not one observation
+
+**FAMOS: Feed-Forward 3D Articulation Modeling from Sparse Observations**  
+arXiv:2609.20817, Sep 17 2026.
+
+Most feed-forward articulation methods infer:
+- movable parts;
+- joints;
+- motion parameters
+
+from one observation.
+
+Under sparse monocular sensing, one view reveals only partial geometry and motion.
+
+That forces the model to rely heavily on:
+> category-level shape priors.
+
+FAMOS changes the evidence unit.
+
+---
+
+## S125.1 Multi-state evidence is unordered and partial
+
+Input:
+> a sparse, unordered set of partial point clouds from different object states.
+
+The model jointly reasons over them with:
+- state-wise attention;
+- global cross-state attention.
+
+The target includes:
+> the observed articulation span across the supplied states.
+
+### Primitive change
+
+single observation + learned category prior
+→ observed motion evidence across multiple partial states.
+
+This is a clean example of changing:
+> **what constitutes one training/inference example.**
+
+---
+
+## S125.2 Relation to Panda Diplomacy: domain structure can live below task semantics
+
+**Panda Diplomacy** (arXiv:2609.00611) independently shows a point-cloud self-distillation recipe can pretrain across:
+- LArTPC;
+- collider TPC;
+- water Cherenkov
+
+with minimal detector-specific changes.
+
+Using only 1,000 labeled images downstream, it reports strong label-efficiency gains, and simple probes recover physically meaningful latent structure such as particle causality and track curvature.
+
+The commonality is not "point clouds."
+
+It is:
+
+> **when sensor-level structure is the true shared object, experiment/task-specific architecture may be too high-level a unit.**
+
+FAMOS asks:
+> observed state set vs category prior.
+
+Panda asks:
+> common sensor geometry vs detector-specific foundation models.
+
+Do not collapse them into one 3D method family.
+
+---
+
+# S126 — Final artifact/freshness corrections
+
+A broad scan must also record what **did not** qualify as a new genealogy.
+
+---
+
+## S126.1 Pelican-Sim: strong consumer evidence, but current artifact maturity is lower than the thesis
+
+Pelican-Sim 1.0 reports:
+- a 28-D unified action space;
+- numerical + URDF-rendered visual action conditioning;
+- sparse MoE;
+- four-step generation with 5.67× reported speedup;
+- one million real/sim trajectories.
+
+Its downstream results are unusually consumer-oriented:
+- 500 generated trajectories added to 50 real demonstrations raise RoboTwin policy success from 70% to 93%;
+- simulator policy evaluation correlates at Pearson 0.994 across five checkpoints;
+- action-selection and policy-improvement gains are reported.
+
+This is good world-model evaluation design:
+> judge the simulator by downstream policy use, not just video metrics.
+
+However, the project page currently marks:
+> **Code / Models — Coming soon.**
+
+Therefore:
+
+- thesis value: high;
+- current instrument value: **C/D**, not A.
+
+Never count promised artifacts as available ones.
+
+---
+
+## S126.2 General Intuition: strong lineage, no need to invent a new September artifact
+
+General Intuition remains a valuable world-model/action-model taste source through work such as MIRA and its prior game/world-model lineage.
+
+But this final Sep 18–19 scan did not reveal an equally detailed new matched artifact that would justify a separate new genealogy.
+
+Action:
+> monitor only.
+
+Company visibility is not evidence of a changed premise.
+
+---
+
+## S126.3 Research-page recency is not paper recency
+
+A company can newly highlight an older research result.
+
+For example, a September research page may surface a paper whose underlying arXiv submission is from February 2026.
+
+Therefore:
+> always date the technical artifact itself, not the page that re-promotes it.
+
+This closes the Recency Discipline loop.
+
+---
+
+# S127 — Final additions to canonical taste
+
+The last wave adds five refinements.
+
+## 1. Composition is allowed when interaction is the claim
+Do not worship single-knob simplicity.
+
+Good composition:
+- distinct causal roles;
+- interaction predicted/tested;
+- factorial or targeted evidence.
+
+Bad composition:
+- add modules until benchmark rises.
+
+## 2. Supervision masks are scientific assumptions
+Which parts of a trajectory receive loss can determine what latent consequence model survives into later training.
+
+## 3. Specification source is a first-class variable
+Desired behavior may come from:
+- instruction;
+- tests;
+- executable reference;
+- demonstration;
+- scientific numerical contract;
+- user feedback.
+
+These are not equivalent supervision channels.
+
+## 4. Multi-modal time is not automatically one clock
+A shared timestamp does not imply a shared information timescale or prediction horizon.
+
+## 5. Runtime-generated parameters are a distinct memory location
+Do not collapse:
+- context;
+- retrieval;
+- fast state;
+- adapters;
+- generated weights;
+- base weights.
+
+---
+
+# S128 — Broad scan is now closed for real
+
+This addendum does **not** reopen broad crawling.
+
+The final-wave stopping rule remains:
+
+Future search is triggered only by:
+1. a concrete CT candidate;
+2. dangerous nearest-prior overlap;
+3. a released artifact that materially lowers pilot cost;
+4. a trend entering a correction/negative-result phase;
+5. an unmistakably changed premise.
+
+No default weekly HF/company sweep.
+
+The calibration goal has been achieved:
+> not knowing every new model, but knowing how to identify which new artifacts actually change the scientific problem.
