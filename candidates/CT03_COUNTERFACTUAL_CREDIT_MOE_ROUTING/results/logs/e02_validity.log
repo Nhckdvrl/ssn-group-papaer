@@ -1,0 +1,42 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:04<01:04,  4.27s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:08<01:02,  4.48s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:13<01:00,  4.68s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:18<00:55,  4.59s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [00:23<00:53,  4.86s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [00:28<00:48,  4.84s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [00:34<00:45,  5.10s/it]Loading checkpoint shards:  50%|█████     | 8/16 [00:39<00:41,  5.13s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [00:43<00:34,  4.87s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [00:48<00:29,  4.95s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [00:52<00:23,  4.64s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [00:56<00:18,  4.56s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [01:01<00:13,  4.57s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [01:05<00:08,  4.38s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [01:09<00:04,  4.28s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:10<00:00,  3.33s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:10<00:00,  4.42s/it]
+Using the latest cached version of the dataset since HuggingFaceH4/MATH-500 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/HuggingFaceH4___math-500/default/0.0.0/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be (last modified on Mon Jun  1 04:37:01 2026).
+{
+ "replay_identity_L4": 3.337860107421875e-05,
+ "replay_identity_L20": 3.337860107421875e-05,
+ "replay_identity_L47": 3.337860107421875e-05,
+ "renorm_L4_rebuild_err": 2.3515895009040833e-08,
+ "renorm_L4_swap_err": 2.60770320892334e-08,
+ "renorm_L4_Z": 0.2641656994819641,
+ "renorm_L4_Zp": 0.2621895093470812,
+ "renorm_L4_h_scale": 0.05869437754154205,
+ "exact_L4_replay_seconds": 2.621446706354618,
+ "exact_L4_dL_replay": -0.13269488513469696,
+ "exact_L4_dL_full": -0.1327667236328125,
+ "renorm_L20_rebuild_err": 6.705522537231445e-08,
+ "renorm_L20_swap_err": 6.705522537231445e-08,
+ "renorm_L20_Z": 0.3255896270275116,
+ "renorm_L20_Zp": 0.3229753654450178,
+ "renorm_L20_h_scale": 0.2810001075267792,
+ "exact_L20_replay_seconds": 1.6762366220355034,
+ "exact_L20_dL_replay": 0.00031996890902519226,
+ "exact_L20_dL_full": 0.0002899169921875,
+ "renorm_L47_rebuild_err": 3.814697265625e-06,
+ "renorm_L47_swap_err": 5.7220458984375e-06,
+ "renorm_L47_Z": 0.6413126587867737,
+ "renorm_L47_Zp": 0.6293005477637053,
+ "renorm_L47_h_scale": 42.508663177490234,
+ "exact_L47_replay_seconds": 0.0020959563553333282,
+ "exact_L47_dL_replay": -0.0020548184402287006,
+ "exact_L47_dL_full": -0.00201416015625,
+ "probe_L20_batch22_seconds": 1.9065733551979065,
+ "probe_seq_len": 184,
+ "probe_tail_positions": 80,
+ "ALL_PASS": true
+}
+Exception ignored in: <function ResourceTracker.__del__ at 0xd33c1a63ba0>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
