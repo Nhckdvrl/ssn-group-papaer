@@ -1,0 +1,234 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:04<01:07,  4.51s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:08<00:58,  4.21s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:12<00:52,  4.07s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:17<00:52,  4.36s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [00:22<00:49,  4.52s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [00:26<00:44,  4.47s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [00:29<00:37,  4.17s/it]Loading checkpoint shards:  50%|█████     | 8/16 [00:33<00:32,  4.12s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [00:38<00:29,  4.19s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [00:42<00:25,  4.28s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [00:46<00:20,  4.09s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [00:50<00:15,  3.95s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [00:53<00:11,  3.85s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [00:57<00:07,  3.77s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [01:01<00:03,  3.79s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:02<00:00,  2.97s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:02<00:00,  3.89s/it]
+Using the latest cached version of the dataset since HuggingFaceH4/MATH-500 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/HuggingFaceH4___math-500/default/0.0.0/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be (last modified on Mon Jun  1 04:37:01 2026).
+held-out: [419, 459, 130, 431, 370, 26, 201, 56, 366, 108, 231, 326, 118, 153, 311, 24]
+  [base] done q=419
+  [base] done q=459
+  [base] done q=130
+  [base] done q=431
+  [base] done q=370
+  [base] done q=26
+  [base] done q=201
+  [base] done q=56
+  [base] done q=366
+  [base] done q=108
+  [base] done q=231
+  [base] done q=326
+  [base] done q=118
+  [base] done q=153
+  [base] done q=311
+  [base] done q=24
+{
+ "tag": "base",
+ "holdout_ce": 1.2196542583405972,
+ "per_layer": {
+  "28": {
+   "n_tokens": 128,
+   "A_rho_median": -0.010447214076246335,
+   "A_rho_pooled": -0.012157514805347502,
+   "B_regret_mean": 0.19429580742337293,
+   "B_regret_median": 0.12740237265825272,
+   "C_route_overlap": 1.0,
+   "C_router_entropy": 4.310460494831204,
+   "C_expert_load_entropy": 3.894667492557283,
+   "frac_beneficial": 0.5380859375,
+   "D_margin_boundary": 0.09696965850889683,
+   "D_frac_tokens_crossed": 0.0,
+   "D_mean_n_crossed": 0.0,
+   "D_dL_revert_mean": NaN,
+   "D_frac_crossings_helped": NaN
+  },
+  "36": {
+   "n_tokens": 128,
+   "A_rho_median": -0.028409090909090908,
+   "A_rho_pooled": -0.027972132764140973,
+   "B_regret_mean": 0.2008916031118133,
+   "B_regret_median": 0.12786676734685898,
+   "C_route_overlap": 1.0,
+   "C_router_entropy": 4.201356602832675,
+   "C_expert_load_entropy": 3.927393815332972,
+   "frac_beneficial": 0.509765625,
+   "D_margin_boundary": 0.10771670565009117,
+   "D_frac_tokens_crossed": 0.0,
+   "D_mean_n_crossed": 0.0,
+   "D_dL_revert_mean": NaN,
+   "D_frac_crossings_helped": NaN
+  },
+  "44": {
+   "n_tokens": 128,
+   "A_rho_median": -0.024010263929618768,
+   "A_rho_pooled": -0.033723529198799895,
+   "B_regret_mean": 0.303211754671338,
+   "B_regret_median": 0.15483249723911285,
+   "C_route_overlap": 1.0,
+   "C_router_entropy": 4.108363842591643,
+   "C_expert_load_entropy": 3.800271239310193,
+   "frac_beneficial": 0.4892578125,
+   "D_margin_boundary": 0.11990700662136078,
+   "D_frac_tokens_crossed": 0.0,
+   "D_mean_n_crossed": 0.0,
+   "D_dL_revert_mean": NaN,
+   "D_frac_crossings_helped": NaN
+  }
+ }
+}
+  [cf_only] done q=419
+  [cf_only] done q=459
+  [cf_only] done q=130
+  [cf_only] done q=431
+  [cf_only] done q=370
+  [cf_only] done q=26
+  [cf_only] done q=201
+  [cf_only] done q=56
+  [cf_only] done q=366
+  [cf_only] done q=108
+  [cf_only] done q=231
+  [cf_only] done q=326
+  [cf_only] done q=118
+  [cf_only] done q=153
+  [cf_only] done q=311
+  [cf_only] done q=24
+{
+ "tag": "cf_only",
+ "holdout_ce": 1.1209263149648905,
+ "per_layer": {
+  "28": {
+   "n_tokens": 128,
+   "A_rho_median": -0.009530791788856305,
+   "A_rho_pooled": -0.019206461625326847,
+   "B_regret_mean": 0.18756575592124136,
+   "B_regret_median": 0.13547508418560028,
+   "C_route_overlap": 0.587890625,
+   "C_router_entropy": 4.350548293441534,
+   "C_expert_load_entropy": 3.9153352399762267,
+   "frac_beneficial": 0.515625,
+   "D_margin_boundary": 0.06100320816040039,
+   "D_frac_tokens_crossed": 0.96875,
+   "D_mean_n_crossed": 3.296875,
+   "D_dL_revert_mean": 0.016074369325407692,
+   "D_frac_crossings_helped": 0.5161290322580645
+  },
+  "36": {
+   "n_tokens": 128,
+   "A_rho_median": 0.024193548387096774,
+   "A_rho_pooled": 0.014160667810531208,
+   "B_regret_mean": 0.16484592142296606,
+   "B_regret_median": 0.11593195423483849,
+   "C_route_overlap": 0.640625,
+   "C_router_entropy": 4.302856460213661,
+   "C_expert_load_entropy": 4.211147839286786,
+   "frac_beneficial": 0.4970703125,
+   "D_margin_boundary": 0.061709893867373466,
+   "D_frac_tokens_crossed": 0.9609375,
+   "D_mean_n_crossed": 2.875,
+   "D_dL_revert_mean": 0.03303259475311885,
+   "D_frac_crossings_helped": 0.5203252032520326
+  },
+  "44": {
+   "n_tokens": 128,
+   "A_rho_median": -0.014112903225806453,
+   "A_rho_pooled": -0.010914316965071023,
+   "B_regret_mean": 0.20669579389505088,
+   "B_regret_median": 0.10902108997106552,
+   "C_route_overlap": 0.4111328125,
+   "C_router_entropy": 4.174446161836386,
+   "C_expert_load_entropy": 3.7190509882810665,
+   "frac_beneficial": 0.49365234375,
+   "D_margin_boundary": 0.05011855997145176,
+   "D_frac_tokens_crossed": 1.0,
+   "D_mean_n_crossed": 4.7109375,
+   "D_dL_revert_mean": 0.03934108667840519,
+   "D_frac_crossings_helped": 0.5078125
+  }
+ }
+}
+  [cf_anchor] done q=419
+  [cf_anchor] done q=459
+  [cf_anchor] done q=130
+  [cf_anchor] done q=431
+  [cf_anchor] done q=370
+  [cf_anchor] done q=26
+  [cf_anchor] done q=201
+  [cf_anchor] done q=56
+  [cf_anchor] done q=366
+  [cf_anchor] done q=108
+  [cf_anchor] done q=231
+  [cf_anchor] done q=326
+  [cf_anchor] done q=118
+  [cf_anchor] done q=153
+  [cf_anchor] done q=311
+  [cf_anchor] done q=24
+{
+ "tag": "cf_anchor",
+ "holdout_ce": 1.1287845484912395,
+ "per_layer": {
+  "28": {
+   "n_tokens": 128,
+   "A_rho_median": -0.02052785923753666,
+   "A_rho_pooled": -0.06394161156611976,
+   "B_regret_mean": 0.18918501755069883,
+   "B_regret_median": 0.15043097734451294,
+   "C_route_overlap": 0.591796875,
+   "C_router_entropy": 4.356326861307025,
+   "C_expert_load_entropy": 3.897021694793385,
+   "frac_beneficial": 0.53125,
+   "D_margin_boundary": 0.056863924488425255,
+   "D_frac_tokens_crossed": 0.9921875,
+   "D_mean_n_crossed": 3.265625,
+   "D_dL_revert_mean": 0.008038219686425254,
+   "D_frac_crossings_helped": 0.47244094488188976
+  },
+  "36": {
+   "n_tokens": 128,
+   "A_rho_median": 0.003665689149560117,
+   "A_rho_pooled": -0.015812054579344283,
+   "B_regret_mean": 0.17127836252984707,
+   "B_regret_median": 0.12374167889356613,
+   "C_route_overlap": 0.6611328125,
+   "C_router_entropy": 4.302463250234723,
+   "C_expert_load_entropy": 4.237586434824206,
+   "frac_beneficial": 0.485107421875,
+   "D_margin_boundary": 0.05875987000763416,
+   "D_frac_tokens_crossed": 0.9921875,
+   "D_mean_n_crossed": 2.7109375,
+   "D_dL_revert_mean": 0.017655408897209825,
+   "D_frac_crossings_helped": 0.5039370078740157
+  },
+  "44": {
+   "n_tokens": 128,
+   "A_rho_median": 0.013013196480938417,
+   "A_rho_pooled": -0.021811647305763432,
+   "B_regret_mean": 0.2318215412533391,
+   "B_regret_median": 0.1165565773844719,
+   "C_route_overlap": 0.4580078125,
+   "C_router_entropy": 4.241931235417724,
+   "C_expert_load_entropy": 3.80040221973934,
+   "frac_beneficial": 0.5087890625,
+   "D_margin_boundary": 0.052845051512122154,
+   "D_frac_tokens_crossed": 0.9921875,
+   "D_mean_n_crossed": 4.3359375,
+   "D_dL_revert_mean": 0.042344161125970635,
+   "D_frac_crossings_helped": 0.48031496062992124
+  }
+ }
+}
+
+==========================================================================
+ layer         arm  A rho_med   B regret C overlap       CE  D margin  D xover  D helped
+    28        base     -0.010     0.1943     1.000   1.2197    0.0970    0.000       nan
+    36        base     -0.028     0.2009     1.000   1.2197    0.1077    0.000       nan
+    44        base     -0.024     0.3032     1.000   1.2197    0.1199    0.000       nan
+    28     cf_only     -0.010     0.1876     0.588   1.1209    0.0610    0.969     0.516
+    36     cf_only      0.024     0.1648     0.641   1.1209    0.0617    0.961     0.520
+    44     cf_only     -0.014     0.2067     0.411   1.1209    0.0501    1.000     0.508
+    28   cf_anchor     -0.021     0.1892     0.592   1.1288    0.0569    0.992     0.472
+    36   cf_anchor      0.004     0.1713     0.661   1.1288    0.0588    0.992     0.504
+    44   cf_anchor      0.013     0.2318     0.458   1.1288    0.0528    0.992     0.480
+
+wrote results/c0_eval.json
+Exception ignored in: <function ResourceTracker.__del__ at 0xe7191af3b00>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
