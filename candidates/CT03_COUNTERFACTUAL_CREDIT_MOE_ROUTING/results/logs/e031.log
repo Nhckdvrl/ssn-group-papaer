@@ -1,0 +1,50 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:10<02:37, 10.53s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:21<02:35, 11.08s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:33<02:28, 11.43s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:46<02:20, 11.72s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [00:57<02:09, 11.80s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [01:09<01:58, 11.87s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [01:22<01:47, 11.95s/it]Loading checkpoint shards:  50%|█████     | 8/16 [01:34<01:35, 12.00s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [01:45<01:23, 11.88s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [01:57<01:11, 11.95s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [02:09<00:59, 11.97s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [02:21<00:47, 12.00s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [02:33<00:35, 11.95s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [02:46<00:24, 12.03s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [02:58<00:12, 12.11s/it]Loading checkpoint shards: 100%|██████████| 16/16 [03:00<00:00,  9.10s/it]Loading checkpoint shards: 100%|██████████| 16/16 [03:00<00:00, 11.28s/it]
+Using the latest cached version of the dataset since HuggingFaceH4/MATH-500 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/HuggingFaceH4___math-500/default/0.0.0/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be (last modified on Mon Jun  1 04:37:01 2026).
+arms: ['base', 'cf_only', 'shuffled', 'cf_anchor']
+  done q=419
+  done q=459
+  done q=130
+  done q=431
+  done q=370
+  done q=26
+  done q=201
+  done q=56
+  done q=366
+  done q=108
+  done q=231
+  done q=326
+  done q=118
+  done q=153
+  done q=311
+  done q=24
+
+==============================================================================
+A_fixed -- same 32 base pairs, same base state, for every arm
+ layer          base       cf_only      shuffled     cf_anchor
+    28        -0.011        -0.004        -0.008         0.016
+    36        -0.028        -0.011        -0.009         0.021
+    44        -0.024         0.078        -0.043         0.005
+
+Fixed-state route value  dL_route (negative = better than base route)
+ layer      variant       cf_only      shuffled     cf_anchor   best 1-swap
+    28   route_armw       -0.0529       -0.0198       -0.0480       -0.1274
+    28  route_basew       -0.0239       -0.0206       -0.0189       -0.1274
+    36   route_armw       -0.0336        0.0160       -0.0430       -0.1279
+    36  route_basew       -0.0301       -0.0144       -0.0377       -0.1279
+    44   route_armw       -0.1478       -0.0508       -0.1279       -0.1548
+    44  route_basew       -0.0845        0.0156       -0.0499       -0.1548
+
+mean experts changed vs base route (out of 8), within fixed U
+ layer          base       cf_only      shuffled     cf_anchor
+    28          0.00          1.52          1.67          1.44
+    36          0.00          1.70          1.83          1.70
+    44          0.00          2.14          2.19          2.02
+
+wrote results/e031_rows.jsonl
+Exception ignored in: <function ResourceTracker.__del__ at 0x149277d2bb00>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
