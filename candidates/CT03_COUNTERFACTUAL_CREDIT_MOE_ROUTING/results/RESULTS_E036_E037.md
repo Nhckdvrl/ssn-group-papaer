@@ -111,12 +111,30 @@ problems × 8 tokens × 6 layers × 32 pairs = 24,576 exact + 24,576 proxy).
    a supportable statement.
 2. It is nevertheless **not the limiting factor anywhere**. The estimation gap
    exceeds the interaction lift at every single layer in both models, by a
-   median of **4.3×** (minimum 2.1×). Interaction accounts for a median of
-   **19%** of the total gap.
+   median of **4.3×** (minimum 2.1×).
+
+   *Units caveat:* `lift` is a change in rank correlation while `1−R²` is a
+   variance share, so these are not commensurable. The ratio is reported as a
+   descriptive comparison only — **this is not a variance decomposition**, and
+   the claim to make is simply "the estimation gap is consistently much larger
+   than the gain from removing the interaction residual", not "interaction
+   accounts for N% of the deficit".
 
 So the two quantities co-vary with depth — which is why conflating them was easy
 — but the decomposition assigns the shallow-layer failure to **estimation of the
 representable component**, not to expressiveness, in both architectures.
+
+`spearman(1−R², est_gap) = 0.983` must **not** be read as "interaction causes the
+estimation failure". Both are driven by depth, so the high correlation is
+confounding; the decomposition is precisely what shows correlation is not cause
+here.
+
+The residual error is **consistent with finite-intervention linearisation
+error** — E01.5 recovered OLMoE L1 from 0.257 to 0.829 at α=0.125 — but no
+specific nonlinear mechanism is claimed. The simple "long-suffix accumulation"
+account was already falsified in E01.5 (direction drift first breaks at absolute
+layer 13–14 regardless of source layer, and never breaks for L1), and it is not
+being quietly reinstated.
 
 Note the two models do not align on relative depth: Qwen at 58% has a larger
 estimation gap (0.245) than OLMoE at 44% (0.167), consistent with E02's finding
