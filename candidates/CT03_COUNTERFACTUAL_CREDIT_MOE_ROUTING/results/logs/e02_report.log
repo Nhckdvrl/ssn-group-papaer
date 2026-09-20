@@ -1,0 +1,44 @@
+================================================================================
+PRIMARY  rho(px_shared, dL_seq)  alpha=1, hard, boundary   [Qwen3-30B-A3B, 48L]
+ layer   depth   rho_med    top1    top3  router_gap  rand_top3   benef   med|dL|
+     4      8%     0.200   0.292   0.594       0.029      0.490   0.542  9.72e-02
+    12     25%     0.286   0.240   0.604      -0.086      0.583   0.580  7.15e-02
+    20     42%     0.486   0.375   0.698       0.029      0.521   0.517  4.75e-02
+    28     58%     0.600   0.531   0.833       0.143      0.500   0.543  2.70e-02
+    36     75%     0.943   0.750   0.906      -0.086      0.531   0.519  2.19e-02
+    44     92%     1.000   0.896   0.969       0.086      0.510   0.502  1.14e-02
+    47     98%     1.000   0.958   1.000       0.029      0.552   0.408  1.27e-02
+
+================================================================================
+alpha=0.125 (DIAGNOSTIC ONLY -- barred from the survival decision)
+ layer   rho_med
+     4     0.486
+    12     0.714
+    20     0.743
+    28     0.971
+    36     1.000
+    44     1.000
+    47     1.000
+
+================================================================================
+random candidate pool, alpha=1, hard
+ layer   rho_med    top3
+     4     0.300   0.792
+    12     0.400   0.792
+    20     0.500   0.844
+    28     0.800   0.896
+    36     1.000   0.969
+    44     1.000   0.990
+    47     1.000   1.000
+
+================================================================================
+ADJUDICATION (docs/E02_STAGEB_DESIGN.md section 5)
+  [PASS]  1. median rho over L20/28/36/44 >= 0.60          = 0.771
+  [PASS]  2. some layer at <=60% depth with rho >= 0.55    = 0.600
+  [PASS]  3. median top-3 >= 0.70                          = 0.870
+  [PASS]  4. clearly beats router_gap                      = 0.057
+  [PASS]  5. beneficial rate in 0.3-0.7                    = 0.518
+
+  conditions 1-5: ALL PASS   (condition 6, cost, is computed separately)
+
+wrote results/e02_report.json
