@@ -7,7 +7,7 @@
 - broad literature calibration 已完成；
 - 正式选题搜索已经开启；
 - formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
-- 当前 selected：**CT02 / CT03**。
+- 当前 selected：**CT02 / CT03 / CT04**。
 
 ## 1. 从哪里开始
 
@@ -69,7 +69,8 @@ chasing trends/
     ├── FAILED_TOPICS.md
     ├── CT01_RELEVANT_BUT_INVALID.md
     ├── CT02_IS_CONTEXT_UTILITY_RANKABLE.md
-    └── CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md
+    ├── CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md
+    └── CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md
 ```
 
 目录的职责必须保持清楚：
@@ -171,9 +172,24 @@ chasing trends/
 
 > `topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
 
+### CT04 — What Moves During Hybrid Adaptation? State-Dynamics Drift in Recurrent–Attention LMs
+
+**Status:** PILOT-AUTHORIZED — exploratory identification program
+
+核心问题：
+
+> hybrid recurrent–attention LM 在 post-training 后真正发生变化的对象是什么：transition dynamics、recurrent-state operating point、attention↔recurrence 功能分工、局部 memory operation，还是普通 representation drift？
+
+用 state/weight/channel crossed intervention 定位真实 bottleneck，再由诊断结果决定方法；不预设某个 LoRA 现象必须出现。
+
+详细 registration：
+
+> `topics/CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md`
+
+
 CT01 已在 2026-09-19 re-audit 后 **KILL**；原因见 `topics/CT01_RELEVANT_BUT_INVALID.md` 与 `topics/FAILED_TOPICS.md`。
 
-当前正式 selected 数量：**2**。
+当前正式 selected 数量：**3**。
 
 ## 6. 几条不会再妥协的规则
 
