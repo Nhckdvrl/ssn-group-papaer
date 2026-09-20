@@ -84,10 +84,44 @@ representable component, not interaction. Both point at the same mechanism:
 - Do not claim projection denoising.
 - Do not add curvature in v1.
 
-## Cross-model status
+## E03.7b — OLMoE, six layers: the same decomposition, cross-model
 
-E03.7a is Qwen-only — three layers is too few for the structural scatter, and
-`e01_records.jsonl` cannot extend it because E01 recorded a single `i` per token,
-leaving no `K × m` grid to project. `src/e037_olmoe.py` produces that grid on
-OLMoE at layers 1/4/7/10/13/15. Until it lands, the interaction-vs-estimation
-decomposition is a single-model result.
+`e01_records.jsonl` could not be reused: E01 recorded a single `i` per token, so
+there is no `K × m` grid to project. `src/e037_olmoe.py` produced one (16
+problems × 8 tokens × 6 layers × 32 pairs = 24,576 exact + 24,576 proxy).
+
+| model | layer | depth | 1−R² | lift | est. gap | est/lift |
+|---|---|---|---|---|---|---|
+| OLMoE | 1 | 6% | 0.257 | +0.065 | 0.579 | 9.0× |
+| OLMoE | 4 | 25% | 0.146 | +0.092 | 0.343 | 3.7× |
+| OLMoE | 7 | 44% | 0.059 | +0.039 | 0.167 | 4.2× |
+| OLMoE | 10 | 62% | 0.013 | +0.018 | 0.078 | 4.4× |
+| OLMoE | 13 | 81% | 0.005 | +0.012 | 0.045 | 3.7× |
+| OLMoE | 15 | 94% | 0.000 | −0.003 | 0.015 | — |
+| Qwen | 28 | 58% | 0.133 | +0.048 | 0.245 | 5.1× |
+| Qwen | 36 | 75% | 0.031 | +0.031 | 0.064 | 2.1× |
+| Qwen | 44 | 92% | 0.001 | +0.001 | 0.015 | 13.8× |
+
+**Both halves of the picture are confirmed, and they say different things.**
+
+1. The structural observation **is** real and cross-model: non-additivity rises
+   monotonically toward shallow layers — 0.000 → 0.257 in OLMoE, 0.001 → 0.133
+   in Qwen — and `spearman(1−R², est_gap) = 0.983` over the nine layer-points.
+   So "shallower route utilities become increasingly interaction-dependent" is
+   a supportable statement.
+2. It is nevertheless **not the limiting factor anywhere**. The estimation gap
+   exceeds the interaction lift at every single layer in both models, by a
+   median of **4.3×** (minimum 2.1×). Interaction accounts for a median of
+   **19%** of the total gap.
+
+So the two quantities co-vary with depth — which is why conflating them was easy
+— but the decomposition assigns the shallow-layer failure to **estimation of the
+representable component**, not to expressiveness, in both architectures.
+
+Note the two models do not align on relative depth: Qwen at 58% has a larger
+estimation gap (0.245) than OLMoE at 44% (0.167), consistent with E02's finding
+that Qwen's calibration curve sits materially later.
+
+**Analysis stops here.** Next is FG0 (the free-generation bridge, attacking the
+one kill-bar condition with no instrument) and the frozen CPD v1 design — not
+further mechanism digging.
