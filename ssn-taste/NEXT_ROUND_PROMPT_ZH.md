@@ -12,7 +12,7 @@
 
 - `README.md`
 - `SELECTED_TOPICS.md`
-- 当前 selected registrations：S04 / S05 / S06 / S07
+- 当前 selected registrations：S04 / S06 / S07
 - 全部 `FAILED_TOPICS*.md`
 - `RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md`
 - 最近 commits
@@ -26,13 +26,13 @@ repo 最新状态优先于任何旧聊天或 handoff。
 ### SELECTED / PILOT-AUTHORIZED
 
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
-- S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 
 ### 最近关键 KILL
 
 - **S03**：真实实验后发现 developmental story 随 training budget / family / recipe 改变，继续会变成 training-biography archaeology。
+- **S05**： broad conditioning-vs-learning 问题很漂亮，但可执行的 decisive experiment 只剩 matched response relevance → persistent trace 的 exact causal cell；strongest likely finding scientific consequence 不够。
 - **S08**：即使 confidence 与 termination control 被干净 causal dissociate，最强结论仍偏“内部架构不同”，scientific consequence 不够；不要用 universal metacognition / 更多行为 / steering archaeology 复活。
 - **S09**：memory age/history 本身就是 optimization-path construct，正结果会强迫 recipe matrix。
 
