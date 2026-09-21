@@ -25,7 +25,7 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 
 ---
 
-## Current selected topics = 4
+## Current selected topics = 5
 
 均为 **SELECTED — PILOT-AUTHORIZED**：
 
@@ -33,6 +33,7 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 - **S06 — What Does Deliberation Do to Evidence?**
 - **S07 — Where Does Surprise Go?**
 - **S10 — Does the Language We Plan to Speak Change Event Construal?**
+- **S11 — Same Number, Different Information: Value vs Measurement Precision**
 
 S03 / S05 / S08 / S09 已 KILL。
 
