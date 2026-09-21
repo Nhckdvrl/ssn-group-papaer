@@ -7,7 +7,7 @@
 - broad literature calibration 已完成；
 - 正式选题搜索已经开启；
 - formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
-- 当前 selected：**CT02 / CT03 / CT04**。
+- 当前 selected：**CT03 / CT04**。
 
 ## 1. 从哪里开始
 
@@ -148,18 +148,6 @@ chasing trends/
 
 ## 5. 当前正式题目
 
-### CT02 — Is Context Utility Rankable? Set-Dependent Routing for Sparse Attention
-
-**Status:** PILOT-AUTHORIZED
-
-核心问题：
-
-> 稀疏注意力中的 context utility 能否由一个全局 scalar ranking 表示，还是 block 的边际价值取决于已经保留的其他 blocks？
-
-详细 registration：
-
-> `topics/CT02_IS_CONTEXT_UTILITY_RANKABLE.md`
-
 ### CT03 — Counterfactual Credit for MoE Routing
 
 **Status:** PILOT-AUTHORIZED
@@ -187,9 +175,9 @@ chasing trends/
 > `topics/CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md`
 
 
-CT01 已在 2026-09-19 re-audit 后 **KILL**；原因见 `topics/CT01_RELEVANT_BUT_INVALID.md` 与 `topics/FAILED_TOPICS.md`。
+CT01 已在 2026-09-19 re-audit 后 **KILL**；CT02 已在 2026-09-21 novelty re-audit 后 **KILL**。原因见对应 registration 与 `topics/FAILED_TOPICS.md`。
 
-当前正式 selected 数量：**3**。
+当前正式 selected 数量：**2**。
 
 ## 6. 几条不会再妥协的规则
 
