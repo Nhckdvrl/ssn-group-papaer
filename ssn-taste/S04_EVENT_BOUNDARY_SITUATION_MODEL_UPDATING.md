@@ -252,3 +252,43 @@ Natural validation should reuse existing resources rather than create a dataset:
 - the main claim only appears in one synthetic story generator and cannot be expressed on any existing natural state-tracking resource;
 - the paper starts to look like a new narrative-state dataset.
 
+
+
+---
+
+## 2026-09-21 importance-first re-audit — KEEP
+
+S04 survives, but only with a clarified consequence-bearing core.
+
+### Core scientific question
+
+The Main-level question is not merely whether event updates are “incremental,” “global,” or “selective.” Those labels can collapse into implementation detail.
+
+The load-bearing question is:
+
+> **After the narrative changes, does the model causally carry forward an updated active representation of what is true now, or does successful comprehension rely primarily on repeatedly retrieving the relevant facts from the raw earlier context?**
+
+This changes an important interpretation of LM discourse understanding:
+- **active-state world:** autoregressive LMs construct and maintain a current situation state that compresses/selects past information for later computation;
+- **retrieval-dominant world:** apparently coherent state tracking can arise with little persistent situation state, by repeatedly consulting historical tokens.
+
+Incremental reconstruction / global reconstruction / selective reactivation are secondary explanations only after a carry-forward state is established.
+
+### Decisive first attack
+
+Prioritize the causal history-access bottleneck before broad representational archaeology:
+1. process the transition with full history;
+2. preserve post-transition states;
+3. prevent the downstream readout from directly accessing pre-transition tokens;
+4. test changed, still-relevant, and obsolete information.
+
+The first figure should answer whether useful state survives as a causal carry-forward representation.
+
+### KILL immediately if
+
+- the only robust result is a different probe geometry at event boundaries;
+- “active state vs raw retrieval” cannot be separated without strong interpretability assumptions;
+- the project only yields differences among incremental/global/selective implementations with no larger consequence;
+- natural validation requires a new narrative benchmark.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
