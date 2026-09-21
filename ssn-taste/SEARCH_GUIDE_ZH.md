@@ -558,6 +558,7 @@ PILOT-AUTHORIZED 必须同时满足：
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 - S10 — Does the Language We Plan to Speak Change Event Construal?
+- S11 — Same Number, Different Information: Value vs Measurement Precision
 
 这些都**不是正向 taste exemplar**，只是当前尚未被推翻、值得第一刀实验的候选。
 
