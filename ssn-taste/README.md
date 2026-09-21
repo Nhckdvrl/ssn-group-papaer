@@ -42,7 +42,7 @@ They are unrefuted research hypotheses and process outcomes. Use them to avoid d
 
 ## Current search state
 
-There is **no formal unresolved candidate** to inherit after the final S05/S09 recipe-risk audit. S05 remains selected; S09 is killed.
+There is **no formal unresolved candidate** to inherit. After the latest audits, S04/S05/S06/S07 remain selected; S03/S08/S09 are killed for distinct process reasons (recipe biography, weak scientific consequence, and optimization-path confounding respectively).
 
 The next search should therefore begin from fresh calibration and fresh scientific pressure rather than variants of prior selected or killed topics.
 
