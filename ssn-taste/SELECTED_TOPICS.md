@@ -70,6 +70,21 @@ Selected topics are **not positive taste exemplars**. Selection only means the t
 
 ---
 
+### S10 — Does the Language We Plan to Speak Change Event Construal?
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-21  
+**Detailed registration:** `S10_THINKING_FOR_SPEAKING_EVENT_CONSTRUAL.md`
+
+**Parent question.** When the same multilingual multimodal model sees the same non-linguistic event, does the language it is preparing to use change its Manner-vs-Path event construal **before any language-specific description is produced**, or do cross-linguistic differences arise only during verbalization?
+
+**Scientific pressure.** Human thinking-for-speaking research has debated for decades whether language-specific motion packaging changes non-verbal event cognition, but cross-population and bilingual comparisons cannot fully hold developmental history and experience fixed. A multilingual multimodal model makes a new within-agent intervention possible: hold weights and visual input fixed, randomize anticipated output language, and test the event decision before vs. after verbalization.
+
+**Minimum identification.** Use matched Manner/Path motion triads and cross language with output order. In `Choice → Description`, the similarity choice must be emitted before the language-specific caption, eliminating the trivial explanation that the model merely rereads its own description. `Description → Choice` measures the easier verbalization/self-conditioning route.
+
+**Claim boundary.** Do not turn S10 into a generic multilingual VLM benchmark, a claim that models prove human linguistic relativity, or a hidden-state probing paper. The scientific object is whether anticipated language causally alters pre-verbal event construal within the same artificial agent.
+
+---
 ## Explicitly cancelled registrations
 
 - **S05 — When Does Reading Become Learning?**: registration cancelled after the 2026-09-21 importance-first re-audit. The broad conditioning-vs-learning question is attractive, but the clean experiment mainly isolates an exact causal cell: whether response-relevant prompt fields leave stronger persistent traces than matched irrelevant fields. The most likely result is easy to explain from target-relevant gradient pressure; the surprising opposite direction (input-only write-through) and training-time memorization are already strongly occupied by nearby work. The honest knowledge delta is therefore too small relative to the broad mother question. Do not revive by adding dose/model sweeps, privacy framing, or post-hoc mechanism.
@@ -94,4 +109,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 3.**
+**Current selected topic count = 4.**
