@@ -24,6 +24,8 @@ from e02_qwen import MODEL, Capture, load, route_of
 from e035_integrability import fit_potentials
 
 LAYERS = [36, 44]
+LADDER_GRID = (0.001, 0.002, 0.003, 0.004, 0.006, 0.008,
+               0.01, 0.02, 0.05, 0.1, 0.2)
 
 
 def potential(moe, x, h, g, K, m):
@@ -151,8 +153,11 @@ def iter_tokens(model, tok, ex, a, dev0):
         moe = model.model.layers[l].mlp
         for t in toks:
             z, U, p0, r2 = potential(moe, xs[l][0, t], hs[l][0, t], g[l][t], K, a.m)
-            out.append((l, t, torch.tensor(z, device=dev0, dtype=torch.float32),
-                        U, p0.detach(), r2))
+            # z must live on the SAME shard as p0: with device_map the trained
+            # layers sit on the second card, not on dev0.
+            p0 = p0.detach()
+            out.append((l, t, torch.tensor(z, device=p0.device, dtype=torch.float32),
+                        U, p0, r2))
     return dict(ids=ids, input_ids=input_ids, targets=targets, first=first,
                 items=out, xs={l: xs[l].detach() for l in LAYERS})
 
@@ -171,7 +176,7 @@ def calibrate(model, tok, data, a, dev0):
     # number of experts changed per token stays <= 1.0. C0's 3-5/8 wholesale
     # rerouting is exactly the generic-perturbation regime to avoid; CPD should
     # look like a small, directed correction.
-    for d in (0.01, 0.02, 0.05, 0.1, 0.2):
+    for d in LADDER_GRID:
         cell = {}
         for l in LAYERS:
             sub = [(z, U, p0) for ll, z, U, p0 in cal if ll == l]
@@ -194,7 +199,7 @@ def calibrate(model, tok, data, a, dev0):
         rep["ladder"][str(d)] = cell
 
     chosen = None
-    for d in (0.01, 0.02, 0.05, 0.1, 0.2):
+    for d in LADDER_GRID:
         c = rep["ladder"][str(d)]
         if all(0.15 <= c[str(l)]["changed_frac"] <= 0.35
                and c[str(l)]["mean_experts_changed"] <= 1.0 for l in LAYERS):
@@ -204,8 +209,12 @@ def calibrate(model, tok, data, a, dev0):
     rep["delta_auto"] = chosen
     delta = a.delta if a.delta > 0 else chosen
     if delta is None:
-        raise SystemExit("LADDER: no delta satisfies the frozen rule; inspect "
-                         "rep['ladder'] and decide explicitly rather than forcing 0.05")
+        # Persist the ladder BEFORE failing -- the whole point of the rule is to
+        # make the decision inspectable, which is impossible if the data dies
+        # with the process.
+        json.dump(rep, open(a.calib_out + ".ladder_only.json", "w"), indent=1)
+        raise SystemExit("LADDER: no delta satisfies the frozen rule; wrote "
+                         + a.calib_out + ".ladder_only.json for inspection")
     rep["delta"] = delta
     for l in LAYERS:
         sub = [(z, U, p0) for ll, z, U, p0 in cal if ll == l]
@@ -293,7 +302,9 @@ def main(a):
                 else:
                     q = cpd_target(p0, U, z, b).detach()
                 gi = LAYERS.index(l)
-                s = gates[gi](r["xs"][l][0, t]).float()
+                gw = gates[gi].weight
+                s = gates[gi](r["xs"][l][0, t].to(gw.device)).float()
+                q = q.to(gw.device)
                 lp = F.log_softmax(s, -1)
                 lcpd = (q * (q.clamp_min(1e-12).log() - lp)).sum()
                 loss_sum = lcpd if loss_sum is None else loss_sum + lcpd
