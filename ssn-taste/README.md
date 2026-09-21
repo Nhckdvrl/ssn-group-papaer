@@ -20,7 +20,7 @@ Do not treat old prompts, historical REOPEN labels, or prior chat summaries as a
 
 ---
 
-## Current selected topics = 5
+## Current selected topics = 4
 
 All are **SELECTED — PILOT-AUTHORIZED**.
 
@@ -28,7 +28,6 @@ All are **SELECTED — PILOT-AUTHORIZED**.
 - **S05 — When Does Reading Become Learning?**
 - **S06 — What Does Deliberation Do to Evidence?**
 - **S07 — Where Does Surprise Go?**
-- **S08 — Is Metacognitive Control Shared?**
 
 See SELECTED_TOPICS.md and the individual registration files for the actual claims.
 
