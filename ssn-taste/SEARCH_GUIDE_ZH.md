@@ -416,13 +416,13 @@ KILL 后写入 failed ledger，并记录真正 failure mode，禁止换标题复
 ## SELECTED / PILOT-AUTHORIZED
 
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
-- S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 
 ## 最近重要 KILL
 
 - S03 — training-stage developmental story 随 budget / family / recipe 改变；属于 training biography 风险。
+- S05 — broad mother question 远大于实际 matched-relevance experiment 的 honest knowledge delta；clean exact-cell intervention 不足以支撑 Main-level consequence。
 - S08 — shared-vs-separate control 即使干净识别，scientific consequence 仍不足；mechanistic-detail trap。
 - S09 — memory age/history 本身是 optimization-path construct；需要 recipe matrix 才能解释。
 
