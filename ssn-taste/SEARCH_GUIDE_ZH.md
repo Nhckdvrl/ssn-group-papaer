@@ -357,6 +357,8 @@ Mechanism 是 explanation depth，不是 novelty tax。
 
 下一轮 agent **必须有权打断固定流程**。
 
+同时要做**轻量周期校准**：默认每完成约 2–3 个完整 seed audit，或一个明显较长的搜索批次后，重新抽样少量新鲜强论文 + Sasano feedback，确认当前问题分布没有悄悄漂移。这个节奏只是默认提醒，不是机械计数；一旦提前发现 drift，立即 reset。
+
 出现以下任一迹象时，立即暂停当前 generator：
 
 - 连续 2–3 个 seed 因同一种理由死；
