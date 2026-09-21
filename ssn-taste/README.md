@@ -20,13 +20,14 @@ Do not treat old prompts, historical REOPEN labels, or prior chat summaries as a
 
 ---
 
-## Current selected topics = 3
+## Current selected topics = 4
 
 All are **SELECTED — PILOT-AUTHORIZED**.
 
 - **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
 - **S06 — What Does Deliberation Do to Evidence?**
 - **S07 — Where Does Surprise Go?**
+- **S10 — Does the Language We Plan to Speak Change Event Construal?**
 
 See SELECTED_TOPICS.md and the individual registration files for the actual claims.
 
@@ -41,7 +42,7 @@ They are unrefuted research hypotheses and process outcomes. Use them to avoid d
 
 ## Current search state
 
-There is **no formal unresolved candidate** to inherit. After the latest importance-first audit, S04/S06/S07 remain selected; S03/S05/S08/S09 are killed.
+There is **no formal unresolved candidate** to inherit. S04/S06/S07/S10 are selected; S03/S05/S08/S09 are killed. S10 was registered on 2026-09-21 after a fresh Sasano/lab-taste calibration emphasizing undercrowded classical language-and-cognition questions with direct modern-model identification.
 
 The next search should therefore begin from fresh calibration and fresh scientific pressure rather than variants of prior selected or killed topics.
 
