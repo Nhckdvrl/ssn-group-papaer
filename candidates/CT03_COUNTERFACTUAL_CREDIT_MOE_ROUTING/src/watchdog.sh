@@ -13,7 +13,19 @@ echo "stage: $(grep -cE '^=== ' results/logs/cpd_driver.log 2>/dev/null) markers
 grep -E "^=== (LADDER DONE|SMOKE PASSED|TRAINED|FREEGEN)" results/logs/cpd_driver.log 2>/dev/null | tail -3
 for A in cpd shuffled router_ce; do
   F=results/cpd_train_$A.jsonl
-  [ -f "$F" ] && echo "  $A: $(wc -l < $F) steps, last=$(tail -1 $F | python3 -c 'import json,sys;r=json.load(sys.stdin);print(f"loss={r[\"loss\"]:.4f} drift={[round(x,4) for x in r[\"drift\"]]}")' 2>/dev/null)"
+  if [ -f "$F" ]; then
+    /home/xiang/miniconda3/envs/verl-clean/bin/python - "$A" "$F" <<'PY'
+import json, sys, numpy as np
+arm, f = sys.argv[1], sys.argv[2]
+R = [json.loads(l) for l in open(f)]
+L = np.array([r["loss"] for r in R])
+w = 25
+print(f"  {arm}: {len(R)} steps  loss {L[:w].mean():.4f}->{L[-w:].mean():.4f}"
+      f"  drift={[round(x,4) for x in R[-1]['drift']]}"
+      f"  finite={bool(np.isfinite(L).all())}"
+      f"  {R[-1]['elapsed']/60:.0f}min")
+PY
+  fi
 done
 for F in results/cpd_train_*.jsonl; do
   [ -f "$F" ] && grep -qiE "nan|infinity" "$F" && echo "  !! NaN/Inf in $F"

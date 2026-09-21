@@ -1,0 +1,29 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:46<11:34, 46.31s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [01:33<10:53, 46.71s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [02:20<10:12, 47.15s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [03:08<09:27, 47.28s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [03:58<08:51, 48.29s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [04:47<08:06, 48.69s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [05:36<07:16, 48.51s/it]Loading checkpoint shards:  50%|█████     | 8/16 [06:27<06:34, 49.28s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [07:17<05:47, 49.68s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [08:06<04:57, 49.52s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [08:55<04:05, 49.13s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [09:44<03:16, 49.18s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [10:34<02:28, 49.34s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [11:24<01:39, 49.63s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [12:08<00:48, 48.05s/it]Loading checkpoint shards: 100%|██████████| 16/16 [12:18<00:00, 36.47s/it]Loading checkpoint shards: 100%|██████████| 16/16 [12:18<00:00, 46.14s/it]
+arms: ['base', 'router_ce', 'shuffled', 'cpd']
+  [base] 64/120 1456s
+  [base] 120/120 2828s
+  [router_ce] 64/120 4273s
+  [router_ce] 120/120 5644s
+  [shuffled] 64/120 7100s
+  [shuffled] 120/120 8488s
+  [cpd] 64/120 9946s
+  [cpd] 120/120 11324s
+  [diag base] done 12334s
+  [diag router_ce] done 12881s
+  [diag shuffled] done 13419s
+  [diag cpd] done 13958s
+
+==========================================================================
+         arm     acc   vs base    same  first_div  KL(shared)  ovl L36  ovl L44
+        base   0.475    +0.000   1.000      412.2    0.00e+00    1.000    1.000
+   router_ce   0.517    +0.042   0.000       23.6    3.48e-02    0.698    0.578
+    shuffled   0.500    +0.025   0.083      112.5    2.24e-03    0.803    0.667
+         cpd   0.533    +0.058   0.008       38.8    1.68e-02    0.735    0.615
+
+wrote results/cpd_freegen.jsonl
+Exception ignored in: <function ResourceTracker.__del__ at 0xd910424b240>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

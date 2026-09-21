@@ -52,7 +52,11 @@ def gen_batch(model, tok, prompts, max_new):
         ids[i, T - len(e):] = torch.tensor(e, device=dev)
         att[i, T - len(e):] = 1
     cache = DynamicCache(config=model.config)
-    out = model(ids, attention_mask=att, use_cache=True, past_key_values=cache)
+    # Without logits_to_keep the prefill materialises logits for EVERY
+    # position: batch x seq x 151936 x 4 bytes is ~9.7GB at batch 64, for a
+    # tensor whose last row is all that is used.
+    out = model(ids, attention_mask=att, use_cache=True, past_key_values=cache,
+                logits_to_keep=1)
     nxt = out.logits[:, -1].argmax(-1, keepdim=True)
     eos = model.config.eos_token_id
     eos = eos if isinstance(eos, (list, tuple)) else [eos]
@@ -60,7 +64,8 @@ def gen_batch(model, tok, prompts, max_new):
     done = torch.zeros(len(enc), dtype=torch.bool, device=dev)
     for _ in range(max_new - 1):
         att = torch.cat([att, (~done).long().unsqueeze(1)], 1)
-        o = model(nxt, attention_mask=att, use_cache=True, past_key_values=cache)
+        o = model(nxt, attention_mask=att, use_cache=True, past_key_values=cache,
+                  logits_to_keep=1)
         nxt = o.logits[:, -1].argmax(-1, keepdim=True)
         for e in eos:
             done |= nxt.squeeze(1) == e
