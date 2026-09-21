@@ -183,3 +183,30 @@ No human labels and no LLM judge are needed. One second semantic skin is enough 
 - a large natural corpus is needed to estimate item influence;
 - surface wording cannot be randomized without changing the effect.
 
+
+
+---
+
+## 2026-09-21 importance-first re-audit — KEEP
+
+S06 survives the revised significance bar.
+
+### Why it matters
+
+The competing worlds change the interpretation of chain-of-thought itself:
+
+- if evidence influence stays stable, deliberation is approximately computation over a fixed evidential state;
+- if all evidence decays, self-generated reasoning progressively disconnects the decision from its external grounding;
+- if evidence is selectively reweighted, deliberation is itself an endogenous belief/evidence-selection process.
+
+This is not merely “A and B use different mechanisms.” It changes what the reasoning process is doing.
+
+### Why the first experiment is already science
+
+The evidence directions are externally randomized and known by construction. Estimating their causal effects at successive pre-commitment depths directly measures the scientific quantity; no probe, latent construct, evaluator, training run, or benchmark must first be invented.
+
+### Final gate
+
+Do not expand into mechanisms until the dynamic causal law is established. If the only effect is trivial uniform distance/context dilution, KILL rather than mechanizing it.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
