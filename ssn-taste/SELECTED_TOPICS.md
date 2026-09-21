@@ -86,23 +86,10 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
-### S08 — Is Metacognitive Control Shared?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S08_SHARED_METACOGNITIVE_CONTROL.md`
-
-**Parent question.** Is internal confidence a reusable metacognitive control variable shared across behaviours, or do answer/abstain and reasoning continue/terminate decisions rely on separable monitor/control states?
-
-**Scientific pressure.** Confidence has been causally shown to control abstention, while reasoning work independently finds termination delay and manipulable thinking-budget/reflection states. The unresolved object is the functional architecture linking confidence to distinct metadecisions.
-
-**Minimum identification.** Fork identical native reasoning prefixes into forced-answer and continue-reasoning branches to label confidence and native termination at the same state; then perform confidence→termination and termination→confidence cross-steering. Shared, hierarchical, and double-dissociated architectures make different predictions.
-
-**Claim boundary.** Do not turn S08 into confidence calibration, another early-stop method, a “when to think” benchmark, or a stopping-vector catalog.
-
----
-
 ## Explicitly cancelled registrations
+
+- **S08 — Is Metacognitive Control Shared?**: registration cancelled after a significance/Sasano-taste re-audit. Even a clean shared-vs-dissociated causal result compresses mainly to an internal architectural distinction: shared confidence readout versus policy-specific control. Nearby work already separates confidence deficits, termination delay, and post-commitment reasoning, weakening the surprise. Broadening to many metadecisions would cause experiment explosion. Do not revive via more behaviors, models, steering methods, or component hunting.
+
 
 - **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**: registration cancelled after actual pilot execution. The developmental interpretation was unstable across training budgets and model families; plausible causal stories changed with recipe, while follow-up tests failed to reveal a family-stable mechanism. The remaining robust state-vs-readout fact is too narrow / partly structural to support the original Main-sized parent. Do not revive via more SFT budgets, model families, or base→SFT→DPO/RL trajectory reconstruction. Final adjudication 2026-09-19 (`K195`, `failed/KILLED_LEDGER_CONTINUATION.md`): E04 gave one clean fact — decoupling the goal destroys goal-relative stopping while leaving generic boundary competence intact — but no resolution on which supervision carries the binding. Archived; do not reopen under a new name.
 
@@ -119,4 +106,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 5.**
+**Current selected topic count = 4.**
