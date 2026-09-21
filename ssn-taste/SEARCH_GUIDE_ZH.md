@@ -905,7 +905,7 @@ Reset 时：
 
 ---
 
-# 17. 当前正式状态（2026-09-19）
+# 17. 当前正式状态（2026-09-21）
 
 当前 selected / PILOT-AUTHORIZED：
 
@@ -913,22 +913,22 @@ Reset 时：
 - S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
-- S08 — Is Metacognitive Control Shared?
 
 最终 KILL：
 
 - S03 — 真实 pilot 暴露 developmental story 随 budget / family / recipe 改变；
+- S08 — shared-vs-separate metacognitive control 即使被干净识别，scientific consequence 仍偏弱；Broadening 会导致 experiment explosion；
 - S09 — causal variable 本身是 optimization-history/path construct。
 
-当前 surviving topics 必须继续遵守新的双门槛：
+当前 surviving topics 必须继续遵守：
 
-> **Recipe Gate + Data Path Gate**
+> **Scientific significance gate + Recipe Gate + Data Path Gate**
 
-也就是说，不仅要问“能不能识别”，还要问：
+尤其新增一条 mechanistic significance lesson：
 
-> 数据是不是现成/程序可生成、ground truth 是否直接、是否会膨胀成 dataset project、以及一旦结果不稳是否会逼我们继续加 recipe 或加数据。
+> **“A 和 B 是否共享内部机制？”不是天然重要的问题。必须先说明 shared 与 separate 两个世界分别会改变什么更大的科学理解；如果答案只是“内部架构不同”，通常不够。**
 
-这些 selected topics 仍然：
+这些 selected topics：
 - 不是正向 taste exemplar；
 - 只代表当前值得真正投入第一刀 pilot；
 - 一旦 pilot 触发各 registration 的 kill condition，应立即撤销，不因“已经 selected”而保留。
