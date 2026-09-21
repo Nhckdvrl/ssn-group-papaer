@@ -38,22 +38,6 @@ Selected topics are **not positive taste exemplars**. Selection only means the t
 
 ---
 
-### S05 — When Does Reading Become Learning?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S05_WHEN_DOES_READING_BECOME_LEARNING.md`
-
-**Parent question.** Under ordinary response-only SFT, prompt/context information is available to the model but receives no direct token loss. What determines whether that information remains transient conditioning, is compressed into only the task-sufficient information needed to predict the response, or becomes persistent parameter memory?
-
-**Scientific pressure.** EACL 2026 establishes that input-only, target-absent information can be unintentionally memorized and explicitly suggests downstream-task utility matters, but does not causally match exposure while changing only response relevance. S05 targets that missing quantity.
-
-**Minimum identification.** Match prompt-side exposure within one SFT run while changing only whether the information is causally necessary for predicting the response; use a small dose ladder and direct-supervision positive control.
-
-**Claim boundary.** Do not turn S05 into privacy extraction, prompt-loss tuning, or an overfitting study. If the relevance effect appears only under extreme repetition or changes qualitative direction across modest doses, kill.
-
----
-
 ### S06 — What Does Deliberation Do to Evidence?
 
 **Status:** SELECTED — PILOT-AUTHORIZED  
@@ -88,6 +72,10 @@ Selected topics are **not positive taste exemplars**. Selection only means the t
 
 ## Explicitly cancelled registrations
 
+- **S05 — When Does Reading Become Learning?**: registration cancelled after the 2026-09-21 importance-first re-audit. The broad conditioning-vs-learning question is attractive, but the clean experiment mainly isolates an exact causal cell: whether response-relevant prompt fields leave stronger persistent traces than matched irrelevant fields. The most likely result is easy to explain from target-relevant gradient pressure; the surprising opposite direction (input-only write-through) and training-time memorization are already strongly occupied by nearby work. The honest knowledge delta is therefore too small relative to the broad mother question. Do not revive by adding dose/model sweeps, privacy framing, or post-hoc mechanism.
+
+
+
 - **S08 — Is Metacognitive Control Shared?**: registration cancelled after a significance/Sasano-taste re-audit. Even a clean shared-vs-dissociated causal result compresses mainly to an internal architectural distinction: shared confidence readout versus policy-specific control. Nearby work already separates confidence deficits, termination delay, and post-commitment reasoning, weakening the surprise. Broadening to many metadecisions would cause experiment explosion. Do not revive via more behaviors, models, steering methods, or component hunting.
 
 
@@ -106,4 +94,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 4.**
+**Current selected topic count = 3.**
