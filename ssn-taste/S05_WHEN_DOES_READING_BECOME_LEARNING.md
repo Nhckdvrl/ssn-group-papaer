@@ -1,6 +1,6 @@
 # S05 — When Does Reading Become Learning?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILL — registration cancelled after significance/knowledge-delta re-audit (2026-09-21)  
 **Registered:** 2026-09-18  
 
 ## One-sentence parent question
@@ -322,3 +322,59 @@ A few thousand training examples and a few hundred evaluation queries are enough
 - the generator leaks relevance through surface templates;
 - validating “memory” requires subjective judge-model scoring rather than exact/functional queries.
 
+
+
+---
+
+## Final 2026-09-21 significance re-audit — KILL
+
+**This section is authoritative and supersedes all earlier restoration / KEEP decisions.**
+
+S05 is killed under the revised importance-first standard.
+
+### Why the parent looked strong
+
+The broad question — when information read during conditional training becomes durable parameter knowledge — is conceptually attractive. Standard response-only SFT creates a real distinction between prompt-side exposure, usefulness for predicting the response, and persistent parameter memory.
+
+### Why the actual project does not clear the current bar
+
+1. **The decisive experiment is much narrower than the mother question.**
+   The clean pilot can identify one factor: whether matched prompt information is causally relevant to the supervised response. The likely headline therefore compresses to:
+   > response-relevant prompt fields leave stronger persistent traces than equally exposed irrelevant fields.
+   That is a clean causal result, but not yet a sufficiently large answer to “when does reading become learning?”
+
+2. **The most likely positive result is too unsurprising.**
+   If response-relevant information is written more strongly, a reviewer can reasonably interpret this as the natural consequence of gradients flowing through features useful for predicting the target. The experiment is cleaner than prior work, but cleanliness alone does not create a major knowledge delta.
+
+3. **The surprising opposite direction is already strongly pressured by nearby prior work.**
+   Input-only, target-absent information is already known to be memorized during fine-tuning. Thus broad incidental write-through is no longer an untouched conceptual possibility; S05 mainly isolates response relevance as one determinant.
+
+4. **Training-time memorization dynamics are also already an active object.**
+   Existing instruction-tuning memorization work tracks how memorization emerges across training. A staged-consolidation result would therefore require a stronger new law than the current synthetic relevance manipulation naturally supplies.
+
+5. **The project risks exact-cell novelty.**
+   “Matched exposure while toggling response relevance” is a good identification cell, but the current scientific consequence does not clearly exceed that cell. Broadening the rhetoric to all conditional learning would overstate what the pilot identifies.
+
+6. **Recipe/synthetic-regime risk remains secondary but real.**
+   Persistent prompt-side memory must be measured in a controlled fine-tuning regime. If the first clean effect is weak, the natural temptation is to increase dose or synthetic structure, recreating the execution drift the project is designed to avoid.
+
+### Reviewer compression
+
+> Prior work already shows that response-only fine-tuning can alter prompt modeling and can memorize input-only information. This work cleanly shows that task relevance changes how strongly matched prompt fields are retained.
+
+This is technically useful, but under the current Sasano/Main bar it is not enough.
+
+### Final verdict
+
+**KILL.**
+
+### Anti-resurrection
+
+Do not revive S05 by:
+- increasing training dose until a stronger memorization effect appears;
+- adding model families / optimizers;
+- converting it into privacy extraction;
+- reframing the matched relevance contrast as a universal theory of conditional learning;
+- adding mechanism after the behavioral result.
+
+A future topic may reuse the broader “conditioning vs durable learning” pressure only if a natural phenomenon creates a larger consequence-bearing question with a direct attack.

@@ -1,6 +1,6 @@
 # S08 — Is Metacognitive Control Shared?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILL — registration cancelled after significance/taste re-audit (2026-09-21)  
 **Registered:** 2026-09-18  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** mechanistic interpretability / metacognitive control / causal dissociation
@@ -226,3 +226,54 @@ No new dataset, human annotation or judge model is required.
 - confidence must be judged from free-form verbal explanations instead of a direct answer distribution;
 - success depends on curating a special task set where stopping behavior looks clean.
 
+
+
+---
+
+## Final significance / Sasano-taste audit — KILL
+
+**This section is authoritative and supersedes all earlier pilot-authorization language.**
+
+S08 is killed not because the experiment is impossible, but because the strongest plausible result is not important enough under the current Sasano/Main taste bar.
+
+### Mother question under review
+
+> Is internal confidence a shared metacognitive control variable reused across answer/abstain and reasoning continue/terminate decisions, or do these behaviors rely on separable control states?
+
+### Why the topic is killed
+
+1. **The strongest positive result is too easy to compress into an architectural detail.**
+   - Shared result: the same confidence state is read by multiple policies.
+   - Separate result: abstention and termination use different control states.
+   Neither conclusion by itself substantially changes how we understand reasoning, learning, or language understanding.
+
+2. **The “so what?” problem survives even under clean causal identification.**
+   A reviewer can reasonably ask why two distinct decision policies should have been expected to share one controller in the first place. Demonstrating double dissociation may therefore feel like mechanistic confirmation of an unsurprising possibility rather than a new scientific law.
+
+3. **Nearby behavioral work already weakens the surprise.**
+   Existing work distinguishes confidence deficits from termination delay and shows reasoning can continue after the answer is effectively committed. S08 would then risk compressing to:
+   > prior work separated the behaviors; we show the internal control signals are separable too.
+   That is too close to a behavior-known → mechanism-follow-up pattern.
+
+4. **Broadening the question to universal metacognition creates experiment explosion.**
+   A genuinely larger claim would require multiple metadecisions such as abstention, verification, retrieval, tool use, backtracking, and help-seeking. This would multiply tasks, readouts, interventions and confounds, violating the small-decisive-experiment preference.
+
+5. **The topic also retains construct risk.**
+   Before comparing architectures, the project must first establish reliable causal confidence and termination-control handles in the same model. Thus the first pilot partly validates the instrument rather than directly answering the scientific question.
+
+### Final verdict
+
+**KILL.**
+
+### Anti-resurrection rule
+
+Do not revive S08 by:
+- adding more metadecisions to claim a universal metacognitive controller;
+- adding more models or datasets;
+- hunting heads, neurons, SAEs or cleaner steering vectors;
+- reframing the work as an early-exit or efficiency method;
+- arguing that causal double dissociation is sufficient significance by itself.
+
+### General lesson
+
+> “Do A and B share an internal mechanism?” is not automatically an important mechanistic question. Before selecting such a topic, ask what major understanding changes in the shared world versus the separate world. If the answer is only “the architecture is different,” the mother question is usually too weak.

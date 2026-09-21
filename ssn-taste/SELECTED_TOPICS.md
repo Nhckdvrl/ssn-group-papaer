@@ -6,17 +6,17 @@ Purpose: record only questions that survive real nearest-prior novelty checking,
 
 ## Admission rule
 
-A topic can enter this file only when all of the following are true:
+A topic enters this file only when it has survived the **importance → knowledge delta → direct attack → execution** audit.
 
-1. **Worth asking:** the question is understandable without elaborate framing and there is a natural reason a reviewer would want to know the answer.
-2. **Real difference:** nearest prior work does not already answer the same parent question; the difference is not merely a new model, dataset, language, condition, or exact experimental cell. Normal overlap with neighboring literatures is expected; novelty does **not** require zero conceptual overlap.
-3. **Correct scientific width:** the parent RQ, claim scope, and Related Work neighborhood are calibrated against real ACL / EMNLP / NAACL Main papers and Sasano-approved work. Do not over-narrow merely to manufacture a perfectly isolated novelty cell.
-4. **Scientific experiment, not evaluation disguised as science:** after stripping away the Introduction rhetoric, the main experiment must study a phenomenon, learning/representation/behavioral law, causal relation, trade-off, or natural process. If the work reduces to constructing a dataset and comparing methods/metrics/robustness/leaderboards, do not select it.
-5. **Data path is natural and realistic:** do not require large synthetic benchmark construction, hard-to-obtain ground truth, or an artificial dataset merely to make the question measurable. Small controlled stimuli are allowed as identification instruments.
-6. **Exploratory rather than anomaly gambling:** several plausible outcomes should remain scientifically interpretable, but this alone is not sufficient for selection.
-7. **Feasible:** there is a cheap initial experiment that directly reduces uncertainty without large pretraining or a massive annotation campaign.
+1. **Worth knowing:** an average reviewer can understand in ~30 seconds why the answer matters, and the major possible worlds would change a real understanding of learning/reasoning/generation/representation—not merely reveal a local architectural difference.
+2. **Real scientific pressure:** the question grows from an actual contradiction, unexplained component, questionable premise, changed regime, or newly attackable old problem—not a literature blank or future-work cell.
+3. **Main-level knowledge delta:** nearest prior does not already answer the same decisive unknown. Normal conceptual overlap is expected; new model/data/language/condition alone is insufficient.
+4. **Direct attack exists now:** a small first experiment can distinguish the main scientific worlds. The pilot should primarily answer the science, not first invent/validate a probe, evaluator, latent construct, or benchmark.
+5. **Execution stays subordinate:** data, training recipe, scale, and mechanism do not naturally explode. Prefer existing ground truth, small programmatic instruments, within-run/same-state interventions, and minimal robustness checks.
+6. **Outcome significance, not story flexibility:** opposite/null outcomes count only when they alter a live belief, rule out a real explanation, or revise an important assumption. Merely being able to narrate every outcome is not enough.
+7. **Mechanism is optional depth:** mechanistic work is welcome when it explains an independently important puzzle. A head/vector/circuit or “A and B use different internal states” is not sufficient significance by itself.
 
-Mechanistic depth, surprising results, large model sweeps, and complex methods are not admission requirements. For mechanistic-interpretability topics, prefer a Zhao/Cho-style chain from representation to computation/transformation to causal mechanism rather than head/probe hunting.
+Selected topics are **not positive taste exemplars**. Selection only means the topic is currently worth spending real time on its first decisive experiment.
 
 ---
 
@@ -35,22 +35,6 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 **Nearest-prior ownership boundary.** Existing work owns neighboring objects such as event-boundary detection/behavior, externally engineered situation working memory, discourse circuits, and temporal feature extraction. S04 does not require zero overlap with these literatures. Its contribution must instead explain **what internal situation information is transformed at a boundary and how that transformation causally supports later narrative understanding**.
 
 **Mechanistic path.** Representation → update computation/transformation → implementing pathway/component → causal intervention. Do not reduce the project to a boundary probe, SAE feature, or head-discovery paper.
-
----
-
-### S05 — When Does Reading Become Learning?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S05_WHEN_DOES_READING_BECOME_LEARNING.md`
-
-**Parent question.** Under ordinary response-only SFT, prompt/context information is available to the model but receives no direct token loss. What determines whether that information remains transient conditioning, is compressed into only the task-sufficient information needed to predict the response, or becomes persistent parameter memory?
-
-**Scientific pressure.** EACL 2026 establishes that input-only, target-absent information can be unintentionally memorized and explicitly suggests downstream-task utility matters, but does not causally match exposure while changing only response relevance. S05 targets that missing quantity.
-
-**Minimum identification.** Match prompt-side exposure within one SFT run while changing only whether the information is causally necessary for predicting the response; use a small dose ladder and direct-supervision positive control.
-
-**Claim boundary.** Do not turn S05 into privacy extraction, prompt-loss tuning, or an overfitting study. If the relevance effect appears only under extreme repetition or changes qualitative direction across modest doses, kill.
 
 ---
 
@@ -86,23 +70,46 @@ Mechanistic depth, surprising results, large model sweeps, and complex methods a
 
 ---
 
-### S08 — Is Metacognitive Control Shared?
+### S10 — Does the Language We Plan to Speak Change Event Construal?
 
 **Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S08_SHARED_METACOGNITIVE_CONTROL.md`
+**Registered:** 2026-09-21  
+**Detailed registration:** `S10_THINKING_FOR_SPEAKING_EVENT_CONSTRUAL.md`
 
-**Parent question.** Is internal confidence a reusable metacognitive control variable shared across behaviours, or do answer/abstain and reasoning continue/terminate decisions rely on separable monitor/control states?
+**Parent question.** When the same multilingual multimodal model sees the same non-linguistic event, does the language it is preparing to use change its Manner-vs-Path event construal **before any language-specific description is produced**, or do cross-linguistic differences arise only during verbalization?
 
-**Scientific pressure.** Confidence has been causally shown to control abstention, while reasoning work independently finds termination delay and manipulable thinking-budget/reflection states. The unresolved object is the functional architecture linking confidence to distinct metadecisions.
+**Scientific pressure.** Human thinking-for-speaking research has debated for decades whether language-specific motion packaging changes non-verbal event cognition, but cross-population and bilingual comparisons cannot fully hold developmental history and experience fixed. A multilingual multimodal model makes a new within-agent intervention possible: hold weights and visual input fixed, randomize anticipated output language, and test the event decision before vs. after verbalization.
 
-**Minimum identification.** Fork identical native reasoning prefixes into forced-answer and continue-reasoning branches to label confidence and native termination at the same state; then perform confidence→termination and termination→confidence cross-steering. Shared, hierarchical, and double-dissociated architectures make different predictions.
+**Minimum identification.** Use matched Manner/Path motion triads and cross language with output order. In `Choice → Description`, the similarity choice must be emitted before the language-specific caption, eliminating the trivial explanation that the model merely rereads its own description. `Description → Choice` measures the easier verbalization/self-conditioning route.
 
-**Claim boundary.** Do not turn S08 into confidence calibration, another early-stop method, a “when to think” benchmark, or a stopping-vector catalog.
+**Claim boundary.** Do not turn S10 into a generic multilingual VLM benchmark, a claim that models prove human linguistic relativity, or a hidden-state probing paper. The scientific object is whether anticipated language causally alters pre-verbal event construal within the same artificial agent.
+
+---
+
+### S11 — Same Number, Different Information: Value vs Measurement Precision
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-21  
+**Detailed registration:** `S11_VALUE_VS_MEASUREMENT_PRECISION.md`
+
+**Parent question.** When two numerical expressions have the same central value but carry different measurement precision, does a language model separate **value** from **reported epistemic precision**, or collapse both into one numerical object?
+
+**Scientific pressure.** Recent work increasingly emphasizes format-invariant number magnitude representations and robustness to alternative numerical notations. But in scientific measurement, some same-value surface differences are intentionally information-bearing: `2.0 m` and `2.00 m` can report different precision. The unresolved boundary is therefore **when numerical form should be ignored and when it must be preserved**.
+
+**Minimum identification.** Cross pure-value and measurement contexts while independently varying precision and notation. A correct selective-invariance system should ignore notation/trailing-zero differences when only mathematical value matters, but use precision differences for downstream measurement decisions. Value-collapse and generic surface-sensitivity predict distinct failure patterns.
+
+**Claim boundary.** Do not turn S11 into a significant-figures quiz, generic numeracy benchmark, scientific QA benchmark, or hidden-state probe paper. The scientific object is selective invariance between numerical value and measurement precision.
 
 ---
 
 ## Explicitly cancelled registrations
+
+- **S05 — When Does Reading Become Learning?**: registration cancelled after the 2026-09-21 importance-first re-audit. The broad conditioning-vs-learning question is attractive, but the clean experiment mainly isolates an exact causal cell: whether response-relevant prompt fields leave stronger persistent traces than matched irrelevant fields. The most likely result is easy to explain from target-relevant gradient pressure; the surprising opposite direction (input-only write-through) and training-time memorization are already strongly occupied by nearby work. The honest knowledge delta is therefore too small relative to the broad mother question. Do not revive by adding dose/model sweeps, privacy framing, or post-hoc mechanism.
+
+
+
+- **S08 — Is Metacognitive Control Shared?**: registration cancelled after a significance/Sasano-taste re-audit. Even a clean shared-vs-dissociated causal result compresses mainly to an internal architectural distinction: shared confidence readout versus policy-specific control. Nearby work already separates confidence deficits, termination delay, and post-commitment reasoning, weakening the surprise. Broadening to many metadecisions would cause experiment explosion. Do not revive via more behaviors, models, steering methods, or component hunting.
+
 
 - **S03 — From Document End to Task Done: How Does Post-Training Acquire Goal-Relative Stopping?**: registration cancelled after actual pilot execution. The developmental interpretation was unstable across training budgets and model families; plausible causal stories changed with recipe, while follow-up tests failed to reveal a family-stable mechanism. The remaining robust state-vs-readout fact is too narrow / partly structural to support the original Main-sized parent. Do not revive via more SFT budgets, model families, or base→SFT→DPO/RL trajectory reconstruction. Final adjudication 2026-09-19 (`K195`, `failed/KILLED_LEDGER_CONTINUATION.md`): E04 gave one clean fact — decoupling the goal destroys goal-relative stopping while leaving generic boundary competence intact — but no resolution on which supervision carries the binding. Archived; do not reopen under a new name.
 

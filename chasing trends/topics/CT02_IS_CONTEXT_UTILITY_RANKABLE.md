@@ -1,6 +1,6 @@
 # CT02 — Is Context Utility Rankable? Set-Dependent Routing for Sparse Attention
 
-**Status:** PILOT-AUTHORIZED  
+**Status:** KILLED AFTER NOVELTY RE-AUDIT — 2026-09-21  
 **Registered:** 2026-09-19  
 **Primary target:** ICLR / ICML / NeurIPS; ACL Main is plausible if the final story centers language/reasoning behavior.  
 **Startup/HF trigger:** Tencent SAS public paper + Qwen3 AttnGate checkpoints/code.  
@@ -709,3 +709,18 @@ The first task is **not** to train a set-aware router.
 The first task is:
 
 > **measure whether sparse-attention utility is rankable.**
+
+
+---
+
+# 18. Novelty re-audit verdict — 2026-09-21
+
+> **KILL**
+
+The project is not killed because the rankability question is meaningless. It is killed because the distance to the nearest 2026 causal/set-aware sparse-routing work is too small relative to the engineering cost of proving a sufficiently stronger structural claim.
+
+The strongest collision is *Learning What Matters: Supervising Sparse Attention Routing with Causal Evidence Sets* (2026), which already moves sparse routing beyond independent attention-score imitation toward causal evidence sets, inter-block interaction, redundancy, and multiple sufficient evidence structures. CT02's remaining distinction—nestedness / conditional marginal ranking reversals / formal non-rankability—is real but too narrow and reviewer-sensitive.
+
+Given current resource priorities, we should not spend GPU time establishing a difficult structural separation whose final paper may still be compressed to “set-aware / causal sparse selection under a sharper formalization.”
+
+**Anti-resurrection:** Do not revive as “non-additive context utility,” “budget-conditioned routing,” “set-aware sparse attention,” “submodular sparse attention,” or “ranking is insufficient” unless a materially new empirical object or deployment regime creates a wider novelty gap.

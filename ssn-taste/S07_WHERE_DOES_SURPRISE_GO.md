@@ -207,3 +207,33 @@ Belief-R can be used only as neighboring/natural validation for belief revision;
 - more than two semantic skins are needed to convince ourselves the effect is not wording;
 - the project expands into a POMDP benchmark.
 
+
+
+---
+
+## 2026-09-21 importance-first re-audit — KEEP
+
+S07 survives the revised significance bar.
+
+### Why it matters
+
+A prediction error does not tell an inference system what was wrong. It can revise:
+- the current hidden state,
+- the reliability/observation process,
+- or the dynamics/rule generating future states.
+
+These worlds imply different future interpretation of the same environment. The question is therefore about **hierarchical epistemic credit assignment**, not merely whether three internal representations differ.
+
+### Why current literature creates pressure
+
+Recent work separately shows that LLMs can represent belief states in-context, struggle to weight source reliability appropriately, and adapt to changing dynamics. Those component abilities make the unresolved allocation problem more—not less—natural: when all explanations are available, which one absorbs the residual?
+
+### Why the first experiment is already science
+
+The anomaly is held fixed while prior history changes; a trusted state reset plus later source-use and transition-prediction readouts directly identifies persistent revision locus. No latent probe or training recipe is required before the main scientific worlds diverge.
+
+### Final gate
+
+KILL if the fingerprints only exist because the templates explicitly tell the model which explanation is plausible, or if the result cannot survive one second semantic realization without becoming a benchmark project.
+
+**Final status: KEEP — PILOT-AUTHORIZED.**
