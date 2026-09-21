@@ -85,6 +85,23 @@ Selected topics are **not positive taste exemplars**. Selection only means the t
 **Claim boundary.** Do not turn S10 into a generic multilingual VLM benchmark, a claim that models prove human linguistic relativity, or a hidden-state probing paper. The scientific object is whether anticipated language causally alters pre-verbal event construal within the same artificial agent.
 
 ---
+
+### S11 — Same Number, Different Information: Value vs Measurement Precision
+
+**Status:** SELECTED — PILOT-AUTHORIZED  
+**Registered:** 2026-09-21  
+**Detailed registration:** `S11_VALUE_VS_MEASUREMENT_PRECISION.md`
+
+**Parent question.** When two numerical expressions have the same central value but carry different measurement precision, does a language model separate **value** from **reported epistemic precision**, or collapse both into one numerical object?
+
+**Scientific pressure.** Recent work increasingly emphasizes format-invariant number magnitude representations and robustness to alternative numerical notations. But in scientific measurement, some same-value surface differences are intentionally information-bearing: `2.0 m` and `2.00 m` can report different precision. The unresolved boundary is therefore **when numerical form should be ignored and when it must be preserved**.
+
+**Minimum identification.** Cross pure-value and measurement contexts while independently varying precision and notation. A correct selective-invariance system should ignore notation/trailing-zero differences when only mathematical value matters, but use precision differences for downstream measurement decisions. Value-collapse and generic surface-sensitivity predict distinct failure patterns.
+
+**Claim boundary.** Do not turn S11 into a significant-figures quiz, generic numeracy benchmark, scientific QA benchmark, or hidden-state probe paper. The scientific object is selective invariance between numerical value and measurement precision.
+
+---
+
 ## Explicitly cancelled registrations
 
 - **S05 — When Does Reading Become Learning?**: registration cancelled after the 2026-09-21 importance-first re-audit. The broad conditioning-vs-learning question is attractive, but the clean experiment mainly isolates an exact causal cell: whether response-relevant prompt fields leave stronger persistent traces than matched irrelevant fields. The most likely result is easy to explain from target-relevant gradient pressure; the surprising opposite direction (input-only write-through) and training-time memorization are already strongly occupied by nearby work. The honest knowledge delta is therefore too small relative to the broad mother question. Do not revive by adding dose/model sweeps, privacy framing, or post-hoc mechanism.
@@ -109,4 +126,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 4.**
+**Current selected topic count = 5.**
