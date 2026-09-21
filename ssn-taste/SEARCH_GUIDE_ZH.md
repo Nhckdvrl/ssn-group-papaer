@@ -1,934 +1,440 @@
 # ssn-taste 科研选题搜索指南（Canonical）
 
-最后系统整理：2026-09-19
+最后系统整理：2026-09-21
 
-这份文件是 ssn-taste 的长期找题规范。它描述“怎么找题”，不保存某一轮临时候选。
-当前正式选题状态以 README.md、SELECTED_TOPICS.md、各 Sxx registration 和最新 commits 为准。
+这份文件只回答一个问题：
 
----
+> **怎样找到真正值得投入时间、符合 Sasano 审美、并有 ACL/EMNLP/NAACL/ICML/ICLR/NeurIPS Main 潜力的研究问题？**
 
-# 1. 目标
+它不是固定流水线，也不是 checklist。下一轮 agent 必须像研究者一样判断；如果发现流程本身正在把搜索带偏，可以主动停止、重新读论文和 Slack、换 lineage、重构问题。
 
-优先目标会议：
-
-- ACL Main
-- EMNLP Main
-- NAACL Main
-
-持续用以下会议校准 scientific taste、问题宽度和 mechanism depth：
-
-- TACL
-- ICLR
-- ICML
-- NeurIPS
-
-可以广泛从以下领域获取 idea provenance：
-
-- CVPR / ICCV / ECCV
-- image / video generation
-- multimodal
-- speech / audio
-- robotics
-- general ML / optimization
-- cognitive science / neuroscience
-- statistics / information theory
-- control / dynamical systems / statistical physics
-
-但跨领域迁移的对象必须是：
-
-> scientific pressure、矛盾、competing explanations、identification logic、directed asymmetry、regime change、paper-growth pattern。
-
-禁止机械迁移名词：
-
-> “人类有 X，所以问 LLM 有没有 X”
-> “CV 有 Y，所以把 Y 换成 language”
-> “控制论里叫 Z，所以给旧现象换个 Z 的名字”
+当前 topic 状态以 `README.md`、`SELECTED_TOPICS.md`、各 registration、`FAILED_TOPICS*.md` 和最新 commits 为准。
 
 ---
 
-# 2. Repo 真相源与文件职责
+# 0. 最高优先级：先找“值得知道的问题”，再找 novelty 和实验
 
-每次新一轮开始，先恢复 repo，不能相信旧 prompt 或聊天摘要永远最新。
+整个搜索最重要的顺序是：
 
-必须读取：
+> **重要/有意思的未知 → 真实 scientific pressure → 新 knowledge → 可直接攻击 → 执行现实**
 
-1. README.md
-2. SELECTED_TOPICS.md
-3. 全部当前 selected topic registration
-4. 全部 FAILED_TOPICS*.md
-5. RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md
-6. 最近 commits / handoff
+不要反过来：
 
-优先级：
+> 先发现一个 literature 空格 / 一个 vector / 一个 benchmark cell → 再想办法解释为什么重要。
 
-> 最新 repo 正式文件 > 历史 handoff > 旧聊天状态。
+一个候选最先必须过两问：
 
-各文件职责：
+### A. 30 秒 reviewer test
 
-- README.md：当前正式状态与目录索引。
-- SEARCH_GUIDE_ZH.md：长期 canonical 搜题规范。
-- NEXT_ROUND_PROMPT_ZH.md：下一轮 agent 的短 handoff，只保存当前状态与启动动作。
-- SELECTED_TOPICS.md：只有已经 PILOT-AUTHORIZED 的题。
-- Sxx_*.md：冻结该题的 mother question、novelty boundary、pilot、kill condition。
-- FAILED_TOPICS*.md：防重复、防复活、学习失败模式；不是 taste exemplar。
-- RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md：历史 novelty 纠偏记录；不是 active candidate list。
+不用 mechanism 名词、不用 benchmark 名词，能不能让一个普通 AI/NLP reviewer 在 30 秒内明白：
 
-当前自己生成过的任何题——无论 selected、serious、active、failed、S/L/F/Unring——都只能作为：
+> **为什么这个问题值得知道？**
 
-- process evidence；
-- dedup / anti-resurrection evidence；
-- 实验资产复用来源；
-- 搜索失败诊断。
+Sasano 的真实反馈反复强调：top conference 的 Introduction 要让平均 reviewer **納得できる + 面白い**。Reviewer 不会替作者挖掘“哪里有意思”。
 
-绝不能把它们当“好题应该长这样”的正向 taste exemplar。
+### B. Consequence test
 
----
+假设两个主要 possible worlds 分别成立：
 
-# 3. 正向 scientific taste 只来自真实外部来源
-
-## 3.1 Sasano 的真实判断
-
-每轮都应该重新抽样 Sasano 对真实学生课题/论文的反馈，而不是把几句 slogan 永久固化。
-
-目前最稳定的判断模式：
-
-- Sato 型：简单直观的 puzzle → 清楚 scientific object → 自然 competing explanations → controlled experiment 区分。
-- Guo 型：如果和 prior 的区别只是新模型、新语言、新数据、新条件，通常 novelty 不够。
-- Hamdi 型：Introduction 要让普通 reviewer 同时“納得できる + 面白い”；RQ 与主要 findings 对齐；unexpected result 完全可以成为好结果。
-- changed-premise 型：旧问题可以重做，但必须指出哪个 premise 真的变了，以及为什么旧答案不能直接推出新答案。
-- Yano / Youchi 型：相似 prior 不自动 kill；如果缺失 control 或 structural defect 会改变原论文解释，successor work 可以成立。
-- mechanism 不是必选项：一个 clean behavioral / learning law 也可以 Main-sized。
-- technically fancy 不等于 mother question 有价值。
-
-## 3.2 强论文 calibration
-
-每轮至少抽样几篇近年的强 ACL / EMNLP / NAACL Main，并用 ICLR / ICML / NeurIPS / TACL 做补充。
-Best / Outstanding 用来学习 taste 上限，不是最低门槛；普通但明显强的 Main 更适合校准正常 novelty 尺度。
-
-读论文时不只问“做了什么”，而要做 paper autopsy：
-
-1. Mother question 是什么？
-2. 在 method / benchmark 出现以前，为什么这个问题就值得问？
-3. 原本有哪些 scientific pressures / contradictions？
-4. 有哪些真正不同的 possible worlds？
-5. 哪个 experiment 真正把它们分开？
-6. 如果结果反过来，paper 还成立吗？
-7. 它怎样从一个 seed 长成 Main-sized story？
-8. 它和 nearest prior 实际重叠了多少？为什么 overlap 没有杀掉它？
-
-重点学习 Zhao / Cho 一类 mechanistic work 的出题方式：
-
-> 同一个很拥挤的 scientific object 可以连续做很多篇，只要 explanatory decomposition 真正改变。
-
-不要学习成：
-
-> “再找一个 head / vector / subspace / circuit”。
-
----
-
-# 4. 用户真正想要的题
-
-优先偏好：
-
-- mechanistic interpretability / LLM science
-- learning / post-training
-- reasoning / inference
-- architecture / inductive bias
-- generation
-- understanding
-- 简单但根本的问题
-- 形成过程 / learning dynamics
-- internal computation / functional architecture
-- 可以用小而直接的 experiment 识别的问题
-
-不偏好：
-
-- benchmark / dataset 作为主贡献
-- evaluator / metric validity
-- RAG
-- data-centric work
-- model-zoo
-- 大规模人工造数据
-- complicated linguistics
-- “新模型重新测老现象”
-- RL / agents / RLVR 仅仅因为热门
-- method stacking
-- 工程刷分
-- 一个已知现象后面机械接 mechanism
-
-简单语义、受控 synthetic micro-world 可以使用，但必须只是 identification instrument，不得变成论文主体。
-
----
-
-# 5. 好 mother question 的最低形态
-
-好的问题通常满足：
-
-- 一句话普通 reviewer 能懂。
-- 在知道答案以前就值得问。
-- 删除所有 model / benchmark / method 名称以后仍然成立。
-- 至少有 2–3 个 qualitatively different possible worlds。
-- 不同世界成立会改变我们如何理解 learning / computation / representation / generation / understanding。
-- 有一个相对直接的 experiment 能明显压缩 explanation space。
-- 结果不依赖“effect 必须显著且方向符合我们猜测”才能写 paper。
-- Main-size 来自 explanatory reach，而不是实验数量。
-
-核心 sanity check：
-
-> 去掉所有专有名词后，这篇论文告诉我们关于模型学习、理解、生成、推理或内部计算的什么新事实？
+> **我们对模型的 learning / reasoning / generation / representation / architecture 的什么重要理解会改变？**
 
 如果答案只是：
 
-> “在 dataset D 上 method M 比 baseline 高 X 分”
+- “说明内部 architecture 不一样”
+- “说明 A 和 B 是两个不同 representation”
+- “说明这个 vector 有因果作用”
+- “说明 effect 在这个 setting 存在”
 
-直接淘汰。
+通常不够。
 
----
-
-# 6. Novelty：Main-level knowledge delta，不是零 overlap
-
-AI/NLP 论文不要求数学意义上的完全无交叉，也不要求把所有可能 confound 消灭到绝对严谨。
-
-正常 Main paper 与 prior 有大量 overlap 很常见。
-
-真正应该问：
-
-> nearest prior 是否已经回答了同一个 decisive unknown，并且已经用足够的 evidence 区分了我们关心的同一组 possible worlds？
-
-不要因为以下理由自动 kill：
-
-- broad parent 已有人做；
-- behavior 已有人观察；
-- 相关 mechanism tool 已有人用；
-- 一个世界在 paper A 出现、另一个世界在 paper B 出现；
-- 同一 scientific object 很拥挤；
-- 论文作者在 future work 里提过类似方向。
-
-真正的 kill：
-
-- same decisive unknown 已经被直接回答；
-- reviewer 一句话就能用已有论文的核心 finding 原封不动描述我们的贡献；
-- novelty 主要是新模型 / 新数据 / 新语言 / 新 modality / 新名词；
-- 只是 cleaner replication；
-- 只是 paper A × paper B 的交集；
-- 为逃 prior 不断把题切成更小 exact cell；
-- honesty 之后的 mother question 太窄，不够 Main；
-- experiment 无法识别主解释；
-- story 实际是 benchmark / evaluation / method comparison。
-
-Reviewer compression 必须写出来：
-
-> Prior 已经知道 X。
-> 但 Y 仍然未知，因为 Z。
-> 我们的实验第一次区分 A / B / C。
-
-如果这三句写不清楚，继续审，不要靠 rhetoric 硬升。
+S08 的失败是重要教训：shared-vs-separate control 可以 technically clean，但如果 strongest finding 仍只是局部架构差异，scientific consequence 太弱。
 
 ---
 
-# 7. 不要过度严谨到把题杀死
+# 1. 好题的五个核心锚点
 
-过去一个明显 drift 是：
+不要把下面五条当打分表；它们是优先级很高的研究判断。
 
-> 一发现 prior overlap 或一个潜在 confound，就继续把题压窄，直到只剩没人研究的小缝。
+## 1. Important question
 
-要避免。
+问题在知道答案前就值得问，而且答案不是只对一个 niche setup 有意义。
 
-要求控制的是：
+优秀顶会工作经常具备以下一种压力：
 
-> 会改变核心 scientific interpretation 的 load-bearing confound。
+- 挑战一个社区广泛接受但未真正验证的 premise；
+- 两个现象/结果无法被同一个简单解释同时解释；
+- 一个能力看似成功，但可能由完全不同的 computation 实现；
+- 一个“优势/灵活性/改进”可能反而允许模型绕过真正重要的 computation；
+- 社区把两个量当成同一个，但它们若分离会改变重要结论；
+- 训练与部署、指标与真实对象、endpoint 与 formation 之间存在结构性错位；
+- 一个经典问题以前无法 intervention，现在出现了新的 attack。
 
-不要求：
+**注意：** “A ≠ B”“shared vs separate”“encoded vs used”只是可能的结构，不是 idea generator。本身没有 importance。
 
-- 每个 surface factor 都完全 orthogonal；
-- 每个 possible mechanism 都一次性排完；
-- pilot 阶段就达到 theorem-like identification；
-- 一个 Main story 必须和所有论文零交集。
+## 2. Real scientific pressure
 
-小实验只需要让主要 possible worlds 给出不同 prediction，并让 reviewer 相信主解释空间真的被压缩。
+题目必须从真实世界中的矛盾、失败、假设或 unexplained pattern 长出来。
 
-如果为了消除一个次要 confound，需要把 4-arm design 膨胀成 20-arm factorial、造很不自然的环境、或引入大量 auxiliary assumptions，应重新判断：
+优先来源：
 
-> 这个题是不是本来就不可识别，还是我们在追求不必要的完美？
+- 多篇强论文之间无法统一解释的结果；
+- 作者真正依赖但没有验证的 load-bearing assumption；
+- strong negative / counter-intuitive evidence；
+- changed premise：旧解释成立所依赖的条件已经改变；
+- 一个成熟问题突然获得新的可干预性。
+
+弱来源：
+
+- 最近 paper 的 future work；
+- “这个 exact cell 好像没人测”；
+- “换新模型再测一次”；
+- “behavior 已知，所以再做 mechanism”。
+
+Remove-trigger-paper test：
+
+> 删除启发你的那篇 paper，这个问题还能否从其他独立 pressure 自然出现？
+
+不能的话，通常太像 follow-up。
+
+## 3. Real knowledge delta
+
+允许与 prior 大量 overlap。Main novelty 不是“没人说过这些词”。
+
+必须能写：
+
+> **Prior 已经知道 X；但 Y 仍然未知，因为 Z；我们第一次能区分 A/B/C。**
+
+真正 kill 的是：
+
+- nearest prior 已经回答 same decisive unknown；
+- difference 只是 model / language / dataset / modality / condition；
+- cleaner replication；
+- paper A × paper B 的机械交集；
+- 为躲 prior 把问题切到一个没人关心的小格子。
+
+Sasano 的 Guo 案例是硬提醒：
+
+> 如果和先行研究差太小，应及时見切り，换题，而不是继续包装。
+
+## 4. A direct attack already exists
+
+Hamming 式原则：
+
+> 重要问题不仅要重要，还必须现在有一个 reasonable attack。
+
+在注册前，应已经能描述一个小而直接的 decisive experiment。
+
+好的 pilot：
+
+- 直接操纵 scientific variable；
+- 主要 possible worlds 给出不同 prediction；
+- 第一轮就在回答 science。
+
+危险 pilot：
+
+- 先看看现象存不存在；
+- 先看看能不能找到一个 probe/vector；
+- 先验证自己发明的 measurement；
+- 需要大量 engineering 才知道 question 是否 measurable。
+
+S08 的另一个失败教训：
+
+> 如果第一轮主要是在赌“latent construct / causal handle 能不能抽出来”，而不是区分 scientific worlds，这个题风险很高。
+
+## 5. Execution must remain subordinate to the question
+
+数据、recipe、模型、tool 都应该是 instrument，不应吞掉 mother question。
+
+优先：
+
+- 现成公开数据 + 原生 ground truth；
+- 几十到几百个程序化 controlled stimuli，答案解析可得；
+- inference-only / same-run causal contrast；
+- 一两个便宜 robustness checks。
+
+危险：
+
+- 大规模人工 annotation；
+- LLM judge 是主要 ground truth；
+- synthetic generator 越做越复杂；
+- model zoo；
+- optimizer × LR × dose × family 大矩阵；
+- 为救一个题不断增加 arms / controls。
+
+如果 harness 的复杂度增长速度快于 scientific insight，优先 KILL。
 
 ---
 
-# 8. 最有效的 idea generator：先找 scientific pressure，不先想标题
+# 2. Sasano taste：真正需要牢牢记住的四件事
 
-当前最重要的搜索方式：
+不要把 Sasano taste 简化成“喜欢 interpretability”。
 
-> 先找 unresolved / conflicting / unclear component，再升级成实验问题。
+### ① 普通 reviewer 必须一眼看到为什么有意思
 
-不是：
+研究不是让 reviewer 努力挖亮点。
 
-> 先 brainstorm 30 个漂亮标题，再给每个找 novelty gap。
+问题、动机、实验、finding 应能顺着读下来；RQ 与核心 findings 应直接对应。
 
-## 8.1 多论文冲突 / open component
+### ② “意外”有价值，但不是必须方向正确
 
-优先找：
+与预期相反的结果完全可以很好。
 
-- Paper A 的结果支持解释 X；
-- Paper B 在另一个 setting 下更像解释 Y；
-- Paper C 出现 X/Y 都解释不好的结果；
-- 社区知道这些结果，但没有把隐藏变量 H 单独拿出来识别。
+关键是：
 
-然后问：
+> unexpected result 是否改变一个真实解释 / assumption？
 
-> 有没有一个更底层的 quantity / relation / control state，使这些结果成为不同 regime 下的自然表现？
+不是“只要结果不一样就有价值”。
 
-## 8.2 默认被当成同一个量，其实可能不同
+### ③ 内部差异不自动等于 main contribution
 
-非常高价值：
+Sasano 明确评价过：
 
-- endpoint performance 与 future learnability
-- accessibility 与 stability
-- representation 与 causal deployment
-- confidence 与 control
-- reading / use / writing
-- quality 与 memorization
-- local success 与 global computation
+> 输出相似、内部理解不同很有意思，能深化对模型行为的理解；但未必能成为论文主要结果。
 
-重点不在这些具体例子，而在结构：
+所以 mechanism 必须服务于更大的 scientific question，不能靠“内部不一样”自动升级 significance。
 
-> 社区用一个 observable 代理两个不同 scientific quantities。
+### ④ 对小 novelty 要敢于放弃
 
-## 8.3 Directed asymmetry
+如果 honest reviewer compression 后只是已有工作的一个小 extension，就换题。
 
-如果观察到：
+不要因为已经投入很多搜索时间就继续救。
 
-> A → B，但 B ↛ A
+---
 
-不要停在 transfer score。
+# 3. 从强论文学习“问题怎样长出来”，不要复制题型
+
+每轮必须持续重新校准，不要只读与当前 seed 最邻近的 literature。
+
+近年强工作反复体现的不是某种固定模板，而是：
+
+- **The Flexibility Trap (ICML 2026 Outstanding):** 挑战“arbitrary-order flexibility 是优势”这个主流 premise；优势本身允许模型绕过高不确定度、真正决定解法的 token。
+- **LLMs Get Lost in Multi-Turn Conversation (ICLR 2026 Outstanding):** 从 training/deployment 的结构错位出发，而不是从一个 benchmark gap 出发。
+- **Transformers are Inherently Succinct (ICLR 2026 Outstanding):** committee 直接强调 strong conceptual message；好的题可以是给一个熟悉对象提供新的解释视角。
+- **How much can language models memorize? (ICML 2026 HM):** 价值来自重新分解一个重要概念，而不只是多测 memorization。
+- **强 negative-result work:** 推翻“某训练方法真的创造了新能力”等基础假设时，null/negative 本身可以很重要。
+- **强 dynamics work:** 当 endpoint quality 与 memorization / transfer / controllability 等真正不同的时间尺度或 quantity 分离时，区别之所以重要，是因为它改变了我们对训练过程的理解，而不是因为“A ≠ B”形式漂亮。
+
+奖项论文只是 taste 上限，不是模板，也不是最低标准。要同时阅读普通但明显强的 Main papers，校准现实的 novelty 和实验规模。
+
+---
+
+# 4. 下一轮真正的 idea search 方法
+
+不要 brainstorm 30 个题名。
+
+先维护一个小型 **Important Pressure Portfolio**：
+
+> 大约 5–10 个你认为“如果能回答会真的改变理解”的 unresolved pressures。
+
+每个 pressure 只写三句话：
+
+- 社区现在相信/观察到了什么？
+- 哪一点不协调、未解释或 premise 可疑？
+- 为什么现在可能有新的 attack？
+
+来源要分散：
+
+- ACL / EMNLP / NAACL / TACL；
+- ICLR / ICML / NeurIPS；
+- CV / multimodal / generation / speech / robotics；
+- cognition / neuroscience / statistics / information theory / control 等。
+
+跨领域只迁移：
+
+> question structure、scientific pressure、identification logic。
+
+不要搬术语。
+
+当某个 pressure 同时出现：
+
+> **重要 + 未解 + 有新 attack**
+
+再锁一个 seed，深审到底。
+
+---
+
+# 5. 深审时才启用这些风险 Gate
+
+搜索早期不要让下面的 gates 压死 creativity；候选锁定后必须严格执行。
+
+## Significance Gate
 
 问：
 
-> 这种方向性是否说明 A 包含 B 的 prerequisite computation / control relation / richer state？
+> 最强 possible finding 写成一句普通话，真的重要吗？
 
-但必须排除简单 training-procedure confound；如果要靠巨大 factorial 才能救，kill。
+如果 reviewer 会回答“所以呢？”，KILL。
 
-## 8.4 Changed premise
+## Novelty Gate
 
-旧 failure 常被解释为 architecture/objective/premise P。
+读最危险 prior 的 abstract / intro / related work / actual experiment。
 
-如果新系统真正移除了 P，但 failure 仍存在：
+不是关键词查重，而是 same decisive unknown audit。
 
-> 原解释空间必须重开。
+## Identification Gate
 
-前提是“premise 真改变”，不是“模型更新了一代”。
+主要 worlds 必须能被一个相对直接的 intervention 区分。
 
-## 8.5 Endpoint → formation dynamics
+不要追求 theorem-like 完美控制；只处理会改变核心 interpretation 的 confound。
 
-如果 endpoint mechanism 已知，但形成过程存在独立 puzzle：
+## Construct Gate
 
-> 哪个 intermediate state / learning pressure / transient computation 让 final mechanism 成为可学习？
+核心变量最好直接 observable / manipulable。
 
-不要做无压力的 checkpoint archaeology。
+如果必须先发明一个 probe/vector/latent score 才能开始问问题，风险高。
 
-## 8.6 Same behavior, different computation
+## Data Path Gate
 
-相同成功行为可以由不同算法、不同 internal route 完成。
+优先顺序：
 
-好问题不是：
+> existing data → small programmatic stimuli → small auto-generated + spot check >>> manual annotation / judge / benchmark construction。
 
-> probe 能不能 decode？
+Synthetic 只能是 instrument，不能成为现象本身。
 
-而是：
+## Training Recipe Gate
 
-> 什么决定模型选择哪种 computation？这些 computation 在 transfer / intervention / failure 下有什么不同？
+对 learning/post-training 题，先问：
 
-## 8.7 Constraint / flexibility changes computation
+> causal variable 是不是训练 recipe/path 本身的复合产物？
 
-值得问的不是 generic regularization。
+S03 和 S09 是反例。
 
-而是：
+优先 same-run / same-state matched interventions。
 
-> 一个 constraint 是否迫使模型采用 qualitatively different algorithm？
-> 一个看似有利的 flexibility 是否反而允许模型绕过 globally decisive computation？
+如果 qualitative world 需要 optimizer × LR × dose × family sweep 才知道，KILL。
 
-## 8.8 Hidden decision / hidden oracle
+## Scale Gate
 
-成熟 workflow 中如果存在一个必须由人工/gold/oracle 做出的中间判断，而模型/理论从未把它当 scientific object：
+小模型/toy world 可以做 pilot，但最终 claim 若指向真实 LLM dynamics，必须有理由相信 pilot 对真实 regime 有意义。
 
-> 那个决定本身可能就是问题。
-
-## 8.9 旧科学争论获得新的 identification
-
-认知科学、统计、控制等旧问题可以借现代模型获得新的干预能力。
-
-但贡献必须是：
-
-> competing theories 以前不可区分，现在第一次可区分。
-
-不是：
-
-> “LLM 是否也有人类现象 X？”
+不需要一开始 model zoo，只做最少量 scale validation。
 
 ---
 
-# 9. 高风险 generator：默认禁止
+# 6. “所有结果都有意义”必须收紧
 
-以下模式除非有非常强的独立 pressure，否则默认不追：
+这是上一轮一个容易自我欺骗的规则。
 
-1. Recent paper X → “为什么会这样？”
-2. Recent paper X → future work 原句。
-3. Behavior 已知 → 再找 mechanism。
-4. Probe / SAE / head / vector / patching 先行。
-5. “encoded ≠ used” 这种 generic slogan，没有独立行为 puzzle。
-6. Architecture micro-puzzle：很 elegant，但答案不影响更大理解。
-7. Cross-domain terminology transfer。
-8. 新模型 / 新语言 / 新 benchmark 重新测老问题。
-9. Benchmark / robustness / metric / evaluator 主导。
-10. 大 synthetic dataset 只为了获得 ground truth。
-11. 只看 reasoning / RL / agents，因为论文最多最好搜。
-12. 复杂语言学细节，需要半页才能解释 why care。
-13. 只用 strong papers 当 kill database。
-14. 为了躲 prior 把自然问题拆成越来越窄的小格子。
-15. 为了救一个题不断加 training arms / controls，最后实验比 mother question 复杂得多。
+不能因为能给 A/B/C 各写一句 interpretation，就说不是 anomaly gambling。
+
+真正要求：
+
+> **每个主要 outcome 都必须改变一个当前 live belief、排除一个真实 explanation、或修正一个重要 assumption。**
+
+“没有 effect”只有在社区有真实理由预期 effect、或 null 本身排除重要理论时才有意义。
+
+否则：
+
+> “结果怎样都能解释”
+
+只是故事弹性，不是科学价值。
 
 ---
 
-# 10. Zhao / Cho-style mechanistic interpretability 规范
+# 7. Mechanistic interpretability 的正确位置
 
-Mechanism 是回答问题的工具，不是问题来源。
+Mechanism 是 explanation depth，不是 novelty tax。
 
 正确顺序：
 
-> natural puzzle / behavioral or learning law
-> → representation structure
+> important puzzle / law
+> → representation
 > → transformation / computation
-> → implementing component / pathway
+> → pathway/component
 > → causal intervention
-> → optional controllability
 
-不是每篇都必须做到所有层级。
+如果 behavioral / learning law 已经足够重要，不必硬加 circuit。
 
-最重要的是：
+尤其禁止：
 
-- representation 不是终点；
-- decodability 不是 causality；
-- component localization 只有在 higher-level computation 清楚后才有意义；
-- 不要从 neuron/head/vector 开始，再反向发明 mother question；
-- 如果一个行为 law 已经 Main-sized，机制可以后置，不要硬加。
+> probe/SAE/head/vector 先行 → 再反向发明 mother question。
 
-从 Zhao/Cho 真正要学的是：
-
-> 在拥挤领域中改变 explanatory decomposition，而不是换 interpretability tool。
+“同一行为是否由不同内部机制实现”只有在不同 mechanism 会改变更大的理论理解、transfer、failure 或 controllability 时才值得做。
 
 ---
 
-# 11. Experiment-grounding：题目必须落到真实实验对象
+# 8. 强制自我纠偏：不要完全服从这份指南
 
-在 candidate 进入深审后，立即回答：
+下一轮 agent **必须有权打断固定流程**。
 
-1. 数据从哪里来？
-2. scientific variable 真正是什么？
-3. manipulation / observation 是不是直接作用在这个 variable 上？
-4. 主 figure 会长什么样？
-5. 删除 benchmark / metric / method 名以后，结果还剩什么？
-6. 论文的语法主语是 model / learning / computation / representation / behavior / process，还是 dataset / benchmark / method？
-7. 需要多少人工构造？
-8. pilot 是否能在合理 GPU 时间内给 go/no-go？
+出现以下任一迹象时，立即暂停当前 generator：
 
-允许：
-
-- small controlled micro-world；
-- synthetic aliases；
-- factorial stimuli；
-- minimal intervention；
-
-前提是它们是 identification instruments。
-
-不允许：
-
-- 造一个大 synthetic benchmark，然后论文变成 leaderboard；
-- 大规模 annotation 才能知道 ground truth；
-- 主结果只是 method × dataset × perturbation × score。
-
-
-## 11.1 Data Path Gate
-
-数据路径本身是选题生死条件，不是后续工程细节。
-
-优先级：
-
-1. **现成公开数据 + 原生 ground truth**；
-2. **小规模程序化 controlled stimuli，答案可解析计算**；
-3. **少量自动生成 + 人工 spot-check**；
-4. **需要大量人工标注 / LLM judge / 专门造 benchmark** —— 强烈负面，通常 KILL。
-
-在 PILOT-AUTHORIZED 前必须回答：
-
-- 核心实验是否能在 **不超过几百个 controlled items** 或一个现成公开数据集上判生死？
-- ground truth 是否可以直接从构造规则/原数据得到，而不是靠另一个 LLM judge？
-- synthetic data 是不是只负责 identification，而不是现象本身？
-- 如果删掉 synthetic generator，是否有自然数据/已有文献说明同一 scientific pressure 确实存在？
-- 是否需要人工标注 hidden state、reasoning quality、semantic faithfulness 等难标变量？如果需要，优先 KILL 或换设计。
-- 数据构造是否偷偷把 hypothesis 写进模板里，例如只有某一 condition 出现特定 lexical cue？
-- 如果 pilot 成功，是否能用一个现成自然数据集做最小 ecological validation，而不是再造第二个大数据集？
-
-硬规则：
-
-> **如果为了让现象可测，必须造一个越来越复杂的数据生成器，那么很可能 generator 已经成为真正的 contribution。此时应优先 KILL，而不是把它包装成 scientific instrument。**
-
-用户偏好下尤其避免：
-
-- 大规模人工 annotation；
-- judge-model 作为主要 ground truth；
-- benchmark construction；
-- 需要大量领域知识的数据清洗；
-- 只有一个 synthetic micro-world 能成立、离开该 world 就无法表达的 claim。
-
-允许的小 synthetic instrument 必须满足：
-
-> 程序化、便宜、可审计、答案解析可得、surface 可随机化、规模小、并且不作为论文卖点。
-
----
-
-# 11.5 Training-dynamics recipe gate
-
-S03 的真实执行经验增加一条硬门槛：
-
-> **不要把一个 arbitrary training point 当成 learning law。**
-
-但 recipe dependence 本身不是自动 kill。AI/NLP 论文不要求对所有 optimizer、LR、budget、model family 都给出 theorem-like invariance。真正要防的是：
-
-> competing-world 的**定性结论**只能靠挑某个训练点成立，而稍微改变一个合理 recipe 就可能反转。
-
-对任何 learning / post-training / memorization / acquisition 题，在 PILOT-AUTHORIZED 前判断：
-
-1. decisive comparison 能否尽量放在同一个 model / optimizer state 内，或至少用 mirrored / counterbalanced history 减少不可比性？
-2. recipe 是 nuisance/control，还是 mother question 本身就在做 industrial recipe archaeology？
-3. 是否可以用 **1 个主 recipe + 1 个便宜确认条件**（第二 training dose / adaptive optimizer / seed block）检查 qualitative conclusion，而不是一开始跑大矩阵？
-4. 如果确认条件只改变 effect size，题通常仍可保留；如果 A/B/C world assignment 直接翻转，则优先 KILL。
-5. 为了让故事成立，是否必须扩张成 optimizer × LR × dose × model-family sweep？如果是，KILL。
-
-真实 lesson：
-
-- **S03:** 最终 KILL。真实 pilot 已证明 single-budget / single-family developmental reading 极易制造假 law，且 budget/family 改变了 qualitative story。不要靠继续加 recipe 救。
-- **S05:** 允许做，因为 response relevance 可以在同一 SFT run 中 matched intervention；但若 persistent trace 只在明显 overfitting 后出现，立即 KILL。
-- **S09:** 最终 KILL。核心变量 memory age / learning history 本身就是 optimizer path 的复合产物；即使 mirrored history + same-final-checkpoint update 能改善 within-recipe control，也不能避免 positive result 立即要求大 recipe matrix。
-
-优先保留：
-
-> 同一训练状态内的 causal intervention、matched within-run contrast、或经过小规模 robustness check 仍保持 qualitative conclusion 的 learning law。
-
-优先淘汰：
-
-> industrial recipe biography、只能靠单个 checkpoint/budget 讲故事、或必须大规模 recipe matrix 才知道结论方向的题。
-
----
-
-# 12. Training / post-training 题的 scale discipline
-
-小模型、toy data 可以用于 pilot。
-
-但如果最终 scientific claim 是关于真实 LLM training dynamics：
-
-> 不能只凭一个极小 toy regime 就宣布 universal law。
-
-在升成完整 project 前至少要问：
-
-- effect 是否在更 realistic 的 model/data/step regime 仍然存在？
-- toy world 的关键 causal structure 是否对应真实训练过程？
-- 是否存在 scale reversal？
-- claim 是否应该收窄为该 regime 下的 law？
-
-不要一开始做 model zoo。
-先用最便宜 pilot 判生死，再做最少量 scale validation。
-
----
-
-# 13. 从头到尾的标准工作流
-
-## Phase 0 — Restore
-
-读 repo 正式状态、selected registrations、failed ledger、re-audit、最新 commits。
-
-目的：
-
-- 不重复做已经杀过的题；
-- 不把旧临时状态当当前状态；
-- 不把 selected 当 taste exemplar。
-
-## Phase 1 — Fresh taste calibration
-
-每轮重新读：
-
-- Sasano 真实 feedback；
-- 3–6 篇近年强论文；
-- 至少 2–3 个不同 lineage；
-- 必要时加入 CV / generation / cognition / stats / control 等来源。
-
-对至少两篇做：
-
-> Seed → Pressure → Competing worlds → Decisive experiment → Why Main。
-
-## Phase 2 — Pressure mining
-
-先记录 scientific pressures，不起标题。
-
-例如：
-
-- 两篇可信论文结论互相顶；
-- 两个 quantity 被默认等同；
-- 一个 operation 每天都用但 learning semantics 不清楚；
-- 旧解释依赖的 premise 已改变；
-- 一个 behavior 可以由不同算法完成；
-- 一个 global label 遮蔽 local causal structure；
-- 一个 hidden decision 一直由 oracle 提供。
-
-## Phase 3 — Seed formation
-
-把 pressure 升级成一句自然 mother question。
-
-此时必须能写：
-
-- why care；
-- A / B / C worlds；
-- 哪个 observable/intervention 会让 worlds 给出不同 prediction。
-
-如果只能写：
-
-> effect 大 / effect 小 / 没 effect
-
-还不是好 competing worlds。
-
-## Phase 4 — Lock one seed
-
-不要 dump 十几个半成品。
-
-一旦一个 seed 看起来有潜力：
-
-> 锁住它，审到明确 YES / NO，再换题。
-
-这会显著减少漂亮标题堆积和浅搜。
-
-## Phase 5 — Nearest-prior deep audit
-
-至少读最危险 prior 的：
-
-- abstract
-- introduction
-- related work
-- actual claim
-- core experiment / intervention
-
-问：
-
-1. reviewer 会把我们压成什么 parent？
-2. prior 真正回答的 decisive unknown 是什么？
-3. 它是否已经区分我们的 A/B/C？
-4. 我们新增的是新 knowledge sentence，还是只换 setting？
-5. 如果有 overlap，为什么 changed question 仍值得知道？
-6. remove-trigger-paper：删掉启发我们的那篇 paper，这个问题是否仍从其他 pressure 自然产生？
-
-Future work 不是自动 kill。
-只有当我们本质上只是在执行作者已经定义好的下一个 cell，且没有独立 pressure，才算弱 follow-up。
-
-## Phase 6 — Identification audit
-
-只控制 load-bearing confounds。
-
-要求：
-
-- major worlds 有不同 prediction；
-- intervention 和 scientific quantity 的联系清楚；
-- 不靠 post-hoc grouping / cherry picking；
-- 不把 outcome 变量和 treatment 混在一起；
-- 不为了完美 identification 让实验爆炸。
-
-如果核心 confound 只能靠一个极其不自然的大 factorial 消除：
-
-> 直接考虑 KILL。
-
-## Phase 7 — Experiment / data audit
-
-确认：
-
-- 数据现实；
-- pilot 便宜；
-- ground truth 可得；
-- 主结果不是 evaluation table；
-- synthetic 部分是 instrument，不是贡献主体。
-
-## Phase 8 — Main story audit
-
-用普通 reviewer 语言回答：
-
-> 为什么现在需要知道这个？
-> prior 已经知道什么？
-> 我们到底新增哪一句 knowledge？
-> A/B/C 任一结果为什么都重要？
-> 一篇 Main 的宽度从哪里来？
-
-Main-size 来自 explanatory reach，不来自：
-
-- 模型数量；
-- benchmark 数；
-- ablation 数；
-- 图表数量。
-
-## Phase 9 — Binary decision
-
-对于一个已经锁定并完成 deep audit 的 seed，只允许：
-
-### PILOT-AUTHORIZED
-
-必须同时满足：
-
-- mother question natural + important；
-- reviewer-level novelty 清楚；
-- same decisive unknown 未被 prior 做掉；
-- A/B/C worlds 有科学差异；
-- minimum experiment 能直接区分主要 worlds；
-- 无 load-bearing identifiability blocker；
-- 数据/算力现实；
-- 非 evaluation-centric；
-- opposite/null result 仍有 knowledge gain；
-- novelty sentence 一两句可说清。
-
-### KILL
-
-任一情况成立即可：
-
-- same decisive unknown 已被 direct owner 回答；
-- honest mother question 太窄；
-- novelty 只靠 setting / terminology / model；
-- experiment 无法识别；
-- 数据路径不现实；
-- story 最终是 evaluation；
-- 只有预期方向成立才有论文；
-- 为救题需要实验爆炸；
-- reviewer compression 后就是成熟 parent 的一个普通 cell。
-
-不再把“SERIOUS”作为需要交给用户或长期留在 repo 的结果状态。
-
-内部搜索过程中当然可以暂时觉得某个 seed serious，但：
-
-> 一旦锁定审题，本轮必须继续审到 PILOT-AUTHORIZED 或 KILL。
-
-不要半途把未完成候选扔给用户让用户自己判断做不做。
-
-## Phase 10 — Register or log
-
-如果 PILOT-AUTHORIZED：
-
-- 新建 Sxx registration；
-- 更新 SELECTED_TOPICS.md；
-- 更新 README.md；
-- 更新 NEXT_ROUND_PROMPT_ZH.md；
-- 冻结 parent question / novelty sentence / pilot / kill conditions。
-
-如果 KILL：
-
-- 写入 FAILED_TOPICS ledger；
-- 记录真正 kill reason；
-- 记录 covering paper / growth lesson；
-- 禁止之后只换标题复活。
-
----
-
-# 14. Binary decision 输出格式
-
-每个完成审计的 candidate，用户最终只应收到两种结果。
-
-## 如果升
-
-必须给：
-
-- Mother question
-- Scientific pressure
-- Competing worlds
-- Nearest prior
-- Reviewer compression
-- Knowledge delta / novelty sentence
-- Identification logic
-- Minimum pilot
-- Outcome A/B/C 各自意义
-- Main-size 原因
-- Kill conditions after pilot
-- 若机制题：Zhao-style mechanism path
-
-然后明确：
-
-> PILOT-AUTHORIZED / registered as Sxx
-
-## 如果杀
-
-必须给：
-
-- Mother question
-- 最危险 nearest prior
-- 为什么 same unknown 已被做掉，或哪一个非-novelty blocker 致命
-- 为什么不值得继续加 controls 救
-- 从 covering paper 学到的 question-growth lesson
-
-然后明确：
-
-> KILL
-
-允许：
-
-> 这一轮 0 survivor。
-
----
-
-# 15. Search drift reset
-
-不要机械规定“必须每 N 个题 reset”，但以下情况出现时立即重校准：
-
-- 连续多个 seed 因同一种原因死；
-- 连续候选都来自同一 literature；
-- 最近的问题越来越难一句话解释；
+- 连续 2–3 个 seed 因同一种理由死；
+- 候选越来越像 A≠B / shared-vs-separate 的形式套题；
+- mechanism 越来越复杂，但“所以呢”越来越难回答；
+- synthetic/data/controls 越来越多；
 - novelty 越来越靠 exact cell；
-- mechanism 越来越复杂、mother question 越来越薄；
-- synthetic / benchmark / robustness 越来越多；
-- RL / agent / reasoning 因为好搜而占满搜索；
-- strong papers 只被用来杀题；
-- 为了 prior overlap 不断把问题切细；
-- 为了保住候选不断膨胀实验。
+- 只在 reasoning / RL / agents 一个热点里循环；
+- strong papers 主要被用来 kill，而不是产生 scientific pressure；
+- 为保住候选不断加实验。
 
-Reset 时：
+### Calibration interrupt
 
-1. 停止当前 generator。
-2. 换至少 2–3 个 lineage。
-3. 重新读 Sasano feedback。
-4. 重新做强 paper autopsy。
-5. 写一句：
+暂停后重新做：
 
-> 当前 generator 为什么漂了？下一批 scientific pressure 去哪里找？
+1. 读 2–4 篇**新鲜、不同 lineage**的强 Main / Outstanding 工作；
+2. 读至少 1 个 Sasano 最近真实 feedback thread；
+3. 不问“能抄什么题”，只写：
+   - 它为什么值得问？
+   - author 在解决哪个 live tension？
+   - 如果结果反过来，什么理解会改变？
+   - decisive attack 为什么足够简单？
+4. 写一句 drift diagnosis：
+   > “我们刚才为什么开始走偏？”
+5. 再决定继续当前 pressure 还是换 generator。
 
----
-
-# 16. 从历史流程中已经确认的失败模式
-
-这些是 process lessons，不是 topic list。
-
-## 16.1 过早 brainstorm 大量标题
-
-问题：
-
-- 题名看起来漂亮；
-- nearest prior 很浅；
-- agent 容易爱上自己的 framing。
-
-修正：
-
-> pressure first，lock one seed，deep audit to YES/NO。
-
-## 16.2 Parent overlap 秒杀
-
-问题：
-
-- AI Main 正常 overlap 被误当成 novelty failure；
-- 好问题被越切越窄。
-
-修正：
-
-> same decisive unknown audit，而不是 same keywords / same parent audit。
-
-## 16.3 Novelty 宽容失控
-
-反向错误：
-
-- “允许 overlap”变成什么 follow-up 都能活。
-
-修正：
-
-> 必须有 load-bearing knowledge delta，而不是 paper A 的未做实验。
-
-## 16.4 Mechanism-first
-
-问题：
-
-- head/vector/subspace 很容易做；
-- mother question 后补，story 很薄。
-
-修正：
-
-> 先 law / puzzle，再 mechanism。
-
-## 16.5 Cross-domain 名词搬运
-
-问题：
-
-- 看似新，其实 old question + new terminology。
-
-修正：
-
-> 迁移 identification logic / tension，不迁移标签。
-
-## 16.6 Evaluation creep
-
-问题：
-
-- intro 很科学；
-- 实际实验变成 synthetic data + metric table。
-
-修正：
-
-> 早做 experiment-object audit。
-
-## 16.7 Elegant but unidentifiable
-
-问题：
-
-- question 很漂亮；
-- treatment 同时改变两个 load-bearing factors；
-- 最终只能讲相关性。
-
-修正：
-
-> 最小 intervention 必须让主要 worlds 真正分叉；否则 kill。
-
-## 16.8 Experiment explosion
-
-问题：
-
-- 为救一个混淆不断加 arm；
-- 研究问题越来越弱，harness 越来越复杂。
-
-修正：
-
-> small decisive experiment 是 viability 的一部分，不只是成本问题。
-
-## 16.9 半成品状态拖延
-
-问题：
-
-- 一直叫 SERIOUS；
-- 用户不知道到底做不做。
-
-修正：
-
-> locked seed 必须 binary resolve。
+不要机械规定每 N 个小时 reset；看到 drift 就 reset。
 
 ---
 
-# 17. 当前正式状态（2026-09-21）
+# 9. Binary decision：保留，但不要过早注册
 
-当前 selected / PILOT-AUTHORIZED：
+一个 seed 锁住以后必须审到：
+
+> **PILOT-AUTHORIZED 或 KILL**
+
+不要把 SERIOUS/maybe 留给用户。
+
+但也不要因为“形式上满足 A/B/C”就过早注册。
+
+PILOT-AUTHORIZED 最终意味着：
+
+> **这个问题本身重要；same decisive unknown 未被做掉；现在已有一个现实、直接、低成本的 attack；第一刀主要回答 science 而不是验证 instrument；数据/recipe/construct 不会自然爆炸。**
+
+KILL 后写入 failed ledger，并记录真正 failure mode，禁止换标题复活。
+
+允许一整轮 **0 survivor**。
+
+---
+
+# 10. 当前正式状态
+
+截至 2026-09-21：
+
+## SELECTED / PILOT-AUTHORIZED
 
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
 - S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
 
-最终 KILL：
+## 最近重要 KILL
 
-- S03 — 真实 pilot 暴露 developmental story 随 budget / family / recipe 改变；
-- S08 — shared-vs-separate metacognitive control 即使被干净识别，scientific consequence 仍偏弱；Broadening 会导致 experiment explosion；
-- S09 — causal variable 本身是 optimization-history/path construct。
+- S03 — training-stage developmental story 随 budget / family / recipe 改变；属于 training biography 风险。
+- S08 — shared-vs-separate control 即使干净识别，scientific consequence 仍不足；mechanistic-detail trap。
+- S09 — memory age/history 本身是 optimization-path construct；需要 recipe matrix 才能解释。
 
-当前 surviving topics 必须继续遵守：
+这些 Sxx **都不是正向 taste exemplar**。Selected 只表示当前值得第一刀实验；Killed 只作为反面/process evidence。
 
-> **Scientific significance gate + Recipe Gate + Data Path Gate**
+---
 
-尤其新增一条 mechanistic significance lesson：
+# 11. 下一轮 agent 的最高行动原则
 
-> **“A 和 B 是否共享内部机制？”不是天然重要的问题。必须先说明 shared 与 separate 两个世界分别会改变什么更大的科学理解；如果答案只是“内部架构不同”，通常不够。**
+> **不要找“一个没被做过的实验”。找“一个值得知道、现在终于能被直接攻击的问题”。**
 
-这些 selected topics：
-- 不是正向 taste exemplar；
-- 只代表当前值得真正投入第一刀 pilot；
-- 一旦 pilot 触发各 registration 的 kill condition，应立即撤销，不因“已经 selected”而保留。
+如果只能记住四句话：
+
+> **先问 why care，再问 novelty。**  
+> **先找 scientific pressure，不找 literature blank。**  
+> **pilot 要直接回答 science，不要先赌 instrument / dataset / recipe。**  
+> **持续读强论文和 Sasano feedback 校准；发现自己在套模板时立刻 reset。**
