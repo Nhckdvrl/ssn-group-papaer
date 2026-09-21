@@ -24,17 +24,16 @@
 - ssn-taste/RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md
 - 最近 commits / 新增文件
 
-当前正式 selected / PILOT-AUTHORIZED = 5：
+当前正式 selected / PILOT-AUTHORIZED = 4：
 
 - S04 — How Do Language Models Update Situation Models Across Event Boundaries?
 - S05 — When Does Reading Become Learning?
 - S06 — What Does Deliberation Do to Evidence?
 - S07 — Where Does Surprise Go?
-- S08 — Is Metacognitive Control Shared?
 
-不要重新审 S04–S08 是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。S03 已因真实 pilot 暴露 recipe/family-dependent developmental story 而最终 KILL；S09 也已最终 KILL。二者不得当作 selected 复活。
+不要重新审 S04–S07 是否 selected，除非找到直接 covering prior 或 pilot 触发 registration 中的 kill condition。S03、S08、S09 均已最终 KILL，不得当作 selected 复活。
 
-2026-09-19 的最终 execution/recipe-risk 复核结论：S03、S09 KILL；S04、S05、S06、S07、S08 保持 PILOT-AUTHORIZED。S03 是真实实验后判死，原因是 developmental story 随 budget/family/recipe 改变；S09 的核心变量本身是 optimization-history construct。
+最终复核状态：S03、S08、S09 KILL；S04、S05、S06、S07 保持 PILOT-AUTHORIZED。S03 因真实实验暴露 recipe/family-dependent developmental story；S09 因核心变量本身是 optimization-history construct；S08 因 shared-vs-separate control 即使成立也缺少足够大的 scientific consequence。
 
 非常重要：
 
