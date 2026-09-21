@@ -150,3 +150,18 @@ Broadening to a universal metacognitive-controller question would require many m
 **Do not revive** by adding more behaviors, more models, better steering vectors, SAE/head/neuron searches, or an efficiency/early-exit framing.
 
 **General lesson:** a mechanistic question of the form “do A and B share a mechanism?” must have a clear downstream scientific consequence. If shared and separate worlds mainly imply different internal architectures, without changing a larger theory of learning/reasoning/understanding, the question is too weak.
+
+
+## S05 — When Does Reading Become Learning? — KILL (2026-09-21)
+
+**Failure mode:** broad mother question, narrow consequence-bearing experiment / exact-cell novelty.
+
+S05 asked what determines whether prompt-side information read during ordinary response-only SFT becomes persistent parameter memory. The broad conceptual distinction among transient conditioning, task-relevant use, and durable learning is real. However, the clean executable intervention only isolates one determinant: matched prompt information that is versus is not necessary for predicting the supervised response.
+
+Under the importance-first audit, the strongest likely headline compresses to: **response-relevant prompt fields leave stronger persistent traces than equally exposed irrelevant fields.** This is causally clean, but a reviewer can naturally explain it from target-relevant gradient pressure. The opposite broad phenomenon—target-absent/input-only information becoming memorized—is already directly established in recent fine-tuning work, while memorization emergence across instruction tuning is also an active prior object.
+
+Thus the project risks using a broad title to sell an exact matched-relevance cell. The experimental cleanliness is not enough to create the required scientific consequence.
+
+**Do not revive** by increasing training dose, adding optimizers/model families, converting to privacy extraction, or adding mechanism after the fact.
+
+**General lesson:** a beautiful intervention is not sufficient. The honest strongest finding produced by that intervention must itself be important, not merely a clean answer to one narrow determinant inside a much broader question.
