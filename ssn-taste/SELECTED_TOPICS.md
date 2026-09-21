@@ -6,17 +6,17 @@ Purpose: record only questions that survive real nearest-prior novelty checking,
 
 ## Admission rule
 
-A topic can enter this file only when all of the following are true:
+A topic enters this file only when it has survived the **importance → knowledge delta → direct attack → execution** audit.
 
-1. **Worth asking:** the question is understandable without elaborate framing and there is a natural reason a reviewer would want to know the answer.
-2. **Real difference:** nearest prior work does not already answer the same parent question; the difference is not merely a new model, dataset, language, condition, or exact experimental cell. Normal overlap with neighboring literatures is expected; novelty does **not** require zero conceptual overlap.
-3. **Correct scientific width:** the parent RQ, claim scope, and Related Work neighborhood are calibrated against real ACL / EMNLP / NAACL Main papers and Sasano-approved work. Do not over-narrow merely to manufacture a perfectly isolated novelty cell.
-4. **Scientific experiment, not evaluation disguised as science:** after stripping away the Introduction rhetoric, the main experiment must study a phenomenon, learning/representation/behavioral law, causal relation, trade-off, or natural process. If the work reduces to constructing a dataset and comparing methods/metrics/robustness/leaderboards, do not select it.
-5. **Data path is natural and realistic:** do not require large synthetic benchmark construction, hard-to-obtain ground truth, or an artificial dataset merely to make the question measurable. Small controlled stimuli are allowed as identification instruments.
-6. **Exploratory rather than anomaly gambling:** several plausible outcomes should remain scientifically interpretable, but this alone is not sufficient for selection.
-7. **Feasible:** there is a cheap initial experiment that directly reduces uncertainty without large pretraining or a massive annotation campaign.
+1. **Worth knowing:** an average reviewer can understand in ~30 seconds why the answer matters, and the major possible worlds would change a real understanding of learning/reasoning/generation/representation—not merely reveal a local architectural difference.
+2. **Real scientific pressure:** the question grows from an actual contradiction, unexplained component, questionable premise, changed regime, or newly attackable old problem—not a literature blank or future-work cell.
+3. **Main-level knowledge delta:** nearest prior does not already answer the same decisive unknown. Normal conceptual overlap is expected; new model/data/language/condition alone is insufficient.
+4. **Direct attack exists now:** a small first experiment can distinguish the main scientific worlds. The pilot should primarily answer the science, not first invent/validate a probe, evaluator, latent construct, or benchmark.
+5. **Execution stays subordinate:** data, training recipe, scale, and mechanism do not naturally explode. Prefer existing ground truth, small programmatic instruments, within-run/same-state interventions, and minimal robustness checks.
+6. **Outcome significance, not story flexibility:** opposite/null outcomes count only when they alter a live belief, rule out a real explanation, or revise an important assumption. Merely being able to narrate every outcome is not enough.
+7. **Mechanism is optional depth:** mechanistic work is welcome when it explains an independently important puzzle. A head/vector/circuit or “A and B use different internal states” is not sufficient significance by itself.
 
-Mechanistic depth, surprising results, large model sweeps, and complex methods are not admission requirements. For mechanistic-interpretability topics, prefer a Zhao/Cho-style chain from representation to computation/transformation to causal mechanism rather than head/probe hunting.
+Selected topics are **not positive taste exemplars**. Selection only means the topic is currently worth spending real time on its first decisive experiment.
 
 ---
 
