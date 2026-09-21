@@ -135,3 +135,18 @@ The surviving observation—that internal-state adaptation can alter goal-relati
 **Do not revive** by adding budgets, model families, post-training stages, or optimizer sweeps.
 
 **General lesson:** if the explanatory variable “training stage” bundles data, optimizer, budget, serialization, synthetic-data generation and preference objectives, the result may be a training-history biography rather than a reusable scientific law.
+
+
+## S08 — Is Metacognitive Control Shared? — KILL (2026-09-21)
+
+**Failure mode:** insufficient scientific consequence / mechanistic-detail trap.
+
+S08 asked whether confidence is a shared metacognitive control variable across answer/abstain and reasoning continue/terminate, or whether these decisions use separable control states. The experiment could in principle be clean, but the strongest plausible findings remain too easy to compress into an architectural detail: shared control versus different controllers.
+
+Nearby reasoning work already distinguishes confidence deficits from termination delay and shows that models can continue reasoning after effective commitment. Therefore a double-dissociation result risks becoming “the previously separated behaviors also have separable internal controls,” which is technically interesting but does not sufficiently change our understanding of reasoning or model cognition.
+
+Broadening to a universal metacognitive-controller question would require many metadecisions, datasets, causal handles and cross-interventions, creating experiment explosion.
+
+**Do not revive** by adding more behaviors, more models, better steering vectors, SAE/head/neuron searches, or an efficiency/early-exit framing.
+
+**General lesson:** a mechanistic question of the form “do A and B share a mechanism?” must have a clear downstream scientific consequence. If shared and separate worlds mainly imply different internal architectures, without changing a larger theory of learning/reasoning/understanding, the question is too weak.
