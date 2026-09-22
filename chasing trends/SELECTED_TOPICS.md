@@ -14,38 +14,6 @@ Admission is deliberately strict:
 
 ---
 
-## CT03 — Counterfactual Credit for MoE Routing
-
-**Status:** PILOT-AUTHORIZED  
-**Registered:** 2026-09-19  
-**Detailed registration:** `topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
-
-### Mother question
-
-Can a pretrained sparse MoE router receive useful token-level credit for **unexecuted experts** without explicitly rerunning the downstream model for many alternative routes?
-
-### Method thesis
-
-Use one standard forward/backward pass plus a small number of local candidate-expert forwards to estimate the loss effect of replacing a routed expert:
-
-[
-\widehat{\Delta L}_{i\rightarrow j}
-\approx
-\nabla_h L^\top (h^{i\rightarrow j}-h).
-]
-
-Distill this approximate counterfactual utility into the routers, while retaining ordinary Top-K inference.
-
-### Minimum identification
-
-Before training the full method, calibrate the local estimator against exact alternative-route loss on hard reasoning tokens and multiple MoE layers. Continue only if it predicts beneficial replacements substantially better than router score / random baselines and yields a large supervision-cost reduction.
-
-### Kill boundary
-
-Kill if the estimator has weak exact-counterfactual fidelity, works only in the final layer, loses its efficiency after candidate expansion, or router-only adaptation fails to improve real reasoning benchmarks.
-
----
-
 ## CT04 — What Moves During Hybrid Adaptation? State-Dynamics Drift in Recurrent–Attention LMs
 
 **Status:** PILOT-AUTHORIZED — exploratory identification program  
@@ -80,4 +48,4 @@ Do not stop because one predicted sign fails. Stop/reframe only if matched exper
 
 --
 
-**Current selected topic count = 2.**
+**Current selected topic count = 1.**

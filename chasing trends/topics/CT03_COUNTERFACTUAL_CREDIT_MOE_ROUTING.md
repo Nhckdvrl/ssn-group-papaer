@@ -1,6 +1,18 @@
 # CT03 — Counterfactual Credit for MoE Routing
 
-**Status:** PILOT-AUTHORIZED  
+**Status:** ❌ **CANCELLED / KILLED AFTER PILOT — 2026-09-22**
+
+> Killed as a Main-level **method** topic. The estimator half survived every test;
+> the step from credit to router policy did not. Two distillation formulations
+> (binary CCD, then KL-regularised CPD) failed to establish any credit-specific
+> improvement, and ordinary router-only CE adaptation matched or exceeded CPD on
+> route quality. Kill record: `FAILED_TOPICS.md` (`CT-KILL-20260922-1`);
+> full evidence: `candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/`.
+> **Do not reopen with a nonlinear router, on-policy/actionable credit, a
+> second-order estimator, more data, a second model family, or EPO/RoMA
+> baselines.** Registration kept below as provenance.
+
+**Original status:** PILOT-AUTHORIZED  
 **Registered:** 2026-09-19  
 **Primary target:** ICLR / ICML / NeurIPS; ACL/EMNLP Main is plausible if the final story centers language reasoning.  
 **Core mode:** method-first after a diagnostic proxy-validation pilot.  

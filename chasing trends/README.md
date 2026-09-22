@@ -7,7 +7,7 @@
 - broad literature calibration 已完成；
 - 正式选题搜索已经开启；
 - formal candidate 只保留 **PILOT-AUTHORIZED**，否则直接 **KILL**；
-- 当前 selected：**CT03 / CT04**。
+- 当前 selected：**CT04**。
 
 ## 1. 从哪里开始
 
@@ -148,17 +148,13 @@ chasing trends/
 
 ## 5. 当前正式题目
 
-### CT03 — Counterfactual Credit for MoE Routing
+### CT03 — Counterfactual Credit for MoE Routing ❌ KILLED AFTER PILOT (2026-09-22)
 
-**Status:** PILOT-AUTHORIZED
-
-核心问题：
-
-> 能否不用昂贵地完整执行大量 alternative routes，而从正常 backward + 少量 candidate expert local forwards 中估计 unexecuted expert 的 counterfactual utility，并据此训练多层 pretrained MoE routers？
-
-详细 registration：
-
-> `topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
+Killed as a Main-level **method** topic. The cheap counterfactual estimator held
+up across OLMoE and Qwen3-30B-A3B, but neither distillation formulation produced
+a credit-specific router improvement, and ordinary router-only CE tuning matched
+or beat it. Kill record: `topics/FAILED_TOPICS.md` (`CT-KILL-20260922-1`);
+evidence: `candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/`.
 
 ### CT04 — What Moves During Hybrid Adaptation? State-Dynamics Drift in Recurrent–Attention LMs
 
@@ -175,9 +171,9 @@ chasing trends/
 > `topics/CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md`
 
 
-CT01 已在 2026-09-19 re-audit 后 **KILL**；CT02 已在 2026-09-21 novelty re-audit 后 **KILL**。原因见对应 registration 与 `topics/FAILED_TOPICS.md`。
+CT01 已在 2026-09-19 re-audit 后 **KILL**；CT02 已在 2026-09-21 novelty re-audit 后 **KILL**；CT03 已在 2026-09-22 完成 pilot 后 **KILL**（estimator 成立，但 credit → router policy 这一步没有建立）。原因见对应 registration 与 `topics/FAILED_TOPICS.md`。
 
-当前正式 selected 数量：**2**。
+当前正式 selected 数量：**1**。
 
 ## 6. 几条不会再妥协的规则
 

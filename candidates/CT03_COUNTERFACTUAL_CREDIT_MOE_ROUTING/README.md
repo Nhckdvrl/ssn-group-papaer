@@ -1,6 +1,23 @@
 # CT03 — Counterfactual Credit for MoE Routing
 
-**Status:** `CPD v1 training in progress` (2026-09-21) · **Opened:** 2026-09-20
+**Status:** ❌ **KILLED AFTER PILOT — 2026-09-22** · **Opened:** 2026-09-20
+**Kill record:** `chasing trends/topics/FAILED_TOPICS.md` (`CT-KILL-20260922-1`)
+
+> Killed as a Main-level **method** topic. The estimator survived every test it
+> was given; the step from credit to router policy never closed. Two distillation
+> formulations failed to establish credit-specific improvement, and ordinary
+> router-only CE adaptation matched or beat CPD on route quality. **Do not reopen
+> with a nonlinear router, on-policy/actionable credit, a second-order estimator,
+> more data, a second model family, or EPO/RoMA baselines** — those grow branches
+> around a claim whose centre has no supporting evidence.
+>
+> **What stands** (independent of the method, reusable): the cheap estimator and
+> its cross-family validity, the depth-calibration curve, the interaction-vs-
+> estimation decomposition, and the finding that a one-off reroute is
+> decision-local but not state-persistent.
+>
+> **What failed:** `credit -> router policy`. See `results/RESULTS_CPD_V1.md` and
+> `results/RESULTS_E04_FIXED_V2.md`.
 **Topic authority:** `chasing trends/topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
 
 ## The object
