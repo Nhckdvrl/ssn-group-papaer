@@ -119,8 +119,11 @@ def replay_ce(model, l, H, start, targets, chunk=32, **attn_kwargs):
 def load(args):
     tok = AutoTokenizer.from_pretrained(MODEL)
     mm = {i: f"{args.mem_per_gpu}GiB" for i in range(args.n_gpu)}
+    # fp32 by default: every measurement so far is a small CE difference. bf16
+    # is opt-in and only for sampling throughput, where both arms take it.
+    dt = dict(fp32=torch.float32, bf16=torch.bfloat16)[getattr(args, "dtype", "fp32")]
     model = AutoModelForCausalLM.from_pretrained(
-        MODEL, dtype=torch.float32, attn_implementation="sdpa",
+        MODEL, dtype=dt, attn_implementation="sdpa",
         device_map="auto", max_memory=mm).eval()
     for p in model.parameters():
         p.requires_grad_(False)
