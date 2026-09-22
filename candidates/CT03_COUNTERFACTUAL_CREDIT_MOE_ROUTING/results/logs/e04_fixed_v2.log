@@ -1,0 +1,55 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:04<01:05,  4.38s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:09<01:11,  5.08s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:14<01:02,  4.82s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:19<00:59,  4.92s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [00:24<00:54,  4.99s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [00:29<00:49,  4.99s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [00:34<00:45,  5.01s/it]Loading checkpoint shards:  50%|█████     | 8/16 [00:40<00:42,  5.26s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [00:45<00:35,  5.12s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [00:50<00:30,  5.11s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [00:55<00:25,  5.19s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [01:00<00:20,  5.10s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [01:05<00:15,  5.08s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [01:10<00:09,  4.90s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [01:15<00:04,  4.91s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:16<00:00,  3.82s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:16<00:00,  4.77s/it]
+arms: ['base', 'router_ce', 'shuffled', 'cpd']
+  [1/24] done
+  [2/24] done
+  [3/24] done
+  [4/24] done
+  [5/24] done
+  [6/24] done
+  [7/24] done
+  [8/24] done
+  [9/24] done
+  [10/24] done
+  [11/24] done
+  [12/24] done
+  [13/24] done
+  [14/24] done
+  [15/24] done
+  [16/24] done
+  [17/24] done
+  [18/24] done
+  [19/24] done
+  [20/24] done
+  [21/24] done
+  [22/24] done
+  [23/24] done
+  [24/24] done
+
+================================================================================================
+A_delta = rho(learned score CORRECTION, exact utility)   [L28 is UNTRAINED control]
+        arm     A_d L28     A_d L36     A_d L44     A_z L28     A_z L36     A_z L44
+       base           -           -           -           -           -           -
+  router_ce           -       0.037       0.009           -       0.031       0.000
+   shuffled           -       0.020      -0.021           -       0.066      -0.017
+        cpd           -       0.031       0.071           -       0.035       0.084
+
+V_route (negative = better than the base route on the SAME base state)
+        arm  variant        L28        L36        L44  realizedKL  n_chg
+  router_ce     armw    -0.0000    -0.0370    -0.0698    2.45e-01   0.97
+  router_ce    basew    -0.0000    -0.0198    -0.0209    2.45e-01   0.97
+   shuffled     armw    -0.0000    -0.0112     0.0098    4.43e-02   0.81
+   shuffled    basew    -0.0000    -0.0047    -0.0018    4.43e-02   0.81
+        cpd     armw    -0.0000    -0.0291    -0.0374    1.98e-01   0.89
+        cpd    basew    -0.0000    -0.0029     0.0018    1.98e-01   0.89
+
+Paired bootstrap on V_route (armw), trained layers only:
+  L36 cpd-router_ce: +0.0079  CI [-0.0212,+0.0358]  ns  n=192
+  L44 cpd-router_ce: +0.0324  CI [-0.0544,+0.1541]  ns  n=192
+  L36 cpd-shuffled: -0.0179  CI [-0.0762,+0.0291]  ns  n=192
+  L44 cpd-shuffled: -0.0472  CI [-0.1245,+0.0323]  ns  n=192
+Exception ignored in: <function ResourceTracker.__del__ at 0xc5593fd42c0>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
