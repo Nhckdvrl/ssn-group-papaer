@@ -81,6 +81,47 @@ check, so they gate rather than decorate.
    layers. This is the exact tell that caught the `clamp_min` NaN sampler in
    E06, which produced ONE identical route across 60,864 draws.
 5. **Gradient sanity.** `cap.mlp_out[l].grad` is not None, finite, nonzero.
+6. **Null-route noise floor** (added 2026-09-22, before the full run). Every
+   cell replays the BASE route through the patch path as an extra row. Its true
+   utility is exactly 0, so its measured `u` is that cell's measurement noise.
+   `u` is a sum of per-position CE over the whole suffix, and the fp32
+   replay gap is ~3e-5 per position, so a few hundred positions can accumulate
+   to ~1e-2 -- comparable to the gaps `R_m` ranks. This check turns that from an
+   assumption into a reported number. It was added after the batched-replay
+   rewrite changed `u` by up to 3.0e-2 (mean 1.5e-2) against the per-cell
+   implementation while leaving `u_hat` bit-identical, which is the signature of
+   fp32 batch-dependent reduction order, not of a logic change.
+7. **Cross-composition replicate** (added 2026-09-22, before the full run). Check
+   6 turned out to measure the EASY case: the null route's patch is ~0, so its
+   trajectory stays numerically glued to the baseline's and the errors cancel.
+   A real route diverges, and a 1e-7 rounding difference amplifies through 20-50
+   layers. The honest measurement is therefore a replicate of the same cells
+   under a DIFFERENT row-batch composition.
+
+   Measured on 48 smoke cells, chunk_rows 64 vs 288:
+
+   | quantity | result |
+   |---|---|
+   | `u_null` (check 6) | median 1e-5, p90 6e-5 |
+   | per-route `\|du\|` across compositions | mean 2.0e-3, max 3.2e-2 |
+   | median gap between best and 2nd-best route | 0.029 - 0.041 |
+   | exact-argmax flips | **0 / 48** |
+   | `R_m` reproducibility | **<= 1e-4 at every m** |
+
+   So individual `u` values wobble at ~6% of the best-vs-2nd gap, but neither the
+   argmax nor `R_m` moves. `u_hat` is bit-identical across compositions, as it
+   must be -- it never touches the replay.
+
+## Replay batching (efficiency, not semantics)
+
+The layer's tokens are replayed in ONE row-batch rather than one call per token.
+Rows are independent -- a row patched at `t` does not affect a row patched at
+`t'` -- so this is an identity transform up to fp32 reduction order (see check
+6). It exists because one call per `(token, layer)` walks the remaining decoder
+layers in Python, and Qwen3Moe loops its 128 experts inside each layer, which
+left the cards at 1-2% utilisation. Each chunk carries its own zero-patch row 0,
+so the baseline still comes through the identical numeric path as the rows it is
+subtracted from.
 
 ## Scale and resources
 

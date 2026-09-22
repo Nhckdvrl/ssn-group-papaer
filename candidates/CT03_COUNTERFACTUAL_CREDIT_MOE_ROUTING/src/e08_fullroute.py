@@ -50,7 +50,8 @@ def gumbel_routes(p_u, K, n, gen):
 
 
 def cell(moe, x, h, gvec, K, n_g, gen, check):
-    """Returns (routes_as_U_indices, u_hat per draw, unique routes, per-unique h_r)."""
+    """Returns U, the 32 draws, the unique routes (base route appended as a
+    null control), u_hat and h_r per unique route, and the null route's index."""
     p0 = F.softmax(F.linear(x, moe.gate.weight).float(), -1)
     U = torch.argsort(p0, descending=True)[:POOL].tolist()
     p_u = p0[torch.tensor(U, device=p0.device)]
@@ -66,6 +67,9 @@ def cell(moe, x, h, gvec, K, n_g, gen, check):
 
     draws = gumbel_routes(p_u, K, n_g, gen)
     uniq = sorted(set(draws))
+    null = tuple(S0)          # the base route itself: its true u is exactly 0,
+    if null not in uniq:      # so its MEASURED u is this cell's noise floor
+        uniq = uniq + [null]
     uhat, hr = {}, {}
     for r in uniq:
         idx = torch.tensor(r, device=bank.device)
@@ -76,7 +80,7 @@ def cell(moe, x, h, gvec, K, n_g, gen, check):
             direct = -float(gvec.float() @ (hr[r] - h).float())
             assert abs(direct - uhat[r]) <= 1e-5 * max(1.0, abs(direct)), \
                 f"V3 scalar trick {direct:.6e} vs {uhat[r]:.6e}"
-    return U, draws, uniq, uhat, hr
+    return U, draws, uniq, uhat, hr, uniq.index(null)
 
 
 def main(a):
@@ -132,39 +136,72 @@ def main(a):
 
         for l in LAYERS:
             moe = model.model.layers[l].mlp
+
+            # ---- proxy for every token of this layer first (no replay) ----
+            t0 = time.time()
+            cl = []
             for t in toks:
                 chk = n_check > 0
-                t0 = time.time()
-                U, draws, uniq, uhat, hr = cell(moe, xs[l][0, t], hs[l][0, t],
-                                                g[l][t], K, a.n_gumbel, gen, chk)
-                t_prox += time.time() - t0
-
-                t0 = time.time()
-                pat = torch.stack([hr[r] - hs[l][0, t] for r in uniq])
-                H = lo[l].expand(len(uniq) + 1, -1, -1).clone()
-                H[1:, t] += pat
-                allce = replay_ce(model, l, H, t, targets, **akw)
-                # Row 0 is a ZERO patch: the baseline must come through the
-                # identical replay path, or an fp32 path gap leaks into u.
-                dL = (allce[1:] - allce[0]).sum(dim=1)
-                t_exact += time.time() - t0
+                cl.append((t,) + cell(moe, xs[l][0, t], hs[l][0, t], g[l][t],
+                                      K, a.n_gumbel, gen, chk))
                 if chk:
-                    # replay_ce scores positions t..T-2 (H[:, start:-1] against
-                    # targets[start:]), so the reference must start at t, not at
-                    # `first` -- the two ranges are different lengths.
-                    ref = float(base_ce[t:].sum())
-                    got = float(allce[0].sum())
-                    assert abs(got - ref) < 1e-3 * max(1.0, abs(ref)), \
-                        f"V2 replay identity {got:.6f} vs {ref:.6f}"
-                    assert len(uniq) >= 8, f"V4 gumbel diversity {len(uniq)}/32"
-                    n_check -= 1
+                    assert len(cl[-1][3]) >= 8, f"V4 gumbel diversity {len(cl[-1][3])}/32"
+            t_prox += time.time() - t0
 
+            # ---- ONE batched replay for all tokens of this layer ----
+            # Previously this was one replay_ce call per (token, layer) with 33
+            # rows. Every call walks the remaining decoder layers in Python, and
+            # Qwen3Moe loops its 128 experts per layer, so the work was pure
+            # kernel-launch overhead: 1-2% GPU utilisation. Batching the layer's
+            # 8 tokens into one row-batch cuts the layer walks 8x and makes each
+            # matmul 8x larger. Rows are independent, so a row patched at t is
+            # unaffected by a row patched at t'.
+            t0 = time.time()
+            start = min(c[0] for c in cl)
+            rows = [(c[0], r) for c in cl for r in c[3]]
+            pat = torch.stack([c[5][r] - hs[l][0, c[0]] for c in cl for r in c[3]])
+            ce_rows = []
+            ce_base = None
+            for b in range(0, len(rows), a.chunk_rows):
+                sl = slice(b, b + a.chunk_rows)
+                sub = pat[sl]
+                H = lo[l].expand(len(sub) + 1, -1, -1).clone()
+                # Row 0 of EVERY chunk is a ZERO patch: the baseline must come
+                # through the identical replay path as the rows it is
+                # subtracted from, or an fp32 path gap leaks into u.
+                for k, (t, _) in enumerate(rows[sl]):
+                    H[1 + k, t] += sub[k]
+                allce = replay_ce(model, l, H, start, targets, **akw)
+                ce_base = allce[0] if ce_base is None else ce_base
+                ce_rows.append((allce[1:] - allce[0]).cpu())
+                del H, allce
+            dL_all = torch.cat(ce_rows)
+            t_exact += time.time() - t0
+
+            if n_check > 0:
+                ref = float(base_ce[start:].sum())
+                got = float(ce_base.sum())
+                assert abs(got - ref) < 1e-3 * max(1.0, abs(ref)), \
+                    f"V2 replay identity {got:.6f} vs {ref:.6f}"
+                n_check -= 1
+
+            k = 0
+            for (t, U, draws, uniq, uhat, hr, ni) in cl:
+                dL = [float(dL_all[k + n, t - start:].sum()) for n in range(len(uniq))]
+                k += len(uniq)
+                keep = [n for n in range(len(uniq)) if uniq[n] in set(draws)]
                 out.append(dict(pi=a.start + pi, layer=l, pos=t, U=U,
-                                n_draw=len(draws), routes=[list(r) for r in uniq],
-                                mult=[sum(d == r for d in draws) for r in uniq],
-                                uhat=[uhat[r] for r in uniq],
-                                u=[-float(v) for v in dL],
-                                changed=[K - len(set(r) & set(range(K))) for r in uniq]))
+                                n_draw=len(draws),
+                                routes=[list(uniq[n]) for n in keep],
+                                mult=[sum(d == uniq[n] for d in draws) for n in keep],
+                                uhat=[uhat[uniq[n]] for n in keep],
+                                u=[-dL[n] for n in keep],
+                                changed=[K - len(set(uniq[n]) & set(range(K)))
+                                         for n in keep],
+                                # V6 noise floor: the base route replayed through
+                                # the patch path. Its true utility is 0, so this
+                                # is how precisely u is measured in this cell.
+                                u_null=-dL[ni]))
         del g, xs, hs, lo
         torch.cuda.empty_cache()
         print(f"[{pi+1}/{len(pool)}] shard@{a.start} cells {len(out)} "
@@ -184,6 +221,7 @@ if __name__ == "__main__":
     ap.add_argument("--n-tok", dest="n_tok", type=int, default=8)
     ap.add_argument("--n-gumbel", dest="n_gumbel", type=int, default=32)
     ap.add_argument("--n-check", dest="n_check", type=int, default=12)
+    ap.add_argument("--chunk-rows", dest="chunk_rows", type=int, default=64)
     ap.add_argument("--max-len", dest="max_len", type=int, default=640)
     ap.add_argument("--n-gpu", dest="n_gpu", type=int, default=2)
     ap.add_argument("--mem-per-gpu", dest="mem_per_gpu", type=int, default=78)

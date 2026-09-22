@@ -55,6 +55,9 @@ def main(a):
         stats[l]["changed"].append(float(np.mean(c["changed"])))
         stats[l]["rho"].append(spearman(uh, u))
         stats[l]["any_benefit"].append(float(u.max() > 0))
+        if "u_null" in c:
+            stats[l]["null"].append(abs(float(c["u_null"])))
+            stats[l]["spread"].append(float(np.percentile(u, 75) - np.percentile(u, 25)))
         best = u.max()
         if best <= 0:
             continue
@@ -78,6 +81,11 @@ def main(a):
               f"(n={n})   unique/32 {np.mean(stats[l]['n_unique']):.1f}   "
               f"experts changed {np.mean(stats[l]['changed']):.2f}   "
               f"median rho {np.nanmedian(stats[l]['rho']):.3f}")
+        if stats[l]["null"]:
+            nf, sp = np.median(stats[l]["null"]), np.median(stats[l]["spread"])
+            print(f"       noise floor |u_null| median {nf:.4f} (p90 "
+                  f"{np.percentile(stats[l]['null'], 90):.4f}); IQR of u {sp:.4f}"
+                  f"  ->  noise/spread {nf / sp:.3f}")
         print(f"{'m':>4}{'R_m (retained gain)':>22}{'95% CI':>20}"
               f"{'exact-best recall':>19}{'benef. recall':>15}{'regret':>10}"
               f"{'reruns saved':>14}")
@@ -105,7 +113,11 @@ def main(a):
                                  any_benefit=float(np.mean(stats[l]["any_benefit"])),
                                  n_unique=float(np.mean(stats[l]["n_unique"])),
                                  changed=float(np.mean(stats[l]["changed"])),
-                                 rho_med=float(np.nanmedian(stats[l]["rho"])))
+                                 rho_med=float(np.nanmedian(stats[l]["rho"])),
+                                 null_med=float(np.median(stats[l]["null"]))
+                                 if stats[l]["null"] else None,
+                                 u_iqr_med=float(np.median(stats[l]["spread"]))
+                                 if stats[l]["spread"] else None)
                     for l in sorted(stats)}
     json.dump(out, open(a.out, "w"), indent=1)
     print(f"wrote {a.out}")
