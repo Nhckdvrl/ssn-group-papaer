@@ -58,7 +58,54 @@ The honest summary is that route value is cheap to move, generation is not, and
 the gap between them did not narrow by moving to a non-final layer. E09 predicted
 this and said so before E10 ran; E10 confirmed it with the oracle in hand.
 
-## Consequence for 第四关
+## RETRACTION (2026-09-22, same day, before 第四关 was started)
+
+The reading below — and the sentence "E10 establishes what is being screened: a
+supervision signal that, at full oracle strength, yields no downstream
+generation gain" — **is withdrawn. It was not supported.** E09/E10 did not
+reproduce the parent's EPO action mechanism, in three places:
+
+1. **`r-` is wrong, and this changes the semantics of the objective.** The
+   parent sets `r- =` the route the CURRENT router actually executes (its
+   top-k), samples G alternatives, takes `r+ = argmin CE` among them, and
+   **emits a gradient only when `CE(r+) < CE(r-)`**. That is policy improvement
+   from the deployed action: *you took this route, here is a better one, move*.
+   E09/E10 instead set `r+`/`r-` to the best and worst SAMPLED routes, which
+   only constrains `best_sampled > worst_sampled` — a comparison the currently
+   deployed route need not even participate in. A router can satisfy it by
+   rearranging the whole expert-score landscape with no reason for its actual
+   top-k to become the improved route. That is a much better explanation of
+   4/8 experts changed, preference accuracy collapsing 0.550 -> 0.505, route
+   value climbing and greedy generation not moving, than "the oracle has no
+   downstream value".
+2. **The recipe is far from the parent's.** Parent: 2269 verified trajectories,
+   lr 3e-4, beta 0.1, batch 16, 1 epoch, hard tokens entering dynamically by
+   CURRENT CE > 0.1. E10: 146 problems, six permanently fixed tokens each,
+   lr 1e-3 (3.3x), beta 1.0 (10x), batch 1, 4 epochs. Wholesale rewriting under
+   that regime is not surprising and cannot be attributed to EPO.
+3. **The downstream metric is not the parent's either.** The parent never
+   claims a greedy pass@1 gain; its headline is a pass@K shift, which it calls
+   small and treats as a minimal existence check (AIME24+25 and HMMT, 160
+   samples per problem, T=0.6, top-p 0.95). `0.475 -> 0.475` on greedy says this
+   checkpoint did not change deterministic accuracy. With 99.2% of completions
+   changed, one greedy trajectory per problem cannot say whether the generation
+   distribution moved toward or away from success under sampling.
+
+Also corrected: `logpi(S|x) = sum_{e in S} log p(e|x)` is **the parent's own
+definition** of route log-probability, not a surrogate I chose. The E09/E10
+design docs describing it as mine are wrong on that point.
+
+What E10 does establish, and no more:
+
+> Best-vs-worst sampled-route preference training, under a small-data aggressive
+> recipe, raises held-out route value and does not change greedy accuracy.
+
+第四关 is **not** blocked by a null; it is blocked because the gate that was
+supposed to license it was not correctly executed. The repair is E11: a
+corrected L47 gate, back at the cheap layer, with the parent's `r-`, the
+parent's skip rule, a parent-ish recipe, and a sampled pass@K evaluation.
+
+## Superseded reading (kept for the record)
 
 第四关 (screened-EPO) compares screened against exact at equal routing/benchmark
 gain with 75-88% fewer exact reruns. E08 established the screening half solidly
@@ -89,6 +136,6 @@ V1 finally read `167.2719 vs 167.2719`, mask `(1,1,366,366) torch.bool`.
 
 ## Status
 
-CT03 remains **KILLED** as originally scoped (`CT-KILL-20260922-1`).
+Superseded by the retraction above. CT03 remains **KILLED** as originally scoped (`CT-KILL-20260922-1`).
 第一关 (E08) passed, 第二关 (E09) passed, 第三关 (E10) passes its letter and
 returns a null on the question that matters.
