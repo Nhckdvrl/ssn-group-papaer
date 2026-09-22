@@ -14,7 +14,6 @@ from e02_qwen import load
 from cpd_freegen import gen_batch
 from fg0_pool import boxed, norm
 
-L = 47
 
 
 def boot(pairs, B=5000, seed=0):
@@ -29,14 +28,16 @@ def boot(pairs, B=5000, seed=0):
 def main(a):
     tok, model = load(a)
     pool = json.load(open(a.pool))["items"][:a.n_problems]
+    L = a.layer
     gate = model.model.layers[L].mlp.gate
     base_w = gate.weight.detach().clone()
-    trained = torch.load(a.ckpt, map_location="cpu")["47"].to(gate.weight.device)
+    trained = torch.load(a.ckpt, map_location="cpu")[str(L)].to(gate.weight.device)
     prompts = [tok.apply_chat_template([{"role": "user", "content": e["problem"]}],
                                        tokenize=False, add_generation_prompt=True,
                                        enable_thinking=False) for e in pool]
     out = {}
-    for arm, w in (("base", base_w), ("epo_l47", trained)):
+    arm_t = f"epo_l{L}"
+    for arm, w in (("base", base_w), (arm_t, trained)):
         gate.weight.data.copy_(w)
         comp, t0 = [], time.time()
         for i in range(0, len(pool), a.batch):
@@ -54,13 +55,13 @@ def main(a):
             pred = norm(boxed(out[arm][i]) or "")
             r[arm] = dict(pred=pred, ok=int(bool(gold) and pred == gold),
                           ntok=len(out[arm][i]))
-        r["same"] = int(out["base"][i] == out["epo_l47"][i])
+        r["same"] = int(out["base"][i] == out[arm_t][i])
         rows.append(r)
     acc = {arm: float(np.mean([r[arm]["ok"] for r in rows])) for arm in out}
-    lo, hi = boot([(r["base"]["ok"], r["epo_l47"]["ok"]) for r in rows])
+    lo, hi = boot([(r["base"]["ok"], r[arm_t]["ok"]) for r in rows])
     same = float(np.mean([r["same"] for r in rows]))
-    print(f"\nn={len(rows)}  base {acc['base']:.3f}  epo_l47 {acc['epo_l47']:.3f}  "
-          f"diff {acc['epo_l47']-acc['base']:+.3f} [{lo:+.3f},{hi:+.3f}]  "
+    print(f"\nn={len(rows)}  base {acc['base']:.3f}  {arm_t} {acc[arm_t]:.3f}  "
+          f"diff {acc[arm_t]-acc['base']:+.3f} [{lo:+.3f},{hi:+.3f}]  "
           f"identical completions {same:.3f}")
     json.dump(dict(acc=acc, ci=[lo, hi], same=same, rows=rows,
                    completions=out), open(a.out, "w"), indent=1)
@@ -70,6 +71,7 @@ def main(a):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--pool", default="results/fg0_devpool.json")
+    ap.add_argument("--layer", type=int, default=47)
     ap.add_argument("--ckpt", default="results/e09_gate_l47.pt")
     ap.add_argument("--out", default="results/e09_freegen.json")
     ap.add_argument("--n-problems", dest="n_problems", type=int, default=120)
