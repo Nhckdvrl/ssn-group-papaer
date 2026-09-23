@@ -94,3 +94,36 @@ E08's screening result (`R_2` ≥ 0.94 at L36, 0.976 at L44) stands and is
 independent of all of this — it is a statement about proxy ranking of exact
 utilities, not about any training objective. The EPO training line stops here,
 per the pre-registered rule.
+
+## Addendum, same day: two corrections and one direct observation
+
+**The rank objective is not an oracle.** It consumes only `r⁺` — the same
+supervision EPO consumes — and no `Δ` and no `r⁻`. The code comment calling it
+an oracle probe was wrong and is fixed. It is a deployable alternative
+objective, which makes the last two table rows a comparison of *methods*, not a
+capacity probe. It also does not "recover adoption": ov 3.77 → 5.45 is a large
+move, but exact adoption reaches only 0.101 and the gate drifts 2.39x its norm,
+so any future comparison has to be drift-matched.
+
+**The parent spec is now verified verbatim** against arXiv 2605.07260
+(`docs/PARENT_EPO_VERIFIED.md`). E11 matches it on `r⁻`, the skip rule, the
+factorized route log-probability, the loss, lr/β/batch/epochs, G, τ — **and the
+layer**: the parent updates "only the final-layer router", which for
+Qwen3-30B-A3B is L47. So "you trained the wrong layer" is not available as an
+explanation. The parent also states openly that the factorized form is a chosen
+surrogate, so none of this is an error in their paper.
+
+**Where the executed top-8 went** (`src/e11_decompose.py`, zero GPU). The
+mechanism predicted that the top-8 relocates to experts in *neither* route.
+Measured over every executed expert slot on held-out improving tokens:
+
+| gate | in r⁺ only | in r⁻ only | both | **NEITHER** |
+|---|---|---|---|---|
+| W₀ | 0.000 | 0.528 | 0.472 | **0.000** |
+| online pref, lr 3e-5 | 0.113 | 0.137 | 0.120 | **0.630** |
+| online pref, lr 3e-4 | 0.081 | 0.064 | 0.047 | **0.808** |
+| positive-only SFT | 0.115 | 0.134 | 0.132 | **0.619** |
+
+The counterexample `z(r⁺)=5, z(r⁻)=4, z(outside)=10` is not hypothetical. It is
+what the trained router does, and it is now observed rather than inferred from
+ov alone.

@@ -227,6 +227,17 @@ def main(a):
     opt = torch.optim.AdamW([W], lr=a.lr, weight_decay=0.0)
     hist = [dict(step=0, **report(W0, "before"))]
 
+    if a.dump_ev:
+        # The frozen (r+, r-) targets cost a model load to build and nothing to
+        # reuse. Dumping them once turns every follow-up decomposition into a
+        # zero-GPU analysis.
+        torch.save(dict(
+            ev=[{k: v.cpu() for k, v in e.items()} for e in ev],
+            ev_tr=[{k: v.cpu() for k, v in e.items()} for e in ev_tr],
+            W0=W0.cpu(), K=K, pi=pi), a.dump_ev)
+        print(f"wrote {a.dump_ev}")
+        return
+
     if a.fixed_target:
         # CAPACITY control. Online EPO resamples r+ from the CURRENT router
         # every step, so "ov falls" can mean a moving target rather than a gate
@@ -257,11 +268,14 @@ def main(a):
                 elif a.objective == "sft":
                     ls = -(dl[q] * logpi(sc, rp[q][:, None])[:, 0]).mean()
                 else:
-                    # The STRONGEST capacity probe: optimise the thing ov
-                    # actually measures. Not a proposal -- Delta is unavailable
-                    # at deploy time, so this is an oracle. It asks only
-                    # whether SOME gate executes r+, which is the question the
-                    # sft and pref runs leave open.
+                    # Execution-aligned objective: encode the condition the
+                    # deployed router actually evaluates, min_{e in r+} z_e >
+                    # max_{j not in r+} z_j, instead of a score comparison
+                    # between two fixed subsets. It uses NO Delta and no r- --
+                    # only r+, which is the same supervision EPO consumes. So
+                    # this is a deployable alternative objective, not an
+                    # oracle probe; an earlier comment here called it one,
+                    # which was wrong.
                     mk = torch.zeros_like(sc, dtype=torch.bool)
                     mk.scatter_(1, rp[q], True)
                     hi = -torch.logsumexp(-sc.masked_fill(~mk, 1e4), -1)  # soft min in r+
@@ -348,6 +362,7 @@ if __name__ == "__main__":
     ap.add_argument("--noise-curve", dest="noise_curve", nargs="*", default=None)
     ap.add_argument("--train-eval", dest="train_eval", action="store_true")
     ap.add_argument("--fixed-target", dest="fixed_target", action="store_true")
+    ap.add_argument("--dump-ev", dest="dump_ev", default=None)
     ap.add_argument("--fixed-epochs", dest="fixed_epochs", type=int, default=8)
     ap.add_argument("--train-frac", dest="train_frac", type=float, default=0.8)
     ap.add_argument("--pool", type=int, default=32)

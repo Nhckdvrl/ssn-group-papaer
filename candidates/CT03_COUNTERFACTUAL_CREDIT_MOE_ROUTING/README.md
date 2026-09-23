@@ -21,6 +21,20 @@
 > establish a credit-specific effect; exact EPO moved route metrics without
 > downstream gain; final frozen-target probes showed preference success can be
 > strongly decoupled from actual Top-K adoption. See `FINAL_POSTMORTEM.md`.
+>
+> **2026-09-23 update — the kill is now more thorough, not less.** The
+> narrow reopening (cheap screening for the parent's exact EPO) is also closed:
+> E11 shows the objective those labels feed can be driven to 94.7% preference
+> accuracy while the router's executed Top-8 moves *away* from the preferred
+> route, with 80.8% of executed experts in neither route. Making exact labels
+> cheaper only buys a cheaper way to optimise an objective that does not command
+> the deployed decision. See `results/RESULTS_E11_CORRECTED_L47.md`.
+>
+> E08's screening result stands as an asset (32 exact reruns -> 2, retaining
+> 94-98% of oracle gain); it is about proxy ranking of exact utilities and is
+> untouched by any of this. The phenomenon E11 uncovered is registered
+> separately as **CT04**, not as a CT03 rescue:
+> `../CT04_ROUTE_PREFERENCE_DECISION_CONSISTENCY/SELECTION.md`.
 **Topic authority:** `chasing trends/topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
 
 ## The object
