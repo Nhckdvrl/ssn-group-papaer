@@ -113,6 +113,51 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 
 
 
+### F07 — When does “not observed” justify “not there”?
+
+**Question.** When the same target is not observed, does an LLM distinguish a search/record that would almost certainly have exposed the target from one that could easily have missed it, and therefore distinguish justified absence from mere non-observation?
+
+**Why it initially looked promising.** The mother question is simple and consequence-bearing: “not found” is evidence of absence only when the observation process adequately covers what was being searched. Modern LLM evaluation allows a clean paired intervention that holds the query and observed facts fixed while changing only the coverage/completeness of the evidence source. The project would not depend on discovering an anomaly: complete-coverage and partial-coverage worlds make different normative predictions by construction.
+
+**Nearest prior work.**
+- Min et al. (2026), *When Absence Is Evidence: Evaluating Completeness-Sensitive Negative Reasoning in Large Language Models* (arXiv:2608.04591), introduces CROWN-QA. Its controlled paired core explicitly fixes the question and observed facts while varying only query-relative coverage, and evaluates whether models distinguish Certified-Negative from Unknown.
+- Adjacent open-world / argument-from-ignorance work already treats the invalid move from missing evidence to a negative conclusion as a first-class reasoning problem.
+
+**Failure reason — same decisive unknown already owned.** The nearest prior does not merely share a theme. Its central identification contrast is effectively the proposed experiment: same query + same observed facts + different completeness of coverage. Any surviving version based on a different record type, domain, prompt, or model would be a condition change inside an already occupied mother question.
+
+**What would be required to revive it.** A genuinely different scientific object in which observation-process information creates predictions that CROWN-QA’s completeness-sensitive closure contrast cannot express. Do not revive by changing domains, using more natural documents, or replacing “coverage” with a synonymous notion such as search reliability.
+
+### F08 — Does prosody change what an assistant does, not just what it hears?
+
+**Question.** Holding the words fixed, when speech prosody carries task-relevant information, does an audio-capable language model propagate that information into its downstream decision/action, or does it merely perceive the acoustic cue without using it behaviorally?
+
+**Why it initially looked promising.** Native audio models create a genuinely new within-agent intervention unavailable to text-only systems: lexical content can be held fixed while acoustic evidence changes. The why-care is immediate for spoken assistants, and the decisive experiment could compare transcript-only, raw-audio, and explicit-state conditions with exact task outcomes rather than an emotion classifier or LLM judge.
+
+**Nearest prior work.**
+- Liu et al. (2026), *Hear2Act: Benchmarking When Prosody Should Change What an Assistant Does* (arXiv:2608.19515), keeps task and user needs fixed while varying whether the same concern is conveyed lexically or primarily through prosody, then evaluates transcript, audio, inferred concern-state, and next-action selection.
+- Recent audio-LLM work such as *Do Audio LLMs Really LISTEN, or Just Transcribe?* and *Beyond Transcription* already makes lexical-vs-acoustic information use and paralinguistic competence an active 2026 research lineage.
+
+**Failure reason — mother question directly occupied and lineage rapidly crowding.** Hear2Act already asks essentially the same knowledge question and includes the key perception-versus-action decomposition. Narrowing to confidence, hesitation, urgency, or another prosodic cue would therefore be exact-cell novelty rather than a new parent. The surrounding audio-LLM literature also makes this a fast-moving lineage in which small cue substitutions are especially weak.
+
+**What would be required to revive it.** A different causal question about speech whose major possible worlds are not reducible to “acoustic information is perceived but fails to propagate into downstream action.” Do not revive by swapping the prosodic cue, task domain, audio model, or benchmark scale.
+
+### F09 — Does knowing the task before reading change how the model stores what it reads?
+
+**Question.** Given the same eventual information and the same final task, does telling an autoregressive LM what it will need *before* it reads the material cause task-relevant properties to be encoded eagerly into the material’s intermediate states, whereas revealing the task only afterward forces on-demand retrieval/filtering?
+
+**Why it initially looked promising.** This looked like a clean changed-order identification rather than anomaly hunting. In a causal transformer, a task instruction shown before an item can affect that item’s hidden state, while an instruction shown afterward cannot retroactively rewrite it. Thus task-before versus task-after can hold the eventual information set fixed while separating proactive task-conditioned encoding from later query-time selection.
+
+**Nearest prior work.**
+- Sharma et al. (ICLR 2026), *LLMs Process Lists With General Filter Heads* (arXiv:2510.26784), directly compares question-before-list and question-after-list settings.
+- The paper finds two causal implementations: with the question first, models eagerly evaluate each item and store an `is_match` flag in item latents; with the question afterward, they rely more on query-time filter heads. The eager-flag account is validated using causal mediation/activation interventions.
+
+**Failure reason — the proposed scientific worlds have already been causally separated.** This is not merely a neighboring “list processing” result. The prior already owns the decisive contrast that motivated the seed: knowing what to look for in advance changes the computation from later filtering toward eager per-item state marking. Moving from lists to passages, longer contexts, or another selection task would be a scale/domain extension unless a different independent mother question were established first.
+
+**What would be required to revive it.** Evidence for a broader task-conditioned reading phenomenon whose central prediction cannot be explained by the already demonstrated eager-vs-lazy filtering computation, together with a direct intervention at that broader level. Do not revive by lengthening the document, adding more predicates, or substituting a different retrieval benchmark.
+
+
+
+
 ## S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed? — KILL (2026-09-19)
 
 **Failure mode:** recipe/path dependence in the causal variable itself.
