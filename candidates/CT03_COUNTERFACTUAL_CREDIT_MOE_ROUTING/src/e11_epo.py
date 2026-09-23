@@ -254,8 +254,19 @@ def main(a):
                         rf = (logpi(s0, rp[q][:, None]) - logpi(s0, rm[q][:, None]))[:, 0]
                     cu = (logpi(sc, rp[q][:, None]) - logpi(sc, rm[q][:, None]))[:, 0]
                     ls = -(dl[q] * F.logsigmoid(a.beta * (cu - rf))).mean()
-                else:
+                elif a.objective == "sft":
                     ls = -(dl[q] * logpi(sc, rp[q][:, None])[:, 0]).mean()
+                else:
+                    # The STRONGEST capacity probe: optimise the thing ov
+                    # actually measures. Not a proposal -- Delta is unavailable
+                    # at deploy time, so this is an oracle. It asks only
+                    # whether SOME gate executes r+, which is the question the
+                    # sft and pref runs leave open.
+                    mk = torch.zeros_like(sc, dtype=torch.bool)
+                    mk.scatter_(1, rp[q], True)
+                    hi = -torch.logsumexp(-sc.masked_fill(~mk, 1e4), -1)  # soft min in r+
+                    lo_ = torch.logsumexp(sc.masked_fill(mk, -1e4), -1)   # soft max out
+                    ls = F.relu(a.margin + lo_ - hi).mean()
                 ls.backward(); torch.nn.utils.clip_grad_norm_([Wf], 1.0); of.step()
             report(Wf.detach(), f"fixed ep{ep+1}/TRAIN", ev_tr)
         print(f"  drift {(Wf.detach()-W0).norm()/W0.norm():.4f}")
@@ -332,7 +343,8 @@ if __name__ == "__main__":
     ap.add_argument("--out", default="results/e11_epo_l47.json")
     ap.add_argument("--ckpt", default="results/e11_gate_l47.pt")
     ap.add_argument("--max-steps", dest="max_steps", type=int, default=0)
-    ap.add_argument("--objective", choices=["pref", "sft"], default="pref")
+    ap.add_argument("--objective", choices=["pref", "sft", "rank"], default="pref")
+    ap.add_argument("--margin", type=float, default=0.5)
     ap.add_argument("--noise-curve", dest="noise_curve", nargs="*", default=None)
     ap.add_argument("--train-eval", dest="train_eval", action="store_true")
     ap.add_argument("--fixed-target", dest="fixed_target", action="store_true")

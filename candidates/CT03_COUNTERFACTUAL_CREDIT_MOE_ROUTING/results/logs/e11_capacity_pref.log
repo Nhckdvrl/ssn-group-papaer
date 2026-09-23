@@ -1,0 +1,24 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:21<05:15, 21.06s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:44<05:15, 22.52s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [01:07<04:54, 22.68s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [01:30<04:32, 22.70s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [01:53<04:11, 22.88s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [02:17<03:52, 23.24s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [02:40<03:28, 23.19s/it]Loading checkpoint shards:  50%|█████     | 8/16 [03:05<03:09, 23.65s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [03:29<02:47, 23.89s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [03:52<02:22, 23.74s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [04:18<02:01, 24.38s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [04:42<01:36, 24.12s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [05:05<01:11, 23.94s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [05:29<00:47, 23.80s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [05:47<00:21, 21.98s/it]Loading checkpoint shards: 100%|██████████| 16/16 [05:48<00:00, 15.93s/it]Loading checkpoint shards: 100%|██████████| 16/16 [05:48<00:00, 21.80s/it]
+tokens 52508: train 41863 (478 problems) / test 10645 (120 problems), disjoint; FG0 held apart
+  fixed support: 9666/10645 held-out tokens have an improving route under the reference router (0.908)
+  before: pref_acc 0.000 (floor 0)  adopt 0.000 ov 3.77/8  V_route -0.00000 [-0.00000,+0.00000]  med +0.00000  win 0.237  changed 0.00  n=10645
+  fixed-target capacity control on 9482 frozen pairs
+  fixed ep1/TRAIN: pref_acc 0.775 (floor 0)  adopt 0.000 ov 1.62/8  V_route +0.09296 [+0.07609,+0.11022]  med -0.00006  win 0.299  changed 6.90  n=10602
+  fixed ep2/TRAIN: pref_acc 0.873 (floor 0)  adopt 0.000 ov 1.36/8  V_route +0.09084 [+0.07348,+0.10805]  med -0.00007  win 0.292  changed 7.32  n=10602
+  fixed ep3/TRAIN: pref_acc 0.901 (floor 0)  adopt 0.000 ov 1.28/8  V_route +0.08472 [+0.06709,+0.10278]  med -0.00008  win 0.288  changed 7.45  n=10602
+  fixed ep4/TRAIN: pref_acc 0.914 (floor 0)  adopt 0.000 ov 1.21/8  V_route +0.07272 [+0.05401,+0.09184]  med -0.00009  win 0.285  changed 7.54  n=10602
+  fixed ep5/TRAIN: pref_acc 0.924 (floor 0)  adopt 0.000 ov 1.16/8  V_route +0.06583 [+0.04673,+0.08543]  med -0.00010  win 0.283  changed 7.60  n=10602
+  fixed ep6/TRAIN: pref_acc 0.930 (floor 0)  adopt 0.000 ov 1.13/8  V_route +0.06021 [+0.04109,+0.07970]  med -0.00011  win 0.280  changed 7.63  n=10602
+  fixed ep7/TRAIN: pref_acc 0.935 (floor 0)  adopt 0.000 ov 1.11/8  V_route +0.05549 [+0.03621,+0.07519]  med -0.00011  win 0.275  changed 7.66  n=10602
+  fixed ep8/TRAIN: pref_acc 0.939 (floor 0)  adopt 0.000 ov 1.09/8  V_route +0.05185 [+0.03271,+0.07143]  med -0.00012  win 0.272  changed 7.67  n=10602
+  fixed ep9/TRAIN: pref_acc 0.941 (floor 0)  adopt 0.000 ov 1.07/8  V_route +0.04910 [+0.02969,+0.06886]  med -0.00013  win 0.270  changed 7.69  n=10602
+  fixed ep10/TRAIN: pref_acc 0.943 (floor 0)  adopt 0.000 ov 1.06/8  V_route +0.04707 [+0.02744,+0.06703]  med -0.00014  win 0.267  changed 7.70  n=10602
+  fixed ep11/TRAIN: pref_acc 0.945 (floor 0)  adopt 0.000 ov 1.06/8  V_route +0.04586 [+0.02614,+0.06641]  med -0.00015  win 0.265  changed 7.70  n=10602
+  fixed ep12/TRAIN: pref_acc 0.947 (floor 0)  adopt 0.000 ov 1.05/8  V_route +0.04533 [+0.02536,+0.06623]  med -0.00016  win 0.263  changed 7.71  n=10602
+  drift 0.6588
+Exception ignored in: <function ResourceTracker.__del__ at 0x9157b7e4400>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
