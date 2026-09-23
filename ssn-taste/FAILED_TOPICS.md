@@ -158,6 +158,52 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 
 
 
+### F10 — Rare ≠ Impossible: Does Low Likelihood Encode Constraint Violation?
+
+**Question.** When two events are both assigned very low probability, does a language model distinguish an event that is merely unusual from one that is impossible under the stated world constraints?
+
+**Why it initially looked promising.** Recent work on grammaticality versus likelihood highlighted a broad load-bearing assumption: low model probability is often interpreted as evidence that the model judges an input to violate a rule or constraint, even though rarity and impossibility are different quantities. The mother question is easy to explain, has analytic controlled worlds, and does not depend on discovering a new anomaly.
+
+**Nearest prior work.**
+- *Not quite Sherlock Holmes: Language model predictions do not reliably differentiate impossible from improbable events* (Findings of ACL 2025) directly studies the same distinction, separating possibility from typicality and contextual relatedness.
+- Adjacent work on "shades of zero" likewise explicitly distinguishes improbable, impossible, and inconceivable events in language-model judgments.
+
+**Failure reason — same mother question already directly owned.** The nearest prior is not merely about commonsense plausibility. It explicitly asks whether language-model predictions distinguish impossible from improbable events and decomposes the relevant confounds. A new controlled world, newer model, probability readout, or mechanistic follow-up would therefore be a refinement of an already answered parent rather than a new decisive unknown.
+
+**What would be required to revive it.** A different scientific quantity whose competing explanations cannot be reduced to possibility-versus-probability discrimination. Do not revive via synthetic worlds, stronger models, hidden-state probes, or by replacing “impossible” with another low-probability constraint category.
+
+### F11 — Remembering Content ≠ Remembering Its Source
+
+**Question.** When a model retains or uses a proposition from context, does it preserve the proposition together with its provenance — who said it, whether it was quoted/retrieved/generated, and therefore how it should later be trusted — or can content survive after source identity has effectively detached?
+
+**Why it initially looked promising.** Downstream reasoning should not treat a direct observation, a quotation, a rumor, and the model's own speculation as interchangeable merely because their propositional content is similar. Modern dialogue and retrieval settings allow content and source to be manipulated independently, suggesting a clean source-binding question with real consequences for later inference.
+
+**Nearest prior work.**
+- Quote-attribution work already studies the explicit "who said what" binding problem.
+- ACL 2026 work on speaker-attributed reasoning reports that models can capture what was said while failing on who said it, directly exposing content/source dissociation.
+- ACL 2026 *GenProve* decomposes generation-time provenance into quotation, compression, and inference, while adjacent work studies preferences between retrieved and generated contexts under conflict.
+
+**Failure reason — reviewer-compressible to an occupied speaker/source-attribution parent.** The broad content-versus-provenance dissociation is already an active object, including evidence that semantic content can be retained while speaker/source attribution fails. Turning this into a hidden-state or causal-binding study would default to the prohibited pattern "known behavior -> mechanism why". Narrowing to rumor versus quotation, retrieved versus self-generated, or another provenance type would be an exact source-condition variant.
+
+**What would be required to revive it.** An independently important scientific question in which provenance is only the intervention and existing speaker/source-attribution results make distinct predictions. Do not revive merely by moving to long context, adding source types, or searching for a provenance vector/circuit.
+
+### F12 — Does Raw Example Access Substitute for Abstract Task Formation?
+
+**Question.** During in-context learning, does continued access to the raw demonstrations reduce the need for a model to form a reusable abstract task state, such that retrieval from examples and task abstraction act as alternative computational strategies?
+
+**Why it initially looked promising.** Strong recent work suggests two relevant facts: resource constraints can qualitatively change learned/maintained representations, and models can encode information in context without reliably deploying it later. This creates a potentially important pressure against the usual assumption that more direct access to demonstrations is unconditionally helpful. The interesting claim would be about a trade-off between raw retrieval access and abstraction formation, not about long-context accuracy.
+
+**Nearest prior work.**
+- *In-Context Learning Creates Task Vectors* (EMNLP Findings 2023) shows that much of an ICL-learned function can be compressed into a task vector and used without the full demonstrations.
+- ACL 2026 work on local/global task vectors and related task-representation methods further studies when demonstrations are compressible into reusable latent task representations.
+
+**Failure reason — no clean decisive intervention now, and the clean sub-question is already occupied.** Removing demonstrations only at query time tests whether an already formed task representation is sufficient; task-vector work already owns that clean object. To test the stronger mother question — whether *availability of raw examples during formation* suppresses abstraction — one must alter attention/memory access while demonstrations are processed. On an off-the-shelf pretrained transformer, introducing local/sliding attention or another access bottleneck is itself a strong architectural/distribution intervention, so the causal variable becomes confounded with an unnatural computation regime. The project therefore fails the Direct-Attack Gate even though the mother question is interesting.
+
+**What would be required to revive it.** A natural within-model intervention that changes reliance on raw demonstrations during representation formation without changing the model architecture/distribution in a way that can itself explain the result. Do not revive by merely deleting demonstrations at readout time, lengthening context, adding task-vector probes, or training a new architecture whose recipe becomes the causal variable.
+
+
+
+
 ## S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed? — KILL (2026-09-19)
 
 **Failure mode:** recipe/path dependence in the causal variable itself.
