@@ -139,25 +139,32 @@ def main(a):
 
     gen = torch.Generator(device=dev).manual_seed(a.seed)
     # ---- FIXED evaluation support, from the REFERENCE router ----
-    ev = []
-    for b in range(0, len(ite), a.eval_batch):
-        k = torch.from_numpy(ite[b:b + a.eval_batch]).to(dev)
+    ev, ev_tr = [], []
+    itr_ev = itr[:len(ite)]
+    for b in range(0, len(ite) + len(itr_ev), a.eval_batch):
+        which = ite if b < len(ite) else itr_ev
+        off = b if b < len(ite) else b - len(ite)
+        k = torch.from_numpy(which[off:off + a.eval_batch]).to(dev)
+        if len(k) == 0:
+            continue
         ce_m, ce_s, id_m, id_s = candidates(moe, x[k], resid[k], tgt[k], W0, K,
                                             a.pool, a.n_gumbel, gen, nw, eps, head)
         j = ce_s.argmin(1)
         better = ce_s.gather(1, j[:, None])[:, 0] < ce_m
-        ev.append(dict(k=k, ce_m=ce_m, id_m=id_m,
-                       id_p=torch.gather(id_s, 1, j[:, None, None]
-                                         .expand(-1, 1, K))[:, 0],
-                       ce_p=ce_s.gather(1, j[:, None])[:, 0], better=better))
+        (ev if b < len(ite) else ev_tr).append(
+            dict(k=k, ce_m=ce_m, id_m=id_m,
+                 id_p=torch.gather(id_s, 1, j[:, None, None]
+                                   .expand(-1, 1, K))[:, 0],
+                 ce_p=ce_s.gather(1, j[:, None])[:, 0], better=better))
     nb = int(sum(int(e["better"].sum()) for e in ev))
     print(f"  fixed support: {nb}/{len(ite)} held-out tokens have an improving "
           f"route under the reference router ({nb/len(ite):.3f})")
 
-    def report(W, tag):
+    def report(W, tag, EV=None):
+        EV = ev if EV is None else EV
         with torch.no_grad():
-            acc, adopt, V, per, ch = [], [], [], {}, []
-            for e in ev:
+            acc, adopt, ov, V, per, ch = [], [], [], [], {}, []
+            for e in EV:
                 k = e["k"]
                 s = x[k] @ W.T
                 m = e["better"]
@@ -167,6 +174,12 @@ def main(a):
                     pick_m = torch.topk(F.softmax(s[m], -1), K, -1).indices
                     adopt += (pick_m.sort(-1).values
                               == e["id_p"][m].sort(-1).values).all(-1).float().tolist()
+                    # exact adoption of an 8-of-128 subset is a severe event, so
+                    # also report the graded version: how many of r+'s experts
+                    # the router now actually executes. Its floor is the
+                    # reference router's own overlap with r+, reported as ov0.
+                    ov += (pick_m.unsqueeze(-1) == e["id_p"][m].unsqueeze(1)) \
+                        .any(-1).sum(-1).float().tolist()
                 p = F.softmax(s, -1)
                 pool = torch.topk(p, a.pool, -1).indices
                 p_pool = torch.gather(p, 1, pool)
@@ -185,12 +198,30 @@ def main(a):
         V = np.array(V)
         r = dict(pref_acc=float(np.mean(acc)) if acc else float("nan"),
                  adopt=float(np.mean(adopt)) if adopt else float("nan"),
+                 ov=float(np.mean(ov)) if ov else float("nan"),
                  V=float(V.mean()), ci=[lo, hi], V_med=float(np.median(V)),
                  win=float(np.mean(V > 0)), changed=float(np.mean(ch)), n=len(V))
         print(f"  {tag}: pref_acc {r['pref_acc']:.3f} (floor 0)  adopt {r['adopt']:.3f}"
+              f" ov {r['ov']:.2f}/{K}"
               f"  V_route {r['V']:+.5f} [{lo:+.5f},{hi:+.5f}]  med {r['V_med']:+.5f}"
               f"  win {r['win']:.3f}  changed {r['changed']:.2f}  n={r['n']}")
         return r
+
+    if a.noise_curve:
+        # CALIBRATION, not a method: both trained arms end near changed~5.9,
+        # ov~1.9. If a RANDOM dW of the same Frobenius ratio lands there too,
+        # neither arm learned anything -- it only diffused the gate. The
+        # trained points have to be read against this curve, not against W0.
+        g2 = torch.Generator(device=dev).manual_seed(a.seed + 1)
+        hist = [dict(step=0, ratio=0.0, **report(W0, "W0"))]
+        for rt in [float(z) for z in a.noise_curve]:
+            dW = torch.randn(W0.shape, generator=g2, device=dev, dtype=W0.dtype)
+            dW *= rt * W0.norm() / dW.norm()
+            hist.append(dict(step=-1, ratio=rt,
+                             **report(W0 + dW, f"noise r={rt:.3f}")))
+        json.dump(dict(hist=hist, args=vars(a)), open(a.out, "w"), indent=1)
+        print(f"wrote {a.out}")
+        return
 
     W = W0.clone().requires_grad_(True)
     opt = torch.optim.AdamW([W], lr=a.lr, weight_decay=0.0)
@@ -199,6 +230,8 @@ def main(a):
     perm = np.random.default_rng(a.seed).permutation(itr)
     buf, nseen, nhard, nimp, nstep, tot = [], 0, 0, 0, 0, 0.0
     for b in range(0, len(perm), a.scan_batch):
+        if a.max_steps and nstep >= a.max_steps:
+            break
         k = torch.from_numpy(perm[b:b + a.scan_batch]).to(dev)
         ce_m, ce_s, id_m, id_s = candidates(moe, x[k], resid[k], tgt[k], W.detach(),
                                             K, a.pool, a.n_gumbel, gen, nw, eps, head)
@@ -225,14 +258,28 @@ def main(a):
             opt.zero_grad(set_to_none=True)
             s = x[kk] @ W.T
             cur = (logpi(s, rp) - logpi(s, rm))[:, 0]
-            loss = -(delta * F.logsigmoid(a.beta * (cur - ref))).mean()
+            if a.objective == "pref":
+                loss = -(delta * F.logsigmoid(a.beta * (cur - ref))).mean()
+            else:
+                # CONTROL, not a proposal: weighted likelihood of r+ alone, with
+                # no r- term at all. If the adoption metric and this pipeline
+                # can register a router moving TOWARD r+, this is where it
+                # shows. If even this leaves ov flat, the negative result below
+                # is about my measurement, not about the objective.
+                loss = -(delta * logpi(s, rp)[:, 0]).mean()
             loss.backward()
             torch.nn.utils.clip_grad_norm_([W], 1.0)
             opt.step(); tot += float(loss.detach()); nstep += 1
+            if a.max_steps and nstep >= a.max_steps:
+                buf = []; break
+            if nstep % a.eval_every == 0 and a.train_eval:
+                report(W.detach(), f"step{nstep}/TRAIN", ev_tr)
             if nstep % a.eval_every == 0:
                 print(f"  step {nstep}  loss {tot/nstep:.4f}  scanned {nseen}"
                       f"  hard {nhard/max(nseen,1):.3f}  improving {nimp/max(nseen,1):.3f}")
                 hist.append(dict(step=nstep, **report(W.detach(), f"step{nstep}")))
+    if a.train_eval:
+        report(W.detach(), "final/TRAIN", ev_tr)
     hist.append(dict(step=nstep, **report(W.detach(), "final")))
     print(f"\nscanned {nseen} tokens: hard {nhard} ({nhard/nseen:.3f}), "
           f"with an improving route {nimp} ({nimp/nseen:.3f}); {nstep} updates")
@@ -250,6 +297,10 @@ if __name__ == "__main__":
     ap.add_argument("--trainpool", default="results/cpd_trainpool.json")
     ap.add_argument("--out", default="results/e11_epo_l47.json")
     ap.add_argument("--ckpt", default="results/e11_gate_l47.pt")
+    ap.add_argument("--max-steps", dest="max_steps", type=int, default=0)
+    ap.add_argument("--objective", choices=["pref", "sft"], default="pref")
+    ap.add_argument("--noise-curve", dest="noise_curve", nargs="*", default=None)
+    ap.add_argument("--train-eval", dest="train_eval", action="store_true")
     ap.add_argument("--train-frac", dest="train_frac", type=float, default=0.8)
     ap.add_argument("--pool", type=int, default=32)
     ap.add_argument("--n-gumbel", dest="n_gumbel", type=int, default=32)

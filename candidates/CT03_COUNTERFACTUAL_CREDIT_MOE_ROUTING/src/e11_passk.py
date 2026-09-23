@@ -35,16 +35,19 @@ def sample_batch(model, tok, prompts, max_new, temp, top_p, gen):
         ids[i, T - len(e):] = torch.tensor(e, device=dev)
         att[i, T - len(e):] = 1
 
+    # TOPN bounds both the sort and the sampling work. At T=0.6 the top-p 0.95
+    # nucleus is a few hundred tokens at most, so a full 151936-wide sort (and
+    # a 39MB host copy) per decode step was pure overhead -- it made the first
+    # timing smoke produce nothing in 40 minutes.
+    TOPN = 1024
+
     def pick(logits):
         lg = logits.float() / temp
-        p = torch.softmax(lg, -1)
-        sp, si = torch.sort(p, -1, descending=True)
+        sp, si = torch.topk(torch.softmax(lg, -1), TOPN, -1)
         cut = (sp.cumsum(-1) - sp) > top_p        # keep the token that crosses
         sp = sp.masked_fill(cut, 0.0)
         sp = sp / sp.sum(-1, keepdim=True)
-        # sample on CPU against an explicit generator: reproducible, and
-        # independent of how the batch happened to be split into shards.
-        k = torch.multinomial(sp.cpu(), 1, generator=gen).to(dev)
+        k = torch.multinomial(sp, 1, generator=gen)
         return si.gather(-1, k)
 
     cache = DynamicCache(config=model.config)
@@ -77,6 +80,7 @@ def sample_batch(model, tok, prompts, max_new, temp, top_p, gen):
 
 def main(a):
     tok, model = load(a)
+    dev = next(model.parameters()).device
     pool = json.load(open(a.pool))["items"][:a.n_problems]
     idx = list(range(a.shard, len(pool), a.n_shard))      # strided: every shard
     pool = [pool[i] for i in idx]                          # sees the same mix
@@ -99,7 +103,7 @@ def main(a):
         comp, t0 = {}, time.time()
         for b in range(0, len(jobs), a.batch):
             sub = jobs[b:b + a.batch]
-            g = torch.Generator().manual_seed(a.seed * 1_000_003 + b)
+            g = torch.Generator(device=dev).manual_seed(a.seed * 1_000_003 + b)
             got = sample_batch(model, tok, [prompts[i] for i, _ in sub],
                                a.max_new, a.temp, a.top_p, g)
             for (i, s), c in zip(sub, got):
