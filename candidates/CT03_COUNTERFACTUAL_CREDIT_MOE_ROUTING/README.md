@@ -1,7 +1,8 @@
 # CT03 — Counterfactual Credit for MoE Routing
 
-**Status:** ❌ **KILLED AFTER PILOT — 2026-09-22** · **Opened:** 2026-09-20
+**Status:** ❌ **KILLED / CLOSED — 2026-09-23** · **Opened:** 2026-09-20
 **Kill record:** `chasing trends/topics/FAILED_TOPICS.md` (`CT-KILL-20260922-1`)
+**Final scientific archive:** `FINAL_POSTMORTEM.md`
 
 > Killed as a Main-level **method** topic. The estimator survived every test it
 > was given; the step from credit to router policy never closed. Two distillation
@@ -16,8 +17,10 @@
 > estimation decomposition, and the finding that a one-off reroute is
 > decision-local but not state-persistent.
 >
-> **What failed:** `credit -> router policy`. See `results/RESULTS_CPD_V1.md` and
-> `results/RESULTS_E04_FIXED_V2.md`.
+> **What failed:** `credit -> router policy -> deployed action`. CPD did not
+> establish a credit-specific effect; exact EPO moved route metrics without
+> downstream gain; final frozen-target probes showed preference success can be
+> strongly decoupled from actual Top-K adoption. See `FINAL_POSTMORTEM.md`.
 **Topic authority:** `chasing trends/topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
 
 ## The object
@@ -50,7 +53,7 @@ Inference stays ordinary Top-K.
 | **E03.1** | on fixed support, what really happened? | no utility alignment; route gain real but tail-driven. `RESULTS_E031.md` |
 | **E03.5/.6/.7** | can a scalar router even represent the utility? | **yes** (R² .87–.999); shallow limit is estimation, not interaction. `RESULTS_E035.md`, `RESULTS_E036_E037.md` |
 | **FG0.1** | does a one-off reroute change free generation? | decision-local, TV .043, **no persistence** — motivates distilling into the router. `RESULTS_FG0.md` |
-| **CPD v1** | does distilled credit beat controls? | **running** — `docs/CPD_V1_DESIGN.md` |
+| **CPD v1** | does distilled credit beat controls? | **no credit-specific gain established** — controls matched/exceeded it |
 
 ## Method state
 
@@ -116,3 +119,10 @@ Every one of these exists because something went wrong without it:
 - validity checks run *before* headline numbers — they have caught a CE off-by-one,
   a frozen-parameter no-graph backward, a baseline on a different numeric path,
   and three device-placement bugs on the sharded model.
+
+
+## Final closure
+
+CT03 is closed. E08–E10 and the final frozen-target probes were post-kill audits, not a revival. Their final role is diagnostic: the estimator/screening side survives, but the information-to-action chain does not. In the strongest frozen-target probe, parent-style preference training reached high preference accuracy while the executed Top-8 moved largely outside both compared routes; the canonical interpretation, caveats, and anti-resurrection rules are in `FINAL_POSTMORTEM.md`.
+
+**Do not run further CT03 GPU experiments or convert the route-preference mismatch into a new numbered topic without a separate question-formation and novelty audit.**
