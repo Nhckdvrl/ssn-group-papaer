@@ -1,6 +1,7 @@
 # CT03 — Counterfactual Credit for MoE Routing
 
-**Status:** ❌ **CANCELLED / KILLED AFTER PILOT — 2026-09-22**
+**Status:** ❌ **CANCELLED / KILLED AFTER PILOT — CLOSED 2026-09-23**
+**Final archive:** `candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/FINAL_POSTMORTEM.md`
 
 > Killed as a Main-level **method** topic. The estimator half survived every test;
 > the step from credit to router policy did not. Two distillation formulations
@@ -12,7 +13,9 @@
 > second-order estimator, more data, a second model family, or EPO/RoMA
 > baselines.** Registration kept below as provenance.
 
-**Original status:** PILOT-AUTHORIZED  
+**Original status:** PILOT-AUTHORIZED
+
+> **Archive note:** Sections 6–13 below are retained as historical provenance of the original plan. They are **not** an active execution plan. CT03 is closed; the final adjudication and post-kill mechanism audit live in `candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/FINAL_POSTMORTEM.md`.  
 **Registered:** 2026-09-19  
 **Primary target:** ICLR / ICML / NeurIPS; ACL/EMNLP Main is plausible if the final story centers language reasoning.  
 **Core mode:** method-first after a diagnostic proxy-validation pilot.  
@@ -430,9 +433,9 @@ The strongest version:
 
 ---
 
-# 14. Verdict
+# 14. Original verdict at registration (historical; superseded)
 
-> **PILOT-AUTHORIZED**
+> **ORIGINAL PILOT-AUTHORIZED — SUPERSEDED BY FINAL KILL**
 
 Reason:
 
