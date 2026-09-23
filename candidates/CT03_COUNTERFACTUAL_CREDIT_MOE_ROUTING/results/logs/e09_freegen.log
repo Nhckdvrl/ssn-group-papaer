@@ -1,0 +1,14 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:11<02:54, 11.64s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:24<02:52, 12.29s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:37<02:44, 12.68s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:51<02:36, 13.02s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [01:04<02:25, 13.21s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [01:17<02:11, 13.12s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [01:30<01:58, 13.18s/it]Loading checkpoint shards:  50%|█████     | 8/16 [01:43<01:45, 13.15s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [01:56<01:31, 13.11s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [02:10<01:18, 13.11s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [02:23<01:05, 13.15s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [02:36<00:52, 13.17s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [02:49<00:39, 13.14s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [03:03<00:26, 13.27s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [03:16<00:13, 13.35s/it]Loading checkpoint shards: 100%|██████████| 16/16 [03:18<00:00,  9.98s/it]Loading checkpoint shards: 100%|██████████| 16/16 [03:18<00:00, 12.43s/it]
+  [base] 64/120 1452s
+  [base] 120/120 2818s
+  [epo_l47] 64/120 1439s
+  [epo_l47] 120/120 2800s
+
+n=120  base 0.475  epo_l47 0.492  diff +0.017 [-0.033,+0.067]  identical completions 0.008
+wrote results/e09_freegen.json
+Exception ignored in: <function ResourceTracker.__del__ at 0xb470c4d0220>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

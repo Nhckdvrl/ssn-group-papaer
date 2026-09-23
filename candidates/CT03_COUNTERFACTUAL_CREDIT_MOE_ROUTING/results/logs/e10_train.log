@@ -1,0 +1,37 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:12<03:06, 12.40s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:26<03:06, 13.33s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:40<02:56, 13.61s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:55<02:49, 14.15s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [01:10<02:39, 14.47s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [01:24<02:23, 14.40s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [01:38<02:08, 14.23s/it]Loading checkpoint shards:  50%|█████     | 8/16 [01:52<01:54, 14.28s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [02:07<01:39, 14.25s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [02:21<01:25, 14.28s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [02:35<01:10, 14.11s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [02:48<00:55, 13.96s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [03:03<00:42, 14.10s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [03:17<00:28, 14.03s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [03:31<00:14, 14.15s/it]Loading checkpoint shards: 100%|██████████| 16/16 [03:33<00:00, 10.59s/it]Loading checkpoint shards: 100%|██████████| 16/16 [03:33<00:00, 13.36s/it]
+problems 209: train 146 / test 63, disjoint; FG0 dev pool 120 held apart
+  fixed support 20/63
+  fixed support 40/63
+  fixed support 60/63
+  before: pref_acc 0.442  V_route +0.00000 [+0.00000,+0.00000]  med +0.00000  win 0.000  changed 0.00  n=378
+  ep1 25/146 loss 0.7149
+  ep1 50/146 loss 0.7195
+  ep1 75/146 loss 0.7162
+  ep1 100/146 loss 0.6680
+  ep1 125/146 loss 0.6351
+  ep1: pref_acc 0.550  V_route +0.20792 [+0.13646,+0.28175]  med +0.01999  win 0.577  changed 3.24  n=378
+  ep2 25/146 loss 0.4567
+  ep2 50/146 loss 0.3900
+  ep2 75/146 loss 0.3980
+  ep2 100/146 loss 0.3969
+  ep2 125/146 loss 0.4344
+  ep2: pref_acc 0.508  V_route +0.28234 [+0.16889,+0.40540]  med +0.02520  win 0.571  changed 3.84  n=378
+  ep3 25/146 loss 0.3151
+  ep3 50/146 loss 0.3443
+  ep3 75/146 loss 0.3507
+  ep3 100/146 loss 0.3565
+  ep3 125/146 loss 0.3614
+  ep3: pref_acc 0.524  V_route +0.34322 [+0.22610,+0.46836]  med +0.04589  win 0.598  changed 4.12  n=378
+  ep4 25/146 loss 0.3253
+  ep4 50/146 loss 0.3020
+  ep4 75/146 loss 0.3286
+  ep4 100/146 loss 0.3294
+  ep4 125/146 loss 0.3503
+  ep4: pref_acc 0.505  V_route +0.37536 [+0.23066,+0.52709]  med +0.03485  win 0.587  changed 4.02  n=378
+wrote results/e10_epo_l36.json and results/e10_gate_l36.pt
+Exception ignored in: <function ResourceTracker.__del__ at 0x142b75238680>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

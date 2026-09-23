@@ -1,0 +1,10 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:06<01:34,  6.28s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:12<01:23,  5.99s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:18<01:18,  6.02s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:24<01:14,  6.17s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [00:31<01:10,  6.37s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [00:38<01:06,  6.64s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [00:44<00:58,  6.49s/it]Loading checkpoint shards:  50%|█████     | 8/16 [00:50<00:51,  6.42s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [00:56<00:42,  6.13s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [01:01<00:35,  5.93s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [01:07<00:28,  5.76s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [01:11<00:21,  5.42s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [01:17<00:16,  5.45s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [01:23<00:11,  5.56s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [01:28<00:05,  5.62s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:30<00:00,  4.50s/it]Loading checkpoint shards: 100%|██████████| 16/16 [01:30<00:00,  5.68s/it]
+[1/2] shard@0 cells 24 proxy 0.9s exact 11.6s
+[2/2] shard@0 cells 48 proxy 1.7s exact 32.4s
+wrote results/e08_smoke2.pt: 48 cells
+Exception ignored in: <function ResourceTracker.__del__ at 0x6c0d109fd80>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

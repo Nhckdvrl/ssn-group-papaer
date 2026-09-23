@@ -1,0 +1,17 @@
+launched a=1458793 (gpu0,1) b=1458794 (gpu2,3) on fvcrc20
+E11_COLLECT_DONE a=0 b=0
+launched 1940000 (gpu0,1) on fvcrc20 at 10:33
+launched 1940226 passk-smoke (gpu2, bf16 single-card)
+launched 1955599 lr3e-5 (gpu0,1)
+launched 1955603 lr3e-6 (gpu3, single-card fp32 attempt)
+launched 1965682 sft-control lr3e-5 (gpu0,1)
+relaunch lr3e-6 pid 1965870 on gpu3 -- will OOM-check
+killed lr3e-6 on gpu3: fp32 30B does not fit one card (disk offload -> meta tensors); requeue on gpu0,1 after sft
+launched 1974851 noise-curve (gpu0,1)
+launched 1974854 passk-smoke retry (gpu2,3)
+launched 1986746 pref lr3e-5 +train-eval (gpu0,1)
+launched 1986749 passk-smoke retry2 (gpu2,3)
+launched 2015425 fixed-target capacity control (gpu0,1)
+launched 2015544 passk shard 0 on gpu2
+launched 2015547 passk shard 1 on gpu3
+killed passk shards

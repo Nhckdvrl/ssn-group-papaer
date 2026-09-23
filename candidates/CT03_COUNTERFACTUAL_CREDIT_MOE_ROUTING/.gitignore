@@ -1,7 +1,6 @@
-# Raw per-candidate records: 10-25MB each, regenerable from src/ + the frozen
-# designs. The reports and RESULTS*.md derived from them are committed.
-results/e01_records.jsonl
-results/e015_records.jsonl
-results/e02_records.jsonl
-results/c0_eval_*_pairs.jsonl
-__pycache__/
+# Activation/expert caches and the duplicated lm_head: 0.4-1.2GB each, and
+# every one is reproducible from the committed collection script plus its seed.
+results/*_cache_*.pt
+results/*_smoke*.pt
+results/e09_head.pt
+results/e11_head_dup.pt

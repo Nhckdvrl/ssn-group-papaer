@@ -227,6 +227,40 @@ def main(a):
     opt = torch.optim.AdamW([W], lr=a.lr, weight_decay=0.0)
     hist = [dict(step=0, **report(W0, "before"))]
 
+    if a.fixed_target:
+        # CAPACITY control. Online EPO resamples r+ from the CURRENT router
+        # every step, so "ov falls" can mean a moving target rather than a gate
+        # that cannot express the preference. Here the targets are FROZEN at W0
+        # -- the same pairs report() scores -- and the gate is optimised
+        # directly against them. If ov cannot rise even here, no schedule or
+        # step size fixes it; if it rises, the online dynamic is the problem.
+        pairs = [(e["k"][e["better"]], e["id_p"][e["better"]],
+                  e["id_m"][e["better"]],
+                  (e["ce_m"] - e["ce_p"])[e["better"]]) for e in ev_tr]
+        kk = torch.cat([q[0] for q in pairs]); rp = torch.cat([q[1] for q in pairs])
+        rm = torch.cat([q[2] for q in pairs]); dl = torch.cat([q[3] for q in pairs])
+        print(f"  fixed-target capacity control on {len(kk)} frozen pairs")
+        Wf = W0.clone().requires_grad_(True)
+        of = torch.optim.AdamW([Wf], lr=a.lr, weight_decay=0.0)
+        order = np.random.default_rng(a.seed).permutation(len(kk))
+        for ep in range(a.fixed_epochs):
+            for b in range(0, len(order), a.batch):
+                q = torch.from_numpy(order[b:b + a.batch]).to(dev)
+                of.zero_grad(set_to_none=True)
+                sc = x[kk[q]] @ Wf.T
+                if a.objective == "pref":
+                    with torch.no_grad():
+                        s0 = x[kk[q]] @ W0.T
+                        rf = (logpi(s0, rp[q][:, None]) - logpi(s0, rm[q][:, None]))[:, 0]
+                    cu = (logpi(sc, rp[q][:, None]) - logpi(sc, rm[q][:, None]))[:, 0]
+                    ls = -(dl[q] * F.logsigmoid(a.beta * (cu - rf))).mean()
+                else:
+                    ls = -(dl[q] * logpi(sc, rp[q][:, None])[:, 0]).mean()
+                ls.backward(); torch.nn.utils.clip_grad_norm_([Wf], 1.0); of.step()
+            report(Wf.detach(), f"fixed ep{ep+1}/TRAIN", ev_tr)
+        print(f"  drift {(Wf.detach()-W0).norm()/W0.norm():.4f}")
+        return
+
     perm = np.random.default_rng(a.seed).permutation(itr)
     buf, nseen, nhard, nimp, nstep, tot = [], 0, 0, 0, 0, 0.0
     for b in range(0, len(perm), a.scan_batch):
@@ -301,6 +335,8 @@ if __name__ == "__main__":
     ap.add_argument("--objective", choices=["pref", "sft"], default="pref")
     ap.add_argument("--noise-curve", dest="noise_curve", nargs="*", default=None)
     ap.add_argument("--train-eval", dest="train_eval", action="store_true")
+    ap.add_argument("--fixed-target", dest="fixed_target", action="store_true")
+    ap.add_argument("--fixed-epochs", dest="fixed_epochs", type=int, default=8)
     ap.add_argument("--train-frac", dest="train_frac", type=float, default=0.8)
     ap.add_argument("--pool", type=int, default=32)
     ap.add_argument("--n-gumbel", dest="n_gumbel", type=int, default=32)

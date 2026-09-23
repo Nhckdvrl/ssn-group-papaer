@@ -1,0 +1,32 @@
+Loading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▋         | 1/16 [00:09<02:23,  9.57s/it]Loading checkpoint shards:  12%|█▎        | 2/16 [00:19<02:19,  9.97s/it]Loading checkpoint shards:  19%|█▉        | 3/16 [00:29<02:10, 10.01s/it]Loading checkpoint shards:  25%|██▌       | 4/16 [00:39<01:58,  9.86s/it]Loading checkpoint shards:  31%|███▏      | 5/16 [00:46<01:36,  8.76s/it]Loading checkpoint shards:  38%|███▊      | 6/16 [00:55<01:30,  9.06s/it]Loading checkpoint shards:  44%|████▍     | 7/16 [01:07<01:28,  9.88s/it]Loading checkpoint shards:  50%|█████     | 8/16 [01:17<01:20, 10.02s/it]Loading checkpoint shards:  56%|█████▋    | 9/16 [01:28<01:12, 10.30s/it]Loading checkpoint shards:  62%|██████▎   | 10/16 [01:40<01:04, 10.73s/it]Loading checkpoint shards:  69%|██████▉   | 11/16 [01:51<00:53, 10.71s/it]Loading checkpoint shards:  75%|███████▌  | 12/16 [02:02<00:43, 10.99s/it]Loading checkpoint shards:  81%|████████▏ | 13/16 [02:13<00:33, 11.04s/it]Loading checkpoint shards:  88%|████████▊ | 14/16 [02:23<00:21, 10.73s/it]Loading checkpoint shards:  94%|█████████▍| 15/16 [02:34<00:10, 10.81s/it]Loading checkpoint shards: 100%|██████████| 16/16 [02:36<00:00,  8.05s/it]Loading checkpoint shards: 100%|██████████| 16/16 [02:36<00:00,  9.78s/it]
+tokens 52508: train 41863 (478 problems) / test 10645 (120 problems), disjoint; FG0 held apart
+  fixed support: 9666/10645 held-out tokens have an improving route under the reference router (0.908)
+  before: pref_acc 0.000 (floor 0)  adopt 0.000  V_route -0.00000 [-0.00000,+0.00000]  med +0.00000  win 0.237  changed 0.00  n=10645
+  step 100  loss 0.3302  scanned 4608  hard 0.350  improving 0.349
+  step100: pref_acc 0.420 (floor 0)  adopt 0.000  V_route +0.13992 [+0.12350,+0.15851]  med -0.00011  win 0.282  changed 6.37  n=10645
+  step 200  loss 0.3011  scanned 9344  hard 0.348  improving 0.344
+  step200: pref_acc 0.474 (floor 0)  adopt 0.000  V_route +0.12945 [+0.11392,+0.14717]  med -0.00012  win 0.282  changed 6.59  n=10645
+  step 300  loss 0.3009  scanned 13760  hard 0.353  improving 0.349
+  step300: pref_acc 0.469 (floor 0)  adopt 0.000  V_route +0.15183 [+0.13520,+0.17079]  med -0.00011  win 0.290  changed 6.56  n=10645
+  step 400  loss 0.3000  scanned 18240  hard 0.356  improving 0.352
+  step400: pref_acc 0.473 (floor 0)  adopt 0.000  V_route +0.14829 [+0.13106,+0.16697]  med -0.00010  win 0.283  changed 6.68  n=10645
+  step 500  loss 0.3004  scanned 22784  hard 0.356  improving 0.352
+  step500: pref_acc 0.533 (floor 0)  adopt 0.000  V_route +0.14921 [+0.13212,+0.16831]  med -0.00012  win 0.288  changed 7.09  n=10645
+  step 600  loss 0.2978  scanned 27392  hard 0.355  improving 0.350
+  step600: pref_acc 0.512 (floor 0)  adopt 0.000  V_route +0.15228 [+0.13549,+0.17107]  med -0.00011  win 0.283  changed 6.77  n=10645
+  step 700  loss 0.2947  scanned 32192  hard 0.353  improving 0.349
+  step700: pref_acc 0.533 (floor 0)  adopt 0.000  V_route +0.15249 [+0.13536,+0.17173]  med -0.00012  win 0.288  changed 6.94  n=10645
+  step 800  loss 0.2924  scanned 36800  hard 0.353  improving 0.348
+  step800: pref_acc 0.571 (floor 0)  adopt 0.000  V_route +0.16402 [+0.14582,+0.18378]  med -0.00012  win 0.292  changed 7.00  n=10645
+  step 900  loss 0.2921  scanned 41344  hard 0.354  improving 0.349
+  step900: pref_acc 0.568 (floor 0)  adopt 0.000  V_route +0.16341 [+0.14541,+0.18295]  med -0.00011  win 0.287  changed 7.01  n=10645
+  final: pref_acc 0.572 (floor 0)  adopt 0.000  V_route +0.16184 [+0.14353,+0.18212]  med -0.00012  win 0.284  changed 7.04  n=10645
+
+scanned 41863 tokens: hard 14832 (0.354), with an improving route 14616 (0.349); 913 updates
+wrote results/e11_epo_l47.json and results/e11_gate_l47.pt
+Exception ignored in: <function ResourceTracker.__del__ at 0x10c0347a8400>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
