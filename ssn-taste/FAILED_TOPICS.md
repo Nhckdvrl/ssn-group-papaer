@@ -204,6 +204,37 @@ Do **not** reject a topic merely because the answer is uncertain, the first hypo
 
 
 
+### F13 — Can Naming Turn an Encoded Concept into a Reusable Handle?
+
+**Question.** When a model has already induced a genuinely novel concept from context, does assigning that concept an arbitrary nonce name make the same information substantially easier to reuse compositionally in new situations, even though the name contributes no semantic content?
+
+**Why it initially looked promising.** ACL 2026 work shows a consequential representation-use gap: models can form latent representations of newly introduced semantics yet fail to deploy them flexibly. This suggested a clean possible bridge between representation and use: a stable symbol might provide an addressable handle for an already represented concept. A within-agent test could hold the demonstrated concept fixed and vary only whether a random nonce label is consistently bound to it, then test novel recombination rather than recall.
+
+**Nearest prior work.**
+- Shahgir et al. (COLM 2026), *VLMs Need Words: Vision Language Models Ignore Visual Detail In Favor of Semantic Anchors*, directly finds that VLMs reason much better about nameable than unnameable visual entities and, critically, that teaching completely arbitrary names for previously unknown entities improves downstream visual correspondence.
+- *Symbol Tuning* and related symbolic-label ICL work already show that arbitrary symbols can become usable task mappings and can support transfer to unseen in-context tasks.
+
+**Failure reason — the proposed scientific effect is already directly instantiated.** The strongest intended headline was that a semantically empty name can act as an operational handle for an otherwise difficult-to-use concept. *VLMs Need Words* already demonstrates precisely that phenomenon in a natural changed-regime setting: arbitrary names for unknown visual entities improve their subsequent use. Moving to textual novel semantics, a different compositional transfer task, or a cleaner nonce-label control would change the substrate/assay rather than create a new mother question. Adding an internal mechanism would fall back into the prohibited known-behavior → why pattern.
+
+**What would be required to revive it.** A larger theory in which symbolic naming makes a prediction not reducible to “nameability/semantic anchoring makes a representation easier to use,” with an intervention that distinguishes that theory from the existing arbitrary-name effect. Do not revive by switching modality, using harder recombination, or searching for a naming vector/circuit.
+
+### F14 — Can Semantically Equivalent Early Wording Change the Computation That Follows?
+
+**Question.** During autoregressive generation, if two early self-generated prefixes are semantically equivalent and contain no substantive answer information, can choosing one wording rather than the other causally steer the model toward different later conclusions, facts, or plans?
+
+**Why it initially looked promising.** This question separates two views of generation. In a message-first view, early wording mainly lexicalizes an already stable high-level plan, so semantically equivalent prefixes should lead to similar substantive continuations. In a trajectory view, generated lexical choices become part of the model's future computational state, so even equivalent wording can redirect later content. The first experiment could force matched early prefixes and compare downstream substantive decisions without needing a probe or learned evaluator.
+
+**Nearest prior work.**
+- Sun et al. (AAAI 2026), *Well Begun, Half Done: Reinforcement Learning with Prefix Optimization for LLM Reasoning*, identifies a “Beginning Lock-in Effect”: early reasoning prefixes substantially constrain subsequent trajectories and final outcomes, and exploits this with prefix-targeted optimization.
+- A broader 2025–2026 line on reasoning-prefix optimization and prefix-conditioned reward/continuation already treats early generated prefixes as high-leverage causal determinants of later reasoning.
+
+**Failure reason — reviewer-compressible to an occupied early-prefix path-dependence parent.** The semantic-equivalence constraint would make the intervention cleaner, but the knowledge claim still compresses to: small changes to an early generated prefix can causally redirect later autoregressive reasoning. That parent is now explicitly established and operationalized. Restricting the perturbation to synonymous or pragmatically equivalent wording is an exact causal cell unless it supports an independently important theory beyond generic prefix lock-in.
+
+**What would be required to revive it.** An independent scientific dispute that predicts invariance specifically under meaning-preserving lexical variation versus dependence on lexical trajectory, where the distinction changes a broader theory of generation. Do not revive merely with better paraphrase controls, more tasks, or hidden-state analysis.
+
+
+
+
 ## S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed? — KILL (2026-09-19)
 
 **Failure mode:** recipe/path dependence in the causal variable itself.
