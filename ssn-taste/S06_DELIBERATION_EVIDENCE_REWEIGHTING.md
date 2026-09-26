@@ -1,6 +1,6 @@
 # S06 — What Does Deliberation Do to Evidence?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILLED — 2026-09-26 POOL-LEVEL POSTMORTEM
 **Registered:** 2026-09-18  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** reasoning dynamics / causal evidence integration
@@ -210,3 +210,12 @@ The evidence directions are externally randomized and known by construction. Est
 Do not expand into mechanisms until the dynamic causal law is established. If the only effect is trivial uniform distance/context dilution, KILL rather than mechanizing it.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+
+---
+
+## 2026-09-26 pool-level final adjudication
+
+**KILL.** This topic was cancelled as part of the full reset of the Sasano-taste pool. The failure is attributed to the selection process, not to a completed empirical falsification of the mother question. The old admission process overvalued clean conceptual dichotomies and hypothetical identifiability before requiring a naturally observed, stable phenomenon or contradiction that survives trivial formulations.
+
+Do not treat this registration as a latent candidate. Any future related idea must re-enter from a new natural pressure under the revised canonical search guide, not by repairing this design.
