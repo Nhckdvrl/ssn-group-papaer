@@ -13,7 +13,9 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 3. **SELECTED_TOPICS.md** — 当前 PILOT-AUTHORIZED topics。
 4. **当前 selected 的 Sxx registration** — 只用于恢复具体 claim / pilot。
 5. **Recent commits** — 最新 repo 状态优先。
-6. **NEXT_ROUND_PROMPT_ZH.md** — 极短 handoff。
+6. **OBSERVATION_PORTFOLIO.md** — pre-RQ observation ledger；没有复现前不得注册 Sxx。
+7. **INSTRUMENT_PREFLIGHT_TEMPLATE.md** — selected 前的 instrument validity 硬门。
+8. **NEXT_ROUND_PROMPT_ZH.md** — 极短 handoff。
 
 ### Historical archives
 
@@ -30,7 +32,7 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 当前**没有任何 PILOT-AUTHORIZED topic**。
 
 S01–S12 全部已 KILL / cancelled。2026-09-26 pool-level postmortem 认定此前 selected admission 过松：把“概念上可讲清楚”误当成“已有自然、稳定、可识别的研究对象”，并混入了非 Sasano-specific 的用户个人方法论文偏好。
-> Selected 只表示“当前值得第一刀实验”，**不是正向 taste exemplar**。
+> Selected 只表示：**natural finding 已站住、why-space 未被 prior 吃掉、RQ 已形成、instrument preflight 已通过，当前才值得跑 decisive pilot**。它仍然不是正向 taste exemplar。
 
 ---
 
@@ -68,3 +70,27 @@ Agent 一旦开始“救当前 seed”，必须回到：
 > **核心目的不是保住 seed，而是找到最值得做的问题。**
 
 具体流程见 `SEARCH_GUIDE_ZH.md`。
+
+
+---
+
+## 2026-09-26 workflow invariant
+
+以后任何新方向都必须按以下文件流转：
+
+`OBSERVATION_PORTFOLIO.md`
+→ anchor reproduction / surprise audit / ownership audit
+→ RQ formation
+→ `INSTRUMENT_PREFLIGHT_TEMPLATE.md`
+→ 只有全部通过后才允许写新的 `Sxx_*.md`
+→ `SELECTED_TOPICS.md`
+
+**禁止跳级。**
+
+特别禁止：
+
+- 直接从论文阅读生成 Sxx；
+- 直接从理论 distinction 生成 Sxx；
+- 先注册 Sxx 再靠 E01/E02/E03 验 instrument；
+- 把 synthetic task 当 observation source；
+- 把用户个人 method-paper 偏好重新写回 Sasano-taste canonical 流程。
