@@ -69,7 +69,7 @@ S11 / S12 只是把问题暴露得最清楚：
 
 任何一步失败，直接 KILL；不进入 Sxx。
 
-**特别重要：在 Instrument Preflight 通过之前，不允许创建新的 Sxx registration。**
+**特别重要：在 Instrument Preflight 通过之前，不允许创建新的 Sxx registration。不存在 `Sxx — PREFLIGHT-PENDING`、`Sxx — SERIOUS` 或任何半注册状态。**
 
 ---
 
