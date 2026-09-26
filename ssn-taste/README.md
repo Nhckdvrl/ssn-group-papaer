@@ -8,7 +8,7 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 
 每轮只需要按这个顺序恢复：
 
-1. **SEARCH_GUIDE_ZH.md** — 唯一长期方法论。
+1. **SEARCH_GUIDE_ZH.md** — 唯一长期方法论（2026-09-26 起采用 finding-first / reproduction-before-RQ 流程）。
 2. **README.md** — 当前状态与目录。
 3. **SELECTED_TOPICS.md** — 当前 PILOT-AUTHORIZED topics。
 4. **当前 selected 的 Sxx registration** — 只用于恢复具体 claim / pilot。
@@ -47,9 +47,11 @@ S01–S12 全部已 KILL / cancelled。2026-09-26 pool-level postmortem 认定�
 
 ## Core discipline
 
-搜索不是为了制造候选，而是为了找到：
+搜索不是为了制造候选，而是先找到：
 
-> **清楚、重要、未解决、现在有直接 attack 的 scientific question。**
+> **已经存在、自然、稳定、结果本身值得知道的 finding。**
+
+只有 finding 复现、why-space 未被 prior 吃掉、instrument preflight 通过后，才允许形成 selected scientific question。
 
 禁止的常见 drift：
 
