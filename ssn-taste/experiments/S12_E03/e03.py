@@ -158,7 +158,7 @@ def check(main, controls):
     assert not (set(NAMES) & set(e01.NAMES))
 
 
-def run(split, batch_size):
+def run(split, batch_size, gpu_cap_gib):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     items = e01.read_jsonl(HERE / f"{split}.jsonl")
@@ -166,7 +166,11 @@ def run(split, batch_size):
     assert not out.exists(), f"Refusing overwrite: {out}"
     tokenizer = AutoTokenizer.from_pretrained(MODEL, local_files_only=True)
     tokenizer.padding_side = "left"
-    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16, device_map="auto", local_files_only=True).eval()
+    memory_cap = ({index: f"{gpu_cap_gib}GiB" for index in range(torch.cuda.device_count())}
+                  if gpu_cap_gib is not None else None)
+    model = AutoModelForCausalLM.from_pretrained(
+        MODEL, dtype=torch.bfloat16, device_map="auto", max_memory=memory_cap,
+        local_files_only=True).eval()
     revision = getattr(model.config, "_commit_hash", None)
     with out.open("w") as file, torch.inference_mode():
         for start in range(0, len(items), batch_size):
@@ -177,6 +181,7 @@ def run(split, batch_size):
             strings = tokenizer.batch_decode(result[:, tokens["input_ids"].shape[1]:], skip_special_tokens=True)
             for item, raw in zip(block, strings):
                 file.write(json.dumps(dict(id=item["id"], model=MODEL, model_revision=revision,
+                                           gpu_cap_gib=gpu_cap_gib, batch_size=batch_size,
                                            raw=raw, parsed=e01.parse_answer(raw), expected=item["expected"])) + "\n")
             file.flush()
             print(f"{split}: {min(start+len(block),len(items))}/{len(items)}", flush=True)
@@ -237,6 +242,8 @@ if __name__ == "__main__":
     p.add_argument("command", choices=("generate", "check", "run", "analyze"))
     p.add_argument("--split", choices=("main", "controls"), default="controls")
     p.add_argument("--batch-size", type=int, default=16)
+    p.add_argument("--gpu-cap-gib", type=int, default=None,
+                   help="Limit model placement per visible GPU and offload remaining layers to CPU")
     args = p.parse_args()
     if args.command == "generate":
         main, controls = generate(); check(main, controls)
@@ -249,6 +256,6 @@ if __name__ == "__main__":
         assert e01.parse_answer("A = No") is None and e01.parse_answer("B because") is None
         print("checks passed", e01.sha(HERE / "main.jsonl"), e01.sha(HERE / "controls.jsonl"))
     elif args.command == "run":
-        run(args.split, args.batch_size)
+        run(args.split, args.batch_size, args.gpu_cap_gib)
     else:
         analyze()
