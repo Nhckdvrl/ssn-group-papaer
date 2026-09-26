@@ -130,6 +130,8 @@ Observation Card 还不是 seed。
 
 最低要求：
 
+**默认必须由我们自己做 anchor reproduction。** 只有原模型/API/数据已不可获得、且至少两个独立来源已经在可比设置下重复同一 finding 时，才允许用 multi-source replication evidence 替代；必须在 Observation Card 中显式说明为什么无法自行复现。
+
 1. finding 方向能复现；
 2. effect 不是 parser / scoring / prompt accident；
 3. 若 claim 很 broad，至少在第二个自然 setting 或第二个合理 model family 上不立即反转；
@@ -396,7 +398,16 @@ S01–S12 全部是历史失败 / anti-resurrection 记录。
 
 下一轮禁止直接创建 S13。
 
-先建立 Observation Portfolio；任何候选必须经过 Anchor Reproduction 和 Instrument Preflight 后，才允许进入 SELECTED_TOPICS。
+执行文件流：
+
+`OBSERVATION_PORTFOLIO.md`
+→ Anchor Reproduction / Surprise Audit / Explanation Ownership
+→ RQ Formation
+→ `INSTRUMENT_PREFLIGHT_TEMPLATE.md`
+→ 通过后才能创建 Sxx registration
+→ `SELECTED_TOPICS.md`
+
+任何候选必须经过 Anchor Reproduction 和 Instrument Preflight 后，才允许进入 SELECTED_TOPICS。
 
 ---
 
