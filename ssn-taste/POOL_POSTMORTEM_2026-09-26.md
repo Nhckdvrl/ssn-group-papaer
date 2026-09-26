@@ -121,6 +121,25 @@ The experiment should explain/resolve that result, not invent the need for it.
 
 ---
 
+## Second-order root cause: the guide itself encoded the failure mode
+
+After the first postmortem, the canonical guide still contained contradictory generators:
+
+- it said not to gamble on anomalies, yet allowed abstract `old debate + new intervention` as a preferred source;
+- it said pressure first, yet the Pressure Portfolio could be filled entirely from theoretical distinctions with no concrete observed result;
+- it praised A/B scientific worlds before requiring any anchor reproduction;
+- it treated a direct attack as sufficient before proving that the readout/manipulation was valid;
+- the handoff prompt still explicitly prioritized Method-Driven Search and even listed already-killed Sxx topics.
+
+Therefore the repeated bad selections were **not merely agent execution errors**. The formal process itself continued to reward exactly the behavior that had produced S11/S12.
+
+The corrected pipeline removes question-generation from the front half entirely:
+
+> Result evidence first → reproduce it → establish why it is genuinely surprising/relevant → check whether the explanation is already owned → only then form an RQ → validate the instrument → only then select.
+
+This is a structural change, not an extra checklist item.
+
+
 ## Revised Sasano-specific search pipeline
 
 ### Stage 0 — Taste purity
