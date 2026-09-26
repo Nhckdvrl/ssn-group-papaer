@@ -1,6 +1,6 @@
 # S11 — Same Number, Different Information: Value vs Measurement Precision
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** CANCELLED — CURRENT THRESHOLD DESIGN KILLED AFTER E03 (mother question unresolved)  
 **Registered:** 2026-09-21  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** numerical semantics / selective invariance / scientific language understanding
@@ -227,9 +227,43 @@ The defensible claim is narrower:
 
 > **Numerically equal expressions can differ in epistemic precision, and S11 tests whether language models preserve that distinction selectively rather than either collapsing all formats to value or reacting indiscriminately to surface form.**
 
+## Final pilot adjudication — 2026-09-26
+
+E01–E03 were executed and the registered threshold route is **KILLED**.
+
+E01 showed:
+- pure-value invariance: 100/100;
+- notation nuisance: 98/100 explicit, 100/100 natural;
+- explicit measurement threshold: 58/200;
+- natural measurement threshold: 100/200.
+
+E02 independently replicated a strong direction-dependent failure under the same explicit rule.
+
+E03 then supplied the compatible true-value interval directly on a fresh held-out batch. The key analytic correctness counts were:
+
+| Evidence | Greater coarse | Greater fine | Less coarse | Less fine |
+|---|---:|---:|---:|---:|
+| Rounded report | 0/40 | 40/40 | 4/40 | 2/40 |
+| Explicit interval | 16/40 | 40/40 | 40/40 | 40/40 |
+
+Thus directly providing the interval repaired the less-than arm but did not make greater-than universal certification stable. The downstream readout itself therefore fails in at least one direction and cannot serve as a clean instrument for the selective-invariance mother question.
+
+**Verdict:** KILL current S11 threshold route. The broader value-vs-measurement-precision mother question remains unadjudicated.
+
+Do not revive by:
+- further strengthening or rewriting the threshold question;
+- adding CoT/few-shot scaffolding;
+- adding model families before a valid instrument exists;
+- interpreting the inequality-direction asymmetry as the paper;
+- moving directly to hidden-state or mechanistic analysis.
+
+Any future revival requires an independently motivated new instrument that measures whether equal-valued expressions preserve measurement precision without depending on unstable interval-threshold certification.
+
+See `experiments/S11_E03/RESEARCH_LOG.md` and commit `9de6d60`.
+
 ## Promotion status
 
-**PILOT-AUTHORIZED.**
+**CANCELLED from current selection.**
 
 S11 survives because:
 - the why-care is understandable without specialist linguistic terminology;
