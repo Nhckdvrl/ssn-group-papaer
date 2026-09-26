@@ -25,17 +25,11 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 
 ---
 
-## Current selected topics = 4
+## Current selected topics = 0
 
-均为 **SELECTED — PILOT-AUTHORIZED**：
+当前**没有任何 PILOT-AUTHORIZED topic**。
 
-- **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
-- **S06 — What Does Deliberation Do to Evidence?**
-- **S07 — Where Does Surprise Go?**
-- **S10 — Does the Language We Plan to Speak Change Event Construal?**
-
-S03 / S05 / S08 / S09 / S11 / S12 已 KILL / cancelled from current selection.
-
+S01–S12 全部已 KILL / cancelled。2026-09-26 pool-level postmortem 认定此前 selected admission 过松：把“概念上可讲清楚”误当成“已有自然、稳定、可识别的研究对象”，并混入了非 Sasano-specific 的用户个人方法论文偏好。
 > Selected 只表示“当前值得第一刀实验”，**不是正向 taste exemplar**。
 
 ---
