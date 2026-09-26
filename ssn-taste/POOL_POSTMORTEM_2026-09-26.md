@@ -1,5 +1,7 @@
 # 2026-09-26 Full-Pool Postmortem — Why the Sasano-Taste Search Failed
 
+> Historical diagnosis only. **Current operational rules live exclusively in `SEARCH_GUIDE_ZH.md`.** If any procedure below differs from the canonical guide, the guide wins.
+
 ## Executive conclusion
 
 The S01–S12 pool is fully cancelled.
