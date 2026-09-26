@@ -226,7 +226,7 @@ def analyze():
                     transfer_assertion_rate=sum(x["transfer_asserted"] is True for x in sub)/len(sub))
             for x in cell:
                 pair[x["pair_id"]][role] = x
-        deltas = [(v["definition"]["transfer_asserted"] is True) - (v["fact"]["transfer_asserted"] is True) for v in pair.values()]
+        deltas = [int(v["definition"]["transfer_asserted"] is True) - int(v["fact"]["transfer_asserted"] is True) for v in pair.values()]
         summary["paired"][readout] = dict(n=len(deltas), mean_difference=sum(deltas)/len(deltas),
                                            positive=sum(v == 1 for v in deltas), zero=sum(v == 0 for v in deltas), negative=sum(v == -1 for v in deltas))
     write_jsonl(ROOT / "main_scored.jsonl", main)
