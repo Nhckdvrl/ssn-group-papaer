@@ -2,7 +2,7 @@
 
 Started: 2026-09-16
 
-Purpose: record only questions that survive real nearest-prior novelty checking, fit Sasano/Main scientific taste, and whose **actual experiment is itself scientific rather than mainly an evaluation exercise**.
+Purpose: record only questions whose **natural anchor finding has already been established, explanation space remains genuinely open, one-finding/one-RQ framing is clear, and the diagnostic instrument has already passed preflight**. This file is the final promotion ledger, not a candidate scratchpad.
 
 ## Admission rule — 2026-09-26 reset
 
@@ -13,7 +13,7 @@ A topic may enter this file only **after** the following chain is complete:
 Hard requirements:
 
 1. **Finding-first:** there is already a concrete empirical result independent of our custom assay.
-2. **Reproduced:** the anchor result is reproduced by us or supported by equivalent multi-source evidence strong enough to make non-reproduction unlikely.
+2. **Reproduced:** by default, the anchor result is reproduced by us in a source-faithful setting. Multi-source evidence may substitute only when faithful reproduction is genuinely unavailable (e.g., retired API/model/data) and at least two independent comparable sources replicate the same direction; the exception must be documented.
 3. **Real surprise / direct-prior relevance:** the result contradicts a documented baseline, direct prior claim, monotonic expectation, or clear capacity/information argument—not merely our intuition.
 4. **Why-space remains:** source paper / appendix / follow-up has not already completed the decisive explanation.
 5. **One finding, one RQ:** the question explains the anchor; it does not begin from an abstract taxonomy.
@@ -23,7 +23,7 @@ Hard requirements:
 9. **Claim width matches evidence:** no broad mother question from a narrow cell.
 10. **Sasano clarity:** an average reviewer can understand why the observed result itself is interesting in ~30 seconds.
 
-Before these gates pass, the item is only an Observation Card / scratch candidate and must not receive an Sxx registration.
+Before these gates pass, the item is only an Observation Card / preflight record and must not receive an Sxx registration. **There is no `Sxx — PREFLIGHT-PENDING` state.**
 
 Selected topics are not positive taste exemplars. Selection means only that a real finding, an unresolved question, and a valid first instrument are all already in place.
 
