@@ -4,6 +4,15 @@
 
 唯一 canonical 方法文件：`SEARCH_GUIDE_ZH.md`。
 
+开局按顺序读：
+
+1. `SEARCH_GUIDE_ZH.md`
+2. `README.md`
+3. `OBSERVATION_PORTFOLIO.md`
+4. `INSTRUMENT_PREFLIGHT_TEMPLATE.md`
+5. `SELECTED_TOPICS.md`
+6. recent commits
+
 repo 最新状态是唯一正式状态源。
 
 ## 当前状态
@@ -53,7 +62,9 @@ repo 最新状态是唯一正式状态源。
 
 ## 第二步：先复现 observation
 
-候选进入 RQ 之前，先用尽可能接近 source 的设置复现。
+把所有发现先写入 `OBSERVATION_PORTFOLIO.md`，不要写 Sxx。
+
+候选进入 RQ 之前，默认必须由我们自己用尽可能接近 source 的设置复现。只有原 artifact 已不可获得且有至少两个独立可比来源重复同一结果，才允许把 multi-source evidence 当作替代，并必须显式记录例外原因。
 
 复现不稳定，直接 KILL。
 
@@ -75,6 +86,8 @@ RQ 必须一对一对应 finding。
 
 ## 第五步：Instrument Preflight
 
+严格按 `INSTRUMENT_PREFLIGHT_TEMPLATE.md` 建 candidate-specific preflight record。
+
 在 selected 前先证明：
 
 - manipulation 有效；
@@ -84,7 +97,7 @@ RQ 必须一对一对应 finding。
 - scorer/parser/ground truth 正确；
 - 不需要 prompt sweep。
 
-Preflight 过不了，不允许注册。
+Preflight 过不了，不允许注册，也不允许先创建 Sxx 再标成“preflight pending”。
 
 ## 最终状态
 
