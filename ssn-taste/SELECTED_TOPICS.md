@@ -4,22 +4,30 @@ Started: 2026-09-16
 
 Purpose: record only questions that survive real nearest-prior novelty checking, fit Sasano/Main scientific taste, and whose **actual experiment is itself scientific rather than mainly an evaluation exercise**.
 
-## Admission rule
+## Admission rule — 2026-09-26 reset
 
-A topic enters this file only when it has survived the **importance → knowledge delta → direct attack → execution** audit.
+A topic may enter this file only **after** the following chain is complete:
 
-1. **Worth knowing:** an average reviewer can understand in ~30 seconds why the answer matters, and the major possible worlds would change a real understanding of learning/reasoning/generation/representation—not merely reveal a local architectural difference.
-2. **Real scientific pressure:** the question grows from an actual contradiction, unexplained component, questionable premise, changed regime, or newly attackable old problem—not a literature blank or future-work cell.
-3. **Main-level knowledge delta:** nearest prior does not already answer the same decisive unknown. Normal conceptual overlap is expected; new model/data/language/condition alone is insufficient.
-4. **Direct attack exists now:** a small first experiment can distinguish the main scientific worlds. The pilot should primarily answer the science, not first invent/validate a probe, evaluator, latent construct, or benchmark.
-5. **Execution stays subordinate:** data, training recipe, scale, and mechanism do not naturally explode. Prefer existing ground truth, small programmatic instruments, within-run/same-state interventions, and minimal robustness checks.
-6. **Outcome significance, not story flexibility:** opposite/null outcomes count only when they alter a live belief, rule out a real explanation, or revise an important assumption. Merely being able to narrate every outcome is not enough.
-7. **Mechanism is optional depth:** mechanistic work is welcome when it explains an independently important puzzle. A head/vector/circuit or “A and B use different internal states” is not sufficient significance by itself.
+> natural finding → anchor reproduction → surprise/direct-claim audit → explanation-ownership audit → one-finding/one-RQ → instrument preflight
 
-Selected topics are **not positive taste exemplars**. Selection only means the topic is currently worth spending real time on its first decisive experiment.
+Hard requirements:
+
+1. **Finding-first:** there is already a concrete empirical result independent of our custom assay.
+2. **Reproduced:** the anchor result is reproduced by us or supported by equivalent multi-source evidence strong enough to make non-reproduction unlikely.
+3. **Real surprise / direct-prior relevance:** the result contradicts a documented baseline, direct prior claim, monotonic expectation, or clear capacity/information argument—not merely our intuition.
+4. **Why-space remains:** source paper / appendix / follow-up has not already completed the decisive explanation.
+5. **One finding, one RQ:** the question explains the anchor; it does not begin from an abstract taxonomy.
+6. **Natural contrast first:** diagnosis preferentially uses existing natural variation; synthetic tasks may diagnose but may not create the phenomenon.
+7. **Preflight passed:** manipulation, readout, symmetric wording, controls, ground truth, parser/scorer are validated before the main effect is inspected.
+8. **No rescue complexity:** if interpretation already requires many prompt variants or stacked controls, reject before selection.
+9. **Claim width matches evidence:** no broad mother question from a narrow cell.
+10. **Sasano clarity:** an average reviewer can understand why the observed result itself is interesting in ~30 seconds.
+
+Before these gates pass, the item is only an Observation Card / scratch candidate and must not receive an Sxx registration.
+
+Selected topics are not positive taste exemplars. Selection means only that a real finding, an unresolved question, and a valid first instrument are all already in place.
 
 ---
-
 ## Current selections
 
 **None. Current selected topic count = 0.**
