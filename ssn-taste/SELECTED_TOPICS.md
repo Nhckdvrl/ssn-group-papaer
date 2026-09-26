@@ -22,71 +22,22 @@ Selected topics are **not positive taste exemplars**. Selection only means the t
 
 ## Current selections
 
-### S04 — How Do Language Models Update Situation Models Across Event Boundaries?
+**None. Current selected topic count = 0.**
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S04_EVENT_BOUNDARY_SITUATION_MODEL_UPDATING.md`
-
-**Parent question.** When a narrative shifts from one event to the next, how does an autoregressive language model update its internal representation of the current situation: by locally editing only what changed, by reconstructing a broader active situation state, or by selectively reactivating/rebinding relevant past information?
-
-**Scientific width.** S04 is intentionally broader than the binary claim `global updating vs incremental updating`. Those are competing mechanistic explanations, not the entire novelty claim. The central object is **native situation-model updating in LMs across event transitions**.
-
-**Nearest-prior ownership boundary.** Existing work owns neighboring objects such as event-boundary detection/behavior, externally engineered situation working memory, discourse circuits, and temporal feature extraction. S04 does not require zero overlap with these literatures. Its contribution must instead explain **what internal situation information is transformed at a boundary and how that transformation causally supports later narrative understanding**.
-
-**Mechanistic path.** Representation → update computation/transformation → implementing pathway/component → causal intervention. Do not reduce the project to a boundary probe, SAE feature, or head-discovery paper.
-
----
-
-### S06 — What Does Deliberation Do to Evidence?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S06_DELIBERATION_EVIDENCE_REWEIGHTING.md`
-
-**Parent question.** When a model is given a fixed set of external evidence and then deliberates, does reasoning merely compute with a stable evidential state, or does deliberation itself change which pieces of evidence can still causally influence the decision?
-
-**Scientific pressure.** Nearby work separately finds prior-belief effects on CoT, resistance to incongruent updates, choice-supportive persistence, and even overweighting of opposing advice. These do not collapse to a single static “confirmation bias” account. S06 studies the missing dynamic quantity: the **time evolution of evidence influence under fixed external evidence**.
-
-**Minimum identification.** Randomize the directions of several matched evidence items and track their causal effects at multiple pre-commitment reasoning depths. Stable effects support approximately stable integration; uniform shrinkage supports generic dilution; sign-selective divergence supports endogenous reweighting/coherence formation.
-
-**Claim boundary.** Do not turn S06 into another confirmation-bias benchmark, CoT-faithfulness paper, attribution metric, or generic “longer reasoning is worse” result.
-
----
-
-### S07 — Where Does Surprise Go?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-18  
-**Detailed registration:** `S07_WHERE_DOES_SURPRISE_GO.md`
-
-**Parent question.** When an anomalous observation conflicts with what a model expected, which explanatory layer absorbs the prediction error: current-state belief, observation/source reliability, or transition/rule belief?
-
-**Scientific pressure.** Recent work separately demonstrates strong latent-state inference, weak source discernment, and adaptation to regime changes. What remains unowned is the **revision-allocation problem** when one anomaly can be explained by more than one of those layers.
-
-**Minimum identification.** Hold the anomalous report fixed, vary only the prior history, then use a trusted state reset followed by future same-source weighting and next-transition prediction to identify whether the anomaly changed state, source model, or dynamics.
-
-**Claim boundary.** Do not turn S07 into a source-trust benchmark, changepoint benchmark, POMDP benchmark, or generic “LLMs are Bayesian” paper.
-
----
-
-### S10 — Does the Language We Plan to Speak Change Event Construal?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-21  
-**Detailed registration:** `S10_THINKING_FOR_SPEAKING_EVENT_CONSTRUAL.md`
-
-**Parent question.** When the same multilingual multimodal model sees the same non-linguistic event, does the language it is preparing to use change its Manner-vs-Path event construal **before any language-specific description is produced**, or do cross-linguistic differences arise only during verbalization?
-
-**Scientific pressure.** Human thinking-for-speaking research has debated for decades whether language-specific motion packaging changes non-verbal event cognition, but cross-population and bilingual comparisons cannot fully hold developmental history and experience fixed. A multilingual multimodal model makes a new within-agent intervention possible: hold weights and visual input fixed, randomize anticipated output language, and test the event decision before vs. after verbalization.
-
-**Minimum identification.** Use matched Manner/Path motion triads and cross language with output order. In `Choice → Description`, the similarity choice must be emitted before the language-specific caption, eliminating the trivial explanation that the model merely rereads its own description. `Description → Choice` measures the easier verbalization/self-conditioning route.
-
-**Claim boundary.** Do not turn S10 into a generic multilingual VLM benchmark, a claim that models prove human linguistic relativity, or a hidden-state probing paper. The scientific object is whether anticipated language causally alters pre-verbal event construal within the same artificial agent.
+2026-09-26 pool-level reset: S04 / S06 / S07 / S10 were cancelled without execution because the selection process that admitted them was itself found unreliable after S11/S12 failed at construct/identification time. They are not retained as “maybe good later” candidates in this folder.
 
 ---
 
 ## Explicitly cancelled registrations
+
+- **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**: **KILL in 2026-09-26 pool-level postmortem.** The question is conceptually attractive, but the registered first attack depends on an intervention whose causal meaning is not validated independently of the transformer access pattern it modifies. The admission process treated a plausible mechanistic contrast as if it were already an identifiable natural phenomenon. Do not revive by adding probes, history-access masks, or more elaborate narratives.
+
+- **S06 — What Does Deliberation Do to Evidence?**: **KILL in 2026-09-26 pool-level postmortem.** “Evidence influence over reasoning depth” was promoted before establishing a natural, stable observable independent of forced reasoning-prefix interventions. The registered estimand risks being defined by the measurement procedure itself. Do not revive by adding more fork points, attribution estimators, or evidence skins.
+
+- **S07 — Where Does Surprise Go?**: **KILL in 2026-09-26 pool-level postmortem.** State/source/rule revision is a neat hierarchical decomposition, but the three loci were chosen as a theoretical taxonomy before a natural LM behavior forced that taxonomy. The trusted-reset diagnostic is an engineered identification system, not evidence that the model naturally exhibits a surprising revision-allocation phenomenon. Do not revive by elaborating POMDP worlds or diagnostic fingerprints.
+
+- **S10 — Does the Language We Plan to Speak Change Event Construal?**: **KILL in 2026-09-26 pool-level postmortem.** This was admitted mainly because LLM/VLMs create a cleaner within-agent intervention for an old human debate. That is still old debate + new artificial subject unless a natural model behavior or conflict first creates independent pressure. The motion-triad task is a constructed psycholinguistic assay rather than a model-native phenomenon. Do not revive by adding languages, VLMs, motion clips, or hidden-state analysis.
+
 
 - **S11 — Same Number, Different Information: Value vs Measurement Precision**: registration cancelled after E01–E03 execution (final E03 commit `9de6d60`). Pure mathematical value invariance and nuisance-notation invariance were strong, but the registered measurement-threshold instrument failed its own construct-validity requirement. Even when the compatible true-value interval was supplied explicitly, the model remained unstable for greater-than certification (16/40 correct coarse cases; 24/40 Yes/Yes pairs), while less-than interval judgments were 40/40. Thus the readout itself does not cleanly identify whether reported measurement precision is preserved as epistemic information. Do not rescue S11 by further prompt repair, CoT, model families, or mechanism work on this threshold route. Any revival requires a new independently motivated instrument, not another variant of interval-threshold certification.
 
@@ -116,4 +67,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 4.**
+**Current selected topic count = 0.**
