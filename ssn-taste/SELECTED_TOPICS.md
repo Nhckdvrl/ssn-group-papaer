@@ -102,23 +102,10 @@ Selected topics are **not positive taste exemplars**. Selection only means the t
 
 ---
 
-### S12 — Does In-Context Learning Distinguish Definitions from Facts?
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-25  
-**Detailed registration:** `S12_DEFINITION_VS_WORLD_FACT.md`
-
-**Parent question.** When the same relation is introduced in context, does an LM distinguish a relation that **defines what a new term means** from an extensionally identical relation that merely **describes what is true in the current world**?
-
-**Scientific pressure.** Modern LMs are expected to learn temporary vocabulary/schema semantics and environment facts through the same token-context mechanism. Existing work shows that models can follow counterfactual definitions, induce novel semantics, and infer facts about novel entities, but does not establish whether contextual information is functionally typed by its role. S12 asks whether “changing the language” and “changing the world” produce different persistence under otherwise matched content.
-
-**Minimum identification.** Keep the core biconditional sentence and World-A extension fixed, change only whether it is presented as a glossary/terminology entry or a World-A field report, then move to World B while keeping the language fixed. Definition-like information should transfer across worlds; World-A facts need not. Exact contradiction/entailment readouts directly distinguish typed contextual updating from untyped relational association.
-
-**Claim boundary.** Do not turn S12 into a definition-following benchmark, a lexical-semantics probe paper, or a claim that LMs possess human-like semantic modules. The scientific object is whether the **status/scope of contextual information** changes how an otherwise matched relation persists under world change.
-
----
-
 ## Explicitly cancelled registrations
+
+- **S12 — Does In-Context Learning Distinguish Definitions from Facts?**: registration cancelled after E01–E03 execution (final E03 commit `7e04161`). The broader language-update-vs-world-update mother question remains scientifically unresolved, but the registered matched-persistence instrument failed its own direct-attack criterion. Natural World-A report framing made the bare biconditional behave like a global rule on both readouts; adding explicit World-A-only scope repaired positive transfer (60/60) but left exception/coexistence judgments sharply question-form dependent (26/30 correct for “impossible” versus 0/30 for “can both be true”). Controls were 216/216 and all final answers parsed exactly, so this is not a harness failure. Do not rescue S12 by progressively strengthening scope prompts, adding model families, or moving to mechanism analysis. A future revival requires a new independent scientific rationale and a newly frozen instrument that manipulates definition-vs-world status without relying on stronger explicit scope wording.
+
 
 - **S05 — When Does Reading Become Learning?**: registration cancelled after the 2026-09-21 importance-first re-audit. The broad conditioning-vs-learning question is attractive, but the clean experiment mainly isolates an exact causal cell: whether response-relevant prompt fields leave stronger persistent traces than matched irrelevant fields. The most likely result is easy to explain from target-relevant gradient pressure; the surprising opposite direction (input-only write-through) and training-time memorization are already strongly occupied by nearby work. The honest knowledge delta is therefore too small relative to the broad mother question. Do not revive by adding dose/model sweeps, privacy framing, or post-hoc mechanism.
 
@@ -142,4 +129,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 6.**
+**Current selected topic count = 5.**

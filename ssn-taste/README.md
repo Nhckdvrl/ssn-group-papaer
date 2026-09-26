@@ -25,7 +25,7 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 
 ---
 
-## Current selected topics = 6
+## Current selected topics = 5
 
 均为 **SELECTED — PILOT-AUTHORIZED**：
 
@@ -34,9 +34,8 @@ Primary targets: **ACL / EMNLP / NAACL Main**.
 - **S07 — Where Does Surprise Go?**
 - **S10 — Does the Language We Plan to Speak Change Event Construal?**
 - **S11 — Same Number, Different Information: Value vs Measurement Precision**
-- **S12 — Does In-Context Learning Distinguish Definitions from Facts?**
 
-S03 / S05 / S08 / S09 已 KILL。
+S03 / S05 / S08 / S09 / S12 已 KILL / cancelled from current selection.
 
 > Selected 只表示“当前值得第一刀实验”，**不是正向 taste exemplar**。
 

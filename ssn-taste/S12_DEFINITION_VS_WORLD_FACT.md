@@ -1,6 +1,6 @@
 # S12 — Does In-Context Learning Distinguish Definitions from Facts?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** CANCELLED — CURRENT DESIGN KILLED AFTER E03 (mother question unresolved)  
 **Registered:** 2026-09-25  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** in-context learning / semantic vs world knowledge / typed contextual updating
@@ -291,9 +291,46 @@ The defensible claim is:
 
 Mechanistic work is optional later depth only after the behavioral law is established.
 
+## Final pilot adjudication — 2026-09-26
+
+E01–E03 were executed and the registered design is **KILLED**.
+
+Final E03 used a fresh held-out batch with 360 matched main prompts and 216 controls. Controls were 216/216 correct and all final answers parsed exactly.
+
+Key result (correct / 60):
+
+| Condition | Positive transfer | Exception / coexistence |
+|---|---:|---:|
+| Definition | 60/60 | 60/60 |
+| Fact-natural | 1/60 | 0/60 |
+| Fact-explicit | 60/60 | 26/60 |
+
+Within Fact-explicit exception items, question form produced a predeclared split: 26/30 correct for the “impossible” wording versus 0/30 for the logically complementary “can both be true” wording.
+
+Interpretation:
+- natural report framing did not localize the bare biconditional;
+- explicit World-A-only scope can repair positive transfer, showing that the model can use world scope when it is stated strongly enough;
+- the exception readout remains unstable and highly wording-sensitive even after explicit scope;
+- therefore the current instrument does not cleanly identify a robust natural discourse-role distinction between definition updating and world-fact updating.
+
+This triggers the registration's own kill criterion: the effect does not survive natural discourse-role framing and requires stronger explicit scope manipulation, while one main readout remains question-form dependent.
+
+**Verdict:** KILL current S12 design. The broader language-update-vs-world-update mother question remains unadjudicated.
+
+Do not revive by:
+- adding stronger scope prompts;
+- sweeping many phrasings;
+- adding model families;
+- moving directly to hidden-state/mechanistic analysis;
+- treating the E03 polarity split as a new finding without independent novelty checking and held-out validation.
+
+A future revival would require a new scientific rationale and a newly frozen instrument that separates definition/meaning status from world-state status without making explicit scope wording itself the operative variable.
+
+See `experiments/S12_E03/RESEARCH_LOG.md` and commit `7e04161`.
+
 ## Promotion status
 
-**PILOT-AUTHORIZED.**
+**CANCELLED from current selection.**
 
 S12 survives because:
 - the why-care is understandable in one sentence;
