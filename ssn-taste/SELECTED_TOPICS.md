@@ -86,23 +86,10 @@ Selected topics are **not positive taste exemplars**. Selection only means the t
 
 ---
 
-### S11 — Same Number, Different Information: Value vs Measurement Precision
-
-**Status:** SELECTED — PILOT-AUTHORIZED  
-**Registered:** 2026-09-21  
-**Detailed registration:** `S11_VALUE_VS_MEASUREMENT_PRECISION.md`
-
-**Parent question.** When two numerical expressions have the same central value but carry different measurement precision, does a language model separate **value** from **reported epistemic precision**, or collapse both into one numerical object?
-
-**Scientific pressure.** Recent work increasingly emphasizes format-invariant number magnitude representations and robustness to alternative numerical notations. But in scientific measurement, some same-value surface differences are intentionally information-bearing: `2.0 m` and `2.00 m` can report different precision. The unresolved boundary is therefore **when numerical form should be ignored and when it must be preserved**.
-
-**Minimum identification.** Cross pure-value and measurement contexts while independently varying precision and notation. A correct selective-invariance system should ignore notation/trailing-zero differences when only mathematical value matters, but use precision differences for downstream measurement decisions. Value-collapse and generic surface-sensitivity predict distinct failure patterns.
-
-**Claim boundary.** Do not turn S11 into a significant-figures quiz, generic numeracy benchmark, scientific QA benchmark, or hidden-state probe paper. The scientific object is selective invariance between numerical value and measurement precision.
-
----
-
 ## Explicitly cancelled registrations
+
+- **S11 — Same Number, Different Information: Value vs Measurement Precision**: registration cancelled after E01–E03 execution (final E03 commit `9de6d60`). Pure mathematical value invariance and nuisance-notation invariance were strong, but the registered measurement-threshold instrument failed its own construct-validity requirement. Even when the compatible true-value interval was supplied explicitly, the model remained unstable for greater-than certification (16/40 correct coarse cases; 24/40 Yes/Yes pairs), while less-than interval judgments were 40/40. Thus the readout itself does not cleanly identify whether reported measurement precision is preserved as epistemic information. Do not rescue S11 by further prompt repair, CoT, model families, or mechanism work on this threshold route. Any revival requires a new independently motivated instrument, not another variant of interval-threshold certification.
+
 
 - **S12 — Does In-Context Learning Distinguish Definitions from Facts?**: registration cancelled after E01–E03 execution (final E03 commit `7e04161`). The broader language-update-vs-world-update mother question remains scientifically unresolved, but the registered matched-persistence instrument failed its own direct-attack criterion. Natural World-A report framing made the bare biconditional behave like a global rule on both readouts; adding explicit World-A-only scope repaired positive transfer (60/60) but left exception/coexistence judgments sharply question-form dependent (26/30 correct for “impossible” versus 0/30 for “can both be true”). Controls were 216/216 and all final answers parsed exactly, so this is not a harness failure. Do not rescue S12 by progressively strengthening scope prompts, adding model families, or moving to mechanism analysis. A future revival requires a new independent scientific rationale and a newly frozen instrument that manipulates definition-vs-world status without relying on stronger explicit scope wording.
 
@@ -129,4 +116,4 @@ Do **not** revive either topic by adding more models, more datasets, more metric
 
 ---
 
-**Current selected topic count = 5.**
+**Current selected topic count = 4.**
