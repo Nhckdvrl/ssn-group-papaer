@@ -311,141 +311,37 @@ Sasano 的明确判断和强 Main 论文的问题结构才是主要校准源。
 
 ---
 
-# 4.1 Method-Driven Search Mode（2026-09-25 起优先）
+# 4.1 Sasano-taste purity：不要混入用户个人题型偏好
 
-当前用户更偏好一种**现象诊断驱动的方法论文**，包括 training-free 和 training-based 两类：
+本文件夹只回答：
 
-> **existing method / paradigm → stable failure or bottleneck → diagnose why → targeted fix → benchmark gain → ablation + mechanism/analysis**
+> **什么问题符合 Sasano 的真实 taste？**
 
-这不是放弃 scientific pressure，而是把 pressure 优先寻找在**已有方法的 load-bearing failure**中。
+用户个人更喜欢“现有方法缺陷 → 改法 → benchmark gain”等题型，这可以在别的搜索线中使用，但**不得作为本文件夹的 Sasano-taste generator、加权项或 admission reason**。
 
-理想论文故事不是：
-
-> “我想了一个新 module / loss / decoding trick，然后看看能不能涨分。”
-
-而是：
-
-> **现有方法在什么条件下系统性失效？为什么？这个原因直接指向什么最小改动？这个改动是否真的修复了原 failure，并因此带来下游收益？**
-
-## 4.1.1 优先找的 failure 类型
-
-### A. 方法的局部资源分配错误
-例如：
-- test-time compute 花在大量低价值 token / branch 上；
-- 固定 token budget 导致简单题 overthink、难题 underthink；
--视觉工具只 zoom 导致 global context 丢失，只 highlight 又缺 local detail。
-
-适合：
-- selective intervention；
-- adaptive budget；
-- uncertainty-triggered compute；
-- heterogeneous operator selection。
-
-### B. proxy / objective 与真正目标错位
-例如：
-- speculative decoding 的 exact-match verification 丢掉语义正确 draft；
-- guided decoding 的 value model 只在 base-policy trajectories 上训练，部署时分布失配；
-- RL reward / advantage 在 saturated data 上失去有效 variance。
-
-适合：
-- 改 verification criterion；
-- online / iterative refinement；
-- exploration / sampling 改造；
-- 更直接的 supervision signal。
-
-### C. 某训练阶段破坏了原有能力
-例如：
-- multimodal instruction tuning 提升视觉对齐但损害 base LLM reasoning；
-- reasoning 变长后 visual grounding 逐渐衰减；
-- context-to-parameter compression 在深层 hidden states collapse。
-
-适合：
-- model merging；
-- preservation / anchoring；
-- state alignment；
-- layer-selective intervention。
-
-### D. 方法依赖的前提在真实 deployment 中不成立
-例如：
-- critique/self-refinement 训练时依赖 ground truth / external feedback，但 test time 不可用；
-- static verifier / reward model 在策略改变后失准；
-- global sparse-attention 节省单步算力，却诱发更长生成，端到端反而更贵。
-
-适合：
-- self-contained training objective；
-- on-policy / self-evolving critic；
-- end-to-end cost-aware design。
-
-## 4.1.2 两类优先论文形态
-
-### Training-free
-
-优先条件：
-- failure 能在 frozen model 上稳定复现；
-- bottleneck 有可观测 proxy；
-- intervention 能在 decoding / attention / cache / model merge / test-time scheduling 上直接作用；
-- 不需要重新训练就能做第一版；
-- 容易做 paired ablation 与效率分析。
-
-典型故事：
-> phenomenon localization → selective intervention → accuracy/efficiency gains → intervention-position / threshold / component ablation
-
-### Training-based
-
-优先条件：
-- failure 明确来自 objective / sampling / supervision / optimization，而不是笼统“模型不够强”；
-- proposed loss / data / rollout strategy 与诊断一一对应；
-- 第一版可在 7B/14B 或小规模模型上验证，不要求巨量 model zoo；
-- 能通过 ablation 表明 gain 来自修复原 failure，而不是纯 extra compute/data。
-
-典型故事：
-> training failure → causal diagnosis → redesigned sampling/reward/supervision → benchmark gains → training-dynamics / representation / behavior ablation
-
-## 4.1.3 这种题型的 admission gate
-
-一个 method seed 至少要回答五句话：
-
-1. **Baseline 到底哪里坏？**
-2. **这个坏法是稳定现象，还是只在一个 benchmark 上掉点？**
-3. **为什么会坏？至少有一个可检验的 mechanism / bottleneck hypothesis。**
-4. **我们的方法哪一部分直接修这个原因？**
-5. **什么 ablation 可以证明涨点确实来自“修复该缺陷”，而不是多算力 / 多数据 / 多参数？**
-
-如果第 3–5 条说不清，不要把“benchmark 涨点”包装成 scientific contribution。
-
-## 4.1.4 方法论文的首轮搜索优先级
-
-下一轮优先从**已有强方法**反向找 weakness，而不是先 brainstorm 新方法：
-
-1. ACL / EMNLP / NAACL / TACL / ICLR / ICML / NeurIPS 最近 12–18 个月方法论文；
-2. 大公司 / 强团队 technical reports；
-3. 复现 repo / issue / appendix 中稳定出现但论文没有解决的 failure；
-4. 方法在 changed regime 下失效：
-   - 更强 base model；
-   - longer reasoning；
-   - multimodal；
-   - long context；
-   - inference scaling；
-   - newer post-training；
-5. 先做小规模 phenomenon confirmation，再决定是否设计 method。
-
-### 重要限制
-
-不要退化成：
-- baseline + arbitrary tweak；
-- “多一个 loss term 就涨了”；
-- paper A × paper B；
-- 只在一个 benchmark 赢；
-- benchmark/data construction 本身成为主要贡献；
-- 为了刷分进入巨大 hyperparameter sweep；
-- 事后机制解释。
-
-最强形式仍然是：
-
-> **method 由 failure diagnosis 推出来，ablation 又回头验证 diagnosis。**
+同样，用户偏好的 mechanism / training / method / 刷分，只能在一个题已经因 Sasano-style scientific pressure 成立后作为执行偏好，不能反向定义问题。
 
 ---
 
+# 4.2 2026-09-26 pool failure lesson：自然对象先于理论二分
+
+S11/S12 的实际 pilot 暴露出一个此前 guide 没挡住的系统错误：
+
+> **能写出干净 A/B/C 世界，不等于现实模型里已经有一个可被干净测量的自然对象。**
+
+S11 的母问题依赖 measurement precision，但真正 readout 连显式区间上的 universal certification 都不稳定。
+S12 的母问题依赖 definition-vs-world status，但自然 discourse framing 无法把 relation scope 稳定操纵出来。
+
+因此，从现在起：
+
+1. **理论 distinction 不能作为 seed provenance。** A vs B、typed vs untyped、state vs retrieval、source vs rule、pre-verbal vs verbal 都只能解释已经存在的现象，不能凭自身漂亮而进入 selected。
+2. **自然现象 / 自然矛盾必须先存在。** 注册前必须能指向至少一个无需自造复杂 task 就能看到的事实：复现已有结果、真实模型行为、论文之间冲突、真实数据上的反常、或 Sasano 明确指出的未解释现象。
+3. **Synthetic task 只允许做 decisive diagnosis，不允许负责创造研究对象。** 如果删掉 synthetic micro-world / psych paradigm / custom causal fork 后，问题就没有独立 empirical pressure，KILL。
+4. **Instrument Preflight 必须早于 PILOT-AUTHORIZED。** 在正式 selected 之前，不看主效应地先证明 scientific variable 能被操纵、readout 在最强显式控制下语义稳定、ground truth/parser 正确、对称改写不产生大幅逻辑翻转、最小 positive/negative controls 都成立。
+5. **禁止用“两个结果都很有意义”替代自然性。** 如果 A/B 两个故事都只在自造 assay 中成立，而社区没有真实行为需要这两个解释，那么即使结果可叙述，也不是好题。
+6. **优先 anomaly-after-reproduction，而不是 anomaly-before-experiment。** 不是先赌异常，而是优先从已经可靠出现、但解释不清的自然结果出发。
+
+---
 # 5. 新的 generator：先建 Pressure Portfolio，不先 brainstorm 标题
 
 维护约 **5–8 个 Important Pressures**。
