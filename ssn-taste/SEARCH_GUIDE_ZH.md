@@ -1,612 +1,412 @@
-# ssn-taste 科研选题搜索指南（Canonical）
+# ssn-taste 科研选题搜索指南（Canonical v2）
 
-最后系统重构：2026-09-21
+最后系统重构：2026-09-26
 
-这份文件是 `ssn-taste/` **唯一长期方法论来源**。
+这个文件夹只做一件事：
 
-本子仓库只有一个核心目的：
+> 找到 Sasano 会认为清楚、自然、结果本身有意思、值得知道，并具有 ACL / EMNLP / NAACL Main 潜力的问题。
 
-> **找到一个 Sasano 会认为清楚、重要、值得知道，且具有 ACL / EMNLP / NAACL Main 潜力、现在又能被直接攻击的科学问题。**
+这里不优化用户个人更喜欢的 method paper / benchmark gain / training / mechanism 题型。那些偏好属于别的搜索线，不能反过来定义 Sasano taste。
 
-不是为了制造 Sxx，不是为了把某个 seed 救活，也不是为了证明“我们能找到 novelty”。
-
-优先级：
-
-> **Sasano 的真实研究判断 > ACL / EMNLP / NAACL / TACL 强论文的问题形成方式 > 其他顶会/跨领域启发 > 同门题材分布。**
-
-同门研究只说明实验室允许做什么，是弱证据；**不能当正向 taste exemplar**。  
-历史 selected / failed / Sxx / Fxx 也只用于状态恢复、去重和失败学习，不能定义下一题应该长什么样。
+当前正式状态：S01–S12 全部 KILL，selected = 0。
 
 ---
 
-# 0. 开局只恢复最小状态
+# 1. 这次为什么整池失败
 
-每轮开始只读：
+根本错误不是“实验没调好”，而是选题对象选错了。
 
-1. `README.md`
-2. `SELECTED_TOPICS.md`
-3. 当前 selected registrations（只为避免重复）
-4. 本文件
-5. 最近 commits
+旧流程实际上经常是：
 
-然后做新鲜校准：
+> 先想一个漂亮 distinction → 写 A/B/C worlds → 设计 synthetic assay → 再问这个结果会不会有意义。
 
-- 2–4 条 Sasano 最近、与“有趣 / 意外 / novelty / 是否值得继续”直接相关的 Slack feedback；
-- 4–8 篇近期强 ACL / EMNLP / NAACL / TACL Main papers，至少跨 2–3 个不同 lineage；
-- 必要时补 ICLR / ICML / NeurIPS / CV / multimodal / cognition / statistics 等作为外部压力。
+这会系统性产出“概念上漂亮、实验一碰就碎”的题。
 
-**不要开局顺序读完全部 `FAILED_TOPICS*.md`。**
+S11 / S12 只是把问题暴露得最清楚：
 
-过去这么做会让 agent 被 F01–F109 的术语与负例锚死，只能在历史题目的 negative space 里继续变体。
+- S11：value vs measurement precision 很漂亮，但真正 readout 连显式 interval 上的 certification 都不稳定。
+- S12：definition vs world fact 很漂亮，但 natural discourse role 根本不能稳定操纵 scope；加强 scope 后又变成提示词本身在起作用。
 
-Failed ledgers 改成：
+所以以后第一原则改成：
 
-> **锁定 seed 后，按关键词 / parent / mechanism 定向搜索，做 anti-resurrection。**
+> 不是先找 question，而是先找已经存在的 finding。
+
+只有 finding 本身先站住，才允许形成 RQ。
 
 ---
 
-# 1. 过去为什么长期找不到足够好的题
+# 2. Sasano taste 的正确理解：finding-first，不是 distinction-first
 
-问题不是“门槛太高”，而是 generator 经常从错误的地方开始。
+根据 Sasano 2026 年真实反馈，最稳定的信号是：
 
-## 1.1 从漂亮结构开始，而不是从 scientific pressure 开始
+1. 平均 reviewer 必须很快看懂哪里有意思。
+2. 技术上干净但结果理所当然，不够强。
+3. 事前预期被真实实验打脸，本身可能很有意思；下一步应换几个自然 setting 验证，而不是立刻发明复杂机制。
+4. 直接先行把某个因素说成关键，而新实验发现这个因素作用有限，也值得，因为它直接修改了一个 live claim。
+5. 结果与 RQ 应尽量一对一。
+6. 输出类似但内部理解不同，可以作为有价值的 deeper finding，但未必足以单独成为主线。
+7. 几何/机制指标如果不知道和实际知识或行为有什么关系，很难说明到底学到了什么。
 
-过去大量 seed 来自：
+因此，Sasano-style seed 的起点应当更像：
 
-- A ≠ B；
-- shared vs separate；
-- encoded vs used；
-- state vs operator；
-- invariance / commutativity；
-- prototype vs exemplar；
-- 某个 architecture paradox；
-- 某个经典 cognitive effect；
-- 某个看起来必要的 latent computation。
-
-这些结构可以成为实验形式，但**不是 idea provenance**。
-
-结果通常是：先设计了一个很漂亮的实验，nearest-prior 一查才发现 mother question 早被占了，只剩一个 exact cell。
-
-### 修正
-
-先找：
-
-> **社区现在有什么重要理解是不稳的？哪条 load-bearing assumption 没被验证？哪两个已知事实不能被一个简单解释统一？**
-
-只有 pressure 成立后，才允许使用 A/B contrast。
-
----
-
-## 1.2 “赌一个新现象”是最危险的模式
-
-错误模式：
-
-> 也许 LLM 会出现一个神奇现象 → 先跑看看 → 有了再解释 why。
-
-如果现象不存在，整题归零；如果存在，漂亮现象往往已经被原作者或紧邻工作继续做到 why / boundary / mechanism。
-
-### Anti-Anomaly-Gambling Rule
-
-优先只接受以下母问题：
-
-1. 已有长期未决理论分歧，新模型第一次允许更干净 intervention；
-2. 社区广泛依赖的 premise / proxy / metric 尚未真正验证；
-3. 两个独立、已成立的结果彼此冲突，需要区分解释；
-4. changed regime 使旧结论的前提失效；
-5. 一个结构性 identification problem 本身就存在，不依赖先观察新 anomaly。
-
-如果第一步只是“看看这个现象有没有”，默认不进入 pilot。
-
----
-
-## 1.3 “别人发现现象，我们补 why”通常已经太晚
-
-最近反复撞死的共同叫法、curse of knowledge、entity tracking、interference、belief revision、probability coherence、evidence dependence 等都说明：
-
-> **一个现象一旦漂亮到值得追，作者往往已经顺手做 decisive contrast。**
-
-只有在以下条件同时成立时才允许追 why：
-
-- why 本身早于该现象就是一个重要科学问题；
-- nearest prior 没有回答 same decisive unknown；
-- 我们回答的是独立 mother question，而不是“再加机制”。
-
-否则直接 KILL。
-
----
-
-## 1.4 “经典心理学 / 语言学问题 + LLM”不是 novelty
-
-把 prototype/exemplar、cue competition、common ground、reference frame、antonymy、coercion 等搬到 LLM，通常只是：
-
-> **old question + new model**
-
-经典问题只有在现代模型带来**新的 identification opportunity**时才值得做。
-
-正确形式：
-
-> 过去 A/B 两种解释在人类数据中纠缠；现在可在同一个 artificial agent 内只改变一个变量，第一次真正区分 A/B。
-
-错误形式：
-
-> “人类有 X，LLM 有没有 X？”
-
----
-
-## 1.5 强论文曾经被主要用来查重，而不是生成科学问题
-
-这会把搜索变成法律检索。
-
-以后每篇强论文只做 5 行 autopsy：
-
-1. **Pressure**：为什么问题在实验前就值得问？
-2. **Load-bearing assumption**：社区默认了什么？
-3. **Knowledge at stake**：哪个理解可能被改写？
-4. **Decisive attack**：作者用什么最小 contrast？
-5. **Growth lesson**：普通 observation 是怎样长成 Main-level question 的？
-
-只迁移问题形成方式，不复制题材。
-
----
-
-## 1.6 追热门线会天然降低 novelty
-
-2025–2026 的 reasoning / agent / RL / uncertainty / evidence integration / latent planning 更新极快。
-
-热门题不是禁区，但默认降权。优先寻找：
-
-- undercrowded 的基础问题；
-- generation / learning / representation 的基本规律；
-- discourse / cognition / multilingual / multimodal 中**无需大量专业背景即可理解**的问题；
-- 旧问题的新 identification，而不是热点新术语。
-
-尤其避免为了追热点而进入 RL / agent / latent reasoning / MoE 等拥挤 lineage。
-
----
-
-## 1.7 大 mother question 与实际实验经常不匹配
-
-S05 是典型：母问题漂亮，但能执行的实验只回答很窄的 causal cell。
-
-注册前必须问：
-
-> **这个最小实验真的在回答标题里的 mother question 吗？**
-
-如果实验只能支持标题的 10%，不要靠 rhetoric 放大。
-
----
-
-# 2. Sasano taste：只保留真实、稳定的判断
-
-不要把 Sasano taste 简化成“喜欢语言学”或“喜欢 interpretability”。
-
-## 2.1 Reviewer 第一遍必须看懂为什么有意思
-
-Sasano 明确强调：top conference 的平均 reviewer 不会替作者找亮点。
-
-因此：
-
-> **一句话讲不清的问题，默认危险。**
-
-如果理解问题必须先学五个语言学术语、一个复杂 formalism、或一套内部机制，优先不做。
-
-这也符合当前搜索偏好：**即使某种复杂语言学题很 Sasano，也应谨慎，除非它能被压缩成普通 reviewer 一听就懂的科学问题。**
-
----
-
-## 2.2 “意外”值钱，但不是“奇怪”值钱
-
-真正值钱的是：
-
-> **结果迫使我们修改一个 live belief / explanation / assumption。**
-
-“找到一个 representation”“两个内部状态不同”“某 head 有因果作用”通常不够惊讶。
-
----
-
-## 2.3 技术上新，不等于 scientific contribution 强
-
-机制可以深化一个已经重要的问题，但不能拯救一个本身无聊的 mother question。
-
-正确顺序：
-
-> important question → behavior / law → representation / computation → component → causal intervention
-
-错误顺序：
-
-> probe / SAE / head / vector → 再反向发明 mother question。
-
----
-
-## 2.4 Novelty 太小时要敢于立即见切り
-
-如果 honest reviewer compression 只是：
-
-- 新模型；
-- 新语言；
-- 新 modality；
-- cleaner replication；
-- 已知现象的 why；
-- 已知机制的一格变体；
-
-就停止，不要因为已经投入时间继续救。
-
----
-
-# 3. ACL / EMNLP / NAACL 是主要 idea source，但学的是“出题动作”
-
-重点寻找以下问题形成方式，而不是固定题型。
-
-## 3.1 挑战默认 premise
-
-社区默认：
-
-> X 更灵活 / 更多 / 更强 → 应该更好
-
-强论文可能问：
-
-> 这个“优势”是否允许模型绕过真正关键 computation？
-
----
-
-## 3.2 拆开被默认等价的量
-
-不是为了机械做 A ≠ B，而是因为社区正在用 A 代表 B，并据此得出重要结论。
-
-只有当分离会改变一个现有解释时才值得做。
-
----
-
-## 3.3 找 training / evaluation / deployment 的结构错位
-
-例如：
-
-- 单轮训练 vs 多轮使用；
-- endpoint performance vs formation process；
-- proxy metric vs 真正对象；
-- controlled benchmark success vs realistic decision process。
-
-重点是**结构性错位**，不是再造一个 benchmark。
-
----
-
-## 3.4 找 changed premise
-
-旧结论依赖某个条件；现代模型/训练范式已经改变该条件。
-
-真正的问题是：
-
-> 旧解释还能成立吗？
-
----
-
-## 3.5 找 old debate + new intervention
-
-这是目前最值得优先寻找的类型之一。
-
-不是“经典问题搬到 LLM”，而是：
-
-> LLM 让过去无法区分的两种解释，现在第一次可以在同一 agent 内做 causal contrast。
-
----
-
-# 4. 题材范围：宽，但不跟热点跑，也不钻晦涩语言学
-
-本仓库不是“语言学选题库”，也不是“interpretability 选题库”。
-
-优先搜索：
-
-- LLM learning / post-training 的基础规律；
-- inference / generation 的基本过程；
-- representation / inductive bias；
-- memory / updating / state / adaptation；
-- multimodal / speech / generation 中容易解释的基础问题；
-- cognition / discourse / multilingual 中普通 reviewer 能直接理解的问题；
-- AI-mediated language / behavior 中具有清晰科学压力的问题。
-
-可以看语言学，但**复杂语言学只能作为 scientific object 的来源，不应成为理解门槛**。
-
-同门题材只做弱参考。  
-Sasano 的明确判断和强 Main 论文的问题结构才是主要校准源。
-
----
-
-# 4.1 Sasano-taste purity：不要混入用户个人题型偏好
-
-本文件夹只回答：
-
-> **什么问题符合 Sasano 的真实 taste？**
-
-用户个人更喜欢“现有方法缺陷 → 改法 → benchmark gain”等题型，这可以在别的搜索线中使用，但**不得作为本文件夹的 Sasano-taste generator、加权项或 admission reason**。
-
-同样，用户偏好的 mechanism / training / method / 刷分，只能在一个题已经因 Sasano-style scientific pressure 成立后作为执行偏好，不能反向定义问题。
-
----
-
-# 4.2 2026-09-26 pool failure lesson：自然对象先于理论二分
-
-S11/S12 的实际 pilot 暴露出一个此前 guide 没挡住的系统错误：
-
-> **能写出干净 A/B/C 世界，不等于现实模型里已经有一个可被干净测量的自然对象。**
-
-S11 的母问题依赖 measurement precision，但真正 readout 连显式区间上的 universal certification 都不稳定。
-S12 的母问题依赖 definition-vs-world status，但自然 discourse framing 无法把 relation scope 稳定操纵出来。
-
-因此，从现在起：
-
-1. **理论 distinction 不能作为 seed provenance。** A vs B、typed vs untyped、state vs retrieval、source vs rule、pre-verbal vs verbal 都只能解释已经存在的现象，不能凭自身漂亮而进入 selected。
-2. **自然现象 / 自然矛盾必须先存在。** 注册前必须能指向至少一个无需自造复杂 task 就能看到的事实：复现已有结果、真实模型行为、论文之间冲突、真实数据上的反常、或 Sasano 明确指出的未解释现象。
-3. **Synthetic task 只允许做 decisive diagnosis，不允许负责创造研究对象。** 如果删掉 synthetic micro-world / psych paradigm / custom causal fork 后，问题就没有独立 empirical pressure，KILL。
-4. **Instrument Preflight 必须早于 PILOT-AUTHORIZED。** 在正式 selected 之前，不看主效应地先证明 scientific variable 能被操纵、readout 在最强显式控制下语义稳定、ground truth/parser 正确、对称改写不产生大幅逻辑翻转、最小 positive/negative controls 都成立。
-5. **禁止用“两个结果都很有意义”替代自然性。** 如果 A/B 两个故事都只在自造 assay 中成立，而社区没有真实行为需要这两个解释，那么即使结果可叙述，也不是好题。
-6. **优先 anomaly-after-reproduction，而不是 anomaly-before-experiment。** 不是先赌异常，而是优先从已经可靠出现、但解释不清的自然结果出发。
-
----
-# 5. 新的 generator：先建 Pressure Portfolio，不先 brainstorm 标题
-
-维护约 **5–8 个 Important Pressures**。
-
-每个只写四行：
-
-1. **Current belief**：社区现在认为/依赖什么？
-2. **Pressure**：哪里不协调、未验证、changed、或互相冲突？
-3. **Why now**：为什么今天第一次有合理 attack？
-4. **Consequence**：A/B 两种世界分别会改变什么理解？
-
-没有这四行，不生成 seed。
-
-Pressure 来源优先：
-
-1. Sasano 明确评价里暴露的“什么算有趣 / 不惊讶”；
-2. ACL / EMNLP / NAACL / TACL 强 Main 的 load-bearing assumption；
-3. 多篇论文之间的冲突；
-4. 其他领域可以迁移的 identification logic。
-
-不要从：
-
-- future work 句子；
-- 心理学术语列表；
-- architecture component 列表；
-- Fxx negative-space；
-- “这个 exact cell 好像没人测”
-
-生成题。
-
----
-
-# 6. Seed 形成前先做两个廉价 Gate
-
-## 6.1 Why-care Gate
-
-用普通话一句话回答：
-
-> **为什么一个普通 AI/NLP reviewer 会想知道答案？**
-
-不能使用 mechanism / benchmark 专有名词。
-
-过不了直接丢。
-
-## 6.2 Early-crowding Gate
-
-在投入实验设计前，先做一次**快速 collision search**：
-
-- exact mother question；
-- 最接近 decisive contrast；
-- 最近 12–18 个月；
-- 特别检查最近几周 arXiv / ACL Anthology。
-
-这里只回答：
-
-> **这个 parent 是否已经正在被一群人正面做？**
-
-若是，默认换 lineage，不在热门缝隙里找 exact-cell novelty。
-
----
-
-# 7. 锁定一个 seed 后才做深审
-
-## 7.1 Knowledge-delta statement
-
-必须写：
-
-> **Prior 已知 X；Y 仍未知，因为 Z；我们的实验区分 A / B / C。**
-
-Kill：
-
-- same decisive unknown 已被回答；
-- difference 只是 model/data/language/modality/condition；
-- cleaner replication；
-- paper A × paper B；
-- novelty 只靠 exact cell。
-
----
-
-## 7.2 No-Anomaly-Gamble test
-
-问：
-
-> 如果我们预期的“漂亮现象”完全不存在，mother question 还成立吗？
-
-如果不成立，危险。
-
-更理想的是：
-
-> 实验无论落到 A 或 B，都直接区分两个事先存在的 scientific worlds。
-
-但不要自欺欺人地说“所有结果都有故事”。
-
-Null 只有在它排除一个真实理论或重要 assumption 时才算有价值。
-
----
-
-## 7.3 Direct-Attack Gate
-
-PILOT-AUTHORIZED 前必须已经有一个小而直接的实验：
-
-- 直接操纵 scientific variable；
-- 主要 worlds 给出不同 prediction；
-- 第一刀就在回答 science。
-
-危险：
-
-- 先找 probe/vector；
-- 先造 evaluator；
-- 先建 benchmark；
-- 先赌 construct 是否存在；
-- 先做大规模数据工程。
-
----
-
-## 7.4 Execution Gate
-
-优先：
-
-> existing ground truth → small programmatic stimuli → 少量自动生成 + spot check
-
-避免：
-
-- 大人工 annotation；
-- LLM judge 作为核心真值；
-- model zoo；
-- optimizer × LR × dose × family 矩阵；
-- 为救题不断增加 controls。
-
-训练题尤其问：
-
-> causal variable 是 scientific variable，还是 recipe/path 的复合产物？
-
-如果需要 recipe matrix 才知道 qualitative conclusion，KILL。
-
----
-
-# 8. Global Reset：防止 agent 陷入局部最优
-
-这是硬规则。
-
-Agent 最容易犯的错误不是不会查文献，而是：
-
-> **一旦投入某个 seed，就开始把“救活这个 seed”误认为核心目标。**
-
-真正核心目标始终是：
-
-> **找到最值得做的问题，而不是证明当前候选还能做。**
-
-出现以下任一情况，立即强制退出当前局部搜索：
-
-- 连续 2–3 个 seed 因同一种原因死亡；
-- 已经开始为一个 seed 不断加 controls / variants；
-- 思考内容越来越像“怎么绕过 prior”；
-- novelty 越来越依赖 exact wording / exact condition；
-- mechanism 越来越复杂，但 why-care 越来越难；
-- 连续在同一 lineage 内搜索；
-- 最近看的论文主要只用于 kill；
-- 讨论超过一半在当前 seed，而不是 scientific pressure；
-- agent 开始把历史规则当目的，而不是工具。
-
-### Global Core-Goal Check
-
-强制回答五问：
-
-1. **我们现在的核心目的是什么？**
-2. **如果立刻删除当前 seed，哪个 scientific pressure 仍然值得追？**
-3. **我们是在寻找问题，还是在保护 sunk cost？**
-4. **当前 lineage 为什么比另外 2–3 个 lineage 更值得继续？**
-5. **最近一次 Sasano feedback / 强 Main paper 给我们的真正校准是什么？**
-
-如果答不清：
-
-> **停止当前 seed，重新校准。**
-
-### Reset 动作
-
-1. 重新读 1–2 条 Sasano 真实评价；
-2. 重新读 2–4 篇不同 lineage 的强 Main；
-3. 写一句 drift diagnosis：
-   > “刚才为什么偏离核心目的？”
-4. 重建 pressure portfolio；
-5. 允许把整个 lineage 丢掉。
-
-规范本身也不能成为局部陷阱。  
-如果 guide 开始让 agent 机械执行 checklist，而不是找到更好问题，**回到核心目的，允许改变流程。**
-
----
-
-# 9. 历史 failed ledger 的正确用法
-
-Failed files 是**索引和 anti-resurrection archive**，不是开局教材。
-
-锁定 seed 后：
-
-1. 搜关键词；
-2. 搜 parent；
-3. 搜关键 mechanism / contrast；
-4. 只读命中的 Fxx 周边；
-5. 判断是否实质复活旧题。
-
-不要因为“没在 Fxx 里找到同名词”就认为新。  
-也不要因为“某个 broad parent 曾被 kill”就自动 kill 新问题。
-
-判断标准始终是：
-
-> **same decisive unknown 是否已死 / 已被 prior 拥有。**
-
----
-
-# 10. 最终 Binary Decision
-
-一个锁定 seed 必须继续到：
-
-> **PILOT-AUTHORIZED**
+> “这个已经观察到的结果为什么和最自然预期不一样？”
 
 或：
 
-> **KILL**
+> “直接先行认为 X 很关键，但这里 X 居然不关键/方向相反，为什么？”
 
-不向用户留下 SERIOUS / maybe 半状态。
+而不是：
 
-PILOT-AUTHORIZED 必须同时满足：
-
-- 一句话 why-care 清楚；
-- Sasano/Main taste 合格；
-- parent 不属于明显拥挤追热点；
-- same decisive unknown 未被 prior 占领；
-- 不依赖先赌一个 anomaly；
-- 一个小实验能直接区分主要 worlds；
-- mother question 与实际实验宽度匹配；
-- data / construct / recipe / scale 不会自然爆炸。
-
-允许整轮 **0 survivor**。
+> “A 和 B 理论上不同，LLM 会不会区分？”
 
 ---
 
-# 11. 当前正式状态
+# 3. 新流程总览
 
-以 `README.md` / `SELECTED_TOPICS.md` / recent commits 为准。
+正式流程只有七步：
 
-截至 2026-09-25，repo 当前正式 selected：
+> Evidence Harvest → Anchor Reproduction → Surprise/Claim Audit → Explanation Ownership → RQ Formation → Instrument Preflight → PILOT-AUTHORIZED
 
-- S04 — How Do Language Models Update Situation Models Across Event Boundaries?
-- S06 — What Does Deliberation Do to Evidence?
-- S07 — Where Does Surprise Go?
-- S10 — Does the Language We Plan to Speak Change Event Construal?
-- S11 — Same Number, Different Information: Value vs Measurement Precision
-- S12 — Does In-Context Learning Distinguish Definitions from Facts?
+任何一步失败，直接 KILL；不进入 Sxx。
 
-这些都**不是正向 taste exemplar**，只是当前尚未被推翻、值得第一刀实验的候选。
-
-S03 / S05 / S08 / S09 已 KILL。
-
-如果聊天、旧 prompt、历史 re-audit 与 repo 当前状态冲突：
-
-> **repo 最新状态优先。**
+**特别重要：在 Instrument Preflight 通过之前，不允许创建新的 Sxx registration。**
 
 ---
 
-# 12. 只记住最后六句话
+# 4. Stage A — Evidence Harvest：只收结果，不许想题
 
-> **核心目的不是救 seed，而是找到最值得做的问题。**  
-> **Sasano 的真实判断高于同门题材。**  
-> **ACL / EMNLP / NAACL 强论文要用来学习怎么形成问题，不只是查重。**  
-> **先有 scientific pressure，再有 A/B experiment；不要赌新现象。**  
-> **热门 lineage 默认降权，复杂语言学默认谨慎。**  
-> **一旦陷入局部思考，立刻 Global Reset，重新回到 why-care。**
+搜索开始时，禁止 brainstorm 标题、RQ、mechanism。
+
+只建立 Observation Cards。
+
+每张卡必须包含：
+
+1. Source：论文 / Slack / 我们已有真实实验的具体来源。
+2. Exact observation：具体数值、表格、figure 或稳定行为，不接受抽象总结。
+3. Natural setting：结果是否来自正常任务/数据/模型使用，而不是为了这个题专门造的 micro-world。
+4. Expected baseline：在看到结果之前，一个知情 reviewer 为什么会预期相反/不同？这个预期必须来自 direct prior、常用假设、明确方法 claim 或非常直接的 capacity/logic argument，而不是我们自己的直觉。
+5. Stability evidence：至少说明是否跨 seed / context / model / subset 稳定；如果 source 只给一个点，明确标红。
+6. Author explanation：原作者到底解释到了哪一步？
+7. Why unresolved：还有什么具体 unknown 没被 source paper / appendix / follow-up 吃掉？
+
+Observation Card 还不是 seed。
+
+## 4.1 允许进入 portfolio 的 observation
+
+优先级最高：
+
+- 事前自然预期与真实结果方向相反；
+- stronger / more / larger 条件反而更差，且不是明显 trade-off；
+- 直接先行 claim X 是关键，新结果显示 X 不关键或方向反转；
+- 两篇强工作在真正可比的对象上得到相反结论；
+- 一个自然 subset 出现 sharp reversal / discontinuity；
+- 一个本来应该受 context / evidence / supervision 影响的行为几乎不受影响，且结果跨自然 setting 稳定；
+- 一个显然受 capacity / information bound 约束的系统表现远超自然预期。
+
+## 4.2 立即拒绝的 observation
+
+- 只是“模型做错了”；
+- 只是 benchmark 某一项掉分；
+- surprise 只来自我们的主观直觉；
+- effect 只在一个 prompt / 一个 model / 一个 seed；
+- perturbation 两边强度根本不可比；
+- source paper 已经把 observation、why 和 decisive test 都做完；
+- 为了让 phenomenon 出现必须先造 custom synthetic task。
+
+---
+
+# 5. Stage B — Anchor Reproduction：先复现 finding，再形成问题
+
+这是旧流程缺失的关键门。
+
+任何 observation 想进入下一步，必须先证明 anchor 本身可靠。
+
+优先直接复现 source setting：
+
+- 原 benchmark / 原 dataset / 原 prompt family；
+- 原公开 model 或可合理替代的同类 model；
+- 原 metric；
+- 尽量不加我们的新 construct。
+
+最低要求：
+
+1. finding 方向能复现；
+2. effect 不是 parser / scoring / prompt accident；
+3. 若 claim 很 broad，至少在第二个自然 setting 或第二个合理 model family 上不立即反转；
+4. 如果原 observation 本身只在一个狭窄 cell 成立，就把 claim 限到那个 cell，不能先写大 mother question。
+
+如果 anchor 不稳定：
+
+> KILL observation。
+
+不允许先解释“为什么复现不了”再把复现失败改成新题。
+
+---
+
+# 6. Stage C — Surprise / Direct-Claim Audit：结果本身到底值不值得？
+
+复现后，用一句普通话写：
+
+> “本来根据 X，我们会预期 Y；但实际稳定看到 Z。”
+
+其中 X 必须是 live baseline，而不是事后编出来的 strawman。
+
+合格的 X 可以是：
+
+- direct prior 明确 claim；
+- 社区真实使用的方法 assumption；
+- 清楚的 monotonic expectation；
+- 明确的信息/容量/逻辑限制；
+- 多篇工作共同依赖的 premise。
+
+不合格：
+
+- “我们觉得应该这样”；
+- “人类会这样，所以模型也应该”；
+- “更多信息一般更好”；
+- “更自然的 perturbation 应该更简单”这类未经控制的修辞。
+
+如果 Z 其实由最简单 baseline 就能解释，KILL。
+
+这一步对应 Sasano 对 manifold-steering 的反馈：
+
+> curved method 比粗糙 straight line 更准，如果本来就应该如此，就没有足够 surprise。
+
+---
+
+# 7. Stage D — Explanation Ownership：原作者到底还剩什么给我们？
+
+旧流程经常犯的错误是：看到一个漂亮 anomaly，就默认“作者只发现现象，我们补 why”。
+
+现在必须把 ownership 拆开检查：
+
+1. Observation ownership：谁先报告 finding？
+2. Explanation ownership：source 是否已经提出原因？
+3. Evidence ownership：source 是否已经用实验支持这个原因？
+4. Decisive-contrast ownership：source / follow-up 是否已经区分了最主要 competing explanations？
+
+只有以下情况允许继续：
+
+- source 只给猜测，没有直接 test；
+- source 做了部分 analysis，但至少两个重要解释仍然给出不同可检验 prediction；
+- 两篇工作对同一个 finding 给出互不兼容解释；
+- direct prior claim 与新 observation 冲突，但没有工作解释冲突为什么出现。
+
+如果 source 已经完成 finding → explanation → decisive intervention，KILL。
+
+**secondary finding 不等于 free novelty。appendix、follow-up、同组后续都要查。**
+
+---
+
+# 8. Stage E — RQ Formation：到这里才允许问问题
+
+RQ 必须从一个已经复现的 finding 长出来。
+
+标准模板：
+
+> Observation O 与 baseline B 冲突；我们问哪个因素解释 O，或 O 在什么自然条件下发生反转。
+
+要求：
+
+- 一条主 finding 对一条主 RQ；
+- 不允许凭空新加漂亮 taxonomy；
+- competing explanations 最多保留 2–3 个真正自然的；
+- 每个 explanation 必须来自 existing result / prior / known property，而不是为了让实验像 science 临时发明；
+- 如果删掉 anchor finding，RQ 就不再值得问，说明这条 RQ 至少 provenance 正确。
+
+禁止重新出现：
+
+- typed vs untyped；
+- state vs retrieval；
+- source vs rule；
+- pre-verbal vs verbal；
+- shared vs separate；
+- A/B/C worlds；
+
+除非这些 distinction 是被已经复现的 finding 强迫出来的解释，而不是 seed 来源。
+
+---
+
+# 9. Stage F — Natural Contrast First
+
+诊断 finding 时，优先从已有自然 variation 里找 contrast：
+
+- source 已有 subset；
+- model family / scale；
+- clean vs naturally occurring condition；
+- direct prior 中已存在的 factor；
+- 一个真实 ablation；
+- 原任务中自然存在的 context / data regime。
+
+只有自然 contrast 不足以区分解释时，才允许 synthetic diagnostic。
+
+synthetic diagnostic 的角色只能是：
+
+> 解释一个已经独立存在的自然 finding。
+
+它不能负责：
+
+- 创造 phenomenon；
+- 定义 construct；
+- 同时当 ground truth、manipulation 和 evidence。
+
+如果删掉 synthetic assay，整个项目就没有 empirical pressure：KILL。
+
+---
+
+# 10. Stage G — Instrument Preflight：通过前不能 selected
+
+这是新的硬门。
+
+Preflight 不看我们最终想要的主结论，只验证 diagnostic instrument 是否有资格回答问题。
+
+必须全部满足：
+
+1. Manipulation validity：scientific variable 确实被操纵，而不是 wording / difficulty / length / format 顺便改变。
+2. Readout validity：最强显式版本下，模型有能力完成 readout 所需的 prerequisite reasoning。
+3. Symmetry stability：逻辑等价 / polarity 对称 / answer-order 等价改写不能出现灾难性翻转。
+4. Positive / negative controls：两端都能工作。
+5. Exact ground truth：若有程序性真值，generator/scorer/parser 全部测试通过。
+6. No prompt search：不能通过扫几十个 prompt 挑一个 effect 最大的版本。
+7. Control budget：如果为了让结果可解释必须不断加第 4、第 5、第 6 层控制，默认 KILL；这通常表示 construct 不自然。
+
+S11 / S12 如果按这个门执行，都不会进入 selected。
+
+---
+
+# 11. PILOT-AUTHORIZED 的新定义
+
+一个题只有同时满足以下条件，才允许创建新的 Sxx registration：
+
+1. 有一个已经存在的、具体的 natural finding；
+2. finding 已被我们复现或有等价级别的多源强证据；
+3. finding 本身对普通 reviewer 一句话就有 surprise / direct-prior relevance；
+4. source paper 没有把主要 why 做完；
+5. RQ 只解释这个 finding，不先扩成宏大 mother question；
+6. nearest prior 没有 same decisive contrast；
+7. 第一刀 diagnosis 来自 natural contrast 或已经通过 preflight 的 instrument；
+8. instrument validity 已经通过；
+9. 不需要先做 model zoo / evaluator / benchmark / mechanism 才能回答；
+10. 结果如果符合最简单 baseline，不会被包装成“也有意义”强行续命。
+
+PILOT-AUTHORIZED 现在表示：
+
+> finding 是真的，问题是真的，工具也真的能测；现在才值得花算力回答 why / when。
+
+不是“这个想法值得试试看”。
+
+---
+
+# 12. Pilot 后仍然允许 RQ 改变，但必须守住 discovery / validation 边界
+
+主 pilot 冻结后：
+
+- 可以仔细看 unexpected structure；
+- 如果出现更有意思的新 finding，可以改 RQ；
+- 但新 hypothesis 必须用 held-out data / new seed / new natural setting 验证；
+- 不允许在同一批 discovery data 上调 prompt / metric / subset 后宣称验证。
+
+如果 original RQ 被结果否定：
+
+> 先 KILL original RQ。
+
+不要先想怎么救。
+
+---
+
+# 13. 搜索时真正应该找什么
+
+下一轮搜索不再维护抽象 Pressure Portfolio。
+
+改成维护 Observation Portfolio，建议 5–8 张卡。
+
+优先搜索：
+
+- strong paper 的 result / ablation / error analysis；
+- “contrary to prior work / unexpectedly / surprisingly” 后面的具体结果，但必须自行判断是不是 rhetorical surprise；
+- direct prior 把某因素称为 critical / necessary / key，而后续自然实验发现不是；
+- 同一 task / construct 上真正可比的 cross-paper reversal；
+- Sasano Slack 里明确说“和事前预想不同，但结果有意思”的现象形状；
+- source paper 的 secondary finding，但要确认 authors 没继续把 why 做完。
+
+不要从以下地方生成 seed：
+
+- future work；
+- 心理学现象列表；
+- mechanism 名词；
+- architecture component；
+- exact-cell literature gap；
+- synthetic benchmark idea；
+- “old debate + new intervention”本身。
+
+强论文 autopsy 仍然可以做，但只用于：
+
+> 判断一个 finding 为什么是强 finding、作者如何从真实结果长出问题。
+
+不能再作为抽象 generator。
+
+---
+
+# 14. Sasano calibration：只记 finding 形状，不复制题材
+
+正向形状：
+
+- 未知名字放进 factual context，模型仍极度 skeptical；与事前预测相反。Sasano 认为结果本身有意思，并建议换 obituary / politics / sports 等自然 context 验证。
+- direct prior 强调 one-word limitation 很关键，但新设置中效果有限；即使结果不戏剧化，因为它直接修改先行 claim，也值得报告。
+- 2D 1-bit representation 居然还能有很高分类性能；Sasano 第一反应是问“这么少状态怎么还能 85%？”，说明清楚的 capacity surprise 本身能驱动问题。
+
+负向形状：
+
+- curved approximation 比粗 straight line 好：结果本身不够惊讶。
+- curvature / isometry 等指标如果难以连接到实际知识/行为，就很难说学到了什么。
+- 输出类似但内部 representation 不同可以很有意思，但可能更适合作为 discussion/depth，而不是自动成为主线。
+
+---
+
+# 15. Anti-resurrection 与 Global Reset
+
+FAILED_TOPICS 只在 observation/RQ 已经形成后定向查重。
+
+如果连续 2–3 个 Observation Card 因同一种原因死亡，换来源/lineage，不要在同一论文族里找缝。
+
+强制 Global Reset 的信号：
+
+- 开始讨论“怎么让这个题成立”；
+- controls 越来越多；
+- novelty 依赖 wording；
+- finding 本身越来越不重要，只剩 mechanism；
+- surprise 只能靠我们自己解释；
+- source paper 已经做完 why，却还在找一个小缺口。
+
+Reset 时只问：
+
+> “现在手里哪个已经存在的 finding，本身最值得知道？”
+
+如果没有，就允许 0 survivor。
+
+---
+
+# 16. 当前正式状态
+
+截至 2026-09-26：
+
+> Selected topics = 0.
+
+S01–S12 全部是历史失败 / anti-resurrection 记录。
+
+下一轮禁止直接创建 S13。
+
+先建立 Observation Portfolio；任何候选必须经过 Anchor Reproduction 和 Instrument Preflight 后，才允许进入 SELECTED_TOPICS。
+
+---
+
+# 17. 最后只记住八句话
+
+> 先找 finding，不先找 question。
+> surprise 必须来自真实 baseline，不来自我们的修辞。
+> finding 先复现，再问 why。
+> source paper 做完 why，就别捡。
+> RQ 只能解释一个真实 finding，不凭空长 taxonomy。
+> synthetic task 只能诊断，不能创造研究对象。
+> preflight 过不了，永远不许 selected。
+> Sasano taste 看的是“结果本身有没有意思”，不是我们能不能把 A/B/C 讲漂亮。
