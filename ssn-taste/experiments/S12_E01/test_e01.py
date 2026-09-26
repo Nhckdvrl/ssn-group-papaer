@@ -49,8 +49,9 @@ class InstrumentTests(unittest.TestCase):
                 self.assertIn("color " + relation_color + " and", r["world_b"])
 
     def test_parser_is_exact(self):
-        for raw, parsed in ((" A\n", "A"), ("B", "B"), ("A because", None),
-                            ("AB", None), ("yes", None), ("", None)):
+        for raw, parsed in ((" A\n", "A"), ("B", "B"), ("A = Yes", "A"),
+                            ("B = No.\n", "B"), ("A = No", None), ("B = Yes", None),
+                            ("A because", None), ("AB", None), ("yes", None), ("", None)):
             self.assertEqual(e01.parse_answer(raw), parsed)
 
 

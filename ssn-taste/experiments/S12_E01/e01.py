@@ -5,6 +5,7 @@ import collections
 import hashlib
 import json
 import random
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -159,7 +160,13 @@ def check(main, controls):
 
 def parse_answer(raw):
     text = raw.strip()
-    return text if text in ("A", "B") else None
+    match = re.fullmatch(r"([AB])(?:\s*=\s*(Yes|No)\.?)?", text)
+    if not match:
+        return None
+    choice, gloss = match.groups()
+    if gloss is not None and gloss != ("Yes" if choice == "A" else "No"):
+        return None
+    return choice
 
 
 def run(split, batch_size):
@@ -249,7 +256,8 @@ if __name__ == "__main__":
         main, controls = read_jsonl(ROOT / "main.jsonl"), read_jsonl(ROOT / "controls.jsonl")
         check(main, controls)
         assert parse_answer(" A \n") == "A" and parse_answer("B") == "B"
-        assert parse_answer("A because") is None and parse_answer("AB") is None and parse_answer("") is None
+        assert parse_answer("A = Yes") == "A" and parse_answer("B = No.") == "B"
+        assert parse_answer("A = No") is None and parse_answer("A because") is None and parse_answer("AB") is None and parse_answer("") is None
         print("checks passed", sha(ROOT / "main.jsonl"), sha(ROOT / "controls.jsonl"))
     elif a.command == "run":
         run(a.split, a.batch_size)
