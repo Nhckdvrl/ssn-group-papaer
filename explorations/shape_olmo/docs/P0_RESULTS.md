@@ -182,3 +182,23 @@ This fits (does not prove) loss of the positional / recency information needed t
 continuation among prefix candidates. A cheap discriminating check from existing data: does the
 hybrid's within-class loss grow with continuation ambiguity (number of distinct tokens that followed
 earlier occurrences of the current context)?
+
+## Continuation ambiguity (`results/olmo_ambiguity_diag3.txt`)
+
+A = number of distinct tokens that followed earlier occurrences of the current context token.
+Within-class Δ on IN targets:
+
+| | A=0 | 1 | 2 | 3–4 | 5–9 | ≥10 |
+|---|---|---|---|---|---|---|
+| stage-1 T−H | +0.022 | +0.012 | +0.015 | +0.014 | +0.021 | +0.026 |
+| final T−H | −0.008 | −0.019 | −0.036 | −0.040 | −0.045 | −0.048 |
+| T change over LC stage | +0.064 | +0.034 | +0.042 | +0.047 | +0.054 | +0.076 |
+| H change over LC stage | +0.042 | +0.009 | +0.001 | +0.001 | +0.002 | +0.022 |
+
+The final-pair within-class deficit grows monotonically with the number of competing continuations;
+at stage-1 end there is no such trend. Over the long-context stage, T gains most in ambiguous
+contexts and H gains ~nothing at A = 2–9. This is consistent with lost disambiguation among prefix
+candidates.
+**Confounds:** A correlates with position and domain (code is highly ambiguous); this slicing is
+correlational. A controlled induction probe would settle it (synthetic repeated spans, controlled
+candidate count and distance, across H/T S2 → S3e → S3m → F).
