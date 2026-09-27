@@ -86,3 +86,31 @@ No verbatim-memorisation signature on PG-19 (no ≥16-token near-zero runs in ei
 is uniformly H-favoured across windows (10th pct +0.036), while ccnews / wikipedia / python have
 heavy negative tails (10th pct −0.14 / −0.15 / −0.30). The worst stretches are name lists,
 number/unit runs and CRLF code.
+
+## Stage-1 change-point (2026-09-28; `results/stage1_change_diag3.txt`, pg19 / wikipedia / python)
+
+Pairs: T7s1 = Olmo-3 `stage1-step1413814`, H7s1 = Olmo-Hybrid `stage1-step1414078` (both RoPE, 8k,
+before midtrain / long context; data mix and LR schedule still differ). D = final gap − stage-1 gap.
+
+| feature | stage-1 T−H | final T−H | D |
+|---|---|---|---|
+| all | +0.033 | −0.022 | −0.055 |
+| novel (rep 0) | +0.069 | +0.025 | −0.044 |
+| rep ≥ 4 | +0.002 | −0.058 | −0.060 |
+| rep ≥ 16 | −0.000 | −0.075 | −0.075 |
+| open / close | +0.029 / +0.014 | −0.101 / −0.131 | −0.13 / −0.14 |
+| content / function at rep 0 | +0.078 / +0.052 | +0.052 / +0.016 | −0.026 / −0.036 |
+| pg19 / wikipedia / python | +0.034 / +0.048 / +0.017 | +0.052 / −0.050 / −0.082 | +0.018 / −0.098 / −0.099 |
+
+- **At stage-1 end the published signature reproduces.** H is better everywhere, most on novel
+  targets, and the advantage goes to ~0 on long repeats (Li & Merrill: "approaches zero").
+- **The final-pair reuse deficit and the 5/7 domain losses arise after stage 1**, in midtraining
+  and/or the long-context stage.
+- **My written prior was wrong.** I expected the deficit to persist at stage 1, based on Olmo Hybrid
+  Table 2 (pretrain Code / LBPP) and RULER 4k. It does not persist at the token level.
+- **D is not reuse-selective.** It is a broad downward shift, only moderately larger on long repeats
+  (−0.075) than on novel targets (−0.044), and strongly domain-dependent (wikipedia / python ≈
+  −0.10, pg19 +0.02). At face value this looks more like a later-stage data / recipe effect than
+  "DroPE breaks induction". Not yet shown.
+Next: stage ladder (stage-2 end = midtrain, early stage-3, final) for both, on the same three
+domains, and the difference-in-differences per stage transition.
