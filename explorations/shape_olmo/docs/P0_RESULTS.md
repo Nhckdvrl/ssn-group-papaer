@@ -162,3 +162,23 @@ long-context stage. Its novel-target improvement is steady and matches T's. This
 transition shock. Still unseparated: DroPE vs LR-decay phase vs Longmino data, all × the GDN
 architecture; Hybrid-YaRN would isolate the first. PY28_36k has been re-scored with the real step-36000
 weights.
+
+## Gate decomposition of the stage-3 change (`results/olmo_gate_diag3.txt`)
+
+nll = gate (−log P(class IN / OUT)) + within (−log P(token | class)); IN = target type seen in prefix.
+
+| | total | gate | within |
+|---|---|---|---|
+| H, S3e → F, rep ≥ 16 | −0.070 | −0.009 | **−0.062** |
+| H, S3e → F, rep ≥ 4 | −0.041 | −0.005 | −0.036 |
+| T, S3e → F, rep ≥ 16 | +0.005 | +0.001 | +0.004 |
+| final T − H, rep ≥ 16 | −0.075 | −0.009 | −0.066 |
+| stage-1 T − H, all | +0.033 | +0.003 | +0.030 |
+
+Gate calibration is unchanged across the hybrid's long-context stage: mean P(IN) 0.7528 → 0.7515
+(empirical 0.758). The hybrid still predicts *that* the next token is a repeat. What it loses is
+*which* prefix token, i.e. copy precision within the in-prefix class, not a shifted repetition prior.
+This fits (does not prove) loss of the positional / recency information needed to pick the right
+continuation among prefix candidates. A cheap discriminating check from existing data: does the
+hybrid's within-class loss grow with continuation ambiguity (number of distinct tokens that followed
+earlier occurrences of the current context)?

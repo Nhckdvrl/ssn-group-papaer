@@ -32,3 +32,6 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 06:46 JST — T7s3m launched on fvcrc10 GPU1
 2026-09-28 06:48 JST — H7s3m launched on fvcrc10 GPU3
 2026-09-28 06:50 JST — PY28_36k launched on fvcrc12 GPU0
+2026-09-28 06:58 JST — queue: re-score T7/H7 (3 domains) to add lpin/lpout
+2026-09-28 06:58 JST — T7 launched on fvcrc12 GPU0
+2026-09-28 07:00 JST — H7 launched on fvcrc10 GPU3
