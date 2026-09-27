@@ -1,0 +1,4 @@
+The fast path is not available because one of `(selective_state_update, selective_scan_fn, causal_conv1d_fn, causal_conv1d_update, mamba_inner_fn)` is None. Falling back to the sequential implementation of Mamba, as use_mambapy is set to False. To install follow https://github.com/state-spaces/mamba/#installation for mamba-ssm and install the kernels library using `pip install kernels` or https://github.com/Dao-AILab/causal-conv1d for causal-conv1d. For the mamba.py backend, follow https://github.com/alxndrTL/mamba.py.
+MB130 pg19 (60, 2048) 1441s mean nll 2.8521
+MB130 wikipedia (60, 2048) 1432s mean nll 2.8026
+MB130 python (60, 2048) 1391s mean nll 1.5017

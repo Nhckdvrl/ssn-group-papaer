@@ -13,9 +13,15 @@ V = int(os.environ.get("SHAPE_V", 50277))   # real NeoX vocab; padded rows exclu
 
 
 def load(kind, path, rev):
+    if not os.path.isdir(path):
+        from huggingface_hub import snapshot_download
+        path = snapshot_download(path, revision=rev or "main", local_files_only=True)
     if kind == "hf":
         from transformers import AutoModelForCausalLM
-        return AutoModelForCausalLM.from_pretrained(path, revision=rev, dtype=torch.bfloat16, device_map="cuda").eval()
+        return AutoModelForCausalLM.from_pretrained(path, revision=rev, dtype=torch.bfloat16, device_map="cuda",
+            # Pythia step branches can carry main's model.safetensors (seen: pythia-2.8b step36000);
+            # the real weights for a revision are in pytorch_model.bin.
+            use_safetensors=False if rev and os.path.exists(f"{path}/pytorch_model.bin") else None).eval()
     from mamba_ssm.models.config_mamba import MambaConfig
     from mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel
     cfg = json.load(open(f"{path}/config.json"))
@@ -34,7 +40,7 @@ def main(kind, path, tag, domains, rev=None):
     os.makedirs(f"{ROOT}/scores/{tag}", exist_ok=True)
     for dom in domains:
         out_f = f"{ROOT}/scores/{tag}/{dom}.npy"
-        if os.path.exists(out_f):
+        if os.path.exists(out_f) and os.path.exists(out_f.replace(".npy", "_lpin.npy")):
             continue
         ids = np.load(f"{ROOT}/data/pack_{PFX}{dom}.npz")["ids"]
         out = np.zeros((ids.shape[0], ids.shape[1] - 1), np.float32)

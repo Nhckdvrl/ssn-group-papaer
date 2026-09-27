@@ -25,7 +25,7 @@ def main(path, tag, domains, rev=None):
     os.makedirs(f"{ROOT}/scores/{tag}", exist_ok=True)
     for dom in domains:
         out_f = f"{ROOT}/scores/{tag}/{dom}.npy"
-        if os.path.exists(out_f):
+        if os.path.exists(out_f) and os.path.exists(out_f.replace(".npy", "_lpin.npy")):
             continue
         ids = np.load(f"{ROOT}/data/pack_{PFX}{dom}.npz")["ids"]
         out = np.zeros((ids.shape[0], ids.shape[1] - 1), np.float32)

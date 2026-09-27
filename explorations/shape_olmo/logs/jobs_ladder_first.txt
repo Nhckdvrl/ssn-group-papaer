@@ -1,0 +1,5 @@
+T7s2	HF_HUB_OFFLINE=1 /home/xiang/miniconda3/envs/verl-clean/bin/python src/score.py /home/xiang/.cache/huggingface/hub/models--allenai--Olmo-3-1025-7B/snapshots/c3c800dc900f3fecc112e8cd6b2a13edabc096e1/ T7s2 pg19,wikipedia,python
+H7s2	source src/env.sh && $PY src/score.py /home/xiang/.cache/huggingface/hub/models--allenai--Olmo-Hybrid-7B/snapshots/51bef3180669b12b49f6838d36f7376583f833c2/ H7s2 pg19,wikipedia,python
+T7s3e	HF_HUB_OFFLINE=1 /home/xiang/miniconda3/envs/verl-clean/bin/python src/score.py /home/xiang/.cache/huggingface/hub/models--allenai--Olmo-3-1025-7B/snapshots/446ae231fa094d6e0c04aefc9893d2a4799183ff/ T7s3e pg19,wikipedia,python
+H7s3e	source src/env.sh && $PY src/score.py /home/xiang/.cache/huggingface/hub/models--allenai--Olmo-Hybrid-7B/snapshots/4c2f956d3aa5cf285cf2d2cef9451888c19519ef/ H7s3e pg19,wikipedia,python
+PY28_36k	HF_HUB_OFFLINE=1 SHAPE_PACK=neox2k_ PYTHONPATH=vendor/mamba:vendor/stubs /home/xiang/miniconda3/envs/openslime/bin/python src/score_any.py hf EleutherAI/pythia-2.8b PY28_36k pg19,wikipedia,python,ccnews,arxiv,html,latex step36000

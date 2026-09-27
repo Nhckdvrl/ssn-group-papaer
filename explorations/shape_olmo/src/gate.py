@@ -26,7 +26,8 @@ def parts(tag, d, cin):
 def main(A, B, doms):
     rows = {}
     for d in doms:
-        r = np.load(f"{ROOT}/data/tags_{PFX}{d}.npz")["rep"]; cin = r >= 1
+        n = np.load(f"{ROOT}/scores/{A}/{d}.npy", mmap_mode="r").shape[0]   # CPU pilots score the first n windows
+        r = np.load(f"{ROOT}/data/tags_{PFX}{d}.npz")["rep"][:n]; cin = r >= 1
         a, b = parts(A, d, cin), parts(B, d, cin)
         rows[d] = dict(r=r, cin=cin, D=a[0] - b[0], G=a[1] - b[1], W=a[2] - b[2], pA=a[3], pB=b[3])
     cat = lambda k: np.concatenate([rows[d][k] for d in doms])
