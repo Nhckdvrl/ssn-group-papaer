@@ -38,7 +38,4 @@ seed（不落盘）
 - `CT02_IS_CONTEXT_UTILITY_RANKABLE.md` — KILLED AFTER NOVELTY RE-AUDIT（保留 provenance；见 `FAILED_TOPICS.md`）。
 - `CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md` — KILLED AFTER PILOT（保留 provenance；见 `FAILED_TOPICS.md`）。
 - `CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md` — PILOT-AUTHORIZED（exploratory identification）。
-- CT05 exact-vs-compressed memory for hybrid agents — KILLED AFTER E01（`CT-KILL-20260927-1`；package `candidates/CT05_EXACT_MEMORY_DEMAND/`）。
-- CT06 training pressure × hybrid memory specialization — KILLED AT SELECTION（`CT-KILL-20260927-2`）。
-- CT07 when does the memory query become available — KILLED AFTER E00（`CT-KILL-20260927-3`；`candidates/CT07_MEMORY_QUERY_TIMING/`）。
-- CT08 does compositional generalization require information hiding? — KILLED AFTER E00（`CT-KILL-20260927-4`；`candidates/CT08_INFORMATION_HIDING_COMPOSITIONALITY/`）。
+- CT05 Shape-blog exploration lineage — ARCHIVED / KILLED LINEAGE. Historical CT06–CT09 are consolidated under `candidates/CT05_EXACT_MEMORY_DEMAND/lineage/`; those IDs are free for future registrations. See `FAILED_TOPICS.md` and the CT05 package.
