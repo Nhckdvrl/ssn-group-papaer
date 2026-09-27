@@ -75,10 +75,12 @@ full-attention layers, which in the final H run **without positional encoding (D
 Next test (queued): the stage-1-end pair (both RoPE, before any long-context stage). If the reuse
 deficit disappears there, it belongs to H's long-context recipe (DroPE), not to the mixer.
 
-**Data-mix fingerprint (line endings).** Tokens containing `\r` are −1.42 nats [−2.31, −0.05] worse
-for H in Python (−0.52 LaTeX, −0.23 HTML), and CRLF files are −0.28 vs −0.08 for LF files. H's
-pretraining data evidently had line endings normalised, which is direct token-level evidence that
-the pair differs in data, not only in the mixer. CRLF is only ~3% of Python tokens, so it explains
+**Exposure fingerprint (line endings).** Tokens containing `\r` are −1.42 nats [−2.31, −0.05] worse
+for H in Python (−0.52 LaTeX, −0.23 HTML), and CRLF files are −0.28 vs −0.08 for LF files. This is
+*consistent with* materially different code/data exposure or preprocessing (the official model
+card confirms a different data mix and LR schedule). It does not by itself show that CRLF was
+normalised; source proportions, other preprocessing, architecture behaviour on rare formatting,
+or later-stage recipe could each produce it. Signal kept, explanation deferred. CRLF is only ~3% of Python tokens, so it explains
 ≈ −0.008 of the −0.082 Python gap; LF-only Python is still −0.076. `\xa0` has no effect in prose.
 No verbatim-memorisation signature on PG-19 (no ≥16-token near-zero runs in either model). PG-19
 is uniformly H-favoured across windows (10th pct +0.036), while ccnews / wikipedia / python have
