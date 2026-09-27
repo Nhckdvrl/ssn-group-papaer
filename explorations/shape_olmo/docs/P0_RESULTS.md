@@ -45,3 +45,42 @@ window-cluster bootstrap. Raw output: `results/p0_T7_H7.txt`, `.json`.
    how much it can matter.
 4. Our eval data differs (sources and repetitiveness), but the rep = 0 / rep ≥ n split holds
    within domains pooled; to check per domain.
+
+## Exploratory cuts (same scores; `results/p0_explore_T7_H7.txt`, `results/p0_srcdist_T7_H7.txt`)
+
+**Content > function is mostly reuse composition.** 92% of function-word tokens are reuses
+(rep ≥ 1) vs 57% of content tokens. Within strata:
+
+| stratum | content | function |
+|---|---|---|
+| rep = 0 | +0.036 [+0.027, +0.044] | −0.010 [−0.020, +0.001] (n = 98k) |
+| rep = 1 | −0.010 | −0.008 |
+| rep ≥ 2 | −0.021 | −0.028 |
+
+The paper's own controlled aggregate effect (Fig. 2, bottom right) is also within ±0.002 nats.
+The raw content/function contrast should not be read as an open-class / state effect.
+
+**Novel vs reused target is the dominant axis.** At every difficulty bin, rep = 0 favours H (up to
++0.035) and rep ≥ 2 favours T (−0.11 to −0.25 on mid/hard tokens). Per domain, H wins on rep = 0
+only in pg19 (+0.096) and arxiv (+0.054); elsewhere it is ≈ 0 or negative. **PG-19 is the
+exception on every cut** (H better even on repeats: rep ≥ 2 +0.023). That points to a data-mix /
+exposure difference, not architecture.
+
+**Not SWA copying.** For repeated 4-grams, Δ by distance to the previous occurrence:
+−0.037 (<64), −0.051 (64–512), −0.066 (0.5–2k), −0.068 (2–4k), −0.047 (4–6k, CI to −0.005),
+−0.077 (6–8k, CI to +0.002). There is no recovery once the source leaves T's 4096 window, so T's
+reuse advantage is not its extra 24 local-attention layers. The shared structure is the 8
+full-attention layers, which in the final H run **without positional encoding (DroPE)**.
+
+Next test (queued): the stage-1-end pair (both RoPE, before any long-context stage). If the reuse
+deficit disappears there, it belongs to H's long-context recipe (DroPE), not to the mixer.
+
+**Data-mix fingerprint (line endings).** Tokens containing `\r` are −1.42 nats [−2.31, −0.05] worse
+for H in Python (−0.52 LaTeX, −0.23 HTML), and CRLF files are −0.28 vs −0.08 for LF files. H's
+pretraining data evidently had line endings normalised, which is direct token-level evidence that
+the pair differs in data, not only in the mixer. CRLF is only ~3% of Python tokens, so it explains
+≈ −0.008 of the −0.082 Python gap; LF-only Python is still −0.076. `\xa0` has no effect in prose.
+No verbatim-memorisation signature on PG-19 (no ≥16-token near-zero runs in either model). PG-19
+is uniformly H-favoured across windows (10th pct +0.036), while ccnews / wikipedia / python have
+heavy negative tails (10th pct −0.14 / −0.15 / −0.30). The worst stretches are name lists,
+number/unit runs and CRLF code.
