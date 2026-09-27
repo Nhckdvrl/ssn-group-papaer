@@ -28,3 +28,7 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 06:10 JST — H7s3e launched on fvcrc12 GPU1
 2026-09-28 06:13 JST — PY28_36k launched on fvcrc10 GPU1
 2026-09-28 06:22 JST — PY28_36k INVALID: HF step36000 branch's model.safetensors is main's blob (bin differs, max|Δ| 0.08); scores moved to scores/INVALID_*; score_any.py now loads pytorch_model.bin for revisions. step71000 verified bin==safetensors.
+2026-09-28 06:46 JST — queue started: T7s3m H7s3m PY28_36k 
+2026-09-28 06:46 JST — T7s3m launched on fvcrc10 GPU1
+2026-09-28 06:48 JST — H7s3m launched on fvcrc10 GPU3
+2026-09-28 06:50 JST — PY28_36k launched on fvcrc12 GPU0

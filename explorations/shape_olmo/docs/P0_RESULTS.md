@@ -145,3 +145,20 @@ stage (GDN hybrid under 64k Longmino training). Only the **Hybrid-YaRN** LC chec
 not public) cleanly isolates DroPE, and that is item 4 of the author request. A dose-response check
 (mid-stage-3 checkpoints) is next, to see whether the repeat degradation grows steadily or appears
 late.
+
+## Stage-3 dose-response (`results/stage3_dose_diag3.txt`; mid = T `stage3-step6000`, H `stage3-step12000`, ≈ half)
+
+Within-model change per half of the long-context stage (> 0 = improved):
+
+| | novel | rep ≥ 4 | rep ≥ 16 | close | python |
+|---|---|---|---|---|---|
+| T (YaRN) 1st half | +0.085 | +0.007 | +0.003 | +0.009 | +0.023 |
+| T (YaRN) 2nd half | +0.106 | +0.007 | +0.003 | +0.027 | +0.031 |
+| H (DroPE) 1st half | +0.080 | −0.007 | −0.017 | −0.014 | −0.002 |
+| H (DroPE) 2nd half | +0.084 | −0.034 | −0.053 | −0.073 | −0.027 |
+
+The hybrid's repeat / closure / code degradation is **progressive and accelerating** over its DroPE
+long-context stage. Its novel-target improvement is steady and matches T's. This is not a one-off
+transition shock. Still unseparated: DroPE vs LR-decay phase vs Longmino data, all × the GDN
+architecture; Hybrid-YaRN would isolate the first. PY28_36k has been re-scored with the real step-36000
+weights.
