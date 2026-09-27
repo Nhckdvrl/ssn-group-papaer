@@ -14,3 +14,16 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 04:24 JST — queue2.sh (≤8 concurrent guard) started on logs/jobs_remaining.txt (H7s1 + Pile/Pythia jobs; T7s1 already running on fvcrc12 GPU1).
 2026-09-28 04:34 JST — H7s1 launched on fvcrc12 GPU1
 2026-09-28 04:49 JST — queue2 had exited after H7s1 (ssh consumed the job-file stdin); fixed with ssh -n, restarted on jobs_pending.txt.
+2026-09-28 04:50 JST — PPT launched on fvcrc12 GPU1
+2026-09-28 04:57 JST — PPH launched on fvcrc12 GPU1
+2026-09-28 05:07 JST — PPR launched on fvcrc12 GPU1
+2026-09-28 05:15 JST — PY28 launched on fvcrc12 GPU1
+2026-09-28 05:22 JST — M2_13 launched on fvcrc12 GPU1
+2026-09-28 05:28 JST — PY14 launched on fvcrc12 GPU1
+2026-09-28 05:32 JST — PY28_71k launched on fvcrc12 GPU1
+2026-09-28 05:37 JST — ladder checkpoints local; queue restarted with ladder first: T7s2 H7s2 T7s3e H7s3e PY28_36k 
+2026-09-28 05:40 JST — T7s2 launched on fvcrc12 GPU1
+2026-09-28 05:51 JST — H7s2 launched on fvcrc12 GPU1
+2026-09-28 05:59 JST — T7s3e launched on fvcrc12 GPU1
+2026-09-28 06:10 JST — H7s3e launched on fvcrc12 GPU1
+2026-09-28 06:13 JST — PY28_36k launched on fvcrc10 GPU1

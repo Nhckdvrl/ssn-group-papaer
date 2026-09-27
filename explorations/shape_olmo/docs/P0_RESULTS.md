@@ -114,3 +114,34 @@ before midtrain / long context; data mix and LR schedule still differ). D = fina
   "DroPE breaks induction". Not yet shown.
 Next: stage ladder (stage-2 end = midtrain, early stage-3, final) for both, on the same three
 domains, and the difference-in-differences per stage transition.
+
+## Stage ladder (2026-09-28; `results/stage_ladder_diag3.txt`, pg19 / wikipedia / python)
+
+Checkpoints: S1 = stage-1 end; S2 = midtrain end (T `stage2-step47684`; H souped
+`stage2-ingredient1+2-step23842`), both RoPE; S3e = `stage3-step1000` (T: **YaRN** config; H: **no
+RoPE / DroPE**, `rope_theta: None`); F = released main. Gap = T − H.
+
+**Gap path:** S1 +0.033 → S2 +0.051 → S3e +0.016 → F −0.022.
+
+- **S1→S2 (midtraining):** the hybrid gains more, mostly on novel targets (D +0.035). No reuse
+  deficit.
+- **S2→S3e (switch to long context, first 1000 steps):** both models get much worse (all-token
+  −0.10 T, −0.14 H), and H is hit harder on every feature. A broad disruption, not reuse-selective.
+- **S3e→F (rest of the long-context stage): the reuse-selective change happens here.**
+  Within-model change (> 0 = improved):
+
+| | novel | rep ≥ 4 | rep ≥ 16 | close | python |
+|---|---|---|---|---|---|
+| T (YaRN) | +0.191 | +0.015 | +0.005 | +0.035 | +0.053 |
+| H (DroPE) | +0.164 | **−0.041** | **−0.070** | **−0.087** | **−0.028** |
+
+During its long-context stage the hybrid keeps improving on novel targets but gets worse on long
+repeated continuations, closing delimiters and code, while T improves on all of them. The
+final-pair "reuse deficit" is therefore not a stage-1 architecture property of the hybrid. It is
+produced during the hybrid's DroPE long-context stage.
+
+**What this does not yet separate:** positional treatment (DroPE vs YaRN) vs architecture × LC
+stage (GDN hybrid under 64k Longmino training). Only the **Hybrid-YaRN** LC checkpoint (Table 3,
+not public) cleanly isolates DroPE, and that is item 4 of the author request. A dose-response check
+(mid-stage-3 checkpoints) is next, to see whether the repeat degradation grows steadily or appears
+late.
