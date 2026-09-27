@@ -41,3 +41,4 @@ seed（不落盘）
 - CT05 exact-vs-compressed memory for hybrid agents — KILLED AFTER E01（`CT-KILL-20260927-1`；package `candidates/CT05_EXACT_MEMORY_DEMAND/`）。
 - CT06 training pressure × hybrid memory specialization — KILLED AT SELECTION（`CT-KILL-20260927-2`）。
 - CT07 when does the memory query become available — KILLED AFTER E00（`CT-KILL-20260927-3`；`candidates/CT07_MEMORY_QUERY_TIMING/`）。
+- CT08 does compositional generalization require information hiding? — CANDIDATE, E00 first-stage validity frozen, E01 not authorized（`candidates/CT08_INFORMATION_HIDING_COMPOSITIONALITY/`）。
