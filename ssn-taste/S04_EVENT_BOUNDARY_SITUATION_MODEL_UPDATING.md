@@ -1,6 +1,6 @@
 # S04 — How Do Language Models Update Situation Models Across Event Boundaries?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILLED — 2026-09-26 POOL-LEVEL POSTMORTEM
 **Registered:** 2026-09-18  
 
 ## One-sentence parent question
@@ -292,3 +292,12 @@ The first figure should answer whether useful state survives as a causal carry-f
 - natural validation requires a new narrative benchmark.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+
+---
+
+## 2026-09-26 pool-level final adjudication
+
+**KILL.** This topic was cancelled as part of the full reset of the Sasano-taste pool. The failure is attributed to the selection process, not to a completed empirical falsification of the mother question. The old admission process overvalued clean conceptual dichotomies and hypothetical identifiability before requiring a naturally observed, stable phenomenon or contradiction that survives trivial formulations.
+
+Do not treat this registration as a latent candidate. Any future related idea must re-enter from a new natural pressure under the revised canonical search guide, not by repairing this design.

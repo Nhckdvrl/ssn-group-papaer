@@ -1,6 +1,6 @@
 # S07 — Where Does Surprise Go?
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILLED — 2026-09-26 POOL-LEVEL POSTMORTEM
 **Registered:** 2026-09-18  
 **Target venues:** ACL / EMNLP / NAACL Main  
 **Scientific type:** belief/model revision / epistemic credit assignment / controlled sequential inference
@@ -237,3 +237,12 @@ The anomaly is held fixed while prior history changes; a trusted state reset plu
 KILL if the fingerprints only exist because the templates explicitly tell the model which explanation is plausible, or if the result cannot survive one second semantic realization without becoming a benchmark project.
 
 **Final status: KEEP — PILOT-AUTHORIZED.**
+
+
+---
+
+## 2026-09-26 pool-level final adjudication
+
+**KILL.** This topic was cancelled as part of the full reset of the Sasano-taste pool. The failure is attributed to the selection process, not to a completed empirical falsification of the mother question. The old admission process overvalued clean conceptual dichotomies and hypothetical identifiability before requiring a naturally observed, stable phenomenon or contradiction that survives trivial formulations.
+
+Do not treat this registration as a latent candidate. Any future related idea must re-enter from a new natural pressure under the revised canonical search guide, not by repairing this design.

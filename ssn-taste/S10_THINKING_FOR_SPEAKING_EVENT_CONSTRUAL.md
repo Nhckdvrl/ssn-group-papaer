@@ -1,6 +1,6 @@
 # S10 — Thinking for Speaking in Multimodal Language Models
 
-**Status:** SELECTED — PILOT-AUTHORIZED  
+**Status:** KILLED — 2026-09-26 POOL-LEVEL POSTMORTEM
 **Registered:** 2026-09-21
 
 ## Parent question
@@ -170,3 +170,12 @@ The defensible claim is about multilingual multimodal models:
 > switching the language the same model is preparing to speak does or does not causally alter its pre-verbal event construal under a controlled Manner/Path contrast.
 
 Human psycholinguistics supplies the scientific question and experimental logic; the model supplies a new within-agent identification opportunity.
+
+
+---
+
+## 2026-09-26 pool-level final adjudication
+
+**KILL.** This topic was cancelled as part of the full reset of the Sasano-taste pool. The failure is attributed to the selection process, not to a completed empirical falsification of the mother question. The old admission process overvalued clean conceptual dichotomies and hypothetical identifiability before requiring a naturally observed, stable phenomenon or contradiction that survives trivial formulations.
+
+Do not treat this registration as a latent candidate. Any future related idea must re-enter from a new natural pressure under the revised canonical search guide, not by repairing this design.

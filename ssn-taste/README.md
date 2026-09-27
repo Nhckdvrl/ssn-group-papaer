@@ -1,75 +1,59 @@
 # ssn-taste
 
-Sasano-taste-driven research-question search ledger.
+Sasano-taste-driven research-question search.
 
 Primary targets: **ACL / EMNLP / NAACL Main**.
 
-## Canonical structure
+## Current state
 
-每轮只需要按这个顺序恢复：
+> **Selected topics = 0.**
 
-1. **SEARCH_GUIDE_ZH.md** — 唯一长期方法论。
-2. **README.md** — 当前状态与目录。
-3. **SELECTED_TOPICS.md** — 当前 PILOT-AUTHORIZED topics。
-4. **当前 selected 的 Sxx registration** — 只用于恢复具体 claim / pilot。
-5. **Recent commits** — 最新 repo 状态优先。
-6. **NEXT_ROUND_PROMPT_ZH.md** — 极短 handoff。
+S01–S12 全部 KILL / cancelled。
 
-### Historical archives
+## 每轮正常只读这三个文件
 
-- `FAILED_TOPICS*.md`
-- `RE_AUDIT_2026-09-18_NOVELTY_CALIBRATION.md`
+1. **SEARCH_GUIDE_ZH.md** — 唯一 canonical 方法论；包含 Sasano Slack taste、搜索流程、recon、novelty、preflight。
+2. **README.md** — 当前状态。
+3. **SELECTED_TOPICS.md** — 只有最终通过全部 gate 的题才能进入。
 
-这些是**定向查重 / anti-resurrection / 历史失败档案**。  
-不要在每轮开局顺序通读，不要把它们当正向 taste 或 idea generator。
+新对话交接时可读：
+- **NEXT_ROUND_PROMPT_ZH.md** — 简洁 handoff。
 
----
+只在需要时定向查看：
+- `POOL_POSTMORTEM_2026-09-26.md` — 为什么 S01–S12 整池失败；
+- `FAILED_TOPICS*.md` — anti-resurrection；
+- 某个旧 `Sxx_*.md` / `experiments/` — 旧题具体失败证据。
 
-## Current selected topics = 5
-
-均为 **SELECTED — PILOT-AUTHORIZED**：
-
-- **S04 — How Do Language Models Update Situation Models Across Event Boundaries?**
-- **S06 — What Does Deliberation Do to Evidence?**
-- **S07 — Where Does Surprise Go?**
-- **S10 — Does the Language We Plan to Speak Change Event Construal?**
-- **S11 — Same Number, Different Information: Value vs Measurement Precision**
-
-S03 / S05 / S08 / S09 / S12 已 KILL / cancelled from current selection.
-
-> Selected 只表示“当前值得第一刀实验”，**不是正向 taste exemplar**。
+**不要每轮通读历史失败档案。**
 
 ---
 
 ## Taste hierarchy
 
-> **Sasano 真实研究判断 > ACL / EMNLP / NAACL / TACL 强 Main 的问题形成方式 > 其他顶会/跨领域启发 > 同门题材。**
+> **Sasano 本人真实 Slack 评价 > ACL/EMNLP/NAACL/TACL 强工作 > 其他顶会/跨领域启发 > 同门题材。**
 
-同门研究只作弱参考，不作为找题模板。
+每轮开始必须重新查 Sasano 本人的近期 Slack 研究判断，不能只依赖之前总结出的 taste。
 
-本仓库不限定“语言学”或“interpretability”。  
-复杂语言学默认谨慎：如果普通 reviewer 不能很快理解 why-care，不优先。
+用户个人偏好的 method paper / benchmark gain / training / mechanism 题型，不属于这个文件夹的正向 taste。
 
 ---
 
-## Core discipline
+## Workflow in one line
 
-搜索不是为了制造候选，而是为了找到：
+> **Sasano calibration → multi-paper tension → natural reconnaissance → our stable pattern → RQ → deep novelty → preflight → selected**
 
-> **清楚、重要、未解决、现在有直接 attack 的 scientific question。**
+详细规则只看 `SEARCH_GUIDE_ZH.md`。
 
-禁止的常见 drift：
+---
 
-- 赌一个新 anomaly；
-- 别人发现现象，我们补 why；
-- old psychology/linguistics + new LLM；
-- A≠B / shared-vs-separate / encoded-vs-used 套模板；
-- mechanism-first；
-- 热门 lineage 里找 exact-cell novelty；
-- 为了不 KILL 不断加 controls。
+## File discipline
 
-Agent 一旦开始“救当前 seed”，必须回到：
+不要继续新增流程文件。
 
-> **核心目的不是保住 seed，而是找到最值得做的问题。**
+新的 Claim Map / tension / recon scratch 在当前工作过程里维护即可。
 
-具体流程见 `SEARCH_GUIDE_ZH.md`。
+只有：
+- 最终通过全部 gate 的题 → 新建 `Sxx_*.md` 并加入 `SELECTED_TOPICS.md`；
+- 需要 anti-resurrection 的严重失败 → 写入现有 FAILED ledger。
+
+仓库保持少而清楚。
