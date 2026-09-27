@@ -1,0 +1,36 @@
+178 checkpoints (4 skipped: no value/name), 79 trajectories
+
+=== tau: 115 checkpoints, value tokens/ckpt median 10
+  budget 0.25: mean value-token dNLL DEPLOY 12.84, HDR 16.37, TOOL 16.77, KEY 12.45, PREVALUE 11.02, FUTURE 1.14, LEX 14.34, oracle 6.38, random 22.28
+     R_HDR       =  -0.30  [ -0.54,  -0.14]  (n=115)
+     R_TOOL      =  -0.34  [ -0.58,  -0.15]  (n=115)
+     R_KEY       =   0.03  [ -0.24,   0.26]  (n=115)
+     R_PREVALUE  =   0.16  [ -0.04,   0.34]  (n=115)
+     R_LEX       =  -0.13  [ -0.54,   0.16]  (n=115)
+  budget 0.5: mean value-token dNLL DEPLOY 5.03, HDR 6.91, TOOL 6.10, KEY 6.74, PREVALUE 4.40, FUTURE 0.12, LEX 9.38, oracle 1.80, random 12.02
+     R_HDR       =  -0.38  [ -1.09,  -0.06]  (n=115)
+     R_TOOL      =  -0.22  [ -0.69,   0.04]  (n=115)
+     R_KEY       =  -0.35  [ -1.00,   0.02]  (n=115)
+     R_PREVALUE  =   0.13  [ -0.30,   0.40]  (n=115)
+     R_LEX       =  -0.88  [ -2.09,  -0.35]  (n=115)
+  within-ckpt Spearman(stage attention, CT05 block oracle): {'DEPLOY': 0.205, 'HDR': 0.207, 'TOOL': 0.285, 'KEY': 0.307, 'PREVALUE': 0.314, 'FUTURE': 0.291, 'LEX': 0.138}
+
+=== swe: 63 checkpoints, value tokens/ckpt median 13
+  budget 0.25: mean value-token dNLL DEPLOY 49.44, HDR 48.43, PROSE 45.96, TOOL 42.94, PREVALUE 42.94, FUTURE 18.05, LEX 42.46, oracle 14.34, random 51.06
+     R_HDR       =   0.03  [ -1.03,   0.61]  (n=63)
+     R_PROSE     =   0.20  [  0.11,   0.93]  (n=59)
+     R_TOOL      =   0.21  [  0.11,   1.00]  (n=63)
+     R_PREVALUE  =   0.21  [  0.11,   1.00]  (n=63)
+     R_LEX       =   0.22  [ -3.32,   0.52]  (n=63)
+  budget 0.5: mean value-token dNLL DEPLOY 38.74, HDR 38.45, PROSE 33.87, TOOL 31.64, PREVALUE 31.64, FUTURE 6.79, LEX 30.91, oracle 2.48, random 29.83
+     R_HDR       =   0.01  [ -0.00,   0.54]  (n=63)
+     R_PROSE     =   0.22  [ -0.01,   0.84]  (n=59)
+     R_TOOL      =   0.22  [  0.11,   0.93]  (n=63)
+     R_PREVALUE  =   0.22  [  0.11,   0.92]  (n=63)
+     R_LEX       =   0.25  [-23.43,   0.55]  (n=63)
+  within-ckpt Spearman(stage attention, CT05 block oracle): {'DEPLOY': 0.079, 'HDR': 0.095, 'PROSE': 0.119, 'TOOL': 0.136, 'PREVALUE': 0.136, 'FUTURE': 0.173, 'LEX': 0.089}
+
+=== frozen decision rule
+  R_PREVALUE: {'tau@0.25': 0.16, 'tau@0.5': 0.13, 'swe@0.25': 0.21, 'swe@0.5': 0.22}
+  LEX / PREVALUE: {'tau@0.25': -0.83, 'tau@0.5': -6.88, 'swe@0.25': 1.07, 'swe@0.5': 1.1}
+  KILL (no leverage): True | KILL (lexical): False | STRUCTURE PRESENT: False | otherwise ambiguous

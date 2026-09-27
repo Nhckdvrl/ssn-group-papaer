@@ -1,7 +1,8 @@
 # CT07 — When Does the Memory Query Become Available?
 ## Intra-action emergence of exact-memory demand in tool-using agents
 
-**Status: CANDIDATE — NATURAL RECON ONLY (E00).** No method is written and no pilot is authorized.
+**Status: KILLED AFTER E00 (2026-09-27), `CT-KILL-20260927-3`** — frozen rule 1 (no deployable leverage). See `docs/E00_RESULTS.md`.
+One sentence: the query that locates the exact value forms while the value is being written (tau: the first value token's query hits the source block 42% vs 13% before it), so no control-prefix boundary exists at which memory could be selected before binding (R_PREVALUE 0.13–0.22).
 Registered 2026-09-27. It grows out of three CT05 E01 facts (`candidates/CT05_EXACT_MEMORY_DEMAND`):
 
 1. Under window eviction, long-history dependence sits on **argument values**, not tool identity
