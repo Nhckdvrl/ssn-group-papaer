@@ -12,3 +12,5 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 03:34 JST — CPU pilot (login node, 22 threads): MB130, PY160, PY160s1, PY160s2, PY410, PY410s1 on first 60 NeoX-2k windows of pg19/wikipedia/python
 2026-09-28 04:14 JST — T7s1 launched on fvcrc12 GPU1
 2026-09-28 04:24 JST — queue2.sh (≤8 concurrent guard) started on logs/jobs_remaining.txt (H7s1 + Pile/Pythia jobs; T7s1 already running on fvcrc12 GPU1).
+2026-09-28 04:34 JST — H7s1 launched on fvcrc12 GPU1
+2026-09-28 04:49 JST — queue2 had exited after H7s1 (ssh consumed the job-file stdin); fixed with ssh -n, restarted on jobs_pending.txt.
