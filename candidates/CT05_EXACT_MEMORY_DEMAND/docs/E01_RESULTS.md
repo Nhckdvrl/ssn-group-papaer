@@ -90,3 +90,32 @@ needs its exact KV in 95% of checkpoints. SWE task descriptions: dKV 7.8 vs dTEX
   long-range memory, and learnable-eviction hybrids (2510.20787) train for KV scarcity. What it
   shows is that current production hybrids are not trained that way. Their recurrent state gives
   agent decisions almost no "compressed influence" to allocate against.
+
+## Addendum (2026-09-27, post-kill, no new model calls): tool identity vs argument values
+
+Requested check for a possible "control first, retrieval second" shape. Target tokens are split
+into tool/command name, parameter key, parameter value, prose and syntax
+(`src/analyze_action.py` → `results/e01_action_split.txt`).
+
+| window eviction (keep system+task+last k) | tau: name | tau: value | swe: name | swe: value |
+|---|---|---|---|---|
+| Qwen3.5-9B KVWIN2, share of loss | 0% | 99% | 3% | 81% |
+| Qwen3.5-9B KVWIN2, first-name-token dNLL > 1 nat | 0% of ckpts | | 21% of ckpts | |
+| Qwen3.5-9B KVWIN0, first-name-token dNLL > 1 nat | **6%** | | 88% | |
+| Qwen3-8B KVWIN0, first-name-token dNLL > 1 nat | **77%** | | 85% | |
+
+- Under realistic windows (k = 2, 4) the eviction cliff sits almost entirely on argument values:
+  99% of the loss in tau and 81–86% in SWE. Tool identity mostly depends on the last couple of
+  events, which the window keeps.
+- Identity is not history-free. For single-event KV hides on important events, name tokens are
+  the most sensitive *per token* (tau 1.24, SWE 3.35 nats/token), because the choice is
+  concentrated in one token and usually driven by a recent event.
+- Recurrence carry (BOTH − KV) lands on names and syntax, not values: tau names get 0.455
+  nats/token vs 0.011 for values. This is the retrieval/control split once more.
+- One striking contrast, recorded here but **not a claim**: with every conversational event's
+  KV hidden (KVWIN0), Qwen3.5-9B still predicts the tau tool name (6% of checkpoints affected),
+  while Qwen3-8B loses it (77%). SWE shows no such difference (88% vs 85%). The two models differ
+  in family and training, and no recurrent-state swap exists for window rows, so this cannot be
+  attributed to recurrence.
+- Verdict on the side question: the "control vs lookup" separation is visible in the data, but it
+  is not registered as a topic (ToolGen / dispatch decomposition, LAQ, AgentKV nearby).

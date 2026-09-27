@@ -1,0 +1,40 @@
+=== q35_9b: 182 checkpoints
+
+[tau] target tokens by class: name 414, key 523, value 2618, syntax 3734
+   KVWIN0          name:     27.0 (  1%, 0.065/tok)  key:     -0.9 ( -0%, -0.002/tok)  value:   4807.5 ( 98%, 1.836/tok)  syntax:     59.8 (  1%, 0.016/tok)
+   KVWIN2          name:      1.4 (  0%, 0.003/tok)  key:     -0.1 ( -0%, -0.000/tok)  value:   2597.7 ( 99%, 0.992/tok)  syntax:     29.1 (  1%, 0.008/tok)
+   KVWIN4          name:      0.3 (  0%, 0.001/tok)  key:     -0.1 ( -0%, -0.000/tok)  value:   1519.2 ( 99%, 0.580/tok)  syntax:     16.7 (  1%, 0.004/tok)
+   KV_i important  name:    513.9 ( 12%, 1.241/tok)  key:    132.2 (  3%, 0.253/tok)  value:   2348.2 ( 57%, 0.897/tok)  syntax:   1136.8 ( 28%, 0.304/tok)
+   carry BOTH-KV   name:    188.3 ( 21%, 0.455/tok)  key:     28.4 (  3%, 0.054/tok)  value:     27.8 (  3%, 0.011/tok)  syntax:    657.5 ( 73%, 0.176/tok)
+   first name token under KVWIN0: mean dNLL 0.177, >1 nat in 6% of 115 checkpoints
+   first name token under KVWIN2: mean dNLL 0.004, >1 nat in 0% of 115 checkpoints
+   first name token under KVWIN4: mean dNLL 0.004, >1 nat in 0% of 115 checkpoints
+
+[swe] target tokens by class: name 204, value 6098, prose 2415, syntax 1472
+   KVWIN0          name:   1035.0 ( 15%, 5.074/tok)  value:   3609.6 ( 53%, 0.592/tok)  prose:   1293.0 ( 19%, 0.535/tok)  syntax:    812.1 ( 12%, 0.552/tok)
+   KVWIN2          name:    121.5 (  3%, 0.595/tok)  value:   3180.3 ( 81%, 0.522/tok)  prose:    293.2 (  7%, 0.121/tok)  syntax:    341.1 (  9%, 0.232/tok)
+   KVWIN4          name:     60.3 (  2%, 0.296/tok)  value:   3018.3 ( 86%, 0.495/tok)  prose:    180.2 (  5%, 0.075/tok)  syntax:    236.4 (  7%, 0.161/tok)
+   KV_i important  name:    682.3 ( 14%, 3.345/tok)  value:   3424.2 ( 68%, 0.562/tok)  prose:    672.1 ( 13%, 0.278/tok)  syntax:    267.3 (  5%, 0.182/tok)
+   carry BOTH-KV   name:     26.7 (  6%, 0.131/tok)  value:     19.4 (  4%, 0.003/tok)  prose:    420.8 ( 88%, 0.174/tok)  syntax:     14.0 (  3%, 0.010/tok)
+   first name token under KVWIN0: mean dNLL 6.294, >1 nat in 88% of 67 checkpoints
+   first name token under KVWIN2: mean dNLL 0.868, >1 nat in 21% of 67 checkpoints
+   first name token under KVWIN4: mean dNLL 0.444, >1 nat in 12% of 67 checkpoints
+=== q3_8b: 188 checkpoints
+
+[tau] target tokens by class: name 418, key 590, value 2886, syntax 1891
+   KVWIN0          name:   2019.4 ( 26%, 4.831/tok)  key:     19.3 (  0%, 0.033/tok)  value:   5687.3 ( 74%, 1.971/tok)  syntax:    -35.9 ( -0%, -0.019/tok)
+   KVWIN2          name:     91.0 (  3%, 0.218/tok)  key:     21.4 (  1%, 0.036/tok)  value:   3531.4 ( 98%, 1.224/tok)  syntax:    -52.8 ( -1%, -0.028/tok)
+   KVWIN4          name:     49.6 (  2%, 0.119/tok)  key:     17.6 (  1%, 0.030/tok)  value:   2142.0 ( 97%, 0.742/tok)  syntax:      0.6 (  0%, 0.000/tok)
+   KV_i important  name:   1966.5 ( 29%, 4.705/tok)  key:    466.4 (  7%, 0.790/tok)  value:   3419.9 ( 51%, 1.185/tok)  syntax:    861.8 ( 13%, 0.456/tok)
+   first name token under KVWIN0: mean dNLL 12.466, >1 nat in 77% of 116 checkpoints
+   first name token under KVWIN2: mean dNLL 0.773, >1 nat in 16% of 116 checkpoints
+   first name token under KVWIN4: mean dNLL 0.411, >1 nat in 11% of 116 checkpoints
+
+[swe] target tokens by class: name 213, value 6294, prose 2430, syntax 1039
+   KVWIN0          name:   1685.7 ( 16%, 7.914/tok)  value:   5647.6 ( 54%, 0.897/tok)  prose:   2361.0 ( 22%, 0.972/tok)  syntax:    847.2 (  8%, 0.815/tok)
+   KVWIN2          name:    414.2 (  6%, 1.944/tok)  value:   5580.9 ( 81%, 0.887/tok)  prose:    393.3 (  6%, 0.162/tok)  syntax:    490.6 (  7%, 0.472/tok)
+   KVWIN4          name:    201.3 (  3%, 0.945/tok)  value:   5334.5 ( 86%, 0.848/tok)  prose:    315.9 (  5%, 0.130/tok)  syntax:    357.8 (  6%, 0.344/tok)
+   KV_i important  name:   1256.1 ( 13%, 5.897/tok)  value:   5995.1 ( 60%, 0.953/tok)  prose:   2154.6 ( 22%, 0.887/tok)  syntax:    528.8 (  5%, 0.509/tok)
+   first name token under KVWIN0: mean dNLL 8.189, >1 nat in 85% of 72 checkpoints
+   first name token under KVWIN2: mean dNLL 3.632, >1 nat in 39% of 72 checkpoints
+   first name token under KVWIN4: mean dNLL 1.679, >1 nat in 14% of 72 checkpoints
