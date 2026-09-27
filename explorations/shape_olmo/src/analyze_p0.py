@@ -7,6 +7,7 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tag import FAMILIES, CONTENT, FUNCTION, PROSE
 
+PFX = os.environ.get("SHAPE_PACK", "")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOMS = ["pg19", "ccnews", "wikipedia", "arxiv", "python", "html", "latex"]
 PAPER_OPEN_CLOSE = dict(pg19=0.068, ccnews=0.077, wikipedia=0.049, arxiv=0.028, python=0.017,
@@ -33,7 +34,7 @@ def main(tt, th):
     D, T = {}, {}
     for d in DOMS:
         D[d] = np.load(f"{ROOT}/scores/{tt}/{d}.npy") - np.load(f"{ROOT}/scores/{th}/{d}.npy")
-        T[d] = np.load(f"{ROOT}/data/tags_{d}.npz")
+        T[d] = np.load(f"{ROOT}/data/tags_{PFX}{d}.npz")
     print("== mean Delta per domain (all tokens)")
     for d in DOMS:
         out[f"all/{d}"] = r = boot(D[d], np.ones_like(D[d], bool))

@@ -2,9 +2,9 @@
 comparisons between profiles. Fixed feature set, written before the stage-1 / placebo data existed.
 
 usage:
-  profile.py pair A B [DOMAINS]                     profile of nll_A - nll_B
-  profile.py change A1 B1 A2 B2 [DOMAINS]           D = (A2-B2) - (A1-B1), e.g. final gap minus stage-1 gap
-  profile.py placebo  T H  Te Tl  [He Hl] [DOMAINS] d_HT = T-H vs d_TT = Te-Tl (and d_HH = He-Hl):
+  tokprofile.py pair A B [DOMAINS]                     profile of nll_A - nll_B
+  tokprofile.py change A1 B1 A2 B2 [DOMAINS]           D = (A2-B2) - (A1-B1), e.g. final gap minus stage-1 gap
+  tokprofile.py placebo  T H  Te Tl  [He Hl] [DOMAINS] d_HT = T-H vs d_TT = Te-Tl (and d_HH = He-Hl):
                                                     profiles, and residual r of d_HT ~ alpha*d_TT
 DOMAINS default: pg19,wikipedia,python (diagnostic three); 'all' = seven domains.
 Tag names refer to scores/<TAG>/<domain>.npy.
@@ -13,7 +13,7 @@ import os, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tag import FAMILIES, CONTENT, FUNCTION, PROSE
-from analyze_p0 import boot, ROOT
+from analyze_p0 import boot, ROOT, PFX
 
 ALL = ["pg19", "ccnews", "wikipedia", "arxiv", "python", "html", "latex"]
 
@@ -23,7 +23,7 @@ def load(tag, d):
 
 
 def masks(d):
-    t = np.load(f"{ROOT}/data/tags_{d}.npz"); r = t["rep"]; p1 = t["pos1"]
+    t = np.load(f"{ROOT}/data/tags_{PFX}{d}.npz"); r = t["rep"]; p1 = t["pos1"]
     fid = lambda S: [FAMILIES.index(f) for f in S]
     con, fun = np.isin(p1, fid(CONTENT)), np.isin(p1, fid(FUNCTION))
     m = {"all": np.ones_like(r, bool), "novel(rep0)": r == 0, "rep1": r == 1, "rep>=2": r >= 2,

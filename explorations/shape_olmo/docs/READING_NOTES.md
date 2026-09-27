@@ -141,3 +141,15 @@ Also from 2510.24963 (Michaelov, Levy, Bergen): across Transformer / Mamba / RWK
 word-level behaviour variance is explained by frequency, n-gram probability and context
 similarity, with consistent learning phases. Architecture-specific token effects should therefore be
 a residual on a shared trajectory, so the matched-improvement placebo is the first control to run.
+
+## Prior evidence from the Olmo Hybrid paper itself (Tables 2–3), noted before stage-1 scores exist
+
+- End of **pretraining** (before midtrain / long context): the hybrid is already lower on Code
+  (17.1 vs 19.6), LBPP (2.9 vs 6.3) and GenQA (66.8 vs 68.5), and higher on Math / MC / BBH /
+  MMLU-Pro. After midtraining it is ahead on every domain aggregate.
+- **RULER at 4k** (short context, retrieval-heavy): hybrid 92.8 with YaRN and 92.2 with DroPE, vs
+  Olmo 3 95.8. The hybrid wins only from 8k/16k upward (DroPE 85.0 vs 70.9 at 64k). Its short-range
+  retrieval weakness appears under **both** positional treatments.
+- Written-down expectation before looking at stage-1: the token-level reuse deficit will largely
+  **persist** at stage-1 end (it is not mainly DroPE). If it vanishes, that contradicts this prior
+  and is the more surprising outcome.

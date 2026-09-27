@@ -3,11 +3,12 @@
 data/pack_<domain>.npz: ids (S, L) int32; doc, cs, ce (S, L) int32 = source doc index and
 character span of each token in that doc's text (-1 for the EOS separator).
 """
-import json, sys
+import json, os, sys
 import numpy as np
 from transformers import AutoTokenizer
 
-L = 8192
+L = int(os.environ.get("SHAPE_L", 8192))
+PFX = os.environ.get("SHAPE_PACK", "")   # "" = original Olmo/8192 pack; e.g. "neox2k_"
 
 
 def main(tok_path, root, domains):
@@ -25,7 +26,7 @@ def main(tok_path, root, domains):
             ce += [b for a, b in enc.offset_mapping] + [-1]
         S = len(ids) // L
         arr = lambda x: np.asarray(x[:S * L], dtype=np.int32).reshape(S, L)
-        np.savez(f"{root}/data/pack_{dom}.npz", ids=arr(ids), doc=arr(doc), cs=arr(cs), ce=arr(ce))
+        np.savez(f"{root}/data/pack_{PFX}{dom}.npz", ids=arr(ids), doc=arr(doc), cs=arr(cs), ce=arr(ce))
         print(dom, "tokens", len(ids), "windows", S)
 
 

@@ -13,6 +13,7 @@ Usage: tag.py DOMAINS   (run with verl-clean python; needs data/nltk_data/corpor
 import json, os, pickle, re, sys
 import numpy as np
 
+PFX = os.environ.get("SHAPE_PACK", "")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROSE = {"pg19", "ccnews", "wikipedia", "arxiv"}
 TABLE1 = {
@@ -118,7 +119,7 @@ def repeat_len(ids, nmax=16):
 def main(domains):
     tg = tagger()
     for dom in domains:
-        pk = np.load(f"{ROOT}/data/pack_{dom}.npz")
+        pk = np.load(f"{ROOT}/data/pack_{PFX}{dom}.npz")
         ids, doc, cs, ce = pk["ids"], pk["doc"], pk["cs"], pk["ce"]
         texts = [json.loads(l)["text"] for l in open(f"{ROOT}/data/docs_{dom}.jsonl")]
         labels = {}
@@ -146,7 +147,7 @@ def main(domains):
                 op[s, i] = (br[a:b] == 1).any(); cl[s, i] = (br[a:b] == -1).any()
                 ht[s, i] = hh[a:b].max()
         sl = lambda x: x[:, 1:]  # align to targets
-        np.savez(f"{ROOT}/data/tags_{dom}.npz", pos1=sl(pos1), pos2=sl(pos2), open=sl(op),
+        np.savez(f"{ROOT}/data/tags_{PFX}{dom}.npz", pos1=sl(pos1), pos2=sl(pos2), open=sl(op),
                  close=sl(cl), htag=sl(ht), rep=sl(rep))
         print(dom, "tagged", S, "open", op.sum(), "close", cl.sum(), "rep>=5", (rep >= 5).sum(), flush=True)
 
