@@ -39,3 +39,5 @@ seed（不落盘）
 - `CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md` — KILLED AFTER PILOT（保留 provenance；见 `FAILED_TOPICS.md`）。
 - `CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md` — PILOT-AUTHORIZED（exploratory identification）。
 - CT05 exact-vs-compressed memory for hybrid agents — KILLED AFTER E01（`CT-KILL-20260927-1`；package `candidates/CT05_EXACT_MEMORY_DEMAND/`）。
+- CT06 training pressure × hybrid memory specialization — KILLED AT SELECTION（`CT-KILL-20260927-2`）。
+- CT07 when does the memory query become available — CANDIDATE, natural recon E00 only（`candidates/CT07_MEMORY_QUERY_TIMING/`）。

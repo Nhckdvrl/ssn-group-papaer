@@ -1,6 +1,7 @@
 # CT06 — Does Abundant Attention Keep Recurrence from Learning History? (training pressure × memory specialization)
 
-**Status: CANDIDATE — nearest-prior audit done, pre-registration drafted. NOT pilot-authorized. No compute used.**
+**Status: KILLED AT SELECTION (2026-09-27), `CT-KILL-20260927-2`. Gate 0 never run; no compute used.**
+The user and the audit agree: the residual is a conditional engineering question ("does some continued-training recipe move rho off 0?") that runs straight into fixed-state copy capacity.
 Opened 2026-09-27 as a *separate* candidate after CT05 was killed (`CT-KILL-20260927-1`).
 It is not a CT05 rescue. CT05 assumed that pretrained recurrence already carries history, and that
 assumption is dead. CT06 asks whether training-time access to attention is what prevents it.
