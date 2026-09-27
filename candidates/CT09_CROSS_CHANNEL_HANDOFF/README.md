@@ -1,7 +1,11 @@
 # CT09 — Read, Then Remember? Cross-Channel Information Handoff in Hybrid LMs
 
-Registered 2026-09-27 as **CANDIDATE / inference-only RECON**. Only E00 is authorized.
-No training, no router, no agent, no efficiency claim until E00 is read.
+Registered 2026-09-27 as CANDIDATE / inference-only RECON.
+**Status: KILLED AFTER E00 (2026-09-27), `CT-KILL-20260927-5`** (`docs/E00_RESULTS.md`). In one
+sentence: after one attention lookup, Qwen3.5-4B's recurrent channel keeps only a partial trace of
+the retrieved value, H = 0.108 [0.104, 0.112] of attention's log-odds. That trace is
+retrieval-specific (unrelated read 0.002, same value as text ≈ 0), but it is below the frozen 0.20
+bar, and the carrier (short-conv window vs matrix state) is unidentified.
 
 ## Question (the only one)
 
