@@ -1,7 +1,10 @@
 # CT08 — Does Compositional Generalization Require Information Hiding?
 
-**Status: CANDIDATE — registered 2026-09-27. E00 (first-stage validity, inference only) frozen
-below; E01 (the visibility triad) drafted, NOT authorized.** No compute used yet.
+**Status: KILLED AFTER E00 (2026-09-27), `CT-KILL-20260927-4`.** Both frozen first-stage gates
+failed (`docs/E00_RESULTS.md`). In one sentence: at a scale where the payload could be made visible
+(≤ 32k), the released RLM-Qwen3-8B shows no learned transfer (−7.2 points vs the untrained harness)
+and no cross-domain isomorphism, and it already leaks a fifth of the payload into the root. So
+there is no hiding effect to decompose within the envelope. E01 is never run.
 Unrelated to CT05–07 (hybrid KV memory), which stay closed.
 
 ## Question
