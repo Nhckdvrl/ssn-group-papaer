@@ -38,3 +38,4 @@ seed（不落盘）
 - `CT02_IS_CONTEXT_UTILITY_RANKABLE.md` — KILLED AFTER NOVELTY RE-AUDIT（保留 provenance；见 `FAILED_TOPICS.md`）。
 - `CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md` — KILLED AFTER PILOT（保留 provenance；见 `FAILED_TOPICS.md`）。
 - `CT04_HYBRID_ADAPTATION_STATE_DYNAMICS.md` — PILOT-AUTHORIZED（exploratory identification）。
+- CT05 exact-vs-compressed memory for hybrid agents — KILLED AFTER E01（`CT-KILL-20260927-1`；package `candidates/CT05_EXACT_MEMORY_DEMAND/`）。

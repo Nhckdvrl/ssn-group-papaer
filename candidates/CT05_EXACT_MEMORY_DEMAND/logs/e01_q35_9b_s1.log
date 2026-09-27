@@ -1,0 +1,31 @@
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading weights:   0%|          | 0/427 [00:00<?, ?it/s]Loading weights:   0%|          | 1/427 [00:00<01:35,  4.46it/s]Loading weights:   0%|          | 2/427 [00:00<01:47,  3.96it/s]Loading weights:   6%|▌         | 26/427 [00:00<00:08, 49.57it/s]Loading weights:  13%|█▎        | 54/427 [00:00<00:04, 91.61it/s]Loading weights:  19%|█▉        | 83/427 [00:01<00:02, 120.39it/s]Loading weights:  28%|██▊       | 119/427 [00:01<00:01, 168.67it/s]Loading weights:  33%|███▎      | 139/427 [00:01<00:01, 158.69it/s]Loading weights:  39%|███▉      | 168/427 [00:01<00:01, 183.41it/s]Loading weights:  45%|████▌     | 193/427 [00:01<00:01, 190.37it/s]Loading weights:  50%|█████     | 214/427 [00:01<00:01, 178.04it/s]Loading weights:  55%|█████▌    | 235/427 [00:01<00:01, 174.89it/s]Loading weights:  59%|█████▉    | 254/427 [00:01<00:01, 151.88it/s]Loading weights:  68%|██████▊   | 290/427 [00:02<00:00, 197.98it/s]Loading weights:  73%|███████▎  | 312/427 [00:02<00:00, 165.75it/s]Loading weights:  83%|████████▎ | 354/427 [00:02<00:00, 222.40it/s]Loading weights:  89%|████████▉ | 380/427 [00:02<00:00, 218.26it/s]Loading weights:  95%|█████████▍| 405/427 [00:02<00:00, 212.08it/s]Loading weights: 100%|██████████| 427/427 [00:02<00:00, 158.34it/s]
+3 swe N 5010 E 6 B 24 83.0s
+5 swe N 10150 E 42 B 69 304.0s
+9 swe N 1397 E 6 B 10 48.3s
+13 swe N 10239 E 20 B 54 126.8s
+21 swe N 2590 E 6 B 14 50.1s
+27 swe N 493 E 6 B 7 5.6s
+31 swe N 11825 E 26 B 62 263.9s
+33 swe N 5561 E 6 B 26 79.1s
+39 swe N 5353 E 6 B 25 115.1s
+43 swe N 10970 E 14 B 51 188.5s
+45 swe N 1008 E 6 B 8 5.2s
+49 swe N 8215 E 22 B 44 77.1s
+51 swe N 1137 E 6 B 8 4.4s
+55 swe N 11934 E 22 B 60 116.1s
+57 swe N 4358 E 6 B 21 62.8s
+61 swe N 10805 E 30 B 59 67.3s
+63 swe N 3664 E 6 B 18 24.3s
+69 swe N 1125 E 6 B 9 3.7s
+75 swe N 4489 E 6 B 21 7.0s
+79 swe N 5623 E 14 B 32 70.1s
+81 swe N 2834 E 6 B 15 35.7s
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/candidates/CT05_EXACT_MEMORY_DEMAND/src/e01.py", line 222, in <module>
+    rows, full = score_rows(cache, N, dec, lo, hides, None, act, collect_attn=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/candidates/CT05_EXACT_MEMORY_DEMAND/src/e01.py", line 142, in score_rows
+    lp = torch.log_softmax(out.logits[:, :-1].float(), -1)  # predicts dec[lo:]
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 54.90 GiB. GPU 0 has a total capacity of 79.14 GiB of which 22.49 GiB is free. Including non-PyTorch memory, this process has 54.84 GiB memory in use. Process 2348387 has 966.00 MiB memory in use. Process 2358023 has 850.00 MiB memory in use. Of the allocated memory 51.95 GiB is allocated by PyTorch, and 2.37 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
