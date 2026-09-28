@@ -114,3 +114,30 @@ information and this candidate dies.
 **If it survives:** the decisive causal cell is a matched RoPE vs DroPE recalibration of a hybrid AND
 a transformer (Pile 2.7B Mamba-2-Attn and Transformer++, ~1B tokens each), plus cross-model
 replication on Kimi-Linear-48B-A3B (NoPE by design).
+
+## 2026-09-28 — order probe v2 result (`results/probe_order_v2_summary.txt`): kill criterion NOT met, candidate survives
+
+`keyed` (content-based selection): 0.87–0.98 everywhere (T and H, all stages, incl. H final).
+`reassign` (order-based: last assignment wins); candidate-normalised P(last), chance 1/n:
+
+| | n=4 | n=8 | P(first) at n=4 |
+|---|---|---|---|
+| T (RoPE S2, YaRN S3e/S3m/F) | 0.18–0.41 | 0.13–0.29 | 0.15–0.20 |
+| H S2 (RoPE) | 0.31–0.51 (acc ≤ 0.86) | 0.29–0.43 | 0.24 |
+| H S3e / S3m (DroPE) | 0.24–0.53 | 0.18–0.40 | 0.16–0.19 |
+| H F (DroPE, released) | 0.13–0.26 | 0.10–0.21 | **0.50** (n=2: 0.75) |
+
+1. With RoPE, the hybrid tracks the latest value better than the transformer (GDN's delta rule is
+   key-based overwrite).
+2. The released DroPE hybrid loses that and **reverses to primacy**: most candidate mass goes on the
+   *first* assignment.
+3. The reversal appears late (S3m → F), matching the accelerating natural-text degradation, while
+   content-based selection stays intact.
+Kill criterion (H-F ≈ H-S2 on reassign relative to keyed, ±0.05 at n = 4, 8): exceeded by ~0.25.
+
+**Working hypothesis (to test, not a claim):** recurrence carries the latest-value state; the
+position-free attention layers of the final hybrid impose a primacy bias and override it at
+readout. Next, a channel dissociation on the same items: (a) hide the assignment region from the
+full-attention layers (recurrent-only readout); (b) the reverse. If (a) recovers "last" and (b)
+shows primacy, then in this hybrid the combination is *worse* than its recurrent channel alone on
+order-dependent state.

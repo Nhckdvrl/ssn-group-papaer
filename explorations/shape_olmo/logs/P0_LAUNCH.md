@@ -39,3 +39,11 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 09:52 JST — PO_T7s2 launched on fvcrc10 GPU0
 2026-09-28 10:01 JST — probe_order queue stopped after PO_T7s2: recency task shows no recency preference even for RoPE T (chance-level, P(last)≈P(first)); task redesigned (code reassignment). T7s2 result kept.
 2026-09-28 10:03 JST — queue: probe_order v2 (reassign / keyed) on 8 ladder checkpoints
+2026-09-28 10:11 JST — PO_T7s2 launched on fvcrc10 GPU0
+2026-09-28 10:13 JST — PO_H7s2 launched on fvcrc10 GPU1
+2026-09-28 10:15 JST — PO_T7s3e launched on fvcrc10 GPU2
+2026-09-28 10:17 JST — PO_H7s3e launched on fvcrc10 GPU3
+2026-09-28 10:19 JST — PO_T7s3m launched on fvcrc12 GPU0
+2026-09-28 10:21 JST — PO_H7s3m launched on fvcrc10 GPU0
+2026-09-28 10:23 JST — PO_T7 launched on fvcrc10 GPU0
+2026-09-28 10:26 JST — PO_H7 launched on fvcrc12 GPU1
