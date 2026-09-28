@@ -4,6 +4,8 @@
 
 This is not a comprehensive bibliography. These are papers worth rereading because they define a primitive, change an assumption, expose a failure, or provide a reusable open baseline.
 
+**Read these genealogically, not as an idea menu.** For each important anchor, reconstruct the parent baseline/belief, pressure, changed premise, earliest revealing analysis, and why the final contribution is distinct from adjacent related work. See `README.md` for the genesis template.
+
 ---
 
 ## Research craft / baseline discipline
