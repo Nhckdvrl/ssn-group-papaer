@@ -304,3 +304,50 @@ Useful scientific objects:
 Environment, tool schema, evaluator, and simulator engineering can dominate the scientific contribution.
 
 **Anchors:** B08, B13.
+
+
+---
+
+## T13 — Game NPCs / interactive characters
+
+**Why keep inhabiting it**
+
+Foundation-model NPCs are not merely dialogue generators. In actual games they sit at the junction of **character identity, memory, shared world state, social reasoning, action/control, narrative authority, latency, and player experience**. Recent work increasingly shows that optimizing one of these in isolation can move another in the wrong direction.
+
+**Recurring assumptions worth auditing**
+
+- fluent / persona-consistent dialogue implies a good NPC;
+- remembered text implies stable relationship or behavior;
+- more open-ended interaction is monotonically better;
+- the LLM should own world state, social state, planning, and low-level action;
+- dialogue-only evaluation predicts co-play quality;
+- LLM-as-judge roleplay scores are sufficient evidence;
+- adding more context/memory is always helpful;
+- a believable social simulation is behaviorally faithful;
+- visual realism in a game world model implies state-aware NPC behavior.
+
+**Natural observations**
+
+- which component owns or validates each state transition;
+- linguistic persona vs action/trajectory persona;
+- verbal vs non-verbal social behavior;
+- player/NPC shared-state disagreement;
+- long-horizon commitment survival;
+- role/task dependence of structure vs openness;
+- deliberative vs reflexive control timescales;
+- player outcome / cognitive-load changes that disagree with response-quality scores.
+
+**Baseline / observation first**
+
+Prefer public substrates where the NPC actually interacts with a game loop: CPDC, collaborative Minecraft NPCs, NCP-Bench, MineAmongUs/ARIA, ReactiveGWM, or other released environments. Start by reproducing the strongest baseline and mapping which state/action/evaluation dependency is load-bearing before inventing a memory module, planner, or personality method.
+
+**High-risk failure modes**
+
+- “NPC” becomes a cosmetic wrapper around an ordinary chatbot benchmark;
+- simulator/game engineering dominates the science;
+- another generic memory/RAG/persona method;
+- player-study conclusions without a clear computational object;
+- chasing proprietary production NPCs that cannot be reproduced.
+
+**Deep map:** `deep/academic/GAME_NPC_LANDSCAPE.md`.
+**Anchors:** NPC01–NPC12, B19–B22.
