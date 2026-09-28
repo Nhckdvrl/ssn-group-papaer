@@ -181,3 +181,32 @@ Each experiment must remove an explanation, not add a story. Wrong priors are re
   latest-assignment needs both (full > rec-only on reassign).
 - Pending decisive cell: the DroPE final (primacy in full). Does its rec-only readout still carry
   recency, i.e. is attention overriding the cue at readout? And H7s3m (DroPE, before the reversal).
+
+## 2026-09-28 — channel dissociation across the DroPE stage (`results/probe_channel_summary.txt`)
+
+| reassign, n = 4 | full P(last) | full P(first) | rec-only P(last) | rec-only P(first) |
+|---|---|---|---|---|
+| H7s2 (RoPE) | 0.44 | 0.24 | 0.36 | 0.25 |
+| H7s3m (DroPE, mid) | 0.40 | 0.16 | 0.35 | 0.27 |
+| H7 (DroPE, final) | 0.19 | **0.50** | 0.28 | 0.31 |
+
+Unbound order cue in the recurrent channel (keyed items, queried neither first nor last; rec-only,
+n = 4, P(last) / P(first)): H7s2 0.37 / 0.24 → H7s3m 0.29 / 0.30 → H7 0.25 / 0.32.
+Content keying (keyed, full) stays 0.90–0.96 throughout; rec-only keyed stays at chance.
+
+- **Composition reverses.** RoPE hybrid: full > rec-only on order (attention helps). DroPE final:
+  full < rec-only (P(last) 0.19 vs 0.28; P(first) 0.50 vs 0.31); the attention channel pushes toward
+  the stale first value.
+- **The recurrent order cue itself erodes** over the DroPE stage (recency → flat → slight primacy).
+  The full model keeps recency until mid-stage, then flips.
+- **Robust summary (no channel apportioning):** over DroPE training the order signal available at
+  readout degrades and flips to primacy, while content keying is untouched. Channel attribution is
+  mixed; I will not add conditions to make it tidy.
+
+**Generality is the next gate.** Is this a property of *position-free hybrids* (NoPE-by-design:
+Granite-4.0-H, Nemotron-H, Kimi Linear), or of *DroPE retrofits*? Survey queued (NoPE vs RoPE public
+hybrids; S5 SWA-128 RoPE/NoPE matched pair).
+- Survey kill / narrowing rule (fixed now): if NoPE-by-design hybrids show recency on `reassign` at
+  least as well as RoPE hybrids (P(last) − P(first) at n = 4 within 0.05), the phenomenon is
+  DroPE-retrofit-specific. The broad "position-free hybrids read stale state" framing is then
+  dead, and what remains is a narrower DroPE finding.

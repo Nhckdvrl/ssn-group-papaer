@@ -23,7 +23,7 @@ import torch
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NS = [1, 2, 4, 8]
 GAPS = [4, 32, 128]          # filler assignment LINES between target assignments (~8 tokens each)
-N_ITEMS = 120
+N_ITEMS = int(os.environ.get("PROBE_N", 120))
 WORDS = ("apple river stone window garden doctor teacher music silver forest island mountain village engine "
          "letter market paper table glass winter summer morning camera ticket bottle castle bridge rocket planet "
          "coffee jacket pencil mirror candle wallet hammer ladder basket carpet helmet anchor violin tunnel desert "
@@ -79,7 +79,7 @@ def main(path, tag):
         for it in items(tok):
             ids = tok(it["text"], add_special_tokens=False).input_ids
             x = torch.tensor(ids, device="cuda")[None]
-            lp = torch.log_softmax(model(input_ids=x).logits[0, -1].float(), -1)
+            lp = torch.log_softmax(model(input_ids=x, use_cache=False).logits[0, -1].float(), -1)
             c = lp[it["cands"]].cpu().numpy()
             f.write(json.dumps(dict(task=it["task"], n=it["n"], gap=it["gap"], k=it["k"], correct=it["correct"],
                                     lp_cands=c.tolist(), mass=float(np.exp(c).sum()), len=len(ids))) + "\n")

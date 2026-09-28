@@ -55,3 +55,5 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 10:54 JST — PO_S5rope launched on fvcrc10 GPU3
 2026-09-28 10:56 JST — PO_S5nope launched on fvcrc10 GPU3
 2026-09-28 10:58 JST — PO_S5full launched on fvcrc10 GPU3
+2026-09-28 11:07 JST — queue: probe_order S5 rerun (use_cache=False fix)
+2026-09-28 11:07 JST — PO_S5rope launched on fvcrc10 GPU0
