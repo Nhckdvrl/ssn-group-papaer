@@ -6,9 +6,9 @@ This folder is the **short-list layer** for reusable research material. It exist
 
 It is deliberately small. It does **not** replace the deeper archives under:
 
-- `chasing trends/academic/` — detailed paper genealogies / literature maps;
-- `chasing trends/industry/` — deployment / company reports;
-- `chasing trends/startup_hf/` — open-model / Hugging Face / artifact archaeology.
+- `deep/academic/` — detailed paper genealogies / literature maps;
+- `deep/industry/` — deployment / company reports;
+- `deep/open-artifacts/` — open-model / Hugging Face / artifact archaeology.
 
 ## Files
 
@@ -22,7 +22,7 @@ When a new research direction appears:
 
 1. Check `TERRITORY_BANK.md` for the closest scientific object.
 2. Read the referenced anchor IDs in `KEY_PAPERS.md` / `BLOGS_REPORTS.md`.
-3. If needed, expand into the relevant deep genealogy under `chasing trends/`.
+3. If needed, expand into the relevant deep archive under `deep/`.
 4. Only then search the web for missing recent work / nearest prior.
 
 The goal is:

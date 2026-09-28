@@ -113,5 +113,5 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 ## Notes
 
 - “FRONTIER” means **re-check before making a latest-state claim**.
-- For deep parent→successor reconstruction, use `../chasing trends/academic/GENEALOGY_LIBRARY_INDEX.md`.
-- Candidate-specific nearest prior does **not** belong here; put it in the candidate/observation package.
+- For deep parent→successor reconstruction, use `deep/academic/GENEALOGY_LIBRARY_INDEX.md`.
+- Candidate-specific nearest prior does **not** belong here; put it in the candidate/workbench package.

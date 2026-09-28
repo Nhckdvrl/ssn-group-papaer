@@ -144,7 +144,7 @@ Routing is a clean place to study the gap between **scores, surrogates, discrete
 
 Good diagnostic signal → endless loss search.
 
-**Anchors:** MOE01–MOE03; repository observation `../observations/ROUTE_PREFERENCE_DECISION_CONSISTENCY.md`.
+**Anchors:** MOE01–MOE03; repository observation `../workbench/moe-route-preference/README.md`.
 
 ---
 
@@ -281,8 +281,8 @@ Useful patterns:
 ## T11 — AI4Quant / structured multivariate models
 
 Current repository territories:
-- `../AI4Quant/territories/state-coverage-vs-exposure-coverage.md`
-- `../AI4Quant/territories/forecast-skill-vs-structural-skill.md`
+- `../workbench/ai4quant/territories/state-coverage-vs-exposure-coverage.md`
+- `../workbench/ai4quant/territories/forecast-skill-vs-structural-skill.md`
 
 Use finance only when it supplies a load-bearing structural oracle, intervention, or decision consequence—not merely a new dataset.
 

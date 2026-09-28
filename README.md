@@ -1,117 +1,97 @@
-# SSN Group Paper — Current Research State
+# SSN Group Paper — Research Repository
 
-**Last reset:** 2026-09-28  
-**This README is the only global source of truth for current authorization.**
+**Framework reset: 2026-09-28**
 
-The repository has accumulated many historical candidates, pilots, search rounds, and failed lineages. Directory names such as `candidates/` or `good/`, and old status text inside historical packages, **do not authorize current work**.
+The repository is organized by **research stage**, not by topic.
 
-## Current state
+A domain such as AI4Quant, MoE, hybrid models, speech, VLA, etc. should **not** become a new top-level folder. Topic-specific work belongs in `workbench/`; reusable background material belongs in `library/`.
 
-| track / object | current status | meaning |
-|---|---|---|
-| Global paper mainline | **NONE** | no project is currently approved as a paper mainline |
-| `ssn-taste/` | **SEARCH / TERRITORY MODE; selected = 0** | Sasano-taste search has no current candidate |
-| `chasing trends/` | **TERRITORY MODE; selected = 0** | hybrid-adaptation work is a territory, not a candidate |
-| `AI4Quant/` | **TERRITORY MODE; selected = 0** | the two former "selected" ideas are hypotheses/territories until an empirical observation earns promotion |
-| `observations/ROUTE_PREFERENCE_DECISION_CONSISTENCY.md` | **OBSERVATION** | strong empirical result; not yet an independent paper candidate |
-| `explorations/shape_olmo/` | **PAUSED EXPLORATION / KNOWLEDGE ASSET** | useful empirical knowledge, no registered RQ |
-| `failed/` | **HISTORICAL ANTI-RESURRECTION** | durable kill evidence only |
-| `candidates/`, `good/` | **HISTORICAL EXECUTION PACKAGES** | retained for reproducibility; not current authorization |
-| `library/` | **REFERENCE LIBRARY** | curated territories, anchor papers, blogs/reports; not authorization and not a candidate list |
+## Canonical flow
 
-## The research process
+> **SEARCH → WORKBENCH → CANDIDATE → PAPER**
 
-The repository no longer treats a paper-shaped question as the default unit of search.
+The key rule is:
 
-> **TERRITORY → STRONG BASELINE → EXPLORATION → STABLE OBSERVATION → CANDIDATE → CONFIRMATION → MECHANISM / METHOD → PAPER**
+> **Search does not need to invent the final paper idea.**
 
-### 1. Territory
+Search only needs to identify an important problem territory worth serious exploration. The actual paper question, finding, mechanism, or method is allowed to emerge from strong-baseline reproduction and experiments inside the workbench.
 
-A territory is a scientific object worth learning deeply: a model family, training process, failure surface, architecture, or mature scientific problem.
+## Top-level structure
 
-At this stage it is normal to:
-- read lineages and code;
-- reproduce strong baselines;
-- inspect checkpoints and failure slices;
-- run exploratory ablations;
-- change hypotheses freely.
+| path | role |
+|---|---|
+| `search/` | topic-search philosophies; decides what is worth exploring |
+| `workbench/` | baseline reproduction, analyses, failures, observations, changing hypotheses |
+| `candidates/` | current paper candidates only; currently **0** |
+| `library/` | reusable territory map, anchor papers/blogs, deep literature/artifact archives |
+| `failed/` | durable global anti-resurrection / kill evidence |
+| `archive/` | read-only historical candidates, old “good” packages, retired search systems and experiments |
 
-At this stage do **not** create a paper title, candidate ID, mother question, "both outcomes are interesting" story, or Main-level growth plan.
+There is deliberately **no top-level `observations/`**. A stable observation stays with the workbench that produced it until it helps crystallize an actual candidate.
 
-The only investment question is:
+## 1. Search
 
-> Are we becoming materially more knowledgeable about this object?
+`search/` contains only search philosophies:
 
-### 2. Observation
+- `search/sasano-taste/`
+- `search/our-taste/`
 
-An observation is a concrete pattern we have actually seen.
+A search result should look like:
 
-Before it can support a candidate, require:
-- it is not a one-off point;
-- it survives a fresh seed, natural subset, or matched setting when feasible;
-- a simple baseline / parser / prompt / generic-capability explanation does not already account for it;
-- the observation is stated independently of the hoped-for paper story.
+> “This problem territory is important enough to inhabit; here is the object / baseline / line we should start from.”
 
-An investment threshold is not the same as a scientific null. Record both separately.
+It does **not** need to predict the final result, method, or paper title.
 
-### 3. Candidate
+No experiments, topic folders, or candidate IDs belong under `search/`.
 
-A candidate is earned only when a stable observation or independently strong empirical pressure forces a worthwhile scientific question.
+## 2. Workbench
 
-A candidate must have:
-- an important belief or assumption that the observation changes;
-- a nearest-prior boundary that is not merely a new model/dataset/cell;
-- a feasible confirmation experiment with enough resolution;
-- a natural path to a substantial contribution without rescuing the story after each result.
+`workbench/` is the main research space.
 
-Only here should the repository create a candidate ID and freeze a claim.
+Default behavior:
 
-### 4. Mechanism / method
+> **strong baseline → reproduce → strengthen / understand → exploratory analysis → successes + failures → stable knowledge → candidate (maybe)**
 
-For method-shaped work, never infer a method from a successful diagnostic.
+A workbench owns its own observations. Hypotheses may change freely. Negative results, large drops, broken assumptions, and unexpectedly strong baselines are useful gradients.
 
-Require the full chain:
+A workbench may end as:
+- a candidate;
+- a paused knowledge asset;
+- a failed line with reusable lessons.
 
-> **Failure → Bottleneck → Controllable action → Downstream outcome**
+It does **not** need to become a paper.
 
-Each arrow needs independent evidence. CT03 is the canonical warning: a high-quality counterfactual routing signal did not imply that the supervision objective controlled the Top-K decision actually executed.
+## 3. Candidates
 
-## Discovery vs confirmation
+Only create a directory under `candidates/` after a workbench has naturally produced a clear, important, defensible paper identity.
 
-**Discovery** is allowed to be exploratory. Look at curves, slices, stages, failure gradients, simple explanations, and counterexamples.
+Current candidates: **0**.
 
-**Confirmation** begins only after a claim exists. Then freeze the metric, held-out set, controls, stopping rule, and statistical test.
+Historical candidate packages are under `archive/candidates/`.
 
-Do not use a preregistered continuation threshold to decide whether an empirical effect "exists"; use it only to decide whether the project deserves more investment.
+## 4. Library
 
-## Failure-derived rules that survive the cleanup
+Before broad web search, check:
 
-1. **Conceptual distinction is not empirical pressure.** `A ≠ B` is not a paper until a real system forces the distinction.
-2. **Prior A + Prior B is usually not a new parent question.** Most historical kills were ownership/crowding failures.
-3. **Gold must equal the claimed estimand.** A high-quality label can still measure the wrong quantity.
-4. **Simple controls come before elaborate interpretation.** Object-specific failures often collapse to generic capability or evaluator failures.
-5. **Training phenomena must be stable enough to be scientific objects.** If reasonable budget/family/recipe changes rewrite the explanation, avoid turning one trajectory into a law.
-6. **Mother phenomenon and identifying intervention must coexist in the same feasible regime.**
-7. **Synthetic tasks diagnose; they should not simultaneously create the phenomenon, define the construct, provide the gold, and justify the interpretation.**
-8. **A healthy project gets simpler as evidence accumulates.** If every repair adds another conditional branch, stop.
-9. **Cheap E01 is an efficiency property, not a topic-quality criterion.**
-10. **Failure should accumulate expertise, not only anti-resurrection entries.**
+1. `library/TERRITORY_BANK.md`
+2. `library/KEY_PAPERS.md`
+3. `library/BLOGS_REPORTS.md`
+4. `library/deep/`
 
-## Reading order for future agents
+The library is reference material, not a candidate list.
 
-1. Read this file.
-2. Before broad web search, check `library/README.md` → `TERRITORY_BANK.md` → relevant anchor papers/blogs.
-3. Enter exactly one track and read that track's `README.md` and canonical guide, if present.
-4. Read the relevant experiment/territory/observation package.
-5. Consult `failed/` or track-specific failed ledgers only for targeted anti-resurrection.
+## 5. Failed / Archive
 
-Do **not** start by trawling historical candidate directories or old search scratch.
+`failed/` is active anti-resurrection knowledge.
 
-## Repository policy
+`archive/` is read-only history. Old status labels inside it are historical only and never authorize new work.
 
-- No new `search_rounds/`-style process dumps.
-- No duplicate "current state" documents.
-- No candidate ID before candidate status is actually earned.
-- A claim mutation does not inherit authorization: if the scientific identity changes, return to Observation / Candidate evaluation before more compute.
-- Historical raw results, code, tests, and reproducibility assets are preserved.
-- If current status conflicts with an old package, **this README wins**.
+## Repository rules
+
+- top-level folders represent **stage/function**, never a topic;
+- no new `search_rounds/` process dumps;
+- no candidate ID during search or early exploration;
+- observations stay local to a workbench;
+- paused workbenches may remain as knowledge assets;
+- topic-specific experiments belong in `workbench/`, not in a search lane;
+- current state is determined by this README plus the relevant current-stage README.

@@ -1,11 +1,16 @@
-# candidates — Historical Execution Packages
+# Candidates — Current Only
 
-This directory is **not** the current candidate list.
+This directory contains **only current paper candidates** that have actually emerged from a workbench.
 
-It preserves historical registrations, code, results, audits, and postmortems for reproducibility. Old files inside a package may contain the status that was true at that time.
+Current count: **0**
 
-For current authorization:
-1. read the repository root `README.md`;
-2. then read the relevant track `README.md` / `SELECTED_TOPICS.md`.
+Create a candidate directory only after a workbench has produced enough evidence that:
+- the scientific question is clear;
+- the question is important independently of the hoped-for result;
+- the core finding/bottleneck is empirical rather than invented in advance;
+- nearest-prior ownership is defensible;
+- confirmation is feasible.
 
-Presence under `candidates/` never authorizes new experiments or resurrects a killed question.
+Historical candidate packages live under `../archive/candidates/`.
+
+Do not use this directory as an idea incubator. Incubation belongs in `../workbench/`.
