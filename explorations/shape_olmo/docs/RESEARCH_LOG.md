@@ -86,3 +86,31 @@ scale; the CPU pilots cover only 60 windows.
 stage (P0_RESULTS, stage ladder).
 None is named or registered. The next question has to use a tool other than token-type profiles,
 e.g. counterfactual context interventions on the same targets.
+
+## 2026-09-28 — lead candidate (not registered): does recurrence deliver order information to position-free attention?
+
+**Pressure.** "Position lives in the recurrence; attention can be position-free" is a live design
+principle. Jamba: no RoPE ("Mamba layers provide implicit position"). Kimi Linear: NoPE MLA,
+"delegating all positional information and recency bias to the KDA layers". Olmo Hybrid: DroPE,
+justified by "GDN layers carry implicit positional information". Evidence cited for it: aggregate
+parity / long-context benchmarks. In pure transformers, RNoPE (2501.18795) shows NoPE attention does
+content retrieval while RoPE supplies recency / position-aware selection. Whether recurrence
+supplies that second role to attention in a hybrid appears untested (search 2026-09-28: Jamba, Kimi
+Linear, DroPE, RNoPE, 2606.21249 retrieval heads, HOLA / HAM; none does it).
+
+**Observation so far (OLMo ladder, natural text).** Over the hybrid's DroPE stage, copy damage is
+within-class (gate unchanged) and scales with the number of competing candidate continuations;
+absent at stage-1 end; T (YaRN) improves on the same tokens.
+
+**Controlled test (running, `src/probe_order.py` v2).** `reassign`: `x` assigned n times with filler
+lines, query `assert x == '`, correct = last value, so order is needed. `keyed`: distinct variable
+per value, query one by name, so content suffices. 8 checkpoints: T / H × {S2 (RoPE), S3e, S3m, F}.
+v1 (random tokens, most-recent as correct) was dropped: even RoPE T sits at chance, nothing demands
+recency.
+
+**Kill criterion (fixed before v2 data).** If H-F (DroPE) ≈ H-S2 (RoPE) on `reassign` relative to
+`keyed` (difference in P(correct) within ±0.05 at n = 4, 8), recurrence delivers the needed order
+information and this candidate dies.
+**If it survives:** the decisive causal cell is a matched RoPE vs DroPE recalibration of a hybrid AND
+a transformer (Pile 2.7B Mamba-2-Attn and Transformer++, ~1B tokens each), plus cross-model
+replication on Kimi-Linear-48B-A3B (NoPE by design).
