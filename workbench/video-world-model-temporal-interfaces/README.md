@@ -12,6 +12,43 @@ The motivating literature contains several related pressures:
 
 These facts justify studying the territory. They do **not** establish that temporal compression is the bottleneck, that a phase effect exists, or that any particular interface needs a new method.
 
+## Execution ownership
+
+The default executor of this workbench is the **local research agent**.
+
+Once the territory is admitted to `workbench/`, the agent should not behave like a consultant that proposes one experiment and waits for a human to choose the next step. It should carry the research loop forward autonomously:
+
+> reproduce → inspect → perturb → analyze → search nearest prior → update the working explanation → choose the next highest-information experiment → repeat
+
+The agent is expected to:
+- read papers, repositories, issues, appendices, and current code rather than rely on summaries;
+- clone and run strong baselines;
+- diagnose implementation details;
+- design and execute the next experiment itself;
+- use failures as gradients rather than stopping after one null result;
+- continuously check whether an emerging observation is already owned by prior work;
+- strengthen or replace the working question when evidence changes;
+- keep the repository state current with code, results, and concise conclusions;
+- continue until either a genuinely defensible novel problem/idea emerges or the territory is exhausted enough to archive/kill.
+
+Human input is for occasional taste calibration, resource constraints, or new insight—not per-experiment approval.
+
+## Research target
+
+The purpose of exploration is not exploration for its own sake.
+
+The workbench should actively search for a **real, reproducible, novel research object** that can eventually crystallize into a candidate. A useful endpoint may be:
+- a previously unrecognized failure/bottleneck in a strong baseline;
+- a surprising dependency exposed by a simple perturbation;
+- a mistaken assumption shared by current methods;
+- a representation/interface limitation with downstream consequence;
+- a strong-baseline result that invalidates part of an existing narrative;
+- a minimal intervention that becomes natural only after the bottleneck is established.
+
+Novelty must be checked against current nearest prior continuously, not only after a result looks good.
+
+The agent should not stop merely because the initial temporal-compression intuition fails. It should use that failure to redirect within the broader temporal-interface territory, unless accumulated evidence shows the territory itself is no longer promising.
+
 ## Baseline residency
 
 Begin from strong open artifacts rather than from a new architecture.
