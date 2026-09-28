@@ -99,9 +99,10 @@ Do not use a preregistered continuation threshold to decide whether an empirical
 ## Reading order for future agents
 
 1. Read this file.
-2. Enter exactly one track and read that track's `README.md` and canonical guide, if present.
-3. Read the relevant experiment/territory/observation package.
-4. Consult `failed/` or track-specific failed ledgers only for targeted anti-resurrection.
+2. Before broad web search, check `library/README.md` → `TERRITORY_BANK.md` → relevant anchor papers/blogs.
+3. Enter exactly one track and read that track's `README.md` and canonical guide, if present.
+4. Read the relevant experiment/territory/observation package.
+5. Consult `failed/` or track-specific failed ledgers only for targeted anti-resurrection.
 
 Do **not** start by trawling historical candidate directories or old search scratch.
 
