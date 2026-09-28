@@ -210,3 +210,23 @@ hybrids; S5 SWA-128 RoPE/NoPE matched pair).
   least as well as RoPE hybrids (P(last) − P(first) at n = 4 within 0.05), the phenomenon is
   DroPE-retrofit-specific. The broad "position-free hybrids read stale state" framing is then
   dead, and what remains is a narrower DroPE finding.
+
+## 2026-09-28 — attention at the query over duplicate keys (`results/probe_attn_summary.txt`)
+
+Last-row attention recomputed from hooked q/k (validated vs eager, max |Δ| 6e-7). Share of attention
+over the n `x = '<v>'` value tokens on last / first occurrence, n = 4 (chance 0.25):
+- T (RoPE S2; YaRN F): every full layer leans last (head-mean ~0.31–0.38 last vs ~0.18–0.24 first).
+- H S2 (RoPE): every layer leans last; main retrieval layer L19 0.37 / 0.21; L23 best head 0.49 / 0.19.
+- H S3m (DroPE mid): early layers L7 / L11 already lean first (0.20 / 0.34, 0.22 / 0.31); late layers
+  still lean last (L19 best head 0.48 / 0.13).
+- H F (DroPE final): all layers lean first; L19 (highest value mass, 0.205) 0.22 / 0.33, best head
+  0.15 / 0.58; L23 best head 0.19 / 0.44.
+
+**Mechanism, directly observed:** RoPE gives attention a recency preference among matching keys.
+Across the DroPE stage, attention's own selection among duplicate keys flips from recency to
+primacy (early layers first, then the retrieval layers), and the final model's stale-first answers
+are produced by attention at the query. The recurrence does not supply the missing recency. Content
+keying is unaffected. This is consistent with the natural-text result (copy precision loss scales
+with the number of competing continuations).
+Open: is this a DroPE-retrofit property or a property of position-free hybrids generally? (Survey:
+Granite-4.0-H / Nemotron-H NoPE by design, vs Falcon-H1 / Bamba / Qwen3.5 RoPE; S5 matched pair.)

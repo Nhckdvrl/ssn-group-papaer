@@ -79,7 +79,7 @@ def main(path, tag):
         for it in items(tok):
             ids = tok(it["text"], add_special_tokens=False).input_ids
             x = torch.tensor(ids, device="cuda")[None]
-            lp = torch.log_softmax(model(input_ids=x, use_cache=False).logits[0, -1].float(), -1)
+            lp = torch.log_softmax(model(input_ids=x, attention_mask=torch.ones_like(x), use_cache=False).logits[0, -1].float(), -1)
             c = lp[it["cands"]].cpu().numpy()
             f.write(json.dumps(dict(task=it["task"], n=it["n"], gap=it["gap"], k=it["k"], correct=it["correct"],
                                     lp_cands=c.tolist(), mass=float(np.exp(c).sum()), len=len(ids))) + "\n")
