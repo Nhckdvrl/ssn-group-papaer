@@ -1,43 +1,43 @@
-# AI4Quant Research Topic Search
+# AI4Quant Research Territory
 
-> 独立于仓库原有 NLP / Agent / Vision 等选题线的 AI4Quant 研究选题工作区。
+Target conferences: ICML / ICLR / NeurIPS Main; language/agent objects can also be calibrated against ACL-family Main work.
 
-## 目标
+**Current selected candidate count = 0.**
 
-寻找能够形成 **ICML / ICLR / NeurIPS Main** 级 scientific contribution 的 AI4Quant 问题；若 scientific object 涉及 LLM / language / agents，则同时以 **ACL / EMNLP / NAACL Main / TACL** 校准。
+The two ideas previously marked `PILOT-AUTHORIZED` have been downgraded to **territories/hypotheses**. They are conceptually promising but have not yet earned candidate status through an independent empirical observation.
 
-这里不收录“AI 方法 + 金融数据集 → 更高 Sharpe”式项目，也不把普通 AI4Finance successor paper 当成默认生成器。
+Current territories:
+- `territories/state-coverage-vs-exposure-coverage.md`
+- `territories/forecast-skill-vs-structural-skill.md`
 
-核心搜索原则：
+Historical dead/held directions remain in:
+- `failed/FAILED_TOPICS.md`
 
-> 不问“AI 能给 quant 做什么”；分别理解 AI 当前真正不知道什么、quant 当前真正不知道什么，再寻找两者在哪里发生结构性碰撞。
+## AI4Quant-specific standard
 
-## 目录
+Finance must be load-bearing, not decoration. A good territory should use finance to provide:
+- a structural friction;
+- a hard oracle/intervention;
+- an identification setting ordinary AI benchmarks lack;
+- or a scientific unknown that modern AI makes newly answerable.
 
-- `selected/`：已经通过 ownership / novelty / feasibility / minimum-pilot 审查、允许真正开始实验的题。
-- `failed/`：本轮已经搜索、审计并明确 KILL / HOLD / 降级的题，防止后续重复复活。
-- `NEXT_SEARCH_HANDOFF.md`：下一轮继续找新题的交接文档；包含本轮流程复盘、好题标准、动态 search heartbeat 与可直接复制的下一轮开场指令。
+But a beautiful financial structure is not itself a candidate.
 
-## 当前状态
+## Process
 
-当前正式 `PILOT-AUTHORIZED`：
+> **territory → strong AI/quant baseline → natural/controlled observation → general scientific consequence → owner audit → candidate**
 
-1. **State Coverage ≠ Exposure Coverage** — *The Geometry of Data in Multivariate Foundation Models*
-2. **Forecast Skill ≠ Structural Skill** — *Do Multivariate Foundation Models Actually Learn Error-Correcting Structure?*
+Do not start from:
+- "known AI failure + finance dataset";
+- "finance problem + latest model";
+- a named `X ≠ Y` distinction;
+- a synthetic phase diagram before any real empirical pressure;
+- a method that needs the phenomenon to exist.
 
-每个正式题目单独注册在 `selected/<topic>/README.md` 中。
+A controlled synthetic world is useful after the quantity is clear, especially as an oracle. It should not be the sole source of the phenomenon, construct, and scientific importance.
 
-## 注册纪律
+## Current interpretation of the two territories
 
-一个题只有在下面条件基本过关后才能进入 `selected/`：
+Both former P1/P2 ideas have strong conceptual structure. That is exactly why they are being treated cautiously: previous failed pools showed that clean distinctions, interpretable positive/negative outcomes, and cheap synthetic pilots can produce paper-shaped hypotheses before a real object exists.
 
-- Mother question 在不知道方法名时仍然重要；
-- AI 与 finance 两边都 load-bearing；
-- 至少存在两个可信 competing answers；
-- positive / negative / nonlinear 结果都具有科学信息；
-- closest owner 不能直接写出我们的核心 scientific conclusion；
-- 存在低成本、decisive 的 E01；
-- 不依赖“模型赚钱了”才能成立；
-- 能清楚说明为什么是 2026 年现在才变得可答。
-
-其余题统一进入 `failed/FAILED_TOPICS.md`，标注 KILL / HOLD / SERIOUS-but-not-authorized 及原因。
+First earn an observation. Then decide whether either deserves candidate status.

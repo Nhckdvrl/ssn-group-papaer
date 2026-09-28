@@ -1,126 +1,114 @@
-# SSN Group Paper — Research Workflow
+# SSN Group Paper — Current Research State
 
-Target: ACL / EMNLP / NAACL Main.
+**Last reset:** 2026-09-28  
+**This README is the only global source of truth for current authorization.**
 
-The repository follows one simple decision chain:
+The repository has accumulated many historical candidates, pilots, search rounds, and failed lineages. Directory names such as `candidates/` or `good/`, and old status text inside historical packages, **do not authorize current work**.
 
-> **MOTHER-QUESTION VALUE → SEARCH → SELECT → EXECUTE → RE-SELECT when the claim changes → PAPER or KILL**
+## Current state
 
-The root documents have deliberately separate responsibilities. Do not combine them into one giant checklist.
+| track / object | current status | meaning |
+|---|---|---|
+| Global paper mainline | **NONE** | no project is currently approved as a paper mainline |
+| `ssn-taste/` | **SEARCH / TERRITORY MODE; selected = 0** | Sasano-taste search has no current candidate |
+| `chasing trends/` | **TERRITORY MODE; selected = 0** | hybrid-adaptation work is a territory, not a candidate |
+| `AI4Quant/` | **TERRITORY MODE; selected = 0** | the two former "selected" ideas are hypotheses/territories until an empirical observation earns promotion |
+| `observations/ROUTE_PREFERENCE_DECISION_CONSISTENCY.md` | **OBSERVATION** | strong empirical result; not yet an independent paper candidate |
+| `explorations/shape_olmo/` | **PAUSED EXPLORATION / KNOWLEDGE ASSET** | useful empirical knowledge, no registered RQ |
+| `failed/` | **HISTORICAL ANTI-RESURRECTION** | durable kill evidence only |
+| `candidates/`, `good/` | **HISTORICAL EXECUTION PACKAGES** | retained for reproducibility; not current authorization |
 
-## 0. MOTHER-QUESTION VALUE — decide whether the question is worth answering at all
+## The research process
 
-[MOTHER_QUESTION_GATE.md](MOTHER_QUESTION_GATE.md)
+The repository no longer treats a paper-shaped question as the default unit of search.
 
-This gate is mandatory **before** owner search, novelty audit, mechanism design, pilot planning, or serious compute.
+> **TERRITORY → STRONG BASELINE → EXPLORATION → STABLE OBSERVATION → CANDIDATE → CONFIRMATION → MECHANISM / METHOD → PAPER**
 
-Core question:
+### 1. Territory
 
-> **If the strongest plausible result were already known tomorrow, why would a strong Main-paper reader care today?**
+A territory is a scientific object worth learning deeply: a model family, training process, failure surface, architecture, or mature scientific problem.
 
-A technically open question is not automatically a valuable question. A clean experiment does not create scientific pressure.
+At this stage it is normal to:
+- read lineages and code;
+- reproduce strong baselines;
+- inspect checkpoints and failure slices;
+- run exploratory ablations;
+- change hypotheses freely.
 
-Default NO-GO shape:
+At this stage do **not** create a paper title, candidate ID, mother question, "both outcomes are interesting" story, or Main-level growth plan.
 
-> **old problem → modern model is better → explain why it got better**
+The only investment question is:
 
-unless the explanation exposes a current failure, hidden trade-off, still-load-bearing false belief, bottleneck migration, or a general training/computational law whose importance survives independently of the historical problem.
+> Are we becoming materially more knowledgeable about this object?
 
-This gate was added after K194/L36, where increasingly strong experiments could not rescue a mother question whose present-day scientific pressure was too weak.
+### 2. Observation
 
-## 1. SEARCH — find the right kind of scientific question
+An observation is a concrete pattern we have actually seen.
 
-[RESEARCH_TOPIC_SEARCH.md](RESEARCH_TOPIC_SEARCH.md)
+Before it can support a candidate, require:
+- it is not a one-off point;
+- it survives a fresh seed, natural subset, or matched setting when feasible;
+- a simple baseline / parser / prompt / generic-capability explanation does not already account for it;
+- the observation is stated independently of the hoped-for paper story.
 
-Answers:
+An investment threshold is not the same as a scientific null. Record both separately.
 
-- what kinds of questions we currently want;
-- what search spaces are deprioritized;
-- how to mine strong papers for topic provenance;
-- anti-resurrection before deep search;
-- how to turn a hook into a rough lead;
-- SAME-QUANTITY checks and bounded owner search.
+### 3. Candidate
 
-It does **not** authorize compute.
+A candidate is earned only when a stable observation or independently strong empirical pressure forces a worthwhile scientific question.
 
-Current search taste strongly prioritizes:
+A candidate must have:
+- an important belief or assumption that the observation changes;
+- a nearest-prior boundary that is not merely a new model/dataset/cell;
+- a feasible confirmation experiment with enough resolution;
+- a natural path to a substantial contribution without rescuing the story after each result.
 
-> stable anomaly → mechanism; training/post-training dynamics; reasoning computation; representation → causal use; old empirical laws under modern model regimes.
+Only here should the repository create a candidate ID and freeze a claim.
 
-It strongly deprioritizes data/benchmark/RAG/retrieval/metric/annotation/workflow topics unless an exceptional scientific question clearly transcends that framing.
+### 4. Mechanism / method
 
-## 2. PLAYBOOK — optional generators
+For method-shaped work, never infer a method from a successful diagnostic.
 
-[TOPIC_SEARCH_PLAYBOOK.md](TOPIC_SEARCH_PLAYBOOK.md)
+Require the full chain:
 
-A library of ways a question may originate.
+> **Failure → Bottleneck → Controllable action → Downstream outcome**
 
-Primary generators are model-computation/mechanism oriented. Data/evaluation/workflow generators remain available only as secondary options.
+Each arrow needs independent evidence. CT03 is the canonical warning: a high-quality counterfactual routing signal did not imply that the supervision objective controlled the Top-K decision actually executed.
 
-The playbook generates leads; it never approves them.
+## Discovery vs confirmation
 
-## 3. SELECT — decide whether the question deserves compute
+**Discovery** is allowed to be exploratory. Look at curves, slices, stages, failure gradients, simple explanations, and counterexamples.
 
-[RESEARCH_TOPIC_SELECTION.md](RESEARCH_TOPIC_SELECTION.md)
+**Confirmation** begins only after a claim exists. Then freeze the metric, held-out set, controls, stopping rule, and statistical test.
 
-Answers:
+Do not use a preregistered continuation threshold to decide whether an empirical effect "exists"; use it only to decide whether the project deserves more investment.
 
-- is the RQ natural and consequential;
-- is the mother phenomenon credible;
-- is the question already owned;
-- does the evidence identify the intended quantity;
-- does the strongest successful result support a Main-level inference;
-- are plausible outcomes interpreted before seeing results;
-- can the scientifically important effect be resolved within the compute/noise budget;
-- is there a natural Main-level growth path.
+## Failure-derived rules that survive the cleanup
 
-Selection explicitly separates two evidence regimes:
+1. **Conceptual distinction is not empirical pressure.** `A ≠ B` is not a paper until a real system forces the distinction.
+2. **Prior A + Prior B is usually not a new parent question.** Most historical kills were ownership/crowding failures.
+3. **Gold must equal the claimed estimand.** A high-quality label can still measure the wrong quantity.
+4. **Simple controls come before elaborate interpretation.** Object-specific failures often collapse to generic capability or evaluator failures.
+5. **Training phenomena must be stable enough to be scientific objects.** If reasonable budget/family/recipe changes rewrite the explanation, avoid turning one trajectory into a law.
+6. **Mother phenomenon and identifying intervention must coexist in the same feasible regime.**
+7. **Synthetic tasks diagnose; they should not simultaneously create the phenomenon, define the construct, provide the gold, and justify the interpretation.**
+8. **A healthy project gets simpler as evidence accumulates.** If every repair adds another conditional branch, stop.
+9. **Cheap E01 is an efficiency property, not a topic-quality criterion.**
+10. **Failure should accumulate expertise, not only anti-resurrection entries.**
 
-- **mechanism/model-computation:** observable + causal estimand + discriminating intervention + inference bridge;
-- **external-task/data:** DIRECT GOLD + independent unit + construct validity.
+## Reading order for future agents
 
-This prevents mechanism papers from being forced into an annotation template while preserving strict construct validity.
+1. Read this file.
+2. Enter exactly one track and read that track's `README.md` and canonical guide, if present.
+3. Read the relevant experiment/territory/observation package.
+4. Consult `failed/` or track-specific failed ledgers only for targeted anti-resurrection.
 
-## 4. EXECUTE — develop an authorized contribution
+Do **not** start by trawling historical candidate directories or old search scratch.
 
-[RESEARCH_EXECUTION.md](RESEARCH_EXECUTION.md)
+## Repository policy
 
-Answers:
-
-- what each experiment must establish;
-- how to track claim → experiment → result → conclusion;
-- how to refresh resolution/noise estimates before expensive runs;
-- how to distinguish phenotype, representation and causal control;
-- when a claim mutation forces re-selection;
-- how to calibrate depth/breadth against strong Main work;
-- when to hold, reconstruct, archive, or prepare a manuscript.
-
-Candidate-specific retrospectives belong in candidate/archive packages, not in the root workflow. Root execution keeps only durable transferable lessons.
-
-## 5. Current state and anti-resurrection
-
-[CURRENT_SEARCH.md](CURRENT_SEARCH.md) is the dated portfolio and current taste.
-
-[failed/KILLED_LEDGER.md](failed/KILLED_LEDGER.md) and continuation/archive records under `failed/` are the authoritative anti-resurrection record.
-
-Recent `search_rounds/` preserve investigated dead hooks so later agents do not repeatedly rediscover them.
-
-A new model, dataset, prompt, domain, narrower mechanism, or prettier diagnostic does not reopen a killed scientific parent.
-
-## 6. Repository practice
-
-Read the current candidate’s latest README/status before action. Directory location is not authorization.
-
-Ordinary project execution edits only the selected project. Root workflow maintenance requires explicit scope.
-
-Preserve concurrent work. Keep large regenerable artifacts outside git when appropriate, with provenance/reproduction notes. Inspect outgoing history before pushing.
-
----
-
-## Core philosophy
-
-> **Easy to understand, hard to answer.**
->
-> **Worth asking first. Question second. Observation first. Method last.**
-
-The workflow is strict because we want Main-level questions, but strictness should filter bad realizations of good science — not steer the search toward whichever topic happens to have the cleanest dataset or the prettiest pilot.
+- No new `search_rounds/`-style process dumps.
+- No duplicate "current state" documents.
+- No candidate ID before candidate status is actually earned.
+- Historical raw results, code, tests, and reproducibility assets are preserved.
+- If current status conflicts with an old package, **this README wins**.

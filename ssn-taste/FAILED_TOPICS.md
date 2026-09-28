@@ -1,289 +1,61 @@
 # Failed Topics — Sasano-Taste Search
 
-Started: 2026-09-16
+This is the compact anti-resurrection record for the cancelled S01–S12 pool.
 
-Purpose: keep a durable record of questions that were seriously considered but rejected, so later search rounds do not accidentally repackage and revive them.
+The previous round-by-round ledgers, postmortem files, and individual registration pages were removed from the current tree because they duplicated state and encouraged future agents to reason from dead paper shapes. Exact history remains in Git; executed evidence remains under `experiments/`.
 
-## Logging rule
+## Pool-level failure
 
-For every rejected topic, record:
+The pool repeatedly promoted **conceptually elegant distinctions** before establishing a natural, stable empirical object.
 
-1. **Question** — the scientific question in plain language.
-2. **Why it initially looked promising** — the evidence or research pressure that made it worth checking.
-3. **Nearest prior work** — the papers most directly overlapping the question.
-4. **Failure reason** — especially whether the nearest-prior difference is too small, the question is already answered, the framing is benchmark-centric, the required data is impractical, or the experiment cannot cleanly answer the question.
-5. **What would be required to revive it** — only concrete new evidence can reopen a topic.
+The recurring pattern was:
 
-Do **not** reject a topic merely because the answer is uncertain, the first hypothesis may be false, the method is simple, or the work is not mechanism-heavy.
+> theoretical distinction → paper-shaped RQ → custom manipulation/readout → clean-looking pilot
 
----
+rather than:
 
-## Current-round failures
+> territory → strong baseline → observed phenomenon → question forced by the phenomenon.
 
-### F01 — Is post-training uncertainty lost, or merely unreadable?
+This caused four recurrent failure classes.
 
-**Question.** After instruction/alignment/reasoning post-training makes an LLM overconfident, is uncertainty information actually erased from the model, or does it remain internally represented but fail to reach the model's explicit confidence/readout?
+### 1. Construct/instrument failure
 
-**Why it initially looked promising.** This has a very Sasano-compatible structure: a clear empirical paradox (post-trained models become overconfident) followed by source/readout separation. It is easy to explain, requires no difficult dataset construction, and could in principle be tested with base-vs-post-trained checkpoints, probes, and controlled interventions.
+**S11 — Value vs Measurement Precision.**  
+E01–E03 showed that the intended downstream threshold/readout was not stable enough to support the registered interpretation even when precision semantics were made explicit. The current route was killed; the broad mother question was not proven false.
 
-**Nearest prior work.**
-- Miao & Ungar (2026), *Closing the Confidence-Faithfulness Gap in Large Language Models* (arXiv:2603.25052): explicitly shows that internal accuracy/calibration and verbalized confidence are separable/roughly orthogonal signals, describes the problem as a readout failure, and uses activation probing/steering.
-- Tan et al. (ACL 2026), *BaseCal: Unsupervised Confidence Calibration via Base Model Signals*: shows base models can retain better calibration than their post-trained counterparts and learns a projection from post-trained hidden states back into the base-model representation space to recover calibrated confidence.
-- Slobodkin et al. (EMNLP 2023), *The Curious Case of Hallucinatory (Un)answerability*: already shows that hidden states can encode answerability even when the model produces overconfident hallucinations.
+**S12 — Definition vs World Fact.**  
+Natural discourse-role framing did not reliably manipulate the intended status/scope distinction. Stronger explicit wording risked becoming the operative variable itself, and one readout remained question-form dependent. Current design killed; broader question unresolved.
 
-**Failure reason.** The central distinction — uncertainty/correctness information remaining internally available while the surface confidence/readout is wrong — is already directly demonstrated. Re-running it on newer reasoning models or another alignment recipe would be exactly the kind of “old question + newer models” novelty that Sasano has warned against. The remaining space would need a substantially different causal question, not a new model family or benchmark.
+**Lesson:** a theoretically precise distinction is not automatically a manipulable model variable. Synthetic designs should diagnose an existing object, not create the object, construct, gold, and interpretation simultaneously.
 
-**What would be required to revive it.** Only a genuinely different premise that makes existing explanations diverge, e.g. a specific post-training operation predicted to destroy the latent signal rather than merely alter readout, with evidence that existing work did not test that distinction. Otherwise do not revive.
+### 2. Recipe-biography failure
 
-### F02 — Are message/turn boundaries semantically neutral?
+**S03 — From Document End to Task Done.**  
+A real goal-relative stopping phenomenon existed, but the developmental explanation changed with training budget and model family; successive repairs added dependencies rather than removing them.
 
-**Question.** If the lexical information and order are held fixed, does presenting the same content as one context block versus multiple native chat turns systematically change what an LLM infers or does? If so, are message/role boundaries themselves part of the learned computation rather than mere serialization metadata?
+**S09 — Memory Accessibility vs Stability.**  
+"Memory age/history" bundled optimizer path, dose, spacing, intervening gradients, parameter state, and recency. A positive result would immediately require a recipe matrix to know what the variable meant.
 
-**Why it initially looked promising.** The question is unusually clean and Sato-like: chat models are ultimately fed token sequences, yet semantically equivalent histories can be segmented into different role/message structures. A matched-content intervention is cheap, easy to explain, and could isolate an overlooked source of behavior.
+**Lesson:** before mechanizing training dynamics, establish that the phenomenon has an answer stable enough to be a scientific object.
 
-**Nearest prior work.**
-- Liu et al. (ICML 2026), *On Effectiveness and Efficiency of Agentic Tool-calling and RL Training*: directly compares native multi-turn serialization against putting the full interaction history into one context and reports material tool-use differences, while also analyzing system prompts and retained thinking history.
-- *ChatInject: Abusing Chat Templates for Prompt Injection in LLM Agents* (ICLR 2026): demonstrates that native role/template delimiters materially change how models interpret authority and instructions.
-- Existing chat-template analyses already show that the exact serialization/control-token scheme can materially affect downstream behavior.
+### 3. Consequence/width failure
 
-**Failure reason.** The broad scientific parent — message/role serialization is not behaviorally neutral — is already empirically established. A new reasoning task, model family, or a cleaner same-token-count control would be a refinement, not the clear nearest-prior difference Sasano expects.
+**S05 — When Does Reading Become Learning?**  
+The executable contrast reduced to response-relevant prompt information leaving a stronger persistent trace than irrelevant information, a result too easily explained by target-relevant gradient pressure and too narrow relative to the broad mother question.
 
-**What would be required to revive it.** A qualitatively different quantity beyond generic performance/authority sensitivity, with a theory predicting a specific boundary-dependent computation not tested by existing multi-turn/chat-template work. Otherwise do not revive.
+**S08 — Shared Metacognitive Control.**  
+A clean double dissociation could still compress to "different decisions use different internal controllers", an architectural detail without enough scientific consequence.
 
-### F03 — API backward compatibility ≠ agent behavioral compatibility
+**Lesson:** clean causal identification does not create Main-level importance.
 
-**Question.** If an API/tool evolves only by adding an optional parameter while preserving all old calls, does an LLM agent nevertheless change its behavior on old tasks because the new schema itself changes the model input?
+### 4. Pool-admission failure
 
-**Why it initially looked promising.** This is a clean changed-regime question. In ordinary software engineering, adding a defaulted optional parameter is normally treated as backward-compatible. An LLM caller is unusual because it re-reads the interface description at inference time; therefore a software-compatible change could still alter planning. The experiment would be cheap: hold backend, task, model, and old call semantics fixed, and change only the additive optional field.
+**S04, S06, S07, S10** were cancelled in the pool reset without treating their mother questions as empirically falsified. They had been admitted under the same flawed logic: clean conceptual worlds and hypothetical identifiability were overweighted before a naturally observed phenomenon existed.
 
-**Nearest prior work.**
-- Liu et al. (2026), *MCPEvol-Bench: Benchmarking LLM Agent Performance Across Dynamic Evolutions of MCP Servers* (arXiv:2607.14642): explicitly studies evolving MCP interfaces with 11 mutation operators. Its PARAM-level **Flexible Expansion** operator adds optional parameters, requires existing calls to remain backward-compatible, and updates implementations to handle the new parameters gracefully, including via defaults. The benchmark then measures agent task-solving performance across evolved server versions.
-- Faghih et al. (EMNLP 2025 Main), *Tool Preferences in Agentic LLMs are Unreliable*: controlled edits to exposed tool descriptions substantially alter tool selection, establishing that tool-interface metadata itself can change agent behavior.
-- 2026 schema/tool-drift work further treats interface evolution as an explicit robustness object.
+**S01/S02 and other early pool material** remain historical only. Do not reuse their shapes as positive examples.
 
-**Failure reason.** The proposed core intervention — a backward-compatible extension of a tool interface with optional parameters — is already an explicit evolution operator in MCPEvol-Bench, and interface metadata sensitivity is independently established. Isolating just this operator more cleanly would improve causal attribution but would still be reviewer-compressible to a controlled subcase of an already occupied schema-evolution problem. That is too close to the “cleaner experiment on an existing parent” pattern Sasano rejected in prior topic discussions.
+## Durable rules
 
-**What would be required to revive it.** A different scientific quantity that is not generic robustness to schema evolution — for example, an independently motivated semantic law about omitted arguments versus resolved runtime actions that yields predictions not captured by interface-drift performance. Merely adding defaults, changing model families, or using better controls is insufficient.
-
-### F04 — Same timeout, different action semantics
-
-**Question.** Does an LLM agent change its recovery decision after an ambiguous timeout according to whether the preceding action was idempotent/read-only versus externally effectful or non-idempotent, where blind retry can duplicate a real-world action?
-
-**Why it initially looked promising.** The observation is simple and operationally important: the same missing response can imply radically different safe continuations depending on action semantics. It allows a matched intervention with no large dataset and seemed more scientific than generic error-recovery benchmarking because the target quantity is the semantics of the action, not error frequency.
-
-**Nearest prior work.**
-- Wang (2026), *Callability Is Not Operability: Controlled Interface Interventions for LLM Agents* (arXiv:2608.23628): directly studies operational uncertainty where an external effect may commit but its response is lost, making committed and uncommitted states observationally indistinguishable even though they require different continuation actions. It evaluates interface mechanisms including execution lifecycle/recovery, explicit external-effect semantics, and postcondition verification while holding task/backend/state/failure/agent/model fixed.
-- Adjacent 2026 agent-safety/reliability work explicitly distinguishes action classes such as idempotent, reversible, compensable, and irreversible, and studies when agents should abstain or verify before acting/retrying.
-
-**Failure reason.** The load-bearing scenario — lost response after a potentially committed external effect and the need for different safe recovery — is already the motivating example and controlled object of a 2026 study. Rephrasing it as “does the model understand idempotency?” would mainly move responsibility from the interface to the model while retaining the same operational parent. That is too close for a Sasano-style novelty bar.
-
-**What would be required to revive it.** A distinct action-semantic computation whose predictions cannot be reduced to operability/recovery under ambiguous external effects, and that has an independently motivated reason to be studied inside the model rather than at the interface layer.
-
-### F05 — Does standard SFT secretly weight examples by response length?
-
-**Question.** Because standard SFT aggregates token-level cross-entropy, does a demonstration with a longer assistant response exert systematically more influence than a shorter demonstration even when the dataset treats them as one example each? In other words, is response length an implicit sample weight?
-
-**Why it initially looked promising.** The question is simple, mechanistically grounded, cheap to test, and directly relevant to modern post-training. Common implementations explicitly distinguish token-level global averaging from per-sequence/per-sample averaging, so the proposed quantity is real rather than rhetorical. A clean test could hold example count and task difficulty fixed while changing only loss aggregation.
-
-**Nearest prior work.**
-- NVIDIA (2026), *Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*: reports that single-stage SFT produced marked degradation on long-input/short-output scenarios. It explicitly contrasts a global token-average objective with a per-conversation normalized objective, states that the latter prevents long outputs from dominating the loss, and uses a two-stage SFT procedure to restore the affected behavior.
-- Current large-scale training frameworks such as OpenRLHF expose token-level versus per-sample aggregation as explicit loss modes, confirming that these objectives give different weighting to variable-length responses.
-- Recent SFT-objective work such as DFT/CADFT already treats token- and sample-level gradient weighting as central optimization variables, further reducing room for a generic “hidden weighting” parent.
-
-**Failure reason.** The core scientific observation is already explicit in a 2026 large-model training report: token-global SFT makes long outputs dominate and per-conversation normalization is used specifically to counter this effect. A cleaner controlled paper could characterize the phenomenon more systematically, but its headline would compress to an already identified effect plus stronger analysis. Under the Sasano novelty requirement, that is not enough.
-
-**What would be required to revive it.** A distinct consequence of aggregation that is not reducible to long-output dominance and is predicted by an independent scientific quantity. Merely testing more models, more length distributions, or token-vs-sample normalization more cleanly does not reopen the parent.
-
-### F06 — Omission ≠ Neutrality / effective default semantics in tool calls
-
-**Question.** When an LLM agent omits an optional tool argument, does it understand that omission resolves to a concrete runtime default, and will it explicitly override that default when the user's goal requires a different value?
-
-**Why it initially looked promising.** No direct owner was found for the exact `default-consequence reasoning` contrast. The manipulation is cheap and clean, and the distinction between a surface call and the effective executed call is real. It initially appeared to offer a simple Sasano-compatible question without a large benchmark or expensive training.
-
-**Nearest Main-level neighborhood.**
-- Zhang et al. (EMNLP 2025 Main), *AskToAct: Enhancing LLMs Tool Use via Self-Correcting Clarification*: makes incomplete/ambiguous user intent in tool calling a central problem, explicitly treating tool parameters as representations of user intent and training models to recover or clarify missing critical parameters.
-- Wang et al. (EMNLP 2025 Main), *Learning to Ask: When LLM Agents Meet Unclear Instruction*: studies imperfect user instructions and finds agents often arbitrarily generate missing arguments, motivating clarification rather than unsafe completion.
-- Broader Main-level tool-use work already owns argument instantiation, intent interpretation, tool-schema comprehension, and clarification under underspecification.
-- BFCL/MultiCAT-style evaluation additionally treats omitted optional arguments and explicit schema-default values as execution-equivalent when appropriate, so defaults already appear as an evaluation subcase even though their consequences are not the main RQ.
-
-**Failure reason — Main-scope / Related-Work width.** The exact experiment remains relatively novel, but novelty at the exact-cell level is not enough. At the abstraction level used by nearby EMNLP Main work, a reviewer can reasonably compress this idea to **a special case of underspecified tool intent / argument completion where the missing argument has a default value**. Broadening the paper to `effective action semantics` would be rhetorical unless additional independent phenomena establish that broader parent; keeping it honest leaves an API-default corner case one level narrower than the Main scientific neighborhood. Therefore S01 fails the required width audit even though the exact contrast is not directly owned.
-
-**What would be required to revive it.** Independent evidence for a broader, coherent scientific object in which surface actions systematically diverge from executed action semantics across multiple non-arbitrary mechanisms (not merely optional defaults), with a common prediction that is not already owned by tool clarification/schema-comprehension work. Do not revive by adding more APIs, default types, or benchmark scale.
-
-
-
-
-### F07 — When does “not observed” justify “not there”?
-
-**Question.** When the same target is not observed, does an LLM distinguish a search/record that would almost certainly have exposed the target from one that could easily have missed it, and therefore distinguish justified absence from mere non-observation?
-
-**Why it initially looked promising.** The mother question is simple and consequence-bearing: “not found” is evidence of absence only when the observation process adequately covers what was being searched. Modern LLM evaluation allows a clean paired intervention that holds the query and observed facts fixed while changing only the coverage/completeness of the evidence source. The project would not depend on discovering an anomaly: complete-coverage and partial-coverage worlds make different normative predictions by construction.
-
-**Nearest prior work.**
-- Min et al. (2026), *When Absence Is Evidence: Evaluating Completeness-Sensitive Negative Reasoning in Large Language Models* (arXiv:2608.04591), introduces CROWN-QA. Its controlled paired core explicitly fixes the question and observed facts while varying only query-relative coverage, and evaluates whether models distinguish Certified-Negative from Unknown.
-- Adjacent open-world / argument-from-ignorance work already treats the invalid move from missing evidence to a negative conclusion as a first-class reasoning problem.
-
-**Failure reason — same decisive unknown already owned.** The nearest prior does not merely share a theme. Its central identification contrast is effectively the proposed experiment: same query + same observed facts + different completeness of coverage. Any surviving version based on a different record type, domain, prompt, or model would be a condition change inside an already occupied mother question.
-
-**What would be required to revive it.** A genuinely different scientific object in which observation-process information creates predictions that CROWN-QA’s completeness-sensitive closure contrast cannot express. Do not revive by changing domains, using more natural documents, or replacing “coverage” with a synonymous notion such as search reliability.
-
-### F08 — Does prosody change what an assistant does, not just what it hears?
-
-**Question.** Holding the words fixed, when speech prosody carries task-relevant information, does an audio-capable language model propagate that information into its downstream decision/action, or does it merely perceive the acoustic cue without using it behaviorally?
-
-**Why it initially looked promising.** Native audio models create a genuinely new within-agent intervention unavailable to text-only systems: lexical content can be held fixed while acoustic evidence changes. The why-care is immediate for spoken assistants, and the decisive experiment could compare transcript-only, raw-audio, and explicit-state conditions with exact task outcomes rather than an emotion classifier or LLM judge.
-
-**Nearest prior work.**
-- Liu et al. (2026), *Hear2Act: Benchmarking When Prosody Should Change What an Assistant Does* (arXiv:2608.19515), keeps task and user needs fixed while varying whether the same concern is conveyed lexically or primarily through prosody, then evaluates transcript, audio, inferred concern-state, and next-action selection.
-- Recent audio-LLM work such as *Do Audio LLMs Really LISTEN, or Just Transcribe?* and *Beyond Transcription* already makes lexical-vs-acoustic information use and paralinguistic competence an active 2026 research lineage.
-
-**Failure reason — mother question directly occupied and lineage rapidly crowding.** Hear2Act already asks essentially the same knowledge question and includes the key perception-versus-action decomposition. Narrowing to confidence, hesitation, urgency, or another prosodic cue would therefore be exact-cell novelty rather than a new parent. The surrounding audio-LLM literature also makes this a fast-moving lineage in which small cue substitutions are especially weak.
-
-**What would be required to revive it.** A different causal question about speech whose major possible worlds are not reducible to “acoustic information is perceived but fails to propagate into downstream action.” Do not revive by swapping the prosodic cue, task domain, audio model, or benchmark scale.
-
-### F09 — Does knowing the task before reading change how the model stores what it reads?
-
-**Question.** Given the same eventual information and the same final task, does telling an autoregressive LM what it will need *before* it reads the material cause task-relevant properties to be encoded eagerly into the material’s intermediate states, whereas revealing the task only afterward forces on-demand retrieval/filtering?
-
-**Why it initially looked promising.** This looked like a clean changed-order identification rather than anomaly hunting. In a causal transformer, a task instruction shown before an item can affect that item’s hidden state, while an instruction shown afterward cannot retroactively rewrite it. Thus task-before versus task-after can hold the eventual information set fixed while separating proactive task-conditioned encoding from later query-time selection.
-
-**Nearest prior work.**
-- Sharma et al. (ICLR 2026), *LLMs Process Lists With General Filter Heads* (arXiv:2510.26784), directly compares question-before-list and question-after-list settings.
-- The paper finds two causal implementations: with the question first, models eagerly evaluate each item and store an `is_match` flag in item latents; with the question afterward, they rely more on query-time filter heads. The eager-flag account is validated using causal mediation/activation interventions.
-
-**Failure reason — the proposed scientific worlds have already been causally separated.** This is not merely a neighboring “list processing” result. The prior already owns the decisive contrast that motivated the seed: knowing what to look for in advance changes the computation from later filtering toward eager per-item state marking. Moving from lists to passages, longer contexts, or another selection task would be a scale/domain extension unless a different independent mother question were established first.
-
-**What would be required to revive it.** Evidence for a broader task-conditioned reading phenomenon whose central prediction cannot be explained by the already demonstrated eager-vs-lazy filtering computation, together with a direct intervention at that broader level. Do not revive by lengthening the document, adding more predicates, or substituting a different retrieval benchmark.
-
-
-
-
-### F10 — Rare ≠ Impossible: Does Low Likelihood Encode Constraint Violation?
-
-**Question.** When two events are both assigned very low probability, does a language model distinguish an event that is merely unusual from one that is impossible under the stated world constraints?
-
-**Why it initially looked promising.** Recent work on grammaticality versus likelihood highlighted a broad load-bearing assumption: low model probability is often interpreted as evidence that the model judges an input to violate a rule or constraint, even though rarity and impossibility are different quantities. The mother question is easy to explain, has analytic controlled worlds, and does not depend on discovering a new anomaly.
-
-**Nearest prior work.**
-- *Not quite Sherlock Holmes: Language model predictions do not reliably differentiate impossible from improbable events* (Findings of ACL 2025) directly studies the same distinction, separating possibility from typicality and contextual relatedness.
-- Adjacent work on "shades of zero" likewise explicitly distinguishes improbable, impossible, and inconceivable events in language-model judgments.
-
-**Failure reason — same mother question already directly owned.** The nearest prior is not merely about commonsense plausibility. It explicitly asks whether language-model predictions distinguish impossible from improbable events and decomposes the relevant confounds. A new controlled world, newer model, probability readout, or mechanistic follow-up would therefore be a refinement of an already answered parent rather than a new decisive unknown.
-
-**What would be required to revive it.** A different scientific quantity whose competing explanations cannot be reduced to possibility-versus-probability discrimination. Do not revive via synthetic worlds, stronger models, hidden-state probes, or by replacing “impossible” with another low-probability constraint category.
-
-### F11 — Remembering Content ≠ Remembering Its Source
-
-**Question.** When a model retains or uses a proposition from context, does it preserve the proposition together with its provenance — who said it, whether it was quoted/retrieved/generated, and therefore how it should later be trusted — or can content survive after source identity has effectively detached?
-
-**Why it initially looked promising.** Downstream reasoning should not treat a direct observation, a quotation, a rumor, and the model's own speculation as interchangeable merely because their propositional content is similar. Modern dialogue and retrieval settings allow content and source to be manipulated independently, suggesting a clean source-binding question with real consequences for later inference.
-
-**Nearest prior work.**
-- Quote-attribution work already studies the explicit "who said what" binding problem.
-- ACL 2026 work on speaker-attributed reasoning reports that models can capture what was said while failing on who said it, directly exposing content/source dissociation.
-- ACL 2026 *GenProve* decomposes generation-time provenance into quotation, compression, and inference, while adjacent work studies preferences between retrieved and generated contexts under conflict.
-
-**Failure reason — reviewer-compressible to an occupied speaker/source-attribution parent.** The broad content-versus-provenance dissociation is already an active object, including evidence that semantic content can be retained while speaker/source attribution fails. Turning this into a hidden-state or causal-binding study would default to the prohibited pattern "known behavior -> mechanism why". Narrowing to rumor versus quotation, retrieved versus self-generated, or another provenance type would be an exact source-condition variant.
-
-**What would be required to revive it.** An independently important scientific question in which provenance is only the intervention and existing speaker/source-attribution results make distinct predictions. Do not revive merely by moving to long context, adding source types, or searching for a provenance vector/circuit.
-
-### F12 — Does Raw Example Access Substitute for Abstract Task Formation?
-
-**Question.** During in-context learning, does continued access to the raw demonstrations reduce the need for a model to form a reusable abstract task state, such that retrieval from examples and task abstraction act as alternative computational strategies?
-
-**Why it initially looked promising.** Strong recent work suggests two relevant facts: resource constraints can qualitatively change learned/maintained representations, and models can encode information in context without reliably deploying it later. This creates a potentially important pressure against the usual assumption that more direct access to demonstrations is unconditionally helpful. The interesting claim would be about a trade-off between raw retrieval access and abstraction formation, not about long-context accuracy.
-
-**Nearest prior work.**
-- *In-Context Learning Creates Task Vectors* (EMNLP Findings 2023) shows that much of an ICL-learned function can be compressed into a task vector and used without the full demonstrations.
-- ACL 2026 work on local/global task vectors and related task-representation methods further studies when demonstrations are compressible into reusable latent task representations.
-
-**Failure reason — no clean decisive intervention now, and the clean sub-question is already occupied.** Removing demonstrations only at query time tests whether an already formed task representation is sufficient; task-vector work already owns that clean object. To test the stronger mother question — whether *availability of raw examples during formation* suppresses abstraction — one must alter attention/memory access while demonstrations are processed. On an off-the-shelf pretrained transformer, introducing local/sliding attention or another access bottleneck is itself a strong architectural/distribution intervention, so the causal variable becomes confounded with an unnatural computation regime. The project therefore fails the Direct-Attack Gate even though the mother question is interesting.
-
-**What would be required to revive it.** A natural within-model intervention that changes reliance on raw demonstrations during representation formation without changing the model architecture/distribution in a way that can itself explain the result. Do not revive by merely deleting demonstrations at readout time, lengthening context, adding task-vector probes, or training a new architecture whose recipe becomes the causal variable.
-
-
-
-
-### F13 — Can Naming Turn an Encoded Concept into a Reusable Handle?
-
-**Question.** When a model has already induced a genuinely novel concept from context, does assigning that concept an arbitrary nonce name make the same information substantially easier to reuse compositionally in new situations, even though the name contributes no semantic content?
-
-**Why it initially looked promising.** ACL 2026 work shows a consequential representation-use gap: models can form latent representations of newly introduced semantics yet fail to deploy them flexibly. This suggested a clean possible bridge between representation and use: a stable symbol might provide an addressable handle for an already represented concept. A within-agent test could hold the demonstrated concept fixed and vary only whether a random nonce label is consistently bound to it, then test novel recombination rather than recall.
-
-**Nearest prior work.**
-- Shahgir et al. (COLM 2026), *VLMs Need Words: Vision Language Models Ignore Visual Detail In Favor of Semantic Anchors*, directly finds that VLMs reason much better about nameable than unnameable visual entities and, critically, that teaching completely arbitrary names for previously unknown entities improves downstream visual correspondence.
-- *Symbol Tuning* and related symbolic-label ICL work already show that arbitrary symbols can become usable task mappings and can support transfer to unseen in-context tasks.
-
-**Failure reason — the proposed scientific effect is already directly instantiated.** The strongest intended headline was that a semantically empty name can act as an operational handle for an otherwise difficult-to-use concept. *VLMs Need Words* already demonstrates precisely that phenomenon in a natural changed-regime setting: arbitrary names for unknown visual entities improve their subsequent use. Moving to textual novel semantics, a different compositional transfer task, or a cleaner nonce-label control would change the substrate/assay rather than create a new mother question. Adding an internal mechanism would fall back into the prohibited known-behavior → why pattern.
-
-**What would be required to revive it.** A larger theory in which symbolic naming makes a prediction not reducible to “nameability/semantic anchoring makes a representation easier to use,” with an intervention that distinguishes that theory from the existing arbitrary-name effect. Do not revive by switching modality, using harder recombination, or searching for a naming vector/circuit.
-
-### F14 — Can Semantically Equivalent Early Wording Change the Computation That Follows?
-
-**Question.** During autoregressive generation, if two early self-generated prefixes are semantically equivalent and contain no substantive answer information, can choosing one wording rather than the other causally steer the model toward different later conclusions, facts, or plans?
-
-**Why it initially looked promising.** This question separates two views of generation. In a message-first view, early wording mainly lexicalizes an already stable high-level plan, so semantically equivalent prefixes should lead to similar substantive continuations. In a trajectory view, generated lexical choices become part of the model's future computational state, so even equivalent wording can redirect later content. The first experiment could force matched early prefixes and compare downstream substantive decisions without needing a probe or learned evaluator.
-
-**Nearest prior work.**
-- Sun et al. (AAAI 2026), *Well Begun, Half Done: Reinforcement Learning with Prefix Optimization for LLM Reasoning*, identifies a “Beginning Lock-in Effect”: early reasoning prefixes substantially constrain subsequent trajectories and final outcomes, and exploits this with prefix-targeted optimization.
-- A broader 2025–2026 line on reasoning-prefix optimization and prefix-conditioned reward/continuation already treats early generated prefixes as high-leverage causal determinants of later reasoning.
-
-**Failure reason — reviewer-compressible to an occupied early-prefix path-dependence parent.** The semantic-equivalence constraint would make the intervention cleaner, but the knowledge claim still compresses to: small changes to an early generated prefix can causally redirect later autoregressive reasoning. That parent is now explicitly established and operationalized. Restricting the perturbation to synonymous or pragmatically equivalent wording is an exact causal cell unless it supports an independently important theory beyond generic prefix lock-in.
-
-**What would be required to revive it.** An independent scientific dispute that predicts invariance specifically under meaning-preserving lexical variation versus dependence on lexical trajectory, where the distinction changes a broader theory of generation. Do not revive merely with better paraphrase controls, more tasks, or hidden-state analysis.
-
-
-
-
-## S09 — Same Recall, Different Stability? Does Learning History Determine What Can Be Changed? — KILL (2026-09-19)
-
-**Failure mode:** recipe/path dependence in the causal variable itself.
-
-The idea asked whether present accessibility underdetermines future editability because memories of different acquisition ages may have different stability. After S03 exposed how easily training-dynamics stories flip with budget/family/recipe, S09 was re-audited. “Memory age/history” is not a clean variable: it bundles parameter state at acquisition, optimizer trajectory, intervening gradients, spacing, dose and last exposure. *Fresh in Memory* also shows its motivating training-order representation is optimizer/dose dependent. Mirrored schedules and a common refresh improve within-recipe control but cannot turn generic path dependence into a recipe-stable law. A positive result would immediately require broad recipe sweeps; a null in one recipe would be weak.
-
-**Do not revive** by adding optimizers/models, calling one trajectory consolidation, or converting it into a Fresh-in-Memory mechanism follow-up.
-
-**General lesson:** before selecting a training-dynamics topic, ask whether the proposed scientific quantity has a plausible answer invariant enough to survive reasonable recipe perturbations. If the “cause” is itself the optimization path, the project is high risk.
-
-
-## S03 — From Document End to Task Done — KILL (2026-09-19)
-
-**Failure mode:** recipe/family-dependent developmental biography.
-
-S03 was actually piloted. The project asked how post-training transforms pretrained document-ending behavior into goal-relative assistant stopping. Initial controlled SFT results suggested a clean readout-vs-state acquisition story, but reasonable changes in training budget changed the interpretation, and the readout contribution differed qualitatively across OLMo/Qwen/Llama-family tests. Subsequent tests of plausible explanations did not recover a stable cross-family law.
-
-The surviving observation—that internal-state adaptation can alter goal-relative stop/continue competition with the stop row frozen, while a stop-row-only intervention has structural limitations—is narrower than the registered parent and partly follows from parameterization constraints.
-
-**Do not revive** by adding budgets, model families, post-training stages, or optimizer sweeps.
-
-**General lesson:** if the explanatory variable “training stage” bundles data, optimizer, budget, serialization, synthetic-data generation and preference objectives, the result may be a training-history biography rather than a reusable scientific law.
-
-
-## S08 — Is Metacognitive Control Shared? — KILL (2026-09-21)
-
-**Failure mode:** insufficient scientific consequence / mechanistic-detail trap.
-
-S08 asked whether confidence is a shared metacognitive control variable across answer/abstain and reasoning continue/terminate, or whether these decisions use separable control states. The experiment could in principle be clean, but the strongest plausible findings remain too easy to compress into an architectural detail: shared control versus different controllers.
-
-Nearby reasoning work already distinguishes confidence deficits from termination delay and shows that models can continue reasoning after effective commitment. Therefore a double-dissociation result risks becoming “the previously separated behaviors also have separable internal controls,” which is technically interesting but does not sufficiently change our understanding of reasoning or model cognition.
-
-Broadening to a universal metacognitive-controller question would require many metadecisions, datasets, causal handles and cross-interventions, creating experiment explosion.
-
-**Do not revive** by adding more behaviors, more models, better steering vectors, SAE/head/neuron searches, or an efficiency/early-exit framing.
-
-**General lesson:** a mechanistic question of the form “do A and B share a mechanism?” must have a clear downstream scientific consequence. If shared and separate worlds mainly imply different internal architectures, without changing a larger theory of learning/reasoning/understanding, the question is too weak.
-
-
-## S05 — When Does Reading Become Learning? — KILL (2026-09-21)
-
-**Failure mode:** broad mother question, narrow consequence-bearing experiment / exact-cell novelty.
-
-S05 asked what determines whether prompt-side information read during ordinary response-only SFT becomes persistent parameter memory. The broad conceptual distinction among transient conditioning, task-relevant use, and durable learning is real. However, the clean executable intervention only isolates one determinant: matched prompt information that is versus is not necessary for predicting the supervised response.
-
-Under the importance-first audit, the strongest likely headline compresses to: **response-relevant prompt fields leave stronger persistent traces than equally exposed irrelevant fields.** This is causally clean, but a reviewer can naturally explain it from target-relevant gradient pressure. The opposite broad phenomenon—target-absent/input-only information becoming memorized—is already directly established in recent fine-tuning work, while memorization emergence across instruction tuning is also an active prior object.
-
-Thus the project risks using a broad title to sell an exact matched-relevance cell. The experimental cleanliness is not enough to create the required scientific consequence.
-
-**Do not revive** by increasing training dose, adding optimizers/model families, converting to privacy extraction, or adding mechanism after the fact.
-
-**General lesson:** a beautiful intervention is not sufficient. The honest strongest finding produced by that intervention must itself be important, not merely a clean answer to one narrow determinant inside a much broader question.
+- Do not resurrect an Sxx by swapping model, prompt, language, dataset, or wording.
+- Do not use old Sxx registrations as idea generators.
+- New work in a similar area must begin as a fresh **territory**, produce its own observation, and pass current ownership/importance checks independently.
