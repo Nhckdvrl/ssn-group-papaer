@@ -54,33 +54,33 @@ Reconstruction is for training our research taste, not for making biographical c
 
 ## Genesis patterns already worth studying
 
-### Strong baseline changes the question — ResNet Strikes Back
+### [RECONSTRUCTED] Strong baseline changes the question — ResNet Strikes Back
 A mature architecture was still widely used as a baseline, but training practice had advanced. Rebuilding the recipe materially changed what counted as a competitive ResNet baseline. The reusable move is:
 
 > **before proposing a new architecture-level fix, ask whether the baseline is still being trained like the era in which it was introduced.**
 
-### Entangled method zoo → explicit design space — EDM
+### [RECONSTRUCTED] Entangled method zoo → explicit design space — EDM
 Instead of adding one more diffusion trick, the paper separated previously entangled choices and recombined them systematically.
 
 Reusable move:
 
 > **when a field has many interacting tricks, decomposition itself can expose which assumptions are actually load-bearing.**
 
-### Complex pipeline → changed mathematical object — DPO
+### [RECONSTRUCTED] Complex pipeline → changed mathematical object — DPO
 RLHF's reward-model + RL pipeline was treated as the pressure. A different parameterization let the standard objective collapse into a much simpler optimization problem.
 
 Reusable move:
 
 > **sometimes the bottleneck is not missing capacity but the representation of the optimization problem.**
 
-### Scaling exposes a representation bottleneck — FAST
+### [RECONSTRUCTED] Scaling exposes a representation bottleneck — FAST
 Autoregressive VLA scaling ran into poor action tokenization for high-frequency dexterous control. The solution follows from localizing the bottleneck to the action representation, not from adding a generic larger policy.
 
 Reusable move:
 
 > **a successful system abstraction can become the next bottleneck once scale/task frequency changes.**
 
-### Successful training recipe → decompose where learning signal actually lives
+### [RECONSTRUCTED] Successful training recipe → decompose where learning signal actually lives
 Recent RLVR work first treats RL as a phenomenon to understand, then decomposes token entropy or positive/negative sample contributions. The method comes after the asymmetry is measured.
 
 Reusable move:

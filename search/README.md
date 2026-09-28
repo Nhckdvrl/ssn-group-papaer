@@ -56,6 +56,25 @@ Keep two notions separate:
 
 The second is extremely useful for learning how to find research questions, but must not be presented as biographical fact.
 
+## Paper rewind exercise
+
+For especially strong papers, train the search process explicitly:
+
+1. Read the parent papers / baseline and the beginning of the target paper's Introduction.
+2. **Hide the final method and headline result.**
+3. Write what you think the real pressure is.
+4. Propose 3–5 analyses / baseline checks you would run before inventing a method.
+5. Predict several plausible outcomes, not one desired outcome.
+6. Only then read the rest of the paper.
+7. Compare:
+   - which pressure did the authors actually resolve?
+   - what did they notice that you missed?
+   - which of your analyses would have produced useful gradient?
+   - did the final method follow naturally from a measured bottleneck, or from a conceptual derivation?
+   - what part of the path is transferable to another territory?
+
+The exercise is successful even when your hypothetical path differs from the paper. The goal is to improve **research navigation**, not to reverse-engineer the authors' private thoughts.
+
 ## Do not mine one paper for a “gap”
 
 Prefer a **small lineage** over a single paper:
