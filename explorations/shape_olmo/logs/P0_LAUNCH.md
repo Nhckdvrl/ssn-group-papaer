@@ -66,3 +66,13 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 11:23 JST — PA_T7s2 launched on fvcrc10 GPU1
 2026-09-28 11:25 JST — PA_T7 launched on fvcrc10 GPU0
 2026-09-28 11:40 JST — queue: probe_order S5 rerun #2 (explicit attention_mask)
+2026-09-28 11:42 JST — PO_S5rope launched on fvcrc10 GPU0
+2026-09-28 11:45 JST — PO_S5nope launched on fvcrc10 GPU1
+2026-09-28 11:47 JST — PO_S5full launched on fvcrc10 GPU2
+2026-09-28 12:05 JST — queue: survey (5 downloaded hybrids + Qwen3.5-4B, PROBE_N=60)
+2026-09-28 12:06 JST — SV_granite_4_0_h_micro launched on fvcrc10 GPU3
+2026-09-28 12:08 JST — SV_Falcon_H1_1_5B_Base launched on fvcrc12 GPU0
+2026-09-28 12:10 JST — SV_Nemotron_H_8B_Base_8K launched on fvcrc12 GPU1
+2026-09-28 12:13 JST — SV_granite_4_0_h_tiny launched on fvcrc12 GPU1
+2026-09-28 12:15 JST — SV_Bamba_9B_v2 launched on fvcrc10 GPU0
+2026-09-28 12:17 JST — SV_Qwen3_5_4B launched on fvcrc10 GPU1

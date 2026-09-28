@@ -230,3 +230,22 @@ keying is unaffected. This is consistent with the natural-text result (copy prec
 with the number of competing continuations).
 Open: is this a DroPE-retrofit property or a property of position-free hybrids generally? (Survey:
 Granite-4.0-H / Nemotron-H NoPE by design, vs Falcon-H1 / Bamba / Qwen3.5 RoPE; S5 matched pair.)
+
+## 2026-09-28 — S5 matched NoPE / RoPE pair (Qiao et al. release; `results/probe_order_s5_summary.txt`)
+
+0.6B, 100B tokens from scratch, SWA-128 alternating with full attention; the only difference is NoPE
+on the full-attention layers (`no_rope_for_fa_layers`). reassign P(last) − P(first):
+
+| | n=2 | n=4 | n=8 |
+|---|---|---|---|
+| S5 full attention (RoPE transformer) | +0.08 | +0.23 | +0.24 |
+| S5 hybrid, RoPE FA | −0.06 | +0.07 | +0.07 |
+| S5 hybrid, NoPE FA | −0.18 | −0.07 | −0.04 |
+
+- **NoPE trained from scratch also shifts toward primacy:** −0.14 (n = 4) and −0.11 (n = 8) relative
+  to its RoPE twin, beyond the 0.05 rule, with a sign flip. So the effect is **not only a DroPE-retrofit
+  artefact**.
+- Caveats: small model; the efficient module is SWA-128, not recurrence; NoPE also costs some content
+  keying here (keyed n = 4, gap 32: 0.68 vs 0.91). Supporting evidence, not the decisive recurrent
+  case. Pending: NoPE-by-design recurrent hybrids (Granite-4.0-H, Nemotron-H) vs RoPE hybrids
+  (Falcon-H1, Bamba, Qwen3.5).

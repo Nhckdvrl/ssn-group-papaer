@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/src/probe_order.py", line 89, in <module>
+    main(sys.argv[1], sys.argv[2])
+  File "/home/xiang/miniconda3/envs/openslime/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/src/probe_order.py", line 75, in main
+    model = AutoModelForCausalLM.from_pretrained(path, dtype=torch.bfloat16, device_map="cuda",
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/vendor/transformers/models/auto/auto_factory.py", line 380, in from_pretrained
+    model_class = get_class_from_dynamic_module(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/vendor/transformers/dynamic_module_utils.py", line 612, in get_class_from_dynamic_module
+    final_module = get_cached_module_file(
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/vendor/transformers/dynamic_module_utils.py", line 444, in get_cached_module_file
+    local_source_files_hash = _compute_local_source_files_hash(pretrained_model_name_or_path, resolved_module_file)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/vendor/transformers/dynamic_module_utils.py", line 334, in _compute_local_source_files_hash
+    for source_file in get_relative_import_files(resolved_module_file):
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/vendor/transformers/dynamic_module_utils.py", line 164, in get_relative_import_files
+    new_imports.extend(get_relative_imports(f))
+                       ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/vendor/transformers/dynamic_module_utils.py", line 133, in get_relative_imports
+    with open(module_file, encoding="utf-8") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/xiang/.cache/huggingface/hub/models--nvidia--Nemotron-H-8B-Base-8K/blobs/configuration_nemotron_h.py'
