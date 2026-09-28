@@ -267,6 +267,65 @@ The correct optimization target may be player agency, cognitive burden, trust, p
 
 ---
 
+---
+
+## 9A. Lineage H — Deception, hallucination, and investigability
+
+This lineage is NPC-specific because a false statement can be a **game mechanic**, not merely a model error. The key question is not “is the utterance factually true?” but whether its falsity is intentional, world-compatible, and playable.
+
+### H1 — ClueGen (AIIDE 2016)
+- Procedural murder-mystery NPCs construct testimony from their own remembered events.
+- A lie alters details of an existing testimony; an omission suppresses a remembered event.
+- Players can accuse an NPC of lying/withholding, and the game knows whether the accusation is correct.
+- Important primitive: deception is generated **from world history**, so it remains mechanically connected to something the player can challenge.
+- https://doi.org/10.1609/aiide.v12i2.12896
+
+### H2 — Lies, Deceit, and Hallucinations (CHI 2024)
+- Player study with deliberate human-authored falsehoods and human-approved LLM hallucinations.
+- Perceived intentional falsehoods were often interpreted as meaningful narrative/gameplay behavior; seemingly accidental falsehoods instead conflicted with players’ mental models.
+- Changed premise: “factual correctness” is the wrong scalar objective for deceptive NPCs.
+- https://doi.org/10.1145/3613904.3642253
+
+### H3 — Free LLM detective NPCs
+- Open-ended LLM dialogue greatly expands linguistic freedom but creates a new failure: an NPC may invent a location, witness, timeline activity, or evidence that the game world cannot support.
+- In a detective game this is worse than ordinary factual error because the player may spend real gameplay effort pursuing a **mechanical dead end**.
+
+### H4 — Structured Knowledge Trees (2026)
+- Explicitly distinguishes desired deceptive falsehoods from game-breaking hallucinations.
+- In the reported LLM-only condition, unauthored false alibis and fabricated entities dominate critical failures.
+- SKT cuts these failures by selecting an authored knowledge-tree node and telling the Dialogue LLM exactly which truth/lie to express.
+- The cost is equally informative: “what to lie about” is no longer generative, and tightly coupled progression sometimes makes revelations feel forced or abrupt.
+- https://arxiv.org/abs/2609.23043
+
+### H5 — Current pressure (territory-level, not a registered RQ)
+The lineage has swung:
+
+> structured + mechanically grounded but rigid → generative + expressive but capable of untraceable dead ends → structured authored lie nodes again.
+
+A useful object to keep investigating is therefore **deception as playable world state**, not generic hallucination reduction. A consequential false claim should be distinguishable from harmless improvisation and should interact with actual game affordances: entities, locations, timelines, witnesses, evidence, contradiction mechanics, and player actions.
+
+Do **not** claim novelty for:
+- intentional lie vs hallucination;
+- knowledge/provenance tags;
+- contradiction graphs;
+- pre-authored lie nodes;
+- “NPCs should be able to lie.”
+
+Those are all owned. The unresolved pressure is whether open-ended generative deception can retain the mechanical properties that made structured/procedural deception playable.
+
+### Executable substrate note — Ashwick Trust / AI Murder Mystery Game
+The public `DilanRG/ai-murder-mystery-v2` repository is unusually useful for experiments:
+- engine-authoritative canonical truth;
+- per-NPC private knowledge;
+- finite authorized lies and truthful observations;
+- `contradicts_fact_ids`;
+- physically reachable evidence and validated independent solution routes;
+- deterministic replay and detailed knowledge/action audits;
+- provider-free fixtures and dummy-provider E2E tests.
+
+Its current validator checks that lie references name canonical facts and that fact disclosures are permitted, while the overall case/evidence graph is checked for reachability and solvability. It does **not** currently make “every individual lie has a player-reachable refutation path” an obvious first-class invariant. This makes it a useful *workbench substrate*, not scientific prior by itself.
+
+
 ## 9. Industry evidence — deployment abstractions
 
 Industry evidence is not scientific proof, but it is valuable for detecting which constraints survive contact with a real game.
