@@ -76,3 +76,5 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 12:13 JST — SV_granite_4_0_h_tiny launched on fvcrc12 GPU1
 2026-09-28 12:15 JST — SV_Bamba_9B_v2 launched on fvcrc10 GPU0
 2026-09-28 12:17 JST — SV_Qwen3_5_4B launched on fvcrc10 GPU1
+2026-09-28 12:19 JST — survey restarted: PROBE_GAPS=4,32 (torch-fallback Mamba OOM at 7k tokens), PROBE_TRC=0 (native nemotron_h); earlier partial files in results/probe_order/survey_aborted/
+2026-09-28 12:19 JST — SV_granite_4_0_h_micro launched on fvcrc10 GPU0

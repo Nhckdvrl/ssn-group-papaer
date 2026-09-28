@@ -22,7 +22,7 @@ import torch
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NS = [1, 2, 4, 8]
-GAPS = [4, 32, 128]          # filler assignment LINES between target assignments (~8 tokens each)
+GAPS = [int(g) for g in os.environ.get("PROBE_GAPS", "4,32,128").split(",")]   # filler assignment LINES (~8 tokens each)
 N_ITEMS = int(os.environ.get("PROBE_N", 120))
 WORDS = ("apple river stone window garden doctor teacher music silver forest island mountain village engine "
          "letter market paper table glass winter summer morning camera ticket bottle castle bridge rocket planet "
@@ -71,9 +71,10 @@ def items(tok):
 @torch.no_grad()
 def main(path, tag):
     from transformers import AutoModelForCausalLM, AutoTokenizer
-    tok = AutoTokenizer.from_pretrained(path, trust_remote_code=True)
+    trc = os.environ.get("PROBE_TRC", "1") == "1"
+    tok = AutoTokenizer.from_pretrained(path, trust_remote_code=trc)
     model = AutoModelForCausalLM.from_pretrained(path, dtype=torch.bfloat16, device_map="cuda",
-                                                 trust_remote_code=True).eval()
+                                                 trust_remote_code=trc).eval()
     os.makedirs(f"{ROOT}/results/probe_order", exist_ok=True)
     with open(f"{ROOT}/results/probe_order/{tag}.jsonl", "w") as f:
         for it in items(tok):

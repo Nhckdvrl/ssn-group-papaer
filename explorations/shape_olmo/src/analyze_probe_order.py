@@ -12,9 +12,14 @@ def load(tag):
     return [json.loads(l) for l in open(f"{ROOT}/results/probe_order/{tag}.jsonl")]
 
 
+KEEP = {int(g) for g in os.environ["PROBE_GAPS"].split(",")} if os.environ.get("PROBE_GAPS") else None
+
+
 def summarize(rows):
     out = {}
     for r in rows:
+        if KEEP is not None and r["gap"] not in KEEP:
+            continue
         lp = np.array(r["lp_cands"]); p = np.exp(lp - lp.max()); p /= p.sum()
         key = (r["task"], r["n"], r["gap"])
         out.setdefault(key, []).append((p[r["correct"]], float(np.argmax(p) == r["correct"]), p[0], lp[r["correct"]]))
