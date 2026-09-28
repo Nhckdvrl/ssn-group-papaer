@@ -143,4 +143,4 @@ Until then, remain a workbench.
 - `hybrid-adaptation/` — exploratory.
 - `ai4quant/` — exploratory family.
 - `moe-route-preference/` — stable observation, candidate status not earned.
-- `video-temporal-control-bandwidth/` — **our-taste**, exploratory study of temporal compression as a control-bandwidth bottleneck in video/world models.
+- `video-world-model-temporal-interfaces/` — **our-taste**, exploratory study of temporal representation, alignment, control, causality, and compression interfaces in video/world models.
