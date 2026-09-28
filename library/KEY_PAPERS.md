@@ -110,6 +110,28 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 | XD02 | **Sharpness-Aware Minimization (SAM)** (2020/ICLR 2021) | ANCHOR | Creates a new optimization object: neighborhood sharpness, not only endpoint loss. | https://arxiv.org/abs/2010.01412 |
 | XD03 | **SAM operates far from home** (2023) | BRIDGE | Re-attribution example: accepted endpoint/minimum explanation is insufficient; training dynamics matter throughout the trajectory. | https://arxiv.org/abs/2302.08692 |
 
+
+---
+
+## Game NPCs / interactive characters
+
+| ID | Paper | Role | Why reread | Link |
+|---|---|---|---|---|
+| NPC01 | **Craft an Iron Sword: Dynamically Generating Interactive Game Characters by Prompting LMs Tuned on Code** (2022) | ANCHOR / ARTIFACT | Early clean bridge from NPC language to executable game actions; public Minecraft prototype. | https://github.com/microsoft/interactive-minecraft-npcs |
+| NPC02 | **Generative Agents: Interactive Simulacra of Human Behavior** (UIST 2023) | ANCHOR / ARTIFACT | Memory→reflection→planning lineage; foundational reference before proposing “long-term NPC memory”. | https://arxiv.org/abs/2304.03442 |
+| NPC03 | **Collaborative Quest Completion with LLM-Driven NPCs in Minecraft** (2024) | BRIDGE / ARTIFACT | Moves from chatbot/action demos to human–NPC co-play; public interaction logs. | https://arxiv.org/abs/2407.03460 |
+| NPC04 | **KNUDGE: Ontologically Faithful Generation of NPC Dialogues** (EMNLP 2024) | ANCHOR | Strong authored-world grounding baseline using real quest/dialogue structure from *The Outer Worlds*. | https://aclanthology.org/2024.emnlp-main.520/ |
+| NPC05 | **Slice of Life: A Hybrid Social Simulation with LLM Dialogue** (FDG 2025) | BRIDGE | Important boundary choice: symbolic social simulation owns state/dynamics; LLM realizes language. | https://dl.acm.org/doi/proceedings/10.1145/3723498 |
+| NPC06 | **PersonaEval** (2025) | NEGATIVE / MEASUREMENT | Shows role-play LLM judges are not automatically reliable proxies for human character identification. | https://arxiv.org/abs/2507.22087 |
+| NPC07 | **Can LLM Agents Stick to the Script? / NCP-Bench** (2026) | FRONTIER / ARTIFACT | Long-horizon narrative commitment preservation; raises the bar beyond isolated response consistency. | https://arxiv.org/abs/2608.12195 |
+| NPC08 | **One Policy, Infinite NPCs: Persona-Traceable Shared RL Policies for Scalable Game Agents** (2026) | FRONTIER | Moves persona from linguistic style to trajectory-level behavioral policy conditioning. | https://arxiv.org/abs/2605.23652 |
+| NPC09 | **ReactiveGWM: Steering NPC in Reactive Game World Models** (2026) | FRONTIER / ARTIFACT | Decouples player control and NPC strategy inside a game world model; unusually complete code/model/data release. | https://arxiv.org/abs/2605.15256 |
+| NPC10 | **WorldMind: Decoupled Game World Model for State-Aware NPC Behavior** (2026) | FRONTIER | Successor pressure on ReactiveGWM: externally provided strategy is not state-aware autonomous decision making. Re-check artifact status. | https://arxiv.org/abs/2608.21439 |
+| NPC11 | **Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions** (2026) | FRONTIER / ARTIFACT | Public Minecraft social sandbox showing behavior/action channels can dominate verbal social signals; strong ablation harness. | https://arxiv.org/abs/2608.30428 |
+| NPC12 | **The Double-Edged Sword of Open-Ended Interaction: How LLM-Driven NPCs Affect Players** (2026) | BRIDGE / NEGATIVE | Strong antidote to “more open-ended = better”: autonomy, cognitive load, usability/trust and experience can move differently. | https://arxiv.org/abs/2604.10107 |
+
+Deep genealogy and broader survey map: `deep/academic/GAME_NPC_LANDSCAPE.md`.
+
 ---
 
 ## Notes
