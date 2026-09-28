@@ -1,6 +1,6 @@
-# ShapeLab — 进度总览（每步更新；最后更新 2026-09-28 14:40 JST）
+# ShapeLab — 进度总览（每步更新；最后更新 2026-09-28 14:50 JST）
 
-**状态：EXPLORATION（探索中）。尚无注册的研究问题（无 CT 编号）。**
+**状态：已暂停（2026-09-28，用户决定）。未找到值得注册的研究问题；今天测试的几条线均按事前规则排除，结论与经验保留在下方和 `docs/RESEARCH_LOG.md`。**
 详细记录：`docs/RESEARCH_LOG.md`（按时间顺序，含每次预注册的 kill 规则）· `docs/P0_RESULTS.md`（OLMo 7B 对比）· `docs/READING_NOTES.md`（blog 与文献精读）
 
 ## 目标（2026-09-28 用户要求重述）

@@ -350,3 +350,14 @@ DroPE-retrofit primacy (narrow; awaiting the Llama-2 RoPE vs DroPE control).
   "DroPE-retrofit primacy" line fails goal criterion 2 (component composition) or survives only with
   extra conditions (stop-loss). **Dropped.** The Olmo-Hybrid DroPE observations stay recorded as
   findings about that model.
+
+## 2026-09-28 — PAUSED by the user
+
+No question met the registration bar. Killed by pre-written rules: reuse gate; position-free-hybrid
+primacy (broad); far-context super-additivity. Dropped: DroPE-retrofit primacy (outside the goal;
+Llama control invalid). The blog's history / current architecture proposal overlaps Titans /
+Infini-attention / RMT. Kept findings: the token-level hybrid signature has the shape of a generic
+improvement (architecture-only triplet); the Olmo-Hybrid final's reuse / closure deficit is produced
+during its DroPE LC stage (attention flips from recency to primacy over duplicate keys); pretrained
+hybrids split content keying (attention) from an unbound recency cue (recurrence).
+No jobs left running.
