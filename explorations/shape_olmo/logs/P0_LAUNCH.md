@@ -87,3 +87,10 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 13:02 JST — CX_ launched on fvcrc10 GPU0
 2026-09-28 13:03 JST — queue: ctx_ablation on Pile triplet + scale controls (retry, correct tags)
 2026-09-28 13:03 JST — CX_PPT launched on fvcrc10 GPU0
+2026-09-28 13:05 JST — CX_PPH launched on fvcrc10 GPU1
+2026-09-28 13:08 JST — CX_PPR launched on fvcrc10 GPU2
+2026-09-28 13:10 JST — CX_PY14 launched on fvcrc10 GPU3
+2026-09-28 13:12 JST — CX_PY28 launched on fvcrc10 GPU0
+2026-09-28 13:15 JST — CX_M2_13 launched on fvcrc12 GPU0
+2026-09-28 13:18 JST — queue: probe_order Llama-2-7B RoPE vs DroPE (transformer DroPE control)
+2026-09-28 13:18 JST — PO_L2rope launched on fvcrc10 GPU3
