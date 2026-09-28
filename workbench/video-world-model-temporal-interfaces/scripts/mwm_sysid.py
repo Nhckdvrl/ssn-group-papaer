@@ -55,6 +55,10 @@ def yaw_seq(spec, n=T_LAT - 1):
         k0 = 3
         for k in range(k0, n):
             y[k] = A * math.sin(2 * math.pi * (k - k0) / P + (math.pi / 2 if P == 2 else 0.0))
+    elif p[0] == "yawlist":  # yawlist:k=v_k=v  (explicit per-step yaw in degrees)
+        for kv in p[1].split("_"):
+            k, v = kv.split("=")
+            y[int(k)] = float(v)
     elif p[0] != "none":
         raise ValueError(spec)
     return y

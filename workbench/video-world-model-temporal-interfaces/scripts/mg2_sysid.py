@@ -30,6 +30,8 @@ def build(spec, n):
             ms[t, 1] = A * math.sin(2 * math.pi * (t - t0) / P + phi)
     elif p[0] == "kimpulse":
         kb[int(p[1]), 0] = 1.0
+    elif p[0] == "ktap":  # ktap:key_idx:f:dur  (keyboard key held for dur frames starting at f)
+        kb[int(p[2]):int(p[2]) + int(p[3]), int(p[1])] = 1.0
     elif p[0] == "series":  # explicit comma-free series: series:v0_v1_v2...
         v = [float(x) for x in p[1].split("_")]
         ms[: len(v), 1] = torch.tensor(v[:n])
@@ -44,6 +46,8 @@ def expand(seqs):
         p = s.split(":")
         if p[0] == "impulse" and "-" in p[2]:
             out += [f"impulse:{p[1]}:{f}" for f in parse_range(p[2])]
+        elif p[0] == "ktap" and "-" in p[2]:
+            out += [f"ktap:{p[1]}:{f}:{p[3]}" for f in parse_range(p[2])]
         elif p[0] == "kimpulse" and "-" in p[1]:
             out += [f"kimpulse:{f}" for f in parse_range(p[1])]
         else:
@@ -64,9 +68,13 @@ def main():
     ap.add_argument("--seqs", required=True)
     ap.add_argument("--latents", type=int, default=12)
     ap.add_argument("--ckpt", default="base_distilled_model/base_distill.safetensors")
+    ap.add_argument("--nfpb", type=int, default=0, help="override latents per block at inference (0 = config)")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     R = Runner(snapshot("Skywork/Matrix-Game-2.0"), ckpt=a.ckpt)
+    if a.nfpb:
+        R.pipe.num_frame_per_block = a.nfpb
+        R.pipe.generator.model.num_frame_per_block = a.nfpb
     n = (a.latents - 1) * 4 + 1
     for im in a.images.split(","):
         path = os.path.join(MG2, "demo_images", "universal", f"{im}.png")
