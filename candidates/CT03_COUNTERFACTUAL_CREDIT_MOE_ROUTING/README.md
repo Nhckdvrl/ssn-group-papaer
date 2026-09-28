@@ -1,7 +1,7 @@
 # CT03 — Counterfactual Credit for MoE Routing
 
 **Status:** ❌ **KILLED / CLOSED — 2026-09-23** · **Opened:** 2026-09-20
-**Kill record:** `chasing trends/topics/FAILED_TOPICS.md` (`CT-KILL-20260922-1`)
+**Kill record:** `../../chasing trends/FAILED_TOPICS.md` (CT03 section)
 **Final scientific archive:** `FINAL_POSTMORTEM.md`
 
 > Killed as a Main-level **method** topic. The estimator survived every test it
@@ -33,9 +33,9 @@
 > E08's screening result stands as an asset (32 exact reruns -> 2, retaining
 > 94-98% of oracle gain); it is about proxy ranking of exact utilities and is
 > untouched by any of this. The phenomenon E11 uncovered is registered
-> separately as **CT04**, not as a CT03 rescue:
-> `../CT04_ROUTE_PREFERENCE_DECISION_CONSISTENCY/SELECTION.md`.
-**Topic authority:** `chasing trends/topics/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING.md`
+> preserved separately as an **observation**, not as a CT03 rescue:
+> `../../observations/ROUTE_PREFERENCE_DECISION_CONSISTENCY.md`.
+**Topic authority:** `FINAL_POSTMORTEM.md`; current anti-resurrection summary: `../../chasing trends/FAILED_TOPICS.md`.
 
 ## The object
 

@@ -3,7 +3,7 @@
 **Final status:** ❌ **KILLED / CLOSED**  
 **Original topic:** Counterfactual Credit for MoE Routing  
 **Closure rule:** no further GPU experiments, no benchmark rescue, no new loss search, no second-model replication for this topic.  
-**Canonical kill record:** `chasing trends/topics/FAILED_TOPICS.md` → `CT-KILL-20260922-1`.
+**Canonical current kill record:** `../../chasing trends/FAILED_TOPICS.md` → CT03 section.
 
 This document is the final scientific archive for CT03. It separates what was
 successfully established from what failed, explains why the Main-level method

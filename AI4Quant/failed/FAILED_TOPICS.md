@@ -179,9 +179,9 @@ Residual：M3 passive likelihood scaling 是否伴随 learned interventional res
 未授权原因：TradeFM 权重/训练数据不开放，直接 replication / decisive E01 可行性较弱。
 
 ### Cross-sectional breadth ≠ temporal depth
-**Status: MERGED INTO SELECTED P1**
+**Status: MOVED TO TERRITORY (former P1)**
 
-该 seed 已升级为正式题 **State Coverage ≠ Exposure Coverage**，不再作为失败题复活。
+该 seed 已并入当前 territory **State Coverage ≠ Exposure Coverage**；不再作为独立 failed seed 复活，也不代表已经获得 candidate / selected 身份。见 `../territories/state-coverage-vs-exposure-coverage.md`。
 
 ---
 
@@ -215,9 +215,9 @@ Residual：M3 passive likelihood scaling 是否伴随 learned interventional res
 原因：2026 *Martingale-Consistent Self-Supervised Learning* 已直接提出 coarse/fine information-view forecast coherence。
 
 ### Forecast Skill ≠ Structural Skill / cointegration
-**Status: MOVED TO SELECTED P2**
+**Status: MOVED TO TERRITORY (former P2)**
 
-不在失败账继续讨论，正式注册见 `selected/forecast-skill-vs-structural-skill/`。
+不再作为独立 failed seed 讨论；当前仅作为 territory 保留，见 `../territories/forecast-skill-vs-structural-skill.md`。尚未获得 candidate / selected 身份。
 
 ---
 
