@@ -71,15 +71,19 @@ def main():
     ap.add_argument("--prompts", default="1")
     ap.add_argument("--seqs", required=True)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--ckpt", default=None, help="override inference.checkpoint (exported .pt with a 'model' entry)")
+    ap.add_argument("--tag", default=None, help="name used in output files instead of the stage name")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
-    cfg = apply_overrides(load(f"configs/wan21/action2v/infer/{a.stage}.py"), [])
+    ov = [f"inference.checkpoint={a.ckpt}", "inference.prefer_ema=False"] if a.ckpt else []
+    cfg = apply_overrides(load(f"configs/wan21/action2v/infer/{a.stage}.py"), ov)
+    name = a.tag or a.stage
     inf = BaseInferencer(cfg)
     bench = {str(s["id"]): s for s in read_benchmark("assets/example_t2v.json")}
     for pid in a.prompts.split(","):
         caption = bench[pid].get("caption") or bench[pid].get("prompt")
         for spec in ["none"] + a.seqs.split(","):
-            f = os.path.join(a.out, f"{a.stage}_p{pid}_s{a.seed}_{spec.replace(':', '~')}.npz")
+            f = os.path.join(a.out, f"{name}_p{pid}_s{a.seed}_{spec.replace(':', '~')}.npz")
             if os.path.exists(f):
                 continue
             y = yaw_seq(spec)
@@ -90,7 +94,7 @@ def main():
                 res = inf.loop.generate(batch)
             v = (res["video"][0] * 255.0).clamp(0, 255).permute(0, 2, 3, 1).to(torch.uint8)  # F,H,W,C
             np.savez_compressed(f, frames=v[:, ::2, ::2].cpu().numpy(), yaw_cmd=y, spec=spec)
-            print(a.stage, pid, spec, tuple(v.shape), flush=True)
+            print(name, pid, spec, tuple(v.shape), flush=True)
 
 
 if __name__ == "__main__":

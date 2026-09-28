@@ -31,7 +31,7 @@ def main():
     raw, out = sys.argv[1], sys.argv[2]
     refs, rows = {}, defaultdict(list)
     for f in sorted(glob.glob(os.path.join(raw, "*.npz"))):
-        m = re.match(r"(stage\w+?)_p(\d+)_s(\d+)_(.*)\.npz", os.path.basename(f))
+        m = re.match(r"(\w+?)_p(\d+)_s(\d+)_(.*)\.npz", os.path.basename(f))
         stage, pid, sd, spec = m.group(1), m.group(2), m.group(3), m.group(4).replace("~", ":")
         if spec == "none":
             continue
