@@ -1,9 +1,9 @@
-# ShapeLab — 进度总览（每步更新；最后更新 2026-09-28 14:50 JST）
+# ShapeLab — Workbench
 
-**状态：已暂停（2026-09-28，用户决定）。未找到值得注册的研究问题；今天测试的几条线均按事前规则排除，结论与经验保留在下方和 `docs/RESEARCH_LOG.md`。**
+**状态：PAUSED WORKBENCH / KNOWLEDGE ASSET。没有当前 paper candidate；今天测试的几条线均按当时规则排除，结论与经验保留在下方和 `docs/RESEARCH_LOG.md`。**
 详细记录：`docs/RESEARCH_LOG.md`（按时间顺序，含每次预注册的 kill 规则）· `docs/P0_RESULTS.md`（OLMo 7B 对比）· `docs/READING_NOTES.md`（blog 与文献精读）
 
-## 目标（2026-09-28 用户要求重述）
+## 历史探索目标（2026-09-28）
 结合 Alex Zhang 的 *Shape* blog（模型的计算 contract 应适配 harness；hybrid 各组件性质不同、组合方式重要）与本项目已有实验（CT05–CT09、ShapeLab），找到一个**有深度、新颖、有前景**的研究问题。门槛（全部满足才注册）：①建立在我们自己验证过的现象上；②关于组件如何**组合**，不是调 recipe；③最近邻 prior 已查、未被占；④我们的规模有因果操纵手段；⑤能通过事前写好的 kill 规则。
 
 ## 目前结论（按可信度）
@@ -28,7 +28,7 @@
 ## 1B 三联体 / Hybrid-YaRN checkpoint
 论文说已发布但查不到公开地址。作者请求草稿：`docs/AUTHOR_REQUEST_DRAFT.md`（未发送，由用户决定）。
 
-## 下一步候选方向（我的判断，按优先级；2026-09-28 13:55）
+## 若重启：未决探索方向（不是候选论文；2026-09-28 13:55）
 今天用事前规则 kill 了三条线（reuse gate、无位置编码 hybrid 读旧值（宽泛版）、hybrid 远程上下文优势）。"hybrid 在首次出现 token 上胜过双亲" 被定位为**局部**建模优势，且轮廓与"更大的模型"同形，因此我不再把它当作机制线索。剩下的思路：
 
 1. **DroPE × hybrid 的 primacy（窄线，等 Llama 对照）**：若 Llama-2 DroPE 也出现 primacy → 是 DroPE 自身的性质（干净、有实际意义，但不满足"组件组合"这条门槛）；若 Llama 不出现 → 是"事后改造的 hybrid"特有，属于组合问题，但很窄。
