@@ -143,4 +143,3 @@ Until then, remain a workbench.
 - `hybrid-adaptation/` — exploratory.
 - `ai4quant/` — exploratory family.
 - `moe-route-preference/` — stable observation, candidate status not earned.
-- `modern-guidance/` — **our-taste**, exploratory strong-baseline study of guidance on modern rectified-flow models.
