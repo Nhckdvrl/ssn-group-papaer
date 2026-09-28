@@ -50,8 +50,10 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 | AR03 | **RecurrentGemma** (2024) | ANCHOR / ARTIFACT | Open recurrent/local-attention language models; useful strong public architecture baseline. | https://arxiv.org/abs/2404.07839 |
 | AR04 | **Leave No Context Behind: Infini-attention** (2024) | ANCHOR | Clean attention + compressive-memory hybrid and a useful reference for “exact vs compressed history”. | https://arxiv.org/abs/2404.07143 |
 | AR05 | **Titans: Learning to Memorize at Test Time** (2025) | BRIDGE | Reframes long-term memory as test-time learning in a neural memory rather than a fixed recurrent vector. | https://arxiv.org/abs/2501.00663 |
-| AR06 | **Scaling Latent Reasoning via Looped Language Models (Ouro)** (2025) | FRONTIER / ARTIFACT | Open looped-LM family; makes iterative latent computation a pretraining primitive. | https://arxiv.org/abs/2510.25741 |
-| AR07 | **Mamba-3: Improved Sequence Modeling using State Space Principles** (2026) | FRONTIER / ARTIFACT | Current SSM lineage update; reread before making claims about what “modern Mamba” can/cannot do. | https://arxiv.org/abs/2603.15569 |
+| AR06 | **Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach (Huginn)** (2025) | ANCHOR / ARTIFACT | Open depth-recurrent model where extra test-time depth reuses a small recurrent core; direct baseline for recurrent-depth science. | https://arxiv.org/abs/2502.05171 |
+| AR07 | **Scaling Latent Reasoning via Looped Language Models (Ouro)** (2025) | FRONTIER / ARTIFACT | Open looped-LM family; makes iterative latent computation a pretraining primitive. | https://arxiv.org/abs/2510.25741 |
+| AR08 | **Mamba-3: Improved Sequence Modeling using State Space Principles** (2026) | FRONTIER / ARTIFACT | Current SSM lineage update; reread before making claims about what “modern Mamba” can/cannot do. | https://arxiv.org/abs/2603.15569 |
+| AR09 | **Latent Chain-of-Thought? Decoding the Depth-Recurrent Transformer** (2025) | BRIDGE / NEGATIVE | Huginn-specific negative/diagnostic reference: latent-CoT readouts are probe-sensitive and additional recurrence gives limited gains in the tested arithmetic setting. | https://arxiv.org/abs/2507.02199 |
 
 ---
 
@@ -72,7 +74,7 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 | MI01 | **In-context Learning and Induction Heads** (2022) | ANCHOR | Classic capability↔mechanism emergence argument; useful for causal-evidence standards. | https://arxiv.org/abs/2209.11895 |
 | MI02 | **Function Vectors in Large Language Models** (ICLR 2024) | ANCHOR / ARTIFACT | Compact causal task representations; good example of moving from correlation to intervention. | https://arxiv.org/abs/2310.15213 |
 | MI03 | **Towards Monosemanticity** (Anthropic, 2023) | ANCHOR | Changes unit of analysis from neurons to learned features. | https://www.anthropic.com/research/towards-monosemanticity-decomposing-language-models-with-dictionary-learning |
-| MI04 | **Tracing the thoughts of a large language model** (Anthropic, 2025) | BRIDGE / ARTIFACT | Moves from feature discovery toward computational/attribution graphs. | https://www.anthropic.com/research/tracing-thoughts-language-model |
+| MI04 | **Tracing the thoughts of a large language model** (Anthropic, 2025) | BRIDGE | Moves from feature discovery toward computational/attribution graphs. | https://www.anthropic.com/research/tracing-thoughts-language-model |
 | MI05 | **A global workspace in language models** (Anthropic, 2026) | FRONTIER | Current example of posing a broad functional question, then attacking it with multiple causal properties rather than one probe. | https://www.anthropic.com/research/global-workspace |
 
 ---

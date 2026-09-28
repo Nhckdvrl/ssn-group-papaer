@@ -17,6 +17,7 @@ The repository has accumulated many historical candidates, pilots, search rounds
 | `explorations/shape_olmo/` | **PAUSED EXPLORATION / KNOWLEDGE ASSET** | useful empirical knowledge, no registered RQ |
 | `failed/` | **HISTORICAL ANTI-RESURRECTION** | durable kill evidence only |
 | `candidates/`, `good/` | **HISTORICAL EXECUTION PACKAGES** | retained for reproducibility; not current authorization |
+| `library/` | **REFERENCE LIBRARY** | curated territories, anchor papers, blogs/reports; not authorization and not a candidate list |
 
 ## The research process
 

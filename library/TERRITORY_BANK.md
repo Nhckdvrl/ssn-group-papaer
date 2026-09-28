@@ -86,7 +86,7 @@ Looped and depth-recurrent models reopen a basic architecture assumption: depth 
 
 Synthetic tasks define the mechanism we later “discover”; or incomparable training recipes are treated as architecture-only controls.
 
-**Anchors:** AR05–AR07, MI05, B02.
+**Anchors:** AR05–AR09, MI05, B02.
 
 ---
 
@@ -115,7 +115,7 @@ Synthetic tasks define the mechanism we later “discover”; or incomparable tr
 
 Rebranding ordinary RAG/KV pruning as “memory science”.
 
-**Anchors:** AR01–AR06, B05.
+**Anchors:** AR01–AR07, B11–B12.
 
 ---
 
@@ -144,7 +144,7 @@ Routing is a clean place to study the gap between **scores, surrogates, discrete
 
 Good diagnostic signal → endless loss search.
 
-**Anchors:** MOE01–MOE03; repository observation `observations/ROUTE_PREFERENCE_DECISION_CONSISTENCY.md`.
+**Anchors:** MOE01–MOE03; repository observation `../observations/ROUTE_PREFERENCE_DECISION_CONSISTENCY.md`.
 
 ---
 
@@ -173,7 +173,7 @@ The strongest direction is not “find another neuron/head”; it is to improve 
 
 New probe / SAE / lens without a scientific inference that changes.
 
-**Anchors:** MI01–MI05, B03–B04.
+**Anchors:** MI01–MI05, B03–B05.
 
 ---
 
@@ -202,7 +202,7 @@ Speech introduces something text systems largely avoid: **physical time**. Strea
 
 Pure system-latency engineering with no scientific quantity.
 
-**Anchors:** VO01–VO02, B04.
+**Anchors:** VO01–VO02.
 
 ---
 
@@ -274,7 +274,7 @@ Useful patterns:
 - weak baseline → strong baseline overturns narrative;
 - one global schedule → state/sample-dependent allocation.
 
-**Anchors:** RC01, XD01–XD03, B10.
+**Anchors:** RC01, XD01–XD03, B14–B15.
 
 ---
 
@@ -303,4 +303,4 @@ Useful scientific objects:
 
 Environment, tool schema, evaluator, and simulator engineering can dominate the scientific contribution.
 
-**Anchors:** B09, B11.
+**Anchors:** B08, B13.
