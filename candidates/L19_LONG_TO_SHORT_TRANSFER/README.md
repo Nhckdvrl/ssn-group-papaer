@@ -63,7 +63,7 @@ enough seeds to estimate run-level variance: **~100–300 GPU-hours** here, to c
 
 The successful-result test was run, but it never compared the **expected effect size
 against the evaluation noise floor**. Two numbers, no compute — and it would have stopped
-this route before any GPU time was spent. Recorded in `CURRENT_SEARCH.md` and the ledger.
+this route before any GPU time was spent. Recorded in the historical pre-reset state and the cumulative kill ledger; the current repository state is governed by the root `README.md`.
 
 Two further preregistration errors of ours are recorded rather than dropped: kill
 condition 3 was mis-specified and withdrawn before any treatment run (it would have

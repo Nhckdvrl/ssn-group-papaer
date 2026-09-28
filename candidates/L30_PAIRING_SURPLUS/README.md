@@ -418,10 +418,7 @@ D_mask passed its construct check (zero logit movement under an equal-length
 instruction swap and under random tokens behind the mask, while P moves 26.6).
 
 **Consequence:** the identity would have to move from *what pairing teaches* to
-*what wrong pairing destroys*. That is a claim mutation under
-`RESEARCH_EXECUTION.md` section 8, so this authorization has expired and the
-candidate must re-enter selection with a Claim Novelty Delta before further
-compute. C2 remains unauthorized.
+*what wrong pairing destroys*. That is a claim mutation. Under the current repository policy, a changed scientific identity does not inherit authorization; it must return to Candidate evaluation before further compute. C2 remains unauthorized.
 
 # 12. Current verdict
 

@@ -4,7 +4,7 @@
 
 **Finalized:** 2026-09-14  
 **Canonical scientific autopsy:** [`FINAL_ARCHIVE_2026-09-14.md`](FINAL_ARCHIVE_2026-09-14.md)  
-**Search-level anti-resurrection note:** [`../../search_rounds/2026-09-14_L08_FINAL_KILL_AND_LESSONS.md`](../../search_rounds/2026-09-14_L08_FINAL_KILL_AND_LESSONS.md)
+**Search-level anti-resurrection note:** [historical pre-reset anti-resurrection note](https://github.com/Nhckdvrl/ssn-group-papaer/blob/49d44ab1528dba95e7f0439d9ae4ecc7fc983a79/search_rounds/2026-09-14_L08_FINAL_KILL_AND_LESSONS.md)
 
 > **This status supersedes every earlier `ARCHIVED`, `REOPEN`, `SERIOUS`, `HIGH-UPSIDE`, reconstructed-mainline, pilot, or mechanism-development status in this directory.**
 >

@@ -110,5 +110,6 @@ Do **not** start by trawling historical candidate directories or old search scra
 - No new `search_rounds/`-style process dumps.
 - No duplicate "current state" documents.
 - No candidate ID before candidate status is actually earned.
+- A claim mutation does not inherit authorization: if the scientific identity changes, return to Observation / Candidate evaluation before more compute.
 - Historical raw results, code, tests, and reproducibility assets are preserved.
 - If current status conflicts with an old package, **this README wins**.
