@@ -24,6 +24,7 @@
 | G16 | Speech tokenization | acoustic/semantic codes → downstream/deployment-aware representation | another codebook/teacher signal | GENEALOGIES_04 |
 | G17 | CoT faithfulness | plausible rationale → causal target/identification refinement | another faithfulness metric | GENEALOGIES_04 |
 | G18 | Video/world models | visual generation → action-conditioned transition/dynamics | “world model” label / giant unified system | GENEALOGIES_04 |
+| G19 | Game NPCs / interactive characters | dialogue persona → grounded state/action → hybrid authority, embodied/social behavior, player-facing evidence | generic memory/RAG/persona; chatbot-only NPC evaluation | GAME_NPC_LANDSCAPE |
 
 ## 文件分布
 
@@ -31,6 +32,7 @@
 - `GENEALOGIES_02.md`：G06–G09
 - `GENEALOGIES_03.md`：G10–G14
 - `GENEALOGIES_04.md`：G15–G18
+- `GAME_NPC_LANDSCAPE.md`：G19，NPC / interactive-character cross-lineage map
 - `LITERATURE_MAP.md`：跨会议 landscape、coverage 与 density
 - `PAPER_AUTOPSIES.md`：第一轮逐篇阅读记录
 
