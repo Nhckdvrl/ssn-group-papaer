@@ -2,7 +2,7 @@
 
 Date: 2026-09-14  
 Target: ACL / EMNLP / NAACL Main  
-Source round: `search_rounds/2026-09-14_PRESSURE_SEARCH_K246_PLUS.md`
+Source round: [historical pre-reset search round](https://github.com/Nhckdvrl/ssn-group-papaer/blob/49d44ab1528dba95e7f0439d9ae4ecc7fc983a79/search_rounds/2026-09-14_PRESSURE_SEARCH_K246_PLUS.md)
 
 This batch registers the parent-level failures from the broad search after K245. These are anti-resurrection boundaries, not backup ideas.
 
