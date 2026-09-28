@@ -54,6 +54,7 @@ Do **not** add:
 - **FRONTIER** — recent; re-check before treating as current.
 - **ARTIFACT** — especially useful because code/weights/data support experiments.
 - **CRAFT** — research / experimentation practice rather than a scientific result.
+- **NEGATIVE** — especially valuable limitation / re-attribution result; not merely a failed method.
 
 ## Maintenance
 

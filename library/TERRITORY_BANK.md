@@ -86,7 +86,7 @@ Looped and depth-recurrent models reopen a basic architecture assumption: depth 
 
 Synthetic tasks define the mechanism we later “discover”; or incomparable training recipes are treated as architecture-only controls.
 
-**Anchors:** AR05–AR09, MI05, B02.
+**Anchors:** AR06–AR07, AR09, MI05, B02.
 
 ---
 
@@ -115,7 +115,7 @@ Synthetic tasks define the mechanism we later “discover”; or incomparable tr
 
 Rebranding ordinary RAG/KV pruning as “memory science”.
 
-**Anchors:** AR01–AR07, B11–B12.
+**Anchors:** AR01–AR08, B11–B12.
 
 ---
 
