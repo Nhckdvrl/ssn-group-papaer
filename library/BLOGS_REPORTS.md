@@ -121,6 +121,31 @@ https://qwen.ai/research
 **Why keep:** architecture, memory, multimodal, robotics and theory posts with links to primary papers.  
 https://research.google/blog/
 
+
+---
+
+## Game NPC / interactive-character industry evidence
+
+### B19 — Ubisoft — NEO NPC
+**Type:** INDUSTRY / boundary evidence  
+**Why keep:** writer-authored character identity and constraints are combined with generative dialogue; useful production reference for the authoring-vs-model boundary.  
+https://news.ubisoft.com/en-us/article/7Cm07zbBGy4Xml6WgYi25d/ubisoft-reveals-neo-npc
+
+### B20 — Ubisoft — Teammates
+**Type:** FRONTIER / industry prototype  
+**Why keep:** moves generative characters from standing conversation into FPS-style voice-directed co-play, where tactical action and personality must coexist.  
+https://news.ubisoft.com/en-us/article/3mWlITIuWuu0MoVuR6o8ps/ubisoft-reveals-teammates-an-ai-experiment-to-change-the-game
+
+### B21 — NVIDIA ACE — autonomous game characters
+**Type:** INDUSTRY / systems map  
+**Why keep:** useful source for deployed constraints around local inference, perception, speech, reasoning and control; do not treat product claims as scientific evidence.  
+https://developer.nvidia.com/ace
+
+### B22 — NVIDIA / KRAFTON — How PUBG Ally was built
+**Type:** INDUSTRY / architecture report  
+**Why keep:** unusually concrete production decomposition: fast/reflexive behavior-tree control plus a small local LLM for deliberate coordination/reasoning/speech. Strong evidence that NPC control authority and timescale are practical design variables.  
+https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/
+
 ---
 
 ## Primary literature / proceedings fallbacks
