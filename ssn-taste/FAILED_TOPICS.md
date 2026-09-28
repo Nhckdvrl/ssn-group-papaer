@@ -18,6 +18,13 @@ rather than:
 
 This caused four recurrent failure classes.
 
+### S01 — Surface action vs executed action semantics / API defaults
+
+The exact default-value contrast was not directly owned, but the honest paper identity compressed to a narrow case of underspecified tool intent / argument completion. Broadening it to “effective action semantics” would have required independent phenomena beyond optional defaults.
+
+**Do not revive** by adding more APIs, default types, or benchmark scale. A genuinely new route would need several non-arbitrary mechanisms where surface action and executed action semantics diverge under one common, unowned scientific consequence.
+
+
 ### 1. Construct/instrument failure
 
 **S11 — Value vs Measurement Precision.**  
@@ -52,7 +59,7 @@ A clean double dissociation could still compress to "different decisions use dif
 
 **S04, S06, S07, S10** were cancelled in the pool reset without treating their mother questions as empirically falsified. They had been admitted under the same flawed logic: clean conceptual worlds and hypothetical identifiability were overweighted before a naturally observed phenomenon existed.
 
-**S01/S02 and other early pool material** remain historical only. Do not reuse their shapes as positive examples.
+**S02 and other early pool material** remain historical only. Do not reuse their shapes as positive examples.
 
 ## Durable rules
 

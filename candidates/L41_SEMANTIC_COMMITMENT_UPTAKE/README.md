@@ -16,7 +16,7 @@ Read these in order:
 1. **`PROJECT_BRIEF.md`** — full scientific background, research question, what we want to establish, competing accounts, intended Main-paper narrative, closest-work boundary, and initial experiment.
 2. **`PILOT_CARD.md`** — frozen E01 protocol: semantic gate, direct-learning control, randomization, estimands, MDE, compute cap, decision table, and anti-gambling rules.
 3. **`REGISTRATION.md`** — locked project identity and authorization boundary.
-4. **`../../search_rounds/2026-09-15_WALL_BE_FINAL_SELECTION.md`** — Selection audit and owner/reviewer-compression analysis that justified promotion to L41.
+4. **[Historical pre-reset Selection audit](https://github.com/Nhckdvrl/ssn-group-papaer/blob/49d44ab1528dba95e7f0439d9ae4ecc7fc983a79/search_rounds/2026-09-15_WALL_BE_FINAL_SELECTION.md)** — owner/reviewer-compression analysis that justified the historical promotion to L41.
 
 If any later document changes the project into a generic factivity benchmark, Negation Neglect wording study, co-occurrence benchmark, or mechanism/probing project before E01, that document is out of scope.
 

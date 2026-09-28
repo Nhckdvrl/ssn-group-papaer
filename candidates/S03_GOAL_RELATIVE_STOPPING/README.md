@@ -5,7 +5,7 @@
 supervision variant, or name.** Read `docs/RESEARCH_LOG.md` bottom-up first;
 the last three entries are the ones that matter.
 **Opened:** 2026-09-17 · **Killed:** 2026-09-19
-**Topic authority:** `ssn-taste/S03_FROM_DOCUMENT_END_TO_TASK_DONE.md`
+**Current kill authority:** `../../failed/KILLED_LEDGER_CONTINUATION.md` (K195). Historical registration: [pre-reset S03 page](https://github.com/Nhckdvrl/ssn-group-papaer/blob/49d44ab1528dba95e7f0439d9ae4ecc7fc983a79/ssn-taste/S03_FROM_DOCUMENT_END_TO_TASK_DONE.md)
 
 ## Why it was killed
 

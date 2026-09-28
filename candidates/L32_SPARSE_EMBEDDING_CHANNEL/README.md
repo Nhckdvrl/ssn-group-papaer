@@ -83,7 +83,7 @@ Do not yet do:
 
 Full Selection record:
 
-`search_rounds/2026-09-13_SPARSE_EMBEDDING_CHANNEL_SELECTION.md`
+[historical pre-reset Selection record](https://github.com/Nhckdvrl/ssn-group-papaer/blob/49d44ab1528dba95e7f0439d9ae4ecc7fc983a79/search_rounds/2026-09-13_SPARSE_EMBEDDING_CHANNEL_SELECTION.md)
 
 
 ---
