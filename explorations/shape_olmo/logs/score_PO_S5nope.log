@@ -10,8 +10,8 @@ Traceback (most recent call last):
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
   File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/src/probe_order.py", line 82, in main
-    lp = torch.log_softmax(model(input_ids=x).logits[0, -1].float(), -1)
-                           ^^^^^^^^^^^^^^^^^^
+    lp = torch.log_softmax(model(input_ids=x, use_cache=False).logits[0, -1].float(), -1)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
     return self._call_impl(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -27,6 +27,6 @@ Traceback (most recent call last):
   File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
     return forward_call(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/xiang/.cache/huggingface/modules/transformers_modules/modeling_minicpm.py", line 2362, in forward
+  File "/home/xiang/.cache/huggingface/modules/transformers_modules/modeling_minicpm.py", line 2387, in forward
     raise ValueError(
-ValueError: You must use the new past_key_values format, such as the Cache class, instead of the old tuple format.
+ValueError: need attention_mask for flash attention, but got None.

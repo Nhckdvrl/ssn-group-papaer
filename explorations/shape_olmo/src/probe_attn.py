@@ -38,8 +38,8 @@ def main(path, tag, kind):
         hooks.append(att.q_norm.register_forward_hook(lambda m, a, o, i=i: cap.__setitem__(("q", i), o)))
         hooks.append(att.k_norm.register_forward_hook(lambda m, a, o, i=i: cap.__setitem__(("k", i), o)))
     rot = getattr(model.model, "rotary_emb", None)
-    if isinstance(rot, dict) or hasattr(rot, "keys"):          # tf4.57 olmo3: per-layer-type dict
-        rot = rot["full_attention"]
+    if rot is None and hasattr(model.model, "rotary_embs"):    # tf4.57 olmo3: per-layer-type ModuleDict
+        rot = model.model.rotary_embs["full_attention"]
     hd = getattr(cfg, "head_dim", None) or cfg.hidden_size // cfg.num_attention_heads
     H, KV = cfg.num_attention_heads, cfg.num_key_value_heads
     os.makedirs(f"{ROOT}/results/probe_attn", exist_ok=True)
@@ -69,8 +69,7 @@ def main(path, tag, kind):
             L = len(ids)
             rec = {"n": it["n"], "gap": it["gap"], "k": it["k"], "layers": {}}
             pos_emb = None
-            if rot is not None and getattr(cfg, "rope_parameters", None) is not None and \
-                    (cfg.rope_parameters or {}).get("rope_theta") is not None or (kind == "olmo3"):
+            if rot is not None:
                 pos_emb = rot(torch.zeros(1, L, hd, device="cuda", dtype=torch.bfloat16),
                               torch.arange(L, device="cuda")[None])
             for i in full_idx:
