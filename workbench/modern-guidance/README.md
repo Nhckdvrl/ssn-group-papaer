@@ -2,6 +2,26 @@
 
 **Lane: our-taste. Status: exploratory workbench — not a candidate.**
 
+## 进度页（中文，随每次里程碑更新）
+
+**最后更新：2026-09-28**
+
+### 现在在做什么
+- 基线驻留（baseline residency）：在 FLUX.2 [klein] Base 4B（整流流 Transformer，真 CFG，未蒸馏）上搭了自己的可插拔采样器，逐步记录条件/无条件速度的几何量。
+- E01（运行中）：GenEval 分层 120 条 × 2 种子 × 16 种配置。内容：CFG 强度扫描、Revisiting 论文四种方法（CFG++ / CFG-Zero* / APG / TCFG）原设置、以及"每步只保留沿 CFG 方向分量"的投影消融。
+- 评测：官方 GenEval（新建 `mg-eval` 环境，mmdet3 适配）、PickScore / HPSv2.1 / LAION 美学 / CLIP / 饱和度 / DINOv2 多样性、Qwen3-VL 问答裁判（DPG）。
+
+### 目前的实证事实（都还只是单模型、小样本）
+1. FLUX.2-klein 在 1024² 下的时间偏移让 30 步中 20 步落在 σ>0.8；最后约 5 步才从 σ=0.57 走到 0。"前几步"≠"低 σ"。
+2. 条件/无条件速度余弦 0.99–0.999；两者之差 ‖Δ‖ 只占 ‖v‖ 的 4–15%，并随去噪单调变小。
+3. CFG++ 在整流流 Euler 采样器里**严格等价**于一条强度曲线 `w_t = λσ(1−σ')/(σ−σ')`：λ=1.2 时两端 1.2、中段峰值 9.6；强度随步长反比变化（同一 λ 换步数就换了强度）。
+4. APG（w=12, 动量 −0.5）的更新里，正交于 CFG 方向的分量是 ‖Δ‖ 的 3.5–5 倍；无动量时 APG = CFG_w − (w−1)·(Δ 在 x0_c 方向上的投影)。
+
+### 尚未被授权的东西
+- 没有候选题，没有方法。上面的"早期引导决定计数/位置"只是待检验的假设。
+
+---
+
 ## Territory
 
 This workbench studies why many training-free diffusion guidance methods that improved older latent-diffusion / U-Net systems fail to deliver stable gains on modern rectified-flow Transformer models.

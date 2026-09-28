@@ -1,0 +1,13 @@
+# third-party code and weights (recreate: see scripts/eval/make_eval_env.sh and README "Reproduce")
+vendor/
+# papers and scraped pages (list and notes are in lit/NOTES.md)
+lit/*.pdf
+lit/*.txt
+lit/*.html
+lit/arxiv_guidance_scan.json
+# raw generations, per-step geometry and job queues are large; summaries live in results/summary/
+results/runs/
+results/queue/
+results/smoke/*.png
+__pycache__/
+results/logs/*.log
