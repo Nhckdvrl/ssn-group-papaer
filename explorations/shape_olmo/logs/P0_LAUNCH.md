@@ -47,3 +47,11 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 10:21 JST — PO_H7s3m launched on fvcrc10 GPU0
 2026-09-28 10:23 JST — PO_T7 launched on fvcrc10 GPU0
 2026-09-28 10:26 JST — PO_H7 launched on fvcrc12 GPU1
+2026-09-28 10:46 JST — queue: probe_channel (full vs reconly) on H7s2/H7s3m/H7
+2026-09-28 10:46 JST — PC_H7s2 launched on fvcrc10 GPU0
+2026-09-28 10:48 JST — PC_H7s3m launched on fvcrc10 GPU1
+2026-09-28 10:51 JST — PC_H7 launched on fvcrc10 GPU2
+2026-09-28 10:53 JST — queue: probe_order on S5 SWA-128 RoPE/NoPE/full
+2026-09-28 10:54 JST — PO_S5rope launched on fvcrc10 GPU3
+2026-09-28 10:56 JST — PO_S5nope launched on fvcrc10 GPU3
+2026-09-28 10:58 JST — PO_S5full launched on fvcrc10 GPU3

@@ -1,0 +1,32 @@
+The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/src/probe_order.py", line 89, in <module>
+    main(sys.argv[1], sys.argv[2])
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/src/probe_order.py", line 82, in main
+    lp = torch.log_softmax(model(input_ids=x).logits[0, -1].float(), -1)
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/.cache/huggingface/modules/transformers_modules/modeling_minicpm.py", line 2573, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/.cache/huggingface/modules/transformers_modules/modeling_minicpm.py", line 2398, in forward
+    raise ValueError(
+ValueError: You must use the new past_key_values format, such as the Cache class, instead of the old tuple format.

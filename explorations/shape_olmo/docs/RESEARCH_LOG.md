@@ -141,3 +141,43 @@ readout. Next, a channel dissociation on the same items: (a) hide the assignment
 full-attention layers (recurrent-only readout); (b) the reverse. If (a) recovers "last" and (b)
 shows primacy, then in this hybrid the combination is *worse* than its recurrent channel alone on
 order-dependent state.
+
+## GOAL (restated 2026-09-28 at the user's request; everything below is checked against it)
+
+Find one research question that is **deep, interesting and novel**, grounded jointly in
+(a) Alex Zhang's *Shape* agenda: a model's I/O / computation contract should fit the harness; hybrid
+    components have different properties that could act as different computational media, but
+    vertical hybrids fail to exploit them; composition matters; and
+(b) what this project has measured: CT05 (recurrence ≠ substitute for exact KV), CT09 (a partial,
+    retrieval-triggered trace from attention into recurrence), ShapeLab (token-type signatures =
+    generic improvement; H > max(T, R) on novel targets; DroPE-stage copy-precision loss; RoPE
+    hybrid tracks the latest assignment better than T; DroPE final reverses to primacy).
+
+**Bar (all five before anything is registered):**
+1. rests on a phenomenon we have measured and verified ourselves (not a hoped-for mechanism);
+2. is about how component roles **combine**, not about recipe tuning;
+3. nearest priors checked and not owning it;
+4. a causal manipulation exists at our scale (inference interventions first; small matched
+   training only if the question is itself about training);
+5. survives kill criteria written before the data.
+Each experiment must remove an explanation, not add a story. Wrong priors are recorded as wrong.
+
+## 2026-09-28 — channel dissociation, RoPE hybrid (H7s2); "binding in recurrence" reading REFUTED
+
+`probe_channel.py`: at the query tokens, full-attention layers are masked from the context
+[4, query_start); GDN still sees everything. `full` reproduces probe_order exactly (median |Δlp| 0.000).
+
+| H7s2 | keyed P(correct) | reassign P(correct) = P(last) | keyed P(last) when queried ≠ last |
+|---|---|---|---|
+| full, n = 4 / 8 | 0.96 / 0.95 | 0.44 / 0.35 | 0.02 / 0.01 |
+| rec-only, n = 4 / 8 | 0.28 / 0.13 (chance) | 0.36 / 0.29 | **0.36 / 0.23** |
+
+- Content-keyed selection needs attention (rec-only → chance), as in 2609.04434.
+- The rec-only "last value" signal is **unbound recency**: the same extra mass goes on the most recent
+  candidate value whether or not it belongs to the queried variable. My first reading (recurrence
+  carries the current value of `x`, a binding) was wrong; recorded as wrong. This agrees with
+  2609.04434 ("binding is lost").
+- Revised picture: recurrence supplies a recency cue; attention supplies key-bound selection;
+  latest-assignment needs both (full > rec-only on reassign).
+- Pending decisive cell: the DroPE final (primacy in full). Does its rec-only readout still carry
+  recency, i.e. is attention overriding the cue at readout? And H7s3m (DroPE, before the reversal).

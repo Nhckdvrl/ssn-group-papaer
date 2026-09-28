@@ -71,8 +71,9 @@ def items(tok):
 @torch.no_grad()
 def main(path, tag):
     from transformers import AutoModelForCausalLM, AutoTokenizer
-    tok = AutoTokenizer.from_pretrained(path)
-    model = AutoModelForCausalLM.from_pretrained(path, dtype=torch.bfloat16, device_map="cuda").eval()
+    tok = AutoTokenizer.from_pretrained(path, trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained(path, dtype=torch.bfloat16, device_map="cuda",
+                                                 trust_remote_code=True).eval()
     os.makedirs(f"{ROOT}/results/probe_order", exist_ok=True)
     with open(f"{ROOT}/results/probe_order/{tag}.jsonl", "w") as f:
         for it in items(tok):
