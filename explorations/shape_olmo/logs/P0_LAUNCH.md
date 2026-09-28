@@ -83,3 +83,7 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 12:26 JST — SV_granite_4_0_h_tiny launched on fvcrc10 GPU3
 2026-09-28 12:28 JST — SV_Bamba_9B_v2 launched on fvcrc12 GPU0
 2026-09-28 12:30 JST — SV_Qwen3_5_4B launched on fvcrc12 GPU1
+2026-09-28 13:02 JST — queue: ctx_ablation on Pile triplet + scale controls
+2026-09-28 13:02 JST — CX_ launched on fvcrc10 GPU0
+2026-09-28 13:03 JST — queue: ctx_ablation on Pile triplet + scale controls (retry, correct tags)
+2026-09-28 13:03 JST — CX_PPT launched on fvcrc10 GPU0
