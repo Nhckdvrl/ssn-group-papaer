@@ -249,3 +249,36 @@ on the full-attention layers (`no_rope_for_fa_layers`). reassign P(last) − P(f
   keying here (keyed n = 4, gap 32: 0.68 vs 0.91). Supporting evidence, not the decisive recurrent
   case. Pending: NoPE-by-design recurrent hybrids (Granite-4.0-H, Nemotron-H) vs RoPE hybrids
   (Falcon-H1, Bamba, Qwen3.5).
+
+## 2026-09-28 — public-hybrid survey (`results/probe_order_survey_summary.txt`): BROAD FRAMING KILLED by the pre-written rule
+
+Gaps 4, 32 (torch-fallback Mamba OOMs at 7k tokens); PROBE_N = 60. reassign P(last) − P(first), and
+the keyed content control:
+
+| model | pos. enc. | n=4 | n=8 | keyed n=4 |
+|---|---|---|---|---|
+| Granite-4.0-H-micro | NoPE from scratch | +0.03 | +0.01 | 0.94–0.96 |
+| Granite-4.0-H-tiny | NoPE from scratch | +0.22 | +0.27 | 0.73–0.97 |
+| Nemotron-H-8B-Base | NoPE from scratch | 0.00 | +0.22 | 0.29–0.56 (weak control) |
+| Falcon-H1-1.5B | RoPE | +0.10 | +0.05 | 0.93–0.94 |
+| Qwen3.5-4B | RoPE | +0.09 | +0.04 | 0.99–1.00 |
+| Bamba-9B-v2 | RoPE | +0.38 | +0.02 | 0.25–0.29 (fails control; excluded) |
+| Olmo-Hybrid final | NoPE via DroPE retrofit | −0.37 | −0.18 | 0.94–0.95 |
+| S5 NoPE (SWA-128 hybrid) | NoPE from scratch | −0.11 | −0.01 | 0.68–0.91 |
+
+**Rule (fixed before data):** if NoPE-by-design hybrids show recency within 0.05 of RoPE hybrids at
+n = 4, the broad "position-free hybrids read stale state" framing dies. NoPE-from-scratch recurrent
+hybrids +0.08 (mean) vs valid RoPE hybrids +0.095: Δ ≈ 0.015. **Killed.**
+Recurrent hybrids trained NoPE from scratch do get recency to their position-free attention (Granite-tiny
+is among the best), so the Kimi-Linear / Jamba / Granite design premise holds for native training on
+this probe.
+
+**What remains (narrower, not yet worth registering):** primacy appears in the DroPE retrofit
+(strong) and in the small SWA-128 NoPE hybrid (moderate). It is not a property of position-free
+recurrent hybrids as such. A candidate reading: attention that learned order from RoPE and then loses
+it does not learn to read the recurrent recency cue, and drifts to primacy. That is a claim about
+DroPE retrofits. Next check before deciding anything: do DroPE-retrofit **transformers** (public
+DroPE checkpoints, if any) show the same primacy? If yes, it is a DroPE property, not a hybrid
+interaction.
+Stop-loss note: every surviving version so far adds a condition ("only retrofit", "only SWA"). That
+counts against the line.
