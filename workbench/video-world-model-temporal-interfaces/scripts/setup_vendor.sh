@@ -20,5 +20,6 @@ echo "8301ac783410c6ad72c73c49326af6d71a9e4d1558238552796e825c2464913f  wheels/t
 for f in wheels/timm-1.0.24-py3-none-any.whl wheels/rotary_embedding_torch-0.8.9-py3-none-any.whl; do /home/xiang/miniconda3/envs/wam-va/bin/python -m zipfile -e $f pylib; done
 [ -d open-oasis ] || git clone https://github.com/etched-ai/open-oasis.git && git -C open-oasis checkout f59deef
 [ -d minWM ] || git clone https://github.com/shengshu-ai/minWM.git && git -C minWM checkout 2a54f4d
+[ -d HY-WorldPlay ] || git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git && git -C HY-WorldPlay checkout 1588e13
 $PIP download -q --no-deps --only-binary=:all: --python-version 3.10 --platform manylinux2014_x86_64 -d wheels lmdb==1.6.2  # 9d3efbbded74b9d213059a5a4048fb5bb47b5b7c4c2b366e43685cb6dd9d3100
 /home/xiang/miniconda3/envs/wam-va/bin/python -m zipfile -e wheels/lmdb-1.6.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl pylib

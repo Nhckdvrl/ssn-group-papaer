@@ -73,9 +73,11 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--ckpt", default=None, help="override inference.checkpoint (exported .pt with a 'model' entry)")
     ap.add_argument("--tag", default=None, help="name used in output files instead of the stage name")
+    ap.add_argument("--ov", default="", help="extra ';'-separated config overrides, e.g. inference.num_inference_steps=20")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     ov = [f"inference.checkpoint={a.ckpt}", "inference.prefer_ema=False"] if a.ckpt else []
+    ov += [o for o in a.ov.split(";") if o]
     cfg = apply_overrides(load(f"configs/wan21/action2v/infer/{a.stage}.py"), ov)
     name = a.tag or a.stage
     inf = BaseInferencer(cfg)

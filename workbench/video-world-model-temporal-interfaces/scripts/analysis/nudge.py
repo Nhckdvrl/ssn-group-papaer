@@ -64,7 +64,21 @@ def main():
                     continue  # isolated nudges only
                 resp = rl[max(0, k - 4):k + 6].sum() / (g * y[k])
                 (reg_b if (k + 1) % 4 == 0 else reg_nb).append(float(resp))
-        res[tag] = dict(gain_px_per_deg=g,
+        cont = {}
+        for (pid, spec), (rl, y) in d.items():
+            if spec == "step:3:3":
+                cont.setdefault("step3", []).append(float(rl[8:].mean() / (g * 3.0)))
+            elif spec.startswith("sine:3:"):
+                P = float(spec.split(":")[2])
+                k = np.arange(len(y))
+                sel = k >= 5
+                w = 2 * np.pi / P
+                X = np.stack([np.sin(w * k[sel]), np.cos(w * k[sel])], 1)
+                cy, *_ = np.linalg.lstsq(X, y[sel], rcond=None)
+                cr, *_ = np.linalg.lstsq(X, rl[sel], rcond=None)
+                cont.setdefault(f"sine{P:g}", []).append(float(np.hypot(*cr) / max(np.hypot(*cy), 1e-9) / g))
+        res_cont = {k: [round(float(np.mean(v)), 3), len(v)] for k, v in cont.items()}
+        res[tag] = dict(gain_px_per_deg=g, continuous=res_cont,
                         impulse_survival={k: [round(float(np.mean(v)), 3), len(v)] for k, v in sorted(surv.items())},
                         nudge_final_heading_err_deg=[round(float(np.mean(errs)), 3), len(errs)] if errs else None,
                         nudge_registration_block_first=[round(float(np.mean(reg_b)), 3), len(reg_b)] if reg_b else None,
@@ -73,6 +87,7 @@ def main():
     for tag, r in res.items():
         print("==", tag, "gain %.3f px/deg" % r["gain_px_per_deg"])
         print("  impulse survival:", r["impulse_survival"])
+        print("  continuous (rel. to own in-block gain):", r["continuous"])
         print("  nudge heading err (deg):", r["nudge_final_heading_err_deg"], " registration block-first:",
               r["nudge_registration_block_first"], " other:", r["nudge_registration_other"])
 
