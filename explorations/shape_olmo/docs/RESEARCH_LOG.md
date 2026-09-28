@@ -282,3 +282,25 @@ DroPE checkpoints, if any) show the same primacy? If yes, it is a DroPE property
 interaction.
 Stop-loss note: every surviving version so far adds a condition ("only retrofit", "only SWA"). That
 counts against the line.
+
+## 2026-09-28 — next candidate (pre-registered before any data): what does each architecture use from far context?
+
+Motivation. The only architecture-specific result that survived all controls is H > max(T, R) on
+novel targets (Pile triplet, T ≈ R). Token-type profiles cannot say why. Alex's agent premise is
+exactly a claim about old history: "densely look at recent, a coarse view of older history is
+enough". Khandelwal et al. 2018 (LSTMs: word order used only within ~50 tokens, far context as a bag
+of words) has, as far as searched, not been redone at loss level for SSMs / hybrids (2510.06640 is
+representation flow only; 2510.26912 is memory-recall design).
+
+Design (`src/ctx_ablation.py`): NeoX 2k windows, targets = last 128 positions (novel vs reused);
+context older than d ∈ {32, 128, 512, 1024} is dropped / chunk-shuffled (32-token chunks) /
+token-shuffled. Models: PPT, PPH, PPR (architecture-only), plus Pythia 1.4B → 2.8B and Mamba-2
+1.3B → 2.7B (same-architecture scale controls).
+Readouts: far-use = NLL(drop) − NLL(full); order-use = NLL(cshuf) − NLL(full); bag-use =
+NLL(drop) − NLL(tshuf).
+
+Kill rule. Let G = aggregate novel-target gap (T − H). If the hybrid's extra far-use over T (and over
+R) divided by G lies within the range of the same ratio for the two scale controls (extra far-use of
+the larger model / its aggregate novel gap), the hybrid's super-additivity is "a better model using
+more context" again, and the line dies. It survives only if the hybrid's gain is **disproportionately
+far-context** (or disproportionately order vs bag) relative to scale.
