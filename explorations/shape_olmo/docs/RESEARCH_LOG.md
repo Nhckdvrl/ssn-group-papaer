@@ -304,3 +304,36 @@ R) divided by G lies within the range of the same ratio for the two scale contro
 the larger model / its aggregate novel gap), the hybrid's super-additivity is "a better model using
 more context" again, and the line dies. It survives only if the hybrid's gain is **disproportionately
 far-context** (or disproportionately order vs bag) relative to scale.
+
+## 2026-09-28 — far-context ablation (`results/ctx_summary.txt`): KILLED by the pre-written rule
+
+Novel targets, far-use = NLL(drop_d) − NLL(full):
+
+| | d=32 | d=128 | d=512 | d=1024 |
+|---|---|---|---|---|
+| T++ | +0.173 | +0.080 | +0.022 | +0.006 |
+| Mamba-2-Attn (H) | +0.168 | +0.078 | +0.020 | +0.004 |
+| Mamba-2 (R) | +0.135 | +0.051 | +0.009 | +0.001 |
+
+Kill ratios (extra far-use of the better model / its novel-target gap):
+
+| pair | d=32 | d=128 | d=512 |
+|---|---|---|---|
+| T → H (arch) | −0.08 | −0.03 | −0.03 |
+| R → H (arch) | +0.40 | +0.34 | +0.14 |
+| Pythia 1.4 → 2.8B (scale) | +0.09 | +0.05 | +0.03 |
+| Mamba-2 1.3 → 2.7B (scale) | +0.14 | +0.05 | 0.00 |
+
+- The hybrid does **not** use far context more than the transformer (extra ≈ 0). Its novel-target advantage
+  over T (+0.063 here) is present with only the last 32 tokens intact, i.e. it is local, not
+  long-range. This refutes, for this architecture-only triplet, the "discourse state tracking over
+  long range" explanation (Li & Merrill's hypothesis). By the rule, the super-additivity is not
+  disproportionately far-context → **line killed**.
+- H uses far context more than R (ratio 0.40): the known attention-recall advantage (Zoology). Not new.
+- Side observation: token-shuffled far context is *worse* than dropped far context for every model
+  ("bag" < 0 everywhere), so shuffled history acts as harmful noise and the bag-of-words readout is
+  not identifiable in this design. The effect is similar across architectures; not a lead.
+
+**Status after the day:** three candidate lines tested with pre-written kill rules (reuse-gate,
+position-free-hybrid primacy [broad], far-context super-additivity). All three killed. Survivor:
+DroPE-retrofit primacy (narrow; awaiting the Llama-2 RoPE vs DroPE control).

@@ -94,3 +94,4 @@ Tagger check (wikipedia window 3, tokens 2000-2060): subword alignment correct; 
 2026-09-28 13:15 JST — CX_M2_13 launched on fvcrc12 GPU0
 2026-09-28 13:18 JST — queue: probe_order Llama-2-7B RoPE vs DroPE (transformer DroPE control)
 2026-09-28 13:18 JST — PO_L2rope launched on fvcrc10 GPU3
+2026-09-28 13:20 JST — PO_L2drope launched on fvcrc10 GPU1

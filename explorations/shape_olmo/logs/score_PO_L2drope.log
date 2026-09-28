@@ -1,0 +1,26 @@
+The module name  (originally ) is not a valid Python identifier. Please rename the original module to avoid import issues.
+Encountered exception while importing custom_models: No module named 'custom_models'
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/src/probe_order.py", line 90, in <module>
+    main(sys.argv[1], sys.argv[2])
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/explorations/shape_olmo/src/probe_order.py", line 76, in main
+    model = AutoModelForCausalLM.from_pretrained(path, dtype=torch.bfloat16, device_map="cuda",
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 549, in from_pretrained
+    config, kwargs = AutoConfig.from_pretrained(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/auto/configuration_auto.py", line 1346, in from_pretrained
+    config_class = get_class_from_dynamic_module(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/dynamic_module_utils.py", line 604, in get_class_from_dynamic_module
+    final_module = get_cached_module_file(
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/dynamic_module_utils.py", line 427, in get_cached_module_file
+    modules_needed = check_imports(resolved_module_file)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/dynamic_module_utils.py", line 260, in check_imports
+    raise ImportError(
+ImportError: This modeling file requires the following packages that were not found in your environment: custom_models. Run `pip install custom_models`

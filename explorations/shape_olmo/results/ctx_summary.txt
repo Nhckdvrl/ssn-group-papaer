@@ -1,0 +1,30 @@
+== PPT: full NLL all 1.730
+  all    d32: far +0.316 ord +0.174 bag -0.109 | d128: far +0.169 ord +0.098 bag -0.042 | d512: far +0.056 ord +0.030 bag -0.015 | d1024: far +0.021 ord +0.010 bag -0.008
+  novel  d32: far +0.173 ord +0.196 bag -0.142 | d128: far +0.080 ord +0.103 bag -0.067 | d512: far +0.022 ord +0.029 bag -0.022 | d1024: far +0.006 ord +0.009 bag -0.010
+  reused d32: far +0.462 ord +0.168 bag -0.108 | d128: far +0.249 ord +0.100 bag -0.035 | d512: far +0.086 ord +0.031 bag -0.011 | d1024: far +0.032 ord +0.010 bag -0.006
+== PPH: full NLL all 1.699
+  all    d32: far +0.305 ord +0.177 bag -0.098 | d128: far +0.163 ord +0.100 bag -0.039 | d512: far +0.054 ord +0.032 bag -0.011 | d1024: far +0.020 ord +0.011 bag -0.006
+  novel  d32: far +0.168 ord +0.208 bag -0.138 | d128: far +0.078 ord +0.111 bag -0.067 | d512: far +0.020 ord +0.032 bag -0.022 | d1024: far +0.004 ord +0.009 bag -0.010
+  reused d32: far +0.444 ord +0.169 bag -0.098 | d128: far +0.239 ord +0.100 bag -0.033 | d512: far +0.082 ord +0.032 bag -0.007 | d1024: far +0.030 ord +0.011 bag -0.004
+== PPR: full NLL all 1.752
+  all    d32: far +0.278 ord +0.153 bag -0.140 | d128: far +0.142 ord +0.086 bag -0.056 | d512: far +0.043 ord +0.028 bag -0.019 | d1024: far +0.016 ord +0.010 bag -0.008
+  novel  d32: far +0.135 ord +0.187 bag -0.140 | d128: far +0.051 ord +0.093 bag -0.060 | d512: far +0.009 ord +0.025 bag -0.016 | d1024: far +0.001 ord +0.007 bag -0.006
+  reused d32: far +0.428 ord +0.137 bag -0.181 | d128: far +0.226 ord +0.083 bag -0.073 | d512: far +0.074 ord +0.030 bag -0.026 | d1024: far +0.026 ord +0.010 bag -0.012
+== PY14: full NLL all 1.908
+  all    d32: far +0.313 ord +0.179 bag -0.195 | d128: far +0.163 ord +0.100 bag -0.083 | d512: far +0.051 ord +0.032 bag -0.031 | d1024: far +0.017 ord +0.013 bag -0.016
+  novel  d32: far +0.138 ord +0.186 bag -0.214 | d128: far +0.055 ord +0.095 bag -0.100 | d512: far +0.008 ord +0.025 bag -0.041 | d1024: far -0.000 ord +0.011 bag -0.021
+  reused d32: far +0.499 ord +0.184 bag -0.223 | d128: far +0.273 ord +0.106 bag -0.084 | d512: far +0.093 ord +0.036 bag -0.027 | d1024: far +0.035 ord +0.014 bag -0.011
+== PY28: full NLL all 1.814
+  all    d32: far +0.312 ord +0.184 bag -0.164 | d128: far +0.165 ord +0.103 bag -0.061 | d512: far +0.053 ord +0.033 bag -0.022 | d1024: far +0.020 ord +0.012 bag -0.011
+  novel  d32: far +0.155 ord +0.203 bag -0.179 | d128: far +0.065 ord +0.105 bag -0.075 | d512: far +0.014 ord +0.030 bag -0.028 | d1024: far +0.006 ord +0.011 bag -0.012
+  reused d32: far +0.477 ord +0.182 bag -0.184 | d128: far +0.258 ord +0.104 bag -0.065 | d512: far +0.088 ord +0.034 bag -0.020 | d1024: far +0.031 ord +0.010 bag -0.010
+== M2_13: full NLL all 1.847
+  all    d32: far +0.277 ord +0.155 bag -0.181 | d128: far +0.141 ord +0.085 bag -0.071 | d512: far +0.042 ord +0.027 bag -0.025 | d1024: far +0.013 ord +0.009 bag -0.012
+  novel  d32: far +0.109 ord +0.178 bag -0.206 | d128: far +0.042 ord +0.086 bag -0.083 | d512: far +0.010 ord +0.024 bag -0.024 | d1024: far -0.000 ord +0.006 bag -0.012
+  reused d32: far +0.448 ord +0.145 bag -0.209 | d128: far +0.237 ord +0.087 bag -0.084 | d512: far +0.074 ord +0.032 bag -0.031 | d1024: far +0.024 ord +0.010 bag -0.016
+== kill-rule ratios on NOVEL targets: extra far-use of the better model / its full-context gap
+arch T->H      gap +0.063  d32: extra -0.005 [-0.015,+0.005] ratio -0.08 | d128: extra -0.002 [-0.009,+0.006] ratio -0.03 | d512: extra -0.002 [-0.007,+0.003] ratio -0.03 | d1024: extra -0.001 [-0.005,+0.002] ratio -0.02
+arch R->H      gap +0.082  d32: extra +0.032 [+0.020,+0.045] ratio +0.40 | d128: extra +0.028 [+0.018,+0.037] ratio +0.34 | d512: extra +0.011 [+0.004,+0.017] ratio +0.14 | d1024: extra +0.003 [-0.001,+0.007] ratio +0.04
+arch T->R      gap -0.019  d32: extra -0.038 [-0.051,-0.024] ratio +1.97 | d128: extra -0.029 [-0.039,-0.019] ratio +1.54 | d512: extra -0.013 [-0.020,-0.006] ratio +0.69 | d1024: extra -0.005 [-0.009,-0.000] ratio +0.24
+scale Pythia   gap +0.189  d32: extra +0.017 [+0.006,+0.027] ratio +0.09 | d128: extra +0.010 [+0.002,+0.018] ratio +0.05 | d512: extra +0.006 [-0.000,+0.012] ratio +0.03 | d1024: extra +0.006 [+0.001,+0.011] ratio +0.03
+scale Mamba-2  gap +0.187  d32: extra +0.026 [+0.014,+0.041] ratio +0.14 | d128: extra +0.009 [+0.000,+0.017] ratio +0.05 | d512: extra -0.001 [-0.006,+0.004] ratio -0.00 | d1024: extra +0.001 [-0.003,+0.005] ratio +0.01
