@@ -13,3 +13,10 @@ echo "7b4df175cdb08ba400f45cae3bdcae7ba8365db4d165fc65fd04b050ab63b46b  wheels/o
 f224469b4168294902bb1efa80a8bf7855f24c99aef99cbefc1bcd3cce77881b  wheels/antlr4-python3-runtime-4.9.3.tar.gz" | sha256sum -c
 /home/xiang/miniconda3/envs/wam-va/bin/python -m zipfile -e wheels/omegaconf-2.3.0-py3-none-any.whl pylib
 tar xzf wheels/antlr4-python3-runtime-4.9.3.tar.gz -C wheels && cp -r wheels/antlr4-python3-runtime-4.9.3/src/antlr4 pylib/
+# Open-Oasis deps (pure python)
+$PIP download -q --no-deps -d wheels timm==1.0.24 rotary-embedding-torch==0.8.9
+echo "8301ac783410c6ad72c73c49326af6d71a9e4d1558238552796e825c2464913f  wheels/timm-1.0.24-py3-none-any.whl
+700e8de9dfbefba5f9117a66652a2520648dcc60136895f0068b6a85347cab02  wheels/rotary_embedding_torch-0.8.9-py3-none-any.whl" | sha256sum -c
+for f in wheels/timm-1.0.24-py3-none-any.whl wheels/rotary_embedding_torch-0.8.9-py3-none-any.whl; do /home/xiang/miniconda3/envs/wam-va/bin/python -m zipfile -e $f pylib; done
+[ -d open-oasis ] || git clone https://github.com/etched-ai/open-oasis.git && git -C open-oasis checkout f59deef
+[ -d minWM ] || git clone https://github.com/shengshu-ai/minWM.git && git -C minWM checkout 2a54f4d

@@ -8,6 +8,7 @@ rollout is bit-deterministic given the seed). Sequence families:
 Usage: python mg2_sysid.py --out DIR --images 0000,0001 --seeds 0 --seqs impulse:0.1:9-32,sine:0.1:4:0 --latents 12
 """
 import argparse
+import hashlib
 import math
 import os
 
@@ -50,6 +51,11 @@ def expand(seqs):
     return out
 
 
+def spec_tag(spec):
+    t = spec.replace(":", "~")
+    return t if len(t) <= 60 else "series~" + hashlib.md5(spec.encode()).hexdigest()[:10]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
@@ -71,7 +77,7 @@ def main():
                 ref = R.rollout(path, seed, kb, ms, a.latents)
                 np.savez_compressed(ref_f, frames=ref[:, ::2, ::2].byte().cpu().numpy())
             for spec in expand(a.seqs):
-                f = os.path.join(a.out, f"{im}_s{seed}_L{a.latents}_{spec.replace(':', '~')}.npz")
+                f = os.path.join(a.out, f"{im}_s{seed}_L{a.latents}_{spec_tag(spec)}.npz")
                 if os.path.exists(f):
                     continue
                 kb, ms = build(spec, n)

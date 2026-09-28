@@ -7,6 +7,7 @@ it with deterministic flow-matching Euler (shift 5.0, as in the repo's FlowMatch
 Usage: python mg2_base.py --out DIR --images 0001 --seeds 0 --seqs impulse:0.1:9-40 --steps 30
 """
 import argparse
+import hashlib
 import json
 import os
 
@@ -74,6 +75,11 @@ def sample(R, model, img_path, seed, kb, ms, n_lat, steps):
     return ((v.float() + 1) * 127.5).clip(0, 255)[0]
 
 
+def spec_tag(spec):
+    t = spec.replace(":", "~")
+    return t if len(t) <= 60 else "series~" + hashlib.md5(spec.encode()).hexdigest()[:10]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
@@ -103,7 +109,7 @@ def main():
                                     det_maxdiff=float((ref - ref2).abs().max()))
                 print(tag, "ref T", ref.shape[0], "determinism", float((ref - ref2).abs().max()), flush=True)
             for spec in expand(a.seqs):
-                f = os.path.join(a.out, f"{tag}_{spec.replace(':', '~')}.npz")
+                f = os.path.join(a.out, f"{tag}_{spec_tag(spec)}.npz")
                 if os.path.exists(f):
                     continue
                 kb, ms = build(spec, n)
