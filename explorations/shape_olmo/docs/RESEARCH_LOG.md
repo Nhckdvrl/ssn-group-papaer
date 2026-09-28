@@ -337,3 +337,16 @@ Kill ratios (extra far-use of the better model / its novel-target gap):
 **Status after the day:** three candidate lines tested with pre-written kill rules (reuse-gate,
 position-free-hybrid primacy [broad], far-context super-additivity). All three killed. Survivor:
 DroPE-retrofit primacy (narrow; awaiting the Llama-2 RoPE vs DroPE control).
+
+## 2026-09-28 — Llama-2-7B RoPE vs Sakana DroPE control: INVALID; DroPE narrow line dropped
+
+- L2rope (NousResearch mirror of Llama-2-7b-hf): keyed 0.83–0.97; reassign last/first n = 4: 0.35 / 0.24.
+- L2drope (SakanaAI/Llama-2-7b-hf-DroPE, loads as DroPELlamaForCausalLM / NoPELlamaAttention with the
+  snapshot's `custom_models` on PYTHONPATH): **keyed at chance** (0.54 / 0.23 / 0.14 at n = 2 / 4 / 8).
+  Plain-text NLL 3.33 vs 2.74 for the RoPE twin (1024 tokens). DroPE claims near-parity in-context,
+  so this checkpoint and runtime combination does not reproduce the method; its reassign numbers are
+  uninterpretable.
+- **Decision:** control invalid, not debugged further. Whatever its outcome, the narrow
+  "DroPE-retrofit primacy" line fails goal criterion 2 (component composition) or survives only with
+  extra conditions (stop-loss). **Dropped.** The Olmo-Hybrid DroPE observations stay recorded as
+  findings about that model.
