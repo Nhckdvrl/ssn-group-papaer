@@ -144,3 +144,4 @@ Until then, remain a workbench.
 - `ai4quant/` — exploratory family.
 - `moe-route-preference/` — stable observation, candidate status not earned.
 - `video-world-model-temporal-interfaces/` — **our-taste**, exploratory study of temporal representation, alignment, control, causality, and compression interfaces in video/world models.
+- `npc-deception-investigability/` — **our-taste**, NPC-specific study of when generative deception remains mechanically investigable rather than creating game-world dead ends.
