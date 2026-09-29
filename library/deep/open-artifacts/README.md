@@ -4,6 +4,12 @@ Open models, checkpoints, code, Hugging Face/startup artifacts, and lineage note
 
 Primary use: artifact archaeology before compute. Availability of an artifact is not itself a research idea.
 
+## Interpretability / model-science artifacts
+
+Detailed current map: [`INTERPRETABILITY_TOOLING_2026.md`](INTERPRETABILITY_TOOLING_2026.md).
+
+Use the map to choose an instrument from the scientific claim (localization, causal-variable intervention, sparse decomposition, model diffing, abstraction validity), not to choose a trendy tool first and then manufacture a question.
+
 
 ## Game NPC / interactive-character artifacts
 
