@@ -36,7 +36,11 @@ PROMPTS = {
 
 def yaw_list(spec, n_mot):
     y = np.zeros(n_mot)
-    if spec != "none":
+    if spec.startswith("yawlist:"):  # yawlist:k=v_k=v (explicit per-step yaw in degrees)
+        for kv in spec[8:].split("_"):
+            k, v = kv.split("=")
+            y[int(k)] = float(v)
+    elif spec != "none":
         kind, A, k = spec.split(":")
         if kind == "impulse":
             y[int(k)] = float(A)
@@ -66,12 +70,17 @@ def main():
     ap.add_argument("--steps", type=int, default=4)
     ap.add_argument("--tag", default="wpdist")
     ap.add_argument("--model_type", default="ar", choices=["ar", "bi"])
+    ap.add_argument("--overlap", action="store_true", help="seam-overlap AR rollout (scripts/wp_overlap.py)")
     ap.add_argument("--prompts_json", default=None, help="name -> caption (e.g. data/wp_scenes/prompts.json)")
     a = ap.parse_args()
     if a.prompts_json:
         import json
         PROMPTS.update(json.load(open(a.prompts_json)))
     os.makedirs(a.out, exist_ok=True)
+    if a.overlap:
+        sys.path.insert(0, os.path.join(WB, "scripts"))
+        import wp_overlap
+        wp_overlap.install()
     initialize_infer_state(argparse.Namespace(
         sage_blocks_range="0-53", use_sageattn=False, enable_torch_compile=False, use_fp8_gemm=False,
         quant_type="fp8-per-block", include_patterns="double_blocks", use_vae_parallel=False))
