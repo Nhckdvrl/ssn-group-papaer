@@ -1,6 +1,6 @@
 # MoE Route Preference vs Executed Top-K — Workbench
 
-**Status: stable local observation / knowledge asset — not a paper candidate.**
+**Status: CLOSED AS ACTIVE PAPER LINE / KNOWLEDGE ASSET (2026-09-29 ceiling audit).**
 
 This workbench inherits the strongest observation from the killed CT03 MoE-routing lineage.
 
@@ -18,3 +18,10 @@ Do **not** turn it into “try a different ranking loss until one works.” A pa
 
 Canonical historical evidence:
 `../../archive/candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/`
+
+
+## Ceiling audit
+
+The local observation remains valid, but its broader ceiling has been overtaken by *When Are Experts Misrouted? Counterfactual Routing Analysis in Mixture-of-Experts Language Models* (2026), which directly compares executed routes against equal-compute counterfactual alternatives across multiple modern MoEs, identifies routing failures on fragile reasoning tokens, and demonstrates a router-only intervention with downstream reasoning effects.
+
+Therefore the current line should **not** be revived as a routing-loss/ranking-consistency paper. Reopen only if a distinct MoE-specific consequence appears that the counterfactual-routing literature does not already explain.
