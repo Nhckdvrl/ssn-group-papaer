@@ -132,8 +132,11 @@ The current public repository contains later diagnostics that materially narrow 
 - most independently recoverable action-only trait signal is extraversion, while conscientiousness falls below chance under the held-out shift;
 - the learned persona projection keeps trait information but compresses raw Qwen embedding geometry strongly: raw Big-Five probe **0.898** vs projected **0.799**, raw/projected cosine-geometry correlation **rho=0.404**, effective rank **3.87**;
 - gradient-path auditing shows the InfoNCE term updates the persona projection and trajectory encoder but has **no direct actor-head gradient path**. Any behavioral effect must therefore be mediated indirectly through the shared projection.
+- source-level inspection reveals an additional attribution issue that is easy to miss from the headline architecture: each persona record also contains `preferred_actions`, `decay_modifiers`, and Big-Five labels used by the environment. In Mini-Inzoi v3, preferred actions receive a **+0.5 reward**, action-style/Big-Five cosine contributes a **0.3-weight style reward**, social reward depends on Big-Five compatibility, and decay modifiers change need dynamics. Persona therefore enters both **policy conditioning** and **reward/environment dynamics** during training.
 
 The repository itself states the defensible conclusion narrowly: InfoNCE is load-bearing for alignment between the learned trajectory encoder and persona projection, but these independent probes **do not establish an advantage in independently observable Big-Five behavior**.
+
+The dual-channel design suggests a particularly cheap diagnostic that is not present in the current audit: cross the persona supplied to the policy embedding with the persona configuration supplied to the environment/reward while holding game state and policy weights fixed. This can separate **language-conditioned causal control** from behavior induced by persona-specific reward/dynamics.
 
 This is a high-value baseline-first pressure because the headline representation/evaluator signal and an independent behavioral readout disagree inside the same open system. Do not summarize PCSP simply as “persona consistency solved.”
 
