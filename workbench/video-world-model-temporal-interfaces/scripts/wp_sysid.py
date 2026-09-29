@@ -38,8 +38,12 @@ def yaw_list(spec, n_mot):
     y = np.zeros(n_mot)
     if spec != "none":
         kind, A, k = spec.split(":")
-        assert kind == "impulse"
-        y[int(k)] = float(A)
+        if kind == "impulse":
+            y[int(k)] = float(A)
+        elif kind == "step":
+            y[int(k):] = float(A)
+        else:
+            raise ValueError(spec)
     return y
 
 
