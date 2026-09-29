@@ -12,7 +12,7 @@ Current scope ladder:
 
 **Hard ceiling gate:** before paper promotion, require (i) broader system/statistical coverage, (ii) a real downstream/interactive consequence beyond synthetic pulses, (iii) a unified mechanism or sharply bounded structural explanation, and (iv) a repair validated on at least two systems without unacceptable quality/cost regression. If these fail, demote rather than write a narrow "chunk-first bug" paper.
 
-Phase-1 outcome (2026-09-29): (ii) **passed on two systems** (human key-press replay, minWM + HY-WorldPlay); (iv) **repair passed on two systems for control**, quality/cost not yet measured; (iii) **half**: the trigger is established (chunk↔context seam, arises at causalization in both lineages), the training-side cause is not (two training fixes failed at tested doses); (i) still thin (n = 3–5 scenes, one seed, one readout). Full feasibility review: [`CVPR_ASSESSMENT.md`](CVPR_ASSESSMENT.md).
+Phase-1 outcome (2026-09-29): (ii) **provisionally passed on two systems** (human key-press replay, minWM + HY-WorldPlay) — ⚠️ the replay windows confound seam position with press duration (see 校对备注·第二轮), so the seam-vs-other loss rates must be re-measured with phase-balanced replay; (iv) **repair passed on two systems for control**, quality/cost not yet measured; (iii) **half**: the trigger is established (chunk↔context seam, arises at causalization in both lineages), the training-side cause is not (two training fixes failed at tested doses); (i) still thin (n = 3–5 scenes, one seed, one readout). Full feasibility review: [`CVPR_ASSESSMENT.md`](CVPR_ASSESSMENT.md).
 
 ---
 
@@ -28,12 +28,19 @@ Phase-1 outcome (2026-09-29): (ii) **passed on two systems** (human key-press re
 
 | 门槛 | 结论 | 关键证据 |
 |---|---|---|
-| 一、真实影响 | **通过（2 个系统）** | 真人按键 42–55% ≤1 个潜变量，75–94% 短于一个块；回放中接缝起步的按键 minWM 丢失 55%（其余 27%）、WorldPlay 丢失 25%（其余 **0%**）；单潜变量点按落在接缝两个系统都**全丢**。流式交互中每次起步都丢第一个潜变量。 |
+| 一、真实影响 | **暂定通过（2 个系统）**；⚠️ 回放窗口把接缝位置和按键时长混在一起，需相位平衡重做（见下方校对备注·第二轮） | 真人按键 42–55% ≤1 个潜变量，75–94% 短于一个块；回放中接缝起步的按键 minWM 丢失 55%（其余 27%）、WorldPlay 丢失 25%（其余 **0%**）；单潜变量点按落在接缝两个系统都**全丢**。流式交互中每次起步都丢第一个潜变量。 |
 | 二、跨系统修复 | **控制上通过（2 个系统）**；画质/代价未测 | 推理端块重叠：minWM 接缝起步丢失 55%→10%、朝向误差 −25%；WorldPlay（需"上下文锚定"）25%→0%、朝向误差 −28%，宽度 2 时失效 12/30→2/30。 |
 | 三、统一机制 | **一半** | 已确立"触发条件"：两个谱系都在因果化阶段出现（蒸馏前已有）；接缝规则统一；重叠变体对比证明只有接缝两侧同一帧才不失聪。未确立"为何学成这样"：数据相位随机化（E23）和只对接缝加噪（E28）两种训练端修复在所试剂量下都无效。 |
 | （统计覆盖） | **不足** | 多数结论 n=3–5 个场景、单种子、只测偏航、只有相位相关一种读数。 |
 
 **建议：进入第二阶段**（约 3–4 周，见文末计划）。
+
+**校对备注·第二轮（2026-09-29 夜，对照 `results/summary/*.json` 与脚本）**
+1. **E29/E29b 选窗伪影（必须重做）**：`vpt_press_specs.py` 从左往右滑窗，第一次满足"最后一个按键在 n_lat−4 前结束"就接受 → 40 个窗口里 25 个（minWM）/ 27 个（WorldPlay）的最后一个按键**恰好结束在 n_lat−4**，于是起点完全由按键时长决定：单潜变量按键几乎必然落在接缝（minWM 5/7、WorldPlay 4/4），2 潜变量按键落在块内第 3 位（minWM 起点位置分布 12/6/7/24）。接缝组里单潜变量按键占 42%/40%，其余组只占 5%/0%。所以"接缝丢失 55% vs 27%""全部丢失都来自接缝起步"混入了按键时长（而 minWM 本身有与位置无关的短按死区）。重叠推理前后的**配对**比较仍有效。重做方法：窗口按固定时间步长选取，每个窗口再按 4 个相位偏移各回放一次（相位平衡），在同一个按键内比较接缝与非接缝。另：minWM 实际回放 27 个窗口 × 2 提示词（heading n=54），不是 40 个。
+2. **朝向误差是自校准的**：`press_replay.py` 用每个条件自己的增益 g 换算角度；WorldPlay ctx 重叠的增益是 4.36 px/°，标准是 3.21（+36%，E25b 稳态约 3.5），可能过度转动，而自校准会把过度转动藏起来。"−25%/−28%"需要用统一标定或位姿估计（度）重算。
+3. **E30 全位置计数**：ctx 宽度 1 块首 0/9 失效，但全部位置仍有 5/30 失效（k=6 2/3、k=12 3/3）；宽度 2 为 2/30。
+4. **机制尚未跨系统统一**：同样的"重新生成式"重叠，在 minWM 上有效（E27，移位后的接缝 k=5/8/11 为 1.07/1.29/0.70，n=4），在 WorldPlay 上让盲区换位置（E30，同样位置 3/3 失效）。已核对 minWM 源码：时间 RoPE 由 `current_start` 计算，`local_attn_size=20` 覆盖整段，不是位置伪影。所以"块与上下文之间的位姿跳变即失聪"目前只在 WorldPlay 上成立，需要在 minWM 上跑同样的 regen/clamp/ctx 三种变体。
+5. **"每次起步都丢第一个潜变量"只对位姿条件的模型成立**：MG2（逐帧速度/按键）阶跃起点在任何相位都逐帧精确（E01），它丢的是"只落在块首的脉冲"（块内多数派抹掉）。论文里要分开表述。
 
 ---
 
@@ -67,6 +74,7 @@ Phase-1 outcome (2026-09-29): (ii) **passed on two systems** (human key-press re
 |---|---|
 | **真人按键统计**（VPT，31 名玩家，1640 次按键 + 4153 段转视角） | a/d 键中位 0.30 s，45–48% ≤0.25 s（≤1 个 minWM 潜变量），93–94% ≤1 s（≤1 个块）；w 键 42% ≤0.25 s；鼠标转视角 **70% ≤0.25 s**。 |
 | **E29 minWM 回放**（真人 a/d 按键锁存到潜变量、3°/潜变量；DMD；40 个 5 秒窗口 × 2 提示词，72 次按键） | 标准：接缝起步生效 0.56、**丢失 55%**；其余 0.87、丢失 27%（另有与位置无关的短按死区）；单潜变量点按落在接缝 **−0.06（6/6 全丢）**；朝向误差 4.72°。重叠推理：接缝起步 **0.91、丢失 10%**；单潜变量接缝点按 0.55；朝向误差 **3.54°（−25%）**；增益不变。 |
+| ⚠️ E29/E29b 的"接缝 vs 其余"对比 | 混入了按键时长（选窗伪影，单潜变量按键几乎都被放在接缝上）；只有同一按键在标准/重叠推理之间的配对比较可以直接引用。 |
 | **E29b WorldPlay 回放**（同一批按键按 24fps 锁存；3 个场景，75 次按键） | 标准：接缝起步 0.84、**丢失 25%**；其余 1.05、**丢失 0%**；单潜变量接缝点按 **0.00（6/6 全丢）**；朝向误差 1.57°。ctx 重叠：接缝起步 1.08、**丢失 0%**；朝向误差 **1.13°（−28%）**。→ **全部丢失都来自接缝起步。** |
 | E13 连续人类鼠标输入（MG2，24 段） | R² 学生 0.65 / 老师 0.68：连续转动下损失小——接缝处已有运动会延续，所以连续输入看不出问题；问题集中在起步和短按。 |
 | E19 细调任务（minWM，47 次 1.5–3° 细调） | 5 秒后朝向误差 2.9°；落在块首的孤立细调生效率 0.006。 |
@@ -151,8 +159,8 @@ Phase-1 outcome (2026-09-29): (ii) **passed on two systems** (human key-press re
 | VAE 相位/跳动 | `vae_phase.py`、`vae_jump.py` |
 | 训练：DMD 微调（E18）、TF 微调（E23/E28）、接缝加噪配置 | `run_dmd_ft.sh`、`mwm_event_lmdb.py`、`run_tf_ft.sh`、`mwm_phase_lmdb.py`、`seam_aug.py`、`configs/stage1_ar_tf_seam.py` |
 | 评测已训练 checkpoint | `eval_ft.sh`（DMD）、`eval_tf_ft.sh`（TF） |
-| 真人按键回放窗口（E29） | `vpt_press_specs.py`（输出在 `results/summary/e29_specs*.json`） |
-| 分析 | `analysis/phase_survival.py`（按块内位置）、`analysis/press_replay.py`（逐按键）、`analysis/nudge.py`、`analysis/sysid.py`、`analysis/mwm_bandwidth.py` |
+| 真人按键回放窗口（E29） | `vpt_press_specs.py`（输出在 `results/summary/e29_specs*.json`；默认模式即首轮 E29 用的滑窗，有时长–相位混杂；`--balanced` 为相位平衡回放：固定时间网格取窗，每个窗口按 4 个相位各输出一份，带 `wid`/`phase` 字段） |
+| 分析 | `analysis/phase_survival.py`（按块内位置）、`analysis/press_replay.py`（逐按键；新增按时长分层的接缝/非接缝对比与自助法 CI，`--ref_tag` 用参考条件的增益统一标定）、`analysis/nudge.py`、`analysis/sysid.py`、`analysis/mwm_bandwidth.py` |
 | 作废 | `mwm_tf_probe.py`（E26） |
 
 汇总结果在 `results/summary/`（按实验编号命名）。
