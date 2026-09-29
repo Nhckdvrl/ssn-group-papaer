@@ -171,6 +171,7 @@ Until then, remain a workbench.
 - `video-world-model-temporal-interfaces/` — **our-taste; ACTIVE, conditional**. Current phenomenon already spans multiple independent interactive/world-model systems and points toward a general limitation of chunked causal generation. Continue only under the hard venue-scale gate in its README.
 - `scoped-context-state/` — **sasano-taste; ACTIVE, exploratory**. Investigates whether LLMs can enter, maintain, switch, and exit temporary contextual states; agent execution is explicitly research-navigation-first and must kill/pivot rather than locally optimize a weak story.
 - `realtime-agent-capability-transition/` — **our-taste; ACTIVE, exploratory**. Studies the capability transition from sequential/turn-based agents to realtime, streaming, and asynchronous agents. No failure slice or method is pre-registered; the agent must reproduce strong baselines and discover the load-bearing transition empirically.
+- `model-diffing-measurement/` — **our-taste; ACTIVE, exploratory**. Treats model diffing as a measurement problem: reproduce behavior/logit/activation/crosscoder baselines, then test when internal access provides genuine incremental evidence across increasingly realistic model-change regimes.
 
 ### Frozen / demoted / knowledge assets
 
