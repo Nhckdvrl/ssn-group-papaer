@@ -171,6 +171,7 @@ Until then, remain a workbench.
 - `video-world-model-temporal-interfaces/` — **our-taste; ACTIVE, conditional (phase 1 passed 2026-09-29)**. Chunk-onset control deafness reproduced on three independent systems (MG2, minWM, HY-WorldPlay), arising at causalization; human key-press replay shows lost seam-onset presses on two systems, and a context-anchored chunk-overlap rollout repairs control on both. Open: quality/cost of the repair, sample size, a 4th system, and the training-side cause. Continue only under the hard venue-scale gate in its README.
 - `scoped-context-state/` — **sasano-taste; ACTIVE, exploratory**. Investigates whether LLMs can enter, maintain, switch, and exit temporary contextual states; agent execution is explicitly research-navigation-first and must kill/pivot rather than locally optimize a weak story.
 - `realtime-agent-capability-transition/` — **our-taste; ACTIVE, exploratory**. Studies the capability transition from sequential/turn-based agents to realtime, streaming, and asynchronous agents. No failure slice or method is pre-registered; the agent must reproduce strong baselines and discover the load-bearing transition empirically.
+- `mechanism-population-dynamics/` — **our-taste / model-science; ACTIVE, exploratory**. Treats mechanisms and their developmental trajectories as population variables over stochastic training histories; starts from PolyPythias + established causal mechanisms, with mandatory checkpoint-integrity audit and OLMo-2 external-validity branch.
 
 ### Frozen / demoted / knowledge assets
 
