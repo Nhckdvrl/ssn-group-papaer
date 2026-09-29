@@ -1,5 +1,19 @@
 # Realtime Computation Boundaries — Workbench
 
+## 当前进度（中文，2026-09-30）
+
+**状态：** P0（领域理解 + 谱系重建 + 代码级架构审计）完成第一轮；P1 基线驻留开始（下载 Realtime-Venus 权重、做可运行性检查）。**尚无 paper identity，candidates = 0。**
+
+**P0 最重要的结论（详见下方 §P0）：**
+1. 全双工领域在"统一/原生"和"模块/分离"之间来回摆动，但每次摆动保护的是同一对东西：**文本 LLM 的智能**（脆弱、昂贵）和**密集时间上的交互策略**（需要低延迟）。Lychee-FD 是唯一先测量瓶颈（深层梯度冲突 + 稀疏文本梯度被稠密音频稀释）再做分离的工作。
+2. EMNLP 综述的 L0–L3 只刻画"轮转决策放在哪一层"，**没有覆盖"推理/工具的快慢边界"**这一维度——这正是 2026 年 9 月系统分歧最大的地方。
+3. 五套快慢系统在两个维度上给出了相反答案：
+   - **慢侧能看到什么**：只看当前一轮的 ASR 文本（NVIDIA）/ 请求时刻冻结的证据快照（Venus）/ 目标 + 最近 10 轮（Qwen）/ 与快侧并行接收同一输入（ConvFill）/ 周期性看完整历史（Think@5Hz、游戏 Latent Bridge）。
+   - **谁来写最终内容**：慢侧写好、快侧照读（NVIDIA 的 prefill-and-repeat、Venus 的 polish）/ 快侧拿慢侧结果自己组织（Qwen、ConvFill、Latent Bridge）。
+4. 目前只知道设计空间存在分歧，**不知道哪个变量真正决定能力**。下一步：选一个开放基线，先看懂它的真实轨迹。
+
+---
+
 **Lane:** our-taste  
 **Stage:** ACTIVE EXPLORATORY WORKBENCH — **not a candidate**  
 **Target ceiling:** ICML / ICLR / NeurIPS / ACL / CVPR main-track scale.  
@@ -364,3 +378,69 @@ The first useful experiment should emerge from what the strong baseline actually
 - Concord / When Agent Context Goes Stale — AgenticOS @ SOSP 2026
 
 Re-verify frontier papers before making any latest-state claim.
+---
+
+## P0 — Field understanding, Paper Rewind, code-level boundary audit (2026-09-30)
+
+Sources read (full text, local copies under `/home/xiang/rt_ext/papers`): Moshi 2410.00037, Freeze-Omni 2411.00774, SALMONN-omni 2505.17060, FlexDuo 2502.13472, DuplexCascade 2603.09180, Lychee-FD 2607.06540, FD survey 2606.19453, Scaling Laws NMM 2504.07951, Audex 2607.05196, Realtime-Venus 2609.13814 (+ code `inclusionAI/Realtime-Venus@e53ae8d`), Qwen-Audio-Agent 2609.25195 (+ code `f6dd0e3`), NVIDIA frontend-backend 2609.19334, ConvFill 2511.07397, Never Stop Thinking 2609.17416, game Latent Bridge 2606.24470, VLA Latent Bridge 2605.02739, Think@5Hz 2607.15621.
+
+### Rewind A — Moshi → Freeze-Omni / SALMONN-omni → FlexDuo / DuplexCascade
+
+| step | strongest parent / field belief | pressure the authors could not accept | premise rejected | earliest revealing experiment (reconstructed) |
+|---|---|---|---|---|
+| Moshi | ASR→LLM→TTS is the default | latency; text bottleneck drops paralinguistics; turn segmentation cannot represent overlap | "the pipeline interface is neutral" | measure overlap/interrupt behaviour a VAD-segmented cascade *cannot express*, independent of model quality |
+| Freeze-Omni | native speech-text training (Moshi-like) | speech adaptation erodes the text LLM's intelligence (Moshi reports −12.7 LlamaQ after duplex alignment) | "making speech native is enough" | same backbone, spoken-QA vs text-QA before/after speech adaptation |
+| SALMONN-omni | modular FD (VAD / interrupter / multiple LLMs) or codec-injected single LLM | error accumulation across modules; codec tokens in the LLM space still degrade speech-vs-text | "duplex needs extra modules" and "one LLM needs codec tokens" | module-wise error attribution on barge-in / echo cases; speech-vs-text gap with and without codec injection |
+| FlexDuo / DuplexCascade | tightly coupled native FD models | coupled optimization; contextual noise; hard to keep text-LLM intelligence | "native = necessary for full duplex" | VAD-free micro-turn cascade with the *same* text LLM vs native FD on FDB + VoiceBench |
+
+Why the field oscillates: every step protects the same two assets placed differently — **(i) the text LLM's intelligence, fragile under joint training, and (ii) a dense-time interaction policy that needs low latency** — and each architecture pays for one with the other. The survey confirms the levels are *not a progress ladder* (L0 competitive, L1 an attractor, L2 heterogeneous, L3 unrealized); Audex (unified, 30B-A3B, 157B audio + 320B text tokens + RL/distillation) shows sufficient scale can shrink the trade-off, so "separate" is not a law.
+
+### Rewind B — unified full-duplex SLM → Lychee-FD
+
+- Parent: native end-to-end FD SLM loses knowledge; Thinker–Talker keeps knowledge but costs latency/inference.
+- Moves that rule out "too small / too little data / weak recipe": (1) **layer-wise cosine between semantic-loss and acoustic-loss gradients** on the *same* model and data — synergistic in shallow layers, orthogonal→negative in deep layers; (2) **gradient-magnitude ratio** — sparse text (~3 Hz) aligned to dense audio (~25 Hz) via padding suppresses semantic gradients in every layer.
+- Each measurement maps to one component: conflict in deep layers → split only deep layers into acoustic/semantic heads (keeps depth, keeps latency); dilution → a semantic alignment channel (continuous text supervision).
+- Prior already had MOSS-Speech's representation-motivated layer split; Lychee's contribution is the **optimization-level diagnosis** that makes the split necessary and localized.
+- Reusable move: *baseline works → measure a training/inference quantity that is invisible in end metrics → localize → separate only where the measurement says*.
+
+### Rewind C — single loop → fast/slow systems (code + papers)
+
+| | Realtime-Venus (+Harness) | NVIDIA FE-BE | Qwen-Audio-Agent | ConvFill | Game Latent Bridge | Think@5Hz (VLA) |
+|---|---|---|---|---|---|---|
+| fast loop | 9B native FD model (MiniCPM-o 4.5 based): listen/speak/yield, direct answers, emits `<delegate>` span | duplex STT frontend; emits delegation token; silent/filler while waiting | realtime model (cloud or local S2S): dialogue, identity + read-only lookups, `spawn_thinking` | tiny Talker (135M–1.7B) | 9B reactive VLM @15 Hz | light action expert every 50 ms tick |
+| slow loop | Harness: router → capability (Codex agent / multimodal / skill) → **polish** | LangGraph ReAct text LLM | backend agent via A2A (writes, money, composite tasks) | frontier Reasoner + tools | 8B thinking VLM @~1 Hz | frozen 7B VLM at low frequency |
+| trigger | fast decides (in-stream token) | fast decides | fast decides (tool call) | always, in parallel | continuous | periodic |
+| what slow sees | NL objective + **evidence snapshot frozen at the opening tag** (look-back Δ; playback-confirmed assistant speech only) | **only the current user ASR transcript** per delegated turn + its own thread memory of past delegated turns | objective + ≤10 recent turns + verified IDs/lookups; backend keeps ≤50 task turns | the same transcribed user utterance as the Talker | full visual history at its own rate | instruction + visual history |
+| slow → fast payload | polished spoken-form text in private `<backend>` span | NL text **prefilled; frontend trained to repeat it exactly** | task result / status / input-request records | streamed knowledge text | text suffix **or** learned latent tokens | per-layer KV cache |
+| who authors user-facing content | slow (Harness decides content & wording; fast decides only *when*) | slow (verbatim repeat) | fast (presents result in current context) | fast (infills + integrates) | fast (acts) | fast (acts) |
+| freshness / staleness | freshness deadline + TTL; stale results dropped; delivery gated on playback ack | none explicit | results held until user stops speaking; revision checks for memory | none explicit | implicit (1 s lag) | trained with randomized staleness |
+| evaluated failure modes | delegation-decision accuracy only (Venus-Audio over-delegates routine requests: specificity 39%); **end-to-end delegated execution not evaluated** | single-turn tool recall; FDB-v3; EVA-Bench | cockpit 134 cases: direct 72%, all-delegated 81%, mixed 91%; τ airline text-IO: frontend-only 74 / harness 78 / backend-only 76; EVA airline 44 / 62 / 68 | accuracy within 6.3% of Reasoner; user study | bridge gain iff slow>fast (r=0.93); text+latent together interfere | per-tick freshness 82→94 route completion |
+
+**Where strong systems disagree (candidate exploration surface, not hypotheses):**
+1. *Visibility asymmetry* — the slow side sees anything from "only the delegated utterance" to "the whole stream".
+2. *Authorship* — whether the fast model re-authors the slow result (Qwen, ConvFill, game) or is reduced to a timing/voicing device for slow-authored text (NVIDIA, Venus).
+3. *Trigger* — fast-decided sparse delegation (voice systems) vs always-on slow computation (ConvFill, game, VLA).
+4. *Freshness policy* — drop (Venus), hold (Qwen), train-to-tolerate (Think@5Hz), ignore (NVIDIA, ConvFill).
+
+### Nearest-prior ownership update (additions to §3)
+
+- **Never Stop Thinking (2609.17416, Pine AI)**: one persistent reasoning stream with interrupt-and-resume in an *unmodified* text model; ReactiveBench; LLM judges reward visible reasoning (sign flips under an independent judge); verifiable RL for continuous-time thinking. Owns "single-stream continuous-time agent" as the unified counterpoint to fast/slow splits.
+- **ConvFill (2511.07397)**: small Talker + frontier Reasoner, Talker integrates streamed knowledge; owns talker-infill as a method.
+- **Think@5Hz (2607.15621)**: owns KV-cache as the slow→fast payload + randomized-staleness training + per-tick freshness gains in driving.
+- **VLA Latent Bridge (2605.02739)**: owns predicting slow-model feature/KV deltas to call the slow model less often.
+- **Qwen-Audio-Agent text-IO τ results**: already show harness ≈ backend-only on τ airline and harness < backend-only on EVA airline — a composite-vs-slow-alone comparison exists, but without decomposition of *why*.
+
+### Baseline choice (tentative) and feasibility
+
+Default **Realtime-Venus-Audio + Harness** kept, because it is the only open system whose fast model is itself a trained 9B native FD model with an in-stream delegation token, an explicit snapshot boundary, and slow-authored replies — i.e. every disagreement axis above is concretely instantiated and instrumentable (`harness/core/delegate_parser.py`, `bridge/boundary.py`, `core/delivery.py`, `jobs/models.py`).
+Feasibility facts: weights 20 GB per model (download running); released code integrates **Omni** with the Harness, Audio is inference-only; demo pins torch 2.4 / transformers 4.51.3 (torch 2.4 does not support Blackwell) — existing env `pvlm` (torch 2.11 cu130, transformers 4.51.3) is the first candidate runtime; Harness backends default to Codex/Gemini but `DelegateBackend` (`plan/execute/oralize`) can be implemented with local vLLM models.
+Fallback if Venus cannot be made to run in an existing env within a bounded effort: Qwen-Audio-Agent with the local HF speech-to-speech frontend and its existing τ-bench text runner.
+
+### Current explanations worth distinguishing (to be tested only after trace residency)
+
+For a fast/slow composite on tasks the slow model can solve alone, the composite's capability could be governed mainly by:
+1. **slow capability** (boundary transparent: composite ≈ slow-alone on delegated work);
+2. **visibility at the boundary** (loss comes from what the slow side is not shown);
+3. **authorship** (loss/gain comes from the fast model re-expressing, dropping, or mistiming slow content);
+4. **age** (the conversation has moved on by the time the result is admitted).
+The first residency experiment is descriptive: run the baseline on a small set of multi-turn tasks, and for each failure locate which of these four links broke, before any intervention.
