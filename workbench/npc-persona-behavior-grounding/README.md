@@ -1,8 +1,22 @@
 # NPC Persona → Behavior Grounding
 
 **Lane:** our-taste  
-**Stage:** workbench / exploratory — **not a candidate**  
+**Stage:** FROZEN / NOT ACTIVE after 2026-09-29 top-conference ceiling audit  
 **Primary baseline:** `yoosunghong/pcsp` at `5420f7b4fa0fdb6110e131402af9f5386ce2d0cf`
+
+## 0. Venue-scale audit
+
+The causal distinction here is potentially broader than games:
+
+> persona/conditioning information is decodable or trajectory-traceable ≠ it causally and semantically controls the policy's decisions.
+
+However, the current evidence and planned experiments are dominated by one artifact (PCSP / Mini-Inzoi). PCSP itself already reports validation across Mini-Inzoi, Melting Pot, and UE5, while 2026 persona-policy work is expanding toward selection/realization and context-dependent persona policies.
+
+A top-conference paper cannot be justified merely by finding a confound or weaker behavioral grounding in this one implementation.
+
+**Decision:** freeze before further execution.
+
+**Reopen condition:** first identify at least one independent conditioned-policy substrate (ideally outside game NPCs) where the same proxy-vs-causal-control distinction is meaningful and machine-testable. Only then may PCSP serve as one substrate in a broader study. If no second substrate exists, retain this as a useful PCSP audit rather than a paper workbench.
 
 ## 1. Why this is a game-NPC problem
 
