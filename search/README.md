@@ -26,6 +26,40 @@ It is **not**:
 
 The expected result may be wrong. That is normal.
 
+## Top-conference ceiling gate
+
+Search is not only deciding whether a territory is **researchable**. It is deciding whether the territory has enough scientific / technical headroom to justify aiming at **ICML / ICLR / NeurIPS / ACL / EMNLP / NAACL / CVPR-level main-track work**.
+
+This does **not** mean the surface topic must be broad or require huge compute. A narrow experimental object can be excellent if it exposes or overturns a broad premise. What is not enough is a narrow object whose best plausible outcome remains a local follow-up.
+
+Before opening a workbench, explicitly test the territory's **ceiling**:
+
+1. **Parent-scale question:** What broader scientific/technical assumption, bottleneck, design principle, or capability does this object inform?
+2. **Best-case consequence:** If the most interesting plausible outcome is true, what would the field understand or do differently?
+3. **Worst reviewer compression:** Could a reviewer accurately dismiss the project as “X on one more model/dataset/language/domain”, “another slice”, or “a small fix for one benchmark”? If yes, do not open the workbench yet.
+4. **Evidence runway:** Is there room for multiple independent kinds of evidence—strong baselines, cross-model/regime checks, causal/diagnostic analyses, downstream consequences, or a method naturally implied by the bottleneck—rather than one lucky experiment?
+5. **Abstraction beyond substrate:** If the first substrate is removed, is there still a scientific object? The initial game, dataset, language, model family, or benchmark may be an instrument, but should not be the whole reason the problem matters.
+6. **Venue fit:** Which top venue community would care, and which existing high-level conversation would the result enter? “No one has tried this exact combination” is not a venue fit.
+7. **Growth room:** Can several months of baseline residency and exploration plausibly make the story **more general and simpler**, rather than forcing increasingly narrow controls?
+
+A territory fails the gate when:
+
+> even its best plausible outcome is only a correct but local observation, benchmark patch, model-specific quirk, or incremental variant.
+
+Such a result can still be useful knowledge and belong in `library/`, but it should not automatically receive a workbench.
+
+### Scope ladder
+
+Before workbench admission, write a three-level ladder:
+
+> **local observation / substrate**  
+> → **broader scientific object**  
+> → **top-conference-scale consequence**
+
+If the arrow from local observation to broader object is speculative or purely rhetorical, keep searching.
+
+The target is not “big topic” but **big consequence**.
+
 ## Read papers for idea genesis, not only for final ideas
 
 Do not read a strong paper only as:
