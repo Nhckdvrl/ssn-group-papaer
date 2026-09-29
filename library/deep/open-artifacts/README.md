@@ -16,6 +16,8 @@ Primary use: artifact archaeology before compute. Availability of an artifact is
 | https://github.com/INV-WZQ/ReactiveGWM | inference/training + model/data links | open game-world-model NPC baseline |
 | https://github.com/JunseoKim0103/Lies-We-Can-See | Docker + VLM harness + data/logs | embodied verbal/non-verbal social behavior |
 | https://github.com/altera-al/project-sid | public report/repo | large-scale Minecraft agent society |
+| https://github.com/yoosunghong/pcsp | unusually complete research + UE5 artifact; code, envs, persona splits, training/eval scripts, results and later self-audits | strongest current substrate for testing whether free-form persona semantics actually ground into NPC action policy; later independent-behavior audit is especially valuable |
+| https://github.com/carrotoxic/mario-personas | CoG 2026 code + checkpoints + PCG levels + human demonstrations | explicit behavioral-persona comparator (runner/killer/collector) with concrete action/outcome metrics |
 | NCP-Bench project/repo | public code/data/prompts; verify current canonical repo before cloning | long-horizon narrative commitments |
 | https://github.com/DilanRG/ai-murder-mystery-v2 | full Python/JS game engine, offline authored fixtures, strict truth/evidence/knowledge schemas, deterministic replay, authorized lies, 400+ tests | strongest current open substrate for controlled detective-NPC deception / deductive-fairness experiments |
 | https://github.com/jiangaoMartin/F21CA-Games3-Minecraft-Murder-Mystery | Minecraft world + prompts + evaluation material | open free-form voice/NPC detective baseline; much looser state control than Ashwick |
