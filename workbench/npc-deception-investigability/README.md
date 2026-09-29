@@ -1,6 +1,6 @@
 # NPC Deception Investigability — Workbench
 
-**Lane: our-taste. Status: exploratory workbench — not a candidate.**
+**Lane: our-taste. Status: DEMOTED / NOT ACTIVE (2026-09-29 top-conference ceiling audit).**
 
 ## Territory
 
@@ -218,3 +218,16 @@ Stop early if any of the following holds:
 None.
 
 There is no registered RQ, method, or promised result. The workbench exists because the genealogy exposes a concrete NPC-specific pressure and the open substrate makes a cheap, high-information kill experiment possible.
+
+
+## Venue-scale audit
+
+The NPC-specific object is coherent and may be valuable for game-AI venues, but the current best-case scientific conclusion remains too local for the repository's ICML/ICLR/NeurIPS/ACL/CVPR target.
+
+Current ladder:
+
+> murder-mystery NPC lie → player-reachable refutation/affordance → generative-agent environment grounding
+
+The second arrow is not yet earned. Broader agent work already studies executable/code-backed environments and robustness to misleading environment evidence. Without evidence that the NPC setting reveals a new general principle beyond game-world authoring constraints, a reviewer can fairly compress this to a game-specific design/evaluation problem.
+
+**Decision:** stop execution. Preserve the substrate/literature notes. Reopen only if a broader generative-agent claim↔environment-affordance failure is independently established across non-game substrates and the NPC case becomes one clean manifestation rather than the whole object.
