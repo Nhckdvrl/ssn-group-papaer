@@ -1,6 +1,12 @@
 # Hybrid Adaptation State Dynamics — Workbench
 
-**Status: exploratory workbench — not a candidate.**
+**Status: DEMOTED / NOT ACTIVE (2026-09-29 top-conference ceiling audit).**
+
+This directory is retained as a literature/search asset, not an authorized execution line.
+
+**Ceiling audit:** the current object is too broad and too close to already-owned 2026 work. S0 Tuning already establishes recurrent-state adaptation as a PEFT surface across Qwen3.5/Falcon-H1 and compares state tuning/state offsets with LoRA; *What Attention Recalls and Recurrence Controls in Hybrid Language Models* independently gives causal KV-vs-recurrent-state functional interventions. The current workbench has no stronger empirical pressure or broader changed premise beyond those parents.
+
+**Reopen only if:** a new, independently important phenomenon appears that is not compressible to “which hybrid component should we tune?” or “KV and recurrent state play different roles,” and its best-case consequence is broader than one hybrid family/PEFT recipe.
 
 This workbench studies how adaptation changes hybrid recurrent–attention language models.
 
