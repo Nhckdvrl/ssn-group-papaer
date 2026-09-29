@@ -934,6 +934,118 @@ The paper also leaves a genuine research program (e.g. what controls workspace e
 
 ---
 
+### GENEALOGY-6 — Fixed hidden state → test-time learning → what counts as usable mutable memory?
+
+This lineage is kept as a **STRONG HOLD**, not an active workbench.
+
+#### Parent pressure: attention is accurate but expensive; fixed recurrent state is cheap but capacity-limited
+
+**Learning to (Learn at Test Time): RNNs with Expressive Hidden States** (ICML 2025)  
+https://proceedings.mlr.press/v267/sun25h.html
+
+The changed premise is architectural: instead of treating the recurrent state as a fixed vector, make the hidden state itself a small model and update it online with a self-supervised objective.
+
+The initial scientific story is attractive:
+
+> a more expressive, learnable hidden state may compress long context better than ordinary RNN state.
+
+#### Reframing pressure: many “different” sequence models are associative regression
+
+**Test-Time Regression** (JMLR 2026)  
+https://jmlr.org/beta/papers/v27/25-0903.html
+
+Attention, linear attention, SSMs, fast-weight programmers and online learners can be placed in one associative-regression design space defined by:
+- regression weights;
+- regressor function class;
+- test-time optimization algorithm.
+
+This changes the question from “is test-time learning a new primitive?” to:
+
+> which computational regime is genuinely introduced by mutable state, rather than another parameterization of associative recall?
+
+#### Strong premise break: some TTT is secretly linear attention
+
+**Test-Time Training with KV Binding Is Secretly Linear Attention** (ICML 2026)  
+https://arxiv.org/abs/2602.21204
+
+For a broad class of KV-binding TTT architectures, the apparently sequential online-gradient procedure can be algebraically rewritten as learned linear attention and parallelized without losing performance.
+
+This is an exemplary changed-premise paper:
+- parent story: online learning / memorization;
+- contradiction: observed behaviors do not fit the memorization interpretation;
+- analysis: derive an equivalent fixed operator;
+- consequence: simplify architecture and reinterpret what the state is doing.
+
+**Reusable research move:**
+
+> successful new paradigm → test whether its claimed computational primitive is actually necessary → equivalence exposes the real object.
+
+#### New pressure: if fast weights are mutable, what should each write encode?
+
+**Test-Time Training with Next-Token Prediction (TTT-NTP)** (EMNLP 2026 Findings)  
+https://arxiv.org/abs/2606.21803
+
+The paper argues that common local value proxies are not aligned with the backbone's next-token computation, and makes each write target the next contextual hidden state.
+
+The question shifts from “can we update weights?” to:
+
+> what learning signal makes a write useful to the pretrained computation?
+
+#### Explicit WRITE/READ decomposition
+
+**GradMem** (ICML 2026)  
+https://arxiv.org/abs/2603.13875
+
+Context removal forces the model to:
+1. WRITE context into compact memory;
+2. answer later using only memory + query.
+
+This is important because it makes queryability/addressability experimentally visible rather than inferring memory from local loss reduction.
+
+#### Evaluation pressure: lower loss is not deployment memory
+
+**Beyond Perplexity** (2026 preprint)  
+https://arxiv.org/abs/2607.00368
+
+Shows a direct separation between local training/proxy improvement and later free-form recall, and proposes a claim-calibrated evidence ladder.
+
+Again the field pressure changes:
+
+> “the state adapted” is weaker than “the state stores information that remains retrievable and behaviorally usable”.
+
+#### Future utility / persistence pressure
+
+**Learning What to Remember: Test-Time Training via Context Distillation** (Aug 2026)  
+https://arxiv.org/abs/2608.01672
+
+Uses a long-window teacher to train a short-window fast-weight student so limited memory is allocated toward information useful for future prediction.
+
+**Delayed Supervision for Test-Time Language Models** (Sep 2026)  
+https://arxiv.org/abs/2609.32312
+
+Makes facts answerable only after long unrelated delays, directly training retention/revision rather than immediate NTP alone.
+
+#### Where this lineage currently sits
+
+The scientific object is becoming:
+
+> **What functional regimes of mutable inference-time state are genuinely distinct from fixed associative operators, and what training signal creates persistent, addressable, task-usable state?**
+
+But by Sep 2026 this object is moving extremely quickly:
+- algebraic equivalence is being clarified;
+- write objectives are being redesigned;
+- read/write separation is explicit;
+- future utility and delayed retention are already direct targets;
+- behavioral evidence standards are being formalized.
+
+Therefore this repository should **not** open a generic “interpret TTT memory” workbench today.
+
+A future workbench would need a sharper pressure that survives these parents—e.g. a reproducible boundary between two functional state regimes, not merely another write loss or memory benchmark.
+
+**Status: STRONG HOLD / continue lineage watch.**
+
+---
+
 ### Meta-lesson from the genealogies
 
 Do **not** use this rule:
