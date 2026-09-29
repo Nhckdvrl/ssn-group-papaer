@@ -103,7 +103,23 @@ Sasano's later paper feedback repeatedly emphasizes:
 - a finding that is not surprising enough should not be forced into the headline;
 - merely changing model / dataset / evaluation setting does not automatically create novelty.
 
-## 9. Search output for this lane
+## 9. Top-conference-scale ceiling
+
+Sasano-style simplicity must **not** be confused with smallness.
+
+A simple natural question is valuable only if its answer can plausibly support a main-track paper-scale scientific conclusion. Before handoff, ask:
+
+- if the strongest interesting outcome is true, does it change a broader understanding rather than only describe one linguistic/game/model niche?
+- can the first natural object serve as a clean window onto a more general phenomenon?
+- would an average ACL/EMNLP/NAACL reviewer see the consequence without us inflating the Introduction?
+- can the result survive the sentence “this is just X on one more language/construction/dataset/model”?
+- is there enough independent evidence runway to distinguish a robust phenomenon from one elegant contrast?
+
+A narrow linguistic phenomenon can absolutely pass this gate when it exposes a broad property of language/model behavior. A broad-sounding topic can fail when the actual evidence supports only a tiny local claim.
+
+Do not open a workbench merely because the question is natural and experimentally clean.
+
+## 10. Search output for this lane
 
 A Sasano-taste search result should contain:
 
@@ -121,7 +137,7 @@ Then hand the territory to `../../workbench/`.
 
 Do **not** create an Sxx ID here.
 
-## 10. Immediate warning signs
+## 11. Immediate warning signs
 
 - “We can raise a small model's reasoning benchmark by X points.”
 - “This agent/RAG/RL trick is hot right now.”
