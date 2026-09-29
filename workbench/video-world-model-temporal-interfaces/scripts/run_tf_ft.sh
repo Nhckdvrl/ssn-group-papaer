@@ -10,4 +10,4 @@ TF=./ckpts/Wan21/Action2V/stage1_ar_tf/model.pt
 $PY -m torch.distributed.run --nproc_per_node=$NP --master_port=${5:-29521} tools/train_mwm.py \
   --config-file configs/wan21/action2v/train/stage1_ar_tf.py --output-dir $3 \
   training.sp_size=1 training.max_steps=$4 training.ckpt_interval=${CKPT:-250} training.log_interval=10 \
-  training.activation_checkpointing=${AC:-True} checkpoint.pretrained=$TF data.dataset.data_path=$2
+  training.activation_checkpointing=${AC:-True} recipe.optimizer.lr=${LR:-2e-6} checkpoint.pretrained=$TF data.dataset.data_path=$2
