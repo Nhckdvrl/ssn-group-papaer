@@ -34,8 +34,19 @@ STRATA = (("1", lambda d: d == 1), ("2-3", lambda d: 2 <= d <= 3), (">=4", lambd
 
 
 def runs(y):
-    e = np.diff(np.r_[0, (y != 0).astype(int), 0])
-    return list(zip(np.flatnonzero(e == 1), np.flatnonzero(e == -1) - np.flatnonzero(e == 1)))
+    """Maximal runs of equal-sign nonzero commands (adjacent left/right presses are two presses)."""
+    s = np.sign(y).astype(int)
+    out, k = [], 0
+    while k < len(s):
+        if s[k] == 0:
+            k += 1
+            continue
+        j = k
+        while j + 1 < len(s) and s[j + 1] == s[k]:
+            j += 1
+        out.append((k, j - k + 1))
+        k = j + 1
+    return out
 
 
 def mean_n(v):
