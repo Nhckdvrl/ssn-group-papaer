@@ -403,6 +403,305 @@ This is a better state than forcing a survivor.
 
 ---
 
+## 7. Research-space map after field-first reading — 2026-09-29
+
+This section deliberately records **research spaces**, not paper ideas or literature gaps.
+
+A paper existing inside a space is positive evidence that the space has real objects, baselines, and pressure. Do not kill an entire space because one local question has been studied.
+
+### SPACE-A — Developmental / population-level mechanistic science
+
+**Core object**
+
+> How does computation form during training, and which aspects of the resulting mechanism are forced by the task/training regime versus contingent on stochastic training history?
+
+This is broader than “track feature X over checkpoints” and broader than “do different seeds learn the same head”.
+
+**Strong parents / substrate**
+- **PolyPythias** (ICLR 2025): 50 pretraining runs, 5 scales, about 7k checkpoints; its paper explicitly leaves circuit formation × training-state-transition relations for future interventional study.
+- **Crosscoding Through Time** (ACL 2026): aligns features across checkpoints and tracks emergence / maintenance / discontinuation plus causal importance.
+- developmental-attention / rLLC work: head differentiation and specialization through training.
+- cross-seed/generalizability work: e.g. 1-back heads show strong developmental but weaker positional correspondence.
+- **From Shortcut to Induction Head** (NeurIPS 2025): controlled evidence that training-data diversity can select different algorithms.
+- **Mechanistic Data Attribution** (ICML 2026 Oral): specific training samples can causally accelerate/delay interpretable mechanism formation.
+- **Influence Dynamics and Stagewise Data Attribution** (ICLR 2026): sample influence itself changes across learning stages.
+
+**Why this is a field space rather than a gap**
+
+Existing work supplies different axes but does not collapse them into one answer:
+- checkpoint time;
+- random seed;
+- model scale;
+- initialization vs data ordering;
+- training-data influence;
+- feature/circuit causal importance.
+
+The broad scientific object is the **developmental causality of learned computation**.
+
+A useful conceptual graph is:
+
+```
+data / initialization / ordering / stage
+                 ↓
+       training-state transition
+                 ↓
+      mechanism formation / choice
+                 ↓
+      behavior / generalization
+```
+
+**Available baseline**
+- Pythia / PolyPythias checkpoints;
+- decoupled 160M data-seed vs weight-seed variants, subject to artifact verification;
+- Crosscoding Through Time implementation;
+- induction-head / previous-token-head score datasets;
+- TransformerLens / patching / intervention stack.
+
+**Important artifact warning**
+A 2026 issue reports possible inconsistency between some published `pythia-160m-weight-seed{1,2}` step-0 initializations and later checkpoints. Any attempt to use the clean initialization-vs-data-order decomposition must independently verify checkpoint provenance first.
+
+**What exploration should look like**
+Not a preregistered “seed instability” hypothesis. First build a mechanism population map:
+- which functional mechanisms appear across runs;
+- when they appear;
+- whether the same function appears in the same components or only in functionally equivalent implementations;
+- whether runs bifurcate and later reconverge;
+- whether data-order or initialization perturbations predict the branch;
+- whether mechanism trajectory predicts robustness/generalization beyond endpoint performance.
+
+**Top-conference ceiling**
+Potentially high: a result can change how mechanistic claims generalize across model instances and how training science thinks about algorithm selection.
+
+**Main risk**
+Small models and familiar mechanisms (1-back / induction / IOI) can make the work look like another toy circuit paper. The workbench must eventually reach a broader principle than one circuit and should use causal/function-level equivalence rather than raw head overlap.
+
+**Status:** STRONG RESEARCH SPACE. Not yet a workbench.
+
+---
+
+### SPACE-B — Mechanism provenance / developmental data causality
+
+**Core object**
+
+> Which data, and at which training stage, create or reshape a computation inside the model?
+
+This sits at the intersection of mechanistic interpretability, training-data attribution, and learning dynamics.
+
+**Strong parents**
+- **Mechanistic Data Attribution**: influence-function attribution from training samples to interpretable heads, with causal data addition/removal interventions.
+- **Influence Dynamics and Stagewise Data Attribution**: influence is non-stationary and can peak or change sign around developmental transitions.
+- **Concept Influence** / related 2026 work: attribution to internal concepts/features rather than only outputs.
+- developmental interpretability supplies the mechanism trajectory to be explained.
+
+**Why this is larger than “find induction-head training examples”**
+Current papers establish that:
+1. data influence can be stage-dependent;
+2. data can causally change mechanism formation;
+3. mechanisms themselves change over training.
+
+The broader open scientific territory is how these three objects interact.
+
+**Baseline-first exploration**
+A future workbench should start from already-known mechanisms and already-trained multi-checkpoint runs, then ask whether attribution predicts *changes in mechanism trajectory*, not invent a new behavior and search for influential documents.
+
+**Top-conference ceiling**
+High if it reveals a transferable law relating data structure / learning stage / mechanism formation / generalization, or leads to a principled training intervention.
+
+**Main risk**
+Becoming ordinary data selection or influence-function engineering. The mechanism trajectory must remain the scientific object.
+
+**Status:** STRONG RESEARCH SPACE; closely coupled to SPACE-A.
+
+---
+
+### SPACE-C — Stateful / adaptive computation interpretability
+
+**Core object**
+
+> What computation is implemented when model state itself changes during inference?
+
+Traditional MI usually assumes fixed parameters and analyzes one forward computation. TTT, fast-weight memory, learned recurrent state, and test-time adaptation weaken that assumption.
+
+**Strong parents / baselines**
+- **End-to-End TTT**: next-token-prediction updates compress context into weights; public 125M/1B/3B checkpoints.
+- **In-Place TTT** (ICLR 2026 Oral): pretrained LLM MLP projections used as fast weights; public Qwen/Llama stack.
+- **TTT-NTP**: asks explicitly what each test-time write should store; multiple open 0.6B–8B backbones.
+- **GradMem** (ICML 2026): explicit WRITE / READ meta-learned memory.
+- **TTT with KV Binding Is Secretly Linear Attention** (ICML 2026): a broad KVB class that looked like online learning can be rewritten as learned linear attention.
+- **Test-Time Regression** (JMLR 2026): unifies attention, SSMs, fast-weight programmers, and online learners as associative-regression designs.
+
+**Central field pressure**
+
+The phrase “test-time learning” currently covers computationally different objects.
+
+At one extreme, gradient syntax can merely implement a fixed recurrent/attention-like operator. At another, end-to-end or task-coupled updates may implement genuine online specialization.
+
+The research space is therefore not “look at fast-weight update norms”, but understanding the **functional regimes of mutable inference-time state**.
+
+**Natural axes**
+- fixed operator vs genuinely update-dependent computation;
+- write objective;
+- update order / direction sensitivity;
+- read/write compatibility;
+- addressability;
+- persistence/interference;
+- task specialization;
+- whether equivalent fixed-state operators can reproduce the behavior.
+
+**Top-conference ceiling**
+High because it can change the conceptual understanding of an emerging architecture family, not merely interpret one model.
+
+**Main risks**
+Very fast-moving; strong unifying theory already exists. A workbench must empirically expose a functional boundary not already implied by Test-Time Regression / MIRAS / KVB equivalence.
+
+**Status:** STRONG HOLD / RESEARCH SPACE. Do not register yet.
+
+---
+
+### SPACE-D — Global / compositional mechanisms
+
+**Core object**
+
+> Are model capabilities assembled from reusable computational primitives, and at what abstraction level can such primitives be meaningfully identified?
+
+**Strong parents**
+- **Towards Global-level Mechanistic Interpretability / ModCirc** (ICML 2025): proposes reusable task-agnostic modular-circuit vocabulary.
+- **How Much Do Circuits Tell Us?** (2026): component-level circuits are highly consistent and causally important but often not task-specific; much of the overlap is generic MLP infrastructure / attention sinks.
+- instruction-vector / selector work suggests reusable representations may control which circuits execute.
+- modular reasoning papers find analogous but non-identical subcircuits across tasks/models.
+
+**Real tension**
+“Reuse” at coarse component level may mean:
+1. true reusable computational primitive; or
+2. generic shared infrastructure that every task needs.
+
+Those are scientifically different.
+
+**What a healthy workbench would do**
+Start from multiple existing tasks and strong circuit baselines, then ask which decomposition predicts:
+- transfer to unseen tasks;
+- compositional reuse;
+- targeted intervention;
+- functional interchangeability.
+
+Do not merely optimize circuit overlap or invent another extraction score.
+
+**Top-conference ceiling**
+High if the work reveals the correct abstraction level for global model computation.
+
+**Main risk**
+The experimental object is less crisp than SPACE-A. It can easily become a circuit-method paper.
+
+**Status:** PROMISING RESEARCH SPACE / HOLD.
+
+---
+
+### SPACE-E — Interpretability-guided learning and intervention
+
+**Core object**
+
+> When does knowledge of internal computation provide a better intervention target than ordinary optimization signals?
+
+This is the most method-friendly space.
+
+**Strong parents**
+- **Towards Understanding Fine-Tuning Mechanisms via Circuit Analysis** (ICML 2025): circuit dynamics → circuit-aware LoRA.
+- **Mechanistic Unlearning** (ICML 2025): high-level mechanism localization → more robust editing/unlearning.
+- **From Insight to Action** (ACL 2026): causal SAE task features → feature-resonant data selection.
+- **Where CoT Reasoning Commits** (ACL Findings 2026): process-level head dynamics → selective head fine-tuning.
+
+**Changed premise**
+Interpretability is not only descriptive. Internal structure can be used as a control signal for:
+- where to update;
+- what data to select;
+- what to edit/unlearn;
+- which components to freeze;
+- what to intervene on at inference.
+
+**The important research pressure**
+The scientific bar is not “MI-guided method beats random selection”.
+
+A strong project must establish why the internal signal has **incremental intervention value** over:
+- gradient magnitude;
+- loss / uncertainty;
+- influence functions;
+- Fisher / curvature;
+- activation magnitude;
+- simple parameter sensitivity;
+- standard data-selection or PEFT heuristics.
+
+The desired paper shape is:
+
+```
+real optimization failure
+→ internal-mechanism analysis
+→ bottleneck / controllable target
+→ minimal intervention
+→ benchmark + ablation + mechanism validation
+```
+
+**Top-conference ceiling**
+High and especially compatible with method + analysis papers.
+
+**Main risk**
+Degenerating into an interpretability-score heuristic zoo.
+
+**Status:** STRONG RESEARCH SPACE; needs a real baseline failure before workbench registration.
+
+---
+
+### SPACE-F — Intrinsic interpretability
+
+**Core object**
+
+> Can useful computation be made interpretable by construction rather than recovered post hoc?
+
+**Strong parents**
+- intrinsic-interpretability survey (ACL 2026);
+- **Prototype Transformer** (ICML 2026);
+- CB-LLM / concept-bottleneck families;
+- interpretable recurrent / modular architecture work.
+
+**Pressure**
+Post-hoc decompositions suffer from non-identifiability and multiplicity. Intrinsic models attempt to make the computational interface itself human-legible.
+
+**Top-conference ceiling**
+Potentially very high.
+
+**Main risks**
+Training-heavy; architecture novelty is crowded; readable bottlenecks can still leak information or coexist with opaque computation.
+
+**Status:** WATCHLIST, not preferred immediate workbench under current resource/process constraints.
+
+---
+
+### Current field-level comparison
+
+Do **not** interpret this as a ranking of paper ideas. It is a map of where baseline residency currently looks most informative.
+
+| Space | Scientific object | Baseline/artifact maturity | Experiment-first discoverability | Main danger |
+|---|---|---:|---:|---|
+| A Developmental/population mechanisms | how computation forms and varies across training histories | very high | very high | small-model / one-circuit trap |
+| B Mechanism provenance | which data/stage causes mechanisms to form | high | high | becoming data-attribution engineering |
+| C Stateful/adaptive computation | what mutable test-time state actually computes | high | high | fast-moving / theory catches up |
+| D Global/compositional mechanisms | reusable computational primitives | medium-high | medium | circuit-method abstraction drift |
+| E MI-guided intervention | when internals give better control targets | high | high once a real failure exists | heuristic zoo |
+| F Intrinsic interpretability | interpretable computation by construction | medium-high | medium-low | training cost / architecture zoo |
+
+### Current search policy
+
+The next workbench should emerge from **baseline residency in one of these spaces**, not from a paper-title gap.
+
+Most promising exploration strategy at this point:
+
+1. **SPACE-A/B as one connected developmental-science territory**: exploit multi-seed/dense-checkpoint public models to understand how stochastic training and data influence mechanism formation.
+2. **SPACE-C as an independent architecture/model-science territory**: understand functional regimes of adaptive inference-time state.
+3. Keep **SPACE-E** as the preferred route if exploration in A/B/C exposes a controllable bottleneck; it is a paper-shape, not the initial question.
+
+No new interpretability workbench is authorized by this map alone.
+
+---
+
 ## 7. Library rule going forward
 
 For any interpretability workbench:
