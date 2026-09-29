@@ -17,5 +17,7 @@ Primary use: artifact archaeology before compute. Availability of an artifact is
 | https://github.com/JunseoKim0103/Lies-We-Can-See | Docker + VLM harness + data/logs | embodied verbal/non-verbal social behavior |
 | https://github.com/altera-al/project-sid | public report/repo | large-scale Minecraft agent society |
 | NCP-Bench project/repo | public code/data/prompts; verify current canonical repo before cloning | long-horizon narrative commitments |
+| https://github.com/DilanRG/ai-murder-mystery-v2 | full Python/JS game engine, offline authored fixtures, strict truth/evidence/knowledge schemas, deterministic replay, authorized lies, 400+ tests | strongest current open substrate for controlled detective-NPC deception / deductive-fairness experiments |
+| https://github.com/jiangaoMartin/F21CA-Games3-Minecraft-Murder-Mystery | Minecraft world + prompts + evaluation material | open free-form voice/NPC detective baseline; much looser state control than Ashwick |
 
 **Artifact warning:** WorldMind was a frontier prior when checked, but should not be treated as the reproduction baseline until its promised code/weights are actually available. Proact-VL also had incomplete release components when checked.
