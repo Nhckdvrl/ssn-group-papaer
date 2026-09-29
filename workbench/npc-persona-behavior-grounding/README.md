@@ -1,382 +1,522 @@
-# NPC Persona-to-Behavior Grounding — Workbench
+# NPC Persona → Behavior Grounding
 
-**Lane: our-taste. Status: exploratory workbench — not a candidate.**
+**Lane:** our-taste  
+**Stage:** workbench / exploratory — **not a candidate**  
+**Primary baseline:** `yoosunghong/pcsp` at `5420f7b4fa0fdb6110e131402af9f5386ce2d0cf`
 
-## Territory
+## 1. Why this is a game-NPC problem
 
-This workbench studies a game-specific question that appears once NPC persona moves beyond dialogue style into action policy:
+Foundation-model NPC research is moving from “an NPC can talk in character” toward characters that **perceive game state, make decisions, act, cooperate, pursue goals, and remain recognizably themselves while doing so**.
 
-> **When a designer supplies a natural-language persona, does its semantics causally and predictably change the NPC's game decisions, or does the system mainly produce trajectories that are distinguishable under its own persona/reward/evaluator machinery?**
+For that setting, persona is not only a dialogue property. A designer may describe an NPC as social, cautious, diligent, impulsive, exploratory, selfish, cooperative, etc. If persona is meaningful for gameplay, it should affect **what the NPC actually chooses to do in relevant game states**.
 
-The object is **behavioral grounding of persona**, not generic role-playing quality, dialogue persona consistency, or another Big-Five classifier.
+This workbench therefore studies:
 
-A useful NPC claim must survive where the NPC is actually used: in actions, state transitions, task trade-offs, social choices, and long-run trajectories.
+> **Does a natural-language NPC persona causally and semantically control game behavior, or can a system appear persona-consistent mainly because its trajectories, rewards, environment dynamics, or learned evaluator make personas easy to distinguish?**
 
-No final RQ or method is registered.
+The unit of interest is an **NPC decision in a game state**, not an isolated utterance and not a persona-classification score.
 
----
+This is separate from the repository's `npc-deception-investigability/` workbench. That line studies deceptive claims as playable world state; this line studies **persona grounding in NPC action policies**.
 
-## Why this territory is worth inhabiting
-
-### Field-level pressure
-
-*AI for Games in the Foundation Model Era* (2026) repeatedly separates:
-- what structure/control is supplied by the game;
-- what the AI actually produces;
-- whether an output/capability transfers to the downstream setting;
-- what evidence supports the claim in the setting where the output is used.
-
-For a behavioral NPC, a persona embedding or persona-identification score is therefore not automatically evidence that the **policy's decisions** are semantically persona-grounded.
-
-The broader game-agent surveys also decompose role-play, memory, reasoning, perception/action, and learning rather than treating “NPC quality” as one scalar. Recent player studies further show that functional competence can dominate perceived character quality.
-
-### Parent lineage
-
-1. **Explicit behavioral personality RL (2024–2025).**
-   OCEAN/personality is implemented through inspectable behavior/reward definitions. This is rigid, but the trait→behavior contract is explicit.
-
-2. **Stack More Levels: How to Get General and Human-like Mario Playing (CoG 2026).**
-   Runner / killer / collector playstyles are shaped through concrete game rewards, then PPO→DRAIL uses human demonstrations. Persona preservation is measured in actual game outcomes such as kill/coin behavior. Code, checkpoints, PCG levels and demonstrations are public.
-
-3. **One Policy, Infinite NPCs / PCSP (2026).**
-   A much more flexible formulation: free-form persona text is encoded once with a frozen Qwen embedding and conditions one shared PPO policy. The paper reports strong zero-shot trajectory-to-persona identification, semantic-behavioral alignment, external Melting Pot validation and UE5 deployment.
-
-PCSP is the strongest practical starting substrate because it makes natural-language persona a direct policy input and releases unusually complete code/evaluation artifacts.
+No final RQ, method, or expected result is registered.
 
 ---
 
-## The pressure exposed by the strong baseline
+## 2. Related work and the lineage we are entering
 
-The current PCSP repository contains later audits that materially narrow the headline interpretation.
+### Field map: AI for Games in the Foundation Model Era
 
-### 1. Internal persona traceability does not reproduce as independent behavioral advantage
+*AI for Games in the Foundation Model Era* (2026) is the main field-level map. Its useful lesson for NPC research is to ask:
 
-The repository's independent evaluator uses only environment trajectories, not PCSP's learned persona projection, logits, or trajectory encoder.
+- what state/rules/control come from the game;
+- what the model actually controls;
+- whether an upstream capability survives in downstream play;
+- what evidence supports the claim in the setting where the NPC is actually used.
 
-On v3-large, across full vs no-consistency policies:
+This matters because “persona is present in an embedding” and “persona changes the NPC's decisions” are different claims.
+
+Other recent game-agent / AI-native-game surveys make the same general boundary visible: role-play, memory, reasoning, perception/action, learning, game state, and player experience are separate components. “NPC quality” is not one scalar.
+
+### Dialogue and role-play persona
+
+Generative Agents, CoSER/DMT-RoleBench/RMTBench, PersonaArena, PersonaEval, Memory-Driven Role-Playing and related work make dialogue/persona fidelity a mature research area.
+
+Important consequence for us:
+
+> **“Make NPC dialogue more persona-consistent” is not the research question here.**
+
+Likewise, better memory or better persona prompting is not novelty by itself.
+
+### Explicit behavioral persona
+
+Older personality-RL work encodes OCEAN/personality through explicit game rewards and behaviors. This is restrictive, but the trait→behavior contract is inspectable.
+
+A useful modern comparator is:
+
+**Stack More Levels: How to Get General and Human-like Mario Playing (IEEE CoG 2026)**
+
+- runner / killer / collector playstyles;
+- persona rewards tied to concrete game outcomes;
+- PPO followed by DRAIL with human demonstrations;
+- public code, checkpoints, PCG levels and demonstrations.
+
+This gives us a strong conceptual contrast:
+
+> explicit behavioral persona = inflexible but behaviorally interpretable  
+> free-form language persona = flexible, but behavioral grounding must be demonstrated
+
+### PCSP: the primary strong baseline
+
+**One Policy, Infinite NPCs / PCSP (2026)** is our main executable parent.
+
+It conditions a shared PPO policy on frozen Qwen persona embeddings and reports strong persona traceability / semantic-behavior alignment, zero-shot evaluation, external validation, and UE5 deployment.
+
+The public repository is unusually valuable because it also contains later audits that weaken a simple interpretation of the headline results.
+
+#### Independent behavioral audit
+
+Using a model-independent evaluator over actual trajectories:
 
 - action-only Big-Five balanced accuracy: **0.482 full vs 0.511 no-consistency**;
-- paired bootstrap full-minus-no-consistency: **[-0.056, -0.002]**;
-- action+state-response features: **0.556 vs 0.558**;
-- most independently recoverable action-only signal is extraversion;
-- conscientiousness is below chance after the held-out distribution shift.
+- bootstrap CI for full − no-consistency: **[-0.056, -0.002]**;
+- action + state-response: **0.556 vs 0.558**;
+- most action-only recoverable trait signal is extraversion;
+- conscientiousness falls below chance under the held-out shift.
 
-The repository itself therefore states the defensible claim narrowly: InfoNCE is load-bearing for alignment between the learned trajectory encoder and persona projection, but the independent probe does not show a behavioral advantage.
+So InfoNCE is clearly important for the learned trajectory↔persona representation metric, but the current independent audit does **not** show that it improves independently observable Big-Five behavior.
 
-### 2. Persona information is heavily compressed before the policy
+#### Projection audit
 
-The projection audit reports:
+The learned persona projection remains informative but heavily compresses the original text embedding:
 
-- raw Qwen Big-Five probe: **0.898** mean balanced accuracy;
+- raw Qwen Big-Five probe: **0.898**;
 - projected embedding: **0.799**;
-- raw/projected pairwise cosine correlation: **rho = 0.404**;
-- numerical rank 16 and effective rank **3.87**.
+- raw/projected cosine-geometry correlation: **rho = 0.404**;
+- effective rank: **3.87**.
 
-This does not prove a problem, but it provides an observable bottleneck candidate.
+This is a diagnostic clue, not yet a causal explanation.
 
-### 3. The consistency objective has no direct actor-head gradient path
+#### Gradient-path audit
 
-The gradient-path audit shows:
+The InfoNCE consistency loss updates:
 
-- PPO → projection + actor + critic;
-- InfoNCE consistency → projection + trajectory encoder;
-- InfoNCE → **no direct actor-head path**.
+- persona projection;
+- trajectory encoder;
 
-Any action-policy effect from InfoNCE is indirect through the shared projection.
+but has **no direct gradient path to the actor head**.
 
-### 4. Persona is encoded twice: policy conditioning and environment/reward
+Any behavioral effect must therefore be mediated indirectly through the shared persona projection.
 
-Source inspection reveals an especially important attribution issue.
+#### Source-level attribution issue: persona enters twice
 
-A persona record contains:
-- free-form persona text / Qwen embedding;
-- Big-Five labels;
-- `preferred_actions`;
-- `decay_modifiers`.
+PCSP's persona record contains both:
 
-Mini-Inzoi v3 then uses persona metadata directly:
+1. **language-side information**
+   - free-form persona text;
+   - Qwen persona embedding;
+
+2. **game-side structured information**
+   - Big-Five labels;
+   - `preferred_actions`;
+   - `decay_modifiers`.
+
+Mini-Inzoi v3 directly uses the structured persona in the game:
+
 - preferred action: **+0.5 reward**;
 - action-style / Big-Five cosine: **0.3-weight style reward**;
 - social reward depends on Big-Five compatibility;
-- decay modifiers change need dynamics.
+- `decay_modifiers` change need dynamics.
 
-Thus training correlates two persona channels:
+So persona is correlated across two channels:
 
-> **language persona → policy conditioning**
+> **persona text → policy conditioning**
 
 and
 
-> **structured persona → reward / environment dynamics**
+> **persona metadata → reward / environment dynamics**
 
-Observed persona-specific trajectories can therefore reflect both. Existing headline evaluation does not by itself identify how much causal behavioral control comes from the language-conditioned policy channel.
-
-This is not being treated as a paper claim yet. It is the first thing the workbench should try to falsify.
+This makes PCSP a particularly good workbench: the model is strong and open, but the causal source of persona-specific behavior is not yet cleanly isolated.
 
 ---
 
-## Ownership boundaries
+## 3. What we want to learn
 
-Already active / owned; do not repackage:
+We are **not** assuming PCSP is wrong.
 
-- better persona prompting for dialogue;
-- static or dynamic persona consistency in LLM role-play;
-- memory for role-playing characters;
-- generic “persona vs task utility” trade-off;
-- Big-Five dialogue classification;
-- “natural-language persona should condition an NPC”;
-- one shared policy for many NPCs;
-- trajectory-to-persona identification;
-- explicit OCEAN reward shaping by itself.
+The first goal is to identify what is actually load-bearing.
 
-The workbench is only interesting if **semantic persona control of game behavior** behaves differently from these existing proxies.
+We want to explore:
+
+1. **Causal sensitivity**  
+   Does swapping only the persona embedding change the action distribution at the same game state?
+
+2. **Semantic correctness**  
+   If actions change, do they change in the direction implied by the persona, rather than arbitrarily?
+
+3. **State dependence**  
+   Does a trait matter specifically when the game affords that trait expression?
+
+4. **Channel attribution**  
+   How much persona-specific behavior comes from the policy embedding versus persona-specific reward/dynamics?
+
+5. **Robustness to wording**  
+   Are semantically equivalent persona descriptions behaviorally equivalent?
+
+6. **Sensitivity to meaningful edits**  
+   Do controlled persona changes alter the corresponding behavior?
+
+7. **Nuisance sensitivity**  
+   Do irrelevant edits such as occupation, age, wording, or language style alter behavior more than the intended persona semantics?
+
+8. **Trait heterogeneity**  
+   Are some dimensions genuinely grounded while others are mostly absent or not afforded by the action space?
+
+9. **Task pressure**  
+   Does persona survive meaningful gameplay pressure, or disappear as soon as reward urgency increases?
+
+10. **Long-horizon expression**  
+    Can a small one-step persona effect accumulate into recognizable long-run play, or do environment dynamics dominate?
+
+11. **Proxy validity**  
+    Which existing metrics actually predict real persona-conditioned game decisions, and which mainly measure representation traceability?
+
+12. **Generalization beyond one toy environment**  
+    If we discover a stable phenomenon in Mini-Inzoi, does the same distinction appear in an explicit behavioral-persona substrate such as Mario-personas or another NPC environment?
+
+These are exploration axes, not twelve paper RQs.
 
 ---
 
-## Strong executable substrate
+## 4. Experimental plan
 
-Primary baseline:
+### Phase 0 — Baseline residency
 
-**yoosunghong/pcsp**
-- https://github.com/yoosunghong/pcsp
-- https://arxiv.org/abs/2605.23652
+Before adding anything new:
 
-Useful assets already present:
-- Mini-Inzoi v1/v2/v3/v3-large environments;
-- 300/500-persona datasets;
-- Qwen persona embeddings;
-- full / no-consistency and other ablation pipelines;
-- independent behavior evaluator;
-- persona-projection audit;
-- attributable-gradient audit;
-- Melting Pot experiments;
-- UE5 bridge and telemetry.
+- clone and pin PCSP at `5420f7b4fa0fdb6110e131402af9f5386ce2d0cf`;
+- document environment/package setup;
+- run the repository's smoke/unit tests;
+- verify the committed independent-behavior result;
+- verify persona-projection audit;
+- verify gradient-path audit;
+- inspect the exact persona dataset, action ontology, reward terms and environment dynamics;
+- record which published/current checkpoints are actually available.
 
-Secondary behavioral comparator:
+If the current evidence cannot be reproduced, resolve that first.
 
-**carrotoxic/mario-personas**
-- https://github.com/carrotoxic/mario-personas
+### Phase 1 — Fixed-state persona swap
 
-Use it as a conceptual/control baseline for explicit action-grounded playstyles, not as proof that PCSP is wrong.
+This is the first high-information experiment.
 
----
-
-## Baseline residency
-
-Do not invent a new loss at entry.
-
-### B0 — Reproduce the repository's own current evidence
-
-1. pin the PCSP repository commit used for the workbench;
-2. run environment/unit tests;
-3. regenerate or verify the committed independent-behavior metrics;
-4. reproduce full vs no-consistency rollouts from existing checkpoints where available;
-5. reproduce the persona-projection and gradient-path audits;
-6. confirm action/reward semantics from source rather than paper prose.
-
-If the current repo results are not reproducible, stop and resolve the baseline first.
-
-### B1 — Fixed-state persona intervention
-
-Hold fixed:
-- policy weights;
-- exact observation/state;
-- random seed where sampling is used.
-
-Change only the persona embedding supplied to the policy.
-
-For the same state (s), evaluate:
+For a fixed trained policy and the **same observation** (s), replace only the persona embedding:
 
 [
-pi(a mid s, e_{p_1}) quad 	ext{vs} quad pi(a mid s, e_{p_2})
+pi(a|s,e_p) quad 	ext{vs.} quad pi(a|s,e_q)
 ]
 
-Do this before rolling the environment forward.
-
-This directly asks whether the learned policy is causally sensitive to persona at the decision surface.
+No environment rollout is needed initially.
 
 Measure:
-- logit/action-distribution delta;
-- JS/KL/TV distance;
+
+- JS / KL / total-variation distance;
+- action-logit delta;
 - top-action flips;
-- semantic action-group shifts;
-- sensitivity by trait axis and state type.
+- rank changes;
+- semantic action-group changes.
 
-A large difference is not automatically good: direction and semantic relevance matter.
+Run across:
 
-### B2 — Cross the two persona channels
+- many personas;
+- multiple policy seeds;
+- full and no-consistency variants;
+- representative naturally occurring states.
 
-Construct a 2×2-style counterfactual:
+Then slice by trait axis and state type.
 
-- policy embedding (p), environment persona config (p);
-- policy embedding (q), environment config (p);
-- policy embedding (p), environment config (q);
-- policy embedding (q), environment config (q).
+**Interpretation:** high sensitivity is not sufficient. The change must be semantically appropriate.
 
-Use matched initial state/seeds.
+### Phase 2 — Counterfactual persona-channel crossing
 
-Separate:
-- **one-step action choice**, before persona-specific environment dynamics can diverge;
-- **multi-step behavior**, where decay/reward/dynamics can accumulate.
+Disentangle the two persona channels.
 
-This is the key attribution test.
+For persona pair (p,q), evaluate combinations of:
 
-### B3 — Neutral-environment evaluation
+- policy embedding (p), environment persona (p);
+- policy embedding (q), environment persona (p);
+- policy embedding (p), environment persona (q);
+- policy embedding (q), environment persona (q).
 
-At evaluation time, neutralize persona-specific environment channels:
+Do this first at one step, then in matched-seed rollouts.
+
+This separates:
+
+- policy-conditioning effect;
+- reward/dynamics effect;
+- interaction between them.
+
+### Phase 3 — Neutral-environment evaluation
+
+At **evaluation time only**, create a neutral environment:
+
 - common decay modifiers;
-- no preferred-action bonus;
-- no Big-Five style reward;
-- common/neutral social reward.
+- remove preferred-action bonus;
+- remove Big-Five style reward;
+- neutralize persona-specific social compatibility reward where appropriate.
 
-Then vary only the policy persona embedding.
+Do not retrain yet.
 
-Do not retrain first.
+Vary only the policy persona embedding.
 
 Question:
-> does the already-trained policy still express semantically meaningful persona differences when the environment is no longer helping manufacture them?
 
-### B4 — Semantic intervention controls
+> Does the trained policy still express persona when the game stops directly rewarding / inducing persona-specific behavior?
 
-Use three perturbation classes:
+### Phase 4 — Semantic persona interventions
 
-1. **Paraphrase:** same persona meaning, changed wording/language realization.
-2. **Semantic opposite / axis edit:** minimally alter one behavioral trait while holding occupation/age/rest fixed.
-3. **Nuisance edit:** occupation/age/name/style changes that should not dominate the claimed personality behavior.
+Construct controlled persona pairs.
 
-Desired scientific object is not high sensitivity. It is a sensible combination of:
-- invariance to irrelevant rewrites;
-- sensitivity to behaviorally meaningful changes.
+#### 4.1 Paraphrase invariance
 
-### B5 — Trait-relevant state slices
+Same personality meaning, different wording.
 
-Avoid global trajectory classification as the only readout.
+Desired behavior: small policy change.
 
-Ask whether persona effects appear **where a trait has an affordance to matter**.
+#### 4.2 Single-trait edit
 
-Examples grounded in the existing action ontology:
-- social opportunity vs no nearby agents;
-- work need / available work affordance;
-- leisure/rest alternatives;
-- exploration/novelty choices;
-- cooperative vs selfish action opportunities where supported.
+Change one behavioral dimension while keeping other content fixed.
 
-Do not invent a new synthetic benchmark at the beginning. Use existing environment states and interventions.
+Desired behavior: selective change in states where that dimension matters.
 
-### B6 — Task-pressure sweep
+#### 4.3 Semantic opposite
 
-Increase urgency / depleted needs / task reward pressure and measure whether persona-conditioned behavior:
-- remains stable;
-- becomes selectively suppressed only when rational;
-- collapses immediately to the same high-reward policy.
+Use clear oppositions where the existing environment has an affordance, e.g. more social ↔ less social or more planned ↔ more spontaneous.
 
-This can distinguish “persona as real policy preference” from “persona as weak decoration that disappears under task pressure.”
+#### 4.4 Nuisance edits
 
----
+Change occupation, age, phrasing, language/register, or irrelevant biography while preserving intended behavioral traits.
 
-## First decision ladder
+Desired behavior: nuisance effect smaller than semantic persona effect.
 
-### Outcome A — embedding swaps cause strong, semantically correct, state-appropriate action changes
+Do not manufacture a large synthetic benchmark yet. Start with a small hand-audited intervention set.
 
-The strong baseline survives.
+### Phase 5 — Trait-relevant state slicing
 
-Do **not** invent a method. Narrow the concern and likely stop this workbench unless another robust failure appears.
+Persona should not affect every state equally.
 
-### Outcome B — trajectory identity is strong, but fixed-state embedding swaps barely affect action choice
+Use actual Mini-Inzoi states to create/collect slices such as:
 
-Then persona traceability is not equivalent to persona control. Investigate what channel creates the traceability before proposing any fix.
+- social opportunity present / absent;
+- work opportunity and work need;
+- rest/leisure alternatives;
+- novelty/exploration opportunity;
+- repeated-action vs alternative-action states;
+- high vs low need pressure.
 
-### Outcome C — embedding changes actions strongly, but directions are arbitrary / nuisance-sensitive
+For each state family ask:
 
-Then the bottleneck is semantic grounding, not sensitivity.
+> Is the persona effect strongest where that trait can actually alter a meaningful NPC decision?
 
-### Outcome D — persona effects exist only while persona-coded reward/dynamics are active
+This is more important than a global persona classifier.
 
-Then the environment may be doing more of the behavioral work than the natural-language conditioning.
+### Phase 6 — Task-pressure sweep
 
-### Outcome E — one or two traits work while others collapse
+Systematically increase gameplay pressure:
 
-Do not average them into one “persona score.” Determine whether the action ontology/environment affords each trait, or whether the learned projection selectively discards dimensions.
+- depleted needs;
+- urgency;
+- reward asymmetry;
+- reduced availability of preferred actions;
+- competing task demands.
 
-### Outcome F — behavior is grounded but collapses only under task pressure
+Track:
 
-Then the scientifically useful object may become the competence/persona Pareto boundary and how a policy should arbitrate contextually.
+- task reward;
+- persona-sensitive action effect;
+- independent behavioral readout.
 
----
+Possible patterns include:
+- persona survives robustly;
+- persona is rationally suppressed only under high pressure;
+- persona collapses immediately;
+- different traits have different pressure thresholds.
 
-## Method permission
+### Phase 7 — Long-horizon attribution
 
-**No new method at entry.**
+After the one-step causal story is understood, run matched long trajectories.
 
-A method is allowed only after evidence supports:
+Measure:
 
-> proxy/behavior mismatch  
+- action distributions;
+- action transitions;
+- state visitation;
+- social interaction;
+- need satisfaction;
+- trajectory-level persona recoverability;
+- task reward;
+- divergence over time.
+
+Compare these with the one-step policy effect.
+
+A central question is whether long-run persona traceability comes from repeated persona-conditioned decisions or mostly from persona-specific game dynamics/rewards.
+
+### Phase 8 — Metric audit
+
+Compare candidate metrics against the causal/interventional results:
+
+- PCSP internal trajectory-persona retrieval;
+- independent Big-Five probe;
+- fixed-state policy divergence;
+- trait-relevant action effect;
+- long-horizon behavioral outcomes.
+
+Do not create a new learned metric unless the analysis proves one is needed.
+
+### Phase 9 — Cross-substrate check
+
+Only after a stable effect exists in PCSP.
+
+Use Mario-personas or another open behavioral NPC/game-agent environment to test the **scientific distinction**, not to reproduce the exact architecture.
+
+The goal is to distinguish:
+
+> representation/proxy persona consistency
+
+from
+
+> state-appropriate causal behavioral persona expression.
+
+If the phenomenon is PCSP-specific, keep the conclusion narrow.
+
+### Phase 10 — Method only if earned
+
+Only propose a method if we obtain:
+
+> stable behavioral failure  
 > → attributable bottleneck  
-> → controllable action surface  
-> → minimal intervention  
-> → better independent behavior without sacrificing task competence
+> → clear controllable action surface
 
-Possible intervention families are intentionally not registered. Do not pre-commit to:
-- another contrastive loss;
-- a new persona encoder;
-- trait reward shaping;
-- a learned evaluator;
-- a router / mixture-of-personas;
-- human feedback.
+Then use the smallest intervention that directly addresses the bottleneck.
 
-If a simple evaluation correction dissolves the issue, stop.
+No pre-commitment to a new contrastive loss, persona encoder, reward shaping, router, evaluator, or human-feedback pipeline.
 
 ---
 
-## Feasibility
+## 5. Decision rules
 
-The first gates are cheap:
+### Strong-baseline outcome
 
-- no foundation-model training;
-- existing persona embeddings;
-- small discrete-action environments;
-- existing full/no-consistency policies and evaluation code/results;
-- fixed-state action-logit analyses are inference-only;
-- environment/reward neutralization is a small code intervention;
-- later PPO retraining, if justified, is tiny relative to LLM/VLA training.
+If fixed-state swaps already produce strong, semantically correct, state-appropriate behavior and the effect survives neutral-environment controls:
 
-The user's available GPU resources are more than sufficient for the baseline scale; GPU cost should not be the research bottleneck.
+> **PCSP passes the core concern.**
+
+Do not force a paper.
+
+### Proxy mismatch
+
+If internal trajectory/persona identification is strong but fixed-state embedding changes barely alter actions:
+
+> investigate what actually creates trajectory identity.
+
+This would make proxy validity / behavioral grounding the central object.
+
+### Sensitivity without semantics
+
+If embedding swaps cause large changes but those changes do not align with persona meaning or are dominated by nuisance edits:
+
+> the problem is semantic grounding, not insufficient sensitivity.
+
+### Environment-dominated behavior
+
+If persona disappears under neutral-environment evaluation:
+
+> distinguish policy persona from persona encoded in reward/dynamics.
+
+### Partial trait grounding
+
+If only some traits work:
+
+> do not average them into one persona score.
+
+Check whether the environment/action ontology provides meaningful affordances for the missing traits before blaming the model.
+
+### Pressure collapse
+
+If persona is grounded only in easy states and collapses under realistic task pressure:
+
+> study the persona–competence trade-off only after establishing this empirically.
 
 ---
 
-## Major risks / kill conditions
+## 6. What is already owned / what not to do
+
+Do not turn this workbench into:
+
+- another role-play/persona dialogue benchmark;
+- “add long-term memory to NPCs”;
+- better persona prompting;
+- generic persona vs task trade-off;
+- another Big-Five text classifier;
+- another trajectory-identification metric;
+- “use LLM embeddings to condition a shared policy”;
+- explicit OCEAN reward shaping as the claimed novelty;
+- a new method before the causal failure is localized.
+
+Also do not treat PCSP's open artifact as the scientific contribution itself. It is the experimental substrate.
+
+---
+
+## 7. Feasibility
+
+The first several phases are cheap:
+
+- no LLM training;
+- no VLA/world-model training;
+- existing persona embeddings and policy code;
+- discrete action space;
+- inference-only fixed-state tests;
+- small environment interventions;
+- PPO retraining only if later justified.
+
+This is intentionally a **game-NPC research problem with a fast experimental loop**, not a company-scale “make NPCs generally smarter” project.
+
+---
+
+## 8. Kill conditions
 
 Stop or downgrade if:
 
-- the published/current PCSP checkpoints or metrics cannot be reproduced;
-- the apparent mismatch is only a bug in the independent probe;
-- counterfactual persona swaps reveal strong semantic control and no meaningful failure remains;
-- all interesting effects depend on Big-Five labels / hand-coded action semantics and do not generalize beyond the toy ontology;
-- a nearest prior is found that already disentangles language persona conditioning from persona-coded environment/reward with causal action interventions;
-- solving the problem requires large-scale human annotation before a basic behavioral signal exists;
-- the workbench degenerates into “design a better persona metric” without changing our understanding of NPC policy behavior.
+- PCSP's current results cannot be reproduced and the discrepancy cannot be resolved;
+- the independent behavioral audit is simply buggy;
+- fixed-state and neutral-environment tests show strong semantic grounding with no meaningful failure;
+- the entire signal is an artifact of hand-coded Big-Five/action mappings;
+- relevant traits cannot be expressed by the environment/action ontology at all;
+- nearest prior already performs the same causal policy-vs-environment persona disentanglement;
+- useful conclusions require large human studies before a machine-measurable effect exists;
+- after controls the project becomes merely “design a better persona metric.”
 
-Also remember that PCSP is currently a frontier/preprint artifact rather than a field-standard benchmark. Its exceptional openness makes it a good workbench substrate, but the scientific object must eventually survive beyond one implementation.
-
----
-
-## Why this fits our taste
-
-This territory begins from a strong runnable baseline rather than an invented module.
-
-Its current shape is:
-
-> **successful method + strong internal metric**  
-> → **independent readout disagrees**  
-> → **source audit reveals entangled persona channels**  
-> → **cheap causal intervention can re-attribute the behavior**  
-> → only then, if needed, a minimal method may emerge.
-
-That is exactly the desired baseline-first / exploration-first research process.
+Negative results should still be recorded as workbench knowledge.
 
 ---
 
-## Paper identity
+## 9. Workbench outputs
 
-None.
+Keep this workbench simple. Do not create many process documents.
 
-The workbench may end after the first counterfactual audit. It earns promotion only if a simple, externally meaningful behavioral regularity survives strong controls and leads to a clearer problem than “persona consistency.”
+Use:
+
+- this `README.md` as the scientific contract;
+- `experiments/` for code/harness changes if/when added;
+- `results/` for machine-readable outputs and concise analysis notes;
+- `BASELINE.md` only if reproduction details become too large for this README.
+
+Every experiment should record:
+
+- exact upstream commit/checkpoint;
+- intervention;
+- controlled variables;
+- metric/readout;
+- result;
+- what assumption changed;
+- next experiment justified by that result.
+
+The workbench remains exploratory until a simpler paper identity emerges.
