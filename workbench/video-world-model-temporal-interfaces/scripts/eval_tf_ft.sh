@@ -6,7 +6,7 @@ export PYTHONPATH=$WB/vendor/minWM:$PYTHONPATH
 cd $WB/vendor/minWM
 RUN=$1; STEP=$2; TAG=$3; GPU=$4; PR=${5:-1,2,3,4}
 PT=$RUN/export_${STEP}_model.pt
-until [ -f $RUN/ckpts/checkpoint_$STEP/.metadata ] && [ -z "$(find $RUN/ckpts/checkpoint_$STEP -mmin -2)" ]; do sleep 60; done
+until [ -f $PT ] || { [ -f $RUN/ckpts/checkpoint_$STEP/.metadata ] && [ -z "$(find $RUN/ckpts/checkpoint_$STEP -mmin -2)" ]; }; do sleep 60; done
 [ -f $PT ] || CUDA_VISIBLE_DEVICES=$GPU $PY tools/export_checkpoint.py --checkpoint $RUN/ckpts/checkpoint_$STEP --output $PT --model-key model
 S=$(for k in 3 4 5 6 7 8 9 10 11 12; do printf "impulse:3:$k,"; done)
 CUDA_VISIBLE_DEVICES=$GPU $PY $WB/scripts/mwm_sysid.py --stage stage1_ar_tf --ckpt $PT --tag $TAG --ov 'inference.num_inference_steps=20' \
