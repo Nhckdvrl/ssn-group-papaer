@@ -16,6 +16,33 @@ It owns:
 
 There is intentionally **no top-level `observations/`**. Observations belong to the workbench that produced them.
 
+## 0. Venue-scale contract
+
+A workbench is expensive. It should not exist merely because an object is unexplored.
+
+Before substantial compute or long experimental expansion, every workbench must maintain a credible **top-conference ceiling**:
+
+- the local substrate is only an entry point, not the full contribution;
+- there is a broader assumption / bottleneck / principle that the workbench could change;
+- the strongest plausible outcome would matter beyond one dataset/model/language/game;
+- there is enough evidence runway to support a full paper, not one interesting table;
+- nearest prior does not already own the broader conclusion.
+
+Write the intended scope as:
+
+> **substrate / local effect → broader object → possible field-level consequence**
+
+This is **not** a fixed paper claim. It is a ceiling check.
+
+A workbench should be **demoted back to library knowledge or archived** if exploration shows that the broader object collapses and the remaining result is only:
+- a model-specific quirk;
+- a narrow benchmark issue;
+- a one-domain follow-up;
+- a small engineering patch with no transferable principle;
+- or an observation whose importance depends on exaggerated framing.
+
+Conversely, a very specific phenomenon is allowed when it reveals something general. Do not confuse surface breadth with scientific scale.
+
 ## 1. Baseline residency comes first
 
 Do not treat “the script runs and roughly matches one reported number” as baseline reproduction.
