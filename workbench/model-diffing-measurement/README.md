@@ -1,10 +1,30 @@
 # Model Diffing as Measurement — Workbench
 
 **Lane:** our-taste  
-**Status:** ACTIVE, exploratory workbench — **not a candidate**  
+**Status:** **DEMOTED 2026-09-29 — knowledge asset, do not execute as the current mother question**  
 **Created:** 2026-09-29
 
-## 0. Territory, not paper idea
+## 0. Demotion note — nearest-prior collision
+
+A deeper 2026 ownership audit found a direct parent that was missed when this workbench was opened:
+
+**Simple LLM Baselines are Competitive for Model Diffing** (Kempf et al., 2026; SciForDL / arXiv 2602.10371) already:
+- asks how model-diffing methods should be evaluated;
+- defines desiderata for **generalization, interestingness, and abstraction**;
+- performs a systematic head-to-head comparison between simple LLM-based diffing and SAE-based model diffing;
+- finds the simple LLM baseline competitive overall and often more abstract.
+
+Together with **Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences** and **Diff Mining**, this directly compresses the broad mother question originally registered here:
+
+> when does internal model diffing provide incremental information beyond simpler external / activation / logit baselines?
+
+Running the original plan across more model pairs, access levels, or realistic regimes would currently risk becoming an extension of an already active lineage rather than an independent top-conference-scale scientific object.
+
+**Do not execute the baseline plan below as an active workbench.** It is preserved as a reusable map of model-diffing baselines and evaluation pitfalls. Reopen only if a genuinely different scientific object emerges that cannot be reviewer-compressed to comparative model-diff evaluation.
+
+---
+
+## 0. Original territory (historical)
 
 This workbench studies **model diffing as a measurement instrument**:
 
