@@ -166,10 +166,17 @@ Until then, remain a workbench.
 
 ## Current workbenches
 
-- `shape-olmo/` — paused knowledge asset.
-- `hybrid-adaptation/` — exploratory.
-- `ai4quant/` — exploratory family.
-- `moe-route-preference/` — stable observation, candidate status not earned.
-- `video-world-model-temporal-interfaces/` — **our-taste**, exploratory study of temporal representation, alignment, control, causality, and compression interfaces in video/world models.
-- `npc-deception-investigability/` — **our-taste**, **ceiling re-audit required before further execution**; current object may remain too game-specific for the target top-conference scale.
-- `npc-persona-behavior-grounding/` — **our-taste**, **ceiling re-audit required**; retain only if the PCSP substrate exposes a broader causal-conditioning / proxy-validity problem beyond one NPC environment.
+### Active survivor
+
+- `video-world-model-temporal-interfaces/` — **our-taste; ACTIVE, conditional**. Current phenomenon already spans multiple independent interactive/world-model systems and points toward a general limitation of chunked causal generation. Continue only under the hard venue-scale gate in its README.
+
+### Frozen / demoted / knowledge assets
+
+- `shape-olmo/` — paused knowledge asset; explored Shape/hybrid hypotheses did not survive controls.
+- `hybrid-adaptation/` — **demoted**; current abstraction is too close to existing recurrent-state adaptation and KV-vs-state causal work.
+- `ai4quant/` — **demoted**; both current territories fail the workbench ceiling gate in their present form.
+- `moe-route-preference/` — **closed active line / knowledge asset**; broader routing-utility/misrouting conclusion is now owned by stronger nearest prior.
+- `npc-deception-investigability/` — **demoted**; coherent game-AI object, but current top-conference ceiling is too game-specific.
+- `npc-persona-behavior-grounding/` — **frozen**; broader proxy-vs-causal-control object is plausible, but one PCSP substrate is insufficient. Requires an independent second substrate before reopening.
+
+**Current policy:** do not keep a workbench active simply because code, data, or a cheap next experiment exists. If the top-conference ceiling is not credible, preserve the knowledge and stop execution.
