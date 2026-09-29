@@ -274,52 +274,132 @@ The repository's archived procedural-history line is especially relevant: unstab
 
 ---
 
-## 6. Current territory shortlist after ownership audit
+## 6. Second-pass ownership audit — 2026-09-29
 
-### T-MI-A — Mechanistic evidence / mediator identifiability
-**Status:** WORKBENCH-WORTHY, but broad and collision-sensitive.
+A deeper search after the first workbench registration materially changed the shortlist. This section is intentionally preserved as an anti-premature-convergence record.
 
-Parent:
-- causal abstraction + MIB.
+### 6.1 Model diffing comparative advantage — DEMOTED
 
-Pressure:
-- nonlinear alignment can be vacuous;
-- SAE/circuit explanations can be non-unique;
-- interventions can be OOD;
-- metrics can validate the wrong object.
+Missed direct prior:
 
-Natural workbench question:
-> under what constraints does a discovered causal mediator provide evidence about the model rather than evidence about the flexibility of our analysis pipeline?
+**Simple LLM Baselines are Competitive for Model Diffing** (Kempf et al., 2026)  
+https://arxiv.org/abs/2602.10371
 
-Do not start with a new metric or nonlinear method. Start from existing baselines + negative controls + held-out interventions.
+It already formalizes model-diff desiderata (generalization, interestingness, abstraction), performs a systematic simple-LLM vs SAE comparison, and finds simple LLM methods competitive / often more abstract.
 
-Nearest-prior risk is high: Non-Linear Dilemma, CAE, Grassmannian preprint, circuit multiplicity. The workbench must compare and compose these pressures rather than re-prove one of them.
+Combined with:
+- **Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences** (ICLR 2026);
+- **Diff Mining** (Aug 2026);
+- crosscoder sparsity-artifact work;
 
-### T-MI-B — Model diffing as a measurement instrument
-**Status:** WORKBENCH-WORTHY and currently more execution-friendly.
+the previously registered broad question “when do internals add value beyond simple external/logit/activation baselines?” is too directly occupied.
 
-Parent:
-- crosscoders / BatchTopK crosscoders / ADL / DFC / Delta-Crosscoder.
+Repository action: `workbench/model-diffing-measurement/` was demoted to a knowledge asset on 2026-09-29.
 
-New pressure:
-- crosscoder sparsity artifacts;
-- unrealistic narrow-finetune traces;
-- simple activation differences can be extremely strong;
-- Aug-2026 **Diff Mining** shows output logit differences can beat SOTA internal diffing on finetune-objective discovery.
+### 6.2 Generic MI metric validity — DEPRIORITIZE
 
-Natural workbench question:
-> what kinds of model changes actually require access to internals to discover or explain, and what kinds are already recoverable from output/logit deltas?
+New critical prior:
 
-Strong artifact:
-https://github.com/science-of-finetuning/diffing-toolkit
+**Automated Interpretability Metrics Do Not Distinguish Trained and Random Transformers** (ICLR 2026)
 
-This is attractive because it supports strong-baseline residency before method invention.
+Many SAE reconstruction / auto-interpretability-style metrics can score random transformers surprisingly similarly to trained ones. This strengthens the warning that a metric can validate properties of the analysis pipeline rather than learned computation.
 
-### HOLD — Intrinsic interpretability
-Large scientific upside, but training-heavy and broad. Revisit when there is a concrete public baseline and a pressure that can be explored within local compute.
+But generic “better MI evaluation” is itself crowded by:
+- MIB;
+- SAEBench;
+- Non-Linear Representation Dilemma;
+- **Who Guards the Guardians?** (UAI 2026), which stress-tests representation-identifiability metrics under varying data-generating processes / encoder geometry;
+- **Certified Interventional Fidelity** (UAI 2026), which formalizes causal intervention fidelity with statistical guarantees.
 
-### DEPRIORITIZE — Generic SAE consistency, generic circuit stability, generic long-horizon reasoning tracing
-Important topics, but 2026 nearest-prior density is already high enough that a generic workbench risks starting inside someone else's active paper.
+Conclusion: do not open a generic evaluation-metric workbench.
+
+### 6.3 Intervention naturality / off-manifold steering — DIRECTLY OCCUPIED
+
+2026 work already studies causal interventions pushing representations off the natural activation distribution, distinguishes benign from harmful divergence, and develops manifold-aware steering; another line proves steered states can be non-surjective / unreachable by natural prompts.
+
+Conclusion: “steering is off-manifold” is not a fresh mother question.
+
+### 6.4 Circuit stability / transportability / prompt specificity — HIGHLY ACTIVE
+
+Relevant 2025–2026 work includes:
+- **Circuit Stability Characterizes Language Model Generalization** (ACL 2025);
+- **Towards Universality** (ICLR 2025);
+- numerical-comparison circuit universality (ICLR 2026);
+- **Many Circuits, One Mechanism** (TMLR 2026);
+- **Finding Interpretable Prompt-Specific Circuits in Language Models** (NeurIPS 2026);
+- 2026 work on circuit robustness under task-preserving distribution shift;
+- ICML 2026 MI-workshop work on surrogate/open-model explanations failing to transfer cleanly to closed/target models.
+
+Conclusion: transportability is important, but the generic form is too active to register without a new concrete scientific object.
+
+### 6.5 Model-organism external validity — REAL PRESSURE, BUT ALREADY ACTIVE
+
+Two especially important 2026 references:
+
+**The Model Organism Lottery: Model Organism Interpretability Strongly Depends on Training Methodology** (ICML 2026 MI Workshop)
+
+Across 54 OLMo2-1B / Gemma-3-1B organisms and seven training methodologies, apparent interpretability changes substantially with SFT/DPO/integrated-training construction, even when the intended hidden behavior is similar. More realistic integrated training is often harder to interpret.
+
+**Pando: Do Interpretability Methods Work When Models Won’t Explain Themselves?** (2026)
+
+A large model-organism suite explicitly varies whether models provide faithful, absent, or misleading verbal explanations and compares black-box/white-box interpretability methods.
+
+Conclusion: “model organisms may be too easy / unrepresentative” is a genuine field pressure, but not an empty workbench.
+
+### 6.6 Representation exists vs representation is functionally used — REAL PHENOMENON FAMILY, ACTIVE
+
+Multiple 2026 works independently find versions of:
+
+> pretraining creates a readable representation; later instruction/alignment training changes whether/how that representation controls output.
+
+Examples:
+- **Decoded but Unused: Instruction Tuning Routes Moral Framing into the Judgment Readout**;
+- **Tool Calling is Linearly Readable and Steerable in Language Models**;
+- **Instruction Tuning Changes How Upstream State Conditions Late Readout**;
+- refusal work showing base models contain discrimination structure later transformed into a causal refusal gate.
+
+This is scientifically richer than “probe says the model knows X”, but generic representation→use/readout is now an active lineage.
+
+### 6.7 Training selects mechanisms — STRONG SCIENTIFIC OBJECT, NOT YET OUR WORKBENCH
+
+**From Shortcut to Induction Head: How Data Diversity Shapes Algorithm Selection in Transformers** (NeurIPS 2025) proves in a controlled transformer setting that training-data diversity can select between a positional shortcut and a generalizable induction-head algorithm.
+
+Related work studies:
+- training/architecture biases selecting different circuit solutions;
+- circuit evolution under fine-tuning;
+- SFT vs RL circuit preservation and forgetting;
+- objective transitions during post-training.
+
+This establishes that **mechanism selection by training pressure is a real scientific object**, but a workbench must not simply scale the NeurIPS-2025 synthetic result to “modern LLMs”.
+
+### 6.8 Capability precursors / developmental forecasting — DIRECT NEW PRIOR
+
+A September 2026 preprint, **Capability Emergence Can Be Forecast**, already turns mechanistic precursors into a calibrated forecasting task:
+- previous-token-head formation predicts induction emergence per seed;
+- blind preregistration;
+- manufactured negative controls;
+- public Pythia / OLMo / OLMo-2 checkpoint evidence.
+
+Thus “can mechanisms emerge before behavior and forecast capability?” is no longer an empty mother question.
+
+### 6.9 Scaling / mechanism phase transitions — INTERESTING, BUT FIRST PRIOR ALREADY EXISTS
+
+**Architecture, Not Scale: Circuit Localization in Large Language Models** (2026) reports architecture-dependent circuit concentration and a scale-linked factual-recall circuit phase transition inside Qwen2.5.
+
+Older induction-head / grokking / repeated-data work also directly links training/scaling phase transitions to circuit formation.
+
+Conclusion: promising model-science territory, but not enough ownership separation yet.
+
+### 6.10 Current disposition
+
+After the second-pass audit:
+
+- **no new active interpretability workbench is authorized yet**;
+- the prematurely opened model-diffing workbench is demoted;
+- generic SAE reliability, circuit stability, intervention naturality, model-organism validity, representation→readout, and precursor forecasting are all too directly occupied in generic form;
+- the most scientifically interesting remaining pressure is **how training pressure selects / reorganizes computation in realistic model-training flows**, but nearest-prior density is still high and the exact independent object has not yet crystallized.
+
+This is a better state than forcing a survivor.
 
 ---
 
