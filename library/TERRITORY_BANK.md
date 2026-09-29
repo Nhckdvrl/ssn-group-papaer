@@ -152,28 +152,45 @@ Good diagnostic signal → endless loss search.
 
 **Why keep inhabiting it**
 
-The strongest direction is not “find another neuron/head”; it is to improve the **explanatory decomposition** of model computation and connect representation to causal use.
+The frontier has moved beyond “find another neuron/head”. By 2025–2026, major pressure sits on the **validity of mechanistic evidence itself**: what the causal mediator is, whether an explanation is identified or merely one convenient decomposition, whether interventions reflect natural computation, and whether an interpretation provides actionable information beyond cheaper behavioral/logit baselines.
 
-**Recurring assumptions**
+**Recurring assumptions worth auditing**
 
-- neuron is the right unit;
-- readable representation = causally used representation;
-- one linear direction = one mechanism;
-- a probe that predicts behavior explains behavior;
-- mechanisms scale unchanged across model size/family.
+- neuron / SAE feature / circuit edge is the right causal unit;
+- readable or linearly decodable representation = naturally used representation;
+- higher IIA / attribution score = better mechanistic explanation;
+- a more expressive alignment map is always better;
+- one SAE dictionary is a canonical feature inventory;
+- structurally different circuits imply different mechanisms;
+- successful steering proves the steered direction is the natural mechanism;
+- a narrow model organism is representative of broad post-training;
+- internal interpretability has comparative advantage over black-box/logit/activation-difference baselines.
 
 **Natural observations**
 
-- causal transport / intervention;
-- cross-layer/visit reconstruction;
-- representation-use dissociation;
-- changed mechanisms across scale or training stage.
+- mediator complexity vs held-out intervention generalization;
+- negative-control success/failure (random/wrong-task models, shuffled variables);
+- cross-seed / cross-method explanation stability;
+- structural difference vs functional interchangeability;
+- intervention naturality / off-manifold effects;
+- proxy metric vs practical/actionable outcome;
+- internal model-diff signals vs simple output/logit differences;
+- explanation transfer across prompts, distributions, checkpoints, and model pairs.
 
-**High-risk failure mode**
+**Baseline / observation first**
 
-New probe / SAE / lens without a scientific inference that changes.
+Start from MIB / causal abstraction / SAEBench / established model-diffing harnesses. Reproduce strong simple baselines and negative controls before proposing a new mediator, SAE, circuit algorithm, or steering method.
 
-**Anchors:** MI01–MI05, B03–B05.
+**High-risk failure modes**
+
+- behavior anomaly → synthetic task → probe/SAE/DAS → “mechanism”;
+- another SAE/probe/lens without changing a scientific inference;
+- using only one toy or narrow fine-tune and generalizing to LLM mechanisms;
+- treating a flexible analysis pipeline's fit as evidence that the model itself implements the proposed abstraction.
+
+**Deep map:** `deep/academic/INTERPRETABILITY_LANDSCAPE_2026.md`  
+**Tool map:** `deep/open-artifacts/INTERPRETABILITY_TOOLING_2026.md`  
+**Anchors:** MI01–MI05 plus MIB, SAEBench, causal abstraction, Non-Linear Representation Dilemma, 2026 SAE consistency / model-diffing work.
 
 ---
 
