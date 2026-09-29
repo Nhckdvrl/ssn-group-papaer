@@ -61,7 +61,11 @@ def main():
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--steps", type=int, default=4)
     ap.add_argument("--tag", default="wpdist")
+    ap.add_argument("--prompts_json", default=None, help="name -> caption (e.g. data/wp_scenes/prompts.json)")
     a = ap.parse_args()
+    if a.prompts_json:
+        import json
+        PROMPTS.update(json.load(open(a.prompts_json)))
     os.makedirs(a.out, exist_ok=True)
     initialize_infer_state(argparse.Namespace(
         sage_blocks_range="0-53", use_sageattn=False, enable_torch_compile=False, use_fp8_gemm=False,
