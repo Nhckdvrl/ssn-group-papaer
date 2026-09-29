@@ -1,6 +1,6 @@
 # Key Papers — Curated Anchors
 
-**Last verified:** 2026-09-28
+**Last verified:** 2026-09-29
 
 This is not a comprehensive bibliography. These are papers worth rereading because they define a primitive, change an assumption, expose a failure, or provide a reusable open baseline.
 
@@ -78,6 +78,17 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 | MI03 | **Towards Monosemanticity** (Anthropic, 2023) | ANCHOR | Changes unit of analysis from neurons to learned features. | https://www.anthropic.com/research/towards-monosemanticity-decomposing-language-models-with-dictionary-learning |
 | MI04 | **Tracing the thoughts of a large language model** (Anthropic, 2025) | BRIDGE | Moves from feature discovery toward computational/attribution graphs. | https://www.anthropic.com/research/tracing-thoughts-language-model |
 | MI05 | **A global workspace in language models** (Anthropic, 2026) | FRONTIER | Current example of posing a broad functional question, then attacking it with multiple causal properties rather than one probe. | https://www.anthropic.com/research/global-workspace |
+| MI06 | **MIB: A Mechanistic Interpretability Benchmark** (ICML 2025) | BASELINE / ARTIFACT | Standardized circuit-localization and causal-variable tracks; essential before claiming a new MI method improves real mechanistic recovery. | https://proceedings.mlr.press/v267/mueller25a.html |
+| MI07 | **SAEBench** (ICML 2025) | BASELINE / ARTIFACT | Shows proxy/reconstruction gains do not reliably imply practical SAE utility; provides 200+ released SAEs and multiple evaluation axes. | https://proceedings.mlr.press/v267/karvonen25a.html |
+| MI08 | **Causal Abstraction: A Theoretical Foundation for Mechanistic Interpretability** (JMLR 2025) | FOUNDATION | Unifies patching, circuits, SAE/DAS/steering under explicit intervention-preserving abstractions; useful language for separating readability from causal explanation. | https://www.jmlr.org/papers/v26/23-0058.html |
+| MI09 | **The Non-Linear Representation Dilemma** (NeurIPS 2025) | NEGATIVE / FOUNDATION | Unrestricted nonlinear alignment can map random/non-solving networks to algorithms with perfect IIA; makes mediator complexity/falsifiability a first-class issue. | https://proceedings.neurips.cc/paper_files/paper/2025/hash/dbb98528c9870377f3f0d133aae6050b-Abstract-Conference.html |
+| MI10 | **Sparse Autoencoders Trained on the Same Data Learn Different Features** (ICLR 2026) | NEGATIVE / MEASUREMENT | Same model/data, different seeds can yield markedly different SAE dictionaries; strong warning against treating one dictionary as canonical truth. | https://proceedings.iclr.cc/paper_files/paper/2026/hash/3c1fe56b043848b211030c202764c6a7-Abstract-Conference.html |
+| MI11 | **Mechanistic Interpretability Should Prioritize Feature Consistency in SAEs** (ACL 2026) | MEASUREMENT | Turns run-to-run consistency into an explicit evaluation axis and shows architecture choices can materially change reproducibility. | https://aclanthology.org/2026.acl-long.99/ |
+| MI12 | **Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences** (ICLR 2026) | BASELINE / NEGATIVE / ARTIFACT | Simple activation differences strongly reveal narrow finetune objectives and expose model-organism external-validity problems; strong baseline-first paper. | https://proceedings.iclr.cc/paper_files/paper/2026/hash/3b939edfdf9c1211fb764a888078f13d-Abstract-Conference.html |
+| MI13 | **Crosscoding Through Time** (ACL 2026) | FRONTIER / ARTIFACT | Uses crosscoders to make representation development across checkpoints the object; useful example of a tool opening a new scientific question rather than merely visualizing a behavior. | https://aclanthology.org/2026.acl-long.60/ |
+| MI14 | **Many Circuits, One Mechanism** (TMLR 2026 Featured) | NEGATIVE / MEASUREMENT | Structurally distinct circuits can be functionally equivalent; cross-condition transfer and edge-level tests change the evidential standard. | https://arxiv.org/abs/2606.06267 |
+| MI15 | **Interpretability Can Be Actionable** (ICML 2026 Position) | CRAFT / EVALUATION | Argues interpretation should be judged by concrete, validated downstream decisions/interventions rather than elegance alone. | https://arxiv.org/abs/2605.11161 |
+| MI16 | **Diff Mining: Logit Differences Reveal Finetuning Objectives** (2026 preprint) | FRONTIER / SIMPLE BASELINE | Cheap output-logit differences can outperform state-of-the-art internal model-diffing methods on finetune-objective discovery; critical comparative baseline for future model-diff work. | https://arxiv.org/abs/2608.26462 |
 
 ---
 
