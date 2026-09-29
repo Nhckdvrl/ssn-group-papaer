@@ -974,15 +974,32 @@ Do **not** interpret this as a ranking of paper ideas. It is a map of where base
 
 ### Current search policy
 
-The next workbench should emerge from **baseline residency in one of these spaces**, not from a paper-title gap.
+The developmental/population lineage has now passed the workbench gate after deeper genealogy + artifact audit.
 
-Most promising exploration strategy at this point:
+**Authorized 2026-09-29:** `workbench/mechanism-population-dynamics/`
 
-1. **SPACE-A/B as one connected developmental-science territory**: exploit multi-seed/dense-checkpoint public models to understand how stochastic training and data influence mechanism formation.
-2. **SPACE-C as an independent architecture/model-science territory**: understand functional regimes of adaptive inference-time state.
-3. Keep **SPACE-E** as the preferred route if exploration in A/B/C exposes a controllable bottleneck; it is a paper-shape, not the initial question.
+The workbench does **not** register a paper claim. It treats mechanisms and their developmental trajectories as population variables over stochastic training histories.
 
-No new interpretability workbench is authorized by this map alone.
+Why the bar was passed:
+- **Tigges et al. (NeurIPS 2024)** makes circuit development over checkpoints/scales measurable but mostly follows one run per scale;
+- **PolyPythias (ICLR 2025)** makes pretraining stability a population object with 50 runs / ~7k checkpoints, but studies behavior, representations and parameter-state maps rather than detailed mechanisms;
+- **Yin & Steinhardt (ICML 2025)** shows one mechanism can develop into another (induction → FV);
+- **Kawata et al. (NeurIPS 2025)** shows training distribution can select between competing algorithms;
+- **Crosscoding Through Time (ACL 2026)** opens concept-level longitudinal analysis;
+- **IOI sign-flip (ICML 2026 MI Workshop)** demonstrates that a developmental causal phenomenon can be replicated across many Pythia scales/training variants.
+
+The unresolved object is therefore not “does seed matter?” but:
+
+> **At what functional abstraction level do developmental mechanisms form reproducible population laws, and what training variation selects among alternative routes?**
+
+Mandatory artifact warning:
+- GitHub reports in 2026 indicate serious checkpoint integrity issues for parts of Pythia-2.8B / 12B and the 160M `weight-seed` controls.
+- The workbench starts with an R0 hash/tensor-continuity audit and avoids using those artifacts as clean controls until verified.
+- ordinary smaller PolyPythia seed runs + OLMo-2 stage branches are the preferred initial substrate.
+
+Independent **SPACE-C (stateful/adaptive computation)** remains a research-space HOLD. It is fast-moving and already has strong TTT/KVB/NTP/context-distillation/GradMem parents; do not register it until a cleaner scientific object survives deeper baseline residency.
+
+Keep **SPACE-E** as a possible paper-growth route if A/C exposes a controllable bottleneck; it is not an initial question.
 
 ---
 
