@@ -65,6 +65,7 @@ def main():
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--steps", type=int, default=4)
     ap.add_argument("--tag", default="wpdist")
+    ap.add_argument("--model_type", default="ar", choices=["ar", "bi"])
     ap.add_argument("--prompts_json", default=None, help="name -> caption (e.g. data/wp_scenes/prompts.json)")
     a = ap.parse_args()
     if a.prompts_json:
@@ -91,7 +92,7 @@ def main():
                        sr_num_inference_steps=None, video_length=video_length, negative_prompt="", seed=a.seed,
                        output_type="pt", prompt_rewrite=False, return_pre_sr_video=False,
                        viewmats=viewmats.unsqueeze(0), Ks=Ks.unsqueeze(0), action=action.unsqueeze(0),
-                       few_step=a.steps <= 4, chunk_latent_frames=4, model_type="ar", user_height=480,
+                       few_step=a.steps <= 4, chunk_latent_frames=4 if a.model_type == "ar" else 16, model_type=a.model_type, user_height=480,
                        user_width=832, transformer_resident_ar_rollout=True, reference_image=path)
             v = out.videos[0]  # (C, F, H, W) in [0, 1]
             v = (v * 255).clamp(0, 255).to(torch.uint8).permute(1, 2, 3, 0)[:, ::2, ::2]
