@@ -239,12 +239,12 @@ Then slice by trait axis and state type.
 
 Disentangle the two persona channels.
 
-For persona pair (p,q), evaluate combinations of:
+For persona pair `p, q`, evaluate combinations of:
 
-- policy embedding (p), environment persona (p);
-- policy embedding (q), environment persona (p);
-- policy embedding (p), environment persona (q);
-- policy embedding (q), environment persona (q).
+- policy embedding `p`, environment persona `p`;
+- policy embedding `q`, environment persona `p`;
+- policy embedding `p`, environment persona `q`;
+- policy embedding `q`, environment persona `q`.
 
 Do this first at one step, then in matched-seed rollouts.
 
@@ -520,3 +520,65 @@ Every experiment should record:
 - next experiment justified by that result.
 
 The workbench remains exploratory until a simpler paper identity emerges.
+
+
+---
+
+## 10. Immediate execution order
+
+Do **not** start by running every phase.
+
+The first execution block is:
+
+1. **P0 — Baseline audit**
+   - reproduce / verify PCSP's current committed evidence;
+   - pin exact code/checkpoints;
+   - confirm the persona-conditioned reward/dynamics paths from source.
+
+2. **P1 — Fixed-state embedding swap**
+   - inference-only;
+   - full + no-consistency policies;
+   - same states, multiple persona embeddings;
+   - measure raw policy-distribution changes before any rollout confound.
+
+3. **P2 — Persona-channel crossing**
+   - separate policy persona from environment persona;
+   - one-step first;
+   - matched long rollouts only after the one-step result is understood.
+
+4. **P3 — Neutral-environment evaluation**
+   - only if P1/P2 leave a genuine attribution question.
+
+After each phase, update this workbench with:
+- what was observed;
+- which explanation became weaker/stronger;
+- which next experiment is now justified.
+
+Do not mechanically execute P4–P10 if an earlier result already kills or radically changes the question.
+
+---
+
+## 11. Primary references
+
+- **AI for Games in the Foundation Model Era** (2026)  
+  https://arxiv.org/abs/2609.16679
+- **A Survey on Large Language Model-Based Game Agents** (ACM Computing Surveys, 2026)  
+  https://arxiv.org/abs/2404.02039
+- **AI-Native Games: A Survey and Roadmap** (2026)  
+  https://arxiv.org/abs/2607.00527
+- **Narrative and Dialogue Generation for Video-Games: A Systematic Mapping** (2026)  
+  https://doi.org/10.1016/j.engappai.2026.115041
+- **One Policy, Infinite NPCs / PCSP** (2026)  
+  https://arxiv.org/abs/2605.23652  
+  https://github.com/yoosunghong/pcsp
+- **Stack More Levels: How to Get General and Human-like Mario Playing** (IEEE CoG 2026)  
+  https://github.com/carrotoxic/mario-personas
+- **Reinforcement Learning Methods for Emulating Personality in a Game Environment** (2025)  
+  https://doi.org/10.3390/app15147894
+- **Generative Agents: Interactive Simulacra of Human Behavior** (UIST 2023)  
+  https://arxiv.org/abs/2304.03442
+
+Broader NPC literature and artifact notes are maintained in:
+- `library/deep/academic/GAME_NPC_LANDSCAPE.md`
+- `library/KEY_PAPERS.md`
+- `library/deep/open-artifacts/README.md`
