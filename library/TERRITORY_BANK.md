@@ -183,6 +183,8 @@ New probe / SAE / lens without a scientific inference that changes.
 
 Speech introduces something text systems largely avoid: **physical time**. Streaming, overlap, turn-taking, codec rate, semantic/acoustic information, and latency become model variables rather than serving details.
 
+By 2026 the territory extends beyond speech modeling itself: grounded agents increasingly observe partial input, generate, call tools, receive results, and run background tasks **while interaction continues**. This makes the transition from sequential/turn-based capability to realtime/streaming/asynchronous capability a reusable scientific object rather than a serving detail.
+
 **Recurring assumptions**
 
 - ASR→LLM→TTS decomposition is lossless;
@@ -202,7 +204,9 @@ Speech introduces something text systems largely avoid: **physical time**. Strea
 
 Pure system-latency engineering with no scientific quantity.
 
-**Anchors:** VO01–VO02.
+**Anchors:** VO01–VO12.
+
+**Current workbench:** `../workbench/realtime-agent-capability-transition/README.md`.
 
 ---
 
