@@ -96,7 +96,33 @@ When reading strong work, learn how the idea grew:
 
 Imitate the **reasoning move**, not the surface method.
 
-## 7. Search output for this lane
+## 7. Top-conference-scale ceiling
+
+Baseline-first does not mean “any baseline with a weakness is worth months of work”.
+
+Before opening a workbench, require plausible headroom for a strong ICML/ICLR/NeurIPS/CVPR/ACL-family main-track contribution.
+
+Ask:
+
+- does the baseline failure expose a **general bottleneck / wrong assumption / design principle**, or only a local bug?
+- if we fully diagnose the bottleneck, is there a natural path to either a broader scientific conclusion or a method that would matter across multiple regimes?
+- can we validate the eventual story with independent axes (models, tasks, scales, perturbations, mechanisms, downstream outcomes), rather than one benchmark?
+- is the work likely to remain important if the exact baseline is superseded?
+- what strong current papers would reviewers mentally compare us against, and is the potential contribution comparable in conceptual scale?
+- if the method gain were zero, could the analysis still teach the field something consequential? If the analysis were removed, could the method still represent a meaningful technical step? Ideally at least one side has real scale.
+
+Reject territories whose optimistic endpoint is merely:
+- “+X points on one benchmark”;
+- “a new module for one model family”;
+- “a failure on one slice”;
+- “A+B has not been tried”;
+- “we can publish the artifact because no one measured this exact thing”.
+
+The desired unit is:
+
+> **strong baseline → consequential failure / changed premise → broad bottleneck → evidence → minimal intervention or durable scientific conclusion**
+
+## 8. Search output for this lane
 
 Before opening a workbench, provide:
 
