@@ -171,10 +171,10 @@ Until then, remain a workbench.
 - `video-world-model-temporal-interfaces/` — **our-taste; ACTIVE, conditional (phase 1 passed 2026-09-29)**. Chunk-onset control deafness reproduced on three independent systems (MG2, minWM, HY-WorldPlay), arising at causalization; human key-press replay shows lost seam-onset presses on two systems, and a context-anchored chunk-overlap rollout repairs control on both. Open: quality/cost of the repair, sample size, a 4th system, and the training-side cause. Continue only under the hard venue-scale gate in its README.
 - `scoped-context-state/` — **sasano-taste; ACTIVE, exploratory**. Investigates whether LLMs can enter, maintain, switch, and exit temporary contextual states; agent execution is explicitly research-navigation-first and must kill/pivot rather than locally optimize a weak story.
 - `realtime-agent-capability-transition/` — **our-taste; ACTIVE, exploratory**. Studies the capability transition from sequential/turn-based agents to realtime, streaming, and asynchronous agents. No failure slice or method is pre-registered; the agent must reproduce strong baselines and discover the load-bearing transition empirically.
-- `model-diffing-measurement/` — **our-taste; ACTIVE, exploratory**. Treats model diffing as a measurement problem: reproduce behavior/logit/activation/crosscoder baselines, then test when internal access provides genuine incremental evidence across increasingly realistic model-change regimes.
 
 ### Frozen / demoted / knowledge assets
 
+- `model-diffing-measurement/` — **DEMOTED 2026-09-29; knowledge asset**. Direct ownership collision: Kempf et al. 2026 already systematize simple-LLM vs SAE model diffing with generalization/interestingness/abstraction criteria; together with ADL and Diff Mining, the original comparative-access mother question is too occupied.
 - `shape-olmo/` — paused knowledge asset; explored Shape/hybrid hypotheses did not survive controls.
 - `hybrid-adaptation/` — **demoted**; current abstraction is too close to existing recurrent-state adaptation and KV-vs-state causal work.
 - `ai4quant/` — **demoted**; both current territories fail the workbench ceiling gate in their present form.
