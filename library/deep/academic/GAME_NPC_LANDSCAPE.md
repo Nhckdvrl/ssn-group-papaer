@@ -1,6 +1,6 @@
 # Game NPCs in the Foundation-Model Era — Landscape & Genealogy
 
-**Last verified:** 2026-09-28  
+**Last verified:** 2026-09-29  
 **Scope:** reusable research material for game NPCs / interactive characters. This is **not** a candidate list and does not authorize a paper direction.
 
 ## 0. Why “NPC” is not one research problem
@@ -117,13 +117,43 @@ These are useful baselines/pressures, not fresh territories by themselves.
 - Shows upstream memory quality can materially improve downstream role-playing even with a modest open model.
 - Ownership warning: generic “better retrieval improves role-play” is not enough.
 
-### B6 — One Policy, Infinite NPCs (2026)
-- Moves persona from **text style** into **behavioral policy conditioning**.
-- One shared RL policy conditioned on frozen LLM persona embeddings; trajectory/persona consistency becomes a training object.
-- Important conceptual bridge from “persona = dialogue voice” to “persona = traceable behavior over time.”
+### B6 — One Policy, Infinite NPCs / PCSP (2026)
+- Moves persona from **text style** into **behavioral policy conditioning**: one shared PPO policy is conditioned on a frozen language-model embedding of designer-authored persona text.
+- The paper's headline evidence is trajectory-to-persona identification / semantic-behavior alignment, with an InfoNCE trajectory-consistency objective described as load-bearing.
+- Public artifact is unusually complete: Mini-Inzoi environments, persona splits, checkpoints/results, ablations, Melting Pot validation, UE5 integration, and later audit documents.
+- Primary paper: https://arxiv.org/abs/2605.23652
+- Artifact: https://github.com/yoosunghong/pcsp
+
+#### 2026-09-29 independent artifact audit — important correction
+The current public repository contains later diagnostics that materially narrow the interpretation of the paper's internal metric:
+
+- an **independent action-only Big-Five evaluator** reports mean balanced accuracy **0.482 full vs 0.511 no-consistency**; the paired bootstrap interval for full-minus-no-consistency is **[-0.056, -0.002]**;
+- adding state summaries yields **0.556 vs 0.558**, with no meaningful separation;
+- most independently recoverable action-only trait signal is extraversion, while conscientiousness falls below chance under the held-out shift;
+- the learned persona projection keeps trait information but compresses raw Qwen embedding geometry strongly: raw Big-Five probe **0.898** vs projected **0.799**, raw/projected cosine-geometry correlation **rho=0.404**, effective rank **3.87**;
+- gradient-path auditing shows the InfoNCE term updates the persona projection and trajectory encoder but has **no direct actor-head gradient path**. Any behavioral effect must therefore be mediated indirectly through the shared projection.
+
+The repository itself states the defensible conclusion narrowly: InfoNCE is load-bearing for alignment between the learned trajectory encoder and persona projection, but these independent probes **do not establish an advantage in independently observable Big-Five behavior**.
+
+This is a high-value baseline-first pressure because the headline representation/evaluator signal and an independent behavioral readout disagree inside the same open system. Do not summarize PCSP simply as “persona consistency solved.”
+
+### B7 — Explicit behavioral-persona parents (2024–2026)
+Two older/current families provide useful counterweights to PCSP rather than direct successors:
+
+- **Multi-Agent System for Emulating Personality Traits Using Deep RL** (2024) and **Reinforcement Learning Methods for Emulating Personality in a Game Environment** (2025) define OCEAN traits through explicit game-behavior reward functions. They are less flexible than natural-language persona conditioning, but the behavioral semantics are inspectable.
+- **Stack More Levels: How to Get General and Human-like Mario Playing** (IEEE CoG 2026) trains runner / killer / collector playstyles with explicit segment-based persona rewards, then PPO→DRAIL with human demonstrations. The full code, checkpoints, PCG levels, and evaluation are public. It is useful because persona preservation is measured in actual game outcomes (kill/coin behavior), not only representation-level identity.
+  - https://github.com/carrotoxic/mario-personas
+
+These parents make a clean comparison possible: **semantic flexibility of free-form persona text** versus **behavioral identifiability grounded in explicit action consequences**.
 
 ### Pressure that remains scientifically useful
-The field has multiple incompatible operationalizations of “persona”: linguistic style, stated preference, recalled biography, action tendency, social policy, and trajectory-level behavior. Treating them as interchangeable is unsafe.
+The field has multiple incompatible operationalizations of “persona”: linguistic style, stated preference, recalled biography, representation-level identity, action tendency, social policy, and trajectory-level behavior. Treating them as interchangeable is unsafe.
+
+A particularly important unresolved boundary is now visible:
+
+> **Does a persona-conditioned NPC merely produce trajectories that are statistically distinguishable by a coupled evaluator, or does the persona semantics causally and predictably change decisions in the game states where that trait should matter?**
+
+This should not be answered by inventing another persona score first. The open PCSP artifact allows counterfactual state/persona interventions, action-distribution analysis, trait-relevant state slicing, task-pressure sweeps, projection interventions, and independent behavioral readouts before any new method is proposed.
 
 ---
 
