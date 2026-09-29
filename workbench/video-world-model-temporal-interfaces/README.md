@@ -2,6 +2,18 @@
 
 **Status: exploratory workbench — not a candidate.**
 
+**Venue-scale status: ACTIVE SURVIVOR (conditional, 2026-09-29 audit).**
+
+Current scope ladder:
+
+> chunk-onset control deafness in several open interactive world models  
+> → positional non-equivalence introduced by chunked causal generation / causalization  
+> → a general control-interface limitation of fast chunk-autoregressive video world models, with implications for how fine-grained actions should be represented, trained, and served.
+
+This ladder is currently supported better than the other workbenches because the effect already survives multiple independent systems/action interfaces and has causal controls (teacher/student, grid shift, VAE negative control, per-frame negative control, overlap recovery). It remains active only if the broader second/third levels survive.
+
+**Hard ceiling gate:** before paper promotion, require (i) broader system/statistical coverage, (ii) a real downstream/interactive consequence beyond synthetic pulses, (iii) a unified mechanism or sharply bounded structural explanation, and (iv) a repair validated on at least two systems without unacceptable quality/cost regression. If these fail, demote rather than write a narrow “chunk-first bug” paper.
+
 ## 进度页（中文，随每次里程碑更新）
 
 **最后更新：2026-09-29**
