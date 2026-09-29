@@ -675,6 +675,290 @@ Training-heavy; architecture novelty is crowded; readable bottlenecks can still 
 
 ---
 
+## 6A. Deep genealogy notes — how strong interpretability papers actually grow
+
+**Added after a process correction on 2026-09-29.**
+
+A nearby paper is **not** a reason to kill a territory. Mature top-conference work nearly always grows inside a dense lineage. The useful question is:
+
+> what pressure did the parent leave unresolved, what premise changed, and what new scientific object became measurable?
+
+The lineages below are recorded to train research navigation, not to nominate paper ideas.
+
+### GENEALOGY-1 — Induction heads → function vectors → mechanism competition → mechanism selection
+
+#### Parent state 1: circuits establish a concrete computational mechanism
+- Elhage et al., **A Mathematical Framework for Transformer Circuits** (2021)
+- Olsson et al., **In-context Learning and Induction Heads** (2022)
+
+The important move was not merely “an attention head correlates with copying”. Induction heads were connected to a concrete algorithmic pattern and their formation during training coincided with a sharp improvement in an ICL-related token-loss measure.
+
+At this stage a reasonable field belief became:
+
+> induction heads are an important mechanism behind in-context learning.
+
+#### Pressure 1: a different mechanism explains the same high-level capability
+- Hendel et al., **In-Context Learning Creates Task Vectors** (2023)
+- Todd et al., **Function Vectors in Large Language Models** (ICLR 2024)  
+  https://proceedings.iclr.cc/paper_files/paper/2024/hash/4ae163cb8788970e53b4fd9578141139-Abstract-Conference.html
+
+Function-vector work did not treat induction-head papers as “the territory is occupied”. It changed the mediator and the functional question: can a compact task representation be causally transported and reused outside the original demonstrations?
+
+The strong evidence was intervention: adding the task vector can recover/trigger task behavior in zero-shot or unrelated contexts.
+
+#### Pressure 2: two plausible mechanisms now conflict
+- Yin & Steinhardt, **Which Attention Heads Matter for In-Context Learning?** (ICML 2025)  
+  https://proceedings.mlr.press/v267/yin25e.html
+
+This paper is an especially important search-process exemplar.
+
+**Reconstructed genesis:** once induction heads and FV heads both had credible causal evidence for “ICL”, the next good question was not to invent a third head type. It was to put the two mechanisms in the *same experimental frame*.
+
+The paper first verifies that the two head sets are actually distinct, then uses matched ablations across 12 models / 45 tasks. It finds FV heads matter much more for ordinary few-shot ICL, especially at scale.
+
+Crucially, it does **not** simply declare the older work wrong. It reconstructs why the literature diverged:
+1. Olsson-style “ICL score” (late-token vs early-token loss) and ordinary few-shot ICL accuracy are different outcomes;
+2. induction and FV scores are correlated, so naive ablation is confounded;
+3. scale changes the relative importance of the mechanisms.
+
+Then training trajectories reveal that some FV heads begin as induction heads and later transition.
+
+**Reusable research move:**
+
+> two mature explanations coexist → align definitions/metrics → control confounds → compare causally → trajectory resolves apparent contradiction.
+
+This is exactly why “paper X exists” is not a kill criterion.
+
+#### Pressure 3: if multiple algorithms are possible, what selects one?
+- Kawata et al., **From Shortcut to Induction Head: How Data Diversity Shapes Algorithm Selection in Transformers** (NeurIPS 2025)  
+  https://proceedings.neurips.cc/paper_files/paper/2025/hash/6499b639e8a4b5c9a780d9b88c09722f-Abstract-Conference.html
+
+This paper changes the question again. The object is no longer “what mechanism exists?” but:
+
+> why does training select a generalizable induction algorithm rather than a positional shortcut that fits the same training task?
+
+The pressure comes from shortcut/generalization literature plus induction-head theory. The changed premise is that task success does not identify the learned algorithm.
+
+The revealing controlled experiment/theory varies **data diversity** while the task remains solvable by both mechanisms. Increased diversity weakens positional shortcuts and selects induction.
+
+**Reusable move:**
+
+> known mechanism + competing solution + matched training success → manipulate training pressure → study algorithm selection.
+
+This is a much stronger template for future model science than “find behavior anomaly, then explain it”.
+
+#### What this lineage teaches search
+
+The lineage did not close after Olsson 2022. It became *more scientifically productive* because each parent made the next distinction possible:
+
+mechanism existence → alternative mechanism → causal competition → developmental relation → training pressure selecting mechanisms
+
+When searching a mature area, ask what the newest parent **made measurable**, not merely what keyword it already contains.
+
+---
+
+### GENEALOGY-2 — Superposition → SAEs → scaling → benchmark/construct validity → feature semantics
+
+#### Parent state: neurons are often polysemantic
+- Elhage et al., **Toy Models of Superposition** (2022)
+
+The pressure was representational: if many concepts are superposed in fewer dimensions, neurons are a poor semantic unit.
+
+#### Changed representation: sparse dictionary learning
+- Bricken et al., **Towards Monosemanticity** (2023)
+- Templeton et al., **Scaling Monosemanticity** (2024)
+
+These works did not originate from “SAE is fashionable”. The scientific premise was that sparse latent features might be a better decomposition than neurons.
+
+**Documented genesis in Towards Monosemanticity:** the authors considered sparse architectures and ordinary dictionary-learning-style approaches, encountered practical/interpretive problems, and developed SAE-style decomposition as an existence proof.
+
+Scaling work then asks whether the decomposition survives at frontier scale.
+
+#### Pressure: SAE-method zoo outruns evaluation
+- Karvonen et al., **SAEBench** (ICML 2025)  
+  https://proceedings.mlr.press/v267/karvonen25a.html
+
+By 2024–25 many SAE variants improved sparsity/reconstruction tradeoffs. SAEBench changes the premise:
+
+> a better unsupervised proxy is not automatically a better interpretability tool.
+
+It compares 200+ SAEs over multiple architectures and evaluation axes, finding proxy gains do not consistently predict downstream interpretability/application gains.
+
+**Reusable move:**
+
+> successful method family → method zoo → strong common benchmark → discover which apparent improvements are real.
+
+This is analogous to EDM / ResNet-Strikes-Back style research navigation.
+
+#### New pressure: what kind of object does an SAE recover?
+2026 work then branches rather than ending the field:
+- **Sparse Autoencoders Trained on the Same Data Learn Different Features** (ICLR 2026): seed changes produce substantially different dictionaries.
+- **Mechanistic Interpretability Should Prioritize Feature Consistency in SAEs** (ACL 2026): consistency becomes an explicit evaluation axis.
+- **Automated Interpretability Metrics Do Not Distinguish Trained and Random Transformers** (ICLR 2026): some popular metrics have weak construct validity.
+- **Do Sparse Autoencoders Identify Reasoning Features?** (ICML 2026): falsification-oriented tests expose lexical/confounding explanations for candidate reasoning features.
+- **Sparse Autoencoders are Topic Models** (ICML 2026): reframes what the SAE objective naturally extracts.
+- **PolySAE** (ICML 2026): relaxes the linear additive decoder assumption to model feature interactions.
+
+The correct conclusion is **not “SAEs are solved / killed.”**
+
+The lineage is differentiating several scientific questions:
+- canonical recovery vs useful basis;
+- semantic labeling vs causal role;
+- linear atoms vs compositional interactions;
+- reconstruction vs intervention utility;
+- local feature interpretation vs trajectory/model comparison.
+
+For topic search, the danger is entering at the wrong abstraction level (“another SAE architecture”) rather than finding a scientific pressure that makes a new axis load-bearing.
+
+---
+
+### GENEALOGY-3 — Sparse circuits → automated discovery → stability/reuse → abstraction-level crisis
+
+#### Parent state
+Manual reverse engineering establishes sparse computational graphs for specific tasks.
+
+Automation follows:
+- ACDC and related automated circuit-discovery methods;
+- MIB later standardizes circuit-localization evaluation.
+
+#### Pressure: task-specific circuits do not answer global questions
+
+Two different papers push out from the local-circuit paradigm:
+
+- Sun, **Circuit Stability Characterizes Language Model Generalization** (ACL 2025)  
+  https://aclanthology.org/2025.acl-long.442/
+- He et al., **Towards Global-level Mechanistic Interpretability: Modular Circuits** (ICML 2025)  
+  https://proceedings.mlr.press/v267/he25x.html
+
+Circuit Stability changes the use of circuits: the circuit is no longer only an explanation of one behavior; stability/equivalence across subtasks becomes a possible signal of generalization.
+
+ModCirc asks whether task-specific circuits can be replaced by a reusable vocabulary of task-agnostic computational modules.
+
+These are **new scientific objects created by a mature baseline**, not “gaps in circuit extraction”.
+
+#### New pressure: structural reuse may not mean functional modularity
+
+- Li & Subramani, **How Much Do Circuits Tell Us? Measuring the Consistency and Specificity of Language Model Circuits** (2026)  
+  https://arxiv.org/abs/2605.08348
+
+Component-level circuits are highly consistent but often nonspecific across tasks; much shared structure consists of MLP blocks / generic attention-sink infrastructure. Neuron-level circuits become more specific but less consistent.
+
+This creates a real abstraction problem:
+
+> coarse units are reproducible but generic; fine units are specific but unstable.
+
+#### Further pressure: structural difference may not imply mechanistic difference
+
+- Bayat Makou et al., **Many Circuits, One Mechanism** (TMLR 2026)  
+  https://arxiv.org/abs/2606.06267
+
+Input statistics can yield structurally different circuits that transfer across conditions and appear functionally interchangeable. A common core recovers almost all performance.
+
+So the lineage develops:
+
+find sparse graph → automate extraction → ask stability/generalization → seek reusable modules → discover specificity–consistency tension → discover functional equivalence classes
+
+**Search lesson:** the promising object is often the *level of abstraction at which a mechanism becomes stable and predictive*, not “another circuit extraction method”. But the exact paper question still has to be found experimentally.
+
+---
+
+### GENEALOGY-4 — Final-checkpoint interpretation → developmental interpretability
+
+#### Parent state
+Most MI work studies a frozen final checkpoint. Separate training-dynamics work tracks:
+- behavioral curves;
+- parameter movement;
+- activation similarity;
+- knowledge acquisition.
+
+Those two literatures leave a mismatch:
+- MI can make fine-grained conceptual/causal claims, but usually at one time;
+- training-dynamics work sees trajectories, but often at coarse behavioral/representation level.
+
+#### Crystallization
+- Bayazit et al., **Crosscoding Through Time** (ACL 2026)  
+  https://aclanthology.org/2026.acl-long.60/
+
+The paper explicitly builds from this mismatch.
+
+Crosscoders solve a technical obstacle: separate SAEs at different checkpoints live in incomparable feature spaces. A joint feature space makes feature emergence / persistence / disappearance traceable. RelIE then asks when a feature becomes causally important.
+
+The paper deliberately compares checkpoints from the **same training run** to avoid tokenizer/data/objective confounds, and validates across Pythia, BLOOM, and OLMo.
+
+Important limitations from the paper itself:
+- checkpoint selection affects conclusions;
+- early checkpoints are hard to interpret;
+- benchmark concepts may not reflect real-world variation;
+- attribution is not a strict causal guarantee;
+- human-readable feature aliasing remains a risk;
+- crosscoder cost grows with model/checkpoint count.
+
+**Reusable move:**
+
+> two mature literatures expose complementary blind spots → import an existing instrument (crosscoder) to make a new longitudinal scientific object measurable.
+
+This is the kind of growth we should imitate. The novelty is not “crosscoder + checkpoints” syntactically; it is making *representation development* experimentally addressable.
+
+---
+
+### GENEALOGY-5 — Big functional hypothesis → converging mechanistic tests
+
+Anthropic, **A Global Workspace in Language Models** (2026)  
+https://www.anthropic.com/research/global-workspace
+
+This is useful as a contrasting research style.
+
+The work does **not** start from an odd benchmark failure. Its starting point is a broad functional distinction from cognitive science:
+
+> some information is reportable, deliberately controllable, flexibly reusable and involved in deliberate reasoning, while much computation remains automatic.
+
+The Jacobian lens is developed to operationalize one key property: representations positioned to influence what the model *could say*.
+
+Crucially, the work then stacks multiple tests rather than treating readout as explanation:
+- reportability;
+- voluntary modulation;
+- causal swap/intervention;
+- silent multi-step reasoning;
+- flexible reuse of one representation by different downstream tasks;
+- selective ablation separating higher-order from automatic behavior;
+- post-training changes;
+- training interventions that alter internal workspace content and behavior.
+
+**Reusable move:**
+
+> natural high-level functional hypothesis → operationalize several independent predictions → invent/use tools only as needed → demand converging causal evidence.
+
+This is closer to field-shaping scale than “feature X correlates with behavior Y”.
+
+The paper also leaves a genuine research program (e.g. what controls workspace entry), but those statements should **not** be copied as ready-made topics. The useful asset is the question-forming process.
+
+---
+
+### Meta-lesson from the genealogies
+
+Do **not** use this rule:
+
+> nearby paper exists → territory dead.
+
+Use this rule instead:
+
+1. What was the **parent capability / method / scientific belief**?
+2. What did the new paper make newly measurable or newly questionable?
+3. Is the next question merely “same thing on another model”, or does the parent create a **new experimental object**?
+4. Can we enter through a strong baseline and let experiments choose among multiple plausible stories?
+5. If the first expected outcome fails, does the lineage still have informative branches?
+
+A dense lineage can be *better* than an empty literature cell because it gives:
+- trustworthy baselines;
+- reusable artifacts;
+- agreed phenomena;
+- multiple competing explanations;
+- clear experimental pressure.
+
+The search goal is therefore not to find an untouched keyword. It is to find a **live scientific object whose parent lineage has become mature enough to support discovery, but whose next important distinction is not yet crystallized**.
+
+---
+
 ### Current field-level comparison
 
 Do **not** interpret this as a ranking of paper ideas. It is a map of where baseline residency currently looks most informative.
