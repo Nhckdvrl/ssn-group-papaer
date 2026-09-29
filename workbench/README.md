@@ -169,6 +169,7 @@ Until then, remain a workbench.
 ### Active survivor
 
 - `video-world-model-temporal-interfaces/` — **our-taste; ACTIVE, conditional**. Current phenomenon already spans multiple independent interactive/world-model systems and points toward a general limitation of chunked causal generation. Continue only under the hard venue-scale gate in its README.
+- `scoped-context-state/` — **sasano-taste; ACTIVE, exploratory**. Investigates whether LLMs can enter, maintain, switch, and exit temporary contextual states; agent execution is explicitly research-navigation-first and must kill/pivot rather than locally optimize a weak story.
 
 ### Frozen / demoted / knowledge assets
 
