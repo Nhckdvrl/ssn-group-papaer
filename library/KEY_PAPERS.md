@@ -116,6 +116,12 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 | VO10 | **Qwen-Audio-Agent Technical Report** (2026) | FRONTIER / ARTIFACT | Foreground dialogue plus background delegated agents, explicit task state, cancellation/modification, result delivery, and persistent memory; practical asynchronous-runtime foothold. | https://arxiv.org/abs/2609.25195 |
 | VO11 | **How Should LLMs Listen While Speaking?** (2026) | FRONTIER / ARCHITECTURE | Contrasts direct channel fusion with cross-attention routing and exposes grounding-vs-context-corruption pressure under overlapping speech. | https://arxiv.org/abs/2605.10199 |
 | VO12 | **Full-Duplex Speech Models Take the Floor When Asked, Not When Needed** (2026) | FRONTIER / BEHAVIOR | Separates turn opportunity from semantic need to intervene; important ownership boundary for proactive-speaking research. | https://arxiv.org/abs/2609.19596 |
+| VO13 | **Speaking While Listening: Full-Duplex Survey and Empirical Audit** (EMNLP 2026 Main) | SURVEY / FIELD MAP | L0–L3 architecture hierarchy, T×I×R ontology, state machine, and the crucial empirical result that architecture levels are not a progress ladder; use before making any full-duplex frontier claim. | https://arxiv.org/abs/2606.19453 |
+| VO14 | **DuplexCascade** (2026) | PARENT / ARTIFACT | Important counterexample to “native end-to-end is necessary”: VAD-free cascaded ASR–LLM–TTS with micro-turns preserves strong text-LLM intelligence while supporting duplex interaction. | https://arxiv.org/abs/2603.09180 |
+| VO15 | **Realtime-Venus** (2026) | FRONTIER / ARTIFACT | Open 9B full-duplex frontend plus asynchronous Harness; request-time context capture, background work, private feedback, freshness and playback-aware delivery make computational boundaries directly instrumentable. | https://arxiv.org/abs/2609.13814 |
+| VO16 | **A frontend-backend architecture for tool calls in full-duplex speech models** (2026) | FRONTIER / ARCHITECTURE | NVIDIA design: streaming duplex frontend delegates transcript to a text backend and reinjects results; strong evidence for 2026 foreground/backend convergence. | https://arxiv.org/abs/2609.19334 |
+| VO17 | **Unified Audio Intelligence Without Regressing on Text Intelligence (Audex)** (2026) | COUNTEREXAMPLE / FRONTIER | Large-scale unified audio-text decoder reports strong audio capability with little text regression; prevents overclaiming that separation/modularity is inherently necessary. | https://arxiv.org/abs/2607.05196 |
+| VO18 | **The Latent Bridge: A Continuous Slow-Fast Channel for Real-Time Game Agents** (2026) | CROSS-DOMAIN / ARTIFACT | Fast reactive + slow reasoning models with communication as the load-bearing variable; text/latent bridge results and channel interference are a direct cross-domain ownership boundary. | https://arxiv.org/abs/2606.24470 |
 
 ---
 
@@ -128,6 +134,8 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 | VLA03 | **OpenVLA** (2024) | ANCHOR / ARTIFACT | Strong open VLA baseline and fine-tuning substrate. | https://arxiv.org/abs/2406.09246 |
 | VLA04 | **π0: A Vision-Language-Action Flow Model for General Robot Control** (2024) | ANCHOR | Useful contrast to purely autoregressive action tokenization; flow-matching action decoder. | https://arxiv.org/abs/2410.24164 |
 | VLA05 | **FAST: Efficient Action Tokenization for Vision-Language-Action Models** (2025) | BRIDGE / ARTIFACT | Excellent example of a successful abstraction (“actions as tokens”) becoming the next bottleneck. | https://arxiv.org/abs/2501.09747 |
+| VLA06 | **Latent Bridge: Feature Delta Prediction for Efficient Dual-System VLA Inference** (2026) | FRONTIER / ARTIFACT | Reduces slow VLM calls by predicting feature/KV deltas between timesteps; useful cross-timescale interface prior rather than a voice-specific analogy. | https://arxiv.org/abs/2605.02739 |
+| VLA07 | **Think at 5 Hz, Act at 20 Hz** (2026) | FRONTIER / FAST-SLOW | Separates slow VLM reasoning from a fast action expert and explicitly trains under stale-cache conditions; strong cross-domain evidence that timescale boundaries are structural. | https://arxiv.org/abs/2607.15621 |
 
 ---
 
