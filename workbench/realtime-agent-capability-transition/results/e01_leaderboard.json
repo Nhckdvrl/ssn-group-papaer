@@ -1,0 +1,1103 @@
+{
+ "livekit-cascaded_livekit_2026-05-19": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.48,
+   "auth": {
+    "not_needed": 3,
+    "succeeded": 34,
+    "failed": 13
+   },
+   "pass_given_auth": 0.4864864864864865,
+   "n_auth_ok": 37,
+   "auth_fail_rate": 0.26,
+   "term": {
+    "agent_stop": 10,
+    "user_stop": 40
+   },
+   "crit_tags": {
+    "critical:guideline_violation": 33,
+    "critical:tool_call_argument_error": 24,
+    "critical:missed_required_action": 16,
+    "critical:incorrect_interpretation": 12,
+    "critical:premature_termination": 2,
+    "critical:hallucination": 1,
+    "critical:revealed_info_early": 1
+   },
+   "critical_user_error": 0.34,
+   "mean_dur": 310.67238078328023
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.2894736842105263,
+   "auth": {
+    "succeeded": 64,
+    "not_needed": 2,
+    "failed": 48
+   },
+   "pass_given_auth": 0.5,
+   "n_auth_ok": 66,
+   "auth_fail_rate": 0.42105263157894735,
+   "term": {
+    "user_stop": 106,
+    "agent_stop": 8
+   },
+   "crit_tags": {
+    "critical:tool_call_argument_error": 69,
+    "critical:missed_required_action": 57,
+    "critical:guideline_violation": 23,
+    "critical:incorrect_interpretation": 21,
+    "critical:hallucination": 3,
+    "critical:premature_termination": 2,
+    "critical:wrong_sequence": 1
+   },
+   "critical_user_error": 0.23684210526315788,
+   "mean_dur": 308.3172353793782
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.16666666666666666,
+   "auth": {
+    "succeeded": 91,
+    "failed": 19,
+    "not_needed": 4
+   },
+   "pass_given_auth": 0.2,
+   "n_auth_ok": 95,
+   "auth_fail_rate": 0.16666666666666666,
+   "term": {
+    "agent_stop": 71,
+    "user_stop": 39,
+    "max_steps": 4
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 151,
+    "critical:incorrect_interpretation": 26,
+    "critical:premature_termination": 22,
+    "critical:guideline_violation": 18,
+    "critical:tool_call_argument_error": 16,
+    "critical:wrong_sequence": 5,
+    "critical:other": 2,
+    "critical:inconsistent_behavior": 2
+   },
+   "critical_user_error": 0.5526315789473685,
+   "mean_dur": 893.3938548972461
+  }
+ },
+ "gpt-live-1-diamond-alpha_openai_2026-09-09": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.82,
+   "auth": {
+    "succeeded": 47,
+    "failed": 2,
+    "not_needed": 1
+   },
+   "pass_given_auth": 0.8125,
+   "n_auth_ok": 48,
+   "auth_fail_rate": 0.04,
+   "term": {
+    "user_stop": 39,
+    "agent_stop": 11
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 2,
+    "critical:guideline_violation": 1
+   },
+   "critical_user_error": 0.3,
+   "mean_dur": 229.81194325828227
+  },
+  "banking_knowledge": {
+   "n": 95,
+   "pass1": 0.25263157894736843,
+   "auth": {
+    "succeeded": 75,
+    "failed": 3,
+    "not_needed": 17
+   },
+   "pass_given_auth": 0.25,
+   "n_auth_ok": 92,
+   "auth_fail_rate": 0.031578947368421054,
+   "term": {
+    "agent_stop": 26,
+    "user_stop": 66,
+    "max_steps": 3
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 39,
+    "critical:incorrect_interpretation": 11,
+    "critical:guideline_violation": 10,
+    "critical:wrong_sequence": 5,
+    "critical:hallucination": 3,
+    "critical:premature_termination": 2,
+    "critical:tool_call_argument_error": 2
+   },
+   "critical_user_error": 0.3473684210526316,
+   "mean_dur": 443.27534050968796
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.7894736842105263,
+   "auth": {
+    "succeeded": 111,
+    "failed": 3
+   },
+   "pass_given_auth": 0.8108108108108109,
+   "n_auth_ok": 111,
+   "auth_fail_rate": 0.02631578947368421,
+   "term": {
+    "user_stop": 100,
+    "agent_stop": 14
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 10,
+    "critical:incorrect_interpretation": 6,
+    "critical:tool_call_argument_error": 3,
+    "critical:premature_termination": 1,
+    "critical:wrong_sequence": 1,
+    "critical:other": 1
+   },
+   "critical_user_error": 0.19298245614035087,
+   "mean_dur": 251.32176411442975
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.8421052631578947,
+   "auth": {
+    "succeeded": 114
+   },
+   "pass_given_auth": 0.8421052631578947,
+   "n_auth_ok": 114,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "user_stop": 82,
+    "agent_stop": 32
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 14,
+    "critical:premature_termination": 4,
+    "critical:incorrect_interpretation": 3,
+    "critical:guideline_violation": 1
+   },
+   "critical_user_error": 0.03508771929824561,
+   "mean_dur": 369.1452823096065
+  }
+ },
+ "pine-voice-preview-user-sim-v1-0_pineai_2026-08-17": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.7,
+   "auth": {
+    "succeeded": 49,
+    "failed": 1
+   },
+   "pass_given_auth": 0.7142857142857143,
+   "n_auth_ok": 49,
+   "auth_fail_rate": 0.02,
+   "term": {
+    "user_stop": 44,
+    "agent_stop": 5,
+    "too_many_errors": 1
+   },
+   "crit_tags": {
+    "critical:guideline_violation": 20,
+    "critical:incorrect_interpretation": 9,
+    "critical:missed_required_action": 7,
+    "critical:revealed_info_early": 1,
+    "critical:tool_call_argument_error": 1
+   },
+   "critical_user_error": 0.24,
+   "mean_dur": 571.0334494259005
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.7017543859649122,
+   "auth": {
+    "succeeded": 111,
+    "failed": 3
+   },
+   "pass_given_auth": 0.7207207207207207,
+   "n_auth_ok": 111,
+   "auth_fail_rate": 0.02631578947368421,
+   "term": {
+    "user_stop": 104,
+    "agent_stop": 10
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 18,
+    "critical:tool_call_argument_error": 12,
+    "critical:guideline_violation": 11,
+    "critical:incorrect_interpretation": 3,
+    "critical:premature_termination": 2,
+    "critical:other": 1
+   },
+   "critical_user_error": 0.17543859649122806,
+   "mean_dur": 495.0461387562106
+  },
+  "telecom": {
+   "n": 113,
+   "pass1": 0.8672566371681416,
+   "auth": {
+    "succeeded": 112,
+    "not_needed": 1
+   },
+   "pass_given_auth": 0.8672566371681416,
+   "n_auth_ok": 113,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "max_steps": 5,
+    "user_stop": 84,
+    "agent_stop": 24
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 8,
+    "critical:hallucination": 2,
+    "critical:incorrect_interpretation": 1,
+    "critical:other": 1
+   },
+   "critical_user_error": 0.08849557522123894,
+   "mean_dur": 950.5570566010184
+  }
+ },
+ "gpt-realtime-2_openai_2026-06-29": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.58,
+   "auth": {
+    "null": 50
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "agent_stop": 27,
+    "user_stop": 23
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 301.5083622375829
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.47368421052631576,
+   "auth": {
+    "null": 114
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "user_stop": 68,
+    "agent_stop": 46
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 347.1139716406995
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.21929824561403508,
+   "auth": {
+    "null": 114
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "agent_stop": 102,
+    "user_stop": 12
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 481.9494491253429
+  }
+ },
+ "grok-voice-think-fast-1-0_xai_2026-04-21": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.66,
+   "auth": {
+    "null": 50
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "user_stop": 38,
+    "too_many_errors": 1,
+    "agent_stop": 11
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 592.2363658140612
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.6228070175438597,
+   "auth": {
+    "null": 114
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "user_stop": 106,
+    "agent_stop": 8
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 551.5332072825373
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.7368421052631579,
+   "auth": {
+    "null": 114
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "user_stop": 67,
+    "agent_stop": 47
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 969.5388482931012
+  }
+ },
+ "grok-voice-think-fast-2-0_xai_2026-08-06": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.56,
+   "auth": {
+    "succeeded": 40,
+    "failed": 4,
+    "not_needed": 6
+   },
+   "pass_given_auth": 0.5869565217391305,
+   "n_auth_ok": 46,
+   "auth_fail_rate": 0.08,
+   "term": {
+    "user_stop": 35,
+    "agent_stop": 15
+   },
+   "crit_tags": {
+    "critical:guideline_violation": 22,
+    "critical:incorrect_interpretation": 13,
+    "critical:tool_call_argument_error": 6,
+    "critical:missed_required_action": 5,
+    "critical:hallucination": 2
+   },
+   "critical_user_error": 0.36,
+   "mean_dur": 286.3311720158439
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.5964912280701754,
+   "auth": {
+    "succeeded": 94,
+    "not_needed": 8,
+    "failed": 12
+   },
+   "pass_given_auth": 0.6568627450980392,
+   "n_auth_ok": 102,
+   "auth_fail_rate": 0.10526315789473684,
+   "term": {
+    "user_stop": 100,
+    "agent_stop": 13,
+    "too_many_errors": 1
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 36,
+    "critical:guideline_violation": 20,
+    "critical:missed_required_action": 18,
+    "critical:tool_call_argument_error": 8,
+    "critical:premature_termination": 3,
+    "critical:wrong_sequence": 2
+   },
+   "critical_user_error": 0.22807017543859648,
+   "mean_dur": 336.77210708469534
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.7192982456140351,
+   "auth": {
+    "succeeded": 110,
+    "not_needed": 3,
+    "failed": 1
+   },
+   "pass_given_auth": 0.7168141592920354,
+   "n_auth_ok": 113,
+   "auth_fail_rate": 0.008771929824561403,
+   "term": {
+    "agent_stop": 46,
+    "user_stop": 68
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 39,
+    "critical:guideline_violation": 6,
+    "critical:premature_termination": 5,
+    "critical:incorrect_interpretation": 4,
+    "critical:hallucination": 1
+   },
+   "critical_user_error": 0.16666666666666666,
+   "mean_dur": 532.47464168604
+  }
+ },
+ "gpt-realtime-2-minimal_openai_2026-07-01": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.56,
+   "auth": {
+    "null": 50
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "agent_stop": 33,
+    "user_stop": 17
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 266.6703471924737
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.39473684210526316,
+   "auth": {
+    "null": 114
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "agent_stop": 50,
+    "user_stop": 64
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 342.4424996648133
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.20175438596491227,
+   "auth": {
+    "null": 114
+   },
+   "pass_given_auth": null,
+   "n_auth_ok": 0,
+   "auth_fail_rate": 0.0,
+   "term": {
+    "agent_stop": 110,
+    "user_stop": 4
+   },
+   "crit_tags": {},
+   "critical_user_error": 0.0,
+   "mean_dur": 319.68772729496845
+  }
+ },
+ "gpt-realtime-1.5_sierra_2026-03-03": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.4,
+   "auth": {
+    "succeeded": 43,
+    "failed": 5,
+    "not_needed": 2
+   },
+   "pass_given_auth": 0.4222222222222222,
+   "n_auth_ok": 45,
+   "auth_fail_rate": 0.1,
+   "term": {
+    "user_stop": 40,
+    "agent_stop": 8,
+    "max_steps": 2
+   },
+   "crit_tags": {
+    "critical:guideline_violation": 26,
+    "critical:tool_call_argument_error": 14,
+    "critical:incorrect_interpretation": 10,
+    "critical:missed_required_action": 9,
+    "critical:premature_termination": 1,
+    "critical:other": 1,
+    "critical:revealed_info_early": 1,
+    "critical:wrong_sequence": 1
+   },
+   "critical_user_error": 0.2,
+   "mean_dur": 589.6168955716805
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.4473684210526316,
+   "auth": {
+    "succeeded": 90,
+    "failed": 23,
+    "not_needed": 1
+   },
+   "pass_given_auth": 0.5604395604395604,
+   "n_auth_ok": 91,
+   "auth_fail_rate": 0.20175438596491227,
+   "term": {
+    "user_stop": 107,
+    "max_steps": 3,
+    "agent_stop": 4
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 35,
+    "critical:tool_call_argument_error": 28,
+    "critical:missed_required_action": 23,
+    "critical:guideline_violation": 11,
+    "critical:hallucination": 2,
+    "critical:inconsistent_behavior": 2,
+    "critical:wrong_sequence": 2
+   },
+   "critical_user_error": 0.2894736842105263,
+   "mean_dur": 645.9850550160968
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.21052631578947367,
+   "auth": {
+    "succeeded": 104,
+    "failed": 10
+   },
+   "pass_given_auth": 0.23076923076923078,
+   "n_auth_ok": 104,
+   "auth_fail_rate": 0.08771929824561403,
+   "term": {
+    "agent_stop": 75,
+    "max_steps": 13,
+    "user_stop": 26
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 96,
+    "critical:premature_termination": 25,
+    "critical:tool_call_argument_error": 8,
+    "critical:incorrect_interpretation": 7,
+    "critical:guideline_violation": 3,
+    "critical:tool_call_schema_error": 1
+   },
+   "critical_user_error": 0.37719298245614036,
+   "mean_dur": 871.9537264850271
+  }
+ },
+ "gpt-realtime-1-0_openai_2026-04-13": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.36,
+   "auth": {
+    "succeeded": 40,
+    "failed": 8,
+    "not_needed": 2
+   },
+   "pass_given_auth": 0.38095238095238093,
+   "n_auth_ok": 42,
+   "auth_fail_rate": 0.16,
+   "term": {
+    "agent_stop": 17,
+    "user_stop": 33
+   },
+   "crit_tags": {
+    "critical:guideline_violation": 47,
+    "critical:tool_call_argument_error": 35,
+    "critical:incorrect_interpretation": 33,
+    "critical:missed_required_action": 21,
+    "critical:hallucination": 5,
+    "critical:premature_termination": 1,
+    "critical:inconsistent_behavior": 1
+   },
+   "critical_user_error": 0.26,
+   "mean_dur": 360.4666215883393
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.35964912280701755,
+   "auth": {
+    "succeeded": 70,
+    "failed": 41,
+    "not_needed": 3
+   },
+   "pass_given_auth": 0.5205479452054794,
+   "n_auth_ok": 73,
+   "auth_fail_rate": 0.35964912280701755,
+   "term": {
+    "agent_stop": 27,
+    "user_stop": 87
+   },
+   "crit_tags": {
+    "critical:tool_call_argument_error": 88,
+    "critical:incorrect_interpretation": 57,
+    "critical:guideline_violation": 34,
+    "critical:missed_required_action": 33,
+    "critical:hallucination": 4,
+    "critical:wrong_sequence": 3,
+    "critical:premature_termination": 2,
+    "critical:tool_call_schema_error": 1
+   },
+   "critical_user_error": 0.30701754385964913,
+   "mean_dur": 356.8182979477003
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.19298245614035087,
+   "auth": {
+    "succeeded": 55,
+    "not_needed": 57,
+    "failed": 2
+   },
+   "pass_given_auth": 0.1875,
+   "n_auth_ok": 112,
+   "auth_fail_rate": 0.017543859649122806,
+   "term": {
+    "agent_stop": 54,
+    "user_stop": 16,
+    "too_many_errors": 37,
+    "max_steps": 7
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 73,
+    "critical:tool_call_schema_error": 53,
+    "critical:premature_termination": 21,
+    "critical:guideline_violation": 11,
+    "critical:incorrect_interpretation": 9,
+    "critical:irrelevant_tool_call": 6,
+    "critical:hallucination": 2,
+    "critical:wrong_sequence": 1
+   },
+   "critical_user_error": 0.22807017543859648,
+   "mean_dur": 526.0341465855017
+  }
+ },
+ "gemini-live-2.5-flash_sierra_2026-03-03": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.3,
+   "auth": {
+    "succeeded": 38,
+    "not_needed": 2,
+    "failed": 10
+   },
+   "pass_given_auth": 0.275,
+   "n_auth_ok": 40,
+   "auth_fail_rate": 0.2,
+   "term": {
+    "user_stop": 32,
+    "agent_stop": 17,
+    "too_many_errors": 1
+   },
+   "crit_tags": {
+    "critical:guideline_violation": 42,
+    "critical:incorrect_interpretation": 30,
+    "critical:missed_required_action": 25,
+    "critical:tool_call_argument_error": 20,
+    "critical:tool_call_schema_error": 16,
+    "critical:premature_termination": 4,
+    "critical:hallucination": 2
+   },
+   "critical_user_error": 0.24,
+   "mean_dur": 237.10205198415903
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.2982456140350877,
+   "auth": {
+    "succeeded": 81,
+    "failed": 30,
+    "not_needed": 3
+   },
+   "pass_given_auth": 0.39285714285714285,
+   "n_auth_ok": 84,
+   "auth_fail_rate": 0.2631578947368421,
+   "term": {
+    "user_stop": 80,
+    "agent_stop": 34
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 53,
+    "critical:missed_required_action": 50,
+    "critical:tool_call_argument_error": 38,
+    "critical:guideline_violation": 30,
+    "critical:hallucination": 12,
+    "critical:premature_termination": 10,
+    "critical:tool_call_schema_error": 1,
+    "critical:other": 1
+   },
+   "critical_user_error": 0.2543859649122807,
+   "mean_dur": 276.68990265534217
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.17543859649122806,
+   "auth": {
+    "succeeded": 92,
+    "failed": 18,
+    "not_needed": 4
+   },
+   "pass_given_auth": 0.20833333333333334,
+   "n_auth_ok": 96,
+   "auth_fail_rate": 0.15789473684210525,
+   "term": {
+    "agent_stop": 105,
+    "user_stop": 8,
+    "too_many_errors": 1
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 97,
+    "critical:premature_termination": 75,
+    "critical:tool_call_argument_error": 26,
+    "critical:guideline_violation": 21,
+    "critical:incorrect_interpretation": 12,
+    "critical:tool_call_schema_error": 9,
+    "critical:wrong_sequence": 7,
+    "critical:hallucination": 3
+   },
+   "critical_user_error": 0.2894736842105263,
+   "mean_dur": 328.8423834279835
+  }
+ },
+ "xai-realtime_sierra_2026-03-03": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.36,
+   "auth": {
+    "failed": 32,
+    "succeeded": 15,
+    "not_needed": 3
+   },
+   "pass_given_auth": 0.3888888888888889,
+   "n_auth_ok": 18,
+   "auth_fail_rate": 0.64,
+   "term": {
+    "user_stop": 25,
+    "agent_stop": 15,
+    "max_steps": 8,
+    "too_many_errors": 2
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 61,
+    "critical:tool_call_argument_error": 43,
+    "critical:missed_required_action": 15,
+    "critical:hallucination": 5,
+    "critical:guideline_violation": 3,
+    "critical:other": 3,
+    "critical:premature_termination": 2,
+    "critical:inconsistent_behavior": 1
+   },
+   "critical_user_error": 0.18,
+   "mean_dur": 755.9339720607608
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.38596491228070173,
+   "auth": {
+    "succeeded": 67,
+    "failed": 45,
+    "not_needed": 2
+   },
+   "pass_given_auth": 0.6086956521739131,
+   "n_auth_ok": 69,
+   "auth_fail_rate": 0.39473684210526316,
+   "term": {
+    "user_stop": 70,
+    "max_steps": 25,
+    "agent_stop": 18,
+    "too_many_errors": 1
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 96,
+    "critical:tool_call_argument_error": 65,
+    "critical:missed_required_action": 55,
+    "critical:hallucination": 5,
+    "critical:inconsistent_behavior": 4,
+    "critical:guideline_violation": 4,
+    "critical:premature_termination": 1,
+    "critical:wrong_sequence": 1
+   },
+   "critical_user_error": 0.24561403508771928,
+   "mean_dur": 1038.524752569851
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.40350877192982454,
+   "auth": {
+    "failed": 38,
+    "not_needed": 33,
+    "succeeded": 43
+   },
+   "pass_given_auth": 0.5526315789473685,
+   "n_auth_ok": 76,
+   "auth_fail_rate": 0.3333333333333333,
+   "term": {
+    "agent_stop": 21,
+    "max_steps": 60,
+    "user_stop": 33
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 48,
+    "critical:tool_call_argument_error": 34,
+    "critical:incorrect_interpretation": 24,
+    "critical:guideline_violation": 6,
+    "critical:premature_termination": 2,
+    "critical:hallucination": 2,
+    "critical:other": 2,
+    "critical:wrong_sequence": 2
+   },
+   "critical_user_error": 0.17543859649122806,
+   "mean_dur": 1130.514960570601
+  }
+ },
+ "gemini-3-1-flash-live-preview-thinking-high_google_2026-04-02": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.64,
+   "auth": {
+    "succeeded": 41,
+    "failed": 5,
+    "not_needed": 4
+   },
+   "pass_given_auth": 0.6888888888888889,
+   "n_auth_ok": 45,
+   "auth_fail_rate": 0.1,
+   "term": {
+    "user_stop": 30,
+    "agent_stop": 20
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 19,
+    "critical:tool_call_argument_error": 14,
+    "critical:missed_required_action": 11,
+    "critical:premature_termination": 4,
+    "critical:guideline_violation": 4,
+    "critical:hallucination": 1,
+    "critical:irrelevant_tool_call": 1
+   },
+   "critical_user_error": 0.22,
+   "mean_dur": 302.8693605624617
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.45614035087719296,
+   "auth": {
+    "succeeded": 88,
+    "failed": 26
+   },
+   "pass_given_auth": 0.5568181818181818,
+   "n_auth_ok": 88,
+   "auth_fail_rate": 0.22807017543859648,
+   "term": {
+    "user_stop": 79,
+    "agent_stop": 35
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 46,
+    "critical:tool_call_argument_error": 36,
+    "critical:missed_required_action": 34,
+    "critical:guideline_violation": 9,
+    "critical:premature_termination": 9,
+    "critical:wrong_sequence": 4,
+    "critical:other": 1,
+    "critical:irrelevant_tool_call": 1
+   },
+   "critical_user_error": 0.18421052631578946,
+   "mean_dur": 363.83704452479634
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.21929824561403508,
+   "auth": {
+    "failed": 59,
+    "succeeded": 55
+   },
+   "pass_given_auth": 0.2545454545454545,
+   "n_auth_ok": 55,
+   "auth_fail_rate": 0.5175438596491229,
+   "term": {
+    "agent_stop": 98,
+    "user_stop": 16
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 70,
+    "critical:premature_termination": 58,
+    "critical:tool_call_argument_error": 27,
+    "critical:incorrect_interpretation": 19,
+    "critical:guideline_violation": 17,
+    "critical:other": 1,
+    "critical:inconsistent_behavior": 1,
+    "critical:wrong_sequence": 1
+   },
+   "critical_user_error": 0.19298245614035087,
+   "mean_dur": 484.42410802663755
+  }
+ },
+ "gemini-3-1-flash-live-preview-thinking-minimal_google_2026-04-13": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.42,
+   "auth": {
+    "not_needed": 3,
+    "succeeded": 39,
+    "failed": 8
+   },
+   "pass_given_auth": 0.38095238095238093,
+   "n_auth_ok": 42,
+   "auth_fail_rate": 0.16,
+   "term": {
+    "user_stop": 33,
+    "agent_stop": 16,
+    "max_steps": 1
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 38,
+    "critical:missed_required_action": 26,
+    "critical:guideline_violation": 25,
+    "critical:tool_call_argument_error": 22,
+    "critical:hallucination": 13,
+    "critical:inconsistent_behavior": 2,
+    "critical:premature_termination": 2,
+    "critical:wrong_sequence": 1
+   },
+   "critical_user_error": 0.24,
+   "mean_dur": 328.9462968533579
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.2631578947368421,
+   "auth": {
+    "succeeded": 83,
+    "failed": 31
+   },
+   "pass_given_auth": 0.3493975903614458,
+   "n_auth_ok": 83,
+   "auth_fail_rate": 0.2719298245614035,
+   "term": {
+    "user_stop": 93,
+    "agent_stop": 21
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 88,
+    "critical:missed_required_action": 72,
+    "critical:tool_call_argument_error": 63,
+    "critical:guideline_violation": 26,
+    "critical:hallucination": 25,
+    "critical:wrong_sequence": 3,
+    "critical:premature_termination": 3,
+    "critical:revealed_info_early": 1
+   },
+   "critical_user_error": 0.2982456140350877,
+   "mean_dur": 344.005163126812
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.17543859649122806,
+   "auth": {
+    "failed": 64,
+    "succeeded": 49,
+    "not_needed": 1
+   },
+   "pass_given_auth": 0.2,
+   "n_auth_ok": 50,
+   "auth_fail_rate": 0.5614035087719298,
+   "term": {
+    "user_stop": 35,
+    "agent_stop": 79
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 77,
+    "critical:tool_call_argument_error": 51,
+    "critical:premature_termination": 43,
+    "critical:guideline_violation": 39,
+    "critical:incorrect_interpretation": 32,
+    "critical:hallucination": 17,
+    "critical:other": 2
+   },
+   "critical_user_error": 0.23684210526315788,
+   "mean_dur": 401.3631554751722
+  }
+ },
+ "qwen3-5-omni-plus-realtime_qwen_2026-08-06": {
+  "airline": {
+   "n": 50,
+   "pass1": 0.54,
+   "auth": {
+    "succeeded": 40,
+    "not_needed": 2,
+    "failed": 8
+   },
+   "pass_given_auth": 0.5714285714285714,
+   "n_auth_ok": 42,
+   "auth_fail_rate": 0.16,
+   "term": {
+    "user_stop": 24,
+    "agent_stop": 26
+   },
+   "crit_tags": {
+    "critical:guideline_violation": 19,
+    "critical:missed_required_action": 15,
+    "critical:incorrect_interpretation": 11,
+    "critical:tool_call_argument_error": 6,
+    "critical:tool_call_schema_error": 4,
+    "critical:premature_termination": 3,
+    "critical:hallucination": 2,
+    "critical:irrelevant_tool_call": 1
+   },
+   "critical_user_error": 0.34,
+   "mean_dur": 393.78491161501034
+  },
+  "retail": {
+   "n": 114,
+   "pass1": 0.4649122807017544,
+   "auth": {
+    "failed": 35,
+    "succeeded": 79
+   },
+   "pass_given_auth": 0.6329113924050633,
+   "n_auth_ok": 79,
+   "auth_fail_rate": 0.30701754385964913,
+   "term": {
+    "agent_stop": 25,
+    "user_stop": 89
+   },
+   "crit_tags": {
+    "critical:incorrect_interpretation": 53,
+    "critical:missed_required_action": 33,
+    "critical:tool_call_argument_error": 26,
+    "critical:guideline_violation": 16,
+    "critical:premature_termination": 6,
+    "critical:hallucination": 4,
+    "critical:tool_call_schema_error": 3,
+    "critical:interruption_error": 1
+   },
+   "critical_user_error": 0.2982456140350877,
+   "mean_dur": 393.94654734167597
+  },
+  "telecom": {
+   "n": 114,
+   "pass1": 0.6052631578947368,
+   "auth": {
+    "succeeded": 92,
+    "failed": 22
+   },
+   "pass_given_auth": 0.7065217391304348,
+   "n_auth_ok": 92,
+   "auth_fail_rate": 0.19298245614035087,
+   "term": {
+    "agent_stop": 48,
+    "user_stop": 66
+   },
+   "crit_tags": {
+    "critical:missed_required_action": 45,
+    "critical:tool_call_argument_error": 24,
+    "critical:premature_termination": 13,
+    "critical:incorrect_interpretation": 12,
+    "critical:guideline_violation": 11,
+    "critical:wrong_sequence": 2,
+    "critical:tool_call_schema_error": 2,
+    "critical:hallucination": 1
+   },
+   "critical_user_error": 0.2982456140350877,
+   "mean_dur": 814.5451993289671
+  }
+ }
+}
