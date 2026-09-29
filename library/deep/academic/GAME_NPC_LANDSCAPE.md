@@ -280,24 +280,30 @@ This lineage is NPC-specific because a false statement can be a **game mechanic*
 - Important primitive: deception is generated **from world history**, so it remains mechanically connected to something the player can challenge.
 - https://doi.org/10.1609/aiide.v12i2.12896
 
-### H2 — Lies, Deceit, and Hallucinations (CHI 2024)
+### H2 — Deceptive Virtual Suspect (AAMAS 2017)
+- An autonomous suspect maintains a real story and a parallel story, reasons about what the interviewer may know, and dynamically alters structured event/entity fields to construct less-incriminating alternatives.
+- Important ownership warning: **runtime generation of lies is not new**. The old system already automated alternative-story construction from a structured event memory.
+- Its boundary is equally important: interaction is query/template based, entities/events are authored into the knowledge base, and it does not solve modern open-language generation against a live evidence/action world.
+- https://dl.acm.org/doi/10.5555/3091282.3091419
+
+### H3 — Lies, Deceit, and Hallucinations (CHI 2024)
 - Player study with deliberate human-authored falsehoods and human-approved LLM hallucinations.
 - Perceived intentional falsehoods were often interpreted as meaningful narrative/gameplay behavior; seemingly accidental falsehoods instead conflicted with players’ mental models.
 - Changed premise: “factual correctness” is the wrong scalar objective for deceptive NPCs.
 - https://doi.org/10.1145/3613904.3642253
 
-### H3 — Free LLM detective NPCs
+### H4 — Free LLM detective NPCs
 - Open-ended LLM dialogue greatly expands linguistic freedom but creates a new failure: an NPC may invent a location, witness, timeline activity, or evidence that the game world cannot support.
 - In a detective game this is worse than ordinary factual error because the player may spend real gameplay effort pursuing a **mechanical dead end**.
 
-### H4 — Structured Knowledge Trees (2026)
+### H5 — Structured Knowledge Trees (AIIDE 2026)
 - Explicitly distinguishes desired deceptive falsehoods from game-breaking hallucinations.
 - In the reported LLM-only condition, unauthored false alibis and fabricated entities dominate critical failures.
 - SKT cuts these failures by selecting an authored knowledge-tree node and telling the Dialogue LLM exactly which truth/lie to express.
 - The cost is equally informative: “what to lie about” is no longer generative, and tightly coupled progression sometimes makes revelations feel forced or abrupt.
 - https://arxiv.org/abs/2609.23043
 
-### H5 — Current pressure (territory-level, not a registered RQ)
+### H6 — Current pressure (territory-level, not a registered RQ)
 The lineage has swung:
 
 > structured + mechanically grounded but rigid → generative + expressive but capable of untraceable dead ends → structured authored lie nodes again.
