@@ -1,0 +1,25 @@
+{
+ "retail": {
+  "n": 46,
+  "pass_text": 0.4782608695652174,
+  "pass_voice_style": 0.43478260869565216,
+  "delta": -0.043478260869565244,
+  "text_only": 8,
+  "voice_only": 6,
+  "mcnemar_p": 0.79052734375,
+  "official_text": 0.2391304347826087,
+  "official_voice": 0.17391304347826086
+ },
+ "airline": {
+  "n": 50,
+  "pass_text": 0.4,
+  "pass_voice_style": 0.44,
+  "delta": 0.03999999999999998,
+  "text_only": 5,
+  "voice_only": 7,
+  "mcnemar_p": 0.7744140625,
+  "official_text": 0.3,
+  "official_voice": 0.28
+ },
+ "note": "Agent Qwen3-32B, user sim Qwen3-30B-A3B (no thinking), text half-duplex, perfect transcripts; only the user-sim guidelines change (tau2 text vs tau-voice call guidelines). 'rescored' = official evaluator after overriding max_steps terminations caused by the local user simulator's goodbye loop (no ###STOP###) and using Qwen3-30B-A3B as the NL-assertion judge; applied identically to both conditions."
+}

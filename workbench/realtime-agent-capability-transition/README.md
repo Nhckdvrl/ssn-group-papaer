@@ -1,5 +1,21 @@
 # Realtime Agent Capability Transition — Workbench
 
+## 当前进度（中文，2026-09-30）— 已关闭（DRAINING 完成）
+
+**状态：** 本工作区的母假设“实时/语音交互普遍削弱 agent 能力”已被证据削弱，按用户决定停止扩展，研究转入 `../realtime-computation-boundaries/`。本页仅保留结论与资产。
+
+**资产（可复用）：** τ-bench 排行榜 20 个系统的完整公开轨迹（本地 `/home/xiang/rt_ext/data`，约 20GB；脚本 `experiments/s3_fetch.py`、`fetch_all.sh`）；逐 sim 索引 `results/sim_index.json`；分析脚本 E01–E04。
+
+**结论：**
+1. **E01**：2026 年 9 月的前沿“双系统”语音 agent（gpt-live-1、Pine）在真实噪声下已与文本前沿持平（零售/航空/电信 79/82/84 vs GPT-5.2 82/83/90）。
+2. **认证分解**：单体实时模型与弱级联的差距主要来自口语实体捕获（零售：级联 GPT-4.1 认证失败 42%、gpt-realtime-2 34%、gpt-live-1 3%），该对象已由 τ-Elicitation（2026-09）拥有。
+3. **E02/E03**：“先说后做”不是主要失败源（0–8% 对话）；gpt-realtime-2 有 21% 的邮编参数是用户从未说过的，仍属实体捕获问题。
+4. **E04（本地严格对照，已完成）**：同一 agent（Qwen3-32B）、同一用户模拟器（Qwen3-30B-A3B）、纯文本、无转写误差，只把用户说话方式换成 τ-Voice 电话口语风格：零售 47.8%→43.5%（配对 p=0.79），航空 40%→44%（p=0.77）。**口语化/信息碎片化本身不造成可测损失。** 注：本地用户模拟器不发结束标记会陷入道别循环，两组均按同一规则改判（`experiments/e04_rescore.py`，NL 断言裁判改用 Qwen3-30B-A3B）。
+
+**一句话结论：** 在 τ-Voice 上，去掉“听不准实体”和“底座能力”之后，实时/口语交互契约本身几乎不造成能力损失；母假设不成立，不再扩展。
+
+---
+
 **Lane:** our-taste  
 **Stage:** ACTIVE EXPLORATORY WORKBENCH — **not a candidate**  
 **Target ceiling:** ICML / ICLR / NeurIPS / ACL / CVPR main-track scale.  
