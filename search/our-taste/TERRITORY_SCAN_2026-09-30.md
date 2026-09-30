@@ -1,4 +1,4 @@
-# Territory 扫描（2026-09-30，按流程 v3）
+# Territory 扫描（2026-09-30；2026-10-01 按流程 v4.1 复核）
 
 **输入：** 组内偏好——智能体协作（大模型 + 小模型 / 全小模型 / 开源非 API）、推理、表征分析、可解释性、理解与生成、游戏 NPC；避开资源碾压型的拥挤赛道（如 RSI、Jev）。
 **数据：** `tools/venue_corpus`（ICLR 2025/2026 含拒稿，ICML 2025/2026，NeurIPS 2024/2025，ACL/EMNLP/NAACL main，CVPR/ICCV 2025；EACL 与 Findings 排除）、34 个题材 awesome 列表（1,357 条 2026 年 arXiv）、daily-arXiv 镜像、作者自报的 NeurIPS 2026 接收（完整名单尚未公开，2026-09-24 已出结果）。
@@ -12,7 +12,7 @@
 
 | 候选 | 对应偏好 | NeurIPS25 | ICLR26（切片率） | ICML26 | ACL26 | 走势 / arXiv 2026 | 立足点（单节点可跑的强开源基线） | 结论 |
 |---|---|---:|---:|---:|---:|---|---|---|
-| **C1b 训练出来的开源 LLM 团队**（多智能体 RL / 协同训练） | 协作（大+小 / 全小 / 非 API）+ 推理 | 6 | 7（20%） | 14 | 5 | ICLR25 3 → ICML26 14，上升；arXiv 约 20–40 篇 | Dr. MAS（NeurIPS 2026）、CoMLRL/MAGRPO、MARTI（ICLR 2026）、AT-GRPO/PettingLLMs（ICLR 2026）、SAT/TeamTR 代码 | **推荐主线** |
+| **C1b 训练出来的开源 LLM 团队**（多智能体 RL / 协同训练） | 协作（大+小 / 全小 / 非 API）+ 推理 | 6 | 7（20%） | 14 | 5 | ICLR25 3 → ICML26 14，上升；arXiv 约 20–40 篇 | Dr. MAS（NeurIPS 2026）、CoMLRL/MAGRPO、MARTI（ICLR 2026）、AT-GRPO/PettingLLMs（ICLR 2026）、SAT/TeamTR 代码 | **已注册 ACTIVE-EXPLORE（2026-10-01）** |
 | C1 多智能体 LLM（整体，提示式为主） | 协作 | 57 | 82（22%） | 114 | 102 | 很拥挤，接收率低于基准 | 大量 | 太宽；只作为 C1b 的背景 |
 | C1c 大小模型协作推理（relay / speculative / cascade） | 大+小 | 7 | 5（33%） | 5 | 4 | 平稳；arXiv 方法多，以效率为卖点 | RelayLLM、SpecReason、Tandem 等 | 并入 C1b 作为一个分支 |
 | C1d 隐空间 / KV 通信 | 协作 + 表征 | 4 | 3（27%） | 3 | 1 | **arXiv 2026 年 36 篇**（2024 年 1、2025 年 5），已有因果审计 | C2C、LatentMAS、KVComm | 升温过快，作为分支观察 |
@@ -23,7 +23,7 @@
 | C5 隐式 / 连续推理 | 推理 | 10 | 17（39%） | 33 | 15 | 快速升温 | Coconut 系 | 热，竞争者资源多 |
 
 **读法：**
-- C1b 是唯一同时满足“偏好第一条 + 中等热度且在上升 + 单节点可跑的强开源基线 + 多种可接收论文形态”的候选。
+- C1b 是本轮最符合“偏好第一条 + 中等热度且在上升 + 单节点可跑的强开源基线 + 多种可接收论文形态”的候选，并已于 2026-10-01 由人确认进入 ACTIVE-EXPLORE。
 - C1b 的 ICLR 切片接收率（20%）低于基准：说明审稿人对这类工作挑剔（常见短板：基线不公平、只在一个模型族上、贡献像工程拼装）。**这正是我们的实验卫生（算力匹配、强基线、多种子、多家族）能形成优势的地方。**
 - 可解释性、表征分析、游戏 NPC 三条偏好不单独开线，而是作为 C1b 的**理解轨道**与**环境**：开源模型允许看内部表征（非 API 的真正价值），合作游戏正是“NPC 队友必须和任意玩家配合”的场景。
 
@@ -79,31 +79,28 @@
 | P7 | **训练稳定性与信用分配**（已拥挤，作为工程前提而不是主线） | Dr. MAS、AT-GRPO、MAAC、MAPPA、CCPO、SHARP、TeamTR | 只在我们的实验中遇到新失败时才进入 |
 | P8 | **游戏 NPC 视角**：NPC 队友必须和任意玩家（人或模型）配合——这正是 P2 的部署形态；合作建造 / 烹饪游戏提供可测的团队回报 | CoMLRL Minecraft；Collab-Overcooked（EMNLP 2025）；Hanabi（ICML 2026） | P2/P6 的环境与应用 |
 
-至少 5 条（P1–P6）彼此独立：第一条路走不通，还有别的路。P7 是拥挤的方法层，只作为前提。
+P1–P6 **不是六条彼此独立的逃生路线**。按 v4.1 更诚实地分成四个 pressure families：V=value under fair resources（P1）；G=partner generalization / co-adaptation（P2，P4/P5 多半是其 mechanism branches）；R=heterogeneous roles / contribution（P3）；T=task structure（P6）。P7 是训练工程前提，P8 是 G/T 的自然部署环境。
 
 ### 2.6 驻留计划（按阶段，不排日程；交付 D1–D6，见 `workbench/README.md` §2）
-- **阶段一 · 跑通强基线（D1/D2）**：Dr. MAS 数学与搜索、CoMLRL MAGRPO 代码协作，各用 1.5B–4B 模型复现官方趋势（数值误差范围写清）；统一评测 harness（vLLM 推理、算力计量：调用次数、生成 token、训练 GPU·时）。
-- **阶段二 · 领域标准的系统测量（D3/D4）**，全部是**测量**，不是假设检验：
-  1. **算力匹配曲线**（P1）：同一任务上，训练后的团队 vs 同算力训练的单模型 vs 更大单模型，按推理 token / 调用数对齐；
-  2. **交叉配对矩阵**（P2）：不同种子 / 尺寸（1.5B↔3B↔7B）/ 家族（Qwen↔Llama）独立训练的团队互换成员，与自配对比较；同时测提示式（未训练）团队作为对照；
-  3. **按角色的反事实贡献**（P3）：替换或屏蔽某个成员的输出，看团队得分变化随训练的走势；
-  4. **消息统计**（P5）：长度、词汇漂移、被“新伙伴”复述/理解的能力；
-  5. **白盒快照**（P4）：训练前后各成员的激活差分（复用 model-diffing 工具链）。
-- **阶段三 · 定位表与形态卡（D5/D6）**：对最近 10 篇接收论文 + 最新 arXiv 写增量；根据痛点日志与测量结果写第一版论文形态卡，选出 1–2 条压力深入（build + understand 两条轨道并行）。
+- **阶段一 · 跑通强基线（D1/D2）**：先 Dr. MAS math，再 CoMLRL code；各用 1.5B–4B open-weight 模型复现官方趋势。统一 harness 从第一天记录 calls、tokens、近似 FLOPs、GPU time 与 wall latency。D1/D2 属于 residency，不计 EXPLORE quota。
+- **第一把测量尺**：复用 Dr. MAS 两个独立 seed 做 2×2 cross-play smoke test（I01）。Math 的固定 Solver→Verifier 接口若为 null，不外推到一般 ZSC；转向一个真正需要 coordination / multiple conventions / distributed information 的公开任务。
+- **I02 accounting 同步建设**：目标是 performance–compute Pareto curve，而不是只在一个 token-matched 点比较。
+- **behavior-triggered branches**：只有 I01 / PAIN_LOG 出现稳定现象后才启动 I03/I04；只有稳定行为现象形成可证伪 mechanism hypothesis 后才做 P4 白盒，不做“训练前后哪里变了”的 activation fishing。
+- **阶段三 · 定位表与形态卡（D5/D6）**：对最近 10 篇接收论文 + 强最新 arXiv 写定位与 compression risk；根据真实 measurement / pain 选 1–2 条 build + understand 轨道。
 - **目标会议**：主 ICML 2027（约 1 月下旬），备 ACL 2027（ARR 约 2 月）/ NeurIPS 2027（约 5 月）。
 
 ### 2.7 可能的论文形态（天花板示意，不是注册的题目）
-- 若 P2 显示训练后团队对换伙伴脆弱：**“LLM 团队的零样本协调”**——主流框架上的交叉配对评测协议 + 表征/消息层面的机制解释 + 修复（种群 / other-play / SRPO 作为基线，形态 A+B）。与 SRPO 的距离：它是方法 + 理论 + 小规模 LLM 实验；我们是多框架、多家族、等算力的系统测量 + 机制 + 修复。
-- 若 P2 显示训练后仍然稳健：这本身违背 MARL 的经典经验，需要解释“语言为什么让约定可迁移”（形态 B+C）。
-- 若 P1 显示训练团队的收益主要来自等价于“更多算力”的部分：**训练型多智能体系统的算力会计**（形态 B/D，严谨性论文；等算力对照正在变成标配，单独成文前先查 2609.04217、2609.22682 之后的新工作）。
-- 若 P3 显示大+小团队中出现系统性依赖或包办：针对角色失衡的最小修复（形态 A）。
+- **G-family**：cross-play landscape 若出现超出 SRPO 宽 claim 的稳定结构（训练阶段、partner axis、方向性、机制或 consequence），可长成系统测量 + 机制/修复；“换伙伴会掉点”本身不能再当 novelty。
+- **V-family**：公平 accounting 若暴露特定资源维度上的系统性错配，可成为主论文的重要 claim 或评测协议；“等算力很重要”本身已不是新 claim。
+- **R-family**：只有异构 team 出现不能被 Lazy Agents / expert-underuse 压缩的 role-dependent utility / capability inversion 时，才考虑失败+修复。
+- **T-family**：若结论强依赖任务是否真正需要 coordination，本身可能推动一个更好的 task-structure account 或 evaluation protocol。
 
-每个结果方向都有论文，这是本领域被选中的原因，而不是因为我们猜中了某个现象。
+**不同结果必须有 information gain，但不保证每个结果方向都能成论文。** 论文形态只在 evidence 汇聚后确定。
 
 ### 2.8 风险
 | 风险 | 可能性 | 对策 |
 |---|---|---|
-| 并行工作（SRPO / Caltech 组扩展到大规模 LLM；SAT-AAMAS/TeamTR 作者组；Stanford SAT 组扩展到换成员；SCOPE 作者组；2608.01425 小模型合作游戏）扩展到交叉配对 | 中–高 | 阶段二即出测量；增量放在“主流框架上的系统测量 + 白盒机制 + 大小异构 + 等算力”；把 SRPO 与种群训练当作修复基线而不是竞争对手 |
+| 并行工作（尤其 SRPO / SAT / TeamTR / SCOPE 等）扩展到伙伴泛化或异构训练 | 中–高 | 不把 generic brittleness 当 novelty；I01 先画 landscape，增量必须来自新的 structure / condition / consequence / mechanism；白盒只在行为信号稳定后启动 |
 | 多智能体 RL 训练不稳定、复现耗时 | 中 | 先用官方配置与小模型；Dr. MAS 的按智能体归一化作为默认 |
 | 审稿人对“又一个多智能体框架”挑剔（切片接收率 20%） | 高 | 不做框架；做测量协议 + 最小修复 + 多家族复现 |
 | 算力 | 低–中 | 1.5B–4B 为主；7B 只用于关键对照 |
