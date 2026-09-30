@@ -11,16 +11,17 @@
 
 ## 2. 硬规则（违反即停，回到本文件）
 - **R1 不在桌面上判死。** 不能以“有人做过 / 已成 program / 一小块被碰过 / 天花板不够 / 审稿人会说你不就是 ___”为理由关闭 territory、workbench 或 idea。你能做的是：写定位表（近邻 + 增量）、调整增量、把 idea 标为 PARKED 并写重开条件。撞车的定义与处理见 `search/README.md` §3。
-- **R2 开线、关线、暂停、改状态只由人决定。** 你可以用 `templates/close_record.md` 提议，证据类别只能是 A（实验）或 C（可行性）。
+- **R2 开线、关线、暂停、改状态只由人决定。** 你可以用 `templates/close_record.md` 提议。证据类别：A（实验）、C（可行性），以及 **H（Human scientific-yield judgment）**。H 只能在 baseline 跑通、已有系统 measurement、positioning 与论文形态卡之后由人签字使用；agent 不能用 H 在桌面上判“天花板不够”。
 - **R3 先写实验卡再运行**（`python3 tools/process/new.py experiment <workbench> <slug>`）：对应的主张 / idea / 痛点、读数、阳性对照、噪声地板、决策表、算力。事后补写的标 POST-HOC。
 - **R4 主张升级必须引用实验卡和结果文件**；证据等级按 `workbench/EXECUTION.md` §3；升到 L2 前过混杂审计（§4），升到 L3 前做独立校对（§5）。
 - **R5 不筛幸存种子，不在看到结果后改读数**；作废和降级写进 `CLAIMS.md` 的作废记录，和正结果一样汇报。
-- **R6 新颖性检查只输出定位，不输出判决**：`python3 tools/venue_corpus/query.py nearest "<主旨>"` + 最新 arXiv → 定位表的行。热度是数字，不是判决。
+- **R6 新颖性检查只输出定位，不输出自动判决**：`python3 tools/venue_corpus/query.py nearest "<主旨>"` + 最新 arXiv → 定位表。除精确撞车外，还要标 `compression risk` 与强预印本/已接收工作的 claim ownership；热度和切片接收率只是地图，不是判决。
 - **R7 容量**：ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条；不自行新建 workbench（可以在 `search/` 写 territory 卡提议）。
 - **R8 提示词行为探针不能单独作为能力证据**，必须有“一句指令能否恢复”的对照。
 - **R9 文档从简**：workbench README ≤ 200 行；过程写进实验卡、`logs/` 或 `results/`；不建过程堆积目录；不把 idea 孵化放进 `candidates/`。
 - **R10 不参考 EACL，不投 Findings。**
 - **R11 不排日程。** 不写“第几周做什么”“T−n 周”之类的计划；按优先级排算力，按状态和证据推进，决策点到了就请人审（`workbench/EXECUTION.md` §9）。截稿日只决定投哪个会。
+- **R12 不为流程刷卡片。** D1/D2 的 baseline reproduction / harness / 标准 measurement 是驻留本身，不需要为了 EXPLORE 配额硬挂一个 I##。证据等级、30% EXPLORE、2×noise 都是默认 heuristic，不得当成自动科学判决。
 
 ## 3. 鼓励你主动做的
 - 在强基线上修真实出现的痛点（方法从驻留一开始就允许，但要对应一个 P##）。
