@@ -1,6 +1,6 @@
 # Workbench — 驻留与建设
 
-**版本：v4（2026-09-30）。** 诊断见 [`../search/PROCESS_DIAGNOSIS_2026-09-30.md`](../search/PROCESS_DIAGNOSIS_2026-09-30.md)。v2 全文在 git 历史中；其中“强基线优先”“成功案例也是证据”“失败梯度”“论文身份允许变化”继续有效，已并入下文。
+**版本：v4.1（2026-10-01）。** 诊断见 [`../search/PROCESS_DIAGNOSIS_2026-09-30.md`](../search/PROCESS_DIAGNOSIS_2026-09-30.md)。v2 全文在 git 历史中；其中“强基线优先”“成功案例也是证据”“失败梯度”“论文身份允许变化”继续有效，已并入下文。
 
 本目录的三份文件：
 - **本文件**：驻留怎样开始、容量与节奏、何时关闭或升级、当前登记表；
@@ -119,10 +119,10 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
 | `video-world-model-temporal-interfaces` | ACTIVE-MAIN | CVPR 2027 | 2026-11-16 | `CLAIMS.md` | 2026-09-29 | 块首“接缝失聪”，3 个独立系统复现；关口与第二阶段计划见 `CVPR_ASSESSMENT.md`；`CLAIMS.md` / `PAIN_LOG.md` 于 9/30 按 v4 格式整理，待负责人确认 |
-| `multi-llm-collaboration` | ACTIVE-EXPLORE | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：训练出来的开源异构 LLM 团队；I01 cross-play 是第一把测量尺，不预注册“伙伴脆弱”为 novel finding；I02 为算力会计基础设施；I03/I04 由行为结果触发 |
+| `multi-llm-collaboration` | PAUSED | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | 2026-10-01 | **可行性暂停（C）**：第一轮有解释力的 cross-play 需要至少两个充分训练 team；原始强 baseline 的完整 RL 成本过高，不适合作为当前探索线。保留全部 territory / cards，未来有廉价充分训练 substrate 时可重开 |
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | — | — | 9/30 按 v2 开启，尚未运行；恢复前补 territory 卡的热度 / 立足点 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
-| `mechanism-population-dynamics` | PAUSED | — | — | — | — | 未开始；可解释性方向的候选资产 |
+| `mechanism-population-dynamics` | ACTIVE-EXPLORE | ICML 2027 / NeurIPS 2027 | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：利用公开 multi-seed × multi-checkpoint 模型群体研究 mechanistic claim 在什么抽象层次上可复现；第一轮不训练模型，先做已知 mechanism 的 causal baseline + population measurement |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
 | `model-diffing-measurement` | PAUSED | — | — | — | — | 同上；工具链可用于多智能体线的白盒分析（P4） |
