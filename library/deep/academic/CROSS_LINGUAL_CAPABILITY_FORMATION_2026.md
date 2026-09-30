@@ -738,3 +738,18 @@ It is:
 > **when a measurable cross-lingual capability is a marker of shared multilingual competence versus a capability-specific mechanism.**
 
 Translation is currently the cleanest entry point because the field already supplies both strong proxy evidence and strong causal interventions.
+
+
+### Adjacent proxy-validity boundary: translated benchmark vs native benchmark
+
+*Gold vs. Translation* (ACL ARR March 2026 submission) asks a different but nearby proxy-validity question: whether machine-translated English-origin benchmarks measure the same construct as natively authored benchmarks. After controlling for model size and language proficiency, proxy validity is strong for some curriculum-overlap tasks but weakens for locality/culture-specific knowledge.
+
+This is useful ownership pressure but does **not** directly test the central lead here:
+
+> whether a model's **intrinsic translation capability** is a causal/shared bottleneck for its other multilingual capabilities.
+
+Keep three objects separate:
+
+1. quality of translated benchmark items;
+2. translated-benchmark score as a proxy for native-benchmark score;
+3. model MT ability as a proxy/model organism for broader multilingual competence.
