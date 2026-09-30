@@ -10,6 +10,7 @@ Judging: Qwen3-32B labels each reply (judge_labels below). Output JSONL-ish JSON
 """
 import argparse
 import json
+import os
 import re
 
 import numpy as np
@@ -31,6 +32,8 @@ Think about which single label fits best, then output only the label on the last
 
 
 def judge(client, cat, q, a):
+    if os.environ.get("NOJUDGE"):  # label later with a task-specific judge
+        return "NA"
     if not a.strip():
         return "OTHER"
     r = client.chat.completions.create(model="Qwen/Qwen3-32B", temperature=0.0, max_tokens=16,
@@ -110,7 +113,7 @@ def main():
         gen, seeds = venus(a.model_path, a.backend.split("-")[1], a.seeds)
     res = []
     for q in json.load(open(a.queries)):
-        for lang in ("en", "zh"):
+        for lang in os.environ.get("LANGS", "en,zh").split(","):
             for s in seeds:
                 ans = gen(q[lang], s)
                 lab = "DELEGATE" if "[DELEGATED:" in ans else judge(jc, q["cat"], q[lang], ans)

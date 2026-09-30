@@ -3,6 +3,7 @@ Modes: offline (model.chat with the audio clip, turn-based) and duplex (1 s stre
 duplex decoding). Same judge as epistemic_eval.py. seed s uses voice s % 2."""
 import argparse
 import json
+import os
 import re
 
 import librosa
@@ -13,7 +14,7 @@ from transformers import AutoModel, AutoTokenizer, set_seed
 
 from epistemic_eval import judge
 
-AUD = "/home/xiang/rt_ext/runs/epi_audio"
+AUD = os.environ.get("AUD", "/home/xiang/rt_ext/runs/epi_audio")
 
 
 def main():
@@ -60,7 +61,7 @@ def main():
 
     res = []
     for q in json.load(open(a.queries)):
-        for lang in ("en", "zh"):
+        for lang in os.environ.get("LANGS", "en,zh").split(","):
             for s in range(a.seeds):
                 ans = gen(f"{AUD}/{q['id']}_{lang}_{s % 2}.wav", s)
                 lab = "DELEGATE" if "[DELEGATED:" in ans else judge(jc, q["cat"], q[lang], ans)

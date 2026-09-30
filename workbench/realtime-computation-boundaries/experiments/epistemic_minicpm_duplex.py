@@ -6,6 +6,7 @@
 Text input (no speech) - isolates the interaction contract from perception."""
 import argparse
 import json
+import os
 
 import torch
 from openai import OpenAI
@@ -66,7 +67,7 @@ def main():
     jc = OpenAI(base_url="http://localhost:8100/v1", api_key="x")
     res = []
     for q in json.load(open(a.queries)):
-        for lang in ("en", "zh"):
+        for lang in os.environ.get("LANGS", "en,zh").split(","):
             for s in range(a.seeds):
                 ans = gen(q[lang], s)
                 lab = judge(jc, q["cat"], q[lang], ans)

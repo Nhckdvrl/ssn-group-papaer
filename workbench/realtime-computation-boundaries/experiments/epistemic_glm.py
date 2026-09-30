@@ -5,14 +5,16 @@ Spoken questions (edge-tts, 2 voices/lang); same judge as epistemic_eval.py. Tex
 run separately via the OpenAI-compatible path of epistemic_eval.py."""
 import argparse
 import json
+import os
 import sys
 
+import soundfile as sf
 import torch
 from openai import OpenAI
 
 from epistemic_eval import judge
 
-AUD = "/home/xiang/rt_ext/runs/epi_audio"
+AUD = os.environ.get("AUD", "/home/xiang/rt_ext/runs/epi_audio")
 M = "/home/xiang/rt_ext/models"
 
 
@@ -25,6 +27,9 @@ def glm4voice_backend():
     tok = AutoTokenizer.from_pretrained(f"{M}/glm-4-voice-9b", trust_remote_code=True)
     model = AutoModel.from_pretrained(f"{M}/glm-4-voice-9b", trust_remote_code=True, torch_dtype=torch.bfloat16,
                                       device_map={"": 0}).eval()
+    sys.path.insert(0, "/home/xiang/rt_ext/BayLing-Duplex")
+    from bayling_duplex.duplex import _patch_model_for_new_transformers  # same ChatGLM code; transformers>=4.45 compat
+    _patch_model_for_new_transformers(model)
     wm = WhisperVQEncoder.from_pretrained(f"{M}/glm-4-voice-tokenizer").eval().cuda()
     fe = WhisperFeatureExtractor.from_pretrained(f"{M}/glm-4-voice-tokenizer")
     audio_offset = tok.convert_tokens_to_ids("<|audio_0|>")
@@ -33,7 +38,8 @@ def glm4voice_backend():
               "and respond in a interleaved manner, with 13 text token followed by 26 audio tokens. ")
 
     def gen(wav, seed):
-        toks = extract_speech_token(wm, fe, [wav])[0]
+        y, sr = sf.read(wav, dtype="float32")  # tuple input avoids torchaudio.load (needs torchcodec)
+        toks = extract_speech_token(wm, fe, [(torch.from_numpy(y).unsqueeze(0), sr)])[0]
         user = "<|begin_of_audio|>" + "".join(f"<|audio_{x}|>" for x in toks) + "<|end_of_audio|>"
         prompt = f"<|system|>\n{sysmsg}<|user|>\n{user}<|assistant|>streaming_transcription\n"
         ids = tok([prompt], return_tensors="pt").to("cuda")
@@ -71,7 +77,7 @@ def main():
     jc = OpenAI(base_url="http://localhost:8100/v1", api_key="x")
     res = []
     for q in json.load(open(a.queries)):
-        for lang in ("en", "zh"):
+        for lang in os.environ.get("LANGS", "en,zh").split(","):
             for s in range(a.seeds):
                 ans = gen(f"{AUD}/{q['id']}_{lang}_{s % 2}.wav", s)
                 lab = judge(jc, q["cat"], q[lang], ans)

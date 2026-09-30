@@ -3,6 +3,7 @@ Qwen2.5-7B-Instruct). Input: spoken question (edge-tts) or text; output text (ta
 Uses the model's required default system prompt."""
 import argparse
 import json
+import os
 
 import librosa
 import torch
@@ -11,7 +12,7 @@ from transformers import Qwen2_5OmniForConditionalGeneration, Qwen2_5OmniProcess
 
 from epistemic_eval import judge
 
-AUD = "/home/xiang/rt_ext/runs/epi_audio"
+AUD = os.environ.get("AUD", "/home/xiang/rt_ext/runs/epi_audio")
 SYS = ("You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and "
        "visual inputs, as well as generating text and speech.")
 
@@ -47,7 +48,7 @@ def main():
 
     res = []
     for q in json.load(open(a.queries)):
-        for lang in ("en", "zh"):
+        for lang in os.environ.get("LANGS", "en,zh").split(","):
             for s in range(a.seeds):
                 ans = gen(q, lang, s)
                 lab = judge(jc, q["cat"], q[lang], ans)

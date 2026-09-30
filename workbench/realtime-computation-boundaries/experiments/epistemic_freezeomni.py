@@ -2,6 +2,7 @@
 spoken questions in, text out (TTS decoder skipped). Control lineage: parent = Qwen2-7B-Instruct (text)."""
 import argparse
 import json
+import os
 import math
 import sys
 
@@ -47,7 +48,7 @@ from models.pipeline import inferencePipeline  # noqa: E402
 
 from epistemic_eval import judge  # noqa: E402
 
-AUD = "/home/xiang/rt_ext/runs/epi_audio"
+AUD = os.environ.get("AUD", "/home/xiang/rt_ext/runs/epi_audio")
 
 
 def answer(pipeline, proc, wav_path):
@@ -90,7 +91,7 @@ def main():
     jc = OpenAI(base_url="http://localhost:8100/v1", api_key="x")
     res = []
     for q in json.load(open(a.queries)):
-        for lang in ("en", "zh"):
+        for lang in os.environ.get("LANGS", "en,zh").split(","):
             for s in range(a.seeds):
                 torch.manual_seed(s)
                 with torch.inference_mode():
