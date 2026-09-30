@@ -1,6 +1,6 @@
 # Blogs, Reports & Source Feeds
 
-**Last verified:** 2026-09-28
+**Last verified:** 2026-09-30
 
 These are not citations of convenience. They are sources repeatedly useful for research taste, practical baselines, artifact discovery, or understanding how frontier labs frame problems.
 
@@ -163,3 +163,10 @@ For a current claim:
 2. verify publication/release date;
 3. distinguish public artifact availability from “coming soon”;
 4. only then update this library.
+
+
+### B23 — PaperNotes
+**Type:** DISCOVERY RADAR / secondary index  
+**Why keep:** fast cross-venue scan of newly released/accepted work and useful for noticing dense clusters before opening dozens of proceedings pages.  
+**Rule:** use only to discover papers. Never treat its summary, venue label, or ranking as mother evidence; verify the primary paper / official proceedings / OpenReview page, publication status, release date, and artifact availability before updating scientific claims.  
+https://papernotes.org/
