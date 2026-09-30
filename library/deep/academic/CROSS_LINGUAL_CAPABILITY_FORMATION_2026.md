@@ -967,3 +967,153 @@ Kill or substantially reframe this lead if:
 5. no internal/behavioral measurement can distinguish scaffold vs interface roles;
 6. a controlled small model exhibits a pattern that does not transfer at all to released modern LLM families.
 
+
+
+---
+
+## 19. Direct-prior compression: parallel/translation is no longer the preferred lead
+
+The late audit found several unusually close 2026 works:
+
+- *From Translation to Multilinguality* separates concatenated parallel pairs from split monolingual sides and finds pair interaction primarily benefits translation rather than broad multilingual competence across several regimes;
+- MuBench includes fixed-budget controlled bilingual pretraining varying language ratios and parallel-data proportions;
+- ParaRater explicitly separates pseudo-parallel examples from examples whose positive utility depends on paired bilingual interaction;
+- Token Alignment Heads identifies translation-specific circuits, their training trajectory, and training examples causally important to those circuits.
+
+Together these works heavily occupy:
+
+> parallel-data content vs pairing  
+> → translation-specific behavior  
+> → specialized translation mechanism/data.
+
+This subline remains scientifically valuable, but a small follow-up such as testing more pair formats or counting specialized heads under another condition has weak ceiling and faces concentrated company-scale competition.
+
+**Decision:** demote it as the primary C lead. Keep it as background evidence and a possible control axis.
+
+The earlier simple hypothesis that abundant monolingual exposure causes the broad benefit of parallel data to disappear is also **withdrawn**: MuBench reports broad non-translation gains from parallel data even under a balanced high-exposure EN:ZH regime. Do not revive that claim without a new premise.
+
+---
+
+## 20. Current stronger lead: what does “reasoning language” actually control?
+
+The multilingual reasoning literature now contains a productive tension.
+
+### 20.1 Surface reasoning language is clearly consequential
+
+EMNLP 2025 / ICLR 2026 work shows that forcing an LRM to produce reasoning traces in a target language can substantially change accuracy, especially in low-resource languages.
+
+This is already owned and is **not** by itself a new problem.
+
+### 20.2 But “reasoning language” is measured at multiple incompatible levels
+
+Current papers use several proxies:
+
+1. **visible trace language** — language ID / script of generated CoT;
+2. **decodable hidden language** — Logit-Lens token/script probabilities;
+3. **latent answer dynamics** — when the correct answer becomes salient in hidden states;
+4. **cross-language hidden-state similarity** — cosine/CCA-style alignment with English;
+5. **mathematical trace structure** — language-independent anchors/dependencies extracted from visible traces;
+6. **causal language routing** — activation patching that switches the language of generated reasoning.
+
+These quantities should not be treated as interchangeable.
+
+For example, Language Mixing's “internal language” is a Logit-Lens projection into vocabulary/script space, while Multilingual Latent Reasoners uses answer-rank dynamics and hidden-state similarity. Both are informative, but neither directly establishes that hidden computation literally operates in a natural language.
+
+### 20.3 Input-understanding vs reasoning-execution is not a simple contradiction
+
+Findings ACL 2026 *Why Do Multilingual Reasoning Gaps Emerge?* finds that, under models' natural reasoning behavior, much of the gap can be removed by translating only examples where input understanding fails.
+
+EMNLP 2026 *Beyond Input Understanding* holds the input in English and forces the visible reasoning trace into another language; accuracy can still collapse.
+
+These can both be true:
+
+> target-language input  
+> → access / mapping into dominant reasoning computation  
+> → reasoning execution / trace generation  
+> → final output.
+
+A model may normally avoid weak target-language reasoning execution by pivoting to an English-dominant route. Forcing the visible trace language changes a different part of the system than translating the input.
+
+### 20.4 Post-training creates a sharper tension
+
+There is no universal “target-language reasoning is bad” law.
+
+- EMNLP 2025 finds prompt control / small SFT improves language matching but preserves an accuracy cost.
+- ICLR 2026 *Beyond English-Centric Training* finds RL cross-lingual generalization is much stronger than SFT, while explicit language-consistency prompts/rewards can reduce accuracy and correlate with larger representational shifts.
+- ReasonXL reports SFT+RLVR can move reasoning fully into target European languages with little/no performance sacrifice and identifies an early-layer language-routing bottleneck.
+- EMNLP 2026 AdaMame reports an adaptive SFT+RL recipe that improves language fidelity without the same fixed-reward trade-off.
+- Apple 2026 GRPO Beyond English finds native-language RL can be competitive but effects and regressions are strongly model/language dependent.
+
+The resulting scientific pressure is not:
+
+> “Can we train models to reason in non-English?”
+
+That is already a method race.
+
+It is:
+
+> **What internal computation must be preserved when post-training changes the language of visible reasoning, and why do some language-control objectives preserve cross-lingual reasoning while others damage it?**
+
+### 20.5 Competing explanations
+
+A workbench should make these explanations compete rather than assume an “English reasoning core”:
+
+**E1 — routing-only.**  
+Language control changes an early routing variable while leaving central reasoning computation mostly invariant. ReasonXL points in this direction.
+
+**E2 — computation rewrite.**  
+Forcing/adapting another reasoning language changes the actual reasoning trajectory/strategy and can damage mathematical dependency structure. DATG and trace-quality work support this possibility.
+
+**E3 — output/token burden.**  
+The hidden reasoning remains broadly shared, while non-English token generation makes explicit trace production longer/noisier/more error-prone.
+
+**E4 — pretrained-structure preservation.**  
+Successful RL works because it minimally perturbs a shared pretrained reasoning structure; SFT/fixed language rewards overwrite it. ICLR 2026 proposes this interpretation, but its mechanistic evidence is preliminary (final-layer PCA/shift statistics).
+
+**E5 — language-specific good reasoning.**  
+There is no single universal English-like structure to preserve; useful reasoning features differ by language. COLM 2026 pressures English-centric objectives in this direction.
+
+These explanations imply different intervention outcomes.
+
+### 20.6 Potentially revealing academic-scale interventions
+
+No final RQ is registered, but high-information experiments could include:
+
+- matched base/SFT/RL checkpoints from public multilingual reasoning projects;
+- activation patching from baseline ↔ language-adapted models at the identified routing bottleneck and deeper reasoning layers;
+- force visible trace language while independently patching/restoring latent states from the high-accuracy route;
+- erase/change trace-language directions without changing answer-relevant states, and vice versa;
+- compare answer-salience trajectory, DATG structure, causal importance of reasoning tokens, and visible language in the same samples;
+- test whether accuracy can be rescued while trace language remains target-language, or trace language switched while answer dynamics remain unchanged.
+
+The key is **orthogonalization**:
+
+> manipulate trace language and answer-relevant computation separately.
+
+If they cannot be independently manipulated, the decomposition may be wrong.
+
+### 20.7 Why this could have ceiling
+
+A positive result could change interpretation of a large current method family.
+
+If visible reasoning language is mostly a routing/interface variable, then:
+- language-fidelity rewards may optimize the wrong object;
+- English-vs-native CoT comparisons can confound computation with realization;
+- some “multilingual reasoning” improvements may be trace-language control rather than reasoning improvement.
+
+If changing reasoning language genuinely rewrites computation, then:
+- latent-English/shared-core narratives are too strong;
+- post-training must learn language-specific reasoning structures rather than only reroute a shared core.
+
+Either direction would matter beyond one language or one benchmark.
+
+### 20.8 Main risks / kill conditions
+
+Kill or demote if:
+- ReasonXL or another direct prior already independently manipulates language routing and reasoning computation enough to establish this distinction;
+- visible trace language and internal answer dynamics cannot be manipulated independently in strong open models;
+- every effect reduces to tokenization/sequence-length differences;
+- the only surviving conclusion is “English works better”;
+- useful evidence requires proprietary hidden CoT or company-scale RL training;
+- the phenomenon disappears on current open reasoning models after strong prompts/training.
+
