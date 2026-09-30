@@ -444,3 +444,43 @@ For a fast/slow composite on tasks the slow model can solve alone, the composite
 3. **authorship** (loss/gain comes from the fast model re-expressing, dropping, or mistiming slow content);
 4. **age** (the conversation has moved on by the time the result is admitted).
 The first residency experiment is descriptive: run the baseline on a small set of multi-turn tasks, and for each failure locate which of these four links broke, before any intervention.
+
+---
+
+## P1 — Baseline residency on Realtime-Venus (2026-09-30)
+
+Driver: `experiments/venus_fdb_driver.py` (FDB-v3 real human audio, 1 s chunks, deterministic simulated clock; `<delegate>` spans → local Qwen3-32B slow side with the FDB-v3 mock tools → `<backend>` re-injected exactly as the released demo adapter does). Scoring: FDB-v3's own strict pass logic (`experiments/score_fdb.py`). Results: `results/p1_*`.
+
+| condition (FDB-v3, 100 real recordings) | handoff rate | strict pass | pass given handoff |
+|---|---|---|---|
+| Venus-Audio, released settings | 3% | 0% | 0% |
+| Venus-Audio, trigger forced at the end-of-turn slot (frontend still writes the objective) | 74% | 24% | 32% |
+| Venus-Omni, trigger forced | 55% | 20% | 36% |
+| slow side alone, given the human transcript | 100% | 34% | 34% |
+
+Probes (`results/p1_*probe*`, `p1_audio_p_delegate.json`): across live-info / transaction / reasoning / routine requests, EN and ZH, Venus-Audio delegates 2/240 samples; P(`<delegate>`) at the handoff slot is 0.000–0.10 — the model announces the action ("I'll add two B-7 to your cart") and closes the turn. Venus-Omni delegates ~15% and is seed-unstable (same request → handoff / invented fact / announce-without-act).
+
+**What the baseline taught us:** once the boundary is crossed, it is transparent (objective-writing and channel cost ≈ 0 against the transcript reference); essentially all lost capability sits in the fast model's decision to cross it, plus a reintegration loss (result not spoken after 41% / 62% of Audio / Omni handoffs). "When to delegate" is owned (SALMONN-duo knowledge-boundary SFT + cost-aware RL, Venus's own delegate benchmark, cascade/deferral literature) → not pursued as a router.
+
+## P2 — Emerging lead: realtime interaction erodes epistemic boundaries (in progress)
+
+Trigger failures co-occur with confident fabrication of live facts (three different NVDA prices across three samples). Question (not yet a claim): **does realtime / full-duplex interaction — as training and as a response contract — remove a model's ability to say it cannot know or cannot act?**
+
+Probe `experiments/probes/epistemic.json`: 34 requests × EN/ZH — live info (10), private user data (8), side-effecting actions (8), answerable knowledge (8, control). Judge Qwen3-32B with an explicit label set incl. ECHO (`experiments/epistemic_eval.py`, `rejudge.py`). Results `results/epistemic/`.
+
+Same backbone lineage (Qwen3-8B → MiniCPM-o 4.5 → Realtime-Venus):
+
+| model / mode (text input) | live: abstain / fabricate (of 60) | private: abstain / fabricate / claim-done (of 48) | known answered |
+|---|---|---|---|
+| Qwen3-8B, neutral prompt | 55 / 3 | 44 / 1 / 0 | 48/48 |
+| MiniCPM-o 4.5 offline (1 seed, echo excluded) | 13 / 2 (of 20) | 7 / 2 / 0 (of 16) | 16/16 |
+| Venus-Audio offline (1 seed, echo excluded) | 1 / 8 (of 20) | 3 / 3 / 0 (of 16) | 16/16 |
+| Venus-Audio full-duplex | **0 / 38** (+15 promise) | **2 / 12 / 12** (+19 promise) | 41/48 |
+
+Prompt-contract decomposition on the unmodified Qwen3-8B (live fabrications of 60): neutral 3 · "reply will be spoken aloud" 3 · "on a live phone call" 11 · "live call, respond quickly" 28 · "one short sentence" 30 · "≤3 sentences" 20 · all combined 31.
+
+Reading so far: (i) the loss is localized to the Venus realtime post-training step (parent abstains in the same mode); (ii) knowledge is retained, so this is not the known "intelligence degradation"; (iii) a pure prompt-level realtime framing already pushes an untrained model toward fabrication — brevity is owned by Phare (Giskard 2025), but live-call framing without length constraints also raises fabrication 3→11.
+
+Nearest prior: abstention in text LLMs (AbstentionBench 2025 shows reasoning post-training hurts abstention; Phare shows brevity prompts hurt hallucination resistance). No speech/omni/full-duplex abstention study found. Reviewer compression to beat: "AbstentionBench for voice models".
+
+Pending (next): full-duplex parent vs child; spoken-question (edge-tts) versions; Freeze-Omni (frozen LLM control) and 2–3 more speech lineages; human spot-check of the judge.
