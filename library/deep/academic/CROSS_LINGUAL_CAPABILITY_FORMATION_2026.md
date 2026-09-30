@@ -753,3 +753,217 @@ Keep three objects separate:
 1. quality of translated benchmark items;
 2. translated-benchmark score as a proxy for native-benchmark score;
 3. model MT ability as a proxy/model organism for broader multilingual competence.
+
+
+---
+
+## 18. Stronger pressure after cross-paper reconciliation: the role of parallel data changes with acquisition regime
+
+The translation-proxy lead led to a deeper and currently stronger pressure.
+
+### 18.1 The apparent contradiction
+
+**Just Go Parallel (ACL 2025)** reports that adding parallel data improves not only translation but also non-English commonsense reasoning.
+
+**MONOWEB (ACL 2026)** reports that removing mixed-language documents — and then selectively restoring parallel data — has an enormous effect on translation but almost no effect on cross-lingual QA/general reasoning.
+
+Both are controlled decoder-LM pretraining studies. Their conclusions about the *breadth* of parallel-data benefit therefore cannot simply be collapsed into “parallel data helps multilinguality.”
+
+### 18.2 A consequential difference in acquisition regime
+
+The training distributions are qualitatively different.
+
+**JGP**
+- 1.1B decoder LM, trained from scratch;
+- base 167B-token mix is overwhelmingly English;
+- Indonesian and Chinese occupy only tiny fractions of the original monolingual data;
+- EN↔ID/ZH parallel data therefore supplies both target-language exposure and explicit cross-language coupling;
+- placement matters: early parallel gains can be forgotten by later non-parallel training.
+
+**MONOWEB**
+- 1.35B decoder LM, trained from scratch;
+- deliberately balanced EN/DE/ES/FR monolingual exposure (~60B tokens per language in corpus construction);
+- every language receives abundant standalone exposure;
+- removing the small bilingual slice destroys MT much more than QA/reasoning;
+- parallel data primarily restores MT/lexical alignment.
+
+This suggests a hypothesis class:
+
+> **parallel data may play different functional roles depending on whether the model is still acquiring the target language or already has sufficient monolingual competence in it.**
+
+Possible roles:
+1. **language-acquisition scaffold** — supplies target-language semantic/linguistic competence when exposure is scarce;
+2. **cross-language semantic bridge** — couples representations/computation between already learned languages;
+3. **lexical/interface alignment** — sharpens fine-grained mappings needed for translation/output conversion.
+
+These roles need not coexist with the same strength.
+
+### 18.3 Third regime: post-hoc language acquisition
+
+**OpenSeal (2026 preprint)** begins from an English-centric OLMo-2 and continually pretrains it for Southeast Asian languages.
+
+Parallel-only CPT is reported as especially effective, with benefits extending beyond translation into tasks such as XNLI/XCOPA/PAWS-X.
+
+This resembles JGP more than MONOWEB in one crucial respect:
+
+> the target languages are being **added / strengthened after an English-centric capability core already exists**.
+
+That creates three useful regimes:
+
+| Regime | Representative | Target-language state before parallel intervention | Reported role of parallel data |
+|---|---|---|---|
+| English-heavy joint pretraining | JGP | severely underexposed | MT + broad non-English reasoning |
+| post-hoc language adaptation | OpenSeal | weak in English-centric base | MT + broader multilingual tasks |
+| balanced joint multilingual pretraining | MONOWEB | abundant monolingual exposure from the start | large MT effect; little QA/reasoning effect |
+
+This table is **not causal proof of a regime transition** because many other factors differ. It is a pressure map.
+
+### 18.4 Why “resource regime matters” is not enough
+
+Older work already owns the generic statement.
+
+- Reid & Artetxe (Findings ACL 2023) ask whether parallel-data gains arise from the data or from modeling parallel interactions.
+- Ansell et al. (EMNLP 2023) explicitly unify transfer strategies across varying task-specific, monolingual and parallel resource scarcity.
+- Zheng et al. (EMNLP 2024) compare cross-lingual CPT with from-scratch acquisition across model/data scales.
+
+Therefore a workbench cannot claim:
+
+> “parallel data is more useful for low-resource languages”
+
+or:
+
+> “CPT and joint training behave differently.”
+
+The scientifically sharper object would need to identify a **change in the functional role of bilingual coupling**, with evidence beyond performance curves.
+
+### 18.5 Strong competing explanation: semantic content, not alignment
+
+**TransWebEdu (EMNLP 2025)** is important because it translates a high-quality English corpus into nine languages and trains a 1.3B multilingual model from scratch.
+
+The translated documents are useful even when used as target-language monolingual documents, so broad multilingual gains can arise from:
+
+> **matched high-quality semantic content / target-language exposure**
+
+without requiring explicit adjacent bilingual pairs.
+
+Therefore JGP/OpenSeal broad gains cannot automatically be attributed to alignment.
+
+A future workbench must distinguish at least:
+
+- target-language token quantity;
+- content quality/diversity;
+- same-semantic-content across languages;
+- explicit pair adjacency/alignment;
+- training timing;
+- pre-existing source-language capability.
+
+### 18.6 Another success case: multi-way parallel CPT
+
+**From Unaligned to Aligned (EMNLP 2025)** reports that multi-way parallel TED data improves six multilingual benchmarks relative to unaligned multilingual data during CPT/instruction tuning.
+
+This strengthens the evidence that explicit alignment can be useful beyond MT in adaptation regimes, but does not isolate whether the decisive variable is:
+- parallel structure;
+- cleaner/more homogeneous content;
+- target-language resource support;
+- multi-way consistency;
+- training stage.
+
+### 18.7 Current high-information distinction
+
+The strongest current formulation is no longer:
+
+> “Is translation a good proxy?”
+
+It is:
+
+> **When does bilingual coupling function as a scaffold for acquiring/using a language broadly, and when does its marginal role contract to fine-grained cross-language interface alignment such as translation?**
+
+Translation-proxy validity becomes one observable consequence of this deeper distinction.
+
+This has a potential changed-premise consequence:
+
+> the field often treats “parallel data” as one ingredient with one effect, but its causal role may depend on the developmental state of the target language inside the model.
+
+### 18.8 What evidence would make this more than a literature reconciliation?
+
+A workbench must identify a **within-controlled-family transition**, not merely compare papers.
+
+The cleanest desired experiment is approximately factorial:
+
+> target-language monolingual exposure × fixed parallel-data dose/format × training stage
+
+while measuring:
+- MT;
+- NLU / commonsense / reasoning;
+- lexical alignment;
+- sentence/concept alignment;
+- language-ID / output control;
+- optionally internal routing/shared computation.
+
+Critical prediction is **not preregistered**. Possible outcomes include:
+- parallel benefits all capabilities at every exposure level → regime hypothesis weakened;
+- broad benefit shrinks with monolingual exposure while MT benefit persists → role-transition evidence;
+- only data quality matters → alignment story dies;
+- timing dominates exposure → developmental-window story;
+- language family/tokenizer determines transition → different object emerges.
+
+### 18.9 Academic-scale feasibility
+
+Do not reproduce 100B-token runs first.
+
+**Frozen-model reconnaissance**
+1. JGP released checkpoints across data placement/training stages.
+2. MONOWEB/FINEWEB intervention models.
+3. OpenSeal models/data if release is complete.
+4. TransWebEdu models/corpus.
+5. EMNLP multi-way-parallel code/artifacts.
+
+First build a harmonized intervention-response table on overlapping tasks/languages where possible.
+
+**Small controlled factorial**
+Only if frozen families support the regime pressure:
+- 0.3B–1.5B decoder LM;
+- 2–3 language pairs;
+- matched semantic source corpus;
+- target monolingual exposure levels;
+- fixed parallel dose;
+- adjacent vs separated / translated-monolingual controls;
+- several checkpoints through training.
+
+The scientific goal is to reproduce the **role transition**, not leaderboard performance.
+
+### 18.10 Orthogonal interface control: tokenizer
+
+ICML 2026 TokSuite releases fourteen 1B models with identical architecture, data, budget and initialization, changing only the tokenizer.
+
+This is potentially valuable as a negative/control axis:
+
+> if MT proxy quality changes strongly with tokenizer/interface properties while semantic/reasoning performance changes differently, then part of MT’s predictive power may be interface-mediated rather than a shared competence mechanism.
+
+Do not expand into generic tokenizer research unless this distinction becomes load-bearing.
+
+### 18.11 Current ownership judgment
+
+The literature clearly owns:
+- resource scarcity matters;
+- parallel data helps low-resource transfer;
+- CPT differs from scratch training;
+- multi-way aligned data can beat unaligned data;
+- machine-translated high-quality monolingual data can improve multilingual understanding;
+- parallel data is crucial for MT in balanced multilingual pretraining.
+
+The current audit has **not yet found a modern decoder-LLM study that cleanly factorializes target-language monolingual acquisition state/exposure against a fixed bilingual-coupling intervention and tracks when parallel data changes from broad capability scaffold to translation/interface-specific signal.**
+
+This is provisional. Keep searching.
+
+### 18.12 Kill conditions
+
+Kill or substantially reframe this lead if:
+
+1. direct prior already performs the exposure × parallel-data factorial and reaches the same functional-role question;
+2. JGP/MONOWEB differences vanish under matched downstream tasks or stronger baselines;
+3. TransWebEdu-style matched content fully explains broad parallel gains;
+4. only “low-resource gets bigger gains” survives;
+5. no internal/behavioral measurement can distinguish scaffold vs interface roles;
+6. a controlled small model exhibits a pattern that does not transfer at all to released modern LLM families.
+
