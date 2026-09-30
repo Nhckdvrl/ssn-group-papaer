@@ -64,9 +64,9 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 ## 论文形态卡 — <workbench> — <日期>
 - 一句话主旨（当前版本）：
 - 论文形态：失败模式+修复 / 构念引入+测量 / 理论+受控实验 / benchmark / 系统
-- 3 个贡献（状态：✅/⚠️/❌）：
-- 4 条摘要主张（状态）：
-- 5 张主图/表（状态）：
+- manuscript-critical contributions（数量由故事决定；状态：✅/⚠️/❌；各对应 C#）：
+- 摘要主张（数量由故事决定；各自证据等级）：
+- 主图/表（数量由证据链决定；每张对应 E#/C#）：
 - 基线列表（含最强开源基线、算力匹配方式）：
 - 证据标准：模型/家族数、benchmark 数、种子数、置信区间
 - 定位表摘要（最近 5 个近邻 + 各自增量）：
@@ -85,23 +85,24 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 ## 6. 何时关闭、暂停或转向
 
-**关闭**（在 D1–D6 交付之后，满足其一，并写明证据）：
+**关闭 / 暂停**（原则上在 D1–D6 交付之后，满足其一，并写明证据）：
 - (a) 强基线无法复现，且原因不可修复；
-- (b) 主要效应在可承受算力下低于噪声地板；
-- (c) 定位表显示**精确撞车**（同一 claim + 同一证据类型 + 同一设定），且无法调整增量；
-- (d) 在可承受算力下达不到任何目标会议的证据标准（达不到当前会议只是改投，不关闭）。
+- (b) 主要现象在当前测量分辨率与可承受算力下无法区分出对决策有意义的效应（不是机械 `2×noise`）；
+- (c) 定位表显示精确撞车或极高 compression risk，且无法形成实质 delta；
+- (d) 在可承受算力下达不到任何目标会议需要的证据（达不到当前会议只是改投，不关闭）；
+- (e) **H 类：Human scientific-yield judgment**——baseline 已跑通、已有系统 measurement、positioning 和论文形态卡之后，人判断即使结果成立也不值得继续投入。H 只能由人签字，agent 不得在桌面阶段使用。
 
 **不构成关闭理由**：有人做过相关工作；已经成了一个 program；一个解释被证伪（null 结果杀的是解释，不是领域）；第一个 lead 不成立。
 
 **两次连续降级重置**（保留）：连续两个 lead 被平凡对照或近邻吸收后，停止在同一叙事上加实验——回到**同一领域**的痛点日志、形态卡和其他压力，而不是开新 workbench。
 
-关闭或暂停**只由人决定**；agent 可以用 [`../templates/close_record.md`](../templates/close_record.md) 提议（写明证据类别 A 实验 / C 可行性；B 桌面判断不能作为关闭理由）。记录写在本 workbench README 末尾；只有跨项目有用的才复制到 `failed/`（ID 从 K254 起）。
+关闭或暂停**只由人决定**；agent 可以用 [`../templates/close_record.md`](../templates/close_record.md) 提议（证据类别 A 实验 / C 可行性 / H 人类 scientific-yield；B 桌面判断不能作为关闭理由，H 也必须满足上面的 residency 前置条件）。记录写在本 workbench README 末尾；只有跨项目有用的才复制到 `failed/`（ID 从 K254 起）。
 
 ---
 
 ## 7. 何时升为 candidate
 
-门槛与候选包见 [`../candidates/README.md`](../candidates/README.md) §1：主旨主张 ≥ L3、3 个贡献各 ≥ L2、机制主张 ≥ L4、全部校对；定位表完成；一句话主旨在一次新近邻扫描与一次人审之后没有改变；人签字。
+门槛与候选包见 [`../candidates/README.md`](../candidates/README.md) §1：主旨主张通常 ≥ L3；所有 manuscript-critical contributions 有与措辞匹配的证据（通常 ≥ L2）；机制/因果主张通常 ≥ L4；全部校对；定位表完成；一句话主旨在一次新近邻扫描与一次人审之后没有改变；人签字。不要为了固定“3 个贡献 / 5 张图”而 padding。
 
 ---
 
@@ -111,14 +112,14 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 ---
 
-## 9. 登记表（2026-09-30；`tools/process/check.py` 读取本表）
+## 9. 登记表（2026-10-01；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
 | `video-world-model-temporal-interfaces` | ACTIVE-MAIN | CVPR 2027 | 2026-11-16 | `CLAIMS.md` | 2026-09-29 | 块首“接缝失聪”，3 个独立系统复现；关口与第二阶段计划见 `CVPR_ASSESSMENT.md`；`CLAIMS.md` / `PAIN_LOG.md` 于 9/30 按 v4 格式整理，待负责人确认 |
-| `multi-llm-collaboration` | PROPOSED | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | — | 训练出来的开源异构 LLM 团队；territory 卡 `../search/our-taste/TERRITORY_SCAN_2026-09-30.md`；待人确认后改为 ACTIVE-EXPLORE |
+| `multi-llm-collaboration` | ACTIVE-EXPLORE | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：训练出来的开源异构 LLM 团队；I01 cross-play 是第一把测量尺，不预注册“伙伴脆弱”为 novel finding；I02 为算力会计基础设施；I03/I04 由行为结果触发 |
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | — | — | 9/30 按 v2 开启，尚未运行；恢复前补 territory 卡的热度 / 立足点 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
 | `mechanism-population-dynamics` | PAUSED | — | — | — | — | 未开始；可解释性方向的候选资产 |
