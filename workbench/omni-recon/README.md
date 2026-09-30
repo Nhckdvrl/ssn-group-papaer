@@ -202,3 +202,21 @@ internal knowledge instead of calling the tool" (VoiceChat limitations), instruc
 (P3) — to one training-design variable that the field currently tunes by hand.
 Nearest compressions to check before any claim: logit adjustment / long-tail calibration (Menon et al. 2021),
 survival/hazard models of turn-taking (VAP line), AdaptDuplex's runtime logits bias.
+
+## 8. Instruction vs action channel — probe attempt (2026-09-30 20:00)
+
+Question (significance: prompts are the main lever practitioners use to govern voice-agent tool policy; if native
+action channels ignore them, that lever fails): does a stated tool policy change what the model *does* (action
+channel) as much as what it *says*?
+
+- Text control, Qwen3-8B + hermes tools on FDB-v3 gold transcripts (100 scenarios, NVIDIA default VoiceChat system
+  message + an appended policy; `experiments/text_policy_control.py`, `results/policy/`): tool called in
+  **95/100 (default) → 47/100 ("tools disabled, never call") → 42/100 ("confirm first")**. Even the text model obeys
+  only half, because the default message itself says "you MUST call that tool" — the policies conflict.
+- VoiceChat (native function head) could not be run within the engineering budget: NeMo's offline path disables
+  the KV/SSM cache for Nemotron backbones (full-history recompute every 80 ms step), the host has no CUDA-13 nvcc
+  for mamba/causal-conv kernels (torch cu13.0 vs nvcc 12.8, sm_120), so the torch fallback takes 20–40 min per
+  scenario, and under bf16 autocast the agent text came out as garbage. Stopped; VoiceChat is not a usable instrument
+  on this host without a CUDA-13 toolchain or the NIM container (docker access denied).
+- Status: the instruction-vs-action asymmetry rests on Venus alone (delegate 1/21, 0/11 under explicit instruction)
+  — one architecture, not enough to call it a property of the formulation.

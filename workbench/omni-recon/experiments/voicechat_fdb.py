@@ -21,44 +21,14 @@ sys.path.insert(0, "/home/xiang/rt_ext/nemo-speech-voicechat/examples/speechlm2"
 from mock_apis import MockAPIRegistry  # noqa: E402
 from nemo.collections.speechlm2.inference.utils.offline_voicechat import (  # noqa: E402
     build_model, encode_system_prompt, render_fc_system_prompt, run_offline_inference)
-from offline_voicechat_fc_infer import DEFAULT_SYSTEM_MESSAGE, DEFAULT_TEMPLATE  # noqa: E402
-
-SCHEMA = {  # FDB-v3 mock API signatures (mock_apis.py)
-    "search_flights": ({"destination": "string", "date": "string"}, ["destination", "date"]),
-    "book_flight": ({"passenger_name": "string", "flight_id": "string"}, ["passenger_name"]),
-    "update_identity_doc": ({"doc_type": "string", "doc_number": "string"}, ["doc_type", "doc_number"]),
-    "get_card_benefits": ({"card_type": "string"}, ["card_type"]),
-    "get_exchange_rate": ({"amount": "number", "from_currency": "string", "to_currency": "string"},
-                          ["amount", "from_currency", "to_currency"]),
-    "modify_autopay": ({"bill_type": "string", "source_account": "string"}, ["bill_type", "source_account"]),
-    "search_apartments": ({"city": "string", "bedrooms": "integer", "max_price": "number"},
-                          ["city", "bedrooms", "max_price"]),
-    "calculate_commute": ({"origin_address": "string", "destination_address": "string", "mode": "string"},
-                          ["origin_address", "destination_address"]),
-    "update_search_filter": ({"filter_name": "string", "value": "string"}, ["filter_name", "value"]),
-    "track_order": ({"order_id": "string"}, ["order_id"]),
-    "search_products": ({"query": "string", "max_price": "number"}, ["query"]),
-    "add_to_cart": ({"product_id": "string", "quantity": "integer"}, ["product_id", "quantity"]),
-}
-DOMAIN_TOOLS = {"travel": ["search_flights", "book_flight", "update_identity_doc"],
-                "finance": ["get_card_benefits", "get_exchange_rate", "modify_autopay"],
-                "housing": ["search_apartments", "calculate_commute", "update_search_filter"],
-                "ecommerce": ["track_order", "search_products", "add_to_cart"]}
-
+from offline_voicechat_fc_infer import DEFAULT_TEMPLATE  # noqa: E402
+from policy_common import DEFAULT_SYSTEM_MESSAGE, POLICY, SCHEMA, tools_for  # noqa: E402
 
 def load_wav_16k_mono(path, device="cuda"):  # soundfile+librosa: torchaudio.load needs torchcodec here
     import librosa
     y, _ = librosa.load(path, sr=16000, mono=True)
     w = torch.from_numpy(y)
     return w, w.unsqueeze(0).to(device), torch.tensor([w.shape[0]], device=device)
-
-
-def tools_for(domain):
-    key = next(k for k in DOMAIN_TOOLS if domain.startswith(k))
-    return [{"type": "function", "function": {
-        "name": n, "description": n.replace("_", " "),
-        "parameters": {"type": "object", "properties": {k: {"type": v} for k, v in SCHEMA[n][0].items()},
-                       "required": SCHEMA[n][1]}}} for n in DOMAIN_TOOLS[key]]
 
 
 def parse_call(call_text):
@@ -94,7 +64,7 @@ def run_scenario(model, ex_dir, system_message, dev, max_calls=5):
     _, sig, sig_len = load_wav_16k_mono(str(ex_dir / "input.wav"), device=dev)
     api = MockAPIRegistry(latency_profile="instant", enable_logging=False)
     calls, call_ids, call_steps, resp_ids, resp_steps, passes = [], [], [], [], [], []
-    for _ in range(max_calls + 1):
+    for _ in range(max(max_calls, 0) + 1):
         kw = {}
         if call_ids:
             fc, fcl = pad3(call_ids, dev)
@@ -111,7 +81,10 @@ def run_scenario(model, ex_dir, system_message, dev, max_calls=5):
         after = resp_steps[-1] if resp_steps else -1
         new = [c for c in pos["function_calls"] if c["start_pos"] > after]
         passes.append(dict(text=res["text"][0], n_calls_seen=len(pos["function_calls"])))
-        if not new:
+        if not new or max_calls == 0:
+            if new and max_calls == 0:
+                calls.append(dict(step=new[0]["start_pos"], end=new[0]["end_pos"], raw=new[0]["call_text"],
+                                  parsed=parse_call(new[0]["call_text"])[1], parse_error=None, responses=[]))
             break
         c = new[0]
         clean, parsed, err = parse_call(c["call_text"])
@@ -135,16 +108,20 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--ids", default="")
     ap.add_argument("--system-message", default=DEFAULT_SYSTEM_MESSAGE)
+    ap.add_argument("--policy", default="default", choices=list(POLICY), help="tool-use policy appended to the prompt")
+    ap.add_argument("--bf16", action="store_true")
+    ap.add_argument("--max-calls", type=int, default=5, help="0 = single pass: only detect whether/what it calls")
     a = ap.parse_args()
     dev = "cuda"
     model = build_model(a.ckpt, device=dev)
-    dirs = sorted((FDB / "fdb_v3_data_released").iterdir())
+    dirs = sorted(p for p in (FDB / "fdb_v3_data_released").iterdir() if p.is_dir())
     if a.ids:
         dirs = [d for d in dirs if any(d.name.startswith(i) for i in a.ids.split(","))]
     out = []
     for d in dirs:
-        with torch.inference_mode():
-            r = run_scenario(model, d, a.system_message, dev)
+        with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16, enabled=a.bf16):
+            r = run_scenario(model, d, a.system_message + POLICY[a.policy], dev, max_calls=a.max_calls)
+        r["policy"] = a.policy
         out.append(r)
         exp = [(c["function"], c["args"]) for c in r["meta"]["expected_tool_calls"]]
         print(r["id"], "| expected", exp, "| native", [(c["function"], c["args"]) for c in r["actual_tool_calls"]],
