@@ -123,3 +123,43 @@ artifacts, that strong 2026 work has not already compressed?*
 | Speech RL / reward models | GSRM, dual-axis RMs, DuplexPO, SteerDuplex; reward hacking via incomplete responses | method-shaped, crowded |
 | **Commitment under incremental evidence** | the same pressure appears in four sub-fields that do not cite each other: full-duplex speech (speak before the user finishes; revise after barge-in: EchoChain, State Inertia, Duplex Cue), streaming video (answer before evidence → hallucination; readiness gates: Response-G1, LiveProBench 2609.12658), simultaneous translation (append-only commit rules vs re-translation: IWSLT'26, 2609.26427), realtime agents (act before arguments are complete: DuplexSLA "trigger time legal") | each sub-field owns its local version; nobody measures *when an LLM-based streaming generator stops being able to revise what it has started* as a property of the formulation across architectures. B1 is the first probe of this. Classical SiMT (wait-k etc.) is the strongest compression risk. |
 | Native action formulation | parallel function head (VoiceChat) vs serialized action channel (DuplexSLA) vs cascade; DuplexSLA's own table: native loses 14 pp on multi-action vs cascade, 4 pp on single | formulation-level, open artifact (VoiceChat) — A1 |
+
+## 5. B1 — the same correction at different phases of the model's own speech (2026-09-30 night)
+
+`probes/update.json`: 20 "tell me about X" requests + a spoken correction "sorry, I meant Y" (edge-tts, 2 voices);
+correction delivered right after the question (pre) or 1 / 3 / 6 s after the model's speech onset (detected online).
+Driver `experiments/b1_update_phase.py` (MiniCPM-o-family duplex), `experiments/b1_bayling.py`; labels `b1_judge.py`.
+
+| model | pre | +1 s | +3 s | +6 s |
+|---|---|---|---|---|
+| MiniCPM-o 4.5 duplex (ADAPT / 40) | 34 | 33 | 38 | 38 |
+| Realtime-Venus-Audio duplex | 34 | 33 | 40 | 39 |
+
+**Null (a success case):** in-stream full-duplex models yield and re-answer about the new topic at every phase
+(85–100%); no revision window, no contextual inertia on simple topic swaps. The single-item smoke pattern
+(adapt / stop / continue by phase) was noise. What EchoChain reports for closed models is therefore about
+*state-dependent* updates (multi-step blueprints), not about incorporating a correction mid-speech per se.
+BayLing run incomplete (its early pre-condition outputs are mostly CONFUSED, 8/12).
+
+## 6. Latent transcription in deployed speech-LLMs (the reframed "listen vs read" strand)
+
+`experiments/latent_transcript_minicpmo.py`: logit lens (final norm + lm_head) on the AUDIO positions only, offline
+chat, 60 battery clips with known transcripts; recall@10 of the utterance's content words vs a randomly paired
+utterance's words (chance).
+
+| layer | 0 | 8 | 12 | 20 | 24 | 28 | 32 | 34 | 35 | 36 (last) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| MiniCPM-o 4.5 recall | .10 | .29 | .48 | .41 | .59 | .75 | .89 | .91 | .92 | .72 |
+| Realtime-Venus-Audio recall | .11 | .29 | .47 | .42 | .60 | .77 | .90 | .93 | .95 | .79 |
+| control (other utterance) | .10 | .06 | .06 | .07 | .07 | .07 | .08 | .10 | .14 | .12 |
+
+- Deployed continuous-encoder speech-LLMs (Whisper features → Qwen3-8B) **latently transcribe almost every content
+  word** (92–95% at layers 33–35), much stronger than the 77% reported for 3B discrete-unit interleaved SLMs
+  (2606.22473), and with a two-phase profile (a mid-layer bump at ~12–18, a dip at ~20, then a late rise), not a
+  mid-layer peak.
+- In full-duplex streaming (`latent_latency_duplex.py`, forced listening, 1 s units), 97% of content words become
+  decodable, median latency 0 units after the word's acoustic end (negative = decodable before the word finishes);
+  the internal transcript keeps pace with the audio. Latency is not a bottleneck here.
+- Open: is behaviour a function of this internal transcript (an "implicit cascade"), and where do native errors
+  come from — a wrong latent transcript (perception) or a right transcript that is not used (policy)? A1 (VoiceChat
+  native tool arguments vs its latent transcript on FDB-v3 real speech) is the test bed.

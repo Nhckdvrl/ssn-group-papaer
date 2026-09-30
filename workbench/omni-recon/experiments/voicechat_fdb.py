@@ -20,7 +20,7 @@ sys.path.insert(0, str(FDB))
 sys.path.insert(0, "/home/xiang/rt_ext/nemo-speech-voicechat/examples/speechlm2")
 from mock_apis import MockAPIRegistry  # noqa: E402
 from nemo.collections.speechlm2.inference.utils.offline_voicechat import (  # noqa: E402
-    build_model, encode_system_prompt, load_wav_16k_mono, render_fc_system_prompt, run_offline_inference)
+    build_model, encode_system_prompt, render_fc_system_prompt, run_offline_inference)
 from offline_voicechat_fc_infer import DEFAULT_SYSTEM_MESSAGE, DEFAULT_TEMPLATE  # noqa: E402
 
 SCHEMA = {  # FDB-v3 mock API signatures (mock_apis.py)
@@ -44,6 +44,13 @@ DOMAIN_TOOLS = {"travel": ["search_flights", "book_flight", "update_identity_doc
                 "finance": ["get_card_benefits", "get_exchange_rate", "modify_autopay"],
                 "housing": ["search_apartments", "calculate_commute", "update_search_filter"],
                 "ecommerce": ["track_order", "search_products", "add_to_cart"]}
+
+
+def load_wav_16k_mono(path, device="cuda"):  # soundfile+librosa: torchaudio.load needs torchcodec here
+    import librosa
+    y, _ = librosa.load(path, sr=16000, mono=True)
+    w = torch.from_numpy(y)
+    return w, w.unsqueeze(0).to(device), torch.tensor([w.shape[0]], device=device)
 
 
 def tools_for(domain):
