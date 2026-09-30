@@ -1,19 +1,49 @@
-# I01：主流框架训练出的 LLM 团队，换伙伴还能协作吗（交叉配对矩阵）（2026-09-30）
+# I01：RL 协同训练后的 cross-play landscape（2026-10-01）
 
 - **状态：** SEED
-- **来源（必填，只能是其一）：** 近邻之间的分歧——经典 MARL 的 ZSC 谱系（Other-Play、FCP、ZSC-Eval：协同训练学到只对彼此有效的约定）与“提示式 LLM 对陌生伙伴较稳”（LLM-Coordination、ALEM 2606.08340、Hanabi ICML 2026）相矛盾；SRPO（2602.21515）在一个 LLM 协作任务上的初步实验提示训练后会变脆
-- **研究动作：** 引入成熟构念 + 测量（ZSC 交叉配对）
-- **如果为真，主张是：** 用 MAGRPO / Dr. MAS 协同训练的 LLM 团队，交叉配对（不同种子 / 尺寸 / 家族的成员互换）准确率显著低于自配对，而且差距随训练步数增大——协同训练把提示式 LLM 天然的伙伴鲁棒性训掉了
-- **两种结果各意味着什么：** 为真 → “LLM 团队的零样本协调”：测量协议 + 机制（消息 / 角色约定 / 白盒）+ 修复（SRPO、种群训练作为基线），形态 A+B；为假 → 违背经典 MARL 经验，需要解释“语言为什么让约定可迁移”，形态 B+C；两种都是论文
-- **最近 3 个近邻与增量：**
-  | 近邻 | 它的 claim | 我们的增量 |
-  |---|---|---|
-  | SRPO（2602.21515） | 策略风险规避带来伙伴泛化；理论 + 小规模 LLM 实验 | 主流框架、多种子 / 尺寸 / 家族的系统测量；机制；SRPO 作为修复基线 |
-  | SCOPE（2608.12253） | 对单一冻结用户模拟器做 RL 会坍缩（人–AI） | 智能体–智能体团队，共享奖励与分工 |
-  | TeamTR / SAT-AAMAS | 用方法保证即插即用替换 | 一般协同训练方法训出的团队会怎样（测量，而不是方法保证） |
-- **最便宜的决定性 pilot（能分出决策分支的最小算力）：** 几乎免费——复用 E01 的两个种子（A、B），评测 2×2 矩阵（S_A+V_A、S_B+V_B、S_A+V_B、S_B+V_A），再加未训练团队；沿训练 checkpoint 各测一次。实验卡在 E01 完成后用 `new.py experiment` 建立
-  - 阳性对照：人为制造私有约定（例如只在一个团队的 Verifier 提示里约定特殊回复格式），确认矩阵能测出交叉配对下降；未训练团队的交叉 / 自配对应无差异
-  - 噪声地板估计 vs 预期效应：用 E01 的重复评测标准差；预期差距至少 2 倍于它
-  - 决策表：差距 ≥ 2×噪声且随训练增大 → PROMISING，扩展到尺寸（1.5B↔3B）与家族（Qwen↔Llama）并建主张 C01；差距≈0 → 先换协作更强的任务（E02 代码、Minecraft、需要分布式信息的任务）再下结论；交叉 > 自配对 → 检查评测与角色对齐
-- **预期论文形态：** A 失败+修复 / B 构念+测量
-- **排序打分（1–3）：** 证据 1 · 增量清楚度 3 · 形态匹配 3 · 成本 3 · 可完成性 3 · 两种结果都有用 3
+- **角色：** G-family 的第一把行为测量尺；不是预注册的最终 RQ。
+- **来源：** 近邻分歧——经典 MARL/ZSC 认为共同训练容易形成 partner-specific convention；prompted LLM collaboration 对陌生伙伴常较稳；SRPO 已在协作任务（含一个 LLM task）上直接指出 unseen-partner brittleness。
+- **研究动作：** 引入成熟构念 + 系统测量（cross-play / ad-hoc teamwork）。
+
+## Ownership 边界
+
+**不能把“训练后换伙伴会掉点”本身写成我们的 novelty。** SRPO 已占这个宽 claim。I01 的价值在于建立主流 open-weight LLM multi-agent RL 的 cross-play landscape，并发现值得继续解释的条件、训练轨迹或例外。
+
+最近邻：
+| 近邻 | 已有 claim | 我们现在还不知道什么 |
+|---|---|---|
+| SRPO (2602.21515) | 普通 collaborative policies 对新伙伴脆弱；strategic risk aversion 改善 unseen-partner collaboration；含初步 LLM task | 主流 LLM RL 框架在 seed / size / family / training stage 等 partner shift 上的系统 landscape |
+| ZSC / Other-Play / FCP | 传统 MARL 中 convention 与 partner generalization 的经典问题 | 语言模型预训练是否改变这些规律、在哪些任务改变 |
+| prompted LLM coordination / Hanabi | 未共同训练的 LLM 对陌生伙伴可表现出一定鲁棒性 | RL co-training 后这种性质如何变化 |
+
+## 最便宜的 pilot
+
+复用 E01 的两个独立训练 team A/B：
+- diagonal：S_A+V_A、S_B+V_B；
+- off-diagonal：S_A+V_B、S_B+V_A；
+- 保存多个 checkpoint 的同一矩阵；
+- 未训练 team 作为 reference；
+- **阳性对照**：人为引入 team-specific convention，确认 cross-play measurement 能测出兼容性下降。
+
+Dr. MAS math 的 Solver→Verifier 角色语义非常固定，因此它只是 smoke test。这个环境 cross-play≈self-play **不能**否定 G-family；下一步必须转到更需要真实 coordination / multiple conventions / distributed information 的公开任务。
+
+## 决策所需读数
+
+- self-play 与 cross-play performance；
+- partner directionality；
+- checkpoint trajectory；
+- CI / 重复评测波动；
+- MIE：在跑 pilot 前写清多大差异才值得进入第 3 seed / 更强 coordination task；约 2×重复波动只作 heuristic。
+
+## 分支
+
+- **稳定且明显的 off-diagonal degradation** → 加第 3 seed；做 checkpoint trajectory 与受控 partner shift，定位“在哪种 shift / 训练阶段形成”；先更新 positioning，不直接宣布新 finding。
+- **math 接近 0** → 转到真正 coordination substrate；不升级 claim。
+- **cross-play > self-play 或强方向性反转** → 优先审计 role alignment / harness；若控制后仍在，作为 measurement anomaly 新建 idea。
+- **只有 SRPO 已知模式、无新 structure/consequence** → I01 仍作为论文公平性/可靠性 measurement，主故事从其他 pain 生长。
+
+## Information gain
+
+无论结果方向，I01 都应该改变我们对下一步 substrate / partner axis / mechanism 的选择；**不要求正反两边都能单独写成论文。**
+
+- **排序：** 最高优先级（E01 复现后立刻跑）。
