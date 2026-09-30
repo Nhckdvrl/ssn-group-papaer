@@ -23,6 +23,7 @@ def main():
     ap.add_argument("--mode", choices=["offline", "duplex"], required=True)
     ap.add_argument("--seeds", type=int, default=2)
     ap.add_argument("--system-prompt", default=None, help="override the duplex/offline system prompt")
+    ap.add_argument("--offline-sample", action="store_true", help="offline: sample like duplex (T=0.7, top_k=20, top_p=0.8) instead of greedy")
     ap.add_argument("--delay", type=int, default=0, help="duplex: force listening for this many extra 1 s chunks after the question ends")
     ap.add_argument("--queries", default="probes/epistemic.json")
     ap.add_argument("--out", required=True)
@@ -40,7 +41,8 @@ def main():
         if a.mode == "offline":
             with torch.inference_mode():
                 return str(model.chat(msgs=[{"role": "system", "content": a.system_prompt or "You are a helpful assistant."},
-                                            {"role": "user", "content": [audio]}], tokenizer=tok, do_sample=False,
+                                            {"role": "user", "content": [audio]}], tokenizer=tok, do_sample=a.offline_sample,
+                                      **(dict(temperature=0.7, top_k=20, top_p=0.8) if a.offline_sample else {}),
                                       max_new_tokens=256, enable_thinking=False, use_tts_template=True,
                                       generate_audio=False) or "")
         d.prepare(prefix_system_prompt=a.system_prompt or "Streaming Omni Conversation.")
