@@ -372,3 +372,58 @@ Prefer public substrates where the NPC actually interacts with a game loop: CPDC
 
 **Deep map:** `deep/academic/GAME_NPC_LANDSCAPE.md`.
 **Anchors:** NPC01–NPC12, B19–B22.
+
+
+---
+
+## T14 — Cross-lingual capability formation / multilingual learning dynamics
+
+**Why keep inhabiting it**
+
+Modern multilingual LMs exhibit translation, NLU transfer, reasoning transfer, factual consistency, language control and shared internal representations, but recent controlled work shows these do **not** behave like one scalar “multilingual ability”.
+
+A useful pressure is that explicit bilingual bridges can be nearly indispensable for translation while other cross-lingual tasks remain strong; meanwhile middle-layer semantic alignment can be causally important for NLU, language-specific representation can interfere with reasoning, and factual transfer is often weak/frequency-dominated.
+
+**Recurring assumptions worth auditing**
+
+- shared vocabulary / parallel data is necessary for cross-lingual transfer;
+- stronger representation alignment always means stronger functional transfer;
+- word/sentence/concept alignment is interchangeable;
+- translation, NLU, reasoning and factual transfer rely on the same bridge;
+- English-pivot structure is universal multilingual structure;
+- final-model geometry reveals how multilinguality formed;
+- more language-specific signal is always beneficial for target-language performance.
+
+**Natural observations**
+
+- capability-specific sensitivity to bilingual-data removal;
+- lexical vs sentence vs concept alignment over training;
+- transfer vs alignment dissociations;
+- early vs late cross-lingual transfer;
+- language-specific vs language-neutral information by layer;
+- shared routing/parameter use across languages;
+- target-language generation vs central semantic/reasoning computation;
+- factual transfer after controlling prior exposure.
+
+**Baseline / observation first**
+
+Use existing expensive interventions and public trajectories before training anything large:
+
+- MONOWEB/FINEWEB intervention models;
+- XLM-R Across Time;
+- BLOOM checkpoints;
+- OLMo-7B factual-acquisition trajectory;
+- MEXA/DALI/shared-concept-space causal tooling;
+- False Friends / Macaroni for cheap controlled pretraining.
+
+**High-risk failure modes**
+
+- another “language X is worse than English” benchmark;
+- correlating language distance/resource size with performance;
+- treating English alignment as the scientific endpoint;
+- one more code-switching recipe without a changed premise;
+- synthetic-only mechanism claims;
+- recreating company-scale multilingual pretraining/scaling studies.
+
+**Deep map:** `deep/academic/CROSS_LINGUAL_CAPABILITY_FORMATION_2026.md`  
+**Anchors:** ML01–ML23.
