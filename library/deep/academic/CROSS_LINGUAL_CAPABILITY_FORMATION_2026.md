@@ -533,3 +533,208 @@ The strongest current abstraction is:
 > **cross-lingual capability formation and use: how different kinds of shared computation emerge from weak or explicit cross-language coupling, and why their functional role differs across translation, NLU, reasoning and knowledge transfer.**
 
 This is still a **territory**, not a registered paper RQ.
+
+
+---
+
+## 17. High-information pressure: translation as proxy versus translation as causal model organism
+
+This is currently the strongest workbench-level pressure produced by the literature map. It is **not yet a final RQ**.
+
+### 17.1 Two roles of translation are often conflated
+
+Translation appears in the multilingual literature in at least two scientifically different roles.
+
+**Role A — interface / measurement proxy**
+
+*Translation as a Scalable Proxy for Multilingual Evaluation* evaluates 14 models (1B–72B) across nine multilingual benchmarks and finds translation quality is often strongly correlated with downstream multilingual performance. The intended use is a cheap first-pass screen before task-specific evaluation.
+
+This is an **observational relationship across model × language × task conditions**.
+
+**Role B — model organism for cross-lingual transfer formation**
+
+Several mechanistic/developmental papers use word-level or sentence translation as a tractable readout of how cross-lingual generalization itself forms. Examples include *Copy First, Translate Later* and *Semantic Pivots Enable Cross-Lingual Transfer*.
+
+This is a much stronger scientific use: translation is treated as a window onto the formation of broader cross-lingual computation.
+
+These roles should not be silently treated as equivalent.
+
+### 17.2 Controlled evidence creates a tension
+
+MONOWEB provides an unusually clean causal intervention:
+
+> remove a very small but semantically special portion of mixed-language pretraining data.
+
+The result is highly asymmetric:
+
+- translation deteriorates strongly;
+- cross-lingual QA changes much less;
+- general understanding/reasoning is nearly stable;
+- reintroducing parallel data restores most translation;
+- lexical alignment is affected much more than sentence-level alignment.
+
+This means that a factor can be **causally load-bearing for translation** without being equally load-bearing for other cross-lingual capabilities.
+
+At the same time, the translation-proxy paper finds translation is often an excellent **observational predictor** of broad multilingual performance.
+
+The resulting pressure is:
+
+> **How can translation be a strong observational proxy for multilingual performance while controlled training interventions selectively alter translation without equivalent changes in other capabilities?**
+
+This is not a contradiction. A variable can be highly predictive while not being the common causal bottleneck.
+
+The interesting scientific object is the causal structure behind that predictive relationship.
+
+### 17.3 A three-stage interpretation is plausible but already partly owned
+
+Current reasoning work supports a decomposition such as:
+
+> target-language input interface  
+> → shared / dominant-language semantic-reasoning computation  
+> → target-language output interface.
+
+*Why Do Multilingual Reasoning Gaps Emerge?* shows that correcting the input-understanding stage with selective translation removes a large portion of the default multilingual reasoning gap.
+
+*Beyond Input Understanding* then shows that if reasoning execution itself is forced into a weaker language, performance can still degrade even when the input is English.
+
+XBridge, MRRE, LinguaMap and shared-circuit work independently make similar interface/core distinctions operational.
+
+Therefore a paper cannot simply claim:
+
+> “multilingual models have a shared reasoning core plus language-specific interfaces.”
+
+That abstraction is already heavily occupied.
+
+The remaining pressure is more precise:
+
+> **Which multilingual capabilities are bottlenecked by the interfaces, which depend on the shared computation itself, and which require capability-specific cross-language coupling during training?**
+
+### 17.4 Translation can be a marker without being the mechanism
+
+A coherent hypothesis class — to test, not assume — is:
+
+- language resource, tokenizer quality, lexical grounding and interface robustness improve translation;
+- those same factors also make it easier to enter/exit shared semantic computation;
+- therefore translation correlates strongly with many multilingual tasks;
+- but explicit token-level bilingual correspondence is additionally and uniquely important for translation itself.
+
+Under this picture:
+
+> translation is an excellent **marker of interface quality** but an imperfect **causal model of the internal capability**.
+
+This would reconcile the observational proxy paper with MONOWEB without declaring either wrong.
+
+Other explanations must compete:
+- general data quality/resource quantity creates both outcomes;
+- translation metrics encode language-resource artifacts;
+- benchmark construction/translation quality induces part of the correlation;
+- reasoning tasks differ in contamination/prior exposure;
+- model family/post-training changes the relationship.
+
+### 17.5 Do not confuse two translation-validity questions
+
+**Benchmark translation validity**
+
+ACL 2026 *Quantifying the Impact of Translation Errors on Multilingual LLM Evaluation* studies whether errors introduced when translating a benchmark corrupt evaluation.
+
+Object:
+> quality of the *benchmark translation*.
+
+**Translation-skill proxy validity**
+
+*Translation as a Scalable Proxy* studies whether a model's own MT performance predicts its performance on other multilingual tasks.
+
+Object:
+> quality of the *model's translation capability*.
+
+They are related through the language interface, but they are not the same scientific question.
+
+A future workbench must keep them separate.
+
+### 17.6 Why this pressure has top-conference ceiling
+
+If translation is only a correlational marker, this changes how several kinds of multilingual work should be interpreted:
+
+- translation as a scalable evaluation proxy;
+- translation/WLT as a model organism for cross-lingual transfer;
+- methods that improve multilinguality by increasing translation/alignment;
+- attribution of reasoning gaps to input-language mapping;
+- training-data design based on parallel/code-switched bridges.
+
+The best-case outcome is not “one proxy score is less accurate”.
+
+It is a more precise causal taxonomy of:
+
+> **interface quality, shared computation and capability-specific bilingual coupling.**
+
+That could explain why strong observational correlations coexist with intervention-level dissociations.
+
+### 17.7 Practical reconnaissance surface
+
+The expensive interventions already exist.
+
+**Observational side**
+- public scores/raw predictions from the translation-proxy project;
+- audit correlations by task, model, language-resource level and sample count.
+
+**Controlled causal side**
+- FINEWEB vs MONOWEB vs +parallel vs +code-switching released 1.35B models;
+- compare translation, NLU/reasoning and representation changes inside the same training recipe.
+
+**Cheap intervention side**
+- False Friends token-anchor manipulations;
+- Macaroni code-switch curricula;
+- Bilingual BabyLM exposure-regime controls.
+
+**Training-dynamics side**
+- Copy First dense translation checkpoints;
+- XLM-R/BLOOM/OLMo trajectories for other cross-lingual objects.
+
+**Internal-mechanism side**
+- DALI / shared-concept-space patching;
+- language-specific-representation ablation in reasoning;
+- routing/shared-circuit parents.
+
+This allows a workbench to combine observational, causal-training, trajectory and mechanistic evidence without foundation-model pretraining.
+
+### 17.8 Current ownership status
+
+As of 2026-09-30, the nearest strong papers separately own:
+
+- translation as a scalable observational proxy;
+- bilingual-data causal effects on translation;
+- translated-benchmark error effects;
+- translation formation dynamics;
+- NLU alignment causality;
+- multilingual reasoning stage decomposition.
+
+In the current literature audit we have **not yet identified a strong paper that directly tests whether translation's observational proxy relationship corresponds to a shared causal bottleneck under controlled multilingual pretraining interventions**.
+
+This is a provisional ownership judgment, not proof of novelty. Continue searching before candidate promotion.
+
+### 17.9 Kill conditions for this lead
+
+Demote this lead if:
+
+1. a direct prior already compares translation-proxy validity under controlled pretraining interventions;
+2. MONOWEB-style interventions leave the translation→downstream relationship intact once resource/metric confounds are modeled;
+3. the apparent dissociation is explained entirely by benchmark translation artifacts;
+4. the only surviving result is “correlation is not causation” with no capability-specific causal structure;
+5. the story requires an enormous new multilingual pretraining run rather than exploiting existing interventions;
+6. the explanation collapses to one model family/language family and cannot be checked elsewhere.
+
+### 17.10 Current judgment
+
+This lead is stronger than a generic “study multilingual alignment” topic because it begins from a concrete tension between two successful scientific practices:
+
+> **translation as a scalable proxy / model organism**  
+> versus  
+> **controlled evidence that translation has capability-specific causal dependencies.**
+
+The workbench-worthy object is not translation itself.
+
+It is:
+
+> **when a measurable cross-lingual capability is a marker of shared multilingual competence versus a capability-specific mechanism.**
+
+Translation is currently the cleanest entry point because the field already supplies both strong proxy evidence and strong causal interventions.
