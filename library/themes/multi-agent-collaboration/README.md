@@ -13,12 +13,12 @@
 | 隐空间 / KV 通信 | 0 | 0 | 0 | 4 | 3（27% / 基准 27%） | 3 | 0 | 0 | 1 |
 | 零样本协调 / ad-hoc teamwork（经典 MARL） | 4 | 2（40% / 基准 32%） | 2 | 0 | 0 | 2 | 0 | 0 | 0 |
 
-读法：多智能体整体很拥挤且接收率低于基准（审稿人挑剔）；**RL 协同训练的团队**在上升（3 → 7 → 14）；隐空间通信在顶会还少，但 arXiv 2026 年已有约 36 篇；ZSC 是 MARL 的成熟构念，尚未接到 LLM 团队训练上。NeurIPS 2026 已知接收：Dr. MAS。
+读法：多智能体整体很拥挤且接收率低于基准（审稿人挑剔）；**RL 协同训练的团队**在上升（3 → 7 → 14）；隐空间通信在顶会还少，但 arXiv 2026 年已有约 36 篇；ZSC 是 MARL 的成熟构念，接到 LLM 团队训练上的工作刚刚开始（SRPO 2602.21515 的小规模 LLM 实验、SCOPE 的人–AI 模拟器坍缩），主流框架上还没有系统测量。NeurIPS 2026 已知接收：Dr. MAS。
 
 ## 2. 谱系（详见 territory 扫描 §2.2 与 [`PAPER_CARDS.md`](PAPER_CARDS.md)）
-1. 提示式协作 → 等算力怀疑（辩论、MoA → *Teams Hold Experts Back* → 等算力/信息瓶颈分析）。
+1. 提示式协作 → 等算力怀疑（辩论、MoA → *Teams Hold Experts Back* → 等算力/信息瓶颈分析）→ 文本层修复（同一作者的 *Self-Organizing Agent Teams*，2609.22682）。
 2. 训练协作：MALT、Multiagent Finetuning → MAPoRL → MAGRPO/CoMLRL → AT-GRPO、MARTI、Dr. MAMR → Dr. MAS、MAAC、TeamTR、SAT；信用分配支线（MAPPA、CCPO、SHARP、COSAC）已拥挤。
-3. 零样本协调（Other-Play → FCP → ZSC-Eval → CEC → UPD）→ LLM 场景的第一步：SCOPE（模拟器坍缩）。
+3. 零样本协调（Other-Play → FCP → ZSC-Eval → CEC → UPD）→ LLM 场景的最初几步：SRPO（Caltech，策略风险规避，小规模 LLM 协作实验）、SCOPE（模拟器坍缩）；对照事实：提示式 LLM 对陌生伙伴较稳（ALEM 2606.08340）。
 4. 大+小：推测式思考 / SpecReason → RelayLLM、ConfSpec → 级联与路由理论；小代理团队 vs 单个大模型（编排者容量决定上限）。
 5. 通信媒介：文本 → 嵌入/激活 → KV/隐状态（C2C、KVComm、LatentMAS）→ 因果审计；训练中涌现的约定/私有语言（GlossoGen 等）。
 
@@ -44,6 +44,8 @@
 | [CHATS-lab/scope_usim](https://github.com/CHATS-lab/scope_usim) | SCOPE 种群协同训练 | 模拟器坍缩 |
 | [apappu97/multi-agent-teams-hold-experts-back](https://github.com/apappu97/multi-agent-teams-hold-experts-back) | 团队 synergy 实验工具 | 行为基线 |
 | [sjtu-marl/ZSC-Eval](https://github.com/sjtu-marl/ZSC-Eval) | ZSC 评测协议（Overcooked 等） | 交叉配对方法论 |
+| [alem-world/alem-env](https://github.com/alem-world/alem-env) | ALEM（2606.08340）：JAX 开放式协作世界 | P8 候选环境；有 MARL 参照 |
+| [DrStranded/Co-RL](https://github.com/DrStranded/Co-RL) | Co-RL（2608.17253）：异构群体、同伴奖励 RL | 异构团队训练的另一个基底 |
 
 ## 6. 最新 arXiv 入口
 - [xxzcc/awesome-llm-mas-rl](https://github.com/xxzcc/awesome-llm-mas-rl)（LLM 多智能体 RL，84 条，含 benchmark gap 表）

@@ -17,7 +17,20 @@
 
 ## 3. 关键论文与本目录文件
 
-- （暂无；新精读的论文卡放在本目录）
+**理解↔生成关系的分析型切片**（正则再加 `gap|synergy|consisten|drift|conflict|trade-?off|interfere|asymmetr|analy`）：ICLR 2026 列出 126 篇、接收 44 篇（35% / 基准 27%）；ICML 2026 接收 36 篇。以下为摘要级记录（2026-09-30，`query.py show` 可查全文摘要）：
+
+| 论文 | 会议 | 形态 | 要点 |
+|---|---|---|---|
+| *Co-Reinforcement Learning for Unified Multimodal Understanding and Generation*（ULM-R1） | NeurIPS 2025 spotlight | 先导研究 → 方法 | 共享策略的 GRPO 让理解与生成协同进化；两阶段（联合 RL + 任务细化）；T2I +7%、理解 +23% |
+| *HermesFlow* | NeurIPS 2025 | 现象 → 方法 | 统一模型的理解普遍强于生成；同源偏好数据 + Pair-DPO + 自博弈缩小差距 |
+| *The Narrow Gate: Localized Image-Text Communication in Native Multimodal Models* | NeurIPS 2025 | 机制分析 | 原生统一模型的图文嵌入在残差流中更分离；图像信息经单个 post-image token 进入文本（消融即崩、可定向干预）；非原生模型则分布式传递 |
+| *Mitigating Intra- and Inter-modal Forgetting in Continual Learning of UMMs* | NeurIPS 2025 | 失败模式 + 理论 + 修复 | 跨模态遗忘源于模态间梯度冲突 → 模态解耦专家 + 蒸馏 |
+| *Generation Enhances Understanding in UMMs via Multi-Representation Generation*（UniMRG） | ICML 2026 | 方法 | 反方向：生成像素/深度/分割等内在表征作为辅助任务，提升理解 |
+| *The Telephone Game: Evaluating Semantic Drift in Unified Models* | ICLR 2026 拒（5.33） | 评测协议 | I2T↔T2I 多轮循环的语义漂移；BAGEL 稳、Vila-u 漂移快——评测型首投被拒的典型 |
+| *Does Understanding Inform Generation in Unified Multimodal Models?*（2511.20561） | arXiv | 分析 | 理解能力是否传递到生成 |
+| *Where a New Concept Must Enter*（2608.17564） | arXiv | 分析 | 新概念应从统一模型的哪里进入 |
+
+territory 简卡（第二顺位）见 [`../../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../../search/our-taste/TERRITORY_SCAN_2026-09-30.md) §3。
 
 ## 4. 深读材料：`library/deep/` 中与本题材相关的章节
 

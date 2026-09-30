@@ -50,6 +50,7 @@
 - **对我们**：**主要强基线**；官方给出单节点耗时（搜索 3×3B 4×H100 约 13 小时）。
 
 ### A7. TeamTR（ICML 2026）与 SAT（AAMAS 2026）——同一作者组 `[摘要 + 检索摘要]`
+> 注意：Stanford 的 *Self-Organizing Agent Teams Learn to Reason Together*（2609.22682）缩写也是 SAT，内容不同（文本层策略库），见 B1 与 F 节。
 - **TeamTR 形态**：失败模式（共享上下文团队顺序微调时的“移动靶”：更新一个成员改变其他成员面对的上下文分布；按缓存 rollout 评估时误差随成员数二次累积）+ 信赖域修复 + 改进下界；支持**即插即用替换成员**（通过一个信赖域对齐步骤）；平均 +7.1%。
 - **SAT 形态**：无协调器的顺序智能体调优；按团队策略演化的在线优势估计 + 每智能体 KL 信赖域 → 单调改进；**即插即用不变性**；3×4B 团队在 AIME24/25 上超过 Qwen3-32B（+3.9%），换入两个 8B 成员 +10.4%。
 - **与我们的距离**：它们把“换成员”作为**方法保证的性质**来追求；**没有**回答“一般的协同训练方法（MAGRPO、Dr. MAS、AT-GRPO）训出来的团队换伙伴会怎样”，也没有从 ZSC 角度做系统的交叉配对测量。
@@ -70,6 +71,9 @@
 - **证据**：MMLU-Pro、GPQA-Diamond、SimpleQA、HLE、MATH-500 各 100 题子集；前沿模型；有代码。
 - **idea 来源（RECONSTRUCTED）**：人类团队研究里“过程损失”的经典结论 → 问 LLM 团队是否一样 → 用“被告知专家身份”的对照拆开识别与利用。
 - **对我们**：P3 的行为基线——**训练能否学会按专长加权？**提示式团队做不到，是训练的机会点。
+- **后续（同一第一作者，2609.22682，2026-09-19）**：*Self-Organizing Agent Teams Learn to Reason Together*——固定团队离线反思以往协作，提出并筛选“组织策略”（角色、对话阶段、参与、信息流）进入策略库，冻结后迁移到新题与新 benchmark；只用 15 道数学 + 25 道研究生级知识题学习；5 个数学/物理 benchmark 平均 66.7%，对比最强成员 48.8%、**等算力的最强个体 58.7%**、成员独立答案上的完美路由 59.0%；AIME 2026 上超过完美路由 13.4pp。
+  - **生长模式**：ICML 2026 命名失败（团队拖累专家）→ 约 7 个月后同组给出修复。命名的失败本身就是后续工作的入口。
+  - **与我们的距离**：修复在**文本/提示层**（策略库），不改权重；团队是**固定**的——策略库换一组成员是否还有效（P2），以及权重层（RL）学到的协作与文本层学到的协作有何不同，都没有回答。
 
 ### B2. HiddenBench — Systematic Failures in Collective Reasoning under Distributed Information（ICML 2026）`[摘要级]`
 - **形态**：引入社会心理学 hidden profile 范式 → benchmark（65 任务）→ 失败模式（不会推理“别人可能知道但还没说的信息”，过早收敛于共享证据）→ 轻量结构化通信协议修复。
@@ -109,8 +113,29 @@
 
 ---
 
+## F. 最新 arXiv 近邻（2026-04 → 2026-09，检索摘要级；驻留第 1 周回原文核对）
+| 论文 | 要点 | 与我们的关系 |
+|---|---|---|
+| *Training Small LLMs as Spatial Multi-Agent Policies*（2608.01425） | 2–4B LLM 作为“符号选项库”上的策略，每个智能体一个私有 LoRA，用 PA-MAGRPO 训练；Cleanup、Overcooked（Asymmetric Advantages）、Commons Harvest 上从 0 回报提升到可用水平 | **小模型合作游戏的现成基底**（对应游戏 NPC 偏好）；交叉配对 / 换伙伴可以直接在它的环境上测 |
+| *SRPO: Setwise Relative Policy Optimization for Multi-Agent LLMs*（2609.08452；与下一行的 SRPO 同名不同文） | 多智能体 LLM 的新相对策略优化 | 方法层（P7，已拥挤） |
+| ***Training Generalizable Collaborative Agents via Strategic Risk Aversion***（SRPO，Caltech Mazumdar 组，2602.21515） | 诊断：协同训练的策略换伙伴就失败，原因是训练中的**搭便车**与缺乏策略鲁棒性；把策略风险规避（RQE 导出的目标）接到 IPPO 等策略优化上；在协作 benchmark 与**一个 LLM 协作任务的初步小规模实验**上，交叉配对联合准确率相对 IPPO 最高 +19.27%，并测了与未训练模型配对的鲁棒性 | **P2 最近的方法 + 理论近邻**。增量应放在：主流 LLM 多智能体 RL 框架（Dr. MAS / MAGRPO / AT-GRPO）上的系统测量（种子 / 尺寸 / 家族）、机制（消息、角色约定、白盒）、等算力比较；SRPO 作为修复基线 |
+| *Self-Organizing Agent Teams Learn to Reason Together*（Stanford Zou 组，2609.22682） | 见 B1“后续”：文本层策略库，等算力下超过最强成员与完美路由 | P1/P3 近邻；P2（策略库换成员）未回答 |
+| *ALEM: Benchmarking Open-Ended Multi-Agent Coordination in Language Agents*（Edinburgh，2606.08340） | JAX 实现的 Craftax 类开放式协作世界；13 个 LLM 零样本同质团队，以训练 10 亿步的 MARL 智能体为参照；个体能力 ≠ 协作能力，通信贡献最大；**ZSC 实验中 LLM 智能体对陌生伙伴稳健，而 RL 智能体不稳健** | P2 的对照事实（提示式 LLM 天然较稳）；P8 的候选环境（代码 alem-world/alem-env） |
+| *The Collaboration Gap*（Davidson、Fourney、Amershi、West、Horvitz、Kamar；2511.02687） | 单独很强的模型与自己的副本分工解迷宫时显著变差；“relay inference”（先由强模型开局）可改善 | P3/P6：协作原生任务与大+小开局 |
+| *Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL*（2608.17253） | 不共享参数的多个模型用同伴给出的奖励做 RL（无标签）；**异族、异尺寸**与改写样本增加群体多样性，减少相关错误；文本 7 个 benchmark +3.0–8.6% | 异构性作为训练资源；代码 DrStranded/Co-RL |
+| *Everyone Contributes! MAC-SPGG*（AAMAS 2026，2508.02076） | 顺序公共品博弈：重新设计奖励使“努力贡献”成为唯一子博弈完美均衡，消除搭便车 | P3（懒惰/搭便车）的博弈论修复 |
+| *Evolve as a Team: Meta-Team*（2605.29790） | 智能体级、交互级、团队级三层反思式自进化；6 个长程 benchmark 上比手工 MAS 平均 +6.6% | 文本层团队学习（与 SAT-Stanford 同类） |
+| *Experience Sharing in Mutual RL for Heterogeneous Language Models*（2605.07244） | 异构 LM 之间的经验共享式 RL | 异构训练近邻 |
+| *PopuLoRA: Co-Evolving LLM Populations for Reasoning Self-Play*（2605.16727） | 教师/学生**种群**联合在线训练，难度信号来自种群交叉评估 | “种群”思想已进入 LLM 自博弈（推理），但目标不是协作伙伴的泛化 |
+| *CORY: Coevolving with the Other You*（NeurIPS 2024） | 把一个 LLM 复制成先行者/观察者两个智能体做合作 MARL 微调 | 早期协同训练 |
+| *ConventionPlay*（2604.18123）、*Partner Capability Estimation for Task-Agnostic Adaptation in Ad-Hoc Teamwork*（2607.27177） | 经典 ad-hoc teamwork：面对能力受限/约定多样的伙伴，学会试探、带领或跟随 | ZSC 谱系在 2026 年仍活跃（非 LLM） |
+| *Beyond Cooperative Simulators: Generating Realistic User Personas for Robust Evaluation of LLM Agents*（2605.12894） | 过于合作的用户模拟器高估智能体；生成真实人格做鲁棒评测 | 与 SCOPE 同一压力的评测侧 |
+
+---
+
 ## E. 读完这一批，我们得到的研究动作
 1. **命名的失败模式 + 最小修复**在本题材最容易被接收（AT-GRPO、Dr. MAMR、Dr. MAS、TeamTR），前提是失败是在强框架上**真实跑出来的**。
 2. **引入他领域的成熟构念**（strong synergy、hidden profile、表征相似性、ZSC）并大规模测量，是分析型论文的主要形态。
 3. 本题材审稿人最常挑的短板是**不公平的比较**（没有等算力、没有强单模型基线）；这正是我们的纪律可以补上的地方。
-4. 当前最空的一层是：**“训练出来的协作到底是什么、在换伙伴/换规模/换任务时是否还在”**——而不是再多一个信用分配算法。
+4. 当前最空的一层是：**“训练出来的协作到底是什么、在换伙伴/换规模/换任务时是否还在”**——而不是再多一个信用分配算法。2026 年已有人从方法侧进入（SRPO：策略风险规避 + 小规模 LLM 实验；SCOPE：人–AI 模拟器坍缩；SAT-AAMAS/TeamTR：即插即用），这说明问题真实、可发表，是“探索空间”而不是空白；主流框架上的系统测量与机制解释仍然没有人做。
+5. **命名的失败是下一篇的入口**：*Teams Hold Experts Back*（ICML 2026）→ 同一作者的 *Self-Organizing Agent Teams*（2609.22682）。我们的测量如果跑出失败，第一篇是测量 + 最小修复，第二篇就是更完整的修复。

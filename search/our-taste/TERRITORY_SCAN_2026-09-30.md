@@ -35,14 +35,14 @@
 
 ### 2.1 热度卡
 - 顶会接收：ICLR 2025 → 2026 → ICML 2026 = 3 → 7 → 14；NeurIPS 2026 已知接收 Dr. MAS。ICLR 2026 切片接收率 20%（基准 27%）。
-- arXiv：LLM 多智能体 RL 的专门 awesome 列表收录 84 条（42 条 RL 方法），2026 年新增集中在**信用分配**（MAPPA、CCPO、SHARP、COSAC、反事实信用）、**稳定性**（Dr. MAS、AT-GRPO、MAAC）、**编排**（M-GRPO、Orchestration Traces）。
+- arXiv：LLM 多智能体 RL 的专门 awesome 列表收录 84 条（42 条 RL 方法），2026 年新增集中在**信用分配**（MAPPA、CCPO、SHARP、COSAC、反事实信用）、**稳定性**（Dr. MAS、AT-GRPO、MAAC）、**编排**（M-GRPO、Orchestration Traces）；**伙伴泛化**刚开始出现（SRPO 2602.21515、SCOPE 2608.12253）。
 - 前沿实验室：Kimi Agent Swarm / PARL 等工业系统在做大规模并行智能体 RL，但**开源小模型团队的协作科学**不是它们的主战场。
 - 结论：中等热度、仍在上升；方法层面（信用分配、稳定性）已拥挤，**“训练出的协作是什么、是否可靠、何时值得”**这一层相对空。
 
 ### 2.2 谱系卡（五条链）
-1. **提示式协作 → 等算力怀疑**：多智能体辩论（Du et al. 2023）→ MoA → 多智能体辩论在等算力下并不稳定地胜过 self-consistency（ICLR 2025 上的辩论评测分析）→ *Multi-Agent Teams Hold Experts Back*（ICML 2026：团队达不到最强成员，瓶颈在“利用专家”而非“识别专家”，机制是折中式共识）→ *At Equal Inference Cost, Multi-Agent Structure Does Not Beat a Single Frozen Agent*（2609.04217）/ *When Do MAS Help? An Information Bottleneck Perspective*（2607.16133：中继信息充分时 MAS 才有益，强模型收益更小）。**前提的改变**：多智能体的收益需要在等算力下重新证明。
+1. **提示式协作 → 等算力怀疑**：多智能体辩论（Du et al. 2023）→ MoA → 多智能体辩论在等算力下并不稳定地胜过 self-consistency（ICLR 2025 上的辩论评测分析）→ *Multi-Agent Teams Hold Experts Back*（ICML 2026：团队达不到最强成员，瓶颈在“利用专家”而非“识别专家”，机制是折中式共识）→ *At Equal Inference Cost, Multi-Agent Structure Does Not Beat a Single Frozen Agent*（2609.04217）/ *When Do MAS Help? An Information Bottleneck Perspective*（2607.16133：中继信息充分时 MAS 才有益，强模型收益更小）。→ *Self-Organizing Agent Teams*（2609.22682，与 *Teams Hold Experts Back* 同一第一作者：离线反思学到的组织策略库让团队超过最强成员、等算力最强个体与完美路由——文本层的修复）。**前提的改变**：多智能体的收益需要在等算力下重新证明；等算力对照正在变成标配。
 2. **训练协作**：MALT（2024）、Multiagent Finetuning（ICLR 2025：多模型各自专精以保持多样性）→ MAPoRL（ACL 2025：多模型讨论 + 验证器奖励的协同后训练；跨数据集迁移；异构对 Phi3+Qwen2.5、Phi3+Llama3）→ MAGRPO/CoMLRL（AAAI 2026：Dec-POMDP 表述；写作/代码/Minecraft）→ AT-GRPO（ICLR 2026：按智能体与轮次分组）、MARTI（ICLR 2026：收敛后等推理预算下 MAS > 单智能体）、Lazy Agents → Dr. MAMR（ICLR 2026：训练中“懒惰智能体”——推理智能体的因果影响随训练下降，根源是多轮 GRPO 的归一化偏置）→ Dr. MAS（NeurIPS 2026：全局归一化基线偏离各智能体奖励分布 → 梯度范数不稳定 → 按智能体归一化）、MAAC（ICML 2026：长程/稀疏奖励需要集中式 critic）、TeamTR（ICML 2026：共享上下文团队的“移动靶”/占用分布漂移 → 信赖域；支持组件即插即用替换）、SAT（AAMAS 2026：3×4B 团队超过 Qwen3-32B；即插即用不变性，换入 8B 成员 +10.4%）。
-3. **零样本协调（ZSC）/ ad-hoc teamwork（经典 MARL）**：Other-Play（ICML 2020：避免任意约定）→ FCP（NeurIPS 2021：与伙伴种群训练）→ ZSC-Eval（NeurIPS 2024）、*Diversity Is Not All You Need*（NeurIPS 2024：伙伴还要专精）→ *Cross-environment Cooperation*（ICML 2025 Oral：单伙伴 + 多环境也能学到通用协作规范）→ *Unsupervised Partner Design*（ICML 2026 spotlight）。**核心教训：一起训练的智能体会学到只对彼此有效的约定，换伙伴就崩。** 这条教训进入 LLM 训练的第一步是 SCOPE（2608.12253：对单一冻结用户模拟器做 RL 会“模拟器坍缩”，迁移到新模拟器和真人时变差；种群协同训练 +14%）。提示式 LLM 本身对陌生伙伴较稳（LLM-Coordination 2023；Hanabi 中不同 LLM 的交叉配对平滑插值，ICML 2026），**但 RL 协同训练之后是否仍然如此，尚无系统测量**。
+3. **零样本协调（ZSC）/ ad-hoc teamwork（经典 MARL）**：Other-Play（ICML 2020：避免任意约定）→ FCP（NeurIPS 2021：与伙伴种群训练）→ ZSC-Eval（NeurIPS 2024）、*Diversity Is Not All You Need*（NeurIPS 2024：伙伴还要专精）→ *Cross-environment Cooperation*（ICML 2025 Oral：单伙伴 + 多环境也能学到通用协作规范）→ *Unsupervised Partner Design*（ICML 2026 spotlight）。**核心教训：一起训练的智能体会学到只对彼此有效的约定，换伙伴就崩。** 这条教训进入 LLM 训练的最初几步：SRPO（2602.21515，Caltech：协同训练中的搭便车导致换伙伴失败；策略风险规避 + 一个 LLM 协作任务上的初步小规模实验）与 SCOPE（2608.12253：对单一冻结用户模拟器做 RL 会“模拟器坍缩”，迁移到新模拟器和真人时变差；种群协同训练 +14%）。提示式 LLM 本身对陌生伙伴较稳（LLM-Coordination 2023；Hanabi 中不同 LLM 的交叉配对平滑插值，ICML 2026；ALEM 2606.08340 的 ZSC 实验），**但在主流 LLM 多智能体 RL 框架上协同训练之后是否仍然如此，尚无系统测量**。
 4. **大 + 小协作**：推测式思考 / SpecReason（NeurIPS 2025）/ R-Stitch → RelayLLM（小模型学会用指令 token 请求大模型，1.07% 的 token 调用大模型、恢复约 60% 差距）、ConfSpec（ACL 2026）→ 级联与路由理论（ICLR 2026 *Routing, Cascades, and User Choice*）；*Can Small Agents Collaborate to Beat a Single LLM?*（2601.11327：编排者容量决定上限）；*Student-Centered Distillation*（ICML 2026：7B 学生追平 72B 教师）。
 5. **通信媒介**：文本 → 嵌入/激活（CIPHER ICLR 2024、Communicating Activations ICML 2025）→ Thought Communication（NeurIPS 2025 spotlight）→ C2C、KVComm（ICLR 2026）、LatentMAS（ICML 2026 spotlight）→ 因果审计与安全（2026）。旁支：训练中的“涌现语言/约定”（GlossoGen 2609.01491；*When LLMs Develop Languages* ICML 2026）。
 
@@ -63,16 +63,16 @@
   - CoMLRL（MAGRPO / MAREINFORCE / MAAC）：写作、代码（MBPP、HumanEval、CoopHumanEval、ClassEval）、**Minecraft 协作建造**（StrBuild、HouseBuild）；可从 Qwen2.5-0.5B 起步。
   - MARTI（ICLR 2026）、PettingLLMs / AT-GRPO（ICLR 2026）、SAT / TeamTR（作者代码）、SCOPE（种群协同训练）。
 - **模型**：Qwen2.5 / Qwen3（0.5B–8B）、Llama-3.2（1B/3B）等开源权重——**异族、异尺寸组合**正是“大+小 / 全小 / 非 API”偏好的直接实现，而且可以看内部表征。
-- **任务**：数学（MATH、AIME、AMC）、代码（HumanEval、MBPP、LiveCodeBench）、搜索问答（NQ、HotpotQA）、合作游戏（Minecraft 建造、Overcooked 类、Hanabi）、分布式信息任务（HiddenBench）。
+- **任务**：数学（MATH、AIME、AMC）、代码（HumanEval、MBPP、LiveCodeBench）、搜索问答（NQ、HotpotQA）、合作游戏（Minecraft 建造、Overcooked 类、Hanabi；2–4B 小模型在 Overcooked / Cleanup / Commons Harvest 上用每智能体 LoRA + MAGRPO 变体训练已有先例：2608.01425）、分布式信息任务（HiddenBench）。
 - **算力估计**：1.5B–4B 团队的一次训练 ≈ 单节点 0.5–2 天；前 3 周的驻留计划（§2.6）约 6–10 次训练 + 大量推理评测，单节点可完成。
 - **我们的优势**：算力匹配比较与强基线纪律（本方向审稿人最常抓的短板）；开源模型的白盒分析（表征、logit、注意力）；已有的 vLLM / verl 使用经验（omni-recon、scoped-context-state 的环境脚本）。
 
 ### 2.5 压力清单（每条有出处；不预测结果）
 | # | 压力 | 出处 | 可能对应的形态 |
 |---|---|---|---|
-| P1 | **训练后的团队到底比什么强？** 多数工作与“未训练的团队”或“单智能体 RL”比较；等**训练**算力 + 等**推理**算力 + 等**参数量**的三重对照很少。提示式团队在等算力下常不胜单智能体；训练后是否改变这一点？ | MARTI 等推理预算结论；2609.04217；2607.16133（IB）；SAT（3×4B vs 32B） | B/D：算力匹配的测量协议；A：若发现收益来源可修复的瓶颈 |
-| P2 | **协作是否只对训练伙伴有效？**（ZSC 教训）RL 协同训练可能学到私有约定；换成不同种子、不同尺寸、不同家族的伙伴时是否崩溃？提示式 LLM 对陌生伙伴较稳，训练后呢？ | Other-Play、FCP、ZSC-Eval、UPD（ICML 2026）；SCOPE 模拟器坍缩；SAT/TeamTR 以方法保证即插即用 | B：交叉配对矩阵；A：种群 / other-play 式训练用于 LLM 团队；D：协作可靠性评测 |
-| P3 | **大+小团队里谁学到了什么？** 训练中出现懒惰/主导；大模型可能包办、小模型可能依赖；团队不会利用专家（折中式共识）。训练能否学会“按能力分工、按专长加权”？ | Lazy Agents（ICLR 2026）；Teams Hold Experts Back（ICML 2026）；RelayLLM；SAT 换入 8B | A：角色/贡献失衡的修复；B：按角色的反事实贡献测量 |
+| P1 | **训练后的团队到底比什么强？** 多数工作与“未训练的团队”或“单智能体 RL”比较；等**训练**算力 + 等**推理**算力 + 等**参数量**的三重对照很少。提示式团队在等算力下常不胜单智能体；训练后是否改变这一点？ | MARTI 等推理预算结论；2609.04217；2607.16133（IB）；SAT-AAMAS（3×4B vs 32B）；SAT-Stanford（2609.22682，报告了等算力最强个体） | 等算力对照正在变成标配，**单独成文的空间在缩小**：更适合作为主论文的必备部分（B/D）；A：若发现收益来源可修复的瓶颈 |
+| P2 | **协作是否只对训练伙伴有效？**（ZSC 教训）RL 协同训练可能学到私有约定；换成不同种子、不同尺寸、不同家族的伙伴时是否崩溃？提示式 LLM 对陌生伙伴较稳，训练后呢？ | Other-Play、FCP、ZSC-Eval、UPD（ICML 2026）；SCOPE 模拟器坍缩；**SRPO（2602.21515：LLM 协作任务上的初步交叉配对，相对 IPPO 最高 +19.27%）**；SAT-AAMAS/TeamTR 以方法保证即插即用；ALEM（提示式 LLM 对陌生伙伴稳健） | B：主流框架上的交叉配对矩阵（种子 / 尺寸 / 家族）+ 机制；A：种群 / other-play / SRPO 式训练作为修复与基线；D：协作可靠性评测 |
+| P3 | **大+小团队里谁学到了什么？** 训练中出现懒惰/主导；大模型可能包办、小模型可能依赖；团队不会利用专家（折中式共识）。训练能否学会“按能力分工、按专长加权”？ | Lazy Agents（ICLR 2026）；Teams Hold Experts Back（ICML 2026）→ SAT-Stanford（2609.22682，文本层修复）；MAC-SPGG（AAMAS 2026，搭便车）；The Collaboration Gap（2511.02687）；RelayLLM；SAT-AAMAS 换入 8B | A：角色/贡献失衡的修复（权重层，对照文本层）；B：按角色的反事实贡献测量 |
 | P4 | **训练改变了模型内部什么？** 协作能力是写进了各成员的表征（可迁移到新伙伴），还是只是输出层面的相互适配？对协同训练前后做模型差分 / 表征分析。 | 模型差分工具（ICLR 2026 *Narrow Finetuning Leaves Clearly Readable Traces*）；表征相似性预测合作（ICML 2026） | B/C：白盒分析 + 与 P2 行为结果对应 |
 | P5 | **训练出来的“语言”**：消息是否变短、变私有、变难以被新伙伴理解？约定何时出现、能否被检测？ | GlossoGen；*When LLMs Develop Languages*（ICML 2026）；emergent conventions（Science Adv. 2025） | B：消息统计与可理解性测量；与 P2 相连 |
 | P6 | **协作原生的任务很少**：多数 benchmark 单智能体也能做；需要分布式信息 / 真正分工的任务上，训练是否能修复 HiddenBench 式失败？ | HiddenBench（ICML 2026）；awesome 列表的 benchmark gap | D：任务/协议；A：训练修复 |
@@ -93,9 +93,9 @@
 - **目标会议**：主 ICML 2027（约 1 月下旬），备 ACL 2027（ARR 约 2 月）/ NeurIPS 2027（约 5 月）。
 
 ### 2.7 可能的论文形态（天花板示意，不是注册的题目）
-- 若 P2 显示训练后团队对换伙伴脆弱：**“LLM 团队的零样本协调”**——交叉配对评测协议 + 种群/other-play 式训练 + 表征/消息层面的解释（形态 A+B）。
+- 若 P2 显示训练后团队对换伙伴脆弱：**“LLM 团队的零样本协调”**——主流框架上的交叉配对评测协议 + 表征/消息层面的机制解释 + 修复（种群 / other-play / SRPO 作为基线，形态 A+B）。与 SRPO 的距离：它是方法 + 理论 + 小规模 LLM 实验；我们是多框架、多家族、等算力的系统测量 + 机制 + 修复。
 - 若 P2 显示训练后仍然稳健：这本身违背 MARL 的经典经验，需要解释“语言为什么让约定可迁移”（形态 B+C）。
-- 若 P1 显示训练团队的收益主要来自等价于“更多算力”的部分：**训练型多智能体系统的算力会计**（形态 B/D，严谨性论文）。
+- 若 P1 显示训练团队的收益主要来自等价于“更多算力”的部分：**训练型多智能体系统的算力会计**（形态 B/D，严谨性论文；等算力对照正在变成标配，单独成文前先查 2609.04217、2609.22682 之后的新工作）。
 - 若 P3 显示大+小团队中出现系统性依赖或包办：针对角色失衡的最小修复（形态 A）。
 
 每个结果方向都有论文，这是本领域被选中的原因，而不是因为我们猜中了某个现象。
@@ -103,7 +103,7 @@
 ### 2.8 风险
 | 风险 | 可能性 | 对策 |
 |---|---|---|
-| 并行工作（SAT/TeamTR 作者组、SCOPE 作者组）扩展到交叉配对 | 中 | 驻留第 2 周即出测量；增量放在“系统测量 + 白盒解释 + 大小异构”上 |
+| 并行工作（SRPO / Caltech 组扩展到大规模 LLM；SAT-AAMAS/TeamTR 作者组；Stanford SAT 组扩展到换成员；SCOPE 作者组；2608.01425 小模型合作游戏）扩展到交叉配对 | 中–高 | 驻留第 2 周即出测量；增量放在“主流框架上的系统测量 + 白盒机制 + 大小异构 + 等算力”；把 SRPO 与种群训练当作修复基线而不是竞争对手 |
 | 多智能体 RL 训练不稳定、复现耗时 | 中 | 先用官方配置与小模型；Dr. MAS 的按智能体归一化作为默认 |
 | 审稿人对“又一个多智能体框架”挑剔（切片接收率 20%） | 高 | 不做框架；做测量协议 + 最小修复 + 多家族复现 |
 | 算力 | 低–中 | 1.5B–4B 为主；7B 只用于关键对照 |
@@ -112,7 +112,13 @@
 
 ## 3. 其他候选的简卡（供人选择）
 
-- **C3 理解与生成（统一多模态）**：ICLR 2026 接收 66 篇、切片接收率 34%，热且审稿人欢迎；但主流模型族（BAGEL、Janus、Show-o 等）训练成本高，大厂主导。可行切入：统一模型内部“理解表征”与“生成表征”的关系（*Does Understanding Inform Generation in Unified Multimodal Models?* 2511.20561；*Where a New Concept Must Enter* 2608.17564；*The Telephone Game* ICLR 2026 拒 5.33）。建议作为第二顺位，等 C1b 驻留稳定后再评估。
+- **C3 理解与生成（统一多模态）**：ICLR 2026 接收 66 篇、切片接收率 34%（基准 27%），热且审稿人欢迎；其中带“关系/分析”语言（gap、synergy、consistency、drift、conflict、trade-off……）的子切片 ICLR 2026 列出 126 篇、接收 44 篇（35%），ICML 2026 接收 36 篇。已接收的形态：
+  - 理解↔生成的差距/协同 + 训练修复：*HermesFlow*（NeurIPS 2025：理解普遍强于生成 → 同源偏好数据 Pair-DPO）、*Co-Reinforcement Learning for Unified Multimodal Understanding and Generation*（NeurIPS 2025 spotlight：联合 GRPO 让两种能力协同进化）、*UniMRG*（ICML 2026：反方向，用多表征生成辅助任务增强理解）；
+  - 内部信息流分析：*The Narrow Gate*（NeurIPS 2025：原生统一模型中图像信息经单个 post-image token 传到文本，消融即崩、可定向干预）；
+  - 失败模式 + 修复：*Mitigating Intra- and Inter-modal Forgetting in Continual Learning of Unified Multimodal Models*（NeurIPS 2025：模态间梯度冲突 → 跨模态遗忘 → 模态解耦专家）；
+  - 一致性评测：*The Telephone Game: Evaluating Semantic Drift in Unified Models*（ICLR 2026 拒 5.33：I2T↔T2I 循环的语义漂移协议——评测型工作首投被拒的典型）；
+  - 最新 arXiv：*Does Understanding Inform Generation in Unified Multimodal Models?*（2511.20561）、*Where a New Concept Must Enter*（2608.17564）。
+  可行切入：在开源统一模型（Janus-Pro 1B/7B、Show-o 1.3B、BAGEL）上以**推理 + 分析 + 小规模后训练**为主（不预训练），测量“理解表征与生成表征的关系”并做最小修复。门槛：主流模型族由大厂主导，7B 级后训练在单节点可行但紧张。建议作为第二顺位，等 C1b 驻留稳定后再评估；论文卡见 `library/themes/unified-multimodal/README.md` §3。
 - **C4 游戏 NPC**：顶会极少（ICLR 2026 LLM 游戏智能体接收 6 篇；ToM×多智能体 0/13）。作为独立主线更适合 ACL 系；在本扫描中并入 C1b 的 P8（NPC 队友 = 零样本协调的部署形态）。已被桌面降级的 `workbench/npc-*` 两条线在 v3 下可重开评估。
 - **C2 可解释性 / 表征分析**：整体很热（ICLR 2026 SAE/steering/机制 83 篇）。本扫描把它作为 C1b 的理解轨道（P4、P5）；若要独立开线，`workbench/mechanism-population-dynamics/`（多种子机制群体）是已有的候选资产。
 - **C5 隐式推理**：快速升温（ICLR 2026 17 篇 → ICML 2026 33 篇），竞争者多，暂不建议。
