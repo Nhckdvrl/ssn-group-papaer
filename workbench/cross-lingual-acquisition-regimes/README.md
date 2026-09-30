@@ -520,4 +520,4 @@ It is not the title, contribution, or expected result.
 - Feeding BabyLMs Macaroni — 2026  
   https://arxiv.org/abs/2609.30535
 - Deep map  
-  ../../library/deep/academic/CROSS_LINGUAL_CAPABILITY_FORMATION_2026.md
+  ../../library/themes/multilingual/CROSS_LINGUAL_CAPABILITY_FORMATION_2026.md

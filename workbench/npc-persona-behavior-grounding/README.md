@@ -593,6 +593,6 @@ Do not mechanically execute P4–P10 if an earlier result already kills or radic
   https://arxiv.org/abs/2304.03442
 
 Broader NPC literature and artifact notes are maintained in:
-- `library/deep/academic/GAME_NPC_LANDSCAPE.md`
+- `library/themes/game-npc-social/GAME_NPC_LANDSCAPE.md`
 - `library/KEY_PAPERS.md`
 - `library/deep/open-artifacts/README.md`

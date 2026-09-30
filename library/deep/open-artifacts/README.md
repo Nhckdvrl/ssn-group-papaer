@@ -1,12 +1,15 @@
 # Deep Open-Artifact Archive
 
+> **2026-09-30：** 素材库已按题材重组（`../../README.md`）。本目录保留长篇原文；每个题材页（`../../themes/<题材>/README.md` §4）列出了本目录中与该题材相关的章节。单一题材的文件已移入对应题材目录。
+
+
 Open models, checkpoints, code, Hugging Face/startup artifacts, and lineage notes.
 
 Primary use: artifact archaeology before compute. Availability of an artifact is not itself a research idea.
 
 ## Interpretability / model-science artifacts
 
-Detailed current map: [`INTERPRETABILITY_TOOLING_2026.md`](INTERPRETABILITY_TOOLING_2026.md).
+Detailed current map: [`INTERPRETABILITY_TOOLING_2026.md`](../../themes/interpretability-representation/INTERPRETABILITY_TOOLING_2026.md)（已移入题材目录）.
 
 Use the map to choose an instrument from the scientific claim (localization, causal-variable intervention, sparse decomposition, model diffing, abstraction validity), not to choose a trendy tool first and then manufacture a question.
 

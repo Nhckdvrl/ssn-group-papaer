@@ -117,7 +117,7 @@ v2 的问题（诊断 §3）：入场禁止方法、门槛在没有证据时执�
 - `video-world-model-temporal-interfaces/` — **ACTIVE**（our-taste）。块首“接缝失聪”在 3 个独立系统上复现，有推理端修复雏形；目标 **CVPR 2027（11-16）**，10/15 关口见其 `CVPR_ASSESSMENT.md`。唯一已有论文形态卡的线。
 
 ### 建议的新探索线（待人确认）
-- `multi-llm-collaboration/` — 开源异构 LLM 的协作（大+小 / 全小 / 训练后的团队），territory 卡见 [`../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../search/our-taste/TERRITORY_SCAN_2026-09-30.md)。对应组内偏好第一条。
+- [`multi-llm-collaboration/`](multi-llm-collaboration/README.md) — **PROPOSED**：训练出来的开源异构 LLM 团队（大+小 / 全小），territory 卡见 [`../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../search/our-taste/TERRITORY_SCAN_2026-09-30.md)。对应组内偏好第一条。
 
 ### 暂停（v3 容量规则；未被证据杀死，可恢复）
 - `cross-lingual-acquisition-regimes/` — 9/30 按 v2 开启，尚未运行；恢复前需补 territory 卡的热度/立足点两项。

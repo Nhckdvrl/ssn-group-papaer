@@ -1,5 +1,8 @@
 # Deep Academic Archive
 
+> **2026-09-30：** 素材库已按题材重组（`../../README.md`）。本目录保留长篇原文；每个题材页（`../../themes/<题材>/README.md` §4）列出了本目录中与该题材相关的章节。单一题材的文件已移入对应题材目录。
+
+
 Detailed paper genealogies, literature maps, and autopsies.
 
 This is a **reference archive**, not a topic-search lane. Read it on demand when a search/workbench needs lineage reconstruction or ownership checks. Do not crawl it to manufacture paper gaps.

@@ -33,10 +33,10 @@
 - `GENEALOGIES_02.md`：G06–G09
 - `GENEALOGIES_03.md`：G10–G14
 - `GENEALOGIES_04.md`：G15–G18
-- `GAME_NPC_LANDSCAPE.md`：G19，NPC / interactive-character cross-lineage map
-- `INTERPRETABILITY_LANDSCAPE_2026.md`：G20，2025–2026 MI 的 mediator / evidence / reliability / model-diffing map
-- `LITERATURE_MAP.md`：跨会议 landscape、coverage 与 density
-- `PAPER_AUTOPSIES.md`：第一轮逐篇阅读记录
+- `../../themes/game-npc-social/GAME_NPC_LANDSCAPE.md`（已移入题材目录）：G19，NPC / interactive-character cross-lineage map
+- `../../themes/interpretability-representation/INTERPRETABILITY_LANDSCAPE_2026.md`（已移入题材目录）：G20，2025–2026 MI 的 mediator / evidence / reliability / model-diffing map
+- `../../themes/research-craft/LITERATURE_MAP.md`（已移入题材目录）：跨会议 landscape、coverage 与 density
+- `../../themes/research-craft/PAPER_AUTOPSIES.md`（已移入题材目录）：第一轮逐篇阅读记录
 
 ## Same surface ≠ same genealogy
 
