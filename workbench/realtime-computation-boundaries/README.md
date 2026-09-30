@@ -1,28 +1,24 @@
 # Realtime Computation Boundaries — Workbench
 
-## 当前进度（中文，2026-09-30 深夜）
+## 当前进度（中文，2026-09-30 深夜）— 已冻结
 
-**状态：** P2 线索"全双工交互抹掉认知边界"已按预先写好的规则**降级**。candidates = 0。
+**状态：FROZEN（知识资产）。candidates = 0。**
 
-**降级原因（预注册判定 #2 触发）：** 在全双工系统提示里加一句"你不能上网、没有工具、不能访问用户账户；被问到实时/个人信息或要求执行操作时请如实说明做不到"，承认不知道的能力完全恢复：
-- MiniCPM-o 4.5 全双工：实时信息 1/39 → **39/40**；常识题仍 32/32；
-- Venus-Audio 全双工（做过全双工后训练）：实时信息 0/38 → **39/40**，个人数据 1/32 → **30/32**；常识题 28/32（3 次过度拒答）。
+**为什么冻结（满足工作区提示词里给出的冻结条件）：**
+1. 前沿强基线已消解核心压力：9 月的双系统语音 agent（gpt-live-1、Pine）在 τ-bench 上已与文本前沿持平。
+2. 开源最强基线（Realtime-Venus）的失败全部落在前台模型的默认策略上：该不该交接（SALMONN-duo、级联延迟文献已占据）、要不要承认不知道（一句指令即可恢复，属提示默认值，前作已占据）。
+3. 边界本身（任务描述、通道、结果回注）在交接后是透明的：交接后通过率 32–36% ≈ 后台直接看原话 34%。
+4. 跨领域（游戏/驾驶/VLA）的边界变量（通道类型、陈旧度训练、输入预测）已被 Latent Bridge、Think@5Hz、2512.17250 等占据，且游戏基底方差极大（12 局 ±300）。
 
-所以这不是"能力被训练抹掉"，而是全双工模式的默认行为倾向于直接回答，一句话指令即可纠正。"提示词决定是否拒答"已有前作（*LLM Abstention Can Be a Prompt Artifact*，2507.16199；Phare 的简短提示效应），不再作为独立对象追。
+**保留的可复用事实与资产：** 见 §P1、§P2-final、§P2 addendum；代码在 `experiments/`，结果在 `results/`；Venus/MiniCPM-o 4.5/Freeze-Omni/Qwen2.5-Omni 等评测脚本可直接复用。
 
-**仍然成立、可复用的事实：**
-1. Venus 基线：能力损失几乎全在前台"是否交接"；交接后的通道与直接给原话等价。
-2. 同一权重，回合制与全双工模式的默认认知行为差异巨大（92% vs 3%），可由指令恢复。
-3. 未经训练的 LLM 被告知"正在实时通话、对方在等"时编造增多（3→11–18/60）。
-
-**下一步：** 做整个工作区的导航复盘（见 §Navigation-2），决定 PIVOT / FREEZE。
-
+---
 ---
 ---
 ---
 
 **Lane:** our-taste  
-**Stage:** ACTIVE EXPLORATORY WORKBENCH — **not a candidate**  
+**Stage:** FROZEN (2026-09-30) — knowledge asset, **not a candidate**; see §Navigation-2  
 **Target ceiling:** ICML / ICLR / NeurIPS / ACL / CVPR main-track scale.  
 **Core discipline:** understand the design space and let the load-bearing boundary emerge from strong baselines. Do not pre-register delegation, latent bridge, stale state, or any specific fix as the paper.
 
@@ -544,3 +540,16 @@ Honesty instruction appended to the duplex system prompt ("…You have no intern
 The abstention capacity is intact and instruction-recoverable in both the parent and the post-trained child; what differs between modes is the **default** behaviour under each mode's trained system prompt. This is the pre-registered "prompt-default artifact" outcome → **lead demoted**. Prompt-dependence of abstention is owned (2507.16199 "LLM Abstention Can Be a Prompt Artifact"; Phare). The onset-delay mechanism test (`--delay`) was uninterpretable as implemented: forcing silence after the question mostly suppressed the reply (32/40 empty) — not rerun, since the lead is demoted.
 
 Reusable facts kept: (i) same-weights turn-based vs full-duplex default epistemic behaviour differs by ~90 pp; (ii) live-call framing raises fabrication in an untrained text LLM; (iii) the Venus capability loss is at the handoff trigger, not the channel.
+
+
+## Navigation-2 — FREEZE (2026-09-30)
+
+Decision: **FREEZE** (knowledge asset). Reasons are the freeze criteria stated in the workbench brief: the strongest current baseline removes the core pressure; the remaining failure objects are owned (handoff decision) or prompt-default artifacts (abstention); the boundary itself is transparent in the open baseline; cross-domain levers are owned.
+
+**Do not reopen for:**
+- training a delegate-or-not router / knowledge-boundary SFT for a full-duplex frontend (SALMONN-duo; cascade deferral);
+- "full-duplex models fabricate live facts" as a model property (instruction-recoverable; prompt-artifact prior 2507.16199; Phare);
+- text vs latent slow→fast channel, staleness-augmented training, feature-delta prediction (Latent Bridge games/VLA, Think@5Hz);
+- objective-writing / handoff-payload fidelity for single requests (measured transparent here).
+
+**Reopen only if:** (a) a multi-turn, evolving-task substrate shows a boundary effect (visibility / authorship / result age) that survives a capability-matched control and is not APEX-Voice's correction-state finding; or (b) a full-duplex model family shows abstention loss that is *not* instruction-recoverable.
