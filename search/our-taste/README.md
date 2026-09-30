@@ -102,11 +102,11 @@ When reading strong work, learn how the idea grew:
 
 Imitate the **reasoning move**, not the surface method.
 
-## 7. Top-conference-scale ceiling
+## 7. Top-conference-scale ceiling（v4：在驻留中用证据回答）
 
 Baseline-first does not mean “any baseline with a weakness is worth months of work”.
 
-Before opening a workbench, require plausible headroom for a strong ICML/ICLR/NeurIPS/CVPR/ACL-family main-track contribution.
+These questions are asked **at the week-3 paper-shape review and at the candidate gate, with evidence in hand** — not at the desk before a workbench exists (desk novelty/crowding judgments account for ~91% of the ~255 v2 kills; see `../PROCESS_DIAGNOSIS_2026-09-30.md`). At search time, the only reasons to drop a territory are those in `../README.md` §2.6.
 
 Ask:
 
@@ -117,7 +117,7 @@ Ask:
 - what strong current papers would reviewers mentally compare us against, and is the potential contribution comparable in conceptual scale?
 - if the method gain were zero, could the analysis still teach the field something consequential? If the analysis were removed, could the method still represent a meaningful technical step? Ideally at least one side has real scale.
 
-Reject territories whose optimistic endpoint is merely:
+If, with residency evidence in hand, the best-supported endpoint is still merely one of the following, **re-scope within the territory** (change the setting, the evidence type, add a method or theory; see `../README.md` §3.2 and `../../workbench/IDEA_EXPLORATION.md` §2) and discuss it at the weekly human review. Only a human closes a line:
 - “+X points on one benchmark”;
 - “a new module for one model family”;
 - “a failure on one slice”;
@@ -130,7 +130,7 @@ The desired unit is:
 
 ## 8. Search output for this lane
 
-Before opening a workbench, provide:
+The output is a territory card (`../../templates/territory_card.md`). In this lane it should make explicit:
 
 - important territory / task;
 - strongest parent implementation or baseline;

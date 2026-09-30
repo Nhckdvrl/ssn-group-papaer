@@ -52,7 +52,7 @@
 
 ## 读论文：为想法的来源与距离而读
 
-精读模板见 `../search/README.md` §4.1（论文卡）。除了问题、方法、结果，更要重建：
+精读模板见 `../search/README.md` §4.1 与 [`../templates/paper_card.md`](../templates/paper_card.md)（论文卡）。除了问题、方法、结果，更要重建：
 
 - **parent baseline / belief** — 之前最强的做法或共识；
 - **pressure** — 什么具体困难让它不够用；

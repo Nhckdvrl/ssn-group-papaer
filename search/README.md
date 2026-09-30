@@ -1,6 +1,6 @@
 # Search — 选题（选一个要住进去建设的领域）
 
-**版本：v3（2026-09-30）。** 为什么改、改了什么，见 [`PROCESS_DIAGNOSIS_2026-09-30.md`](PROCESS_DIAGNOSIS_2026-09-30.md)。
+**版本：v4（2026-09-30）。** 为什么改、改了什么，见 [`PROCESS_DIAGNOSIS_2026-09-30.md`](PROCESS_DIAGNOSIS_2026-09-30.md)。本文件只管“找题”（选领域）；驻留中的 idea 探索见 [`../workbench/IDEA_EXPLORATION.md`](../workbench/IDEA_EXPLORATION.md)，执行见 [`../workbench/EXECUTION.md`](../workbench/EXECUTION.md)，候选与投稿见 [`../candidates/README.md`](../candidates/README.md)。
 旧版（v2，2026-09-28）的全文保留在 git 历史中；其中“谱系式读论文”“paper rewind”“不要从单篇论文挖 gap”三部分继续有效，已并入下文 §4。
 
 ---
@@ -114,6 +114,8 @@ future-work 句子和单个 anomaly 只是线索，原作者和直接后继通�
 
 ## 5. Territory 卡模板（交给 workbench）
 
+完整模板：[`../templates/territory_card.md`](../templates/territory_card.md)；论文卡模板：[`../templates/paper_card.md`](../templates/paper_card.md)。摘要版：
+
 ```markdown
 # Territory: <名字>
 - 偏好对应：<对应哪条组内偏好>
@@ -138,7 +140,16 @@ future-work 句子和单个 anomaly 只是线索，原作者和直接后继通�
 
 ---
 
-## 7. 反模式（出现即停下来，回到 §2）
+## 7. 节奏
+
+| 频率 | 做什么 | 谁 |
+|---|---|---|
+| 一次扫描 | 3–6 个候选领域的四张卡 + 压力清单，**≤ 1 周** | agent 起草，人选择 |
+| 每两周 | ACTIVE 线的新近邻扫描（`query.py nearest` + awesome 列表 + daily-arXiv），更新定位表；**只调整增量，不判死** | agent |
+| 每月 | territory 健康检查：热度数字、形态是否变化、是否出现资源碾压型对手；结论写进 workbench 决策记录 | agent 起草，人确认 |
+| 新会议结果公布 | 更新 `tools/venue_corpus`（`fetch.sh` + `build.py`），重算相关切片 | agent |
+
+## 8. 反模式（出现即停下来，回到 §2）
 
 - 从概念二分、“X ≠ Y” 模板、单篇 anomaly、两篇论文的张力**直接**生成题目。
 - 以“有人做过 / 已成 program / 一小块被碰过”为理由**桌面**杀题。

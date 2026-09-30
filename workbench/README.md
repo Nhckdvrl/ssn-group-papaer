@@ -1,6 +1,13 @@
 # Workbench — 驻留与建设
 
-**版本：v3（2026-09-30）。** 诊断见 [`../search/PROCESS_DIAGNOSIS_2026-09-30.md`](../search/PROCESS_DIAGNOSIS_2026-09-30.md)。v2 全文在 git 历史中；其中“强基线优先”“成功案例也是证据”“失败梯度”“论文身份允许变化”继续有效，已并入下文。
+**版本：v4（2026-09-30）。** 诊断见 [`../search/PROCESS_DIAGNOSIS_2026-09-30.md`](../search/PROCESS_DIAGNOSIS_2026-09-30.md)。v2 全文在 git 历史中；其中“强基线优先”“成功案例也是证据”“失败梯度”“论文身份允许变化”继续有效，已并入下文。
+
+本目录的三份文件：
+- **本文件**：驻留怎样开始、容量与节奏、何时关闭或升级、当前登记表；
+- [`IDEA_EXPLORATION.md`](IDEA_EXPLORATION.md)：驻留中 idea 从哪里来、怎样用决定性 pilot 筛、怎样排序（不判死）；
+- [`EXECUTION.md`](EXECUTION.md)：执行协议——三本账（痛点 / 实验卡 / 主张账本）、证据等级 L0–L5、混杂审计、校对、算力排程、截稿倒排、漂移检测。
+
+新建 workbench：`python3 tools/process/new.py workbench <名字>`（生成 README、CLAIMS、PAIN_LOG、experiments/、ideas/、logs/）；检查：`python3 tools/process/check.py`；每周人审骨架：`python3 tools/process/weekly.py <名字> --write`。
 
 ---
 
@@ -29,10 +36,10 @@ v2 的问题（诊断 §3）：入场禁止方法、门槛在没有证据时执�
 |---|---|---|
 | D1 | **强基线跑通并复现** | 代码/权重版本固定；复现到官方数字的误差范围写清；至少 2–3 个种子的方差；评测 harness 可一键重跑 |
 | D2 | **可复用资产进仓库** | `experiments/`（代码）、`env.sh`/环境说明、数据准备脚本；大文件不进 git，写清下载方式 |
-| D3 | **痛点日志（run log）** | 跑的过程中遇到的：坏掉的、不稳定的、慢的、指标之间不一致的、意外地好的。每条带复现条件和粗略量级 |
-| D4 | **领域标准的系统测量** | 每个领域不同（例：多智能体 → 交叉配对矩阵、算力匹配曲线；可解释性 → 基线探针/干预强度与噪声地板；推理 → 按难度/位置的失败分布；世界模型 → 按块内位置的控制响应）。**测量先于解释** |
-| D5 | **定位表初稿** | 对最近 10 篇接收论文 + 5–10 篇最新 arXiv 写增量（`search/README.md` §3.2） |
-| D6 | **论文形态卡初稿** | §4 |
+| D3 | **痛点日志**（`PAIN_LOG.md`） | 跑的过程中遇到的：坏掉的、不稳定的、慢的、指标之间不一致的、意外地好的。每条带复现条件和粗略量级 |
+| D4 | **领域标准的系统测量**（实验卡 + `CLAIMS.md`） | 每个领域不同（例：多智能体 → 交叉配对矩阵、算力匹配曲线；可解释性 → 基线探针/干预强度与噪声地板；推理 → 按难度/位置的失败分布；世界模型 → 按块内位置的控制响应）。**测量先于解释**；每次运行先写实验卡（`EXECUTION.md` §2） |
+| D5 | **定位表初稿** | 对最近 10 篇接收论文 + 5–10 篇最新 arXiv 写增量（`../templates/positioning.md`） |
+| D6 | **论文形态卡初稿 + idea 组合** | §4；3–6 个有来源的 idea 卡（`IDEA_EXPLORATION.md`），每个预期贡献至少一条 L1 主张或明确标 ❌ |
 
 ---
 
@@ -68,15 +75,9 @@ v2 的问题（诊断 §3）：入场禁止方法、门槛在没有证据时执�
 
 ---
 
-## 5. 实验卫生（保留并强化——这是我们的比较优势）
+## 5. 实验卫生（这是我们的比较优势）
 
-1. **效应量 vs 噪声地板**：花算力之前先比较预期效应和评测噪声（L19：2.7pp 效应 vs 1.2–2.0pp 噪声地板，本可零算力止损）。
-2. **一阶工具有效性**：比较训练阶段 / 模型之前，先在参考点证明干预确实有杠杆（L29）。
-3. **算力匹配**：多智能体、推理、集成类比较必须给出等算力（调用次数 / token / FLOPs）的对照。
-4. **训练类结论 ≥ 3 个种子**，报告方差；不对“幸存”种子做事后筛选（L45）。
-5. **输入指纹断言**：纵向比较时断言每个 checkpoint 的输入字节一致（S03：tokenizer 漂移）。
-6. **行为探针先做“一句指令能否恢复”的对照**，避免把提示词默认值当能力（实时线：abstention 1/39 → 39/40）。
-7. 选窗 / 采样方式不得与被测变量耦合（视频线 E29 的选窗伪影）。
+完整的 12 项混杂审计清单、证据等级与独立校对见 [`EXECUTION.md`](EXECUTION.md) §3–§5。最常用的七条：噪声地板（L19）、一阶工具有效性（L29）、算力匹配、≥3 个种子且不筛幸存种子（L45）、输入指纹（S03）、“一句指令能否恢复”（实时线）、选窗 / 读数与被测变量解耦（视频线 E29）。
 
 ---
 
@@ -92,44 +93,40 @@ v2 的问题（诊断 §3）：入场禁止方法、门槛在没有证据时执�
 
 **两次连续降级重置**（保留）：连续两个 lead 被平凡对照或近邻吸收后，停止在同一叙事上加实验——回到**同一领域**的痛点日志、形态卡和其他压力，而不是开新 workbench。
 
-关闭或暂停时，在本 workbench README 写：学到的事实、可复用资产、失败原因。只有跨项目有用的 kill 才写进 `failed/`。
+关闭或暂停**只由人决定**；agent 可以用 [`../templates/close_record.md`](../templates/close_record.md) 提议（写明证据类别 A 实验 / C 可行性；B 桌面判断不能作为关闭理由）。记录写在本 workbench README 末尾；只有跨项目有用的才复制到 `failed/`（ID 从 K254 起）。
 
 ---
 
 ## 7. 何时升为 candidate
 
-- 主结果在强基线、公平算力、多种子下成立；
-- 定位表完成，增量一句话说得清；
-- 论文形态卡稳定（3 个贡献、主图基本齐）；
-- 目标会议与写作计划明确。
+门槛与候选包见 [`../candidates/README.md`](../candidates/README.md) §1：主旨主张 ≥ L3、3 个贡献各 ≥ L2、机制主张 ≥ L4、全部校对；定位表完成；一句话主旨连续 2 周未变；距截稿 ≥ 8 周（否则改投下一会）；人签字。
 
 ---
 
 ## 8. README 模板（≤ 200 行）
 
-`Status（中文进度页）/ 论文形态卡 / 痛点日志摘要 / 决策记录 / 资产位置`。详细过程写进 `logs/` 或 `results/`，不写合同式长文。
+[`../templates/workbench_readme.md`](../templates/workbench_readme.md)：状态页 / 论文形态卡 / idea 组合 / 主张摘要 / 痛点摘要 / 决策记录 / 资产位置。详细过程写进 `logs/`、实验卡或 `results/`，不写合同式长文。
 
 ---
 
-## 9. 当前 workbench（2026-09-30，按 v3 容量规则整理；“暂停”均可由人随时恢复）
+## 9. 登记表（2026-09-30；`tools/process/check.py` 读取本表）
 
-### 主线
-- `video-world-model-temporal-interfaces/` — **ACTIVE**（our-taste）。块首“接缝失聪”在 3 个独立系统上复现，有推理端修复雏形；目标 **CVPR 2027（11-16）**，10/15 关口见其 `CVPR_ASSESSMENT.md`。唯一已有论文形态卡的线。
+状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
-### 建议的新探索线（待人确认）
-- [`multi-llm-collaboration/`](multi-llm-collaboration/README.md) — **PROPOSED**：训练出来的开源异构 LLM 团队（大+小 / 全小），territory 卡见 [`../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../search/our-taste/TERRITORY_SCAN_2026-09-30.md)。对应组内偏好第一条。
-
-### 暂停（v3 容量规则；未被证据杀死，可恢复）
-- `cross-lingual-acquisition-regimes/` — 9/30 按 v2 开启，尚未运行；恢复前需补 territory 卡的热度/立足点两项。
-- `scoped-context-state/` — 已生成数据，未完成 P1；恢复前需补形态卡。
-- `mechanism-population-dynamics/` — 未开始；可解释性方向的候选资产。
-
-### v2 下被桌面降级（零脚本），按 v3 可重开
-- `npc-persona-behavior-grounding/`、`npc-deception-investigability/`（游戏 NPC）、`model-diffing-measurement/`（可解释性）、`hybrid-adaptation/`、`ai4quant/`。它们被降级的理由是“天花板 / 近邻”而不是实验证据；按 v3 可以作为 territory 候选重新评估（先填四张卡）。
-
-### 有证据的关闭 / 冻结（知识资产）
-- `realtime-agent-capability-transition/` — E04 严格对照：口语化本身不造成可测损失；资产：τ-Voice 20GB 轨迹 + 脚本。
-- `realtime-computation-boundaries/` — 快/慢通道透明；失败落在前台模型默认策略（一句指令可恢复）。资产：Venus / MiniCPM-o / Freeze-Omni 等评测脚本。
-- `omni-recon/` — 侦察记录；B1 null（全双工模型在各阶段都能响应更正）等事实可复用。
-- `shape-olmo/` — hybrid 相关假设在对照下不成立；OLMo T/H 对照资产。
-- `moe-route-preference/` — 观察有效，但更广的结论已被反事实路由工作覆盖。
+| workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
+|---|---|---|---|---|---|---|
+| `video-world-model-temporal-interfaces` | ACTIVE-MAIN | CVPR 2027 | 2026-11-16 | `CLAIMS.md` | 2026-09-29 | 块首“接缝失聪”，3 个独立系统复现；关口与第二阶段计划见 `CVPR_ASSESSMENT.md`；`CLAIMS.md` / `PAIN_LOG.md` 于 9/30 按 v4 格式整理，待负责人确认 |
+| `multi-llm-collaboration` | PROPOSED | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | — | 训练出来的开源异构 LLM 团队；territory 卡 `../search/our-taste/TERRITORY_SCAN_2026-09-30.md`；待人确认后改为 ACTIVE-EXPLORE |
+| `cross-lingual-acquisition-regimes` | PAUSED | — | — | — | — | 9/30 按 v2 开启，尚未运行；恢复前补 territory 卡的热度 / 立足点 |
+| `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
+| `mechanism-population-dynamics` | PAUSED | — | — | — | — | 未开始；可解释性方向的候选资产 |
+| `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
+| `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
+| `model-diffing-measurement` | PAUSED | — | — | — | — | 同上；工具链可用于多智能体线的白盒分析（P4） |
+| `hybrid-adaptation` | PAUSED | — | — | — | — | v2 桌面降级，可重开 |
+| `ai4quant` | PAUSED | — | — | — | — | v2 桌面降级，可重开 |
+| `realtime-agent-capability-transition` | CLOSED | — | — | — | — | 证据关闭：E04 严格对照下口语化不造成可测损失；资产：τ-Voice 20GB 轨迹 + 脚本 |
+| `realtime-computation-boundaries` | CLOSED | — | — | — | — | 证据关闭：失败落在前台模型默认策略（一句指令可恢复）；资产：多个全双工模型的评测脚本 |
+| `omni-recon` | CLOSED | — | — | — | — | 侦察记录；B1 null 等事实可复用 |
+| `shape-olmo` | CLOSED | — | — | — | — | hybrid 相关假设在对照下不成立；OLMo T/H 对照资产 |
+| `moe-route-preference` | CLOSED | — | — | — | — | 观察有效，但更广的结论已被反事实路由工作覆盖 |

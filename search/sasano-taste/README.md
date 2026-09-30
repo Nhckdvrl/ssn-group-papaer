@@ -109,11 +109,11 @@ Sasano's later paper feedback repeatedly emphasizes:
 - a finding that is not surprising enough should not be forced into the headline;
 - merely changing model / dataset / evaluation setting does not automatically create novelty.
 
-## 9. Top-conference-scale ceiling
+## 9. Top-conference-scale ceiling（v4：在驻留中用证据回答）
 
 Sasano-style simplicity must **not** be confused with smallness.
 
-A simple natural question is valuable only if its answer can plausibly support a main-track paper-scale scientific conclusion. Before handoff, ask:
+A simple natural question is valuable only if its answer can plausibly support a main-track paper-scale scientific conclusion. Ask the following **at the week-3 paper-shape review and at the candidate gate, with evidence in hand**, not as a desk gate before handoff:
 
 - if the strongest interesting outcome is true, does it change a broader understanding rather than only describe one linguistic/game/model niche?
 - can the first natural object serve as a clean window onto a more general phenomenon?
@@ -123,11 +123,11 @@ A simple natural question is valuable only if its answer can plausibly support a
 
 A narrow linguistic phenomenon can absolutely pass this gate when it exposes a broad property of language/model behavior. A broad-sounding topic can fail when the actual evidence supports only a tiny local claim.
 
-Do not open a workbench merely because the question is natural and experimentally clean.
+A natural, clean question is a good starting point, not yet a paper: the ceiling is established during residency. If the evidence stays local, re-scope within the territory before anyone considers closing the line (a human decision).
 
 ## 10. Search output for this lane
 
-A Sasano-taste search result should contain:
+The output is a territory card (`../../templates/territory_card.md`). In this lane it should also contain:
 
 - **Natural question area:** one sentence, understandable outside the narrow subfield.
 - **Why it matters:** no benchmark-only justification.

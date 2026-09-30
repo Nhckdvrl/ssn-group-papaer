@@ -26,12 +26,24 @@ territory 卡：[`../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../se
 
 ---
 
+## Idea 组合（`ideas/`；流程见 `../IDEA_EXPLORATION.md`）
+| ID | 一句话 | 来源 | 研究动作 | 状态 | 证据等级 |
+|---|---|---|---|---|---|
+| [I01](ideas/I01-cross-play-matrix.md) | 训练出的团队换伙伴还能协作吗（交叉配对矩阵） | 近邻分歧：ZSC 谱系 vs 提示式 LLM 对陌生伙伴较稳；SRPO 初步实验 | 引入成熟构念 + 测量 | SEED（pilot 复用 E01 的两个种子，几乎免费） | — |
+| [I02](ideas/I02-compute-matched-gain.md) | 等训练算力 + 等推理算力下团队还赢吗 | 近邻分歧：MARTI vs 2609.04217 / 2607.16133 | 强基线翻案 | SEED（更可能是主论文的必备对照） | — |
+| [I03](ideas/I03-big-small-roles.md) | 大+小团队训练后谁在出力 | 近邻局限：Lazy Agents、Teams Hold Experts Back | 定位 + 干预 | SEED | — |
+| [I04](ideas/I04-message-portability.md) | 训练出的消息新伙伴读得懂吗 | 近邻分歧：涌现语言 | 干预 / 反事实 | SEED（只需推理） | — |
+
+账本：主张 [`CLAIMS.md`](CLAIMS.md)（空）· 痛点 [`PAIN_LOG.md`](PAIN_LOG.md)（空）· 实验卡 [`experiments/`](experiments/)（E01 Dr. MAS 数学复现、E02 CoMLRL 代码复现，均 PLANNED）。
+
+---
+
 ## 驻留计划（D1–D6，见 `../README.md` §2）
 
 ### 第 1 周 · D1/D2 强基线与资产
 1. **环境**：在节点上建 `env.sh`（verl + sglang/vLLM；Dr. MAS 用 `requirements_sglang.txt`，flash-attn 2.7.4）；CoMLRL 单独环境（`pip install comlrl`）。
-2. **复现 1**：Dr. MAS 数学（Solver + Verifier，2×Qwen3-1.7B 或 2×Qwen2.5-1.5B 起步），记录与官方趋势的差距、2–3 个种子的方差、梯度范数曲线（它的核心诊断）。
-3. **复现 2**：CoMLRL MAGRPO 代码协作（HumanEval/MBPP/CoopHumanEval，Qwen2.5-0.5B→1.5B）。
+2. **复现 1（[E01](experiments/E01-drmas-math-repro.md)）**：Dr. MAS 数学（Solver + Verifier，2×Qwen2.5-1.5B 或 2×Qwen3-1.7B 起步），记录与官方趋势的差距、2 个以上种子的方差、梯度范数曲线（它的核心诊断）。两个种子的团队同时是 I01 的 pilot 材料。
+3. **复现 2（[E02](experiments/E02-comlrl-code-repro.md)）**：CoMLRL MAGRPO 代码协作（HumanEval/MBPP/CoopHumanEval，Qwen2.5-0.5B→1.5B）。
 4. **统一评测 harness**：vLLM 推理；**算力计量**（每题调用次数、生成 token、训练 GPU·时）作为一等公民写进每条结果。
 5. 可选：Dr. MAS 搜索（3 智能体，需要本地检索服务，约 6GB 显存/卡）。
 

@@ -1,16 +1,84 @@
-# Candidates — Current Only
+# Candidates — 从候选到投稿（CANDIDATE → PAPER）
 
-This directory contains **only current paper candidates** that have actually emerged from a workbench.
+**版本：v4（2026-09-30）。** 当前候选数：**0**。历史候选包在 `../archive/candidates/`（只读）。
+这里只放已经在 workbench 中成形的论文；idea 的孵化在 `../workbench/`（`IDEA_EXPLORATION.md`）。
 
-Current count: **0**
+v3 之前这一段几乎没有定义：什么时候算候选、候选包里要有什么、模拟审稿怎样校准、写作怎么倒排、被拒后投哪里，都没有写。本文件补上。
 
-Create a candidate directory only after a workbench has produced enough evidence that:
-- the scientific question is clear;
-- the question is important independently of the hoped-for result;
-- the core finding/bottleneck is empirical rather than invented in advance;
-- nearest-prior ownership is defensible;
-- confirmation is feasible.
+---
 
-Historical candidate packages live under `../archive/candidates/`.
+## 1. 进入候选的门槛（人签字）
 
-Do not use this directory as an idea incubator. Incubation belongs in `../workbench/`.
+证据等级定义见 `../workbench/EXECUTION.md` §3。
+
+1. 主旨主张 ≥ L3；3 个贡献各自 ≥ L2；凡写成“机制”的主张 ≥ L4；全部通过独立校对（`EXECUTION.md` §5）。
+2. 定位表完成：最近 10 篇接收论文 + 5–10 篇最新 arXiv + near-miss 拒稿，每篇一句话增量（`../templates/positioning.md`）。
+3. 论文形态卡的一句话主旨**连续 2 周未变**。
+4. 距目标截稿日 ≥ 8 周；不足 8 周时，只有主张已达投稿门槛才继续，否则改投下一个会议（`EXECUTION.md` §7）。
+5. 人确认目标会议与备投路线。
+
+---
+
+## 2. 候选包（`candidates/<名字>/`）
+
+| 文件 | 内容 |
+|---|---|
+| `README.md` | 模板 `../templates/candidate_readme.md`：主旨、贡献 → 主张 → 证据 → 主图对照表、倒排计划、复现清单 |
+| `POSITIONING.md` | 定位表 |
+| `MOCK_REVIEW.md` | 模拟审稿（§3） |
+| `paper/` | LaTeX 源（会议模板） |
+| `figures/` | 生成每张图的脚本，指向 workbench 的 `results/` |
+
+实验代码与结果仍留在 workbench；候选包只引用，不复制。
+
+---
+
+## 3. 模拟审稿：先校准，再审
+
+v2 的问题之一是“自己提出、自己判死”：审稿模拟器没有校准，它的判决在桌面上执行（诊断 §3.5）。v4 的模拟审稿只在候选阶段使用，**输出问题清单，不输出判决**。
+
+1. **校准材料**：用 `python3 tools/venue_corpus/query.py nearest "<主旨>" -k 15` 找同切片的 5 篇接收论文和 3 篇高分拒稿，记下分数；用 `query.py shapes <切片>` 看该切片接收论文的形态与证据规模。
+2. **审稿人**：至少 2 个不同的 agent 会话 + 1 个人，互相不看，按目标会议的审稿表单写。
+3. **合并**成按严重度排序的问题清单：致命 / 主要 / 次要；每条写修复方式、代价（天）、是否可以在 rebuttal 中回答。
+4. **对比校准材料**：我们的证据规模相对 5 篇接收近邻处于什么位置？是否避开了 near-miss 被拒的原因？（常见拒因：基线不公平、只在一个模型家族上、贡献像工程拼装、评测型工作规模 / 机制不足。）
+5. 致命问题在投稿前修；主要问题优先修或写进局限并准备 rebuttal 实验。
+
+模板：`../templates/mock_review.md`。
+
+---
+
+## 4. 写作倒排（T = 截稿日）
+
+| 时间 | 写作 | 实验 |
+|---|---|---|
+| T−8 周 | 提纲；5 张主图草图；**先写引言**（按主张组织，而不是按实验顺序） | 泛化与消融实验排期 |
+| T−6 周 | 方法、实验初稿；相关工作按定位表写 | 泛化与消融跑完 |
+| T−4 周 | 全文初稿；模拟审稿 | 补模拟审稿指出的对照 |
+| T−3 → T−1 周 | 修复；局限性；复现清单；独立校对全部数字 | 只跑修复所需的实验；预留 ≥20% 算力 |
+| T | 投稿 | 补充材料截止前补齐代码与附录 |
+
+叙事标准：Failure → Bottleneck → Action → Outcome，每一环都有证据；ACL 系另加 Sasano 标准（一个 RQ 对一个 finding；引言既 納得 又 面白い；避免“そうだよね”）。英文写作，状态页与讨论用中文。
+
+---
+
+## 5. 投稿之后
+
+- **arXiv**：先查目标会议的匿名政策再决定时间。
+- **Rebuttal**：模拟审稿里“可在 rebuttal 中回答”的问题提前准备实验和回答；rebuttal 期间的新实验同样写实验卡、守混杂审计。
+- **被拒**：审稿意见写进 workbench 的痛点日志；**改稿再投是常态**（ICLR 2026 拒稿中约 840 篇以同一标题被 ICML 2026 接收），不重新选题。
+
+转投路线（2027 周期的近似日期，**以官方公告为准**）：
+
+| 首投 | 结果约在 | 转投首选 | 备选 |
+|---|---|---|---|
+| CVPR 2027（2026-11-16） | 2027-02 下旬 | NeurIPS 2027（约 5 月） | ICCV 2027（约 3 月初，只在意见可快速修复时） |
+| ICML 2027（约 1 月下旬） | 约 5 月初 | NeurIPS 2027（约 5 月中，时间紧） | ICLR 2028（约 9 月下旬） |
+| ACL 2027（ARR 约 2 月） | ARR 评审后 | 下一轮 ARR → EMNLP 2027 | NAACL / ACL 2028 |
+| NeurIPS 2027（约 5 月） | 约 9 月下旬 | ICLR 2028（紧）或 ICML 2028 | 对应的 ACL 系会议 |
+
+不投 Findings 与 EACL（组内决定）。
+
+---
+
+## 6. 当前候选
+（无）
