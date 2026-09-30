@@ -1,19 +1,32 @@
-# I03：大+小团队训练后，谁在出力（按角色的反事实贡献）（2026-09-30）
+# I03：异构大+小团队中的 collaborative role utility（2026-10-01）
 
-- **状态：** SEED
-- **来源（必填，只能是其一）：** 近邻自认的局限——Lazy Agents（ICLR 2026：推理智能体的因果影响随训练下降）；*Teams Hold Experts Back*（ICML 2026：团队不会利用专家）；SAT-AAMAS 换入 8B 成员 +10.4%
-- **研究动作：** 定位 + 干预（反事实替换成员输出）
-- **如果为真，主张是：** 在大+小异构团队中，训练使贡献向大模型集中（小模型变成“搭便车”或“传话者”），而这种失衡可以用按角色的反事实贡献提前测出，并用最小改动修复
-- **两种结果各意味着什么：** 为真 → 命名失败 + 最小修复（形态 A）；为假（训练学会按能力分工）→ 与提示式团队“不会利用专家”形成对照，解释训练学到了什么（形态 B）
-- **最近 3 个近邻与增量：**
-  | 近邻 | 它的 claim | 我们的增量 |
-  |---|---|---|
-  | Lazy Agents → Dr. MAMR | 同构团队训练中的懒惰智能体 | 大+小异构团队；按角色追踪 |
-  | MAC-SPGG（AAMAS 2026） | 公共品博弈奖励消除搭便车 | 在主流框架上测量并对照修复 |
-  | SAT-Stanford（2609.22682） | 文本层组织策略修复“拖累专家” | 权重层训练后的分工 |
-- **最便宜的决定性 pilot（能分出决策分支的最小算力）：** Dr. MAS 支持异构团队；先用 1.5B + 3B（或 7B）跑一个短训练，每个 checkpoint 做反事实：把某成员的输出换成未训练版本 / 空输出，看团队得分变化
-  - 阳性对照：在未训练团队上，反事实替换强成员应明显降分
-  - 噪声地板估计 vs 预期效应：同 E01
-  - 决策表：贡献随训练单调向一方集中 → PROMISING；贡献稳定 → PARKED（记为训练学会分工的证据，供 I01 叙事使用）
-- **预期论文形态：** A 失败+修复 / B 构念+测量
-- **排序打分（1–3）：** 证据 1 · 增量清楚度 2 · 形态匹配 3 · 成本 2 · 可完成性 2 · 两种结果都有用 2
+- **状态：** PARKED
+- **重开条件：** 至少一个 open-weight 异构 team（不同尺寸或家族）按官方/强 baseline 正常训练并达到可解释性能；随后出现稳定 contribution / role anomaly，或 territory 的 R-family 被人审升为前两优先级。
+- **来源：** Lazy Agents、Teams Hold Experts Back、heterogeneous team / weak–strong collaboration 等 lineage 表明 global model strength 不一定等于团队中的实际贡献。
+- **研究动作：** 定位 + 反事实干预。
+
+## 不预设的故事
+
+不预注册：
+> “大模型包办，小模型偷懒。”
+
+Lazy-agent / expert-underuse 已经有强近邻。真正值得做的是：**异构性是否产生它们没有解释的 role-dependent utility / capability ordering inversion，以及什么条件决定这种结构。**
+
+## 触发后先做的最小 measurement
+
+对训练 checkpoint 做 member intervention：
+- replace 某成员为其未训练版本；
+- replace 为能力相近但未共同训练的模型；
+- mask / bypass message；
+- role swap（只有协议允许时）。
+
+读数是下游团队 outcome，而不是只看消息数量或说话长度。
+
+## 升格条件
+
+只有出现：
+1. 可重复、明显超出“强模型更强”的 trivial ordering；
+2. 在至少一个 partner/task shift 下有 consequence；
+3. 最近邻不能简单压缩为 Lazy Agents / expert-underuse；
+
+才从 PARKED → PILOT/PROMISING。否则它只是 I01/I02 的辅助分析。
