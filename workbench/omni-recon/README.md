@@ -163,3 +163,42 @@ utterance's words (chance).
 - Open: is behaviour a function of this internal transcript (an "implicit cascade"), and where do native errors
   come from — a wrong latent transcript (perception) or a right transcript that is not used (policy)? A1 (VoiceChat
   native tool arguments vs its latent transcript on FDB-v3 real speech) is the test bed.
+
+## 7. Navigation after user correction #2 (2026-09-30 late): significance first
+
+A1 (latent transcript vs tool-argument errors) and the BayLing B1 run were stopped: the question did not change any
+design decision. New rule: before any probe, one sentence on what changes for the field either way.
+
+### Direction 1 (realtime intelligence gap) — desk verdict
+- VERA (2509.26542): native voice models trail their text siblings by ~40 pts on reasoning; attributes it to
+  "irreversible streaming commitment" but never isolates commitment. STITCH (2507.15375): interleaving unspoken
+  reasoning chunks before each spoken chunk matches think-first accuracy (79.1 vs 77.5) → commitment costs little
+  once speech lags reasoning. Frontier offline omni text→voice gap ~2 pts (2605.15104); τ-Voice frontier dual-system
+  agents at parity. BayLing: duplex format costs nothing vs same-data turn-based. ⇒ the gap is largely "no test-time
+  reasoning + post-training forgetting", and the field is closing it (think-while-speaking, delegation). Low headroom
+  for a new scientific object; kept as context.
+
+### Cross-cutting pattern found in the design space (candidate direction, not a claim)
+Every time-aligned full-duplex model turns dialogue into per-frame prediction where control decisions (start/stop
+speaking, interrupt, call a tool, delegate) are rare frames among silence/padding, and **every system patches this
+with hand-tuned per-token loss weights**:
+
+| system | control-token weighting |
+|---|---|
+| Moshi | semantic token ×100 |
+| How Should LLMs Listen While Speaking (2605.10199) | wait tokens ×0.001, interrupt ×50 |
+| DuplexCascade | user-finish ×10, interrupt ×5 |
+| BayLing-Duplex | silence ω=0.1, role tokens ω=10; **uniform weights collapse to near-permanent silence** |
+| NemotronLabs VoiceChat | BOS 12.5, EOS 7.5, text 5, pad 1; tool-call content 64, SOTC/EOTC 6, pad 0.3 |
+| AdaptDuplex | per-class weight table + runtime logits bias on decision tokens |
+| DuplexSLA | per-token weights on state tokens / silence anchors |
+| FSM decoupled data (2609.03321) | "severe class imbalance", special calibration |
+
+Why it may matter: weighted cross-entropy with weight w shifts the learned per-frame decision log-odds by ≈ log w,
+and a turn/action *event* is the first passage of a per-frame hazard, so each hand-set weight silently sets the
+model's timing and action priors (when it barges in, how often it calls a tool or delegates). This would connect
+failures we and others saw — premature takeovers in pauses, under-triggered delegation (Venus 3%), "answers from
+internal knowledge instead of calling the tool" (VoiceChat limitations), instruction-insensitive action tokens
+(P3) — to one training-design variable that the field currently tunes by hand.
+Nearest compressions to check before any claim: logit adjustment / long-tail calibration (Menon et al. 2021),
+survival/hazard models of turn-taking (VAP line), AdaptDuplex's runtime logits bias.
