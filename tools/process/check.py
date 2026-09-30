@@ -12,7 +12,7 @@ import sys
 from common import LEVELS, ROOT, STATUSES, WB, choice, claims, field, parse_date, registry, today
 
 README_MAX_LINES = 200
-CARD_FIELDS = ["对应", "阳性对照", "噪声地板", "决策表（跑之前写）"]
+CARD_FIELD_GROUPS = [["对应"], ["阳性对照"], ["噪声地板 + MIE", "噪声地板"], ["决策表（跑之前写）"]]
 
 
 class Report:
@@ -83,7 +83,10 @@ def check_cards(rep, d):
         where = card.relative_to(ROOT)
         if field(text, "状态") is None:
             continue  # not a v4 experiment card (legacy notes)
-        missing = [f for f in CARD_FIELDS if field(text, f) in (None, "")]
+        missing = []
+        for names in CARD_FIELD_GROUPS:
+            if all(field(text, n) in (None, "") for n in names):
+                missing.append(" / ".join(names))
         if missing:
             rep.add("WARN", where, f"实验卡缺少字段：{', '.join(missing)}")
         status = choice(field(text, "状态"), ["PLANNED", "RUNNING", "DONE", "VOID"])
@@ -94,9 +97,11 @@ def check_cards(rep, d):
             rep.add("WARN", where, "状态未填（PLANNED / RUNNING / DONE / VOID）")
     for card in sorted((d / "ideas").glob("I*.md")) if (d / "ideas").is_dir() else []:
         text = card.read_text()
-        src = field(text, "来源（必填，只能是其一）")
-        if src is not None and src.startswith("痛点 P## / 测量异常"):
-            rep.add("WARN", card.relative_to(ROOT), "idea 卡未写来源（IDEA_EXPLORATION.md §1）")
+        src = (field(text, "来源（必填；优先高质量来源但不是白名单）")
+               or field(text, "来源（必填，只能是其一）")
+               or field(text, "来源"))
+        if src is None or not src.strip() or src.startswith("痛点 P## / 测量异常"):
+            rep.add("WARN", card.relative_to(ROOT), "idea 卡未写具体来源（IDEA_EXPLORATION.md §1）")
 
 
 def check_claims(rep, d):
