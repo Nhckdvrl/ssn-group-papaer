@@ -1,5 +1,11 @@
 # Our Taste Search
 
+> **v3 说明（2026-09-30）：** 本通道的内容（强基线优先、痛点先于修复、利用我们的真实优势、从谱系学研究动作）继续有效。变化在于**执行方式**，统一服从 [`../README.md`](../README.md)：
+> - §7 的“顶会天花板”检查在 **workbench 驻留中用证据回答**，不再作为桌面门槛；“有人做过 / 已成 program”不是放弃理由。
+> - 方法可以从驻留第一周开始，只要它针对强基线上**真实出现**的痛点（顶会本方向的接收论文大多是方法型，见诊断 §4.2）。
+> - 输出统一为 territory 卡（热度卡 / 谱系卡 / 形态卡 / 立足点卡 / 压力清单），不再用 §8 的旧清单。
+> - 当前扫描：[`TERRITORY_SCAN_2026-09-30.md`](TERRITORY_SCAN_2026-09-30.md)。
+
 **Role:** identify high-value problem territories under **our own broad taste**.
 
 Unlike `../sasano-taste/`, this lane is deliberately permissive:

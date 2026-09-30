@@ -1,12 +1,24 @@
 # Failed / Kill Ledger
 
-Global anti-resurrection evidence and kill history.
+跨项目的失败记录与教训。
 
-Use this directory when:
-- checking whether a newly proposed direction already died for the same reason;
-- recovering a concrete failure mode;
-- understanding why a historical candidate was stopped.
+**2026-09-30 起按流程 v3 执行，先读 [`REAUDIT_2026-09-30.md`](REAUDIT_2026-09-30.md)：**
+- **有实验证据的 kill 保持有效**——它们是真正的知识（L19 噪声地板、L29 一阶工具有效性、L45 幸存种子偏差、S03 配方吸收、CT03 信号≠动作、实时线“提示词默认值”等），其教训已并入 `../workbench/README.md` §5。
+- **桌面新颖性 / 拥挤 kill（约占 91%）改为 `OPEN-WITH-DELTA`**：不再禁止重新进入；原记录中的 “Do not reopen by …” 条款只作为定位信息（最近邻已经展示了什么）。理由：这些被杀的 parent 在顶会同一周期仍被大量接收（见再审文件 §1）。
+- ID 冲突（K190、K193–K195）的消歧见再审文件 §4；下一个可用 ID 为 **K254**。
 
-Do not browse it as an idea generator.
+使用场景：
+- 查一个新方向**以前遇到过什么实验问题**、有哪些可复用资产与工具教训；
+- 写定位表时查最近邻已经展示了什么。
 
-Topic-local exploratory failures should normally remain inside their workbench. This directory is for durable cross-project kill evidence.
+不要把本目录当作禁区清单，也不要当作想法生成器。
+workbench 内部的探索性失败留在该 workbench；只有跨项目有用的才写到这里。
+
+## 文件
+| 文件 | 内容 |
+|---|---|
+| `REAUDIT_2026-09-30.md` | v3 再审：kill 分类、效力变化、ID 消歧 |
+| `KILLED_LEDGER.md` | K001–K184（历史主账本） |
+| `2026-09-14_SEARCH_KILL_BATCH_*.md` | K185–K253 批次（桌面 kill 为主） |
+| `KILLED_LEDGER_CONTINUATION.md` | K193（L45）、K195（S03）等有实验证据的 kill |
+| `K194_L36_BEAM_CURSE_MOTHER_QUESTION_NO_GO.md` | L36 |

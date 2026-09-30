@@ -1,271 +1,135 @@
-# Workbench
+# Workbench — 驻留与建设
 
-This is where research actually **grows**.
+**版本：v3（2026-09-30）。** 诊断见 [`../search/PROCESS_DIAGNOSIS_2026-09-30.md`](../search/PROCESS_DIAGNOSIS_2026-09-30.md)。v2 全文在 git 历史中；其中“强基线优先”“成功案例也是证据”“失败梯度”“论文身份允许变化”继续有效，已并入下文。
 
-A workbench begins with an important territory, not a finished paper idea.
+---
 
-It owns:
-- the strongest practical baseline we can reproduce;
-- baseline strengthening / recipe checks;
-- exploratory analyses;
-- failed perturbations;
-- successful signals;
-- stable observations;
-- changing hypotheses;
-- local literature / artifact notes needed for this object.
+## 0. 一句话
 
-There is intentionally **no top-level `observations/`**. Observations belong to the workbench that produced them.
+> **workbench 的任务不是“找到一个意外现象”，而是：在一个领域里把强开源系统跑通、建出可复用资产、在建设过程中系统地测量——让论文从真实痛点、系统测量和强基线上的失败里长出来。**
 
-## 0. Venue-scale contract
+v2 的问题（诊断 §3）：入场禁止方法、门槛在没有证据时执行、寿命以小时计、并行 14 条线。结果是 7/14 的 workbench 一个脚本都没跑就被降级，剩下的多数在一天内冻结。唯一存活的线恰好是唯一写了论文形态卡、绑定了会议截稿日的线。
 
-A workbench is expensive. It should not exist merely because an object is unexplored.
+---
 
-Before substantial compute or long experimental expansion, every workbench must maintain a credible **top-conference ceiling**:
+## 1. 容量与节奏
 
-- the local substrate is only an entry point, not the full contribution;
-- there is a broader assumption / bottleneck / principle that the workbench could change;
-- the strongest plausible outcome would matter beyond one dataset/model/language/game;
-- there is enough evidence runway to support a full paper, not one interesting table;
-- nearest prior does not already own the broader conclusion.
+- **同时最多 1 条主线 + 1 条探索线。** 开新线必须先关闭或暂停一条（由人决定）。
+- **每周一次人审（约 30 分钟）**：看论文形态卡（§4）和痛点日志（§2 D3）；人负责注入品味、可疑的对比、替代解释、缺失的基线。agent 负责执行，不自行开新 workbench。
+- **每条主线绑定一个目标会议与截稿日**，倒排里程碑。参考（以官方公告为准）：CVPR 2027 = 2026-11-16；ICML 2027 ≈ 2027-01 下旬；ACL 2027（ARR）≈ 2027-02；NeurIPS 2027 ≈ 2027-05；EMNLP 2027（ARR）≈ 2027-05/06；ICLR 2028 ≈ 2027-09 下旬。
+- 被拒后重投是常态（ICLR 2026 拒稿中约 840 篇被 ICML 2026 接收）。按“投—改—再投”规划，不要在想法阶段追求一次命中。
 
-Write the intended scope as:
+---
 
-> **substrate / local effect → broader object → possible field-level consequence**
+## 2. 第 1–3 周：驻留 = 建设（交付物）
 
-This is **not** a fixed paper claim. It is a ceiling check.
+驻留期**至少 2 周、通常 3 周**。交付物齐全之前，不允许以“没意思 / 被拥有 / 天花板不够”为由关闭。
 
-A workbench should be **demoted back to library knowledge or archived** if exploration shows that the broader object collapses and the remaining result is only:
-- a model-specific quirk;
-- a narrow benchmark issue;
-- a one-domain follow-up;
-- a small engineering patch with no transferable principle;
-- or an observation whose importance depends on exaggerated framing.
+| # | 交付物 | 标准 |
+|---|---|---|
+| D1 | **强基线跑通并复现** | 代码/权重版本固定；复现到官方数字的误差范围写清；至少 2–3 个种子的方差；评测 harness 可一键重跑 |
+| D2 | **可复用资产进仓库** | `experiments/`（代码）、`env.sh`/环境说明、数据准备脚本；大文件不进 git，写清下载方式 |
+| D3 | **痛点日志（run log）** | 跑的过程中遇到的：坏掉的、不稳定的、慢的、指标之间不一致的、意外地好的。每条带复现条件和粗略量级 |
+| D4 | **领域标准的系统测量** | 每个领域不同（例：多智能体 → 交叉配对矩阵、算力匹配曲线；可解释性 → 基线探针/干预强度与噪声地板；推理 → 按难度/位置的失败分布；世界模型 → 按块内位置的控制响应）。**测量先于解释** |
+| D5 | **定位表初稿** | 对最近 10 篇接收论文 + 5–10 篇最新 arXiv 写增量（`search/README.md` §3.2） |
+| D6 | **论文形态卡初稿** | §4 |
 
-Conversely, a very specific phenomenon is allowed when it reveals something general. Do not confuse surface breadth with scientific scale.
+---
 
-## 1. Baseline residency comes first
+## 3. 两条轨道并行：建设（build）与理解（understand）
 
-Do not treat “the script runs and roughly matches one reported number” as baseline reproduction.
+- **Build**：针对痛点日志里**真实出现**的问题，做最小的修复 / 方法 / 训练改动 / 评测协议——**从第一周起就允许**。在强基线上发现问题并修好，是顶会最常见的论文来源（诊断 §4.2–4.3：ICLR 多智能体接收论文 90% 是方法/框架型）。
+- **Understand**：诊断、消融、表征分析、机制解释——回答“为什么坏、为什么修得好”。
+- 两条轨道互相喂：方法没效果 → 诊断为什么；诊断揭示瓶颈 → 设计最小干预。
+- **Failure → Bottleneck → Action → Outcome** 仍然是论文的叙事标准，每一环都要有证据；但它是**写论文的标准，不是开始动手的许可**。
+- 成功案例也是证据：强基线为什么在旧系统失败的地方成功？哪个旧瓶颈消失了？哪个设计变得不必要？
+- 论文身份允许变化：RQ 可以变，方法可以变得不必要，意外的失败可以成为中心结果。但每次变化都要**让故事更简单**，而不是加更多条件。
 
-Before inventing anything, learn the baseline deeply:
+---
 
-- exact code / version / checkpoint / prompt / recipe;
-- strongest reasonable configuration;
-- current evaluation harness;
-- variance / seed behavior;
-- performance by slice and regime;
-- training / inference curves;
-- known implementation artifacts;
-- current simple improvements that do not change the scientific object.
+## 4. 论文形态卡（每周更新，人审时看这一页）
 
-The goal is not ritual reproduction. It is to become competent enough that an apparent failure is not just our weak implementation.
+参考范例：[`video-world-model-temporal-interfaces/CVPR_ASSESSMENT.md`](video-world-model-temporal-interfaces/CVPR_ASSESSMENT.md)。
 
-Whenever possible, try to **strengthen the baseline first**. A stronger baseline can:
-- kill a fake problem;
-- expose a narrower real problem;
-- reveal where the improvement actually comes from;
-- itself become a meaningful technical result.
+```markdown
+## 论文形态卡 — <workbench> — <日期>
+- 一句话主旨（当前版本）：
+- 论文形态：失败模式+修复 / 构念引入+测量 / 理论+受控实验 / benchmark / 系统
+- 3 个贡献（状态：✅/⚠️/❌）：
+- 4 条摘要主张（状态）：
+- 5 张主图/表（状态）：
+- 基线列表（含最强开源基线、算力匹配方式）：
+- 证据标准：模型/家族数、benchmark 数、种子数、置信区间
+- 定位表摘要（最近 5 个近邻 + 各自增量）：
+- 风险登记（可能性 / 影响 / 对策）：
+- 目标会议与倒排里程碑：
+- 本周决定：继续 / 转向（同一领域内）/ 暂停
+```
 
-## 2. Exploration is a portfolio search, not a lead chase
+---
 
-The main failure mode of an LLM research agent is **serial local search**:
+## 5. 实验卫生（保留并强化——这是我们的比较优势）
 
-> notice one anomaly → explain it → run one decisive test → narrow the story → rescue it → kill it → declare the territory exhausted.
+1. **效应量 vs 噪声地板**：花算力之前先比较预期效应和评测噪声（L19：2.7pp 效应 vs 1.2–2.0pp 噪声地板，本可零算力止损）。
+2. **一阶工具有效性**：比较训练阶段 / 模型之前，先在参考点证明干预确实有杠杆（L29）。
+3. **算力匹配**：多智能体、推理、集成类比较必须给出等算力（调用次数 / token / FLOPs）的对照。
+4. **训练类结论 ≥ 3 个种子**，报告方差；不对“幸存”种子做事后筛选（L45）。
+5. **输入指纹断言**：纵向比较时断言每个 checkpoint 的输入字节一致（S03：tokenizer 漂移）。
+6. **行为探针先做“一句指令能否恢复”的对照**，避免把提示词默认值当能力（实时线：abstention 1/39 → 39/40）。
+7. 选窗 / 采样方式不得与被测变量耦合（视频线 E29 的选窗伪影）。
 
-This can obey every local “anti-optimization” rule while still being bad research.
+---
 
-A workbench must therefore separate **reconnaissance** from **deep dive**.
+## 6. 何时关闭、暂停或转向
 
-### 2.1 Reconnaissance comes before commitment
+**关闭**（在 D1–D6 交付之后，满足其一，并写明证据）：
+- (a) 强基线无法复现，且原因不可修复；
+- (b) 主要效应在可承受算力下低于噪声地板；
+- (c) 定位表显示**精确撞车**（同一 claim + 同一证据类型 + 同一设定），且无法调整增量；
+- (d) 在目标会议前达不到证据标准，且没有合适的后续会议（否则改期，不关闭）。
 
-After baseline residency, do not immediately promote the first interesting failure into the workbench story.
+**不构成关闭理由**：有人做过相关工作；已经成了一个 program；一个解释被证伪（null 结果杀的是解释，不是领域）；第一个 lead 不成立。
 
-First build a **pressure map** of the territory:
-- where strong baselines disagree;
-- where performance changes sharply under small changes;
-- where old methods stop transferring;
-- where different metrics disagree;
-- where scaling/data/recipe changes the conclusion;
-- where implementation choices produce qualitatively different behavior;
-- where success cases are unexpectedly informative;
-- which claimed bottlenecks disappear under stronger baselines.
+**两次连续降级重置**（保留）：连续两个 lead 被平凡对照或近邻吸收后，停止在同一叙事上加实验——回到**同一领域**的痛点日志、形态卡和其他压力，而不是开新 workbench。
 
-The goal is not exhaustive Cartesian sweeps. It is to sample enough independent parts of the space to know whether the first anomaly is actually important.
+关闭或暂停时，在本 workbench README 写：学到的事实、可复用资产、失败原因。只有跨项目有用的 kill 才写进 `failed/`。
 
-### 2.2 Leads must compete
+---
 
-Before a lead receives a deep sequence of experiments, compare it against at least a few **independent competing leads / explanations** from the same territory.
+## 7. 何时升为 candidate
 
-A good lead should win attention because it has some combination of:
-- a large and reproducible gradient;
-- a broad scientific consequence;
-- a clean changed premise;
-- multiple ways to test it;
-- distance from nearest-prior ownership;
-- realistic confirmation under our compute.
+- 主结果在强基线、公平算力、多种子下成立；
+- 定位表完成，增量一句话说得清；
+- 论文形态卡稳定（3 个贡献、主图基本齐）；
+- 目标会议与写作计划明确。
 
-Do not deep-dive merely because the lead appeared first.
+---
 
-### 2.3 Depth is earned
+## 8. README 模板（≤ 200 行）
 
-A lead may enter deep investigation only when at least one is true:
-- it recurs across more than one meaningful slice / system / regime;
-- a small controlled perturbation produces a large unexplained change;
-- it contradicts a strong current baseline or accepted explanation;
-- it exposes a bottleneck with an obvious downstream consequence;
-- it survives a first trivial-explanation test and still has novelty room.
+`Status（中文进度页）/ 论文形态卡 / 痛点日志摘要 / 决策记录 / 资产位置`。详细过程写进 `logs/` 或 `results/`，不写合同式长文。
 
-Otherwise keep it as a note in the pressure map.
+---
 
-### 2.4 Null results kill explanations, not territories
+## 9. 当前 workbench（2026-09-30，按 v3 容量规则整理；“暂停”均可由人随时恢复）
 
-A failed experiment normally means:
+### 主线
+- `video-world-model-temporal-interfaces/` — **ACTIVE**（our-taste）。块首“接缝失聪”在 3 个独立系统上复现，有推理端修复雏形；目标 **CVPR 2027（11-16）**，10/15 关口见其 `CVPR_ASSESSMENT.md`。唯一已有论文形态卡的线。
 
-> this explanation / slice / instrument is weak.
+### 建议的新探索线（待人确认）
+- `multi-llm-collaboration/` — 开源异构 LLM 的协作（大+小 / 全小 / 训练后的团队），territory 卡见 [`../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../search/our-taste/TERRITORY_SCAN_2026-09-30.md)。对应组内偏好第一条。
 
-It does **not** by itself mean:
+### 暂停（v3 容量规则；未被证据杀死，可恢复）
+- `cross-lingual-acquisition-regimes/` — 9/30 按 v2 开启，尚未运行；恢复前需补 territory 卡的热度/立足点两项。
+- `scoped-context-state/` — 已生成数据，未完成 P1；恢复前需补形态卡。
+- `mechanism-population-dynamics/` — 未开始；可解释性方向的候选资产。
 
-> the territory is exhausted.
+### v2 下被桌面降级（零脚本），按 v3 可重开
+- `npc-persona-behavior-grounding/`、`npc-deception-investigability/`（游戏 NPC）、`model-diffing-measurement/`（可解释性）、`hybrid-adaptation/`、`ai4quant/`。它们被降级的理由是“天花板 / 近邻”而不是实验证据；按 v3 可以作为 territory 候选重新评估（先填四张卡）。
 
-Freezing a whole workbench requires **coverage evidence**:
-- the strongest practical baseline has been understood;
-- several independent pressure axes have been sampled;
-- the major competing lineages / nearest priors have been mapped;
-- the obvious high-information gradients are either explained, owned, or absent;
-- remaining directions are genuinely local / low-ceiling rather than merely untested.
-
-If these conditions are not met, return to reconnaissance instead of declaring the territory dead.
-
-### 2.5 Two-demotion reset rule
-
-If two consecutive leads are demoted because of trivial controls, nearest-prior ownership, or story qualification, **stop the local sequence**.
-
-Do not run a third “last rescue” experiment on the same narrative.
-
-Return to:
-- the field map;
-- strong-baseline success/failure trajectories;
-- other unresolved disagreements;
-- another lineage or substrate inside the territory.
-
-This reset is mandatory unless the new experiment tests a genuinely different scientific object.
-
-### 2.6 Success cases are evidence too
-
-Do not inspect only failures.
-
-Ask:
-- why does the strongest baseline succeed where older systems failed?
-- which old bottleneck disappeared?
-- what design choice became unnecessary?
-- what capability emerged without the method the field thought was required?
-- what does a strong negative result invalidate?
-
-A strong baseline that destroys an old problem can be a better source of research questions than another failure slice.
-
-### 2.7 Default loop
-
-The default workbench loop is therefore:
-
-> **field map → baseline residency → broad reconnaissance → competing leads → earned deep dive → update problem representation → candidate (maybe)**
-
-Inside a deep dive:
-
-> **inspect → perturb → test alternatives → update → re-check prior → decide whether the lead still deserves depth**
-
-Not:
-
-> **first anomaly → serial experiments until paper or death.**
-
-## 3. Failure gradient
-
-After every meaningful failure, ask:
-
-- What assumption did this failure invalidate?
-- Did the effect disappear because the phenomenon is false, or because the instrument/regime is wrong?
-- What dependency did the model/system unexpectedly rely on?
-- What does the failure say about the baseline's true bottleneck?
-- Can the direction be inverted into an improvement?
-- Does this change which question is worth asking?
-
-Do not merely append “failed” to a log.
-
-## 4. Human in the loop
-
-LLMs can implement many analyses but often will not proactively choose the most revealing one.
-
-Human input should therefore regularly inject:
-- a suspicious comparison;
-- an alternative explanation;
-- a missing baseline;
-- a counterexample;
-- an analysis suggested by another field;
-- a “what happens if we break this?” perturbation.
-
-When no strong insight is available, systematically enumerate reasonable analyses rather than pretending one elegant experiment will settle everything.
-
-The workbench should continuously answer:
-
-> **What did we learn that changes what we should do next?**
-
-## 5. Paper identity is allowed to mutate
-
-The initial intuition is not sacred.
-
-During workbench exploration:
-- RQ may change;
-- mechanism may disappear;
-- method may become unnecessary;
-- an unexpected failure may become the central result;
-- a supposedly secondary analysis may become the real bottleneck.
-
-Do not protect the original idea by adding increasingly elaborate controls.
-
-## 6. When a method becomes justified
-
-For method-shaped work, require:
-
-> **Failure → Bottleneck → Controllable action → Outcome**
-
-Each arrow needs evidence.
-
-A good diagnostic signal does not automatically imply a good training target, loss, router, controller, or deployed action.
-
-Prefer the simplest intervention that directly attacks the identified bottleneck.
-
-## 7. When to promote to candidate
-
-Promotion happens only when the workbench has naturally produced a paper identity that is clearer than the initial idea.
-
-Typical signs:
-- one important empirical pattern keeps surviving;
-- strong baseline/simple explanation no longer dissolves it;
-- the question can be stated without the entire experimental apparatus;
-- related work does not already own the same scientific conclusion;
-- the contribution has a plausible confirmation path;
-- the story is getting **simpler**, not more conditional.
-
-Until then, remain a workbench.
-
-## Current workbenches
-
-### Active survivor
-
-- `cross-lingual-acquisition-regimes/` — **sasano-taste / model-science; ACTIVE, exploratory (opened 2026-09-30)**. Reconciles conflicting controlled results on what parallel/bilingual data buys: JGP/OpenSeal report reasoning gains while MONOWEB finds translation-specific dependence under balanced multilingual pretraining. Working object is whether bilingual supervision changes causal role across acquisition regimes; current explanation is unproven and must compete against training-stage, data-quality, benchmark, language-family, and pairing confounds.
-- `video-world-model-temporal-interfaces/` — **our-taste; ACTIVE, conditional (phase 1 passed 2026-09-29)**. Chunk-onset control deafness reproduced on three independent systems (MG2, minWM, HY-WorldPlay), arising at causalization; human key-press replay shows lost seam-onset presses on two systems, and a context-anchored chunk-overlap rollout repairs control on both. Open: quality/cost of the repair, sample size, a 4th system, and the training-side cause. Continue only under the hard venue-scale gate in its README.
-- `scoped-context-state/` — **sasano-taste; ACTIVE, exploratory**. Investigates whether LLMs can enter, maintain, switch, and exit temporary contextual states; agent execution is explicitly research-navigation-first and must kill/pivot rather than locally optimize a weak story.
-- `realtime-agent-capability-transition/` — **our-taste; CLOSED (drained 2026-09-30)**. E04 finished: spoken-style user input alone costs nothing for a fixed text agent (retail 47.8→43.5 p=0.79, airline 40→44 p=0.77); τ-Voice gap = spoken entity capture + backbone; frontier dual systems at text parity. Assets: 20 GB public τ-Voice trajectories + scripts.
-- `mechanism-population-dynamics/` — **our-taste / model-science; ACTIVE, exploratory**. Treats mechanisms and their developmental trajectories as population variables over stochastic training histories; starts from PolyPythias + established causal mechanisms, with mandatory checkpoint-integrity audit and OLMo-2 external-validity branch.
-- `realtime-computation-boundaries/` — **our-taste; FROZEN (2026-09-30)**. Residency on Realtime-Venus + FDB-v3: the fast/slow channel is transparent once crossed; the lost capability sits in the fast model's handoff decision (owned: SALMONN-duo, cascade deferral). The follow-up lead (full-duplex mode removes abstention: same weights 92%→3%) was demoted by its pre-registered test: one honesty instruction restores it (39/40). Cross-domain channel/staleness levers are owned (Latent Bridge, Think@5Hz, input prediction). Knowledge asset; see its README §Navigation-2 for reopen conditions.
-
-### Frozen / demoted / knowledge assets
-
-- `model-diffing-measurement/` — **DEMOTED 2026-09-29; knowledge asset**. Direct ownership collision: Kempf et al. 2026 already systematize simple-LLM vs SAE model diffing with generalization/interestingness/abstraction criteria; together with ADL and Diff Mining, the original comparative-access mother question is too occupied.
-- `shape-olmo/` — paused knowledge asset; explored Shape/hybrid hypotheses did not survive controls.
-- `hybrid-adaptation/` — **demoted**; current abstraction is too close to existing recurrent-state adaptation and KV-vs-state causal work.
-- `ai4quant/` — **demoted**; both current territories fail the workbench ceiling gate in their present form.
-- `moe-route-preference/` — **closed active line / knowledge asset**; broader routing-utility/misrouting conclusion is now owned by stronger nearest prior.
-- `npc-deception-investigability/` — **demoted**; coherent game-AI object, but current top-conference ceiling is too game-specific.
-- `npc-persona-behavior-grounding/` — **frozen**; broader proxy-vs-causal-control object is plausible, but one PCSP substrate is insufficient. Requires an independent second substrate before reopening.
-
-**Current policy:** do not keep a workbench active simply because code, data, or a cheap next experiment exists. If the top-conference ceiling is not credible, preserve the knowledge and stop execution.
+### 有证据的关闭 / 冻结（知识资产）
+- `realtime-agent-capability-transition/` — E04 严格对照：口语化本身不造成可测损失；资产：τ-Voice 20GB 轨迹 + 脚本。
+- `realtime-computation-boundaries/` — 快/慢通道透明；失败落在前台模型默认策略（一句指令可恢复）。资产：Venus / MiniCPM-o / Freeze-Omni 等评测脚本。
+- `omni-recon/` — 侦察记录；B1 null（全双工模型在各阶段都能响应更正）等事实可复用。
+- `shape-olmo/` — hybrid 相关假设在对照下不成立；OLMo T/H 对照资产。
+- `moe-route-preference/` — 观察有效，但更广的结论已被反事实路由工作覆盖。

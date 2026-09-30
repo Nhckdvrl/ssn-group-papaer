@@ -1,5 +1,11 @@
 # Sasano Taste Search
 
+> **v3 说明（2026-09-30）：** Sasano 品味（自然、清楚、结果本身值得知道、一个 RQ 对一个 finding、避免“そうだよね”、先验证对象存在）继续作为 **ACL 系论文的叙事与判断标准**。变化在于它**不再是题目生成器**：
+> - 不再用概念二分（“A 和 B 理论上不同，问模型会不会区分”）或 “X ≠ Y” 测量模板直接生成题目——这是 K061–K161 大批桌面阵亡的来源（诊断 §2）。
+> - 题目应在 workbench 驻留中从稳定的观察里出现，再用本页标准判断与打磨叙事。
+> - §9 的“顶会天花板”在驻留中用证据回答；“近邻存在”按 [`../README.md`](../README.md) §3 处理为定位问题，而不是 kill。
+> - 选 ACL 系还是 ML 会，先看 `tools/venue_corpus` 的切片数据：同一题材在两类会议的接收情况可能相反（例：多语言迁移在 ACL/EMNLP 持续被接收、在 ICLR 很难）。
+
 **Role:** identify a problem territory worth exploring **according to Sasano's own research taste**.
 
 This lane is intentionally narrower than `../our-taste/`. Do not dilute it with our preferences for trendy methods, benchmark gains, agents, RL, or whatever we personally want to build.

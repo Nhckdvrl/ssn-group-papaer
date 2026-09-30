@@ -1,165 +1,148 @@
-# Search
+# Search — 选题（选一个要住进去建设的领域）
 
-This directory contains **topic-search philosophies**.
+**版本：v3（2026-09-30）。** 为什么改、改了什么，见 [`PROCESS_DIAGNOSIS_2026-09-30.md`](PROCESS_DIAGNOSIS_2026-09-30.md)。
+旧版（v2，2026-09-28）的全文保留在 git 历史中；其中“谱系式读论文”“paper rewind”“不要从单篇论文挖 gap”三部分继续有效，已并入下文 §4。
 
-A search lane answers:
+---
 
-> **Which problem territory is important enough to enter and explore deeply?**
+## 0. 一句话
 
-It does **not** need to predict the final paper idea, method, mechanism, or result.
+> **选题 = 选一个值得我们住进去、在强开源系统上持续建设的领域（territory），而不是选一个要去验证的现象。**
 
-The output of search is a handoff into `../workbench/<territory>/`, not a candidate ID.
+旧流程（“猜现象 → 赌博 → 实验”）已被 25 天的数据证伪：想法从文献邻域采样，几乎必然有近邻；即使过了新颖性审查，猜出来的现象也多半不存在、不稳定或随配方而变。
+论文应该从**建设过程中真实遇到的痛点、系统测量和强基线上的失败**里长出来——这也是顶会大部分论文的真实来历（诊断文档 §4.3）。
 
-Current lanes:
-- `sasano-taste/` — governed by Sasano's research taste.
-- `our-taste/` — our own broad search lane.
+---
 
-## What search should produce
+## 1. 输入与输出
 
-A useful search result is closer to:
+**输入**
+1. 组内偏好（当前：智能体协作——大模型 + 小模型 / 全小模型 / 开源非 API；推理；表征分析；可解释性；理解与生成；游戏 NPC；……）。
+2. `library/` 的题材页（按题材组织的谱系、关键论文、开源资产、awesome 列表）。
+3. `tools/venue_corpus/`（顶会接收 + 拒稿语料库，用来量化热度、论文形态、近邻）。
+4. 最新 arXiv（环视领域时必须看；awesome 列表和 daily-arXiv 镜像是入口）。
 
-> “This scientific object / problem is important, not obviously exhausted, and worth spending weeks understanding. Here is the strongest baseline / parent work / data / artifact to start from, and here are the main unknowns.”
+**输出**：一张 **territory 卡**（≤ 2 页，模板见 §5），交给 `workbench/`。
+选题阶段不写论文标题、不预测结果、不注册 RQ——但**必须写出这个领域里哪几种论文形态是可行的**，因为它决定 workbench 要建设什么资产。
 
-It is **not**:
+---
 
-> “Here is a beautiful paper title, expected finding, mechanism, and method; now run an experiment to prove it.”
+## 2. Territory 选择：四张卡 + 一张压力清单
 
-The expected result may be wrong. That is normal.
+每个候选领域（一次比较 3–6 个）都要填齐下面五项。全部可以在一周内完成。
 
-## Top-conference ceiling gate
+### 2.1 热度卡（量化，不是判决）
+- `python3 tools/venue_corpus/query.py density <切片正则>`：各顶会 2024–2026 接收数；ICLR 的**切片接收率 vs 全会基准**。
+- 最新 arXiv 的增长（awesome 列表 / daily 镜像里 2026 年条目数与月度趋势）。
+- 是否被资源雄厚的团队主导（前沿实验室 / 大厂的 flagship 系统是否就是这个方向的主角）。
+- 读法：
+  - 接收数多、切片接收率 ≥ 基准：审稿人欢迎，竞争激烈 → 需要清楚的增量和扎实的证据。
+  - 接收数多、切片接收率 < 基准（例：ICLR 2026 多智能体 LLM 22% vs 27%）：供给过剩、审稿人挑剔 → 我们的优势必须是**严谨性**（公平算力、强基线、多模型复现），而不是又一个框架。
+  - 接收数少、arXiv 在涨：上升期，窗口好，但要确认目标会议的审稿人认可这类工作（例：ICLR 2026 ToM × 多智能体 0/13，而 ACL/EMNLP 有接收）。
+  - **“拥挤”本身不是放弃的理由**，是改变策略的理由（对照用户要求：我们避开的是 RSI、Jev 这种**资源碾压型**赛道，不是“有人做过”的方向）。
 
-Search is not only deciding whether a territory is **researchable**. It is deciding whether the territory has enough scientific / technical headroom to justify aiming at **ICML / ICLR / NeurIPS / ACL / EMNLP / NAACL / CVPR-level main-track work**.
+### 2.2 谱系卡
+- 3–5 条 “parent → successor → 当前最强基线” 链；每条写清 parent 的压力、改变的前提、当前最强方法与它的已知局限（来自论文自己的 limitation / 后续工作的批评）。
+- 用 §4 的读法精读每条链上 1–2 篇关键论文。
 
-This does **not** mean the surface topic must be broad or require huge compute. A narrow experimental object can be excellent if it exposes or overturns a broad premise. What is not enough is a narrow object whose best plausible outcome remains a local follow-up.
+### 2.3 形态卡（这个领域顶会收什么样的论文）
+- `query.py shapes <切片>`：接收 vs 拒稿的 method / finding / theory / benchmark / failure-mode 比例与均分。
+- 列 10 篇最近的接收论文 + 5 篇高分拒稿（near-miss），各一句话：贡献类型、证据规模（几个模型、几个 benchmark、有无消融/理论）、主要卖点。
+- 结论写成：“这个领域的可行形态是 A（例：失败模式 + 修复方法）/ B（例：引入成熟构念的大规模测量）/ C（例：评测协议）”。
 
-Before opening a workbench, explicitly test the territory's **ceiling**:
+### 2.4 立足点卡
+- **一周内能在我们节点上跑起来的最强开源基线**（代码、权重、数据、官方数字）。算力边界：单节点 4×A100 80GB 或 4×RTX PRO 6000 96GB，两台机器不互通。
+- 标准 benchmark / 评测协议是什么；我们已有哪些可复用资产（环境、harness、数据、经验）。
+- 我们的比较优势是什么（例：算力匹配评测的纪律、开源模型的内部可访问性、已有的 harness、组内语言/领域知识）。
 
-1. **Parent-scale question:** What broader scientific/technical assumption, bottleneck, design principle, or capability does this object inform?
-2. **Best-case consequence:** If the most interesting plausible outcome is true, what would the field understand or do differently?
-3. **Worst reviewer compression:** Could a reviewer accurately dismiss the project as “X on one more model/dataset/language/domain”, “another slice”, or “a small fix for one benchmark”? If yes, do not open the workbench yet.
-4. **Evidence runway:** Is there room for multiple independent kinds of evidence—strong baselines, cross-model/regime checks, causal/diagnostic analyses, downstream consequences, or a method naturally implied by the bottleneck—rather than one lucky experiment?
-5. **Abstraction beyond substrate:** If the first substrate is removed, is there still a scientific object? The initial game, dataset, language, model family, or benchmark may be an instrument, but should not be the whole reason the problem matters.
-6. **Venue fit:** Which top venue community would care, and which existing high-level conversation would the result enter? “No one has tried this exact combination” is not a venue fit.
-7. **Growth room:** Can several months of baseline residency and exploration plausibly make the story **more general and simpler**, rather than forcing increasingly narrow controls?
+### 2.5 压力清单（≥ 5 条，每条有出处）
+- 来源只能是：论文自己承认的局限、successor 之间的分歧、公开 issue / 复现失败报告、near-miss 拒稿暴露的问题、我们自己在驻留中跑出来的现象。
+- 每条写：压力是什么 / 出处 / 可能对应的论文形态（方法、测量、评测、理论）。
+- **不需要**预测结果。需要的是：这个领域里有足够多**不同方向**的路可以走，第一条死了还有别的。
 
-A territory fails the gate when:
+### 2.6 决策
+- 选 **1 个主线**（最多再加 1 个探索线），由人签字确认。
+- 选题阶段只有三种情况可以放弃一个领域：
+  1. 找不到一周内能跑起来的强开源基线；
+  2. 核心实验需要我们没有的算力 / 数据（按驻留计划估算，不是拍脑袋）；
+  3. 与组内偏好或目标会议明显不符。
+- “已经有人做过 / 已成 program / 某一小块被碰过”**不是**放弃理由（见 §3）。
 
-> even its best plausible outcome is only a correct but local observation, benchmark patch, model-specific quirk, or incremental variant.
+---
 
-Such a result can still be useful knowledge and belong in `library/`, but it should not automatically receive a workbench.
+## 3. 新颖性：定位增量，而不是寻找空白
 
-### Scope ladder
+### 3.1 事实
+- 顶会每个周期都在同一个 parent 下接收很多篇论文（ICLR 2026：机制可解释性 59 篇、SAE 43 篇、多智能体 LLM 82 篇；attention sink 14 篇、切片接收率 47%）。
+- 我们曾以“已成 program”杀掉的 parent，同一周期仍在被接收（诊断文档 §4.1 与 `tools/venue_corpus/audit_kills.py`）。
+- 审稿噪声很大：ICLR 2026 拒稿中约 840 篇以同一标题被 ICML 2026 接收。
 
-Before workbench admission, write a three-level ladder:
+### 3.2 规则
+1. **近邻是常态。** 每个想法都会有近邻。要回答的不是“有没有人碰过”，而是“**我们这一篇相对每个近邻，增量是什么、够不够清楚、证据能不能撑住**”。
+2. **定位表**（进入 candidate 前必须有，驻留期间持续更新）：对 `query.py nearest` 给出的最近 10 篇接收论文 + 最近 5–10 篇 arXiv 论文，逐篇写：
+   | 近邻 | 它的 claim | 设定 | 方法 | 证据类型与规模 | 我们的增量（一句话） |
+3. **撞车的定义**：近邻与我们在 **claim、证据类型、设定** 三者上都相同，且我们写不出一个审稿人会认可的增量。只满足其中一两项是“相关工作”，不是撞车。
+4. **撞车时先改增量，而不是放弃领域**：换设定（开源 vs API、小模型 vs 大模型、训练 vs 推理）、换证据类型（从相关性到干预、从单模型到多家族、从行为到内部表征）、加方法、加理论。
+5. **预印本**：并行工作是常态；引用并区分即可。只有已发表、且满足第 3 条的才构成撞车。
+6. 禁止用 “reviewer compression（你不就是 ___ 吗？）” 在**没有证据的阶段**判死刑。它只在写论文阶段用来检查叙事。
 
-> **local observation / substrate**  
-> → **broader scientific object**  
-> → **top-conference-scale consequence**
+---
 
-If the arrow from local observation to broader object is speculative or purely rhetorical, keep searching.
+## 4. 读论文：为想法的来源与距离而读
 
-The target is not “big topic” but **big consequence**.
+### 4.1 论文卡（精读模板）
+每篇精读的论文写一张卡（放在对应题材的 `library/themes/<题材>/` 下）：
 
-## Read papers for idea genesis, not only for final ideas
+1. **基本信息**：标题 / venue / 状态（oral/spotlight/poster/rejected）/ 分数 / 代码与权重。
+2. **论文形态**：失败模式 + 修复 / 构念引入 + 测量 / 理论 + 受控实验 / benchmark / 系统。
+3. **背景与压力**：它之前最强的做法或共识是什么？是什么具体困难（失败、低效、矛盾、扩展问题、别扭的设计）让它不够用？
+4. **改变的前提**：这篇论文不再接受哪条假设？
+5. **idea 来源**：分 **DOCUMENTED**（作者博客/演讲/附录/代码历史明确说过）与 **RECONSTRUCTED**（我们根据论文和相关工作重建的合理路径）。后者只用于训练研究品味，不当作传记事实。
+6. **与最近邻的距离**：列 3–5 篇最近的相关工作；它在引言/相关工作里是怎样论证增量的（是换了设定、换了证据类型、加了方法、给了理论，还是揭示了一个新的失败模式？）。**这一项是我们找自己的增量时最重要的参考。**
+7. **方法 / 实验 / 数据 / 基线**：主表是什么；几个模型、几个 benchmark、几个种子；关键消融；算力。
+8. **审稿人看到的证据强度**：哪些实验让论文站住？哪些是明显的短板（如果有公开评审/分数）？
+9. **可迁移的研究动作**：强基线翻案、设计空间分解、重新归因、表征重设计、改变优化对象、因果干预、引入他领域构念……
+10. **对我们**：能在它的开源资产上做什么？它留下了哪些压力？
 
-Do not read a strong paper only as:
+### 4.2 Paper rewind（保留）
+对特别强的论文：读 parent 与引言开头 → 遮住方法和主结果 → 写出你认为的真实压力 → 提出 3–5 个在发明方法之前会做的分析 → 预测多种结果 → 再读全文对比。目的在于训练“研究导航”，不是逆向工程作者的私人想法。
 
-> problem → final method → benchmark gain.
+### 4.3 不要从单篇论文挖 gap（保留）
+future-work 句子和单个 anomaly 只是线索，原作者和直接后继通常已经占据最显然的下一步。看**一小段谱系**：parent → successor → 当前最强基线 → 失败 / 改变的前提。
 
-Reconstruct the path that could plausibly have produced the work.
+---
 
-For an important paper / lineage, ask:
+## 5. Territory 卡模板（交给 workbench）
 
-1. **Parent state:** What was the strongest prior method / baseline / accepted belief before this paper?
-2. **Pressure:** What concrete failure, inefficiency, contradiction, scaling problem, or awkward design choice made the parent unsatisfactory?
-3. **Changed premise:** Which assumption did the paper stop accepting?
-4. **Earliest revealing experiment:** What small analysis or baseline comparison could have exposed the pressure before the final method existed?
-5. **Exploration path:** What alternative explanations or directions would a reasonable researcher have tested?
-6. **Crystallization:** At what point does a real RQ / bottleneck / method become justified by evidence?
-7. **Related-work boundary:** Why is the final contribution not merely “prior A + prior B”, a new model, a new dataset, or an obvious future-work cell?
-8. **What to imitate:** Is the reusable move baseline strengthening, decomposition, re-attribution, representation redesign, changed optimization object, causal intervention, etc.?
+```markdown
+# Territory: <名字>
+- 偏好对应：<对应哪条组内偏好>
+- 目标会议（主 / 备）：<例：ICML 2027（1 月底）/ NeurIPS 2027（5 月）/ ACL 2027（ARR 2 月）>
+## 热度卡：<数字 + 解读，3–5 行>
+## 谱系卡：<3–5 条链>
+## 形态卡：<可行形态 A/B/C + 10 篇接收 + 5 篇 near-miss>
+## 立足点卡：<最强开源基线、benchmark、算力估计、已有资产、我们的优势>
+## 压力清单：<≥5 条，含出处与可能形态>
+## 驻留计划（前 3 周）：<跑通什么、复现到什么数字、第一批系统测量是什么>
+## 风险：<前沿实验室、算力、数据、并行工作>
+```
 
-### Important epistemic rule
+---
 
-A paper's Introduction is a polished scientific narrative. It is **not automatically the authors' historical brainstorming process**.
+## 6. 两个通道
 
-Keep two notions separate:
+- [`our-taste/`](our-taste/README.md)：组内自己的品味，范围宽（NLP / 多模态 / agent / RL / 可解释性 / 游戏 / ……）。
+- [`sasano-taste/`](sasano-taste/README.md)：Sasano 老师的品味。它作为 **ACL 系论文的叙事与判断标准**（自然、清楚、一个 RQ 对一个 finding、避免“そうだよね”）继续有效；**但不再用概念二分或 “X ≠ Y” 模板生成题目**——那是 K061–K161 大批阵亡的来源。
 
-- **documented genesis** — explicitly supported by author blog, talk, appendix, repo history, or retrospective;
-- **scientific genealogy reconstruction** — our reasoned reconstruction of how one could naturally move from the parent literature to the final work.
+两个通道都服从本文件的 §2–§5。
 
-The second is extremely useful for learning how to find research questions, but must not be presented as biographical fact.
+---
 
-## Paper rewind exercise
+## 7. 反模式（出现即停下来，回到 §2）
 
-For especially strong papers, train the search process explicitly:
-
-1. Read the parent papers / baseline and the beginning of the target paper's Introduction.
-2. **Hide the final method and headline result.**
-3. Write what you think the real pressure is.
-4. Propose 3–5 analyses / baseline checks you would run before inventing a method.
-5. Predict several plausible outcomes, not one desired outcome.
-6. Only then read the rest of the paper.
-7. Compare:
-   - which pressure did the authors actually resolve?
-   - what did they notice that you missed?
-   - which of your analyses would have produced useful gradient?
-   - did the final method follow naturally from a measured bottleneck, or from a conceptual derivation?
-   - what part of the path is transferable to another territory?
-
-The exercise is successful even when your hypothetical path differs from the paper. The goal is to improve **research navigation**, not to reverse-engineer the authors' private thoughts.
-
-## Do not mine one paper for a “gap”
-
-Prefer a **small lineage** over a single paper:
-
-> parent → successor → strongest current baseline → failure / changed assumption.
-
-A future-work sentence or one published anomaly is only a lead. Often the original authors or immediate follow-ups already own the obvious next step.
-
-The goal is to understand **where the field's problem representation changed**, and which important difficulty remains visible after strong baselines.
-
-### Territory admission requires a pressure map
-
-A workbench should not be opened because one paper, benchmark, or anomaly looks promising.
-
-Before admission, search should establish a **field-level pressure map**:
-- at least a small lineage of strong baselines / successors;
-- what the strongest current systems have already solved;
-- at least several distinct unresolved pressures or design disagreements;
-- which obvious next steps are already owned;
-- one or more practical open artifacts that let us inspect the field rather than only one narrow hypothesis.
-
-The purpose is to ensure the workbench has **room to navigate**.
-
-A territory with only one remaining interesting cell is usually too narrow. A healthy workbench should still contain several plausible routes to learn something important even if the first lead dies.
-
-Do not confuse:
-- “I can name 5 experiments around this anomaly”
-with
-- “this territory has 5 independent ways to generate scientific information.”
-
-## Handoff to workbench
-
-Before opening a workbench, search should provide only:
-
-- why the territory matters;
-- why it is suitable for this search lane;
-- strongest practical baseline / parent implementation;
-- relevant data / public artifacts;
-- nearest important lineage;
-- 3–6 **uncertain diagnostic questions**;
-- major feasibility / ownership risks.
-
-Do **not** require:
-- an expected sign;
-- a final RQ;
-- a paper title;
-- a method;
-- a candidate ID.
-
-Rules:
-- no experiments under `search/`;
-- no topic-specific subdirectories under `search/`;
-- no candidate IDs here;
-- detailed taste criteria live inside each lane.
+- 从概念二分、“X ≠ Y” 模板、单篇 anomaly、两篇论文的张力**直接**生成题目。
+- 以“有人做过 / 已成 program / 一小块被碰过”为理由**桌面**杀题。
+- 选题阶段就要求预测结果、写标题、注册 RQ。
+- 同时开很多条线；一条线在跑通强基线之前就被判死。
+- 用对已部署聊天模型的 prompt 行为探针作为主要证据来源（极易测到默认值而非能力）。
+- 在 `search/` 下放实验、题目目录或候选编号（这一条沿用旧规则）。

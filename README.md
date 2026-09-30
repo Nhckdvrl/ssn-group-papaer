@@ -1,97 +1,48 @@
 # SSN Group Paper — Research Repository
 
-**Framework reset: 2026-09-28**
+**流程版本：v3（2026-09-30）。** 目标：ICML / ICLR / NeurIPS / CVPR / ICCV / ACL / EMNLP / NAACL 主会。
+为什么从 v2 改到 v3：见 [`search/PROCESS_DIAGNOSIS_2026-09-30.md`](search/PROCESS_DIAGNOSIS_2026-09-30.md)（25 天、1,420 次提交、约 255 个被杀题目、14 个 workbench、0 个 candidate 的原因分析与顶会校准数据）。
 
-The repository is organized by **research stage**, not by topic.
+## 主流程
 
-A domain such as AI4Quant, MoE, hybrid models, speech, VLA, etc. should **not** become a new top-level folder. Topic-specific work belongs in `workbench/`; reusable background material belongs in `library/`.
+> **SEARCH（选领域）→ WORKBENCH（驻留 = 建设 + 系统测量）→ CANDIDATE → PAPER（投—改—再投）**
 
-## Canonical flow
+三条核心原则：
 
-> **SEARCH → WORKBENCH → CANDIDATE → PAPER**
+1. **选题选的是要住进去建设的领域，不是要去验证的现象。** 旧的“猜现象 → 赌博 → 实验”已被证伪。
+2. **新颖性 = 可陈述的增量，不是无人触碰的空白。** 顶会每个周期都在同一个 parent 下接收大量论文；“有人做过 / 已成 program”不是放弃理由。用真实的顶会接收/拒稿数据（`tools/venue_corpus/`）校准，而不是让 agent 在全 arXiv 上找“有没有人碰过”。
+3. **论文从建设中长出来。** 在强开源系统上跑通、建资产、记录痛点、系统测量；从第一周起允许针对真实痛点做方法。Failure → Bottleneck → Action → Outcome 是论文的叙事标准，不是动手的许可。
 
-The key rule is:
+## 目录结构（按阶段/功能，不按题目）
 
-> **Search does not need to invent the final paper idea.**
-
-Search only needs to identify an important problem territory worth serious exploration. The actual paper question, finding, mechanism, or method is allowed to emerge from strong-baseline reproduction and experiments inside the workbench.
-
-## Top-level structure
-
-| path | role |
+| 路径 | 作用 |
 |---|---|
-| `search/` | topic-search philosophies; decides what is worth exploring |
-| `workbench/` | baseline reproduction, analyses, failures, observations, changing hypotheses |
-| `candidates/` | current paper candidates only; currently **0** |
-| `library/` | reusable territory map, anchor papers/blogs, deep literature/artifact archives |
-| `failed/` | durable global anti-resurrection / kill evidence |
-| `archive/` | read-only historical candidates, old “good” packages, retired search systems and experiments |
+| `search/` | 选领域：流程（`README.md`）、诊断、两个品味通道（`our-taste/`、`sasano-taste/`）、territory 扫描 |
+| `workbench/` | 驻留与建设：强基线、资产、痛点日志、系统测量、论文形态卡；同时最多 1 主线 + 1 探索线 |
+| `candidates/` | 已经在 workbench 中成形的论文候选；当前 **0** |
+| `library/` | 按**题材**组织的知识库：谱系、关键论文卡、开源资产、awesome 列表、热度数据 |
+| `tools/` | 可复用工具；`venue_corpus/` = 顶会接收+拒稿语料库（热度 / 论文形态 / 近邻定位） |
+| `failed/` | 跨项目的 kill 记录；2026-09-30 再审见 `failed/REAUDIT_2026-09-30.md`（桌面新颖性 kill 改为可带增量重开） |
+| `archive/` | 只读历史：旧候选、旧“good”包、旧搜索系统 |
 
-There is deliberately **no top-level `observations/`**. A stable observation stays with the workbench that produced it until it helps crystallize an actual candidate.
+## 1. Search（选领域）
+流程与模板：[`search/README.md`](search/README.md)。输出是一张 territory 卡：热度卡、谱系卡、形态卡、立足点卡、压力清单。
 
-## 1. Search
-
-`search/` contains only search philosophies:
-
-- `search/sasano-taste/`
-- `search/our-taste/`
-
-A search result should look like:
-
-> “This problem territory is important enough to inhabit; here is the object / baseline / line we should start from.”
-
-It does **not** need to predict the final result, method, or paper title.
-
-No experiments, topic folders, or candidate IDs belong under `search/`.
-
-## 2. Workbench
-
-`workbench/` is the main research space.
-
-Default behavior:
-
-> **strong baseline → reproduce → strengthen / understand → exploratory analysis → successes + failures → stable knowledge → candidate (maybe)**
-
-A workbench owns its own observations. Hypotheses may change freely. Negative results, large drops, broken assumptions, and unexpectedly strong baselines are useful gradients.
-
-A workbench may end as:
-- a candidate;
-- a paused knowledge asset;
-- a failed line with reusable lessons.
-
-It does **not** need to become a paper.
+## 2. Workbench（驻留 = 建设）
+流程与模板：[`workbench/README.md`](workbench/README.md)。第 1–3 周交付 D1–D6（强基线复现、可复用资产、痛点日志、领域标准测量、定位表、论文形态卡）；之前不许以“没意思 / 被拥有”为由关闭。
 
 ## 3. Candidates
-
-Only create a directory under `candidates/` after a workbench has naturally produced a clear, important, defensible paper identity.
-
-Current candidates: **0**.
-
-Historical candidate packages are under `archive/candidates/`.
+主结果在强基线、公平算力、多种子下成立；定位表完成；论文形态卡稳定；目标会议明确。当前 **0**。
 
 ## 4. Library
-
-Before broad web search, check:
-
-1. `library/TERRITORY_BANK.md`
-2. `library/KEY_PAPERS.md`
-3. `library/BLOGS_REPORTS.md`
-4. `library/deep/`
-
-The library is reference material, not a candidate list.
+先查 `library/README.md`（题材索引）→ 对应题材页 → `tools/venue_corpus` → 最新 arXiv。
 
 ## 5. Failed / Archive
+`failed/` 记录**有证据的**失败与其教训；桌面新颖性 kill 在 v3 下可带新增量重开。`archive/` 只读，旧状态标签不构成任何授权。
 
-`failed/` is active anti-resurrection knowledge.
-
-`archive/` is read-only history. Old status labels inside it are historical only and never authorize new work.
-
-## Repository rules
-
-- top-level folders represent **stage/function**, never a topic;
-- no new `search_rounds/` process dumps;
-- no candidate ID during search or early exploration;
-- observations stay local to a workbench;
-- paused workbenches may remain as knowledge assets;
-- topic-specific experiments belong in `workbench/`, not in a search lane;
-- current state is determined by this README plus the relevant current-stage README.
+## 仓库规则
+- 顶层目录代表阶段/功能，不代表题目；
+- 不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验；
+- 候选编号只在 candidate 阶段出现；
+- 观察结果留在产生它的 workbench；
+- 当前状态以本 README 与各阶段 README 为准。
