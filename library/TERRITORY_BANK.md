@@ -426,6 +426,6 @@ Use existing expensive interventions and public trajectories before training any
 - recreating company-scale multilingual pretraining/scaling studies.
 
 **Deep map:** `deep/academic/CROSS_LINGUAL_CAPABILITY_FORMATION_2026.md`  
-**Anchors:** ML01–ML34.
+**Anchors:** ML01–ML42.
 
-**Current high-information pressure:** translation is increasingly used both as a cheap proxy for broad multilingual performance and as a model organism for cross-lingual transfer formation, yet controlled pretraining interventions can damage translation far more than QA/reasoning. This correlation-vs-causal-role tension is worth deeper ownership/feasibility audit before any workbench admission.
+**Current high-information pressure:** controlled modern decoder-LM studies disagree on whether parallel data improves only translation/interface alignment or broader understanding/reasoning. A promising explanation is that the functional role of bilingual coupling changes with the target language's acquisition state: it may scaffold broad capability when the language is underexposed/newly added, but become mainly a fine-grained translation/interface signal once monolingual competence is already established. This is a pressure map, not a claim; generic 'resource regime matters' is already owned by older work.
