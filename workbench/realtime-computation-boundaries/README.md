@@ -553,3 +553,14 @@ Decision: **FREEZE** (knowledge asset). Reasons are the freeze criteria stated i
 - objective-writing / handoff-payload fidelity for single requests (measured transparent here).
 
 **Reopen only if:** (a) a multi-turn, evolving-task substrate shows a boundary effect (visibility / authorship / result age) that survives a capability-matched control and is not APEX-Voice's correction-state finding; or (b) a full-duplex model family shows abstention loss that is *not* instruction-recoverable.
+
+### P3 — last check before closing: is escalation also a default? (2026-09-30) — **No.**
+
+Unifying hypothesis tested: "realtime-interaction failures are behavioural defaults, not capability loss" (abstention was instruction-recoverable). Test: system prompt explicitly listing the background agent's tools and instructing the frontend to delegate any request needing tools, real-time information or account data (`/home/xiang/rt_ext/runs/delegate_prompt.txt`), FDB-v3 real audio, released decoding.
+
+| model | natural handoff, default prompt | natural handoff, delegate instruction |
+|---|---|---|
+| Realtime-Venus-Audio | 3/100 | **1/21** (run stopped early; unambiguous) |
+| Realtime-Venus-Omni | ~15% (text probes) | **0/11** |
+
+The instruction does not reach the in-stream action token (only forcing `<delegate>` does: 74% handoff, pass given handoff = slow-only reference). Verbal behaviour (abstention) is instruction-controllable; the action channel is not. The unified story would need that qualifier → stop-loss (each repair adds a conditional). Line closed; workbench stays FROZEN. Results `results/p3_*`.
