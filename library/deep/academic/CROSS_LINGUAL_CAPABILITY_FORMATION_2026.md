@@ -1117,3 +1117,247 @@ Kill or demote if:
 - useful evidence requires proprietary hidden CoT or company-scale RL training;
 - the phenomenon disappears on current open reasoning models after strong prompts/training.
 
+
+
+---
+
+## 18. Lead demotion and new pressure: when does explicit bilingual alignment transfer beyond translation?
+
+### 18.1 The previous proxy/interventional-validity lead is demoted
+
+The earlier lead asked whether translation's cross-sectional value as a multilingual proxy survives controlled pretraining interventions.
+
+A direct ICLR 2026 prior now owns most of the clean version of that question:
+
+**From Translation to Multilinguality: Revisit the Role of Parallel Data in Multilingual LLM Pretraining**
+
+It compares:
+
+- concatenated parallel pairs, where both translations co-occur inside one context;
+- the same sides split into independent samples, removing direct context-local cross-lingual supervision.
+
+The paper covers:
+
+- 18 languages;
+- English + one non-English language;
+- English + many non-English languages;
+- multiple parallel-data ratios;
+- English-only Stage 1 → multilingual Stage 2;
+- 1.5B and 8B models;
+- 100B / 300B-token training regimes.
+
+Its central result is that explicit parallel-format alignment produces large translation gains but only limited gains on broader monolingual/cross-lingual tasks.
+
+Therefore **do not open a workbench whose claim is simply “translation/parallel alignment is not a causal proxy for broader multilingual competence.”** That statement is now directly owned.
+
+### 18.2 The direct prior creates a more interesting literature conflict
+
+Several strong neighboring works report a different broader effect.
+
+#### ACL 2025 — Just Go Parallel
+
+From-scratch 1.1B model trained for 167B tokens.
+
+Non-parallel base data are extremely English-heavy:
+
+- English: 82.35%;
+- Indonesian: 0.19%;
+- Chinese: 0.12%.
+
+Important controls:
+
+- MULTILINGUAL adds target-language sides without their English counterparts;
+- PARALLEL NON-ADJACENT contains the same parallel content but shuffles English counterparts away;
+- PARALLEL DISTRIBUTED / LAST co-locate aligned translation pairs.
+
+Adjacent/distributed parallel data strongly improves MT and also improves Indonesian/common-sense performance relative to several matched controls.
+
+This is not a pure “more target-language tokens” result.
+
+#### EMNLP 2025 — TransWebEdu
+
+A single high-quality English corpus is translated into nine languages.
+
+Crucially, the pretraining sequence uses random multilingual documents rather than adjacent parallel pairs. Thus:
+
+> same / highly matched semantic content exists across languages at corpus level, but local token-level alignment is not directly presented in the context.
+
+The resulting 1.3B model is strong on non-English understanding and reasoning.
+
+This separates **high-quality target-language exposure / corpus-level semantic correspondence** from **local adjacency**.
+
+#### 2026 — OpenSeal
+
+Starts from an English-centric OLMo-2 model and adapts it to Southeast Asian languages.
+
+Under a fixed CPT budget, parallel-only training outperforms monolingual-only alternatives on translation and XNLI. This is a different acquisition regime from balanced multilingual pretraining from scratch:
+
+> a strong English competence already exists; the scientific problem is how to attach new language interfaces/capabilities to that existing computation.
+
+#### EMNLP 2025 — multi-way parallel TED2025
+
+Reports broader multilingual gains from aligned multi-way parallel data over unaligned multilingual alternatives across several tasks.
+
+### 18.3 Current reconciliatory hypothesis class — do not assume it
+
+A promising explanation is that the causal role of parallel data depends on **what the target language already knows before the alignment signal arrives**.
+
+Possible regimes:
+
+#### Regime A — target language itself is under-acquired
+
+Examples:
+- JGP's Chinese/Indonesian under extreme English dominance;
+- English-centric base → new-language CPT (OpenSeal).
+
+Parallel data may simultaneously supply:
+
+1. target-language lexical/syntactic/semantic exposure;
+2. high-quality matched semantic content;
+3. explicit cross-language alignment;
+4. a path into an already strong English computation.
+
+Broader reasoning gains are therefore plausible.
+
+#### Regime B — target languages already have abundant monolingual competence
+
+Examples:
+- MONOWEB's balanced EN/DE/ES/FR setup;
+- ICLR 2026's richer multilingual mixes.
+
+Once each language already has strong monolingual competence and shared computation, the *incremental* benefit of putting translation counterparts in the same context may collapse mainly to translation/interface mapping.
+
+This would reconcile apparently conflicting papers without declaring any one wrong.
+
+### 18.4 But “resource level matters” alone is not novel
+
+Older cross-lingual transfer work already treats:
+
+- monolingual-resource scarcity;
+- parallel-data scarcity;
+- task-label scarcity;
+- pretrained-language support
+
+as interacting dimensions.
+
+Therefore the contribution cannot be:
+
+> “parallel data helps low-resource languages more.”
+
+That is too old and too broad.
+
+The sharper modern-LLM question is potentially:
+
+> **What prerequisite multilingual competence makes explicit alignment cease to transfer beyond translation?**
+
+or equivalently:
+
+> **Does parallel data change its functional role as a language moves from acquisition to alignment?**
+
+This wording is still exploratory.
+
+### 18.5 Competing explanations that must be separated
+
+The JGP/OpenSeal/TransWebEdu versus MONOWEB/ICLR contrast can arise from multiple causes.
+
+1. **Monolingual exposure / competence level**
+   - low target-language competence makes any high-quality bilingual data broadly useful.
+
+2. **Training regime**
+   - from-scratch joint acquisition vs continual adaptation to an English core.
+
+3. **Data quality/content**
+   - translated high-quality English content may improve reasoning because the content itself is better, not because it is bilingual.
+
+4. **Local alignment**
+   - co-occurrence inside one context may create a distinct supervision signal.
+
+5. **Curriculum timing**
+   - parallel-last can behave differently from parallel-first/distributed.
+
+6. **Task construction**
+   - XNLI/XCOPA/XStoryCloze and other translated benchmarks may reward interface quality differently from native-authored reasoning.
+
+7. **Language family/script/tokenization**
+   - JGP uses Chinese/Indonesian; MONOWEB uses Western European languages.
+
+8. **Model state/capacity**
+   - English-centric pretrained model vs random initialization; 1B vs 8B.
+
+A strong workbench should manipulate or reuse artifacts to make these explanations compete, rather than averaging papers.
+
+### 18.6 The attractive factorial object
+
+The cleanest conceptual factorial is:
+
+**Axis 1 — target-language competence before explicit alignment**
+- weak / newly introduced;
+- intermediate;
+- already strong.
+
+**Axis 2 — cross-language semantic relationship**
+- unrelated monolingual content;
+- matched semantic content but not locally adjacent;
+- explicit adjacent parallel pairs.
+
+Then evaluate separately:
+
+- target-language LM/understanding;
+- translation;
+- NLU transfer;
+- reasoning;
+- possibly factual access.
+
+The scientific quantity is not raw benchmark score.
+
+It is:
+
+> **the marginal causal effect of explicit alignment conditional on prior target-language competence and content matching.**
+
+This is much sharper than “parallel data helps multilinguality”.
+
+### 18.7 Feasibility without giant pretraining
+
+We should first exploit existing trained families:
+
+- JGP public variants/checkpoints;
+- MONOWEB released intervention models;
+- OpenSeal 1B/7B variants if fully released;
+- TransWebLLM/TransWebEdu;
+- ICLR-2026 artifacts if public.
+
+A first analysis can ask whether the observed cross-paper pattern already follows a consistent competence-regime gradient.
+
+Only if a missing cell is genuinely decisive should we train a small 100M–1B controlled family.
+
+Potential cheap controlled substrate:
+- BabyLM / Bilingual BabyLM;
+- False Friends infrastructure.
+
+Do not reproduce 100B–300B token runs.
+
+### 18.8 Hard ownership warning
+
+The ICLR 2026 direct prior is close enough that any workbench must be able to answer:
+
+> **Why isn't this paper simply “From Translation to Multilinguality, but with resource level as another axis”?**
+
+A valid distinction would require showing that:
+
+- prior competence qualitatively changes the *role* of explicit alignment;
+- this reconciles currently conflicting strong results;
+- the interaction predicts behavior in held-out training regimes/models;
+- representation/trajectory evidence explains the transition;
+- and ideally yields a simple practical consequence.
+
+If the project only adds low/medium/high resource bins to the ICLR study, kill it.
+
+### 18.9 Current status
+
+The original “translation proxy causal validity” lead is **DEMOTED by direct prior ownership**.
+
+The surviving high-information pressure is:
+
+> **parallel bilingual data appears to have different downstream roles across acquisition regimes: sometimes it improves broader understanding/reasoning, while in already multilingual models its unique explicit-alignment benefit can collapse toward translation. What changes in the model/data regime to cause this role transition?**
+
+This is strong enough for continued search, but not yet authorized as a workbench.
