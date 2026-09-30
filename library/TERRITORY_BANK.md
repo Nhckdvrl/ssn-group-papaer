@@ -426,6 +426,6 @@ Use existing expensive interventions and public trajectories before training any
 - recreating company-scale multilingual pretraining/scaling studies.
 
 **Deep map:** `deep/academic/CROSS_LINGUAL_CAPABILITY_FORMATION_2026.md`  
-**Anchors:** ML01–ML42.
+**Anchors:** ML01–ML56.
 
-**Current high-information pressure:** controlled modern decoder-LM studies disagree on whether parallel data improves only translation/interface alignment or broader understanding/reasoning. A promising explanation is that the functional role of bilingual coupling changes with the target language's acquisition state: it may scaffold broad capability when the language is underexposed/newly added, but become mainly a fine-grained translation/interface signal once monolingual competence is already established. This is a pressure map, not a claim; generic 'resource regime matters' is already owned by older work.
+**Current high-information pressure:** the parallel-data/translation subline is now heavily occupied by direct 2026 priors and is demoted as the primary lead. A stronger open pressure lies in multilingual reasoning post-training: visible reasoning language, decodable internal language, latent answer dynamics and actual causal reasoning computation are often treated as related but are measured differently. Current SFT/RL/language-control studies disagree on when target-language reasoning harms vs preserves cross-lingual performance. The promising object is not “reason in language X,” but what computation must remain invariant when reasoning language is changed.
