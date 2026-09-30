@@ -12,8 +12,8 @@
 | 执行 | [`experiment_card.md`](experiment_card.md) | `workbench/<名字>/experiments/E##-<slug>.md` |
 | 执行 | [`claims.md`](claims.md) | `workbench/<名字>/CLAIMS.md` |
 | 定位 | [`positioning.md`](positioning.md) | workbench README 或 `POSITIONING.md` |
-| 每周人审 | [`weekly_review.md`](weekly_review.md) | `workbench/<名字>/logs/weekly-YYYY-MM-DD.md`（`tools/process/weekly.py` 生成骨架） |
-| 论文形态 | [`paper_shape.md`](paper_shape.md) | workbench README（每周更新） |
+| 人审（决策点触发） | [`review.md`](review.md) | `workbench/<名字>/logs/review-YYYY-MM-DD.md`（`tools/process/review.py` 生成骨架） |
+| 论文形态 | [`paper_shape.md`](paper_shape.md) | workbench README（每次人审更新） |
 | 关闭 / 暂停 | [`close_record.md`](close_record.md) | workbench README 末尾；跨项目有用的再复制到 `failed/` |
 | 候选 | [`candidate_readme.md`](candidate_readme.md) | `candidates/<名字>/README.md` |
 | 模拟审稿 | [`mock_review.md`](mock_review.md) | `candidates/<名字>/MOCK_REVIEW.md` |

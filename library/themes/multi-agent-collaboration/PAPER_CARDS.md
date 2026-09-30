@@ -1,6 +1,6 @@
 # 论文卡 — 多智能体与大小模型协作（2026-09-30）
 
-模板见 `search/README.md` §4.1。**证据等级说明**：本批次无法访问 arXiv / OpenReview 全文（网络策略），卡片基于摘要（`tools/venue_corpus`）、官方代码 README、以及检索摘要。标注 `[摘要级]` 的卡片在驻留第 1 周需要回到全文核对“方法 / 实验 / 基线”三项。idea 来源一律为 **RECONSTRUCTED**（我们重建的合理路径），不是作者自述。
+模板见 `search/README.md` §4.1。**证据等级说明**：本批次无法访问 arXiv / OpenReview 全文（网络策略），卡片基于摘要（`tools/venue_corpus`）、官方代码 README、以及检索摘要。标注 `[摘要级]` 的卡片在驻留阶段一需要回到全文核对“方法 / 实验 / 基线”三项。idea 来源一律为 **RECONSTRUCTED**（我们重建的合理路径），不是作者自述。
 
 ---
 
@@ -113,7 +113,7 @@
 
 ---
 
-## F. 最新 arXiv 近邻（2026-04 → 2026-09，检索摘要级；驻留第 1 周回原文核对）
+## F. 最新 arXiv 近邻（2026-04 → 2026-09，检索摘要级；驻留阶段一回原文核对）
 | 论文 | 要点 | 与我们的关系 |
 |---|---|---|
 | *Training Small LLMs as Spatial Multi-Agent Policies*（2608.01425） | 2–4B LLM 作为“符号选项库”上的策略，每个智能体一个私有 LoRA，用 PA-MAGRPO 训练；Cleanup、Overcooked（Asymmetric Advantages）、Commons Harvest 上从 0 回报提升到可用水平 | **小模型合作游戏的现成基底**（对应游戏 NPC 偏好）；交叉配对 / 换伙伴可以直接在它的环境上测 |

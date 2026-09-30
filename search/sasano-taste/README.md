@@ -113,7 +113,7 @@ Sasano's later paper feedback repeatedly emphasizes:
 
 Sasano-style simplicity must **not** be confused with smallness.
 
-A simple natural question is valuable only if its answer can plausibly support a main-track paper-scale scientific conclusion. Ask the following **at the week-3 paper-shape review and at the candidate gate, with evidence in hand**, not as a desk gate before handoff:
+A simple natural question is valuable only if its answer can plausibly support a main-track paper-scale scientific conclusion. Ask the following **at the residency review (once D1–D6 are delivered) and at the candidate gate, with evidence in hand**, not as a desk gate before handoff:
 
 - if the strongest interesting outcome is true, does it change a broader understanding rather than only describe one linguistic/game/model niche?
 - can the first natural object serve as a clean window onto a more general phenomenon?

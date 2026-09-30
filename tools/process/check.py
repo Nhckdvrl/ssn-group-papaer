@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Check the repository against the research process (workbench/README.md, EXECUTION.md).
+No schedule checks: the process advances on state and evidence, not on calendar time.
 
 Usage: python3 tools/process/check.py [--today YYYY-MM-DD] [--strict]
 Exit code 1 if any ERROR (or any WARN with --strict).
@@ -10,9 +11,7 @@ import sys
 
 from common import LEVELS, ROOT, STATUSES, WB, choice, claims, field, parse_date, registry, today
 
-REVIEW_MAX_DAYS = 8
 README_MAX_LINES = 200
-DEADLINE_WINDOW_WEEKS = 12
 CARD_FIELDS = ["对应", "阳性对照", "噪声地板", "决策表（跑之前写）"]
 
 
@@ -51,19 +50,12 @@ def check_registry(rep, now):
             rep.add("ERROR", where, "登记表中的目录不存在")
             continue
         deadline = parse_date(r.get("截稿"))
-        if r.get("状态", "").startswith("ACTIVE") or r.get("状态") == "PROPOSED":
-            if deadline:
-                days = (deadline - now).days
-                if 0 <= days <= DEADLINE_WINDOW_WEEKS * 7:
-                    rep.add("INFO", where, f"距 {r.get('目标会议')} 截稿 {days} 天（T−{days // 7} 周；倒排见 EXECUTION.md §7）")
-                elif days < 0:
-                    rep.add("WARN", where, f"截稿日 {deadline} 已过，请更新目标会议")
-            else:
-                rep.add("INFO", where, "截稿日未定（官方公告后填写 YYYY-MM-DD）")
+        if (r.get("状态", "").startswith("ACTIVE") or r.get("状态") == "PROPOSED") and deadline and deadline < now:
+            rep.add("WARN", where, f"截稿日 {deadline} 已过，请更新目标会议（够投就投，不够就下一个会）")
     return rows
 
 
-def check_active(rep, row, now):
+def check_active(rep, row):
     name = row["name"]
     d = WB / name
     where = f"workbench/{name}"
@@ -79,11 +71,8 @@ def check_active(rep, row, now):
         rep.add("ERROR", where, "登记表未指定主张账本（CLAIMS.md）")
     elif not (d / ledger).exists():
         rep.add("ERROR", where, f"主张账本 {ledger} 不存在")
-    reviewed = parse_date(row.get("上次人审"))
-    if not reviewed:
-        rep.add("WARN", where, "没有人审记录")
-    elif (now - reviewed).days > REVIEW_MAX_DAYS:
-        rep.add("WARN", where, f"上次人审 {reviewed}，已 {(now - reviewed).days} 天（每周一次）")
+    if not parse_date(row.get("上次人审")):
+        rep.add("WARN", where, "没有人审记录（人审在决策点触发，见 EXECUTION.md §9）")
     if not (d / "PAIN_LOG.md").exists() and "痛点" not in readme.read_text():
         rep.add("WARN", where, "没有痛点日志（PAIN_LOG.md）")
 
@@ -151,7 +140,7 @@ def main():
         if not d.is_dir():
             continue
         if row.get("状态", "").startswith("ACTIVE"):
-            check_active(rep, row, now)
+            check_active(rep, row)
         if row.get("状态") in {"ACTIVE-MAIN", "ACTIVE-EXPLORE", "PROPOSED"}:
             check_cards(rep, d)
             check_claims(rep, d)

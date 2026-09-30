@@ -5,7 +5,7 @@
 **territory 卡：** <链接>　**目标会议 / 截稿：** <会议，日期>　**上次人审：** <日期>
 **一句话（当前版本）：**
 
-## 论文形态卡（每周更新，模板 `templates/paper_shape.md`）
+## 论文形态卡（每次人审更新，模板 `templates/paper_shape.md`）
 
 ## Idea 组合（详见 `ideas/`）
 | ID | 一句话 | 来源（P#/E#/近邻） | 研究动作 | 状态 SEED/PILOT/PROMISING/CLAIM/PARKED/REFUTED | 证据等级 |

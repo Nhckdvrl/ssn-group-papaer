@@ -1,4 +1,4 @@
-# 定位表（D5；每两周更新）
+# 定位表（D5；主旨改变、主张升到 L2、进候选前、投稿前更新）
 
 来源：`python3 tools/venue_corpus/query.py nearest "<当前一句话主旨>" -k 15` 的接收论文与 near-miss 拒稿 + 最新 arXiv（awesome 列表 / daily 镜像）。
 

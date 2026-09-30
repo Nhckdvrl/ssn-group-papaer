@@ -2,7 +2,7 @@
 
 > **v3 说明（2026-09-30）：** 本通道的内容（强基线优先、痛点先于修复、利用我们的真实优势、从谱系学研究动作）继续有效。变化在于**执行方式**，统一服从 [`../README.md`](../README.md)：
 > - §7 的“顶会天花板”检查在 **workbench 驻留中用证据回答**，不再作为桌面门槛；“有人做过 / 已成 program”不是放弃理由。
-> - 方法可以从驻留第一周开始，只要它针对强基线上**真实出现**的痛点（顶会本方向的接收论文大多是方法型，见诊断 §4.2）。
+> - 方法可以从驻留一开始就做，只要它针对强基线上**真实出现**的痛点（顶会本方向的接收论文大多是方法型，见诊断 §4.2）。
 > - 输出统一为 territory 卡（热度卡 / 谱系卡 / 形态卡 / 立足点卡 / 压力清单），不再用 §8 的旧清单。
 > - 当前扫描：[`TERRITORY_SCAN_2026-09-30.md`](TERRITORY_SCAN_2026-09-30.md)。
 
@@ -106,7 +106,7 @@ Imitate the **reasoning move**, not the surface method.
 
 Baseline-first does not mean “any baseline with a weakness is worth months of work”.
 
-These questions are asked **at the week-3 paper-shape review and at the candidate gate, with evidence in hand** — not at the desk before a workbench exists (desk novelty/crowding judgments account for ~91% of the ~255 v2 kills; see `../PROCESS_DIAGNOSIS_2026-09-30.md`). At search time, the only reasons to drop a territory are those in `../README.md` §2.6.
+These questions are asked **at the residency review (once D1–D6 are delivered) and at the candidate gate, with evidence in hand** — not at the desk before a workbench exists (desk novelty/crowding judgments account for ~91% of the ~255 v2 kills; see `../PROCESS_DIAGNOSIS_2026-09-30.md`). At search time, the only reasons to drop a territory are those in `../README.md` §2.6.
 
 Ask:
 
@@ -117,7 +117,7 @@ Ask:
 - what strong current papers would reviewers mentally compare us against, and is the potential contribution comparable in conceptual scale?
 - if the method gain were zero, could the analysis still teach the field something consequential? If the analysis were removed, could the method still represent a meaningful technical step? Ideally at least one side has real scale.
 
-If, with residency evidence in hand, the best-supported endpoint is still merely one of the following, **re-scope within the territory** (change the setting, the evidence type, add a method or theory; see `../README.md` §3.2 and `../../workbench/IDEA_EXPLORATION.md` §2) and discuss it at the weekly human review. Only a human closes a line:
+If, with residency evidence in hand, the best-supported endpoint is still merely one of the following, **re-scope within the territory** (change the setting, the evidence type, add a method or theory; see `../README.md` §3.2 and `../../workbench/IDEA_EXPLORATION.md` §2) and discuss it at the next human review (triggered by decision points, not by the calendar). Only a human closes a line:
 - “+X points on one benchmark”;
 - “a new module for one model family”;
 - “a failure on one slice”;

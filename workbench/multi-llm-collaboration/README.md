@@ -13,7 +13,7 @@ territory 卡：[`../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../se
 
 ---
 
-## 论文形态卡（初稿，驻留第 3 周前替换为证据版本）
+## 论文形态卡（初稿，D1–D6 交付时替换为证据版本）
 - 一句话主旨：未定（由驻留测量决定；候选形态见 territory 卡 §2.7）
 - 论文形态：A 失败模式+修复 / B 构念引入（ZSC、算力会计）+测量 / D 评测协议 —— 待定
 - 3 个贡献：❌（驻留后填写）
@@ -21,7 +21,7 @@ territory 卡：[`../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../se
 - 5 张主图/表：❌（预期至少包括：算力匹配曲线、交叉配对矩阵、按角色的反事实贡献随训练变化）
 - 基线：Dr. MAS / MAGRPO / AT-GRPO 训练的团队；同算力训练的单模型；未训练的提示式团队；更大的单模型；伙伴泛化的修复基线：SRPO（2602.21515，策略风险规避）、种群协同训练（SCOPE / FCP 式）
 - 证据标准：≥2 个模型家族（Qwen、Llama）、≥2 个尺寸（1.5B–4B，7B 做关键对照）、≥3 个种子、≥2 类任务（数学/代码 + 搜索或合作游戏）、置信区间
-- 定位表：最近邻为论文卡 F 节的 SRPO（2602.21515，P2 方法 + 理论 + 小规模 LLM 实验）、A7（TeamTR / SAT-AAMAS）、A8（SCOPE）、B1 后续（SAT-Stanford 2609.22682，文本层策略库）、C1（ZSC 谱系）；驻留第 3 周写完整版
+- 定位表：最近邻为论文卡 F 节的 SRPO（2602.21515，P2 方法 + 理论 + 小规模 LLM 实验）、A7（TeamTR / SAT-AAMAS）、A8（SCOPE）、B1 后续（SAT-Stanford 2609.22682，文本层策略库）、C1（ZSC 谱系）；阶段三（D5）写完整版
 - 风险：见 territory 卡 §2.8
 
 ---
@@ -40,14 +40,14 @@ territory 卡：[`../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../se
 
 ## 驻留计划（D1–D6，见 `../README.md` §2）
 
-### 第 1 周 · D1/D2 强基线与资产
+### 阶段一 · D1/D2 强基线与资产
 1. **环境**：在节点上建 `env.sh`（verl + sglang/vLLM；Dr. MAS 用 `requirements_sglang.txt`，flash-attn 2.7.4）；CoMLRL 单独环境（`pip install comlrl`）。
 2. **复现 1（[E01](experiments/E01-drmas-math-repro.md)）**：Dr. MAS 数学（Solver + Verifier，2×Qwen2.5-1.5B 或 2×Qwen3-1.7B 起步），记录与官方趋势的差距、2 个以上种子的方差、梯度范数曲线（它的核心诊断）。两个种子的团队同时是 I01 的 pilot 材料。
 3. **复现 2（[E02](experiments/E02-comlrl-code-repro.md)）**：CoMLRL MAGRPO 代码协作（HumanEval/MBPP/CoopHumanEval，Qwen2.5-0.5B→1.5B）。
 4. **统一评测 harness**：vLLM 推理；**算力计量**（每题调用次数、生成 token、训练 GPU·时）作为一等公民写进每条结果。
 5. 可选：Dr. MAS 搜索（3 智能体，需要本地检索服务，约 6GB 显存/卡）。
 
-### 第 2 周 · D3/D4 系统测量（测量，不是假设检验）
+### 阶段二 · D3/D4 系统测量（测量，不是假设检验；阶段一跑通即开始）
 | 测量 | 做法 | 对应压力 |
 |---|---|---|
 | 算力匹配曲线 | 训练后团队 vs 同训练算力的单模型 vs 更大单模型，按推理 token / 调用数对齐 | P1 |
@@ -58,12 +58,12 @@ territory 卡：[`../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../se
 
 所有测量同时写进**痛点日志**（什么坏了、什么不稳定、什么意外地好）。
 
-### 第 3 周 · D5/D6 定位表与论文形态卡
+### 阶段三 · D5/D6 定位表与论文形态卡（与阶段二交错进行，交付即人审）
 - 对最近 10 篇接收论文 + 最新 arXiv 写定位表（`python3 ../../tools/venue_corpus/query.py nearest "<当前主旨>"`）。
 - 根据测量写论文形态卡；选 1–2 条压力进入 build + understand 两条轨道。
 
 ### 算力预算（单节点 4×80–96GB）
-- 1.5B–4B 团队一次训练约 0.5–2 天；前 3 周约 6–10 次训练 + 大量推理评测。7B 只用于关键对照。
+- 按优先级排算力，不排日程：E01 → I01 pilot（复用 E01）→ E02 → 其余测量。官方参考：Dr. MAS 数学 2×Qwen3-4B 在 4×H100 上约 38 小时，1.5B 预计明显更少，以实测 GPU·时为准。7B 只用于关键对照。
 
 ---
 
@@ -71,7 +71,7 @@ territory 卡：[`../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../se
 （驻留开始后按日期追加：现象 / 复现条件 / 量级 / 可能对应的压力）
 
 ## 决策记录
-- 2026-09-30：territory 扫描推荐本方向为新探索线；待人确认。不预设结果；第 2 周的测量无论哪个方向都有对应的论文形态（territory 卡 §2.7）。
+- 2026-09-30：territory 扫描推荐本方向为新探索线；待人确认。不预设结果；阶段二的测量无论哪个方向都有对应的论文形态（territory 卡 §2.7）。
 
 ## 资产位置
 - 代码：`experiments/`（驻留开始后创建）

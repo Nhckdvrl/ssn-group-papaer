@@ -7,7 +7,7 @@
 1. 读 `README.md` 与 `workbench/README.md` §9 登记表：当前主线 / 探索线、状态、截稿日。
 2. 进入你负责的 workbench：读状态页、论文形态卡、`CLAIMS.md`、`PAIN_LOG.md`、最近的实验卡与 `logs/`。
 3. 运行 `python3 tools/process/check.py`，有 ERROR 先修。
-4. 写下本次会话要推进的**主张 C##、idea I## 或痛点 P##**。说不出来 → 先做每周人审骨架（`python3 tools/process/weekly.py <workbench>`）或问人。
+4. 写下本次会话要推进的**主张 C##、idea I## 或痛点 P##**。说不出来 → 生成人审骨架（`python3 tools/process/review.py <workbench>`）交给人，或直接问人。
 
 ## 2. 硬规则（违反即停，回到本文件）
 - **R1 不在桌面上判死。** 不能以“有人做过 / 已成 program / 一小块被碰过 / 天花板不够 / 审稿人会说你不就是 ___”为理由关闭 territory、workbench 或 idea。你能做的是：写定位表（近邻 + 增量）、调整增量、把 idea 标为 PARKED 并写重开条件。撞车的定义与处理见 `search/README.md` §3。
@@ -20,12 +20,13 @@
 - **R8 提示词行为探针不能单独作为能力证据**，必须有“一句指令能否恢复”的对照。
 - **R9 文档从简**：workbench README ≤ 200 行；过程写进实验卡、`logs/` 或 `results/`；不建过程堆积目录；不把 idea 孵化放进 `candidates/`。
 - **R10 不参考 EACL，不投 Findings。**
+- **R11 不排日程。** 不写“第几周做什么”“T−n 周”之类的计划；按优先级排算力，按状态和证据推进，决策点到了就请人审（`workbench/EXECUTION.md` §9）。截稿日只决定投哪个会。
 
 ## 3. 鼓励你主动做的
-- 在强基线上修真实出现的痛点（方法从驻留第一周起允许，但要对应一个 P##）。
+- 在强基线上修真实出现的痛点（方法从驻留一开始就允许，但要对应一个 P##）。
 - 从痛点和测量异常出发，用研究动作写 idea 卡（`workbench/IDEA_EXPLORATION.md` §2），并设计最便宜的决定性 pilot。
 - 发现混杂或伪影时，立刻写校对备注，降级受影响的主张。
-- 每两周为 ACTIVE 线扫描新近邻（venue corpus + awesome 列表 + daily-arXiv 镜像，入口见 `library/sources/AWESOME_LISTS.md`），更新定位表。
+- 主旨改变、主张升到 L2、进入候选前、投稿前，为 ACTIVE 线扫描新近邻（venue corpus + awesome 列表 + daily-arXiv 镜像，入口见 `library/sources/AWESOME_LISTS.md`），更新定位表。
 - 读论文时写论文卡（`templates/paper_card.md`），重点写“idea 来源”和“与最近邻的距离”，放进 `library/themes/<题材>/`。
 
 ## 4. 汇报
