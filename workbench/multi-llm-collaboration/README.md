@@ -2,7 +2,7 @@
 
 ## 状态（中文进度页）
 
-**ACTIVE-EXPLORE（2026-10-01，人已确认开线）。**  
+**PAUSED（2026-10-01，人决定；C 类可行性）。**  
 主线仍是 `video-world-model-temporal-interfaces`（CVPR 2027）；本线占用唯一 ACTIVE-EXPLORE 名额。
 
 - territory 卡：[`../../search/our-taste/TERRITORY_SCAN_2026-09-30.md`](../../search/our-taste/TERRITORY_SCAN_2026-09-30.md) §2
@@ -141,6 +141,7 @@ D1/D2 的 reproduction、harness 和标准 measurement 属于 residency 本身�
   - P4 white-box 延后到稳定行为现象之后；
   - Dr. MAS math 只作为 smoke-test substrate，null 不外推到一般协作；
   - paper shape / 贡献数量不预注册。
+- **2026-10-01：人决定暂停 → PAUSED（C 类可行性）。** 原因不是 scientific territory 被否定，而是第一轮具有解释力的 cross-play 至少需要两个充分训练 team；Dr. MAS 等强 baseline 的完整 RL 训练成本使“先制造实验对象、再知道有没有现象”的探索循环过重。短训小模型只能做 plumbing，不能支持 scientific null。未来若出现廉价、已充分训练且可交换成员的公开 team checkpoints，可直接重开，不从头搜索。
 
 ## 资产位置
 
