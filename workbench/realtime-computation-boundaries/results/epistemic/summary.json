@@ -1,0 +1,232 @@
+[
+ {
+  "file": "epi_qwen2_7b",
+  "family": "Qwen2",
+  "arch": "text LLM (parent)",
+  "input": "text",
+  "mode": "chat",
+  "live_abstain": [
+   60,
+   60
+  ],
+  "private_abstain": [
+   48,
+   48
+  ],
+  "live_fabricate": [
+   0,
+   60
+  ],
+  "known_answered": [
+   48,
+   48
+  ]
+ },
+ {
+  "file": "epiA_freezeomni",
+  "family": "Qwen2",
+  "arch": "full-duplex, LLM frozen, external state predictor (L1)",
+  "input": "speech",
+  "mode": "full-duplex",
+  "live_abstain": [
+   34,
+   40
+  ],
+  "private_abstain": [
+   22,
+   30
+  ],
+  "live_fabricate": [
+   6,
+   40
+  ],
+  "known_answered": [
+   32,
+   32
+  ]
+ },
+ {
+  "file": "epi_qwen25_7b",
+  "family": "Qwen2.5",
+  "arch": "text LLM (parent)",
+  "input": "text",
+  "mode": "chat",
+  "live_abstain": [
+   58,
+   60
+  ],
+  "private_abstain": [
+   47,
+   48
+  ],
+  "live_fabricate": [
+   1,
+   60
+  ],
+  "known_answered": [
+   48,
+   48
+  ]
+ },
+ {
+  "file": "epiA_qwen25omni",
+  "family": "Qwen2.5",
+  "arch": "speech Thinker-Talker, turn-based",
+  "input": "speech",
+  "mode": "turn-based",
+  "live_abstain": [
+   34,
+   40
+  ],
+  "private_abstain": [
+   31,
+   32
+  ],
+  "live_fabricate": [
+   4,
+   40
+  ],
+  "known_answered": [
+   32,
+   32
+  ]
+ },
+ {
+  "file": "epi_qwen3_8b",
+  "family": "Qwen3",
+  "arch": "text LLM (parent)",
+  "input": "text",
+  "mode": "chat",
+  "live_abstain": [
+   55,
+   60
+  ],
+  "private_abstain": [
+   44,
+   48
+  ],
+  "live_fabricate": [
+   3,
+   60
+  ],
+  "known_answered": [
+   48,
+   48
+  ]
+ },
+ {
+  "file": "epiA_minicpmo45_offline",
+  "family": "Qwen3",
+  "arch": "MiniCPM-o 4.5 omni",
+  "input": "speech",
+  "mode": "turn-based",
+  "live_abstain": [
+   37,
+   40
+  ],
+  "private_abstain": [
+   29,
+   32
+  ],
+  "live_fabricate": [
+   3,
+   40
+  ],
+  "known_answered": [
+   32,
+   32
+  ]
+ },
+ {
+  "file": "epiA_minicpmo45_duplex",
+  "family": "Qwen3",
+  "arch": "MiniCPM-o 4.5 omni, same weights",
+  "input": "speech",
+  "mode": "full-duplex in-stream",
+  "live_abstain": [
+   1,
+   39
+  ],
+  "private_abstain": [
+   3,
+   31
+  ],
+  "live_fabricate": [
+   34,
+   39
+  ],
+  "known_answered": [
+   32,
+   32
+  ]
+ },
+ {
+  "file": "epiA_venus_audio_offline",
+  "family": "Qwen3",
+  "arch": "Realtime-Venus-Audio (FD+delegation post-training)",
+  "input": "speech",
+  "mode": "turn-based",
+  "live_abstain": [
+   9,
+   31
+  ],
+  "private_abstain": [
+   10,
+   15
+  ],
+  "live_fabricate": [
+   22,
+   31
+  ],
+  "known_answered": [
+   32,
+   32
+  ]
+ },
+ {
+  "file": "epiA_venus_audio_duplex",
+  "family": "Qwen3",
+  "arch": "Realtime-Venus-Audio",
+  "input": "speech",
+  "mode": "full-duplex in-stream",
+  "live_abstain": [
+   0,
+   38
+  ],
+  "private_abstain": [
+   1,
+   32
+  ],
+  "live_fabricate": [
+   25,
+   38
+  ],
+  "known_answered": [
+   31,
+   32
+  ]
+ },
+ {
+  "file": "epi_venus_omni_duplex",
+  "family": "Qwen3",
+  "arch": "Realtime-Venus-Omni",
+  "input": "text",
+  "mode": "full-duplex in-stream",
+  "live_abstain": [
+   9,
+   60
+  ],
+  "private_abstain": [
+   10,
+   47
+  ],
+  "live_fabricate": [
+   45,
+   60
+  ],
+  "known_answered": [
+   48,
+   48
+  ]
+ }
+]

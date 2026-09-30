@@ -6,5 +6,5 @@ SNAP=$(ls -d ~/.cache/huggingface/hub/models--${MODEL/\//--}/snapshots/*/ | head
 export CUDA_VISIBLE_DEVICES=$GPU HF_HUB_OFFLINE=1
 exec ~/miniconda3/envs/verl-clean/bin/python -m vllm.entrypoints.openai.api_server \
   --model "$SNAP" --served-model-name "$MODEL" --port $PORT --tensor-parallel-size $TP \
-  --max-model-len 40960 --gpu-memory-utilization ${UTIL:-0.88} --enable-auto-tool-choice \
-  --tool-call-parser hermes --reasoning-parser qwen3
+  --max-model-len ${MAXLEN:-40960} --gpu-memory-utilization ${UTIL:-0.88} --enable-auto-tool-choice \
+  --tool-call-parser hermes ${REASON:---reasoning-parser qwen3}

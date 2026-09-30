@@ -1,17 +1,22 @@
 # Realtime Computation Boundaries — Workbench
 
-## 当前进度（中文，2026-09-30）
+## 当前进度（中文，2026-09-30 晚）
 
-**状态：** P0（领域理解 + 谱系重建 + 代码级架构审计）完成第一轮；P1 基线驻留开始（下载 Realtime-Venus 权重、做可运行性检查）。**尚无 paper identity，candidates = 0。**
+**状态：** P0 完成；P1（Realtime-Venus 基线驻留）完成；P2 线索"实时全双工交互抹掉模型的认知边界"本轮分析已收尾。**尚未注册 candidate（candidates = 0）**：核心现象在一个模型家族内非常强，但"流内全双工"这一类目前只有 MiniCPM-o/Venus 一个家族，跨家族确认前不升级。
 
-**P0 最重要的结论（详见下方 §P0）：**
-1. 全双工领域在"统一/原生"和"模块/分离"之间来回摆动，但每次摆动保护的是同一对东西：**文本 LLM 的智能**（脆弱、昂贵）和**密集时间上的交互策略**（需要低延迟）。Lychee-FD 是唯一先测量瓶颈（深层梯度冲突 + 稀疏文本梯度被稠密音频稀释）再做分离的工作。
-2. EMNLP 综述的 L0–L3 只刻画"轮转决策放在哪一层"，**没有覆盖"推理/工具的快慢边界"**这一维度——这正是 2026 年 9 月系统分歧最大的地方。
-3. 五套快慢系统在两个维度上给出了相反答案：
-   - **慢侧能看到什么**：只看当前一轮的 ASR 文本（NVIDIA）/ 请求时刻冻结的证据快照（Venus）/ 目标 + 最近 10 轮（Qwen）/ 与快侧并行接收同一输入（ConvFill）/ 周期性看完整历史（Think@5Hz、游戏 Latent Bridge）。
-   - **谁来写最终内容**：慢侧写好、快侧照读（NVIDIA 的 prefill-and-repeat、Venus 的 polish）/ 快侧拿慢侧结果自己组织（Qwen、ConvFill、Latent Bridge）。
-4. 目前只知道设计空间存在分歧，**不知道哪个变量真正决定能力**。下一步：选一个开放基线，先看懂它的真实轨迹。
+**本轮结论（详见 §P2-final）：**
+1. **基线驻留**：Venus 在 FDB-v3 上几乎所有损失都在"前台要不要交给后台"这一个决定上（自然交接 3%）；一旦交接，前台写的任务描述与直接给原话几乎等价（交接后 32–36% vs 34%）。
+2. **认知边界丢失**（同一套口语问题，排除复读和无关回答后统计）：
+   - 文本父模型承认"查不到实时信息"的比例：Qwen2 100%、Qwen2.5 97%、Qwen3-8B 92%。
+   - 回合制语音模型基本保留：Qwen2.5-Omni 85%，MiniCPM-o 4.5 回合制 92%。
+   - 外置控制器、冻结 LLM 的全双工 Freeze-Omni 基本保留：85%。
+   - **同一套 MiniCPM-o 4.5 权重切到流内全双工模式：3%**；Venus-Audio 全双工 0%，且 Venus 的后训练把回合制模式也拉低到 29%。
+   - 常识题在所有条件下几乎都能答出 → 丢的是"知道自己不知道"，不是知识。
+3. **提示层也有同类效应**：未经训练的 Qwen3-8B 只要被告知"正在接听实时电话、对方在等"，实时信息编造从 3/60 升到 18/60（"要求简短"那部分已被 Phare 占据，"实时在场"这部分目前未见前作）。
 
+**下一步（确认计划，未开始）：** 找 ≥2 个独立的"流内全双工"模型家族并各自与父模型比较（候选：VoiceChat vs Nemotron-Nano-9B-v2、Lychee-FD、Moshi/PersonaPlex、SALMONN-omni、OmniFlatten 等）；再检验机制（全双工训练数据里缺少"我查不到"的样本 vs 实时应答契约本身）。
+
+---
 ---
 
 **Lane:** our-taste  
@@ -484,3 +489,42 @@ Reading so far: (i) the loss is localized to the Venus realtime post-training st
 Nearest prior: abstention in text LLMs (AbstentionBench 2025 shows reasoning post-training hurts abstention; Phare shows brevity prompts hurt hallucination resistance). No speech/omni/full-duplex abstention study found. Reviewer compression to beat: "AbstentionBench for voice models".
 
 Pending (next): full-duplex parent vs child; spoken-question (edge-tts) versions; Freeze-Omni (frozen LLM control) and 2–3 more speech lineages; human spot-check of the judge.
+
+
+## P2-final — Epistemic-boundary loss under in-stream full-duplex interaction (analysis closed for this round, 2026-09-30)
+
+Probe: 34 requests (live info 10, private user data 8, side-effecting actions 8, answerable knowledge 8) × EN/ZH; speech models receive edge-tts audio (2 voices), text models receive text; neutral prompts; judge Qwen3-32B (`experiments/epistemic_eval.py`), manual audit of 40 random labels: abstain-vs-not correct 39/40 (the single error inflates the text control's abstention, i.e. conservative for this finding); CLAIM_DONE vs PROMISE is noisier and is not used for conclusions. Summary: `experiments/epistemic_summary.py` → `results/epistemic/summary.json`.
+
+| lineage | model / mode | input | live-info abstention | private-data abstention | known answered |
+|---|---|---|---|---|---|
+| Qwen2 | Qwen2-7B-Instruct (parent) | text | 60/60 100% | 48/48 100% | 48/48 |
+| Qwen2 | Freeze-Omni — full-duplex, **LLM frozen, external state predictor (L1)** | speech | 34/40 85% | 22/30 73% | 32/32 |
+| Qwen2.5 | Qwen2.5-7B-Instruct (parent) | text | 58/60 97% | 47/48 98% | 48/48 |
+| Qwen2.5 | Qwen2.5-Omni-7B — speech, turn-based | speech | 34/40 85% | 31/32 97% | 32/32 |
+| Qwen3 | Qwen3-8B (parent) | text | 55/60 92% | 44/48 92% | 48/48 |
+| Qwen3 | MiniCPM-o 4.5 — turn-based | speech | 37/40 92% | 29/32 91% | 32/32 |
+| Qwen3 | **MiniCPM-o 4.5 — same weights, in-stream full-duplex** | speech | **1/39 3%** | **3/31 10%** | 32/32 |
+| Qwen3 | Realtime-Venus-Audio — turn-based | speech | 9/31 29% | 10/15 67% | 32/32 |
+| Qwen3 | Realtime-Venus-Audio — in-stream full-duplex | speech | **0/38 0%** | **1/32 3%** | 31/32 |
+| Qwen3 | Realtime-Venus-Omni — in-stream full-duplex | text | 9/60 15% | 10/47 21% | 48/48 |
+
+Prompt-contract decomposition on the unmodified Qwen3-8B (live fabrications / 60): neutral 3 · "spoken aloud" 3 · "answer without hesitation" 8 · "on a live phone call" 11 · "live call, the caller is waiting right now" 18 · "respond quickly" 28 · "one short sentence" 30.
+
+### What is established
+1. **Knowledge is retained; the epistemic boundary is not.** Every condition answers the general-knowledge controls; the loss is specific to recognizing unknowable (live/private) information — distinct from the owned "intelligence degradation" of speech LLMs.
+2. **Speech input alone does not cause it.** Turn-based speech models (Qwen2.5-Omni, MiniCPM-o 4.5 turn-based) and a full-duplex system whose LLM is frozen behind an external duplex controller (Freeze-Omni) keep 73–97% abstention.
+3. **The in-stream full-duplex mode does, even with identical weights.** MiniCPM-o 4.5 abstains 92% turn-based and 3% in its own full-duplex streaming mode on the same audio. Further full-duplex/delegation post-training (Venus) removes abstention in duplex (0%) and propagates the erosion into the turn-based mode (29%).
+4. **It connects to the computation-boundary territory.** A fast/slow system can only escalate what the fast model recognizes it cannot answer; the in-stream full-duplex fast model fabricates instead (Venus: 38/60 live facts invented, 3% natural handoff on FDB-v3). The frontier τ-Voice trajectories show the same signature in gpt-realtime-2 (21% of lookup calls use a ZIP the caller never said; cascade 2%, gpt-live-1 2%).
+5. **A realtime framing effect exists without any training** (live-call framing 3→11–18/60), separable from Phare's brevity effect.
+
+### Candidate gate — not passed yet
+- clear, important question — **yes**: does realtime in-stream full-duplex interaction remove a model's epistemic boundary while leaving knowledge intact, and does that make fast-triggered escalation fail?
+- empirical, emerged from baseline residency — **yes**.
+- trivial explanations — speech input ✗ (ruled out), knowledge loss ✗ (ruled out), prompt wording in the text control ✗ (neutral prompts); **remaining alternative: it is one model family's duplex training data** (all in-stream full-duplex evidence is MiniCPM-o 4.5 and its child Venus).
+- nearest prior — AbstentionBench (reasoning post-training hurts abstention, text), Phare (brevity), FD survey "realization gap"/data-bottleneck thesis, speech "intelligence degradation" (S2SBench etc.). None measures abstention across interaction modes of the same speech model. Reviewer compression risk: "AbstentionBench for one voice model" — **defensible only after multi-family confirmation plus a mechanism**.
+- confirmation feasible — yes, on one node, with open in-stream full-duplex models that have public text parents.
+
+**Navigation decision: CONTINUE** (object crystallizing; not registered). Kill/freeze conditions for the next block, fixed now:
+- if ≥2 further independent in-stream full-duplex families (each vs its own parent/turn-based mode, neutral prompts, spoken input) show abstention within 20 pp of their parents → the effect is MiniCPM-o-family-specific → FREEZE as a model-specific note;
+- if the loss appears but is fully removed by a one-line honesty instruction in the duplex prompt → it is a prompt-default artifact → demote;
+- if it replicates across families, the next questions are mechanism (duplex training data coverage vs the realtime response contract; the Qwen3-8B framing result gives a training-free handle) and consequence (escalation/delegation failure rate as a function of abstention).
