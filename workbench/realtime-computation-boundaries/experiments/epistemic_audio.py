@@ -21,6 +21,8 @@ def main():
     ap.add_argument("--model-path", required=True)
     ap.add_argument("--mode", choices=["offline", "duplex"], required=True)
     ap.add_argument("--seeds", type=int, default=2)
+    ap.add_argument("--system-prompt", default=None, help="override the duplex/offline system prompt")
+    ap.add_argument("--delay", type=int, default=0, help="duplex: force listening for this many extra 1 s chunks after the question ends")
     ap.add_argument("--queries", default="probes/epistemic.json")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
@@ -36,13 +38,15 @@ def main():
         audio, _ = librosa.load(wav, sr=16000, mono=True)
         if a.mode == "offline":
             with torch.inference_mode():
-                return str(model.chat(msgs=[{"role": "system", "content": "You are a helpful assistant."},
+                return str(model.chat(msgs=[{"role": "system", "content": a.system_prompt or "You are a helpful assistant."},
                                             {"role": "user", "content": [audio]}], tokenizer=tok, do_sample=False,
                                       max_new_tokens=256, enable_thinking=False, use_tts_template=True,
                                       generate_audio=False) or "")
-        d.prepare(prefix_system_prompt="Streaming Omni Conversation.")
+        d.prepare(prefix_system_prompt=a.system_prompt or "Streaming Omni Conversation.")
         prev = len(d.total_ids)
         n = int(np.ceil(len(audio) / 16000))
+        d.force_listen_count = (n + a.delay) if a.delay else 0
+        d._streaming_generate_count = 0
         audio = np.pad(audio.astype(np.float32), (0, (n + 14) * 16000 - len(audio)))
         with torch.inference_mode():
             for k in range(n + 14):

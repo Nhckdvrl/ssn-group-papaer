@@ -17,7 +17,10 @@ def get(r):
     p = f"{tmp}/{s}"
     if os.path.exists(p) and os.path.getsize(p) == e - s + 1:
         return
-    for _ in range(20):
+    import random, time
+    for attempt in range(200):
+        if attempt:
+            time.sleep(min(60, 2 ** min(attempt, 6)) * (0.5 + random.random()))
         try:
             req = urllib.request.Request(url, headers={"Range": f"bytes={s}-{e}"})
             data = urllib.request.urlopen(req, timeout=120).read()
