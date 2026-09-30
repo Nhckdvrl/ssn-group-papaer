@@ -88,3 +88,24 @@ First reading (pressure map, not claims):
   (duplex = sampled 20-token chunks; offline = greedy) — confound to control before reading anything into it.
 - Venus's math "no-answer" cases are announce-then-silence ("Let me calculate it step by step." then nothing, no
   `<delegate>`) — the verbal-promise-without-action pattern from P3 again.
+
+### C1 controls (2026-09-30 17:40) — the clarification lead dies
+
+| MiniCPM-o 4.5 | clarify | clarify_i | math | format |
+|---|---|---|---|---|
+| duplex, default prompt "Streaming Omni Conversation." | 4 | 18 | 12 | 15 |
+| duplex, prompt "You are a helpful assistant." | **18** | 16 | **16** | 14 |
+| offline, prompt "Streaming Omni Conversation." | 18 | 19 | 20 | 20 |
+| offline, sampled decoding (T=0.7) | 19 | 20 | 20 | 20 |
+
+- The duplex "clarification collapse" is a **system-prompt artifact** (default duplex prompt). Killed. Second consecutive
+  demotion of a default-policy lead in this family (abstention → clarification) ⇒ two-demotion reset for this axis.
+- Sampling does not explain the math drop; the remaining duplex math/format gap (16/20, 14/20) is small.
+- Other lineages: BayLing-Duplex collapses on math (0/20), rule games (2/16), format (5/20); Freeze-Omni (frozen LLM)
+  keeps math (19/20). These are properties of individual checkpoints, not of an intervention; GLM-4-Voice parent pending.
+
+**Navigation (user correction, 2026-09-30):** C1 as run is a per-model capability/default probe — exactly the kind of
+object that is model-specific and prompt-fragile. Lane C is demoted to dormant. Remaining recon must look for
+properties of the *formulation / design space* that hold across systems (e.g. how a streaming model commits to
+content before evidence is complete; native action head vs serialized action channel vs cascade), not quirks of one
+checkpoint, and must widen beyond the three pre-planned lanes before any deep dive.
