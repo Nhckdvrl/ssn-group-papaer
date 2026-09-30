@@ -109,3 +109,17 @@ object that is model-specific and prompt-fragile. Lane C is demoted to dormant. 
 properties of the *formulation / design space* that hold across systems (e.g. how a streaming model commits to
 content before evidence is complete; native action head vs serialized action channel vs cascade), not quirks of one
 checkpoint, and must widen beyond the three pre-planned lanes before any deep dive.
+
+## 4. Field-level scan (desk, 2026-09-30 evening) — widening beyond A/B/C
+
+Question asked of each strand: *is there a property of the formulation that holds across systems, with open
+artifacts, that strong 2026 work has not already compressed?*
+
+| strand | 2026 state | ownership / verdict |
+|---|---|---|
+| Native vs cascade — what does end-to-end buy? | Interleaved SLMs *latently transcribe* to text in mid layers (2606.22473); cascades beat open SLMs multilingually (2609.33204), DuplexCascade ≈ strong on VoiceBench, DuplexSLA cascade > native on tool accuracy; frozen-backbone S2S (PRIME-Speech 2606.30944, Freeze-Omni, training-free omni with frozen VLMs 2609.04242) preserve capability | the "listen vs read / perception-behaviour gap" is heavily owned (Do Audio LLMs Listen or Read? ICML'26; Real-Time Voice AI Hears but Does Not Listen 2606.26083; ParaBridge 2606.10581 — a one-line scaffold exposes latent paralinguistic use; Hear2Act 2608.19515). Not ours. |
+| Paralinguistic behaviour | benchmarks + scaffolds + alignment | owned (and on the user's low-value list) |
+| Audio-visual temporal reasoning | AVTrace 2609.19991: all open omni models below majority baseline on sync verification | benchmark-shaped; video-temporal already has its own workbench |
+| Speech RL / reward models | GSRM, dual-axis RMs, DuplexPO, SteerDuplex; reward hacking via incomplete responses | method-shaped, crowded |
+| **Commitment under incremental evidence** | the same pressure appears in four sub-fields that do not cite each other: full-duplex speech (speak before the user finishes; revise after barge-in: EchoChain, State Inertia, Duplex Cue), streaming video (answer before evidence → hallucination; readiness gates: Response-G1, LiveProBench 2609.12658), simultaneous translation (append-only commit rules vs re-translation: IWSLT'26, 2609.26427), realtime agents (act before arguments are complete: DuplexSLA "trigger time legal") | each sub-field owns its local version; nobody measures *when an LLM-based streaming generator stops being able to revise what it has started* as a property of the formulation across architectures. B1 is the first probe of this. Classical SiMT (wait-k etc.) is the strongest compression risk. |
+| Native action formulation | parallel function head (VoiceChat) vs serialized action channel (DuplexSLA) vs cascade; DuplexSLA's own table: native loses 14 pp on multi-action vs cascade, 4 pp on single | formulation-level, open artifact (VoiceChat) — A1 |
