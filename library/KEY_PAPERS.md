@@ -186,3 +186,61 @@ Deep genealogy and broader survey map: `deep/academic/GAME_NPC_LANDSCAPE.md`.
 - “FRONTIER” means **re-check before making a latest-state claim**.
 - For deep parent→successor reconstruction, use `deep/academic/GENEALOGY_LIBRARY_INDEX.md`.
 - Candidate-specific nearest prior does **not** belong here; put it in the candidate/workbench package.
+
+
+---
+
+## Frontier additions — 2026-09-30
+
+> **Status note:** these are research-navigation / lineage assets discovered in the 2026-09-30 cross-venue scan. Inclusion here does **not** authorize a workbench or imply a paper idea. Venue/release labels should be re-verified from the primary source before any novelty claim.
+
+### Interactive agents / evolving task state
+
+| ID | Paper | Role | Why reread | Link |
+|---|---|---|---|---|
+| AG19 | **LLMs Get Lost In Multi-Turn Conversation** (ICLR 2026) | PARENT / BEHAVIOR | Strong parent showing that competence under a fully specified task can collapse when the same information arrives interactively; useful baseline for separating static capability from state maintenance/recovery across turns. | https://proceedings.iclr.cc/paper_files/paper/2026/hash/59f6421e64707225fdf5b28840679a07-Abstract-Conference.html |
+| AG20 | **LLMs Get Lost in Evolving User Intent** (2026) | FRONTIER / ARTIFACT | Extends multi-turn pressure from incremental disclosure to revisions and goal/function changes; useful ownership boundary for any work on persistent task-state revision. | https://arxiv.org/abs/2607.20734 |
+| AG21 | **U-Fold: Dynamic Intent-Aware Context Folding for User-Centric Agents** (Findings ACL 2026) | SUCCESSOR / METHOD | Treats changing user intent as a context-management problem rather than ordinary summarization; important evidence that state revision is already becoming an explicit systems object. | https://aclanthology.org/2026.findings-acl.897/ |
+| AG22 | **Uncertainty-Aware Clarification in LLM Agents with Information Gain** (ICML 2026) | PARENT / METHOD | Strong clarification parent: turns underspecification into a decision problem over whether asking is worth the interaction cost; useful boundary against rediscovering generic clarification. | https://proceedings.mlr.press/v306/deng26l.html |
+| AG23 | **When and What to Ask: AskBench and Rubric-Guided RLVR for LLM Clarification** (Findings ACL 2026) | PARENT / BENCHMARK / ARTIFACT | Separates intent-deficiency and false-premise clarification and supplies a current strong baseline; important evidence that “agents should ask clarifying questions” is already crowded. | https://aclanthology.org/2026.findings-acl.845/ |
+| AG24 | **Ask Early, Ask Late, Ask Right: When Does Clarification Timing Matter for Long-Horizon Agents?** (2026 preprint) | FRONTIER / DIAGNOSTIC | Controlled timing intervention suggests clarification value depends on where the agent is in a trajectory; useful research-move example even if the exact claim remains preprint-level. | https://arxiv.org/abs/2605.07937 |
+| AG25 | **When2Tool: Tool Necessity Is Linearly Decodable Before Generation** (2026) | FRONTIER / REPRESENTATION→ACTION | Shows that tool-need information can be strongly decodable before generation while natural action selection still fails to use it reliably; useful ownership boundary for generic “the model knows but does not act” stories. | https://arxiv.org/abs/2605.09252 |
+| AG26 | **Done, But Not Sure: Disentangling World Completion from Self-Termination in Embodied Agents** (2026) | FRONTIER / CONTROL | Separates completing the external task from committing to termination; useful example of decomposing a single benchmark success into distinct control decisions. | https://arxiv.org/abs/2605.08747 |
+| AG27 | **Calibration Is Not Control: Intervention Advantage for LLM-Agent Oversight** (2026) | FRONTIER / CONTROL OBJECT | Changed-object lesson: predicting failure risk is not the same as estimating whether an intervention improves the continuation. Useful beyond the specific oversight setting. | https://arxiv.org/abs/2606.21399 |
+| AG28 | **AgentLens: Revealing the Lucky Pass Problem in SWE-Agent Evaluation** (2026) | FRONTIER / MEASUREMENT | Process-level audit showing that terminal success can hide poor recovery/verification trajectories; useful measurement warning for long-horizon agents. | https://arxiv.org/abs/2605.12925 |
+
+### Reasoning / planning utilization
+
+| ID | Paper | Role | Why reread | Link |
+|---|---|---|---|---|
+| RS05 | **Extracting Search Trees from LLM Reasoning Traces Reveals Myopic Planning** (2026) | FRONTIER / DIAGNOSTIC | Reconstructs search structure from reasoning traces and asks whether deeper explored nodes actually control the final decision; useful pressure on “more visible reasoning = more used reasoning”. | https://arxiv.org/abs/2605.06840 |
+| RS06 | **Reasoning Traces Shape Outputs but Models Won’t Say So** (ACL 2026) | PARENT / CAUSAL | Uses causal thought intervention to distinguish trace influence from models’ self-reports of that influence; important parent for reasoning-use/faithfulness claims. | https://aclanthology.org/2026.acl-long.1986/ |
+| RS07 | **FaithCoT-Bench: Benchmarking Instance-Level Faithfulness of Chain-of-Thought Reasoning** (ICLR 2026) | PARENT / EVALUATION | Strong current faithfulness parent; prevents reframing generic CoT faithfulness as a new territory. | https://proceedings.iclr.cc/paper_files/paper/2026/hash/6c7154e394e24c69409256ccf8bf0804-Abstract-Conference.html |
+
+### Mechanistic interpretability — from feature detection to functional action
+
+| ID | Paper | Role | Why reread | Link |
+|---|---|---|---|---|
+| MI25 | **Weakening Neurons: An Input-Output Functionality in Transformers with Outsize Influence** (2026 preprint) | FRONTIER / FUNCTIONAL UNIT | Studies an MLP neuron jointly through what it reads and what it writes; weakening neurons challenge the habit of describing neurons only by activating features/concepts. | https://arxiv.org/abs/2609.18612 |
+| MI26 | **Inverted Detection and Control in Steering Vectors** (2026 preprint) | FRONTIER / DETECTION≠CONTROL | Highly discriminative directions can causally steer in the opposite semantic direction; useful cross-level evidence that a representation’s readout meaning need not equal its control effect. | https://arxiv.org/abs/2608.02957 |
+| MI27 | **Transformer Feed-Forward Layers Are Key-Value Memories** (EMNLP 2021) | FOUNDATION / READ→WRITE | Classic functional view of FFN keys as input pattern detectors and values as output-distribution writers; essential parent for modern operator-centric neuron analysis. | https://aclanthology.org/2021.emnlp-main.446/ |
+| MI28 | **Knowledge Neurons in Pretrained Transformers** (ACL 2022) | FOUNDATION / FEATURE-LOCALIZATION | Canonical neuron-localization lineage; useful contrast for asking whether “where a concept is detected” and “what a unit does to computation” are the same scientific object. | https://aclanthology.org/2022.acl-long.581/ |
+| MI29 | **Transcoders Find Interpretable LLM Feature Circuits** (NeurIPS 2024) | FOUNDATION / ARTIFACT | Sparse input→output decomposition of MLP computation; important current parent for moving from activation dictionaries toward functional circuits. | https://proceedings.neurips.cc/paper_files/paper/2024/hash/2b8f4db0464cc5b6e9d5e6bea4b9f308-Abstract-Conference.html |
+
+### VLA — semantic information versus action control
+
+| ID | Paper | Role | Why reread | Link |
+|---|---|---|---|---|
+| VLA08 | **Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models** (2026) | FRONTIER / MECHANISTIC / ARTIFACT | Causal activation interventions expose modality/pathway specialization and cases where language is encoded yet ignored by action. Strong parent for semantic-to-action questions in VLA. | https://arxiv.org/abs/2603.19233 |
+| VLA09 | **Restoring Linguistic Grounding in VLA Models via Train-Free Attention Recalibration** (2026) | FRONTIER / METHOD | Diagnoses “linguistic blindness” under contradictory language and proposes a train-free intervention; ownership boundary for simple language-neglect claims. | https://arxiv.org/abs/2603.06001 |
+| VLA10 | **Grounded Semantic Re-Binding for Robust Instruction Generalization in VLA Models** (2026) | FRONTIER / METHOD | Finds task semantics can remain internally available while downstream action is vulnerable to joint feature shifts; directly relevant to semantic information vs policy use. | https://arxiv.org/abs/2608.02497 |
+| VLA11 | **Beyond Appearance Shifts: Task-Semantic Action Calibration for VLA Models** (2026) | FRONTIER / ROBUSTNESS | Separates invariance to task-preserving nuisance changes from sensitivity to task-semantic changes; strong ownership pressure on generic “robust VLA semantics” stories. | https://arxiv.org/abs/2609.23650 |
+| VLA12 | **Instruction Anchor: Dissecting the Mechanistic Dynamics of Modality Arbitration** (2026) | FRONTIER / MECHANISM | Treats instruction-following as modality arbitration across depth and identifies sparse causal attention pathways; useful mechanistic parent for language-vs-vision control. | https://arxiv.org/abs/2602.03677 |
+
+### Role-playing / NPC boundary evidence
+
+| ID | Paper | Role | Why reread | Link |
+|---|---|---|---|---|
+| NPC13 | **Beyond Static Persona Consistency: Dynamic Persona Coherence in LLM Role-Playing** (ACL 2026) | PARENT / DYNAMIC PERSONA | Explicitly separates stable identity from evolving psychological state; shows that “dynamic persona” is already an owned research object rather than an empty NPC gap. | https://aclanthology.org/2026.acl-long.1336/ |
+| NPC14 | **Beyond Fixed Psychological Personas: State Beats Trait, but Language Models are State-Blind** (Findings ACL 2026) | PARENT / HUMAN-GROUNDED | Human data places much variation within-person state rather than fixed traits; useful pressure against evaluating agents only by static persona consistency. | https://aclanthology.org/2026.findings-acl.1316/ |
+| NPC15 | **ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?** (2026) | FRONTIER / DYNAMIC CHARACTER | Evaluates the same character across changing story phases, pushing persona evaluation toward context-dependent character arcs; strong ownership boundary for generic dynamic-persona proposals. | https://arxiv.org/abs/2606.05553 |
