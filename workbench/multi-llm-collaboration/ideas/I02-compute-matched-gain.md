@@ -1,19 +1,42 @@
-# I02：训练后的团队，在等训练算力与等推理算力下还赢吗（2026-09-30）
+# I02：训练型 LLM 团队的 performance–compute accounting（2026-10-01）
 
 - **状态：** SEED
-- **来源（必填，只能是其一）：** 近邻之间的分歧——MARTI（ICLR 2026）报告收敛后等推理预算下 MAS 胜过单智能体；2609.04217 与 2607.16133 报告提示式 / 进化式团队在等推理算力下不胜单智能体
-- **研究动作：** 强基线翻案（等算力对照）
-- **如果为真，主张是：** RL 训练的团队相对“同训练算力的单模型 RL + 等推理 token 的 self-consistency”仍有收益，且收益集中在特定题型（而不是来自更多算力）
-- **两种结果各意味着什么：** 为真 → 训练型 MAS 的收益来源分析（形态 B）；为假 → 训练型 MAS 的算力会计（形态 B/D），并作为 I01 / I03 论文的必备对照。等算力对照正在变成标配（2609.22682 也报告了），所以本 idea 更可能是主论文的一部分，而不是单独一篇
-- **最近 3 个近邻与增量：**
-  | 近邻 | 它的 claim | 我们的增量 |
-  |---|---|---|
-  | MARTI | 收敛后等推理预算 MAS > 单智能体 | 同时对齐训练算力与推理算力，多种子 |
-  | 2609.04217 | 等推理成本下多智能体结构不胜单个冻结智能体（提示进化） | RL 训练的团队 |
-  | SAT-Stanford（2609.22682） | 文本层策略库，等算力下超过最强个体 | 权重层训练 |
-- **最便宜的决定性 pilot（能分出决策分支的最小算力）：** E01 团队 vs 同数据、同 GPU·时的单智能体 GRPO（单个 1.5B）vs 更大单模型；推理端按生成 token 对齐（self-consistency 投票数）
-  - 阳性对照：已知有收益的设置（官方报告的主设置）能复现团队优势
-  - 噪声地板估计 vs 预期效应：同 E01
-  - 决策表：团队在等双重算力下仍赢 ≥ 2×噪声 → 分析收益来源；持平或输 → 记为 I01 / I03 的必备对照，并写算力会计的形态卡草稿
-- **预期论文形态：** B 构念+测量 / D 评测协议（更可能作为主论文的一部分）
-- **排序打分（1–3）：** 证据 1 · 增量清楚度 2 · 形态匹配 2 · 成本 2 · 可完成性 3 · 两种结果都有用 3
+- **角色：** 全线公平比较基础设施；默认不是独立论文。
+- **来源：** MARTI 等训练型 MAS 报告收益，而 equal-inference-cost / SAT 等工作已经把 strongest-member、compute-matched inference、router baseline 推成必须面对的对照。
+- **研究动作：** 强基线翻案 + 评测协议。
+
+## 关键修正
+
+不再把“等 generated tokens 的一个点”叫作等算力。多模型团队的成本至少要同时看到：
+1. LM calls / sample；
+2. input / output tokens；
+3. active-parameter-token 或可复现的近似 FLOPs；
+4. training GPU·h；
+5. inference GPU time；
+6. wall latency（串行/并行策略写清）。
+
+目标是画 **performance–compute Pareto curve**，而不是找到一个对我们有利的 matched point。
+
+## 最近邻与边界
+
+| 近邻 | 已有结论 | 我们的作用 |
+|---|---|---|
+| MARTI | 训练后团队在其预算定义下可优于单智能体 | 用统一 accounting 复核不同 training substrate |
+| At Equal Inference Cost (2609.04217) | frozen-backbone prompt team 在等 LM-call 预算下没有清晰优势 | setting 不同，但已占“公平算力很重要”这个 claim |
+| SAT (2609.22682) | 报告 strongest member、compute-matched inference、perfect router 等对照 | 把这些 baseline 作为最低公平性标准之一 |
+
+## Pilot
+
+在 E01 跑通后，至少保存：
+- team performance；
+- 未训练 team；
+- 单模型 RL baseline；
+- stronger single model（关键点即可）；
+- self-consistency / repeated sampling；
+- 上述 6 类 compute 指标。
+
+不预先要求“team 必须赢”。若团队只有在某一种 accounting 下看起来更强，这本身首先是 measurement/pain，而不是 paper conclusion。
+
+## Information gain
+
+I02 的主要价值是防止整个 workbench 建立在不公平 baseline 上，并给 I01/I03/未来方法提供可审计的 value claim。
