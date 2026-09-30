@@ -1361,3 +1361,229 @@ The surviving high-information pressure is:
 > **parallel bilingual data appears to have different downstream roles across acquisition regimes: sometimes it improves broader understanding/reasoning, while in already multilingual models its unique explicit-alignment benefit can collapse toward translation. What changes in the model/data regime to cause this role transition?**
 
 This is strong enough for continued search, but not yet authorized as a workbench.
+
+
+---
+
+## 18. Stronger pressure: from transfer-dominated to self-sufficient language computation
+
+The proxy-validity lead in §17 remains useful, but a deeper object emerged after auditing resource-allocation, low-resource transfer, controlled parallel-data, and mechanistic papers.
+
+### 18.1 The natural question
+
+A multilingual model may perform well in a target language for at least two qualitatively different reasons:
+
+1. it **borrows** knowledge/computation learned primarily from a high-resource language through shared parameters or a dominant-language pivot;
+2. it has seen enough target-language data to develop a more **self-sufficient target-language computation**.
+
+The scientific question is not whether transfer exists.
+
+It is:
+
+> **As target-language exposure increases, when and how does computation shift from transfer-dependent to more self-sufficient?**
+
+“Borrowed” and “self-sufficient” are working descriptions, not claims about discrete modules or literal internal translation.
+
+### 18.2 Behavioral parents already imply a regime transition
+
+**EMNLP 2024 Outstanding — When Is Multilinguality a Curse?**
+
+Across >10k small multilingual/monolingual models and 250+ languages, added multilingual data helps low-resource targets but stops helping / can hurt as target-language data becomes abundant.
+
+This establishes resource-dependent cross-language utility, albeit mainly through language-modeling behavior and small models.
+
+**NeurIPS 2025 — CLIMB / Exploring Polyglot Harmony**
+
+Large controlled allocation experiments explicitly model cross-lingual interactions. Their empirical picture is that cross-language transfer is strongest when a target language is scarce and weakens as target-language proportion or total-data scale grows.
+
+This gives a modern decoder-pretraining behavioral parent for a transfer-dominated → increasingly self-dominated regime.
+
+**Apple 2026 mixture-scaling work**
+
+Maps the target-exposure/repetition trade-off across >2,000 runs, showing that scarce target corpora can be repeated much more in mixtures than in single-source training. This strengthens the importance of the acquisition-regime axis but does not tell us what internal computation changes.
+
+### 18.3 Bridge/intervention parents imply the role of cross-language coupling also changes
+
+**LINK (2026)**
+
+When target-language data is deliberately scarce, lexical substitutions in high-resource English text — a very cheap bilingual bridge — improve target scientific reasoning, commonsense and world knowledge.
+
+This is strong evidence that in a data-constrained regime, explicit cross-language coupling can affect **general capability**, not only translation.
+
+**ICLR 2026 From Translation to Multilinguality**
+
+In much richer multilingual regimes, content-matched Standard-vs-Split controls find that explicit adjacent parallel alignment yields very large translation gains but essentially no gain on broad monolingual/cross-lingual evaluation.
+
+The paper sweeps parallel-data percentage, two-stage English→multilingual training and 1.5B→8B scale, but keeps a substantial target-language/multilingual exposure regime and explicitly does not establish what happens when the target language itself becomes severely data constrained.
+
+Taken together, the literature suggests — but does not yet prove — a regime-dependent causal role:
+
+> **cross-language coupling may support broad capability acquisition when the target language cannot learn enough from its own data, yet become increasingly translation/interface-specific once target-language competence is self-supported.**
+
+This must be tested rather than assumed.
+
+### 18.4 Why “parallel data helps low-resource languages” is too weak
+
+That statement is already densely owned.
+
+A worthwhile workbench must distinguish:
+
+- **target-language exposure / quality**;
+- **high-resource semantic content**;
+- **explicit bilingual correspondence**;
+- **shared tokenizer / lexical anchors**;
+- **total compute and repetition**;
+- **cross-language internal dependence**.
+
+For example:
+
+- TransWebEdu shows translated high-quality target-language content alone can build strong target understanding/reasoning;
+- Seto et al. show high-quality auxiliary English helps when target data are scarce;
+- data-quality work shows corpus quality itself is a major driver;
+- ICLR 2026 shows explicit pair adjacency adds translation even when content is held fixed.
+
+Therefore any regime claim must use matched content/compute controls.
+
+### 18.5 Internal evidence exists, but is not yet connected cleanly to resource regime
+
+**Latent-language comparison**
+
+Llama-2, Swallow and LLM-jp differ strongly in training language composition and in their inferred internal latent language. This supports plausibility but is cross-model/confounded evidence.
+
+**Double Trouble (EMNLP 2026 Main)**
+
+Matched 310M English-only vs bilingual decoders show bilingual exposure leaves systematic middle-layer differences in English contextual representations despite embedding-level alignment.
+
+This proves bilingual training can alter the shared-language computation itself.
+
+**DALI / shared circuits / LinguaMap / routing**
+
+Current causal work localizes middle-layer cross-lingual shared representations/experts and shows that English/shared-space access can repair some non-English failures.
+
+**Token Alignment Heads**
+
+Translation itself has sparse causal heads with a distinct training trajectory, reinforcing that a translation-specific mechanism need not be the same object as broader shared semantic/reasoning computation.
+
+What is still not cleanly established is whether **dependence on shared/dominant-language computation changes as target-language exposure moves through the behavioral transfer→self regime.**
+
+### 18.6 New artifact: Beetle makes the earliest mechanism audit unusually cheap
+
+EMNLP 2026 Beetle releases:
+
+- 285 bilingual + 45 monolingual open models;
+- multiple L1s with English L2;
+- controlled exposure curricula (balanced/simultaneous/sequential/classroom/late);
+- 100M, 2B and up to 24B-token regimes;
+- ~30 checkpoints per model.
+
+Its paper targets computational psycholinguistics, not LLM multilingual reasoning.
+
+For us this is useful as a **training-dynamics instrument**:
+
+- test how representation sharing / latent-language dependence changes before, during and after L2 exposure;
+- compare curricula with different cumulative target exposure;
+- locate candidate transition signatures without first training a model grid.
+
+Do not generalize Beetle-only results to modern LLMs; use them to identify robust diagnostics before external validation.
+
+### 18.7 Candidate measurements of “dependence” (diagnostics, not paper constructs yet)
+
+A workbench should not define self-sufficiency by raw task accuracy.
+
+Possible independent diagnostics:
+
+1. **cross-language causal patch dependence**  
+   Does replacing target-language middle-layer state with semantically matched high-resource-language state still rescue errors? Does rescue shrink as target exposure grows?
+
+2. **language-specific direction dependence**  
+   Does removing high-resource-language-specific state help/hurt differently across acquisition regimes?
+
+3. **latent-language readout**  
+   Does intermediate decoding move from high-resource pivot to target language? Useful but insufficient alone.
+
+4. **shared circuit / routing dependence**  
+   Does target performance rely increasingly less on experts/heads identified from the high-resource language?
+
+5. **bridge intervention marginal value**  
+   At fixed target content and compute, does adding explicit parallel/lexical bridge affect general target capability only in low-exposure regimes while retaining translation effects later?
+
+6. **counterfactual high-resource ablation**  
+   If a shared computation is identified, does disabling the high-resource-associated path selectively hurt low-exposure target models more?
+
+A strong result should survive more than one diagnostic.
+
+### 18.8 Competing explanations to attack before mechanism claims
+
+- **data quality:** high-resource English may simply contain better knowledge;
+- **semantic-content coverage:** target corpus may lack task-relevant facts/skills;
+- **tokenization:** poor segmentation can mimic low-resource dependence;
+- **capacity competition:** multilingual curse rather than “borrowing”;
+- **training order / forgetting:** sequential curricula can create apparent pivot dependence;
+- **metric language bias:** tasks may reward English-compatible representations;
+- **representation readout artifact:** latent-language/probe output need not be causally used.
+
+### 18.9 Top-conference ceiling
+
+Local substrate:
+
+> controlled changes in target-language exposure / acquisition schedule.
+
+Broader object:
+
+> **how cross-lingual transfer changes from an external support mechanism to a less necessary dependency as a target language becomes sufficiently learned.**
+
+Possible field-level consequence:
+
+- explains why bilingual bridges help broad reasoning under some low-resource settings yet look translation-specific in richer settings;
+- clarifies when English/shared-space alignment is a genuine capability bottleneck versus an optional shortcut;
+- separates translation-specific circuits from general knowledge/reasoning transfer;
+- could produce a resource-aware principle for when alignment interventions are useful.
+
+This is materially broader than “find the best language ratio”.
+
+### 18.10 Current ownership boundary
+
+Already owned:
+
+- low-resource languages benefit more from multilingual data;
+- optimal language allocation depends on resource level;
+- explicit parallel adjacency strongly improves translation;
+- lexical bridges help knowledge transfer under target-data scarcity;
+- middle layers often show shared cross-language representations;
+- bilingual pretraining changes hidden-state geometry;
+- latent/internal language differs across existing models.
+
+Not yet identified in this audit:
+
+> a controlled modern decoder study that **tracks causal dependence on high-resource/shared computation across a target-language exposure gradient**, and connects that dependence to the transition from broad transfer benefits to translation-specific alignment benefits.
+
+This remains a provisional novelty statement. Continue adversarial prior search.
+
+### 18.11 Kill conditions
+
+Kill/demote this lead if:
+
+1. a direct prior already measures the same internal-dependence transition under matched resource ratios;
+2. representation/patching dependence does not systematically change with resource/exposure despite behavioral transfer gradients;
+3. all effects reduce to tokenizer/data-quality/content-coverage differences;
+4. only tiny Beetle/BabyLM models exhibit the mechanism and it disappears in public 1B–8B evidence;
+5. confirming the mechanism requires foundation-model-scale pretraining rather than existing artifacts + modest controlled runs;
+6. the final contribution collapses to another data-allocation scaling law.
+
+### 18.12 Earliest non-training reconnaissance
+
+Before authorizing our own pretraining:
+
+1. **Beetle trajectory audit**  
+   pick 2–3 language pairs/curricula with large exposure contrast; compute middle-layer language identity/alignment and simple causal cross-language patching over checkpoints.
+
+2. **existing-model sanity contrast**  
+   Llama-2 vs Swallow vs balanced LLM-jp only as an external qualitative check, not causal evidence.
+
+3. **Double Trouble reproduction/readout extension**  
+   if released checkpoints/code are available, test whether bilingual-induced deep-state differences correlate with target-resource/exposure schedule in any released family.
+
+4. **behavior linkage**  
+   on Beetle models, add small multilingual semantic/NLU transfer tasks beyond the original reading-time/grammar evaluation; ask whether internal-dependence changes predict transfer gains.
+
+Only if a clear gradient exists should we train a matched ratio × bridge factorial model family.
