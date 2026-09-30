@@ -1,19 +1,39 @@
-# I04：训练出来的消息，新伙伴读得懂吗（2026-09-30）
+# I04：共同训练消息的 functional portability（2026-10-01）
 
-- **状态：** SEED
-- **来源（必填，只能是其一）：** 近邻之间的分歧——训练中涌现的约定 / 私有语言（GlossoGen 2609.01491；*When LLMs Develop Languages*，ICML 2026）与“语言让约定可迁移”的直觉
-- **研究动作：** 干预 / 反事实（把消息交给未参与训练的读者）
-- **如果为真，主张是：** 协同训练后消息变短、词汇漂移，未参与训练的模型读这些消息的有效性下降；这解释 I01 中交叉配对的下降
-- **两种结果各意味着什么：** 为真 → I01 的机制部分；为假 → 交叉配对下降（若有）来自角色约定而不是消息本身，需要白盒分析（P4）
-- **最近 3 个近邻与增量：**
-  | 近邻 | 它的 claim | 我们的增量 |
-  |---|---|---|
-  | GlossoGen | 训练中出现新“语言” | 与团队可靠性（交叉配对）直接关联 |
-  | *When LLMs Develop Languages* | 语言发展的测量 | RL 协同训练的推理团队 |
-  | C2C / LatentMAS | 隐空间通信 | 文本通信的可读性作为对照 |
-- **最便宜的决定性 pilot（能分出决策分支的最小算力）：** 只用推理：把 E01 训练前后 Verifier 收到的 Solver 消息，交给未训练的同尺寸模型与另一家族模型判断，比较判断准确率；统计长度与词汇分布
-  - 阳性对照：人为压缩 / 改写消息（去掉关键步骤）时，读者准确率应下降
-  - 噪声地板估计 vs 预期效应：读者模型的重复采样方差
-  - 决策表：训练后消息对新读者明显更难 → 作为 I01 的机制候选；无差异 → PARKED，转向角色约定与白盒分析
-- **预期论文形态：** 作为 I01 的机制部分
-- **排序打分（1–3）：** 证据 1 · 增量清楚度 2 · 形态匹配 2 · 成本 3 · 可完成性 3 · 两种结果都有用 2
+- **状态：** PARKED
+- **重开条件：** I01 出现稳定 cross-play signal，或 PAIN_LOG 出现明确 message-level incompatibility / private-convention 迹象。
+- **来源：** emergent convention / language lineage 与 partner-generalization pressure。
+- **研究动作：** 反事实 transplant + functional evaluation。
+
+## 核心修正
+
+不再把“新伙伴读不读得懂文本”作为主要 capability measure。probe/human-readable 可能与 downstream usability 解耦。
+
+需要分两层：
+
+1. **semantic recovery**：receiver 能否恢复 message 中 task-relevant state；
+2. **functional transfer（主读数）**：把同一条 message/state transplant 给新 receiver 后，它能否继续完成任务、提高下游 outcome。
+
+有趣的情况反而可能是：
+- 文本看起来完全可读，但 functional transfer 差；
+- 文本表面很压缩/私有，却能跨模型有效使用。
+
+## 最近邻边界
+
+GlossoGen / When LLMs Develop Languages 已占“训练中形成语言/约定”的宽故事；C2C/LatentMAS 等占不同通信媒介。我们只有在 portability 与 team reliability 形成 load-bearing link 时才值得继续。
+
+## Pilot（触发后）
+
+固定同一 task state，把训练前后 sender message 交给：
+- 原配 receiver；
+- 同尺寸未共同训练 receiver；
+- 另一 family receiver。
+
+同时测 semantic recovery 与 downstream completion/change in reward。人为删去关键 task state 作为阳性对照。
+
+## 分支
+
+- semantic recovery≈高、functional transfer 明显差 → 很强的“理解不等于可继续使用”measurement anomaly；
+- 两者都差 → private convention 候选，但需排除简单信息缺失；
+- 两者都稳 → PARKED，不继续 fishing；
+- 只有 surface statistics 漂移 → 不升级 claim。
