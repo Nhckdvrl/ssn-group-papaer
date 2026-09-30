@@ -119,6 +119,26 @@ A future-work sentence or one published anomaly is only a lead. Often the origin
 
 The goal is to understand **where the field's problem representation changed**, and which important difficulty remains visible after strong baselines.
 
+### Territory admission requires a pressure map
+
+A workbench should not be opened because one paper, benchmark, or anomaly looks promising.
+
+Before admission, search should establish a **field-level pressure map**:
+- at least a small lineage of strong baselines / successors;
+- what the strongest current systems have already solved;
+- at least several distinct unresolved pressures or design disagreements;
+- which obvious next steps are already owned;
+- one or more practical open artifacts that let us inspect the field rather than only one narrow hypothesis.
+
+The purpose is to ensure the workbench has **room to navigate**.
+
+A territory with only one remaining interesting cell is usually too narrow. A healthy workbench should still contain several plausible routes to learn something important even if the first lead dies.
+
+Do not confuse:
+- “I can name 5 experiments around this anomaly”
+with
+- “this territory has 5 independent ways to generate scientific information.”
+
 ## Handoff to workbench
 
 Before opening a workbench, search should provide only:
