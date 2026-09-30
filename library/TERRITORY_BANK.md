@@ -426,6 +426,6 @@ Use existing expensive interventions and public trajectories before training any
 - recreating company-scale multilingual pretraining/scaling studies.
 
 **Deep map:** `deep/academic/CROSS_LINGUAL_CAPABILITY_FORMATION_2026.md`  
-**Anchors:** ML01–ML23.
+**Anchors:** ML01–ML34.
 
 **Current high-information pressure:** translation is increasingly used both as a cheap proxy for broad multilingual performance and as a model organism for cross-lingual transfer formation, yet controlled pretraining interventions can damage translation far more than QA/reasoning. This correlation-vs-causal-role tension is worth deeper ownership/feasibility audit before any workbench admission.
