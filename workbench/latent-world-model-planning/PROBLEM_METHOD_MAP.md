@@ -5,7 +5,7 @@
 
 ## 1. End-to-end planning 的七层因果链
 
-给定 observation history (h_t)、goal (g)、offline dataset (D_eta)、candidate action sequence (a_{t:t+H-1})：
+给定 observation history (h_t)、goal (g)、offline dataset (D_β)、candidate action sequence (a_{t:t+H-1})：
 
 ```text
 L0 data / behavior β
@@ -123,7 +123,7 @@ L6 selection → environment execution → utility
 ## 4. 六个 load-bearing interaction
 
 ### A. Data × planning geometry
-Trajectory gap/reachability supervision直接依赖 behavior route。环境最短距离不变时，(Delta_eta=j-i) 可以因 detour / route mixture / factorization 而变化。
+Trajectory gap/reachability supervision直接依赖 behavior route。环境最短距离不变时，(Delta_β=j-i) 可以因 detour / route mixture / factorization 而变化。
 
 **I01 就在这里，但必须做 same-local-evidence identification。**
 
