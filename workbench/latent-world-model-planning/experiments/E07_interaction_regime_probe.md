@@ -1,27 +1,70 @@
-# E07：Bottleneck interaction probe — geometry × dynamics × proposal（2026-10-02）
+# E07：Regime interaction confirmation（2026-10-02）
 
 - **状态：** PLANNED
 - **类型：** PILOT
 - **对应：** I03
-- **问题（一句话）：** E06 识别到的 regime switch 是否反映真实 load-bearing interaction，而不是单方法 ranking 或 protocol artifact？
-- **设置：** 只在 E06 给出稳定 signature 后运行。选择 E06 中最能区分两个 regime 的 2 个 task/regime slices，做预注册 2×2：geometry×dynamics、dynamics×proposal 或 geometry×proposal 中**只选最有区分力的一组**；必要时第二组 confirmatory。方法选择来自 `EXPERIMENT_PROGRAM.md` 的 baseline gate。
-- **读数：** paired success/regret；oracle-ladder signature；main effect / interaction effect；goal distance/support/margin；compute；训练/评测 seed。
-- **阳性对照：** 在 E06 已知单个 intervention 有效的 slice 重现其 main effect；组合实验中的“关闭”配置必须回到同一 baseline。
-- **噪声地板 + MIE：** ≥3 train seeds only after pilot supports effect；episode-level paired bootstrap + train-seed variance；interaction MIE = 足以改变“固定方法 vs regime-adaptive原则”结论的差异，数值在 E06 结果后预注册。
-- **混杂审计：**
-  - 组合方法训练步/数据/encoder initialization 匹配；
-  - 不能把不同 repo 原生 protocol 的结果硬做 factorial；
-  - compute/model-call budget 同时报；
-  - hyperparameter 不在 test slice 调；
-  - interaction analysis 预先定义，不事后挑最强 pair；
-  - method implementation version固定；
-  - failed runs不静默删。
-- **决策表（跑之前写）：** interaction direction 与 E06 regime variable 一致且跨 ≥2 substrates → 生成 C## 并设计 adaptive/minimal intervention；只有 additive main effects → 不宣称 bottleneck relocation，保留 component evidence；interaction 每任务方向乱 → I03 PARK；baseline main effect复现失败 → VOID/回 E06。
-- **算力预算：** E06 后填写；优先少量 2×2 confirmatory runs，不一次铺 3-way factorial；独立单 GPU并行。　**实际：** 待运行
+- **前置：** E06 必须先给出可复现的 predictive regime hypothesis；没有就不运行。
+- **问题（一句话）：** E06 的 bottleneck relocation 是否是 load-bearing interaction，而不是单方法 leaderboard / protocol artifact？
 
-## 结果（跑完后填写；不改上面的内容，修改需注明日期）
-- 数字（含 CI / 种子方差）：未运行
-- 结果文件：待生成
-- 按决策表执行了什么：待运行
-- 主张变化：无
-- POST-HOC 分析：无
+## 设置
+
+从 E06 预注册：
+- 2 个能区分 regime 的 task/slice；
+- 1 个最有信息增益的 2×2 interaction；
+- 1 个 held-out task/slice 做确认（若成本允许）。
+
+候选 interaction：
+- metric/geometry × dynamics；
+- dynamics × proposal；
+- action-discrimination × proposal；
+- metric × proposal；
+- **不把 Q/protocol correction 当“方法开关”参与新颖性 factorial**；Q 必须先固定对齐。
+
+方法只从 E06 已验证的 representative intervention选一个，不同时装一堆。
+
+## 读数
+
+- paired success / task cost / regret；
+- E06 oracle signature；
+- regime variable；
+- main effects；
+- interaction effect；
+- intervention ranking；
+- compute；
+- train/eval seeds。
+
+## 阳性对照
+
+- 在 E06 已知 slice 复现单 intervention main effect；
+- “off/off”回到同 baseline；
+- protocol (H/K/score timing/action block)完全一致；
+- oracle signature在重复 evaluation稳定。
+
+## 噪声地板 + MIE
+
+pilot先 1–2 train seeds；只有 interaction方向符合预注册 hypothesis才扩 ≥3 seeds。  
+episode paired CI + train-seed variance分开。  
+interaction MIE = 足以改变“一个固定方法 vs regime-aware rule”决策的量；在 E06 完成后、E07 首条训练命令前冻结。
+
+## 混杂审计
+
+- 组合方法数据、train steps、init匹配；
+- 不把不同 repo 的 native protocol硬做 factorial；
+- compute/model-call + wall-clock；
+- hyperparameter validation-only；
+- interaction pair跑前选择，不看 test；
+- failed runs不删；
+- held-out regime threshold不事后移动。
+
+## 决策表
+
+- interaction与 E06 regime variable一致，且 held-out slice/substrate也预测对 → 建 C##，尝试 practical adaptive/minimal intervention；
+- 只有 additive gains → 不宣称 relocation law，保留 component evidence；
+- interaction每任务方向不同 / threshold不泛化 → I03 PARK；
+- baseline main effect复现失败 → VOID回 E06。
+
+- **算力预算：** E06 后填；少量 2×2 independent single-GPU runs，不做 3-way full factorial。  
+- **实际：** 待运行
+
+## 结果
+未运行。
