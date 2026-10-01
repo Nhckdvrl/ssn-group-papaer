@@ -1,27 +1,91 @@
-# E04：Behavior path length vs environment shortest distance（2026-10-02）
+# E04：Natural behavior routing vs environment distance（2026-10-02）
 
 - **状态：** PLANNED
 - **类型：** PILOT
 - **对应：** I01
-- **问题（一句话）：** 在相同 environment transition graph / 尽量匹配 local edge support 时，仅让 behavior policy 走 shortest-ish、detour/loop、route-mixture 三种轨迹，trajectory-derived planning objective 会不会把 behavior 时间结构写进 latent geometry，并伤害真实最短可达 planning？
-- **设置：** 仅在 E03 通过后运行。首选 TwoRoom/maze 类可精确计算 directed shortest steps 的环境；生成 matched start-goal 与三种 behavior dataset。通过 reweight/subsample 匹配 state occupancy / local edge support；训练 LeWM（negative control）、RC-aux，TD-JEPA 代码稳定时加入。train/test episode 完全分离。
-- **读数：** environment oracle (d^*(s,g))、(R_h^*=1[d^*le h])；behavior temporal gap (Delta_eta)；label disagreement；head/latent distance 对 (Delta_eta) vs (d^*) calibration；fixed-candidate ranking/regret；novel-route/stitch goals；closed-loop success。
-- **阳性对照：** 构造一组同 start-goal、detour 明确比 shortest path 长的 trajectory，必须满足 (Delta_eta>d^*)；oracle BFS/shortest path 与 simulator 简单可达 case 一致。
-- **噪声地板 + MIE：** 同 dataset seed 的 repeated training/eval；pair-level calibration 以 start-goal bootstrap；closed-loop 以 paired episode CI + train-seed variance。MIE：不仅 label calibration 变，还必须在 fixed-candidate ordering/regret 或 control 上超过 E02 重复波动，才升级。
-- **混杂审计：**
-  - local edge/state occupancy 匹配程度作为结果报告，不隐去；
-  - dataset size/optimization steps 相同；
-  - goal-distance distribution 相同；
-  - behavior detour 不同时改变视觉外观/physics；
-  - cross-trajectory negative construction 单独记录；
-  - shortest oracle 只在导航 exact setting 声称；
-  - 扩到 continuous task 时不再称“ground-truth shortest path”。
-- **决策表（跑之前写）：** behavior route 改变→geometry→decision 连锁成立 → 设计最小 structural correction 并另立方法卡；只 label/head 变 → I01 降级；LeWM 同样大幅变化 → 说明 dataset control 仍改变 local learning，先修匹配；effect 只在 one toy 且 continuous/contact task 无 counterpart → 不升顶会主张。
-- **算力预算：** E03 后按实际单训成本决定；先 1 seed 做识别，再 3–5 train seeds confirmatory；不同 dataset variant 独立单 GPU。　**实际：** 待运行
+- **前置：** E03 必须建立至少 decision-level 的 trajectory-factorization sensitivity；否则不运行 E04 扩大故事。
+- **问题（一句话）：** 在相同 environment dynamics 与尽量匹配的 local transition support 下，shortest-ish、detour/loop、route-mixture 三种**自然 behavior policy**是否把不同 routing statistics 写入 trajectory-supervised planning geometry，并导致对真实 environment controllability 的不同决策？
 
-## 结果（跑完后填写；不改上面的内容，修改需注明日期）
-- 数字（含 CI / 种子方差）：未运行
-- 结果文件：待生成
-- 按决策表执行了什么：待运行
-- 主张变化：无
-- POST-HOC 分析：无
+## 设置
+
+首选 TwoRoom/maze 类能精确求 directed shortest-step distance (d^*(s,g)) 的环境。
+
+生成 matched datasets：
+1. **Shortest-ish:** 偏向短路径；
+2. **Detour/loop:** 对相同/匹配 start-goal 系统性走更长但合法路线；
+3. **Route-mixture:** 多条可行路线的 mixture，控制 route frequency。
+
+通过 reweight/subsample 尽量匹配：
+- dataset size；
+- state occupancy；
+- local directed edge occupancy/support；
+- start/goal distribution；
+- action marginal；
+- observation rendering/physics。
+
+绝对匹配做不到时，把 residual imbalance量化并作为 covariate/限制，不写“完全 controlled”。
+
+## 方法
+
+- RC-aux；
+- TD-JEPA；
+- LeWM negative control；
+- 至少一个不使用 long-range behavior-gap target 的 local-geometry baseline（优先 Temporal Straightening 或 CGS，代码可用性决定）。
+
+## Oracle 与读数
+
+导航 exact setting：
+- environment shortest distance (d^*(s,g))；
+- finite-budget oracle (R_h^*(s,g)=mathbf{1}[d^*(s,g)le h])；
+- observed behavior gap (Delta_β(s,g)) 的 distribution。
+
+比较：
+- target disagreement: (Delta_β) / proxy label vs (d^*,R_h^*)；
+- learned head/geometry 更贴近 (Delta_β) 还是 environment oracle；
+- fixed-candidate rank / elite rank；
+- selected-action flips；
+- candidate-set regret；
+- unseen route / stitching goals；
+- closed-loop success。
+
+**continuous/contact-rich 扩展：** 不声称 ground-truth shortest path。改做 paired behavior dataset + same candidate real execution consequence，并报告只有 navigation有 exact oracle。
+
+## 阳性对照
+
+预先构造若干 matched start-goal：
+[
+Delta_{	ext{detour}}(s,g) > Delta_{	ext{short}}(s,g) ge d^*(s,g)
+]
+且环境 (d^*) 完全相同。BFS/graph shortest oracle先用 trivial cases验算。
+
+## 噪声地板 + MIE
+
+- 每个 behavior dataset先 1 paired seed；
+- start-goal pair bootstrap；
+- closed-loop episode CI 与 train-seed variance分开；
+- **升级 gate：** 不仅 target/head calibration 变化，而且 fixed-candidate rank/regret或control consequence超过 E02 noise floor；
+- 只有通过后才 3–5 train seeds + contact-rich扩展。
+
+## 混杂审计
+
+- local edge/state occupancy mismatch显式报告；
+- goal-distance distribution相同；
+- dataset size / optimizer steps / pair exposure相同；
+- detour policy不同时改变 visual appearance/physics；
+- cross-trajectory negatives另记；
+- behavior policy生成器不看 test outcome；
+- method hyperparameters在 validation选，不按哪一组更有利重调。
+
+## 决策表
+
+- **behavior routing → proxy/geometry → decision chain成立，local controls稳** → 新建方法卡：优先 dynamics/local consistency / quasimetric / multi-route aggregation；
+- **只 target/head变，decision null** → I01 降级，不做大 seed；
+- **LeWM/local geometry也同幅变化** → data matching仍有 confound，回 data construction；
+- **navigation成立但 contact-rich没有任何 counterpart** → 限制 scope，不直接升顶会主张；
+- **simple quasimetric/Bellman baseline已经完全恢复 invariance** → 这是好结果：可把 paper重点变成“识别 + 强简单基线”，而不是强行造复杂方法。
+
+- **算力预算：** E03 后基于实测；variant×seed独立单 GPU，数据 node-local staging。  
+- **实际：** 待运行
+
+## 结果
+未运行。

@@ -12,14 +12,15 @@
 
 ## 入口：本地 agent 按这个顺序读
 
-1. [PAPER_LINEAGE](PAPER_LINEAGE.md)：从 DINO-WM / PLDM / OGBench 到 2026 representation、dynamics、planner、hierarchy、理论/诊断工作的 idea-growth 与 claim ownership。
-2. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→proposal→time→execution 七层地图、oracle ladder、关键交互。
-3. [POSITIONING](POSITIONING.md)：顶会尺度锚点、2026 直接 collision/compression map、不能再当 headline 的红区、三个 surviving regions。
-4. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：共享 substrate、Gate A/B、I01–I04 的 E00–E07、并行策略与统计卫生。
-5. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：可直接复制给执行机 agent 的启动提示。
-6. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
-7. [HANDOFF](HANDOFF.md)：最短执行路线和证据门。
-8. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：真实实验结果才允许升级。
+1. [PAPER_LINEAGE](PAPER_LINEAGE.md)：从 DINO-WM / PLDM / OGBench 到 2026 representation、dynamics、planner、hierarchy、理论/诊断工作的 idea-growth 与 claim ownership（第二轮已扩到 P63）。
+2. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码可用性与“何时必须回原文”的可追溯账本。
+3. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→proposal→time→execution 七层地图、oracle ladder、关键交互。
+4. [POSITIONING](POSITIONING.md)：顶会尺度锚点、2026 直接 collision/compression map、不能再当 headline 的红区、三个 surviving regions。
+5. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：共享 substrate、Gate A/B、I01–I04 的 E00–E07、并行策略与统计卫生。
+6. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：可直接复制给执行机 agent 的启动提示。
+7. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
+8. [HANDOFF](HANDOFF.md)：最短执行路线和证据门。
+9. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：真实实验结果才允许升级。
 
 第一轮调查索引保留在 [LATENT_PLANNING_SURVEY](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md)；第二轮 hardening 以后，**PAPER_LINEAGE + PROBLEM_METHOD_MAP + POSITIONING 是领域判断的 authority**。
 
@@ -45,21 +46,17 @@
 
 ## 当前最值得挖的三个 region
 
-### R-A / I01 — Behavior-policy geometry contamination（当前第一优先）
+### R-A / I01 — Trajectory-factorization dependence / route imprinting（当前第一优先）
 RC-aux / TD-JEPA 一类方法从 trajectory order/gap 构造 reachability/progress supervision；offline GCRL 的 quasimetric 工作则明确区分 behavior future statistics 与 optimal goal distance。
 
 真正可成为我们的 delta 的不是“trajectory gap 不是真 shortest path”，而是：
 
-> **在 environment dynamics、local transition support、one-step training samples 被控制时，只改变 behavior path / episode organization，是否会系统改变 trajectory-supervised latent-WM 的 learned planning geometry、candidate ordering 与 closed-loop control？**
+> **在 environment dynamics、raw local transition multiset 与 one-step/history training windows 完全相同的情况下，只把这些真实 transitions 通过共享 junction 重新组织成不同但合法的 trajectories，现有 trajectory-supervised planner 是否会学习不同 geometry，并做出不同 MPC decisions？**
 
-E03 用同 raw transitions、同 local window、只改 long-pair metadata 做最干净 identification；E04 再用 shortest-ish / detour / route-mixture 和 navigation oracle 建 behavior→geometry→decision 链。若只 head 变、decision 不变，I01 降级，不包装。
+E03 现在要求 **valid cut-and-splice refactorization + hash-level local-sample invariance**，不再接受任意 metadata corruption；E04 才转向 shortest-ish / detour / route-mixture 的自然 behavior data。若只 head 变、decision 不变，I01 降级，不包装。
 
-### R-B / I02 — Optimizer-induced support drift
-不是重复“offline model exploitation”。要找的是 compact latent CEM 中：
-
-`optimizer iteration → support drift → model optimism → false elite → environment regret`
-
-的完整可重复链，并和 action magnitude、PLDM uncertainty、ACID/MEND 一类 verifier 区分。E05。
+### R-B / I02 — Optimizer-induced support drift（**PARKED**）
+第二轮发现 **A Control Theory of Predictability in Latent World Models** 已直接 formalize planner-reachable / off-manifold divergence 与 plan-cost discrepancy；再加经典 offline-MBRL model exploitation，generic support-drift story compression risk 过高。E05 只保留给 I03 做 conditional diagnostic，不再独立铺 seed。
 
 ### R-C / I03 — Bottleneck relocation / regime
 不是方法大排名。E06 的 oracle ladder 分 representation/metric、dynamics、proposal、horizon/target；只有 goal distance / candidate margin / data support 等少数变量能**跨任务预测 bottleneck 与 intervention ranking**，才升级。E07 再做 interaction confirm。
@@ -100,13 +97,13 @@ E02 known decision-alignment replication / measurement calibration
 | D3 痛点 | ⚠️ 文献/协议风险 R01–R10；真实 P## = 0 |
 | D4 系统测量 | ⚠️ candidate/oracle/result schema + E02–E07 已设计；结果 = 0 |
 | D5 定位 | ✅ 第二轮 direct-neighbor/ownership hardening 已完成到 2026-10-02；执行中仍要滚动扫最新 arXiv |
-| D6 idea 组合 | ✅ I01–I04 SEED，I05 PARKED；每个有来源/近邻/delta/决定性 pilot |
+| D6 idea 组合 | ✅ I01/I03/I04 SEED；I02/I05 PARKED；每个有来源/近邻/delta/决定性 pilot |
 
 ## 决策记录
 
 - 2026-10-02：登记为 PROPOSED，资源条件写入根目录。
 - 2026-10-02：第一轮调查不足以直接开实验；继续深挖。
-- 2026-10-02：完成 literature hardening。新增完整 lineage / problem-method / positioning / experiment program；把“prediction≠planning”等宽 claim 划入红区；I01 behavior-policy geometry 作为第一优先 mining lane，I02/I03 为独立备选，I04 校准，I05 parked。
+- 2026-10-02：完成 literature hardening。新增完整 lineage / problem-method / positioning / experiment program；把“prediction≠planning”等宽 claim 划入红区；I01 trajectory-factorization invariance 作为第一优先；I03 为第二 mining engine；I04 校准；I02 因 P40/control-theory + offline-MBRL collision PARKED，I05 保持 PARKED。
 - 未经用户/人审，不改变 ACTIVE 容量；本地 agent 被分配此 workbench 时可按 [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md) 自主执行，不需每个实验回来请示。
 
 ## 资产位置

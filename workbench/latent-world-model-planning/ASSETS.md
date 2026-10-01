@@ -14,8 +14,27 @@
 | 强冻结特征参照 | [facebookresearch/jepa-wms](https://github.com/facebookresearch/jepa-wms) | README 的小模型／数据／权重与安装表 | 首次接入固定 commit 和 HF revision；不要自动取大型分支 |
 | 几何方法 | [temporal-straightening](https://github.com/agentic-learning-ai-lab/temporal-straightening) | README 与 [UPDATES](https://github.com/agentic-learning-ai-lab/temporal-straightening/blob/main/UPDATES.md) | 固定包含修复的版本、适配 encoder 和官方 validation/test 规则 |
 | 数据／非 WM 对照 | [seohongpark/ogbench](https://github.com/seohongpark/ogbench) | README、六种 reference algorithms、数据与环境入口 | 其默认分支是 master；首次接入取真实 commit，JAX 环境独立 |
+| I01 trajectory-cost baseline | [HKBU-KnowComp/Temporal-Distance-JEPA](https://github.com/HKBU-KnowComp/Temporal-Distance-JEPA/tree/b4c17ca4649c9bf47272fa66c38da7a684f2a020) | README、training/eval config、locked manifests；repo 自带 LeWM/RC-aux variants | **首轮优先复用**；固定 commit `b4c17ca...`；核对 data cache 与 pair sampler 后再改 trajectory factorization |
+| path-aware 近邻 | [XiaodiHuang-code/Traj_LeWM](https://github.com/XiaodiHuang-code/Traj_LeWM/tree/67577fa27242f6e888f40e399ab3e1b542b1367f) | source-only README、训练/评测入口、LTC calibration | 不首轮安装；I01 扩展 full-path supervision 时再接 |
+| physical-grounding 近邻 | [Haodong-Yan/PSG-JEPA](https://github.com/Haodong-Yan/PSG-JEPA/tree/3bf67a47a9143f9f4fb4d39f839143c92902714c) | OGBench planning + LIBERO policy 两 track；依赖说明 | privileged grounding baseline，只有 representation/grounding lead 才接 |
+| adaptive-capacity 近邻 | [arm-research/AAIR-ALeWM](https://github.com/arm-research/AAIR-ALeWM/tree/6717193bdc3b92e43f581b3c668ca9b82c299c70) | 本轮核对为 project-page release | **不是 code-ready baseline**；不能看到 repo 就假定 research code 已发布 |
+| heavy visual-WM anchor | [kdwonn/CompACT](https://github.com/kdwonn/CompACT/tree/71b3029910d7460c5fa8658e17ab34e29c2c880c) | official CVPR code / training README | paper-scale tokenizer/WM 默认多 GPU；不作为 compact workbench 首轮训练 baseline |
+| protocol/interface diagnostic | [24GUNV/LeWMRO](https://github.com/24GUNV/LeWMRO/tree/faff2ea4768767739b9cca55855dc5aacf13578f) | ICML'26 Workshop Oral code、terminal/prefix/running costs、receding-horizon eval、deceptive envs、tests、results manifest | **E06 protocol gate 可直接复用**；datasets/checkpoints 不在 repo，不能假定开箱即跑 |
 
 Temporal Straightening 的 global-projector 修复 commit：[64a7585819e749bfec327ad984ee08570d07f0eb](https://github.com/agentic-learning-ai-lab/temporal-straightening/commit/64a7585819e749bfec327ad984ee08570d07f0eb)。这是已核对的修复标识，不能自动当成包含全部后续更改的最终锁点。
+
+## 1.1 首轮最省工程的路线
+
+**I01 推荐直接从 TD-JEPA official repo 起步，而不是把 RC-aux/TD-JEPA/LeWM 三套代码手工统一：**
+
+- 该 repo 已基于 stable-worldmodel/stable-pretraining；
+- `config/train/variant/` 已含 `td_jepa`、`lewm`、`rc_aux`；
+- paper protocol 写明 10 epochs；
+- 自带 locked 50-episode eval manifests 与 10 plan seeds；
+- Push-T / TwoRoom / Reacher / OGB-Cube 同一代码布局；
+- 因此 E03 的 paired dataset intervention 可以把变化集中在 pair construction / trajectory metadata，而不是先解决三个 repo 的接口差异。
+
+这只是一条**工程优先建议**，不是说 TD-JEPA repo 中三个 variant 就天然等价于各自原论文版本。E01/E02 仍要核对 config、weights、planner 与论文 protocol。
 
 ## 2. 公开数据／权重入口
 
@@ -54,6 +73,20 @@ Temporal Straightening 的 global-projector 修复 commit：[64a7585819e749bfec3
 ### 3.5 非 WM 对照
 
 OGBench reference algorithms 基于 JAX；SWM／LeWM 主路径基于 PyTorch。允许用两个原生环境交换只读任务清单与结果，而非先重写所有算法。评测目标、observation、动作范围和数据权限必须匹配；特权状态基线单独标为 diagnostic，不与纯像素输入混排。
+
+## 3.6 新代码的执行边界
+
+- **TD-JEPA**：locked protocol 显示 (H=5)、goal offset 25、300 candidates；TwoRoom/Reacher 默认 iCEM，Push-T/Cube CEM。实验比较时 solver/cost必须拆开，不能把 method 与 planner change混为一体。
+- **Traj-LeWM**：默认 10 epochs；LTC planning weight 通过 endpoint-only CEM candidates 做 IQR calibration。若未来作为 baseline，calibration 数据/seed必须与 test 分离，避免 test-informed scaling。
+- **PSG-JEPA**：OGBench planning 使用 GC-IDM，不是 LeWM CEM；LIBERO 又是 OFT action head。只能在相同 planner/input protocol 下比较 representation，不能直接把论文 success 数字和 CEM methods 排名。
+- **ALeWM**：当前 connector 核对 repo 是 project page；README 说 root 为 future code 留位，不代表 code 已可运行。
+- **CompACT**：official README 报告 tokenizer paper training 8 H100、WM default 4 RTX 6000 Ada；虽然单 GPU script存在，也不能据此假定 paper-scale reproduction 适合我们首轮。
+
+## 3.7 Replanning / scoring-time protocol baseline
+
+LeWMRO 明确区分 planning horizon (H) 与 executed prefix (K)，并提供 terminal@H、prefix@K、running cost。E02/E06 若使用 (K<H) 的 closed-loop MPC，必须先做这一 protocol gate；否则可能把 scoring-time mismatch 误当模型/representation failure。
+
+其 repo 固定 commit：`faff2ea4768767739b9cca55855dc5aacf13578f`。代码与 tests 可用，但 upstream datasets/checkpoints 未随 repo 发布；首次执行仍需按 provenance 获取 LeWM asset。
 
 ## 4. 资源判断：作者测量与本地测量分开
 

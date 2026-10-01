@@ -29,16 +29,17 @@
 3. `workbench/README.md`（确认全局 ACTIVE 容量）
 4. 本目录 `README.md`
 5. `PAPER_LINEAGE.md`
-6. `PROBLEM_METHOD_MAP.md`
-7. `POSITIONING.md`
-8. `EXPERIMENT_PROGRAM.md`
-9. `ASSETS.md`
-10. `HANDOFF.md`
-11. `CLAIMS.md` / `PAIN_LOG.md`
-12. `ideas/I01_behavior_policy_geometry.md`
-13. `ideas/I02_optimizer_support_drift.md`
-14. `ideas/I03_bottleneck_regime_switch.md`
-15. E00–E07 experiment cards
+6. `LITERATURE_LEDGER.md`
+7. `PROBLEM_METHOD_MAP.md`
+8. `POSITIONING.md`
+9. `EXPERIMENT_PROGRAM.md`
+10. `ASSETS.md`
+11. `HANDOFF.md`
+12. `CLAIMS.md` / `PAIN_LOG.md`
+13. `ideas/I01_behavior_policy_geometry.md`
+14. `ideas/I02_optimizer_support_drift.md`
+15. `ideas/I03_bottleneck_regime_switch.md`
+16. E00–E07 experiment cards
 
 然后运行：
 
@@ -111,46 +112,27 @@ E00 完成后，把**实际**单训/单 episode 成本写回 ASSETS/experiment c
 
 ## 第 5 步：主探索优先 I01，不要先发明方法
 
-### I01：behavior-policy geometry contamination
+### I01：trajectory-factorization dependence / route imprinting
 执行顺序：
 
 ```text
-E03 trajectory-partition invariance
-        ↓ 只有通过
-E04 behavior path vs environment distance
-        ↓ 只有建立 geometry→ranking/control consequence
-最小 correction / new C## / confirmatory multi-seed
+E03 valid cut-and-splice refactorization
+        ↓ 只有 target→geometry→decision 过 gate
+E04 natural shortest/detour/route-mixture
+        ↓ 只有建立真实 decision consequence
+minimal invariance correction / new C## / confirmatory multi-seed
 ```
 
-E03 最关键的识别要求：
-- raw transitions 一样；
-- local one-step window manifest 一样；
-- 只让 long-pair/trajectory metadata 改；
-- hash 证明，而不是口头说“一样”。
+E03 不是任意改 metadata。必须在共享 junction 处合法 cut/splice，使 **raw transition multiset + one-step/history window manifest hash 完全相同**，只改变 long-range trajectory factorization。做不到 hash-level invariance 就不能作因果解释。
 
-E04 最关键：
-- environment dynamics 相同；
-- shortest-ish / detour / route-mixture；
-- 尽量匹配 local edge/state support；
-- navigation 使用真正 environment shortest-distance oracle；
-- continuous manipulation 不伪称 shortest path。
+如果只看到 reachability/TD head 输出变、planner decision 不变：**不包装。**
 
-如果只看到 reachability head 输出变、planner 不变：**降级，不包装。**
-
-### I02 可以在独立节点并行，但必须等 candidate logger 可信
-执行 E05：
-- stage-wise support；
-- model optimism；
-- false elite；
-- real regret；
-- action magnitude/smoothness controls；
-- PLDM-style uncertainty / ACID 等只按需要接。
-
-offline model exploitation 是经典问题；只有完整 `support drift → optimism → false elite → environment regret` 链以及现有控制解释不了，才值得升级。
+### I02 已 PARKED
+A Control Theory of Predictability 已直接把 planner-reachable/off-manifold divergence 与 plan-cost discrepancy形式化，generic support-drift 与经典 offline MBRL 过于重叠。E05 只有 I03 需要定位 unsupported-search layer 时才跑；不要在另一节点自动扩成独立 story。
 
 ### I03 在 E02 后作为“统一矿图”推进
 E06 oracle ladder → E07 interaction。
-不要做方法大排名。目标是找**可预测 bottleneck 的 regime variable**；如果只能每任务单独解释，就 park。
+这是第二优先 mining lane。不要做方法大排名。目标是找**可预测 bottleneck 的 regime variable**；如果只能每任务单独解释，就 park。
 
 ## 第 6 步：如何使用很多 GPU
 
@@ -203,7 +185,7 @@ E06 oracle ladder → E07 interaction。
 
 不要每个实验来问用户。满足任一才汇报决策：
 - E04 建立或否定完整 behavior→geometry→decision 链；
-- E05 建立 stable support-drift chain；
+- E05 若被 I03 条件触发并发现 P40/uncertainty 不能解释的新 planner-stage mechanism；
 - E06/E07 找到跨任务可预测 regime；
 - 首个科学 C## 到 L2；
 - 需要改变 ACTIVE 状态 / 抢占另一条线资源；
