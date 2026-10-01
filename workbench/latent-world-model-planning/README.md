@@ -12,7 +12,7 @@
 
 ## 入口：本地 agent 按这个顺序读
 
-1. [PAPER_LINEAGE](PAPER_LINEAGE.md)：从 DINO-WM / PLDM / OGBench 到 2026 representation、dynamics、planner、hierarchy、理论/诊断工作的 idea-growth 与 claim ownership（第二轮已扩到 P56）。
+1. [PAPER_LINEAGE](PAPER_LINEAGE.md)：从 DINO-WM / PLDM / OGBench 到 2026 representation、dynamics、planner、hierarchy、理论/诊断工作的 idea-growth 与 claim ownership（第二轮已扩到 P63）。
 2. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码可用性与“何时必须回原文”的可追溯账本。
 3. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→proposal→time→execution 七层地图、oracle ladder、关键交互。
 4. [POSITIONING](POSITIONING.md)：顶会尺度锚点、2026 直接 collision/compression map、不能再当 headline 的红区、三个 surviving regions。
