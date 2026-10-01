@@ -124,7 +124,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | — | — | 9/30 按 v2 开启，尚未运行；恢复前补 territory 卡的热度 / 立足点 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
 | `mechanism-population-dynamics` | ACTIVE-EXPLORE | ICML 2027 / NeurIPS 2027 | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：利用公开 multi-seed × multi-checkpoint 模型群体研究 mechanistic claim 在什么抽象层次上可复现；第一轮不训练模型，先做已知 mechanism 的 causal baseline + population measurement |
-| `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | 用户授权调查并登记（2026-10-02）；紧凑 latent WM 的表示／动力学／决策可靠性；已建谱系、资产快照与本地 handoff，未运行，不改变现有 ACTIVE 调度；资源见根目录 `RESOURCES.md` |
+| `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **literature-hardened / execution-ready**：~40 篇直接/邻接 lineage、problem×method/ownership map、I01–I04+I05 parked、E00–E07 与 local-agent prompt 已注册；GPU 结果仍为零，不改变现有 ACTIVE 调度 |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
 | `model-diffing-measurement` | PAUSED | — | — | — | — | 同上；工具链可用于多智能体线的白盒分析（P4） |
