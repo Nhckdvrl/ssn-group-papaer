@@ -494,6 +494,70 @@ offline / reward-free data
 - **对我们：** I01 的价值不在选 Euclidean/hyperbolic，而在**training supervision 的 invariance/identification**。
 
 
+
+---
+
+## 7.6 截至 2026-10-02 的最后近邻扫：planning interface / intervention / structured dynamics（P57–P63）
+
+### P57 — Hidden Failure Modes in Latent World-Model Planning from Offline Data — ICML 2026 Workshop Oral
+**来源：** https://openreview.net/pdf/2970593988c2eb8f2bd6612fdaa898f0dbd7b107.pdf  
+**代码：** https://github.com/24GUNV/LeWMRO
+
+- **母问题：** closed-loop receding-horizon MPC 中，planner optimize (H) 步却只执行 (K<H) 前缀；terminal-at-(H) cost 到底在测 model quality 还是一个永远不会直接执行的时间点？
+- **关键结果：** standard tasks 上，prefix-at-(K) / running cost 能大幅修复 terminal-at-(H)；但 deceptive TwoRoom Far Door 中 scalar latent objectives 仍弱，waypoint/local-actuator interface 才显著恢复。
+- **ownership：** replanning interval / score time-index mismatch、scalar objective vs controllability-interface mismatch 已有直接工作。
+- **对 I03：** (H,K)、scoring index、action chunk、replanning ratio 必须作为 oracle ladder 的**protocol layer**，否则很容易把 evaluation interface bug 误判成 representation/dynamics bottleneck。
+- **对 I01：** 它不是 trajectory-factorization 工作；但 E03/E04 的 closed-loop consequence必须固定 (H,K)/cost timing，避免 route effect 被 planning-interface artifact污染。
+
+### P58 — PhyLatent — arXiv 2608.05720（updated 2026-09-29）
+**来源：** https://arxiv.org/abs/2608.05720
+
+- **失败分解：** appearance-preserving physical invariance、distinct physical-state distinguishability、counterfactual action-conditioned future separation 三类“global non-collapse 仍可能失败”的 representation/dynamics collapse。
+- **方法：** physical state grounding、future alignment、static visual invariance、counterfactual branch separation、latent denoising。
+- **ownership：** broad “SIGReg noncollapse 不等于 dynamics-relevant representation”已经非常拥挤；physical/counterfactual collapse 也不能重命名。
+- **对我们：** I03 的 representation layer必须能区分 “metric unusable” 与 “physical state/action effect 本就没保留”。
+
+### P59 — Do-JEPA — arXiv 2609.37378
+**来源：** https://arxiv.org/abs/2609.37378
+
+- **母问题：** factual prediction只观察 executed action，无法直接区分 action caused what vs co-occurred what。
+- **intervention：** 从同一 saved simulator state 分别执行 action (a) 与 reference action (a_{arnothing})，直接监督 latent effect difference。
+- **方法：** effect/support/propagation/invariance losses；synthetic + CausalWorld + pixel LeWM。
+- **ownership：** “真正 physical intervention 比 visual masking 更能识别 causal action effect”已被直接提出。
+- **对 I01/I03：** common-reset intervention 是**强 oracle / positive control**，但它需要 simulator counterfactual branches，和我们“固定 offline local transition evidence，只改变 trajectory organization”的问题不同。若最终 I01 方法需要额外 counterfactual environment interaction，就必须和 Do-JEPA/FIRM-WM 明确区分成本与 setting。
+
+### P60 — Bilinear World Models — arXiv 2609.36305
+**来源：** https://arxiv.org/abs/2609.36305
+
+- **idea：** 不让 latent dynamics 任意 nonlinear；限制成 bilinear structure，把表示学习压力推到 encoder，同时可以 structurally enforce action recoverability。
+- **证据：** standard 2D/3D control、longer-horizon、real-time control；作者报告近三数量级 planning-time降低并保持/提高 accuracy。
+- **ownership：** structured dynamics / action recoverability / efficient planning 又多一个强近邻。SALT 不是唯一 structured-transition baseline。
+- **对 I03：** dynamics intervention family 以后不能只代表 “LeWM vs SALT”；若 lead落到 structured dynamics，要定位 state-affine vs bilinear 的不同 inductive bias。
+
+### P61 — One-Step Next-Latent Prediction Is Not a World Model — arXiv 2609.36227
+**来源：** https://arxiv.org/abs/2609.36227
+
+- **理论压力：** one-step regression通常识别 conditional mean，不等于完整 transition kernel；nonlinear conditional mean 的 composition也不等于 multi-step conditional mean；non-injective observation下 memoryless one-step map甚至不能决定 future observations。
+- **ownership：** “one-step next-latent objective 本身不足以定义 rollout-capable WM”已经有明确理论文章；不能把这个作为新 headline。
+- **对 I03/I05：** history / stochasticity / transition-kernel sufficiency是理论 confound；如果 experiment 落到 stochastic/POMDP，必须区分 deterministic-mean limitation 与 planning geometry问题。
+
+### P62 — FIRM-WM — arXiv 2609.22816
+**来源：** https://arxiv.org/abs/2609.22816
+
+- **两个 mismatch：** goal-comparable coordinates 与 history-dependent dynamics 需要不同 state roles；offline factual trajectory只给一个 future，而 sampling planner query counterfactual actions。
+- **方法：** typed goal-comparable configuration + 128-d dynamic fiber；broad factual trajectories + same-reset intervention branches。
+- **证据：** TwoRoom/Reacher/Cube，三 full-pipeline seeds；compact 3M级 deployed model。
+- **ownership：** state factorization + common-reset counterfactual data 已是直接 2026 方案。
+- **对我们：** 若 I03 落到 “goal representation vs recurrent dynamics应分开” 或 “需要 paired counterfactual branches”，FIRM-WM 是强 collision。I01 仍不同：它问相同 local factual evidence的**trajectory organization invariance**。
+
+### P63 — FF-JEPA — arXiv 2606.09311
+**来源：** https://arxiv.org/abs/2606.09311
+
+- **方法：** standard action-conditioned forward WM + action-free latent planner预测下一 subgoal，把长任务拆成短期优化；同时减弱 explicit goal-image依赖。
+- **ownership：** “learn latent subgoal planner来救长 horizon”又一个直接邻居；和 HWM/SAGE/Anchored Planning共同压缩 hierarchy/subgoal空间。
+- **对 I03：** temporal-target层已有非常多方法；只有 regime law 或 identification 能支撑新贡献。
+
+
 ---
 
 ## 8. 研究 idea 如何从 related work 中生长：五个可迁移模式
