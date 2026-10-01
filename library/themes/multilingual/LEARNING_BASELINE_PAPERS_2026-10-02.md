@@ -98,3 +98,17 @@ abstract说三个尺寸，但结果表含四个尺寸；种子和实现细节未
 其finetuning指从multilingual Unimax checkpoint继续单语言LM训练，不等同E01监督任务学习→跨语测试。
 可迁移动作是将控制变量接到明确的训练选择；不要再把泛泛的resource correlation/scaling当C的贡献。
 未逐页完成后半部分方法/附录阅读，不能冒称完整复现。
+
+**Building Multilingual Bridges，2026-09预印本**：[一手全文](https://arxiv.org/html/2609.10445v1)，已读§2、§5.2–5.4、附录G开头，非全篇审计。
+形态：Tiny Aya 3.35B的数据混合与泛化；DOCUMENTED来源是英语中心reasoning与目标语输出不一致。
+方法：English reasoning、translated multilingual reasoning、multilingual non-reasoning三类监督；matched-step比例扫描，另比joint/sequential/merge。
+距离与ownership：已有廉价non-reasoning监督促进未监督语言行为迁移的证据；这不是C的新主张。
+强弱：真实可训练模型、held-out languages；matched steps不自动等于matched tokens/content，reasoning语言率不等于正确率。
+动作：学习它把数据选择接到真实训练结果的过程；不据此把C转为reasoning-language新线。
+
+**Leitner-Guided Memory Replay，NAACL2024**：[一手全文](https://aclanthology.org/2024.naacl-long.432.pdf)，已读§2–4及附录A.1/A.3。
+形态：跨语言持续任务学习的失败+replay改进；DOCUMENTED来源是固定buffer如何保留有效旧样本。
+方法：mBERT、四语言平衡顺序、MTOP/MultiATIS++/TyDiQA；正确/错误更新1–5技能等级，对比easy/hard/random/balanced。
+ownership：学习难度驱动replay与遗忘/最终能力权衡已有方法；不是泛泛“桥接可复用”的空白。
+强弱：多个任务和顺序，报告额外评估成本；单seed42，不能把语言顺序重复当参数seed重复。
+动作：后续若研究可复用旧数据，需要区分保任务标签与保跨语言接口，而非只胜过无replay。

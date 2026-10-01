@@ -60,6 +60,10 @@ MONOWEB 三个 34K checkpoint 同起点协议、相同英语训练数据、适�
 完整报告 EN/DE 绝对能力、学习曲线、类别混淆与源语代价，不只报 transfer ratio。
 适配种子重复不冒充预训练种子重复。训练端干预解释仍受单一预训练家族限制。
 
+三适配seed终点EN/DE均值：FWB **83.61/77.19%**、MWB **82.37/75.86%**、
+MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制解释。
+完整曲线、seed SD及证据边界见 [E01结果说明](results/E01_LEARNING_BASELINE.md)。
+
 - [实验卡](experiments/E01-monoweb-english-nli-learning.md)
 - [主张账](CLAIMS.md) / [痛点账](PAIN_LOG.md) / [形态卡](PAPER_SHAPE.md)
 - [会话日志](logs/2026-10-02.md)
@@ -74,6 +78,8 @@ MONOWEB 三个 34K checkpoint 同起点协议、相同英语训练数据、适�
   `ckpt_exp_en_de_{baseline,monoweb,onlyparallel}/iter_0034000/hf_model`。
 - 下载/定位：`scripts/cache_models.py` 与本地 `artifacts/model_manifests/`。
 - 原始输出、训练 checkpoint、下载论文：本目录 `artifacts/`、`sources/`（git-ignore）。
+- E01：`artifacts/nli_learning/train_{condition}_seed{17,29,43}/`，
+  保存backbone `checkpoint/` 和 `classification_head.pt`；不是完整生成式LM。
 - 当前本地 conda：`/home/xiang/miniconda3/envs/openslime/bin/python`。
 - GPU 使用人的授权节点空卡；独立单卡任务，不占其他进程，白天九点后最多八张并用。
 

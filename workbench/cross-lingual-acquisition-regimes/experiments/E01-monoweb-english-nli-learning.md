@@ -1,6 +1,6 @@
 # E01：MONOWEB 英语 NLI 学习→德语迁移（2026-10-02）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO（标准学习 baseline，不声称新 idea）
 - **对应：** P01、C03
 - **问题（一句话）：** 有效任务学习后，FWB/MWB/MWB+P 跨语言学习曲线是否有值得训练干预追究的差异？
@@ -27,3 +27,11 @@
 输入校对：另取原作者XNLI-1.0 ZIP，与HF5010条EN/DE的原文和label逐条精确对照，原始pairID序列一致且5010唯一。已通过 `scripts/audit_xnli_pairs.py`；结果hash见 `results/nli_xnli_pair_audit.json`，不只用label相同推断配对。
 
 POST-HOC校对备注：固定pair-disjoint source holdout并非premise-group-disjoint；4096 dev有702条与train共享premise但hypothesis不同，XNLI EN test有3条共享premise，完整pair重叠仍0。开发集Wilson CI只作描述，不冒称严格独立premise泛化；source学习还在未用于recipe选择的XNLI EN test得到确认（seed17≥82%）。XNLI5010 pair对应1670独立promptID，原预注册item bootstrap保留，追加promptID cluster bootstrap为相关性敏感性分析，不据此改主读数或筛种子。
+
+工程恢复修订（2026-10-02，重跑前）：服务重启中断最后一个A100 baseline seed29，训练损失仅保存至752步，无completion、最终权重，远端进程已退出。保留完整部分运行到 `artifacts/nli_learning/interrupted_baseline_seed29_daemon_restart/`，轻量结果保存为 `results/nli_interrupted_baseline_seed29_daemon_restart.json`。无中途优化器checkpoint，故同seed29、相同脚本hash/data/recipe从原始权重重跑，不把部分运行当完成seed，不依据分数决定重跑。恢复改用远端nohup日志，防止控制端重启再次杀训练；科学协议不变。
+
+完成（2026-10-02）：九个主cell均在A100完成全曲线和最终权重保存，seed17/29/43全部保留。FWB/MWB/MWB+P终点EN均值±seed SD分别83.61±0.50/82.37±0.52/83.23±0.34%；DE分别77.19±0.30/75.86±0.42/77.09±0.21%。每个cell32768例、1455666输入token，峰值27.04GiB。**实际：** 1.424 GPU·时（九主cell记录内训练+评测，不含import/loading和最终权重写盘）；pilot .067、Blackwell replica .257 GPU·时另计，752步中断及I/O开销未获得完整统一计时，不冒称总成本1.424。并发写盘约3–4分钟/模型；最后单独写盘62.48秒。最多5张并用，未杀其他进程。
+
+恢复校对：中断运行与重跑的config/data/seed/input/head/tokenizer/script/device一致；0/64/256步全部九个预测文件逐字节一致。额外Blackwell replica与中断资产单列，不进入主均值，不按成绩筛选。源语gate和真实任务能力通过，P01的NLI baseline缺口已修复；新科学机制/训练决策收益尚未建立，不升级L2/L3，不恢复C01。完整结果与后续增量边界见 `results/E01_LEARNING_BASELINE.md`。
+
+DE终点paired-item bootstrap95%CI（pp）：MWB−FWB −1.33 [−2.09,−0.59]；+P−MWB +1.23 [0.50,1.96]；+P−FWB −0.10 [−0.88,0.64]。POST-HOC promptID cluster区间定性相同；完整per-seed/预算点/输入hash见 `results/nli_analysis_seeds_17_29_43.json`。CI条件于三个适配seed，不能据此作regime因果推断。

@@ -6,10 +6,11 @@
 |---|---|---|---|---|
 | C01 | acquisition 状态解释四篇 parent 收益差异 | 未建立；撤回领先地位 | P0、第二轮及用户独立审计 | 未独立操纵 acquisition；质量/训练阶段混杂；不是全面证伪 |
 | C02 | 当前 MONOWEB 34K 三组权重具有有效的翻译训练干预 | 历史阳性对照；不升为论文主张 | EIGHTH_WAVE.md；results/p2_translation_control_34k.json | 固定 200 条/方向；非完整复现；未独立重跑 |
-| C03 | 相同英语任务适配后，三组 MONOWEB 的源语学习与德语迁移曲线存在有后果的差异 | 待测，不预设方向 | E01 | 单预训练种子；适配种子不能替代预训练重复；NLI 非全部 reasoning |
+| C03 | 相同英语任务适配后，三组 MONOWEB 的源语学习与德语迁移曲线存在有后果的差异 | 标准学习读数完成；训练决策后果与解释未建立，不升级论文主张 | E01；results/nli_analysis_seeds_17_29_43.json；results/E01_LEARNING_BASELINE.md | DE终点MWB+P−MWB +1.23pp [0.50,1.96]，但EN也提高；对FWB −0.10pp [−0.88,0.64]；单预训练seed、单任务 |
 
 ## 撤回 / 降级记录
 
 2026-10-02 人审：C01 撤回领先地位，不救既定叙事；冻结 Macaroni 小信号不承接论文主线。
 JGP selected-checkpoint 大语言能力差距已被等名义步数比较撤回；既往记录保留。
 CI 跨零不构成等价证据；不同评分方式不作多数表决。无 L2/L3 升级。
+E01完成三适配seed；不以早期快照、更换评分或CI跨零救C01。不把三适配seed当三预训练seed。
