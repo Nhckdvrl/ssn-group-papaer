@@ -1,0 +1,545 @@
+{
+  "inputs": [
+    "workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_s0.jsonl",
+    "workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_shuffled_s0.jsonl",
+    "workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_s0.jsonl",
+    "workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_shuffled_s0.jsonl"
+  ],
+  "metadata": [
+    {
+      "model": {
+        "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+        "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+        "subfolder": null,
+        "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+      },
+      "args": {
+        "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+        "task": "xcopa",
+        "limit": 500,
+        "shots": 0,
+        "batch": 8,
+        "legacy_pickle": true,
+        "readout": "joint",
+        "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_s0.jsonl"
+      },
+      "data": [
+        "cambridgeltl/xcopa",
+        "042f78955ba48e6404616762fa6e05e839c3907a"
+      ],
+      "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+      "expected_items": 1924,
+      "excluded_reannotated_ids": [
+        27,
+        84,
+        105,
+        111,
+        125,
+        152,
+        169,
+        205,
+        296,
+        303,
+        323,
+        327,
+        354,
+        386,
+        408,
+        415,
+        423,
+        436,
+        454
+      ],
+      "torch": "2.9.1+cu129",
+      "transformers": "5.3.0",
+      "device": "NVIDIA A100 80GB PCIe"
+    },
+    {
+      "model": {
+        "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+        "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+        "subfolder": null,
+        "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+      },
+      "args": {
+        "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+        "task": "xcopa",
+        "limit": 500,
+        "shots": 0,
+        "batch": 8,
+        "legacy_pickle": true,
+        "readout": "joint",
+        "context_control": "shuffled",
+        "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_shuffled_s0.jsonl"
+      },
+      "data": [
+        "cambridgeltl/xcopa",
+        "042f78955ba48e6404616762fa6e05e839c3907a"
+      ],
+      "items_sha256": "a7d82ea4152bf916b969384cf05eeb125eb5b7a0a385335be8082eb755b3f1d0",
+      "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+      "expected_items": 1924,
+      "excluded_reannotated_ids": [
+        27,
+        84,
+        105,
+        111,
+        125,
+        152,
+        169,
+        205,
+        296,
+        303,
+        323,
+        327,
+        354,
+        386,
+        408,
+        415,
+        423,
+        436,
+        454
+      ],
+      "torch": "2.9.1+cu129",
+      "transformers": "5.3.0",
+      "device": "NVIDIA A100 80GB PCIe"
+    },
+    {
+      "model": {
+        "repo": "nusnlp/JGP-Parallel-Distributed",
+        "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+        "subfolder": null,
+        "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+      },
+      "args": {
+        "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+        "task": "xcopa",
+        "limit": 500,
+        "shots": 0,
+        "batch": 8,
+        "legacy_pickle": true,
+        "readout": "joint",
+        "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_s0.jsonl"
+      },
+      "data": [
+        "cambridgeltl/xcopa",
+        "042f78955ba48e6404616762fa6e05e839c3907a"
+      ],
+      "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+      "expected_items": 1924,
+      "excluded_reannotated_ids": [
+        27,
+        84,
+        105,
+        111,
+        125,
+        152,
+        169,
+        205,
+        296,
+        303,
+        323,
+        327,
+        354,
+        386,
+        408,
+        415,
+        423,
+        436,
+        454
+      ],
+      "torch": "2.9.1+cu129",
+      "transformers": "5.3.0",
+      "device": "NVIDIA A100 80GB PCIe"
+    },
+    {
+      "model": {
+        "repo": "nusnlp/JGP-Parallel-Distributed",
+        "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+        "subfolder": null,
+        "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+      },
+      "args": {
+        "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+        "task": "xcopa",
+        "limit": 500,
+        "shots": 0,
+        "batch": 8,
+        "legacy_pickle": true,
+        "readout": "joint",
+        "context_control": "shuffled",
+        "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_shuffled_s0.jsonl"
+      },
+      "data": [
+        "cambridgeltl/xcopa",
+        "042f78955ba48e6404616762fa6e05e839c3907a"
+      ],
+      "items_sha256": "a7d82ea4152bf916b969384cf05eeb125eb5b7a0a385335be8082eb755b3f1d0",
+      "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+      "expected_items": 1924,
+      "excluded_reannotated_ids": [
+        27,
+        84,
+        105,
+        111,
+        125,
+        152,
+        169,
+        205,
+        296,
+        303,
+        323,
+        327,
+        354,
+        386,
+        408,
+        415,
+        423,
+        436,
+        454
+      ],
+      "torch": "2.9.1+cu129",
+      "transformers": "5.3.0",
+      "device": "NVIDIA A100 80GB PCIe"
+    }
+  ],
+  "cells": {
+    "raw/id->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        52.390852390852395,
+        52.390852390852395,
+        54.88565488565489,
+        52.5987525987526
+      ],
+      "control_evidence_sensitivity_pp": 0.0,
+      "treated_evidence_sensitivity_pp": 2.2869022869022873,
+      "pairing_by_evidence_interaction_pp": 2.2869022869022873,
+      "paired_bootstrap_95ci_pp": [
+        -1.4553014553014554,
+        6.029106029106029
+      ],
+      "gold_margin_interaction": 0.2378775919797267,
+      "margin_95ci": [
+        -0.04095263753760131,
+        0.5160811854499293
+      ]
+    },
+    "token_norm/id->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        50.935550935550935,
+        51.767151767151766,
+        52.80665280665281,
+        51.559251559251564
+      ],
+      "control_evidence_sensitivity_pp": -0.8316008316008316,
+      "treated_evidence_sensitivity_pp": 1.2474012474012475,
+      "pairing_by_evidence_interaction_pp": 2.079002079002079,
+      "paired_bootstrap_95ci_pp": [
+        -1.6632016632016633,
+        5.826403326403251
+      ],
+      "gold_margin_interaction": 0.021590571440636214,
+      "margin_95ci": [
+        -0.004237347162417204,
+        0.04787056309491361
+      ]
+    },
+    "char_norm/id->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        50.935550935550935,
+        51.35135135135135,
+        51.767151767151766,
+        49.8960498960499
+      ],
+      "control_evidence_sensitivity_pp": -0.4158004158004158,
+      "treated_evidence_sensitivity_pp": 1.8711018711018712,
+      "pairing_by_evidence_interaction_pp": 2.2869022869022873,
+      "paired_bootstrap_95ci_pp": [
+        -1.6632016632016633,
+        6.029106029106029
+      ],
+      "gold_margin_interaction": 0.007921980148795383,
+      "margin_95ci": [
+        -0.002989189772264336,
+        0.01888412435113974
+      ]
+    },
+    "prior_adjusted/id->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        47.60914760914761,
+        48.64864864864865,
+        53.84615384615385,
+        52.18295218295218
+      ],
+      "control_evidence_sensitivity_pp": -1.0395010395010396,
+      "treated_evidence_sensitivity_pp": 1.6632016632016633,
+      "pairing_by_evidence_interaction_pp": 2.7027027027027026,
+      "paired_bootstrap_95ci_pp": [
+        -1.2474012474012475,
+        6.652806652806653
+      ],
+      "gold_margin_interaction": 0.2378775919797267,
+      "margin_95ci": [
+        -0.04651226397611495,
+        0.5259470226363184
+      ]
+    },
+    "raw/id->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        51.975051975051976,
+        51.975051975051976,
+        49.48024948024948,
+        47.81704781704782
+      ],
+      "control_evidence_sensitivity_pp": 0.0,
+      "treated_evidence_sensitivity_pp": 1.6632016632016633,
+      "pairing_by_evidence_interaction_pp": 1.6632016632016633,
+      "paired_bootstrap_95ci_pp": [
+        -2.2869022869022873,
+        5.613305613305614
+      ],
+      "gold_margin_interaction": 0.4467790369680171,
+      "margin_95ci": [
+        0.12594171165180804,
+        0.7650096690084731
+      ]
+    },
+    "token_norm/id->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        48.44074844074844,
+        47.81704781704782,
+        49.272349272349274,
+        46.98544698544699
+      ],
+      "control_evidence_sensitivity_pp": 0.6237006237006237,
+      "treated_evidence_sensitivity_pp": 2.2869022869022873,
+      "pairing_by_evidence_interaction_pp": 1.6632016632016633,
+      "paired_bootstrap_95ci_pp": [
+        -1.2474012474012475,
+        4.781704781704782
+      ],
+      "gold_margin_interaction": 0.03632488737190416,
+      "margin_95ci": [
+        0.011691007100027172,
+        0.06111258698304344
+      ]
+    },
+    "char_norm/id->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        50.1039501039501,
+        49.48024948024948,
+        51.143451143451145,
+        48.024948024948024
+      ],
+      "control_evidence_sensitivity_pp": 0.6237006237006237,
+      "treated_evidence_sensitivity_pp": 3.118503118503119,
+      "pairing_by_evidence_interaction_pp": 2.494802494802495,
+      "paired_bootstrap_95ci_pp": [
+        -1.2474012474012475,
+        6.237006237006238
+      ],
+      "gold_margin_interaction": 0.06106007318319942,
+      "margin_95ci": [
+        0.019910686288802885,
+        0.1025153163142708
+      ]
+    },
+    "prior_adjusted/id->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        48.232848232848234,
+        47.19334719334719,
+        55.92515592515592,
+        49.272349272349274
+      ],
+      "control_evidence_sensitivity_pp": 1.0395010395010396,
+      "treated_evidence_sensitivity_pp": 6.652806652806653,
+      "pairing_by_evidence_interaction_pp": 5.613305613305614,
+      "paired_bootstrap_95ci_pp": [
+        1.2474012474012475,
+        9.97920997920998
+      ],
+      "gold_margin_interaction": 0.4467790369680171,
+      "margin_95ci": [
+        0.1284774741610965,
+        0.7608081949475897
+      ]
+    },
+    "raw/zh->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        53.222453222453225,
+        50.1039501039501,
+        53.84615384615385,
+        52.18295218295218
+      ],
+      "control_evidence_sensitivity_pp": 3.118503118503119,
+      "treated_evidence_sensitivity_pp": 1.6632016632016633,
+      "pairing_by_evidence_interaction_pp": -1.4553014553014554,
+      "paired_bootstrap_95ci_pp": [
+        -4.781704781704782,
+        1.8711018711018712
+      ],
+      "gold_margin_interaction": 0.02221632102918724,
+      "margin_95ci": [
+        -0.28352492663567874,
+        0.3228081962918539
+      ]
+    },
+    "token_norm/zh->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        49.8960498960499,
+        48.64864864864865,
+        50.1039501039501,
+        49.48024948024948
+      ],
+      "control_evidence_sensitivity_pp": 1.2474012474012475,
+      "treated_evidence_sensitivity_pp": 0.6237006237006237,
+      "pairing_by_evidence_interaction_pp": -0.6237006237006237,
+      "paired_bootstrap_95ci_pp": [
+        -3.7422037422037424,
+        2.494802494802495
+      ],
+      "gold_margin_interaction": -0.00820930353928994,
+      "margin_95ci": [
+        -0.036166285850780036,
+        0.01966918616061347
+      ]
+    },
+    "char_norm/zh->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        49.8960498960499,
+        49.272349272349274,
+        50.311850311850314,
+        50.1039501039501
+      ],
+      "control_evidence_sensitivity_pp": 0.6237006237006237,
+      "treated_evidence_sensitivity_pp": 0.2079002079002079,
+      "pairing_by_evidence_interaction_pp": -0.4158004158004158,
+      "paired_bootstrap_95ci_pp": [
+        -3.5343035343035343,
+        2.9106029106029108
+      ],
+      "gold_margin_interaction": -0.004152482348863472,
+      "margin_95ci": [
+        -0.015721609728132576,
+        0.007487676115602739
+      ]
+    },
+    "prior_adjusted/zh->id": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        49.064449064449065,
+        47.4012474012474,
+        52.80665280665281,
+        48.64864864864865
+      ],
+      "control_evidence_sensitivity_pp": 1.6632016632016633,
+      "treated_evidence_sensitivity_pp": 4.158004158004158,
+      "pairing_by_evidence_interaction_pp": 2.494802494802495,
+      "paired_bootstrap_95ci_pp": [
+        -1.2474012474012475,
+        6.237006237006238
+      ],
+      "gold_margin_interaction": 0.02221632102918724,
+      "margin_95ci": [
+        -0.28248727465369844,
+        0.3253493312986377
+      ]
+    },
+    "raw/zh->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        50.51975051975052,
+        50.51975051975052,
+        51.559251559251564,
+        50.51975051975052
+      ],
+      "control_evidence_sensitivity_pp": 0.0,
+      "treated_evidence_sensitivity_pp": 1.0395010395010396,
+      "pairing_by_evidence_interaction_pp": 1.0395010395010396,
+      "paired_bootstrap_95ci_pp": [
+        -2.9158004158004114,
+        5.197505197505198
+      ],
+      "gold_margin_interaction": 0.11566014200634867,
+      "margin_95ci": [
+        -0.17037893179300667,
+        0.39155909068371303
+      ]
+    },
+    "token_norm/zh->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        51.559251559251564,
+        46.77754677754678,
+        50.311850311850314,
+        47.81704781704782
+      ],
+      "control_evidence_sensitivity_pp": 4.781704781704782,
+      "treated_evidence_sensitivity_pp": 2.494802494802495,
+      "pairing_by_evidence_interaction_pp": -2.2869022869022873,
+      "paired_bootstrap_95ci_pp": [
+        -6.237006237006238,
+        1.6632016632016633
+      ],
+      "gold_margin_interaction": 0.009029079185547934,
+      "margin_95ci": [
+        -0.012221656920208376,
+        0.030871957549064633
+      ]
+    },
+    "char_norm/zh->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        50.1039501039501,
+        48.64864864864865,
+        51.767151767151766,
+        49.272349272349274
+      ],
+      "control_evidence_sensitivity_pp": 1.4553014553014554,
+      "treated_evidence_sensitivity_pp": 2.494802494802495,
+      "pairing_by_evidence_interaction_pp": 1.0395010395010396,
+      "paired_bootstrap_95ci_pp": [
+        -2.9106029106029108,
+        4.98960498960499
+      ],
+      "gold_margin_interaction": 0.017607366029101068,
+      "margin_95ci": [
+        -0.021335240554097957,
+        0.056928200891931284
+      ]
+    },
+    "prior_adjusted/zh->zh": {
+      "n": 481,
+      "accuracy_control_original_shuffled_treated_original_shuffled": [
+        47.60914760914761,
+        46.36174636174636,
+        55.92515592515592,
+        49.68814968814969
+      ],
+      "control_evidence_sensitivity_pp": 1.2474012474012475,
+      "treated_evidence_sensitivity_pp": 6.237006237006238,
+      "pairing_by_evidence_interaction_pp": 4.98960498960499,
+      "paired_bootstrap_95ci_pp": [
+        0.0,
+        9.771309771309772
+      ],
+      "gold_margin_interaction": 0.11566014200634867,
+      "margin_95ci": [
+        -0.1630696847384288,
+        0.4020886945625352
+      ]
+    }
+  },
+  "limits": "Unrelated context retains cause/effect but changes topic and lexical co-occurrence; not a clean intervention on causal reasoning computation. Exploratory CIs, one training seed."
+}

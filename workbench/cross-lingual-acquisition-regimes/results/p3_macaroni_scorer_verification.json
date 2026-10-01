@@ -1,0 +1,59 @@
+{
+  "model": {
+    "repo": "drooryck/multilingual-macaroni-models",
+    "revision": "e7cb91cb1939f42bf09d89de826a9ead23b37f91",
+    "branch": "noswitch",
+    "condition": "noswitch",
+    "seed": 42,
+    "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/e7cb91cb1939f42bf09d89de826a9ead23b37f91"
+  },
+  "weight_dtype": "fp32",
+  "checks": [
+    {
+      "precision": "fp32",
+      "request": [
+        "The glass fell because",
+        " someone pushed it."
+      ],
+      "tokens": 5,
+      "single_reference_error": 0.0,
+      "reference_error": 1.9073486328125e-06,
+      "batch_error": 1.9073486328125e-06
+    },
+    {
+      "precision": "fp32",
+      "request": [
+        "The child smiled. ",
+        "Her friend returned."
+      ],
+      "tokens": 4,
+      "single_reference_error": 1.9073486328125e-06,
+      "reference_error": 1.9073486328125e-06,
+      "batch_error": 3.814697265625e-06
+    },
+    {
+      "precision": "fp32",
+      "request": [
+        "",
+        "The window was open."
+      ],
+      "tokens": 5,
+      "single_reference_error": 0.0,
+      "reference_error": 7.62939453125e-06,
+      "batch_error": 7.62939453125e-06
+    },
+    {
+      "precision": "fp32",
+      "request": [
+        "雨停了所以",
+        "孩子出去玩了。"
+      ],
+      "tokens": 5,
+      "single_reference_error": 0.0,
+      "reference_error": 3.814697265625e-06,
+      "batch_error": 3.814697265625e-06
+    }
+  ],
+  "passed": true,
+  "scope": "Four boundary/padding cases, not a full harness reproduction; FP32 tolerance 1e-4 nats/token. BF16 deviations recorded, not asserted equivalent."
+}

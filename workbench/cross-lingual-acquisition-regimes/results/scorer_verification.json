@@ -1,0 +1,100 @@
+{
+  "model": {
+    "repo": "nusnlp/JGP-Parallel-Distributed",
+    "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+    "subfolder": null,
+    "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+  },
+  "checks": [
+    {
+      "precision": "bf16",
+      "request": [
+        "The glass fell because",
+        " someone pushed it."
+      ],
+      "tokens": 4,
+      "single_reference_error": 0.0,
+      "reference_error": 0.020644187927246094,
+      "batch_error": 0.020644187927246094
+    },
+    {
+      "precision": "bf16",
+      "request": [
+        "The child smiled. ",
+        "Her friend returned."
+      ],
+      "tokens": 4,
+      "single_reference_error": 0.0,
+      "reference_error": 0.027873992919921875,
+      "batch_error": 0.027873992919921875
+    },
+    {
+      "precision": "bf16",
+      "request": [
+        "",
+        "The window was open."
+      ],
+      "tokens": 5,
+      "single_reference_error": 0.0,
+      "reference_error": 0.2695465087890625,
+      "batch_error": 0.2695465087890625
+    },
+    {
+      "precision": "bf16",
+      "request": [
+        "雨停了所以",
+        "孩子出去玩了。"
+      ],
+      "tokens": 11,
+      "single_reference_error": 1.9073486328125e-06,
+      "reference_error": 0.03512763977050781,
+      "batch_error": 0.035125732421875
+    },
+    {
+      "precision": "fp32",
+      "request": [
+        "The glass fell because",
+        " someone pushed it."
+      ],
+      "tokens": 4,
+      "single_reference_error": 0.0,
+      "reference_error": 1.52587890625e-05,
+      "batch_error": 1.52587890625e-05
+    },
+    {
+      "precision": "fp32",
+      "request": [
+        "The child smiled. ",
+        "Her friend returned."
+      ],
+      "tokens": 4,
+      "single_reference_error": 0.0,
+      "reference_error": 7.62939453125e-06,
+      "batch_error": 7.62939453125e-06
+    },
+    {
+      "precision": "fp32",
+      "request": [
+        "",
+        "The window was open."
+      ],
+      "tokens": 5,
+      "single_reference_error": 0.0,
+      "reference_error": 3.814697265625e-06,
+      "batch_error": 3.814697265625e-06
+    },
+    {
+      "precision": "fp32",
+      "request": [
+        "雨停了所以",
+        "孩子出去玩了。"
+      ],
+      "tokens": 11,
+      "single_reference_error": 0.0,
+      "reference_error": 5.7220458984375e-06,
+      "batch_error": 5.7220458984375e-06
+    }
+  ],
+  "passed": true,
+  "scope": "Four boundary/padding cases, not a full harness reproduction; FP32 tolerance 1e-4 nats/token. BF16 deviations recorded, not asserted equivalent."
+}

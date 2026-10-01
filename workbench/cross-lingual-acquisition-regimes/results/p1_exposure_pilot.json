@@ -1,0 +1,364 @@
+{
+  "control": {
+    "model": {
+      "repo": "nusnlp/JGP-No-Parallel",
+      "revision": "65a5eba5c03783812aa2265326634f6da060c177",
+      "subfolder": null,
+      "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-No-Parallel/snapshots/65a5eba5c03783812aa2265326634f6da060c177"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-No-Parallel.json",
+      "task": "xcopa",
+      "limit": 500,
+      "shots": 0,
+      "batch": 8,
+      "legacy_pickle": true,
+      "readout": "joint",
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_no_s0.jsonl"
+    },
+    "data": [
+      "cambridgeltl/xcopa",
+      "042f78955ba48e6404616762fa6e05e839c3907a"
+    ],
+    "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+    "expected_items": 1924,
+    "excluded_reannotated_ids": [
+      27,
+      84,
+      105,
+      111,
+      125,
+      152,
+      169,
+      205,
+      296,
+      303,
+      323,
+      327,
+      354,
+      386,
+      408,
+      415,
+      423,
+      436,
+      454
+    ],
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cells": {
+    "raw/id->id": {
+      "n": 481,
+      "control_accuracy": 50.311850311850314,
+      "control_prediction_counts": {
+        "1": 233,
+        "0": 248
+      },
+      "treated_accuracy": 52.80665280665281,
+      "delta_pp": 2.494802494802495,
+      "paired_bootstrap_95ci_pp": [
+        -1.6632016632016633,
+        6.652806652806653
+      ],
+      "improved_items": 59,
+      "harmed_items": 47,
+      "treated_prediction_counts": {
+        "1": 227,
+        "0": 254
+      }
+    },
+    "token_norm/id->id": {
+      "n": 481,
+      "control_accuracy": 51.35135135135135,
+      "control_prediction_counts": {
+        "1": 240,
+        "0": 241
+      },
+      "treated_accuracy": 51.35135135135135,
+      "delta_pp": 0.0,
+      "paired_bootstrap_95ci_pp": [
+        -4.5738045738045745,
+        4.781704781704782
+      ],
+      "improved_items": 65,
+      "harmed_items": 65,
+      "treated_prediction_counts": {
+        "1": 232,
+        "0": 249
+      }
+    },
+    "prior_adjusted/id->id": {
+      "n": 481,
+      "control_accuracy": 50.51975051975052,
+      "control_prediction_counts": {
+        "1": 252,
+        "0": 229
+      },
+      "treated_accuracy": 53.84615384615385,
+      "delta_pp": 3.3264033264033266,
+      "paired_bootstrap_95ci_pp": [
+        -2.494802494802495,
+        9.147609147609149
+      ],
+      "improved_items": 112,
+      "harmed_items": 96,
+      "treated_prediction_counts": {
+        "0": 245,
+        "1": 236
+      }
+    },
+    "raw/id->zh": {
+      "n": 481,
+      "control_accuracy": 52.80665280665281,
+      "control_prediction_counts": {
+        "1": 221,
+        "0": 260
+      },
+      "treated_accuracy": 54.054054054054056,
+      "delta_pp": 1.2474012474012475,
+      "paired_bootstrap_95ci_pp": [
+        -3.7422037422037424,
+        6.029106029106029
+      ],
+      "improved_items": 75,
+      "harmed_items": 69,
+      "treated_prediction_counts": {
+        "1": 229,
+        "0": 252
+      }
+    },
+    "token_norm/id->zh": {
+      "n": 481,
+      "control_accuracy": 51.559251559251564,
+      "control_prediction_counts": {
+        "0": 246,
+        "1": 235
+      },
+      "treated_accuracy": 50.1039501039501,
+      "delta_pp": -1.4553014553014554,
+      "paired_bootstrap_95ci_pp": [
+        -5.405405405405405,
+        2.7027027027027026
+      ],
+      "improved_items": 48,
+      "harmed_items": 55,
+      "treated_prediction_counts": {
+        "0": 243,
+        "1": 238
+      }
+    },
+    "prior_adjusted/id->zh": {
+      "n": 481,
+      "control_accuracy": 50.311850311850314,
+      "control_prediction_counts": {
+        "1": 247,
+        "0": 234
+      },
+      "treated_accuracy": 53.222453222453225,
+      "delta_pp": 2.9106029106029108,
+      "paired_bootstrap_95ci_pp": [
+        -3.3264033264033266,
+        9.147609147609149
+      ],
+      "improved_items": 124,
+      "harmed_items": 110,
+      "treated_prediction_counts": {
+        "0": 264,
+        "1": 217
+      }
+    },
+    "raw/zh->id": {
+      "n": 481,
+      "control_accuracy": 52.390852390852395,
+      "control_prediction_counts": {
+        "1": 233,
+        "0": 248
+      },
+      "treated_accuracy": 53.222453222453225,
+      "delta_pp": 0.8316008316008316,
+      "paired_bootstrap_95ci_pp": [
+        -3.3264033264033266,
+        4.98960498960499
+      ],
+      "improved_items": 54,
+      "harmed_items": 50,
+      "treated_prediction_counts": {
+        "1": 227,
+        "0": 254
+      }
+    },
+    "token_norm/zh->id": {
+      "n": 481,
+      "control_accuracy": 51.35135135135135,
+      "control_prediction_counts": {
+        "1": 252,
+        "0": 229
+      },
+      "treated_accuracy": 50.51975051975052,
+      "delta_pp": -0.8316008316008316,
+      "paired_bootstrap_95ci_pp": [
+        -4.781704781704782,
+        3.118503118503119
+      ],
+      "improved_items": 44,
+      "harmed_items": 48,
+      "treated_prediction_counts": {
+        "1": 236,
+        "0": 245
+      }
+    },
+    "prior_adjusted/zh->id": {
+      "n": 481,
+      "control_accuracy": 49.48024948024948,
+      "control_prediction_counts": {
+        "1": 255,
+        "0": 226
+      },
+      "treated_accuracy": 54.67775467775468,
+      "delta_pp": 5.197505197505198,
+      "paired_bootstrap_95ci_pp": [
+        -1.0395010395010396,
+        11.226611226611228
+      ],
+      "improved_items": 123,
+      "harmed_items": 98,
+      "treated_prediction_counts": {
+        "1": 232,
+        "0": 249
+      }
+    },
+    "raw/zh->zh": {
+      "n": 481,
+      "control_accuracy": 51.767151767151766,
+      "control_prediction_counts": {
+        "1": 222,
+        "0": 259
+      },
+      "treated_accuracy": 53.01455301455301,
+      "delta_pp": 1.2474012474012475,
+      "paired_bootstrap_95ci_pp": [
+        -3.118503118503119,
+        5.613305613305614
+      ],
+      "improved_items": 61,
+      "harmed_items": 55,
+      "treated_prediction_counts": {
+        "1": 236,
+        "0": 245
+      }
+    },
+    "token_norm/zh->zh": {
+      "n": 481,
+      "control_accuracy": 49.272349272349274,
+      "control_prediction_counts": {
+        "0": 237,
+        "1": 244
+      },
+      "treated_accuracy": 51.143451143451145,
+      "delta_pp": 1.8711018711018712,
+      "paired_bootstrap_95ci_pp": [
+        -2.7027027027027026,
+        6.4449064449064455
+      ],
+      "improved_items": 69,
+      "harmed_items": 60,
+      "treated_prediction_counts": {
+        "0": 238,
+        "1": 243
+      }
+    },
+    "prior_adjusted/zh->zh": {
+      "n": 481,
+      "control_accuracy": 51.559251559251564,
+      "control_prediction_counts": {
+        "1": 243,
+        "0": 238
+      },
+      "treated_accuracy": 54.469854469854475,
+      "delta_pp": 2.9106029106029108,
+      "paired_bootstrap_95ci_pp": [
+        -3.118503118503119,
+        8.731808731808732
+      ],
+      "improved_items": 116,
+      "harmed_items": 102,
+      "treated_prediction_counts": {
+        "0": 258,
+        "1": 223
+      }
+    }
+  },
+  "treated": {
+    "model": {
+      "repo": "nusnlp/JGP-Multilingual",
+      "revision": "c09daf5de0ae0945313cb7c967ff884d4e39a943",
+      "subfolder": null,
+      "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Multilingual/snapshots/c09daf5de0ae0945313cb7c967ff884d4e39a943"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Multilingual.json",
+      "task": "xcopa",
+      "limit": 500,
+      "shots": 0,
+      "batch": 8,
+      "legacy_pickle": true,
+      "readout": "joint",
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_multi_s0.jsonl"
+    },
+    "data": [
+      "cambridgeltl/xcopa",
+      "042f78955ba48e6404616762fa6e05e839c3907a"
+    ],
+    "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+    "expected_items": 1924,
+    "excluded_reannotated_ids": [
+      27,
+      84,
+      105,
+      111,
+      125,
+      152,
+      169,
+      205,
+      296,
+      303,
+      323,
+      327,
+      354,
+      386,
+      408,
+      415,
+      423,
+      436,
+      454
+    ],
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cross_minus_mono_treatment_effect": {
+    "prior_adjusted": {
+      "delta_pp": 0.9355509355509356,
+      "paired_bootstrap_95ci_pp": [
+        -3.9501039501039505,
+        5.717255717255718
+      ]
+    },
+    "raw": {
+      "delta_pp": -0.8316008316008316,
+      "paired_bootstrap_95ci_pp": [
+        -3.8461538461538463,
+        2.2869022869022873
+      ]
+    },
+    "token_norm": {
+      "delta_pp": -2.079002079002079,
+      "paired_bootstrap_95ci_pp": [
+        -5.197505197505198,
+        1.2474012474012475
+      ]
+    }
+  },
+  "interpretation_limits": "Exploratory CIs, no familywise correction; model seeds not replicated. Cross-language cells retain continuation/connector confounds."
+}

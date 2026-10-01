@@ -1,0 +1,2344 @@
+{
+  "runs": [
+    {
+      "path": "artifacts/p1/jgp_distributed_fp32_s0.jsonl",
+      "sha256": "69a9df32b45a1f35fa07e4859b23b784b134ea1a587fccb04ce413bdc65fdbd3",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_fp32_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_distributed_s0.jsonl",
+      "sha256": "0ca6c9a9d67c8947ba7251d79cd55fe0b684c146c85ad3fd091e85afc0121b3b",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "legacy_pickle": true,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_distributed_shuffled_fp32_s0.jsonl",
+      "sha256": "5d27d14f6c36a4f07ada6a80a41103c9a59824f274d5e52a522ccb3506ef40a5",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_shuffled_fp32_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "a7d82ea4152bf916b969384cf05eeb125eb5b7a0a385335be8082eb755b3f1d0",
+        "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_distributed_shuffled_s0.jsonl",
+      "sha256": "30abfc57103c36e87eb907cb49740e41aed3ffa71706e5df54f5339143e03f77",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_shuffled_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "a7d82ea4152bf916b969384cf05eeb125eb5b7a0a385335be8082eb755b3f1d0",
+        "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_distributed_shuffled_xstory_fp32_s0.jsonl",
+      "sha256": "6d829ae430313098afd9442845c68bc49258e500be41d0890af37835a592fd15",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_shuffled_xstory_fp32_s0.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "3004ca0346a3d3cb4f790dffcd00b738265ad4f7746e156db9af7cdfc4dd7ca1",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_distributed_xstory_fp32_160k.jsonl",
+      "sha256": "4227ebfbfc20bef302c2f4e8126e8b6a39f6d04f0abfd3b83da1d514df93c647",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "bd0220756d543eb5f8c09ac3be516ca7358b4d8d",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/bd0220756d543eb5f8c09ac3be516ca7358b4d8d"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_distributed_xstory_fp32_s0.jsonl",
+      "sha256": "06d150a2626cc4fe7d7d67fbf7271a85ae5e352b896722b1b060c18b08d4bc04",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "7df2f2e2dd4dc1e187764ebd6843a2869efc989b",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/7df2f2e2dd4dc1e187764ebd6843a2869efc989b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_xstory_fp32_s0.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_last_s0.jsonl",
+      "sha256": "014b27f561f27fcc12aac4d2c44d42f2a95c943e835128cae09002b6c537af42",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Last-all",
+          "revision": "197fa1329d555221ad5d6b14ce9e1f29cbd77693",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Last-all/snapshots/197fa1329d555221ad5d6b14ce9e1f29cbd77693"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Last-all.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "legacy_pickle": true,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_last_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_multi_s0.jsonl",
+      "sha256": "357f0794f70b540832f3cdcd2665ea2bec07d2870e0e171766e0a178e0b9130a",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Multilingual",
+          "revision": "c09daf5de0ae0945313cb7c967ff884d4e39a943",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Multilingual/snapshots/c09daf5de0ae0945313cb7c967ff884d4e39a943"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Multilingual.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "legacy_pickle": true,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_multi_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_multi_xstory_fp32_160k.jsonl",
+      "sha256": "53442c1f886e1f21266148926f4861cb11353c9ddf3e898548c64505dc1ccfd3",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Multilingual",
+          "revision": "b043fcca41f4dffbfc011b53c02262040577f6f8",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Multilingual/snapshots/b043fcca41f4dffbfc011b53c02262040577f6f8"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Multilingual__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_multi_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_no_s0.jsonl",
+      "sha256": "6507c8391f91ba24e18f53a503e1e54aafdc2956bdbef062f198577539ee61e3",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-No-Parallel",
+          "revision": "65a5eba5c03783812aa2265326634f6da060c177",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-No-Parallel/snapshots/65a5eba5c03783812aa2265326634f6da060c177"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-No-Parallel.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "legacy_pickle": true,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_no_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_no_xstory_fp32_160k.jsonl",
+      "sha256": "67d6eca42680ae9242d3e911b05e940956e8872dc502e45e0773fff37d79f2e6",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-No-Parallel",
+          "revision": "9887348d52ea744507d8defce0f8996265c24d13",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-No-Parallel/snapshots/9887348d52ea744507d8defce0f8996265c24d13"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-No-Parallel__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_no_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_nonadj_fp32_s0.jsonl",
+      "sha256": "17d234d60561a576d0a6e9dbfa56f88cfd720cda81a5c0580f860e672a625a0a",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_fp32_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_nonadj_s0.jsonl",
+      "sha256": "4bad20d5d556fa998032bb056dfded4c41cd46adf77305a4c50a3637e6f880d7",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "legacy_pickle": true,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_nonadj_shuffled_fp32_s0.jsonl",
+      "sha256": "f917ff8ee242ce68266b12a66eb4252b81d3064d68fd3b3367dedd53ffa5bcea",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_shuffled_fp32_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "a7d82ea4152bf916b969384cf05eeb125eb5b7a0a385335be8082eb755b3f1d0",
+        "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_nonadj_shuffled_s0.jsonl",
+      "sha256": "2da516da4c02114b94a741f11371a2b55543b0d6aa876d54b9c8944655140f65",
+      "items": 1924,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+          "task": "xcopa",
+          "limit": 500,
+          "shots": 0,
+          "batch": 8,
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_shuffled_s0.jsonl"
+        },
+        "data": [
+          "cambridgeltl/xcopa",
+          "042f78955ba48e6404616762fa6e05e839c3907a"
+        ],
+        "items_sha256": "a7d82ea4152bf916b969384cf05eeb125eb5b7a0a385335be8082eb755b3f1d0",
+        "semantic_items_sha256": "33a046bcaae2546c1d9f40491f0957439a49cba28e7b6571dfb30c15def8fbc2",
+        "expected_items": 1924,
+        "excluded_reannotated_ids": [
+          27,
+          84,
+          105,
+          111,
+          125,
+          152,
+          169,
+          205,
+          296,
+          303,
+          323,
+          327,
+          354,
+          386,
+          408,
+          415,
+          423,
+          436,
+          454
+        ],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_nonadj_shuffled_xstory_fp32_s0.jsonl",
+      "sha256": "122af41f1808a43b43869efa7756f85604f49a8b00859015a68c72c8e6d11f65",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_shuffled_xstory_fp32_s0.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "3004ca0346a3d3cb4f790dffcd00b738265ad4f7746e156db9af7cdfc4dd7ca1",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_nonadj_xstory_fp32_160k.jsonl",
+      "sha256": "0695ff0ab9817a9329988a0757567cb4f6a68d7b57399a0d1899c1f0b0373524",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "b36e67227578a3ae6f6439c1b241536dc0497461",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/b36e67227578a3ae6f6439c1b241536dc0497461"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p1/jgp_nonadj_xstory_fp32_s0.jsonl",
+      "sha256": "21b44168bb26fa9c0902e83a475d854cb47260f41fd78bcfc9d572c959a5a408",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "d51285e426313f7f5487e9a931108be8ae8f4599",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/d51285e426313f7f5487e9a931108be8ae8f4599"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_xstory_fp32_s0.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/fwb_de_s5.jsonl",
+      "sha256": "1fe3093f65c53ef07e51bb15ba0f222108c2d8245061b76f014fcd1991c278c3",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_baseline/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_baseline/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_baseline.json",
+          "task": "xnli",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/fwb_de_s5.jsonl"
+        },
+        "data": [
+          "facebook/xnli",
+          "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+        ],
+        "items_sha256": "26d33a1c9d35e51f67529b7b6a2fc775fff93e4139afe68941be29cedf8974e9",
+        "expected_items": 2000,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/fwb_hswag_s5.jsonl",
+      "sha256": "0f61c07de6376262baa9bfff4b38db80b30d270c1443e48e04a10d5cf33a253a",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_baseline/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_baseline/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_baseline.json",
+          "task": "hellaswag",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "legacy_pickle": false,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/fwb_hswag_s5.jsonl"
+        },
+        "data": [
+          "alexandrainst/m_hellaswag",
+          "9d31dc982bd6285e081e3e3136332a38b9c1d7b7"
+        ],
+        "items_sha256": "0aa6776c916ec366290c0c7b203b033cdb832f9fa21372603010b44082a9a8b1",
+        "expected_items": 2000,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/mwb_de_label_s5.jsonl",
+      "sha256": "d99dae910e943b1b1e14975d4df2e4c953ba99607d8cb818dbdba34b9beebb27",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb.json",
+          "task": "xnli",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "legacy_pickle": false,
+          "readout": "label",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwb_de_label_s5.jsonl"
+        },
+        "data": [
+          "facebook/xnli",
+          "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+        ],
+        "items_sha256": "d5f9e70b8f2e06213148f4a186606e182faaf861371b9db4499b2255a74efd95",
+        "expected_items": 2000,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/mwb_de_s5.jsonl",
+      "sha256": "cd93efeb93dd31996c9e159f5c5b9e6cbd63e02aaa14d8b1d99e4dce27089965",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb.json",
+          "task": "xnli",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwb_de_s5.jsonl"
+        },
+        "data": [
+          "facebook/xnli",
+          "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+        ],
+        "items_sha256": "26d33a1c9d35e51f67529b7b6a2fc775fff93e4139afe68941be29cedf8974e9",
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/mwb_hswag_s5.jsonl",
+      "sha256": "09adf88ac29d98b6b2675f56bb3b8d45e7b8e62293b3b05d835ebb1c5d48bcfd",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb.json",
+          "task": "hellaswag",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "legacy_pickle": false,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwb_hswag_s5.jsonl"
+        },
+        "data": [
+          "alexandrainst/m_hellaswag",
+          "9d31dc982bd6285e081e3e3136332a38b9c1d7b7"
+        ],
+        "items_sha256": "0aa6776c916ec366290c0c7b203b033cdb832f9fa21372603010b44082a9a8b1",
+        "expected_items": 2000,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/mwbp_de_label_s5.jsonl",
+      "sha256": "110a5f6fb87ef5b850d21e361e62eb2c952382c963c5273cac5fe1f03cdb8b26",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_onlyparallel.json",
+          "task": "xnli",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "legacy_pickle": false,
+          "readout": "label",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwbp_de_label_s5.jsonl"
+        },
+        "data": [
+          "facebook/xnli",
+          "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+        ],
+        "items_sha256": "d5f9e70b8f2e06213148f4a186606e182faaf861371b9db4499b2255a74efd95",
+        "expected_items": 2000,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/mwbp_de_s5.jsonl",
+      "sha256": "d9704acbc5371a8ece7c6bd3852089a98b89a096c868f143aadb1ec73ab52ecd",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_onlyparallel.json",
+          "task": "xnli",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwbp_de_s5.jsonl"
+        },
+        "data": [
+          "facebook/xnli",
+          "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+        ],
+        "items_sha256": "26d33a1c9d35e51f67529b7b6a2fc775fff93e4139afe68941be29cedf8974e9",
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/mwbp_hswag_s5.jsonl",
+      "sha256": "8f75661660b3c8be6e1c54bb0e03d11b3d5357205a7bfc2c84c91f7c2ea34c62",
+      "items": 2000,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_onlyparallel.json",
+          "task": "hellaswag",
+          "limit": 500,
+          "shots": 5,
+          "batch": 8,
+          "legacy_pickle": false,
+          "readout": "joint",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwbp_hswag_s5.jsonl"
+        },
+        "data": [
+          "alexandrainst/m_hellaswag",
+          "9d31dc982bd6285e081e3e3136332a38b9c1d7b7"
+        ],
+        "items_sha256": "0aa6776c916ec366290c0c7b203b033cdb832f9fa21372603010b44082a9a8b1",
+        "expected_items": 2000,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    {
+      "path": "artifacts/p2/qa_mwb_34k.jsonl",
+      "sha256": "30b4c0451e31ed02bd464f814419012b8407dac87ed5314c48737b9655717454",
+      "items": 800,
+      "kind": "qa_binding",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+        },
+        "data": [
+          "google/xquad",
+          "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+        ],
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb.json",
+          "pairs": 50,
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/qa_mwb_34k.jsonl",
+          "generate": true
+        },
+        "demos": [
+          [
+            "56e1254ae3433e1400422c66",
+            "56e1254ae3433e1400422c67"
+          ],
+          [
+            "56bec6ac3aeaaa14008c93fd",
+            "56bec6ac3aeaaa14008c93fe"
+          ],
+          [
+            "56e10aa5cd28a01900c674b3",
+            "56e10aa5cd28a01900c674b4"
+          ],
+          [
+            "56f8ca289b226e1400dd1007",
+            "56f8ca289b226e1400dd1008"
+          ],
+          [
+            "56e77da237bdd419002c403b",
+            "56e77da237bdd419002c403c"
+          ]
+        ],
+        "expected_items": 800,
+        "excluded_oversized_pairs": [],
+        "annotation_offset_exclusions": [
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d185",
+            "answer": "Nicholas E. Golovin",
+            "start": 89
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d186",
+            "answer": "July 1961",
+            "start": 112
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d187",
+            "answer": "Manned Spacecraft Center",
+            "start": 578
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d188",
+            "answer": "Joseph Shea",
+            "start": 720
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d189",
+            "answer": "Marshall Space Flight Center",
+            "start": 780
+          }
+        ],
+        "items_sha256": "e7c3b5a9e204f530fe82da938841121438a9635014620980a65381716f893003",
+        "scope": "Five English-frame demonstrations; output language specified by demonstration answers only. Binary natural question-swap and free generation diagnostic, not a full parent reproduction.",
+        "precision": "FP32 compute on BF16-rounded weights"
+      }
+    },
+    {
+      "path": "artifacts/p2/qa_mwb_8k.jsonl",
+      "sha256": "06fe1c66b0c5500ce2414ce69803d00c30b31ce5e5aa27d584a0ad769248b8fa",
+      "items": 800,
+      "kind": "qa_binding",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0008000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0008000/hf_model"
+        },
+        "data": [
+          "google/xquad",
+          "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+        ],
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb__0008000.json",
+          "pairs": 50,
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/qa_mwb_8k.jsonl",
+          "generate": false
+        },
+        "demos": [
+          [
+            "56e1254ae3433e1400422c66",
+            "56e1254ae3433e1400422c67"
+          ],
+          [
+            "56bec6ac3aeaaa14008c93fd",
+            "56bec6ac3aeaaa14008c93fe"
+          ],
+          [
+            "56e10aa5cd28a01900c674b3",
+            "56e10aa5cd28a01900c674b4"
+          ],
+          [
+            "56f8ca289b226e1400dd1007",
+            "56f8ca289b226e1400dd1008"
+          ],
+          [
+            "56e77da237bdd419002c403b",
+            "56e77da237bdd419002c403c"
+          ]
+        ],
+        "expected_items": 800,
+        "excluded_oversized_pairs": [],
+        "annotation_offset_exclusions": [
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d185",
+            "answer": "Nicholas E. Golovin",
+            "start": 89
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d186",
+            "answer": "July 1961",
+            "start": 112
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d187",
+            "answer": "Manned Spacecraft Center",
+            "start": 578
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d188",
+            "answer": "Joseph Shea",
+            "start": 720
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d189",
+            "answer": "Marshall Space Flight Center",
+            "start": 780
+          }
+        ],
+        "items_sha256": "e7c3b5a9e204f530fe82da938841121438a9635014620980a65381716f893003",
+        "scope": "Five English-frame demonstrations; output language specified by demonstration answers only. Binary natural question-swap and free generation diagnostic, not a full parent reproduction.",
+        "precision": "FP32 compute on BF16-rounded weights"
+      }
+    },
+    {
+      "path": "artifacts/p2/qa_mwbp_34k.jsonl",
+      "sha256": "c3bbf26f5cf615ebf68a765a229589073a874b8b43beca59b492d1d0bc12bb70",
+      "items": 800,
+      "kind": "qa_binding",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+        },
+        "data": [
+          "google/xquad",
+          "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+        ],
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_onlyparallel.json",
+          "pairs": 50,
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/qa_mwbp_34k.jsonl",
+          "generate": true
+        },
+        "demos": [
+          [
+            "56e1254ae3433e1400422c66",
+            "56e1254ae3433e1400422c67"
+          ],
+          [
+            "56bec6ac3aeaaa14008c93fd",
+            "56bec6ac3aeaaa14008c93fe"
+          ],
+          [
+            "56e10aa5cd28a01900c674b3",
+            "56e10aa5cd28a01900c674b4"
+          ],
+          [
+            "56f8ca289b226e1400dd1007",
+            "56f8ca289b226e1400dd1008"
+          ],
+          [
+            "56e77da237bdd419002c403b",
+            "56e77da237bdd419002c403c"
+          ]
+        ],
+        "expected_items": 800,
+        "excluded_oversized_pairs": [],
+        "annotation_offset_exclusions": [
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d185",
+            "answer": "Nicholas E. Golovin",
+            "start": 89
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d186",
+            "answer": "July 1961",
+            "start": 112
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d187",
+            "answer": "Manned Spacecraft Center",
+            "start": 578
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d188",
+            "answer": "Joseph Shea",
+            "start": 720
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d189",
+            "answer": "Marshall Space Flight Center",
+            "start": 780
+          }
+        ],
+        "items_sha256": "e7c3b5a9e204f530fe82da938841121438a9635014620980a65381716f893003",
+        "scope": "Five English-frame demonstrations; output language specified by demonstration answers only. Binary natural question-swap and free generation diagnostic, not a full parent reproduction.",
+        "precision": "FP32 compute on BF16-rounded weights"
+      }
+    },
+    {
+      "path": "artifacts/p2/qa_mwbp_8k.jsonl",
+      "sha256": "2898adeda8c33043b365a0cae7bbcac67f54f4190d5751f2b512fe53c3f3acb8",
+      "items": 800,
+      "kind": "qa_binding",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0008000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0008000/hf_model"
+        },
+        "data": [
+          "google/xquad",
+          "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+        ],
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_onlyparallel__0008000.json",
+          "pairs": 50,
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/qa_mwbp_8k.jsonl",
+          "generate": false
+        },
+        "demos": [
+          [
+            "56e1254ae3433e1400422c66",
+            "56e1254ae3433e1400422c67"
+          ],
+          [
+            "56bec6ac3aeaaa14008c93fd",
+            "56bec6ac3aeaaa14008c93fe"
+          ],
+          [
+            "56e10aa5cd28a01900c674b3",
+            "56e10aa5cd28a01900c674b4"
+          ],
+          [
+            "56f8ca289b226e1400dd1007",
+            "56f8ca289b226e1400dd1008"
+          ],
+          [
+            "56e77da237bdd419002c403b",
+            "56e77da237bdd419002c403c"
+          ]
+        ],
+        "expected_items": 800,
+        "excluded_oversized_pairs": [],
+        "annotation_offset_exclusions": [
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d185",
+            "answer": "Nicholas E. Golovin",
+            "start": 89
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d186",
+            "answer": "July 1961",
+            "start": 112
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d187",
+            "answer": "Manned Spacecraft Center",
+            "start": 578
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d188",
+            "answer": "Joseph Shea",
+            "start": 720
+          },
+          {
+            "lang": "en",
+            "id": "5725c604271a42140099d189",
+            "answer": "Marshall Space Flight Center",
+            "start": 780
+          }
+        ],
+        "items_sha256": "e7c3b5a9e204f530fe82da938841121438a9635014620980a65381716f893003",
+        "scope": "Five English-frame demonstrations; output language specified by demonstration answers only. Binary natural question-swap and free generation diagnostic, not a full parent reproduction.",
+        "precision": "FP32 compute on BF16-rounded weights"
+      }
+    },
+    {
+      "path": "artifacts/p2/translation_baseline_34k.jsonl",
+      "sha256": "bf6bae550b148b6dca5c985163af46f11b97192c2566af3e51bd01a6ad0f7643",
+      "items": 400,
+      "kind": "translation",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_baseline/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_baseline/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "corpus_items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "data_revision": "41d8a4013aa1489f28fea60ec0932af246086482",
+        "harness_revision": "d6de81643928d653435c431bae19945d41d32520",
+        "expected_items": 400,
+        "excluded_context_overflow": [],
+        "demonstration_ids": [
+          1805,
+          478,
+          30,
+          371,
+          143
+        ],
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "max_new_tokens": 256,
+        "script_sha256": "5ad9ae98ba05697e9251cc9ced743612c07dedae10d5bfa7a4d002eb39966afc",
+        "elapsed_seconds": 143.39968371391296
+      }
+    },
+    {
+      "path": "artifacts/p2/translation_monoweb_34k.jsonl",
+      "sha256": "ec9361dd164f1f46feb0bfdc2d9880000f1659af74af5b1b7e4ac8fd0e77efd4",
+      "items": 400,
+      "kind": "translation",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "corpus_items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "data_revision": "41d8a4013aa1489f28fea60ec0932af246086482",
+        "harness_revision": "d6de81643928d653435c431bae19945d41d32520",
+        "expected_items": 400,
+        "excluded_context_overflow": [],
+        "demonstration_ids": [
+          1805,
+          478,
+          30,
+          371,
+          143
+        ],
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "max_new_tokens": 256,
+        "script_sha256": "5ad9ae98ba05697e9251cc9ced743612c07dedae10d5bfa7a4d002eb39966afc",
+        "elapsed_seconds": 124.77320981025696
+      }
+    },
+    {
+      "path": "artifacts/p2/translation_onlyparallel_34k.jsonl",
+      "sha256": "cdf1098e986efb811145e0efb60bde4658f689f0421f27948ccddd9b45d020c6",
+      "items": 400,
+      "kind": "translation",
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "corpus_items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "data_revision": "41d8a4013aa1489f28fea60ec0932af246086482",
+        "harness_revision": "d6de81643928d653435c431bae19945d41d32520",
+        "expected_items": 400,
+        "excluded_context_overflow": [],
+        "demonstration_ids": [
+          1805,
+          478,
+          30,
+          371,
+          143
+        ],
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "max_new_tokens": 256,
+        "script_sha256": "5ad9ae98ba05697e9251cc9ced743612c07dedae10d5bfa7a4d002eb39966afc",
+        "elapsed_seconds": 132.57471299171448
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_noswitch_s42_location.jsonl",
+      "sha256": "11e45d3e8a81cab5b1f4e15b28d2d3837f3c54170eeb7751fb3b102ef275abfa",
+      "items": 1920,
+      "kind": "location_binding",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "e7cb91cb1939f42bf09d89de826a9ead23b37f91",
+          "branch": "noswitch",
+          "condition": "noswitch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/e7cb91cb1939f42bf09d89de826a9ead23b37f91"
+        },
+        "args": {
+          "condition": "noswitch",
+          "seed": 42
+        },
+        "items_sha256": "903d7a03f20c191462f4b740c6cbf8393af4cb70ba256e573c559d92ff4db9d8",
+        "expected_items": 1920,
+        "max_tokens": 22,
+        "script_sha256": "c7deb46984d3791e3884b0aade7d72aaa801434126a636bd3d00ceff05aca754",
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "elapsed_seconds": 4.345947027206421
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_noswitch_s42_xstory.jsonl",
+      "sha256": "94a07abf22d7a38f36ca913229ca824c38ca0ca31aea83ccf9af1cef2957abc1",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "e7cb91cb1939f42bf09d89de826a9ead23b37f91",
+          "branch": "noswitch",
+          "condition": "noswitch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/e7cb91cb1939f42bf09d89de826a9ead23b37f91"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s42_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_noswitch_s42_xstory_shuffled.jsonl",
+      "sha256": "888b36c6be4d6c25b4f078af528b52318b0a6f33cd26967408f21087d34d3570",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "e7cb91cb1939f42bf09d89de826a9ead23b37f91",
+          "branch": "noswitch",
+          "condition": "noswitch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/e7cb91cb1939f42bf09d89de826a9ead23b37f91"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s42_xstory_shuffled.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "70261dc23220ec6c47158012eb59555ffe881749a0716a29833fcf9e1c443f67",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_noswitch_s43_xstory.jsonl",
+      "sha256": "9afc2ec05ee0d27a49cbf725017d75488ff3dfad84002f76f6e90c1e8d705d7b",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "37b9cc116861a936a24cd3c04ec8661edb4f5ec9",
+          "branch": "noswitch-s43",
+          "condition": "noswitch",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/37b9cc116861a936a24cd3c04ec8661edb4f5ec9"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s43_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_noswitch_s43_xstory_shuffled.jsonl",
+      "sha256": "3293f45781490d1b34039744c31b09288bd1348acfe765d86cf882955c521bd3",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "37b9cc116861a936a24cd3c04ec8661edb4f5ec9",
+          "branch": "noswitch-s43",
+          "condition": "noswitch",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/37b9cc116861a936a24cd3c04ec8661edb4f5ec9"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s43_xstory_shuffled.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "70261dc23220ec6c47158012eb59555ffe881749a0716a29833fcf9e1c443f67",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_noswitch_s44_xstory.jsonl",
+      "sha256": "c4e50f89d49050bd54fa237ad5cc006e339c775b0aff18e98fee2c9e7815ad20",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "aca1a7dd6f886bd55a30e6ed6e79d131e70e6e38",
+          "branch": "noswitch-s44",
+          "condition": "noswitch",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/aca1a7dd6f886bd55a30e6ed6e79d131e70e6e38"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s44_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_noswitch_s44_xstory_shuffled.jsonl",
+      "sha256": "2f7cad26bd313f952556ea0be9adbab1e275f807df45e5a3935170892092b8b5",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "aca1a7dd6f886bd55a30e6ed6e79d131e70e6e38",
+          "branch": "noswitch-s44",
+          "condition": "noswitch",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/aca1a7dd6f886bd55a30e6ed6e79d131e70e6e38"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s44_xstory_shuffled.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "70261dc23220ec6c47158012eb59555ffe881749a0716a29833fcf9e1c443f67",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_par_s42_location.jsonl",
+      "sha256": "2eef6a92f63acfbc34fb7d91ce683141395e6660acda5b35b5f480ddffa02562",
+      "items": 1920,
+      "kind": "location_binding",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "39008ea9937028a1ea42ef0287f7679b468df2a9",
+          "branch": "par",
+          "condition": "par",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/39008ea9937028a1ea42ef0287f7679b468df2a9"
+        },
+        "args": {
+          "condition": "par",
+          "seed": 42
+        },
+        "items_sha256": "903d7a03f20c191462f4b740c6cbf8393af4cb70ba256e573c559d92ff4db9d8",
+        "expected_items": 1920,
+        "max_tokens": 22,
+        "script_sha256": "c7deb46984d3791e3884b0aade7d72aaa801434126a636bd3d00ceff05aca754",
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "elapsed_seconds": 4.211661338806152
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_par_s42_xstory.jsonl",
+      "sha256": "19ff5bf7f3d95cc459ec95e4f513f45130c55727249df3de2427ee8040516171",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "39008ea9937028a1ea42ef0287f7679b468df2a9",
+          "branch": "par",
+          "condition": "par",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/39008ea9937028a1ea42ef0287f7679b468df2a9"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__par__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_par_s42_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_par_s43_xstory.jsonl",
+      "sha256": "958d08f8f29eb6900447d11aea612176ff1ed1bc8de42a8f2705a5f8b17333e6",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "74e82d804864ec13b05cef26070108ad86624d97",
+          "branch": "par-s43",
+          "condition": "par",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/74e82d804864ec13b05cef26070108ad86624d97"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__par__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_par_s43_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_par_s44_xstory.jsonl",
+      "sha256": "088439d18b0eecb39c7fca3457d92e254378b3ed7d529f1335cc78e9032a9a93",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "6c4ab4a4e3ee24d265ef97a8bbfcce6c5a9078b1",
+          "branch": "par-s44",
+          "condition": "par",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/6c4ab4a4e3ee24d265ef97a8bbfcce6c5a9078b1"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__par__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_par_s44_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_switch_s42_location.jsonl",
+      "sha256": "382862dbfc57ba7f0371563c3618baf97e72d69e4546c6618cce8cea3a30c73a",
+      "items": 1920,
+      "kind": "location_binding",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b",
+          "branch": "switch",
+          "condition": "switch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b"
+        },
+        "args": {
+          "condition": "switch",
+          "seed": 42
+        },
+        "items_sha256": "903d7a03f20c191462f4b740c6cbf8393af4cb70ba256e573c559d92ff4db9d8",
+        "expected_items": 1920,
+        "max_tokens": 22,
+        "script_sha256": "c7deb46984d3791e3884b0aade7d72aaa801434126a636bd3d00ceff05aca754",
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "elapsed_seconds": 4.249568462371826
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_switch_s42_xstory.jsonl",
+      "sha256": "654c94c98643acbb9ee1ad4dedd119b13fc9be9454ba3d8b6d942c2bc2b98711",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b",
+          "branch": "switch",
+          "condition": "switch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s42_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_switch_s42_xstory_shuffled.jsonl",
+      "sha256": "4029237a1415d91dc9867600c8c7b4ec5e2f8c00e35ef8faeff45521e1d012e2",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b",
+          "branch": "switch",
+          "condition": "switch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s42_xstory_shuffled.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "70261dc23220ec6c47158012eb59555ffe881749a0716a29833fcf9e1c443f67",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_switch_s43_xstory.jsonl",
+      "sha256": "36bc0fe4e0596b172378882da29fb171dbd74383bc09a505d4ad0cf25ccbe0fd",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "d3b39f5cc653a78a067cae76f0bba7c526231415",
+          "branch": "switch-s43",
+          "condition": "switch",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/d3b39f5cc653a78a067cae76f0bba7c526231415"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s43_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_switch_s43_xstory_shuffled.jsonl",
+      "sha256": "7726488e63726474db0f1184af5db70b37abe8ad2d31c5ea6f91c94ede89eee8",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "d3b39f5cc653a78a067cae76f0bba7c526231415",
+          "branch": "switch-s43",
+          "condition": "switch",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/d3b39f5cc653a78a067cae76f0bba7c526231415"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s43_xstory_shuffled.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "70261dc23220ec6c47158012eb59555ffe881749a0716a29833fcf9e1c443f67",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_switch_s44_xstory.jsonl",
+      "sha256": "91641dc699c5a50e97547da92a2aa78cbcc1ce2cf2be937d4aa505f77ed776fb",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "f8ddd29759fa2829783bd45bc91443b4295547a1",
+          "branch": "switch-s44",
+          "condition": "switch",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/f8ddd29759fa2829783bd45bc91443b4295547a1"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s44_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    {
+      "path": "artifacts/p3/macaroni_switch_s44_xstory_shuffled.jsonl",
+      "sha256": "4c72943965b845cb69b6efbd2cf44fc0dfb99f7dd3635b5dd5e648a5561f59b6",
+      "items": 6044,
+      "kind": "frozen_probe",
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "f8ddd29759fa2829783bd45bc91443b4295547a1",
+          "branch": "switch-s44",
+          "condition": "switch",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/f8ddd29759fa2829783bd45bc91443b4295547a1"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "shuffled",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s44_xstory_shuffled.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "70261dc23220ec6c47158012eb59555ffe881749a0716a29833fcf9e1c443f67",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    }
+  ],
+  "run_count": 52,
+  "item_cell_count": 186336,
+  "note": "Corrupted contexts and diagnostic formats counted; not independent questions."
+}

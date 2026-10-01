@@ -1,0 +1,247 @@
+{
+  "control": {
+    "model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+      "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb.json",
+      "task": "xnli",
+      "limit": 500,
+      "shots": 5,
+      "batch": 8,
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwb_de_s5.jsonl"
+    },
+    "data": [
+      "facebook/xnli",
+      "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+    ],
+    "items_sha256": "26d33a1c9d35e51f67529b7b6a2fc775fff93e4139afe68941be29cedf8974e9",
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cells": {
+    "raw/en->en": {
+      "n": 500,
+      "control_accuracy": 42.199999999999996,
+      "control_prediction_counts": {
+        "0": 420,
+        "2": 49,
+        "1": 31
+      },
+      "treated_accuracy": 50.8,
+      "delta_pp": 8.6,
+      "paired_bootstrap_95ci_pp": [
+        4.6,
+        12.6
+      ],
+      "improved_items": 79,
+      "harmed_items": 36,
+      "treated_prediction_counts": {
+        "0": 297,
+        "2": 168,
+        "1": 35
+      }
+    },
+    "token_norm/en->en": {
+      "n": 500,
+      "control_accuracy": 42.199999999999996,
+      "control_prediction_counts": {
+        "0": 420,
+        "2": 49,
+        "1": 31
+      },
+      "treated_accuracy": 50.8,
+      "delta_pp": 8.6,
+      "paired_bootstrap_95ci_pp": [
+        4.595000000000004,
+        12.8
+      ],
+      "improved_items": 79,
+      "harmed_items": 36,
+      "treated_prediction_counts": {
+        "0": 297,
+        "2": 168,
+        "1": 35
+      }
+    },
+    "raw/en->de": {
+      "n": 500,
+      "control_accuracy": 37.4,
+      "control_prediction_counts": {
+        "0": 468,
+        "2": 20,
+        "1": 12
+      },
+      "treated_accuracy": 47.0,
+      "delta_pp": 9.6,
+      "paired_bootstrap_95ci_pp": [
+        5.0,
+        14.399999999999999
+      ],
+      "improved_items": 101,
+      "harmed_items": 53,
+      "treated_prediction_counts": {
+        "0": 281,
+        "2": 138,
+        "1": 81
+      }
+    },
+    "token_norm/en->de": {
+      "n": 500,
+      "control_accuracy": 37.4,
+      "control_prediction_counts": {
+        "0": 468,
+        "2": 20,
+        "1": 12
+      },
+      "treated_accuracy": 47.0,
+      "delta_pp": 9.6,
+      "paired_bootstrap_95ci_pp": [
+        4.8,
+        14.399999999999999
+      ],
+      "improved_items": 101,
+      "harmed_items": 53,
+      "treated_prediction_counts": {
+        "0": 281,
+        "2": 138,
+        "1": 81
+      }
+    },
+    "raw/de->en": {
+      "n": 500,
+      "control_accuracy": 36.8,
+      "control_prediction_counts": {
+        "0": 440,
+        "1": 44,
+        "2": 16
+      },
+      "treated_accuracy": 40.8,
+      "delta_pp": 4.0,
+      "paired_bootstrap_95ci_pp": [
+        -1.6,
+        9.8
+      ],
+      "improved_items": 115,
+      "harmed_items": 95,
+      "treated_prediction_counts": {
+        "0": 183,
+        "1": 269,
+        "2": 48
+      }
+    },
+    "token_norm/de->en": {
+      "n": 500,
+      "control_accuracy": 47.599999999999994,
+      "control_prediction_counts": {
+        "0": 287,
+        "2": 180,
+        "1": 33
+      },
+      "treated_accuracy": 45.0,
+      "delta_pp": -2.6,
+      "paired_bootstrap_95ci_pp": [
+        -8.0,
+        2.8000000000000003
+      ],
+      "improved_items": 89,
+      "harmed_items": 102,
+      "treated_prediction_counts": {
+        "2": 278,
+        "1": 136,
+        "0": 86
+      }
+    },
+    "raw/de->de": {
+      "n": 500,
+      "control_accuracy": 36.8,
+      "control_prediction_counts": {
+        "0": 455,
+        "1": 22,
+        "2": 23
+      },
+      "treated_accuracy": 40.8,
+      "delta_pp": 4.0,
+      "paired_bootstrap_95ci_pp": [
+        1.0,
+        7.000000000000001
+      ],
+      "improved_items": 41,
+      "harmed_items": 21,
+      "treated_prediction_counts": {
+        "0": 399,
+        "2": 42,
+        "1": 59
+      }
+    },
+    "token_norm/de->de": {
+      "n": 500,
+      "control_accuracy": 48.199999999999996,
+      "control_prediction_counts": {
+        "0": 268,
+        "2": 222,
+        "1": 10
+      },
+      "treated_accuracy": 48.6,
+      "delta_pp": 0.4,
+      "paired_bootstrap_95ci_pp": [
+        -3.4000000000000004,
+        4.0
+      ],
+      "improved_items": 45,
+      "harmed_items": 43,
+      "treated_prediction_counts": {
+        "0": 184,
+        "2": 293,
+        "1": 23
+      }
+    }
+  },
+  "treated": {
+    "model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_baseline/iter_0034000/hf_model",
+      "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_baseline/iter_0034000/hf_model"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_baseline.json",
+      "task": "xnli",
+      "limit": 500,
+      "shots": 5,
+      "batch": 8,
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/fwb_de_s5.jsonl"
+    },
+    "data": [
+      "facebook/xnli",
+      "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+    ],
+    "items_sha256": "26d33a1c9d35e51f67529b7b6a2fc775fff93e4139afe68941be29cedf8974e9",
+    "expected_items": 2000,
+    "excluded_reannotated_ids": [],
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cross_minus_mono_treatment_effect": {
+    "raw": {
+      "delta_pp": 0.5,
+      "paired_bootstrap_95ci_pp": [
+        -3.4000000000000004,
+        4.3999999999999995
+      ]
+    },
+    "token_norm": {
+      "delta_pp": -1.0,
+      "paired_bootstrap_95ci_pp": [
+        -4.7,
+        2.7
+      ]
+    }
+  },
+  "interpretation_limits": "Exploratory CIs, no familywise correction; model seeds not replicated. Cross-language cells retain continuation/connector confounds."
+}

@@ -1,0 +1,423 @@
+{
+  "models": {
+    "baseline": {
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_baseline/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_baseline/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "corpus_items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "data_revision": "41d8a4013aa1489f28fea60ec0932af246086482",
+        "harness_revision": "d6de81643928d653435c431bae19945d41d32520",
+        "expected_items": 400,
+        "excluded_context_overflow": [],
+        "demonstration_ids": [
+          1805,
+          478,
+          30,
+          371,
+          143
+        ],
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "max_new_tokens": 256,
+        "script_sha256": "5ad9ae98ba05697e9251cc9ced743612c07dedae10d5bfa7a4d002eb39966afc",
+        "elapsed_seconds": 143.39968371391296
+      },
+      "directions": {
+        "en->de": {
+          "n": 200,
+          "metrics": {
+            "bleu": {
+              "score": 24.158123526136375,
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "chrf": {
+              "score": 48.519362272636805,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "chrfpp": {
+              "score": 46.45783989182563,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.5.1"
+            }
+          },
+          "empty_outputs": 0,
+          "source_copies": 1,
+          "cap_reached": 0,
+          "mean_generated_tokens": 33.105,
+          "fixed_sample": [
+            {
+              "id": 0,
+              "source": "Obama receives Netanyahu",
+              "reference": "Obama empfängt Netanyahu",
+              "prediction": "Obama hat Netanyahu empfangen."
+            },
+            {
+              "id": 50,
+              "source": "O'Steen said he had not met Lamb but heard through his daughter Abigail that Lamb was interested in music and played the blues.",
+              "reference": "O'Steen sagte, er habe Lamb nie getroffen, aber durch seine Tochter Abigail habe er gehört, dass Lamb an Musik interessiert war und Blues spielte.",
+              "prediction": "O'Steen sagte, dass er nicht mit Lamb, sondern mit seiner Tochter Abigail gesprochen hatte, und dass er sich nicht mit dem Blues beschäftigt hatte."
+            },
+            {
+              "id": 100,
+              "source": "None of this is to say that Trump is likely to win the Republican nomination.",
+              "reference": "Keiner behauptet, dass Trump wahrscheinlich die republikanische Nominierung gewinnen wird.",
+              "prediction": "Dies ist nicht zu sagen, dass Trump sicher gewinnen wird."
+            },
+            {
+              "id": 150,
+              "source": "Six in 10 Republicans in Monday's new ABC/Post poll say they want a political outsider over someone with government experience.",
+              "reference": "Sechs von 10 Republikanern sagen in der neuen Montags-Umfrage von ABC/Post, sie wollen lieber einen politische Außenseiter als jemanden mit Regierungserfahrung.",
+              "prediction": "In der neuen ABC/Post-Umfrage sagten 6 von 10 Republikanern, dass sie einen politischen Außenseiter mit Erfahrung wollen."
+            },
+            {
+              "id": 199,
+              "source": "This emerges from a long-term study by an international team of researchers, including a number of employees of the German Institute for Nutritional Research (DIfE) in Potsdam.",
+              "reference": "Das geht aus der Langzeitstudie eines internationalen Forscherteams hervor, darunter mehrere Mitarbeiter des Deutschen Instituts für Ernährungsforschung (DIfE) in Potsdam.",
+              "prediction": "Die Ergebnisse einer langfristigen Studie des Instituts für Ernährungsforschung in Potsdam zeigen, dass eine Ernährung mit hohem Fettanteil das Risiko für Herz-Kreislauf-Erkrankungen erhöht."
+            }
+          ]
+        },
+        "de->en": {
+          "n": 200,
+          "metrics": {
+            "bleu": {
+              "score": 28.89780804385086,
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "chrf": {
+              "score": 53.34235124648665,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "chrfpp": {
+              "score": 51.753318765889425,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.5.1"
+            }
+          },
+          "empty_outputs": 0,
+          "source_copies": 0,
+          "cap_reached": 2,
+          "mean_generated_tokens": 27.35,
+          "fixed_sample": [
+            {
+              "id": 0,
+              "source": "Obama empfängt Netanyahu",
+              "reference": "Obama receives Netanyahu",
+              "prediction": "Obama will meet Netanyahu on Tuesday."
+            },
+            {
+              "id": 50,
+              "source": "O'Steen sagte, er habe Lamb nie getroffen, aber durch seine Tochter Abigail habe er gehört, dass Lamb an Musik interessiert war und Blues spielte.",
+              "reference": "O'Steen said he had not met Lamb but heard through his daughter Abigail that Lamb was interested in music and played the blues.",
+              "prediction": "O'Steen said that he had met Lamb, but he heard that Lamb was into music and played blues."
+            },
+            {
+              "id": 100,
+              "source": "Keiner behauptet, dass Trump wahrscheinlich die republikanische Nominierung gewinnen wird.",
+              "reference": "None of this is to say that Trump is likely to win the Republican nomination.",
+              "prediction": "No one claims that Trump is likely to win the Republican nomination."
+            },
+            {
+              "id": 150,
+              "source": "Sechs von 10 Republikanern sagen in der neuen Montags-Umfrage von ABC/Post, sie wollen lieber einen politische Außenseiter als jemanden mit Regierungserfahrung.",
+              "reference": "Six in 10 Republicans in Monday's new ABC/Post poll say they want a political outsider over someone with government experience.",
+              "prediction": "Six of 10 Republicans say they want to be a political outsider than a politician with experience."
+            },
+            {
+              "id": 199,
+              "source": "Das geht aus der Langzeitstudie eines internationalen Forscherteams hervor, darunter mehrere Mitarbeiter des Deutschen Instituts für Ernährungsforschung (DIfE) in Potsdam.",
+              "reference": "This emerges from a long-term study by an international team of researchers, including a number of employees of the German Institute for Nutritional Research (DIfE) in Potsdam.",
+              "prediction": "The study of the long-term effects of a Mediterranean diet on the health of people in Germany has been published in the journal \"The Lancet\"."
+            }
+          ]
+        }
+      }
+    },
+    "monoweb": {
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "corpus_items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "data_revision": "41d8a4013aa1489f28fea60ec0932af246086482",
+        "harness_revision": "d6de81643928d653435c431bae19945d41d32520",
+        "expected_items": 400,
+        "excluded_context_overflow": [],
+        "demonstration_ids": [
+          1805,
+          478,
+          30,
+          371,
+          143
+        ],
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "max_new_tokens": 256,
+        "script_sha256": "5ad9ae98ba05697e9251cc9ced743612c07dedae10d5bfa7a4d002eb39966afc",
+        "elapsed_seconds": 124.77320981025696
+      },
+      "directions": {
+        "en->de": {
+          "n": 200,
+          "metrics": {
+            "bleu": {
+              "score": 11.474774237352337,
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "chrf": {
+              "score": 32.71615416076348,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "chrfpp": {
+              "score": 30.27721485155313,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.5.1"
+            }
+          },
+          "empty_outputs": 0,
+          "source_copies": 27,
+          "cap_reached": 0,
+          "mean_generated_tokens": 30.21,
+          "fixed_sample": [
+            {
+              "id": 0,
+              "source": "Obama receives Netanyahu",
+              "reference": "Obama empfängt Netanyahu",
+              "prediction": "Obama empfing Netanyahu in Washington."
+            },
+            {
+              "id": 50,
+              "source": "O'Steen said he had not met Lamb but heard through his daughter Abigail that Lamb was interested in music and played the blues.",
+              "reference": "O'Steen sagte, er habe Lamb nie getroffen, aber durch seine Tochter Abigail habe er gehört, dass Lamb an Musik interessiert war und Blues spielte.",
+              "prediction": "O'Steen sagte, er habe nichts von Lamb gehört, aber er habe gehört, dass er ein großer Musikliebhaber sei."
+            },
+            {
+              "id": 100,
+              "source": "None of this is to say that Trump is likely to win the Republican nomination.",
+              "reference": "Keiner behauptet, dass Trump wahrscheinlich die republikanische Nominierung gewinnen wird.",
+              "prediction": "Nein, Trump ist nicht wahrscheinlich, aber es ist möglich, dass er gewinnt."
+            },
+            {
+              "id": 150,
+              "source": "Six in 10 Republicans in Monday's new ABC/Post poll say they want a political outsider over someone with government experience.",
+              "reference": "Sechs von 10 Republikanern sagen in der neuen Montags-Umfrage von ABC/Post, sie wollen lieber einen politische Außenseiter als jemanden mit Regierungserfahrung.",
+              "prediction": "6 in 10 Republikaner in der neuen ABC/Post-Umfrage sagen, dass sie einen Politiker mit Erfahrung im öffentlichen Dienst bevorzugen."
+            },
+            {
+              "id": 199,
+              "source": "This emerges from a long-term study by an international team of researchers, including a number of employees of the German Institute for Nutritional Research (DIfE) in Potsdam.",
+              "reference": "Das geht aus der Langzeitstudie eines internationalen Forscherteams hervor, darunter mehrere Mitarbeiter des Deutschen Instituts für Ernährungsforschung (DIfE) in Potsdam.",
+              "prediction": "Die Forscher haben herausgefunden, dass die Ernährung der Menschheit in den letzten 10.000 Jahren nicht nur durch die Veränderungen der Umwelt, sondern auch durch die Veränderungen der Ernährung geprägt wurde."
+            }
+          ]
+        },
+        "de->en": {
+          "n": 200,
+          "metrics": {
+            "bleu": {
+              "score": 20.114668922496687,
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "chrf": {
+              "score": 44.516325392840486,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "chrfpp": {
+              "score": 42.596070727505506,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.5.1"
+            }
+          },
+          "empty_outputs": 0,
+          "source_copies": 17,
+          "cap_reached": 0,
+          "mean_generated_tokens": 25.78,
+          "fixed_sample": [
+            {
+              "id": 0,
+              "source": "Obama empfängt Netanyahu",
+              "reference": "Obama receives Netanyahu",
+              "prediction": "Obama greeted Netanyahu in the Oval Office."
+            },
+            {
+              "id": 50,
+              "source": "O'Steen sagte, er habe Lamb nie getroffen, aber durch seine Tochter Abigail habe er gehört, dass Lamb an Musik interessiert war und Blues spielte.",
+              "reference": "O'Steen said he had not met Lamb but heard through his daughter Abigail that Lamb was interested in music and played the blues.",
+              "prediction": "O'Steen said he had never met Lamb, but his daughter Abigail told him that he was a musician and that he played blues."
+            },
+            {
+              "id": 100,
+              "source": "Keiner behauptet, dass Trump wahrscheinlich die republikanische Nominierung gewinnen wird.",
+              "reference": "None of this is to say that Trump is likely to win the Republican nomination.",
+              "prediction": "No one claims that Trump will win the Republican nomination."
+            },
+            {
+              "id": 150,
+              "source": "Sechs von 10 Republikanern sagen in der neuen Montags-Umfrage von ABC/Post, sie wollen lieber einen politische Außenseiter als jemanden mit Regierungserfahrung.",
+              "reference": "Six in 10 Republicans in Monday's new ABC/Post poll say they want a political outsider over someone with government experience.",
+              "prediction": "Six of 10 Republicans say they want to have a politician with experience in government."
+            },
+            {
+              "id": 199,
+              "source": "Das geht aus der Langzeitstudie eines internationalen Forscherteams hervor, darunter mehrere Mitarbeiter des Deutschen Instituts für Ernährungsforschung (DIfE) in Potsdam.",
+              "reference": "This emerges from a long-term study by an international team of researchers, including a number of employees of the German Institute for Nutritional Research (DIfE) in Potsdam.",
+              "prediction": "The study of a long-term study of a global research team shows that the risk of developing type 2 diabetes is reduced by 20% for every 10% of body weight lost."
+            }
+          ]
+        }
+      }
+    },
+    "onlyparallel": {
+      "metadata": {
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "corpus_items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "data_revision": "41d8a4013aa1489f28fea60ec0932af246086482",
+        "harness_revision": "d6de81643928d653435c431bae19945d41d32520",
+        "expected_items": 400,
+        "excluded_context_overflow": [],
+        "demonstration_ids": [
+          1805,
+          478,
+          30,
+          371,
+          143
+        ],
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "max_new_tokens": 256,
+        "script_sha256": "5ad9ae98ba05697e9251cc9ced743612c07dedae10d5bfa7a4d002eb39966afc",
+        "elapsed_seconds": 132.57471299171448
+      },
+      "directions": {
+        "en->de": {
+          "n": 200,
+          "metrics": {
+            "bleu": {
+              "score": 21.35746616965977,
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "chrf": {
+              "score": 46.112032473374114,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "chrfpp": {
+              "score": 44.09086027399841,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.5.1"
+            }
+          },
+          "empty_outputs": 0,
+          "source_copies": 2,
+          "cap_reached": 0,
+          "mean_generated_tokens": 31.29,
+          "fixed_sample": [
+            {
+              "id": 0,
+              "source": "Obama receives Netanyahu",
+              "reference": "Obama empfängt Netanyahu",
+              "prediction": "Obama wird Netanyahu treffen."
+            },
+            {
+              "id": 50,
+              "source": "O'Steen said he had not met Lamb but heard through his daughter Abigail that Lamb was interested in music and played the blues.",
+              "reference": "O'Steen sagte, er habe Lamb nie getroffen, aber durch seine Tochter Abigail habe er gehört, dass Lamb an Musik interessiert war und Blues spielte.",
+              "prediction": "O'Steen sagte, er habe nicht mit Lamb gesprochen, aber er habe gehört, dass Lamb Musik und den Blues mochte."
+            },
+            {
+              "id": 100,
+              "source": "None of this is to say that Trump is likely to win the Republican nomination.",
+              "reference": "Keiner behauptet, dass Trump wahrscheinlich die republikanische Nominierung gewinnen wird.",
+              "prediction": "Nichts sagt aus, dass Trump in der nächsten Runde der republikanischen Vorwahlen nicht die Nase vorn haben könnte."
+            },
+            {
+              "id": 150,
+              "source": "Six in 10 Republicans in Monday's new ABC/Post poll say they want a political outsider over someone with government experience.",
+              "reference": "Sechs von 10 Republikanern sagen in der neuen Montags-Umfrage von ABC/Post, sie wollen lieber einen politische Außenseiter als jemanden mit Regierungserfahrung.",
+              "prediction": "Sechs von zehn Republikanern in der neuen ABC/Post-Umfrage sagen, dass sie einen politischen Neuling bevorzugen."
+            },
+            {
+              "id": 199,
+              "source": "This emerges from a long-term study by an international team of researchers, including a number of employees of the German Institute for Nutritional Research (DIfE) in Potsdam.",
+              "reference": "Das geht aus der Langzeitstudie eines internationalen Forscherteams hervor, darunter mehrere Mitarbeiter des Deutschen Instituts für Ernährungsforschung (DIfE) in Potsdam.",
+              "prediction": "Diese kommt aus einer Langzeitstudie, die von einem internationalen Forscherteam unter Leitung des Deutschen Instituts für Ernährungsforschung (DIfE) in Potsdam durchgeführt wurde."
+            }
+          ]
+        },
+        "de->en": {
+          "n": 200,
+          "metrics": {
+            "bleu": {
+              "score": 26.008745940303207,
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "chrf": {
+              "score": 49.240406859554334,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "chrfpp": {
+              "score": 47.61720072659284,
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.5.1"
+            }
+          },
+          "empty_outputs": 0,
+          "source_copies": 1,
+          "cap_reached": 0,
+          "mean_generated_tokens": 24.87,
+          "fixed_sample": [
+            {
+              "id": 0,
+              "source": "Obama empfängt Netanyahu",
+              "reference": "Obama receives Netanyahu",
+              "prediction": "Obama will meet Prime Minister Netanyahu in Jerusalem"
+            },
+            {
+              "id": 50,
+              "source": "O'Steen sagte, er habe Lamb nie getroffen, aber durch seine Tochter Abigail habe er gehört, dass Lamb an Musik interessiert war und Blues spielte.",
+              "reference": "O'Steen said he had not met Lamb but heard through his daughter Abigail that Lamb was interested in music and played the blues.",
+              "prediction": "O'Steen said he had never met Lamb, but through his daughter Abigail he heard that he was a musician and that he played the blues."
+            },
+            {
+              "id": 100,
+              "source": "Keiner behauptet, dass Trump wahrscheinlich die republikanische Nominierung gewinnen wird.",
+              "reference": "None of this is to say that Trump is likely to win the Republican nomination.",
+              "prediction": "No one claims that Trump will win the Republican nomination."
+            },
+            {
+              "id": 150,
+              "source": "Sechs von 10 Republikanern sagen in der neuen Montags-Umfrage von ABC/Post, sie wollen lieber einen politische Außenseiter als jemanden mit Regierungserfahrung.",
+              "reference": "Six in 10 Republicans in Monday's new ABC/Post poll say they want a political outsider over someone with government experience.",
+              "prediction": "Six of 10 Republicans say they want to have a politician with no government experience, rather than someone with experience in government."
+            },
+            {
+              "id": 199,
+              "source": "Das geht aus der Langzeitstudie eines internationalen Forscherteams hervor, darunter mehrere Mitarbeiter des Deutschen Instituts für Ernährungsforschung (DIfE) in Potsdam.",
+              "reference": "This emerges from a long-term study by an international team of researchers, including a number of employees of the German Institute for Nutritional Research (DIfE) in Potsdam.",
+              "prediction": "The study, published in the journal Nature Communications, shows that the diet of the 19th-century hunter-gatherers in the Amazon was very different from that of the modern-day Amazonian tribes."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "en->de": {
+      "mwb_minus_fwb_bleu": -12.683349288784038,
+      "parallel_minus_mwb_bleu": 9.882691932307432
+    },
+    "de->en": {
+      "mwb_minus_fwb_bleu": -8.783139121354171,
+      "parallel_minus_mwb_bleu": 5.89407701780652
+    }
+  },
+  "limits": "First 200 WMT16 examples, news-topic dependence; descriptive, not exact paper reproduction or novelty. Exact source copying is not a comprehensive language classifier. No uncertainty/equivalence claim."
+}

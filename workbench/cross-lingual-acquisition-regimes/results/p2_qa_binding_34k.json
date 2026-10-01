@@ -1,0 +1,3870 @@
+{
+  "control": {
+    "model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+      "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+    },
+    "data": [
+      "google/xquad",
+      "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+    ],
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb.json",
+      "pairs": 50,
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/qa_mwb_34k.jsonl",
+      "generate": true
+    },
+    "demos": [
+      [
+        "56e1254ae3433e1400422c66",
+        "56e1254ae3433e1400422c67"
+      ],
+      [
+        "56bec6ac3aeaaa14008c93fd",
+        "56bec6ac3aeaaa14008c93fe"
+      ],
+      [
+        "56e10aa5cd28a01900c674b3",
+        "56e10aa5cd28a01900c674b4"
+      ],
+      [
+        "56f8ca289b226e1400dd1007",
+        "56f8ca289b226e1400dd1008"
+      ],
+      [
+        "56e77da237bdd419002c403b",
+        "56e77da237bdd419002c403c"
+      ]
+    ],
+    "expected_items": 800,
+    "excluded_oversized_pairs": [],
+    "annotation_offset_exclusions": [
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d185",
+        "answer": "Nicholas E. Golovin",
+        "start": 89
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d186",
+        "answer": "July 1961",
+        "start": 112
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d187",
+        "answer": "Manned Spacecraft Center",
+        "start": 578
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d188",
+        "answer": "Joseph Shea",
+        "start": 720
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d189",
+        "answer": "Marshall Space Flight Center",
+        "start": 780
+      }
+    ],
+    "items_sha256": "e7c3b5a9e204f530fe82da938841121438a9635014620980a65381716f893003",
+    "scope": "Five English-frame demonstrations; output language specified by demonstration answers only. Binary natural question-swap and free generation diagnostic, not a full parent reproduction.",
+    "precision": "FP32 compute on BF16-rounded weights"
+  },
+  "treated": {
+    "model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+      "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+    },
+    "data": [
+      "google/xquad",
+      "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+    ],
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_onlyparallel.json",
+      "pairs": 50,
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/qa_mwbp_34k.jsonl",
+      "generate": true
+    },
+    "demos": [
+      [
+        "56e1254ae3433e1400422c66",
+        "56e1254ae3433e1400422c67"
+      ],
+      [
+        "56bec6ac3aeaaa14008c93fd",
+        "56bec6ac3aeaaa14008c93fe"
+      ],
+      [
+        "56e10aa5cd28a01900c674b3",
+        "56e10aa5cd28a01900c674b4"
+      ],
+      [
+        "56f8ca289b226e1400dd1007",
+        "56f8ca289b226e1400dd1008"
+      ],
+      [
+        "56e77da237bdd419002c403b",
+        "56e77da237bdd419002c403c"
+      ]
+    ],
+    "expected_items": 800,
+    "excluded_oversized_pairs": [],
+    "annotation_offset_exclusions": [
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d185",
+        "answer": "Nicholas E. Golovin",
+        "start": 89
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d186",
+        "answer": "July 1961",
+        "start": 112
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d187",
+        "answer": "Manned Spacecraft Center",
+        "start": 578
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d188",
+        "answer": "Joseph Shea",
+        "start": 720
+      },
+      {
+        "lang": "en",
+        "id": "5725c604271a42140099d189",
+        "answer": "Marshall Space Flight Center",
+        "start": 780
+      }
+    ],
+    "items_sha256": "e7c3b5a9e204f530fe82da938841121438a9635014620980a65381716f893003",
+    "scope": "Five English-frame demonstrations; output language specified by demonstration answers only. Binary natural question-swap and free generation diagnostic, not a full parent reproduction.",
+    "precision": "FP32 compute on BF16-rounded weights"
+  },
+  "pairs": 50,
+  "cells": {
+    "all/de/de/de": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.83,
+          "treated": 0.8,
+          "delta": -0.03,
+          "pair_bootstrap_95ci": [
+            -0.09,
+            0.02
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.66,
+          "treated": 0.62,
+          "delta": -0.04,
+          "pair_bootstrap_95ci": [
+            -0.14,
+            0.06
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.5242383098602295,
+          "treated": 4.290011615753174,
+          "delta": -0.23422669410705566,
+          "pair_bootstrap_95ci": [
+            -0.683145233631134,
+            0.23313920402526853
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.64,
+          "treated": 0.66,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.03,
+            0.07
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.32,
+          "treated": 0.34,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.1
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.4520570468902587,
+          "treated": 2.988268980979919,
+          "delta": -0.46378806591033933,
+          "pair_bootstrap_95ci": [
+            -0.9887593193054198,
+            0.0676344449520111
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.0721812629699707,
+          "treated": 1.3017426347732544,
+          "delta": 0.2295613718032837,
+          "pair_bootstrap_95ci": [
+            -0.283552326798439,
+            0.7648299787044525
+          ]
+        },
+        "em": {
+          "control": 0.31,
+          "treated": 0.33,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.1
+          ]
+        },
+        "f1": {
+          "control": 0.4008035763389665,
+          "treated": 0.43898947046518866,
+          "delta": 0.038185894126222114,
+          "pair_bootstrap_95ci": [
+            -0.020890626618344264,
+            0.09843274663420547
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.14,
+          "treated": 0.14,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.1,
+            0.1
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "all/de/de/en": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.69,
+          "treated": 0.7,
+          "delta": 0.01,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.08
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.38,
+          "treated": 0.4,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.12,
+            0.16
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.226965761184692,
+          "treated": 4.027240052223205,
+          "delta": -0.1997257089614868,
+          "pair_bootstrap_95ci": [
+            -0.6579404253959655,
+            0.29422396194934836
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.68,
+          "treated": 0.68,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.06
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.38,
+          "treated": 0.36,
+          "delta": -0.02,
+          "pair_bootstrap_95ci": [
+            -0.14,
+            0.1
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.4177259969711304,
+          "treated": 3.2193835544586182,
+          "delta": -0.1983424425125122,
+          "pair_bootstrap_95ci": [
+            -0.7815510447025299,
+            0.37209776854515053
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.809239764213562,
+          "treated": 0.8078564977645875,
+          "delta": -0.0013832664489746094,
+          "pair_bootstrap_95ci": [
+            -0.5379226264953613,
+            0.5760230921506881
+          ]
+        },
+        "em": {
+          "control": 0.24,
+          "treated": 0.18,
+          "delta": -0.06,
+          "pair_bootstrap_95ci": [
+            -0.12,
+            0.0
+          ]
+        },
+        "f1": {
+          "control": 0.30980357633896655,
+          "treated": 0.26082142857142854,
+          "delta": -0.04898214776753797,
+          "pair_bootstrap_95ci": [
+            -0.11929421673305521,
+            0.016790356769667107
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.06,
+          "treated": 0.04,
+          "delta": -0.02,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.0
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.01,
+          "delta": 0.01,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.03
+          ]
+        }
+      }
+    },
+    "all/de/en/de": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.82,
+          "treated": 0.71,
+          "delta": -0.11,
+          "pair_bootstrap_95ci": [
+            -0.18,
+            -0.04
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.66,
+          "treated": 0.46,
+          "delta": -0.2,
+          "pair_bootstrap_95ci": [
+            -0.32,
+            -0.08
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.277560682296753,
+          "treated": 4.06078299999237,
+          "delta": -0.21677768230438232,
+          "pair_bootstrap_95ci": [
+            -0.7742040959596634,
+            0.3938216763734817
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.64,
+          "treated": 0.66,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.03,
+            0.07
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.32,
+          "treated": 0.32,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.08,
+            0.08
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.758499684333801,
+          "treated": 2.837304782867432,
+          "delta": -0.9211949014663696,
+          "pair_bootstrap_95ci": [
+            -1.5264970908164979,
+            -0.25703117680549625
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.5190609979629517,
+          "treated": 1.223478217124939,
+          "delta": 0.7044172191619873,
+          "pair_bootstrap_95ci": [
+            0.20929735410213474,
+            1.198448601603508
+          ]
+        },
+        "em": {
+          "control": 0.29,
+          "treated": 0.25,
+          "delta": -0.04,
+          "pair_bootstrap_95ci": [
+            -0.12,
+            0.04
+          ]
+        },
+        "f1": {
+          "control": 0.3470260572760573,
+          "treated": 0.34857022059653636,
+          "delta": 0.0015441633204791038,
+          "pair_bootstrap_95ci": [
+            -0.07258941636441636,
+            0.07584578615532558
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.08,
+          "treated": 0.06,
+          "delta": -0.02,
+          "pair_bootstrap_95ci": [
+            -0.08,
+            0.04
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "all/de/en/en": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.78,
+          "treated": 0.79,
+          "delta": 0.01,
+          "pair_bootstrap_95ci": [
+            -0.05,
+            0.08
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.56,
+          "treated": 0.58,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.1,
+            0.16
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.347662968635559,
+          "treated": 4.7972819089889525,
+          "delta": 0.44961894035339356,
+          "pair_bootstrap_95ci": [
+            0.016747223615646366,
+            0.8974291785955425
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7,
+          "treated": 0.72,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.03,
+            0.07
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4,
+          "treated": 0.46,
+          "delta": 0.06,
+          "pair_bootstrap_95ci": [
+            -0.02,
+            0.16
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.915622420310974,
+          "treated": 3.5201562023162842,
+          "delta": -0.39546621799468995,
+          "pair_bootstrap_95ci": [
+            -0.9014202746152878,
+            0.11858268070220943
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.43204054832458494,
+          "treated": 1.2771257066726684,
+          "delta": 0.8450851583480835,
+          "pair_bootstrap_95ci": [
+            0.3284698252677918,
+            1.3683997143506998
+          ]
+        },
+        "em": {
+          "control": 0.23,
+          "treated": 0.27,
+          "delta": 0.04,
+          "pair_bootstrap_95ci": [
+            -0.02,
+            0.1
+          ]
+        },
+        "f1": {
+          "control": 0.3166372973431797,
+          "treated": 0.39679059829059826,
+          "delta": 0.0801533009474186,
+          "pair_bootstrap_95ci": [
+            0.015527129814629819,
+            0.147126591300856
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.06,
+          "treated": 0.12,
+          "delta": 0.06,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.14
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "all/en/de/de": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.75,
+          "treated": 0.76,
+          "delta": 0.01,
+          "pair_bootstrap_95ci": [
+            -0.02,
+            0.04
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.5,
+          "treated": 0.52,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.04,
+            0.08
+          ]
+        },
+        "full_binding_margin": {
+          "control": 3.8352213430404665,
+          "treated": 4.037003355026245,
+          "delta": 0.2017820119857788,
+          "pair_bootstrap_95ci": [
+            -0.3045308138132095,
+            0.7503530194759367
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.65,
+          "treated": 0.66,
+          "delta": 0.01,
+          "pair_bootstrap_95ci": [
+            -0.04,
+            0.06
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.34,
+          "treated": 0.34,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.1,
+            0.1
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.1973468542098997,
+          "treated": 3.0534375381469725,
+          "delta": -0.14390931606292726,
+          "pair_bootstrap_95ci": [
+            -0.6285245640277862,
+            0.3660688695907591
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.6378744888305664,
+          "treated": 0.9835658168792725,
+          "delta": 0.34569132804870606,
+          "pair_bootstrap_95ci": [
+            -0.10619684481620788,
+            0.8207734060287475
+          ]
+        },
+        "em": {
+          "control": 0.2,
+          "treated": 0.24,
+          "delta": 0.04,
+          "pair_bootstrap_95ci": [
+            -0.03,
+            0.11
+          ]
+        },
+        "f1": {
+          "control": 0.2958043345543346,
+          "treated": 0.33224255156608096,
+          "delta": 0.03643821701174643,
+          "pair_bootstrap_95ci": [
+            -0.03043151150320268,
+            0.10558935892538833
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.04,
+          "treated": 0.08,
+          "delta": 0.04,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.1
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "all/en/de/en": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.79,
+          "treated": 0.78,
+          "delta": -0.01,
+          "pair_bootstrap_95ci": [
+            -0.08,
+            0.05
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.58,
+          "treated": 0.56,
+          "delta": -0.02,
+          "pair_bootstrap_95ci": [
+            -0.16,
+            0.1
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.103200612068176,
+          "treated": 4.182372894287109,
+          "delta": 0.0791722822189331,
+          "pair_bootstrap_95ci": [
+            -0.28678059828281405,
+            0.46745534801483146
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.69,
+          "treated": 0.69,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.06
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4,
+          "treated": 0.38,
+          "delta": -0.02,
+          "pair_bootstrap_95ci": [
+            -0.14,
+            0.1
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.324053683280945,
+          "treated": 3.299175667762756,
+          "delta": -0.024878015518188478,
+          "pair_bootstrap_95ci": [
+            -0.5614381681680679,
+            0.4839113287925717
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.7791469287872315,
+          "treated": 0.8831972265243531,
+          "delta": 0.10405029773712159,
+          "pair_bootstrap_95ci": [
+            -0.3631229683160782,
+            0.576677806854248
+          ]
+        },
+        "em": {
+          "control": 0.27,
+          "treated": 0.31,
+          "delta": 0.04,
+          "pair_bootstrap_95ci": [
+            -0.03,
+            0.12
+          ]
+        },
+        "f1": {
+          "control": 0.35109523809523807,
+          "treated": 0.382576265807992,
+          "delta": 0.031481027712753906,
+          "pair_bootstrap_95ci": [
+            -0.03933239418039359,
+            0.10340449929971987
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.06,
+          "treated": 0.12,
+          "delta": 0.06,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.14
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "all/en/en/de": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.7,
+          "treated": 0.7,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.05,
+            0.06
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.4,
+          "treated": 0.4,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.1,
+            0.12
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.4771181583404545,
+          "treated": 4.2027154588699345,
+          "delta": -0.27440269947052004,
+          "pair_bootstrap_95ci": [
+            -0.9282096918821335,
+            0.436052474617958
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.65,
+          "treated": 0.65,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.05
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.32,
+          "treated": 0.32,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.1,
+            0.1
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.67248881816864,
+          "treated": 3.0799096918106077,
+          "delta": -0.5925791263580322,
+          "pair_bootstrap_95ci": [
+            -1.243477373600006,
+            0.11461495387554156
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.804629340171814,
+          "treated": 1.122805767059326,
+          "delta": 0.3181764268875122,
+          "pair_bootstrap_95ci": [
+            -0.2658780926465988,
+            0.9039037616252897
+          ]
+        },
+        "em": {
+          "control": 0.23,
+          "treated": 0.18,
+          "delta": -0.05,
+          "pair_bootstrap_95ci": [
+            -0.11,
+            0.01
+          ]
+        },
+        "f1": {
+          "control": 0.29866666666666664,
+          "treated": 0.298243487993488,
+          "delta": -0.00042317867317867244,
+          "pair_bootstrap_95ci": [
+            -0.05938987840862841,
+            0.058952648046398035
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.06,
+          "treated": 0.06,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.06
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "all/en/en/en": {
+      "pairs": 50,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.85,
+          "treated": 0.87,
+          "delta": 0.02,
+          "pair_bootstrap_95ci": [
+            -0.03,
+            0.08
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.7,
+          "treated": 0.74,
+          "delta": 0.04,
+          "pair_bootstrap_95ci": [
+            -0.06,
+            0.16
+          ]
+        },
+        "full_binding_margin": {
+          "control": 5.26656931400299,
+          "treated": 5.235096702575683,
+          "delta": -0.03147261142730713,
+          "pair_bootstrap_95ci": [
+            -0.45678908574581145,
+            0.40619478619098653
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7,
+          "treated": 0.73,
+          "delta": 0.03,
+          "pair_bootstrap_95ci": [
+            -0.02,
+            0.08
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.42,
+          "treated": 0.48,
+          "delta": 0.06,
+          "pair_bootstrap_95ci": [
+            -0.02,
+            0.14
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 4.06016619682312,
+          "treated": 3.7179077672958374,
+          "delta": -0.3422584295272827,
+          "pair_bootstrap_95ci": [
+            -0.9075153368711472,
+            0.20876114118099212
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.2064031171798706,
+          "treated": 1.5171889352798462,
+          "delta": 0.3107858180999756,
+          "pair_bootstrap_95ci": [
+            -0.21255487918853758,
+            0.850884629845619
+          ]
+        },
+        "em": {
+          "control": 0.34,
+          "treated": 0.29,
+          "delta": -0.05,
+          "pair_bootstrap_95ci": [
+            -0.14,
+            0.04
+          ]
+        },
+        "f1": {
+          "control": 0.46336694677871143,
+          "treated": 0.451133979164467,
+          "delta": -0.012232967614244519,
+          "pair_bootstrap_95ci": [
+            -0.10660725368306968,
+            0.07954654731626562
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.14,
+          "treated": 0.1,
+          "delta": -0.04,
+          "pair_bootstrap_95ci": [
+            -0.16,
+            0.08
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_sensitive/de/de/de": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.8048780487804879,
+          "treated": 0.7804878048780488,
+          "delta": -0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.0975609756097561,
+            0.036585365853658534
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.6097560975609756,
+          "treated": 0.5853658536585366,
+          "delta": -0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.14634146341463414,
+            0.07317073170731707
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.494026178266944,
+          "treated": 4.3365895341082314,
+          "delta": -0.15743664415871225,
+          "pair_bootstrap_95ci": [
+            -0.6697737728677144,
+            0.36047111633347295
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6219512195121951,
+          "treated": 0.6341463414634146,
+          "delta": 0.012195121951219513,
+          "pair_bootstrap_95ci": [
+            -0.024390243902439025,
+            0.04878048780487805
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.2926829268292683,
+          "treated": 0.2926829268292683,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.07317073170731707,
+            0.07317073170731707
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.450759521344813,
+          "treated": 2.967315005093086,
+          "delta": -0.48344451625172685,
+          "pair_bootstrap_95ci": [
+            -1.0654673000661339,
+            0.13504244845087918
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.043266656922131,
+          "treated": 1.3692745290151456,
+          "delta": 0.32600787209301463,
+          "pair_bootstrap_95ci": [
+            -0.28325173753063854,
+            0.9305528783216708
+          ]
+        },
+        "em": {
+          "control": 0.2804878048780488,
+          "treated": 0.3170731707317073,
+          "delta": 0.036585365853658534,
+          "pair_bootstrap_95ci": [
+            -0.04878048780487805,
+            0.12195121951219512
+          ]
+        },
+        "f1": {
+          "control": 0.3830937922832925,
+          "treated": 0.43372699650226254,
+          "delta": 0.050633204218970065,
+          "pair_bootstrap_95ci": [
+            -0.009297223468678234,
+            0.11416735538319953
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.12195121951219512,
+          "treated": 0.12195121951219512,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.14634146341463414,
+            0.14634146341463414
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_sensitive/de/de/en": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.6341463414634146,
+          "treated": 0.6585365853658537,
+          "delta": 0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.04878048780487805,
+            0.0975609756097561
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.2682926829268293,
+          "treated": 0.3170731707317073,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.0975609756097561,
+            0.1951219512195122
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.1673575436196675,
+          "treated": 4.036663910237754,
+          "delta": -0.13069363338191334,
+          "pair_bootstrap_95ci": [
+            -0.6571719582487897,
+            0.42673697020949375
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6707317073170732,
+          "treated": 0.6585365853658537,
+          "delta": -0.012195121951219513,
+          "pair_bootstrap_95ci": [
+            -0.07317073170731707,
+            0.04878048780487805
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.36585365853658536,
+          "treated": 0.3170731707317073,
+          "delta": -0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.17073170731707318,
+            0.07317073170731707
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.4098591630051778,
+          "treated": 3.242053468052934,
+          "delta": -0.1678056949522437,
+          "pair_bootstrap_95ci": [
+            -0.8468239691199325,
+            0.5165533968588198
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.75749838061449,
+          "treated": 0.7946104421848204,
+          "delta": 0.03711206157033036,
+          "pair_bootstrap_95ci": [
+            -0.606167801415048,
+            0.701290905184862
+          ]
+        },
+        "em": {
+          "control": 0.17073170731707318,
+          "treated": 0.12195121951219512,
+          "delta": -0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.10975609756097561,
+            0.012195121951219513
+          ]
+        },
+        "f1": {
+          "control": 0.24772793862475595,
+          "treated": 0.21238385598141696,
+          "delta": -0.03534408264333898,
+          "pair_bootstrap_95ci": [
+            -0.11382183908045974,
+            0.037984695040989565
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.024390243902439025,
+          "treated": 0.0,
+          "delta": -0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.07317073170731707,
+            0.0
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.012195121951219513,
+          "delta": 0.012195121951219513,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.036585365853658534
+          ]
+        }
+      }
+    },
+    "language_sensitive/de/en/de": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.7926829268292683,
+          "treated": 0.6707317073170732,
+          "delta": -0.12195121951219512,
+          "pair_bootstrap_95ci": [
+            -0.2073170731707317,
+            -0.04878048780487805
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.6097560975609756,
+          "treated": 0.3902439024390244,
+          "delta": -0.21951219512195122,
+          "pair_bootstrap_95ci": [
+            -0.36585365853658536,
+            -0.07317073170731707
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.2255635319686515,
+          "treated": 3.997189335706757,
+          "delta": -0.22837419626189442,
+          "pair_bootstrap_95ci": [
+            -0.8856017589569092,
+            0.4802464025776559
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6219512195121951,
+          "treated": 0.6341463414634146,
+          "delta": 0.012195121951219513,
+          "pair_bootstrap_95ci": [
+            -0.036585365853658534,
+            0.07317073170731707
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.2926829268292683,
+          "treated": 0.2682926829268293,
+          "delta": -0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.0975609756097561,
+            0.04878048780487805
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.735096315058266,
+          "treated": 2.7706396463440686,
+          "delta": -0.9644566687141977,
+          "pair_bootstrap_95ci": [
+            -1.648267676045255,
+            -0.2246910455750257
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.49046721691038553,
+          "treated": 1.2265496893626888,
+          "delta": 0.7360824724523033,
+          "pair_bootstrap_95ci": [
+            0.15788879699823333,
+            1.3067264266130398
+          ]
+        },
+        "em": {
+          "control": 0.25609756097560976,
+          "treated": 0.2073170731707317,
+          "delta": -0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.13414634146341464,
+            0.036585365853658534
+          ]
+        },
+        "f1": {
+          "control": 0.3256415332634845,
+          "treated": 0.31939457796325577,
+          "delta": -0.0062469553002287275,
+          "pair_bootstrap_95ci": [
+            -0.08638183980850862,
+            0.0736535425491619
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.07317073170731707,
+          "treated": 0.024390243902439025,
+          "delta": -0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.12195121951219512,
+            0.0
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_sensitive/de/en/en": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.7439024390243902,
+          "treated": 0.7682926829268293,
+          "delta": 0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.04878048780487805,
+            0.0975609756097561
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.4878048780487805,
+          "treated": 0.5365853658536586,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.0975609756097561,
+            0.1951219512195122
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.327093496555236,
+          "treated": 4.908778754676261,
+          "delta": 0.5816852581210252,
+          "pair_bootstrap_95ci": [
+            0.06323904496867483,
+            1.083996505708229
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6951219512195121,
+          "treated": 0.7073170731707317,
+          "delta": 0.012195121951219513,
+          "pair_bootstrap_95ci": [
+            -0.036585365853658534,
+            0.06097560975609756
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.3902439024390244,
+          "treated": 0.43902439024390244,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.04878048780487805,
+            0.14634146341463414
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.9049604287961635,
+          "treated": 3.597138532778112,
+          "delta": -0.30782189601805154,
+          "pair_bootstrap_95ci": [
+            -0.8527763275111594,
+            0.26857024314926886
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.4221330677590719,
+          "treated": 1.3116402218981487,
+          "delta": 0.8895071541390768,
+          "pair_bootstrap_95ci": [
+            0.2940045954250708,
+            1.4721047234244464
+          ]
+        },
+        "em": {
+          "control": 0.1951219512195122,
+          "treated": 0.23170731707317074,
+          "delta": 0.036585365853658534,
+          "pair_bootstrap_95ci": [
+            -0.024390243902439025,
+            0.0975609756097561
+          ]
+        },
+        "f1": {
+          "control": 0.3007771918819264,
+          "treated": 0.37819991661455077,
+          "delta": 0.07742272473262429,
+          "pair_bootstrap_95ci": [
+            0.0028740676866573544,
+            0.1528984100747013
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.04878048780487805,
+          "treated": 0.0975609756097561,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.12195121951219512
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_sensitive/en/de/de": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.7073170731707317,
+          "treated": 0.7317073170731707,
+          "delta": 0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.06097560975609756
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.4146341463414634,
+          "treated": 0.4634146341463415,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.12195121951219512
+          ]
+        },
+        "full_binding_margin": {
+          "control": 3.7185144540740223,
+          "treated": 4.018697715387112,
+          "delta": 0.30018326131308953,
+          "pair_bootstrap_95ci": [
+            -0.2666063567487205,
+            0.9090441575864462
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6341463414634146,
+          "treated": 0.6341463414634146,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.04878048780487805,
+            0.04878048780487805
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.3170731707317073,
+          "treated": 0.2926829268292683,
+          "delta": -0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.0975609756097561,
+            0.04878048780487805
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.162926313353748,
+          "treated": 3.0467156317175887,
+          "delta": -0.11621068163615901,
+          "pair_bootstrap_95ci": [
+            -0.6624441193371284,
+            0.47582140550380786
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.5555881407202744,
+          "treated": 0.9719820836695229,
+          "delta": 0.41639394294924853,
+          "pair_bootstrap_95ci": [
+            -0.11770863620246326,
+            0.9561300822874393
+          ]
+        },
+        "em": {
+          "control": 0.12195121951219512,
+          "treated": 0.18292682926829268,
+          "delta": 0.06097560975609756,
+          "pair_bootstrap_95ci": [
+            -0.012195121951219513,
+            0.14634146341463414
+          ]
+        },
+        "f1": {
+          "control": 0.2306556925459364,
+          "treated": 0.2838033439539896,
+          "delta": 0.05314765140805312,
+          "pair_bootstrap_95ci": [
+            -0.016239100450004314,
+            0.12471092647787407
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.0,
+          "treated": 0.04878048780487805,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.12195121951219512
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_sensitive/en/de/en": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.7560975609756098,
+          "treated": 0.7560975609756098,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.07317073170731707,
+            0.07317073170731707
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.5121951219512195,
+          "treated": 0.5121951219512195,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.14634146341463414,
+            0.14634146341463414
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.06848974344207,
+          "treated": 4.214683108213471,
+          "delta": 0.14619336477140102,
+          "pair_bootstrap_95ci": [
+            -0.26933211916830485,
+            0.5861390234493626
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6829268292682927,
+          "treated": 0.6707317073170732,
+          "delta": -0.012195121951219513,
+          "pair_bootstrap_95ci": [
+            -0.07317073170731707,
+            0.04878048780487805
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.3902439024390244,
+          "treated": 0.34146341463414637,
+          "delta": -0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.17073170731707318,
+            0.07317073170731707
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.32913697056654,
+          "treated": 3.3349386773458343,
+          "delta": 0.005801706779293898,
+          "pair_bootstrap_95ci": [
+            -0.5918980976430381,
+            0.6065036413146226
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.7393527728755299,
+          "treated": 0.8797444308676371,
+          "delta": 0.14039165799210712,
+          "pair_bootstrap_95ci": [
+            -0.4195313567068519,
+            0.6782868135266183
+          ]
+        },
+        "em": {
+          "control": 0.2073170731707317,
+          "treated": 0.25609756097560976,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.024390243902439025,
+            0.13414634146341464
+          ]
+        },
+        "f1": {
+          "control": 0.2980836236933798,
+          "treated": 0.3364751209040553,
+          "delta": 0.0383914972106755,
+          "pair_bootstrap_95ci": [
+            -0.03512993642226607,
+            0.1116586640605082
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.024390243902439025,
+          "treated": 0.07317073170731707,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.12195121951219512
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_sensitive/en/en/de": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.6463414634146342,
+          "treated": 0.6463414634146342,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.06097560975609756,
+            0.06097560975609756
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.2926829268292683,
+          "treated": 0.2926829268292683,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.12195121951219512,
+            0.12195121951219512
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.385067654819023,
+          "treated": 4.1382177922783825,
+          "delta": -0.24684986254064048,
+          "pair_bootstrap_95ci": [
+            -1.0236259123174156,
+            0.5921347065669733
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6219512195121951,
+          "treated": 0.6341463414634146,
+          "delta": 0.012195121951219513,
+          "pair_bootstrap_95ci": [
+            -0.04878048780487805,
+            0.07317073170731707
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.2682926829268293,
+          "treated": 0.2926829268292683,
+          "delta": 0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.07317073170731707,
+            0.12195121951219512
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.6418904502217364,
+          "treated": 3.0814267658605807,
+          "delta": -0.5604636843611555,
+          "pair_bootstrap_95ci": [
+            -1.3213643239765633,
+            0.2618630282762574
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.7431772045972871,
+          "treated": 1.056791026417802,
+          "delta": 0.31361382182051495,
+          "pair_bootstrap_95ci": [
+            -0.3690634382934105,
+            0.9932784108127027
+          ]
+        },
+        "em": {
+          "control": 0.17073170731707318,
+          "treated": 0.12195121951219512,
+          "delta": -0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.11006097560975582,
+            0.012195121951219513
+          ]
+        },
+        "f1": {
+          "control": 0.24634146341463414,
+          "treated": 0.24501238373189593,
+          "delta": -0.00132907968273821,
+          "pair_bootstrap_95ci": [
+            -0.06377705684108123,
+            0.06301369841766181
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_sensitive/en/en/en": {
+      "pairs": 41,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.8292682926829268,
+          "treated": 0.8658536585365854,
+          "delta": 0.036585365853658534,
+          "pair_bootstrap_95ci": [
+            -0.024390243902439025,
+            0.0975609756097561
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.6585365853658537,
+          "treated": 0.7317073170731707,
+          "delta": 0.07317073170731707,
+          "pair_bootstrap_95ci": [
+            -0.04878048780487805,
+            0.1951219512195122
+          ]
+        },
+        "full_binding_margin": {
+          "control": 5.33710241317749,
+          "treated": 5.359113210585059,
+          "delta": 0.022010797407568956,
+          "pair_bootstrap_95ci": [
+            -0.4830737334925954,
+            0.5334908722377404
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.6829268292682927,
+          "treated": 0.7317073170731707,
+          "delta": 0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.10975609756097561
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.3902439024390244,
+          "treated": 0.4878048780487805,
+          "delta": 0.0975609756097561,
+          "pair_bootstrap_95ci": [
+            0.024390243902439025,
+            0.1951219512195122
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 4.108215727457186,
+          "treated": 3.8299882993465517,
+          "delta": -0.2782274281106344,
+          "pair_bootstrap_95ci": [
+            -0.9053061453307547,
+            0.369039005768008
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.2288866857203042,
+          "treated": 1.5291249112385075,
+          "delta": 0.30023822551820334,
+          "pair_bootstrap_95ci": [
+            -0.3117663078191804,
+            0.8972935122687639
+          ]
+        },
+        "em": {
+          "control": 0.3170731707317073,
+          "treated": 0.2682926829268293,
+          "delta": -0.04878048780487805,
+          "pair_bootstrap_95ci": [
+            -0.14634146341463414,
+            0.04878048780487805
+          ]
+        },
+        "f1": {
+          "control": 0.4431304229008676,
+          "treated": 0.4377650152412199,
+          "delta": -0.00536540765964778,
+          "pair_bootstrap_95ci": [
+            -0.11076816900439264,
+            0.09717452566762101
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.0975609756097561,
+          "treated": 0.07317073170731707,
+          "delta": -0.024390243902439025,
+          "pair_bootstrap_95ci": [
+            -0.14634146341463414,
+            0.0975609756097561
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/de/de/de": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.8888888888888888,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.7777777777777778,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.661871353785197,
+          "treated": 4.077823321024577,
+          "delta": -0.5840480327606201,
+          "pair_bootstrap_95ci": [
+            -1.44909654657046,
+            0.2906750486956702
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7222222222222222,
+          "treated": 0.7777777777777778,
+          "delta": 0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.1111111111111111,
+            0.2222222222222222
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4444444444444444,
+          "treated": 0.5555555555555556,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.4444444444444444
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.45796799659729,
+          "treated": 3.0837259822421603,
+          "delta": -0.37424201435512966,
+          "pair_bootstrap_95ci": [
+            -1.4044424513975777,
+            0.6022529072231717
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.203903357187907,
+          "treated": 0.9940973387824165,
+          "delta": -0.20980601840549046,
+          "pair_bootstrap_95ci": [
+            -1.0402401559882692,
+            0.66075096461508
+          ]
+        },
+        "em": {
+          "control": 0.4444444444444444,
+          "treated": 0.3888888888888889,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.1111111111111111
+          ]
+        },
+        "f1": {
+          "control": 0.48148148148148145,
+          "treated": 0.4629629629629629,
+          "delta": -0.01851851851851852,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666669,
+            0.14814814814814814
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.2222222222222222,
+          "treated": 0.2222222222222222,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/de/de/en": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.8888888888888888,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.7777777777777778,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.498514307869805,
+          "treated": 3.9843091434902616,
+          "delta": -0.5142051643795438,
+          "pair_bootstrap_95ci": [
+            -1.3823910329076978,
+            0.3131374763117894
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7222222222222222,
+          "treated": 0.7777777777777778,
+          "delta": 0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.1111111111111111,
+            0.2222222222222222
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4444444444444444,
+          "treated": 0.5555555555555556,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.4444444444444444
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.4535637961493597,
+          "treated": 3.116109503640069,
+          "delta": -0.33745429250929093,
+          "pair_bootstrap_95ci": [
+            -1.3333764029873743,
+            0.6414508296383751
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.0449505117204454,
+          "treated": 0.8681996398501926,
+          "delta": -0.17675087187025282,
+          "pair_bootstrap_95ci": [
+            -1.0184023512734306,
+            0.6617737346225314
+          ]
+        },
+        "em": {
+          "control": 0.5555555555555556,
+          "treated": 0.4444444444444444,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.2777777777777778,
+            0.0
+          ]
+        },
+        "f1": {
+          "control": 0.5925925925925926,
+          "treated": 0.48148148148148145,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.2777777777777778,
+            0.0
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.2222222222222222,
+          "treated": 0.2222222222222222,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/de/en/de": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.8888888888888888,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.7777777777777778,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.5144365893469915,
+          "treated": 4.350487470626831,
+          "delta": -0.1639491187201606,
+          "pair_bootstrap_95ci": [
+            -0.8877425836192236,
+            0.5183170265621603
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7222222222222222,
+          "treated": 0.7777777777777778,
+          "delta": 0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.16666666666666666
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4444444444444444,
+          "treated": 0.5555555555555556,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.3333333333333333
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.865115033255683,
+          "treated": 3.141001515918308,
+          "delta": -0.7241135173373752,
+          "pair_bootstrap_95ci": [
+            -2.0450644228193493,
+            0.26274445321824813
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.6493215560913086,
+          "treated": 1.2094859547085233,
+          "delta": 0.5601643986172147,
+          "pair_bootstrap_95ci": [
+            -0.3446300294664171,
+            1.4825598147180339
+          ]
+        },
+        "em": {
+          "control": 0.4444444444444444,
+          "treated": 0.4444444444444444,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.2222222222222222
+          ]
+        },
+        "f1": {
+          "control": 0.4444444444444444,
+          "treated": 0.48148148148148145,
+          "delta": 0.03703703703703703,
+          "pair_bootstrap_95ci": [
+            -0.14814814814814817,
+            0.2222222222222222
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.1111111111111111,
+          "treated": 0.2222222222222222,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.3333333333333333
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/de/en/en": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.8888888888888888,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.7777777777777778,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.441368341445923,
+          "treated": 4.2893518341912165,
+          "delta": -0.1520165072547065,
+          "pair_bootstrap_95ci": [
+            -0.7893329461415609,
+            0.4560382313198513
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7222222222222222,
+          "treated": 0.7777777777777778,
+          "delta": 0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.16666666666666666
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4444444444444444,
+          "treated": 0.5555555555555556,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.3333333333333333
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.9641937149895563,
+          "treated": 3.169458919101291,
+          "delta": -0.794734795888265,
+          "pair_bootstrap_95ci": [
+            -2.090773688422309,
+            0.17220785948965278
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.47717462645636666,
+          "treated": 1.119892915089925,
+          "delta": 0.6427182886335585,
+          "pair_bootstrap_95ci": [
+            -0.2952963511149089,
+            1.6378649592399597
+          ]
+        },
+        "em": {
+          "control": 0.3888888888888889,
+          "treated": 0.4444444444444444,
+          "delta": 0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.1111111111111111,
+            0.2222222222222222
+          ]
+        },
+        "f1": {
+          "control": 0.3888888888888889,
+          "treated": 0.48148148148148145,
+          "delta": 0.09259259259259259,
+          "pair_bootstrap_95ci": [
+            -0.03703703703703704,
+            0.25925925925925924
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.1111111111111111,
+          "treated": 0.2222222222222222,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.3333333333333333
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/en/de/de": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.8888888888888888,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.7777777777777778,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.366886059443156,
+          "treated": 4.1203957133822975,
+          "delta": -0.24649034606085884,
+          "pair_bootstrap_95ci": [
+            -1.164594778749678,
+            0.6907601654529568
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7222222222222222,
+          "treated": 0.7777777777777778,
+          "delta": 0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.1111111111111111,
+            0.2222222222222222
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4444444444444444,
+          "treated": 0.5555555555555556,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.4444444444444444
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.3541515403323703,
+          "treated": 3.084059556325277,
+          "delta": -0.27009198400709367,
+          "pair_bootstrap_95ci": [
+            -1.1761838098367055,
+            0.6280605441994135
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.0127345191107855,
+          "treated": 1.0363361570570204,
+          "delta": 0.023601637946234807,
+          "pair_bootstrap_95ci": [
+            -0.8067048768202463,
+            0.9294241878721445
+          ]
+        },
+        "em": {
+          "control": 0.5555555555555556,
+          "treated": 0.5,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.1111111111111111
+          ]
+        },
+        "f1": {
+          "control": 0.5925925925925926,
+          "treated": 0.5529100529100529,
+          "delta": -0.03968253968253968,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.14285714285714288
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.2222222222222222,
+          "treated": 0.2222222222222222,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/en/de/en": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.8888888888888888,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.7777777777777778,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.261327902475993,
+          "treated": 4.035181919733684,
+          "delta": -0.22614598274230957,
+          "pair_bootstrap_95ci": [
+            -0.995238349835078,
+            0.577706734339396
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7222222222222222,
+          "treated": 0.7777777777777778,
+          "delta": 0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.1111111111111111,
+            0.2222222222222222
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.4444444444444444,
+          "treated": 0.5555555555555556,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.4444444444444444
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.300896485646566,
+          "treated": 3.13625529077318,
+          "delta": -0.16464119487338597,
+          "pair_bootstrap_95ci": [
+            -1.0475928862889607,
+            0.7376965251233837
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 0.9604314168294271,
+          "treated": 0.8989266289605035,
+          "delta": -0.06150478786892361,
+          "pair_bootstrap_95ci": [
+            -0.7582336147626241,
+            0.6606602119074926
+          ]
+        },
+        "em": {
+          "control": 0.5555555555555556,
+          "treated": 0.5555555555555556,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.2222222222222222
+          ]
+        },
+        "f1": {
+          "control": 0.5925925925925926,
+          "treated": 0.5925925925925927,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.2222222222222222
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.2222222222222222,
+          "treated": 0.3333333333333333,
+          "delta": 0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.3333333333333333
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/en/en/de": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.9444444444444444,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.16666666666666666
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.8888888888888888,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.896459341049194,
+          "treated": 4.496538162231445,
+          "delta": -0.399921178817749,
+          "pair_bootstrap_95ci": [
+            -1.1710786753230624,
+            0.26888521512349445
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7777777777777778,
+          "treated": 0.7222222222222222,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.5555555555555556,
+          "treated": 0.4444444444444444,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.8118813832600913,
+          "treated": 3.0729985766940646,
+          "delta": -0.7388828065660265,
+          "pair_bootstrap_95ci": [
+            -1.8499729467762842,
+            0.18495833542611836
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.0845779577891033,
+          "treated": 1.4235395855373807,
+          "delta": 0.3389616277482774,
+          "pair_bootstrap_95ci": [
+            -0.6807639512750838,
+            1.3319219854142927
+          ]
+        },
+        "em": {
+          "control": 0.5,
+          "treated": 0.4444444444444444,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.2222222222222222,
+            0.1111111111111111
+          ]
+        },
+        "f1": {
+          "control": 0.537037037037037,
+          "treated": 0.5407407407407407,
+          "delta": 0.003703703703703703,
+          "pair_bootstrap_95ci": [
+            -0.16296296296296298,
+            0.17037037037037037
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.3333333333333333,
+          "treated": 0.3333333333333333,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "language_invariant/en/en/en": {
+      "pairs": 9,
+      "metrics": {
+        "full_accuracy": {
+          "control": 0.9444444444444444,
+          "treated": 0.8888888888888888,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "full_both_correct": {
+          "control": 0.8888888888888888,
+          "treated": 0.7777777777777778,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "full_binding_margin": {
+          "control": 4.945251862208049,
+          "treated": 4.670132610532972,
+          "delta": -0.27511925167507595,
+          "pair_bootstrap_95ci": [
+            -1.0325524707635243,
+            0.37488821281327134
+          ]
+        },
+        "question_only_accuracy": {
+          "control": 0.7777777777777778,
+          "treated": 0.7222222222222222,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.16666666666666666,
+            0.0
+          ]
+        },
+        "question_only_both_correct": {
+          "control": 0.5555555555555556,
+          "treated": 0.4444444444444444,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.0
+          ]
+        },
+        "question_only_binding_margin": {
+          "control": 3.841273890601264,
+          "treated": 3.2073186768425836,
+          "delta": -0.6339552137586806,
+          "pair_bootstrap_95ci": [
+            -1.8233789867824979,
+            0.3439980294969346
+          ]
+        },
+        "context_binding_contribution": {
+          "control": 1.1039779716067843,
+          "treated": 1.462813933690389,
+          "delta": 0.3588359620836046,
+          "pair_bootstrap_95ci": [
+            -0.6001182172033522,
+            1.3458368817965185
+          ]
+        },
+        "em": {
+          "control": 0.4444444444444444,
+          "treated": 0.3888888888888889,
+          "delta": -0.05555555555555555,
+          "pair_bootstrap_95ci": [
+            -0.3333333333333333,
+            0.2777777777777778
+          ]
+        },
+        "f1": {
+          "control": 0.5555555555555555,
+          "treated": 0.5120370370370371,
+          "delta": -0.04351851851851851,
+          "pair_bootstrap_95ci": [
+            -0.23148148148148145,
+            0.17592592592592593
+          ]
+        },
+        "generation_both_exact": {
+          "control": 0.3333333333333333,
+          "treated": 0.2222222222222222,
+          "delta": -0.1111111111111111,
+          "pair_bootstrap_95ci": [
+            -0.4444444444444444,
+            0.2222222222222222
+          ]
+        },
+        "empty_generation": {
+          "control": 0.0,
+          "treated": 0.0,
+          "delta": 0.0,
+          "pair_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "answer_language_interactions": {
+    "all/de/de": {
+      "full_accuracy": {
+        "control": 0.14,
+        "treated": 0.1,
+        "delta": -0.04,
+        "pair_bootstrap_95ci": [
+          -0.12,
+          0.04
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.28,
+        "treated": 0.22,
+        "delta": -0.06,
+        "pair_bootstrap_95ci": [
+          -0.2,
+          0.08
+        ]
+      },
+      "full_binding_margin": {
+        "control": 0.2972725486755371,
+        "treated": 0.2627715635299683,
+        "delta": -0.03450098514556885,
+        "pair_bootstrap_95ci": [
+          -0.457075312256813,
+          0.396802030801773
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.04,
+        "treated": -0.02,
+        "delta": 0.02,
+        "pair_bootstrap_95ci": [
+          -0.04,
+          0.08
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.06,
+        "treated": -0.02,
+        "delta": 0.04,
+        "pair_bootstrap_95ci": [
+          -0.06,
+          0.14
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": 0.034331049919128415,
+        "treated": -0.23111457347869874,
+        "delta": -0.2654456233978271,
+        "pair_bootstrap_95ci": [
+          -0.791916289448738,
+          0.2857607312202452
+        ]
+      },
+      "context_binding_contribution": {
+        "control": 0.2629414987564087,
+        "treated": 0.493886137008667,
+        "delta": 0.2309446382522583,
+        "pair_bootstrap_95ci": [
+          -0.2090131162405014,
+          0.6828510652780533
+        ]
+      },
+      "em": {
+        "control": 0.07,
+        "treated": 0.15,
+        "delta": 0.08,
+        "pair_bootstrap_95ci": [
+          0.02,
+          0.15
+        ]
+      },
+      "f1": {
+        "control": 0.091,
+        "treated": 0.17816804189376007,
+        "delta": 0.08716804189376008,
+        "pair_bootstrap_95ci": [
+          0.02393506657184838,
+          0.1524100840336134
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.08,
+        "treated": 0.1,
+        "delta": 0.02,
+        "pair_bootstrap_95ci": [
+          -0.08,
+          0.12
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": -0.01,
+        "delta": -0.01,
+        "pair_bootstrap_95ci": [
+          -0.03,
+          0.0
+        ]
+      }
+    },
+    "all/de/en": {
+      "full_accuracy": {
+        "control": 0.04,
+        "treated": -0.08,
+        "delta": -0.12,
+        "pair_bootstrap_95ci": [
+          -0.21,
+          -0.03
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.1,
+        "treated": -0.12,
+        "delta": -0.22,
+        "pair_bootstrap_95ci": [
+          -0.38,
+          -0.06
+        ]
+      },
+      "full_binding_margin": {
+        "control": -0.07010228633880615,
+        "treated": -0.736498908996582,
+        "delta": -0.6663966226577759,
+        "pair_bootstrap_95ci": [
+          -1.1658618059158325,
+          -0.18064908766746532
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.06,
+        "treated": -0.06,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          -0.06,
+          0.06
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.08,
+        "treated": -0.14,
+        "delta": -0.06,
+        "pair_bootstrap_95ci": [
+          -0.14,
+          0.02
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.15712273597717286,
+        "treated": -0.6828514194488525,
+        "delta": -0.5257286834716797,
+        "pair_bootstrap_95ci": [
+          -1.0754861030578613,
+          0.038151366353034864
+        ]
+      },
+      "context_binding_contribution": {
+        "control": 0.08702044963836669,
+        "treated": -0.05364748954772949,
+        "delta": -0.14066793918609619,
+        "pair_bootstrap_95ci": [
+          -0.6059143713712691,
+          0.310613842487335
+        ]
+      },
+      "em": {
+        "control": 0.06,
+        "treated": -0.02,
+        "delta": -0.08,
+        "pair_bootstrap_95ci": [
+          -0.15,
+          -0.01
+        ]
+      },
+      "f1": {
+        "control": 0.030388759932877582,
+        "treated": -0.0482203776940619,
+        "delta": -0.07860913762693948,
+        "pair_bootstrap_95ci": [
+          -0.15611896376867357,
+          -0.0034492214495891425
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.02,
+        "treated": -0.06,
+        "delta": -0.08,
+        "pair_bootstrap_95ci": [
+          -0.18,
+          0.0
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "all/en/de": {
+      "full_accuracy": {
+        "control": -0.04,
+        "treated": -0.02,
+        "delta": 0.02,
+        "pair_bootstrap_95ci": [
+          -0.05,
+          0.09
+        ]
+      },
+      "full_both_correct": {
+        "control": -0.08,
+        "treated": -0.04,
+        "delta": 0.04,
+        "pair_bootstrap_95ci": [
+          -0.1,
+          0.18
+        ]
+      },
+      "full_binding_margin": {
+        "control": -0.26797926902770997,
+        "treated": -0.14536953926086427,
+        "delta": 0.1226097297668457,
+        "pair_bootstrap_95ci": [
+          -0.30060995650291444,
+          0.5496877163648605
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.04,
+        "treated": -0.03,
+        "delta": 0.01,
+        "pair_bootstrap_95ci": [
+          -0.05,
+          0.07
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.06,
+        "treated": -0.04,
+        "delta": 0.02,
+        "pair_bootstrap_95ci": [
+          -0.1,
+          0.14
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.1267068290710449,
+        "treated": -0.2457381296157837,
+        "delta": -0.11903130054473877,
+        "pair_bootstrap_95ci": [
+          -0.5942373006343842,
+          0.4035057067871093
+        ]
+      },
+      "context_binding_contribution": {
+        "control": -0.14127243995666505,
+        "treated": 0.10036859035491943,
+        "delta": 0.24164103031158446,
+        "pair_bootstrap_95ci": [
+          -0.20014113330841063,
+          0.7044978642463683
+        ]
+      },
+      "em": {
+        "control": -0.07,
+        "treated": -0.07,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          -0.06,
+          0.06
+        ]
+      },
+      "f1": {
+        "control": -0.05529090354090353,
+        "treated": -0.05033371424191103,
+        "delta": 0.004957189298992519,
+        "pair_bootstrap_95ci": [
+          -0.0547313332908921,
+          0.0703944707522796
+        ]
+      },
+      "generation_both_exact": {
+        "control": -0.02,
+        "treated": -0.04,
+        "delta": -0.02,
+        "pair_bootstrap_95ci": [
+          -0.1,
+          0.04
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "all/en/en": {
+      "full_accuracy": {
+        "control": -0.15,
+        "treated": -0.17,
+        "delta": -0.02,
+        "pair_bootstrap_95ci": [
+          -0.09,
+          0.05
+        ]
+      },
+      "full_both_correct": {
+        "control": -0.3,
+        "treated": -0.34,
+        "delta": -0.04,
+        "pair_bootstrap_95ci": [
+          -0.18,
+          0.1
+        ]
+      },
+      "full_binding_margin": {
+        "control": -0.7894511556625367,
+        "treated": -1.0323812437057496,
+        "delta": -0.2429300880432129,
+        "pair_bootstrap_95ci": [
+          -0.7961431521177292,
+          0.31016957664489736
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.05,
+        "treated": -0.08,
+        "delta": -0.03,
+        "pair_bootstrap_95ci": [
+          -0.1,
+          0.03
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.1,
+        "treated": -0.16,
+        "delta": -0.06,
+        "pair_bootstrap_95ci": [
+          -0.16,
+          0.04
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.38767737865448,
+        "treated": -0.6379980754852295,
+        "delta": -0.25032069683074953,
+        "pair_bootstrap_95ci": [
+          -0.7787857931852341,
+          0.30534397745132424
+        ]
+      },
+      "context_binding_contribution": {
+        "control": -0.40177377700805667,
+        "treated": -0.39438316822052,
+        "delta": 0.007390608787536621,
+        "pair_bootstrap_95ci": [
+          -0.4465327829122543,
+          0.4856892530918121
+        ]
+      },
+      "em": {
+        "control": -0.11,
+        "treated": -0.11,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          -0.06,
+          0.06
+        ]
+      },
+      "f1": {
+        "control": -0.16470028011204485,
+        "treated": -0.15289049117097897,
+        "delta": 0.011809788941065848,
+        "pair_bootstrap_95ci": [
+          -0.06065376382876382,
+          0.0854700128356154
+        ]
+      },
+      "generation_both_exact": {
+        "control": -0.08,
+        "treated": -0.04,
+        "delta": 0.04,
+        "pair_bootstrap_95ci": [
+          -0.08,
+          0.14
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "language_sensitive/de/de": {
+      "full_accuracy": {
+        "control": 0.17073170731707318,
+        "treated": 0.12195121951219512,
+        "delta": -0.04878048780487805,
+        "pair_bootstrap_95ci": [
+          -0.14634146341463414,
+          0.04878048780487805
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.34146341463414637,
+        "treated": 0.2682926829268293,
+        "delta": -0.07317073170731707,
+        "pair_bootstrap_95ci": [
+          -0.24390243902439024,
+          0.0975609756097561
+        ]
+      },
+      "full_binding_margin": {
+        "control": 0.32666863464727636,
+        "treated": 0.29992562387047744,
+        "delta": -0.0267430107767989,
+        "pair_bootstrap_95ci": [
+          -0.5291878832549584,
+          0.5104134693378356
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.04878048780487805,
+        "treated": -0.024390243902439025,
+        "delta": 0.024390243902439025,
+        "pair_bootstrap_95ci": [
+          -0.04878048780487805,
+          0.0975609756097561
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.07317073170731707,
+        "treated": -0.024390243902439025,
+        "delta": 0.04878048780487805,
+        "pair_bootstrap_95ci": [
+          -0.0975609756097561,
+          0.1951219512195122
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": 0.04090035833963534,
+        "treated": -0.2747384629598478,
+        "delta": -0.3156388212994831,
+        "pair_bootstrap_95ci": [
+          -0.9359415156085317,
+          0.3679035242010906
+        ]
+      },
+      "context_binding_contribution": {
+        "control": 0.285768276307641,
+        "treated": 0.5746640868303252,
+        "delta": 0.28889581052268426,
+        "pair_bootstrap_95ci": [
+          -0.257763257404653,
+          0.8383614053086537
+        ]
+      },
+      "em": {
+        "control": 0.10975609756097561,
+        "treated": 0.1951219512195122,
+        "delta": 0.08536585365853659,
+        "pair_bootstrap_95ci": [
+          0.024390243902439025,
+          0.15853658536585366
+        ]
+      },
+      "f1": {
+        "control": 0.1353658536585366,
+        "treated": 0.22134314052084564,
+        "delta": 0.08597728686230904,
+        "pair_bootstrap_95ci": [
+          0.016677365390600687,
+          0.1612413808877682
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.0975609756097561,
+        "treated": 0.12195121951219512,
+        "delta": 0.024390243902439025,
+        "pair_bootstrap_95ci": [
+          -0.0975609756097561,
+          0.14634146341463414
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": -0.012195121951219513,
+        "delta": -0.012195121951219513,
+        "pair_bootstrap_95ci": [
+          -0.036585365853658534,
+          0.0
+        ]
+      }
+    },
+    "language_sensitive/de/en": {
+      "full_accuracy": {
+        "control": 0.04878048780487805,
+        "treated": -0.0975609756097561,
+        "delta": -0.14634146341463414,
+        "pair_bootstrap_95ci": [
+          -0.24390243902439024,
+          -0.04878048780487805
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.12195121951219512,
+        "treated": -0.14634146341463414,
+        "delta": -0.2682926829268293,
+        "pair_bootstrap_95ci": [
+          -0.4634146341463415,
+          -0.07317073170731707
+        ]
+      },
+      "full_binding_margin": {
+        "control": -0.10152996458658357,
+        "treated": -0.9115894189695033,
+        "delta": -0.8100594543829197,
+        "pair_bootstrap_95ci": [
+          -1.3905789232835537,
+          -0.22264106070123077
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.07317073170731707,
+        "treated": -0.07317073170731707,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          -0.07317073170731707,
+          0.07317073170731707
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.0975609756097561,
+        "treated": -0.17073170731707318,
+        "delta": -0.07317073170731707,
+        "pair_bootstrap_95ci": [
+          -0.1951219512195122,
+          0.024390243902439025
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.16986411373789717,
+        "treated": -0.8264988864340433,
+        "delta": -0.6566347726961461,
+        "pair_bootstrap_95ci": [
+          -1.3026194161031304,
+          0.017830688924324167
+        ]
+      },
+      "context_binding_contribution": {
+        "control": 0.0683341491513136,
+        "treated": -0.08509053253545994,
+        "delta": -0.15342468168677353,
+        "pair_bootstrap_95ci": [
+          -0.7075331751893206,
+          0.3852295653122224
+        ]
+      },
+      "em": {
+        "control": 0.06097560975609756,
+        "treated": -0.024390243902439025,
+        "delta": -0.08536585365853659,
+        "pair_bootstrap_95ci": [
+          -0.18292682926829268,
+          0.0
+        ]
+      },
+      "f1": {
+        "control": 0.024864341381558026,
+        "treated": -0.05880533865129499,
+        "delta": -0.08366968003285302,
+        "pair_bootstrap_95ci": [
+          -0.17625205148170114,
+          0.005890727553020853
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.024390243902439025,
+        "treated": -0.07317073170731707,
+        "delta": -0.0975609756097561,
+        "pair_bootstrap_95ci": [
+          -0.21951219512195122,
+          0.0
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "language_sensitive/en/de": {
+      "full_accuracy": {
+        "control": -0.04878048780487805,
+        "treated": -0.024390243902439025,
+        "delta": 0.024390243902439025,
+        "pair_bootstrap_95ci": [
+          -0.06097560975609756,
+          0.10975609756097561
+        ]
+      },
+      "full_both_correct": {
+        "control": -0.0975609756097561,
+        "treated": -0.04878048780487805,
+        "delta": 0.04878048780487805,
+        "pair_bootstrap_95ci": [
+          -0.12195121951219512,
+          0.21951219512195122
+        ]
+      },
+      "full_binding_margin": {
+        "control": -0.34997528936804795,
+        "treated": -0.19598539282635943,
+        "delta": 0.1539898965416885,
+        "pair_bootstrap_95ci": [
+          -0.34966896452554846,
+          0.6581996672037169
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.04878048780487805,
+        "treated": -0.036585365853658534,
+        "delta": 0.012195121951219513,
+        "pair_bootstrap_95ci": [
+          -0.06097560975609756,
+          0.08536585365853659
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.07317073170731707,
+        "treated": -0.04878048780487805,
+        "delta": 0.024390243902439025,
+        "pair_bootstrap_95ci": [
+          -0.12195121951219512,
+          0.17073170731707318
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.16621065721279238,
+        "treated": -0.2882230456282453,
+        "delta": -0.12201238841545291,
+        "pair_bootstrap_95ci": [
+          -0.6772099003559205,
+          0.5034123320405071
+        ]
+      },
+      "context_binding_contribution": {
+        "control": -0.18376463215525557,
+        "treated": 0.09223765280188584,
+        "delta": 0.2760022849571414,
+        "pair_bootstrap_95ci": [
+          -0.2612494740544296,
+          0.8360961480838495
+        ]
+      },
+      "em": {
+        "control": -0.08536585365853659,
+        "treated": -0.07317073170731707,
+        "delta": 0.012195121951219513,
+        "pair_bootstrap_95ci": [
+          -0.04878048780487805,
+          0.08536585365853659
+        ]
+      },
+      "f1": {
+        "control": -0.06742793114744333,
+        "treated": -0.05267177695006571,
+        "delta": 0.01475615419737763,
+        "pair_bootstrap_95ci": [
+          -0.05419863258703564,
+          0.09272717562654159
+        ]
+      },
+      "generation_both_exact": {
+        "control": -0.024390243902439025,
+        "treated": -0.024390243902439025,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          -0.07317073170731707,
+          0.07317073170731707
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "language_sensitive/en/en": {
+      "full_accuracy": {
+        "control": -0.18292682926829268,
+        "treated": -0.21951219512195122,
+        "delta": -0.036585365853658534,
+        "pair_bootstrap_95ci": [
+          -0.12195121951219512,
+          0.036585365853658534
+        ]
+      },
+      "full_both_correct": {
+        "control": -0.36585365853658536,
+        "treated": -0.43902439024390244,
+        "delta": -0.07317073170731707,
+        "pair_bootstrap_95ci": [
+          -0.24390243902439024,
+          0.07317073170731707
+        ]
+      },
+      "full_binding_margin": {
+        "control": -0.952034758358467,
+        "treated": -1.2208954183066762,
+        "delta": -0.26886065994820946,
+        "pair_bootstrap_95ci": [
+          -0.9589711623947794,
+          0.4123734725684654
+        ]
+      },
+      "question_only_accuracy": {
+        "control": -0.06097560975609756,
+        "treated": -0.0975609756097561,
+        "delta": -0.036585365853658534,
+        "pair_bootstrap_95ci": [
+          -0.11006097560975582,
+          0.04878048780487805
+        ]
+      },
+      "question_only_both_correct": {
+        "control": -0.12195121951219512,
+        "treated": -0.1951219512195122,
+        "delta": -0.07317073170731707,
+        "pair_bootstrap_95ci": [
+          -0.1951219512195122,
+          0.04878048780487805
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.4663252772354498,
+        "treated": -0.7485615334859709,
+        "delta": -0.282236256250521,
+        "pair_bootstrap_95ci": [
+          -0.922328486384415,
+          0.38783443046779165
+        ]
+      },
+      "context_binding_contribution": {
+        "control": -0.4857094811230171,
+        "treated": -0.4723338848207055,
+        "delta": 0.013375596302311594,
+        "pair_bootstrap_95ci": [
+          -0.5487438700548032,
+          0.590319934269277
+        ]
+      },
+      "em": {
+        "control": -0.14634146341463414,
+        "treated": -0.14634146341463414,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          -0.06128048780487777,
+          0.06097560975609756
+        ]
+      },
+      "f1": {
+        "control": -0.1967889594862335,
+        "treated": -0.19275263150932395,
+        "delta": 0.00403632797690957,
+        "pair_bootstrap_95ci": [
+          -0.08427419753543032,
+          0.09101885238811347
+        ]
+      },
+      "generation_both_exact": {
+        "control": -0.0975609756097561,
+        "treated": -0.07317073170731707,
+        "delta": 0.024390243902439025,
+        "pair_bootstrap_95ci": [
+          -0.0975609756097561,
+          0.14634146341463414
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "language_invariant/de/de": {
+      "full_accuracy": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "full_binding_margin": {
+        "control": 0.1633570459153917,
+        "treated": 0.09351417753431532,
+        "delta": -0.0698428683810764,
+        "pair_bootstrap_95ci": [
+          -0.31658139361275567,
+          0.14656605058246183
+        ]
+      },
+      "question_only_accuracy": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_both_correct": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": 0.00440420044793023,
+        "treated": -0.03238352139790853,
+        "delta": -0.036787721845838756,
+        "pair_bootstrap_95ci": [
+          -0.17214649452103506,
+          0.08504803975423177
+        ]
+      },
+      "context_binding_contribution": {
+        "control": 0.15895284546746147,
+        "treated": 0.12589769893222386,
+        "delta": -0.03305514653523763,
+        "pair_bootstrap_95ci": [
+          -0.2472191274166107,
+          0.1351682874891493
+        ]
+      },
+      "em": {
+        "control": -0.1111111111111111,
+        "treated": -0.05555555555555555,
+        "delta": 0.05555555555555555,
+        "pair_bootstrap_95ci": [
+          -0.1111111111111111,
+          0.2222222222222222
+        ]
+      },
+      "f1": {
+        "control": -0.1111111111111111,
+        "treated": -0.01851851851851852,
+        "delta": 0.09259259259259259,
+        "pair_bootstrap_95ci": [
+          -0.03703703703703704,
+          0.25925925925925924
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "language_invariant/de/en": {
+      "full_accuracy": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "full_binding_margin": {
+        "control": 0.07306824790106879,
+        "treated": 0.06113563643561469,
+        "delta": -0.011932611465454102,
+        "pair_bootstrap_95ci": [
+          -0.1956896616352929,
+          0.16007308893733552
+        ]
+      },
+      "question_only_accuracy": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_both_correct": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.09907868173387316,
+        "treated": -0.0284574031829834,
+        "delta": 0.07062127855088976,
+        "pair_bootstrap_95ci": [
+          -0.07058391438590156,
+          0.22458023627599077
+        ]
+      },
+      "context_binding_contribution": {
+        "control": 0.17214692963494194,
+        "treated": 0.08959303961859809,
+        "delta": -0.08255389001634386,
+        "pair_bootstrap_95ci": [
+          -0.25995775792333814,
+          0.0671814819176991
+        ]
+      },
+      "em": {
+        "control": 0.05555555555555555,
+        "treated": 0.0,
+        "delta": -0.05555555555555555,
+        "pair_bootstrap_95ci": [
+          -0.16666666666666666,
+          0.0
+        ]
+      },
+      "f1": {
+        "control": 0.05555555555555555,
+        "treated": 0.0,
+        "delta": -0.05555555555555555,
+        "pair_bootstrap_95ci": [
+          -0.16666666666666666,
+          0.0
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "language_invariant/en/de": {
+      "full_accuracy": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "full_binding_margin": {
+        "control": 0.10555815696716309,
+        "treated": 0.08521379364861383,
+        "delta": -0.02034436331854926,
+        "pair_bootstrap_95ci": [
+          -0.23953128721978928,
+          0.21820642352104183
+        ]
+      },
+      "question_only_accuracy": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_both_correct": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": 0.053255054685804576,
+        "treated": -0.052195734447903104,
+        "delta": -0.10545078913370769,
+        "pair_bootstrap_95ci": [
+          -0.21206899483998615,
+          0.003046781486935051
+        ]
+      },
+      "context_binding_contribution": {
+        "control": 0.05230310228135851,
+        "treated": 0.13740952809651694,
+        "delta": 0.08510642581515843,
+        "pair_bootstrap_95ci": [
+          -0.09011869960361056,
+          0.2895981894599067
+        ]
+      },
+      "em": {
+        "control": 0.0,
+        "treated": -0.05555555555555555,
+        "delta": -0.05555555555555555,
+        "pair_bootstrap_95ci": [
+          -0.16666666666666666,
+          0.0
+        ]
+      },
+      "f1": {
+        "control": 0.0,
+        "treated": -0.03968253968253968,
+        "delta": -0.03968253968253968,
+        "pair_bootstrap_95ci": [
+          -0.16666666666666666,
+          0.04761904761904764
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.0,
+        "treated": -0.1111111111111111,
+        "delta": -0.1111111111111111,
+        "pair_bootstrap_95ci": [
+          -0.3333333333333333,
+          0.0
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "language_invariant/en/en": {
+      "full_accuracy": {
+        "control": 0.0,
+        "treated": 0.05555555555555555,
+        "delta": 0.05555555555555555,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.16666666666666666
+        ]
+      },
+      "full_both_correct": {
+        "control": 0.0,
+        "treated": 0.1111111111111111,
+        "delta": 0.1111111111111111,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.3333333333333333
+        ]
+      },
+      "full_binding_margin": {
+        "control": -0.048792521158854164,
+        "treated": -0.17359444830152723,
+        "delta": -0.12480192714267307,
+        "pair_bootstrap_95ci": [
+          -0.28488003545337254,
+          0.02127298977639939
+        ]
+      },
+      "question_only_accuracy": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_both_correct": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "question_only_binding_margin": {
+        "control": -0.02939250734117296,
+        "treated": -0.1343201001485189,
+        "delta": -0.10492759280734593,
+        "pair_bootstrap_95ci": [
+          -0.20046940644582112,
+          -0.013590195443895144
+        ]
+      },
+      "context_binding_contribution": {
+        "control": -0.019400013817681208,
+        "treated": -0.03927434815300836,
+        "delta": -0.01987433433532715,
+        "pair_bootstrap_95ci": [
+          -0.21144884559843274,
+          0.1471823387675814
+        ]
+      },
+      "em": {
+        "control": 0.05555555555555555,
+        "treated": 0.05555555555555555,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          -0.16666666666666666,
+          0.16666666666666666
+        ]
+      },
+      "f1": {
+        "control": -0.018518518518518514,
+        "treated": 0.028703703703703714,
+        "delta": 0.047222222222222235,
+        "pair_bootstrap_95ci": [
+          -0.037037037037037035,
+          0.1398148148148148
+        ]
+      },
+      "generation_both_exact": {
+        "control": 0.0,
+        "treated": 0.1111111111111111,
+        "delta": 0.1111111111111111,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.3333333333333333
+        ]
+      },
+      "empty_generation": {
+        "control": 0.0,
+        "treated": 0.0,
+        "delta": 0.0,
+        "pair_bootstrap_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "limits": "Exploratory uncorrected CIs; paragraph-pair resampling, one training seed. Fact retrieval, not logical reasoning. Five demonstrations differ with answer language; English frame; no-context target retains demonstration contexts. Raw LL question binding cancels additive answer priors but not question-type guessing."
+}

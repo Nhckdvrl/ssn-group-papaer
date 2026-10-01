@@ -1,0 +1,1517 @@
+{
+  "models": {
+    "macaroni/noswitch/42": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 54.070152217074785,
+          "right_accuracy_pct": 51.15817339510258,
+          "both_correct_pct": 33.68630046326936,
+          "both_wrong_pct": 28.457974851091993,
+          "left_only_pct": 20.383851753805427,
+          "right_only_pct": 17.471872931833225,
+          "disagreement_pct": 37.85572468563865,
+          "oracle_any_correct_pct": 71.54202514890801,
+          "correctness_covariance": 0.0602499823706234
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 54.00397088021178,
+          "right_accuracy_pct": 54.86432825943084,
+          "both_correct_pct": 36.929185969556585,
+          "both_wrong_pct": 28.06088682991397,
+          "left_only_pct": 17.074784910655193,
+          "right_only_pct": 17.935142289874257,
+          "disagreement_pct": 35.009927200529454,
+          "oracle_any_correct_pct": 71.93911317008603,
+          "correctness_covariance": 0.0730027011270975
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 50.36399735274652,
+          "right_accuracy_pct": 47.71674387822634,
+          "both_correct_pct": 37.590999338186634,
+          "both_wrong_pct": 39.510258107213765,
+          "left_only_pct": 12.772998014559894,
+          "right_only_pct": 10.12574454003971,
+          "disagreement_pct": 22.8987425545996,
+          "oracle_any_correct_pct": 60.48974189278623,
+          "correctness_covariance": 0.13558939714539878
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 51.88616810059563,
+          "right_accuracy_pct": 48.24619457313038,
+          "both_correct_pct": 30.443414956982128,
+          "both_wrong_pct": 30.311052283256124,
+          "left_only_pct": 21.4427531436135,
+          "right_only_pct": 17.802779616148246,
+          "disagreement_pct": 39.245532759761744,
+          "oracle_any_correct_pct": 69.68894771674388,
+          "correctness_covariance": 0.05410313338627254
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "e7cb91cb1939f42bf09d89de826a9ead23b37f91",
+          "branch": "noswitch",
+          "condition": "noswitch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/e7cb91cb1939f42bf09d89de826a9ead23b37f91"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s42_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/noswitch/43": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 53.60688285903375,
+          "right_accuracy_pct": 50.76108537392455,
+          "both_correct_pct": 33.42157511581733,
+          "both_wrong_pct": 29.053606882859036,
+          "left_only_pct": 20.185307743216413,
+          "right_only_pct": 17.339510258107214,
+          "disagreement_pct": 37.52481800132363,
+          "oracle_any_correct_pct": 70.94639311714097,
+          "correctness_covariance": 0.06210139541443488
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 54.66578424884183,
+          "right_accuracy_pct": 55.989410986101916,
+          "both_correct_pct": 37.65718067504963,
+          "both_wrong_pct": 27.00198544010589,
+          "left_only_pct": 17.008603573792193,
+          "right_only_pct": 18.33223031105228,
+          "disagreement_pct": 35.34083388484447,
+          "oracle_any_correct_pct": 72.9980145598941,
+          "correctness_covariance": 0.07050130063189813
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 51.091992058239576,
+          "right_accuracy_pct": 47.385837193911314,
+          "both_correct_pct": 37.45863666446062,
+          "both_wrong_pct": 38.98080741230972,
+          "left_only_pct": 13.633355393778954,
+          "right_only_pct": 9.927200529450694,
+          "disagreement_pct": 23.560555923229646,
+          "oracle_any_correct_pct": 61.01919258769028,
+          "correctness_covariance": 0.13248268488617115
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 52.614162806088686,
+          "right_accuracy_pct": 49.23891462607545,
+          "both_correct_pct": 31.30377233620119,
+          "both_wrong_pct": 29.45069490403706,
+          "left_only_pct": 21.31039046988749,
+          "right_only_pct": 17.935142289874257,
+          "disagreement_pct": 39.245532759761744,
+          "oracle_any_correct_pct": 70.54930509596294,
+          "correctness_covariance": 0.05397129630886843
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "37b9cc116861a936a24cd3c04ec8661edb4f5ec9",
+          "branch": "noswitch-s43",
+          "condition": "noswitch",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/37b9cc116861a936a24cd3c04ec8661edb4f5ec9"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s43_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/noswitch/44": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 55.12905360688286,
+          "right_accuracy_pct": 50.43017868960953,
+          "both_correct_pct": 33.55393778954335,
+          "both_wrong_pct": 27.994705493050958,
+          "left_only_pct": 21.575115817339512,
+          "right_only_pct": 16.87624090006618,
+          "disagreement_pct": 38.451356717405694,
+          "oracle_any_correct_pct": 72.00529450694904,
+          "correctness_covariance": 0.057522575457016945
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 55.45996029119789,
+          "right_accuracy_pct": 57.313037723362015,
+          "both_correct_pct": 39.04698874917273,
+          "both_wrong_pct": 26.27399073461284,
+          "left_only_pct": 16.412971542025147,
+          "right_only_pct": 18.266048974189278,
+          "disagreement_pct": 34.67902051621443,
+          "oracle_any_correct_pct": 73.72600926538716,
+          "correctness_covariance": 0.07261200786116895
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 51.22435473196558,
+          "right_accuracy_pct": 47.71674387822634,
+          "both_correct_pct": 37.45863666446062,
+          "both_wrong_pct": 38.5175380542687,
+          "left_only_pct": 13.765718067504965,
+          "right_only_pct": 10.258107213765719,
+          "disagreement_pct": 24.023825281270682,
+          "oracle_any_correct_pct": 61.4824619457313,
+          "correctness_covariance": 0.13016042513734488
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 52.945069490403704,
+          "right_accuracy_pct": 49.23891462607545,
+          "both_correct_pct": 32.031767041694245,
+          "both_wrong_pct": 29.84778292521509,
+          "left_only_pct": 20.913302448709466,
+          "right_only_pct": 17.207147584381204,
+          "disagreement_pct": 38.12045003309067,
+          "oracle_any_correct_pct": 70.1522170747849,
+          "correctness_covariance": 0.0596218947659804
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "aca1a7dd6f886bd55a30e6ed6e79d131e70e6e38",
+          "branch": "noswitch-s44",
+          "condition": "noswitch",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/aca1a7dd6f886bd55a30e6ed6e79d131e70e6e38"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__noswitch__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_noswitch_s44_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/switch/42": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 54.930509596293845,
+          "right_accuracy_pct": 52.614162806088686,
+          "both_correct_pct": 35.671740569159496,
+          "both_wrong_pct": 28.12706816677697,
+          "left_only_pct": 19.25876902713435,
+          "right_only_pct": 16.942422236929186,
+          "disagreement_pct": 36.20119126406353,
+          "oracle_any_correct_pct": 71.87293183322303,
+          "correctness_covariance": 0.06770512819951291
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 54.13633355393779,
+          "right_accuracy_pct": 54.59960291197882,
+          "both_correct_pct": 37.193911317008606,
+          "both_wrong_pct": 28.457974851091993,
+          "left_only_pct": 16.942422236929186,
+          "right_only_pct": 17.405691594970218,
+          "disagreement_pct": 34.348113831899404,
+          "oracle_any_correct_pct": 71.54202514890801,
+          "correctness_covariance": 0.07635688165454224
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 51.753805426869626,
+          "right_accuracy_pct": 47.385837193911314,
+          "both_correct_pct": 38.5175380542687,
+          "both_wrong_pct": 39.37789543348776,
+          "left_only_pct": 13.236267372600926,
+          "right_only_pct": 8.868299139642621,
+          "disagreement_pct": 22.104566512243547,
+          "oracle_any_correct_pct": 60.62210456651225,
+          "correctness_covariance": 0.13993564073038614
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 53.209794837855725,
+          "right_accuracy_pct": 51.3567174056916,
+          "both_correct_pct": 33.75248180013236,
+          "both_wrong_pct": 29.185969556585047,
+          "left_only_pct": 19.457313037723363,
+          "right_only_pct": 17.604235605559232,
+          "disagreement_pct": 37.06154864328259,
+          "oracle_any_correct_pct": 70.81403044341495,
+          "correctness_covariance": 0.06425677833106519
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b",
+          "branch": "switch",
+          "condition": "switch",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/138d43b2b33e6a98a720ccb7d3cd7f6f45b65b3b"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s42_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/switch/43": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 55.65850430178689,
+          "right_accuracy_pct": 50.628722700198544,
+          "both_correct_pct": 34.2157511581734,
+          "both_wrong_pct": 27.928524156187954,
+          "left_only_pct": 21.4427531436135,
+          "right_only_pct": 16.412971542025147,
+          "disagreement_pct": 37.85572468563865,
+          "oracle_any_correct_pct": 72.07147584381205,
+          "correctness_covariance": 0.060365613561436327
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 54.930509596293845,
+          "right_accuracy_pct": 52.68034414295168,
+          "both_correct_pct": 37.590999338186634,
+          "both_wrong_pct": 29.9801455989411,
+          "left_only_pct": 17.339510258107214,
+          "right_only_pct": 15.089344804765057,
+          "disagreement_pct": 32.428855062872266,
+          "oracle_any_correct_pct": 70.01985440105891,
+          "correctness_covariance": 0.08653417843381933
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 50.76108537392455,
+          "right_accuracy_pct": 48.5771012574454,
+          "both_correct_pct": 38.05426869622766,
+          "both_wrong_pct": 38.71608206485771,
+          "left_only_pct": 12.706816677696889,
+          "right_only_pct": 10.522832561217736,
+          "disagreement_pct": 23.229649238914625,
+          "oracle_any_correct_pct": 61.283917935142284,
+          "correctness_covariance": 0.13396004854758026
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 52.945069490403704,
+          "right_accuracy_pct": 50.0992720052945,
+          "both_correct_pct": 31.30377233620119,
+          "both_wrong_pct": 28.25943084050298,
+          "left_only_pct": 21.641297154202515,
+          "right_only_pct": 18.795499669093317,
+          "disagreement_pct": 40.43679682329583,
+          "oracle_any_correct_pct": 71.74056915949703,
+          "correctness_covariance": 0.047786779588116446
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "d3b39f5cc653a78a067cae76f0bba7c526231415",
+          "branch": "switch-s43",
+          "condition": "switch",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/d3b39f5cc653a78a067cae76f0bba7c526231415"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s43_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/switch/44": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 53.87160820648577,
+          "right_accuracy_pct": 52.08471211118465,
+          "both_correct_pct": 34.811383189940436,
+          "both_wrong_pct": 28.85506287227002,
+          "left_only_pct": 19.060225016545335,
+          "right_only_pct": 17.27332892124421,
+          "disagreement_pct": 36.333553937789546,
+          "oracle_any_correct_pct": 71.14493712772997,
+          "correctness_covariance": 0.06752511145927004
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 53.93778954334878,
+          "right_accuracy_pct": 52.746525479814686,
+          "both_correct_pct": 37.72336201191264,
+          "both_wrong_pct": 31.039046988749174,
+          "left_only_pct": 16.214427531436133,
+          "right_only_pct": 15.023163467902052,
+          "disagreement_pct": 31.237590999338188,
+          "oracle_any_correct_pct": 68.96095301125082,
+          "correctness_covariance": 0.09273052107181357
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 50.49636002647253,
+          "right_accuracy_pct": 48.18001323626737,
+          "both_correct_pct": 37.52481800132363,
+          "both_wrong_pct": 38.84844473858372,
+          "left_only_pct": 12.971542025148908,
+          "right_only_pct": 10.655195234943745,
+          "disagreement_pct": 23.626737260092654,
+          "oracle_any_correct_pct": 61.15155526141628,
+          "correctness_covariance": 0.13195665056735936
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 52.28325612177366,
+          "right_accuracy_pct": 52.01853077432163,
+          "both_correct_pct": 32.693580410324294,
+          "both_wrong_pct": 28.391793514228986,
+          "left_only_pct": 19.589675711449374,
+          "right_only_pct": 19.324950363997353,
+          "disagreement_pct": 38.914626075446726,
+          "oracle_any_correct_pct": 71.608206485771,
+          "correctness_covariance": 0.054965987348020606
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "f8ddd29759fa2829783bd45bc91443b4295547a1",
+          "branch": "switch-s44",
+          "condition": "switch",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/f8ddd29759fa2829783bd45bc91443b4295547a1"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__switch__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_switch_s44_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/par/42": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 54.20251489080079,
+          "right_accuracy_pct": 51.55526141628061,
+          "both_correct_pct": 34.2819324950364,
+          "both_wrong_pct": 28.524156187954997,
+          "left_only_pct": 19.920582395764395,
+          "right_only_pct": 17.27332892124421,
+          "disagreement_pct": 37.193911317008606,
+          "oracle_any_correct_pct": 71.475843812045,
+          "correctness_covariance": 0.06337684248885628
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 54.070152217074785,
+          "right_accuracy_pct": 54.40105890138981,
+          "both_correct_pct": 37.32627399073461,
+          "both_wrong_pct": 28.85506287227002,
+          "left_only_pct": 16.743878226340172,
+          "right_only_pct": 17.074784910655193,
+          "disagreement_pct": 33.81866313699537,
+          "oracle_any_correct_pct": 71.14493712772997,
+          "correctness_covariance": 0.07911538635052634
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 51.4228987425546,
+          "right_accuracy_pct": 47.71674387822634,
+          "both_correct_pct": 38.12045003309067,
+          "both_wrong_pct": 38.98080741230972,
+          "left_only_pct": 13.302448709463931,
+          "right_only_pct": 9.596293845135671,
+          "disagreement_pct": 22.8987425545996,
+          "oracle_any_correct_pct": 61.01919258769028,
+          "correctness_covariance": 0.13583117145346216
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 53.73924553275976,
+          "right_accuracy_pct": 50.43017868960953,
+          "both_correct_pct": 31.700860357379216,
+          "both_wrong_pct": 27.53143613500993,
+          "left_only_pct": 22.038385175380544,
+          "right_only_pct": 18.72931833223031,
+          "disagreement_pct": 40.767703507610854,
+          "oracle_any_correct_pct": 72.46856386499007,
+          "correctness_covariance": 0.046000628087604634
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "39008ea9937028a1ea42ef0287f7679b468df2a9",
+          "branch": "par",
+          "condition": "par",
+          "seed": 42,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/39008ea9937028a1ea42ef0287f7679b468df2a9"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__par__s42.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_par_s42_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/par/43": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 55.724685638649895,
+          "right_accuracy_pct": 52.08471211118465,
+          "both_correct_pct": 35.671740569159496,
+          "both_wrong_pct": 27.862342819324947,
+          "left_only_pct": 20.052945069490406,
+          "right_only_pct": 16.412971542025147,
+          "disagreement_pct": 36.46591661151555,
+          "oracle_any_correct_pct": 72.13765718067505,
+          "correctness_covariance": 0.06647698479406045
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 54.79814692256784,
+          "right_accuracy_pct": 53.143613500992714,
+          "both_correct_pct": 37.72336201191264,
+          "both_wrong_pct": 29.781601588352085,
+          "left_only_pct": 17.074784910655193,
+          "right_only_pct": 15.42025148908008,
+          "disagreement_pct": 32.49503639973527,
+          "oracle_any_correct_pct": 70.21839841164793,
+          "correctness_covariance": 0.0860164660567706
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 51.22435473196558,
+          "right_accuracy_pct": 47.78292521508934,
+          "both_correct_pct": 38.25281270681668,
+          "both_wrong_pct": 39.245532759761744,
+          "left_only_pct": 12.971542025148908,
+          "right_only_pct": 9.530112508272667,
+          "disagreement_pct": 22.501654533421576,
+          "oracle_any_correct_pct": 60.754467240238256,
+          "correctness_covariance": 0.13776317593329487
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 52.746525479814686,
+          "right_accuracy_pct": 50.95962938451357,
+          "both_correct_pct": 32.36267372600927,
+          "both_wrong_pct": 28.656518861681008,
+          "left_only_pct": 20.383851753805427,
+          "right_only_pct": 18.596955658504303,
+          "disagreement_pct": 38.98080741230972,
+          "oracle_any_correct_pct": 71.34348113831899,
+          "correctness_covariance": 0.05483239828287684
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "74e82d804864ec13b05cef26070108ad86624d97",
+          "branch": "par-s43",
+          "condition": "par",
+          "seed": 43,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/74e82d804864ec13b05cef26070108ad86624d97"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__par__s43.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_par_s43_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "macaroni/par/44": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 55.12905360688286,
+          "right_accuracy_pct": 52.945069490403704,
+          "both_correct_pct": 34.94374586366645,
+          "both_wrong_pct": 26.86962276637988,
+          "left_only_pct": 20.185307743216413,
+          "right_only_pct": 18.00132362673726,
+          "disagreement_pct": 38.18663136995367,
+          "oracle_any_correct_pct": 73.13037723362011,
+          "correctness_covariance": 0.05755630122100408
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 53.408338848444735,
+          "right_accuracy_pct": 55.06287227001986,
+          "both_correct_pct": 37.72336201191264,
+          "both_wrong_pct": 29.252150893448047,
+          "left_only_pct": 15.684976836532098,
+          "right_only_pct": 17.339510258107214,
+          "disagreement_pct": 33.02448709463931,
+          "oracle_any_correct_pct": 70.74784910655195,
+          "correctness_covariance": 0.08315196610254122
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 51.22435473196558,
+          "right_accuracy_pct": 48.5771012574454,
+          "both_correct_pct": 38.451356717405694,
+          "both_wrong_pct": 38.649900727994705,
+          "left_only_pct": 12.772998014559894,
+          "right_only_pct": 10.12574454003971,
+          "disagreement_pct": 22.8987425545996,
+          "oracle_any_correct_pct": 61.350099272005295,
+          "correctness_covariance": 0.1356805005078575
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 52.48180013236268,
+          "right_accuracy_pct": 52.68034414295168,
+          "both_correct_pct": 33.02448709463931,
+          "both_wrong_pct": 27.862342819324947,
+          "left_only_pct": 19.457313037723363,
+          "right_only_pct": 19.655857048312374,
+          "disagreement_pct": 39.11317008603574,
+          "oracle_any_correct_pct": 72.13765718067505,
+          "correctness_covariance": 0.053768941724945785
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "drooryck/multilingual-macaroni-models",
+          "revision": "6c4ab4a4e3ee24d265ef97a8bbfcce6c5a9078b1",
+          "branch": "par-s44",
+          "condition": "par",
+          "seed": 44,
+          "path": "/home/xiang/.cache/huggingface/hub/models--drooryck--multilingual-macaroni-models/snapshots/6c4ab4a4e3ee24d265ef97a8bbfcce6c5a9078b1"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/macaroni__par__s44.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 16,
+          "compute_dtype": "fp32",
+          "weight_dtype": "fp32",
+          "languages": [
+            "en",
+            "zh"
+          ],
+          "legacy_pickle": false,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p3/macaroni_par_s44_xstory.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "semantic_items_sha256": "1eb3fc5eb0dff4528f2a91ff4413d4c2d481f59610f80a59c752c568e4034775",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+      }
+    },
+    "jgp/no": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 54.66578424884183,
+          "right_accuracy_pct": 54.20251489080079,
+          "both_correct_pct": 33.75248180013236,
+          "both_wrong_pct": 24.884182660489742,
+          "left_only_pct": 20.913302448709466,
+          "right_only_pct": 20.45003309066843,
+          "disagreement_pct": 41.36333553937789,
+          "oracle_any_correct_pct": 75.11581733951026,
+          "correctness_covariance": 0.04122251952480832
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 52.01853077432163,
+          "right_accuracy_pct": 53.67306419589676,
+          "both_correct_pct": 35.07610853739245,
+          "both_wrong_pct": 29.384513567174057,
+          "left_only_pct": 16.942422236929186,
+          "right_only_pct": 18.596955658504303,
+          "disagreement_pct": 35.53937789543349,
+          "oracle_any_correct_pct": 70.61548643282595,
+          "correctness_covariance": 0.07156169121128492
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 49.106551952349434,
+          "right_accuracy_pct": 48.510919920582396,
+          "both_correct_pct": 35.8041032428855,
+          "both_wrong_pct": 38.18663136995367,
+          "left_only_pct": 13.302448709463931,
+          "right_only_pct": 12.706816677696889,
+          "disagreement_pct": 26.009265387160816,
+          "oracle_any_correct_pct": 61.81336863004633,
+          "correctness_covariance": 0.11982063149522079
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 55.85704831237591,
+          "right_accuracy_pct": 50.827266710787555,
+          "both_correct_pct": 30.70814030443415,
+          "both_wrong_pct": 24.023825281270682,
+          "left_only_pct": 25.148908007941763,
+          "right_only_pct": 20.11912640635341,
+          "disagreement_pct": 45.268034414295165,
+          "oracle_any_correct_pct": 75.97617471872931,
+          "correctness_covariance": 0.02317529381929384
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-No-Parallel",
+          "revision": "9887348d52ea744507d8defce0f8996265c24d13",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-No-Parallel/snapshots/9887348d52ea744507d8defce0f8996265c24d13"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-No-Parallel__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_no_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    "jgp/multi": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 57.44540039708802,
+          "right_accuracy_pct": 54.070152217074785,
+          "both_correct_pct": 36.20119126406353,
+          "both_wrong_pct": 24.685638649900728,
+          "left_only_pct": 21.244209133024487,
+          "right_only_pct": 17.86896095301125,
+          "disagreement_pct": 39.11317008603574,
+          "oracle_any_correct_pct": 75.31436135009926,
+          "correctness_covariance": 0.05140375827649957
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 55.26141628060886,
+          "right_accuracy_pct": 56.12177365982794,
+          "both_correct_pct": 37.789543348775645,
+          "both_wrong_pct": 26.406353408338852,
+          "left_only_pct": 17.471872931833225,
+          "right_only_pct": 18.33223031105228,
+          "disagreement_pct": 35.8041032428855,
+          "oracle_any_correct_pct": 73.59364659166116,
+          "correctness_covariance": 0.06775856382557033
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 50.69490403706155,
+          "right_accuracy_pct": 47.91528788881536,
+          "both_correct_pct": 36.26737260092654,
+          "both_wrong_pct": 37.65718067504963,
+          "left_only_pct": 14.42753143613501,
+          "right_only_pct": 11.647915287888816,
+          "disagreement_pct": 26.075446724023827,
+          "oracle_any_correct_pct": 62.34281932495036,
+          "correctness_covariance": 0.1197676338660982
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 57.114493712773,
+          "right_accuracy_pct": 50.43017868960953,
+          "both_correct_pct": 30.972865651886167,
+          "both_wrong_pct": 23.42819324950364,
+          "left_only_pct": 26.14162806088683,
+          "right_only_pct": 19.457313037723363,
+          "disagreement_pct": 45.59894109861019,
+          "oracle_any_correct_pct": 76.57180675049636,
+          "correctness_covariance": 0.021699244148689456
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Multilingual",
+          "revision": "b043fcca41f4dffbfc011b53c02262040577f6f8",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Multilingual/snapshots/b043fcca41f4dffbfc011b53c02262040577f6f8"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Multilingual__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_multi_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    "jgp/nonadj": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 56.386499007279944,
+          "right_accuracy_pct": 53.54070152217075,
+          "both_correct_pct": 35.7379219060225,
+          "both_wrong_pct": 25.810721376571806,
+          "left_only_pct": 20.648577101257445,
+          "right_only_pct": 17.802779616148246,
+          "disagreement_pct": 38.451356717405694,
+          "oracle_any_correct_pct": 74.1892786234282,
+          "correctness_covariance": 0.05548194773732973
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 55.19523494374587,
+          "right_accuracy_pct": 54.86432825943084,
+          "both_correct_pct": 36.00264725347452,
+          "both_wrong_pct": 25.943084050297816,
+          "left_only_pct": 19.192587690271342,
+          "right_only_pct": 18.86168100595632,
+          "disagreement_pct": 38.05426869622766,
+          "oracle_any_correct_pct": 74.05691594970219,
+          "correctness_covariance": 0.0572015237037371
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 49.90072799470549,
+          "right_accuracy_pct": 49.30509596293845,
+          "both_correct_pct": 36.99536730641959,
+          "both_wrong_pct": 37.789543348775645,
+          "left_only_pct": 12.905360688285903,
+          "right_only_pct": 12.309728656518862,
+          "disagreement_pct": 25.215089344804763,
+          "oracle_any_correct_pct": 62.210456651224355,
+          "correctness_covariance": 0.12391765482425157
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 56.32031767041694,
+          "right_accuracy_pct": 52.945069490403704,
+          "both_correct_pct": 33.62011912640636,
+          "both_wrong_pct": 24.354731965585703,
+          "left_only_pct": 22.70019854401059,
+          "right_only_pct": 19.324950363997353,
+          "disagreement_pct": 42.02514890800794,
+          "oracle_any_correct_pct": 75.64526803441429,
+          "correctness_covariance": 0.03801287798587988
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+          "revision": "b36e67227578a3ae6f6439c1b241536dc0497461",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/b36e67227578a3ae6f6439c1b241536dc0497461"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    },
+    "jgp/distributed": {
+      "values": {
+        "char_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 56.78358702845797,
+          "right_accuracy_pct": 54.731965585704835,
+          "both_correct_pct": 37.127729980145595,
+          "both_wrong_pct": 25.61217736598279,
+          "left_only_pct": 19.655857048312374,
+          "right_only_pct": 17.604235605559232,
+          "disagreement_pct": 37.26009265387161,
+          "oracle_any_correct_pct": 74.38782263401721,
+          "correctness_covariance": 0.06048956669401223
+        },
+        "prior_adjusted": {
+          "n": 1511,
+          "left_accuracy_pct": 57.048312375909994,
+          "right_accuracy_pct": 55.393778954334884,
+          "both_correct_pct": 38.451356717405694,
+          "both_wrong_pct": 26.009265387160816,
+          "left_only_pct": 18.596955658504303,
+          "right_only_pct": 16.942422236929186,
+          "disagreement_pct": 35.53937789543349,
+          "oracle_any_correct_pct": 73.99073461283918,
+          "correctness_covariance": 0.06850140662715642
+        },
+        "raw": {
+          "n": 1511,
+          "left_accuracy_pct": 51.952349437458636,
+          "right_accuracy_pct": 50.69490403706155,
+          "both_correct_pct": 38.914626075446726,
+          "both_wrong_pct": 36.26737260092654,
+          "left_only_pct": 13.037723362011914,
+          "right_only_pct": 11.780277961614823,
+          "disagreement_pct": 24.81800132362674,
+          "oracle_any_correct_pct": 63.73262739907346,
+          "correctness_covariance": 0.12577432383128184
+        },
+        "token_norm": {
+          "n": 1511,
+          "left_accuracy_pct": 57.44540039708802,
+          "right_accuracy_pct": 53.54070152217075,
+          "both_correct_pct": 34.612839179351425,
+          "both_wrong_pct": 23.626737260092654,
+          "left_only_pct": 22.8325612177366,
+          "right_only_pct": 18.927862342819324,
+          "disagreement_pct": 41.76042356055593,
+          "oracle_any_correct_pct": 76.37326273990735,
+          "correctness_covariance": 0.03856168814530636
+        }
+      },
+      "metadata": {
+        "model": {
+          "repo": "nusnlp/JGP-Parallel-Distributed",
+          "revision": "bd0220756d543eb5f8c09ac3be516ca7358b4d8d",
+          "subfolder": null,
+          "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/bd0220756d543eb5f8c09ac3be516ca7358b4d8d"
+        },
+        "args": {
+          "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed__160000.json",
+          "task": "xstorycloze",
+          "limit": 1511,
+          "shots": 0,
+          "batch": 8,
+          "compute_dtype": "fp32",
+          "legacy_pickle": true,
+          "readout": "joint",
+          "context_control": "original",
+          "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_xstory_fp32_160k.jsonl"
+        },
+        "data": [
+          "juletxara/xstory_cloze",
+          "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+        ],
+        "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+        "expected_items": 6044,
+        "excluded_reannotated_ids": [],
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "device": "NVIDIA A100 80GB PCIe"
+      }
+    }
+  },
+  "contrasts": {
+    "macaroni/switch/42 minus macaroni/noswitch/42": {
+      "char_norm": {
+        "left_accuracy_pct": 0.8603573792190602,
+        "right_accuracy_pct": 1.4559894109861062,
+        "both_correct_pct": 1.9854401058901345,
+        "both_wrong_pct": -0.3309066843150248,
+        "left_only_pct": -1.125082726671078,
+        "right_only_pct": -0.529450694904039,
+        "disagreement_pct": -1.6545334215751168,
+        "oracle_any_correct_pct": 0.3309066843150248,
+        "correctness_covariance": 0.007455145828889509
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": 0.13236267372600707,
+        "right_accuracy_pct": -0.26472534745202125,
+        "both_correct_pct": 0.26472534745202125,
+        "both_wrong_pct": 0.3970880211780248,
+        "left_only_pct": -0.13236267372600707,
+        "right_only_pct": -0.529450694904039,
+        "disagreement_pct": -0.6618133686300496,
+        "oracle_any_correct_pct": -0.3970880211780212,
+        "correctness_covariance": 0.003354180527444739
+      },
+      "raw": {
+        "left_accuracy_pct": 1.3898080741231027,
+        "right_accuracy_pct": -0.3309066843150248,
+        "both_correct_pct": 0.9265387160820637,
+        "both_wrong_pct": -0.13236267372600707,
+        "left_only_pct": 0.46326935804103186,
+        "right_only_pct": -1.2574454003970885,
+        "disagreement_pct": -0.7941760423560531,
+        "oracle_any_correct_pct": 0.13236267372602128,
+        "correctness_covariance": 0.004346243584987364
+      },
+      "token_norm": {
+        "left_accuracy_pct": 1.323626737260092,
+        "right_accuracy_pct": 3.110522832561216,
+        "both_correct_pct": 3.30906684315023,
+        "both_wrong_pct": -1.125082726671078,
+        "left_only_pct": -1.985440105890138,
+        "right_only_pct": -0.19854401058901416,
+        "disagreement_pct": -2.1839841164791522,
+        "oracle_any_correct_pct": 1.1250827266710672,
+        "correctness_covariance": 0.01015364494479265
+      }
+    },
+    "macaroni/switch/43 minus macaroni/noswitch/43": {
+      "char_norm": {
+        "left_accuracy_pct": 2.051621442753138,
+        "right_accuracy_pct": -0.13236267372600707,
+        "both_correct_pct": 0.7941760423560638,
+        "both_wrong_pct": -1.1250827266710814,
+        "left_only_pct": 1.2574454003970885,
+        "right_only_pct": -0.9265387160820673,
+        "disagreement_pct": 0.3309066843150177,
+        "oracle_any_correct_pct": 1.1250827266710814,
+        "correctness_covariance": -0.0017357818529985525
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": 0.26472534745201415,
+        "right_accuracy_pct": -3.3090668431502337,
+        "both_correct_pct": -0.06618133686299643,
+        "both_wrong_pct": 2.978160158835209,
+        "left_only_pct": 0.33090668431502124,
+        "right_only_pct": -3.242885506287225,
+        "disagreement_pct": -2.9119788219722054,
+        "oracle_any_correct_pct": -2.9781601588351947,
+        "correctness_covariance": 0.016032877801921197
+      },
+      "raw": {
+        "left_accuracy_pct": -0.3309066843150248,
+        "right_accuracy_pct": 1.191264063534085,
+        "both_correct_pct": 0.5956320317670389,
+        "both_wrong_pct": -0.26472534745201415,
+        "left_only_pct": -0.9265387160820655,
+        "right_only_pct": 0.5956320317670425,
+        "disagreement_pct": -0.33090668431502124,
+        "oracle_any_correct_pct": 0.26472534745200704,
+        "correctness_covariance": 0.0014773636614091035
+      },
+      "token_norm": {
+        "left_accuracy_pct": 0.3309066843150177,
+        "right_accuracy_pct": 0.8603573792190531,
+        "both_correct_pct": 0.0,
+        "both_wrong_pct": -1.1912640635340814,
+        "left_only_pct": 0.3309066843150248,
+        "right_only_pct": 0.8603573792190602,
+        "disagreement_pct": 1.191264063534085,
+        "oracle_any_correct_pct": 1.191264063534092,
+        "correctness_covariance": -0.006184516720751987
+      }
+    },
+    "macaroni/switch/44 minus macaroni/noswitch/44": {
+      "char_norm": {
+        "left_accuracy_pct": -1.2574454003970956,
+        "right_accuracy_pct": 1.654533421575124,
+        "both_correct_pct": 1.2574454003970885,
+        "both_wrong_pct": 0.8603573792190637,
+        "left_only_pct": -2.514890800794177,
+        "right_only_pct": 0.3970880211780319,
+        "disagreement_pct": -2.1178027796161487,
+        "oracle_any_correct_pct": -0.8603573792190673,
+        "correctness_covariance": 0.010002536002253093
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": -1.5221707478491098,
+        "right_accuracy_pct": -4.566512243547329,
+        "both_correct_pct": -1.323626737260092,
+        "both_wrong_pct": 4.765056254136333,
+        "left_only_pct": -0.19854401058901416,
+        "right_only_pct": -3.2428855062872266,
+        "disagreement_pct": -3.4414295168762408,
+        "oracle_any_correct_pct": -4.76505625413634,
+        "correctness_covariance": 0.020118513210644617
+      },
+      "raw": {
+        "left_accuracy_pct": -0.7279947054930531,
+        "right_accuracy_pct": 0.46326935804103186,
+        "both_correct_pct": 0.06618133686301064,
+        "both_wrong_pct": 0.3309066843150248,
+        "left_only_pct": -0.7941760423560567,
+        "right_only_pct": 0.39708802117802655,
+        "disagreement_pct": -0.3970880211780283,
+        "oracle_any_correct_pct": -0.3309066843150248,
+        "correctness_covariance": 0.0017962254300144809
+      },
+      "token_norm": {
+        "left_accuracy_pct": -0.6618133686300425,
+        "right_accuracy_pct": 2.779616148246184,
+        "both_correct_pct": 0.6618133686300496,
+        "both_wrong_pct": -1.4559894109861027,
+        "left_only_pct": -1.323626737260092,
+        "right_only_pct": 2.1178027796161487,
+        "disagreement_pct": 0.7941760423560567,
+        "oracle_any_correct_pct": 1.4559894109861062,
+        "correctness_covariance": -0.004655907417959793
+      }
+    },
+    "macaroni/par/42 minus macaroni/noswitch/42": {
+      "char_norm": {
+        "left_accuracy_pct": 0.13236267372600707,
+        "right_accuracy_pct": 0.3970880211780283,
+        "both_correct_pct": 0.5956320317670389,
+        "both_wrong_pct": 0.06618133686300354,
+        "left_only_pct": -0.46326935804103186,
+        "right_only_pct": -0.19854401058901416,
+        "disagreement_pct": -0.6618133686300425,
+        "oracle_any_correct_pct": -0.06618133686301064,
+        "correctness_covariance": 0.003126860118232877
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": 0.06618133686300354,
+        "right_accuracy_pct": -0.46326935804103186,
+        "both_correct_pct": 0.3970880211780283,
+        "both_wrong_pct": 0.7941760423560531,
+        "left_only_pct": -0.33090668431502124,
+        "right_only_pct": -0.8603573792190637,
+        "disagreement_pct": -1.191264063534085,
+        "oracle_any_correct_pct": -0.7941760423560567,
+        "correctness_covariance": 0.006112685223428838
+      },
+      "raw": {
+        "left_accuracy_pct": 1.058901389808078,
+        "right_accuracy_pct": 0.0,
+        "both_correct_pct": 0.5294506949040354,
+        "both_wrong_pct": -0.5294506949040425,
+        "left_only_pct": 0.5294506949040372,
+        "right_only_pct": -0.529450694904039,
+        "disagreement_pct": 0.0,
+        "oracle_any_correct_pct": 0.5294506949040496,
+        "correctness_covariance": 0.00024177430806338052
+      },
+      "token_norm": {
+        "left_accuracy_pct": 1.8530774321641275,
+        "right_accuracy_pct": 2.183984116479145,
+        "both_correct_pct": 1.2574454003970885,
+        "both_wrong_pct": -2.7796161482461947,
+        "left_only_pct": 0.5956320317670425,
+        "right_only_pct": 0.9265387160820637,
+        "disagreement_pct": 1.5221707478491098,
+        "oracle_any_correct_pct": 2.779616148246191,
+        "correctness_covariance": -0.008102505298667906
+      }
+    },
+    "macaroni/par/43 minus macaroni/noswitch/43": {
+      "char_norm": {
+        "left_accuracy_pct": 2.1178027796161416,
+        "right_accuracy_pct": 1.3236267372600992,
+        "both_correct_pct": 2.250165453342163,
+        "both_wrong_pct": -1.1912640635340885,
+        "left_only_pct": -0.13236267372600707,
+        "right_only_pct": -0.9265387160820673,
+        "disagreement_pct": -1.058901389808078,
+        "oracle_any_correct_pct": 1.1912640635340779,
+        "correctness_covariance": 0.004375589379625566
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": 0.13236267372600707,
+        "right_accuracy_pct": -2.845797485109202,
+        "both_correct_pct": 0.06618133686301064,
+        "both_wrong_pct": 2.7796161482461947,
+        "left_only_pct": 0.06618133686299998,
+        "right_only_pct": -2.911978821972202,
+        "disagreement_pct": -2.845797485109202,
+        "oracle_any_correct_pct": -2.779616148246177,
+        "correctness_covariance": 0.015515165424872468
+      },
+      "raw": {
+        "left_accuracy_pct": 0.13236267372600707,
+        "right_accuracy_pct": 0.3970880211780283,
+        "both_correct_pct": 0.7941760423560567,
+        "both_wrong_pct": 0.26472534745202125,
+        "left_only_pct": -0.661813368630046,
+        "right_only_pct": -0.39708802117802655,
+        "disagreement_pct": -1.0589013898080708,
+        "oracle_any_correct_pct": -0.26472534745202125,
+        "correctness_covariance": 0.00528049104712372
+      },
+      "token_norm": {
+        "left_accuracy_pct": 0.13236267372599997,
+        "right_accuracy_pct": 1.7207147584381204,
+        "both_correct_pct": 1.058901389808078,
+        "both_wrong_pct": -0.7941760423560531,
+        "left_only_pct": -0.9265387160820637,
+        "right_only_pct": 0.661813368630046,
+        "disagreement_pct": -0.26472534745202125,
+        "oracle_any_correct_pct": 0.7941760423560567,
+        "correctness_covariance": 0.0008611019740084047
+      }
+    },
+    "macaroni/par/44 minus macaroni/noswitch/44": {
+      "char_norm": {
+        "left_accuracy_pct": 0.0,
+        "right_accuracy_pct": 2.514890800794177,
+        "both_correct_pct": 1.3898080741231027,
+        "both_wrong_pct": -1.125082726671078,
+        "left_only_pct": -1.3898080741230991,
+        "right_only_pct": 1.1250827266710814,
+        "disagreement_pct": -0.26472534745202125,
+        "oracle_any_correct_pct": 1.1250827266710672,
+        "correctness_covariance": 3.372576398713578e-05
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": -2.0516214427531523,
+        "right_accuracy_pct": -2.250165453342156,
+        "both_correct_pct": -1.323626737260092,
+        "both_wrong_pct": 2.9781601588352054,
+        "left_only_pct": -0.7279947054930496,
+        "right_only_pct": -0.9265387160820637,
+        "disagreement_pct": -1.6545334215751168,
+        "oracle_any_correct_pct": -2.978160158835209,
+        "correctness_covariance": 0.010539958241372271
+      },
+      "raw": {
+        "left_accuracy_pct": 0.0,
+        "right_accuracy_pct": 0.8603573792190602,
+        "both_correct_pct": 0.9927200529450744,
+        "both_wrong_pct": 0.13236267372600707,
+        "left_only_pct": -0.9927200529450708,
+        "right_only_pct": -0.13236267372600885,
+        "disagreement_pct": -1.1250827266710814,
+        "oracle_any_correct_pct": -0.13236267372600707,
+        "correctness_covariance": 0.005520075370512606
+      },
+      "token_norm": {
+        "left_accuracy_pct": -0.46326935804102476,
+        "right_accuracy_pct": 3.4414295168762337,
+        "both_correct_pct": 0.9927200529450673,
+        "both_wrong_pct": -1.9854401058901416,
+        "left_only_pct": -1.4559894109861027,
+        "right_only_pct": 2.44870946393117,
+        "disagreement_pct": 0.9927200529450673,
+        "oracle_any_correct_pct": 1.9854401058901487,
+        "correctness_covariance": -0.005852953041034614
+      }
+    },
+    "jgp/distributed minus jgp/nonadj": {
+      "char_norm": {
+        "left_accuracy_pct": 0.3970880211780283,
+        "right_accuracy_pct": 1.191264063534085,
+        "both_correct_pct": 1.3898080741230956,
+        "both_wrong_pct": -0.19854401058901416,
+        "left_only_pct": -0.9927200529450708,
+        "right_only_pct": -0.19854401058901416,
+        "disagreement_pct": -1.191264063534085,
+        "oracle_any_correct_pct": 0.19854401058901772,
+        "correctness_covariance": 0.0050076189566825025
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": 1.8530774321641275,
+        "right_accuracy_pct": 0.5294506949040425,
+        "both_correct_pct": 2.4487094639311735,
+        "both_wrong_pct": 0.06618133686299998,
+        "left_only_pct": -0.5956320317670389,
+        "right_only_pct": -1.9192587690271345,
+        "disagreement_pct": -2.51489080079417,
+        "oracle_any_correct_pct": -0.06618133686301064,
+        "correctness_covariance": 0.011299882923419324
+      },
+      "raw": {
+        "left_accuracy_pct": 2.051621442753145,
+        "right_accuracy_pct": 1.3898080741230956,
+        "both_correct_pct": 1.919258769027138,
+        "both_wrong_pct": -1.5221707478491027,
+        "left_only_pct": 0.13236267372601063,
+        "right_only_pct": -0.529450694904039,
+        "disagreement_pct": -0.3970880211780248,
+        "oracle_any_correct_pct": 1.5221707478491027,
+        "correctness_covariance": 0.0018566690070302705
+      },
+      "token_norm": {
+        "left_accuracy_pct": 1.1250827266710814,
+        "right_accuracy_pct": 0.595632031767046,
+        "both_correct_pct": 0.9927200529450673,
+        "both_wrong_pct": -0.7279947054930496,
+        "left_only_pct": 0.13236267372601063,
+        "right_only_pct": -0.3970880211780283,
+        "disagreement_pct": -0.26472534745201415,
+        "oracle_any_correct_pct": 0.7279947054930602,
+        "correctness_covariance": 0.0005488101594264827
+      }
+    },
+    "jgp/multi minus jgp/no": {
+      "char_norm": {
+        "left_accuracy_pct": 2.779616148246191,
+        "right_accuracy_pct": -0.13236267372600707,
+        "both_correct_pct": 2.4487094639311735,
+        "both_wrong_pct": -0.19854401058901416,
+        "left_only_pct": 0.33090668431502124,
+        "right_only_pct": -2.5810721376571806,
+        "disagreement_pct": -2.250165453342156,
+        "oracle_any_correct_pct": 0.1985440105890035,
+        "correctness_covariance": 0.010181238751691246
+      },
+      "prior_adjusted": {
+        "left_accuracy_pct": 3.24288550628723,
+        "right_accuracy_pct": 2.4487094639311806,
+        "both_correct_pct": 2.7134348113831948,
+        "both_wrong_pct": -2.9781601588352054,
+        "left_only_pct": 0.529450694904039,
+        "right_only_pct": -0.26472534745202125,
+        "disagreement_pct": 0.26472534745201415,
+        "oracle_any_correct_pct": 2.978160158835209,
+        "correctness_covariance": -0.0038031273857145886
+      },
+      "raw": {
+        "left_accuracy_pct": 1.5883520847121133,
+        "right_accuracy_pct": -0.5956320317670389,
+        "both_correct_pct": 0.46326935804103897,
+        "both_wrong_pct": -0.5294506949040425,
+        "left_only_pct": 1.1250827266710797,
+        "right_only_pct": -1.0589013898080726,
+        "disagreement_pct": 0.06618133686301064,
+        "oracle_any_correct_pct": 0.5294506949040354,
+        "correctness_covariance": -5.299762912258643e-05
+      },
+      "token_norm": {
+        "left_accuracy_pct": 1.2574454003970885,
+        "right_accuracy_pct": -0.3970880211780283,
+        "both_correct_pct": 0.2647253474520177,
+        "both_wrong_pct": -0.5956320317670425,
+        "left_only_pct": 0.9927200529450673,
+        "right_only_pct": -0.661813368630046,
+        "disagreement_pct": 0.3309066843150248,
+        "oracle_any_correct_pct": 0.5956320317670531,
+        "correctness_covariance": -0.0014760496706043846
+      }
+    }
+  },
+  "limits": "Descriptive exploratory screen, no CIs. Binary alternatives only. Covariance subtracts independent marginals but not common item difficulty. No causal claim; family content/exposure confounds and three-seed release limits remain."
+}

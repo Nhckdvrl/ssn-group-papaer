@@ -1,0 +1,102 @@
+{
+  "control": {
+    "repo": "nusnlp/JGP-No-Parallel",
+    "revision": "9887348d52ea744507d8defce0f8996265c24d13",
+    "subfolder": null,
+    "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-No-Parallel/snapshots/9887348d52ea744507d8defce0f8996265c24d13"
+  },
+  "treated": {
+    "repo": "nusnlp/JGP-Multilingual",
+    "revision": "b043fcca41f4dffbfc011b53c02262040577f6f8",
+    "subfolder": null,
+    "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Multilingual/snapshots/b043fcca41f4dffbfc011b53c02262040577f6f8"
+  },
+  "corpus_sha256": "60035f844a7ffeb809bebb21548596f6b6b816809bed616f80b2c960f6dbd50a",
+  "cells": {
+    "native_wikipedia/id": {
+      "n": 128,
+      "byte": {
+        "control_bits": 1.811692276796584,
+        "treated_bits": 1.3466009684852764,
+        "delta_bits": -0.4650913083113075,
+        "paired_95ci": [
+          -0.4866895090555299,
+          -0.44271069044100125
+        ]
+      },
+      "char": {
+        "control_bits": 1.8203261228031926,
+        "treated_bits": 1.353018363725714,
+        "delta_bits": -0.46730775907747857,
+        "paired_95ci": [
+          -0.4888588499689042,
+          -0.4449760258631051
+        ]
+      }
+    },
+    "native_wikipedia/zh": {
+      "n": 128,
+      "byte": {
+        "control_bits": 2.6598910454067903,
+        "treated_bits": 1.9664786407117023,
+        "delta_bits": -0.693412404695088,
+        "paired_95ci": [
+          -0.7175293942164265,
+          -0.668800324679797
+        ]
+      },
+      "char": {
+        "control_bits": 7.383379592877029,
+        "treated_bits": 5.458591354984932,
+        "delta_bits": -1.9247882378920966,
+        "paired_95ci": [
+          -2.0034185172445995,
+          -1.8437970787386588
+        ]
+      }
+    },
+    "translated_story_train/id": {
+      "n": 360,
+      "byte": {
+        "control_bits": 2.070251335839006,
+        "treated_bits": 1.5218916358834573,
+        "delta_bits": -0.5483596999555485,
+        "paired_95ci": [
+          -0.5601368470968764,
+          -0.5369786225472533
+        ]
+      },
+      "char": {
+        "control_bits": 2.070251335839006,
+        "treated_bits": 1.5218916358834573,
+        "delta_bits": -0.5483596999555485,
+        "paired_95ci": [
+          -0.5601368470968764,
+          -0.5369786225472533
+        ]
+      }
+    },
+    "translated_story_train/zh": {
+      "n": 360,
+      "byte": {
+        "control_bits": 2.7410648755097755,
+        "treated_bits": 2.0916922995389697,
+        "delta_bits": -0.6493725759708058,
+        "paired_95ci": [
+          -0.6661419951027685,
+          -0.6325433544500987
+        ]
+      },
+      "char": {
+        "control_bits": 7.874547752359751,
+        "treated_bits": 6.009026288697213,
+        "delta_bits": -1.865521463662538,
+        "paired_95ci": [
+          -1.9145553077265507,
+          -1.8164997168330843
+        ]
+      }
+    }
+  },
+  "limits": "Not proven unseen during model pretraining. Native wiki first eligible rows are a convenience sample. Compare interventions within a language/domain only; absolute cross-language BPB does not rank competence. Exploratory item bootstrap, one training seed. Lower loss does not prove reasoning acquisition."
+}

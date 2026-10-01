@@ -5,6 +5,48 @@
 **Target ceiling:** ACL / EMNLP / NAACL / ICLR / NeurIPS main-track scale.  
 **Core discipline:** reconcile conflicting controlled results before inventing a method.
 
+**Execution update (2026-09-30):** P0 primary-source audit and the first frozen P1/P2
+pilots are recorded in [P0_PARENT_AUDIT.md](P0_PARENT_AUDIT.md) and
+[EXPERIMENT_LOG_2026-09-30.md](EXPERIMENT_LOG_2026-09-30.md). The original
+acquisition-regime explanation is **downweighted**, not established. OpenSeal's
+reasoning effects are task-specific, and its controlled checkpoints have not been
+located publicly. No training has been started; no paper identity is registered.
+
+The [second wave](SECOND_WAVE.md) adds full XStoryCloze, independent text-loss
+diagnostics and a weight-hash audit. Paper-selected JGP checkpoints are **not
+equal-time comparisons**; one Distributed step alias is ambiguous. The nominal
+160,000-step comparison removed the large native-language loss gap and did not
+establish broad reasoning gains. The [third wave](THIRD_WAVE.md) tests evidence
+binding versus answer realization, with natural question-swap controls and
+separate output-language cells. These remain diagnostics, not a paper claim.
+
+The [fourth wave](FOURTH_WAVE.md) adds an independent Macaroni family: three
+released seeds each for monolingual, code-switched and document-parallel models.
+Code-switching has a positive cross-minus-mono continuation interaction across
+readouts, but absolute scores are low and calibrated native-Chinese changes
+reverse sign. The [fifth wave](FIFTH_WAVE.md) completes the correct-context control:
+raw zh->en gain is context-dependent across three seeds, but calibrated accuracy
+evidence is mixed. It also opens a bounded joint-error screen with explicit
+consistency-literature ownership checks. Neither result establishes a paper idea.
+
+The [sixth wave](SIXTH_WAVE.md) tests same-vocabulary counterfactual location
+bindings on three Macaroni models. All fail the predeclared English measurability
+gate. That assay is stopped without interpreting cross-language nulls or tuning
+prompts; the earlier functional signal still lacks independent semantic support.
+
+The [seventh wave](SEVENTH_WAVE.md) reads the official Token Alignment Heads
+mechanistic/data-intervention prior and rules out generic circuit narratives.
+The next anchor is a local translation positive control on the already cached
+MONOWEB family. Standard-vs-Split full-method access remains unresolved and is
+not counted as completed reading.
+
+The [eighth wave](EIGHTH_WAVE.md) validates the MONOWEB translation intervention
+locally on a pinned WMT16 pilot: removing bilingual data reduces BLEU in both
+directions, and adding parallel data restores much of it. Three complete FP32
+generation runs retain raw outputs and failure diagnostics. This is a positive
+control, not novelty. A new direct dose/representation-sharing prior also rules
+out generic early-alignment narratives.
+
 ---
 
 ## 0. Why this workbench exists
@@ -27,7 +69,7 @@ Controlled from-scratch pretraining finds a sharply different pattern:
 
 ### Parent C — OpenSeal (2026)
 
-Starting from an English-centric OLMo-2 model, controlled continual-pretraining experiments find that parallel-only CPT is unusually effective not only for translation but also for multilingual NLU/reasoning-style evaluation.
+Starting from an English-centric OLMo-2 model, controlled continual-pretraining experiments find that parallel-only CPT is unusually effective for translation and PAWS-X. XNLI improves modestly at 1B but not at 7B; XCOPA does not improve in either size. This is a task-specific NLU result, not a general reasoning-gain parent. See the primary-source audit for content/replay controls.
 
 ### Parent D — TransWebEdu (EMNLP 2025)
 
@@ -495,7 +537,7 @@ Current workbench object:
 
 > **the causal role of bilingual/parallel supervision across multilingual acquisition regimes**
 
-Current leading explanation:
+Original leading explanation (currently downweighted by the execution audit):
 
 > **parallel supervision may shift from acquisition/scaffolding to translation/interface alignment as target-language competence increases.**
 

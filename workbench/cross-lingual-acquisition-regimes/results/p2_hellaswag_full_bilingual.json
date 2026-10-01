@@ -1,0 +1,475 @@
+{
+  "control": {
+    "model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+      "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_monoweb.json",
+      "task": "hellaswag",
+      "limit": 500,
+      "shots": 5,
+      "batch": 8,
+      "legacy_pickle": false,
+      "readout": "joint",
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/mwb_hswag_s5.jsonl"
+    },
+    "data": [
+      "alexandrainst/m_hellaswag",
+      "9d31dc982bd6285e081e3e3136332a38b9c1d7b7"
+    ],
+    "items_sha256": "0aa6776c916ec366290c0c7b203b033cdb832f9fa21372603010b44082a9a8b1",
+    "expected_items": 2000,
+    "excluded_reannotated_ids": [],
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cells": {
+    "raw/en->en": {
+      "n": 500,
+      "control_accuracy": 35.4,
+      "control_prediction_counts": {
+        "3": 148,
+        "1": 111,
+        "0": 119,
+        "2": 122
+      },
+      "treated_accuracy": 36.199999999999996,
+      "delta_pp": 0.8,
+      "paired_bootstrap_95ci_pp": [
+        -1.4000000000000001,
+        3.0
+      ],
+      "improved_items": 17,
+      "harmed_items": 13,
+      "treated_prediction_counts": {
+        "3": 146,
+        "1": 113,
+        "2": 124,
+        "0": 117
+      }
+    },
+    "token_norm/en->en": {
+      "n": 500,
+      "control_accuracy": 46.800000000000004,
+      "control_prediction_counts": {
+        "1": 119,
+        "3": 125,
+        "2": 118,
+        "0": 138
+      },
+      "treated_accuracy": 42.8,
+      "delta_pp": -4.0,
+      "paired_bootstrap_95ci_pp": [
+        -6.800000000000001,
+        -1.2
+      ],
+      "improved_items": 15,
+      "harmed_items": 35,
+      "treated_prediction_counts": {
+        "1": 118,
+        "3": 129,
+        "2": 116,
+        "0": 137
+      }
+    },
+    "char_norm/en->en": {
+      "n": 500,
+      "control_accuracy": 46.0,
+      "control_prediction_counts": {
+        "1": 135,
+        "3": 134,
+        "2": 111,
+        "0": 120
+      },
+      "treated_accuracy": 45.0,
+      "delta_pp": -1.0,
+      "paired_bootstrap_95ci_pp": [
+        -4.2,
+        2.0
+      ],
+      "improved_items": 30,
+      "harmed_items": 35,
+      "treated_prediction_counts": {
+        "1": 125,
+        "0": 122,
+        "3": 142,
+        "2": 111
+      }
+    },
+    "prior_adjusted/en->en": {
+      "n": 500,
+      "control_accuracy": 37.8,
+      "control_prediction_counts": {
+        "1": 123,
+        "2": 131,
+        "3": 131,
+        "0": 115
+      },
+      "treated_accuracy": 37.2,
+      "delta_pp": -0.6,
+      "paired_bootstrap_95ci_pp": [
+        -5.0,
+        3.5999999999999996
+      ],
+      "improved_items": 57,
+      "harmed_items": 60,
+      "treated_prediction_counts": {
+        "3": 105,
+        "2": 131,
+        "1": 133,
+        "0": 131
+      }
+    },
+    "raw/en->de": {
+      "n": 500,
+      "control_accuracy": 37.0,
+      "control_prediction_counts": {
+        "3": 116,
+        "2": 114,
+        "0": 142,
+        "1": 128
+      },
+      "treated_accuracy": 35.0,
+      "delta_pp": -2.0,
+      "paired_bootstrap_95ci_pp": [
+        -4.8,
+        0.6
+      ],
+      "improved_items": 18,
+      "harmed_items": 28,
+      "treated_prediction_counts": {
+        "3": 115,
+        "2": 131,
+        "1": 117,
+        "0": 137
+      }
+    },
+    "token_norm/en->de": {
+      "n": 500,
+      "control_accuracy": 38.800000000000004,
+      "control_prediction_counts": {
+        "1": 116,
+        "0": 130,
+        "3": 116,
+        "2": 138
+      },
+      "treated_accuracy": 37.4,
+      "delta_pp": -1.4000000000000001,
+      "paired_bootstrap_95ci_pp": [
+        -4.6,
+        1.6
+      ],
+      "improved_items": 27,
+      "harmed_items": 34,
+      "treated_prediction_counts": {
+        "1": 122,
+        "2": 135,
+        "3": 115,
+        "0": 128
+      }
+    },
+    "char_norm/en->de": {
+      "n": 500,
+      "control_accuracy": 38.0,
+      "control_prediction_counts": {
+        "1": 121,
+        "0": 116,
+        "3": 121,
+        "2": 142
+      },
+      "treated_accuracy": 37.0,
+      "delta_pp": -1.0,
+      "paired_bootstrap_95ci_pp": [
+        -3.5999999999999996,
+        1.6
+      ],
+      "improved_items": 21,
+      "harmed_items": 26,
+      "treated_prediction_counts": {
+        "1": 116,
+        "0": 116,
+        "3": 133,
+        "2": 135
+      }
+    },
+    "prior_adjusted/en->de": {
+      "n": 500,
+      "control_accuracy": 35.6,
+      "control_prediction_counts": {
+        "1": 124,
+        "3": 117,
+        "0": 116,
+        "2": 143
+      },
+      "treated_accuracy": 32.6,
+      "delta_pp": -3.0,
+      "paired_bootstrap_95ci_pp": [
+        -7.199999999999999,
+        1.2
+      ],
+      "improved_items": 48,
+      "harmed_items": 63,
+      "treated_prediction_counts": {
+        "1": 110,
+        "3": 129,
+        "2": 139,
+        "0": 122
+      }
+    },
+    "raw/de->en": {
+      "n": 500,
+      "control_accuracy": 35.0,
+      "control_prediction_counts": {
+        "3": 148,
+        "1": 119,
+        "2": 120,
+        "0": 113
+      },
+      "treated_accuracy": 35.0,
+      "delta_pp": 0.0,
+      "paired_bootstrap_95ci_pp": [
+        -2.6,
+        2.4
+      ],
+      "improved_items": 21,
+      "harmed_items": 21,
+      "treated_prediction_counts": {
+        "3": 147,
+        "1": 109,
+        "2": 123,
+        "0": 121
+      }
+    },
+    "token_norm/de->en": {
+      "n": 500,
+      "control_accuracy": 43.0,
+      "control_prediction_counts": {
+        "1": 132,
+        "3": 127,
+        "0": 117,
+        "2": 124
+      },
+      "treated_accuracy": 42.6,
+      "delta_pp": -0.4,
+      "paired_bootstrap_95ci_pp": [
+        -3.4000000000000004,
+        2.4
+      ],
+      "improved_items": 27,
+      "harmed_items": 29,
+      "treated_prediction_counts": {
+        "1": 126,
+        "3": 122,
+        "0": 126,
+        "2": 126
+      }
+    },
+    "char_norm/de->en": {
+      "n": 500,
+      "control_accuracy": 43.8,
+      "control_prediction_counts": {
+        "1": 142,
+        "3": 135,
+        "2": 113,
+        "0": 110
+      },
+      "treated_accuracy": 43.2,
+      "delta_pp": -0.6,
+      "paired_bootstrap_95ci_pp": [
+        -3.5999999999999996,
+        2.4
+      ],
+      "improved_items": 26,
+      "harmed_items": 29,
+      "treated_prediction_counts": {
+        "1": 125,
+        "2": 120,
+        "3": 138,
+        "0": 117
+      }
+    },
+    "prior_adjusted/de->en": {
+      "n": 500,
+      "control_accuracy": 36.6,
+      "control_prediction_counts": {
+        "1": 130,
+        "2": 135,
+        "0": 116,
+        "3": 119
+      },
+      "treated_accuracy": 35.6,
+      "delta_pp": -1.0,
+      "paired_bootstrap_95ci_pp": [
+        -5.2,
+        3.2
+      ],
+      "improved_items": 56,
+      "harmed_items": 61,
+      "treated_prediction_counts": {
+        "3": 119,
+        "2": 128,
+        "1": 132,
+        "0": 121
+      }
+    },
+    "raw/de->de": {
+      "n": 500,
+      "control_accuracy": 35.199999999999996,
+      "control_prediction_counts": {
+        "3": 125,
+        "2": 117,
+        "0": 134,
+        "1": 124
+      },
+      "treated_accuracy": 35.6,
+      "delta_pp": 0.4,
+      "paired_bootstrap_95ci_pp": [
+        -1.6,
+        2.4
+      ],
+      "improved_items": 13,
+      "harmed_items": 11,
+      "treated_prediction_counts": {
+        "3": 119,
+        "2": 125,
+        "1": 129,
+        "0": 127
+      }
+    },
+    "token_norm/de->de": {
+      "n": 500,
+      "control_accuracy": 40.0,
+      "control_prediction_counts": {
+        "1": 122,
+        "0": 133,
+        "3": 128,
+        "2": 117
+      },
+      "treated_accuracy": 40.6,
+      "delta_pp": 0.6,
+      "paired_bootstrap_95ci_pp": [
+        -2.1999999999999997,
+        3.4000000000000004
+      ],
+      "improved_items": 27,
+      "harmed_items": 24,
+      "treated_prediction_counts": {
+        "1": 126,
+        "0": 130,
+        "3": 122,
+        "2": 122
+      }
+    },
+    "char_norm/de->de": {
+      "n": 500,
+      "control_accuracy": 41.0,
+      "control_prediction_counts": {
+        "1": 119,
+        "0": 130,
+        "3": 125,
+        "2": 126
+      },
+      "treated_accuracy": 40.2,
+      "delta_pp": -0.8,
+      "paired_bootstrap_95ci_pp": [
+        -3.4000000000000004,
+        1.7999999999999998
+      ],
+      "improved_items": 20,
+      "harmed_items": 24,
+      "treated_prediction_counts": {
+        "1": 122,
+        "0": 127,
+        "3": 124,
+        "2": 127
+      }
+    },
+    "prior_adjusted/de->de": {
+      "n": 500,
+      "control_accuracy": 37.6,
+      "control_prediction_counts": {
+        "1": 116,
+        "3": 122,
+        "0": 120,
+        "2": 142
+      },
+      "treated_accuracy": 37.0,
+      "delta_pp": -0.6,
+      "paired_bootstrap_95ci_pp": [
+        -4.8,
+        3.4000000000000004
+      ],
+      "improved_items": 54,
+      "harmed_items": 57,
+      "treated_prediction_counts": {
+        "1": 112,
+        "3": 133,
+        "0": 126,
+        "2": 129
+      }
+    }
+  },
+  "treated": {
+    "model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_baseline/iter_0034000/hf_model",
+      "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_baseline/iter_0034000/hf_model"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/UCLNLP__monoweb__ckpt_exp_en_de_baseline.json",
+      "task": "hellaswag",
+      "limit": 500,
+      "shots": 5,
+      "batch": 8,
+      "legacy_pickle": false,
+      "readout": "joint",
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p2/fwb_hswag_s5.jsonl"
+    },
+    "data": [
+      "alexandrainst/m_hellaswag",
+      "9d31dc982bd6285e081e3e3136332a38b9c1d7b7"
+    ],
+    "items_sha256": "0aa6776c916ec366290c0c7b203b033cdb832f9fa21372603010b44082a9a8b1",
+    "expected_items": 2000,
+    "excluded_reannotated_ids": [],
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cross_minus_mono_treatment_effect": {
+    "char_norm": {
+      "delta_pp": 0.1,
+      "paired_bootstrap_95ci_pp": [
+        -2.4,
+        2.6
+      ]
+    },
+    "prior_adjusted": {
+      "delta_pp": -1.4000000000000001,
+      "paired_bootstrap_95ci_pp": [
+        -4.7,
+        2.0
+      ]
+    },
+    "raw": {
+      "delta_pp": -1.6,
+      "paired_bootstrap_95ci_pp": [
+        -3.5999999999999996,
+        0.4
+      ]
+    },
+    "token_norm": {
+      "delta_pp": 0.8,
+      "paired_bootstrap_95ci_pp": [
+        -1.7999999999999998,
+        3.4000000000000004
+      ]
+    }
+  },
+  "interpretation_limits": "Exploratory CIs, no familywise correction; model seeds not replicated. Cross-language cells retain continuation/connector confounds."
+}

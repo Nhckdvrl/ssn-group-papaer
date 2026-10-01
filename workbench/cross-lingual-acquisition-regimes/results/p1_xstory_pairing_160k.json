@@ -1,0 +1,417 @@
+{
+  "control": {
+    "model": {
+      "repo": "nusnlp/JGP-Parallel-Non-Adjacent",
+      "revision": "b36e67227578a3ae6f6439c1b241536dc0497461",
+      "subfolder": null,
+      "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Non-Adjacent/snapshots/b36e67227578a3ae6f6439c1b241536dc0497461"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Non-Adjacent__160000.json",
+      "task": "xstorycloze",
+      "limit": 1511,
+      "shots": 0,
+      "batch": 8,
+      "compute_dtype": "fp32",
+      "legacy_pickle": true,
+      "readout": "joint",
+      "context_control": "original",
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_nonadj_xstory_fp32_160k.jsonl"
+    },
+    "data": [
+      "juletxara/xstory_cloze",
+      "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+    ],
+    "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+    "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+    "expected_items": 6044,
+    "excluded_reannotated_ids": [],
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cells": {
+    "raw/id->id": {
+      "n": 1511,
+      "control_accuracy": 49.90072799470549,
+      "control_prediction_counts": {
+        "1": 734,
+        "0": 777
+      },
+      "treated_accuracy": 51.952349437458636,
+      "delta_pp": 2.0516214427531434,
+      "paired_bootstrap_95ci_pp": [
+        0.3309066843150232,
+        3.7723362011912642
+      ],
+      "improved_items": 102,
+      "harmed_items": 71,
+      "treated_prediction_counts": {
+        "1": 719,
+        "0": 792
+      }
+    },
+    "token_norm/id->id": {
+      "n": 1511,
+      "control_accuracy": 56.32031767041694,
+      "control_prediction_counts": {
+        "1": 765,
+        "0": 746
+      },
+      "treated_accuracy": 57.44540039708802,
+      "delta_pp": 1.1250827266710788,
+      "paired_bootstrap_95ci_pp": [
+        -0.727994705493051,
+        2.9781601588352085
+      ],
+      "improved_items": 113,
+      "harmed_items": 96,
+      "treated_prediction_counts": {
+        "1": 728,
+        "0": 783
+      }
+    },
+    "char_norm/id->id": {
+      "n": 1511,
+      "control_accuracy": 56.386499007279944,
+      "control_prediction_counts": {
+        "0": 749,
+        "1": 762
+      },
+      "treated_accuracy": 56.78358702845797,
+      "delta_pp": 0.3970880211780278,
+      "paired_bootstrap_95ci_pp": [
+        -1.5221707478491064,
+        2.2501654533421576
+      ],
+      "improved_items": 111,
+      "harmed_items": 105,
+      "treated_prediction_counts": {
+        "0": 777,
+        "1": 734
+      }
+    },
+    "prior_adjusted/id->id": {
+      "n": 1511,
+      "control_accuracy": 55.19523494374587,
+      "control_prediction_counts": {
+        "0": 779,
+        "1": 732
+      },
+      "treated_accuracy": 57.048312375909994,
+      "delta_pp": 1.8530774321641297,
+      "paired_bootstrap_95ci_pp": [
+        -0.5956320317670417,
+        4.301786896095301
+      ],
+      "improved_items": 196,
+      "harmed_items": 168,
+      "treated_prediction_counts": {
+        "0": 771,
+        "1": 740
+      }
+    },
+    "raw/id->zh": {
+      "n": 1511,
+      "control_accuracy": 50.0992720052945,
+      "control_prediction_counts": {
+        "1": 719,
+        "0": 792
+      },
+      "treated_accuracy": 47.91528788881536,
+      "delta_pp": -2.183984116479153,
+      "paired_bootstrap_95ci_pp": [
+        -3.9708802117802784,
+        -0.3970880211780278
+      ],
+      "improved_items": 76,
+      "harmed_items": 109,
+      "treated_prediction_counts": {
+        "1": 680,
+        "0": 831
+      }
+    },
+    "token_norm/id->zh": {
+      "n": 1511,
+      "control_accuracy": 53.01125082726671,
+      "control_prediction_counts": {
+        "0": 742,
+        "1": 769
+      },
+      "treated_accuracy": 54.40105890138981,
+      "delta_pp": 1.3898080741230974,
+      "paired_bootstrap_95ci_pp": [
+        -0.5956320317670417,
+        3.441429516876241
+      ],
+      "improved_items": 132,
+      "harmed_items": 111,
+      "treated_prediction_counts": {
+        "0": 747,
+        "1": 764
+      }
+    },
+    "char_norm/id->zh": {
+      "n": 1511,
+      "control_accuracy": 56.58504301786896,
+      "control_prediction_counts": {
+        "0": 760,
+        "1": 751
+      },
+      "treated_accuracy": 55.393778954334884,
+      "delta_pp": -1.1912640635340834,
+      "paired_bootstrap_95ci_pp": [
+        -3.176704169424222,
+        0.727994705493051
+      ],
+      "improved_items": 107,
+      "harmed_items": 125,
+      "treated_prediction_counts": {
+        "0": 750,
+        "1": 761
+      }
+    },
+    "prior_adjusted/id->zh": {
+      "n": 1511,
+      "control_accuracy": 55.26141628060886,
+      "control_prediction_counts": {
+        "0": 742,
+        "1": 769
+      },
+      "treated_accuracy": 54.930509596293845,
+      "delta_pp": -0.3309066843150232,
+      "paired_bootstrap_95ci_pp": [
+        -3.441429516876241,
+        2.7796161482461947
+      ],
+      "improved_items": 283,
+      "harmed_items": 288,
+      "treated_prediction_counts": {
+        "0": 773,
+        "1": 738
+      }
+    },
+    "raw/zh->id": {
+      "n": 1511,
+      "control_accuracy": 50.89344804765056,
+      "control_prediction_counts": {
+        "1": 715,
+        "0": 796
+      },
+      "treated_accuracy": 50.165453342157505,
+      "delta_pp": -0.727994705493051,
+      "paired_bootstrap_95ci_pp": [
+        -2.582726671078754,
+        1.1250827266710788
+      ],
+      "improved_items": 98,
+      "harmed_items": 109,
+      "treated_prediction_counts": {
+        "1": 710,
+        "0": 801
+      }
+    },
+    "token_norm/zh->id": {
+      "n": 1511,
+      "control_accuracy": 56.32031767041694,
+      "control_prediction_counts": {
+        "1": 741,
+        "0": 770
+      },
+      "treated_accuracy": 54.53342157511582,
+      "delta_pp": -1.786896095301125,
+      "paired_bootstrap_95ci_pp": [
+        -3.6399735274652545,
+        0.0
+      ],
+      "improved_items": 80,
+      "harmed_items": 107,
+      "treated_prediction_counts": {
+        "1": 744,
+        "0": 767
+      }
+    },
+    "char_norm/zh->id": {
+      "n": 1511,
+      "control_accuracy": 55.724685638649895,
+      "control_prediction_counts": {
+        "0": 773,
+        "1": 738
+      },
+      "treated_accuracy": 54.13633355393779,
+      "delta_pp": -1.588352084712111,
+      "paired_bootstrap_95ci_pp": [
+        -3.441429516876241,
+        0.3309066843150232
+      ],
+      "improved_items": 92,
+      "harmed_items": 116,
+      "treated_prediction_counts": {
+        "0": 767,
+        "1": 744
+      }
+    },
+    "prior_adjusted/zh->id": {
+      "n": 1511,
+      "control_accuracy": 55.26141628060886,
+      "control_prediction_counts": {
+        "0": 772,
+        "1": 739
+      },
+      "treated_accuracy": 54.53342157511582,
+      "delta_pp": -0.727994705493051,
+      "paired_bootstrap_95ci_pp": [
+        -3.9046988749172735,
+        2.382528127068167
+      ],
+      "improved_items": 286,
+      "harmed_items": 297,
+      "treated_prediction_counts": {
+        "0": 763,
+        "1": 748
+      }
+    },
+    "raw/zh->zh": {
+      "n": 1511,
+      "control_accuracy": 49.30509596293845,
+      "control_prediction_counts": {
+        "1": 727,
+        "0": 784
+      },
+      "treated_accuracy": 50.69490403706155,
+      "delta_pp": 1.3898080741230974,
+      "paired_bootstrap_95ci_pp": [
+        -0.1985440105890139,
+        2.911978821972204
+      ],
+      "improved_items": 84,
+      "harmed_items": 63,
+      "treated_prediction_counts": {
+        "1": 716,
+        "0": 795
+      }
+    },
+    "token_norm/zh->zh": {
+      "n": 1511,
+      "control_accuracy": 52.945069490403704,
+      "control_prediction_counts": {
+        "0": 763,
+        "1": 748
+      },
+      "treated_accuracy": 53.54070152217075,
+      "delta_pp": 0.5956320317670417,
+      "paired_bootstrap_95ci_pp": [
+        -1.3236267372600927,
+        2.5810721376571806
+      ],
+      "improved_items": 117,
+      "harmed_items": 108,
+      "treated_prediction_counts": {
+        "0": 776,
+        "1": 735
+      }
+    },
+    "char_norm/zh->zh": {
+      "n": 1511,
+      "control_accuracy": 53.54070152217075,
+      "control_prediction_counts": {
+        "0": 754,
+        "1": 757
+      },
+      "treated_accuracy": 54.731965585704835,
+      "delta_pp": 1.1912640635340834,
+      "paired_bootstrap_95ci_pp": [
+        -0.7941760423560555,
+        3.176704169424222
+      ],
+      "improved_items": 125,
+      "harmed_items": 107,
+      "treated_prediction_counts": {
+        "0": 778,
+        "1": 733
+      }
+    },
+    "prior_adjusted/zh->zh": {
+      "n": 1511,
+      "control_accuracy": 54.86432825943084,
+      "control_prediction_counts": {
+        "0": 754,
+        "1": 757
+      },
+      "treated_accuracy": 55.393778954334884,
+      "delta_pp": 0.5294506949040371,
+      "paired_bootstrap_95ci_pp": [
+        -1.9192587690271343,
+        2.911978821972204
+      ],
+      "improved_items": 181,
+      "harmed_items": 173,
+      "treated_prediction_counts": {
+        "0": 752,
+        "1": 759
+      }
+    }
+  },
+  "treated": {
+    "model": {
+      "repo": "nusnlp/JGP-Parallel-Distributed",
+      "revision": "bd0220756d543eb5f8c09ac3be516ca7358b4d8d",
+      "subfolder": null,
+      "path": "/home/xiang/.cache/huggingface/hub/models--nusnlp--JGP-Parallel-Distributed/snapshots/bd0220756d543eb5f8c09ac3be516ca7358b4d8d"
+    },
+    "args": {
+      "manifest": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/model_manifests/nusnlp__JGP-Parallel-Distributed__160000.json",
+      "task": "xstorycloze",
+      "limit": 1511,
+      "shots": 0,
+      "batch": 8,
+      "compute_dtype": "fp32",
+      "legacy_pickle": true,
+      "readout": "joint",
+      "context_control": "original",
+      "output": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/p1/jgp_distributed_xstory_fp32_160k.jsonl"
+    },
+    "data": [
+      "juletxara/xstory_cloze",
+      "c4c2d88a1ec8b37fe22166d2a610f272726724b6"
+    ],
+    "items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+    "semantic_items_sha256": "c1c69a26bb8b5a27bf89362093164f6cd0ba74c2254a37ab8c19ff71cde7e3a2",
+    "expected_items": 6044,
+    "excluded_reannotated_ids": [],
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "device": "NVIDIA A100 80GB PCIe"
+  },
+  "cross_minus_mono_treatment_effect": {
+    "char_norm": {
+      "delta_pp": -2.183984116479153,
+      "paired_bootstrap_95ci_pp": [
+        -3.9377895433487757,
+        -0.49553275976175926
+      ]
+    },
+    "prior_adjusted": {
+      "delta_pp": -1.7207147584381206,
+      "paired_bootstrap_95ci_pp": [
+        -4.103242885506287,
+        0.6295499669093195
+      ]
+    },
+    "raw": {
+      "delta_pp": -3.176704169424222,
+      "paired_bootstrap_95ci_pp": [
+        -4.698874917273329,
+        -1.588352084712111
+      ]
+    },
+    "token_norm": {
+      "delta_pp": -1.0589013898080741,
+      "paired_bootstrap_95ci_pp": [
+        -2.812706816677697,
+        0.5956320317670417
+      ]
+    }
+  },
+  "interpretation_limits": "Exploratory CIs, no familywise correction; model seeds not replicated. Cross-language cells retain continuation/connector confounds."
+}
