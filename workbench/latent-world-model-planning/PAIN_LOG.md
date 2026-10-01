@@ -11,9 +11,14 @@
 | R03 | 官方几何 baseline 有已公开的修正结果 | Temporal Straightening UPDATES | 标明论文版／修正版；不用弱旧配置制造增益 |
 | R04 | reachability／consistency／anchor regret 的语义与环境真实量不同 | 调查 P04/P09/P10/P12/P13 | 保存变量定义；需要实环境验证时先核对 reset/replay |
 | R05 | “多 seed”容易把训练、环境与规划随机性混在一起 | RC-aux、SALT 的具体评测协议 | train_seed / eval_seed / planner_seed 分字段 |
+| R06 | candidate ranking / Plan-Real alignment 已有直接近邻，不能把 logger 本身当 novelty | Decision-Metric Alignment / DA-LeWM | E02 只作校准；只有新的 hidden variable + real regret consequence 才升级 |
+| R07 | trajectory offset / same-trajectory supervision 会同时反映 behavior path 与 environment reachability | RC-aux 自限；TD-JEPA；QRL/quasimetric | E03/E04 固定 local transitions/support，直接操纵 behavior organization；不把 \(\Delta\) 叫 shortest path |
+| R08 | goal distance、rollout horizon、replanning 与 candidate budget 可共同制造“模型失效” | Planning Limits；SAGE/IMWM | E02/E06 分层记录 goal distance；true-dynamics / candidate / subgoal oracle 分开 |
+| R09 | 2026 方法使用不同 goal source、horizon、action block、planner budget，主表数字不可直接排名 | PAPER_LINEAGE / ASSETS | native reproduction 与 common audit 分表；转换到真实 env steps |
+| R10 | 直接近邻仍高速更新，预印本版本/代码可能变化 | 2026-09 SALT/ATLAS/Planning Limits 等 | 每次 C##→L2/进 candidate 前重扫 arXiv/官方 repo；pin 用到的版本，不引用旧摘要冒充最新 |
 
 ## 实测记录模板
 
 `P## — 现象或成功模式 — 条件／量级 — E## + 结果文件 — 已排除的平凡解释 — 下一次最有区分力的比较`
 
-文献压力地图见 [系统调查 §4](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md)。它用于扩展探索，不要求 agent 逐条证明为真。
+文献压力地图以 [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md) 与 [POSITIONING](POSITIONING.md) 为当前 authority；第一轮 [系统调查](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md) 保留作来源索引。R## 仍不是实测 P##。
