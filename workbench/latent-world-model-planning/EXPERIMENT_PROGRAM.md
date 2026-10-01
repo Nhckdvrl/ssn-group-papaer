@@ -1,301 +1,424 @@
-# Experiment Program — 给本地 agent 的“可大量铺开但不乱扫”执行图
+# Experiment Program — 多卡独立实验怎样服务于一个顶会问题
 
 更新：2026-10-02。  
-本文件把文献地图变成可执行 workbench。**实验卡是 authority；本文件是调度/复用设计。**  
-资源约束读 `../../RESOURCES.md`：单卡/单节点独立 job 优先，不能依赖跨节点 all-reduce 或高速共享盘。
+**Experiment card 是跑前 authority；本文件是共享 substrate + gate + 并行策略。**  
+资源见 `../../RESOURCES.md`：多 GPU 槽位、弱网络/磁盘/跨节点；优先 single-GPU/single-node independent runs，不做跨节点大训练。
 
-## 0. 总目标
+## 0. 目标不是“把表格填满”
 
-先建一个可以回答下面问题的公共日志层：
+工作台先回答：
 
-> 一次失败究竟发生在 data supervision、representation metric、recursive dynamics、candidate proposal、search selection、temporal target，还是 environment execution？
+> 一次 latent-WM planning failure 到底来自 data supervision、representation/metric、recursive dynamics、counterfactual action distinction、proposal/search、temporal target，还是 environment execution？
 
-然后只对有信息增益的轴并行，不跑全笛卡尔积。
+然后把 GPU 只给**会改变下一步科学判断**的比较。
+
+当前优先级：
+1. **I01 trajectory-factorization / route imprinting**
+2. **I03 bottleneck regime law**
+3. I04 measurement calibration
+4. I02 support drift = PARKED，只作为 I03 diagnostic
+5. I05 POMDP = PARKED
 
 ---
 
-## 1. 第一阶段共享 substrate：一次建设，后面所有 idea 复用
+# 1. Shared substrate：一次建设，所有 lead 复用
 
-### S0 原生复现
-- LeWM：TwoRoom smoke → PushT / Cube 至少一项正式 reproduction。
-- 一个异质 baseline：优先官方 DINO-WM/JEPA-WM checkpoint，或 stable-worldmodel 已可直接接入的 PLDM。
-- 直接 successor：RC-aux（因为 I01 要用其 trajectory reachability）。
-- 若代码就绪且接入成本低：TD-JEPA。
-- SALT/Temporal Straightening/IMWM/SAGE 等按具体 lead 接入，不在 S0 一次性全装。
+## S0 Native baselines
 
-### S1 candidate trace schema
-每个 planning decision 输出：
+首轮只装必要对象：
+
+1. **LeWM**：TwoRoom smoke → PushT 或 Cube 至少一项正式 reproduction。
+2. **RC-aux**：I01 trajectory reachability 直接对象。
+3. **TD-JEPA**：I01 第二个 trajectory-derived planning supervision；官方 repo 已核对，且同仓含 LeWM / RC-aux variants、locked eval manifests。
+4. **一个异质 baseline**：已有资产允许时 DINO-WM / JEPA-WM / PLDM 其一。
+5. **local-geometry control**：I01 通过第一 gate 后优先 Temporal Straightening；若 CGS code 可用且接入便宜，则 CGS 更贴近“只看 local transitions”的 control。
+
+不要一开始安装 SALT、AD-WM、Traj-LeWM、IMWM、SAGE、HWM、CompACT 全家桶。
+
+## S1 Candidate trace schema
+
+每次 planning decision：
 ```text
 episode_id, step, start_obs_hash, goal_obs_hash
+goal_distance_native_or_bin
 planner_iter, candidate_id, proposal_source
-action_seq, action_bounds_ok, action_norm, action_smoothness
+action_seq_hash, action_norm, action_smoothness, bounds_ok
 pred_terminal_latent_hash, pred_goal_cost
-(optional) reachability/TD/ACID/uncertainty/support scores
-selected, elite_rank
+optional: reachability, td_cost, uncertainty, consistency, support
+elite_rank, selected
 env_restore_id
-real_terminal_state/obs_hash, real_task_cost, success   # audited candidates only
+real_terminal_obs_hash, real_task_cost, success      # audited candidates
 ```
 
-### S2 train/sample manifest
-每个 model checkpoint 保存：
+## S2 Dataset / training manifest
+
+每个 checkpoint：
 ```text
 dataset_revision
+raw_transition_multiset_hash
 episode_partition_hash
 local_transition_hash
-one_step_window_manifest_hash
+history_window_manifest_hash
 long_pair_manifest_hash
 behavior_policy_tag
-state/edge occupancy summary
-code commit + resolved config + seeds
+state_occupancy_summary
+edge_occupancy_summary
+goal_distribution_hash
+code_commit, dependency_lock, resolved_config, seeds
 ```
 
-没有这些 hash，I01 不允许写因果解释。
+**I01 没有这些 hash 就不能写因果解释。**
 
-### S3 oracle execution harness
-在 simulator 上验证：
-1. snapshot/restore 或 reset+replay deterministic enough；
-2. 同 candidate 重放得到 task cost 波动 floor；
-3. planner RNG 与 env RNG 分开；
-4. privileged state 只进入 diagnostic file，不进入 pixel model input。
+## S3 Oracle / replay harness
 
-### S4 common result table
-episode-level parquet/jsonl（大文件不入 git），摘要 CSV/markdown 入 `results/`：
+在 simulator 验证：
+1. snapshot/restore 或 deterministic reset+replay；
+2. same candidate 重放波动 floor；
+3. env RNG、planner RNG、data RNG 分开；
+4. privileged simulator state 只写 diagnostic，不进入 pixel method input；
+5. true-dynamics candidate execution 和 model prediction 使用同 action units/repeat。
+
+## S4 Common result table
+
+raw parquet/jsonl 不进 git；git 存摘要+manifest：
+
 ```text
-model, checkpoint, train_seed, eval_seed, planner_seed,
-task, goal_offset, horizon, budget, replanning,
-candidate_source, success, task_cost,
-plan_real_rho, elite_rho, candidate_regret,
-pred_real_gap, support_score, wall_clock, peak_vram, data_wait
+model, checkpoint, train_seed, eval_seed, planner_seed
+task, goal_source, goal_distance, horizon, action_block, replanning
+candidate_budget, planner_iters
+success, task_cost
+plan_real_rho, elite_rho, candidate_margin, candidate_regret
+pred_vs_real_endpoint_gap
+support_or_fidelity_if_defined
+wall_clock, model_calls, peak_vram, data_wait
 ```
 
 ---
 
-## 2. Gate A — baseline parity（E00/E01）
+# 2. Gate 0 / A — E00 + E01：先证明 baseline 与 instrumentation 可信
 
-**不追求同时复现所有论文。**
+## E00 resource/native smoke
+
+目的：
+- dataset/checkpoint能加载；
+- action/goal/success semantics 对；
+- 完整 env→encode→plan→act 闭环；
+- 测真实 peak VRAM / train step / planner decision / env render / data wait。
+
+单 GPU、低并发；不跑满默认 100 epochs。
+
+## E01 baseline parity + logger
 
 通过条件：
-- 官方 checkpoint 原生 protocol 能跑闭环；
-- 一项重新训练能落在作者 variation/合理误差区间，或明确记录无法对齐原因；
-- candidate logger 与 restore harness 通过阳性/重复性检查；
-- 得到真实单卡 train/eval/I/O cost。
+- official checkpoint 原生 protocol 落在公开结果合理范围，或 protocol差异已定位；
+- 至少一项从头训练能解释；
+- candidate logger 开/关不改变相同 seed 的 planner behavior；
+- replay/oracle harness通过；
+- 一个 contact-rich task可运行；
+- 有实际 GPU-hour / I/O 数字。
 
-只在 Gate A 后启动大规模 seed/sweep。
-
----
-
-## 3. Gate B — decision audit replication（E02）
-
-目的不是创新，是校准工具：
-- 按 DA-LeWM 定义在 random / mid-CEM / elite stage 复现 latent↔real rank。
-- fixed candidate pool 同时算 real-endpoint latent cost 与 predicted-endpoint latent cost。
-- 记录 candidate margin：top candidates 的 real-cost gap / latent-cost gap。
-- 先 LeWM，后 RC-aux（training-only 与 planner gate 分开）。
-
-如果连已知 alignment gap 都测不到，先修 harness；不要直接开始 I01/I02。
+**只有 Gate A 后才做多 seed / 大 sweep。**
 
 ---
 
-## 4. Mining lane I01 — behavior-policy geometry contamination
+# 3. Gate B — E02：复制一个已知 decision audit，校准测量
 
-### E03：episode-partition invariance（最便宜、最干净）
-同一个 raw transition store 生成两种 metadata：
-- A：原始 trajectory boundaries/pairs；
-- B：只改变 long-pair/episode partition 规则，**保持 one-step/local training sample manifest 完全一致**。
+不是 novelty。
 
-训练/finetune：
-- LeWM local predictive baseline（negative control）；
-- RC-aux reachability；
-- TD-JEPA（代码可稳定时）。
+按 Decision-Metric Alignment / AD-WM 相关定义：
+- random candidates；
+- mid-CEM candidates；
+- elite candidates；
+- fixed pool。
 
-先 1 seed × 1 navigation task 做决定性 pilot；若 effect > noise/MIE，再扩 3 seeds/多任务。
+同一 candidate 保存：
+1. real environment utility；
+2. encoded real endpoint latent cost；
+3. predicted endpoint latent cost。
 
-### E04：behavior path length vs environment distance
-TwoRoom/maze 构造：
-- shortest-ish policy；
-- detour/loop policy；
-- route-mixture。
-目标是匹配 local edge/state support，而改变同 state-pair 的 observed temporal-gap distribution。
+读数：
+- Plan-Real / stage-wise rank；
+- selected-action flip；
+- candidate margin；
+- fixed-pool regret；
+- dynamics-induced ranking flip。
 
-需要 environment oracle：
-- directed shortest steps (d^*(s,g))；
-- (R^*_h(s,g)=1[d^*le h])。
-
-测：
-- trajectory label 与 oracle disagreement；
-- learned reachability/TD calibration to (Delta_eta) vs (d^*)；
-- fixed candidate ranking；
-- closed-loop planning；
-- unseen route/stitch goal。
-
-**扩展门：** 只有 navigation 中建立 identification 后，才把思想带到 PushT/Cube（continuous 任务没有精确 shortest path时，改用 paired behavior route + simulator candidate consequence，不伪称 shortest oracle）。
-
-### 若现象成立，方法探索顺序
-不先写“我们的方法”。按最小干预：
-1. local-transition/Bellman/quasimetric consistency regularization；
-2. pair label 从 point (Delta) 改成 lower-bound / interval / multi-route aggregation；
-3. graph-local / connectivity supervision；
-4. data reweighting，使 behavior route frequency 不支配 geometry。
-
-每个修复先问：在不看 test success 的 validation protocol 上是否真的减少 behavior sensitivity？
+注意：DA-LeWM/AD-WM 已经观察到 elite-stage alignment/regret很关键。**复制成功只是说明我们的工具可用。**
 
 ---
 
-## 5. Mining lane I02 — optimizer-induced support drift
+# 4. I01 主线 — trajectory-factorization dependence
 
-### E05：CEM support drift / false elites
-对每个 CEM iteration：
-- 保存全 candidate（或可控 subsample）；
-- support：behavior action-chunk kNN、BC log-likelihood；有 PLDM ensemble 时 disagreement；
-- prediction score 与 environment true utility；
-- false-elite：latent top-E 中真实 cost 落后于 pool 某 percentile；
-- selected regret。
+## E03a：split-only sanity（可选、极便宜）
 
-对照：
-- random fixed pool；
-- CEM；
-- true-dynamics scoring；
-- behavior-retrieval init；
-- ACID/uncertainty gate（按可用性）。
+同 raw transitions，把一条长 trajectory 在合法 boundary 切成多 episode，但不做跨 route splice。
 
-先 PushT + TwoRoom（一个 contact，一个 navigation）。  
-**判别重点：** support drift 是否随 iteration 单调/结构化，是否先于 optimism/false elite；不是只看最终 success。
+作用：
+- 检查 method 是否对 logging segmentation敏感；
+- 校验 long-pair sampler/target确实由 episode metadata决定。
 
-### 若成立，方法方向
-只允许围绕被证实的链条设计：
-- support-aware proposal constraint；
-- epistemic/consistency gate；
-- validation-calibrated early stop / trust region；
-- candidate set mixture（behavior-supported + exploratory）。
-如果简单 PLDM ensemble uncertainty 已完全修复，则记录并 park，不造复杂方法。
+**单独有结果不够 paper。** 它只是 E03b 的 smoke。
 
----
+## E03b：valid cut-and-splice refactorization（核心 identification）
 
-## 6. Mining lane I03 — bottleneck regime / relocation
+### 构造
 
-### E06：oracle bottleneck ladder
-2 个任务 × 3 个 goal-distance bins × 2 candidate budgets：
-- LeWM baseline；
-- one geometry intervention；
-- one dynamics intervention；
-- one proposal intervention（有现成 checkpoint 才加）。
+在 navigation state graph 找共享 junction (x)：
 
-每格执行 oracle ladder：
 ```text
-candidate-set ceiling
-real-endpoint latent ranking
-predicted-endpoint ranking
-true-dynamics score
-nearby-subgoal diagnostic
+A: p1 -> x -> s1
+B: p2 -> x -> s2
+```
+
+构造另一种合法 factorization：
+
+```text
+A': p1 -> x -> s2
+B': p2 -> x -> s1
+```
+
+要求：
+- 所有 adjacent transitions 都来自原始数据；
+- raw transition multiset一模一样；
+- fixed-history/one-step training-window multiset一模一样；
+- 只有 long-range within-trajectory pair membership / temporal gaps 改变。
+
+如果 history window 跨 junction 会改变，则**删除或 matching 两边 junction-crossing windows**，直到 manifest hash 一致。不能只说“转移一样”。
+
+### 方法
+
+- RC-aux
+- TD-JEPA
+- LeWM negative control
+- local-geometry control（TS / CGS，有可靠实现后）
+
+### 读数
+
+Data:
+- pair membership flips；
+- temporal-gap shifts；
+- cross-trajectory-negative status flips。
+
+Model:
+- (R_phi(z,z',h)) / (d_psi(z,z')) paired shift；
+- environment shortest-distance/reachability calibration。
+
+Decision:
+- fixed-pool rank；
+- elite rank；
+- selected-action flip；
+- candidate regret；
+- closed-loop pilot。
+
+### Gate
+
+只有 **target → learned geometry → decision** 至少到 fixed-pool decision level成立，且 LeWM/local controls稳，才 E04。
+
+只 head 变、decision null → 不扩。
+
+---
+
+## E04：natural behavior route intervention
+
+E03 是人工但合法 identification；E04 测真实 data-collection semantics。
+
+同 MDP / rendering / goal distribution：
+- shortest-ish behavior；
+- systematic detour / loop；
+- route mixture。
+
+尽量匹配：
+- state occupancy；
+- local directed edge support/frequency；
+- action marginal；
+- data amount。
+
+Navigation exact oracle：
+[
+d^*(s,g), qquad R_h^*(s,g)=mathbf 1[d^*(s,g)le h]
+]
+
+比较 observed (Delta_eta) 与 (d^*)，再看 learned geometry 与 decision。
+
+### E04 通过后才方法化
+
+按简单→复杂：
+
+1. **multi-route aggregation**：同 pair 多条 observed route，避免一条 behavior path 直接定义 cost；
+2. **interval / lower-bound target**：observed gap 是 upper bound，不当 point truth；
+3. **local Bellman / quasimetric consistency**：用 local dynamics 约束 long-range geometry；
+4. **graph-local connectivity / shortest-path surrogate**（仅数据可合法构图时）；
+5. **data reweighting**：降低 route frequency 对 geometry 的支配。
+
+每个修复必须：
+- 在 validation 上降低 A/B trajectory-factorization sensitivity；
+- 不看 test success 选 hyperparameter；
+- 保持或提升 real candidate/control consequence；
+- 和 QRL/quasimetric思想区分清楚：我们的 contribution 不是“发明 quasimetric”，而是 latent-WM planning objective 的 invariance failure + repair。
+
+---
+
+# 5. I03 第二主线 — bottleneck relocation / regime law
+
+## E06：oracle bottleneck ladder
+
+先：
+- 2 tasks（一个 topology/navigation，一个 contact-rich）；
+- 3 goal-distance bins；
+- 2 candidate budgets；
+- LeWM baseline。
+
+必要时只加一类 method per layer：
+
+- metric/geometry: TS/CGS 或 RC-aux training-only
+- dynamics: SALT / direct-horizon method
+- counterfactual action: AD-WM only if code/checkpoint可得
+- proposal: GC-IDM / IMWM / SAGE 中一个
+
+每格 oracle ladder：
+
+```text
+candidate-set oracle ceiling
+encoded-real endpoint ranking
+predicted endpoint ranking
+true-dynamics scoring
+nearby-ground-truth subgoal diagnostic
 end-to-end closed loop
 ```
 
-输出不是总分，而是 failure signature：
+Failure signature：
 ```text
-R = representation/metric limited
-D = dynamics/rollout limited
-P = proposal limited
-H = horizon/target limited
-M = mixed / not identifiable
+R = representation/metric
+D = dynamics/rollout
+A = action discrimination
+P = proposal/search
+H = horizon/target interface
+M = mixed / unidentifiable
 ```
 
-### E07：interaction probe
-只在 E06 显示稳定 signature 后做 2×2：
-- geometry × dynamics；
-- dynamics × proposal；
-- geometry × proposal。
-看 improvement 是否 additive、redundant、synergistic 或互相伤害。
+## E07：只做最有信息增益的 interaction
 
-**升级成 paper lead 的条件：**
-- signature 能由一个跨任务变量预测（goal distance / candidate margin / support 等）；
-- intervention ranking 随该变量规律性切换；
-- 至少两个 model families/substrates；
-- 能导出一个比“oracle 选方法”更实际的 adaptive rule 或训练原则。
+E06 先产生 hypothesis，再挑一个 2×2：
+- geometry × dynamics
+- dynamics × proposal
+- geometry × proposal
+- action-discrimination × proposal
 
----
+不是三向全因子。
 
-## 7. Mining lane I04 — random→elite alignment gap（从属于 I02/I03）
+### I03 升级条件
 
-DA-LeWM 已经定义 CEM-stage Spearman，所以不重新发明 metric。
+- 少数 observable variables（goal distance / candidate margin / planner-reachable fidelity / data support 等）跨 task 预测 signature；
+- intervention ranking 按该变量规律切换；
+- 至少两种 substrate/model families；
+- 能导出 deployable/adaptive rule 或 training principle，而不是 oracle 事后选方法。
 
-复现后进一步记录：
-- stage-wise candidate margin；
-- support；
-- disagreement；
-- predicted-real error；
-- ranking flip count。
-
-若 (ho_{random}) 高而 (ho_{elite}) 塌，并且 candidate margin/support 可以预测塌陷，则把它并入 I02/I03。  
-若只是重复 DA-LeWM，停在 calibration asset。
+否则 I03只是 diagnostic map，不包装 paper。
 
 ---
 
-## 8. 扩展 baseline 的加入条件
+# 6. I02 / E05 — PARKED idea 的 conditional diagnostic
 
-| baseline | 何时加入 | 不加入的原因 |
+由于 **A Control Theory of Predictability** 已直接 formalize planner-reachable/off-manifold divergence，且 offline MBRL model exploitation已有经典文献，E05 不再是独立主线。
+
+只有 I03 需要判断“search 是否进入 unsupported region”时运行：
+
+- stage-wise behavior action support；
+- planner-reachable fidelity；
+- ensemble uncertainty；
+- predicted vs true plan-cost discrepancy；
+- false elites；
+- regret。
+
+若 P40 fidelity / PLDM uncertainty已解释现象，就停止，不发明新 detector。
+
+---
+
+# 7. Baseline 加入条件
+
+| Baseline | 何时加入 | 为什么不是首轮 |
 |---|---|---|
-| Temporal Straightening | I03 geometry gate | 不为“方法多”而加 |
-| SALT | E06 dynamics gate，且代码可跑 | 最新预印本，先核实现实复现成本 |
-| Fast-LeWM | 需要 prefix/direct-horizon 对照 | 它同时改 speed 与 dynamics，解释要小心 |
-| PLDM | I02 uncertainty / offline data对照 | 环境/框架差异大时原生分表 |
-| QRL/quasimetric | I01 方法/理论对照 | JAX 独立环境，不强迁移成 PyTorch |
-| IMWM/SAGE/GC-IDM | E06 proposal gate | 三个里先一个，避免同类冗余 |
-| ACID | I02 verifier control | inverse consistency 不是 oracle |
-| Flow-JEPA | stochastic/OOD lead 才加 | 不把所有新方法一次装齐 |
-| HWM/Dual-WM | 只有 temporal-scale lead 升级 | 长 horizon 已拥挤 |
+| TD-JEPA | **I01 首轮** | official repo已核对、同 LeWM stack |
+| RC-aux | **I01 首轮** | direct trajectory reachability target |
+| Temporal Straightening / CGS | E03/E04 local-geometry control | 只需一个先行，避免装方法大全 |
+| QRL / multistep quasimetric | I01 repair/理论对照 | JAX/不同 framework，可概念+原生对照，不强迁移 |
+| Traj-LeWM | I01 path-supervision扩展通过后 | source-only，full-trajectory preference会引入额外变量 |
+| SALT | E06 dynamics gate | 最新 preprint，先确认 code/runtime |
+| AD-WM | E06 action-discrimination gate | 直接占 counterfactual story，不作为初始 idea |
+| PLDM | E06 uncertainty/data gate | 原生 protocol/framework不同，分表 |
+| GC-IDM / IMWM / SAGE | E06 proposal gate | 同类只先一个 |
+| ACID / MEND | verifier/detector diagnostic | internal score ≠ environment oracle |
+| ALeWM / AnisoWM / PSG-JEPA | specific representation/capacity confound | 不为“更多 baseline”而加 |
+| CompACT / World-In-World / GeoWorld | venue/邻域 anchor | training更重/范式不同，不适合首轮 substrate |
 
 ---
 
-## 9. 并行策略：把“卡多”变成 scientific throughput
+# 8. 多 GPU 调度：parallel scientific throughput
 
-### 可以直接独立并行
+## 可独立并行
+
+- A/B paired dataset variants；
 - train seeds；
-- evaluation groups；
-- planner budgets/horizons（共享 read-only checkpoint）；
-- fixed candidate audits；
-- paired dataset variants；
-- method × task 原生复现；
-- bootstrap/CI 与结果分析（CPU）。
+- evaluation manifests；
+- goal-distance bins；
+- planner budgets；
+- candidate audits；
+- confirmatory baselines。
 
-### 不要同时打共享盘
-每节点先：
-1. stage dataset 到 local disk；
-2. 一次 hash；
-3. 启动少量 jobs 测 data_wait；
-4. 并发翻倍，若 GPU util 降/data_wait 升，停止扩并发。
+## 并发前 I/O gate
 
-### GPU 排序
-1. **已有 checkpoint 的 evaluation/diagnostic**；
-2. 决定性 1-seed pilot；
-3. 阳性对照；
-4. 只有 lead 通过才 3–5 train seeds；
-5. 最后才跨 benchmark 铺开。
+每节点：
+1. dataset stage 到 node-local disk；
+2. hash；
+3. 1 job 测 data_wait；
+4. 2–4 jobs；
+5. 并发翻倍；
+6. GPU util下降 / data_wait明显上升就停，不用更多 GPU掩盖 I/O。
 
-不同地点只交换小 config/metrics/代码；默认不交换内部数据或大 checkpoint。
+跨节点只同步：
+- code
+- small configs
+- manifests
+- metrics
+- summary tables
 
----
+默认不做跨节点 gradient communication，也不在研究室↔实习地点随意搬内部数据/checkpoint。
 
-## 10. 统计与实验卫生
+## GPU 优先级
 
-- success：episode-level paired result + train-seed variance 分开。
-- candidate metric：每个 start-goal 先算 pair-level，再跨 pair bootstrap；不要把数千 candidate 当独立样本伪增 n。
-- Spearman undefined pair 要计数，不静默删。
-- dataset intervention 用 manifest hash 证明 local samples 是否相同。
-- multiple sweeps：探索结果与 confirmatory rerun 分开；最终 claim 用新 eval manifest/seed。
-- method hyperparameter 在 validation task/seed 选，test 不调。
-- wall-clock 与 candidate/model-call budget 两套公平比较都记录。
+1. 已有 checkpoint 的 diagnostic/eval
+2. 1-seed decisive pilot
+3. positive/negative controls
+4. lead通过后 3–5 train seeds
+5. 最后才跨 benchmark铺开
 
 ---
 
-## 11. Local agent 第一次进入时的硬任务
+# 9. 统计卫生
 
-1. 读 `README.md` → `PAPER_LINEAGE.md` → `PROBLEM_METHOD_MAP.md` → `POSITIONING.md` → 本文件 → `HANDOFF.md`。
+- candidate 不是真独立 n；bootstrap unit = start-goal / planning decision；
+- train-seed variance 与 eval episode CI分开；
+- Spearman undefined pair计数；
+- A/B data intervention必须有 manifest hash；
+- exploratory seed/manifest 与 confirmatory新 seed/manifest分开；
+- success threshold/test goals 不事后改；
+- compute matched：model calls + wall-clock 两种口径都报；
+- method tuning在 validation；
+- failed runs、load mismatch、renderer mismatch不静默删除。
+
+---
+
+# 10. Local agent 的执行顺序
+
+1. 读 README → PAPER_LINEAGE → LITERATURE_LEDGER → PROBLEM_METHOD_MAP → POSITIONING → 本文件 → HANDOFF。
 2. `python3 tools/process/check.py`。
-3. 盘点本机已有 repo/data/checkpoint，填 `ASSETS.md` “已下载/已加载/已跑通”状态，禁止重新下载已有资产。
-4. 执行 E00；获得真实成本。
-5. E01 把 baseline + candidate logger + restore harness 跑通。
-6. E02 校准 decision audit。
-7. **优先 E03 → E04（I01）**；I02/E05 可在另一独立节点并行，但不因为卡多同时起十条 story。
-8. 每个结果更新实验卡、CLAIMS/PAIN_LOG、当天 log；scientific claim 没有数据就保持 L0。
+3. 资产盘点，不重复下载。
+4. E00。
+5. E01。
+6. E02。
+7. **E03a smoke（可选）→ E03b valid refactorization。**
+8. E03b过 gate → E04。
+9. 同时可在闲置独立节点做 E06 的小 oracle ladder；**不自动跑 E05**。
+10. 每个结果按 card decision table自主推进，不每 job回来问人。
 
-完整提示词见 `LOCAL_AGENT_PROMPT.md`。
+完整启动词：[LOCAL_AGENT_PROMPT.md](LOCAL_AGENT_PROMPT.md)。
