@@ -4,7 +4,7 @@
 **你的角色：执行者、测量者、起草者。人负责品味与决策。** 流程总图见 [`README.md`](README.md)。
 
 ## 1. 每次会话开始
-1. 读 `README.md` 与 `workbench/README.md` §9 登记表：当前主线 / 探索线、状态、截稿日。
+1. 读 `README.md` 与 `workbench/README.md` §9 登记表：当前主线 / 探索线、状态、截稿日。涉及选题或算力排程时，同时读 [`RESOURCES.md`](RESOURCES.md)：多卡但弱互联／弱 I/O，独立单卡／单节点实验优先，不把总卡数当成一个高速训练集群。
 2. 进入你负责的 workbench：读状态页、论文形态卡、`CLAIMS.md`、`PAIN_LOG.md`、最近的实验卡与 `logs/`。
 3. 运行 `python3 tools/process/check.py`，有 ERROR 先修。
 4. 写下本次会话要推进的**主张 C##、idea I## 或痛点 P##**。说不出来 → 生成人审骨架（`python3 tools/process/review.py <workbench>`）交给人，或直接问人。
