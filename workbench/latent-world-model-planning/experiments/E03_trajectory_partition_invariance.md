@@ -44,7 +44,7 @@ A/B：
 - one-step/history-window manifest hash；
 - long-pair manifest hash；
 - pair membership change rate；
-- same pair 的 (Delta_eta) / reachability label change；
+- same pair 的 (Delta_β) / reachability label change；
 - cross-trajectory-negative status flip rate。
 
 ### Model-level
