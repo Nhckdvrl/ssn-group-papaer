@@ -112,7 +112,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 ---
 
-## 9. 登记表（2026-10-01；`tools/process/check.py` 读取本表）
+## 9. 登记表（2026-10-02；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
@@ -123,6 +123,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | — | — | 9/30 按 v2 开启，尚未运行；恢复前补 territory 卡的热度 / 立足点 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
 | `mechanism-population-dynamics` | ACTIVE-EXPLORE | ICML 2027 / NeurIPS 2027 | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：利用公开 multi-seed × multi-checkpoint 模型群体研究 mechanistic claim 在什么抽象层次上可复现；第一轮不训练模型，先做已知 mechanism 的 causal baseline + population measurement |
+| `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | 用户授权调查并登记（2026-10-02）；紧凑 latent WM 的表示／动力学／决策可靠性；已建谱系、资产快照与本地 handoff，未运行，不改变现有 ACTIVE 调度；资源见根目录 `RESOURCES.md` |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
 | `model-diffing-measurement` | PAUSED | — | — | — | — | 同上；工具链可用于多智能体线的白盒分析（P4） |
