@@ -19,6 +19,7 @@
 | physical-grounding 近邻 | [Haodong-Yan/PSG-JEPA](https://github.com/Haodong-Yan/PSG-JEPA/tree/3bf67a47a9143f9f4fb4d39f839143c92902714c) | OGBench planning + LIBERO policy 两 track；依赖说明 | privileged grounding baseline，只有 representation/grounding lead 才接 |
 | adaptive-capacity 近邻 | [arm-research/AAIR-ALeWM](https://github.com/arm-research/AAIR-ALeWM/tree/6717193bdc3b92e43f581b3c668ca9b82c299c70) | 本轮核对为 project-page release | **不是 code-ready baseline**；不能看到 repo 就假定 research code 已发布 |
 | heavy visual-WM anchor | [kdwonn/CompACT](https://github.com/kdwonn/CompACT/tree/71b3029910d7460c5fa8658e17ab34e29c2c880c) | official CVPR code / training README | paper-scale tokenizer/WM 默认多 GPU；不作为 compact workbench 首轮训练 baseline |
+| protocol/interface diagnostic | [24GUNV/LeWMRO](https://github.com/24GUNV/LeWMRO/tree/faff2ea4768767739b9cca55855dc5aacf13578f) | ICML'26 Workshop Oral code、terminal/prefix/running costs、receding-horizon eval、deceptive envs、tests、results manifest | **E06 protocol gate 可直接复用**；datasets/checkpoints 不在 repo，不能假定开箱即跑 |
 
 Temporal Straightening 的 global-projector 修复 commit：[64a7585819e749bfec327ad984ee08570d07f0eb](https://github.com/agentic-learning-ai-lab/temporal-straightening/commit/64a7585819e749bfec327ad984ee08570d07f0eb)。这是已核对的修复标识，不能自动当成包含全部后续更改的最终锁点。
 
@@ -80,6 +81,12 @@ OGBench reference algorithms 基于 JAX；SWM／LeWM 主路径基于 PyTorch。�
 - **PSG-JEPA**：OGBench planning 使用 GC-IDM，不是 LeWM CEM；LIBERO 又是 OFT action head。只能在相同 planner/input protocol 下比较 representation，不能直接把论文 success 数字和 CEM methods 排名。
 - **ALeWM**：当前 connector 核对 repo 是 project page；README 说 root 为 future code 留位，不代表 code 已可运行。
 - **CompACT**：official README 报告 tokenizer paper training 8 H100、WM default 4 RTX 6000 Ada；虽然单 GPU script存在，也不能据此假定 paper-scale reproduction 适合我们首轮。
+
+## 3.7 Replanning / scoring-time protocol baseline
+
+LeWMRO 明确区分 planning horizon (H) 与 executed prefix (K)，并提供 terminal@H、prefix@K、running cost。E02/E06 若使用 (K<H) 的 closed-loop MPC，必须先做这一 protocol gate；否则可能把 scoring-time mismatch 误当模型/representation failure。
+
+其 repo 固定 commit：`faff2ea4768767739b9cca55855dc5aacf13578f`。代码与 tests 可用，但 upstream datasets/checkpoints 未随 repo 发布；首次执行仍需按 provenance 获取 LeWM asset。
 
 ## 4. 资源判断：作者测量与本地测量分开
 
