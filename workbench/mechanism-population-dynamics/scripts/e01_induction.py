@@ -22,7 +22,8 @@ import mp_common as mc
 
 sys.path.insert(0, str(mc.PARENT_CODE / "src"))
 from find_induction_heads import find_induction_heads, generate_repeated_random_tokens  # noqa: E402
-from utils.ablate_utils import run_and_cache_model_random_tokens, run_loss_with_ablation  # noqa: E402
+import transformer_lens.utils as tl_utils  # noqa: E402
+from utils.ablate_utils import head_ablation_hook, run_and_cache_model_random_tokens  # noqa: E402
 from utils.model_utils import set_seed  # noqa: E402
 
 KS = [1, 2, 3, 4, 7, 9]
@@ -71,7 +72,37 @@ def induction_score_tensor(model, seed=42, batch=1000, seq_len=50):
     return (acc / batch).cpu()
 
 
+R2_POS = [50, 500]                                   # parent reads loss_vec[..., 50] and [..., 500]
+R3_POS = list(range(1, 50)) + list(range(51, 100))  # predict r2..r50 and r2'..r50'
+
+
+def loss_at(model, toks, positions, fwd_hooks=(), bs=100):
+    """Per-token loss (TL indexing: entry j = loss of predicting token j+1) at `positions` only.
+
+    Numerically the same as model(..., return_type="loss", loss_per_token=True)[:, positions]; skips the
+    unembed/log_softmax at unused positions (which dominated runtime).
+    """
+    pos = torch.tensor(positions)
+    out = []
+    store = {}
+
+    def grab(x, hook):
+        store["x"] = x[:, pos.to(x.device)]
+        return x
+
+    with torch.no_grad():
+        for i in range(0, len(toks), bs):
+            tb = toks[i:i + bs].to(model.cfg.device)
+            model.run_with_hooks(tb, return_type=None,
+                                 fwd_hooks=list(fwd_hooks) + [("ln_final.hook_normalized", grab)])
+            logp = model.unembed(store["x"]).log_softmax(-1)
+            tgt = tb[:, pos.to(tb.device) + 1]
+            out.append((-logp.gather(-1, tgt[..., None])[..., 0]).float().cpu())
+    return torch.cat(out)
+
+
 def per_token_loss(model, toks, fwd_hooks=(), bs=50):
+    """Full per-token loss (kept for the equivalence check)."""
     out = []
     with torch.no_grad():
         for i in range(0, len(toks), bs):
@@ -82,13 +113,11 @@ def per_token_loss(model, toks, fwd_hooks=(), bs=50):
 
 
 def r2_from_loss(lv):
-    return lv[:, 50] - lv[:, 500]  # parent: loss@50 - loss@500 (higher = more in-context benefit)
+    return lv[:, 0] - lv[:, 1]  # columns = R2_POS; parent: loss@50 - loss@500 (higher = more in-context benefit)
 
 
-def r3_from_loss(lv, half=50):
-    first = lv[:, 1:half].mean(1)            # predict r2..r50
-    second = lv[:, half + 1:2 * half].mean(1)  # predict r2'..r50'
-    return first, second
+def r3_from_loss(lv):
+    return lv[:, :49].mean(1), lv[:, 49:].mean(1)  # columns = R3_POS: first half, second half
 
 
 # ---------------- ablations ----------------
@@ -99,14 +128,12 @@ def parent_random_cache(model, seq_len):
     return cache
 
 
-def parent_loss(model, toks, heads, cache, bs=50):
-    out = []
-    with torch.no_grad():
-        for i in range(0, len(toks), bs):
-            tb = toks[i:i + bs].to(model.cfg.device)
-            out.append(run_loss_with_ablation(model, tb, heads, cache).float().cpu())
-            model.reset_hooks()
-    return torch.cat(out)
+def parent_hooks(heads, cache):
+    """Exactly the hook list built by utils.ablate_utils.run_loss_with_ablation."""
+    return [(tl_utils.get_act_name("v", layer),
+             partial(head_ablation_hook, head_index_to_ablate=head,
+                     act_name=tl_utils.get_act_name("v", layer), random_cache=cache))
+            for layer, head in heads]
 
 
 def z_hooks(heads, mode, mean_z=None):
@@ -150,6 +177,7 @@ def main():
     ap.add_argument("--step", type=int, default=None)
     ap.add_argument("--skip_ablation", action="store_true")
     args = ap.parse_args()
+    torch.set_grad_enabled(False)  # TL params require grad; parent helpers do not wrap no_grad
     t0 = time.time()
     OUTDIR.mkdir(parents=True, exist_ok=True)
     tag = f"{args.repo.split('/')[-1]}__{mc.rev_name(args.step)}"
@@ -172,13 +200,13 @@ def main():
     # R2 / R3 clean
     pile_toks, pile_idx = pile_eval_set(model)
     rep = held_out_repeated(model)
-    lv_pile = per_token_loss(model, pile_toks[:, :505])
-    lv_rep = per_token_loss(model, rep)
+    lv_pile = loss_at(model, pile_toks[:, :505], R2_POS)
+    lv_rep = loss_at(model, rep, R3_POS)
     r2 = r2_from_loss(lv_pile)
     f, s = r3_from_loss(lv_rep)
     res["R2_clean"] = summarize(r2)
-    res["R2_clean_loss50"] = float(lv_pile[:, 50].mean())
-    res["R2_clean_loss500"] = float(lv_pile[:, 500].mean())
+    res["R2_clean_loss50"] = float(lv_pile[:, 0].mean())
+    res["R2_clean_loss500"] = float(lv_pile[:, 1].mean())
     res["R3_clean"] = {"first_half_loss": summarize(f), "second_half_loss": summarize(s), "drop": summarize(f - s)}
     per_seq = {"pile_idx": pile_idx, "R2_clean": r2, "R3_first": f, "R3_second": s}
 
@@ -198,12 +226,12 @@ def main():
                     heads = [tuple(map(int, x.split("."))) for x in hs]
                     for method in ("parent", "zero", "mean"):
                         if method == "parent":
-                            lp = parent_loss(model, pile_toks[:, :505], [list(x) for x in heads], cache_pile)
-                            lr = parent_loss(model, rep, [list(x) for x in heads], cache_rep)
+                            hp = parent_hooks(heads, cache_pile)
+                            hr = parent_hooks(heads, cache_rep)
                         else:
-                            hooks = z_hooks(heads, method, mz)
-                            lp = per_token_loss(model, pile_toks[:, :505], hooks)
-                            lr = per_token_loss(model, rep, hooks)
+                            hp = hr = z_hooks(heads, method, mz)
+                        lp = loss_at(model, pile_toks[:, :505], R2_POS, hp)
+                        lr = loss_at(model, rep, R3_POS, hr)
                         ff, ss = r3_from_loss(lr)
                         key = f"k{k}|{kind}|{method}|{j}"
                         abl[key] = {"heads": hs, "R2": float(r2_from_loss(lp).mean()),

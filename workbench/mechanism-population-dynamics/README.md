@@ -13,6 +13,12 @@ No final RQ, method, or anomaly is registered.
 
 Current state: **0 claims · 0 contributions · no method commitment · no training required at entry.**
 
+### 当前进展（2026-10-01）
+- **R0 完成：** 11 个 70M repo（canonical、deduped、seed1–9）× 154 step 全部存在，无重复 / 错挂权重；E01 用到的 22 个 checkpoint 张量级审计通过 → `results/artifact_manifest_70m.json`。
+- **E01 完成，判定为 A/B 中间态，等人审：** parent（Yin & Steinhardt 2025）的 induction 分数、出现时间（step 512→1000）、末期数值（0.42）、token-loss difference 均定量复现；但 parent 分数选出的 top-3 头**不是**最强因果成分——事后逐头消融显示最关键的是第 2 层 previous-token head（单独消融≈打掉全部复制能力）。parent 官方代码有 4 处与论文不一致，其 70M “induction 消融 ≈ 随机”的结论依赖一种分布外消融（P01、P03）。
+- **待人决定：** E02 的测量对象改为“prev-token + induction 两段电路的因果角色图”、读数与消融方法修订、E02 规模（见 `logs/2026-10-01.md`）。
+- 尚未运行 E02；未训练任何模型；CLAIMS 仍为 0 条。
+
 ## 1. Why inhabit this territory
 
 The model population already exists: PolyPythias exposes independent small-model training runs and dense checkpoints, so we can study mechanism formation without paying to pretrain the population.
@@ -185,4 +191,5 @@ Stop autonomous expansion and request review when:
 - experiment cards/scripts: `experiments/`
 - ideas only after real signals: `ideas/`
 - human reviews: `logs/`
-- large checkpoints/caches: local storage only; repo records exact source/revision/manifest
+- large checkpoints/caches: local storage only (`/home/xiang/mechpop_cache/hf`, parent code `/home/xiang/mechpop_cache/icl-heads` @ c0ba06e); repo records exact source/revision/manifest
+- env: `~/.venvs/mechpop` = verl-clean python (torch 2.8.0+cu128, transformers 4.57.6) + `transformer_lens==2.16.1`, `torchtyping==0.1.5` etc. installed `--no-deps` (see `scripts/run_e01.sh`)

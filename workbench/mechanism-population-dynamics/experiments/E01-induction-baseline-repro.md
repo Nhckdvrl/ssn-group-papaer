@@ -1,6 +1,6 @@
 # E01 — Pythia-70M induction baseline reproduction
 
-- **状态：** RUNNING（2026-10-01 协议冻结；以下“冻结协议”在任何结果产生前写定）
+- **状态：** DONE（2026-10-01；协议在任何结果产生前冻结；判定 = A/B 中间态，交人审）
 - **类型：** REPRO
 - **对应：** D1/D2；验证 mechanism measurement instrument，不支持 population novelty
 - **问题：** 我们能否在一个 canonical Pythia-70M training trajectory 上复现已知 induction behavior / mechanistic score / causal-ablation effect，并沿训练阶段得到可解释的 trajectory？
@@ -63,3 +63,29 @@
 **偏离 parent（事先声明）：** 不做 FV-head exclusion（70M 的 FV score 近 0，Fig 12；top-2% 只排除 1 个头）；随机对照 20 组而非 1 组；R2 用 2000 条而非代码默认 1000 / 论文 10,000。
 
 **算力预算：** 22 个 checkpoint × (R1+R2+R3+R4) ≈ 1–2 GPU·h（单卡，fvcrc20）。
+
+---
+
+## 结果（2026-10-01；不改上面的内容）
+
+**实际算力：** ≈9 GPU·h（22 checkpoint × ≈23 min；fvcrc20 GPU0/1/3 + fvcrc10 GPU1/2）+ 事后诊断 ≈0.3 GPU·h。第一次启动的旧实现（全词表 log_softmax、parent 路径未关梯度）运行 ≈25 min 后中止并丢弃；新实现与原实现逐元素相等（maxabs = 0.0，四种方法 × 两种输入均验证）。
+**结果文件：** `results/e01/<model>__step<N>.json`（逐头 R1/R1rep/R1b、R2/R3、全部 378 组消融）、`*.perseq.pt`（逐条值）、`summary.json` / `summary.md`、`e01_trajectory.png`；POST-HOC：`posthoc_rare_tokens_*.json`、`posthoc_headsweep.json`。
+
+### 按决策表逐条
+| 条件 | 结果 | 判定 |
+|---|---|---|
+| ① A@143000 top R1 ∈ 0.42±0.07；跳变在 (512, 2000] | top = L3H1 0.422（parent ≈0.42，同为第 3 层 3 个头）；step 512 → 1000：0.015 → 0.474（parent ≈0.47）。B（canonical）0.016 → 0.404 | ✅ |
+| ② A@143000 R2 clean ∈ 0.62±0.12 | 0.518 [0.333, 0.689]（n=2000，bootstrap）；step 1000 时 0.641 | ✅（点估计贴近下沿；R2 的 CI 半宽 ≈0.18，噪声大） |
+| ③ post-emergence 所有 checkpoint 上，top-k（k≤3）三种方法均超过全部 20 组随机头；pre-emergence 无效应 | pre-emergence（0/256/512）全部 ≈0 ✅。zero/mean：A 上 k=2,3 全部 20/20；k=1 为 19/20，**输掉的那一组恰好抽中同一个头（并列）**。parent 方法：A@32000/64000/143000 的 k=3 被含 L0H6 的随机组超过（P03）。**B（canonical）从 step 2000 起，k=3 在三种方法下都被随机组 {5.5, 4.1, 2.1} 超过**；step 32000 后单个 L0 头也超过 top-1 | ❌ 字面不成立 |
+| 预注册预期：R2 上 induction ≈ 随机 | parent 方法下部分复现（末期 k=9：12/20）；mean 消融下**不复现**：所有 post-emergence checkpoint 上 top-3 的 R2 效应超过 20/20 随机组（例：A@143000 0.107 [0.068, 0.147] vs 随机最大 0.033） | parent 的 70M 零结果依赖其消融方法 |
+
+**判定：A 与 B 的中间态 → 按决策表如实报告、交人审，不放宽阈值。** Parent 的行为 / 分数 / 训练轨迹在定量上复现；因果层面“注意力分数 top-k 的头是 induction 行为的必要成分”成立（zero/mean 下效应 5–9.6 nats，远超大多数随机组），但**不是**“最强的因果成分”。
+
+### POST-HOC 诊断（不能单独支撑主张）
+1. **单头因果图**（`posthoc_headsweep.json`，48 头 × zero/mean，step 1000/8000/64000/143000）：两条轨迹中单个最关键的头都是**第 2 层 previous-token head**——A：L2H7（prev-token 分数 0.87→0.78，R1 0.001），B：L2H1（0.91→0.78，R1 0.004）；单独消融使重复段 loss 上升 7.8–9.6 nats，即几乎全部复制能力。第 3 层 R1 高分头每个 0.6–6.2 nats。这就是 Olsson 的两段式电路（prev-token head → induction head）；parent 的 R1 只识别第二段。B 中打败 top-3 的随机组正是因为含 L2H1。
+2. **单个 top 头的因果份额随训练下降**：A 的 top-1（k=1, zero）6.0 → 5.3 → 3.7 → 2.2 → 1.4 → 1.3 → 0.6 → 1.9 nats（step 1000 → 143000），top-3 仍有 5.3–9.1；top-1 身份 L3H6 → L3H1（step 32000 起）。同一条轨迹内的 component turnover + 冗余化（Tigges 型现象，非新）。
+3. **后期第 0 层头获得因果相关性**：A 的 L0H0（mean 消融 3.1–4.0 nats）、B 的 L0H0/L0H2（2.5–4.9）在 step 64000 后出现；step 1000/8000 时没有。L0H6@A143000 则方向相反（P03）。
+4. **重尾**（P04）：末期随机 token 上的均值 loss 被少数 token 主导；中位数正常。
+5. A 与 B 的 step0 权重字节相同（同一初始化），只有数据流不同（deduped vs standard）：prev-token 角色落在 L2H7 vs L2H1，induction 头 {3.6, 3.1, 3.3} vs {3.6, 3.1, 3.5}。**这不是独立 seed 的比较，不作任何 population 解读。**
+
+**主张变化：** 无（baseline 复现不自动升级为 claim；CLAIMS.md 保持 0 条）。
