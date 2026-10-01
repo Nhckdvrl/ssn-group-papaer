@@ -118,7 +118,8 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `video-world-model-temporal-interfaces` | ACTIVE-MAIN | CVPR 2027 | 2026-11-16 | `CLAIMS.md` | 2026-09-29 | 块首“接缝失聪”，3 个独立系统复现；关口与第二阶段计划见 `CVPR_ASSESSMENT.md`；`CLAIMS.md` / `PAIN_LOG.md` 于 9/30 按 v4 格式整理，待负责人确认 |
+| `video-world-model-temporal-interfaces` | PAUSED | — | — | `CLAIMS.md` | 2026-10-02 | **H 类 scientific-yield 暂停**：接缝失聪现象成立，但当前 story 过窄、下游后果有限，且 ActionSplice 已占据 chunk/action responsiveness 的宽叙事；资产转为新主线的 diagnostic，不再执行旧 CVPR 扩系统/修 seam 计划 |
+| `real-time-causalization-capability-preservation` | ACTIVE-MAIN | CVPR 2027 / ICML 2027 | 2026-11-16 | `CLAIMS.md` | 2026-10-02 | **人已确认换轨**：研究 bidirectional/foundation → causal AR → few-step/distilled real-time 转换中 world-model capability 的选择性损失/保留；入口只做公开 stage checkpoints 的 matched measurement，不从零训 foundation model；ForgeWM stage-wise ablation 是近邻而非 novelty |
 | `multi-llm-collaboration` | PAUSED | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | 2026-10-01 | **可行性暂停（C）**：第一轮有解释力的 cross-play 需要至少两个充分训练 team；原始强 baseline 的完整 RL 成本过高，不适合作为当前探索线。保留全部 territory / cards，未来有廉价充分训练 substrate 时可重开 |
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | — | — | 9/30 按 v2 开启，尚未运行；恢复前补 territory 卡的热度 / 立足点 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |

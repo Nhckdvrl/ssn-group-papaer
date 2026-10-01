@@ -62,11 +62,12 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 | `failed/` | 跨项目的失败记录；桌面新颖性 kill 在 v3 起可带增量重开 |
 | `archive/` | 只读历史 |
 
-## 当前状态（2026-09-30）
-- **主线**：`workbench/video-world-model-temporal-interfaces/`（CVPR 2027，11-16 截稿）。
-- **提议的探索线**：`workbench/multi-llm-collaboration/`（训练出来的开源异构 LLM 团队；待人确认）。
+## 当前状态（2026-10-02）
+- **主线**：`workbench/real-time-causalization-capability-preservation/`（CVPR 2027 / ICML 2027）。研究对象不是某一个 seam bug，而是视频 foundation / bidirectional model 转成 causal、few-step、real-time world model 时，**哪些 world-model capability 被选择性损失、在哪个转换阶段发生、哪些设计能保住它们**。
+- **探索线**：`workbench/mechanism-population-dynamics/`（ICML 2027 / NeurIPS 2027）。
+- **PROPOSED**：`workbench/latent-world-model-planning/`，保持候选，不占 ACTIVE 名额。
+- **已降级**：`workbench/video-world-model-temporal-interfaces/` → PAUSED（H 类 scientific-yield 决定）。块首接缝失聪仍是可靠诊断资产，但不再作为独立 MAIN paper story；只在新主线需要区分 causalization / distillation / rollout 损失时复用。
 - 完整登记表：[`workbench/README.md`](workbench/README.md) §9；检查：`python3 tools/process/check.py`。
-
 ## 仓库规则
 - 顶层目录代表阶段 / 功能，不代表题目；不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验。
 - 候选编号只在 candidate 阶段出现；观察结果留在产生它的 workbench。
