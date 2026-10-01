@@ -11,7 +11,7 @@
 本地图保留不同阶段的文献与探索历史，不再将其当作一致的当前 leading explanation。
 acquisition-limited → alignment-limited 撤回领先地位；四篇 parent 未估计相同因果量。
 MuBench 已对简单 exposure-saturation 预测构成反压力，不能继续默认 broad gain 应消失。
-§17–23 是历史探索提议，不构成新研究承诺；reasoning language、Beetle 或内部机制
+§17–22 是历史探索提议，不构成新研究承诺；reasoning language、Beetle 或内部机制
 不能靠改标题自动接管 C。近邻用于定位和设计增量，不用于桌面关闭领域。
 
 当前授权工作：MONOWEB 有效训练干预上的英语任务学习→德语迁移 baseline。

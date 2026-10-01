@@ -14,6 +14,10 @@
 
 ## 结果（仅追加）
 
-尚未运行。先固定数据、工具测试与源语可学性；无claim升级。
+源语pilot完成；三条件与预注册适配种子比较进行中；无论文claim升级。
 
 启动前补充（2026-10-02）：数据准备完成，MNLI train 排除134个重复对、与XNLI test完全重叠0个；实际4096 dev/32768 train/5010 EN test/5010 DE test，hash见 `results/nli_data_manifest.json`。pilot使用完整1024-update schedule的前256步，后续三条件仍从原始权重重新开始。同一份recipe不因测试成绩改动。命令：`python scripts/nli_learning.py prepare`；`CUDA_VISIBLE_DEVICES=3 python scripts/nli_learning.py pilot --condition baseline --seed 17`（fvcrc20，conda openslime）。metrics/pair标准化单元测试与语法检查通过。
+
+源语结果：0/2048/8192例的独立EN dev accuracy分别32.84/50.02/77.78%；8192例Wilson95%CI[76.48,79.03]%，macro-F1 .7781，loss .5659，三类预测1519/1451/1126；majority34.94%。通过预注册工具gate。有效运行242.75秒（不含Python环境import），峰值GPU27.04GiB；完整loss/provenance/预测在 `artifacts/nli_learning/pilot_baseline_seed17/`，轻量结果 `results/nli_pilot_baseline_seed17.json` 与 completion。`results/nli_recipe_freeze.json` 锁定脚本hash、数据hash、仅EN开发读数及recipe；未用DE成绩选择。
+
+按决策表启动三条件全曲线：fvcrc10卡0/1/2分别baseline/monoweb/onlyparallel seed17；fvcrc20卡3 baseline seed29；fvcrc10卡3 monoweb seed29。最多5张同时，占用现空卡。其余seed29/43在这些任务完成后复用空卡，不扩大Cartesian product。
