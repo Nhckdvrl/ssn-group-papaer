@@ -114,14 +114,25 @@ def main():
             row["accepted"] = not reasons
             row["reject_reason"] = "; ".join(reasons) or None
             rows.append(row)
+            save(rows)
             print(json.dumps({k: row.get(k) for k in ("model_id", "checkpoint", "accepted", "reject_reason",
                                                        "rel_l2_to_prev", "rel_l2_to_step0", "pile_nll_16x512",
                                                        "bin_vs_safetensors_maxabs")}), flush=True)
     # tensor-identical across different steps anywhere in the audited set
+    save(rows)
+
+
+def save(rows):
+    """Merge into the existing manifest (one row per model_id x step; newest audit wins)."""
+    old = json.loads(mc.MANIFEST.read_text())["checkpoints"] if mc.MANIFEST.exists() else []
+    keep = {(r["model_id"], r["step"]): r for r in old}
+    keep.update({(r["model_id"], r["step"]): r for r in rows})
     out = {"generated": time.strftime("%Y-%m-%dT%H:%M:%S"), "loader": "pytorch_model.bin only (use_safetensors=False)",
            "tokenizer_note": "see r0_hf_metadata_70m.json tokenizer_oid per revision",
-           "checkpoints": rows}
-    mc.MANIFEST.write_text(json.dumps(out, indent=1))
+           "checkpoints": sorted(keep.values(), key=lambda r: (r["model_id"], r["step"]))}
+    tmp = mc.MANIFEST.with_suffix(".tmp")
+    tmp.write_text(json.dumps(out, indent=1))
+    tmp.replace(mc.MANIFEST)
 
 
 if __name__ == "__main__":

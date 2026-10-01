@@ -10,6 +10,7 @@ Writes results/e01/<model>__<rev>.json (+ per-sequence arrays .pt kept out of gi
 """
 import argparse
 import json
+import os
 import random
 import sys
 import time
@@ -39,11 +40,19 @@ def pile_eval_set(model):
     from transformer_lens import utils as tl_utils
     from datasets import load_dataset
 
+    cf = mc.CACHE / "pile_eval_2000_seed42.pt"  # deterministic; same tokenizer for every Pythia-70M run
+    if cf.exists():
+        d = torch.load(cf)
+        return d["tokens"], d["idx"]
     ds = load_dataset("NeelNanda/pile-10k", split="train")
     tok = tl_utils.tokenize_and_concatenate(ds, model.tokenizer)  # parent construction (1023 + BOS)
     g = torch.Generator().manual_seed(42)
     idx = torch.randperm(len(tok), generator=g)[:N_PILE]
-    return tok["tokens"][idx], idx
+    toks = tok["tokens"][idx]
+    tmp = cf.with_suffix(f".{os.getpid()}.tmp")
+    torch.save({"tokens": toks, "idx": idx}, tmp)
+    tmp.replace(cf)
+    return toks, idx
 
 
 def held_out_repeated(model, n=N_REP, half=50, seed=12345):
