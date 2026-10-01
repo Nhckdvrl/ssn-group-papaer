@@ -238,7 +238,7 @@ Navigation exact oracle：
 d^*(s,g), qquad R_h^*(s,g)=mathbf 1[d^*(s,g)le h]
 ]
 
-比较 observed (Delta_eta) 与 (d^*)，再看 learned geometry 与 decision。
+比较 observed (Delta_β) 与 (d^*)，再看 learned geometry 与 decision。
 
 ### E04 通过后才方法化
 
