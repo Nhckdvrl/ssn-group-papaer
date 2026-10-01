@@ -37,11 +37,11 @@
 导航 exact setting：
 - environment shortest distance (d^*(s,g))；
 - finite-budget oracle (R_h^*(s,g)=mathbf{1}[d^*(s,g)le h])；
-- observed behavior gap (Delta_eta(s,g)) 的 distribution。
+- observed behavior gap (Delta_β(s,g)) 的 distribution。
 
 比较：
-- target disagreement: (Delta_eta) / proxy label vs (d^*,R_h^*)；
-- learned head/geometry 更贴近 (Delta_eta) 还是 environment oracle；
+- target disagreement: (Delta_β) / proxy label vs (d^*,R_h^*)；
+- learned head/geometry 更贴近 (Delta_β) 还是 environment oracle；
 - fixed-candidate rank / elite rank；
 - selected-action flips；
 - candidate-set regret；
