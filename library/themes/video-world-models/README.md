@@ -1,7 +1,7 @@
 # 视频生成与世界模型（Video / world models）
 
-**范围：** 视频生成、可交互世界模型、分块/因果化生成、控制接口、长程一致性。
-**更新：** 2026-09-30（按题材重组；内容从 `KEY_PAPERS.md`、`TERRITORY_BANK.md`、`deep/` 迁移或索引而来，未改写）。
+**范围：** 视频生成、可交互世界模型、分块/因果化生成、控制接口、长程一致性；潜在世界模型与目标条件规划。
+**更新：** 2026-10-02（新增紧凑 latent planning 调查；旧深读材料与统计保留）。
 
 ## 1. 热度（`tools/venue_corpus`，顶会 main 接收数；ICLR 括号内为切片接收率 / 全会基准）
 
@@ -11,13 +11,16 @@
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 75 | 106（39% / 基准 32%） | 63 | 160 | 196（35% / 基准 27%） | 181 | 6 | 7 | 17 |
 
+上述为既有宽切片统计，不代表 latent planning 的独立热度或接收率；本轮未重新运行 venue corpus。
+
 ## 2. Territory 笔记
 
-（原 `TERRITORY_BANK.md` 中没有单独条目；见下方深读材料与 `search/our-taste/TERRITORY_SCAN_2026-09-30.md`。）
+- [紧凑潜在世界模型与规划 territory](../../../search/our-taste/LATENT_WORLD_MODEL_PLANNING.md)：单卡／单节点独立实验、共享模型与环境、保留多个研究分支。
+- 其他既有方向见深读材料与 `search/our-taste/TERRITORY_SCAN_2026-09-30.md`。
 
 ## 3. 关键论文与本目录文件
 
-- （暂无；新精读的论文卡放在本目录）
+- [LATENT_PLANNING_SURVEY.md](LATENT_PLANNING_SURVEY.md)：系统调查、相邻领域比较、五条谱系、核心论文卡、claim ownership、压力地图和逐篇阅读范围。更新到 2026-09-28 的直接后续；不是已复现报告。
 
 ## 4. 深读材料：`library/deep/` 中与本题材相关的章节
 
@@ -44,4 +47,6 @@
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/video-world-model-temporal-interfaces/`
+- [video-world-model-temporal-interfaces](../../../workbench/video-world-model-temporal-interfaces/)：已有视频控制接口主线，状态以 workbench 登记表为准。
+- [latent-world-model-planning](../../../workbench/latent-world-model-planning/)：2026-10-02 新登记 PROPOSED，不更改已有 ACTIVE 调度。执行入口为其 HANDOFF／E00。
+- [资源与基础设施边界](../../../RESOURCES.md)：用户确认的多卡、弱互联／弱 I/O 条件。
