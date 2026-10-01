@@ -57,6 +57,13 @@
 | P47 | Physically Grounded JEPA | arXiv | B | — | IDM + physical state alignment |
 | P48 | PSG-JEPA | arXiv | A | CODE: Haodong-Yan/PSG-JEPA @ 3bf67a4 | static + multi-horizon proprioceptive grounding |
 | P49 | Capability Separation: WM policy vs imitated world-action | arXiv | A | — | observational future factorization ≠ identified intervention |
+| P57 | Hidden Failure Modes in Latent WM Planning | ICML 2026 Workshop Oral | A | CODE: 24GUNV/LeWMRO @ faff2ea | replanning/scoring-time mismatch + controllability interface |
+| P58 | PhyLatent | arXiv | B | project page | physical invariance/distinguishability/counterfactual-dynamics collapse |
+| P59 | Do-JEPA | arXiv | B | code not pinned | same-reset physical interventions / causal action effects |
+| P60 | Bilinear World Models | arXiv | B | code not pinned | structured bilinear dynamics + action recoverability |
+| P61 | One-Step Next-Latent Prediction Is Not a World Model | arXiv | B | — | one-step conditional mean ≠ rollout transition kernel |
+| P62 | FIRM-WM | arXiv | B | code not identified/pinned | typed goal state + recurrent dynamic fiber + same-reset interventions |
+| P63 | FF-JEPA | arXiv | B | no official repo pinned | action-free latent subgoal planner / long horizon |
 
 ## 3. Planner / search / long-horizon 直接邻居
 
@@ -101,7 +108,7 @@
 这些已达到本轮 positioning 需要的阅读深度；若 I01 升 L2，重新下载/固定版本，逐 theorem/appendix 核对 manuscript wording。
 
 ### 在跑 I03 之前必须回看
-P13、P21、P25–P39、P40–P44；特别是它们各自改变的 layer 与 protocol，避免把原生数字横向排名。
+P13、P21、P25–P44、P57–P63；特别是它们各自改变的 layer、replanning/scoring protocol 与 intervention setting，避免把原生数字横向排名。
 
 ### 不要求首轮安装
 CompACT、World-In-World、GeoWorld、HWM、大型 V-JEPA2 路线；它们证明 community scale 与邻域 ownership，但不适合用弱互联资源作为首轮训练 substrate。
@@ -117,9 +124,10 @@ CompACT、World-In-World、GeoWorld、HWM、大型 V-JEPA2 路线；它们证明
 - PSG-JEPA：`Haodong-Yan/PSG-JEPA@3bf67a47a9143f9f4fb4d39f839143c92902714c`；OGBench planning + LIBERO policy 两套 env。
 - ALeWM：`arm-research/AAIR-ALeWM@6717193bdc3b92e43f581b3c668ca9b82c299c70` 当前核对的是 project page；README 明确 root 为未来 research code 预留，**不能写成 code-ready baseline**。
 - CompACT：`kdwonn/CompACT@71b3029910d7460c5fa8658e17ab34e29c2c880c`；paper-scale tokenizer/WM 配方多 GPU，不列为首轮 substrate。
+- Hidden Failure Modes / LeWMRO：`24GUNV/LeWMRO@faff2ea4768767739b9cca55855dc5aacf13578f`；含 terminal/prefix/running costs、receding-horizon eval、deceptive tasks、tests 与 machine-readable results；**E06 protocol-layer control 很适合直接复用**。
 
 **仅搜索到项目/论文、未在本轮锁定可执行 repo：**
-AD-WM、CGS、AnisoWM、Planning Limits、Objective Bottleneck 等。需要它们成为 manuscript-critical baseline 时再做代码/作者 release audit；不要为了“完整”先实现论文。
+AD-WM、CGS、AnisoWM、Planning Limits、Objective Bottleneck、PhyLatent、Do-JEPA、Bilinear WM、FIRM-WM、FF-JEPA 等。需要它们成为 manuscript-critical baseline 时再做代码/作者 release audit；不要为了“完整”先实现论文。
 
 ## 7. 完整性的含义
 
