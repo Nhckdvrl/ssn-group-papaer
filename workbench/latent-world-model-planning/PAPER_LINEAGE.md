@@ -521,7 +521,7 @@ offline / reward-free data
 **来源：** https://arxiv.org/abs/2609.37378
 
 - **母问题：** factual prediction只观察 executed action，无法直接区分 action caused what vs co-occurred what。
-- **intervention：** 从同一 saved simulator state 分别执行 action (a) 与 reference action (a_{arnothing})，直接监督 latent effect difference。
+- **intervention：** 从同一 saved simulator state 分别执行 action (a) 与 reference action (a_{∅})，直接监督 latent effect difference。
 - **方法：** effect/support/propagation/invariance losses；synthetic + CausalWorld + pixel LeWM。
 - **ownership：** “真正 physical intervention 比 visual masking 更能识别 causal action effect”已被直接提出。
 - **对 I01/I03：** common-reset intervention 是**强 oracle / positive control**，但它需要 simulator counterfactual branches，和我们“固定 offline local transition evidence，只改变 trajectory organization”的问题不同。若最终 I01 方法需要额外 counterfactual environment interaction，就必须和 Do-JEPA/FIRM-WM 明确区分成本与 setting。
