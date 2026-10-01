@@ -1,0 +1,895 @@
+When Long Helps Short: How Context Length in Supervised Fine-tuning
+           Affects Behavior of Large Language Models
+                  Yingming Zheng1,3∗ Hanqi Li1,3,4∗ Kai Yu1,3,4 Lu Chen1,2,3,4†
+                  1
+                 X-LANCE Lab, MoE Key Lab of Artificial Intelligence, AI Institute,
+             School of Computer Science, Shanghai Jiao Tong University, Shanghai, China
+                           2
+                             Shanghai Innovation Institution, Shanghai, China
+                      3
+                        Jiangsu Key Lab of Language Computing, Suzhou, China
+                                  4
+                                    Suzhou Laboratory, Suzhou, China
+                        {zhengyingming, daqige, chenlusz}@sjtu.edu.cn
+                         Abstract                             pretraining and SFT, where models are explicitly
+                                                              adapted to process long-context inputs.
+    Large language models (LLMs) have achieved
+    impressive performance across natural lan-                   Long-context continual pretraining (Fu et al.,
+    guage processing (NLP) tasks. As real-world               2024) has garnered extensive investigation and es-
+    applications increasingly demand longer con-              tablished consensus conclusions. Specifically, con-
+    text windows, continued pretraining and super-            tinued pretraining with long-context data has been
+    vised fine-tuning (SFT) on long-context data              shown to consistently impair LLMs’ capabilities on
+    has become a common approach. While the                   short-context tasks. To mitigate this performance
+    effects of data length in continued pretrain-
+                                                              degradation, current methodologies advocate in-
+    ing have been extensively studied, their im-
+    plications for SFT remain unclear. In this                corporating a proportion of short-context data into
+    work, we systematically investigate how SFT               the pretraining corpus, thereby preserving model
+    data length influences LLM behavior on short-             performance across short-context applications.
+    context tasks. Counterintuitively, we find that              In contrast, previous studies on SFT have not es-
+    long-context SFT improves short-context per-              tablished such consensus conclusions. Numerous
+    formance, contrary to the commonly observed               works have focused on constructing long-context
+    degradation from long-context pretraining. To
+                                                              SFT datasets (Zhao et al., 2024; Xiong et al., 2025)
+    uncover the underlying mechanisms of this
+    phenomenon, we first decouple and analyze                 to achieve promising performance improvements
+    two key components, Multi-Head Attention                  on long-context tasks. However, whether aligning
+    (MHA) and Feed-Forward Network (FFN), and                 training data length with evaluation benchmark, es-
+    show that both independently benefit from long-           sential in continual pretraining, remains equally
+    context SFT. We further study their interac-              critical for SFT is still unclear. Two fundamen-
+    tion and reveal a knowledge preference bias:              tal questions remain unresolved: (1) Does long-
+    long-context SFT promotes contextual knowl-
+                                                              context SFT enhance or degrade performance on
+    edge, while short-context SFT favors paramet-
+    ric knowledge, making exclusive reliance on
+                                                              short-context tasks compared to conventional short-
+    long-context SFT suboptimal. Finally, we                  context SFT? (2) What underlying mechanisms
+    demonstrate that hybrid training mitigates this           drive these potential performance variations across
+    bias, offering explainable guidance for fine-             context lengths?
+    tuning LLMs.                                                 To address these research gaps, we extend the
+                                                              framework established by Gao et al. (2025) by
+1   Introduction
+                                                              performing SFT with varied datasets on the same
+Large Language Models have demonstrated re-                   long-context-pretrained base model (Llama-3-8B-
+markable potential in NLP and achieved substan-               ProLong-512k-base), followed by comprehensive
+tial success across real-world applications (Brown            evaluation across diverse short-context domain
+et al., 2020; OpenAI et al., 2024; Zheng et al.,              benchmarks. Contrary to conventional expecta-
+2025). As application scenarios diversify and task            tions, our experiments yield counterintuitive re-
+complexity intensifies, there is an increasing de-            sults: Models fine-tuned with long-context data
+mand for extended context windows in LLMs. Con-               demonstrate measurable improvements in ag-
+ventionally, enhancing context length capabilities            gregate metrics.
+primarily involves two critical phases: continual                We proceed to conduct research to explain the un-
+    ∗
+        Equal contribution.                                   derlying mechanisms behind this counterintuitive
+    †
+        Corresponding author.                                 phenomenon. First, we decouple the two main mod-
+                                                         10293
+        Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, pages 10293–10308
+                             November 4-9, 2025 ©2025 Association for Computational Linguistics
+ules of Transformer-based LLMs, Multi-Head At-            • We employ a knowledge-conflict framework
+tention (MHA) and Feed-Forward Network (FFN),               to study the interactions of MHA and FFN,
+to independently test their performance. For the            revealing that varying SFT data lengths induce
+MHA module, we test its capabilities from three             knowledge preference bias in models. Further,
+perspectives: module replacement, retrieval score           we demonstrate that hybrid training mitigates
+analysis, and attention entropy analysis. Our find-         these biases, providing explainable guidance
+ings reveal that SFT with long-context data en-             for SFT in LLM.
+hances the standalone capabilities of MHA across
+all dimensions. Similarly for the FFN module, we      2     Related Work
+employ module replacement and conduct detailed
+                                                      2.1    SFT in Long-context LLMs
+analysis of FFN activation statistics, reaching the
+same conclusion that long-context SFT improved        SFT is a critical step in aligning LLMs with hu-
+the independent performance of FFN across var-        man intent, typically using curated instruction-
+ious metrics. Employing long-context data for         response pairs. In the early development of
+SFT benefits both MHA and FFN modules.                long-context models, such as Longformer (Belt-
+   To more comprehensively explain the underly-       agy et al., 2020), BigBird (Zaheer et al., 2020)
+ing mechanisms and better guide practical applica-    and LongLLaMA (Tworkowski et al., 2023), re-
+tions, we further analyze the interactions between    searchers fine-tune models on long-context data
+the MHA and FFN modules using a knowledge             to match the extended context window, such as
+conflict framework. Our findings reveal deeper        multi-document QA (Kočiský et al., 2018), scien-
+insights: The length of SFT training data intro-      tific articles (Jin et al., 2019), or long dialogue tran-
+duces biases in the model’s knowledge prefer-         scripts (Zhong et al., 2021). These works aimed
+ences. Specifically, models fine-tuned with long-     to improve the model’s ability to retain and utilize
+context SFT data exhibit overconfidence in con-       extended context during inference.
+textual knowledge, while those trained with short-        Recent work has shown that fine-tuning long-
+context SFT data show excessive reliance on para-     context LLMs on short-context datasets can be suf-
+metric knowledge. Although long-context SFT en-       ficient to achieve strong performance even on long-
+hances the standalone performance of both MHA         context tasks (Liu et al., 2024). For example, Gao
+and FFN modules, the resulting knowledge prefer-      et al. (2025) fine-tuned Llama-3 using the short-
+ence bias makes exclusive reliance on long-context    context UltraChat dataset to obtain the ProLong-8B
+SFT suboptimal. By adjusting the ratio of long-       model, and reported that incorporating long syn-
+context to short-context data in SFT training, we     thetic instructions did not yield additional gains in
+find that: Hybrid training helps mitigate this        long-context scenarios. However, this line of work
+bias, thereby enabling potentially superior per-      neither provides further analysis nor evaluates the
+formance.                                             model’s performance on short-context tasks, leav-
+   In summary, our contributions are as follows:      ing open the question of whether long-context SFT
+                                                      offers broader benefits.
+   • We present the first systematic study on how
+     SFT data length impacts short-context reason-    2.2 Modular Interpretability of Attention and
+     ing performance. By comparing models fine-           FFN in Language Model
+     tuned on datasets with different text lengths,
+                                                      Understanding how different components of LLMs
+     we show that incorporating long-context data
+                                                      contribute to reasoning and knowledge encoding
+     leads to overall performance improvements
+                                                      has become a central focus in interpretability re-
+     on a variety of short-context tasks.
+                                                      search (Goldowsky-Dill et al., 2023; Zhang et al.,
+   • We provide an in-depth modular analysis re-      2022; Hao et al., 2021). In Transformer-based
+     vealing how long-context SFT alters LLM in-      architectures, attention and FFN modules are be-
+     ternals. By decoupling and separately ana-       lieved to play complementary roles: attention lay-
+     lyzing MHA and FFN, we demonstrate that          ers primarily handle information routing and selec-
+     long-context SFT improves the standalone per-    tion, while FFNs apply nonlinear transformations
+     formance of both modules, offering new in-       that can encode domain or factual knowledge (Fer-
+     terpretability insights into how different SFT   rando et al., 2024; Jin et al., 2024). Geva et al.
+     regimes shape model functionality.               (2021) first demonstrated that FFN layers can func-
+                                                 10294
+tion as key-value memories, retrieving token-level      are first projected into query Qil , key Kil and value
+associations to support factual recall. In addition,    Vli matrices. Positional information is then incor-
+Dai et al. (2022) identified "knowledge neurons"        porated into the query and key matrices through
+within FFNs whose activation states are strongly        the RoPE with rotation matrix Rθ (θ is the RoPE
+correlated with specific knowledge output, suggest-     base). These matrices are subsequently processed
+ing that FFNs serve as important carriers of para-      through a dot product followed by a softmax opera-
+metric knowledge. On the attention side, Elhage         tion to compute the attention scores Ail . Finally, the
+et al. (2021) and Wang et al. (2024) revealed that      value representations are weighted by the attention
+attention heads exhibit functional specialization,      scores, and all attention heads are concatenated
+such as copying, moving or induction, and play          and projected to produce the attention output of
+crucial roles in reasoning and task-specific repre-     l-th layer as follows:
+sentation structuring.                                                                            √
+                                                                   Ail = Softmax(QiT   R θ  K i
+                                                                                                /   d),     (3)
+   To better understand how these modules behave                                     l        l
+
+under different training conditions, recent work           MHA(Hl−1 ) = Concat({Ail Vli }N     O
+                                                                                         i=1 )W , (4)
+has proposed modular analysis techniques such           where d is the dimension of query and key, WO is
+as layer-level ablation, head attribution, and mod-     the projection matrix, and Concat is the concatena-
+ule replacement. Meng et al. (2022) developed           tion of hidden states.
+a method to locate and edit factual knowledge in           The FFN in Transformer block is composed of
+pretrained LLMs by replacing FFN modules and            two learnable weight matrices: Wlin and Wlout .
+observing prediction changes. Similarly, Yao et al.     Wlin reads the residual stream state. Its results
+(2025) traced how specific knowledge emerges and        passed through element-wise non-linear activation
+propagates through Transformer layers. Although         function g(·), producing neuron activations. These
+most of these studies focus on models in the pre-       are then transformed by Wlout to produce outputs:
+training stage, few have examined how SFT, es-
+pecially with varying instruction lengths, modifies                    e l ) = g(H
+                                                                   FFN(H         e l Win )Wout .           (5)
+                                                                                      l    l
+the internal functionality of these modules. In this
+                                                        3.2   Module Replacement
+work, we extend the modular interpretability analy-
+sis to the SFT stage, examining how instruction         Module replacement is a commonly used method
+length affects the functionality of attention and       in interpretability analysis, aiming to evaluate the
+FFN modules.                                            contribution of specific components within a model.
+                                                        Rather than simply removing a module to observe
+3   Approach                                            performance degradation, researchers often replace
+                                                        it with an alternative implementation to gain deeper
+3.1 Preliminary                                         insight into its functional importance and potential
+In this work, we mainly focus on the autoregres-        for improvement. Moreover, by comparing perfor-
+sive Transformer-based language models. Given a         mance metrics before and after replacement, one
+Transformer decoder with L layers and N heads           can quantitatively assess the relative effectiveness
+and an input sequence x = {x1 , . . . , xN } consist-   of modules in different models.
+ing with N tokens, the output of the l-th layer
+can be donated as Hl = {hl.1 , . . . , hl.T }. Each     3.3   Retrieval Score
+Transformer layer consists of a multi-head atten-       Followed by the work of Wu et al. (2024), we cal-
+tion (MHA) module and a FFN module with resid-          culate the retrieval score of attention heads, which
+ual connections connecting them, as shown by the        measures its ability to accurately extract relevant
+following formula:                                      information from the context and use it to answer
+                                                        questions during generation. Specifically, given
+           e l = MHA(Hl−1 ) + Hl−1 ,
+           H                                     (1)    a question-answering instances where the correct
+                                                        answer must be explicitly retrieved from the in-
+                       e l) + H
+              Hl = FFN(H      e l.               (2)    put passage such as Needle-in-a-Haystack, and we
+   A MHA block consists of M attention heads,           track the overlap between the generated tokens of
+which are capable of aggregating global informa-        each head and the source text. Formally, we define:
+tion into hidden states. In the i-th head of the                                              |gh ∩ k|
+MHA module in the l-th layer, the hidden states               Retrieval score for head h =             ,   (6)
+                                                                                                 |k|
+                                                   10295
+where gh denotes the set of tokens retrieved by         marks spanning four distinct domains: General,
+a given attention head h, which means the token         Math, Coding, and Commonsense QA. For Gen-
+receives the most attention probability mass by h       eral capabilities, we employ the widely used
+head as well as the currently generated token of        MMLU (Hendrycks et al., 2020), BBH (Suzgun
+model. The set k represents the correct answer          et al., 2023), and LAMBADA (Paperno et al., 2016)
+tokens. A higher retrieval score indicates that the     benchmarks. To gauge mathematical reasoning, we
+attention head is more actively redirecting relevant    assess performance on GSM8K (Cobbe et al., 2021)
+information from the input.                             and the MATH (Hendrycks et al.) dataset. Cod-
+                                                        ing proficiency is evaluated using MBPP (Austin
+4   Long-Context SFT Enhances                           et al., 2021) and HumanEval (Chen et al., 2021),
+    Short-Context Performance                           while commonsense question-answering is mea-
+                                                        sured through OpenBookQA (Mihaylov et al.,
+Previous work (Gao et al., 2025) has explored that
+                                                        2018) and PIQA (Bisk et al., 2020). The scope
+fine-tuning on short-context SFT data can preserve
+                                                        of these benchmarks, along with implementation
+a model’s long-context performance. However, the
+                                                        specifics such as few-shot configurations and scor-
+impact of long-context SFT on short-context capa-
+                                                        ing criteria, are detailed in Appendix B.
+bilities remains unclear. In this section, we conduct
+                                                           The detailed experimental results are presented
+controlled experiments demonstrating that long-
+                                                        in Table 1. Contrary to prior conclusions de-
+context SFT generally benefits the model’s short-
+                                                        rived from continual pretraining on long-context
+context performance.
+                                                        data (which suggested that long-context training
+4.1 Training Setup                                      harms short-context performance), we observe that
+                                                        models trained exclusively on long-context SFT
+Following Gao et al. (2025), our research is based      datasets achieve comparable or even superior per-
+on the Llama-3-8B-ProLong-512k-Base model,              formance to those trained on short-context SFT
+which extends the original Llama-3-8B-instruct          datasets in short-context benchmarks. Specifically,
+model through continual pre-training on long-           within the General domain, models fine-tuned with
+context corpora to expand its context window to         long-context data consistently outperform their
+512k tokens. Building upon this foundation, we          short-context counterparts. In the Math domain,
+investigate how SFT data combining both short           long-context SFT yields notably higher perfor-
+and long texts affects model performance on short-      mance. For Coding and Commonsense QA, mod-
+context tasks.                                          els trained on long-context datasets exhibit fully
+   For comprehensive experimentation, we uti-           comparable performance to those trained on short-
+lize two widely adopted short-context SFT               context datasets. Counterintuitively, on average
+datasets and three established long-context SFT         across short-context tasks, models fine-tuned with
+datasets. The short-context SFT employs the Ul-         long-context data demonstrate better overall per-
+traChat (Ding et al., 2023) dataset and the Tulu-       formance than those trained exclusively on short-
+v2-sft-mixture (Ivison et al., 2023) dataset. For       context datasets.
+long-context SFT, we select three distinct datasets:
+ChatQA2 (Xu et al., 2024a), LongMIT (Chen et al.,       5     Long-Context SFT Strengthens MHA
+2024b), and LongAlpaca (Chen et al., 2024a). Sta-             and FFN Separately
+tistical details of these datasets are presented in
+Appendix A. All training configurations are unified     In this sections, we decouple the MHA and FFN
+with a total budget of 1B tokens, optimized using       modules within LLMs to independently analyze
+the AdamW optimizer (β1 = 0.9, β2 = 0.95 ) with         the impact of SFT dataset text length on their stan-
+learning rate = 2 × 10−5 (cosine decay to 2 × 10−6 )    dalone functionalities, thereby attributing the coun-
+and batch size = 4M tokens.                             terintuitive benchmark results to module-specific
+                                                        behavioral shifts.
+4.2 Effect of SFT Length on Short-context
+    Tasks                                               5.1    MHA Module Behavior Analysis
+To evaluate the performance of our model (trained       In this section, we examine how the length of
+on these five SFT datasets) on short-context tasks      SFT data affects the MHA Module. Given its key
+through multiple dimensions, we select bench-           role in capturing contextual dependencies interac-
+                                                   10296
+                               General               Math                 Code             Commonsense QA
+ SFT Dataset                                                                                                 Avg.
+                       MMLU    BBH LAMBADA      GSM8K MATH MBPP           HUMANEVAL        OBQA    PIQA
+                                                Short-Context SFT
+ UltraChat             61.50   61.00   64.44     54.69   17.28    39.20     32.92          74.40     75.24   53.41
+ Tulu-v2-sft-mixture   61.37   61.50   64.20     62.50   16.42    51.20     49.39          74.40     76.33   57.48
+                                                Long-Context SFT
+ LongAlpaca            62.11   61.29   68.84     68.75   16.70    46.20     48.78          74.40     76.77   58.20
+ LongMIT               62.65   61.80   71.51     59.38    18.22   50.20     54.27          74.20     68.28   57.83
+ ChatQA2               62.80   63.79   70.11     68.75   18.06    46.20     44.51          74.20     76.61   58.33
+
+Table 1: Evaluation results on multiple domains. We evaluate the performance of models trained with different SFT
+datasets across four domains and nine benchmarks. For MMLU, LAMBADA, GSM8K, MATH, OpenBookQA
+(OBQA), and PIQA, we report the accuracy metric. For BBH, we report the Exact Match metric, while for MBPP
+and HumanEval, we report the pass@1 metric. Bold values indicate the best performance on the corresponding
+benchmark.
+
+tions (Jin et al., 2025), we conduct our analysis on      consistent between the two models fine-tuned on
+the GSM8K dataset, which features explicit rea-           different datasets. Notably, for these heads active
+soning chains and complex logical structures. This        in retrieval tasks, especially those with higher
+setup allows for a more precise investigation of          retrieval score, the ChatQA2-SFT model exhibits
+how input length impacts attention behavior. Our          consistently stronger performance compared to the
+analysis primarily focuses on models fine-tuned           UltraChat-SFT model. Specifically, the ChatQA2-
+from UltraChat and ChatQA2.                               SFT model attains an overall retrieval score of
+   Analysis 1: MHA from Long-Context SFT                  16.94, compared to 15.39 for the UltraChat-SFT
+Models Improve Reasoning Accuracy. We per-                model. Focusing on attention heads with a retrieval
+form a module replacement analysis by swapping            score above 0.1, which are referred to as retrieval
+the attention parameters between two SFT mod-             heads, we find that 35 heads perform better in
+els (Xu et al., 2020). Specifically, we replace the       the ChatQA2-SFT model, while only 11 heads
+entire set of attention weights, including query, key,    perform better in UltraChat-SFT. Furthermore, the
+value, and output projections from one model with         improvements in retrieval scores are not confined
+the other, while keeping the remaining parameters         to a specific layer but are distributed across various
+unchanged. The modified models are evaluated              layers of the model. This indicates that the benefits
+on GSM8K. As shown in Figure 1 , replacing                of ChatQA2 fine-tuning permeate both local
+the attention module in the UltraChat-SFT model           (earlier) and global (later) contextual modeling
+with that from the ChatQA2-SFT model yields a             stages. The difference heatmap further confirms
+significant improvement in accuracy (54.7% ->             this trend, showing a consistent positive bias (red
+67.8%). Conversely, transferring the UltraChat            shading) in ChatQA2-SFT across many layers
+attention into the ChatQA2-SFT model leads                and heads. Overall, these results highlight the
+to a noticeable drop in performance (68.8% ->             effectiveness of ChatQA2 supervision in guiding
+65.2%). These results indicate that attention             models to develop retrieval-sensitive attention
+modules SFT on longer-context data provide                heads, which are essential for reasoning over long
+better support for contextual-knowledge dataset.          or complex inputs. Further analysis is shown in
+We give a further statistical analysis in Appendix C.     Appendix E.
+
+   Analysis 2: Long-Context SFT Model has                    Analysis 3: Long-Context SFT Model has a
+a Better Retrieval Ability. We investigate the            Better Attention Entropy Distribution. We fur-
+impact of SFT data length on the retrieval ability        ther investigate the variation in attention head en-
+of the model’s attention module by evaluating re-         tropy through different SFT data length. Attention
+trieval score of each attention head. The detailed        head entropy quantifies the sharpness or disper-
+setting is shown in Appendix D.                           sion of the attention distribution produced by each
+   As shown in Figure 3, models fine-tuned on the         head (Zhang et al., 2024). It is formally defined as:
+ChatQA2 dataset generally achieve higher retrieval                                  n
+                                                                                    X
+scores across attention heads. The heatmaps reveal                        Si = −          αij logαij ,          (7)
+that only a subset of attention heads are actively                                  j=1
+
+involved in retrieval tasks, and this subset is largely   where αij denotes the attention weight assigned by
+                                                     10297
+Figure 1: Performance comparison of MHA module Figure 2: Performance comparison of FFN module re-
+replacement. Accuracy is measured on the GSM8K. placement. Accuracy is measured on the World Capital.
+
+
+
+
+Figure 3: Heatmap of ChatQA2-SFT model Retrieval score, UltraChat-SFT model Retrieval score and their retrieval
+score difference, computed as ChatQA2-SFT retrieval score minus UltraChat-SFT retrieval score.
+                                            P
+the i-th head to j-th position, satisfying j αij =
+1 and Si represents the attention Entropy of head i.
+Here, we do not interpret entropy as a causal expla-
+nation. Instead, we use it as a proxy for the selectiv-
+ity of the model in processing information (Wiegr-
+effe and Pinter, 2019). Lower entropy indicates
+that attention is concentrated on fewer positions,
+suggesting stronger specialization or more decisive
+focus (Chefer et al., 2021), while higher entropy
+reflects a more uniform distribution, potentially in-
+dicating the model’s retention of multiple reasoning
+paths in ambiguous contexts (Clark et al., 2019).
+                                                          Figure 4: Entropy difference of each attention layer,
+   We compare the attention entropy patterns of           computed as UltraChat-SFT entropy minus ChatQA2-
+the two models. As shown in Figure 4, ChatQA2-            SFT entropy. Green points indicate layers where
+SFT demonstrates a favorable trade-off between            ChatQA2-SFT shows higher confidence (lower an-
+answer confidence and reasoning flexibility, partic-      swer entropy) while maintaining flexibility in reasoning
+ularly in the middle-to-late layers. Specifically, in     (higher reasoning entropy).
+layers such as 10, 12 and 18–30, ChatQA2-SFT
+exhibits lower answer entropy (indicating higher          derscoring ChatQA2-SFT’s overall balanced behav-
+confidence) while maintaining higher reasoning en-        ior across layers. This observation indicates that
+tropy (indicating greater flexibility). These layers,     ChatQA2-SFT may contribute to enhanced internal
+highlighted in green, suggest that ChatQA2-SFT is         representation, enabling it to commit more confi-
+more capable of preserving diverse reasoning paths        dently to final answers without compromising its
+while still converging on confident answers, out-         exploratory capacity during reasoning. Conversely,
+performing UltraChat-SFT in this regard. In con-          UltraChat-SFT tends to show lower flexibility or
+trast, during the early layers (1–7), ChatQA2-SFT         reduced confidence in similar layers, which may
+shows either lower confidence or reduced flexibility.     limit its overall effectiveness in complex reasoning
+Notably, however, no layer simultaneously suffers         tasks. Also, we provide entropy heatmap of each
+from both low confidence and low flexibility, un-         model and their difference in Appendix F.
+                                                     10298
+5.2 FFN Module Behavior Analysis
+In this section, we investigate how the length of
+SFT data influences the behavior of the FFN mod-
+ule. Given that FFN serves as a key component
+for parametric knowledge storage, we conduct our
+analysis on the World Capital dataset, which di-
+rectly evaluate the model’s ability to store and re-
+trieve internal knowledge. The dataset ask LLM
+to predict the capital city of the country based on
+the question q: "What is the capital of {s}?". Our     Figure 5: Relative Difference of Activation Mean, Vari-
+analysis primarily focuses on models fine-tuned        ance, and Sparsity between two models. Computed as
+from UltraChat and ChatQA2.                            ∆ = mcm−m u
+                                                                   u
+                                                                     , where mc , mu represents metrics from
+                                                       ChatQA2-SFT and UltraChat-SFT model respectively.
+   Analysis 1:       FFN from Long-Context
+SFT Models Are Better at Calling Internal              ing reasoning. Collectively, these patterns high-
+Knowledge. Similar to the Attention Module             light ChatQA2’s enhanced capacity for knowledge-
+Replacement, we replace the entire set of FFN          intensive tasks through more refined and discrimi-
+weights, including the input and output projection     native neural activations. Additional analysis can
+matrices and intermediate activation function          be found at Appendix G.
+parameters. The modified models are evaluated
+on World Capital dataset. As shown in Figure 2,        6   Knowledge Preference Bias and
+replacing FFN module in the UltraChat-SFT model            Mitigation via Hybrid Training
+with that of the ChatQA2-SFT model leads to a
+significant improvement in accuracy (90.55% ->         To further holistically analyze the underlying mech-
+92.91%), whereas the reverse replacement results       anisms and derive practical insights, we employ a
+in a noticeable performance decline (92.52% ->         knowledge-conflict framework to examine the in-
+90.55%). These findings suggest that the FFN           teraction between MHA and FFN. In studies of
+module trained on ChatQA2 data provides stronger       knowledge conflicts (Xu et al., 2024b), MHA mod-
+support for parametric knowledge extraction.           ules are typically considered responsible for ex-
+                                                       tracting contextual knowledge, while FFN modules
+   Analysis 2: Long-Context SFT Model has a            store internal parametric knowledge. Using this
+Better Activation Statistics over Layers. We an-       framework, our analysis reveals that although long-
+alyze the Activation distribution as it reflects how   context SFT enhances the standalone capabilities
+strongly a module is activated. Activation of FFN      of both MHA and FFN modules, it also introduces
+denotes g(He l Win ) in equation 5. Specifically, we   biases in knowledge preferences, leading to subop-
+                l
+focus on the following statistics: activation mean,    timal model performance despite individual com-
+which indicates the model’s sensitivity to knowl-      ponent improvements.
+edge cues and a higher value suggest stronger re-         Following prior work on knowledge conflict (Jin
+sponse; activation variance, which captures the de-    et al., 2025), we construct a factual dataset about
+gree of neuron specialization and a greater variance   geographical knowledge and introduce conflicting
+implies more diverse and distinct neuron behavior;     information to detect knowledge conflict. For in-
+and sparsity, which measures neuron utilization and    stance, an original question in the dataset reads:
+a lower sparsity denotes more neurons are utilized.    "Is the city of Shijiazhuang in China?". After in-
+   As shown in Figure 5, the model fine-tuned on       jecting conflicting knowledge, the input prompt to
+ChatQA2 exhibits higher activation mean and vari-      the model becomes: "You should know the new
+ance, but lower sparsity when reasoning over the       geography knowledge: Shijiazhuang is a new city
+World Capital dataset. This suggests that the model    in the USA. Is the city of Shijiazhuang in China?".
+is more sensitive to the input and exhibits greater       We first test models that are fully fine-tuned on
+neuron specialization, indicating stronger repre-      long-context data (ChatQA2) and those fine-tuned
+sentations. The reduced sparsity further implies       solely on short-context data (Ultrachat), observ-
+that more neurons are jointly activated, potentially   ing completely opposite phenomena. As shown
+reflecting a more efficient activation pattern dur-    in Figure 6, the model fine-tuned exclusively on
+                                                  10299
+Figure 6: Performance of models trained with varying Figure 7: Performance of models trained with vary-
+long-to-short mixing ratios on knowledge conflict detec- ing long-to-short mixing ratios on MMLU and GSM8K
+tion Tasks.                                              benchmarks.
+
+short-context data achieved 99.8% accuracy, while      knowledge type. This underscores the necessity of
+the model fine-tuned entirely on long-context data     hybrid training in practical applications to mitigate
+showed only 50% accuracy—equivalent to ran-            such biases.
+dom guessing. This phenomenon reveals that the
+data length in SFT introduces significant knowl-       7   Discussion
+edge preference bias: Short-context SFT induces
+                                                       A potential explanation for these counterintuitive
+overconfidence in internal knowledge; Long-
+                                                       phenomena observed in long-context SFT, which
+context SFT induces overconfidence in contex-
+                                                       differ from those in continual pretraining, lies in
+tual knowledge. Additional knowledge conflict
+                                                       the fundamental distinction between their train-
+experiments on various types of factual knowledge
+                                                       ing paradigms: Unlike pretraining that directly
+are provided in the Appendix I.
+                                                       learns from raw long-context chunks, SFT employs
+   Building on this phenomenon, we conduct fur-
+                                                       targeted instructions and responses that explicitly
+ther experiments using a hybrid training approach
+                                                       highlight the sparse long-range dependencies inher-
+by adjusting the ratio of long-context and short-
+                                                       ent in the long text. During SFT on long-context
+context data. As illustrated in Figure 6, the knowl-
+                                                       data, the model must learn to manage dispersed
+edge preference bias gradually shifts with adjust-
+                                                       information, resolve long-range dependencies, and
+ments to this ratio. Hybrid training effectively
+                                                       integrate evidence across distant segments. This
+mitigates the knowledge preference biases intro-
+                                                       pressure likely encourages MHA modules to be
+duced by varying data lengths.
+                                                       more retrieval-oriented and capable of flexible en-
+   Due to the presence of such knowledge prefer-
+                                                       tropy modulation: first exploring broadly during
+ence bias, exclusively using short-context or long-
+                                                       reasoning, then narrowing focus during answer gen-
+context data for SFT may not achieve optimal per-
+                                                       eration. Simultaneously, the FFN layers are re-
+formance. We further evaluate mixed training ap-
+                                                       peatedly engaged with semantically richer inputs,
+proaches on MMLU and GSM8K benchmarks, as
+                                                       which may drive higher activation variance and re-
+shown in Figure 7. For GSM8K dataset, a math-
+                                                       duce sparsity. Moreover, SFT on long-context data
+ematical reasoning task requiring the integration
+                                                       frequently requires the model to extract and reason
+of contextual knowledge and parametric knowl-
+                                                       over task-relevant information distributed across
+edge, the model with 50%/50% long-to-short text
+                                                       the input, thereby reinforcing a knowledge prefer-
+mixing ratio achieves superior performance. In
+                                                       ence bias that privileges contextual knowledge.
+contrast, for MMLU (which primarily relies on
+parametric knowledge), the model trained exclu-        8   Conclusion
+sively on long-context SFT data still demonstrates
+the strongest performance. These results validate      This work presents the first systematic study of how
+our observation that training on long-context SFT      the length of SFT data affects short-context rea-
+datasets enhances the independent functionality of     soning in long-context language models. Through
+both MHA and FFN modules. However, in sce-             controlled experiments and modular analysis, we
+narios demanding the complex interaction of both       demonstrate that long-context SFT not only im-
+modules, exclusive use of either long-context or       proves short-context tasks’ performance but also
+short-context data induces overconfidence in one       enhances the internal behavior of attention and
+                                                  10300
+feedforward modules. However, long- and short-           this work does not introduce new ethical risks com-
+context SFT induce different knowledge prefer-           monly associated with LLMs.
+ences—favoring contextual and parametric knowl-
+edge respectively. Our findings highlight the impor-     Acknowledgments
+tance of balancing both types of data during fine-       This work is funded by the China NSFC Projects
+tuning to mitigate overreliance on either source and     (U23B2057, 92370206, and 62120106006) and
+achieve more robust model behavior.                      Shanghai Municipal Science and Technology
+9    Limitations                                         Projects (2021SHZDZX0102 and 25X010202846).
+
+For further study, we conclude some limitations of
+our works as follows:                                    References
+    • While we empirically demonstrate that hy-          Jacob Austin, Augustus Odena, Maxwell Nye, Maarten
+                                                            Bosma, Henryk Michalewski, David Dohan, Ellen
+      brid training with long- and short-context SFT        Jiang, Carrie Cai, Michael Terry, Quoc Le, et al. 2021.
+      data improves robustness to knowledge con-            Program synthesis with large language models. arXiv
+      flicts (Section 6), our analysis does not estab-      preprint arXiv:2108.07732.
+      lish a theoretically grounded optimal mixing
+                                                         Iz Beltagy, Matthew E. Peters, and Arman Cohan. 2020.
+      ratio. The current mixing proportions (e.g.,          Longformer: The long-document transformer.
+      50%/50%) were determined experimentally
+      rather than through formal optimization frame-     Yonatan Bisk, Rowan Zellers, Jianfeng Gao, Yejin Choi,
+                                                           et al. 2020. Piqa: Reasoning about physical com-
+      works. A principled approach to model the            monsense in natural language. In Proceedings of the
+      interaction between parametric and contextual        AAAI conference on artificial intelligence, volume 34,
+      knowledge preferences during SFT could help          pages 7432–7439.
+      derive data mixing strategies that generalize
+                                                         Tom Brown, Benjamin Mann, Nick Ryder, Melanie
+      across architectures and tasks.                      Subbiah, Jared D Kaplan, Prafulla Dhariwal, Arvind
+                                                           Neelakantan, Pranav Shyam, Girish Sastry, Amanda
+    • Our conclusions are drawn from experiments           Askell, Sandhini Agarwal, Ariel Herbert-Voss,
+      on the Llama-3-8B architecture with RoPE-            Gretchen Krueger, Tom Henighan, Rewon Child,
+      based positional encoding. The extent to             Aditya Ramesh, Daniel Ziegler, Jeffrey Wu, Clemens
+      which these findings generalize to other ar-         Winter, Chris Hesse, Mark Chen, Eric Sigler, Ma-
+                                                           teusz Litwin, Scott Gray, Benjamin Chess, Jack
+      chitectures (e.g., models using ALiBi or hy-         Clark, Christopher Berner, Sam McCandlish, Alec
+      brid attention mechanisms) remains unclear.          Radford, Ilya Sutskever, and Dario Amodei. 2020.
+      For instance, the observed entropy patterns in       Language models are few-shot learners. In Ad-
+      attention heads or FFN activation dynamics           vances in Neural Information Processing Systems,
+                                                           volume 33, pages 1877–1901. Curran Associates,
+      might differ substantially in models optimized       Inc.
+      for different positional encoding schemes.
+                                                         Hila Chefer, Shir Gur, and Lior Wolf. 2021. Trans-
+In summary, the mechanisms underlying SFT re-              former interpretability beyond attention visualization.
+main largely unexplored, including theoretical             In Proceedings of the IEEE/CVF Conference on Com-
+foundations, optimal dataset mixing strategies, and        puter Vision and Pattern Recognition (CVPR), pages
+the influence of data types. We hope our work pro-         782–791.
+vides useful insights to support and inspire future      Mark Chen, Jerry Tworek, Heewoo Jun, Qiming
+research in this area.                                    Yuan, Henrique Ponde De Oliveira Pinto, Jared Ka-
+                                                          plan, Harri Edwards, Yuri Burda, Nicholas Joseph,
+Ethics Statement                                          Greg Brockman, et al. 2021. Evaluating large
+                                                          language models trained on code. arXiv preprint
+This work involves the SFT and analysis of LLMs           arXiv:2107.03374.
+using publicly available datasets. All datasets used
+                                                         Yukang Chen, Shengju Qian, Haotian Tang, Xin Lai,
+in our experiments are released for research pur-          Zhijian Liu, Song Han, and Jiaya Jia. 2024a. Lon-
+poses and do not contain personally identifiable           glora: Efficient fine-tuning of long-context large lan-
+or sensitive information to the best of our knowl-         guage models. In ICLR.
+edge. We focus on analysis that investigates how         Zhi Chen, Qiguang Chen, Libo Qin, Qipeng Guo, Hai-
+SFT with long-context data influences the inter-           jun Lv, Yicheng Zou, Wanxiang Che, Hang Yan, Kai
+nal behavior of large language models. As such,            Chen, and Dahua Lin. 2024b. What are the essential
+
+                                                    10301
+  factors in crafting effective long context multi-hop in-   Yaru Hao, Li Dong, Furu Wei, and Ke Xu. 2021. Self-
+  struction datasets? insights and best practices. arXiv       attention attribution: Interpreting information interac-
+  preprint arXiv:2409.01893.                                   tions inside transformer. In Proceedings of the AAAI
+                                                               Conference on Artificial Intelligence, volume 35,
+Kevin Clark, Urvashi Khandelwal, Omer Levy, and                pages 12963–12971.
+  Christopher D. Manning. 2019. What does BERT
+  look at? an analysis of BERT’s attention. In Pro-          Dan Hendrycks, Collin Burns, Steven Basart, Andy
+  ceedings of the 2019 ACL Workshop BlackboxNLP:               Zou, Mantas Mazeika, Dawn Xiaodong Song, and
+  Analyzing and Interpreting Neural Networks for NLP,          Jacob Steinhardt. 2020. Measuring massive multitask
+  pages 276–286, Florence, Italy. Association for Com-         language understanding. ArXiv, abs/2009.03300.
+  putational Linguistics.
+                                                             Dan Hendrycks, Collin Burns, Saurav Kadavath, Akul
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian,                Arora, Steven Basart, Eric Tang, Dawn Song, and
+  Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias               Jacob Steinhardt. Measuring mathematical problem
+  Plappert, Jerry Tworek, Jacob Hilton, Reiichiro              solving with the math dataset. Sort, 2(4):0–6.
+  Nakano, et al. 2021. Training verifiers to solve math
+  word problems. arXiv preprint arXiv:2110.14168.            Hamish Ivison, Yizhong Wang, Valentina Pyatkin,
+                                                               Nathan Lambert, Matthew Peters, Pradeep Dasigi,
+Damai Dai, Li Dong, Yaru Hao, Zhifang Sui, Baobao              Joel Jang, David Wadden, Noah A Smith, Iz Belt-
+  Chang, and Furu Wei. 2022. Knowledge neurons in              agy, et al. 2023. Camels in a changing climate: En-
+  pretrained transformers. In Proceedings of the 60th          hancing lm adaptation with tulu 2. arXiv preprint
+  Annual Meeting of the Association for Computational          arXiv:2311.10702.
+  Linguistics (Volume 1: Long Papers), pages 8493–
+  8502. Association for Computational Linguistics.           Mingyu Jin, Kai Mei, Wujiang Xu, Mingjie Sun, Ruix-
+                                                               iang Tang, Mengnan Du, Zirui Liu, and Yongfeng
+Ning Ding, Yulin Chen, Bokai Xu, Yujia Qin,                    Zhang. 2025. Massive values in self-attention mod-
+  Shengding Hu, Zhiyuan Liu, Maosong Sun, and                  ules are the key to contextual knowledge understand-
+  Bowen Zhou. 2023. Enhancing chat language models             ing. arXiv preprint arXiv:2502.01563.
+  by scaling high-quality instructional conversations.
+  In Proceedings of the 2023 Conference on Empiri-           Qiao Jin, Bhuwan Dhingra, Zhengping Liu, William W.
+  cal Methods in Natural Language Processing, pages            Cohen, and Xinghua Lu. 2019. Pubmedqa: A dataset
+  3029–3051.                                                   for biomedical research question answering.
+
+Nelson Elhage, Neel Nanda, Catherine Olsson, Tom             Zhuoran Jin, Pengfei Cao, Hongbang Yuan, Yubo Chen,
+  Henighan, Nicholas Joseph, Ben Mann, Amanda                  Jiexin Xu, Huaijun Li, Xiaojian Jiang, Kang Liu, and
+  Askell, Yuntao Bai, Anna Chen, Tom Conerly, and              Jun Zhao. 2024. Cutting off the head ends the con-
+  et al. 2021. A mathematical framework for trans-             flict: A mechanism for interpreting and mitigating
+  former circuits. Transformer Circuits Thread.                knowledge conflicts in language models. In Findings
+                                                               of the Association for Computational Linguistics:
+Javier Ferrando, Gabriele Sarti, Arianna Bisazza, and          ACL 2024, pages 1193–1215, Bangkok, Thailand.
+   Marta R. Costa-jussà. 2024. A primer on the inner           Association for Computational Linguistics.
+  workings of transformer-based language models.
+                                                             Tomáš Kočiský, Jonathan Schwarz, Phil Blunsom, Chris
+Yao Fu, Rameswar Panda, Xinyao Niu, Xiang Yue, Han-            Dyer, Karl Moritz Hermann, Gábor Melis, and Ed-
+  naneh Hajishirzi, Yoon Kim, and Hao Peng. 2024.              ward Grefenstette. 2018. The narrativeqa reading
+  Data engineering for scaling language models to              comprehension challenge. Transactions of the Asso-
+  128k context. In Proceedings of the 41st Interna-            ciation for Computational Linguistics, 6:317–328.
+  tional Conference on Machine Learning, ICML’24.
+  JMLR.org.                                                  Jiaheng Liu, ZhiqiBai ZhiqiBai, Yuanxing Zhang,
+                                                                Chenchen Zhang, YuangZh YuangZh, Ge Zhang, Ji-
+Tianyu Gao, Alexander Wettig, Howard Yen, and Danqi             akaiWang JiakaiWang, Haoran Que, Yukang Chen,
+   Chen. 2025. How to train long-context language               Wenbo Su, Tiezheng Ge, Jie Fu, Wenhu Chen, and
+   models (effectively).                                        Bo Zheng. 2024. E2-LLM: Efficient and extreme
+                                                                length extension of large language models. In Find-
+Mor Geva, Roei Schuster, Jonathan Berant, and Omer              ings of the Association for Computational Linguistics:
+ Levy. 2021. Transformer feed-forward layers are                ACL 2024, pages 4243–4253, Bangkok, Thailand. As-
+ key-value memories. In Proceedings of the 2021                 sociation for Computational Linguistics.
+ Conference on Empirical Methods in Natural Lan-
+ guage Processing, pages 5484–5495. Association for          Kevin Meng, David Bau, Alex Andonian, and Yonatan
+ Computational Linguistics.                                    Belinkov. 2022. Locating and editing factual asso-
+                                                               ciations in gpt. In Proceedings of the 36th Interna-
+Nicholas Goldowsky-Dill, Chris MacLeod, Lucas Sato,            tional Conference on Neural Information Processing
+  and Aryaman Arora. 2023. Localizing model behav-             Systems, NIPS ’22, Red Hook, NY, USA. Curran
+  ior with path patching.                                      Associates Inc.
+
+                                                        10302
+Todor Mihaylov, Peter Clark, Tushar Khot, and Ashish          The Thirteenth International Conference on Learning
+  Sabharwal. 2018. Can a suit of armor conduct elec-          Representations.
+  tricity? a new dataset for open book question an-
+  swering. In Proceedings of the 2018 Conference on        Canwen Xu, Wangchunshu Zhou, Tao Ge, Furu Wei,
+  Empirical Methods in Natural Language Processing,          and Ming Zhou. 2020. Bert-of-theseus: Compressing
+  pages 2381–2391, Brussels, Belgium. Association            bert by progressive module replacing.
+  for Computational Linguistics.
+                                                           Peng Xu, Wei Ping, Xianchao Wu, Chejian Xu, Zi-
+OpenAI, Josh Achiam, Steven Adler, Sandhini Agarwal,         han Liu, Mohammad Shoeybi, and Bryan Catanzaro.
+  Lama Ahmad, Ilge Akkaya, Florencia Leoni Ale-              2024a. Chatqa 2: Bridging the gap to proprietary
+  man, Diogo Almeida, Janko Altenschmidt, Sam Alt-           llms in long context and rag capabilities. arXiv
+  man, Shyamal Anadkat, Red Avila, Igor Babuschkin,          preprint arXiv:2407.14482.
+  Suchir Balaji, Valerie Balcom, Paul Baltescu, Haim-
+  ing Bao, Mohammad Bavarian, Jeff Belgum, Ir-             Rongwu Xu, Zehan Qi, Zhijiang Guo, Cunxiang Wang,
+  wan Bello, Jake Berdine, Gabriel Bernadett-Shapiro,        Hongru Wang, Yue Zhang, and Wei Xu. 2024b.
+  Christopher Berner, Lenny Bogdonoff, Oleg Boiko,           Knowledge conflicts for LLMs: A survey. In Pro-
+  Madelaine Boyd, Anna-Luisa Brakman, Greg Brock-            ceedings of the 2024 Conference on Empirical Meth-
+  man, and et al. 2024. Gpt-4 technical report.              ods in Natural Language Processing, pages 8541–
+                                                             8565, Miami, Florida, USA. Association for Compu-
+Denis Paperno, Germán Kruszewski, Angeliki Lazari-           tational Linguistics.
+  dou, Ngoc Quan Pham, Raffaella Bernardi, Sandro
+  Pezzelle, Marco Baroni, Gemma Boleda, and Raquel         Yunzhi Yao, Ningyu Zhang, Zekun Xi, Mengru Wang,
+  Fernández. 2016. The LAMBADA dataset: Word                 Ziwen Xu, Shumin Deng, and Huajun Chen. 2025.
+  prediction requiring a broad discourse context. In         Knowledge circuits in pretrained transformers.
+  Proceedings of the 54th Annual Meeting of the As-
+  sociation for Computational Linguistics (Volume 1:       Manzil Zaheer, Guru Guruganesh, Kumar Avinava
+  Long Papers), pages 1525–1534, Berlin, Germany.           Dubey, Joshua Ainslie, Chris Alberti, Santiago On-
+  Association for Computational Linguistics.                tanon, Philip Pham, Anirudh Ravula, Qifan Wang,
+                                                            Li Yang, and Amr Ahmed. 2020. Big bird: Trans-
+Mirac Suzgun, Nathan Scales, Nathanael Schärli, Se-         formers for longer sequences. In Advances in Neural
+  bastian Gehrmann, Yi Tay, Hyung Won Chung,                Information Processing Systems, volume 33, pages
+  Aakanksha Chowdhery, Quoc Le, Ed Chi, Denny               17283–17297. Curran Associates, Inc.
+  Zhou, and Jason Wei. 2023. Challenging BIG-bench
+  tasks and whether chain-of-thought can solve them.       Susan Zhang, Stephen Roller, Naman Goyal, Mikel
+  In Findings of the Association for Computational Lin-      Artetxe, Moya Chen, Shuohui Chen, Christopher De-
+  guistics: ACL 2023, pages 13003–13051, Toronto,            wan, Mona Diab, Xian Li, Xi Victoria Lin, Todor Mi-
+  Canada. Association for Computational Linguistics.         haylov, Myle Ott, Sam Shleifer, Kurt Shuster, Daniel
+                                                             Simig, Punit Singh Koura, Anjali Sridhar, Tianlu
+Szymon Tworkowski, Konrad Staniszewski, Mikoł aj             Wang, and Luke Zettlemoyer. 2022. Opt: Open pre-
+  Pacek, Yuhuai Wu, Henryk Michalewski, and Piotr            trained transformer language models.
+  Mił oś. 2023. Focused transformer: Contrastive train-
+  ing for context scaling. In Advances in Neural Infor-    Zhisong Zhang, Yan Wang, Xinting Huang, Tianqing
+  mation Processing Systems, volume 36, pages 42661–         Fang, Hongming Zhang, Chenlong Deng, Shuaiyi
+  42688. Curran Associates, Inc.                             Li, and Dong Yu. 2024. Attention entropy is a key
+                                                             factor: An analysis of parallel context encoding with
+George Wang, Jesse Hoogland, Stan van Wingerden,             full-attention-based pre-trained language models.
+  Zach Furman, and Daniel Murfet. 2024. Differen-
+  tiation and specialization of attention heads via the    Liang Zhao, Tianwen Wei, Liang Zeng, Cheng Cheng,
+  refined local learning coefficient.                        Liu Yang, Peng Cheng, Lijie Wang, Chenxia Li, Xue-
+                                                             jie Wu, Bo Zhu, Yimeng Gan, Rui Hu, Shuicheng
+Sarah Wiegreffe and Yuval Pinter. 2019. Attention is not     Yan, Han Fang, and Yahui Zhou. 2024. Longsky-
+  not explanation. In Proceedings of the 2019 Confer-        work: A training recipe for efficiently extending con-
+  ence on Empirical Methods in Natural Language Pro-         text length in large language models.
+  cessing and the 9th International Joint Conference
+  on Natural Language Processing (EMNLP-IJCNLP),           Yingming Zheng, Xiaoliang Liu, Peng Wu, and Li Pan.
+  pages 11–20, Hong Kong, China. Association for             2025. Crave: A conflicting reasoning approach for
+  Computational Linguistics.                                 explainable claim verification using llms.
+Wenhao Wu, Yizhong Wang, Guangxuan Xiao, Hao               Ming Zhong, Da Yin, Tao Yu, Ahmad Zaidi, Mutethia
+ Peng, and Yao Fu. 2024. Retrieval head mechanisti-          Mutuma, Rahul Jha, Ahmed Hassan Awadallah, Asli
+ cally explains long-context factuality.                     Celikyilmaz, Yang Liu, Xipeng Qiu, and Dragomir
+                                                             Radev. 2021. Qmsum: A new benchmark for query-
+Zheyang Xiong, Vasilis Papageorgiou, Kangwook Lee,           based multi-domain meeting summarization.
+  and Dimitris Papailiopoulos. 2025. From artificial
+  needles to real haystacks: Improving retrieval capa-
+  bilities in LLMs by finetuning on synthetic data. In
+
+                                                      10303
+A    Details of SFT Datasets                                   tion helps prevent the model’s responses from be-
+                                                               ing influenced by example demonstrations, thereby
+                                    Statistics                 enabling a more isolated evaluation of the core ar-
+ SFT Dataset
+                      #Sample Avg. Length #Total Tokens        chitectural components.
+                     Short-Context SFT
+ UltraChat            207865         568        118067320      C    Statistical Analysis of Module
+ Tulu-v2-sft-mixture 326154         1759        573704886
+                     Long-Context SFT                               Replacment Performance Gap
+ LongAlpaca            11998        9358        112279613
+ LongMIT               64397       78716       5069084550      As shown in Figure 2, the performance gaps are
+ ChatQA2              128000        9548       1222198251      not significant. To make the differences meaning-
+                                                               ful, we conduct additional controlled experiments
+Table 2: Detailed statistics of SFT datasets. The              by replacing the FFN module between models and
+columns #Sample, Avg. Length, and #Total Tokens
+                                                               reporting results over 10 independent runs with dif-
+represent the number of samples in the dataset, the av-
+erage number of tokens per sample, and the total token         ferent random seeds. Specifically, we report mean
+count in the dataset, respectively. All token counts are       accuracy, standard deviation and 95% confidence
+processed using the Llama-3-8B tokenizer.                      intervals (CI) to measure the effect of FFN design,
+                                                               as shown in Table 4. The results show that replac-
+   The statistical details of the two short-context            ing the FFN from ChatQA2 with UltraChat’s leads
+SFT datasets and three long-context SFT datasets               to a performance drop of 1.97% while replacing Ul-
+used are shown in the Table 2. The average length              traChat’s FFN with ChatQA2’s yields an increase
+(Avg. Length) of the long-context SFT datasets is              of 2.44%. In both cases, the differences in accuracy
+significantly greater than that of the short-context           exceed the corresponding 95% confidence intervals,
+datasets.                                                      indicating that these results are statistically signifi-
+                                                               cant and not due to random variation, which further
+B    Details of Short-context Benchmarks                       enhances our finding that long-context SFT data
+                                                               strengthens the FFN module.
+
+    Dataset            CoT      #Shots      Metric             Table 4: Accuracy results with FFN replacement and
+                                                               corresponding 95% confidence intervals.
+    MMLU                ×          0       Accuracy
+    BBH                 ✓          3         EM                 Model                     Accuracy (Mean ± Std)   95% CI
+    Lambada             ×          0       Accuracy             ChatQA2                      92.56% ± 0.29%       ± 0.18%
+    GSM8K               ✓          4       Accuracy             ChatQA2 + UltraChat FFN      90.59% ± 0.54%       ± 0.33%
+                                                                UltraChat                    90.00% ± 0.67%       ± 0.42%
+    MATH                ✓          4       Accuracy             UltraChat + ChatQA2 FFN      92.44% ± 0.36%       ± 0.22%
+    MBPP                ×          3       pass@1
+    HumanEval           ×          0       pass@1
+    OpenBookQA          ×          0       Accuracy            D    Details of Retrieval Score Evaluation
+    PIQA                ×          0       Accuracy                 Setting
+
+Table 3: Detailed settings of short-context benchmarks.        Specifically, our retrieval score evaluation is in-
+The COT column indicates whether we prompt the                 spired by the needle-in-a-haystack test. Given a
+model to use chain-of-thought reasoning in its responses,      question q and a target answer k (the needle), we
+while the #Shots column specifies the number of in-            insert k into an unrelated contexts x at a random
+context examples included in the prompt.                       position index range iq . The language model is
+                                                               then prompted to answer q based on the result-
+   We conduct evaluations across nine benchmarks,              ing haystack that contains the inserted needle. To
+with the specific configuration for each benchmark             simulate a short-context setting, the length of the
+detailed in the Table 3. For most datasets, we                 unrelated context is varied from 0 to 512 tokens.
+follow the default settings from OpenCompass,                  We evaluate the retrieval score of each attention
+with the exception of MMLU. For MMLU specif-                   head under different context lengths and insertion
+ically, we adopt a 0-shot setup, instead of 5-shot             depths, and obtain the final results by averaging the
+setup, to better decouple the performance testing              scores across all configurations. A simplified exam-
+of the MHA and FFN modules. On the knowledge-                  ple of computing the retrieval score for a specific
+intensive MMLU benchmark, the 0-shot configura-                attention head h is illustrated in Figure 8.
+                                                            10304
+                                                          F   Attention Entropy Heatmap
+                                                          We provide the Attention Entropy Heatmap dur-
+                                                          ing the reasoning period in Figure 11, and during
+                                                          the answering period in Figure 12. A clear pattern
+                                                          emerges: the attention entropy during the reasoning
+                                                          phase is consistently higher than during the answer-
+                                                          ing phase for both models. This suggests that in
+                                                          the reasoning stage, the model prefers to maintain
+                                                          multiple reasoning paths—i.e., it is exploring pos-
+                                                          sibilities, while in the answering stage, it tends to
+Figure 8: An example of retrieval score calculation for
+attention head h. The context length and insert depth     converge on a specific, definitive answer, leading
+will change across configurations.                        to lower entropy.
+                                                             In the reasoning period heatmap, it can be ob-
+                                                          served that within each layer, attention heads posi-
+                                                          tioned in the middle, specifically heads 6–14 and
+                                                          head 0, generally exhibit higher entropy. This im-
+                                                          plies that these heads are particularly involved in ag-
+                                                          gregating diverse information and preserving mul-
+                                                          tiple reasoning trajectories. Middle heads may thus
+                                                          play a crucial role in maintaining contextual flexi-
+                                                          bility required for complex reasoning.
+                                                             The difference heatmap of reasoning entropy fur-
+                                                          ther confirms this: blue regions (indicating higher
+Figure 9: Retrieval scores of common retrieval
+                                                          entropy in ChatQA2-SFT compared to UltraChat-
+heads (threshold >0.1) across layer-head positions for    SFT) clearly dominate and are visually more sat-
+UltraChatX-ChatQA2Y models with dataset ratios 10:0       urated. This indicates that most attention heads,
+(blue), 8:2 (orange), 1:9 (green), and 0:10 (red). X:Y    particularly in the mid-to-late layers (layers 8–30),
+indicates the proportion of UltraChat (X) to ChatQA2      exhibit higher entropy in ChatQA2-SFT. This
+(Y) SFT data.                                             trend suggests fine-tuning with ChatQA2 enhances
+                                                          model’s capacity to keep multiple reasoning paths,
+                                                          an important trait for tasks requiring step-by-step
+E    Futher Analysis on Retrieval Score                   deduction and integration of dispersed information.
+                                                             Conversely, in the answering-period heatmap, a
+We further investigate the effect of mixing SFT           similar head-level structure is observed, with mid-
+datasets of different lengths. In this analysis, we       dle heads showing relatively higher entropy than
+extract the retrieval heads (threshold > 0.1) from        others, but the overall entropy remains significantly
+various models and evaluate their intersection. As        lower than during reasoning. In the difference
+shown in the Figure 9, the retrieval score of the         heatmap, red points (representing lower entropy
+retrieval head tends to decrease as the proportion        in ChatQA2-SFT compared to UltraChat-SFT) out-
+of UltraChat (a long-context dataset) increases in        number the blue points and are more saturated in
+the SFT training data. This suggests that incor-          color. This indicates that ChatQA2-SFT heads tend
+porating a moderate amount of long-context data           to exhibit lower entropy during answering, show-
+can enhance the retrieval capability of the retrieval     ing a stronger tendency to focus and consolidate
+head. However, this trend is not strictly monotonic.      information into a single, confident response.
+A closer look at the overall retrieval scores for Ul-        Together, these results suggest that ChatQA2-
+traChat proportions of 0%, 10%, 80%, and 100%             SFT models are better calibrated in balancing ex-
+yields scores of 16.94, 17.31, 16.58, and 15.39,          ploration and decisiveness: maintaining a broader
+respectively. These results imply that a balanced         attention distribution during reasoning to consider
+combination of short- and long-context datasets           diverse information and narrowing it down during
+may be more effective in improving retrieval per-         answering to deliver precise outputs. This aligns
+formance than using long-context data alone.              with the intuition that effective long-context mod-
+                                                     10305
+eling benefits from both divergent thinking during       Table 5: Accuracy on Natural Questions dataset with
+reasoning and convergent focus during answering.         95% confidence intervals.
+
+                                                          Model                      Accuracy (Mean ± Std)   95% CI
+G    FFN Activation Statistics                            ChatQA2                        50.60 ± 0.82%       ±0.72%
+                                                          ChatQA2 + UltraChat FFN        46.90 ± 0.96%       ±0.84%
+We provide FFN activation statistics outputs of           UltraChat                      40.70 ± 0.57%       ±0.50%
+                                                          UltraChat + ChatQA2 FFN        45.70 ± 0.45%       ±0.39%
+ChatQA2-SFT model and UltraChat-SFT model
+in Figure 10. From the results, we observe that
+                                                         Table 6: Accuracy (%) on knowledge conflict datasets
+both the mean and variance of FFN activations gen-       across different training data mixing ratios (UltraChat :
+erally increase with layer depth, while activation       ChatQA2).
+sparsity first increases and then decreases. Based
+on these trends, we infer the layer-wise functional          Ratio   Tech (%)       Celebrity (%)        Sport (%)
+roles of the FFN during inference. In the early
+                                                             10:0       59                65                 77
+layers, the activation mean and variance are rela-
+                                                             9:1        51                62                 71
+tively low, and sparsity is also low, indicating that
+                                                             8:2        44                49                 61
+the model is extracting basic features with broadly
+                                                             7:3        49                56                 62
+distributed activations. In the middle layers, the in-
+                                                             6:4        50                60                 64
+creasing activation mean and variance, along with            5:5        39                53                 62
+rising sparsity, suggest that the model begins to            4:6        42                49                 61
+selectively activate certain neurons, emphasizing            3:7        44                55                 64
+key dimensions and performing feature selection.             2:8        39                51                 58
+In the later layers, the activation mean and variance        1:9        30                49                 53
+reach higher levels, while sparsity decreases, im-           0:10       34                44                 48
+plying that more neurons are activated to support
+information integration and complex reasoning re-
+quired for final output generation. It is important to   I     Analysis on Various Types of Factual
+note that these observations may reflect character-            Knowledge
+istics specific to the evaluated datasets and models,
+                                                         We provide supplementary evaluations on various
+and may not generalize across all settings.
+                                                         factual knowledge datasets. For the FFN module
+                                                         analysis, we extend the geographical dataset with
+H    Analysis on Mixing Ratios                           200 diverse questions sampled from Google’s Nat-
+                                                         ural Questions dataset, covering domains such as
+We further examine the effect of varying the ratio
+                                                         geography, culture, and history. As shown in Ta-
+of long-context (ChatQA2) to short-context (Ultra-
+                                                         ble 5, the results remain consistent with our main
+Chat) SFT data, with results reported in Table 7.
+                                                         findings that long-context SFT data strengthens the
+FFN Statistics show that activation mean and vari-
+                                                         FFN module.
+ance rise initially and then decline as the proportion
+                                                            We also extend the knowledge preference anal-
+of long-context data increases, while sparsity de-
+                                                         ysis by constructing three knowledge conflict
+creases monotonically. This indicates that moder-
+                                                         datasets in the domains of Technology, Celebrity,
+ate amounts of long-context data enhance FFN ex-
+                                                         and Sport. Table 6 presents the results, which again
+pressiveness, whereas excessive use leads to over-
+                                                         confirm that the length of SFT training data intro-
+regularization. Attention Entropy increases dur-
+                                                         duces systematic biases in the model’s knowledge
+ing reasoning, suggesting improved exploration,
+                                                         preferences.
+but decreases during answering, reflecting stronger
+confidence. These trends are consistent with our
+main entropy analysis. Retrieval Score peaks at
+extreme ratios (0:10 or 9:1) but deteriorates under
+intermediate mixtures, implying sensitivity to the
+dominant data type. Overall, these results highlight
+that FFN and MHA modules benefit from differ-
+ent optimal ratios, underscoring the importance of
+hybrid training.
+                                                    10306
+ Table 7: Effect of mixing ratios (UltraChat : ChatQA2) on FFN statistics, attention entropy, and retrieval score.
+
+Ratio   ∆ Mean (FFN) ↑   ∆ Sparsity (FFN) ↓   ∆ Variance (FFN) ↑   ∆ Reasoning Entropy (Attn) ↑   ∆ Answer Entropy (Attn) ↓   ∆ Retrieval Score ↑
+ 10:0        0.00              0.00                  0.00                      0.00                          0.00                     0.00
+ 9:1         0.29              -0.58                 1.89                      0.28                         -7.80                    0.34
+ 8:2         0.31              -0.51                 2.06                      1.96                        -11.10                     0.17
+ 7:3         0.30              -0.44                 1.91                      2.40                        -14.20                     0.09
+ 6:4         0.29              -0.36                 1.73                      2.51                         -9.47                     0.08
+ 5:5         0.27              -0.46                 1.83                      3.43                        -23.60                    -0.19
+ 4:6         0.24              -0.41                 1.83                      1.54                        -38.10                    -0.00
+ 3:7         0.23              -0.38                 1.37                      4.09                        -35.10                     0.15
+ 2:8         0.20              -0.23                 1.26                      4.65                        -41.00                     0.17
+ 1:9         0.18              -0.31                 1.21                      4.37                        -49.90                     0.26
+ 0:10        0.15              -0.48                 0.88                      6.86                        -76.80                     0.43
+
+
+
+
+Figure 10: FFN activation means, variance and sparsity of ChatQA2-SFT and UltraChat-SFT model. model1
+represents ChatQA2-SFT model and model2 represents UltraChat-SFT model.
+
+
+
+
+Figure 11: Heatmap of attention entropy in reasoning period. SFT1 represents ChatQA2-SFT model and SFT2
+represents UltraChat-SFT model.
+
+
+
+
+                                                                    10307
+Figure 12: Heatmap of attention entropy in answering period. SFT1 represents ChatQA2-SFT model and SFT2
+represents UltraChat-SFT model.
+
+
+
+
+                                                10308
+
