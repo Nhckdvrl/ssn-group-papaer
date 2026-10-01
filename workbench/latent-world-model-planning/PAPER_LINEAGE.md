@@ -346,6 +346,154 @@ offline / reward-free data
 - **ownership：** generic “long horizon / prediction accuracy 不够解释 planning”已经被非常直接地做透一层。
 - **对我们：** 把 goal distance / planner range 作为所有 experiment 的分层轴；不要拿它本身当 novelty。
 
+
+---
+
+## 7.5 第二轮 hardening：新增直接近邻与顶会邻接压力（P40–P56）
+
+这一组是第一次登记后继续深挖得到的。它们进一步收紧了“还能说什么”，尤其削弱了 I02 的独立新颖性，并让 I01 必须从“suboptimal trajectory 有偏”升级成**同 local dynamics evidence 下的 trajectory-factorization / routing invariance 问题**。
+
+### P40 — A Control Theory of Predictability in Latent World Models — arXiv 2607.10362
+**来源：** https://arxiv.org/abs/2607.10362
+
+- **母问题：** 为什么 held-out single/multi-step prediction error 不能保证 control？
+- **改变前提：** planner 真正 query 的不是训练分布，而是 candidate actions 能到达的 planner-reachable measure。
+- **理论对象：** predicted vs true plan-cost discrepancy；planner suboptimality 由 commit plan 上的 cost discrepancy 控制，而不是 data-averaged prediction error。在线性 premise 下进一步分 on-manifold residual + spectral/non-normality tax 与 off-manifold divergence。
+- **实证：** validation prediction error 与 control success 近乎解耦；planner-reachable fidelity 更跟踪 success。
+- **ownership：** “CEM/optimizer 把模型带出 data support，因此平均 prediction error 不够”已经有直接理论 ownership。
+- **对 I02：** generic support-drift story 不再是独立 paper seed；E05 只能作为 I03 的 diagnostic，除非出现该 theory/measure 不能解释的更具体机制与 intervention。
+
+### P41 — The Objective Is the Bottleneck — arXiv 2608.12959
+**来源：** https://arxiv.org/abs/2608.12959
+
+- **母问题：** long-horizon LeWM 失败究竟是 predictor 先坏，还是 planner 的 latent objective 先坏？
+- **关键 intervention：** 不 retrain model，仅替换 planning objective，就把 TwoRoom 远目标成功率大幅恢复；probe 显示 position information 仍在 representation 中。
+- **idea-growth：** 从“prediction/representation 好不好”转成“planner 能否用 representation 中已有的信息”。
+- **ownership：** “objective 而非 predictor 是 binding bottleneck”“latent 中有信息但 L2 用不好”已被非常直接占位。
+- **对我们：** E02 的 encoded-real endpoint ranking 是基础诊断，不是新贡献；I03 必须寻找**跨 regime 的 bottleneck relocation law**，不能只在 TwoRoom 再做 objective swap。
+
+### P42 — Traj-LeWM — arXiv 2608.14125
+**来源：** https://arxiv.org/abs/2608.14125  
+**代码：** https://github.com/XiaodiHuang-code/Traj_LeWM
+
+- **压力：** endpoint-only scoring 丢掉 intermediate path；local next-step training 也不直接学习 goal-relative full-trajectory quality。
+- **方法：** goal-conditioned Latent Trajectory Cost；偏好来自 goal-mismatched expert paths、endpoint-preserving latent perturbations、endpoint-only planner 挖出的 failed rollouts；planning 时 endpoint + LTC。
+- **证据：** Push-T、Cube、Reacher、TwoRoom 都报告增益。
+- **ownership：** generic“完整 trajectory 比 terminal endpoint 更有信息”“挖 failed rollout 训练 path cost”已占。
+- **对 I01：** trajectory-level supervision 本身已是方法赛道；我们的 delta 必须是**这种 supervision 对 trajectory factorization / behavior routing 是否应当 invariant**，不是再加一个 path head。
+
+### P43 — AD-WM — arXiv 2609.30264
+**来源：** https://arxiv.org/abs/2609.30264
+
+- **母问题：** factual transition prediction 与 counterfactual MPC 的 action discrimination 是不同要求。
+- **方法：** residual latent dynamics + predictor-level action-recovery regularization / conditional-MI-inspired normalized objective；training-only heads。
+- **证据：** OGBench-Cube hard-start 以及多环境；paper 还报告 frozen V-JEPA2 + DROID post-training 到 Franka 的 zero-shot transfer。
+- **诊断：** factual error / whole-bank action ranking 不按 success 排序，而 CEM-aligned elite regret 更接近 closed-loop outcome。
+- **ownership：** counterfactual action distinguishability、CEM elite regret 已强占位。不能把“不同 candidate actions 的未来太像”作为新 story。
+
+### P44 — Control-Geometry Straightening (CGS) — arXiv 2609.35603
+**来源：** https://arxiv.org/abs/2609.35603
+
+- **母问题：** predictive latent transition 即使准，sampling-based planner 的目标 landscape 仍可能难优化。
+- **方法：** 只用 local pixel-action transitions，把 action-pair cosine similarity 对齐 corresponding latent displacement cosine similarity。
+- **理论：** 在线性条件下连接 temporal straightening、terminal-cost curvature，并给 MPPI/CEM/GD 有限预算性质。
+- **证据：** 4 control environments、多 planner；128 candidates 下仍报告明显增益。
+- **ownership：** “local control geometry 让有限-budget search 更容易”已占。
+- **对 I01：** CGS 是很好的**local-transition negative/control baseline**：它不依赖 long-range trajectory gap，因此若 I01 是 route imprinting，CGS/TS 应比 RC-aux/TD-JEPA 更不敏感于 trajectory refactorization。
+
+### P45 — AnisoWM — arXiv 2609.37441
+**来源：** https://arxiv.org/abs/2609.37441  
+**项目页 repo：** https://github.com/rkdrn79/AnisoWM-page
+
+- **主张边界：** isotropic Gaussian regularization 并非中性；learned anisotropic covariance 可以重排表示几何与 task-relevant directions。
+- **ownership：** “SIGReg 的 isotropy 本身塑造 geometry / 换 covariance prior”已被占位。
+- **对我们：** latent marginal regularizer 的分布形状属于 representation confound；I01 dataset intervention 必须用同一 regularizer/config，不把 covariance shift 误当 behavior effect。
+
+### P46 — Adaptive Latent Capacity / ALeWM — arXiv 2609.32921
+**来源：** https://arxiv.org/abs/2609.32921  
+**项目页：** https://github.com/arm-research/AAIR-ALeWM
+
+- **idea：** 学习 prefix-length distribution，把 predictive information 排到 wide latent 的前缀；MixSIGReg 对 masked embeddings 使用 Gaussian-active-prefix + zero-tail mixture。
+- **证据：** controlled system + goal-conditioned visual control；报告低于 fixed-width 的平均 planning capacity 同时更高 success。
+- **ownership：** latent capacity/coordinate ordering 已形成独立近期路线。
+- **对我们：** 不把 latent width/capacity sweep 当新题；它最多是 I03 的 regime variable/control。
+
+### P47 — Toward Physically Grounded JEPA World Models — arXiv 2609.03565
+**来源：** https://arxiv.org/abs/2609.03565
+
+- **方法：** inverse dynamics + state alignment，把 latent 与 physical configuration/motion 对齐。
+- **证据：** TwoRoom、PushT、Cube、Reacher；state alignment 对 IDM-only 有一致增益。
+- **ownership：** “用 privileged physical state 对齐 planning latent”已经有直接方法；simulator state 作为我们 oracle 必须保持 diagnostic 身份，不能悄悄变成公平输入优势。
+
+### P48 — PSG-JEPA / Is Forward Prediction Enough? — arXiv 2608.06799
+**来源：** https://arxiv.org/abs/2608.06799  
+**代码：** https://github.com/Haodong-Yan/PSG-JEPA
+
+- **方法：** single-latent proprioceptive grounding + latent-pair multi-horizon joint-angle-change grounding；heads 仅训练时使用。
+- **证据层：** latent identifiability、frozen-latent goal planning、simulation/real-robot policy learning。
+- **ownership：** physical-state / transition grounding 已很拥挤；“forward prediction 不保证 physical identifiability”不能再做 broad headline。
+- **工程价值：** official release 与 stable-worldmodel/LeWM 同生态，必要时可作为 privileged grounding baseline，但不是首轮必装。
+
+### P49 — On Capability Separation Between World-Model Policy Learning and Imitated World-Action Models — arXiv 2608.22197
+**来源：** https://arxiv.org/abs/2608.22197
+
+- **母问题：** future/outcome factorization 本身是否给 observational imitation 更强的 control capability？
+- **理论边界：** 在 realizability/exact optimization/common deployment info 等条件下，imitation-trained world-action policy 与 direct behavior cloning 可恢复同 observational behavior；真正更强的 decision 需要 identified action effects + utility comparison。
+- **对我们：** “看到未来/未来 factorization 所以更会决策”不是自动成立；action-conditioned causal/counterfactual evidence 与 observational future statistics 必须区分。
+
+### P50 — Learning Task-Sufficient World Models by Synergizing Agentic Exploration and Structured Modeling — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/feng26aa.html
+
+- **母问题：** generic/high-dimensional world state 保留大量 control-irrelevant factors；能否主动收集 informative trajectories 并学习 task-specific minimal sufficient latent？
+- **方法：** agentic probing curriculum + structured representation learning，闭环地让数据收集暴露 task-relevant factors。
+- **ownership：** broad “task-sufficient/minimal world representation”已经是 ICML-level 主题；P38 的 decision sufficiency 也进一步形式化。
+- **对我们：** 顶会尺度不是“latent 小不小”，而是有没有对 task/decision sufficiency 的新识别或结构。
+
+### P51 — Behavior-Invariant Task Representation Learning with Transformer WMs for Offline Meta-RL — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/qian26o.html
+
+- **母问题：** offline context/task representation 会随 behavior policy 改，导致 meta-test shift。
+- **方法：** information-theoretic behavior-invariant task latent + stochastic transformer WM；conservative value penalty 防 policy/model exploitation。
+- **ownership：** “behavior-invariant representation”这个大词本身已被 ICML 2026 直接占用。
+- **对 I01：** 我们不能写成泛化的 behavior-invariant representation paper；必须限定为**trajectory-supervised planning geometry 在同 local dynamics evidence 下的 route/factorization dependence**，并落到 MPC candidate ranking/closed-loop。
+
+### P52 — Parallel Stochastic Gradient-Based Planning for World Models — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/psenka26a.html
+
+- **方法：** 把 intermediate virtual states 也作为优化变量，用 soft dynamics constraints + stochasticity，使 long-horizon differentiable WM planning 更并行、更易优化。
+- **ownership：** “换 optimizer / parallel gradient planning 解决长 horizon”已有 ICML 路线。I03 若比较 planner，必须当 baseline family，不把 optimizer engineering 本身当发现。
+
+### P53 — World-In-World — ICLR 2026 Oral
+**来源：** https://proceedings.iclr.cc/paper_files/paper/2026/hash/5b4263be85820683d78675cc18d2efc7-Abstract-Conference.html
+
+- **母问题：** generative WM 的 open-loop visual quality 是否真能转成 embodied utility？
+- **贡献：** standardized closed-loop environments/action API + online planning；发现 visual quality 不保证 task success，action-observation post-training 与 inference-time compute 很关键。
+- **ownership：** decision-centric / closed-loop evaluation 已是 oral-level显式主题。
+- **对我们：** candidate-level diagnostics 必须最后回到 task consequence；但“闭环评估更重要”本身不是 novelty。
+
+### P54 — Sparse Imagination — ICLR 2026
+**来源：** https://proceedings.iclr.cc/paper_files/paper/2026/hash/a750d52284ff70c6d6bab8072c392d74-Abstract-Conference.html
+
+- **方法：** randomized grouped attention 训练 transformer WM，使 rollout 时可动态丢 visual tokens。
+- **ownership：** test-time token sparsity/compute-quality tradeoff 已有 ICLR；效率不是这条 compact LeWM workbench 的默认新空间。
+
+### P55 — Planning in 8 Tokens / CompACT — CVPR 2026
+**来源：** https://openaccess.thecvf.com/content/CVPR2026/papers/Kim_Planning_in_8_Tokens_A_Compact_Discrete_Tokenizer_for_Latent_CVPR_2026_paper.pdf  
+**代码：** https://github.com/kdwonn/CompACT
+
+- **idea：** 极端压缩 observation 到 8 discrete tokens，用 semantic guidance 保留 planning-relevant information。
+- **证据：** navigation/manipulation planning 与 speed；项目页报告约 40× planning speedup。
+- **资源边界：** official repo 的 paper-scale tokenizer/world-model training 使用多 GPU（tokenizer 8 H100、WM 4 RTX 6000 Ada 的默认论文配方），不适合作为首轮核心训练 baseline。
+- **ownership：** token-count/compression efficiency 已有 CVPR 路线。
+
+### P56 — GeoWorld — CVPR 2026
+**来源：** https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_GeoWorld_Geometric_World_Models_CVPR_2026_paper.html
+
+- **方法：** Hyperbolic JEPA + geometric RL/energy-based planning，目标是保 hierarchy/geometric structure 并缓解 multi-step degradation。
+- **ownership：** “非欧 geometry 更适合 latent planning”在大视觉 WM 路线也已有顶会工作；本 workbench 的 geometry claim 不能只靠换 manifold。
+- **对我们：** I01 的价值不在选 Euclidean/hyperbolic，而在**training supervision 的 invariance/identification**。
+
+
 ---
 
 ## 8. 研究 idea 如何从 related work 中生长：五个可迁移模式
