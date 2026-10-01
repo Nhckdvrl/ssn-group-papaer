@@ -1,26 +1,42 @@
-# I02：CEM 是否把候选推向“数据支持更低、模型更乐观”的 false-elite 区域？（2026-10-02）
+# I02：Optimizer-induced support drift / false elites（2026-10-02）
 
-- **状态：** SEED
-- **来源：** 近邻分歧 + 系统测量入口：PLDM 显式用 ensemble uncertainty 防 OOD transition；Hi-LeWM 报告 high-level search distribution mismatch；ACID/MEND 分别从 inverse consistency / latent score 检查 imagined transition；offline MBRL 的 model exploitation 是经典压力。当前 LeWM/RC-aux stack 有可重置 simulator 和迭代 CEM，可逐 stage 审计。
-- **研究动作：** 定位 + 干预/反事实 + 重新归因。
-- **如果为真，主张是：** compact latent CEM 的主要 failure 之一不是静态 prediction error，而是 optimizer-induced candidate distribution shift：CEM 迭代降低行为数据 support，同时提高 model-based optimism，造成 false elites 与 environment regret；该链条在匹配动作幅度/平滑度和 compute 后仍存在。
-- **不同结果各带来什么 information gain：**
-  - A：support drift 先于 false-elite/regret，跨 ≥2 tasks → 进入机制/修复；
-  - B：false elite 存在但 support 不解释 → 转向 candidate margin / metric/dynamics；
-  - C：support 下降但 true utility 不受影响 → support metric 不是 load-bearing；
-  - D：简单 ensemble uncertainty/behavior prior 完全修复 → 不造复杂新方法，记录强 baseline。
-- **最近 3 个近邻与增量：**
+- **状态：** PARKED（保留 E05 作为 I03 / diagnostics，不再作为独立第一梯队 paper seed）
+- **来源：** 最初来自 PLDM uncertainty、Hi-LeWM search-distribution mismatch、ACID/MEND 以及经典 offline MBRL model exploitation。第二轮深挖后，**A Control Theory of Predictability in Latent World Models (arXiv:2607.10362)** 已直接把 planner-reachable distribution、off-manifold divergence 与 plan-cost discrepancy形式化，并实证 data-averaged prediction error 与 control 解耦；因此原来“CEM 把 candidate 推离 data support → model optimism → regret”的 broad story compression risk 太高。
+- **研究动作：** 从独立 idea 降级为 I03 的定位工具 / 反事实 measurement。
+- **若未来重开，必须比现有 theory 多什么：** 不能只是再画 support vs error 曲线。必须出现一个**该 control-theory fidelity / uncertainty / classic model-exploitation baselines 解释不了的 planner-stage-specific mechanism**，并导出不同 intervention。
 
-| 近邻 | 它的 claim | 我们必须达到的增量 |
+## 仍值得保留的 measurement
+
+E05 可以继续作为共享资产，在 I03 需要判断“proposal/search layer 是否成为 bottleneck”时记录：
+- CEM iteration；
+- behavior action-chunk support；
+- ensemble disagreement（若可用）；
+- predicted-vs-real plan cost；
+- false-elite rate；
+- candidate regret；
+- action norm/smoothness。
+
+但它默认不产生新 C##。
+
+## 最近近邻与压力
+
+| 近邻 | 已占 claim | 对 I02 的影响 |
 |---|---|---|
-| PLDM | ensemble uncertainty 惩罚 OOD transition | stage-wise optimizer distribution shift → false elite → real regret 的直接环境审计 |
-| ACID | inverse-cycle residual 检查 intermediate realizability | 证明 support/optimism 是否是 ACID residual 未覆盖的 distinct failure，或反之 |
-| Hi-LeWM | high-level search distribution mismatch | 从 hierarchical macro-action case 推到 compact latent CEM 的可测 support chain；不能只复述“search OOD” |
+| A Control Theory of Predictability | planner-reachable measure / off-manifold divergence governs control more directly than data-average error | broad support-drift story基本被压缩 |
+| PLDM | ensemble uncertainty penalizes OOD transition | uncertainty baseline不可省 |
+| MOPO/MOReL 等 offline MBRL | model exploitation / support penalty | “OOD planner exploits model”是经典 |
+| Hi-LeWM | search distribution mismatch in macro-action/hierarchical setting | distribution mismatch 已在同领域显式出现 |
+| ACID / MEND | consistency / latent hallucination diagnostics | detector/reranker 空间也已有直接近邻 |
 
-- **最便宜的决定性 pilot：** [E05](../experiments/E05_cem_support_drift.md)
-  - 阳性对照：人为把 action chunk 替成远离数据 support 的 sequence，support metric 必须下降；true-dynamics rollout 能识别 model optimism。
-  - 噪声地板 + MIE：同 candidate/restore 重跑；MIE 在 E02 之后按 false-elite rate / paired regret CI 填。
-  - 决策表：稳定链条 → 扩 seed + verifier controls；只有相关无时间顺序 → 不升级因果；无链条 → PARK。
-- **预期论文形态：** A 失败+修复 / B 构念+测量。
-- **排序打分（1–3）：** 证据 1 · 增量清楚度 2 · 形态匹配 3 · 成本 3 · 可完成性 3 · 不同结果的信息增益 3
-- **PARKED / REFUTED 时：** 若 action magnitude/smoothness 或 PLDM uncertainty 已完全解释，park 并写重开条件。
+## 重开条件
+
+满足至少一条：
+1. E05 在强 controls 下发现 **CEM stage-wise process** 中一个稳定 failure law，而 P40 的 planner-reachable fidelity / ensemble uncertainty不能预测；
+2. I03 发现某个 regime 中 support drift 是唯一 oracle-identifiable bottleneck，并且现有方法无法修；
+3. 一个简单、可验证的 intervention 只作用于这个机制，并跨 ≥2 tasks / model families 有一致后果。
+
+否则保持 PARKED，不因为有空闲 GPU 单独扩 seed。
+
+- **预期论文形态（若重开）：** 新 planner-induced failure mechanism + intervention，而非“offline model exploitation again”。
+- **重开时最便宜实验：** [E05](../experiments/E05_cem_support_drift.md)。
+- **排序打分（当前）：** 证据 1 · 增量清楚度 1 · 形态匹配 2 · 成本 3 · 可完成性 3 · 不同结果信息增益 2。
