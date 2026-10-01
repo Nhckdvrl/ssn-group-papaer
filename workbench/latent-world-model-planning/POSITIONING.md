@@ -64,6 +64,12 @@
 | RWM | direct latent path + local inverse actions | “在 latent 里直接连路径” |
 | What Must a WM Distinguish? | mechanism / response / decision sufficiency | “world model 不必预测所有东西” |
 | World-In-World | closed-loop utility > open-loop visual metric | “应该闭环评估” |
+| Hidden Failure Modes (ICML'26 Workshop Oral) | replanning interval K / score time index / controllability interface can dominate apparent model quality | “terminal score mismatch / waypoint interface” |
+| PhyLatent | physical invariance/distinguishability/counterfactual-dynamics collapse | “global noncollapse 不够 / dynamics-relevant collapse” |
+| Do-JEPA / FIRM-WM | same-reset physical interventions for action effects / counterfactual branches | “offline factual data缺 counterfactual，所以做 intervention” |
+| Bilinear WM | structured bilinear dynamics + action recoverability + efficient planning | “structured dynamics / action recoverability” |
+| One-Step Next-Latent… | one-step conditional mean does not generally identify rollout kernel | “one-step objective不是真 world model” |
+| FF-JEPA | action-free latent subgoal planner for long horizon | “learn latent subgoal planner” |
 | Behavior-Invariant Task Rep | behavior policy invariant task latent | “做 behavior-invariant representation” |
 
 ## 3. 明确不能再作为我们的 headline
@@ -82,7 +88,10 @@
 - path-aware / subgoal / hierarchy / variable chunk helps long horizons；
 - action discrimination matters for counterfactual MPC；
 - OOD/model exploitation can hurt offline model planning；
-- world models should be evaluated by decision success。
+- world models should be evaluated by decision success；
+- terminal-at-H scoring under K<H replanning can be misaligned；
+- one-step next-latent regression is not generally a full rollout kernel；
+- factual offline data lacks paired counterfactual action outcomes。
 
 ## 4. 当前 research mines
 
@@ -114,12 +123,13 @@
 
 ### R-C / I03 — **Bottleneck relocation / regime law**（第二优先，探索引擎）
 
-近邻已经各自把 blame 放到 metric、dynamics、counterfactual discrimination、search、horizon、target interface。我们的增量不是再排一次方法，而是：
+近邻已经各自把 blame 放到 metric、dynamics、counterfactual discrimination、search、horizon、target interface；Hidden Failure Modes 又证明 **replanning/scoring protocol 本身**能制造巨大的 apparent bottleneck。我们的增量不是再排一次方法，而是：
 
 > goal distance / candidate margin / data support 等少数可观测变量，能否跨任务预测 **哪个 layer 成为 binding bottleneck**，以及哪类 intervention 会有效？
 
 要过 reviewer：
 - oracle ladder 必须真正 isolate layers；
+- 在任何 layer attribution 前先过 protocol gate：terminal@H / prefix@K / running cost、H、K、action block、replanning interval；
 - 不能每任务手调阈值；
 - intervention ranking 必须按 regime 切换；
 - 最终最好导出 practical adaptive rule / training principle；
