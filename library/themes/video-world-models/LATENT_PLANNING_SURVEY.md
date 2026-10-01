@@ -2,6 +2,14 @@
 
 调查日期：2026-10-02。用途：选择一个能持续建设和实验的 workbench，不是宣布论文 idea、新现象或 SOTA。资源条件见 [RESOURCES](../../../RESOURCES.md)；登记对象见 [workbench](../../../workbench/latent-world-model-planning/README.md)。
 
+> **2026-10-02 second-pass hardening：** 第一轮调查之后继续深挖了 decision-metric alignment、offline GCRL/quasimetric、recursive-error propagation、planner/search、hierarchy、planning limits 与 9 月底直接近邻。为避免本主题页重复膨胀，最新、细粒度的论文生长链与 claim ownership 迁移到：
+> - [PAPER_LINEAGE](../../../workbench/latent-world-model-planning/PAPER_LINEAGE.md)：约 40 个直接/邻接工作，重点是 mother question、idea leap、关键实验、与 related work 的距离；
+> - [PROBLEM_METHOD_MAP](../../../workbench/latent-world-model-planning/PROBLEM_METHOD_MAP.md)：七层 problem×method map 与 oracle ladder；
+> - [POSITIONING](../../../workbench/latent-world-model-planning/POSITIONING.md)：2026 collision/compression map 与 surviving regions；
+> - [EXPERIMENT_PROGRAM](../../../workbench/latent-world-model-planning/EXPERIMENT_PROGRAM.md)：把文献 tension 直接转成 E00–E07。
+>
+> 因此本文件后半的 P01–P16 卡视为**第一轮来源记录**，不是当前 direct-neighbor 全集；任何新颖性判断以以上 hardening 文件为准。
+
 ## 0. 结论与证据边界
 
 建议登记 **latent-world-model-planning：紧凑世界模型的表示、动力学与决策可靠性**。以 LeWM 原生复现环境和 stable-worldmodel 的公共接口为底座，保留冻结视觉特征、端到端表示、结构化动力学、不同规划器及 goal-conditioned RL 对照。
@@ -203,4 +211,4 @@ DINO-WM → PLDM／LeWM → SMWM。
 
 ## 7. 尚未完成，而不是默认为完成
 
-强基线数值复现；数据／权重实际下载与哈希；完整版本兼容矩阵；本地单任务显存和 wall-clock；窄切片 venue-corpus 查询与 near-miss 校准；扩展论文 P14–P16 全文阅读。它们进入后续资产和实验账本，不伪装成本轮已有结果。
+**文献 hardening 已足够启动实验，但本地证据仍为零。** 尚未完成的是：强基线数值复现、数据／权重实际下载与哈希、完整版本兼容矩阵、本地单任务显存/wall-clock、E02 decision-audit 校准，以及 E03–E07 科学 pilot。新增 direct-neighbor 的完整卡与红区已迁移到 PAPER_LINEAGE/POSITIONING；执行中仍须滚动扫描最新 arXiv。
