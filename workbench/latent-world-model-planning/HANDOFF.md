@@ -45,10 +45,10 @@
 复制已知 decision-alignment measurement：random/mid/elite candidates、real endpoint vs predicted endpoint、fixed-pool regret。工具测不到已知 effect 时不许做新机制 claim。
 
 ### Mining
-- **I01:** E03 → E04（第一优先）。
-- **I02:** E05；E01 logger 可信后可在另一独立节点并行。
-- **I03:** E06 → E07；不做大 leaderboard。
+- **I01:** E03 valid trajectory refactorization → E04 natural behavior routes（第一优先）。
+- **I03:** E06 → E07（第二优先；不做大 leaderboard）。
 - **I04:** 只是 E02 calibration asset。
+- **I02:** PARKED；E05 只有 I03 需要判断 planner-reachable support/off-manifold layer 时才跑。
 - **I05:** PARKED，满足重开条件才动。
 
 ## 4. 最小 shared schema
@@ -92,11 +92,12 @@ support/uncertainty/consistency scores (if defined), selected, elite_rank
 I01 的价值来自**控制 behavior geometry 与 environment geometry**，不是普通 dataset ablation。
 
 E03：
-- raw transitions 相同；
-- one-step/local window manifest **hash 相同**；
-- 只改 long-pair / episode metadata；
+- 必须是**合法 trajectory refactorization**，优先共享 junction 的 cut-and-splice，不做任意打乱；
+- raw transition multiset 相同；
+- one-step / fixed-history window manifest **hash 相同**；
+- 只改 long-range within-trajectory membership / observed temporal gaps / cross-trajectory status；
 - RC-aux/TD-JEPA target 必须有预期 shift；
-- LeWM local prediction作 negative control。
+- LeWM local prediction作 negative control；有可靠实现时加 TS/CGS local-geometry control。
 
 E04：
 - shortest-ish / detour / route-mixture；
@@ -137,6 +138,6 @@ E04：
 - `logs/YYYY-MM-DD.md`；
 - 小步 commit/push。
 
-触发人审：首个科学 C##→L2、I01/I02/I03 出现决定性结果、需要改变 ACTIVE 调度、或两个 lead 连续被近邻/平凡 baseline 吸收。
+触发人审：首个科学 C##→L2、I01/I03 出现决定性结果、I02 满足重开条件、需要改变 ACTIVE 调度、或两个 lead 连续被近邻/平凡 baseline 吸收。
 
 **不要每跑一个 job 就停下来等指令。** 在卡片决策表范围内自主推进。
