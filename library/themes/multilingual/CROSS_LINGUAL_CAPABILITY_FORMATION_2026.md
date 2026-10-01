@@ -6,6 +6,22 @@
 
 ---
 
+## 当前执行判断（2026-10-02 人审；优先于以下历史探索）
+
+本地图保留不同阶段的文献与探索历史，不再将其当作一致的当前 leading explanation。
+acquisition-limited → alignment-limited 撤回领先地位；四篇 parent 未估计相同因果量。
+MuBench 已对简单 exposure-saturation 预测构成反压力，不能继续默认 broad gain 应消失。
+§17–23 是历史探索提议，不构成新研究承诺；reasoning language、Beetle 或内部机制
+不能靠改标题自动接管 C。近邻用于定位和设计增量，不用于桌面关闭领域。
+
+当前授权工作：MONOWEB 有效训练干预上的英语任务学习→德语迁移 baseline。
+先源语开发验证有效学习，再观察真实训练选择的后果，停止近地板冻结探针的局部扩展。
+母问题是新任务/领域适配中目标语内容、翻译新内容与复用桥接的预算分配，
+不是预先宣布一个 acquisition transition，也不是默认启动 scratch factorial。
+PreAlign、False Friends、LINK 等标准任务迁移/知识桥接工作属于直接近邻，
+普通迁移收益本身没有 novelty。完整方法未取得的材料继续标未核对。
+当前执行依据见 `workbench/cross-lingual-acquisition-regimes/README.md` 与 E01。
+
 ## 0. Why this territory is scientifically live
 
 A single phrase such as “multilingual alignment” hides several different phenomena:
@@ -994,7 +1010,7 @@ The earlier simple hypothesis that abundant monolingual exposure causes the broa
 
 ---
 
-## 20. Current stronger lead: what does “reasoning language” actually control?
+## 20. 历史探索提议：what does “reasoning language” actually control?（非当前 C 执行线）
 
 The multilingual reasoning literature now contains a productive tension.
 
@@ -1121,7 +1137,7 @@ Kill or demote if:
 
 ---
 
-## 18. Lead demotion and new pressure: when does explicit bilingual alignment transfer beyond translation?
+## 21. 历史探索：Lead demotion and new pressure: when does explicit bilingual alignment transfer beyond translation?
 
 ### 18.1 The previous proxy/interventional-validity lead is demoted
 
@@ -1365,7 +1381,7 @@ This is strong enough for continued search, but not yet authorized as a workbenc
 
 ---
 
-## 18. Stronger pressure: from transfer-dominated to self-sufficient language computation
+## 22. 历史探索：from transfer-dominated to self-sufficient language computation
 
 The proxy-validity lead in §17 remains useful, but a deeper object emerged after auditing resource-allocation, low-resource transfer, controlled parallel-data, and mechanistic papers.
 
