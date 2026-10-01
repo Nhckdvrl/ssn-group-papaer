@@ -1,27 +1,109 @@
-# E03：Trajectory-partition invariance — 同 local transitions，只改 long-pair supervision（2026-10-02）
+# E03：Valid trajectory refactorization invariance（2026-10-02）
 
 - **状态：** PLANNED
 - **类型：** PILOT
 - **对应：** I01
-- **问题（一句话）：** 当 raw transitions、local one-step windows、environment dynamics 完全相同，只改变 trajectory boundary / long-pair metadata 时，trajectory-supervised reachability/progress geometry 是否随之改变并影响 candidate ordering？
-- **设置：** 先用最易做 exact manifest control 的 navigation task。由同一 raw transition store 生成 A/B 两个 dataset view：A 原始 trajectory organization；B 只改变 long-pair/episode metadata，使 RC-aux/TD-JEPA 的 pair label/采样发生预期变化，但 LeWM one-step/local window manifest byte-identical。首轮 1 train seed × 1 task；只有超过 gate 才扩 3 seeds。
-- **读数：** local transition hash、one-step window manifest hash、long-pair manifest hash；同 latent pair 的 supervision label/gap distribution；reachability/TD output；encoded-real and predicted candidate ordering；Plan-Real/elite Spearman；fixed-pool regret；closed-loop success（pilot 次要）。
-- **阳性对照：** 人工选择一组 pair，使 A/B 的 trajectory-derived label 必然不同；数据 loader 输出必须显示 label shift。LeWM local-prediction negative control 在 A/B 的训练 sample manifest 应完全一致。
-- **噪声地板 + MIE：** 相同 dataset view + seed 重建 manifest 应 hash 一致；相同 checkpoint evaluation 重跑给出 geometry/rank 波动。pilot MIE：A/B 差异必须明显超过重复波动，且至少在 candidate ordering 或 regret 上达到足以触发 E04 的量级；具体阈值在 E02 结果后、首次训练前写入日志并冻结。
-- **混杂审计：**
-  - 禁止改变 raw frame/action bytes；
-  - 禁止改变 one-step/local windows；
-  - image augmentation RNG 固定/记录；
-  - pair 数变化需要 reweight 使总优化步/long-pair exposure 可比较；
-  - optimizer/train steps/seed/初始化匹配；
-  - A/B goal sampling 与 test set 相同；
-  - 若 segmentation 破坏 Markov/context history，另记，不与主要处理混淆。
-- **决策表（跑之前写）：** target shift→geometry/rank shift > MIE → E04 行为路径干预；target shift 但 geometry 不动 → 核对 loss weight/optimization 后一次 confirmatory rerun，仍 null 则 PARK I01；local sample hash 不同 → VOID；只有 head output 变而 ranking/decision 不变 → 不升级科学主张。
-- **算力预算：** E00 后按单次训练成本填写；首轮最多 A/B + local-predictive control，各单 GPU，可并行但不共享随机读盘。　**实际：** 待运行
+- **问题（一句话）：** 当 environment 与 raw local transition multiset 完全相同，只把 transition 在共享 junction 处重新组成不同的**合法 trajectories**时，trajectory-supervised RC-aux / TD-JEPA 是否学出不同 long-range planning geometry，并改变 fixed-candidate decisions？
 
-## 结果（跑完后填写；不改上面的内容，修改需注明日期）
-- 数字（含 CI / 种子方差）：未运行
-- 结果文件：待生成
-- 按决策表执行了什么：待运行
-- 主张变化：无
-- POST-HOC 分析：无
+## 设置
+
+首选可精确知道 state/junction 的 navigation task（TwoRoom / maze family），先 1 train seed 做 identification。
+
+从同一 raw store 构建：
+
+- **A original factorization：** 原 trajectory decomposition；
+- **B valid cut-and-splice：** 只在相同/容差内等价 junction state 处切开并交换 suffix，使拼接后的每条相邻 transition 都是原 store 中真实 transition；
+- **C split-only（可选 sanity）：** 只切 episode 不跨 route 拼接，测试 logging-boundary sensitivity。
+
+### 必须满足的 hard invariants
+
+A/B：
+- raw `(o_t,a_t,o_{t+1})` multiset hash 相同；
+- local transition count 相同；
+- LeWM 用到的 fixed-history/one-step training window multiset hash 相同；若 history=3，splice junction 附近会改变 history window，则必须**排除 junction-crossing windows或构造 matching views**，直到 hash 可证明一致；
+- image/action bytes 不改；
+- train/test split 不改；
+- dataset size、batch exposure、optimizer steps、augmentation policy相同；
+- 只允许 long-range within-trajectory pair membership / observed gap / cross-trajectory status 改变。
+
+若做不到这些，E03 不叫 identification experiment，只能降级成普通 data perturbation。
+
+## 被测方法
+
+首轮：
+1. RC-aux；
+2. TD-JEPA（official repo 已核对，包含 LeWM/RC-aux variants）；
+3. LeWM one-step local-prediction negative control。
+
+有现成实现再加一个**local geometry control**（Temporal Straightening 或 CGS），不因“完整”先实现。
+
+## 读数
+
+### Data-level
+- raw-transition hash；
+- one-step/history-window manifest hash；
+- long-pair manifest hash；
+- pair membership change rate；
+- same pair 的 (Delta_eta) / reachability label change；
+- cross-trajectory-negative status flip rate。
+
+### Model-level
+- RC-aux (R_phi(z,z',h)) / TD-JEPA (d_psi) 对同一 evaluation pair 的 paired shift；
+- 与 environment shortest-distance/reachability oracle 的 calibration（只在 exact nav setting）；
+- representation pairwise distance / local geometry only as secondary diagnosis。
+
+### Decision-level
+复用 E02 固定 candidate pool：
+- Plan-Real / elite-stage rank；
+- selected action flip rate；
+- candidate-set regret；
+- predicted vs encoded-real endpoint score；
+- closed-loop success 只作 pilot consequence，不用少量 episode夸大。
+
+## 阳性对照
+
+预注册至少一组 junction splice，使某些远状态 pair：
+- A 中 same trajectory、gap = (Delta_A)；
+- B 中 gap = (Delta_B
+eqDelta_A)，或变成 cross-trajectory；
+同时它们之间的 environment shortest path (d^*) 不变。
+
+loader 必须显示 target shift；否则 treatment 没真正作用。
+
+## 阴性对照
+
+- LeWM local prediction在 A/B 的 sample manifest和loss exposure相同；
+- raw transition prediction smoke 差异应落在训练随机性范围；
+- local geometry method（若加入）不读取 altered long-pair metadata。
+
+## 噪声地板 + MIE
+
+- 同一 view/seed 重建 manifest hash 必须确定性一致；
+- same checkpoint / candidate pool 重复评测，bootstrap over start-goal pairs；
+- **pilot gate：** 不以 head-output shift 为 MIE。至少一个 decision-level量（rank / selected flip / regret）要超过 E02 的 repeat floor，并方向与 target→geometry prediction一致，才进入 E04。
+- 数值阈值在 E02 结果出来后、E03 第一条训练命令之前写到 run log，之后不改。
+
+## 混杂审计
+
+- junction matching tolerance：预注册；离散状态优先 exact；
+- history windows：必须 hash 等价，不能只说 raw transitions相同；
+- pair exposure：A/B total pair count/weight/optimizer steps匹配；
+- cross-trajectory negatives：单独统计，不让 positive-gap 与 negative-status 两个 treatment 混在一起而不报告；
+- data ordering / augmentation RNG：固定或记录；
+- model init / train seed：paired；
+- goal/eval manifest：完全相同；
+- test data不参与 trajectory refactorization选择。
+
+## 决策表（跑之前写）
+
+- **A：target shift + model geometry shift + decision shift > MIE，LeWM/local controls稳** → E04；
+- **B：target/head shift明显，decision-level null** → I01 暂不升级；一次 optimization/weight sanity 后仍 null 则 PARK；
+- **C：RC-aux/TD-JEPA 都基本 invariant** → 记录强 robustness；检查机制，不强行制造更极端 splice；
+- **D：LeWM/local control也变或 history-window hash不同** → VOID，修数据 construction；
+- **E：仅 split-only 有效、valid splice 无效** → 标 logging-boundary artifact，不进入主 story，除非真实数据 pipeline有广泛影响。
+
+- **算力预算：** E00/E01 实测速率后填；首轮 A/B × {RC-aux, TD-JEPA, LeWM} 可独立单 GPU；不要共享盘同时随机读，先 node-local stage。  
+- **实际：** 待运行
+
+## 结果
+未运行。
