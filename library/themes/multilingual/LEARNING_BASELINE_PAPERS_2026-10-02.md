@@ -77,5 +77,24 @@
 ## 本轮定位与证据缺口
 
 没有宣告新ownership或完整论文故事。E01补的是过去未建立的学习substrate。
-venue corpus nearest 已尝试，当前本地缓存缺失，未冒称完成自动定位；将从公开语料重建。
+venue corpus nearest 首次因缓存缺失失败，随后fetch/build重建65716条记录并完成查询。
+主旨查询：`multilingual pretraining bilingual data downstream task learning cross lingual transfer adaptation`。
+近邻包含MONOWEB、PreAlign、Cross-lingual In-Context Pre-training、Active Forgetting、ATLAS；
+BM25分数仅检索距离，不是新颖性判断。缺失年度列表明确保留fetch的404记录，不声称全年完备。
 Standard-vs-Split/ParaRater完整方法仍未取得，不能依摘要宣布空间穷尽。
+
+## 本轮扩展近邻（非新主线）
+
+**Active Forgetting，EMNLP2025**：[官方全文](https://aclanthology.org/2025.emnlp-main.120.pdf)，已读§3–6。
+形态是语言适配的失败+预训练修复；DOCUMENTED来源是新语言tokenizer/embedding适配损害其他语言。
+与PreAlign、普通vocab expansion和encoder active forgetting相比，改成decoder预训练时周期重置embedding，
+再新增词表、冻transformer适配新embedding/LM head，最后English-only OpenOrca SFT。
+它已把预训练选择接到后续学习与旧语言代价，不是只做静态几何。不能把“预训练影响learnability”当新主张。
+方法不能直接作用于已训好checkpoint；我们的MONOWEB数据干预与它的参数初始化不同，增量需实际瓶颈与干预后果。
+abstract说三个尺寸，但结果表含四个尺寸；种子和实现细节未完整核对，不由摘要补全。
+
+**ATLAS，ICLR2026**：[官方全文](https://proceedings.iclr.cc/paper_files/paper/2026/file/35c26a810471039b3427e524565cbef9-Paper-Conference.pdf)，已读§2–5与模型对象。
+大规模controlled training支撑语言比例/重复/规模与迁移效益的预算选择。
+其finetuning指从multilingual Unimax checkpoint继续单语言LM训练，不等同E01监督任务学习→跨语测试。
+可迁移动作是将控制变量接到明确的训练选择；不要再把泛泛的resource correlation/scaling当C的贡献。
+未逐页完成后半部分方法/附录阅读，不能冒称完整复现。

@@ -15,13 +15,25 @@ def load(path):
     return json.loads(path.read_text())
 
 
-def bootstrap(values):
+def bootstrap(values, groups=None):
     rng = np.random.default_rng(20261002)
     draws = []
     for _ in range(100):
         indices = rng.integers(0, len(values), (100, len(values)))
         draws.extend(values[indices].mean(axis=1).tolist())
-    return dict(mean=float(values.mean()), paired_item_bootstrap95=np.quantile(draws, [.025, .975]).tolist())
+    result = dict(mean=float(values.mean()), paired_item_bootstrap95=np.quantile(draws, [.025, .975]).tolist())
+    if groups is not None:
+        unique, indices = np.unique(groups, return_inverse=True)
+        sums = np.bincount(indices, weights=values)
+        counts = np.bincount(indices)
+        draws = []
+        rng = np.random.default_rng(20261002)
+        for _ in range(100):
+            sampled = rng.integers(0, len(unique), (100, len(unique)))
+            draws.extend((sums[sampled].sum(1)/counts[sampled].sum(1)).tolist())
+        result["POST_HOC_promptID_cluster_bootstrap95"] = np.quantile(draws, [.025, .975]).tolist()
+        result["n_promptID_clusters"] = len(unique)
+    return result
 
 
 def main():
@@ -30,6 +42,7 @@ def main():
     args = parser.parse_args()
     assert len(set(args.seeds)) == len(args.seeds)
     data = load(ROOT / "artifacts/nli_learning/data.json")
+    pair_audit = load(ROOT / "results/nli_xnli_pair_audit.json")
     outcomes, table, cells = {}, [], []
     provenances = {}
     for seed in args.seeds:
@@ -58,7 +71,7 @@ def main():
         ref = provenances[seed, "baseline"]
         for condition in CONDITIONS:
             other = provenances[seed, condition]
-            for key in ("encoded_hashes", "initial_head_sha256", "tokenizer_sha256", "config", "script_sha256"):
+            for key in ("encoded_hashes", "initial_head_sha256", "tokenizer_sha256", "config", "script_sha256", "device"):
                 assert ref[key] == other[key], f"Condition mismatch: {key}"
     differences = []
     for a, b in (("monoweb", "baseline"), ("onlyparallel", "monoweb"), ("onlyparallel", "baseline")):
@@ -67,7 +80,7 @@ def main():
                 deltas = np.stack([outcomes[s, a, step, split].astype(float)
                                    - outcomes[s, b, step, split] for s in args.seeds])
                 differences.append(dict(contrast=f"{a}-{b}", updates=step, examples=step*32,
-                                        split=split, **bootstrap(deltas.mean(axis=0)),
+                                        split=split, **bootstrap(deltas.mean(axis=0), pair_audit["promptIDs"] if split.endswith("test") else None),
                                         per_adaptation_seed=deltas.mean(axis=1).tolist(),
                                         adaptation_seed_std=float(deltas.mean(axis=1).std(ddof=1)) if len(args.seeds)>1 else None))
     report = dict(seeds=args.seeds, cells=cells, table=table, differences=differences,
