@@ -1,78 +1,116 @@
 # Latent World Model Planning — 紧凑世界模型的表示、动力学与决策可靠性
 
-## 状态（中文进度页）
+## 状态
 
-**状态：PROPOSED。** 用户已授权系统调查和直接登记；没有启动 GPU 实验，没有更改现有 ACTIVE 主线／探索线。不是 candidate，不预设论文标题、失败现象或修复方法。
+**PROPOSED / literature-hardened / execution-ready / no GPU results。**  
+用户要求把这里建设成可直接交给本地 agent 驻留、广泛实验、持续挖 idea 的 workbench。2026-10-02 已完成第二轮深挖：不再把“prediction ≠ planning”当主旨，而是建立 paper lineage、problem×method map、claim ownership、oracle decomposition、4 个活跃 SEED + 1 个 PARKED seed、E00–E07 决定性实验程序。
 
-**territory 卡：** [搜索登记](../../search/our-taste/LATENT_WORLD_MODEL_PLANNING.md)  
-**目标会议／截稿：** ICML／ICLR／NeurIPS；视觉贡献合适时考虑 CVPR；届次与截稿日待定。  
-**上次驻留人审：** 尚未进行。  
-**更新：** 2026-10-02。
+**没有成立的科学主张。** 下面的 I## 是有文献来源、可被实验否定的探索种子，不是论文结论。状态仍为 PROPOSED；不自动占用现有 ACTIVE-MAIN / ACTIVE-EXPLORE。
 
-**一句话：** 在可训练的小型潜在世界模型和可重置仿真环境上，建设共享的训练、预测、候选评分与实际控制评测接口，让研究从强基线建设、系统测量及方法对照中生长。
+**目标会议：** ICLR / ICML / NeurIPS；若最终贡献以视觉表示/机器人视觉为核心再考虑 CVPR。  
+**资源边界：** [RESOURCES](../../RESOURCES.md)：多独立 GPU 槽位、弱互联/弱 I/O；优先单卡/单节点、checkpoint 复用、并行评测与多 seed，不做跨节点大训练。
 
-## 入口
+## 入口：本地 agent 按这个顺序读
 
-- [系统调查、谱系与论文卡](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md)：18 个来源条目（含综述／导航级材料），逐条标阅读范围；近期直接近邻更新到 2026-09-28。
-- [ASSETS](ASSETS.md)：官方代码、3 个精确 commit 快照、数据／权重入口、配方和 API 风险；公开可用不等于已经本地验证。
-- [HANDOFF](HANDOFF.md)：给本地 agent 的建设顺序、最小测量合约、多分支探索和自主执行范围。
-- [RESOURCES](../../RESOURCES.md)：用户确认的多卡、弱互联／弱 I/O 条件；独立实验优先，不限制科学问题的重要性。
+1. [PAPER_LINEAGE](PAPER_LINEAGE.md)：从 DINO-WM / PLDM / OGBench 到 2026 representation、dynamics、planner、hierarchy、理论/诊断工作的 idea-growth 与 claim ownership。
+2. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→proposal→time→execution 七层地图、oracle ladder、关键交互。
+3. [POSITIONING](POSITIONING.md)：顶会尺度锚点、2026 直接 collision/compression map、不能再当 headline 的红区、三个 surviving regions。
+4. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：共享 substrate、Gate A/B、I01–I04 的 E00–E07、并行策略与统计卫生。
+5. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：可直接复制给执行机 agent 的启动提示。
+6. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
+7. [HANDOFF](HANDOFF.md)：最短执行路线和证据门。
+8. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：真实实验结果才允许升级。
 
-## 为什么是 workbench，而不是 RC-aux 的一个改进点
+第一轮调查索引保留在 [LATENT_PLANNING_SURVEY](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md)；第二轮 hardening 以后，**PAPER_LINEAGE + PROBLEM_METHOD_MAP + POSITIONING 是领域判断的 authority**。
 
-共享底座是 LeWM 的原生复现路径＋stable-worldmodel 的公共接口；强异质参照包括官方 JEPA-WMs／DINO-WM，按需加入 RC-aux、Temporal Straightening、SMWM、SALT、ACID 等。数据与非 WM 参照来自 OGBench。
+## 为什么这块值得驻留
 
-保留五类可复用研究动作：表示与任务信息；递归动力学；候选产生／评分；数据覆盖与目标组合；历史与分布变化。第一条解释不成立，不用重建整套实验，也不应不停给同一叙事加条件。
+它不是“18M 模型容易跑所以做”。母问题已经被 ICML/NeurIPS/ICLR 级工作反复证明重要：latent representation、recursive dynamics、decision metric、search、temporal abstraction 与 offline data structure 都会改变 planning。与此同时，2026 的直接近邻已经非常密集，因此普通 recipe sweep、更多 seed、再加一个 reachability/inverse/multi-step loss 都没有足够 novelty。
 
-“预测好不等于规划好”、曲率校正、有限预算可达性、inverse consistency、生成式候选、state-affine transition 都已有直接近邻。它们是 baseline／定位压力，不是我们的新颖性主张。
+这个 workbench 的优势是：小型开源模型 + 可重置 simulator + offline trajectories + planner 内部 candidate 可观测，使我们能**对同一个端到端系统做强干预与 oracle decomposition**；大量独立 GPU 能用于 paired datasets、train seeds、candidate audit、planner budgets 与跨环境确认，而不需要多节点同步。
 
-## 与已有工作的边界
+## 红区：可测，不得直接当新发现
 
-现有 `video-world-model-temporal-interfaces` 是交互视频生成的时间／控制接口主线；本目录研究紧凑 latent dynamics 与 goal-conditioned planning，不接管其模型、实验编号或机制结论。
+- predictive accuracy ≠ planning quality；
+- latent L2 ≠ real progress / candidate quality；
+- finite-budget reachability / temporal-distance head；
+- generic multi-step/open-loop training；
+- inverse dynamics / action consistency；
+- generic CEM proposal / subgoal / hierarchy / variable chunks；
+- generic long-horizon failure；
+- generic OOD robustness；
+- “world model 应用 task success 评估”。
 
-现有 `mechanism-population-dynamics` 仍是 ACTIVE-EXPLORE。登记本目录不意味着自动启用第三条 ACTIVE 线；调度由人决定。
+直接 ownership 与论文链见 [POSITIONING](POSITIONING.md) 与 [PAPER_LINEAGE](PAPER_LINEAGE.md)。
 
-## 论文形态卡（初稿，不是已成立稿件）
+## 当前最值得挖的三个 region
 
-- 当前主旨：尚未形成；先建设能比较不同表示／动力学／planner 假设的实验平台。
-- 可能形态：设计改进＋解释性实验；失败边界＋修复；识别／测量方法＋真实任务后果。
-- manuscript-critical contributions：尚无；不能把复现工程、已知负相关或新增 seed 单独算贡献。
-- 证据目标：先可信 native baseline，再共同协议；训练 seed 与评测随机性分开；任务成功、计算成本、标准测量和受控干预共同支撑范围。
-- 近邻与 compression risk：见调查 §3；尤其 JEPA-WMs、RC-aux、Temporal Straightening、SALT、ATLAS。
-- 风险：代码／配置漂移；图像 I/O；CEM 评测成本；实验语义不一致；用廉价 toy 结果替代真实控制后果。
-- 本次决定：按用户要求登记 PROPOSED，不自动激活或关闭其他领域。
+### R-A / I01 — Behavior-policy geometry contamination（当前第一优先）
+RC-aux / TD-JEPA 一类方法从 trajectory order/gap 构造 reachability/progress supervision；offline GCRL 的 quasimetric 工作则明确区分 behavior future statistics 与 optimal goal distance。
 
-## 驻留交付状态
+真正可成为我们的 delta 的不是“trajectory gap 不是真 shortest path”，而是：
 
-| 项目 | 本轮状态 |
+> **在 environment dynamics、local transition support、one-step training samples 被控制时，只改变 behavior path / episode organization，是否会系统改变 trajectory-supervised latent-WM 的 learned planning geometry、candidate ordering 与 closed-loop control？**
+
+E03 用同 raw transitions、同 local window、只改 long-pair metadata 做最干净 identification；E04 再用 shortest-ish / detour / route-mixture 和 navigation oracle 建 behavior→geometry→decision 链。若只 head 变、decision 不变，I01 降级，不包装。
+
+### R-B / I02 — Optimizer-induced support drift
+不是重复“offline model exploitation”。要找的是 compact latent CEM 中：
+
+`optimizer iteration → support drift → model optimism → false elite → environment regret`
+
+的完整可重复链，并和 action magnitude、PLDM uncertainty、ACID/MEND 一类 verifier 区分。E05。
+
+### R-C / I03 — Bottleneck relocation / regime
+不是方法大排名。E06 的 oracle ladder 分 representation/metric、dynamics、proposal、horizon/target；只有 goal distance / candidate margin / data support 等少数变量能**跨任务预测 bottleneck 与 intervention ranking**，才升级。E07 再做 interaction confirm。
+
+I04 是 DA-LeWM decision-alignment 的 replication/calibration，默认从属于 I02/I03；I05 history/POMDP 已 PARK，等 clean substrate 或实测 history effect 再开。
+
+## 执行图
+
+```text
+E00 resource/native smoke
+  ↓
+E01 baseline parity + candidate logger + replay/oracle harness
+  ↓
+E02 known decision-alignment replication / measurement calibration
+  ├─ E03 → E04     I01 primary
+  ├─ E05          I02 independent evaluation lane
+  └─ E06 → E07    I03 regime / interaction lane
+```
+
+不是要求机械跑完。每张卡都有阳性对照、噪声/MIE、混杂与预先决策表；结果过不了 gate 就停止扩展该 lead，把 GPU 给下一条有信息增益的比较。
+
+## 论文形态卡（当前版本）
+
+- **当前一句话主旨：** 尚未形成，科学 claim = 0；先用强 baseline + oracle decomposition + paired interventions 找 load-bearing mismatch。
+- **可接受形态：** 新 failure/identification + minimal repair；新 regime law + adaptive principle；representation/dynamics design + 因果/受控证据。
+- **不可接受形态：** benchmark 刷分；“RC-aux + loss”；单个 toy anomaly；普通 correlation；把复现/更多 seed 当贡献。
+- **manuscript-critical contributions：** 尚无（❌，等待 E03–E07）。
+- **证据目标：** native reproduction；相同 candidate/data manifests；paired environment consequence；≥2 substrates/任务后再扩大；train-seed variance 与 episode CI 分开；必要时 oracle intervention。
+- **最危险 compression：** DA-LeWM、RC-aux/TD-JEPA、SALT、Temporal Straightening、IMWM/SAGE/LeFlow、Planning Limits、quasimetric GCRL。
+- **目标会议：** ICLR / ICML / NeurIPS；不因模型小降低问题尺度。
+
+## D1–D6
+
+| 项目 | 当前 |
 |---|---|
-| D1 强基线复现 | 未运行；E00 是预检计划，不是完成证明 |
-| D2 可复用资产 | 官方入口与代码快照已核对；本地环境／数据／脚本待建设 |
-| D3 痛点日志 | 已初始化；只有来源明确的风险 R01–R05，没有伪造实测 P## |
-| D4 系统测量 | 合约与建议接口已写；未产生结果 |
-| D5 定位 | 核心谱系、近期近邻和阅读范围已登记；完整 venue-corpus／near-miss 清单待补 |
-| D6 形态与 idea | 形态范围和压力组合已写；不把预设现象包装成成熟 idea |
-
-## Idea 组合
-
-正式 I## 尚未产生。调查中的分支是 SEED 级探索入口，不是承诺结果；本地 agent 可依据文献对照与实际 P##／E## 生成可执行 idea，无须等对话 agent 逐轮批准。
-
-## 主张摘要
-
-[CLAIMS](CLAIMS.md)：C00 为 L0 的建设可行性主张。科学主张为零；本轮没有训练曲线、success rate 或机制证据。
-
-## 痛点摘要
-
-[PAIN_LOG](PAIN_LOG.md)：记录官方来源暴露的兼容性／协议／语义风险。实测日志保持空白，等待执行。
+| D1 强基线 | ❌ 未本地运行；E00/E01 已预注册 |
+| D2 可复用资产 | ⚠️ 公共 repo/data/checkpoint 入口已核对；本机下载/环境/hash 待 local agent |
+| D3 痛点 | ⚠️ 文献/协议风险 R01–R10；真实 P## = 0 |
+| D4 系统测量 | ⚠️ candidate/oracle/result schema + E02–E07 已设计；结果 = 0 |
+| D5 定位 | ✅ 第二轮 direct-neighbor/ownership hardening 已完成到 2026-10-02；执行中仍要滚动扫最新 arXiv |
+| D6 idea 组合 | ✅ I01–I04 SEED，I05 PARKED；每个有来源/近邻/delta/决定性 pilot |
 
 ## 决策记录
 
-- 2026-10-02：用户明确要求记住资源、系统调查并直接注册。登记此 territory；仅注册，不修改其他工作线状态。
-- 不将“模型小”推导成“任何卡都轻松跑／训练固定几小时”。先实测端到端资源；不依赖多节点训练。
-- 已授权注册不是驻留结果的人审签字。后续启用算力与研究线状态仍由人决定。
+- 2026-10-02：登记为 PROPOSED，资源条件写入根目录。
+- 2026-10-02：第一轮调查不足以直接开实验；继续深挖。
+- 2026-10-02：完成 literature hardening。新增完整 lineage / problem-method / positioning / experiment program；把“prediction≠planning”等宽 claim 划入红区；I01 behavior-policy geometry 作为第一优先 mining lane，I02/I03 为独立备选，I04 校准，I05 parked。
+- 未经用户/人审，不改变 ACTIVE 容量；本地 agent 被分配此 workbench 时可按 [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md) 自主执行，不需每个实验回来请示。
 
 ## 资产位置
 
-研究笔记与实验卡在本仓库；源代码链接和 pin 见 ASSETS。大数据、权重、视频和 raw rollout 不进 git；当前没有本会话创建的训练资产。
+代码/权重/数据不进本 repo；真实路径、revision/hash 和可访问地点在执行时写 [ASSETS](ASSETS.md)。raw candidate traces / rollouts 留节点，git 只保存 manifest、摘要、实验卡与结果表。
 
-**首个执行入口：** [E00 原生闭环与资源预检](experiments/E00_native_baseline_and_resource_preflight.md)。按 HANDOFF 接续既有资产，不从零重做无关工作。
+**执行入口：** [LOCAL_AGENT_PROMPT.md](LOCAL_AGENT_PROMPT.md) → E00。
