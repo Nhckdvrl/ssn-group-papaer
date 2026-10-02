@@ -219,3 +219,14 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 | P97 | PLDM comparative-science ownership revisit (same paper as P02) | NeurIPS 2025 | **A** | public ecosystem | M2 strongest comparative collision：data quality/length/size/OOD task+layout/inference time 已系统比较 explicit planning vs GCRL |
 
 | P95 | Optimistic Task Inference for Behavior Foundation Models | **ICLR 2026** | B | proceedings | M2 task-information confound/neighbor；reward-inference data burden已是独立顶会问题 |
+
+## 11. Program-growth anchors（P99–P104）
+
+| ID | 工作 | Status | Read | Program作用 |
+|---|---|---|---|---|
+| P99 | The Rank-One Corner | arXiv 2607.06640 | A/B | R3：objective/query dimensionality与predictive closure；specialization不是binary |
+| P100 | The Intervention Gap in Latent WMs | arXiv 2608.29998 | A | R1/R5：直接intervention fidelity；reward/value fit不足；support dependence |
+| P101 | AdaReP | arXiv 2606.23079 | B | R5：mismatch→adaptive replanning 的单点 recovery law |
+| P102 | FARM | arXiv 2609.11445 | B | R5：frozen predictive latent中的failure readout；detection≠repair |
+| P103 | Beyond Task Success: Stage-Wise Reliability | arXiv 2609.07126 | B | R5/common audit：内部shift排序不等于outcome排序 |
+| P104 | Path-Space Formulation of Prediction in WMs | arXiv 2606.28751 | B | R2：path distribution / irreversibility作为predictive-object假设 |
