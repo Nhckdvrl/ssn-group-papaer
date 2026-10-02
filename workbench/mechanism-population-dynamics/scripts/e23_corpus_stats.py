@@ -149,7 +149,7 @@ def analyze():
         if len(vals) < 3:
             continue
         sub = np.mean([np.mean([c[k]["margin"] for k in c if k.endswith("Substitution Conflict")]) for c in vals])
-        cohwc = np.mean([c["World Capital|Coherent Conflict"]["margin"] for c in vals])
+        cohwc = np.mean([np.mean([c[k]["margin"] for k in c if k.endswith("Coherent Conflict")]) for c in vals])  # all 6 (amendment)
         kn = np.mean([np.mean([c[k]["clean_margin"] for k in c]) for c in vals])
         E[name] = (sub, cohwc, kn)
     names = sorted(E)
@@ -164,7 +164,7 @@ def analyze():
     out = {"n_recipes": len(names)}
     for k, v in x.items():
         out[k] = {"rho_sub": float(spearmanr(v, sub)[0]), "p_sub": perm_p(v, sub),
-                  "rho_coh_wc": float(spearmanr(v, cohwc)[0]),
+                  "rho_coh_all6": float(spearmanr(v, cohwc)[0]),
                   "partial_rho_sub_given_K": partial_spearman(v, sub, [kn])}
     (OUT / "analysis.json").write_text(json.dumps(out, indent=1))
     print(json.dumps(out, indent=1))
