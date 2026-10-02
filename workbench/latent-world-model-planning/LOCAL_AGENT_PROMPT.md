@@ -28,20 +28,21 @@
 2. root `RESOURCES.md`
 3. `workbench/README.md`
 4. 本目录 `README.md`
-5. **`NOVELTY_GROWTH_RULES.md`**
-6. `FIELD_PROBLEM_MAP_2026.md`
-7. **`RESEARCH_PROGRAMS.md`**
-8. `PAPER_LINEAGE.md`
-9. **`RESEARCH_MINES.md`**
-10. `LITERATURE_LEDGER.md`
-11. `PROBLEM_METHOD_MAP.md`
-12. `POSITIONING.md`
-13. `EXPERIMENT_PROGRAM.md`
-14. `ASSETS.md`
-15. `HANDOFF.md`
-16. `CLAIMS.md` / `PAIN_LOG.md`
-17. I07–I12 + I03/I06
-18. E00–E18
+5. **`PAPER_SHAPE_TARGET.md`** — 先理解为什么优先 RC-aux-like 小模型/高实验吞吐论文形态
+6. **`NOVELTY_GROWTH_RULES.md`**
+7. `FIELD_PROBLEM_MAP_2026.md`
+8. **`RESEARCH_PROGRAMS.md`**
+9. `PAPER_LINEAGE.md`
+10. **`RESEARCH_MINES.md`**
+11. `LITERATURE_LEDGER.md`
+12. `PROBLEM_METHOD_MAP.md`
+13. `POSITIONING.md`
+14. `EXPERIMENT_PROGRAM.md`
+15. `ASSETS.md`
+16. `HANDOFF.md`
+17. `CLAIMS.md` / `PAIN_LOG.md`
+18. I07–I13 + I03/I06
+19. E00–E19
 
 然后运行：
 
@@ -118,6 +119,30 @@ IMWM / AdaJEPA / Feedback WM / AdaReP / MEND 是不同 recovery action 的已知
 - I03/E06–E07 = bottleneck oracle；
 - I06/E08–E10 = R1局部机制；
 - E02 = candidate decision calibration。
+
+## Resource-fit / paper-shape filter
+
+在同样有科学价值的 seeds 之间，优先 **RC-aux-like experimental economics**：
+
+- 1 GPU / run；
+- hours 级 iteration；
+- small compact WM；
+- simulator / offline dataset；
+- variant 不需 full re-pretrain；
+- released checkpoint 可直接做 evaluation-first；
+- 可以把几十张卡变成独立 conditions / seeds / baselines。
+
+这不是降低论文尺度。恰恰相反：目标是**大问题 + 小模型 + 快实验 + 强证据**。
+
+当前资源适配：
+- **R1 / E14, E16：excellent**
+- **R5 / E18：excellent**
+- **R2 / E19 revaluation：good-to-excellent**，优先 eval/adaptation-small-update 版本；比完整 E13 跨 codebase 对比更适合快速 mining
+- **R4 / E11：cheap oracle**
+- **R3 / E17：good**
+- **R2 / E13 full predictive-object comparison：medium**，保留但不要默认吞大量 GPU
+
+任何 seed 若需要 multi-node pretraining 或 days-long single run，必须证明其 scientific upside 显著高于这些 compact alternatives。
 
 # 2. Step 0 — 资产盘点与 E00
 
