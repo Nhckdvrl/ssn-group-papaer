@@ -27,19 +27,30 @@ def main() -> None:
     parser.add_argument("asset", choices=ASSETS)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=2)
+    parser.add_argument("--retries", type=int, default=1, help="Retry transient HTTP failures without deleting partial shards")
     args = parser.parse_args()
     kind, repo, revision = ASSETS[args.asset]
     dest = args.root / args.asset
     dest.mkdir(parents=True, exist_ok=True)
     start = time.monotonic()
-    snapshot_download(
-        repo_id=repo,
-        repo_type=kind,
-        revision=revision,
-        local_dir=str(dest),
-        max_workers=args.workers,
-        allow_patterns=["llava_v1_5_mix665k.json"] if args.asset == "llava_json" else None,
-    )
+    attempts = 0
+    for attempt in range(1, args.retries + 1):
+        attempts = attempt
+        try:
+            snapshot_download(
+                repo_id=repo,
+                repo_type=kind,
+                revision=revision,
+                local_dir=str(dest),
+                max_workers=args.workers,
+                allow_patterns=["llava_v1_5_mix665k.json"] if args.asset == "llava_json" else None,
+            )
+            break
+        except Exception as exc:
+            print(f"asset={args.asset} attempt={attempt}/{args.retries} error={type(exc).__name__}: {exc}", flush=True)
+            if attempt == args.retries:
+                raise
+            time.sleep(min(10 * attempt, 60))
     files = [p for p in dest.rglob("*") if p.is_file() and ".cache/huggingface" not in str(p)]
     manifest = {
         "asset": args.asset,
@@ -50,6 +61,7 @@ def main() -> None:
         "files": len(files),
         "bytes": sum(p.stat().st_size for p in files),
         "wall_seconds": round(time.monotonic() - start, 1),
+        "download_attempts": attempts,
     }
     out = args.root / f"{args.asset}_download.json"
     out.write_text(json.dumps(manifest, indent=2) + "\n")
