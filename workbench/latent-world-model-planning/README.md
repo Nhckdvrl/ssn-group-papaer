@@ -12,18 +12,19 @@
 
 ## 本地 agent 阅读顺序
 
-1. [PAPER_LINEAGE](PAPER_LINEAGE.md)：直接/邻接工作，重点是 mother question、idea leap、决定性实验、related-work distance 和 claim ownership。
-2. [RESEARCH_MINES](RESEARCH_MINES.md)：**problem-led 主入口**；先判断哪些真实问题值得大面积实验，不从某个 loss 出发找钉子。
-3. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码 readiness、何时必须回原文。
-4. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→search→time→execution 七层图与 oracle ladder。
-5. [POSITIONING](POSITIONING.md)：顶会锚点、2026 collision map、红区、当前 mining regions。
-6. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：shared substrate、gates、并行策略、统计卫生。
-7. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：直接给执行机 agent。
-8. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
-9. [HANDOFF](HANDOFF.md)：最短执行路线。
-10. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：只有真实实验才升级。
+1. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)：**全领域 problem map / saturation map**，先理解社区真正关心什么、哪些 broad story 已拥挤。
+2. [PAPER_LINEAGE](PAPER_LINEAGE.md)：P01–P92，重点是 mother question、idea leap、决定性实验、related-work distance 和 claim ownership。
+3. [RESEARCH_MINES](RESEARCH_MINES.md)：**problem-led 主入口**；从 related-work tension 选 pressure region，不从某个 loss 出发找钉子。
+4. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码 readiness、何时必须回原文。
+5. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→search→time→execution 七层图与 oracle ladder。
+6. [POSITIONING](POSITIONING.md)：顶会锚点、2026 collision map、红区、当前 mining regions。
+7. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：shared substrate、gates、并行策略、统计卫生。
+8. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：直接给执行机 agent。
+9. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
+10. [HANDOFF](HANDOFF.md)：最短执行路线。
+11. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：只有真实实验才升级。
 
-第一轮 [LATENT_PLANNING_SURVEY](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md) 保留作来源索引；当前领域判断以 PAPER_LINEAGE / LEDGER / PROBLEM_METHOD_MAP / POSITIONING 为准。
+第一轮 [LATENT_PLANNING_SURVEY](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md) 保留作来源索引；当前领域判断以 **FIELD_PROBLEM_MAP_2026 / PAPER_LINEAGE / RESEARCH_MINES / POSITIONING** 为准。
 
 ## 为什么这个 territory 值得驻留
 
