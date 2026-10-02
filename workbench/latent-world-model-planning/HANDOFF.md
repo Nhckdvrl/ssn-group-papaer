@@ -3,27 +3,36 @@
 状态：**PROPOSED / literature+code-hardened / execution-ready / no local GPU result yet**。  
 完整启动词见 [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)，实验细节见 [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)。
 
-## 0. 不要重新 brainstorm
+## 0. 不要从一个 loss 重新找钉子
 
-领域与直接近邻已经硬化到 P01–P64；更重要的是，**代码审计已经实际杀掉过一个原本看起来很漂亮的实验**：I01/E03 的“只改长 episode factorization、保持 short windows不变”对 pinned TD-JEPA/RC-aux 的主要 short-window loss结构上几乎不可见，因此 E03/E04 未运行即 VOID。
+领域 hardening 已经证明两个事实：
 
-这说明本 workbench 的原则是：**先读真实实现，再花 GPU。**
+1. compact latent-WM 不是缺“小技巧”，而是同时存在 **state definition、predictive abstraction placement、offline supervision semantics、planner interface** 等真实问题；
+2. 一个看起来漂亮的实验若 treatment 对真实 implementation 不可见，应该在跑 GPU 前就杀掉。旧 I01/E03–E04 就是这样 VOID 的。
 
-当前：
-- **I06 first priority**：semantic negatives vs geometric regularization；
-- **I03 second priority**：bottleneck regime law；
-- I04 = E02 calibration；
-- I01/I02/I05 = PARKED。
+当前科学入口改为 [RESEARCH_MINES](RESEARCH_MINES.md)：
+
+- **M1/I07**：observable image-goal state 与 hidden control state 的错位；E11 → conditional E12。
+- **M2/I08**：explicit rollout vs implicit predictive abstraction 的 regime frontier；E13。
+- **M3/I09**：behavior-policy trajectory semantics vs environment controllability；E14 → conditional E15。
+- **I06/E08–E10**：M3 的低成本 negative-role 子诊断，不再默认主论文。
+- **I03/E06–E07**：共享 bottleneck/oracle tool；只有形成 predictive regime law 才可能独立升级。
+- I01/I02/I05 = PARKED；E03/E04 = VOID。
+
+本 workbench 的原则不是“必须先有方法”，而是：
+
+> **先找到 community-relevant 的 actionable failure / tension，再用最小干预理解原因；方法应该从问题中长出来。**
 
 ## 1. authority
 
 1. root AGENTS.md / workbench/EXECUTION.md
 2. experiment card 跑前内容
-3. POSITIONING.md
-4. EXPERIMENT_PROGRAM.md
-5. PAPER_LINEAGE.md / LITERATURE_LEDGER.md
-6. 本文件
-7. 旧 LATENT_PLANNING_SURVEY.md
+3. RESEARCH_MINES.md
+4. POSITIONING.md
+5. EXPERIMENT_PROGRAM.md
+6. PAPER_LINEAGE.md / LITERATURE_LEDGER.md
+7. 本文件
+8. 旧 LATENT_PLANNING_SURVEY.md
 
 任何 manuscript-critical事实最终回原论文/官方代码。
 
@@ -32,37 +41,35 @@
 **Native layer**：官方repo各自环境，固定commit/checkpoint/config，先复制官方protocol。  
 **Common audit layer**：统一candidate trace、sampler manifest、oracle/replay、result schema。
 
-不先把所有method重写到一个framework。TD-JEPA official repo因为已含 LeWM/RC-aux variants，是 I06 **工程上优先的共同起点**；但其中variants是否精确等价于各原论文，必须另做provenance核对。
+不先把所有method重写到一个framework。Bai/Xiong Temporal-Distance JEPA official repo因为已含 LeWM/RC-aux variants，是 M3/I06 **工程上优先的共同起点**；但其中variants是否精确等价于各原论文，必须另做provenance核对。
 
 ## 3. 执行顺序
 
-### E00
-1 GPU smoke + resource/I/O measurement。
+### E00 / E01 — common substrate
+先把至少一个 explicit compact WM 的 native闭环、candidate logging、environment replay/oracle 跑通；资源与 I/O实测后再扩。
 
-### E08（dataset能读后即可开始）
-**零训练。** instrument pinned TD-JEPA/RC-aux真实 negative sampler，测 semantic validity。
+### E11 — M1 proof-of-problem
+优先做 **same/near-same observation + different hidden state → different best action** 的 simulator oracle。  
+不训练新 belief model也能先决定这个问题是否 load-bearing。只有 action regret显著才 E12。
 
-这是当前最便宜、information gain最高的科研pilot，不需要等baseline训练全部完成。
+### E14 — M3 real behavior-policy intervention
+真正改变 generating behavior policy / trajectory distribution，让 RC-aux / Bai-Xiong Temporal-Distance JEPA 的 training pairs发生变化。  
+不要复活旧“只重切 episode”设计。E14出现跨 objective 的 behavior imprint 后才 E15。
 
-### E01
-baseline parity + candidate logger + replay/oracle harness。
+### E08 — I06 cheap subdiagnostic
+dataset/sampler可读后可与 E11/E14 并行。它只回答 heuristic negative 的局部语义/regularization角色，不因为便宜就占领 paper narrative。
 
-### E02
-复制 known decision-alignment / fixed-pool regret，顺便控制 H/K/scoring-index。
+### E13 — M2 matched explicit↔implicit pilot
+common data/task/utility contract稳定后，接 **Bagatella TD-JEPA (ICLR'26)** 与 explicit JEPA-WM；比较 regime，不横抄原论文主表。先 1–2 environments，不大铺。
 
-### I06
-E08过gate → E09。  
-E09证明 semantic role 与 regularization role可分 → E10。  
-否则按卡片stop rule park，不硬救。
+### E02 / E06
+作为 common decision / bottleneck calibration。若 M1–M3 中出现 failure，用 oracle ladder定位 representation/dynamics/search/time 哪层真正 binding。
 
-### I03
-E01/E02后，小规模 E06 oracle ladder；只有出现跨task predictive signature才E07。
-
-E05只有E06明确指向 off-support/search层才触发。
+**并行原则：** 第一轮允许三条 mine 各做一个廉价 existence test；随后只把大量 GPU 集中到产生最强 scientific pressure 的那条。
 
 ## 4. I06 实现事实：必须记住
 
-### TD-JEPA pinned code
+### Bai/Xiong Temporal-Distance JEPA pinned code
 - loaded short clip；canonical history 3 + num_preds 5；
 - temporal positives在clip内 i<j；
 - cross negatives用 batch row permutation；
