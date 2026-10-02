@@ -68,13 +68,16 @@ def compute(repo, seed):
         for l in LAYERS:
             diffs[l].append(hq[l + 1] - hd[l + 1])
     V = {l: torch.stack(diffs[l]).mean(0) for l in LAYERS}
-    # built-in checks: zero vector is a no-op; the real vector changes the output
+    # built-in checks on the full final-position logit vector (a single item's margin can be unchanged by bf16
+    # quantization even when the hook works -- see PAIN_LOG P06)
     i0 = A[0]
-    m0 = margin(i0, P[i0]["c1_decl"])
-    mz = margin(i0, P[i0]["c1_decl"], LAYERS[3], torch.zeros_like(V[LAYERS[3]]))
-    mv = margin(i0, P[i0]["c1_decl"], LAYERS[3], V[LAYERS[3]])
-    assert abs(m0[0] - mz[0]) < 1e-3, f"zero-vector hook is not a no-op: {m0} vs {mz}"
-    assert abs(m0[0] - mv[0]) > 1e-3, "format-vector hook has no effect"
+    lp0, _ = final_dist(P[i0]["c1_decl"])
+    lpz, _ = final_dist(P[i0]["c1_decl"], LAYERS[3], torch.zeros_like(V[LAYERS[3]]))
+    lpv, _ = final_dist(P[i0]["c1_decl"], LAYERS[3], V[LAYERS[3]])
+    chk_zero, chk_vec = float((lp0 - lpz).abs().max()), float((lp0 - lpv).abs().max())
+    assert chk_zero < 1e-4, f"zero-vector hook is not a no-op: {chk_zero}"
+    assert chk_vec > 1e-2, f"format-vector hook has no effect: {chk_vec}"
+    m0 = mz = mv = (0.0, 0.0)
     # layer selection on A
     base_A = np.array([margin(i, P[i]["c1_decl"])[0] for i in A])
     gain = {l: float(np.mean([margin(i, P[i]["c1_decl"], l, V[l])[0] for i in A]) - base_A.mean()) for l in LAYERS}
@@ -97,7 +100,7 @@ def compute(repo, seed):
            "delta": float(mt[:, 0].mean() - md[:, 0].mean()), "FE": float(mq[:, 0].mean() - md[:, 0].mean()),
            "delta_first_token": float(mt[:, 1].mean() - md[:, 1].mean()), "FE_first_token": float(mq[:, 1].mean() - md[:, 1].mean()),
            "KL_qa_decl": float(np.mean(kl0)), "KL_qa_transplant": float(np.mean(kl1)),
-           "check_zero_noop": float(abs(m0[0] - mz[0])), "check_vec_effect": float(abs(m0[0] - mv[0]))}
+           "check_zero_noop_maxlogit": chk_zero, "check_vec_effect_maxlogit": chk_vec}
     OUT.mkdir(exist_ok=True)
     (OUT / f"{repo.split('DataDecide-')[1]}__{seed}.json").write_text(json.dumps(res, indent=1))
     print(json.dumps({k: v for k, v in res.items() if k != "repo"}), flush=True)

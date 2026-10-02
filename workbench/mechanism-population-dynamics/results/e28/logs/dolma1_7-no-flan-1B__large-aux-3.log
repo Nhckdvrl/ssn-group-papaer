@@ -1,0 +1,11 @@
+Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
+Warning: Permanently added 'fvcrc20' (ED25519) to the list of known hosts.
+Using the latest cached version of the dataset since gaotang/ParaConflict couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/gaotang___para_conflict/default/0.0.0/d2b097583890081b26762e0caf4067eafff9bab4 (last modified on Fri Oct  2 17:52:29 2026).
+dolma1_7-no-flan-1B__large-aux-3.json {'seed': 'large-aux-3', 'top_heads': [[10, 14], [5, 10], [15, 3], [12, 4], [5, 5], [13, 6], [13, 10], [13, 7], [13, 1], [14, 9]], 'random_heads': [[10, 12], [5, 9], [15, 8], [12, 5], [5, 4], [13, 0], [13, 2], [13, 3], [13, 5], [14, 13]], 'attn_top_decl': 4.275, 'attn_top_qa': 4.055, 'attn_random_decl': 0.902, 'attn_random_qa': 0.966, 'FE_c1_intact': -0.131, 'FE_c1_ablate_top': -0.36, 'margin_decl_ablate_top': 3.643, 'margin_qa_ablate_top': 3.283, 'FE_c1_ablate_random': -0.31, 'margin_decl_ablate_random': 4.918, 'margin_qa_ablate_random': 4.608, 'check_all_heads_ablated_mean_abs_change': 3.15, 'margin_decl_intact': 5.172, 'margin_qa_intact': 5.041}
+Exception ignored in: <function ResourceTracker.__del__ at 0xcce1a4e4e00>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'
