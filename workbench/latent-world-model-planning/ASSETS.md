@@ -274,3 +274,20 @@ single goal obs → ψ → inverse-cov scaling → project → policy。
 - 若成功，也不能声称作者官方支持 image-goal deployment。
 
 这个 audit 的价值是把 M2 的 task-information mismatch从“无法比较”变成一个先可实证的接口问题。
+
+
+## 7.3 TwoRoom route-intervention feasibility
+
+stable-worldmodel commit `8b2e8c6...` 的 TwoRoom code 已审：
+
+- observation/state包含 agent position、target position、最多3个door centers；
+- environment支持 1–3 doors、door size/position、agent/target position、min_steps等 variation；
+- built-in `ExpertPolicy` 跨房间时：
+  1. 枚举 fitting doors；
+  2. 选择 **closest fitting door center**；
+  3. 先到 door，再去 target；
+  4. 可加 action noise / repeat stochasticity。
+- official `collect_tworooms.py` 就用该 ExpertPolicy 收 1000-episode weak-expert dataset。
+
+因此 M3 E14 的 clean Stage-B 不需要先适配新环境：可以在同一 TwoRoom reset / start / goal / door layout 上，把原 closest-door policy 与 forced-far-door policy配对。  
+这条 intervention直接改变 higher-order route choice，而保持 environment controllability不变；仍需量化 state-occupancy与 conditional action-excitation差异，不能把“同start-goal”误写成“所有support完全相同”。
