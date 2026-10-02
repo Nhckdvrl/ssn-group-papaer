@@ -3,9 +3,24 @@
 更新：2026-10-02。  
 目标：不是枚举论文，而是回答 **这个领域为什么不断产生顶会论文、社区真正关心什么、哪些问题已被压缩、哪些 pressure 仍适合我们用多卡实验吞吐量去挖。**
 
-> 原则：这里不存在“完全没人做”的大空白。我们找的是 **已有强工作证明重要、但核心认识还不闭合** 的 problem territory。novelty 应来自新的 distinction / failure law / regime / identification / minimal repair，而不是“某个模块第一次加在 LeWM 上”。
+> 原则：这里不存在“完全没人做”的大空白。我们找的是 **已有强工作证明重要、但核心认识还不闭合** 的 problem territory。**近邻密集首先是 community-care 信号，不是 kill 信号。** 具体论文只能占有 atomic claim，不能自动占有整个 parent problem。详细规则见 [NOVELTY_GROWTH_RULES](NOVELTY_GROWTH_RULES.md)。
 
 ---
+
+## 0.1 从 Problem Families 到 Research Programs
+
+下面 A–J 是领域结构；实际 workbench 用五个跨层 program 组织探索：
+
+| Program | 穿过哪些 field problems | 核心问题 |
+|---|---|---|
+| **R1 Data & Identifiability** | B/F + C | 什么经验识别 action effects / controllability，并形成可规划 semantics？ |
+| **R2 Predictive Abstraction** | D/E + C | 应预测什么 future object，planning computation放在哪里？ |
+| **R3 Specialization vs Reuse** | A/C/G | query/task alignment做到哪一层，如何保留跨 query reuse？ |
+| **R4 State / Belief / Information Gathering** | A/B + H | partial observability / hidden physics 下正确 predictive state与主动消歧是什么？ |
+| **R5 Trust / Repair / Bypass** | E/H + C | model不可靠时如何检测并选择 replanning/adaptation/feedback/fallback？ |
+
+**A–J 中某个 atomic claim“成熟”不意味着对应 R# 关闭。**  
+R# 的价值恰恰来自跨这些 field problems 的 tension 与 interaction。
 
 # 0. 一张总图：world model 要成为 decision model，需要经过什么
 
@@ -89,7 +104,7 @@ good ID performance  ≠ robustness under dynamics/query/behavior shift
 - Physically Viable WM：appearance相同但 latent physics不同，intervention outcome可完全不同。
 - Branch-JEPA：point-valued successor无法表达多future support。
 
-## 已饱和的 headline
+## 已建立的 atomic claims（不能单独当 novelty，但可作为新 story ingredient）
 
 - “pretrained visual representation不一定适合control”
 - “latent需要action-aware”
@@ -111,7 +126,7 @@ good ID performance  ≠ robustness under dynamics/query/behavior shift
 ## 资源适配
 
 **高。** 可以用小 simulator精确控制 hidden variables / ambiguity，并用 candidate oracle做 causal audit。  
-**但 novelty collision 很高。** 所以 M1只保留 conditional mine：必须从 decision regret / regime law切入。
+**近邻很多，所以 baseline/positioning负担高；不是关闭理由。** 当前 I07/E11只是 R4 的一个 cheap seed。即使它不成立，R4仍可转 active information gathering、belief-consuming planner、hidden-physics identification。
 
 ---
 
@@ -130,7 +145,7 @@ good ID performance  ≠ robustness under dynamics/query/behavior shift
 - Physically Viable WM：latent physical variables决定 intervention response。
 - What Must a WM Distinguish?：mechanism / response / decision sufficiency分层。
 
-## 已饱和
+## 已建立的 atomic claims（program仍继续）
 
 - “factual prediction ≠ counterfactual control”
 - “不同action的future要分开”
@@ -172,10 +187,9 @@ good ID performance  ≠ robustness under dynamics/query/behavior shift
 - training objective学的是环境关系、behavior关系还是candidate局部关系？
 - planner/query改变时，这种 alignment 能否复用？
 
-## 已饱和
+## 已建立的 atomic claims（program仍继续）
 
-几乎所有 generic metric-alignment story都进入红区。  
-这也是为什么 I04 / E02 只能作为 measurement calibration。
+generic “metric matters” existence claim 已非常成熟。**但 planner-consumed geometry仍是 R1/R2/R3 的关键交叉层**：新的 data regime、predictive object、query placement 都可能产生新的 metric consequences。I04/E02 默认只作 measurement，除非实验暴露新的 program-level distinction。
 
 ## 对我们
 
@@ -206,7 +220,7 @@ good ID performance  ≠ robustness under dynamics/query/behavior shift
 - Jumpy World Models：policy-induced occupancy across timescales。
 - HWM / Dual-WM / FF-JEPA：hierarchical/multi-timescale state transitions。
 
-## 已饱和
+## 已建立的 atomic claims（program仍继续）
 
 - one-step不够；
 - recursive error会累积；
@@ -438,7 +452,7 @@ PLDM / offline MBRL：uncertainty / OOD support。
 | latent action/cross embodiment | high | **high** | medium | low-medium | outside first wave |
 | efficient architecture | high | **high** | high | medium | outside first wave |
 
-“crowding”不是kill criterion；它只决定我们需要多强的 exact delta。
+“crowding”不是 kill criterion；它主要决定 baseline、evidence 和 positioning 负担。**同一 program 连续有顶会论文，常常是该 program 值得继续驻留的正面证据。**
 
 ---
 
