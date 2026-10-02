@@ -28,18 +28,19 @@
 2. root `RESOURCES.md`
 3. `workbench/README.md`
 4. 本目录 `README.md`
-5. `PAPER_LINEAGE.md`
-6. **`RESEARCH_MINES.md`**
-7. `LITERATURE_LEDGER.md`
-8. `PROBLEM_METHOD_MAP.md`
-9. `POSITIONING.md`
-10. `EXPERIMENT_PROGRAM.md`
-11. `ASSETS.md`
-12. `HANDOFF.md`
-13. `CLAIMS.md` / `PAIN_LOG.md`
-14. I07 / I08 / I09
-15. I06 / I03
-16. E00–E15
+5. **`FIELD_PROBLEM_MAP_2026.md`**
+6. `PAPER_LINEAGE.md`
+7. **`RESEARCH_MINES.md`**
+8. `LITERATURE_LEDGER.md`
+9. `PROBLEM_METHOD_MAP.md`
+10. `POSITIONING.md`
+11. `EXPERIMENT_PROGRAM.md`
+12. `ASSETS.md`
+13. `HANDOFF.md`
+14. `CLAIMS.md` / `PAIN_LOG.md`
+15. I09 / I08 / I07
+16. I06 / I03
+17. E00–E15
 
 然后运行：
 
@@ -58,9 +59,13 @@ ERROR 先修；WARN 理解后处理。不要为清 warning 机械修改科研内
 
 # 1. 先继承 problem map，不重新 brainstorm
 
-当前三条 broad problem mines：
+当前优先级不是平级：
 
-### M1 / I07 — Observable goal ≠ control state
+1. **M3 / I09 = Tier A1 / first pilot**
+2. **M2 / I08 = Tier A2 / second pilot**
+3. **M1 / I07 = Tier B / conditional cheap oracle**
+
+### M1 / I07 — Observable goal ≠ control belief（conditional）
 
 image goal 描述可观测配置，但 control 可能依赖隐藏 velocity/contact/friction/regime。
 
@@ -69,9 +74,9 @@ image goal 描述可观测配置，但 control 可能依赖隐藏 velocity/conta
 - native deterministic/history latent 是否因此产生真实 action regret？
 - history什么时候够，什么时候必须保留 multi-hypothesis belief/uncertainty？
 
-FIRM-WM 已占 state factorization，UWM-JEPA 已占 belief-space prediction。我们的空间只有 **actionable aliasing + regime distinction + planning consequence**。
+Physically Viable WM、FIRM-WM、UWM-JEPA、Branch-JEPA、Flow Equivariant WM 已占大量 broad hidden-state / belief / multimodal-future space。我们的空间只剩：**finite history 后仍存在的 actionable ambiguity + candidate regret + regime distinction**。history能解决就停止，不造 belief method。
 
-### M2 / I08 — Explicit rollout vs implicit predictive abstraction
+### M2 / I08 — Predictive-computation placement（Tier A2）
 
 explicit JEPA-WM 把 dynamics 保留成可 rollout model、部署时 search；Bagatella TD-JEPA 等把 long-horizon structure amortize 进 representation/policy。
 
@@ -82,13 +87,14 @@ explicit JEPA-WM 把 dynamics 保留成可 rollout model、部署时 search；Ba
 - horizon
 - data coverage
 - train compute vs deployment compute
+- **task/query information budget**
 - arbitrary-action counterfactual query
 
 是否产生稳定、可预测的 regime boundary。
 
 不要只回答“谁分数高”。
 
-### M3 / I09 — Behavior trajectories ≠ environment controllability
+### M3 / I09 — Behavior trajectories ≠ environment controllability（Tier A1）
 
 RC-aux / Temporal-Distance JEPA 从 behavior trajectory 的 order/gap/negative 学 planning semantics。
 
@@ -150,32 +156,18 @@ native result 与 common audit result分开。
 
 # 4. Problem-existence pilots：第一轮可以并行，但都保持小
 
-## E11 — M1 aliasing oracle
+## E14 — M3 behavior-policy intervention（FIRST）
 
-**优先级：高，且先不训练新方法。**
+先看 [E14](experiments/E14_behavior_policy_semantics_intervention.md) 的 staged protocol。
 
-构造/筛选：
-- rendered observation相同或受控近似；
-- hidden velocity/contact/friction/regime不同；
-- 对完全相同 candidate actions 做 env rollout。
+第一轮：
+- 公开 OGBench `navigate/stitch/explore` 或 `play/noisy` 只做 **sensitivity discovery**；
+- 真正的 scientific pilot 用 fixed start-goal 的 DIRECT vs DETOUR/LOOP；
+- 必须定量报告 state/action/local-transition support overlap；
+- 先 LeWM + Bai/Xiong Temporal-Distance JEPA，1 seed；
+- fixed candidate ranking/regret + closed-loop 才是 gate。
 
-先证明：
-
-```
-same observation
-+ different hidden state
-→ different real action utility / different best action
-```
-
-再看 native latent planner 是否错。
-
-如果 action不变，只是 probe不同：I07直接 park。
-
-如果 2–3 frame history完全解决：记录 history sufficiency，不硬造 belief model。
-
-只有 history后仍存在 actionable multi-hypothesis ambiguity，才 E12。
-
-## E14 — M3 behavior-policy intervention
+不要把普通 data coverage shift写成 behavior-semantics finding。
 
 真正收集/构造不同 **behavior policy** 的 offline trajectories：
 
@@ -214,9 +206,9 @@ same observation
 
 但 E08 本身永远不是 paper result；它只决定 M3 中 negative-role是否值得继续 E09。
 
-## E13 — M2 explicit↔implicit
+## E13 — M2 predictive-computation placement（SECOND）
 
-common substrate稳定后启动。
+common substrate稳定后启动。优先 OGBench Cube pixels。
 
 explicit：
 - JEPA-WM / LeWM family
@@ -226,12 +218,12 @@ implicit：
 
 第一轮 1–2 common datasets/environments，保留 native protocol并建立 common audit。
 
-必须记：
-- train steps / GPU-hours
-- deployment model calls / wall time
-- reward/goal specification
-- horizon
-- task/dynamics shift
+必须分开记三本账：
+- **training compute**：steps / GPU-hours / VRAM；
+- **task/query information**：goal image、reward function、reward-labeled inference samples、privileged relabel信息；
+- **deployment compute**：model calls / candidates / wall time。
+
+Bagatella TD-JEPA official OGBench eval会采样约 10k replay states并用 OGBench `physics` relabel reward；不能和“一张goal image”当同等task information。
 
 最小 regime：
 1. ID goal/reward
@@ -239,7 +231,13 @@ implicit：
 3. layout/dynamics shift
 4. near vs far horizon
 
-只要结果是“方法 A 一直更高”，不要急着写 paper；继续问这是 compute、function class、search budget还是 generalization 的哪一项。
+只要结果是“方法 A 一直更高”，不要急着写 paper；继续问这是 training compute、task-information、function class、search budget还是 generalization 的哪一项。
+
+## E11 — M1 actionable ambiguity（CONDITIONAL）
+
+只做 oracle，不先训练。
+
+顺序：same RGB/different velocity sanity → 给2–3 frame/native history → history能解就STOP → 只有仍相容的 hidden friction/contact/regime/stochastic branch才看 candidate regret → baseline确实混淆才 E12。
 
 # 5. 方法什么时候允许出现
 
