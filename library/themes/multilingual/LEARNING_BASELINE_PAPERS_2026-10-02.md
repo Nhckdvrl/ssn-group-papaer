@@ -139,3 +139,23 @@ Standard-vs-Split的forum、hash PDF及API本次再次受验证/403限制；搜�
 [官方全文](https://aclanthology.org/2025.emnlp-main.1380.pdf)。DOCUMENTED来源是严格bitext域/量有限；改用同entity维基与检索语义相关文本提供上下文。分段串接EN→目标文档、SPLIT-aware窗口保完整；LoRA rank64/alpha128/dropout.05，一epoch；同源不串接Mix-PT与mono目标是重要对照。
 它已经控制部分文本来源并比较随机配对、方向、语义检索，不能把“非精确翻译也可桥接”当我们的新idea。Appendix A是冻结的0/5/8-shot评测，不是后续统一任务学习；Qwen1.5B按validation LM loss选checkpoint。LEIA有三seed不代表所有对比三seed；p>0.1不能证明英语收益/遗忘等价。
 RECONSTRUCTED距离：E02/E04操纵后续监督内容覆盖、文档条件连接，再测实际学习全曲线；只有带来不同训练选择，才可能有实质增量。不要把该距离本身写成贡献。跨语CPT方法发展时应比较同源Mix-PT/预算及有效监督augmentation，而非只比base。
+
+## X-CIT（ACL2025；已读§3–5.1、训练与任务表）
+
+[官方全文](https://aclanthology.org/2025.acl-long.1121.pdf)。DOCUMENTED来源是英语SFT具跨语能力但不稳定输出目标语言、普通mixed translate-train未利用对应；英语Alpaca52K先SFT，再10%目标监督与双轮目标→EN instruction/response→目标answer，另用SPL。它已有顺序/混合、移除mono/chat、CrossAlpaca与PLUG对照，不应将“先任务学习再维护语言接口”重命名为新idea。
+五语言、Llama2-7B、不同模型/量扩展；三次10%抽样不等于三个预训练seed。相同epoch不等于相同实际样本/监督token，SPL额外8epoch结果须和主表区分。en_SFT某些知识答案标为English，年份任务高分不能自动说明目标语言语义调用；输出语言和准确率应分开。
+RECONSTRUCTED距离：我们的当前干预是无标签CPT新覆盖/内容不重叠复用之后统一新任务学习，不是翻译监督双轮chat；若形成方法，应把有标签translate-train与桥接复用成本/收益一起比较，而不因控制更细就预写novelty。
+
+## MT能否连接预训练与迁移（LREC-COLING2024）
+
+[官方全文](https://aclanthology.org/2024.lrec-main.250.pdf)，已读§2–3与主结果表。
+DOCUMENTED来源：翻译应提供跨语表示，但是否帮助后续任务学习并不明确。比较mBART与其公开MT继续训练版本，统一12层encoder、英语任务微调十epoch，再评估XGLUE八任务；mBART XNLI67.6，m2o65.9、o2m48.1、m2m60.2。
+强弱：实际任务学习而非冻结probe；不是同内容/等预算随机干预，作者明确不处理遗忘。CKA未建立强性能联系；权重奇异值/输出separability解释是分析假设，不是被救援干预识别的机制。
+ownership：“翻译更好不代表后续迁移更好”已有直接先例。RECONSTRUCTED距离：E04在同一causal LM起点分离内容覆盖与条件连接，完整源/目标学习曲线；该控制本身尚非论文贡献，也不能把encoder结果直接泛化到生成式LM。
+
+## 成本与有效监督（2021预印本）
+
+[一手全文](https://arxiv.org/html/2105.06813v2)，已读§3–5。
+DOCUMENTED来源：transfer方法选择还受一次翻译成本、部署延迟影响；对比zero-shot/translate-train/translate-infer，QA、NLI与ranking。QA标记answer边界再译，约20%样本因边界丢失被删；QA翻译监督不及零样本，NLI/ranking则受益。
+强弱：把实际成本接回任务选择；QA小测试集、任务/模型/内容差异，不是同信息量的预算因果控制。历史API/GPU价格不是当前报价。
+动作：E04若有有效训练后果，再接同预算有效translate-train；必须报告目标答案恢复/丢失率，不能把译料监督失败误归为跨语言学习限制。“成本敏感的训练选择”本身已有ownership。
