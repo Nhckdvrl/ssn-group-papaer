@@ -1,6 +1,6 @@
 # E12 — Curation-Bench 强数据策略的真实训练效用复现（2026-10-02，跑前）
 
-- **状态/类型/对应：** RUNNING（仅公开数据下载；GPU 训练/评估尚未启动）；REPRO + D1/D4 驻留测量；P03（简单静态配方）、P06（资格门偏离科学对象）、P07（父模型/索引身份）。本卡不验证 I01–I03，也不凭复现分数提出 I04。
+- **状态/类型/对应：** RUNNING（seed17 的 random/ICONS 精确映射两臂 GPU 训练中，八项评估待 judge 就绪；以下跑前设计保持冻结）；REPRO + D1/D4 驻留测量；P03（简单静态配方）、P06（资格门偏离科学对象）、P07（父模型/索引身份）。本卡不验证 I01–I03，也不凭复现分数提出 I04。
 - **问题和可改变的判断：** 在一个论文已展示可分辨数据策略收益的成熟任务里，官方固定训练和八项评估能否在本地检出强静态策略相对随机的**真实训练后**增益？若连这个行动空间也不可复现，先修可信底座；若可复现，则后续科学问题必须直接比较反馈决策与强静态/LESS，而不再通过格式、相似度或题目表面质量代替训练效用。
 - **两种解释：** 论文的 LLaVA-665K→LLaVA-1.5-7B/10k 任务具有可重复的策略效用差（随机约 31.9±0.3、ICONS 33.3、ARDS 33.2、LESS 33.6）；或本地可得数据转换/索引、训练与评估环境改变了排序。已发表的 agent 33.7±0.3 与 LESS 33.6 很接近，不能预设 agent 胜最强非 agent 方法。[全文 Table 2/7/附录](https://arxiv.org/html/2606.04261v2)。
 
@@ -52,4 +52,9 @@
 - `HF_HUB_DISABLE_XET=1` 重试补齐最后一个 Arrow 分片：58 文件、93,424,292,235 bytes。全量审计 [`E12_full_arrow_audit.json`](../results/E12_full_arrow_audit.json) 得到 Arrow/原 JSON 各 **665,298** 行，按位置 ID 一致 **665,298/665,298**，完整规范化对话一致 **665,298/665,298**，ID 多重集合相同。此前只核首分片的推断现已在全体行上成立。第三方图像转码仍是相对原论文数据的偏离。
 - 五个 seed17 选样保存为 fvcrc10 `/var/tmp/xiang-data-rsi/e12/subsets/{policy}_s17`，每臂 10k 行，位置 SHA 与 [`E12_action_identity_s17.json`](../results/E12_action_identity_s17.json) 的跑前位置 SHA **5/5 一致**。保存后的 Arrow 用发布 `audit_contamination` 重跑八份固定 TSV：**5/5 clean、8/8 benchmark 无跳过**；逐臂结果见 `results/E12_saved_arrow_contamination_*_s17.json`。该审计只覆盖发布版文本 QA 规则，不能证明无图像泄漏。
 - **作废启动保留：** fvcrc10 `/var/tmp/xiang-data-rsi/e12/train_runs/random_s17` 首次启动的本地 launcher 把外层 `CUDA_VISIBLE_DEVICES=1` 与 `accelerate --gpu_ids 0` 同传；源码 `accelerate/utils/launch.py` 会将后者重新写入子进程环境，实际模型加载到了物理 GPU0。启动检查在任何训练 step/分数出现前终止该进程组；日志/manifest 保留，**此 run 不作训练效用证据**。已把 launcher 改成两处均显式物理 GPU1，并用新的 `train_runs_v2/` 启动，绝不覆盖旧失败。
-- 初始 seed17 真实训练对照为 fvcrc10/A100 GPU1 的 `random` 与 fvcrc12/A100 GPU1 的 `icons_exact`；同型号独立节点，不跨节点通信，训练配置、父 checkpoint、optimizer 重置完全相同。当前尚无训练步数或八项得分，不能报告策略优劣。未训练 base 的八项评估要在本地 judge/评估环境 ready 后完成，并用于核对论文量级。
+- 初始 seed17 真实训练对照为 fvcrc10/A100 GPU1 的 `random` 与 fvcrc12/A100 GPU1 的 `icons_exact`；同型号独立节点，不跨节点通信，训练配置、父 checkpoint、optimizer 重置完全相同。启动时尚无训练步数或八项得分，不能报告策略优劣。未训练 base 的八项评估要在本地 judge/评估环境 ready 后完成，并用于核对论文量级。
+
+### 2026-10-02：训练进度与评分器基础设施（仍无效用分数）
+
+- fvcrc10 `/var/tmp/xiang-data-rsi/e12/train_runs_v2/random_s17` 在 11:58 UTC 达 **201/625 optimizer steps**，stdout 当时末项 `loss=0.6895, grad_norm=2.515625, lr=1.7016e-5`；fvcrc12 `/var/tmp/xiang-data-rsi/e12/train_runs_v2/icons_exact_s17` 达 **54/625**，GPU1 分别约 54–55GB，物理设备与 manifest 一致。有限 loss 与非零梯度说明训练在更新某些参数，但最终仍须核 checkpoint 与父模型不同，并完成八项评估；不能从中推出策略优劣。ICONS 启动前共享 `/home` 的 NFS 模块/权重加载约 12 分钟，成本要并入 wall-clock。
+- fvcrc20 第一次 Qwen3.5-27B judge 在 GPU0 用 0.85 显存比例，engine 初始化时因其他作业占用出现 `free 80.03 GiB < requested 80.72 GiB`，**未产生评分**；原日志 `/var/tmp/xiang-data-rsi/e12/judge/server.log` 保留。第二次在空闲 GPU1/0.78 启动，模型与任务参数不变；11:58 UTC engine 仍在共享 NFS import，HTTP 端口未 ready，不能把它称作有效 judge。base 八项 eval 会在 endpoint smoke 后启动，所有失败 run/时间单独记。

@@ -37,6 +37,7 @@
 | P40 | DUET，ICLR 2026 main；2502.00270v3 | D（方法/主结果/成本与关键附录；官方 BO 代码已核，未复现） | [全文](https://arxiv.org/html/2502.00270v3)；黑箱目标反馈→GP/BO 域配比，论文 50 次随机初始化＋10 次 BO |
 | P41 | Data Mixing Agent，ACL 2026 main；2507.15640v2 | D（引言/方法/related work/主表、C–E 附录与限制；官方可运行源码未核） | [会议](https://aclanthology.org/2026.acl-long.427/)；[全文](https://arxiv.org/html/2507.15640v2)；384 代理轨迹、CQL 学固定域课程，数学→代码的冻结 agent 迁移 |
 | P43 | Data Agent，ICML 2026 main；2603.07433v2 | D（全文方法、主表/消融/成本及官方 README；未运行代码） | [会议](https://proceedings.mlr.press/v306/yang26bq.html)；[全文](https://arxiv.org/html/2603.07433)；训练内 PPO 逐样本选样、loss+熵奖励；公开执行示例主要覆盖 CIFAR |
+| P44 | Can Small Training Runs Reliably Guide Data Curation?，2512.24503v2；预印本 | D（主文、近邻分类、D.1–D.2 配方/机制/时长；代码未核） | [全文](https://arxiv.org/html/2512.24503)；23 预训练配方的固定超参代理排序可能翻转，低 LR 代理与调参目标更一致；不直接覆盖同模型固定 SFT 的 E12 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
