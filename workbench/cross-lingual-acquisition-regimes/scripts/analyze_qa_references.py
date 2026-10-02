@@ -33,7 +33,7 @@ def audit(condition,seed,data):
         assert [r["id"] for r in predictions] == [r["id"] for r in source]
         function = scorer.f1_score if metric == "f1" else scorer.exact_match_score
         scores = np.array([0. if pred["overflow"] else scorer.metric_max_over_ground_truths(
-            function,pred["prediction"],row["answers"]["text"]) for pred,row in zip(predictions,source)])
+            function,pred["prediction"],row["answers"]["text"]) for pred,row in zip(predictions,source)],dtype=float)
         assert np.allclose(scores,[r[metric] for r in predictions])
         assert abs(scores.mean()-expected[metric]) < 1e-10
         diagnostics = dict(overflow=sum(r["overflow"] for r in predictions),cap=sum(r["cap"] for r in predictions),
