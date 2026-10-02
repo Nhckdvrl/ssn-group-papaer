@@ -34,6 +34,7 @@ I12 只有在做出更强 decomposition 才有价值：
 - P94: conditional action excitation
 - Do-JEPA / FIRM: intervention branches
 - Task-Sufficient WM: active probing
+- OnlineWM: error-targeted active querying + same-state counterfactual action contrasts
 - PLDM: quality/diversity/stitching
 - WorldTest: environment-level query support
 - offline MBRL uncertainty / coverage literature
@@ -48,7 +49,7 @@ I12 只有在做出更强 decomposition 才有价值：
 - multi-route trajectories
 - same-reset action branches（若环境支持）
 
-每组严格 equal transition budget。
+每组严格 equal transition budget。若加入 OnlineWM-style adaptive querying，需要同时报告 **simulator query adaptivity**（因为同样transition数不等于同样 acquisition power）；可做 fixed-policy version 与 adaptive version分表。
 
 读数：
 - on-policy prediction
