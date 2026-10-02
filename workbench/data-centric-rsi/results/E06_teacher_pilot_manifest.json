@@ -1,0 +1,64 @@
+{
+  "teacher": "Qwen/Qwen2.5-32B-Instruct",
+  "revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+  "start": 0,
+  "count_per_arm": 40,
+  "source_template_sha256": "757bbe3dea023dd45bbbd5614c7ee475fdac4b1b6e9af56d99c9dca182ef7e22",
+  "pool_sha256": "73d48edff350169563df2a5dd68f77dcab9d28753f08860f76119ce8e3f6fe5c",
+  "feedback_sha256": "2a632f946f489142c8d27081e0d0af9d1dfbb76eb3cdc7d3f978b5eb26b34152",
+  "dev_sha256": "33999c27214e4727c13686a3f47f3ed5ec9ec57aa529f0e2dfd9c0229268d8dc",
+  "test_hashes_sha256": "abf39a90286cfa7a468ec197fba8839c1671bc9b2744c7c43f8a5067d8d69557",
+  "prompt_sha256": "d4fbdcbb3a4b724f33b754542409116d91c8185e623f57035ed2fb10ac25f3bf",
+  "raw_sha256": "a3ee204e8c1802d4447d7f133c1678b22acc1409c787b5b328f10d77e41d2f7d",
+  "prompt_count": 80,
+  "valid_per_arm": {
+    "no_state": 40,
+    "with_state": 32
+  },
+  "invalid_reasons": [
+    {
+      "arm": "with_state",
+      "index": 0,
+      "reason": "Unterminated string starting at: line 4 column 29 (char 1219)"
+    },
+    {
+      "arm": "with_state",
+      "index": 7,
+      "reason": "Unterminated string starting at: line 4 column 29 (char 761)"
+    },
+    {
+      "arm": "with_state",
+      "index": 9,
+      "reason": "Exact dev/test problem overlap"
+    },
+    {
+      "arm": "with_state",
+      "index": 14,
+      "reason": "Duplicate problem within arm"
+    },
+    {
+      "arm": "with_state",
+      "index": 30,
+      "reason": "Exact dev/test problem overlap"
+    },
+    {
+      "arm": "with_state",
+      "index": 31,
+      "reason": "Duplicate problem within arm"
+    },
+    {
+      "arm": "with_state",
+      "index": 35,
+      "reason": "Duplicate problem within arm"
+    },
+    {
+      "arm": "with_state",
+      "index": 36,
+      "reason": "Exact dev/test problem overlap"
+    }
+  ],
+  "prompt_tokens": 53892,
+  "generated_tokens": 28121,
+  "wall_seconds": 1501.7544624842703,
+  "cuda_visible_devices": "3"
+}
