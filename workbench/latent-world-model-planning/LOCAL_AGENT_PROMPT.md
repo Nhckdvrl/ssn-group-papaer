@@ -28,19 +28,20 @@
 2. root `RESOURCES.md`
 3. `workbench/README.md`
 4. 本目录 `README.md`
-5. **`FIELD_PROBLEM_MAP_2026.md`**
-6. `PAPER_LINEAGE.md`
-7. **`RESEARCH_MINES.md`**
-8. `LITERATURE_LEDGER.md`
-9. `PROBLEM_METHOD_MAP.md`
-10. `POSITIONING.md`
-11. `EXPERIMENT_PROGRAM.md`
-12. `ASSETS.md`
-13. `HANDOFF.md`
-14. `CLAIMS.md` / `PAIN_LOG.md`
-15. I09 / I08 / I07
-16. I06 / I03
-17. E00–E15
+5. **`NOVELTY_GROWTH_RULES.md`**
+6. `FIELD_PROBLEM_MAP_2026.md`
+7. **`RESEARCH_PROGRAMS.md`**
+8. `PAPER_LINEAGE.md`
+9. **`RESEARCH_MINES.md`**
+10. `LITERATURE_LEDGER.md`
+11. `PROBLEM_METHOD_MAP.md`
+12. `POSITIONING.md`
+13. `EXPERIMENT_PROGRAM.md`
+14. `ASSETS.md`
+15. `HANDOFF.md`
+16. `CLAIMS.md` / `PAIN_LOG.md`
+17. I07–I12 + I03/I06
+18. E00–E18
 
 然后运行：
 
@@ -58,61 +59,65 @@ ERROR 先修；WARN 理解后处理。不要为清 warning 机械修改科研内
 
 Temporal-Distance repo历史 config 仍叫 `td_jepa`。跨repo manifest只用 `bagatella_td_jepa` / `temporal_distance_jepa` / `decision_aligned_d_jepa`，禁止裸 acronym 聚合。
 
-# 1. 先继承 problem map，不重新 brainstorm
+# 1. 先继承 research programs，不重新 hunt empty gap
 
-当前优先级不是平级：
+**最重要的规则：**
+- paper 可以拥有一个 atomic claim；
+- paper 不能拥有整个 research program；
+- “近邻很多”通常说明 community care，不是自动降级；
+- 一个 seed撞车 / null / 被baseline吸收，只 park seed，必须回 parent R# 继续挖；
+- 直接近邻若要作为“不能做”的理由，至少深读 method + experiments + related work + limitations；abstract-only只能导航。
 
-1. **M3 / I09 = Tier A1 / first pilot**
-2. **M2 / I08 = Tier A2 / second pilot**
-3. **M1 / I07 = Tier B / conditional cheap oracle**
+当前 programs：
 
-### M1 / I07 — Observable goal ≠ control belief（conditional）
+### R1 — Data & Identifiability
+**母问题：** 什么 experience 才能让 world model识别 counterfactual action effects / controllability并真正服务planning？
 
-image goal 描述可观测配置，但 control 可能依赖隐藏 velocity/contact/friction/regime。
+现有工作分别回答 action excitation、trajectory geometry、counterfactual branches、active probing等局部答案。
 
-真正要问：
-- same/near-identical observation 下 hidden state 是否改变最优 candidate action？
-- native deterministic/history latent 是否因此产生真实 action regret？
-- history什么时候够，什么时候必须保留 multi-hypothesis belief/uncertainty？
+活跃：
+- I09/E14 behavior-route semantics；
+- I12/E16 equal-budget data value；
+- I06/E08–E10 negative-role subdiagnostic。
 
-Physically Viable WM、FIRM-WM、UWM-JEPA、Branch-JEPA、Flow Equivariant WM 已占大量 broad hidden-state / belief / multimodal-future space。我们的空间只剩：**finite history 后仍存在的 actionable ambiguity + candidate regret + regime distinction**。history能解决就停止，不造 belief method。
+E14若失败，**不要写 R1失败**；转 E16 / active probing / counterfactual data / failure-recovery data。
 
-### M2 / I08 — Predictive-computation placement（Tier A2）
+### R2 — Predictive Abstraction
+**母问题：** world model 应学习 one-step、direct horizon、path distribution、successor occupancy、macro transition还是hybrid？
 
-explicit JEPA-WM 把 dynamics 保留成可 rollout model、部署时 search；Bagatella TD-JEPA 等把 long-horizon structure amortize 进 representation/policy。
+活跃：
+- I08/E13。
 
-真正要问：
-- reward/goal redefinition
-- unseen objective
-- dynamics/layout shift
-- horizon
-- data coverage
-- train compute vs deployment compute
-- **task/query information budget**
-- arbitrary-action counterfactual query
+E13不是两方法排行榜；它用于找下一条 regime axis。若端点没有切换，转 stochasticity / horizon / query flexibility / intermediate predictive object，而不是关闭 R2。
 
-是否产生稳定、可预测的 regime boundary。
+### R3 — Specialization vs Reuse
+**母问题：** query/task conditioning 应放在哪一层，才能兼顾 seen-query decision efficiency 与 unseen-query/planner reuse？
 
-不要只回答“谁分数高”。
+活跃：
+- I10/E17。
 
-### M3 / I09 — Behavior trajectories ≠ environment controllability（Tier A1）
+P38 / Value Equivalence / WorldTest / Task-Sufficient WM 是这条 program 的强坐标，不是封锁线。
 
-RC-aux / Temporal-Distance JEPA 从 behavior trajectory 的 order/gap/negative 学 planning semantics。
+### R4 — State / Belief / Information Gathering
+**母问题：** partial observability / hidden physics 下，正确 predictive state 是 point / memory / belief / active information gathering 哪一种？
 
-真正要问：
-- 改变真实 generating behavior policy 后，learned reachability/progress 是否系统变化？
-- local predictive fidelity相近时，candidate ordering / MPC是否仍随 behavior route/tempo漂移？
-- 这种 imprint能否跨两个 objective/task structure复现？
+活跃：
+- I07/E11。
 
-旧 I01/E03-E04 只改 long-episode metadata而不改变 short-window loss，已 VOID。不要复活。
+若短 history解决当前 aliasing seed，park I07当前版本；R4可转 active disambiguation、belief-consuming planner、hidden-physics identification。
 
-### I06
+### R5 — Trust / Repair / Bypass
+**母问题：** world model 不可靠时，何时 replan、shorten horizon、adapt、feedback-correct、increase compute或fallback？
 
-semantic negatives vs geometric regularization 是 M3 的 cheap subdiagnostic。可以早跑 E08，但**不得因为便宜/详细就默认它是论文题**。
+活跃：
+- I11/E18。
 
-### I03
+IMWM / AdaJEPA / Feedback WM / AdaReP / MEND 是不同 recovery action 的已知答案；我们先找 failure-type→best-repair mapping。
 
-oracle bottleneck ladder 是公共诊断。除非出现 cross-task predictive regime law，否则不独立升级。
+### Shared diagnostics
+- I03/E06–E07 = bottleneck oracle；
+- I06/E08–E10 = R1局部机制；
+- E02 = candidate decision calibration。
 
 # 2. Step 0 — 资产盘点与 E00
 
@@ -155,101 +160,60 @@ E00 单 GPU：
 
 native result 与 common audit result分开。
 
-# 4. Problem-existence pilots：第一轮可以并行，但都保持小
+# 4. First-wave program mining：每次最多2个 pilot
 
-## E14 — M3 behavior-policy intervention（FIRST）
+仓库规则仍是 simultaneously running pilots ≤ 2。不要因为有很多卡就同时启动6个方向的大矩阵。
 
-先看 [E14](experiments/E14_behavior_policy_semantics_intervention.md) 的 staged protocol。
+## Wave A
 
-第一轮：
-- 公开 OGBench `navigate/stitch/explore` 或 `play/noisy` 只做 **sensitivity discovery**；
-- 真正的 scientific pilot 用 fixed start-goal 的 DIRECT vs DETOUR/LOOP；
-- 必须定量报告 state/action/local-transition support overlap；
-- 先 LeWM + Bai/Xiong Temporal-Distance JEPA，1 seed；
-- fixed candidate ranking/regret + closed-loop 才是 gate。
+### E14 — R1 / I09
+TwoRoom / topology下改变 behavior route；support + action excitation审计；fixed-candidate / closed-loop consequence。
 
-不要把普通 data coverage shift写成 behavior-semantics finding。
+目的不是把 I09做到底，而是回答：
+> R1 中 trajectory organization是否值得继续？
 
-真正收集/构造不同 **behavior policy** 的 offline trajectories：
+### E18 — R5 / I11
+优先 released checkpoints / evaluation-first。对同一 planning state执行不同 recovery actions，构建 oracle intervention ranking。
 
-- direct/efficient
-- random/suboptimal
-- detour/looping
-- route-biased
-- mixed
+目的：
+> R5 是否存在“不同 failure需要不同 repair”的真实结构？
 
-首轮只 2–3 种。
+E08若dataset ready可作为低成本旁路 audit，不占GPU主pilot。
 
-环境 dynamics不变。尽量匹配：
-- 样本量
-- state coverage
-- action coverage
-- **conditional action excitation / local action covariance（P94 control）**
-- local transition support
-- start/goal distribution
+## Wave B
 
-无法匹配就定量报告 overlap，不假装因果识别已完成。
+Wave A 任一分支进入等待/完成后启动：
 
-先跑 Bai/Xiong Temporal-Distance JEPA / RC-aux 中最容易复现的一个，再加 LeWM non-temporal control；出现稳定 effect 后才第二 objective。
+### E13 — R2 / I08
+predictive-object continuum的最小 matched pilot。三本账：
+- training compute；
+- task/query information；
+- deployment compute。
 
-关键不是 learned score变了，而是：
-- environment shortest/geodesic关系变没变？
-- fixed candidate ranking/regret变没变？
-- closed-loop变没变？
-- local dynamics error是否基本稳定？
+### E17 — R3 / I10
+query-placement × seen/unseen reuse 小矩阵。
 
-## E08 — I06 cheap audit
+## Conditional / next seeds
 
-可以和 E11/E14 同时跑，主要 CPU。
+### E11 — R4 / I07
+cheap environment oracle；不先训练belief model。
 
-必须 instrument **真实 sampler**，不是另写一个想象中的 negative generator。
+### E16 — R1 / I12
+若 R1仍有科学压力，固定 transition budget比较 coverage / action excitation / route diversity / counterfactual branches 的 planning value。
 
-输出 semantic validity / unknown / count / margin/budget strata。
-
-但 E08 本身永远不是 paper result；它只决定 M3 中 negative-role是否值得继续 E09。
-
-## E13 — M2 predictive-computation placement（SECOND）
-
-common substrate稳定后启动。优先 OGBench Cube pixels。
-
-explicit：
-- JEPA-WM / LeWM family
-
-implicit：
-- **Bagatella TD-JEPA (ICLR'26 Oral)**
-
-第一轮 1–2 common datasets/environments，保留 native protocol并建立 common audit。
-
-必须分开记三本账：
-- **training compute**：steps / GPU-hours / VRAM；
-- **task/query information**：goal image、reward function、reward-labeled inference samples、privileged relabel信息；
-- **deployment compute**：model calls / candidates / wall time。
-
-Bagatella TD-JEPA official OGBench eval会采样约 10k replay states并用 OGBench `physics` relabel reward；不能和“一张goal image”当同等task information。
-
-最小 regime：
-1. ID goal/reward
-2. reward/goal redefinition
-3. layout/dynamics shift
-4. near vs far horizon
-
-只要结果是“方法 A 一直更高”，不要急着写 paper；继续问这是 training compute、task-information、function class、search budget还是 generalization 的哪一项。
-
-## E11 — M1 actionable ambiguity（CONDITIONAL）
-
-只做 oracle，不先训练。
-
-顺序：same RGB/different velocity sanity → 给2–3 frame/native history → history能解就STOP → 只有仍相容的 hidden friction/contact/regime/stochastic branch才看 candidate regret → baseline确实混淆才 E12。
+**重要：** E14/E18/E13/E17/E11/E16 的顺序是当前 information-gain 排程，不是哪个 program“更有资格”。任何新结果都可以改变排序。
 
 # 5. 方法什么时候允许出现
 
-新方法只可来自真实 evidence：
+新方法优先来自真实 evidence，但**不禁止 method-led exploration**：如果一个成熟方法原理（quasimetric、belief filtering、structured dynamics、active probing、adaptive compute等）在 program 中给出明确、可检验的新预测，可以直接注册成 seed。不能做的是“因为喜欢一个模块所以随便找benchmark”。
 
-- E11：history无法解决的 actionable belief ambiguity；
-- E14：behavior policy imprint真实改变 planning；
-- E13：明确的 explicit/implicit regime boundary；
-- E08/E09：semantic role 与 regularization role真的分离；
-- E06：某个 layer被 oracle replacement确定为 binding bottleneck。
+当前证据入口包括：
+- R1：data role / identifiability / intervention value；
+- R2：predictive-object regime；
+- R3：specialization↔reuse frontier；
+- R4：belief / active information need；
+- R5：failure→repair mapping；
+- shared oracle：某 layer 被确定为 binding bottleneck。
 
 优先最小解释。
 
@@ -275,7 +239,7 @@ Bagatella TD-JEPA official OGBench eval会采样约 10k replay states并用 OGBe
 
 # 7. 多 GPU 怎么用
 
-第一轮每个 mine 都只做 **small decisive pilot**。
+第一轮每个 **program seed** 都只做 small decisive pilot；同时实际运行不超过2个。
 
 一旦某条过 gate，再把独立卡用于：
 - train seeds
@@ -342,7 +306,8 @@ what it opens
 - E06/E07形成 cross-task regime law；
 - C## 到 L2；
 - 需要改变 ACTIVE 资源调度；
-- 两条 broad mine都被强近邻/简单baseline吸收。
+- 一个 seed被近邻/简单baseline吸收后，需要回 parent R# 产生新seed；
+- 同一 program 连续多个 seed在系统measurement后都无scientific yield，才触发人审是否暂停 program。
 
 汇报只需：
 1. E## / commit / artifact hash
