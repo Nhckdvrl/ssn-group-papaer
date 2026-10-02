@@ -1,0 +1,8 @@
+Loaded pretrained model EleutherAI/pythia-31m into HookedTransformer
+pythia-31m-seed7__step8000: CL=1.48 ACC=0.78 prev=['2.6', '3.7'] ind=['4.1', '4.3', '4.6'] top=[('3.7|zero', 10.96), ('3.7|mean', 10.81), ('4.1|mean', 4.08)] (109.9s)
+Exception ignored in: <function ResourceTracker.__del__ at 0x14fb9b924360>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-02T19:51:43",
+ "generated": "2026-10-02T19:59:10",
  "loader": "pytorch_model.bin only (use_safetensors=False)",
  "tokenizer_note": "see r0_hf_metadata_70m.json tokenizer_oid per revision",
  "checkpoints": [
@@ -164,6 +164,87 @@
    "shapes_ok": true,
    "rel_l2_to_step0": 0.0,
    "pile_nll_16x512": 1.9301222562789917
+  },
+  {
+   "model_id": "EleutherAI/pythia-410m-seed7",
+   "seed": 7,
+   "data": "pile-standard",
+   "checkpoint": "step143000",
+   "step": 143000,
+   "revision_commit": "4c83aca7bf06be6061797566759d4cf370307b7b",
+   "accepted": true,
+   "reject_reason": null,
+   "bin_sha256": "756fcba3b987f0d27aae84f33135bdccced89b72beb941c7e6315b39428bb3d3",
+   "bin_sha_matches_hf": true,
+   "n_params": 405334016,
+   "n_tensors": 292,
+   "dtype": "torch.float16",
+   "finite": true,
+   "config": {
+    "hidden_size": 1024,
+    "num_hidden_layers": 24,
+    "num_attention_heads": 16,
+    "vocab_size": 50304,
+    "rotary_pct": 0.25,
+    "max_position_embeddings": 2048
+   },
+   "shapes_ok": true,
+   "rel_l2_to_step0": 0.0,
+   "pile_nll_16x512": 1.8983842134475708
+  },
+  {
+   "model_id": "EleutherAI/pythia-410m-seed8",
+   "seed": 8,
+   "data": "pile-standard",
+   "checkpoint": "step143000",
+   "step": 143000,
+   "revision_commit": "b3d0ef9e3205c5f235e44c7b8e8791ce04301452",
+   "accepted": true,
+   "reject_reason": null,
+   "bin_sha256": "e561cfa8cb968e691293f716f6aaf0b489909638db369fc2025a1e0ef7d767bd",
+   "bin_sha_matches_hf": true,
+   "n_params": 405334016,
+   "n_tensors": 292,
+   "dtype": "torch.float16",
+   "finite": true,
+   "config": {
+    "hidden_size": 1024,
+    "num_hidden_layers": 24,
+    "num_attention_heads": 16,
+    "vocab_size": 50304,
+    "rotary_pct": 0.25,
+    "max_position_embeddings": 2048
+   },
+   "shapes_ok": true,
+   "rel_l2_to_step0": 0.0,
+   "pile_nll_16x512": 1.9077438116073608
+  },
+  {
+   "model_id": "EleutherAI/pythia-410m-seed9",
+   "seed": 9,
+   "data": "pile-standard",
+   "checkpoint": "step143000",
+   "step": 143000,
+   "revision_commit": "6155dcb7e1a9080a5cb61d0ef1f8041e91b5cc7a",
+   "accepted": true,
+   "reject_reason": null,
+   "bin_sha256": "9b146525f3af954e2668f54cf3b6f444579be1b5127d8bcbc604201732107b10",
+   "bin_sha_matches_hf": true,
+   "n_params": 405334016,
+   "n_tensors": 292,
+   "dtype": "torch.float16",
+   "finite": true,
+   "config": {
+    "hidden_size": 1024,
+    "num_hidden_layers": 24,
+    "num_attention_heads": 16,
+    "vocab_size": 50304,
+    "rotary_pct": 0.25,
+    "max_position_embeddings": 2048
+   },
+   "shapes_ok": true,
+   "rel_l2_to_step0": 0.0,
+   "pile_nll_16x512": 1.9170913696289062
   }
  ]
 }
