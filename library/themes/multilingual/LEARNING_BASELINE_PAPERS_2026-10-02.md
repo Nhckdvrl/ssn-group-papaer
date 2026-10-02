@@ -237,3 +237,10 @@ RECONSTRUCTED距离：能力分解与训练保持均有直接近邻。E10/E09须
 DOCUMENTED来源：英文IFT后再多语IFT，希望同时保持英文和增加多语收益；阶段数据风格/内容相近时保持更好，另比较混合、生成replay、英文replay、层冻结与LoRA。生成replay使用第一阶段模型对第二阶段英文对应指令作答，5%/10%；不是简单随机复制旧数据。
 边界：相似数据也同时改变任务/质量，DES/参数差与保持的关系不是独立操纵纯相似度的因果证据；声称约同step不等于逐语token/独立内容等预算。多类能力平均可能掩盖代价。
 RECONSTRUCTED距离：时序与内容一致性已有ownership，E04重复语义内容的正收益即使出现也不是自动新发现。我们应比较明确预算下的实际学习和旧接口保持，并用同文本干预识别增量，而不是把correlation命名为新regime。
+
+## Eliciting Translation Ability via mFTI（TACL2024；arXiv2305.15083v3）
+
+[一手全文](https://arxiv.org/html/2305.15083v3)，已读§2–4训练、语言分区、错误分类及mono/pivot干预；未完整核对全部结果附录，没有复现。
+DOCUMENTED来源：小/中模型的ICL可能低估翻译能力，用实际MT instruction tuning及未见源/目标语言分区区分行为学习与语言对应。加入不含被测语言的其他译对可降低照抄；目标语monolingual generation有助输出语言/重复错误；pivot译对另改善被测对应。
+边界：增加语言对同时增加数据，未纯控总tokens；“无instruction errors”切片不是全测试集表现，也不能保证只剩alignment。照抄用sentence BLEU>80而我们只数exact copy，不能直接数字对比。
+RECONSTRUCTED距离：翻译行为与语言对应分解、照抄、无直接译对的泛化都有直接ownership。P05的一句恢复失败不等于内部知识删除；后续如做训练救援，需要区分一般操作行为、目标语暴露与正确对应，并报告真正成本。不能把“翻译退化主要表现为照抄”当新中心发现。
