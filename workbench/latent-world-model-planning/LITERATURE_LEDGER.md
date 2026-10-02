@@ -133,3 +133,26 @@ AD-WM、CGS、AnisoWM、Planning Limits、Objective Bottleneck、PhyLatent、Do-
 ## 7. 完整性的含义
 
 本 ledger 的“完整”不是声称已读尽所有 world-model 论文，而是：截至 2026-10-02，**会改变本 workbench 选题、baseline、claim ownership 或决定性实验设计的主要直接/邻接工作已进入地图**；新的 arXiv 仍会出现，因此任何 C## 升 L2、进入 candidate、投稿前三个节点都必须重扫。
+
+## 8. Problem-led hardening additions（P65–P74）
+
+| ID | 工作 | Venue/Status | Read | Code / asset | Workbench作用 |
+|---|---|---|---|---|---|
+| P65 | TD-JEPA: Latent-predictive Representations for Zero-Shot RL (Bagatella et al.) | **ICLR 2026 Oral** | A | CODE: facebookresearch/td_jepa @ 840a745 | M2 implicit predictive abstraction；与P14同简称冲突，必须写作者/全名 |
+| P66 | UWM-JEPA: Predictive WMs That Imagine in Belief Space | arXiv 2605.25313 | B | CODE: santoshkumarradha/uwm-jepa @ 1ef5735 | M1 belief-space direct neighbor；目前主要controlled prediction/probe |
+| P67 | Flow Equivariant World Models | **ICML 2026** | B | official project/code | partial-observation structured memory；M1 collision/control |
+| P68 | What Capable Agents Must Know | **UAI 2026** | B | proceedings | belief-like memory necessity的理论尺度锚点 |
+| P69 | Latent WMs with Monotone Planning Costs for Image-Goal Navigation | arXiv 2608.09073 | B | paper/project to audit if baseline-critical | monotone candidate cost + temporal-negative distortion；压缩I06 broad claim |
+| P70 | Grounded World Model for Semantically Generalizable Planning | arXiv 2604.11751 | B | paper/project | language/query goal interface；M4 watch |
+| P71 | Robot World Models Are Not Invariant to How the Actions Are Written | arXiv 2609.23252 | B | code TBD | problem-led invariance范例；action parameterization claim已占 |
+| P72 | World Models for Embodied Intelligence: Plausible→Controllable→Actionable | survey arXiv 2609.16697 | A/B | survey | workbench scientific-yield gate：probe必须连到decision/actionability |
+| P73 | Objective Mismatch / Goal-Aware Prediction / Value Equivalence | L4DC/ICML/NeurIPS 2020 | B background | — | task/decision-sufficient modeling不是2026新哲学 |
+| P74 | I-TAP: In-Context Planning with Latent Temporal Abstractions | arXiv 2602.18694 | B | project/code TBD | history+temporal abstraction+POMDP/regime shift；M1 collision |
+
+### 必须补读的触发条件
+
+- **M1进入E12前：** P62 FIRM-WM、P66 UWM-JEPA、P67 Flow Equivariant、P68 selection theorem、P74 I-TAP；若使用 VLA aliasing benchmark，再补对应policy literature。
+- **M2进入confirmatory前：** P09 TMLR explicit/implicit discussion、P65 Bagatella TD-JEPA完整appendix/code、TD-MPC2及至少一个search-amortized hybrid。
+- **M3进入方法设计前：** P05/P06 quasimetric、P02 PLDM data regimes、P64 CGCIVL、P14 Bai/Xiong Temporal-Distance JEPA、P15 RC-aux、P69 monotone-cost/negative study。
+
+P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只写 `bagatella_td_jepa` 或 `temporal_distance_jepa`，禁止裸 `td_jepa` 作为论文标识。
