@@ -1217,3 +1217,42 @@ P02 已经比我们之前记得更接近 M2：
 - **重要自限：** 论文明确说 **planning和uncertainty主要作为结构性后果提出，直接测量留给后续**；实验主要验证 irreversibility/prediction channel。
 - **对 R2：** path-space是一个很有理论意味的 method-led hammer，但目前不是强planning baseline。若 R2实验发现 irreversible/contact dynamics下 state/direct-horizon methods有系统failure，可把 path-level irreversibility变成 hypothesis，而不是现在先造“entropy loss”。
 - **idea-growth lesson：** method/theory-led完全合法，只要它提出一个重要、可证伪、此前 representation不表达的 predictive object；不能因为它不是problem-first就排除。
+
+## R3 hardening — task-centric / semantic specialization and reusable planning（P104–P106）
+
+### P104 — Back to Parsimonious Latents: Learning Task-Centric World Models from Visual Foundations (TC-WM) — arXiv 2605.25620
+**Read:** A-deep/targeted（method, experiments, planning, limitations, appendix map已核对）  
+**来源：** https://arxiv.org/abs/2605.25620
+
+- **母问题：** frozen visual foundation embeddings有 broad semantics，但包含大量与控制无关的 texture/background等因素；直接在它上面学dynamics会浪费capacity、降低planning precision。另一方面，纯task-specific latent又可能丢掉foundation semantics。
+- **idea leap：** 把foundation embedding当 **semantic scaffold，而不是最终 rollout state**。在其上学习compact latent；一部分与proprio/physical state对齐，另一部分保留 residual semantic structure；latent dynamics与embedding reconstruction共同训练。
+- **task-centric定义：** latent需对 future proprioceptive dynamics充分，并保当前task-aligned physical state。
+- **planning evidence：** CEM用于Maze/Wall/Push-T，LDP用于Robomimic高维manipulation，SAC用于continuous control；9 benchmarks。论文强调最大收益出现在高维contact-rich manipulation。
+- **robustness:** 还测 unseen visual perturbation。
+- **compute:** appendix汇总约1200 H100 GPU-hours覆盖训练/eval/probe/robustness整套研究；这提醒我们不应把它当首轮全量baseline。
+- **atomic claim：** foundation embedding可作为scaffold，再投影成 task-centric compact physical latent以改善planning/control。
+- **对 R3：** task-specialization不是抽象概念，已经有强实证方法。R3真正的下一问不是“task-centric好不好”，而是 **specialize到哪一层、多少维度、对哪些query/planner保持reuse**。
+- **对 R4：** TC-WM使用history + proprio alignment，也说明“可观察physical side-information”是belief/state设计的一种合法答案。
+
+### P105 — Beyond Instance Slots: Semantically Rich World Models for Physical Interaction Planning (SR-WM) — arXiv 2608.22294
+**Read:** B（abstract/index级；成为direct collision前需补全文）  
+**来源：** https://arxiv.org/abs/2608.22294
+
+- **母问题（abstract-supported）：** instance slot只告诉“有什么物体”，不能表达 task context 中“它扮演什么role”；planning需要 task-consistent future与relation/phase semantics。
+- **方法 principle：** task-conditioned role state（gripper/target/goal/relation/phase）+ action-conditioned role dynamics；同时服务 multi-candidate proposal、stage-aware reranking、violation-aware resampling。
+- **证据范围：** LIBERO四套、cross-suite transfer、perception/action-sensitivity。
+- **对 R3：** query/task conditioning进入 **representation semantics itself** 是一个已有强设计点；I10不能只声称“把query放进representation”。空间在与 query-independent dynamics / query-only proposal 等模块化方案的 systematic frontier。
+- **对 R5：** violation-aware suffix resampling也可视为 recovery action的一个实例。
+
+### P106 — World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models — arXiv 2607.27599
+**Read:** A-targeted（main method, generalization experiments, theory positioning, compute已核对）  
+**来源：** https://arxiv.org/abs/2607.27599
+
+- **母问题：** end-to-end imitation policy在new composition/layout/task上受demo trajectory约束；能否用 reusable WM提供physics，再让VLM在test-time proposal/reasoning/search？
+- **设计：** multi-task pose-image conditioned video WM + VLM high-level proposal + imagined rollout feedback + local candidate search/ranking；必要时接 diffusion policy完成local manipulation。
+- **理论 framing：** multi-task setting中 model-based planning可共享dynamics，而generalist policy对task context依赖更复杂。
+- **决定性实验：** compositional LIBERO-Long、new layout、zero-shot；与VLA/WAM/SAILOR/GPC-RANK等比较。compositional任务中VLA常完成第一个subtask后停滞，VLM+WM可提出 bridging actions。
+- **重要资源边界：** video WM inference重，论文报告A100单forward约0.85s、20 denoising steps约17s；global优化约30s、local search可2–3min，只在critical decision points调用。
+- **对 R3：** 很好的 **modular specialization/reuse** 实例：task reasoning/proposal由VLM specialized，physical outcome prediction由multi-task WM reusable。它支持R3而不是堵死R3。
+- **对 R5：** critical-decision-only planning也说明“什么时候值得调用昂贵WM”本身是usage-policy问题。
+- **资源判断：** 作为idea-growth/architecture coordinate，不适合本compact workbench首轮训练baseline。
