@@ -201,3 +201,40 @@ SPARK的branch criterion不是外部value/entropy计算器，而是policy reason
 3. **BOUNDARY-U / PBB**：只关心可能改变CEM elite membership/selected action的pairwise rank uncertainty。
 
 如果3只是在数值上等于2，PBB没有独立方法空间；如果3选择的states/actions不同并带来更高planning gain per environment step，才有自己的叙事。
+
+
+## S18｜What Must a World Model Distinguish：R3 的问题已经被说得很准，下一步不是换个名字
+
+来源：[What Must a World Model Distinguish for Planning?](https://arxiv.org/abs/2609.33030)。本轮阅读深度：**A-targeted**，核对abstract与query/candidate/planner的核心论点；不声称逐定理复验。
+
+**原文依据。** 论文把planning所需信息分成mechanism、response、decision sufficiency，并指出“世界模型该保留什么”取决于query、candidate set与planner。query-conditioned joint model在seen objectives上regret更低，但这种优势在unseen objectives上明显减弱；作者据此提出模块化方向：query决定“where to look”，action-conditioned model负责“what will happen”，让prediction可跨objective复用。
+
+**我们的生长分析。** R3不能再以“query应该放哪”作为headline，因为这篇已经直接问了。更值得做的是一个可训练、低成本的**selective specialization**：保持一个query-agnostic predictive core，只在candidate proposal/scoring或少量latent channels上启用query adapter，并显式测seen-task gain、unseen-goal reuse与额外compute。若简单query-at-cost已经最好，那就是重要简化结论；若query-conditioned residual只在decision-critical candidates上有用，可与R2 candidate-stage compute自然相连。
+
+## S19｜Feedback World Model / WorldAgen / CAWM：R5不缺“适配”，缺的是何时值得适配
+
+来源：[Feedback World Model](https://arxiv.org/abs/2605.15705)、[WorldAgen](https://arxiv.org/abs/2609.08162)、[Changepoint-Aware World Models](https://arxiv.org/abs/2609.18950)。本轮阅读深度：**B+/positioning**。
+
+- Feedback WM用执行后的prediction-observation mismatch维护轻量feedback state，不改模型参数。
+- WorldAgen收集少量test-time真实transition做轻量TTT，联合world/action heads适应新环境。
+- CAWM检测abrupt dynamics shift并flush stale replay，说明“继续按旧数据训练”本身会拖慢恢复。
+
+这些工作已经覆盖“feedback有用”“test-time update有用”“检测shift再更新”的大故事。
+
+**我们的生长分析。** R5更有价值的问题是：**一次干预到底值不值得做，以及应该选feedback、参数更新、replan还是hold？** 如果每次prediction error大都盲目更新，很可能浪费compute甚至伤性能。世界模型的可靠使用可以从“异常检测”转成“intervention utility”。
+
+## S20｜Counterfactual Utility Protocol：update-vs-hold可以成为R5的训练信号，而不只是评测
+
+来源：[Measuring the Value of World-Model Updates](https://arxiv.org/abs/2609.10954)。本轮阅读深度：**B+/positioning**。
+
+**原文依据。** 论文用fork ledger在预注册时刻把deployment stream分成update与hold两个matched continuation，直接测 `ΔR = R_update - R_hold`；其结果甚至显示固定update机制在多个任务上平均降低return。它的重点是evaluation/measurement：不要用prediction surprise代替“这次更新实际有没有价值”。
+
+**我们的生长分析。** 这给E18一个比“uncertainty阈值routing”更扎实的下一步：先用fork ledger生成少量**干预价值标签**，再学习一个只使用部署时可见信号的轻量router，预测hold / feedback / short update / full replan哪个更值钱。该router不是用未来reward在线作弊；未来分叉结果只用于离线训练标签。若简单规则已经够好，就保留简单规则，不强造神经router。
+
+## S21｜Revaluation：successor-style长期表示的优势和代价都很经典
+
+来源：[successor representation in human RL](https://www.nature.com/articles/s41562-017-0180-8)、Bagatella TD-JEPA、[Universal Horizon Models](https://proceedings.mlr.press/v306/chung26b.html)。本轮阅读深度：**B/background + modern positioning**。
+
+经典SR能在reward改变时快速revalue，因为predictive occupancy可复用；但transition结构变化时需要更新occupancy本身。modern implicit/long-horizon predictive representations继承了这种“预计算换灵活性”的基本张力，只是对象从tabular occupancy变成latent/policy-conditioned预测。
+
+**我们的生长分析。** E19不应“重新发现reward revaluation比transition revaluation容易”。更有价值的是在compact visual WM上比较**哪一层更新**最划算：只更新task/cost head、只更新短时dynamics、只更新long-horizon abstraction、或完整replay；并以recovery samples × wall-clock × retained old-task performance衡量。若R2的multi-fidelity/explicit-implicit方法成熟，E19还是很自然的stress test。
