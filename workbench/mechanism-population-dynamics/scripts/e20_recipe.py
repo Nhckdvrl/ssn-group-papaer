@@ -123,6 +123,16 @@ def analyze():
     fl = {s: np.mean([data[f"dolma1_7-1B__{s}"]["conditions"][c]["margin"] - data[f"dolma1_7-no-flan-1B__{s}"]
                       ["conditions"][c]["margin"] for c in conds]) for s in dd.SEEDS} if "dolma1_7-no-flan-1B" in recipes else None
     out["explore_flan_minus_noflan_mean_margin"] = fl
+    dose = [("dolma1_7-1B", 0), ("dclm-baseline-25p-dolma1.7-75p-1B", 25), ("dclm-baseline-50p-dolma1.7-50p-1B", 50),
+            ("dclm-baseline-75p-dolma1.7-25p-1B", 75), ("dclm-baseline-1B", 100)]
+    if all(r in recipes for r, _ in dose):
+        Y = np.array([[np.mean([data[f"{r}__{s}"]["conditions"][c]["margin"] for c in conds]) for s in dd.SEEDS]
+                      for r, _ in dose])  # [5 recipes, 3 seeds]
+        x = np.repeat([p for _, p in dose], 3)
+        rho = spearmanr(x, Y.ravel())[0]
+        null = [spearmanr(x, Y[rng.permutation(5)].ravel())[0] for _ in range(10000)]
+        out["dose_response"] = {"rho": float(rho), "perm_p": float(np.mean(np.abs(null) >= abs(rho) - 1e-12)),
+                                "recipe_means": Y.mean(1).tolist(), "seed_values": Y.tolist()}
     (OUT / "analysis.json").write_text(json.dumps(out, indent=1))
     print(json.dumps({k: v for k, v in out.items() if k not in ("per_condition", "recipes")}, indent=1))
     for c, v in pc.items():
