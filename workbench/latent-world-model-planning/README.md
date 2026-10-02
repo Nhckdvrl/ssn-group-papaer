@@ -112,12 +112,12 @@ E05 = conditional diagnostic only
 ## 论文形态卡
 
 - **当前主旨：** 尚未形成；science claim = 0。
-- **当前 problem mines：** M1/I07 belief-aware observation aliasing；M2/I08 explicit↔implicit predictive abstraction；M3/I09 behavior→controllability semantics。I06 是 M3 的低成本机制 slice，I03 是共享 oracle/regime 工具。
+- **当前 problem mines：** **Tier A1 M3/I09 behavior→controllability semantics；Tier A2 M2/I08 predictive-computation placement；Tier B M1/I07 irreducible actionable ambiguity。** I06=M3子诊断，I03=共享oracle/regime工具。
 - **可接受形态：** 新的 actionable failure/distinction；跨 regime law；由诊断自然导出的 minimal repair / hybrid principle；或能改变方法设计的 identification result。
 - **不可接受形态：** RC-aux+loss、再测一次 false negative、单个 toy anomaly、普通 correlation、更多seed/benchmark。
-- **manuscript-critical contributions：** ❌ 等 E08–E10 / E06–E07。
+- **manuscript-critical contributions：** ❌ 等 E14/E13/E11 proof-of-problem；只有过 gate 的 mine 才继续长 claim/method。
 - **证据目标：** strong native reproduction；pair/candidate-level oracle；fixed-candidate regret；closed-loop consequence；train-seed variance；至少两个方法/任务后再扩大。
-- **危险近邻：** TD-JEPA、RC-aux、CGCIVL/QRL、DA-LeWM/AD-WM、Temporal Straightening/CGS、Control Theory、Hidden Failure Modes、Planning Limits。
+- **危险近邻：** RC-aux、Bai/Xiong Temporal-Distance JEPA、quasimetric/CGCIVL/PLDM（M3）；Bagatella TD-JEPA、Universal Horizon、Jumpy WM、TD-MPC2（M2）；FIRM-WM、UWM-JEPA、Physically Viable WM、Branch-JEPA（M1）；以及 DA-LeWM/D-JEPA、Control Theory、Hidden Failure Modes 等共享近邻。
 - **目标会议：** ICLR / ICML / NeurIPS；不因模型小降低问题尺度。
 
 ## D1–D6
@@ -127,9 +127,9 @@ E05 = conditional diagnostic only
 | D1 强基线 | ❌ 本地未运行；E00/E01预注册 |
 | D2 可复用资产 | ⚠️ LeWM/RC-aux/TD-JEPA/stable-worldmodel等官方代码与pin已审；执行机下载/hash待填 |
 | D3 痛点 | ⚠️ literature/code risks已登记；真实 P## = 0 |
-| D4 系统测量 | ⚠️ candidate/oracle schema + E02/E06–E10已设计；GPU结果=0 |
-| D5 定位 | ✅ P01–P74 + venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
-| D6 idea组合 | ✅ problem-led M1/I07、M2/I08、M3/I09；I06降为M3子诊断，I03为共享regime工具；I01/I02 PARKED，I05由I07 supersede；E03/E04 pre-run VOID |
+| D4 系统测量 | ⚠️ common oracle/candidate schema + E02/E06/E08 + M1–M3 cards E11–E15 已设计；GPU结果=0 |
+| D5 定位 | ✅ FIELD_PROBLEM_MAP + P01–P92 lineage / venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
+| D6 idea组合 | ✅ **M3/I09 Tier A1、M2/I08 Tier A2、M1/I07 Tier B conditional**；I06=M3子诊断，I03=共享regime工具；I01/I02 PARKED，I05由I07 supersede；E03/E04 pre-run VOID |
 
 ## 决策记录
 
@@ -138,11 +138,12 @@ E05 = conditional diagnostic only
 - 2026-10-02：建立 P01–P74 lineage / ownership / oracle maps；generic support-drift I02 PARKED。
 - 2026-10-02：**代码级审计否定原 I01 identification design**：short-window loss看不到“只改长 episode factorization”的treatment；E03/E04未运行即 VOID。
 - 2026-10-02：由 Bai/Xiong Temporal-Distance JEPA / RC-aux negative sampler + false-negative limitation/ablation + CGCIVL邻域，生成 I06；注册 E08–E10。
-- 2026-10-02：进一步按 **problem-led / actionable** 标准重构 mining：新增 M1/I07 observation-aliasing→belief planning、M2/I08 explicit↔implicit frontier、M3/I09 behavior→controllability semantics；I06降为M3子诊断，不再默认主论文。
+- 2026-10-02：进一步按 **problem-led / actionable** 标准重构 mining：新增 M1/I07、M2/I08、M3/I09；I06降为M3子诊断。
+- 2026-10-02：第二轮 proceedings/arXiv hardening 扩到 **P01–P92**；Physically Viable WM / Branch-JEPA / UWM / FIRM 等使 broad M1明显更拥挤，故降为 conditional；OGBench generator/code audit 与 explicit↔implicit native-protocol audit 后，优先级改为 **M3 → M2 → M1 conditional**。
 - 未经人审不改变 ACTIVE 容量；执行 agent可在 experiment-card 决策范围内自主继续，不需要每个job回来问。
 
 ## 资产位置
 
 大数据/checkpoint/raw candidate traces不进git；节点路径、revision/hash写 [ASSETS](ASSETS.md)。git只保存代码、manifest、实验卡、摘要和主张账本。
 
-**执行入口：** [LOCAL_AGENT_PROMPT.md](LOCAL_AGENT_PROMPT.md) → E00；dataset可读后 E08 可与 E01/E02并行。
+**执行入口：** [LOCAL_AGENT_PROMPT.md](LOCAL_AGENT_PROMPT.md) → E00/E01 → **E14 first**, E13 second, E11 conditional；dataset可读后 E08 可作为 M3 子诊断并行。
