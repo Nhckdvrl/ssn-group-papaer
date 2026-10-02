@@ -1,0 +1,40 @@
+# E12 — Curation-Bench 强数据策略的真实训练效用复现（2026-10-02，跑前）
+
+- **状态/类型/对应：** RUNNING（仅公开数据下载；GPU 训练/评估尚未启动）；REPRO + D1/D4 驻留测量；P03（简单静态配方）、P06（资格门偏离科学对象）、P07（父模型/索引身份）。本卡不验证 I01–I03，也不凭复现分数提出 I04。
+- **问题和可改变的判断：** 在一个论文已展示可分辨数据策略收益的成熟任务里，官方固定训练和八项评估能否在本地检出强静态策略相对随机的**真实训练后**增益？若连这个行动空间也不可复现，先修可信底座；若可复现，则后续科学问题必须直接比较反馈决策与强静态/LESS，而不再通过格式、相似度或题目表面质量代替训练效用。
+- **两种解释：** 论文的 LLaVA-665K→LLaVA-1.5-7B/10k 任务具有可重复的策略效用差（随机约 31.9±0.3、ICONS 33.3、ARDS 33.2、LESS 33.6）；或本地可得数据转换/索引、训练与评估环境改变了排序。已发表的 agent 33.7±0.3 与 LESS 33.6 很接近，不能预设 agent 胜最强非 agent 方法。[全文 Table 2/7/附录](https://arxiv.org/html/2606.04261v2)。
+
+## 先于 GPU 的数据与源码契约
+
+1. 固定官方仓库 SHA `24eea1526492c00cee421f5db0793789e00aabb2`；任务 YAML `llava665k_llava_8bench_10k_unlimited.yaml`；训练代码、模型 registry、eval wrapper 与污染审计以该 SHA 为准。源码目前缓存在 `/home/xiang/.cache/research/data-centric-rsi/CurationBench`，不修改 vendor 原件；必要修复写独立 patch/脚本并列出行为差异。纸面配置：一张 A100，vision tower 冻结，只训 LM/projector，1 epoch，batch1×grad-accum16，LR2e-5 cosine/warmup0.03，BF16、fused AdamW、assistant-only loss，10k 样本。训练超参与模型评估不按观察分数调整。
+2. 源数据首选自包含 `Ethlake/llava-665k@235a8adf266bb6dc02a099dc0221d28dec058f54`，发布文件合计 **93,424,292,235 bytes**，是第三方转换，**不是官方提供的原始 Arrow 快照**；原始 `liuhaotian/LLaVA-Instruct-150K@9d451dc7629cfe0469f6ae4432b765cd603d5fcb` 的 `llava_v1_5_mix665k.json` 为 1,029,887,963 bytes。转换版说明 665,298 行、其中 40,688 text-only，355 张 OCR 图被重编码；不能称 exact reproduction。下载一次并优先放 fvcrc10 本地盘，记录每个 LFS 文件 hash、总下载/解压时间与磁盘占用，避免共享盘反复随机读。预计 93.4GB 数据＋14.1GB 模型＋55.6GB judge 权重及中间资产；单机根目录当前可用 289GB，但开跑前重查。
+3. **阻断式索引核验：** 官方 `baselines/dataset/icons.py` 以原 JSON 中有图行的位置作为 Arrow index，`ards.py` 直接以 `global_id−1` 作为 Arrow index；这只有行序一致时才有效，而且前者 `lookup.get(id) or lookup.get(image)` 在 index0 上有边界问题。第三方 Arrow 先逐行读取 `id/subset`，与原 JSON 的 `id/image` 建对应关系；分别核验随机抽样与全部 ICONS/ARDS 所选 ID/图像路径匹配，不依赖位置假设。若 ID 唯一性、行数、可追溯配对或图片可读性不成立，**不训 GPU**；只修 mapping 或换源，不默默丢失样本。污染审计用八套 eval TSV 全部预下载后运行，任何 skipped benchmark 都阻断训练。
+4. **父模型存在论文/代码冲突，已在运行前查出：** 论文 B.1/Table 10 所链接的预策展初始化是 `anonneuripsmail/llava-1.5-7b-init@5736a39125fce6ca4d4eb20033ca7c46895878ab`，而发布 README 与 `train_llava15.py` 默认是训练完成后的 `llava-hf/llava-1.5-7b-hf@b234b804b114d9e37bb655e11cbbb5f5e971b7a9`。两者不可混用；本卡以**论文链接的 init** 为唯一父模型，在 profile 中显式填绝对路径，训练日志核对实际加载路径。若 trainer/eval 不支持该 init，先修兼容或停，不把已训 checkpoint 冒充论文 base。judge `Qwen/Qwen3.5-27B@fc05daec18b0a78c049392ed2e771dde82bdf654`。锁处理器/chat template；评估使用官方 VLMEvalKit wrapper、八项完整任务及 Table 19 聚合，三项 judge 采用同一 27B endpoint（thinking 关闭、temp0、max2048），记录 judge 版本/设置。官方 agent 容器需要 Docker；手动 baseline CLI 路径从源码可直接调用 subprocess，但所有环境偏离和评测缺项必须报告。模型/数据/评测版本冻结后才生成子集。
+
+## 策略、读数与决策
+
+- **固定策略/种子：** budget 每臂恰好 10,000 行，四个家族：均匀随机、五个 visual subset 各 2,000 的简单均衡、官方发布 ICONS-133K 池内随机、官方 ARDS 池内随机。共同种子预先固定 `[17,29,43]`，各策略从同一基础模型独立重置权重和 optimizer；不按结果换 seed/混合权重/训练 checkpoint。先做 seed17 四臂以核训练和评估是否工作，再完成剩余两种子；任意失败保留并报告。源数据在同一子集内按稳定 ID 排序后再采样，避免来源文件行序决定 RNG；这与官方未声明同一种子具体子集不一定相同，报告该偏离。ICONS/ARDS 需记录官方选择池版本、匹配覆盖率；均衡策略仅是可复现的简单对照，不是论文原始 agent 最优 manifest。LESS 33.6±0.3 是发表过的更强外部对照，本卡只在定位中引用，若之后声称超过强静态则必须将其纳入同成本本地比较。
+- **主读数：** 官方八 benchmark 的规范化等权平均，三训练种子的均值/SD，各 benchmark 原始与规范化值；策略对随机同种子的配对差及跨 seed 范围。论文原结果是比较参照，**不是本地显著性阈值**。同时记录数据源比例、训练监督 token/截断、实际 optimizer steps/loss、格式异常、评测完成率。只有每条真实 SFT＋全评估才算行动效用；metadata/LLM 判断/近邻度不能代替。
+- **阳性对照：** 随机子集应使完整八项 aggregate 高于未训练 base（论文 28.8→31.9±0.3）；ICONS/ARDS 在论文高于随机约 1.3–1.4 分。若 base 或随机结果远离公开数值，先核数据转换、训练模板、模型初始权重、judge 和聚合，不根据坏读数解释策略；若基线有不同方向也如实报告。
+- **噪声地板/MIE：** 论文十次随机训练 SD 0.3 分，本地三 seed 只是第一轮训练变异估计；同一 checkpoint 的评估复跑 1 次，用逐样本输出/八项分数估 judge 与 vLLM 变异。约 1 分的策略差是是否进入反馈策略效用测量的实用门槛；不是自动科学裁决，也不能把 0.1 分的 agent−LESS 当可靠优势。
+- **混杂：** 固定父模型、训练/评测代码、预算、epoch、seed、优化器重置、评估输入；样本长度、图像分辨率、来源比例是策略动作的一部分但会改变实际训练 token/计算，必须量并在后续等 token 对照；第三方 Arrow 的图像转码和 chat 模板可能与论文不同，独立报告。测试套件在本卡只评价，不用来挑选后验最佳子集；若以后研究 agent 搜索，必须另留出从未回馈给 agent 的任务/模型。跨节点/卡数值差只比较同节点/同 GPU 型号，禁止混合 best seed。
+- **决策表（跑前）：** 三策略家族的差异方向/量级可复现且完整训练/评估成本可承受 → 保留这个底座，下一项只问“反馈相对强静态/LESS能改变什么**真实效用决策**”，先定义新 episode 的冻结评估；均衡或随机已与 ICONS/ARDS 同量级 → 研究简单配方为何强，后续任何复杂改进器必须超出它和 LESS；排序不稳定、差异小于本地波动 → 不把这小差异发展为方法题，寻找更可辨的任务/策略，保留失败；索引/数据/训练/eval 不一致 → 停止分数解释，源代码层修正后重新预写必要偏离，不借坏实验选 idea。
+- **预算：** 先四条 10k SFT＋全评估；若完整则再八条以覆盖三个固定 seed。预计每训练支路数小时、评估及 judge 另计；上限 **48 A100 GPU·时训练/学生评估 + 48 A100 GPU·时 judge**（实际三类成本分开计）。同节点独立槽位，不跨节点同步；单分支超过 6 A100·时或任一评测 timeout 保留失败并停扩。数据下载/I/O 和 CPU wall 单独记录，API 默认 0。任何其他项目占卡时不抢占。
+
+## 结果（执行后追加，不回改上文）
+
+- 数据/索引契约、哈希与偏离：待核。
+- 训练/评估读数、每种子及失败 run：待运行。
+- 对 P03/P06 和后续 scientific question 的改变：待结果。
+
+### 2026-10-02：下载中、GPU 前 sentinel（未见任何 E12 训练结果）
+
+- 官方训练源码的 CPU 监督 sentinel 使用论文 init processor 与同一 `LLAVA_CHAT_TEMPLATE_WITH_EOS`：合成单图一轮问答输入 **600 token**，仅答案和 EOS **6 token** 带 label，监督文本 `The square is blue.</s>`，题目未被监督；结果在 [`results/E12_label_sentinel.json`](../results/E12_label_sentinel.json)。这只检验一个极小格式例子；实际 10k 子集的截断/全 masked 比率仍须逐策略测。
+- 八 benchmark 的原 TSV 源站证书在 2026-10-02 已过期；`scripts/e12_fetch_evals.py` 对公共文件单独允许传输例外，并要求每个文件 MD5 与固定 VLMEvalKit 源码中的硬编码校验值相同。当前下载中，八份未全验证之前不跑训练。失败下载也保留日志，不将缺失项默认为 0 分。
+- **预训练前映射修订（只见 CPU 元数据，未见任何策略训练分数）：** 原 JSON 有 665,298 行但只有 389,722 个不同 `id`；87,738 个 ID 重复、最多 16 次。ICONS 发布 133,046 条完整原记录在原 JSON 中 **133,046/133,046 唯一精确匹配**。公开 `icons.py` 的 ID/图像路径→最后一个位置映射按原 JSON 行序仅对 74,845/133,046 条指到原记录，58,201 条错指；它选中 100,408 个不同位置，而忠实 ICONS 池应有 133,046 个。首个 Arrow 分片 12,321/12,321 的 **ID 及规范化完整对话**与原 JSON 同位置一致，但完整 665k 待下载后审计。证据 [`E12_first_shard_audit.json`](../results/E12_first_shard_audit.json)、[`E12_icons_mapping_audit.json`](../results/E12_icons_mapping_audit.json)。这是**发布 baseline 脚本在此源数据上的语义**，不能据此断言论文作者当时实际跑了该错误映射。
+- **修订后的预写策略和算力（仍早于所有 GPU）：** 原四臂不变，但 ICONS 主臂改为以 `id+image+完整 conversations` 的规范化完整记录 hash **唯一精确定位** Arrow 行，保持 10k/固定种子预算；额外生成发布脚本位置映射的 ICONS 诊断臂，仅 seed17 训练/全评估。若诊断臂与正确 ICONS 的八项均值相差 **≥0.5 分**，将诊断臂在事先固定 seed29/43 上也补齐以估来源影响；若小于该差，不再围绕这个 bug 扩算力。若完整 Arrow 行序或任何完整记录匹配未通过，两个 ICONS 臂都阻断，先修数据重建。因最多新增三支路，E12 总上限改为 **60 A100 GPU·时训练/学生评估 + 60 A100 GPU·时 judge**，每类实际另记；绝不借这个 bug 声称 agent 的论文数值已被推翻。
+- **评估资产已全部核验：** 八份原始 VLMEvalKit TSV 共约 556 MB，逐个 MD5 与 vendored VLMEvalKit 固定值一致；manifest 位于 fvcrc10 `/var/tmp/xiang-data-rsi/e12/LMUData/e12_eval_download.json`。正式策略比较前需对论文 init 跑一遍同一八项评估，作为未训练 base 阳性对照。该额外 eval 成本单独计入上限，绝不从论文 28.8 直接借数。
+- **ARDS 源码下载适配：** 固定官方 downloader 从 Google Drive 接到“大文件病毒扫描确认”HTML，首尝试写出 0 字节并在 JSON 解析时报错。`scripts/e12_fetch_ards.py` 保留其固定 file ID，解析确认表单的动态 uuid 后下载 binary、核 content-length、再校验 JSON/global_id 并写 SHA manifest；失败日志原样保留。下载成功及 ARDS global_id↔源数据位置逐条审计前，ARDS 臂不可运行。
+- **真实样本训练标签 CPU sentinel：** 发布 trainer＋论文 init processor 对首 Arrow shard 预先固定的 11 个位置均生成图像 `[3,336,336]`、非零 assistant 监督（42–457 token）、最后监督 token 均为 EOS；输入长度 683–1134 token。见 [`results/E12_real_row_sentinel.json`](../results/E12_real_row_sentinel.json)。这只验证首 shard 11 行，不能代替四策略各自 10k 的 masked/truncation 统计；`multiprocess` 退出时的 Python 3.12 resource-tracker warning 也保留，不影响这次 CPU 结果。
+- **ARDS 映射纠正（仍未见训练分数）：** 原始 ARDS 发布文件从固定 Google Drive ID 下载完成：314,477,017 bytes、SHA256 `deca6ddfc94b9e6a138fc2425f2b86294bbba8038850497f4f91057fc215f9fc`、199,586 个唯一 `global_id`。逐条比对 `id+image+conversations` 发现 **199,586/199,586 在 `original[global_id]` 全记录精确相同**，而 `original[global_id−1]` **0/199,586** 精确相同；后者仅 60,690 条 ID+图相同，其余 138,896 条连 ID/图都不符。证据 [`results/E12_ards_mapping_audit.json`](../results/E12_ards_mapping_audit.json)。发布 `ards.py` 的 `global_id−1` 断言不适用于这份发布文件；E12 主 ARDS 臂固定改为零基位置，不在该索引 bug 上额外开训练诊断臂。不能推断论文作者实际采用错误位置。完整版 Arrow 顺序确认前仍不训。
+- **同一采样函数的 GPU 前污染预审：** 原始 JSON 的固定 seed17、五臂各 10,000 行，经与即将物化 Arrow 子集共用的 `select_positions` 抽样，再按 Arrow 对话规范化，用固定 Curation-Bench 八项 TSV 的原始 QA hash＋8-gram/0.8 阈值审计；五臂均 `clean`，无 benchmark 跳过。各臂 QA 轮次数为随机 **51,279**、五源均衡 **63,210**、ICONS 精确 **53,158**、ARDS **49,722**、ICONS 发布位置映射 **67,053**；轮次数并非监督 token 数，策略比较必须与实际监督 token 同报。证据 [`results/E12_preflight_contamination_s17.json`](../results/E12_preflight_contamination_s17.json)；训练前仍要在保存的 Arrow 子集上跑正式审计。

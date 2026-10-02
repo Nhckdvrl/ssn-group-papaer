@@ -99,7 +99,13 @@ AZR 的固定 `paper` 分支源码另缓存在 `/home/xiang/.cache/research/data
 |---|---|---|---|
 | DataEnvGym code，固定源码 `f698f39` | LiveCodeBench 学生错误→GPT-4o 生成新题→另一次模型调用解答→SFT→LCB 学生评估 | `code/baselines/open_ended.py` 的新训练题路径直接 `render_data_spec`，未见运行/测试新答案；`examples/livecodebench/open_ended.py` 为 8 GPU/5轮；评测学生代码的测试不验证新监督 | 与已建 MATH 资产共享框架，但可信生成数据仍是缺口，不能直接称“可验证代码行动” |
 | SQLM code，官方源码 `fe1dd02ecf4ab4f3c398acd186c6caaa970cbd58` | proposer 给题和测试输出→solver rollout→SandboxFusion 评分→proposer/solver 更新 | `ray_trainer.py` 将 proposer 自给测试当 solver ground truth；`coding_selfplay.yaml` 为 4 GPU、tensor parallel4、依赖本地 SandboxFusion 服务；内部奖励并非独立真值 | 真正动态自博弈近邻，但大改小预算训练会偏离原论文；需先核测试可靠性与固定 proposer 强对照 |
-| Curation-Bench，官方 README 2026-10-02 只读 | agent 提交固定池子集→冻结 SFT→八项 VLM 评价反馈 | 官方硬件前提 ≥1TB 磁盘；主要是固定池策展而非可生成验证题；当前未克隆源码/适配弱 I/O | 数据研究 agent 近邻和后续验证平台，不作轻量生成闭环的默认首跑 |
+| Curation-Bench，官方 SHA `24eea15` | agent 提交固定池子集→冻结 SFT→八项 VLM 评价反馈；手动 CLI 不依赖 Docker | README 的 ≥1TB 是整套前提；单个 LLaVA Arrow 第三方快照 **93.4GB**，Vision-Flan 官方 **36.5GB**，另需模型/评测/judge 资产；LLaVA 论文父模型与 README 默认不一致，第三方 Arrow 与官方 ICONS/ARDS 位置索引需校验。主要是固定池策展，不是开放式生成题 | E12 用 LLaVA 10k 官方训练/评估测**真实策略效用**，数据/源码核对先于 GPU；不把单任务可装下等同整套系统复现 |
 | AZR coder3b，固定 `paper` SHA `41ed983` | proposer 给 Python 程序/输入等→执行得目标→solver rollout 与 proposer reward→联合更新 | 仓库有两份各256行的 3B coder seed 数据；`scripts/selfplay/coder3b.sh` 为**单节点2×80GB**、vLLM TP2、长序列和30 epoch；原执行器运行模型生成代码，当前未隔离；3B 的终端强静态/冻结 proposer 对照尚未复核 | 目前最接近“独立可验证生成动作＋可在单节点运行”的候选，但不是已就绪 baseline；先核完整实验和隔离成本，不在共享节点直接执行原脚本 |
 
 这张表回答的是“下一份实际训练值不值得花”，不宣布哪篇工作的科学空间被关闭。E11 的 OpenMath 静态数据比较已起草但**未下载/运行**，因它仍不能测反馈决策，暂时不占 GPU。
+
+## 11. E12 跑前资源与父模型核对（2026-10-02）
+
+- 官方 Curation-Bench clone：`/home/xiang/.cache/research/data-centric-rsi/CurationBench`，SHA `24eea1526492c00cee421f5db0793789e00aabb2`。[论文 B.1/Table 10](https://arxiv.org/html/2606.04261v2) 链的 LLaVA init 是 `anonneuripsmail/llava-1.5-7b-init@5736a39125fce6ca4d4eb20033ca7c46895878ab`；源码 README/训练默认用 `llava-hf/llava-1.5-7b-hf@b234b804b114d9e37bb655e11cbbb5f5e971b7a9`。HF 三份 14.1GB shard 的 SHA 两组均不同。E12 以论文 init 显式指定路径，不把默认模型结果比到论文 28.8/31.9。
+- 自包含 `Ethlake/llava-665k@235a8adf266bb6dc02a099dc0221d28dec058f54` 为第三方 Arrow，58 文件合计 **93,424,292,235 bytes**，标称 665,298 例；原始 `liuhaotian/LLaVA-Instruct-150K@9d451dc7629cfe0469f6ae4432b765cd603d5fcb` 的混合 JSON 1,029,887,963 bytes。E12 需按 ID 核 ICONS/ARDS 映射；官方 `icons.py` 跳过无图原 JSON 行并用顺序 Arrow index，`ards.py` 用原 `global_id−1`，不保证与此 Arrow 行序一致。
+- fvcrc10 只读检查：根目录剩 **289GB**、RAM **503GiB**；GPU0/2/3 检查时空闲，随时复核，不保留卡位。E12 已跑前写卡并开始把公开 Arrow 下载到节点本地 `/var/tmp/xiang-data-rsi/e12/`；**截至本次记录没有 E12 训练或评估结果**。大文件不进 git，下载脚本见 [`scripts/e12_fetch.py`](scripts/e12_fetch.py)，具体下载时间/哈希完成后追加。

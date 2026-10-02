@@ -8,12 +8,12 @@
 | P02 SOAR | 真实学生收益奖励教师、promotion、fresh-student transfer、课程使用方式 | “用 accuracy 训练出题者”；“学得动但没用” | 不依赖完整昂贵 inner-loop 的可迁移教学决策；和强廉价基线比较全链路成本 |
 | P03 RSIBench-Data | 数据研究闭环、固定服务契约、迭代过程观察 | 只加 private split 或报告 best-of-n 上升 | 证明某种反馈/干预机制改善下一次数据动作，且改进器在新 episode 上也变好 |
 | P04 DataEnvGym | 学生 state、技能课程、生成 agent、更多数据/更多训练对照 | 给数据生成加错误报告；重复 with-state/no-state | 错误观察与有效训练动作间的缺失信息，以及受控干预如何弥补 |
-| P05 Curation-Bench | 程序化 curation、研究 scaffold、强 selector、跨模型/池迁移 | 给 agent 加反思/论文/RAG；仅换模型 | 在同类工具/预算下提高真实干预选择与外部训练收益 |
+| P05 Curation-Bench | 程序化 curation、研究 scaffold、强 selector、跨模型/池迁移；LLaVA 10k 的 LESS 33.6±0.3 与开放提示 agent 33.7±0.3 接近 | 给 agent 加反思/论文/RAG；仅换模型；只比 ICONS/ARDS 就称超越最强静态 | 在同类工具/预算下提高真实干预选择与外部训练收益；必须同成本比较 LESS、源均衡和公开 agent，并在不供搜索反馈的新 episode 测改进器 |
 | P06 ASP | 现实 anchors、防漂移、固定生成器、交叉配对 | “加真实数据”；画 generator×fixer 成功率 | 训练增益而非任务难度的跨状态变化；改善复用策略并保留部署效用 |
 | P07 SGS | 目标指导与 stepping-stone self-play | “生成目标题相关的练习” | 仅在正式补读方法后判断剩余空间；目前不以摘要判空白 |
 | P08 SEAL | 生成 self-edit，用实际适配效果更新生成策略 | 数据生成＋下游 reward 这一个组合 | 跨学生的更新策略积累及可信动作选择，而非单个实例适配 |
 | P09 SQLM | 简洁 self-questioning、冻结 proposer、更新频率 | 只改 teacher refresh rate | 刷新条件的结构与跨学习者可靠适配，超过固定频率和强静态课程 |
-| P10 AZR | 已接收主会；Python 执行验证开放式自生成代码任务，同时训练 proposer/solver；强 solver-only、去历史参考与任务类型消融 | 首次可验证自生成题、首次训练出题者、简单加复杂度/多样性奖励 | 若转向可执行任务，须量真实训练效用与 proposer 的成功率奖励之间何时存在**有后果**的决策差；控制强冻结/solver-only 基线、执行成本及新学生迁移 |
+| P10 AZR | 已接收主会；Python 执行验证开放式自生成代码任务，同时训练 proposer/solver；solver-only、去历史参考与任务类型消融。公开源码的 `train_propose=False` 仍以更新中的同一 actor 生成题，**并非冻结 proposer 权重** | 首次可验证自生成题、首次训练出题者、简单加复杂度/多样性奖励；把 solver-only 直接叫 frozen proposer | 若转向可执行任务，须量真实训练效用与 proposer 的成功率奖励之间何时存在**有后果**的决策差；区分 solver-only 与真正冻结生成器、控制执行成本及新学生迁移 |
 | P11 PopuLoRA | 群体 LoRA、cross-play、匹配、演化 | 首次研究共适应/群体/跨配对 | 可复用数据策略的实际训练价值和必要适配成本；总预算匹配而非只按 adapter |
 | P12 CurateEvo | 从失败轨迹演化数据代码 | “根据错误改写筛选程序” | 训练干预的可识别反馈与跨学生动作策略；全文实现补读后再收紧 |
 | P14 EEM | 经验库、条件化 lesson、targeted pilot | “先小实验再大实验”系统 | 以可测学习后果而非研究论文 rubric 评价；数据动作识别、干预预算与自然任务验证 |
@@ -31,6 +31,7 @@
 | P37 Montessori-Instruct | ICLR 2025 主会；用 student 一步更新后的 reference loss 配对，DPO 改 teacher 指令分布，10k 生成数据；含 GPT-4o/LLM2LLM/影响代理消融及四学生迁移 | “首次用真实训练响应更新生成教师”“首次合成数据跨学生可复用”或仅把 influence 换一个名字 | 如研究训练响应与开放式新数据行动，需证明局部 reference-loss 代理何时做错有后果的终端决策，再与它及强静态配方匹配全成本；该压力并未自动关闭母问题 |
 | P38 LALP / The Signal is in the Steps | ICML 2026 主会；多 teacher 长推理答案中 GRAPE 全局学生概率错排，局部步骤概率选择使 32B 七数学平均 0.632→0.726；单最佳 teacher 已达 0.719 | “首次发现全局自然性/训练 loss 对长推理答案效用失灵”，或再发明局部步骤打分 | 若转到答案动作，先与强 teacher-prior/长度匹配/分层选择对照，测新增终端效用与分割成本；E10 的单答案金标题目选择是不同设定，不能从论文直接推结论 |
 | P39 OpenMathInstruct-2 | ICLR 2025 主会；405B 开源 teacher、短解格式、数据质量/题目多样性消融；14M 静态数学题解对，匹配 256k 样本时 unique question 从 1k→6.5k 提高约 10.5pp | “首次发现题多样性重要”“过滤正确性不等于训练效用”，或把 E10 小预算反例当推翻其大规模结论 | 借其公开数据建立强合成静态/不同数据动作基线，并查我们自建 dev 污染；只有动态决策在同成本下创造额外终端收益，才有超出强静态语料的科学空间 |
+| P40 DUET | ICLR 2026 主会；同父模型多轮重训、用目标任务粗反馈驱动 GP/BO 调固定域比例，域内 IF/LESS/随机选样；九训练域、Llama3-8B/Qwen2.5-7B、多目标，论文 §6.1 先 50 次随机 warm-start 再 10 轮 BO | “首次把下游训练反馈用于数据混合”“首次用 BO 策展”、把静态混合当唯一非 agent 对手，或只计 10 次 BO 成本 | 在相同总训练评估预算下，若开放式/可验证数据动作的价值不能被强比例 BO＋域内选择吸收，再解释**什么反馈决定策略家族切换**以及跨新 episode 减少搜索成本；不因强近邻关题 |
 | P19/P27 | 代理模型配比、其他自适应混合 | 换个 metric 名字当数据价值理论 | 选定具体动作空间后补齐对应方法实现，并报告何处已有方法已经足够 |
 
 ## 三个最危险的 compression risk

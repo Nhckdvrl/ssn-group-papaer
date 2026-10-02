@@ -1,0 +1,25 @@
+{
+  "first_shard_only": true,
+  "source_json_sha256": "ce959ce6e23073ee1cd1a8a2ef1c633768c10d4174327b8b2dc7113b91af6cf8",
+  "source_arrow_path": "/var/tmp/xiang-data-rsi/e12/llava_arrow",
+  "original_rows": 665298,
+  "arrow_rows": 12321,
+  "original_unique_ids": 389722,
+  "arrow_unique_ids": 12321,
+  "same_id_multiset": null,
+  "same_position_count": 12321,
+  "same_position_fraction": 1.0,
+  "same_position_conversation_count": 12321,
+  "same_position_conversation_fraction": 1.0,
+  "first_position_mismatches": [],
+  "arrow_subsets": {
+    "coco": 12321
+  },
+  "columns": [
+    "id",
+    "subset",
+    "images",
+    "texts"
+  ],
+  "features": "id: string\nsubset: string\nimages: struct<bytes: binary, path: string>\n  child 0, bytes: binary\n  child 1, path: string\ntexts: list<item: struct<user: string, assistant: string>>\n  child 0, item: struct<user: string, assistant: string>\n      child 0, user: string\n      child 1, assistant: string\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"id\": {\"dtype\": \"string\", \"_type\": \"' + 229"
+}
