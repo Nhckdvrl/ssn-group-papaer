@@ -1,6 +1,6 @@
 # E34 — Does the Flan QA-format switch replicate on an independently constructed dataset (PopQA counterfactuals)?（2026-10-03）
 
-- **状态：** REGISTERED（判据提交于计算之前）
+- **状态：** DONE（2026-10-03；复现）
 - **类型：** PILOT（数据集推广；C04 目前只在 ParaConflict 上）
 - **对应：** C04、E26；PopQA（Mallen et al. ACL 2023：16 种关系、自然问句、实体流行度）；Xie et al. 2023；Du et al. ACL 2024
 - **阳性对照：** 已知条目上 clean 记忆边际 > 0（定义上）；6 个 Flan 对模型在 decl 单元的采信率 > 50%（单句陈述足以让多数条目被采信，否则构造过弱）
@@ -18,3 +18,13 @@
 - FE = qa − decl；Δ_FE = mean_Flan − mean_noFlan。
 - **复现：** Δ_FE > 2·SE，且 |Δ_decl| < Δ_FE / 2。
 - 不复现 → C04 限定为 ParaConflict 上的结果，如实报告。
+
+---
+## 结果（`results/e34/analysis.json`；2284 条构造，共同已知 1299 条；2026-10-03 07:15）
+| 量 | Flan | no-Flan | Δ | SE |
+|---|---|---|---|---|
+| **FE（qa − decl）** | 3.51 | 1.60 | **+1.91** | 0.56 |
+| decl | 8.43 | 8.70 | −0.27 | 0.27 |
+| qa | 11.94 | 10.30 | +1.64 | 0.66 |
+- 阳性对照 ✓（6 个模型 decl 采信率 95.6%–97.7% > 50%）。**判定：复现**（Δ_FE > 2·SE 且 |Δ_decl| < Δ_FE/2）。C04 不限于 ParaConflict 构造。
+- 注：PopQA 上采信率接近天花板（decl 96–98%，qa 95–100%），连续边际是必要读数。
