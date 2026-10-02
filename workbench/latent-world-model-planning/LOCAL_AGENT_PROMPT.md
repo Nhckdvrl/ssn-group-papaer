@@ -50,12 +50,13 @@ python3 tools/process/check.py
 
 ERROR 先修；WARN 理解后处理。不要为清 warning 机械修改科研内容。
 
-## 两个 TD-JEPA 必须分清
+## 三个容易混名的 JEPA 必须分清
 
 - **Bagatella et al. TD-JEPA**, ICLR 2026 Oral, `facebookresearch/td_jepa`：zero-shot RL / successor features / implicit long-horizon predictive representation。
 - **Bai & Xiong Temporal-Distance JEPA**, arXiv 2607.25337, `HKBU-KnowComp/Temporal-Distance-JEPA`：LeWM/CEM planning，trajectory temporal distance + heuristic negatives。
+- **D-JEPA: A Decision-Aligned Latent World Model**, arXiv 2609.24749：candidate-local ordinal decision alignment，又是另一条线。
 
-后者历史 config 仍叫 `td_jepa`。任何实验、日志和 checkpoint 都写作者/全名，禁止混淆。
+Temporal-Distance repo历史 config 仍叫 `td_jepa`。跨repo manifest只用 `bagatella_td_jepa` / `temporal_distance_jepa` / `decision_aligned_d_jepa`，禁止裸 acronym 聚合。
 
 # 1. 先继承 problem map，不重新 brainstorm
 
@@ -180,9 +181,10 @@ native result 与 common audit result分开。
 首轮只 2–3 种。
 
 环境 dynamics不变。尽量匹配：
--样本量
+- 样本量
 - state coverage
 - action coverage
+- **conditional action excitation / local action covariance（P94 control）**
 - local transition support
 - start/goal distribution
 
