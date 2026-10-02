@@ -45,3 +45,5 @@ P05/Curation-Bench已做同配比不同draw，P04/DataEnvGym已比新数据和�
 - 六支真实效用及最终失败成本：待运行完成。
 - 主张变化：C01–C04 L0；不能从规划升级。
 - POST-HOC分析：尚无。
+
+- **评价接续修正（17:42UTC，尚无任何效用评分）**：保持原八任务/学生与judge/checkpoint/训练终点不变，新增冻结v2 SHA04bb287c…只改两个工程contract：现成E12 judge实际build`0.23.0+cu129`不能与base`0.23.0`直接等号；18A100h总cap按六条queue wrapper含前检计。旧waiting-only driver/PID320801/state/日志保留，按同秒launchUTC/精确cmd/当前ticks确认所有权后仅TERM自有等待进程；新fvcrc10 PID330492/ticks1481834526在`eval_batch_v2`等待全部六成功终点。原script不改、训练不打断、judge未启；[probe](../results/E13_eval_v2_readonly_probes.json)与[新启动溯源](../results/E13_eval_v2_launch_provenance.json)记录身份及旧launch未保存ticks的局限。13没有现成evalenv/八TSV，沿用10路线，不搭第三环境。
