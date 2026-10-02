@@ -86,4 +86,20 @@ P01 的发布权重不是完整训练状态：若做后续训练，明确是新 
 - prompt、全部 raw、包括截断的记录、严格 manifest、GPU 型号及启动时 git SHA 留在 `/home/xiang/.cache/research/data-centric-rsi/runs/e09/`；执行脚本和审计脚本在 [`scripts/`](scripts/)，小结果在 [`results/E09_teacher_gate_audit.json`](results/E09_teacher_gate_audit.json)。原始生成脚本 SHA256 `bd3e1e87e3d74ee5729ab0f1dde7f5fe6876c63a541cc86e3f377710f70f6507`，事后审计不改原始 raw。
 - 20 次占用 0.488 A100·时，其中冷加载约 10.7 分钟；生成 39,398 token。预注册严格数组格式只有 1/20 通过；允许单对象的事后诊断也仅 16/20 可解析，完整可训练题解 13/20。没有学生训练 checkpoint。详情与不扩张决定见 [E09](experiments/E09-qwen3-teacher-substrate-gate.md)。
 
+## 9. E10 强静态状态资格门
+
+- 数据选择脚本、固定输入哈希/960 ID 清单见 [`scripts/e10_prepare.py`](scripts/e10_prepare.py) 和 [`results/E10_data_manifest.json`](results/E10_data_manifest.json)；960 条 JSONL 与 adapter/全 dev 预测/训练日志保存在 `/home/xiang/.cache/research/data-centric-rsi/data/static_960_e10.jsonl`、`/home/xiang/.cache/research/data-centric-rsi/runs/e10/`。其数据 SHA256 为 `36f0338d996d2b66fee86ce6b50e4e663726a346197f1cbbbeb777908090d208`，重建时用 `source scripts/env.sh` 的 venv 和卡上命令，不覆盖已有资产。
+- 三次评估均为 fvcrc10 A100 GPU0、同一 dev1740、同一 zero-shot＋显式格式/eager/V1 multiprocessing=0；结果在 [`results/E10_state_gate_analysis.json`](results/E10_state_gate_analysis.json)。960 独立训练 3 epoch/180 step、215,214 监督 token/epoch，训练与三次评估合计约 **0.337 A100·时**、API 0；更多数据和更多优化同时变化，不是论文 DataEnvGym 生成反馈或 E00 的精确重复。`static960` 不满足本卡预设的“更强且动作不同”资格门，故保留旧静态120作当前简单基线，不沿这一词面动作扩训练矩阵。
+
 AZR 的固定 `paper` 分支源码另缓存在 `/home/xiang/.cache/research/data-centric-rsi/AZR`，SHA `41ed983cdf541cfcd2f963f33c055d50074f3c90`，重建可 `git clone --branch paper https://github.com/LeapLabTHU/Absolute-Zero-Reasoner.git` 后 checkout 该 SHA。仅审计关键入口，未执行：其 README 要求 7B 4×80GB，论文说每次 3–5 天 A800；自带 Python executor 直接执行候选代码且 README 标注不安全。若后续借验证任务，必须先用隔离执行环境并另开资源 gate，不将此克隆称为完成 AZR baseline。
+
+## 10. E00–E10 后的针对性 substrate 审计（只读，无新 GPU）
+
+| 候选 | 真实行动/反馈路径 | 当前确定的边界 | 研究用途判断 |
+|---|---|---|---|
+| DataEnvGym code，固定源码 `f698f39` | LiveCodeBench 学生错误→GPT-4o 生成新题→另一次模型调用解答→SFT→LCB 学生评估 | `code/baselines/open_ended.py` 的新训练题路径直接 `render_data_spec`，未见运行/测试新答案；`examples/livecodebench/open_ended.py` 为 8 GPU/5轮；评测学生代码的测试不验证新监督 | 与已建 MATH 资产共享框架，但可信生成数据仍是缺口，不能直接称“可验证代码行动” |
+| SQLM code，官方源码 `fe1dd02ecf4ab4f3c398acd186c6caaa970cbd58` | proposer 给题和测试输出→solver rollout→SandboxFusion 评分→proposer/solver 更新 | `ray_trainer.py` 将 proposer 自给测试当 solver ground truth；`coding_selfplay.yaml` 为 4 GPU、tensor parallel4、依赖本地 SandboxFusion 服务；内部奖励并非独立真值 | 真正动态自博弈近邻，但大改小预算训练会偏离原论文；需先核测试可靠性与固定 proposer 强对照 |
+| Curation-Bench，官方 README 2026-10-02 只读 | agent 提交固定池子集→冻结 SFT→八项 VLM 评价反馈 | 官方硬件前提 ≥1TB 磁盘；主要是固定池策展而非可生成验证题；当前未克隆源码/适配弱 I/O | 数据研究 agent 近邻和后续验证平台，不作轻量生成闭环的默认首跑 |
+| AZR coder3b，固定 `paper` SHA `41ed983` | proposer 给 Python 程序/输入等→执行得目标→solver rollout 与 proposer reward→联合更新 | 仓库有两份各256行的 3B coder seed 数据；`scripts/selfplay/coder3b.sh` 为**单节点2×80GB**、vLLM TP2、长序列和30 epoch；原执行器运行模型生成代码，当前未隔离；3B 的终端强静态/冻结 proposer 对照尚未复核 | 目前最接近“独立可验证生成动作＋可在单节点运行”的候选，但不是已就绪 baseline；先核完整实验和隔离成本，不在共享节点直接执行原脚本 |
+
+这张表回答的是“下一份实际训练值不值得花”，不宣布哪篇工作的科学空间被关闭。E11 的 OpenMath 静态数据比较已起草但**未下载/运行**，因它仍不能测反馈决策，暂时不占 GPU。

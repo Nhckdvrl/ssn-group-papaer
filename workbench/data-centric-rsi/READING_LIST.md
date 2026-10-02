@@ -30,6 +30,10 @@
 | P33 | Group-MATES，NeurIPS 2025 main；2502.14709v2 | D（方法、22 项主实验、消融与成本附录；源码入口，未复现） | [会议](https://proceedings.neurips.cc/paper_files/paper/2025/hash/e389ad5c08184ebecaf0640e01588489-Abstract-Conference.html)；[全文](https://arxiv.org/html/2502.14709)；关系影响模型＋训练轨迹＋两阶段选择 |
 | P34 | BLISS，ICML 2026 main；2510.06048v5 | D（方法、主表、关键附录；源码入口，未复现） | [会议](https://proceedings.mlr.press/v306/hao26b.html)；[全文](https://arxiv.org/html/2510.06048)；多步 bilevel proxy、动态评分、强 MATES 对照与实际 wall/显存成本 |
 | P35 | PDS / Data Selection via Optimal Control，ICLR 2025 main；2410.07064 | D（全文方法、related work、主表、动态信息/G/E 附录；官方代码入口，未复现） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/9ad4891facabf17aa11580686bacfe4e-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.07064)；多阶段代理求分、可复用静态选样与实际求分成本 |
+| P36 | Learning at the Right Pace / ADS，2606.22305v1；预印本 | D（全文方法、related work、主表、消融与成本/限制附录；代码入口，未复现） | [全文](https://arxiv.org/html/2606.22305)；[代码](https://github.com/Richard-zrx/ADS)；GRPO 中语义群×能力边界在线排程，强 DOTS+RR 对照 |
+| P37 | Montessori-Instruct，ICLR 2025 main；2410.14208v1 | D（全文方法、related work、主表、teacher/学生消融、迁移与成本附录；代码入口，未复现） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/ba1d33849b963efc6b5d3082ad68f480-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.14208)；局部 student influence→teacher DPO→跨学生数据迁移 |
+| P38 | The Signal is in the Steps / LALP，ICML 2026 main；2510.03988v2 | D（全文方法、related work、主表、B/C 附录与主要混杂；代码入口，未复现） | [会议](https://proceedings.mlr.press/v306/just26a.html)；[全文](https://arxiv.org/html/2510.03988)；混合长推理 teacher 中局部概率选答案，需注意 teacher-mixture 控制 |
+| P39 | OpenMathInstruct-2，ICLR 2025 main；2410.01560v2 | D（全文、A–C 附录、发布数据字段；NeMo Skills 内部尚未审计） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/302ce0673c00aee2cf84bb43d0117553-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.01560)；[数据](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2)；强 teacher、解答格式、题目多样性与过滤的真实 SFT 对照 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
@@ -50,7 +54,7 @@
 ## 最新入口与本轮未解决的阅读债务
 
 - P32 已从官方 arXiv 全文核实；若发展 group-interaction 叙事，先明确与其一次组更新及 GMRel/GREATS 的增量，不把它的存在当自动判死。
-- `Learning at the Right Pace` / 2606.22305、`Gap-Adaptive Teacher Scheduling` / 2609.37898：只发现入口，暂不据此写方法事实。
+- `Gap-Adaptive Teacher Scheduling` / 2609.37898：只发现入口，暂不据此写方法事实。
 - CurateEvo、SGS 的全套方法和训练代码仍需补读，再决定哪一套值得做正式 method baseline；AZR 本轮已深读并审固定源码入口，但未复现。
 - P20/P22/P27 的方法及强实现、P21/LESS 的官方代码执行路径，必须在把它们当正式数据价值估计 baseline 前补齐。官方会议元数据与论文深读不等于 baseline 复现。
 - 为候选阶段补齐近期接收论文、公开评审和 venue corpus 的系统审计；本轮没有完成“最近十篇接收论文全部全文＋公开评审”的 D5 标准。
