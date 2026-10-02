@@ -6,14 +6,20 @@
 
 ## 0. 现在真正要挖什么
 
-工作台不再从“prediction ≠ planning”开始。文献与代码 hardening 后：
+**以 [RESEARCH_MINES](RESEARCH_MINES.md) 为科学 authority。** 当前不是围绕一个 loss 做局部优化，而是同时保留三个 problem-led pressure regions：
 
-1. **I06 Semantic negatives vs geometric regularization — 第一优先**
-2. **I03 bottleneck relocation / regime law — 第二优先**
-3. I04 decision-alignment — measurement calibration
-4. I01 / I02 / I05 — PARKED
+1. **M1 / I07 — Observable goal ≠ control state**：partial observability / observation aliasing 什么时候真正改变 action choice，point/history latent 什么时候不够，belief 什么时候 load-bearing。
+2. **M2 / I08 — Explicit rollout vs implicit predictive abstraction**：predictive computation 应放在 train-time amortized representation/policy，还是 test-time explicit rollout/search；寻找可预测的 regime boundary，而非排行榜。
+3. **M3 / I09 — Behavior trajectories ≠ environment controllability**：planning-aware supervision 是否把 behavior-policy geometry 写进 deployed planning semantics。
+4. **I06** 降为 M3 的低成本 sampler/negative-role 子诊断；**I03** 是所有 mine 共用的 oracle bottleneck tool，不先当论文。
 
-I01 原 E03/E04 已在运行前 VOID：代码审计发现 pinned TD-JEPA/RC-aux 的主要 temporal supervision只读 short windows；若完整 short-window manifest不变，只改更长 episode factorization，loss基本看不到 treatment。
+旧 I01 原 E03/E04 仍保持 VOID：它只改变 long-episode factorization而不改变 pinned methods实际读取的 short-window supervision，treatment结构上不可见。
+
+第一轮资源分配按 **information gain / cost**：
+- E11（M1）与 E14（M3）优先做 problem-existence intervention；
+- E08 可并行作为 M3 cheap diagnostic；
+- E13（M2）在 common substrate 稳定后启动 matched pilot；
+- 哪一条先出现 natural failure + decision consequence + clean intervention leverage，再集中多卡扩展。
 
 ---
 
@@ -24,10 +30,11 @@ I01 原 E03/E04 已在运行前 VOID：代码审计发现 pinned TD-JEPA/RC-aux 
 首轮只装必要对象：
 
 - **LeWM**：TwoRoom smoke + PushT/Cube至少一项正式 reproduction。
-- **TD-JEPA**：I06核心；official repo已核对，且同repo已有 LeWM / RC-aux variants、locked manifests。
+- **Bai/Xiong Temporal-Distance JEPA**：M3/I06直接对象；official repo已核对，且同repo已有 LeWM / RC-aux variants、locked manifests。注意它不是 Bagatella ICLR'26 TD-JEPA。
 - **RC-aux**：I06第二个 semantic-negative objective；official repo main已宣布 NeurIPS 2026 acceptance，本 workbench代码复现仍用 ASSETS pin。
 - **一个 local-geometry control**：I06机制通过后，优先 Temporal Straightening / CGS其一。
-- DINO-WM / JEPA-WM / PLDM 按 I03需要接入。
+- **Bagatella TD-JEPA (ICLR'26 Oral)**：M2 implicit-side核心资产；与 Temporal-Distance JEPA 名称严格分开。
+- DINO-WM / JEPA-WM / PLDM 按 M2/I03需要接入；UWM-JEPA等只在 M1 gate通过后接。
 
 不要首轮装 SALT、AD-WM、Traj-LeWM、IMWM、SAGE、HWM、CompACT 全家桶。
 

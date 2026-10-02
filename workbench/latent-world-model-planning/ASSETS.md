@@ -142,3 +142,18 @@ RC-aux 论文使用的 GPU 名称写作“RTX A6000 Ada”，名称本身不够�
 GPU 时间、CPU 时间、模型打分调用数和真实环境步数分别记；规划 horizon、action repeat 和 replanning interval 要一起报告。
 
 扩大并发前，在同一节点从 1 个任务到少量任务测一次 I/O 与 CPU 退化。若数据加载卡住，先修存储／缓存，不要用更多 GPU 隐藏单任务失效；没有必要因 I/O 暂时差就判断科学问题不可做。
+
+## 7. Problem-led新增资产（2026-10-02）
+
+| mine | 资产 | 固定 revision | 当前核对 | 备注 |
+|---|---|---|---|---|
+| M2 implicit | [facebookresearch/td_jepa](https://github.com/facebookresearch/td_jepa) | `840a745455a124f04a58ae7ee31d7d5054e381f5` | repo / main ref / supported ExORL+OGBench state+RGB 已核对 | **Bagatella TD-JEPA, ICLR'26 Oral**；不要与 Bai/Xiong Temporal-Distance JEPA 混名 |
+| M1 belief diagnostic | [santoshkumarradha/uwm-jepa](https://github.com/santoshkumarradha/uwm-jepa) | `1ef57359fac031f725632c13668db4868d63459b` | repo / main ref 已核对 | hidden-velocity controlled baseline；不是现成 image-goal MPC solution |
+| M1 structured memory | Flow Equivariant World Models | 首次 manuscript-critical 接入时再锁 | ICML'26 proceedings/project存在 | 不首轮安装；E11过gate再判断 |
+| M1 typed state | FIRM-WM | release需再审 | paper定位已进P62 | 强 collision；优先复用作者release，不自行“复刻一个FIRM-like”冒充baseline |
+
+### 命名规范
+
+- `bagatella_td_jepa` = P65 ICLR'26 zero-shot RL / successor-feature方法。
+- `temporal_distance_jepa` = P14 Bai/Xiong 2607.25337 plan-aware temporal-distance方法。
+- 后者repo内部历史 config可继续叫 `td_jepa`，但实验 manifest 增加 `paper_identity` 字段，避免跨repo聚合混淆。

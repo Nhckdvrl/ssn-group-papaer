@@ -1,6 +1,6 @@
 # I03：Latent-planning bottleneck relocation / regime law（2026-10-02）
 
-- **状态：** SEED / second-priority mining lane
+- **状态：** SEED / common oracle & conditional independent mine
 - **来源：** 近邻之间并不是一个简单“谁对谁错”的关系：
   - Temporal Straightening / CGS / DA-LeWM / Objective Bottleneck → metric/geometry；
   - SALT / Bilinear WM / one-step-not-a-WM → rollout/dynamics；
@@ -8,7 +8,7 @@
   - IMWM / SAGE / LeFlow / parallel gradient planners → proposal/search；
   - Hidden Failure Modes → H/K/scoring-index / controllability interface；
   - Planning Limits / Anchored Planning / HWM → goal distance / temporal target。
-- **研究动作：** oracle decomposition + design-space factorization + regime scan + success/failure case解剖。
+- **研究动作：** oracle decomposition + design-space factorization + regime scan + success/failure case解剖。**默认角色是给 M1–M3 定位 bottleneck，不先假定自己是一篇 paper。** 只有形成跨任务 predictive regime law 才独立升级。
 
 ## 如果为真
 

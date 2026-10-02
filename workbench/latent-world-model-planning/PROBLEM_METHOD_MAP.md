@@ -24,7 +24,7 @@ L6  selected action → real environment utility
 ### L0 — Data / supervision semantics
 **问题：** dataset metadata提供的是 observed trajectory facts，还是 environment controllability facts？  
 变量：episode membership、temporal gap、cross-batch negatives、behavior optimality、local transition support、goal source。  
-近邻：PLDM、OGBench、QRL/quasimetric、CGCIVL、RC-aux、TD-JEPA、Traj-LeWM。
+近邻：PLDM、OGBench、QRL/quasimetric、CGCIVL、RC-aux、Bai/Xiong Temporal-Distance JEPA、Traj-LeWM。
 
 ### L1 — Representation
 **问题：** state/action/task信息有没有保留；regularizer本身塑造了什么geometry；信息“存在”是否可由planner消费？  
@@ -36,7 +36,7 @@ L6  selected action → real environment utility
 
 ### L3 — Planning metric / objective
 **问题：** planner用的cost能否对当前candidate distribution正确排序？  
-近邻：Temporal Straightening、CGS、DA-LeWM、Objective Is the Bottleneck、RC-aux、TD-JEPA、Traj-LeWM、LEAP、Anchored Planning。
+近邻：Temporal Straightening、CGS、DA-LeWM、Objective Is the Bottleneck、RC-aux、Bai/Xiong Temporal-Distance JEPA、Traj-LeWM、LEAP、Anchored Planning。
 
 ### L4 — Proposal / optimizer / verification
 **问题：** good plan有没有进candidate set；finite-budget search能否找到；optimizer是否query model在fidelity低的区域；verifier是否真对应environment executability？  
@@ -71,7 +71,8 @@ L6  selected action → real environment utility
 | ALeWM |  | ● | ● |  |  | ● | adaptive latent capacity |
 | DA-LeWM |  | ● | ● | ● | ● |  | Plan-Real / CEM-stage alignment |
 | RC-aux | ● | ● | ● | ● | △ | ● | finite-budget trajectory-derived reachability |
-| TD-JEPA | ● | ● | ● | ● | △ | ● | trajectory-derived temporal cost + heuristic negatives |
+| Bai/Xiong Temporal-Distance JEPA | ● | ● | ● | ● | △ | ● | trajectory-derived temporal cost + heuristic negatives |
+| Bagatella TD-JEPA | ● | ● | implicit | reward/query | policy | ● | successor-feature / implicit long-horizon predictive abstraction |
 | Traj-LeWM | ● | ● | △ | ● | ● | ● | full-path preference / failure mining |
 | Fast/VLWM |  |  | ● |  |  | ● | direct/variable-horizon prediction |
 | Flow-JEPA |  |  | ● |  |  | ● | stochastic whole-trajectory prediction |
@@ -191,10 +192,10 @@ goal distance、candidate dimension、search budget一起变；Planning Limits/S
 - data semantics × planner objective
 
 ### 当前优先
-1. **I06 semantic negatives vs geometric regularization**
-2. **I03 bottleneck regime law**
-3. I04 measurement calibration
-4. I01 / I02 / I05 PARKED
+1. **M1 / I07 observable-goal vs control-belief**
+2. **M2 / I08 explicit↔implicit predictive abstraction**
+3. **M3 / I09 behavior→controllability semantics**
+4. I06 = M3 subdiagnostic；I03 = common oracle/regime tool；I01/I02 parked；I05 generic form superseded by I07
 
 ---
 
@@ -286,3 +287,102 @@ M  mixed/unidentifiable
 - validated identification protocol，能改变method design。
 
 普通 leaderboard、更多seed、更多benchmark、单相关性、单个false-negative rate都不是终点。
+
+## 10. Problem-led overlay：component map 之上的三个母问题
+
+七层链回答“失败在哪一层”；它本身**不是选题**。当前用三个更高层的 problem 来决定为什么值得测这些层。
+
+### M1 — State-definition problem
+
+```text
+observation / goal image
+        ↓
+goal-comparable state
+        ≠
+control-sufficient hidden belief
+        ↓
+candidate action consequence
+```
+
+负载变量：
+- observation aliasing；
+- hidden velocity / contact / friction / regime；
+- history informativeness；
+- uncertainty multimodality；
+- recovery delay。
+
+直接邻居：FIRM-WM、UWM-JEPA、Flow Equivariant WM、I-TAP、UAI selection theorem。
+
+**scientific endpoint:** 什么信息/不确定性必须进入 planning state，才能避免真实 decision regret？
+
+### M2 — Predictive-computation placement problem
+
+```text
+offline reward-free data
+   ├─ explicit dynamics → counterfactual rollout → test-time search
+   ├─ implicit long-horizon predictive representation/policy → amortized decision
+   └─ hybrid
+```
+
+负载变量：
+- task/reward redefinition；
+- counterfactual query flexibility；
+- horizon；
+- environment shift；
+- train vs deployment compute；
+- data coverage。
+
+直接邻居：P09 JEPA-WMs、P65 Bagatella TD-JEPA、TD-MPC2、GC-IDM/LeFlow/RP1/HWM。
+
+**scientific endpoint:** 能否得到可预测的 regime frontier，而不是“哪篇论文分高”。
+
+### M3 — Identification problem
+
+```text
+environment controllability
+        ↓?  (not guaranteed)
+behavior trajectories / episode metadata
+        ↓
+planning-aware supervision
+        ↓
+latent metric / reachability / representation
+        ↓
+MPC decision
+```
+
+负载变量：
+- behavior optimality / route bias；
+- multi-route coverage；
+- loop/detour frequency；
+- local transition support；
+- cross-trajectory sampling。
+
+直接邻居：RC-aux、Temporal-Distance JEPA、QRL/multistep quasimetric、CGCIVL、PLDM、P69 monotone-cost work。
+
+**scientific endpoint:** trajectory-derived semantics什么时候identifiable为environment control structure；不满足时如何最小修复？
+
+### Actionable gate
+
+M1–M3 的所有 probe 最后必须经过 L6：
+
+```text
+internal difference
+   ↓
+candidate rank / regret
+   ↓
+selected action
+   ↓
+closed-loop environment utility
+```
+
+如果链在前两步断掉，它是有用diagnostic，不是论文母问题。
+
+### 当前执行映射
+
+| mine | existence test | conditional mechanism/method |
+|---|---|---|
+| M1 / I07 | E11 | E12 |
+| M2 / I08 | E13 | hold-out regime confirmation / hybrid only after law |
+| M3 / I09 | E14 + E08 subaudit | E15；I06 E09/E10按证据触发 |
+| common | E02 / E06 oracle ladder | E07 only if predictive regime law |
+
