@@ -252,12 +252,16 @@ TD-MPC2 等 policy/value + short model search。
 
 ## 当前最重要的 unresolved question
 
-P09 TMLR 已明确指出 explicit / implicit 的 trade-off：
+先明确一个强 collision：**PLDM (P02) 已经做过 explicit latent planning vs 多种 GCRL/model-free 方法的系统 comparative science**，覆盖 data quality、trajectory length/stitching、dataset size、random-policy data、new task/layout 和 inference time；P96 更早已经研究 MPC + policy proposal / planner amortization。
+
+所以“什么时候 planning 比 policy 好”不是剩余问题。
+
+P09 TMLR 进一步明确指出 explicit / implicit predictive-model 的 trade-off：
 - explicit：training较轻、task-agnostic、可hardcode arbitrary cost / supplied action；test-time iterative planning贵；
 - implicit：training重，把predictive structure摊入representation/policy；test-time快，但 objective / policy-family/generalization有边界；
 - hybrid介于两者。
 
-**目前没有一个足够清楚的 empirical regime map。**
+**真正还缺的是 predictive-object-level regime map，而不是 model-based-vs-model-free 表格。**
 
 所以 M2不是“比较两个模型”，而是研究：
 
@@ -268,7 +272,7 @@ task/query flexibility
 × data coverage
 × train compute
 × inference budget
-→ optimal location of predictive/planning computation?
+→ which predictive object / computation placement is sufficient?
 ```
 
 ## 资源适配
@@ -289,6 +293,7 @@ task/query flexibility
 - **Controlled-WM Identifiability (P94)**：behavior policy 的 conditional action excitation 决定受控 transition 是否可识别，并直接影响 counterfactual reachable set 与 planning。
 - OGBench：专门分开 stitching / long horizon / stochasticity。
 - Quasimetric GCRL：behavior future statistics与optimal goal distance不等价。
+- **IEL / Hitting-Time Isomorphism (P95)**：已经显式回归 behavior trajectory 的 hitting-time gaps，并把 trajectory-label mismatch纳入理论；因此 directed hitting-time / expectile / quasimetric correction本身也不是M3的新方法空间。
 - Multistep Quasimetric：local Bellman optimality与global Monte-Carlo stability张力。
 - CGCIVL：cross-trajectory pair不能只凭trajectory identity判connected。
 - RC-aux：论文自己把trajectory offset称 empirical finite-budget proxy。
@@ -319,7 +324,9 @@ behavior policy同时改变：
 
 所以必须用 matched/weighted support metrics与non-temporal LeWM control，不能看到分数变就归因“behavior geometry”。**尤其要控制 conditional action excitation；否则 P94 已经提供更直接解释。**
 
-M3 剩下的真正空间因此被压得更干净：**当 one-step transition / action-effect identifiability 已经相近时，higher-order trajectory order/gap 监督是否仍产生 behavior-route imprint？**
+M3 剩下的真正空间因此被压得更干净：**当 one-step transition / action-effect identifiability 已经相近时，higher-order trajectory order/gap 监督是否仍产生 behavior-route imprint，并通过 visual latent-WM planner 改变 fixed-candidate decision？**
+
+最强 isolation 是 **transition-equivalent / trajectory-different**：one-step transition bag与 conditional action excitation尽量固定，但 short-window temporal pair/gap distribution不同。若 plain LeWM稳定、trajectory-semantic auxiliary漂移，才能把问题从普通coverage提升为新的 global planning-semantic identification pressure。
 
 ## 资源适配
 
@@ -424,7 +431,7 @@ PLDM / offline MBRL：uncertainty / OOD support。
 | search/proposal | high | **very high** | high | high | baseline |
 | long horizon/hierarchy | high | **very high** | high | high | regime variable |
 | POMDP/history | very high | high | very high | high | **M1 conditional** |
-| behavior→controllability identification | high | medium-high after P94 | **very high** | **very high** | **M3 primary but sharpened** |
+| behavior→controllability identification | high | **high after P94/P95** | **very high** | **very high** | **M3 primary, narrow exact delta** |
 | explicit↔implicit predictive computation | very high | medium | high | medium-high | **M2 primary** |
 | query generality/reuse | very high | high after P38/WorldTest | high | high | WATCH/stress |
 | test-time adaptation | high | **high** | high | high | baseline/WATCH |
@@ -449,8 +456,8 @@ PLDM / offline MBRL：uncertainty / OOD support。
 - 资源极匹配；
 - 结果为正/负都能快速改变后续研究方向。
 
-**最大风险：** 被coverage shift解释。  
-所以 E14 的价值完全取决于 support matching/audit。
+**最大风险：** 被普通 coverage / P94 conditional action excitation / P95 hitting-time prior art吸收。  
+所以 E14 的价值完全取决于 support+excitation matching，以及是否能在 transition-equivalent / trajectory-different control 中留下 decision-level residual effect。
 
 ### M2 / I08 — explicit ↔ implicit predictive computation frontier
 **为什么留下：**
@@ -459,8 +466,8 @@ PLDM / offline MBRL：uncertainty / OOD support。
 - 对“world model究竟应该是什么”有母问题尺度；
 - 结果如果形成 regime law，不是小trick。
 
-**最大风险：** native protocol apples-to-oranges。  
-因此必须先做小 matched study，不一开始大矩阵。
+**最大风险：** native protocol apples-to-oranges + **PLDM 已经做过 broad method-selection study**。  
+因此必须先做小 matched study，把 explanatory variable压到 predictive object，并用 task/query information budget + hold-out regime prediction超过 PLDM。
 
 ## Tier B — cheap proof-of-problem, then decide
 

@@ -89,9 +89,8 @@ M3 真正想留下的 residual question 是：
 3. propensity / density reweighting；
 4. 若仍严重不重叠，诚实标为 broad distribution shift，不给 behavior-semantic causal claim。
 
-### 更强的 matched variant（若可行）
-从相同 primitive/local-transition pool 构造不同 multi-step route frequency，使 one-step marginals尽量接近、higher-order co-occurrence / temporal gap不同。  
-**不要**为了追求形式完美，重新造一个与现实 planner不兼容的 toy MDP；先用真实 benchmark 找信号。
+### 更强的 matched variant
+具体升级为上面的 **Stage B2 transition-bag matched trajectory composition**。优先使用真实 TwoRoom/PointMaze-like env 的合法 route/cycle segments；不为了数学完美造与实际 latent planner脱节的离散 toy。
 
 ## Methods
 
@@ -158,6 +157,7 @@ M3 真正想留下的 residual question 是：
 
 - **G0:** training supervision实际因 behavior treatment而变化；否则设计无效。
 - **G1:** state/action/local-transition support **以及 conditional action excitation** overlap可接受；否则只作distribution-shift / identifiability记录。
+- **G1b（strong identification）:** 若 Stage B2可构造，one-step transition-bag discrepancy接近噪声地板，但 temporal pair/gap distribution显著不同。
 - **G2:** learned planning semantics在 DIRECT/DETOUR 间系统变化。
 - **G3:** fixed-candidate rank/regret或selected action出现稳定变化。
 - **G4:** closed-loop consequence成立。

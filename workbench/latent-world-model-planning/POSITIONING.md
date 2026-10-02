@@ -75,6 +75,9 @@
 | FF-JEPA | action-free latent subgoal planner for long horizon | “learn latent subgoal planner” |
 | Behavior-Invariant Task Rep | behavior policy invariant task latent | “做 behavior-invariant representation” |
 | Controlled-WM Identifiability | conditional action excitation governs transition identification/counterfactual planning | “behavior policy变了所以world model变差” |
+| IEL / Hitting-Time Isomorphism | explicit directed hitting-time regression + trajectory-label mismatch + compositional geometry | “把observed gap换成hitting-time / expectile / quasimetric” |
+| PLDM comparative science | explicit latent planning vs GCRL under data quality/length/size/OOD task-layout + inference time | “我们再画一张planning-vs-policy regime表” |
+| Planner amortization (2021) | MPC + learned proposal + planner-to-policy distillation | “把search搬到training / distill planner” |
 
 ## 3. 明确不能再作为我们的 headline
 
@@ -101,11 +104,13 @@
 
 本 workbench 不再把某个局部 loss 当作第一主旨。当前三个 mine 都对应**模型到底需要解决什么真实决策问题**。
 
-### M1 / I07 — Observable goal ≠ control state
+### M1 / I07 — Observable goal ≠ control belief（Tier B conditional）
 
 **Problem:** image goal可以相同，但 hidden velocity/contact/friction/regime 不同会要求不同动作。point latent / goal-comparable latent 是否仍是正确 planning state？
 
 **最强近邻：**
+- Physically Viable WM：same-looking scene + hidden physics + intervention failure；
+- Branch-JEPA：multiple latent successors；
 - FIRM-WM：goal-comparable config + dynamic fiber + intervention branches；
 - UWM-JEPA：belief-space predictor；
 - Flow Equivariant WM (ICML'26)：structured memory under partial observability；
@@ -113,7 +118,7 @@
 - I-TAP：history + temporal abstraction + POMDP/regime shift。
 
 **Exact delta 必须是：**
-> compact reward-free **image-goal planning** 中，observation aliasing 何时形成真实 action regret；deterministic history什么时候够，什么时候必须保留 multi-hypothesis belief/uncertainty；这种 regime 能否跨任务预测。
+> 给足 deployment 可用 finite observation-action history 后，是否仍存在多个 action-relevant hidden hypotheses，导致 best-action flip / planner regret；只有这个 **history-resolvable vs irreducible actionable ambiguity boundary** 还有空间。
 
 **Reviewer compression：**
 - “FIRM 已经拆 state了。”
@@ -122,32 +127,34 @@
 
 所以 E11 必须先建立 **same observation / different hidden state → different best action → deployed planner regret**，不能靠 probe。
 
-### M2 / I08 — Explicit rollout vs implicit predictive abstraction
+### M2 / I08 — Predictive-computation placement（Tier A2）
 
 **Problem:** predictive structure 应保留成 task-agnostic explicit dynamics + test-time search，还是 amortize 到 long-horizon representation/policy，或者 hybrid？
 
 **领域依据：** TMLR'26 P09 已明确区分 explicit/implicit WM，并把 training-cost、inference-cost、generalization trade-off 的 direct empirical comparison 留作 future direction；Bagatella TD-JEPA 是 ICLR'26 Oral 的 implicit anchor。
 
-**Exact delta：**
-> 找到能跨任务预测 explicit / implicit / hybrid 相对优势的 regime variables，而非再做方法排行榜。
+**最强 collision：** PLDM 已系统比较 latent planning vs HILP/GCIQL/HIQL/CRL/GCBC，在 data quality、trajectory length/stitching、dataset size、random-policy data、new task/layout和inference time下给 method-selection结论；planner amortization也早于2026。
 
-候选轴：reward/goal redefinition、unseen objective composition、layout/dynamics shift、horizon、data coverage、deployment search budget、arbitrary-action counterfactual需求。
+**Exact delta：**
+> 控制 data/task/compute后，找到能跨任务预测 **one-step explicit / arbitrary-horizon / successor occupancy / amortized / hybrid predictive object** 相对优势的 regime variables；explanatory variable必须是 predictive object，而不是再做 planning-vs-policy排行榜。
+
+候选轴：reward/goal redefinition、unseen objective composition、layout/dynamics shift、horizon、data coverage、deployment search budget、**task/query information budget**、arbitrary-action counterfactual需求。
 
 **Reviewer compression：**
 - “apples-to-oranges benchmark”
 - “只是一个训练更久、另一个test时search更多”
 - “TD-MPC2已经 hybrid”
 
-因此 E13 必须有 common data/task/utility 与 train/test compute ledger；没有 regime law不升级。
+因此 E13 必须有 common data/task/utility，并分开 **training compute / task-query information / deployment compute**；还要加入至少一个中间 predictive object验证 continuum。没有 hold-out regime law不升级。
 
 ### M3 / I09 — Behavior trajectory semantics ≠ environment controllability
 
 **Problem:** RC-aux / Temporal-Distance JEPA 这类 planning-aware supervision 从 behavior trajectory 的 gap/order/negatives 学 progress/reachability；这些 semantics 会不会继承 behavior policy 的 route/tempo，而不是 environment controllability？
 
-**最强近邻：** QRL/multistep quasimetric、PLDM、CGCIVL 已占 broad “behavior statistics ≠ optimal control”观点。
+**最强近邻：** QRL/multistep quasimetric、PLDM、CGCIVL 已占 broad “behavior statistics ≠ optimal control”；P94 已占 conditional action excitation→transition identifiability→planning；P95 IEL 已占 directed hitting-time regression + trajectory-label mismatch。
 
 **Exact delta：**
-> 同 environment dynamics 下，真正改变 generating behavior policy 后，planning-aware latent WM 的 deployed metric/representation 是否留下 behavior imprint，并改变 candidate ranking / closed-loop MPC，即使 local prediction相近。
+> **在 conditional action excitation 与 one-step transition evidence 已匹配/控制后**，改变 higher-order trajectory organization / route gap，planning-aware visual latent WM 的 deployed metric/reachability 是否仍留下 behavior imprint，并改变 same fixed candidate pool / closed-loop MPC。最强实验是 transition-equivalent / trajectory-different control。
 
 旧 I01/E03-E04不构成这个 intervention，因为它只改 long episode factorization而 short-window loss不可见。E14 才是有效 treatment。
 
@@ -157,7 +164,7 @@
 - “只是coverage变了”
 - **“P94已经证明 behavior-policy conditional action excitation 决定 counterfactual transition identifiability / planning。”**
 
-所以 M3 只能在 conditional action excitation 与 local transition support已经匹配/控制后，研究 **higher-order temporal organization / route semantics 的额外 imprint**。
+所以 M3 只能在 conditional action excitation 与 local transition support已经匹配/控制后，研究 **higher-order temporal organization / route semantics 的额外 imprint**；若最终修复只是 IEL/QRL式 hitting-time / expectile / quasimetric移植，也不够。
 
 所以必须匹配/量化 state-action/local-transition support，并证明 effect 在 planning-aware semantics 上 load-bearing。
 
@@ -182,9 +189,9 @@ P38 *What Must a World Model Distinguish for Planning?* 已直接研究 query/ca
 
 | ID | 状态 | 角色 | 最大 compression |
 |---|---|---|---|
-| I07 observable goal ≠ control belief | **SEED / broad mine** | E11→conditional E12 | FIRM-WM + UWM-JEPA + generic POMDP |
-| I08 explicit↔implicit frontier | **SEED / broad mine** | E13 matched regimes | “只是 benchmark / compute tradeoff” |
-| I09 behavior→controllability semantics | **SEED / broad mine** | E14→conditional E15 | QRL/PLDM/data-distribution literature |
+| I07 observable goal ≠ control belief | **SEED / Tier-B conditional** | E11→conditional E12 | PVWM/FIRM/UWM/Branch + generic POMDP |
+| I08 predictive-computation placement | **SEED / Tier-A2** | E13 matched regimes | PLDM + old amortization + apples-to-oranges |
+| I09 behavior→controllability semantics | **SEED / Tier-A1** | E14→conditional E15 | P94 action excitation + P95 IEL + QRL/PLDM |
 | I06 semantic negative roles | SEED / M3 subdiagnostic | E08→E09→E10 | false-negatives/negative-geometry已有大量先例 |
 | I03 bottleneck regime | SEED / common diagnostic | E06→conditional E07 | component benchmark |
 | I04 random→elite alignment | subordinate | E02 calibration | DA-LeWM / P38 |
@@ -202,12 +209,21 @@ P38 *What Must a World Model Distinguish for Planning?* 已直接研究 query/ca
 所以 factorization不是贡献。新的信息必须是 belief/aliasing何时 load-bearing、history何时不够，以及对 candidate decision 的稳定 law/repair。
 
 ### I08
+**“PLDM早就做过 model-based planning vs goal-conditioned/model-free methods 的 regime study。”**  
+所以必须把 explanatory variable压到 **predictive object**，并明确超过 PLDM 已经测过的 data quality/trajectory length/data size/OOD layout/inference time。
+
 **“一个是MPC，一个是zero-shot policy，本来就不同。”**  
 正因此不能只比较分数。必须用 common data/task/utility 和 compute ledger，把差异压成可解释的 predictive-computation placement trade-off，并预测未见 regime。
 
 ### I09
+**“P94已经证明behavior policy action excitation决定counterfactual planning。”**  
+所以先match/audit conditional action covariance / excitation。
+
+**“IEL/QRL已经研究behavior hitting-time geometry。”**  
+所以不能以hitting-time regression / expectile / triangle/quasimetric本身作贡献；必须证明 visual latent-WM planner里的 trajectory auxiliary 在 local identification已满足后仍引入 decision-level policy dependence。
+
 **“换behavior policy当然换训练数据。”**  
-必须控制/量化 local transition support与coverage，证明变化集中在 trajectory-derived planning semantics，并落到candidate/closed-loop。
+必须控制/量化 local transition support与coverage，最好做 transition-equivalent / trajectory-different control，并落到candidate/closed-loop。
 
 ### I06
 **“False negatives老问题。”**  

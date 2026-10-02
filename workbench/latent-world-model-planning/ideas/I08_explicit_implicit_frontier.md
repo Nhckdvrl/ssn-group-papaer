@@ -76,7 +76,54 @@ GC-IDM / LeFlow / RP1 等：
 
 ---
 
-## 3. 为什么现在仍有空间
+## 3. 最大 collision：PLDM 已经做过“大类方法什么时候更好”
+
+**P02 / PLDM (NeurIPS 2025)** 不是普通 baseline。它已经系统比较：
+- latent-dynamics planning；
+- HILP / GCIQL / HIQL / CRL / GCBC；
+- random vs better behavior data；
+- trajectory length / stitching；
+- dataset size；
+- unseen layout；
+- new task；
+- inference time / replanning interval；
+
+并给出 practitioner-facing method-selection guidelines。
+
+再加 **P96 (2021) planner amortization** 已经研究 MPC + learned proposal 与 planner-to-policy distillation。
+
+所以 M2 绝不能只是：
+
+> “系统比较 model-based planner 和 implicit/model-free policy，在不同 data quality / horizon / compute 下谁好。”
+
+这会被直接压成 PLDM + old planner-amortization。
+
+### M2 剩余 exact space
+
+只能问更结构化的问题：
+
+> **控制 data/task semantics 后，future information 被存成哪一种 predictive object，才决定某类 generalization / query / horizon / compute capability？**
+
+即：
+- one-step action-conditioned transition；
+- direct arbitrary-horizon future；
+- policy-conditioned successor occupancy；
+- learned latent path / amortized planner；
+- hybrid。
+
+关键不是“policy vs model”，而是 **predictive object**。
+
+要证明这一点，实验必须尽量避免：
+- policy class差异；
+- task-information差异；
+- data-support差异；
+- pure search-budget差异；
+
+把 relative advantage压到 representation/predictive-object本身。
+
+---
+
+## 4. 为什么现在仍有空间
 
 这些工作各自提出一个点，但没有给出一个 **regime map**：
 
@@ -104,7 +151,7 @@ GC-IDM / LeFlow / RP1 等：
 
 ---
 
-## 4. 最大难点不是算力，是公平性
+## 5. 最大难点不是算力，是公平性
 
 Bagatella TD-JEPA 和 LeWM-style image-goal MPC **解决的 task specification 不完全一样**。
 
@@ -143,7 +190,63 @@ E13 必须拆：
 
 ---
 
-## 5. 最有价值的 regime hypotheses
+## 6. 一个关键 fairness bridge：单 goal observation 能否直接实例化 TD-JEPA task latent？
+
+官方 TD-JEPA **没有**用 goal image做主评测；它通过 reward inference 得到 task vector：
+
+[
+z_r
+=
+argmin_z
+mathbb E_{(s,r)sim D_{m rwd}}
+[(r-psi(s)^	op z)^2]
+approx
+C_psi^{-1}mathbb E[psi(s)r(s)].
+]
+
+但 pinned OGBench code还有一个重要事实：
+
+- training 中 `sample_mixed_z(train_goal=psi_next_obs)` 会把真实 next-state embedding作为一部分 policy-task latent；
+- 当 `scale_train_goals=True` 时，代码先做
+  [
+  z_g propto psi(g) C_psi^{-1}
+  ]
+  再 project/normalize；
+- OGBench launcher默认打开 `scale_train_goals=True`。
+
+对于理想的 point-goal reward (r_g(s)) 集中在 goal (g) 附近，reward-inference解近似也是 covariance-whitened (psi(g))（差一个 normalization / goal-neighborhood averaging）。
+
+因此 E13 增加一个 **non-official but architecture-consistent diagnostic**：
+
+### GOAL-Z bridge
+给 TD-JEPA **一张 goal observation**：
+
+1. encode (psi(g))；
+2. 使用训练中相同的 covariance scaling；
+3. project 到 z；
+4. 直接 rollout policy (pi_{z_g})。
+
+然后比较：
+- GOAL-Z vs official reward-inferred (z_r) cosine / policy-action agreement；
+- goal-reaching success；
+- goal neighborhood大小的 sensitivity；
+- single goal image vs multiple positive goal exemplars。
+
+### 为什么它重要
+
+若 GOAL-Z 已经工作：
+- M2 可以构造更公平的 **same goal-observation information** 比较；
+- explicit vs implicit 差异不再主要来自 task interface。
+
+若 GOAL-Z 明显失败而 reward inference强：
+- 这本身说明 implicit successor/task representation需要 **task distribution information**，不能把“single-pass deployment”写成免费的任务泛化；
+- 但这仍只是 M2 fairness/result的一部分，不单独当 novelty。
+
+**严禁写成“TD-JEPA官方支持goal-image inference”。** 这是由 paper reward-inference公式 + official training code推导出的实验桥，必须在 E13 里标作 exploratory/common-protocol variant。
+
+---
+
+## 7. 最有价值的 regime hypotheses
 
 都只是 hypotheses，不是 claim。
 
@@ -181,7 +284,7 @@ successor/policy-conditioned implicit representation不一定能回答。
 
 ---
 
-## 6. 什么样结果才够强
+## 8. 什么样结果才够强
 
 最理想是得到一个 **predictive frontier**：
 
@@ -214,16 +317,17 @@ R = f(\text{task novelty},H,\text{deployment budget},\text{query info})
 
 ---
 
-## 7. E13 最小进入方式
+## 9. E13 最小进入方式
 
 1. OGBench Cube pixels，双方 native reproduction；
 2. common task utility；
-3. task/query information单独记账；
-4. ID + task redefinition + near/far；
-5. 只做两端：
+3. **TD-JEPA GOAL-Z bridge diagnostic**：single goal observation vs official reward inference；
+4. task/query information单独记账；
+5. ID + task redefinition + near/far；
+6. 只做两端：
    - explicit JEPA-WM / LeWM；
    - Bagatella TD-JEPA；
-6. 出现稳定 ranking switch 后，才加一个中间 family：
+7. 出现稳定 ranking switch 后，才加一个中间 family：
    - Universal Horizon；
    - Jumpy WM；
    - 或 TD-MPC2。
@@ -232,7 +336,13 @@ R = f(\text{task novelty},H,\text{deployment budget},\text{query info})
 
 ---
 
-## 8. Reviewer compression
+## 10. Reviewer compression
+
+### “PLDM已经告诉你 model-based planning / GCRL 各自什么时候好。”
+这是当前最强 reviewer attack。回答不能是“我们换成更新模型”。必须证明 explanatory variable 是 **predictive object / compute placement**，而不是 PLDM 已测的 data quality、trajectory length、dataset size、OOD layout 等宏观 regime。
+
+### “planner amortization 2021就做过。”
+是。因此“把 search 搬到 training”不是贡献；需要 modern reward-free visual predictive-object frontier + hold-out predictive law。
 
 ### “这只是 train-vs-test compute trade-off。”
 所以必须有 **generalization / task-interface / horizon** 维度，而且 hold-out regime可预测。
@@ -248,7 +358,7 @@ Hybrid本身不是贡献。只有一个 **regime law 导出为何/何时 hybrid*
 
 ---
 
-## 9. 升级条件
+## 11. 升级条件
 
 I08 从 SEED → paper hypothesis：
 

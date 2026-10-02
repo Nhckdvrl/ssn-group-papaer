@@ -181,7 +181,49 @@ Temporal-Distance JEPA 把 \(\Delta_\pi\) 当 directed progress target 同样可
 
 ---
 
-## 5. E14 应该检验什么
+## 5. 最强 identification 设计：transition-equivalent, trajectory-different
+
+P94 迫使我们控制 local action excitation；P95/IEL 又说明 hitting-time regression本身已有 trajectory-label mismatch项。要让 I09 真正站住，最有力的受控实验不是简单“expert vs random”，而是尽可能构造：
+
+[
+D_A approx D_B quad 	ext{in one-step transition evidence}
+]
+
+但：
+
+[
+D_A 
+eq D_B quad 	ext{in higher-order trajectory co-occurrence / observed gaps}
+]
+
+也就是：
+
+> **同样的局部 dynamics 证据，不同的 trajectory organization。**
+
+旧 I01/E03失败，是因为 treatment连 short-window objective都看不到；新的 E14-B2 则相反：
+- one-step transition bag近似保持；
+- **short-window temporal pair/gap distribution必须改变**；
+- 所以 trajectory-semantic objective能看到 treatment，而 pure local predictor理论上应更 invariant。
+
+如果这个 control 成立，并出现：
+
+[
+	ext{LeWM stable}
+]
+
+但：
+
+[
+	ext{TD-JEPA / RC-aux planner semantics drift}
+]
+
+故事会比普通 data-ablation强很多。
+
+这仍需自然 behavior-policy结果作外部有效性；不能只靠人工重排数据写paper。
+
+---
+
+## 6. E14 应该检验什么
 
 ### Treatment
 
@@ -244,7 +286,7 @@ Temporal-Distance JEPA / RC-aux 对 route-length treatment应比 plain LeWM 更�
 
 ---
 
-## 6. 如果现象成立，方法如何自然长
+## 7. 如果现象成立，方法如何自然长
 
 不预注册某一个答案，但方法空间已经能按 semantics 排序：
 
@@ -277,15 +319,15 @@ d^\*(s,g)\le \Delta
 
 ---
 
-## 7. Reviewer compression tests
+## 8. Reviewer compression tests
 
 ### “这不就是 P94 action coverage？”
 只有当我们没控制 conditional action excitation 时，是。  
 I09 的 exact delta是 **P94 local identifiability 已满足以后** 的 higher-order temporal-semantics dependence。
 
-### “这不就是 quasimetric RL？”
-Broad behavior-vs-optimal distance确实是。  
-I09 需要证明它在 **visual latent world-model representation/cost → MPC candidate decision** 中是 load-bearing，并比较 explicit local WM 与 trajectory-supervised planner semantics。
+### “这不就是 quasimetric RL / IEL？”
+Broad behavior-vs-optimal distance确实是；P95 IEL甚至显式回归 trajectory hitting-time labels、使用 low hitting-time expectile，并在理论里包含 trajectory-label mismatch。  
+所以 I09 不能以“学 directed hitting time”或“加 quasimetric/triangle consistency”作为默认贡献。它需要证明一个更具体的 **visual latent-WM failure**：在 local dynamics evidence / action excitation近似相同的情况下，planning-aligned trajectory auxiliaries仍产生 behavior-dependent MPC semantics。若 correction最终只是 IEL/QRL移植，则不够。
 
 ### “suboptimal demonstration当然路径更长。”
 当然。  
@@ -299,7 +341,7 @@ E14如果无法匹配 local support / action excitation，就接受这个 critic
 
 ---
 
-## 8. 升级条件
+## 9. 升级条件
 
 I09 从 SEED → paper hypothesis 至少需要：
 
@@ -315,7 +357,7 @@ I09 从 SEED → paper hypothesis 至少需要：
 
 ---
 
-## 9. 对应资产
+## 10. 对应资产
 
 - E14：主 identification pilot；
 - E15：只有 E14 支持后才设计 policy-invariant/censor-aware correction；

@@ -977,3 +977,34 @@ I06 是 M3 的一个小切片；I03 oracle ladder是三条线共用的 scientifi
   3. 对 MPC candidate ranking/closed-loop load-bearing；
   4. correction需要明确区别于 IEL/QRL 的 hitting-time/quasimetric machinery。
 - **可能的 exact gap：** RC-aux/Temporal-Distance JEPA使用 **observed route gap作为 planner-facing semantic label**，而 IEL目标是 foundation-policy / offline GCRL hitting-time geometry；二者 setting、model object、planner interface不同。但若最终方法只是把 IEL/QRL移植进 LeWM，compression risk很高。
+
+### P96 — Evaluating Model-Based Planning and Planner Amortization for Continuous Control — arXiv 2110.03363
+**来源：** https://arxiv.org/abs/2110.03363
+
+- **母问题：** learned dynamics + online planning 和 model-free policy 的计算/数据效率如何权衡？能否用 learned policy作为MPC proposal，再把planner distill回policy？
+- **结果：** well-tuned model-free policy是强baseline；learned model + MPC + proposal在hard multi-task/multi-goal settings可提高performance/data-efficiency；planner computation可以distill进policy而基本不损performance。
+- **ownership：** “planning vs amortized policy”“hybrid planner+proposal”“把planner distill到policy”不是2026新问题。
+- **对 M2：** M2不能写成 generic planner amortization / train-vs-test compute paper。它必须落在 reward-free predictive representation到底储存哪种 future object（explicit transition / arbitrary-horizon / successor occupancy / hybrid），并用 modern visual offline setting + task/query information + hold-out regime law形成新delta。
+
+### P97 — PLDM comparative science revisited — NeurIPS 2025
+**对应已有 P02，新增 M2 ownership 解读。**
+
+P02 已经比我们之前记得更接近 M2：
+- explicit latent dynamics planning vs HILP/GCIQL/HIQL/CRL/GCBC；
+- 数据质量、random-policy data、trajectory length / stitching、dataset size；
+- unseen layout、new task；
+- inference time / replanning interval；
+- 最终给 practitioners method-selection guidelines。
+
+**所以 M2 不能 claim：**
+- “model-based planning vs model-free policy在不同data regime各有优势”；
+- “explicit planning泛化好，policy inference快”；
+- “trajectory length/data quality决定两类方法排序”；
+- “做一张method-selection table”。
+
+**M2 若继续，exact delta必须是：**
+1. modern predictive-object continuum（one-step explicit / arbitrary-horizon / successor-policy occupancy / hybrid）；
+2. visual/reward-free setting；
+3. training compute + task/query information + deployment compute三本账；
+4. relative ordering变化要由少数regime variables预测，并在 hold-out regime成立；
+5. 最好解释为什么 predictive object 而不仅是 policy class / planner engineering造成差异。
