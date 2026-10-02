@@ -1,20 +1,94 @@
-# E13｜预测结构与规划计算
+# E13｜Planner-Stage Multi-Fidelity：候选筛选与高保真重评
 
 - **状态：** PLANNED；未运行。
-- **对应：** I08 / R2
-- **来源：** S1/S3/S5；原one-step/direct/multi-step与长期预测路线。
-- **阳性对照：** 短时可达ID任务检验实现；同动作的真实回放检验时间索引。
-- **噪声地板：** 分开训练随机性和搜索噪声；比较稳定收益不要求ranking crossover。
-- **决策表（跑之前写）：** 某结构好→分析并改进方法、扩范围；简单baseline强→检验不必要复杂性；差异来自预算/信息→重新公平比较，不自动关闭R2。
+- **对应：** I08 / R2。
+- **来源：** S7–S9/S13；Fast-LeWM与DeepJEPA是最直接近邻。
+- **阳性对照：** 对同一candidate bank，full high-fidelity scoring定义“高保真elite”参照；cheap predictor必须在短/易任务上有合理top-M recall。
+- **噪声地板：** planner sampling seed固定做paired candidate comparison；训练seed与搜索seed分开。fixed-wallclock与fixed-candidate两种协议都报。
+- **决策表（跑之前写）：** cascade改善compute-quality→扩task/seed并训练shared head；cheap筛选漏掉好candidate→研究recall/calibration而非继续缩M；DeepJEPA/纯Fast已统治→分析是否还有candidate-stage互补；无收益→回R2换predictive object，不强写cascade。
 
 ## 问题
-怎样改善有限预算下的长时控制？有效方法与设计认识都可成为结果。
 
-## 首轮方案（可在运行前修订）
-阶段A：同backbone、同数据/goal/planner比较one-step、open-loop多步、直接horizon预测，允许一个多尺度/短模型+长期头原型。按goal distance、H/K与test compute作有解释力的对照。阶段B按需要扩Bagatella TD-JEPA或其他长期/混合代表，保留native协议并建立可比任务。阶段B不是阶段A开始的前置条件。
+世界模型规划的计算是否应该**按candidate在搜索中的重要性分配**，而不是对每个candidate使用相同predictive fidelity？
 
-## 读数与资源
-成功/任务代价、rollout稳定、端到端时延；训练计算、任务信息（goal image/奖励标注样本）、部署计算分别报告。跨范式接口不一致时不作统一排行榜。
+## Stage A｜零/低训练原型
 
-## 结果与修订
-尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。
+优先复用released LeWM与Fast-LeWM相同任务资产；若checkpoint不能严格对齐，先做native paired action-candidate audit，不直接比较raw latent cost数值。
+
+每轮CEM：
+1. sample `N` candidate sequences；
+2. cheap predictor score all `N`；
+3. 选择`M`个进入high-fidelity rescoring，`M > elite K`；
+4. high-fidelity score决定最终elite与CEM update。
+
+Refinement selectors：
+- `TOP-M` cheap；
+- `ELITE-BAND`：cheap elite cutoff附近；
+- `LOW-MARGIN`：top/elite margin小；
+- `RANDOM-M` budget control；
+- `FULL-HF` oracle-cost upper reference。
+
+若两predictor latent空间不同，只比较candidate IDs/rank/real utility，不把raw L2混成统一尺度。
+
+## Stage B｜shared dual-fidelity method
+
+只有Stage A有signal才训练：
+- shared visual encoder；
+- cheap direct-prefix/head；
+- expensive recursive/multi-step/refinement head；
+- 可选cross-head consistency/calibration；
+- gating先用简单validation threshold，再考虑learned routing。
+
+不要一开始就复刻DeepJEPA的continue head。我们的核心轴是**candidate fidelity**；DeepJEPA是transition-depth强参照。
+
+## Baselines
+
+- LeWM recursive CEM；
+- Fast-LeWM；
+- equal-wallclock Fast-LeWM with more candidates；
+- equal-wallclock LeWM with fewer candidates；
+- random high-fidelity refinement；
+- proposed top/boundary refinement；
+- DeepJEPA：截至2026-10-02官方仓库标“code will be released soon”，若执行时已release则加入；不阻塞首轮。
+
+按证据再加入UHM/Jumpy/TD-MPC2，不先建全范式排行榜。
+
+## Metrics
+
+### Primary
+- closed-loop success / task cost；
+- wall-clock per planning decision；
+- model calls / active params calls；
+- success under fixed deployment compute。
+
+### Mechanistic
+- cheap top-M对high-fidelity top-K的**elite recall**；
+- cheap/HF Kendall rank on decision-relevant subset；
+- high-fidelity rescoring导致的elite membership flips；
+- selected action变化及real regret；
+- CEM iteration 1→last 的fidelity value。
+
+### Training
+- train GPU-hours / checkpoint size；
+- shared dual-head若使用，分别报告参数与额外训练成本。
+
+## First-wave规模
+
+E00实测后填具体时间。探索先：
+- TwoRoom + Push-T/Cube中一项；
+- pure LeWM / pure Fast / random-refine / top-refine / boundary-refine；
+- 1 evaluation seed/少量episodes用于工程与effect-size。
+
+信号成立后：
+- ≥3 independent train seeds（需要训练的variants）；
+- 第二任务族；
+- `M/N` sweep；
+- fixed-wallclock确认；
+- DeepJEPA code-ready时加入direct neighbor。
+
+## Novelty pressure
+
+DeepJEPA已明确“decision-critical transitions值得更深计算”，Fast-LeWM已明确“prefix prediction可以更快”。因此最终故事不能是“adaptive compute”或“coarse-to-fine”四个字；必须证明**candidate-stage predictive fidelity allocation**是独立load-bearing轴，并在相同compute下给出更好的search/decision结果，最好与transition-depth routing互补。
+
+## 结果
+未运行。

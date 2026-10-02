@@ -37,6 +37,14 @@
 
 [资源约束](../../RESOURCES.md)：研究室十几张 A100、8 张 RTX PRO 6000；实习处16张 H20；弱网络/弱磁盘/弱跨节点。使用独立单卡/单节点任务、节点内缓存、checkpoint 复用；不假定跨地点数据可混用。并行数由实际授权和 I/O 决定，不把“只有两条 ACTIVE”误读成“只能跑两个实验”。
 
+## 当前最值得开挖的两个方法假设
+
+**H-A / R1：Decision-Critical Branching。** 在相同新增环境交互预算下，把same-state counterfactual branch数据优先采在CEM candidate ranking不稳定、可能改变selection的state；先做data-only方法，和random/coverage/global uncertainty/task-aware acquisition比较。近邻OnlineWM、Task-Sufficient WM、ToIA、D-JEPA/AD-WM提供强支点而非禁区。
+
+**H-B / R2：Planner-Stage Multi-Fidelity。** Fast-LeWM/cheap direct predictor筛大量候选，high-fidelity recursive/refined predictor只重评elite边界候选；在fixed wall-clock下比较pure cheap/pure expensive/random refine。Fast-LeWM已做direct prefix，DeepJEPA已做transition-depth adaptive compute，因此我们的差异必须落在**candidate-stage fidelity allocation**及其与transition-depth的互补性。
+
+两者都属于“重要问题 + 便宜决定性实验 + 大量独立确认”的RC-aux式科研经济学；只是当前起跑点，不是预先宣布的论文主旨。
+
 ## 当前证据与交付边界
 
 - **科学主张：0。** 论文报告值不是我们的实验结果。

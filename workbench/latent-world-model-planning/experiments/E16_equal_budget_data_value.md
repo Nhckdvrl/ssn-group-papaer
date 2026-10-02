@@ -1,20 +1,96 @@
-# E16｜有限预算的数据配方
+# E16｜Decision-Critical Branching：planner-aware data acquisition
 
 - **状态：** PLANNED；未运行。
-- **对应：** I12 / R1；合并旧E16三份方案
-- **来源：** S2受控数据条件；旧data-value/action-excitation方案。
-- **阳性对照：** 等量IID追加与不追加基线；保持优化器更新量可比，防止纯训练步收益冒充数据价值。
-- **噪声地板：** 采集seed、trajectory clusters、training seed分开；对小数据强波动重复而不是挑最好。
-- **决策表（跑之前写）：** 某数据/目标有效→测试互补性与方法扩展；收益来自覆盖→可形成覆盖感知策略；不同任务不同→解释差异；无效→调整数据配方，不关闭R1。
+- **对应：** I12 / R1。
+- **来源：** S2/S4/S10–S12；这是方法探索卡，不预注册结论。
+- **阳性对照：** 等量IID追加数据应至少能在充分训练下被模型读取；same-state branch bank的隐藏outcome在“oracle selector”中给出可达上界，但绝不作为可部署selector输入。
+- **噪声地板：** train seed、branch-bank生成seed、eval/planner seed分开；先用单seed探索找effect，再用独立训练seed确认。
+- **决策表（跑之前写）：** decision-critical acquisition好→扩第二task/seed并拆score；global uncertainty/coverage更好→沿更强策略发展；所有数据追加差不多→查模型容量/训练量/branch budget；没有提升→换R1方法，不硬写“无效”。
 
-## 问题
-在相同可计量成本下，哪些经验与训练目标组合更改善规划？
+## 核心问题
 
-## 首轮方案（可在运行前修订）
-固定基础数据与模型，追加等预算的常规轨迹、更广coverage、局部动作分支、多路线或失败/恢复经验，从可采集的两三类开始。对原生训练目标与一个有依据的改进目标比较，允许选择/混合策略原型。分开离线重采样、额外交互、reset和特权标注成本。
+固定真实环境交互/branch-query预算时，**哪一条新经验最能改善latent planner的实际决策？**
 
-## 读数与资源
-数据/环境步预算、成功/恢复、任务transfer、训练成本；可辅助记录action-effect和candidate质量，不强制所有oracle先齐。
+第一版只改data acquisition，不改backbone/loss，目标是把方法杠杆隔离清楚。
 
-## 结果与修订
-尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。
+## Stage 0｜可重置branch bank
+
+优先TwoRoom/Wall，随后Push-T或Cube（取决于E00是否支持可靠state restore）。
+
+对一批`(state, goal)`：
+1. 从当前planner保存candidate action sequences与cheap predicted scores；
+2. 保存可重置simulator state；
+3. 离线为实验基础生成一个**隐藏branch bank**：同state下执行多个candidate prefix并记录真实outcome/transition；
+4. 每种acquisition策略只能“揭示”自己选中的branches，训练数据budget按真实新增environment steps计。
+
+branch bank只为可重复比较；selector不能偷看未购买的真实outcome。
+
+## Stage 1｜等预算selector矩阵
+
+探索阶段先1个task/1个train seed，预算按E00实测调整。至少包含：
+
+1. **NO-ADD**：基础数据；
+2. **IID/RANDOM**：普通追加；
+3. **COVERAGE/EXCITATION**：低覆盖或局部动作多样性优先；
+4. **GLOBAL-UNCERTAINTY**：模型预测分歧/误差proxy优先，作为OnlineWM-like control；
+5. **TASK-RELEVANT**：当前goal rollout相关的uncertainty，作为ToIA思想control；
+6. **DECISION-CRITICAL**：候选selection relevance × rank instability × predicted consequence span。
+
+可加**ORACLE VALUE**只作上界：用隐藏branch outcome选择最能减少真实candidate regret的数据；不能进部署方法。
+
+## Decision-critical score的最低实现
+
+不要先训练复杂acquisition network。可从：
+- CEM top-2 margin / elite-cutoff margin；
+- 多个bootstrap prediction head或轻augmentation下的Kendall/elite disagreement；
+- candidate terminal/progress prediction spread；
+得到可计算score。
+
+高score state选择2–K个相互竞争candidate prefix执行。预算一律按新增真实steps/reset成本报告。
+
+## 训练与读数
+
+### Training
+- 固定基础dataset/model/optimizer steps；
+- added transitions数量相同；
+- 第一轮保持原LeWM objective；
+- 如果RC-aux family已跑通，可做第二objective确认，但不作为开工前置。
+
+### Primary
+- closed-loop success / real task cost；
+- success gain per 1k added env steps；
+- held-out goal/start transfer。
+
+### Planner-facing
+- 固定candidate bank上的selected-action regret；
+- elite recall / elite order；
+- acquired states上counterfactual action-effect error；
+- 改进来自“有更好候选”还是“候选排序更准”。
+
+### Data accounting
+- environment steps、reset次数、branch count；
+- state/action coverage；
+- training GPU-hours；
+- selector本身wall-clock。
+
+## First-wave规模
+
+E00后再填绝对小时数。研究逻辑：
+- 探索：5–6 selectors × 1 seed × 1 task；
+- 若有signal：保留top 2–3 selectors，≥3 train seeds；
+- 确认：第二任务族（导航→操作）+ 2–3 acquisition budgets；
+- 最后才补最强近邻和消融。
+
+这些job天然单卡独立，符合多GPU弱互联条件。
+
+## 最强近邻与exact delta
+
+- **OnlineWM**：active query当前predictive weakness + same-state causal contrast；我们把query价值放到planner candidate-selection boundary。
+- **Task-Sufficient WM / ToIA**：task-relevant information acquisition；我们针对同state competing action branches与candidate rank flip。
+- **TOM / Policy-Aware Simulator Learning**：policy/strategic-region model learning；我们研究visual latent MPC的具体candidate interface。
+- **Beyond Visual Quality / D-JEPA / AD-WM**：candidate selection/decision alignment；我们第一版改**数据采集位置**而不是decision loss。
+
+最终写“首次”前必须再专项检索；当前只把这些差异当可证伪research hypothesis。
+
+## 结果
+未运行。

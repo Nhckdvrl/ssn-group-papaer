@@ -18,6 +18,8 @@
 | 长期预测/零样本RL | [Bagatella TD-JEPA](https://github.com/facebookresearch/td_jepa/tree/840a745455a124f04a58ae7ee31d7d5054e381f5) | 与上一行不是同一方法；只在对应比较需要时接入 |
 | 数据、环境与非WM对照 | [OGBench](https://github.com/seohongpark/ogbench/tree/1d4140997f60c52c6fb0702ec100dc988b18c548) | 可以独立JAX环境；原生reward/goal接口分清 |
 | 几何方法参照 | [Temporal Straightening](https://github.com/agentic-learning-ai-lab/temporal-straightening) | 先读官方UPDATES；论文版与修正版分开，不选弱旧版本 |
+| R2 cheap-fidelity | [Fast-LeWorldModel](https://github.com/Yuntian-Gao/Fast-LeWorldModel/tree/de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d) | official implementation；同LeWM数据布局；README列TwoRoom/Reacher/PushT/Cube与HF checkpoint；E13首轮优先资产 |
+| R2 adaptive-depth近邻 | [DeepJEPA](https://github.com/deepjepa/DeepJEPA/tree/d52bfb232c19376b6f6731b9380bc2d6d7762ffb) | 截至2026-10-02官方README仍写code即将发布；只作直接近邻，不假定可运行 |
 
 历史TwoRoom expert代码核对另使用了SWM快照 `8b2e8c685dd7f11d4189f5c09d9b6bfffd5cdca4`。这与表中平台快照不同；选择哪个取决于可复现的原生组合，不能把两次审计当同一release。
 
@@ -67,3 +69,10 @@ LeWM原文报告紧凑单GPU训练；RC-aux提供约18.7M的本地实例。不�
 可优先并行：同checkpoint多planner/任务评测；同小backbone不同数据/目标的独立训练；多seed与消融。复用冻结encoder缓存时固定encoder/config版本，encoder参与训练则不能读旧feature。节点数据尽量一次stage后复用。
 
 每批记录 `train_gpu_hours / eval_gpu_hours / env_cpu_hours / io_wait / peak_vram / effective_concurrency`，把准备成本、探索失败成本与最后确认实验成本分开。不把一次planner成本微基准或参数量直接当成“一天能复现完整论文”的证据。
+
+
+## 7. R2新资产核对（2026-10-02）
+
+Fast-LeWM官方README已核对：基于LeWM代码、使用相同HDF5数据布局，提供PushT/TwoRoom/Reacher/Cube训练与评测入口，并指向`naiverer/fast-leworldmodel` checkpoints。当前锁定公开main快照`de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d`；**尚未在本地加载**。
+
+DeepJEPA最新arXiv为`2610.00368`（submitted 2026-09-30）。公开repo快照`d52bfb232c19376b6f6731b9380bc2d6d7762ffb`仍只有项目说明并称code即将发布；执行机每次准备E13确认一次release即可，不为等它阻塞Fast-LeWM/LeWM首轮。

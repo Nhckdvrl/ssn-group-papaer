@@ -156,3 +156,44 @@ E18可直接比较固定 horizon、缩短/延长规划、增加候选、反馈�
 **“整套确认实验约一天”是待实测的吞吐量目标，不是论文证明的事实。** RC-aux未给足逐任务训练与全项目GPU-hours，不能把单个cost-call时延乘算成复现时长。执行机先测训练、完整闭环eval、I/O，再按可用卡数排：例如3个方法×3个训练seed×2类任务是18个独立训练作业；8个同时可用槽位至少3批，实际还取决于作业长短和评测/数据瓶颈。该例只是排程算术，不是预估这些任务的实际小时数。
 
 成熟论文包围绕一个中心贡献组织：最强可比基线、核心方法/问题的主结果、能区分解释的消融、至少一种有意义的范围/限制测试，计算与数据成本。需要更多任务时扩，不机械要求每个方向都先做完整论文级证据才能试原型。
+
+
+## 11. 第一波方法假设：从文献张力直接长方法，不等“空白”
+
+下面不是已成立的paper idea，而是**现在最值得本地agent迅速做实验的两个方法假设**。它们有明确近邻、也有明确增量；相近工作越多越要求比较做扎实，而不是自动放弃。
+
+### H-A｜Decision-Critical Branching：把新经验花在planner真正可能改主意的地方
+
+**母问题（R1）：** simulator/reset预算有限时，下一条world-model经验应该采哪里？
+
+已有工作已经分别说明：active querying可以追预测弱点；task-aware acquisition比全局uncertainty更有用；same-state counterfactual action branches能强化动作因果；candidate selection opportunity集中在少数决策。我们的工作假设把这些压力落到latent MPC的具体接口：
+
+> **不是“最不确定的state”都同样值钱；更值钱的是那些候选动作排序不稳定、且排序翻转会改变planner选择的decision-critical states。**
+
+第一版不改loss，先只改**数据分配**，避免和D-JEPA/AD-WM的decision loss混在一起。CEM/iCEM运行时，用cheap ensemble/bootstrapped heads估计候选的rank disagreement，并结合top-2或elite-cutoff margin形成criticality score。对高criticality state做same-reset branch：执行2–K条竞争candidate prefix，把真实transition加入普通LeWM/RC-aux训练数据。若这个data-only版本优于random/coverage/global uncertainty/OnlineWM-like predictive-error acquisition，再考虑branch-aware ordinal或consistency loss。
+
+工作分数可从简单式开始：`criticality = selection_relevance × rank_instability × predicted_consequence_span`。这些因子都只能用query前可得信息；真实branch outcome只在被选中后揭示。
+
+**为什么不是机械拼接：** OnlineWM问模型哪里预测弱；ToIA问哪些观测能帮助task-relevant rollout；TOM/strategic model learning问policy相关区域；我们问的是**哪条新counterfactual经验最可能修正planner即将做出的候选选择**。这是一个不同的data-value定义。最终若实验显示普通task-aware uncertainty已等价或更好，就直接收敛为负结果/改设计，不靠改名保story。
+
+### H-B｜Planner-Stage Multi-Fidelity：广筛候选用快模型，elite附近才用高保真世界模型
+
+**母问题（R2）：** CEM一次要评估大量candidate，而只有很少candidate会进入elite set并影响下一轮search。是否有必要给所有candidate同样昂贵的predictive fidelity？
+
+Fast-LeWM已经拥有parallel prefix prediction；DeepJEPA已经拥有transition-level adaptive depth。它们不是kill，而是构成两个强支点。我们的不同轴是：
+
+> **在planner的candidate population上分配prediction fidelity：cheap predictor负责高召回筛选，high-fidelity predictor只重评可能进入/改变elite set的candidate。**
+
+最便宜原型甚至不用训练新模型：Fast-LeWM给N个candidate排序，保留top-M（M明显大于CEM elite K），再由LeWM/open-loop multi-step/high-fidelity predictor重评M个，最终elite只按高保真分数更新。比较同wall-clock下的纯Fast大N、纯LeWM小N、随机M重评、只重评top-M，以及elite-boundary/低margin重评。如果有清晰收益，再训练共享encoder的dual-fidelity head或学习screening-confidence。
+
+与DeepJEPA的关系必须正面写：DeepJEPA决定“一个transition内部算几次”；H-B决定“候选群体中谁值得调用哪种predictor”。两者可组合；若DeepJEPA完整发布后，最强实验之一就是Fast screen → DeepJEPA refine。
+
+### 第二波而非关闭：H-C/H-D
+
+R3的selective query conditioning、R5的feedback/recovery routing仍值得保留；它们目前近邻较多且首轮方法杠杆不如H-A/H-B直接。E17/E18可利用released checkpoints低成本并行摸底，不因暂列第二波而降级科学价值。
+
+### 第一波如何用多卡
+
+先用**一个导航任务 + 一个接触/操作任务**分别跑最小方法矩阵，不先做全家桶。H-A先比较5–6种acquisition policy的单seed探索，H-B先比较4–5种fidelity allocation的单seed探索。任何明显signal先复核实现，再把最有区分力的2–3种方案铺3个以上训练seed和第二任务族。GPU数用来缩短idea迭代周期，不用来一次性把所有组合做成大网格。
+
+这两个假设都允许失败。失败之后回R1/R2继续选方法，不把“有人做过active learning / adaptive compute”当作关闭理由。

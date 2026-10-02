@@ -59,3 +59,62 @@
 ## 共同的idea来源重建
 
 这些例子不是互相等待“空白”：成熟视觉表示、潜在动力学、goal-conditioned学习、TD与规划结构被用于解决具体障碍。我们学习的是选择哪个设计决定、如何给出证据、如何承认边界。研究计划提出的五个方向均可从这些方法与历史近邻继续发展；尚无证据证明其中任一新方案已成立。
+
+
+## S7｜JEPA-WMs / What Drives Success：把一个新范式的设计空间做透
+
+来源：[论文](https://arxiv.org/abs/2512.24497)。本轮阅读深度：**A-targeted**，定向核对主文关于multi-step training、context/proprioception、planner以及explicit/implicit discussion；不是逐附录复核。
+
+**原文依据。** 这项工作不靠“发现一个无人研究的问题”，而是把DINO-WM之后的JEPA planning recipe系统拆开。一个重要结果是multi-step rollout训练的最佳长度依domain而变：递归部署需要稳定性，但更长训练并非无条件更好。论文还明确区分explicit action-conditioned WM与把长期预测结构摊入representation/policy的implicit方案，并把训练成本、部署计算和generalization的直接比较留作未来工作。
+
+**我们的生长分析。** R2不应继续搜索“没人做过的horizon”。更有价值的是改变预测计算的**粒度和使用位置**：哪些候选需要昂贵预测、哪些可以便宜筛掉；什么时候direct prediction、recursive prediction或长期抽象值得花计算。
+
+## S8｜Fast LeWorldModel：直接prefix prediction已经是强近邻，不是禁区
+
+来源：[论文](https://arxiv.org/abs/2606.26217)、[官方代码](https://github.com/Yuntian-Gao/Fast-LeWorldModel)。本轮阅读深度：**A-targeted**，核对摘要、方法/消融与官方README；代码尚未在本地运行。
+
+**原文依据。** Fast-LeWM用action-prefix prediction并行预测不同horizon的future latent，绕开LeWM逐步recursive rollout。官方项目在与LeWM相同的Four-task规划协议中报告更高平均成功率和显著更低dynamics/CEM时间；还用direct-vs-decomposed terminal prediction做self-consistency。
+
+**与我们的距离。** 因此“直接prefix预测”“更快的LeWM”“多horizon head”都不能单独当贡献。它反而提供一个理想**低保真预测器**：先便宜地给大量CEM candidates排序，再只对少量可能进入elite set的候选调用更昂贵的recursive/refined predictor。这个planner-stage fidelity allocation不是Fast-LeWM本身的主问题。
+
+## S9｜DeepJEPA：decision-critical compute已出现，迫使R2把问题说清
+
+来源：[arXiv:2610.00368](https://arxiv.org/abs/2610.00368)、[公开仓库](https://github.com/deepjepa/DeepJEPA)。本轮阅读深度：**B+/positioning**：核对v1 abstract与官方仓库README；截至本轮仓库仍写“Code will be released soon”，不声称复现。
+
+**原文依据。** DeepJEPA把transition depth作为test-time scaling轴，学习在哪些candidate/rollout step继续recurrent refinement；摘要称额外计算集中在contact/interaction等decision-critical transitions。
+
+**我们的生长分析。** 这不关闭“adaptive compute”。它把最近邻变得更清楚：DeepJEPA分配的是**单个imagined transition内部的深度**；我们R2当前更值得试的是**CEM候选集合/搜索阶段之间的预测保真度**——cheap model广筛、expensive model只重评可能改变elite selection的候选。若最终只是把DeepJEPA换个gate，就没有贡献；若能在fixed wall-clock下证明planner-stage multi-fidelity是独立且互补的轴，才值得发展。
+
+## S10｜主动世界模型数据：OnlineWM、Task-Sufficient WM、ToIA
+
+来源：[OnlineWM](https://arxiv.org/abs/2609.23753)、[Task-Sufficient World Models, ICML 2026](https://proceedings.mlr.press/v306/feng26aa.html)、[ToIA](https://arxiv.org/abs/2609.19378)。本轮阅读深度：**B/positioning**，核对abstract/proceedings与方法概述；不能据此声称“首次”。
+
+- OnlineWM主动向simulator查询当前预测弱点，并用same-state action contrast强化action-effect因果归因。
+- Task-Sufficient WM用active probing采集暴露task-relevant latent factors的轨迹，并学习task-sufficient state。
+- ToIA在MPPI+GP residual setting中把active learning从“哪里最不确定”改成“哪些观测能降低当前任务相关rollout的不确定性”，尤其在稀疏更新下有效。
+
+**我们的生长分析。** “active data有用”“task-aware acquisition有用”“same-state counterfactual branch有用”都不是新口号。R1更具体的可试问题是：**planner真正犹豫且候选动作后果会改变选择的地方，是否是最值得花branch-query预算的地方？** 也就是把数据价值锚定到candidate selection boundary，而不是全局prediction error或单条rollout uncertainty。
+
+## S11｜candidate decision本身已经是一个被验证的重要对象
+
+来源：[Beyond Visual Quality](https://arxiv.org/abs/2609.24745)、[AD-WM](https://arxiv.org/abs/2609.30264)；D-JEPA定位记录保留在历史literature。阅读深度：**B/positioning**。
+
+Beyond Visual Quality在same-state sampled candidates上测到真实selection opportunity并发现机会集中在部分决策；AD-WM则直接优化action-discriminative latent dynamics用于counterfactual MPC，并指出whole-bank prediction/ranking指标未必跟closed-loop success同序。
+
+**我们的生长分析。** 这支持“planner decision boundary是有科学意义的对象”，但也意味着不能把“候选排序重要”包装成新发现。R1的增量必须体现在**如何把有限新经验分配到这些决策上，以及这种经验是否比普通uncertainty/coverage数据更值钱**。
+
+## S12｜policy-/decision-aware model learning是更早的思想祖先
+
+来源：[Transition Occupancy Matching, L4DC 2023](https://proceedings.mlr.press/v211/ma23a.html)、[Policy-Aware Simulator Learning](https://arxiv.org/abs/2605.29032)。阅读深度：**B/positioning**。
+
+这些工作已经主张平均prediction loss会把容量/数据花在与policy无关的区域；后者进一步把strategic robustness和active data selection联系起来。
+
+**我们的生长分析。** Decision-Critical Branching不能声称“第一次只学习决策相关数据”。它的潜在新点更具体：在**visual latent MPC的candidate-generation/elite-selection接口**上定义query value，并利用same-reset candidate branches直接改善planner会比较的动作后果。最终是否足够novel要在结果成形后再做专项近邻检索。
+
+## S13｜R2长期预测continuum：UHM与Jumpy World Models
+
+来源：[Universal Horizon Models, ICML 2026](https://proceedings.mlr.press/v306/chung26b.html)、[Jumpy World Models, ICML 2026](https://proceedings.mlr.press/v306/farebrother26a.html)。阅读深度：**B/positioning**。
+
+UHM直接预测任意horizon future以减轻递归误差；Jumpy WM预测预训练policy在多时间尺度下的occupancy，用于组合长期policy sequences。
+
+**我们的生长分析。** R2不是one-step vs successor二选一，而是一个预测对象continuum。首轮不用把所有范式装齐；同backbone的cheap/direct vs expensive/recursive fidelity allocation若有信号，再引入一个long-horizon方法检查故事是否跨predictive object成立。
