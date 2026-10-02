@@ -785,3 +785,80 @@ What condition / interaction / boundary does it open?
 共同结论：
 
 > **顶会 novelty 不是“没人碰过”，而是在一个重要 program 里把认识向前推进一层。**
+
+
+---
+
+# Case 15 — CST-WM (2026): 从 behavior correlation 找到 task-specific causal shortcut
+
+**Read:** A-targeted  
+**Program:** R1 + R4  
+**Source:** arXiv:2609.06302
+
+## 旧默认
+action-conditioned predictor只要输入action并把future预测准，就应该足够支持tracking planning。
+
+## Pressure
+在logged tracking data里：
+- robot action与target location/evidence高度相关；
+- generic predictor可以利用这个统计相关；
+- 直接把current action写进target-evidence prediction；
+- rollout仍然plausible，却给candidate actions错误语义。
+
+这叫 causal hallucination。
+
+## Idea leap
+作者没有泛泛说“需要causal WM”，而是利用tracking的domain structure：
+
+```text
+action
+  ↓
+robot motion
+  ↓
+future observation
+  ↓
+target evidence
+```
+
+不应该有：
+
+```text
+action ─────────→ same-step target evidence
+```
+
+于是把state拆成 target-evidence / robot / observation branches，并architecture-mask掉 direct action→target-evidence edge。
+
+## 决定性证据
+- multi-step rollout fidelity；
+- model candidate ranking vs simulator ranking；
+- direct action leakage diagnostic；
+- standard tracking + target-loss recovery；
+- cross-dataset；
+- real Unitree Go2；
+- 去掉action mask是re-acquisition最大ablation drop之一。
+
+## 特别值得学的自限
+作者明确说：
+> 这个mask是planning representation的task-specific structural requirement，不等于声称完整恢复external causal dynamics。
+
+这让claim很干净。
+
+## Atomic claim
+embodied tracking中 behavior action/evidence correlation可诱导direct-action causal shortcut；task-specific transition factorization能改善planning/re-acquisition。
+
+## 它打开什么
+这不是“causal hallucination已经做完”。
+
+R1得到一组新问题：
+- P94 excitation充分后，shortcut还会存在吗？
+- structural prior vs paired intervention data vs counterfactual consistency，谁在什么regime最值钱？
+- 如果真实causal graph未知，如何学/验证mediation而不是手写？
+- behavior policy变化会不会改变 shortcut方向？
+- sparse interaction tokens该怎样分配loss权重？
+- active data能否专门寻找shortcut不确定区域？
+
+## Lesson
+一个很好的problem-led论文可以来自：
+> **真实data collection过程产生一个统计shortcut → shortcut让decision错 → 用任务结构提出最小约束 → candidate/closed-loop验证。**
+
+这与“设计probe发现奇怪位置”完全不同。
