@@ -162,7 +162,7 @@ E18可直接比较固定 horizon、缩短/延长规划、增加候选、反馈�
 
 下面不是已成立的paper idea，而是**现在最值得本地agent迅速做实验的两个方法假设**。它们有明确近邻、也有明确增量；相近工作越多越要求比较做扎实，而不是自动放弃。
 
-### H-A｜Decision-Critical Branching：把新经验花在planner真正可能改主意的地方
+### H-A｜Planner-Boundary Branching (PBB)：把新经验花在planner真正可能改主意的地方
 
 **母问题（R1）：** simulator/reset预算有限时，下一条world-model经验应该采哪里？
 
@@ -197,3 +197,16 @@ R3的selective query conditioning、R5的feedback/recovery routing仍值得保�
 先用**一个导航任务 + 一个接触/操作任务**分别跑最小方法矩阵，不先做全家桶。H-A先比较5–6种acquisition policy的单seed探索，H-B先比较4–5种fidelity allocation的单seed探索。任何明显signal先复核实现，再把最有区分力的2–3种方案铺3个以上训练seed和第二任务族。GPU数用来缩短idea迭代周期，不用来一次性把所有组合做成大网格。
 
 这两个假设都允许失败。失败之后回R1/R2继续选方法，不把“有人做过active learning / adaptive compute”当作关闭理由。
+
+
+### H-B 的更具体方法核：elite-preserving fidelity allocation
+
+Fast-LeWM已经提供一个几乎零训练成本的第一实验：每个candidate都有cheap direct-prefix goal cost；论文的self-consistency需要额外做一条“经过中间prefix再到terminal”的预测路径。原论文对所有candidate统一加self-consistency，我们可以先问：
+
+> **如果只对可能进入/改变CEM elite set的candidate支付这次额外预测，能否用少量high-fidelity calls恢复接近full self-consistency的planning质量？**
+
+先把“高保真”定义为同一Fast-LeWM内部的direct + decomposed/self-consistency score，避免不同模型latent尺度不一致。然后再扩LeWM recursive、DeepJEPA或multi-step head。
+
+若cheap cost与high-fidelity cost的残差可以在held-out candidate bank上校准成区间 `[L_i, U_i]`，一个候选的“最好可能cost”仍差于当前elite边界时可以跳过；只有区间与elite阈值重叠的候选升级。后续可把这个规则做成 **Elite-Preserving CEM**：主要测top-K elite recall、high-fidelity call fraction、closed-loop success和fixed-wall-clock Pareto。严格coverage/概率保证只有校准成立后再写，不预注册理论结论。
+
+这个方向的novel narrative不是“多保真第一次用于规划”，而是：**modern latent-WM planners的compute bottleneck发生在成百上千candidate反复scoring；planner只消费elite set，因此prediction fidelity应该围绕elite preservation来分配。**
