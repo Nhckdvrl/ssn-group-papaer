@@ -1,0 +1,95 @@
+{
+  "config": {
+    "task": "scalar_parent",
+    "model": "google-bert/bert-base-uncased",
+    "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+    "upstream_commit": "50a7064290a841b81b2608524000b81a33ddc4b0",
+    "dtype": "float32",
+    "script_sha256": "2ba20c008709d7c041b1d65c3e0bd7f8f39bbb76fd54b3a33f72a65fc92f4799",
+    "input_sha256": "cc1cf7799de4fcaada1ac517aa0d279fd56adcdfea2e6ea32bf7a7e578bce0ca",
+    "human_sha256": "326b2cd735f11dbc9720466aa39cb96fb8919508e74edcc8ac6250962fee81a2",
+    "n": 1362,
+    "multi_mask_items": 252,
+    "missing_human_items": [],
+    "wall_seconds": 4.988818014971912,
+    "numerical_controls": {
+      "batch1_16_max_surprisal_delta": 1.430511474609375e-05,
+      "threshold": 0.001,
+      "pass": true
+    },
+    "complete": true
+  },
+  "published_parity": {
+    "each": {
+      "n": 1362,
+      "mean_absolute_delta": 5.018693585085972e-06,
+      "max_absolute_delta": 3.051757812677636e-05,
+      "prediction_match_rate": 1.0
+    },
+    "every": {
+      "n": 1362,
+      "mean_absolute_delta": 5.100967250389599e-06,
+      "max_absolute_delta": 2.7656555177557607e-05,
+      "prediction_match_rate": 1.0
+    },
+    "few": {
+      "n": 1362,
+      "mean_absolute_delta": 5.654826563377362e-06,
+      "max_absolute_delta": 2.9563903806817393e-05,
+      "prediction_match_rate": 1.0
+    },
+    "half": {
+      "n": 1362,
+      "mean_absolute_delta": 5.299824449995599e-06,
+      "max_absolute_delta": 3.528594970525489e-05,
+      "prediction_match_rate": 1.0
+    },
+    "much": {
+      "n": 1362,
+      "mean_absolute_delta": 5.71110525147834e-06,
+      "max_absolute_delta": 2.9563903810370107e-05,
+      "prediction_match_rate": 1.0
+    },
+    "many": {
+      "n": 1362,
+      "mean_absolute_delta": 5.859022798698121e-06,
+      "max_absolute_delta": 3.719329833984375e-05,
+      "prediction_match_rate": 1.0
+    },
+    "most": {
+      "n": 1362,
+      "mean_absolute_delta": 5.53395429546869e-06,
+      "max_absolute_delta": 2.6941299438476562e-05,
+      "prediction_match_rate": 1.0
+    },
+    "all": {
+      "n": 1362,
+      "mean_absolute_delta": 1.3692247053728502e-06,
+      "max_absolute_delta": 2.2411346435546875e-05,
+      "prediction_match_rate": 1.0
+    }
+  },
+  "human_association": {
+    "surprisal_pearson": -0.40011310996444316,
+    "surprisal_spearman": -0.5316979224038406,
+    "probability_pearson": 0.48244038853162197
+  },
+  "ci95_item_bootstrap": {
+    "surprisal_pearson": [
+      -0.4383014765326496,
+      -0.3628068255971084
+    ],
+    "surprisal_spearman": [
+      -0.5685685141457756,
+      -0.49293748986348485
+    ],
+    "probability_pearson": [
+      0.44488936934761686,
+      0.5206683611063029
+    ]
+  },
+  "limits": [
+    "String predictor only; concept/GloVe and multivariate model not reproduced.",
+    "Explicit masked alternative expectation is not an SI decision or binary warrant."
+  ]
+}

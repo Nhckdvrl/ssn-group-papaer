@@ -126,6 +126,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `mechanism-population-dynamics` | ACTIVE-EXPLORE | ICML 2027 / NeurIPS 2027 | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：利用公开 multi-seed × multi-checkpoint 模型群体研究 mechanistic claim 在什么抽象层次上可复现；第一轮不训练模型，先做已知 mechanism 的 causal baseline + population measurement |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **单入口 workbench 已收敛**：R1–R5持续开放；第一波 PBB(E16) + Planner-Stage Multi-Fidelity(E13)，第二波 Query Specialization(E17) / Utility Recovery(E18) / Selective Revaluation(E19)；7个唯一I、9张当前E卡；强近邻作为baseline/idea来源而非桌面kill；GPU结果=0，不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **literature-grounded / baseline-gated**：30 篇分级文献、12 张定向论文卡；I01 数据策略复用与再适配、I02 训练干预型数据研究、I03 多时域效用；E00–E03 已注册；GPU 结果=0，主张均 L0，不改变 ACTIVE 调度 |
+| `pragmatic-inference-calibration` | PROPOSED | ACL / EMNLP / NAACL 主会；届次待定 | — | `CLAIMS.md` | 2026-10-02 | **人已授权注册与 D1/D2**：语用推断边界；先复现 MultiPragEval → Wavelength → Hu suite，区分语境辨别与推断倾向；SDT 仅为探针，本地最多八卡，不改现有 ACTIVE 归属 |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
 | `model-diffing-measurement` | PAUSED | — | — | — | — | 同上；工具链可用于多智能体线的白盒分析（P4） |

@@ -1,0 +1,303 @@
+{
+  "parents": {
+    "MultiPragEval": {
+      "commit": "51ffaba82a0bf22eb98fc14520595d53c6fa3937",
+      "url": "https://github.com/DojunPark/MultiPragEval.git",
+      "rows": 300,
+      "test_units": 1200,
+      "data_sha256": "63c705549307e735a972cdde6b2445aed87615f55a8329b647ddc9d8b5a68a19",
+      "categories": {
+        "quantity": 60,
+        "quality": 60,
+        "relation": 60,
+        "manner": 60,
+        "literal": 60
+      },
+      "gold_counts": {
+        "A": 60,
+        "B": 60,
+        "C": 60,
+        "D": 60,
+        "E": 60
+      },
+      "inference_choice_labels": false,
+      "inference_script_published": false,
+      "caution": "maxim category does not prove inference licensing; literal errors are not all false alarms"
+    },
+    "wavelength-eval": {
+      "commit": "6dfed5c35342245bf16ff28a8546137ecbd65aa1",
+      "url": "https://github.com/linlu-qiu/wavelength-eval.git",
+      "rows": 100,
+      "concept_pairs": 50,
+      "human_responses": 4000,
+      "data_sha256": "27deb3728c688c466da5d7c73591b2584a0015724059e67c2a0d966259857aaa",
+      "binary_license_labels": false
+    },
+    "lm-pragmatics": {
+      "commit": "9fd4be5c0e43162c9d6e09b6024cc000e40b3398",
+      "url": "https://github.com/jennhu/lm-pragmatics.git",
+      "prompt_files": {
+        "CoherenceInference_prompts_seed0_examples0.csv": {
+          "rows": 40,
+          "sha256": "f0d2e14910c3b26880d85d887756e5150c962c77ba8e58036d251c58c229eca7"
+        },
+        "CoherenceInference_prompts_seed1_examples0.csv": {
+          "rows": 40,
+          "sha256": "c125a19a676d62a77312afb79402d6c647db103768459f9c05e71910b8a143d7"
+        },
+        "CoherenceInference_prompts_seed2_examples0.csv": {
+          "rows": 40,
+          "sha256": "af9324bdbbb397792cb202ad95184b00d3db1a87614d8ae7faf735ec98d4b968"
+        },
+        "CoherenceInference_prompts_seed3_examples0.csv": {
+          "rows": 40,
+          "sha256": "5276ea08edac895c11aac1cc92a3c5cfb1c65924a30657c0e09d718fcad319d5"
+        },
+        "CoherenceInference_prompts_seed4_examples0.csv": {
+          "rows": 40,
+          "sha256": "e1ecfdd01a009217523dc8595b4cb67670e025b226082958a2fdc481e85a4acc"
+        },
+        "Deceits_no-story_prompts_seed0_examples0.csv": {
+          "rows": 20,
+          "sha256": "768f32ecf1dfc811fcd7ba26736ae85d8b768b4dada9f73c23baf711840b1b26"
+        },
+        "Deceits_no-story_prompts_seed1_examples0.csv": {
+          "rows": 20,
+          "sha256": "6c671a20c0880d9fe25c885bb12795adff1b0e1edda34eef8b1ee7f5c2335989"
+        },
+        "Deceits_no-story_prompts_seed2_examples0.csv": {
+          "rows": 20,
+          "sha256": "024f67e5e518278ab4c2c2a6fd43d55baaad8df1ac1adcfe4416b8427be3afef"
+        },
+        "Deceits_no-story_prompts_seed3_examples0.csv": {
+          "rows": 20,
+          "sha256": "d7df8307687d09e4e81d9070019212bb4500f1f88e632577e34ea57eec9d8b2e"
+        },
+        "Deceits_no-story_prompts_seed4_examples0.csv": {
+          "rows": 20,
+          "sha256": "5d1e043382535154bf5f905085caf033b32b640816563d5b1803a4cfc523a4e5"
+        },
+        "Deceits_prompts_seed0_examples0.csv": {
+          "rows": 20,
+          "sha256": "2e8d2f010760a62ea37f71061ab0ad44cb8951889249d012ef9b8da4ad6ceda3"
+        },
+        "Deceits_prompts_seed1_examples0.csv": {
+          "rows": 20,
+          "sha256": "cf0ff97f7ae1b0804a4037895ab5bb2cc1b45d5821c9cd1dfea5a747b88eb9e6"
+        },
+        "Deceits_prompts_seed2_examples0.csv": {
+          "rows": 20,
+          "sha256": "6437bdeecaeb0c22c0ada7a408e4552ef2a716d0a04c3d0fe487edd03f75ea37"
+        },
+        "Deceits_prompts_seed3_examples0.csv": {
+          "rows": 20,
+          "sha256": "f862ed7c01c73452ea9b3b691ab18dd8c4980f02cb055010386017c4fd8e7bd5"
+        },
+        "Deceits_prompts_seed4_examples0.csv": {
+          "rows": 20,
+          "sha256": "6cfc1ec31cc188d9633decaa4b29c0980078b13c2a33e9c371ed86e5b1d0ae7c"
+        },
+        "Humour_prompts_seed0_examples0.csv": {
+          "rows": 25,
+          "sha256": "b54ef1977df16de5f21a78a7a1b258dcef3579fbdef86470c9223ea80972f52b"
+        },
+        "Humour_prompts_seed1_examples0.csv": {
+          "rows": 25,
+          "sha256": "e2433313b949a731745a5592a075f2fdd345a4a8d6d7972fb23e576c2d09a670"
+        },
+        "Humour_prompts_seed2_examples0.csv": {
+          "rows": 25,
+          "sha256": "737f327dcab2408dc5b9833d6821dde76dd75fd2f41ef289d9c20b5f5fd5ed24"
+        },
+        "Humour_prompts_seed3_examples0.csv": {
+          "rows": 25,
+          "sha256": "e2e34548616359d4a105408848add331be3b13785b095056356a66bcc0662a20"
+        },
+        "Humour_prompts_seed4_examples0.csv": {
+          "rows": 25,
+          "sha256": "46e430bc84f5de25c6cb1f671ab323aa1b9bcf1231379601c68481efd3c992ed"
+        },
+        "IndirectSpeech_no-story_prompts_seed0_examples0.csv": {
+          "rows": 20,
+          "sha256": "364f34759dd383699aa2254c989fa5493cbcf80caa6037cbb55aedd3b4da7dee"
+        },
+        "IndirectSpeech_no-story_prompts_seed1_examples0.csv": {
+          "rows": 20,
+          "sha256": "d98e9f5d193e67b237997ae666e7cca1409066c664c2c6cdd8062af8636c6483"
+        },
+        "IndirectSpeech_no-story_prompts_seed2_examples0.csv": {
+          "rows": 20,
+          "sha256": "a7e0d958de462efc993fd0b1c8e76e8dc56cb68389693741148c3456a97d435c"
+        },
+        "IndirectSpeech_no-story_prompts_seed3_examples0.csv": {
+          "rows": 20,
+          "sha256": "e5df2bc8489988592147878e40fd59b79b53f53e078712caa23156e6f173bcc6"
+        },
+        "IndirectSpeech_no-story_prompts_seed4_examples0.csv": {
+          "rows": 20,
+          "sha256": "40ea9fad4036333e5f9afdbf49e3b65cddd33d3ebb3d2fd9f65a5ccaa5f9587f"
+        },
+        "IndirectSpeech_prompts_seed0_examples0.csv": {
+          "rows": 20,
+          "sha256": "d69385395e60e6d86a8df162f4d39fe6c66340f9d62cad0e99fd8aada1abe6a5"
+        },
+        "IndirectSpeech_prompts_seed1_examples0.csv": {
+          "rows": 20,
+          "sha256": "e654264db2773fc5c2ddda1272cd17edf74335145c7ad32ae496657f9df0f3de"
+        },
+        "IndirectSpeech_prompts_seed2_examples0.csv": {
+          "rows": 20,
+          "sha256": "318c973f7dc8b5c6e307c4693a2ba9a6a87195fb3cc7c2d752bfede30afd53d1"
+        },
+        "IndirectSpeech_prompts_seed3_examples0.csv": {
+          "rows": 20,
+          "sha256": "2428251e22f4849d648d717c7a10274cbfa36affac079414cadb46cc249c2527"
+        },
+        "IndirectSpeech_prompts_seed4_examples0.csv": {
+          "rows": 20,
+          "sha256": "4a77328bf6db0fd7aeb71fb46cce2ff86430c049e3bb603069aa6ca0c1600069"
+        },
+        "Irony_no-story_prompts_seed0_examples0.csv": {
+          "rows": 25,
+          "sha256": "1b37261a960e7cdd031c64356fbeb66afbb1dbc7694f83a7442666725abe0c55"
+        },
+        "Irony_no-story_prompts_seed1_examples0.csv": {
+          "rows": 25,
+          "sha256": "f798dc2a99edc080fe9e3bbcc91e4e253f98227a3e638fb76c8491b08022e8ff"
+        },
+        "Irony_no-story_prompts_seed2_examples0.csv": {
+          "rows": 25,
+          "sha256": "f6963c61b0602f0b29040fb5d74eace2da9652419b7cbef5a5adcc2e8d4f3b4a"
+        },
+        "Irony_no-story_prompts_seed3_examples0.csv": {
+          "rows": 25,
+          "sha256": "88ce19a1fd2cc481ae150f0b3484e53e5ad6d0aede6adb0492cc4410badf31d8"
+        },
+        "Irony_no-story_prompts_seed4_examples0.csv": {
+          "rows": 25,
+          "sha256": "af5f7487f19a9921363578def597794dc200c95824d18e324f2cf4f68cab0047"
+        },
+        "Irony_prompts_seed0_examples0.csv": {
+          "rows": 25,
+          "sha256": "209a2b892d55c116aff007cb3b5dd5243a77482a1be05f4287cbeb7eb72232c7"
+        },
+        "Irony_prompts_seed1_examples0.csv": {
+          "rows": 25,
+          "sha256": "a680ba4efaad0042e8573864ae61b0d2a4de1d2e24e6a28cf42b868c8f6c6f8b"
+        },
+        "Irony_prompts_seed2_examples0.csv": {
+          "rows": 25,
+          "sha256": "2949ef1dc6adf1bc77164c1cf3e6dfe55f731946105ae653514efbcc1020e51b"
+        },
+        "Irony_prompts_seed3_examples0.csv": {
+          "rows": 25,
+          "sha256": "45596c726b296802070a135a03c040ccfc484a8026cddc08886e73e38146806f"
+        },
+        "Irony_prompts_seed4_examples0.csv": {
+          "rows": 25,
+          "sha256": "913668f0ab19868bb67c3f2d5f79de2e13ebd542bc280f8834898c143c89566f"
+        },
+        "Maxims_no-story_prompts_seed0_examples0.csv": {
+          "rows": 19,
+          "sha256": "c569c1302efcf75e64b10eb6465fca2b3bba04ffb5ef202889f473266d08f287"
+        },
+        "Maxims_no-story_prompts_seed1_examples0.csv": {
+          "rows": 19,
+          "sha256": "0619739e9e02f6d9866f354733f94f5e227ab712b44221d605917b13c9651955"
+        },
+        "Maxims_no-story_prompts_seed2_examples0.csv": {
+          "rows": 19,
+          "sha256": "4a9f9f8bc89e04a33e6d088636018f674ef9a657268d794e5b8b6cfad290157f"
+        },
+        "Maxims_no-story_prompts_seed3_examples0.csv": {
+          "rows": 19,
+          "sha256": "ea55f9ef9e6d8e2d691456ad95c451c38efdfe66571a9cabada43cab5076e499"
+        },
+        "Maxims_no-story_prompts_seed4_examples0.csv": {
+          "rows": 19,
+          "sha256": "1ebb5a576246910a888b8147933ee32108667361f29312cb79a735d9e38ab0a1"
+        },
+        "Maxims_prompts_seed0_examples0.csv": {
+          "rows": 19,
+          "sha256": "7eee47e3f4d5c132eb603488457e9993f051e597e0a8f9dc9b5c741dbcca5dff"
+        },
+        "Maxims_prompts_seed1_examples0.csv": {
+          "rows": 19,
+          "sha256": "85b6b2d5cda9d78a25f2d5767a170e2e55824896d65599195ee79628b19100e0"
+        },
+        "Maxims_prompts_seed2_examples0.csv": {
+          "rows": 19,
+          "sha256": "40caeff409cebdab91c8773772cc6145efefa84db3e95b443b8e38e620d13442"
+        },
+        "Maxims_prompts_seed3_examples0.csv": {
+          "rows": 19,
+          "sha256": "b6bf6af8a8ab81b4fe92ec1af7751f0449c337294e2140841999714206b183d9"
+        },
+        "Maxims_prompts_seed4_examples0.csv": {
+          "rows": 19,
+          "sha256": "1e815724936e8fc1090ebecaae8416e30f769ab0c93877b2102fb9fcba22a1dc"
+        },
+        "Metaphor_no-story_prompts_seed0_examples0.csv": {
+          "rows": 20,
+          "sha256": "937c09b892905d7686393041a3fcdd67ba6464756a7053e88ce21c44cc168fb0"
+        },
+        "Metaphor_no-story_prompts_seed1_examples0.csv": {
+          "rows": 20,
+          "sha256": "03e463267e4175bd60ae3f60598b1efb7df5b09c08e5e84cbc6ab8aff3178f38"
+        },
+        "Metaphor_no-story_prompts_seed2_examples0.csv": {
+          "rows": 20,
+          "sha256": "254f01d8b40e36f9bc63f2c70a3b24b7a436204ce515242778f5ab282c123ea3"
+        },
+        "Metaphor_no-story_prompts_seed3_examples0.csv": {
+          "rows": 20,
+          "sha256": "eb0f622be601a77eb6d2d3f276152b9d58de9ecc6bcc908a40691ce1fdd7e720"
+        },
+        "Metaphor_no-story_prompts_seed4_examples0.csv": {
+          "rows": 20,
+          "sha256": "a34f95e81f07426076d0754286b2ab0f6d8531d94045639a0c65a1e33822d424"
+        },
+        "Metaphor_prompts_seed0_examples0.csv": {
+          "rows": 20,
+          "sha256": "fc2c9d018defda383447f961bb31b60ae0fa17c29f1804b5e7692a946001d3ba"
+        },
+        "Metaphor_prompts_seed1_examples0.csv": {
+          "rows": 20,
+          "sha256": "f06992a7ec415972f82ed4fd59dc80781e30bdc5dff1d1c838d7b144ee1f231d"
+        },
+        "Metaphor_prompts_seed2_examples0.csv": {
+          "rows": 20,
+          "sha256": "b61e586c0ab2fb42a909c652856378c989f591dfc13d25284ec8631f7a34253d"
+        },
+        "Metaphor_prompts_seed3_examples0.csv": {
+          "rows": 20,
+          "sha256": "ec774b9cfdce9d5dc99f49d39fcc3276400fc8e321ef770c623e56c6774f0de4"
+        },
+        "Metaphor_prompts_seed4_examples0.csv": {
+          "rows": 20,
+          "sha256": "a70ec6752228f41b829bf436898b1e86dda7400911028d7c91aace40b8cd8bcc"
+        }
+      },
+      "test_units": 1365,
+      "caution": "no-story is an ablation, not an unwarranted-inference label; published Control raw data has no ready-made prompt CSV"
+    }
+  },
+  "sdt_identifiability": "not established",
+  "normalized": {
+    "multiprageval": {
+      "rows": 1200,
+      "path": "/data1/xiangding/work/pragmatic-inference-calibration/data/multiprageval.jsonl",
+      "sha256": "05cd75858a586ececc360f82955c301a5dfe27031b4d1c33df9fa81d8e62afbf"
+    },
+    "wavelength": {
+      "rows": 100,
+      "path": "/data1/xiangding/work/pragmatic-inference-calibration/data/wavelength.jsonl",
+      "sha256": "09d9859e1af96bb9183d2689fdf8311b09e72898154ae7b254975eeb2701ea65"
+    },
+    "hu": {
+      "rows": 1365,
+      "path": "/data1/xiangding/work/pragmatic-inference-calibration/data/hu.jsonl",
+      "sha256": "52b89dbb38137a43b8488465648ae67286559b98a3e352cd0058c36825318384"
+    }
+  }
+}

@@ -66,6 +66,7 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 - **主线**：`workbench/real-time-causalization-capability-preservation/`（CVPR 2027 / ICML 2027）。研究对象不是某一个 seam bug，而是视频 foundation / bidirectional model 转成 causal、few-step、real-time world model 时，**哪些 world-model capability 被选择性损失、在哪个转换阶段发生、哪些设计能保住它们**。
 - **探索线**：`workbench/mechanism-population-dynamics/`（ICML 2027 / NeurIPS 2027）。
 - **PROPOSED**：`workbench/latent-world-model-planning/`，保持候选，不占 ACTIVE 名额。
+- **PROPOSED（人授权 D1/D2）**：[`workbench/pragmatic-inference-calibration/`](workbench/pragmatic-inference-calibration/README.md)，研究模型何时应超越字面、何时应停止过度推断；先复现三套 parent，SDT 仅为测量探针，本地最多八卡。
 - **PROPOSED（新增）**：[`workbench/data-centric-rsi/`](workbench/data-centric-rsi/README.md)，数据策略的可复用性、训练干预型数据研究与多时域学习效用；30 篇分级文献、12 张定向论文卡、3 个 idea、E00–E03；GPU 结果=0，不改变现有 ACTIVE 调度。
 - **已降级**：`workbench/video-world-model-temporal-interfaces/` → PAUSED（H 类 scientific-yield 决定）。块首接缝失聪仍是可靠诊断资产，但不再作为独立 MAIN paper story；只在新主线需要区分 causalization / distillation / rollout 损失时复用。
 - 完整登记表：[`workbench/README.md`](workbench/README.md) §9；检查：`python3 tools/process/check.py`。

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+export PRAG_ROOT="${PRAG_ROOT:-/data1/xiangding/work/pragmatic-inference-calibration}"
+export PRAG_ENV="${PRAG_ENV:-/data1/xiangding/env/pragmatic-inference-calibration}"
+export PRAG_PYTHON="${PRAG_ENV}/bin/python"
+export HF_HUB_DISABLE_XET=1
+export TOKENIZERS_PARALLELISM=false
+export OMP_NUM_THREADS=8
+export HF_HOME="${PRAG_ROOT}/hf-cache"
+export PIP_CACHE_DIR="${PRAG_ROOT}/pip-cache"

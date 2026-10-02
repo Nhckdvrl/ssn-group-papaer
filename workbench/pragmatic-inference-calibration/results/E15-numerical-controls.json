@@ -1,0 +1,43 @@
+{
+  "model": "Qwen/Qwen1.5-14B-Chat",
+  "dtype": "float32",
+  "tf32": false,
+  "hu": [
+    {
+      "phenomenon": "CoherenceInference",
+      "item_id": "1",
+      "parent_generate_max_prob_delta": 0.00011867284774780273
+    },
+    {
+      "phenomenon": "Metaphor",
+      "item_id": "20",
+      "parent_generate_max_prob_delta": 0.007490038871765137
+    }
+  ],
+  "wavelength": [
+    {
+      "item_id": "0",
+      "batch_max_abs_logprob_delta": 7.43865966796875e-05,
+      "argmax_same": true
+    },
+    {
+      "item_id": "99",
+      "batch_max_abs_logprob_delta": 5.7220458984375e-05,
+      "argmax_same": true
+    }
+  ],
+  "multi": [
+    {
+      "item_id": "1",
+      "language": "english",
+      "batch_max_abs_logprob_delta": 3.0517578125e-05,
+      "argmax_same": true
+    },
+    {
+      "item_id": "300",
+      "language": "chinese",
+      "batch_max_abs_logprob_delta": 0.00017547607421875,
+      "argmax_same": true
+    }
+  ]
+}
