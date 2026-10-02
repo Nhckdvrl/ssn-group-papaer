@@ -27,6 +27,7 @@
 - **Do-JEPA / FIRM-WM**：same-reset counterfactual intervention branches提供直接 action-effect evidence；
 - **Task-Sufficient World Models (ICML'26)**：active probing可暴露 control-relevant latent factors；
 - **WorldTest**：被动 rollout支持的事实不等于 environment-level query knowledge。
+- **OnlineWM (P101)**：active simulator querying + same-state counterfactual action contrast，说明 static offline coverage 与 observational objective都可能是问题。
 
 这些不是“把 R1 做完了”，而是在回答：
 - excitation够不够？
@@ -54,9 +55,11 @@
 同样 transition budget：
 - ordinary behavior trajectories；
 - same-state action branches；
-- active disagreement probing；
+- active disagreement / error-targeted probing（OnlineWM / Task-Sufficient WM是强坐标）；
 
 planning lift / identification gain 谁更高？在哪些环境结构下？
+
+这里的 novelty 不会是“active data有用”，而应是 **data family的边际价值 / complementarity / regime law**。
 
 #### R1-D failure / recovery data
 成功 demo很多，但：
@@ -135,6 +138,7 @@ same compact model
 - **HWM / Dual-WM / FF-JEPA**：hierarchy；
 - **LeFlow / GC-IDM / RP1**：部分 planning computation amortized；
 - **TD-MPC2-like**：hybrid model + policy/value + short search。
+- **Path-Space formulation (P103)**：把future path distribution本身当基本预测对象；当前planning直接实证仍有限，适合作为method-led hypothesis source而非首轮强baseline。
 
 ### 尚未闭合的问题
 
@@ -186,6 +190,9 @@ E13 先比较 continuum两端并做三本账：
 - **Action-Sufficient Goal Reps**：value-sufficient不代表action-sufficient；
 - **WorldTest**：general WM 应支持 environment-level diverse queries；
 - **Grounded WM**：language query进入 planning representation；
+- **TC-WM (P104)**：foundation features作为semantic scaffold，再提取 task-centric compact physical latent；
+- **SR-WM (P105)**：task-conditioned functional roles进入 state semantics；
+- **World Action Planner (P106)**：VLM负责task reasoning/proposal，multi-task WM保持physical outcome prediction，形成模块化 specialization/reuse 实例；
 - **Physically Viable WM**：physical abstraction本身应依 intervention query。
 
 这恰恰说明 R3 是一个**正在快速生长的 program**，不是“P38做过所以关闭”。
