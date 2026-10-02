@@ -10,7 +10,8 @@ import numpy as np
 
 import mp_common as mc
 
-OUT = mc.RESULTS / "e35"
+import os
+OUT = mc.RESULTS / os.environ.get("E35_OUT", "e35")  # E38 reuses this script with E35_OUT=e38
 THR = {"M1": 0.3, "M2": 0.5, "M3": 0.5, "M4": 0.2}
 
 
@@ -81,7 +82,8 @@ def compute(repo, seed, step):
         res[f"{k}_max"] = float(v.max())
         res[f"{k}_n_over"] = int((v > THR[k]).sum())
     OUT.mkdir(exist_ok=True)
-    name = f"{repo.split('DataDecide-')[1]}__{seed}" + (f"__step{step}" if step != dd.FINAL_1B else "")
+    final = os.environ.get("E35_OUT", "e35") != "e35"  # E38: the given step is the final step of a smaller model
+    name = f"{repo.split('DataDecide-')[1]}__{seed}" + (f"__step{step}" if step != dd.FINAL_1B and not final else "")
     (OUT / f"{name}.json").write_text(json.dumps(res))
     print(name, {k: v for k, v in res.items() if k.endswith(("_max", "_n_over")) or k.startswith(("reliab", "copy"))}, flush=True)
 
@@ -94,10 +96,11 @@ def analyze():
     for f in files:
         rec, seed = f.stem.split("__")
         D[(rec, seed)] = json.loads(f.read_text())
+    seeds = sorted({s for _, s in D})  # E35: 3 large seeds at 1B; E38: default + small-aux-2 at 300M
     recs = sorted({r for r, _ in D})
-    recs = [r for r in recs if all((r, s) in D for s in dd.SEEDS)]
-    keys = [(r, s) for r in recs for s in dd.SEEDS]
-    out = {"n_recipes": len(recs), "maps": {}}
+    recs = [r for r in recs if all((r, s) in D for s in seeds)]
+    keys = [(r, s) for r in recs for s in seeds]
+    out = {"n_recipes": len(recs), "seeds": seeds, "maps": {}}
     rng = np.random.default_rng(0)
     for m in ("M1", "M2", "M3", "M4"):
         V = {k: np.array(D[k]["maps"][m]).flatten() for k in keys}
@@ -138,9 +141,9 @@ def analyze():
         out["maps"][m] = {"spearman": mean, "jaccard_top5": mj, "SI_minus_SD": diff, "ci95": ci, "decision": dec}
     # scalar two-way decomposition (init x data, no replication)
     for s in ("M1_max", "M1_n_over", "M2_n_over", "M3_max", "M4_max", "copy_loss_second"):
-        Y = np.array([[D[(r, sd)][s] for sd in dd.SEEDS] for r in recs])  # [data, init]
+        Y = np.array([[D[(r, sd)][s] for sd in seeds] for r in recs])  # [data, init]
         gm = Y.mean()
-        ss_d = 3 * ((Y.mean(1) - gm) ** 2).sum()
+        ss_d = len(seeds) * ((Y.mean(1) - gm) ** 2).sum()
         ss_i = len(recs) * ((Y.mean(0) - gm) ** 2).sum()
         ss_t = ((Y - gm) ** 2).sum()
         out.setdefault("scalars", {})[s] = {"frac_data": float(ss_d / ss_t), "frac_init": float(ss_i / ss_t),
