@@ -128,3 +128,55 @@ stable-worldmodel代码已核对：
 7. TwoRoom先做reset-replay exactness check；PushT/Cube照FIRM思路做factual-suffix replay误差audit，再决定是否进入确认实验。
 
 这足以让本地agent直接开工；不需要先开发通用active-learning框架。
+
+
+## PBB selector v0：先用elite-membership uncertainty，不训练acquisition network
+
+对一个decision state的CEM candidate bank ({a_i}_{i=1}^N)，先用可部署的cheap uncertainty来源得到 (M) 组cost estimates (hat c_i^{(m)})。第一版优先顺序：
+
+1. 已有多个训练seed/checkpoint时直接用小ensemble；
+2. 否则训练2–3个bootstrap/lightweight scoring heads；
+3. 不把真实branch outcome、未来success或privileged state喂给selector。
+
+令 (K) 为CEM elite数，定义候选进入elite的经验概率：
+
+[
+p_i^{elite}=rac{1}{M}sum_m mathbf 1[iin TopK(hat c^{(m)})].
+]
+
+一个最简单的state criticality是elite-membership entropy：
+
+[
+U_{boundary}(s)=sum_{iin mathcal B} h(p_i^{elite}),
+]
+
+其中 (mathcal B) 只保留cheap top-M或elite-cutoff附近候选，避免远离决策边界的无关不确定性。branch action pair优先从：
+- 一个高 (p_i^{elite}) 但不确定的candidate；
+- 一个与其动作/预测后果有明显差异、同样可能跨elite cutoff的candidate；
+中选。
+
+这比“prediction variance最大就采”多了**decision boundary filter**，也比ToIA式task relevance更直接针对“谁会被CEM选中”。
+
+### 不把公式当贡献
+
+v0 score只是为了快速判别研究假设。若它有效，再比较：
+- entropy vs pairwise rank-flip probability；
+- top-1 boundary vs top-K elite boundary；
+- candidate action diversity是否需要显式进入score；
+- query one-step branch还是prefix branch。
+
+若简单margin/uncertainty已经足够，保留简单方法，不为“看起来新”加网络。
+
+## PBB的paired-action读数
+
+对被query的同state branches，除了训练数据本身，还保存：
+
+- cheap model排序；
+- branch真实outcome排序；
+- 是否发生top-1 flip；
+- 是否发生elite membership flip；
+- 两候选真实utility gap；
+- query前 (p_i^{elite}) / margin；
+- query后模型更新使该decision的regret减少多少。
+
+这些读数允许直接检查“acquisition score高”是否真的对应**decision correction value**，而不是只对应视觉/latent prediction error。
