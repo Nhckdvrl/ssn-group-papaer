@@ -961,3 +961,19 @@ I06 是 M3 的一个小切片；I03 oracle ladder是三条线共用的 scientifi
 - **新的 exact separation：**
   - P94 = behavior policy决定“动作效应是否可识别”；
   - M3 = 在动作效应已经可识别、local transition evidence相近时，**higher-order trajectory organization / temporal supervision是否额外把 behavior geometry写进planner semantics**。
+
+### P95 — Hitting Time Isomorphism for Multi-Stage Planning with Foundation Policies — arXiv 2605.06470
+**来源：** https://arxiv.org/abs/2605.06470  
+**代码：** https://github.com/MagnusBoock/IEL
+
+- **母问题：** offline foundation policy若要支持多阶段规划，latent geometry能否真正表示 controlled Markov process 的 directed hitting-time structure，而不是只得到对称相似度或不满足triangle inequality的 embedding？
+- **理论对象：** expected hitting time；作者构造 Hilbert-space displacement geometry，在 latent linear closure 下给出 identifiability up to bounded linear isomorphism；finite-dimensional error又由 one-step transition error × transient spectral-radius amplification控制。
+- **特别重要：** 论文明确在有限样本分析中纳入 **trajectory-label mismatch**；算法 IEL 用 explicit hitting-time regression + HILP-style consistency，让 geometry 更贴近 decision-time progress。
+- **证据：** offline maze locomotion；graph-based multi-stage planning；官方 repo 基于 HILP，含 AntMaze/Kitchen example。
+- **ownership：** “直接从 hitting-time supervision学 asymmetric/compositional planning geometry”“trajectory-label mismatch需要理论处理”已有强近邻。
+- **对 M3：** 进一步压缩 method novelty。若 E14成立，不能简单提出“回归 hitting time / 加 triangle constraint”。M3 的独立价值必须是：
+  1. 现代 **visual latent WM** 中 trajectory proxy如何造成 behavior-policy imprint；
+  2. 在 P94 local transition identifiability 已控制后仍成立；
+  3. 对 MPC candidate ranking/closed-loop load-bearing；
+  4. correction需要明确区别于 IEL/QRL 的 hitting-time/quasimetric machinery。
+- **可能的 exact gap：** RC-aux/Temporal-Distance JEPA使用 **observed route gap作为 planner-facing semantic label**，而 IEL目标是 foundation-policy / offline GCRL hitting-time geometry；二者 setting、model object、planner interface不同。但若最终方法只是把 IEL/QRL移植进 LeWM，compression risk很高。
