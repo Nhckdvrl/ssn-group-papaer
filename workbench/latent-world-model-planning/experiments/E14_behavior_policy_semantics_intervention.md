@@ -52,13 +52,32 @@ OGBench manipulation generator：
 - route class；
 - local transition/action statistics。
 
-## Support matching — 这是本实验成败关键
+## Support / identifiability matching — 这是本实验成败关键
+
+**P94 `On the Identifiability of Controlled World Models` 是新的强 confound。** 它已证明 behavior policy 的 conditional action variation 会决定 controlled transition identifiability，并进一步影响 counterfactual planning。若 DIRECT/DETOUR 的差异只是 action excitation不同，M3没有新意。
+
+因此 E14 除普通 coverage 外，还必须估计/匹配 **conditional action excitation**。连续状态下可用 state bins / kNN neighborhoods / learned state clusters 估计：
+- local action covariance；
+- minimum eigenvalue / effective rank；
+- action residual after local mean policy；
+- weakly excited action directions。
+
+若能直接用 simulator state/qpos-qvel做 measurement-only estimate，优先使用；不把它喂给 pixels-only model。
+
+M3 真正想留下的 residual question 是：
+
+> **在 conditional action excitation 与 one-step transition evidence都足够、且两数据 regime近似匹配时，higher-order route/temporal organization本身是否仍系统改变 trajectory-derived planning semantics？**
+
+这正是与 P94 的 exact delta。
+
+## Support matching — 普通 coverage 也必须控制
 
 不能只说“环境一样”。
 
 至少报告：
 - state occupancy histogram / kNN density overlap；
 - action histogram / norm / direction overlap；
+- **conditional action covariance / excitation overlap（P94 control）**；
 - one-step transition nearest-neighbor support；
 - start-goal distribution equality；
 - local velocity / qpos/qvel distribution（若有）；
@@ -138,7 +157,7 @@ OGBench manipulation generator：
 ## Gate
 
 - **G0:** training supervision实际因 behavior treatment而变化；否则设计无效。
-- **G1:** support overlap可接受；否则只作distribution-shift记录。
+- **G1:** state/action/local-transition support **以及 conditional action excitation** overlap可接受；否则只作distribution-shift / identifiability记录。
 - **G2:** learned planning semantics在 DIRECT/DETOUR 间系统变化。
 - **G3:** fixed-candidate rank/regret或selected action出现稳定变化。
 - **G4:** closed-loop consequence成立。
