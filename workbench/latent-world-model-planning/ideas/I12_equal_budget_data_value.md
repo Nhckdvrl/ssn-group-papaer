@@ -1,4 +1,4 @@
-# I12｜Decision-Critical Branching：有限预算的数据价值
+# I12｜Planner-Boundary Branching (PBB)：有限预算的数据价值
 
 - **状态：** SEED，未获得本地实验证据。
 - **对应：** R1，见[研究计划](../RESEARCH_PLAN.md) H-A。
@@ -23,3 +23,13 @@
 若成立：有限数据最有价值的位置不是平均预测误差最大的区域，而可能是planner即将作选择、且模型对候选相对后果不确定的位置。方法可以自然发展为planner-aware active world-model learning。
 
 若不成立：比较会告诉我们coverage、global uncertainty、failure data或action excitation哪个更有效，从而回到R1继续发展数据策略；不把seed失败等同R1失败。
+
+
+## 最近邻如何变成我们的起点
+
+- **FIRM-WM**已经证明common-reset intervention branches可用于reward-free visual planning；PBB研究的是**branch budget allocation**，不是再次证明branch data有用。
+- **OnlineWM / ToIA / Task-Sufficient WM**把active data对准model weakness或task-relevant information；PBB把acquisition value定义在**CEM candidate selection boundary**。
+- **SPARK**在LLM-agent rollout里也按critical decision states branching；这说明critical branching是跨领域原理，不能当headline novelty。PBB的对象是learned visual dynamics data与planner-selected competing actions。
+- **D-JEPA / AD-WM**直接改decision/action discrimination loss；PBB第一版保持loss不变，只决定真实world-model experience采在哪里。
+
+因此最干净的第一claim若成立会是：在同样新增环境steps下，selection-boundary branches比global uncertainty/coverage/random branches更有效地降低candidate regret并提高closed-loop success。
