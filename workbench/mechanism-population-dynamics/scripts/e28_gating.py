@@ -151,10 +151,43 @@ def compute(repo, seed):
     print(name, {k: (round(v, 3) if isinstance(v, float) else v) for k, v in res.items() if k not in ("items", "repo")})
 
 
+def analyze():
+    """Pre-registered E28 decision (experiments/E28-*.md)."""
+    import dd_common as dd
+    D = {(r, s): json.loads((OUT / f"{r}__{s}.json").read_text())
+         for r in ("dolma1_7-1B", "dolma1_7-no-flan-1B") for s in dd.SEEDS}
+    allm = list(D.values())
+    pc_a = np.mean([(d["attn_top_decl"] + d["attn_top_qa"]) / 2 for d in allm]) >= 5 * np.mean(
+        [(d["attn_random_decl"] + d["attn_random_qa"]) / 2 for d in allm])
+    drop_top = np.mean([d["margin_decl_intact"] - d["margin_decl_ablate_top"] for d in allm])
+    drop_rand = np.mean([d["margin_decl_intact"] - d["margin_decl_ablate_random"] for d in allm])
+    pc_b = drop_top >= 2 * max(drop_rand, 0) and drop_top > 0
+    G = {k: d["attn_top_qa"] - d["attn_top_decl"] for k, d in D.items()}
+    a = np.array([G[("dolma1_7-1B", s)] for s in dd.SEEDS])
+    b = np.array([G[("dolma1_7-no-flan-1B", s)] for s in dd.SEEDS])
+    se = np.sqrt((a.var(ddof=1) + b.var(ddof=1)) / 2) * np.sqrt(2 / 3)
+    fl = [D[("dolma1_7-1B", s)] for s in dd.SEEDS]
+    red_top = np.mean([1 - d["FE_c1_ablate_top"] / d["FE_c1_intact"] for d in fl])
+    red_rand = np.mean([1 - d["FE_c1_ablate_random"] / d["FE_c1_intact"] for d in fl])
+    out = {"positive_control_a_attention": bool(pc_a), "positive_control_b_causal": bool(pc_b),
+           "drop_decl_top": float(drop_top), "drop_decl_random": float(drop_rand),
+           "G_flan": a.tolist(), "G_noflan": b.tolist(), "delta_G": float(a.mean() - b.mean()), "se_G": float(se),
+           "read_gating": bool(a.mean() - b.mean() > 2 * se),
+           "FE_reduction_top_flan": float(red_top), "FE_reduction_random_flan": float(red_rand),
+           "causal_carriage": bool(red_top >= 0.5 and red_rand < 0.2)}
+    out["decision"] = ("invalid (positive control failed)" if not (pc_a and pc_b) else
+                       {(True, True): "gated retrieval heads", (False, True): "carried, gating not in attention read",
+                        (True, False): "attention gating without behavioural carriage",
+                        (False, False): "switch not in top-10 retrieval heads"}[(out["read_gating"], out["causal_carriage"])])
+    (OUT / "analysis.json").write_text(json.dumps(out, indent=1))
+    print(json.dumps(out, indent=1))
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo")
     ap.add_argument("--seed", default="default")
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--analyze", action="store_true")
     a = ap.parse_args()
-    check() if a.check else compute(a.repo, a.seed)
+    check() if a.check else analyze() if a.analyze else compute(a.repo, a.seed)
