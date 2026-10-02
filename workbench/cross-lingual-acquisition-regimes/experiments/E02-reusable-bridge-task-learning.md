@@ -1,6 +1,6 @@
 # E02：新监督内容覆盖 × 可复用跨语言桥接（2026-10-02）
 
-- **状态：** PLANNED
+- **状态：** COMPLETED（seed17四格pilot）
 - **类型：** EXPLORE（训练端发现pilot，不声称新idea）
 - **对应：** P03；E01有效学习baseline之后
 - **问题（一句话）：** 相同CPT预算下，英语新任务学习的迁移是否要求桥接覆盖新监督实例，还是同领域内容不重叠的桥接也可复用？跨语言条件连接是否改变选择？
@@ -14,8 +14,12 @@
 
 ## 结果（仅追加）
 
-尚未训练。数据和mask先校对；PreAlign/AdaXEval/LINK/XLDA覆盖母问题，当前无novelty声明。
+四cell seed17已按卡执行CPT，后续英语任务学习进行中。PreAlign/AdaXEval/LINK/XLDA覆盖母问题，当前无novelty声明。
 
 启动前数据校对：两pool各8192完整单位；new EN/DE loss token355452/465877，reused355115/465794，差0.095%/0.018%，低于1%阈值；7670/8192单位逐语言长度完全匹配。31个超512完整单位、87个原始EN与XNLI索引文本不匹配的候选被排除，不猜测其German对应。所有选中单位原始EN文本（NFKC/casefold、HTML解码、忽略tokenization空格）与XNLI EN索引一致，labels也一致。new额外排除dev/val/test premise；reuse排除全部后续task train/dev及val/test premise。准备manifest见 `results/e02_data_manifest.json`，原始token corpus在 `artifacts/bridge_learning/data.json`，未进Git。准备过程没有GPU训练。
 
 启动前mask阳性检查通过：A100/BF16模型中更换同长度EN prefix，paired DE logits最大变化2.0234375、split为0；非有限值与边界loss检查通过。`results/e02_mask_check.json`记录设备与脚本hash。该检查仅证明conditioning干预生效，不证明学到跨语能力。先启动new_paired seed17，原CPT与E01 task recipe不因目标读数改变。
+
+CPT阶段完成：固定held-out DE conditional NLL初始均3.43979，new_paired/new_split/reused_paired/reused_split分别1.58915/2.24522/1.55583/2.16188；四条件loss均下降。该读数只验证训练杠杆，不升级迁移主张。四条件任务学习全部完成保存后才运行统一分析器，不筛早期点。
+
+四条件完整任务曲线/权重已保存。终点EN/DE分别82.85/77.74、82.69/78.40、82.91/77.72、82.85/77.45%；完整分析和证据边界见 `results/E02_BRIDGE_LEARNING_PILOT.md` 及 `results/e02_learning_analysis_seed17.json`。没有升级claim；早期覆盖差也发生在EN，不追局部小信号。继续E03生成式学习，按真实训练后果再决定下一干预。

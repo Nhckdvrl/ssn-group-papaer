@@ -122,3 +122,14 @@ ownership：任务输入的跨语混合与同语言翻译不是同一个baseline
 
 E02定位检索已运行：`reusable bilingual bridge same content cross lingual task learning translated data document isolation`。
 最近包括Cross-lingual In-Context Pre-training、MONOWEB、Cross-Lingual Continued Instruction Tuning；检索分数不是ownership裁决。
+
+## 持续探索补查：ParaRater公开实现（非论文全文）
+
+[作者实现](https://github.com/aialt/pararater)，本次核对commit `a96a55b6790d5041a383d528420b646c5e17adc9` 的 `pararater.py` 参数、模型构造、inner loss、meta-gradient和训练循环。
+实现以从config初始化的causal LM训练主模型、BERT标量rater加权每样本token平均NLL，通过validation LM loss对短inner-loop求meta-gradient来更新rater。
+公开工具要求text parquet，不提供监督任务标签或后续任务适配循环；这不证明论文没做那些实验，完整两阶段过滤和主结果仍待全文核对。
+作者[ParaCore资产](https://huggingface.co/datasets/pararater/paracore)说明Common Crawl英语经Qwen3-8B翻译，每语言约1B token。
+DOCUMENTED来源：不只按一般质量选译料，而按目标语数据效益识别有价值的parallel；“选有用桥接”显然不是我们的空白。
+RECONSTRUCTED距离：E02不训练rater，检查一次CPT的内容覆盖/conditioning如何影响后续统一任务学习；若以后提出选择方法，需要直接比较当前语言建模效益与后续学习效益，不能只说pairing有效。
+
+Standard-vs-Split的forum、hash PDF及API本次再次受验证/403限制；搜索索引只取到匿名under-review摘要，不等同全文阅读或接收确认。作者博士论文公开入口也返回403。无精确方法证据就保留缺口；不将此作为自动关线理由。

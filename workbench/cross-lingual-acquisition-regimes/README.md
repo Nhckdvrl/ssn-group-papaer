@@ -76,6 +76,11 @@ MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制�
 再统一英语任务学习；不使用错误pair损伤作为唯一对照，不预写收益故事。
 [实验卡](experiments/E02-reusable-bridge-task-learning.md)，当前是发现pilot而非新idea。
 
+四格seed17完成，DE终点77.45–78.40%，conditioning的NLL杠杆未变成大终点迁移增益；
+早期覆盖差同时影响EN，不追同一NLI的小信号。见[完整pilot](results/E02_BRIDGE_LEARNING_PILOT.md)。
+**P04 / E03持续执行生成式QA学习基线**：完整LM答案监督，英语article-disjoint开发gate先行，
+通过后才看固定XQuAD EN/DE全曲线；不把分类头资产接回旧LM head解释遗忘。
+
 ## 资产位置
 
 - 模型：标准 HF cache `~/.cache/huggingface/hub/`。
