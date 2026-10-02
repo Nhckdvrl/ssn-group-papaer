@@ -19,6 +19,7 @@
 | P05 | Offline GCRL with Quasimetric Representations | NeurIPS 2025 Main | A | public | behavior future vs optimal goal distance |
 | P06 | Multistep Quasimetric GCRL | ICLR 2026 | A | public | MC behavior statistics vs Bellman optimality |
 | P07 | TempDATA | ICML 2025 | B | — | temporal-distance structure in offline MBRL |
+| P64 | Conservative Offline Goal-Conditioned Implicit V-Learning | ICML 2025 | A | publication material | cross-trajectory connected/unconnected semantics；I06 direct neighbor |
 | P09 | What Drives Success in Physical Planning with JEPA-WMs | TMLR 2026 | A | facebookresearch/jepa-wms | recipe/confound checklist |
 | P50 | Learning Task-Sufficient World Models | ICML 2026 | B | publication materials | task-minimal/sufficient state 已有顶会 ownership |
 | P51 | Behavior-Invariant Task Representation… | ICML 2026 | B | publication materials | “behavior-invariant representation” broad claim 已占 |
@@ -38,7 +39,7 @@
 | P12 | SCALE | arXiv | B | — | privileged state-distance calibration |
 | P13 | Decision-Metric Alignment / DA-LeWM | arXiv | A | paper artifacts | Plan-Real + CEM-stage rank / candidate margin |
 | P14 | Temporal-Distance JEPA | arXiv | A | CODE: HKBU-KnowComp/Temporal-Distance-JEPA @ b4c17ca | trajectory-derived directed temporal cost；I01 direct pressure |
-| P15 | RC-aux | arXiv | A+ | CODE: Guang000/RC-aux pinned; user-provided PDF | finite-budget reachability proxy + multi-horizon |
+| P15 | RC-aux | NeurIPS 2026 (official repo announcement) | A+ | CODE: Guang000/RC-aux pinned; user-provided PDF | finite-budget reachability proxy + multi-horizon |
 | P17 | ATLAS | arXiv | A | CODE: Annie969/atlas-world-model | marginal vs relational geometry |
 | P18 | Fast-LeWM | arXiv | B | public project | parallel action-prefix prediction |
 | P19 | Variable-Length Latent WM | arXiv | B | — | variable k-step prediction |
