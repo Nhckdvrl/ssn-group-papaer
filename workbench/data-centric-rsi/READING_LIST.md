@@ -44,6 +44,8 @@
 | P48 | XMAS，ICML2026 主会；会议最终版 | D（29页主文/A–E附录含理论、图表；官方proxy/求分/聚类/采样/目标训练关键代码已审，未复现） | [会议全文](https://raw.githubusercontent.com/mlresearch/v306/main/assets/naharas26a/naharas26a.pdf)；[代码 e534dd9](https://github.com/BigML-CS-UCLA/XMAS/tree/e534dd99e9ce9b7be345bd55e055c9b4e5c91c90)；跨模态谱轨迹、簇均衡/稳定采样，真实跨目标架构复用；矩阵距离理论与谱标量桥梁、公开实现模板/QK次序/脚本参数债务见论文卡 |
 | P49 | Let the Target Select for Itself / TACS，2605.09404v2；预印本 | D（主文与A–G附录定向深读；官方warmup/评分/校准/选样/训练/成本关键代码已审，未运行） | [全文](https://arxiv.org/html/2605.09404v2)；[代码35e97be](https://github.com/davidyht/TACS/tree/35e97bee2cbfcba72b7c359e34a74287955d303b)；rank1目标适配→候选归一化loss下降→base重置rank128主训；固定模型—目标对跨池复用，非跨目标/学生冻结迁移，最终评分规则须显式指定 |
 
+| P50 | ICONS，2501.00654v4；会议身份未独立核实 | D（主文与A–F关键附录；官方梯度/投影/影响/投票/写出/目标训练关键代码已审；图像只核解释与图注，未重构梯度库） | [全文](https://arxiv.org/html/2501.00654v4)；[代码b8ce8c8](https://github.com/princetonvisualai/icons/tree/b8ce8c86d7b098836a84ec2b40d259195b7f4494)；多任务分位投票、跨任务/模型复用和预算/warmup消融已拥有；E12是公开133K池内随机10K，不是原方法10K重求票，成本与语义边界见论文卡 |
+
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
 | ID | 论文 | 阅读 | 官方来源 |
