@@ -372,10 +372,13 @@ def batch():
             state['terminal_models'].append({'name':name, **terminal_hash(ROOT / 'train_runs' / name / 'model')}); save()
         while not gpu_available(0,75000): time.sleep(30)
         state['environment_before_judge'] = environment(); state['status'] = 'waiting_judge_gpu3_port8033'; save()
-        while not remote('--judge-idle'): time.sleep(30)
+        while True:
+            if gpu_available(0,75000) and remote('--judge-idle') and gpu_available(0,75000): break
+            time.sleep(30)
         state['status'] = 'judge_starting'; save()
         # If SSH loses the successful response, the finally block still probes
         # only the matching owner token and cleans up that launch.
+        assert gpu_available(0,75000), 'Student GPU became busy before judge launch; judge not started'
         judge_started = True
         judge = remote('--judge-start','--owner-token',owner_token,python=JUDGE_PYTHON)
         state['judge_launch'] = judge; save()
