@@ -223,3 +223,10 @@ venue corpus两次nearest已运行，返回MONOWEB/JGP、Domain adapted MT、LiR
 DOCUMENTED来源：固定训练step不代表相同模型变化，以实际LoRA参数更新范数累计model time触发旧任务replay；近期更新强度决定对上一任务快照的正则强度。0.6B–13B、三类CL benchmark、2%旧数据buffer及三个独立run，已有真正训练救援而非仅诊断。
 边界：同架构/config/buffer不自动等更新或计算预算；每新任务10 epoch、每次触发额外旧任务2 epoch，比较时须报告触发数和实际replay token。对象为已监督旧任务，不是未监督预训练翻译接口，也未识别正确双语对应的必要性。
 RECONSTRUCTED距离：通用自适应replay timing/intensity已有ownership；不能把P05后任意混合/replay命名为新方法。我们优先需要同内容/目标语言暴露的最小训练对照及标准方法成本参照，而不是先造复杂scheduler。
+
+## Parameter Alignment Mitigates Catastrophic Forgetting in Multilingual Expert Language Models（arXiv2606.00284v1）
+
+[一手全文](https://arxiv.org/html/2606.00284)，已读§2–4及附录A.2/A.3/A.5；接收状态未核对，没有复现。
+DOCUMENTED来源：Gemma3-4B语言family CPT中获取语言与保持旧能力冲突，比较层冻结、L2-SP、训练后还原和模型混合；固定中层边界，插值干预检验不同能力的层级敏感性。理解与翻译的敏感层不一样，并给出实际部署取舍。
+边界：dense25B与单family5B、学习率/early stopping不同，family策略间更可比较；single seed42，不能当普遍精确层级分工。FLORES统一post-truncation不复现原Gemma报告；作者也承认其协议边界。中层还原不等于删掉/恢复某项语义知识的唯一解释。
+RECONSTRUCTED距离：能力分解与训练保持均有直接近邻。E10/E09须回答实际数据选择是否改善保持，不以任务名不同抢ownership；简单增加层还原小网格也不足以构成新idea。

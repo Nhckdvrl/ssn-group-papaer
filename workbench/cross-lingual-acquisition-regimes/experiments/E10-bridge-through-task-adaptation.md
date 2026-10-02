@@ -16,3 +16,5 @@
 卡写于E06发现之后、E04完整任务曲线分析与任何本卡翻译读数之前；明确是E04原QA-primary之外的新测量承诺，不回写E04为事前预期的保持发现。
 
 E08通过后启动fvcrc20 GPU3顺序CPT四格；生成loop与E06 AST完全相同。为避免共享盘mmap demand paging，每个完整checkpoint复制到节点`/var/tmp/C_retention_*`，所有文件source/copy SHA256逐一相等才加载，测完删除该临时副本；HF缓存/原始checkpoint不变。stage/load/generation各自记时。E04任务学习继续，本题总并用5张，不杀其他研究作业。
+
+执行追加：E04四格已全部完整保存；CPT测量仍按原顺序进行。post队列必须看到四份CPT测量及四份QA完整pipeline保存记录、GPU显存释放才接续同卡全部四post，随后统一统计；不根据已完成的个别CPT选择post条件。`queue_bridge_retention.py`仅启动门槛，不改生成/评分/训练。当前E07另用一A100，E09等待队列不占模型训练卡，不冒称五张仍在并用。
