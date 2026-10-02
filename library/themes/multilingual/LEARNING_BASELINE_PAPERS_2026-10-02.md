@@ -230,3 +230,10 @@ RECONSTRUCTED距离：通用自适应replay timing/intensity已有ownership；�
 DOCUMENTED来源：Gemma3-4B语言family CPT中获取语言与保持旧能力冲突，比较层冻结、L2-SP、训练后还原和模型混合；固定中层边界，插值干预检验不同能力的层级敏感性。理解与翻译的敏感层不一样，并给出实际部署取舍。
 边界：dense25B与单family5B、学习率/early stopping不同，family策略间更可比较；single seed42，不能当普遍精确层级分工。FLORES统一post-truncation不复现原Gemma报告；作者也承认其协议边界。中层还原不等于删掉/恢复某项语义知识的唯一解释。
 RECONSTRUCTED距离：能力分解与训练保持均有直接近邻。E10/E09须回答实际数据选择是否改善保持，不以任务名不同抢ownership；简单增加层还原小网格也不足以构成新idea。
+
+## Exploring Two-Phase Continual Instruction Fine-tuning（ACL2026 Findings；仅近邻定位，不作为投稿目标）
+
+[官方全文](https://aclanthology.org/2026.findings-acl.1595.pdf)，已读§3–5训练/数据及replay细节；附录预算尚未完整核对，没有复现。
+DOCUMENTED来源：英文IFT后再多语IFT，希望同时保持英文和增加多语收益；阶段数据风格/内容相近时保持更好，另比较混合、生成replay、英文replay、层冻结与LoRA。生成replay使用第一阶段模型对第二阶段英文对应指令作答，5%/10%；不是简单随机复制旧数据。
+边界：相似数据也同时改变任务/质量，DES/参数差与保持的关系不是独立操纵纯相似度的因果证据；声称约同step不等于逐语token/独立内容等预算。多类能力平均可能掩盖代价。
+RECONSTRUCTED距离：时序与内容一致性已有ownership，E04重复语义内容的正收益即使出现也不是自动新发现。我们应比较明确预算下的实际学习和旧接口保持，并用同文本干预识别增量，而不是把correlation命名为新regime。
