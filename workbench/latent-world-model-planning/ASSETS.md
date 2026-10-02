@@ -105,3 +105,5 @@ PushT HDF5 SHA256 `b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d
 - 修复train-only复跑沿用原durable base/bank：seed0 `20261002-E16-base100-s0-e30` / `20261002-E16-acquisition-bank-s0`，seed1/2 `20261002-E16-independent-s{seed}/{base,bank}`；新模型HF `latent-wm-trained/E16_methods_optclone_s{seed}`，raw/完成后durable `20261002-E16-methods-optclone-s{seed}`。
 - E13零训练horizon audit已完成，durable `20261002-E13-horizon-breadth-RTX-s0`，小summary/hash进results；不受optimizer alias影响。
 - E17 raw `20261002-E17-query-proposal-RTX-s0`，head checkpoint HF `latent-wm-trained/E17_query_proposal_RTX_s0`；E18 queue raw `20261002-E18-continuous-adaptation-RTX-s0`。公开Fast object不提供训练episode split；只把新head/calibration split称held-out，released WM未见性未核对。
+
+2026-10-03：E18连续适配`20261002-E18-continuous-adaptation-RTX-s0`与E13动作基`20261003-E13-action-basis-RTX-s0`已完整durable，portableJSON在results。A5 `20261003-E13-commitment-cadence-RTX-s0`真实GPU0与data×compute `20261002-E16-data-compute-RTX-s0`真实GPU1各fresh Python运行；完成后同名durable，后者checkpoints HF `latent-wm-trained/E16_data_compute_s0`。旧paused queue已清理，不重复运行。

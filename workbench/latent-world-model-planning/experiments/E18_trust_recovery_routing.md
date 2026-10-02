@@ -139,3 +139,10 @@ RTX重算512条旧baseline的success全部相同，但4条重规划的完成步�
 
 
 连续pilot运行前物理干预校对：原PushT mass+moment同比例×2在锁定16 factual25轨迹的10D状态逐步差全0（15/16实际接触），构成无效transition干预；未用于任何GPU适配比较。CPU1200steps对比发现moment-only×2在15/16改变轨迹，故运行前修订为moment-only。这是按是否真实改变transition的干预正控，不是按适配效益选择shift；全部16保留。原实现/轨迹/诊断保存，[校对](../results/E18_20261002_physics_preflight.json)。E18等待queue仅在未运行时停止，修订完成后重启。
+
+
+### 连续适配全288episodes（2026-10-03 JST）
+
+[config/hash/summary/controls](../results/E18_20261002_continuous_adaptation.json)，14,313执行/诊断/重放steps，common prefix state/pixel误差0。FROZEN/PREDLAST/PREDLAST+PROJECTOR顺序、各16：TwoRoom nominal10/10/9、gain.7=8/8/9、wind=8/8/9；PushT nominal5/4/3、gain.7=3/4/3、moment×2=3/2/3。没有稳定成功增益，不能转成update普遍无效或完整AdaJEPA反驳。Pusht更新有distance退化；success与distance分开汇报，fitting loss不作utility。
+
+此前E17 sameg25前16整25执行ZERO300为导航13/16、操作14/16，本次每5反馈FROZEN10/5，但两次plannerseed不同（68000/78000），**不能直接归因feedback**。新增共同初始plan、commit5/10/25和shift-warm控制已先写E13卡；若差由cold optimizerrestart解释，先加强MPC baseline，再研究update；如果仍有差，继续分辨预测对象、执行承诺、隐藏速度/反馈state替换，不预选narrative。

@@ -1,6 +1,6 @@
 # 实验索引｜菜单，不是关卡链
 
-每个ID只有一个当前文件。E00两任务原生preflight、E13 A0/A1/A2与E16首轮七策略已完成；E16三pipeline已完成但optimizer alias降级并重跑；E13 A3已完成、E17 proposal启动、E18连续适配排队。其余按卡内状态，可根据原生资产和新结果在运行前修订。新方法与解释实验可以并行，不要求E00→E01→所有诊断→方法严格串行。
+每个ID只有一个当前文件。E00两任务原生preflight、E13 A0/A1/A2与E16首轮七策略已完成；E16三pipeline已完成但optimizer alias降级并重跑；E13 A3/A4、E17 proposal、E18连续适配均完整完成；E13 A5/data×compute与修复acquisition仍运行，R3cost/R4observer运行前卡已锁。其余按卡内状态，可根据原生资产和新结果在运行前修订。新方法与解释实验可以并行，不要求E00→E01→所有诊断→方法严格串行。
 
 | ID | 当前文件 | 用途 |
 |---|---|---|

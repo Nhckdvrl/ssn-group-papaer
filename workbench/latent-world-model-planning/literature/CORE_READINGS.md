@@ -278,3 +278,16 @@ SPARK的branch criterion不是外部value/entropy计算器，而是policy reason
 来源：[CoRL2020 iCEM §3.1/实验设计](https://proceedings.mlr.press/v155/pinneri21a/pinneri21a.pdf)，已定向读回。它从实时MPC的采样成本出发，结合colored action noise、elite reuse与memory；先用真实dynamics隔离优化改进，再用learned PlaNet测试。时域独立输入在积分动力学中难形成coherent motion，这是成熟控制/搜索原理。
 
 E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新发明平滑规划；先以这类强对照排除E17增益仅来自generic action shape的解释。若有效，方法贡献必须继续来自latent预测对象、任务对齐或data/planner交互的可验证设计，而不是给经典optimizer换名。
+
+
+## S14复读｜FIRM-WM的状态与数据exact scope
+
+[§4–6](https://arxiv.org/html/2609.22816v1)已正文深读。typed configuration c负责goal cost；pixel/action causal history→fiber m128负责动态；物理配置/velocity/contact训练标签属于额外监督，部署pixels+history。factual/common-reset共训一个multi-horizon transition，three full-pipeline seeds固定data；四任务（此前摘要三任务描述不全）。matched PushT FIRM75.7±4.7 vsLeWM90，persistentcontact是明示边界。不能把配置/动态角色分离或history单独当新；E16 data-only没有这些结构/物理标签，下一步应检验数据×训练对象/动作支持，而非改名fiber。
+
+## S24｜Hidden Failure Modes：优化目标时间与执行接口是强baseline
+
+[作者原文+代码](https://github.com/24GUNV/LeWMRO)已读paper正文与value实现（OpenReview源challenge，不假称从摘要读全）。ICML2026 workshop工作，非main接收。母问题是offline latentWM的closed-loop读数混入timeindex/controllability；继承LeWM/CEM，以H15macro/K3、terminal@H/prefix@K/runningγ.95扫executionK、factualrestore、value/graphvalue/controlmetric、nearestwaypoint作decisive对照。PushT17→94.5来自timealigned评分；deceptiveFarDoor scalar/value26.5、nearestwaypoint92.7，resetartifact单列。A5因此是经典强baseline/机制排混杂，不登记新贡献；新costpilot主格K=H25、不造FarDoor，真实vsimaginedendpoint同标签输入是待测design delta，尚未证明novel。长时母问题保留。
+
+## S25｜FlexiWorld：不把chunk granularity与reobservation混写
+
+[§1–3、AppendixD/E](https://arxiv.org/html/2609.35138v1)已读。继承LeWM/INTACT/POPLIN，把mixedgoalspan、variablechunks、AR actor/studentforcing与ARCEM residual搜索结合；三trainseed与三evalseed分开报告，actorfree CEM相近的对照把贡献定位到actiongeneration。较长chunk更小expertendpointMSE未必提高PushTcontrol；E.1拆firstplan/search/reobservation，E.2同候选存在成功却selection失败，并用物理clipping→renorm评分修复raw/executedcommand mismatch。已有ownership：flexiblechunk/actorresidual/feedback收益分解不是我们的首次发现。E13下一对照必须核实task-specific真实actionbounds；方法生长去cost/预测对象/训练域，不因此关闭R2。

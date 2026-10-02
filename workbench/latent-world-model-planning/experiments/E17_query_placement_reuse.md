@@ -94,3 +94,17 @@ proposal pilot全部320episodes完成，见下方实际记录。
 [summary/config/hash/每method paired CI](../results/E17_20261002_query_proposal.json)，19,951真实steps；177,202参数head，训练各2000steps：TwoRoom47,450pairs/9,295编码帧/10.36s GPUtrain，PushT91,069pairs/13,279帧/9.47s，prepare/编码另计。顺序ZERO300/ZERO900/PROPOSAL300/GOAL-SHUFFLED300/GCBC-direct，各16：TwoRoom25=13/15/16/15/11、75=10/14/15/14/12；PushT25=14/16/14/14/6、75=3/4/6/5/0。
 
 组合的导航增益相对900候选各只有+1goal，CI含0；操作long为+2goal/help4-harm2，CI[-.1875,.4375]。打乱proposal goal几乎达到组合结果，尚不能建立query信息的独立作用；GCBC-direct在操作明显弱，不能宣称击败强imitation基线或新颖的WM+policy组合。保留所有methods/goals；对比cheap train与部署开销，不把dataset/预训练预算混成equal-totalcompute。下一步比较state-only/action-trajectory结构prior与learned cost/query placement，及更强head data regimes；不局部调head层数救当前叙事。
+
+### R3 cost placement：demonstrated continuation evaluator（2026-10-03，运行前）
+
+推进P05/R2/R3，而非继续微调proposal。重要问题是goal距离是否给planner可用的进展排序；继承temporal-distance/value/HER成熟思想、Hidden Failure Modes的value/controlmetric强邻居，不声称学到minimum reachability或首次value-guided planning。真正待测design issue：在真实latent上训练的goal evaluator，进入WM imagined terminal后是否失准；把同监督输入换成imagined endpoint能否改善控制。
+
+冻结原Fast两task全部weights/encoder/norm。复用E17精确100episodes及缓存latent/pairs，(t,h)为h25:5:75；同expert25action，REAL输入[z[t+25],z[t+h]]，WM-CALIBRATED输入[Fast(z[t],a[t:t+25]),z[t+h]]；MIXED对同pair两个inputs的MSE取mean。三head共相同random init/fresh AdamW、batchpairids、2000updates/b128/lr3e-4/WD1e-3/clip1；MLP384→256→256→1+Softplus，不额外输入goal时间/环境预算。标签(h−25)/50只指demonstrated suffix length，不当最短路径/return/反事实可达性；额外future labels训练使用相同三head，部署不读future。
+
+五方法RAW-L2/RAW-COS/REAL-COST/WM-CALIBRATED-COST/MIXED-COST；RAW-L2复刻E17ZERO300，RAW-COS仅换归一化cosine。两task×g25/g75全部前16，H25/N300/K30/30、每25真实steps再observe、seed68000/resetseed同E17，budget50/150；320episodes。cost之外不加proposal、branch、newWMloss、cadence/router。缓存/数据来自原E17 hash，head模型HF E17_continuation_cost_RTX_s0，raw `20261003-E17-continuation-cost-RTX-s0`，完成durable同名。MIXED平均loss多一个headforward，匹配updates不是墙钟或headtraining FLOPs。
+
+阳性对照：REAL/WM同pairs/labels、source episode不重合actual评测16、encoder不变、common head init/batchids隔离、Fast same expert prefix与原生terminal一致、RAW-L2复现既有success/envsteps/distance；nativecost与gradfinite。噪声地板：单releasedcheckpoint/单headseed、每task/range16episode bootstrapCI宽；WM原pretrain未见性未知、PushT restore memory限制继承。primary各task/range closed-loop success/paired help-harm/native distance对RAW-L2；train fit与真实/imagined held-out factual-pair误差只作辅助，不能替代utility/对counterfactual泛化。
+
+决策表（跑之前写）：WM/MIXED胜REAL且两task有utility→确认 imagined-evaluator训练域这个设计，再扩counterfactual/secondmodel/独立headseed；REAL已有效→先用强temporalcost baseline，不能称calibration贡献；COS已有同收益→简化几何解释；all弱→记录null、改变预测结构/任务信息/goal progress，不连续调head层数或缩任务包装。当前只是高信息method pilot，不是novel claim。GPU待A5后授权空卡，代码CPU预控与root审阅后才启动。
+
+运行前action接口修订：precision独立audit确认TwoRoom物理commands真实clip[-1,1]、模型cost未clip，已生成plan实际issued超界41–73%；PushT env relative step并不clip。尚未GPU costhead运行、未见读数，不依据方法success更改。主5methods改名EXEC-L2/EXEC-COS/REAL-COST/WM-CALIBRATED-COST/MIXED-COST；TwoRoom全部5使用physical denorm→clip→renorm后输入模型，训练expert25计算imagined cache也同transform。TwoRoom额外NATIVE-L2完整保留原生未clip评分，与E17核对；PushT只原5methods且EXEC-L2等原NATIVE。合计352episodes。primary headgain对EXEC-L2；NATIVE→EXEC是经典interface repair（FlexiWorldE.2强邻居）而非方法贡献。真实发出的原command继续由env处理，scoring使用其实际动作效应；不悄悄改变noise/proposal或PushT动作支持。

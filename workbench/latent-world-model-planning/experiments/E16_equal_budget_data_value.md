@@ -272,3 +272,9 @@ ONE-STEP保持原3 shifted-target MSE与前4帧SIGReg。TF-LONG、OPEN-LONG均�
 released LeWM最后在同48起点作正控，沿其full-dataset action statistics；不是同训练data公平方法基线，只用于harness/能力参照。positive controls为同初始weights digest、wholeepisode/norm/eval一致、native scoringallclose、loss/gradientfinite。primary成功/help-harm和episodepairedCI，训练MSE仅诊断；单init/data seed，不能升级科学主张。
 
 决策表（跑之前写）：1000在matchedupdates已改善→数据覆盖/利用更重要，下一批在较强dataregime确认acquisition/objects；只有更多updates改善→先补optim训练，再评idea；双方仍弱且released强→官方resolvedrecipe/representation/normalization作对照，不能把欠训练失败当方法边界。原paper每task10epochs、repo默认100以及当前HF history设置不同；分别报告，不冒称原数值复现。raw `20261002-E16-data-compute-RTX-s0`，GPU0在E18后，独立单GPU、不用DDP。
+
+运行前placement补记（2026-10-03）：检测本机GPU1释放，data×compute由GPU0等待队列移到GPU1独立运行，与A5/GPU0及optimizer-fix/GPU3并行；数据/目标/seed/updates/CLI不变。free-GPU wrapper再次确认，模型HF缓存、数据node-local。
+
+### Optimizer-isolated seed0：全部七方法实际读数
+
+[完整config/hash/source-stepguards/pairedCI](../results/E16_20261003_optclone_seed0.json)：NO-ADD/IID/UNIFORM/COVERAGE/GLOBAL-U/TASK-U/PBB=7/18/32/27/19/13/20，各48；所有297optimizerstates从1680开始到2280、600updates、source不变。UNIFORM对NOADD+25/48、pairedepisode95%CI[.3542,.6672]；PBB对UNIFORM−12/48、CI[-.4172,-.0625]。这是一完整探索pipeline seed，不是独立trainseedCI，另外两seed继续全部原方法，不停止/筛种子。simplecommon-reset是强baseline而非新方法；下一步数据×compute与数据×objective检验支撑范围/利用，不局部优化PBBentropy。旧被污染结果仍作废为因果证据。

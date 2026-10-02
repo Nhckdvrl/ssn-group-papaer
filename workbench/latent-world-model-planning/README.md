@@ -58,11 +58,14 @@
 - **科学主张：0。** 论文报告值不是我们的实验结果。
 - D1 完整数值复现未完成；D2 Fast两任务原生加载/训练步/闭环完成，LeWM有限数据训练已运行；均使用节点数据缓存。
 - E13：两任务20% TOP-M-SCREEN分别恢复96.9%/99.99%模型elite，未见实际耗时收益。扩到[256个长短目标/512配对episodes](results/E13_20261002_fidelity_value.json)：TwoRoom75步goal FULL300成功27/64、CHEAP900为47/64；PushT75步两者9/64。尚无self-consistency refinement控制收益；共卡timing不用于speedup。
-- E16：**优化器隔离校对后，以下旧比较只保留描述性读数，方法判断撤回，等待全部公平重跑**（[校对](results/E16_20261002_optimizer_audit.json)）。[七策略/一完整数据seed](results/E16_20261002_equal_data_seed0.json)，相同基础模型/600更新/2000新增logical steps/48目标：NO-ADD9、IID17、uniform17、coverage18、GLOBAL-U24、TASK-U11、PBB19。GLOBAL-U优于PBB的单次读数不等于稳定规律；[三独立pipeline seeds](results/E16_20261002_independent_seeds.json)已完成：NO-ADD9/19/22、GLOBAL-U24/16/23、PBB19/13/15；这些模型共享CPU optimizer step计数，旧跨方法/跨seed比较不足以支持数据效果或机制归因。
+- E16：旧三seed因[AdamW CPU step引用共享](results/E16_20261002_optimizer_audit.json)降级、方法判断撤回。[公平重跑seed0](results/E16_20261003_optclone_seed0.json)全部七方法NO/IID/uniform/coverage/global/task/PBB=7/18/32/27/19/13/20（各48），guards均1680→2280/source不变。uniform对NOADD+52.08pp、episodeCI[35.42,66.72]；只是一pipeline，另两原seed继续，尚无稳定novel采样效果。
 - [全部起点factual controls](results/E00_E13_E16_20261002_factual_controls.json)：TwoRoom128/128与E16 48/48成功、状态/初始pixel误差0；PushT75步63/64成功且有显著物理恢复残差，保留所有起点并限制解释。
 - E18：[反馈/重规划fork](results/E18_20261002_recovery_forks_seed0.json)与[六response/768 continuations](results/E18_20261002_short_updates_seed0.json)已完成。nominal导航FEEDBACK16/32、短head/dynamics均12；shift下为7/9/6。适配训练误差下降但效用弱；没有router或稳定恢复方法证据。
 - E13时域×搜索宽度384episodes已完成：[结果](results/E13_20261002_horizon_breadth.json)。同released Fast，H25N300/H25N900/H75N300在导航长goal为19/25/8（各32）；操作长goal6/7/0。只限定此backbone/terminal cost，不否定长时域母问题。
-- 新批次：修复E16全部方法和数据×预测目标矩阵；E17 query-in-proposal与E18连续dense-prefix适配均已写运行前卡，完成状态与进程见当天日志。
+- [E17 proposal320episodes](results/E17_20261002_query_proposal.json)：导航远proposal15/16、ZERO90014/16、goalshuffle14/16；操作远6/4/5，query-specific作用未证实。
+- [E18连续适配288episodes](results/E18_20261002_continuous_adaptation.json)：nominal操作FROZEN/PREDLAST/+PROJECTOR=5/4/3（各16），尚无稳定success收益；不称完整AdaJEPA复现。
+- [E13经典动作参数化256episodes](results/E13_20261003_action_basis.json)：导航远LINEAR5-N300/ZERO300/ZERO900=14/10/14，操作远3/3/4；经典强baseline、单seed，不当新idea。
+- 运行中：修复E16三seed全部方法→数据×预测目标矩阵（GPU3）；共同初始plan执行承诺/后缀warm对照（GPU0）；nested100/1000数据×训练计算（GPU1）。精确process/artifact见当天日志。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 

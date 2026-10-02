@@ -262,3 +262,18 @@ H75把同一Fast的25步direct predictor递归3次；H25-N900与H75-N300每轮ca
 正控：k25 identity、k1repeat、k5实际SWM CEM candidate/返回dimensions，cost执行transform一致，零候选各basis展开一致；native modelcost allclose；同lockedgoals，不挑成功episode。每anchor固定随机方法顺序，同decision seed；primary分task/range success、vs ZERO300/900的help-harm与episodepaired bootstrap CI；actualwallclock/candidatecalls/actionparamdim/realsteps分别计，不把params少直接称更少WM compute。
 
 决策表（跑之前写）：generic低维结构已胜learnedproposal→升级为强baseline，原query增量重定位；只有queryproposal有效→补state-only head和更强训练；simplebasis仍弱→保留null，cost/预测对象/目标alignment实验继续。单releasedWM/16episodes条件CI，不是新论文或unseen WM episode证据。raw `20261003-E13-action-basis-RTX-s0`，E18结束后GPU0、data×compute之前，零训练。
+
+
+### A5：共同初始plan的执行承诺/重规划频率（运行前）
+
+对应P05/P08、R2/R5（R4是竞争解释，不预选）：E18频繁真实反馈FROZEN名义PushT5/16 vs E17整25执行14/16，但plannerseeds不同，需要公平同初始plan对照。先排除经典warm-start/优化重启，不把已有MPC原则称创新。
+
+锁两Fast/同preparedg25/g75各前16/nominal；SEED78000，全部64anchors×4methods=256episodes，budget50/150 primitive steps。每anchor真实初始image/goal一次N300/K30/30/H25 CEM得到共同normalized25×2plan（seed78000+j*100），method复位同起点、首次执行同plan的5/10/25 prefix，早成功全保留。EXEC5-COLD / EXEC10-COLD / EXEC25-COLD / EXEC5-SHIFT-WARM。后续真实当前image重新encode、同goal/N300/H25；每decisionseed78000+j*100+steps//5。COLD新solver/initNone；WARM初始mean为previous normalizedplan向前移本次已执行5步，尾5补normalized0（不称物理zero），[1,1,50]；sampling std1/原native eliteupdate不变。budget末尾execute min(prefix,remaining)。
+
+primary分task/range成功与vs EXEC25的paired help-harm/bootstrapCI；native distance/搜索次数/真实steps/模型calls/encode与wallclock另列。每轮预算相同但更密cadence可用更多总compute，不能说equal-totalcompute/wallclock。正控公共plan源码/hash、最初state/pixel replay一致、shift/pad/nativeinitshape与cost执行一致；不筛目标/方法，不偷偷让warm看到未来groundtruth。
+
+决策表（跑之前写）：warm修复cold差异→提高所有恢复方法的强MPC baseline，不能把冷重启伪影写成新feedback机制；不同commit仍稳定影响utility→扩两seed/backbone，分辨优化、planned tail、feedback表示/hidden velocity；无差→保留旧跨run差异未复现，转向data/objects/querycost，不救narrative。是经典强对照与方法生长pilot，尚无paper claim。raw `20261003-E13-commitment-cadence-RTX-s0`，A4后GPU0，先于已锁data×compute；data实验不会取消，只有执行顺序改变。
+
+### A4完整读数（2026-10-03）
+
+[完整config/hash/controls/summary](../results/E13_20261003_action_basis.json)，256episodes/16,539真实steps；ZERO300/ZERO900/LINEAR5/CONSTANT1，导航近=13/15/14/8、远=10/14/14/9；操作近=14/16/15/7、远=3/4/3/0，每组16。LINEAR5导航远相对ZERO300 +4/16，pairedCI[-.0015625,.5]；与ZERO900同14个成功但help2/harm2、CI[-.25,.25]，不称等效。操作远未改善。CPU原生k25/5/1各30costcall、展开input50dim/return50/10/2全PASS；nativecost最大abs1.83e-4。经典support/方差/相关性改变，单plannerseed，无novelty/WM未见episode/墙钟加速主张。后续不再局部调knots救故事，A5共同初始plan与data×compute分别检验部署接口和训练条件。

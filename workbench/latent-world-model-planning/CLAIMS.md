@@ -1,6 +1,6 @@
 # 主张账本
 
-日期：2026-10-02。已有 TwoRoom / PushT 原生测量、LeWM有限数据训练与七策略pilot；**尚无已成立的科学主张或完整数值复现。** 文献中的成功率不是我们的 L1/L2 证据。
+日期：2026-10-03。已有 TwoRoom / PushT 原生测量、LeWM有限数据训练与七策略pilot；**尚无已成立的科学主张或完整数值复现。** 文献中的成功率不是我们的 L1/L2 证据。
 
 ## 待验证的建设主张
 
@@ -12,7 +12,7 @@
 
 尚无。系统调查中的表示／动力学／搜索／数据／历史分支是探索范围，不预先注册其结果方向。
 
-首轮[E16](results/E16_20261002_equal_data_seed0.json) GLOBAL-U24/48、NO-ADD9/48、PBB19/48是待确认观察，不升级科学主张。[独立确认](results/E16_20261002_independent_seeds.json)GLOBAL-U相对NO-ADD只在seed0显大增益，seed1下降/seed2微升；PBB其余两seed也下降。相对NO-ADD，GLOBAL-U配对episode gain31.25pp [18.75,45.83]；这不是独立train-seed CI，也不是新颖性证据。E13 [A2](results/E13_20261002_fidelity_value.json) 没有支持当前self-consistency refinement收益，不能据此关闭R2。
+最新可用观察为[修复隔离后E16 seed0全部七方法](results/E16_20261003_optclone_seed0.json)：NO-ADD7/48、uniform32/48、GLOBAL-U19/48、PBB20/48；uniform对NOADD episode pairedCI[35.42,66.72]pp，但仅一个pipeline seed，不能称稳定数据/机制结论，另两原seed继续。旧首轮/旧独立三seed及decision audit受optimizer alias污染，跨方法因果结论已撤回，见下方降级记录；不把旧数字当本次方法证据。E13/E17/E18新batch有真实读数，但尚无支撑novel方法的成熟证据；科学主张仍0。
 
 后续每条主张需要关联实验卡和结果文件，并区分：观察相关性、受控干预、机制归因、跨模型范围。不能因为方法名字叫 reachability／causal／verifier 就把其输出当作真实可达性／因果／可执行性。
 
