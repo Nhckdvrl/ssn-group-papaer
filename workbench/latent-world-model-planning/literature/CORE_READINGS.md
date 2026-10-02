@@ -144,3 +144,29 @@ UHM直接预测任意horizon future以减轻递归误差；Jumpy WM预测预训�
 传统multi-fidelity planning已经会把cheap analytical/simulation model和expensive physical/fine model结合，甚至在一条规划中切换不同fidelity；因此“粗模型筛、细模型验”本身不是新思想。2026 latent-WM又有Fast-LeWM的parallel direct prediction和DeepJEPA的transition-level adaptive depth。
 
 **我们的生长分析。** H-B若有价值，必须落在CEM特有的**elite-set preservation problem**：在大量latent candidates中，哪些cheap evaluations足以确定“不可能进elite”，哪些candidate必须升级到高保真预测？这个问题可以用same candidate bank、elite recall和fixed-wall-clock严格测，甚至可以从cheap→high-fidelity residual的校准区间导出安全筛选规则。这个精确接口比“adaptive compute”更有归属感。
+
+
+## 从这些论文反推：这个领域的“顶会尺度”到底是什么
+
+这张表不是排名，而是研究生长模式：
+
+| 工作 | 继承的成熟资产 | 真正推进的一步 | 为什么不是“小bug” |
+|---|---|---|---|
+| DINO-WM | pretrained visual features + MPC | 把预训练视觉表征直接变成reward-free dynamics/planning state | 改变world model是否必须重建像素的设计选择 |
+| PLDM | latent dynamics + goal-conditioned offline learning | 系统研究数据质量/连接/trajectory structure何时支持planning | 回答model-based与model-free在重要数据regime下的取舍 |
+| LeWM | JEPA + latent planning | 稳定、简化end-to-end compact JEPA训练 | 解决方法可训练性/recipe complexity，给后续研究公共支点 |
+| Temporal Straightening | temporal representation + latent MPC | 让轨迹几何更适合optimization | 连接representation geometry与planner conditioning |
+| RC-aux | LeWM + multi-step/reachability思想 | finite-budget reachability监督 + training/planner解耦验证 | 直接服务有限预算planning，并用Wall等结构任务证明实际后果 |
+| Fast-LeWM | LeWM + direct multi-step思想 | 把rollout接口改成action-prefix parallel prediction | 同时解决递归误差与CEM重复计算，方法简单但问题真实 |
+| FIRM-WM | compact latent planning + recurrent state + intervention data | goal-comparable state / dynamics fiber分角色，并用common-reset branches校准alternative actions | 处理CEM真正依赖的counterfactual action outcomes |
+| DeepJEPA | recurrent refinement + inference-time compute | 把“transition内部算多深”变成自适应资源轴 | 把world-model scaling从更长/更多candidate改成decision-critical internal compute |
+
+共同规律不是“每篇找到完全没人碰过的空白”，而是：
+
+1. **母问题通常早已有祖先。** 新论文重新定义一个具体design decision：表示什么、预测什么、怎样用数据、在哪花计算。
+2. **方法往往不大。** 顶会尺度来自问题与证据，而不是参数量或模块数量。
+3. **决定性实验通常很直接。** 一个结构任务/强ablation能说明为什么方法该工作，然后跨2–5个任务确认范围。
+4. **related work越近，越容易形成清楚delta。** Fast-LeWM离LeWM极近，RC-aux也直接以LeWM为backbone；近不等于不能做，关键是新增的operational question是否重要。
+5. **方法和理解可以共同成为贡献。** 不需要先证明一个全新机制才能训练；也不能只有涨点而不解释改了哪个设计决定。
+
+这正是本工作台应该模仿的科研经济学：**先用低耦合小模型快速试一个真实design decision，再用多GPU把最重要的对照、seed和任务范围一次打透。**
