@@ -1,0 +1,44 @@
+{
+  "experiment": "E13",
+  "date": "2026-10-03",
+  "kind": "CPU-only actual Trainer preparation smoke audit",
+  "python": "/home/xiang/.venvs/data-centric-rsi/bin/python",
+  "CUDA_VISIBLE_DEVICES": "",
+  "no_train_called": true,
+  "no_model_forward_called": true,
+  "scope": "Prepared single-process Trainer dataloader and first get_batch_samples window; dummy model and 10000 one-label CPU rows. Actual LLaVA loss/625 windows remain runtime observations.",
+  "settings": {
+    "seed": 29,
+    "data_seed": 29,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 16,
+    "use_cpu": true
+  },
+  "observed": {
+    "sampler": "SeedableRandomSampler",
+    "initial_seed": 29,
+    "data_seed": 29,
+    "model_accepts_loss_kwargs": true,
+    "accelerator_gradient_accumulation_steps": 1,
+    "actual_first_16_indices_match_explicit_seed29_sampler": true,
+    "first_window_num_items_in_batch": 16
+  },
+  "process_exit_code": 0,
+  "nonfatal_exit_warning": "Existing multiprocess ResourceTracker destructor: _thread.RLock has no _recursion_count; observed after successful assertions, exit code 0.",
+  "versions": {
+    "transformers": "4.57.6",
+    "liger-kernel": "0.7.0",
+    "accelerate": "1.13.0",
+    "torch": "2.8.0"
+  },
+  "tested_package_sources_sha256": {
+    "transformers/trainer.py": "c3eac8fa28bda6330fd4dee131e7fe7d9bdc0fa35d9de944fce52cb97b379bab",
+    "accelerate/accelerator.py": "85fe1ad1f0061598313f8566868e9f53434ac9c1d5e24089c3d03da772d40f23",
+    "accelerate/data_loader.py": "43ed3268025110162def628e71dd6213cee0fdc47481865f99d8b129718673b1",
+    "liger_kernel/transformers/model/loss_utils.py": "b4d6c2f7867809ada696fdcc4619ea7e927bb0173931926db75fa6ccc3094f53",
+    "liger_kernel/transformers/model/llava.py": "95c7d0931cf6494b560a446507516c7adef6ee26171441e60eee0ad6ece37bff"
+  },
+  "handoff_launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+  "real_parent_processor_audit": "fvcrc12 and fvcrc13 complete launcher dry-run exit 0 reported by operations/root; node artifacts /var/tmp/xiang-data-rsi/e13/dryrun_init_replay.json",
+  "runtime_contract": "All six branches observe model loss kwargs, Accelerator GA/reset state and 625 actual 16-item supervision vectors/num_items_in_batch against frozen expected windows; no loss or sampler changes."
+}
