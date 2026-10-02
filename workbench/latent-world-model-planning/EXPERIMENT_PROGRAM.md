@@ -1,83 +1,153 @@
-# Experiment Program — 多卡独立实验怎样服务于一个顶会问题
+# Experiment Program — problem-led latent world-model mining
 
 更新：2026-10-02。  
-**Experiment card 是跑前 authority；本文件是共享 substrate + gate + 并行策略。**  
-资源见根目录 RESOURCES.md：多 GPU 槽位、弱网络/磁盘/跨节点；优先 single-GPU/single-node independent runs。
+**Experiment card 是跑前 authority；本文件规定 shared substrate、mine gates 与多 GPU 排程。**  
+资源见根目录 [RESOURCES](../../RESOURCES.md)：多独立 GPU、弱网络/弱 I/O/弱跨节点；single-GPU / single-node independent runs优先。
 
-## 0. 现在真正要挖什么
+科学入口：
+1. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)
+2. [RESEARCH_MINES](RESEARCH_MINES.md)
+3. [PAPER_LINEAGE](PAPER_LINEAGE.md) / [POSITIONING](POSITIONING.md)
 
-**以 [RESEARCH_MINES](RESEARCH_MINES.md) 为科学 authority。** 当前不是围绕一个 loss 做局部优化，而是同时保留三个 problem-led pressure regions：
-
-1. **M1 / I07 — Observable goal ≠ control state**：partial observability / observation aliasing 什么时候真正改变 action choice，point/history latent 什么时候不够，belief 什么时候 load-bearing。
-2. **M2 / I08 — Explicit rollout vs implicit predictive abstraction**：predictive computation 应放在 train-time amortized representation/policy，还是 test-time explicit rollout/search；寻找可预测的 regime boundary，而非排行榜。
-3. **M3 / I09 — Behavior trajectories ≠ environment controllability**：planning-aware supervision 是否把 behavior-policy geometry 写进 deployed planning semantics。
-4. **I06** 降为 M3 的低成本 sampler/negative-role 子诊断；**I03** 是所有 mine 共用的 oracle bottleneck tool，不先当论文。
-
-旧 I01 原 E03/E04 仍保持 VOID：它只改变 long-episode factorization而不改变 pinned methods实际读取的 short-window supervision，treatment结构上不可见。
-
-第一轮资源分配按 **information gain / cost**：
-- E11（M1）与 E14（M3）优先做 problem-existence intervention；
-- E08 可并行作为 M3 cheap diagnostic；
-- E13（M2）在 common substrate 稳定后启动 matched pilot；
-- 哪一条先出现 natural failure + decision consequence + clean intervention leverage，再集中多卡扩展。
+当前 science claim = 0。
 
 ---
 
-# 1. Shared substrate：一次建设，所有新 idea 复用
+## 0. 当前优先级
 
-## S0 — Native baselines
+### Tier A1 — M3 / I09：behavior trajectories → controllability semantics
+**第一主 pilot：E14。**
 
-首轮只装必要对象：
+问的是：在 environment dynamics 不变时，改变真正的 generating behavior policy，trajectory-derived planning supervision 是否把 behavior route / tempo 写进 deployed reachability / progress semantics，并影响 candidate ordering / MPC？
 
-- **LeWM**：TwoRoom smoke + PushT/Cube至少一项正式 reproduction。
-- **Bai/Xiong Temporal-Distance JEPA**：M3/I06直接对象；official repo已核对，且同repo已有 LeWM / RC-aux variants、locked manifests。注意它不是 Bagatella ICLR'26 TD-JEPA。
-- **RC-aux**：I06第二个 semantic-negative objective；official repo main已宣布 NeurIPS 2026 acceptance，本 workbench代码复现仍用 ASSETS pin。
-- **一个 local-geometry control**：I06机制通过后，优先 Temporal Straightening / CGS其一。
-- **Bagatella TD-JEPA (ICLR'26 Oral)**：M2 implicit-side核心资产；与 Temporal-Distance JEPA 名称严格分开。
-- DINO-WM / JEPA-WM / PLDM 按 M2/I03需要接入；UWM-JEPA等只在 M1 gate通过后接。
+不是“data distribution matters”；必须把 coverage/local-support explanation拆开。
 
-不要首轮装 SALT、AD-WM、Traj-LeWM、IMWM、SAGE、HWM、CompACT 全家桶。
+### Tier A2 — M2 / I08：predictive computation placement
+**第二主 pilot：E13。**
 
-## S1 — Candidate trace
-
-每次 planning decision：
+不是二分“explicit vs implicit谁强”，而是 continuum：
 
 ```text
-episode_id, step, start_obs_hash, goal_obs_hash
-goal_distance_native_or_bin
+one-step explicit rollout
+↔ direct arbitrary-horizon prediction
+↔ policy-occupancy / successor abstraction
+↔ amortized planner / policy
+↔ hybrid short-model + learned policy/value
+```
+
+寻找可预测的 regime frontier，而不是 leaderboard。
+
+### Tier B — M1 / I07：observable goal ≠ control belief
+**cheap conditional pilot：E11。**
+
+P75/FIRM/UWM/Branch-JEPA 已占 broad hidden-state / belief / multimodal-future story。只有 **finite history 后仍存在 action-relevant ambiguity**，且造成 candidate regret，才 E12。
+
+### Shared instruments
+- E02：known decision-alignment calibration；
+- E06：oracle bottleneck ladder；
+- E08：M3 中 heuristic negative 的 zero-training semantic audit；
+- E09/E10：只有 E08/E14 指向 negative-role mechanism 才触发。
+
+旧 E03/E04 保持 VOID；I01/I02 parked；I05 已被 I07 supersede。
+
+---
+
+# 1. Shared substrate
+
+## S0 — 原生系统先跑通，不先重写
+
+### compact explicit WM side
+- LeWM / JEPA-WM family；
+- Bai/Xiong **Temporal-Distance JEPA**；
+- RC-aux；
+- stable-worldmodel 做 environment/planner/replay substrate。
+
+### implicit / long-horizon predictive side
+- Bagatella **TD-JEPA (ICLR 2026 Oral)**；
+- 后续 M2 若过 gate，再接 Universal Horizon Model / Jumpy WM / TD-MPC2 中一个代表，不一次全装。
+
+### M1 conditional
+- UWM-JEPA / FIRM-WM / Branch-JEPA 只有 E11 过 gate 才接。
+
+**命名：**
+- `bagatella_td_jepa`
+- `temporal_distance_jepa`
+- `decision_aligned_d_jepa`
+
+禁止裸 `td_jepa` 作为跨 repo paper identity。
+
+## S1 — Environment / data substrate
+
+### M3 discovery substrate
+优先：
+1. **TwoRoom / maze topology**：shortest/geodesic 可做 oracle；
+2. **OGBench Point/AntMaze generator**：官方就有 `navigate / stitch / explore`，可用于 discovery，但这些 regime 同时改变 horizon / goal schedule / occupancy，**只能作 broad stress，不作 clean causal identification**；
+3. 第二阶段 contact-rich：OGBench Cube/PushT。
+
+OGBench generator 已核对：
+- locomaze: `path / navigate / stitch / explore`；
+- manipulation: `play`（non-Markovian plan oracle）/ `noisy`（Markov closed-loop oracle + Gaussian/random actions）；
+- dataset保存 qpos/qvel，可做 measurement-only support audit；
+- 数据生成脚本公开且可重跑。
+
+### M2 common substrate
+优先 **OGBench Cube-single / pixel**：
+- Bagatella TD-JEPA official repo原生支持 OGBench Cube/Scene/Puzzle；
+- stable-worldmodel / LeWM ecosystem也原生有 OGBench Cube；
+- 同 environment 可比较真实 task utility。
+
+但 task specification **并不天然公平**：
+- explicit image-goal planner通常得到 goal observation；
+- Bagatella TD-JEPA official evaluation对每个 task 从 replay buffer采样约 10k states，利用 OGBench privileged `physics` relabel reward，再做 reward inference。
+
+因此 E13 必须把 **query information budget** 单独记账，不能把“一个 goal image vs 10k reward-labeled samples”当作只差 inference compute。
+
+## S2 — Candidate / decision trace
+
+每个 planning decision至少：
+
+```text
+decision_id, episode_id, step
+start_obs_hash, goal_or_task_id
+H, K, frameskip, action_block, scoring_index
 planner_iter, candidate_id, proposal_source
-action_seq_hash, action_norm, action_smoothness, bounds_ok
-pred_terminal_latent_hash, pred_goal_cost
-optional: reachability, td_cost, uncertainty, consistency, support
+action_seq_hash
+pred_cost / implicit_policy_score
+encoded_real_cost (when defined)
+real_task_utility
+candidate_margin
 elite_rank, selected
 env_restore_id
-real_terminal_obs_hash, real_task_cost, success
+model_calls, wall_clock
 ```
 
-## S2 — Dataset / sampler manifest
-
-特别为 I06 增加 sampler provenance：
+M3额外：
 
 ```text
-dataset_revision
-raw_episode_count, raw_transition_count
-episode_idx / step_idx availability
-clip_window_length, frameskip, history_size, num_preds
-clip_index_manifest_hash
-train_split_hash
-batch_seed, sampler_seed
-pair_sampler_name
-negative_margin_or_budget
-source_ep_idx, source_step_idx, goal_ep_idx, goal_step_idx   # audit sample
-negative_label_type
-code_commit, dependency_lock, resolved_config
+behavior_regime
+state_coverage_bin
+action_coverage_bin
+local_transition_support_score
+route_class / path_efficiency
+observed_temporal_gap
+oracle_shortest_or_bound
 ```
 
-## S3 — Oracle / replay
+M2额外：
 
-TwoRoom 优先利用 dataset/proprio/pos_agent + environment topology。
+```text
+task_spec_type
+task_inference_samples
+task_label_calls
+train_steps, train_gpu_hours
+deployment_model_calls
+deployment_search_budget
+```
 
-oracle 输出**三态优先**：
+## S3 — Oracle ladder
+
+### M3 pair / route oracle
+优先三态：
 
 ```text
 CERTIFIED_REACHABLE_WITHIN_BUDGET
@@ -85,311 +155,322 @@ CERTIFIED_OUT_OF_BUDGET
 UNKNOWN
 ```
 
-只有能严格/可靠求 shortest-step 时才输出精确 D*。近似 geodesic不冒充 ground truth。
+能严格算 shortest-step/geodesic才记 D*。
 
-## S4 — Common result table
+### Common decision oracle
+固定 start/task + candidate pool：
+1. candidate-set environment utility；
+2. encoded-real endpoint ranking；
+3. predicted endpoint ranking；
+4. true-dynamics scoring；
+5. H/K / running/prefix cost control；
+6. action-discrimination check；
+7. selected-action regret；
+8. closed-loop success。
 
-raw parquet/jsonl不进git；摘要保存：
-
-```text
-model, variant, checkpoint, train_seed, eval_seed, planner_seed
-task, goal_distance, horizon, action_block, replanning
-candidate_budget, planner_iters
-success, task_cost
-semantic_negative_precision, false_negative_rate, unknown_rate
-latent_rank, latent_scale
-plan_real_rho, elite_rho, candidate_margin, candidate_regret
-wall_clock, model_calls, peak_vram, data_wait
-```
+### M1 aliasing oracle
+同/近同 observation + matched available history 下：
+- hidden state / parameter不同；
+- 完全相同 candidate action set；
+- environment utility vector；
+- best-action flip / regret。
 
 ---
 
-# 2. Gate 0 / A — E00 + E01
+# 2. E00 / E01 — infrastructure gate
 
 ## E00
-只解决：
-- data/checkpoint可读；
-- action/goal/success checker语义正确；
-- env→encode→plan→act闭环；
-- 真正的 VRAM / step time / CEM cost / I/O。
+单 GPU、低并发：
+- dataset/checkpoint load；
+- env reset/state restore；
+- action / goal / success checker；
+- encode→rollout→plan→act；
+- one train step；
+- VRAM / planner time / env time / I/O wait。
 
-单 GPU、低并发；不跑满默认 epochs。
+不跑满默认 epochs。
 
 ## E01
-把一次 baseline变成后续所有研究共享的 instrumentation：
-- official checkpoint native protocol；
-- 一项从头训练；
-- candidate logger旁路无行为影响；
+形成后续共用资产：
+- 至少一个 compact explicit native reproduction；
+- candidate logger旁路；
 - replay/oracle harness；
-- TwoRoom + 一个 contact-rich task；
-- 真实 GPU-hour / I/O cost。
+- fixed eval manifests；
+- TwoRoom/topology + OGBench Cube/contact-rich 入口；
+- resolved config / code commit / data hash。
+
+E01 没过，不做大规模跨方法比较。
 
 ---
 
-# 3. E08 可以很早开始：零训练 semantic-negative audit
+# 3. E14 — M3 第一主 pilot：behavior policy真的改变 planning semantics 吗？
 
-只要 dataset + sampler 能跑，E08 可与 E01/E02部分并行。
+## Stage A — cheap discovery，不作因果 claim
+可以利用 OGBench 公开 behavior regimes：
+- maze `navigate / stitch / explore`；
+- manipulation `play / noisy`。
 
-## TD-JEPA code facts to reproduce exactly
+目的：找 sensitivity，不是论文证据。  
+这些 regimes 明显改变 trajectory length / goal schedule / occupancy / action noise，所以只回答：
 
-Pinned repo：
-- history size 3，canonical num_preds 5，训练 clip约8 observations；
-- temporal positive pairs从 loaded clip内采 i<j；
-- cross negative通过 **batch-row random permutation** 取 goal；
-- loss本身不显式检查 original episode connectivity；
-- paper把该项称 heuristic cross-trajectory negative，并明确承认 reachable false negatives；
-- published Push-T ablation显示去掉 hinge会伤多个 planner settings。
+> 哪些 planning-aware objective 对 behavior regime 最敏感？
 
-E08 不重新发明 sampler，必须 instrument 这条路径。
+## Stage B — clean intervention
+若 Stage A 有信号，在 topology env 做自定义 matched generation：
 
-## RC-aux code facts
+- 固定 environment；
+- 固定 start-goal manifest；
+- 固定 episode count / transition budget；
+- 至少 direct / detour-loop 两种 policy；
+- 最好加入 mixed route；
+- 记录每条 trajectory 的 path efficiency = observed length / oracle shortest length。
 
-Pinned repo：
-- history 3，num_preds 5；
-- reachability max_horizon 5；
-- same-window positives / temporal hard negatives；
-- cross negative同样通过 batch维 permutation goals；
-- paper语义是 cross-trajectory negative label y=0；
-- temporal hard negatives才使 budget h identifiable。
+优先做 **local-support matching**：
+- state occupancy bins；
+- action bins；
+- one-step `(s,a,s')` support / nearest-neighbor density；
+- transition count；
+- start/goal distribution。
 
-## E08 输出
+如果 exact matching不可行，至少 propensity / stratified matching并报告 overlap。
 
-按 budget/margin、source location、wall side、data region 分层：
-- negative pair 是否同 original episode；
-- observed connectivity evidence；
-- oracle/certified reachability；
-- semantic precision；
-- false-negative rate；
-- unknown rate。
+## Stage C — methods
+先 1 seed：
+1. LeWM non-temporal control；
+2. Temporal-Distance JEPA；
+3. RC-aux（若第一objective effect成立再接）。
 
-**E08不训练模型，先看这个问题在真实 sampler里是否存在到足以值得训练的程度。**
+主 readout：
+- temporal/reachability semantics vs D*；
+- same fixed candidate pool rank / regret；
+- closed-loop success；
+- one/multi-step prediction guard；
+- geometry/path imprint；
+- behavior-regime classifier probe只可作辅助，不可当结论。
 
----
-
-# 4. Gate B — E02：known decision audit calibration
-
-E02复制已有 decision-metric测量：
-- random / mid-CEM / elite；
-- real endpoint vs predicted endpoint；
-- candidate margin；
-- fixed-pool regret。
-
-它不是 novelty，只为 E09/E10/I03 提供 downstream decision measurement。
-
-同时必须固定/记录：
-- planning horizon H；
-- replanning/execution prefix K；
-- scoring time index / cost aggregation；
-- action block / frameskip；
-因为 P57 Hidden Failure Modes 已证明这些 protocol变量本身可以巨大地改变结果。
+### E14 gate
+- effect完全由 coverage/support解释 → M3不升级；
+- learned score漂但 decision null → 不升级；
+- non-temporal LeWM同样漂 → 先解释普通 data shift；
+- planning-aware methods出现更强 route imprint，且 local fidelity接近稳定 → strong signal；
+- 第二objective / 第二task structure复现 → E15或更精确 identification。
 
 ---
 
-# 5. I06 主线
+# 4. E08 / E09 / E10 — M3 子机制：negative semantics
 
-## E09 — semantic correctness vs regularization utility
+dataset ready 后 E08 可立即并行，主要 CPU。
 
-E08过 gate后，先 TD-JEPA：
+### E08
+instrument **真实** Bai/Xiong Temporal-Distance JEPA / RC-aux negative sampler：
+- source/goal original episode；
+- step；
+- margin/budget；
+- oracle reachability；
+- false-negative / unknown；
+- cluster CI by source episode/batch。
+
+E08 只判断 mechanism 是否值得追。
+
+### E09
+只有 E08 + E14 指向 cross-negative role 才训练：
 
 ```text
 FULL
 NO-XNEG
-ORACLE-VALID
-ORACLE-CENSOR
+ORACLE-VALID / CENSOR
 COUNT-MATCHED VALID
-REPULSION-CONTROL (conditional, pre-registered)
+conditional REPULSION-CONTROL
 ```
 
-再用 RC-aux验证是否是 objective-family层面的现象。
+拆 semantic correctness vs count / gradient / scale / dispersion。
 
-### 为什么 count-match 必须有
-
-如果 oracle filtering后只剩少量 negatives，performance下降可能只是：
-- loss magnitude变小；
-- head没有global scale；
-- encoder少了repulsion；
-而不是“正确semantic negative不够好”。
-
-所以要把：
-**semantic correctness、negative count、gradient magnitude、dispersion**
-拆开。
-
-### 机制读数
-
-- semantic calibration to oracle；
-- head/latent scale；
-- effective rank / pairwise dispersion；
-- negative-loss gradient norm；
-- TD/reachability scores；
-- fixed-candidate rank/regret；
-- closed-loop success。
-
-### 最有信息的三种结果
-
-1. **ORACLE-VALID > FULL**  
-   → semantic false negatives确实有害。
-2. **FULL > ORACLE-VALID，但 REPULSION-CONTROL恢复**  
-   → published gain主要来自 non-semantic regularization；最强 reattribution。
-3. **COUNT-MATCHED VALID ≈ FULL，calibration更好**  
-   → quantity而不是错误语义本身是关键；可设计更干净 sampler。
+### E10
+只有 E09 确证 role conflation 后，才做 oracle-free role separation。  
+不使用 privileged shortest-path oracle作为 deployable training signal。
 
 ---
 
-# 6. E10 — role-separated objective
+# 5. E13 — M2 第二主 pilot：predictive computation放在哪里？
 
-只有 E09真的分离出两个 role 才做。
+## 5.1 不能直接横比原论文数字
 
-设计原则：
-- cross-trajectory pair默认 unknown，不给“不可达”语义；
-- semantic channel用 observed positives、same-trajectory insufficient-budget hard negatives，以及 training-available local/certified bounds；
-- separate geometry channel做 uniformity/dispersion/scale；
-- 不使用 test oracle；
-- 必须改善/保持真实 decision，不只 head calibration。
+Bagatella TD-JEPA official OGBench pixel：
+- 1M train steps（OGBench）；
+- batch 256；
+- DrQ encoder 256d；
+- official evaluation每个 task约 10k inference samples；
+- reward inference使用 replay-buffer next-state `physics` 经过 OGBench task relabeler。
 
-如果最终 oracle filtering很好，但没有无oracle办法，paper可以停在 diagnosis + reattribution，但方法贡献会弱；是否够顶会由后续人审决定，不能强造模块。
+DMC pixel default 2M train steps、batch 512。
 
----
+explicit JEPA-WM / LeWM 则通常拿 goal observation做 MPC。
 
-# 7. I03 第二主线 — bottleneck relocation / regime law
-
-## E06 oracle ladder
-
-先 2 tasks：
-- topology/navigation
-- contact-rich
-
-3 goal-distance bins × 2 candidate budgets，LeWM baseline。
-
-额外 protocol轴不是自由 sweep，而是**confound controls**：
-- H planning horizon
-- K execution/replanning interval
-- scoring index / running-vs-terminal aggregation
-- frameskip/action block
-
-failure signature：
+因此至少三种预算分开：
 
 ```text
-R = representation / metric
-D = dynamics / rollout
-A = counterfactual action discrimination
-P = proposal / search
-T = time-index / replanning interface
-H = horizon / target distance
-M = mixed / unidentifiable
+training compute
+task/query information
+deployment compute
 ```
 
-oracle ladder：
+## 5.2 第一 common substrate
+**OGBench Cube-single / pixel** 优先，因为两边原生支持。
 
-```text
-candidate-set ceiling
-encoded-real endpoint ranking
-predicted endpoint ranking
-true-dynamics scoring
-prefix/running-cost protocol control
-nearby-subgoal diagnostic
-closed-loop success
-```
+先保留 native protocols，另建 common audit：
 
-P40 planner-reachable fidelity与P57 time-index mismatch都要做已知 control，避免重新发现它们。
+### Axis Q — task/query information
+- goal observation only；
+- full known reward/relabel function；
+- limited reward-labeled inference samples N；
+- 如果能公平实现，再考虑 interaction-based task inference。
 
-## E07
-只有 E06出现跨task可预测 signature后，挑一个2×2 interaction，不跑全因子。
+注意：OpTI-BFM 已在 ICLR 2026 研究 behavior-foundation-model 的 reward task inference data burden；不要把“TD-JEPA需要reward samples”本身当 novelty。
 
-升级条件：
-- 少数observable variables跨task预测 bottleneck；
-- intervention ranking随regime变；
-- 至少2 substrates；
-- 最好导出 practical adaptive rule / training principle。
+### Axis H — horizon
+near / medium / far goals。
+
+### Axis D — environment change
+same dynamics vs layout/dynamics shift（只在 native baseline稳定后）。
+
+### Axis C — deployment compute
+explicit planner candidate/model-call budget；
+implicit policy forward cost；
+如需 compute-matched comparison，按 wall-clock + model calls两种方式报告。
+
+## 5.3 成功标准
+不是“谁平均分高”。
+
+只有出现：
+- 少数可观察变量预测 explicit / direct-horizon / implicit / hybrid 哪类更合适；
+- relation跨至少2 task structures；
+- hold-out regime也能预测；
+- compute/query-information confound已拆；
+
+才升级成 M2 paper。
+
+如果差异只由 train compute 或 task-information优势解释，记录并停止扩矩阵。
 
 ---
 
-# 8. PARKED / VOID
+# 6. E11 — M1 conditional pilot：只验证还有没有值得做的问题
 
-## I01
-PARKED。E03/E04 VOID，未运行。不要把预注册 card删除，它们记录一次被**代码审计提前否定**的实验设计。
+P75/FIRM/UWM/Branch-JEPA之后，不再把“hidden state matters”当发现。
 
-## I02 / E05
-I02 PARKED。E05只在 I03需要定位 planner-reachable/off-support layer时条件运行，并首先比较 P40-style fidelity / PLDM uncertainty。不要独立扩seed。
+E11只问：
 
-## I05
-POMDP/history等待 clean substrate，不做 context-length sweep。
+> 在 **相同可用 history** 下，是否仍存在 action-relevant hidden ambiguity？
+
+顺序：
+1. same RGB / different velocity：sanity；
+2. 给 2–3 frame history；
+3. history 足够则 STOP；
+4. 只有 history仍不能 disambiguate 的 contact/friction/regime / stochastic branch，才测 candidate regret；
+5. baseline planner确实选错后才 E12。
+
+M1无强信号时快速 park，不消耗训练槽位。
 
 ---
 
-# 9. Baseline 加入门
+# 7. E02 / E06 — common scientific instruments
 
-| baseline | 何时加入 |
+E02复制已知 random/mid/elite rank、candidate margin、fixed-pool regret，仅校准 harness。
+
+E06 oracle ladder在 M2/M3出现 anomaly 后定位：
+- representation/metric；
+- dynamics；
+- action discrimination；
+- proposal/search；
+- H/K/time-index；
+- target horizon；
+- query/task interface。
+
+若 E06自己形成跨 task predictive bottleneck law，才允许 I03独立升级。
+
+---
+
+# 8. Baseline gate
+
+| baseline / asset | 加入时机 |
 |---|---|
-| TD-JEPA | I06首轮 |
-| RC-aux | I06首轮第二objective |
-| Temporal Straightening / CGS | E09/E10 local-geometry control |
-| QRL / CGCIVL / multistep quasimetric | I06 conceptual/method neighbor；优先原生对照，不强迁移框架 |
-| Traj-LeWM | I06若扩到full-trajectory semantic negatives |
-| LeWMRO / Hidden Failure Modes | I03 protocol/time-index control |
-| SALT / Bilinear WM | I03 dynamics gate |
-| AD-WM | I03 action-discrimination gate |
-| PLDM | uncertainty/data gate |
-| GC-IDM / IMWM / SAGE | proposal gate，三者先一个 |
-| Do-JEPA / FIRM-WM | 只有需要 same-reset intervention oracle时 |
-| CompACT / World-In-World / GeoWorld | venue/邻域 anchor，不是首轮训练 substrate |
+| LeWM | E00/E01 |
+| Temporal-Distance JEPA | M3 E14 first objective |
+| RC-aux | M3 confirm / E08 |
+| QRL / multistep quasimetric / CGCIVL | M3 conceptual + native comparison when needed |
+| Bagatella TD-JEPA | M2 E13 |
+| Universal Horizon / Jumpy WM | M2 过 first gate后选一个中间 predictive object |
+| TD-MPC2 | M2 hybrid control after regime signal |
+| UWM-JEPA / FIRM-WM / Branch-JEPA | M1 E11过gate后 |
+| Temporal Straightening / DA-LeWM / D-JEPA | common decision/geometry control when relevant |
+| LeWMRO | H/K protocol control |
+| SALT / Bilinear WM | dynamics oracle指向时 |
+| PLDM | M3 data/uncertainty neighbor |
+| AdaJEPA / ReDRAW / Feedback WM | shift/adaptation只作 control，不开新mine |
 
 ---
 
-# 10. 多 GPU 使用方式
+# 9. 多 GPU 排程
 
-可独立并行：
-- train seeds；
-- FULL / intervention variants；
-- eval manifests；
-- candidate audits；
-- goal-distance bins；
-- planner budgets；
-- contact-rich confirmatory runs。
+### Phase 1 — existence
+同时最多：
+- E14 Stage A/B；
+- E13 one minimal matched pair；
+- E11 oracle；
+- E08 CPU audit。
 
-但每节点：
-1. data stage到local disk；
+每条 1–2 seeds / minimal conditions。
+
+### Phase 2 — concentration
+只给过 gate 的 mine扩：
+1. decisive variants；
+2. 3+ train seeds；
+3. second task structure；
+4. strongest nearest baseline；
+5. hold-out regime；
+6. method ablation（如果真的长出方法）。
+
+### I/O
+每节点：
+1. dataset stage local disk；
 2. hash；
-3. 1 job测data_wait；
-4. 2–4 jobs；
-5. 并发翻倍；
-6. GPU utilization掉、data_wait明显涨就停。
+3. 1 job；
+4. 2 jobs；
+5. 4 jobs；
+6. data_wait / GPU utilization恶化就停。
 
-跨节点不做梯度同步；不同地点只默认同步 code/config/metrics/manifest。
-
-GPU优先级：
-1. zero-training audit / released checkpoint diagnostics
-2. 1-seed decisive pilot
-3. positive/negative controls
-4. lead通过后3–5 train seeds
-5. 最后才跨benchmark铺开
+不跨节点 DDP。不同地点默认只同步 code/config/metrics/manifest。
 
 ---
 
-# 11. 统计卫生
+# 10. 统计与 claim 升级
 
-- candidate不是独立 n；bootstrap cluster by start-goal/planning decision；
-- E08 pair audit还要 cluster by episode/batch；
-- train-seed variance与eval episode CI分开；
-- false-negative precision报告unknown，不强行把unknown算false/true；
-- exploratory与confirmatory seeds/manifests分开；
-- published component ablation先复制方向，再解释新机制；
-- test不调margin/budget/threshold；
-- compute report model calls + wall-clock；
-- failed runs/load mismatch不静默删。
+- candidate-level样本 cluster by planning decision/start-goal；
+- data-regime comparison cluster by episode/route seed；
+- train seed 与 eval episode variance分开；
+- exploratory vs confirmatory manifests分开；
+- support overlap / effective sample size必须随 M3 主表报告；
+- M2同时报告 train compute、task-information budget、deployment compute；
+- oracle只作 measurement / upper bound；
+- failed runs与load mismatch不静默删。
+
+**L1前：** 至少一个真实 model behavior。  
+**L2前：** controlled alternative explanation被拆。  
+**L3前：** second method/task + nearest strong baseline。  
+**L4因果/机制：** intervention chain完整。
 
 ---
 
-# 12. Local agent 执行顺序
+# 11. Local agent执行顺序
 
-1. README → PAPER_LINEAGE → LITERATURE_LEDGER → PROBLEM_METHOD_MAP → POSITIONING → 本文件 → HANDOFF。
-2. run process check。
-3. 资产盘点，复用已有下载。
-4. E00。
-5. dataset/sampler一旦可读，**立即E08**；它不需要训练。
-6. E01 baseline instrumentation。
-7. E02 decision audit。
-8. E08过gate → E09 → 条件E10。
-9. 闲置独立节点可做小规模E06；I06没结果前不要把I03铺大。
-10. 每个结果按experiment card decision table自主推进，不每个job回来问人。
+1. README → FIELD_PROBLEM_MAP_2026 → RESEARCH_MINES → PAPER_LINEAGE → LEDGER → POSITIONING → 本文件。
+2. `python3 tools/process/check.py`。
+3. 资产盘点，禁止重复下载。
+4. E00/E01。
+5. **第一主：E14 Stage A/B**；dataset ready可并行E08。
+6. **第二主：E13 minimal matched pilot**。
+7. **conditional：E11**。
+8. 出 anomaly 后用 E02/E06定位，不先加模块。
+9. 只有 experiment card gate允许才进入 E09/E10/E12/E15或新增方法卡。
+10. 每轮写回 evidence、confound、neighbor pressure、下一组最便宜决定性实验。
 
-完整启动词：[LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)。
+**不要把工程进度当科研进度；不要把卡多变成没有判别力的大矩阵。**
