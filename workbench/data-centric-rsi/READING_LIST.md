@@ -17,7 +17,7 @@
 | P09 | Self-Questioning Language Models, 2508.03682 | D（正文、超参与评估口径） | [全文](https://arxiv.org/html/2508.03682v1)；简洁 3B self-play，冻结 proposer 对照 |
 | P10 | Absolute Zero / AZR，2505.03335v3，NeurIPS 2025 main | D（全文方法/主表/B/D 附录；固定 `paper` 分支关键源码已审，未复现） | [全文](https://arxiv.org/html/2505.03335)；[会议 PDF](https://papers.nips.cc/paper_files/paper/2025/file/9837dc00ff67d176373268ed48042d49-Paper-Conference.pdf)；[代码](https://github.com/LeapLabTHU/Absolute-Zero-Reasoner)；可执行题/答案、联合训练与强 solver-only 消融 |
 | P11 | PopuLoRA, 2605.16727v1 | M＋主表与计算口径 | [全文](https://arxiv.org/html/2605.16727v1)；群体、匹配、cross-play 已有所有权 |
-| P12 | CurateEvo, 2607.06140v1 | A＋引言/框架 | [全文](https://arxiv.org/html/2607.06140v1)；失败驱动的数据代码演化近邻；不能冒充已全文审计 |
+| P12 | CurateEvo, 2607.06140v1 | D（全文方法/related work/主表、消融与 B/C/D 附录；未核到官方可执行代码） | [全文](https://arxiv.org/html/2607.06140v1)；失败轨迹→代码演化→同父重训，分别适配 labeled/wild，联合改变 SFT/RL/推理记忆 |
 | P13 | Recursive self-improvement of AI research agents / AIDE², 2609.26457v1 | M（框架、主要限制） | [全文](https://arxiv.org/html/2609.26457v1)；系统级 RSI 与权重级 RSI 的区分 |
 | P14 | Experimental Experience Modeling for Autonomous Research, 2609.39392v1 | D（主文含方法/实验/限制性读法） | [全文](https://arxiv.org/html/2609.39392v1)；经验库＋针对性 pilot 近邻 |
 | P15 | AutoLLMResearch, 2605.11518v1 | M（方法、数据混合环境、跨保真与成本） | [全文](https://arxiv.org/html/2605.11518v1)；不能 claim 首次跨尺度实验经验迁移 |
@@ -36,6 +36,7 @@
 | P39 | OpenMathInstruct-2，ICLR 2025 main；2410.01560v2 | D（全文、A–C 附录、发布数据字段；NeMo Skills 内部尚未审计） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/302ce0673c00aee2cf84bb43d0117553-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.01560)；[数据](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2)；强 teacher、解答格式、题目多样性与过滤的真实 SFT 对照 |
 | P40 | DUET，ICLR 2026 main；2502.00270v3 | D（方法/主结果/成本与关键附录；官方 BO 代码已核，未复现） | [全文](https://arxiv.org/html/2502.00270v3)；黑箱目标反馈→GP/BO 域配比，论文 50 次随机初始化＋10 次 BO |
 | P41 | Data Mixing Agent，ACL 2026 main；2507.15640v2 | D（引言/方法/related work/主表、C–E 附录与限制；官方可运行源码未核） | [会议](https://aclanthology.org/2026.acl-long.427/)；[全文](https://arxiv.org/html/2507.15640v2)；384 代理轨迹、CQL 学固定域课程，数学→代码的冻结 agent 迁移 |
+| P43 | Data Agent，ICML 2026 main；2603.07433v2 | D（全文方法、主表/消融/成本及官方 README；未运行代码） | [会议](https://proceedings.mlr.press/v306/yang26bq.html)；[全文](https://arxiv.org/html/2603.07433)；训练内 PPO 逐样本选样、loss+熵奖励；公开执行示例主要覆盖 CIFAR |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
@@ -57,6 +58,6 @@
 
 - P32 已从官方 arXiv 全文核实；若发展 group-interaction 叙事，先明确与其一次组更新及 GMRel/GREATS 的增量，不把它的存在当自动判死。
 - `Gap-Adaptive Teacher Scheduling` / 2609.37898：只发现入口，暂不据此写方法事实。
-- CurateEvo、SGS 的全套方法和训练代码仍需补读，再决定哪一套值得做正式 method baseline；AZR 本轮已深读并审固定源码入口，但未复现。
+- CurateEvo 论文主文/附录已深读，官方完整执行源码仍未核到；SGS 的全套方法和代码仍需补读。是否把 CurateEvo 作为正式方法基线要由目标动作/反馈问题决定；AZR 已深读并审固定源码入口，但未复现。
 - P20/P22/P27 的方法及强实现、P21/LESS 的官方代码执行路径，必须在把它们当正式数据价值估计 baseline 前补齐。官方会议元数据与论文深读不等于 baseline 复现。
 - 为候选阶段补齐近期接收论文、公开评审和 venue corpus 的系统审计；本轮没有完成“最近十篇接收论文全部全文＋公开评审”的 D5 标准。
