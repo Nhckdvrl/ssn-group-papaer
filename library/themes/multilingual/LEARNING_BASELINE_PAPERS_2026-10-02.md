@@ -244,3 +244,23 @@ RECONSTRUCTED距离：时序与内容一致性已有ownership，E04重复语义�
 DOCUMENTED来源：小/中模型的ICL可能低估翻译能力，用实际MT instruction tuning及未见源/目标语言分区区分行为学习与语言对应。加入不含被测语言的其他译对可降低照抄；目标语monolingual generation有助输出语言/重复错误；pivot译对另改善被测对应。
 边界：增加语言对同时增加数据，未纯控总tokens；“无instruction errors”切片不是全测试集表现，也不能保证只剩alignment。照抄用sentence BLEU>80而我们只数exact copy，不能直接数字对比。
 RECONSTRUCTED距离：翻译行为与语言对应分解、照抄、无直接译对的泛化都有直接ownership。P05的一句恢复失败不等于内部知识删除；后续如做训练救援，需要区分一般操作行为、目标语暴露与正确对应，并报告真正成本。不能把“翻译退化主要表现为照抄”当新中心发现。
+
+## JGP方向组织复读与E10边界
+
+[ACL2025官方全文](https://aclanthology.org/2025.acl-long.1602.pdf)，本次复读§3–6，特别是§6.1；原始parent已在P0审计。
+DOCUMENTED方法：默认交替EN→X/X→EN，明确语言标签；单向训练专门作为对照。§6.1表5的反向失败连five-shot也未救回；不能说本题首次发现。parallel-first/last时序也已有直接实验，单次预训练、按translation dev选checkpoint、微小总token差的边界保留。
+RECONSTRUCTED距离：E10当前plain-document EN→DE只能解释一种方向性conditioning，不足以代表全面parallel acquisition或鲁棒性。E11双向paired/split是必要baseline修正，不是新方法；NiuTrans多路重复/反向退化属于不同但相关数据组织压力，不能与双语单向失败自动等同。
+
+## TL-CL: Task And Language Incremental Continual Learning（EMNLP2024主会）
+
+[官方全文](https://aclanthology.org/2024.emnlp-main.676.pdf)，已读§3–5定义/方法/设置；未完整核对附录实验，没有复现。
+DOCUMENTED来源：任务与语言同时增量，完整、部分和单语言约束序列；TLSA分离语言/任务adapters，配EWC并讨论参数隔离内存代价。四任务/四语言、mT5风格generation，QA/NLI译监督来自XTREME，约8000训练/格；英语prompt，逐task-language学会/保持。
+边界：完整格、部分格与组合泛化不是同一可识别作用；使用PercentLoss相对multitask upper bound会隐藏绝对代价，三任务顺序平均不等于三个独立适配seed。没有复现其参数/训练选择。
+RECONSTRUCTED距离：任务×语言持续学习本身早已有主会研究，不是新母问题声明；本题要让明确训练数据选择改变实际能力/成本，不能靠把MT+QA摆成matrix获得novelty。
+
+## Rethinking Transfer in Continual Learning（arXiv2607.15587v1）
+
+[一手全文](https://arxiv.org/html/2607.15587v1)，已读§3–5、§6设置与附录C.1及相关预算/teacher边界；接收状态未核对，没有复现。
+DOCUMENTED来源：区分后续任务真实学习收益与test-before-training的forward transfer；以target-only/target-full/mixed审计headroom，再比较一次参数初始化、持续参数anchor和数据replay。TSR从固定共享起点LoRA B梯度选旧任务，KD承担保持；五seed、0.5B/7B、旧buffer100/任务。
+边界：N=50、500更新、r16、生成任务主报告loss而非真实生成；固定LoRA起点的梯度argmax只能适用于其识别状态。target-full被当作最有价值监督的假设与预算定义需保留；在其他任务/预算下不能当必然上界。小快照共同base主导teacher差异，不能把其KD解释外推到dense跨语知识学习。
+RECONSTRUCTED距离：一次桥接之后收益消失、持续replay保留、监督饱和减少增益均有近邻ownership；不能换语言名再声明新regime。学其动作是先建立真正有效的学习/预算曲线，再让训练干预承担解释，而不是用局部probe代替母问题。

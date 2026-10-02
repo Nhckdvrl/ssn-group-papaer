@@ -1,0 +1,99 @@
+{
+  "parent_metadata": {
+    "source_revision": "7b6d24c440a36b6815f21b70d25016731768db1f",
+    "task_hashes": {
+      "train": "6fc90176db163cfc0a575ef780449fcd5536c9aeaf0a5b96684bb80baf9d9137",
+      "en_dev": "6be1056d97fb59a79ef22086d298a57e925cf62c84be94279dfed42d38863018",
+      "en_test": "71f81a84407a347c90b87172350733275febefb90e59f39640b04d2b428c8838",
+      "de_test": "2b3b5e34a2816d82a9037ef2884b8ec5d6fcaf89c5085713d31ae2df571b4c69"
+    },
+    "translation": {
+      "url": "https://storage.googleapis.com/xtreme_translations/SQuAD/translate-train/squad.translate.train.en-de.json",
+      "generation": "1591613668067959",
+      "size": 93188862,
+      "sha256": "3c125cb2a31e8ad167c4590ece8fdfd16018a5bbf9475dbfac034c1816a4ab02"
+    },
+    "hashes": {
+      "new": "82da01e6938ff05991d1dac3076f584e9a2d418f98a0323ccfdfadc404719612",
+      "reused": "c76c35d4baa081f85a839208badc117ece4b83455dddba2aee02d820526dcb2a",
+      "holdout": "ff1f652ccbb947fcfd72407c662e72f32d2ce2fdf43eab9c37fcfcbb562106b0"
+    },
+    "token_totals": {
+      "new": {
+        "en": 1654758,
+        "de": 2121658
+      },
+      "reused": {
+        "en": 1651606,
+        "de": 2122050
+      },
+      "holdout": {
+        "en": 24724,
+        "de": 32178
+      }
+    },
+    "counts": {
+      "new": 8192,
+      "reused": 8192,
+      "holdout": 128
+    },
+    "context_repetition": {
+      "new": {
+        "unique": 4096,
+        "max_questions_per_context": 2
+      },
+      "reused": {
+        "unique": 4096,
+        "max_questions_per_context": 2
+      },
+      "holdout": {
+        "unique": 123,
+        "max_questions_per_context": 2
+      }
+    },
+    "exact_length_matches": 995,
+    "removed": {
+      "no_official_translation": 2795,
+      "complete_unit_over_2048": 6
+    },
+    "candidate_count": 7391,
+    "official_translation_ids_verified": true,
+    "reuse_context_disjoint": true,
+    "answers_in_cpt": false,
+    "unique_contexts_per_training_pool": 4096,
+    "repeat_per_unit": 2,
+    "tokenizer_sha256": "2b533a1fbef0fd3352a10e98e5ed9e7ec1e944fa8dbbee346833e74a48614c38",
+    "max_length": 2048,
+    "base_model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+      "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+    },
+    "pad": 2
+  },
+  "parent_file_sha256": "debf468cba7580d51e437ce9296973edd458427207dfb55e779c415b10a0058b",
+  "pool_sha256": "6bbbe5c91172a7d336533cd761243e71095f8b69b9ef24f9e6f01e863b05ceec",
+  "holdout_sha256": "ff1f652ccbb947fcfd72407c662e72f32d2ce2fdf43eab9c37fcfcbb562106b0",
+  "token_totals": {
+    "en": 1651606,
+    "de": 2122050
+  },
+  "unique_contexts": 4096,
+  "units": 8192,
+  "direction_counts": {
+    "en->de": 4096,
+    "de->en": 4096
+  },
+  "script_sha256": "d046a9620a19e7643b19dc81cc5db8a45501f2a3b78ab78acf032ca9fdb07de8",
+  "config": {
+    "max_length": 2048,
+    "micro_batch": 1,
+    "accumulation": 32,
+    "updates": 256,
+    "lr": 2e-05,
+    "warmup": 26,
+    "weight_decay": 0.01
+  },
+  "limits": "Paired/split share positions; forward-only comparison also changes language positions. Same-domain reused pool, single family and joint seed."
+}
