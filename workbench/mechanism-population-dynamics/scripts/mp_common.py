@@ -38,10 +38,23 @@ def sha256_file(path, chunk=1 << 22):
     return h.hexdigest()
 
 
-def fetch(repo, step, files=("config.json", "pytorch_model.bin")):
+def fetch(repo, step, files=("config.json", "pytorch_model.bin"), tries=12):
+    """hf_hub_download with back-off on HF's 1000-requests/5-min quota (429)."""
+    import time
+
     from huggingface_hub import hf_hub_download
 
-    return {f: hf_hub_download(repo, f, revision=rev_name(step), cache_dir=str(HF_CACHE)) for f in files}
+    out = {}
+    for f in files:
+        for t in range(tries):
+            try:
+                out[f] = hf_hub_download(repo, f, revision=rev_name(step), cache_dir=str(HF_CACHE))
+                break
+            except Exception as ex:  # noqa: BLE001 - HfHubHTTPError / requests errors
+                if t == tries - 1 or "429" not in str(ex) and "Timeout" not in type(ex).__name__:
+                    raise
+                time.sleep(30 * (t + 1))
+    return out
 
 
 def load_state_dict_bin(path):
