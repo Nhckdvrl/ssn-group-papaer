@@ -115,6 +115,7 @@ def main() -> None:
         "--bf16", "--optim", "adamw_torch_fused",
         "--gradient_checkpointing",
         "--dataloader_num_workers", "2",
+        "--remove_unused_columns", "False",
         "--save_strategy", "no", "--report_to", "none",
         "--logging_steps", "1",
         "--seed", str(args.seed),
