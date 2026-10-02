@@ -8,18 +8,20 @@
 
 ## Candidate recovery actions
 
-已有方法分别给出：
+已有方法已经形成一套 recovery-action library：
 
-- shorten horizon / closer subgoal
-- replan more frequently
-- increase search budget
-- uncertainty penalty / conservative candidate filter
-- model correction / feedback observer
-- test-time adaptation
-- intuition / policy fallback
-- abstain / active information gathering
+- failure detection：Foresight / MEND / FARM-like readout；
+- verify-or-trust：Dual-Frontier；
+- adaptive replanning：AdaReP；
+- feedback observer：Feedback WM；
+- test-time adaptation：AdaJEPA / residual adaptation；
+- conservative safety filter：When World Models Lie；
+- intuition / policy fallback：IMWM / CausalNav-like gate；
+- shorten horizon / subgoal：Planning Limits / Anchored / HWM；
+- increase search / learned proposal：IMWM/SAGE/RP1 family；
+- active information gathering / abstain。
 
-每一种都有人做。新问题是 **哪一种在什么 failure regime 真正提升 utility**。
+每一种都有人做——这正是 R5 成立的原因。**新问题不是发明第九个repair，而是 recovery action selection 本身是否存在可预测结构。**
 
 ## First seed
 
@@ -68,9 +70,18 @@
 - adaptive horizon/replan/adapt schedule
 - trust calibration layer
 
+## 直接 reviewer pressure
+
+- AdaReP 已经给出 mismatch+sensitivity→replan cadence；
+- Dual-Frontier 已经给出 certify→trust/verify；
+- IMWM/CausalNav-like gates 已经做 trust/fallback；
+- When World Models Lie 做 observed error→pessimistic safety。
+
+因此 E18 必须比较 **多种 qualitatively different recovery actions**，并证明相同 signal并不总指向同一repair；否则会被压缩成已有 adaptive gate。
+
 ## 最大 compression
 
-“只是一个ensemble/router。”
+“只是一个ensemble/router / AdaReP+IMWM的拼装。”
 
 所以论文必须先有 **recovery-action regime law**；router只是最小 consequence。
 
