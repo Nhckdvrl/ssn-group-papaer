@@ -156,3 +156,36 @@ AD-WM、CGS、AnisoWM、Planning Limits、Objective Bottleneck、PhyLatent、Do-
 - **M3进入方法设计前：** P05/P06 quasimetric、P02 PLDM data regimes、P64 CGCIVL、P14 Bai/Xiong Temporal-Distance JEPA、P15 RC-aux、P69 monotone-cost/negative study。
 
 P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只写 `bagatella_td_jepa` 或 `temporal_distance_jepa`，禁止裸 `td_jepa` 作为论文标识。
+
+## 9. Second hardening additions（P75–P89）
+
+| ID | 工作 | Venue/Status | Read | Code / asset | Workbench作用 |
+|---|---|---|---|---|---|
+| P75 | Physically Viable World Models | arXiv 2605.30542 | A | official simulation repo | M1 strongest collision：same appearance + latent physics + intervention failure已直接提出 |
+| P76 | Branch-JEPA（v1/旧名 MoP-JEPA） | arXiv 2607.05238 v3 | B/A positioning | release/code待baseline-critical时锁 | stochastic/multimodal successor branch；generic multimodality space压缩 |
+| P77 | Var-JEPA | **ICML 2026** | B | publication material | probabilistic/variational JEPA + uncertainty；主实验非visual planning |
+| P78 | AdaJEPA | arXiv 2606.32026 | A/B | official repo | test-time self-supervised adaptation inside MPC；generic adaptation占用 |
+| P79 | Sandwich-Residuals | arXiv 2609.21740 | B | publication material | parameter-efficient predictor residual adaptation；AdaJEPA successor |
+| P80 | Compositional Planning with Jumpy WMs | **ICML 2026** | A/B | publication material | M2 policy-level/multi-timescale predictive abstraction |
+| P81 | WorldTest | **ICML 2026** | B | publication material | environment-level multi-query benchmark；M4 generality pressure |
+| P82 | D-JEPA: Decision-Aligned Latent WM | arXiv 2609.24749 | B | code/release待审 | candidate-local ordinal decision alignment；压缩I04/decision-alignment空间 |
+| P83 | DDP-WM | **ICML 2026** | B | PMLR software link | sparse/disentangled dynamics + MPC efficiency |
+| P84 | Learning Latent Action WMs in the Wild | **ICML 2026** | B | publication/project | in-the-wild latent actions；资源/数据不适合首轮 |
+| P85 | Cross-Embodiment Robot Foundation WMs with Latent Actions | **ICML 2026** | B | publication/project | shared latent action space across embodiments |
+| P86 | Co-Evolving Latent Action WMs | **ICML 2026** | B | publication/project | LAM+WM joint co-adaptation |
+| P87 | DiLA | **ICML 2026** | B | PMLR software link | action abstraction vs generation fidelity |
+| P88 | ReDRAW | **L4DC 2026** | B | publication/project | low-data latent dynamics residual sim2real adaptation |
+| P89 | Feedback World Model | arXiv 2605.15705 | B | publication/project | inference-time observer-style correction without parameter update |
+
+### 版本/命名风险
+
+- arXiv:2607.05238 的当前 v3 标题是 **Branch-JEPA**；早期检索/缓存仍可能显示 **MoP-JEPA**。manuscript-critical引用必须锁具体版本，不把旧abstract与新标题混用。
+- P65 Bagatella TD-JEPA 与 P14 Bai/Xiong Temporal-Distance JEPA继续严格分名。
+- P82 **D-JEPA** 又是第三个极易混淆的 JEPA acronym；manifest使用 `decision_aligned_d_jepa`。
+
+### 这轮对当前 mine 的影响
+
+- **M1:** 从 broad mine 下调为 conditional pressure。P75/FIRM/UWM/Branch-JEPA 已占太多“hidden state / belief / multimodal future” broad claim；只保留 history-resolvable vs irreducible uncertainty 对 image-goal decision regret 的 exact boundary。
+- **M2:** 相对增强。P80 让 explicit↔implicit 变成连续谱而非二分，P09仍明确缺 direct frontier study。
+- **M3:** 相对增强。P75提醒 passive data identifiability本来就不是理所当然，但 trajectory-derived planning semantics 的 **behavior-policy imprint** 仍未被这些新增工作直接解决。
+- **Adaptation / efficiency / latent actions:** 全部降为 baseline/WATCH，不再单开mine。
