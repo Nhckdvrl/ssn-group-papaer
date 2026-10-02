@@ -1120,3 +1120,28 @@ P02 已经比我们之前记得更接近 M2：
 - **diagnosis:** WorldEcho扩大action distribution，测visual integrity + SE(3) action following；摘要报告现有模型对expert actions较好，但off-expert diverse trajectories中会ignore commands或产生invalid rollout。
 - **repair:** WorldSync从distribution coverage、representation grounding、intervention-effect alignment三轴增强action following。
 - **对 R1:** 把“action coverage / off-policy counterfactual query”从latent-control小环境扩到robot video WM；说明R1是跨model-scale的母问题。
+
+### P96 — Dual Goal Representations — ICLR 2026
+**来源：** https://openreview.net/pdf?id=aMKFTidLSM  
+**官方代码：** https://github.com/deepindermann/dual-goal-representations
+
+- **母问题：** raw goal observation包含大量与可达性无关的外生信息；能否只用 state相对其他 states 的 temporal-distance relations来表示 goal，同时保留 optimal goal-reaching所需信息？
+- **idea leap：** 把 goal representation定义为“从所有其他 states 到该 state 的 temporal-distance profile”，从绝对 observation转成 relational / dynamics-derived dual representation。
+- **理论：** representation对原始 state representation invariant，并包含恢复 optimal goal-reaching policy 所需的充分信息。
+- **实证：** OGBench 20个 state/pixel tasks，作为 GCIVL/CRL/GCFBC等已有 GCRL算法的 plug-in representation。
+- **idea-growth意义：** 不是“再学一个embedding”，而是从一个明确的 nuisance问题（exogenous observation detail）出发，重新定义 representation 应该对什么 invariant、保留什么 sufficient structure。
+- **对 M3：** 它支持“temporal relation可以承载 intrinsic dynamics structure”这一正向证据，因此 M3不应预设 trajectory-derived semantics一定坏。真正问题是：**什么 supervision 才恢复 environment-intrinsic relation，什么 supervision会继承 behavior-policy relation？**
+- **对 M2/M4：** representation本身已经可以 amortize部分长期动力学结构；这进一步说明 explicit/implicit不是敌对范式，而是 predictive structure放置位置的连续谱。
+
+### P97 — Do Better Goal Representations Improve GCRL? — arXiv 2609.39901
+**来源：** https://arxiv.org/abs/2609.39901  
+**状态：** 2026-09-30新预印本，代码作者标注即将发布；venue未确认。
+
+- **母问题：** offline GCRL研究大量优化 temporal/occupancy/controllability goal representation，但 downstream性能真的受 goal representation quality支配吗？
+- **决定性实验：** 在 deterministic maze 中构造 exact temporal-distance goal representation，再系统破坏其 geometry，同时固定 downstream learner。
+- **反常结果：** 作者报告大幅改变 goal-representation quality 几乎不影响 OGBench navigation performance；反而干预 **current-state representation** 可使 success翻倍以上。简单 positional Fourier features在 hardest navigation tasks大幅改善。
+- **idea-growth意义：** 这是非常好的“已有方向不是错，但 load-bearing bottleneck 可能不在那里”的范例。它没有因为 dual/temporal goal representation已有人做就停止，而是直接问“这个研究变量到底决定多少 downstream结果？”
+- **对本 workbench：**
+  - internal representation quality必须经过 planner/action consequence；
+  - M3若发现 temporal geometry漂移，却 candidate/closed-loop不变，就不能夸大；
+  - 更重要的是，它提示我们可以把 **state-side / goal-side / dynamics-side / planner-side** 作为可交换的 bottleneck interventions，而不是把某个 paper family当默认真因。
