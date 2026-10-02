@@ -15,13 +15,21 @@
 | P07 | Scaling Self-Play with Self-Guidance, 2604.20209v1 | M | [全文](https://arxiv.org/html/2604.20209v1)；目标引导、形式验证，完整算法/附录待补 |
 | P08 | Self-Adapting Language Models / SEAL, 2506.10943v1 | D（主文与关键实验） | [全文](https://arxiv.org/html/2506.10943v1)；双层优化、自编辑、适配信号 |
 | P09 | Self-Questioning Language Models, 2508.03682 | D（正文、超参与评估口径） | [全文](https://arxiv.org/html/2508.03682v1)；简洁 3B self-play，冻结 proposer 对照 |
-| P10 | Absolute Zero, 2505.03335，NeurIPS 2025 | A＋方法概览，完整深读待补 | [论文](https://arxiv.org/abs/2505.03335)；[会议 PDF](https://papers.nips.cc/paper_files/paper/2025/file/9837dc00ff67d176373268ed48042d49-Paper-Conference.pdf) |
+| P10 | Absolute Zero / AZR，2505.03335v3，NeurIPS 2025 main | D（全文方法/主表/B/D 附录；固定 `paper` 分支关键源码已审，未复现） | [全文](https://arxiv.org/html/2505.03335)；[会议 PDF](https://papers.nips.cc/paper_files/paper/2025/file/9837dc00ff67d176373268ed48042d49-Paper-Conference.pdf)；[代码](https://github.com/LeapLabTHU/Absolute-Zero-Reasoner)；可执行题/答案、联合训练与强 solver-only 消融 |
 | P11 | PopuLoRA, 2605.16727v1 | M＋主表与计算口径 | [全文](https://arxiv.org/html/2605.16727v1)；群体、匹配、cross-play 已有所有权 |
 | P12 | CurateEvo, 2607.06140v1 | A＋引言/框架 | [全文](https://arxiv.org/html/2607.06140v1)；失败驱动的数据代码演化近邻；不能冒充已全文审计 |
 | P13 | Recursive self-improvement of AI research agents / AIDE², 2609.26457v1 | M（框架、主要限制） | [全文](https://arxiv.org/html/2609.26457v1)；系统级 RSI 与权重级 RSI 的区分 |
 | P14 | Experimental Experience Modeling for Autonomous Research, 2609.39392v1 | D（主文含方法/实验/限制性读法） | [全文](https://arxiv.org/html/2609.39392v1)；经验库＋针对性 pilot 近邻 |
 | P15 | AutoLLMResearch, 2605.11518v1 | M（方法、数据混合环境、跨保真与成本） | [全文](https://arxiv.org/html/2605.11518v1)；不能 claim 首次跨尺度实验经验迁移 |
 | P16 | PAC, 2608.30528v1 | M（方法、课程轨迹与定位） | [全文](https://arxiv.org/html/2608.30528v1)；更新强度＋真实进度组合已存在 |
+| P21 | LESS，ICML 2024；2402.04333v3 | D（全文方法/结果/相关工作/关键附录；核心代码已读，未复现） | [全文](https://arxiv.org/html/2402.04333v3)；[会议](https://proceedings.mlr.press/v235/xia24c.html)；Adam influence、warmup、跨模型迁移及失败边界 |
+| P20 | DoGE，ICML 2024；2310.15393v2 | D（全文方法/结果/附录阶段课程；代码未复现） | [全文](https://arxiv.org/html/2310.15393)；[会议](https://proceedings.mlr.press/v235/fan24e.html)；目标梯度、静态平均胜阶段更新 |
+| P22 | ADO，ICLR 2025；2410.11820v1 | D（全文方法/结果/训练附录；代码未复现） | [全文](https://arxiv.org/html/2410.11820)；[会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/923285deb805c3e14e1aeebc9854d644-Abstract-Conference.html)；在线潜力、强 Natural 基线 |
+| P31 | Actor-Curator，2602.20532v1；ICLR 2026 workshop，非主会接收证据 | D（全文方法/主表/限制；官方 README，源码内部未审计） | [全文](https://arxiv.org/html/2602.20532)；[代码](https://github.com/actor-curator/actor-curator)；一次共享 actor 更新后的逐题效用估计、在线 bandit curator；MATH500 并非普遍胜出 |
+| P32 | Effective Synthetic Data Curation Requires Group-Level Signals，2610.00779v1；新预印本 | D（全文、related work、配方/成本附录及理论推导；未复现） | [全文](https://arxiv.org/html/2610.00779v1)；单步组 oracle 与逐条 proxy 的差、合成改写倍率、梯度离散度预算诊断；未覆盖连续数据改进器 |
+| P33 | Group-MATES，NeurIPS 2025 main；2502.14709v2 | D（方法、22 项主实验、消融与成本附录；源码入口，未复现） | [会议](https://proceedings.neurips.cc/paper_files/paper/2025/hash/e389ad5c08184ebecaf0640e01588489-Abstract-Conference.html)；[全文](https://arxiv.org/html/2502.14709)；关系影响模型＋训练轨迹＋两阶段选择 |
+| P34 | BLISS，ICML 2026 main；2510.06048v5 | D（方法、主表、关键附录；源码入口，未复现） | [会议](https://proceedings.mlr.press/v306/hao26b.html)；[全文](https://arxiv.org/html/2510.06048)；多步 bilevel proxy、动态评分、强 MATES 对照与实际 wall/显存成本 |
+| P35 | PDS / Data Selection via Optimal Control，ICLR 2025 main；2410.07064 | D（全文方法、related work、主表、动态信息/G/E 附录；官方代码入口，未复现） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/9ad4891facabf17aa11580686bacfe4e-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.07064)；多阶段代理求分、可复用静态选样与实际求分成本 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
@@ -30,9 +38,6 @@
 | P17 | STaR，NeurIPS 2022 | A | [会议页](https://papers.nips.cc/paper_files/paper/2022/hash/639a9a172c044fbb64175b5fad42e9a5-Abstract-Conference.html) |
 | P18 | Self-Instruct，ACL 2023 | A / 引用链 | [论文](https://arxiv.org/abs/2212.10560) |
 | P19 | DoReMi，NeurIPS 2023 | A | [会议页](https://papers.nips.cc/paper_files/paper/2023/hash/dcba6be91359358c2355cd920da3fcbd-Abstract-Conference.html) |
-| P20 | DoGE，ICML 2024 | A | [会议页](https://proceedings.mlr.press/v235/fan24e.html) |
-| P21 | LESS，ICML 2024 | A | [会议页](https://proceedings.mlr.press/v235/xia24c.html) |
-| P22 | ADO，ICLR 2025 | A | [会议页](https://proceedings.iclr.cc/paper_files/paper/2025/hash/923285deb805c3e14e1aeebc9854d644-Abstract-Conference.html) |
 | P23 | Universal pre-training by iterated random computation, 2506.20057 | A / P01 引用链 | [论文](https://arxiv.org/abs/2506.20057) |
 | P24 | LANCE, EMNLP 2025 main | A | [会议 PDF](https://aclanthology.org/2025.emnlp-main.914.pdf) |
 | P25 | SPIRAL, 2506.24119 | A | [论文](https://arxiv.org/abs/2506.24119)；本轮不据二手摘要填写会议状态 |
@@ -44,8 +49,8 @@
 
 ## 最新入口与本轮未解决的阅读债务
 
-- 检索到 `Effective Synthetic Data Curation Requires Group-Level Signals` / 2610.00779 的列表条目，但直接摘要/HTML 抓取失败，**不将其内容当已核实证据**。任何 group-interaction 叙事开始前补核验。
+- P32 已从官方 arXiv 全文核实；若发展 group-interaction 叙事，先明确与其一次组更新及 GMRel/GREATS 的增量，不把它的存在当自动判死。
 - `Learning at the Right Pace` / 2606.22305、`Gap-Adaptive Teacher Scheduling` / 2609.37898：只发现入口，暂不据此写方法事实。
-- 补读 AZR、CurateEvo、SGS 的全套方法和训练代码，再决定哪一套值得做正式 method baseline；目前只把它们当定位边界。
-- P20/P21/P22/P27 的方法及强实现必须在开展数据价值估计前补齐。官方会议元数据核验不等于 baseline 复现。
+- CurateEvo、SGS 的全套方法和训练代码仍需补读，再决定哪一套值得做正式 method baseline；AZR 本轮已深读并审固定源码入口，但未复现。
+- P20/P22/P27 的方法及强实现、P21/LESS 的官方代码执行路径，必须在把它们当正式数据价值估计 baseline 前补齐。官方会议元数据与论文深读不等于 baseline 复现。
 - 为候选阶段补齐近期接收论文、公开评审和 venue corpus 的系统审计；本轮没有完成“最近十篇接收论文全部全文＋公开评审”的 D5 标准。

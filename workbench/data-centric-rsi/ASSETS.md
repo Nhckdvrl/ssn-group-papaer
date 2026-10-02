@@ -14,6 +14,8 @@
 | [SEAL](https://github.com/Continual-Intelligence/SEAL) | 官方实现入口，与 self-edit/适配论文关联 | 本轮未深入审计训练路径/本地兼容 | 备选小规模真实训练反馈 substrate |
 | [SQLM](https://self-questioning.github.io/) | 官方项目与论文，简洁 3B self-play 设定 | 未完成代码逐文件/本地复现审计 | 第二候选闭环，先補方法实现和测试选择口径 |
 | [SGS](https://github.com/LukeBailey181/sgs) | 官方代码入口 | Lean 环境、全部训练成本和复现步骤未审计 | 重资产近邻，非默认首跑 |
+| [Group-MATES](https://github.com/facebookresearch/Group-MATES) | NeurIPS 2025 主会官方关系影响选样代码与 DCLM 配方入口 | 当前只核对论文、README 入口；内部运行路径和本地迁移未审计 | 若选定固定池组级作用为问题，它是必须对齐的强 baseline；原始 8 卡预训练不是 E00 的轻量替换 |
+| [BLISS](https://github.com/MingruiLiu-ML-Lab/BLISS-Bilevel-Data-Selection) | ICML 2026 主会官方多步 bilevel 动态选样代码入口 | 8×A6000 DDP/通信及本地执行未核实，不能称已复现 | 约束“动态多步 proxy”增量；若动作空间切到预训练固定池，再审正式实现 |
 
 上游入口可能更新；执行时先记录 commit/revision，而不是把本文日期当版本锁。
 
@@ -24,8 +26,9 @@
 - **P01**：小模型、长 token budget、多个 reward arm 与 seed/超参搜索。已发布结果可低成本复核；完全重做训练 grid 的成本仍需另算。
 - **RSIBench-Data**：名义预算为 run 16h/$500 Tinker；这既不是纯 GPU 小时，也不是我们的本地费用预测。
 - **DataEnvGym**：论文显示 2B 级学生可进行较短迭代；它的历史时长不作为当前机器承诺，实际完整闭环的耗时由 E00 测量。
+- **Group-MATES / BLISS**：前者论文 Table 3 的 412M/1.4B/2.8B 目标预训练分别约 104/240/740 H100 小时；后者 1B 数据选择阶段报告 11.82 小时、74.51GB 峰值显存及 8×A6000 DDP。它们是必须理解的强近邻，不宜为 E00 一轮 120 条 MATH SFT 盲目重造整套预训练系统。
 
-论文来源：[SOAR](https://arxiv.org/html/2601.18778v3)、[ASP](https://arxiv.org/html/2607.03523v1)、[P01](https://arxiv.org/html/2609.30063v1)、[RSIBench](https://arxiv.org/html/2607.25886v1)、[DataEnvGym](https://arxiv.org/html/2410.06215v3)。不做 H100→A100/PRO/H20 的未经测量换算。
+论文来源：[SOAR](https://arxiv.org/html/2601.18778v3)、[ASP](https://arxiv.org/html/2607.03523v1)、[P01](https://arxiv.org/html/2609.30063v1)、[RSIBench](https://arxiv.org/html/2607.25886v1)、[DataEnvGym](https://arxiv.org/html/2410.06215v3)、[Group-MATES](https://arxiv.org/html/2502.14709)、[BLISS](https://arxiv.org/html/2510.06048)。不做 H100→A100/PRO/H20 的未经测量换算。
 
 ## 3. 硬件组织
 
@@ -70,3 +73,17 @@ P01 的发布权重不是完整训练状态：若做后续训练，明确是新 
 | 反馈 prompt | 固定 Open-Ended 模板尝试混合 3 训练题 + 3 错题，但 `CompletedMathTaskInstance` 的题面须经 `.task_instance.instruction` 访问；模板直接读 `.instruction`，本地 sentinel 渲染为空。 | 未使用该 teacher；若后续运行官方反馈分支，必须先修并分别保存修前/修后 prompt，不从源码 bug 推断论文结果。 |
 
 以上区别按 [DataEnvGym 论文](https://arxiv.org/html/2410.06215v3) 和固定 [官方代码](https://github.com/codezakh/dataenvgym/tree/f698f39c7d77fc655942099535d06a4d11b32e3b) 核对。每次解释结果先明确属于“论文口径”“固定源码口径”还是“本地同提示数据动作口径”。
+
+## 7. E06–E08 新增边界与评测成本
+
+- 原论文 MATH Open-Ended 的最佳学生来自 **10 轮、累计约 752 条**生成题；论文 B.2 的 GPT-4o teacher 为 temperature 0。E06/E07 使用本地 `Qwen2.5-32B-Instruct@5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd`、temperature 0.7、每请求一条、仅 40/arm 与 20/arm 的质量 gate；这不是原论文的生成基线。当前 shell 无 `OPENAI_API_KEY`，所以未调用原 GPT-4o teacher；E07 的答案错误只属于本地替代。原论文这些配置见[全文 §B.2/B.3](https://arxiv.org/html/2410.06215v3)。
+- E00/E04/E05 均为**一轮 120 条真实标注题**、3 epoch、24 optimizer step；E08 只复用这些 checkpoint 比动作。不能从 E08 的相近收益推断 DataEnvGym 原方法在 10 轮/752 条下无效。输出文件在外部缓存 `runs/e00/e04/e05/e06/e07/e08/`，小清单在本 workbench `results/`。
+- 固定 vLLM 0.11.0 的默认 V1 离线推理对同一 dev1740 贪心双跑出现 50/1740 对错翻转；按[官方确定性指南](https://docs.vllm.ai/en/v0.11.1/usage/reproducibility/)关 V1 multiprocessing 后，同 GPU 的 dev352 双跑仍翻转 8/352。再启用 `enforce_eager=True` 后，dev352 两次逐题预测哈希完全一致；E08 统一采用该后端并另复跑一次完整 dev1740 base。后端 pilot 与成本见 E00 卡。
+
+## 8. E09 本地替代教师的原始资产与边界
+
+- `Qwen/Qwen3-32B@9216db5781bf21249d130ec9da846c4624c16137` 的 thinking 生成在 fvcrc10 A100 GPU0 跑了 20 次；temperature0.6/top-p0.95/top-k20、最大 3072 输出 token。相对论文 GPT-4o 它同时改变模型、解码、thinking、输出上限，**不属于原论文教师复现**。
+- prompt、全部 raw、包括截断的记录、严格 manifest、GPU 型号及启动时 git SHA 留在 `/home/xiang/.cache/research/data-centric-rsi/runs/e09/`；执行脚本和审计脚本在 [`scripts/`](scripts/)，小结果在 [`results/E09_teacher_gate_audit.json`](results/E09_teacher_gate_audit.json)。原始生成脚本 SHA256 `bd3e1e87e3d74ee5729ab0f1dde7f5fe6876c63a541cc86e3f377710f70f6507`，事后审计不改原始 raw。
+- 20 次占用 0.488 A100·时，其中冷加载约 10.7 分钟；生成 39,398 token。预注册严格数组格式只有 1/20 通过；允许单对象的事后诊断也仅 16/20 可解析，完整可训练题解 13/20。没有学生训练 checkpoint。详情与不扩张决定见 [E09](experiments/E09-qwen3-teacher-substrate-gate.md)。
+
+AZR 的固定 `paper` 分支源码另缓存在 `/home/xiang/.cache/research/data-centric-rsi/AZR`，SHA `41ed983cdf541cfcd2f963f33c055d50074f3c90`，重建可 `git clone --branch paper https://github.com/LeapLabTHU/Absolute-Zero-Reasoner.git` 后 checkout 该 SHA。仅审计关键入口，未执行：其 README 要求 7B 4×80GB，论文说每次 3–5 天 A800；自带 Python executor 直接执行候选代码且 README 标注不安全。若后续借验证任务，必须先用隔离执行环境并另开资源 gate，不将此克隆称为完成 AZR baseline。

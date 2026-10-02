@@ -67,8 +67,8 @@
 3. **改变的前提**：把输出固定为可执行的数据策略及实际选样结果，而非口头建议。
 4. **来源（RECONSTRUCTED）**：在固定模型/训练管线下提高数据决策可归因性，再问什么研究 scaffold 真正有帮助。
 5. **距离**：相对 DataEnvGym 更强调通用 coding agent 与固定池；相对传统 selector，策略空间开放；相对 RSIBench 更专注 curation 可控性。
-6. **方法/实验**：LLaVA 池子选择、SmolVLM、DataComp/CLIP 等；Light/Heavy scaffold、随机/专业 selector、搜索长度与跨模型/池迁移。将相关论文转成实现的 scaffold 有作用，但不是每种更重研究流程都更强。
-7. **边界**：多个 scaffold 成分一起变化，不能把差异归给单个“反思”；强 selector 本身也有不小计算成本。跨模型迁移已做，不能 claim 第一次。
+6. **方法/实验**：LLaVA 池子选择、SmolVLM、DataComp/CLIP 等；Light/Heavy scaffold、随机/专业 selector、搜索长度与跨模型/池迁移。论文附录 Table 22 的 LLaVA 10k：随机 **32.5**（best-of-10）、ICONS **33.3**、ARDS **33.2**、Claude Code 开放提示 agent 10 轮 **34.2**；随机 100k 为 **33.7±0.2**。因此 agent 的数据效率有实测增量，不能先验宣布简单随机足够；同时应把 10 轮研究/训练反馈成本计入全链路。主文 Table 5 的 Claude 重复 session 中，开放提示平均 **33.7**、强制 evidence-only 自研究 **32.9**、强制适配论文 **34.0**（最优 **34.9**）；后者从源比例局部搜索转向 EL2N 高 loss 选样＋assistant-loss 噪声过滤，但并非每次局部改动更有效。较重流程能改变探索的**策略家族**，不保证所有实例胜出。
+7. **边界**：多个 scaffold 成分一起变化，不能把差异归给单个“反思”；强 selector 本身也有不小计算成本。跨模型/数据池迁移已做，不能 claim 第一次；其 10k/20k/50k 结果显示数据预算改变会重排方法间的实际效用，不宜只报单一预算切片。主文明确把 DataComp 的静态政策评测与 SWE/AI-research agent 的迭代执行相接，论文新增的是固定训练契约下对**搜索过程**的研究，不是声称首创数据选择或 agent 研究。重写扩展也已做，不能把“从选择扩到改写”单独当作我们的 delta。
 8. **研究动作**：同时对齐方法空间和预算，比较强简单策略；把自然语言“研究过程”与其造成的数据改变拆开。
 9. **对我们**：作为 I02 的强近邻和未来跨任务验证，不作为弱 I/O 集群的首个大规模多模态下载计划。
 
@@ -113,6 +113,15 @@
 7. **边界**：多数一致不等于正确；主实验中有 best-test-over-training 的读数，应同时保留原复现口径与独立选点口径，不把重评测当作全部论文贡献。
 8. **研究动作**：先把简单闭环复现强，检验动态生成是否真的提供静态强课程之外的效用。
 9. **对我们**：潜在第二 substrate；“冻结 proposer”“调更新频率”已经不新。旧模型上的 toy arithmetic 只能校准方法，不能独自承担顶会叙事。
+
+## P10 — Absolute Zero / AZR（NeurIPS 2025 main；2505.03335v3）
+
+来源：[全文含附录](https://arxiv.org/html/2505.03335)、[主会论文](https://papers.nips.cc/paper_files/paper/2025/file/9837dc00ff67d176373268ed48042d49-Paper-Conference.pdf)、[官方源码](https://github.com/LeapLabTHU/Absolute-Zero-Reasoner)。阅读：引言/相关工作、方法、全部主表与 D/B 附录；本地审 `paper` 分支 SHA `41ed983cdf541cfcd2f963f33c055d50074f3c90` 的 README、配置、constructor、reward manager 与 executor，未执行训练复现。
+
+1. **母问题与 idea 生长**：此前“zero RLVR”不需要标注推理链，却仍要人工提供题目和答案；早期 self-play 常局限于封闭游戏或依赖不可靠 learned reward。AZR 将任务写成 Python `(program,input,output)`，由模型提出前两者，执行器算出第三者，再分别训练出题和解题。它相对普通 synthetic-data/self-training 的真正改变，是**题目本身及其答案由可执行环境共同定义**，不是给生成器加一段反思提示。最近邻包括 AlphaZero/unsupervised environment design、STaR、RLVR、Minimo、SQLM，以及后来的 code self-play；不能称首次自博弈或首次可验证任务。
+2. **方法与训练口径**：统一模型做 deduction（给程序/输入预测输出）、abduction（给程序/输出找等效输入）、induction（给部分 I/O 合成程序）；经 Python 验证的三类 buffer 不断加入有效任务。每题对当前 solver 采 8 个 rollout，proposer 奖励为成功率非零时 `1−成功率`，零成功给零；这是可解性/难度信号，**不是单题训练后的实际外部收益**。六个任务×角色各自标准化 reward 做 TRR++。主实验 Qwen2.5-7B Base/Coder，batch `64×6`、500 步、AdamW LR1e−6、最长 prompt6144/response8096；评估 HumanEval+/MBPP+/LiveCodeBench 与六项数学基准，greedy 输出。论文附录称每次训练约 **3–5 天 A800 集群**；固定 `paper` README 要求 7B **4×80GB GPU**，不能当本地短 LoRA 实验的即插即用替代。
+3. **强基线、效果和反例**：Coder-7B 的 code/math/总平均由 base **56.6/23.9/40.2** 到 AZR **61.6/39.1/50.4**；同表比较人工代码/数学数据训练的多个 RLVR 模型，但基座版本和监督来源并非全部相同，需谨慎读横向名次。Base-7B 消融：full **46.8**，只训 solver **45.4**，去历史生成参考 **43.8**，仅 deduction **43.3**；故 proposer 更新有额外收益，然而只训 solver 也已获得大部分效果。Llama3.1-8B 上 AZR 总平均 **19.2**，低于同文 SimpleRL **20.5**，它不是每个基座都胜强方法。附录 D 的组合函数课程常退化为原函数，额外 complexity/diversity reward 没显著增益，LeetCode 初始化早期代码表现更好但最终平台相近、数学更低；这些是被真实尝试过的设计空间，不能重复包装成首次发现。
+4. **源码边界与对我们的压力**：固定 `paper` 分支代码的 proposer reward 确为 `reward_managers.py` 的 `one_minus` 成功率转换；`constructor.py` 从 buffer 抽参考并复用已有任务，`coder7b.sh` 禁用了多个 intrinsic reward、设 8 次成功率采样。`python_executor.py` 直接执行候选 Python，README 明说研究版 executor 不安全；若未来借用资产，须用独立隔离执行器而非在共享 GPU 节点直接跑原版。AZR 已拥有“可验证开放式代码练习＋联合 proposer/solver 训练”，也已尝试组合课程和简单多样性奖励。它仍未用真实训练干预核对每题的 proposer 奖励是否选出对**新学生/新任务**长期最有用的数据，且完整复制预算与我们不匹配；这是待测压力，不是从它的 reward 公式就自动成立的论文 claim。E09 的数学 teacher 错解表明可验证资产有吸引力，但换任务必须先确认强静态/冻结 proposer 基线及实际训练效用。
 
 ## P11 — PopuLoRA（2605.16727v1）
 
@@ -169,6 +178,83 @@
 7. **边界**：主要解决已有任务臂的在线分配，不等于识别任意生成数据的跨状态长期收益。尚未审计其所有 baseline 和资源数值。
 8. **研究动作**：先对最强廉价在线进度基线提问，不能拿纯 difficulty 当唯一对手。
 9. **对我们**：I03 的直接边界。只有“梯度/advantage 不代表进步”不够新；必须继续到决策错误的结构和有效修复。
+
+## P21 — LESS（ICML 2024；2402.04333v3）
+
+来源：[会议页](https://proceedings.mlr.press/v235/xia24c.html)、[全文](https://arxiv.org/html/2402.04333v3)、[官方代码](https://github.com/princeton-nlp/LESS)（本地 pin `8abf9628b9a814ac3045445eebc8ba3c908fdc78`）。阅读：主文方法/结果/相关工作/限制与关键附录，并审读官方 `train.py`、`get_info.py`、`collect_grad_reps.py`、`matching.py` 及数据入口；尚未运行或复现。
+
+1. **形态与母问题**：从约 270k 多源 instruction 数据中，为少量目标示例选择有训练效用的 5% 数据；目标是目标能力的实际微调表现，而非词面相似。
+2. **旧法具体失败**：BM25/DSIR/RDS 容易选同语言或同表面主题而非同推理能力；经典 SGD 梯度影响不对应 Adam 更新，序列平均梯度又因长答案范数较小偏向短样本。
+3. **改变的前提与 idea 来源**：将目标示例对训练数据的影响近似为 warmup 轨迹中的 **Adam 更新方向 × 验证梯度**；用 cosine 处理长度偏差，用 LoRA＋随机投影压缩梯度库。与普通静态文本检索的距离是优化器与训练轨迹信息，不是改一个 similarity 名称。
+4. **方法**：从候选池抽 5% 随机数据做 4 epoch LoRA warmup，保存逐 epoch checkpoint/Adam 状态；对候选求 Adam 更新特征、目标示例求梯度，投影到 8192 维；逐目标子任务取平均梯度、沿 checkpoint 加权 cosine，再对目标子任务取 max 排序选 5%。构建数据特征库贵，选新目标便宜。论文的 270k/7B 设置称 warmup 约 **6 A100·时**、梯度特征约 **48 A100·时**、17.7GB，选择本身 <1 分钟；本地缩小池子不能机械照搬这些时长。
+5. **评测与消融**：Llama2-7B/13B、Mistral7B，MMLU/TydiQA/BBH 主结果三训练种子；另有 Pythia 尺度、GSM8K/TruthfulQA。Llama2-7B 的 5% LESS 对随机在三主任务为 **50.2 对 46.5、56.2 对 52.7、41.5 对 38.9**；更强的 25%/100% warmup 与 4 checkpoint 又胜过较弱 warmup/1 checkpoint，表明状态信息不是无关装饰。已有跨模型 LESS-T：Llama2-7B→13B/Mistral 可迁移，但 Pythia→Llama2 在 TydiQA 未胜随机（附录 D.5）。
+6. **真正拥有与剩余压力**：拥有“梯度数据价值、优化器状态、warmup 状态、跨模型策略复用”的大块 claim；不能把换学生后效用变化或廉价梯度 proxy 首次提出。它承认 warmup/特征成本、序列级聚合含混、loss 与生成准确率不单调、单样本影响忽略数据之间相互作用。它评估的是固定池的一次目标选择，不是连续数据生成/修订中动作选择经验如何在新 episode 累积。
+7. **对当前实验**：E04 的字符 TF-IDF 是故意廉价的 screening baseline，若它胜静态也不能宣布新方法；下一强选择近邻是 LESS 或适合 MATH 的同级梯度/优化器感知方法。若探索 I01，须把 LESS-T 已有跨模型成功与 Pythia→Llama2 失败作为约束，并测真实再适配成本/新状态收益，而不是再画一张 transfer matrix。
+8. **源码适配边界**：`get_info.py` 的 Adam 模式直接要求 warmup checkpoint 目录中的 `optimizer.bin`；`collect_grad_reps.py` 对每条样本反传后投影，`matching.py` 将目标梯度重排为写死的 MMLU/BBH/TydiQA 子任务数。官方 training/data scripts 假定 Tulu 式聊天数据和原任务入口，依赖版本为 2023–24 年旧栈。因此把它搬到当前 Gemma/MATH 不只是换路径：需重建 checkpoint＋optimizer 状态、目标梯度与匹配聚合，保留原论文的 Adam/trajectory 思路并明确标注适配。这个代码审读不等于本地 strong LESS 基线已跑通。
+
+## P20 — DoGE（ICML 2024；2310.15393v2）
+
+来源：[会议页](https://proceedings.mlr.press/v235/fan24e.html)、[全文](https://arxiv.org/html/2310.15393)、[官方代码](https://github.com/Olivia-fsm/DoGE)。阅读：主文引言/推导/实验/讨论，附录计算与阶段课程；代码尚未本地复现。
+
+1. **母问题和旧法缺口**：DoReMi 的两个 proxy 以相对 reference 的 excess loss 指导配比，与目标域平均泛化损失不完全一致；目标域不在训练池时也不直接适用。DoGE 把目标域 loss 的一步下降写成源域梯度与目标梯度的对齐，不需要 reference proxy。
+2. **真正改变的前提**：训练数据的价值是它对**目标分布**的局部更新方向，而非自身 loss 或难度。82M proxy 上每域梯度构成镜像下降权重，时间平均成静态配比，再训练 124M/210M/684M base；目标可为全部训练域或池外域。最近邻为 DoReMi、ODM、gradient influence/LESS 和固定均匀配比，差别在目标梯度与显式跨域效应。
+3. **可核对的实证**：SlimPajama 七域，82M proxy 10k 步；684M 的七域平均 perplexity DoGE **15.806**、uniform **16.526**、DoReMi-10k **17.172**、DoReMi-50k **16.124**，六个 5-shot reasoning 平均准确率 **52.29/50.59/49.79/51.49**。论文还做池外域、proxy 尺度和计算量消融；reported proxy 训练 82M DoGE 约 6 小时、DoReMi 约 39 小时，均在 4×A100 上。数字是其预训练设置，不能外推到我们的 24 步 SFT。
+4. **与动态课程的关键结果**：作者把相同总域样本数按 2/3/10 段部署，阶段配比的平均 perplexity 没有明显超过全程静态平均；10 段每千步改权重明显更差。proxy 的在线重加权本身也不如同尺度、用最终静态配比训练的 base。这是“更频繁适配未必更好”的实证，但只覆盖该预训练域混合和目标；不能据此判所有 student-feedback 环路无价值。
+5. **剩余压力与我们**：DoGE 用 proxy 上的一步梯度泛化做代理，最后主动将动态策略压缩成静态分布；它未展示在新学生持续生成/修订训练经验时何时必须重新决策。若我们研究动态决策，必须超过“固定最优/时间平均配比”及同成本 proxy，而非只优于随机。
+
+## P22 — ADO（ICLR 2025；2410.11820v1）
+
+来源：[会议页](https://proceedings.iclr.cc/paper_files/paper/2025/hash/923285deb805c3e14e1aeebc9854d644-Abstract-Conference.html)、[全文](https://arxiv.org/html/2410.11820)、[官方代码](https://github.com/yidingjiang/ado)。阅读：主文动机/公式/实验/讨论和训练附录；代码尚未本地复现。
+
+1. **母问题和 idea 来源**：离线小 proxy 需要额外成本且跨模型/分词器可能不稳；作者先用昂贵 meta-ordering 实验说明好课程可以存在，再问能否在**正在训练的同一学生**上低成本发现。与 DoGE/DoReMi 的距离是取消离线 proxy、直接使用本轮 loss 轨迹；与 ODM 的距离是把 reducible loss 和学习速度分开，而非仅追高 loss。
+2. **方法与前提**：每域拟合局部幂律 loss `epsilon + beta*n^-alpha`，学习潜力用导数 `alpha*(loss-epsilon)/n`；乘上域先验与近期该域采样比例的平滑 credit，再将当前偏好与全史平均权重混合，设概率下限。它刻意只估计**域对自身**的贡献，承认跨域效应和长程课程不足。warmup 5k 步，每 1k 步重拟合；论文 1.3B 设置 60k 步、约 125B token，拟合时间 <0.4% wall-clock。
+3. **强基线和结果**：除了 Pile 原权重、DoReMi、ODM、uniform balanced，还补入按分词器得到的各域自然 token 份额 `Natural`。1.3B 七项零样本平均 ADO **0.590**，Natural **0.585**，DoReMi **0.575**，Balanced **0.557**；124M 为 **0.470/0.463/0.455/0.457**。Natural 在 Pile validation loss 上仍略好于 ADO；ADO 在 SlimPajama/FineWeb loss 更好。作者明说 simple Natural 意外强，不能只报 ADO 对弱静态方案的胜利。
+4. **方法边界与定位**：ADO 的局部 fit 不精确预测最终 loss，论文只需要短期有效；自然 token 份额、目标域质量和跨域贡献会改变行动排序。最近邻 DoReMi、DoGE、ODM、LESS、Skill-it! 已占据“在线潜力/梯度选择/课程随学生变”大块空间。ADO 与 DoGE 关于动态/静态的不同结果来自目标、域定义、是否单学生在线适配、训练阶段和压缩方式的共同变化，**不能机械写成论文相互矛盾**；这提示我们在真实训练收益下测哪种状态信息值得支付更新成本。
+
+## P31 — Actor-Curator（2602.20532v1；ICLR 2026 workshop 版本）
+
+来源：[全文](https://arxiv.org/html/2602.20532)、[官方实现](https://github.com/actor-curator/actor-curator)、[workshop 版本](https://openreview.net/pdf?id=ticD6IcBQi)。阅读：引言/方法/全部主实验/限制、训练与硬件附录、官方 README；代码内部尚未执行审计，不能称复现或主会接收。
+
+1. **母问题、idea 出生点**：RL 后训练时，固定或人工难度桶不能应对不断变化的 actor；只看当前成功率、绝对 advantage 也不直接估计一次更新对最终策略的帮助。作者把“挑哪些题”视为非平稳、部分反馈 bandit，提出在训练中同时学一个能泛化到新题的 curator。相对 ProCuRL/PCL 的变化是学习目标从成功率/决策边界转为**更新后的政策改进**；相对 SEC 的变化是问题级而非人工桶，且用 OSMD 处理部分反馈。
+2. **信号到底是什么**：文章从 `J(pi_{t+1})-J(pi_t)` 的 performance-difference identity 出发，用旧 actor rollout、新旧策略概率比和旧策略 advantage 形成每题 `u_x`，再以采样概率校正并训练 Qwen3-0.6B curator。它不是“每个候选题都单独训练一遍学生并量下游准确率”；所有选中题共用一次 RL 更新，单题 credit 是小更新下的一阶近似。两阶段从 2048 候选抽 256 题、每题 8 rollout，前 20 步 curator dormant、5 步 warmup，OSMD＋proximal clip 限制策略波动。官方源码是 verl 0.5 fork；3B actor 原实验称同节点 2×A100 可运行，curator 额外训练 wall 约 9–19%（附录不同任务），并非免费。
+3. **实证与强对照**：Qwen2.5-3B actor、GSPO，30k Countdown/Zebra/ARC-1D 与 12k MATH 问题库，比较 uniform、SEC（绝对优势桶）、PCL（成功概率接近 50%）；论文报前 100 步最佳验证值。Qwen2.5 上 ARC-1D AC **36.37** 对最佳其他 **27.87**，AIME24 **30.00** 对 **23.33**；但 MATH500 AC **81.00** 低于 uniform **83.00**。Llama3.2-3B-it 上 MATH500 **53.60** 对 uniform **52.20**，Zebra AC **47.12** 低于 PCL **48.25**。所以“policy-improvement curator 在所有任务稳定胜出”不是它的数据所支持的强读法。论文消融 absolute advantage、回归目标、GRPO 替代 actor 更新与 curator 尺度；未在正文明确给多训练 seed 区间，不能据单表放大细微差异。
+4. **与我们的距离和剩余压力**：它已拥有“用训练后而非静态难度信号学数据价值”“在线状态相关选择”“问题级 bandit”这三项主要思想，I02 不能宣称首次。但它只选固定库中 RL 题、依赖可验证 reward 与 on-policy rollout，并在同一 episode 内更新 curator；开放式数据生成/修订的动作归因、训练 token/验证成本、跨新学生 episode 的改进器学习、长程外部效用仍未由这些结果回答。MATH500 与 AIME/ARC 的不同排序是值得理解的目标依赖压力，**不是**单凭表格就能产出的新论文问题。若我们转向 RL 设置，它必须成为强基线或明确定位边界。
+
+## P32 — Effective Synthetic Data Curation Requires Group-Level Signals（2610.00779v1；2026-09-30 预印本）
+
+来源：[全文及附录](https://arxiv.org/html/2610.00779v1)、[arXiv 版本记录](https://arxiv.org/abs/2610.00779)。阅读：引言、形式化、两组实证、诊断、related work、B.1–B.8 实验配方与 C 的推导；未发现可执行官方代码，未本地复现。**刚发布的预印本，不写成已接收主会。**
+
+1. **母问题与 idea 来源**：大量合成文本由少数源反复改写，样本的独立质量/影响力分数既难分辨近似同质样本，也看不到同时训练时的抵消与放大。相关工作已包括单样本影响力（LESS/GradSim）、数据去重/质量过滤、以及已有的 group influence 和关系模型 GMRel/GREATS。作者的增量不是“首次发明群组”，而是把**合成数据占比**作为压力变量：先在个体 proxy 分数近似固定的组之间隔离交互，再比较真实预训练/RLVR 收益，最后用组内梯度离散度决定昂贵组评分的预算位置。
+2. **方法改变的前提**：个体 proxy 为每个样本单独做一次更新后 reference loss 变化的平均；group oracle 为同一初始 checkpoint 对整组做**一次** AdamW 更新后的 reference loss 变化，不是整套下游训练后的精确 utility。主文和 App C 对理想化单步梯度更新推导：二者一阶相同，二阶差是 reference Hessian × 组内梯度协方差，绝对差上界由光滑度和梯度离散度给出。实际 group oracle 使用 AdamW，理论条件和实际优化器有距离；梯度离散度是选择需要 group audit 的诊断，不是最终学习收益的充分统计量。
+3. **数据、模型、训练和结果**：预训练是 Repro-400M、Repro-Rephrased、FLAN 128 reference、组 5120/10240、400 步；RLVR 是 Qwen2.5-1.5B-Instruct、GooseReason、GPQA 128 reference、组 128/512、GRPO 100 步。构造池先用 BGE 20 类调组的语义覆盖，并把每组个体 proxy 控制在窄带；从组选定等规模训练集，和 random、individual proxy 对照。小组预训练八项平均 group **31.98**、individual **31.20**、random **30.86**；RLVR 六项 group **35.22**、individual **33.53**、random **34.21**。大组也同向，但各项差距不大且任务有异质性；平均值不是全任务都赢。随后 716,800 条、改写倍数 1/10/50 的预训练选择实验比较 GradSim、FineWeb-Edu、BM25 与 GMRel/GREATS，组方法在生成任务上更强。**强静态/随机并未被消除**：附录 Table 9 的 r=50 压力设定中，random **28.10**，GMRel **27.67**，GREATS **27.90**，均低于未续训 base **29.65**；主文说将 GMRel 关系权重调至三倍后才超过 random/base。附录列出同一个 seed 124 的训练配置，不能由此主张跨 seed 稳定性。
+4. **算力与最重要的边界**：每个 group oracle call 从同一 checkpoint 处理整组并评 128 条 reference，1000 组的全量 oracle 本身昂贵。组内梯度离散度在已构造组上的 gap 相关性约 0.58–0.63；只抽 10% 组内梯度并 audit 20% 的组，top-10% 召回约 0.69 对全梯度 0.75，论文按累计显存×时间的模型估算成本约全 oracle 的 0.26，而不是实测端到端 GPU 小时节约。该预算分配只验证 oracle 排名恢复，未独立展示这种低成本混合打分带来的最终训练收益。组 oracle 实验是在固定 base 上先选静态训练集；没有连续学生状态、开放式数据生成动作、跨新 episode 改进器迁移。
+5. **与我们的距离**：它明确拥有“合成数据需要组级交互”“仅用逐样本影响力可能失效”“用梯度多样性分配组评分预算”。如果我们后来发现数据动作集合的交互，不能把这一现象当空白。真正待测的是一轮生成/修订闭环在**变化中的学生状态**里，组级短程 reference-loss 是否足以选出长期外部收益最大的行动，以及昂贵训练反馈能否在新学生/任务上变成可复用决策；这些是问题空间，不是现成贡献。强对照至少包括静态配方、真实 group oracle/GMRel/GREATS 或与动作空间匹配的实现，以及数据量/质量/多样性控制。
+
+## P33 — Group-Level Data Selection for Efficient Pretraining / Group-MATES（NeurIPS 2025 main；2502.14709v2）
+
+来源：[主会页](https://proceedings.neurips.cc/paper_files/paper/2025/hash/e389ad5c08184ebecaf0640e01588489-Abstract-Conference.html)、[全文](https://arxiv.org/html/2502.14709)、[官方代码](https://github.com/facebookresearch/Group-MATES)。阅读：引言、related work、oracle 定义、方法、主实验、消融和配置/成本附录；官方代码入口已核对，内部训练路径未复现。
+
+1. **idea 从哪里长出**：MATES 等已有单样本影响力预测把组选样近似为独立分数求和；作者先用贪心组 oracle 展示选到百余条时与单样本策略分叉且训练结果受影响。于是它不只增加多样性后处理，而是学习“给定此前已选样本，这条样本还有多少边际训练效用”的关系项；核心改变是目标从单点价值到训练路径中的条件边际价值。最近邻是 MATES、DsDm、Quad、GREATS/TSLOO 和经典 group influence，不是凭空创造交互概念。
+2. **方法及评测**：从同一模型状态采样长度 10 的训练轨迹，每步真实更新并测 128 条 FLAN reference loss 的改变，用随机和极端分数 bootstrap 轨迹训练 BGE-base 关系影响模型；预测分数为个体影响 × 与先前选择样本的关系权重。全池推理先做 10k 个影响感知簇，再簇内贪心选择。DCLM 已清洗的预训练池、412M/1.4B/2.8B 三设置、两阶段、每阶段选 50%，22 项 centered Core score；这比只对未清洗数据做质量过滤更强。论文报告 Group-MATES core **0.23362/0.30747/0.36846**，random **0.21356/0.29456/0.35603**，MATES **0.22260/0.30288/0.36139**；去关系项时 412M core 降到 **0.22737**，说明组成信息确有贡献。
+3. **成本及边界**：同文 Table 3 报目标模型分别约 **104/240/740 H100 小时**（8 GPU 训练），关系模型另约 2.7 H100 小时；Oracle 轨迹与推理也在 FLOPs 账中。它的数据动作是静态池内挑原始 pretraining sequence，目标是参考 loss 与预训练 Core score；未生成/验证新训练经验，未把选择器在新学生/任务 episode 上学习得更好的能力单独评估。它已拥有状态相关轨迹和关系选择，不能把 P32 的静态组实验当成整个近邻范围。
+
+## P34 — BLISS: A Lightweight Bilevel Influence Scoring Method for Data Selection in Language Model Pretraining（ICML 2026 main；2510.06048v5）
+
+来源：[主会页](https://proceedings.mlr.press/v306/hao26b.html)、[全文](https://arxiv.org/html/2510.06048)、[官方代码](https://github.com/MingruiLiu-ML-Lab/BLISS-Bilevel-Data-Selection)。阅读：方法/相关工作/实验与 D–K 关键附录；官方实现入口核实但未执行源码。
+
+1. **idea 来源与差异**：外部强教师给预训练数据打分的成本和来源依赖很高，MATES 一步影响力又只看局部 checkpoint。BLISS 借 bilevel data reweighting：让小 proxy 在 score-weighted 数据上多步更新，以其验证 loss 反向训练 score model；同时通过与当前目标模型 logits 的 KL 对齐，让从头训练的小 proxy 跟上目标的状态。它相对 MATES 的 delta 是无外部预训练 oracle 的多步代理和动态评分；相对先前 bilevel 方法则是预训练规模与 proxy–target 对齐。不是“首次利用训练后反馈选择数据”。
+2. **系统设定**：C4 分五个不重复 shard，每轮从 shard 抽 0.1% 训练 proxy/score，用 LAMBADA 作上层验证，取该 shard 分数前 20% 续训目标模型 10k 步。目标 Pythia 410M/1B（另 2.8B 用 1B 所选数据、LLaMA-0.5B 跨架构）；proxy/score 是 Pythia 31M/160M。目标模型与 score model 跨轮继承，proxy 每轮重置到 warmup，避免旧分布优化偏置；这个状态处理不能被我们的 I01/I03 忽略。Pythia proxy 每轮做 3k score 步、每步 1 或 5 次下层更新，另有 Hessian-vector hypergradient；使用了 8×A6000 DDP，多卡通信对本地弱互联不友好。
+3. **强基线与结果读法**：与 MATES、DsDm、LESS、QuRating、SemDeDup、DSIR、random 比 25B token。410M 九项平均 BLISS **45.9**、MATES **45.7**、random **44.5**；1B 为 **47.9/47.5/46.4**。1B 表中 BLISS 对 MATES 的绝对增量是 **0.4pp**，多个单任务反向，不能把论文的 `1.7×` 达标速度写成终局准确率巨大优势；它还给 2.8B 迁移（第 3 轮 BLISS 49.0 vs MATES 47.6）和 LLaMA 0.5B 第 3 轮 45.65 vs45.01。评估的括号是题目标准误，非训练 seed 区间。score 跨轮继承相对每轮重置只 +0.4pp；无 KL 平均低 1.4pp，说明 proxy 对齐可能比“加更多更新步”更关键。
+4. **成本与剩余压力**：论文账本 1B 25B token 总 FLOPs BLISS 19.53×10^19 vs MATES 19.97×10^19，数据选择 wall **11.82h vs30.32h**，峰值显存 **74.51GB vs63.52GB**。这是多轮预训练原始序列选择，不处理生成题答案正确性、生成/验证预算、组内冗余或外部目标准确率驱动的 data action；也没有新任务 episode 上改进器自身会不会学习的验证。我们若只提出“多步代替一步”“随学生动态打分”或“小 proxy 学数据价值”，会被它直接压缩；可发展的差距必须由真实生成/修订行动与终端收益上的决策失败实证支持。
+
+## P35 — Data Selection via Optimal Control for Language Models / PDS（ICLR 2025 main；2410.07064）
+
+来源：[全文与附录](https://arxiv.org/html/2410.07064)、[主会页](https://proceedings.iclr.cc/paper_files/paper/2025/hash/9ad4891facabf17aa11580686bacfe4e-Abstract-Conference.html)、[官方代码入口](https://github.com/microsoft/LMOps/tree/main/data_selection)。阅读：母问题、related work、PMP 方法、主表、动态信息消融、G 实现与 E 数据依赖扩展；代码内部未执行审计，不能称复现。
+
+1. **idea 来源与最近邻距离**：普通离线选样依赖词面/去重/单 checkpoint 影响，在线课程又给目标训练管线增加开销。作者问能否在**训练前**估计一份对整个训练过程有利的静态数据集：把固定样本权重作为控制量，把下游 loss 沿训练轨迹的 AUC 作为目标，利用 Pontryagin 最大值原理给出必要条件。相对 DSIR/RHO-Loss/单点 influence，它引入训练阶段和下游目标；相对 DoGE/在线课程，它在小代理模型求分后一次性部署到多个目标模型。理论是必要条件，不是证明实际所选数据全局最优。
+2. **系统与关键前提**：160M 代理模型先训练 50k 步，取 10k–50k 五个 checkpoint；每个 checkpoint 在 160k 个代理样本上做 100 步 SGD 内环、一个 outer epoch 求分；125M scorer 预测全 125B-token RedPajama CommonCrawl 池的分数，Gumbel top-40% 得到 50B token 静态训练集。实际目标 160M/470M/1B/1.7B 全部训练 100k 步、batch512、序列1024、约 50B token，AdamW＋cosine；以 LIMA 1030 条训练示例的 LM loss 为代理目标，另用九项 OLMo 零样本任务、MMLU、DCLM loss 评估。理论正文以 GD 推导，附录 C 给 Adam 扩展，而实际可行求分内环使用 SGD；不能把它说成沿最终目标 AdamW 轨迹精确反传。
+3. **强对照与真实结果**：对常规均采、RHO-Loss、DSIR、IF-Score，470M 九任务平均 PDS **48.2**、常规 **47.0**；1B 为 **51.0/49.3**，IF-Score 49.0。160M 的多阶段 10k–50k 选样平均 **45.0**，单步内环 **44.6**，只用 50k **44.0**，晚阶段 50k–100k **43.4**；改善存在，但多阶段对单步的实际终点增量是 0.4pp，不能夸张成短程 proxy 全面失效。Table 4 报求分 **15.2h**、scorer **1.5h**、筛选 **10.2min**，对照 1.7B 预训练 **144h**；约 400B 模型效果只是 scaling-law **外推**，没有实际训练。
+4. **它拥有与留下的压力**：已拥有“离线多阶段/长时域信息能产生强可复用静态选样”“小代理求分迁移多个目标尺度”，因此 I01/I03 不能把长时域或跨学生复用当首次贡献。其策略一次求分后冻结，动作是固定网页语料池选样，不含新题生成、答案验证、状态反馈后重决策或跨 episode 改进器训练。作者在附录 E 明确讨论样本依赖及 pairwise diversity 扩展，故“发现逐条分数忽略相互作用”也不是空白。更有价值的待测问题是：**何时静态可复用策略真的不够，且额外反馈足以改变开放式数据动作的终端收益排序？** 要用多状态的真实学生训练及同成本静态/代理基线回答，而不能由数学公式推断。
 
 ## 共同的读论文结论（RECONSTRUCTED）
 
