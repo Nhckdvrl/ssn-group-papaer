@@ -185,10 +185,11 @@ TMLR 2026 **What Drives Success in Physical Planning with JEPA-WMs?** 已明确�
 - Quasimetric GCRL（NeurIPS 2025）和 Multistep Quasimetric（ICLR 2026）已经明确：behavior future statistics 不天然等于 optimal goal distance。
 - CGCIVL (ICML 2025)：trajectory identity 不能直接告诉你 connected/unconnected。
 - PLDM (NeurIPS 2025)：offline data quality/diversity/stitching 会改变方法行为。
+- **On the Identifiability of Controlled World Models (2607.22430)**：behavior policy 的 conditional action excitation 直接决定 controlled transition identifiability；即使 action-conditioned model 在 on-policy data 上预测好，弱 excitation 仍会放大 counterfactual error并伤 goal-conditioned planning。
 
 所以 broad claim “suboptimal behavior causes bias” 已经被占。新的 WM-specific 问题必须落到：
 
-> **planning-aware WM 的 supervision 是否把 behavior-policy geometry 写进 deployed planning metric/representation，并在 test-time MPC 的 candidate ordering 和闭环控制中留下可重复的 imprint？**
+> **在 conditional action excitation 与 one-step transition support 已匹配/控制之后，planning-aware WM 的 trajectory-derived supervision 是否仍把 higher-order behavior-policy geometry（route / tempo / temporal co-occurrence）写进 deployed planning metric/representation，并在 test-time MPC 的 candidate ordering 和闭环控制中留下可重复 imprint？**
 
 ## 关键修正：旧 I01 为什么 VOID，新 M3 为什么不是同一个实验
 
@@ -201,7 +202,7 @@ M3 必须**真实改变 behavior policy / trajectory distribution**，让 object
 - route-biased behavior；
 - 同 environment dynamics 下的 mixed policies。
 
-尽可能匹配 state-action/local-transition support，并显式量化无法匹配的部分。
+尽可能匹配 state-action/local-transition support，并显式量化无法匹配的部分。**现在还必须匹配/审计 local conditional action covariance / excitation（P94）**；否则 behavior-policy effect 会被更直接的 transition-identifiability解释吸收。
 
 ## 可能长出的 idea
 
