@@ -28,7 +28,7 @@ def fetch(repo, revision):
                                   allow_patterns=["*.json", "*.safetensors"]))
 
 
-def load(repo, revision, dtype=torch.float32, swap_glu=False, device="cuda"):
+def load(repo, revision, dtype=torch.float32, swap_glu=False, device="cuda", attn="sdpa"):
     path = fetch(repo, revision)
     c = json.loads((path / "config.json").read_text())
     assert c["layer_norm_type"] == "rms" and c["activation_type"] == "swiglu" and c["rope"] and not c["alibi"]
@@ -40,6 +40,7 @@ def load(repo, revision, dtype=torch.float32, swap_glu=False, device="cuda"):
                       rms_norm_eps=c["layer_norm_eps"], rope_theta=c["rope_theta"], tie_word_embeddings=False,
                       attention_bias=False, mlp_bias=False, bos_token_id=None, eos_token_id=c["eos_token_id"],
                       pad_token_id=c["pad_token_id"], torch_dtype=dtype)
+    cfg._attn_implementation = attn  # "eager" when attention weights are needed
     sd = {}
     for f in sorted(path.glob("*.safetensors")):
         sd.update(load_file(str(f)))
