@@ -122,6 +122,8 @@ def compute(repo, seed):
     res = {"repo": repo, "seed": seed, "items": ix, "top_heads": top, "random_heads": rand,
            "attn_top_decl": float(sum(A["decl"].mean(0)[l, h] for l, h in top)),
            "attn_top_qa": float(sum(A["qa"].mean(0)[l, h] for l, h in top)),
+           "attn_random_decl": float(sum(A["decl"].mean(0)[l, h] for l, h in rand)),
+           "attn_random_qa": float(sum(A["qa"].mean(0)[l, h] for l, h in rand)),
            "FE_c1_intact": float(M["qa"].mean() - M["decl"].mean())}
     for name, heads in (("top", top), ("random", rand)):
         ablate.clear()
