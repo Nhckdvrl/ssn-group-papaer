@@ -1,6 +1,6 @@
 # E04：QA内容覆盖与桥接复用的同源训练干预（2026-10-02）
 
-- **状态：** PLANNED（先CPU数据审计；GPU启动需E03完整基线判断）
+- **状态：** RUNNING（E03完整基线核对后，seed17四格发现pilot）
 - **类型：** EXPLORE（P03/P04的第二种真实学习substrate，不是先定的idea）
 - **对应：** P03/P04；不承接E02单seed小终点差为claim
 - **问题（一句话）：** 无标签双语CPT对后续生成式QA的价值是否依赖覆盖监督内容，还是同域且内容不重叠的桥接可复用？条件连接是否改变这个实际选择？
@@ -21,3 +21,7 @@
 修正后CPU准备通过：new/reuse均4096独立context×2重复；EN loss token1654758/1651606（差0.190%），DE2121658/2122050（差0.018%），在1%预注册容差内。7391独立context候选，4096对应中995双语长度完全匹配；2,795个无官方译料、6个完整单位超2048候选预先排除。hash见 `results/e04_data_manifest.json`。encoder完整编码触发6585-token长度警告，但这些单位在进入pool前剔除，不截断或送进模型。未GPU训练。
 
 运行前边界说明：CPT排除的是固定dev/test context，不是所有source-dev title的所有其他段落；不得将其描述为article-disjoint CPT。E03监督训练的article-disjoint gate不变。E04因果量限定为这些固定同域pool的任务内容覆盖/条件连接，不是排除了所有主题质量差异的纯alignment。
+
+GPU启动决定（完整E03已核对）：英语生成F1各74.35–75.60、DE62.54–63.53，非地板；旧预训练条件的终点差小，不作为要解释的新现象。仍执行一次完整四格联合seed17的理由是：E03的checkpoint比较不能识别新监督内容覆盖/连接，E02又是分类读出；本卡首次在有效完整LM生成学习上直接操纵这一训练选择，信息量不同。不是支持acquisition叙事，也不承接E02早期source差。只允一次完整pilot，若仅NLL变化/小任务差不扩大该grid或prompt优化；转向其他真实训练选择。源/目标、所有预算点和恢复对照全部保留。
+
+A100前置mask阳性检查通过：paired替换prefix最大DE logit差8.15625、split0.0，记录 `results/e04_mask_check.json`；只证明条件连接杠杆。fvcrc10空卡首跑new_paired，有限loss/内存通过后同节点其他三格，四格同硬件/recipe；E06用另一空卡依次测，白天本题最多并用5张。
