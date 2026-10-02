@@ -2,7 +2,7 @@
 
 - 主旨：尚未形成；在有效多语言适配 baseline 上发现真实学习瓶颈。
 - 形态：可能是失败模式 + 分析 + 可操作修复；不是预定的 regime 理论。
-- manuscript-critical contributions：目前无；C03 是 baseline 待测，不是贡献。
+- manuscript-critical contributions：目前无；C03标准学习读数已完成，不是贡献。E02为训练端探索，尚无结果。
 - 摘要主张、主图：无。先 EN/DE 学习曲线与混淆矩阵，不预写结果故事。
 - 基线：MONOWEB FWB / MWB / MWB+P，同训练实例、源语 recipe、适配种子与预算。
 - 证据标准：先源语可学习，再适配多种子；跨家族/任务与训练干预依实际 bottleneck。

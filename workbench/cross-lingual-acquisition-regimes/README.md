@@ -1,12 +1,12 @@
 # C：多语言数据与跨语言学习
 
-更新：2026-10-02。**尚无论文 idea 或候选；撤回既定解释，重建有效学习 baseline。**
+更新：2026-10-02。**尚无论文 idea 或候选；有效学习 baseline 已建立，持续推进训练端探索。**
 
 ## 当前决定与调度
 
 人审依据：用户 2026-10-02 独立研究审计及本次明确要求纠正后继续推进。
 保留领域与资产，停止冻结弱模型小信号的局部延伸，允许任务微调和小额 CPT。
-总登记表的 PAUSED 调度状态暂保留；本次按人的明确授权执行有界 baseline 修复，
+总登记表的 PAUSED 调度状态暂保留；本次按人的明确授权持续推进本题，已从 baseline 修复进入训练干预，
 不自行暂停其他 ACTIVE 线或占据新的 ACTIVE 名额。持续驻留的调度归属需人统一确认。
 
 原 README 的“no method at entry”“冻结 regime 信号成立后才允许训练”、
@@ -70,6 +70,11 @@ MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制�
 
 下一步依实测决定：学习未跑通先修 baseline；有真实迁移瓶颈才设计桥接/内容干预。
 “parallel improves transfer after fine-tuning”本身已有大量先行工作，不能作为贡献。
+
+**持续探索P03 / E02：新监督内容覆盖 × 桥接复用 × 条件连接。**
+同起点MWB短程CPT，对比覆盖任务实例或同域不重叠实例，固定文本切换paired/split attention，
+再统一英语任务学习；不使用错误pair损伤作为唯一对照，不预写收益故事。
+[实验卡](experiments/E02-reusable-bridge-task-learning.md)，当前是发现pilot而非新idea。
 
 ## 资产位置
 

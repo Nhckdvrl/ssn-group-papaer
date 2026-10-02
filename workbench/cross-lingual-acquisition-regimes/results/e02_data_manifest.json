@@ -1,0 +1,56 @@
+{
+  "revisions": {
+    "nyu-mll/multi_nli": "da70db2af9d09693783c3320c4249840212ee221",
+    "facebook/xnli": "b8dd5d7af51114dbda02c0e3f6133f332186418e"
+  },
+  "source_data_hashes": {
+    "en_dev": "64ca9d944c52cf3fc3423aa8fb60cbe532190533e04019b89d934e84aad1ee99",
+    "train": "20747686917a61dab3318d215810c72c27bbd52e0d10349cc9c4cf40ed8df62b",
+    "en_test": "64488bd00aa1c183fa920a7056451422ecb16f2dfa8c99bcb8c85665d7cdabc0",
+    "de_test": "78275313e120fdb3016b4a7d9cd920429baae178a8f47fc95395c12d1e2070bd"
+  },
+  "hashes": {
+    "new": "358c844d8f4cfdb681ada6c718d9a2cd03ba570c097919a63f1f395ac25efe8a",
+    "reused": "f46404352f3f7e0a82b274de6e4461c47a46165271dd339b3450d985570b403d",
+    "holdout": "1fc56d8e52f6b64df441dcf7f7c0bab66ae524ed22f66c1802854e5436443986"
+  },
+  "token_totals": {
+    "new": {
+      "en": 355452,
+      "de": 465877
+    },
+    "reused": {
+      "en": 355115,
+      "de": 465794
+    }
+  },
+  "counts": {
+    "new": 8192,
+    "reused": 8192,
+    "holdout": 128
+  },
+  "removed": {
+    "complete_unit_over_512": 31,
+    "source_text_index_mismatch": 87
+  },
+  "exact_length_matches": 7670,
+  "source_text_verified": true,
+  "source_group_exclusion": true,
+  "candidate_count": 65432,
+  "pad": 2,
+  "base_model": {
+    "repo": "UCLNLP/monoweb",
+    "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+    "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+    "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+  },
+  "config": {
+    "max_length": 512,
+    "micro_batch": 4,
+    "accumulation": 8,
+    "updates": 256,
+    "lr": 2e-05,
+    "warmup": 26,
+    "weight_decay": 0.01
+  }
+}

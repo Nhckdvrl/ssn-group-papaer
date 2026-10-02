@@ -112,3 +112,13 @@ abstract说三个尺寸，但结果表含四个尺寸；种子和实现细节未
 ownership：学习难度驱动replay与遗忘/最终能力权衡已有方法；不是泛泛“桥接可复用”的空白。
 强弱：多个任务和顺序，报告额外评估成本；单seed42，不能把语言顺序重复当参数seed重复。
 动作：后续若研究可复用旧数据，需要区分保任务标签与保跨语言接口，而非只胜过无replay。
+
+**XLDA，2019预印本**：[一手全文](https://arxiv.org/html/1905.11471v1)，已读§3–4.7。
+形态：监督任务的翻译augmentation；DOCUMENTED来源是语言间监督与泛化不均衡。
+方法：翻译premise/hypothesis中的一个输入，对比EN-only和同语言translated训练；mBERT与使用冻结BERT embedding的LSTM，不把后者说成全部从零。NLI/QA均有实验。
+ownership：任务输入的跨语混合与同语言翻译不是同一个baseline；simple translated-task gain不是新贡献。
+强弱：跨语言/任务及QA恢复span处理；greedy augmentor按validation选择，不等于无选择的多seed重复。
+对E02：我们先在无标签CPT中控制内容覆盖/conditioning，再统一EN任务学习，不是XLDA本身；若发展成方法，仍须与有效translate-train/XLDA比较，不能只胜EN-only。
+
+E02定位检索已运行：`reusable bilingual bridge same content cross lingual task learning translated data document isolation`。
+最近包括Cross-lingual In-Context Pre-training、MONOWEB、Cross-Lingual Continued Instruction Tuning；检索分数不是ownership裁决。
