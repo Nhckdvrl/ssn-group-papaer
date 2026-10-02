@@ -17,6 +17,8 @@ def main():
     for condition in ("baseline", "monoweb", "onlyparallel"):
         folder = ROOT / "artifacts/qa_retention" / f"{condition}_seed17"
         done = json.loads((folder / "completion.json").read_text())
+        assert done["condition"] == condition and done["seed"] == 17
+        assert done["weight_dtype"] == done["compute_dtype"] == "fp32" and done["use_cache"]
         assert done["script_sha256"] == hashlib.sha256((ROOT / "scripts/qa_translation_retention.py").read_bytes()).hexdigest()
         before_path = ROOT / "artifacts/p2" / f"translation_{condition}_34k.jsonl"
         assert hashlib.sha256(before_path.read_bytes()).hexdigest() == done["before_sha256"]
@@ -60,6 +62,11 @@ def main():
         reports[condition] = dict(completion=done,directions=directions,
             prediction_sha256={mode:hashlib.sha256(path.read_bytes()).hexdigest() for mode,path in paths.items()})
     assert len(all_hashes)==1
+    ref = reports["baseline"]["completion"]
+    for r in reports.values():
+        assert r["completion"]["device"] == ref["device"]
+        for key in ("config", "metadata", "script_sha256", "train_encoded_sha256", "seed"):
+            assert r["completion"]["qa_provenance"][key] == ref["qa_provenance"][key]
     report = dict(models=reports,sacrebleu_version=sacrebleu.__version__,bootstrap_seed=20261002,
         resamples=2000,limits="Fixed 200 news sentences and one adaptation seed. Sentence intervals do not model topic or training-seed variation. Instruction recovery is not a universal competence test.")
     path = ROOT / "results/e06_qa_translation_retention.json"

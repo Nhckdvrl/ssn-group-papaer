@@ -166,3 +166,35 @@ DOCUMENTED来源：transfer方法选择还受一次翻译成本、部署延迟�
 DOCUMENTED来源：500语言CPT中是否加入双语数据；Llama3/3.1-8B公开Mono/Bi，十句pair拼文档并标语言。Mono419B token/25K步，Bi671B/40K步，warmup亦不同；不是等预算同文本pairing识别。
 §3.3 Model Adaptability实际比较CPT相对base的静态基准变化，不是统一后续新任务学习曲线。双语收益随base/任务不同；不能重新贴成acquisition-saturation证据。
 动作与距离：这是可扩到更强、多语released family的资产，不需复刻其800K GPU小时训练；但不应盲目把8B四模型全参数训练铺开。先由当前实际训练决策的有效后果决定扩展对象，再选择单卡可承载的适配与源语gate。无新ownership升级。
+
+## AAdaM：cross-lingual TAPT先例（SemEval2024）
+
+[官方全文](https://aclanthology.org/2024.semeval-1.114.pdf)，已读§3.1–3.4、主对照表与limitations。
+DOCUMENTED来源：低资源STR标签不足和任务域失配；译SemRel/STS-B监督warmup，再原始标签学习，目标语无标签TAPT；MAD-X语言adapter固定、任务adapter学习后替换语言adapter迁移。它已研究TAPT/翻译augmentation/full vs adapter，不可将“新任务无标签文本有用”作为我们的新发现。
+强弱：有效下游训练与多语对照，TAPT并非所有条件收益一致；用目标dev选source有真实zero-shot限制，作者明确承认。RECONSTRUCTED距离：E04控制same-origin conditioning和新内容/不重叠同域复用，若有后果还须分离一般TAPT与跨语言收益，不以控制更细自称novelty。
+
+## Copy First, Translate Later（arXiv2604.17633v2）
+
+[一手全文](https://arxiv.org/html/2604.17633v2)，本次已读§3–8及limitations；KEY_PAPERS已有登记，不是新检索出的无人区。
+DOCUMENTED来源：终点分析难以解释跨语机制形成；九语1.7B scratch、185M-token间隔200 checkpoints，MultiBLiMP及125 concepts/72方向WLT；无定向parallel目标，但不证明随机web绝无自然双语。参数缩放/跨checkpoint层交换提供干预，最终bottom+top能提前调用中间层WLT机制。
+边界：WLT最终32.1%，synonym覆盖/提示效应/未收敛与单family；phase边界是dataset-specific行为定义，ExPLAIND归因本身不是训练数据因果效果。不是源语任务训练后的新学习迁移，也不是parallel收益regime证明。
+动作：将有用接口与内部机制拆开，但不要从当前有效QA学习退回弱WLT冻结终点寻小信号；若真实适配代价出现，再做对训练救援有信息量的部件干预，不单为画机制图。
+
+## General Forgetting Mitigation Does Not Preserve MT-Specific IF（arXiv2609.28395v1）
+
+[一手全文](https://arxiv.org/html/2609.28395v1)，已读§3–6、附录训练设置；2026-09-23预印本，接收状态未核对。
+DOCUMENTED来源：MT适配后，通用保留指标能否代表翻译中的具体控制？1B筛选多类遗忘缓解，再在8B双向Arabic/Spanish MT检验formality/gender/length。EWC在通用指标保留强，但具体控制接近普通SFT；对应控制任务混合才有效，换训练prompt后收益不可靠。
+边界：阶段间模型、方向与数据来源同时变化；方法筛选按目标MT+通用分数，不是我们的source-only protocol；formality仅matched hypotheses计算。不能把作者的anchor解释当成已识别电路机制。
+RECONSTRUCTED距离：E06是QA学习后已有MT保持，干预方向不同；但“通用指标保留不保证接口保留”已有人直接研究。若E06失败，须有训练救援及实际预算后果，不能仅换任务发布同一句话。
+
+## Conditions for Catastrophic Forgetting in Multilingual Translation（arXiv2510.19546v1）
+
+[一手全文](https://arxiv.org/html/2510.19546v1)，已读§3–4设置与gain-forgetting；全文其余机制/附录尚未完整核对。MRL2025，不当作主会尺度证明。
+DOCUMENTED来源：旧MT模型与LLM的遗忘报道不一致，比较模型规模、instruction interface、数据量及LoRA。117K与54M设置数据领域/语言也不同，另有大数据的subsample系列；seen pair/unseen source/unseen target分开，COMET辅以BLEU/LID。
+边界：作者明确不同family不是纯架构控制；训练集规模变化不能全归因token量；主要任务仍是MT，不是QA学习后翻译保持。LoRA不自动保证保持、语言指令重要已有ownership，不是潜在新中心主张。
+
+## Overcoming Catastrophic Forgetting in Zero-Shot Cross-Lingual Generation（EMNLP2022）
+
+[一手全文](https://aclanthology.org/2022.emnlp-main.630.pdf)，已读§2–3及方法图，未冒称独立复现。
+DOCUMENTED来源：英语摘要适配后非英语摘要输出退化；mT5多规模、full/prompt tuning、translate-train/test、监督参照；语言识别与学习曲线区分质量及错误输出语言。mix无标签mC4与factorized task/language prompts缓解，较强source学习也可能增加非英语退化。
+边界：prompt tuning另有100K prefix-LM adaptation；target-language dev选择及各方法额外预训练成本不能忽略；中间适配不保证收益。RECONSTRUCTED距离：已有语言保持/新任务学习的实际训练问题与方法，E04/E06不以“首次研究adaptation”定位。我们的extractive QA输出负担较轻，不能外推到摘要，也不能以QA成功否定其观察。

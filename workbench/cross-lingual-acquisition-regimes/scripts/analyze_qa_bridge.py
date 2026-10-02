@@ -72,6 +72,9 @@ def main():
         provenance[condition] = p
         assert p["model"]["local_intervention"]["condition"] == condition
         assert p["model"]["local_intervention"]["seed"] == args.seed
+        coverage = condition.split("_")[0]
+        assert p["model"]["parent"] == cpt["provenance"]["metadata"]["base_model"]
+        assert p["model"]["local_intervention"]["data_hash"] == cpt["provenance"]["metadata"]["hashes"][coverage]
         curve = load(folder / "curve.json")
         assert tuple(r["updates"] for r in curve) == STEPS
         cells.append(dict(condition=condition, cpt=cpt, task_completion=done))
@@ -103,8 +106,12 @@ def main():
                     "qa_script_sha256", "device", "numpy", "torch"):
             assert p[key] == cpt_ref[key], key
         assert p["metadata"]["task_hashes"] == data["metadata"]["hashes"]
+        assert cell["cpt"]["before"] == cells[0]["cpt"]["before"]
         coverage = cell["condition"].split("_")[0]
         assert cell["cpt"]["loss_tokens"] == sum(p["metadata"]["token_totals"][coverage].values())
+    by_condition = {cell["condition"]: cell for cell in cells}
+    for coverage in ("new", "reused"):
+        assert by_condition[coverage+"_paired"]["cpt"]["provenance"]["encoded_order_sha256"] == by_condition[coverage+"_split"]["cpt"]["provenance"]["encoded_order_sha256"]
     differences = []
     for name, weights in CONTRASTS.items():
         for step in STEPS:
