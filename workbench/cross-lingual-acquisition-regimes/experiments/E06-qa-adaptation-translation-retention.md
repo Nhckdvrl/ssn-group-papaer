@@ -1,6 +1,6 @@
 # E06：qa-adaptation-translation-retention（2026-10-02）
 
-- **状态：** RUNNING（E03完整LM保存后，依次测三条件）
+- **状态：** DONE（三条件完成，实际代价待E08同硬件校准）
 - **类型：** REPRO（训练流程的能力代价，不是新idea）
 - **对应：** P03/P04
 - **问题（一句话）：** 英语QA学习后，原有翻译差别是否保留，下降是否只是任务格式变化？
@@ -15,8 +15,9 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 - 运行前实现核对：QA保存的config关闭training cache，post生成显式 `use_cache=True`，与原始模型默认生成和E03评测一致，不改变训练权重或读数。
 - 启动资源：fvcrc20空闲GPU3，三条件依次测量，记录实际Blackwell硬件；不把pre/post可能的硬件差异掩盖为同设备因果控制。FP32协议固定。
-- 数字（含 CI / 种子方差）：
-- 结果文件：`results/...`
-- 按决策表执行了什么：
-- 主张变化：C## Lx → Ly
-- POST-HOC 分析（事后才想到的，单独标注）：
+- 数字：FWB/MWB/+P英→德before→primary→instruction BLEU为24.16→21.15→21.50、11.47→7.92→9.21、21.36→21.59→22.16；德→英28.90→27.84→28.14、20.11→15.91→16.55、26.01→27.81→28.13。
+- MWB primary−before两方向paired sentence95%CI为[-5.35,-1.95]/[-6.79,-1.92]；instruction−before仍[-4.05,-0.52]/[-6.45,-1.39]。single seed及固定news范围不变。英→德source copy FWB1→48→40、MWB27→103→101、+P2→12→11（每方向200）。
+- 结果文件：`results/e06_qa_translation_retention.json`，全部input/输出hash、chrF、CI、诊断；原始 `artifacts/qa_retention/`。权重保存/加载不在generation elapsed内。
+- 按决策表：P05记录真实训练痛点候选；先E08统一before硬件/协议，不立即开防遗忘方法grid。E07准备标准译料监督参照；不以任务换名主张novelty。
+- 主张变化：无L2/L3升级，原leading acquisition叙事仍撤回。
+- POST-HOC：无新增prompt或幸存切片；E08为发现后的必要环境校准，另写卡。

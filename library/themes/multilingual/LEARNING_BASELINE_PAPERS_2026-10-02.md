@@ -198,3 +198,10 @@ DOCUMENTED来源：旧MT模型与LLM的遗忘报道不一致，比较模型规�
 [一手全文](https://aclanthology.org/2022.emnlp-main.630.pdf)，已读§2–3及方法图，未冒称独立复现。
 DOCUMENTED来源：英语摘要适配后非英语摘要输出退化；mT5多规模、full/prompt tuning、translate-train/test、监督参照；语言识别与学习曲线区分质量及错误输出语言。mix无标签mC4与factorized task/language prompts缓解，较强source学习也可能增加非英语退化。
 边界：prompt tuning另有100K prefix-LM adaptation；target-language dev选择及各方法额外预训练成本不能忽略；中间适配不保证收益。RECONSTRUCTED距离：已有语言保持/新任务学习的实际训练问题与方法，E04/E06不以“首次研究adaptation”定位。我们的extractive QA输出负担较轻，不能外推到摘要，也不能以QA成功否定其观察。
+
+## Domain adapted MT: What does catastrophic forgetting forget and why?（EMNLP2024）
+
+[一手全文](https://aclanthology.org/2024.emnlp-main.704.pdf)，已读§2–4的操作性读数、数据控制及Minimal Mix-in。
+DOCUMENTED来源：BLEU下降掩盖词汇替换，先定位正确词丢失及替代，再检查适配数据规模/长度/质量/词表覆盖。八domain、DE→EN/EN→JA，原模型各一个，固定20K更新；target词汇覆盖选择少量generic译对，多个domain接近大量随机replay的保持效果。
+边界：相关性不等于所有数据特征独立识别；20K更新非等独立信息量；token forgetting定义刻意不奖励新获得正确词，不能当总能力分数。最小mix与随机mix的例数/信息量不同，非任意LLM任务适配的定理。
+RECONSTRUCTED距离：E06整句照抄是具体可核对后果，但不能由此认定其原因就是copy技能过度泛化；目标词汇覆盖/语言输出偏置也是竞争解释。E07译料监督参照很重要：若仅补目标语任务与词汇即可恢复，不能把parallel correspondence写成必需；若不恢复，才值得设计同内容coupling训练干预。不在读数之前预设机制。

@@ -30,3 +30,13 @@ E02同起点短程CPT，控制新实例覆盖与跨文档conditioning，再统�
 E01明确有效，但只有backbone+分类头，不能接回原LM head解释生成/翻译遗忘，
 也不足以承接新知识、输出语言接口与桥接复用的母问题。E03先建真实QA生成学习，
 只用英语article-disjoint source gate确认可测；不把冻结QA失败当不能学习。
+
+## P05：学会源语任务后，已有翻译出现照抄代价（E06，单seed待校准）
+
+真实完整LM学习后，E03三组DE QA F1均62.54–63.53，但E06 MWB英→德BLEU11.47→7.92，
+精确source copy27/200→103/200；原固定instruction恢复到9.21而非原11.47。
+MWB德→英20.11→15.91；FWB英→德24.16→21.15；+P21.36→21.59。
+MWB两方向primary−before paired sentence95%CI分别[-5.35,-1.95]/[-6.79,-1.92] BLEU。
+不是普遍语言能力遗忘或parallel防遗忘claim：单适配seed、news200句、before硬件未统一。
+先E08同硬件完整原模型校准；再决定训练救援，对已有mix/replay/语言控制方法定位。
+不通过添加prompt寻找更漂亮的数，也不把输出照抄自动解释成内部机制。

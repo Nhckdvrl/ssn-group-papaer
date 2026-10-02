@@ -82,7 +82,10 @@ MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制�
 74.35/63.53；单seed17，差小且CI宽，不是新idea。见[完整结果](results/E03_GENERATIVE_QA_BASELINE.md)。
 **P03/P04 / E04训练干预进行中**：同起点CPT的任务内容覆盖×条件连接四格，
 源/目标完整生成学习曲线；不再扩同NLI小信号。[启动理由与边界](experiments/E04-qa-content-bridge-intervention.md)。
-E05确认有效译料监督15442/16384；E06测真实QA LM训练后的翻译保留及固定恢复对照。
+E05确认有效译料监督15442/16384；E07已准备标准translate-train参照（未训练）。
+**P05 / E06发现适配代价候选**：MWB英→德BLEU11.47→7.92，一句恢复9.21；
+精确照抄27/200→103/200，而三组QA终点相近。单seed/旧before硬件仍是边界，
+E08正补同硬件阳性校准；不先命名parallel防遗忘idea。[完整读数](results/e06_qa_translation_retention.json)。
 
 ## 资产位置
 
