@@ -124,7 +124,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | `CLAIMS.md` | 2026-10-02 | 已有八轮 52 次完成运行；人审撤回 acquisition 领先叙事，停止局部冻结探针，明确授权有界 MONOWEB 英语学习→德语迁移 baseline 修复；持续 ACTIVE 调度归属待人统一确认，不自行改其他线 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
 | `mechanism-population-dynamics` | ACTIVE-EXPLORE | ICML 2027 / NeurIPS 2027 | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：利用公开 multi-seed × multi-checkpoint 模型群体研究 mechanistic claim 在什么抽象层次上可复现；第一轮不训练模型，先做已知 mechanism 的 causal baseline + population measurement |
-| `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **problem-led literature+code-hardened / execution-ready**：P01–P74 lineage + RESEARCH_MINES；M1/I07 belief-aware actionable aliasing、M2/I08 explicit↔implicit predictive abstraction、M3/I09 behavior→controllability semantics；I06降为M3子诊断，I03为common oracle；E00–E15 已注册，GPU结果=0，不改变现有 ACTIVE 调度 |
+| `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **problem-led / execution-ready**：FIELD_PROBLEM_MAP + P01–P94 lineage；**M3/I09 Tier-A1**（support/excitation-matched behavior→planning semantics）、**M2/I08 Tier-A2**（predictive-computation placement frontier）、**M1/I07 Tier-B conditional**；I06=M3子诊断，I03=common oracle；E00–E15 已注册，GPU结果=0，不改变现有 ACTIVE 调度 |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
 | `model-diffing-measurement` | PAUSED | — | — | — | — | 同上；工具链可用于多智能体线的白盒分析（P4） |
