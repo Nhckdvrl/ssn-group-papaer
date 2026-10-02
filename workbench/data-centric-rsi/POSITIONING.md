@@ -8,7 +8,7 @@
 | P02 SOAR | 真实学生收益奖励教师、promotion、fresh-student transfer、课程使用方式 | “用 accuracy 训练出题者”；“学得动但没用” | 不依赖完整昂贵 inner-loop 的可迁移教学决策；和强廉价基线比较全链路成本 |
 | P03 RSIBench-Data | 数据研究闭环、固定服务契约、迭代过程观察 | 只加 private split 或报告 best-of-n 上升 | 证明某种反馈/干预机制改善下一次数据动作，且改进器在新 episode 上也变好 |
 | P04 DataEnvGym | 学生 state、技能课程、生成 agent、更多数据/更多训练对照 | 给数据生成加错误报告；重复 with-state/no-state | 错误观察与有效训练动作间的缺失信息，以及受控干预如何弥补 |
-| P05 Curation-Bench | 程序化 curation、研究 scaffold、强 selector，并在换学生/池的**各自 10 轮搜索**任务上取得收益；LLaVA 10k 的 LESS 33.6±0.3 与开放提示 agent 33.7±0.3 接近。Table 24 未报告冻结策略跨 episode 转移 | 给 agent 加反思/论文/RAG；仅换模型后重新搜索；只比 ICONS/ARDS 就称超越最强静态 | 在同类工具/预算下提高真实干预选择与外部训练收益；必须同成本比较 LESS、源均衡和公开 agent，并在不供搜索反馈的新 episode 测改进器是否真学到可复用决策 |
+| P05 Curation-Bench | 程序化 curation、研究 scaffold、强 selector，并在换学生/池的**各自 10 轮搜索**任务上取得收益；LLaVA 10k 的 LESS 33.6±0.3 与开放提示 agent 33.7±0.3 接近，强制适配论文 scaffold 平均 34.0±0.8、最佳 34.86；Table 24 未报告冻结策略跨 episode 转移 | 给 agent 加反思/论文/RAG；仅换模型后重新搜索；只比 ICONS/ARDS 就称超越最强静态 | 在同类工具/预算下提高真实干预选择与外部训练收益；必须同成本比较 LESS、源均衡和公开最强 scaffold（包括其多轮搜索），并在不供搜索反馈的新 episode 测改进器是否真学到可复用决策 |
 | P06 ASP | 现实 anchors、防漂移、固定生成器、交叉配对 | “加真实数据”；画 generator×fixer 成功率 | 训练增益而非任务难度的跨状态变化；改善复用策略并保留部署效用 |
 | P07 SGS | 目标指导与 stepping-stone self-play | “生成目标题相关的练习” | 仅在正式补读方法后判断剩余空间；目前不以摘要判空白 |
 | P08 SEAL | 生成 self-edit，用实际适配效果更新生成策略 | 数据生成＋下游 reward 这一个组合 | 跨学生的更新策略积累及可信动作选择，而非单个实例适配 |
