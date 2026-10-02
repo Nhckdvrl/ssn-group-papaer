@@ -45,8 +45,8 @@
 | P49 | Let the Target Select for Itself / TACS，2605.09404v2；预印本 | D（主文与A–G附录定向深读；官方warmup/评分/校准/选样/训练/成本关键代码已审，未运行） | [全文](https://arxiv.org/html/2605.09404v2)；[代码35e97be](https://github.com/davidyht/TACS/tree/35e97bee2cbfcba72b7c359e34a74287955d303b)；rank1目标适配→候选归一化loss下降→base重置rank128主训；固定模型—目标对跨池复用，非跨目标/学生冻结迁移，最终评分规则须显式指定 |
 
 | P50 | ICONS，2501.00654v4；会议身份未独立核实 | D（主文与A–F关键附录；官方梯度/投影/影响/投票/写出/目标训练关键代码已审；图像只核解释与图注，未重构梯度库） | [全文](https://arxiv.org/html/2501.00654v4)；[代码b8ce8c8](https://github.com/princetonvisualai/icons/tree/b8ce8c86d7b098836a84ec2b40d259195b7f4494)；多任务分位投票、跨任务/模型复用和预算/warmup消融已拥有；E12是公开133K池内随机10K，不是原方法10K重求票，成本与语义边界见论文卡 |
-| P51 | Adapt-∞，ICLR2025主会；2410.10636v2 | D（主文及A/B/C相关附录，代码关键路径待核，未复现） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6610efd6c767f63343a4ab28505212e-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.10636v2)；动态伪skill/score专家、强random、Fig9新记录恢复旧skill已拥有；8A100下wall成本不能抄成GPU小时 |
-| P52 | OASIS，ACL2026主会最终版 | D（主文、A.2配方/基线/成本/算法/跨规模相关附录；证明假设定向核，代码待核，未复现） | [会议全文](https://aclanthology.org/2026.acl-long.158/)；在线当前FI/跨batch统计Bernoulli＋组内冗余，三seed；infinite memory-only retrieval，不能当永不重放的有限流；阅读边界见论文卡 |
+| P51 | Adapt-∞，ICLR2025主会；2410.10636v2 | D（主文及A/B/C相关附录；官方指定student求分/拼池/选样/训练接口已定向审，未复现） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6610efd6c767f63343a4ab28505212e-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.10636v2)；[代码d1b1b25](https://github.com/adymaharana/adapt-inf/tree/d1b1b25946379b61113a231693452d961d44de48)；动态伪skill/score专家、强random、Fig9新记录恢复旧skill已拥有；8A100下wall不抄成GPU小时 |
+| P52 | OASIS，ACL2026主会最终版 | D（主文、A.2配方/基线/成本/算法/跨规模相关附录；证明假设定向核，2026-10-03官方repo empty/无refs，未复现） | [会议全文](https://aclanthology.org/2026.acl-long.158/)；在线当前FI/跨batch统计Bernoulli＋组内冗余，三seed；infinite memory-only retrieval，不能当永不重放的有限流；代码缺失不削弱论文ownership，阅读边界见论文卡 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 

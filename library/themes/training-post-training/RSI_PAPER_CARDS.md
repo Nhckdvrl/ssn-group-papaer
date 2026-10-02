@@ -409,7 +409,7 @@
 
 ## P51 — Adapt-∞（ICLR 2025 主会；2410.10636v2）
 
-来源：[官方会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6610efd6c767f63343a4ab28505212e-Abstract-Conference.html)、[全文](https://arxiv.org/html/2410.10636v2)、[代码入口](https://github.com/adymaharana/adapt-inf)。阅读：主文及A/B/C相关附录；代码关键路径另行核对，尚未复现。以下是文献结果，非E13结果。
+来源：[官方会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6610efd6c767f63343a4ab28505212e-Abstract-Conference.html)、[全文](https://arxiv.org/html/2410.10636v2)、[固定代码d1b1b25](https://github.com/adymaharana/adapt-inf/tree/d1b1b25946379b61113a231693452d961d44de48)。阅读：主文及A/B/C相关附录；指定student求分/外部拼池/selection/训练入口已定向审读，尚未复现。以下是文献结果，非E13结果。
 
 1. **母问题与来源（DOCUMENTED / RECONSTRUCTED）**：新的多任务视觉指令池不断到来，旧池仍可用，但全部重训贵、普通replay和单一分数偏爱常见技能。作者从持续学习的遗忘压力进入数据选择，先发现“一个分数跨不同技能不通用”，再把skill均衡和多分数专家组合起来；不是靠首次使用梯度获得全部增量。
 2. **改变的前提**：既非互斥task-only流，也非固定池一次选样；在不断扩大的旧＋新池上，按照当前学生重新形成伪技能、选score专家并裁剪冗余。正文的“static不够”指这种持续多技能设置，不是已证明所有冻结selector都失败。
@@ -417,7 +417,7 @@
 4. **模型/数据/配方**：从已完成视觉指令训练的LLaVA1.5-7B出发，LoRA持续学习M3IT、MiniGPT4、MANTIS、LAMM、Vision-Flan五次到达；不等于E12仅projector对齐的init。B附录给梯度8192维、K=5–50的WSS选择、CCS50bin与去上下5%等；未独立复现训练超参，不补猜LR。
 5. **强对照与结果**：多任务full、sequential、replay、random、CCS、逐分数和embedding选择；25K random已把平均forgetting降至2.1，平均性能47.2，Adapt为0.9/50.5。值得学习的是作者保留这个强random成功，再给多技能增量，而非把random设置得很弱。
 6. **关键反事实与novelty边界**：C附录Fig9在新Vision-Flan不含中文时，用旧中文技能的梯度/表征相似性选新记录，等量真实训练恢复技能，LoRA梯度最好。**以新池记录间接恢复旧技能已有证据**；fresh/replay或跨池内容替换自身不是我们的新贡献。
-7. **成本/资产/限制**：Table6的8A100配置报告wall：random训练21h，Adapt梯度/评分92h＋聚类3.5h＋训练21h=116.5h，Lite34＋1.4＋21=56.4h。不能把wall直接抄成GPU小时，亦不能假设所有selector每次都支付相同成本。其动态当前学生信号与冻结资产的必要性没有在E13契约中作同价比较；长尾cluster、专家代理和permanent pruning仍是实际压力。
+7. **成本/资产/限制**：Table6的8A100配置报告wall：random训练21h，Adapt梯度/评分92h＋聚类3.5h＋训练21h=116.5h，Lite34＋1.4＋21=56.4h。不能把wall直接抄成GPU小时，亦不能假设所有selector每次都支付相同成本。源码求分读指定checkpoint并forward/backward/zero_grad，没有在这条路径optimizer.step，不是逐行动终端效用oracle；旧新JSON由CLI外部拼接，selection输出固定JSON给单data_path训练，已读入口未核到自动memory控制器。README仍有执行说明待发布，不能因此否认论文动态选择主张。其动态信息与冻结资产的必要性未在E13契约中作同价比较；长尾cluster、专家代理和永久裁剪仍是实际压力。详见[接口审读](../../../workbench/data-centric-rsi/results/E13_nearest_code_interfaces.json)。
 8. **最近邻距离**：CCS覆盖、EL2N/entropy/PPL逐条质量、经验replay、EProj/Fwd-Prompt持续学习各拥有基础部件；论文delta是多技能持续多任务流上的识别＋多路选择＋实证。后续OASIS在在线batch概率分配上进一步改变选择约束；OFA/XMAS又证明若干强静态复用有效，这种不同设定的成功不是逻辑矛盾。
 9. **对我们**：E13先量冻结公开策展资格比source×监督量律多提供什么真实训练价值、是否改变补货决策；不是重做Fig9。若将来发展可部署补货机制，要与动态重求信息的收益及全部成本比较，保留最简单强基线。发现近邻不关题；也不把“便宜/冻结/新记录”三词当现成idea。
 
@@ -426,7 +426,7 @@
 来源：[官方会议与全文](https://aclanthology.org/2026.acl-long.158/)、[最终PDF](https://aclanthology.org/2026.acl-long.158.pdf)、[代码入口](https://github.com/snumprlab/oasis)。阅读：主文、A.2配方、基线/跨规模/成本/次序/算法相关附录；A.1证明假设已定向核对，未逐式复证。缓存`~/.cache/research/data-centric-rsi/oasis/paper.txt`；尚未复现代码，不能以摘要代表最终版。
 
 1. **母问题与来源（DOCUMENTED / RECONSTRUCTED）**：持续指令调优时未来分布未知，按每batch固定top-k既浪费在低信息batch，也会拿重复高分样本。作者承接Adapt-∞的持续选样压力与DivBS的组内冗余，修改的是**跨batch预算分配和组内相互影响**；并非只把难度分数改名为FI。
-2. **方法与前提**：ORIS使用当前学生末层Fisher信息、EMA/EMV跨batch统计，标准化后Bernoulli抽样；SIREN按梯度相似性递减候选信息，含高阶冗余近似。概率抽样律、组交互、在线当前状态都已有ownership；冻结source/n律与它的在线概率律不是同一对象。
+2. **方法与前提**：ORIS使用当前学生末层Fisher信息、EMA/EMV跨batch统计，标准化后Bernoulli抽样；SIREN按梯度相似性递减候选信息，含高阶冗余近似。概率抽样律、组交互、在线当前状态都已有ownership；冻结source/n律与它的在线概率律不是同一对象。论文公式只写一个batch阈值r，没有可读代码，逐例独立还是共享r的实现未核，不能自行补确定性细节。
 3. **不能漏掉的设置**：A.2明确**infinite episodic memory、memory-only retrieval**，保存所有遇见记录并可再取，不是有界memory或永不重访的严格流。A.1稳定性解释也依赖memory-only近似平稳；因此不能借“streaming”标签杜撰数据删除/补货需求。
 4. **数据/模型/训练**：COAST、Adapt、MICVIT及LongSequence/TRACE；MICVIT多图、任务不均衡。LLaVA1.5/Qwen2.5-VL7B、Llama3.1/Qwen3-8B及更多尺度；LLM全linear层LoRA128，VLM LR2e-5、LLM3e-4，Adam无decay/cosine、batch16、一epoch、EMAβ=.9；每sample encounter迭代COAST/Adapt .125、MICVIT .0625。非E12全参625步配方。
 5. **强对照与读数**：random/full、GradNorm、Self-Sup、COINCIDE、DBP、InfoBatch、DivBS、TIVE、Adapt-∞，三seed与Welch检验。LLaVA/MICVIT25%最终平均准确率77.95±.93，random73.84±.45、full79.66±.43；6.25%为71.76±.72对random67.29±.61。它不是在每预算无损恢复full，也不与E12八项分数直排。
