@@ -11,6 +11,23 @@
 
 世界模型规划的计算是否应该**按candidate在搜索中的重要性分配**，而不是对每个candidate使用相同predictive fidelity？
 
+## Stage A0｜Fast-LeWM selective self-consistency：先用同一模型验证principle
+
+Fast-LeWM论文已经定义两种terminal estimate：
+1. direct length-H prefix → terminal latent；
+2. 先到intermediate prefix latent，再预测剩余horizon → decomposed terminal latent。
+
+原方法可对每个candidate加self-consistency penalty。我们的第一实验把额外decomposed prediction当作**refined fidelity**：
+
+- `CHEAP-ALL`：所有candidate只direct score；
+- `FULL-REFINE`：所有candidate计算原self-consistency/refined score；
+- `RANDOM-M`：随机M个candidate refine；
+- `TOP-M`：cheap top-M refine；
+- `ELITE-BAND`：cheap score靠近当前K-th elite cutoff的candidate refine；
+- `INTERVAL`：用held-out candidate residual校准区间，只refine“仍可能跨过elite阈值”的candidate。
+
+先在**完全相同candidate bank**上离线算：用多少refined calls能恢复FULL-REFINE的top-K elite set和最终selected action？再接在线CEM。这个experiment可以直接回答“candidate-stage fidelity allocation是否值得做”，甚至不需新训练。
+
 ## Stage A｜零/低训练原型
 
 优先复用released LeWM与Fast-LeWM相同任务资产；若checkpoint不能严格对齐，先做native paired action-candidate audit，不直接比较raw latent cost数值。
@@ -85,6 +102,10 @@ E00实测后填具体时间。探索先：
 - `M/N` sweep；
 - fixed-wallclock确认；
 - DeepJEPA code-ready时加入direct neighbor。
+
+### Multi-fidelity历史基线
+
+传统robotics已有多保真trajectory optimization / MPC，甚至有并行运行不同动力学fidelity的工作；因此不要声称“first multi-fidelity planning”。我们要证明的是**learned latent CEM中，elite preservation可以作为predictive fidelity allocation的有效接口**，并与Fast-LeWM/DeepJEPA的现代predictor设计互补。
 
 ## Novelty pressure
 
