@@ -255,3 +255,11 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 | P103 | Path-Space Formulation | arXiv 2606.28751 | **A-targeted** | R2 theory/method ammunition；planning direct evidence目前有限 |
 
 **阅读债务：** P100/P101/P102 当前只有可靠摘要/索引级信息；若任一成为 direct collision / baseline / manuscript-critical claim，必须补 main method + experiments + related work + limitations，不能 abstract-only kill seed/program。
+
+## 12. Specialization / reuse additions（P104–P106）
+
+| ID | 工作 | Status | Read | Workbench role |
+|---|---|---|---|---|
+| P104 | TC-WM / Back to Parsimonious Latents | arXiv 2605.25620 | **A-targeted** | R3 task-centric representation coordinate；R4 side-information state |
+| P105 | Semantically Rich WM | arXiv 2608.22294 | **B / abstract currently** | R3 task-conditioned semantic roles；需全文后才能当collision |
+| P106 | World Action Planner | arXiv 2607.27599 | **A-targeted** | R3 modular query/reasoning vs reusable physics；R5 critical-decision usage |
