@@ -39,6 +39,7 @@
 | P43 | Data Agent，ICML 2026 main；2603.07433v2 | D（全文方法、主表/消融/成本及官方 README；未运行代码） | [会议](https://proceedings.mlr.press/v306/yang26bq.html)；[全文](https://arxiv.org/html/2603.07433)；训练内 PPO 逐样本选样、loss+熵奖励；公开执行示例主要覆盖 CIFAR |
 | P44 | Can Small Training Runs Reliably Guide Data Curation?，2512.24503v2；预印本 | D（主文、近邻分类、D.1–D.2 配方/机制/时长；代码未核） | [全文](https://arxiv.org/html/2512.24503)；23 预训练配方的固定超参代理排序可能翻转，低 LR 代理与调参目标更一致；不直接覆盖同模型固定 SFT 的 E12 |
 | P45 | On the Difficulty of Learning a Meta-network for Training Data Selection，ICML 2026 main；2606.00571v1 | D（全文方法、§5 主表与消融、F–I 数据/基线/特征附录；代码 README 已核、源码未全审） | [会议](https://proceedings.mlr.press/v306/du26u.html)；[全文](https://arxiv.org/html/2606.00571v1)；选择器学不好可由超梯度低 GSNR 与信息不足共同造成，非 E12 直接 baseline |
+| P46 | Data Mixture Optimization: A Multi-fidelity Multi-scale Bayesian Framework，NeurIPS 2025 main | D（全文及 A–E 附录；官方代码的 simulator、benchmark、BO 更新关键路径已核，未复现） | [会议全文](https://papers.nips.cc/paper_files/paper/2025/file/8e49d32f4668a41b013fbc1ed929c007-Paper-Conference.pdf)；[代码](https://github.com/namkoong-lab/data-recipes)；472 次真实预训练构建模拟器，2.6–3.3× 搜索加速在模拟器上验证；多保真/跨模型 BO 是强非 agent 近邻 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
