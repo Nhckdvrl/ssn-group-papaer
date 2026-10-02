@@ -1145,3 +1145,75 @@ P02 已经比我们之前记得更接近 M2：
   - internal representation quality必须经过 planner/action consequence；
   - M3若发现 temporal geometry漂移，却 candidate/closed-loop不变，就不能夸大；
   - 更重要的是，它提示我们可以把 **state-side / goal-side / dynamics-side / planner-side** 作为可交换的 bottleneck interventions，而不是把某个 paper family当默认真因。
+
+## R5/R1 hardening — failure monitoring, replanning, verification, active data, path-space（P98–P103）
+
+### P98 — Foresight: Failure Detection for Long-Horizon Robotic Manipulation with Action-Conditioned World Model Latents — arXiv 2606.23085
+**Read:** A-targeted（main method / experiments / related work / appendices定位已核对）  
+**来源：** https://arxiv.org/abs/2606.23085
+
+- **母问题：** long-horizon manipulation中 failure onset稀疏、模糊，dense failure timestamp难标；policy-specific uncertainty又不易跨policy复用。
+- **idea leap：** 用 action-conditioned world-model predicted latents作为 execution-aware token，再用 causal Transformer从 rollout-level success/failure supervision学习 failure score；functional conformal prediction给时间相关阈值。
+- **关键设计：** detector只依 observation history + policy即将执行的 action chunk，不依赖 policy内部 logits / hidden state，因此可以跨 policy interface。
+- **证据：** LIBERO-Long、ManiSkill-Long、BEHAVIOR-1K（平均成功轨迹可到数千步）、real ReactorX/Franka；对 FAIL-Detect、SAFE、RND、Gauge；主文报告长任务上 action-conditioned latent尤其有优势。
+- **重要实验语义：** 这是 **failure detection**，不是 recovery decision。它告诉你“可能失败”，并没有统一回答 detection 后应该 replan / adapt / fallback / gather info 的哪一个。
+- **对 R5：** 不是 collision，而是一个强 **signal producer**。E18可以直接把 Foresight-like failure score当 candidate signal之一，研究“检测到 failure 后应该采取什么 recovery action”。
+- **对 R1：** cross-policy failure detection也提示 success/failure rollout分布本身是一种有价值 data axis；failure outcome coverage可成为 R1 seed。
+
+### P99 — AdaReP: Adaptive Re-Planning under Model Mismatch for Neural World-Model Predictive Control — arXiv 2606.23079
+**Read:** A-deep/targeted  
+**来源：** https://arxiv.org/abs/2606.23079
+
+- **母问题：** MPC每步replan可靠但world-model query极贵；缓存plan省算力，但 model mismatch会让 stale plan变坏。什么时候该refresh？
+- **理论对象：** dynamic regret；stale-plan penalty受 reuse tolerance、累计 mismatch、local dynamics sensitivity控制。
+- **idea leap：** 不改 model / planner，只监控 cached rollout与真实execution deviation + local sensitivity，在线调 reuse threshold。
+- **方法：** training-free wrapper；deviation超过adaptive tolerance或plan耗尽时才replan。
+- **证据：** image-space、latent-space、TD-MPC2、real robot；作者报告 DMC/TD-MPC2 NFE -54.5%、wall-time -50.3%且保持mean score；50-trial physical robot中 planner queries降 >80%，success近似保持。
+- **atomic claim：** mismatch+sensitivity可以驱动 adaptive replanning cadence。
+- **对 R5：** “何时replan”已有很强答案；但它只选择 **replan vs reuse**。R5仍可研究 richer action set：replan / horizon缩短 / model adapt / feedback correction / fallback / active verify，以及 failure signature如何决定最佳 recovery。
+- **idea-growth lesson：** 把“world model不可靠”压成一个具体 deployment control variable（replanning cadence），再从 regret structure推method；不是发明 detector后找场景。
+
+### P100 — Dual-Frontier: When Can an Agent Trust Its World Model? — arXiv 2609.26293
+**Read:** B（当前HTML cache不可用；abstract/索引级，不能用它关闭R5）  
+**来源：** https://arxiv.org/abs/2609.26293
+
+- **母问题（abstract-supported）：** WM-guided decision失败后，仅从 passive trajectory无法识别究竟是 decision rule还是WM造成return loss。
+- **理论 pressure：** failure attribution的 counterfactual decomposition在 passive interaction下不可识别。
+- **方法 principle：** 仅当 predicted advantage超过 decision-relevant WM error certified bound时接受WM-guided decision；否则分配 evidence 去 verification。
+- **对 R5：** trust/verify 二元选择已有直接理论工作；这反而加强 R5 的 program：**verification只是一个 recovery/action，仍没有统一“验证、replan、adapt、fallback、信息采集之间如何选择”的 law**。
+- **执行规则：** 在拿 P100 作为 manuscript-critical collision 前，必须回全文/appendix；当前只当 strong pressure。
+
+### P101 — OnlineWM: Causality-Aware Active Online Learning for Effective World Modeling — arXiv 2609.23753
+**Read:** B（当前HTML cache不可用；abstract级，不能作为关闭R1依据）  
+**来源：** https://arxiv.org/abs/2609.23753
+
+- **母问题（abstract-supported）：** static offline data跟不上 model evolving errors；observational loss会利用 action/outcome spurious correlation而非真正 action-effect causality。
+- **方法 principle：**
+  1. active simulator querying targeting current predictive weaknesses；
+  2. same-state counterfactual action contrast，强迫action-effect attribution。
+- **对 R1：** active data acquisition + counterfactual branches已有直接方法，但仍只是“什么data值得采”的一个策略。I12/E16应把它当 data-family baseline：**equal budget下 active-error-targeting、global excitation、route diversity、same-state branching分别在什么 regime值钱？**
+- **novelty rule：** 不写“active counterfactual data是新”；写 data-value boundary / complementarity / allocation law。
+
+### P102 — When World Models Lie: Adaptive Safety Analysis Under Wrong Imaginations — arXiv 2609.34300
+**Read:** B（abstract + current indexed summary；全文HTML尚不可用）  
+**来源：** https://arxiv.org/abs/2609.34300
+
+- **母问题：** latent safety filter在错误WM上学到的HJ value也会过度自信；ensemble/value residual可能在真实 prediction-observation mismatch时仍小。
+- **方法 principle：** 直接用 observed latent prediction error做 Adaptive Conformal Inference uncertainty set，对 safety value pessimistically minimize。
+- **证据范围（abstract-supported）：** simulation + hardware，目标是减少 safety failures同时保 task completion。
+- **对 R5：** observed mismatch → conservative safety filtering是又一种 **repair action**。R5不与它争“安全校准”，而问 failure signal下该选 safety-conservative / replan / adapt / fallback 中哪一种。
+- **对 E18：** 如果扩 safety task，可把 observed prediction residual + conformal radius作为 candidate signal / baseline action。
+
+### P103 — A Path-Space Formulation of Prediction in World Models — arXiv 2606.28751
+**Read:** A-targeted（full HTML method/theory/experiment已核对）  
+**来源：** https://arxiv.org/abs/2606.28751
+
+- **mother idea：** prediction、planning、uncertainty都关于整个 future path，基本对象应是 future-trajectory probability measure，而不只是一步条件分布。
+- **theory:** 在local Markov/effective diffusion regime，用 Onsager–Machlup action统一：
+  - prediction = most-probable path；
+  - planning = terminal-constrained least-action path；
+  - uncertainty = action curvature / fluctuation operator。
+- **实证真正做了什么：** controlled small attention models中，data irreversibility会驱动 query-key asymmetry / entropy production；强制symmetrize会选择性损害 irreversible long-horizon prediction。
+- **重要自限：** 论文明确说 **planning和uncertainty主要作为结构性后果提出，直接测量留给后续**；实验主要验证 irreversibility/prediction channel。
+- **对 R2：** path-space是一个很有理论意味的 method-led hammer，但目前不是强planning baseline。若 R2实验发现 irreversible/contact dynamics下 state/direct-horizon methods有系统failure，可把 path-level irreversibility变成 hypothesis，而不是现在先造“entropy loss”。
+- **idea-growth lesson：** method/theory-led完全合法，只要它提出一个重要、可证伪、此前 representation不表达的 predictive object；不能因为它不是problem-first就排除。
