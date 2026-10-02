@@ -13,11 +13,22 @@ No final RQ, method, or anomaly is registered.
 
 Current state: **0 claims · 0 contributions · no method commitment · no training required at entry.**
 
-### 当前进展（2026-10-01）
-- **R0 完成：** 11 个 70M repo（canonical、deduped、seed1–9）× 154 step 全部存在，无重复 / 错挂权重；E01 用到的 22 个 checkpoint 张量级审计通过 → `results/artifact_manifest_70m.json`。
-- **E01 完成，判定为 A/B 中间态，等人审：** parent（Yin & Steinhardt 2025）的 induction 分数、出现时间（step 512→1000）、末期数值（0.42）、token-loss difference 均定量复现；但 parent 分数选出的 top-3 头**不是**最强因果成分——事后逐头消融显示最关键的是第 2 层 previous-token head（单独消融≈打掉全部复制能力）。parent 官方代码有 4 处与论文不一致，其 70M “induction 消融 ≈ 随机”的结论依赖一种分布外消融（P01、P03）。
-- **待人决定：** E02 的测量对象改为“prev-token + induction 两段电路的因果角色图”、读数与消融方法修订、E02 规模（见 `logs/2026-10-01.md`）。
-- 尚未运行 E02；未训练任何模型；CLAIMS 仍为 0 条。
+### 当前进展（2026-10-02）
+**一句话：** 在 10 个独立训练的 Pythia-70M 中，induction **电路**（previous-token 瓶颈头 → K-composition 的 induction 头）在角色 / 算法层面完全可复现，头编号不可复现；但训练后期学到了一个**第 0 层的上下文门控**：上下文被罕见 token 主导时抑制复制。门控强度在配置相同的 run 之间差 25 倍，语言模型 loss 完全看不出来，且 seed 方差恰好集中在训练数据几乎没有支持的区域。
+
+| 实验 | 结论 |
+|---|---|
+| R0 | 70M（11 repo）+ 160M（10 seed）+ 410M/1B/1.4B 审计；未发现错挂 / 重复权重 |
+| E01 | parent（Yin & Steinhardt）的 induction 分数、出现时间、末期数值定量复现；parent 代码 4 处与论文不一致（P01）；最强因果成分是 parent 分数抓不到的 prev-token 头 |
+| E02 | 10/10 seed：单一 prev-token 瓶颈 + K-composition 依赖（C01）；层位置 8/10；后期复制退化在 seed 间差 25 倍 |
+| E03 | “token 特异拮抗头”解释作废（zero / resample 与 mean 不一致） |
+| E04 | 第 0 层分布均值平移：正向救回 97–111%、反向在自然文本上诱导抑制；单一残差方向的救回量与退化幅度 ρ=0.96（C02） |
+| E06 | 门控按罕见度 / 意外度键控，句法不触发 |
+| E07 | 上下文级、阈值状门控（罕见主导时才触发），排除 token 级表示退化 |
+| E08 | 语料中罕见 token 的复制规则在罕见密集上下文里命中率 50% → 12%；这类上下文只占 0.006% |
+| E05 / E09 | **进行中**：160M 群体与 410M/1B/1.4B 是否也有门控（初看 160M canonical 很弱） |
+
+主张：C01（L1）、C02（L1）；作废 1 条（E03）。下一步取决于 E09：若 160M 也有门控 / 方差集中 → 跨尺寸；否则收缩主张范围到 70M，并测第二个机制检验“方差落在数据稀疏区域”的一般性。
 
 ## 1. Why inhabit this territory
 
@@ -99,12 +110,7 @@ High-value:
 - route differences associated with robustness/generalization/intervention response;
 - apparent diversity disappears under alignment, showing the original mechanistic object was mis-specified.
 
-Low-value:
-- different head numbers;
-- different raw activation coordinates;
-- small emergence-step shifts;
-- one spectacular outlier seed;
-- “existing circuit figure + more seed error bars”.
+Low-value: head-number differences, raw coordinate differences, small timing shifts, one outlier seed, “circuit figure + error bars”.
 
 ## 6. Triggered branches only
 
@@ -177,7 +183,6 @@ Stop autonomous expansion and request review when:
 
 ## 11. Decision record
 
-- 2026-09-29: old exploratory note created; never fully registered under v4.
 - **2026-10-01: human selected this territory as the sole ACTIVE-EXPLORE line.**
   - strong public multi-run substrate;
   - first scientific loop is inference/causal-analysis only;

@@ -3,6 +3,9 @@
 - **状态：** DONE（2026-10-02；判定 = 情况 1，10/10 seed）
 - **类型：** CLAIM-seeking measurement（D4 领域标准系统测量）
 - **对应：** E01 结论 + P01/P03/P04；territory object（抽象层级）
+- **阳性对照：** seed 0 应复现 E01 canonical 的电路（L2H1 prev → 第 3 层 induction）；step 0/128 所有效应 ≈0
+- **噪声地板 + MIE：** 500 条序列 bootstrap；20 组随机头对照；MIE = prev 头单独消融 ≥ 并集效应 50%
+- **决策表（跑之前写）：** 见下方“决策表”一节（运行前写定）
 - **问题：** 在 10 条独立训练历史上，induction 机制在哪一层可复现：头身份 / 层位置与因果角色 / 算法（prev-token → induction 的组合）/ 形成顺序 / 时间？
 - **Agent 决策（2026-10-01，代替人审；人可事后否决）：** ① 群体对象 = “previous-token 角色 + induction 角色”的电路，而非 parent top-R1 头列表（E01 POST-HOC：最强因果成分是 L2 prev-token head）；② 读数改为对重尾稳健（P04）；③ 消融主方法 mean、副方法 zero，弃用 parent BOS-V（P03）；④ timing 只记录不作主读数（网格 512→1000 太粗，Howe 2026）。
 
