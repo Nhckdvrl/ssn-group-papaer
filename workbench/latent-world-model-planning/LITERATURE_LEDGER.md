@@ -242,3 +242,16 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 
 | P96 | Dual Goal Representations | **ICLR 2026** | A/B | official code: deepindermann/dual-goal-representations | dynamics-intrinsic relational goal representation；M3正向邻居，不是只当collision |
 | P97 | Do Better Goal Representations Improve GCRL? | arXiv 2609.39901 | B (new preprint) | code pending | representation-quality intervention→state pathway bottleneck；提醒internal geometry≠downstream importance |
+
+## 11. Trust / active-data / path-space additions（P98–P103）
+
+| ID | 工作 | Status | Read | Workbench role |
+|---|---|---|---|---|
+| P98 | Foresight | arXiv 2606.23085 | **A-targeted** | R5 failure signal producer；R1 failure-data motivation |
+| P99 | AdaReP | arXiv 2606.23079 | **A** | R5 adaptive-replan action；dynamic-regret mechanism |
+| P100 | Dual-Frontier | arXiv 2609.26293 | **B / abstract only currently** | R5 trust-vs-verify theory pressure；不可据此关闭program |
+| P101 | OnlineWM | arXiv 2609.23753 | **B / abstract only currently** | R1 active/counterfactual acquisition baseline family |
+| P102 | When World Models Lie | arXiv 2609.34300 | **B / abstract only currently** | R5 observed-error→pessimistic safety repair |
+| P103 | Path-Space Formulation | arXiv 2606.28751 | **A-targeted** | R2 theory/method ammunition；planning direct evidence目前有限 |
+
+**阅读债务：** P100/P101/P102 当前只有可靠摘要/索引级信息；若任一成为 direct collision / baseline / manuscript-critical claim，必须补 main method + experiments + related work + limitations，不能 abstract-only kill seed/program。
