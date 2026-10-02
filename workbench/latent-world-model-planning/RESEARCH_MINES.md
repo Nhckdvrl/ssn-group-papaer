@@ -1,285 +1,368 @@
-# Research Mines — problem-led latent world-model planning (2026-10-02)
+# Research Mines — 在重要 research program 里长出自己的 paper
 
-> 这不是 idea 榜单，也不是方法菜单。目标是找到 **ICLR / ICML / NeurIPS / CVPR 级母问题中仍有实验空间的 pressure region**，用大量受控实验让 observation / distinction / mechanism / method 自己长出来。
->
-> 核心标准：世界模型的内部指标只有在影响 **prediction under intervention → candidate ranking/search → closed-loop behavior** 时才有科学重量。2026 survey “World Models for Embodied Intelligence: From Plausible to Controllable to Actionable”把这条线概括为 Plausible → Controllable → Actionable；本 workbench 以 **Actionable consequence** 作为 problem-mining gate，而不是靠新 probe 自我成立。
->
-> **全领域地图：** [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)。第二轮 P75–P92 hardening 后，当前资源优先级为 **M3 + M2 → M1 conditional**，不是按编号先后。
+更新：2026-10-02。  
+规则 authority：[NOVELTY_GROWTH_RULES](NOVELTY_GROWTH_RULES.md)。  
+Program map：[RESEARCH_PROGRAMS](RESEARCH_PROGRAMS.md)。
 
-## 0. 为什么重新校准
+> **这里不再寻找“完全空白的题”。**  
+> 我们寻找的是：一个社区持续关心的母问题中，哪些关键认识仍未闭合；然后通过强 baseline + 受控实验 + 多条件铺开，发展新的 distinction / law / mechanism / method / narrative。
 
-前一版 workbench 很擅长把系统拆成 representation / dynamics / metric / search，但容易继续缩成“找一个细小 mismatch”。2026 的 latent-WM 文献已经证明，社区更关心的是：
-
-- 什么 predictive state 才足够做决策；
-- action intervention 是否真的改变 imagined future；
-- offline data 里观察到的结构是否等于 environment controllability；
-- planning 应该显式 rollout，还是把 long-horizon structure amortize 进 representation/policy；
-- task/query 信息应该进入 dynamics、proposal、metric 的哪里；
-- 在 partial observability / stochasticity 下，一个 point latent 是否还是正确的 planning object。
-
-因此下面优先保留 **能改变模型/方法设计的真实问题**，而把 I06 这类较窄机制审计降成大问题中的探针。
+科学 claim = 0。下面都是 mining programs / seeds，不是预先宣布的论文结论。
 
 ---
 
-# M1 — Observable goal ≠ control state: belief-aware visual planning（CONDITIONAL MINE）
+# 0. 先修正旧工作台的错误倾向
 
-对应 idea: [I07](ideas/I07_observation_aliasing_belief_planning.md)
+旧版本虽然写了 problem-led，但实际上仍容易变成：
 
-## Mother question
-
-> **当两种真实状态产生相同/近似视觉观测，却要求不同动作时，reward-free image-goal latent planner 应该“离目标多近”地规划，还是应该维护“我现在到底处于哪种隐藏动力学状态”的 belief？**
-
-这不是“context length 多几帧更好”，而是一个 state-definition 问题。
-
-Image-goal planning天然有两个不同需求：
-
-1. **goal-comparable state**：当前 observation 与 goal image 必须能比较；
-2. **control-sufficient state**：还必须包含 velocity、contact mode、friction、occluded object state、latent regime 等决定 action consequence 的信息。
-
-同一张 goal image通常不指定第二类信息。若模型用一个 deterministic point latent 同时承担两种角色，可能存在结构性冲突。
-
-## 为什么不是空白猜测
-
-直接近邻已经各做了一部分：
-
-- **FIRM-WM (2609.22816)**：显式拆 goal-comparable configuration 与 history-dependent dynamic fiber，并加入 same-reset intervention branches；说明“goal state”和“dynamic state”角色冲突是真问题。它已经占了 generic factorization。
-- **Physically Viable World Models (2605.30542)**：更直接固定/近似固定 visual scene 与 action、改变 mass/friction/contact/viscosity 等 latent physics，展示 intervention outcome 与可执行动作会变化；因此 broad “same image hides different physics” 已被占。
-- **Branch-JEPA (2607.05238 v3)**：point successor→finite set of latent successors，压缩了 generic multi-future / stochastic prediction空间。
-- **Action-Sufficient Goal Representations (ICML 2026)**：value-sufficient goal representation也可能不够做action selection，进一步占据 broad decision-sufficiency framing。
-- **UWM-JEPA (2605.25313)**：把 partial observability 表述成 hidden futures 的 belief，并用 density-matrix latent；但主要证据是 hidden-velocity prediction/probe，未建立 image-goal MPC 的闭环决策问题。
-- **Flow Equivariant World Models (ICML 2026)**：partial observability 下维护结构化 latent memory，重点是动态视频预测，不是 reward-free image-goal planning。
-- **I-TAP (2602.18694)**：history-conditioned temporal abstractions + MCTS 处理 regime shift/POMDP，但属于 offline RL/token planning，不是 compact visual JEPA goal planner。
-- **What Capable Agents Must Know (UAI 2026)**：理论上低 regret 在 POMDP 中迫使 predictive/belief-like memory；这是问题尺度锚点，不是我们的 empirical solution。
-- VLA 邻域的 **IntentVLA / AliasBench** 也把 observation aliasing 当成真实控制 failure，而不是 probe artifact。
-
-## Exact space
-
-不能 claim：
-- POMDP 很难；
-- history 有用；
-- 分开 goal latent 与 dynamic latent；
-- belief state 是必要的。
-
-值得挖的是：
-
-> **在 compact reward-free image-goal MPC 中，什么时候 hidden-state ambiguity 是可被有限 history 消除的，什么时候即使给定相同可用 history 仍保留多个 action-relevant hypotheses；这个边界何时真正改变 candidate ordering / regret / closed-loop success？**
->
-> 这比“same observation hidden physics不同”更窄，也更可识别：P75 已经占前者；我们只有在 **history-resolvable vs irreducible actionable ambiguity** 上得到稳定 regime law 才继续。
-
-如果出现稳定 law，方法才从 law 长出来，例如：
-- point state 足够：history resolves alias；
-- history仍不能 resolve：需要 explicit uncertainty/multi-hypothesis belief；
-- uncertainty本身不够：planner需要 risk/information-aware objective；
-- goal-comparable 与 dynamics state 的耦合造成 metric contamination：需要 typed interface。
-
-## 当前判断
-
-**问题重要，但直接近邻过强，所以只做 cheap proof-of-problem，不先铺训练。** E11 若不能在自然 compact-planning substrate 上证明 history之后仍有 action-level ambiguity，就快速 park。
-
-## 这条线为什么符合我们的资源
-
-任务/模型可以很小；真正需要的是大量：
-- hidden-state regimes；
-- seeds；
-- aliasing strength；
-- observation history；
-- candidate action pairs；
-- simulator resets；
-- planner variants。
-
-全部天然 single-GPU / independent-run，且 simulator privileged state只作为 oracle。
-
-## 不能退化成
-
-“做一个 hidden-velocity probe，R² 下降了。”
-
-最小可升级证据必须是：
-
-```
-same/near-identical observation
-+ different hidden state
-→ different optimal / low-regret action
-→ deployed latent planner confuses them
-→ one candidate representation/interface fixes the decision
-→ closed-loop consequence
+```text
+找到一个 broad problem
+→ 搜到很多近邻
+→ 不断加“exact delta”
+→ 问题越来越窄
+→ 最后只剩没人研究的小残差
 ```
 
----
+现在改为：
 
-# M2 — Where should predictive structure live? Explicit rollout vs implicit predictive abstraction
-
-对应 idea: [I08](ideas/I08_explicit_implicit_frontier.md)
-
-## Mother question
-
-> **对于 reward-free offline data，要把未来动力学保存在一个可 rollout 的 explicit model 里，还是把 long-horizon occupancy / policy-conditioned predictive structure amortize 进 representation/policy？什么时候哪一种更合适？**
-
-这不是“比较两篇 paper 谁分高”。
-
-TMLR 2026 **What Drives Success in Physical Planning with JEPA-WMs?** 已明确区分：
-
-- **explicit WM**：action-conditioned autoregressive predictor；训练与具体 reward/task 解耦，test time 用 CEM/MPPI/GD 对任意 cost 做 counterfactual rollout；
-- **implicit WM**：例如 Bagatella et al. **TD-JEPA**，把长时 predictive structure / successor features折入表示和 policy-conditioned predictor；训练更重，部署无需 search，但 reward/task受 learned feature span 等限制；
-- **direct arbitrary-horizon / occupancy**：Universal Horizon Models、Jumpy World Models等，不递归primitive one-step却也不完全amortize成policy；
-- **hybrid**：如 TD-MPC2，在 learned policy/value 与短 rollout/search 之间折中。
-
-该论文直接把 **training cost / inference cost / generalization trade-off 的 empirical comparison** 留作 future direction。这里是明确的领域问题，不是我们凭空造的缝。
-
-## 为什么现在值得做
-
-2026 同时出现：
-- compact explicit JEPA-WM：DINO-WM / PLDM / LeWM / JEPA-WMs；
-- implicit long-horizon predictive representation：Bagatella TD-JEPA；
-- direct arbitrary-horizon / policy-occupancy models：Universal Horizon Models、Jumpy World Models；
-- search-amortization：GC-IDM / LeFlow / RP1 / INTACT；
-- hierarchical/hybrid planning：HWM / SAGE / FF-JEPA / TD-MPC2。
-
-因此 M2 应被理解成 **predictive-computation placement continuum**，不是 explicit/implicit 二分类。
-
-领域正在从“有没有 world model”转向 **predictive computation 放在哪里**。
-
-## Exact space
-
-普通 leaderboard 没价值。真正目标是找 **regime boundary**：
-
-- reward / goal **重定义** vs fixed objective；
-- environment dynamics/layout shift；
-- target horizon；
-- offline data coverage；
-- contact-richness / multimodality；
-- train compute vs deployment compute；
-- candidate search budget；
--需要任意 supplied action 的 counterfactual query，还是只需快速 zero-shot policy。
-
-如果少数变量能预测 explicit / implicit / hybrid 的相对优势，并导出一个可验证的 hybrid allocation principle，才是论文。
-
-## 工程约束
-
-这是三条 mine 中接入成本最高的一条，因为 native training/evaluation contracts不同。第一轮：
-- 不强行统一所有框架；
-- 用共享 offline dataset / task definition / real env utility 做 **common audit layer**；
-- native result与matched-audit result分开；
-- training FLOPs/steps、test model calls、planner budget全部记账。
-
-## 名称警告
-
-本仓库已有 **Temporal-Distance JEPA (Bai & Xiong, 2607.25337)**，其历史 config 名也叫 `td_jepa`。  
-这里的 **Bagatella TD-JEPA (2510.00739, ICLR 2026)** 是另一篇论文。所有记录必须写全名/作者。
-
----
-
-# M3 — Dataset-induced planning semantics: behavior trajectories ≠ environment controllability（PRIMARY MINE）
-
-对应 idea: [I09](ideas/I09_behavior_to_controllability.md)
-
-## Mother question
-
-> **当 planning-aware latent WM 从 offline trajectory 的时间顺序、间隔和 cross-trajectory metadata 学“progress / reachability”时，它学到的是环境真正的 controllability，还是 behavior policy 恰好走过的路线？**
-
-这是 RC-aux / Temporal-Distance JEPA 所在方向的更大问题。
-
-## 已知边界
-
-- RC-aux 自己明确：trajectory offset 是 empirical finite-budget proxy，不是真实 shortest hitting time；论文还给出 data coverage/competitive behavior 的限定。
-- Temporal-Distance JEPA 从 same-trajectory step order/gap 挖 temporal progress，并使用 heuristic cross-trajectory negatives。
-- Quasimetric GCRL（NeurIPS 2025）和 Multistep Quasimetric（ICLR 2026）已经明确：behavior future statistics 不天然等于 optimal goal distance。
-- CGCIVL (ICML 2025)：trajectory identity 不能直接告诉你 connected/unconnected。
-- PLDM (NeurIPS 2025)：offline data quality/diversity/stitching 会改变方法行为。
-- **On the Identifiability of Controlled World Models (2607.22430)**：behavior policy 的 conditional action excitation 直接决定 controlled transition identifiability；即使 action-conditioned model 在 on-policy data 上预测好，弱 excitation 仍会放大 counterfactual error并伤 goal-conditioned planning。
-
-所以 broad claim “suboptimal behavior causes bias” 已经被占。新的 WM-specific 问题必须落到：
-
-> **在 conditional action excitation 与 one-step transition support 已匹配/控制之后，planning-aware WM 的 trajectory-derived supervision 是否仍把 higher-order behavior-policy geometry（route / tempo / temporal co-occurrence）写进 deployed planning metric/representation，并在 test-time MPC 的 candidate ordering 和闭环控制中留下可重复 imprint？**
-
-## 关键修正：旧 I01 为什么 VOID，新 M3 为什么不是同一个实验
-
-旧 I01/E03 只想“保持所有 loaded short windows不变、重新切 long episode”。代码审计发现 Temporal-Distance JEPA / RC-aux 的主要 loss只看 short clip，所以 treatment 对 loss不可见，正确 VOID。
-
-M3 必须**真实改变 behavior policy / trajectory distribution**，让 objective 实际看到不同的 temporal pairs，例如：
-- efficient/direct behavior；
-- random/suboptimal behavior；
-- looping/detour behavior；
-- route-biased behavior；
-- 同 environment dynamics 下的 mixed policies。
-
-尽可能匹配 state-action/local-transition support，并显式量化无法匹配的部分。**现在还必须匹配/审计 local conditional action covariance / excitation（P94）**；否则 behavior-policy effect 会被更直接的 transition-identifiability解释吸收。
-
-## 可能长出的 idea
-
-先不预设方法。若现象成立，可能出现：
-- behavior path length 直接扭曲 metric，但 local dynamics没坏；
-- negative semantics污染；
-- route bias只在远目标/障碍环境出现；
-- Bellman/local-consistency 类 objective 比 Monte-Carlo temporal gap 更 invariant；
-- multi-route aggregation / interval supervision 比单条 observed path 更稳。
-
-I06 **semantic negatives vs geometric regularization** 是 M3 的一个低成本 slice：它只审 cross-negative 的双重角色，不再作为整个 workbench 的第一主旨。
-
-**为什么当前把 M3 放第一：** 它直接连到 RC-aux / Temporal-Distance JEPA 这批 planning-aligned objectives；有真实理论邻居（quasimetric / CGCIVL）但还没有把 behavior-policy-induced semantics 对 visual-WM MPC decision 的 imprint 做成 clean identification；同时最适合用独立GPU铺 data regimes × objectives × seeds。最大的风险是 coverage confound，E14 就是为先杀这个解释。
-
----
-
-# M4 — Query / goal interface and model reuse（WATCH，不作为当前主矿）
-
-## 为什么重要
-
-- image goal 本身限制强；Grounded World Model (2604.11751) 已把 language-conditioned semantic goal带入 WM-MPC；
-- What Must a World Model Distinguish for Planning? (2609.33030) 已 formalize mechanism/response/decision sufficiency，并显示 query-conditioned joint model在 seen objectives有优势，但泛化到 unseen objective 时优势缩小；其 modular solution让 query guide proposal，而 action-conditioned model保留 reusable outcome prediction。
-
-因此“planning alignment 会不会牺牲 generality”是重要问题，但**已被非常直接地碰到**。
-
-当前用法：
-- 作为 M1–M3 的 transfer stress axis；
-- 任何 planning-aware method都测 unseen goal/query/planner transfer；
-- 不单独开“再测一个 alignment-generalization tradeoff”的 paper。
-
----
-
-# 5. 2026 problem map：我们真正关心的问题，而不是 loss 名字
-
-```
-What should a compact world model know?
-    ├─ fully observed → representation / controllability geometry
-    └─ partially observed → predictive belief / hidden state                [M1]
-
-Where should predictive computation happen?
-    ├─ train explicit dynamics, search at test time
-    ├─ amortize long-horizon structure into representation/policy            [M2]
-    └─ hybrid
-
-What does offline supervision actually identify?
-    ├─ factual local transitions
-    ├─ behavior-policy temporal statistics                                   [M3]
-    ├─ counterfactual action effects
-    └─ environment-level reachability / optimal controllability
-
-How is the model consumed?
-    ├─ goal/query
-    ├─ candidate proposal
-    ├─ ranking / verification
-    ├─ temporal interface
-    └─ closed-loop utility                                                    [common audit]
+```text
+重要 research program
+→ 深读近邻，理解每个 atomic claim
+→ 找 tension / boundary / interaction / missing regime
+→ 多个 cheap seeds并行挖
+→ 一个 seed被吸收 ≠ program关闭
+→ 真实实验出现 load-bearing signal
+→ narrative / method 从证据长出来
 ```
 
-# 6. 从“问题”到“paper”的门槛
+**近邻密集可以提高 program 优先级，因为它说明 community care；只会提高 baseline/positioning 的证据要求。**
 
-一个 mine 要升级，不看“probe 显著”，看是否形成：
+---
 
-1. **real failure / tension**：真实模型或主流训练目标在自然 regime 失败；
-2. **load-bearing consequence**：影响 candidate decision / regret / closed-loop，而不是只影响 probe；
-3. **new distinction or law**：不是已有 broad claim换名；
-4. **controlled identification**：替代解释（data coverage、H/K、search budget、compute、history）被拆开；
-5. **method follows diagnosis**：如果需要方法，它应是机制的最小自然后果；
-6. **scope**：至少跨两个 task structures / model families，且最强近邻在公平协议下存在。
+# R1 — Data & Identifiability: 什么经验让 world model 真正可规划？
 
-# 7. 执行优先级不是“先把一个题做到底”
+完整 program：[RESEARCH_PROGRAMS `R1](RESEARCH_PROGRAMS.md)。
 
-第二轮 hardening 后按 **scientific upside × collision risk × information gain / cost**：
+## 已知的不同答案
 
-1. **E14 / M3**：第一主 pilot。先用 topology task做 2–3 个真实 behavior-policy regimes，验证是否存在无法由coverage/local-support解释的 planner-semantic imprint。
-2. **E13 / M2**：第二主 pilot。common substrate稳定后，先做最小 explicit-vs-implicit/direct-horizon comparison；目标是发现 regime boundary，不是完整 benchmark。
-3. **E11 / M1**：cheap conditional pilot。因为 P75/FIRM/UWM/Branch-JEPA 已强占 broad space，只用 simulator oracle判断是否还有 history之后仍 load-bearing 的 ambiguity。
-4. **E08 / I06**：可随 dataset ready 立即并行，成本最低，但只当 M3 子诊断。
+- PLDM：data regime改变 method behavior；
+- P94：conditional action excitation决定 controlled transition identifiability；
+- QRL / IEL：behavior hitting-time统计不等于 optimal controllability；
+- RC-aux / Temporal-Distance JEPA：trajectory supervision能注入 planning semantics；
+- Do-JEPA / FIRM：same-reset counterfactual branches；
+- Task-Sufficient WM：active probing收集 informative trajectories；
+- WorldTest：单一路径经验不代表 environment-level knowledge。
 
-哪一条出现最强的 natural failure + decision consequence + clean intervention leverage，再把多GPU集中到那条。  
-不要因为某条文档最详细、最便宜或最容易写 loss 就默认它是论文。
+**这些结果共同说明 R1 很重要，不说明 R1 被做完。**
+
+## 当前活跃 seeds
+
+### I09 / E14 — behavior-route imprint
+问 trajectory-derived planning semantics 是否过度继承 behavior route / tempo。  
+现在是一个**具体诊断 seed**，不是 R1 的唯一故事。
+
+### I12 / E16 — equal-budget data value
+固定 transition budget，比较：
+- state coverage；
+- action excitation；
+- route diversity；
+- counterfactual branches；
+- 后续可加 active probing / failure-recovery data。
+
+目标是挖出：
+> 哪种 experience 在什么 environment/planning regime 下最有 planning value？
+
+### I06 / E08–E10 — negative-role decomposition
+只作为 R1 的一个局部机制：
+semantic reachability label 与 global geometry regularization是否混用。
+
+## 允许发展的新 narrative
+
+- action excitation是必要但不充分；
+- multi-route data比更多IID transitions更值钱；
+- counterfactual branch data只在某类 contact/ambiguity regime有高边际价值；
+- failure/recovery data比successful expert data更能校准 planner；
+- active probing应针对 decision boundary，而不是 prediction error；
+- general-purpose data collection 与 query-aware collection存在可预测 frontier。
+
+这些都不能因为 P94 / PLDM / Task-Sufficient WM 做过一个点就桌面否定。
+
+---
+
+# R2 — Predictive Abstraction: world model 到底该预测什么？
+
+完整 program：[RESEARCH_PROGRAMS `R2](RESEARCH_PROGRAMS.md)。
+
+## 已有方法形成 continuum
+
+```text
+one-step explicit dynamics
+      ↓
+recursive / structured dynamics
+      ↓
+direct arbitrary-horizon future
+      ↓
+trajectory distribution / branches
+      ↓
+successor / occupancy prediction
+      ↓
+macro / hierarchical transition
+      ↓
+amortized planner / policy
+      ↓
+hybrid
+```
+
+LeWM、SALT、Branch/Flow、Universal Horizon、Bagatella TD-JEPA、Jumpy WM、HWM、LeFlow、TD-MPC2 等只是这条 continuum 上不同设计点。
+
+## 当前 seed
+
+### I08 / E13
+先用 common task/data/utility 对 continuum 两端做小 matched pilot，同时分开：
+1. training compute；
+2. task/query information；
+3. deployment compute。
+
+**E13不是“explicit vs implicit论文”。**  
+它的任务是找到下一步应该在哪个 axis 挖：
+- horizon？
+- query变化？
+- arbitrary action flexibility？
+- data support？
+- stochasticity？
+- deployment budget？
+
+如果出现 boundary，再加入一个中间 predictive object验证。
+
+## 可长 narrative
+
+- predictive object随 horizon / query flexibility发生 phase switch；
+- direct horizon比recursive rollout更适合某种 long-range regime，但失去 counterfactual compositionality；
+- successor/occupancy高效但在 unseen reward/query 下出现可预测 failure；
+- hybrid model应按 horizon / uncertainty动态选择 predictive object；
+- model structure与 planner search depth之间有可计算的 matching law。
+
+---
+
+# R3 — Specialization vs Reuse: world model 应该多 task-specific？
+
+完整 program：[RESEARCH_PROGRAMS `R3](RESEARCH_PROGRAMS.md)。
+
+## 为什么这是 program，不是被 P38 “占了”
+
+P38 *What Must a WM Distinguish?* 已经证明：
+- query/candidate/planner决定 information requirement；
+- query-conditioned joint model在seen objective强；
+- unseen objective上优势缩水；
+- modular query-guided proposal + query-independent prediction是一个好设计。
+
+这是一个**强起点**。
+
+但仍有大量研究对象：
+- query进 encoder / dynamics / metric / proposal / verifier 的差异；
+- query dimensionality；
+- finite capacity；
+- multi-query training；
+- planner change；
+- candidate distribution change；
+- task-specific data acquisition；
+- transfer to new goal language / reward / physical query。
+
+## 当前 seed
+
+### I10 / E17 — query placement × reuse
+同一 compact visual WM stack 下，控制 query注入层，画 seen-query efficiency ↔ unseen-query reuse frontier。
+
+不是为了证明“conditioning hurts generalization”；是为了找到：
+> **什么信息应该 task-specific，什么 predictive structure应该保持 reusable？**
+
+## 可长 narrative
+
+- selective conditioning；
+- modular representation/dynamics split；
+- query-dependent capacity allocation；
+- universal predictor + specialized proposal；
+- multi-query training principle；
+- specialization degree随 query family complexity变化。
+
+---
+
+# R4 — State / Belief / Information Gathering: 什么才是正确的 predictive state？
+
+完整 program：[RESEARCH_PROGRAMS `R4](RESEARCH_PROGRAMS.md)。
+
+FIRM、UWM-JEPA、Branch-JEPA、Physically Viable WM、Flow Equivariant WM等都在这个 program 内。
+
+**不再写“近邻太多所以只剩一个很窄 residual”。**
+
+它们告诉我们：
+- hidden physics是真问题；
+- memory/belief是真问题；
+- multiple futures是真问题；
+- query-conditioned physical abstraction是真问题。
+
+接下来可以问：
+- memory何时够？
+- uncertainty何时必须显式保留？
+- planner怎么消费belief？
+- 什么时候需要主动 sensing / probing？
+- goal-comparable state和dynamic belief如何分工？
+- hidden physics能否在线识别？
+
+## 当前 seed
+
+I07 / E11 仍是最便宜入口：
+> observation/history ambiguity 是否真的改变 action choice？
+
+若 E11这个具体 seed没有现象，**只 park I07，不关闭 R4**。  
+下一步可以转 active disambiguation / risk-aware planning / hidden-physics identification。
+
+---
+
+# R5 — Trust / Repair / Bypass: world model 什么时候值得信？
+
+完整 program：[RESEARCH_PROGRAMS `R5](RESEARCH_PROGRAMS.md)。
+
+现有方法：
+- uncertainty penalty；
+- hallucination detector；
+- intuition hybrid；
+- feedback correction；
+- test-time adaptation；
+- adaptive replanning；
+- subgoal / horizon shortening。
+
+这些是不同 **recovery actions**。
+
+真正未统一的是：
+> 检测到不同 failure pressure 后，应该采取哪一种 recovery action？
+
+## 当前 seed
+
+### I11 / E18
+不先训练 router。  
+对同一 planning state，用 environment reset 得到不同 recovery action 的真实 utility lift，再看已有 signal能不能预测 intervention ranking。
+
+如果存在：
+```text
+failure type / signal
+      ↓
+best recovery action
+```
+的稳定 mapping，才值得方法化。
+
+## 可长 narrative
+
+- world-model trust policy；
+- adaptive planning compute；
+- horizon/replan/adapt router；
+- failure-type-specific recovery；
+- detect→repair而不是detect-only。
+
+---
+
+# Cross-cutting — Planner/Query/Decision consequence
+
+所有 R1–R5 都共享：
+
+### Planner contract
+记录：
+- candidate source；
+- planner stage；
+- H/K；
+- search budget；
+- query；
+- metric；
+- candidate margin。
+
+### Actionability gate
+内部变化最终问：
+- candidate ordering变了吗？
+- candidate availability变了吗？
+- selected action变了吗？
+- real regret/success变了吗？
+
+但这不是说 internal phenomenon 没价值；它可以是**发现 mechanism 的中间证据**。只是不能让一个完全没有决策后果的小 probe独自承担整个 paper。
+
+---
+
+# 当前 6 个活跃 seeds
+
+| seed | program | 角色 |
+|---|---|---|
+| I09 / E14 | R1 | behavior-route / trajectory-semantics probe |
+| I12 / E16 | R1 | equal-budget data-value probe |
+| I08 / E13 | R2 | predictive-object frontier probe |
+| I10 / E17 | R3 | specialization↔reuse probe |
+| I07 / E11 | R4 | state/belief actionable ambiguity probe |
+| I11 / E18 | R5 | trust/recovery-routing probe |
+
+I06 / E08–E10 和 I03 / E06–E07 是共享/局部 diagnostics。
+
+这符合 workbench 的“3–6个活跃 seed”规则；**同时实际跑的 pilot仍不超过2个**。
+
+---
+
+# 首轮执行组合
+
+不要一次跑 6 条大实验。
+
+## Wave A — 最便宜、最高 information gain
+
+1. **E14**：TwoRoom route-data intervention；验证 R1 trajectory semantics 是否有实质 pressure。
+2. **E18**：优先 released checkpoint / evaluation-only trust-recovery oracle；验证 R5 是否存在不同 recovery action winner。
+
+dataset/sampler ready 时，E08可CPU并行。
+
+## Wave B — common substrate ready 后
+
+3. **E13**：R2 predictive-object matched pilot。
+4. **E17**：R3 query-placement小矩阵。
+
+## Wave C — 按资产触发
+
+5. **E11**：R4 cheap aliasing/action oracle。
+6. **E16**：若 R1 仍最强，扩到 equal-budget data value，而不是只把 E14 route effect做得越来越窄。
+
+---
+
+# Seed stop ≠ Program stop
+
+例：
+
+- E14最后被 P94 excitation完全解释  
+  → **I09 park**；  
+  → R1 转向 E16 active/counterfactual data value。
+
+- E13没出现 explicit/implicit切换  
+  → I08当前设置 park；  
+  → R2 可以转 stochasticity / query flexibility / direct-horizon vs recursive。
+
+- E17结果完全复制P38  
+  → I10当前 seed park；  
+  → R3仍可转 capacity / multi-query / query-aware data。
+
+- E11短history全部解决  
+  → I07 park；  
+  → R4仍可研究 hidden parameter active identification。
+
+- E18一个方法总是最好  
+  → I11 park；  
+  → R5可能收敛到该 recovery mechanism 的 failure boundary。
+
+**绝对禁止把上面写成“整个方向被杀”。**
+
+---
+
+# 什么样的 paper narrative 最值得追
+
+我们不预注册最终 narrative，但优先以下形态：
+
+1. **一个重要 program 的新 principle**；
+2. **两个已有答案之间的 regime boundary**；
+3. **新 distinction + minimal method**；
+4. **data / compute / query allocation law**；
+5. **统一多个已有 method 的 common mechanism**；
+6. **强 comparative science 导出新的 design rule**。
+
+这才是多卡大面积实验最终要服务的东西。
