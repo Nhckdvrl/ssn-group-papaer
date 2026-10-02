@@ -1,4 +1,4 @@
-# E16｜Decision-Critical Branching：planner-aware data acquisition
+# E16｜Planner-Boundary Branching (PBB)：planner-aware data acquisition
 
 - **状态：** PLANNED；未运行。
 - **对应：** I12 / R1。
@@ -84,6 +84,17 @@ E00后再填绝对小时数。研究逻辑：
 这些job天然单卡独立，符合多GPU弱互联条件。
 
 ## 最强近邻与exact delta
+
+### FIRM/SPARK压力测试
+
+**FIRM-WM control：** 若能获得其数据/实现，则比较“固定每个state均匀K branches”与PBB同等branch budget；若代码尚未公开，至少复刻最小common-reset uniform-branch data protocol，不复刻其完整typed recurrent architecture。
+
+**SPARK cross-domain warning：** critical-state dynamic branching在LLM agents已有ACL 2026论文。不要写“我们首次在critical states branching”；只写visual latent-WM acquisition的具体接口与实证增量。
+
+**RMWorld/dual-control warning：** value-of-information与task-risk active trials也已有先例。PBB若只是uncertainty×task weight没有独立candidate-boundary作用，不足以成新贡献。
+
+### Direct neighbors
+
 
 - **OnlineWM**：active query当前predictive weakness + same-state causal contrast；我们把query价值放到planner candidate-selection boundary。
 - **Task-Sufficient WM / ToIA**：task-relevant information acquisition；我们针对同state competing action branches与candidate rank flip。
