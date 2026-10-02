@@ -212,3 +212,5 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 这不是说每篇 compact-WM paper都必须做到最高层，而是我们的 claim 强度必须与证据层级匹配。
 
 | P94 | On the Identifiability of Controlled World Models | arXiv 2607.22430 | **A** | theory + controlled experiments | M3 critical confound：conditional action excitation controls transition identifiability/counterfactual planning；E14必须match/audit `rho_tr` proxy |
+
+| P95 | Hitting Time Isomorphism for Multi-Stage Planning with Foundation Policies / IEL | arXiv 2605.06470 | **A/B** | CODE: MagnusBoock/IEL | M3 strong method neighbor：directed hitting-time geometry + trajectory-label mismatch；禁止把“hitting-time/quasimetric correction移植到LeWM”当默认 novelty |
