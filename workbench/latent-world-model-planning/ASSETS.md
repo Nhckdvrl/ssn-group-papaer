@@ -228,3 +228,49 @@ OGBench pinned `1d414099...` 的官方 data-generation code 已核对：
 
 所以 P95 不只是理论邻居；它在代码层已经显式处理 **trajectory-derived hitting-time geometry**。  
 E15 若最终方法只是 lower-expectile gap regression、directed hitting-time head、triangle/quasimetric consistency，必须首先与 IEL/QRL exact compare，不能当 novel correction。
+
+
+## 7.4 TD-JEPA goal-latent bridge audit
+
+Bagatella TD-JEPA official paper与 pinned code联合给出一个可用于 **E13 common-protocol diagnostic** 的桥，但它不是作者官方 evaluation protocol。
+
+### Paper side
+
+paper 的 zero-shot reward task inference：
+
+[
+z_r
+=
+argmin_z mathbb E[(r-psi(s)^	op z)^2]
+=
+C_psi^{-1}mathbb E[psi(s)r(s)].
+]
+
+### Code side
+
+pinned `TDJEPAAgent.sample_mixed_z`：
+- training时可传 `train_goal=psi_next_obs`；
+- permute后经 task MLP；
+- OGBench config `scale_train_goals=True`；
+- 代码对 goal embedding乘 latent covariance inverse；
+- 再 `project_z` 归一化；
+- 这个 goal-derived z 会参与 actor / predictor training。
+
+所以对于近似 point-goal reward，单 goal observation 的
+[
+z_g propto C_psi^{-1}psi(g)
+]
+与 reward-inference task vector有明确数学联系。
+
+### 执行边界
+
+E13可以测试 **GOAL-Z**：
+single goal obs → ψ → inverse-cov scaling → project → policy。
+
+但必须标：
+- **exploratory/common-interface variant**；
+- 不是 TD-JEPA paper正式报告的 zero-shot inference；
+- 若失败，不叫 implementation bug；
+- 若成功，也不能声称作者官方支持 image-goal deployment。
+
+这个 audit 的价值是把 M2 的 task-information mismatch从“无法比较”变成一个先可实证的接口问题。
