@@ -35,7 +35,8 @@
 | LeWM | simple end-to-end SIGReg + next-latent compact JEPA | “LeWM 换 loss” |
 | JEPA-WMs | model/training/context/planner recipe sweep | “再扫几个 hyperparameter” |
 | RC-aux | multi-horizon + finite-budget trajectory-derived reachability | “reachability head v2” |
-| TD-JEPA | trajectory step-gap mined directed progress cost | “temporal distance 换写法” |
+| Bai/Xiong Temporal-Distance JEPA | trajectory step-gap mined directed progress cost | “temporal distance 换写法” |
+| Bagatella TD-JEPA (ICLR'26 Oral) | TD successor-feature / implicit long-horizon predictive representation for zero-shot RL | “再做一个 successor-feature / zero-shot RL objective” |
 | Traj-LeWM | full predicted path preference + failure mining + path-aware cost | “再做 trajectory score” |
 | Temporal Straightening | curvature / local trajectory straightening | “另一种 straightening” |
 | Control-Geometry Straightening | local action↔latent displacement geometry + finite-budget sampling theory | “另一种 planner geometry loss” |
@@ -95,87 +96,129 @@
 - one-step next-latent regression is not generally a full rollout kernel；
 - factual offline data lacks paired counterfactual action outcomes。
 
-## 4. 当前 research mines
+## 4. Problem-led research mines（2026-10-02 recalibration）
 
-### R-N / I06 — **Semantic negatives vs geometric regularization**（当前第一优先）
+本 workbench 不再把某个局部 loss 当作第一主旨。当前三个 mine 都对应**模型到底需要解决什么真实决策问题**。
 
-**直接 tension：**
-- TD-JEPA 把 cross-trajectory pair 推到 margin 外，同时明确承认 reachable false negatives；
-- TD-JEPA 的 published ablation 又显示去掉 cross-trajectory hinge 会系统伤 Push-T planning；
-- RC-aux 把 batch/cross-trajectory goal直接标成 reachability 0，但 temporal hard negatives已经负责 budget identifiability；
-- CGCIVL 已证明 cross-trajectory pair不能仅凭 trajectory identity判 connected/unconnected；
-- standard contrastive negative是 marginal/reference sample，不等价于逐pair声明不可达。
+### M1 / I07 — Observable goal ≠ control state
 
-所以新的问题不是“false negatives exist”，而是：
+**Problem:** image goal可以相同，但 hidden velocity/contact/friction/regime 不同会要求不同动作。point latent / goal-comparable latent 是否仍是正确 planning state？
 
-> **plan-aware WM 的 heuristic negatives 同时承担 semantic reachability supervision 与 non-semantic geometry/repulsion regularization 吗？哪一个才是 published planning gain 的 load-bearing作用？**
+**最强近邻：**
+- FIRM-WM：goal-comparable config + dynamic fiber + intervention branches；
+- UWM-JEPA：belief-space predictor；
+- Flow Equivariant WM (ICML'26)：structured memory under partial observability；
+- UAI'26 selection theorem：低regret下belief-like memory必要；
+- I-TAP：history + temporal abstraction + POMDP/regime shift。
 
-只有完成：
-1. oracle/certified semantic audit；
-2. FULL vs NO-XNEG 的已知作用复现；
-3. oracle-valid / censored / count-matched干预；
-4. calibration vs dispersion/scale机制分解；
-5. fixed-candidate + closed-loop consequence；
-6. oracle-free role-separated correction；
+**Exact delta 必须是：**
+> compact reward-free **image-goal planning** 中，observation aliasing 何时形成真实 action regret；deterministic history什么时候够，什么时候必须保留 multi-hypothesis belief/uncertainty；这种 regime 能否跨任务预测。
 
-才可能形成独立顶会 story。
+**Reviewer compression：**
+- “FIRM 已经拆 state了。”
+- “UWM-JEPA 已经做 belief latent。”
+- “POMDP 当然要 history。”
 
-### R-C / I03 — **Bottleneck relocation / regime law**（第二优先）
+所以 E11 必须先建立 **same observation / different hidden state → different best action → deployed planner regret**，不能靠 probe。
 
-近邻已经分别把 blame 放到 metric、dynamics、action discrimination、search、replanning-time index、horizon和target interface。我们的增量不是排一次方法，而是：
+### M2 / I08 — Explicit rollout vs implicit predictive abstraction
 
-> goal distance / candidate margin / planner-reachable fidelity / replanning ratio 等少数变量，能否跨任务预测**哪个 layer 成为 binding bottleneck**，并预测哪类 intervention有效？
+**Problem:** predictive structure 应保留成 task-agnostic explicit dynamics + test-time search，还是 amortize 到 long-horizon representation/policy，或者 hybrid？
 
-P57 Hidden Failure Modes 使 H/K/scoring-index 成为必须控制的 protocol layer；P40 又使 planner-reachable fidelity 成为 search/dynamics control。没有 predictive regime variable 就只是 benchmark。
+**领域依据：** TMLR'26 P09 已明确区分 explicit/implicit WM，并把 training-cost、inference-cost、generalization trade-off 的 direct empirical comparison 留作 future direction；Bagatella TD-JEPA 是 ICLR'26 Oral 的 implicit anchor。
 
-### R-A / I01 — trajectory-factorization / route imprinting
-**已 PARKED。** 代码级审计发现 pinned TD-JEPA / RC-aux 的主要 positive/hard-negative supervision只看短 loaded windows；若强制 full local-window manifest不变而只改更长 episode factorization，当前 loss基本看不到 intervention。因此原 E03/E04 已在运行前 VOID。未来只有真正 full-trajectory objective 或能改变方法实际读取pair distribution的 clean intervention出现时再开。
+**Exact delta：**
+> 找到能跨任务预测 explicit / implicit / hybrid 相对优势的 regime variables，而非再做方法排行榜。
 
-### R-B / I02 — optimizer support drift
-**已 PARKED。** A Control Theory of Predictability 已直接 formalize planner-reachable/off-manifold divergence；再加经典 offline-MBRL model exploitation，generic support-drift story compression risk过高。E05仅保留给 I03 conditional diagnostic。
+候选轴：reward/goal redefinition、unseen objective composition、layout/dynamics shift、horizon、data coverage、deployment search budget、arbitrary-action counterfactual需求。
+
+**Reviewer compression：**
+- “apples-to-oranges benchmark”
+- “只是一个训练更久、另一个test时search更多”
+- “TD-MPC2已经 hybrid”
+
+因此 E13 必须有 common data/task/utility 与 train/test compute ledger；没有 regime law不升级。
+
+### M3 / I09 — Behavior trajectory semantics ≠ environment controllability
+
+**Problem:** RC-aux / Temporal-Distance JEPA 这类 planning-aware supervision 从 behavior trajectory 的 gap/order/negatives 学 progress/reachability；这些 semantics 会不会继承 behavior policy 的 route/tempo，而不是 environment controllability？
+
+**最强近邻：** QRL/multistep quasimetric、PLDM、CGCIVL 已占 broad “behavior statistics ≠ optimal control”观点。
+
+**Exact delta：**
+> 同 environment dynamics 下，真正改变 generating behavior policy 后，planning-aware latent WM 的 deployed metric/representation 是否留下 behavior imprint，并改变 candidate ranking / closed-loop MPC，即使 local prediction相近。
+
+旧 I01/E03-E04不构成这个 intervention，因为它只改 long episode factorization而 short-window loss不可见。E14 才是有效 treatment。
+
+**Reviewer compression：**
+- “offline data distribution当然重要”
+- “quasimetric已经研究suboptimal behavior”
+- “只是coverage变了”
+
+所以必须匹配/量化 state-action/local-transition support，并证明 effect 在 planning-aware semantics 上 load-bearing。
+
+### I06 — M3 的 subdiagnostic，不再自动做主论文
+
+semantic negatives vs geometric regularization 仍是好 probe：
+- E08 sampler semantic audit；
+- E09 semantic/count/repulsion role decomposition；
+- E10 conditional role separation。
+
+但 P69 已进一步表明 negative construction本身可扭曲 planning geometry，所以“negative坏”更不够新。I06 只有在解释 M3 更大的 behavior→controllability failure 时才优先扩展。
+
+### I03 — common bottleneck oracle
+
+E06/E07 用于 M1–M3 的归因；只有少数observable variables能跨task预测 binding bottleneck与 intervention ranking时，才允许独立升级成 regime-law paper。
+
+### M4 — Query/goal interface & model reuse（WATCH）
+
+P38 *What Must a World Model Distinguish for Planning?* 已直接研究 query/candidate/planner-dependent sufficiency与 seen→unseen objective trade-off；Grounded WM 又占 language-semantic goal interface。当前只作为 transfer stress axis。
 
 ## 5. Idea 状态
 
-| ID | 状态 | 角色 | 当前最大 compression |
+| ID | 状态 | 角色 | 最大 compression |
 |---|---|---|---|
-| I06 semantic negatives vs geometric regularization | **SEED / first gate** | E08→E09→E10 主 mining lane | “false negatives in contrastive learning is old” |
-| I03 bottleneck regime switch | **SEED / second** | 统一大量实验的探索引擎 | “只是 component benchmark” |
-| I04 random→elite alignment gap | SEED / subordinate | E02 measurement calibration | DA-LeWM + AD-WM elite diagnostics |
-| I01 trajectory-factorization | **PARKED** | future full-trajectory objective reserve | pinned methods短window下 treatment不可识别 |
-| I02 optimizer support drift | **PARKED** | I03 diagnostic only | P40 + offline MBRL overlap |
-| I05 history/POMDP | PARKED | future reserve | 易退化为 context-length sweep |
+| I07 observable goal ≠ control belief | **SEED / broad mine** | E11→conditional E12 | FIRM-WM + UWM-JEPA + generic POMDP |
+| I08 explicit↔implicit frontier | **SEED / broad mine** | E13 matched regimes | “只是 benchmark / compute tradeoff” |
+| I09 behavior→controllability semantics | **SEED / broad mine** | E14→conditional E15 | QRL/PLDM/data-distribution literature |
+| I06 semantic negative roles | SEED / M3 subdiagnostic | E08→E09→E10 | false-negatives/negative-geometry已有大量先例 |
+| I03 bottleneck regime | SEED / common diagnostic | E06→conditional E07 | component benchmark |
+| I04 random→elite alignment | subordinate | E02 calibration | DA-LeWM / P38 |
+| I01 trajectory-factorization | **PARKED** | historical invalid design | treatment对short-window objective不可见 |
+| I02 optimizer support drift | **PARKED** | conditional diagnostic | P40 + offline MBRL |
+| I05 generic history/POMDP | **SUPERSEDED by I07** | 不再做context-length sweep | FIRM/I-TAP/FloWM等 |
 
 ## 6. 反向 reviewer test
 
+### I07
+**“这不就是 POMDP 需要 memory 吗？”**  
+只有在我们证明 image-goal interface 自身造成 **observable-goal / control-belief role mismatch**，且这种 mismatch 在现实 candidate decision上有 regime-dependent consequence，才超过 textbook claim。
+
+**“FIRM-WM已经拆goal state和dynamic fiber。”**  
+所以 factorization不是贡献。新的信息必须是 belief/aliasing何时 load-bearing、history何时不够，以及对 candidate decision 的稳定 law/repair。
+
+### I08
+**“一个是MPC，一个是zero-shot policy，本来就不同。”**  
+正因此不能只比较分数。必须用 common data/task/utility 和 compute ledger，把差异压成可解释的 predictive-computation placement trade-off，并预测未见 regime。
+
+### I09
+**“换behavior policy当然换训练数据。”**  
+必须控制/量化 local transition support与coverage，证明变化集中在 trajectory-derived planning semantics，并落到candidate/closed-loop。
+
 ### I06
-**“False negatives in contrastive learning 不是老问题吗？”**  
-是老问题，所以不能以此为贡献。I06必须证明这里的 negative 被赋予**absolute planning semantics**（distance margin / reachability 0-label），并且 semantic correctness 与 representation regularization 对真实 MPC 有可分离的作用。
-
-**“TD-JEPA 自己已经承认 false negatives。”**  
-所以“存在”不是贡献。新信息必须是：它们在真实 sampler中有多频繁、是否 load-bearing、published gain来自哪种作用，以及 role separation 能否保持/提升 planning。
-
-**“oracle filtering不现实。”**  
-E09 oracle variants只是 mechanism upper bound；E10若做方法，必须不用 privileged test oracle。
-
-**“CGCIVL 已经区分 connected/unconnected cross-trajectory pairs。”**  
-它解决 offline value learning 的 cross-trajectory sampling。我们的 delta 必须落在 visual latent-WM 的 **semantic distance/reachability training → candidate ranking → MPC**，并解释 negatives的双重角色。
-
-### I03
-**“不就是 method benchmark？”**  
-没有 cross-task predictive regime variable 就不升级。必须预先预测 intervention ranking，不事后解释表格。
-
-**“protocol 差异造成 apparent switch？”**  
-H/K、scoring index、goal offset、action block、replanning、candidate budget进入 common manifest；native result与 common-audit result分表。
+**“False negatives老问题。”**  
+存在性不是贡献；semantic pair label与global regularization的角色分离才可能是贡献，而且现在只是M3子机制。
 
 ## 7. Stop rules
 
-- E08 contamination极低/不稳定 → I06 park，不造难例；
-- E08 oracle coverage太低 → 只做 certified bounds，不能伪造精确 false-negative rate；
-- E09 FULL vs NO-XNEG 不能复制已知 component direction → 先修复现，不做新解释；
-- E09 semantic calibration变但 decision null → I06不升级；
-- E09所有差异只来自 negative count / gradient scale，且 count-match后消失 → 把机制收敛到 optimization，不夸大 semantic failure；
-- E10需要 privileged oracle才有效 → 只能当 diagnostic，不叫方法；
-- I03只能 per-task threshold → park；
-- E05被 P40 fidelity/PLDM uncertainty完全解释 → 保持 diagnostic。
+- **E11** 同观测不同hidden state基本不改变真实最优动作 → I07 park；
+- **E11/E12** 简单短history稳定消除所有decision regret → 不做复杂belief方法；
+- **E13** explicit/implicit差异只能由train/test compute解释，或没有跨task regime signature → I08不升级；
+- **E14** effect被coverage/local-support完全解释 → I09不升级；
+- **E14** learned semantics变化但candidate/closed-loop null → 不升级；
+- **E08** contamination极低/不稳定 → I06 park；
+- **E09** calibration变但decision null → I06不升级；
+- **E06** 只能得到per-task post-hoc thresholds → I03保持diagnostic；
+- 任何方法若只改善 internal probe、不改变Actionable consequence → 不作为 manuscript-critical contribution。
 
-这些 stop rules只停止具体 lead，不桌面关闭整个 territory。
+stop只停具体 lead，不自动关闭整个 territory。
