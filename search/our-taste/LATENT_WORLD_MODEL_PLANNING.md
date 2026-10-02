@@ -1,119 +1,171 @@
 # Territory 卡：紧凑潜在世界模型与规划
 
-日期：2026-10-02。通道：our-taste。状态：**PROPOSED / problem-led literature+code-hardened / execution-ready；不是 candidate。**
+日期：2026-10-02。通道：our-taste。状态：**PROPOSED / problem-led / literature+code-hardened / execution-ready；不是 candidate。**
 
-工作台：[latent-world-model-planning](../../workbench/latent-world-model-planning/README.md)；资源：[RESOURCES](../../RESOURCES.md)。  
-全领域地图：[FIELD_PROBLEM_MAP_2026](../../workbench/latent-world-model-planning/FIELD_PROBLEM_MAP_2026.md)。  
-研究入口：[RESEARCH_MINES](../../workbench/latent-world-model-planning/RESEARCH_MINES.md)。  
-定位 authority：[PAPER_LINEAGE](../../workbench/latent-world-model-planning/PAPER_LINEAGE.md) · [LITERATURE_LEDGER](../../workbench/latent-world-model-planning/LITERATURE_LEDGER.md) · [POSITIONING](../../workbench/latent-world-model-planning/POSITIONING.md)。
+工作台：[latent-world-model-planning](../../workbench/latent-world-model-planning/README.md)  
+资源：[RESOURCES](../../RESOURCES.md)
 
-## 1. 为什么保留
+**最高层入口：**
+- [NOVELTY_GROWTH_RULES](../../workbench/latent-world-model-planning/NOVELTY_GROWTH_RULES.md)
+- [FIELD_PROBLEM_MAP_2026](../../workbench/latent-world-model-planning/FIELD_PROBLEM_MAP_2026.md)
+- [RESEARCH_PROGRAMS](../../workbench/latent-world-model-planning/RESEARCH_PROGRAMS.md)
+- [RESEARCH_MINES](../../workbench/latent-world-model-planning/RESEARCH_MINES.md)
 
-这不是“找一块没人做过的 world-model 小角落”。保留理由是：
+定位：
+[PAPER_LINEAGE](../../workbench/latent-world-model-planning/PAPER_LINEAGE.md) ·
+[LITERATURE_LEDGER](../../workbench/latent-world-model-planning/LITERATURE_LEDGER.md) ·
+[POSITIONING](../../workbench/latent-world-model-planning/POSITIONING.md)
 
-1. **顶会母问题成立。** DINO-WM、PLDM、Temporal Straightening、WorldTest、Jumpy WM、Action-Sufficient Goal Representations 等已证明 representation、data、planning semantics、predictive abstraction 都是顶会级问题。
-2. **领域仍没有统一答案。** 2026 papers 分别把成功/失败归因到 geometry、reachability、recursive dynamics、action identifiability、search、belief、data、query interface、test-time adaptation；很多 broad claim已拥挤，但“什么时候哪种结构真正必要”仍未闭合。
-3. **可做 controlled science。** compact model + offline trajectory + resettable simulator + candidate-level planner使 oracle replacement / fixed-candidate regret / same-state intervention可行。
-4. **资源极匹配。** 单次训练小、独立run多；几十个 GPU slot可以用于 data regimes × seeds × environments × strong baselines，而不依赖多节点高速互联。
-5. **方法可从问题自然长。** 不预设必须有新 architecture/loss；先找到 action/decision-level pressure，再做最小 correction。
+## 1. 选这个 territory 的理由
 
-## 2. 当前排序
+不是“模型小所以容易发”，而是同时满足：
 
-### Tier A1 — M3 / I09：behavior trajectory semantics → controllability
+1. **社区持续关心。** 2025–2026 顶会/强期刊不断出现 latent planning、task-sufficient WM、query sufficiency、data regime、planning geometry、hierarchy、uncertainty等工作。
+2. **研究 program 没闭合。** 现有论文常各自给一个答案，但“什么时候哪种 state / data / predictive object / query conditioning / recovery mechanism真正必要”仍没有统一认识。
+3. **可做受控实验。** offline data + resettable simulator + candidate-level planner可以做 intervention、oracle replacement、same candidate bank、data-regime controls。
+4. **资源匹配。** compact models与大量独立 runs 非常适合多卡弱互联资源；无需多节点预训练。
+5. **novelty 可从近邻中生长。** 不要求找没人碰过的词，而是在强 related work之间找 tension / boundary / interaction / mechanism / method。
 
-核心不是“data distribution matters”，而是：
+## 2. 硬规则：不要把 related work 当禁区图
 
-> 在 **conditional action excitation 与 one-step transition support 已匹配/控制** 后，trajectory-derived planning supervision 是否仍把 higher-order behavior geometry（route / tempo / temporal co-occurrence）写进 deployed reachability/progress，并改变 same test candidate pool 的 ordering / MPC？
+一篇 paper可以占：
+> 某个 setting下的一个 atomic claim。
 
-为什么这个 exact delta重要：
+不能因此写：
+> 整个母问题都不能做。
 
-- RC-aux 自己明确 trajectory offset 只是 empirical proxy；
-- Bai/Xiong Temporal-Distance JEPA 直接从 trajectory gap学 directed progress；
-- quasimetric GCRL / CGCIVL 已占 behavior-statistics vs optimal controllability broad distinction；
-- **P94 Controlled-WM Identifiability** 又进一步证明 behavior policy 的 conditional action excitation本身可决定 counterfactual transition identifiability与planning。
+例如：
+- P94证明 action excitation重要 ≠ “world-model data问题做完了”；
+- P38研究 query sufficiency ≠ “task specialization/reuse做完了”；
+- FIRM/UWM研究 belief ≠ “partial observability做完了”；
+- AdaJEPA研究 adaptation ≠ “world-model trust/recovery做完了”。
 
-因此 E14 的科学价值完全取决于把普通 coverage / action-excitation解释排掉。
+详见 `NOVELTY_GROWTH_RULES.md`。
 
-执行：
-- Stage A：公开 OGBench `navigate/stitch/explore`、`play/noisy` 只找 sensitivity；
-- Stage B：fixed start-goal DIRECT vs DETOUR/LOOP，匹配 state/action/local-transition support 与 conditional action covariance；
-- LeWM control + Temporal-Distance JEPA first；
-- fixed candidate rank/regret + closed-loop gate；
-- signal成立再 RC-aux / E15。
+## 3. 五个 research programs
 
-### Tier A2 — M2 / I08：predictive-computation placement frontier
+### R1 — Data & Identifiability
+**什么经验让 world model真正学会可用于 planning 的 action effects / controllability？**
 
-问题不是 explicit vs implicit谁强，而是：
+子方向：
+- behavior/route geometry；
+- action excitation；
+- counterfactual branches；
+- active probing；
+- failure/recovery data；
+- query-aware data acquisition。
 
-> world-model predictive structure应该保存在 primitive action-conditioned rollout、direct arbitrary-horizon predictor、policy occupancy/successor abstraction、amortized policy/planner，还是 hybrid？什么 regime决定？
+当前 seeds：
+- I09/E14；
+- I12/E16；
+- I06/E08–E10 diagnostic。
 
-TMLR 2026 JEPA-WM study明确把 explicit/implicit training-cost、inference-cost、generalization trade-off 的 direct comparison留作 future direction；Bagatella TD-JEPA、Universal Horizon、Jumpy WM、TD-MPC2等形成 continuum。
+### R2 — Predictive Abstraction
+**world model应该预测什么 future object？**
 
-E13必须拆三本账：
-1. training compute；
-2. **task/query information budget**；
-3. deployment compute。
-
-重要实现事实：Bagatella TD-JEPA official OGBench eval会从 replay buffer采样约 10k states，并用 OGBench `physics` relabel task reward做 reward inference；这不能和 image-goal MPC的一张 goal observation假装成同等 task information。
-
-目标是跨 task 的 **regime boundary / hold-out prediction**，不是 Pareto表。
-
-### Tier B — M1 / I07：finite-history 后的 actionable ambiguity
-
-Broad POMDP/hidden-physics/belief空间已经很拥挤：
-Physically Viable WM、FIRM-WM、UWM-JEPA、Branch-JEPA、Flow Equivariant WM、Action-Sufficient Goal Representations等都直接占位。
-
-所以 E11只问：
-
-> 给足 deployment 可用 finite history 后，是否仍存在多个 action-relevant hidden hypotheses，使同一个 visible history对应不同 best action，并造成 baseline planner regret？
-
-history能解决就 STOP，不造 belief method。
-
-## 3. 子诊断与共享仪器
-
-- **I06 / E08–E10**：heuristic semantic negatives vs global geometric regularization；只作为 M3 子机制。
-- **I03 / E06–E07**：representation/dynamics/search/time/query bottleneck oracle；只有形成 cross-task predictive regime law才独立升级。
-- **E02**：candidate decision alignment calibration。
-- 旧 E03/E04 = VOID；I01/I02 parked；I05由I07 supersede。
-
-## 4. 明确红区
-
-不能再直接当 headline：
-
-prediction≠planning；L2≠progress；generic reachability；generic multi-step；generic inverse/physical grounding；action futures要可分；CEM会OOD；long horizon难；subgoal/hierarchy；POMDP需要history；uncertainty/multimodal future本身；test-time adaptation；latent action；efficient transition；closed-loop比open-loop重要；false negatives存在。
-
-这些都只能是 baseline / diagnostic / related-work pressure。
-
-## 5. 执行图
+continuum：
 
 ```text
-E00/E01 common substrate
-   ├─ E14 M3 FIRST  → conditional E15
-   │      └─ E08 → E09 → E10 subdiagnostic
-   ├─ E13 M2 SECOND → regime confirmation / one middle-family baseline
-   └─ E11 M1 CONDITIONAL → conditional E12
-
-E02/E06 = common scientific instruments
+one-step dynamics
+→ direct horizon
+→ trajectory distribution
+→ successor / occupancy
+→ macro / hierarchy
+→ amortized / hybrid
 ```
 
-第一轮不铺大矩阵。哪个 mine 先得到 **natural failure + decision consequence + clean intervention leverage**，再用多 GPU迅速扩 seeds / task structures / strongest neighbors。
+当前 seed：
+- I08/E13。
 
-## 6. 顶会升级标准
+目标不是 winner table，而是 regime law / adaptive predictive object / compute principle。
 
-至少同时满足：
+### R3 — Specialization vs Reuse
+**world model要为 query/planner 专门化到什么程度？什么结构应该保持 task-agnostic reusable？**
 
-- 真实、自然、社区关心的问题；
-- 不是一个内部 probe anomaly；
-- candidate action / regret / closed-loop consequence；
-- exact related-work delta；
-- 强 alternative explanations 被 controlled intervention 拆开；
-- 第二 task structure / objective / method确认 scope；
-- 若做方法，method 是 diagnosis 的最小后果，而不是“LeWM + module”。
+当前 seed：
+- I10/E17：query placement × seen/unseen reuse。
+
+强 anchors：
+Value Equivalence、Goal-Aware Prediction、P38、Rank-One Corner、WorldTest、Task-Sufficient WM。
+
+### R4 — State / Belief / Information Gathering
+**partial observability / hidden physics 下，正确 internal state 是 memory、belief、multi-future还是主动 probing？**
+
+当前 seed：
+- I07/E11。
+
+FIRM/UWM/Branch/PVWM是 program坐标，不是关闭理由。
+
+### R5 — Trust / Repair / Bypass
+**world model不可靠时，该采取哪种 recovery action？**
+
+候选：
+replan、shorten horizon、more search、feedback、adapt、fallback。
+
+当前 seed：
+- I11/E18：failure/reliability signal → recovery-action ranking。
+
+## 4. 第一波实验
+
+仓库规则：**同时真正跑的 scientific pilots ≤ 2**。
+
+### Wave A
+- E14（R1）
+- E18（R5）
+
+E08可CPU旁路。
+
+### Wave B
+- E13（R2）
+- E17（R3）
+
+### Conditional
+- E11（R4）
+- E16（R1）
+
+顺序可被新 evidence改写。
+
+## 5. 什么时候值得把几十张卡铺开
+
+至少出现两项：
+- natural effect；
+- real decision consequence；
+- surprising boundary；
+- clean intervention；
+- strong nearest baseline gap；
+- plausible method lever。
+
+然后才扩：
+- train seeds；
+- second task structures；
+- strongest neighbors；
+- data regimes；
+- hold-out conditions；
+- method ablations。
+
+## 6. 顶会 paper 允许的生长方式
+
+不限制为“failure + loss”：
+
+- new problem/distinction；
+- regime law；
+- interaction/unification；
+- mechanism / identification；
+- data principle；
+- compute principle；
+- specialization/reuse frontier；
+- method from diagnosis；
+- strong comparative science；
+- benchmark/protocol（如果揭示真实缺失能力）。
 
 ## 7. 当前状态
 
-- science claim = 0；
-- GPU run = 0；
-- workbench保持 PROPOSED；
-- FIELD map / lineage已扩至 P01–P95；
+- scientific claims = 0；
+- GPU runs = 0；
+- workbench = PROPOSED；
+- lineage已到 P104（并持续更新）；
+- active seeds = I07–I12（6个）；
+- experiments已到 E18；
 - 本地 agent入口：[LOCAL_AGENT_PROMPT](../../workbench/latent-world-model-planning/LOCAL_AGENT_PROMPT.md)。
+
+**一个 seed null/撞车/被baseline吸收，只 park seed；不自动关闭 parent R#。**
