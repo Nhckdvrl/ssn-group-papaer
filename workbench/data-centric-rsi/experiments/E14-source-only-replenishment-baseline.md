@@ -43,3 +43,5 @@ E13检验replay/池内部分补货/池外source×exact n补货。其成功可能
 - **启动前失败与修复（17:25UTC，效用未观察）**：used首次CPU前检37.934s以rc1退出，尚未创建run_dir/训练窗口。错误是E13 staging清单用`name`、运行清单用`path`，直接dict比较误报父模型变化；独立实读15文件bytes/SHA全部一致。原launcher与init运行保持冻结，新增v2只规范filename key、不减弱内容校验。按同父/同动作/同seed29接续；旧stderr/queue尝试及37.934s成本全部保留，预算watch覆盖追加尝试。不是训练null、seed筛选或科研反证。
 
 - **实际训练与评价接续**：[首窗口证据](../results/E14_first_runtime_windows.json)记录init实测59窗口，首N=1,553，所有已观察microbatch n/窗口N与CPU预期对应，seed/optimizer reset/GA/原loss均实测成立；59窗口不等于625终点。used v2启动与原失败见[恢复溯源](../results/E14_used_preflight_recovery.json)。[评价driver](../results/E14_eval_launch_provenance.json)在fvcrc12 PID1456317/ticks1819280067等双625终点，源码00862a288c…；[现成环境核对](../results/E14_eval_environment_preflight.json)已通过。独立fvcrc20 GPU3/8033复用E12同judge/checkpoint/配置，真实build0.23.0+cu129记录；新物理卡/port为部署偏离，judge尚未启动，已有他人进程则等待idle。终点本地使用、copy0，judge4h单列守护；旧waiting driver启动条件修复的原档案保留，未运行评价或挑checkpoint。
+
+- **双父真实训练已成立（17:46:36UTC）**：init/used实读158/67窗口，均有runtime、尚无completion。两卡约54.8GB，自有actual n/N与预期对应；used恢复已过全部父/数据/包/processor前检。此为运行进度，不是training utility。

@@ -56,6 +56,8 @@
 | P58 | NICE，ICML2025主会最终版 | D（主文/相关工作与A/B/F–I关键附录，官方生成/reward梯度/匹配/训练固定源码；未复现） | [会议全文](https://proceedings.mlr.press/v267/wang25bm.html)；[代码9516c14](https://github.com/JTWang2000/NICE/tree/9516c140158299e5d5c3ba82e235ed2d69132ed0)；生成reward目标方向＋真实SFT已有，但warmup局部影响非完整终点oracle；LESS+GPT吸收一项AMC成功，成本/阅读边界见论文卡 |
 | P59 | Quadratic Coreset Selection，NeurIPS2025主会最终版 | D（主文/related work、A–D相关理论前提/算法/配方/成本/长CoT实训；官方可执行源码未核） | [会议全文](https://papers.neurips.cc/paper_files/paper/2025/hash/02e4145752691bb16e970bd71b2c3253-Abstract-Conference.html)；联合sequence/token监督分配及selector迁移已有，outer是NTP、目标entropy适配；token-budget5%约10%序列，非等forward/FLOPs；不扩大发布资产审计 |
 
+| P60 | Cure-SFT，ICML2026主会最终版 | D（21页主文/related work与关键方法/实训/成本附录，官方诊断/采样/修复/merge源码；未复现） | [会议全文](https://proceedings.mlr.press/v306/fu26f.html)；[代码979bb9a](https://github.com/As1yk/Cure-SFT/tree/979bb9ab5ed432891f35f43b90e92b2f623bfab4)；保留/修复/丢弃动作和同Fixable集合训练证据已有；诊断不读student/训练response；发布写出对象边界仅记录，不外推作者实验 |
+
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
 | ID | 论文 | 阅读 | 官方来源 |

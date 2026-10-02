@@ -48,6 +48,7 @@
 | P54 Critical Look | ICML2026主会；拆representation×algorithm×budget、base/random、多pool/model真实重训、135M proxy复用；query loss相关≠稳定终端排名已有 | 只测简单random强/预算排名反转/多因素表，或再给相似度与accuracy散点 | 学其由解释压力长出统一视角/UOT的论文形态；E13需落在有后果的补货决策与不可替代信息，不把matching或公平契约当全部delta |
 | P56 VisNec / P57 ViFT / P51 IG / P50 C.2 | 视觉必要性选样＋真实SFT、视觉贡献梯度、文本任务和caption视觉分开学习已有；IG单独并非普遍强 | 首次视觉必要性metric/视觉信号训练utility/文本帮助VLM，或把Text-score消融当blind训练 | 若E13有资产资格收益，复用init in/out两臂，仅再加对应blind训练做路径交互；保留槽/位置/labels并正常图像评估。该机制须改变策展行动，不能只发表去图像掉分。当前不追加GPU、不升主张 |
 | P58 NICE / P59 QCS | ICML2025生成reward目标梯度与NeurIPS2025联合sequence/token监督分配、selector迁移均有真实SFT；仍各依赖局部影响/NTP风险等前提 | 只把终端reward、token重权重或迁移拼成新名称；把token预算当FLOPs或未核源码当不能成为强对手 | 学两篇怎样从目标错位/互补预算长出增量：先用E13/E14测哪项信息改变真实补货决策，便宜source-only若足够就接受；若有稳定且有后果的残差，再改变最关键前提，不因近邻关题或提前建设新系统 |
+| P60 Cure-SFT | ICML2026；教师诊断→保留/修复/丢弃、同Fixable对象诊断编辑vs无诊断编辑的真实训练对照；跨学生实训 | 把“加诊断＋rewrite”或跨模型本身当novel；从stock写出bug推断作者收益无效 | 学其从删除/统一重写的具体失败长出决策：仅在真实答案修复压力出现时做同fresh对象编辑对照，问student/训练反馈是否带来不可替代的动作信息。E13/E14结果前不追加生成系统或以近邻关题 |
 | P19/P27 | 代理模型配比、其他自适应混合 | 换个 metric 名字当数据价值理论 | 选定具体动作空间后补齐对应方法实现，并报告何处已有方法已经足够 |
 
 ## 三个最危险的 compression risk
