@@ -946,3 +946,18 @@ I06 是 M3 的一个小切片；I03 oracle ladder是三条线共用的 scientifi
 - **框架：** L0–L7 evidence ladder，从 visual plausibility逐渐上升到 counterfactual action fidelity、policy ranking、planning/optimization lift、model exploitability与decision utility。
 - **对本 workbench：** 把“probe显著”与“真实科研问题”明确分开。representation/probe可以帮助定位，但如果 claim 是 planning / controllability，至少要把证据推进到 candidate decision / intervention / closed-loop层。
 - **ownership：** “world model evaluation应decision-centric”本身不是新 claim；我们的贡献只能是具体 problem / law / method。
+
+### P94 — On the Identifiability of Controlled World Models — arXiv 2607.22430
+**来源：** https://arxiv.org/abs/2607.22430
+
+- **母问题：** action-conditioned latent prediction什么时候真的识别了 latent state 与 controlled transition，而不是只拟合 behavior-policy conditional mean？
+- **理论核心：** 两个 policy-dependent margin：
+  1. predictable-signal spectral separation → representation identifiability；
+  2. conditional action-excitation margin `rho_tr(pi)` → transition identifiability。
+- **关键反常：** action-conditioned predictor并不自动解决 counterfactual identification。若给定 state 后 action variation很弱，多个 predictor可以在 behavior data 上同样好，却对 counterfactual actions完全不同；论文给出 counterfactual/on-policy error amplification约受 `1/rho_tr` 控制。
+- **决定性实验：** 保持 representation regime / action marginal等条件，改变 conditional action excitation；on-policy prediction仍可好，但 counterfactual reachable set / goal-conditioned planner selection明显变坏。common candidate bank用于 planning consequence。
+- **claim ownership：** “behavior-policy action coverage决定 controlled WM transition identifiability / counterfactual planning”已被直接理论化和验证。
+- **对 M3 的影响：** **非常关键的 confound / sharpening**。E14 若只是换 behavior policy并看到planning变化，会被 P94 压缩成 action-excitation / coverage effect。M3 只有在 **conditional action excitation + one-step transition support 已匹配/控制** 后，trajectory-derived temporal semantics仍继承 route/tempo，才形成新 delta。
+- **新的 exact separation：**
+  - P94 = behavior policy决定“动作效应是否可识别”；
+  - M3 = 在动作效应已经可识别、local transition evidence相近时，**higher-order trajectory organization / temporal supervision是否额外把 behavior geometry写进planner semantics**。
