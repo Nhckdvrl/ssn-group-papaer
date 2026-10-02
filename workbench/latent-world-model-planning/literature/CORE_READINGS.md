@@ -118,3 +118,29 @@ Beyond Visual Quality在same-state sampled candidates上测到真实selection op
 UHM直接预测任意horizon future以减轻递归误差；Jumpy WM预测预训练policy在多时间尺度下的occupancy，用于组合长期policy sequences。
 
 **我们的生长分析。** R2不是one-step vs successor二选一，而是一个预测对象continuum。首轮不用把所有范式装齐；同backbone的cheap/direct vs expensive/recursive fidelity allocation若有信号，再引入一个long-horizon方法检查故事是否跨predictive object成立。
+
+## S14｜FIRM-WM：intervention branches已经是强支点，真正问题转向“哪些branch值得买”
+
+来源：[FIRM-WM](https://arxiv.org/abs/2609.22816)。本轮阅读深度：**B+/positioning**，核对abstract、方法定位和主结果；未找到可直接安装的官方代码，不声称复现。
+
+**原文依据。** FIRM-WM把reward-free visual planning的两个问题一起处理：goal-comparable configuration与history-dependent dynamic fiber分离；同时在offline factual trajectories之外加入common-reset intervention branches，让模型观察同一状态下不同action sequence的真实后果。论文报告TwoRoom/Reacher/OGBench-Cube三任务、三独立full-pipeline seeds，并明确把intervention data作为模型能力来源之一。
+
+**我们的生长分析。** 这对R1不是“撞车”，反而把下一步问题变得很自然：FIRM-WM回答**branch data有没有用**；我们可以问**在branch预算很有限时，哪些state/哪些竞争action值得branch**。如果每个reset都均匀收branches，真实系统会很贵；如果branch acquisition能直接对准planner candidate boundary，才有可能得到更高的planning gain per environment step。
+
+## S15｜critical-state branching不是我们发明的原则，但visual WM里的data-value仍可做
+
+来源：[SPARK, ACL 2026](https://aclanthology.org/2026.acl-long.1100/)、[RMWorld](https://arxiv.org/abs/2608.20126)、经典MPC active learning / dual-control脉络。阅读深度：**B/positioning**。
+
+- SPARK在LLM agent长轨迹中按critical decision states做dynamic branching，以更少rollouts提高探索质量。
+- RMWorld在无线控制里按task risk/value-of-information分配channel labels与counterfactual trials。
+- 更早的dual MPC/active dynamics learning早已说明控制与信息采集可以联合优化。
+
+**我们的生长分析。** 所以H-A不应叫“首次critical-state branching”。真正可拥有的对象更具体：**visual latent MPC中，使用candidate elite-boundary的不确定性来分配same-state dynamics branches，并直接训练world model本身。** 工作名改为 **Planner-Boundary Branching (PBB)**，避免把跨领域成熟原则包装成新词。
+
+## S16｜multi-fidelity planning也有长历史；R2的增量是latent-CEM elite preservation
+
+来源：2020 RSS [Multi-Fidelity Black-Box Optimization for Time-Optimal Quadrotor Maneuvers](https://www.roboticsproceedings.org/rss16/p032.html)、2025 RA-L parallel multi-fidelity MPC，以及[DeepJEPA](https://arxiv.org/abs/2610.00368)/[Fast-LeWM](https://arxiv.org/abs/2606.26217)。阅读深度：**B/positioning**。
+
+传统multi-fidelity planning已经会把cheap analytical/simulation model和expensive physical/fine model结合，甚至在一条规划中切换不同fidelity；因此“粗模型筛、细模型验”本身不是新思想。2026 latent-WM又有Fast-LeWM的parallel direct prediction和DeepJEPA的transition-level adaptive depth。
+
+**我们的生长分析。** H-B若有价值，必须落在CEM特有的**elite-set preservation problem**：在大量latent candidates中，哪些cheap evaluations足以确定“不可能进elite”，哪些candidate必须升级到高保真预测？这个问题可以用same candidate bank、elite recall和fixed-wall-clock严格测，甚至可以从cheap→high-fidelity residual的校准区间导出安全筛选规则。这个精确接口比“adaptive compute”更有归属感。
