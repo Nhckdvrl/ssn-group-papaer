@@ -115,5 +115,5 @@ E02/E06 = common scientific instruments
 - science claim = 0；
 - GPU run = 0；
 - workbench保持 PROPOSED；
-- FIELD map / lineage已扩至 P01–P94；
+- FIELD map / lineage已扩至 P01–P95；
 - 本地 agent入口：[LOCAL_AGENT_PROMPT](../../workbench/latent-world-model-planning/LOCAL_AGENT_PROMPT.md)。
