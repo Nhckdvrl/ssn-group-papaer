@@ -22,6 +22,9 @@
 ## 直接近邻
 
 - P38 What Must a WM Distinguish?：query/candidate/planner决定 sufficiency；joint query-conditioned model seen-task强，unseen objective优势缩小；modular query-guided proposal是一个答案。
+- TC-WM：foundation semantics → compact task-centric physical latent，证明 representation-level specialization本身可以显著改善 planning。
+- SR-WM：task-conditioned functional roles进入 state semantics，并直接驱动proposal/reranking/resampling。
+- World Action Planner：VLM承担task reasoning/proposal、WM保physical outcome prediction，是 modular specialization/reuse 的系统实例。
 - Value Equivalence / Goal-Aware Prediction：task-aware prediction可只保留decision-relevant信息。
 - Task-Sufficient WMs：主动收集 task-relevant factors。
 - WorldTest：general WM应支持 diverse environment-level queries。
@@ -60,7 +63,7 @@
 
 “P38已经做 query-conditioned vs modular。”
 
-所以 exact delta 不能只是再复制 seen/unseen objective，而要在 **query placement / capacity / planner reuse** 上形成新 regime law。
+所以 exact delta 不能只是再复制 seen/unseen objective，也不能只是“task-conditioned representation更强”。必须在 **query placement × query complexity × capacity × planner reuse** 上形成可迁移 regime law，最好解释为什么 TC-WM/SR-WM/P38/WAP 这些不同设计在各自setting都合理。
 
 ## 对应实验
 E17。
