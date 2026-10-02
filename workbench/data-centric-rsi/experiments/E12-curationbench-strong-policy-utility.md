@@ -1,6 +1,6 @@
 # E12 — Curation-Bench 强数据策略的真实训练效用复现（2026-10-02，跑前）
 
-- **状态/类型/对应：** RUNNING（seed17 四臂训练和base/四臂正式八项评估完成，唯一预写random同checkpoint复跑进行中；以下跑前设计保持冻结）；REPRO + D1/D4 驻留测量；P03（简单静态配方）、P06（资格门偏离科学对象）、P07（父模型/索引身份）。本卡不验证 I01–I03，也不凭复现分数提出 I04。
+- **状态/类型/对应：** DONE（本次授权的seed17四臂、base及唯一预写random同checkpoint复跑均完成；seed29/43及错误映射诊断臂未跑，以下跑前设计保持冻结）；REPRO + D1/D4 驻留测量；P03（简单静态配方）、P06（资格门偏离科学对象）、P07（父模型/索引身份）。本卡不验证 I01–I03，也不凭复现分数提出 I04。
 - **问题和可改变的判断：** 在一个论文已展示可分辨数据策略收益的成熟任务里，官方固定训练和八项评估能否在本地检出强静态策略相对随机的**真实训练后**增益？若连这个行动空间也不可复现，先修可信底座；若可复现，则后续科学问题必须直接比较反馈决策与强静态/LESS，而不再通过格式、相似度或题目表面质量代替训练效用。
 - **两种解释：** 论文的 LLaVA-665K→LLaVA-1.5-7B/10k 任务具有可重复的策略效用差（随机约 31.9±0.3、ICONS 33.3、ARDS 33.2、LESS 33.6）；或本地可得数据转换/索引、训练与评估环境改变了排序。已发表的 agent 33.7±0.3 与 LESS 33.6 很接近，不能预设 agent 胜最强非 agent 方法。[全文 Table 2/7/附录](https://arxiv.org/html/2606.04261v2)。
 
@@ -90,3 +90,9 @@
 
 - **完整性与保存：** 五套正式评估均8/8、completion completed/error=null、无judge exact-match回退；固定 `validate_results` 在本地从raw JSON重算，各字段/均值与远端保存值精确一致。均衡和ARDS各四小JSON已入 [`results`](../results/E12_balanced_s17_validated_scores.json)，所有大checkpoint、逐题预测和stdout/stderr仍在各节点。均衡八项raw **29.461899/39.7/49.226804/34.777778/33.466667/29.311927/22.8/288**，ARDS **31.573048/34.1/51.718213/35.444444/33.0/26.376147/23.8/276**（OCRBench满分1000）。两臂同样有退出后的NCCL/vLLM teardown日志，均发生在完整summary写出后，保留不隐去。
 - **证据边界与预写复跑：** 当前简单均衡在这个seed的点估计最高、对random+1.144分；ICONS/ARDS约+0.515/+0.652分。不能由一个seed下稳定排序、因果机制或跨学生复用结论，也不能把论文随机SD0.3当本地CI。按跑前噪声段，均衡结束后fvcrc10 GPU1回到15MiB，经同八TSV MD5/uv/venv/judge真实POST核验，在独立新目录 `eval_runs/random_s17_repeat` 启动唯一一次random完整复跑；原fvcrc10权重与首评fvcrc12复制版曾逐文件内容一致，不复制14GB、不复用旧预测，不追加seed/错误映射臂。正式四臂比较继续使用各自首次完整eval，复跑仅为综合评估波动参考（含跨节点/同A100型号的执行数值路径），不取best。CI与训练方差尚未估，C01–C04保持L0。
+
+### 2026-10-03：唯一预写复跑与完整成本收尾（UTC仍2026-10-02）
+
+- **复跑读数：** fvcrc10/A100 GPU1 `random_s17_repeat` 新目录从头生成和评分，8/8、无judge exact-match fallback、completed/error=null、独立raw重算完全一致，wall **1432.4秒**。平均 **32.247479**，对首次正式random **32.299397** 变化 **−0.051918分**；八项归一化到百分制的变化依冻结顺序为 **+0.119418/−0.200000/0/+0.111111/0/−0.045872/−0.100000/−0.300000分**。这个一次复跑变化小于本次四静态臂的0.515–1.144分点差，但它不是独立训练方差、CI或稳定排序证明；还包括同A100型号跨节点执行路径的综合差。保留首次random用于所有正式策略比较，不取更高结果。四新小JSON、五个模型的八项百分制向量、六对策略逐benchmark差与节点逐题资产路径见 [`E12_seed17_static_utility_summary.json`](../results/E12_seed17_static_utility_summary.json)。
+- **成本账与失败保留：** 四个成功SFT wrapper wall总 **16479.8秒=4.577722 A100分配小时**；base＋四静态臂＋唯一复跑的六个成功eval总 **10026.6秒=2.785167 A100分配小时**，合计 **7.362889小时**，包含载入/保存/CPU/I/O/远端judge等待，不是kernel活跃时间，且跨节点并行不等于端到端wall。末次成功下载manifest中的Arrow222.6秒只是断点续传调用，不是93.4GB冷下载总成本；init3509.6秒/3次attempt，原JSON33.9秒、ICONS43.8秒、八TSV783秒。ARDS下载wall和两次已核搬运的独立wall未测/未留存；失败base/random eval的实测wrapper **10.5/0秒**仍保留，其余完整失败/CPU准备/活跃GPU成本未知，不估造。详见 [`E12_seed17_cost_ledger.json`](../results/E12_seed17_cost_ledger.json)。
+- **judge释放：** 固定Qwen3.5-27B/Blackwell最终服务在15:23:32UTC metrics快照时进程存续 **10917秒≈3.0325小时**（含初始化/空等，实际GPU活跃时间未测；未转为A100小时），15:26:59UTC已核API和自有children全退出/8032连接拒绝，服务生命周期上界11124秒。最终累计 **8831请求**（7443 stop、1388 length、abort/error=0），**4,335,188 prompt＋92,167 generation token**，含各benchmark与smoke、不把其分摊成未经测量的逐臂成本。停止前running/waiting均0；只TERM本项目PID975959，推理engine988543已退出，GPU1回 **18MiB**。完整server日志及prom metrics保留 fvcrc20 `/var/tmp/xiang-data-rsi/e12/judge/`，小摘要入成本账。C01–C04继续L0；本次没有新增训练、种子、idea或工作线状态变更。
