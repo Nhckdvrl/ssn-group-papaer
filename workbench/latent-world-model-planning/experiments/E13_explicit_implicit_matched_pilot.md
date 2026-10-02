@@ -113,3 +113,15 @@ DeepJEPA已明确“decision-critical transitions值得更深计算”，Fast-Le
 
 ## 结果
 未运行。
+
+
+## 代码可行性：不需要重写CEM
+
+已审 stable-worldmodel `CEMSolver` 与 Fast-LeWM `get_cost`：
+
+- CEM 每轮已经显式持有 `candidates / costs / topk_inds / topk_candidates`，并支持 callback；
+- Fast-LeWM `get_cost` 先对所有candidate做direct rollout；只有 `consistency_loss_weight != 0` 时才额外跑 `rollout_action_num_blocks_per_step` 得到decomposed terminal estimate；
+- 因此 selective refinement 可以以很小改动实现：direct score全体 → selector返回candidate indices → 对该subset切片 `info_dict/action_candidates` 做decomposed rollout → 回填refined cost → CEM按混合后的cost选elite；
+- callback可以记录每轮cheap elite、refined set、最终elite membership、mean/var shift，不需要另写一套planner。
+
+第一版先 fork/patch evaluator或cost wrapper，不改Fast-LeWM训练代码。只有Stage A0显示compute-quality收益后，才考虑shared dual-head训练。
