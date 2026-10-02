@@ -51,39 +51,42 @@
 
 ## 当前 problem-led mining program
 
-**2026-10-02 再校准：** workbench 不再由某个局部 objective（例如 heuristic negatives）定义。我们先问领域级真实问题，再把 loss/probe 当定位工具。最新调查以 [RESEARCH_MINES](RESEARCH_MINES.md) 为主入口。
+**2026-10-02 第二轮 hardening 后：** 当前不是“哪个 component 还能改”，而是优先追三个 field-level pressures。详见 [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md) 与 [RESEARCH_MINES](RESEARCH_MINES.md)。
 
-### M1 / I07 — Observable goal ≠ control state：partial observability 下的 belief-aware visual planning
+### M3 / I09 — behavior trajectories ≠ environment controllability（**Tier A1 / first pilot**）
 
-核心不是“多给历史帧”，而是：**image goal 只描述可观测配置，但最优动作可能取决于不可见的 velocity / contact / friction / regime。** FIRM-WM 已占 goal/dynamic factorization，UWM-JEPA 已占 belief-space prediction；我们的空间只能是把 observation aliasing 压到 **candidate action regret + closed-loop planning**，并找出 deterministic history 何时足够、何时 explicit belief / uncertainty 才 load-bearing。
+RC-aux / Bai-Xiong Temporal-Distance JEPA 从 offline trajectory 的 order/gap/cross samples 学 reachability/progress。Broad “behavior statistics ≠ optimal control” 已被 quasimetric GCRL、CGCIVL、PLDM占据；我们的 exact pressure 是：
 
-第一 gate：E11。若只是 probe 变化而动作不变，直接停。
+> **真实改变 generating behavior policy，在尽量匹配 local transition support 后，planning-aware latent WM 是否仍把 behavior route / tempo 写进 deployed planning semantics，并改变同一 test candidate 的 ordering / MPC？**
 
-### M2 / I08 — Explicit rollout vs implicit predictive abstraction
+第一 gate：E14。OGBench公开的 `navigate/stitch/explore`、`play/noisy`只用于 cheap sensitivity；真正 identification 需要 fixed start-goal 的 DIRECT vs DETOUR/LOOP matched data。
 
-TMLR 2026 *What Drives Success in Physical Planning with JEPA-WMs?* 已明确区分 explicit autoregressive WM 与 Bagatella **TD-JEPA** 式 implicit long-horizon predictive representation，并把 training/inference/generalization trade-off 的直接比较留作 future work。
+### M2 / I08 — predictive-computation placement（**Tier A2 / second pilot**）
 
-我们不做 leaderboard，而问：**reward/goal shift、dynamics/layout shift、horizon、data coverage、deployment search budget 等变量能否形成可预测的 explicit/implicit/hybrid regime boundary？**
+TMLR 2026 JEPA-WM study 已明确区分 explicit rollout 与 implicit predictive representation，并把 training/inference/generalization trade-off 的 direct comparison 留作 future direction。2026 的 Universal Horizon / Jumpy WM 等又说明这其实是一个 continuum，而不是二分。
 
-第一 matched pilot：E13。注意 Bagatella TD-JEPA 与 Bai/Xiong Temporal-Distance JEPA 是两篇不同工作。
+我们问：
 
-### M3 / I09 — Dataset-induced planning semantics：behavior trajectory ≠ environment controllability
+> **task/query information、reward/goal shift、horizon、data coverage、dynamics shift、training compute、deployment compute，能否预测 explicit / arbitrary-horizon / implicit / hybrid 哪类 predictive object 更合适？**
 
-RC-aux / Bai-Xiong Temporal-Distance JEPA 从 offline trajectory 的 order/gap/negative 学 reachability/progress。Quasimetric GCRL、CGCIVL、PLDM 已告诉我们 broad data bias 不是新概念；真正未决的是：**planning-aware WM 是否把 behavior policy 的 route/tempo 写进 deployed planning semantics，并改变 MPC candidate ranking 与闭环控制？**
+第一 matched pilot：E13，优先 OGBench Cube pixels。重要 confound：Bagatella TD-JEPA official eval做 reward inference（约10k replay samples并用 OGBench `physics` relabel），而 image-goal MPC拿 goal observation；**task/query information budget必须单独记账。**
 
-旧 I01/E03–E04 已因“只重切长 episode、short-window loss不可见”而 VOID。新 E14 必须真的改变 behavior policy / pair distribution，而不是换 metadata。
+### M1 / I07 — observable goal ≠ control belief（**Tier B / conditional**）
 
-### I06 — semantic negatives vs geometric regularization：降为 M3 的低成本 slice
+Physically Viable WM、FIRM-WM、UWM-JEPA、Branch-JEPA、Flow Equivariant WM、Action-Sufficient Goal Representations 已经占了大量 broad hidden-state / belief / multimodal-future space。因此只保留更窄的问题：
 
-E08/E09/E10 仍保留，因为它能便宜地审 heuristic negative 的 semantic role 与 global repulsion role；但**它不再因为文档最完整就自动成为论文主旨**。只有出现能解释更大 data-semantics / planning failure 的机制时才升级。
+> **给定 planner 实际拥有的 finite observation-action history 后，是否仍有多个 action-relevant hidden hypotheses，导致真实 best-action flip 和 baseline planner regret？**
 
-### I03 — bottleneck regime law：共享诊断，不先当 paper
+E11只做 cheap oracle。finite history能消掉 ambiguity 就 STOP，不造 belief method。
 
-E06/E07 保留为 oracle ladder / regime mapping。如果它最终发现少数变量能跨 task 预测 binding bottleneck 和 intervention ranking，才可能自己升级；否则只是帮助 M1–M3 定位问题。
+### I06 / I03
+
+- **I06 / E08–E10**：M3 的 heuristic-negative 子诊断，不再因为便宜就默认做主论文。
+- **I03 / E06–E07**：三条 mine 共用 oracle/bottleneck 工具；只有形成跨 task predictive regime law 才独立升级。
 
 ### WATCH
 
-Goal/query interface 与 model reuse 很重要，但 P38 *What Must a World Model Distinguish for Planning?* 和 Grounded World Model 已非常直接；当前作为所有方法的 transfer stress axis，不单独抢题。
+Goal/query interface、test-time adaptation、latent actions、efficiency 都重要，但 2026 已非常拥挤；当前作为 stress axes / baselines，不单独抢题。
 
 ## 执行图
 
@@ -91,20 +94,20 @@ Goal/query interface 与 model reuse 很重要，但 P38 *What Must a World Mode
                     E00 resource/native smoke
                               ↓
                 E01 baseline + replay/logger
-                 ↙            ↓             ↘
-       E11 M1 aliasing     E14 M3 behavior     E13 M2 explicit↔implicit
-       decision oracle     policy intervention  matched regime pilot
-           ↓                    ↓                    ↓
-     conditional E12      conditional E15        regime confirmation
-                                ↘
-                         E08/E09 I06 subdiagnostic
+                 ↙             ↓               ↘
+       E14 M3 first       E13 M2 second       E11 M1 conditional
+       behavior policy    compute placement    ambiguity oracle
+           ↓                   ↓                    ↓
+     conditional E15      regime confirm       conditional E12
+           ↘
+     E08 → E09 → E10   (M3 negative-role subdiagnostic)
 
 E02/E06 = common decision/oracle calibration
-E03/E04 = VOID（旧 treatment 对 short-window loss 结构上不可见）
+E03/E04 = VOID
 E05 = conditional diagnostic only
 ```
 
-**多卡的用途：** 一条 mine 过了 proof-of-problem gate 后，再迅速铺 seeds / regimes / environments / baselines；不是同时把三个 mine 都跑成巨型 Cartesian grid。
+**多卡用途：** 第一轮每条只做 cheapest decisive pilot；哪条先出现 natural failure + decision consequence + clean intervention leverage，再把独立 GPU 大面积铺 seeds / regimes / environments / nearest baselines。
 
 ## 论文形态卡
 
