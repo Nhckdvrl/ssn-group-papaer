@@ -1,0 +1,12 @@
+Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
+Warning: Permanently added 'fvcrc10' (ED25519) to the list of known hosts.
+Using the latest cached version of the dataset since NeelNanda/pile-10k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/NeelNanda___pile-10k/default/0.0.0/127bfedcd5047750df5ccf3a12979a47bfa0bafa (last modified on Thu Oct  1 10:46:56 2026).
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+pythia-70m__step16000: CL=1.51 ACC=0.76 prev=['2.1'] ind=['3.0', '3.1', '3.5', '3.6'] top=[('2.1|zero', 9.29), ('2.1|mean', 9.17), ('3.6|mean', 2.9)] (177.2s)
+Exception ignored in: <function ResourceTracker.__del__ at 0x1455c9b8c2c0>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

@@ -1,6 +1,6 @@
 # E02 — Induction circuit across 10 independent Pythia-70M runs（2026-10-01）
 
-- **状态：** RUNNING（协议在任何 E02 结果产生前冻结）
+- **状态：** DONE（2026-10-02；判定 = 情况 1，10/10 seed）
 - **类型：** CLAIM-seeking measurement（D4 领域标准系统测量）
 - **对应：** E01 结论 + P01/P03/P04；territory object（抽象层级）
 - **问题：** 在 10 条独立训练历史上，induction 机制在哪一层可复现：头身份 / 层位置与因果角色 / 算法（prev-token → induction 的组合）/ 形成顺序 / 时间？
@@ -38,3 +38,28 @@
 
 ## 算力
 10 × 16 = 160 次评估，每次 ≈4–6 min；≈12–16 GPU·h；≤8 卡。
+
+---
+
+## 结果（2026-10-02；不改上面的内容）
+**实际算力：** ≈7 GPU·h（160 次评估 × ≈2.5 min；fvcrc20 GPU0/1/3 + fvcrc10 GPU0–3）。R0：171 个 checkpoint 全部 accepted。
+**结果文件：** `results/e02/<seed>__step<N>.json`、`summary.json`、`summary.md`。
+
+### 抽象阶梯（10 个独立 run）
+| 层级 | 结果 | 可复现？ |
+|---|---|---|
+| L1 头身份 | prev-token 头：L2H1 / L2H7 / L2H6 / L2H6 / L2H4 / **L3H5** / L2H1 / L2H4 / **L2H2→L3H1** / L2H5；induction 头集合各不相同 | ❌（且层内编号本就是对称性） |
+| 层位置 | 8/10 为 “L2 prev → L3 induction”；seed5 整体下移一层（L3 → L4）；seed8 在训练中把 prev 角色从 L2 交接到 L3，induction 在 L4 | 部分（8/10）；**相对顺序**（prev 层 < induction 层）10/10 |
+| 因果角色 | 10/10：每个 post-emergence checkpoint 都有单一 prev 头，单独 mean 消融 ≥ 并集效应的 50%（多数 0.85–0.98；seed8 末期 0.52） | ✅ |
+| 算法（K-composition） | 消融 prev 角色后 induction 头注意力降到 clean 的 3–15%（10/10，全部 post-emergence checkpoint） | ✅ |
+| 形成顺序 | prev 角色先于或同于 induction 出现（seeds 3、7 在 step 512 已有 prev 头；其余同在 1000） | ✅（受网格限制） |
+| 时间 | induction 全部在 (512, 1000] 出现 | 网格分辨不出差异 |
+
+**判定：情况 1（角色 / 算法稳定，成分不稳定），10/10。**
+
+### 意外的群体结构（不在预注册决策表中，标 POST-HOC 发现）
+- **后期复制能力退化在 seed 间差 25 倍**：late（≥32000）CL 均值减去最好值：0.18（seed9）…4.67（seed2）；seed2/seed7 的复制准确率从 0.88 跌到 0.3–0.5。自然文本 loss（R0 NLL）在各 seed 间几乎相同（step 64000：2.67–2.69）。
+- **退化幅度被“拮抗头”预测，不被电路指标预测**（n=10 seed）：拮抗量 = 单独 mean 消融后 CL 下降 >0.5 的头的下降之和，几乎全在第 0 层；Spearman ρ(退化, 拮抗量)=0.84（p=0.002）；ρ(退化, K-comp)=−0.38、ρ(退化, max S_ind)=−0.50、ρ(退化, prev 组效应)=−0.28（均 p>0.1）。
+- **威胁：** 循环性（退化越大，可回收空间越大）；mean 消融对第 0 层头是否是分布外干预（P03）；是否只在随机 token 序列上存在。→ E03 专门检验。
+
+**主张变化：** 新建 C01（L1，见 CLAIMS）。
