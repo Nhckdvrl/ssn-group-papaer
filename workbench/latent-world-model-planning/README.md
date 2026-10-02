@@ -12,21 +12,32 @@
 
 ## 本地 agent 阅读顺序
 
-1. [NOVELTY_GROWTH_RULES](NOVELTY_GROWTH_RULES.md)：**硬规则：有近邻 ≠ 没空间；只允许 atomic claim 被占，不允许一篇 paper 封锁整个 research program。**
-2. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)：全领域 problem map；看社区关心什么、不同工作在回答母问题的哪一部分。
-3. [RESEARCH_PROGRAMS](RESEARCH_PROGRAMS.md)：R1–R5 五个持续 research programs，是最高层科研入口。
-4. [PAPER_LINEAGE](PAPER_LINEAGE.md)：P01–P113，重点是 mother question、idea leap、决定性实验、related-work distance 和 atomic claim ownership。
-5. [RESEARCH_MINES](RESEARCH_MINES.md)：把 R1–R5 转成 6 个可实验 seeds；seed失败不关闭 program。
-6. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码 readiness、何时必须回原文。
-7. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→search→time→execution 七层图与 oracle ladder。
-8. [POSITIONING](POSITIONING.md)：顶会锚点、2026 collision map、红区、当前 mining regions。
-9. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：shared substrate、gates、并行策略、统计卫生。
-10. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：直接给执行机 agent。
-11. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
-12. [HANDOFF](HANDOFF.md)：最短执行路线。
-13. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：只有真实实验才升级。
+1. [PAPER_SHAPE_TARGET](PAPER_SHAPE_TARGET.md)：**RC-aux-like paper economics：大问题、小模型、单卡、快迭代、大量独立实验。**
+2. [NOVELTY_GROWTH_RULES](NOVELTY_GROWTH_RULES.md)：**硬规则：有近邻 ≠ 没空间；只允许 atomic claim 被占，不允许一篇 paper 封锁整个 research program。**
+3. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)：全领域 problem map；看社区关心什么、不同工作在回答母问题的哪一部分。
+4. [RESEARCH_PROGRAMS](RESEARCH_PROGRAMS.md)：R1–R5 五个持续 research programs，是最高层科研入口。
+5. [PAPER_LINEAGE](PAPER_LINEAGE.md)：P01–P113，重点是 mother question、idea leap、决定性实验、related-work distance 和 atomic claim ownership。
+6. [RESEARCH_MINES](RESEARCH_MINES.md)：把 R1–R5 转成 6 个可实验 seeds；seed失败不关闭 program。
+7. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码 readiness、何时必须回原文。
+8. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→search→time→execution 七层图与 oracle ladder。
+9. [POSITIONING](POSITIONING.md)：顶会锚点、2026 collision map、红区、当前 mining regions。
+10. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：shared substrate、gates、并行策略、统计卫生。
+11. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：直接给执行机 agent。
+12. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
+13. [HANDOFF](HANDOFF.md)：最短执行路线。
+14. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：只有真实实验才升级。
 
 第一轮 [LATENT_PLANNING_SURVEY](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md) 保留作来源索引；当前领域判断以 **FIELD_PROBLEM_MAP_2026 / PAPER_LINEAGE / RESEARCH_MINES / POSITIONING** 为准。
+
+## RC-aux-like 实验经济学
+
+最初 RC-aux 对本 workbench 的启发是**科研形态**，不是 reachability 本身：千万级 compact model、单 GPU、可控 simulator、简单方法、大量独立实验。我们的目标优先是：
+
+> **top-conference-scale mother question + hours-scale single run + dozens/hundreds of independent experiments**
+
+而不是 scale foundation model。
+
+R1/I09/I12、R5/I11、R2/I13-revaluation 尤其符合；R2/I08 full cross-family comparison科学上保留，但不默认成为第一 GPU sink。
 
 ## 为什么这个 territory 值得驻留
 
