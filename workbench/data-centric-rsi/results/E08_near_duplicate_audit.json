@@ -1,0 +1,188 @@
+{
+  "experiment": "E08",
+  "metric": "max heldout1668 char 3-5 gram TF-IDF cosine",
+  "threshold": 0.8,
+  "file_sha256": {
+    "static": "17e5d5e58f82662a54ba9dca54f6c2aba805c67d54e92d3d0696490c5be27e08",
+    "retrieval": "129bfc20b44c0c47b19a8ca5b0b492535ccc43acabb3ad9d06a3c8bdd476d08b",
+    "matched": "6f57cd799cfd2dd640989bd30c5a43cc1ac887b1590b115ba4b6f44a769d4d67",
+    "dev": "33999c27214e4727c13686a3f47f3ed5ec9ec57aa529f0e2dfd9c0229268d8dc",
+    "smoke": "6f7e6d3f1329ff2625b240a9d7d36d6ee22b143ddc9f1de1f4d44fb47eb0ec7f"
+  },
+  "actions": {
+    "static": {
+      "n": 120,
+      "median_max_similarity": 0.35631734132766724,
+      "p90_max_similarity": 0.6458023309707644,
+      "at_least_0_8_count": 7,
+      "top_pairs": [
+        {
+          "train_id": "MATH_train_geometry_803",
+          "heldout_id": "MATH_train_geometry_165",
+          "similarity": 0.9842710494995117
+        },
+        {
+          "train_id": "MATH_train_intermediate_algebra_1182",
+          "heldout_id": "MATH_train_intermediate_algebra_822",
+          "similarity": 0.9698429703712463
+        },
+        {
+          "train_id": "MATH_train_intermediate_algebra_1122",
+          "heldout_id": "MATH_train_intermediate_algebra_822",
+          "similarity": 0.9626754522323608
+        },
+        {
+          "train_id": "MATH_train_precalculus_533",
+          "heldout_id": "MATH_train_precalculus_147",
+          "similarity": 0.9212467670440674
+        },
+        {
+          "train_id": "MATH_train_counting_and_probability_678",
+          "heldout_id": "MATH_train_counting_and_probability_297",
+          "similarity": 0.8289389610290527
+        },
+        {
+          "train_id": "MATH_train_intermediate_algebra_401",
+          "heldout_id": "MATH_train_intermediate_algebra_53",
+          "similarity": 0.8204854130744934
+        },
+        {
+          "train_id": "MATH_train_counting_and_probability_736",
+          "heldout_id": "MATH_train_counting_and_probability_61",
+          "similarity": 0.8190914392471313
+        },
+        {
+          "train_id": "MATH_train_geometry_652",
+          "heldout_id": "MATH_train_geometry_56",
+          "similarity": 0.7784099578857422
+        },
+        {
+          "train_id": "MATH_train_geometry_829",
+          "heldout_id": "MATH_train_geometry_135",
+          "similarity": 0.7695910930633545
+        },
+        {
+          "train_id": "MATH_train_number_theory_379",
+          "heldout_id": "MATH_train_number_theory_76",
+          "similarity": 0.751802384853363
+        }
+      ]
+    },
+    "retrieval": {
+      "n": 120,
+      "median_max_similarity": 0.39786234498023987,
+      "p90_max_similarity": 0.6756531774997712,
+      "at_least_0_8_count": 5,
+      "top_pairs": [
+        {
+          "train_id": "MATH_train_precalculus_608",
+          "heldout_id": "MATH_train_precalculus_216",
+          "similarity": 0.9926527142524719
+        },
+        {
+          "train_id": "MATH_train_precalculus_423",
+          "heldout_id": "MATH_train_precalculus_141",
+          "similarity": 0.9528501033782959
+        },
+        {
+          "train_id": "MATH_train_number_theory_270",
+          "heldout_id": "MATH_train_number_theory_166",
+          "similarity": 0.8841614723205566
+        },
+        {
+          "train_id": "MATH_train_number_theory_334",
+          "heldout_id": "MATH_train_number_theory_166",
+          "similarity": 0.8179163932800293
+        },
+        {
+          "train_id": "MATH_train_precalculus_656",
+          "heldout_id": "MATH_train_precalculus_241",
+          "similarity": 0.8132644295692444
+        },
+        {
+          "train_id": "MATH_train_geometry_269",
+          "heldout_id": "MATH_train_geometry_69",
+          "similarity": 0.7933650612831116
+        },
+        {
+          "train_id": "MATH_train_counting_and_probability_526",
+          "heldout_id": "MATH_train_counting_and_probability_154",
+          "similarity": 0.7774374485015869
+        },
+        {
+          "train_id": "MATH_train_algebra_753",
+          "heldout_id": "MATH_train_algebra_106",
+          "similarity": 0.7210854887962341
+        },
+        {
+          "train_id": "MATH_train_number_theory_384",
+          "heldout_id": "MATH_train_counting_and_probability_210",
+          "similarity": 0.713858962059021
+        },
+        {
+          "train_id": "MATH_train_precalculus_484",
+          "heldout_id": "MATH_train_precalculus_70",
+          "similarity": 0.6796170473098755
+        }
+      ]
+    },
+    "matched": {
+      "n": 120,
+      "median_max_similarity": 0.32048487663269043,
+      "p90_max_similarity": 0.5772159934043886,
+      "at_least_0_8_count": 3,
+      "top_pairs": [
+        {
+          "train_id": "MATH_train_prealgebra_870",
+          "heldout_id": "MATH_train_prealgebra_130",
+          "similarity": 0.9435559511184692
+        },
+        {
+          "train_id": "MATH_train_number_theory_790",
+          "heldout_id": "MATH_train_number_theory_135",
+          "similarity": 0.9415512084960938
+        },
+        {
+          "train_id": "MATH_train_precalculus_533",
+          "heldout_id": "MATH_train_precalculus_147",
+          "similarity": 0.9212467670440674
+        },
+        {
+          "train_id": "MATH_train_geometry_830",
+          "heldout_id": "MATH_train_geometry_310",
+          "similarity": 0.707001805305481
+        },
+        {
+          "train_id": "MATH_train_precalculus_650",
+          "heldout_id": "MATH_train_precalculus_15",
+          "similarity": 0.6947088837623596
+        },
+        {
+          "train_id": "MATH_train_intermediate_algebra_880",
+          "heldout_id": "MATH_train_intermediate_algebra_16",
+          "similarity": 0.6905272603034973
+        },
+        {
+          "train_id": "MATH_train_counting_and_probability_591",
+          "heldout_id": "MATH_train_counting_and_probability_11",
+          "similarity": 0.6753966212272644
+        },
+        {
+          "train_id": "MATH_train_intermediate_algebra_437",
+          "heldout_id": "MATH_train_intermediate_algebra_39",
+          "similarity": 0.6664670705795288
+        },
+        {
+          "train_id": "MATH_train_counting_and_probability_486",
+          "heldout_id": "MATH_train_counting_and_probability_159",
+          "similarity": 0.6663597822189331
+        },
+        {
+          "train_id": "MATH_train_prealgebra_909",
+          "heldout_id": "MATH_train_counting_and_probability_210",
+          "similarity": 0.650546669960022
+        }
+      ]
+    }
+  }
+}

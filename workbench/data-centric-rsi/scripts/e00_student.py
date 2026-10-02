@@ -179,6 +179,7 @@ def evaluate(args: argparse.Namespace) -> None:
         model=MODEL, revision=REVISION, enable_lora=True,
         max_lora_rank=16, max_model_len=4096,
         gpu_memory_utilization=0.65, tensor_parallel_size=1,
+        enforce_eager=args.enforce_eager,
     )
     adapter = LoRARequest("e00", 1, str(args.adapter.resolve())) if args.adapter else None
     generations = llm.generate(
@@ -205,10 +206,13 @@ def evaluate(args: argparse.Namespace) -> None:
         "format_instruction": bool(args.format_instruction),
         "zero_shot": bool(args.zero_shot),
         "generation_prompt": not args.omit_generation_prompt,
+        "enforce_eager": bool(args.enforce_eager),
         "count": len(scored), "correct": sum(item["correct"] for item in scored),
         "accuracy": sum(item["correct"] for item in scored) / len(scored),
         "wall_seconds": time.monotonic() - start,
         "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),
+        "vllm_v1_multiprocessing": os.environ.get("VLLM_ENABLE_V1_MULTIPROCESSING"),
+        "vllm_worker_multiproc_method": os.environ.get("VLLM_WORKER_MULTIPROC_METHOD"),
     }
     args.output.with_suffix(".summary.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
@@ -228,6 +232,7 @@ def main():
     eval_parser.add_argument("--format-instruction", action="store_true")
     eval_parser.add_argument("--zero-shot", action="store_true")
     eval_parser.add_argument("--omit-generation-prompt", action="store_true")
+    eval_parser.add_argument("--enforce-eager", action="store_true")
     args = parser.parse_args()
     {"train": train, "evaluate": evaluate}[args.mode](args)
 
