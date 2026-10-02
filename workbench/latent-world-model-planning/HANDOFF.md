@@ -10,13 +10,18 @@
 1. compact latent-WM 不是缺“小技巧”，而是同时存在 **state definition、predictive abstraction placement、offline supervision semantics、planner interface** 等真实问题；
 2. 一个看起来漂亮的实验若 treatment 对真实 implementation 不可见，应该在跑 GPU 前就杀掉。旧 I01/E03–E04 就是这样 VOID 的。
 
-当前科学入口由 [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md) + [RESEARCH_MINES](RESEARCH_MINES.md) 决定，优先级不是平级：
+当前科学入口由 [NOVELTY_GROWTH_RULES](NOVELTY_GROWTH_RULES.md) + [RESEARCH_PROGRAMS](RESEARCH_PROGRAMS.md) + [RESEARCH_MINES](RESEARCH_MINES.md) 决定。
 
-1. **M3/I09 = Tier A1 / first scientific pilot**：behavior-policy trajectory semantics vs environment controllability；E14 → conditional E15。
-2. **M2/I08 = Tier A2 / second scientific pilot**：predictive-computation placement frontier；E13 → conditional regime confirmation / hybrid test。
-3. **M1/I07 = Tier B / conditional**：finite-history 后仍存在的 actionable hidden ambiguity；E11 → conditional E12。
-4. **I06/E08–E10**：M3 的低成本 negative-role 子诊断，不再默认主论文。
-5. **I03/E06–E07**：共享 bottleneck/oracle tool；只有形成 cross-task predictive regime law 才可能独立升级。
+**五个 parent programs 全部保持开放：**
+1. R1 Data & Identifiability；
+2. R2 Predictive Abstraction；
+3. R3 Specialization vs Reuse；
+4. R4 State / Belief / Information Gathering；
+5. R5 Trust / Repair / Bypass。
+
+当前 6 个 active seeds：I09/E14、I12/E16、I08/E13、I10/E17、I07/E11、I11/E18。I06/E08–E10 与 I03/E06–E07 为 diagnostics。
+
+**一个 seed被近邻吸收、null或简单baseline解释，只 park seed，不关闭 R#。** 只有经过强baseline、系统measurement和多个seed后的人类 scientific-yield review 才能暂停 program。
 
 I01/I02 = PARKED；I05 = SUPERSEDED by I07；E03/E04 = VOID。
 
@@ -28,13 +33,15 @@ I01/I02 = PARKED；I05 = SUPERSEDED by I07；E03/E04 = VOID。
 
 1. root AGENTS.md / workbench/EXECUTION.md
 2. experiment card 跑前内容
-3. FIELD_PROBLEM_MAP_2026.md
-4. RESEARCH_MINES.md
-5. POSITIONING.md
-6. EXPERIMENT_PROGRAM.md
-7. PAPER_LINEAGE.md / LITERATURE_LEDGER.md
-8. 本文件
-9. 旧 LATENT_PLANNING_SURVEY.md
+3. NOVELTY_GROWTH_RULES.md
+4. FIELD_PROBLEM_MAP_2026.md
+5. RESEARCH_PROGRAMS.md
+6. RESEARCH_MINES.md
+7. POSITIONING.md
+8. EXPERIMENT_PROGRAM.md
+9. PAPER_LINEAGE.md / LITERATURE_LEDGER.md
+10. 本文件
+11. 旧 LATENT_PLANNING_SURVEY.md
 
 任何 manuscript-critical事实最终回原论文/官方代码。
 
@@ -47,44 +54,46 @@ I01/I02 = PARKED；I05 = SUPERSEDED by I07；E03/E04 = VOID。
 
 ## 3. 执行顺序
 
-### E00 / E01 — common substrate
-先把一个 compact explicit WM 的 native闭环、candidate logging、environment replay/oracle 跑通。不要为了统一框架先重写全部方法。
+### E00 / E01 — shared substrate
+先跑一个 compact explicit WM native闭环、candidate logging、environment replay/oracle。不要先统一所有framework。
 
-### E14 — M3 FIRST
-真正改变 **generating behavior policy**，而不是只改 episode metadata。
+### Wave A：最多同时2个
 
-第一轮：
-- 公开 OGBench `navigate/stitch/explore` / `play/noisy` 只做 sensitivity discovery；
-- 科学 pilot 必须进入 fixed start-goal 的 DIRECT vs DETOUR/LOOP；
-- 同时量化 state/action/one-step-transition support overlap；
-- 先 LeWM + Bai/Xiong Temporal-Distance JEPA，1 seed；
-- learned score变化不够，必须走到 fixed-candidate rank/regret，最好再到 closed-loop。
+#### E14 — R1 seed: trajectory/data semantics
+TwoRoom / topology的 behavior-route intervention。  
+这只是在 R1 里测一个 hypothesis，不代表“R1 = route bias”。
 
-只有 support/coverage 不能解释的 planning-aware-specific behavior imprint 才值得继续 E15 / second objective。
+#### E18 — R5 seed: trust/recovery oracle
+优先 released checkpoint + resettable evaluation；对同一 planning state比较不同 recovery actions 的真实 utility lift。
 
-### E08 — M3 cheap subdiagnostic
-dataset/sampler可读后即可并行。它审计 heuristic negative 的 semantic validity，但 **E08 本身永远不是 paper result**。
+E08可CPU并行作为 R1 局部diagnostic。
 
-### E13 — M2 SECOND
-common substrate 稳定后接 Bagatella TD-JEPA 与 explicit JEPA-WM/LeWM。优先 OGBench Cube pixels。
+### Wave B
 
-必须分开三本账：
-1. training compute；
-2. **task/query information budget**；
-3. deployment compute。
+#### E13 — R2 seed: predictive-object frontier
+不是“planning vs policy”，而是寻找 one-step / direct-horizon / successor/occupancy / hybrid predictive object 的 regime boundary。
 
-Bagatella official OGBench evaluation约用 10k replay samples，并通过 OGBench `physics` relabel task reward再做 reward inference；这和 image-goal MPC 拿 goal observation不是相同 task specification。不能把这个差异偷塞进“inference cost”。
+#### E17 — R3 seed: query specialization vs reuse
+控制 query placement与 seen→unseen query/planner transfer。
 
-目标是找 explicit / arbitrary-horizon / implicit / hybrid 的 **regime frontier**，不是比较平均分。
+### Conditional / next-seed
 
-### E11 — M1 CONDITIONAL
-只做 cheap oracle，不先训练 belief architecture：
-same RGB/different hidden state sanity → 加 native finite history → history能解则 STOP → 只有仍存在 action-relevant ambiguity且 baseline有candidate regret，才 E12。
+#### E11 — R4 seed
+actionable hidden ambiguity oracle；当前seed弱/不存在不关闭 R4。
 
-### E02 / E06
-作为 M2/M3 anomaly 的 common decision / bottleneck定位仪器，不先铺大矩阵。
+#### E16 — R1 second seed
+equal-budget experience composition：coverage / excitation / route diversity / counterfactual branches。
 
-**并行原则：** 第一轮允许 E14、E13、E11、E08 各做最小 existence test；随后只把大量 GPU 集中给过 gate 的 mine。
+### Shared
+E02 / E06 用于所有 programs 的 candidate / bottleneck attribution。
+
+**任何 seed结束后：**
+1. 写它改变了对 parent R# 的什么认识；
+2. 回 RESEARCH_PROGRAMS；
+3. 至少考虑 boundary / interaction / reattribution / method / data-compute scaling中的2种研究动作；
+4. 再决定下一个 seed。
+
+禁止写“论文X做过，所以R#关闭”。
 
 ## 4. I06 实现事实：必须记住
 
@@ -168,11 +177,12 @@ I03同理：没有regime law不设计adaptive router。
 
 ## 9. 多卡
 
-Phase 1 不铺大矩阵：
-1. E14 DIRECT/DETOUR + LeWM/Temporal-Distance JEPA 各 1 seed；
-2. E13 一组 OGBench Cube matched native/common audit；
-3. E11 oracle only；
-4. E08 CPU / dataset audit。
+Phase 1 不铺大矩阵，同时GPU pilot≤2：
+1. Wave A：E14 + E18；
+2. Wave B：E13 + E17；
+3. E11按R4资产触发；
+4. E16在R1 evidence支持时展开；
+5. E08 CPU / dataset audit可旁路。
 
 过 gate 后才：
 - 3+ train seeds；
@@ -193,13 +203,15 @@ Phase 1 不铺大矩阵：
 - small commit/push
 
 触发人审：
-- **E14** 出现 support-controlled、对 candidate/closed-loop load-bearing 的 behavior imprint；
-- **E13** 出现跨 task 可预测的 computation-placement regime boundary；
-- **E11** 在 finite history 后仍出现稳定 actionable ambiguity；
-- E09/E10 解释出 M3 的 load-bearing negative mechanism；
-- E06/E07出现跨task regime law；
+- 任一 R# seed 出现可投级 natural effect / regime law / method lever；
+- E14 / E16形成 data principle；
+- E13形成 predictive-object regime；
+- E17形成 specialization↔reuse frontier；
+- E11显示 belief/active-information 真正 load-bearing；
+- E18出现 failure→repair mapping；
+- E06/E07形成跨task law；
 - science C##→L2；
 - 需要改ACTIVE调度；
-- 连续两个lead被强近邻/简单baseline吸收。
+- 同一 program 多个 seed在真实实验后持续无scientific yield。
 
 在预注册决策表范围内自主继续，不每跑一个job就停。
