@@ -53,8 +53,8 @@
 3. **改变的前提**：数据生成发生在有状态环境内，环境负责训练、验证和反馈。
 4. **来源（RECONSTRUCTED）**：把数据生成从 prompt 工程变成 sequential decision making；skill-list/tree 是控制可观察状态和动作结构的实验设计。
 5. **距离**：相对 Self-Instruct，多学生反馈；相对传统数据选择，允许生成新训练材料；相对后来的 RSIBench-Data，环境动作更结构化。
-6. **方法/实验**：open-ended、skill-list、skill-tree；math/VQA/code 学生包括 Gemma2-2B、PaliGemma3B、Llama3-8B。已有 with-state/no-state、技能配置和固定数据多训 versus 新数据等算力比较。
-7. **边界**：更详细的 state 帮助生成，不代表 state 足以识别最佳数据干预；协议、数据划分和 checkpoint selection 需要按官方实现逐项复核。README 明示旧 `lighteval/MATH` 来源已不可用，本地尚未安装。
+6. **方法/实验**：open-ended、skill-list、skill-tree；math/VQA/code 学生包括 Gemma2-2B、PaliGemma3B、Llama3-8B。已有 with-state/no-state、技能配置和固定数据多训 versus 新数据等算力比较。Table 2 的 MATH Open-Ended：初始 15.78、No State 19.78、With State 23.44；但 Skill-List 的 With State 19.48 低于 No State 19.78，不能概括成任意反馈必优。Table 6 的较弱 GPT-4o-mini 在 MATH Open-Ended 给出 15.78（无增益），提醒 teacher 质量可能是首要瓶颈。主结果按 validation 在多轮学生中选最佳，Open-Ended MATH 的最好轮是第 10 次、累计 752 条生成数据；不是单轮 120 条的可比数值。论文 App B.2 写 GPT-4o temperature=0，源码示例未显式传温度；我们 E06 的本地 Qwen/temperature0.7 是探索适配，不复现原协议。
+7. **边界**：更详细的 state 帮助生成，不代表 state 足以识别最佳数据干预；协议、数据划分和 checkpoint selection 需要按官方实现逐项复核。README 明示旧 `lighteval/MATH` 来源已不可用。2026-10-02 固定源码审计发现：论文 App B.7 称 MATH validation 从 test 抽样，源码 `val_balanced_subset_50` 实取 train；示例 CSV 又把 validation/test 列写反。`examples/math/open_ended.py` 给未训练学生 few-shot，LoRA 后未设置同一 prompt formatter，实际退回题面 zero-shot；论文 App B.1.2 LoRA r16/alpha32/dropout0.05 与发布示例 YAML 继承的 vendor 默认 r8/alpha16/dropout0 不同。更详细的差异见 workbench E00/ASSETS，不能将某个源码版本等同论文完整实验协议。
 8. **研究动作**：先复现强生成策略，再从实际数据动作与学生收益之间的差距生长方法，而非预设反馈一定无用。
 9. **对我们**：当前优先建设入口。官方提供本地 LLaMA-Factory、vLLM/Ray 路径；改模型/数据源后的结果须称适配结果，不能冒充原表复现。
 

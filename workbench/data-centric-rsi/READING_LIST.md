@@ -9,7 +9,7 @@
 | P01 | Self-Play Pretraining with Zero Data, 2609.30063v1 | D＋PDF 图表＋作者资产 | [全文](https://arxiv.org/html/2609.30063v1)；§2–4、App A/B/E/F/G；PDF p10 Fig3/4、p31 Table5 |
 | P02 | Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability / SOAR | D（v1），v3 核心与资源复核 | [v3](https://arxiv.org/html/2601.18778v3)；真实学生收益、nested compute、教师迁移 |
 | P03 | RSIBench-Data, 2607.25886v1 | D＋官方 README | [全文](https://arxiv.org/html/2607.25886v1)；协议、六任务、选择偏差、限制 |
-| P04 | DataEnvGym, 2410.06215v3，ICLR 2025 | D＋官方 README | [全文](https://arxiv.org/html/2410.06215v3)；[会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/846d3ef94d8c1a833a62cff05569c851-Abstract-Conference.html) |
+| P04 | DataEnvGym, 2410.06215v3，ICLR 2025 | D＋全文附录重读＋固定源码关键路径审计 | [全文](https://arxiv.org/html/2410.06215v3)；[会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/846d3ef94d8c1a833a62cff05569c851-Abstract-Conference.html)；[源码 f698f39](https://github.com/codezakh/dataenvgym/tree/f698f39c7d77fc655942099535d06a4d11b32e3b) |
 | P05 | Can Generalist Agents Automate Data Curation? / Curation-Bench, 2606.04261v2 | D＋代码入口 | [全文](https://arxiv.org/html/2606.04261v2)；研究型 scaffold、昂贵强基线、跨模型迁移 |
 | P06 | Anchored Self-Play for Code Repair, 2607.03523v1 | D（主文与训练配置），部分附录待补 | [全文](https://arxiv.org/html/2607.03523v1)；目标漂移、real anchors、冻结生成器基线 |
 | P07 | Scaling Self-Play with Self-Guidance, 2604.20209v1 | M | [全文](https://arxiv.org/html/2604.20209v1)；目标引导、形式验证，完整算法/附录待补 |
