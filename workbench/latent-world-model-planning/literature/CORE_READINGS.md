@@ -40,6 +40,8 @@
 
 **我们的生长分析。** 这正说明熟悉的元素并不封死研究：贡献来自围绕有限预算规划需求重组训练与使用接口，并用合理控制证明作用。后续可以改善监督可靠性、利用多路径/失败数据、学习更好的使用方式；不必把问题削成“排除所有已知因素后的一点异常”。
 
+**执行机代码核对（2026-10-02）。** [官方代码](https://github.com/Guang000/RC-aux)锁定 `cbdf3786b149df8145d6c7314f32f460d43c9695`。`rcaux.py`把one-step anchor、open-loop各时域loss、SIGReg与reachability权重明确分开；`JEPA.rollout_open_loop`保留预测history梯度，linear horizon weights归一化。generic rcaux配置还有horizon sampling/curriculum；完整default继承terminal-reachability配置，不能把一个多步MSE组件称为整套RC-aux。E16新矩阵直接调用官方rollout，以TF同目标/同正则控制额外监督与递归训练，暂不加reachability。该matrix是方法组件探索，尚未完整数值复现。
+
 ## S5｜Bagatella等 TD-JEPA
 
 来源：[论文](https://arxiv.org/html/2510.00739)，重点§3–5、App.10–11。**不是**Bai/Xiong的Temporal-Distance JEPA。
@@ -71,7 +73,7 @@
 
 ## S8｜Fast LeWorldModel：直接prefix prediction已经是强近邻，不是禁区
 
-来源：[论文](https://arxiv.org/abs/2606.26217)、[官方代码](https://github.com/Yuntian-Gao/Fast-LeWorldModel)。本轮阅读深度：**A-targeted**，核对摘要、方法/消融与官方README；代码尚未在本地运行。
+来源：[论文](https://arxiv.org/abs/2606.26217)、[官方代码](https://github.com/Yuntian-Gao/Fast-LeWorldModel)。本轮阅读深度：**A-targeted**，核对方法/消融/Appendix D与官方代码；两任务原生加载/训练步/闭环已运行，完整论文数值复现尚未完成，见E00/E13。
 
 **原文依据。** Fast-LeWM用action-prefix prediction并行预测不同horizon的future latent，绕开LeWM逐步recursive rollout。官方项目在与LeWM相同的Four-task规划协议中报告更高平均成功率和显著更低dynamics/CEM时间；还用direct-vs-decomposed terminal prediction做self-consistency。
 
@@ -256,3 +258,23 @@ SPARK的branch criterion不是外部value/entropy计算器，而是policy reason
 [Feedback WM§4.2–4.3/§5/AppendixE–F](https://arxiv.org/html/2605.15705v1)已读：维护observer feedback state，用prediction-observation residual修正candidate未来预测；另以固定counterfactual action-variance重权latent dimensions，指导diffusion policy靠近expert manifold。该方法不同于E18 v0简单用当前真实image重新规划；后者只能作为feedback/replan基线，不能宣称复现或新发明observer。学习其思路：必须把预测校正与动作/任务相关cost改动分开验证。
 
 [Counterfactual Utility Protocol§3–4](https://arxiv.org/html/2609.10954v1)已读：固定no-rehearsal update机制，fork状态及planner/environment randomness配对；trigger只看prefork stream，不能读future HOLD return；需报告全部attempts，筛除diverged会改变estimand。负结果仅约束该固定response，不是“更新普遍有害”；跨任务机制预测被原文实验反驳。E18继承fork utility标签，先比较hold/预测state重算/真实feedback/更多compute，不先造router，坏结果和no-shift全部保留。
+
+
+## S22｜Planning Limits：目标lookahead、imagined horizon与代价不是同一变量
+
+来源：[The Planning Limits of Latent World Models v1，§3–7](https://arxiv.org/html/2609.39235v1)，2026-10-02定向复读正文。母问题是冻结视觉表示上的预测何时还能指导远目标动作选择；继承SSL encoder、动作预测与CEM，以expert-vs-alternatives排序、simulator正控和闭环区分容量、recursion、目标距离与cost。其冻结ViT-L/MetaWorld设定中，加大预测器或继续加长训练没有持续延长可规划范围；扩大deployment rollout有益，perfect simulator的短rollout+远目标distance cost仍会退化。expert subgoal是额外任务信息，不能免费给某一方法。§7已有proposal→WM selection的正结果，不能把我们的GCBC初始化称首创。
+
+**与本地E13 A3的张力。** 我们的direct-prefix Fast/TwoRoom+PushT用terminal Euclidean latent cost，递归H75反而变差；backbone训练对象、cost reduction、动作搜索维度均不同，不能归因某一个或否定long-horizon。E17固定predictive core试query-in-proposal；后续cost/value/subgoal对照需用同数据/任务信息。重要delta应来自长期目标对齐的有效设计和跨任务证据，不是重现“远目标难”或额外expert路径。
+
+## S19补记｜AdaJEPA的具体生长方式与本地适配scope
+
+来源：[AdaJEPA v1 §3.2/4.1–4.4](https://arxiv.org/html/2606.32026v1)，本次回读方法/表1与数据scale讨论。它把固定offline JEPA部署误差转成持续plan–execute–adapt，继承现成MPC与latent MSE：真实recent buffer、stop-gradient、每次少量末层更新、每episode从相同原权重重置。不是新发明online control，增量由selected update、多个shift/backbone与计算分解建立。三test-data seeds不等于三train seeds；表1默认PointMaze CEM有84→83.3的ID小降，不能把总述写成所有设置安全。
+
+本地E18连续pilot借用recent-history/fresh optimizer/每次1gradient，改用Fast所有已观测prefix，比较predictor末层/MLP readout；Fast tinyViT/readout、loss与lr不同，非完整AdaJEPA复现。部署H25监督直到t25才首次可用；goal/current/raw buffer每次重新编码；更新机会、计算和ID harm单列。若仅fitting改善，不硬造gate，转向action-map系统辨识、激励或任务代价来分辨更新对象。
+
+
+## S23｜iCEM：时域相关动作首先是强优化基线
+
+来源：[CoRL2020 iCEM §3.1/实验设计](https://proceedings.mlr.press/v155/pinneri21a/pinneri21a.pdf)，已定向读回。它从实时MPC的采样成本出发，结合colored action noise、elite reuse与memory；先用真实dynamics隔离优化改进，再用learned PlaNet测试。时域独立输入在积分动力学中难形成coherent motion，这是成熟控制/搜索原理。
+
+E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新发明平滑规划；先以这类强对照排除E17增益仅来自generic action shape的解释。若有效，方法贡献必须继续来自latent预测对象、任务对齐或data/planner交互的可验证设计，而不是给经典optimizer换名。

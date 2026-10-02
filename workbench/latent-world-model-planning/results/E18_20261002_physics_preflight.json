@@ -1,0 +1,66 @@
+{
+  "experiment": "E18 physics preflight",
+  "timing": "before GPU adaptation pilot",
+  "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E18-physics-preflight",
+  "summary": {
+    "scope": "CPU deterministic intervention-validity preflight, all locked first16 g25 factual25 command sequences; no model, adaptation or GPU calls",
+    "conditions": [
+      "nominal",
+      "mass-and-moment-x2",
+      "moment-only-x2"
+    ],
+    "count": 16,
+    "steps_per_sequence": 25,
+    "continues_after_termination": true,
+    "full_state_fields": [
+      "agent_x",
+      "agent_y",
+      "agent_vx",
+      "agent_vy",
+      "block_x",
+      "block_y",
+      "block_vx",
+      "block_vy",
+      "block_angle_unwrapped",
+      "block_angular_velocity"
+    ],
+    "prepared_sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+    "source_dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+    "script_sha256": "d0daf37f4d167edea6ad3bad4431e29c31e8969a09e7dec156b1cc64934c5bcf",
+    "conditions_summary": {
+      "nominal": {
+        "max_full_state_change": 0.0,
+        "max_public_state_change": 0.0,
+        "max_abs_final_distance_change": 0.0,
+        "anchors_with_state_change_above_1e-8": 0,
+        "anchors_with_contacts": 15
+      },
+      "mass-and-moment-x2": {
+        "max_full_state_change": 0.0,
+        "max_public_state_change": 0.0,
+        "max_abs_final_distance_change": 0.0,
+        "anchors_with_state_change_above_1e-8": 0,
+        "anchors_with_contacts": 15
+      },
+      "moment-only-x2": {
+        "max_full_state_change": 93.36634453492168,
+        "max_public_state_change": 68.93120768090449,
+        "max_abs_final_distance_change": 85.24181733787157,
+        "anchors_with_state_change_above_1e-8": 15,
+        "anchors_with_contacts": 15
+      }
+    }
+  },
+  "complete": {
+    "completed": true,
+    "physical_env_steps": 1200
+  },
+  "artifact_sha256": {
+    "physics_preflight_used.py": "d0daf37f4d167edea6ad3bad4431e29c31e8969a09e7dec156b1cc64934c5bcf",
+    "trajectories.npz": "ad291cb95580bb042dc9ae0aae834998486b71b21dcea6a369aedac4dd408265",
+    "rows.json": "27c586b0c433e140a208bf7b212c5d955d3b72c121833edcd6fb4c36caa9fdd3",
+    "summary.json": "8c677c735114b295c8c52e6d48a8ba2e51d3eddf21a63e64aba2c33c8eaf36f0",
+    "complete.json": "7447ae152cc3eb627075066cd1533bc9df694e86a43d1b52b24af405d10885d5"
+  },
+  "interpretation": "mass+moment joint scaling is ineffective in this native kinematic-driver physics; keep original control; use moment-only scaling before GPU run, chosen for transition effect not model utility."
+}

@@ -61,3 +61,19 @@ TwoRoom / Fast-LeWM / N=300,K=30,β=1,[2,3],seed=0。8 个 held-out generated ep
 [E18](results/E18_20261002_recovery_forks_seed0.json)在nominal TwoRoom HOLD12/32→FEEDBACK16/32，但action gain0.7下6→7；PushT nominal4→7（更多搜索9），gain0.7下1→0。future utility有任务/条件差异，尚无可部署gate证据。当前方法没有更新transition，本身可能缺乏恢复能力，不能因为误差大却replan无益就判母问题无价值。完整prefix重放same-state/pixel误差0，原dataset的PushT memory limitation仍保留。下一批增short head/dynamics update，再看response set价值与部署feature，而不是局部调error阈值。
 
 P04确认补记：[三seed](results/E16_20261002_independent_seeds.json) NO-ADD9/19/22、uniform17/18/15、GLOBAL-U24/16/23、PBB19/13/15，每组48。G对NOADD+15/−3/+1，PBB+10/−6/−7。首轮大增益不稳定；现有数字不支持有效新采样方法。joint pipeline seeds、seed0 resume和硬件差异保留，不能解释成单一initialization效应。母问题仍重要，下一轮扩数据利用/预测对象/恢复方法轴，不反复救PBB公式。
+
+P08短适配补记：[768 continuations](results/E18_20261002_short_updates_seed0.json)同RTX FEEDBACK/HEAD/DYNAMICS，nominal导航16/12/12，shift7/9/6，分母32；PushT nominal7/6/4，shift0/1/0。对3样本训练误差明显下降，未来utility未稳定改善；不据此判适配无价值，也不先造gate。512旧baseline success全部复现，动作/距离/latent features跨硬件不完全一致，新增method对同RTX baseline作配对。下一批已展开数据利用×目标（R1/R2）与预测时域×搜索广度（R2），避免只优化短更新阈值。
+
+
+## P09｜公共CPU optimizer step别名破坏方法隔离
+
+**撤回旧E16比较的严格data-only解释和“PBB被强基线吸收”判断，待公平重跑。** 独立CPU复验发现torch2.7.1 AdamW加载公共CPU state时会保留`step` tensor引用；多方法顺序运行使源state计数累加。权重/数据/gradient steps相同，但初始bias-correction历史不同。旧seed0七方法、seed1/2四方法及由这些模型计算的decision audit受影响；数值和原始文件全部保留，不能用于方法优劣或排序机制的因果结论。六方法objective matrix也受影响，已停止自身未完成进程、保留partial与invalidation artifact。
+
+[可复现校对](results/E16_20261002_optimizer_audit.json)。修复为每方法deepcopy完整optimizer state，并断言初始steps相同、源steps不可变、结束steps=初始+updates；所有原方法/seed/目标重跑，不筛选方法，不追加数据，不重训base。base checkpoint文件未被改写；E13无训练、E18每fork新optimizer均不受此alias影响。科学主张此前为0，继续为0；C00工程L1保留。
+
+
+P05/A3补记：[384episodes](results/E13_20261002_horizon_breadth.json)，H25N300/H25N900/H75N300，导航长goal19/25/8、操作长goal6/7/0，各32。长递归在四task/range都退化；这是更换方法轴的依据，不是R2失败。近邻Planning Limits指出即使perfect dynamics仍可能受cost/局部feedback限制，且其长rollout有益；本实验模型/预测对象/cost/搜索维度不同，需从query-in-proposal/cost和训练对象分辨竞争解释。
+
+E18连续适配运行前独立校对：[CPU物理控制](results/E18_20261002_physics_preflight.json)确认PushT mass/moment同比例缩放不改transition（16轨迹全0、15条有接触）；moment-only×2则15/16改变。保留原控制、在GPU运行前修订physics为moment-only，不按适配success选条件。停止仅自身waiting queue并重启；没有废弃GPU方法结果。
+
+P05/R3补记：[E17全部320episodes](results/E17_20261002_query_proposal.json)，导航proposal16/15 vs ZERO90015/14，goalshuffle15/14，各16；PushT long proposal6 vs9004/goalshuffle5/GCBC0。组合可能受generic action prior帮助，query-specific作用未核对。GCBC弱不是强邻居被击败，CI宽、一headseed；接下来action trajectory structure/state-only prior、cost/query placement与数据regime是竞争设计，不重复微调同head。
