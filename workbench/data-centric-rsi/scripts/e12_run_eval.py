@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 BENCHMARK_SRC = Path("/home/xiang/.cache/research/data-centric-rsi/CurationBench/src")
-VENDOR_ROOT = BENCHMARK_SRC.parent.parent
+VENDOR_ROOT = BENCHMARK_SRC.parent
 EXPECTED_VENDOR_SHA = "24eea1526492c00cee421f5db0793789e00aabb2"
 TASK = BENCHMARK_SRC / "benchmark/tasks/llava665k_llava_8bench_10k_unlimited.yaml"
 sys.path.insert(0, str(BENCHMARK_SRC))
@@ -53,6 +53,16 @@ def main() -> None:
         raise FileExistsError(f"Refusing to overwrite evaluation: {args.out}")
     args.out.mkdir(parents=True)
 
+    # The pinned vendor imports an absent submission-only helper before it
+    # evaluates any dataset. This shim provides failing stubs for those two
+    # unused branches without editing the pinned source or changing E12 tasks.
+    compat_dir = Path(__file__).resolve().parent.parent / "compat"
+    if not (compat_dir / "sitecustomize.py").is_file():
+        raise RuntimeError(f"Missing E12 import shim: {compat_dir}")
+    os.environ["PYTHONPATH"] = os.pathsep.join(
+        (str(compat_dir), os.environ.get("PYTHONPATH", ""))
+    )
+
     task = load_task_spec(TASK)
     config = task.eval_config
     assert config is not None
@@ -72,6 +82,7 @@ def main() -> None:
         "api_nproc": config.api_nproc,
         "gpu": args.gpu,
         "vlmeval_venv": os.environ.get("UV_PROJECT_ENVIRONMENT", ""),
+        "import_shim": str(compat_dir / "sitecustomize.py"),
     }
     (args.out / "eval_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     start = time.monotonic()
