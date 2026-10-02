@@ -1,6 +1,6 @@
 # E30 — Does instruction-data exposure install the QA-format switch in independently trained public models?（2026-10-03）
 
-- **状态：** REGISTERED（判据提交于计算之前）
+- **状态：** Part A DONE（2026-10-03；开关被装入，ΔFE +2.06 ≈ 7.5 SE；K 阳性对照未过但替代解释被方向相反的陈述效应排除）；Part B 运行中
 - **类型：** PILOT（C04 的独立家族检验：OLMo 2 中期训练前后的天然实验 + 公开基座模型横向描述）
 - **对应：** C04、E26；OLMo 2（Team OLMo 2025：stage 1 预训练 ~4T token → stage 2 “Dolmino” 中期训练，混合物含 FLAN 等指令数据，3 个独立 ingredient 运行）；Fouilhé et al. 2026；Sclar et al. ICLR 2024
 - **阳性对照：** 各模型次数效应（cK − c1）> 0（操纵有效）；clean 知识边际在 stage 2 后不下降（排除知识损失解释）
@@ -28,3 +28,14 @@
 | Qwen2.5-1.5B | 由 Qwen2 Instruct 系列生成的合成数据（数学 / 代码 / 知识），比例未公开 | Qwen Team 2024（2412.15115） |
 | Llama-3.2-1B、gemma-2-2b | 未公开 | — |
 预期（Part B，只描述）：Pythia 与 OLMo-2 stage1 末的 FE_c1 最小；OLMo-2 stage2 末最大或接近最大。
+
+---
+## 结果 Part A（`results/e30/analysis.json`；共同已知 1831 条；2026-10-03 07:10）
+| checkpoint | FE_c1 | c1_decl | c1_qa | 次数效应 | K |
+|---|---|---|---|---|---|
+| stage1 1890000 / 1900000 / 1907359 | −0.26 / −0.18 / 0.08 | 5.12 / 4.98 / 4.86 | 4.86 / 4.80 / 4.94 | 1.97 / 1.74 / 1.66 | 8.62 / 8.57 / 8.59 |
+| stage2 末 ingredient 1 / 2 / 3 | 1.45 / 2.11 / 2.28 | 4.03 / 4.40 / 4.43 | 5.48 / 6.51 / 6.72 | 2.79 / 2.50 / 2.51 | 8.23 / 8.34 / 8.19 |
+- **ΔFE = +2.06（SE 0.27，≈ 7.5 SE）✓；Δdecl = −0.69（< ΔFE/2）✓ → 判定：开关被装入（switch installed）。**
+- 阳性对照：次数效应全 > 0 ✓；**“stage 2 后 K 不下降” ✗**（K 降约 0.35，≈ 4%）。如实报告。对替代解释“记忆变弱 → 更易被说服”的检验：该解释预测陈述与问答格式下采信**都**上升，实测陈述格式下采信**下降**（−0.69）、问答格式下上升（+1.4）→ 方向相反，不能由知识下降解释。
+- 时间进程（只报告）：ingredient 1 在 stage2 step 2000（5B token，≈ 8% 中期训练）时 FE_c1 = 3.71（共同条目），末步 1.45 → **开关出现极快，随后部分回落**。
+- Part B（公开模型）进行中。
