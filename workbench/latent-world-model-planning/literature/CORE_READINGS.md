@@ -291,3 +291,13 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 ## S25｜FlexiWorld：不把chunk granularity与reobservation混写
 
 [§1–3、AppendixD/E](https://arxiv.org/html/2609.35138v1)已读。继承LeWM/INTACT/POPLIN，把mixedgoalspan、variablechunks、AR actor/studentforcing与ARCEM residual搜索结合；三trainseed与三evalseed分开报告，actorfree CEM相近的对照把贡献定位到actiongeneration。较长chunk更小expertendpointMSE未必提高PushTcontrol；E.1拆firstplan/search/reobservation，E.2同候选存在成功却selection失败，并用物理clipping→renorm评分修复raw/executedcommand mismatch。已有ownership：flexiblechunk/actorresidual/feedback收益分解不是我们的首次发现。E13下一对照必须核实task-specific真实actionbounds；方法生长去cost/预测对象/训练域，不因此关闭R2。
+
+### 2026-10-03｜结果后定向读回（S2/S4/S11）
+
+[PLDM v4§3.3/4.3–4.4](https://arxiv.org/html/2502.14819)把limited/short/suboptimal trajectories与goal-policy/动态规划stitching能力比较；其running goalcost+uncertainty和MPPI/逐step反馈不同于当前terminalFast。完整trajectorylength比较固定总transitions，不能与我们的equalupdates/nesteddata直接混称同规律。
+
+[RC-aux v1§3.2–4.3/B.9](https://arxiv.org/html/2605.07278v1)已训练predicted-latent reachability并单列representation训练与planner gate，还依赖budget hardnegatives/与L2耦合。E17 frozen demonstrated-time head缺这些设计，不是完整负复现；E16 open-loop这里只复用一个组件，不称reachability新发明。
+
+[AD-WM v1§III–IV](https://arxiv.org/html/2609.30264v1)在residual predictor上加入预测transition的inverse/normalizedaction recovery，仿真jointencoder、部署丢head；matched数据/训练/规划与hardstart区分泛化，elite regret在自身encoder中度量，不跨表示MSE。继承inverse动力学而非发明动作对比；我们的data-only bank及候选promotion没有这个trainingdelta。
+
+[D-JEPA v1§4/A.2/D.1](https://arxiv.org/html/2609.24749v1)已经有双预测几何、scale-free ranks、wholecandidate-set relationaloperator、boundedcorrection和localboundary监督，再restricted predictoradaptation；执行outcomes给监督、heldoutcalibrationgate、完整256starts确认与sharednestedcandidate子集。故不能claim第一次candidate-boundary或双模型决策；A6目前仅预测对象筛选/真实调用经济学，不读executionoutcome，不把reference rank当任务真值。作用不同、相关很近，优先作为strongneighbor定位而非关闭R2。

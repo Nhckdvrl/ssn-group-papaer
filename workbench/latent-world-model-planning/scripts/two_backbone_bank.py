@@ -52,13 +52,27 @@ def native_check(model, pixels, goal_pixels, actions, norm, score, reference):
     return {'max_abs_error': float((expected-actual).abs().max()), 'predicted_frames': frames, 'passed': True}
 
 
-def timings(score, actions, order):
+def timings(score, actions, order, full_values=None):
     result = []
     for count in [900]+[int(900*f) for f in FRACTIONS]:
-        subset = actions[order[:count]]; score(subset); seconds = []
-        for _ in range(8):
-            start = sync_time(); score(subset); seconds.append(sync_time()-start)
-        result.append({'batch_size': count, 'warmups': 1, 'repeats': 8, 'seconds': seconds, 'median': float(np.median(seconds))})
+        ids = order[:count]; subset = actions[ids]; audits = []
+        def check(values, stage):
+            if full_values is None: return
+            actual = values.detach().cpu().numpy(); expected = full_values[ids]
+            passed = bool(np.allclose(actual, expected, rtol=1e-5, atol=1e-5)); error = float(np.max(np.abs(actual-expected)))
+            selected, expected_selected = int(ids[np.argmin(actual)]), int(ids[np.argmin(expected)])
+            audits.append({'stage': stage, 'allclose': passed, 'rtol': 1e-5, 'atol': 1e-5, 'max_abs_error': error,
+                'selected_id': selected, 'expected_subset_selected_id': expected_selected,
+                'subset_argmin_agreement': selected==expected_selected, 'selected_full_reference_argmin_agreement': selected==int(np.argmin(full_values)),
+                'actual_min_exact_ties': int((actual==actual.min()).sum()), 'expected_min_exact_ties': int((expected==expected.min()).sum()),
+                'actual_top2_gap': float(np.diff(np.sort(actual)[:2])[0]), 'expected_top2_gap': float(np.diff(np.sort(expected)[:2])[0])})
+            if not passed: raise ValueError(f'Subset/full reference mismatch batch={count} stage={stage} max_abs={error}')
+        check(score(subset), 'warmup'); seconds = []
+        for repeat in range(8):
+            start = sync_time(); values = score(subset); seconds.append(sync_time()-start); check(values, f'repeat{repeat}')
+        record = {'batch_size': count, 'warmups': 1, 'repeats': 8, 'seconds': seconds, 'median': float(np.median(seconds))}
+        if full_values is not None: record['subset_full_score_audits'] = audits
+        result.append(record)
     return result
 
 
@@ -151,13 +165,14 @@ def scorer(args, out):
                 selected = int(fast_order[0] if policy == 'Fast-900' else ids[np.argmin(values[ids])]); shared = set(ids)&set(ref_order[:30])
                 record['policies'].append({'policy': policy, 'promotion_fraction': fraction, 'eliteK30_recall': len(shared)/30,
                     'selected_id': selected, 'selected_reference_argmin_agreement': selected == int(ref_order[0]),
+                    'promoted_ids': ids.tolist(), 'screen_only': policy=='Fast-900',
                     'reference_candidates_required': 0 if policy == 'Fast-900' else len(ids),
                     'selected_physical_action_agreement': bool(np.array_equal(data['physical_actions'][selected], data['physical_actions'][ref_order[0]])),
                     'within_reference_normalized_regret': float(values[selected]-values[ref_order[0]])/scale})
             if row['anchor'] == 0:
                 check = torch.cat([torch.from_numpy(data['expert_actions']).float().cuda()[None], a[:16]])
                 record['reference_native_control'] = native_check(model, data['pixels'], data['goal_pixels'], check, norm, cost.score, True)
-                record['reference_timings'] = timings(cost.score, a, fast_order)
+                record['reference_timings'] = timings(cost.score, a, fast_order, values)
                 record['diagnostic_cost_calls'] = {'timings': 45, 'cached_control': 1, 'native_control': 1}
             results.append(record); write_json(out/'rows.json', results); print('lewm_reference', row['stem'], flush=True)
         del model; torch.cuda.empty_cache()

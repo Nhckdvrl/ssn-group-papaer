@@ -6,13 +6,13 @@
 
 | ID | 主张 | 等级 | 证据 | 校对 | 下一步 |
 |---|---|---|---|---|---|
-| C00 | 官方小模型能在授权单卡完成加载、训练步、CEM 与 simulator episode；工程建设主张 | L1 | [E00](experiments/E00_native_baseline_and_resource_preflight.md)；原生[TwoRoom](results/E00_E13_E16_20261002_tworoom_native.json)/[PushT](results/E00_E13_E16_20261002_pusht_native.json)、[LeWM有限数据](results/E16_20261002_equal_data_seed0.json) | strict LeWM303 keys/18M；native cost controls差0；全部TwoRoom factual controls误差0。PushT public setter有长时物理残差；自写constant-LR循环不是完整Lightning配方。Fast object未独立核对weights；三pipeline seed已完成但方法比较被optimizer alias降级 | 原生论文配方与第二task数据效用确认；不称完整复现 |
+| C00 | 官方小模型能在授权单卡完成加载、训练步、CEM 与 simulator episode；工程建设主张 | L1 | [E00](experiments/E00_native_baseline_and_resource_preflight.md)；原生[TwoRoom](results/E00_E13_E16_20261002_tworoom_native.json)/[PushT](results/E00_E13_E16_20261002_pusht_native.json)、[LeWM有限数据](results/E16_20261002_equal_data_seed0.json) | strict LeWM303 keys/18M；native cost controls差0；全部TwoRoom factual controls误差0。PushT public setter有长时物理残差；自写constant-LR循环不是完整Lightning配方。Fast object未独立核对weights；旧optimizer污染比较降级，全部公平三pipeline重跑guards通过 | 原生论文配方与第二task数据效用确认；不称完整复现 |
 
 ## 科学主张
 
 尚无。系统调查中的表示／动力学／搜索／数据／历史分支是探索范围，不预先注册其结果方向。
 
-最新可用观察为[修复隔离后E16 seed0全部七方法](results/E16_20261003_optclone_seed0.json)：NO-ADD7/48、uniform32/48、GLOBAL-U19/48、PBB20/48；uniform对NOADD episode pairedCI[35.42,66.72]pp，但仅一个pipeline seed，不能称稳定数据/机制结论，另两原seed继续。旧首轮/旧独立三seed及decision audit受optimizer alias污染，跨方法因果结论已撤回，见下方降级记录；不把旧数字当本次方法证据。E13/E17/E18新batch有真实读数，但尚无支撑novel方法的成熟证据；科学主张仍0。
+最新可用观察为[全部隔离后E16三pipeline](results/E16_20261003_optclone_independent_seeds.json)：NOADD7/16/19、uniform32/15/18、GLOBAL-U19/20/27、PBB20/11/13（各48），全部stepsguard通过；GLOBAL三pipeline正gain，PBB无稳定收益，但不是固定data训练seedCI。旧首轮/旧独立三seed及decision audit受optimizer alias污染，跨方法因果结论已撤回，见下方降级记录；不把旧数字当本次方法证据。E13/E17/E18/E11分方法轴持续试验，尚无支撑novel方法的成熟证据；科学主张仍0。
 
 后续每条主张需要关联实验卡和结果文件，并区分：观察相关性、受控干预、机制归因、跨模型范围。不能因为方法名字叫 reachability／causal／verifier 就把其输出当作真实可达性／因果／可执行性。
 

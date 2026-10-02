@@ -83,3 +83,17 @@ P05/经典优化对照：[A4全部256episodes](results/E13_20261003_action_basis
 P08/连续适配：[288episodes](results/E18_20261002_continuous_adaptation.json)，名义/0.7gain/physics，导航FROZEN/PREDLAST/+PROJECTOR=10/10/9、8/8/9、8/8/9；操作=5/4/3、3/4/3、3/2/3（各16）。14,313真实steps、公共5步state/pixel误差0。未见稳定success收益，操作nominal distance utility反而下降；训练误差不等于适配价值。此Fast/目标/lr不称完整AdaJEPA复现。频繁replan5名义操作FROZEN5/16 vs E17整25执行14/16跨plannerseed，不能归因；A5锁共同初始plan/5-10-25cadence/warm排除优化重启，R4历史/反馈表示仍是竞争解释。
 
 P04公平重跑seed0：[七方法](results/E16_20261003_optclone_seed0.json)NO/IID/uniform/coverage/global/task/PBB=7/18/32/27/19/13/20，每48。uniform对NO+52.08pp、episodeCI[35.42,66.72]；PBB对uniform−25pp、CI[-41.72,-6.25]。全部AdamW1680→2280/source不变；只能限定此pipeline，不沿旧污染模型排序/机制。两个原seed继续，数据×compute/训练对象已并行；强knownbranchbaseline是方法生长起点，不关闭R1。
+
+P08共同计划对照：[A5完整256episodes](results/E13_20261003_commitment_cadence.json)，操作nearEX5/10/25/5warm=5/3/14/4，各16；同初始plan排除初始seed差，warm不能修复但不能归因velocity。terminal25score/execute5时间失配已有HiddenFailureModesownership；固定cadence observer与cost/预测结构是竞争方法轴。导航nativephysicalclip缺失在score的混杂已独立发现，须强对照。
+
+## P10｜预测评分与实际动作接口不一致（工程校对）
+
+[独立CPU/全部command统计](results/E00_E13_E16_20261003_action_interface_audit.json)：TwoRoom真实step裁剪physicalcommands到[-1,1]、MacroCost/LeWMNativeCost原生评分未裁剪；A5全部128导航planfiles真实issued动作超界41–73%、max20.42，E16bank3072/3072序列含超界、primitive44.85%。4真实CPUsteps验证[2,0]与[1,0]导航状态差0；PushT完整state差374.15，后者并不clip。只能确认接口/覆盖混杂，未证明success因果或data收益由其解释。cost-onlyclip/renorm强baseline已加E17，原nativeCEMrawelite更新不变；FlexiWorldE.2已有相同原则，不当novel贡献。未来新方法必须面对actual-action baseline，R1/R2母问题不因此关闭。
+
+P04全部公平三pipeline：[完整结果](results/E16_20261003_optclone_independent_seeds.json)NO7/16/19、uniform32/15/18、GLOBAL19/20/27、PBB20/11/13，每48。GLOBAL三个正gain，PBB和uniform跨pipeline不稳定；不能从seed0最强说普遍data选择原则。训练计算对照BASE100全部快照已完成560/1680/5650=7/13/38，BASE1000未complete，不升级data×compute结论；充分训练强baseline是后续方法必要参照。
+
+P05/R3代价完整补记：[352episodes](results/E17_20261003_continuation_cost.json)，导航远NATIVE/EXEC/REAL/WM/MIX=10/6/9/9/8，操作近14/14/7/7/8（第一个14为EXEC、第二为COS），各16。imagined calibration未胜REAL/head未胜强native；不能将只对弱EXEC的局部gain包装成方法成立。训练fit不能代替candidate utility，RC-aux的joint representation/budget negatives与L2耦合不是这个小head负结果。
+
+P08/R4完整补记：[384episodes](results/E11_20261003_latent_observer.json)固定5步cadence，Pushnominal/gain/moment OBS4/4/3→PREFIX5 11/10/10，各16；prior/filter均不胜此classic强baseline。下一方法须对齐执行目标后再验证history/feedback，不调融合权重救null。原native task_distance含7D速度与未wrap角度，和success位置/角判据不同，不能从其均值归因失败尾部或纯position风险；原raw/读数保留，位置分解仅POST-HOC辅助。
+
+P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.json)NO ONE/TF/OPEN21/14/16，UNIFORM11/24/19，各48。branch效应随此训练设计变号，但ONE/LONG labels+SIGRegframes不匹配、onepipeline/weakbase，OPEN无稳定胜TF；只作数据利用×预测对象下一研究来源，不能直接升因果或顶会叙事。额外训练38强基线必须保留。

@@ -108,3 +108,23 @@ proposal pilot全部320episodes完成，见下方实际记录。
 决策表（跑之前写）：WM/MIXED胜REAL且两task有utility→确认 imagined-evaluator训练域这个设计，再扩counterfactual/secondmodel/独立headseed；REAL已有效→先用强temporalcost baseline，不能称calibration贡献；COS已有同收益→简化几何解释；all弱→记录null、改变预测结构/任务信息/goal progress，不连续调head层数或缩任务包装。当前只是高信息method pilot，不是novel claim。GPU待A5后授权空卡，代码CPU预控与root审阅后才启动。
 
 运行前action接口修订：precision独立audit确认TwoRoom物理commands真实clip[-1,1]、模型cost未clip，已生成plan实际issued超界41–73%；PushT env relative step并不clip。尚未GPU costhead运行、未见读数，不依据方法success更改。主5methods改名EXEC-L2/EXEC-COS/REAL-COST/WM-CALIBRATED-COST/MIXED-COST；TwoRoom全部5使用physical denorm→clip→renorm后输入模型，训练expert25计算imagined cache也同transform。TwoRoom额外NATIVE-L2完整保留原生未clip评分，与E17核对；PushT只原5methods且EXEC-L2等原NATIVE。合计352episodes。primary headgain对EXEC-L2；NATIVE→EXEC是经典interface repair（FlexiWorldE.2强邻居）而非方法贡献。真实发出的原command继续由env处理，scoring使用其实际动作效应；不悄悄改变noise/proposal或PushT动作支持。
+
+最终CPU预控/root审阅已完成（GPU前）：236行独立脚本，真实E17pairs47450/91069、uniqueendpoints6795/10779；label/pair边界/commoninit/ids/梯度与TwoRoomcanonical physicalclip/Pushidentity/nativeCEMreturn50+30calls/352null统计全PASS。cost-onlytransform，native raw elite mean与分布更新不改变（不先transformcandidate再计算elite mean）。MIXED2headforward同meanloss，架构384→256→256→1共164609参数。即将GPU0空卡独立运行，其他运行源不改。
+
+### Continuation cost 完整读数（2026-10-03）
+
+[352episodes/23,859真实steps](../results/E17_20261003_continuation_cost.json)，raw/durable complete与summary/pairedCI已独立核对。导航近NATIVE/EXEC-L2/COS/REAL/WM/MIX=13/13/11/13/14/14，远10/6/6/9/9/8；操作近EXEC/COS/REAL/WM/MIX=14/14/7/7/8，远3/3/2/2/2，每组16。导航远head相对EXEC的+3/16未胜保留的NATIVE10/16；NATIVE−EXEC配对CI[.0625,.5]，所以不能把接口修订后的更弱baseline当整体增益。操作近REAL/WM各−7/16、CI[-.6875,-.1875]，MIX−6/16、CI[-.625,-.125]。WM-CALIBRATED未显现优于REAL的控制效果。
+
+三个head共同init与batchids hash相同，各freshoptimizer/2000updates；native32/task成功与envsteps复现。last100 train MSE导航约.022、操作.005，heldout factual real/imagined输入误差相近，不证明反事实candidate泛化或utility。该小数据demonstrated-time head没有成功，不能推广为goal value/RC-aux无用；RC-aux还更新representation、用budget hard negatives与L2耦合（本pilot均未做），不能称同方法负复现。下一步变预测对象/representation训练与跨backbone验证，不连续调temporal head层数。
+
+### Task-factor evaluator（2026-10-03，GPU运行前）
+
+推进P05/P08/R3/R2，不连续调已null的demonstrated-time scalarhead。继承HiddenFailureModes physicalmetric、经典可观测state decoder/多目标控制；不是首次geometrycost/imagined calibration。E11 POST-HOC显示短score改善agent位置而block/angle tradeoff，作为新pilot来源，不登记mechanism。新的额外监督来自原100episode H5可观察geometry：TwoRoom pos_agent/proprio xy（物理extent224，success<16）；Push agentxy/blockxy/sinθ/cosθ（extent512，success位置<20与角<π/9）。训练用GT labels，部署只有real current/goal images与候选动作、不能读state/velocity/physics；不宣称无监督或与nativeequal-totalinformation。
+
+复用E17冻结Fast/100exactepisodes/latent+pair映射，endpoint从25改为5匹配EX5评分。两commoninit geometry MLP192→256→256→2/6，各2000updates/b128/Adam3e-4/WD1e-3/clip1、samepairids/freshoptimizer/冻结encoder与WM。REAL=.5真实endpoint5几何loss+.5真实goal(t+h)几何loss；MIX=.25真实endpoint+.25imaginedendpoint5+.5真实goal，标签两methods完全相同，MIX多一个headforward不称训练FLOPs相同。Goal真实域明确受训，不能让WM-only decoder未见realgoal制造域差。物理位置归一到extent，角度sincos；几何评分按native成功阈值归一位置平方与anglechord平方，agent/block/angle固定权重1。JOINT额外加nativeL2/192固定系数1，先不调weight/sweep。
+
+六methods NATIVE25/PREFIX5/REAL-GEO/MIX-GEO/REAL-JOINT/MIX-JOINT；两task×g25/g75前16=384episodes，SEED78000与A5/E11同、budget50/150、CEM H25/N300/K30/30。各anchor先共同native25plan；NATIVE25执行25，其他同first5真实prefix，此后EX5shiftwarm/scorefirst5；真正首prefix由共同native而非head选择，全部早成功保留。native动作评分与A5一致，不改elite/noise；TwoRoom已知rawscorevsphysicalclip限制共享，PushT不clip。两已有强controls完整复现A5NATIVE25（64rows）和E11近goalPREFIX5（32rows）。
+
+正控：原exactepisode/row/cachehash/pair枚举、两head标签/ids/init/realgoal权重一致、无velocityfeatures、goalphysicalstate只离线label/evaluator；nativePrefixcost/CMEMwarmshape/强baseline成功步数distance；所有source/hash/HFheadcache/fullrows保留。主读数各task/range success/pairedhelp-harm/bootstrapCI对PREFIX5与NATIVE25，两强对照都报；原native distance保留，位置/angle分解此批事前锁为aux，不以aux替换primary。单headseed/16anchors CI不是trainseed，extra tasklabel与预训练overlap未明单列。决策表（跑之前写）：GEO已有稳utility→强taskcost baseline并进一步比较representation/predictor入口/未见rolequery复用；MIX优于REAL且跨task→候选域输入问题值得扩但仍需强邻居；JOINT优于GEO→理解共享几何与taskmetric配合，不重命名classic mixture；all弱→换训练预测对象/历史或数据，不调decoder层数。源task_factor_cost.py约180行，raw `20261003-E17-task-factor-cost-RTX-s0`，head HF `latent-wm-trained/E17_task_factor_cost_RTX_s0`；CPU真实控/root审后独立空GPU3运行，当前未GPU/无读数。
+
+02:25 JST GPU前预控完成：最终187行SHA `0c4dcbc1d7c7b107f7f607fd2aa2c83e8c72b4d995e0467547d338cb825987aa`。CPU实际native/prefix/CEM300×30/commoninit/freshoptimizer/有限梯度/全部384统计控制通过；CPU缓存重编码原tol2e-4失败（Navmax.02153、Push.001735）完整保留。按原CUDA路径、原每episode局部128chunk的first/mid/last复验，两task三帧与缓存maxabs全部0，原tol未放宽；不将CPU误差解释为科学现象。预控JSON、raw CPU/CUDA/cache vectors与pixels在持久artifact `20261003-E17-task-factor-cost-preflight`。root全文审后GPU3空卡free-wrapper运行原384矩阵；仅公共first5后采用新代价，报告为continuation干预，不称从首动作使用新head。

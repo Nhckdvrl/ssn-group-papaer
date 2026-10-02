@@ -278,3 +278,21 @@ released LeWM最后在同48起点作正控，沿其full-dataset action statistic
 ### Optimizer-isolated seed0：全部七方法实际读数
 
 [完整config/hash/source-stepguards/pairedCI](../results/E16_20261003_optclone_seed0.json)：NO-ADD/IID/UNIFORM/COVERAGE/GLOBAL-U/TASK-U/PBB=7/18/32/27/19/13/20，各48；所有297optimizerstates从1680开始到2280、600updates、source不变。UNIFORM对NOADD+25/48、pairedepisode95%CI[.3542,.6672]；PBB对UNIFORM−12/48、CI[-.4172,-.0625]。这是一完整探索pipeline seed，不是独立trainseedCI，另外两seed继续全部原方法，不停止/筛种子。simplecommon-reset是强baseline而非新方法；下一步数据×compute与数据×objective检验支撑范围/利用，不局部优化PBBentropy。旧被污染结果仍作废为因果证据。
+
+### Optimizer-isolated全部原三pipeline完成
+
+[完整结果](../results/E16_20261003_optclone_independent_seeds.json)：NOADD7/16/19，uniform32/15/18，GLOBAL-U19/20/27，PBB20/11/13，各48；全部source1680/1650/1680→+600 guards通过、未筛种子/方法。GLOBAL-U三个对NOADD均+12/+4/+8，PBB+13/−5/−6；uniform+25/−1/−1。三pipeline共享recipe但data/eval/init变化，是whole-pipeline variation，不是固定data trainseedCI。uniform首seed优势未稳定；GLOBAL是需要强基线确认的成熟采样参照，PBB v0无稳定收益。当前native evaluator还有P10动作接口限制；data×compute及sixobjective全部继续，不能只救PBBscore。
+
+### 数据×训练计算完整读数与曝光控制（2026-10-03 GPU前修订）
+
+[完整六快照+released正控](../results/E16_20261003_data_compute.json)：BASE100560/1680/5650成功7/13/38，BASE1000为12/19/21，released39，各48。共同初始化/held48/固定base100norm；100条件5650=100.893epochs，1000条件5650=10epochs，不能称少数据更好或等效released。独立audit CI在结果文件补记，原raw结果不重写。
+
+下一已锁控制P04/R1：BASE1000_u5650在565batches×10整epoch末，保存fulloptimizer/CPU-CUDA-NumPy RNG；严格resume同constantLR/all3+.09SIGReg/同128bf16/同数据norm/held48，snapshot总16950=30epochs、56500=100epochs。先问高data条件是否训练曝光不足，不同时换scheduler/globalnorm/labels。BASE1005650作为近似100epoch参照，明确不是exactepochmatch；原baseline不重训、不删任何已完成snapshot。这里只是充分训练强baseline建设，不预设paper叙事。
+
+正控：sourcecheckpointSHA/strictstate/297steps均5650，deepcopy optimizer source不可变与end=5650+actualupdates；10epochpermutation NumPy state精确再生/nextorder相同，CUDA/CPU RNG还原、isolatedeval保留；new HF目录与raw/durable均不存在。primary原48 success/pairedhelp-harm/CI与trainupdates/wallclock/epoch分别报告，保留源6snapshot与released；max2snapshots、1exploratoryseed/独立授权GPU1。额外环境仅评测不采新data，raw `20261003-E16-data-exposure-RTX-s0`，HF `latent-wm-trained/E16_data_exposure_s0`。决策表（跑之前写）：large充分训练追上→旧equal-update差是optimization/exposure竞争解释，不重命名新规律；large仍弱→查data composition/regularizer/训练对象，方法应面对BASE10038强base，不救原selector；large明显改善→以其checkpoint扩第二task与公平data acquisition/预测目标。代码data_exposure_continue.py正CPU准备，root审后才GPU，当前无新读数。
+
+曝光控制最终CPU/root审（GPU前）：独立145行、source SHA c804d278c214e7e0e014d4ab1433a938ccca8edd730c53000da43ab4f84010b1，297states5650/deepclone不可变、72359clips/565batches、模型manifest/norm/48anchors全通过；10epochs RNG和nextorder精确再生。script SHA e5e136b4e2e00cbd2cd435e76efce51d3d975ff8ff1f157b3b2fe6f9f05ad132。源未保存NumPy globalstate但训练shuffle用独立Generator已精确恢复，全局沿原seed0明示；CUDA/CPU restored。GPU1已空，free-wrapper再复核并真实context，启动两固定stops，不重写原6snapshot。
+
+### Data×prediction-object matrix完整读数
+
+[六格修复重跑](../results/E16_20261003_objective_matrix.json)：NO-ADD ONE/TF-LONG/OPEN-LONG=21/14/16，UNIFORM=11/24/19，各48，全部297steps1680→2280/source不可变。uniform−no在ONE为−10/48 CI[-.375,-.0417]，TF为+10/48 [.0625,.3542]，OPEN+3/48 [−.1042,.2292]；TF/OPEN直接差CI均含0。仅一个pipeline、有额外label/正则frames与FLOPs差别；ONE(4frames)、LONG(6frames)不是独立horizon变量，最大open-loop forecast15而非部署25；6methods均未超过充分训练100条件38/48。交互读数只是新线索，不登记普遍data-loss原则，不能筛ONE/TF来救叙事。

@@ -277,3 +277,25 @@ primary分task/range成功与vs EXEC25的paired help-harm/bootstrapCI；native d
 ### A4完整读数（2026-10-03）
 
 [完整config/hash/controls/summary](../results/E13_20261003_action_basis.json)，256episodes/16,539真实steps；ZERO300/ZERO900/LINEAR5/CONSTANT1，导航近=13/15/14/8、远=10/14/14/9；操作近=14/16/15/7、远=3/4/3/0，每组16。LINEAR5导航远相对ZERO300 +4/16，pairedCI[-.0015625,.5]；与ZERO900同14个成功但help2/harm2、CI[-.25,.25]，不称等效。操作远未改善。CPU原生k25/5/1各30costcall、展开input50dim/return50/10/2全PASS；nativecost最大abs1.83e-4。经典support/方差/相关性改变，单plannerseed，无novelty/WM未见episode/墙钟加速主张。后续不再局部调knots救故事，A5共同初始plan与data×compute分别检验部署接口和训练条件。
+
+### A5全部实际读数
+
+[完整256episodes](../results/E13_20261003_commitment_cadence.json)，同commonplan/state/pixel初始误差0。EX5/EX10/EX25/EX5warm：导航近10/9/13/12、远7/6/10/11；操作近5/3/14/4、远2/0/3/2，每组16。操作近warm−EX25=−10/16、pairedCI[-.875,-.375]；warm并未修复丢失，不支持单纯coldrestart解释。已知terminal25score/execute5时间失配（S24）与反馈latentstate/optimizersearch是竞争解释，不能直接说velocity遗忘或feedback普遍有害。导航还有physicalclipping但scoringraw的接口混杂。R3cost（已补execution动作评分）与R4固定cadence observer均已锁卡，保留母问题不把cadence原理改名新贡献。
+
+### A6：Fast screen → released LeWM reference（2026-10-03，GPU运行前）
+
+推进I08/R2/P05。A0同checkpoint的self-consistency并不等于更可靠的动力学；A2增加一致性评分未改善utility。现在直接测试两种预测对象的candidate筛选是否互补，不再调self-consistency系数。继承Fast直接action-prefix与LeWM递归预测，后者只称reference，不预设其为真值或更高质量；各自表示的latent distance不能跨模型相减。
+
+两个冻结released checkpoint、各自encoder/goal/actionnorm，same physical candidate bank。prepared两task×g25/g75前16=64起点，SEED81000+j*100；每anchor从公开state复位得到一张真实current image和同goal image，不输入HDF5过去图像/hidden velocity。官方LeWM HF history capacity3不是要求3张真实输入，原生get_cost允许T1；递归ctx1→2→3，5个5-step macro共25真实步。Fast为同current直接25-step prediction。TwoRoom双方score physical clip[-1,1]后的实际动作，PushT双方identity；CEM保留raw normalized elite mean/update，不把score修复混成改变优化器。Fast N900/K30/30 native CEM，固定捕获iteration15的900候选及其physical action序列，不按LeWM结果重新选bank。
+
+先分两个fresh Python phase避免Fast/LeWM同名pickle module冲突：Fast产生bank与cheap terminal costs；LeWM仅读取相同bank、缓存current/goal编码并用5-step递归score。cheap排名TOP与固定随机RANDOM promotion分别取10/20/30/50%，参考elite K30。主读数为参考elite recall、所选动作与LeWM全bank argmin一致率、LeWM自身cost内selected regret、实际promotion fraction；按task/range汇总episode bootstrap CI。原始cost、rank、candidate IDs、每次promotion均保存。LeWM cost regret不是环境selected-action regret，也不是跨latent MSE。
+
+陽性对照：两个checkpoint strict keys/hash、相同physical candidate SHA、current pixel/reset误差0；LeWM T1 cached recurrence与native get_cost全候选/小batch allclose、六预测frames；无训练/goal未来/branch outcome；cost为finite且batch/subset评分一致。噪声地板：单released checkpoint/单候选seed/16anchors条件CI、预训练episode未见性未知、PushT公开restore边界。真实timing仅在独占空GPU，同步CUDA、warmup后full与selected batch各8次重复，编码时间另列；calls比例不冒称墙钟加速。
+
+决策表（跑之前写）：TOP在20–30% calls保持≥90% reference elite→进一步测同bank真实candidate后果或同预算closed-loop，只有reference确实改善控制才发展Elite-Preserving CEM；cheap/reference差异大且TOP recall低→考虑共享双head/决策校准/sentinel，不能从一个bank关闭R2；差异小→测试更好的预测对象/训练与任务cost，不包装无价值refinement。保持全64anchors，不筛方法或成功case。新源two_backbone_bank.py，raw `20261003-E13-two-backbone-bank-RTX-s0`，PushT derived object放HF latent-wm-derived并记录strict metadata。GPU前仍需CPU原生controls/root审阅；不依赖DeepJEPA未release代码，不新增大framework。
+
+A6最终GPU前补记：capture_call_index15为0-based第16次，非1-basediteration15。root全文审200行，两个fresh CPU真实nativecost控PASS（LeWM差0/current1+predicted5frames；Fast max6.1e-5且allclose），原生N900/K30/30捕获[1,900,1,50]、expert sourceprefix仅用于控、不加candidate、all64预定bounds有限。两phase raw/durable独立basename `20261003-E13-two-backbone-fast-RTX-s0` 和 `20261003-E13-two-backbone-reference-RTX-s0`，避免通用bank目录冲突；script SHA c8ab31af3954c83824029c3278b86f7b988d2fbd0759ae9d07f047c0ab89eb05。4metrics保存2000bootstrapCI。GPU0已空，将由free-wrapper复核后运行；此时尚未GPU读数。
+
+A6工程重试（未有reference科学结果）：Fast64bank完整sealed/durable；LeWMphase在import sklearn失败，旧reference failure与used源码保留。仅在isolated `/home/xiang/.cache/latent-wm-python-deps/sklearn-1.5.2` 安装scikit-learn1.5.2/scipy1.13.1/joblib1.4.2/threadpoolctl3.5.0，不修改正在运行的venv或NumPy/torch；确认导入后PYTHONPATH限定新进程，same sealed bank/source/seed/normalization formula，raw重试独特 `20261003-E13-two-backbone-reference-RTX-s0-retry1`，不能把import failure算method负结果。
+
+重试前精度补记：首isolated安装的target复制阶段被提前import生成的pycache打断（shutil FileExistsError），失败log保留；改用节点local `/tmp/latent-wm-python-deps/sklearn-1.5.2-complete` 全部安装退出0后再import，四包版本与NumPy1.26.4核对，完整CLI/LeWM入口预控仍在完成。64bank独立hash/seal/源审计通过、均900不同physical候选；Fast部分scores有ties，ID不同不是质量差。保存promotion IDs并核对实际小batch参考评分与全900评分：仅timings/scorer新增诊断，producer/Reference/native_check/physical/normalize AST与sealed used完全不变，CPU45call/tie/fail-halt控通过；新source SHA `c0cfbfdf78cc53aea37bad293e18f51eb3bf1a6fcddc129483b85801fa37acb1`，旧bank不重生。依旧只测候选argmin/reference ranking，不是CEM最终elite-mean动作；TwoRoomclip不可逆，旧bank不能重建rawelite参数。完整GPU参考通过前无新读数。
