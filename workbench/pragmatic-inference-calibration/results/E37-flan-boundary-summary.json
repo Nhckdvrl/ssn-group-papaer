@@ -1,0 +1,2504 @@
+{
+  "experiment": "E37",
+  "complete": true,
+  "source_audit": {
+    "data_sha256": "98454df6b716dd7ff5f83a3db298849f05414688e81c2ee21b8e5a548ed897aa",
+    "all_source_majority_labels_match": true,
+    "human_count_distribution": {
+      "5": 34248,
+      "4": 20
+    },
+    "incomplete_human_count_ids": [
+      "5665",
+      "8515",
+      "8569",
+      "8825",
+      "8881",
+      "10804",
+      "11530",
+      "14925",
+      "21618",
+      "21619",
+      "22332",
+      "24355",
+      "26565",
+      "26693",
+      "29020",
+      "29383",
+      "29903",
+      "31746",
+      "31888",
+      "32909"
+    ],
+    "selected_all_five_unanimous": true,
+    "contrasts": {
+      "negative-strength": {
+        "eligible_questions": 26,
+        "selected_questions": 26
+      },
+      "positive-probability-or-frequency": {
+        "eligible_questions": 123,
+        "selected_questions": 64
+      },
+      "conditional-commitment": {
+        "eligible_questions": 742,
+        "selected_questions": 128
+      }
+    },
+    "n_unique_rows": 433,
+    "n_pairs": 218,
+    "n_question_groups": 214
+  },
+  "models": {
+    "flan-t5-xl": {
+      "configs": [
+        {
+          "config": {
+            "task": "flan_circa_native_control",
+            "model": "google/flan-t5-xl",
+            "revision": "7d6315df2c2fb742f0f5b556879d730926ca9001",
+            "shard": 0,
+            "n_shards": 4,
+            "dtype": "float32",
+            "batch_size": 1,
+            "n": 376,
+            "n_items": 94,
+            "source_audit": {
+              "data_sha256": "98454df6b716dd7ff5f83a3db298849f05414688e81c2ee21b8e5a548ed897aa",
+              "all_source_majority_labels_match": true,
+              "human_count_distribution": {
+                "5": 34248,
+                "4": 20
+              },
+              "incomplete_human_count_ids": [
+                "5665",
+                "8515",
+                "8569",
+                "8825",
+                "8881",
+                "10804",
+                "11530",
+                "14925",
+                "21618",
+                "21619",
+                "22332",
+                "24355",
+                "26565",
+                "26693",
+                "29020",
+                "29383",
+                "29903",
+                "31746",
+                "31888",
+                "32909"
+              ],
+              "selected_all_five_unanimous": true,
+              "contrasts": {
+                "negative-strength": {
+                  "eligible_questions": 26,
+                  "selected_questions": 26
+                },
+                "positive-probability-or-frequency": {
+                  "eligible_questions": 123,
+                  "selected_questions": 64
+                },
+                "conditional-commitment": {
+                  "eligible_questions": 742,
+                  "selected_questions": 128
+                }
+              },
+              "n_unique_rows": 433,
+              "n_pairs": 218,
+              "n_question_groups": 214
+            },
+            "numerical_gate_pass": true,
+            "complete": true,
+            "wall_seconds": 13.829285704996437,
+            "add_special_tokens": true,
+            "decoder_start_token_id": 0,
+            "input_token_hashes": {
+              "original/0": "d860c1eae8fffe6776197bef90653747cd7ae56d7754585d4c1f909123b17955",
+              "original/1": "1dbb90a8c5bb45625e47507b883a7c5a7ad1f457e5eca83ed9a485f2a7500795",
+              "strict/0": "2ed2fd3912f3ff8abb0fee145543dd3f55723359f76b99989702b4d00e97e95d",
+              "strict/1": "86adc3e44a8fc2c5c07c36d165f99ac4c987273ef9eb044c0208bcb4cc9decd6"
+            },
+            "item_ids": [
+              "114",
+              "543",
+              "604",
+              "637",
+              "1211",
+              "1447",
+              "1633",
+              "1925",
+              "2227",
+              "2579",
+              "3601",
+              "3701",
+              "4056",
+              "4242",
+              "4265",
+              "4843",
+              "5020",
+              "5220",
+              "5315",
+              "5329",
+              "5792",
+              "5797",
+              "6210",
+              "6591",
+              "6941",
+              "7014",
+              "7293",
+              "7673",
+              "8049",
+              "8362",
+              "8889",
+              "9522",
+              "9547",
+              "9928",
+              "10254",
+              "10464",
+              "10570",
+              "10578",
+              "10771",
+              "10933",
+              "11288",
+              "11839",
+              "12289",
+              "12643",
+              "12661",
+              "13766",
+              "14196",
+              "14412",
+              "14527",
+              "14856",
+              "15255",
+              "15848",
+              "15978",
+              "17045",
+              "17118",
+              "17564",
+              "18631",
+              "19152",
+              "19157",
+              "19714",
+              "20505",
+              "21556",
+              "21821",
+              "22268",
+              "22393",
+              "22852",
+              "23109",
+              "23315",
+              "24101",
+              "24105",
+              "24639",
+              "25062",
+              "25260",
+              "25690",
+              "26758",
+              "27168",
+              "27232",
+              "27257",
+              "27821",
+              "28163",
+              "28932",
+              "29024",
+              "29591",
+              "29642",
+              "29720",
+              "29899",
+              "30014",
+              "30555",
+              "30559",
+              "31576",
+              "32048",
+              "32254",
+              "32800",
+              "34255"
+            ],
+            "script_sha256": "6d56c2591fb36278654b52ea4f82e5af81b91a35de420cc74b611331d2f2db08"
+          },
+          "sha256": "0b036ea720226d326f183c64705ef53d5385f894cdcb5c5a273cf3b603d95e4d",
+          "run": "E37-flan-circa-shard0of4"
+        },
+        {
+          "config": {
+            "task": "flan_circa_native_control",
+            "model": "google/flan-t5-xl",
+            "revision": "7d6315df2c2fb742f0f5b556879d730926ca9001",
+            "shard": 1,
+            "n_shards": 4,
+            "dtype": "float32",
+            "batch_size": 1,
+            "n": 476,
+            "n_items": 119,
+            "source_audit": {
+              "data_sha256": "98454df6b716dd7ff5f83a3db298849f05414688e81c2ee21b8e5a548ed897aa",
+              "all_source_majority_labels_match": true,
+              "human_count_distribution": {
+                "5": 34248,
+                "4": 20
+              },
+              "incomplete_human_count_ids": [
+                "5665",
+                "8515",
+                "8569",
+                "8825",
+                "8881",
+                "10804",
+                "11530",
+                "14925",
+                "21618",
+                "21619",
+                "22332",
+                "24355",
+                "26565",
+                "26693",
+                "29020",
+                "29383",
+                "29903",
+                "31746",
+                "31888",
+                "32909"
+              ],
+              "selected_all_five_unanimous": true,
+              "contrasts": {
+                "negative-strength": {
+                  "eligible_questions": 26,
+                  "selected_questions": 26
+                },
+                "positive-probability-or-frequency": {
+                  "eligible_questions": 123,
+                  "selected_questions": 64
+                },
+                "conditional-commitment": {
+                  "eligible_questions": 742,
+                  "selected_questions": 128
+                }
+              },
+              "n_unique_rows": 433,
+              "n_pairs": 218,
+              "n_question_groups": 214
+            },
+            "numerical_gate_pass": true,
+            "complete": true,
+            "wall_seconds": 17.198203161009587,
+            "add_special_tokens": true,
+            "decoder_start_token_id": 0,
+            "input_token_hashes": {
+              "original/0": "04ad8ad08fd87a61fd27ce8f28ab6a92c99991c349a25056e07490ca756b2704",
+              "original/1": "b5eda3aae8b6d4ac6c82f1c679467dd57ec5fb2e4eb58d1589f9784b8eefb814",
+              "strict/0": "eb57cf6046e177140829e580b6baf8010153cb8b4dfd7260bb0c8247b5a1e7c7",
+              "strict/1": "60a8465fc25a75f2df81b90cf9f3553b91ed7b72fb478156f56d94245acc79e4"
+            },
+            "item_ids": [
+              "219",
+              "324",
+              "388",
+              "809",
+              "888",
+              "1258",
+              "1299",
+              "1453",
+              "2081",
+              "2768",
+              "2997",
+              "3378",
+              "3804",
+              "3905",
+              "3943",
+              "4037",
+              "4070",
+              "4123",
+              "4372",
+              "4393",
+              "4668",
+              "5351",
+              "6035",
+              "6583",
+              "6587",
+              "6871",
+              "7400",
+              "8233",
+              "9032",
+              "9280",
+              "9294",
+              "9875",
+              "9937",
+              "10251",
+              "10512",
+              "10818",
+              "10832",
+              "11221",
+              "11828",
+              "11883",
+              "11998",
+              "12317",
+              "12336",
+              "12388",
+              "12545",
+              "13315",
+              "13677",
+              "14070",
+              "14992",
+              "15185",
+              "15878",
+              "16215",
+              "16578",
+              "16924",
+              "17227",
+              "17372",
+              "17484",
+              "17702",
+              "18374",
+              "18881",
+              "19364",
+              "19415",
+              "19463",
+              "19467",
+              "19522",
+              "19549",
+              "19622",
+              "19679",
+              "19747",
+              "20017",
+              "20123",
+              "20220",
+              "20343",
+              "20375",
+              "20633",
+              "21193",
+              "21318",
+              "21447",
+              "21707",
+              "22239",
+              "22415",
+              "22494",
+              "22502",
+              "22862",
+              "22955",
+              "23032",
+              "23309",
+              "23824",
+              "23837",
+              "25328",
+              "25871",
+              "26165",
+              "26208",
+              "26563",
+              "26635",
+              "26646",
+              "27000",
+              "27295",
+              "27350",
+              "27456",
+              "27644",
+              "27783",
+              "28099",
+              "28173",
+              "28439",
+              "28672",
+              "29195",
+              "30197",
+              "30300",
+              "30431",
+              "30729",
+              "31214",
+              "31254",
+              "32098",
+              "32508",
+              "33133",
+              "33305",
+              "33812",
+              "33920"
+            ],
+            "script_sha256": "6d56c2591fb36278654b52ea4f82e5af81b91a35de420cc74b611331d2f2db08"
+          },
+          "sha256": "ceccc103050b9aeb9300368060a127d1e85c6faf361921b874ecc93ca495dd67",
+          "run": "E37-flan-circa-shard1of4"
+        },
+        {
+          "config": {
+            "task": "flan_circa_native_control",
+            "model": "google/flan-t5-xl",
+            "revision": "7d6315df2c2fb742f0f5b556879d730926ca9001",
+            "shard": 2,
+            "n_shards": 4,
+            "dtype": "float32",
+            "batch_size": 1,
+            "n": 424,
+            "n_items": 106,
+            "source_audit": {
+              "data_sha256": "98454df6b716dd7ff5f83a3db298849f05414688e81c2ee21b8e5a548ed897aa",
+              "all_source_majority_labels_match": true,
+              "human_count_distribution": {
+                "5": 34248,
+                "4": 20
+              },
+              "incomplete_human_count_ids": [
+                "5665",
+                "8515",
+                "8569",
+                "8825",
+                "8881",
+                "10804",
+                "11530",
+                "14925",
+                "21618",
+                "21619",
+                "22332",
+                "24355",
+                "26565",
+                "26693",
+                "29020",
+                "29383",
+                "29903",
+                "31746",
+                "31888",
+                "32909"
+              ],
+              "selected_all_five_unanimous": true,
+              "contrasts": {
+                "negative-strength": {
+                  "eligible_questions": 26,
+                  "selected_questions": 26
+                },
+                "positive-probability-or-frequency": {
+                  "eligible_questions": 123,
+                  "selected_questions": 64
+                },
+                "conditional-commitment": {
+                  "eligible_questions": 742,
+                  "selected_questions": 128
+                }
+              },
+              "n_unique_rows": 433,
+              "n_pairs": 218,
+              "n_question_groups": 214
+            },
+            "numerical_gate_pass": true,
+            "complete": true,
+            "wall_seconds": 15.316318077035248,
+            "add_special_tokens": true,
+            "decoder_start_token_id": 0,
+            "input_token_hashes": {
+              "original/0": "b0705884deae45c57f948760483ab3968b211a0e30a0c5ee2b87ac112f3f2c6a",
+              "original/1": "62986e28e812c0fd03fa657912557d9dedb1b1b1db451c30f5c64576808c168f",
+              "strict/0": "30621b032599ab4f83a05ee668ff397b99be6c3269c25368f3ca6c4c25f5f47c",
+              "strict/1": "6821b032b48417ab948cc9fed52a36f0506ad53141c8a53cddae238cf2dd19ff"
+            },
+            "item_ids": [
+              "481",
+              "554",
+              "781",
+              "1774",
+              "1788",
+              "2323",
+              "2530",
+              "2555",
+              "2567",
+              "2903",
+              "3067",
+              "3421",
+              "4238",
+              "5735",
+              "6016",
+              "6324",
+              "7310",
+              "7343",
+              "7590",
+              "7878",
+              "8432",
+              "8747",
+              "8829",
+              "9249",
+              "9490",
+              "10008",
+              "10060",
+              "10207",
+              "10240",
+              "10872",
+              "11319",
+              "11416",
+              "11719",
+              "11785",
+              "12205",
+              "12723",
+              "12794",
+              "13919",
+              "13981",
+              "14168",
+              "14337",
+              "14393",
+              "14400",
+              "14689",
+              "14865",
+              "14869",
+              "15333",
+              "15697",
+              "15714",
+              "16505",
+              "16835",
+              "16964",
+              "17208",
+              "17502",
+              "17521",
+              "17645",
+              "18230",
+              "19233",
+              "19282",
+              "20246",
+              "20638",
+              "20680",
+              "21149",
+              "21221",
+              "21301",
+              "21498",
+              "21537",
+              "21557",
+              "21789",
+              "21975",
+              "22673",
+              "22764",
+              "22973",
+              "23041",
+              "23482",
+              "23503",
+              "23980",
+              "24432",
+              "24547",
+              "24646",
+              "24981",
+              "25705",
+              "25772",
+              "26152",
+              "26385",
+              "26620",
+              "26861",
+              "27364",
+              "27581",
+              "27770",
+              "28046",
+              "28060",
+              "28772",
+              "29390",
+              "30181",
+              "30310",
+              "30379",
+              "31173",
+              "31366",
+              "31451",
+              "31892",
+              "32610",
+              "32746",
+              "32799",
+              "32923",
+              "34050"
+            ],
+            "script_sha256": "6d56c2591fb36278654b52ea4f82e5af81b91a35de420cc74b611331d2f2db08"
+          },
+          "sha256": "d600ec3c420a5aaeea1752bfb5c26d398bda094d2533ed5319eba1736cde8104",
+          "run": "E37-flan-circa-shard2of4"
+        },
+        {
+          "config": {
+            "task": "flan_circa_native_control",
+            "model": "google/flan-t5-xl",
+            "revision": "7d6315df2c2fb742f0f5b556879d730926ca9001",
+            "shard": 3,
+            "n_shards": 4,
+            "dtype": "float32",
+            "batch_size": 1,
+            "n": 456,
+            "n_items": 114,
+            "source_audit": {
+              "data_sha256": "98454df6b716dd7ff5f83a3db298849f05414688e81c2ee21b8e5a548ed897aa",
+              "all_source_majority_labels_match": true,
+              "human_count_distribution": {
+                "5": 34248,
+                "4": 20
+              },
+              "incomplete_human_count_ids": [
+                "5665",
+                "8515",
+                "8569",
+                "8825",
+                "8881",
+                "10804",
+                "11530",
+                "14925",
+                "21618",
+                "21619",
+                "22332",
+                "24355",
+                "26565",
+                "26693",
+                "29020",
+                "29383",
+                "29903",
+                "31746",
+                "31888",
+                "32909"
+              ],
+              "selected_all_five_unanimous": true,
+              "contrasts": {
+                "negative-strength": {
+                  "eligible_questions": 26,
+                  "selected_questions": 26
+                },
+                "positive-probability-or-frequency": {
+                  "eligible_questions": 123,
+                  "selected_questions": 64
+                },
+                "conditional-commitment": {
+                  "eligible_questions": 742,
+                  "selected_questions": 128
+                }
+              },
+              "n_unique_rows": 433,
+              "n_pairs": 218,
+              "n_question_groups": 214
+            },
+            "numerical_gate_pass": true,
+            "complete": true,
+            "wall_seconds": 16.551457724999636,
+            "add_special_tokens": true,
+            "decoder_start_token_id": 0,
+            "input_token_hashes": {
+              "original/0": "d24fcb88f20410dd62de8bed137408e680c4ccd6df4be332e36e1952ee45e3db",
+              "original/1": "23e02010d368ea458f720b667662195e12371b97b543c7bd6658bba07f763e79",
+              "strict/0": "4ec505f78ca1f0a5c4d09a54a87f1956bb346b35c68aaa8b388031b541ac505d",
+              "strict/1": "07a1a422329d79e840f2886a5d3a5f7e80f7aea318c54596ebf2834e32c3933c"
+            },
+            "item_ids": [
+              "141",
+              "352",
+              "516",
+              "657",
+              "1162",
+              "1317",
+              "1442",
+              "1973",
+              "2024",
+              "2112",
+              "2385",
+              "3030",
+              "3262",
+              "3423",
+              "3812",
+              "5419",
+              "5531",
+              "5767",
+              "6307",
+              "6370",
+              "7092",
+              "7218",
+              "7375",
+              "7824",
+              "7911",
+              "8938",
+              "9075",
+              "9580",
+              "10020",
+              "10269",
+              "10523",
+              "10645",
+              "10665",
+              "11084",
+              "11592",
+              "11820",
+              "11875",
+              "11997",
+              "12294",
+              "12932",
+              "13243",
+              "13430",
+              "13773",
+              "14165",
+              "14243",
+              "14496",
+              "14507",
+              "14613",
+              "14956",
+              "14976",
+              "15279",
+              "15670",
+              "15766",
+              "15880",
+              "16089",
+              "16199",
+              "16242",
+              "16298",
+              "16544",
+              "16739",
+              "17353",
+              "17655",
+              "17694",
+              "18049",
+              "18157",
+              "18444",
+              "18487",
+              "18657",
+              "18883",
+              "19167",
+              "19175",
+              "19470",
+              "19738",
+              "20204",
+              "20712",
+              "21175",
+              "21290",
+              "21295",
+              "21749",
+              "21788",
+              "22096",
+              "22984",
+              "23086",
+              "23907",
+              "24134",
+              "24428",
+              "24696",
+              "24782",
+              "25131",
+              "25561",
+              "26378",
+              "27067",
+              "27313",
+              "27599",
+              "27816",
+              "28224",
+              "28458",
+              "28577",
+              "28608",
+              "28940",
+              "29315",
+              "29367",
+              "30132",
+              "30213",
+              "30548",
+              "30683",
+              "30712",
+              "31549",
+              "31868",
+              "31894",
+              "32287",
+              "32490",
+              "32884",
+              "32922"
+            ],
+            "script_sha256": "6d56c2591fb36278654b52ea4f82e5af81b91a35de420cc74b611331d2f2db08"
+          },
+          "sha256": "d7fc1d0b46707b019a7ba4a5cf386a9e0b2e4191c1f3b2491c952aa00911017f",
+          "run": "E37-flan-circa-shard3of4"
+        }
+      ],
+      "descriptions": {
+        "native-encoder/original/0/negative-strength": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.15978624703081878,
+            "ci95": [
+              0.09019727448813757,
+              0.2302757426807124
+            ],
+            "clusters": 26
+          },
+          "strong_correct": {
+            "mean": 0.5,
+            "ci95": [
+              0.3076923076923077,
+              0.6923076923076923
+            ],
+            "clusters": 26
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.0016635871075917608,
+            "ci95": [
+              0.0014225871614493932,
+              0.0019263875936023675
+            ],
+            "clusters": 26
+          },
+          "strong_gold_probability": {
+            "mean": 0.4647445409343793,
+            "ci95": [
+              0.41022737986193253,
+              0.5192043811369401
+            ],
+            "clusters": 26
+          },
+          "strong_two_class_mass": {
+            "mean": 0.9291426060864558,
+            "ci95": [
+              0.8645883659617258,
+              0.9704088884620713
+            ],
+            "clusters": 26
+          },
+          "weak_as_strong_error": {
+            "mean": 0.11538461538461539,
+            "ci95": [
+              0.0,
+              0.2692307692307692
+            ],
+            "clusters": 26
+          },
+          "weak_correct": {
+            "mean": 0.8461538461538461,
+            "ci95": [
+              0.6923076923076923,
+              0.9615384615384616
+            ],
+            "clusters": 26
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.002287393802991853,
+            "ci95": [
+              0.0019038154182803389,
+              0.0027643515683638924
+            ],
+            "clusters": 26
+          },
+          "weak_gold_probability": {
+            "mean": 0.5973594756080554,
+            "ci95": [
+              0.5393406276949323,
+              0.6493281316012143
+            ],
+            "clusters": 26
+          },
+          "weak_two_class_mass": {
+            "mean": 0.9175466981071693,
+            "ci95": [
+              0.8536950367861069,
+              0.9645185352231447
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/original/1/negative-strength": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.16232316066118888,
+            "ci95": [
+              0.08905485911368427,
+              0.23725564290632
+            ],
+            "clusters": 26
+          },
+          "strong_correct": {
+            "mean": 0.23076923076923078,
+            "ci95": [
+              0.07692307692307693,
+              0.38461538461538464
+            ],
+            "clusters": 26
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.002643453496812771,
+            "ci95": [
+              0.0021115310428005897,
+              0.0032407027732495827
+            ],
+            "clusters": 26
+          },
+          "strong_gold_probability": {
+            "mean": 0.3243741086469247,
+            "ci95": [
+              0.2630246273170297,
+              0.3894300324985614
+            ],
+            "clusters": 26
+          },
+          "strong_two_class_mass": {
+            "mean": 0.7744291621761826,
+            "ci95": [
+              0.6572139913753535,
+              0.8764054692923449
+            ],
+            "clusters": 26
+          },
+          "weak_as_strong_error": {
+            "mean": 0.07692307692307693,
+            "ci95": [
+              0.0,
+              0.19230769230769232
+            ],
+            "clusters": 26
+          },
+          "weak_correct": {
+            "mean": 0.7692307692307693,
+            "ci95": [
+              0.6153846153846154,
+              0.9230769230769231
+            ],
+            "clusters": 26
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.0028750894483751976,
+            "ci95": [
+              0.0022032991436739956,
+              0.0036966595054344414
+            ],
+            "clusters": 26
+          },
+          "weak_gold_probability": {
+            "mean": 0.5751182792278436,
+            "ci95": [
+              0.48942562506462517,
+              0.6476443588590393
+            ],
+            "clusters": 26
+          },
+          "weak_two_class_mass": {
+            "mean": 0.8015414972144824,
+            "ci95": [
+              0.7065323438137197,
+              0.8838587805557137
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/original/0/positive-probability-or-frequency": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.2790405458362535,
+            "ci95": [
+              0.2104707907848853,
+              0.3473747440993194
+            ],
+            "clusters": 64
+          },
+          "strong_correct": {
+            "mean": 0.921875,
+            "ci95": [
+              0.84375,
+              0.984375
+            ],
+            "clusters": 64
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.0017573969676050183,
+            "ci95": [
+              0.0015435466258736596,
+              0.0020106431417616475
+            ],
+            "clusters": 64
+          },
+          "strong_gold_probability": {
+            "mean": 0.7778317010961473,
+            "ci95": [
+              0.7203113520721672,
+              0.8288288418727461
+            ],
+            "clusters": 64
+          },
+          "strong_two_class_mass": {
+            "mean": 0.7855587661797472,
+            "ci95": [
+              0.7286777563413125,
+              0.836478612650717
+            ],
+            "clusters": 64
+          },
+          "weak_as_strong_error": {
+            "mean": 0.34375,
+            "ci95": [
+              0.21875,
+              0.46875
+            ],
+            "clusters": 64
+          },
+          "weak_correct": {
+            "mean": 0.03125,
+            "ci95": [
+              0.0,
+              0.078125
+            ],
+            "clusters": 64
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.004827658462090767,
+            "ci95": [
+              0.0043395248631441065,
+              0.0053188968021459
+            ],
+            "clusters": 64
+          },
+          "weak_gold_probability": {
+            "mean": 0.06604276142752497,
+            "ci95": [
+              0.050828967685083624,
+              0.08258169984546837
+            ],
+            "clusters": 64
+          },
+          "weak_two_class_mass": {
+            "mean": 0.40940084776229924,
+            "ci95": [
+              0.3424338783541316,
+              0.47939498512787393
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/original/1/positive-probability-or-frequency": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.4446857711123696,
+            "ci95": [
+              0.34308518436031105,
+              0.5466873183519771
+            ],
+            "clusters": 64
+          },
+          "strong_correct": {
+            "mean": 0.953125,
+            "ci95": [
+              0.890625,
+              1.0
+            ],
+            "clusters": 64
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.006449511183745926,
+            "ci95": [
+              0.005989860368572408,
+              0.006904635542286997
+            ],
+            "clusters": 64
+          },
+          "strong_gold_probability": {
+            "mean": 0.8376107509247959,
+            "ci95": [
+              0.789971831603907,
+              0.8784470169688575
+            ],
+            "clusters": 64
+          },
+          "strong_two_class_mass": {
+            "mean": 0.851813099852734,
+            "ci95": [
+              0.8046588791823523,
+              0.89133198788968
+            ],
+            "clusters": 64
+          },
+          "weak_as_strong_error": {
+            "mean": 0.328125,
+            "ci95": [
+              0.203125,
+              0.4375
+            ],
+            "clusters": 64
+          },
+          "weak_correct": {
+            "mean": 0.078125,
+            "ci95": [
+              0.015625,
+              0.14101562499999787
+            ],
+            "clusters": 64
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.007191253513155971,
+            "ci95": [
+              0.0067463139825122195,
+              0.007630560204233916
+            ],
+            "clusters": 64
+          },
+          "weak_gold_probability": {
+            "mean": 0.15437052791094175,
+            "ci95": [
+              0.1155014647738426,
+              0.1969391327953417
+            ],
+            "clusters": 64
+          },
+          "weak_two_class_mass": {
+            "mean": 0.4557484438701067,
+            "ci95": [
+              0.3939058216608828,
+              0.5205854490301135
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/original/0/conditional-commitment": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.8702491699223964,
+            "ci95": [
+              0.8340425041658942,
+              0.9041404662965336
+            ],
+            "clusters": 128
+          },
+          "strong_correct": {
+            "mean": 0.96875,
+            "ci95": [
+              0.9375,
+              0.9921875
+            ],
+            "clusters": 128
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.001308690151290648,
+            "ci95": [
+              0.0011410357639704215,
+              0.0014919713832568958
+            ],
+            "clusters": 128
+          },
+          "strong_gold_probability": {
+            "mean": 0.8705263191804988,
+            "ci95": [
+              0.8396667044598871,
+              0.8995832838263595
+            ],
+            "clusters": 128
+          },
+          "strong_two_class_mass": {
+            "mean": 0.9094553110062407,
+            "ci95": [
+              0.8850340555950424,
+              0.9300629556043531
+            ],
+            "clusters": 128
+          },
+          "weak_as_strong_error": {
+            "mean": 0.0390625,
+            "ci95": [
+              0.0078125,
+              0.078125
+            ],
+            "clusters": 128
+          },
+          "weak_correct": {
+            "mean": 0.921875,
+            "ci95": [
+              0.875,
+              0.96875
+            ],
+            "clusters": 128
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.0051838509089066065,
+            "ci95": [
+              0.004951687115658387,
+              0.005413724667641872
+            ],
+            "clusters": 128
+          },
+          "weak_gold_probability": {
+            "mean": 0.8392108664193074,
+            "ci95": [
+              0.7944908517507429,
+              0.878458058245269
+            ],
+            "clusters": 128
+          },
+          "weak_two_class_mass": {
+            "mean": 0.8929053086885688,
+            "ci95": [
+              0.8599683537588589,
+              0.9217740714297633
+            ],
+            "clusters": 128
+          }
+        },
+        "native-encoder/original/1/conditional-commitment": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.8479268837023706,
+            "ci95": [
+              0.8092984501927206,
+              0.8824422692422662
+            ],
+            "clusters": 128
+          },
+          "strong_correct": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.9453125,
+              1.0
+            ],
+            "clusters": 128
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.006047485864655755,
+            "ci95": [
+              0.005749595550037156,
+              0.0063605496311538445
+            ],
+            "clusters": 128
+          },
+          "strong_gold_probability": {
+            "mean": 0.9002146261736925,
+            "ci95": [
+              0.8704859303286867,
+              0.9272490566249871
+            ],
+            "clusters": 128
+          },
+          "strong_two_class_mass": {
+            "mean": 0.9540686852924409,
+            "ci95": [
+              0.9337446213869043,
+              0.9699468168468229
+            ],
+            "clusters": 128
+          },
+          "weak_as_strong_error": {
+            "mean": 0.046875,
+            "ci95": [
+              0.015625,
+              0.0859375
+            ],
+            "clusters": 128
+          },
+          "weak_correct": {
+            "mean": 0.921875,
+            "ci95": [
+              0.875,
+              0.96875
+            ],
+            "clusters": 128
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.005348484343812743,
+            "ci95": [
+              0.0051251248010203195,
+              0.005576620720694336
+            ],
+            "clusters": 128
+          },
+          "weak_gold_probability": {
+            "mean": 0.8245032433842425,
+            "ci95": [
+              0.7801475290352755,
+              0.8641133814400745
+            ],
+            "clusters": 128
+          },
+          "weak_two_class_mass": {
+            "mean": 0.8938833921729383,
+            "ci95": [
+              0.8632124904736429,
+              0.9213603078639607
+            ],
+            "clusters": 128
+          }
+        },
+        "native-encoder/strict/0/negative-strength": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.20675128508918064,
+            "ci95": [
+              0.1261742426737149,
+              0.2811579731835075
+            ],
+            "clusters": 26
+          },
+          "strong_correct": {
+            "mean": 0.8461538461538461,
+            "ci95": [
+              0.6923076923076923,
+              0.9615384615384616
+            ],
+            "clusters": 26
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.0038404360798617396,
+            "ci95": [
+              0.003291748966484402,
+              0.0044645900552635655
+            ],
+            "clusters": 26
+          },
+          "strong_gold_probability": {
+            "mean": 0.6385783065970128,
+            "ci95": [
+              0.5773185064586309,
+              0.6956241134410867
+            ],
+            "clusters": 26
+          },
+          "strong_two_class_mass": {
+            "mean": 0.9258031889509696,
+            "ci95": [
+              0.8574946686768762,
+              0.9735471898260024
+            ],
+            "clusters": 26
+          },
+          "weak_as_strong_error": {
+            "mean": 0.5,
+            "ci95": [
+              0.3076923076923077,
+              0.6923076923076923
+            ],
+            "clusters": 26
+          },
+          "weak_correct": {
+            "mean": 0.46153846153846156,
+            "ci95": [
+              0.2692307692307692,
+              0.6538461538461539
+            ],
+            "clusters": 26
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.0055580382915930105,
+            "ci95": [
+              0.0044781372582432455,
+              0.006923262609947972
+            ],
+            "clusters": 26
+          },
+          "weak_gold_probability": {
+            "mean": 0.473961740732193,
+            "ci95": [
+              0.4211951712003121,
+              0.5278472147308862
+            ],
+            "clusters": 26
+          },
+          "weak_two_class_mass": {
+            "mean": 0.9344016319284072,
+            "ci95": [
+              0.8766391714891563,
+              0.9725460467716822
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/strict/1/negative-strength": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.23754877798648535,
+            "ci95": [
+              0.16061789191937748,
+              0.3118762377042333
+            ],
+            "clusters": 26
+          },
+          "strong_correct": {
+            "mean": 0.34615384615384615,
+            "ci95": [
+              0.15384615384615385,
+              0.5384615384615384
+            ],
+            "clusters": 26
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.006953237632002968,
+            "ci95": [
+              0.005667264852225065,
+              0.008336539445624042
+            ],
+            "clusters": 26
+          },
+          "strong_gold_probability": {
+            "mean": 0.41113766540701574,
+            "ci95": [
+              0.3400661081147308,
+              0.4824351288378238
+            ],
+            "clusters": 26
+          },
+          "strong_two_class_mass": {
+            "mean": 0.8038868757251364,
+            "ci95": [
+              0.694346633927825,
+              0.8948737462122853
+            ],
+            "clusters": 26
+          },
+          "weak_as_strong_error": {
+            "mean": 0.038461538461538464,
+            "ci95": [
+              0.0,
+              0.11538461538461539
+            ],
+            "clusters": 26
+          },
+          "weak_correct": {
+            "mean": 0.8076923076923077,
+            "ci95": [
+              0.6538461538461539,
+              0.9615384615384616
+            ],
+            "clusters": 26
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.00750538669168376,
+            "ci95": [
+              0.005964818157595941,
+              0.009334456493916848
+            ],
+            "clusters": 26
+          },
+          "weak_gold_probability": {
+            "mean": 0.5847633309089221,
+            "ci95": [
+              0.5049947910870497,
+              0.6565050947408263
+            ],
+            "clusters": 26
+          },
+          "weak_two_class_mass": {
+            "mean": 0.8327081123223672,
+            "ci95": [
+              0.7425940204125184,
+              0.9097339601327594
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/strict/0/positive-probability-or-frequency": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.2604899840104268,
+            "ci95": [
+              0.1914458719784258,
+              0.32912794871073975
+            ],
+            "clusters": 64
+          },
+          "strong_correct": {
+            "mean": 0.953125,
+            "ci95": [
+              0.890625,
+              1.0
+            ],
+            "clusters": 64
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.003513638410368003,
+            "ci95": [
+              0.0031017307358069957,
+              0.003958256912483193
+            ],
+            "clusters": 64
+          },
+          "strong_gold_probability": {
+            "mean": 0.8848740003886633,
+            "ci95": [
+              0.8346318328127381,
+              0.9259690757025965
+            ],
+            "clusters": 64
+          },
+          "strong_two_class_mass": {
+            "mean": 0.8904882559636462,
+            "ci95": [
+              0.8402226203886812,
+              0.931212218405426
+            ],
+            "clusters": 64
+          },
+          "weak_as_strong_error": {
+            "mean": 0.609375,
+            "ci95": [
+              0.484375,
+              0.734375
+            ],
+            "clusters": 64
+          },
+          "weak_correct": {
+            "mean": 0.109375,
+            "ci95": [
+              0.03125,
+              0.1875
+            ],
+            "clusters": 64
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.010585961255856091,
+            "ci95": [
+              0.00947791287326254,
+              0.011769629638729384
+            ],
+            "clusters": 64
+          },
+          "weak_gold_probability": {
+            "mean": 0.11708808831463102,
+            "ci95": [
+              0.08729319445701549,
+              0.1500923183837585
+            ],
+            "clusters": 64
+          },
+          "weak_two_class_mass": {
+            "mean": 0.6206664202763932,
+            "ci95": [
+              0.560893165336347,
+              0.6812940739964687
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/strict/1/positive-probability-or-frequency": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.4200572596216186,
+            "ci95": [
+              0.3192449091627072,
+              0.5207050895705689
+            ],
+            "clusters": 64
+          },
+          "strong_correct": {
+            "mean": 0.96875,
+            "ci95": [
+              0.921875,
+              1.0
+            ],
+            "clusters": 64
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.01549597579287365,
+            "ci95": [
+              0.01432561990350223,
+              0.016704393454165255
+            ],
+            "clusters": 64
+          },
+          "strong_gold_probability": {
+            "mean": 0.8791030962020159,
+            "ci95": [
+              0.8338717662962154,
+              0.9152880859095603
+            ],
+            "clusters": 64
+          },
+          "strong_two_class_mass": {
+            "mean": 0.8912152657230763,
+            "ci95": [
+              0.8461217850996036,
+              0.9264322626742342
+            ],
+            "clusters": 64
+          },
+          "weak_as_strong_error": {
+            "mean": 0.453125,
+            "ci95": [
+              0.328125,
+              0.578125
+            ],
+            "clusters": 64
+          },
+          "weak_correct": {
+            "mean": 0.28125,
+            "ci95": [
+              0.171875,
+              0.39101562499999787
+            ],
+            "clusters": 64
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.020498458805377595,
+            "ci95": [
+              0.019275289198412794,
+              0.021750579424769965
+            ],
+            "clusters": 64
+          },
+          "weak_gold_probability": {
+            "mean": 0.2280005957290996,
+            "ci95": [
+              0.17063149519672152,
+              0.2870817207822256
+            ],
+            "clusters": 64
+          },
+          "weak_two_class_mass": {
+            "mean": 0.6253181490610586,
+            "ci95": [
+              0.5688029900928087,
+              0.6807946976266975
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/strict/0/conditional-commitment": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.8310067305936909,
+            "ci95": [
+              0.7885442881091759,
+              0.8696960366877661
+            ],
+            "clusters": 128
+          },
+          "strong_correct": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.9453125,
+              1.0
+            ],
+            "clusters": 128
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.002664563996859215,
+            "ci95": [
+              0.0022679452298348226,
+              0.0031506642600788834
+            ],
+            "clusters": 128
+          },
+          "strong_gold_probability": {
+            "mean": 0.9388498256885214,
+            "ci95": [
+              0.9144032598473132,
+              0.9601348031894303
+            ],
+            "clusters": 128
+          },
+          "strong_two_class_mass": {
+            "mean": 0.9544368899951223,
+            "ci95": [
+              0.9333726845813999,
+              0.9709605545885551
+            ],
+            "clusters": 128
+          },
+          "weak_as_strong_error": {
+            "mean": 0.078125,
+            "ci95": [
+              0.03125,
+              0.125
+            ],
+            "clusters": 128
+          },
+          "weak_correct": {
+            "mean": 0.8125,
+            "ci95": [
+              0.7421875,
+              0.875
+            ],
+            "clusters": 128
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.01846247002686141,
+            "ci95": [
+              0.01733524131127524,
+              0.01961672935030947
+            ],
+            "clusters": 128
+          },
+          "weak_gold_probability": {
+            "mean": 0.7309457155570271,
+            "ci95": [
+              0.6765970987151377,
+              0.7807154138548866
+            ],
+            "clusters": 128
+          },
+          "weak_two_class_mass": {
+            "mean": 0.8345215858134907,
+            "ci95": [
+              0.7903829402774136,
+              0.873930332350028
+            ],
+            "clusters": 128
+          }
+        },
+        "native-encoder/strict/1/conditional-commitment": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.775906612648113,
+            "ci95": [
+              0.7260991704757926,
+              0.8186535582978408
+            ],
+            "clusters": 128
+          },
+          "strong_correct": {
+            "mean": 0.984375,
+            "ci95": [
+              0.9609375,
+              1.0
+            ],
+            "clusters": 128
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.013475436513544992,
+            "ci95": [
+              0.012716254253609805,
+              0.014230226932522782
+            ],
+            "clusters": 128
+          },
+          "strong_gold_probability": {
+            "mean": 0.9332551014867931,
+            "ci95": [
+              0.9080425505810126,
+              0.9543778205872513
+            ],
+            "clusters": 128
+          },
+          "strong_two_class_mass": {
+            "mean": 0.9575295203740097,
+            "ci95": [
+              0.9357321730046806,
+              0.9741752400614132
+            ],
+            "clusters": 128
+          },
+          "weak_as_strong_error": {
+            "mean": 0.109375,
+            "ci95": [
+              0.0625,
+              0.1640625
+            ],
+            "clusters": 128
+          },
+          "weak_correct": {
+            "mean": 0.765625,
+            "ci95": [
+              0.6875,
+              0.8359375
+            ],
+            "clusters": 128
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.01832191834000696,
+            "ci95": [
+              0.017366569565547253,
+              0.01922021350592331
+            ],
+            "clusters": 128
+          },
+          "weak_gold_probability": {
+            "mean": 0.6434807113473653,
+            "ci95": [
+              0.5873459189464484,
+              0.6932020197255042
+            ],
+            "clusters": 128
+          },
+          "weak_two_class_mass": {
+            "mean": 0.7758261956605566,
+            "ci95": [
+              0.7319697301053566,
+              0.8167698401471625
+            ],
+            "clusters": 128
+          }
+        }
+      },
+      "ordering": {
+        "native-encoder/original/negative-strength/strong": {
+          "max_class_probability_gap": {
+            "mean": 0.20120468664054686,
+            "ci95": [
+              0.1414002726230627,
+              0.26746280069570416
+            ],
+            "clusters": 26
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.6538461538461539,
+            "ci95": [
+              0.46153846153846156,
+              0.8461538461538461
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/original/negative-strength/weak": {
+          "max_class_probability_gap": {
+            "mean": 0.14050775033851656,
+            "ci95": [
+              0.09700815620912741,
+              0.19089072568995805
+            ],
+            "clusters": 26
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.8846153846153846,
+            "ci95": [
+              0.7692307692307693,
+              1.0
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/original/positive-probability-or-frequency/strong": {
+          "max_class_probability_gap": {
+            "mean": 0.07978452981842565,
+            "ci95": [
+              0.05993380243817228,
+              0.10192863396659955
+            ],
+            "clusters": 64
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.953125,
+            "ci95": [
+              0.890625,
+              1.0
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/original/positive-probability-or-frequency/weak": {
+          "max_class_probability_gap": {
+            "mean": 0.16350359050557017,
+            "ci95": [
+              0.1379956134740496,
+              0.19172751606674862
+            ],
+            "clusters": 64
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.875,
+            "ci95": [
+              0.78125,
+              0.9378906249999979
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/original/conditional-commitment/strong": {
+          "max_class_probability_gap": {
+            "mean": 0.051380094366777485,
+            "ci95": [
+              0.039862383307058734,
+              0.06510582022999642
+            ],
+            "clusters": 128
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.96875,
+            "ci95": [
+              0.9375,
+              0.9921875
+            ],
+            "clusters": 128
+          }
+        },
+        "native-encoder/original/conditional-commitment/weak": {
+          "max_class_probability_gap": {
+            "mean": 0.055933538728822896,
+            "ci95": [
+              0.0436295991752786,
+              0.06984203245369826
+            ],
+            "clusters": 128
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.953125,
+            "ci95": [
+              0.9140625,
+              0.984375
+            ],
+            "clusters": 128
+          }
+        },
+        "native-encoder/strict/negative-strength/strong": {
+          "max_class_probability_gap": {
+            "mean": 0.23579046506291398,
+            "ci95": [
+              0.18738296283408998,
+              0.28787479824923834
+            ],
+            "clusters": 26
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.5,
+            "ci95": [
+              0.3076923076923077,
+              0.6923076923076923
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/strict/negative-strength/weak": {
+          "max_class_probability_gap": {
+            "mean": 0.24117151862726763,
+            "ci95": [
+              0.19992984339881403,
+              0.28416718832002236
+            ],
+            "clusters": 26
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.46153846153846156,
+            "ci95": [
+              0.2692307692307692,
+              0.6538461538461539
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/strict/positive-probability-or-frequency/strong": {
+          "max_class_probability_gap": {
+            "mean": 0.04161268718507927,
+            "ci95": [
+              0.026804411464036094,
+              0.06006660134432876
+            ],
+            "clusters": 64
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/strict/positive-probability-or-frequency/weak": {
+          "max_class_probability_gap": {
+            "mean": 0.1740850229471107,
+            "ci95": [
+              0.14361344955341337,
+              0.20707831639228969
+            ],
+            "clusters": 64
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.734375,
+            "ci95": [
+              0.625,
+              0.828125
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/strict/conditional-commitment/strong": {
+          "max_class_probability_gap": {
+            "mean": 0.02337258821512478,
+            "ci95": [
+              0.015416572953409969,
+              0.03332487777133792
+            ],
+            "clusters": 128
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.984375,
+            "ci95": [
+              0.9609375,
+              1.0
+            ],
+            "clusters": 128
+          }
+        },
+        "native-encoder/strict/conditional-commitment/weak": {
+          "max_class_probability_gap": {
+            "mean": 0.10896628619593685,
+            "ci95": [
+              0.09218366963687004,
+              0.1272045773097488
+            ],
+            "clusters": 128
+          },
+          "semantic_argmax_agreement": {
+            "mean": 0.921875,
+            "ci95": [
+              0.8671875,
+              0.9609375
+            ],
+            "clusters": 128
+          }
+        }
+      },
+      "paired_strict_minus_original": {
+        "native-encoder/0/negative-strength": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.04696503805836188,
+            "ci95": [
+              0.0173330442159404,
+              0.07900774252386418
+            ],
+            "clusters": 26
+          },
+          "strong_correct": {
+            "mean": 0.34615384615384615,
+            "ci95": [
+              0.19230769230769232,
+              0.5384615384615384
+            ],
+            "clusters": 26
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.002176848972269979,
+            "ci95": [
+              0.0018337070013960607,
+              0.002579368427429402
+            ],
+            "clusters": 26
+          },
+          "strong_gold_probability": {
+            "mean": 0.17383376566263345,
+            "ci95": [
+              0.14810082557109688,
+              0.19851534690421357
+            ],
+            "clusters": 26
+          },
+          "strong_two_class_mass": {
+            "mean": -0.003339417135486236,
+            "ci95": [
+              -0.014212540529954892,
+              0.00493155655164558
+            ],
+            "clusters": 26
+          },
+          "weak_as_strong_error": {
+            "mean": 0.38461538461538464,
+            "ci95": [
+              0.19230769230769232,
+              0.5769230769230769
+            ],
+            "clusters": 26
+          },
+          "weak_correct": {
+            "mean": -0.38461538461538464,
+            "ci95": [
+              -0.5769230769230769,
+              -0.19230769230769232
+            ],
+            "clusters": 26
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.0032706444886011574,
+            "ci95": [
+              0.0025434885427015478,
+              0.004191486018512828
+            ],
+            "clusters": 26
+          },
+          "weak_gold_probability": {
+            "mean": -0.12339773487586242,
+            "ci95": [
+              -0.15144378210489565,
+              -0.09311138683786761
+            ],
+            "clusters": 26
+          },
+          "weak_two_class_mass": {
+            "mean": 0.016854933821238004,
+            "ci95": [
+              0.004144055811831584,
+              0.034476170158730106
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/1/negative-strength": {
+          "paired_relative_weak_probability_delta": {
+            "mean": 0.07522561732529649,
+            "ci95": [
+              0.039195355021082075,
+              0.11315206262632393
+            ],
+            "clusters": 26
+          },
+          "strong_correct": {
+            "mean": 0.11538461538461539,
+            "ci95": [
+              0.0,
+              0.23076923076923078
+            ],
+            "clusters": 26
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.004309784135190197,
+            "ci95": [
+              0.00354425802825762,
+              0.0051130269741966345
+            ],
+            "clusters": 26
+          },
+          "strong_gold_probability": {
+            "mean": 0.08676355676009105,
+            "ci95": [
+              0.06291182160090941,
+              0.11112071801550112
+            ],
+            "clusters": 26
+          },
+          "strong_two_class_mass": {
+            "mean": 0.029457713548953716,
+            "ci95": [
+              0.010576180008669885,
+              0.052122074046816964
+            ],
+            "clusters": 26
+          },
+          "weak_as_strong_error": {
+            "mean": -0.038461538461538464,
+            "ci95": [
+              -0.11538461538461539,
+              0.0
+            ],
+            "clusters": 26
+          },
+          "weak_correct": {
+            "mean": 0.038461538461538464,
+            "ci95": [
+              -0.07692307692307693,
+              0.15384615384615385
+            ],
+            "clusters": 26
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.004630297243308563,
+            "ci95": [
+              0.0037107829915699908,
+              0.005744590426911599
+            ],
+            "clusters": 26
+          },
+          "weak_gold_probability": {
+            "mean": 0.009645051681078397,
+            "ci95": [
+              -0.020324431961545576,
+              0.03650111031646911
+            ],
+            "clusters": 26
+          },
+          "weak_two_class_mass": {
+            "mean": 0.031166615107884772,
+            "ci95": [
+              0.0043661846062884885,
+              0.05570216085761785
+            ],
+            "clusters": 26
+          }
+        },
+        "native-encoder/0/positive-probability-or-frequency": {
+          "paired_relative_weak_probability_delta": {
+            "mean": -0.01855056182582676,
+            "ci95": [
+              -0.03148274068884351,
+              -0.006177728290504668
+            ],
+            "clusters": 64
+          },
+          "strong_correct": {
+            "mean": 0.03125,
+            "ci95": [
+              0.0,
+              0.078125
+            ],
+            "clusters": 64
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.0017562414427629847,
+            "ci95": [
+              0.001531734794230033,
+              0.0019964375254517106
+            ],
+            "clusters": 64
+          },
+          "strong_gold_probability": {
+            "mean": 0.10704229929251596,
+            "ci95": [
+              0.08689590450085234,
+              0.1299426560086431
+            ],
+            "clusters": 64
+          },
+          "strong_two_class_mass": {
+            "mean": 0.10492948978389904,
+            "ci95": [
+              0.08481708682343196,
+              0.12773582694408103
+            ],
+            "clusters": 64
+          },
+          "weak_as_strong_error": {
+            "mean": 0.265625,
+            "ci95": [
+              0.15625,
+              0.390625
+            ],
+            "clusters": 64
+          },
+          "weak_correct": {
+            "mean": 0.078125,
+            "ci95": [
+              0.0,
+              0.15625
+            ],
+            "clusters": 64
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.005758302793765324,
+            "ci95": [
+              0.005072266380739166,
+              0.006508248345971878
+            ],
+            "clusters": 64
+          },
+          "weak_gold_probability": {
+            "mean": 0.05104532688710606,
+            "ci95": [
+              0.03488555004460068,
+              0.06915398451528744
+            ],
+            "clusters": 64
+          },
+          "weak_two_class_mass": {
+            "mean": 0.21126557251409395,
+            "ci95": [
+              0.18531374872527523,
+              0.23961965304461047
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/1/positive-probability-or-frequency": {
+          "paired_relative_weak_probability_delta": {
+            "mean": -0.024628511490750963,
+            "ci95": [
+              -0.03928477228203842,
+              -0.011836514370798301
+            ],
+            "clusters": 64
+          },
+          "strong_correct": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "clusters": 64
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.009046464609127725,
+            "ci95": [
+              0.008239417113964009,
+              0.009906154145210167
+            ],
+            "clusters": 64
+          },
+          "strong_gold_probability": {
+            "mean": 0.04149234527722001,
+            "ci95": [
+              0.026954370376188308,
+              0.05918708570534359
+            ],
+            "clusters": 64
+          },
+          "strong_two_class_mass": {
+            "mean": 0.03940216587034229,
+            "ci95": [
+              0.024892888071826748,
+              0.05700935837571706
+            ],
+            "clusters": 64
+          },
+          "weak_as_strong_error": {
+            "mean": 0.125,
+            "ci95": [
+              0.046875,
+              0.21875
+            ],
+            "clusters": 64
+          },
+          "weak_correct": {
+            "mean": 0.203125,
+            "ci95": [
+              0.09375,
+              0.3125
+            ],
+            "clusters": 64
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.013307205292221624,
+            "ci95": [
+              0.012382360947412963,
+              0.014248398375457327
+            ],
+            "clusters": 64
+          },
+          "weak_gold_probability": {
+            "mean": 0.07363006781815784,
+            "ci95": [
+              0.047695929355359115,
+              0.1017178077920107
+            ],
+            "clusters": 64
+          },
+          "weak_two_class_mass": {
+            "mean": 0.16956970519095194,
+            "ci95": [
+              0.1394167070806361,
+              0.2002843335285433
+            ],
+            "clusters": 64
+          }
+        },
+        "native-encoder/0/conditional-commitment": {
+          "paired_relative_weak_probability_delta": {
+            "mean": -0.039242439328705435,
+            "ci95": [
+              -0.058418070165967804,
+              -0.019704876724862937
+            ],
+            "clusters": 128
+          },
+          "strong_correct": {
+            "mean": 0.0078125,
+            "ci95": [
+              0.0,
+              0.0234375
+            ],
+            "clusters": 128
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.001355873845568567,
+            "ci95": [
+              0.001112711613546935,
+              0.001686536361620483
+            ],
+            "clusters": 128
+          },
+          "strong_gold_probability": {
+            "mean": 0.06832350650802255,
+            "ci95": [
+              0.057362989155808466,
+              0.0800617698696442
+            ],
+            "clusters": 128
+          },
+          "strong_two_class_mass": {
+            "mean": 0.044981578988881665,
+            "ci95": [
+              0.03852770637242884,
+              0.05188434943991069
+            ],
+            "clusters": 128
+          },
+          "weak_as_strong_error": {
+            "mean": 0.0390625,
+            "ci95": [
+              0.0078125,
+              0.078125
+            ],
+            "clusters": 128
+          },
+          "weak_correct": {
+            "mean": -0.109375,
+            "ci95": [
+              -0.1640625,
+              -0.0625
+            ],
+            "clusters": 128
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.013278619117954804,
+            "ci95": [
+              0.012285307645106514,
+              0.014270944032909938
+            ],
+            "clusters": 128
+          },
+          "weak_gold_probability": {
+            "mean": -0.10826515086228028,
+            "ci95": [
+              -0.13055511020938865,
+              -0.08863761461361719
+            ],
+            "clusters": 128
+          },
+          "weak_two_class_mass": {
+            "mean": -0.05838372287507809,
+            "ci95": [
+              -0.07932646120093523,
+              -0.039637147765324704
+            ],
+            "clusters": 128
+          }
+        },
+        "native-encoder/1/conditional-commitment": {
+          "paired_relative_weak_probability_delta": {
+            "mean": -0.07202027105425753,
+            "ci95": [
+              -0.09703729730042626,
+              -0.04886117866064938
+            ],
+            "clusters": 128
+          },
+          "strong_correct": {
+            "mean": 0.0078125,
+            "ci95": [
+              0.0,
+              0.0234375
+            ],
+            "clusters": 128
+          },
+          "strong_global_candidate_mass": {
+            "mean": 0.007427950648889237,
+            "ci95": [
+              0.006931074002477544,
+              0.007945165111277675
+            ],
+            "clusters": 128
+          },
+          "strong_gold_probability": {
+            "mean": 0.033040475313100615,
+            "ci95": [
+              0.023711083969828906,
+              0.04337029876378437
+            ],
+            "clusters": 128
+          },
+          "strong_two_class_mass": {
+            "mean": 0.0034608350815688027,
+            "ci95": [
+              -0.002361642379537443,
+              0.0074545652490087344
+            ],
+            "clusters": 128
+          },
+          "weak_as_strong_error": {
+            "mean": 0.0625,
+            "ci95": [
+              0.0234375,
+              0.109375
+            ],
+            "clusters": 128
+          },
+          "weak_correct": {
+            "mean": -0.15625,
+            "ci95": [
+              -0.21875,
+              -0.1015625
+            ],
+            "clusters": 128
+          },
+          "weak_global_candidate_mass": {
+            "mean": 0.012973433996194217,
+            "ci95": [
+              0.012149823648928759,
+              0.013750085998663052
+            ],
+            "clusters": 128
+          },
+          "weak_gold_probability": {
+            "mean": -0.18102253203687724,
+            "ci95": [
+              -0.2092023134300689,
+              -0.15520950620921214
+            ],
+            "clusters": 128
+          },
+          "weak_two_class_mass": {
+            "mean": -0.11805719651238178,
+            "ci95": [
+              -0.1420036342778303,
+              -0.09603964955149426
+            ],
+            "clusters": 128
+          }
+        }
+      }
+    }
+  },
+  "limits": [
+    "Question-paired item bootstrap within each contrast; do not pool overlapping contrasts as independent.",
+    "All source judgments and meaning classes preserved; selected unanimous subset only.",
+    "Strong and weak errors, both orders, and absolute candidate support reported together.",
+    "Single-instruction recovery does not establish latent ability or a common criterion.",
+    "Native Flan is an instrument/family boundary, not a controlled training-stage comparison."
+  ]
+}

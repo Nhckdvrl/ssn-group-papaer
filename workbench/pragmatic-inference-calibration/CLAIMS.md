@@ -31,3 +31,6 @@ Flan-T5-XL 1,365个选择与作者公开结果全部匹配，概率MAD=0.000077�
 - 2026-10-03 E24/E25：ImplicatureX源BF16 pair和不总是1，True>.5与True>False不等价。小模型自然recognition数字对算术/选项顺序敏感；仅源数据描述和技术复现，不据此 claim universal hallucination 或整个parent结论无效。
 
 - 2026-10-03 E29：首轮access regex窄导致8run全部在模型加载前停止，0预测；r2源变体全量预检后完成。OL SFT/DPO裸入口全量历史parity各一题超.001，整入口隔离细粒度归因，不局部替换行。role full恢复同时partial恶化/极性不一致，不称知识能力恢复。E30仅数值debug。
+
+- 2026-10-03 E28/E31–37：强现代端点与两组自然强度素材全部完成，有界strict/Flan控制完成。C01/C02不升级：IQAP含词汇/terminal prior、Circa负强度有巨大order effect；一句指令改善强侧可能恶化弱侧，不能用单侧恢复claim能力。原数据/条件/两order均保留，完整结果可审；E35第三family仍运行。没有post-training统一criterion证据。
+- E35跑前两次CPU gate：Hu尾部重复空格会retokenize；官方Mistral chat_template完整重渲染assistant时丢system。二者0 GPU预测，冻结原generation prefix与nativeassistant内容后全量前缀通过；不算模型语用错误。

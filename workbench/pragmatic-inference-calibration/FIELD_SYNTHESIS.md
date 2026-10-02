@@ -106,3 +106,10 @@ ProbLang Chapter2知识模型与summary已读，教学解释不作为新的实�
 E29知识读数已经出现了原问题的一种测量风险：Q3的role澄清让full-access看起来恢复，但partial-access的知识规范更差，负问也不一致。这还不是语用推断false-alarm结果，因为knowledge问句与推断许可并非同一对象；它说明不能把“说者是否知道”的单侧高分当解释其它任务的可靠变量。E31使用原四变体在8B/14B验证边界，不继续堆恢复prompt。E27三stage匹配输入后也没有统一更爱推断：聊天初始support下降，裸入口方向不同且support极弱。现在仍未识别可以跨任务归因的criterion。
 
 CoNLL2026 Sense and Sensitivity全文补读提醒：稳定性与human对应也必须分开，真实生成推理提高鲁棒性不自动提高human approximation；该claim已有ownership。DRInQ公开subset全量审核不提供固定candidate的足够语境pair，不能草率用它搭统一d-prime。当前优先是强自然parent边界与原规范的适用性，仍没有成熟paper claim。CEI/VakyArth最新preprint仅局部浏览，本轮未计入已读论文卡。
+
+
+## 12. 自然材料与强端点带来的修正
+
+E28/E31/E32补齐8B/14B及原alternative expectedness；E33真实IQAP human分布和E34原Circa同question自然回答完成。IQAP方向随强端点改善，Circa有条件解释也相当成功，这削弱“模型普遍不会调整强度”的大故事。负强度读数可以被选项顺序彻底改写；E36平衡的单句强度要求和E37原Flan native对照显示，强侧改善常伴弱侧恶化。因此局部prompt修补分支已经达到有界控制终点，不再给它加限定把instrument artifact保成paper。
+
+我们现在还不知道的是：**在字面证据相同而交际上可用于推断的证据不同的自然情境，强模型会不会做对相应的推断变化？** 目前Circa同问题换回答同时换semantic content/难度；IQAP是人群graded判断，不能直接因果解释speaker certainty。需要真实上下文、原人类norm和候选意义固定的材料，先检查信息是否真的可识别，再决定实验。NAACL2022 SwDA-IA的真实对话/上下文效应、NAACL2025 projection/RSA的belief attribution是新驻留入口，阅读与源码检查进行中；不立即再下载20个benchmark跑表。最新corpus近邻扫描显示CIS、DRInQ、social world models、goal-directed alternatives仍拥有相关层claim，定位只界定增量，不自动判死。

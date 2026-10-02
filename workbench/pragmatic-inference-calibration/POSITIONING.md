@@ -61,3 +61,21 @@
 | ImplicatureX v2 | recognize/cancel/prior/irrelevant/strengthen/type/form | 首次撤回/取消、用连续差当新metric | matched stage与证据许可改变哪一环；Approx norm和readout gate先过 | 很高 |
 
 E24源算术/顺序问题只修复仪器，不作为规避ownership的paper主题。强现代8B/14B端点与真实DPO结果尚未完成前，不声称领域特有稳定现象。
+
+| 近邻 | 已拥有 | 距离 | compression risk |
+|---|---|---|---|
+| INLI / ACL2025 main | implicit/explicit entailment分类、human subset验证、跨domain训练保持 | 不同证据来源需要区别已拥有；4类不是逻辑唯一norm，hypothesis-only .595不等于artifact已排除 | 尚未识别同自然材料source/strength交互stage归因，不做40k新榜单 | 高：把criterion改名implicit-vs-explicit不是增量 |
+| Sense and Sensitivity / CoNLL2026 | 真实reasoning提高prompt鲁棒却不成为human代理 | “更稳≠更human”、frame/polarity/order已拥有 | 知识问句E29只是control；要条件证据结构改变已有解释 | 高：generic elicitation story不够 |
+
+
+## 自然解释强度与互动边界扫描
+
+| 近邻 | 已拥有 | 当前距离/风险 |
+|---|---|---|
+| IQAP ACL2010 / 作者2011更新 | 自然scalar方向/强度、人类分布、语义关系与局部语用 | E33不claim首个人类分布校准；新阶段条件结构待证据 |
+| CIRCA EMNLP2020 main | 多类间接回答、跨情景、PN误压No、问答only controls | E34初始配对只是probe；只换新model不能成为overcommitment paper |
+| Scalar Calibration TACL2024 | 已直接Circa人类scalar/model calibration、ECE排序问题 | calibration+larger-model表已拥有，需改变具体科学解释 |
+| Social world models ACL2026 main | 多family ToM–prag功能整合、localizer/消融/通用能力controls | 不能把观察提前机制化，更不能claim第一次共享mental-state网络 |
+| Reference clarification arXiv2601.07820v2 | 不确定→澄清与实际信息使用脱节 | 互动停止/修复方向不是空白；当前静态实验不支持interaction claim |
+
+Raffel作者blog[When will models be good enough](https://huggingface.co/blog/craffel/when-will-language-models-be-good-enough)全文已读（观点性文章，不作实验事实）：科学问题应与具体使用目标/成本联系，不把8卡占用或更大model排名当价值判断。Potts教学页语义关系分析明确指出same-direction答案可经后承也可经cooperative/expert上界补全，未来对象需区分两条证据链。

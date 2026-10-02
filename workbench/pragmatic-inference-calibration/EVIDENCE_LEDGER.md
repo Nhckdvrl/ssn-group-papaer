@@ -42,3 +42,18 @@ E22/E26见results/E22-E26-stage-controls.json；E21七模型见E21-E23-implicatu
 | DRInQ公开231行、84相同question不同human gold文本对；固定五候选集合的pair=0，仅4pair/3question互含gold | 公开subset不足支撑完整同candidate语境对照 | 一下载邻居就能扩SDT或新榜单 | 高，文字/集合审计；不等于语义错误 | 保留资产缺口，先不铺无信息量的额外benchmark |
 
 E27/E29结果文件见results/，知识规范仍是parent规则，未成为推断许可gold。C01/C02仍L0。
+
+
+## 强端点、自然强度与有界恢复（E28/E31–37）
+
+| Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E28 8B/14B Wave MAE14.435/16.113，差+1.678 CI[−1.521,+5.239]；natural Impli条件Δ多CI含零而order gap增.469 | 强端点/任务/readout边界仍须分开 | 从一个点估计排名或旧小模型源threshold讲能力 | 高：任务数字；科学归因不足 | E35独立family原parent对照；不再重复单一order优化 |
+| E31 full polarity agreement4/8/14B=.181/.688/.894，但14B access-only norm.058 | 规模可以改善一致性但readout不统一 | 单prompt恢复等于latent knowledge恢复 | 高：源40items/八condition SHA一致 | 不能把norm当许可；回到具体候选证据/来源 |
+| E32同stage alternative expectedness、human关联无统一方向，OL某dataset SFT surprisal+.361[.128,.587] | 备选预期与任务回答是不同观测 | 跨材料均值直接mediation或统一criterion | 高：string复现；语义层解释不足 | 需同材料human许可/备选，不泛化成能力 |
+| E33 IQAP chat方向4/8/14B=.613/.733/.853；null probable选择近1、terminal能翻转强度方向 | 真方向改善并存候选词汇/terminal先验 | 更大/更aligned统一更过度确定 | 高：150dev/原human；未经holdout | 保留4way human分布；不局部换答案措辞救故事 |
+| E34 Q3-4 PN原序强/弱正确.808/.115，逆序.038/.923；CY多正确 | 测量位置依赖，条件语义也有强成功例 | PN单侧错=过度推断；conditional一概不会 | 高：源五人一致抽样；非因果配对 | E36已完成有限一句控制，E35独立family |
+| E36 Q3-8 strict强侧+.577[.346,.808]、弱侧−.500[−.692,−.308]；14B部分改善 | 指令可以改变两侧选择政策，必须联合报告 | 一侧高分就是恢复能力 | 高：26自然question配对；order仍敏感 | 本局部prompt分支不继续；回到自然语境证据 |
+| E37 Flan原序strict强侧+.346[.192,.539]、弱侧−.385[−.577,−.192] | 控制效应不限当前causal接口，但依然只是任务 | encoder-decoder自动消除偏差、统一stage原因 | 高：433原QA/1732读数；无stage因果 | 保留native baseline作边界，不补机制故事 |
+
+完整可审结果分别见results/E28、E31、E32、E33、E34、E36、E37的summary.json。全部source/CI/两order未挑选。C01/C02仍L0；没有共同licensed/unlicensed gold，没有d′。E35跑前CPU发现空格retokenization和官方template追加assistant时丢system，0预测修正，逐候选独立teacher forcing gate后才全量。

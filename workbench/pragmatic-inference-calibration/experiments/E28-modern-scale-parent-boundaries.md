@@ -1,6 +1,6 @@
 # E28：较强现代同family端点的parent边界（2026-10-03）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO / D1–D4，不是扩benchmark或新方法
 - **对应：** C01/C02/P02；小模型结果不足支撑领域判断，原14B Qwen1.5是复现anchor
 - **问题（一句话）：** 原自然语用、人类分布与取消更新的不同读数，在较强Qwen3端点是否同时改善，或其条件结构仍不同？
@@ -16,3 +16,10 @@
 先卡后运行。权重manifest写入外置models/qwen3-scale-manifest.json；结果E28-*不覆盖已有run。
 
 开跑前静态校对发现原脚本numerical-gate只支持Hu。原队列尚无GPU作业，停止等待协调进程，保留两下载子进程及原日志/队列源码；r2队列使用独立run_scale_readout.py，为Wave加入原首末全21completion batch1/8门控，再运行100题。未修改任何已执行脚本或预测。
+
+
+## 完成与证据限度
+
+八作业全部完成，完整源与同family输入hash/数值gate通过。Wavelength原似然MAE：8B14.435 CI[11.595,17.330]、14B16.113[13.154,19.339]；14−8差+1.678[−1.521,+5.239]（50conceptpairs），不能据点估计说大模型更差。原natural Impli初始概率差−.0104[−.1097,+.0825]、cancel-minus-irrelevant差+.0299[−.0560,+.1146]，不能判等效或统一criterion；order gap反而增+.4687[.3650,.5762]，先归readout。结果：results/E28-strong-parent-summary.json。
+
+C01/C02仍L0；技术与原任务描述不升级为论文贡献。

@@ -1,9 +1,15 @@
 # Pragmatic Inference — parent residency
 
-更新2026-10-03。已建立31篇论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
+更新2026-10-03。已建立37篇论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
 
 | 论文 / 阅读卡 | 证据范围 |
 |---|---|
+| [Was it Good? It was Provocative — ACL2010 / IQAP2011原数据](iqap-2010.md) | 阅读与未复现范围逐卡注明 |
+| [I'd rather just go to bed — CIRCA / EMNLP2020 main](circa-2020.md) | 阅读与未复现范围逐卡注明 |
+| [Addressing the Binning Problem in Calibration Assessment through Scalar Annotations — TACL2024](calibration-scalars-2024.md) | 阅读与未复现范围逐卡注明 |
+| [Reference Games as a Testbed for Alignment of Model Uncertainty and Clarification Requests — arXiv2601.07820v2](reference-clarification-2026.md) | 阅读与未复现范围逐卡注明 |
+| [On Emergent Social World Models — ACL2026 main](social-world-models-2026.md) | 阅读与未复现范围逐卡注明 |
+| [Entailed Between the Lines / INLI (ACL2025 main)](inli-2025.md) | 正文/limits、A–D；E全部例/代码未核对 |
 | [Sense and Sensitivity (CoNLL2026)](sense-sensitivity-2026.md) | 正文/附录全文；代码与human raw未核对 |
 | [Knowledge and Implicature (2013)](knowledge-implicature-2013.md) | 全文12页、理论交互与规范假设 |
 | [Accommodation and Epistemic Vigilance (ACL2026 main)](accommodation-2026.md) | 正文/重要附录/生成与judge代码；未复现 |

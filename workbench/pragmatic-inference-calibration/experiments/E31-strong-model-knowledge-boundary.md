@@ -1,6 +1,6 @@
 # E31：原知识条件可识别性在现代强模型上的边界
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **对应：** C02/P02；E29不是scientific finding，知识控制必须先可识别
 - **问题（一句话）：** E29的完整知识恢复但部分知识恶化、正负问不一致，在Qwen3更强端点是否消失？
 - **设置：** E28已锁定8B/14B两个checkpoint SHA与下载完整marker；原EPITOME40item/360knowledge九条件，完全沿用E29四变体bare/common-chat，FP32/noTF32/thinkingFalse。4B E29为较小端点，原14B Qwen1.5只作不同代anchor。每模型四variant shard分别一GPU，共8独立槽，每shard720reads，无新prompt/换gold/挑item。
@@ -13,3 +13,10 @@
 
 ## 结果
 先卡后run，资产E31-knowledge-Qwen3-{8B,14B}-{variant}，每shard720，不覆盖E29。
+
+
+## 完成与证据限度
+
+8B/14B八shard完整，2880/model与4B原r2源/8condition实际token/prompt SHA逐项一致。full-access common-chat polarity agreement：4B.18125[.100,.26875]，8B.6875[.60625,.7625]，14B.89375[.850,.93125]；但14B access-only full norm概率.05784[.00371,.13303]，parent.65437，role.73007。规模改善极性但不统一恢复所有知识readout；原parent norm不是通用许可gold，不称能力恢复/criterion。结果：results/E31-knowledge-scale-summary.json。
+
+C01/C02仍L0；技术与原任务描述不升级为论文贡献。

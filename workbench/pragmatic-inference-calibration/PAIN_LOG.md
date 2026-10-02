@@ -16,3 +16,10 @@
 | P12 | ImplicatureX源BF16 pair sum偏离1最大.00293；自然Q3-4B recognition .78→.46重归一诊断，median order gap .99917 | E23–E25 | 技术问题保留原cache，不作paper finding；不能据小模型源阈值数字直接说human-like |
 
 痛点是测量/驻留障碍，未升级为科学发现；次级方向可更换，territory状态只由人决定。
+
+
+| ID | 复现条件与量级 | 实验 | 状态 / 下一动作 |
+|---|---|---|---|
+| P09 | IQAP无QA probable prior≈1；Q25Instruct bare full-vs-content强度差+.122→−.137 | E33 | 原full主/secondary content/null全报，不把prior当over-inference |
+| P10 | Circa负强度4B源/逆序strong acc .808→.038；strict8B强+.577而弱−.500 | E34/E36/E37 | 有界指令控制完成，停止局部prompt救分；真正语境证据待研究 |
+| P11 | Mistral数字两token、原尾空格retokenize，官方template追加assistant遗漏system | E35 | 全在CPU拦截；完整候选+冻结prefix、独立full teacher-forcing gate，第三family运行 |
