@@ -139,15 +139,22 @@ def analyze():
                "data-determined" if -diff > 0.1 and ci[1] < 0 and mean["SD"] > mean["DD"] + 0.1 else
                "neither (incidental)" if abs(mean["SI"] - mean["DD"]) <= 0.1 and abs(mean["SD"] - mean["DD"]) <= 0.1 else "mixed")
         out["maps"][m] = {"spearman": mean, "jaccard_top5": mj, "SI_minus_SD": diff, "ci95": ci, "decision": dec}
-    # scalar two-way decomposition (init x data, no replication)
+    # scalar two-way decomposition (init x data, no replication): unbiased mean-square variance components
+    # (P08: plain SS fractions are biased by the 2 / 24 / 48 degrees of freedom)
+    from scipy.stats import f as fdist
+    a, b = len(recs), len(seeds)
     for s in ("M1_max", "M1_n_over", "M2_n_over", "M3_max", "M4_max", "copy_loss_second"):
         Y = np.array([[D[(r, sd)][s] for sd in seeds] for r in recs])  # [data, init]
         gm = Y.mean()
-        ss_d = len(seeds) * ((Y.mean(1) - gm) ** 2).sum()
-        ss_i = len(recs) * ((Y.mean(0) - gm) ** 2).sum()
-        ss_t = ((Y - gm) ** 2).sum()
-        out.setdefault("scalars", {})[s] = {"frac_data": float(ss_d / ss_t), "frac_init": float(ss_i / ss_t),
-                                             "frac_resid": float(1 - (ss_d + ss_i) / ss_t)}
+        msd = b * ((Y.mean(1) - gm) ** 2).sum() / (a - 1)
+        msi = a * ((Y.mean(0) - gm) ** 2).sum() / (b - 1)
+        msr = ((Y - Y.mean(1, keepdims=True) - Y.mean(0, keepdims=True) + gm) ** 2).sum() / ((a - 1) * (b - 1))
+        sdv, siv = max((msd - msr) / b, 0.0), max((msi - msr) / a, 0.0)
+        tot = sdv + siv + msr
+        out.setdefault("scalars", {})[s] = {"frac_data": float(sdv / tot), "frac_init": float(siv / tot),
+                                             "frac_resid": float(msr / tot),
+                                             "p_data": float(fdist.sf(msd / msr, a - 1, (a - 1) * (b - 1))),
+                                             "p_init": float(fdist.sf(msi / msr, b - 1, (a - 1) * (b - 1)))}
     out["reliability"] = {k: float(np.mean([D[x][k] for x in keys])) for k in ("reliability_M2", "reliability_M3")}
     out["pc_induction_head_exists"] = bool(all(D[x]["M1_max"] > 0.5 for x in keys))
     (OUT / "analysis.json").write_text(json.dumps(out, indent=1, default=float))
