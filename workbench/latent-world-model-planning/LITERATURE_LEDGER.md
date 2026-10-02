@@ -239,3 +239,6 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 | P106 | OnlineWM | arXiv 2609.23753 | B | R1：active error-driven data + causal optimization；88B级，不首轮复现 |
 | P107 | CoCo / Overcoming Statistical Bias in Action-Controllable WMs | arXiv 2608.04653 | B | R1/R2：visual inertia/statistical shortcut；counterfactual consistency |
 | P108 | WorldEcho / WorldSync | arXiv 2608.24885 | B | R1：expert-action evaluation hides off-expert action-following failures；coverage+grounding+intervention alignment |
+
+| P96 | Dual Goal Representations | **ICLR 2026** | A/B | official code: deepindermann/dual-goal-representations | dynamics-intrinsic relational goal representation；M3正向邻居，不是只当collision |
+| P97 | Do Better Goal Representations Improve GCRL? | arXiv 2609.39901 | B (new preprint) | code pending | representation-quality intervention→state pathway bottleneck；提醒internal geometry≠downstream importance |
