@@ -27,3 +27,15 @@
 - 增加cheap candidates与增加high-fidelity evaluations的边际收益如何分配？
 
 DeepJEPA若代码可用，最强组合是`Fast screen → DeepJEPA refine`；其“transition内部深度”与本seed“candidate集合保真度”可直接测试是否互补。
+
+
+## 第一实现优先用同一Fast-LeWM的两级成本
+
+为了避免“Fast-LeWM和LeWM谁才是高保真”这个不必要问题，Stage A先定义：
+
+- **cheap fidelity：** Fast-LeWM direct terminal prefix prediction + goal cost；
+- **refined fidelity：** 同一个Fast-LeWM额外计算decomposed/intermediate-prefix terminal estimate，并使用原论文self-consistency信息。
+
+原论文把refined/self-consistency信号均匀用于candidate；本seed只对可能改变elite set的候选支付额外调用。这样第一实验无需新checkpoint，也没有跨latent空间的raw cost比较问题。
+
+如果这一轴有效，再把refined fidelity换成LeWM recursive、multi-step head或DeepJEPA，测试principle是否超出Fast-LeWM内部技巧。
