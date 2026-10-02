@@ -286,6 +286,7 @@ task/query flexibility
 
 ### 已知理论/经验
 - PLDM：data quality/diversity/layout/stitching改变model-based/model-free表现。
+- **Controlled-WM Identifiability (P94)**：behavior policy 的 conditional action excitation 决定受控 transition 是否可识别，并直接影响 counterfactual reachable set 与 planning。
 - OGBench：专门分开 stitching / long horizon / stochasticity。
 - Quasimetric GCRL：behavior future statistics与optimal goal distance不等价。
 - Multistep Quasimetric：local Bellman optimality与global Monte-Carlo stability张力。
@@ -316,7 +317,9 @@ behavior policy同时改变：
 - transition support；
 - temporal path length。
 
-所以必须用 matched/weighted support metrics与non-temporal LeWM control，不能看到分数变就归因“behavior geometry”。
+所以必须用 matched/weighted support metrics与non-temporal LeWM control，不能看到分数变就归因“behavior geometry”。**尤其要控制 conditional action excitation；否则 P94 已经提供更直接解释。**
+
+M3 剩下的真正空间因此被压得更干净：**当 one-step transition / action-effect identifiability 已经相近时，higher-order trajectory order/gap 监督是否仍产生 behavior-route imprint？**
 
 ## 资源适配
 
@@ -421,7 +424,7 @@ PLDM / offline MBRL：uncertainty / OOD support。
 | search/proposal | high | **very high** | high | high | baseline |
 | long horizon/hierarchy | high | **very high** | high | high | regime variable |
 | POMDP/history | very high | high | very high | high | **M1 conditional** |
-| behavior→controllability identification | high | medium | **very high** | **very high** | **M3 primary** |
+| behavior→controllability identification | high | medium-high after P94 | **very high** | **very high** | **M3 primary but sharpened** |
 | explicit↔implicit predictive computation | very high | medium | high | medium-high | **M2 primary** |
 | query generality/reuse | very high | high after P38/WorldTest | high | high | WATCH/stress |
 | test-time adaptation | high | **high** | high | high | baseline/WATCH |
