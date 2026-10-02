@@ -150,145 +150,269 @@ AI 研究高度拥挤。一个强近邻已经研究变量 X，**只意味着我�
 - one-step next-latent regression is not generally a full rollout kernel；
 - factual offline data lacks paired counterfactual action outcomes。
 
-## 4. Problem-led research mines（2026-10-02 recalibration）
+## 4. Program-level positioning：近邻定义坐标，不定义禁区
 
-本 workbench 不再把某个局部 loss 当作第一主旨。当前三个 mine 都对应**模型到底需要解决什么真实决策问题**。
+以下 R1–R5 都是**社区已经持续发表、但认识仍未闭合的 research programs**。  
+本表只规定：
+- 哪些 atomic claims 不能重复当 headline；
+- 哪些强 baseline必须比较；
+- 我们如何继续生长 novelty。
 
-### M1 / I07 — Observable goal ≠ control belief（Tier B conditional）
+不是为了把 program 压成“最后剩一毫米空白”。
 
-**Problem:** image goal可以相同，但 hidden velocity/contact/friction/regime 不同会要求不同动作。point latent / goal-comparable latent 是否仍是正确 planning state？
+---
 
-**最强近邻：**
-- Physically Viable WM：same-looking scene + hidden physics + intervention failure；
-- Branch-JEPA：multiple latent successors；
-- FIRM-WM：goal-comparable config + dynamic fiber + intervention branches；
-- UWM-JEPA：belief-space predictor；
-- Flow Equivariant WM (ICML'26)：structured memory under partial observability；
-- UAI'26 selection theorem：低regret下belief-like memory必要；
-- I-TAP：history + temporal abstraction + POMDP/regime shift。
+### R1 — Data & Identifiability
 
-**Exact delta 必须是：**
-> 给足 deployment 可用 finite observation-action history 后，是否仍存在多个 action-relevant hidden hypotheses，导致 best-action flip / planner regret；只有这个 **history-resolvable vs irreducible actionable ambiguity boundary** 还有空间。
+**母问题：** 什么 experience 让 world model 学到可用于 counterfactual planning 的 dynamics / controllability？
 
-**Reviewer compression：**
-- “FIRM 已经拆 state了。”
-- “UWM-JEPA 已经做 belief latent。”
-- “POMDP 当然要 history。”
+**已有重要答案：**
+- PLDM：data quality/diversity/trajectory structure影响 planning；
+- P94：conditional action excitation控制 transition identifiability；
+- QRL / IEL：behavior-time geometry与 optimal controllability要区分；
+- RC-aux / Temporal-Distance JEPA：trajectory-derived planning supervision；
+- Do-JEPA / FIRM：same-reset intervention branches；
+- Task-Sufficient WM：active probing + structured representation。
 
-所以 E11 必须先建立 **same observation / different hidden state → different best action → deployed planner regret**，不能靠 probe。
+这些结果构成一个**活跃 program**。
 
-### M2 / I08 — Predictive-computation placement（Tier A2）
+**不能单独 claim：**
+- data distribution matters；
+- action coverage matters；
+- behavior gap不等于 shortest path；
+- intervention data有用；
+- active probing有用。
 
-**Problem:** predictive structure 应保留成 task-agnostic explicit dynamics + test-time search，还是 amortize 到 long-horizon representation/policy，或者 hybrid？
+**仍然可以形成 novelty：**
+- 不同 experience types 的**边际 planning value / regime law**；
+- excitation与route diversity的 interaction；
+- passive→counterfactual→active probing 的 sample-efficiency frontier；
+- failure/recovery data的特殊价值；
+- query-aware vs general-purpose data collection；
+- trajectory supervision 的新 identification failure；
+- 由 data principle 推出的 sampler / active collection method。
 
-**领域依据：** TMLR'26 P09 已明确区分 explicit/implicit WM，并把 training-cost、inference-cost、generalization trade-off 的 direct empirical comparison 留作 future direction；Bagatella TD-JEPA 是 ICLR'26 Oral 的 implicit anchor。
+**当前 seeds：**
+- I09/E14；
+- I12/E16；
+- I06/E08–E10（subdiagnostic）。
 
-**最强 collision：** PLDM 已系统比较 latent planning vs HILP/GCIQL/HIQL/CRL/GCBC，在 data quality、trajectory length/stitching、dataset size、random-policy data、new task/layout和inference time下给 method-selection结论；planner amortization也早于2026。
+**Reviewer test：**
+> “P94 / PLDM / Task-Sufficient WM 都做过 data。”  
+回答不能是“我们变量不同”；必须是我们发现了**新的 data role / interaction / boundary / method principle**，并落到 counterfactual candidate / closed-loop。
 
-**Exact delta：**
-> 控制 data/task/compute后，找到能跨任务预测 **one-step explicit / arbitrary-horizon / successor occupancy / amortized / hybrid predictive object** 相对优势的 regime variables；explanatory variable必须是 predictive object，而不是再做 planning-vs-policy排行榜。
+---
 
-候选轴：reward/goal redefinition、unseen objective composition、layout/dynamics shift、horizon、data coverage、deployment search budget、**task/query information budget**、arbitrary-action counterfactual需求。
+### R2 — Predictive Abstraction
 
-**Reviewer compression：**
-- “apples-to-oranges benchmark”
-- “只是一个训练更久、另一个test时search更多”
-- “TD-MPC2已经 hybrid”
+**母问题：** 什么 future object 是 planning 的最小充分预测对象？
 
-因此 E13 必须有 common data/task/utility，并分开 **training compute / task-query information / deployment compute**；还要加入至少一个中间 predictive object验证 continuum。没有 hold-out regime law不升级。
+**已有设计点：**
+LeWM/SALT、Fast/VLWM、Flow/Branch、Universal Horizon、Bagatella TD-JEPA、Jumpy WM、HWM、LeFlow/RP1、TD-MPC2-like hybrid。
 
-### M3 / I09 — Behavior trajectory semantics ≠ environment controllability
+**不能单独 claim：**
+- one-step有compounding error；
+- longer horizon有用；
+- successor representation高效；
+- hierarchy有用；
+- planner amortization省test compute。
 
-**Problem:** RC-aux / Temporal-Distance JEPA 这类 planning-aware supervision 从 behavior trajectory 的 gap/order/negatives 学 progress/reachability；这些 semantics 会不会继承 behavior policy 的 route/tempo，而不是 environment controllability？
+**仍然可以形成 novelty：**
+- predictive object 的 regime law；
+- horizon/query flexibility/stochasticity决定 object choice；
+- explicit + occupancy / distribution 的 hybrid；
+- adaptive predictive horizon；
+- training/test compute placement principle；
+- new query/generalization boundary。
 
-**最强近邻：** QRL/multistep quasimetric、PLDM、CGCIVL 已占 broad “behavior statistics ≠ optimal control”；P94 已占 conditional action excitation→transition identifiability→planning；P95 IEL 已占 directed hitting-time regression + trajectory-label mismatch。
+**当前 seed：**
+I08/E13。
 
-**Exact delta：**
-> **在 conditional action excitation 与 one-step transition evidence 已匹配/控制后**，改变 higher-order trajectory organization / route gap，planning-aware visual latent WM 的 deployed metric/reachability 是否仍留下 behavior imprint，并改变 same fixed candidate pool / closed-loop MPC。最强实验是 transition-equivalent / trajectory-different control。
+**Reviewer test：**
+> “PLDM已经比较 planning vs GCRL；2021 planner amortization也做过。”  
+因此新结果必须把 explanatory object放在 **predictive representation / future object 本身**，而不是重复 algorithm-family winner table。
 
-旧 I01/E03-E04不构成这个 intervention，因为它只改 long episode factorization而 short-window loss不可见。E14 才是有效 treatment。
+---
 
-**Reviewer compression：**
-- “offline data distribution当然重要”
-- “quasimetric已经研究suboptimal behavior”
-- “只是coverage变了”
-- **“P94已经证明 behavior-policy conditional action excitation 决定 counterfactual transition identifiability / planning。”**
+### R3 — Specialization vs Reuse
 
-所以 M3 只能在 conditional action excitation 与 local transition support已经匹配/控制后，研究 **higher-order temporal organization / route semantics 的额外 imprint**；若最终修复只是 IEL/QRL式 hitting-time / expectile / quasimetric移植，也不够。
+**母问题：** 一个 world model 应该为当前 query/planner 专门化到什么程度，才能兼顾 decision efficiency 与 reusable world knowledge？
 
-所以必须匹配/量化 state-action/local-transition support，并证明 effect 在 planning-aware semantics 上 load-bearing。
+**已有答案：**
+Value Equivalence、Goal-Aware Prediction、Objective Mismatch、P38、Rank-One Corner、Task-Sufficient WM、Action-Sufficient Goal Reps、WorldTest、Grounded WM、Physically Viable WM。
 
-### I06 — M3 的 subdiagnostic，不再自动做主论文
+**不能单独 claim：**
+- task-aware model可以忽略无关信息；
+- query-conditioning seen objective更强；
+- over-specialization可能伤 unseen query。
 
-semantic negatives vs geometric regularization 仍是好 probe：
-- E08 sampler semantic audit；
-- E09 semantic/count/repulsion role decomposition；
-- E10 conditional role separation。
+**仍然可以形成 novelty：**
+- **query placement law**：encoder/dynamics/metric/proposal/verifier；
+- query dimensionality × capacity frontier；
+- seen↔unseen planner / objective transfer；
+- selective/module conditioning；
+- multi-query representation allocation；
+- query-conditioned data acquisition与 reusable dynamics 的组合。
 
-但 P69 已进一步表明 negative construction本身可扭曲 planning geometry，所以“negative坏”更不够新。I06 只有在解释 M3 更大的 behavior→controllability failure 时才优先扩展。
+**当前 seed：**
+I10/E17。
 
-### I03 — common bottleneck oracle
+**Reviewer test：**
+> “P38已经研究 query placement。”  
+P38 是最强 anchor；我们若只是复现它就停 seed。但 R3 可以继续沿 capacity、multi-query、visual WM、query-aware data、planner changes 等方向长。**不是把 R3缩成一个没被P38提到的变量，而是找新的 law/interaction。**
 
-E06/E07 用于 M1–M3 的归因；只有少数observable variables能跨task预测 binding bottleneck与 intervention ranking时，才允许独立升级成 regime-law paper。
+---
 
-### M4 — Query/goal interface & model reuse（WATCH）
+### R4 — State / Belief / Information Gathering
 
-P38 *What Must a World Model Distinguish for Planning?* 已直接研究 query/candidate/planner-dependent sufficiency与 seen→unseen objective trade-off；Grounded WM 又占 language-semantic goal interface。当前只作为 transfer stress axis。
+**母问题：** partial observation / hidden physics / stochastic future 下，planner需要什么 internal state，并何时必须主动获取信息？
 
-## 5. Idea 状态
+**已有答案：**
+FIRM、UWM-JEPA、Branch-JEPA、Flow Equivariant WM、Physically Viable WM、I-TAP、POMDP/predictive-state theory。
 
-| ID | 状态 | 角色 | 最大 compression |
-|---|---|---|---|
-| I07 observable goal ≠ control belief | **SEED / Tier-B conditional** | E11→conditional E12 | PVWM/FIRM/UWM/Branch + generic POMDP |
-| I08 predictive-computation placement | **SEED / Tier-A2** | E13 matched regimes | PLDM + old amortization + apples-to-oranges |
-| I09 behavior→controllability semantics | **SEED / Tier-A1** | E14→conditional E15 | P94 action excitation + P95 IEL + QRL/PLDM |
-| I06 semantic negative roles | SEED / M3 subdiagnostic | E08→E09→E10 | false-negatives/negative-geometry已有大量先例 |
-| I03 bottleneck regime | SEED / common diagnostic | E06→conditional E07 | component benchmark |
-| I04 random→elite alignment | subordinate | E02 calibration | DA-LeWM / P38 |
-| I01 trajectory-factorization | **PARKED** | historical invalid design | treatment对short-window objective不可见 |
-| I02 optimizer support drift | **PARKED** | conditional diagnostic | P40 + offline MBRL |
-| I05 generic history/POMDP | **SUPERSEDED by I07** | 不再做context-length sweep | FIRM/I-TAP/FloWM等 |
+**不能单独 claim：**
+- history有用；
+- hidden physics存在；
+- belief比point state丰富；
+- multimodal future需要多个branches。
 
-## 6. 反向 reviewer test
+**仍然可以形成 novelty：**
+- history-resolvable vs active-information-required boundary；
+- epistemic vs aleatoric ambiguity对应不同 planning strategy；
+- belief如何进入 cost/search而非只提升prediction；
+- goal-comparable state × dynamic belief interface；
+- active experiment design for hidden physics；
+- uncertainty representation与risk/information-seeking planner的 co-design。
 
-### I07
-**“这不就是 POMDP 需要 memory 吗？”**  
-只有在我们证明 image-goal interface 自身造成 **observable-goal / control-belief role mismatch**，且这种 mismatch 在现实 candidate decision上有 regime-dependent consequence，才超过 textbook claim。
+**当前 seed：**
+I07/E11。
 
-**“FIRM-WM已经拆goal state和dynamic fiber。”**  
-所以 factorization不是贡献。新的信息必须是 belief/aliasing何时 load-bearing、history何时不够，以及对 candidate decision 的稳定 law/repair。
+**Reviewer test：**
+> “POMDP当然需要belief。”  
+顶会 story不能停在这句。需要一个自然 decision failure / regime law / active information method。
 
-### I08
-**“PLDM早就做过 model-based planning vs goal-conditioned/model-free methods 的 regime study。”**  
-所以必须把 explanatory variable压到 **predictive object**，并明确超过 PLDM 已经测过的 data quality/trajectory length/data size/OOD layout/inference time。
+---
 
-**“一个是MPC，一个是zero-shot policy，本来就不同。”**  
-正因此不能只比较分数。必须用 common data/task/utility 和 compute ledger，把差异压成可解释的 predictive-computation placement trade-off，并预测未见 regime。
+### R5 — Trust / Repair / Bypass
 
-### I09
-**“P94已经证明behavior policy action excitation决定counterfactual planning。”**  
-所以先match/audit conditional action covariance / excitation。
+**母问题：** learned WM 在不同 state/action/horizon/shift 下可靠性不同，planner应如何选择 recovery action？
 
-**“IEL/QRL已经研究behavior hitting-time geometry。”**  
-所以不能以hitting-time regression / expectile / triangle/quasimetric本身作贡献；必须证明 visual latent-WM planner里的 trajectory auxiliary 在 local identification已满足后仍引入 decision-level policy dependence。
+**已有 recovery mechanisms：**
+- uncertainty penalty；
+- support/exploitability diagnostics；
+- MEND correction；
+- IMWM intuition hybrid；
+- AdaJEPA / residual adaptation；
+- Feedback WM；
+- AdaReP dynamic replanning；
+- subgoal/horizon shortening；
+- failure detection。
 
-**“换behavior policy当然换训练数据。”**  
-必须控制/量化 local transition support与coverage，最好做 transition-equivalent / trajectory-different control，并落到candidate/closed-loop。
+**不能单独 claim：**
+- uncertainty能检测风险；
+- online adaptation有用；
+- feedback有用；
+- replanning更频繁可减少error。
 
-### I06
-**“False negatives老问题。”**  
-存在性不是贡献；semantic pair label与global regularization的角色分离才可能是贡献，而且现在只是M3子机制。
+**仍然可以形成 novelty：**
+- failure type → best repair action；
+- reliability signal → intervention ranking；
+- adaptive compute/horizon/replanning law；
+- detect→repair unified policy；
+- when to adapt model vs bypass model；
+- confidence calibration specifically for **action-selection utility**。
 
-## 7. Stop rules
+**当前 seed：**
+I11/E18。
 
-- **E11** 同观测不同hidden state基本不改变真实最优动作 → I07 park；
-- **E11/E12** 简单短history稳定消除所有decision regret → 不做复杂belief方法；
-- **E13** explicit/implicit差异只能由train/test compute解释，或没有跨task regime signature → I08不升级；
-- **E14** effect被coverage/local-support完全解释 → I09不升级；
-- **E14** learned semantics变化但candidate/closed-loop null → 不升级；
-- **E08** contamination极低/不稳定 → I06 park；
-- **E09** calibration变但decision null → I06不升级；
-- **E06** 只能得到per-task post-hoc thresholds → I03保持diagnostic；
-- 任何方法若只改善 internal probe、不改变Actionable consequence → 不作为 manuscript-critical contribution。
+**Reviewer test：**
+> “不就是把已有recovery methods做router？”  
+若只是heuristic router，确实弱。需要先发现一个稳定 failure taxonomy / intervention-ranking structure，method再从它长出来。
 
-stop只停具体 lead，不自动关闭整个 territory。
+---
+
+## 5. 当前 seed portfolio
+
+| ID | Parent | 状态 | Pilot | Seed 被吸收后 |
+|---|---|---|---|---|
+| I09 | R1 | SEED | E14 | 回R1，转I12/active/counterfactual data |
+| I12 | R1 | SEED | E16 | 回R1，换 data role / acquisition problem |
+| I08 | R2 | SEED | E13 | 回R2，换 predictive-object axis |
+| I10 | R3 | SEED | E17 | 回R3，换 query/capacity/data interaction |
+| I07 | R4 | SEED | E11 | 回R4，转 active sensing / belief consumption |
+| I11 | R5 | SEED | E18 | 回R5，收敛到最强 recovery boundary |
+
+I03 / I06 / I04 默认是 scientific instruments / subdiagnostics，不占 parent program 名额。
+
+---
+
+## 6. Reviewer compression 的正确时机
+
+### Seed 阶段
+compression 用来：
+- 加强 baseline；
+- 明确 alternative explanation；
+- 设计更有区分力的 pilot。
+
+**不用于桌面关闭 parent program。**
+
+### PROMISING / CLAIM 阶段
+当已有 L1/L2 evidence 后，再问：
+> 最坏审稿人会压成哪个 nearest paper？
+
+此时我们已经有 observation，可以通过：
+- boundary；
+- mechanism；
+- stronger baseline；
+- additional regime；
+- method；
+来建立实际 delta。
+
+没有实验时不停做 reviewer-compression，只会把题压成没人关心的小点。
+
+---
+
+## 7. Stop rules：只停 seed，program 由人审暂停
+
+### Seed-level stop
+- phenomenon不存在；
+- tool positive control失败；
+- effect只在probe不在decision；
+- exact atomic claim已经被更完整工作覆盖且当前没有new evidence；
+- simple baseline完全吸收。
+
+→ 记录结果，PARK seed，**回 R#**。
+
+### Program-level pause
+只有满足 workbench 总章程：
+- baseline/assets已建立；
+- 有系统measurement；
+- 至少多个不同 seed真的跑过；
+- positioning完成；
+- 人类判断 scientific yield低；
+
+才允许暂停 R# / workbench。
+
+“相关论文太多”不是 pause condition。
+
+---
+
+## 8. Novelty synthesis loop
+
+每次 seed有结果后，本地 agent 做：
+
+\`\`\`text
+Observation
+  ↓
+Which R# mother problem does it change?
+  ↓
+Nearest 3–5 papers: what exact assumption/result differs?
+  ↓
+Try at least two:
+  boundary / interaction / mechanism / unification /
+  method / data law / compute law / transfer
+  ↓
+New seed or claim
+\`\`\`
+
+这才是“从 related work 中长 idea”，而不是从 related work 中不断删空间。
