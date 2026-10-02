@@ -125,3 +125,42 @@ DeepJEPA已明确“decision-critical transitions值得更深计算”，Fast-Le
 - callback可以记录每轮cheap elite、refined set、最终elite membership、mean/var shift，不需要另写一套planner。
 
 第一版先 fork/patch evaluator或cost wrapper，不改Fast-LeWM训练代码。只有Stage A0显示compute-quality收益后，才考虑shared dual-head训练。
+
+
+## Promotion rule v0：从top-M到elite-crossing interval
+
+第一轮必须保留最简单的 `TOP-M`，因为它是不可缺的baseline；然后再测一个真正利用cheap→refined discrepancy的selector。
+
+在**独立calibration candidate bank**上计算：
+[
+r_i = c_i^{refined}-c_i^{cheap}.
+]
+
+先不拟合复杂模型。按 cheap rank / CEM iteration / horizon 做粗bin，估计residual的下分位数 (q^-_alpha) 和上分位数 (q^+_alpha)。对当前candidate i得到：
+[
+L_i=c_i^{cheap}+q^-_alpha,quad
+U_i=c_i^{cheap}+q^+_alpha.
+]
+
+因为cost越低越好，先refine cheap top-K（或一个很小sentinel set）得到当前refined elite阈值 (	au_K)。随后：
+- 若 (L_i > 	au_K)，即使按乐观residual也难进入elite，可跳过；
+- 若区间与 (	au_K) 重叠，则promotion到refined evaluation；
+- 每次新refined candidate改变 (	au_K) 后可更新一次promotion判断。
+
+这个 `INTERVAL` 不是预先宣称conformal guarantee；它只是**elite-crossing heuristic**。只有held-out coverage/calibration通过后，才考虑正式的distribution-free bound。
+
+### 为什么比raw TOP-M更值得研究
+
+TOP-M默认cheap rank近似refined rank；INTERVAL显式建模**cheap predictor在哪些candidate上可能错过elite**。如果它能以明显更少的refined calls达到相同elite recall，说明真正需要分配的是**ranking uncertainty around the optimizer boundary**，而不是单纯“给最好候选多算一点”。
+
+## Offline candidate-bank audit先于closed-loop
+
+每个task先保存固定CEM candidate banks，并对所有candidate离线算cheap+FULL-REFINE，得到真实的refined ranking。对不同selector模拟promotion，不让closed-loop噪声掩盖算法性质。
+
+主图之一可以直接是：
+- x：high-fidelity call fraction；
+- y1：top-K elite recall；
+- y2：selected-action agreement with FULL-REFINE；
+- y3：candidate-bank regret。
+
+只有离线trade-off有价值，才跑完整闭环 wall-clock / success。这样能把很多候选M/alpha筛选在单GPU甚至一次checkpoint评测里完成。
