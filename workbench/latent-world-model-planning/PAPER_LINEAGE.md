@@ -754,3 +754,157 @@ DA-LeWM 已定义 random/mid/elite Spearman；这里仅作为 replication pressu
 
 I06 是 M3 的一个小切片；I03 oracle ladder是三条线共用的 scientific instrument。  
 这三条都只有在产生 **Actionable consequence** 后才允许长成主张。
+
+## 14. Second hardening pass — stochasticity, physical identifiability, adaptation, query generality, latent actions（P75–P89）
+
+### P75 — Physically Viable World Models — arXiv 2605.30542
+**来源：** https://arxiv.org/abs/2605.30542  
+**代码：** https://github.com/pvwm/physically-viable-world-models
+
+- **母问题：** observation prediction何时从根上不足以支持 embodied intervention？同样的可见场景若隐藏 mass/friction/compliance/viscosity/contact state 不同，会在同一 action 下产生不同真实结果。
+- **关键 pressure：** 作者明确把 failure 定义为 structural identifiability problem，而不是“模型还不够大”；passive observation可能无法识别决定 intervention outcome 的 latent physics。
+- **方法观：** query-conditioned physical abstraction——按 query 选择需要的 state variables、latent parameters、action interface、interventional dynamics、constraints 与 response；必要时估计/维护 uncertainty 或主动获取信息。
+- **决定性证据：** controlled simulations固定/近似固定 appearance 与 action，同时改变 density、restitution、friction、contact height、viscosity等；覆盖 VLM、video diffusion、action-conditioned latent control，并展示 physically infeasible planning / wrong outcome。
+- **ownership：** broad “same pixels can hide different physics / visual predictor不等于 physically viable intervention model”已被直接提出。
+- **对 M1：** 大幅压缩了“same observation + hidden physics → different action”的 novelty。I07 若继续，必须限定到 **compact reward-free image-goal MPC 中的 history-resolvable vs irreducible aliasing / belief decision regret**，并和 query-conditioned parameter identification 明确区分。
+- **idea-growth 值得学：** 从视觉预测“看起来对”切到 intervention query“答得对”，问题尺度自然大于一个 probe。
+
+### P76 — Branch-JEPA（原 v1 名 MoP-JEPA）— arXiv 2607.05238
+**当前版本标题：** *Branch-JEPA: Finite-Support Predictive Distributions for JEPA World Models*。  
+**来源：** https://arxiv.org/abs/2607.05238
+
+- **版本风险：** v1/早期搜索结果仍可能显示 “MoP-JEPA: Hard-Assigned Predictor Mixtures…”，截至 v3 已更名为 Branch-JEPA，主方法/叙事也有调整。引用必须锁版本。
+- **母问题：** point-valued JEPA transition在 stochastic / hidden-intent / partial-observation branching下只给一个 successor，无法保留多个可行未来。
+- **方法：** context-weighted finite set of latent successors；specialization 与 full-set Energy-Score 两种训练；所有 branch inference-time保留。
+- **证据：** Argoverse 2多模态 future + OGBench graph audit；当前 v3 abstract报告 latent branching比output-only branching保留更多有效 modes，OGBench teleport verified-route existence 19.2% vs MDN 3.9%，并在state/RGB都保留raw-support优势。
+- **ownership：** generic “deterministic latent regression collapses multimodal futures / need branching predictive distribution”已经非常直接；M1不能把 stochastic multi-hypothesis prediction本身当新方法。
+- **对 workbench：** 若 E11/E12最终需要 belief，必须解释是 **epistemic hidden-state ambiguity**、aleatoric transition multimodality，还是两者；Branch-JEPA 是后者/混合未来的强对照。
+
+### P77 — Var-JEPA — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/gogl26a.html
+
+- **母问题：** JEPA是否真的与 probabilistic generative modeling结构不同？uncertainty能否在统一 variational objective 中自然出现？
+- **方法：** 将 coupled encoders + predictor 解释为 latent-variable variational structure，导出 ELBO-based Var-JEPA。
+- **证据边界：** 当前主实例是 tabular representation learning，并非 visual planning。
+- **ownership：** “给JEPA加principled variational uncertainty”作为 broad architecture claim已有 ICML precedent。
+- **对我们：** 只作为 M1 belief/uncertainty 的 conceptual control；不能用“variational JEPA”四个字当 novelty。
+
+### P78 — AdaJEPA — arXiv 2606.32026
+**来源：** https://arxiv.org/abs/2606.32026  
+**代码：** https://github.com/agentic-learning-ai-lab/adajepa
+
+- **母问题：** frozen latent WM 遇 test-time distribution shift 后 prediction不准，为什么 MPC 每次真实执行得到的新 transition不能拿来在线校准？
+- **方法：** execute action chunk → observe next transition → one/few self-supervised gradient update → replan。
+- **关键证据：** 作者报告 goal-reaching shift settings 中即使每次 replanning只做一次gradient step也显著改善 success。
+- **ownership：** generic “closed-loop test-time self-supervised adaptation of latent WM”已占。
+- **对我们：** domain/dynamics shift 不能单独变成新 mine；若 M2/M3 涉及 shift，AdaJEPA必须是 adaptation control，而不是重新发现 frozen model不稳。
+
+### P79 — Sandwich-Residuals — arXiv 2609.21740
+**来源：** https://arxiv.org/abs/2609.21740
+
+- **问题：** AdaJEPA式内部权重适配需要改大量参数；能否只在 predictor前后学习小 residual？
+- **证据：** 21个 AdaJEPA benchmark conditions；作者报告约保留 strongest AdaJEPA 95% performance，同时适配参数少 97–99%；compound shift下相对 frozen model提升更大；另在 DINO-WM 3D manipulation验证。
+- **ownership：** 参数高效 test-time WM adaptation 已快速拥挤。
+- **结论：** adaptation放入 WATCH / baseline，不作为我们低 hanging fruit。
+
+### P80 — Compositional Planning with Jumpy World Models — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/farebrother26a.html
+
+- **母问题：** primitive-action long-horizon planning的 horizon/branching太大；如果动作本身是预训练 policy，如何预测它在多时间尺度上的 state occupancy 并组合？
+- **方法：** off-policy multi-step “jumpy” world models，预测 policy-induced occupancies；跨 timescale consistency；组合任意 policy sequences估 value。
+- **决定性证据：** navigation/manipulation上 compositional planning；论文报告 long-horizon tasks 平均约 200% relative improvement over primitive-action planning。
+- **ownership：** implicit/multi-timescale predictive abstraction 并不只有 Bagatella TD-JEPA；M2 必须包含 policy-level jump models这一中间形态。
+- **对 M2：** 更支持“predictive computation placement是一条 spectrum”，但也提高 hybrid novelty门槛。
+
+### P81 — WorldTest — ICML 2026
+**正式标题：** *Benchmarking World-Model Learning with Environment-Level Queries*  
+**来源：** https://proceedings.mlr.press/v306/warrier26a.html
+
+- **母问题：** next-step/trajectory-return评测只问 observed interaction 上的问题；一个general world model是否支持关于整个 environment 的多种 global / counterfactual queries？
+- **方法/贡献：** environment-level query protocol；测试 model能否回答多个不同类型的环境问题，而非只复现 observed trajectories。
+- **ownership：** “world model应该支持多query / general-purpose environment knowledge”已经是 ICML benchmark-level主题。
+- **对 M4：** query generality很重要，但 broad benchmark story已被占；我们的 planning-alignment method若声称“world model”，应把 cross-query reuse 作为 stress test。
+
+### P82 — D-JEPA — arXiv 2609.24749
+**正式标题：** *D-JEPA: A Decision-Aligned Latent World Model*  
+**来源：** https://arxiv.org/abs/2609.24749
+
+- **母问题：** planner真正关心少数 competing candidates；平均 prediction / global latent distance不保证它们之间的 ordering正确。
+- **定义：** decision-local prediction gap——被预测得更接近goal的candidate，真实执行可能比另一可选candidate更差。
+- **方法：** bounded permutation-equivariant candidate-set operator + ordinal executed-outcome evidence + restricted predictor adaptation，将 decision relation重新写回JEPA-compatible future representation。
+- **证据：** latent control、manipulation、pretrained action producers、physical robots、autonomous driving；abstract报告 PushT 87.89%，RoboTwin平均 +15.04 points，physical robot +17 points。
+- **ownership：** candidate-local decision alignment / ordinal executed-outcome correction 已有直接强近邻。
+- **对 I03/M4：** “只关注elite candidates”本身不新；E02 random→elite gap继续只是 calibration。任何 decision alignment paper必须和 P82 exact delta。
+
+### P83 — DDP-WM — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/yin26l.html
+
+- **母问题：** dense Transformer dynamics在MPC中太慢，而且场景变化并不均匀。
+- **idea：** latent evolution分 primary physical-interaction dynamics 与 context/background update，dynamic localization + cross-attention分配compute。
+- **证据：** navigation、tabletop、deformable/multi-body interaction；论文报告 Push-T约 9× inference speedup，并从90%提升到98% MPC success。
+- **ownership：** “稀疏/解耦 dynamics既快又更适合planner”已是 ICML-level路线。
+- **资源判断：** 可作为效率上界/邻居；我们的核心资源优势不需要再做 dense-vs-sparse architecture race。
+
+### P84 — Learning Latent Action World Models in the Wild — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/garrido26a.html
+
+- **母问题：** world model需要action annotation，但互联网视频没有统一action space / embodiment。
+- **方法/发现：** constrained continuous latent actions比VQ更适合复杂in-the-wild视频；无共同 embodiment 时 latent actions呈 camera-localized；再训练 controller把known action映到latent action。
+- **证据：** latent actions可跨视频迁移，并支持 planning到action-conditioned baseline水平。
+- **ownership：** “从无action视频学latent action接口并用于planning”已是ICML主题。
+- **资源判断：** 数据/视频/I/O与我们弱存储条件不友好，不进入compact workbench首轮。
+
+### P85 — Cross-Embodiment Robot Foundation WMs with Latent Actions — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/huang26bv.html
+
+- **母问题：** explicit action coordinates随embodiment分裂，如何让一个WM跨机器人迁移？
+- **方法：** shared unified latent action space (LAC-WM)。
+- **证据：** dexterous manipulation + modified LIBERO；论文报告相对 explicit-action WM最多 +46.7% / +11.7%，且随pretraining embodiment数量增长有正向scale，而explicit action反而下降。
+- **ownership：** cross-embodiment universal action interface 已直接占。
+- **对我们：** action-interface invariance是大问题，但需要多embodiment数据，暂不优先。
+
+### P86 — Co-Evolving Latent Action World Models — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/wang26kz.html
+
+- **母问题：** LAM与WM两阶段分开训练既重复又限制co-adaptation；直接joint train又容易collapse。
+- **方法：** warm-up先对齐 from-scratch LAM 与pretrained WM，再co-evolve。
+- **证据：** video simulation + downstream visual planning，匹配/超过two-stage methods。
+- **ownership：** latent-action ↔ world-model joint co-adaptation 已被占。
+
+### P87 — DiLA — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/zhang26ec.html
+
+- **母问题：** latent action abstraction与高保真 generation之间的tradeoff。
+- **方法：** content/structure disentanglement，让 predictive bottleneck推动action/structure分离。
+- **证据：** generation、action transfer、visual planning、manifold analysis。
+- **ownership：** latent-action disentanglement + visual planning 已有ICML路线。
+
+### P88 — ReDRAW — L4DC 2026
+**正式标题：** *Adapting World Models with Latent-State Dynamics Residuals*  
+**来源：** https://proceedings.mlr.press/v331/lanier26a.html
+
+- **母问题：** sim-pretrained visual WM遇 real dynamics mismatch时，像素/显式state residual难学；能否只校准 latent dynamics residual？
+- **方法：** freeze pretrained WM，在少量 reward-free target data上学习 latent autoregressive residual，再在corrected WM中优化agent。
+- **证据：** vision DMC + physical Duckiebot lane following。
+- **ownership：** low-data latent-dynamics residual sim-to-real adaptation 已占。
+
+### P89 — Feedback World Model — arXiv 2605.15705
+**来源：** https://arxiv.org/abs/2605.15705
+
+- **母问题：** static open-loop predictor遇 shift会漂；执行后拿到真实 observation，为什么不把 prediction residual作为observer feedback？
+- **方法：** inference-time lightweight feedback state，不更新model parameters；action-aware guidance强调 controllable components。
+- **证据：** LIBERO-Plus、Robomimic、real manipulation；abstract报告 prediction error最多降76.4%，OOD success +30%。
+- **ownership：** “execution feedback / observer correction world model”已有直接路线。
+- **对 M1/M3：** closed-loop feedback是重要baseline，不能把“真实执行可以纠正latent state”当新发现。
+
+## 15. Saturation updates from P75–P89
+
+这轮调查会改变 mining 优先级，而不是只增加 citations：
+
+- **generic POMDP / hidden physics / stochastic branching：明显更拥挤。** P75 + FIRM-WM + UWM-JEPA + Branch-JEPA + Flow-Equivariant 已分别占 physical identifiability、typed state、belief latent、multi-future distribution、structured memory。
+- **generic test-time adaptation：红区。** AdaJEPA、Sandwich-Residuals、ReDRAW、Feedback WM 已形成完整路线。
+- **generic latent action / universal action space：资源不匹配且ICML密集。** P84–P87证明这是重要领域，但不适合作为本 compact workbench首轮。
+- **generic efficiency：红区。** Fast-LeWM、Bilinear WM、DDP-WM、RP1等已经覆盖 training/transition/planner efficiency。
+- **M2仍增强：** P65 + P80 表明 explicit↔implicit 不是二分而是从 primitive dynamics、successor structure、policy-level jump model到hybrid的连续谱；P09明确留出了 direct empirical frontier。
+- **M3仍增强：** 这些新工作没有替代“behavior trajectory semantics何时等于 environment controllability”的 identification 问题；但必须更严格控制coverage/support。
+- **M1收紧：** 不再把“same observation, hidden state不同”本身视为novel pressure；只有 **history-resolvable vs irreducible uncertainty 的 decision boundary**、且对compact image-goal planner load-bearing，才值得继续。
