@@ -8,6 +8,12 @@
 
 本次整理不改变 PROPOSED/ACTIVE 登记。用户把本工作台交给你执行时，在已授权资源内推进；不要擅自暂停其他项目、混用机构数据或修改 ACTIVE 分配。
 
+## 每次上下文压缩后恢复
+
+先读本页、README当前证据、RESEARCH_PLAN的R1–R5，再读当天日志最后两条、CLAIMS/PAIN_LOG新增记录，以及正在运行的E卡和对应results JSON。核对原始artifact的complete/failure与进程后再执行，继承已锁定seed/目标/主读数，不能把pending写成结果或重复启动同run。最近结果、替代解释、失效条件、运行命令与下一组实验理由都写入现有日志/实验卡；本页负责恢复规则，不堆积逐run历史。
+
+恢复时明确三件事：正在回答哪个重要母问题；哪些数字已核对、哪些解释仍不确定；下一组实验能区分哪些方法或解释。若连续研究动作只在同一selector/阈值/局部probe中绕圈，优先换预测对象、数据利用、任务复用、反馈/恢复等方法轴，保留母问题。关键结果后定向深读最近邻的method/data/baseline/decisive experiment，补清继承与exact delta；不因相似abstract关闭方向。
+
 ## 开始做事
 
 1. 同步 main，盘点已有 repo/env/data/checkpoint，不重复下载。运行仓库 `python3 tools/process/check.py`；真实错误先修，不为消除流程 warning 造科研结果。

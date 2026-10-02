@@ -96,6 +96,17 @@ def run(args):
     write_json(output / 'scoring_control.json', control)
     if not np.allclose(native.cpu().numpy(), recorded.cpu().numpy(), rtol=1e-5, atol=1e-4):
         raise RuntimeError('Native self-consistency scoring control failed')
+    if args.cache_features:
+        inputs = native_info(data['pixels'][a], data['goal_pixels'][a])
+        with torch.inference_mode():
+            features = (model.encode({'pixels': inputs['pixels'].cuda()})['emb'],
+                        model.encode({'pixels': inputs['goal'].cuda()})['emb'])
+        cached_out, _ = SelectiveCost(model,k,'FULL-REFINE',None,None,16,features).evaluate({},actions)
+        values = cached_out['estimated_cost']
+        control['cached_native_max_abs'] = float(np.max(np.abs(values-native[0].cpu().numpy())))
+        if not np.allclose(values,native[0].cpu().numpy(),rtol=1e-5,atol=1e-4):
+            raise RuntimeError('Frozen feature cache scoring control failed')
+        write_json(output / 'scoring_control.json',control)
     rng = np.random.default_rng(args.seed)
     rows = []
     for a in range(cfg['calibration_anchors'], cfg['anchors']):

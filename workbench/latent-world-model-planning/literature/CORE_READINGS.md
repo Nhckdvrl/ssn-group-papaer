@@ -242,3 +242,11 @@ SPARK的branch criterion不是外部value/entropy计算器，而是policy reason
 经典SR能在reward改变时快速revalue，因为predictive occupancy可复用；但transition结构变化时需要更新occupancy本身。modern implicit/long-horizon predictive representations继承了这种“预计算换灵活性”的基本张力，只是对象从tabular occupancy变成latent/policy-conditioned预测。
 
 **我们的生长分析。** E19不应“重新发现reward revaluation比transition revaluation容易”。更有价值的是在compact visual WM上比较**哪一层更新**最划算：只更新task/cost head、只更新短时dynamics、只更新long-horizon abstraction、或完整replay；并以recovery samples × wall-clock × retained old-task performance衡量。若R2的multi-fidelity/explicit-implicit方法成熟，E19还是很自然的stress test。
+
+## 2026-10-02 E16结果后的定向复读：baseline边界
+
+[OnlineWM正文§3.2–3.4/Algorithm2/AppendixB](https://arxiv.org/html/2609.23753v1)已读：先付费执行每scene的全部8个fork并取得真实结果，再按EMA flow-matching难度分解scene/action，配对易scene难action、难scene易action；另构造最相似counterfactual negative做CFT。不是单纯ensemble variance，也不是免费的unqueried-action uncertainty。E16 GLOBAL-U是共享latent bootstrap variance baseline，不能说已复现/战胜OnlineWM；下一版若借难度分解，preview执行也必须计env budget。
+
+[ToIA方法§III与实验§IV–VI](https://arxiv.org/html/2609.19378v1)再核对：GP条件协方差解析估计prefix观测对未来query的variance reduction，再乘task-softmax relevance；不是goal-cost variance。原文held-out task-agnostic US/JIG弱、ToIA强，并做predictive-value/task-relevance分解。E16 TASK-U11/48**不能当作反驳ToIA或task relevance**，只能称goal-cost uncertainty heuristic；重要比较需variance-reduction×task weighting/单独消融，而不是故意用弱邻居标签。
+
+首轮真实结果要求我们继承其data-value/learnability思想，但先确认强简单采样的收益，再研究新增数据怎样改变动作后果、任务复用与规划。当前没有新颖性主张；不因近邻覆盖data acquisition而关闭R1。

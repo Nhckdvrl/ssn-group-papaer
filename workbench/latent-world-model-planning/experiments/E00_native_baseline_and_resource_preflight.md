@@ -33,3 +33,7 @@
 ### 下载期间的先行工程运行（scoring 前修订）
 
 原生 TwoRoom 压缩数据约 3.43 GB、PushT 约 13.14 GB，尚未本地缓存。完整下载继续；同时可用同一发布 simulator 生成真实 50-step trajectories 接通加载、CEM、branch replay 和训练步。源标记 `simulator_generated_engineering`，action normalization 来自这些新轨迹，**不称为官方数据数值复现，也不以其闭环分数确认科学贡献**。原生数据到达后换回完整数据 statistics 和未筛选 episode anchors 重跑。
+
+### 节点本地 I/O 并发（运行前）
+
+TwoRoom/PushT 各测1→2→4 CPU读取worker；两轮顺序分别1/2/4与4/2/1，固定seed。每worker读8 batches×16 clips，每clip4原生frames@0/5/10/15；先4 clips warmup，同步barrier后计时，实际解压/输出bytes/checksum留存。文件均为node-local HDF5，不drop系统cache；报告warm/cache-uncontrolled条件、各worker延迟与aggregate frames/s，不能推断冷盘吞吐或4 GPU训练线性加速。GPU训练只在开始时加载本地像素，随后内存采样；I/O benchmark与这种完整训练成本分别报告。当前其他进程活动如实列为ambient负载限制。

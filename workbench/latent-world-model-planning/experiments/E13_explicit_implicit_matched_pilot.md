@@ -151,6 +151,16 @@ Fast-LeWM v2 Appendix D 明确 β=1、分解 [2,3]（10+15 primitive steps）；
 
 官方 TwoRoom 的 8 held-out episodes：20% TOP-M-SCREEN 离线 elite recall=96.86% [episode bootstrap 90.58,100]，INTERVAL/cap20%=95.93% [87.79,100]、实际重评13.08%；因此执行探索性 closed-loop。固定同一组 8 start/goals、seed=0、原成功判据、50 primitive-step budget。比较 CHEAP-ALL/N300、FULL-REFINE/N300、TOP-M-SCREEN/20%与30%、INTERVAL/cap20%、RANDOM-M/30%、LOWER-BOUND/batch64、CHEAP-ALL/N900（更大 cheap search 强参照）。所有方法缓存同一冻结 current/goal encoding，报告包括一次 encoding 与 selector 的完整 CEM/episode time；实际执行 native CEM elite mean，不能把最优候选 ID 当作 executed action。calibration 只用此前独立4 episodes，按 CEM iteration 固定，不用 closed-loop future labels重调。比较按 episode paired；样本小只作 pilot，不升 manuscript-critical claim。原生数据的 subset/native numeric drift 另做 timing audit。
 
+### PushT A1（运行前，2026-10-02）
+
+原生 PushT A0 20% TOP-M-SCREEN recall=99.986% [99.958,100]，满足此前探索触发；12 factual suffix 正控全部成功，setter residual 非零单独审计。接续同8 TEST anchors、同8方法/seed/budget/原成功判据，不改selector。先cached actual GPU timing，并新增明确的cached/native cost逐值对照；随后closed-loop。离线bank采用原dataset current image，实际闭环采用restore后的实时image；二者差异明确记录，不能靠较高recall预言真实控制收益。
+
+### A2：fidelity 的真实价值与强 search baseline（运行前）
+
+8 pairs不足以区分小收益；PushT首轮全部方法8/8且无耗时优势。下一批暂不改selector，先测FULL scoring是否具有值得保留的真实价值。TwoRoom/PushT各64个25-step goals +64个75-step goals；整episodes互不重叠，排除旧12 CAL/TEST，seed61000，episode/start不按模型结果选。两个预定条件FULL-REFINE/N300与CHEAP-ALL/N900；同frozen checkpoint、同task input、30 CEM updates、25执行prefix、分别50/150 env-step预算、native成功判据。所有条件同encode-once cache。CEM搜索seed按episode/decision配对；不同N不称同candidate bank。样本量/goal跨度改变用于检测ceiling与真实compute-quality，不为挽救INTERVAL寻找窄场景。
+
+每task/goal-offset分别报success、Wilson与episode-paired bootstrap差、time-to-success/env steps、含encoding的完整planning time。若FULL没有真实价值，不能仅凭恢复FULL elite宣称方法成立；若有价值，再找值得购买fidelity的设计问题。仍不关闭R2，不进入shared-head训练，不预先改变论文narrative。
+
 
 ## 代码可行性：不需要重写CEM
 
@@ -222,3 +232,7 @@ CEM 对下一轮 proposal distribution 的更新只消费 elite candidate action
 ## 结果后的近邻重查（2026-10-02）
 
 [ICML 2026 Depth over Fidelity in Fixed-Budget Noisy Evolution Strategies](https://proceedings.mlr.press/v306/wang26ff.html) 已深读方法/实验与残差池附录：以低开销 residual-bootstrap probabilistic elite membership 替代 hard ranking，保留更多 distribution updates；COCO、RL policy search、HPO，并有低噪声 probe-and-switch。它已经拥有 elite-membership probability、rank-instability gating 和 depth/fidelity trade-off 的相应 claim，不能归为我们的新发明。与 E13 的差异是 stochastic oracle 重复评测/软权重更新， versus learned visual terminal prediction 的系统误差/不同 fidelity 与 native CEM。与 E16 的差异是当前优化器 selection versus 购买真实环境经验后再训练模型。作为方法支点与强参照，不作自动关闭判断。当前 CHEAP-900 结果提示首先测整个 search budget，而不是继续调 INTERVAL。
+
+### A2 factual controls 与计时混杂（补充运行前）
+
+对全部256锁定的task/goal-range anchors逐一从public setter执行官方factual suffix，保留初始RGB、各状态维度的物理单位误差、wrapped角度及native success。25/75步全部保留，不依据结果筛评测起点。PushT只保证公开restore变量，不声称恢复完整physics memory。A2开始时GPU空闲，后续发现其他进程共卡；闭环成功读数保留，耗时降为非独占测量，不能用于speedup主张。独占timing需另跑。

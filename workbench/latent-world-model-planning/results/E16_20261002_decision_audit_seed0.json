@@ -1,0 +1,180 @@
+{
+  "config": {
+    "args": {
+      "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+      "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+      "methods": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-A100-s0",
+      "output": "/tmp/latent-wm-runs/20261002-E16-decision-audit-s0"
+    },
+    "harness_sha256": "b3389d5e708c45ace168daab33193b7dc811b2b41df7df25b3aa7f162f328239",
+    "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+    "hardware": "NVIDIA A100 80GB PCIe",
+    "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+    "methods": {
+      "NO-ADD": {
+        "seconds": 103.83434397354722,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_NO-ADD_seed0.pt",
+        "sha256": "2a2cb4edffe2c5e08567db0bd1affc440164a520c7e7e06fbe419da5b25d3edb"
+      },
+      "IID": {
+        "seconds": 97.99836968630552,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_IID_seed0.pt",
+        "sha256": "50ffd33f9e17c0658c15785555fed5c4ba63332263ea66000c24c260970b4d9a"
+      },
+      "UNIFORM-COMMON-RESET": {
+        "seconds": 98.2711182422936,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_UNIFORM-COMMON-RESET_seed0.pt",
+        "sha256": "8c463174de686b5d150bd9dfd9cbe1e0d19e1fdd5aa9b31984a1cfcab3da7335"
+      },
+      "COVERAGE": {
+        "seconds": 98.27060439437628,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_COVERAGE_seed0.pt",
+        "sha256": "88ab6f912ffa8232069c073da04b610b16af6c79dba38c4442f75f25acf60901"
+      },
+      "GLOBAL-U": {
+        "seconds": 97.7471568621695,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_GLOBAL-U_seed0.pt",
+        "sha256": "ba3a44359b47c5f271da14057b927287db463f4586167345ae40bd9a2ec7a34e"
+      },
+      "TASK-U": {
+        "seconds": 97.99735629186034,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_TASK-U_seed0.pt",
+        "sha256": "770ca72750b902af0919a752a86998fe0fb80118745c9e289bfc4d7f001e0ff4"
+      },
+      "PBB": {
+        "seconds": 97.9359814748168,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_PBB_seed0.pt",
+        "sha256": "2c8bdd43a8ca31df053ef43bd9bb640d54f31758238153c9c946609be7338793"
+      }
+    },
+    "candidate_ids": "64 uniform from base CEM iteration15, seed74000+anchor; no outcome inputs",
+    "elite_count": 7,
+    "scope": "regret within diagnostic 64-bank; native elite mean separately executed"
+  },
+  "summary": [
+    {
+      "method": "NO-ADD",
+      "n": 48,
+      "selected_candidate_regret_pixels_mean": 14.263919790585836,
+      "paired_regret_delta_vs_no_add_pixels": 0.0,
+      "paired_delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "selected_candidate_successes": 11,
+      "elite_mean_successes": 6,
+      "task_elite_recall_mean": 0.16666666666666666,
+      "terminal_latent_mse_mean": 4.069515039523442
+    },
+    {
+      "method": "IID",
+      "n": 48,
+      "selected_candidate_regret_pixels_mean": 15.31213907400767,
+      "paired_regret_delta_vs_no_add_pixels": 1.0482192834218342,
+      "paired_delta_ci95": [
+        -2.24599679261446,
+        4.3259822944800055
+      ],
+      "selected_candidate_successes": 12,
+      "elite_mean_successes": 10,
+      "task_elite_recall_mean": 0.14583333333333334,
+      "terminal_latent_mse_mean": 5.7254539877176285
+    },
+    {
+      "method": "UNIFORM-COMMON-RESET",
+      "n": 48,
+      "selected_candidate_regret_pixels_mean": 15.009756008783976,
+      "paired_regret_delta_vs_no_add_pixels": 0.7458362181981405,
+      "paired_delta_ci95": [
+        -3.3809221938252447,
+        5.18072830935319
+      ],
+      "selected_candidate_successes": 12,
+      "elite_mean_successes": 11,
+      "task_elite_recall_mean": 0.14583333333333334,
+      "terminal_latent_mse_mean": 4.4301871955394745
+    },
+    {
+      "method": "COVERAGE",
+      "n": 48,
+      "selected_candidate_regret_pixels_mean": 14.46425457795461,
+      "paired_regret_delta_vs_no_add_pixels": 0.20033478736877441,
+      "paired_delta_ci95": [
+        -2.5842873697479565,
+        3.1087660595774635
+      ],
+      "selected_candidate_successes": 13,
+      "elite_mean_successes": 9,
+      "task_elite_recall_mean": 0.1488095238095238,
+      "terminal_latent_mse_mean": 2.6602105100949607
+    },
+    {
+      "method": "GLOBAL-U",
+      "n": 48,
+      "selected_candidate_regret_pixels_mean": 15.287042319774628,
+      "paired_regret_delta_vs_no_add_pixels": 1.023122529188792,
+      "paired_delta_ci95": [
+        -2.512560337285201,
+        4.870579697191715
+      ],
+      "selected_candidate_successes": 13,
+      "elite_mean_successes": 12,
+      "task_elite_recall_mean": 0.15773809523809523,
+      "terminal_latent_mse_mean": 3.8668603748083115
+    },
+    {
+      "method": "TASK-U",
+      "n": 48,
+      "selected_candidate_regret_pixels_mean": 16.287297666072845,
+      "paired_regret_delta_vs_no_add_pixels": 2.0233778754870095,
+      "paired_delta_ci95": [
+        -0.4013044988115629,
+        4.5924448351065275
+      ],
+      "selected_candidate_successes": 9,
+      "elite_mean_successes": 7,
+      "task_elite_recall_mean": 0.12202380952380952,
+      "terminal_latent_mse_mean": 5.295972650249799
+    },
+    {
+      "method": "PBB",
+      "n": 48,
+      "selected_candidate_regret_pixels_mean": 14.088745832443237,
+      "paired_regret_delta_vs_no_add_pixels": -0.17517395814259848,
+      "paired_delta_ci95": [
+        -3.7261878579854963,
+        3.573056929806866
+      ],
+      "selected_candidate_successes": 10,
+      "elite_mean_successes": 10,
+      "task_elite_recall_mean": 0.1607142857142857,
+      "terminal_latent_mse_mean": 2.597347932557265
+    }
+  ],
+  "complete": {
+    "completed": true,
+    "physical_env_steps": 85400,
+    "replay_max_abs": 0.0,
+    "ledger_sha256": "a5da3e5f7d06a1fd84719841be8238b8a20f9d3233018e108ee8ed47ae308d09"
+  },
+  "selection_seal": {
+    "sha256": "a5da3e5f7d06a1fd84719841be8238b8a20f9d3233018e108ee8ed47ae308d09",
+    "hidden_file_existed": false
+  },
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-E16-decision-audit-s0",
+  "rows_sha256": "cddeb80f8c030f73e32429343eaa81b0b8e57e6765ec23c98167f6b549571ecf",
+  "interpretation": [
+    "No observed improvement in real selected-candidate regret on this common base-model candidate distribution.",
+    "CEM closed-loop improves, but this diagnostic does not establish a candidate-ranking correction mechanism.",
+    "Top7 of64 and a single25-step intervention are diagnostic, not the native300/top30 full50-step MPC.",
+    "Terminal latent MSE uses independently updated encoders; magnitudes cannot establish cross-model superiority.",
+    "The reference is best among64 fixed candidates, not global optimality; mean-action utility gap can be negative."
+  ]
+}

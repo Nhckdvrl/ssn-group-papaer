@@ -1,0 +1,96 @@
+{
+  "card": "E00",
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-E00-io-s0",
+  "metadata": {
+    "harness_sha256": "c18b1a39a7f66df48ba6bf56afbe20598b644b7027b505d0f66d1229ff15d57f",
+    "cache_condition": "warmup + uncontrolled OS page cache; node-local HDF5; no cache drop",
+    "ambient": "other independent GPU/CPU work active; not a 4-GPU training benchmark"
+  },
+  "limitation": "h5py fancy-index pattern with warmup and uncontrolled OS cache; not disk bandwidth or GPU scaling; whole-episode caching is faster in the training pilot",
+  "summary": [
+    {
+      "file": "tworoom.h5",
+      "repeat": 0,
+      "workers": 1,
+      "aggregate_frames_per_second": 20.37757228017214,
+      "decoded_mb_per_second": 3.0673952001897518
+    },
+    {
+      "file": "tworoom.h5",
+      "repeat": 0,
+      "workers": 2,
+      "aggregate_frames_per_second": 40.79181878751374,
+      "decoded_mb_per_second": 6.140310898446868
+    },
+    {
+      "file": "tworoom.h5",
+      "repeat": 0,
+      "workers": 4,
+      "aggregate_frames_per_second": 81.02669835773254,
+      "decoded_mb_per_second": 12.196786850392764
+    },
+    {
+      "file": "tworoom.h5",
+      "repeat": 1,
+      "workers": 4,
+      "aggregate_frames_per_second": 80.97978710857564,
+      "decoded_mb_per_second": 12.189725393879673
+    },
+    {
+      "file": "tworoom.h5",
+      "repeat": 1,
+      "workers": 2,
+      "aggregate_frames_per_second": 40.83013845598544,
+      "decoded_mb_per_second": 6.1460790815025765
+    },
+    {
+      "file": "tworoom.h5",
+      "repeat": 1,
+      "workers": 1,
+      "aggregate_frames_per_second": 20.493414854273226,
+      "decoded_mb_per_second": 3.0848327511840403
+    },
+    {
+      "file": "pusht_expert_train.h5",
+      "repeat": 0,
+      "workers": 1,
+      "aggregate_frames_per_second": 20.23630896982562,
+      "decoded_mb_per_second": 3.046131116609911
+    },
+    {
+      "file": "pusht_expert_train.h5",
+      "repeat": 0,
+      "workers": 2,
+      "aggregate_frames_per_second": 40.77064100623393,
+      "decoded_mb_per_second": 6.137123049386381
+    },
+    {
+      "file": "pusht_expert_train.h5",
+      "repeat": 0,
+      "workers": 4,
+      "aggregate_frames_per_second": 78.71358806187554,
+      "decoded_mb_per_second": 11.848598983778
+    },
+    {
+      "file": "pusht_expert_train.h5",
+      "repeat": 1,
+      "workers": 4,
+      "aggregate_frames_per_second": 81.33747523631484,
+      "decoded_mb_per_second": 12.243567472372002
+    },
+    {
+      "file": "pusht_expert_train.h5",
+      "repeat": 1,
+      "workers": 2,
+      "aggregate_frames_per_second": 40.66545634993228,
+      "decoded_mb_per_second": 6.121289813442607
+    },
+    {
+      "file": "pusht_expert_train.h5",
+      "repeat": 1,
+      "workers": 1,
+      "aggregate_frames_per_second": 20.43294686746532,
+      "decoded_mb_per_second": 3.0757306260658197
+    }
+  ]
+}

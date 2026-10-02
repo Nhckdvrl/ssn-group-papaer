@@ -55,10 +55,10 @@ LeWM原文报告紧凑单GPU训练；RC-aux提供约18.7M的本地实例。不�
 
 | 项目 | 本地状态 | 下一步 |
 |---|---|---|
-| 原生小模型加载与训练步 | Fast 两任务工程完成、原生 TwoRoom 完成 | E00 原生 PushT |
-| 原生规划闭环与计时 | 原生 TwoRoom 配对闭环与计时完成 | E13 原生 PushT |
-| 数值复现、独立训练seed | 未执行 | E01 |
-| 共享评测清单/数据缓存 | TwoRoom node-local HDF5、12 anchors/候选 bank 已建立 | PushT；1/2/4 I/O |
+| 原生小模型加载与训练步 | Fast 两任务原生完成；LeWM有限数据1680+600 updates实际运行 | E01原生配方与独立seed |
+| 原生规划闭环与计时 | 两任务配对闭环/计时；长短goal256pairs完成 | 第二预测对象/恢复方式 |
+| 数值复现、独立训练seed | 完整数值复现未完成；E16独立seed1/2运行中 | E01/E16 |
+| 共享评测清单/数据缓存 | 两任务node-local HDF5、candidate/branch banks、1/2/4 I/O完成 | 整episode RAM cache复用 |
 
 新记录追加在这里或具体实验卡，不另建“最终资产表2”。
 
@@ -87,3 +87,13 @@ LeWM原文报告紧凑单GPU训练；RC-aux提供约18.7M的本地实例。不�
 Fast-LeWM官方README已核对：基于LeWM代码、使用相同HDF5数据布局，提供PushT/TwoRoom/Reacher/Cube训练与评测入口，并指向`naiverer/fast-leworldmodel` checkpoints。当前锁定公开main快照`de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d`；**TwoRoom/PushT 已在本地加载并运行**。
 
 DeepJEPA最新arXiv为`2610.00368`（submitted 2026-09-30）。公开repo快照`d52bfb232c19376b6f6731b9380bc2d6d7762ffb`仍只有项目说明并称code即将发布；执行机每次准备E13确认一次release即可，不为等它阻塞Fast-LeWM/LeWM首轮。
+
+### 2026-10-02 真实方法/确认资产
+
+PushT HDF5 SHA256 `b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb`；[原生结果](results/E00_E13_E16_20261002_pusht_native.json)含GPU实际计时与8paired闭环，所有scoring controls差0。[E13 A2](results/E13_20261002_fidelity_value.json)256pairs完整执行，但后续GPU共卡，耗时不作speedup证据。[factual controls](results/E00_E13_E16_20261002_factual_controls.json)304起点完整保留，PushT长时恢复非exact。
+
+[E16 seed0](results/E16_20261002_equal_data_seed0.json)：基础100episodes/9295rows/7295有效clip，encoder参与训练，缓存的是uint8 pixels而非旧latent。base30模型在 `<HF cache>/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt`，SHA256 `8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996`。七方法checkpoint都在HF cache的 `latent-wm-trained/E16_methods_A100_s0/`，完整hash/600updates/precision/独立seed/模型配置见JSON；训练A100计时与RTX基础训练分开。
+
+原始bank/heads由RTX单卡生成，所有ledgers在hidden文件不存在时密封：ledger SHA256 `c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8`，hidden SHA256 `18106a5f144ead2378827499021bb60e02d366b49b412c4f31486446dcc231a8`。跨授权节点仅stage约41MB压缩base100 pixels/actions缓存+约130MBpublic/hidden bank，避免重复12GB数据传输。base-cache SHA256 `fb46e630ce6d6fcc2fb9ee09346017d723afdbb51bc71627fc4a7360ee11f68b`，manifest逐字段核对。
+
+新seed1/2由[独立pipeline](scripts/independent_acquisition.py)执行，checkpoint仍HF、data local、raw完成后复制持久cache。同进程连做base/bank/methods以摊薄NFS Python import成本；不修改既有环境，不开多节点训练。E00 [1/2/4读数](results/E00_20261002_io_concurrency.json)是指定HDF5 fancy-index读法，不能代替磁盘带宽或多GPU训练测量。

@@ -18,8 +18,7 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def build(source):
-    cfg = json.loads((source/'config.json').read_text())
+def architecture(cfg):
     encoder = cfg['encoder']
     if encoder['size'] != 'tiny' or encoder['pretrained']:
         raise ValueError('Only the released tiny non-pretrained recipe is supported')
@@ -35,6 +34,12 @@ def build(source):
     model = JEPA(encoder=vit, predictor=component('predictor',ARPredictor),
         action_encoder=component('action_encoder',Embedder),
         projector=component('projector',MLP), pred_proj=component('pred_proj',MLP))
+    return model
+
+
+def build(source):
+    cfg = json.loads((source/'config.json').read_text())
+    model = architecture(cfg)
     state = torch.load(source/'weights.pt', map_location='cpu', weights_only=True)
     model.load_state_dict(state, strict=True)
     if not all(torch.isfinite(t).all() for t in model.state_dict().values()):

@@ -35,3 +35,23 @@ TwoRoom / Fast-LeWM / N=300,K=30,β=1,[2,3],seed=0。8 个 held-out generated ep
 原生 TwoRoom / Fast-LeWM：20% TOP-M-SCREEN 离线 recall=96.86% [90.58,100]，但8 paired episodes 中与 FULL/CHEAP-300 同为7/8；CHEAP-900为8/8且 decision time仅0.523 s，FULL为1.230 s。7/8的Wilson CI=[52.9,97.8]%，不能声称等价；也不能以8/8宣称CHEAP-900确定更优。[E13](experiments/E13_explicit_implicit_matched_pilot.md)、[结果](results/E00_E13_E16_20261002_tworoom_native.json)。
 
 这说明 offline 模型参照 recall 不足以建立方法价值；下一步保留全部 seed/起点与强 cheap-search baseline，测原生 PushT 后再决定 refinement/search/update 如何分配计算，不局部优化选择器来硬救预设故事。
+
+## P04｜有限expert经验的训练误差下降，规划仍弱；追加数据有待确认信号
+
+[E16全部七方法](results/E16_20261002_equal_data_seed0.json)：同100基础episodes从10到30epochs，train MSE约0.18→0.03–0.06，同16起点成功均3/16；released正控14/16。不能从training MSE推断held-out预测质量或新现象。30epoch后再各600 updates，48未见训练episode目标：NO-ADD9/48、IID17、uniform17、coverage18、GLOBAL-U24、TASK-U11、PBB19。GLOBAL-U相对NO-ADD配对增益31.25pp、episode bootstrap95% CI[18.75,45.83]；PBB20.83pp[4.17,37.50]。一完整数据seed，CI不是train-seed CI；不升级科学主张，不声称新颖性。
+
+实际395 union branches/9875执行steps+24重放/600控制steps；每policy逻辑消费2000steps，IID来自预收集官方轨迹。所有policy在hidden文件生成前锁ledger；训练仅读取自己购买keys；NO-ADD同训练计算。[48 factual controls](results/E00_E13_E16_20261002_factual_controls.json)阳性48/48、state/pixel误差0。下一步独立seed1/2全pipeline确认、真实candidate后果、第二任务/data regime；不只优化PBB score。
+
+## P05｜短期预测的额外一致性计算没有解决长目标规划
+
+[E13 A2](results/E13_20261002_fidelity_value.json)：每task×goal-offset64整episode起点，FULL300 vs CHEAP900共512闭环episodes。TwoRoom25成功58/64 vs63/64；75成功27/64 vs47/64（cheap−full31.25pp、paired episode CI[20.31,42.19]）；PushT25为58/64 vs61/64；75为9/64 vs9/64。Goal-offset不是最短路径标签。此结果仅比较β=1 direct/decomposed consistency与更宽cheap CEM，不外推所有refinement或LeWM/DeepJEPA。
+
+短goal最初8起点出现ceiling，已扩全部预定目标；long PushT存在真实困难，也有public-restore混杂，全部保留。下一步应改变预测对象/规划时域/目标复用/反馈等方法轴，不能把提高模型elite recall继续当最终目标。A2后来共卡，timing明确降级；不按该时间主张speedup。
+
+## P06｜PushT公开restore的长时残差，不能误作模型失败
+
+[全部304 factual controls](results/E00_E13_E16_20261002_factual_controls.json)：TwoRoom128/128+E16 48/48，位置与初始pixel误差0；PushT25阳性64/64、max position3.86pixels/angle0.075rad；PushT75阳性63/64、max position92.48pixels/wrapped angle1.079rad。公开7D state没有完整physics memory，长suffix偏差不能称精确反事实，也不能简单拿去归因WM。需查看残差分布/接触状态；所有起点保留，恢复协议单列。FIRM已明确public interface restore的边界，本记录不把接口限制包装成新idea。
+
+## P07｜闭环增益未伴随旧candidate分布内regret改善
+
+[E16统一bank](results/E16_20261002_decision_audit_seed0.json)48起点×64候选×七模型，NO-ADD/GLOBAL-U/PBB真实selected regret分别14.264/15.287/14.089pixels；配对差值区间都包含0。此bank由共同base CEM中期生成，不能代表各新模型完整搜索分布；也不能事后因此换bank来硬找正结果。现有闭环增益可能来自proposal distribution、后续反馈或encoder geometry，未核对。保留该null，后续从更广方法轴/第二task理解数据作用，不宣称PBB修正动作排序。

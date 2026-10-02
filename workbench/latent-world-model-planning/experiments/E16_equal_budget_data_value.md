@@ -38,7 +38,38 @@ branch bank只为可重复比较；selector不能偷看未购买的真实outcome
 
 可加**ORACLE VALUE**只作上界：用隐藏branch outcome选择最能减少真实candidate regret的数据；不能进部署方法。
 
+### 2026-10-02 Stage 1 基础训练与正控（运行前）
+
+先训练有限数据模型，避免在已见大量数据的 released checkpoint 上把新预算作用压到噪声内。官方 TwoRoom 中以 seed=20000 选100整 episodes，排除此前 E13 的12 episodes；另选48个整 episode隔离的goal anchors供评测，训练不能消费其图像/transition。基础action statistics只来自这100 episodes。100是起始数据regime，非最终论文范围。
+
+seed=0；从随机初始化开始，官方 LeWM 18M tiny ViT/history3/frameskip5，4帧@0/5/10/15，预测全部3个移位目标的MSE + 0.09 SIGReg（17 knots/1024 projections），AdamW lr5e-5/WD1e-3、clip1、bf16、batch128。10 epochs先测；constant LR 与自写小循环是明确的pilot偏差，不称完整Lightning/scheduler复现。边界clip不padding，记录有效样本、steps、loss、representation spread、GPU时间/显存、I/O。若正控弱，检查训练曲线并沿官方更长训练配方续训，不能据欠训练宣布数据假设失败。
+
+native LeWM horizon=5 macro actions、每macro5 primitive、receding_horizon=5，50-step budget；真实history取t−10/t−5/t，过去2个action blocks仅作因果context，未来5个candidate blocks合计25steps。必须给native rollout拼接past2+future5，不能把带3帧history的5-action tensor误当25step forecast。缓存所有方法相同的冻结当前/goal encoding；先与native get_cost核对数值与5步rollout长度。先16个预定eval anchors比较released正控与基础模型；正式acquisition效果使用全部预定48 anchors及新的candidate-outcome审计，不以正控结果挑起点。
+
+随后仅用于acquisition的3个bootstrap predictor heads共享基础encoder/projector，在基础数据feature上训练；不把独立模型的未对齐latent variance当GLOBAL-U。主模型所有policy沿相同基础checkpoint继续训练原始objective，固定optimizer步骤。购买时完整保留 NO-ADD、IID、uniform common-reset、coverage/excitation、GLOBAL-U、TASK-U、PBB；具体预算/训练步/anchor pool在查询前锁定。隐藏分支结果只对已购买数据开放。
+
+基础训练首轮：560 updates / 167.89 s，peak allocated VRAM12.57 GiB，16 anchors success3/16；released正控仍在完成同组16起点。loss仍下降（末段pred MSE约0.18），不据此判采集价值。**续训前修订**：同100 episodes/同16正控/同48评测anchors、相同loss/lr/batch，resume到总30 epochs（1680 updates），不新增数据。旧checkpoint未保存RNG，首次resume明确记录dropout RNG restart；随后保存RNG。训练不足是待核对混杂，不能作为PBB正/负证据。
+
+### Stage 1 首次 equal-data pilot（查询/训练前）
+
+- 以总30 epochs基础checkpoint为统一起点，先1 train seed；本阶段是离线branch-bank data-value simulation，必须分别报告每policy消费的逻辑steps与生成整个bank的真实总steps，不冒充线上查询成本。
+- 3 bootstrap prediction heads从同一基础predictor初始化，共享冻结encoder/projector；各自按整episode bootstrap训练500 updates（MSE原3移位目标，encoder不更新）。只用于acquisition，主模型训练objective仍完全不变。encoder feature cache保留版本/hash。
+- 64 acquisition anchors从基础100 episodes内抽，真实历史/goal图像均已在基础经验中。native CEM N300/K30/30 iterations；固定取中间iteration15，避免选择器不同CEM阶段导致额外变量。3 heads + primary对同一candidate population给cost/terminal estimates。
+- 每policy固定新增2000 logical steps=10 anchors×8 branches×25 controls；branch末端观察额外保存但不算新action。NO-ADD与各方法固定600额外gradient updates/batch128、同基础optimizer/seed、原MSE+.09SIGReg。每条25-step追加clip滑窗@0/5/10/15，末端未使用的第4 action block允许0-padding；三个预测目标必须全部位于已购买25-step范围，不加入decision loss。
+- IID：排除base/eval/旧E13 episodes，从80个新factual episodes各买25 transitions；UNIFORM-COMMON-RESET：64 anchors中均匀选10，same-state CEM population中均匀8 prefixes；COVERAGE：共享latent的局部低密度state + action-prefix diversity；GLOBAL-U：共享latent terminal variance；TASK-U：goal-cost variance；PBB：elite-membership entropy×cutoff proximity×terminal diversity。其余两uncertainty策略也各买8最高uncertainty prefixes。UNIFORM是common-reset data思想参照，不声称完整复刻FIRM architecture/loss。
+- 先完成所有public selection ledgers、锁hash，再生成各policy所需branch的union；selector此时不能读取尚不存在的hidden outcomes。生成顺序不按模型预测优劣排列。policy训练只载入自身已买keys，NO-ADD不得读任何追加branch。重复reset/state/pixel一致性先留控制。
+- 主读数：全部48预定未见训练episode goal anchors的closed-loop success（50-step budget、native成功判据）/相对NO-ADD提升/每1k新增logical steps；episode paired bootstrap+Wilson。小样本单seed不升L2。real candidate regret另建同candidate/同真实utility的评测bank，未生成前不能用model score regret替代。
+- 决策：若所有方法都随600步大幅改善，先查优化量；若uniform/uncertainty优于PBB，直接沿强方法理解数据痛点；若有稳定增益，再扩3 seeds、PushT和预算。不会只报最好selector或只保留成功seed。
+
 ## Decision-critical score的最低实现
+
+### 2026-10-02 独立确认批次（seed 1/2 运行前）
+
+首轮全部七方法保留：NO-ADD 9/48，IID 17/48，uniform 17/48，coverage 18/48，GLOBAL-U 24/48，TASK-U 11/48，PBB 19/48；这只是一次 pilot，没有 PBB 优于强基线的证据。相对 NO-ADD，GLOBAL-U 帮助15/退步0，PBB帮助14/退步4；尚未做独立训练seed确认。
+
+下一批固定 seed=1,2，各自从随机初始化、100整episodes split、30 uninterrupted epochs开始，重新生成48评测anchors、3 bootstrap heads、64 acquisition anchors与全部七policy密封ledgers。确认训练保留 **NO-ADD / UNIFORM-COMMON-RESET / GLOBAL-U / PBB**，均600 updates、2000追加logical steps；不按后续结果增删种子。先报告每seed配对结果，再报告seed间范围；episode bootstrap不能冒充train-seed置信区间。seed0首次resume的RNG偏差保留。独立单卡，硬件逐run记录，A100/RTX计时不混表。
+
+并行补全部48 seed0评测起点的factual-suffix阳性对照：public setter后执行25个官方动作，记录成功、初始RGB/position误差、终点position误差；不剔除失败起点、不改变已经锁定的主读数。任何恢复异常先降级对应解释。随后在统一candidate bank上测真实动作后果，不用模型score代替真实utility。
 
 不要先训练复杂acquisition network。可从：
 - CEM top-2 margin / elite-cutoff margin；
@@ -195,3 +226,11 @@ v0 score只是为了快速判别研究假设。若它有效，再比较：
 - query后模型更新使该decision的regret减少多少。
 
 这些读数允许直接检查“acquisition score高”是否真的对应**decision correction value**，而不是只对应视觉/latent prediction error。
+
+### 2026-10-02 held-out decision audit（运行前）
+
+seed0全部48个锁定评测anchor、共同base30 checkpoint的native CEM N300/K30/30，固定iteration15。每anchor以seed74000+j均匀抽64个candidate ID，七个已训练模型评估同一64序列；不能各自挑容易的bank。真实执行每序列25steps，保存完整状态轨迹及第25步图像；额外同动作重复控制，不剔除任何起点。
+
+主读数是**64候选内**选中单candidate的真实任务距离regret（执行时首次native成功便停止，否则第25步终点；参照同bank最优，绝不称全局oracle）。另报不中止第25步位置距离排序的top7 elite recall、真实candidate terminal与模型terminal的latent MSE、成功候选比例。native CEM实际执行的是elite mean：七模型各对同bank top7取动作均值，另执行其25步，报告success及相对bank最优的signed utility gap，均值可好于64个单candidate，不能截断负数。此诊断是固定bank的模型选择质量，不替代已有完整CEM闭环成功率。
+
+全部模型/ID/读数在真实outcome执行前锁定。评测branch数据与主训练/独立seed acquisition目录完全分开，无线上budget主张。以episode paired bootstrap 2000次报告差异，不把3000多个候选当独立样本。factual恢复对照若异常须单列降级。
