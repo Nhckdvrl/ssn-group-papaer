@@ -159,3 +159,10 @@ ownership：“翻译更好不代表后续迁移更好”已有直接先例。RE
 DOCUMENTED来源：transfer方法选择还受一次翻译成本、部署延迟影响；对比zero-shot/translate-train/translate-infer，QA、NLI与ranking。QA标记answer边界再译，约20%样本因边界丢失被删；QA翻译监督不及零样本，NLI/ranking则受益。
 强弱：把实际成本接回任务选择；QA小测试集、任务/模型/内容差异，不是同信息量的预算因果控制。历史API/GPU价格不是当前报价。
 动作：E04若有有效训练后果，再接同预算有效translate-train；必须报告目标答案恢复/丢失率，不能把译料监督失败误归为跨语言学习限制。“成本敏感的训练选择”本身已有ownership。
+
+## EMMA-500 Llama3（arXiv2506.00469v2）
+
+[一手全文](https://arxiv.org/html/2506.00469v2)，已读§2.2–3.3；不是全部附录审计。
+DOCUMENTED来源：500语言CPT中是否加入双语数据；Llama3/3.1-8B公开Mono/Bi，十句pair拼文档并标语言。Mono419B token/25K步，Bi671B/40K步，warmup亦不同；不是等预算同文本pairing识别。
+§3.3 Model Adaptability实际比较CPT相对base的静态基准变化，不是统一后续新任务学习曲线。双语收益随base/任务不同；不能重新贴成acquisition-saturation证据。
+动作与距离：这是可扩到更强、多语released family的资产，不需复刻其800K GPU小时训练；但不应盲目把8B四模型全参数训练铺开。先由当前实际训练决策的有效后果决定扩展对象，再选择单卡可承载的适配与源语gate。无新ownership升级。
