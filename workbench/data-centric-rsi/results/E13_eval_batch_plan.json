@@ -1,0 +1,29 @@
+{
+  "experiment": "E13",
+  "utc": "2026-10-02T16:21:32.645838+00:00",
+  "status": "reviewed coordinator prepared; not launched at this capture",
+  "script": "workbench/data-centric-rsi/scripts/e13_eval_batch.py",
+  "script_sha256": "404c6f44d5f938b116cb0e9cee55cbc3f3db19688525c93d5bfd86075c930620",
+  "research_repository_commit": "4938d14be35bd7090e5eda75bcc6b85d54a050db",
+  "launch_node": "fvcrc10",
+  "coordinator_command": [
+    "python3",
+    "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e13_eval_batch.py",
+    "--run-batch"
+  ],
+  "state_path": "/var/tmp/xiang-data-rsi/e13/eval_batch/state.json",
+  "student_gpu": 1,
+  "all_six_training_required": true,
+  "copy_policy": "Six complete >14GB terminal checkpoints copied once from13 to10 unique paths; all file hashes compared; copy/source-hash/target-hash wall separate. No full pool or environment copied.",
+  "judge_policy": "fvcrc20 existing vllm023-cu128, Qwen3.5-27B revision fc05daec18b0a78c049392ed2e771dde82bdf654; dedicated GPU1,0.78memory,4096context,16seq,bfloat16,no-thinking,native sampler VLLM_USE_FLASHINFER_SAMPLER=0. Owner token and PID start_ticks guard lifecycle. Only starts after six copies and eval env/idle checks; finally drain/save metrics/TERM only owned server/group; failure cleanup preserves unknown measurements.",
+  "eval_protocol_reference": "workbench/data-centric-rsi/results/E12_random_s17_v2_eval_manifest.json",
+  "eval_pip_freeze_sha256": "8ef6b4ec11c6d563e990ad7a2a3eebb9ac67d3c735792a769bcf86c450da9f40",
+  "environment_check_fvcrc10_utc": "2026-10-02T16:11:09.613238+00:00",
+  "environment_check_status": "eight TSV MD5 / task YAML SHA / vendor commit and clean diff / E12 driver, validator, shim source SHA / full pip freeze all match frozen E12",
+  "A100_total_cap_seconds": 64800,
+  "Blackwell_judge_residency_cap_seconds": 43200,
+  "scope": "wrapper allocated wall, including model loading/CPU/I/O/judge wait; hardware active time unmeasured. Budget waiting before resource acquisition excluded. Judge Blackwell is not converted to A100.",
+  "small_result_prefix": "results/E13_<parent_action_s29>_{raw_results,validated_scores,eval_manifest,completion}.json",
+  "big_prediction_asset_root": "fvcrc10:/var/tmp/xiang-data-rsi/e13/eval_runs",
+  "human_or_root_review": "root requested and reviewed frozen dependencies/queue; lifecycle boundary fixes submitted for final review; no judge started for a test"
+}
