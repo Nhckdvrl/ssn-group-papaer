@@ -1289,3 +1289,44 @@ P02 已经比我们之前记得更接近 M2：
 - **对 workbench 的重要边界：** 这类 failure discovery **不是自动有科研意义**。它比 arbitrary probe好，因为输入environment-valid、failure需fresh-seed/local persistence，但如果找出的 failure不改变 planning/action/recovery design，它仍只能当 diagnostic。
 - **对 R5：** 可用作 failure-state generator，帮助 E18 构建 diverse recovery conditions；不能把“发现一个罕见失败输入”本身升级成主线。
 - **对用户taste的规则：** natural-input stress test可以用，但必须继续走到 decision consequence / repair / method choice，避免回到“奇怪位置行为异常”。
+
+## R1/R3/R4 latest program coordinates（P110–P113）
+
+### P110 — TaskSense: Focusing on What Matters in World Models — arXiv 2608.06544
+**Read:** B（abstract-level定位；若成为direct baseline需补全文）  
+**来源：** https://arxiv.org/abs/2608.06544
+
+- **母问题：** pixel reconstruction迫使latent保存大量背景/distractor，而 task-relevant content只占 observation一小部分。
+- **方法 principle：** stochastic spatial attention在encoding前选择task-relevant regions；inverse dynamics引导attention；decoder只重建attended regions。
+- **证据范围（abstract）：** DMC上保持竞争力，在Distracting Control Suite下优于DreamerV3；attention可视化显示control-relevant localization。
+- **对 R3：** specialization可以发生在 **perception/selection layer**，而不仅是latent/dynamics/query head。I10/E17的 query-placement program因此应允许“query/state gating before encoding”这一层，但不能只复制 TaskSense attention。
+- **对 idea-growth：** 一个经典“reconstruction保太多无关信息”问题，方法来自先明确哪些视觉内容与action有关。
+
+### P111 — FACT: Failure-Aware Causal Training for World-Action Models — arXiv 2608.10232
+**Read:** B/A-positioning（abstract + project定位；direct baseline前补全文）  
+**来源：** https://arxiv.org/abs/2608.10232
+
+- **母问题：** WAM/world-action training多用successful demonstrations，因此模型几乎没有理由预测bad actions的真实后果；这会产生 success-biased future hallucination。
+- **idea：** action-conditioned future + task-progress prediction，让 failure rollouts成为合法future targets；progress head可用于candidate scoring。
+- **证据范围：** simulation + real bimanual manipulation；作者报告随着 failure data加入，performance改善并减少bad-action success hallucination。
+- **对 R1：** “failure outcome coverage”是与state coverage / action excitation / route diversity不同的独立 data axis。I12/E16未来若R1信号强，可以加入 failure-data composition，而不是只比较更多exploration。
+- **对 R5：** failure-aware model可以改变 repair / candidate rejection，但 FACT主要回答训练data与model，不是多-recovery action selection。
+
+### P112 — GLAM: Latent WM over Global Spatiotemporal Memory for Active Exploration and Navigation — arXiv 2609.14561
+**Read:** B（abstract定位）  
+**来源：** https://arxiv.org/abs/2609.14561
+
+- **母问题：** active exploration/semantic navigation中局部RGB state不够；agent需要global spatiotemporal memory，并联合预测 future map context 与 waypoint plan。
+- **方法：** goal-conditioned JEPA-like latent WM over map-level memory tokens；联合future map representation与robot-centric waypoint latents。
+- **数据：** replay ObjectNav expert trajectories in Habitat/HM3D，切成multi-timescale prediction samples。
+- **对 R4：** predictive state可以是 **global spatial memory**，不是只有recurrent vector/belief distribution；R4应保持“哪种 state object适合什么 partial-observation regime”的广度。
+- **对 R2：** future map + waypoint joint predictive object又是 continuum中的一个 structured point。
+
+### P113 — Belief-Based World Models for LLM Agents — arXiv 2609.00455
+**Read:** B（abstract定位；跨领域邻居）  
+**来源：** https://arxiv.org/abs/2609.00455
+
+- **母问题：** simulation接口告诉policy“行动后可能发生什么”，但partial observability还需要“现在知道什么/不知道什么”的belief接口。
+- **关键实验问题：** 不先解决belief learning，而先问直接暴露belief给policy是否改善decision；abstract报告 under partial observability 有提升，且与simulation WM互补。
+- **对 R4：** 很好的跨领域提醒：**belief representation 是否被planner/policy显式消费** 与 “world model内部是否隐式有uncertainty” 是不同问题。
+- **novelty意义：** R4不必局限机器人JEPA，也可从“simulation vs belief interface互补”抽象出更一般的问题，但首轮仍用compact visual control做受控实验。
