@@ -167,222 +167,220 @@ goal distance、candidate dimension、search budget一起变；Planning Limits/S
 
 ---
 
-## 5. 红区 / 黄区 / 当前优先
+## 5. Atomic claims vs parent programs
 
-### 红区
-- prediction error != planning
-- L2 != real progress
-- information exists but metric cannot use it
-- generic temporal distance / reachability
-- generic multi-step
-- inverse/physical grounding
-- action discrimination
-- path-aware scoring
-- CEM OOD / model exploitation
-- subgoals / hierarchy
-- long horizon
-- closed-loop evaluation
+上面的 L0–L6 是**系统归因层**，不是选题层。  
+某个 atomic claim已有论文，只代表相应 cell 需要更强 baseline，不代表跨层 research program关闭。
 
-### 黄区
-- semantic-negative role conflation
-- cross-method bottleneck relocation
-- planner-stage alignment collapse
-- history/POMDP
-- stochastic multimodality
-- data semantics × planner objective
+### 已建立的 atomic claims
+- prediction error != planning utility；
+- L2 geometry != real progress；
+- action-conditioned factual prediction不自动等于counterfactual discrimination；
+- recursive error / horizon / search / H-K interface会影响planning；
+- partial observation / hidden physics需要memory/belief/identification；
+- uncertainty/adaptation/feedback可以改善部分 failure。
 
-### 当前优先
-1. **M1 / I07 observable-goal vs control-belief**
-2. **M2 / I08 explicit↔implicit predictive abstraction**
-3. **M3 / I09 behavior→controllability semantics**
-4. I06 = M3 subdiagnostic；I03 = common oracle/regime tool；I01/I02 parked；I05 generic form superseded by I07
+这些可以反复出现在新 paper 的机制链里，只不能单独当“我们首次发现”。
 
 ---
 
-## 6. I06 的逻辑链
+## 6. R1–R5 如何穿过 L0–L6
 
-```text
-actual negative sampler
-      ↓
-semantic validity audit
-      ↓
-FULL vs NO-XNEG
-      ↓
-ORACLE-VALID / CENSOR / COUNT-MATCH
-      ↓
-semantic calibration  vs  scale/dispersion/gradient role
-      ↓
-fixed-candidate ranking/regret
-      ↓
-closed-loop planning
-      ↓
-oracle-free role separation (only if supported)
-```
+### R1 Data & Identifiability
 
-必须区分：
+\`\`\`text
+L0 data composition / interventions / active probes
+      ↓
+L1-L2 what state & action effects are identified
+      ↓
+L3 planner-facing reachability/progress semantics
+      ↓
+L4 candidate comparison
+      ↓
+L6 real planning utility
+\`\`\`
 
-### Contrastive/reference negative
-用于 marginal normalization / density-ratio reference，不等于逐pair“不可能”。
+关键 interactions：
+- action excitation × route diversity；
+- state coverage × counterfactual branches；
+- trajectory supervision × planner metric；
+- passive vs active/query-aware data。
 
-### Planning-semantic negative
-直接给pair一个 absolute semantic constraint：
-- far beyond margin；
-- unreachable within budget。
+当前 probes：E14 / E16 / E08。
 
-I06只对后者的 conflation claim novelty。
+### R2 Predictive Abstraction
+
+\`\`\`text
+L2 predictive object
+  one-step / k-step / distribution / occupancy / macro
+      ↓
+L4 planning/search object
+      ↓
+L5 horizon + compute placement
+      ↓
+L6 utility
+\`\`\`
+
+关键 interactions：
+- horizon × predictive object；
+- stochasticity × point/distribution；
+- arbitrary-action flexibility × successor/policy abstraction；
+- train compute × test compute。
+
+当前 probe：E13。
+
+### R3 Specialization vs Reuse
+
+\`\`\`text
+query/task information
+   ├─ L1 representation
+   ├─ L2 dynamics
+   ├─ L3 metric
+   └─ L4 proposal / verifier
+        ↓
+seen decision efficiency ↔ unseen query reuse
+        ↓
+L6 utility
+\`\`\`
+
+关键 interactions：
+- query dimensionality × capacity；
+- query placement × planner stage；
+- multi-query training × reuse；
+- query-aware data × reusable dynamics。
+
+当前 probe：E17。
+
+### R4 State / Belief / Information Gathering
+
+\`\`\`text
+partial observation / hidden physics
+      ↓
+L1 point state / memory / belief
+      ↓
+L2 multi-future / hidden-parameter prediction
+      ↓
+L4 risk / information-gathering planning
+      ↓
+L6 utility
+\`\`\`
+
+关键 interactions：
+- history length × hidden-state persistence；
+- epistemic vs aleatoric uncertainty；
+- belief representation × planner consumption；
+- passive memory × active probing。
+
+当前 probe：E11。
+
+### R5 Trust / Repair / Bypass
+
+\`\`\`text
+L1-L5 reliability signals
+      ↓
+failure type / severity
+      ↓
+choose intervention:
+replan / shorten H / more search / feedback / adapt / fallback
+      ↓
+L6 utility lift per compute
+\`\`\`
+
+关键 interactions：
+- mismatch × local dynamics sensitivity；
+- support × uncertainty signal；
+- goal distance × replanning；
+- failure type × repair action。
+
+当前 probe：E18。
 
 ---
 
-## 7. I03 regime map
+## 7. Shared oracle family
 
-初始只做小 fractional grid：
+### 7.1 Candidate decision oracle
 
-- topology task + contact-rich task
-- 3 goal-distance bins
-- 2 candidate budgets
-- fixed H/K controls
+固定 start/query + candidate set：
+1. real environment utility；
+2. encoded-real score；
+3. predicted score；
+4. true-dynamics score；
+5. candidate-set ceiling；
+6. selected-action regret；
+7. closed-loop outcome。
 
-signature：
+### 7.2 Data/identifiability oracle（R1）
+- state/action support；
+- conditional action covariance/excitation；
+- counterfactual branch coverage；
+- route/path diversity；
+- oracle reachability / shortest path；
+- intervention fidelity。
 
-```text
-R  representation/metric
-D  dynamics/rollout
-A  action discrimination
-P  proposal/search
-T  time-index/replanning
-H  horizon/target
-M  mixed/unidentifiable
-```
+### 7.3 Query/reuse oracle（R3）
+- seen vs unseen query；
+- same physical prediction reused under multiple objectives；
+- retraining/conditioning requirement；
+- candidate proposal efficiency。
 
-候选 predictive variables：
-- goal distance
-- candidate margin
-- planner-reachable fidelity
-- data support
-- action-discrimination margin
-- H/K ratio
+### 7.4 Belief oracle（R4）
+- hidden state/parameter；
+- observation-history equivalence；
+- action utility vector；
+- best-action flip；
+- information-gain action。
 
-没有跨task predictive relation就不形成paper law。
+### 7.5 Recovery oracle（R5）
+对同 planning state执行多种 repair：
+- native；
+- replan；
+- shorter horizon；
+- more search；
+- feedback；
+- adapt；
+- fallback。
+
+记录 utility lift / compute。
 
 ---
 
-## 8. 被代码审计淘汰的 I01
+## 8. Scientific instruments vs paper claims
 
-原设计要求：
-“local/full short-window samples完全相同，只改更长 trajectory factorization。”
+以下默认是**仪器**：
+- E02 random/mid/elite rank；
+- E06 bottleneck ladder；
+- E08 negative semantic audit；
+- probes / latent visualization；
+- prediction MSE；
+- support/uncertainty scores。
 
-但 pinned TD-JEPA/RC-aux 的主要 temporal/reachability pairs只来自 loaded short clip；cross negatives也只是batch row permutation，不查episode graph。
-
-所以严格保持short windows不变时，loss几乎看不到treatment。  
-**E03/E04在运行前VOID是正确结果：这证明workbench真的在用实现约束筛实验，而不是拿GPU撞墙。**
+如果某个 instrument 本身暴露一个此前未知、跨task稳定且有decision consequence的 construct，它可以升级；否则只服务 R1–R5。
 
 ---
 
-## 9. Workbench 成功标准
+## 9. 已被代码审计淘汰的旧 I01 设计
 
-至少得到一种：
-- 新 distinction，并证明它对decision load-bearing；
-- 新跨method/task failure law/regime；
-- 由机制自然推出的 minimal intervention；
-- validated identification protocol，能改变method design。
+原 I01要求：
+“完整 short-window samples相同，只改更长 episode factorization”。
 
-普通 leaderboard、更多seed、更多benchmark、单相关性、单个false-negative rate都不是终点。
+pinned Temporal-Distance JEPA / RC-aux 主要 temporal pairs来自 loaded short clips；如果 short clips不变，objective几乎看不到 treatment。
 
-## 10. Problem-led overlay：component map 之上的三个母问题
+因此 E03/E04 VOID 是正确的。  
+但它只否定**那个 intervention**，不否定 R1“trajectory/data semantics”program。E14/E16已经用真正改变 model所见经验的方式重开 R1。
 
-七层链回答“失败在哪一层”；它本身**不是选题**。当前用三个更高层的 problem 来决定为什么值得测这些层。
+---
 
-### M1 — State-definition problem
+## 10. Workbench success criteria
 
-```text
-observation / goal image
-        ↓
-goal-comparable state
-        ≠
-control-sufficient hidden belief
-        ↓
-candidate action consequence
-```
+最终至少形成一种：
 
-负载变量：
-- observation aliasing；
-- hidden velocity / contact / friction / regime；
-- history informativeness；
-- uncertainty multimodality；
-- recovery delay。
+- program-level new distinction；
+- regime / phase law；
+- data / compute / query allocation principle；
+- interaction / unification；
+- mechanism / identification result；
+- diagnosis-derived minimal method；
+- strong comparative science that changes design practice。
 
-直接邻居：FIRM-WM、UWM-JEPA、Flow Equivariant WM、I-TAP、UAI selection theorem。
-
-**scientific endpoint:** 什么信息/不确定性必须进入 planning state，才能避免真实 decision regret？
-
-### M2 — Predictive-computation placement problem
-
-```text
-offline reward-free data
-   ├─ explicit dynamics → counterfactual rollout → test-time search
-   ├─ implicit long-horizon predictive representation/policy → amortized decision
-   └─ hybrid
-```
-
-负载变量：
-- task/reward redefinition；
-- counterfactual query flexibility；
-- horizon；
-- environment shift；
-- train vs deployment compute；
-- data coverage。
-
-直接邻居：P09 JEPA-WMs、P65 Bagatella TD-JEPA、TD-MPC2、GC-IDM/LeFlow/RP1/HWM。
-
-**scientific endpoint:** 能否得到可预测的 regime frontier，而不是“哪篇论文分高”。
-
-### M3 — Identification problem
-
-```text
-environment controllability
-        ↓?  (not guaranteed)
-behavior trajectories / episode metadata
-        ↓
-planning-aware supervision
-        ↓
-latent metric / reachability / representation
-        ↓
-MPC decision
-```
-
-负载变量：
-- behavior optimality / route bias；
-- multi-route coverage；
-- loop/detour frequency；
-- local transition support；
-- cross-trajectory sampling。
-
-直接邻居：RC-aux、Temporal-Distance JEPA、QRL/multistep quasimetric、CGCIVL、PLDM、P69 monotone-cost work。
-
-**scientific endpoint:** trajectory-derived semantics什么时候identifiable为environment control structure；不满足时如何最小修复？
-
-### Actionable gate
-
-M1–M3 的所有 probe 最后必须经过 L6：
-
-```text
-internal difference
-   ↓
-candidate rank / regret
-   ↓
-selected action
-   ↓
-closed-loop environment utility
-```
-
-如果链在前两步断掉，它是有用diagnostic，不是论文母问题。
-
-### 当前执行映射
-
-| mine | existence test | conditional mechanism/method |
-|---|---|---|
-| M1 / I07 | E11 | E12 |
-| M2 / I08 | E13 | hold-out regime confirmation / hybrid only after law |
-| M3 / I09 | E14 + E08 subaudit | E15；I06 E09/E10按证据触发 |
-| common | E02 / E06 oracle ladder | E07 only if predictive regime law |
-
+普通 leaderboard、更多seed、单一probe、单个false-negative rate都不是终点。  
+**近邻多不是失败；没有新的 scientific information 才是失败。**
