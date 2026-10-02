@@ -646,3 +646,111 @@ DA-LeWM 已定义 random/mid/elite Spearman；这里仅作为 replication pressu
 **定位级但非全部附录逐证明：** 其余直接近邻。  
 
 这里“深读”不等于所有 theorem proof 逐行复核；涉及将来 manuscript-critical 理论主张时必须回原 PDF/源码再次核对。
+
+## 12. Problem-led hardening：belief、explicit/implicit、goal interface 与真实 invariance（P65–P74）
+
+### P65 — Bagatella TD-JEPA — ICLR 2026 Oral
+**正式标题：** *TD-JEPA: Latent-predictive Representations for Zero-Shot Reinforcement Learning*  
+**来源：** https://proceedings.iclr.cc/paper_files/paper/2026/hash/3d158f054ff0cb83397367234899db07-Abstract-Conference.html  
+**代码：** https://github.com/facebookresearch/td_jepa
+
+- **母问题：** one-step latent prediction为什么只能当辅助 signal？能否用 TD learning 从 reward-free offline transitions 中学跨 policy 的 long-horizon predictive structure，并直接支持 zero-shot RL？
+- **idea leap：** 不把未来只表示成逐步 rollout；state/task encoders + policy-conditioned multi-step predictor 学 latent successor features，同时训练一族 latent policies。
+- **理论角色：** idealized setting 下表示学习 low-rank long-term policy dynamics，predictor恢复 successor-feature structure。
+- **证据：** ExoRL + OGBench 共 13 datasets，state/RGB，navigation/locomotion/manipulation；官方 ICLR 2026 oral。
+- **与 explicit JEPA-WM 的关键距离：** DINO-WM/JEPA-WM/LeWM 学 action-conditioned **explicit rollout model**，把 task/cost 留到 test-time planner；Bagatella TD-JEPA把 long-horizon policy occupancy structure **amortize** 到 representation/predictor/policies中。
+- **claim ownership：** “TD latent prediction / successor features支持 reward-free zero-shot RL”已占。
+- **打开压力：** TMLR P09 的最终讨论明确把 explicit vs implicit 的 training cost、inference cost、generalization trade-off 的 direct empirical comparison 留为未来方向。进入 M2/I08。
+- **命名警告：** P65 与 P14 **Bai/Xiong Temporal-Distance JEPA** 完全不同；P14历史 config 名 `td_jepa` 不能当论文简称使用。
+
+### P66 — UWM-JEPA — arXiv 2605.25313
+**来源：** https://arxiv.org/abs/2605.25313  
+**代码：** https://github.com/santoshkumarradha/uwm-jepa
+
+- **母问题：** POMDP 中当前 history可能对应多个 hidden futures；普通 vector point latent如何在 blind rollout 中携带一个 belief？
+- **idea leap：** density-matrix latent + learned unitary predictor，把 uncertainty作为 latent内部结构而非只在输出端估计。
+- **关键实验：** hidden-velocity indicator；action sequence被 perturb时 UWM-JEPA-CF accuracy单调下降，matched LSTM-JEPA停在 majority level；context probe相近，把差异定位到 predictor/rollout而非 encoder capacity。
+- **重要边界：** 证据主要是 controlled hidden-state prediction；不是 image-goal MPC 的完整闭环论文。
+- **ownership：** “belief-space JEPA / point latent不能自然携带hidden-future uncertainty”已有直接工作。
+- **打开压力：** belief uncertainty 何时真正改变 candidate action ranking与closed-loop goal planning？进入 M1/I07，而不是再做 hidden-state probe。
+
+### P67 — Flow Equivariant World Models — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/lillemark26a.html
+
+- **母问题：** partial observation下，out-of-view world仍在运动；unstructured recurrent/video memory难以维持与self-motion/external motion一致的 hidden state。
+- **idea leap：** latent memory按连续 flow / self-motion equivariance组织并随动态更新。
+- **证据：** 2D/3D partially observed dynamic video WM，对 diffusion/memory/recurrent baselines。
+- **ownership：** “structured memory解决partial observability和out-of-view dynamics”已有 ICML级工作。
+- **对 M1：** 我们不能把 memory 本身当 novelty；必须落到 compact goal-conditioned planner 的 decision sufficiency / belief action consequence。
+
+### P68 — What Capable Agents Must Know — UAI 2026
+**来源：** https://proceedings.mlr.press/v337/nayebi26a.html
+
+- **母问题：** belief/world model可实现 optimal control早已知道，但强行为是否**迫使** agent拥有某类 internal predictive structure？
+- **结果：** selection theorems把低 average regret与必要 predictive distinctions联系起来；partial observability 下得到 predictive-state / belief-like memory 的必要性结果。
+- **ownership：** “低regret需要belief-like memory”已有理论锚点。
+- **对 M1：** empirical novelty必须问现实 compact visual planner **何时**这项必要性变成 load-bearing，以及怎样在 image-goal接口中满足，而不是重述 POMDP 教科书。
+
+### P69 — Latent WMs with Monotone Planning Costs for Image-Goal Navigation — arXiv 2608.09073
+**来源：** https://arxiv.org/abs/2608.09073
+
+- **母问题：** latent prediction可以不错，但 CEM 真正消费的是 candidate cost ordering。
+- **方法：** frozen DINO-family encoder + autoregressive rollout + Monotone Cost Ranking，直接让 action perturbation与planning cost保持单调。
+- **重要结果：** 还比较 InfoNCE-style action contrastive training，报告 temporal-permutation negatives 会扭曲 geometry 并降低 planning。
+- **ownership：** “negative construction会改变planning geometry / cost ordering”已有直接证据。
+- **对 I06/M3：** I06 不能写成 generic “negatives distort geometry”；只能研究 **behavior/cross-trajectory semantic labels 与 non-semantic regularization roles 的分离**，且必须有更大的 data-semantics consequence。
+
+### P70 — Grounded World Model for Semantically Generalizable Planning — arXiv 2604.11751
+**来源：** https://arxiv.org/abs/2604.11751
+
+- **母问题：** visual MPC依赖 goal image，但现实 task 不总有目标图，而且 image goal难表达 language semantics。
+- **idea：** 把 WM 放在 vision-language-aligned latent，未来 rollout直接按 instruction embedding评分。
+- **证据：** WISER 288 test tasks，unseen visual signals/referring expressions；作者报告 GWM-MPC 87% success，而所比较 VLA平均22%。
+- **ownership：** “language/semantic goal interface for WM-MPC”已有直接工作。
+- **对本 workbench：** goal/query modality是重要 pressure，但不再是容易空白；M1–M3的方法最好至少检查 goal interface transfer，不另起“把语言接进WM”的增量题。
+
+### P71 — Robot World Models Are Not Invariant to How the Actions Are Written — arXiv 2609.23252
+**来源：** https://arxiv.org/abs/2609.23252
+
+- **母问题：** absolute target与delta action可互相重建、表示同一 commanded trajectory，WM 是否应对这种 action reparameterization保持一致？
+- **观察：** 作者报告 latent dynamics 在等价 action encoding切换时会出现严重 retrieval / goal-conditioned selection退化；不是简单信息丢失。
+- **修复：** objective averaging + disagreement penalty。
+- **为什么重要：** 是 problem-led 选题范例：一个**真实接口等价性**被模型破坏，直接影响 action selection，然后最小修复从 failure定义自然长出。
+- **ownership：** action-parameterization invariance本身已占，不能照搬。
+- **对我们：** 寻题时优先这种“领域默认等价关系/接口假设被破坏且真的改变决策”的问题，而不是任意 probe anomaly。
+
+### P72 — World Models for Embodied Intelligence: Plausible → Controllable → Actionable — survey 2609.16697
+**来源：** https://arxiv.org/abs/2609.16697
+
+- **组织原则：** Plausible保 task-relevant structure；Controllable要求 intervention改变 prediction的方式正确；Actionable要求 prediction真正改变并改善 planning/action/learning/evaluation/recovery/data selection。
+- **对我们最关键：** world model的价值不在 visual/predictive metric本身，而在 downstream behavior；survey列出的核心挑战包括 long-horizon consistency、uncertainty calibration、causal intervention testing、latency、verification/recovery、cross-embodiment transfer。
+- **workbench rule：** 新 probe 若无法连到 Controllable / Actionable consequence，只能是诊断工具，不足以成为 paper mother question。
+
+### P73 — Objective mismatch / Goal-aware / Value-equivalence historical anchors
+**来源：**
+- Lambert et al., *Objective Mismatch in Model-based Reinforcement Learning*, L4DC 2020.
+- Nair et al., *Goal-Aware Prediction: Learning to Model What Matters*, ICML 2020.
+- Grimm et al., *The Value Equivalence Principle for Model-Based Reinforcement Learning*, NeurIPS 2020.
+
+- **共同教训：** 完整 transition prediction从来不是控制唯一目标；task-aware / value-equivalent model可以只保留decision-relevant structure。
+- **对 2026 compact JEPA：** “planning alignment优于 prediction”不是新哲学。真正新的工作必须说明在 modern reward-free visual planning 中 **哪个 sufficiency / reuse / intervention boundary** 没被旧理论和 P38覆盖。
+
+### P74 — I-TAP: In-Context Planning with Latent Temporal Abstractions — arXiv 2602.18694
+**来源：** https://arxiv.org/abs/2602.18694
+
+- **母问题：** primitive-time planning既长且分支爆炸，真实环境又partial observable并会有 latent dynamics regime shifts。
+- **方法：** observation-conditioned residual-quantization VAE把 observation–macro-action segment压成 coarse-to-fine tokens；history-conditioned temporal Transformer预测 token；MCTS在 token space规划。
+- **证据：** deterministic/stochastic MuJoCo、per-episode latent regimes、Adroit及 partial-observation variants。
+- **ownership：** “history + temporal abstraction处理 POMDP/regime shift”已有直接路线。
+- **对 M1：** 新工作不能只是加 history token；必须把 **visual goal equivalence vs hidden control state / belief** 的决策结构说清。
+
+## 13. 这轮 hardening 对 workbench 的改变
+
+以前的 yellow zones 更像 component list；现在优先变成三个 **problem families**：
+
+1. **M1：state-definition problem** — observable goal state 与 hidden control belief不等价。
+2. **M2：computation-placement problem** — predictive structure显式 rollout还是隐式 amortize。
+3. **M3：identification problem** — offline behavior statistics何时能代表 environment controllability。
+
+I06 是 M3 的一个小切片；I03 oracle ladder是三条线共用的 scientific instrument。  
+这三条都只有在产生 **Actionable consequence** 后才允许长成主张。
