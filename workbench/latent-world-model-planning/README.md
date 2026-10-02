@@ -135,7 +135,7 @@ E05 = conditional diagnostic only
 
 - 2026-10-02：登记 PROPOSED，资源条件写入根目录。
 - 2026-10-02：第一轮调查不足，继续深挖。
-- 2026-10-02：建立 P01–P74 lineage / ownership / oracle maps；generic support-drift I02 PARKED。
+- 2026-10-02：建立并持续扩展 paper lineage / ownership / oracle maps；generic support-drift I02 PARKED。
 - 2026-10-02：**代码级审计否定原 I01 identification design**：short-window loss看不到“只改长 episode factorization”的treatment；E03/E04未运行即 VOID。
 - 2026-10-02：由 Bai/Xiong Temporal-Distance JEPA / RC-aux negative sampler + false-negative limitation/ablation + CGCIVL邻域，生成 I06；注册 E08–E10。
 - 2026-10-02：进一步按 **problem-led / actionable** 标准重构 mining：新增 M1/I07、M2/I08、M3/I09；I06降为M3子诊断。
