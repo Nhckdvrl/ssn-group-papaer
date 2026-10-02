@@ -41,6 +41,45 @@ Bagatella TD-JEPA OGBench pixel launcher：
 
 这意味着它与 image-goal MPC 的 **task information interface不同**。这是必须控制的 confound，不是小实现细节。
 
+## Q0 — 先做 GOAL-Z query bridge（极便宜但决定公平性）
+
+TD-JEPA paper的 official test-time task inference是：
+
+[
+z_r = C_psi^{-1}mathbb E[psi(s)r(s)]
+]
+
+（具体实现用 least squares）。
+
+但 official OGBench training code会把 next-state task embedding作为 training latent，并在 `scale_train_goals=True` 时执行 covariance scaling后 projection。因此先做一个 common-protocol probe：
+
+```text
+goal observation g
+→ psi(g)
+→ training-matched inverse-cov scaling
+→ project_z
+→ pi_z
+```
+
+比较：
+- `GOAL-Z`：一张 goal observation；
+- `GOAL-Z-k`：goal neighborhood / k positive exemplars；
+- `REWARD-Z-N`：official reward inference with N reward-labeled states；
+- official `REWARD-Z-10k`。
+
+记录：
+- latent cosine / norm；
+- first-action agreement；
+- rollout success；
+- goal-distance bins。
+
+**GOAL-Z 是 exploratory common-interface diagnostic，不是论文官方 baseline。**
+
+决策：
+- GOAL-Z接近 reward inference → 后续 M2 优先用 same-goal-information comparison；
+- GOAL-Z很弱 → 保留 reward inference，但 task-info budget必须作为 regime axis；
+- GOAL-Z只有某些 goal neighborhood有效 → 这说明 task abstraction granularity本身是 confound，需要显式记录。
+
 ## 三本预算账
 
 ### 1. Training compute
@@ -73,7 +112,7 @@ Bagatella TD-JEPA OGBench pixel launcher：
 各自在 official protocol 上复现 direction，确认实现正确。
 
 ### P1 — common task utility
-同 OGBench single-task success checker和 fixed task list。
+同 OGBench single-task success checker和 fixed task list。Q0若证明GOAL-Z可用，增加 **same single-goal-observation** common protocol；否则不假装 task interface相同。
 
 保留两种 task interface，**不强行假装相同**：
 - explicit: goal observation / goal state；
