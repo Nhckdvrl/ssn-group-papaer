@@ -862,3 +862,213 @@ R1得到一组新问题：
 > **真实data collection过程产生一个统计shortcut → shortcut让decision错 → 用任务结构提出最小约束 → candidate/closed-loop验证。**
 
 这与“设计probe发现奇怪位置”完全不同。
+
+# Case 16 — TC-WM (2026): 不反驳 foundation features，而是重新定义它们的角色
+
+**Read:** A-deep/targeted（main method + experiments + baselines + ablations + limitations + compute 已核对）  
+**Program:** R3 + R4  
+**Source:** arXiv:2605.25620
+
+## 已有成功不是终点
+
+DINO-WM 已证明：
+> frozen DINO features 可以直接作为 latent world state 做 reward-free visual planning。
+
+一个“空白猎人”会认为：
+> foundation-feature WM 已经有人做，别碰。
+
+TC-WM 的做法完全相反：接受 DINO-WM 的成功，然后问：
+
+> **为什么一个为 broad visual semantics 学到的 embedding 应该就是最终 control state？**
+
+## Pressure 从哪里来
+
+Foundation embeddings有两个相反优点/缺点：
+- 有 object/scene semantics，zero-shot/generalization好；
+- 同时保 texture、lighting、background 等大量control-irrelevant detail。
+
+在简单2D task可能问题不大；但在高维 contact-rich manipulation中：
+- action 7-DoF；
+- proprio physical state可到几十维；
+- irrelevant latent dimensions变成 dynamics/planning负担。
+
+因此不是“DINO错了”，而是：
+> **semantic representation 与 task-centric rollout state 是不同角色。**
+
+## Idea leap
+
+最漂亮的一步不是某个loss，而是角色重定义：
+
+```text
+foundation embedding
+    ≠ final dynamic state
+    = semantic scaffold
+
+semantic scaffold
+    ↓ compact projection
+task-centric rollout latent
+```
+
+再用：
+- proprio alignment；
+- latent dynamics；
+- proprio dynamics；
+- embedding reconstruction；
+
+让 compact latent既保physical/control state，又不彻底丢foundation semantics。
+
+## 为什么 method 是自然后果
+
+如果完全对齐 proprio：
+- 会丢 rich semantics。
+
+如果完全保 foundation embedding：
+- 不够 task-centric。
+
+因此只让一部分 latent 与 proprio对齐，另一部分保 residual semantic structure，是由这个 tension 自然长出来的。
+
+这比“加一个 contrastive head”重要得多。
+
+## Baselines / fairness
+
+作者对：
+- TD-MPC2；
+- DreamerV3；
+- MuZero；
+- DINO-WM；
+
+使用同一 offline trajectories。DINOv2是默认foundation encoder，也测试DINOv3/Cosmos。
+
+## 决定性证据
+
+不是只看 probe：
+- prediction / latent rollout；
+- Maze/Wall/Push-T visual planning；
+- Robomimic Lift/Can/Square contact-rich manipulation；
+- DMC control；
+- unseen visual perturbations；
+- latent probing；
+- architecture / loss ablation。
+
+特别重要的 ablation：
+- 去掉 embedding reconstruction → latent collapse，planning与visual fidelity都掉；
+- 去掉 proprio supervision → SSIM还能保持，但 planning success下降。
+
+也就是说：
+> visual fidelity与control alignment被实验性拆开。
+
+## Limitations 打开的空间
+
+论文明确依赖 training-time physical signal（这里是 proprioception）；作者自己提出：
+- distilled physical proxies；
+- multi-view；
+- large pretrained generative WM上的 downstream alignment；
+- foundation embedding上的 generative dynamics。
+
+## Atomic claim
+
+Foundation visual embedding更适合作为 **semantic scaffold**，从中抽一个 compact task-centric physical latent，而不是直接充当最终rollout state。
+
+## 它如何继续打开 R3
+
+这篇绝对不是“task specialization已经做完”。
+
+它反而把 query/specialization问题具体化：
+
+- specialization放 perception / projection / dynamics / proposal 哪一层？
+- physical side information强到什么程度时值得 specialized latent？
+- 多个 tasks/query 共用一个 scaffold时，需要几个 task-centric subspaces？
+- task-specific compression提升seen planning时，unseen query reuse掉多少？
+- TC-WM式 physical alignment与 P38 modular query-guided proposal谁在什么regime更好？
+
+这就是 I10/E17 的来源之一。
+
+## Lesson
+
+**在拥挤方向里，前作的成功也可以成为新问题来源。**
+
+不是：
+> “DINO-WM已经用了foundation feature，所以不能做foundation feature。”
+
+而是：
+> “DINO-WM成功说明foundation feature有价值；那它究竟应该承担 perception scaffold、world state、goal metric，还是全部？这些角色什么时候应该分开？”
+
+---
+
+# Case 17 — Dual Goal Representations × Goal-Representation Bottleneck: 先做更好的变量，再问这个变量到底承不承重
+
+**Read:** P96 A/B；P97 B（2026-09新预印本，代码待发布）  
+**Program:** R1 + R3  
+**Sources:** Dual Goal Representations (ICLR 2026)；Do Better Goal Representations Improve GCRL? (2609.39901)
+
+## 第一篇的生长：从 nuisance invariance 到 dynamics-derived goal
+
+Raw goal observation会带：
+- texture；
+- viewpoint；
+- exogenous visual detail。
+
+但 goal-reaching 真正关心的是 state 与其他 states 之间的 controllability/temporal relation。
+
+Dual Goal Reps于是把 goal定义成：
+> “所有其他 state 到它的 temporal-distance relation profile。”
+
+不是再换 encoder，而是重新定义“goal representation应该 invariant to什么”。
+
+并给理论说明其对 optimal goal-reaching policy有足够信息。
+
+这是一个很典型的：
+> nuisance problem → relational construct → theorem + plug-in algorithm
+
+顶会生长路径。
+
+## 然后 P97 没有说“这方向有人做了所以不碰”
+
+它问更危险的问题：
+
+> **即使我们真的拿到了更好的 temporal-distance goal representation，它真的是 downstream GCRL performance 的 bottleneck 吗？**
+
+于是直接做 intervention：
+- 构造 exact temporal-distance goal representation；
+- 系统破坏它的 geometry；
+- 固定 downstream learner；
+- 看 performance是否跟 representation quality变化。
+
+作者报告的反常是：
+- goal representation质量大变，navigation结果变化很小；
+- current-state representation intervention反而可大幅改变success。
+
+## 为什么这对我们特别重要
+
+这正是“拥挤领域还能怎么做”的范例。
+
+不是：
+> Dual Goal Reps 做了 goal representation → goal representation方向关闭。
+
+而是：
+> Dual Goal Reps把一个变量做得更好 → 下一篇继续问 **这个变量到底是不是 load-bearing bottleneck？**
+
+这可以继续生出：
+- state-side vs goal-side bottleneck；
+- planner-side vs representation-side bottleneck；
+- data regime改变时哪个side承重；
+- task/query复杂度改变时 representation value 是否迁移。
+
+## 对我们 workbench 的直接规则
+
+任何 R1–R5 seed都必须允许这种第二层问题：
+
+1. 先发现一个“更好”的 internal quantity；
+2. 再 intervention 它；
+3. 看 downstream action/decision是否真的跟着变。
+
+所以：
+- E14 学到的 temporal geometry漂移若 decision不变 → 不夸大；
+- E17 query-conditioned representation更“task-aligned”若 unseen/seen action都不变 → 不夸大；
+- E18 detector更准若 recovery utility不变 → 不夸大。
+
+## Lesson
+
+**最好的 novelty 不一定是提出一个新变量，也可能是证明一个全领域投入很多的变量并不是大家以为的 bottleneck，或者只在特定 regime 承重。**
+
+这不是“negative paper”，而是新的 design principle 的起点。
