@@ -217,3 +217,5 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 
 | P96 | Evaluating Model-Based Planning and Planner Amortization for Continuous Control | arXiv 2110.03363 | B background | — | M2 historical collision：planner amortization / hybrid proposal / distillation 已老 |
 | P97 | PLDM comparative-science ownership revisit (same paper as P02) | NeurIPS 2025 | **A** | public ecosystem | M2 strongest comparative collision：data quality/length/size/OOD task+layout/inference time 已系统比较 explicit planning vs GCRL |
+
+| P95 | Optimistic Task Inference for Behavior Foundation Models | **ICLR 2026** | B | proceedings | M2 task-information confound/neighbor；reward-inference data burden已是独立顶会问题 |
