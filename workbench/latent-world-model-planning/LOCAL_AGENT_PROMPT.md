@@ -13,20 +13,20 @@
 1. 同步 main，盘点已有 repo/env/data/checkpoint，不重复下载。运行仓库 `python3 tools/process/check.py`；真实错误先修，不为消除流程 warning 造科研结果。
 2. 查看 CLAIMS、PAIN_LOG 和最新运行输出。没有GPU结果时如实记录；有结果时继承，禁止从零重来或覆盖原始数据。
 3. 按 E00 接通一个原生训练/规划闭环，记录显存、I/O、加载差异和完整episode耗时。按 E01补强基线、统一评测清单；允许同时做可比较的方法小试。
-4. 默认优先 **E16 Decision-Critical Branching** 与 **E13 Planner-Stage Multi-Fidelity**；二者都可以先做最小原型。E14用于R1轨迹监督补充；E19用于变化后的更新；R3–R5不是禁区，更有依据的方向可直接写卡开展。
+4. 默认优先 **E16 Planner-Boundary Branching (PBB)** 与 **E13 Planner-Stage Multi-Fidelity**；二者都可以先做最小原型。E14用于R1轨迹监督补充；E19用于变化后的更新；R3–R5不是禁区，更有依据的方向可直接写卡开展。
 5. 每组实验写清实际问题、来源、改动/对照、读数与成本；已有卡可以在运行前版本化修订。不用为了新想法增加一套规则文件。
 
 ## 当前第一波具体方法
 
 当前最值得先试的不是“剩余空白”，而是两个**有强近邻、也有明确增量**的method hypotheses：
 
-### A. E16 Decision-Critical Branching（R1）
+### A. E16 Planner-Boundary Branching (PBB)（R1）
 用CEM候选的elite margin/rank disagreement找到planner可能改主意的state；在同一simulator state执行少量竞争candidate branches，把这些真实transition加入原WM训练。与IID、coverage、global uncertainty、task-relevant acquisition等预算匹配比较。**第一版只改数据，不加新decision loss。** OnlineWM、Task-Sufficient WM、ToIA、TOM、Beyond Visual Quality、D-JEPA/AD-WM是必须看的近邻，但不是禁止开工的理由。
 
 ### B. E13 Planner-Stage Multi-Fidelity（R2）
 Fast-LeWM/cheap direct predictor广筛candidate，LeWM/multi-step/refined predictor只重评可能进入或改变elite set的候选。比较fixed wall-clock下pure cheap、pure expensive、random refine、top/boundary refine。Fast-LeWM已做direct prefix；2026-09-30出现的DeepJEPA已做transition-level adaptive depth——**我们的轴必须保持为candidate-stage fidelity allocation，并测试二者是否互补。**
 
-如果实际资产使B能直接用checkpoint而A需要先训练，可以先跑B工程pilot；如果same-state reset最成熟，则先A。不要机械等待E00全部结束才写原型，也不要在结果出来前宣布A/B就是最终论文。
+**E13最便宜的Stage A0：** 直接用Fast-LeWM同一checkpoint的direct score vs selective/full self-consistency，在同candidate bank上测elite recall与refined-call比例；先不训练新模型。**E16最便宜的Stage 0：** 建same-reset hidden branch bank并确认selector不会看到未购买outcome。二者可以并行。不要机械等待E00全部结束才写原型，也不要在结果出来前宣布A/B就是最终论文。
 
 ## 你的研究自主权
 
