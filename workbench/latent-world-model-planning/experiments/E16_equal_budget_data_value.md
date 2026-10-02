@@ -105,3 +105,26 @@ E00后再填绝对小时数。研究逻辑：
 
 ## 结果
 未运行。
+
+
+## 代码可行性：same-state branch与candidate trace已有接口
+
+stable-worldmodel代码已核对：
+
+- `CEMSolver` callback 每轮拿到 `candidates / costs / topk_inds / topk_candidates`，因此PBB所需的candidate bank与elite boundary可以旁路记录，不必重写CEM；
+- TwoRoom支持 `_set_state(state)`，规划配置本来就从dataset restore agent state；
+- PushT支持公开 `_set_state(state)`；
+- OGBench Cube/Maze支持 `set_state(qpos, qvel)`；
+- FIRM-WM也使用这些released state-setting interfaces做common-reset intervention，并明确说明common-reset只保证公开restore变量一致，不等于完整simulator memory相同。
+
+所以首轮工程路线：
+
+1. 用CEM callback记录candidate sequences、cheap score、top-k membership；
+2. 从dataset/eval start state建立branch anchors；
+3. 按selector选择anchor + competing candidate prefixes；
+4. 用对应环境公开setter reset并执行；
+5. branch bank保存真实transitions/outcomes；
+6. 每个acquisition policy只消费相同env-step budget；
+7. TwoRoom先做reset-replay exactness check；PushT/Cube照FIRM思路做factual-suffix replay误差audit，再决定是否进入确认实验。
+
+这足以让本地agent直接开工；不需要先开发通用active-learning框架。
