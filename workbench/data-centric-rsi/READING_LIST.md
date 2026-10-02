@@ -53,6 +53,9 @@
 | P56 | VisNec，2603.01195v2；预印本 | D（独立agent完整18页无附录主文/related work及score/selection/多模态展开源码；未复现） | [全文](https://arxiv.org/html/2603.01195v2)；[代码1c12fde](https://github.com/DMK041218/VisNec/tree/1c12fdeb5dc2be54d449726bbabde722e5133a26)；blind/full loss差＋覆盖约束已实证；Text只改选择信号，不是blind训练；与P47/OFA不同资产 |
 | P57 | ViFT，EMNLP2025 Findings；解释近邻非主会尺度锚点 | D（主文/方法/结果/训练数据与A/C–E相关附录，示例表及源码未全审） | [官方全文](https://aclanthology.org/2025.findings-emnlp.547/)；文本任务/视觉caption分训与表示融合已有方法/效用，不能占宏观故事；引用近邻不表示投Findings |
 
+| P58 | NICE，ICML2025主会最终版 | D（主文/相关工作与A/B/F–I关键附录，官方生成/reward梯度/匹配/训练固定源码；未复现） | [会议全文](https://proceedings.mlr.press/v267/wang25bm.html)；[代码9516c14](https://github.com/JTWang2000/NICE/tree/9516c140158299e5d5c3ba82e235ed2d69132ed0)；生成reward目标方向＋真实SFT已有，但warmup局部影响非完整终点oracle；LESS+GPT吸收一项AMC成功，成本/阅读边界见论文卡 |
+| P59 | Quadratic Coreset Selection，NeurIPS2025主会最终版 | D（主文/related work、A–D相关理论前提/算法/配方/成本/长CoT实训；官方可执行源码未核） | [会议全文](https://papers.neurips.cc/paper_files/paper/2025/hash/02e4145752691bb16e970bd71b2c3253-Abstract-Conference.html)；联合sequence/token监督分配及selector迁移已有，outer是NTP、目标entropy适配；token-budget5%约10%序列，非等forward/FLOPs；不扩大发布资产审计 |
+
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
 | ID | 论文 | 阅读 | 官方来源 |

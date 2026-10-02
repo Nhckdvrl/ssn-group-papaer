@@ -1,6 +1,6 @@
 # E14 — 删除监督量约束后的来源配方补货（2026-10-03，跑前）
 
-- **状态：** RUNNING（CPU已物化并通过节点预检，GPU两支准备启动）；E13尚无六支终点/评分，本卡及采样规则在看到E13结果前冻结。
+- **状态：** RUNNING（两队列已启动；init已真实训练，used修复启动前清单schema后按原seed接续）；E13尚无六支终点/评分，本卡及采样规则在看到E13结果前冻结。
 - **类型：** EXPLORE；强简单竞争baseline，不是新框架或新的资格门。
 - **对应：** P03（简单静态成功）、P06（避免把局部细化当选题）；I01相关动作，不预设C01/C02、workbench/idea状态不变。
 - **问题（一句话）：** 去掉exact监督量匹配、仅保留旧策展集的来源配方，能否成为同预算下更简单而有用的实际补货行动？
@@ -39,3 +39,7 @@ E13检验replay/池内部分补货/池外source×exact n补货。其成功可能
 - 两支训练终点/八项效用/CI：待运行，训练方差未知。
 - 主张变化：C01–C04仍L0；该卡不是科学结果。
 - POST-HOC分析：尚无。
+
+- **启动前失败与修复（17:25UTC，效用未观察）**：used首次CPU前检37.934s以rc1退出，尚未创建run_dir/训练窗口。错误是E13 staging清单用`name`、运行清单用`path`，直接dict比较误报父模型变化；独立实读15文件bytes/SHA全部一致。原launcher与init运行保持冻结，新增v2只规范filename key、不减弱内容校验。按同父/同动作/同seed29接续；旧stderr/queue尝试及37.934s成本全部保留，预算watch覆盖追加尝试。不是训练null、seed筛选或科研反证。
+
+- **实际训练与评价接续**：[首窗口证据](../results/E14_first_runtime_windows.json)记录init实测59窗口，首N=1,553，所有已观察microbatch n/窗口N与CPU预期对应，seed/optimizer reset/GA/原loss均实测成立；59窗口不等于625终点。used v2启动与原失败见[恢复溯源](../results/E14_used_preflight_recovery.json)。[评价driver](../results/E14_eval_launch_provenance.json)在fvcrc12 PID1456317/ticks1819280067等双625终点，源码00862a288c…；[现成环境核对](../results/E14_eval_environment_preflight.json)已通过。独立fvcrc20 GPU3/8033复用E12同judge/checkpoint/配置，真实build0.23.0+cu129记录；新物理卡/port为部署偏离，judge尚未启动，已有他人进程则等待idle。终点本地使用、copy0，judge4h单列守护；旧waiting driver启动条件修复的原档案保留，未运行评价或挑checkpoint。
