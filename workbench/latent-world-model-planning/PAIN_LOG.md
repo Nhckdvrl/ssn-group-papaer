@@ -16,11 +16,11 @@
 | R08 | goal distance、rollout horizon、replanning 与 candidate budget 可共同制造“模型失效” | Planning Limits；SAGE/IMWM | E02/E06 分层记录 goal distance；true-dynamics / candidate / subgoal oracle 分开 |
 | R09 | 2026 方法使用不同 goal source、horizon、action block、planner budget，主表数字不可直接排名 | PAPER_LINEAGE / ASSETS | native reproduction 与 common audit 分表；转换到真实 env steps |
 | R10 | 直接近邻仍高速更新，预印本版本/代码可能变化 | 2026-09 SALT/ATLAS/Planning Limits 等 | 每次 C##→L2/进 candidate 前重扫 arXiv/官方 repo；pin 用到的版本，不引用旧摘要冒充最新 |
-| R11 | “cross-trajectory” 在实现中可能只是 cross-batch-row，不等于 original episode不同，更不等于 environment unreachable | TD-JEPA/RC-aux pinned code audit；stable-worldmodel clip sampler | E08恢复 episode/step provenance并做semantic audit；论文/代码术语分开 |
-| R12 | false negatives 已被 TD-JEPA 原文承认，单纯发现它们没有 novelty | TD-JEPA Eq.6 限定；CGCIVL ICML 2025 | I06必须做 role reattribution + planning consequence + role-separated repair |
+| R11 | “cross-trajectory” 在实现中可能只是 cross-batch-row，不等于 original episode不同，更不等于 environment unreachable | Bai/Xiong Temporal-Distance JEPA / RC-aux pinned code audit；stable-worldmodel clip sampler | E08恢复 episode/step provenance并做semantic audit；论文/代码术语分开 |
+| R12 | false negatives 已被 TD-JEPA 原文承认，单纯发现它们没有 novelty | Bai/Xiong Temporal-Distance JEPA Eq.6 限定；CGCIVL ICML 2025 | I06必须做 role reattribution + planning consequence + role-separated repair |
 | R13 | oracle-filter negative 变好/变差都可能只是 negative count / gradient scale变化 | I06 experimental design | E09加 COUNT-MATCHED VALID 与预注册 repulsion control；报告 gradient/dispersion |
 | R14 | H/K/scoring-index mismatch能制造巨大 apparent model failure | Hidden Failure Modes / LeWMRO | E02/E06记录H/K并跑prefix/running control，不能把protocol bug归因表示/动力学 |
-| R15 | “same local transitions, only long episode factorization”对 pinned short-window objectives结构上不可见 | TD-JEPA/RC-aux source audit | I01 PARKED；E03/E04 pre-run VOID，避免GPU验证结构性null |
+| R15 | “same local transitions, only long episode factorization”对 pinned short-window objectives结构上不可见 | Bai/Xiong Temporal-Distance JEPA / RC-aux source audit | I01 PARKED；E03/E04 pre-run VOID，避免GPU验证结构性null |
 
 ## 实测记录模板
 
