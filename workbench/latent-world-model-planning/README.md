@@ -12,18 +12,19 @@
 
 ## 本地 agent 阅读顺序
 
-1. [PAPER_LINEAGE](PAPER_LINEAGE.md)：直接/邻接工作，重点是 mother question、idea leap、决定性实验、related-work distance 和 claim ownership。
-2. [RESEARCH_MINES](RESEARCH_MINES.md)：**problem-led 主入口**；先判断哪些真实问题值得大面积实验，不从某个 loss 出发找钉子。
-3. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码 readiness、何时必须回原文。
-4. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→search→time→execution 七层图与 oracle ladder。
-5. [POSITIONING](POSITIONING.md)：顶会锚点、2026 collision map、红区、当前 mining regions。
-6. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：shared substrate、gates、并行策略、统计卫生。
-7. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：直接给执行机 agent。
-8. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
-9. [HANDOFF](HANDOFF.md)：最短执行路线。
-10. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：只有真实实验才升级。
+1. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)：**全领域 problem map / saturation map**，先理解社区真正关心什么、哪些 broad story 已拥挤。
+2. [PAPER_LINEAGE](PAPER_LINEAGE.md)：P01–P92，重点是 mother question、idea leap、决定性实验、related-work distance 和 claim ownership。
+3. [RESEARCH_MINES](RESEARCH_MINES.md)：**problem-led 主入口**；从 related-work tension 选 pressure region，不从某个 loss 出发找钉子。
+4. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码 readiness、何时必须回原文。
+5. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→search→time→execution 七层图与 oracle ladder。
+6. [POSITIONING](POSITIONING.md)：顶会锚点、2026 collision map、红区、当前 mining regions。
+7. [EXPERIMENT_PROGRAM](EXPERIMENT_PROGRAM.md)：shared substrate、gates、并行策略、统计卫生。
+8. [LOCAL_AGENT_PROMPT](LOCAL_AGENT_PROMPT.md)：直接给执行机 agent。
+9. [ASSETS](ASSETS.md)：repo / checkpoint / data / protocol / 资源风险。
+10. [HANDOFF](HANDOFF.md)：最短执行路线。
+11. [CLAIMS](CLAIMS.md) / [PAIN_LOG](PAIN_LOG.md)：只有真实实验才升级。
 
-第一轮 [LATENT_PLANNING_SURVEY](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md) 保留作来源索引；当前领域判断以 PAPER_LINEAGE / LEDGER / PROBLEM_METHOD_MAP / POSITIONING 为准。
+第一轮 [LATENT_PLANNING_SURVEY](../../library/themes/video-world-models/LATENT_PLANNING_SURVEY.md) 保留作来源索引；当前领域判断以 **FIELD_PROBLEM_MAP_2026 / PAPER_LINEAGE / RESEARCH_MINES / POSITIONING** 为准。
 
 ## 为什么这个 territory 值得驻留
 
@@ -50,39 +51,42 @@
 
 ## 当前 problem-led mining program
 
-**2026-10-02 再校准：** workbench 不再由某个局部 objective（例如 heuristic negatives）定义。我们先问领域级真实问题，再把 loss/probe 当定位工具。最新调查以 [RESEARCH_MINES](RESEARCH_MINES.md) 为主入口。
+**2026-10-02 第二轮 hardening 后：** 当前不是“哪个 component 还能改”，而是优先追三个 field-level pressures。详见 [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md) 与 [RESEARCH_MINES](RESEARCH_MINES.md)。
 
-### M1 / I07 — Observable goal ≠ control state：partial observability 下的 belief-aware visual planning
+### M3 / I09 — behavior trajectories ≠ environment controllability（**Tier A1 / first pilot**）
 
-核心不是“多给历史帧”，而是：**image goal 只描述可观测配置，但最优动作可能取决于不可见的 velocity / contact / friction / regime。** FIRM-WM 已占 goal/dynamic factorization，UWM-JEPA 已占 belief-space prediction；我们的空间只能是把 observation aliasing 压到 **candidate action regret + closed-loop planning**，并找出 deterministic history 何时足够、何时 explicit belief / uncertainty 才 load-bearing。
+RC-aux / Bai-Xiong Temporal-Distance JEPA 从 offline trajectory 的 order/gap/cross samples 学 reachability/progress。Broad “behavior statistics ≠ optimal control” 已被 quasimetric GCRL、CGCIVL、PLDM占据；我们的 exact pressure 是：
 
-第一 gate：E11。若只是 probe 变化而动作不变，直接停。
+> **真实改变 generating behavior policy，在尽量匹配 local transition support 后，planning-aware latent WM 是否仍把 behavior route / tempo 写进 deployed planning semantics，并改变同一 test candidate 的 ordering / MPC？**
 
-### M2 / I08 — Explicit rollout vs implicit predictive abstraction
+第一 gate：E14。OGBench公开的 `navigate/stitch/explore`、`play/noisy`只用于 cheap sensitivity；真正 identification 需要 fixed start-goal 的 DIRECT vs DETOUR/LOOP matched data。
 
-TMLR 2026 *What Drives Success in Physical Planning with JEPA-WMs?* 已明确区分 explicit autoregressive WM 与 Bagatella **TD-JEPA** 式 implicit long-horizon predictive representation，并把 training/inference/generalization trade-off 的直接比较留作 future work。
+### M2 / I08 — predictive-computation placement（**Tier A2 / second pilot**）
 
-我们不做 leaderboard，而问：**reward/goal shift、dynamics/layout shift、horizon、data coverage、deployment search budget 等变量能否形成可预测的 explicit/implicit/hybrid regime boundary？**
+TMLR 2026 JEPA-WM study 已明确区分 explicit rollout 与 implicit predictive representation，并把 training/inference/generalization trade-off 的 direct comparison 留作 future direction。2026 的 Universal Horizon / Jumpy WM 等又说明这其实是一个 continuum，而不是二分。
 
-第一 matched pilot：E13。注意 Bagatella TD-JEPA 与 Bai/Xiong Temporal-Distance JEPA 是两篇不同工作。
+我们问：
 
-### M3 / I09 — Dataset-induced planning semantics：behavior trajectory ≠ environment controllability
+> **task/query information、reward/goal shift、horizon、data coverage、dynamics shift、training compute、deployment compute，能否预测 explicit / arbitrary-horizon / implicit / hybrid 哪类 predictive object 更合适？**
 
-RC-aux / Bai-Xiong Temporal-Distance JEPA 从 offline trajectory 的 order/gap/negative 学 reachability/progress。Quasimetric GCRL、CGCIVL、PLDM 已告诉我们 broad data bias 不是新概念；真正未决的是：**planning-aware WM 是否把 behavior policy 的 route/tempo 写进 deployed planning semantics，并改变 MPC candidate ranking 与闭环控制？**
+第一 matched pilot：E13，优先 OGBench Cube pixels。重要 confound：Bagatella TD-JEPA official eval做 reward inference（约10k replay samples并用 OGBench `physics` relabel），而 image-goal MPC拿 goal observation；**task/query information budget必须单独记账。**
 
-旧 I01/E03–E04 已因“只重切长 episode、short-window loss不可见”而 VOID。新 E14 必须真的改变 behavior policy / pair distribution，而不是换 metadata。
+### M1 / I07 — observable goal ≠ control belief（**Tier B / conditional**）
 
-### I06 — semantic negatives vs geometric regularization：降为 M3 的低成本 slice
+Physically Viable WM、FIRM-WM、UWM-JEPA、Branch-JEPA、Flow Equivariant WM、Action-Sufficient Goal Representations 已经占了大量 broad hidden-state / belief / multimodal-future space。因此只保留更窄的问题：
 
-E08/E09/E10 仍保留，因为它能便宜地审 heuristic negative 的 semantic role 与 global repulsion role；但**它不再因为文档最完整就自动成为论文主旨**。只有出现能解释更大 data-semantics / planning failure 的机制时才升级。
+> **给定 planner 实际拥有的 finite observation-action history 后，是否仍有多个 action-relevant hidden hypotheses，导致真实 best-action flip 和 baseline planner regret？**
 
-### I03 — bottleneck regime law：共享诊断，不先当 paper
+E11只做 cheap oracle。finite history能消掉 ambiguity 就 STOP，不造 belief method。
 
-E06/E07 保留为 oracle ladder / regime mapping。如果它最终发现少数变量能跨 task 预测 binding bottleneck 和 intervention ranking，才可能自己升级；否则只是帮助 M1–M3 定位问题。
+### I06 / I03
+
+- **I06 / E08–E10**：M3 的 heuristic-negative 子诊断，不再因为便宜就默认做主论文。
+- **I03 / E06–E07**：三条 mine 共用 oracle/bottleneck 工具；只有形成跨 task predictive regime law 才独立升级。
 
 ### WATCH
 
-Goal/query interface 与 model reuse 很重要，但 P38 *What Must a World Model Distinguish for Planning?* 和 Grounded World Model 已非常直接；当前作为所有方法的 transfer stress axis，不单独抢题。
+Goal/query interface、test-time adaptation、latent actions、efficiency 都重要，但 2026 已非常拥挤；当前作为 stress axes / baselines，不单独抢题。
 
 ## 执行图
 
@@ -90,30 +94,30 @@ Goal/query interface 与 model reuse 很重要，但 P38 *What Must a World Mode
                     E00 resource/native smoke
                               ↓
                 E01 baseline + replay/logger
-                 ↙            ↓             ↘
-       E11 M1 aliasing     E14 M3 behavior     E13 M2 explicit↔implicit
-       decision oracle     policy intervention  matched regime pilot
-           ↓                    ↓                    ↓
-     conditional E12      conditional E15        regime confirmation
-                                ↘
-                         E08/E09 I06 subdiagnostic
+                 ↙             ↓               ↘
+       E14 M3 first       E13 M2 second       E11 M1 conditional
+       behavior policy    compute placement    ambiguity oracle
+           ↓                   ↓                    ↓
+     conditional E15      regime confirm       conditional E12
+           ↘
+     E08 → E09 → E10   (M3 negative-role subdiagnostic)
 
 E02/E06 = common decision/oracle calibration
-E03/E04 = VOID（旧 treatment 对 short-window loss 结构上不可见）
+E03/E04 = VOID
 E05 = conditional diagnostic only
 ```
 
-**多卡的用途：** 一条 mine 过了 proof-of-problem gate 后，再迅速铺 seeds / regimes / environments / baselines；不是同时把三个 mine 都跑成巨型 Cartesian grid。
+**多卡用途：** 第一轮每条只做 cheapest decisive pilot；哪条先出现 natural failure + decision consequence + clean intervention leverage，再把独立 GPU 大面积铺 seeds / regimes / environments / nearest baselines。
 
 ## 论文形态卡
 
 - **当前主旨：** 尚未形成；science claim = 0。
-- **当前 problem mines：** M1/I07 belief-aware observation aliasing；M2/I08 explicit↔implicit predictive abstraction；M3/I09 behavior→controllability semantics。I06 是 M3 的低成本机制 slice，I03 是共享 oracle/regime 工具。
+- **当前 problem mines：** **Tier A1 M3/I09 behavior→controllability semantics；Tier A2 M2/I08 predictive-computation placement；Tier B M1/I07 irreducible actionable ambiguity。** I06=M3子诊断，I03=共享oracle/regime工具。
 - **可接受形态：** 新的 actionable failure/distinction；跨 regime law；由诊断自然导出的 minimal repair / hybrid principle；或能改变方法设计的 identification result。
 - **不可接受形态：** RC-aux+loss、再测一次 false negative、单个 toy anomaly、普通 correlation、更多seed/benchmark。
-- **manuscript-critical contributions：** ❌ 等 E08–E10 / E06–E07。
+- **manuscript-critical contributions：** ❌ 等 E14/E13/E11 proof-of-problem；只有过 gate 的 mine 才继续长 claim/method。
 - **证据目标：** strong native reproduction；pair/candidate-level oracle；fixed-candidate regret；closed-loop consequence；train-seed variance；至少两个方法/任务后再扩大。
-- **危险近邻：** TD-JEPA、RC-aux、CGCIVL/QRL、DA-LeWM/AD-WM、Temporal Straightening/CGS、Control Theory、Hidden Failure Modes、Planning Limits。
+- **危险近邻：** RC-aux、Bai/Xiong Temporal-Distance JEPA、quasimetric/CGCIVL/PLDM（M3）；Bagatella TD-JEPA、Universal Horizon、Jumpy WM、TD-MPC2（M2）；FIRM-WM、UWM-JEPA、Physically Viable WM、Branch-JEPA（M1）；以及 DA-LeWM/D-JEPA、Control Theory、Hidden Failure Modes 等共享近邻。
 - **目标会议：** ICLR / ICML / NeurIPS；不因模型小降低问题尺度。
 
 ## D1–D6
@@ -123,9 +127,9 @@ E05 = conditional diagnostic only
 | D1 强基线 | ❌ 本地未运行；E00/E01预注册 |
 | D2 可复用资产 | ⚠️ LeWM/RC-aux/TD-JEPA/stable-worldmodel等官方代码与pin已审；执行机下载/hash待填 |
 | D3 痛点 | ⚠️ literature/code risks已登记；真实 P## = 0 |
-| D4 系统测量 | ⚠️ candidate/oracle schema + E02/E06–E10已设计；GPU结果=0 |
-| D5 定位 | ✅ P01–P74 + venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
-| D6 idea组合 | ✅ problem-led M1/I07、M2/I08、M3/I09；I06降为M3子诊断，I03为共享regime工具；I01/I02 PARKED，I05由I07 supersede；E03/E04 pre-run VOID |
+| D4 系统测量 | ⚠️ common oracle/candidate schema + E02/E06/E08 + M1–M3 cards E11–E15 已设计；GPU结果=0 |
+| D5 定位 | ✅ FIELD_PROBLEM_MAP + P01–P92 lineage / venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
+| D6 idea组合 | ✅ **M3/I09 Tier A1、M2/I08 Tier A2、M1/I07 Tier B conditional**；I06=M3子诊断，I03=共享regime工具；I01/I02 PARKED，I05由I07 supersede；E03/E04 pre-run VOID |
 
 ## 决策记录
 
@@ -134,11 +138,12 @@ E05 = conditional diagnostic only
 - 2026-10-02：建立 P01–P74 lineage / ownership / oracle maps；generic support-drift I02 PARKED。
 - 2026-10-02：**代码级审计否定原 I01 identification design**：short-window loss看不到“只改长 episode factorization”的treatment；E03/E04未运行即 VOID。
 - 2026-10-02：由 Bai/Xiong Temporal-Distance JEPA / RC-aux negative sampler + false-negative limitation/ablation + CGCIVL邻域，生成 I06；注册 E08–E10。
-- 2026-10-02：进一步按 **problem-led / actionable** 标准重构 mining：新增 M1/I07 observation-aliasing→belief planning、M2/I08 explicit↔implicit frontier、M3/I09 behavior→controllability semantics；I06降为M3子诊断，不再默认主论文。
+- 2026-10-02：进一步按 **problem-led / actionable** 标准重构 mining：新增 M1/I07、M2/I08、M3/I09；I06降为M3子诊断。
+- 2026-10-02：第二轮 proceedings/arXiv hardening 扩到 **P01–P92**；Physically Viable WM / Branch-JEPA / UWM / FIRM 等使 broad M1明显更拥挤，故降为 conditional；OGBench generator/code audit 与 explicit↔implicit native-protocol audit 后，优先级改为 **M3 → M2 → M1 conditional**。
 - 未经人审不改变 ACTIVE 容量；执行 agent可在 experiment-card 决策范围内自主继续，不需要每个job回来问。
 
 ## 资产位置
 
 大数据/checkpoint/raw candidate traces不进git；节点路径、revision/hash写 [ASSETS](ASSETS.md)。git只保存代码、manifest、实验卡、摘要和主张账本。
 
-**执行入口：** [LOCAL_AGENT_PROMPT.md](LOCAL_AGENT_PROMPT.md) → E00；dataset可读后 E08 可与 E01/E02并行。
+**执行入口：** [LOCAL_AGENT_PROMPT.md](LOCAL_AGENT_PROMPT.md) → E00/E01 → **E14 first**, E13 second, E11 conditional；dataset可读后 E08 可作为 M3 子诊断并行。

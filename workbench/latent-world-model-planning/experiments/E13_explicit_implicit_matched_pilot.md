@@ -1,20 +1,145 @@
-# E13 — Explicit vs implicit predictive structure: matched pilot
+# E13 — Predictive-computation placement frontier: matched pilot
 
-- **状态：** PLANNED after substrate parity
+- **状态：** PLANNED / **M2 second scientific pilot**
 - **对应：** I08 / M2
-- **对象：** explicit JEPA-WM（优先 JEPA-WMs/LeWM family） vs Bagatella TD-JEPA implicit predictive representation；hybrid仅作为后续。
-- **第一原则：** 不把两篇原论文主表直接比较。
-- **common audit：**
-  - 同 offline dataset revision；
-  - 同 observation modality；
-  - 同 train/test goal/reward definitions；
-  - environment真实utility统一；
-  - 分别报告 native protocol 和 common protocol；
-  - train steps/GPU-hours/peak VRAM + deployment model calls/wall time。
-- **最小 regime grid：**
-  1. in-distribution goal/reward；
-  2. reward/goal redefinition（same dynamics）；
-  3. environment/layout/dynamics shift；
-  4. near vs far horizon。
-- **问题不是“谁赢”，而是：** 相对优势能否由 goal/reward shift、horizon、test compute等变量解释，并在 hold-out regime预测。
-- **gate：** 只有形成跨至少两个环境的稳定 regime signature才扩展；如果结果只跟训练预算走，记录后停止。
+- **问题：** reward-free offline learning中，predictive/planning computation应留在 explicit action-conditioned rollout + test-time search，还是 amortize到 successor/policy representation，或直接任意-horizon / hybrid结构？什么 regime 决定？
+- **不是：** “LeWM vs TD-JEPA 谁分高”；“test-time search慢”；“implicit deployment快”。
+
+## Direct literature anchor
+
+TMLR 2026 *What Drives Success in Physical Planning with JEPA-WMs?* 已明确区分 explicit vs implicit world-model-like approaches，并把 **training cost / inference cost / generalization trade-off 的 direct empirical comparison** 留作 future direction。
+
+当前代表：
+- explicit: DINO-WM / JEPA-WM / LeWM；
+- implicit: Bagatella TD-JEPA (ICLR 2026 Oral)；
+- direct arbitrary-horizon / occupancy: Universal Horizon Models / Jumpy World Models；
+- hybrid: TD-MPC2-like。
+
+因此第一轮只比较 continuum 两端；中间方法只有发现 regime signature 后才加入。
+
+## Common substrate
+
+### First choice: OGBench Cube-single, pixels
+原因：
+- Bagatella TD-JEPA official repo原生支持 `cube-single-play-v0` pixels；
+- stable-worldmodel / LeWM 生态也有 OGBench Cube；
+- 同 environment / data family / success checker；
+- 可扩 Scene/Puzzle 做第二 task structure。
+
+### Native facts already audited
+Bagatella TD-JEPA OGBench pixel launcher：
+- 1,000,000 training steps；
+- batch size 256；
+- DrQ encoder feature dim 256；
+- official eval 10 episodes/task；
+- `num_inference_samples=10_000`。
+
+其 reward inference：
+- 从 train replay buffer采样 next observations；
+- 用 OGBench task relabeler读取 `physics` 计算 task rewards；
+- 将 rewards + next observations交给 model reward-inference routine。
+
+这意味着它与 image-goal MPC 的 **task information interface不同**。这是必须控制的 confound，不是小实现细节。
+
+## 三本预算账
+
+### 1. Training compute
+- steps / samples；
+- GPU-hours；
+- peak VRAM；
+- encoder size；
+- augmentation；
+- dataset bytes actually read。
+
+### 2. Task/query information
+- goal image / goal state；
+- known reward function；
+- reward-labeled inference samples N；
+- privileged state / physics是否参与 task relabel；
+- interaction episodes（若有）。
+
+### 3. Deployment compute
+- model forward calls；
+- candidate rollouts；
+- search iterations；
+- wall-clock / action；
+- memory。
+
+**不能把 query-information advantage折进“inference compute”一项。**
+
+## Minimal experiment
+
+### P0 — native sanity
+各自在 official protocol 上复现 direction，确认实现正确。
+
+### P1 — common task utility
+同 OGBench single-task success checker和 fixed task list。
+
+保留两种 task interface，**不强行假装相同**：
+- explicit: goal observation / goal state；
+- implicit: reward inference。
+
+第一张图应该直接展示三维 trade-off：
+`task success × task-info budget × deployment compute`，而不是单一 success。
+
+### P2 — task-information sweep
+Bagatella TD-JEPA:
+- N = small / medium / official 10k reward-inference samples；
+- 若可行，state vs pixel relabel information单独标。
+
+explicit:
+- one goal observation；
+- multiple goal exemplars（若自然支持）；
+- 不给额外 oracle reward标签。
+
+**OpTI-BFM (ICLR 2026)** 已直接研究 BFM reward task inference burden，所以本 sweep 只是 fairness/accounting，不是 novelty。
+
+### P3 — horizon
+same task family下 near / medium / far goal bins。
+
+### P4 — objective/query shift
+训练 data/dynamics不变，切 unseen task/reward/goal composition。
+
+### P5 — dynamics/layout shift
+仅 P1–P4 出现 meaningful frontier后做。
+
+## What counts as a result
+
+### 可能有科学价值
+- explicit 在 low task-info / high task-redefinition regime占优，而 implicit 在 repeated/fixed task + tight deployment compute占优；
+- 一个简单 observable (task-info budget, horizon, query novelty, deployment compute) 在多个task上预测 family ranking；
+- direct-horizon / hybrid方法填补两端之间可预测区域；
+- hold-out regime能提前预测哪种 computation placement更合适。
+
+### 不够
+- explicit平均分更高；
+- implicit快很多；
+- 一个方法训练更久所以更强；
+- state输入胜pixel；
+- 只画 Pareto但没有可迁移的 regime law。
+
+## Confounds
+
+- reward function vs goal observation不是等价 task specification；
+- Bagatella official reward inference使用 privileged `physics` relabeler；
+- offline datasets / preprocessing若不同，不能叫 matched；
+- task success definition必须统一；
+- train compute与deployment compute分开；
+- inference sample N与search candidate N含义不同；
+- actor/policy family capacity与explicit optimizer budget都可能成为bottleneck；
+- native hyperparameter tuning不能偷偷只为一边做。
+
+## Gate
+
+- **G0:** native baselines可复现；
+- **G1:** common task utility与data revision对齐；
+- **G2:** 至少一个 regime variable造成稳定 relative-ranking change，而不是固定winner；
+- **G3:** compute + task-information confounds不能完全解释；
+- **G4:** second task structure复现；
+- **G5:** hold-out regime预测成立。
+
+过 G2 后才接一个中间 family（Universal Horizon / Jumpy / TD-MPC2）验证是否真是 continuum。  
+没过 G2：M2不扩矩阵。
+
+## 结果
+未运行。
