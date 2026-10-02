@@ -1,6 +1,6 @@
 # 文献与阅读证据账本
 
-核验日：2026-10-02。D=主文和与定位有关的附录定向深读；M=方法/实验关键节核对；A=摘要或官方元数据；N=只发现入口、未验证正文。D 不等于逐页审计全部证明、参考文献及代码。会议身份只写本轮由官方来源核实的；其余保守标为预印本，不根据检索摘要猜接收状态。
+核验日：2026-10-03。D=主文和与定位有关的附录定向深读；M=方法/实验关键节核对；A=摘要或官方元数据；N=只发现入口、未验证正文。D 不等于逐页审计全部证明、参考文献及代码。会议身份只写本轮由官方来源核实的；其余保守标为预印本，不根据检索摘要猜接收状态。
 
 ## 核心与近邻
 
@@ -45,6 +45,8 @@
 | P49 | Let the Target Select for Itself / TACS，2605.09404v2；预印本 | D（主文与A–G附录定向深读；官方warmup/评分/校准/选样/训练/成本关键代码已审，未运行） | [全文](https://arxiv.org/html/2605.09404v2)；[代码35e97be](https://github.com/davidyht/TACS/tree/35e97bee2cbfcba72b7c359e34a74287955d303b)；rank1目标适配→候选归一化loss下降→base重置rank128主训；固定模型—目标对跨池复用，非跨目标/学生冻结迁移，最终评分规则须显式指定 |
 
 | P50 | ICONS，2501.00654v4；会议身份未独立核实 | D（主文与A–F关键附录；官方梯度/投影/影响/投票/写出/目标训练关键代码已审；图像只核解释与图注，未重构梯度库） | [全文](https://arxiv.org/html/2501.00654v4)；[代码b8ce8c8](https://github.com/princetonvisualai/icons/tree/b8ce8c86d7b098836a84ec2b40d259195b7f4494)；多任务分位投票、跨任务/模型复用和预算/warmup消融已拥有；E12是公开133K池内随机10K，不是原方法10K重求票，成本与语义边界见论文卡 |
+| P51 | Adapt-∞，ICLR2025主会；2410.10636v2 | D（主文及A/B/C相关附录，代码关键路径待核，未复现） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6610efd6c767f63343a4ab28505212e-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.10636v2)；动态伪skill/score专家、强random、Fig9新记录恢复旧skill已拥有；8A100下wall成本不能抄成GPU小时 |
+| P52 | OASIS，ACL2026主会最终版 | D（主文、A.2配方/基线/成本/算法/跨规模相关附录；证明假设定向核，代码待核，未复现） | [会议全文](https://aclanthology.org/2026.acl-long.158/)；在线当前FI/跨batch统计Bernoulli＋组内冗余，三seed；infinite memory-only retrieval，不能当永不重放的有限流；阅读边界见论文卡 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
@@ -67,7 +69,7 @@
 - P32 已从官方 arXiv 全文核实；若发展 group-interaction 叙事，先明确与其一次组更新及 GMRel/GREATS 的增量，不把它的存在当自动判死。
 - P49 已有目标低容量真实适配轨迹、候选前向响应评分及跨池摊销；Dolly→TyDiQA分数带经真实三seed重训支持效用排序。9例proxy/64epoch、缺失目标能力和有限子集理论范围是作者承认的压力，不自动成为我们delta。代码已发布且已审关键路径；默认metric/rank与最终协议不同，正式复现仍需固定全参数/模板/行序。仓库称ICLR final，正式接收记录未核，不猜会议身份。
 - P47 已有冻结跨池/跨模型静态复用实证；不能沿用“此前 selector 都须随模型重算”的引言概括。其源外簇归属、按簇 15% 与固定 0.7 阈值的关系、示例高/低置信文案仍有复现阅读债务。标题/编号的 GitHub/HF 检索及作者公开仓库核查未核到 OFA 代码或选样清单；[VisNec 作者仓库](https://github.com/DMK041218/VisNec)虽引用 OFA，却明确发布另一论文的 VisNec 数据/LoRA，不能混用。XMAS 已补读会议最终全文和关键源码，独立记为 P48；COINCIDE 仍仅定向核方法和 proxy→target 契约，Self-Filter 仅核官方摘要，二者未完成独立深读/复现。
-- 本轮围绕 frozen VLM selector 运行 venue corpus `nearest`（k=5），返回 Adapt-∞ 等持续多模态选择近邻；这里只发现入口，未深读其全文/评审，不据检索分数或标题判断与 OFA/本地 C02 精确撞车，也不宣称已完成 D5 全面扫描。
+- 本轮围绕 frozen VLM selector 运行 venue corpus `nearest`（k=5），返回 Adapt-∞ 等持续多模态选择近邻；P51/P52已补读主文与关键附录，代码正在核，不据检索分数或标题判精确撞车，不宣称已完成D5全面扫描/公开评审审计。
 - `Gap-Adaptive Teacher Scheduling` / 2609.37898：只发现入口，暂不据此写方法事实。
 - CurateEvo 论文主文/附录已深读，官方完整执行源码仍未核到；SGS 的全套方法和代码仍需补读。是否把 CurateEvo 作为正式方法基线要由目标动作/反馈问题决定；AZR 已深读并审固定源码入口，但未复现。
 - P20/P22/P27 的方法及强实现、P21/LESS 的官方代码执行路径，必须在把它们当正式数据价值估计 baseline 前补齐。官方会议元数据与论文深读不等于 baseline 复现。

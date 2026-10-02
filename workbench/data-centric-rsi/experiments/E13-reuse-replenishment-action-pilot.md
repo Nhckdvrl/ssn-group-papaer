@@ -1,6 +1,6 @@
 # E13 — 数据资产的复用与补货：记录、策展池还是抽样律（2026-10-03，跑前）
 
-- **状态：** PLANNED；先完成CPU动作物化，未启动GPU。E12分数已知，E13动作尚无训练效用结果。
+- **状态：** RUNNING（CPU动作已物化并独立复核）；父processor/sampler核对与节点小资产搬运中，未启动GPU。E12分数已知，E13尚无训练效用结果。
 - **类型：** EXPLORE；强静态成功后的反事实训练，不是另一套baseline资格门。
 - **对应：** P03（简单静态配方）、P06（科学对象错位）；I01的相关研究动作，不预设C01/C02成立、不改变workbench/idea状态。
 - **问题（一句话）：** 已用过一个公开策展子集的学生继续学习时，更新具体记录、保留策展池资格、或仅保留廉价抽样律，哪层资产改变下一次真实训练效用？
@@ -11,7 +11,7 @@ E12单seed八项均值random32.299、均衡33.443、ICONS发布池复用32.814�
 
 (a)来源与监督结构主要承载收益，廉价抽样律能补货；(b)策展池还有属性不能代替的内容/组/目标信息，但具体旧记录可替换；(c)池资格价值随已学记录变化，需要更新决策。旧数据多训不如新数据、泛状态依赖、matching或迁移本身都不是论文增量。
 
-P05/Curation-Bench已做同配比不同draw，P04/DataEnvGym已比新数据和旧数据多训；P47/OFA、P48/XMAS、P49/TACS、P50/ICONS已有多种复用。AAS[§5.5](https://arxiv.org/html/2607.07023v1)有matched-topic；Adapt-∞跨池skill恢复、OASIS在线概率抽样的全文定位由独立agent追加。本卡只能决定下一研究动作，不能单独支撑novelty。
+P05/Curation-Bench已做同配比不同draw，P04/DataEnvGym已比新数据和旧数据多训；P47/OFA、P48/XMAS、P49/TACS、P50/ICONS已有多种复用。AAS[§5.5](https://arxiv.org/html/2607.07023v1)有matched-topic；P51/Adapt-∞的C/Fig9已用新池记录恢复旧skill，P52/OASIS已有当前学生FI＋跨batch概率抽样和组内冗余，但其A.2是infinite memory-only retrieval。全文定位见[论文卡](../../../library/themes/training-post-training/RSI_PAPER_CARDS.md)，代码关键接口在核。本卡只能决定下一研究动作，不能单独支撑novelty。
 
 ## 设置：冻结动作与训练契约
 
@@ -25,21 +25,21 @@ P05/Curation-Bench已做同配比不同draw，P04/DataEnvGym已比新数据和�
 
 ## 读数与决策
 
-- **读数**：E12冻结八项规范化平均及完整向量。主对比每状态fresh_selected−fresh_law是条件内策展资格残差；fresh_selected−replay是刷新价值，两状态残差之差仅为交互探索。报告相对父状态增益、输入token、unique images、图像次数、成功/失败成本。同监督分母/steps不等于前向FLOPs相同。
-- **阳性对照**：E12 init→random +3.343分、八项全齐无fallback已经成立。E13 init/replay检验相同S在预写另一训练seed仍可学，不能因未超E12分数丢弃六支；权重/label沿现有审计，不加防御GPU。
-- **噪声地板 + MIE**：E12唯一同random checkpoint复跑尚在运行，本地训练方差未估。平均差约1分或多任务变化足以改变部署动作时提高优先级，这是探索判断。一个paired seed的null不是non-inferiority/等价证明，不把任务/题目当独立训练重复；八项向量失配时，均值相近也不称重建效用。
-- **混杂审计**：parent/hash/data/optimizer reset/LR/steps/监督token/slot分母/评分协议固定；内容与图像身份是干预。输入长度、图像复用、forward wall未严格相等但报告；排原始image路径不称跨源pixel-dedup。init与used的历史预算是所测状态，不把used总分高归因于刷新。E12公共八任务已有观察，非未碰private测试；后续策略学习泛化须另设不可回馈的新任务/episode，不能循环按test选checkpoint。
-- **决策表（跑之前写）**：
+- **读数：**E12冻结八项规范化平均及完整向量。主对比每状态fresh_selected−fresh_law是条件内策展资格残差；fresh_selected−replay是刷新价值，两状态残差之差仅为交互探索。报告相对父状态增益、输入token、unique images、图像次数、成功/失败成本。同监督分母/steps不等于前向FLOPs相同。
+- **阳性对照：**E12 init→random +3.343分、八项全齐无fallback已经成立。E13 init/replay检验相同S在预写另一训练seed仍可学，不能因未超E12分数丢弃六支；权重/label沿现有审计，不加防御GPU。
+- **噪声地板 + MIE：**E12唯一同random checkpoint复跑已完成32.247479，对首评32.299397差−0.051918，是一次节点/推理/judge合并变化观察，非训练SD，本地训练方差未估。平均差约1分或多任务变化足以改变部署动作时提高优先级，这是探索判断。一个paired seed的null不是non-inferiority/等价证明，不把任务/题目当独立训练重复；八项向量失配时，均值相近也不称重建效用。
+- **混杂审计：**parent/hash/data/optimizer reset/LR/steps/监督token/slot分母/评分协议固定；内容与图像身份是干预。输入长度、图像复用、forward wall未严格相等但报告；排原始image路径不称跨源pixel-dedup。init与used的历史预算是所测状态，不把used总分高归因于刷新。E12公共八任务已有观察，非未碰private测试；后续策略学习泛化须另设不可回馈的新任务/episode，不能循环按test选checkpoint。
+- **决策表（跑之前写）：**
   - fresh-in>fresh-out且两状态同向有实质差 → 廉价律不能代替资格，找可复用内容信息，不继续堆matching属性。
   - used上fresh-in>replay且仍>fresh-out → 刷新有后果、池仍承载价值；研究可更新接受规则，非固定IDs重放。
   - init池内优势而used消失/反向，并导致真实损失 → 再测最低必要训练响应能否决定保留或扩展支持。
   - 两状态fresh-in/out接近且完整向量有希望重建 → 仅压缩假说线索；下一项测试冻结律对新记录/池的部署效用，与免费发布池重放/强配比优化比较全成本。
   - 所有差很小或没有决策后果 → 保留null，转其他研究动作（如选择目标与实际loss权重对应）；不铺更多属性或完整状态矩阵。
-- **算力预算**：六支训练7–8 A100·时、学生评价2–4，总分配上限18 A100·时含失败；judge Blackwell独立账不折算A100，上限12 allocated GPU·时。CPU先4–8进程；下载/搬运/CPU/I/O wall另计，API0。**实际：**未训练/评价。
+- **算力预算：**六支训练7–8 A100·时、学生评价2–4，总分配上限18 A100·时含失败；judge Blackwell独立账不折算A100，上限12 allocated GPU·时。CPU先4–8进程；下载/搬运/CPU/I/O wall另计，API0。**实际：**未训练/评价。
 
 ## 结果（执行后追加，不回改跑前设计）
 
-- CPU支持/替换覆盖/hash：未运行。
+- CPU支持/替换覆盖/hash：已完成，[小结果](../results/E13_cpu_replenishment_summary.json)，脚本10adbc4。三动作各10,000行/549,353监督token，逐slot标签数及625原slot窗口一致；采样后的实际窗口由runtime observer再记录。替换9,954行（99.54%）/93.9740%监督token、46共同旧anchors；fresh与旧完整记录/原image路径重合0，fresh-in/out完整记录互不重合，3/3污染审计clean、8/8任务无跳项。视觉五源label覆盖98.69%–100%，**text-only仅45.08%**，不概括成长文本补货结果。输入tokens replay/in/out为7,587,690/7,606,055/7,589,448（最大差约0.24%）；unique images9,614/9,592/9,604。全池metadata计算段100.5s×8CPU进程，NFS import/实际CPU活跃与物化wall未完整计量，不把100.5s当全动作总成本。大资产`fvcrc10:/var/tmp/xiang-data-rsi/e13/`；实际训练尚未启动。
 - 六支真实效用及失败成本：未运行。
 - 主张变化：C01–C04 L0；不能从规划升级。
 - POST-HOC分析：尚无。
