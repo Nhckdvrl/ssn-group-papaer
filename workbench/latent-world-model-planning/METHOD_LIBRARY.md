@@ -174,6 +174,19 @@ Task-Sufficient WM。
 - hidden-parameter identification；
 - data value per environment step。
 
+## Causal structure / counterfactual consistency
+CST-WM、CoCo、Do-JEPA/FIRM、CAER/WorldSync邻域。
+
+**适用 R1：**
+- behavior-policy correlations是否制造action→outcome shortcut；
+- structural masking / mediation prior vs counterfactual consistency vs paired intervention data；
+- action-effect supervision应该花在什么token/state factor上。
+
+好 method-led hypothesis 例：
+> 在 conditional action excitation已经足够时，若 action 与某 observation factor仍高度相关，generic predictor会把 direct shortcut写进planning representation；counterfactual branch supervision应比单纯增加IID behavior data更有效。
+
+这比“加causal loss”更可证伪。
+
 ## Failure / recovery data
 Foresight/FARM邻域提供 motivation。
 
