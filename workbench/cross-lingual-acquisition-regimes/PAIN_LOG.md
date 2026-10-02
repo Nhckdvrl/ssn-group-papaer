@@ -31,13 +31,16 @@ E01明确有效，但只有backbone+分类头，不能接回原LM head解释生�
 也不足以承接新知识、输出语言接口与桥接复用的母问题。E03先建真实QA生成学习，
 只用英语article-disjoint source gate确认可测；不把冻结QA失败当不能学习。
 
+E03已完整建立有效生成学习，EN F1 74.35–75.60、DE62.54–63.53，完整LM head/backbone共同训练。
+E04四格亦有效完成，没有大coverage×conditioning交互；不继续靠弱冻结评分修P04。
+
 ## P05：学会源语任务后，已有翻译出现照抄代价（E06/E08，单seed待重复）
 
 真实完整LM学习后，E03三组DE QA F1均62.54–63.53，但E06 MWB英→德BLEU11.47→7.92，
 精确source copy27/200→103/200；原固定instruction恢复到9.21而非原11.47。
 MWB德→英20.11→15.91；FWB英→德24.16→21.15；+P21.36→21.59。
 MWB两方向primary−before paired sentence95%CI分别[-5.35,-1.95]/[-6.79,-1.92] BLEU。
-不是普遍语言能力遗忘或parallel防遗忘claim：单适配seed、news200句、before硬件未统一。
+不是普遍语言能力遗忘或parallel防遗忘claim：单适配seed、news200句；E06最初的硬件边界已由E08校准。
 E08同硬件校准1200/1200原始primary预测与legacy一致，MWB同instruction两方向下降仍在；
 E09注册所有三条件seed29/43真实学习重复，E10测实际桥接干预的CPT→QA保持，E07提供标准译料监督参照。
 再决定训练救援，对已有mix/replay/语言控制方法定位。
