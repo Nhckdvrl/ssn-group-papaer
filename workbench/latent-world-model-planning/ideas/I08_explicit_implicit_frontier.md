@@ -143,7 +143,63 @@ E13 必须拆：
 
 ---
 
-## 5. 最有价值的 regime hypotheses
+## 5. 一个关键 fairness bridge：单 goal observation 能否直接实例化 TD-JEPA task latent？
+
+官方 TD-JEPA **没有**用 goal image做主评测；它通过 reward inference 得到 task vector：
+
+[
+z_r
+=
+argmin_z
+mathbb E_{(s,r)sim D_{m rwd}}
+[(r-psi(s)^	op z)^2]
+approx
+C_psi^{-1}mathbb E[psi(s)r(s)].
+]
+
+但 pinned OGBench code还有一个重要事实：
+
+- training 中 `sample_mixed_z(train_goal=psi_next_obs)` 会把真实 next-state embedding作为一部分 policy-task latent；
+- 当 `scale_train_goals=True` 时，代码先做
+  [
+  z_g propto psi(g) C_psi^{-1}
+  ]
+  再 project/normalize；
+- OGBench launcher默认打开 `scale_train_goals=True`。
+
+对于理想的 point-goal reward (r_g(s)) 集中在 goal (g) 附近，reward-inference解近似也是 covariance-whitened (psi(g))（差一个 normalization / goal-neighborhood averaging）。
+
+因此 E13 增加一个 **non-official but architecture-consistent diagnostic**：
+
+### GOAL-Z bridge
+给 TD-JEPA **一张 goal observation**：
+
+1. encode (psi(g))；
+2. 使用训练中相同的 covariance scaling；
+3. project 到 z；
+4. 直接 rollout policy (pi_{z_g})。
+
+然后比较：
+- GOAL-Z vs official reward-inferred (z_r) cosine / policy-action agreement；
+- goal-reaching success；
+- goal neighborhood大小的 sensitivity；
+- single goal image vs multiple positive goal exemplars。
+
+### 为什么它重要
+
+若 GOAL-Z 已经工作：
+- M2 可以构造更公平的 **same goal-observation information** 比较；
+- explicit vs implicit 差异不再主要来自 task interface。
+
+若 GOAL-Z 明显失败而 reward inference强：
+- 这本身说明 implicit successor/task representation需要 **task distribution information**，不能把“single-pass deployment”写成免费的任务泛化；
+- 但这仍只是 M2 fairness/result的一部分，不单独当 novelty。
+
+**严禁写成“TD-JEPA官方支持goal-image inference”。** 这是由 paper reward-inference公式 + official training code推导出的实验桥，必须在 E13 里标作 exploratory/common-protocol variant。
+
+---
+
+## 6. 最有价值的 regime hypotheses
 
 都只是 hypotheses，不是 claim。
 
@@ -181,7 +237,7 @@ successor/policy-conditioned implicit representation不一定能回答。
 
 ---
 
-## 6. 什么样结果才够强
+## 7. 什么样结果才够强
 
 最理想是得到一个 **predictive frontier**：
 
@@ -214,16 +270,17 @@ R = f(\text{task novelty},H,\text{deployment budget},\text{query info})
 
 ---
 
-## 7. E13 最小进入方式
+## 8. E13 最小进入方式
 
 1. OGBench Cube pixels，双方 native reproduction；
 2. common task utility；
-3. task/query information单独记账；
-4. ID + task redefinition + near/far；
-5. 只做两端：
+3. **TD-JEPA GOAL-Z bridge diagnostic**：single goal observation vs official reward inference；
+4. task/query information单独记账；
+5. ID + task redefinition + near/far；
+6. 只做两端：
    - explicit JEPA-WM / LeWM；
    - Bagatella TD-JEPA；
-6. 出现稳定 ranking switch 后，才加一个中间 family：
+7. 出现稳定 ranking switch 后，才加一个中间 family：
    - Universal Horizon；
    - Jumpy WM；
    - 或 TD-MPC2。
@@ -232,7 +289,7 @@ R = f(\text{task novelty},H,\text{deployment budget},\text{query info})
 
 ---
 
-## 8. Reviewer compression
+## 9. Reviewer compression
 
 ### “这只是 train-vs-test compute trade-off。”
 所以必须有 **generalization / task-interface / horizon** 维度，而且 hold-out regime可预测。
@@ -248,7 +305,7 @@ Hybrid本身不是贡献。只有一个 **regime law 导出为何/何时 hybrid*
 
 ---
 
-## 9. 升级条件
+## 10. 升级条件
 
 I08 从 SEED → paper hypothesis：
 
