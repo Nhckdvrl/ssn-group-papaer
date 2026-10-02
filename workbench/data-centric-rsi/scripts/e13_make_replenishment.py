@@ -335,6 +335,58 @@ def materialize(args, original, audit, metadata, positions, replaced, support):
             raise RuntimeError(f"{action} contamination audit requires attention; retained files")
 
 
+def make_processor_sentinel(args):
+    """Copy the frozen eleven source rows into a self-contained tiny dataset."""
+    from datasets import DatasetDict, Image, concatenate_datasets, load_from_disk
+    audit = json.loads(args.audit.read_text())
+    reference = json.loads(args.sentinel.read_text())
+    positions = [row["position"] for row in reference["rows"]]
+    if (audit["first_shard_only"] or audit["same_position_conversation_count"] != 665298
+            or len(positions) != 11 or len(set(positions)) != 11):
+        raise RuntimeError("Missing frozen complete audit or eleven-row sentinel")
+    output = args.out_root / "processor_sentinel"
+    if output.exists():
+        raise FileExistsError(f"Refusing to overwrite processor sentinel: {output}")
+    ds = load_from_disk(str(args.root / "llava_arrow"))
+    if isinstance(ds, DatasetDict):
+        ds = concatenate_datasets([ds[k] for k in sorted(ds)])
+    selected = ds.select(positions)
+    ids = [str(i) for i in selected["id"]]
+    if ids != [str(row["id"]) for row in reference["rows"]]:
+        raise RuntimeError("Source Arrow sentinel IDs differ from frozen E12 records")
+    texts = list(selected["texts"])
+    raw_images = list(selected.cast_column("images", Image(decode=False))["images"])
+    if any(not image or not image.get("bytes") for image in raw_images):
+        raise RuntimeError("Sentinel must embed image bytes, not reference external paths")
+    image_hashes = [hashlib.sha256(image["bytes"]).hexdigest() for image in raw_images]
+    selected = selected.add_column("original_position", positions)
+    selected.save_to_disk(str(output))
+    saved = load_from_disk(str(output))
+    saved_raw_images = list(saved.cast_column("images", Image(decode=False))["images"])
+    if ([str(i) for i in saved["id"]] != ids or list(saved["texts"]) != texts
+            or list(saved["original_position"]) != positions
+            or [hashlib.sha256(image["bytes"]).hexdigest()
+                for image in saved_raw_images] != image_hashes):
+        raise RuntimeError("Saved sentinel changes IDs, dialogue, image bytes or source mapping")
+    files = [{"path": str(p.relative_to(output)), "bytes": p.stat().st_size,
+              "sha256": sha256(p)} for p in sorted(output.rglob("*")) if p.is_file()]
+    manifest = {"budget": 11, "sample_count": 11, "original_positions": positions,
+                "source_sentinel_path": str(args.sentinel.resolve()),
+                "source_sentinel_sha256": sha256(args.sentinel),
+                "source_arrow_path": str(args.root / "llava_arrow"),
+                "arrow_id_dialogue_audit": {"path": str(args.audit.resolve()),
+                                            "sha256": sha256(args.audit)},
+                "dataset_path": str(output), "dataset_files": files,
+                "ids": ids, "source_image_bytes_sha256": image_hashes,
+                "self_contained_image_bytes": True,
+                "saved_ids_dialogues_images_and_positions_equal_source": True,
+                "selector_script_sha256": sha256(Path(__file__))}
+    path = output / "e13_processor_sentinel_manifest.json"
+    path.write_text(json.dumps(manifest, indent=2) + "\n")
+    print(json.dumps({"event": "processor_sentinel_complete", "manifest": str(path),
+                      "dataset_bytes": sum(f["bytes"] for f in files), **manifest}), flush=True)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
@@ -342,9 +394,12 @@ def main():
     parser.add_argument("--sentinel", type=Path, required=True)
     parser.add_argument("--out-root", type=Path, required=True)
     parser.add_argument("--workers", type=int, choices=range(1, 9), default=8)
-    parser.add_argument("--stage", choices=("metadata", "actions", "all"), default="all")
+    parser.add_argument("--stage", choices=("metadata", "actions", "all", "sentinel"), default="all")
     args = parser.parse_args()
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    if args.stage == "sentinel":
+        make_processor_sentinel(args)
+        return
     original, audit = verify_source(args)
     cache = make_metadata(args, original, audit)
     if args.stage != "metadata":
