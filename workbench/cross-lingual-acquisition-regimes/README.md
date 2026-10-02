@@ -109,12 +109,15 @@ E07目标QA增益伴随MT代价仍可被一般任务干扰解释。保留资产�
 - MONOWEB：`UCLNLP/monoweb` revision `4a42093acef06af33d2d5fdf2c26000d4f81d779`，
   `ckpt_exp_en_de_{baseline,monoweb,onlyparallel}/iter_0034000/hf_model`。
 - 下载/定位：`scripts/cache_models.py` 与本地 `artifacts/model_manifests/`。
-- 原始输出、训练 checkpoint、下载论文：本目录 `artifacts/`、`sources/`（git-ignore）。
+- 原始输出、下载论文：本目录 `artifacts/`、`sources/`（git-ignore）。
+- 2026-10-02按用户要求清理28个已完成checkpoint目录，释放约137 GiB；
+  代码、训练数据、预测、曲线、provenance/hash与日志保留。
+  [清理清单](results/asset_cleanup_2026-10-02.json)；本地适配权重不能从HF下载恢复，需重新训练。
+  仅暂留E09收尾/校对依赖的三起点seed17/29/43权重，不动共享HF缓存或其他题目。
 - E01：`artifacts/nli_learning/train_{condition}_seed{17,29,43}/`，
-  保存backbone `checkpoint/` 和 `classification_head.pt`；不是完整生成式LM。
-- E03完整LM：`artifacts/qa_learning/train_{condition}_seed17/checkpoint/`；
-  E04完整CPT及后续QA：`artifacts/qa_bridge/`、`artifacts/qa_learning/train_e04_*/`。
-- E07完整标准监督参照：`artifacts/qa_learning/train_e07_translate_train_seed17/checkpoint/`。
+  backbone `checkpoint/` 已清理，分类头/记录保留；不是完整生成式LM。
+- E03完整LM：`artifacts/qa_learning/train_{condition}_seed17/checkpoint/` 暂留供E09校对；
+  E02/E04的CPT及任务适配权重、E03 pilot、E07权重已清理，目录内结果与记录保留。
 - 当前本地 conda：`/home/xiang/miniconda3/envs/openslime/bin/python`。
 - GPU 使用人的授权节点空卡；独立单卡任务，不占其他进程，白天九点后最多八张并用。
 
