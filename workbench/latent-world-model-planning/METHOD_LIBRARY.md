@@ -188,7 +188,7 @@ CST-WM、CoCo、Do-JEPA/FIRM、CAER/WorldSync邻域。
 这比“加causal loss”更可证伪。
 
 ## Failure / recovery data
-Foresight/FARM邻域提供 motivation。
+Foresight/FARM提供检测motivation；FACT说明success-only训练缺bad-action consequence；Dream2Fix说明failure-correction pair可被合成/筛选。
 
 **适用 R1/R5：**
 成功数据是否缺少 planner失败边界附近的信息？
@@ -243,16 +243,16 @@ PLDM等。
 Control Theory、Intervention Gap。
 
 ## Error detector / failure readout
-MEND、FARM、Foresight。
+MEND、FARM、Foresight、natural-input failure discovery（P109，仅作stress generator）。
 
 ## Feedback state
-Feedback WM。
+Feedback WM；observed-error conformal safety repair（When WMs Lie, B-read）。
 
 ## Gradient / residual adaptation
 AdaJEPA、Sandwich Residual、ReDRAW。
 
 ## Hybrid / gate
-IMWM reliability gate。
+IMWM reliability gate；CausalNav certified admit/fallback；Dual-Frontier trust/verify（当前B-read）。
 
 **R5 的核心不是再发明一个 detector，而是：**
 > detector / signal / failure type 与 **哪种 repair action** 的关系。
