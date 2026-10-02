@@ -1,6 +1,6 @@
 # E11：symmetric-reused-bridge-baseline（2026-10-02）
 
-- **状态：** PLANNED
+- **状态：** VOID（本次执行中断，不自动重启；不是科学假说被证伪）
 - **类型：** REPRO（修复不完整的桥接竞争基线，双向训练不是新方法）
 - **对应：** P03/P05
 - **问题（一句话）：** 修正单向桥接的方向偏置后，同内容双向paired或split训练对真实新任务学习与双向旧能力各有什么收益和代价？
@@ -14,3 +14,7 @@
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 卡写于E10完整结果之后、任何本卡数据准备/训练之前。E10是选择修复direction基线的发现依据，不能把本卡回写为其事前预测。没有新idea或claim升级。
+
+执行中断（2026-10-02，用户批评后纠偏）：CPU逐ID/token审计通过，paired已在fvcrc10 GPU0启动；最后完整日志112/256 CPT更新，loss1.4428，训练内elapsed313.64秒。未完成CPT、没有QA/post结果；split未启动。核对本题queue PID82532及child PID82535的完整命令后发送TERM，仅停止这两个进程；未动其他作业。未启动E11 readout队列，原始provenance/losses/log保留于 `artifacts/symmetric_bridge/paired_seed17/` 和 `artifacts/qa_learning/symmetric_bridge_training.log`。elapsed不含初始化等边界，不作为精确GPU账。
+
+停止原因是执行优先级纠正：有效学习baseline已经建立，继续补这个顺序条件尚不足以推进有分量的科学对象。不是工具失败、负结果、相关工作自动判死或workbench暂停决定。当前脚本/池仍是资产；任何恢复都要先明确它会改变哪个重要训练决策及相对近邻的增量，不因为空卡或旧队列自动恢复。

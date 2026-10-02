@@ -1,6 +1,6 @@
 # E07：translate-train-reference（2026-10-02）
 
-- **状态：** RUNNING（QA完整完成并校对；事前追加的MT保持测量进行中）
+- **状态：** DONE（QA、事前追加的MT保持及完整统一分析完成）
 - **类型：** REPRO（标准translate-train竞争基线，不是新方法）
 - **对应：** P03/P04
 - **问题（一句话）：** 同一任务内容和有限更新预算下，直接把部分新任务监督翻译成目标语，比先提供无标签桥接能获得怎样的实际源/目标学习与保持代价？
@@ -26,3 +26,6 @@ QA完成并保存全部LM：EN-dev F1 74.25、EN-test 72.89、DE-test 66.22%；�
 
 训练+主评测记录1933.57秒、保存66.31秒；前者不包含init/instruction/保存，不能当精确总GPU账。原始文件 `artifacts/qa_learning/train_e07_translate_train_seed17/`，wrapper完成记录 `artifacts/qa_translate_train/run_inputs/completion.json`。
 首次统一统计因官方EM布尔数组不能作差而报错；仅转成浮点后完整重跑成功，不改变评分函数、输入、读数或冻结训练脚本。MT保持按原追加承诺运行，未据QA结果换比例/快照/prompt。
+
+MT完成：EN→DE primary/instruction BLEU 8.41/8.48；DE→EN 13.40/13.49。
+对同MWB英语only适配，primary分别+0.49[-0.85,1.51]/-2.51[-4.19,-1.02]，同instruction -0.73[-2.19,0.27]/-3.06[-4.33,-1.57]。相对同协议原MWB两方向都下降；EN→DE精确照抄105/200，DE→EN 67/200；无empty/overflow，cap全部保留。`results/e07_translation_retention_analysis.json`包含全部BLEU/chrF、相同before/after指令与同句bootstrap。目标QA提升没有自动恢复已有翻译；单seed与任务/成本边界不变，不升级为新发现或内部机制。
