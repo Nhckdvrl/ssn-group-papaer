@@ -1,6 +1,6 @@
 # E07：translate-train-reference（2026-10-02）
 
-- **状态：** RUNNING（CPU审计通过；E04首格完整保存退出后使用空A100）
+- **状态：** RUNNING（QA完整完成并校对；事前追加的MT保持测量进行中）
 - **类型：** REPRO（标准translate-train竞争基线，不是新方法）
 - **对应：** P03/P04
 - **问题（一句话）：** 同一任务内容和有限更新预算下，直接把部分新任务监督翻译成目标语，比先提供无标签桥接能获得怎样的实际源/目标学习与保持代价？
@@ -20,3 +20,9 @@ CPU准备完成：同16384唯一ID，EN/DE各8192；input token1800246/2265387�
 执行追加：fvcrc10 GPU0在E04 new_paired完整保存、原进程退出、显存15MiB确认后启动，PID78399；wrapper调用冻结E03 core，仅替换已审计的数据路径和真实哈希。上述“尚未运行GPU”是启动前记录，不是当前状态。暂未产生终点结果。
 
 终点前追加测量承诺：标准50/50参照的完整LM，按E06/E08同Blackwell/FP32/全部400固定输入与primary/原一句instruction测MT保持，逐方向BLEU/chrF、照抄/cap/empty/overflow与同协议MWB适配前后比较。无新prompt，不挑QA快照；同句paired bootstrap2000、训练seed仍只有17。另用≤1 GPU·时，等E10全部post及空卡之后测；不是与E04等总token/计算预算，也不能据此宣布方法创新。此承诺写于E07终点和任何本参照MT结果之前。
+
+QA完成并保存全部LM：EN-dev F1 74.25、EN-test 72.89、DE-test 66.22%；对英语only MWB同seed终点，EN -1.79pp context95%CI[-3.17,-0.46]，DE +3.68[1.82,5.58]。终点EM分别60.84/51.76%；原一句恢复后F1 73.09/66.44，无大恢复。所有0/128/512/1024曲线和未筛除的cap记录在 `results/e07_qa_reference_analysis.json`。
+这只是有效标准竞争方法及源语代价，不是新方法或训练种子CI。13.29%额外input token、英语监督被替换、机器译料语义未经全面人工核对的边界仍保留。
+
+训练+主评测记录1933.57秒、保存66.31秒；前者不包含init/instruction/保存，不能当精确总GPU账。原始文件 `artifacts/qa_learning/train_e07_translate_train_seed17/`，wrapper完成记录 `artifacts/qa_translate_train/run_inputs/completion.json`。
+首次统一统计因官方EM布尔数组不能作差而报错；仅转成浮点后完整重跑成功，不改变评分函数、输入、读数或冻结训练脚本。MT保持按原追加承诺运行，未据QA结果换比例/快照/prompt。

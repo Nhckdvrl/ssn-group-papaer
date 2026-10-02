@@ -82,10 +82,13 @@ MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制�
 74.35/63.53；单seed17，差小且CI宽，不是新idea。见[完整结果](results/E03_GENERATIVE_QA_BASELINE.md)。
 **P03/P04 / E04完整完成**：DE F1四格63.66/62.94/64.14/62.53，覆盖×连接
 交互−0.88pp context CI[-2.14,0.39]；不扩此小差异grid。[完整结果与边界](experiments/E04-qa-content-bridge-intervention.md)。
-E05确认有效译料监督15442/16384；E07标准translate-train已在A100训练。
+E05确认有效译料监督15442/16384；E07标准translate-train QA完成：EN/DE 72.89/66.22，
+对英语only为−1.79/+3.68pp，源语代价和13.29%额外input token保留；MT保持正在测。
 **P05 / E06发现适配代价候选**：MWB英→德BLEU11.47→7.92，一句恢复9.21；
 精确照抄27/200→103/200，而三组QA终点相近。单seed/旧before硬件仍是边界，
-E08同硬件1200/1200逐条复现；E09待空卡做适配种子重复，E10测已有CPT跨任务学习的保持。
+E08同硬件1200/1200逐条复现；E09三A100并行做全部29/43适配种子重复；E10八LM测量完成。
+E10 post EN→DE paired−split +9.10/+8.34 BLEU，而DE→EN −1.34/−2.78：
+当前EN→DE单向CPT不能代表双向parallel，方向失败与JGP直接重叠，不据此命名防遗忘idea。
 不先命名parallel防遗忘idea。[完整读数](results/e06_qa_translation_retention.json)。
 
 ## 资产位置
@@ -99,6 +102,7 @@ E08同硬件1200/1200逐条复现；E09待空卡做适配种子重复，E10测�
   保存backbone `checkpoint/` 和 `classification_head.pt`；不是完整生成式LM。
 - E03完整LM：`artifacts/qa_learning/train_{condition}_seed17/checkpoint/`；
   E04完整CPT及后续QA：`artifacts/qa_bridge/`、`artifacts/qa_learning/train_e04_*/`。
+- E07完整标准监督参照：`artifacts/qa_learning/train_e07_translate_train_seed17/checkpoint/`。
 - 当前本地 conda：`/home/xiang/miniconda3/envs/openslime/bin/python`。
 - GPU 使用人的授权节点空卡；独立单卡任务，不占其他进程，白天九点后最多八张并用。
 

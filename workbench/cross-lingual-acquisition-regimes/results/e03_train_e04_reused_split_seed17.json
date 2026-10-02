@@ -1,0 +1,288 @@
+{
+  "provenance": {
+    "config": {
+      "max_train_length": 1024,
+      "max_new_tokens": 64,
+      "micro_batch": 2,
+      "accumulation": 8,
+      "lr": 2e-05,
+      "weight_decay": 0.01,
+      "updates": 1024,
+      "warmup": 102
+    },
+    "model": {
+      "repo": "UCLNLP/monoweb",
+      "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+      "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+      "path": "/home/xiang/ssn-group-papaer/workbench/cross-lingual-acquisition-regimes/artifacts/qa_bridge/reused_split_seed17/checkpoint",
+      "parent": {
+        "repo": "UCLNLP/monoweb",
+        "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+        "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+        "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+      },
+      "local_intervention": {
+        "condition": "reused_split",
+        "seed": 17,
+        "data_hash": "c76c35d4baa081f85a839208badc117ece4b83455dddba2aee02d820526dcb2a",
+        "script_sha256": "f12269085327a44a52cc0b7b5393c181de5a79d2fa92c4be7c6c16dfef812df5"
+      }
+    },
+    "metadata": {
+      "revisions": {
+        "rajpurkar/squad": "7b6d24c440a36b6815f21b70d25016731768db1f",
+        "google/xquad": "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+      },
+      "config": {
+        "max_train_length": 1024,
+        "max_new_tokens": 64,
+        "micro_batch": 2,
+        "accumulation": 8,
+        "lr": 2e-05,
+        "weight_decay": 0.01,
+        "updates": 1024,
+        "warmup": 102
+      },
+      "removed": {
+        "complete_training_unit_over_1024": 6
+      },
+      "dev_titles": [
+        "Appalachian_Mountains",
+        "Asthma",
+        "Boston",
+        "Cyprus",
+        "Daylight_saving_time",
+        "Dell",
+        "Dog",
+        "Eton_College",
+        "Florida",
+        "IBM",
+        "Imamah_(Shia_doctrine)",
+        "John_von_Neumann",
+        "Karl_Popper",
+        "Liberal_Party_of_Australia",
+        "List_of_numbered_streets_in_Manhattan",
+        "Marvel_Comics",
+        "Molotov%E2%80%93Ribbentrop_Pact",
+        "Norfolk_Island",
+        "On_the_Origin_of_Species",
+        "PlayStation_3",
+        "Race_and_ethnicity_in_the_United_States_Census",
+        "Rule_of_law",
+        "Solar_energy",
+        "Sony_Music_Entertainment",
+        "St._John%27s,_Newfoundland_and_Labrador",
+        "Symbiosis",
+        "Transistor",
+        "Tucson,_Arizona",
+        "Umayyad_Caliphate",
+        "University_of_Kansas",
+        "University_of_Notre_Dame",
+        "Virgil"
+      ],
+      "counts": {
+        "train": 16384,
+        "en_dev": 512,
+        "en_test": 1190,
+        "de_test": 1190
+      },
+      "hashes": {
+        "train": "6fc90176db163cfc0a575ef780449fcd5536c9aeaf0a5b96684bb80baf9d9137",
+        "en_dev": "6be1056d97fb59a79ef22086d298a57e925cf62c84be94279dfed42d38863018",
+        "en_test": "71f81a84407a347c90b87172350733275febefb90e59f39640b04d2b428c8838",
+        "de_test": "2b3b5e34a2816d82a9037ef2884b8ec5d6fcaf89c5085713d31ae2df571b4c69"
+      },
+      "tokenizer_sha256": "2b533a1fbef0fd3352a10e98e5ed9e7ec1e944fa8dbbee346833e74a48614c38",
+      "xquad_source_qa_ids_verified": true,
+      "paired_test_ids_verified": true,
+      "source_article_disjoint": true,
+      "scorer": {
+        "url": "https://raw.githubusercontent.com/google-research/xtreme/838c13b69daafb9328785d16caae2711e4012123/third_party/evaluate_squad.py",
+        "revision": "838c13b69daafb9328785d16caae2711e4012123",
+        "sha256": "c511e8c2241b0766d5cab2138511b56d0b491d74d3455c8b9ecdc5e53dace705"
+      }
+    },
+    "seed": 17,
+    "phase": "train",
+    "script_sha256": "734798ad6dbad41c23897f64c2e4ab984d701c7da2752f1a04fd9354f82032f9",
+    "device": "NVIDIA A100 80GB PCIe",
+    "torch": "2.9.1+cu129",
+    "numpy": "1.26.4",
+    "git_commit": "7680cb5123d6e41aa7891d09ba1eb2f5d34e635a",
+    "train_encoded_sha256": "493ce2920d904af47e87b8f87d8001abdf6c801bbdb6d760d6dedbeb212eec30"
+  },
+  "curve": [
+    {
+      "updates": 0,
+      "examples": 0,
+      "elapsed_seconds": 1.6689300537109375e-06,
+      "metrics": {
+        "en_dev": {
+          "n": 512,
+          "f1": 0.11236614104065493,
+          "exact_match": 0.013671875,
+          "f1_item_bootstrap95": [
+            0.09629585147024497,
+            0.12923545255908678
+          ],
+          "overflow": 0,
+          "cap": 103,
+          "empty": 0
+        },
+        "en_test": {
+          "n": 1190,
+          "f1": 0.11509844724117217,
+          "exact_match": 0.021848739495798318,
+          "f1_item_bootstrap95": [
+            0.10379414907238625,
+            0.12730157424814212
+          ],
+          "overflow": 0,
+          "cap": 209,
+          "empty": 0
+        },
+        "de_test": {
+          "n": 1190,
+          "f1": 0.08893269037290061,
+          "exact_match": 0.030252100840336135,
+          "f1_item_bootstrap95": [
+            0.07722003952703489,
+            0.10139916936234362
+          ],
+          "overflow": 0,
+          "cap": 54,
+          "empty": 0
+        }
+      }
+    },
+    {
+      "updates": 128,
+      "examples": 2048,
+      "elapsed_seconds": 569.0983240604401,
+      "metrics": {
+        "en_dev": {
+          "n": 512,
+          "f1": 0.6505663861249468,
+          "exact_match": 0.52734375,
+          "f1_item_bootstrap95": [
+            0.6131054552035742,
+            0.6869868659035732
+          ],
+          "overflow": 0,
+          "cap": 0,
+          "empty": 0
+        },
+        "en_test": {
+          "n": 1190,
+          "f1": 0.6433659704956698,
+          "exact_match": 0.5252100840336135,
+          "f1_item_bootstrap95": [
+            0.6186344893515006,
+            0.6681224813272137
+          ],
+          "overflow": 0,
+          "cap": 0,
+          "empty": 0
+        },
+        "de_test": {
+          "n": 1190,
+          "f1": 0.5543642044174567,
+          "exact_match": 0.4226890756302521,
+          "f1_item_bootstrap95": [
+            0.5292462780545087,
+            0.5797431537661728
+          ],
+          "overflow": 0,
+          "cap": 1,
+          "empty": 0
+        }
+      }
+    },
+    {
+      "updates": 512,
+      "examples": 8192,
+      "elapsed_seconds": 1047.9608216285706,
+      "metrics": {
+        "en_dev": {
+          "n": 512,
+          "f1": 0.7058640373829892,
+          "exact_match": 0.568359375,
+          "f1_item_bootstrap95": [
+            0.6709724529936264,
+            0.7399128208026401
+          ],
+          "overflow": 0,
+          "cap": 0,
+          "empty": 0
+        },
+        "en_test": {
+          "n": 1190,
+          "f1": 0.7344113429801508,
+          "exact_match": 0.6151260504201681,
+          "f1_item_bootstrap95": [
+            0.7120768604596044,
+            0.7567177664887853
+          ],
+          "overflow": 0,
+          "cap": 1,
+          "empty": 0
+        },
+        "de_test": {
+          "n": 1190,
+          "f1": 0.5926895941833321,
+          "exact_match": 0.45630252100840335,
+          "f1_item_bootstrap95": [
+            0.567336718442545,
+            0.6174712720052762
+          ],
+          "overflow": 0,
+          "cap": 4,
+          "empty": 0
+        }
+      }
+    },
+    {
+      "updates": 1024,
+      "examples": 16384,
+      "elapsed_seconds": 1675.4945735931396,
+      "metrics": {
+        "en_dev": {
+          "n": 512,
+          "f1": 0.759436884518067,
+          "exact_match": 0.623046875,
+          "f1_item_bootstrap95": [
+            0.7272670163302255,
+            0.7903516225886917
+          ],
+          "overflow": 0,
+          "cap": 1,
+          "empty": 0
+        },
+        "en_test": {
+          "n": 1190,
+          "f1": 0.7370597038040684,
+          "exact_match": 0.6294117647058823,
+          "f1_item_bootstrap95": [
+            0.7141404072717756,
+            0.7589889506270141
+          ],
+          "overflow": 0,
+          "cap": 1,
+          "empty": 0
+        },
+        "de_test": {
+          "n": 1190,
+          "f1": 0.6253379065519461,
+          "exact_match": 0.48739495798319327,
+          "f1_item_bootstrap95": [
+            0.6006631481223453,
+            0.6495375112813603
+          ],
+          "overflow": 0,
+          "cap": 7,
+          "empty": 0
+        }
+      }
+    }
+  ]
+}
