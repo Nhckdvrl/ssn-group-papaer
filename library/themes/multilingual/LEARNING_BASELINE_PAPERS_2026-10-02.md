@@ -264,3 +264,21 @@ RECONSTRUCTED距离：任务×语言持续学习本身早已有主会研究，�
 DOCUMENTED来源：区分后续任务真实学习收益与test-before-training的forward transfer；以target-only/target-full/mixed审计headroom，再比较一次参数初始化、持续参数anchor和数据replay。TSR从固定共享起点LoRA B梯度选旧任务，KD承担保持；五seed、0.5B/7B、旧buffer100/任务。
 边界：N=50、500更新、r16、生成任务主报告loss而非真实生成；固定LoRA起点的梯度argmax只能适用于其识别状态。target-full被当作最有价值监督的假设与预算定义需保留；在其他任务/预算下不能当必然上界。小快照共同base主导teacher差异，不能把其KD解释外推到dense跨语知识学习。
 RECONSTRUCTED距离：一次桥接之后收益消失、持续replay保留、监督饱和减少增益均有近邻ownership；不能换语言名再声明新regime。学其动作是先建立真正有效的学习/预算曲线，再让训练干预承担解释，而不是用局部probe代替母问题。
+
+## Function Vectors与持续指令学习遗忘（ICLR2025主会）
+
+[官方全文](https://proceedings.iclr.cc/paper_files/paper/2025/file/74fc5575632191d96881d8015f79dde3-Paper-Conference.pdf)，本次定向核对§3–6及附录E；未独立复现，不冒称所有附录逐页核实。
+DOCUMENTED来源：不同新任务/模型的遗忘不同，单一训练序列不足以解释；以任务function vector追踪调用变化并做训练救援。
+方法：label-shuffled ICL activation patching选择任务相关头，构造FV；用FV consistency与FV-guided KL稳定任务调用，检验多任务benchmark。
+最近邻距离：在一般持续指令学习中，任务调用偏移而非简单函数擦除已有机制主张与干预；不必跨语言命名才能覆盖P05的大部分朴素解释。
+边界：其FV构造/有效干预依赖具体模型、任务与ICL条件，不证明所有翻译退步都同机制；没有复现就不声称本题已被它完整解释。
+RECONSTRUCTED对本题：英语QA后MT照抄不能直接抢占“能力仍在但调用漂移”主张；若继续，需要能改变训练选择的实际增量及有效救援竞争，不能仅重复一种行为诊断。相关工作是定位，不是自动关闭理由。
+
+## Crosslingual Capabilities and Knowledge Barriers（COLM近邻；arXiv v2方法核对）
+
+[一手全文](https://arxiv.org/html/2406.16135v2)，本次读§3–4及附录D.2；此前v3入口404不应被误记为全文不可得。
+DOCUMENTED来源：静态跨语能力不保证一个语言中新习得的知识能在另一个语言调用；分析知识壁垒并尝试无关跨语内容适配。
+方法：TOFU英语QA微调、释义与跨语查询；答案仍以English答案ROUGE测量，作者说明英语输出偏向。混语WikiText干预主要针对旧HP/MMLU知识，不等同证明一次桥接跨连续新内容持续复用。
+最近邻距离：相比PreAlign早期对齐/知识应用与AdaXEval知识/桥接语料分离，是实际新知识学习及跨语访问；“注入英语知识测德语”本身已有直接先例。
+边界：英语答案协议不能代表目标语生成；未核实作者公开DE TOFU与释义文件。作者公开数据组织目前只确认HP/MMLU，不把其他论文TOFU译本当同一资产。
+RECONSTRUCTED对本题：连续新内容下的桥接摊薄成本仍可作为研究压力，但现在没有独特观察，QA有效也不自动保证参数知识可学；不能靠换任务再启动一轮底座建设。依用户最新投入审查，不下载新资产或运行这一分支。
