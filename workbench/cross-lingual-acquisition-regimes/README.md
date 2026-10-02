@@ -87,18 +87,18 @@ E05确认有效译料监督15442/16384；E07标准translate-train QA完成：EN/
 MT EN→DE/DE→EN 8.41/13.40 BLEU，未修复保持代价；德→英比英语only低2.51。
 **P05 / E06发现适配代价候选**：MWB英→德BLEU11.47→7.92，一句恢复9.21；
 精确照抄27/200→103/200，而三组QA终点相近。单seed/旧before硬件仍是边界，
-E08同硬件1200/1200逐条复现；E09三A100并行做全部29/43适配种子重复；E10八LM测量完成。
+E08同硬件1200/1200逐条复现；E09全部29/43适配重复与保持评测已完成归档；E10八LM测量完成。
 E10 post EN→DE paired−split +9.10/+8.34 BLEU，而DE→EN −1.34/−2.78：
 当前EN→DE单向CPT不能代表双向parallel，方向失败与JGP直接重叠，不据此命名防遗忘idea。
 不先命名parallel防遗忘idea。[完整读数](results/e06_qa_translation_retention.json)。
 
 用户再次纠偏后，已停止新增E11顺序扩展，保留未完成记录，不自动重启。
 E03/E04已有有效任务学习，不再以“底座还需修”替代科学对象收敛。
-已启动E09种子复验收尾用于资产校验；不围绕小差异继续追加条件。
+E09种子复验已收尾归档；不围绕小差异继续追加条件。
 新训练须先写清实际决策压力、最近邻增量及不同结果会改变什么，不能只因空卡开跑。
 
 最新投入建议：不继续以当前acquisition解释或QA→MT保持lead组织新增训练；
-E12仅生成骨架，已在实现/运行前撤销。已有E09按原承诺收尾，不追加条件。
+E12仅生成骨架，已在实现/运行前撤销。E09已按原承诺全部收尾，不追加条件。
 有效底座并未解决贡献缺口：E10同instruction的前后保持交互远弱于post单向绝对差，
 E07目标QA增益伴随MT代价仍可被一般任务干扰解释。保留资产与领域材料，
 建议当前lead搁置；是否暂停C及未来恢复由人决定，不自行改登记表。
@@ -110,14 +110,14 @@ E07目标QA增益伴随MT代价仍可被一般任务干扰解释。保留资产�
   `ckpt_exp_en_de_{baseline,monoweb,onlyparallel}/iter_0034000/hf_model`。
 - 下载/定位：`scripts/cache_models.py` 与本地 `artifacts/model_manifests/`。
 - 原始输出、下载论文：本目录 `artifacts/`、`sources/`（git-ignore）。
-- 2026-10-02按用户要求清理28个已完成checkpoint目录，释放约137 GiB；
+- 2026-10-02按用户要求累计清理37个checkpoint目录，释放约182 GiB；
   代码、训练数据、预测、曲线、provenance/hash与日志保留。
   [清理清单](results/asset_cleanup_2026-10-02.json)；本地适配权重不能从HF下载恢复，需重新训练。
-  仅暂留E09收尾/校对依赖的三起点seed17/29/43权重，不动共享HF缓存或其他题目。
+  E09三起点seed17/29/43全部评测和分析完成后，最后9个权重亦已清理；HF缓存/其他题目未动。
 - E01：`artifacts/nli_learning/train_{condition}_seed{17,29,43}/`，
   backbone `checkpoint/` 已清理，分类头/记录保留；不是完整生成式LM。
-- E03完整LM：`artifacts/qa_learning/train_{condition}_seed17/checkpoint/` 暂留供E09校对；
-  E02/E04的CPT及任务适配权重、E03 pilot、E07权重已清理，目录内结果与记录保留。
+- E03/E09：`artifacts/qa_learning/train_{condition}_seed{17,29,43}/` 的权重已清理；
+  E02/E04 CPT及任务适配、E03 pilot、E07权重亦已清理，目录内结果与记录保留。
 - 当前本地 conda：`/home/xiang/miniconda3/envs/openslime/bin/python`。
 - GPU 使用人的授权节点空卡；独立单卡任务，不占其他进程，白天九点后最多八张并用。
 
