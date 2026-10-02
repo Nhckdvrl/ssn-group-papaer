@@ -263,3 +263,13 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 | P104 | TC-WM / Back to Parsimonious Latents | arXiv 2605.25620 | **A-targeted** | R3 task-centric representation coordinate；R4 side-information state |
 | P105 | Semantically Rich WM | arXiv 2608.22294 | **B / abstract currently** | R3 task-conditioned semantic roles；需全文后才能当collision |
 | P106 | World Action Planner | arXiv 2607.27599 | **A-targeted** | R3 modular query/reasoning vs reusable physics；R5 critical-decision usage |
+
+## 13. Recovery / failure-discovery additions（P107–P109）
+
+| ID | 工作 | Status | Read | Workbench role |
+|---|---|---|---|---|
+| P107 | CausalNav: Reliability-Certified Causal WMs | arXiv 2608.07809 | B | R5 trust/fallback coordinate；structure fidelity≠control utility |
+| P108 | Dream2Fix | arXiv 2603.13528 | B | R1 failure/correction data + R5 executable repair |
+| P109 | Where World Models Break / BasinLens | arXiv 2608.22421 | B | failure-state generator / stress test；不能以rare anomaly本身当paper |
+
+P107–P109 若成为 manuscript-critical direct baselines，需补全文；当前只承担 program map / experiment-design pressure。
