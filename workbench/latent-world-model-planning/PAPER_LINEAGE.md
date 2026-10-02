@@ -1256,3 +1256,36 @@ P02 已经比我们之前记得更接近 M2：
 - **对 R3：** 很好的 **modular specialization/reuse** 实例：task reasoning/proposal由VLM specialized，physical outcome prediction由multi-task WM reusable。它支持R3而不是堵死R3。
 - **对 R5：** critical-decision-only planning也说明“什么时候值得调用昂贵WM”本身是usage-policy问题。
 - **资源判断：** 作为idea-growth/architecture coordinate，不适合本compact workbench首轮训练baseline。
+
+## Failure discovery vs actionable recovery（P107–P109）
+
+### P107 — CausalNav: Reliability-Certified Causal World Models for Control under Physical-Parameter Shift — arXiv 2608.07809
+**Read:** B（abstract/summary级；direct collision前需全文）  
+**来源：** https://arxiv.org/abs/2608.07809
+
+- **母问题（abstract-supported）：** WM只有在它能改善action时才有用；当不可靠时又必须知道何时不该影响policy。
+- **method principle：** signed action-conditioned transition graph + small intervention library；只有 predictive-reliability certificate、policy margin、argmax agreement都通过，才把WM advice加入policy，否则fallback。
+- **关键 diagnostic：** 结构恢复质量与control benefit不相关；Pendulum shift下 certificate对10/10 seeds abstain，而强行使用planner会伤return。
+- **对 R5：** 这是很强的 **trust/fallback** 点，但仍是二元“admit WM advice vs base controller”。E18必须研究更丰富 recovery-action set 与 action choice law，而不是再做一个gate。
+- **idea-growth lesson：** “learned causal graph看起来对”仍不等于decision utility；最有价值的结果反而是 abstention boundary。
+
+### P108 — Learning Actionable Manipulation Recovery via Counterfactual Failure Synthesis (Dream2Fix) — arXiv 2603.13528
+**Read:** B（abstract/project级）  
+**来源：** https://arxiv.org/abs/2603.13528
+
+- **母问题：** real failure data昂贵/危险，binary diagnosis又不能告诉robot怎么修。
+- **idea：** 从 successful real demos出发，在generative WM中perturb actions产生 paired failure-correction rollouts，再用 task validity / visual coherence / kinematic safety过滤；训练VLM直接输出 failure type + recovery trajectory。
+- **证据范围（abstract）：** >120k paired samples；real robot closed-loop recovery；reported correction accuracy 19.7%→81.3%。
+- **对 R1：** failure/correction pairs是一种非常具体的 high-value data type，进入 I12 data-value library。
+- **对 R5：** “从failure到executable repair”已经是独立方向；E18不能只停在failure detector，而要比较 repair class / failure regime。
+- **资源边界：** 大generative-video synthetic dataset不是我们首轮substrate，但 small compact simulator可以做同构的 counterfactual recovery-data experiment。
+
+### P109 — Where World Models Break: Natural-Input Failure Discovery — arXiv 2608.22421
+**Read:** B（abstract + indexed PDF snippets）  
+**来源：** https://arxiv.org/abs/2608.22421
+
+- **母问题：** average error会淹没少数 catastrophic but environment-valid condition-action combinations；有限query budget下如何找到 reproducible、locally persistent failure basin？
+- **方法 principle：** uncertainty-guided global proposals + typed local valid-input replacements；adaptive search后再独立fresh-seed复现与nearby-valid-edit persistence检验。
+- **对 workbench 的重要边界：** 这类 failure discovery **不是自动有科研意义**。它比 arbitrary probe好，因为输入environment-valid、failure需fresh-seed/local persistence，但如果找出的 failure不改变 planning/action/recovery design，它仍只能当 diagnostic。
+- **对 R5：** 可用作 failure-state generator，帮助 E18 构建 diverse recovery conditions；不能把“发现一个罕见失败输入”本身升级成主线。
+- **对用户taste的规则：** natural-input stress test可以用，但必须继续走到 decision consequence / repair / method choice，避免回到“奇怪位置行为异常”。
