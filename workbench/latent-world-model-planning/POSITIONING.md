@@ -12,7 +12,9 @@
 | PLDM / Reward-Free Offline Data | NeurIPS 2025 Main | 系统比较 offline GCRL 与 latent control；data quality/diversity/layout/stitching 分开 | comparative science 必须让 data regime 改变方法结论 |
 | OGBench | ICLR 2025 | 把 stitching / long horizon / vision / stochasticity 拆成能力维度 | benchmark 要揭示结构性能力差异 |
 | Temporal Straightening | ICML 2026 | local trajectory curvature 是 planner-consumed geometry；straightening 改善 optimization | broad “representation 不好”压成可操纵几何对象 |
+| RC-aux | NeurIPS 2026 | multi-horizon open-loop + finite-budget reachability proxy；trajectory hard negatives识别budget | 轻量 planning-aligned supervision也能成为顶会贡献，但 proxy semantics必须说清 |
 | Offline GCRL Quasimetric | NeurIPS 2025 Main | suboptimal/stochastic behavior data 下恢复 optimal goal distance | behavior future ≠ optimal controllability |
+| CGCIVL | ICML 2025 | cross-trajectory state-goal pairs必须区分 connected / unconnected | trajectory identity ≠ environment connectivity；I06重要邻居 |
 | Multistep Quasimetric | ICLR 2026 | local Bellman optimality 与 global Monte-Carlo stability 的张力/统一 | 从理论 tension 长 objective |
 | TempDATA | ICML 2025 | temporal-distance abstraction 帮助 long-horizon offline MBRL | temporal structure 已是成熟邻域 |
 | JEPA-WMs / What Drives Success | TMLR 2026 | architecture/training/planner design-space study，simulation + real data | 强 recipe 先做透；普通 sweep 不是 novelty |
@@ -95,90 +97,85 @@
 
 ## 4. 当前 research mines
 
-### R-A / I01 — **Trajectory-factorization dependence / route imprinting**（第一优先）
+### R-N / I06 — **Semantic negatives vs geometric regularization**（当前第一优先）
 
-**核心张力：** RC-aux / TD-JEPA / Traj-LeWM 都从 observed trajectories 获得 long-range planning supervision；QRL/quasimetric 明确说 behavior future statistics 与 optimal goal distance 不同；Temporal Straightening 已指出 suboptimal routes 可扭曲 temporal geometry；ICML 2026 又已有 broad behavior-invariant task representation。
+**直接 tension：**
+- TD-JEPA 把 cross-trajectory pair 推到 margin 外，同时明确承认 reachable false negatives；
+- TD-JEPA 的 published ablation 又显示去掉 cross-trajectory hinge 会系统伤 Push-T planning；
+- RC-aux 把 batch/cross-trajectory goal直接标成 reachability 0，但 temporal hard negatives已经负责 budget identifiability；
+- CGCIVL 已证明 cross-trajectory pair不能仅凭 trajectory identity判 connected/unconnected；
+- standard contrastive negative是 marginal/reference sample，不等价于逐pair声明不可达。
 
-所以我们的 delta 绝对不能是：
-- “trajectory offset 不是 shortest path”；
-- “suboptimal data 会 bias temporal distance”；
-- “behavior policy 影响 representation”；
-- “数据质量影响 planning”。
+所以新的问题不是“false negatives exist”，而是：
 
-只有更强的 identification 才可能成立：
+> **plan-aware WM 的 heuristic negatives 同时承担 semantic reachability supervision 与 non-semantic geometry/repulsion regularization 吗？哪一个才是 published planning gain 的 load-bearing作用？**
 
-> **同一个 empirical local transition multiset / same one-step windows，被重新组织成不同但合法的 trajectories（valid cut-and-splice / route mixture），trajectory-supervised WM 是否因此学习不同 planning geometry，并做出不同 MPC decisions？**
+只有完成：
+1. oracle/certified semantic audit；
+2. FULL vs NO-XNEG 的已知作用复现；
+3. oracle-valid / censored / count-matched干预；
+4. calibration vs dispersion/scale机制分解；
+5. fixed-candidate + closed-loop consequence；
+6. oracle-free role-separated correction；
 
-如果是，这揭示的是**planning objective 对 trajectory factorization/routing 的非不变性**，而不是一般 data shift。
+才可能形成独立顶会 story。
 
-**必须有：**
-1. byte/hash-level same local transition/window evidence；
-2. valid trajectory refactorization，不是任意打乱；
-3. environment shortest/reachability oracle（navigation）；
-4. geometry/head → fixed-candidate ranking/regret → closed-loop consequence；
-5. LeWM + local-geometry（TS/CGS）negative controls；
-6. ≥2 trajectory-supervised methods（RC-aux + TD-JEPA）；
-7. minimal dynamics-defined / multi-route / quasimetric-style correction only after evidence；
-8. 至少一个 contact-rich extension，不能停在 toy graph。
+### R-C / I03 — **Bottleneck relocation / regime law**（第二优先）
 
-### R-C / I03 — **Bottleneck relocation / regime law**（第二优先，探索引擎）
+近邻已经分别把 blame 放到 metric、dynamics、action discrimination、search、replanning-time index、horizon和target interface。我们的增量不是排一次方法，而是：
 
-近邻已经各自把 blame 放到 metric、dynamics、counterfactual discrimination、search、horizon、target interface；Hidden Failure Modes 又证明 **replanning/scoring protocol 本身**能制造巨大的 apparent bottleneck。我们的增量不是再排一次方法，而是：
+> goal distance / candidate margin / planner-reachable fidelity / replanning ratio 等少数变量，能否跨任务预测**哪个 layer 成为 binding bottleneck**，并预测哪类 intervention有效？
 
-> goal distance / candidate margin / data support 等少数可观测变量，能否跨任务预测 **哪个 layer 成为 binding bottleneck**，以及哪类 intervention 会有效？
+P57 Hidden Failure Modes 使 H/K/scoring-index 成为必须控制的 protocol layer；P40 又使 planner-reachable fidelity 成为 search/dynamics control。没有 predictive regime variable 就只是 benchmark。
 
-要过 reviewer：
-- oracle ladder 必须真正 isolate layers；
-- 在任何 layer attribution 前先过 protocol gate：terminal@H / prefix@K / running cost、H、K、action block、replanning interval；
-- 不能每任务手调阈值；
-- intervention ranking 必须按 regime 切换；
-- 最终最好导出 practical adaptive rule / training principle；
-- 至少两种 substrate/model family。
+### R-A / I01 — trajectory-factorization / route imprinting
+**已 PARKED。** 代码级审计发现 pinned TD-JEPA / RC-aux 的主要 positive/hard-negative supervision只看短 loaded windows；若强制 full local-window manifest不变而只改更长 episode factorization，当前 loss基本看不到 intervention。因此原 E03/E04 已在运行前 VOID。未来只有真正 full-trajectory objective 或能改变方法实际读取pair distribution的 clean intervention出现时再开。
 
 ### R-B / I02 — optimizer support drift
-**已 PARKED 为独立 idea。** A Control Theory of Predictability 已直接处理 planner-reachable/off-manifold divergence；经典 MOPO/MOReL 与 PLDM 也覆盖 model exploitation / uncertainty。E05 只保留为 I03 判断 search/off-support layer 的 diagnostic。
-
-只有发现 P40 fidelity/uncertainty 都解释不了的 planner-stage-specific failure law，才允许重开。
+**已 PARKED。** A Control Theory of Predictability 已直接 formalize planner-reachable/off-manifold divergence；再加经典 offline-MBRL model exploitation，generic support-drift story compression risk过高。E05仅保留给 I03 conditional diagnostic。
 
 ## 5. Idea 状态
 
 | ID | 状态 | 角色 | 当前最大 compression |
 |---|---|---|---|
-| I01 trajectory-factorization / route imprinting | **SEED / first gate** | 主 mining lane | “MC temporal distance 本来就 behavior-dependent” |
+| I06 semantic negatives vs geometric regularization | **SEED / first gate** | E08→E09→E10 主 mining lane | “false negatives in contrastive learning is old” |
 | I03 bottleneck regime switch | **SEED / second** | 统一大量实验的探索引擎 | “只是 component benchmark” |
 | I04 random→elite alignment gap | SEED / subordinate | E02 measurement calibration | DA-LeWM + AD-WM elite diagnostics |
-| I02 optimizer support drift | **PARKED** | I03 diagnostic only | P40 + offline MBRL exact conceptual overlap |
+| I01 trajectory-factorization | **PARKED** | future full-trajectory objective reserve | pinned methods短window下 treatment不可识别 |
+| I02 optimizer support drift | **PARKED** | I03 diagnostic only | P40 + offline MBRL overlap |
 | I05 history/POMDP | PARKED | future reserve | 易退化为 context-length sweep |
 
 ## 6. 反向 reviewer test
 
-### I01
-**“你们不就是重新发现 temporal distance 受 behavior policy 影响？”**  
-回答只有在数据支持时成立：不是。我们保持 local transition evidence / one-step windows不变，只改变合法 trajectory factorization；然后观察现有 plan-aware JEPA objective 的 geometry 与真实 MPC decision 是否变化，并用 dynamics-defined correction恢复 invariance。
+### I06
+**“False negatives in contrastive learning 不是老问题吗？”**  
+是老问题，所以不能以此为贡献。I06必须证明这里的 negative 被赋予**absolute planning semantics**（distance margin / reachability 0-label），并且 semantic correctness 与 representation regularization 对真实 MPC 有可分离的作用。
 
-**“改 trajectory 不就是造假数据？”**  
-E03 用真实 transition multiset 在共享 junction做 valid cut/splice；每个 adjacent transition仍是原数据真实 transition。E04 再用自然 shortest/detour/route-mixture behavior policy 复验。
+**“TD-JEPA 自己已经承认 false negatives。”**  
+所以“存在”不是贡献。新信息必须是：它们在真实 sampler中有多频繁、是否 load-bearing、published gain来自哪种作用，以及 role separation 能否保持/提升 planning。
 
-**“navigation toy？”**  
-navigation 只用于 exact identification/oracle；主张升级需要 contact-rich continuous task 的 consequence，且不伪称 shortest oracle。
+**“oracle filtering不现实。”**  
+E09 oracle variants只是 mechanism upper bound；E10若做方法，必须不用 privileged test oracle。
 
-**“这不是 offline GCRL/quasimetric 已解决？”**  
-GCRL 建立 behavior-vs-optimal distance理论；我们必须展示它如何进入 **visual latent-WM planning supervision、CEM candidate ordering 与 closed-loop control**，并比较 local/optimal-structure correction。
+**“CGCIVL 已经区分 connected/unconnected cross-trajectory pairs。”**  
+它解决 offline value learning 的 cross-trajectory sampling。我们的 delta 必须落在 visual latent-WM 的 **semantic distance/reachability training → candidate ranking → MPC**，并解释 negatives的双重角色。
 
 ### I03
-**“不就是方法 benchmark？”**  
-没有 cross-task predictive regime variable 就不升级。必须能预先预测 intervention ranking，而不是事后解释表格。
+**“不就是 method benchmark？”**  
+没有 cross-task predictive regime variable 就不升级。必须预先预测 intervention ranking，不事后解释表格。
 
-**“protocol 差异？”**  
-native reproduction 与 common audit protocol 分表；相同 observation/action/time/goal/candidate manifest 才做 layer inference。
+**“protocol 差异造成 apparent switch？”**  
+H/K、scoring index、goal offset、action block、replanning、candidate budget进入 common manifest；native result与 common-audit result分表。
 
 ## 7. Stop rules
 
-- E03 只改变 head output、decision null → I01 不扩 seed；
-- valid splice null、只有 arbitrary split/corruption有结果 → 不包装；
-- I01 effect 由 local window/support mismatch解释 → VOID，不归因；
-- E04 只有 one toy、contact-rich无 counterpart → scope不足；
-- I03 只能 per-task threshold → park；
-- E05 由 P40 planner-reachable fidelity/ensemble uncertainty完全解释 → 保持 diagnostic。
+- E08 contamination极低/不稳定 → I06 park，不造难例；
+- E08 oracle coverage太低 → 只做 certified bounds，不能伪造精确 false-negative rate；
+- E09 FULL vs NO-XNEG 不能复制已知 component direction → 先修复现，不做新解释；
+- E09 semantic calibration变但 decision null → I06不升级；
+- E09所有差异只来自 negative count / gradient scale，且 count-match后消失 → 把机制收敛到 optimization，不夸大 semantic failure；
+- E10需要 privileged oracle才有效 → 只能当 diagnostic，不叫方法；
+- I03只能 per-task threshold → park；
+- E05被 P40 fidelity/PLDM uncertainty完全解释 → 保持 diagnostic。
 
-这些不是自动关闭 territory；只是防止把 GPU 用在已被近邻压缩或没有 decision consequence 的故事上。
+这些 stop rules只停止具体 lead，不桌面关闭整个 territory。

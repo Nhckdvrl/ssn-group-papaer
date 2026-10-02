@@ -1,58 +1,82 @@
 # Territory 卡：紧凑潜在世界模型与规划
 
-日期：2026-10-02。通道：our-taste。状态：**PROPOSED / literature-hardened / execution-ready，不替换现有 ACTIVE 线，不是 candidate。**
+日期：2026-10-02。通道：our-taste。状态：**PROPOSED / literature+code-hardened / execution-ready；不是 candidate。**
 
 工作台：[latent-world-model-planning](../../workbench/latent-world-model-planning/README.md)；资源：[RESOURCES](../../RESOURCES.md)。  
-领域 authority：[PAPER_LINEAGE](../../workbench/latent-world-model-planning/PAPER_LINEAGE.md) · [PROBLEM_METHOD_MAP](../../workbench/latent-world-model-planning/PROBLEM_METHOD_MAP.md) · [POSITIONING](../../workbench/latent-world-model-planning/POSITIONING.md)。
+领域 authority：[PAPER_LINEAGE](../../workbench/latent-world-model-planning/PAPER_LINEAGE.md) · [LITERATURE_LEDGER](../../workbench/latent-world-model-planning/LITERATURE_LEDGER.md) · [PROBLEM_METHOD_MAP](../../workbench/latent-world-model-planning/PROBLEM_METHOD_MAP.md) · [POSITIONING](../../workbench/latent-world-model-planning/POSITIONING.md)。
 
-## 1. 为什么保留这个 territory
+## 1. 为什么保留
 
-不是因为“没人做”——恰恰是一个很活跃、已经有 ICML/NeurIPS/ICLR precedent 的谱系。保留原因是：
+这是一个**活跃且已有顶会 precedent**的 territory，不是空白。保留原因：
 
-1. 母问题足够大：什么 representation / dynamics / planning interface 才真正支持 decision，不是小 benchmark bug；
-2. 直接近邻给出**不同甚至竞争的解释**：geometry、reachability、recursive propagation、proposal/search、temporal abstraction、data structure；
-3. 小型开源模型、offline data、可重置 simulator 和 candidate-level planner 内部使强 identification 成为可能；
-4. 单个训练/评测大多可独立单卡，正适配“卡多、弱互联/弱 I/O”的资源结构；
-5. 一套共享 harness 可连续换研究问题，不需要每个 lead 从头搭系统。
+1. 母问题够大：world model 为 decision 到底需要什么 representation / dynamics / planning semantics？
+2. 2026 直接近邻给出不同承重点：geometry、reachability、recursive dynamics、counterfactual action effect、proposal/search、temporal interface、data semantics；
+3. compact models + offline data + resettable simulator + candidate-level access，使受控 identification 成本远低于大型视频 WM；
+4. 多独立 GPU 正适合 paired variants、train seeds、candidate audit、oracle replacement；
+5. literature/code audit已经能淘汰错误实验，而不是见空白就跑。
 
-## 2. 第二轮 hardening 后的红区
+## 2. 红区
 
-以下不能再当 headline：prediction≠planning；latent L2≠progress；finite-horizon reachability；generic multi-step；inverse dynamics/action consistency；generic learned proposal/subgoal/hierarchy；long-horizon failure；generic OOD robustness；decision-centric evaluation。
+不能再当 headline：
+prediction≠planning；L2≠progress；representation有信息但objective不会用；generic reachability/temporal distance；generic multi-step；inverse/physical grounding；action discrimination；path-aware cost；CEM OOD/model exploitation；proposal/subgoal/hierarchy；long-horizon；closed-loop evaluation。
 
-它们全部作为 baseline/diagnostic。claim ownership 见 POSITIONING。
+## 3. 当前第一矿层：I06 semantic negatives vs geometric regularization
 
-## 3. 当前矿层
+TD-JEPA 把 cross-trajectory/batch goals作为 temporal-distance hinge negatives，**原文明确承认 reachable false negatives**，但 component ablation又显示去掉 hinge伤 planning。RC-aux也用 batch-permuted goals作 reachability 0-label，而同轨迹 temporal hard negatives已经负责 budget identifiability。CGCIVL (ICML 2025) 则明确指出 trajectory identity不能直接判 connected/unconnected。
 
-**I01 / R-A（第一优先）：behavior-policy geometry contamination。**  
-直接来源于 trajectory-supervised planning objective（RC-aux/TD-JEPA）与 offline GCRL quasimetric 对 behavior-statistics vs optimal-distance 的张力。要求在 environment/local transitions/one-step samples 被控制时只改变 behavior path/episode organization，并连接 learned geometry → candidate ordering → environment decision。不是普通 data ablation。
+因此真正的问题是：
 
-**I02 / R-B：optimizer-induced support drift。**  
-只有 `CEM iteration → support drift → model optimism → false elite → real regret` 的链在强 controls 后成立，才超过经典 offline model exploitation。
+> **plan-aware WM 的 heuristic cross-trajectory negatives 到底在教正确的 reachability/distance semantics，还是主要提供 global separation / scale / dispersion regularization？**
 
-**I03 / R-C：bottleneck relocation。**  
-只有 goal distance / candidate margin / support 等少数变量能跨任务预测 representation/dynamics/proposal/horizon ceiling，并预测 intervention ranking，才超过普通 method benchmark。
+执行：
+- E08：零训练 semantic audit；
+- E09：FULL / no-negative / oracle-valid / count-matched / repulsion decomposition；
+- E10：只有机制成立才做 oracle-free role separation。
 
-I04 是 DA-LeWM alignment replication；I05 history/POMDP 已 PARK。
+这不是 generic false-negative paper；必须有 real planning consequence 和跨objective证据。
 
-## 4. 现成执行程序
+## 4. 第二矿层：I03 bottleneck regime law
+
+用 oracle ladder拆 metric/representation、dynamics、action discrimination、search、H/K scoring interface、horizon/target。
+
+只有 goal distance / candidate margin / planner-reachable fidelity / H-K ratio 等少数变量能**跨task预测 bottleneck与 intervention ranking**，才超过普通 benchmark。
+
+## 5. 已降级
+
+- I01 trajectory-factorization：PARKED。代码审计发现 pinned TD-JEPA/RC-aux 主要 temporal loss只看短 loaded windows；保持这些 windows不变只改长episode factorization，treatment结构上不可见。E03/E04 pre-run VOID。
+- I02 support drift：PARKED；P40 + offline MBRL 已强占 broad story。
+- I05 POMDP：PARKED。
+- I04：E02 calibration only。
+
+## 6. 执行程序
 
 ```text
-E00 resource/native smoke
-→ E01 baseline parity + logger + replay/oracle
-→ E02 decision-audit calibration
-   ├─ E03→E04 I01
-   ├─ E05     I02
-   └─ E06→E07 I03
+E00 smoke
+  ↓
+dataset readable ─────→ E08 semantic-negative audit
+  ↓
+E01 baseline + logger + replay
+  ↓
+E02 decision calibration
+  ├─ E09 → conditional E10    I06
+  └─ E06 → conditional E07    I03
+
+E03/E04 VOID
+E05 conditional diagnostic only
 ```
 
-实验卡、阳性对照、MIE、混杂和 stop/go 条件均已登记：[EXPERIMENT_PROGRAM](../../workbench/latent-world-model-planning/EXPERIMENT_PROGRAM.md)。
+详情见 [EXPERIMENT_PROGRAM](../../workbench/latent-world-model-planning/EXPERIMENT_PROGRAM.md) 与 [LOCAL_AGENT_PROMPT](../../workbench/latent-world-model-planning/LOCAL_AGENT_PROMPT.md)。
 
-## 5. 顶会尺度标准
+## 7. 顶会尺度标准
 
-可升级的结果必须至少形成：新 distinction / 新 failure law or regime / 由机制推出的 minimal intervention / validated identification protocol 之一，并最终有真实 planning consequence。只换 benchmark、更多 seed、普通 correlation、一个小 loss 涨点都不够。
+可升级结果至少形成一种：
+- new distinction 且对decision load-bearing；
+- new failure law/regime；
+- mechanism-derived minimal intervention；
+- validated identification protocol that changes method design。
 
-本 workbench 的目标会议仍是 ICLR / ICML / NeurIPS；视觉贡献足够时 CVPR。具体 manuscript 主旨要由本地实验长出来，不提前锁题。
+更多seed、普通correlation、单个toy、一个小loss涨点都不够。
 
-## 6. 容量
+## 8. 容量
 
-保持 PROPOSED。用户给本地 agent 分配本 workbench 时，agent 按 [LOCAL_AGENT_PROMPT](../../workbench/latent-world-model-planning/LOCAL_AGENT_PROMPT.md) 自主执行；是否改为 ACTIVE 仍按全局规则由人决定。
+保持 PROPOSED；不替换现有 ACTIVE 线。用户把本 workbench 分配给本地 agent 后，可按卡片自主推进；状态变化仍由人决定。

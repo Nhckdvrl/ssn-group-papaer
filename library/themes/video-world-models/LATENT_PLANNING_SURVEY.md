@@ -2,11 +2,12 @@
 
 调查日期：2026-10-02。用途：选择一个能持续建设和实验的 workbench，不是宣布论文 idea、新现象或 SOTA。资源条件见 [RESOURCES](../../../RESOURCES.md)；登记对象见 [workbench](../../../workbench/latent-world-model-planning/README.md)。
 
-> **2026-10-02 second-pass hardening：** 第一轮调查之后继续深挖了 decision-metric alignment、offline GCRL/quasimetric、recursive-error propagation、planner/search、hierarchy、planning limits 与 9 月底直接近邻。为避免本主题页重复膨胀，最新、细粒度的论文生长链与 claim ownership 迁移到：
-> - [PAPER_LINEAGE](../../../workbench/latent-world-model-planning/PAPER_LINEAGE.md)：约 40 个直接/邻接工作，重点是 mother question、idea leap、关键实验、与 related work 的距离；
+> **2026-10-02 multi-pass hardening：** 第一轮调查之后继续深挖 decision-metric alignment、offline GCRL/quasimetric、recursive-error propagation、planner/search、hierarchy、planning limits、H/K scoring interface、counterfactual interventions 与 cross-trajectory negative semantics；并进一步读了官方实现。代码审计已经实际作废一条原计划（E03/E04），并产生当前第一矿层 I06。为避免本主题页重复膨胀，最新 authority 迁移到：
+> - [PAPER_LINEAGE](../../../workbench/latent-world-model-planning/PAPER_LINEAGE.md)：P01–P64 直接/邻接工作，重点是 mother question、idea leap、关键实验、与 related work 的距离；
+> - [LITERATURE_LEDGER](../../../workbench/latent-world-model-planning/LITERATURE_LEDGER.md)：阅读深度、venue、代码 readiness 与回原文门槛；
 > - [PROBLEM_METHOD_MAP](../../../workbench/latent-world-model-planning/PROBLEM_METHOD_MAP.md)：七层 problem×method map 与 oracle ladder；
 > - [POSITIONING](../../../workbench/latent-world-model-planning/POSITIONING.md)：2026 collision/compression map 与 surviving regions；
-> - [EXPERIMENT_PROGRAM](../../../workbench/latent-world-model-planning/EXPERIMENT_PROGRAM.md)：把文献 tension 直接转成 E00–E07。
+> - [EXPERIMENT_PROGRAM](../../../workbench/latent-world-model-planning/EXPERIMENT_PROGRAM.md)：把文献/code tension 转成 E00–E10；当前 first gate 是 E08 semantic-negative audit。
 >
 > 因此本文件后半的 P01–P16 卡视为**第一轮来源记录**，不是当前 direct-neighbor 全集；任何新颖性判断以以上 hardening 文件为准。
 
@@ -211,4 +212,4 @@ DINO-WM → PLDM／LeWM → SMWM。
 
 ## 7. 尚未完成，而不是默认为完成
 
-**文献 hardening 已足够启动实验，但本地证据仍为零。** 尚未完成的是：强基线数值复现、数据／权重实际下载与哈希、完整版本兼容矩阵、本地单任务显存/wall-clock、E02 decision-audit 校准，以及 E03–E07 科学 pilot。新增 direct-neighbor 的完整卡与红区已迁移到 PAPER_LINEAGE/POSITIONING；执行中仍须滚动扫描最新 arXiv。
+**文献/code hardening 已足够启动实验，但本地证据仍为零。** 尚未完成的是：强基线数值复现、数据／权重实际下载与哈希、本地单任务显存/wall-clock、E08 negative-semantic audit、E02 decision-audit，以及后续 E09/E10 或 E06/E07。E03/E04 在运行前已因实现结构使 treatment 不可识别而 VOID；这不是 null result。最新 direct-neighbor / claim ownership 以 PAPER_LINEAGE / LEDGER / POSITIONING 为准；执行中仍须滚动扫描。

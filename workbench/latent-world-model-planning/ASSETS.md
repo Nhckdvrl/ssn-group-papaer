@@ -88,6 +88,40 @@ LeWMRO 明确区分 planning horizon (H) 与 executed prefix (K)，并提供 ter
 
 其 repo 固定 commit：`faff2ea4768767739b9cca55855dc5aacf13578f`。代码与 tests 可用，但 upstream datasets/checkpoints 未随 repo 发布；首次执行仍需按 provenance 获取 LeWM asset。
 
+## 3.7 I06 semantic-negative code audit（跑前事实）
+
+### TD-JEPA pinned commit `b4c17ca...`
+
+已核对：
+- canonical config: history size 3（LeWM base）+ `num_preds=5`，即训练时加载短 clip；
+- temporal-distance positives在 loaded sequence内采 i<j，target是 observed step gap；
+- cross negative由 **batch row permutation**构造，loss本身不读取 environment connectivity，也不以 original episode ID过滤；
+- canonical negative margin由实际 window length/config决定；
+- official `td_jepa_hinge_off` 只把 cross-trajectory negative weight设为0，其他主要组件保留；
+- paper明确写这些是 heuristic negatives，允许 trajectories share reachable states造成 false negatives；
+- official repo内已存 Push-T component ablation summary：去掉 cross-trajectory hinge 对多个planner settings有负面影响。
+
+这正是 E08/E09 的 tension：**semantic validity 未被 sampler验证，但 negative term又有实证utility。**
+
+### RC-aux pinned commit `cbdf3786...`
+
+已核对：
+- base history size 3；
+- `rcaux.yaml` 将 `num_preds=5`、reachability `max_horizon=5`；
+- same-window positives/temporal hard negatives由 observed offset + budget产生；
+- cross negatives通过 batch维 random permutation goal产生，BCE target为0；不查询 environment reachability；
+- paper/appendix明确说 trajectory offset是 empirical proxy，不是真 shortest-path reachability；
+- temporal hard negatives的理论作用是让 budget h identifiable；因此 cross negatives的额外作用可以被单独审计。
+
+### stable-worldmodel Dataset
+
+当前 source 显示 dataset 以 `clip_indices=(episode,start)` 构造 sliding clips，再由 DataLoader shuffle clip rows。  
+因此 E08 必须从 dataset/clip provenance恢复 source/goal 的 original episode/step，而不能把 “different batch row” 自动叫 “different trajectory”。
+
+### TwoRoom audit feasibility
+
+公开 TwoRoom dataset具有 episode/step与 agent position相关字段；environment也暴露 agent state。E08 优先用这些 privileged metadata做**measurement-only oracle/certified bounds**，不进入pixels-only model输入。
+
 ## 4. 资源判断：作者测量与本地测量分开
 
 | 项目 | 已知事实 | 尚不能声称 |

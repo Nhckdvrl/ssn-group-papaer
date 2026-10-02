@@ -1,207 +1,241 @@
 # Local Agent Prompt — latent-world-model-planning
 
-把下面整段作为本地执行 agent 的启动提示。**它不是让你重新找题；领域 hardening 已做，先读现有地图再执行。**
+把下面整段作为执行机 agent 的启动提示。**不要重新找题；先继承已经做完的 literature/code hardening。**
 
 ---
 
-你正在 `Nhckdvrl/ssn-group-papaer` 的 `workbench/latent-world-model-planning/` 工作。
+你正在 Nhckdvrl/ssn-group-papaer 的 workbench/latent-world-model-planning/ 工作。
 
-## 你的目标
+## 最终目标
 
-把这个 workbench 从“文献与设计已硬化、无本地实验”的状态推进到**可复现强基线 + 可复用 measurement harness + 第一轮决定性科研 pilot**。最终目标始终是 ICLR / ICML / NeurIPS / CVPR 级论文，而不是工程 demo、benchmark 刷分或 RC-aux 小改。
+不是“跑 world model demo”，而是从 compact latent-WM planning 中发展 **ICLR / ICML / NeurIPS / CVPR级**的新认识/方法。我们的资源优势是很多独立GPU，不是多节点大训练；把它用于受控pilot、多seed、多环境、oracle audit和快速idea迭代。
 
-### 绝对不要做
-- 不从头重新 brainstorm 一堆题；
-- 不把“prediction ≠ planning”“latent L2 不好”“long horizon 难”“CEM proposal 差”重新包装成 novelty；
-- 不一次下载/装/跑十几个方法；
-- 不因为 GPU 多就铺全 Cartesian product；
-- 不自行把 workbench 改成 ACTIVE / CLOSED / candidate；
-- 不以“有人做过”桌面判死；
-- 不隐藏失败 seed、protocol mismatch、checkpoint load warning；
-- 不把 trajectory temporal gap / cross-trajectory negative 叫 ground-truth reachability；
-- 不把 internal consistency/uncertainty 当 environment executability oracle。
+当前科学结果 = 0。不要把SEED写成结论。
 
-## 第 0 步：必须完整读这些文件
+## 必读
 
-按顺序：
-1. 根目录 `AGENTS.md`
-2. 根目录 `RESOURCES.md`
-3. `workbench/README.md`（确认全局 ACTIVE 容量）
-4. 本目录 `README.md`
-5. `PAPER_LINEAGE.md`
-6. `LITERATURE_LEDGER.md`
-7. `PROBLEM_METHOD_MAP.md`
-8. `POSITIONING.md`
-9. `EXPERIMENT_PROGRAM.md`
-10. `ASSETS.md`
-11. `HANDOFF.md`
-12. `CLAIMS.md` / `PAIN_LOG.md`
-13. `ideas/I01_behavior_policy_geometry.md`
-14. `ideas/I02_optimizer_support_drift.md`
-15. `ideas/I03_bottleneck_regime_switch.md`
-16. E00–E07 experiment cards
+按顺序完整读：
+1. root AGENTS.md
+2. root RESOURCES.md
+3. workbench/README.md registry
+4. 本目录 README.md
+5. PAPER_LINEAGE.md
+6. LITERATURE_LEDGER.md
+7. PROBLEM_METHOD_MAP.md
+8. POSITIONING.md
+9. EXPERIMENT_PROGRAM.md
+10. ASSETS.md
+11. HANDOFF.md
+12. CLAIMS.md / PAIN_LOG.md
+13. ideas/I06_semantic_negatives.md
+14. ideas/I03_bottleneck_regime_switch.md
+15. I01/I02 parked cards，理解为什么被降级
+16. E00–E10 experiment cards
 
-然后运行：
+然后：
 
 ```bash
 python3 tools/process/check.py
 ```
 
-有 ERROR 先修流程/卡片；WARN 要理解，不要机械改。
+ERROR先修；WARN理解后处理。不要机械为了清0 warning改科学内容。
 
-## 第 1 步：先盘点当前机器资产，禁止重复建设
+## 绝对不要做
 
-检查当前节点已有：
-- repo clone / commit；
-- conda/uv/python env；
-- datasets；
-- checkpoints；
-- simulator dependencies；
-- local disk 空间；
-- GPU 型号、显存；
-- CPU/RAM；
-- 已有旧实验/日志。
+- 不从头brainstorm十个idea；
+- 不把 prediction≠planning、L2不好、long horizon难、CEM OOD、false negatives exist 当novelty；
+- 不删 VOID E03/E04：它们记录了一个被代码审计提前否定的设计；
+- 不一次安装所有2026方法；
+- 不铺全Cartesian product；
+- 不把 cross-trajectory negative称 ground-truth unreachable；
+- 不把 oracle variant当deployable method；
+- 不筛seed；
+- 不擅自改workbench状态；
+- 不等待我逐job批准：experiment card决策表允许的下一步自主执行。
 
-把真实状态写回 `ASSETS.md`，状态必须区分：
-`public entry exists → downloaded+hash → loadable → smoke passed → numeric reproduction`。
+## Step 1：资产盘点
 
-**不要为了统一依赖把所有 baseline 强装到一个环境。** LeWM / stable-worldmodel / OGBench 等允许各自 native env，通过 manifest/result schema 比较。
+先看机器已有repo/env/data/checkpoint，禁止重复下载。
 
-## 第 2 步：E00，只解决“能不能可信地跑”
+写回 ASSETS：
+public entry → downloaded/hash → loadable → smoke passed → numeric reproduction。
 
-执行 `experiments/E00_native_baseline_and_resource_preflight.md`：
-- 单 GPU；
-- 低环境并发；
-- 官方小任务优先；
-- 测 data wait / train step / planner call / env-render / full episode / peak VRAM；
-- 验证 checkpoint、action units、goal、success checker；
-- 不直接跑默认 100 epochs；
-- 不把 smoke 结果当 scientific claim。
+不同native repo可以不同venv。不要为了统一framework把依赖搞坏。
 
-E00 完成后，把**实际**单训/单 episode 成本写回 ASSETS/experiment card，之后所有算力预算基于实测。
+## Step 2：E00 resource smoke
 
-## 第 3 步：E01，把一次 baseline 变成之后所有研究共用的 substrate
+单GPU：
+- dataset/checkpoint
+- env/action/goal/success checker
+- planning闭环
+- train step
+- planner call
+- render/env time
+- peak VRAM
+- data wait
 
-执行 `E01_baseline_parity_and_candidate_logging.md`：
-- 优先 LeWM native protocol；
-- TwoRoom 做闭环；
-- 再至少一个 contact-rich task（PushT/Cube，按本机资产决定）；
-- 官方 checkpoint 与从头训练分开；
-- logger 必须旁路，不改变 planner；
-- 固定 model/data/config/checkpoint hash。
+不直接跑100 epochs。
 
-实现并保存 `EXPERIMENT_PROGRAM.md` S1–S4：
-- candidate trace；
-- dataset/sample manifest；
-- oracle replay harness；
-- common result table。
+## Step 3：dataset能读就优先 E08（不等训练）
 
-**这是最重要的工程资产。** 后续 I01/I02/I03 都必须复用，不为每个 idea 重建 harness。
+当前第一科学pilot：**Semantic audit of heuristic negatives**。
 
-## 第 4 步：E02，先复制一个已知 decision-alignment measurement，校准工具
+### 为什么
+TD-JEPA：
+- paper承认 cross-trajectory hinge会含 reachable false negatives；
+- published ablation又显示 removing hinge伤 planning；
+- code实际对batch rows做random permutation，loss不查environment connectivity。
 
-执行 `E02_decision_audit_replication.md`：
-- random / mid-CEM / elite candidate；
-- Plan-Real / CEM-stage rank；
-- real endpoint latent cost vs predicted endpoint latent cost；
-- candidate margin；
-- fixed-pool regret；
-- bootstrap 单位是 start-goal pair，不是 candidate。
+RC-aux：
+- cross batch goals得到reachability 0-label；
+- code也只是batch permutation；
+- temporal hard negatives才负责budget identifiability。
 
-如果已知 effect 测不到，不许跳过直接宣布新 phenomenon；先核对 protocol。
+所以问的不是“有没有false negatives”，而是：
+> **这些negative的收益来自semantic correctness，还是global repulsion/scale/dispersion regularization？**
 
-## 第 5 步：主探索优先 I01，不要先发明方法
+### E08
+instrument pinned sampler，不改它：
+- TD-JEPA
+- RC-aux
 
-### I01：trajectory-factorization dependence / route imprinting
-执行顺序：
+TwoRoom优先，因为可拿 episode/step/position + topology做oracle/certified bounds。
 
-```text
-E03 valid cut-and-splice refactorization
-        ↓ 只有 target→geometry→decision 过 gate
-E04 natural shortest/detour/route-mixture
-        ↓ 只有建立真实 decision consequence
-minimal invariance correction / new C## / confirmatory multi-seed
-```
+保存 pair provenance：
+source episode/step, goal episode/step, negative type, budget/margin, oracle status。
 
-E03 不是任意改 metadata。必须在共享 junction 处合法 cut/splice，使 **raw transition multiset + one-step/history window manifest hash 完全相同**，只改变 long-range trajectory factorization。做不到 hash-level invariance 就不能作因果解释。
+如果 sampler semantic contamination极低 → I06 PARK。  
+如果稳定非微小 → E09。
 
-如果只看到 reachability/TD head 输出变、planner decision 不变：**不包装。**
+## Step 4：E01 shared instrumentation
 
-### I02 已 PARKED
-A Control Theory of Predictability 已直接把 planner-reachable/off-manifold divergence 与 plan-cost discrepancy形式化，generic support-drift 与经典 offline MBRL 过于重叠。E05 只有 I03 需要定位 unsupported-search layer 时才跑；不要在另一节点自动扩成独立 story。
+LeWM native baseline + TwoRoom + contact-rich task。
+candidate logger必须旁路。
+restore/replay harness。
+H/K/scoring-index全部进manifest。
 
-### I03 在 E02 后作为“统一矿图”推进
-E06 oracle ladder → E07 interaction。
-这是第二优先 mining lane。不要做方法大排名。目标是找**可预测 bottleneck 的 regime variable**；如果只能每任务单独解释，就 park。
+## Step 5：E02 known decision metric
 
-## 第 6 步：如何使用很多 GPU
+复制 random/mid/elite alignment、candidate margin、fixed-pool regret。
+加 P57 time-index sanity：terminal@H vs prefix@K/running when H>K。
 
-你可以并行：
-- 不同 train seeds；
-- eval groups；
-- planner budget/horizon；
-- fixed candidate audits；
-- paired dataset variants；
-- confirmatory runs。
+测不到known effect时先修harness。
 
-但先：
-1. dataset stage 到 node-local disk；
-2. 测 1 job data_wait；
-3. 再少量并发；
-4. 并发增大导致 GPU idle / data_wait 上升就停。
+## Step 6：E09 — mechanism decomposition
 
-跨节点不做梯度同步。不同地点默认不搬内部数据/私有 checkpoint。只交换代码、小 config、metrics、manifest。
+E08过gate后先 TD-JEPA：
+- FULL
+- NO-XNEG
+- ORACLE-VALID
+- ORACLE-CENSOR
+- COUNT-MATCHED VALID
+- conditional REPULSION-CONTROL
 
-## 第 7 步：方法什么时候允许出现
+先1 seed。不要开始就6 variants×5 seeds。
 
-从一开始允许方法，但它必须来自真实证据：
-- P## 痛点；
-- E## anomaly；
-- strong baseline unexpected success；
-- near-neighbor tension。
+读数：
+- semantic calibration
+- latent/head scale
+- effective rank / dispersion
+- gradient norm
+- candidate rank/regret
+- closed-loop success
 
-例如 I01 如果成立，优先比较：
-1. local-transition / Bellman / quasimetric consistency；
-2. temporal-gap label 从 point estimate 改 interval/lower bound；
-3. multi-route aggregation；
-4. graph-local/connectivity objective。
+关键解释规则：
+- oracle filtering变差 ≠ false negative“有益”；先排 count/gradient/dispersion；
+- head calibration好但decision null ≠ paper；
+- FULL/no-negative方向复制不出来 → 先复现。
 
-**不是先选一个好看的 loss 再找解释。**
+E09支持role conflation才E10。
 
-## 第 8 步：每次运行后的写回
+## Step 7：E10 — oracle-free role separation
 
-每次实验：
-1. 跑前 experiment card 已存在，若改 setting 先写 amendment；
-2. raw 大文件留节点，只把 manifest/path/hash 写仓库；
-3. 更新 experiment card Result；
-4. 有真实现象才在 `PAIN_LOG.md` 建 P##；
-5. 有证据才在 `CLAIMS.md` 建/升级 C##；
-6. 更新 `logs/YYYY-MM-DD.md`；
-7. 小步 commit + push。
+根据E09机制写 amendment 后再跑。
 
-主张升级按 `workbench/EXECUTION.md`；L2 前混杂审计，L3 前独立校对。
+原则：
+- cross-trajectory默认unknown，而不是直接unreachable；
+- semantic channel用真正有依据的local/temporal constraints；
+- global separation由独立geometry regularizer负责；
+- 不用privileged test oracle；
+- 真实planning必须不降或改善。
 
-## 第 9 步：什么时候回来请求人审
+如果oracle upper bound很好但无oracle方法做不出来，诚实停在diagnosis；不要硬造模块。
 
-不要每个实验来问用户。满足任一才汇报决策：
-- E04 建立或否定完整 behavior→geometry→decision 链；
-- E05 若被 I03 条件触发并发现 P40/uncertainty 不能解释的新 planner-stage mechanism；
-- E06/E07 找到跨任务可预测 regime；
-- 首个科学 C## 到 L2；
-- 需要改变 ACTIVE 状态 / 抢占另一条线资源；
-- 两个 lead 连续被平凡 baseline/直接近邻吸收，需要重新审 territory。
+## Step 8：I03 / E06并行作为第二矿线
 
-汇报格式：
-```text
-1. 已跑什么（E##，commit/hash）
-2. 核心数字 + CI / train-seed variance
-3. 哪个 C## 升/降级
-4. 已排除哪些平凡解释
-5. 最近近邻对 novelty 的压力有没有变化
-6. 下一组最便宜且决定性的实验
-7. 只列真正需要人决定的事
-```
+E01/E02后可以小规模跑：
+- navigation + contact-rich
+- goal distance bins
+- candidate budgets
 
-## 研究原则
+oracle layers：
+representation/metric、dynamics、action discrimination、proposal/search、time-index/replanning、horizon/target。
 
-本 workbench 的目标不是“跑完 E00–E07”，而是让强 baseline、oracle decomposition、paired data interventions 和大量独立实验共同逼出一个**顶会尺度的新认识**。任何 experiment 如果不会改变下一步科学判断，就不要因为卡空闲而跑。
+显式控制：
+H、K、frameskip、action block、terminal/prefix/running cost。
+
+只有跨task observable variable能预测bottleneck/intervention ranking，才E07。
+
+E05不自动跑：I02已PARKED。
+
+## Step 9：多GPU
+
+卡空闲时优先分派：
+- independent eval manifests
+- E08 audit seeds/batches
+- E09 variants
+- train seeds（lead通过后）
+- goal-distance bins
+- candidate audits
+- contact-rich confirm
+
+但先local-stage dataset，1→2→4 jobs测I/O退化。不要跨节点DDP。
+
+## Step 10：方法/idea如何继续长
+
+新方法只能来自：
+- E## anomaly
+- P## real pain
+- strong baseline surprising success
+- direct-neighbor tension
+
+如果I06成立，优先最小解释：
+1. unknown/censor semantic labels
+2. certified/local bounds
+3. count-matched sampler
+4. separate uniformity/dispersion
+5. 最后才learned connectivity
+
+每个新intervention建新experiment card，不事后改读数。
+
+## Step 11：写回
+
+每run：
+- experiment card result
+- raw大文件留节点，git放hash/path/summary
+- PAIN_LOG only real P##
+- CLAIMS only evidence-backed C##
+- logs/YYYY-MM-DD.md
+- commit/push
+
+L2前混杂审计；L3前独立校对。
+
+## 什么时候需要人审
+
+- E09说明negative真正作用是什么；
+- E10形成跨method/task稳定方法；
+- E06/E07形成regime law；
+- science C##到L2；
+- 需要改变ACTIVE资源；
+- 两个lead连续被强近邻或简单baseline吸收。
+
+汇报：
+1. E## / commit/hash
+2. 核心数字 + CI/train-seed variance
+3. C##变化
+4. 排除的解释
+5. 最新neighbor pressure
+6. 下一组最便宜决定性实验
+7. 真正需要人决定的事
+
+**不要为了“卡很多”跑不会改变科学判断的实验。**
