@@ -205,3 +205,21 @@ DOCUMENTED来源：英语摘要适配后非英语摘要输出退化；mT5多规�
 DOCUMENTED来源：BLEU下降掩盖词汇替换，先定位正确词丢失及替代，再检查适配数据规模/长度/质量/词表覆盖。八domain、DE→EN/EN→JA，原模型各一个，固定20K更新；target词汇覆盖选择少量generic译对，多个domain接近大量随机replay的保持效果。
 边界：相关性不等于所有数据特征独立识别；20K更新非等独立信息量；token forgetting定义刻意不奖励新获得正确词，不能当总能力分数。最小mix与随机mix的例数/信息量不同，非任意LLM任务适配的定理。
 RECONSTRUCTED距离：E06整句照抄是具体可核对后果，但不能由此认定其原因就是copy技能过度泛化；目标词汇覆盖/语言输出偏置也是竞争解释。E07译料监督参照很重要：若仅补目标语任务与词汇即可恢复，不能把parallel correspondence写成必需；若不恢复，才值得设计同内容coupling训练干预。不在读数之前预设机制。
+
+## Toward Robust Multilingual Adaptation / LiRA（ICML2026）
+
+[官方会议论文](https://proceedings.mlr.press/v306/li26jh.html)，取得官方PDF，已读§3–5、附录C/D方法和参数扩容对照；未独立复现。arXiv v3与正式PDF的附录并非完全相同，以正式PDF为准。
+DOCUMENTED来源：翻译噪声与双编码路径失配影响低资源检索/推理。Arca以翻译候选critic和actor选择配合feature anchoring；LaSR融合多语与英语编码，队列稳定排序/检索目标。正式PDF附表17有相同扩容但不加LiRA训练目标的对照，不能误称作者完全没有扩容对照。
+边界：这是含译者/critic/编码器的模块化系统，不是同一个LM的训练数据删除及后续任务适配保持；理论是在语义参照和局部稳定假设下的误差界，不识别我们的学习因果量。原文§5.1称4卡服务器，附表9部分任务列8卡，执行规模需核实，不能直接照搬其预算。离线翻译复用与在线候选计算成本须分开。
+RECONSTRUCTED距离：桥接与翻译噪声不是新概念，低资源适配也不是无人区。若P05发展，只能以可靠实际学习瓶颈、同内容训练干预和优于标准方法的决策后果定位；不能把静态跨语representation改善重命名为新故事。
+
+## 本次定位边界（非科学判决）
+
+venue corpus两次nearest已运行，返回MONOWEB/JGP、Domain adapted MT、LiRA和FOREVER，也有无关检索/视觉条目；BM25相似度不是ownership裁决。保持/桥接/译料监督的母问题已有强ownership，compression risk高。E04小终点差不作为贡献；P05是实际QA学习后的输出代价，尚需种子重复、保持干预和标准译监督/replay竞争方法。不能凭相关工作关闭领域，也不能先命名预期结果。
+
+## FOREVER（ACL2026主会）
+
+[官方全文](https://aclanthology.org/2026.acl-long.1144.pdf)，已读§2–3方法/实验及附录H训练设置，取得PDF；没有复现。
+DOCUMENTED来源：固定训练step不代表相同模型变化，以实际LoRA参数更新范数累计model time触发旧任务replay；近期更新强度决定对上一任务快照的正则强度。0.6B–13B、三类CL benchmark、2%旧数据buffer及三个独立run，已有真正训练救援而非仅诊断。
+边界：同架构/config/buffer不自动等更新或计算预算；每新任务10 epoch、每次触发额外旧任务2 epoch，比较时须报告触发数和实际replay token。对象为已监督旧任务，不是未监督预训练翻译接口，也未识别正确双语对应的必要性。
+RECONSTRUCTED距离：通用自适应replay timing/intensity已有ownership；不能把P05后任意混合/replay命名为新方法。我们优先需要同内容/目标语言暴露的最小训练对照及标准方法成本参照，而不是先造复杂scheduler。

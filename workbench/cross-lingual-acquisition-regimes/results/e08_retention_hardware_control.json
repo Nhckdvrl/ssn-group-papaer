@@ -1,0 +1,1158 @@
+{
+  "models": {
+    "baseline": {
+      "completion": {
+        "condition": "baseline",
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_baseline/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_baseline/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "before_sha256": "bf6bae550b148b6dca5c985163af46f11b97192c2566af3e51bd01a6ad0f7643",
+        "script_sha256": "09987ee116f08e60228991afb3caa3ebe18c1a27aa67f8bc60c3427ae5e8bd8d",
+        "protocol_reference_sha256": "28de12d668b844e42b5efb528367470603ee3af2f3bbf4b832b66f9aab713ace",
+        "torch": "2.9.1+cu129",
+        "elapsed_seconds": 279.55959963798523,
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "use_cache": true,
+        "max_new_tokens": 256
+      },
+      "directions": {
+        "en->de": {
+          "n": 200,
+          "metrics": {
+            "legacy_bleu": {
+              "score": 24.158123526136375,
+              "sentence_bootstrap95": [
+                21.552438951418512,
+                26.795036459831948
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_bleu": {
+              "score": 24.158123526136375,
+              "sentence_bootstrap95": [
+                21.552438951418512,
+                26.795036459831948
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_instruction_bleu": {
+              "score": 23.803492478660846,
+              "sentence_bootstrap95": [
+                21.31056820619769,
+                26.376978709621895
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_bleu": {
+              "score": 21.145043979196036,
+              "sentence_bootstrap95": [
+                18.25541156413587,
+                24.016343306417458
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_instruction_bleu": {
+              "score": 21.49593468235281,
+              "sentence_bootstrap95": [
+                18.87361183372928,
+                24.237217872416277
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "legacy_chrf": {
+              "score": 48.519362272636805,
+              "sentence_bootstrap95": [
+                46.3978535210772,
+                50.68167434148876
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_chrf": {
+              "score": 48.519362272636805,
+              "sentence_bootstrap95": [
+                46.3978535210772,
+                50.68167434148876
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_instruction_chrf": {
+              "score": 48.601542587219846,
+              "sentence_bootstrap95": [
+                46.638815995128546,
+                50.64827969509584
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_chrf": {
+              "score": 44.089505468954776,
+              "sentence_bootstrap95": [
+                41.280184419963184,
+                46.78854102784011
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_instruction_chrf": {
+              "score": 44.99157223029987,
+              "sentence_bootstrap95": [
+                42.527374015317655,
+                47.5332898677608
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            }
+          },
+          "contrasts": {
+            "pre-legacy_bleu": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_bleu": {
+              "delta": -3.0130795469403395,
+              "paired_sentence_bootstrap95": [
+                -5.516278580640602,
+                -0.6302265897674473
+              ]
+            },
+            "post_instruction-pre_bleu": {
+              "delta": -2.6621888437835644,
+              "paired_sentence_bootstrap95": [
+                -5.107251035963682,
+                -0.32977852633630445
+              ]
+            },
+            "post_instruction-pre_instruction_bleu": {
+              "delta": -2.3075577963080356,
+              "paired_sentence_bootstrap95": [
+                -4.739465271784708,
+                0.09635219186884156
+              ]
+            },
+            "pre-legacy_chrf": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_chrf": {
+              "delta": -4.4298568036820285,
+              "paired_sentence_bootstrap95": [
+                -7.014995837081831,
+                -2.000485502660942
+              ]
+            },
+            "post_instruction-pre_chrf": {
+              "delta": -3.5277900423369317,
+              "paired_sentence_bootstrap95": [
+                -6.0431647828568416,
+                -1.089685298943051
+              ]
+            },
+            "post_instruction-pre_instruction_chrf": {
+              "delta": -3.6099703569199733,
+              "paired_sentence_bootstrap95": [
+                -6.142904616107313,
+                -1.1748986935169965
+              ]
+            }
+          },
+          "legacy_prediction_matches": 200,
+          "diagnostics": {
+            "legacy": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre_instruction": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "post": {
+              "source_copies": 48,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "post_instruction": {
+              "source_copies": 40,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            }
+          }
+        },
+        "de->en": {
+          "n": 200,
+          "metrics": {
+            "legacy_bleu": {
+              "score": 28.89780804385086,
+              "sentence_bootstrap95": [
+                24.556790010565532,
+                32.311872347066604
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_bleu": {
+              "score": 28.89780804385086,
+              "sentence_bootstrap95": [
+                24.556790010565532,
+                32.311872347066604
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_instruction_bleu": {
+              "score": 29.044318687640498,
+              "sentence_bootstrap95": [
+                24.619843086067497,
+                32.56882510882494
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_bleu": {
+              "score": 27.844099940495713,
+              "sentence_bootstrap95": [
+                23.344518229307223,
+                31.80854461800219
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_instruction_bleu": {
+              "score": 28.144550308240227,
+              "sentence_bootstrap95": [
+                23.64184844255185,
+                32.15611141834768
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "legacy_chrf": {
+              "score": 53.34235124648665,
+              "sentence_bootstrap95": [
+                50.596246436851935,
+                56.02995171755098
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_chrf": {
+              "score": 53.34235124648665,
+              "sentence_bootstrap95": [
+                50.596246436851935,
+                56.02995171755098
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_instruction_chrf": {
+              "score": 53.365932133105865,
+              "sentence_bootstrap95": [
+                50.56137485415758,
+                56.06095736267144
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_chrf": {
+              "score": 54.092580851845455,
+              "sentence_bootstrap95": [
+                51.448261453461036,
+                56.55518992216541
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_instruction_chrf": {
+              "score": 54.20054509033826,
+              "sentence_bootstrap95": [
+                51.65092536534961,
+                56.562013006456006
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            }
+          },
+          "contrasts": {
+            "pre-legacy_bleu": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_bleu": {
+              "delta": -1.0537081033551452,
+              "paired_sentence_bootstrap95": [
+                -5.310259760834252,
+                3.763696899517877
+              ]
+            },
+            "post_instruction-pre_bleu": {
+              "delta": -0.7532577356106316,
+              "paired_sentence_bootstrap95": [
+                -5.139554369104156,
+                4.08413523620606
+              ]
+            },
+            "post_instruction-pre_instruction_bleu": {
+              "delta": -0.8997683794002711,
+              "paired_sentence_bootstrap95": [
+                -5.231456514989841,
+                3.905606632271957
+              ]
+            },
+            "pre-legacy_chrf": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_chrf": {
+              "delta": 0.750229605358804,
+              "paired_sentence_bootstrap95": [
+                -1.457298109111891,
+                3.022710419632157
+              ]
+            },
+            "post_instruction-pre_chrf": {
+              "delta": 0.858193843851609,
+              "paired_sentence_bootstrap95": [
+                -1.3608966612654672,
+                3.1217414144947377
+              ]
+            },
+            "post_instruction-pre_instruction_chrf": {
+              "delta": 0.8346129572323946,
+              "paired_sentence_bootstrap95": [
+                -1.5650401792401207,
+                3.2271364269564953
+              ]
+            }
+          },
+          "legacy_prediction_matches": 200,
+          "diagnostics": {
+            "legacy": {
+              "source_copies": 0,
+              "empty": 0,
+              "cap": 2,
+              "overflow": 0
+            },
+            "pre": {
+              "source_copies": 0,
+              "empty": 0,
+              "cap": 2,
+              "overflow": 0
+            },
+            "pre_instruction": {
+              "source_copies": 0,
+              "empty": 0,
+              "cap": 2,
+              "overflow": 0
+            },
+            "post": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 2,
+              "overflow": 0
+            },
+            "post_instruction": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 2,
+              "overflow": 0
+            }
+          }
+        }
+      },
+      "prediction_sha256": {
+        "legacy": "bf6bae550b148b6dca5c985163af46f11b97192c2566af3e51bd01a6ad0f7643",
+        "pre": "b98e6b587b50bb9060e567272634a87800e0c405680cd77109f9748374b9515f",
+        "pre_instruction": "142ca7d2b6a9ff235be5d25ba33ece25de41eaeac359d51d47420baf17adcdbb",
+        "post": "280ffbc8112452e3bc3685d09273c069a1281229adcfc7b44b02d9c79902f01a",
+        "post_instruction": "f2315222921f070c826c0a74b84e6a01c1579a5873be12c782424f0e33b43412"
+      }
+    },
+    "monoweb": {
+      "completion": {
+        "condition": "monoweb",
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_monoweb/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_monoweb/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "before_sha256": "ec9361dd164f1f46feb0bfdc2d9880000f1659af74af5b1b7e4ac8fd0e77efd4",
+        "script_sha256": "09987ee116f08e60228991afb3caa3ebe18c1a27aa67f8bc60c3427ae5e8bd8d",
+        "protocol_reference_sha256": "28de12d668b844e42b5efb528367470603ee3af2f3bbf4b832b66f9aab713ace",
+        "torch": "2.9.1+cu129",
+        "elapsed_seconds": 251.71888256072998,
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "use_cache": true,
+        "max_new_tokens": 256
+      },
+      "directions": {
+        "en->de": {
+          "n": 200,
+          "metrics": {
+            "legacy_bleu": {
+              "score": 11.474774237352337,
+              "sentence_bootstrap95": [
+                9.40250656031165,
+                13.586054130119999
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_bleu": {
+              "score": 11.474774237352337,
+              "sentence_bootstrap95": [
+                9.40250656031165,
+                13.586054130119999
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_instruction_bleu": {
+              "score": 11.863459683437037,
+              "sentence_bootstrap95": [
+                9.616165354263499,
+                14.160200697719846
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_bleu": {
+              "score": 7.920894941531648,
+              "sentence_bootstrap95": [
+                6.176934316932458,
+                9.754849042366311
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_instruction_bleu": {
+              "score": 9.211426367666883,
+              "sentence_bootstrap95": [
+                7.389403763855601,
+                11.197422541146775
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "legacy_chrf": {
+              "score": 32.71615416076348,
+              "sentence_bootstrap95": [
+                30.776525186257647,
+                34.77958335641981
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_chrf": {
+              "score": 32.71615416076348,
+              "sentence_bootstrap95": [
+                30.776525186257647,
+                34.77958335641981
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_instruction_chrf": {
+              "score": 33.372358311119264,
+              "sentence_bootstrap95": [
+                31.271948600161885,
+                35.47844176894602
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_chrf": {
+              "score": 28.710303155649257,
+              "sentence_bootstrap95": [
+                26.886804921074045,
+                30.549238909130143
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_instruction_chrf": {
+              "score": 30.15254580247038,
+              "sentence_bootstrap95": [
+                28.257633648421695,
+                32.115777946013054
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            }
+          },
+          "contrasts": {
+            "pre-legacy_bleu": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_bleu": {
+              "delta": -3.553879295820689,
+              "paired_sentence_bootstrap95": [
+                -5.352530599159492,
+                -1.9504064034065343
+              ]
+            },
+            "post_instruction-pre_bleu": {
+              "delta": -2.263347869685454,
+              "paired_sentence_bootstrap95": [
+                -4.051285114107819,
+                -0.5192325042096246
+              ]
+            },
+            "post_instruction-pre_instruction_bleu": {
+              "delta": -2.6520333157701543,
+              "paired_sentence_bootstrap95": [
+                -4.308832838266107,
+                -1.0903824244034788
+              ]
+            },
+            "pre-legacy_chrf": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_chrf": {
+              "delta": -4.0058510051142235,
+              "paired_sentence_bootstrap95": [
+                -5.834519489934678,
+                -2.168739255971907
+              ]
+            },
+            "post_instruction-pre_chrf": {
+              "delta": -2.5636083582930986,
+              "paired_sentence_bootstrap95": [
+                -4.5026116395248135,
+                -0.6110125972160733
+              ]
+            },
+            "post_instruction-pre_instruction_chrf": {
+              "delta": -3.2198125086488822,
+              "paired_sentence_bootstrap95": [
+                -5.116897412641178,
+                -1.4115432235752563
+              ]
+            }
+          },
+          "legacy_prediction_matches": 200,
+          "diagnostics": {
+            "legacy": {
+              "source_copies": 27,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre": {
+              "source_copies": 27,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre_instruction": {
+              "source_copies": 26,
+              "empty": 0,
+              "cap": 1,
+              "overflow": 0
+            },
+            "post": {
+              "source_copies": 103,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "post_instruction": {
+              "source_copies": 101,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            }
+          }
+        },
+        "de->en": {
+          "n": 200,
+          "metrics": {
+            "legacy_bleu": {
+              "score": 20.114668922496687,
+              "sentence_bootstrap95": [
+                17.683783461623175,
+                22.628319588319176
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_bleu": {
+              "score": 20.114668922496687,
+              "sentence_bootstrap95": [
+                17.683783461623175,
+                22.628319588319176
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_instruction_bleu": {
+              "score": 20.736419971492076,
+              "sentence_bootstrap95": [
+                18.309278092046313,
+                23.357554109608152
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_bleu": {
+              "score": 15.905139527039829,
+              "sentence_bootstrap95": [
+                13.283810701048884,
+                18.411627363777466
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_instruction_bleu": {
+              "score": 16.552731422372,
+              "sentence_bootstrap95": [
+                13.551013094101597,
+                19.01830335710418
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "legacy_chrf": {
+              "score": 44.516325392840486,
+              "sentence_bootstrap95": [
+                42.42901138147746,
+                46.761033352534966
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_chrf": {
+              "score": 44.516325392840486,
+              "sentence_bootstrap95": [
+                42.42901138147746,
+                46.761033352534966
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_instruction_chrf": {
+              "score": 45.51414223070863,
+              "sentence_bootstrap95": [
+                43.277775266068915,
+                47.882424953589926
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_chrf": {
+              "score": 40.765761427227694,
+              "sentence_bootstrap95": [
+                38.5721282284999,
+                42.92999395948062
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_instruction_chrf": {
+              "score": 41.512955690597224,
+              "sentence_bootstrap95": [
+                39.2160992807643,
+                43.7374847507357
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            }
+          },
+          "contrasts": {
+            "pre-legacy_bleu": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_bleu": {
+              "delta": -4.209529395456858,
+              "paired_sentence_bootstrap95": [
+                -6.79080492094993,
+                -1.9225101137348342
+              ]
+            },
+            "post_instruction-pre_bleu": {
+              "delta": -3.5619375001246887,
+              "paired_sentence_bootstrap95": [
+                -6.447930679097806,
+                -1.3922153735719283
+              ]
+            },
+            "post_instruction-pre_instruction_bleu": {
+              "delta": -4.1836885491200775,
+              "paired_sentence_bootstrap95": [
+                -7.2093120900441665,
+                -1.9516890166692438
+              ]
+            },
+            "pre-legacy_chrf": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_chrf": {
+              "delta": -3.750563965612791,
+              "paired_sentence_bootstrap95": [
+                -6.0610195895217025,
+                -1.6857226859972434
+              ]
+            },
+            "post_instruction-pre_chrf": {
+              "delta": -3.003369702243262,
+              "paired_sentence_bootstrap95": [
+                -5.349216229828225,
+                -0.8428185421419186
+              ]
+            },
+            "post_instruction-pre_instruction_chrf": {
+              "delta": -4.001186540111405,
+              "paired_sentence_bootstrap95": [
+                -6.384956045627327,
+                -1.7569169848422086
+              ]
+            }
+          },
+          "legacy_prediction_matches": 200,
+          "diagnostics": {
+            "legacy": {
+              "source_copies": 17,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre": {
+              "source_copies": 17,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre_instruction": {
+              "source_copies": 15,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "post": {
+              "source_copies": 42,
+              "empty": 0,
+              "cap": 2,
+              "overflow": 0
+            },
+            "post_instruction": {
+              "source_copies": 37,
+              "empty": 0,
+              "cap": 1,
+              "overflow": 0
+            }
+          }
+        }
+      },
+      "prediction_sha256": {
+        "legacy": "ec9361dd164f1f46feb0bfdc2d9880000f1659af74af5b1b7e4ac8fd0e77efd4",
+        "pre": "d80171db3765979aa3ca697f48a512de7b0c0cc3d314379c3af9d243c61908c0",
+        "pre_instruction": "796bb9c4d9c15314f283a2769368547b4eab6c7b04f0d9e8ae9e94f2f481c8cc",
+        "post": "ff3ee238d1e527b685074ffd842d51c95283fdbc59497c9f438ae07c66b0fbaa",
+        "post_instruction": "1b56a32f923c11a00fb8d048e8c778e02bde6abfdf8c94a5160bd47e4f1bb493"
+      }
+    },
+    "onlyparallel": {
+      "completion": {
+        "condition": "onlyparallel",
+        "model": {
+          "repo": "UCLNLP/monoweb",
+          "revision": "4a42093acef06af33d2d5fdf2c26000d4f81d779",
+          "subfolder": "ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model",
+          "path": "/home/xiang/.cache/huggingface/hub/models--UCLNLP--monoweb/snapshots/4a42093acef06af33d2d5fdf2c26000d4f81d779/ckpt_exp_en_de_onlyparallel/iter_0034000/hf_model"
+        },
+        "items_sha256": "369c695fcd88e18aed779489950ccf7131e0b72fb1020fe60862c06418bb1eaa",
+        "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "before_sha256": "cdf1098e986efb811145e0efb60bde4658f689f0421f27948ccddd9b45d020c6",
+        "script_sha256": "09987ee116f08e60228991afb3caa3ebe18c1a27aa67f8bc60c3427ae5e8bd8d",
+        "protocol_reference_sha256": "28de12d668b844e42b5efb528367470603ee3af2f3bbf4b832b66f9aab713ace",
+        "torch": "2.9.1+cu129",
+        "elapsed_seconds": 250.93106389045715,
+        "weight_dtype": "fp32",
+        "compute_dtype": "fp32",
+        "use_cache": true,
+        "max_new_tokens": 256
+      },
+      "directions": {
+        "en->de": {
+          "n": 200,
+          "metrics": {
+            "legacy_bleu": {
+              "score": 21.35746616965977,
+              "sentence_bootstrap95": [
+                18.98569744017364,
+                23.81581294290116
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_bleu": {
+              "score": 21.35746616965977,
+              "sentence_bootstrap95": [
+                18.98569744017364,
+                23.81581294290116
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_instruction_bleu": {
+              "score": 21.088544811287264,
+              "sentence_bootstrap95": [
+                18.808649174775265,
+                23.442194261558395
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_bleu": {
+              "score": 21.586537107175747,
+              "sentence_bootstrap95": [
+                19.07874373463858,
+                24.007242684496088
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_instruction_bleu": {
+              "score": 22.15862318271041,
+              "sentence_bootstrap95": [
+                19.699797509421284,
+                24.52746460233654
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "legacy_chrf": {
+              "score": 46.112032473374114,
+              "sentence_bootstrap95": [
+                43.962900120407475,
+                48.32405894103108
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_chrf": {
+              "score": 46.112032473374114,
+              "sentence_bootstrap95": [
+                43.962900120407475,
+                48.32405894103108
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_instruction_chrf": {
+              "score": 46.02761340391652,
+              "sentence_bootstrap95": [
+                44.02694780439586,
+                48.192867991036245
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_chrf": {
+              "score": 46.58758333961639,
+              "sentence_bootstrap95": [
+                44.436743915987954,
+                48.79045472532662
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_instruction_chrf": {
+              "score": 47.349095535935994,
+              "sentence_bootstrap95": [
+                45.25796987961331,
+                49.50564326632547
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            }
+          },
+          "contrasts": {
+            "pre-legacy_bleu": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_bleu": {
+              "delta": 0.22907093751597785,
+              "paired_sentence_bootstrap95": [
+                -1.981922937808555,
+                2.4857105040043286
+              ]
+            },
+            "post_instruction-pre_bleu": {
+              "delta": 0.8011570130506414,
+              "paired_sentence_bootstrap95": [
+                -1.512853050080231,
+                3.0612135573177564
+              ]
+            },
+            "post_instruction-pre_instruction_bleu": {
+              "delta": 1.070078371423147,
+              "paired_sentence_bootstrap95": [
+                -1.1556890240629905,
+                3.3298139192651117
+              ]
+            },
+            "pre-legacy_chrf": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_chrf": {
+              "delta": 0.4755508662422727,
+              "paired_sentence_bootstrap95": [
+                -1.6555339011627552,
+                2.5451724117802477
+              ]
+            },
+            "post_instruction-pre_chrf": {
+              "delta": 1.2370630625618801,
+              "paired_sentence_bootstrap95": [
+                -0.95512057698039,
+                3.371798435840764
+              ]
+            },
+            "post_instruction-pre_instruction_chrf": {
+              "delta": 1.3214821320194758,
+              "paired_sentence_bootstrap95": [
+                -0.8329279602512942,
+                3.443747504763835
+              ]
+            }
+          },
+          "legacy_prediction_matches": 200,
+          "diagnostics": {
+            "legacy": {
+              "source_copies": 2,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre": {
+              "source_copies": 2,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre_instruction": {
+              "source_copies": 3,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "post": {
+              "source_copies": 12,
+              "empty": 0,
+              "cap": 1,
+              "overflow": 0
+            },
+            "post_instruction": {
+              "source_copies": 11,
+              "empty": 0,
+              "cap": 1,
+              "overflow": 0
+            }
+          }
+        },
+        "de->en": {
+          "n": 200,
+          "metrics": {
+            "legacy_bleu": {
+              "score": 26.008745940303207,
+              "sentence_bootstrap95": [
+                23.057433755329033,
+                28.908060314202515
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_bleu": {
+              "score": 26.008745940303207,
+              "sentence_bootstrap95": [
+                23.057433755329033,
+                28.908060314202515
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "pre_instruction_bleu": {
+              "score": 28.421096243074203,
+              "sentence_bootstrap95": [
+                25.498589854226715,
+                31.297471555405497
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_bleu": {
+              "score": 27.805551751506954,
+              "sentence_bootstrap95": [
+                24.428698493061624,
+                30.443594802390024
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "post_instruction_bleu": {
+              "score": 28.131497574861463,
+              "sentence_bootstrap95": [
+                24.823892431826366,
+                30.72923598653276
+              ],
+              "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.5.1"
+            },
+            "legacy_chrf": {
+              "score": 49.240406859554334,
+              "sentence_bootstrap95": [
+                46.5401991035178,
+                51.87762856601233
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_chrf": {
+              "score": 49.240406859554334,
+              "sentence_bootstrap95": [
+                46.5401991035178,
+                51.87762856601233
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "pre_instruction_chrf": {
+              "score": 51.98001674400644,
+              "sentence_bootstrap95": [
+                49.39857612605668,
+                54.48183655443958
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_chrf": {
+              "score": 53.128899172553176,
+              "sentence_bootstrap95": [
+                50.74349850559756,
+                55.5712419364271
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            },
+            "post_instruction_chrf": {
+              "score": 53.191806370696504,
+              "sentence_bootstrap95": [
+                50.76809551007008,
+                55.56908730976414
+              ],
+              "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+            }
+          },
+          "contrasts": {
+            "pre-legacy_bleu": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_bleu": {
+              "delta": 1.7968058112037468,
+              "paired_sentence_bootstrap95": [
+                -2.029315296209048,
+                4.55093419956126
+              ]
+            },
+            "post_instruction-pre_bleu": {
+              "delta": 2.1227516345582558,
+              "paired_sentence_bootstrap95": [
+                -1.3841038247005708,
+                4.827378312057122
+              ]
+            },
+            "post_instruction-pre_instruction_bleu": {
+              "delta": -0.28959866821274005,
+              "paired_sentence_bootstrap95": [
+                -3.5234412638883588,
+                1.9352713825849883
+              ]
+            },
+            "pre-legacy_chrf": {
+              "delta": 0.0,
+              "paired_sentence_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "post-pre_chrf": {
+              "delta": 3.8884923129988422,
+              "paired_sentence_bootstrap95": [
+                1.175261451555188,
+                6.771467683678395
+              ]
+            },
+            "post_instruction-pre_chrf": {
+              "delta": 3.9513995111421707,
+              "paired_sentence_bootstrap95": [
+                1.310008076187119,
+                6.677963858242727
+              ]
+            },
+            "post_instruction-pre_instruction_chrf": {
+              "delta": 1.211789626690063,
+              "paired_sentence_bootstrap95": [
+                -1.0687990668927774,
+                3.349372819090625
+              ]
+            }
+          },
+          "legacy_prediction_matches": 200,
+          "diagnostics": {
+            "legacy": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "pre_instruction": {
+              "source_copies": 1,
+              "empty": 0,
+              "cap": 0,
+              "overflow": 0
+            },
+            "post": {
+              "source_copies": 15,
+              "empty": 0,
+              "cap": 1,
+              "overflow": 0
+            },
+            "post_instruction": {
+              "source_copies": 12,
+              "empty": 0,
+              "cap": 1,
+              "overflow": 0
+            }
+          }
+        }
+      },
+      "prediction_sha256": {
+        "legacy": "cdf1098e986efb811145e0efb60bde4658f689f0421f27948ccddd9b45d020c6",
+        "pre": "b7c862ab9c6b10c37d3dd0abce8a5018882b1402bd0a0a5f13c8af13cd3d72f8",
+        "pre_instruction": "865d16980ac2b6d8fde1a930f1a4582405c9451bf5e9f2616895df3fba6a29fc",
+        "post": "1ffc9a451802928744f15e22264cb1a6474ddc724d846e629dd4651ce8deea5f",
+        "post_instruction": "331d38ad0d3129fe452aef9517bd6cce860203f0b7a1470b3e0262611d3c29d3"
+      }
+    }
+  },
+  "protocol_ast_equal": true,
+  "resamples": 2000,
+  "bootstrap_seed": 20261002,
+  "sacrebleu_version": "2.5.1",
+  "limits": "One QA adaptation seed and fixed 200 news sentences. Same-hardware calibration is not a new seed or evidence of a universal forgetting mechanism."
+}

@@ -1,6 +1,6 @@
 # E08：retention-hardware-control（2026-10-02）
 
-- **状态：** RUNNING（E06完成后事前写卡；不回写E06为确认性结果）
+- **状态：** DONE（1200条primary均与legacy完全一致）
 - **类型：** REPRO（真实适配代价的必要校准，不是新冻结probe分支）
 - **对应：** P04/P05
 - **问题（一句话）：** E06适配前后的翻译/照抄变化，能否在同一硬件、精度与解码实现下保留，而不是旧测量环境或默认cache差异？
@@ -14,3 +14,8 @@
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 E06发现时数字已经可见，所以本卡是后续校准，不冒称为独立预期发现。尚未运行。
+
+完整校准完成：三条件×两方向×200条primary prediction与legacy逐条完全一致（1200/1200），同Blackwell/FP32/explicit cache也未消除E06下降。生成loop AST核对完全相同。
+MWB同instruction before→post两方向11.86→9.21、20.74→16.55 BLEU；delta=-2.65[-4.31,-1.09]/-4.18[-7.21,-1.95]。
++P德→英instruction before28.42→post28.13，delta=-0.29[-3.52,1.94]：不能只用primary26.01→27.81宣称任务学习增强翻译。
+结果 `results/e08_retention_hardware_control.json`，原始 `artifacts/retention_hardware_control/`。P05环境混杂被削弱，适配seed/任务/family/领域边界仍在；无L2/L3升级。按事前表，E09可进入全部条件的实际训练重复，E10可测既有CPT的保持。

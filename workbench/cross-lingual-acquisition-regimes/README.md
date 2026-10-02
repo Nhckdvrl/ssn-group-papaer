@@ -80,12 +80,13 @@ MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制�
 早期覆盖差同时影响EN，不追同一NLI的小信号。见[完整pilot](results/E02_BRIDGE_LEARNING_PILOT.md)。
 **P04 / E03生成式QA基线完成**：FWB/MWB/+P的EN/DE F1为75.60/63.37、74.68/62.54、
 74.35/63.53；单seed17，差小且CI宽，不是新idea。见[完整结果](results/E03_GENERATIVE_QA_BASELINE.md)。
-**P03/P04 / E04训练干预进行中**：同起点CPT的任务内容覆盖×条件连接四格，
-源/目标完整生成学习曲线；不再扩同NLI小信号。[启动理由与边界](experiments/E04-qa-content-bridge-intervention.md)。
-E05确认有效译料监督15442/16384；E07已准备标准translate-train参照（未训练）。
+**P03/P04 / E04完整完成**：DE F1四格63.66/62.94/64.14/62.53，覆盖×连接
+交互−0.88pp context CI[-2.14,0.39]；不扩此小差异grid。[完整结果与边界](experiments/E04-qa-content-bridge-intervention.md)。
+E05确认有效译料监督15442/16384；E07标准translate-train已在A100训练。
 **P05 / E06发现适配代价候选**：MWB英→德BLEU11.47→7.92，一句恢复9.21；
 精确照抄27/200→103/200，而三组QA终点相近。单seed/旧before硬件仍是边界，
-E08正补同硬件阳性校准；不先命名parallel防遗忘idea。[完整读数](results/e06_qa_translation_retention.json)。
+E08同硬件1200/1200逐条复现；E09待空卡做适配种子重复，E10测已有CPT跨任务学习的保持。
+不先命名parallel防遗忘idea。[完整读数](results/e06_qa_translation_retention.json)。
 
 ## 资产位置
 

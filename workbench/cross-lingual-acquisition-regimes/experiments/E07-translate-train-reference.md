@@ -1,6 +1,6 @@
 # E07：translate-train-reference（2026-10-02）
 
-- **状态：** PLANNED（先CPU准备；E04未完成，不提前扩大其grid）
+- **状态：** RUNNING（CPU审计通过；E04首格完整保存退出后使用空A100）
 - **类型：** REPRO（标准translate-train竞争基线，不是新方法）
 - **对应：** P03/P04
 - **问题（一句话）：** 同一任务内容和有限更新预算下，直接把部分新任务监督翻译成目标语，比先提供无标签桥接能获得怎样的实际源/目标学习与保持代价？
@@ -16,3 +16,5 @@
 尚无结果。实验卡写于CPU准备及GPU执行之前；没有因E04 target快照选择此参照。
 
 CPU准备完成：同16384唯一ID，EN/DE各8192；input token1800246/2265387，answer loss token60412/63223。总input4065633，比E03全英语3588633增加13.29%，不是等token比较。manifest `results/e07_translate_train_data_manifest.json`，完整输入 `artifacts/qa_translate_train/data.json`；尚未GPU训练。
+
+执行追加：fvcrc10 GPU0在E04 new_paired完整保存、原进程退出、显存15MiB确认后启动，PID78399；wrapper调用冻结E03 core，仅替换已审计的数据路径和真实哈希。上述“尚未运行GPU”是启动前记录，不是当前状态。暂未产生终点结果。
