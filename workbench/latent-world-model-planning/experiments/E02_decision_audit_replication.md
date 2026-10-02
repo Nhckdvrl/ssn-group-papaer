@@ -1,82 +1,44 @@
-# E02：Known decision-alignment replication / measurement calibration（2026-10-02）
+# E02：Decision-Metric Alignment replication / downstream decision calibration（2026-10-02）
 
 - **状态：** PLANNED
 - **类型：** REPRO
-- **对应：** I04；为 I01/I03 提供 measurement calibration
-- **不是 novelty：** DA-LeWM 已有 Plan-Real / CEM-stage alignment；AD-WM 已有 elite-regret / counterfactual-action diagnostics；Objective Is the Bottleneck 已证明“信息存在但 planning objective 不会用”。
-
-## 问题
-
-在我们复现的 LeWM/TD-JEPA stack 上，能否可靠复现：
-1. random → mid-CEM → elite candidate 的 latent↔real ordering；
-2. encoded-real endpoint vs predicted endpoint 的差；
-3. candidate margin / action discrimination / selected regret；
-从而证明后续 oracle ladder 的 instrumentation 能测到已知问题？
-
-## 设置
-
-E01 通过后的固定 checkpoint；优先：
-- TwoRoom；
-- PushT 或 Cube 一个 contact-rich task。
-
-每个 start-goal 保存：
-- random candidate pool；
-- CEM 中间 stage；
-- final elite；
-- selected candidate；
-- stratified subset 的 simulator replay。
-
-**planning protocol 固定写全：** horizon (H)、receding prefix (K)、action block、score time index、terminal/prefix/running cost。首轮先用 native setting；另做一个 P57-style protocol sanity，不把它混入“模型 alignment”。
-
-## 读数
-
-- Plan-Real Spearman / Kendall（按原文定义优先）；
-- stage-wise rank correlation；
-- undefined-correlation pair 比例；
-- candidate margin；
-- action-separation margin（有定义时）；
-- (C_{mathrm{real endpoint}})；
-- (C_{mathrm{pred endpoint}})；
-- environment task utility；
-- predicted→real ranking flips；
-- fixed-pool selected regret；
-- replay variance；
-- protocol sensitivity: terminal@H vs prefix@K/running（sanity only）。
-
-## 阳性对照
-
-1. 对真实 task utility 做严格单调变换，rank metric不变；
-2. 打乱 candidate-cost pairing，rank接近随机基准；
-3. 相同 candidate replay 的 utility落在重复波动范围；
-4. 在 (K<H) setting，人为比较 terminal@H vs prefix@K，instrumentation 必须能记录 score-index change，不要求每任务都复现 P57 的巨大数值。
-
-## 噪声地板 + MIE
-
-- bootstrap unit = start-goal / planning decision，不把 candidates当独立 n；
-- 同一 pool repeated replay量化 rank/regret floor；
-- Spearman undefined必须计数；
-- MIE = 足以决定 “instrumentation已校准，可进入 E03/E06” 的差异，不把 E02 本身升级 science claim；
-- 首次运行前根据 E01 repeat数据冻结阈值。
-
-## 混杂审计
-
-- candidate pool固定后再比较 score；
-- random/mid/elite candidate来源和数量都保存；
-- task utility方向统一；
-- true/pred endpoint用同 encoder/preprocess；
-- simulator state只进 diagnostic；
-- goal distance / H / K / action block分层；
-- 不跨模型直接比未标准化 latent MSE；
-- protocol sanity 与 model comparison分表。
-
-## 决策表
-
-- 已知 stage-dependent alignment / ranking diagnostics可稳定测量 → 开 E03（I01）与 E06（I03）；
-- random可测但 elite样本退化/全 tie → 增加 start-goal/candidate coverage，不换 metric追显著；
-- known effect完全测不到 → 核对原论文 protocol、goal/task utility与 replay；
-- 只有 post-hoc挑 episode才有 gap → measurement gate失败，不开始新 mechanism claim。
-
-- **算力预算：** 复用 E01 checkpoint；evaluation为主；candidate replay 先 stratified subsample，按 CI扩。单 GPU独立 episode groups可并行。  
+- **对应：** I04；为 I06 / I03 提供 shared downstream measurement
+- **问题（一句话）：** 在复现的 LeWM-family stack 上，能否稳定测到 random / mid-CEM / elite candidate 的 latent↔real ordering，并把 metric、rollout、selection、planning protocol 四层拆开？
+- **设置：** E01 通过后的固定 checkpoint；优先 TwoRoom + PushT/Cube。每个 start-goal记录 random candidates、CEM中间迭代、elite candidates；对预注册 subsample做 simulator restore/replay。按 Decision-Metric Alignment 原定义实现 Plan-Real / CEM-stage Spearman，同时增加 encoded-real endpoint 与 predicted endpoint score。
+- **读数：**
+  - pair-level Spearman rho（random/mid/elite）；
+  - undefined rho比例；
+  - candidate margin；
+  - real task utility；
+  - encoded-real endpoint score；
+  - predicted endpoint score；
+  - ranking flips；
+  - fixed-pool selected regret；
+  - restore variance；
+  - planning horizon H、execution/replanning prefix K、scoring time index / cost aggregation。
+- **阳性对照：**
+  1. 对真实 utility做严格单调变换，rank metric不应变；
+  2. 打乱 candidate-cost pairing 后 rho 应接近随机基准；
+  3. same candidate replay 的 environment utility在重复波动内一致；
+  4. H>K 时至少跑一个 terminal-at-H vs prefix-at-K / running-cost protocol sanity，防止 P57 time-index mismatch被误当model failure。
+- **噪声地板 + MIE：** bootstrap unit是 start-goal / planning decision，不把数千 candidates当独立 n。相同 pool 重复评估得到 rho / regret floor。MIE在第一次 pilot 后、任何新 mechanism experiment前冻结。
+- **混杂审计：**
+  - candidate pool固定后再比score；
+  - random/mid/elite来源与数量记录；
+  - utility方向统一；
+  - 不跨模型直接比未归一化 latent MSE；
+  - encoded-real / predicted endpoint 使用相同 encoder/preprocess；
+  - privileged state仅diagnostic；
+  - goal distance分层；
+  - H/K/action block/frameskip/replanning/scoring-index写进manifest；
+  - native paper protocol 与 common audit protocol分表。
+- **决策表（跑之前写）：**
+  - known stage-dependent alignment能稳定测 → I06 downstream measurement / E06可用；
+  - random可测但elite样本不足 → 加 start-goal pairs，不换metric；
+  - known effect完全测不到 → 核原论文 protocol / goal definition / utility；
+  - time-index control本身造成巨大差异 → 先固定protocol再解释model；
+  - 只有post-hoc选样本才出现 → 不继续。
+- **算力预算：** 复用 E01 checkpoint；主要单GPU evaluation，可拆 eval manifests；真实 candidate execution先subsample再按CI扩。  
 - **实际：** 待运行
 
 ## 结果
