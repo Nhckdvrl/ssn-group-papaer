@@ -396,3 +396,49 @@ probe可以产生 hypothesis；不能独立承担大 claim。
 - hold-out conditions。
 
 这才是我们多卡、弱互联资源的正确打法。
+
+
+## RC-aux-like paper economics overlay
+
+我们的资源优势不是 scale 一个单次训练，而是 **极高 independent-experiment throughput**。因此同一 scientific program 内优先选择能快速迭代的 seed：
+
+| Program | seed | 单次成本倾向 | 并行性 | 当前资源适配 |
+|---|---|---:|---:|---|
+| R1 | I09/E14 route semantics | 低 | 极高 | **excellent** |
+| R1 | I12/E16 data value | 低–中 | 极高 | **excellent** |
+| R5 | I11/E18 recovery oracle | 很低–低 | 极高 | **excellent** |
+| R2 | I13/E19 revaluation frontier | 低–中（eval/update-heavy） | 极高 | **excellent candidate** |
+| R4 | I07/E11 ambiguity oracle | 很低 | 极高 | good discovery |
+| R3 | I10/E17 query placement | 低–中 | 高 | good |
+| R2 | I08/E13 full predictive-object frontier | 中–高 | 高但跨repo工程重 | medium |
+
+这张表只决定**先挖什么**，不决定“哪个问题更重要”。
+
+### 为什么 I13/E19 特别符合资源
+
+它和最初 RC-aux 的科研经济学很像：
+- 可以用小 latent WM；
+- 很多比较是 checkpoint-level / test-time environment change；
+- reward revaluation / local transition revaluation / adaptation budget可独立并行；
+- 核心是一个大问题：**不同 predictive objects 缓存了什么未来计算，环境/任务改变时哪些东西会失效？**
+- 如果现象成立，方法可能只是 selective recomputation / short explicit correction + cached implicit tail，不需要大模型。
+
+因此 R2 不应只由 expensive E13代表；**E19 是更符合本资源形态的第二入口。**
+
+### First-wave 调整
+
+优先用少量卡并行两个 pilot：
+1. **E14 / R1**：data/trajectory semantics；
+2. **E18 或 E19**：分别代表 trust/recovery 或 predictive revaluation。
+
+E13、E17 等在 shared substrate稳定后继续。
+
+哪条拿到强 signal，再把几十张卡用于：
+- 3–5 seeds；
+- 2–4 environments；
+- nearest baselines；
+- intervention matrix；
+- hold-out conditions；
+- method ablations。
+
+这才是“卡多但弱互联”的核心竞争力。
