@@ -13,8 +13,8 @@
 | 直接 successor | [Guang000/RC-aux](https://github.com/Guang000/RC-aux/tree/cbdf3786b149df8145d6c7314f32f460d43c9695) | README；`config/train/rcaux_default.yaml` | 配置继承、逐任务 checkpoint、训练／规划权重对应 |
 | 强冻结特征参照 | [facebookresearch/jepa-wms](https://github.com/facebookresearch/jepa-wms) | README 的小模型／数据／权重与安装表 | 首次接入固定 commit 和 HF revision；不要自动取大型分支 |
 | 几何方法 | [temporal-straightening](https://github.com/agentic-learning-ai-lab/temporal-straightening) | README 与 [UPDATES](https://github.com/agentic-learning-ai-lab/temporal-straightening/blob/main/UPDATES.md) | 固定包含修复的版本、适配 encoder 和官方 validation/test 规则 |
-| 数据／非 WM 对照 | [seohongpark/ogbench](https://github.com/seohongpark/ogbench) | README、六种 reference algorithms、数据与环境入口 | 其默认分支是 master；首次接入取真实 commit，JAX 环境独立 |
-| I01 trajectory-cost baseline | [HKBU-KnowComp/Temporal-Distance-JEPA](https://github.com/HKBU-KnowComp/Temporal-Distance-JEPA/tree/b4c17ca4649c9bf47272fa66c38da7a684f2a020) | README、training/eval config、locked manifests；repo 自带 LeWM/RC-aux variants | **首轮优先复用**；固定 commit `b4c17ca...`；核对 data cache 与 pair sampler 后再改 trajectory factorization |
+| 数据／非 WM 对照 | [seohongpark/ogbench](https://github.com/seohongpark/ogbench/tree/1d4140997f60c52c6fb0702ec100dc988b18c548) | README、六种 reference algorithms、环境/数据生成脚本；**pin `1d414099...`** | JAX环境独立；M3优先复用 locomaze/manipspace generator，而不是另造数据框架 |
+| M3 temporal-semantics baseline | [HKBU-KnowComp/Temporal-Distance-JEPA](https://github.com/HKBU-KnowComp/Temporal-Distance-JEPA/tree/b4c17ca4649c9bf47272fa66c38da7a684f2a020) | README、training/eval config、locked manifests；repo 自带 LeWM/RC-aux variants | **M3首轮优先复用**；固定 commit `b4c17ca...`；E14改真实 generating behavior policy，不复活旧 episode-factorization E03 |
 | path-aware 近邻 | [XiaodiHuang-code/Traj_LeWM](https://github.com/XiaodiHuang-code/Traj_LeWM/tree/67577fa27242f6e888f40e399ab3e1b542b1367f) | source-only README、训练/评测入口、LTC calibration | 不首轮安装；I01 扩展 full-path supervision 时再接 |
 | physical-grounding 近邻 | [Haodong-Yan/PSG-JEPA](https://github.com/Haodong-Yan/PSG-JEPA/tree/3bf67a47a9143f9f4fb4d39f839143c92902714c) | OGBench planning + LIBERO policy 两 track；依赖说明 | privileged grounding baseline，只有 representation/grounding lead 才接 |
 | adaptive-capacity 近邻 | [arm-research/AAIR-ALeWM](https://github.com/arm-research/AAIR-ALeWM/tree/6717193bdc3b92e43f581b3c668ca9b82c299c70) | 本轮核对为 project-page release | **不是 code-ready baseline**；不能看到 repo 就假定 research code 已发布 |
@@ -25,16 +25,28 @@ Temporal Straightening 的 global-projector 修复 commit：[64a7585819e749bfec3
 
 ## 1.1 首轮最省工程的路线
 
-**I01 推荐直接从 TD-JEPA official repo 起步，而不是把 RC-aux/TD-JEPA/LeWM 三套代码手工统一：**
+### M3 / E14
+优先从 **Bai/Xiong Temporal-Distance JEPA official repo** 起步：
+- 已基于 stable-worldmodel/stable-pretraining；
+- 同 repo 有 LeWM / RC-aux variants；
+- Push-T / TwoRoom / Reacher / OGB-Cube 同代码布局；
+- locked eval manifests 与 plan-seed结果已在 repo。
 
-- 该 repo 已基于 stable-worldmodel/stable-pretraining；
-- `config/train/variant/` 已含 `td_jepa`、`lewm`、`rc_aux`；
-- paper protocol 写明 10 epochs；
-- 自带 locked 50-episode eval manifests 与 10 plan seeds；
-- Push-T / TwoRoom / Reacher / OGB-Cube 同一代码布局；
-- 因此 E03 的 paired dataset intervention 可以把变化集中在 pair construction / trajectory metadata，而不是先解决三个 repo 的接口差异。
+但新科学 treatment **不是**旧 I01 的 trajectory metadata 重切，而是：
+- 真实改变 behavior policy；
+- objective 实际看到不同 temporal pairs/gaps；
+- support/coverage单独审计；
+- fixed candidate / closed-loop 做 load-bearing readout。
 
-这只是一条**工程优先建议**，不是说 TD-JEPA repo 中三个 variant 就天然等价于各自原论文版本。E01/E02 仍要核对 config、weights、planner 与论文 protocol。
+公开 OGBench generator作为 discovery source，clean matched DIRECT/DETOUR intervention仍需在执行机按 E14 设计生成。
+
+### M2 / E13
+Bagatella TD-JEPA official repo与 OGBench / pixels 有成熟入口，适合 implicit-side native baseline；explicit-side优先用同 OGBench Cube family 的 LeWM/stable-worldmodel 路径。
+
+**不要先强行统一训练代码。** 先保留 native protocol，建立 common task/data/result audit。
+
+### M1 / E11
+不需要先安装 belief模型。先用 simulator hidden-state reset / candidate oracle判断 finite-history 后是否仍存在 actionable ambiguity；过 gate 后再接 UWM-JEPA/FIRM/Branch-JEPA。
 
 ## 2. 公开数据／权重入口
 
@@ -147,13 +159,56 @@ GPU 时间、CPU 时间、模型打分调用数和真实环境步数分别记；
 
 | mine | 资产 | 固定 revision | 当前核对 | 备注 |
 |---|---|---|---|---|
-| M2 implicit | [facebookresearch/td_jepa](https://github.com/facebookresearch/td_jepa) | `840a745455a124f04a58ae7ee31d7d5054e381f5` | repo / main ref / supported ExORL+OGBench state+RGB 已核对 | **Bagatella TD-JEPA, ICLR'26 Oral**；不要与 Bai/Xiong Temporal-Distance JEPA 混名 |
+| M2 implicit | [facebookresearch/td_jepa](https://github.com/facebookresearch/td_jepa/tree/840a745455a124f04a58ae7ee31d7d5054e381f5) | `840a745455a124f04a58ae7ee31d7d5054e381f5` | repo / pixel OGBench & DMC launcher / OGBench reward-eval code 已核对 | **Bagatella TD-JEPA, ICLR'26 Oral**；OGBench pixel=1M steps,batch256；DMC pixel default=2M,batch512；official reward inference≈10k samples，见 §7.1 |
 | M1 belief diagnostic | [santoshkumarradha/uwm-jepa](https://github.com/santoshkumarradha/uwm-jepa) | `1ef57359fac031f725632c13668db4868d63459b` | repo / main ref 已核对 | hidden-velocity controlled baseline；不是现成 image-goal MPC solution |
 | M1 structured memory | Flow Equivariant World Models | 首次 manuscript-critical 接入时再锁 | ICML'26 proceedings/project存在 | 不首轮安装；E11过gate再判断 |
 | M1 typed state | FIRM-WM | release需再审 | paper定位已进P62 | 强 collision；优先复用作者release，不自行“复刻一个FIRM-like”冒充baseline |
+| M1 physical-identifiability oracle | [pvwm/physically-viable-world-models](https://github.com/pvwm/physically-viable-world-models/tree/2402aedd05ba46c34172b9dfdb35dc2179034d59) | `2402aedd05ba46c34172b9dfdb35dc2179034d59` | repo/main ref 已核对 | broad same-appearance/hidden-physics claim已占；只在 E11 过 history gate 后作为 collision/control |
 
 ### 命名规范
 
 - `bagatella_td_jepa` = P65 ICLR'26 zero-shot RL / successor-feature方法。
 - `temporal_distance_jepa` = P14 Bai/Xiong 2607.25337 plan-aware temporal-distance方法。
 - 后者repo内部历史 config可继续叫 `td_jepa`，但实验 manifest 增加 `paper_identity` 字段，避免跨repo聚合混淆。
+
+
+## 7.1 M2 official task-inference audit
+
+Bagatella TD-JEPA pinned repo的 **OGBench pixel launcher / evaluator** 已代码级核对：
+
+- OGBench pixel training：`num_steps=1_000_000`, batch `256`, DrQ encoder feature dim `256`；
+- DMC pixel default：`2_000_000` steps, batch `512`；
+- official evaluation通常 `10` episodes/task，`num_inference_samples=10_000`；
+- `metamotivo/evaluations/ogbench.py` 从 **train replay buffer** 采样 next observations；
+- task reward由 OGBench relabel function 对 `batch["next"]["physics"]` + action计算；
+- 然后用 `(next_obs, reward)` 调用 model `reward_inference` 得到 task context。
+
+因此 E13 的 fairness/accounting 必须拆成三本账：
+
+1. **training compute**；
+2. **task/query information budget**：goal image、known reward function、reward-labeled inference states、是否用 privileged physics relabel；
+3. **deployment compute**：policy/model calls、MPC candidates、wall-clock。
+
+不能把“10k reward-labeled samples vs 一张 goal image”的差别简单记成 inference latency。  
+这不是在批评 TD-JEPA：这是它所解决的 zero-shot reward-task setting 的原生接口。E13 若要做 field-level comparative science，必须把 task specification 明示。
+
+## 7.2 M3 OGBench behavior-regime audit
+
+OGBench pinned `1d414099...` 的官方 data-generation code 已核对：
+
+### Locomaze
+`generate_locomaze.py` 支持：
+- `path`：到单个 goal 并停留；
+- `navigate`：episode 内反复采随机 goal；
+- `stitch`：从 initial cell 到 BFS 距离约 4 cells 的 nearby goal；
+- `explore`：每 10 steps随机新方向。
+
+所有 dataset 保存 `observations/actions/terminals/qpos/qvel`。
+
+### Manipulation
+`generate_manipspace.py`：
+- `play` = non-Markovian `PlanOracle`，跟随预计算 plan；
+- `noisy` = Markov closed-loop oracle，per-episode Gaussian action noise，可再插入 random actions；
+- 同样保存 qpos/qvel；Scene还保存 button states。
+
+**科学边界：**这些公开 regime 非常适合 E14 Stage-A sensitivity，但它们同时改变 trajectory length、goal schedule、occupancy、policy memory/noise，因此**不能直接承担“behavior semantics causal effect”**。Stage-B必须按 E14 做 matched generation / support audit。
