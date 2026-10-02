@@ -1017,3 +1017,64 @@ P02 已经比我们之前记得更接近 M2：
 - **证据：** successor-feature BFMs在 established zero-shot benchmarks上能用少量 episodes识别/优化 unseen reward，且额外计算开销小。
 - **ownership：** “implicit/BFM方法 task inference 需要很多 reward-labeled samples”不是我们的新发现；P98已经把它做成 ICLR paper。
 - **对 M2：** E13 中 task/query information 只能作为 **fairness axis / regime variable**，不能把“TD-JEPA需要10k reward samples”当 headline。真正空间是：把 task-information budget 与 training/deployment compute、horizon、query novelty一起纳入 predictive-computation placement frontier。
+
+## 17. Program-growth anchors after anti-overpruning recalibration（P99–P104）
+
+### P99 — The Rank-One Corner: How Much Value Equivalence Does a Task Need from a World Model? — arXiv 2607.06640
+**来源：** https://arxiv.org/abs/2607.06640
+
+- **母问题：** “task-relevant / value-equivalent world model”不是一个二值属性；一个低维 objective 究竟会把多少 predictive task structure 写进 latent？
+- **核心构念：** query/task 的 predictive **closure**；objective dimensionality决定 model能安装多少 closure directions，而不是单纯由model capacity决定。
+- **关键结果：** controlled DreamerV3 setting里，标量 value objective只安装多维 closure 的一维投影；把 objective 从1维扩到完整多维后，recoverable structure显著上升。
+- **idea-growth意义：** 老 Value Equivalence → 不是“更task-aware就更好”，而是问 **supervision rank / task family complexity / reusable predictive closure**。
+- **对 R3：** 这是 specialization-vs-reuse program 的强理论/机制 anchor。它不关闭 R3；反而给出可操纵变量：query dimensionality、capacity、multi-query training、planner stage。
+- **不能直接重做：** 再扫 objective rank + probe；新工作要连接 modern visual WM 的 query placement / planning regret / unseen-query reuse。
+
+### P100 — The Intervention Gap in Latent World Models — arXiv 2608.29998
+**来源：** https://arxiv.org/abs/2608.29998
+
+- **母问题：** reward/value fit或task-anchored training能否保证 planner imagination 的 intervention effect正确？
+- **定义：** planning-time **intervention fidelity**：world model自己 rollout 的 task-variable effect是否匹配 environment 对同action的真实干预。
+- **证据：** TD-MPC2 size sweep中 reward error基本平而 operator/intervention error与return collapse更一致；LeWM capture-gated audit显示部分checkpoints能表示真实 action effect，但 imagined five-step effect方向/增益严重错误；现象随seed/candidate/support变化。
+- **关键边界：** support-aware uncertainty score并非跨shift普适。
+- **对 R1/R5：**
+  - R1：什么经验/监督能真正识别 intervention effects？
+  - R5：哪些 reliability signals在什么 support regime可信、该触发什么 repair？
+- **不能直接重做：** “reward fit不够 / intervention gap存在”已是atomic claim；program可继续研究 data source、repair action、query dependence、active identification。
+
+### P101 — AdaReP: Adaptive Re-Planning under Model Mismatch — arXiv 2606.23079
+**来源：** https://arxiv.org/abs/2606.23079
+
+- **母问题：** 每步MPC replanning昂贵，缓存plan又会因model mismatch变旧；何时应该replan？
+- **理论：** stale-plan dynamic regret由 reuse tolerance、累计 mismatch 与 local dynamics sensitivity控制。
+- **方法：** training-free online tolerance，根据 observed deviation + local sensitivity自适应replanning。
+- **证据：** image-space / latent planning / physical robot；作者报告物理机器人上可减少>80% planner queries同时保持performance。
+- **ownership：** adaptive replanning本身已有直接 work。
+- **对 R5：** 非常好的“failure signal → 一个特定 recovery action”的单点答案。R5更大的未决问题是：**不同 failure type 到底该 replan、adapt、feedback、shorten horizon、fallback 哪一种？**
+
+### P102 — FARM: Reading Failure Signals from Frozen Robotic WM States — arXiv 2609.11445
+**来源：** https://arxiv.org/abs/2609.11445
+
+- **母问题：** frozen robotic WM 的 predictive latent里是否已经包含 execution failure信息，可否低成本读出？
+- **方法：** 33,985-parameter supervised readout，输出step failure score / causal trajectory risk；backbone frozen。
+- **证据：** 10-task benchmark + PIPER X / SO-101 / Franka真实机器人 transfer；作者报告 pooled AUROC/AUPRC 85.68/88.59，latency约0.2256ms。
+- **ownership：** “WM latent可读出failure signal”是已占 atomic claim。
+- **对 R5：** detection不是终点。真正program问题是**failure signal该驱动什么 intervention**，以及 detection transfer是否足够支持 repair selection。
+
+### P103 — Beyond Task Success: Stage-Wise Reliability under Sensing Degradation — arXiv 2609.07126
+**来源：** https://arxiv.org/abs/2609.07126
+
+- **母问题：** 最终task success无法说明 sensing corruption 在 encoder→predictor→planner→outcome 哪一层放大/衰减。
+- **实验：** 10种视觉/时间degradation，对同50 tasks做paired stage-wise measurement。
+- **结果主旨：** representation perturbation大小、prediction response、planner preference、physical outcome的排序并不保持；某些大latent shift会被下游吸收，小shift反而持续到outcome。
+- **ownership：** generic stage-wise reliability audit已有直接 work。
+- **对 R5：** 提醒不能用单一internal shift做trust signal；repair policy需要针对 **downstream consequence / failure type**。
+
+### P104 — A Path-Space Formulation of Prediction in World Models — arXiv 2606.28751
+**来源：** https://arxiv.org/abs/2606.28751
+
+- **母问题：** world model真正预测的基本对象是否应理解成 future path distribution，而不是一串彼此独立的一步条件分布？
+- **框架：** local Markovian regime下用 path measure / action functional统一 prediction、planning与uncertainty；分 reversible / irreversible dynamics并定义entropy production。
+- **证据：** controlled attention-based models中 attention asymmetry随data irreversibility增长；强制对称会选择性伤害 irreversible long-horizon prediction。
+- **对 R2：** 提供另一种 predictive-object hypothesis：**path distribution / trajectory action functional**。它不直接给我们方法，但说明R2不该只围绕“one-step vs successor”二分。
+- **资源适配：** 如果R2实验发现irreversibility/contact process是关键regime，可把path-space/irreversibility作为method-led seed；当前不预注册。
