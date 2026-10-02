@@ -41,6 +41,7 @@
 | P45 | On the Difficulty of Learning a Meta-network for Training Data Selection，ICML 2026 main；2606.00571v1 | D（全文方法、§5 主表与消融、F–I 数据/基线/特征附录；代码 README 已核、源码未全审） | [会议](https://proceedings.mlr.press/v306/du26u.html)；[全文](https://arxiv.org/html/2606.00571v1)；选择器学不好可由超梯度低 GSNR 与信息不足共同造成，非 E12 直接 baseline |
 | P46 | Data Mixture Optimization: A Multi-fidelity Multi-scale Bayesian Framework，NeurIPS 2025 main | D（全文及 A–E 附录；官方代码的 simulator、benchmark、BO 更新关键路径已核，未复现） | [会议全文](https://papers.nips.cc/paper_files/paper/2025/file/8e49d32f4668a41b013fbc1ed929c007-Paper-Conference.pdf)；[代码](https://github.com/namkoong-lab/data-recipes)；472 次真实预训练构建模拟器，2.6–3.3× 搜索加速在模拟器上验证；多保真/跨模型 BO 是强非 agent 近邻 |
 | P47 | Once-For-All: A Train-Once and Select-Anytime Framework for Multimodal Instruction Tuning，2605.26761v2；预印本 | D（全文方法/related work、全部结果与敏感性表、A 伪代码/B 限制；未复现） | [全文](https://arxiv.org/html/2605.26761v2)；冻结 CLIP＋聚类伪标签的早停 selector，LLaVA→未见 Vision-Flan 不重训/不重聚类，同一选样跨 LLaVA/Qwen；阈值与跨池分组语义待核，未核到 OFA 官方可执行发布 |
+| P48 | XMAS，ICML2026 主会；会议最终版 | D（29页主文/A–E附录含理论、图表；官方proxy/求分/聚类/采样/目标训练关键代码已审，未复现） | [会议全文](https://raw.githubusercontent.com/mlresearch/v306/main/assets/naharas26a/naharas26a.pdf)；[代码 e534dd9](https://github.com/BigML-CS-UCLA/XMAS/tree/e534dd99e9ce9b7be345bd55e055c9b4e5c91c90)；跨模态谱轨迹、簇均衡/稳定采样，真实跨目标架构复用；矩阵距离理论与谱标量桥梁、公开实现模板/QK次序/脚本参数债务见论文卡 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
@@ -61,7 +62,7 @@
 ## 最新入口与本轮未解决的阅读债务
 
 - P32 已从官方 arXiv 全文核实；若发展 group-interaction 叙事，先明确与其一次组更新及 GMRel/GREATS 的增量，不把它的存在当自动判死。
-- P47 已有冻结跨池/跨模型静态复用实证；不能沿用“此前 selector 都须随模型重算”的引言概括。其源外簇归属、按簇 15% 与固定 0.7 阈值的关系、示例高/低置信文案仍有复现阅读债务。标题/编号的 GitHub/HF 检索及作者公开仓库核查未核到 OFA 代码或选样清单；[VisNec 作者仓库](https://github.com/DMK041218/VisNec)虽引用 OFA，却明确发布另一论文的 VisNec 数据/LoRA，不能混用。XMAS 的 [ICML 2026 正式页](https://proceedings.mlr.press/v306/naharas26a.html)已核，不能沿用 OFA 表中的 arXiv25 身份；XMAS/COINCIDE 仅补核相关方法和 proxy→target 契约，Self-Filter 仅核官方摘要，不称三者已完成独立深读/复现。
+- P47 已有冻结跨池/跨模型静态复用实证；不能沿用“此前 selector 都须随模型重算”的引言概括。其源外簇归属、按簇 15% 与固定 0.7 阈值的关系、示例高/低置信文案仍有复现阅读债务。标题/编号的 GitHub/HF 检索及作者公开仓库核查未核到 OFA 代码或选样清单；[VisNec 作者仓库](https://github.com/DMK041218/VisNec)虽引用 OFA，却明确发布另一论文的 VisNec 数据/LoRA，不能混用。XMAS 已补读会议最终全文和关键源码，独立记为 P48；COINCIDE 仍仅定向核方法和 proxy→target 契约，Self-Filter 仅核官方摘要，二者未完成独立深读/复现。
 - 本轮围绕 frozen VLM selector 运行 venue corpus `nearest`（k=5），返回 Adapt-∞ 等持续多模态选择近邻；这里只发现入口，未深读其全文/评审，不据检索分数或标题判断与 OFA/本地 C02 精确撞车，也不宣称已完成 D5 全面扫描。
 - `Gap-Adaptive Teacher Scheduling` / 2609.37898：只发现入口，暂不据此写方法事实。
 - CurateEvo 论文主文/附录已深读，官方完整执行源码仍未核到；SGS 的全套方法和代码仍需补读。是否把 CurateEvo 作为正式方法基线要由目标动作/反馈问题决定；AZR 已深读并审固定源码入口，但未复现。
