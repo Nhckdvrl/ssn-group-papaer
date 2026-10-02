@@ -164,6 +164,7 @@ GPU 时间、CPU 时间、模型打分调用数和真实环境步数分别记；
 | M1 structured memory | Flow Equivariant World Models | 首次 manuscript-critical 接入时再锁 | ICML'26 proceedings/project存在 | 不首轮安装；E11过gate再判断 |
 | M1 typed state | FIRM-WM | release需再审 | paper定位已进P62 | 强 collision；优先复用作者release，不自行“复刻一个FIRM-like”冒充baseline |
 | M1 physical-identifiability oracle | [pvwm/physically-viable-world-models](https://github.com/pvwm/physically-viable-world-models/tree/2402aedd05ba46c34172b9dfdb35dc2179034d59) | `2402aedd05ba46c34172b9dfdb35dc2179034d59` | repo/main ref 已核对 | broad same-appearance/hidden-physics claim已占；只在 E11 过 history gate 后作为 collision/control |
+| M3 hitting-time neighbor | [MagnusBoock/IEL](https://github.com/MagnusBoock/IEL/tree/e0262e1c5f3491d9ef8039a854472baa93ce80c9) | `e0262e1c5f3491d9ef8039a854472baa93ce80c9` | `dataset_utils.py` / `iel.py` 已核对 | 直接用 `intermediate_indx-indx` 作为 hitting-time label；默认 `HT_expectile=0.25`；强 collision，不首轮迁移代码 |
 
 ### 命名规范
 
@@ -212,3 +213,18 @@ OGBench pinned `1d414099...` 的官方 data-generation code 已核对：
 - 同样保存 qpos/qvel；Scene还保存 button states。
 
 **科学边界：**这些公开 regime 非常适合 E14 Stage-A sensitivity，但它们同时改变 trajectory length、goal schedule、occupancy、policy memory/noise，因此**不能直接承担“behavior semantics causal effect”**。Stage-B必须按 E14 做 matched generation / support audit。
+
+
+## 7.3 IEL / P95 code audit
+
+官方 repo pin：`e0262e1c5f3491d9ef8039a854472baa93ce80c9`。
+
+已核对：
+- `GCDataset.sample_goals` 从同一 trajectory 中选 intermediate state；
+- `batch['intermediate_distances'] = intermediate_indx - indx`，即直接使用 observed trajectory step gap；
+- `iel.py` 将该 gap作为 hitting-time regression target；
+- 默认 `HT_expectile=0.25`，对 hitting-time residual做 asymmetric expectile weighting；
+- 同时有 goal-conditioned value / HILP-style consistency等组件。
+
+所以 P95 不只是理论邻居；它在代码层已经显式处理 **trajectory-derived hitting-time geometry**。  
+E15 若最终方法只是 lower-expectile gap regression、directed hitting-time head、triangle/quasimetric consistency，必须首先与 IEL/QRL exact compare，不能当 novel correction。
