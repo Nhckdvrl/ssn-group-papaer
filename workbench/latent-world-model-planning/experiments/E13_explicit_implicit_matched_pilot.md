@@ -5,6 +5,23 @@
 - **问题：** reward-free offline learning中，predictive/planning computation应留在 explicit action-conditioned rollout + test-time search，还是 amortize到 successor/policy representation，或直接任意-horizon / hybrid结构？什么 regime 决定？
 - **不是：** “LeWM vs TD-JEPA 谁分高”；“test-time search慢”；“implicit deployment快”。
 
+## Strongest collision before running anything
+
+**PLDM / Learning from Reward-Free Offline Data (NeurIPS 2025)** 已经系统比较 model-based latent planning vs multiple GCRL/model-free methods，并操纵：
+- data quality；
+- trajectory length / stitching；
+- dataset size；
+- random policy data；
+- unseen layouts；
+- new tasks；
+- inference latency / replanning interval。
+
+**Byravan et al. 2021 planner-amortization** 又已经研究 MPC + learned proposal 与 planner-to-policy distillation。
+
+所以 E13 的 outcome不能是一张“什么时候 model-based vs policy更好”的表。
+
+E13只有在能把差异定位到 **predictive object itself**，并超过 PLDM 的宏观比较，才有论文潜力。
+
 ## Direct literature anchor
 
 TMLR 2026 *What Drives Success in Physical Planning with JEPA-WMs?* 已明确区分 explicit vs implicit world-model-like approaches，并把 **training cost / inference cost / generalization trade-off 的 direct empirical comparison** 留作 future direction。
@@ -141,6 +158,19 @@ same task family下 near / medium / far goal bins。
 
 ### P5 — dynamics/layout shift
 仅 P1–P4 出现 meaningful frontier后做。
+
+## P6 — predictive-object isolation（只有前面有 switch 才做）
+
+一旦两端出现稳定 relative-ranking switch，再加入 **一个中间 predictive object**：
+- Universal Horizon Model；
+- Jumpy WM；
+- 或 TD-MPC2 hybrid。
+
+然后问：
+- 中间方法是否落在由同一个 regime variable预测的位置？
+- 还是原来的 switch 其实只是 actor/search implementation差异？
+
+若中间方法不支持 continuum explanation，M2应该收缩或停止，不事后画漂亮曲线。
 
 ## What counts as a result
 
