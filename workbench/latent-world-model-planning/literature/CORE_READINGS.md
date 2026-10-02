@@ -170,3 +170,34 @@ UHM直接预测任意horizon future以减轻递归误差；Jumpy WM预测预训�
 5. **方法和理解可以共同成为贡献。** 不需要先证明一个全新机制才能训练；也不能只有涨点而不解释改了哪个设计决定。
 
 这正是本工作台应该模仿的科研经济学：**先用低耦合小模型快速试一个真实design decision，再用多GPU把最重要的对照、seed和任务范围一次打透。**
+
+
+## S17｜ToIA / SPARK再读：decision-aware acquisition到底已经做到哪一步
+
+来源：[ToIA](https://arxiv.org/abs/2609.19378)、[SPARK ACL 2026](https://aclanthology.org/2026.acl-long.1100/)。本轮阅读深度：**A-targeted**，ToIA核对§I–III的acquisition定义，SPARK核对§2.2、§3.5与Appendix A/E。
+
+### ToIA真正做的事
+
+ToIA不是简单“task weight × uncertainty”。在MPPI现有的每条sampled rollout上，它枚举**早期可获得的prospective observation**，计算该观测对同一rollout后续model queries的GP posterior variance reduction，再用rollout的task-cost softmax权重乘上这项predictive value。这个acquisition term直接改变MPPI rollout weights；作者强调无需采样hypothetical observation或为每个posterior重新优化控制。
+
+所以PBB若只写“task-relevant uncertainty acquisition”就与ToIA太近。PBB应保持一个不同的operational question：
+
+> **我已经有一组真正互相竞争的CEM candidates；哪一个same-state counterfactual branch最可能改变它们的相对顺序/elite membership？**
+
+ToIA的future target是同rollout后续queries；PBB的target是**candidate-set decision boundary**。最强对照应把ToIA式“task-relevant predictive information”实现成baseline，而不是把它当背景一句话带过。
+
+### SPARK真正如何识别critical state
+
+SPARK的branch criterion不是外部value/entropy计算器，而是policy reasoning trace中的intrinsic `<explore>` signal：模型自认存在epistemic uncertainty或semantic ambiguity时才branch，否则线性延续。固定总leaf budget下，论文直接比较dynamic vs fixed-probability branching；固定随机branching明显下降。Appendix的heuristic analysis也把收益归因于critical states稀疏时，共享routine prefix后把更多comparable action samples集中到少数critical points。
+
+这会压缩PBB的泛化叙事：**“在少数critical states多采action alternatives更高效”不是新原则。** PBB必须靠visual latent MPC的candidate set、same-reset dynamics branches以及最终world-model training闭环建立自己的对象。
+
+### 对PBB的设计后果
+
+首轮至少需要三个“逐步变强”的selector：
+
+1. **GLOBAL-U**：只看world-model predictive uncertainty；
+2. **TASK-U / ToIA-like**：uncertainty × goal/task relevance；
+3. **BOUNDARY-U / PBB**：只关心可能改变CEM elite membership/selected action的pairwise rank uncertainty。
+
+如果3只是在数值上等于2，PBB没有独立方法空间；如果3选择的states/actions不同并带来更高planning gain per environment step，才有自己的叙事。
