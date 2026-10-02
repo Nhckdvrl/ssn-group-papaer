@@ -78,8 +78,11 @@ MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制�
 
 四格seed17完成，DE终点77.45–78.40%，conditioning的NLL杠杆未变成大终点迁移增益；
 早期覆盖差同时影响EN，不追同一NLI的小信号。见[完整pilot](results/E02_BRIDGE_LEARNING_PILOT.md)。
-**P04 / E03持续执行生成式QA学习基线**：完整LM答案监督，英语article-disjoint开发gate先行，
-通过后才看固定XQuAD EN/DE全曲线；不把分类头资产接回旧LM head解释遗忘。
+**P04 / E03生成式QA基线完成**：FWB/MWB/+P的EN/DE F1为75.60/63.37、74.68/62.54、
+74.35/63.53；单seed17，差小且CI宽，不是新idea。见[完整结果](results/E03_GENERATIVE_QA_BASELINE.md)。
+**P03/P04 / E04训练干预进行中**：同起点CPT的任务内容覆盖×条件连接四格，
+源/目标完整生成学习曲线；不再扩同NLI小信号。[启动理由与边界](experiments/E04-qa-content-bridge-intervention.md)。
+E05确认有效译料监督15442/16384；E06测真实QA LM训练后的翻译保留及固定恢复对照。
 
 ## 资产位置
 
@@ -90,6 +93,8 @@ MWB+P **83.23/77.09%**。学习baseline可用；没有新的论文idea或机制�
 - 原始输出、训练 checkpoint、下载论文：本目录 `artifacts/`、`sources/`（git-ignore）。
 - E01：`artifacts/nli_learning/train_{condition}_seed{17,29,43}/`，
   保存backbone `checkpoint/` 和 `classification_head.pt`；不是完整生成式LM。
+- E03完整LM：`artifacts/qa_learning/train_{condition}_seed17/checkpoint/`；
+  E04完整CPT及后续QA：`artifacts/qa_bridge/`、`artifacts/qa_learning/train_e04_*/`。
 - 当前本地 conda：`/home/xiang/miniconda3/envs/openslime/bin/python`。
 - GPU 使用人的授权节点空卡；独立单卡任务，不占其他进程，白天九点后最多八张并用。
 

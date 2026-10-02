@@ -1,6 +1,6 @@
 # E03：英语生成式QA学习→德语迁移的有效基线（2026-10-02）
 
-- **状态：** RUNNING（source gate通过，主三条件）
+- **状态：** DONE（source gate及主三条件完整generation/恢复对照/权重保存）
 - **类型：** REPRO（第二种学习substrate，不为配额挂idea）
 - **对应：** P04；E01仅NLI分类接口不足以支持生成/知识学习母问题
 - **问题（一句话）：** MONOWEB模型能否真正学会生成式extractive QA，以便后续训练决策不只在分类头上验证？
@@ -17,3 +17,5 @@
 数据准备完成：16384 train / 512 source dev / EN-DE 1190同ID。source article-disjoint及XQuAD英语原始来源全文核对通过；预先排除6条超过完整训练长度上限的单位。数据/scorer固定hash见 `results/e03_data_manifest.json`。准备过程中的来源核对字段误命名为xnli，训练前更正为xquad；不改变任何输入hash。尚未训练；不预设德语迁移方向或新idea。先source gate，再沿实际训练失败探索。
 
 source gate通过：FWB17英语dev F1从15.77→67.33→71.88%，EM从1.56→52.54→59.57%（0/2048/8192例）；终点F1 item95%CI[68.38,75.22]%，overflow0、cap1、empty0。训练loss下降，英语recipe冻结在 `results/e03_recipe_freeze.json`（原脚本hash734798ad...）；未读DE选recipe。core含评测1060.50秒、峰值27.96GiB，写盘另计。主三条件从原始权重开始、同A100/seed17，完整预算与一句指令恢复对照按卡执行。
+
+完整结果：EN/DE F1 FWB75.60/63.37、MWB74.68/62.54、+P74.35/63.53；+P−MWB DE+0.98pp、context CI[−1.21,3.21]，+P−FWB+0.15[−2.08,2.37]。主读数及一句恢复均原始重算校验通过，不选有利预算点，不升级主张。完整说明 `results/E03_GENERATIVE_QA_BASELINE.md`、数据 `results/e03_train_analysis_seed17.json`。实际计时字段每格1930–1940秒不含instruction评测/初始化/保存，不能当完整作业成本；峰值27.95GiB，保存各140–171秒另计。
