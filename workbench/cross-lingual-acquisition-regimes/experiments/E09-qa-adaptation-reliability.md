@@ -1,6 +1,6 @@
 # E09：qa-adaptation-reliability（2026-10-02）
 
-- **状态：** QUEUED（E08校准通过；等待E07保存退出和空A100，尚无新增训练结果）
+- **状态：** RUNNING（E08通过；fvcrc10三张新释放A100完整重复）
 - **类型：** REPRO（真实学习baseline的适配种子重复，不是冻结probe扩展）
 - **对应：** P04/P05
 - **问题（一句话）：** 源语QA真实学习相近但已有翻译代价不同，是否跨优化/数据顺序种子稳定，而不是一次任务适配的偶然副作用？
@@ -18,3 +18,5 @@
 E08校准通过：primary1200/1200与legacy一致，MWB同instruction下降仍在。新增训练启动门槛满足；等E04已启动A100完整保存/退出后使用空卡。wrapper只顺序调用冻结core的29/43，启动前检查原A100设备/core hash；不改recipe。尚未新增GPU训练。
 
 资源执行追加：E04全部完成后GPU1–3被其他作业占用，未杀归属未核实进程；排在fvcrc10 GPU0的E07后。`queue_qa_repeats.py`必须看到E07 core和wrapper两份完整保存记录、显存占用低于512MiB，才顺序运行全部三起点各29/43，不能按目标结果跳条件。等待不计训练GPU时间；queue仅启动门槛，不改变recipe或种子。尚未产生新种子结果。
+
+空卡变化执行追加：后续实测fvcrc10 GPU1/2/3各15–16MiB且无compute进程，取消本题仍在等待的单卡queue，改为GPU1 baseline29→43、GPU2 monoweb29→43、GPU3 onlyparallel29→43。这是资源映射改变，全部六次/recipe/readout/停止规则不变，未读新增结果选条件。本题与E07及E10最多并用5张，未终止其他研究作业。旧单卡queue脚本保留但不再运行，避免重复训练。
