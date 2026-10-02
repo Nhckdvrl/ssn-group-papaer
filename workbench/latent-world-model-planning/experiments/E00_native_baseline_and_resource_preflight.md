@@ -1,6 +1,6 @@
 # E00｜原生闭环与成本
 
-- **状态：** PLANNED；未运行。
+- **状态：** RUNNING；TwoRoom 原生测量完成，PushT 原生批次接续。
 - **对应：** 建设C00；全工作台
 - **来源：** ASSETS中的LeWM-family原生入口。
 - **阳性对照：** 用官方checkpoint/样例或简单可达目标检查控制接口；同seed重复应能解释差异。
@@ -17,4 +17,19 @@
 峰值显存、I/O等待、训练步/完整episode/planner时间、checkpoint读取；先单卡/单节点，再测试节点并发。
 
 ## 结果与修订
-尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。
+2026-10-02：Fast-LeWM 两任务工程运行完成；原生 TwoRoom checkpoint 加载 12.29 s，warm planner 约 1.72 s/decision，完整单 episode 成功（10 env steps）；5 warmup 后 20 训练步，batch16 compute 中位数 0.1235 s、内存 batch 准备/H2D 0.1772 s。后者不是磁盘 I/O。训练是副本上的吞吐测量，未称 baseline 复现。12 条原生 factual suffix 重放误差全部为 0、阳性控制 12/12。版本、显存、每步数据与 hash 见 [原生结果](../results/E00_E13_E16_20261002_tworoom_native.json)；单 episode 不估性能。PushT 初次工程错误与同 seed 修复均保留。
+
+1→2→4 并发 I/O 尚未量测；完整独立训练与论文评测也未完成。
+
+## 2026-10-02 执行批次（运行前）
+
+- 推进 C00；用户明确授权实验与空闲 GPU，登记状态不变。
+- 先盘点现有 venv / conda，缺少兼容组合才建专用 venv；模型下载到标准 HF cache。原生代码存本目录 git-ignore 的 `vendor/`。
+- 首批 TwoRoom 导航 + PushT 操作，优先 Fast-LeWM 已发布 checkpoint；code commit、checkpoint revision/hash、完整 config 写入结果。
+- seed=0；每任务一次加载、5 个 warmup + 20 个测量训练步、一个完整原生 goal episode。训练步只测接口/成本，不称为 reproduction 或新方法训练。
+- 初始独立单卡任务，显式 CUDA device；已有占用不抢卡。节点数据优先 stage 到本地临时盘。之后以相同 batch 量测 1→2→4 并发，只有实际空卡与 I/O 允许才启动。
+- 必报 checkpoint 键匹配、加载时间、训练 loss/step time、planner wall-clock、episode steps/success、峰值 VRAM、batch读取时间与缓存路径；失败原样保留。单 episode 不给性能结论或训练 seed CI。
+
+### 下载期间的先行工程运行（scoring 前修订）
+
+原生 TwoRoom 压缩数据约 3.43 GB、PushT 约 13.14 GB，尚未本地缓存。完整下载继续；同时可用同一发布 simulator 生成真实 50-step trajectories 接通加载、CEM、branch replay 和训练步。源标记 `simulator_generated_engineering`，action normalization 来自这些新轨迹，**不称为官方数据数值复现，也不以其闭环分数确认科学贡献**。原生数据到达后换回完整数据 statistics 和未筛选 episode anchors 重跑。

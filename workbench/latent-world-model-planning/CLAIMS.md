@@ -1,12 +1,12 @@
 # 主张账本
 
-日期：2026-10-02。**没有本地实验结果，没有已成立的科学主张。** 文献中的成功率和故障不是我们的 L1/L2 证据；调查与公开资产核对不算数值复现。
+日期：2026-10-02。已有 TwoRoom / PushT 工程测量；**尚无已成立的科学主张或完整数值复现。** 文献中的成功率不是我们的 L1/L2 证据。
 
 ## 待验证的建设主张
 
 | ID | 主张 | 等级 | 证据 | 校对 | 下一步 |
 |---|---|---|---|---|---|
-| C00 | 至少一个官方小模型任务能在授权单节点上形成可追溯、可重跑且成本可测的训练／规划闭环（待验证；这是建设主张，不是论文贡献） | L0 | E00 已预先规划，尚未运行；ASSETS 为公开入口核对 | 未校对 | 本地执行 E00，区分加载、工程闭环、完整数值复现 |
+| C00 | 官方小模型能在授权单卡完成加载、训练步、CEM 与 simulator episode；工程建设主张 | L1 | [E00](experiments/E00_native_baseline_and_resource_preflight.md)；[原生 TwoRoom](results/E00_E13_E16_20261002_tworoom_native.json)、[工程 PushT](results/E00_E13_E16_20261002_pusht_engineering.json) | 参数有限；wrapper/native scoring 差0；原生 TwoRoom 12 factual suffix 误差0/阳性12成功；8 paired closed-loop 可执行。PushT 尚属生成数据；训练步只测吞吐；Fast object 未独立核对weights。第一批工程 TwoRoom 缺 harness digest，正式批次已补 | 原生 PushT、训练与论文协议评测；不称完整复现 |
 
 ## 科学主张
 
@@ -16,4 +16,4 @@
 
 ## 作废与降级记录
 
-目前无。未来包括失败 seed、无效对照、协议漂移、选择泄漏、checkpoint 加载失误及 null 结果；禁止静默删除。
+2026-10-02：PushT 初次工程运行因 native info 无 `state` key 停止；failure artifact 保留，改读原生 observation state 后以相同 seed 重跑，不筛 seed。两 task 的工程 episode 均失败，不计为方法负结果，因为生成数据/action statistics 未对齐官方协议。第一批 TwoRoom 的 harness digest 缺失单列披露，正式批次预先快照源码。

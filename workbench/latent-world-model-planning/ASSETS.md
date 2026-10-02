@@ -6,7 +6,7 @@
 
 `论文/入口 → 仓库快照 → 下载及hash → 加载成功 → 训练/控制闭环 → 数值复现`。
 
-下面是**整理前账本已记录的官方入口和快照**，本轮保留其来源，不声称重新逐仓运行验证，也不把它们视为已兼容的统一锁文件。完整旧核对记录见 [历史ASSETS](../../archive/latent-world-model-planning/pre-consolidation-2026-10-02/ASSETS.md)。目前没有本地GPU复现结果。
+下面是**整理前账本已记录的官方入口和快照**，本轮保留其来源，不把它们视为已兼容的统一锁文件。完整旧核对记录见 [历史ASSETS](../../archive/latent-world-model-planning/pre-consolidation-2026-10-02/ASSETS.md)。已有工程 GPU 结果，尚无完整数值复现。
 
 | 用途 | 入口/历史固定版本 | 执行建议 |
 |---|---|---|
@@ -55,12 +55,23 @@ LeWM原文报告紧凑单GPU训练；RC-aux提供约18.7M的本地实例。不�
 
 | 项目 | 本地状态 | 下一步 |
 |---|---|---|
-| 原生小模型加载与训练步 | 未执行 | E00 |
-| 原生规划闭环与计时 | 未执行 | E00 |
+| 原生小模型加载与训练步 | Fast 两任务工程完成、原生 TwoRoom 完成 | E00 原生 PushT |
+| 原生规划闭环与计时 | 原生 TwoRoom 配对闭环与计时完成 | E13 原生 PushT |
 | 数值复现、独立训练seed | 未执行 | E01 |
-| 共享评测清单/数据缓存 | 未执行 | 随E00/E01建立并供方法实验复用 |
+| 共享评测清单/数据缓存 | TwoRoom node-local HDF5、12 anchors/候选 bank 已建立 | PushT；1/2/4 I/O |
 
 新记录追加在这里或具体实验卡，不另建“最终资产表2”。
+
+### 2026-10-02 实际执行资产
+
+- 环境：`/home/xiang/.venvs/latent-wm`，以既有 `lightwam` 的 Python 3.10/CUDA torch 创建 system-site-packages venv，未修改原环境。torch=2.7.1+cu128、transformers=5.3.0、stable-worldmodel=0.0.6；torch 低于 Fast-LeWM requirements 中的 2.10，opencv 为 headless 4.11。配方偏差须随结果披露，工程 pilot 没有安装完整 optional training stack。
+- 已 clone：Fast-LeWM `de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d`、LeWM `8edfeb336732b5f3ce7b8b210d0ba370a09e2cac`；各自在忽略的 `vendor/`，代码 MIT。
+- Fast checkpoint：HF `naiverer/fast-leworldmodel`，revision `f95379fe193c8bfc6a59c9d8437d5052bd72ff71`；两个 object 均 71,897,531 bytes / 17,913,184 params。TwoRoom SHA256 `0822f1e3bc0f8822e68dd19ea92d82053f2f31a2e0f976051572dcb7605a8119`，PushT `7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca`。均在标准 HF cache，已实际加载且参数有限。权重/数据许可尚未核对，不能用代码 MIT 代替。
+- TwoRoom dataset revision `6903a2de048b13819d812da0b4dd661290bc01e4`，`tworoom.tar.zst` 3,425,937,909 bytes，下载并解压完成；node-local `/tmp/latent-wm-data/tworoom.h5`，920,809 transitions / 10,000 episodes，224×224 RGB。解压 67.20 s，HDF5 SHA256 `129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623`。PushT dataset revision `655cd446b9929369d7d406001da85c15d1457850`，压缩 13,136,247,974 bytes 已下载并解压（492.93 s；HDF5 46,300,921,856 bytes / 2,336,736 transitions / 18,685 episodes），原生批次已启动；压缩 SHA256 `7cfbd6d90fa2f27876379a5ff169715a36ed82edbda64f9e5b5bfa34d212f318`。zstd 参数路径为 HF symlink 时被工具忽略；改为 stdin 读取，原失败日志保留。
+- 官方 LeWM 两 task 的 config/weights 也进入 HF cache；TwoRoom revision `77adaae0bc31deab21c93740d1f8bb947cd0bdec`、PushT `22b330c28c27ead4bfd1888615af1340e3fe9052`。TwoRoom 已按官方 tiny ViT/JEPA 配方 strict load 303 keys、18,034,478 params；[重建脚本](scripts/build_lewm.py) 与衍生 object/metadata 在 HF cache 的 `latent-wm-derived/`。只称严格权重加载，尚未数值复现。
+- 首轮实际硬件 RTX PRO 6000 Blackwell Max-Q，独立单卡任务；不跨硬件合并 timing。raw banks/HDF5/logs 先写 `/tmp/latent-wm-runs/`；完成批次已复制到持久非 git `/home/xiang/.cache/latent-wm-results/<run>/`，结果文件逐项记录 artifact pointer/hash。
+- 工程结果：[TwoRoom](results/E00_E13_E16_20261002_tworoom_engineering.json)、[PushT](results/E00_E13_E16_20261002_pusht_engineering.json)。生成数据的 replay error 为 0，dataset setter 的 factual-suffix precision 单独报告。
+- 原生 [TwoRoom 结果](results/E00_E13_E16_20261002_tworoom_native.json) 包含 E13 离线/实际 GPU 计时/配对闭环与 E16 restore/隔离审计；released checkpoint 训练数据与评估 anchors 的重合尚未核对。
 
 ## 6. 面向当前资源的批量实验记账
 
@@ -73,6 +84,6 @@ LeWM原文报告紧凑单GPU训练；RC-aux提供约18.7M的本地实例。不�
 
 ## 7. R2新资产核对（2026-10-02）
 
-Fast-LeWM官方README已核对：基于LeWM代码、使用相同HDF5数据布局，提供PushT/TwoRoom/Reacher/Cube训练与评测入口，并指向`naiverer/fast-leworldmodel` checkpoints。当前锁定公开main快照`de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d`；**尚未在本地加载**。
+Fast-LeWM官方README已核对：基于LeWM代码、使用相同HDF5数据布局，提供PushT/TwoRoom/Reacher/Cube训练与评测入口，并指向`naiverer/fast-leworldmodel` checkpoints。当前锁定公开main快照`de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d`；**TwoRoom/PushT 已在本地加载并运行**。
 
 DeepJEPA最新arXiv为`2610.00368`（submitted 2026-09-30）。公开repo快照`d52bfb232c19376b6f6731b9380bc2d6d7762ffb`仍只有项目说明并称code即将发布；执行机每次准备E13确认一次release即可，不为等它阻塞Fast-LeWM/LeWM首轮。

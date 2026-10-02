@@ -1,6 +1,6 @@
 # E16｜Planner-Boundary Branching (PBB)：planner-aware data acquisition
 
-- **状态：** PLANNED；未运行。
+- **状态：** RUNNING；TwoRoom Stage 0 完成，接续原生 PushT 与 Stage 1。
 - **对应：** I12 / R1。
 - **来源：** S2/S4/S10–S12；这是方法探索卡，不预注册结论。
 - **阳性对照：** 等量IID追加数据应至少能在充分训练下被模型读取；same-state branch bank的隐藏outcome在“oracle selector”中给出可达上界，但绝不作为可部署selector输入。
@@ -104,14 +104,29 @@ E00后再填绝对小时数。研究逻辑：
 最终写“首次”前必须再专项检索；当前只把这些差异当可证伪research hypothesis。
 
 ## 结果
-未运行。
+2026-10-02：[原生 TwoRoom 结果](../results/E00_E13_E16_20261002_tworoom_native.json)。8 anchors × 8 branches=64条；含重复控制88次reset、2200 branch/replay steps，24次同动作重复 state/pixel 误差全部为0。12条官方 factual suffix 重放误差为0，success阳性控制12/12。240个 held-out CEM banks 的 public PBB ledger 使用 direct/decomposed cost proxy；每 bank 选8个不同candidate，屏蔽文件读取、变动独立隐藏标签均不改变选择。只有接口/输入隔离证据，未称独立 ensemble，也没有数据效用或 regret 改善证据。
+
+PushT 工程 replay 使用 factual-prefix 恢复，与 dataset setter 的 physics-memory 覆盖不同；原生数据精度仍需单独测。下一阶段先在有限数据 LeWM 基线上比较新增数据，保留 uniform common-reset branches 强参照，不加 decision loss。
+
+## 2026-10-02 Stage 0 批次（运行前）
+
+- 推进 I12/R1；复用 E13 原生 CEM trace，先 TwoRoom，再 PushT。
+- seed=0，保留 candidate ID/action sequence、anchor/goal、各轮 cheap score/top-K；真实 branch outcome 放在独立 hidden artifact。
+- 每任务至少 8 个 held-out anchors、每 anchor 8 条竞争或均匀候选的原生执行 prefix；另同 state 同 action replay 3 次，测 state/pixel replay error。prefix 与 frameskip 逐配置记账，记录每次 reset 和真实 environment steps。
+- 显式核对版本是否有 callback；无 callback 时用 cost wrapper 捕获 candidate，保持 native CEM。验证 candidate 可重放、state setter 的公开变量覆盖、终止/截断处理。PushT 的 physics memory 若不能 exact restore，先报告 replay residual，不称精确反事实。
+- selector 函数只接 public candidate predictions/action arrays；future utility 与 simulator hidden state 禁止进入 selector。写一次 outcome shuffle / mutation 检查，selector outputs 必须完全不变。
+- Stage 0 不声称 acquisition 提升。下一阶段保留 NO-ADD、IID、uniform common-reset branches（FIRM-WM 思想强参照）、coverage/excitation、GLOBAL-U、TASK-U、PBB 的等新增 env-step比较，保持 LeWM 原 loss；先 1 train seed。
+- 初轮不训练 acquisition network；若只有一个 checkpoint，任何 augmentation/decomposition uncertainty 只能标 proxy，不能冒充独立 epistemic ensemble。
+
+- 固定 stable-worldmodel 0.0.6 wheel 实测源码没有 CEM callback；第一版用 cost wrapper 旁路记录相同信息，不改 CEM sampling/update。先行 simulator-generated bank 的 replay/隔离检查可以复用，但不能称为 acquisition-effect evidence。
+- 先行生成数据保留 reset seed 与 factual action prefix；从 fresh reset 重放 prefix 恢复真实 physics memory，再更换 goal。分支查询步数与 prefix replay 的 restore 开销分别计账。dataset setter protocol 则单独审计，不能把这两种 reset 协议混为同一精度。
 
 
 ## 代码可行性：same-state branch与candidate trace已有接口
 
 stable-worldmodel代码已核对：
 
-- `CEMSolver` callback 每轮拿到 `candidates / costs / topk_inds / topk_candidates`，因此PBB所需的candidate bank与elite boundary可以旁路记录，不必重写CEM；
+- 历史 main 的 `CEMSolver` callback 提供 candidate/elite 信息；本批 0.0.6 无 callback，cost wrapper 捕获 candidates/costs 并按原生 topk 重建 elite boundary，不必重写 CEM；
 - TwoRoom支持 `_set_state(state)`，规划配置本来就从dataset restore agent state；
 - PushT支持公开 `_set_state(state)`；
 - OGBench Cube/Maze支持 `set_state(qpos, qvel)`；
@@ -119,7 +134,7 @@ stable-worldmodel代码已核对：
 
 所以首轮工程路线：
 
-1. 用CEM callback记录candidate sequences、cheap score、top-k membership；
+1. 用原生 CEM 的 cost wrapper（或所锁版本 callback）记录 candidate sequences、cheap score、top-k membership；
 2. 从dataset/eval start state建立branch anchors；
 3. 按selector选择anchor + competing candidate prefixes；
 4. 用对应环境公开setter reset并执行；

@@ -79,11 +79,13 @@
 
 ## S9｜DeepJEPA：decision-critical compute已出现，迫使R2把问题说清
 
-来源：[arXiv:2610.00368](https://arxiv.org/abs/2610.00368)、[公开仓库](https://github.com/deepjepa/DeepJEPA)。本轮阅读深度：**B+/positioning**：核对v1 abstract与官方仓库README；截至本轮仓库仍写“Code will be released soon”，不声称复现。
+来源：[arXiv:2610.00368](https://arxiv.org/abs/2610.00368)、[公开仓库](https://github.com/deepjepa/DeepJEPA)。本轮阅读深度：**A-/方法与实验**：2026-10-02 接续深读 v1 正文、elite stability 命题、matched-seed experiments 与 Appendix D；官方仓库尚未 release，不声称复现。
 
 **原文依据。** DeepJEPA把transition depth作为test-time scaling轴，学习在哪些candidate/rollout step继续recurrent refinement；摘要称额外计算集中在contact/interaction等decision-critical transitions。
 
 **我们的生长分析。** 这不关闭“adaptive compute”。它把最近邻变得更清楚：DeepJEPA分配的是**单个imagined transition内部的深度**；我们R2当前更值得试的是**CEM候选集合/搜索阶段之间的预测保真度**——cheap model广筛、expensive model只重评可能改变elite selection的候选。若最终只是把DeepJEPA换个gate，就没有贡献；若能在fixed wall-clock下证明planner-stage multi-fidelity是独立且互补的轴，才值得发展。
+
+**执行后的精确定位。** DeepJEPA 的 halting 独立作用于 candidate–time pair，并已给出 elite margin 与 correction bound 的稳定性分析；不能把“candidate-selective compute”或 elite stability theorem 说成我们的首次。其训练 target 是局部 latent-error marginal gain，并不直接输入当前 CEM 全体候选的 cutoff；E13 的待测增量是 population-relative promotion/fidelity allocation。Appendix D 明确 average depth 不等于 batched wall-clock speedup，与本轮工程测量一致；必须验证实际 compute-quality frontier。
 
 ## S10｜主动世界模型数据：OnlineWM、Task-Sufficient WM、ToIA
 
@@ -126,6 +128,8 @@ UHM直接预测任意horizon future以减轻递归误差；Jumpy WM预测预训�
 **原文依据。** FIRM-WM把reward-free visual planning的两个问题一起处理：goal-comparable configuration与history-dependent dynamic fiber分离；同时在offline factual trajectories之外加入common-reset intervention branches，让模型观察同一状态下不同action sequence的真实后果。论文报告TwoRoom/Reacher/OGBench-Cube三任务、三独立full-pipeline seeds，并明确把intervention data作为模型能力来源之一。
 
 **我们的生长分析。** 这对R1不是“撞车”，反而把下一步问题变得很自然：FIRM-WM回答**branch data有没有用**；我们可以问**在branch预算很有限时，哪些state/哪些竞争action值得branch**。如果每个reset都均匀收branches，真实系统会很贵；如果branch acquisition能直接对准planner candidate boundary，才有可能得到更高的planning gain per environment step。
+
+**2026-10-02 方法/实验深读补充。** 正文 §4/§5 与 Appendix D/F/H 已核对：common-reset 只恢复公开 interface variables；其 branch acquisition 不使用 reward/success/planner rank。训练 source ablation 和 mismatched-outcome control 支持 action–outcome correspondence，但同时用了 typed physical supervision。E16 首版只改 LeWM-family data acquisition，保持 loss/representation；uniform common-reset branches 是必需基线，不能把 factual-only improvement 归因于 boundary selector。
 
 ## S15｜critical-state branching不是我们发明的原则，但visual WM里的data-value仍可做
 
