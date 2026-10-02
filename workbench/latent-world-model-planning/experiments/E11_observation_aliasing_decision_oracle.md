@@ -1,86 +1,20 @@
-# E11 — Is there actionable ambiguity after available history?
+# E11｜状态、历史与信息获取
 
-- **状态：** PLANNED / CHEAP CONDITIONAL PILOT
-- **对应：** I07 / M1
-- **优先级：** 低于 E14/E13；不训练新方法。
-- **问题：** 在 compact image-goal planning中，给定 planner实际可用的 finite history 后，是否仍存在多个 hidden states / parameters 与几乎相同 observation history相容、但要求不同 candidate action？
+- **状态：** PLANNED；未运行。
+- **对应：** I07 / R4
+- **来源：** S1历史动力学；既有记忆、belief和POMDP路线。
+- **阳性对照：** 可见hidden变量/解除遮挡条件应减少信息负担；无关视觉扰动不应被解释为hidden-physics机制。
+- **噪声地板：** 按场景/隐藏参数与独立训练种子分层；不可辨状态的oracle差距不是统计噪声或模型bug。
+- **决策表（跑之前写）：** history已好→研究其效率/适用范围或换自然因素；belief/探测好→分析来源并扩任务；当前任务无信息需求→改此实验，不关闭R4。
 
-## 为什么收窄
+## 问题
+什么状态估计/信息获取设计改善自然部分观测下的控制？
 
-以下 broad claims 已有很强近邻：
-- FIRM-WM：goal-comparable config vs dynamic fiber；
-- UWM-JEPA：belief-space latent；
-- Flow Equivariant WM：partial-observation structured memory；
-- Physically Viable WM：same-looking scene + latent physics可产生不同 intervention outcomes；
-- Branch-JEPA：point successor无法保留multiple futures；
-- Action-Sufficient Goal Representation：value/goal sufficiency不等于action sufficiency。
+## 首轮方案（可在运行前修订）
+选遮挡、隐藏速度或接触/物理参数中一类真实任务因素。比较原生history、增量history/递归状态，以及一个简洁belief或探测策略；可先用同checkpoint评估。完整状态oracle为上界；同部署history不可区分的状态不能强求模型逐状态选中oracle动作。改变探测次数/成本时单独计账。
 
-所以 **“same image can hide different state”不是新发现。**
+## 读数与资源
+成功、风险/失败类型、恢复和探测成本；hidden-state probe辅助解释，不单独承载规划主张。
 
-## Phase 0 — sanity only
-
-先做 velocity/momentum alias：
-- same rendered frame；
-- different qvel；
-- same candidate action set；
-- execute in simulator。
-
-如果 best-action / utility vector几乎不变，说明这个 substrate不适合继续。
-
-## Phase 1 — history test
-
-对每个 alias pair：
-- 1 frame；
-- 2–3 frame history；
-- native model history length；
-- history中 observation/action全部按 deployment接口给足。
-
-比较：
-- pair可区分度；
-- candidate best-action flip；
-- oracle regret。
-
-若 short history稳定消除 ambiguity：
-> 结论只是 history sufficiency，**STOP**。不造 belief architecture。
-
-## Phase 2 — irreducible / long-lived ambiguity
-
-只有 Phase 1 仍有 action-level ambiguity才尝试：
-- hidden friction / mass / contact mode；
-- occluded dynamic state；
-- stochastic branch；
-- latent regime whose effect appears only after intervention。
-
-要求：
-- matched visible history；
-- same goal/query；
-- same candidate set；
-- hidden variable确实改变 environment utility。
-
-## Baseline planner consequence
-
-在存在 oracle action flip 的 pairs上：
-- native LeWM/JEPA-WM selection；
-- candidate regret；
-- confidence/uncertainty（如果有）；
-- closed-loop recovery。
-
-只有 baseline **实际混淆**，才 E12。
-
-## Controls
-
-- fully observed / privileged hidden variable → regret应显著下降；
-- random nuisance variable不影响dynamics → 不应制造action flip；
-- task/goal change不能和hidden-state change混；
-- render差异用 image metric + human-inspected sample验证；
-- simulator privileged state只用于 construction/oracle，不进 baseline input。
-
-## Gate
-
-- action flip率/utility gap接近0 → I07 park；
-- finite history解掉 → I07降为已知 history sufficiency，不做方法；
-- history后仍有稳定 action-relevant ambiguity，但 baseline自己有 robust strategy → 不做；
-- history后 ambiguity + baseline regret + second hidden-factor family复现 → E12。
-
-## 结果
-未运行。
+## 结果与修订
+尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。

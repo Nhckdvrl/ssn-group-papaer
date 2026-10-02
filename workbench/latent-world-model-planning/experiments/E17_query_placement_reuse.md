@@ -1,53 +1,20 @@
-# E17 — Query placement × reuse pilot
+# E17｜任务条件化与复用
 
-- **状态:** PLANNED
-- **对应:** I10 / R3
-- **目的:** 在同一 compact WM stack 中控制 query 注入位置，测 specialization–reuse frontier。
+- **状态：** PLANNED；未运行。
+- **对应：** I10 / R3；合并旧E17两份方案
+- **来源：** S1任务无关预测、S4对齐；历史value-aware/query方法。
+- **阳性对照：** query-agnostic baseline、seen目标、同信息但错误/打乱query的诊断；不得把错误query当真实部署协议。
+- **噪声地板：** 固定goal split与训练量；分离data/task/seed随机性。
+- **决策表（跑之前写）：** 设计改善两端→分析与扩展；有trade-off→研究容量/训练方案；无明显差别→简化模型或换任务族，不强造frontier。
 
-## Minimal variants
+## 问题
+哪个任务条件化设计兼顾当前性能与新目标复用？
 
-保持 encoder/predictor total params近似匹配：
+## 首轮方案（可在运行前修订）
+同一backbone和任务信息，比较共享预测+task head、query进入predictor/cost/proposal中的两三种自然实现。允许轻量分支/辅助共享目标原型。先保留目标或goal family测试，再按证据换planner/query，不先引入大VLM。
 
-- Q0: query-independent dynamics；query只进 test-time cost
-- Q1: query进 metric/verifier
-- Q2: query进 proposal；dynamics仍通用
-- Q3: query-conditioned dynamics / representation
+## 读数与资源
+已见/未见目标成功率、适配样本/步骤、训练稳定和计算；所有query信息对齐，测试目标不参与调参。
 
-首轮不超过4 variants。
-
-## Query regimes
-
-- seen goals/rewards
-- unseen recombination
-- changed planner cost
-- changed candidate generator
-
-如果有 language query，后续再加，不作为首轮依赖。
-
-## Measurements
-
-- seen-query success / regret
-- unseen-query success / regret
-- predicted-trajectory reuse
-- candidate sample efficiency
-- model calls / latency
-- capacity utilization
-- query-conditioned feature drift
-
-## Critical controls
-
-- same offline data
-- same query train split
-- same total params / optimization budget
-- task-specific heads parameter count separate
-- no test query leakage
-
-## Gate
-
-- Q3 seen强、unseen弱但完全复制 P38 setting → 不升级；
-- injection layer ranking随 query complexity / capacity / planner change有稳定 switch → strong signal；
-- Q2 modular proposal接近Q3 seen效果且保Q0 reuse →可能形成方法/原则；
-- second task structure复现后才大铺。
-
-## 结果
-未运行。
+## 结果与修订
+尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。

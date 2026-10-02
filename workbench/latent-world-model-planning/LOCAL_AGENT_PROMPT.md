@@ -1,346 +1,52 @@
-# Local Agent Prompt — latent-world-model-planning
+# 本地 agent 启动提示
 
-把本文件作为执行机 agent 的启动提示。**不要从头找题，也不要因为某个现有实验卡写得最详细就把它当主论文。**
+你在 `workbench/latent-world-model-planning/` 工作。目标是通过强基线、方法探索与实证理解发展顶会级论文，不是只做综述、审计或验证一个预设现象。
 
----
+## 最少阅读
 
-你正在 `Nhckdvrl/ssn-group-papaer/workbench/latent-world-model-planning/` 工作。
+先读根目录 `AGENTS.md`、`RESOURCES.md`、本目录 `README.md` 和 `RESEARCH_PLAN.md`；再按当前任务读 ASSETS、实验卡、文献。**不要求读完整历史目录才开工。** 旧 HANDOFF、Tier/Mine、Wave、红区和“有邻居就降级”规则均已归档，不是当前指令。
 
-## 最终目标
+本次整理不改变 PROPOSED/ACTIVE 登记。用户把本工作台交给你执行时，在已授权资源内推进；不要擅自暂停其他项目、混用机构数据或修改 ACTIVE 分配。
 
-从 compact latent world-model planning 中发展一篇 **ICLR / ICML / NeurIPS / CVPR 级**论文。
+## 开始做事
 
-我们的资源优势不是多节点大预训练，而是很多独立 GPU：适合强 baseline、受控 intervention、多 seed、多环境、oracle audit、idea iteration。网络/磁盘/节点通信差，不做跨节点大训练。
+1. 同步 main，盘点已有 repo/env/data/checkpoint，不重复下载。运行仓库 `python3 tools/process/check.py`；真实错误先修，不为消除流程 warning 造科研结果。
+2. 查看 CLAIMS、PAIN_LOG 和最新运行输出。没有GPU结果时如实记录；有结果时继承，禁止从零重来或覆盖原始数据。
+3. 按 E00 接通一个原生训练/规划闭环，记录显存、I/O、加载差异和完整episode耗时。按 E01补强基线、统一评测清单；允许同时做可比较的方法小试。
+4. 默认从 R1 的 E14/E16 或 R2 的 E13挑最能复用当前资产的比较。R3–R5不是禁区；更有依据的方向可直接写卡开展。
+5. 每组实验写清实际问题、来源、改动/对照、读数与成本；已有卡可以在运行前版本化修订。不用为了新想法增加一套规则文件。
 
-最重要的是 **problem-led research**：
+## 你的研究自主权
 
-> 找到这个领域真正关心、会改变模型/方法设计的 failure / tension；  
-> 用实验把问题压实；  
-> 再让方法从问题本身自然长出来。
+**允许从第一轮开始做方法；文献支持的重要痛点足以启动原型，不要求先在本地发现全新异常。** 可以复用成熟原理，改训练目标、预测结构、数据选择、planner或记忆机制；说明为什么该设计可能解决当前问题即可，不需要先证明新颖失败/普适规律。
 
-禁止把“我做了一个新 probe，某个位置行为奇怪”当研究目标。内部读数只有连接到 candidate decision / regret / closed-loop behavior 时才有科学重量。
+方法试验与解释试验互相促进。方法有效就分析收益来源与范围；解释发现瓶颈就试相应方法；简单基线特别强同样值得追。不能把“必须有异常”“必须名次翻转”“必须先匹配所有变量”变成研究许可证。
 
-当前科学 claim = 0；M#/I# 全是 mining seeds，不是结论。
+遇到近邻，深读其 method/data/decisive experiments，复用实现并明确增量。不得仅凭摘要或关键词关闭方向。只有当前主张确实重复、设计无效或证据不支持时，修改该主张/实验；R1–R5母问题继续保留。关闭方向和资源换轨按根目录的人审规则。
 
-## 必读顺序
+## 不要再犯的错误
 
-1. root `AGENTS.md`
-2. root `RESOURCES.md`
-3. `workbench/README.md`
-4. 本目录 `README.md`
-5. **`PAPER_SHAPE_TARGET.md`** — 先理解为什么优先 RC-aux-like 小模型/高实验吞吐论文形态
-6. **`NOVELTY_GROWTH_RULES.md`**
-7. `FIELD_PROBLEM_MAP_2026.md`
-8. **`RESEARCH_PROGRAMS.md`**
-9. `PAPER_LINEAGE.md`
-10. **`RESEARCH_MINES.md`**
-11. `LITERATURE_LEDGER.md`
-12. `PROBLEM_METHOD_MAP.md`
-13. `POSITIONING.md`
-14. `EXPERIMENT_PROGRAM.md`
-15. `ASSETS.md`
-16. `HANDOFF.md`
-17. `CLAIMS.md` / `PAIN_LOG.md`
-18. I07–I13 + I03/I06
-19. E00–E19
+- E14多门/绕路只是具体诊断，不是整篇论文必须讲“行为路线残差”。覆盖因素解释结果时，可以转为更好的数据采集/利用方法。
+- E13先可比较同一backbone的预测目标，E19可比较变化后的更新，再扩长期抽象；不必先安装所有model-free/world-model框架，也不强制追一个“regime law”。
+- E11隐藏状态oracle比同信息模型强，不自动说明模型有bug。相同历史不可辨的状态只能比较信息受限下的策略；主动探测计入成本。
+- E18恢复oracle不能泄漏进部署规则；可直接先试合理阈值/反馈/适配策略，不必等oracle完备。
+- 小模型参数量不等于便宜；latent距离/MSE跨不同表示通常不可直接比较。
+- Bagatella `TD-JEPA` 与 Bai/Xiong `Temporal-Distance JEPA`不是一篇论文。日志用完整paper ID，不能裸简称聚合。
 
-然后运行：
+## 广泛实验与确认
 
-```bash
-python3 tools/process/check.py
-```
+先测单任务和节点I/O，之后按实际授权并行独立训练、评测、seed和数据条件；全局ACTIVE容量不是pilot数量上限。避免共享盘被数十任务反复随机读，尽量节点本地缓存。
 
-ERROR 先修；WARN 理解后处理。不要为清 warning 机械修改科研内容。
+探索比较可以广，但每个条件应回答一个问题或区分一种设计。不要把几十张卡只用来重复微小参数优化，也不要求每张卡都跑完全不同的项目。通常优先保留多个方法/解释分支，再把有意义的结果扩到更强基线、第二类任务和独立seed。
 
-## 三个容易混名的 JEPA 必须分清
+把训练计算、部署计算、任务信息/奖励标注、真实环境交互分别记账。探索结果与确认结果分开；最终因果/机制论断需要额外控制，不能先把粗比较写成机制。
 
-- **Bagatella et al. TD-JEPA**, ICLR 2026 Oral, `facebookresearch/td_jepa`：zero-shot RL / successor features / implicit long-horizon predictive representation。
-- **Bai & Xiong Temporal-Distance JEPA**, arXiv 2607.25337, `HKBU-KnowComp/Temporal-Distance-JEPA`：LeWM/CEM planning，trajectory temporal distance + heuristic negatives。
-- **D-JEPA: A Decision-Aligned Latent World Model**, arXiv 2609.24749：candidate-local ordinal decision alignment，又是另一条线。
+## 写回与汇报
 
-Temporal-Distance repo历史 config 仍叫 `td_jepa`。跨repo manifest只用 `bagatella_td_jepa` / `temporal_distance_jepa` / `decision_aligned_d_jepa`，禁止裸 acronym 聚合。
+只更新一套内容：新运行进对应实验卡与 `logs/`，实际痛点/成功进 PAIN_LOG，证据充分才升 CLAIMS；只有研究方向真的变化才改 RESEARCH_PLAN。原始大文件留授权节点，git写hash/config/许可范围内的路径说明，不公开内部地址。
 
-# 1. 先继承 research programs，不重新 hunt empty gap
+新增 E/I编号先查索引，不能重用；历史E03/E04等归档编号继续保留历史含义。运行后报告关键结果、替代解释、与最近邻的差异和下一组研究动作；没有跑就写没有跑。
 
-**最重要的规则：**
-- paper 可以拥有一个 atomic claim；
-- paper 不能拥有整个 research program；
-- “近邻很多”通常说明 community care，不是自动降级；
-- 一个 seed撞车 / null / 被baseline吸收，只 park seed，必须回 parent R# 继续挖；
-- 直接近邻若要作为“不能做”的理由，至少深读 method + experiments + related work + limitations；abstract-only只能导航。
+**交付标准：一个可用方法或重要认识及其可信证据，而不是不断增长的文献编号、诊断脚本或流程卡。** 日常比较和原型可自主继续；到主张升级、跨项目资源分配、进入候选或关闭方向时再按根目录流程人审。
 
-当前 programs：
-
-### R1 — Data & Identifiability
-**母问题：** 什么 experience 才能让 world model识别 counterfactual action effects / controllability并真正服务planning？
-
-现有工作分别回答 action excitation、trajectory geometry、counterfactual branches、active probing等局部答案。
-
-活跃：
-- I09/E14 behavior-route semantics；
-- I12/E16 equal-budget data value；
-- I06/E08–E10 negative-role subdiagnostic。
-
-E14若失败，**不要写 R1失败**；转 E16 / active probing / counterfactual data / failure-recovery data。
-
-### R2 — Predictive Abstraction
-**母问题：** world model 应学习 one-step、direct horizon、path distribution、successor occupancy、macro transition还是hybrid？
-
-活跃：
-- I08/E13。
-
-E13不是两方法排行榜；它用于找下一条 regime axis。若端点没有切换，转 stochasticity / horizon / query flexibility / intermediate predictive object，而不是关闭 R2。
-
-### R3 — Specialization vs Reuse
-**母问题：** query/task conditioning 应放在哪一层，才能兼顾 seen-query decision efficiency 与 unseen-query/planner reuse？
-
-活跃：
-- I10/E17。
-
-P38 / Value Equivalence / WorldTest / Task-Sufficient WM 是这条 program 的强坐标，不是封锁线。
-
-### R4 — State / Belief / Information Gathering
-**母问题：** partial observability / hidden physics 下，正确 predictive state 是 point / memory / belief / active information gathering 哪一种？
-
-活跃：
-- I07/E11。
-
-若短 history解决当前 aliasing seed，park I07当前版本；R4可转 active disambiguation、belief-consuming planner、hidden-physics identification。
-
-### R5 — Trust / Repair / Bypass
-**母问题：** world model 不可靠时，何时 replan、shorten horizon、adapt、feedback-correct、increase compute或fallback？
-
-活跃：
-- I11/E18。
-
-IMWM / AdaJEPA / Feedback WM / AdaReP / MEND 是不同 recovery action 的已知答案；我们先找 failure-type→best-repair mapping。
-
-### Shared diagnostics
-- I03/E06–E07 = bottleneck oracle；
-- I06/E08–E10 = R1局部机制；
-- E02 = candidate decision calibration。
-
-## Resource-fit / paper-shape filter
-
-在同样有科学价值的 seeds 之间，优先 **RC-aux-like experimental economics**：
-
-- 1 GPU / run；
-- hours 级 iteration；
-- small compact WM；
-- simulator / offline dataset；
-- variant 不需 full re-pretrain；
-- released checkpoint 可直接做 evaluation-first；
-- 可以把几十张卡变成独立 conditions / seeds / baselines。
-
-这不是降低论文尺度。恰恰相反：目标是**大问题 + 小模型 + 快实验 + 强证据**。
-
-当前资源适配：
-- **R1 / E14, E16：excellent**
-- **R5 / E18：excellent**
-- **R2 / E19 revaluation：good-to-excellent**，优先 eval/adaptation-small-update 版本；比完整 E13 跨 codebase 对比更适合快速 mining
-- **R4 / E11：cheap oracle**
-- **R3 / E17：good**
-- **R2 / E13 full predictive-object comparison：medium**，保留但不要默认吞大量 GPU
-
-任何 seed 若需要 multi-node pretraining 或 days-long single run，必须证明其 scientific upside 显著高于这些 compact alternatives。
-
-# 2. Step 0 — 资产盘点与 E00
-
-先看机器已有 repo/env/data/checkpoint，禁止重复下载。
-
-写回 ASSETS 状态：
-
-```
-public entry
-→ downloaded + hash
-→ loadable
-→ smoke passed
-→ native numeric reproduction
-→ instrumented common audit
-```
-
-不同 repo 可不同 venv。不要为统一 framework 破坏 native baseline。
-
-E00 单 GPU：
-- dataset/checkpoint可读
-- env/action/goal/success checker
-- encode→rollout→plan→act
-- train step
-- planner call
-- VRAM
-- env/render time
-- I/O wait
-
-不要上来跑满 100 epochs。
-
-# 3. Step 1 — E01 common substrate
-
-至少：
-- 一个 explicit compact WM native checkpoint / native protocol；
-- candidate logger旁路；
-- env reset/replay；
-- true candidate utility；
-- H/K/action block/scoring index manifest；
-- TwoRoom或类似 topology + 一个 contact-rich environment 的入口。
-
-native result 与 common audit result分开。
-
-# 4. First-wave program mining：每次最多2个 pilot
-
-仓库规则仍是 simultaneously running pilots ≤ 2。不要因为有很多卡就同时启动6个方向的大矩阵。
-
-## Wave A
-
-### E14 — R1 / I09
-TwoRoom / topology下改变 behavior route；support + action excitation审计；fixed-candidate / closed-loop consequence。
-
-目的不是把 I09做到底，而是回答：
-> R1 中 trajectory organization是否值得继续？
-
-### E18 — R5 / I11
-优先 released checkpoints / evaluation-first。对同一 planning state执行不同 recovery actions，构建 oracle intervention ranking。
-
-目的：
-> R5 是否存在“不同 failure需要不同 repair”的真实结构？
-
-E08若dataset ready可作为低成本旁路 audit，不占GPU主pilot。
-
-## Wave B
-
-Wave A 任一分支进入等待/完成后启动：
-
-### E13 — R2 / I08
-predictive-object continuum的最小 matched pilot。三本账：
-- training compute；
-- task/query information；
-- deployment compute。
-
-### E17 — R3 / I10
-query-placement × seen/unseen reuse 小矩阵。
-
-## Conditional / next seeds
-
-### E11 — R4 / I07
-cheap environment oracle；不先训练belief model。
-
-### E16 — R1 / I12
-若 R1仍有科学压力，固定 transition budget比较 coverage / action excitation / route diversity / counterfactual branches 的 planning value。
-
-**重要：** E14/E18/E13/E17/E11/E16 的顺序是当前 information-gain 排程，不是哪个 program“更有资格”。任何新结果都可以改变排序。
-
-# 5. 方法什么时候允许出现
-
-新方法优先来自真实 evidence，但**不禁止 method-led exploration**：如果一个成熟方法原理（quasimetric、belief filtering、structured dynamics、active probing、adaptive compute等）在 program 中给出明确、可检验的新预测，可以直接注册成 seed。不能做的是“因为喜欢一个模块所以随便找benchmark”。
-
-当前证据入口包括：
-- R1：data role / identifiability / intervention value；
-- R2：predictive-object regime；
-- R3：specialization↔reuse frontier；
-- R4：belief / active information need；
-- R5：failure→repair mapping；
-- shared oracle：某 layer 被确定为 binding bottleneck。
-
-优先最小解释。
-
-不要：
-- RC-aux + 一个 loss；
-- LeWM + 一个 module；
-- “换成更复杂 Transformer”；
-- 因为某个 probe看起来差就做 regularizer；
-- 先有喜欢的 method 再找 benchmark。
-
-# 6. 共同 attribution rules
-
-- probe变、decision不变 → 不是主 finding；
-- prediction error变、candidate ranking不变 → 不夸大；
-- candidate pool没有好plan → 不只修 metric；
-- true dynamics仍失败 → 不只怪 predictor；
-- encoded-real score就错 → metric/representation；
-- H/K/scoring-index control能救 → protocol layer；
-- behavior intervention同时改变 coverage → 先拆 coverage；
-- history能完全解 alias → 不声称 belief必要；
-- explicit/implicit比较没匹配 data/task/compute → 不做 scientific ranking；
-- oracle方法只作 measurement / upper bound，不冒充 deployable method。
-
-# 7. 多 GPU 怎么用
-
-第一轮每个 **program seed** 都只做 small decisive pilot；同时实际运行不超过2个。
-
-一旦某条过 gate，再把独立卡用于：
-- train seeds
-- behavior regimes
-- aliasing strength
-- hidden-factor family
-- goal/reward shifts
-- candidate budgets
-- confirmatory environment
-- ablation / nearest baseline
-
-同节点先 stage local data；1→2→4 jobs测 I/O 退化。不要跨节点 DDP。
-
-大量 GPU 的价值是 **加速 scientific iteration**，不是扩大单次训练规模，也不是铺没有判别力的 Cartesian product。
-
-# 8. 文献与 novelty 是滚动的
-
-2026 latent WM 更新极快。每次出现以下情况都重扫直接近邻：
-
-- 某个 E## 出现明显 anomaly；
-- idea准备从 SEED → paper hypothesis；
-- C## 升 L2；
-- 要设计方法；
-- 要跨 benchmark；
-- candidate / 投稿前。
-
-深读新近邻时记录：
-
-```
-mother question
-old assumption
-pressure / counterexample
-idea leap
-method
-data / benchmark
-decisive experiment
-nearest related work
-exact delta
-claim ownership
-what it closes
-what it opens
-```
-
-不要只加 citation。
-
-# 9. 写回
-
-每 run：
-- 对应 experiment card
-- raw大文件留节点；git写 hash/path/summary
-- PAIN_LOG 只记真实 P##
-- CLAIMS 只记 evidence-backed C##
-- logs/YYYY-MM-DD.md
-- small commit/push
-
-每次新 experiment 先写 card / amendment，再跑。
-
-# 10. 什么时候人审
-
-- E11出现明确 actionable aliasing且 history baseline仍失败；
-- E14出现跨objective/task的 behavior imprint；
-- E13出现 stable explicit/implicit regime boundary；
-- E09说明 negative真正 load-bearing role；
-- E06/E07形成 cross-task regime law；
-- C## 到 L2；
-- 需要改变 ACTIVE 资源调度；
-- 一个 seed被近邻/简单baseline吸收后，需要回 parent R# 产生新seed；
-- 同一 program 连续多个 seed在系统measurement后都无scientific yield，才触发人审是否暂停 program。
-
-汇报只需：
-1. E## / commit / artifact hash
-2. 最重要数字 + CI / train-seed variance
-3. 这个结果解决了哪个 **problem question**
-4. 排除哪些平凡解释
-5. 最近 direct neighbor pressure
-6. 下一组最便宜决定性实验
-7. 真正需要人决定的事
-
-**不要把工程进度当科研进度。**
+把RC-aux作为小模型/低耦合/可并行验证的参考，而不是规定只做reachability。一天完成确认实验的可行性用实际训练+闭环评测成本计算，不承诺未经测量的GPU-hours。

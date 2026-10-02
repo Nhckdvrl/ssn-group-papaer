@@ -1,66 +1,20 @@
-# E16 — Equal-budget data value decomposition
+# E16｜有限预算的数据配方
 
-- **状态:** PLANNED / conditional on R1 remaining strong
-- **对应:** I12 / R1
-- **目的:** 固定 data budget，分解不同 experience type 对 actionable planning 的边际价值。
+- **状态：** PLANNED；未运行。
+- **对应：** I12 / R1；合并旧E16三份方案
+- **来源：** S2受控数据条件；旧data-value/action-excitation方案。
+- **阳性对照：** 等量IID追加与不追加基线；保持优化器更新量可比，防止纯训练步收益冒充数据价值。
+- **噪声地板：** 采集seed、trajectory clusters、training seed分开；对小数据强波动重复而不是挑最好。
+- **决策表（跑之前写）：** 某数据/目标有效→测试互补性与方法扩展；收益来自覆盖→可形成覆盖感知策略；不同任务不同→解释差异；无效→调整数据配方，不关闭R1。
 
-## Stage 0 — one environment
+## 问题
+在相同可计量成本下，哪些经验与训练目标组合更改善规划？
 
-优先 topology + resettable simulator。
+## 首轮方案（可在运行前修订）
+固定基础数据与模型，追加等预算的常规轨迹、更广coverage、局部动作分支、多路线或失败/恢复经验，从可采集的两三类开始。对原生训练目标与一个有依据的改进目标比较，允许选择/混合策略原型。分开离线重采样、额外交互、reset和特权标注成本。
 
-构造 equal-transition-budget datasets：
+## 读数与资源
+数据/环境步预算、成功/恢复、任务transfer、训练成本；可辅助记录action-effect和candidate质量，不强制所有oracle先齐。
 
-- D0 baseline behavior
-- D1 action-excited
-- D2 route-diverse
-- D3 same-state counterfactual branches（若可行）
-
-保持：
-- total transitions
-- start-goal distribution
-- observation/render config
-- model capacity/steps
-
-记录：
-- state coverage
-- conditional action covariance / P94 excitation
-- route entropy
-- branch count per state
-- path-efficiency distribution
-
-## Model side
-
-首轮只 LeWM/one compact explicit WM。
-先回答“哪类data改善 controlled model + planning”。
-
-若现象强，再加 RC-aux / Temporal-Distance JEPA 判断 planning-aligned objective 是否改变 data ranking。
-
-## Readouts
-
-1. ID one-step error
-2. counterfactual action prediction under simulator branches
-3. rollout error
-4. fixed candidate ranking/regret
-5. closed-loop success
-6. environment-level query coverage（能支持时）
-7. GPU-hours / data-generation cost
-
-## Key analysis
-
-不只单因素主效应。
-
-至少看两个 interaction：
-- action excitation × route diversity
-- passive coverage × counterfactual branch data
-
-目标是发现 **data family 的 complementarity / substitutability**。
-
-## Gate
-
-- 所有差异只跟state coverage走 → 退化为普通coverage result；
-- counterfactual branches只等价于更多samples → 不升级；
-- 存在跨seed、second task的 data ranking / interaction → 升I12；
-- 最好能用简单 observable（excitation, route entropy, horizon）预测哪类data最值钱。
-
-## 结果
-未运行。
+## 结果与修订
+尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。

@@ -1,68 +1,20 @@
-# E18 — Oracle recovery-action map
+# E18｜模型可靠使用与恢复
 
-- **状态:** PLANNED / evaluation-first
-- **对应:** I11 / R5
-- **目的:** 先验证 failure state 下 oracle-best recovery action是否随 regime变化，不先训练router。
+- **状态：** PLANNED；未运行。
+- **对应：** I11 / R5；合并旧E18两份方案
+- **来源：** S2不确定性规划与历史反馈/适配/回退路线。
+- **阳性对照：** 原生固定策略、预算匹配的简单强策略；无shift条件检验策略额外开销。
+- **噪声地板：** 区分reset随机性、策略随机性和环境shift；router训练/阈值选择与测试episode分开。
+- **决策表（跑之前写）：** 自适应有用→分析与训练泛化；固定策略始终最好→保留简化贡献；oracle gap小→改策略集合或任务条件，不自动关闭R5。
 
-## Recovery action set
+## 问题
+什么使用/恢复策略提高有限预算下的成功与稳健性？
 
-首轮要覆盖**不同机制**，而不是四个相似threshold：
+## 首轮方案（可在运行前修订）
+同起点任务比较固定策略与两三种可实施的重规划、horizon调整、反馈或少步适配；允许基于当前残差/分歧的简单阈值原型。Oracle可在可重置环境比较干预上界，不要求先建立完美错误分类器。所有策略可获得的观测和交互预算明确。
 
-1. **baseline / reuse**；
-2. **replan cadence change**：AdaReP-style frequent refresh；
-3. **planning abstraction change**：shorter horizon / nearby subgoal；
-4. **model-use change**：policy/intuition fallback 或 certified abstain；
-5. **state/model correction**：feedback observer（资产可用时）。
+## 读数与资源
+成功/风险、时延、model calls、额外交互/更新；未来结果/隐藏state不能作为部署特征。
 
-Test-time gradient adaptation先不加入；只有上述动作出现 clear regime 后，再作为更贵repair。
-
-## Conditions
-
-- near / far goal
-- in-support / low-support action region
-- clean / dynamics shift
-- low / high candidate margin
-- optional partial observation
-
-## Oracle evaluation
-
-同一 environment state/reset：
-- 每种 recovery action运行多 stochastic seeds
-- 计算 utility lift vs baseline
-- 标记 oracle-best recovery action
-
-## Candidate predictors
-
-不新造 arbitrary probe，优先已有、已有论文证明和具体 repair相关的 signals：
-- rollout residual after one real step（Feedback WM / When WMs Lie）；
-- local dynamics sensitivity + cached-rollout mismatch（AdaReP）；
-- certified decision-relevant error / predicted advantage（Dual-Frontier）；
-- intuition-vs-WM disagreement / reliability（IMWM-like）；
-- candidate margin；
-- action-support score；
-- goal distance / horizon ratio；
-- planner-reachable fidelity；
-- H/K mismatch indicator。
-
-## Scientific question
-
-是否存在：
-
-```text
-observable failure signature
-        ↓
-best recovery action
-```
-
-并能跨task泛化？
-
-## Gate
-
-- 一种 recovery action几乎总赢 → router没有意义，转研究该方法的failure boundary；
-- signals无法预测 oracle ranking → I11 park；
-- stable mapping + meaningful compute savings / success lift → 再设计 tiny router；
-- 若每个 published signal只预测它自己原论文的repair，却无法比较不同repair，说明需要新的 common decision-level signal或failure taxonomy；这本身可生成下一seed；
-- internal accuracy改善但utility null → 不升级。
-
-## 结果
-未运行。
+## 结果与修订
+尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。
