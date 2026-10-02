@@ -1,0 +1,129 @@
+{
+  "phase": "pilot",
+  "seed": 17,
+  "table": [
+    {
+      "condition": "baseline",
+      "updates": 0,
+      "split": "en_dev",
+      "metric": "f1",
+      "mean": 0.15773459275419627,
+      "paired_item_bootstrap95": [
+        0.1414917833947933,
+        0.1752704488158332
+      ],
+      "context_cluster_bootstrap95": [
+        0.14126213929416687,
+        0.17518819438389283
+      ],
+      "n_context_clusters": 424,
+      "predictions_sha256": "cffea4b1bb115f2d5a6c81f9a384728cbcf90e01fe6ba59b79295d5021ae475e",
+      "overflow": 0,
+      "cap": 160,
+      "empty": 0
+    },
+    {
+      "condition": "baseline",
+      "updates": 0,
+      "split": "en_dev",
+      "metric": "exact_match",
+      "mean": 0.015625,
+      "paired_item_bootstrap95": [
+        0.005859375,
+        0.02734375
+      ],
+      "context_cluster_bootstrap95": [
+        0.005859375,
+        0.027398603276927187
+      ],
+      "n_context_clusters": 424,
+      "predictions_sha256": "cffea4b1bb115f2d5a6c81f9a384728cbcf90e01fe6ba59b79295d5021ae475e",
+      "overflow": 0,
+      "cap": 160,
+      "empty": 0
+    },
+    {
+      "condition": "baseline",
+      "updates": 128,
+      "split": "en_dev",
+      "metric": "f1",
+      "mean": 0.6732648771121337,
+      "paired_item_bootstrap95": [
+        0.6382296297654466,
+        0.7078450692549152
+      ],
+      "context_cluster_bootstrap95": [
+        0.6380405310071489,
+        0.7096646900225677
+      ],
+      "n_context_clusters": 424,
+      "predictions_sha256": "c42463b821b6d673d00ff6404af6236c29bca729bb64e4dbdef827989026f986",
+      "overflow": 0,
+      "cap": 0,
+      "empty": 0
+    },
+    {
+      "condition": "baseline",
+      "updates": 128,
+      "split": "en_dev",
+      "metric": "exact_match",
+      "mean": 0.525390625,
+      "paired_item_bootstrap95": [
+        0.484375,
+        0.568359375
+      ],
+      "context_cluster_bootstrap95": [
+        0.48120263530112406,
+        0.5694716242661448
+      ],
+      "n_context_clusters": 424,
+      "predictions_sha256": "c42463b821b6d673d00ff6404af6236c29bca729bb64e4dbdef827989026f986",
+      "overflow": 0,
+      "cap": 0,
+      "empty": 0
+    },
+    {
+      "condition": "baseline",
+      "updates": 512,
+      "split": "en_dev",
+      "metric": "f1",
+      "mean": 0.7187592017178899,
+      "paired_item_bootstrap95": [
+        0.684254944290381,
+        0.7533322903039837
+      ],
+      "context_cluster_bootstrap95": [
+        0.6842544341667776,
+        0.7536321553342687
+      ],
+      "n_context_clusters": 424,
+      "predictions_sha256": "0d7132111348cf13a333ec93a4cb90f6fa2a1477f835186d3ab089522c3567be",
+      "overflow": 0,
+      "cap": 1,
+      "empty": 0
+    },
+    {
+      "condition": "baseline",
+      "updates": 512,
+      "split": "en_dev",
+      "metric": "exact_match",
+      "mean": 0.595703125,
+      "paired_item_bootstrap95": [
+        0.552734375,
+        0.638671875
+      ],
+      "context_cluster_bootstrap95": [
+        0.5538461538461539,
+        0.63889157014157
+      ],
+      "n_context_clusters": 424,
+      "predictions_sha256": "0d7132111348cf13a333ec93a4cb90f6fa2a1477f835186d3ab089522c3567be",
+      "overflow": 0,
+      "cap": 1,
+      "empty": 0
+    }
+  ],
+  "differences": [],
+  "uncertainty": "One adaptation seed; item/context intervals do not quantify training-seed uncertainty.",
+  "scope": "Effective generation-learning baseline, not new causal mechanism or novelty."
+}

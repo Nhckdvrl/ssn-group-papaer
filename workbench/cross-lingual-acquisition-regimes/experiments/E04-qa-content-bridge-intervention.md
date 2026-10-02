@@ -17,3 +17,5 @@
 官方译料已下载，尚未做pool审计与GPU干预。完整两阶段训练的GPU启动仍待E03全曲线，不以“配对应该有用”预定结果。XLDA/PreAlign/AdaXEval/ParaRater都覆盖母问题；本卡无novelty或ownership升级。
 
 **2026-10-02训练前amendment（尚无GPU干预结果）：** 首次8192单位长度匹配给new/reuse独立context数6691/5083，max question/context5/6，存在内容多样性混杂。原始数据/manifest保留为 `artifacts/qa_bridge/data_initial_unequal_diversity.json` 与 `results/e04_data_initial_unequal_diversity_manifest.json`，不作为拟跑输入。修改为每池4096个distinct context、每context一个问题，完整单位各重复2次，仍8192单位/256更新；两池独立context数与重复次数完全相同，再逐语言匹配token预算。new覆盖选中监督问题的25%，context覆盖须另报；未固定语义主题或质量。这是预训练前混杂修复，不按模型target分数筛样本；其他协议不变。
+
+修正后CPU准备通过：new/reuse均4096独立context×2重复；EN loss token1654758/1651606（差0.190%），DE2121658/2122050（差0.018%），在1%预注册容差内。7391独立context候选，4096对应中995双语长度完全匹配；2,795个无官方译料、6个完整单位超2048候选预先排除。hash见 `results/e04_data_manifest.json`。encoder完整编码触发6585-token长度警告，但这些单位在进入pool前剔除，不截断或送进模型。未GPU训练。
