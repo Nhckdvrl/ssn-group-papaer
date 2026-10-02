@@ -169,8 +169,9 @@ offline / reward-free data
 - **ownership：** “从日志挖 temporal progress/reachability”已占；和 RC-aux 一起形成我们 I01 的直接压力。
 - **关键边界：** cross-trajectory negative 与 trajectory gap 都是 dataset-induced supervision，不等于 environment shortest distance。
 
-### P15 — RC-aux
-**来源：** 本项目上传论文 arXiv:2605.07278；代码：https://github.com/Guang000/RC-aux
+### P15 — RC-aux — NeurIPS 2026
+**来源：** 本项目上传论文 arXiv:2605.07278；代码：https://github.com/Guang000/RC-aux  
+**状态核对：** official repo main（2026-10-02）标注 Sep 2026 accepted to NeurIPS 2026；本 workbench 的方法/代码审计仍固定到 ASSETS 中的旧 commit，不能把 main 后续改动混进复现。
 - **母问题：** short-horizon predictive supervision 与 long-horizon planner query 不同；latent proximity 与 finite-budget attainability 不同。
 - **方法：** multi-horizon open-loop + budget-conditioned reachability；same-pair temporal hard negatives；planner 可使用 reachability gate。
 - **决定性设计：** 对同一 pair 改 h，使 head 不能只学“same trajectory”捷径。
@@ -556,6 +557,31 @@ offline / reward-free data
 - **方法：** standard action-conditioned forward WM + action-free latent planner预测下一 subgoal，把长任务拆成短期优化；同时减弱 explicit goal-image依赖。
 - **ownership：** “learn latent subgoal planner来救长 horizon”又一个直接邻居；和 HWM/SAGE/Anchored Planning共同压缩 hierarchy/subgoal空间。
 - **对 I03：** temporal-target层已有非常多方法；只有 regime law 或 identification 能支撑新贡献。
+
+
+
+---
+
+## 7.7 Cross-trajectory supervision 的邻域：谁把“另一条轨迹”当什么？（P64）
+
+### P64 — Conservative Offline Goal-Conditioned Implicit V-Learning — ICML 2025
+**来源：** https://proceedings.mlr.press/v267/ke25a.html
+
+- **母问题：** offline GCRL 中，same-trajectory HER 不会自然解决 stitching；直接采 cross-trajectory state-goal pairs 又会把 connected 与 unconnected pairs 混在一起，导致 value overestimation。
+- **方法：** 对 unconnected pairs 做 conservative penalty；对 connected pairs 借助 quasimetric structure 学值。
+- **关键区分：** “来自不同 trajectory”本身**不是**环境 reachability / connectivity 的语义标签。
+- **与 TD-JEPA / RC-aux 的镜像关系：**
+  - CGCIVL 警惕把 cross-trajectory pair 当可连接正样本；
+  - TD-JEPA / RC-aux 则把 cross-trajectory / cross-batch goal 用作 far/unreachable **负样本**；
+  - 两边都说明 trajectory identity 是 data-collection metadata，不是 MDP connectivity 本身。
+- **ownership：** “cross-trajectory pairs 需要区分 connected/unconnected”本身已经 ICML 2025；我们不能把“false negatives exist”当新发现。
+- **打开的 WM-specific pressure：** plan-aware latent WMs 把 heuristic negatives 直接写进**planning cost / reachability semantics**，同时这些 negatives 又可能承担 global separation / representation regularization。它们的 semantic role 与 regularization role 是否被混在了一起，尚需用真实 planner consequence 分解。这个 tension 进入新 I06。
+
+### Background — Contrastive RL / InfoNCE negative sampling
+在标准 contrastive RL / density-ratio interpretation 中，negative goals通常作为 replay-marginal samples进入 normalization/density-ratio objective，**不等价于逐对声明“这个 goal 不可达”**。TD-JEPA 的 margin hinge和 RC-aux 的 BCE 0-label 则给 pair 一个更强的 planning semantic。  
+因此 I06 的概念区分不是“contrastive learning 有 false negatives”（老问题），而是：
+
+> **sampling negatives for normalization/repulsion** 与 **asserting semantic non-reachability / far-distance labels** 是不同 statistical roles；plan-aware WM objectives 可能把二者合并。
 
 
 ---
