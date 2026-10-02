@@ -214,3 +214,6 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 | P94 | On the Identifiability of Controlled World Models | arXiv 2607.22430 | **A** | theory + controlled experiments | M3 critical confound：conditional action excitation controls transition identifiability/counterfactual planning；E14必须match/audit `rho_tr` proxy |
 
 | P95 | Hitting Time Isomorphism for Multi-Stage Planning with Foundation Policies / IEL | arXiv 2605.06470 | **A/B** | CODE: MagnusBoock/IEL | M3 strong method neighbor：directed hitting-time geometry + trajectory-label mismatch；禁止把“hitting-time/quasimetric correction移植到LeWM”当默认 novelty |
+
+| P96 | Evaluating Model-Based Planning and Planner Amortization for Continuous Control | arXiv 2110.03363 | B background | — | M2 historical collision：planner amortization / hybrid proposal / distillation 已老 |
+| P97 | PLDM comparative-science ownership revisit (same paper as P02) | NeurIPS 2025 | **A** | public ecosystem | M2 strongest comparative collision：data quality/length/size/OOD task+layout/inference time 已系统比较 explicit planning vs GCRL |
