@@ -230,3 +230,12 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 | P102 | FARM | arXiv 2609.11445 | B | R5：frozen predictive latent中的failure readout；detection≠repair |
 | P103 | Beyond Task Success: Stage-Wise Reliability | arXiv 2609.07126 | B | R5/common audit：内部shift排序不等于outcome排序 |
 | P104 | Path-Space Formulation of Prediction in WMs | arXiv 2606.28751 | B | R2：path distribution / irreversibility作为predictive-object假设 |
+
+## 12. R1 causal-data cluster（P105–P108）
+
+| ID | 工作 | Status | Read | Program作用 |
+|---|---|---|---|---|
+| P105 | CST-WM | arXiv 2609.06302 | **A-targeted** | R1：behavior action/evidence correlation→causal shortcut→wrong candidate ranking；structured mediation repair |
+| P106 | OnlineWM | arXiv 2609.23753 | B | R1：active error-driven data + causal optimization；88B级，不首轮复现 |
+| P107 | CoCo / Overcoming Statistical Bias in Action-Controllable WMs | arXiv 2608.04653 | B | R1/R2：visual inertia/statistical shortcut；counterfactual consistency |
+| P108 | WorldEcho / WorldSync | arXiv 2608.24885 | B | R1：expert-action evaluation hides off-expert action-following failures；coverage+grounding+intervention alignment |
