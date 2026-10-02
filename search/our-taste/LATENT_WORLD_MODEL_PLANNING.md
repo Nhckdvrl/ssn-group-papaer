@@ -3,96 +3,117 @@
 日期：2026-10-02。通道：our-taste。状态：**PROPOSED / problem-led literature+code-hardened / execution-ready；不是 candidate。**
 
 工作台：[latent-world-model-planning](../../workbench/latent-world-model-planning/README.md)；资源：[RESOURCES](../../RESOURCES.md)。  
-科学主入口：[RESEARCH_MINES](../../workbench/latent-world-model-planning/RESEARCH_MINES.md)。  
-领域 authority：[PAPER_LINEAGE](../../workbench/latent-world-model-planning/PAPER_LINEAGE.md) · [LITERATURE_LEDGER](../../workbench/latent-world-model-planning/LITERATURE_LEDGER.md) · [PROBLEM_METHOD_MAP](../../workbench/latent-world-model-planning/PROBLEM_METHOD_MAP.md) · [POSITIONING](../../workbench/latent-world-model-planning/POSITIONING.md)。
+全领域地图：[FIELD_PROBLEM_MAP_2026](../../workbench/latent-world-model-planning/FIELD_PROBLEM_MAP_2026.md)。  
+研究入口：[RESEARCH_MINES](../../workbench/latent-world-model-planning/RESEARCH_MINES.md)。  
+定位 authority：[PAPER_LINEAGE](../../workbench/latent-world-model-planning/PAPER_LINEAGE.md) · [LITERATURE_LEDGER](../../workbench/latent-world-model-planning/LITERATURE_LEDGER.md) · [POSITIONING](../../workbench/latent-world-model-planning/POSITIONING.md)。
 
 ## 1. 为什么保留
 
-不是因为“小模型容易跑”，而是这里同时满足：
+这不是“找一块没人做过的 world-model 小角落”。保留理由是：
 
-1. **母问题够大。** 顶会/强期刊已经连续把 representation geometry、decision sufficiency、counterfactual action effect、partial observability、planning search、temporal interface、offline data semantics 当作核心问题。
-2. **仍存在互相没有统一的 scientific pressures。** 2026 论文分别把瓶颈放在 representation / dynamics / objective / search / belief / data / query interface；不是一个“再刷点benchmark”的成熟死区。
-3. **实验可识别。** offline trajectories + resettable simulator + candidate-level planner允许 oracle replacement、same-state intervention、fixed-candidate regret，而不只看最终success。
-4. **资源高度适配。** compact models和独立实验可单卡/单节点；大量GPU用于 conditions × seeds × environments × ablations，而不是多节点大训练。
-5. **方法可以从问题长。** RC-aux、SALT、Temporal Straightening、FIRM-WM等强工作都不是“先有锤子”，而是把一个真实 mismatch 压成可操纵对象后再做很小的 correction。
+1. **顶会母问题成立。** DINO-WM、PLDM、Temporal Straightening、WorldTest、Jumpy WM、Action-Sufficient Goal Representations 等已证明 representation、data、planning semantics、predictive abstraction 都是顶会级问题。
+2. **领域仍没有统一答案。** 2026 papers 分别把成功/失败归因到 geometry、reachability、recursive dynamics、action identifiability、search、belief、data、query interface、test-time adaptation；很多 broad claim已拥挤，但“什么时候哪种结构真正必要”仍未闭合。
+3. **可做 controlled science。** compact model + offline trajectory + resettable simulator + candidate-level planner使 oracle replacement / fixed-candidate regret / same-state intervention可行。
+4. **资源极匹配。** 单次训练小、独立run多；几十个 GPU slot可以用于 data regimes × seeds × environments × strong baselines，而不依赖多节点高速互联。
+5. **方法可从问题自然长。** 不预设必须有新 architecture/loss；先找到 action/decision-level pressure，再做最小 correction。
 
-## 2. 不做什么
+## 2. 当前排序
 
-不能把这些当 headline：
+### Tier A1 — M3 / I09：behavior trajectory semantics → controllability
 
-prediction≠planning；L2≠progress；generic reachability；generic multi-step；generic inverse/physical grounding；“不同action future要可分”；CEM会OOD；long horizon难；subgoal/hierarchy；closed-loop比open-loop重要；POMDP需要history；false negatives存在。
+核心不是“data distribution matters”，而是：
 
-这些都只能是 background / baseline / measurement。
+> 在 **conditional action excitation 与 one-step transition support 已匹配/控制** 后，trajectory-derived planning supervision 是否仍把 higher-order behavior geometry（route / tempo / temporal co-occurrence）写进 deployed reachability/progress，并改变 same test candidate pool 的 ordering / MPC？
 
-## 3. 当前三个 problem mines
+为什么这个 exact delta重要：
 
-### M1 / I07 — Observable goal ≠ control state
+- RC-aux 自己明确 trajectory offset 只是 empirical proxy；
+- Bai/Xiong Temporal-Distance JEPA 直接从 trajectory gap学 directed progress；
+- quasimetric GCRL / CGCIVL 已占 behavior-statistics vs optimal controllability broad distinction；
+- **P94 Controlled-WM Identifiability** 又进一步证明 behavior policy 的 conditional action excitation本身可决定 counterfactual transition identifiability与planning。
 
-image-goal指定的是**可观测目标配置**，但 action consequence可能依赖隐藏 velocity / contact / friction / regime。真正的问题是：
+因此 E14 的科学价值完全取决于把普通 coverage / action-excitation解释排掉。
 
-> 同/近同 observation 对应不同 hidden dynamics 时，是否会改变真实最优 candidate action？deterministic history何时够，何时需要 belief / multi-hypothesis uncertainty？
+执行：
+- Stage A：公开 OGBench `navigate/stitch/explore`、`play/noisy` 只找 sensitivity；
+- Stage B：fixed start-goal DIRECT vs DETOUR/LOOP，匹配 state/action/local-transition support 与 conditional action covariance；
+- LeWM control + Temporal-Distance JEPA first；
+- fixed candidate rank/regret + closed-loop gate；
+- signal成立再 RC-aux / E15。
 
-FIRM-WM、UWM-JEPA、Flow Equivariant WM、I-TAP 已占 factorization/belief/memory的 broad story，所以 E11 必须先证明 **actionable aliasing → candidate regret → closed-loop consequence**。
+### Tier A2 — M2 / I08：predictive-computation placement frontier
 
-### M2 / I08 — Explicit rollout vs implicit predictive abstraction
+问题不是 explicit vs implicit谁强，而是：
 
-TMLR 2026 JEPA-WM study明确区分：
-- explicit action-conditioned dynamics + test-time CEM/MPPI/GD；
-- Bagatella TD-JEPA式 implicit long-horizon successor representation + amortized policy；
-- TD-MPC2式 hybrid；
+> world-model predictive structure应该保存在 primitive action-conditioned rollout、direct arbitrary-horizon predictor、policy occupancy/successor abstraction、amortized policy/planner，还是 hybrid？什么 regime决定？
 
-并把 training/inference/generalization trade-off 的直接比较留作 future direction。
+TMLR 2026 JEPA-WM study明确把 explicit/implicit training-cost、inference-cost、generalization trade-off 的 direct comparison留作 future direction；Bagatella TD-JEPA、Universal Horizon、Jumpy WM、TD-MPC2等形成 continuum。
 
-我们的目标不是排行榜，而是找：
+E13必须拆三本账：
+1. training compute；
+2. **task/query information budget**；
+3. deployment compute。
 
-> reward/goal redefinition、dynamics/layout shift、horizon、data coverage、counterfactual-query需求、deployment compute 能否预测 explicit / implicit / hybrid 的 regime frontier？
+重要实现事实：Bagatella TD-JEPA official OGBench eval会从 replay buffer采样约 10k states，并用 OGBench `physics` relabel task reward做 reward inference；这不能和 image-goal MPC的一张 goal observation假装成同等 task information。
 
-E13 是 matched pilot。
+目标是跨 task 的 **regime boundary / hold-out prediction**，不是 Pareto表。
 
-### M3 / I09 — Behavior trajectories ≠ environment controllability
+### Tier B — M1 / I07：finite-history 后的 actionable ambiguity
 
-RC-aux / Bai-Xiong Temporal-Distance JEPA 从 trajectory order/gap/cross samples 学 planning semantics；QRL/CGCIVL/PLDM 已说明 behavior statistics 与 optimal control/connectivity不是同一件事。
+Broad POMDP/hidden-physics/belief空间已经很拥挤：
+Physically Viable WM、FIRM-WM、UWM-JEPA、Branch-JEPA、Flow Equivariant WM、Action-Sufficient Goal Representations等都直接占位。
 
-真正未决的是：
+所以 E11只问：
 
-> 在相同 environment dynamics 下，**真实改变 generating behavior policy** 后，planning-aware latent WM 是否把 behavior route/tempo 写进 deployed reachability/progress geometry，并改变 MPC candidate ranking与closed-loop control？
+> 给足 deployment 可用 finite history 后，是否仍存在多个 action-relevant hidden hypotheses，使同一个 visible history对应不同 best action，并造成 baseline planner regret？
 
-E14 必须控制/量化 coverage/local support；旧 E03/E04 只是重切 episode、loss看不到 treatment，已 VOID。
+history能解决就 STOP，不造 belief method。
 
-## 4. 子诊断
+## 3. 子诊断与共享仪器
 
-- **I06 / E08–E10**：semantic negatives vs global geometric regularization。保留，但已降为 M3 slice；generic“negative distortion”不是论文。
-- **I03 / E06–E07**：oracle bottleneck ladder。是三条mine共用的定位仪器；只有出现cross-task predictive regime law才独立升级。
-- I05 generic POMDP/context sweep 已被 I07 supersede。
+- **I06 / E08–E10**：heuristic semantic negatives vs global geometric regularization；只作为 M3 子机制。
+- **I03 / E06–E07**：representation/dynamics/search/time/query bottleneck oracle；只有形成 cross-task predictive regime law才独立升级。
+- **E02**：candidate decision alignment calibration。
+- 旧 E03/E04 = VOID；I01/I02 parked；I05由I07 supersede。
 
-## 5. 执行
+## 4. 明确红区
+
+不能再直接当 headline：
+
+prediction≠planning；L2≠progress；generic reachability；generic multi-step；generic inverse/physical grounding；action futures要可分；CEM会OOD；long horizon难；subgoal/hierarchy；POMDP需要history；uncertainty/multimodal future本身；test-time adaptation；latent action；efficient transition；closed-loop比open-loop重要；false negatives存在。
+
+这些都只能是 baseline / diagnostic / related-work pressure。
+
+## 5. 执行图
 
 ```text
-E00 smoke
-  ↓
-E01 baseline + replay/candidate logger
-  ├─ E11 → conditional E12       M1
-  ├─ E14 → conditional E15       M3
-  │      └─ E08/E09/E10          M3 subdiagnostic
-  └─ E13 → hold-out regime test  M2
+E00/E01 common substrate
+   ├─ E14 M3 FIRST  → conditional E15
+   │      └─ E08 → E09 → E10 subdiagnostic
+   ├─ E13 M2 SECOND → regime confirmation / one middle-family baseline
+   └─ E11 M1 CONDITIONAL → conditional E12
 
-E02/E06 = common decision/oracle calibration
-E03/E04 = VOID
+E02/E06 = common scientific instruments
 ```
 
-第一轮三个 mine 都只跑**便宜的 proof-of-problem**；哪一条先出现自然、稳定、对decision load-bearing的 pressure，再用多GPU大面积铺开。
+第一轮不铺大矩阵。哪个 mine 先得到 **natural failure + decision consequence + clean intervention leverage**，再用多 GPU迅速扩 seeds / task structures / strongest neighbors。
 
 ## 6. 顶会升级标准
 
-至少形成：
-- 一个领域真实问题中的 **new distinction / failure law / regime boundary**；
-- candidate/action/closed-loop consequence；
-- 对强近邻的 exact delta；
-- controlled identification，能排除普通coverage、compute、H/K、search budget等解释；
-- 若需要方法，方法是 diagnosis 的最小自然后果，而不是“加一个loss涨点”。
+至少同时满足：
 
-更多seed、更多benchmark、漂亮probe、单个toy anomaly都不是终点。
+- 真实、自然、社区关心的问题；
+- 不是一个内部 probe anomaly；
+- candidate action / regret / closed-loop consequence；
+- exact related-work delta；
+- 强 alternative explanations 被 controlled intervention 拆开；
+- 第二 task structure / objective / method确认 scope；
+- 若做方法，method 是 diagnosis 的最小后果，而不是“LeWM + module”。
 
-## 7. 容量
+## 7. 当前状态
 
-保持 PROPOSED；不替换现有 ACTIVE 线。用户把本 workbench 交给本地 agent 后，agent按 [LOCAL_AGENT_PROMPT](../../workbench/latent-world-model-planning/LOCAL_AGENT_PROMPT.md) 自主推进小pilot与卡片内分支；状态变化仍由人决定。
+- science claim = 0；
+- GPU run = 0；
+- workbench保持 PROPOSED；
+- FIELD map / lineage已扩至 P01–P94；
+- 本地 agent入口：[LOCAL_AGENT_PROMPT](../../workbench/latent-world-model-planning/LOCAL_AGENT_PROMPT.md)。
