@@ -435,6 +435,51 @@
 8. **最近邻距离**：TIVE/Adapt侧重梯度技能与当前模型的离线/阶段选样，InfoBatch以无偏重加权加速，DivBS组内多样性，COINCIDE概念技能覆盖；OASIS把跨batch概率预算与冗余调整结合在持续调优，提出MICVIT并跨模型验证。这个delta来自可解释的实际选择约束，给我们方法形态参考，不是必须找绝对空白。
 9. **对我们**：若E13显示池资格有不可替代残差，研究如何以最低必要信息更新补货决策；若廉价冻结律成功，解释它什么时候足够、部署在新记录/池上能省什么真实成本，而非宣称首次在线抽样/迁移。先等真实动作结果，不因近邻存在关闭该科学问题，也不因为一个seed均分接近宣布等价。
 
+## P53 — OPUS（2602.05400v2；预印本）
+
+来源：[全文](https://arxiv.org/html/2602.05400v2)、[固定源码eb9390](https://github.com/gszfwsb/OPUS/tree/eb939016d76adfd0b1681ba8631bca0931c9125f)。独立6.1-sol/high阅读主文、§3–6推导/全部结果表、实际评分与训练关键代码；未复现，会议身份未核。
+
+1. **母问题与idea来源**：每步选择何种预训练数据，才能在固定update token预算更快提高目标能力？单纯原梯度相似性忽略Adam/Muon的更新几何，静态域比例也不能表达训练内变化。作者承接梯度匹配/在线选样，将utility放到优化器诱导的更新空间，并加入组内冗余；不是发现“optimizer影响学习”就结束。
+2. **关键前提/方法**：Bench-Proxy由benchmark检索30M库构造，每步proxy CE变化作为目标；历史inverse-RMS/diagonal预条件，Muon近似，软Boltzmann选择。Adam明确冻结候选对当前二阶矩的影响、Muon的NS也冻结；不是精确整batch Adam/终端任务oracle。
+3. **真实设置与证据**：全参GPT2 774M/1.5B预训练30B update tokens、Qwen3-8B CPT .5/1/1.5B对full3B；AdamW及Muon+Adam混合。GPT2-XL/AdamW平均41.01对random40.36，非每任务改善；有优化器/代理/冗余和效率消融，不把所有差都归因一个新分数。
+4. **训练/源码距离**：512token评分，实际6144/24576/4096序列更新；源码评分逐序列mean CE，训练`model.py` CE sum、`train.py`除GA后clip1。固定长度尺度不能直接类比E13可变assistant标签的16row窗口token-mean，也不能据代码差预判OPUS失效。GPU/API总成本未在本地复现，不用预算比例冒充实际省下的钱。
+5. **近邻与剩余pressure**：LESS已有Adam逐例特征，GRAD-MATCH/在线选择有组更新目标，OPUS的delta在现代优化器空间的训练内选择与大规模实证。Filter-then-Weight又进入SFT选择＋重权重，因此“optimizer-aware＋组交互”已拥挤。我们若研究监督分配，先证明其改变有后果的数据行动，再测现成方法、LR/source-mixture能否吸收；近似理论的缺口或VLM设置本身不是idea。
+
+## P54 — A Critical Look at Targeted Instruction Selection（ICML2026主会最终版）
+
+来源：[官方会议](https://proceedings.mlr.press/v306/nayak26a.html)、[36页最终全文](https://raw.githubusercontent.com/mlresearch/v306/main/assets/nayak26a/nayak26a.pdf)、[v2 HTML](https://arxiv.org/html/2602.14696v2)、[源码c1dc028](https://github.com/dcml-lab/targeted-instruction-selection/tree/c1dc0286b06b9e2a857d925e516938f4c9619dc2)。阅读：主文、B/D/E/F/G/J/M/N/O相关配方/结果、理论前提；图表读趋势/图注，未逐点抄图、未逐式复证L。官方Trainer/LESS关键接口定向读，未复现。
+
+1. **母问题和idea如何生长**：LESS、RDS+、KNN选样各把representation/算法/budget绑成系统，比较无法告诉实践者该付钱获得哪项信息。作者从这个真实解释压力出发拆组件，不要求绝对空白；UOT是由分布匹配的统一视角自然长出的方法，而非先造算法再找场景。
+2. **改变的前提与强对照**：三representation（LESS梯度、base隐藏状态RDS+、小sentence EMBED）×RR/DG/KNN-Uniform/KDE/UOT×500–10K；固定representation或算法，真正重训；同时保留未微调base和强random。random的三次独立draw与其他方法的三训练seed并非同一方差来源。
+3. **数据/模型/recipe**：TuluV2清理后约198K；BBH/Codex/GSM8K/TyDiQA/MMLU-Pro，query81/16/8/9/70。主Llama2-7B，另Llama3.2/SmolLM3/Qwen3/Olmo3；HF4.57.1直接Trainer，final默认全参，LoRA用于LESS四epoch warmup。G：LR2e-5/linear、2epoch、warmup.03/AdamW零decay/clip1、effective batch128/BF16/2048；Dolci200K移除tool-use并4096。单H10080GB各分支，不是项目只有一张卡小时。
+4. **真实发现与不能压成一句话的边界**：LESS距离对query loss最稳定，但终端metric/排名不总一致；小预算RR常强、大预算随机趋近，换Dolci后representation/算法的预算趋势不再统一。AppJ已有135M Smol代理跨7B，且更多预训练tokens不保证更好选择器；不能重占这些主张。不是证明“相似度没用”或“复杂方法都失败”。
+5. **理论及其距离**：统一为subset→query分布距离，域适应bound依赖特定loss/ERM；6.2需强凸、Lipschitz并保留pool-query mismatch与residual。不是任意深层CE/Adam的终端分数保证，作者正文也承认coverage不足时纯matching不能保证成功。图8用一seed LESS对三random multiset，并为比较衰减作常数offset，不能当额外多seed算法排名。
+6. **最近邻/对我们**：LESS的梯度库、RDS+表征、KNN-KDE的对齐/多样性、OT域适应给基础，论文拥有受控拆分与多pool/model真实效用证据。E13不能只靠“简单随机强/重抽样/多因素”获得delta；若冻结资格真的改变补货决策，再找到其不可替代的信息。该论文是重要科学形态参考：拥挤方向仍能做系统实验和解释，但需要实质的统一视角/稳定决策压力，不以我们的单seed八项均值假装做到同量级。
+
+## P55 — Filter-then-Weight（2604.00001v2；预印本）
+
+来源：[全文](https://arxiv.org/html/2604.00001v2)。阅读：方法、关键SFT训练结果/权重消融，**未完成独立全部附录和源码审计**；不作为已复现baseline。
+
+1. **母问题/来源**：仅筛选后等权训练忽略候选组成和实际优化器方向，故先过滤再以非负权重匹配有效更新；由filter-only的限制自然引入组内配置，不是首次多一个loss系数。
+2. **已拥有的前提与证据**：冻结历史二阶矩的optimizer-aware组选择/重权重；真实LoRA SFT TyDiQA终点48.67±2.68对optimizer-aware filter-only46.88±.91，有raw-gradient重权重、filter/reweight、NNLS及token-position对齐collapse消融。不是精确Adam oracle，也不等于当前VLM fullLM多任务配方。
+3. **对我们**：“组级Adam＋记录权重”“token目标更准确”已不能只换名称当新方法。备选只保留监督分配是否改变真实数据动作这一可检验问题；须先与普通LR、source-mixture及该方法可表达的干预对齐。当前E12没有selector错位证据，不因此追加GPU或关闭母问题；若以后正式发展该路先补全文/强实现/完整成本。
+
+## P56 — VisNec（2603.01195v2；预印本）
+
+来源：[全文](https://arxiv.org/html/2603.01195v2)、[源码1c12fde](https://github.com/DMK041218/VisNec/tree/1c12fdeb5dc2be54d449726bbabde722e5133a26)。独立agent读完整18页主文/related work、score/selection/多模态展开与训练配方；无附录，未复现。**与P47/OFA是两篇论文，不混用发布资产**。
+
+1. **母问题/idea来源**：多模态curation用文本/整体loss不能识别图像对答案预测的贡献；双pass blind/full的loss差再加覆盖约束选样。它承接Image Grounding而聚焦视觉必要性，不是第一篇考虑视觉信号。
+2. **训练证据与强对照**：LLaVA Stage1→LoRA、一epoch、15%：665K Rel100.2对random94.2，text-loss选择95.6/full-loss94.0/无聚类97.0；VisionFlan115.8，另Qwen尺度。**Text消融仅换选择信号，选后仍图文训练**，不等于同record的blind训练；但双pass选择加覆盖与真实utility已有ownership。
+3. **近邻距离**：同loss/token集合时Adapt-∞ IG等于`exp(blind_loss−full_loss)`，其单IG25K45.6低于random47.2、多路50.5，IG不是通用最优目标。ICONS C.2已有correct−Gaussian梯度选择后的任务取舍，不能占首次视觉贡献梯度。ViFT(P57)又拥有分开学习文本任务/视觉caption能力的宏观故事。
+4. **实现/解释边界**：公开selection未按主文先滤<=0；blind`images=None`取消展开视觉位置，长样本两pass可能有效label范围不同；Adapt官方IG用zero pixels，ICONS `collect_delta_grads`所读路径只收noise梯度、未在该函数减法。都是正式复现需固定的契约，不据此否认论文实证或立修bugidea。
+5. **留下的研究动作（推论）**：当期答案预测依赖图像，不必然证明策展资产相对另一动作的增量学习价值依赖当期图像。可复用E13 init的fresh-in/out full两臂，未来仅追加对应blind两臂，估`(in−out)_full−(in−out)_blind`；保留视觉槽/position/截断/labels且屏蔽视觉keys、正常图像评估。先等E13是否有可分解资格收益，不马上实现新selector/跑GPU。blind仍有答案文字、历史teacher-forcing和父模型视觉能力，不能叫“输出协议解释”或“视觉无用”。
+
+## P57 — ViFT（EMNLP2025 Findings；解释近邻，非主会量级锚点）
+
+来源：[官方论文](https://aclanthology.org/2025.findings-emnlp.547/)。定向补读主文方法/结果、训练数据及关键A/C–E附录，未逐项审示例表/源码。引用近邻不表示计划投Findings。
+
+文本任务能力与caption视觉能力分开训练，推理表示融合；同2.7M量下MathVista49.2对VIT43.6，去文本43.9、去高质caption42.1、去融合46.1。它已拥有“文字学任务、图像学视觉后融合”的方法与真实收益。因此我们若研究固定策展资产的模态路径，增量须是有后果的策展决策/必要信息，不能只是复述文本也能帮助VLM。其分开的数据/模型路径与固定记录干预不同，仅此设置差不自动构成novelty。
+
 ## 共同的读论文结论（RECONSTRUCTED）
 
 这些论文的增长方式不是“找到一个别人没碰过的名词”，而是改变一个有实际后果的前提：固定数据→学习数据，内部成功→目标收益，单学生→可复用改进器，盲目试验→有证据的干预。我们的 workbench 应继承它们已经成功的部分，再测量未解决的成本、适配与信用分配，而不是反复退回弱 baseline。

@@ -44,6 +44,9 @@
 | P50 ICONS | 多任务验证梯度分位投票，消融校准/聚合、5–95%预算、warmup比例、7B→13B、未见任务与三run一致性；公开133K可免费复用，构库为一次异构GPU成本 | 首次共识/预算敏感/跨模型静态复用；拿E12发布池随机10K裁判原方法按10K阈值重求票；把历史构库费用当本地每轮成本或自动省下成本 | 测终端效用向量中哪些由来源/监督结构重建、哪些依赖内容/组/目标信息，并发展在新记录上可部署的决策或最小必要反馈；matched-profile只为诊断，须对齐Curation-Bench同配比重抽样、AAS matched-topic，不能以控制本身占novelty |
 | P51 Adapt-∞ | ICLR2025主会；当前学生梯度伪skill＋分数专家在旧/新池持续选择，strong random已大幅降遗忘；C/Fig9用新池记录恢复旧中文skill；成本包含逐阶段重求信息 | 首次持续数据选择、首次跨池内容替换/恢复旧skill，或用“static不好”的引言覆盖所有冻结复用设置 | E13量冻结策展资格在同source×监督剂量的新记录上是否仍有真实效用残差及部署决策后果；若发展补货机制须对动态当前信号/免费旧池重放比较收益和全成本，不以便宜/冻结标签当delta |
 | P52 OASIS | ACL2026主会；当前学生末层FI、EMA/EMV跨batch概率预算、组内梯度冗余；三seed/跨模型；infinite memory-only retrieval、selection仍需候选前向 | 首次在线概率律/组交互/动态选样，把infinite memory说成有限存储或严禁replay，或把接近forward成本说成免费 | 测冻结资产能保留哪些训练价值、何时最低必要新反馈改变补货动作，并在新记录/池真实部署；在线方法存在不关题，单seed均分接近也不证明冻结律足够 |
+| P53 OPUS / P55 Filter-then-Weight | optimizer更新空间的在线选择/组内冗余，及SFT filter＋非负重权重已有真实收益；P55全文/强实现阅读债务仍有 | 首次optimizer-aware、首次组级Adam/记录权重、用代码loss尺度差宣判方法失败 | 若备选监督分配干预在保持来源梯度系数总质量后改变真实最优数据动作，再让普通LR/source-mixture与现成方法吸收；不能从E12剂量差直接立selector错位故事 |
+| P54 Critical Look | ICML2026主会；拆representation×algorithm×budget、base/random、多pool/model真实重训、135M proxy复用；query loss相关≠稳定终端排名已有 | 只测简单random强/预算排名反转/多因素表，或再给相似度与accuracy散点 | 学其由解释压力长出统一视角/UOT的论文形态；E13需落在有后果的补货决策与不可替代信息，不把matching或公平契约当全部delta |
+| P56 VisNec / P57 ViFT / P51 IG / P50 C.2 | 视觉必要性选样＋真实SFT、视觉贡献梯度、文本任务和caption视觉分开学习已有；IG单独并非普遍强 | 首次视觉必要性metric/视觉信号训练utility/文本帮助VLM，或把Text-score消融当blind训练 | 若E13有资产资格收益，复用init in/out两臂，仅再加对应blind训练做路径交互；保留槽/位置/labels并正常图像评估。该机制须改变策展行动，不能只发表去图像掉分。当前不追加GPU、不升主张 |
 | P19/P27 | 代理模型配比、其他自适应混合 | 换个 metric 名字当数据价值理论 | 选定具体动作空间后补齐对应方法实现，并报告何处已有方法已经足够 |
 
 ## 三个最危险的 compression risk
