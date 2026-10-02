@@ -164,3 +164,20 @@ TOP-M默认cheap rank近似refined rank；INTERVAL显式建模**cheap predictor�
 - y3：candidate-bank regret。
 
 只有离线trade-off有价值，才跑完整闭环 wall-clock / success。这样能把很多候选M/alpha筛选在单GPU甚至一次checkpoint评测里完成。
+
+
+## Elite-set sufficiency：一个可以支撑方法的结构性事实
+
+CEM 对下一轮 proposal distribution 的更新只消费 elite candidate actions，而不是所有 candidate 的精确 cost。令 full high-fidelity evaluator 的 elite set 为 \(E\)，selective method 恢复的 elite set为 \(\hat E\)，两者大小都为 \(K\)。如果 \(E=\hat E\)，那么在相同 sampled candidate bank 下，**CEM 的下一轮 mean / population-variance update完全相同**；非elite candidate 的high-fidelity cost可以完全不知道。
+
+更一般地，若每个action-sequence向量 \(x_i\) 满足 \(\|x_i\|_2\le B\)，且两elite sets各错换 \(r\) 个candidate（对称差大小为 \(2r\)），则均值更新有直接界：
+\[
+\|\mu_E-\mu_{\hat E}\|_2 \le \frac{2rB}{K}.
+\]
+对二阶矩阵同理有 \(O(rB^2/K)\) 的扰动；协方差更新也因此随elite mismatch比例增长。这个推导很简单，**当前只作为待形式化/单元测试的设计依据，不登记为已证明论文定理**。
+
+这使H-B的目标从“近似所有high-fidelity costs”转成更贴合planner的任务：
+
+> **用尽可能少的 refined evaluations 保住 high-fidelity elite set。**
+
+因此 offline candidate-bank 的第一指标应是 elite recall / symmetric-difference，而不是全体candidate的MSE或Spearman。若这个接口成立，后续理论与算法都围绕elite-membership uncertainty自然生长。
