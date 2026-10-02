@@ -5,12 +5,12 @@ I07–I13是当前可用种子，不是七篇预定论文。R1–R5是[研究计
 | ID | 文件 | Program | 实验入口 |
 |---|---|---|---|
 | I07 | [状态/信息](I07_observation_aliasing_belief_planning.md) | R4 | E11 |
-| I08 | [预测/计算](I08_explicit_implicit_frontier.md) | R2 | E13 |
+| I08 | [Planner-Stage Multi-Fidelity](I08_explicit_implicit_frontier.md) | R2 | E13 |
 | I09 | [轨迹监督](I09_behavior_to_controllability.md) | R1 | E14 |
-| I10 | [任务特化/复用](I10_query_placement_reuse.md) | R3 | E17 |
-| I11 | [可靠使用/恢复](I11_trust_recovery_routing.md) | R5 | E18 |
-| I12 | [数据价值](I12_equal_budget_data_value.md) | R1 | E16 |
-| I13 | [变化后的复用/更新](I13_revaluation_frontier.md) | R2/R3/R5 | E19 |
+| I10 | [Selective Query Specialization](I10_query_placement_reuse.md) | R3 | E17 |
+| I11 | [Utility-Gated Recovery](I11_trust_recovery_routing.md) | R5 | E18 |
+| I12 | [Planner-Boundary Branching](I12_equal_budget_data_value.md) | R1 | E16 |
+| I13 | [Selective Revaluation](I13_revaluation_frontier.md) | R2/R3/R5 | E19 |
 
 I01–I06的历史设计/诊断保留在[旧目录](../../../archive/latent-world-model-planning/pre-consolidation-2026-10-02/ideas/)。需要时以明确修订记录复用；不覆盖其历史语义。
 

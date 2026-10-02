@@ -268,3 +268,36 @@ CEM 对下一轮 proposal distribution 的更新只消费 elite candidate action
 > **用尽可能少的 refined evaluations 保住 high-fidelity elite set。**
 
 因此 offline candidate-bank 的第一指标应是 elite recall / symmetric-difference，而不是全体candidate的MSE或Spearman。若这个接口成立，后续理论与算法都围绕elite-membership uncertainty自然生长。
+
+### H-C｜Selective Query Specialization：只在需要的地方任务化
+
+**母问题（R3）：** query-conditioned world model在当前任务上可能更强，但会不会为seen objective牺牲prediction reuse？
+
+直接近邻已经把“query决定需要区分什么”说清，所以我们不重复理论。方法假设是：保持query-agnostic predictive core，只在proposal/cost或少量predictor adapter上做任务化，并让adapter只在planner真正需要更细分辨率的candidates上启用。
+
+首轮E17比较COST-ONLY、PRED-ADAPTER、FULL-QUERY，seen/unseen goals与新query shift都测。若selective adapter能保住大部分seen gain、又明显降低unseen degradation或额外compute，这条线才值得扩；如果COST-ONLY已足够，就把“无需重学dynamics”的简化结论作为结果。
+
+### H-D｜Utility-Gated Recovery：不是error大就更新，而是问“这次干预值不值”
+
+**母问题（R5）：** feedback、TTT、replan、fallback都已有方法，但哪次deployment mismatch真正值得用哪种干预？
+
+E18先用matched fork ledger产生 `HOLD / FEEDBACK / SHORT-UPDATE / EXTRA-REPLAN` 的真实 `Δutility`，然后用部署可见的residual、elite margin、rank instability、progress等特征训练轻量router。核心不是检测异常，而是预测**intervention utility**。
+
+若固定feedback或固定update已经统治所有条件，保留简化结论；如果不同failure modes明显对应不同干预，并且router在预算匹配下优于always-X，才形成更大的可靠规划故事。
+
+### H-E｜Selective Revaluation：变化后重学哪一层
+
+**母问题（R2/R3/R5）：** reward/query变化、局部transition变化和全局dynamics shift不应该默认用同一种update recipe。
+
+E19把可更新对象分成TASK/COST、SHORT DYNAMICS、LONG-HORIZON、REPRESENTATION与FULL。先做固定module update对照；只有“minimal sufficient update set”在多个shift/task上稳定，才训练selector。
+
+这条线与经典successor revaluation的关系是直接继承：经典结果给出reward vs transition change的计算差异；我们要解决的是**modern compact visual WM中哪层参数/预测结构需要更新，以及如何以planning recovery而不是prediction loss衡量**。
+
+### 第一波/第二波资源排序不是科研评级
+
+当前工程上优先：
+1. E13 Stage A0：几乎零训练，最快验证candidate-stage fidelity；
+2. E16 Stage 0/1：branch bank + data acquisition，训练独立可大面积并行；
+3. E17/E18/E19：已有checkpoint可复用时并行小pilot。
+
+这个排序只由“单位时间信息增益”决定，不表示R3–R5价值较低。任何第二波pilot先出现强signal，都可以立即转为主线。

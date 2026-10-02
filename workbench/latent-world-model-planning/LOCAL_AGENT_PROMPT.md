@@ -45,6 +45,15 @@ Fast-LeWM/cheap direct predictor广筛candidate，LeWM/multi-step/refined predic
 - 小模型参数量不等于便宜；latent距离/MSE跨不同表示通常不可直接比较。
 - Bagatella `TD-JEPA` 与 Bai/Xiong `Temporal-Distance JEPA`不是一篇论文。日志用完整paper ID，不能裸简称聚合。
 
+### C. E17 Selective Query Specialization（R3）
+若已有多goal checkpoint，直接做 COST-ONLY / PRED-ADAPTER / FULL-QUERY 的seen/unseen goal小对照。不要上来引入语言模型。目标是看query specialization应进入哪里，而不是重复“query matters”。
+
+### D. E18 Utility-Gated Recovery（R5）
+先做fork ledger，不先训router：同state比较 HOLD / FEEDBACK / SHORT-UPDATE（或EXTRA-REPLAN）。只有真实 `Δutility` 因state/shift明显不同，才训练轻量utility router。
+
+### E. E19 Selective Revaluation（R2/R3/R5）
+先做reward/query-only、local transition、broad dynamics三类shift中的最小模块更新对照，找“最小充分更新集”。经典reward-vs-transition revaluation是背景，不是新发现。
+
 ## 广泛实验与确认
 
 先测单任务和节点I/O，之后按实际授权并行独立训练、评测、seed和数据条件；全局ACTIVE容量不是pilot数量上限。避免共享盘被数十任务反复随机读，尽量节点本地缓存。

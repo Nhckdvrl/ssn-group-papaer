@@ -45,6 +45,14 @@
 
 两者都属于“重要问题 + 便宜决定性实验 + 大量独立确认”的RC-aux式科研经济学；只是当前起跑点，不是预先宣布的论文主旨。
 
+## 第二波也已具体化
+
+- **H-C / R3：Selective Query Specialization** — query只在cost/proposal/轻量adapter中选择性进入，比较seen-task gain与unseen-goal reuse。
+- **H-D / R5：Utility-Gated Recovery** — 用matched fork ledger学习什么时候HOLD / FEEDBACK / UPDATE / REPLAN真的值得做，而不是error大就更新。
+- **H-E / R2/R3/R5：Selective Revaluation** — reward/query、局部transition、全局dynamics变化后，比较最小充分更新模块与full update。
+
+它们不是“被近邻挤剩下的小角落”，而是从最新query-sufficiency、feedback/TTT、revaluation工作继续往**可训练方法 + planning consequence**发展。第一波H-A/H-B更优先只因为单位时间信息增益高。
+
 ## 当前证据与交付边界
 
 - **科学主张：0。** 论文报告值不是我们的实验结果。
