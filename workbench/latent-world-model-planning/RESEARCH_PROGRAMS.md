@@ -28,6 +28,8 @@
 - **Task-Sufficient World Models (ICML'26)**：active probing可暴露 control-relevant latent factors；
 - **WorldTest**：被动 rollout支持的事实不等于 environment-level query knowledge。
 - **OnlineWM (P101)**：active simulator querying + same-state counterfactual action contrast，说明 static offline coverage 与 observational objective都可能是问题。
+- **FACT (P111)**：success-only demos缺bad-action outcome，failure rollout supervision是独立数据轴。
+- **Dream2Fix (P108)**：failure-correction pairs可以通过WM生成/筛选，说明“恢复数据”本身也是可设计经验。
 
 这些不是“把 R1 做完了”，而是在回答：
 - excitation够不够？
@@ -62,7 +64,7 @@ planning lift / identification gain 谁更高？在哪些环境结构下？
 这里的 novelty 不会是“active data有用”，而应是 **data family的边际价值 / complementarity / regime law**。
 
 #### R1-D failure / recovery data
-成功 demo很多，但：
+FACT / Dream2Fix进一步说明这不是假想问题。成功 demo很多，但：
 - near-failure；
 - blocked action；
 - recovery；
@@ -190,6 +192,7 @@ E13 先比较 continuum两端并做三本账：
 - **Action-Sufficient Goal Reps**：value-sufficient不代表action-sufficient；
 - **WorldTest**：general WM 应支持 environment-level diverse queries；
 - **Grounded WM**：language query进入 planning representation；
+- **TaskSense (P110)**：在encoding前做task-relevant spatial selection，说明 specialization可以发生在perception gating层；
 - **TC-WM (P104)**：foundation features作为semantic scaffold，再提取 task-centric compact physical latent；
 - **SR-WM (P105)**：task-conditioned functional roles进入 state semantics；
 - **World Action Planner (P106)**：VLM负责task reasoning/proposal，multi-task WM保持physical outcome prediction，形成模块化 specialization/reuse 实例；
