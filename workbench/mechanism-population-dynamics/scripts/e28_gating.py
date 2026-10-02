@@ -73,7 +73,10 @@ def compute(repo, seed):
     L, H = model.config.num_hidden_layers, model.config.num_attention_heads
     dh = model.config.hidden_size // H
     R, ix = items()
-    ablate = {}  # layer -> list of heads to zero at the last position
+    ablate = {}  # layer -> list of heads to zero
+    span = {}    # positions whose logits are scored: prompt-final .. second-to-last candidate token
+    # BUGFIX (2026-10-03): the first version zeroed position -1 (the candidate's own last token), whose logits are
+    # never scored, so ablation had no effect. Ablate exactly the scored positions instead.
 
     def pre_hook(layer):
         def f(mod, args):
@@ -81,7 +84,7 @@ def compute(repo, seed):
                 return None
             x = args[0].clone()
             for h in ablate[layer]:
-                x[:, -1, h * dh:(h + 1) * dh] = 0
+                x[:, span["a"]:span["b"], h * dh:(h + 1) * dh] = 0
             return (x,)
         return f
     hooks = [model.model.layers[l].self_attn.o_proj.register_forward_pre_hook(pre_hook(l)) for l in range(L)]
@@ -94,6 +97,7 @@ def compute(repo, seed):
             for cand in (R[i]["dist"], R[i]["ans"]):
                 c = tok(" " + cand, add_special_tokens=False)["input_ids"]
                 x = torch.tensor([ids + c], device=model.device)
+                span["a"], span["b"] = len(ids) - 1, len(ids) - 1 + len(c)
                 out = model(x, output_attentions=want_attn and cand == R[i]["dist"])
                 logp = out.logits[0].float().log_softmax(-1)
                 lp.append(float(sum(logp[len(ids) - 1 + j, t] for j, t in enumerate(c))))
@@ -128,6 +132,13 @@ def compute(repo, seed):
         res[f"FE_c1_ablate_{name}"] = float(mq.mean() - md.mean())
         res[f"margin_decl_ablate_{name}"] = float(md.mean())
         res[f"margin_qa_ablate_{name}"] = float(mq.mean())
+    # built-in validity check: ablating every head at the scored positions must change the margins
+    ablate.clear()
+    for l in range(L):
+        ablate[l] = list(range(H))
+    chk = run(P["decl"][:20], False)[1]
+    res["check_all_heads_ablated_mean_abs_change"] = float(np.abs(chk - M["decl"][:20]).mean())
+    assert res["check_all_heads_ablated_mean_abs_change"] > 0.5, "ablation hook has no effect -> invalid run"
     ablate.clear()
     res["margin_decl_intact"], res["margin_qa_intact"] = float(M["decl"].mean()), float(M["qa"].mean())
     for h in hooks:
