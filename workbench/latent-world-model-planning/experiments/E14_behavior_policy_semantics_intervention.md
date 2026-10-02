@@ -27,6 +27,43 @@ OGBench manipulation generator：
 
 同样只作 broad discovery。
 
+## Preferred clean substrate: multi-door TwoRoom
+
+代码审计后，**TwoRoom 比先适配 OGBench maze 更适合作为 E14 Stage-B 首个 clean substrate**：
+
+- Temporal-Distance JEPA / RC-aux / LeWM 已原生支持 TwoRoom；
+- environment state显式包含 agent/target/door positions；
+- built-in ExpertPolicy 在跨房间时会选 **closest fitting door**，再去 target；
+- environment支持 1–3 doors、固定/随机 door positions、agent/target位置与 `task.min_steps`；
+- 因此可以在 **同一 environment reset / 同一 start-goal / 同一 door layout** 下，构造：
+  - `DIRECT_CLOSEST`：原 expert，走最近可行门；
+  - `DETOUR_FAR_DOOR`：强制走更远的可行门；
+  - `MIXED_ROUTE`：同 start-goal 对按概率走近门/远门。
+
+这比“navigate vs stitch”更接近我们真正想识别的变量：**environment controllability与start-goal保持不变，只改变 behavior route choice。**
+
+关键实现约束：
+- 只在至少两个 fitting doors 的 reset上纳入 clean comparison；
+- start/goal/door layout manifest完全相同；
+- DIRECT 与 DETOUR 使用相同 action-noise / action-repeat distribution；
+- 记录 chosen-door ID、path length、oracle shortest path、local action covariance；
+- 若 far-door route导致明显不同 state coverage，后续用 route-overlap区域 / stratified state bins / matched transition subsets做 secondary analysis；
+- 不要求做到“不可能的完美 support equality”，但必须把 residual support gap量化，并让 P94 action-excitation control进入主结果表。
+
+这条设计也更容易形成直观主图：
+
+```text
+same start + same goal + same doors
+       ├─ behavior data mostly uses near door
+       └─ behavior data mostly uses far door
+                 ↓
+same test candidate bank / same environment D*
+                 ↓
+does learned planning semantics prefer the behavior route?
+```
+
+如果模型只是学 environment controllability，训练 route frequency不应系统改变同一 test pair/candidate 的最优 controllability ranking；如果 trajectory-derived semantics继承 behavior geometry，则会出现可测 route imprint。
+
 ## Stage B — controlled behavior intervention（真正决定 M3 去留）
 
 首选 TwoRoom / PointMaze-like topology。
