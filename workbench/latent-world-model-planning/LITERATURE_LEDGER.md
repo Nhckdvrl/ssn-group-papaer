@@ -189,3 +189,26 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 - **M2:** 相对增强。P80 让 explicit↔implicit 变成连续谱而非二分，P09仍明确缺 direct frontier study。
 - **M3:** 相对增强。P75提醒 passive data identifiability本来就不是理所当然，但 trajectory-derived planning semantics 的 **behavior-policy imprint** 仍未被这些新增工作直接解决。
 - **Adaptation / efficiency / latent actions:** 全部降为 baseline/WATCH，不再单开mine。
+
+
+## 10. Additional ICML / evaluation hardening（P90–P93）
+
+| ID | 工作 | Venue/Status | Read | Code / asset | Workbench作用 |
+|---|---|---|---|---|---|
+| P90 | Action-Sufficient Goal Representations | **ICML 2026** | B | publication material | value/goal sufficiency ≠ action sufficiency；M1/M4 broad decision-sufficiency再收紧 |
+| P91 | Policy-Driven World Model Adaptation for Robust Offline MBRL | **ICML 2026** | B | CODE: Agentic-Intelligence-Lab/ROMBRL | joint policy-model robust adaptation；generic policy-aware WM adaptation已占 |
+| P92 | Offline RL with Universal Horizon Models | **ICML 2026** | B | publication material | arbitrary-horizon direct predictive abstraction；M2 continuum中间点 |
+| P93 | How Should World Models Be Evaluated? A Decision-Making-Centric Position | arXiv 2606.15032 | A/B | position/evaluation framework | L0–L7 claim-evidence ladder；强化 Actionable consequence gate，不是单独 novelty |
+
+### P93 对本 workbench 的硬规则
+
+该 position paper 把 world-model evidence 从 visual plausibility 向 counterfactual / policy evaluation / planning / optimization utility逐级提升，并指出 claim/evidence mismatch 是当前领域反复出现的问题。
+
+所以：
+- latent probe / prediction metric / internal geometry = diagnostic；
+- candidate-ranking / counterfactual action fidelity = 更强；
+- optimization lift / closed-loop success / exploitability = manuscript-critical evidence。
+
+这不是说每篇 compact-WM paper都必须做到最高层，而是我们的 claim 强度必须与证据层级匹配。
+
+| P94 | On the Identifiability of Controlled World Models | arXiv 2607.22430 | **A** | theory + controlled experiments | M3 critical confound：conditional action excitation controls transition identifiability/counterfactual planning；E14必须match/audit `rho_tr` proxy |

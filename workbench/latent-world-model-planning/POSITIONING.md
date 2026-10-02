@@ -74,6 +74,7 @@
 | One-Step Next-Latent… | one-step conditional mean does not generally identify rollout kernel | “one-step objective不是真 world model” |
 | FF-JEPA | action-free latent subgoal planner for long horizon | “learn latent subgoal planner” |
 | Behavior-Invariant Task Rep | behavior policy invariant task latent | “做 behavior-invariant representation” |
+| Controlled-WM Identifiability | conditional action excitation governs transition identification/counterfactual planning | “behavior policy变了所以world model变差” |
 
 ## 3. 明确不能再作为我们的 headline
 
@@ -154,6 +155,9 @@
 - “offline data distribution当然重要”
 - “quasimetric已经研究suboptimal behavior”
 - “只是coverage变了”
+- **“P94已经证明 behavior-policy conditional action excitation 决定 counterfactual transition identifiability / planning。”**
+
+所以 M3 只能在 conditional action excitation 与 local transition support已经匹配/控制后，研究 **higher-order temporal organization / route semantics 的额外 imprint**。
 
 所以必须匹配/量化 state-action/local-transition support，并证明 effect 在 planning-aware semantics 上 load-bearing。
 

@@ -10,14 +10,15 @@
 1. compact latent-WM 不是缺“小技巧”，而是同时存在 **state definition、predictive abstraction placement、offline supervision semantics、planner interface** 等真实问题；
 2. 一个看起来漂亮的实验若 treatment 对真实 implementation 不可见，应该在跑 GPU 前就杀掉。旧 I01/E03–E04 就是这样 VOID 的。
 
-当前科学入口改为 [RESEARCH_MINES](RESEARCH_MINES.md)：
+当前科学入口由 [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md) + [RESEARCH_MINES](RESEARCH_MINES.md) 决定，优先级不是平级：
 
-- **M1/I07**：observable image-goal state 与 hidden control state 的错位；E11 → conditional E12。
-- **M2/I08**：explicit rollout vs implicit predictive abstraction 的 regime frontier；E13。
-- **M3/I09**：behavior-policy trajectory semantics vs environment controllability；E14 → conditional E15。
-- **I06/E08–E10**：M3 的低成本 negative-role 子诊断，不再默认主论文。
-- **I03/E06–E07**：共享 bottleneck/oracle tool；只有形成 predictive regime law 才可能独立升级。
-- I01/I02/I05 = PARKED；E03/E04 = VOID。
+1. **M3/I09 = Tier A1 / first scientific pilot**：behavior-policy trajectory semantics vs environment controllability；E14 → conditional E15。
+2. **M2/I08 = Tier A2 / second scientific pilot**：predictive-computation placement frontier；E13 → conditional regime confirmation / hybrid test。
+3. **M1/I07 = Tier B / conditional**：finite-history 后仍存在的 actionable hidden ambiguity；E11 → conditional E12。
+4. **I06/E08–E10**：M3 的低成本 negative-role 子诊断，不再默认主论文。
+5. **I03/E06–E07**：共享 bottleneck/oracle tool；只有形成 cross-task predictive regime law 才可能独立升级。
+
+I01/I02 = PARKED；I05 = SUPERSEDED by I07；E03/E04 = VOID。
 
 本 workbench 的原则不是“必须先有方法”，而是：
 
@@ -27,12 +28,13 @@
 
 1. root AGENTS.md / workbench/EXECUTION.md
 2. experiment card 跑前内容
-3. RESEARCH_MINES.md
-4. POSITIONING.md
-5. EXPERIMENT_PROGRAM.md
-6. PAPER_LINEAGE.md / LITERATURE_LEDGER.md
-7. 本文件
-8. 旧 LATENT_PLANNING_SURVEY.md
+3. FIELD_PROBLEM_MAP_2026.md
+4. RESEARCH_MINES.md
+5. POSITIONING.md
+6. EXPERIMENT_PROGRAM.md
+7. PAPER_LINEAGE.md / LITERATURE_LEDGER.md
+8. 本文件
+9. 旧 LATENT_PLANNING_SURVEY.md
 
 任何 manuscript-critical事实最终回原论文/官方代码。
 
@@ -46,26 +48,43 @@
 ## 3. 执行顺序
 
 ### E00 / E01 — common substrate
-先把至少一个 explicit compact WM 的 native闭环、candidate logging、environment replay/oracle 跑通；资源与 I/O实测后再扩。
+先把一个 compact explicit WM 的 native闭环、candidate logging、environment replay/oracle 跑通。不要为了统一框架先重写全部方法。
 
-### E11 — M1 proof-of-problem
-优先做 **same/near-same observation + different hidden state → different best action** 的 simulator oracle。  
-不训练新 belief model也能先决定这个问题是否 load-bearing。只有 action regret显著才 E12。
+### E14 — M3 FIRST
+真正改变 **generating behavior policy**，而不是只改 episode metadata。
 
-### E14 — M3 real behavior-policy intervention
-真正改变 generating behavior policy / trajectory distribution，让 RC-aux / Bai-Xiong Temporal-Distance JEPA 的 training pairs发生变化。  
-不要复活旧“只重切 episode”设计。E14出现跨 objective 的 behavior imprint 后才 E15。
+第一轮：
+- 公开 OGBench `navigate/stitch/explore` / `play/noisy` 只做 sensitivity discovery；
+- 科学 pilot 必须进入 fixed start-goal 的 DIRECT vs DETOUR/LOOP；
+- 同时量化 state/action/one-step-transition support overlap；
+- 先 LeWM + Bai/Xiong Temporal-Distance JEPA，1 seed；
+- learned score变化不够，必须走到 fixed-candidate rank/regret，最好再到 closed-loop。
 
-### E08 — I06 cheap subdiagnostic
-dataset/sampler可读后可与 E11/E14 并行。它只回答 heuristic negative 的局部语义/regularization角色，不因为便宜就占领 paper narrative。
+只有 support/coverage 不能解释的 planning-aware-specific behavior imprint 才值得继续 E15 / second objective。
 
-### E13 — M2 matched explicit↔implicit pilot
-common data/task/utility contract稳定后，接 **Bagatella TD-JEPA (ICLR'26)** 与 explicit JEPA-WM；比较 regime，不横抄原论文主表。先 1–2 environments，不大铺。
+### E08 — M3 cheap subdiagnostic
+dataset/sampler可读后即可并行。它审计 heuristic negative 的 semantic validity，但 **E08 本身永远不是 paper result**。
+
+### E13 — M2 SECOND
+common substrate 稳定后接 Bagatella TD-JEPA 与 explicit JEPA-WM/LeWM。优先 OGBench Cube pixels。
+
+必须分开三本账：
+1. training compute；
+2. **task/query information budget**；
+3. deployment compute。
+
+Bagatella official OGBench evaluation约用 10k replay samples，并通过 OGBench `physics` relabel task reward再做 reward inference；这和 image-goal MPC 拿 goal observation不是相同 task specification。不能把这个差异偷塞进“inference cost”。
+
+目标是找 explicit / arbitrary-horizon / implicit / hybrid 的 **regime frontier**，不是比较平均分。
+
+### E11 — M1 CONDITIONAL
+只做 cheap oracle，不先训练 belief architecture：
+same RGB/different hidden state sanity → 加 native finite history → history能解则 STOP → 只有仍存在 action-relevant ambiguity且 baseline有candidate regret，才 E12。
 
 ### E02 / E06
-作为 common decision / bottleneck calibration。若 M1–M3 中出现 failure，用 oracle ladder定位 representation/dynamics/search/time 哪层真正 binding。
+作为 M2/M3 anomaly 的 common decision / bottleneck定位仪器，不先铺大矩阵。
 
-**并行原则：** 第一轮允许三条 mine 各做一个廉价 existence test；随后只把大量 GPU 集中到产生最强 scientific pressure 的那条。
+**并行原则：** 第一轮允许 E14、E13、E11、E08 各做最小 existence test；随后只把大量 GPU 集中给过 gate 的 mine。
 
 ## 4. I06 实现事实：必须记住
 
@@ -149,15 +168,20 @@ I03同理：没有regime law不设计adaptive router。
 
 ## 9. 多卡
 
-优先：
-1. E08 CPU / released-checkpoint diagnostics
-2. 1-seed E09 variants
-3. positive/negative controls
-4. 通过后多 train seeds
-5. contact-rich + second objective
-6. 最后才大矩阵
+Phase 1 不铺大矩阵：
+1. E14 DIRECT/DETOUR + LeWM/Temporal-Distance JEPA 各 1 seed；
+2. E13 一组 OGBench Cube matched native/common audit；
+3. E11 oracle only；
+4. E08 CPU / dataset audit。
 
-同节点先stage local data并测data_wait；不要跨节点DDP。
+过 gate 后才：
+- 3+ train seeds；
+- second task structure；
+- strongest nearest baseline；
+- hold-out regime；
+- conditional method ablation。
+
+同节点先 stage local data 并测 data_wait；不要跨节点 DDP。研究室与实习资源默认不混用私有资产，只同步公开 code/config/metrics/manifest。
 
 ## 10. 写回 / 人审
 
@@ -169,9 +193,11 @@ I03同理：没有regime law不设计adaptive router。
 - small commit/push
 
 触发人审：
-- E09机制方向明确；
-- E10出现可投级方法/主张；
-- E06/E07出现跨task regime；
+- **E14** 出现 support-controlled、对 candidate/closed-loop load-bearing 的 behavior imprint；
+- **E13** 出现跨 task 可预测的 computation-placement regime boundary；
+- **E11** 在 finite history 后仍出现稳定 actionable ambiguity；
+- E09/E10 解释出 M3 的 load-bearing negative mechanism；
+- E06/E07出现跨task regime law；
 - science C##→L2；
 - 需要改ACTIVE调度；
 - 连续两个lead被强近邻/简单baseline吸收。
