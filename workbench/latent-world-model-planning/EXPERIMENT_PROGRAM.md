@@ -5,50 +5,60 @@
 资源见根目录 [RESOURCES](../../RESOURCES.md)：多独立 GPU、弱网络/弱 I/O/弱跨节点；single-GPU / single-node independent runs优先。
 
 科学入口：
-1. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)
-2. [RESEARCH_MINES](RESEARCH_MINES.md)
-3. [PAPER_LINEAGE](PAPER_LINEAGE.md) / [POSITIONING](POSITIONING.md)
+1. [NOVELTY_GROWTH_RULES](NOVELTY_GROWTH_RULES.md)
+2. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)
+3. [RESEARCH_PROGRAMS](RESEARCH_PROGRAMS.md)
+4. [RESEARCH_MINES](RESEARCH_MINES.md)
+5. [PAPER_LINEAGE](PAPER_LINEAGE.md) / [POSITIONING](POSITIONING.md)
 
 当前 science claim = 0。
 
 ---
 
-## 0. 当前优先级
+## 0. Research-program portfolio
 
-### Tier A1 — M3 / I09：behavior trajectories → controllability semantics
-**第一主 pilot：E14。**
+本文件不再把 M1/M2/M3 当三个越来越窄的候选题。当前 parent programs：
 
-问的是：在 environment dynamics 不变时，改变真正的 generating behavior policy，trajectory-derived planning supervision 是否把 behavior route / tempo 写进 deployed reachability / progress semantics，并影响 candidate ordering / MPC？
+- **R1 Data & Identifiability** — 什么经验让 WM 真正支持 counterfactual planning？
+- **R2 Predictive Abstraction** — 应该预测什么 future object、多少 horizon、在哪里放 planning computation？
+- **R3 Specialization vs Reuse** — query/task conditioning 放哪一层，如何平衡 seen-query效率与 unseen-query复用？
+- **R4 State / Belief / Information Gathering** — partial observability / hidden physics 下正确 predictive state是什么？
+- **R5 Trust / Repair / Bypass** — world model何时值得信，failure后该采用哪种 recovery action？
 
-不是“data distribution matters”；必须把 coverage/local-support explanation拆开。
+当前 active seeds：
+- R1: I09/E14, I12/E16, I06/E08–E10；
+- R2: I08/E13；
+- R3: I10/E17；
+- R4: I07/E11；
+- R5: I11/E18；
+- shared: I03/E06–E07, E02。
 
-### Tier A2 — M2 / I08：predictive computation placement
-**第二主 pilot：E13。**
+**seed失败 ≠ program失败。** seed结束后必须回到 RESEARCH_PROGRAMS，根据实验结果生成下一 research action。
 
-不是二分“explicit vs implicit谁强”，而是 continuum：
+## 0.1 运行容量
 
-```text
-one-step explicit rollout
-↔ direct arbitrary-horizon prediction
-↔ policy-occupancy / successor abstraction
-↔ amortized planner / policy
-↔ hybrid short-model + learned policy/value
-```
+遵守 workbench 全局规则：
+- 同时活跃 seeds 可以 3–6 个；
+- **同时实际运行的 scientific pilots ≤ 2**；
+- 其余可做 CPU/code/literature preparation，但不并行烧满 GPU。
 
-寻找可预测的 regime frontier，而不是 leaderboard。
+## 0.2 当前 waves
 
-### Tier B — M1 / I07：observable goal ≠ control belief
-**cheap conditional pilot：E11。**
+### Wave A
+1. **E14 / R1-I09** — behavior-route/data semantics；
+2. **E18 / R5-I11** — trust/recovery oracle。
 
-P75/FIRM/UWM/Branch-JEPA 已占 broad hidden-state / belief / multimodal-future story。只有 **finite history 后仍存在 action-relevant ambiguity**，且造成 candidate regret，才 E12。
+E08可CPU旁路。
 
-### Shared instruments
-- E02：known decision-alignment calibration；
-- E06：oracle bottleneck ladder；
-- E08：M3 中 heuristic negative 的 zero-training semantic audit；
-- E09/E10：只有 E08/E14 指向 negative-role mechanism 才触发。
+### Wave B
+3. **E13 / R2-I08** — predictive-object frontier；
+4. **E17 / R3-I10** — query specialization↔reuse。
 
-旧 E03/E04 保持 VOID；I01/I02 parked；I05 已被 I07 supersede。
+### Conditional
+5. **E11 / R4-I07** — actionable hidden ambiguity；
+6. **E16 / R1-I12** — equal-budget data value，若 R1 evidence 继续增强。
+
+顺序会被实验结果改变；这不是静态 ranking。
 
 ---
 
@@ -78,7 +88,7 @@ P75/FIRM/UWM/Branch-JEPA 已占 broad hidden-state / belief / multimodal-future 
 
 ## S1 — Environment / data substrate
 
-### M3 discovery substrate
+### R1 discovery substrate
 优先：
 1. **TwoRoom / maze topology**：shortest/geodesic 可做 oracle；
 2. **OGBench Point/AntMaze generator**：官方就有 `navigate / stitch / explore`，可用于 discovery，但这些 regime 同时改变 horizon / goal schedule / occupancy，**只能作 broad stress，不作 clean causal identification**；
@@ -90,7 +100,7 @@ OGBench generator 已核对：
 - dataset保存 qpos/qvel，可做 measurement-only support audit；
 - 数据生成脚本公开且可重跑。
 
-### M2 common substrate
+### R2/R3 common substrate
 优先 **OGBench Cube-single / pixel**：
 - Bagatella TD-JEPA official repo原生支持 OGBench Cube/Scene/Puzzle；
 - stable-worldmodel / LeWM ecosystem也原生有 OGBench Cube；
@@ -121,7 +131,7 @@ env_restore_id
 model_calls, wall_clock
 ```
 
-M3额外：
+R1额外：
 
 ```text
 behavior_regime
@@ -133,7 +143,7 @@ observed_temporal_gap
 oracle_shortest_or_bound
 ```
 
-M2额外：
+R2/R3额外：
 
 ```text
 task_spec_type
@@ -146,7 +156,7 @@ deployment_search_budget
 
 ## S3 — Oracle ladder
 
-### M3 pair / route oracle
+### R1 pair / route oracle
 优先三态：
 
 ```text
@@ -168,7 +178,7 @@ UNKNOWN
 7. selected-action regret；
 8. closed-loop success。
 
-### M1 aliasing oracle
+### R4 aliasing oracle
 同/近同 observation + matched available history 下：
 - hidden state / parameter不同；
 - 完全相同 candidate action set；
@@ -372,6 +382,62 @@ M1无强信号时快速 park，不消耗训练槽位。
 
 ---
 
+
+# 6A. E16 — R1 equal-budget data value
+
+E14只是 R1 的一个 trajectory-semantics probe。若 R1仍有科学压力，不要把 E14越做越窄；进入 E16：
+
+固定 total transitions / model / planner，比较至少三种 measured data compositions：
+- broad state coverage；
+- conditional action excitation；
+- route diversity；
+
+有能力再加：
+- same-reset counterfactual branches；
+- active disagreement probing；
+- failure/recovery transitions。
+
+主问题不是谁最高分，而是能否找到：
+> environment / planner regime → 最有价值 experience type
+
+readout必须含 planning utility per transition。
+
+# 6B. E17 — R3 query placement × reuse
+
+同一 dynamics/data下，小矩阵比较：
+- query-independent dynamics + query-only cost；
+- query-guided proposal + reusable dynamics；
+- query-conditioned representation/head；
+- conditional dynamics只在前面出现frontier后加入。
+
+测：
+- seen query；
+- unseen query combination；
+- changed planner objective；
+- candidate proposal efficiency；
+- cross-query reuse。
+
+P38是强baseline/starting point，不是关闭理由。  
+如果只复制“seen更强、unseen变差”，seed需要继续找 capacity/query-complexity/planner-stage 的 boundary。
+
+# 6C. E18 — R5 trust/recovery oracle
+
+优先 evaluation-first，不先训练新router。
+
+建立 planning states × recovery actions：
+- native continue；
+- shorter horizon / more frequent replan；
+- more search；
+- feedback correction；
+- lightweight adaptation；
+- fallback proposal/policy（有资产才加）。
+
+已有 reliability signals只当 predictor。  
+真实标签是 environment-reset 后各 recovery action 的 **utility lift / compute cost**。
+
+只有不同 failure/regime 出现不同 best recovery，并可被 simple signals跨task预测时，才设计 adaptive routing method。
+
+
 # 7. E02 / E06 — common scientific instruments
 
 E02复制已知 random/mid/elite rank、candidate margin、fixed-pool regret，仅校准 harness。
@@ -462,15 +528,16 @@ E06 oracle ladder在 M2/M3出现 anomaly 后定位：
 
 # 11. Local agent执行顺序
 
-1. README → FIELD_PROBLEM_MAP_2026 → RESEARCH_MINES → PAPER_LINEAGE → LEDGER → POSITIONING → 本文件。
+1. README → NOVELTY_GROWTH_RULES → FIELD_PROBLEM_MAP_2026 → RESEARCH_PROGRAMS → RESEARCH_MINES → PAPER_LINEAGE → LEDGER → POSITIONING → 本文件。
 2. `python3 tools/process/check.py`。
 3. 资产盘点，禁止重复下载。
 4. E00/E01。
-5. **第一主：E14 Stage A/B**；dataset ready可并行E08。
-6. **第二主：E13 minimal matched pilot**。
-7. **conditional：E11**。
-8. 出 anomaly 后用 E02/E06定位，不先加模块。
-9. 只有 experiment card gate允许才进入 E09/E10/E12/E15或新增方法卡。
-10. 每轮写回 evidence、confound、neighbor pressure、下一组最便宜决定性实验。
+5. Wave A 同时最多2个：E14 + E18；dataset ready可CPU并行E08。
+6. Wave A 一个pilot结束/等待后，进入 Wave B：E13 / E17。
+7. E11按R4资产触发；E16按R1证据触发。
+8. anomaly用 E02/E06定位；不要因为一个近邻就缩小parent program。
+9. 每个seed结束后，必须写“它如何改变对R#的认识 + 下一个2–3个research actions”。
+10. 只有 experiment-card gate允许才method化；method-led seed若有清楚program-level prediction也允许注册。
+11. 每轮写回 evidence、confound、neighbor pressure、下一组最便宜决定性实验。
 
 **不要把工程进度当科研进度；不要把卡多变成没有判别力的大矩阵。**
