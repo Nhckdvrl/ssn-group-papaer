@@ -1,6 +1,8 @@
 # E04：Natural behavior routing vs environment distance（2026-10-02）
 
-- **状态：** PLANNED
+- **状态：** VOID
+> **VOID reason (2026-10-02, pre-run):** E04 原本依赖 E03 建立 clean factorization identification；E03 因 pinned implementation 的 short-window sampling 结构而作废。单独改变 shortest/detour behavior 会同时改变 model实际读取的 local windows，退化成普通 dataset/behavior shift，和 PLDM/QRL/behavior-invariant representation 的近邻太近，当前不值得直接铺开。新入口：I06 / E08。
+
 - **类型：** PILOT
 - **对应：** I01
 - **前置：** E03 必须建立至少 decision-level 的 trajectory-factorization sensitivity；否则不运行 E04 扩大故事。
@@ -89,3 +91,5 @@ Delta_{	ext{detour}}(s,g) > Delta_{	ext{short}}(s,g) ge d^*(s,g)
 
 ## 结果
 未运行。
+## 作废记录
+未运行，无结果、无科学证据。保留该卡用于说明为何 identification 设计被代码审计否定；不要删除或改成 null result。

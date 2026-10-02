@@ -1,6 +1,8 @@
 # E03：Valid trajectory refactorization invariance（2026-10-02）
 
-- **状态：** PLANNED
+- **状态：** VOID
+> **VOID reason (2026-10-02, pre-run):** 代码级审计发现 pinned TD-JEPA / RC-aux 的主要 temporal/reachability supervision 都只依赖 loaded short window；cross negatives 又是 batch-row permutation，并不读取 episode identity。若保持完整 short-window manifest 不变，只改更长 episode factorization，loss 基本看不到 treatment。该实验因此在运行前作废，避免花 GPU 验证结构性 null。新入口：I06 / E08。
+
 - **类型：** PILOT
 - **对应：** I01
 - **问题（一句话）：** 当 environment 与 raw local transition multiset 完全相同，只把 transition 在共享 junction 处重新组成不同的**合法 trajectories**时，trajectory-supervised RC-aux / TD-JEPA 是否学出不同 long-range planning geometry，并改变 fixed-candidate decisions？
@@ -107,3 +109,5 @@ loader 必须显示 target shift；否则 treatment 没真正作用。
 
 ## 结果
 未运行。
+## 作废记录
+未运行，无结果、无科学证据。保留该卡用于说明为何 identification 设计被代码审计否定；不要删除或改成 null result。
