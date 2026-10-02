@@ -1,19 +1,25 @@
 # I06：Semantic negatives or geometric repulsion?（2026-10-02）
 
-- **状态：** SEED / **first-priority mining lane**
+- **状态：** SEED / **M3 subdiagnostic; not default paper**
 - **来源：** 直接近邻内部的真实 tension，而不是“找空白”：
-  1. **TD-JEPA** 明确用 cross-trajectory goals 做 hinge negatives，并在原文承认 trajectories share reachable states 时会有 false negatives；但 removing cross-trajectory hinge 在 Push-T 的 3-seed ablation 中又让所有 planner settings 变差。
+  1. **Bai/Xiong Temporal-Distance JEPA** 明确用 cross-trajectory goals 做 hinge negatives，并在原文承认 trajectories share reachable states 时会有 false negatives；但 removing cross-trajectory hinge 在 Push-T 的 3-seed ablation 中又让所有 planner settings 变差。
   2. **RC-aux** 把 batch/cross-trajectory goals直接标成 reachability y=0，而同轨迹 temporal hard negatives才负责 budget identifiability；论文自己也强调 trajectory-derived labels只是 empirical proxy。
   3. **CGCIVL (ICML 2025)** 从相反方向证明 cross-trajectory pair 不能仅凭 trajectory identity 判 connected/unconnected。
   4. 标准 Contrastive RL / InfoNCE 中 negatives 主要承担 marginal normalization / density-ratio 对照，不等价于逐 pair 声明“不可达”。
 - **研究动作：** 重新归因 + 引入构念 + oracle audit + 反事实/干预 + 最小修复。
+
+## 在当前 workbench 中的角色
+
+I06 现在只服务于 [I09](I09_behavior_to_controllability.md) 的更大问题：**offline behavior metadata 被赋予 planning semantics 时，到底识别了什么？**
+
+2026 的 Monotone Planning Cost 工作还直接报告过 temporal-permutation negatives 可扭曲 planning geometry，因此“negative construction会伤 geometry”本身也不能做 headline。I06只有在它能解释 **behavior→controllability gap**、并产生真实 candidate/closed-loop consequence时才升级。
 
 ## 母问题
 
 > **当 plan-aware world model 把“来自另一条 trajectory / batch sample”直接当作 far 或 unreachable supervision 时，模型到底从这些 negatives 学到了什么？**
 
 论文叙事通常给它们 planning semantic：
-- TD-JEPA：off-trajectory cost 应至少超过 margin；
+- Bai/Xiong Temporal-Distance JEPA：off-trajectory cost 应至少超过 margin；
 - RC-aux：cross-trajectory pair 在 budget h 内不可达。
 
 但 sampling rule 本身只知道“不是当前 sample/trajectory”，不一定知道 MDP reachability。于是同一个 negative term 可能同时承担两种不同职责：
@@ -25,7 +31,7 @@
 
 > Plan-aware latent world models can obtain substantial planning gains from heuristic cross-trajectory negatives even when a nontrivial fraction of those negatives are semantically reachable. The gain comes from a mixture of **semantic reachability supervision** and **non-semantic geometric regularization**. Conflating the two distorts planning calibration; separating them yields a more semantically faithful geometry without sacrificing—and potentially improving—closed-loop planning.
 
-这不是“false negatives exist”。TD-JEPA 已经公开承认。必须完成 **semantic validity → mechanism reattribution → planning consequence → role-separating intervention** 四步。
+这不是“false negatives exist”。Temporal-Distance JEPA 已经公开承认。必须完成 **semantic validity → mechanism reattribution → planning consequence → role-separating intervention** 四步。
 
 ## 关键 statistical distinction
 
@@ -34,7 +40,7 @@
 
 ### Semantic negative
 TD-JEPA/RC-aux 对 pair 施加绝对 planning constraint：
-- TD-JEPA：dψ(zs,zg) >= m；
+- Bai/Xiong Temporal-Distance JEPA：dψ(zs,zg) >= m；
 - RC-aux：Rφ(zs,zg,h) = 0。
 
 这里 pair 是否真的满足 “far/out-of-budget” 会直接影响 planning semantics。
@@ -45,7 +51,7 @@ TD-JEPA/RC-aux 对 pair 施加绝对 planning constraint：
 
 | 近邻 | 已有 claim | I06 必须多走的一步 |
 |---|---|---|
-| TD-JEPA | cross-trajectory hinge有用；承认 reachable false negatives | 不重复 limitation；量化 semantic fidelity，并解释为什么有错误标签仍能带来 planning gain |
+| Bai/Xiong Temporal-Distance JEPA | cross-trajectory hinge有用；承认 reachable false negatives | 不重复 limitation；量化 semantic fidelity，并解释为什么有错误标签仍能带来 planning gain |
 | RC-aux | batch negatives防 arbitrary reachability；temporal hard negatives识别 budget | 分离 cross-negative 的“unreachable semantic”与“global separation”作用，比较 calibrated reachability + planning |
 | CGCIVL (ICML'25) | cross-trajectory pairs需区分 connected/unconnected | 从 offline value estimation 扩到 **visual latent-WM planning cost/head + MPC consequence** |
 | Contrastive RL | replay-marginal negatives可实现 density-ratio/value learning | 说明 normalization negative 与 explicit semantic negative不是一回事 |
@@ -61,7 +67,7 @@ TD-JEPA/RC-aux 对 pair 施加绝对 planning constraint：
   → concern在当前 benchmark不 load-bearing；I06 park，不制造更极端数据。
 - **D：false negatives高，但 FULL/NO-XNEG/ORACLE-filtered planning差异都在 noise 内**  
   → semantic impurity存在但对 decision无后果；不升级。
-- **E：TD-JEPA有该现象，RC-aux没有（或反之）**  
+- **E：Temporal-Distance JEPA有该现象，RC-aux没有（或反之）**  
   → method-specific mechanism；可转成更窄的 method study，不强行统一。
 - **F：简单 temporal-hard-negative-only / local geometry baseline 已完全取代 heuristic negatives**  
   → 可能形成“negative semantics unnecessary”更简单 story，但必须跨方法/任务确认。
@@ -77,7 +83,7 @@ E08：**先不训练新模型**。直接运行原训练 sampler / pair-construct
 ## 顶会 story 的最低形态
 
 不能止于：
-> “TD-JEPA 有 X% false negatives。”
+> “Temporal-Distance JEPA 有 X% false negatives。”
 
 可能够的 paper 需要：
 
