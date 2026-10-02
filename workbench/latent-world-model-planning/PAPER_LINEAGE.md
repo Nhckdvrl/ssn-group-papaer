@@ -1078,3 +1078,45 @@ P02 已经比我们之前记得更接近 M2：
 - **证据：** controlled attention-based models中 attention asymmetry随data irreversibility增长；强制对称会选择性伤害 irreversible long-horizon prediction。
 - **对 R2：** 提供另一种 predictive-object hypothesis：**path distribution / trajectory action functional**。它不直接给我们方法，但说明R2不该只围绕“one-step vs successor”二分。
 - **资源适配：** 如果R2实验发现irreversibility/contact process是关键regime，可把path-space/irreversibility作为method-led seed；当前不预注册。
+
+## 18. R1 causal-data / action-effect cluster（P105–P108）
+
+### P105 — CST-WM: A Causally Structured World Model for Embodied Visual Tracking — arXiv 2609.06302
+**来源：** https://arxiv.org/abs/2609.06302  
+**Read:** A-targeted（HTML introduction/method/scope/compute + experiments summary）
+
+- **母问题：** logged tracking data中 behavior action 与 target evidence高度相关；generic action-conditioned predictor会不会把“action相关”误学成“action直接造成target evidence变化”？
+- **failure:** causal hallucination——rollout可视觉上合理，但 candidate actions 按错误因果语义排序。
+- **idea leap:** latent拆 target-evidence / robot / observation branches，阻止 same-step action直接写入target-evidence，action只能经robot motion→future observation影响evidence。
+- **证据链：** multi-step fidelity、simulator candidate-ranking agreement、action leakage、EVT-Bench/Habitat tracking/re-acquisition、Unitree Go2 real trials；去掉action mask对re-acquisition伤害最大。
+- **作者自限：** 结构约束是planning representation requirement，不声称完整recover外部target causality。
+- **compute:** main model约19.5h on 4×RTX4090；全reported约320 GPU-hours + preliminary/ablation约190 GPU-hours。
+- **Atomic ownership:** tracking setting下 behavior-policy action/evidence correlation 可造成 direct-action shortcut；task-specific causal factorization可改善planning。
+- **对 R1:** 新的 data/identifiability axis不是“数据够不够”，而是**observational correlation允许哪些shortcut**。可与P94 action excitation正交：excitation保证action directions被观察，不保证model用正确mediator解释effect。
+
+### P106 — OnlineWM: Causality-Aware Active Online Learning for Effective World Modeling — arXiv 2609.23753
+**来源：** https://arxiv.org/abs/2609.23753  
+**Read:** B/navigation（若成为baseline必须回全文）
+
+- **问题：** static offline data不跟随model evolving errors；observational loss又可能依赖spurious correlations而非action-effect causality。
+- **方法方向：** active simulator interaction + causality-aware counterfactual optimization。
+- **规模边界：**公开摘要/项目说明使用大型generative WM（HY-World 1.5, 88B级），不适合我们首轮复现。
+- **对 R1:** 强化 active data + causal objective 的program重要性；我们的compact stack可以研究同一个科学问题的**data-value/identifiability law**，不需要复制88B scale。
+
+### P107 — CoCo: Overcoming Statistical Bias in Action-Controllable World Models — arXiv 2608.04653
+**来源：** https://arxiv.org/abs/2608.04653  
+**Read:** B/navigation
+
+- **问题：** future frames可由视觉惯性/常见motion预测，模型可能忽略action仍拿到低loss；different actions给相似future，zero-action仍有motion。
+- **方法：** counterfactual consistency，对action/observation变化施加一致性约束以减少statistical shortcut。
+- **Atomic ownership:** generic “action injection不等于action control / statistical inertia shortcut”已有直接工作。
+- **对 R1/R2:** action-effect data、counterfactual supervision与predictive object共同决定controllability；可作为I12 data-role和R2 distributional/control baseline。
+
+### P108 — WorldEcho / WorldSync: Do Robotic World Models Really Follow Actions? — arXiv 2608.24885
+**来源：** https://arxiv.org/abs/2608.24885  
+**Read:** B/navigation
+
+- **问题：** 现有action-conditioned video WM常只在expert demonstrations评估；off-expert valid actions是否真的被执行？
+- **diagnosis:** WorldEcho扩大action distribution，测visual integrity + SE(3) action following；摘要报告现有模型对expert actions较好，但off-expert diverse trajectories中会ignore commands或产生invalid rollout。
+- **repair:** WorldSync从distribution coverage、representation grounding、intervention-effect alignment三轴增强action following。
+- **对 R1:** 把“action coverage / off-policy counterfactual query”从latent-control小环境扩到robot video WM；说明R1是跨model-scale的母问题。
