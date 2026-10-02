@@ -58,8 +58,9 @@
 - **科学主张：0。** 论文报告值不是我们的实验结果。
 - D1 完整数值复现未完成；D2 Fast两任务原生加载/训练步/闭环完成，LeWM有限数据训练已运行；均使用节点数据缓存。
 - E13：两任务20% TOP-M-SCREEN分别恢复96.9%/99.99%模型elite，未见实际耗时收益。扩到[256个长短目标/512配对episodes](results/E13_20261002_fidelity_value.json)：TwoRoom75步goal FULL300成功27/64、CHEAP900为47/64；PushT75步两者9/64。尚无self-consistency refinement控制收益；共卡timing不用于speedup。
-- E16：[七策略/一完整数据seed](results/E16_20261002_equal_data_seed0.json)，相同基础模型/600更新/2000新增logical steps/48目标：NO-ADD9、IID17、uniform17、coverage18、GLOBAL-U24、TASK-U11、PBB19。GLOBAL-U优于PBB的单次读数不等于稳定规律；seed1/2从随机初始化和独立data/acquisition split确认中，同candidate真实后果审计运行中。
+- E16：[七策略/一完整数据seed](results/E16_20261002_equal_data_seed0.json)，相同基础模型/600更新/2000新增logical steps/48目标：NO-ADD9、IID17、uniform17、coverage18、GLOBAL-U24、TASK-U11、PBB19。GLOBAL-U优于PBB的单次读数不等于稳定规律；[三独立pipeline seeds](results/E16_20261002_independent_seeds.json)已完成：NO-ADD9/19/22、GLOBAL-U24/16/23、PBB19/13/15；首轮大增益不稳定。统一旧candidate池的真实regret未改善，不支持排序修正机制。
 - [全部起点factual controls](results/E00_E13_E16_20261002_factual_controls.json)：TwoRoom128/128与E16 48/48成功、状态/初始pixel误差0；PushT75步63/64成功且有显著物理恢复残差，保留所有起点并限制解释。
+- E18：[反馈/重规划fork](results/E18_20261002_recovery_forks_seed0.json)两task×32goals×2conditions×4干预已完成，nominal导航HOLD12/32→FEEDBACK16/32，但dynamics shift下恢复弱；扩短action-head/dynamics更新，不先造router。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 

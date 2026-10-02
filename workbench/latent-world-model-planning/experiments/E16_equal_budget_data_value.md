@@ -234,3 +234,9 @@ seed0全部48个锁定评测anchor、共同base30 checkpoint的native CEM N300/K
 主读数是**64候选内**选中单candidate的真实任务距离regret（执行时首次native成功便停止，否则第25步终点；参照同bank最优，绝不称全局oracle）。另报不中止第25步位置距离排序的top7 elite recall、真实candidate terminal与模型terminal的latent MSE、成功候选比例。native CEM实际执行的是elite mean：七模型各对同bank top7取动作均值，另执行其25步，报告success及相对bank最优的signed utility gap，均值可好于64个单candidate，不能截断负数。此诊断是固定bank的模型选择质量，不替代已有完整CEM闭环成功率。
 
 全部模型/ID/读数在真实outcome执行前锁定。评测branch数据与主训练/独立seed acquisition目录完全分开，无线上budget主张。以episode paired bootstrap 2000次报告差异，不把3000多个候选当独立样本。factual恢复对照若异常须单列降级。
+
+### 独立pipeline seed结果：首轮大增益未稳定复现
+
+全部三seed完成，[完整config/hash/每seed配对CI](../results/E16_20261002_independent_seeds.json)：NO-ADD=9/19/22，uniform=17/18/15，GLOBAL-U=24/16/23，PBB=19/13/15，分母每组48。GLOBAL-U的对NO-ADD增益=+15/−3/+1起点，PBB=+10/−6/−7；不能拿seed0的episode CI说方法稳定有效。这里是whole-pipeline variation（data、eval、head/acq、optimizer共同随机），不是固定data的3初始化seed；seed0首resume偏差及A100/RTX精度/硬件都保留。
+
+PBB当前v0没有优于GLOBAL-U的证据，global的正增益也不稳定；不关闭R1。后续应扩大**经验类型/利用方式/训练目标/任务复用**的比较，结合近邻的learnability/variance reduction/contrastive objective，而不是多次改变entropy权重。E18反馈/短适配、R2预测对象继续作为独立方法轴。两种首轮具体实现均未显示strong-baseline之外的价值，按用户原始人审条款请人复核下一批科研优先级；尚无paper narrative或状态变更。

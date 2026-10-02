@@ -107,3 +107,11 @@ world model出现异常时，哪种intervention真的提高未来closed-loop uti
 未运行。
 
 2026-10-02首轮native cost正控因missing candidate axis在模型接口处停止，尚未执行fork/candidate银行；failure与源码留存。修复直接native scoring的显式candidate axis，保持全部seed/inputs/主读数，以s0-retry1重跑。该接口失败不是科学null，不覆盖原run。
+
+### 2026-10-02 recovery set扩充（运行前）
+
+首轮两task×32goals×2gains×4interventions已完成：no-shift TwoRoom HOLD12/32→FEEDBACK16/32，PushT4→7、EXTRA9；gain0.7时TwoRoom6→7，PushT1→0。全部40,696执行/重放steps，fork state/pixel error0。不能从这组方法推断“恢复不可能”；尤其面对未知动力学变化，单纯换成真实当前state没有改变错误transition。
+
+接续同一64锁定goal/相同initial75-step plans/同step10 shift onset，不增加新goal、不按结果挑任务。扩 **SHORT-HEAD**（只更新action encoder）与 **SHORT-DYNAMICS**（action encoder+predictor，encoder/projectors冻结）；均使用fork前最后3段5-step真实pixel transitions与名义commands，frozen encoder target，16 AdamW updates/lr5e-5/WD1e-3/clip1、native prefix MSE，无privileged state/gain/reward输入，不读取fork未来。仅有3个新样本，可能过拟合，失败也全部保留；这是固定response的探索，不宣称新训练配方或普适update增益。
+
+六方法同batch比较HOLD/PREDICTED-REPLAN/FEEDBACK/EXTRA/SHORT-HEAD/SHORT-DYNAMICS；每fork重新clone原权重、params更新不跨episode/condition污染。adapted dynamics在原latent坐标规划剩50steps，N300，与FEEDBACK额外search一致；单列16 gradient steps/更新参数数、所有policy总计算和physical steps。原基线HOLD/FEEDBACK同初始plan重算作控制。目标是比较**信息反馈 vs transition update vs search**三个设计，不先训练router，也不只研究一个gain值的阈值。后续确认需自然错误、别种dynamics shift、原任务保留与独立checkpoint。

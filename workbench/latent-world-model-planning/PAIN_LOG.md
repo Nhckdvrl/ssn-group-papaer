@@ -55,3 +55,9 @@ TwoRoom / Fast-LeWM / N=300,K=30,β=1,[2,3],seed=0。8 个 held-out generated ep
 ## P07｜闭环增益未伴随旧candidate分布内regret改善
 
 [E16统一bank](results/E16_20261002_decision_audit_seed0.json)48起点×64候选×七模型，NO-ADD/GLOBAL-U/PBB真实selected regret分别14.264/15.287/14.089pixels；配对差值区间都包含0。此bank由共同base CEM中期生成，不能代表各新模型完整搜索分布；也不能事后因此换bank来硬找正结果。现有闭环增益可能来自proposal distribution、后续反馈或encoder geometry，未核对。保留该null，后续从更广方法轴/第二task理解数据作用，不宣称PBB修正动作排序。
+
+## P08｜观测反馈有局部收益，未知transition变化还需要别种response
+
+[E18](results/E18_20261002_recovery_forks_seed0.json)在nominal TwoRoom HOLD12/32→FEEDBACK16/32，但action gain0.7下6→7；PushT nominal4→7（更多搜索9），gain0.7下1→0。future utility有任务/条件差异，尚无可部署gate证据。当前方法没有更新transition，本身可能缺乏恢复能力，不能因为误差大却replan无益就判母问题无价值。完整prefix重放same-state/pixel误差0，原dataset的PushT memory limitation仍保留。下一批增short head/dynamics update，再看response set价值与部署feature，而不是局部调error阈值。
+
+P04确认补记：[三seed](results/E16_20261002_independent_seeds.json) NO-ADD9/19/22、uniform17/18/15、GLOBAL-U24/16/23、PBB19/13/15，每组48。G对NOADD+15/−3/+1，PBB+10/−6/−7。首轮大增益不稳定；现有数字不支持有效新采样方法。joint pipeline seeds、seed0 resume和硬件差异保留，不能解释成单一initialization效应。母问题仍重要，下一轮扩数据利用/预测对象/恢复方法轴，不反复救PBB公式。

@@ -1,0 +1,673 @@
+{
+  "card": "E16_equal_budget_data_value",
+  "seeds": [
+    {
+      "seed": 0,
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-A100-s0",
+      "summary": [
+        {
+          "method": "NO-ADD",
+          "n": 48,
+          "successes": 9,
+          "helped_vs_no_add": 0,
+          "harmed_vs_no_add": 0,
+          "paired_success_delta": 0.0,
+          "conditional_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "train": {
+            "seconds": 103.83434397354722,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_NO-ADD_seed0.pt",
+            "sha256": "2a2cb4edffe2c5e08567db0bd1affc440164a520c7e7e06fbe419da5b25d3edb"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-methods-A100-s0",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0",
+            "bank": "/tmp/latent-wm-e16-input/bank",
+            "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+            "base_cache": "/tmp/latent-wm-e16-input/base/base100.npz",
+            "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+            "seed": 0,
+            "policy": "NO-ADD",
+            "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+            "logical_added_steps": 0,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+            "train_seed": 0,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA A100 80GB PCIe",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "eeaf94e312110f138433abb2303e8635f515c5ca45e35ef8b6c2e93f32465554"
+          },
+          "evaluation_sha256": "bd083e1e8dcbc10523390a3da6893eed336398b24f1dc8add5b483dcf6241053"
+        },
+        {
+          "method": "UNIFORM-COMMON-RESET",
+          "n": 48,
+          "successes": 17,
+          "helped_vs_no_add": 13,
+          "harmed_vs_no_add": 5,
+          "paired_success_delta": 0.16666666666666666,
+          "conditional_episode_ci95": [
+            0.0,
+            0.3333333333333333
+          ],
+          "train": {
+            "seconds": 98.2711182422936,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_UNIFORM-COMMON-RESET_seed0.pt",
+            "sha256": "8c463174de686b5d150bd9dfd9cbe1e0d19e1fdd5aa9b31984a1cfcab3da7335"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-methods-A100-s0",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0",
+            "bank": "/tmp/latent-wm-e16-input/bank",
+            "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+            "base_cache": "/tmp/latent-wm-e16-input/base/base100.npz",
+            "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+            "seed": 0,
+            "policy": "UNIFORM-COMMON-RESET",
+            "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+            "train_seed": 0,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA A100 80GB PCIe",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "5104e9759081483cd8c6fc0555cdbc37faf718ac964c22f9ee3b441b3d9d84d9"
+        },
+        {
+          "method": "GLOBAL-U",
+          "n": 48,
+          "successes": 24,
+          "helped_vs_no_add": 15,
+          "harmed_vs_no_add": 0,
+          "paired_success_delta": 0.3125,
+          "conditional_episode_ci95": [
+            0.1875,
+            0.4375
+          ],
+          "train": {
+            "seconds": 97.7471568621695,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_GLOBAL-U_seed0.pt",
+            "sha256": "ba3a44359b47c5f271da14057b927287db463f4586167345ae40bd9a2ec7a34e"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-methods-A100-s0",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0",
+            "bank": "/tmp/latent-wm-e16-input/bank",
+            "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+            "base_cache": "/tmp/latent-wm-e16-input/base/base100.npz",
+            "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+            "seed": 0,
+            "policy": "GLOBAL-U",
+            "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+            "train_seed": 0,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA A100 80GB PCIe",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "a4c31a27f4bf88e039efe15f043224bb87606c3be6b4c6cc54cc8649d2591b7d"
+        },
+        {
+          "method": "PBB",
+          "n": 48,
+          "successes": 19,
+          "helped_vs_no_add": 14,
+          "harmed_vs_no_add": 4,
+          "paired_success_delta": 0.20833333333333334,
+          "conditional_episode_ci95": [
+            0.041666666666666664,
+            0.375
+          ],
+          "train": {
+            "seconds": 97.9359814748168,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0/E16_PBB_seed0.pt",
+            "sha256": "2c8bdd43a8ca31df053ef43bd9bb640d54f31758238153c9c946609be7338793"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-methods-A100-s0",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_A100_s0",
+            "bank": "/tmp/latent-wm-e16-input/bank",
+            "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+            "base_cache": "/tmp/latent-wm-e16-input/base/base100.npz",
+            "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+            "seed": 0,
+            "policy": "PBB",
+            "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+            "train_seed": 0,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA A100 80GB PCIe",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "1768a284b44ef462b9429514b05829c867ad307ccbd5e833ec4801c76cb89a6e"
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/methods",
+      "summary": [
+        {
+          "method": "NO-ADD",
+          "n": 48,
+          "successes": 19,
+          "helped_vs_no_add": 0,
+          "harmed_vs_no_add": 0,
+          "paired_success_delta": 0.0,
+          "conditional_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "train": {
+            "seconds": 108.34325787425041,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1/E16_NO-ADD_seed1.pt",
+            "sha256": "291965f97118da7e710b0b5dc8f6d2b1e0277fb7c14b4b49db1ec790897daf21"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s1/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s1/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s1/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 1,
+            "policy": "NO-ADD",
+            "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+            "logical_added_steps": 0,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+            "train_seed": 1,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "1dbb59b7841a5c8d3fcd3e856371a1cae5e717159060b7e0e9bb9d4aef93dc03"
+        },
+        {
+          "method": "UNIFORM-COMMON-RESET",
+          "n": 48,
+          "successes": 18,
+          "helped_vs_no_add": 6,
+          "harmed_vs_no_add": 7,
+          "paired_success_delta": -0.020833333333333332,
+          "conditional_episode_ci95": [
+            -0.16666666666666666,
+            0.125
+          ],
+          "train": {
+            "seconds": 105.648199275136,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1/E16_UNIFORM-COMMON-RESET_seed1.pt",
+            "sha256": "073cf149958cbbe8514835cdfbb085c177280c1148d6b2b593b5f4cd8de30633"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s1/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s1/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s1/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 1,
+            "policy": "UNIFORM-COMMON-RESET",
+            "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+            "train_seed": 1,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "f2f78cf553a07c9ab76053e1e979e98973fe8ef703a7c2e20da5e6107fb9c765"
+        },
+        {
+          "method": "GLOBAL-U",
+          "n": 48,
+          "successes": 16,
+          "helped_vs_no_add": 5,
+          "harmed_vs_no_add": 8,
+          "paired_success_delta": -0.0625,
+          "conditional_episode_ci95": [
+            -0.20833333333333334,
+            0.08333333333333333
+          ],
+          "train": {
+            "seconds": 106.63299805670977,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1/E16_GLOBAL-U_seed1.pt",
+            "sha256": "26a1c5f2f4659444aeae7b2ec02b09ffb062db8ac4410d24158b37b63e079755"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s1/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s1/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s1/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 1,
+            "policy": "GLOBAL-U",
+            "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+            "train_seed": 1,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "1ac7d990294add36b1c6b4529373d92503101ff88fffd641c81eb67ae8a35c1c"
+        },
+        {
+          "method": "PBB",
+          "n": 48,
+          "successes": 13,
+          "helped_vs_no_add": 3,
+          "harmed_vs_no_add": 9,
+          "paired_success_delta": -0.125,
+          "conditional_episode_ci95": [
+            -0.2708333333333333,
+            0.020833333333333332
+          ],
+          "train": {
+            "seconds": 108.86927045509219,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1/E16_PBB_seed1.pt",
+            "sha256": "d94d540df0ff22fd7486ace575136efe3b96d68e16ebf9c9efa7bf8026986114"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s1/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s1",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s1/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s1/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 1,
+            "policy": "PBB",
+            "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+            "train_seed": 1,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "10acc4cf285c57984848d8ae378a3dce8ed4f741f0a022061bc18e2ef61aee80"
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/methods",
+      "summary": [
+        {
+          "method": "NO-ADD",
+          "n": 48,
+          "successes": 22,
+          "helped_vs_no_add": 0,
+          "harmed_vs_no_add": 0,
+          "paired_success_delta": 0.0,
+          "conditional_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "train": {
+            "seconds": 162.76140477135777,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2/E16_NO-ADD_seed2.pt",
+            "sha256": "7fe7e5ad45d7c60c4a7c218b72c98f873f8ea1442a616d8b7e3345bb2a0bb41f"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s2/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s2/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s2/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 2,
+            "policy": "NO-ADD",
+            "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+            "logical_added_steps": 0,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+            "train_seed": 2,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "fc6ff61b5b935ab92ee85b4943bd60ada3be32891def04cf87e966c1c9551d0f"
+        },
+        {
+          "method": "UNIFORM-COMMON-RESET",
+          "n": 48,
+          "successes": 15,
+          "helped_vs_no_add": 6,
+          "harmed_vs_no_add": 13,
+          "paired_success_delta": -0.14583333333333334,
+          "conditional_episode_ci95": [
+            -0.31302083333333336,
+            0.041666666666666664
+          ],
+          "train": {
+            "seconds": 215.0785965807736,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2/E16_UNIFORM-COMMON-RESET_seed2.pt",
+            "sha256": "02c3ccc10597f723dcedf875f8daafdb6cc49a509c1e48eb2d9d696d30b970ac"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s2/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s2/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s2/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 2,
+            "policy": "UNIFORM-COMMON-RESET",
+            "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+            "train_seed": 2,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "b157ad62b57308e392db030843bde7299ad2de7d554503d89433719198e21b62"
+        },
+        {
+          "method": "GLOBAL-U",
+          "n": 48,
+          "successes": 23,
+          "helped_vs_no_add": 12,
+          "harmed_vs_no_add": 11,
+          "paired_success_delta": 0.020833333333333332,
+          "conditional_episode_ci95": [
+            -0.1875,
+            0.22916666666666666
+          ],
+          "train": {
+            "seconds": 131.59422734379768,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2/E16_GLOBAL-U_seed2.pt",
+            "sha256": "348706e2592f4d831368aa56766c310892b45f616ffd541717a0106636babea1"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s2/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s2/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s2/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 2,
+            "policy": "GLOBAL-U",
+            "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+            "train_seed": 2,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "1ef4587937895b82d4cf314cd918a9ce750be48907f98b94bf5ebe964f394323"
+        },
+        {
+          "method": "PBB",
+          "n": 48,
+          "successes": 15,
+          "helped_vs_no_add": 5,
+          "harmed_vs_no_add": 12,
+          "paired_success_delta": -0.14583333333333334,
+          "conditional_episode_ci95": [
+            -0.3125,
+            0.020833333333333332
+          ],
+          "train": {
+            "seconds": 106.23674061894417,
+            "steps": 600,
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2/E16_PBB_seed2.pt",
+            "sha256": "70f612143d899ce0ee760c8e596cd21e1a7f1fb86131fd986469d15cdf89de1b"
+          },
+          "config": {
+            "phase": "train",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+            "output": "/tmp/latent-wm-runs/20261002-E16-independent-s2/methods",
+            "head_cache": null,
+            "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_RTX_s2",
+            "bank": "/tmp/latent-wm-runs/20261002-E16-independent-s2/bank",
+            "base_run": "/tmp/latent-wm-runs/20261002-E16-independent-s2/base",
+            "base_cache": null,
+            "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+            "seed": 2,
+            "policy": "PBB",
+            "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+            "logical_added_steps": 2000,
+            "gradient_steps": 600,
+            "harness_sha256": "6676fa7762a7676bcf088557060036376fec5b5d1a80ee8cf1924c27aed10a64",
+            "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+            "train_seed": 2,
+            "normalization": "same base100 statistics",
+            "objective": "native all3 MSE + .09 SIGReg",
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "torch": "2.7.1+cu128",
+            "precision": "bf16",
+            "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+            "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+          },
+          "evaluation_sha256": "4b4026bea3edd3413a771121e5421c1356d25fbe5b8a205850948685443df6b7"
+        }
+      ]
+    }
+  ],
+  "pooled_descriptive": [
+    {
+      "method": "NO-ADD",
+      "successes_sum_descriptive": 50,
+      "episodes_sum_descriptive": 144,
+      "per_seed_successes": [
+        9,
+        19,
+        22
+      ],
+      "per_seed_delta_vs_no_add": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed_mean_paired_gain": 0.0,
+      "seed_gain_sample_sd": 0.0,
+      "three_seed_t_interval95_descriptive": [
+        0.0,
+        0.0
+      ],
+      "interval_warning": "only3 full-pipeline clusters; normality unverified; no multiplicity correction; not a decisive inferential claim"
+    },
+    {
+      "method": "UNIFORM-COMMON-RESET",
+      "successes_sum_descriptive": 50,
+      "episodes_sum_descriptive": 144,
+      "per_seed_successes": [
+        17,
+        18,
+        15
+      ],
+      "per_seed_delta_vs_no_add": [
+        0.16666666666666666,
+        -0.020833333333333332,
+        -0.14583333333333334
+      ],
+      "seed_mean_paired_gain": -5.782411586589357e-18,
+      "seed_gain_sample_sd": 0.15728821740147397,
+      "three_seed_t_interval95_descriptive": [
+        -0.3907255924756803,
+        0.3907255924756803
+      ],
+      "interval_warning": "only3 full-pipeline clusters; normality unverified; no multiplicity correction; not a decisive inferential claim"
+    },
+    {
+      "method": "GLOBAL-U",
+      "successes_sum_descriptive": 63,
+      "episodes_sum_descriptive": 144,
+      "per_seed_successes": [
+        24,
+        16,
+        23
+      ],
+      "per_seed_delta_vs_no_add": [
+        0.3125,
+        -0.0625,
+        0.020833333333333332
+      ],
+      "seed_mean_paired_gain": 0.09027777777777778,
+      "seed_gain_sample_sd": 0.196908984427192,
+      "three_seed_t_interval95_descriptive": [
+        -0.3988712562386641,
+        0.5794268117942196
+      ],
+      "interval_warning": "only3 full-pipeline clusters; normality unverified; no multiplicity correction; not a decisive inferential claim"
+    },
+    {
+      "method": "PBB",
+      "successes_sum_descriptive": 47,
+      "episodes_sum_descriptive": 144,
+      "per_seed_successes": [
+        19,
+        13,
+        15
+      ],
+      "per_seed_delta_vs_no_add": [
+        0.20833333333333334,
+        -0.125,
+        -0.14583333333333334
+      ],
+      "seed_mean_paired_gain": -0.020833333333333332,
+      "seed_gain_sample_sd": 0.19873733362853035,
+      "three_seed_t_interval95_descriptive": [
+        -0.5145242385512392,
+        0.47285757188457256
+      ],
+      "interval_warning": "only3 full-pipeline clusters; normality unverified; no multiplicity correction; not a decisive inferential claim"
+    }
+  ],
+  "scope": "3 full-pipeline seeds, not3 fixed-data optimizer-only seeds; seed0 first resume differed; method training A100(seed0)/RTX(seed1/2), timing separate",
+  "interpretation": [
+    "Seed0 large acquisition gain did not repeat at the same magnitude.",
+    "GLOBAL-U outperformed PBB in each of3 seeds but gain over NO-ADD is not stable.",
+    "Uniform and NO-ADD have the same descriptive aggregate50/144; this does not prove equivalence.",
+    "No PBB superiority or manuscript-critical science claim.",
+    "Full pipeline randomizes base/eval/bank and optimizer jointly; do not attribute variance solely to initialization."
+  ]
+}

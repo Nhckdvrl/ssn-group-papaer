@@ -1,10 +1,11 @@
 """E18: matched full-prefix replays for hold, feedback and extra search."""
 import argparse
+import copy
 import json
 from pathlib import Path
 import numpy as np
 import torch
-from first_wave import native_info, restore, sha256, write_json, sync_time, simulator_state
+from first_wave import native_info, restore, sha256, write_json, sync_time, simulator_state, image_tensor
 from closed_loop import wilson
 
 
@@ -62,13 +63,40 @@ def task_distance(env,task):
     return float(env.eval_state(env.goal_state,env._get_obs())[1])
 
 
-def execute(env,task,actions,gain,start_step):
+def execute(env,task,actions,gain,start_step,capture=False):
     success=False;return_sum=0.;steps=0
+    images=[env.render()] if capture else []
     for i,a in enumerate(actions):
         scale=gain if start_step+i>=10 else 1.
         _,reward,done,truncated,_=env.step(a*scale);steps+=1;return_sum+=float(reward)
+        if capture and steps%5==0:images.append(env.render())
         if done or truncated:success=bool(done);break
-    return {'success':success,'steps':steps,'native_return':return_sum,'native_task_distance':task_distance(env,task)}
+    result={'success':success,'steps':steps,'native_return':return_sum,'native_task_distance':task_distance(env,task)}
+    if capture:result['prefix_images']=np.asarray(images)
+    return result
+
+
+def adapt(model,images,commands,norm,mode):
+    # All labels are observations before the fork. No shift parameter is given.
+    with torch.inference_mode(False),torch.enable_grad():
+        updated=copy.deepcopy(model).eval().requires_grad_(False)
+        parts=[updated.action_encoder]+([updated.predictor] if mode=='SHORT-DYNAMICS' else [])
+        for part in parts:part.requires_grad_(True)
+        parameters=[p for p in updated.parameters() if p.requires_grad]
+        feat=model.encode({'pixels':image_tensor(images).unsqueeze(0).cuda()})['emb']
+        if feat.ndim!=3 or feat.shape[:2]!=(1,6):raise ValueError(f'Expected 6 pre-fork images, got {feat.shape}')
+        initial,target=feat[0,2:5,None].clone(),feat[0,3:6,None].clone()
+        action=torch.tensor((commands[10:25]-norm['mean'])/norm['std'],device='cuda').float().reshape(3,1,10)
+        optimizer=torch.optim.AdamW(parameters,lr=5e-5,weight_decay=1e-3);losses=[];begin=sync_time()
+        for step in range(16):
+            optimizer.zero_grad(set_to_none=True)
+            emb=updated.action_encoder(action,latent=initial,return_last_only=True)
+            prediction=updated.predict(initial,emb)[:,-1:];loss=(prediction-target).square().mean()
+            if not torch.isfinite(loss):raise ValueError('Nonfinite short adaptation loss')
+            loss.backward();torch.nn.utils.clip_grad_norm_(parameters,1.);optimizer.step();losses.append(float(loss))
+        updated.eval().requires_grad_(False)
+    return updated,{'gradient_steps':16,'updated_parameters':sum(p.numel() for p in parameters),
+                    'seconds':sync_time()-begin,'losses':losses,'data':'last3 pre-fork 5-step transitions only'}
 
 
 def run(args):
@@ -77,7 +105,14 @@ def run(args):
     torch.set_num_threads(4);torch.manual_seed(77000)
     out=Path(args.output);out.mkdir(parents=True,exist_ok=False);rows=[];replay_max=0.;pixel_max=0.;physical_steps=0
     methods=['HOLD','PREDICTED-REPLAN','FEEDBACK','EXTRA-REPLAN']
+    if args.short_updates:methods+=['SHORT-HEAD','SHORT-DYNAMICS']
     source_configs=[json.loads((Path(s)/'config.json').read_text()) for s in args.sources]
+    if args.reference:
+        reference=Path(args.reference)
+        if not (reference/'complete.json').exists():raise ValueError('Reference must be complete')
+        ref_config=json.loads((reference/'config.json').read_text())
+        if ref_config['sources']!=source_configs or ref_config['args']['prepared']!=args.prepared:
+            raise ValueError('Reference checkpoint/data mismatch')
     write_json(out/'config.json',{'args':vars(args),'sources':source_configs,'methods':methods,'gains':[1.,.7],
         'shift_onset_primitive_step':10,'count_per_task':32,'seed':77000,'harness_sha256':sha256(__file__),
         'hardware':torch.cuda.get_device_name(),'timing_scope':'ambient GPU occupancy must be audited; model-call counts recorded',
@@ -94,12 +129,19 @@ def run(args):
                 restore(env,anchor,reset_seed);info=native_info(env.render(),anchors['goal_pixels'][j])
                 initial=model.encode({'pixels':info['pixels'].cuda()})['emb'];goal=model.encode({'pixels':info['goal'].cuda()})['emb']
                 if j==0:write_json(out/f'{task}_native_control.json',controls(model,info,initial,goal))
-                planned,initial_search=solve(model,initial,goal,env,3,300,77000+j*100)
-                nominal=planned[0,0].cpu().numpy().reshape(75,2)*norm['std']+norm['mean']
+                if args.reference:
+                    reference=Path(args.reference);nominal=np.load(reference/f'{task}_initial_plan_{j:03d}.npy')
+                    prior=json.loads((reference/'rows.json').read_text())
+                    initial_search=next(r['initial_search'] for r in prior if r['task']==task and r['anchor']==j)
+                    if nominal.shape!=(75,2):raise ValueError('Reference plan length mismatch')
+                    planned=torch.tensor((nominal-norm['mean'])/norm['std'],device='cuda').float().reshape(1,1,3,50)
+                else:
+                    planned,initial_search=solve(model,initial,goal,env,3,300,77000+j*100)
+                    nominal=planned[0,0].cpu().numpy().reshape(75,2)*norm['std']+norm['mean']
                 np.save(out/f'{task}_initial_plan_{j:03d}.npy',nominal)
                 predicted=MacroCost(model,initial,goal).terminal(planned[:,:,:1])
                 for gain in [1.,.7]:
-                    restore(env,anchor,reset_seed);prefix=execute(env,task,nominal[:25],gain,0);physical_steps+=prefix['steps']
+                    restore(env,anchor,reset_seed);prefix=execute(env,task,nominal[:25],gain,0,capture=args.short_updates);physical_steps+=prefix['steps']
                     fork_state=simulator_state(env,env._get_info());fork_pixels=env.render();fork_distance=task_distance(env,task)
                     observed=model.encode({'pixels':native_info(fork_pixels,anchors['goal_pixels'][j])['pixels'].cuda()})['emb']
                     features={'prediction_observation_latent_mse':float((predicted-observed).square().mean()),
@@ -108,6 +150,7 @@ def run(args):
                     # Features are sealed before any method's future outcome exists.
                     write_json(out/f'{task}_features_{j:03d}_gain{gain}.json',features)
                     for method in methods:
+                        adaptation=None
                         restore(env,anchor,reset_seed);repeat=execute(env,task,nominal[:25],gain,0);physical_steps+=repeat['steps']
                         error=float(np.abs(simulator_state(env,env._get_info())-fork_state).max())
                         pixel=float(np.abs(env.render().astype(float)-fork_pixels).max());replay_max=max(replay_max,error);pixel_max=max(pixel_max,pixel)
@@ -118,12 +161,16 @@ def run(args):
                             if method=='HOLD':remaining=nominal[25:];search=None
                             else:
                                 state=predicted if method=='PREDICTED-REPLAN' else observed
-                                a,search=solve(model,state,goal,env,2,900 if method=='EXTRA-REPLAN' else 300,77001+j*100)
+                                current=model
+                                if method.startswith('SHORT-'):
+                                    current,adaptation=adapt(model,prefix['prefix_images'],nominal[:25],norm,method)
+                                a,search=solve(current,state,goal,env,2,900 if method=='EXTRA-REPLAN' else 300,77001+j*100)
                                 remaining=a[0,0].cpu().numpy().reshape(50,2)*norm['std']+norm['mean']
+                                if current is not model:del current
                             result=execute(env,task,remaining,gain,25);physical_steps+=result['steps']
                         rows.append({'task':task,'anchor':j,'source_episode':int(anchors['episode'][j]),'condition_gain':gain,
                             'method':method,'absorbed_before_fork':prefix['success'],'prefix_steps':prefix['steps'],
-                            'deployment_features':features,'initial_search':initial_search,'additional_search':search,
+                            'deployment_features':features,'initial_search':initial_search,'additional_search':search,'adaptation':adaptation,
                             'fork_native_task_distance':fork_distance,**result})
                         write_json(out/'rows.json',rows)
                     print('recovery_fork',task,j,gain,flush=True)
@@ -149,6 +196,7 @@ def run(args):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--sources',nargs='+',required=True);p.add_argument('--prepared',required=True);p.add_argument('--output',required=True)
+    p.add_argument('--short-updates',action='store_true');p.add_argument('--reference')
     args=p.parse_args()
     try:run(args)
     except Exception as e:

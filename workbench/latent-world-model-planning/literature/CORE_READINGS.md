@@ -201,10 +201,10 @@ SPARK的branch criterion不是外部value/entropy计算器，而是policy reason
 首轮至少需要三个“逐步变强”的selector：
 
 1. **GLOBAL-U**：只看world-model predictive uncertainty；
-2. **TASK-U / ToIA-like**：uncertainty × goal/task relevance；
+2. **TASK-U heuristic**：goal-cost uncertainty；另需真正ToIA-inspired predictive-value×task-relevance对照，不能把二者等同；
 3. **BOUNDARY-U / PBB**：只关心可能改变CEM elite membership/selected action的pairwise rank uncertainty。
 
-如果3只是在数值上等于2，PBB没有独立方法空间；如果3选择的states/actions不同并带来更高planning gain per environment step，才有自己的叙事。
+若v0与task-aware baseline选择相同，只说明当前score没有独立增量，可改变branch action设计、经验利用方式或acquisition target；R1继续保留。不同选择且有可信planning收益，才支持当前boundary叙事。
 
 
 ## S18｜What Must a World Model Distinguish：R3 的问题已经被说得很准，下一步不是换个名字
@@ -250,3 +250,9 @@ SPARK的branch criterion不是外部value/entropy计算器，而是policy reason
 [ToIA方法§III与实验§IV–VI](https://arxiv.org/html/2609.19378v1)再核对：GP条件协方差解析估计prefix观测对未来query的variance reduction，再乘task-softmax relevance；不是goal-cost variance。原文held-out task-agnostic US/JIG弱、ToIA强，并做predictive-value/task-relevance分解。E16 TASK-U11/48**不能当作反驳ToIA或task relevance**，只能称goal-cost uncertainty heuristic；重要比较需variance-reduction×task weighting/单独消融，而不是故意用弱邻居标签。
 
 首轮真实结果要求我们继承其data-value/learnability思想，但先确认强简单采样的收益，再研究新增数据怎样改变动作后果、任务复用与规划。当前没有新颖性主张；不因近邻覆盖data acquisition而关闭R1。
+
+## 2026-10-02 E18开工前复读：干预价值与干预类型
+
+[Feedback WM§4.2–4.3/§5/AppendixE–F](https://arxiv.org/html/2605.15705v1)已读：维护observer feedback state，用prediction-observation residual修正candidate未来预测；另以固定counterfactual action-variance重权latent dimensions，指导diffusion policy靠近expert manifold。该方法不同于E18 v0简单用当前真实image重新规划；后者只能作为feedback/replan基线，不能宣称复现或新发明observer。学习其思路：必须把预测校正与动作/任务相关cost改动分开验证。
+
+[Counterfactual Utility Protocol§3–4](https://arxiv.org/html/2609.10954v1)已读：固定no-rehearsal update机制，fork状态及planner/environment randomness配对；trigger只看prefork stream，不能读future HOLD return；需报告全部attempts，筛除diverged会改变estimand。负结果仅约束该固定response，不是“更新普遍有害”；跨任务机制预测被原文实验反驳。E18继承fork utility标签，先比较hold/预测state重算/真实feedback/更多compute，不先造router，坏结果和no-shift全部保留。
