@@ -1009,11 +1009,11 @@ P02 已经比我们之前记得更接近 M2：
 4. relative ordering变化要由少数regime variables预测，并在 hold-out regime成立；
 5. 最好解释为什么 predictive object 而不仅是 policy class / planner engineering造成差异。
 
-### P95 — Optimistic Task Inference for Behavior Foundation Models — ICLR 2026
+### P98 — Optimistic Task Inference for Behavior Foundation Models — ICLR 2026
 **来源：** https://proceedings.iclr.cc/paper_files/paper/2026/hash/6a616eeef41984f3bb23f81c3b9cb689-Abstract-Conference.html
 
 - **母问题：** zero-shot / successor-feature BFMs test-time compute很低，但通常假设新 reward可以在一个非小的 inference dataset 上被计算/标注；这把“zero-shot”计算效率换成了 task-information/data负担。
 - **方法：** 对 reward function保持 uncertainty，使用 optimistic criterion通过少量 test-time environment interaction主动收集最有信息的数据。
 - **证据：** successor-feature BFMs在 established zero-shot benchmarks上能用少量 episodes识别/优化 unseen reward，且额外计算开销小。
-- **ownership：** “implicit/BFM方法 task inference 需要很多 reward-labeled samples”不是我们的新发现；P95已经把它做成 ICLR paper。
+- **ownership：** “implicit/BFM方法 task inference 需要很多 reward-labeled samples”不是我们的新发现；P98已经把它做成 ICLR paper。
 - **对 M2：** E13 中 task/query information 只能作为 **fairness axis / regime variable**，不能把“TD-JEPA需要10k reward samples”当 headline。真正空间是：把 task-information budget 与 training/deployment compute、horizon、query novelty一起纳入 predictive-computation placement frontier。

@@ -4,6 +4,56 @@
 目标会议：ICLR / ICML / NeurIPS；视觉贡献足够时 CVPR。  
 当前科学 claim = 0；本表的任务是**给探索设边界、让 reviewer compression risk 在跑 GPU 前显式化**，不是“桌面证明 novelty”。
 
+## 0. 如何使用 related work：ownership map 不是禁区图
+
+**这是本 workbench 的硬规则。**
+
+AI 研究高度拥挤。一个强近邻已经研究变量 X，**只意味着我们不能把“X 存在 / X 有效”本身当唯一 novelty**；它绝不意味着包含 X 的整个母问题已经关闭。
+
+本文件中的“ownership / compression risk / 已有 claim”应被这样解释：
+
+### 近邻的正面作用
+
+1. **证明母问题值得社区关心。**  
+   同一问题连续产生 ICML / ICLR / NeurIPS 工作，通常说明 territory 重要，不是应该逃离。
+
+2. **提供 idea-growth lineage。**  
+   强论文最有价值的是：它接受了哪些旧前提、发现了什么 pressure、如何把 broad complaint 压成一个可操纵对象、用什么决定性实验完成 claim。
+
+3. **制造 tension。**  
+   两篇论文分别证明 A 与 B，并不意味着 A+B 空间被占完；更可能意味着“什么时候 A、什么时候 B”就是下一层问题。
+
+4. **提供强 baseline。**  
+   我们应该在已有最强解释上继续推进，而不是绕开它去找没人关心的残差。
+
+### occupied atomic claim 之后仍然合法的 novelty
+
+- **regime boundary / phase law**：已有方法各自在不同 regime 成立，我们找决定切换的变量；
+- **interaction / unification**：两条已有规律组合后出现新的 consequence；
+- **new distinction**：原来被混在一起的两个对象被证明应分开；
+- **mechanism / identification**：已知现象背后的 load-bearing variable；
+- **method from diagnosis**：不是换 loss，而是由新机制自然推出 correction；
+- **transfer/generalization boundary**：方法对齐当前 planner/query 时，什么时候保留或损害 reuse；
+- **data/compute law**：什么数据或计算资源对某种能力真正必要；
+- **strong comparative science**：controlled study 推翻一个领域默认设计假设。
+
+### 什么时候才能真正停止一条方向
+
+不能因为“paper 提到过这个变量”停止。要有更强证据，例如：
+- 自然现象在强 baseline 上不存在；
+- 最近邻已经**实质解释/解决我们想拥有的同一个 claim**，且没有 meaningful extension；
+- effect 只停在 probe / toy，对 decision 没 consequence；
+- 深读 + controlled pilot 后，所有差异都被已知更简单解释吸收；
+- 资源条件无法获得与目标会议匹配的证据。
+
+因此下面的“已占核心 / compression risk / 红区”统一理解为：
+
+> **不能单独作为 headline 的原子 claim；仍可作为更大新叙事的 ingredient。**
+
+不是“禁止研究这些区域”。
+
+---
+
 ## 1. 顶会 / journal 尺度锚点：这个领域什么问题已经被认为值得发表
 
 | 工作 | Venue | 它真正拥有的 claim | 我们要学习的 idea-growth |
@@ -79,7 +129,7 @@
 | PLDM comparative science | explicit latent planning vs GCRL under data quality/length/size/OOD task-layout + inference time | “我们再画一张planning-vs-policy regime表” |
 | Planner amortization (2021) | MPC + learned proposal + planner-to-policy distillation | “把search搬到training / distill planner” |
 
-## 3. 明确不能再作为我们的 headline
+## 3. 已被充分占有的原子 headline（可以继续作为更大 story 的 ingredient）
 
 以下可以当背景、sanity、复现，不是我们的新发现：
 
