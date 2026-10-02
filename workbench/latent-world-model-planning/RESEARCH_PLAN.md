@@ -210,3 +210,44 @@ Fast-LeWM已经提供一个几乎零训练成本的第一实验：每个candidat
 若cheap cost与high-fidelity cost的残差可以在held-out candidate bank上校准成区间 `[L_i, U_i]`，一个候选的“最好可能cost”仍差于当前elite边界时可以跳过；只有区间与elite阈值重叠的候选升级。后续可把这个规则做成 **Elite-Preserving CEM**：主要测top-K elite recall、high-fidelity call fraction、closed-loop success和fixed-wall-clock Pareto。严格coverage/概率保证只有校准成立后再写，不预注册理论结论。
 
 这个方向的novel narrative不是“多保真第一次用于规划”，而是：**modern latent-WM planners的compute bottleneck发生在成百上千candidate反复scoring；planner只消费elite set，因此prediction fidelity应该围绕elite preservation来分配。**
+
+
+## 12. 什么结果能长成顶会叙事，而不只是“一个小技巧涨点”
+
+### PBB 的叙事分叉
+
+**最强形态：data-value principle + method。**
+如果PBB在TwoRoom/Wall与Push-T/Cube都显示：同样的新增env-step预算下，candidate-boundary branches显著优于IID、coverage、global uncertainty与task-aware uncertainty，而且主要改善counterfactual ranking/elite regret而不是只扩大state coverage，那么论文可以讲：
+
+> **World models should acquire counterfactual experience where the planner's decision is fragile, not merely where prediction is globally uncertain.**
+
+方法可以仍很简单。novelty来自“planner-boundary data value”这个可验证原则、对应acquisition rule，以及跨任务证据。
+
+**中等但可继续形态：不同采样策略在不同任务占优。**
+如果导航偏coverage、接触任务偏PBB，不要把它判死。继续寻找决定这种差异的task factor（branching factor、contact multimodality、candidate margin、support density），可能长成“何时应该采哪类world-model data”的设计原则。
+
+**需要转向形态：PBB≈task-aware uncertainty。**
+这时不靠重新命名保idea。检查二者是否实际上选到同一states；若高度重合，贡献应转到更轻量的proxy、branch action selection或与training objective的联合设计。若没有实质增量，则回R1别的data-value路线。
+
+### Elite-Preserving CEM 的叙事分叉
+
+**最强形态：planner interface principle + efficient method。**
+如果selective refinement在fixed wall-clock下稳定超过pure Fast与pure expensive，并保持接近FULL-REFINE的elite set，且价值集中在少量candidate/后期CEM iterations，那么可以讲：
+
+> **Prediction fidelity in latent world-model planning should be allocated to preserving the optimizer's elite set, rather than uniformly to every imagined trajectory.**
+
+这与DeepJEPA的transition-depth routing是互补轴，与传统multi-fidelity optimization的区别由modern learned latent predictor、CEM elite dynamics和closed-loop control证据建立。
+
+**中等形态：只省计算、不提高success。**
+如果达到相同性能但显著减少refined calls/wall-clock，这仍可能是有价值的方法论文，前提是加速真实、实现通用、强于简单candidate reduction，并在多个任务保持质量。不要因为“只是效率”自动否定；Fast-LeWM本身就是效率+准确度型工作。
+
+**需要转向形态：cheap predictor的elite recall太低。**
+这时真正问题变成screening calibration。可以训练shared cheap head专门保证elite recall、用conformal/quantile residual做promotion interval，或者改成每轮先高保真校准少量sentinel candidates再决定refine set。不要硬缩M制造失败。
+
+### 两条线如何可能汇合
+
+PBB优化**训练时真实数据预算**，Elite-Preserving CEM优化**部署时模型计算预算**。如果两者都成立，可形成更大的统一观点：
+
+> **World-model resources should be spent around decision boundaries—environment interaction during learning, and predictive compute during planning.**
+
+但不要一开始强行合并。只有两条独立结果都成立、且共享candidate-boundary指标确实能解释收益时，再考虑统一论文；否则各自保持清晰。
