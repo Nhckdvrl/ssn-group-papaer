@@ -1,0 +1,74 @@
+{
+  "revisions": {
+    "rajpurkar/squad": "7b6d24c440a36b6815f21b70d25016731768db1f",
+    "google/xquad": "51adfef1c1287aab1d2d91b5bead9bcfb9c68583"
+  },
+  "config": {
+    "max_train_length": 1024,
+    "max_new_tokens": 64,
+    "micro_batch": 2,
+    "accumulation": 8,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "updates": 1024,
+    "warmup": 102
+  },
+  "removed": {
+    "complete_training_unit_over_1024": 6
+  },
+  "dev_titles": [
+    "Appalachian_Mountains",
+    "Asthma",
+    "Boston",
+    "Cyprus",
+    "Daylight_saving_time",
+    "Dell",
+    "Dog",
+    "Eton_College",
+    "Florida",
+    "IBM",
+    "Imamah_(Shia_doctrine)",
+    "John_von_Neumann",
+    "Karl_Popper",
+    "Liberal_Party_of_Australia",
+    "List_of_numbered_streets_in_Manhattan",
+    "Marvel_Comics",
+    "Molotov%E2%80%93Ribbentrop_Pact",
+    "Norfolk_Island",
+    "On_the_Origin_of_Species",
+    "PlayStation_3",
+    "Race_and_ethnicity_in_the_United_States_Census",
+    "Rule_of_law",
+    "Solar_energy",
+    "Sony_Music_Entertainment",
+    "St._John%27s,_Newfoundland_and_Labrador",
+    "Symbiosis",
+    "Transistor",
+    "Tucson,_Arizona",
+    "Umayyad_Caliphate",
+    "University_of_Kansas",
+    "University_of_Notre_Dame",
+    "Virgil"
+  ],
+  "counts": {
+    "train": 16384,
+    "en_dev": 512,
+    "en_test": 1190,
+    "de_test": 1190
+  },
+  "hashes": {
+    "train": "6fc90176db163cfc0a575ef780449fcd5536c9aeaf0a5b96684bb80baf9d9137",
+    "en_dev": "6be1056d97fb59a79ef22086d298a57e925cf62c84be94279dfed42d38863018",
+    "en_test": "71f81a84407a347c90b87172350733275febefb90e59f39640b04d2b428c8838",
+    "de_test": "2b3b5e34a2816d82a9037ef2884b8ec5d6fcaf89c5085713d31ae2df571b4c69"
+  },
+  "tokenizer_sha256": "2b533a1fbef0fd3352a10e98e5ed9e7ec1e944fa8dbbee346833e74a48614c38",
+  "xquad_source_qa_ids_verified": true,
+  "paired_test_ids_verified": true,
+  "source_article_disjoint": true,
+  "scorer": {
+    "url": "https://raw.githubusercontent.com/google-research/xtreme/838c13b69daafb9328785d16caae2711e4012123/third_party/evaluate_squad.py",
+    "revision": "838c13b69daafb9328785d16caae2711e4012123",
+    "sha256": "c511e8c2241b0766d5cab2138511b56d0b491d74d3455c8b9ecdc5e53dace705"
+  }
+}

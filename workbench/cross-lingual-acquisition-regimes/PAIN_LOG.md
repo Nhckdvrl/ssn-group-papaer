@@ -24,3 +24,9 @@ MWB+P终点DE对MWB +1.23pp [0.50,1.96]，同时有EN增益，不能直接解释
 E01能学会任务，但未回答是否每批新监督内容都要双语覆盖，还是同领域、内容不重叠桥接即可复用。
 E02同起点短程CPT，控制新实例覆盖与跨文档conditioning，再统一任务学习。
 不把bridge reuse直接当新idea；近邻已研究域外桥接、alignment时机和translated augmentation。
+
+## P04：标准NLI分类学习不能替代生成式学习基线
+
+E01明确有效，但只有backbone+分类头，不能接回原LM head解释生成/翻译遗忘，
+也不足以承接新知识、输出语言接口与桥接复用的母问题。E03先建真实QA生成学习，
+只用英语article-disjoint source gate确认可测；不把冻结QA失败当不能学习。
