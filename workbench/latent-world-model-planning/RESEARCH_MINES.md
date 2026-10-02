@@ -3,6 +3,8 @@
 > 这不是 idea 榜单，也不是方法菜单。目标是找到 **ICLR / ICML / NeurIPS / CVPR 级母问题中仍有实验空间的 pressure region**，用大量受控实验让 observation / distinction / mechanism / method 自己长出来。
 >
 > 核心标准：世界模型的内部指标只有在影响 **prediction under intervention → candidate ranking/search → closed-loop behavior** 时才有科学重量。2026 survey “World Models for Embodied Intelligence: From Plausible to Controllable to Actionable”把这条线概括为 Plausible → Controllable → Actionable；本 workbench 以 **Actionable consequence** 作为 problem-mining gate，而不是靠新 probe 自我成立。
+>
+> **全领域地图：** [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)。第二轮 P75–P92 hardening 后，当前资源优先级为 **M3 + M2 → M1 conditional**，不是按编号先后。
 
 ## 0. 为什么重新校准
 
@@ -19,7 +21,7 @@
 
 ---
 
-# M1 — Observable goal ≠ control state: belief-aware visual planning
+# M1 — Observable goal ≠ control state: belief-aware visual planning（CONDITIONAL MINE）
 
 对应 idea: [I07](ideas/I07_observation_aliasing_belief_planning.md)
 
@@ -41,6 +43,9 @@ Image-goal planning天然有两个不同需求：
 直接近邻已经各做了一部分：
 
 - **FIRM-WM (2609.22816)**：显式拆 goal-comparable configuration 与 history-dependent dynamic fiber，并加入 same-reset intervention branches；说明“goal state”和“dynamic state”角色冲突是真问题。它已经占了 generic factorization。
+- **Physically Viable World Models (2605.30542)**：更直接固定/近似固定 visual scene 与 action、改变 mass/friction/contact/viscosity 等 latent physics，展示 intervention outcome 与可执行动作会变化；因此 broad “same image hides different physics” 已被占。
+- **Branch-JEPA (2607.05238 v3)**：point successor→finite set of latent successors，压缩了 generic multi-future / stochastic prediction空间。
+- **Action-Sufficient Goal Representations (ICML 2026)**：value-sufficient goal representation也可能不够做action selection，进一步占据 broad decision-sufficiency framing。
 - **UWM-JEPA (2605.25313)**：把 partial observability 表述成 hidden futures 的 belief，并用 density-matrix latent；但主要证据是 hidden-velocity prediction/probe，未建立 image-goal MPC 的闭环决策问题。
 - **Flow Equivariant World Models (ICML 2026)**：partial observability 下维护结构化 latent memory，重点是动态视频预测，不是 reward-free image-goal planning。
 - **I-TAP (2602.18694)**：history-conditioned temporal abstractions + MCTS 处理 regime shift/POMDP，但属于 offline RL/token planning，不是 compact visual JEPA goal planner。
@@ -57,13 +62,19 @@ Image-goal planning天然有两个不同需求：
 
 值得挖的是：
 
-> **在 compact reward-free visual world-model planning 中，什么时候 observation aliasing 从“prediction ambiguity”变成 action-selection regret？deterministic history state、typed state、stochastic/belief representation 分别在哪些 aliasing regime 够用？**
+> **在 compact reward-free image-goal MPC 中，什么时候 hidden-state ambiguity 是可被有限 history 消除的，什么时候即使给定相同可用 history 仍保留多个 action-relevant hypotheses；这个边界何时真正改变 candidate ordering / regret / closed-loop success？**
+>
+> 这比“same observation hidden physics不同”更窄，也更可识别：P75 已经占前者；我们只有在 **history-resolvable vs irreducible actionable ambiguity** 上得到稳定 regime law 才继续。
 
 如果出现稳定 law，方法才从 law 长出来，例如：
 - point state 足够：history resolves alias；
 - history仍不能 resolve：需要 explicit uncertainty/multi-hypothesis belief；
 - uncertainty本身不够：planner需要 risk/information-aware objective；
 - goal-comparable 与 dynamics state 的耦合造成 metric contamination：需要 typed interface。
+
+## 当前判断
+
+**问题重要，但直接近邻过强，所以只做 cheap proof-of-problem，不先铺训练。** E11 若不能在自然 compact-planning substrate 上证明 history之后仍有 action-level ambiguity，就快速 park。
 
 ## 这条线为什么符合我们的资源
 
@@ -109,6 +120,7 @@ TMLR 2026 **What Drives Success in Physical Planning with JEPA-WMs?** 已明确�
 
 - **explicit WM**：action-conditioned autoregressive predictor；训练与具体 reward/task 解耦，test time 用 CEM/MPPI/GD 对任意 cost 做 counterfactual rollout；
 - **implicit WM**：例如 Bagatella et al. **TD-JEPA**，把长时 predictive structure / successor features折入表示和 policy-conditioned predictor；训练更重，部署无需 search，但 reward/task受 learned feature span 等限制；
+- **direct arbitrary-horizon / occupancy**：Universal Horizon Models、Jumpy World Models等，不递归primitive one-step却也不完全amortize成policy；
 - **hybrid**：如 TD-MPC2，在 learned policy/value 与短 rollout/search 之间折中。
 
 该论文直接把 **training cost / inference cost / generalization trade-off 的 empirical comparison** 留作 future direction。这里是明确的领域问题，不是我们凭空造的缝。
@@ -118,8 +130,11 @@ TMLR 2026 **What Drives Success in Physical Planning with JEPA-WMs?** 已明确�
 2026 同时出现：
 - compact explicit JEPA-WM：DINO-WM / PLDM / LeWM / JEPA-WMs；
 - implicit long-horizon predictive representation：Bagatella TD-JEPA；
+- direct arbitrary-horizon / policy-occupancy models：Universal Horizon Models、Jumpy World Models；
 - search-amortization：GC-IDM / LeFlow / RP1 / INTACT；
 - hierarchical/hybrid planning：HWM / SAGE / FF-JEPA / TD-MPC2。
+
+因此 M2 应被理解成 **predictive-computation placement continuum**，不是 explicit/implicit 二分类。
 
 领域正在从“有没有 world model”转向 **predictive computation 放在哪里**。
 
@@ -153,7 +168,7 @@ TMLR 2026 **What Drives Success in Physical Planning with JEPA-WMs?** 已明确�
 
 ---
 
-# M3 — Dataset-induced planning semantics: behavior trajectories ≠ environment controllability
+# M3 — Dataset-induced planning semantics: behavior trajectories ≠ environment controllability（PRIMARY MINE）
 
 对应 idea: [I09](ideas/I09_behavior_to_controllability.md)
 
@@ -198,6 +213,8 @@ M3 必须**真实改变 behavior policy / trajectory distribution**，让 object
 - multi-route aggregation / interval supervision 比单条 observed path 更稳。
 
 I06 **semantic negatives vs geometric regularization** 是 M3 的一个低成本 slice：它只审 cross-negative 的双重角色，不再作为整个 workbench 的第一主旨。
+
+**为什么当前把 M3 放第一：** 它直接连到 RC-aux / Temporal-Distance JEPA 这批 planning-aligned objectives；有真实理论邻居（quasimetric / CGCIVL）但还没有把 behavior-policy-induced semantics 对 visual-WM MPC decision 的 imprint 做成 clean identification；同时最适合用独立GPU铺 data regimes × objectives × seeds。最大的风险是 coverage confound，E14 就是为先杀这个解释。
 
 ---
 
@@ -256,12 +273,12 @@ How is the model consumed?
 
 # 7. 执行优先级不是“先把一个题做到底”
 
-第一轮按 **information gain / cost** 排：
+第二轮 hardening 后按 **scientific upside × collision risk × information gain / cost**：
 
-- **E11**：M1 observation-aliasing decision oracle，先验证 problem 是否真的影响动作，不先训练新架构；
-- **E14**：M3 behavior-policy intervention，先做小数据/一两个 objective；
-- **E08**：I06 zero-training negative semantics audit，可与 M3 并行，作为其局部证据；
-- **E13**：M2 explicit/implicit matched pilot，在 baseline substrate稳定后启动；
-- E11/E14/E13 哪条出现最强的自然 failure + clean causal leverage，再把卡数集中到那条。
+1. **E14 / M3**：第一主 pilot。先用 topology task做 2–3 个真实 behavior-policy regimes，验证是否存在无法由coverage/local-support解释的 planner-semantic imprint。
+2. **E13 / M2**：第二主 pilot。common substrate稳定后，先做最小 explicit-vs-implicit/direct-horizon comparison；目标是发现 regime boundary，不是完整 benchmark。
+3. **E11 / M1**：cheap conditional pilot。因为 P75/FIRM/UWM/Branch-JEPA 已强占 broad space，只用 simulator oracle判断是否还有 history之后仍 load-bearing 的 ambiguity。
+4. **E08 / I06**：可随 dataset ready 立即并行，成本最低，但只当 M3 子诊断。
 
-不要因为 I06 文档最详细就默认它是主论文。
+哪一条出现最强的 natural failure + decision consequence + clean intervention leverage，再把多GPU集中到那条。  
+不要因为某条文档最详细、最便宜或最容易写 loss 就默认它是论文。
