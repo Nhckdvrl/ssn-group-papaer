@@ -124,14 +124,14 @@ E05 = conditional diagnostic only
 | D2 可复用资产 | ⚠️ LeWM/RC-aux/TD-JEPA/stable-worldmodel等官方代码与pin已审；执行机下载/hash待填 |
 | D3 痛点 | ⚠️ literature/code risks已登记；真实 P## = 0 |
 | D4 系统测量 | ⚠️ candidate/oracle schema + E02/E06–E10已设计；GPU结果=0 |
-| D5 定位 | ✅ P01–P64 + venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
-| D6 idea组合 | ✅ problem-led M1/I07、M2/I08、M3/I09；I06降为M3子诊断，I03为共享regime工具；I01/I02/I05 PARKED；E03/E04 pre-run VOID |
+| D5 定位 | ✅ P01–P74 + venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
+| D6 idea组合 | ✅ problem-led M1/I07、M2/I08、M3/I09；I06降为M3子诊断，I03为共享regime工具；I01/I02 PARKED，I05由I07 supersede；E03/E04 pre-run VOID |
 
 ## 决策记录
 
 - 2026-10-02：登记 PROPOSED，资源条件写入根目录。
 - 2026-10-02：第一轮调查不足，继续深挖。
-- 2026-10-02：建立 P01–P64 lineage / ownership / oracle maps；generic support-drift I02 PARKED。
+- 2026-10-02：建立 P01–P74 lineage / ownership / oracle maps；generic support-drift I02 PARKED。
 - 2026-10-02：**代码级审计否定原 I01 identification design**：short-window loss看不到“只改长 episode factorization”的treatment；E03/E04未运行即 VOID。
 - 2026-10-02：由 Bai/Xiong Temporal-Distance JEPA / RC-aux negative sampler + false-negative limitation/ablation + CGCIVL邻域，生成 I06；注册 E08–E10。
 - 2026-10-02：进一步按 **problem-led / actionable** 标准重构 mining：新增 M1/I07 observation-aliasing→belief planning、M2/I08 explicit↔implicit frontier、M3/I09 behavior→controllability semantics；I06降为M3子诊断，不再默认主论文。
