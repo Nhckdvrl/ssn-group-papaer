@@ -1,0 +1,26 @@
+# E20 — Does the data recipe or the seed set context/memory arbitration at 1B?（2026-10-02）
+
+- **状态：** REGISTERED（判据提交于计算之前）
+- **类型：** PILOT（把 E13–E18 的“同配方 run 间仲裁差异”放进“配方 vs seed”的方差分解；从单一配方推广到 25 个配方、1B）
+- **对应：** E13、E17、E18（160M：条件内 run 差异显著 8/12，但跨条件排名不一致 P1-margin 0.26）；2510.02370（合成数据中数据性质决定仲裁）；DataDecide（Magnusson et al. 2025：25 配方 × 3 seed，1B 全量训练，seed 同时改变初始化与数据顺序）；Saphra 组（阈值附近 seed 分歧）
+- **阳性对照：** 能力读数 K（clean 边际，见设置）的配方 ICC 应高（DataDecide 报告 1B seed SD ≤ 2 个点）；若能力读数的配方 ICC < 0.7，说明工具无力区分，本实验不可判定
+- **噪声地板：** 条目 bootstrap（条件内）；实验单位 = 模型（run），配方 n=25，每配方 3 seed
+- **问题（只回答这个）：** 1B 自然预训练中，上下文-记忆仲裁（采信边际）的模型间差异有多大比例由数据配方决定、多大比例由 seed 决定？与能力读数相比如何？配方效应与 seed 效应是否在 12 个条件间方向一致（“特质”）？
+
+## 设置
+- 模型：`allenai/DataDecide-<recipe>-1B` × 25 配方 × seed {default, large-aux-2, large-aux-3}，最终步 step69369（100B tokens）。加载：`scripts/dd_common.py`（OLMo-v1 → Llama 映射；校验：Pile 20 篇 NLL 2.65，对调 SwiGLU 两半 12.6）。
+- 读数：与 E18 完全相同（ParaConflict 6 类别 × 2 冲突形式；已知 = clean 下 lp(答案) > lp(干扰)；采信边际 = 已知条目上 mean[lp(干扰) − lp(答案)]）。序列起始 token 用 EOS（OLMo 无 BOS，训练时文档以 EOS 分隔）。
+- 能力读数 K：每类别 clean 边际 = 全部条目上 mean[lp(答案) − lp(干扰)]（连续，无天花板；冒烟测试显示“已知比例”在首都 / 语言类别上 ≥ 0.98，故不用比例作阳性对照，比例只作描述）。
+
+## 分析
+1. 每个条件：配方 ICC(1) = (MSB − MSW)/(MSB + 2·MSW)，分别对 D（采信边际）和 K（clean 边际）；报告 12 个条件的中位数，按配方 bootstrap 95% CI。
+2. 一致性：配方层面 = 25 个配方均值在 12 个条件两两之间的平均 Spearman；seed 层面 = 配方内 seed 偏差（75 个）在条件两两之间的平均 Spearman。
+3. 稳健性：(a) 只用 75 个模型都“已知”的条目（每条件 ≥ 30 条时）；(b) 采信边际对配方均值 K 做线性残差后重算 ICC。
+4. 探索（不判定，只报告）：dolma1_7 与 dolma1_7-no-flan 的差（各 3 seed）。
+
+## 判据
+- **阳性对照通过：** K 的 ICC 中位数 ≥ 0.7。
+- **配方决定：** D 的 ICC 中位数 ≥ 0.7。
+- **seed 主导：** D 的 ICC 中位数 ≤ 0.3（且阳性对照通过）→ 仲裁倾向在 1B 上基本不由数据配方决定。
+- **一致性：** 配方层面 ≥ 0.5 且 seed 层面 ≤ 0.2 → “配方设定一致的倾向，seed 只加逐关系的噪声”；两者都 ≤ 0.2 → 仲裁倾向不是模型级性质。
+- 其余区间如实报告，不追加条件。
