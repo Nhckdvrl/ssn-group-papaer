@@ -937,3 +937,12 @@ I06 是 M3 的一个小切片；I03 oracle ladder是三条线共用的 scientifi
 - **证据：** 100 OGBench tasks，尤其suboptimal-data与long-horizon tasks提升。
 - **ownership：** arbitrary-horizon predictive abstraction / direct future modeling 已有强ICML方法。
 - **对 M2：** explicit one-step rollout vs implicit successor representation之间还有“direct arbitrary-horizon model”这一中间点；M2应研究 continuum，而不是二分类。
+
+
+### P93 — How Should World Models Be Evaluated? A Decision-Making-Centric Position — arXiv 2606.15032
+**来源：** https://arxiv.org/abs/2606.15032
+
+- **母问题：** “world model”覆盖 video predictor、latent simulator、planning model、synthetic-data engine 等不同对象，但论文经常用低层生成/预测指标支持高层 decision claim。
+- **框架：** L0–L7 evidence ladder，从 visual plausibility逐渐上升到 counterfactual action fidelity、policy ranking、planning/optimization lift、model exploitability与decision utility。
+- **对本 workbench：** 把“probe显著”与“真实科研问题”明确分开。representation/probe可以帮助定位，但如果 claim 是 planning / controllability，至少要把证据推进到 candidate decision / intervention / closed-loop层。
+- **ownership：** “world model evaluation应decision-centric”本身不是新 claim；我们的贡献只能是具体 problem / law / method。
