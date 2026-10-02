@@ -908,3 +908,32 @@ I06 是 M3 的一个小切片；I03 oracle ladder是三条线共用的 scientifi
 - **M2仍增强：** P65 + P80 表明 explicit↔implicit 不是二分而是从 primitive dynamics、successor structure、policy-level jump model到hybrid的连续谱；P09明确留出了 direct empirical frontier。
 - **M3仍增强：** 这些新工作没有替代“behavior trajectory semantics何时等于 environment controllability”的 identification 问题；但必须更严格控制coverage/support。
 - **M1收紧：** 不再把“same observation, hidden state不同”本身视为novel pressure；只有 **history-resolvable vs irreducible uncertainty 的 decision boundary**、且对compact image-goal planner load-bearing，才值得继续。
+
+## 16. Additional ICML 2026 pressures discovered in proceedings sweep（P90–P92）
+
+### P90 — Action-Sufficient Goal Representations — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/hyeon26a.html
+
+- **母问题：** hierarchical offline GCRL里 goal representation常由value learning产生；即使 value estimation exact，它是否保留了 low-level action selection 所需的 distinctions？
+- **理论区分：** value sufficiency **不推出** action sufficiency。
+- **方法/发现：** information-theoretic action-sufficiency condition；standard policy log-loss自然诱导 action-sufficient representation；actor-derived goal representation优于value-derived。
+- **ownership：** “goal representation里有足够value信息但不一定足够选动作”已有 ICML 理论/实证工作。
+- **对 M1/M4：** goal-comparable / decision-sufficient state的 broad story更拥挤；M1 必须是 hidden-state belief造成的 **current-state** actionable aliasing，而不是再定义一个goal sufficiency概念。
+
+### P91 — Policy-Driven World Model Adaptation for Robust Offline MBRL — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/chen26fl.html  
+**代码：** https://github.com/Agentic-Intelligence-Lab/ROMBRL
+
+- **母问题：** 两阶段 offline MBRL 先最大似然学 model、再优化 policy，有 objective mismatch；policy又会exploit model。
+- **方法：** policy与world model在统一 robust maximin / Stackelberg learning dynamics下共同适配。
+- **证据：** 12 noisy D4RL MuJoCo + 3 stochastic Tokamak tasks。
+- **ownership：** “让world model随policy objective共同adapt解决robustness”已是ICML路线；M2如果发展hybrid方法，不能简单 joint-train model/policy。
+
+### P92 — Offline RL with Universal Horizon Models — ICML 2026
+**来源：** https://proceedings.mlr.press/v306/chung26b.html
+
+- **母问题：** recursive imagined rollouts compounding error；geometric horizon models直接预测discounted future但远future仍难。
+- **方法：** direct prediction under arbitrary horizons + winsorized horizon distribution做value learning。
+- **证据：** 100 OGBench tasks，尤其suboptimal-data与long-horizon tasks提升。
+- **ownership：** arbitrary-horizon predictive abstraction / direct future modeling 已有强ICML方法。
+- **对 M2：** explicit one-step rollout vs implicit successor representation之间还有“direct arbitrary-horizon model”这一中间点；M2应研究 continuum，而不是二分类。
