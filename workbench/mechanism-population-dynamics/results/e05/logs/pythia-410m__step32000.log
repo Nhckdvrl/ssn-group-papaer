@@ -1,0 +1,10 @@
+Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
+Warning: Permanently added 'fvcrc10' (ED25519) to the list of known hosts.
+Loaded pretrained model EleutherAI/pythia-410m into HookedTransformer
+pythia-410m__step32000: rand CL 0.06 nat CL 0.06 pile 2.533 | best fwd L19 0.04 | worst rev L23 0.06 (381.6s)
+Exception ignored in: <function ResourceTracker.__del__ at 0x14869ab78180>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

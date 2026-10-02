@@ -4,6 +4,7 @@ Usage: e09_gate_scale.py --repo EleutherAI/pythia-160m-seed3 --step 64000 -> res
 """
 import argparse
 import json
+import os
 import time
 
 import torch
@@ -15,7 +16,7 @@ import e04_ctx_gating as p4
 import e06_gate_keys as p6
 import e07_mixing as p7
 
-OUT = mc.RESULTS / "e09"
+OUT = mc.RESULTS / os.environ.get("EXP", "e09")  # run_queue.sh exports EXP
 
 
 def main():
