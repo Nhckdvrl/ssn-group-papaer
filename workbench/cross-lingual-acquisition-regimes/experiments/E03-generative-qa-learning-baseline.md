@@ -1,6 +1,6 @@
 # E03：英语生成式QA学习→德语迁移的有效基线（2026-10-02）
 
-- **状态：** RUNNING（仅source pilot）
+- **状态：** RUNNING（source gate通过，主三条件）
 - **类型：** REPRO（第二种学习substrate，不为配额挂idea）
 - **对应：** P04；E01仅NLI分类接口不足以支持生成/知识学习母问题
 - **问题（一句话）：** MONOWEB模型能否真正学会生成式extractive QA，以便后续训练决策不只在分类头上验证？
@@ -15,3 +15,5 @@
 ## 结果（仅追加）
 
 数据准备完成：16384 train / 512 source dev / EN-DE 1190同ID。source article-disjoint及XQuAD英语原始来源全文核对通过；预先排除6条超过完整训练长度上限的单位。数据/scorer固定hash见 `results/e03_data_manifest.json`。准备过程中的来源核对字段误命名为xnli，训练前更正为xquad；不改变任何输入hash。尚未训练；不预设德语迁移方向或新idea。先source gate，再沿实际训练失败探索。
+
+source gate通过：FWB17英语dev F1从15.77→67.33→71.88%，EM从1.56→52.54→59.57%（0/2048/8192例）；终点F1 item95%CI[68.38,75.22]%，overflow0、cap1、empty0。训练loss下降，英语recipe冻结在 `results/e03_recipe_freeze.json`（原脚本hash734798ad...）；未读DE选recipe。core含评测1060.50秒、峰值27.96GiB，写盘另计。主三条件从原始权重开始、同A100/seed17，完整预算与一句指令恢复对照按卡执行。

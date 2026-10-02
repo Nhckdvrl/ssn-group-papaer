@@ -133,3 +133,9 @@ DOCUMENTED来源：不只按一般质量选译料，而按目标语数据效益�
 RECONSTRUCTED距离：E02不训练rater，检查一次CPT的内容覆盖/conditioning如何影响后续统一任务学习；若以后提出选择方法，需要直接比较当前语言建模效益与后续学习效益，不能只说pairing有效。
 
 Standard-vs-Split的forum、hash PDF及API本次再次受验证/403限制；搜索索引只取到匿名under-review摘要，不等同全文阅读或接收确认。作者博士论文公开入口也返回403。无精确方法证据就保留缺口；不将此作为自动关线理由。
+
+## CrossIC-PT（EMNLP2025；已读§3–5、Appendix A与任务表）
+
+[官方全文](https://aclanthology.org/2025.emnlp-main.1380.pdf)。DOCUMENTED来源是严格bitext域/量有限；改用同entity维基与检索语义相关文本提供上下文。分段串接EN→目标文档、SPLIT-aware窗口保完整；LoRA rank64/alpha128/dropout.05，一epoch；同源不串接Mix-PT与mono目标是重要对照。
+它已经控制部分文本来源并比较随机配对、方向、语义检索，不能把“非精确翻译也可桥接”当我们的新idea。Appendix A是冻结的0/5/8-shot评测，不是后续统一任务学习；Qwen1.5B按validation LM loss选checkpoint。LEIA有三seed不代表所有对比三seed；p>0.1不能证明英语收益/遗忘等价。
+RECONSTRUCTED距离：E02/E04操纵后续监督内容覆盖、文档条件连接，再测实际学习全曲线；只有带来不同训练选择，才可能有实质增量。不要把该距离本身写成贡献。跨语CPT方法发展时应比较同源Mix-PT/预算及有效监督augmentation，而非只比base。
