@@ -37,14 +37,19 @@ def main() -> None:
     args = parser.parse_args()
     if args.out.exists():
         raise FileExistsError(args.out)
-    report: dict[str, object] = {"parent": str(args.parent), "student": str(args.student), "tensors": {}}
+    report: dict[str, object] = {
+        "parent": str(args.parent), "student": str(args.student),
+        "delta_reference": "Parent cast to student dtype before subtraction; raw dtype-conversion differences are reported separately.",
+        "tensors": {},
+    }
     for key in KEYS:
         before = tensor_at(args.parent, key)
         after = tensor_at(args.student, key)
         if before.shape != after.shape:
             raise RuntimeError(f"Shape changed for {key}: {before.shape} vs {after.shape}")
-        delta = after.float() - before.float()
         parent_cast = before.to(dtype=after.dtype)
+        delta = after.float() - parent_cast.float()
+        raw_delta = after.float() - before.float()
         report["tensors"][key] = {
             "shape": list(before.shape),
             "parent_dtype": str(before.dtype),
@@ -54,6 +59,7 @@ def main() -> None:
             "changed_elements": int(torch.count_nonzero(delta).item()),
             "max_abs_delta": float(delta.abs().max().item()),
             "mean_abs_delta": float(delta.abs().mean().item()),
+            "raw_changed_elements_before_parent_cast": int(torch.count_nonzero(raw_delta).item()),
         }
     tensors = report["tensors"]
     args.out.parent.mkdir(parents=True, exist_ok=True)
