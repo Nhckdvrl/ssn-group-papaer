@@ -1,0 +1,1395 @@
+{
+  "experiment": "E16 complete optimizer-isolated original three pipelines",
+  "records": [
+    {
+      "seed": 0,
+      "method": "NO-ADD",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s0/NO-ADD",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "NO-ADD",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 0,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 112.22864185273647,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_NO-ADD_seed0.pt",
+        "sha256": "1d73e5863db68ade5057af270ad917a24ce713b9717bb9c9c691708ff8331da6",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "93ffb6fe2325cb534170c13591a689bf6abe95e263ef05c3f48e4048dc7663b7",
+        "training.json": "7fb6cff6cdf3cce0d8e5536e3391ab2098f5cc237050b7a3bce95833bbae0455",
+        "train_summary.json": "522903d5ef6f8f1c19eb529cb1307e1fe2e720f8a704d81023aaf103a4157cc7",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "a56ee06c7d0aca64f9f4e5d54c0a440ab3c86eb76e1c121e062f96c2fb6bc536",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 0,
+      "method": "UNIFORM-COMMON-RESET",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s0/UNIFORM-COMMON-RESET",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "UNIFORM-COMMON-RESET",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 111.36226520687342,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_UNIFORM-COMMON-RESET_seed0.pt",
+        "sha256": "3b38d5268e86409310f12c127cfab3a6ef705546ec2e0f663605947a3b1f1b59",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "797e3145d62dd17421b0c6edcdd6b8150829c7e9ffc39854ba67fca16be768f9",
+        "training.json": "75d76596e9d10e99e512d5384f81bea0e8b4bd6590b79681daea29af93e8290f",
+        "train_summary.json": "87202e45021921ceddc5e9a4d5fcd2bb52c872c677ddb5b288a345c8d69e2a28",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "f2e782d83957689072dbf05a8269f30b0197e65e9a73ef72bf0ae832a4cd5341",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 0,
+      "method": "GLOBAL-U",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s0/GLOBAL-U",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "GLOBAL-U",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 118.81889940798283,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_GLOBAL-U_seed0.pt",
+        "sha256": "e4d7dce09bbbb700315e7fe6908fb53a845bfe8e06ac71002434dc5d206499ec",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "7d67cb0af14373dd6be898e134e186f7c3a4bc3607da3ee0da71f142d6960bc9",
+        "training.json": "add3b47e1bb7f4af58433e52f0e5ab77470f4cc2aa89f80e725038320e1462a4",
+        "train_summary.json": "6c8b63dbe9ba514016f36e022c977b39c120aa17b0c0e80e137d538daa45e72a",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "06e90be32249da833afab5dedd203a25b349e87624e26d104c4b59d7d8be472a",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 0,
+      "method": "PBB",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s0/PBB",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "PBB",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 117.88113961368799,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_PBB_seed0.pt",
+        "sha256": "cd6f78c211828f3e0a6e6163f8e8472dfb2d17d3525b3304e706e1a0f49bce22",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "8faebd37c3d32261dd594ae1e654afa31c1426f0dd64dd18912be8f7d133cd2b",
+        "training.json": "c6a8ea5737ff9a6cded1e07b2e51fcc6f9bea625ffce2b9219b371af88b80e54",
+        "train_summary.json": "c6eb4a0cb0e6840571dc2dc867fbc60ff2062d833b7a94ecece9cfe768406467",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "d362cfad61bce9999ab6cf6ac822f4c0437021dc0dd9fe0f00091040a345dc43",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 1,
+      "method": "NO-ADD",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s1/NO-ADD",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s1",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 1,
+        "policy": "NO-ADD",
+        "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+        "logical_added_steps": 0,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+        "train_seed": 1,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 136.5033413209021,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1/E16_NO-ADD_seed1.pt",
+        "sha256": "4647c8953cac44e8bcfb54d97195b7d8ccfa88899b161f40378f2c13a5bc7591",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "fdbd8f4b4c541793cba3ca049809cbc96bb2a9e0cd5cbb234e95efd3c7dc9d3b",
+        "training.json": "322d56fc9417ec137b2eb540ad1e23322d7a9d9b501943dc50a3250a5a4c349c",
+        "train_summary.json": "ad057c5e8fa9ead0e3fdccc8416d624d75b26702c38c4c672c08f7324227515f",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "862f4731ba923ba55a8db00836a624f5d59dd2bd0cc701b4dcf89fcf61e17284",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 1,
+      "method": "UNIFORM-COMMON-RESET",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s1/UNIFORM-COMMON-RESET",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s1",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 1,
+        "policy": "UNIFORM-COMMON-RESET",
+        "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+        "train_seed": 1,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 178.7979053556919,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1/E16_UNIFORM-COMMON-RESET_seed1.pt",
+        "sha256": "03ab8805406b8b3e42c237d9a472bdd2c306c67918390ff7b6998dcc111dabab",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "d744aa78eb118b06a33eeb1d8b6b5ce508032a78c70e68b93ea803455dc8351f",
+        "training.json": "29498f8aa0701abb7b1e1cbd11dcf9783c54a4b9402df8b2186ab6a9f57e213d",
+        "train_summary.json": "2984ce75b920ad13079805bb7256f48b189c0a3f3cb817a371379f473ac1ecd4",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "f06985d3857f02b0d3144abf5c8e6de3209ec8e5650d04f0f04337e390466b13",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 1,
+      "method": "GLOBAL-U",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s1/GLOBAL-U",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s1",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 1,
+        "policy": "GLOBAL-U",
+        "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+        "train_seed": 1,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 187.77287032082677,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1/E16_GLOBAL-U_seed1.pt",
+        "sha256": "a4076b5858341e394ba1ef769e4f95a1ba01ed4c1bf9479586f86eb9d0933f32",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "77a433fb9813f8ad6c0065fa014aee537afcb7ae5b02c7d59985275c7f8b7793",
+        "training.json": "f531db7db27985fd7a3452b412339647fa2924519c8a93ccd5cef646b0dc9cb5",
+        "train_summary.json": "6e9b040921d9495a3f657ca6a8216791003af44d7af7236e7a7914d745ca5fb2",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "49093d8584a1ff1aa61f6458c24fc7421aad18cf50ff6b202d7f7a4618d3cd85",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 1,
+      "method": "PBB",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s1/PBB",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed1_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s1",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 1,
+        "policy": "PBB",
+        "base_sha256": "82547ff56ad6d1512c8b37105a2f69b972406e415c760841ffe4130688c2f48d",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "d3e5173379ef4c9ee9704205a720e8ef69cbda6ad887405d2bdde14456faf9f2",
+        "train_seed": 1,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 245.80675108730793,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s1/E16_PBB_seed1.pt",
+        "sha256": "a206bc5bf7fcf385dc1ecbbcebf799d59e505d9296db568c8befd7da43462a1f",
+        "optimizer_step_counts": {
+          "source": {
+            "1650": 297
+          },
+          "begin": {
+            "1650": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2250": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "16aee19c260601c559318dc3bda2fc98b0a2f2dfeb2942b03d22fc3bac4bf483",
+        "training.json": "3d6808bd8ca138f43b9a5f9893b98935b3c247d199ef911112182c2949fea24e",
+        "train_summary.json": "6e492cb323a9d002ab536dd1f78a3fdeb3b20ae1d0b703851a2fb822b69d75bd",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "1f6a839a82591d009b8d3245c9365b2dec0a48d628673a24fb292a21d107d50d",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 2,
+      "method": "NO-ADD",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s2/NO-ADD",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s2",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 2,
+        "policy": "NO-ADD",
+        "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+        "logical_added_steps": 0,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+        "train_seed": 2,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 119.36463506519794,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2/E16_NO-ADD_seed2.pt",
+        "sha256": "22b46cca10471becb6e802a4057d5c9b5b96c346f4bd101e00c7b7d047f3ef3d",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "dedb6dee8318b54ebed06a2a2e4e84a34eade5153e20fca684f556c185e6eedb",
+        "training.json": "3533a60c80622c344649677f04dc223e702c062aa55d24bfbb135ea58d031b7d",
+        "train_summary.json": "614e19badc1ac7a4d470592192b7d1f9506add0887a7609a86822de40b3a0ba4",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "90cd93fe2c40def3d8d49b8e61cdb13a3d8fe8fe52668bb870bb9758e5d86414",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 2,
+      "method": "UNIFORM-COMMON-RESET",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s2/UNIFORM-COMMON-RESET",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s2",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 2,
+        "policy": "UNIFORM-COMMON-RESET",
+        "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+        "train_seed": 2,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 158.30696469917893,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2/E16_UNIFORM-COMMON-RESET_seed2.pt",
+        "sha256": "5cb95201887f8ee0993288b138006443765d2b6648a988c0dc2ac7bc0080f403",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "cde8dd1541031a8c10065619a20ff2288c563c391df06d4bf69a188ce12604f7",
+        "training.json": "e3b64792563fb12cd61181a5fd4ff8266979b214627527daf613f87d8f2256c9",
+        "train_summary.json": "8b7502316fff0b70ba15ee1c14bf6bf6cea02e06c53dbfe43824bad734cfbdcb",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "2c20c17931a53d419bee36ca8534871dccab02d94e989a0ffcefdd7476a4ebd8",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 2,
+      "method": "GLOBAL-U",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s2/GLOBAL-U",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s2",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 2,
+        "policy": "GLOBAL-U",
+        "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+        "train_seed": 2,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 179.61671248078346,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2/E16_GLOBAL-U_seed2.pt",
+        "sha256": "8d02b8dc2205f9bae4a3b772127a4708effc919862a02772fba3fc26fe6cc966",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "2e03fa17880333180cc67c3e034c8b68f84dcf1a04288579cc84889e04f93670",
+        "training.json": "b47150e385caece4ed9c544097182c0ea717e3a71cf88018db910da6fe6fd7a4",
+        "train_summary.json": "351a10aa573afdbf63e32d9fe03c0ca4bf8d37e6930d06a5afdfa41ff90d8e71",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "617c9a0ad7098a02fb68320eb1b2fbce1943c3e2a54abbf1920c00dfe775335a",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    },
+    {
+      "seed": 2,
+      "method": "PBB",
+      "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s2/PBB",
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed2_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s2",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/bank",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/base",
+        "base_cache": null,
+        "methods": "NO-ADD,UNIFORM-COMMON-RESET,GLOBAL-U,PBB",
+        "seed": 2,
+        "policy": "PBB",
+        "base_sha256": "0f5c8cc34dec0ac40eac2e7878649fb0892252d79e237343ab8e28897724a074",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "42e425a3cc3e5de100c8c594220407af6c547304c0fedc6ff4ebdaf909740817",
+        "train_seed": 2,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "training": {
+        "seconds": 230.05132541432977,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s2/E16_PBB_seed2.pt",
+        "sha256": "ad441219f6baea1d1ad8ce6c984d4d4a6f9e6e4b6a4e1824e2325c14aebd6462",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "0469fea230757ba05a05c5ceeb3f2c5ec8d2ebae1c0c3b11fd654a0e8efe5cf4",
+        "training.json": "18ea95fa54990248e78d069c0085746100bfb66d20e8fa09a9a988b8294d5bc0",
+        "train_summary.json": "04fa97774c00ab31c6f147947abcb2bdba3e8553dd5e6bc39019b1d7c459bea9",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "f88c6925dc987bee87436d2dca227142d79958cb9e1eb2bfacbc5790f59857f2",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      }
+    }
+  ],
+  "summary": [
+    {
+      "seed": 0,
+      "method": "NO-ADD",
+      "n": 48,
+      "successes": 7,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": -0.5208333333333334,
+          "paired_episode_ci95": [
+            -0.6671874999999999,
+            -0.3541666666666667
+          ],
+          "helped": 2,
+          "harmed": 27
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "method": "UNIFORM-COMMON-RESET",
+      "n": 48,
+      "successes": 32,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.5208333333333334,
+          "paired_episode_ci95": [
+            0.3541666666666667,
+            0.6671874999999972
+          ],
+          "helped": 27,
+          "harmed": 2
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "method": "GLOBAL-U",
+      "n": 48,
+      "successes": 19,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.25,
+          "paired_episode_ci95": [
+            0.08333333333333333,
+            0.4166666666666667
+          ],
+          "helped": 15,
+          "harmed": 3
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": -0.2708333333333333,
+          "paired_episode_ci95": [
+            -0.4375,
+            -0.10416666666666667
+          ],
+          "helped": 3,
+          "harmed": 16
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "method": "PBB",
+      "n": 48,
+      "successes": 20,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.2708333333333333,
+          "paired_episode_ci95": [
+            0.10416666666666667,
+            0.4375
+          ],
+          "helped": 17,
+          "harmed": 4
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": -0.25,
+          "paired_episode_ci95": [
+            -0.4171875,
+            -0.0625
+          ],
+          "helped": 5,
+          "harmed": 17
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "method": "NO-ADD",
+      "n": 48,
+      "successes": 16,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": 0.020833333333333332,
+          "paired_episode_ci95": [
+            -0.125,
+            0.1875
+          ],
+          "helped": 7,
+          "harmed": 6
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "method": "UNIFORM-COMMON-RESET",
+      "n": 48,
+      "successes": 15,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": -0.020833333333333332,
+          "paired_episode_ci95": [
+            -0.1875,
+            0.125
+          ],
+          "helped": 6,
+          "harmed": 7
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "method": "GLOBAL-U",
+      "n": 48,
+      "successes": 20,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.08333333333333333,
+          "paired_episode_ci95": [
+            -0.08333333333333333,
+            0.25
+          ],
+          "helped": 10,
+          "harmed": 6
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": 0.10416666666666667,
+          "paired_episode_ci95": [
+            -0.0630208333333333,
+            0.2708333333333333
+          ],
+          "helped": 12,
+          "harmed": 7
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "method": "PBB",
+      "n": 48,
+      "successes": 11,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": -0.10416666666666667,
+          "paired_episode_ci95": [
+            -0.22916666666666666,
+            0.020833333333333332
+          ],
+          "helped": 2,
+          "harmed": 7
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": -0.08333333333333333,
+          "paired_episode_ci95": [
+            -0.20833333333333334,
+            0.041666666666666664
+          ],
+          "helped": 3,
+          "harmed": 7
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "method": "NO-ADD",
+      "n": 48,
+      "successes": 19,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": 0.020833333333333332,
+          "paired_episode_ci95": [
+            -0.14583333333333334,
+            0.1875
+          ],
+          "helped": 10,
+          "harmed": 9
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "method": "UNIFORM-COMMON-RESET",
+      "n": 48,
+      "successes": 18,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": -0.020833333333333332,
+          "paired_episode_ci95": [
+            -0.1875,
+            0.14583333333333334
+          ],
+          "helped": 9,
+          "harmed": 10
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "method": "GLOBAL-U",
+      "n": 48,
+      "successes": 27,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": 0.16666666666666666,
+          "paired_episode_ci95": [
+            -0.020833333333333332,
+            0.3541666666666667
+          ],
+          "helped": 16,
+          "harmed": 8
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": 0.1875,
+          "paired_episode_ci95": [
+            0.041666666666666664,
+            0.3333333333333333
+          ],
+          "helped": 12,
+          "harmed": 3
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "method": "PBB",
+      "n": 48,
+      "successes": 13,
+      "comparisons": {
+        "NO-ADD": {
+          "gain": -0.125,
+          "paired_episode_ci95": [
+            -0.3125,
+            0.041666666666666664
+          ],
+          "helped": 7,
+          "harmed": 13
+        },
+        "UNIFORM-COMMON-RESET": {
+          "gain": -0.10416666666666667,
+          "paired_episode_ci95": [
+            -0.22916666666666666,
+            0.020833333333333332
+          ],
+          "helped": 2,
+          "harmed": 7
+        }
+      }
+    }
+  ],
+  "aggregate": [
+    {
+      "method": "NO-ADD",
+      "successes_by_seed": [
+        7,
+        16,
+        19
+      ],
+      "gain_vs_NOADD_by_seed": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_gain": 0.0,
+      "sample_sd_gain": 0.0,
+      "scope": "3 independent whole pipelines/data+eval+initialization, not same-data train-seed CI"
+    },
+    {
+      "method": "UNIFORM-COMMON-RESET",
+      "successes_by_seed": [
+        32,
+        15,
+        18
+      ],
+      "gain_vs_NOADD_by_seed": [
+        0.5208333333333334,
+        -0.020833333333333332,
+        -0.020833333333333332
+      ],
+      "mean_gain": 0.15972222222222224,
+      "sample_sd_gain": 0.31273139581104736,
+      "scope": "3 independent whole pipelines/data+eval+initialization, not same-data train-seed CI"
+    },
+    {
+      "method": "GLOBAL-U",
+      "successes_by_seed": [
+        19,
+        20,
+        27
+      ],
+      "gain_vs_NOADD_by_seed": [
+        0.25,
+        0.08333333333333333,
+        0.16666666666666666
+      ],
+      "mean_gain": 0.16666666666666666,
+      "sample_sd_gain": 0.08333333333333334,
+      "scope": "3 independent whole pipelines/data+eval+initialization, not same-data train-seed CI"
+    },
+    {
+      "method": "PBB",
+      "successes_by_seed": [
+        20,
+        11,
+        13
+      ],
+      "gain_vs_NOADD_by_seed": [
+        0.2708333333333333,
+        -0.10416666666666667,
+        -0.125
+      ],
+      "mean_gain": 0.013888888888888876,
+      "sample_sd_gain": 0.22276409628257554,
+      "scope": "3 independent whole pipelines/data+eval+initialization, not same-data train-seed CI"
+    }
+  ],
+  "interpretation": "All original methods/seeds/eval anchors retained. One source optimizer isolated per method; fair rerun supersedes old causal interpretations. Do not infer acquisition stability from single seed or episode CIs; action-interface mismatch diagnosed separately applies native evaluator. No novel science claim.",
+  "bootstrap": "2000 paired episode resamples per seed; numpy default_rng(20261003+seed)"
+}

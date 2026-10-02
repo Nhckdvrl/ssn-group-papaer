@@ -1,0 +1,2303 @@
+{
+  "experiment": "E17 continuation evaluator input domain",
+  "status": "DONE",
+  "science_claims_upgraded": 0,
+  "raw_artifact": "/home/xiang/.cache/latent-wm-results/20261003-E17-continuation-cost-RTX-s0",
+  "complete": {
+    "completed": true,
+    "episodes": 352,
+    "physical_env_steps": 23859
+  },
+  "config": {
+    "args": {
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "e17_run": "/home/xiang/.cache/latent-wm-results/20261002-E17-query-proposal-RTX-s0",
+      "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_continuation_cost_RTX_s0",
+      "output": "/tmp/latent-wm-runs/20261003-E17-continuation-cost-RTX-s0"
+    },
+    "sources": [
+      {
+        "task": "tworoom",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      }
+    ],
+    "seed": 68000,
+    "methods": [
+      "EXEC-L2",
+      "EXEC-COS",
+      "REAL",
+      "WM-CALIBRATED",
+      "MIXED"
+    ],
+    "updates": 2000,
+    "head": "384-256-256-1/ReLU/Softplus",
+    "cem": "native H25/N300/K30/30, execute25, no proposal",
+    "label": "expert (h-25)/50, h25:5:75; not minimum reachability",
+    "tworoom_extra_method": "NATIVE-L2 reproduces E17 raw-action scoring; all main methods score executed physical clip[-1,1]",
+    "pusht_transform": "identity; no physical clamp",
+    "issued_actions": "unaltered CEM output denormalized; native environment executes it",
+    "source_sha256": {
+      "tworoom": {
+        "wm": "0822f1e3bc0f8822e68dd19ea92d82053f2f31a2e0f976051572dcb7605a8119",
+        "norm": "b4ca4bd285be9b8ec2b1e1614f5bd3ee8b34a8ac871a0212f47fb7cfa019b98d"
+      },
+      "pusht": {
+        "wm": "7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca",
+        "norm": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    "harness_sha256": "8da35d3e4e2c1500cef1ce1d4f6ed2d7d8deb850d8a4efd9c1089d68b4d99d57",
+    "cem_sha256": "d88c86dcd1bd1e6d89221ac22079a3efe296cc7566532de0d36605e2f1536050",
+    "helpers": {
+      "first_wave.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+      "recovery_forks.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+      "query_proposal.py": "491cf963ffc97acec66637f8f406856e74faa905c7ddd7bf6061726a5fcd2571",
+      "action_basis.py": "00ad0f52ddd51518103edf2bcd09a9fdfa87b979cd0bcd254e0f5a88ed7a853c",
+      "closed_loop.py": "03e3acfd07cc3fae351649270aec539541832685b5040a86345155abd104a960"
+    },
+    "prepared_manifest": {
+      "seed": 61000,
+      "selection": "whole source episodes; old anchors excluded; mutually disjoint goal strata",
+      "sources": {
+        "tworoom": {
+          "config": {
+            "task": "tworoom",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "tworoom.h5",
+            "sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623"
+          }
+        },
+        "pusht": {
+          "config": {
+            "task": "pusht",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "pusht_expert_train.h5",
+            "sha256": "b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb"
+          }
+        }
+      },
+      "files": {
+        "tworoom_g25.npz": {
+          "sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+          "bytes": 288269,
+          "selection_seed": 61025
+        },
+        "tworoom_g75.npz": {
+          "sha256": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7",
+          "bytes": 290315,
+          "selection_seed": 61075
+        },
+        "pusht_g25.npz": {
+          "sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+          "bytes": 679100,
+          "selection_seed": 62025
+        },
+        "pusht_g75.npz": {
+          "sha256": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230",
+          "bytes": 652662,
+          "selection_seed": 62075
+        }
+      }
+    },
+    "scope": "frozen WM and encoder; same 100 episodes/pairs/batchids/init; MIXED averages two input losses per update; WM pretraining overlap unknown"
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "NATIVE-L2",
+      "n": 16,
+      "successes": 13,
+      "wilson95": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": 0.8574617505073547,
+      "paired_distance_ci95": [
+        -1.3125764071941375,
+        3.8241069495677946
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "EXEC-L2",
+      "n": 16,
+      "successes": 13,
+      "wilson95": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "EXEC-COS",
+      "n": 16,
+      "successes": 11,
+      "wilson95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "paired_success_gain": -0.125,
+      "paired_success_ci95": [
+        -0.375,
+        0.125
+      ],
+      "paired_distance_gain": -6.209715723991394,
+      "paired_distance_ci95": [
+        -19.492619621753693,
+        7.914949716627581
+      ],
+      "helped": 1,
+      "harmed": 3
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "REAL",
+      "n": 16,
+      "successes": 13,
+      "wilson95": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        -0.1875,
+        0.1875
+      ],
+      "paired_distance_gain": -0.5138756036758423,
+      "paired_distance_ci95": [
+        -13.86832432448864,
+        11.010359820723522
+      ],
+      "helped": 1,
+      "harmed": 1
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "WM-CALIBRATED",
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "paired_success_gain": 0.0625,
+      "paired_success_ci95": [
+        -0.125,
+        0.25
+      ],
+      "paired_distance_gain": 3.1366156339645386,
+      "paired_distance_ci95": [
+        -12.210758808255196,
+        17.928961139917345
+      ],
+      "helped": 2,
+      "harmed": 1
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "MIXED",
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "paired_success_gain": 0.0625,
+      "paired_success_ci95": [
+        -0.125,
+        0.25
+      ],
+      "paired_distance_gain": 3.3769924640655518,
+      "paired_distance_ci95": [
+        -11.234582385420799,
+        18.10836783647537
+      ],
+      "helped": 2,
+      "harmed": 1
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "NATIVE-L2",
+      "n": 16,
+      "successes": 10,
+      "wilson95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "paired_success_gain": 0.25,
+      "paired_success_ci95": [
+        0.0625,
+        0.5
+      ],
+      "paired_distance_gain": 39.3600047826767,
+      "paired_distance_ci95": [
+        12.039805887639522,
+        67.99421118497848
+      ],
+      "helped": 4,
+      "harmed": 0
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "EXEC-L2",
+      "n": 16,
+      "successes": 6,
+      "wilson95": [
+        0.18481232558863633,
+        0.6135895945449727
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "EXEC-COS",
+      "n": 16,
+      "successes": 6,
+      "wilson95": [
+        0.18481232558863633,
+        0.6135895945449727
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": 5.137968599796295,
+      "paired_distance_ci95": [
+        -6.329307478666306,
+        14.698504473268981
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "REAL",
+      "n": 16,
+      "successes": 9,
+      "wilson95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "paired_success_gain": 0.1875,
+      "paired_success_ci95": [
+        0.0,
+        0.375
+      ],
+      "paired_distance_gain": 31.107454419136047,
+      "paired_distance_ci95": [
+        9.612072405219077,
+        56.30386530458926
+      ],
+      "helped": 3,
+      "harmed": 0
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "WM-CALIBRATED",
+      "n": 16,
+      "successes": 9,
+      "wilson95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "paired_success_gain": 0.1875,
+      "paired_success_ci95": [
+        0.0,
+        0.375
+      ],
+      "paired_distance_gain": 33.13576877117157,
+      "paired_distance_ci95": [
+        11.805532556772231,
+        57.3886956363916
+      ],
+      "helped": 3,
+      "harmed": 0
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "MIXED",
+      "n": 16,
+      "successes": 8,
+      "wilson95": [
+        0.27999563610326017,
+        0.7200043638967398
+      ],
+      "paired_success_gain": 0.125,
+      "paired_success_ci95": [
+        -0.125,
+        0.375
+      ],
+      "paired_distance_gain": 24.391450703144073,
+      "paired_distance_ci95": [
+        -4.286730460822582,
+        52.849078889191134
+      ],
+      "helped": 3,
+      "harmed": 1
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "EXEC-L2",
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "EXEC-COS",
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": -0.135852274875377,
+      "paired_distance_ci95": [
+        -25.88701304580549,
+        27.435406041603553
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "REAL",
+      "n": 16,
+      "successes": 7,
+      "wilson95": [
+        0.23098652405492354,
+        0.6682144360118811
+      ],
+      "paired_success_gain": -0.4375,
+      "paired_success_ci95": [
+        -0.6875,
+        -0.1875
+      ],
+      "paired_distance_gain": -56.221761908592,
+      "paired_distance_ci95": [
+        -98.44257600002871,
+        -18.67725591025565
+      ],
+      "helped": 0,
+      "harmed": 7
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "WM-CALIBRATED",
+      "n": 16,
+      "successes": 7,
+      "wilson95": [
+        0.23098652405492354,
+        0.6682144360118811
+      ],
+      "paired_success_gain": -0.4375,
+      "paired_success_ci95": [
+        -0.6875,
+        -0.1875
+      ],
+      "paired_distance_gain": -67.64930859087696,
+      "paired_distance_ci95": [
+        -117.30229440535808,
+        -22.58377537076001
+      ],
+      "helped": 0,
+      "harmed": 7
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "MIXED",
+      "n": 16,
+      "successes": 8,
+      "wilson95": [
+        0.27999563610326017,
+        0.7200043638967398
+      ],
+      "paired_success_gain": -0.375,
+      "paired_success_ci95": [
+        -0.625,
+        -0.125
+      ],
+      "paired_distance_gain": -77.55650252987199,
+      "paired_distance_ci95": [
+        -132.56862442888612,
+        -30.408425875224566
+      ],
+      "helped": 0,
+      "harmed": 6
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "EXEC-L2",
+      "n": 16,
+      "successes": 3,
+      "wilson95": [
+        0.06591599071428142,
+        0.4300888096197414
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "EXEC-COS",
+      "n": 16,
+      "successes": 3,
+      "wilson95": [
+        0.06591599071428142,
+        0.4300888096197414
+      ],
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_gain": 197.54013157200504,
+      "paired_distance_ci95": [
+        -545.9333324508307,
+        1025.6920105460629
+      ],
+      "helped": 0,
+      "harmed": 0
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "REAL",
+      "n": 16,
+      "successes": 2,
+      "wilson95": [
+        0.03497748774324047,
+        0.36022827265758695
+      ],
+      "paired_success_gain": -0.0625,
+      "paired_success_ci95": [
+        -0.1875,
+        0.0
+      ],
+      "paired_distance_gain": 133.43086847951125,
+      "paired_distance_ci95": [
+        -71.75748850270868,
+        346.8426904820979
+      ],
+      "helped": 0,
+      "harmed": 1
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "WM-CALIBRATED",
+      "n": 16,
+      "successes": 2,
+      "wilson95": [
+        0.03497748774324047,
+        0.36022827265758695
+      ],
+      "paired_success_gain": -0.0625,
+      "paired_success_ci95": [
+        -0.1875,
+        0.0
+      ],
+      "paired_distance_gain": 170.45051038531443,
+      "paired_distance_ci95": [
+        -37.1607222056625,
+        386.906413215209
+      ],
+      "helped": 0,
+      "harmed": 1
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "MIXED",
+      "n": 16,
+      "successes": 2,
+      "wilson95": [
+        0.03497748774324047,
+        0.36022827265758695
+      ],
+      "paired_success_gain": -0.0625,
+      "paired_success_ci95": [
+        -0.1875,
+        0.0
+      ],
+      "paired_distance_gain": 114.61736238184916,
+      "paired_distance_ci95": [
+        -71.21402145322116,
+        314.56129650238444
+      ],
+      "helped": 0,
+      "harmed": 1
+    }
+  ],
+  "training": {
+    "tworoom": {
+      "REAL": {
+        "base_episodes": [
+          5639,
+          4283,
+          8376,
+          5218,
+          6784,
+          8883,
+          7637,
+          7500,
+          1620,
+          7772,
+          8927,
+          7540,
+          628,
+          9839,
+          8656,
+          6,
+          7891,
+          3755,
+          1559,
+          291,
+          6582,
+          6916,
+          6245,
+          2103,
+          4272,
+          8934,
+          330,
+          5992,
+          9984,
+          3584,
+          8969,
+          3544,
+          4008,
+          1906,
+          5654,
+          6424,
+          6168,
+          2773,
+          303,
+          917,
+          8011,
+          1499,
+          3106,
+          9501,
+          4636,
+          7602,
+          9029,
+          5461,
+          6206,
+          25,
+          7970,
+          391,
+          1750,
+          9313,
+          2593,
+          6542,
+          128,
+          9693,
+          1287,
+          6184,
+          234,
+          6926,
+          7134,
+          5498,
+          5613,
+          4750,
+          2797,
+          6827,
+          4600,
+          1623,
+          2237,
+          3595,
+          5152,
+          2801,
+          5839,
+          6189,
+          7776,
+          7024,
+          2723,
+          1275,
+          8168,
+          53,
+          2503,
+          4370,
+          3568,
+          5273,
+          514,
+          8419,
+          4305,
+          8283,
+          6508,
+          8802,
+          6803,
+          7729,
+          6215,
+          8417,
+          2770,
+          2266,
+          2305,
+          4990
+        ],
+        "pair_count": 47450,
+        "unique_model_endpoints": 6795,
+        "original_feature_sha256": "bf23da17507a4ecd20db349cf1a10b5fafc58362e911ef5c1ea27513b2a83717",
+        "feature_cache_sha256": "ec71a16072443cc675210fa18dd956c9d99d9c9d48c565a8755e69725f7a7408",
+        "initial_sha256": "584b7086cd832937659c0a28abfe8c12c21c3722bd7f4dd26fc545ca540e018b",
+        "batch_ids_sha256": "141f61e6cb4acefc89857cf2393765aa9f83e445be2c09bb38a835183223ac47",
+        "updates": 2000,
+        "pair_batch_size": 128,
+        "lr": 0.0003,
+        "weight_decay": 0.001,
+        "clip": 1.0,
+        "target": "(expert future offset h-25)/50; demonstrated remaining, not minimum reachability",
+        "feature_prepare_seconds": 1.7640061117708683,
+        "normalization": {
+          "mean": [
+            0.003093412611633539,
+            -0.05298233404755592
+          ],
+          "std": [
+            0.8674758076667786,
+            0.8677655458450317
+          ]
+        },
+        "model_action_transform": "physical clip[-1,1] for TwoRoom; identity for PushT",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_continuation_cost_RTX_s0/tworoom_REAL.pt",
+        "checkpoint_sha256": "61cb08a4b8882892b6b0ae9b1661731ecb626f7054d51fb2442497c53855348f",
+        "parameters": 164609,
+        "training_seconds": 12.396987237036228,
+        "last_batch_scores": {
+          "real": {
+            "mean": 0.3604207932949066,
+            "variance": 0.055058907717466354
+          },
+          "imagined": {
+            "mean": 0.3670004904270172,
+            "variance": 0.05922714248299599
+          }
+        },
+        "loss_diagnostics": {
+          "count": 2000,
+          "first": 0.17570917308330536,
+          "last": 0.020907294005155563,
+          "last100_mean": 0.022204547096043824,
+          "min": 0.014328001998364925,
+          "max": 0.17570917308330536,
+          "full_history": "immutable raw training.json; see artifact_sha256"
+        }
+      },
+      "WM-CALIBRATED": {
+        "base_episodes": [
+          5639,
+          4283,
+          8376,
+          5218,
+          6784,
+          8883,
+          7637,
+          7500,
+          1620,
+          7772,
+          8927,
+          7540,
+          628,
+          9839,
+          8656,
+          6,
+          7891,
+          3755,
+          1559,
+          291,
+          6582,
+          6916,
+          6245,
+          2103,
+          4272,
+          8934,
+          330,
+          5992,
+          9984,
+          3584,
+          8969,
+          3544,
+          4008,
+          1906,
+          5654,
+          6424,
+          6168,
+          2773,
+          303,
+          917,
+          8011,
+          1499,
+          3106,
+          9501,
+          4636,
+          7602,
+          9029,
+          5461,
+          6206,
+          25,
+          7970,
+          391,
+          1750,
+          9313,
+          2593,
+          6542,
+          128,
+          9693,
+          1287,
+          6184,
+          234,
+          6926,
+          7134,
+          5498,
+          5613,
+          4750,
+          2797,
+          6827,
+          4600,
+          1623,
+          2237,
+          3595,
+          5152,
+          2801,
+          5839,
+          6189,
+          7776,
+          7024,
+          2723,
+          1275,
+          8168,
+          53,
+          2503,
+          4370,
+          3568,
+          5273,
+          514,
+          8419,
+          4305,
+          8283,
+          6508,
+          8802,
+          6803,
+          7729,
+          6215,
+          8417,
+          2770,
+          2266,
+          2305,
+          4990
+        ],
+        "pair_count": 47450,
+        "unique_model_endpoints": 6795,
+        "original_feature_sha256": "bf23da17507a4ecd20db349cf1a10b5fafc58362e911ef5c1ea27513b2a83717",
+        "feature_cache_sha256": "ec71a16072443cc675210fa18dd956c9d99d9c9d48c565a8755e69725f7a7408",
+        "initial_sha256": "584b7086cd832937659c0a28abfe8c12c21c3722bd7f4dd26fc545ca540e018b",
+        "batch_ids_sha256": "141f61e6cb4acefc89857cf2393765aa9f83e445be2c09bb38a835183223ac47",
+        "updates": 2000,
+        "pair_batch_size": 128,
+        "lr": 0.0003,
+        "weight_decay": 0.001,
+        "clip": 1.0,
+        "target": "(expert future offset h-25)/50; demonstrated remaining, not minimum reachability",
+        "feature_prepare_seconds": 1.7640061117708683,
+        "normalization": {
+          "mean": [
+            0.003093412611633539,
+            -0.05298233404755592
+          ],
+          "std": [
+            0.8674758076667786,
+            0.8677655458450317
+          ]
+        },
+        "model_action_transform": "physical clip[-1,1] for TwoRoom; identity for PushT",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_continuation_cost_RTX_s0/tworoom_WM-CALIBRATED.pt",
+        "checkpoint_sha256": "a70438fdb5df07814eed8696a0ae606fbf7fb9d41ab34a143787320b1b387a3e",
+        "parameters": 164609,
+        "training_seconds": 12.900908403098583,
+        "last_batch_scores": {
+          "real": {
+            "mean": 0.3554896116256714,
+            "variance": 0.0561327189207077
+          },
+          "imagined": {
+            "mean": 0.3587375283241272,
+            "variance": 0.055296674370765686
+          }
+        },
+        "loss_diagnostics": {
+          "count": 2000,
+          "first": 0.17601211369037628,
+          "last": 0.022028209641575813,
+          "last100_mean": 0.02239533167332411,
+          "min": 0.013948516920208931,
+          "max": 0.17601211369037628,
+          "full_history": "immutable raw training.json; see artifact_sha256"
+        }
+      },
+      "MIXED": {
+        "base_episodes": [
+          5639,
+          4283,
+          8376,
+          5218,
+          6784,
+          8883,
+          7637,
+          7500,
+          1620,
+          7772,
+          8927,
+          7540,
+          628,
+          9839,
+          8656,
+          6,
+          7891,
+          3755,
+          1559,
+          291,
+          6582,
+          6916,
+          6245,
+          2103,
+          4272,
+          8934,
+          330,
+          5992,
+          9984,
+          3584,
+          8969,
+          3544,
+          4008,
+          1906,
+          5654,
+          6424,
+          6168,
+          2773,
+          303,
+          917,
+          8011,
+          1499,
+          3106,
+          9501,
+          4636,
+          7602,
+          9029,
+          5461,
+          6206,
+          25,
+          7970,
+          391,
+          1750,
+          9313,
+          2593,
+          6542,
+          128,
+          9693,
+          1287,
+          6184,
+          234,
+          6926,
+          7134,
+          5498,
+          5613,
+          4750,
+          2797,
+          6827,
+          4600,
+          1623,
+          2237,
+          3595,
+          5152,
+          2801,
+          5839,
+          6189,
+          7776,
+          7024,
+          2723,
+          1275,
+          8168,
+          53,
+          2503,
+          4370,
+          3568,
+          5273,
+          514,
+          8419,
+          4305,
+          8283,
+          6508,
+          8802,
+          6803,
+          7729,
+          6215,
+          8417,
+          2770,
+          2266,
+          2305,
+          4990
+        ],
+        "pair_count": 47450,
+        "unique_model_endpoints": 6795,
+        "original_feature_sha256": "bf23da17507a4ecd20db349cf1a10b5fafc58362e911ef5c1ea27513b2a83717",
+        "feature_cache_sha256": "ec71a16072443cc675210fa18dd956c9d99d9c9d48c565a8755e69725f7a7408",
+        "initial_sha256": "584b7086cd832937659c0a28abfe8c12c21c3722bd7f4dd26fc545ca540e018b",
+        "batch_ids_sha256": "141f61e6cb4acefc89857cf2393765aa9f83e445be2c09bb38a835183223ac47",
+        "updates": 2000,
+        "pair_batch_size": 128,
+        "lr": 0.0003,
+        "weight_decay": 0.001,
+        "clip": 1.0,
+        "target": "(expert future offset h-25)/50; demonstrated remaining, not minimum reachability",
+        "feature_prepare_seconds": 1.7640061117708683,
+        "normalization": {
+          "mean": [
+            0.003093412611633539,
+            -0.05298233404755592
+          ],
+          "std": [
+            0.8674758076667786,
+            0.8677655458450317
+          ]
+        },
+        "model_action_transform": "physical clip[-1,1] for TwoRoom; identity for PushT",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_continuation_cost_RTX_s0/tworoom_MIXED.pt",
+        "checkpoint_sha256": "3db46bcfe79ed065acbcab0ae440233293a4d52741e929717eecb2f505c857c1",
+        "parameters": 164609,
+        "training_seconds": 14.740978386253119,
+        "last_batch_scores": {
+          "real": {
+            "mean": 0.3571244478225708,
+            "variance": 0.05496249347925186
+          },
+          "imagined": {
+            "mean": 0.36010563373565674,
+            "variance": 0.05446813255548477
+          }
+        },
+        "loss_diagnostics": {
+          "count": 2000,
+          "first": 0.17586064338684082,
+          "last": 0.021566934883594513,
+          "last100_mean": 0.02244783998467028,
+          "min": 0.013998322188854218,
+          "max": 0.17586064338684082,
+          "full_history": "immutable raw training.json; see artifact_sha256"
+        }
+      }
+    },
+    "pusht": {
+      "REAL": {
+        "base_episodes": [
+          13592,
+          8015,
+          10645,
+          10298,
+          7033,
+          13409,
+          9118,
+          17399,
+          12566,
+          14487,
+          16118,
+          72,
+          8448,
+          3123,
+          7986,
+          14409,
+          8040,
+          14107,
+          4951,
+          16538,
+          15764,
+          14446,
+          1204,
+          3015,
+          17230,
+          16284,
+          3791,
+          1200,
+          5810,
+          12808,
+          5411,
+          193,
+          17767,
+          14565,
+          1701,
+          3563,
+          11575,
+          8007,
+          14385,
+          18107,
+          10128,
+          12091,
+          13649,
+          10933,
+          368,
+          8184,
+          17922,
+          10969,
+          13715,
+          285,
+          7977,
+          5863,
+          520,
+          13999,
+          6779,
+          2797,
+          3283,
+          11942,
+          6950,
+          14994,
+          17432,
+          16435,
+          18045,
+          9549,
+          1678,
+          16668,
+          4462,
+          2755,
+          11925,
+          6036,
+          16241,
+          6615,
+          13239,
+          10282,
+          15175,
+          10095,
+          15089,
+          10883,
+          733,
+          10936,
+          12119,
+          16900,
+          10415,
+          8611,
+          18191,
+          13588,
+          5099,
+          16500,
+          17415,
+          4886,
+          4366,
+          7206,
+          5854,
+          12584,
+          12841,
+          2365,
+          11744,
+          693,
+          16062,
+          18133
+        ],
+        "pair_count": 91069,
+        "unique_model_endpoints": 10779,
+        "original_feature_sha256": "9d07874f4f4d9911ab5fc4f7454e8ccb9b1118aa16ed14d09a73fdc8e0dae64d",
+        "feature_cache_sha256": "d82ac291bf4a75b6da7d3d5740d41b4599f806442ce3798f3ebab709f158570f",
+        "initial_sha256": "888f889d090411289b4e59398ff1e25147a8c44ce82f9a17a2f16b1c7f4cc990",
+        "batch_ids_sha256": "9e28c27c8bb6415a0fdf6392acf348cd5d9c726270d7fc6a0e72c4e8a8695542",
+        "updates": 2000,
+        "pair_batch_size": 128,
+        "lr": 0.0003,
+        "weight_decay": 0.001,
+        "clip": 1.0,
+        "target": "(expert future offset h-25)/50; demonstrated remaining, not minimum reachability",
+        "feature_prepare_seconds": 1.372892927378416,
+        "normalization": {
+          "mean": [
+            -0.007812755182385445,
+            0.006860560737550259
+          ],
+          "std": [
+            0.20824117958545685,
+            0.20649127662181854
+          ]
+        },
+        "model_action_transform": "physical clip[-1,1] for TwoRoom; identity for PushT",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_continuation_cost_RTX_s0/pusht_REAL.pt",
+        "checkpoint_sha256": "24be24fd76d0c66af9c846a6151a40ac024f4d5af57cb0c974b50dfc075e221c",
+        "parameters": 164609,
+        "training_seconds": 11.832352541387081,
+        "last_batch_scores": {
+          "real": {
+            "mean": 0.43337640166282654,
+            "variance": 0.09112170338630676
+          },
+          "imagined": {
+            "mean": 0.4371611773967743,
+            "variance": 0.09184833616018295
+          }
+        },
+        "loss_diagnostics": {
+          "count": 2000,
+          "first": 0.16135844588279724,
+          "last": 0.004017280880361795,
+          "last100_mean": 0.005245623155497014,
+          "min": 0.0023886291310191154,
+          "max": 0.16135844588279724,
+          "full_history": "immutable raw training.json; see artifact_sha256"
+        }
+      },
+      "WM-CALIBRATED": {
+        "base_episodes": [
+          13592,
+          8015,
+          10645,
+          10298,
+          7033,
+          13409,
+          9118,
+          17399,
+          12566,
+          14487,
+          16118,
+          72,
+          8448,
+          3123,
+          7986,
+          14409,
+          8040,
+          14107,
+          4951,
+          16538,
+          15764,
+          14446,
+          1204,
+          3015,
+          17230,
+          16284,
+          3791,
+          1200,
+          5810,
+          12808,
+          5411,
+          193,
+          17767,
+          14565,
+          1701,
+          3563,
+          11575,
+          8007,
+          14385,
+          18107,
+          10128,
+          12091,
+          13649,
+          10933,
+          368,
+          8184,
+          17922,
+          10969,
+          13715,
+          285,
+          7977,
+          5863,
+          520,
+          13999,
+          6779,
+          2797,
+          3283,
+          11942,
+          6950,
+          14994,
+          17432,
+          16435,
+          18045,
+          9549,
+          1678,
+          16668,
+          4462,
+          2755,
+          11925,
+          6036,
+          16241,
+          6615,
+          13239,
+          10282,
+          15175,
+          10095,
+          15089,
+          10883,
+          733,
+          10936,
+          12119,
+          16900,
+          10415,
+          8611,
+          18191,
+          13588,
+          5099,
+          16500,
+          17415,
+          4886,
+          4366,
+          7206,
+          5854,
+          12584,
+          12841,
+          2365,
+          11744,
+          693,
+          16062,
+          18133
+        ],
+        "pair_count": 91069,
+        "unique_model_endpoints": 10779,
+        "original_feature_sha256": "9d07874f4f4d9911ab5fc4f7454e8ccb9b1118aa16ed14d09a73fdc8e0dae64d",
+        "feature_cache_sha256": "d82ac291bf4a75b6da7d3d5740d41b4599f806442ce3798f3ebab709f158570f",
+        "initial_sha256": "888f889d090411289b4e59398ff1e25147a8c44ce82f9a17a2f16b1c7f4cc990",
+        "batch_ids_sha256": "9e28c27c8bb6415a0fdf6392acf348cd5d9c726270d7fc6a0e72c4e8a8695542",
+        "updates": 2000,
+        "pair_batch_size": 128,
+        "lr": 0.0003,
+        "weight_decay": 0.001,
+        "clip": 1.0,
+        "target": "(expert future offset h-25)/50; demonstrated remaining, not minimum reachability",
+        "feature_prepare_seconds": 1.372892927378416,
+        "normalization": {
+          "mean": [
+            -0.007812755182385445,
+            0.006860560737550259
+          ],
+          "std": [
+            0.20824117958545685,
+            0.20649127662181854
+          ]
+        },
+        "model_action_transform": "physical clip[-1,1] for TwoRoom; identity for PushT",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_continuation_cost_RTX_s0/pusht_WM-CALIBRATED.pt",
+        "checkpoint_sha256": "19904ed1bb4eafb44270f11fecd4e085712cd33ea6e63ff810db25c5fd48aa5d",
+        "parameters": 164609,
+        "training_seconds": 12.463270977139473,
+        "last_batch_scores": {
+          "real": {
+            "mean": 0.428666889667511,
+            "variance": 0.09001543372869492
+          },
+          "imagined": {
+            "mean": 0.4322407841682434,
+            "variance": 0.09038882702589035
+          }
+        },
+        "loss_diagnostics": {
+          "count": 2000,
+          "first": 0.16135329008102417,
+          "last": 0.003722492605447769,
+          "last100_mean": 0.005188334160484373,
+          "min": 0.0026974640786647797,
+          "max": 0.16135329008102417,
+          "full_history": "immutable raw training.json; see artifact_sha256"
+        }
+      },
+      "MIXED": {
+        "base_episodes": [
+          13592,
+          8015,
+          10645,
+          10298,
+          7033,
+          13409,
+          9118,
+          17399,
+          12566,
+          14487,
+          16118,
+          72,
+          8448,
+          3123,
+          7986,
+          14409,
+          8040,
+          14107,
+          4951,
+          16538,
+          15764,
+          14446,
+          1204,
+          3015,
+          17230,
+          16284,
+          3791,
+          1200,
+          5810,
+          12808,
+          5411,
+          193,
+          17767,
+          14565,
+          1701,
+          3563,
+          11575,
+          8007,
+          14385,
+          18107,
+          10128,
+          12091,
+          13649,
+          10933,
+          368,
+          8184,
+          17922,
+          10969,
+          13715,
+          285,
+          7977,
+          5863,
+          520,
+          13999,
+          6779,
+          2797,
+          3283,
+          11942,
+          6950,
+          14994,
+          17432,
+          16435,
+          18045,
+          9549,
+          1678,
+          16668,
+          4462,
+          2755,
+          11925,
+          6036,
+          16241,
+          6615,
+          13239,
+          10282,
+          15175,
+          10095,
+          15089,
+          10883,
+          733,
+          10936,
+          12119,
+          16900,
+          10415,
+          8611,
+          18191,
+          13588,
+          5099,
+          16500,
+          17415,
+          4886,
+          4366,
+          7206,
+          5854,
+          12584,
+          12841,
+          2365,
+          11744,
+          693,
+          16062,
+          18133
+        ],
+        "pair_count": 91069,
+        "unique_model_endpoints": 10779,
+        "original_feature_sha256": "9d07874f4f4d9911ab5fc4f7454e8ccb9b1118aa16ed14d09a73fdc8e0dae64d",
+        "feature_cache_sha256": "d82ac291bf4a75b6da7d3d5740d41b4599f806442ce3798f3ebab709f158570f",
+        "initial_sha256": "888f889d090411289b4e59398ff1e25147a8c44ce82f9a17a2f16b1c7f4cc990",
+        "batch_ids_sha256": "9e28c27c8bb6415a0fdf6392acf348cd5d9c726270d7fc6a0e72c4e8a8695542",
+        "updates": 2000,
+        "pair_batch_size": 128,
+        "lr": 0.0003,
+        "weight_decay": 0.001,
+        "clip": 1.0,
+        "target": "(expert future offset h-25)/50; demonstrated remaining, not minimum reachability",
+        "feature_prepare_seconds": 1.372892927378416,
+        "normalization": {
+          "mean": [
+            -0.007812755182385445,
+            0.006860560737550259
+          ],
+          "std": [
+            0.20824117958545685,
+            0.20649127662181854
+          ]
+        },
+        "model_action_transform": "physical clip[-1,1] for TwoRoom; identity for PushT",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_continuation_cost_RTX_s0/pusht_MIXED.pt",
+        "checkpoint_sha256": "79c9a7ed41e3d52a8205ffc6d973e7f7785786661ace843edc4f9d070ad9a3ec",
+        "parameters": 164609,
+        "training_seconds": 13.872903436422348,
+        "last_batch_scores": {
+          "real": {
+            "mean": 0.43097081780433655,
+            "variance": 0.09048289805650711
+          },
+          "imagined": {
+            "mean": 0.4332076907157898,
+            "variance": 0.09036439657211304
+          }
+        },
+        "loss_diagnostics": {
+          "count": 2000,
+          "first": 0.1613558679819107,
+          "last": 0.003978296648710966,
+          "last100_mean": 0.005319186267443001,
+          "min": 0.0025768575724214315,
+          "max": 0.1613558679819107,
+          "full_history": "immutable raw training.json; see artifact_sha256"
+        }
+      }
+    }
+  },
+  "controls": {
+    "tworoom": {
+      "native": [
+        {
+          "horizon_macro": 1,
+          "forecast_primitive_steps": 25,
+          "max_cost_abs_error": 6.103515625e-05
+        },
+        {
+          "horizon_macro": 2,
+          "forecast_primitive_steps": 50,
+          "max_cost_abs_error": 9.1552734375e-05
+        },
+        {
+          "horizon_macro": 3,
+          "forecast_primitive_steps": 75,
+          "max_cost_abs_error": 0.00018310546875
+        }
+      ],
+      "native_l2_reproduction": [
+        {
+          "goal_offset": 25,
+          "anchor": 0,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 1,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 2,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 3,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 4,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 5,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 6,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 7,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 8,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 9,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 10,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 11,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 12,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 13,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 14,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 15,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 0,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 1,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 2,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 3,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 4,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 5,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 6,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 7,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 8,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 9,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 10,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 11,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 12,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 13,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 14,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 15,
+          "success_equal": true,
+          "steps_equal": true
+        }
+      ]
+    },
+    "pusht": {
+      "native": [
+        {
+          "horizon_macro": 1,
+          "forecast_primitive_steps": 25,
+          "max_cost_abs_error": 9.1552734375e-05
+        },
+        {
+          "horizon_macro": 2,
+          "forecast_primitive_steps": 50,
+          "max_cost_abs_error": 0.000152587890625
+        },
+        {
+          "horizon_macro": 3,
+          "forecast_primitive_steps": 75,
+          "max_cost_abs_error": 0.0001220703125
+        }
+      ],
+      "native_l2_reproduction": [
+        {
+          "goal_offset": 25,
+          "anchor": 0,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 1,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 2,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 3,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 4,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 5,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 6,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 7,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 8,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 9,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 10,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 11,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 12,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 13,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 14,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 25,
+          "anchor": 15,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 0,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 1,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 2,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 3,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 4,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 5,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 6,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 7,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 8,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 9,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 10,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 11,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 12,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 13,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 14,
+          "success_equal": true,
+          "steps_equal": true
+        },
+        {
+          "goal_offset": 75,
+          "anchor": 15,
+          "success_equal": true,
+          "steps_equal": true
+        }
+      ]
+    }
+  },
+  "heldout_factual_audit": {
+    "tworoom": {
+      "scope": "offline source factual25, no environment execution or controller supervision",
+      "results": [
+        {
+          "goal_offset": 25,
+          "head": "REAL",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.05446342006325722,
+          "variance": 0.00033487030304968357,
+          "rmse_demonstrated_remaining": 0.05745549677330415
+        },
+        {
+          "goal_offset": 25,
+          "head": "REAL",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.056891441345214844,
+          "variance": 0.0004844697832595557,
+          "rmse_demonstrated_remaining": 0.061000869923635834
+        },
+        {
+          "goal_offset": 25,
+          "head": "WM-CALIBRATED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.05419449135661125,
+          "variance": 0.0004034256562590599,
+          "rmse_demonstrated_remaining": 0.057796787739098084
+        },
+        {
+          "goal_offset": 25,
+          "head": "WM-CALIBRATED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.05553343892097473,
+          "variance": 0.0005277503514662385,
+          "rmse_demonstrated_remaining": 0.06009753136457226
+        },
+        {
+          "goal_offset": 25,
+          "head": "MIXED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.05409064143896103,
+          "variance": 0.0003596669412218034,
+          "rmse_demonstrated_remaining": 0.05731896920040331
+        },
+        {
+          "goal_offset": 25,
+          "head": "MIXED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.05563861131668091,
+          "variance": 0.0004881002241745591,
+          "rmse_demonstrated_remaining": 0.05986447504236417
+        },
+        {
+          "goal_offset": 75,
+          "head": "REAL",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.5972154140472412,
+          "variance": 0.049221355468034744,
+          "rmse_demonstrated_remaining": 0.4598443029316969
+        },
+        {
+          "goal_offset": 75,
+          "head": "REAL",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.5947849750518799,
+          "variance": 0.04855335131287575,
+          "rmse_demonstrated_remaining": 0.46125110529511604
+        },
+        {
+          "goal_offset": 75,
+          "head": "WM-CALIBRATED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.5841825008392334,
+          "variance": 0.05141199380159378,
+          "rmse_demonstrated_remaining": 0.47362031438865165
+        },
+        {
+          "goal_offset": 75,
+          "head": "WM-CALIBRATED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.5784530639648438,
+          "variance": 0.05099925398826599,
+          "rmse_demonstrated_remaining": 0.47822702414719
+        },
+        {
+          "goal_offset": 75,
+          "head": "MIXED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.5883084535598755,
+          "variance": 0.050774525851011276,
+          "rmse_demonstrated_remaining": 0.4693234423131921
+        },
+        {
+          "goal_offset": 75,
+          "head": "MIXED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.584031343460083,
+          "variance": 0.050477977842092514,
+          "rmse_demonstrated_remaining": 0.47276622010675184
+        }
+      ]
+    },
+    "pusht": {
+      "scope": "offline source factual25, no environment execution or controller supervision",
+      "results": [
+        {
+          "goal_offset": 25,
+          "head": "REAL",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.08226832747459412,
+          "variance": 0.0016328049823641777,
+          "rmse_demonstrated_remaining": 0.0916563278544075
+        },
+        {
+          "goal_offset": 25,
+          "head": "REAL",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.08276624977588654,
+          "variance": 0.0012725022388622165,
+          "rmse_demonstrated_remaining": 0.09012632650012203
+        },
+        {
+          "goal_offset": 25,
+          "head": "WM-CALIBRATED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.08399507403373718,
+          "variance": 0.0013394260313361883,
+          "rmse_demonstrated_remaining": 0.09162204660860937
+        },
+        {
+          "goal_offset": 25,
+          "head": "WM-CALIBRATED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.08481897413730621,
+          "variance": 0.0010675506200641394,
+          "rmse_demonstrated_remaining": 0.09089449087679025
+        },
+        {
+          "goal_offset": 25,
+          "head": "MIXED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.08236221224069595,
+          "variance": 0.001709501026198268,
+          "rmse_demonstrated_remaining": 0.09215766702378825
+        },
+        {
+          "goal_offset": 25,
+          "head": "MIXED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.08278252184391022,
+          "variance": 0.0012804026482626796,
+          "rmse_demonstrated_remaining": 0.09018508554127427
+        },
+        {
+          "goal_offset": 75,
+          "head": "REAL",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.7104560136795044,
+          "variance": 0.07650753110647202,
+          "rmse_demonstrated_remaining": 0.40042886817370227
+        },
+        {
+          "goal_offset": 75,
+          "head": "REAL",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.7095584869384766,
+          "variance": 0.07799835503101349,
+          "rmse_demonstrated_remaining": 0.4029325367184113
+        },
+        {
+          "goal_offset": 75,
+          "head": "WM-CALIBRATED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.7068366408348083,
+          "variance": 0.07232454419136047,
+          "rmse_demonstrated_remaining": 0.39783073553115433
+        },
+        {
+          "goal_offset": 75,
+          "head": "WM-CALIBRATED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.7079964280128479,
+          "variance": 0.07493163645267487,
+          "rmse_demonstrated_remaining": 0.4002470680564485
+        },
+        {
+          "goal_offset": 75,
+          "head": "MIXED",
+          "input_domain": "real",
+          "n": 16,
+          "mean": 0.7091987133026123,
+          "variance": 0.07215557247400284,
+          "rmse_demonstrated_remaining": 0.3958800030151377
+        },
+        {
+          "goal_offset": 75,
+          "head": "MIXED",
+          "input_domain": "imagined",
+          "n": 16,
+          "mean": 0.7091037631034851,
+          "variance": 0.07396232336759567,
+          "rmse_demonstrated_remaining": 0.3982247458552926
+        }
+      ]
+    }
+  },
+  "artifact_sha256": {
+    "config.json": "013a91d285c7e9e5fc7e52b687b9c7e0ec002ffea43aad79605c8cd4f0e889cc",
+    "tworoom_training.json": "20cc8303f4fcfeac521defdde829fed800d24323204502853d9f1441f962e114",
+    "tworoom_heldout_factual_audit.json": "26a42f824ebd46b20758a7275e0e634cd97fbdab494a4cd873c3946fd633e838",
+    "tworoom_native_control.json": "c76707f804b3913f3a866dd132393e99f04ae653d406fb63725fbd9292a27190",
+    "tworoom_rows.json": "82dbca8f7a78aa03b4b5688e3b635f4a8563d4044a12f86b4335dee1be1d1344",
+    "tworoom_native_l2_reproduction.json": "f6c7aeef9d4a5f7ed6f255d19bfeef3e22b5c40fb2d44c68ba54c020c408b37a",
+    "pusht_training.json": "e0df80631b0951c1d44b70593e180798123d645e1bfadbac6243e962b8a9797d",
+    "pusht_heldout_factual_audit.json": "25e7957dc8750baa61b7a7c379c010f251ba1cd8d8add4d45cce6b5645402c0e",
+    "pusht_native_control.json": "e2d35e30051679e4ec41e67634431937a33b7ba6482c611076bd00d6e2a52803",
+    "pusht_rows.json": "2562ed428ab3c97481645f3d5668c0e0e1c7344de7700089889f52bd6e498896",
+    "pusht_native_l2_reproduction.json": "f6c7aeef9d4a5f7ed6f255d19bfeef3e22b5c40fb2d44c68ba54c020c408b37a",
+    "summary.json": "044d7aa94a532254835bb31a0dca241f0e9f26eb492d8e17f8a8258459e0bc34",
+    "complete.json": "0347f74e796dfd774ce55a4a71c2d751c781be2fa27b9740823ea90948e6d5bc"
+  },
+  "limitations": [
+    "single released WM and head seed, 16 anchors per task/goal range",
+    "labels are demonstrated remaining time, not shortest-path or counterfactual reachability",
+    "head updates matched; MIXED performs an extra head forward",
+    "TwoRoom execution transform changes cost input, keeps native raw elite statistics; PushT does not clip",
+    "training fit and factual-pair RMSE are auxiliary, not control evidence",
+    "WM pretraining overlap unknown; public PushT restore does not include full contact memory",
+    "PushT native_task_distance is the native 7D norm including velocity and unwrapped angle; it is not pure pixel position distance. Native success uses position and wrapped angle."
+  ],
+  "interpretation": "No robust improvement of learned continuation cost over strong native L2; imagined-domain head training does not show a control advantage. Does not refute goal values or R3."
+}

@@ -1,0 +1,1114 @@
+{
+  "experiment": "E11 fixed-cadence latent observer and aligned-prefix control",
+  "status": "DONE",
+  "science_claims_upgraded": 0,
+  "raw_artifact": "/home/xiang/.cache/latent-wm-results/20261003-E11-latent-observer-RTX-s0",
+  "complete": {
+    "completed": true,
+    "episodes": 384,
+    "physical_env_steps": 12943,
+    "common_prefix_state_max_abs": 0.0,
+    "common_prefix_pixel_max_abs": 0.0,
+    "actual_solver_calls": 2217,
+    "actual_encoding_calls": 2633,
+    "actual_prior_calls": 2424,
+    "actual_candidate_evaluations": 19953000
+  },
+  "config": {
+    "args": {
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "output": "/tmp/latent-wm-runs/20261003-E11-latent-observer-RTX-s0"
+    },
+    "sources": [
+      {
+        "task": "tworoom",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      }
+    ],
+    "seed": 78000,
+    "methods": [
+      "OBS",
+      "PRIOR",
+      "FILTER0.5",
+      "OBS-PREFIX5"
+    ],
+    "conditions": [
+      "nominal",
+      "gain0.7",
+      "physics"
+    ],
+    "count_per_cell": 16,
+    "goal_offset": 25,
+    "budget": 50,
+    "common_prefix_steps": 5,
+    "horizon": 25,
+    "N": 300,
+    "K": 30,
+    "iterations": 30,
+    "wm_updates": 0,
+    "feedback_period": 5,
+    "filter_alpha": 0.5,
+    "warm_start": "shift actual prefix; normalized-zero tail; std1",
+    "shift_onset": 0,
+    "physics": {
+      "pusht": "block moment x2, unchanged mass",
+      "tworoom": "issued+[.15,0], native clipping"
+    },
+    "prior_input": "own previous selected state and actual issued five commands; no applied/hidden commands or future labels",
+    "goal": "fixed real goal encoding; query-only",
+    "scope": "fixed-gain zero-training audit; no Kalman or velocity claim",
+    "OBS_control": "same A5 g25 EXEC5-SHIFT-WARM first plan/seeds/goal/normalization; extra prior diagnostic compute",
+    "OBS_PREFIX5": "same 50dim CEM/raw elite mean/warm prior; only first5 target scored, remaining20 not scored; classic time-alignment control",
+    "action_scoring": "unchanged A5 native scoring: unbounded issued candidates; env clips applied commands; known limitation shared by all methods",
+    "accounting": "shared first solve charged logically per row; physical totals include common replay per cell; encodes/propagation extra; positive-control compute excluded and saved separately",
+    "replay_scope": "public state/pixel equality; not original hidden contact-state recovery",
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "harness_sha256": "0f4de4fe64390cc2dc286a05dc4cde3d070a30ece215e0e430647af1257b96cf",
+    "helper_sha256": {
+      "first_wave.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+      "recovery_forks.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+      "query_proposal.py": "491cf963ffc97acec66637f8f406856e74faa905c7ddd7bf6061726a5fcd2571",
+      "commitment_cadence.py": "01cc296f1d8ed22a416e3bb8220feb9d6a5d516904e1e3353f33b0bcfb797704",
+      "continuous_adaptation.py": "fb89615cefdee476babc36ece8c3d5a0ff1a232a6b3084bd3ec54fc507f33079",
+      "closed_loop.py": "03e3acfd07cc3fae351649270aec539541832685b5040a86345155abd104a960"
+    },
+    "prepared_manifest": {
+      "seed": 61000,
+      "selection": "whole source episodes; old anchors excluded; mutually disjoint goal strata",
+      "sources": {
+        "tworoom": {
+          "config": {
+            "task": "tworoom",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "tworoom.h5",
+            "sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623"
+          }
+        },
+        "pusht": {
+          "config": {
+            "task": "pusht",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "pusht_expert_train.h5",
+            "sha256": "b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb"
+          }
+        }
+      },
+      "files": {
+        "tworoom_g25.npz": {
+          "sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+          "bytes": 288269,
+          "selection_seed": 61025
+        },
+        "tworoom_g75.npz": {
+          "sha256": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7",
+          "bytes": 290315,
+          "selection_seed": 61075
+        },
+        "pusht_g25.npz": {
+          "sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+          "bytes": 679100,
+          "selection_seed": 62025
+        },
+        "pusht_g75.npz": {
+          "sha256": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230",
+          "bytes": 652662,
+          "selection_seed": 62075
+        }
+      }
+    }
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "OBS",
+      "n": 16,
+      "successes": 12,
+      "success_wilson_ci95": [
+        0.5050168346449122,
+        0.8981793250878696
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_OBS": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_utility_vs_OBS": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.1875,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.4375,
+        0.0625
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 424,
+      "candidate_evaluations": 801000,
+      "diagnostic_prior_calls": 80,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "PRIOR",
+      "n": 16,
+      "successes": 11,
+      "success_wilson_ci95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "helped": 3,
+      "harmed": 4,
+      "paired_success_gain_vs_OBS": -0.0625,
+      "paired_success_ci95": [
+        -0.375,
+        0.25
+      ],
+      "paired_distance_utility_vs_OBS": -5.608074307441711,
+      "paired_distance_ci95": [
+        -17.50238354206085,
+        2.9592836305498973
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.25,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.5,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 431,
+      "candidate_evaluations": 819000,
+      "diagnostic_prior_calls": 83,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "FILTER0.5",
+      "n": 16,
+      "successes": 10,
+      "success_wilson_ci95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "helped": 2,
+      "harmed": 4,
+      "paired_success_gain_vs_OBS": -0.125,
+      "paired_success_ci95": [
+        -0.4375,
+        0.1875
+      ],
+      "paired_distance_utility_vs_OBS": -6.054305732250214,
+      "paired_distance_ci95": [
+        -18.060222816467284,
+        2.4252951100468625
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.3125,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.5625,
+        -0.125
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 474,
+      "candidate_evaluations": 891000,
+      "diagnostic_prior_calls": 92,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "OBS-PREFIX5",
+      "n": 16,
+      "successes": 15,
+      "success_wilson_ci95": [
+        0.7167126242970107,
+        0.9888806552353576
+      ],
+      "helped": 4,
+      "harmed": 1,
+      "paired_success_gain_vs_OBS": 0.1875,
+      "paired_success_ci95": [
+        -0.0625,
+        0.4375
+      ],
+      "paired_distance_utility_vs_OBS": 0.8336821794509888,
+      "paired_distance_ci95": [
+        -8.30374962091446,
+        7.489379444718356
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": 0.0,
+      "paired_success_vs_PREFIX5_ci95": [
+        0.0,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 195,
+      "candidate_evaluations": 387000,
+      "diagnostic_prior_calls": 35,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "OBS",
+      "n": 16,
+      "successes": 12,
+      "success_wilson_ci95": [
+        0.5050168346449122,
+        0.8981793250878696
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_OBS": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_utility_vs_OBS": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.125,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.4375,
+        0.1875
+      ],
+      "absorbed_in_common_prefix": 1,
+      "env_steps": 468,
+      "candidate_evaluations": 882000,
+      "diagnostic_prior_calls": 90,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "PRIOR",
+      "n": 16,
+      "successes": 9,
+      "success_wilson_ci95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "helped": 2,
+      "harmed": 5,
+      "paired_success_gain_vs_OBS": -0.1875,
+      "paired_success_ci95": [
+        -0.5,
+        0.125
+      ],
+      "paired_distance_utility_vs_OBS": -8.795454442501068,
+      "paired_distance_ci95": [
+        -20.352459080517292,
+        -0.6608169093728073
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.3125,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.5625,
+        -0.125
+      ],
+      "absorbed_in_common_prefix": 1,
+      "env_steps": 524,
+      "candidate_evaluations": 972000,
+      "diagnostic_prior_calls": 101,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "FILTER0.5",
+      "n": 16,
+      "successes": 11,
+      "success_wilson_ci95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "helped": 2,
+      "harmed": 3,
+      "paired_success_gain_vs_OBS": -0.0625,
+      "paired_success_ci95": [
+        -0.3125,
+        0.1875
+      ],
+      "paired_distance_utility_vs_OBS": -8.368470251560211,
+      "paired_distance_ci95": [
+        -22.302868144214152,
+        0.6462436422705622
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.1875,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.375,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 1,
+      "env_steps": 474,
+      "candidate_evaluations": 900000,
+      "diagnostic_prior_calls": 92,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "OBS-PREFIX5",
+      "n": 16,
+      "successes": 14,
+      "success_wilson_ci95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "helped": 4,
+      "harmed": 2,
+      "paired_success_gain_vs_OBS": 0.125,
+      "paired_success_ci95": [
+        -0.1875,
+        0.4375
+      ],
+      "paired_distance_utility_vs_OBS": -2.4641565680503845,
+      "paired_distance_ci95": [
+        -11.687400786578655,
+        4.471831503510468
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": 0.0,
+      "paired_success_vs_PREFIX5_ci95": [
+        0.0,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 1,
+      "env_steps": 246,
+      "candidate_evaluations": 504000,
+      "diagnostic_prior_calls": 44,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "OBS",
+      "n": 16,
+      "successes": 13,
+      "success_wilson_ci95": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_OBS": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_utility_vs_OBS": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.0625,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.3125,
+        0.18906249999999147
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 385,
+      "candidate_evaluations": 738000,
+      "diagnostic_prior_calls": 72,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "PRIOR",
+      "n": 16,
+      "successes": 11,
+      "success_wilson_ci95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "helped": 1,
+      "harmed": 3,
+      "paired_success_gain_vs_OBS": -0.125,
+      "paired_success_ci95": [
+        -0.375,
+        0.125
+      ],
+      "paired_distance_utility_vs_OBS": -8.242533683776855,
+      "paired_distance_ci95": [
+        -22.946102987229825,
+        2.0415567517280433
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.1875,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.4375,
+        0.0625
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 469,
+      "candidate_evaluations": 891000,
+      "diagnostic_prior_calls": 90,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "FILTER0.5",
+      "n": 16,
+      "successes": 10,
+      "success_wilson_ci95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "helped": 1,
+      "harmed": 4,
+      "paired_success_gain_vs_OBS": -0.1875,
+      "paired_success_ci95": [
+        -0.4375,
+        0.0625
+      ],
+      "paired_distance_utility_vs_OBS": -3.2798092365264893,
+      "paired_distance_ci95": [
+        -8.69548603594303,
+        2.4415856748819285
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.25,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.5,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 504,
+      "candidate_evaluations": 945000,
+      "diagnostic_prior_calls": 98,
+      "gradient_steps": 0
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "OBS-PREFIX5",
+      "n": 16,
+      "successes": 14,
+      "success_wilson_ci95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "helped": 3,
+      "harmed": 2,
+      "paired_success_gain_vs_OBS": 0.0625,
+      "paired_success_ci95": [
+        -0.1890624999999999,
+        0.3125
+      ],
+      "paired_distance_utility_vs_OBS": -0.6505030393600464,
+      "paired_distance_ci95": [
+        -10.980886182188987,
+        8.070834682881829
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": 0.0,
+      "paired_success_vs_PREFIX5_ci95": [
+        0.0,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 3,
+      "env_steps": 231,
+      "candidate_evaluations": 459000,
+      "diagnostic_prior_calls": 41,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "OBS",
+      "n": 16,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.10182067491213048,
+        0.49498316535508774
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_OBS": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_utility_vs_OBS": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.4375,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.75,
+        -0.0625
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 692,
+      "candidate_evaluations": 1251000,
+      "diagnostic_prior_calls": 138,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "PRIOR",
+      "n": 16,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.23098652405492354,
+        0.6682144360118811
+      ],
+      "helped": 3,
+      "harmed": 0,
+      "paired_success_gain_vs_OBS": 0.1875,
+      "paired_success_ci95": [
+        0.0,
+        0.375
+      ],
+      "paired_distance_utility_vs_OBS": 65.17877276286035,
+      "paired_distance_ci95": [
+        -9.823158551426324,
+        181.3738745031
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.25,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.625,
+        0.125
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 626,
+      "candidate_evaluations": 1152000,
+      "diagnostic_prior_calls": 121,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "FILTER0.5",
+      "n": 16,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.10182067491213048,
+        0.49498316535508774
+      ],
+      "helped": 1,
+      "harmed": 1,
+      "paired_success_gain_vs_OBS": 0.0,
+      "paired_success_ci95": [
+        -0.1875,
+        0.1875
+      ],
+      "paired_distance_utility_vs_OBS": 36.05191897363867,
+      "paired_distance_ci95": [
+        -25.89349438435887,
+        137.00407374541848
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.4375,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.6875,
+        -0.125
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 680,
+      "candidate_evaluations": 1233000,
+      "diagnostic_prior_calls": 135,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "OBS-PREFIX5",
+      "n": 16,
+      "successes": 11,
+      "success_wilson_ci95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "helped": 9,
+      "harmed": 2,
+      "paired_success_gain_vs_OBS": 0.4375,
+      "paired_success_ci95": [
+        0.0625,
+        0.75
+      ],
+      "paired_distance_utility_vs_OBS": -21.626319336833717,
+      "paired_distance_ci95": [
+        -131.24677049499147,
+        115.45326216679514
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": 0.0,
+      "paired_success_vs_PREFIX5_ci95": [
+        0.0,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 378,
+      "candidate_evaluations": 693000,
+      "diagnostic_prior_calls": 74,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "OBS",
+      "n": 16,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.10182067491213048,
+        0.49498316535508774
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_OBS": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_utility_vs_OBS": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.375,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.6875,
+        -0.0625
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 746,
+      "candidate_evaluations": 1359000,
+      "diagnostic_prior_calls": 147,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "PRIOR",
+      "n": 16,
+      "successes": 2,
+      "success_wilson_ci95": [
+        0.03497748774324047,
+        0.36022827265758695
+      ],
+      "helped": 1,
+      "harmed": 3,
+      "paired_success_gain_vs_OBS": -0.125,
+      "paired_success_ci95": [
+        -0.375,
+        0.125
+      ],
+      "paired_distance_utility_vs_OBS": -6.444631304724425,
+      "paired_distance_ci95": [
+        -67.19405142296353,
+        39.70550435782155
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.5,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.75,
+        -0.25
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 776,
+      "candidate_evaluations": 1404000,
+      "diagnostic_prior_calls": 154,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "FILTER0.5",
+      "n": 16,
+      "successes": 3,
+      "success_wilson_ci95": [
+        0.06591599071428142,
+        0.4300888096197414
+      ],
+      "helped": 0,
+      "harmed": 1,
+      "paired_success_gain_vs_OBS": -0.0625,
+      "paired_success_ci95": [
+        -0.1875,
+        0.0
+      ],
+      "paired_distance_utility_vs_OBS": -12.592955182600527,
+      "paired_distance_ci95": [
+        -41.35739939684134,
+        11.104391544645859
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.4375,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.6875,
+        -0.125
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 754,
+      "candidate_evaluations": 1368000,
+      "diagnostic_prior_calls": 149,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "OBS-PREFIX5",
+      "n": 16,
+      "successes": 10,
+      "success_wilson_ci95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "helped": 7,
+      "harmed": 1,
+      "paired_success_gain_vs_OBS": 0.375,
+      "paired_success_ci95": [
+        0.0625,
+        0.6875
+      ],
+      "paired_distance_utility_vs_OBS": -28.23202374472167,
+      "paired_distance_ci95": [
+        -92.46645420936242,
+        29.459145981798702
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": 0.0,
+      "paired_success_vs_PREFIX5_ci95": [
+        0.0,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 457,
+      "candidate_evaluations": 846000,
+      "diagnostic_prior_calls": 87,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "OBS",
+      "n": 16,
+      "successes": 3,
+      "success_wilson_ci95": [
+        0.06591599071428142,
+        0.4300888096197414
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_OBS": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_distance_utility_vs_OBS": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.4375,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.75,
+        -0.125
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 717,
+      "candidate_evaluations": 1305000,
+      "diagnostic_prior_calls": 142,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "PRIOR",
+      "n": 16,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.10182067491213048,
+        0.49498316535508774
+      ],
+      "helped": 2,
+      "harmed": 1,
+      "paired_success_gain_vs_OBS": 0.0625,
+      "paired_success_ci95": [
+        -0.125,
+        0.25
+      ],
+      "paired_distance_utility_vs_OBS": 82.92168637666401,
+      "paired_distance_ci95": [
+        -24.77335626170207,
+        209.01638636813226
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.375,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.625,
+        -0.0625
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 700,
+      "candidate_evaluations": 1269000,
+      "diagnostic_prior_calls": 138,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "FILTER0.5",
+      "n": 16,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.10182067491213048,
+        0.49498316535508774
+      ],
+      "helped": 3,
+      "harmed": 2,
+      "paired_success_gain_vs_OBS": 0.0625,
+      "paired_success_ci95": [
+        -0.1875,
+        0.3125
+      ],
+      "paired_distance_utility_vs_OBS": 46.168486239663764,
+      "paired_distance_ci95": [
+        -31.480474276106087,
+        152.10953501909654
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": -0.375,
+      "paired_success_vs_PREFIX5_ci95": [
+        -0.625,
+        -0.125
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 716,
+      "candidate_evaluations": 1305000,
+      "diagnostic_prior_calls": 141,
+      "gradient_steps": 0
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "OBS-PREFIX5",
+      "n": 16,
+      "successes": 10,
+      "success_wilson_ci95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "helped": 8,
+      "harmed": 1,
+      "paired_success_gain_vs_OBS": 0.4375,
+      "paired_success_ci95": [
+        0.125,
+        0.75
+      ],
+      "paired_distance_utility_vs_OBS": 21.288980860714524,
+      "paired_distance_ci95": [
+        -83.90206622524829,
+        147.9951270604117
+      ],
+      "paired_success_gain_vs_OBS_PREFIX5": 0.0,
+      "paired_success_vs_PREFIX5_ci95": [
+        0.0,
+        0.0
+      ],
+      "absorbed_in_common_prefix": 0,
+      "env_steps": 410,
+      "candidate_evaluations": 747000,
+      "diagnostic_prior_calls": 80,
+      "gradient_steps": 0
+    }
+  ],
+  "controls": {
+    "tworoom": {
+      "cost": [
+        {
+          "horizon_macro": 1,
+          "forecast_primitive_steps": 25,
+          "max_cost_abs_error": 6.103515625e-05
+        },
+        {
+          "horizon_macro": 2,
+          "forecast_primitive_steps": 50,
+          "max_cost_abs_error": 9.1552734375e-05
+        },
+        {
+          "horizon_macro": 3,
+          "forecast_primitive_steps": 75,
+          "max_cost_abs_error": 0.00018310546875
+        }
+      ],
+      "prefix5": {
+        "max_abs_error": 5.960464477539062e-07,
+        "prefix_cost_max_abs_error": 3.0517578125e-05,
+        "primitive_steps": 5,
+        "unused_tail_invariant": true
+      }
+    },
+    "pusht": {
+      "cost": [
+        {
+          "horizon_macro": 1,
+          "forecast_primitive_steps": 25,
+          "max_cost_abs_error": 9.1552734375e-05
+        },
+        {
+          "horizon_macro": 2,
+          "forecast_primitive_steps": 50,
+          "max_cost_abs_error": 0.000152587890625
+        },
+        {
+          "horizon_macro": 3,
+          "forecast_primitive_steps": 75,
+          "max_cost_abs_error": 0.0001220703125
+        }
+      ],
+      "prefix5": {
+        "max_abs_error": 6.556510925292969e-07,
+        "prefix_cost_max_abs_error": 1.1444091796875e-05,
+        "primitive_steps": 5,
+        "unused_tail_invariant": true
+      }
+    }
+  },
+  "inputs": {
+    "tworoom": {
+      "checkpoint_sha256": "0822f1e3bc0f8822e68dd19ea92d82053f2f31a2e0f976051572dcb7605a8119",
+      "normalization": {
+        "mean": [
+          0.003093412611633539,
+          -0.05298233404755592
+        ],
+        "std": [
+          0.8674758076667786,
+          0.8677655458450317
+        ]
+      },
+      "anchors_sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee"
+    },
+    "pusht": {
+      "checkpoint_sha256": "7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca",
+      "normalization": {
+        "mean": [
+          -0.007812755182385445,
+          0.006860560737550259
+        ],
+        "std": [
+          0.20824117958545685,
+          0.20649127662181854
+        ]
+      },
+      "anchors_sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813"
+    }
+  },
+  "artifact_json_sha256": {
+    "config.json": "0b804e805855fafa715ff3e93775e21e8cf701808fdeb9d39052a233ab9e6a13",
+    "tworoom_inputs.json": "d3ba9dcaa02ba1fab42a341056d45913909060d6eb47d4113638e0c726834011",
+    "tworoom_native_controls.json": "fc6de18538ff4d9a8f298cfc27b9d23fd0169ca124c2cd1ead9ebfa897c1bdf0",
+    "rows.json": "028ff427321191188380f8b21e2e4bb398f3ff69239be0692be3304eef8c7a02",
+    "pusht_inputs.json": "1f9b15a0482e299179ffe3809de5455adfad8e97dc4a8c1e6b58d0fc04ae3ea9",
+    "pusht_native_controls.json": "aa732859bc535b645ab94d03db2593bd1d7269d5892449c65850d7f56e6c1e58",
+    "summary.json": "60d6cfb6bcaa09636e1a9adfbefe60e099a22661b9c3328e4525ec80453bfcca",
+    "complete.json": "8a0482235e14aad5c7566090905cd2cf81c2faf92ffe4d48e123286b569a43be"
+  },
+  "limitations": [
+    "classic prefix-at-execution cost control, not a new contribution",
+    "single released checkpoint and planner seed; no observer-weight search",
+    "paired success and physical distance both reported; PREFIX5 does not dominate on all outcomes",
+    "unbounded TwoRoom native action scoring shared by all methods, PushT no clip",
+    "common initial state/pixel exact, public PushT setter lacks full original contact state",
+    "latent prior and fixed-gain blend are not a trained belief model or evidence that hidden velocity is recovered",
+    "PushT native_task_distance is the native 7D norm including velocity and unwrapped angle; it is not pure pixel position distance. Native success uses position and wrapped angle."
+  ],
+  "interpretation": "PREFIX5 provides a stronger success baseline in this protocol than simple prior/fixed-gain fusion. State-estimation and recovery methods must be tested against aligned task scoring; R4 stays open."
+}
