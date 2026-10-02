@@ -273,3 +273,14 @@ P65 与 P14 的 acronym collision 属于 provenance risk：任何结果文件只
 | P109 | Where World Models Break / BasinLens | arXiv 2608.22421 | B | failure-state generator / stress test；不能以rare anomaly本身当paper |
 
 P107–P109 若成为 manuscript-critical direct baselines，需补全文；当前只承担 program map / experiment-design pressure。
+
+## 14. Latest R1/R3/R4 coordinates（P110–P113）
+
+| ID | 工作 | Status | Read | Workbench role |
+|---|---|---|---|---|
+| P110 | TaskSense | arXiv 2608.06544 | B | R3 specialization at perception/attention layer |
+| P111 | FACT | arXiv 2608.10232 | B/A-positioning | R1 failure-outcome data axis；R5 candidate consequence |
+| P112 | GLAM | arXiv 2609.14561 | B | R4 global spatiotemporal memory state；R2 structured predictive object |
+| P113 | Belief-Based World Models for LLM Agents | arXiv 2609.00455 | B | R4 cross-domain belief-interface evidence；simulation vs belief consumption |
+
+这些目前主要用于 **program breadth / hypothesis generation**；不作为“已有论文所以不能做”的杀线证据。
