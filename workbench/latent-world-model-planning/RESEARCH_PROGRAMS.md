@@ -76,6 +76,22 @@ planning lift / identification gain 谁更高？在哪些环境结构下？
 
 谁更 sample-efficient，谁更可复用？
 
+#### R1-F causal shortcut / mediation
+
+P94强调“action directions有没有被充分激发”；CST-WM/CoCo则提醒另一个不同问题：
+
+> **即使 action 与 outcome都被观察到，模型也可能利用 behavior-policy correlation / visual inertia，通过错误shortcut拟合数据，而不是学习 action→mediator→outcome 的正确结构。**
+
+可以挖：
+- excitation足够但causal mediation仍错的regime；
+- behavior policy改变时shortcut是否改变；
+- same transitions下 counterfactual consistency / structural masking / intervention branches谁最有效；
+- structural prior什么时候帮忙、什么时候错设结构反而伤害；
+- sparse action-effect regions vs abundant passive visual tokens 的 supervision allocation。
+
+这让 R1 从“coverage问题”扩展成：
+**coverage + excitation + causal structure + active intervention + query-targeted experience**。
+
 ### 为什么适合我们的资源
 
 绝大多数实验是：
