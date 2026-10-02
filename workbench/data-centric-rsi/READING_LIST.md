@@ -34,6 +34,8 @@
 | P37 | Montessori-Instruct，ICLR 2025 main；2410.14208v1 | D（全文方法、related work、主表、teacher/学生消融、迁移与成本附录；代码入口，未复现） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/ba1d33849b963efc6b5d3082ad68f480-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.14208)；局部 student influence→teacher DPO→跨学生数据迁移 |
 | P38 | The Signal is in the Steps / LALP，ICML 2026 main；2510.03988v2 | D（全文方法、related work、主表、B/C 附录与主要混杂；代码入口，未复现） | [会议](https://proceedings.mlr.press/v306/just26a.html)；[全文](https://arxiv.org/html/2510.03988)；混合长推理 teacher 中局部概率选答案，需注意 teacher-mixture 控制 |
 | P39 | OpenMathInstruct-2，ICLR 2025 main；2410.01560v2 | D（全文、A–C 附录、发布数据字段；NeMo Skills 内部尚未审计） | [会议](https://proceedings.iclr.cc/paper_files/paper/2025/hash/302ce0673c00aee2cf84bb43d0117553-Abstract-Conference.html)；[全文](https://arxiv.org/html/2410.01560)；[数据](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2)；强 teacher、解答格式、题目多样性与过滤的真实 SFT 对照 |
+| P40 | DUET，ICLR 2026 main；2502.00270v3 | D（方法/主结果/成本与关键附录；官方 BO 代码已核，未复现） | [全文](https://arxiv.org/html/2502.00270v3)；黑箱目标反馈→GP/BO 域配比，论文 50 次随机初始化＋10 次 BO |
+| P41 | Data Mixing Agent，ACL 2026 main；2507.15640v2 | D（引言/方法/related work/主表、C–E 附录与限制；官方可运行源码未核） | [会议](https://aclanthology.org/2026.acl-long.427/)；[全文](https://arxiv.org/html/2507.15640v2)；384 代理轨迹、CQL 学固定域课程，数学→代码的冻结 agent 迁移 |
 
 ## 已核验的基础锚点：用于谱系，不假称都已深读
 
