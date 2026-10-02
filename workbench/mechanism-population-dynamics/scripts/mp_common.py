@@ -17,7 +17,7 @@ CACHE = Path(os.environ.get("MECHPOP_CACHE", "/home/xiang/mechpop_cache"))
 HF_CACHE = CACHE / "hf"
 PARENT_CODE = CACHE / "icl-heads"  # github.com/kayoyin/icl-heads @ c0ba06e
 PARENT_COMMIT = "c0ba06e"
-MANIFEST = RESULTS / "artifact_manifest_70m.json"
+MANIFEST = RESULTS / os.environ.get("R0_MANIFEST", "artifact_manifest_70m.json")  # audits may write side manifests
 META = RESULTS / "r0_hf_metadata_70m.json"
 
 os.environ.setdefault("HF_HUB_CACHE", str(HF_CACHE))
@@ -62,10 +62,10 @@ def load_state_dict_bin(path):
 
 
 def accepted(repo, step):
-    man = json.loads(MANIFEST.read_text())
-    for row in man["checkpoints"]:
-        if row["model_id"] == repo and row["step"] == step:
-            return row
+    for f in sorted(RESULTS.glob("artifact_manifest_*.json")):
+        for row in json.loads(f.read_text())["checkpoints"]:
+            if row["model_id"] == repo and row["step"] == step:
+                return row
     raise KeyError(f"{repo}@{step} not in manifest")
 
 

@@ -11,9 +11,9 @@ REPOS=${REPOS:-"EleutherAI/pythia-70m $(for i in 1 2 3 4 5 6 7 8 9; do printf "E
 STEPS=${STEPS:-"0 128 256 512 1000 2000 3000 4000 6000 8000 16000 32000 64000 100000 130000 143000"}
 accepted() {  # $1 repo $2 step
   python3 - "$1" "$2" <<'EOF'
-import json, sys
-m = json.load(open("../results/artifact_manifest_70m.json"))
-ok = any(r["model_id"] == sys.argv[1] and r["step"] == int(sys.argv[2]) and r["accepted"] for r in m["checkpoints"])
+import glob, json, sys
+rows = [r for f in glob.glob("../results/artifact_manifest_*.json") for r in json.load(open(f))["checkpoints"]]
+ok = any(r["model_id"] == sys.argv[1] and r["step"] == int(sys.argv[2]) and r["accepted"] for r in rows)
 sys.exit(0 if ok else 1)
 EOF
 }

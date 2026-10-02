@@ -148,14 +148,12 @@ and:
 
 Strong current preprints own claims too.
 
-## 8. Paper-shape card
-
-- **Current thesis:** none.
-- **Current claims:** 0.
-- **Likely shapes if earned:** measurement/science; failure + consequence; training-dynamics explanation; minimal intervention.
-- **Forbidden final story:** “mechanisms differ across seeds”.
-- **Evidence floor for mechanism language:** causal intervention + held-out prompts + population-level uncertainty + coordinate/alignment control.
-- **Candidate gate:** one simple field-level conclusion that survives an independent mechanistic object or equally strong external-validity test.
+## 8. Paper-shape card（2026-10-02 草稿；agent 记录，待人否决）
+- **一句话论点（草稿）：** 在独立训练的 LM 之间，关于“算了什么”的机制陈述（算法、角色、角色整体的必要性）可复现；关于“某个成分有多关键”（单成分必要性，受 run 特异的冗余支配）和“在数据未约束区域如何使用机制”（后期门控）的陈述不可复现。
+- **证据（现状）：** induction × 70M × 10 seed（C01，L1）；induction × 160M × 10 seed（E02 扩展：算法 / 角色 10/10，单头必要性比值 0.20–1.00）；门控 × 31M–70M（C02，范围已收窄）；第二机制（上下文-记忆仲裁 × 410M × 10 seed，E13）进行中。
+- **形态：** measurement / science（跨 run 的机制陈述可复现性阶梯），带因果干预。
+- **最近邻与增量：** Tigges 2024 / Bali 2026（组件不稳定）→ 我们给出分层答案；Explanation Multiplicity 2026（分析选择导致的变异）→ 我们是训练 run 导致的变异；Hydra 2023（单模型自修复）→ 冗余程度本身随 run 变化；Anand 2025 / Singh 2025（ICL 消退）→ 真实 LM 中的上下文级门控且只在数据真空区。
+- **最大风险：** 只有一个机制（E13 决定）；尺寸 ≤410M。
 
 ## 9. Human-review triggers
 

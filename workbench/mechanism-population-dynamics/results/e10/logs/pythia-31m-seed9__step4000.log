@@ -1,8 +1,6 @@
-Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
-Warning: Permanently added 'fvcrc10' (ED25519) to the list of known hosts.
-Loaded pretrained model EleutherAI/pythia-160m into HookedTransformer
-pythia-160m-seed9__step8000: CL=0.16 ACC=0.95 prev=['2.0', '3.5'] ind=['4.5', '4.9', '4.11', '5.2', '5.4', '5.8'] top=[('3.5|mean', 9.6), ('3.5|zero', 9.55), ('4.9|mean', 2.69)] (419.4s)
-Exception ignored in: <function ResourceTracker.__del__ at 0x15313bbc02c0>
+Loaded pretrained model EleutherAI/pythia-31m into HookedTransformer
+pythia-31m-seed9__step4000 {'nat': 0.38, 'shuf': 1.27, 'unig': 0.99, 'hi': 1.26, 'mid': 1.53, 'lo': 2.32} p: {'0.0': None, '0.1': 2.85, '0.25': 2.33, '0.5': 1.97, '0.75': 1.95, '1.0': 2.3} best-layer L5 1.94 (9.6s)
+Exception ignored in: <function ResourceTracker.__del__ at 0x777f2d8c040>
 Traceback (most recent call last):
   File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
   File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop

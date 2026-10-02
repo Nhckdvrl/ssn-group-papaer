@@ -131,6 +131,7 @@ def main():
     res = {"repo": args.repo, "step": args.step, "protocol": "experiments/E13-arbitration-across-runs.md",
            "n_countries": len(countries), "n_known": len(known), "adoption": rate,
            "adoption_ci95": [float(np.percentile(boots, 2.5)), float(np.percentile(boots, 97.5))],
+           "per_country": {c: {"adoption": float(a), "margin": float(m)} for c, a, m in zip(known, per_c, margin_c)},
            "memory_margin": float(margin_c.mean()),
            "memory_margin_ci95": [float(np.percentile(mboots, 2.5)), float(np.percentile(mboots, 97.5))],
            "memory_heads": [(f"{l}.{h}", round(v, 3)) for v, l, h in mem],
