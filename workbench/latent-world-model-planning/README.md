@@ -13,7 +13,7 @@
 ## 本地 agent 阅读顺序
 
 1. [FIELD_PROBLEM_MAP_2026](FIELD_PROBLEM_MAP_2026.md)：**全领域 problem map / saturation map**，先理解社区真正关心什么、哪些 broad story 已拥挤。
-2. [PAPER_LINEAGE](PAPER_LINEAGE.md)：P01–P92，重点是 mother question、idea leap、决定性实验、related-work distance 和 claim ownership。
+2. [PAPER_LINEAGE](PAPER_LINEAGE.md)：P01–P94，重点是 mother question、idea leap、决定性实验、related-work distance 和 claim ownership。
 3. [RESEARCH_MINES](RESEARCH_MINES.md)：**problem-led 主入口**；从 related-work tension 选 pressure region，不从某个 loss 出发找钉子。
 4. [LITERATURE_LEDGER](LITERATURE_LEDGER.md)：阅读深度、venue 状态、代码 readiness、何时必须回原文。
 5. [PROBLEM_METHOD_MAP](PROBLEM_METHOD_MAP.md)：data→representation→dynamics→metric→search→time→execution 七层图与 oracle ladder。
@@ -57,9 +57,9 @@
 
 RC-aux / Bai-Xiong Temporal-Distance JEPA 从 offline trajectory 的 order/gap/cross samples 学 reachability/progress。Broad “behavior statistics ≠ optimal control” 已被 quasimetric GCRL、CGCIVL、PLDM占据；我们的 exact pressure 是：
 
-> **真实改变 generating behavior policy，在尽量匹配 local transition support 后，planning-aware latent WM 是否仍把 behavior route / tempo 写进 deployed planning semantics，并改变同一 test candidate 的 ordering / MPC？**
+> **真实改变 generating behavior policy，在尽量匹配 local transition support 与 conditional action excitation 后，planning-aware latent WM 是否仍把 higher-order behavior route / tempo 写进 deployed planning semantics，并改变同一 test candidate 的 ordering / MPC？**
 
-第一 gate：E14。OGBench公开的 `navigate/stitch/explore`、`play/noisy`只用于 cheap sensitivity；真正 identification 需要 fixed start-goal 的 DIRECT vs DETOUR/LOOP matched data。
+第一 gate：E14。OGBench公开的 `navigate/stitch/explore`、`play/noisy`只用于 cheap sensitivity；真正 identification 需要 fixed start-goal 的 DIRECT vs DETOUR/LOOP matched data，并显式匹配/审计 P94 指出的 conditional action covariance / excitation。
 
 ### M2 / I08 — predictive-computation placement（**Tier A2 / second pilot**）
 
@@ -117,7 +117,7 @@ E05 = conditional diagnostic only
 - **不可接受形态：** RC-aux+loss、再测一次 false negative、单个 toy anomaly、普通 correlation、更多seed/benchmark。
 - **manuscript-critical contributions：** ❌ 等 E14/E13/E11 proof-of-problem；只有过 gate 的 mine 才继续长 claim/method。
 - **证据目标：** strong native reproduction；pair/candidate-level oracle；fixed-candidate regret；closed-loop consequence；train-seed variance；至少两个方法/任务后再扩大。
-- **危险近邻：** RC-aux、Bai/Xiong Temporal-Distance JEPA、quasimetric/CGCIVL/PLDM（M3）；Bagatella TD-JEPA、Universal Horizon、Jumpy WM、TD-MPC2（M2）；FIRM-WM、UWM-JEPA、Physically Viable WM、Branch-JEPA（M1）；以及 DA-LeWM/D-JEPA、Control Theory、Hidden Failure Modes 等共享近邻。
+- **危险近邻：** RC-aux、Bai/Xiong Temporal-Distance JEPA、quasimetric/CGCIVL/PLDM、Controlled-WM Identifiability P94（M3）；Bagatella TD-JEPA、Universal Horizon、Jumpy WM、TD-MPC2（M2）；FIRM-WM、UWM-JEPA、Physically Viable WM、Branch-JEPA（M1）；以及 DA-LeWM/D-JEPA、Control Theory、Hidden Failure Modes 等共享近邻。
 - **目标会议：** ICLR / ICML / NeurIPS；不因模型小降低问题尺度。
 
 ## D1–D6
@@ -128,7 +128,7 @@ E05 = conditional diagnostic only
 | D2 可复用资产 | ⚠️ LeWM/RC-aux/TD-JEPA/stable-worldmodel等官方代码与pin已审；执行机下载/hash待填 |
 | D3 痛点 | ⚠️ literature/code risks已登记；真实 P## = 0 |
 | D4 系统测量 | ⚠️ common oracle/candidate schema + E02/E06/E08 + M1–M3 cards E11–E15 已设计；GPU结果=0 |
-| D5 定位 | ✅ FIELD_PROBLEM_MAP + P01–P92 lineage / venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
+| D5 定位 | ✅ FIELD_PROBLEM_MAP + P01–P94 lineage / venue/code/read-depth ledger；执行中继续滚动扫最新近邻 |
 | D6 idea组合 | ✅ **M3/I09 Tier A1、M2/I08 Tier A2、M1/I07 Tier B conditional**；I06=M3子诊断，I03=共享regime工具；I01/I02 PARKED，I05由I07 supersede；E03/E04 pre-run VOID |
 
 ## 决策记录
@@ -139,7 +139,8 @@ E05 = conditional diagnostic only
 - 2026-10-02：**代码级审计否定原 I01 identification design**：short-window loss看不到“只改长 episode factorization”的treatment；E03/E04未运行即 VOID。
 - 2026-10-02：由 Bai/Xiong Temporal-Distance JEPA / RC-aux negative sampler + false-negative limitation/ablation + CGCIVL邻域，生成 I06；注册 E08–E10。
 - 2026-10-02：进一步按 **problem-led / actionable** 标准重构 mining：新增 M1/I07、M2/I08、M3/I09；I06降为M3子诊断。
-- 2026-10-02：第二轮 proceedings/arXiv hardening 扩到 **P01–P92**；Physically Viable WM / Branch-JEPA / UWM / FIRM 等使 broad M1明显更拥挤，故降为 conditional；OGBench generator/code audit 与 explicit↔implicit native-protocol audit 后，优先级改为 **M3 → M2 → M1 conditional**。
+- 2026-10-02：第二轮 proceedings/arXiv hardening 扩到 **P01–P94**；Physically Viable WM / Branch-JEPA / UWM / FIRM 等使 broad M1明显更拥挤，故降为 conditional；OGBench generator/code audit 与 explicit↔implicit native-protocol audit 后，优先级改为 **M3 → M2 → M1 conditional**。
+- 2026-10-02：**P94 Controlled-WM Identifiability** 进一步压缩 M3：behavior policy 的 conditional action excitation 已被证明会决定 transition identification/counterfactual planning，因此 E14 只有在 excitation + local support 已控制后，higher-order trajectory semantics 仍留下 decision imprint 才有独立空间。
 - 未经人审不改变 ACTIVE 容量；执行 agent可在 experiment-card 决策范围内自主继续，不需要每个job回来问。
 
 ## 资产位置
