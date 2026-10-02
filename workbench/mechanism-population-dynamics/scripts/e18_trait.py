@@ -28,14 +28,14 @@ def rows():
     return out
 
 
-def compute(repo):
+def compute(repo, step=143000):
     torch.set_grad_enabled(False)
-    model = mc.load_tl_model(repo, 143000)
+    model = mc.load_tl_model(repo, step)
     R = rows()
     clean_t = e13.cand_logprob(model, [r["clean"] for r in R], [r["ans"] for r in R])
     clean_d = e13.cand_logprob(model, [r["clean"] for r in R], [r["dist"] for r in R])
     known = clean_t > clean_d
-    res = {"repo": repo, "conditions": {}}
+    res = {"repo": repo, "step": step, "conditions": {}}
     for f in FORMS:
         P = [r[f] for r in R]
         lt = e13.cand_logprob(model, P, [r["ans"] for r in R], bs=16 if f == "Coherent Conflict" else 64)
@@ -53,7 +53,7 @@ def compute(repo):
                                               "margin": float(marg.mean()),
                                               "ci95": [float(np.percentile(boots, 2.5)), float(np.percentile(boots, 97.5))]}
     OUT.mkdir(exist_ok=True)
-    (OUT / f"{repo.split('/')[-1]}.json").write_text(json.dumps(res, indent=1))
+    (OUT / (f"{repo.split('/')[-1]}.json" if step == 143000 else f"{repo.split('/')[-1]}__step{step}.json")).write_text(json.dumps(res, indent=1))
     print(repo, {k.split("|")[0][:10] + "|" + k.split("|")[1][:3]: (v.get("n_known"), round(v.get("adoption", float("nan")), 2))
                  for k, v in res["conditions"].items()}, flush=True)
 
@@ -92,5 +92,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo")
     ap.add_argument("--analyze")
+    ap.add_argument("--step", type=int, default=143000)
     a = ap.parse_args()
-    analyze(a.analyze) if a.analyze else compute(a.repo)
+    analyze(a.analyze) if a.analyze else compute(a.repo, a.step)
