@@ -102,7 +102,7 @@ def main() -> None:
     output = run_dir / "model"
     command = [
         sys.executable, "-m", "accelerate.commands.launch",
-        "--num_processes", "1", "--gpu_ids", "0",
+        "--num_processes", "1", "--gpu_ids", str(args.gpu),
         str(TRAIN_SCRIPT), "--config_json", str(config_path),
         "--output_dir", str(output),
         "--num_train_epochs", "1",
@@ -126,6 +126,7 @@ def main() -> None:
         "policy": args.policy,
         "seed": args.seed,
         "gpu": args.gpu,
+        "device_mapping": "Accelerate --gpu_ids and outer CUDA_VISIBLE_DEVICES both name the same physical GPU; the child uses its logical device 0.",
         "parent_revision": EXPECTED_MODEL_REVISION,
         "parent_path": str(model),
         "selection_manifest_sha256": sha256(selection_file),

@@ -1,0 +1,30 @@
+{
+  "first_shard_only": false,
+  "source_json_sha256": "ce959ce6e23073ee1cd1a8a2ef1c633768c10d4174327b8b2dc7113b91af6cf8",
+  "source_arrow_path": "/var/tmp/xiang-data-rsi/e12/llava_arrow",
+  "original_rows": 665298,
+  "arrow_rows": 665298,
+  "original_unique_ids": 389722,
+  "arrow_unique_ids": 389722,
+  "same_id_multiset": true,
+  "same_position_count": 665298,
+  "same_position_fraction": 1.0,
+  "same_position_conversation_count": 665298,
+  "same_position_conversation_fraction": 1.0,
+  "first_position_mismatches": [],
+  "arrow_subsets": {
+    "coco": 364100,
+    "gqa": 72140,
+    "ocr_vqa": 80000,
+    "text": 40688,
+    "textvqa": 21953,
+    "vg": 86417
+  },
+  "columns": [
+    "id",
+    "subset",
+    "images",
+    "texts"
+  ],
+  "features": "{'id': Value('string'), 'subset': Value('string'), 'images': Image(mode=None, decode=True), 'texts': List({'user': Value('string'), 'assistant': Value('string')})}"
+}
