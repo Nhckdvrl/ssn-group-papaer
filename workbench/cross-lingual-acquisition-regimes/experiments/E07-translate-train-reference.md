@@ -18,3 +18,5 @@
 CPU准备完成：同16384唯一ID，EN/DE各8192；input token1800246/2265387，answer loss token60412/63223。总input4065633，比E03全英语3588633增加13.29%，不是等token比较。manifest `results/e07_translate_train_data_manifest.json`，完整输入 `artifacts/qa_translate_train/data.json`；尚未GPU训练。
 
 执行追加：fvcrc10 GPU0在E04 new_paired完整保存、原进程退出、显存15MiB确认后启动，PID78399；wrapper调用冻结E03 core，仅替换已审计的数据路径和真实哈希。上述“尚未运行GPU”是启动前记录，不是当前状态。暂未产生终点结果。
+
+终点前追加测量承诺：标准50/50参照的完整LM，按E06/E08同Blackwell/FP32/全部400固定输入与primary/原一句instruction测MT保持，逐方向BLEU/chrF、照抄/cap/empty/overflow与同协议MWB适配前后比较。无新prompt，不挑QA快照；同句paired bootstrap2000、训练seed仍只有17。另用≤1 GPU·时，等E10全部post及空卡之后测；不是与E04等总token/计算预算，也不能据此宣布方法创新。此承诺写于E07终点和任何本参照MT结果之前。
