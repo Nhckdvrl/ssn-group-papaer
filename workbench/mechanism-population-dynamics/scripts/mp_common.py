@@ -82,7 +82,9 @@ def load_tl_model(repo, step, device="cuda"):
     from transformer_lens import HookedTransformer
 
     hf = load_hf_model(repo, step)
-    tl_name = repo if repo in ("EleutherAI/pythia-70m", "EleutherAI/pythia-70m-deduped") else "EleutherAI/pythia-70m"
+    import re
+
+    tl_name = re.sub(r"-seed\d+$", "", repo)  # PolyPythia seeds share the canonical architecture/tokenizer
     model = HookedTransformer.from_pretrained(tl_name, hf_model=hf, device=device, dtype=torch.float32)
     model.eval()
     return model

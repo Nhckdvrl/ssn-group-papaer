@@ -114,6 +114,10 @@ def audit_repo(repo):
 
 
 def main():
+    global OUT, REPOS
+    if len(sys.argv) > 2:  # usage: r0_hf_metadata_audit.py <tag> <repo> [<repo> ...]
+        OUT = OUT.parent / f"r0_hf_metadata_{sys.argv[1]}.json"
+        REPOS = sys.argv[2:]
     results = [audit_repo(r) for r in REPOS]
     # cross-repo duplicate weight blobs
     owner = defaultdict(set)

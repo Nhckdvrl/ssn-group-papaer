@@ -1,8 +1,38 @@
 {
- "generated": "2026-10-01T11:43:37",
+ "generated": "2026-10-02T16:24:26",
  "loader": "pytorch_model.bin only (use_safetensors=False)",
  "tokenizer_note": "see r0_hf_metadata_70m.json tokenizer_oid per revision",
  "checkpoints": [
+  {
+   "model_id": "EleutherAI/pythia-160m",
+   "seed": 0,
+   "data": "pile-standard",
+   "checkpoint": "step0",
+   "step": 0,
+   "revision_commit": "0cf035e7d55e9b2fbec7f2db0c0c32670146b9b1",
+   "accepted": true,
+   "reject_reason": null,
+   "bin_sha256": "0c2ad874cecb84a220f168e686c24688b041611672455b0fa6b23587c8a3821b",
+   "bin_sha_matches_hf": true,
+   "n_params": 162322944,
+   "n_tensors": 148,
+   "dtype": "torch.float16",
+   "finite": true,
+   "config": {
+    "hidden_size": 768,
+    "num_hidden_layers": 12,
+    "num_attention_heads": 12,
+    "vocab_size": 50304,
+    "rotary_pct": 0.25,
+    "max_position_embeddings": 2048
+   },
+   "shapes_ok": true,
+   "safetensors_sha256": "87c169cd152db340535d6f330af0e2eed7578484ef2d23dd44ca90cbcc215ba7",
+   "bin_vs_safetensors_maxabs": 0.0,
+   "safetensors_missing_keys": 0,
+   "rel_l2_to_step0": 0.0,
+   "pile_nll_16x512": 11.079451560974121
+  },
   {
    "model_id": "EleutherAI/pythia-70m",
    "seed": 0,

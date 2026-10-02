@@ -1,0 +1,36 @@
+# E03 — Is late copy regression mediated by acquired antagonist heads?（2026-10-02）
+
+- **状态：** DONE（2026-10-02；判定：mean 救援真实且特异，但“token 特异拮抗头”不成立 → 转 E04）
+- **类型：** PILOT（决定性检验）
+- **对应：** E02 POST-HOC 发现（退化幅度 ~ 拮抗量，ρ=0.84）；P03（mean 消融第 0 层头的分布外风险）；P04
+- **问题：** 10 个 seed 电路相同、后期复制能力却差 25 倍。差异是否因果地由后期获得的“拮抗头”介导？这些拮抗头在自然文本上是在做有用的事（选择性地抑制复制）还是纯粹损害？
+
+## 设置
+- 10 个 seed；每个 seed 的 checkpoint：E02 中 CL 最好的 step、32000、64000、143000（去重）。
+- **拮抗集 A(seed, step)：** 由 E02 的选择集（seed 12345 的 500 条序列）决定：单独 mean 消融使 CL 下降 >0.5 的头。**评估一律在 held-out 集**（同 token 池，seed 777，500 条），避免循环。
+- **对照：** 10 组与 A 等大小的随机头组，排除 A、prev/induction 角色头，且**从与 A 相同的层里抽**（层匹配，控制“消融第 0 层任何头都会改善”的可能）。
+
+## 读数
+- **T1 救援：** held-out 上 CL(A 消融) vs CL(clean)；救援比例 = (CL_clean − CL_A) / (CL_clean − CL_best)，CL_best 为该 seed 最好 step 的 held-out CL。mean 与 zero 两种方法。
+- **T2 自然文本重复：** Pile 片段（eval 集前 1000 条的第 1–50 个 token）构成 [BOS]+span+span，第二段中位 loss（CLnat）与准确率；clean vs A 消融。
+- **T3 代价：** Pile 下一词 loss（500 条 × 位置 1–503 的均值）与 R2（loss@50−loss@500，1000 条），clean vs A 消融 vs 3 组层匹配随机组。
+- **T4 路径：** A 消融前后，prev 角色头的 prev-token 注意力与 induction 角色头的 induction 注意力（held-out 序列）。
+- **T5 频率依赖：** held-out 第二段 token 按 pile-10k 频次三等分，分档报告 clean / A 消融的 loss。
+
+## 决策表（跑之前写）
+- **A — 拮抗介导成立：** 在退化 ≥1 nat 的 seed 中，≥75% 的 (seed, late step) 上 A 的 mean 消融救回 ≥50% 退化，且超过全部 10 组层匹配随机组；zero 消融方向一致；低退化 seed 的 A 为空或很小 → 建 C02（L1）。
+  - **A1（纯损害）：** A 消融不增加 Pile loss（Δ <0.005 nats）且也改善自然文本重复 → “可移除的后期抑制成分”，下一步做最小干预（推理时消融 / 训练时正则）并测下游 ICL。
+  - **A2（权衡 / 选择性先验）：** A 消融增加 Pile loss（Δ ≥0.005）或损害自然文本重复，且救援在低频 token 上更强 → “后期学到了按先验选择性抑制复制”，与 Strategy Coopetition（Singh 2025）的 CIWL 对接；下一步测它对哪类上下文起作用。
+- **B — 不成立：** 救援 <20%，或层匹配随机组同样能救 → E02 的相关是循环/分布外伪影，记入作废，不再追这条线。
+- **不确定：** mean 与 zero 方向相反 → 报告为消融依赖，换 resample 消融再测一次再定。
+
+## 算力
+≈40 个 (seed, step) × ≈3 min ≈ 2 GPU·h。
+
+---
+## 结果（2026-10-02）
+- 39 个 (seed, step)；结果 `results/e03/`。偏离：第 0 层除 A 外常不足 |A| 个头，随机对照池放宽到第 0–1 层（非 A、非电路头），并加 resample 消融（预注册的“不确定”分支要求）。
+- 退化 ≥1 nat 的 13 个 late 格子：**mean 消融 A 救回 87–158%，全部超过 10/10 组随机头**；低退化 seed（3, 6, 9）A 为空。
+- **zero 消融多数方向相反**（救回 −13 ~ +0.95），**resample 消融全部不救**（−0.9 ~ +0.1）。按决策表：mean 与 zero 相反 → resample 仲裁 → 不救 ⇒ “token 特异拮抗头”**不成立**（B）。
+- 保留的事实：能救回的是“把这些头的输出换成**自然文本**上的平均输出”；换成另一条随机序列上的输出则不行 → 假说 H_ctx（分布级门控），E04 检验。
+- 代价：mean 消融 A 使 Pile loss +0.03–0.39 nats，与层匹配随机组相当（+0.05–0.64），不特异。自然文本重复的复制在所有 seed 中本来就好（CL 0.06–0.27）。

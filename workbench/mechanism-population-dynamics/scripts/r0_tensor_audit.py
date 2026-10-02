@@ -53,7 +53,8 @@ def main():
     ap.add_argument("--repos", nargs="+", default=E01_REPOS)
     ap.add_argument("--steps", nargs="+", type=int, default=E01_STEPS)
     args = ap.parse_args()
-    meta = {r["repo"]: r for r in json.loads(mc.META.read_text())["repos"]}
+    meta = {r["repo"]: r for f in sorted(mc.RESULTS.glob("r0_hf_metadata_*.json"))
+            for r in json.loads(f.read_text())["repos"]}
     from transformers import AutoTokenizer
 
     rows = []
