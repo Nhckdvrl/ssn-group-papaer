@@ -17,6 +17,14 @@ def one(j):
     if (mc.RESULTS / out / f"{name}.json").exists():
         return
     pat = ["*.json", "*.safetensors"] if fam == "dd" else None
+    if fam == "hf":  # one weight format only: safetensors when the revision has it, else pytorch .bin
+        from huggingface_hub import HfApi
+        try:
+            files = [x.rfilename for x in HfApi().model_info(repo, revision=rev).siblings]
+            w = ["*.safetensors"] if any(f.endswith(".safetensors") for f in files) else ["*.bin"]
+            pat = ["*.json", "*.txt", "tokenizer*"] + w
+        except Exception:
+            pat = None
     for t in range(10):
         try:
             snapshot_download(repo, revision=rev, cache_dir=str(mc.HF_CACHE), allow_patterns=pat)

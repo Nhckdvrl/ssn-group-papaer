@@ -12,7 +12,7 @@ Where do a language model's circuits come from? We separate nature from nurture 
 - The natural experiment (DataDecide, Pythia) → Fig 1 (which head is strongest across 25 corpora, per seed) and Fig 2 (determination map).
 - Five findings (bold noun phrase + one sentence + section):
   1. **A natural nature × nurture experiment for mechanisms** (§2): hidden seed × data crossings, audited; the determination map assigns 13 mechanistic properties to universal / seed / data / neither.
-  2. **The seed picks the slot** (§3): placement is inherited across corpora and the data component is zero — at 14 sizes, in 2 families [P: up to 12B], for [P: E59 more roles incl. a weight-only copying score]; one head is the strongest in up to 56% of 25 corpora for a given seed (chance 6%).
+  2. **The seed picks the slot** (§3): placement is inherited across corpora and the data component is zero — at 14 sizes, in 2 families [P: up to 12B], for all 9 head roles we measured, including a weight-only copying score (E59); one head is the strongest in up to 56% of 25 corpora for a given seed (chance 6%).
   3. **The data fills it** (§4): strength, timing, content, behaviour and benchmarks come from the data; no lucky seeds; the "Question:" switch.
   4. **A critical period, then an attractor** (§5): the slot is fixed in the first 1–2.5% of training; afterwards weight-sized noise returns roles to their slots; the weights forget the seed (r = 0.04), the anatomy remembers it.
   5. **Inheritance follows corpus statistics and scale** (§6): a dose–response law on corpus distance at every size, robust to shared sources; code re-draws the slot; stronger in larger models [P: E57, E46b2].
@@ -20,13 +20,13 @@ Where do a language model's circuits come from? We separate nature from nurture 
 
 ## 2. A natural nature × nurture experiment
 - 2.1 Suites and audits: DataDecide (SI / SD / DD pairs); Pythia std vs deduped (identical step-0 tensors at 70M / 160M / 410M / 1.4B / 2.8B / 6.9B / 12B, rounding-level at 1B); training-start audit; PolyPythias weight-seed finding (P09).
-- 2.2 Measurements: head-role maps (M1 induction, M2 previous-token, M3 sink, M4 retrieval [+ E59 roles]); within-layer vs layer-profile decomposition; unbiased two-way variance components; permutation / bootstrap.
+- 2.2 Measurements: head-role maps (M1 induction, M2 previous-token, M3 sink, M4 retrieval, + duplicate-token, current-token, two-back, delimiter, OV copying; E59); within-layer vs layer-profile decomposition; unbiased two-way variance components; permutation / bootstrap.
 - 2.3 Symmetry view: heads in a layer are exchangeable, so which head takes a role is decided by symmetry breaking; by symmetry the data alone cannot prefer a head; the question is whether one seed breaks the symmetry the same way on different data.
 - 2.4 The determination map (Fig 2).
 
 ## 3. The seed picks the slot
 - 3.1 1B, 3 seeds × 25 corpora (E35): data component of placement 0; seed effect in 56–80% of heads; within-layer SI 0.27–0.34 vs SD ≈ 0; source-disjoint corpora included.
-- 3.2 Breadth: all 14 sizes (E45), 5 seeds at 1B, Pythia 70M–410M (E44) [P: 1B–12B, E58]; more roles and a weight-only measure [P: E59]; causal ablation maps (E42).
+- 3.2 Breadth: all 14 sizes (E45), 5 seeds at 1B, Pythia 70M–410M (E44) [P: 1B–12B, E58]; 9 roles incl. a weight-only copying score, all seed-placed (E59: 0.16–0.36 vs ≈ 0); causal ablation maps (E42).
 - 3.3 What is universal: the layer of each role; the algorithm (previous-token → induction composition in 75 / 75 models, E55; consistent with Tigges 2024).
 - 3.4 Coordinates, not content (E43): residual coordinates and outlier dimensions inherited (0.20 vs 0); MLP neuron identity not (0.008); CKA / best-match content not (SD ≥ SI ≈ DD); no linear connectivity.
 

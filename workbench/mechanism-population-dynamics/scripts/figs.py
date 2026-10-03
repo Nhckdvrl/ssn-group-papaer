@@ -112,9 +112,9 @@ def fig_flan_scale():
 # the result files cited in CLAIMS.md (C04 / C05) and the experiment cards.
 MAP = [
     ("Algorithm (prev-token → induction composition)", "universal", "75 / 75 models", "E55"),
-    ("Layer hosting each role", "universal", "layer profile SI ≈ SD ≈ 0.54–0.83", "E35"),
+    ("Layer hosting each role", "universal", "layer profile SI ≈ SD ≈ 0.4–0.7 (9 roles)", "E35/E59"),
     ("Developmental time: previous-token heads", "universal", "corpus 0.01, seed 0.07 (n.s.)", "E54"),
-    ("Which head within the layer takes the role", "seed", "within-layer SI 0.30 vs SD 0.00; data comp. 0", "E35/E45"),
+    ("Which head takes each role (9 roles, incl. weight-only)", "seed", "within-layer SI 0.16–0.36 vs SD ≈ 0; data comp. 0", "E35/E45/E59"),
     ("Residual-stream coordinates / outlier dims", "seed", "0.20 vs 0.00", "E43"),
     ("Representation content (CKA, best match)", "data", "SD ≥ SI ≈ DD", "E43"),
     ("Circuit strength", "data", "data sig. 4/6 metrics; seed comp. ≈ 0", "E35"),

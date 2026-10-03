@@ -27,6 +27,8 @@ def load(family, repo, rev, dtype=torch.bfloat16):
         return dd.load(repo, rev, dtype=dtype, attn="eager")
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tok = AutoTokenizer.from_pretrained(repo, revision=rev, cache_dir=str(mc.HF_CACHE))
+    if tok.eos_token is None:  # e.g. pythia-1b-deduped ships a tokenizer without special tokens set
+        tok.eos_token = tok.bos_token = "<|endoftext|>"
     model = AutoModelForCausalLM.from_pretrained(repo, revision=rev, cache_dir=str(mc.HF_CACHE), torch_dtype=dtype,
                                                  attn_implementation="eager").cuda().eval()
     return model, tok
@@ -60,7 +62,7 @@ def static(tok):
 def measure(model, tok, bs=20):
     L, H = n_layers_heads(model)
     dev = next(model.parameters()).device
-    eos = tok.eos_token_id
+    eos = tok.eos_token_id if tok.eos_token_id is not None else tok.convert_tokens_to_ids("<|endoftext|>")
     g = torch.Generator().manual_seed(0)
     first = torch.randint(1000, 40000, (200, 128), generator=g)
     ids = torch.cat([torch.full((200, 1), eos), first, first], 1)
