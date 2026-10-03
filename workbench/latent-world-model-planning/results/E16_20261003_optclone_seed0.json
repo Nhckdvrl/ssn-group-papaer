@@ -1,0 +1,1518 @@
+{
+  "experiment": "E16 optimizer-isolated complete seven-method seed0 rerun",
+  "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-optclone-s0",
+  "seed": 0,
+  "bootstrap_seed": 20261003,
+  "bootstrap_resamples": 2000,
+  "methods": {
+    "NO-ADD": {
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "NO-ADD",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 0,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "training": {
+        "seconds": 112.22864185273647,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_NO-ADD_seed0.pt",
+        "sha256": "1d73e5863db68ade5057af270ad917a24ce713b9717bb9c9c691708ff8331da6",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "93ffb6fe2325cb534170c13591a689bf6abe95e263ef05c3f48e4048dc7663b7",
+        "training.json": "7fb6cff6cdf3cce0d8e5536e3391ab2098f5cc237050b7a3bce95833bbae0455",
+        "train_summary.json": "522903d5ef6f8f1c19eb529cb1307e1fe2e720f8a704d81023aaf103a4157cc7",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "a56ee06c7d0aca64f9f4e5d54c0a440ab3c86eb76e1c121e062f96c2fb6bc536",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      },
+      "success": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "episode_ids": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ]
+    },
+    "IID": {
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "IID",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "training": {
+        "seconds": 126.24846909940243,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_IID_seed0.pt",
+        "sha256": "a89505ce5b9bb8bcdb21c9d98be003158dca1bc6b2469559e59c6dc07303fefa",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "51b82b5b11eb2321c9c7b9684e7033d03ea407886697b937b691fe857adec74a",
+        "training.json": "064220f1a2e9c1447ba92b4f9c880ff6ca3043fe09851dc51bfd85002b60a09e",
+        "train_summary.json": "04845a228c81b9bb76b025e4f33a731d925ea9704e0d86a651435c2048463d94",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "a08f202200cb176b3d6e547fea80e95a318b80164c240702fd148cdaf443fdc7",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      },
+      "success": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "episode_ids": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ]
+    },
+    "UNIFORM-COMMON-RESET": {
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "UNIFORM-COMMON-RESET",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "training": {
+        "seconds": 111.36226520687342,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_UNIFORM-COMMON-RESET_seed0.pt",
+        "sha256": "3b38d5268e86409310f12c127cfab3a6ef705546ec2e0f663605947a3b1f1b59",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "797e3145d62dd17421b0c6edcdd6b8150829c7e9ffc39854ba67fca16be768f9",
+        "training.json": "75d76596e9d10e99e512d5384f81bea0e8b4bd6590b79681daea29af93e8290f",
+        "train_summary.json": "87202e45021921ceddc5e9a4d5fcd2bb52c872c677ddb5b288a345c8d69e2a28",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "f2e782d83957689072dbf05a8269f30b0197e65e9a73ef72bf0ae832a4cd5341",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      },
+      "success": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "episode_ids": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ]
+    },
+    "COVERAGE": {
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "COVERAGE",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "training": {
+        "seconds": 112.48955835774541,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_COVERAGE_seed0.pt",
+        "sha256": "41a166fd8b5f5fab227da2de965a724b448f6e361255a7a2f2c1933d10decdbe",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "d21d6095b0938e03c85d7246e6ae6e3df1f2ffef76fec31d9dcccba333ac19af",
+        "training.json": "42d9186f4f356791b97be8bf76a2f59155af440cdae3520d6e8dd00cd3e7fad6",
+        "train_summary.json": "a372486f5df5c8d6442f2811cf155af4c4b1cd880d66bc34d9f4bf94b55d91e5",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "31a516ee15cb1beae038f898a3b6cc1fe95a8587f6634acfc0d0b35a6a9eec32",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      },
+      "success": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "episode_ids": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ]
+    },
+    "GLOBAL-U": {
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "GLOBAL-U",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "training": {
+        "seconds": 118.81889940798283,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_GLOBAL-U_seed0.pt",
+        "sha256": "e4d7dce09bbbb700315e7fe6908fb53a845bfe8e06ac71002434dc5d206499ec",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "7d67cb0af14373dd6be898e134e186f7c3a4bc3607da3ee0da71f142d6960bc9",
+        "training.json": "add3b47e1bb7f4af58433e52f0e5ab77470f4cc2aa89f80e725038320e1462a4",
+        "train_summary.json": "6c8b63dbe9ba514016f36e022c977b39c120aa17b0c0e80e137d538daa45e72a",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "06e90be32249da833afab5dedd203a25b349e87624e26d104c4b59d7d8be472a",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      },
+      "success": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "episode_ids": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ]
+    },
+    "TASK-U": {
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "TASK-U",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "training": {
+        "seconds": 131.25268279016018,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_TASK-U_seed0.pt",
+        "sha256": "0bc56e99e01acfb5bbea368ce891cba5db0884b0569d93bb830fdb39ccbee464",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "bd9145fe862e0591c2c8379e3df2fe787d75ff34a1323d2b8b8df7e10a49b776",
+        "training.json": "fd23754c73413ac19b096c3af8d435870bb7904aa38c65c195f4aa5696f3142b",
+        "train_summary.json": "a1b0bbacedc700ebbb8903c438331e0e152ca92fe50ca172bd54eebaa0822301",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "4c53c14e4130e113a2fa83cfa7f7524a90be8a27a3a57e3bf2781b9904ed7f1b",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      },
+      "success": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "episode_ids": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ]
+    },
+    "PBB": {
+      "config": {
+        "phase": "train",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+        "output": "/tmp/latent-wm-runs/20261002-E16-methods-optclone-s0",
+        "head_cache": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0",
+        "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "base_cache": null,
+        "methods": "NO-ADD,IID,UNIFORM-COMMON-RESET,COVERAGE,GLOBAL-U,TASK-U,PBB",
+        "seed": 0,
+        "policy": "PBB",
+        "base_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+        "logical_added_steps": 2000,
+        "gradient_steps": 600,
+        "harness_sha256": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+        "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+        "train_seed": 0,
+        "normalization": "same base100 statistics",
+        "objective": "native all3 MSE + .09 SIGReg",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch": "2.7.1+cu128",
+        "precision": "bf16",
+        "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "architecture_builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "complete": {
+        "completed": true,
+        "science_scope": "one exploratory train seed; no seed filtering"
+      },
+      "training": {
+        "seconds": 117.88113961368799,
+        "steps": 600,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_methods_optclone_s0/E16_PBB_seed0.pt",
+        "sha256": "cd6f78c211828f3e0a6e6163f8e8472dfb2d17d3525b3304e706e1a0f49bce22",
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      },
+      "native_control": {
+        "max_cost_abs_error": 0.0,
+        "history_frames": 3,
+        "future_macro_states": 5,
+        "native_total_emb_frames": 8
+      },
+      "artifact_sha256": {
+        "config.json": "8faebd37c3d32261dd594ae1e654afa31c1426f0dd64dd18912be8f7d133cd2b",
+        "training.json": "c6a8ea5737ff9a6cded1e07b2e51fcc6f9bea625ffce2b9219b371af88b80e54",
+        "train_summary.json": "c6eb4a0cb0e6840571dc2dc867fbc60ff2062d833b7a94ecece9cfe768406467",
+        "evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "evaluation_evaluation.json": "d362cfad61bce9999ab6cf6ac822f4c0437021dc0dd9fe0f00091040a345dc43",
+        "complete.json": "b5676b58cda95fb90e7f189ff5552c8f6b10bee4540b10c82729acb2d0ab9a79"
+      },
+      "success": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "episode_ids": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ]
+    }
+  },
+  "summary": [
+    {
+      "method": "NO-ADD",
+      "n": 48,
+      "successes": 7,
+      "comparisons": {
+        "NO-ADD": {
+          "paired_success_gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "UNIFORM-COMMON-RESET": {
+          "paired_success_gain": -0.5208333333333334,
+          "paired_episode_ci95": [
+            -0.6671874999999999,
+            -0.3541666666666667
+          ],
+          "helped": 2,
+          "harmed": 27
+        },
+        "GLOBAL-U": {
+          "paired_success_gain": -0.25,
+          "paired_episode_ci95": [
+            -0.4166666666666667,
+            -0.08333333333333333
+          ],
+          "helped": 3,
+          "harmed": 15
+        }
+      }
+    },
+    {
+      "method": "IID",
+      "n": 48,
+      "successes": 18,
+      "comparisons": {
+        "NO-ADD": {
+          "paired_success_gain": 0.22916666666666666,
+          "paired_episode_ci95": [
+            0.10364583333333337,
+            0.3541666666666667
+          ],
+          "helped": 12,
+          "harmed": 1
+        },
+        "UNIFORM-COMMON-RESET": {
+          "paired_success_gain": -0.2916666666666667,
+          "paired_episode_ci95": [
+            -0.4583333333333333,
+            -0.125
+          ],
+          "helped": 4,
+          "harmed": 18
+        },
+        "GLOBAL-U": {
+          "paired_success_gain": -0.020833333333333332,
+          "paired_episode_ci95": [
+            -0.20833333333333334,
+            0.16666666666666666
+          ],
+          "helped": 10,
+          "harmed": 11
+        }
+      }
+    },
+    {
+      "method": "UNIFORM-COMMON-RESET",
+      "n": 48,
+      "successes": 32,
+      "comparisons": {
+        "NO-ADD": {
+          "paired_success_gain": 0.5208333333333334,
+          "paired_episode_ci95": [
+            0.3541666666666667,
+            0.6671874999999972
+          ],
+          "helped": 27,
+          "harmed": 2
+        },
+        "UNIFORM-COMMON-RESET": {
+          "paired_success_gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "GLOBAL-U": {
+          "paired_success_gain": 0.2708333333333333,
+          "paired_episode_ci95": [
+            0.10416666666666667,
+            0.4375
+          ],
+          "helped": 16,
+          "harmed": 3
+        }
+      }
+    },
+    {
+      "method": "COVERAGE",
+      "n": 48,
+      "successes": 27,
+      "comparisons": {
+        "NO-ADD": {
+          "paired_success_gain": 0.4166666666666667,
+          "paired_episode_ci95": [
+            0.2708333333333333,
+            0.5625
+          ],
+          "helped": 21,
+          "harmed": 1
+        },
+        "UNIFORM-COMMON-RESET": {
+          "paired_success_gain": -0.10416666666666667,
+          "paired_episode_ci95": [
+            -0.2916666666666667,
+            0.0625
+          ],
+          "helped": 7,
+          "harmed": 12
+        },
+        "GLOBAL-U": {
+          "paired_success_gain": 0.16666666666666666,
+          "paired_episode_ci95": [
+            0.041666666666666664,
+            0.2916666666666667
+          ],
+          "helped": 10,
+          "harmed": 2
+        }
+      }
+    },
+    {
+      "method": "GLOBAL-U",
+      "n": 48,
+      "successes": 19,
+      "comparisons": {
+        "NO-ADD": {
+          "paired_success_gain": 0.25,
+          "paired_episode_ci95": [
+            0.08333333333333333,
+            0.4166666666666667
+          ],
+          "helped": 15,
+          "harmed": 3
+        },
+        "UNIFORM-COMMON-RESET": {
+          "paired_success_gain": -0.2708333333333333,
+          "paired_episode_ci95": [
+            -0.4375,
+            -0.10416666666666667
+          ],
+          "helped": 3,
+          "harmed": 16
+        },
+        "GLOBAL-U": {
+          "paired_success_gain": 0.0,
+          "paired_episode_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "method": "TASK-U",
+      "n": 48,
+      "successes": 13,
+      "comparisons": {
+        "NO-ADD": {
+          "paired_success_gain": 0.125,
+          "paired_episode_ci95": [
+            -0.020833333333333332,
+            0.25
+          ],
+          "helped": 9,
+          "harmed": 3
+        },
+        "UNIFORM-COMMON-RESET": {
+          "paired_success_gain": -0.3958333333333333,
+          "paired_episode_ci95": [
+            -0.5625,
+            -0.22916666666666666
+          ],
+          "helped": 3,
+          "harmed": 22
+        },
+        "GLOBAL-U": {
+          "paired_success_gain": -0.125,
+          "paired_episode_ci95": [
+            -0.2708333333333333,
+            0.020833333333333332
+          ],
+          "helped": 4,
+          "harmed": 10
+        }
+      }
+    },
+    {
+      "method": "PBB",
+      "n": 48,
+      "successes": 20,
+      "comparisons": {
+        "NO-ADD": {
+          "paired_success_gain": 0.2708333333333333,
+          "paired_episode_ci95": [
+            0.10416666666666667,
+            0.4375
+          ],
+          "helped": 17,
+          "harmed": 4
+        },
+        "UNIFORM-COMMON-RESET": {
+          "paired_success_gain": -0.25,
+          "paired_episode_ci95": [
+            -0.4171875,
+            -0.0625
+          ],
+          "helped": 5,
+          "harmed": 17
+        },
+        "GLOBAL-U": {
+          "paired_success_gain": 0.020833333333333332,
+          "paired_episode_ci95": [
+            -0.10416666666666667,
+            0.14583333333333334
+          ],
+          "helped": 6,
+          "harmed": 5
+        }
+      }
+    }
+  ],
+  "scope": "same source base/bank/eval/training seeds/600 updates; optimizer deep-copy is only repair. 100 expert base episodes; 2000 logical added envsteps per acquisition (NOADD0), single exploratory pipeline seed; whole-pipeline seed1/2 running. Old causal comparisons remain withdrawn.",
+  "interpretation": "Uniform common-reset32/48 is stronger than current PBB20/48/global19/48 and NOADD7/48 in this exploratory seed. Supports checking branch data action support/objective/data regime; not a stable novel acquisition method, and does not close R1. No train-seed CI or manuscript claim."
+}

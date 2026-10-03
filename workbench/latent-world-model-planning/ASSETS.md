@@ -57,7 +57,7 @@ LeWM原文报告紧凑单GPU训练；RC-aux提供约18.7M的本地实例。不�
 |---|---|---|
 | 原生小模型加载与训练步 | Fast 两任务原生完成；LeWM有限数据1680+600 updates实际运行 | E01原生配方与独立seed |
 | 原生规划闭环与计时 | 两任务配对闭环/计时；长短goal256pairs完成 | 第二预测对象/恢复方式 |
-| 数值复现、独立训练seed | 完整数值复现未完成；E16独立seed1/2运行中 | E01/E16 |
+| 数值复现、独立训练seed | 完整数值复现未完成；E16三完整pipeline seeds已完成 | 原生配方/第二task与不同data regime |
 | 共享评测清单/数据缓存 | 两任务node-local HDF5、candidate/branch banks、1/2/4 I/O完成 | 整episode RAM cache复用 |
 
 新记录追加在这里或具体实验卡，不另建“最终资产表2”。
@@ -65,10 +65,10 @@ LeWM原文报告紧凑单GPU训练；RC-aux提供约18.7M的本地实例。不�
 ### 2026-10-02 实际执行资产
 
 - 环境：`/home/xiang/.venvs/latent-wm`，以既有 `lightwam` 的 Python 3.10/CUDA torch 创建 system-site-packages venv，未修改原环境。torch=2.7.1+cu128、transformers=5.3.0、stable-worldmodel=0.0.6；torch 低于 Fast-LeWM requirements 中的 2.10，opencv 为 headless 4.11。配方偏差须随结果披露，工程 pilot 没有安装完整 optional training stack。
-- 已 clone：Fast-LeWM `de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d`、LeWM `8edfeb336732b5f3ce7b8b210d0ba370a09e2cac`；各自在忽略的 `vendor/`，代码 MIT。
+- 已 clone：Fast-LeWM `de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d`、LeWM `8edfeb336732b5f3ce7b8b210d0ba370a09e2cac`、RC-aux `cbdf3786b149df8145d6c7314f32f460d43c9695`；各自在忽略的 `vendor/`。RC-aux只借用实际open-loop实现开展component pilot，未完整复现；代码许可与weights/data分开核对。
 - Fast checkpoint：HF `naiverer/fast-leworldmodel`，revision `f95379fe193c8bfc6a59c9d8437d5052bd72ff71`；两个 object 均 71,897,531 bytes / 17,913,184 params。TwoRoom SHA256 `0822f1e3bc0f8822e68dd19ea92d82053f2f31a2e0f976051572dcb7605a8119`，PushT `7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca`。均在标准 HF cache，已实际加载且参数有限。权重/数据许可尚未核对，不能用代码 MIT 代替。
 - TwoRoom dataset revision `6903a2de048b13819d812da0b4dd661290bc01e4`，`tworoom.tar.zst` 3,425,937,909 bytes，下载并解压完成；node-local `/tmp/latent-wm-data/tworoom.h5`，920,809 transitions / 10,000 episodes，224×224 RGB。解压 67.20 s，HDF5 SHA256 `129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623`。PushT dataset revision `655cd446b9929369d7d406001da85c15d1457850`，压缩 13,136,247,974 bytes 已下载并解压（492.93 s；HDF5 46,300,921,856 bytes / 2,336,736 transitions / 18,685 episodes），原生批次已启动；压缩 SHA256 `7cfbd6d90fa2f27876379a5ff169715a36ed82edbda64f9e5b5bfa34d212f318`。zstd 参数路径为 HF symlink 时被工具忽略；改为 stdin 读取，原失败日志保留。
-- 官方 LeWM 两 task 的 config/weights 也进入 HF cache；TwoRoom revision `77adaae0bc31deab21c93740d1f8bb947cd0bdec`、PushT `22b330c28c27ead4bfd1888615af1340e3fe9052`。TwoRoom 已按官方 tiny ViT/JEPA 配方 strict load 303 keys、18,034,478 params；[重建脚本](scripts/build_lewm.py) 与衍生 object/metadata 在 HF cache 的 `latent-wm-derived/`。只称严格权重加载，尚未数值复现。
+- 官方 LeWM 两 task 的 config/weights 也进入 HF cache；TwoRoom revision `77adaae0bc31deab21c93740d1f8bb947cd0bdec`、PushT `22b330c28c27ead4bfd1888615af1340e3fe9052`。两task均按官方 tiny ViT/JEPA 配方 strict load 303 keys、18,034,478 params；PushT derived object SHA256 `0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048`。[重建脚本](scripts/build_lewm.py) 与衍生 object/metadata 在 HF cache 的 `latent-wm-derived/`。只称严格权重加载，尚未数值复现。
 - 首轮实际硬件 RTX PRO 6000 Blackwell Max-Q，独立单卡任务；不跨硬件合并 timing。raw banks/HDF5/logs 先写 `/tmp/latent-wm-runs/`；完成批次已复制到持久非 git `/home/xiang/.cache/latent-wm-results/<run>/`，结果文件逐项记录 artifact pointer/hash。
 - 工程结果：[TwoRoom](results/E00_E13_E16_20261002_tworoom_engineering.json)、[PushT](results/E00_E13_E16_20261002_pusht_engineering.json)。生成数据的 replay error 为 0，dataset setter 的 factual-suffix precision 单独报告。
 - 原生 [TwoRoom 结果](results/E00_E13_E16_20261002_tworoom_native.json) 包含 E13 离线/实际 GPU 计时/配对闭环与 E16 restore/隔离审计；released checkpoint 训练数据与评估 anchors 的重合尚未核对。
@@ -97,3 +97,15 @@ PushT HDF5 SHA256 `b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d
 原始bank/heads由RTX单卡生成，所有ledgers在hidden文件不存在时密封：ledger SHA256 `c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8`，hidden SHA256 `18106a5f144ead2378827499021bb60e02d366b49b412c4f31486446dcc231a8`。跨授权节点仅stage约41MB压缩base100 pixels/actions缓存+约130MBpublic/hidden bank，避免重复12GB数据传输。base-cache SHA256 `fb46e630ce6d6fcc2fb9ee09346017d723afdbb51bc71627fc4a7360ee11f68b`，manifest逐字段核对。
 
 新seed1/2由[独立pipeline](scripts/independent_acquisition.py)执行，checkpoint仍HF、data local、raw完成后复制持久cache。同进程连做base/bank/methods以摊薄NFS Python import成本；不修改既有环境，不开多节点训练。E00 [1/2/4读数](results/E00_20261002_io_concurrency.json)是指定HDF5 fancy-index读法，不能代替磁盘带宽或多GPU训练测量。
+
+
+### optimizer audit与新批次（2026-10-02）
+
+- CPU optimizer audit：`/tmp/latent-wm-runs/20261002-optimizer-isolation-audit/`，含复现/torch optimizer源码hash；小JSON已进results。旧E16 raw/模型完整保留，公平比较降级；源base checkpoint文件不变。
+- 修复train-only复跑沿用原durable base/bank：seed0 `20261002-E16-base100-s0-e30` / `20261002-E16-acquisition-bank-s0`，seed1/2 `20261002-E16-independent-s{seed}/{base,bank}`；新模型HF `latent-wm-trained/E16_methods_optclone_s{seed}`，raw/完成后durable `20261002-E16-methods-optclone-s{seed}`。
+- E13零训练horizon audit已完成，durable `20261002-E13-horizon-breadth-RTX-s0`，小summary/hash进results；不受optimizer alias影响。
+- E17 raw `20261002-E17-query-proposal-RTX-s0`，head checkpoint HF `latent-wm-trained/E17_query_proposal_RTX_s0`；E18 queue raw `20261002-E18-continuous-adaptation-RTX-s0`。公开Fast object不提供训练episode split；只把新head/calibration split称held-out，released WM未见性未核对。
+
+2026-10-03：E18连续适配`20261002-E18-continuous-adaptation-RTX-s0`与E13动作基`20261003-E13-action-basis-RTX-s0`已完整durable，portableJSON在results。A5 `20261003-E13-commitment-cadence-RTX-s0`真实GPU0与data×compute `20261002-E16-data-compute-RTX-s0`真实GPU1各fresh Python运行；完成后同名durable，后者checkpoints HF `latent-wm-trained/E16_data_compute_s0`。旧paused queue已清理，不重复运行。
+
+2026-10-03最新完成：fair acquisition全部三pipeline、A5共同计划、E17 continuationcost352与E11 observer384均durable同run名；portable config/hash/summary在results。E17三heads及frozen/predicted featurecache存HF `latent-wm-trained/E17_continuation_cost_RTX_s0`，所有原2000-loss histories与observerNPZ traces留raw。GPU0已释放；A6两模型candidate bank源与prereg准备中，LeWM PushT303keys/18M object由官方HFweights strictderive进HF `latent-wm-derived/`，尚无其GPU科学读数。

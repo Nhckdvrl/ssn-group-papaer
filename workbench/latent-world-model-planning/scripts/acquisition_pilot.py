@@ -1,6 +1,7 @@
 """E16 equal-data pilot. Public selection is sealed before any branch executes."""
 import argparse
 import copy
+from collections import Counter
 import json
 import os
 from pathlib import Path
@@ -14,6 +15,11 @@ from module import SIGReg
 from branch_selector import pbb
 
 POLICIES=['NO-ADD','IID','UNIFORM-COMMON-RESET','COVERAGE','GLOBAL-U','TASK-U','PBB']
+
+
+def optimizer_steps(state_dict):
+    """Detach scalar values so the common AdamW step snapshot is immutable."""
+    return tuple((key,int(value['step'])) for key,value in sorted(state_dict['state'].items()) if 'step' in value)
 
 
 def load_base(checkpoint):
@@ -199,7 +205,7 @@ def bank(args):
     dump(out/'complete.json',{'completed':True,'phase':'bank; no acquisition-effect claim'})
 
 
-def train_one(args,policy,base_state,base_cache,base_controls,base_starts):
+def train_one(args,policy,base_state,base_cache,base_controls,base_starts,source_steps):
     out=Path(args.output)/policy;out.mkdir(parents=True,exist_ok=False)
     source=Path(args.bank);ledger=json.loads((source/'selection_ledger.json').read_text())
     torch.manual_seed(args.seed+51000);rng=np.random.default_rng(args.seed+52000)
@@ -226,8 +232,17 @@ def train_one(args,policy,base_state,base_cache,base_controls,base_starts):
     dump(out/'config.json',config)
     (out/'acquisition_pilot_used.py').write_text(Path(__file__).read_text())
     model=architecture(base_state['config']).cuda();model.load_state_dict(base_state['state_dict'],strict=True)
-    optimizer=torch.optim.AdamW(model.parameters(),lr=5e-5,weight_decay=1e-3);optimizer.load_state_dict(base_state['optimizer'])
+    optimizer=torch.optim.AdamW(model.parameters(),lr=5e-5,weight_decay=1e-3)
+    # Noncapturable AdamW keeps CPU step tensors; clone before each method.
+    optimizer.load_state_dict(copy.deepcopy(base_state['optimizer']))
+    begin_steps=optimizer_steps(optimizer.state_dict())
+    if begin_steps!=source_steps or optimizer_steps(base_state['optimizer'])!=source_steps:
+        raise ValueError('Method optimizer must begin at the immutable source steps')
+    config['optimizer_step_counts']={'source':dict(Counter(v for _,v in source_steps)),
+        'begin':dict(Counter(v for _,v in begin_steps)),'parameter_states':len(source_steps)}
+    dump(out/'config.json',config)
     model.train().requires_grad_(True);sigreg=SIGReg(knots=17,num_proj=1024).cuda();log=[];begin=now()
+    actual_steps=0
     for step in range(600):
         ix=rng.choice(starts,128,replace=True);batch=pixels(cache[ix[:,None]+np.array([0,5,10,15])])
         a=torch.tensor((controls[ix[:,None]+np.arange(20)]-mean)/std,device='cuda').float().reshape(128,4,10)
@@ -238,12 +253,22 @@ def train_one(args,policy,base_state,base_cache,base_controls,base_starts):
             reg=sigreg(emb.transpose(0,1));loss=mse+.09*reg
         if not torch.isfinite(loss):raise ValueError('Nonfinite main loss')
         loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),1.);optimizer.step()
+        actual_steps+=1
         if step%100==0:
             log.append({'step':step,'mse':float(mse),'sigreg':float(reg),'loss':float(loss)})
             dump(out/'training.json',log);print(policy,'train',step,float(loss),flush=True)
+    end_steps=optimizer_steps(optimizer.state_dict())
+    if optimizer_steps(base_state['optimizer'])!=source_steps:
+        raise ValueError('Method training mutated the common optimizer source steps')
+    if end_steps!=tuple((key,value+actual_steps) for key,value in begin_steps):
+        raise ValueError('Method optimizer end steps do not equal begin plus actual updates')
+    config['optimizer_step_counts'].update({'end':dict(Counter(v for _,v in end_steps)),
+        'actual_updates':actual_steps,'source_unchanged':True})
+    dump(out/'config.json',config)
     checkpoint=Path(args.model_cache)/f'E16_{policy}_seed{args.seed}.pt';checkpoint.parent.mkdir(parents=True,exist_ok=True)
     torch.save({'state_dict':model.state_dict(),'config':base_state['config'],'manifest':manifest,'policy':policy},checkpoint)
-    dump(out/'train_summary.json',{'seconds':now()-begin,'steps':600,'checkpoint':str(checkpoint),'sha256':digest(checkpoint)})
+    dump(out/'train_summary.json',{'seconds':now()-begin,'steps':600,'checkpoint':str(checkpoint),'sha256':digest(checkpoint),
+        'optimizer_step_counts':config['optimizer_step_counts']})
     anchors=np.load(Path(args.base_run)/'eval_anchors.npz')
     evaluate(model,anchors,mean,std,out,'evaluation',48,args.seed)
     dump(out/'complete.json',{'completed':True,'science_scope':'one exploratory train seed; no seed filtering'})
@@ -251,6 +276,7 @@ def train_one(args,policy,base_state,base_cache,base_controls,base_starts):
 
 def train(args):
     torch.set_num_threads(4);state=torch.load(args.checkpoint,map_location='cpu',weights_only=False)
+    source_steps=optimizer_steps(state['optimizer'])
     if state['epoch']!=30:raise ValueError('Expected 30-epoch common base')
     source=Path(args.bank)
     if not (source/'complete.json').exists():raise ValueError('Branch bank is not complete')
@@ -267,7 +293,7 @@ def train(args):
     else:base_cache,base_controls,base_starts,_=load_training(args.dataset,state['manifest'])
     for policy in args.methods.split(','):
         if policy not in POLICIES:raise ValueError(policy)
-        train_one(args,policy,state,base_cache,base_controls,base_starts)
+        train_one(args,policy,state,base_cache,base_controls,base_starts,source_steps)
         torch.cuda.empty_cache()
 
 

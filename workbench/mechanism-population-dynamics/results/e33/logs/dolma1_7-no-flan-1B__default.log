@@ -1,0 +1,11 @@
+Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
+Warning: Permanently added 'fvcrc13' (ED25519) to the list of known hosts.
+Using the latest cached version of the dataset since gaotang/ParaConflict couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/gaotang___para_conflict/default/0.0.0/d2b097583890081b26762e0caf4067eafff9bab4 (last modified on Fri Oct  2 17:52:29 2026).
+{"seed": "default", "gain_A": {"2": -0.04791584135901461, "4": -0.03568876057732284, "6": 0.47070408578059864, "8": -0.23597912550981492, "10": 0.2973252214727595, "12": 0.6439170345138217, "14": 0.4212152616734479}, "layer": 12, "margin_decl": 3.1045570070760733, "margin_qa": 4.264686257985935, "margin_transplant": 3.6337980628687365, "delta": 0.5292410557926632, "FE": 1.1601292509098617, "delta_first_token": 0.5276129069427649, "FE_first_token": 1.1594491601238648, "KL_qa_decl": 0.4827791896027823, "KL_qa_transplant": 0.249367929790169, "check_zero_noop_maxlogit": 0.0, "check_vec_effect_maxlogit": 1.1471424102783203}
+Exception ignored in: <function ResourceTracker.__del__ at 0x14819f263060>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

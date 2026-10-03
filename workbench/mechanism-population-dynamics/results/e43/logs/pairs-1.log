@@ -1,0 +1,12 @@
+Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
+Warning: Permanently added 'fvcrc13' (ED25519) to the list of known hosts.
+pair c4__default--fineweb-pro__large-aux-3
+pair c4__large-aux-2--falcon__large-aux-2
+pair c4__large-aux-2--fineweb-edu__large-aux-2
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e43_basis.py", line 235, in <module>
+    pairs(a.part)
+  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e43_basis.py", line 138, in pairs
+    f.write_text(json.dumps(pair_stats(cache[a], cache[b])))
+                                       ~~~~~^^^
+KeyError: ('c4', 'large-aux-2')

@@ -240,3 +240,59 @@ seed0全部48个锁定评测anchor、共同base30 checkpoint的native CEM N300/K
 全部三seed完成，[完整config/hash/每seed配对CI](../results/E16_20261002_independent_seeds.json)：NO-ADD=9/19/22，uniform=17/18/15，GLOBAL-U=24/16/23，PBB=19/13/15，分母每组48。GLOBAL-U的对NO-ADD增益=+15/−3/+1起点，PBB=+10/−6/−7；不能拿seed0的episode CI说方法稳定有效。这里是whole-pipeline variation（data、eval、head/acq、optimizer共同随机），不是固定data的3初始化seed；seed0首resume偏差及A100/RTX精度/硬件都保留。
 
 PBB当前v0没有优于GLOBAL-U的证据，global的正增益也不稳定；不关闭R1。后续应扩大**经验类型/利用方式/训练目标/任务复用**的比较，结合近邻的learnability/variance reduction/contrastive objective，而不是多次改变entropy权重。E18反馈/短适配、R2预测对象继续作为独立方法轴。两种首轮具体实现均未显示strong-baseline之外的价值，按用户原始人审条款请人复核下一批科研优先级；尚无paper narrative或状态变更。
+
+### 2026-10-02 数据利用 × 预测目标矩阵（运行前）
+
+推进P04/R1/R2：新经验的价值是否受训练对象限制？不是救PBB。固定seed0 common base30、100基础episodes、已密封uniform common-reset的80×25步经验、全部48目标和原CEM。借用RC-aux公开代码commit `cbdf3786b149df8145d6c7314f32f460d43c9695` 的 `JEPA.rollout_open_loop`，只研究其多步预测组件；不称完整RC-aux复现，不加入reachability/planner head。
+
+矩阵：NO-ADD / UNIFORM × ONE-STEP / TF-LONG / OPEN-LONG，共6方法。每方法600 AdamW更新/b128/lr5e-5/WD1e-3/clip1/bf16，重新加载相同model与optimizer；训练seed51000/52000、全部48评测seed0，不选幸存方法/目标。训练均读6帧(0,5,10,15,20,25)、25真实动作；基础episode只用完整不跨边界clip，每branch一个完整25步clip，无假future或padding标签。UNIFORM每batch固定13/128 branch、115/128 base；NO-ADD全部128 base。该明确mix/clip规则不同于v0按所有合法短clip均匀采样，必须重跑全部对照，不能直接与v0分数归因比较。
+
+ONE-STEP保持原3 shifted-target MSE与前4帧SIGReg。TF-LONG、OPEN-LONG均为原MSE + 0.5×三未来目标loss + 0.09×六帧SIGReg；目标为初始3帧后15/20/25步，权重[1,2,3]/6。TF使用真实滑动history，OPEN逐步回填预测history、不detach。TF/OPEN同labels/regularization/权重，是区分额外监督与递归训练的关键控制；ONE与LONG的差值不单独归因recurrence。全部encoder照常训练，禁止跨step缓存其latent；本实验匹配gradient steps，记录实际训练时间/预测calls，不声称等墙钟。
+
+阳性对照：已跑通released/native cost；本次运行前再核对官方RC递归与独立展开、首步TF/OPEN一致，训练finite/gradient norm，所有方法native CEM正控。主读数为48 held-out closed-loop success、paired help/harm与episode bootstrap CI；train MSE只作训练诊断，不当机制证据。噪声地板：一个探索train/data seed，原seed0 resume限制继承，48目标CI不能代替独立train-seed CI。
+
+决策表（跑之前写）：OPEN胜TF且跨两data条件有差异→确认数据×目标并扩seed/task；TF与OPEN相当→收益可能来自更多监督/regularization，不称递归特效；两者不胜ONE→保留null，转向经验类型、预测结构或任务复用；所有模型仍弱→补原生训练配方/data regime而非包装少数据corner。raw `/tmp/latent-wm-runs/20261002-E16-objective-matrix-RTX-s0`，完成后复制持久cache，模型仍在HF cache。单个授权空RTX slot执行6个独立方法，现有E18另卡并行。
+
+
+### 2026-10-02 optimizer修复与重跑（运行前）
+
+旧acquisition三seed及未完成objective matrix受CPU AdamW step alias影响，严格方法判断撤回，见[校对](../results/E16_20261002_optimizer_audit.json)。旧raw/模型不覆盖，六方法partial作废为公平比较证据、保留故障。每方法deepcopy optimizer state并记录begin/end/source steps，源state不可变断言。
+
+重跑锁定：原seed0七策略、seed1/2四策略，原base checkpoint/bank/base episodes/eval anchors、每方法600updates与原training seeds完全不变；只修optimizer隔离并使用不同output/model-cache。base30初始step seed0/1/2=1680/1650/1680（manifest决定clip数，不能强行设相同），不重购simulator数据、不重训base或bootstrap。先seed0七策略，再seed1/2，全保留；修复后统一bank audit需重算，否则旧audit只描述受污染模型。
+
+六方法矩阵用 `20261002-E16-objective-matrix-RTX-s0-retry1` / HF `E16_objective_matrix_RTX_s0_retry1`重跑全部六方法。同先前定义与seed、clip/frame/action、label/regularizer、eval不变。**OPEN-LONG从当前context的第10步预测第15/20/25步，最长forecast=15steps，不是部署25steps监督匹配**；原25step clip名称只指素材长度。输出校对断言、finite梯度、native正控和全部48goal结果。matched gradient steps≠matched wallclock；仅一探索seed，后续扩data regime/native recipe/第二task，不局部救PBB公式。
+
+
+### 2026-10-02 P04：数据量 × 训练计算（运行前）
+
+为区分有限经验、训练不足与方法效果，不把base100 pilot当官方充分训练。新BASE100/BASE1000均fresh同random architecture init（seed0）与fresh AdamW；BASE100继承exact旧100、BASE1000 nested加入900 len>36 episodes（extra seed40000，排除旧native12/eval48/base100），同旧48evalanchors及其hash、固定旧base100 actionnorm，不重新挑目标。继承同合法clip `range(n-20)`，不混入clip修复、scheduler或normalizer改变；各case独立RAMcache，1000预计约13GiB。
+
+同原history3/all3 MSE+.09 SIGReg(17knots/1024proj)、AdamW5e-5/WD1e-3/b128/bf16/clip1/constantLR，**不是官方Lightning/paper配方复现**。每条件精确5650 updates，step1680/5650为主数据×compute四格；560快照为次读数（100条件exact10epochs，1000条件5650是该nested数据的10epochs，clip计数运行前核对）。每个快照全部48native CEM闭环，不按中途读数取消/增训；eval后恢复训练CPU/CUDA/NumPy RNG，使eval不改变后续优化。模型存新HF `E16_data_compute_s0`，old base不覆盖，不resume；source/eval/normalization/init/checkpoint hash及optimizersteps、VRAM/I/O/wall-clock保存。
+
+released LeWM最后在同48起点作正控，沿其full-dataset action statistics；不是同训练data公平方法基线，只用于harness/能力参照。positive controls为同初始weights digest、wholeepisode/norm/eval一致、native scoringallclose、loss/gradientfinite。primary成功/help-harm和episodepairedCI，训练MSE仅诊断；单init/data seed，不能升级科学主张。
+
+决策表（跑之前写）：1000在matchedupdates已改善→数据覆盖/利用更重要，下一批在较强dataregime确认acquisition/objects；只有更多updates改善→先补optim训练，再评idea；双方仍弱且released强→官方resolvedrecipe/representation/normalization作对照，不能把欠训练失败当方法边界。原paper每task10epochs、repo默认100以及当前HF history设置不同；分别报告，不冒称原数值复现。raw `20261002-E16-data-compute-RTX-s0`，GPU0在E18后，独立单GPU、不用DDP。
+
+运行前placement补记（2026-10-03）：检测本机GPU1释放，data×compute由GPU0等待队列移到GPU1独立运行，与A5/GPU0及optimizer-fix/GPU3并行；数据/目标/seed/updates/CLI不变。free-GPU wrapper再次确认，模型HF缓存、数据node-local。
+
+### Optimizer-isolated seed0：全部七方法实际读数
+
+[完整config/hash/source-stepguards/pairedCI](../results/E16_20261003_optclone_seed0.json)：NO-ADD/IID/UNIFORM/COVERAGE/GLOBAL-U/TASK-U/PBB=7/18/32/27/19/13/20，各48；所有297optimizerstates从1680开始到2280、600updates、source不变。UNIFORM对NOADD+25/48、pairedepisode95%CI[.3542,.6672]；PBB对UNIFORM−12/48、CI[-.4172,-.0625]。这是一完整探索pipeline seed，不是独立trainseedCI，另外两seed继续全部原方法，不停止/筛种子。simplecommon-reset是强baseline而非新方法；下一步数据×compute与数据×objective检验支撑范围/利用，不局部优化PBBentropy。旧被污染结果仍作废为因果证据。
+
+### Optimizer-isolated全部原三pipeline完成
+
+[完整结果](../results/E16_20261003_optclone_independent_seeds.json)：NOADD7/16/19，uniform32/15/18，GLOBAL-U19/20/27，PBB20/11/13，各48；全部source1680/1650/1680→+600 guards通过、未筛种子/方法。GLOBAL-U三个对NOADD均+12/+4/+8，PBB+13/−5/−6；uniform+25/−1/−1。三pipeline共享recipe但data/eval/init变化，是whole-pipeline variation，不是固定data trainseedCI。uniform首seed优势未稳定；GLOBAL是需要强基线确认的成熟采样参照，PBB v0无稳定收益。当前native evaluator还有P10动作接口限制；data×compute及sixobjective全部继续，不能只救PBBscore。
+
+### 数据×训练计算完整读数与曝光控制（2026-10-03 GPU前修订）
+
+[完整六快照+released正控](../results/E16_20261003_data_compute.json)：BASE100560/1680/5650成功7/13/38，BASE1000为12/19/21，released39，各48。共同初始化/held48/固定base100norm；100条件5650=100.893epochs，1000条件5650=10epochs，不能称少数据更好或等效released。独立audit CI在结果文件补记，原raw结果不重写。
+
+下一已锁控制P04/R1：BASE1000_u5650在565batches×10整epoch末，保存fulloptimizer/CPU-CUDA-NumPy RNG；严格resume同constantLR/all3+.09SIGReg/同128bf16/同数据norm/held48，snapshot总16950=30epochs、56500=100epochs。先问高data条件是否训练曝光不足，不同时换scheduler/globalnorm/labels。BASE1005650作为近似100epoch参照，明确不是exactepochmatch；原baseline不重训、不删任何已完成snapshot。这里只是充分训练强baseline建设，不预设paper叙事。
+
+正控：sourcecheckpointSHA/strictstate/297steps均5650，deepcopy optimizer source不可变与end=5650+actualupdates；10epochpermutation NumPy state精确再生/nextorder相同，CUDA/CPU RNG还原、isolatedeval保留；new HF目录与raw/durable均不存在。primary原48 success/pairedhelp-harm/CI与trainupdates/wallclock/epoch分别报告，保留源6snapshot与released；max2snapshots、1exploratoryseed/独立授权GPU1。额外环境仅评测不采新data，raw `20261003-E16-data-exposure-RTX-s0`，HF `latent-wm-trained/E16_data_exposure_s0`。决策表（跑之前写）：large充分训练追上→旧equal-update差是optimization/exposure竞争解释，不重命名新规律；large仍弱→查data composition/regularizer/训练对象，方法应面对BASE10038强base，不救原selector；large明显改善→以其checkpoint扩第二task与公平data acquisition/预测目标。代码data_exposure_continue.py正CPU准备，root审后才GPU，当前无新读数。
+
+曝光控制最终CPU/root审（GPU前）：独立145行、source SHA c804d278c214e7e0e014d4ab1433a938ccca8edd730c53000da43ab4f84010b1，297states5650/deepclone不可变、72359clips/565batches、模型manifest/norm/48anchors全通过；10epochs RNG和nextorder精确再生。script SHA e5e136b4e2e00cbd2cd435e76efce51d3d975ff8ff1f157b3b2fe6f9f05ad132。源未保存NumPy globalstate但训练shuffle用独立Generator已精确恢复，全局沿原seed0明示；CUDA/CPU restored。GPU1已空，free-wrapper再复核并真实context，启动两固定stops，不重写原6snapshot。
+
+### Data×prediction-object matrix完整读数
+
+[六格修复重跑](../results/E16_20261003_objective_matrix.json)：NO-ADD ONE/TF-LONG/OPEN-LONG=21/14/16，UNIFORM=11/24/19，各48，全部297steps1680→2280/source不可变。uniform−no在ONE为−10/48 CI[-.375,-.0417]，TF为+10/48 [.0625,.3542]，OPEN+3/48 [−.1042,.2292]；TF/OPEN直接差CI均含0。仅一个pipeline、有额外label/正则frames与FLOPs差别；ONE(4frames)、LONG(6frames)不是独立horizon变量，最大open-loop forecast15而非部署25；6methods均未超过充分训练100条件38/48。交互读数只是新线索，不登记普遍data-loss原则，不能筛ONE/TF来救叙事。

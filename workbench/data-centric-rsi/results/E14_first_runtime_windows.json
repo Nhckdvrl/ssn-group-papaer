@@ -1,0 +1,105 @@
+{
+  "experiment": "E14",
+  "utc": "2026-10-02T17:38:09.480343+00:00",
+  "node": "fvcrc12",
+  "run": "init_source_only_fresh_s29",
+  "status": "actual_training_in_progress",
+  "observed_windows": 59,
+  "first_window": {
+    "window": 0,
+    "optimizer_step": 0,
+    "microbatch_n": [
+      127,
+      137,
+      143,
+      23,
+      28,
+      50,
+      199,
+      9,
+      119,
+      111,
+      26,
+      89,
+      8,
+      13,
+      455,
+      16
+    ],
+    "num_items_in_batch": 1553,
+    "expected_n": 1553
+  },
+  "all_observed_actual_labels_equal_CPU_expectations": true,
+  "runtime": {
+    "model_accepts_loss_kwargs": true,
+    "accelerator_gradient_accumulation_steps": 1,
+    "trainer_gradient_accumulation_steps": 16,
+    "use_seedable_sampler": true,
+    "data_seed": 29,
+    "compute_loss_func_is_none": true,
+    "label_smoother_is_none": true,
+    "forward_signature": "(input_ids: torch.LongTensor = None, pixel_values: torch.FloatTensor = None, attention_mask: Optional[torch.Tensor] = None, position_ids: Optional[torch.LongTensor] = None, past_key_values: Optional[List[torch.FloatTensor]] = None, inputs_embeds: Optional[torch.FloatTensor] = None, vision_feature_layer: Optional[int] = None, vision_feature_select_strategy: Optional[str] = None, labels: Optional[torch.LongTensor] = None, use_cache: Optional[bool] = None, output_attentions: Optional[bool] = None, output_hidden_states: Optional[bool] = None, return_dict: Optional[bool] = None, cache_position: Optional[torch.LongTensor] = None, logits_to_keep: Union[int, torch.Tensor] = 0, image_sizes: torch.Tensor = None, skip_logits: Optional[bool] = None, **lm_kwargs) -> Union[Tuple, liger_kernel.transformers.model.output_classes.LigerLlavaCausalLMOutputWithPast]",
+    "forward_module": "liger_kernel.transformers.model.llava",
+    "optimizer_initially_none": true,
+    "lr_scheduler_initially_none": true,
+    "initial_global_step": 0,
+    "training_arguments": {
+      "seed": 29,
+      "data_seed": 29,
+      "num_train_epochs": 1.0,
+      "max_steps": -1,
+      "per_device_train_batch_size": 1,
+      "gradient_accumulation_steps": 16,
+      "learning_rate": 2e-05,
+      "warmup_ratio": 0.03,
+      "weight_decay": 0.0,
+      "bf16": true,
+      "gradient_checkpointing": true,
+      "dataloader_drop_last": false,
+      "group_by_length": false
+    },
+    "packages": {
+      "versions": {
+        "transformers": "4.57.6",
+        "liger-kernel": "0.7.0",
+        "accelerate": "1.13.0",
+        "torch": "2.8.0"
+      },
+      "sources": {
+        "Trainer": {
+          "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/trainer.py",
+          "sha256": "c3eac8fa28bda6330fd4dee131e7fe7d9bdc0fa35d9de944fce52cb97b379bab"
+        },
+        "Accelerator": {
+          "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/accelerate/accelerator.py",
+          "sha256": "85fe1ad1f0061598313f8566868e9f53434ac9c1d5e24089c3d03da772d40f23"
+        },
+        "SeedableRandomSampler": {
+          "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/accelerate/data_loader.py",
+          "sha256": "43ed3268025110162def628e71dd6213cee0fdc47481865f99d8b129718673b1"
+        },
+        "prepare_data_loader": {
+          "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/accelerate/data_loader.py",
+          "sha256": "43ed3268025110162def628e71dd6213cee0fdc47481865f99d8b129718673b1"
+        },
+        "LigerForCausalLMLoss": {
+          "path": "/home/xiang/.venvs/data-centric-rsi/lib/python3.12/site-packages/liger_kernel/transformers/model/loss_utils.py",
+          "sha256": "b4d6c2f7867809ada696fdcc4619ea7e927bb0173931926db75fa6ccc3094f53"
+        },
+        "LigerLlavaForward": {
+          "path": "/home/xiang/.venvs/data-centric-rsi/lib/python3.12/site-packages/liger_kernel/transformers/model/llava.py",
+          "sha256": "95c7d0931cf6494b560a446507516c7adef6ee26171441e60eee0ad6ece37bff"
+        }
+      },
+      "normalization": "E12 unchanged: Trainer forwards num_items_in_batch; Liger sum/N over the 16-row accumulation window.",
+      "runtime_observation": "get_batch_samples trace checks actual denominator; no additional forward or RNG draw"
+    }
+  },
+  "source_sha256": "cf6456e11b2518af38214480ea80731de8118e2262be684fad389a2daf63ab1e",
+  "selection_manifest_sha256": "b649fa16fd8954caa1e90884407b257dc47b5b1ebf1ff08b1867412cb626664d",
+  "expected_full_steps": 625,
+  "expected_full_labels": 1078803,
+  "terminal_completion_present": false,
+  "used_branch_has_runtime": false,
+  "note": "Observed prefix is not625 completed optimizer steps or downstream utility. Failed used preflight cost remains in queue ledger."
+}

@@ -1,5 +1,7 @@
 # Sasano Taste Search
 
+> **本轮入口（2026-10-03）：** [领域比较与推荐](TERRITORY_SHORTLIST_2026-10-03.md) · [近期顶会扫描与覆盖边界](RECENT_CONFERENCE_SCAN_2026-10-03.md) · [Sasano 原始意见复核](SASANO_EVIDENCE_2026-10-03.md)。最新人类要求：**先按 Sasano taste 找自然、值得知道的问题，再在其中选择用户可能喜欢的题材**；不因游戏/视频兴趣把它们排前，不默认传统语言学，也允许表征、理解、可解释性等。视频暂非首推；不据本轮搜索自动开线或改状态。
+
 > **v3 说明（2026-09-30）：** Sasano 品味（自然、清楚、结果本身值得知道、一个 RQ 对一个 finding、避免“そうだよね”、先验证对象存在）继续作为 **ACL 系论文的叙事与判断标准**。变化在于它**不再是题目生成器**：
 > - 不再用概念二分（“A 和 B 理论上不同，问模型会不会区分”）或 “X ≠ Y” 测量模板直接生成题目——这是 K061–K161 大批桌面阵亡的来源（诊断 §2）。
 > - 题目应在 workbench 驻留中从稳定的观察里出现，再用本页标准判断与打磨叙事。
@@ -8,7 +10,7 @@
 
 **Role:** identify a problem territory worth exploring **according to Sasano's own research taste**.
 
-This lane is intentionally narrower than `../our-taste/`. Do not dilute it with our preferences for trendy methods, benchmark gains, agents, RL, or whatever we personally want to build.
+This lane prioritizes Sasano's standards for natural questions, informative findings, and credible evidence. Within that constraint, respect the user's interests and resource fit; agents, representation analysis, and interpretability are eligible subjects, not automatic endorsements or exclusions. Do not substitute a trend or a benchmark gain for the research question.
 
 Primary calibration sources:
 1. Sasano's actual meeting comments and Slack judgments;

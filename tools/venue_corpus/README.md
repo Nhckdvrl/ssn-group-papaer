@@ -9,7 +9,7 @@
 | ICLR 2026 | 19,813 | **含 14,455 篇拒稿/撤稿**及平均审稿分 → 可做 accepted-vs-rejected 校准 |
 | ICLR 2025 | 11,672 | 含拒稿/撤稿 |
 | ICML 2026 / 2025 | 6,341 / 3,527 | 接收论文（2025 含少量公开拒稿） |
-| NeurIPS 2025 / 2024 | 6,212 / 4,786 | 接收论文（含少量公开拒稿）；**NeurIPS 2026 名单尚未公开**，出来后重新 `fetch.sh` 即可 |
+| NeurIPS 2025 / 2024 | 6,212 / 4,786 | 接收论文（含少量公开拒稿）；NeurIPS2026 官方 event 目录已公开，尚未并入本 corpus，见下方局限 |
 | ACL 2026 / 2025, EMNLP 2025 / 2024, NAACL 2025 | ~7.7k | **只收 main（long/short）**；Findings、EACL、industry、demo、SRW、tutorial 全部排除（组内规定：档次不够，不作校准） |
 | CVPR 2025, ICCV 2025 | 5.6k | 接收论文 |
 
@@ -46,6 +46,7 @@ python3 query.py show "Multi-Agent Teams Hold Experts Back"
 
 ## 已知局限
 
-- NeurIPS 2026（2026-09-24 出结果）尚未公开完整名单；在此之前用作者自报（GitHub README/PR “Accepted to NeurIPS 2026”、arXiv comment）补充。
+- **2026-10-03 更新：** [NeurIPS2026 Downloads](https://neurips.cc/Downloads/2026)已公开，本次抓到9,230条event，混有非main内容，不能作为main接收总数。带来源的本地快照在`data/neurips2026_directory_2026-10-03.json`（不进git）；单篇track未全核、PaperCopilot `nips2026.json` 当时404，因此未覆盖已有corpus。目录收录、作者自报与正式主会proceedings分别标注，待上游有完整分轨数据再用`fetch.sh`/`build.py`重建。
+- 只有具有较完整接收/拒稿分母的ICLR切片可比较接受比例；以接收列表为主的NeurIPS/ICML的accepted/listed不是会场接收率。切片比例不能单独证明拥挤程度或拒稿原因。
 - 最新 arXiv 不在语料中：环视领域时仍需结合 arXiv / awesome 列表（见 `library/` 各题材页的来源列表）。
 - 摘要线索（“we propose/find”）是粗粒度信号，只用于比较分布，不用于判断单篇论文。

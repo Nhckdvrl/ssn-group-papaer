@@ -1,6 +1,6 @@
 # E13｜Planner-Stage Multi-Fidelity：候选筛选与高保真重评
 
-- **状态：** RUNNING；TwoRoom A0/A1 已执行，接续 PushT 原生数据。
+- **状态：** RUNNING；两任务A0/A1、长短目标A2已完成，接续预测时域/搜索广度比较。
 - **对应：** I08 / R2。
 - **来源：** S7–S9/S13；Fast-LeWM与DeepJEPA是最直接近邻。
 - **阳性对照：** 对同一candidate bank，full high-fidelity scoring定义“高保真elite”参照；cheap predictor必须在短/易任务上有合理top-M recall。
@@ -236,3 +236,66 @@ CEM 对下一轮 proposal distribution 的更新只消费 elite candidate action
 ### A2 factual controls 与计时混杂（补充运行前）
 
 对全部256锁定的task/goal-range anchors逐一从public setter执行官方factual suffix，保留初始RGB、各状态维度的物理单位误差、wrapped角度及native success。25/75步全部保留，不依据结果筛评测起点。PushT只保证公开restore变量，不声称恢复完整physics memory。A2开始时GPU空闲，后续发现其他进程共卡；闭环成功读数保留，耗时降为非独占测量，不能用于speedup主张。独占timing需另跑。
+
+### A3｜想象时域 × 搜索广度（2026-10-02，运行前）
+
+推进P05/R2：长目标下，把计算花在更远的动作后果还是更多短候选？复用两任务released Fast及锁定g25/g75各前32起点，不筛失败；三方法H25-N300、H25-N900、H75-N300，合计384 episodes。均β=0/terminal latent cost/K30/30CEM，每次真实执行25steps后用当前pixel重规划，g25/g75的实际环境预算分别50/150。不改变数据/encoder/planner目标，也不把更长预测自动叫高保真。
+
+H75把同一Fast的25步direct predictor递归3次；H25-N900与H75-N300每轮candidate-transition evaluations同为27,000，但实际batch/wall-clock可能不同，分开报。训练0、无router；native H1/H3正控及既有factual suffix恢复限制保留。每episode paired搜索seed66000+j*100+decision，reset seed66000+j；相同goal/method重放起点，horizon维度不同不能声称same candidate bank。source/config/helper/hash与各次nvidia occupancy记录写raw。
+
+主读数：task×goal range的closed-loop success/paired help-harm与episode-bootstrap CI，原生最终distance和实际env steps；附计模型calls/候选×transition工作量与完整规划time。仅一个released checkpoint/task，32起点CI不是训练泛化证据。决策表（跑之前写）：H75胜H25-N900→长后果信息值得建更好的预测对象；H25-N900胜→优先改善候选/模型对长时预测的可用性，不盲加horizon；两者task-dependent→发展可复用结构/代价，而非挑task包装；都弱→对齐训练对象/goal geometry/任务代价等独立方法轴。raw `/tmp/latent-wm-runs/20261002-E13-horizon-breadth-RTX-s0`，完成自动复制持久cache；与E16 objective matrix分空卡运行。
+
+
+### A3实际结果（2026-10-02，全部384episodes）
+
+[完整config/hash/controls/summary](../results/E13_20261002_horizon_breadth.json)。H25N300/H25N900/H75N300，每组32：TwoRoom25=28/31/17、75=19/25/8；PushT25=31/31/5、75=6/7/0。H75−H25N300配对CI依次[-.5,-.1875]/[-.53125,-.15625]/[-.9375,-.65625]/[-.34375,-.0625]；没有把长预测直接当高fidelity。N900短与N300三macro的每轮candidate×transition相等，实际时间/完整episode计算不同。native allclose maxabs导航1.83e-4、操作1.53e-4，不声称exact0。零训练，不受E16optimizer问题影响。
+
+解释限于此direct-prefix frozen backbone/terminal latent cost/CEM：递归误差、cost geometry、增加动作搜索维度都可能解释；Planning Limits在别的backbone/score上长rollout有益，不能推出“long horizon无价值”。下一步query proposal/cost或预测对象训练提供不同设计，不局部救refinement。
+
+
+### A4：action trajectory parameterization强对照（运行前，2026-10-03 JST）
+
+推进P05/R2：E17 goal-shuffled proposal几乎同正query，增益可能来自generic action prior/搜索结构，不能归因query。继承经典temporal action parameterization；iCEM的temporally correlated sampling属于成熟方法，不声称发明smooth planning，不称本prototype完整iCEM复现。此比较改变优化器动作表示，冻结WM/cost/query信息，和prediction fidelity、预测对象训练构成竞争设计。
+
+同E17两Fast checkpoint、prepared两strata前16、seed68000、goal25/75各≤50/150envsteps，每25真实steps反馈，全部64anchors×4methods=256episodes。ZERO25-N300/ZERO25-N900 native50dim独立actions；LINEAR5-N300 native10dim（5×2knots线性interpolate成25×2，align_corners=True）；CONSTANT1-N300 native2dim repeat25。CEM H1/actionblock=k、K30/30iteration、initmean0/std1，cost输入用同exact normalized transform展开为原25真实动作序列、native MacroCost与fullsource actionnorm不变；elite-mean系数执行前用同transform。K5插值改变action-space支持与per-step方差/相关性，不假称equal exploration covariance。
+
+正控：k25 identity、k1repeat、k5实际SWM CEM candidate/返回dimensions，cost执行transform一致，零候选各basis展开一致；native modelcost allclose；同lockedgoals，不挑成功episode。每anchor固定随机方法顺序，同decision seed；primary分task/range success、vs ZERO300/900的help-harm与episodepaired bootstrap CI；actualwallclock/candidatecalls/actionparamdim/realsteps分别计，不把params少直接称更少WM compute。
+
+决策表（跑之前写）：generic低维结构已胜learnedproposal→升级为强baseline，原query增量重定位；只有queryproposal有效→补state-only head和更强训练；simplebasis仍弱→保留null，cost/预测对象/目标alignment实验继续。单releasedWM/16episodes条件CI，不是新论文或unseen WM episode证据。raw `20261003-E13-action-basis-RTX-s0`，E18结束后GPU0、data×compute之前，零训练。
+
+
+### A5：共同初始plan的执行承诺/重规划频率（运行前）
+
+对应P05/P08、R2/R5（R4是竞争解释，不预选）：E18频繁真实反馈FROZEN名义PushT5/16 vs E17整25执行14/16，但plannerseeds不同，需要公平同初始plan对照。先排除经典warm-start/优化重启，不把已有MPC原则称创新。
+
+锁两Fast/同preparedg25/g75各前16/nominal；SEED78000，全部64anchors×4methods=256episodes，budget50/150 primitive steps。每anchor真实初始image/goal一次N300/K30/30/H25 CEM得到共同normalized25×2plan（seed78000+j*100），method复位同起点、首次执行同plan的5/10/25 prefix，早成功全保留。EXEC5-COLD / EXEC10-COLD / EXEC25-COLD / EXEC5-SHIFT-WARM。后续真实当前image重新encode、同goal/N300/H25；每decisionseed78000+j*100+steps//5。COLD新solver/initNone；WARM初始mean为previous normalizedplan向前移本次已执行5步，尾5补normalized0（不称物理zero），[1,1,50]；sampling std1/原native eliteupdate不变。budget末尾execute min(prefix,remaining)。
+
+primary分task/range成功与vs EXEC25的paired help-harm/bootstrapCI；native distance/搜索次数/真实steps/模型calls/encode与wallclock另列。每轮预算相同但更密cadence可用更多总compute，不能说equal-totalcompute/wallclock。正控公共plan源码/hash、最初state/pixel replay一致、shift/pad/nativeinitshape与cost执行一致；不筛目标/方法，不偷偷让warm看到未来groundtruth。
+
+决策表（跑之前写）：warm修复cold差异→提高所有恢复方法的强MPC baseline，不能把冷重启伪影写成新feedback机制；不同commit仍稳定影响utility→扩两seed/backbone，分辨优化、planned tail、feedback表示/hidden velocity；无差→保留旧跨run差异未复现，转向data/objects/querycost，不救narrative。是经典强对照与方法生长pilot，尚无paper claim。raw `20261003-E13-commitment-cadence-RTX-s0`，A4后GPU0，先于已锁data×compute；data实验不会取消，只有执行顺序改变。
+
+### A4完整读数（2026-10-03）
+
+[完整config/hash/controls/summary](../results/E13_20261003_action_basis.json)，256episodes/16,539真实steps；ZERO300/ZERO900/LINEAR5/CONSTANT1，导航近=13/15/14/8、远=10/14/14/9；操作近=14/16/15/7、远=3/4/3/0，每组16。LINEAR5导航远相对ZERO300 +4/16，pairedCI[-.0015625,.5]；与ZERO900同14个成功但help2/harm2、CI[-.25,.25]，不称等效。操作远未改善。CPU原生k25/5/1各30costcall、展开input50dim/return50/10/2全PASS；nativecost最大abs1.83e-4。经典support/方差/相关性改变，单plannerseed，无novelty/WM未见episode/墙钟加速主张。后续不再局部调knots救故事，A5共同初始plan与data×compute分别检验部署接口和训练条件。
+
+### A5全部实际读数
+
+[完整256episodes](../results/E13_20261003_commitment_cadence.json)，同commonplan/state/pixel初始误差0。EX5/EX10/EX25/EX5warm：导航近10/9/13/12、远7/6/10/11；操作近5/3/14/4、远2/0/3/2，每组16。操作近warm−EX25=−10/16、pairedCI[-.875,-.375]；warm并未修复丢失，不支持单纯coldrestart解释。已知terminal25score/execute5时间失配（S24）与反馈latentstate/optimizersearch是竞争解释，不能直接说velocity遗忘或feedback普遍有害。导航还有physicalclipping但scoringraw的接口混杂。R3cost（已补execution动作评分）与R4固定cadence observer均已锁卡，保留母问题不把cadence原理改名新贡献。
+
+### A6：Fast screen → released LeWM reference（2026-10-03，GPU运行前）
+
+推进I08/R2/P05。A0同checkpoint的self-consistency并不等于更可靠的动力学；A2增加一致性评分未改善utility。现在直接测试两种预测对象的candidate筛选是否互补，不再调self-consistency系数。继承Fast直接action-prefix与LeWM递归预测，后者只称reference，不预设其为真值或更高质量；各自表示的latent distance不能跨模型相减。
+
+两个冻结released checkpoint、各自encoder/goal/actionnorm，same physical candidate bank。prepared两task×g25/g75前16=64起点，SEED81000+j*100；每anchor从公开state复位得到一张真实current image和同goal image，不输入HDF5过去图像/hidden velocity。官方LeWM HF history capacity3不是要求3张真实输入，原生get_cost允许T1；递归ctx1→2→3，5个5-step macro共25真实步。Fast为同current直接25-step prediction。TwoRoom双方score physical clip[-1,1]后的实际动作，PushT双方identity；CEM保留raw normalized elite mean/update，不把score修复混成改变优化器。Fast N900/K30/30 native CEM，固定捕获iteration15的900候选及其physical action序列，不按LeWM结果重新选bank。
+
+先分两个fresh Python phase避免Fast/LeWM同名pickle module冲突：Fast产生bank与cheap terminal costs；LeWM仅读取相同bank、缓存current/goal编码并用5-step递归score。cheap排名TOP与固定随机RANDOM promotion分别取10/20/30/50%，参考elite K30。主读数为参考elite recall、所选动作与LeWM全bank argmin一致率、LeWM自身cost内selected regret、实际promotion fraction；按task/range汇总episode bootstrap CI。原始cost、rank、candidate IDs、每次promotion均保存。LeWM cost regret不是环境selected-action regret，也不是跨latent MSE。
+
+陽性对照：两个checkpoint strict keys/hash、相同physical candidate SHA、current pixel/reset误差0；LeWM T1 cached recurrence与native get_cost全候选/小batch allclose、六预测frames；无训练/goal未来/branch outcome；cost为finite且batch/subset评分一致。噪声地板：单released checkpoint/单候选seed/16anchors条件CI、预训练episode未见性未知、PushT公开restore边界。真实timing仅在独占空GPU，同步CUDA、warmup后full与selected batch各8次重复，编码时间另列；calls比例不冒称墙钟加速。
+
+决策表（跑之前写）：TOP在20–30% calls保持≥90% reference elite→进一步测同bank真实candidate后果或同预算closed-loop，只有reference确实改善控制才发展Elite-Preserving CEM；cheap/reference差异大且TOP recall低→考虑共享双head/决策校准/sentinel，不能从一个bank关闭R2；差异小→测试更好的预测对象/训练与任务cost，不包装无价值refinement。保持全64anchors，不筛方法或成功case。新源two_backbone_bank.py，raw `20261003-E13-two-backbone-bank-RTX-s0`，PushT derived object放HF latent-wm-derived并记录strict metadata。GPU前仍需CPU原生controls/root审阅；不依赖DeepJEPA未release代码，不新增大framework。
+
+A6最终GPU前补记：capture_call_index15为0-based第16次，非1-basediteration15。root全文审200行，两个fresh CPU真实nativecost控PASS（LeWM差0/current1+predicted5frames；Fast max6.1e-5且allclose），原生N900/K30/30捕获[1,900,1,50]、expert sourceprefix仅用于控、不加candidate、all64预定bounds有限。两phase raw/durable独立basename `20261003-E13-two-backbone-fast-RTX-s0` 和 `20261003-E13-two-backbone-reference-RTX-s0`，避免通用bank目录冲突；script SHA c8ab31af3954c83824029c3278b86f7b988d2fbd0759ae9d07f047c0ab89eb05。4metrics保存2000bootstrapCI。GPU0已空，将由free-wrapper复核后运行；此时尚未GPU读数。
+
+A6工程重试（未有reference科学结果）：Fast64bank完整sealed/durable；LeWMphase在import sklearn失败，旧reference failure与used源码保留。仅在isolated `/home/xiang/.cache/latent-wm-python-deps/sklearn-1.5.2` 安装scikit-learn1.5.2/scipy1.13.1/joblib1.4.2/threadpoolctl3.5.0，不修改正在运行的venv或NumPy/torch；确认导入后PYTHONPATH限定新进程，same sealed bank/source/seed/normalization formula，raw重试独特 `20261003-E13-two-backbone-reference-RTX-s0-retry1`，不能把import failure算method负结果。
+
+重试前精度补记：首isolated安装的target复制阶段被提前import生成的pycache打断（shutil FileExistsError），失败log保留；改用节点local `/tmp/latent-wm-python-deps/sklearn-1.5.2-complete` 全部安装退出0后再import，四包版本与NumPy1.26.4核对，完整CLI/LeWM入口预控仍在完成。64bank独立hash/seal/源审计通过、均900不同physical候选；Fast部分scores有ties，ID不同不是质量差。保存promotion IDs并核对实际小batch参考评分与全900评分：仅timings/scorer新增诊断，producer/Reference/native_check/physical/normalize AST与sealed used完全不变，CPU45call/tie/fail-halt控通过；新source SHA `c0cfbfdf78cc53aea37bad293e18f51eb3bf1a6fcddc129483b85801fa37acb1`，旧bank不重生。依旧只测候选argmin/reference ranking，不是CEM最终elite-mean动作；TwoRoomclip不可逆，旧bank不能重建rawelite参数。完整GPU参考通过前无新读数。

@@ -1,0 +1,50 @@
+{
+  "experiment": "E13",
+  "revision": "evaluation v2 prelaunch read-only probe",
+  "capture_time_utc": "2026-10-02 17:38:11 UTC",
+  "judge_package_probe": {
+    "node": "fvcrc20",
+    "python": "/home/xiang/.venvs/vllm023-cu128/bin/python",
+    "package": "vllm",
+    "version_full": "0.23.0+cu129",
+    "version_base": "0.23.0",
+    "probe": "importlib.metadata only; no torch import, GPU smoke or package install"
+  },
+  "local_training_node_eval_assets": {
+    "node": "fvcrc13",
+    "eval_python_exists": false,
+    "data": {
+      "HallusionBench": {
+        "exists": false
+      },
+      "LLaVABench": {
+        "exists": false
+      },
+      "MMBench": {
+        "exists": false
+      },
+      "MMMU_DEV_VAL": {
+        "exists": false
+      },
+      "MMStar": {
+        "exists": false
+      },
+      "MMVet": {
+        "exists": false
+      },
+      "MathVista_MINI": {
+        "exists": false
+      },
+      "OCRBench": {
+        "exists": false
+      }
+    }
+  },
+  "probe20_output_log": "Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.\r\nWarning: Permanently added 'fvcrc20' (ED25519) to the list of known hosts.\r\n{\n  \"node\": \"fvcrc20\",\n  \"python\": \"/home/xiang/.venvs/vllm023-cu128/bin/python\",\n  \"package\": \"vllm\",\n  \"version_full\": \"0.23.0+cu129\",\n  \"version_base\": \"0.23.0\",\n  \"probe\": \"importlib.metadata only; no torch import, GPU smoke or package install\"\n}\n",
+  "probe13_output_log": "Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.\r\nWarning: Permanently added 'fvcrc13' (ED25519) to the list of known hosts.\r\n{\n  \"node\": \"fvcrc13\",\n  \"eval_python_exists\": false,\n  \"data\": {\n    \"HallusionBench\": {\n      \"exists\": false\n    },\n    \"LLaVABench\": {\n      \"exists\": false\n    },\n    \"MMBench\": {\n      \"exists\": false\n    },\n    \"MMMU_DEV_VAL\": {\n      \"exists\": false\n    },\n    \"MMStar\": {\n      \"exists\": false\n    },\n    \"MMVet\": {\n      \"exists\": false\n    },\n    \"MathVista_MINI\": {\n      \"exists\": false\n    },\n    \"OCRBench\": {\n      \"exists\": false\n    }\n  }\n}\n",
+  "no_torch_import": true,
+  "no_gpu_smoke": true,
+  "packages_installed": 0,
+  "processes_started_or_stopped": 0,
+  "decision": "Retain fvcrc10 route: fvcrc13 lacks existing E12 evaluator and all eight TSV files; no third environment or full-data copy."
+}

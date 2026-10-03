@@ -176,5 +176,11 @@
     "Top7 of64 and a single25-step intervention are diagnostic, not the native300/top30 full50-step MPC.",
     "Terminal latent MSE uses independently updated encoders; magnitudes cannot establish cross-model superiority.",
     "The reference is best among64 fixed candidates, not global optimality; mean-action utility gap can be negative."
-  ]
+  ],
+  "posthoc_optimizer_audit": {
+    "status": "downgraded_for_fair_cross_method_inference",
+    "audit": "E16_20261002_optimizer_audit.json",
+    "original_summary_sha256": "6f6f1ce3dffd69510e7e56d6aa67197fc3a68299945f66cf960750576353560f",
+    "reason": "CPU AdamW step tensor alias accumulates across sequential methods; raw readings preserved; rerun pending"
+  }
 }

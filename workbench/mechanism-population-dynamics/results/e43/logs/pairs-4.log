@@ -1,0 +1,19 @@
+Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
+Warning: Permanently added 'fvcrc13' (ED25519) to the list of known hosts.
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e43_basis.py", line 233, in <module>
+    pairs(a.part)
+  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e43_basis.py", line 136, in pairs
+    f.write_text(json.dumps(pair_stats(cache[a], cache[b])))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e43_basis.py", line 79, in pair_stats
+    za, zb = _std(na[l].to(dev)), _std(nb[l].to(dev))
+                  ^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

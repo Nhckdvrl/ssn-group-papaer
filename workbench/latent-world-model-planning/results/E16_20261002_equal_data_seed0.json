@@ -711,5 +711,11 @@
     "IID budget is precollected logical consumption, not newly executed interaction.",
     "Actual environment generation steps include the union bank and reset controls; selector computation is not free.",
     "Native 3-frame causal history and constant LR pilot differ from full paper reproduction."
-  ]
+  ],
+  "posthoc_optimizer_audit": {
+    "status": "downgraded_for_fair_cross_method_inference",
+    "audit": "E16_20261002_optimizer_audit.json",
+    "original_summary_sha256": "7bc85a9d5c0c1093d025e4facb4fc778e68839cec76270bf9c784912f50da628",
+    "reason": "CPU AdamW step tensor alias accumulates across sequential methods; raw readings preserved; rerun pending"
+  }
 }

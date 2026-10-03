@@ -669,5 +669,11 @@
     "Uniform and NO-ADD have the same descriptive aggregate50/144; this does not prove equivalence.",
     "No PBB superiority or manuscript-critical science claim.",
     "Full pipeline randomizes base/eval/bank and optimizer jointly; do not attribute variance solely to initialization."
-  ]
+  ],
+  "posthoc_optimizer_audit": {
+    "status": "downgraded_for_fair_cross_method_inference",
+    "audit": "E16_20261002_optimizer_audit.json",
+    "original_summary_sha256": "117b8e7e0fa7054cdd929e09852feabec0fe9120586060346c3692e08a09b67d",
+    "reason": "CPU AdamW step tensor alias accumulates across sequential methods; raw readings preserved; rerun pending"
+  }
 }

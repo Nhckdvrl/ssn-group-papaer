@@ -5,10 +5,10 @@
 **territory / 领域地图：** [FIELD_MAP.md](FIELD_MAP.md)
 **目标会议 / 截稿：** ICML / ICLR / NeurIPS；若贡献偏 NLP 数据学习则 ACL / EMNLP 主会；届次未定，截稿 —。
 **上次人审：** 尚无实验人审；2026-10-02 用户明确授权调研并注册，不等于批准替换现有 ACTIVE 线。
-**一句话（当前版本）：** 研究数据生成/策展闭环如何积累可迁移的改进能力，而不只是针对一个学生重复试配方。
+**一句话（当前版本）：** 从强数据系统的真实训练行为中找值得发展的选择、生成与策略更新问题；数据改进器的可迁移能力是候选方向，不把RSI标签当选题边界。
 
 **已完成：** 关键文献分级阅读、主会近邻定位；E00 已建立 MATH→单卡 LoRA 训练→官方 scorer 的本地改造闭环。E08 统一确定性推理协议后，完整留出 1668 题上静态 120 条真实标注的三个 seed 比 base 高 3.66–4.20pp，E04 错误检索再高 0.78–1.32pp，低于预写的 2pp 追进门槛。E06/E07 的 Qwen2.5 本地教师质量 gate 失败；E09 Qwen3-32B thinking 20 次调用按严格格式仅 1/20 通过，事后诊断 13/20 完整可训练。E10 同卡重评的静态120比 base 高 4.26pp；嵌套静态960反比120低 0.96pp，且两状态错误检索动作 110/120 相同，未通过扩大状态/动作区分资格门。
-**进行中：** 跨 E00–E10 的结构复盘确认：当前只证实静态监督可学习，尚无可信的“反馈→不同且正确的数据动作→训练效用”闭环。E11 静态换数据卡未下载/运行。E12 的 Curation-Bench LLaVA-665K/10k 强静态策略**真实 SFT→八项评价**复现已完成 665,298 行对话与论文 init 权重审计；fvcrc10/random 与 fvcrc12/ICONS 精确映射两个 seed17 分支均完成 625 步训练及抽样权重更新/冻结核验，五源均衡与 ARDS 两条跑前对照在训，尚无完整训练后分数。Qwen3.5-27B judge 已通过跨节点真实调用；未训练 base 的八项评估进行中，先前两次零评分评估启动故障及兼容修复见 [E12](experiments/E12-curationbench-strong-policy-utility.md)。不铺 TF-IDF 矩阵或继续微调本地教师提示。
+**进行中：** [E12](experiments/E12-curationbench-strong-policy-utility.md)强静态校准已完成：base **28.956**，random/均衡/ICONS公开池复用/ARDS **32.299/33.443/32.814/32.951**；同checkpoint唯一复跑 **32.247**（−0.052），不换best，八项全齐/无fallback。四成功SFT及六评价合计 **7.363 A100分配小时**，Blackwell judge单列并已释放；训练方差/CI未估。这些是单seed效用读数，ICONS臂不是原算法针对10K重求票。[E13](experiments/E13-reuse-replenishment-action-pilot.md)比较重放旧记录、池内补货、池外同抽样律补货在init/已学两个父状态的效用，六支均已登记；fvcrc13首批四支已成功625步/保存终点，两条fresh-law接续，效用尚未评分；四支含前检分配 **5.837 A100h**。NFS导入计成本。fvcrc10评估队列等待六支完成，judge未启。[E14](experiments/E14-source-only-replenishment-baseline.md)另加两父source-only全fresh简单竞争：fvcrc12 init已真实训练，used修正父清单name/path比较后按同seed接续，37.934s启动前失败保留；终点评价复用原八项与现成env、独立judge。备选监督分配/模态路径未运行；不继续TF-IDF矩阵或本地数学teacher prompt微调。
 **未完成：** 官方 GPT-4o 反馈数据生成原版复现、跨任务/学生状态验证、生成式数据动作的真实训练效用、论文主张验证。所有本地科学主张仍为 L0。
 
 ## 阅读入口
@@ -47,7 +47,7 @@ E00–E10 曾优先用 DataEnvGym 的本地学生闭环；其静态训练/评估
 | D1 强基线复现 | E00 单卡闭环已运行；是改造版，训练收益对评测提示敏感，反馈策略/官方分数未复现 |
 | D2 可复用运行资产 | 数据冻结、单卡训练、vLLM 评估、配对分析脚本可运行；原始大文件在外部缓存 |
 | D3 痛点日志 | 已记录反馈题面丢失、输出协议、生成数据正确性与贪心评估重复性问题 |
-| D4 系统测量 | E00/E04 各三训练 seed、E05 一个 seed；E08 完整留出 1668 题及确定性复跑完成，强静态收益成立而词面检索增量较小；E10 扩大静态集单 seed 不增益且动作高度重叠；E06/E07/E09 两套本地教师质量 gate 均未过；E12 数据/模型审计及两条 10k SFT 完成，base 八项评估在跑，策略评分尚未可用；生成分支尚无真实学生效用结果 |
+| D4 系统测量 | E00/E04 各三训练 seed、E05 一个 seed；E08 完整留出 1668 题及确定性复跑完成，强静态收益成立而词面检索增量较小；E10 扩大静态集单 seed 不增益且动作高度重叠；E06/E07/E09 两套本地教师质量 gate 均未过；E12 数据/模型审计及四条10k/625步SFT完成，base/random/ICONS八项均值 **28.956/32.299/32.814**，均衡/ARDS八项 **33.443/32.951**，唯一复跑 **32.247**、单seed训练方差未估；生成分支尚无真实学生效用结果 |
 | D5 定位表 | 初稿；近期接收语料/公开评审全面审计未完成 |
 | D6 论文形态/idea 组合 | 初稿；没有经验性贡献被确认 |
 
@@ -59,4 +59,4 @@ E00–E10 曾优先用 DataEnvGym 的本地学生闭环；其静态训练/评估
 - **本轮执行者建议**：先建设一套能产生可审计训练收益的本地闭环，在同一领域中比较 I01/I02；不是要求用户现在押注某个猜想。
 
 ## 资产位置
-本地运行资产和重建入口见 [ASSETS.md](ASSETS.md)、[results/E00_manifest.json](results/E00_manifest.json)、[results/E00_dev_analysis.json](results/E00_dev_analysis.json)、[results/E12_full_arrow_audit.json](results/E12_full_arrow_audit.json)。E12 大资产与运行目录在各节点 `/var/tmp/xiang-data-rsi/e12/`，精确路径见 E12 卡；仓库不存 checkpoint、rollout、私有数据或凭证。运行时必须记录源码 SHA、数据 hash、模型 revision、模型/优化器状态、预算和失败记录。
+本地运行资产和重建入口见 [ASSETS.md](ASSETS.md)、[results/E00_manifest.json](results/E00_manifest.json)、[results/E00_dev_analysis.json](results/E00_dev_analysis.json)、[results/E12_full_arrow_audit.json](results/E12_full_arrow_audit.json)。E12 大资产与运行目录在各节点 `/var/tmp/xiang-data-rsi/e12/`。E13在fvcrc13的`/var/tmp/xiang-data-rsi/e13/{train_queue,train_runs}/`，fvcrc10的`/var/tmp/xiang-data-rsi/e13/{eval_batch_v2,eval_runs}/`；[训练队列溯源](results/E13_cpu_dryrun_and_train_queue.json)、[评估接续方案](results/E13_eval_batch_plan.json)和[v2真实启动](results/E13_eval_v2_launch_provenance.json)记录冻结代码与父模型身份。E14在fvcrc12的`/var/tmp/xiang-data-rsi/e14/`，CPU动作/启动/失败接续记录见对应E14 results与实验卡；复用两父和本地evalenv，不新建训练框架。仓库不存 checkpoint、rollout、私有数据或凭证。运行时必须记录源码 SHA、数据 hash、模型 revision、模型/优化器状态、预算和失败记录。

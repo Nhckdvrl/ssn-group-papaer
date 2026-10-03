@@ -61,3 +61,39 @@ TwoRoom / Fast-LeWM / N=300,K=30,β=1,[2,3],seed=0。8 个 held-out generated ep
 [E18](results/E18_20261002_recovery_forks_seed0.json)在nominal TwoRoom HOLD12/32→FEEDBACK16/32，但action gain0.7下6→7；PushT nominal4→7（更多搜索9），gain0.7下1→0。future utility有任务/条件差异，尚无可部署gate证据。当前方法没有更新transition，本身可能缺乏恢复能力，不能因为误差大却replan无益就判母问题无价值。完整prefix重放same-state/pixel误差0，原dataset的PushT memory limitation仍保留。下一批增short head/dynamics update，再看response set价值与部署feature，而不是局部调error阈值。
 
 P04确认补记：[三seed](results/E16_20261002_independent_seeds.json) NO-ADD9/19/22、uniform17/18/15、GLOBAL-U24/16/23、PBB19/13/15，每组48。G对NOADD+15/−3/+1，PBB+10/−6/−7。首轮大增益不稳定；现有数字不支持有效新采样方法。joint pipeline seeds、seed0 resume和硬件差异保留，不能解释成单一initialization效应。母问题仍重要，下一轮扩数据利用/预测对象/恢复方法轴，不反复救PBB公式。
+
+P08短适配补记：[768 continuations](results/E18_20261002_short_updates_seed0.json)同RTX FEEDBACK/HEAD/DYNAMICS，nominal导航16/12/12，shift7/9/6，分母32；PushT nominal7/6/4，shift0/1/0。对3样本训练误差明显下降，未来utility未稳定改善；不据此判适配无价值，也不先造gate。512旧baseline success全部复现，动作/距离/latent features跨硬件不完全一致，新增method对同RTX baseline作配对。下一批已展开数据利用×目标（R1/R2）与预测时域×搜索广度（R2），避免只优化短更新阈值。
+
+
+## P09｜公共CPU optimizer step别名破坏方法隔离
+
+**撤回旧E16比较的严格data-only解释和“PBB被强基线吸收”判断，待公平重跑。** 独立CPU复验发现torch2.7.1 AdamW加载公共CPU state时会保留`step` tensor引用；多方法顺序运行使源state计数累加。权重/数据/gradient steps相同，但初始bias-correction历史不同。旧seed0七方法、seed1/2四方法及由这些模型计算的decision audit受影响；数值和原始文件全部保留，不能用于方法优劣或排序机制的因果结论。六方法objective matrix也受影响，已停止自身未完成进程、保留partial与invalidation artifact。
+
+[可复现校对](results/E16_20261002_optimizer_audit.json)。修复为每方法deepcopy完整optimizer state，并断言初始steps相同、源steps不可变、结束steps=初始+updates；所有原方法/seed/目标重跑，不筛选方法，不追加数据，不重训base。base checkpoint文件未被改写；E13无训练、E18每fork新optimizer均不受此alias影响。科学主张此前为0，继续为0；C00工程L1保留。
+
+
+P05/A3补记：[384episodes](results/E13_20261002_horizon_breadth.json)，H25N300/H25N900/H75N300，导航长goal19/25/8、操作长goal6/7/0，各32。长递归在四task/range都退化；这是更换方法轴的依据，不是R2失败。近邻Planning Limits指出即使perfect dynamics仍可能受cost/局部feedback限制，且其长rollout有益；本实验模型/预测对象/cost/搜索维度不同，需从query-in-proposal/cost和训练对象分辨竞争解释。
+
+E18连续适配运行前独立校对：[CPU物理控制](results/E18_20261002_physics_preflight.json)确认PushT mass/moment同比例缩放不改transition（16轨迹全0、15条有接触）；moment-only×2则15/16改变。保留原控制、在GPU运行前修订physics为moment-only，不按适配success选条件。停止仅自身waiting queue并重启；没有废弃GPU方法结果。
+
+P05/R3补记：[E17全部320episodes](results/E17_20261002_query_proposal.json)，导航proposal16/15 vs ZERO90015/14，goalshuffle15/14，各16；PushT long proposal6 vs9004/goalshuffle5/GCBC0。组合可能受generic action prior帮助，query-specific作用未核对。GCBC弱不是强邻居被击败，CI宽、一headseed；接下来action trajectory structure/state-only prior、cost/query placement与数据regime是竞争设计，不重复微调同head。
+
+P05/经典优化对照：[A4全部256episodes](results/E13_20261003_action_basis.json)。导航远LINEAR5-N300 14/16，ZERO30010/16、ZERO90014/16；操作远3/3/4。前者配对CI含0，后者null；低维搜索是强baseline，不把generic action prior重新命名成query贡献。两task结构不同，需要预测对象、目标代价、控制反馈的竞争解释，不能只优化节点数。
+
+P08/连续适配：[288episodes](results/E18_20261002_continuous_adaptation.json)，名义/0.7gain/physics，导航FROZEN/PREDLAST/+PROJECTOR=10/10/9、8/8/9、8/8/9；操作=5/4/3、3/4/3、3/2/3（各16）。14,313真实steps、公共5步state/pixel误差0。未见稳定success收益，操作nominal distance utility反而下降；训练误差不等于适配价值。此Fast/目标/lr不称完整AdaJEPA复现。频繁replan5名义操作FROZEN5/16 vs E17整25执行14/16跨plannerseed，不能归因；A5锁共同初始plan/5-10-25cadence/warm排除优化重启，R4历史/反馈表示仍是竞争解释。
+
+P04公平重跑seed0：[七方法](results/E16_20261003_optclone_seed0.json)NO/IID/uniform/coverage/global/task/PBB=7/18/32/27/19/13/20，每48。uniform对NO+52.08pp、episodeCI[35.42,66.72]；PBB对uniform−25pp、CI[-41.72,-6.25]。全部AdamW1680→2280/source不变；只能限定此pipeline，不沿旧污染模型排序/机制。两个原seed继续，数据×compute/训练对象已并行；强knownbranchbaseline是方法生长起点，不关闭R1。
+
+P08共同计划对照：[A5完整256episodes](results/E13_20261003_commitment_cadence.json)，操作nearEX5/10/25/5warm=5/3/14/4，各16；同初始plan排除初始seed差，warm不能修复但不能归因velocity。terminal25score/execute5时间失配已有HiddenFailureModesownership；固定cadence observer与cost/预测结构是竞争方法轴。导航nativephysicalclip缺失在score的混杂已独立发现，须强对照。
+
+## P10｜预测评分与实际动作接口不一致（工程校对）
+
+[独立CPU/全部command统计](results/E00_E13_E16_20261003_action_interface_audit.json)：TwoRoom真实step裁剪physicalcommands到[-1,1]、MacroCost/LeWMNativeCost原生评分未裁剪；A5全部128导航planfiles真实issued动作超界41–73%、max20.42，E16bank3072/3072序列含超界、primitive44.85%。4真实CPUsteps验证[2,0]与[1,0]导航状态差0；PushT完整state差374.15，后者并不clip。只能确认接口/覆盖混杂，未证明success因果或data收益由其解释。cost-onlyclip/renorm强baseline已加E17，原nativeCEMrawelite更新不变；FlexiWorldE.2已有相同原则，不当novel贡献。未来新方法必须面对actual-action baseline，R1/R2母问题不因此关闭。
+
+P04全部公平三pipeline：[完整结果](results/E16_20261003_optclone_independent_seeds.json)NO7/16/19、uniform32/15/18、GLOBAL19/20/27、PBB20/11/13，每48。GLOBAL三个正gain，PBB和uniform跨pipeline不稳定；不能从seed0最强说普遍data选择原则。训练计算对照BASE100全部快照已完成560/1680/5650=7/13/38，BASE1000未complete，不升级data×compute结论；充分训练强baseline是后续方法必要参照。
+
+P05/R3代价完整补记：[352episodes](results/E17_20261003_continuation_cost.json)，导航远NATIVE/EXEC/REAL/WM/MIX=10/6/9/9/8，操作近14/14/7/7/8（第一个14为EXEC、第二为COS），各16。imagined calibration未胜REAL/head未胜强native；不能将只对弱EXEC的局部gain包装成方法成立。训练fit不能代替candidate utility，RC-aux的joint representation/budget negatives与L2耦合不是这个小head负结果。
+
+P08/R4完整补记：[384episodes](results/E11_20261003_latent_observer.json)固定5步cadence，Pushnominal/gain/moment OBS4/4/3→PREFIX5 11/10/10，各16；prior/filter均不胜此classic强baseline。下一方法须对齐执行目标后再验证history/feedback，不调融合权重救null。原native task_distance含7D速度与未wrap角度，和success位置/角判据不同，不能从其均值归因失败尾部或纯position风险；原raw/读数保留，位置分解仅POST-HOC辅助。
+
+P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.json)NO ONE/TF/OPEN21/14/16，UNIFORM11/24/19，各48。branch效应随此训练设计变号，但ONE/LONG labels+SIGRegframes不匹配、onepipeline/weakbase，OPEN无稳定胜TF；只作数据利用×预测对象下一研究来源，不能直接升因果或顶会叙事。额外训练38强基线必须保留。
