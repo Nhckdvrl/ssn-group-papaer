@@ -1,0 +1,502 @@
+{
+  "mayn": {
+    "experiment1": {
+      "raw_rows": 2160,
+      "raw_participants": 89,
+      "raw_rows_per_participant_distribution": {
+        "24": 88,
+        "48": 1
+      },
+      "excluded_ids_n": 10,
+      "kept_rows": 1896,
+      "kept_participants": 79,
+      "condition_counts": {
+        "filler unambiguous": 948,
+        "critical": 632,
+        "filler ambiguous": 316
+      },
+      "critical_means": {
+        "adult": 70.846875,
+        "child": 57.32051282051282
+      },
+      "probability_sum_max_error": 0.0,
+      "source_sha256": {
+        "exp1_results.csv": "0a1288b1fc78c80a829c06c7e940812587aa035391e5a22590ea7abc5e82fe1c",
+        "exp1_exclusion_list.csv": "07ca72e51cd00e148937c892943a91f48802301ae256eb56a8a473db651e2823"
+      }
+    },
+    "experiment2": {
+      "raw_rows": 4464,
+      "raw_participants": 186,
+      "raw_rows_per_participant_distribution": {
+        "24": 186
+      },
+      "excluded_ids_n": 26,
+      "kept_rows": 3840,
+      "kept_participants": 160,
+      "condition_counts": {
+        "filler unambiguous": 1920,
+        "critical": 1280,
+        "filler ambiguous": 640
+      },
+      "critical_means": {
+        "adult": 70.65625,
+        "child": 62.2359375
+      },
+      "probability_sum_max_error": 0.0,
+      "source_sha256": {
+        "exp2_results.csv": "26032ebdef319032e4447792ff9348c1282d493ae56cfae72cdf8f9b8305f2db",
+        "exp2_exclusion_list.csv": "d2e3a944866e9e046fa771da7ec7ac7cea39c8645596ea89f8bb2b2e7ad34779"
+      }
+    }
+  },
+  "reference_material_theory_audit": [
+    {
+      "itemid": 1,
+      "itemtype": "critical",
+      "msg": "tr",
+      "target": "tr_bl",
+      "competitor": "tr_re",
+      "distractor": "sq_gr",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "itemid": 2,
+      "itemtype": "critical",
+      "msg": "tr",
+      "target": "tr_bl",
+      "competitor": "tr_gr",
+      "distractor": "ci_re",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "itemid": 3,
+      "itemtype": "critical",
+      "msg": "ci",
+      "target": "ci_bl",
+      "competitor": "ci_re",
+      "distractor": "tr_gr",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "itemid": 4,
+      "itemtype": "critical",
+      "msg": "ci",
+      "target": "ci_bl",
+      "competitor": "ci_gr",
+      "distractor": "sq_re",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "itemid": 5,
+      "itemtype": "critical",
+      "msg": "re",
+      "target": "sq_re",
+      "competitor": "ci_re",
+      "distractor": "tr_bl",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "itemid": 6,
+      "itemtype": "critical",
+      "msg": "re",
+      "target": "sq_re",
+      "competitor": "tr_re",
+      "distractor": "ci_gr",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "itemid": 7,
+      "itemtype": "critical",
+      "msg": "gr",
+      "target": "sq_gr",
+      "competitor": "ci_gr",
+      "distractor": "tr_re",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "itemid": 8,
+      "itemtype": "critical",
+      "msg": "gr",
+      "target": "sq_gr",
+      "competitor": "tr_gr",
+      "distractor": "ci_bl",
+      "condition": "critical",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.6666666666666666,
+      "available_truthful_message_counts": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "itemid": 9,
+      "itemtype": "filler unambiguous",
+      "msg": "tr",
+      "target": "tr_re",
+      "competitor": "ci_bl",
+      "distractor": "sq_gr",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "itemid": 10,
+      "itemtype": "filler unambiguous",
+      "msg": "ci",
+      "target": "ci_bl",
+      "competitor": "sq_gr",
+      "distractor": "tr_re",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "itemid": 11,
+      "itemtype": "filler unambiguous",
+      "msg": "re",
+      "target": "ci_re",
+      "competitor": "tr_bl",
+      "distractor": "sq_gr",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "itemid": 12,
+      "itemtype": "filler unambiguous",
+      "msg": "gr",
+      "target": "sq_gr",
+      "competitor": "ci_bl",
+      "distractor": "tr_re",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "itemid": 13,
+      "itemtype": "filler ambiguous",
+      "msg": "tr",
+      "target": "tr_bl",
+      "competitor": "tr_bl",
+      "distractor": "ci_re",
+      "condition": "filler ambiguous",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.5,
+      "available_truthful_message_counts": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "itemid": 14,
+      "itemtype": "filler ambiguous",
+      "msg": "ci",
+      "target": "ci_gr",
+      "competitor": "ci_gr",
+      "distractor": "sq_re",
+      "condition": "filler ambiguous",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.5,
+      "available_truthful_message_counts": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "itemid": 15,
+      "itemtype": "filler ambiguous",
+      "msg": "re",
+      "target": "sq_re",
+      "competitor": "sq_re",
+      "distractor": "tr_gr",
+      "condition": "filler ambiguous",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.5,
+      "available_truthful_message_counts": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "itemid": 16,
+      "itemtype": "filler ambiguous",
+      "msg": "gr",
+      "target": "tr_gr",
+      "competitor": "tr_gr",
+      "distractor": "sq_re",
+      "condition": "filler ambiguous",
+      "l0_target": 0.5,
+      "bayes_on_literal_s0_target": 0.5,
+      "available_truthful_message_counts": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "itemid": 17,
+      "itemtype": "filler type a",
+      "msg": "re",
+      "target": "tr_re",
+      "competitor": "tr_bl",
+      "distractor": "sq_gr",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "itemid": 18,
+      "itemtype": "filler type a",
+      "msg": "gr",
+      "target": "ci_gr",
+      "competitor": "ci_bl",
+      "distractor": "sq_re",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "itemid": 19,
+      "itemtype": "filler type a",
+      "msg": "ci",
+      "target": "ci_re",
+      "competitor": "sq_re",
+      "distractor": "tr_bl",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "itemid": 20,
+      "itemtype": "filler type a",
+      "msg": "tr",
+      "target": "tr_gr",
+      "competitor": "sq_gr",
+      "distractor": "ci_bl",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "itemid": 21,
+      "itemtype": "filler type b",
+      "msg": "re",
+      "target": "ci_re",
+      "competitor": "tr_bl",
+      "distractor": "tr_gr",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "itemid": 22,
+      "itemtype": "filler type b",
+      "msg": "gr",
+      "target": "tr_gr",
+      "competitor": "ci_bl",
+      "distractor": "ci_re",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "itemid": 23,
+      "itemtype": "filler type b",
+      "msg": "ci",
+      "target": "ci_gr",
+      "competitor": "sq_re",
+      "distractor": "tr_re",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "itemid": 24,
+      "itemtype": "filler type b",
+      "msg": "tr",
+      "target": "tr_re",
+      "competitor": "sq_gr",
+      "distractor": "ci_gr",
+      "condition": "filler unambiguous",
+      "l0_target": 1.0,
+      "bayes_on_literal_s0_target": 1.0,
+      "available_truthful_message_counts": [
+        2,
+        1,
+        2
+      ]
+    }
+  ],
+  "mayn_original_models_sha256": "7083fb62c5ec7ed03a66f1141ac6a0b0bae29f4df995a514e0a9a1312779e683",
+  "bayesian_persuasion": {
+    "repo_commit": "3e5cacde72862f6a0dfb6d3ac18059fa0c880552",
+    "assets": {
+      "data/replication.csv": {
+        "exists": false
+      },
+      "data/prolificData.csv": {
+        "exists": true,
+        "sha256": "65d2b0e4fe93315fbdde3268779e972ea548186012bfbd176d903579c266f969",
+        "rows": 29356
+      },
+      "data/initial_sample.csv": {
+        "exists": true,
+        "sha256": "98e8aec8553c24246f507340e5b48be6bb27cff814a3a40eec72810fcb05ae39",
+        "rows": 12036
+      },
+      "models/model-comparison/input/replication_data_full.csv": {
+        "exists": true,
+        "sha256": "efbf7eb2d21494a85b4a33fd4c3a36f1925e3138c1450d51e04d244c1118c32e",
+        "rows": 727
+      },
+      "models/model-comparison/input/original_data_full.csv": {
+        "exists": true,
+        "sha256": "247d6d723ceeab1136b6666f42c54af823774a485b5f7f62618d0928399274e9",
+        "rows": 725
+      }
+    },
+    "criterion_sha256": "43a5f5e975065d23d98c0b66718b0877f03ba945bacef974f7ab34552fd1f37a",
+    "two_distinct_cached_speaker_variants": [
+      {
+        "model": "rsa-het-speakers",
+        "experiment": "replication",
+        "lppd": 10.173684306854868,
+        "pwaic2": 1.9685608221032935,
+        "elppd_waic": -16.410246969503145,
+        "se_elppd_waic": 9.120846739222614,
+        "loo": -8.205780652716346,
+        "se_loo": 9.120807059388753,
+        "mle": 11.998937702129204
+      },
+      {
+        "model": "rsa-het-speakers-hi",
+        "experiment": "replication",
+        "lppd": 11.341333023999551,
+        "pwaic2": 2.1762005306384227,
+        "elppd_waic": -18.330264986722256,
+        "se_elppd_waic": 8.945310090589551,
+        "loo": -9.165118269922038,
+        "se_loo": 8.945336320780886,
+        "mle": 16.201037729566117
+      }
+    ],
+    "final_paper_n": 723,
+    "final_human_filter_reproduction_available": false
+  },
+  "gate_pass": true,
+  "limits": [
+    "CPU source/theory audit, no LLM behavior and no pragmatic false-alarm gold.",
+    "Mayn source descriptive rounding reproduced, not full brms posterior, exclusion decisions or photographs.",
+    "Weak-evidence final raw replication filter unavailable here; processed 727 rows not silently changed to 723.",
+    "No new annotation, no closed/free-model judging; existing human source kept."
+  ]
+}

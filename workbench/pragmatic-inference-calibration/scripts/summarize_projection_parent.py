@@ -11,8 +11,15 @@ from run_iqap_queue import models
 from aggregate import estimate
 
 ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);ap.add_argument('--output',type=Path,required=True)
-ap.add_argument('--allow-incomplete',action='store_true');ap.add_argument('--mistral-only',action='store_true');a=ap.parse_args();assert not a.output.exists()
-if a.mistral_only:
+ap.add_argument('--allow-incomplete',action='store_true')
+selection=ap.add_mutually_exclusive_group();selection.add_argument('--mistral-only',action='store_true');selection.add_argument('--qwen14-only',action='store_true')
+a=ap.parse_args();assert not a.output.exists()
+if a.qwen14_only:
+    from projection_qwen14_data import inputs,common_model
+    manifest=json.loads((a.root/'models/qwen25-14-stage-manifest.json').read_text())
+    model_specs=[(m['id'].split('/')[-1],m['id'],m['sha']) for m in manifest]
+    run_prefix='E41-projection-'
+elif a.mistral_only:
     from projection_mistral_data import inputs,common_model
     manifest=json.loads((a.root/'models/mistral-stage-manifest.json').read_text())
     model_specs=[(m['id'].split('/')[-1],m['id'],m['sha']) for m in manifest]
@@ -51,8 +58,10 @@ for cp,mid,rev in model_specs:
     c=json.loads((path/'config.json').read_text());assert c['source_audit']==audit and c['numerical_gate_pass'] and c['revision']==rev
     assert c['model']==mid and c['dtype']=='float32' and c['batch_size']==1 and c['max_new_tokens']==5 and not c['do_sample']
     control=json.loads((path/'numerical-control.json').read_text());assert len(control)==8 and all(z['same_generated_ids'] and z['token_lp_delta']<.001 and z['pass'] for z in control)
-    script='run_projection_mistral.py' if a.mistral_only else 'run_projection_parent.py'
+    script='run_projection_qwen14.py' if a.qwen14_only else 'run_projection_mistral.py' if a.mistral_only else 'run_projection_parent.py'
     assert c['script_sha256']==hashlib.sha256(Path(__file__).with_name(script).read_bytes()).hexdigest()
+    if a.qwen14_only:
+        assert c['helper_sha256']==hashlib.sha256(Path(__file__).with_name('projection_qwen14_data.py').read_bytes()).hexdigest()
     rs=[json.loads(l) for l in (path/'predictions.jsonl').read_text().splitlines()];assert len(rs)==c['n']==3520
     idx={(z['id'],z['interface']):z for z in rs};assert len(idx)==len(rs)
     tok=AutoTokenizer.from_pretrained(common_model(a.root,cp),local_files_only=True)
@@ -63,6 +72,15 @@ for cp,mid,rev in model_specs:
             assert all(z[k]==v for k,v in r.items() if k not in ['system_text','user_text','prompt'])
             assert z['readout_prompt_sha256']==hashlib.sha256(text.encode()).hexdigest()
             assert parse_rating(z['raw_text'])==z['rating'] and z['invalid']==(z['rating'] is None)
+    short_prefix_diagnostic={}
+    if a.qwen14_only:
+        # E42 established that a five-token numeric prefix may continue into prose.
+        # Verify raw parsing above, then require EOS for all primary E41 statistics.
+        short_groups=defaultdict(list)
+        for z in rs:short_groups[z['interface']+'/'+z['task']+'/'+z['embedded_type']].append(z)
+        short_prefix_diagnostic={g:group_stats(zs) for g,zs in short_groups.items()}
+        rs=[dict(z,rating=z['rating'] if z['terminated_by_eos'] else None) for z in rs]
+        idx={(z['id'],z['interface']):z for z in rs}
     groups=defaultdict(list);effect=defaultdict(list)
     for z in rs:
         groups[z['interface']+'/'+z['task']+'/'+z['embedded_type']].append(z)
@@ -82,9 +100,11 @@ for cp,mid,rev in model_specs:
             'all_pair_delta_mean_bounds':[sum(z['delta'] if z['valid'] else -1 for z in zs)/len(zs),sum(z['delta'] if z['valid'] else 1 for z in zs)/len(zs)]}
     out[cp]={'run':path.name,'config_sha256':hashlib.sha256((path/'config.json').read_bytes()).hexdigest(),
              'input_token_hashes':c['input_token_hashes'],'description':{g:group_stats(zs) for g,zs in groups.items()},'actual_fact_effects':effects}
+    if a.qwen14_only:
+        out[cp].update(primary_requires_eos=True,short_numeric_prefix_diagnostic=short_prefix_diagnostic)
     allidx[cp]=(idx,c)
 paired={}
-for left,right in [('Qwen2.5-3B','Qwen2.5-3B-Instruct'),('OLMoE-1B-7B-0125','OLMoE-1B-7B-0125-SFT'),('OLMoE-1B-7B-0125-SFT','OLMoE-1B-7B-0125-DPO'),('Qwen3-4B','Qwen3-8B'),('Qwen3-8B','Qwen3-14B'),('Mistral-7B-v0.3','Mistral-7B-Instruct-v0.3')]:
+for left,right in [('Qwen2.5-14B','Qwen2.5-14B-Instruct'),('Qwen2.5-3B','Qwen2.5-3B-Instruct'),('OLMoE-1B-7B-0125','OLMoE-1B-7B-0125-SFT'),('OLMoE-1B-7B-0125-SFT','OLMoE-1B-7B-0125-DPO'),('Qwen3-4B','Qwen3-8B'),('Qwen3-8B','Qwen3-14B'),('Mistral-7B-v0.3','Mistral-7B-Instruct-v0.3')]:
     if left not in allidx or right not in allidx:continue
     li,lc=allidx[left];ri,rc=allidx[right];assert lc['input_token_hashes']==rc['input_token_hashes'] and li.keys()==ri.keys()
     g=defaultdict(lambda:defaultdict(list))
@@ -108,7 +128,7 @@ for left,right in [('Qwen2.5-3B','Qwen2.5-3B-Instruct'),('OLMoE-1B-7B-0125','OLM
             'all_human_item_average_mae_delta_upper_bound':estimate([np.mean([r['bound_hi'] for r in zs]) for zs in items.values()])}
     paired[left+' -> '+right]=z
 assert a.allow_incomplete or not pending,pending
-result={'models':out,'paired_stage_size_changes':paired,'pending':pending,'source_audit':audit,
+result={'models':out,'paired_stage_size_changes':paired,'pending':pending,'source_audit':audit,'primary_requires_eos':a.qwen14_only,
         'limits':['Generated numeric scalar is not direct belief probability or transparent knowledge.',
                   'Validity differs across endpoint/interfaces; valid-only metrics are selected-case diagnostics, not model rankings.',
                   'Unconditional bounds retain every human item, with absent numeric output allowed anywhere in [0,1].',

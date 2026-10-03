@@ -23,8 +23,8 @@
 | E12,E16 | OLMoE真实Base/SFT/DPO谱系、原Hu bare与共用chat模板卡和自动队列 | 三stage已完成E27配对；旧OL chat输入不一致，隔离于stage归因 |
 | E13,E18 | 原TACL2023 BERT within-scale、GPT2 cross-scale与三Qwen string predictor已完成 | 未复现concept/GloVe与完整多变量主回归 |
 | E19,E20 | EPITOME源评分复现；4模型atomic概率读数完成；E20七模型760题下注完成，E21七模型原四类/六状态完成；E22/Qwen与E26接口配对完成 | IR公开16项仅6完整；Flan atomic协议不可用；生成无效单列，不补prompt救排名 |
-| D3/D4 | [PAIN_LOG](PAIN_LOG.md)、[证据账本](EVIDENCE_LEDGER.md)、跑前实验卡 | 未有跨family稳定领域结构；Qwen/OLMoE Base–SFT已测；OLMoE旧chat输入差异隔离，E27完整tokenizer与DPO完成，E29知识控制完成，E28/E31强模型边界完成；E32–34自然强度/备选完成；E36/37一句控制完成；E35第三family八槽完成；E38/E39十端点完成；E42截断校对完成；E43自然commitment十端点完成；E45互动基线五端点运行 |
-| D5/D6 | corpus65,716篇、47篇分级论文卡、作者blog与认知/语义/互动地图 | 最新近邻持续更新；[定位](POSITIONING.md)与[形态卡](PAPER_SHAPE.md)，未到candidate |
+| D3/D4 | [PAIN_LOG](PAIN_LOG.md)、[证据账本](EVIDENCE_LEDGER.md)、跑前实验卡 | 未有跨family稳定领域结构；Qwen/OLMoE Base–SFT已测；OLMoE旧chat输入差异隔离，E27完整tokenizer与DPO完成，E29知识控制完成，E28/E31强模型边界完成；E32–34自然强度/备选完成；E36/37一句控制完成；E35第三family八槽完成；E38/E39十端点完成；E42截断校对完成；E43自然commitment十端点完成；E45五端点完成且未过task floor；E41强配对与E46分目标完成；E49/E50联合role与续接读数完成、受readout限制；E51dense四stage自然parent等待权重；E52强Qwen配对完成、受质量与顺序限制；E53无损格式审计完成 |
+| D5/D6 | corpus65,716篇、55篇分级论文卡（全文/局部范围逐卡注明）、作者blog与认知/语义/互动地图 | 最新近邻持续更新；[定位](POSITIONING.md)与[形态卡](PAPER_SHAPE.md)，未到candidate |
 
 **下一未知：** 备选表达、说话者知识、交际问题与新证据，分别如何改变对同一个候选含义的判断？先复现自然parent和检查读数稳健性，再问训练阶段是否改变这种条件结构。不维护预设criterion故事，不为GPU占用制造实验。
 
@@ -47,10 +47,14 @@ source workbench/pragmatic-inference-calibration/scripts/env.sh
 "$PRAG_PYTHON" workbench/pragmatic-inference-calibration/scripts/summarize_sampling.py --root "$PRAG_ROOT" --output workbench/pragmatic-inference-calibration/results/E17-sampling-complete-summary.json
 ```
 
-具体参数/结果/失败见E01–E45。raw run禁止覆盖；旧thinking/BF16/target-padding失败原文件保留但隔离。2026-10-02用户授权PROPOSED驻留；没有升ACTIVE/候选或自动关闭territory。
+具体参数/结果/失败见E01–E53。raw run禁止覆盖；旧thinking/BF16/target-padding失败原文件保留但隔离。2026-10-02用户授权PROPOSED驻留；没有升ACTIVE/候选或自动关闭territory。
 
-E23–E25公开cache/浮点/顺序校对只属于测量修复。E26八卡全完成；E27三阶段完整tokenizer与BOS配对全部完成；E29八模型知识控制完成，部分入口/极性不能识别；E30有界数值校对；E28/E31强现代8B/14B全部完成；E32–34自然语料与期望矩阵完整；E36/37单句恢复控制完整；E35固定Mistral Base/Instruct完成资产/完整前缀预检八作业已完成；E38/E39原35200生成完成；E42截断校对完成；E43十端点5280calls完成；E45十独立作业按八锁运行，E41配对14B等待完整权重。任务视角仍是交际证据的条件使用，没有成熟论文claim。
+E23–E25公开cache/浮点/顺序校对只属于测量修复。E26八卡全完成；E27三阶段完整tokenizer与BOS配对全部完成；E29八模型知识控制完成，部分入口/极性不能识别；E30有界数值校对；E28/E31强现代8B/14B全部完成；E32–34自然语料与期望矩阵完整；E36/37单句恢复控制完整；E35固定Mistral Base/Instruct完成资产/完整前缀预检八作业已完成；E38/E39原35200生成完成；E42截断校对完成；E43十端点5280calls完成；E45十独立作业800calls完成但五端点未过无歧义floor；E41配对14B25508完成；E46更强分目标1056完成；E47原人类source/norm核对完成；E48仅数学账户校对；E49/E50共15552原source联合role/readout读数完成、暂不升能力；E51准备dense四stage自然parent配对。任务视角仍是交际证据的条件使用，没有成熟论文claim。
 
 自然IQAP chat方向正确4B/8B/14B为61.33/73.33/85.33%，但完整候选terminal与无QA词汇prior有明显影响。Circa条件回答多数能正确保留；负强度读数顺序敏感，单句strict可改善强侧同时恶化弱侧，不称能力恢复。两组均未提供通用SDT gold或成熟novel finding。
 
 E42发现5196原非EOS数字中3677延长后变prose，相关旧scalar解释隔离。E43聊天Q3-14B事实64/64、初始意图7/8；分目标八材料效应与全部缺失bounds已保存，尚无跨family/readout能力finding。原源、人类规范与paper ownership分开，最新读数优先审bug与task floor。
+
+深读补充：Mayn2025正文/附录/原models.R、Weak Evidence2022最终正文/关键代码、NMI2026公开v3正文主线/Methods、Confidence-Commitment2026核心论证/方法/Fig9、Roleplay2026正文主线、SDA2026重点章节；未读补充/代码与photo迁移限制明确。下一未知是speaker表达选择预测能否约束listener解释；generic Knowing vs Using、confidence/criterion分离与role asymmetry都有近邻，不卖空白或新metric。E49文本迁移与派生speaker任务仍非精确human effect复现，E50自然续接不是透明knowledge探针。
+
+E52强Q25自然配对4064完成：IQAP方向上升与人类四类Brier变差同存，但Base candidate mass极低、Instr null prior偏probable，不能能力归因。E53只审计无损格式，不改E49 primary；四endpoint恢复大量有效列表但控制仍未共同成功。E51八槽已排队等官方固定权重，有限collector自动核对汇总、不自动升级claim或开新实验。

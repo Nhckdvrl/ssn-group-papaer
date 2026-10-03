@@ -1,0 +1,6492 @@
+{
+  "models": {
+    "Qwen2.5-14B": {
+      "run": "E41-projection-Qwen2.5-14B",
+      "config_sha256": "1aafbf2966d8f2ea4a8821b4d607797f5852a2e3ebe4958dc3025b979c266edc",
+      "input_token_hashes": {
+        "bare": "b10660883ab828747b8cb791ea1caf69ba6ee8a0e264a3834f31f87cf1c1d6a0",
+        "common-chat": "0e8ca4d60bdb5aa045ac83f43ef87b9accca4e1593555189d499d634633b0c51"
+      },
+      "description": {
+        "bare/prior/p": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7266230496828779,
+            "ci95": [
+              0.7006482432519803,
+              0.7512755319792671
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/prior/not_p": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40
+        },
+        "bare/projection/p": {
+          "n": 840,
+          "valid_n": 0,
+          "human_n": 800,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6795010420268048,
+            "ci95": [
+              0.6706278315937025,
+              0.6884522995417572
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/acknowledge": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6274446348994143,
+            "ci95": [
+              0.5957425287671886,
+              0.661969736612448
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/admit": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6344080939893441,
+            "ci95": [
+              0.6024503031343657,
+              0.6704210200216449
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/announce": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.608195716089466,
+            "ci95": [
+              0.5859404315476192,
+              0.6304964441287879
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/annoyed": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7344546176046176,
+            "ci95": [
+              0.6980686868686867,
+              0.7692924519751082
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/right": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7308851266788766,
+            "ci95": [
+              0.696230967834249,
+              0.7646495014880953
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/confess": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6098246767121767,
+            "ci95": [
+              0.5845083022186146,
+              0.6361276667256355
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/confirm": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7001291826229326,
+            "ci95": [
+              0.6668693096833721,
+              0.7315304094516595
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/demonstrate": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6509351630803837,
+            "ci95": [
+              0.6163596782955607,
+              0.6863717439759995
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/discover": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6578685932123431,
+            "ci95": [
+              0.6287959260010823,
+              0.6882857068972694
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/establish": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6735359487734487,
+            "ci95": [
+              0.6488328354978354,
+              0.6990509871031747
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/hear": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6801114010989011,
+            "ci95": [
+              0.6523172145562771,
+              0.7095715228868353
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/inform": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.693010649685282,
+            "ci95": [
+              0.6609353885942488,
+              0.7246288718093589
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/know": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7027110209235209,
+            "ci95": [
+              0.6752403102453103,
+              0.7305492685786436
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/pretend": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.75584539002664,
+            "ci95": [
+              0.7241421518759018,
+              0.7837216786685537
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/prove": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6755756177849928,
+            "ci95": [
+              0.6433711370400433,
+              0.7071744331709957
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/reveal": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6301024801587303,
+            "ci95": [
+              0.6011715203373016,
+              0.6618018402777778
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/say": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7101546502109002,
+            "ci95": [
+              0.6805789386308136,
+              0.7398814384053446
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/see": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6758639880952381,
+            "ci95": [
+              0.6482955654761904,
+              0.7044290749007937
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/suggest": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7181904761904763,
+            "ci95": [
+              0.6931625401334777,
+              0.7450535078463203
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/think": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7207734126984127,
+            "ci95": [
+              0.6974739136904761,
+              0.742461902281746
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/polar": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40
+        },
+        "bare/projection/not_p": {
+          "n": 840,
+          "valid_n": 0,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840
+        },
+        "common-chat/prior/p": {
+          "n": 40,
+          "valid_n": 2,
+          "human_n": 40,
+          "valid_human_n": 2,
+          "numeric_valid_terminated_by_eos_n": 2,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.05,
+            "ci95": [
+              0.0,
+              0.125
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 38,
+          "valid_only_mean_rating": 0.005,
+          "valid_only_human_mae": 0.2232586466165415,
+          "valid_only_human_pearson": 1.0,
+          "all_human_mae_lower_bound": {
+            "mean": 0.011162932330827074,
+            "ci95": [
+              0.0,
+              0.02799879699248122
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.699198914344532,
+            "ci95": [
+              0.6508257176932262,
+              0.7411227275432819
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/prior/not_p": {
+          "n": 40,
+          "valid_n": 10,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 10,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.25,
+            "ci95": [
+              0.125,
+              0.4
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 30,
+          "valid_only_mean_rating": 0.5980000000000001
+        },
+        "common-chat/projection/p": {
+          "n": 840,
+          "valid_n": 6,
+          "human_n": 800,
+          "valid_human_n": 5,
+          "numeric_valid_terminated_by_eos_n": 6,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.007142857142857143,
+            "ci95": [
+              0.0,
+              0.016666666666666663
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 834,
+          "valid_only_mean_rating": 0.5,
+          "valid_only_human_mae": 0.3242901960784314,
+          "valid_only_human_pearson": null,
+          "all_human_mae_lower_bound": {
+            "mean": 0.002026813725490196,
+            "ci95": [
+              0.0,
+              0.004643332107843125
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6763760420268048,
+            "ci95": [
+              0.6675863588675928,
+              0.6856125818113669
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/acknowledge": {
+          "n": 40,
+          "valid_n": 2,
+          "human_n": 40,
+          "valid_human_n": 2,
+          "numeric_valid_terminated_by_eos_n": 2,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.05,
+            "ci95": [
+              0.0,
+              0.125
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 38,
+          "valid_only_mean_rating": 0.5,
+          "valid_only_human_mae": 0.22905882352941181,
+          "valid_only_human_pearson": null,
+          "all_human_mae_lower_bound": {
+            "mean": 0.011452941176470591,
+            "ci95": [
+              0.0,
+              0.02975882352941177
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6024446348994144,
+            "ci95": [
+              0.5643994671504964,
+              0.6426031073471055
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/admit": {
+          "n": 40,
+          "valid_n": 1,
+          "human_n": 40,
+          "valid_human_n": 1,
+          "numeric_valid_terminated_by_eos_n": 1,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.025,
+            "ci95": [
+              0.0,
+              0.075
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 39,
+          "valid_only_mean_rating": 0.5,
+          "valid_only_human_mae": 0.43999999999999995,
+          "valid_only_human_pearson": null,
+          "all_human_mae_lower_bound": {
+            "mean": 0.011,
+            "ci95": [
+              0.0,
+              0.032999999999999995
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.621908093989344,
+            "ci95": [
+              0.5974794163648851,
+              0.6495426759698634
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/announce": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.608195716089466,
+            "ci95": [
+              0.5859404315476192,
+              0.6304964441287879
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/annoyed": {
+          "n": 40,
+          "valid_n": 1,
+          "human_n": 40,
+          "valid_human_n": 1,
+          "numeric_valid_terminated_by_eos_n": 1,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.025,
+            "ci95": [
+              0.0,
+              0.075
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 39,
+          "valid_only_mean_rating": 0.5,
+          "valid_only_human_mae": 0.47,
+          "valid_only_human_pearson": null,
+          "all_human_mae_lower_bound": {
+            "mean": 0.01175,
+            "ci95": [
+              0.0,
+              0.03525
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7219546176046177,
+            "ci95": [
+              0.6782261280212842,
+              0.7611413767135642
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/right": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7308851266788766,
+            "ci95": [
+              0.696230967834249,
+              0.7646495014880953
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/confess": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6098246767121767,
+            "ci95": [
+              0.5845083022186146,
+              0.6361276667256355
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/confirm": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7001291826229326,
+            "ci95": [
+              0.6668693096833721,
+              0.7315304094516595
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/demonstrate": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6509351630803837,
+            "ci95": [
+              0.6163596782955607,
+              0.6863717439759995
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/discover": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6578685932123431,
+            "ci95": [
+              0.6287959260010823,
+              0.6882857068972694
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/establish": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6735359487734487,
+            "ci95": [
+              0.6488328354978354,
+              0.6990509871031747
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/hear": {
+          "n": 40,
+          "valid_n": 1,
+          "human_n": 40,
+          "valid_human_n": 1,
+          "numeric_valid_terminated_by_eos_n": 1,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.025,
+            "ci95": [
+              0.0,
+              0.075
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 39,
+          "valid_only_mean_rating": 0.5,
+          "valid_only_human_mae": 0.2533333333333333,
+          "valid_only_human_pearson": null,
+          "all_human_mae_lower_bound": {
+            "mean": 0.006333333333333332,
+            "ci95": [
+              0.0,
+              0.018999999999999996
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.667611401098901,
+            "ci95": [
+              0.6311595396270395,
+              0.7040104180888556
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/inform": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.693010649685282,
+            "ci95": [
+              0.6609353885942488,
+              0.7246288718093589
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/know": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7027110209235209,
+            "ci95": [
+              0.6752403102453103,
+              0.7305492685786436
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/pretend": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.75584539002664,
+            "ci95": [
+              0.7241421518759018,
+              0.7837216786685537
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/prove": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6755756177849928,
+            "ci95": [
+              0.6433711370400433,
+              0.7071744331709957
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/reveal": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6301024801587303,
+            "ci95": [
+              0.6011715203373016,
+              0.6618018402777778
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/say": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7101546502109002,
+            "ci95": [
+              0.6805789386308136,
+              0.7398814384053446
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/see": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6758639880952381,
+            "ci95": [
+              0.6482955654761904,
+              0.7044290749007937
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/suggest": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7181904761904763,
+            "ci95": [
+              0.6931625401334777,
+              0.7450535078463203
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/think": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7207734126984127,
+            "ci95": [
+              0.6974739136904761,
+              0.742461902281746
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/polar": {
+          "n": 40,
+          "valid_n": 1,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 1,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.025,
+            "ci95": [
+              0.0,
+              0.075
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 39,
+          "valid_only_mean_rating": 0.5
+        },
+        "common-chat/projection/not_p": {
+          "n": 840,
+          "valid_n": 2,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 2,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0023809523809523807,
+            "ci95": [
+              0.0,
+              0.007142857142857143
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 838,
+          "valid_only_mean_rating": 0.25
+        }
+      },
+      "actual_fact_effects": {
+        "bare/prior/p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.4532460993657558,
+            "ci95": [
+              0.40129648650396094,
+              0.5025510639585343
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/prior/not_p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1778225309820898,
+            "ci95": [
+              0.09686783937059668,
+              0.26317917019459297
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.20924896353646352,
+            "ci95": [
+              0.1258038201381952,
+              0.2981466653138527
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09445477994227995,
+            "ci95": [
+              0.023760703012265526,
+              0.1657193411796537
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1432704184704185,
+            "ci95": [
+              0.07626472222222223,
+              0.20806338789682538
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1313115231990232,
+            "ci95": [
+              0.06120913728632479,
+              0.20959047199328443
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.13355255855255854,
+            "ci95": [
+              0.058144993235930725,
+              0.2098969289044288
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.10829917443667443,
+            "ci95": [
+              0.0255005551046176,
+              0.18674177995615493
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.18610365949410065,
+            "ci95": [
+              0.11870574569221631,
+              0.2583152871944232
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15066748945498948,
+            "ci95": [
+              0.08269382440476193,
+              0.22033751769064266
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.18698221500721499,
+            "ci95": [
+              0.1195172082431457,
+              0.2561046415043289
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.16074704462204462,
+            "ci95": [
+              0.0869733884171384,
+              0.24292719454156952
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.19126015218441694,
+            "ci95": [
+              0.08610175173070397,
+              0.30030063200280094
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.05062521645021645,
+            "ci95": [
+              -0.02867854617604618,
+              0.12896875360750357
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09663641497391498,
+            "ci95": [
+              0.03631589982933731,
+              0.16064659958097455
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15067345779220778,
+            "ci95": [
+              0.08949730068542566,
+              0.2114331613005051
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15493710317460319,
+            "ci95": [
+              0.054124875992063504,
+              0.2606025446428571
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.17306847735597736,
+            "ci95": [
+              0.11244056863275613,
+              0.2338414738386613
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.07854186507936507,
+            "ci95": [
+              -0.005679761904761944,
+              0.16170881448412688
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09989761904761904,
+            "ci95": [
+              0.039809390782828254,
+              0.16531766865079361
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.2078059523809524,
+            "ci95": [
+              0.14365956845238093,
+              0.27258114583333326
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/prior/p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.4532460993657558,
+            "ci95": [
+              0.40129648650396094,
+              0.5025510639585343
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/prior/not_p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 2,
+          "valid_only_high_minus_low": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 2
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.9,
+            0.9
+          ]
+        },
+        "common-chat/projection/p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1778225309820898,
+            "ci95": [
+              0.09686783937059668,
+              0.26317917019459297
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.20924896353646352,
+            "ci95": [
+              0.1258038201381952,
+              0.2981466653138527
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09445477994227995,
+            "ci95": [
+              0.023760703012265526,
+              0.1657193411796537
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1432704184704185,
+            "ci95": [
+              0.07626472222222223,
+              0.20806338789682538
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1313115231990232,
+            "ci95": [
+              0.06120913728632479,
+              0.20959047199328443
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.13355255855255854,
+            "ci95": [
+              0.058144993235930725,
+              0.2098969289044288
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.10829917443667443,
+            "ci95": [
+              0.0255005551046176,
+              0.18674177995615493
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.18610365949410065,
+            "ci95": [
+              0.11870574569221631,
+              0.2583152871944232
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15066748945498948,
+            "ci95": [
+              0.08269382440476193,
+              0.22033751769064266
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.18698221500721499,
+            "ci95": [
+              0.1195172082431457,
+              0.2561046415043289
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.16074704462204462,
+            "ci95": [
+              0.0869733884171384,
+              0.24292719454156952
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.19126015218441694,
+            "ci95": [
+              0.08610175173070397,
+              0.30030063200280094
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.05062521645021645,
+            "ci95": [
+              -0.02867854617604618,
+              0.12896875360750357
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09663641497391498,
+            "ci95": [
+              0.03631589982933731,
+              0.16064659958097455
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15067345779220778,
+            "ci95": [
+              0.08949730068542566,
+              0.2114331613005051
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15493710317460319,
+            "ci95": [
+              0.054124875992063504,
+              0.2606025446428571
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.17306847735597736,
+            "ci95": [
+              0.11244056863275613,
+              0.2338414738386613
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.07854186507936507,
+            "ci95": [
+              -0.005679761904761944,
+              0.16170881448412688
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09989761904761904,
+            "ci95": [
+              0.039809390782828254,
+              0.16531766865079361
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.2078059523809524,
+            "ci95": [
+              0.14365956845238093,
+              0.27258114583333326
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/projection/not_p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        }
+      },
+      "primary_requires_eos": true,
+      "short_numeric_prefix_diagnostic": {
+        "bare/prior/p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 40,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "valid_only_mean_rating": 0.43324999999999997,
+          "valid_only_human_mae": 0.18765554955469982,
+          "valid_only_human_pearson": 0.89601280457941,
+          "all_human_mae_lower_bound": {
+            "mean": 0.18765554955469982,
+            "ci95": [
+              0.16320332946471822,
+              0.21483057655893423
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.18765554955469982,
+            "ci95": [
+              0.16320332946471822,
+              0.21483057655893423
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/prior/not_p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 40,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "valid_only_mean_rating": 0.73275
+        },
+        "bare/projection/p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 800,
+          "valid_human_n": 800,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 840,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840,
+          "valid_only_mean_rating": 0.04375,
+          "valid_only_human_mae": 0.42728844819702355,
+          "valid_only_human_pearson": 0.3330456806684714,
+          "all_human_mae_lower_bound": {
+            "mean": 0.42728844819702355,
+            "ci95": [
+              0.40773242141972615,
+              0.44330936512425484
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.42728844819702355,
+            "ci95": [
+              0.40773242141972615,
+              0.44330936512425484
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/projection/not_p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 840,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840,
+          "valid_only_mean_rating": 0.018452380952380953
+        },
+        "common-chat/prior/p": {
+          "n": 40,
+          "valid_n": 18,
+          "human_n": 40,
+          "valid_human_n": 18,
+          "numeric_valid_terminated_by_eos_n": 2,
+          "numeric_valid_without_eos_n": 16,
+          "valid_fraction": {
+            "mean": 0.45,
+            "ci95": [
+              0.275,
+              0.625
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 38,
+          "valid_only_mean_rating": 0.2827777777777778,
+          "valid_only_human_mae": 0.21850359071622172,
+          "valid_only_human_pearson": 0.7753255017221186,
+          "all_human_mae_lower_bound": {
+            "mean": 0.09832661582229978,
+            "ci95": [
+              0.05215969352103738,
+              0.15253337028583283
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.49594677742795035,
+            "ci95": [
+              0.40958062507421017,
+              0.58950619165378
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/prior/not_p": {
+          "n": 40,
+          "valid_n": 36,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 10,
+          "numeric_valid_without_eos_n": 26,
+          "valid_fraction": {
+            "mean": 0.9,
+            "ci95": [
+              0.775,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 30,
+          "valid_only_mean_rating": 0.7230555555555555
+        },
+        "common-chat/projection/p": {
+          "n": 840,
+          "valid_n": 837,
+          "human_n": 800,
+          "valid_human_n": 797,
+          "numeric_valid_terminated_by_eos_n": 6,
+          "numeric_valid_without_eos_n": 831,
+          "valid_fraction": {
+            "mean": 0.9964285714285716,
+            "ci95": [
+              0.9928571428571427,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 834,
+          "valid_only_mean_rating": 0.024133811230585424,
+          "valid_only_human_mae": 0.44699621176893484,
+          "valid_only_human_pearson": 0.2395783956654022,
+          "all_human_mae_lower_bound": {
+            "mean": 0.44531997597480133,
+            "ci95": [
+              0.4309061664055921,
+              0.45955928557456643
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.4482216426414681,
+            "ci95": [
+              0.4347092319682207,
+              0.46117938507739203
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/projection/not_p": {
+          "n": 840,
+          "valid_n": 810,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 2,
+          "numeric_valid_without_eos_n": 808,
+          "valid_fraction": {
+            "mean": 0.9642857142857142,
+            "ci95": [
+              0.894047619047619,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 838,
+          "valid_only_mean_rating": 0.018222222222222223
+        }
+      }
+    },
+    "Qwen2.5-14B-Instruct": {
+      "run": "E41-projection-Qwen2.5-14B-Instruct",
+      "config_sha256": "2865ba6692b309bf0114eb8e804f4eeaf39dc66d456d7b8a6fdcdc18c0938f54",
+      "input_token_hashes": {
+        "bare": "b10660883ab828747b8cb791ea1caf69ba6ee8a0e264a3834f31f87cf1c1d6a0",
+        "common-chat": "0e8ca4d60bdb5aa045ac83f43ef87b9accca4e1593555189d499d634633b0c51"
+      },
+      "description": {
+        "bare/prior/p": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7266230496828779,
+            "ci95": [
+              0.7006482432519803,
+              0.7512755319792671
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/prior/not_p": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40
+        },
+        "bare/projection/p": {
+          "n": 840,
+          "valid_n": 0,
+          "human_n": 800,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6795010420268048,
+            "ci95": [
+              0.6706278315937025,
+              0.6884522995417572
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/acknowledge": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6274446348994143,
+            "ci95": [
+              0.5957425287671886,
+              0.661969736612448
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/admit": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6344080939893441,
+            "ci95": [
+              0.6024503031343657,
+              0.6704210200216449
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/announce": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.608195716089466,
+            "ci95": [
+              0.5859404315476192,
+              0.6304964441287879
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/annoyed": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7344546176046176,
+            "ci95": [
+              0.6980686868686867,
+              0.7692924519751082
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/right": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7308851266788766,
+            "ci95": [
+              0.696230967834249,
+              0.7646495014880953
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/confess": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6098246767121767,
+            "ci95": [
+              0.5845083022186146,
+              0.6361276667256355
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/confirm": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7001291826229326,
+            "ci95": [
+              0.6668693096833721,
+              0.7315304094516595
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/demonstrate": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6509351630803837,
+            "ci95": [
+              0.6163596782955607,
+              0.6863717439759995
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/discover": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6578685932123431,
+            "ci95": [
+              0.6287959260010823,
+              0.6882857068972694
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/establish": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6735359487734487,
+            "ci95": [
+              0.6488328354978354,
+              0.6990509871031747
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/hear": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6801114010989011,
+            "ci95": [
+              0.6523172145562771,
+              0.7095715228868353
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/inform": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.693010649685282,
+            "ci95": [
+              0.6609353885942488,
+              0.7246288718093589
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/know": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7027110209235209,
+            "ci95": [
+              0.6752403102453103,
+              0.7305492685786436
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/pretend": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.75584539002664,
+            "ci95": [
+              0.7241421518759018,
+              0.7837216786685537
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/prove": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6755756177849928,
+            "ci95": [
+              0.6433711370400433,
+              0.7071744331709957
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/reveal": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6301024801587303,
+            "ci95": [
+              0.6011715203373016,
+              0.6618018402777778
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/say": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7101546502109002,
+            "ci95": [
+              0.6805789386308136,
+              0.7398814384053446
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/see": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.6758639880952381,
+            "ci95": [
+              0.6482955654761904,
+              0.7044290749007937
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/suggest": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7181904761904763,
+            "ci95": [
+              0.6931625401334777,
+              0.7450535078463203
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/think": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 40,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "all_human_mae_lower_bound": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.7207734126984127,
+            "ci95": [
+              0.6974739136904761,
+              0.742461902281746
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/predicate/polar": {
+          "n": 40,
+          "valid_n": 0,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40
+        },
+        "bare/projection/not_p": {
+          "n": 840,
+          "valid_n": 0,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840
+        },
+        "common-chat/prior/p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.45675,
+          "valid_only_human_mae": 0.143181183162792,
+          "valid_only_human_pearson": 0.8812381418221288,
+          "all_human_mae_lower_bound": {
+            "mean": 0.143181183162792,
+            "ci95": [
+              0.11482145818058792,
+              0.17027767303645652
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.143181183162792,
+            "ci95": [
+              0.11482145818058792,
+              0.17027767303645652
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/prior/not_p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.67225
+        },
+        "common-chat/projection/p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 800,
+          "valid_human_n": 800,
+          "numeric_valid_terminated_by_eos_n": 840,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.2541666666666667,
+          "valid_only_human_mae": 0.2539862267726146,
+          "valid_only_human_pearson": 0.4484517583139628,
+          "all_human_mae_lower_bound": {
+            "mean": 0.2539862267726146,
+            "ci95": [
+              0.23233249752938032,
+              0.278988478896767
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.2539862267726146,
+            "ci95": [
+              0.23233249752938032,
+              0.278988478896767
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/acknowledge": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.36875,
+          "valid_only_human_mae": 0.2963778218105424,
+          "valid_only_human_pearson": 0.270907191443218,
+          "all_human_mae_lower_bound": {
+            "mean": 0.29637782181054234,
+            "ci95": [
+              0.23141743754509386,
+              0.3631856112463924
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.29637782181054234,
+            "ci95": [
+              0.23141743754509386,
+              0.3631856112463924
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/admit": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.275,
+          "valid_only_human_mae": 0.26506035839160835,
+          "valid_only_human_pearson": 0.4320063710365618,
+          "all_human_mae_lower_bound": {
+            "mean": 0.2650603583916084,
+            "ci95": [
+              0.2260623740842491,
+              0.31013397040459534
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.2650603583916084,
+            "ci95": [
+              0.2260623740842491,
+              0.31013397040459534
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/announce": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.21375000000000002,
+          "valid_only_human_mae": 0.27241645923520924,
+          "valid_only_human_pearson": 0.3927894318126337,
+          "all_human_mae_lower_bound": {
+            "mean": 0.2724164592352093,
+            "ci95": [
+              0.2354021989989178,
+              0.30976995062229434
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.2724164592352093,
+            "ci95": [
+              0.2354021989989178,
+              0.30976995062229434
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/annoyed": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.47874999999999995,
+          "valid_only_human_mae": 0.3377966810966811,
+          "valid_only_human_pearson": 0.1403427268011911,
+          "all_human_mae_lower_bound": {
+            "mean": 0.337796681096681,
+            "ci95": [
+              0.25483059230699856,
+              0.4171361153950217
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.337796681096681,
+            "ci95": [
+              0.25483059230699856,
+              0.4171361153950217
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/right": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.24375,
+          "valid_only_human_mae": 0.12643314255189256,
+          "valid_only_human_pearson": 0.12035157457949248,
+          "all_human_mae_lower_bound": {
+            "mean": 0.12643314255189256,
+            "ci95": [
+              0.09651749275030523,
+              0.1586551043574481
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.12643314255189256,
+            "ci95": [
+              0.09651749275030523,
+              0.1586551043574481
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/confess": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.25,
+          "valid_only_human_mae": 0.27410801004551005,
+          "valid_only_human_pearson": 0.3957430434764303,
+          "all_human_mae_lower_bound": {
+            "mean": 0.27410801004551005,
+            "ci95": [
+              0.2175281514145577,
+              0.3260682867306305
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.27410801004551005,
+            "ci95": [
+              0.2175281514145577,
+              0.3260682867306305
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/confirm": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.22249999999999998,
+          "valid_only_human_mae": 0.1378972062659563,
+          "valid_only_human_pearson": 0.09142793453670996,
+          "all_human_mae_lower_bound": {
+            "mean": 0.13789720626595628,
+            "ci95": [
+              0.10309369972041847,
+              0.17508018504065379
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.13789720626595628,
+            "ci95": [
+              0.10309369972041847,
+              0.17508018504065379
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/demonstrate": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.24,
+          "valid_only_human_mae": 0.17717430661658604,
+          "valid_only_human_pearson": 0.6822085689384851,
+          "all_human_mae_lower_bound": {
+            "mean": 0.17717430661658604,
+            "ci95": [
+              0.1494784101254138,
+              0.20641894553465323
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.17717430661658604,
+            "ci95": [
+              0.1494784101254138,
+              0.20641894553465323
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/discover": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.30375,
+          "valid_only_human_mae": 0.348049744005994,
+          "valid_only_human_pearson": 0.43427556148109137,
+          "all_human_mae_lower_bound": {
+            "mean": 0.34804974400599403,
+            "ci95": [
+              0.29823008094336223,
+              0.3960988821248196
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.34804974400599403,
+            "ci95": [
+              0.29823008094336223,
+              0.3960988821248196
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/establish": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.21624999999999997,
+          "valid_only_human_mae": 0.18293766233766234,
+          "valid_only_human_pearson": 0.4330565371338414,
+          "all_human_mae_lower_bound": {
+            "mean": 0.18293766233766232,
+            "ci95": [
+              0.13863762310606056,
+              0.2263243305826118
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.18293766233766232,
+            "ci95": [
+              0.13863762310606056,
+              0.2263243305826118
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/hear": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.24000000000000005,
+          "valid_only_human_mae": 0.39860339244089243,
+          "valid_only_human_pearson": 0.321680071278834,
+          "all_human_mae_lower_bound": {
+            "mean": 0.3986033924408925,
+            "ci95": [
+              0.3449138885073261,
+              0.44679060609529364
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.3986033924408925,
+            "ci95": [
+              0.3449138885073261,
+              0.44679060609529364
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/inform": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.21875,
+          "valid_only_human_mae": 0.43816367166330406,
+          "valid_only_human_pearson": 0.18351501208757126,
+          "all_human_mae_lower_bound": {
+            "mean": 0.43816367166330394,
+            "ci95": [
+              0.3881511769653957,
+              0.4907376209676761
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.43816367166330394,
+            "ci95": [
+              0.3881511769653957,
+              0.4907376209676761
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/know": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.46624999999999994,
+          "valid_only_human_mae": 0.3607564393939394,
+          "valid_only_human_pearson": 0.08826386446297199,
+          "all_human_mae_lower_bound": {
+            "mean": 0.3607564393939394,
+            "ci95": [
+              0.28955787923881676,
+              0.43738673205266965
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.3607564393939394,
+            "ci95": [
+              0.28955787923881676,
+              0.43738673205266965
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/pretend": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.11750000000000001,
+          "valid_only_human_mae": 0.16535738775113776,
+          "valid_only_human_pearson": 0.23970472460515155,
+          "all_human_mae_lower_bound": {
+            "mean": 0.16535738775113776,
+            "ci95": [
+              0.12705827420843047,
+              0.20996407020063265
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.16535738775113776,
+            "ci95": [
+              0.12705827420843047,
+              0.20996407020063265
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/prove": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.185,
+          "valid_only_human_mae": 0.16169075126262628,
+          "valid_only_human_pearson": 0.5720034152532132,
+          "all_human_mae_lower_bound": {
+            "mean": 0.16169075126262628,
+            "ci95": [
+              0.132546544011544,
+              0.19309197206439388
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.16169075126262628,
+            "ci95": [
+              0.132546544011544,
+              0.19309197206439388
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/reveal": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.22374999999999998,
+          "valid_only_human_mae": 0.334053869047619,
+          "valid_only_human_pearson": 0.39547901576688993,
+          "all_human_mae_lower_bound": {
+            "mean": 0.3340538690476191,
+            "ci95": [
+              0.2933993154761906,
+              0.3723975347222222
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.3340538690476191,
+            "ci95": [
+              0.2933993154761906,
+              0.3723975347222222
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/say": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.16875,
+          "valid_only_human_mae": 0.15080090534465534,
+          "valid_only_human_pearson": 0.3944429485923181,
+          "all_human_mae_lower_bound": {
+            "mean": 0.15080090534465534,
+            "ci95": [
+              0.12221953706016207,
+              0.17839554180194803
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.15080090534465534,
+            "ci95": [
+              0.12221953706016207,
+              0.17839554180194803
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/see": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.39624999999999994,
+          "valid_only_human_mae": 0.33415962301587304,
+          "valid_only_human_pearson": 0.3752535325464994,
+          "all_human_mae_lower_bound": {
+            "mean": 0.33415962301587293,
+            "ci95": [
+              0.2776712450396825,
+              0.3863995907738094
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.33415962301587293,
+            "ci95": [
+              0.2776712450396825,
+              0.3863995907738094
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/suggest": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.1525,
+          "valid_only_human_mae": 0.1409831349206349,
+          "valid_only_human_pearson": 0.5017928237031073,
+          "all_human_mae_lower_bound": {
+            "mean": 0.14098313492063494,
+            "ci95": [
+              0.11231657941017317,
+              0.17108927308802307
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.14098313492063494,
+            "ci95": [
+              0.11231657941017317,
+              0.17108927308802307
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/think": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.14375,
+          "valid_only_human_mae": 0.17690396825396826,
+          "valid_only_human_pearson": 0.486764294626189,
+          "all_human_mae_lower_bound": {
+            "mean": 0.17690396825396829,
+            "ci95": [
+              0.14104426587301588,
+              0.21511836061507936
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.17690396825396829,
+            "ci95": [
+              0.14104426587301588,
+              0.21511836061507936
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/predicate/polar": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.2125
+        },
+        "common-chat/projection/not_p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 840,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.26422619047619045
+        }
+      },
+      "actual_fact_effects": {
+        "bare/prior/p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.4532460993657558,
+            "ci95": [
+              0.40129648650396094,
+              0.5025510639585343
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/prior/not_p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1778225309820898,
+            "ci95": [
+              0.09686783937059668,
+              0.26317917019459297
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.20924896353646352,
+            "ci95": [
+              0.1258038201381952,
+              0.2981466653138527
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09445477994227995,
+            "ci95": [
+              0.023760703012265526,
+              0.1657193411796537
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1432704184704185,
+            "ci95": [
+              0.07626472222222223,
+              0.20806338789682538
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.1313115231990232,
+            "ci95": [
+              0.06120913728632479,
+              0.20959047199328443
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.13355255855255854,
+            "ci95": [
+              0.058144993235930725,
+              0.2098969289044288
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.10829917443667443,
+            "ci95": [
+              0.0255005551046176,
+              0.18674177995615493
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.18610365949410065,
+            "ci95": [
+              0.11870574569221631,
+              0.2583152871944232
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15066748945498948,
+            "ci95": [
+              0.08269382440476193,
+              0.22033751769064266
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.18698221500721499,
+            "ci95": [
+              0.1195172082431457,
+              0.2561046415043289
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.16074704462204462,
+            "ci95": [
+              0.0869733884171384,
+              0.24292719454156952
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.19126015218441694,
+            "ci95": [
+              0.08610175173070397,
+              0.30030063200280094
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.05062521645021645,
+            "ci95": [
+              -0.02867854617604618,
+              0.12896875360750357
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09663641497391498,
+            "ci95": [
+              0.03631589982933731,
+              0.16064659958097455
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15067345779220778,
+            "ci95": [
+              0.08949730068542566,
+              0.2114331613005051
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.15493710317460319,
+            "ci95": [
+              0.054124875992063504,
+              0.2606025446428571
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.17306847735597736,
+            "ci95": [
+              0.11244056863275613,
+              0.2338414738386613
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.07854186507936507,
+            "ci95": [
+              -0.005679761904761944,
+              0.16170881448412688
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.09989761904761904,
+            "ci95": [
+              0.039809390782828254,
+              0.16531766865079361
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": {
+            "mean": 0.2078059523809524,
+            "ci95": [
+              0.14365956845238093,
+              0.27258114583333326
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "bare/projection/not_p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 0,
+          "valid_only_high_minus_low": null,
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -1.0,
+            1.0
+          ]
+        },
+        "common-chat/prior/p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.5514999999999999,
+            "ci95": [
+              0.4339375,
+              0.6665
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.4532460993657558,
+            "ci95": [
+              0.40129648650396094,
+              0.5025510639585343
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.5515,
+            0.5515
+          ]
+        },
+        "common-chat/prior/not_p/prior": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.3895,
+            "ci95": [
+              -0.5220125,
+              -0.2619625000000002
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.3895,
+            -0.3895
+          ]
+        },
+        "common-chat/projection/p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.22749999999999998,
+            "ci95": [
+              0.09993750000000001,
+              0.36
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.1778225309820898,
+            "ci95": [
+              0.09686783937059668,
+              0.26317917019459297
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.22750000000000004,
+            0.22750000000000004
+          ]
+        },
+        "common-chat/projection/p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.125,
+            "ci95": [
+              0.042499999999999996,
+              0.2225
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.20924896353646352,
+            "ci95": [
+              0.1258038201381952,
+              0.2981466653138527
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.125,
+            0.125
+          ]
+        },
+        "common-chat/projection/p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.14250000000000002,
+            "ci95": [
+              0.05249999999999999,
+              0.25249999999999995
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.09445477994227995,
+            "ci95": [
+              0.023760703012265526,
+              0.1657193411796537
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.14250000000000002,
+            0.14250000000000002
+          ]
+        },
+        "common-chat/projection/p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.25249999999999995,
+            "ci95": [
+              0.1,
+              0.40249999999999997
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.1432704184704185,
+            "ci95": [
+              0.07626472222222223,
+              0.20806338789682538
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.25249999999999995,
+            0.25249999999999995
+          ]
+        },
+        "common-chat/projection/p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.06749999999999999,
+            "ci95": [
+              0.007499999999999995,
+              0.1275
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.1313115231990232,
+            "ci95": [
+              0.06120913728632479,
+              0.20959047199328443
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.06749999999999999,
+            0.06749999999999999
+          ]
+        },
+        "common-chat/projection/p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.135,
+            "ci95": [
+              0.05249999999999999,
+              0.23249999999999998
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.13355255855255854,
+            "ci95": [
+              0.058144993235930725,
+              0.2098969289044288
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.135,
+            0.135
+          ]
+        },
+        "common-chat/projection/p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.06999999999999999,
+            "ci95": [
+              0.009999999999999998,
+              0.13499999999999998
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.10829917443667443,
+            "ci95": [
+              0.0255005551046176,
+              0.18674177995615493
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.06999999999999999,
+            0.06999999999999999
+          ]
+        },
+        "common-chat/projection/p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.185,
+            "ci95": [
+              0.10999999999999999,
+              0.27249999999999996
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.18610365949410065,
+            "ci95": [
+              0.11870574569221631,
+              0.2583152871944232
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.185,
+            0.185
+          ]
+        },
+        "common-chat/projection/p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.26749999999999996,
+            "ci95": [
+              0.15,
+              0.38749999999999996
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.15066748945498948,
+            "ci95": [
+              0.08269382440476193,
+              0.22033751769064266
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.26749999999999996,
+            0.26749999999999996
+          ]
+        },
+        "common-chat/projection/p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.1375,
+            "ci95": [
+              0.057499999999999996,
+              0.24499999999999997
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.18698221500721499,
+            "ci95": [
+              0.1195172082431457,
+              0.2561046415043289
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.1375,
+            0.1375
+          ]
+        },
+        "common-chat/projection/p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.12000000000000002,
+            "ci95": [
+              0.045,
+              0.20256249999999965
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.16074704462204462,
+            "ci95": [
+              0.0869733884171384,
+              0.24292719454156952
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.12000000000000002,
+            0.12000000000000002
+          ]
+        },
+        "common-chat/projection/p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.18750000000000003,
+            "ci95": [
+              0.0975,
+              0.2975624999999996
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.19126015218441694,
+            "ci95": [
+              0.08610175173070397,
+              0.30030063200280094
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.18750000000000003,
+            0.18750000000000003
+          ]
+        },
+        "common-chat/projection/p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.3625,
+            "ci95": [
+              0.22000000000000003,
+              0.5049999999999999
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.05062521645021645,
+            "ci95": [
+              -0.02867854617604618,
+              0.12896875360750357
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.3625,
+            0.3625
+          ]
+        },
+        "common-chat/projection/p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.135,
+            "ci95": [
+              0.075,
+              0.1975
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.09663641497391498,
+            "ci95": [
+              0.03631589982933731,
+              0.16064659958097455
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.135,
+            0.135
+          ]
+        },
+        "common-chat/projection/p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.16,
+            "ci95": [
+              0.09,
+              0.225
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.15067345779220778,
+            "ci95": [
+              0.08949730068542566,
+              0.2114331613005051
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.16,
+            0.16
+          ]
+        },
+        "common-chat/projection/p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.1625,
+            "ci95": [
+              0.0675,
+              0.2750624999999996
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.15493710317460319,
+            "ci95": [
+              0.054124875992063504,
+              0.2606025446428571
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.16250000000000003,
+            0.16250000000000003
+          ]
+        },
+        "common-chat/projection/p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.0875,
+            "ci95": [
+              0.025,
+              0.15
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.17306847735597736,
+            "ci95": [
+              0.11244056863275613,
+              0.2338414738386613
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.0875,
+            0.0875
+          ]
+        },
+        "common-chat/projection/p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.2875,
+            "ci95": [
+              0.1149375,
+              0.45499999999999996
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.07854186507936507,
+            "ci95": [
+              -0.005679761904761944,
+              0.16170881448412688
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.2875,
+            0.2875
+          ]
+        },
+        "common-chat/projection/p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.13,
+            "ci95": [
+              0.075,
+              0.19
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.09989761904761904,
+            "ci95": [
+              0.039809390782828254,
+              0.16531766865079361
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.13,
+            0.13
+          ]
+        },
+        "common-chat/projection/p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.1375,
+            "ci95": [
+              0.0875,
+              0.1875
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": {
+            "mean": 0.2078059523809524,
+            "ci95": [
+              0.14365956845238093,
+              0.27258114583333326
+            ],
+            "clusters": 20
+          },
+          "all_pair_delta_mean_bounds": [
+            0.1375,
+            0.1375
+          ]
+        },
+        "common-chat/projection/p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.15000000000000002,
+            "ci95": [
+              0.0675,
+              0.2425
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            0.15000000000000002,
+            0.15000000000000002
+          ]
+        },
+        "common-chat/projection/not_p/acknowledge": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.06499999999999999,
+            "ci95": [
+              -0.18,
+              0.04
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.06499999999999999,
+            -0.06499999999999999
+          ]
+        },
+        "common-chat/projection/not_p/admit": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.017499999999999998,
+            "ci95": [
+              -0.06499999999999999,
+              0.019999999999999997
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.017499999999999998,
+            -0.017499999999999998
+          ]
+        },
+        "common-chat/projection/not_p/announce": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.0425,
+            "ci95": [
+              -0.11000000000000001,
+              0.025
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.0425,
+            -0.0425
+          ]
+        },
+        "common-chat/projection/not_p/annoyed": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.11749999999999998,
+            "ci95": [
+              -0.255,
+              0.007562499999999662
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.11749999999999998,
+            -0.11749999999999998
+          ]
+        },
+        "common-chat/projection/not_p/right": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.0475,
+            "ci95": [
+              -0.0925,
+              -0.0075000000000000015
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.0475,
+            -0.0475
+          ]
+        },
+        "common-chat/projection/not_p/confess": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.1,
+            "ci95": [
+              -0.1725,
+              -0.03749999999999999
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.1,
+            -0.1
+          ]
+        },
+        "common-chat/projection/not_p/confirm": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.05500000000000001,
+            "ci95": [
+              -0.11000000000000001,
+              -0.0075000000000000015
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.05500000000000001,
+            -0.05500000000000001
+          ]
+        },
+        "common-chat/projection/not_p/demonstrate": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.095,
+            "ci95": [
+              -0.16999999999999998,
+              -0.034999999999999996
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.095,
+            -0.095
+          ]
+        },
+        "common-chat/projection/not_p/discover": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.0225,
+            "ci95": [
+              -0.06999999999999999,
+              0.1125
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            0.0225,
+            0.0225
+          ]
+        },
+        "common-chat/projection/not_p/establish": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.0625,
+            "ci95": [
+              -0.13,
+              0.0024999999999999966
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.0625,
+            -0.0625
+          ]
+        },
+        "common-chat/projection/not_p/hear": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.009999999999999998,
+            "ci95": [
+              -0.03499999999999999,
+              0.014999999999999996
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.009999999999999998,
+            -0.009999999999999998
+          ]
+        },
+        "common-chat/projection/not_p/inform": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": 0.007499999999999998,
+            "ci95": [
+              -0.05249999999999999,
+              0.08499999999999999
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            0.007499999999999998,
+            0.007499999999999998
+          ]
+        },
+        "common-chat/projection/not_p/know": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.09500000000000001,
+            "ci95": [
+              -0.2125,
+              0.01999999999999999
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.095,
+            -0.095
+          ]
+        },
+        "common-chat/projection/not_p/pretend": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.06999999999999999,
+            "ci95": [
+              -0.1325,
+              -0.012500000000000006
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.06999999999999999,
+            -0.06999999999999999
+          ]
+        },
+        "common-chat/projection/not_p/prove": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.039999999999999994,
+            "ci95": [
+              -0.09,
+              0.0075000000000000015
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.039999999999999994,
+            -0.039999999999999994
+          ]
+        },
+        "common-chat/projection/not_p/reveal": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.06499999999999999,
+            "ci95": [
+              -0.15,
+              0.0075000000000000015
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.06499999999999999,
+            -0.06499999999999999
+          ]
+        },
+        "common-chat/projection/not_p/say": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.075,
+            "ci95": [
+              -0.1375,
+              -0.0125
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.075,
+            -0.075
+          ]
+        },
+        "common-chat/projection/not_p/see": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.11750000000000001,
+            "ci95": [
+              -0.2375,
+              -5.551115123125783e-18
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.11750000000000001,
+            -0.11750000000000001
+          ]
+        },
+        "common-chat/projection/not_p/suggest": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.05,
+            "ci95": [
+              -0.1125,
+              0.0125
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.05,
+            -0.05
+          ]
+        },
+        "common-chat/projection/not_p/think": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.0925,
+            "ci95": [
+              -0.16,
+              -0.025
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.0925,
+            -0.0925
+          ]
+        },
+        "common-chat/projection/not_p/polar": {
+          "n_pairs": 20,
+          "valid_pairs": 20,
+          "valid_only_high_minus_low": {
+            "mean": -0.14,
+            "ci95": [
+              -0.27,
+              -0.015000000000000005
+            ],
+            "clusters": 20
+          },
+          "human_high_minus_low": null,
+          "all_pair_delta_mean_bounds": [
+            -0.14,
+            -0.14
+          ]
+        }
+      },
+      "primary_requires_eos": true,
+      "short_numeric_prefix_diagnostic": {
+        "bare/prior/p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 40,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "valid_only_mean_rating": 0.4765,
+          "valid_only_human_mae": 0.15212323748528106,
+          "valid_only_human_pearson": 0.8973905234604448,
+          "all_human_mae_lower_bound": {
+            "mean": 0.15212323748528106,
+            "ci95": [
+              0.1256838613953546,
+              0.17796285607459117
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.15212323748528106,
+            "ci95": [
+              0.1256838613953546,
+              0.17796285607459117
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/prior/not_p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 40,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 40,
+          "valid_only_mean_rating": 0.6795
+        },
+        "bare/projection/p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 800,
+          "valid_human_n": 800,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 840,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840,
+          "valid_only_mean_rating": 0.17458333333333334,
+          "valid_only_human_mae": 0.31840193162127906,
+          "valid_only_human_pearson": 0.4441485005604497,
+          "all_human_mae_lower_bound": {
+            "mean": 0.318401931621279,
+            "ci95": [
+              0.2962980640043933,
+              0.34104337472619806
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.318401931621279,
+            "ci95": [
+              0.2962980640043933,
+              0.34104337472619806
+            ],
+            "clusters": 20
+          }
+        },
+        "bare/projection/not_p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 0,
+          "numeric_valid_without_eos_n": 840,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 840,
+          "valid_only_mean_rating": 0.1679166666666667
+        },
+        "common-chat/prior/p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 40,
+          "valid_human_n": 40,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.45675,
+          "valid_only_human_mae": 0.143181183162792,
+          "valid_only_human_pearson": 0.8812381418221288,
+          "all_human_mae_lower_bound": {
+            "mean": 0.143181183162792,
+            "ci95": [
+              0.11482145818058792,
+              0.17027767303645652
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.143181183162792,
+            "ci95": [
+              0.11482145818058792,
+              0.17027767303645652
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/prior/not_p": {
+          "n": 40,
+          "valid_n": 40,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 40,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.67225
+        },
+        "common-chat/projection/p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 800,
+          "valid_human_n": 800,
+          "numeric_valid_terminated_by_eos_n": 840,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.2541666666666667,
+          "valid_only_human_mae": 0.2539862267726146,
+          "valid_only_human_pearson": 0.4484517583139628,
+          "all_human_mae_lower_bound": {
+            "mean": 0.2539862267726146,
+            "ci95": [
+              0.23233249752938032,
+              0.278988478896767
+            ],
+            "clusters": 20
+          },
+          "all_human_mae_upper_bound": {
+            "mean": 0.2539862267726146,
+            "ci95": [
+              0.23233249752938032,
+              0.278988478896767
+            ],
+            "clusters": 20
+          }
+        },
+        "common-chat/projection/not_p": {
+          "n": 840,
+          "valid_n": 840,
+          "human_n": 0,
+          "valid_human_n": 0,
+          "numeric_valid_terminated_by_eos_n": 840,
+          "numeric_valid_without_eos_n": 0,
+          "valid_fraction": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "clusters": 20
+          },
+          "budget_exhausted_without_eos_n": 0,
+          "valid_only_mean_rating": 0.26422619047619045
+        }
+      }
+    }
+  },
+  "paired_stage_size_changes": {
+    "Qwen2.5-14B -> Qwen2.5-14B-Instruct": {
+      "bare/prior/p": {
+        "n_original_human_rows": 40,
+        "n_pair_valid": 0,
+        "valid_only_item_average_mae_delta": null,
+        "all_human_item_average_mae_delta_lower_bound": {
+          "mean": -0.7266230496828779,
+          "ci95": [
+            -0.7512755319792671,
+            -0.7006482432519803
+          ],
+          "clusters": 20
+        },
+        "all_human_item_average_mae_delta_upper_bound": {
+          "mean": 0.7266230496828779,
+          "ci95": [
+            0.7006482432519803,
+            0.7512755319792671
+          ],
+          "clusters": 20
+        }
+      },
+      "bare/projection/p": {
+        "n_original_human_rows": 800,
+        "n_pair_valid": 0,
+        "valid_only_item_average_mae_delta": null,
+        "all_human_item_average_mae_delta_lower_bound": {
+          "mean": -0.6795010420268048,
+          "ci95": [
+            -0.6884522995417572,
+            -0.6706278315937027
+          ],
+          "clusters": 20
+        },
+        "all_human_item_average_mae_delta_upper_bound": {
+          "mean": 0.6795010420268048,
+          "ci95": [
+            0.6706278315937027,
+            0.6884522995417572
+          ],
+          "clusters": 20
+        }
+      },
+      "common-chat/prior/p": {
+        "n_original_human_rows": 40,
+        "n_pair_valid": 2,
+        "valid_only_item_average_mae_delta": {
+          "mean": -0.0049999999999999906,
+          "ci95": [
+            -0.009999999999999981,
+            0.0
+          ],
+          "clusters": 2
+        },
+        "all_human_item_average_mae_delta_lower_bound": {
+          "mean": -0.55601773118174,
+          "ci95": [
+            -0.6154697454074576,
+            -0.49812041514236344
+          ],
+          "clusters": 20
+        },
+        "all_human_item_average_mae_delta_upper_bound": {
+          "mean": 0.1320182508319649,
+          "ci95": [
+            0.09933985812894146,
+            0.16315931490337737
+          ],
+          "clusters": 20
+        }
+      },
+      "common-chat/projection/p": {
+        "n_original_human_rows": 800,
+        "n_pair_valid": 5,
+        "valid_only_item_average_mae_delta": {
+          "mean": -0.16607843137254913,
+          "ci95": [
+            -0.3499999999999999,
+            0.05000000000000001
+          ],
+          "clusters": 3
+        },
+        "all_human_item_average_mae_delta_lower_bound": {
+          "mean": -0.4223898152541903,
+          "ci95": [
+            -0.4447370197059884,
+            -0.3990354441648017
+          ],
+          "clusters": 20
+        },
+        "all_human_item_average_mae_delta_upper_bound": {
+          "mean": 0.25195941304712444,
+          "ci95": [
+            0.23091025145368826,
+            0.27633766687843914
+          ],
+          "clusters": 20
+        }
+      }
+    }
+  },
+  "pending": [],
+  "source_audit": {
+    "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+    "source_sha256": {
+      "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+      "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+      "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+      "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+      "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+    },
+    "n": 1760,
+    "n_with_original_human_mean": 840,
+    "human_projection_match_p_rows": 800,
+    "human_prior_match_p_rows": 40,
+    "source_label_fact_mismatches": [
+      {
+        "task": "prior",
+        "index": 1,
+        "item": "Josie",
+        "source_prior_type": "high_prior",
+        "actual_fact_human_prior_type": "low_prior",
+        "fact": "Josie doesn't have a passport"
+      },
+      {
+        "task": "prior",
+        "index": 21,
+        "item": "Josie",
+        "source_prior_type": "low_prior",
+        "actual_fact_human_prior_type": "high_prior",
+        "fact": "Josie loves France."
+      },
+      {
+        "task": "prior",
+        "index": 41,
+        "item": "Josie",
+        "source_prior_type": "high_prior",
+        "actual_fact_human_prior_type": "low_prior",
+        "fact": "Josie doesn't have a passport"
+      },
+      {
+        "task": "prior",
+        "index": 61,
+        "item": "Josie",
+        "source_prior_type": "low_prior",
+        "actual_fact_human_prior_type": "high_prior",
+        "fact": "Josie loves France."
+      }
+    ],
+    "source_labels_preserved": true,
+    "prior_instruction_duplicate_preserved": true,
+    "n_unique_human_facts": 40
+  },
+  "primary_requires_eos": true,
+  "limits": [
+    "Generated numeric scalar is not direct belief probability or transparent knowledge.",
+    "Validity differs across endpoint/interfaces; valid-only metrics are selected-case diagnostics, not model rankings.",
+    "Unconditional bounds retain every human item, with absent numeric output allowed anywhere in [0,1].",
+    "Actual-fact high/low tags come from original human facts; four source prior labels mismatch and remain preserved.",
+    "20-item sampling CIs do not represent training-seed/model-population uncertainty.",
+    "Syntactically numeric output without EOS can be truncated; completion counts are audited separately and such ratings cannot transparently establish ability.",
+    "AIC/mixedRSA superiority and belief-representation necessity have not been reproduced or tested.",
+    "No human gold for source negated content or polar cases, no warranted/unwarranted SDT."
+  ]
+}

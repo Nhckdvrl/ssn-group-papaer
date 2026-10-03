@@ -125,3 +125,42 @@ E28/E31/E32补齐8B/14B及原alternative expectedness；E33真实IQAP human分�
 [BWIM2026](https://arxiv.org/abs/2603.19997v1)直接拥有partner-specific cancellation、confidence/action分离与澄清成本问题。最新public code与原confidence protocol有实现差异，E44已明确，E45先有界测试无歧义task floor，不以任务失败讲pragmatic ignorance。RAILS2025人类reference game更提示：literal speaker若随机选消息，收到一个消息仍可支持2/3目标posterior；literal speaker不等于literal listener，更不等于禁止推断。许可不是材料上的现成二值标签。
 
 目前最值得弄清楚的未知是：**面对同一句话的不同证据，模型究竟在更新世界事实、说者意图、说者承诺还是听者行动；训练改变了哪个目标之间的联系？** E43只测retrospective attribution，不能推prospective action。强成功、有限入口、控制失败全部保留；暂未得到跨family/readout稳定领域结构。下一研究动作由这些边界决定，不把“任何跨层效应都是脑补”保成预设故事。
+
+
+## 14. 深读怎样改变研究动作：不能只收集gap（2026-10-03）
+
+这轮最有价值的是从parent解释链中得到约束，而非新增四个名词。几篇论文的idea来自已经有结果、但解释仍无法区分的压力：
+
+| parent的演化动作 | 为什么不是再测一个分数 | 对我们的具体约束 |
+|---|---|---|
+| Mayn2025从listener自身reasoning到其对speaker reasoning能力的信念 | 简单control接近ceiling，但同一reference场景随partner变化；失败身份操纵也公开 | knowledge、speaker policy、listener解释分开；literal speaker仍可支持2/3目标后验，不能造unlicensed gold |
+| Weak Evidence2022重新归因旧反效果 | 多个账户都解释反转，speaker expectation给出不同conditional prediction | 真实但弱证据能因被挑选而降低world belief；更深推断不等于更乐观或更负责 |
+| NMI2026从能报confidence到confidence是否控制行为 | 先测信号，再让选项/阈值改变，并独立干预；不是confidence与accuracy另一张表 | pre/post decision读数分开，信号产生与action成本各需操纵；generic policy/sensitivity分离已有ownership |
+| Confidence-Commitment2026重新解释同一个报告的意义 | 同trial分别预测正确性与后续commit/abstain，多读数/机制证据互相约束 | 残差关系仍需可识别性审计；E48禁止把noise改名policy就当机制 |
+| Roleplay2026从成功说角色的话到是否深度内化 | 现在真假固定、时代endorsement改变，训练与预算控制；行为与probe联合 | 模型自己的事实表示、角色说法、归给他人的意图/社会责任是不同对象；generic knowing-versus-using不能claim |
+
+**E45先给出的限制：** 五endpoint全未过无歧义build floor，64control正确仅5/19/21/29/8。Q3-14的64controls只有1格式invalid，但23其它错/11完整z反射错；不能拿confidence≈4的平均值推出partner推断缺陷。几何反射仅POST-HOC诊断，不新评分或能力修复。
+
+**E41/E46给出的限制：** Q25-14 matched完整输入后，Hu不同现象与Impli初始/更新方向不同；Impli Base候选概率质量不足1%，只看归一化会制造解释。E46两端点完整数值各落在不同入口，Instr chat仍有基础理解/事实错，不能筛正确材料再称post-training改变推断结构。跨目标effect也在人类出现，不直接是hallucination。
+
+**当前最值得继续弄清楚的未知（RECONSTRUCTED）：** 模型是否建立了能迁移到具体解释的speaker表达选择预测，还是不同交际问题只各自产生合理答案？这不是我们已发现的gap。E49用同24源场景，让speaker选择与listener解释相互约束，原control、身份、所有rotation都保留；先识别协议是否可用。照片/练习未迁移、speaker任务是派生，不能精确复现human identity effect，也不能将Bayes偏离自动叫内部机制错误。
+
+**发展条件而非预设story：** 如果单个模型知道某项信息却没用，EPITOME已拥有；如果只是一种reference game的跨task不一致，尺度仍不足。值得升级的是选择过程的独立预测能跨自然材料约束推断方向/强度，并且训练改变其中可明确定位的一环。需要独立source、不同信息选择机制、成功理解与readout控制共同成立；未成立就保留成功/null并回到territory，不加限定保故事。
+
+E48只是CPU parent账户校对：oracle真值代理完美时，阈值带噪估计的残差仍可对commit给出AUROC .833–.847，而对correctness≈.5。决策使用的估计噪声与同分布policy成分在这些观测下不可识别。它约束我们怎样解释数据，不贡献新的LLM能力结论，也不替代NMI独立steering证据。
+
+
+2026-10-03 E49/E50完成：8640/6912原source读数完整，数值/source/token/EOS gates通过。E49无endpoint三身份全过无歧义控制；E50多数Qwen listener恢复，但speaker候选质量弱、身份effect随入口/terminal反转（Q3-8 bare full−.0180 vs content+.0048）。全部原item/missing bounds保留，不把generic role不一致或格式差叫新发现；C01/C02仍L0。当前未知需由独立自然source、成功理解与概率质量共同约束。E51跑前卡已写，核对dense OLMo2四stage和原IQAP/Circa输入；不追加E49/E50的局部prompt救分，资产预检尚在进行。
+
+
+## 15. 一个有近邻但仍可探索的对象，需要哪些互相约束的预测
+
+不能把“别人没用这个metric”当起点。当前证据更适合把交际链拆为：可见世界/知识→表达选择→收到的内容→意图解释→世界相信/社会责任/行动。RSA、Mayn、weak-evidence分别已拥有选择/解释的多个联系；EPITOME拥有knowledge-use分离；ICML/NMI confidence拥有自己答案的信号/检索/行动policy；普通链条本身不是novelty。
+
+值得继续研究的不是链条图，而是**同一个模型对表达选择的独立预测，能否在新的真实语境中正确预测它应如何解释或撤回一个具体含义**。这给出三种可区分解释：选择预测错但条件使用一致；选择预测可用但解释未使用；两者都可用、只改变最终回答目标。当前E49/E50未同时满足读数控制，不能选择第二种讲Knowing vs Using。E51/E52先在两独立自然source确定较强训练谱系有哪些可用的条件行为，不生成二值许可标签，不用更大模型表本身当贡献。
+
+EMNLP2024不同pragmatic-levels的结果提醒：lexicon未完全掌握时，最聪明listener仍受益于更明确speaker；learning时与eval时推断不能混。ICML2026cached-confidence正文与关键方法提醒：可解码、因果使用、最终verbalization分别需要证据，长prompt中冗余路由可让单一阻断无效。多手段应该排除不同解释，不是把同一个相关反复换图。
+
+成熟增量的最低形态仍是领域特有的可迁移conditional prediction，能重解释已有训练/人类对齐结论；不是一个game、一个prompt的role gap，不是首次SDT/首次confidence。没有这一层证据时保留原数据、继续驻留，不缩小措辞硬保idea，也不以拥挤桌面关线。
+
+E52的较强Q25仍不支持把post-training简单讲成更愿意推断：方向判断改善、definite解释phrase下降、human分布Brier变差并存，而原candidate mass/无QA lexical prior不可忽略。不是漂亮的“accuracy↑校准↓”finding，因为这些比较未隔离读数/规范。E53再把format compliance与semantic task floor拆开：无损表示恢复大量raw的可读性，语义/位置错误仍存在。两者约束怎样解释测量，不把instrument repair作为novel scientific object。weak-evidence原shared.js的J0/S1/J1/J2与原replication说明已进一步阅读，完整likelihood包括重复stick instances，正式benchmark需固定sampling、threshold与norm，不把表面“literal”当negative gold。

@@ -27,3 +27,9 @@
 | P13 | E38/E39五token非EOS数字截断；E42 5196中3677延长变prose | E42 | 原数字不覆写；相关stage解释隔离，固定32诊断结束，不救排名 |
 | P14 | E43 MistralInstr chat数值完整覆盖2/1/11 of32；Q3-14 Mark初始理解不符human | E43 | 全bounds/失败保留，不筛材料；无两入口跨family能力结论 |
 | P15 | BWIM public QA code与paper confidence实现、seed session不同，原闭源答案器 | E44/E45 | 五model有限confidence协议迁移；不拿dummy Yellow或本地judge冒充原QA |
+
+| P16 | E45五模型无歧义control正确5/19/21/29/8 of64；Q3-14有11精确z反射、23其它错误 | E45 | 几何仅POST-HOC诊断；confidence/partner能力解释隔离，不增加恢复prompt |
+| P17 | E49两Q25原生rep penalty使processed generate scores与raw teacherforce不同；首轮0预测 | E49 | 原四失败control/日志保留，独立r2用raw logits，保持生成与.001 gate；不改其余运行脚本 |
+| P18 | Mayn源identity photo/practice不能被一行文字视作等价；weak-evidence processed727 vs final723缺原filter | E47/E49/E50 | 明确文本迁移/派生speaker读数；未配gold不伪造标注，free OpenCode403仍无可用标签 |
+
+- P19（E53，POST-HOC）：strict parser拒绝完整JSON围栏/数字字符串，不能把schema失败叫语义错误。无损CPU审计恢复大量可用，但控制仍失败；原主读数不改、恢复不作能力提升、不追加prompt。

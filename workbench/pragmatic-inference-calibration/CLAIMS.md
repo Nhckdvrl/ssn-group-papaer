@@ -36,3 +36,11 @@ Flan-T5-XL 1,365个选择与作者公开结果全部匹配，概率MAD=0.000077�
 - E35跑前两次CPU gate：Hu尾部重复空格会retokenize；官方Mistral chat_template完整重渲染assistant时丢system。二者0 GPU预测，冻结原generation prefix与nativeassistant内容后全量前缀通过；不算模型语用错误。
 
 - 2026-10-03 E38/E39/E42：原5token生成的nonEOS numeric不是完整scalar answer。5196个中3677延长后成为prose；Q3裸、Q25Instr裸、MistralBase裸的相关短numeric解释隔离，原raw/摘要永久保留。E43完整源/human迁移已有结果，但入口/初始理解/事实读取/评分可用性未共同满足能力归因；无科学升级。
+
+- 2026-10-03 E41/E45–49：E41强matched pair25508完成，但natural Base候选mass<.01且projection入口可用性不对称，不升级stage能力；E45五endpoint全部未过build floor，confidence/partner解释隔离；E46读数完整但Instr chat理解6/8、facts58/64，不筛正确材料讲机制。E47 literal S0仍提供2/3关键后验，不构造negative gold。E48为parent数学账户审计，0LLM证据，不作paper finding。E49八端点原source联合speaker/listener迁移运行；照片/原练习与human speaker数据缺失明确，不自动upgrade/kill。C01/C02仍L0。
+
+
+2026-10-03 E49/E50完成：8640/6912原source读数完整，数值/source/token/EOS gates通过。E49无endpoint三身份全过无歧义控制；E50多数Qwen listener恢复，但speaker候选质量弱、身份effect随入口/terminal反转（Q3-8 bare full−.0180 vs content+.0048）。全部原item/missing bounds保留，不把generic role不一致或格式差叫新发现；C01/C02仍L0。当前未知需由独立自然source、成功理解与概率质量共同约束。E51跑前卡已写，核对dense OLMo2四stage和原IQAP/Circa输入；不追加E49/E50的局部prompt救分，资产预检尚在进行。
+
+
+E52强Q25配对4064完成：IQAP chat方向+.2333 CI[.1467,.3133]而四类Brier+.2084[.1343,.2872]，但Base完整candidate mass8.04e−13/Instr无QA prior偏probable-yes .99697，不能升级能力/校准claim。Circa条件原序弱correct升.7969→.9766，negative弱class仍有原序.1154/逆序.8462的顺序混杂。E53明确POST-HOC无损格式审计全8640与固定6阳/15阴cases通过：四endpoint从0可用恢复962–1079，但无歧义semantic controls仍未共同通过，原primary不改，不将format失败叫能力negative。C01/C02仍L0。E51八槽等待固定权重，有限collector只汇总8作业全完成且校对通过的结果，不更新主张/状态或自主开实验；实际状态保存在本地data/E51-collector-status.json。

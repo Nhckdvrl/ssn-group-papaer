@@ -1,0 +1,4581 @@
+{
+  "source_audit": {
+    "source": "OSF unmy6 Experiment 2",
+    "source_table_sha256": {
+      "list1.xlsx": "1a02ece6fa63bd558a40cedddfa496738ae6a2518a8d6458ec1effce4d91f20b",
+      "list1b.xlsx": "aa1c10b8236af12b62994a12fa50eb15451b0cb238f2e8defd21d01989a62d18",
+      "list2.xlsx": "3b56a79b370d4188e77f5050d6179e788e417208452ef9dbb6b11b3623de7e5e",
+      "list2b.xlsx": "7697a124cffa1e1e0ed227fb588e7613dc622c44bbd3a5a0deb590f316c916fc",
+      "list3.xlsx": "b32402166ebcb68068eea0fb65090cb1ff3d6cdbde0e029a752e2f97404bd871",
+      "list3b.xlsx": "6ec92b9dfab854b27a664cbd1de027a8fa1eeec3e7f5b78afd884344415345c5",
+      "list4.xlsx": "7d714c9eb4386ee0ccbab5c4b5b6b7446dcbbd51fe9243bc3afa3b5533c0fdbf",
+      "list4b.xlsx": "9a1949cabbd6143094587f91cad7ca905f96ac344ef371c9b22b005133b72431"
+    },
+    "human_sha256": "3fee4d7e76a374513c546a860310346eb8c37105ac6819862819b3c875668170",
+    "human_n": 703,
+    "human_participants": 93,
+    "commitment_cells": 64,
+    "trust_cells": 32,
+    "image_sha256": {
+      "forgot_bathing.jpg": "81d9b94b95301beeb8a73b5c3f82672ec3f3a83013d8f9671b2c6382c231caa7",
+      "chess.jpg": "6caa107d5e808f6bc11b3a6aeab5d01c11fd22130d9b521d7cd6a8ef0695c5d8",
+      "steak.jpg": "c1d603602017850f0d2647c4162678150302141a8176cc11470f5d92e6e27d34",
+      "ripper.jpg": "f375941632ac9f71ed487dde959286f4745dc5c2dedc86162f389d12197dc1c1",
+      "public_library.jpg": "e24f86faa6aee95b15c4dd3ad7c1c8cfa55e9944704b143f38ac675dc45051d2",
+      "work.jpg": "8084fefaa500c490204a590303c1cd3143e5179edbc197b46c343cdc89a845dc",
+      "church.jpg": "ceca44117e04b30d58ac4829c97095a1cafebbbe90055ff25c67ff3c0b9969e2",
+      "gym.jpg": "ab8cb85b81401d075d1766a3274b1e3b0d5f21b56ef4faab74e14cdc1f8c2a35"
+    },
+    "transcription_sha256": "008c30222abdd5d92406f7459bed72e40afb72450bd6c26b5a754a88117308e6",
+    "source_psyexp_sha256": "c9773d14b874f2ae64561deae5280602fa82d02f0239bbdc012cb271c7b2839e",
+    "clarification": "Evaluate the requested target separately: what the speaker committed to conveying, whether the reported facts are true, and how reliable the speaker is are distinct judgments.",
+    "n_each_interface": 264,
+    "prompt_sha256": "ecd338d77bdfbf1a16eb7805bebf059f1127bc79a569b4c39299af42c962edc3",
+    "limits": [
+      "Text adaptation; UI/timestamps omitted. Root visual transcription rechecked but not independently audited.",
+      "Human norms condition on correct initial interpretation; no model-based filtering.",
+      "Trust norms pool both preceding commitment probes; model calls have no such previous answer."
+    ]
+  },
+  "n": 1056,
+  "models": {
+    "Qwen2.5-14B": {
+      "interfaces": {
+        "bare": {
+          "binary": {
+            "comprehension": {
+              "n": 8,
+              "whole_response_valid_n": 8,
+              "complete_valid_n": 8,
+              "correct_all_n": 8,
+              "errors_and_invalid": []
+            },
+            "fact-verifier": {
+              "n": 64,
+              "whole_response_valid_n": 64,
+              "complete_valid_n": 64,
+              "correct_all_n": 64,
+              "errors_and_invalid": []
+            }
+          },
+          "ratings": {
+            "original": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      11.25,
+                      11.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 11.25,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        33.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      18.75,
+                      18.75
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 18.75,
+                      "item_bootstrap_ci95": [
+                        7.468750000000002,
+                        30.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      25.0,
+                      25.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 25.0,
+                      "item_bootstrap_ci95": [
+                        7.5,
+                        47.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      32.5,
+                      32.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 32.5,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        45.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      7.5,
+                      7.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 7.5,
+                      "item_bootstrap_ci95": [
+                        -23.75,
+                        30.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      45.0,
+                      45.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 45.0,
+                      "item_bootstrap_ci95": [
+                        35.0,
+                        50.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      56.25,
+                      56.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 56.25,
+                      "item_bootstrap_ci95": [
+                        50.0,
+                        68.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      70.0,
+                      70.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 70.0,
+                      "item_bootstrap_ci95": [
+                        56.25,
+                        85.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      88.75,
+                      88.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 88.75,
+                      "item_bootstrap_ci95": [
+                        76.25,
+                        97.5
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  16.97494391405145,
+                  16.97494391405145
+                ],
+                "valid_only_mae_diagnostic": 16.97494391405145,
+                "complete_value_counts": {
+                  "50": 19,
+                  "80": 4,
+                  "100": 8,
+                  "10": 1
+                },
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      12.5,
+                      12.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 12.5,
+                      "item_bootstrap_ci95": [
+                        3.75,
+                        25.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      35.0,
+                      35.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 35.0,
+                      "item_bootstrap_ci95": [
+                        21.25,
+                        51.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      8.75,
+                      8.75
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 8.75,
+                      "item_bootstrap_ci95": [
+                        1.25,
+                        18.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      31.25,
+                      31.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 31.25,
+                      "item_bootstrap_ci95": [
+                        21.25,
+                        40.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      22.5,
+                      22.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 22.5,
+                      "item_bootstrap_ci95": [
+                        10.0,
+                        35.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      43.75,
+                      43.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 43.75,
+                      "item_bootstrap_ci95": [
+                        26.25,
+                        62.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      56.25,
+                      56.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 56.25,
+                      "item_bootstrap_ci95": [
+                        50.0,
+                        68.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      52.5,
+                      52.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 52.5,
+                      "item_bootstrap_ci95": [
+                        38.75,
+                        68.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      87.5,
+                      87.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 87.5,
+                      "item_bootstrap_ci95": [
+                        82.5,
+                        95.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  15.608948844202802,
+                  15.608948844202802
+                ],
+                "valid_only_mae_diagnostic": 15.608948844202802,
+                "complete_value_counts": {
+                  "50": 17,
+                  "100": 6,
+                  "80": 5,
+                  "20": 3,
+                  "10": 1
+                },
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      18.75,
+                      18.75
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 18.75,
+                      "item_bootstrap_ci95": [
+                        6.25,
+                        37.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      17.5,
+                      17.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 17.5,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        35.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      21.25,
+                      21.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 21.25,
+                      "item_bootstrap_ci95": [
+                        6.25,
+                        37.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      20.0,
+                      20.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 20.0,
+                      "item_bootstrap_ci95": [
+                        6.25,
+                        35.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -1.25,
+                      -1.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": -1.25,
+                      "item_bootstrap_ci95": [
+                        -12.5,
+                        13.75
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      31.25,
+                      31.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 31.25,
+                      "item_bootstrap_ci95": [
+                        12.5,
+                        43.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      50.0,
+                      50.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 50.0,
+                      "item_bootstrap_ci95": [
+                        50.0,
+                        50.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      52.5,
+                      52.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 52.5,
+                      "item_bootstrap_ci95": [
+                        50.0,
+                        57.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      70.0,
+                      70.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 70.0,
+                      "item_bootstrap_ci95": [
+                        56.25,
+                        85.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  14.907145026013149,
+                  14.907145026013149
+                ],
+                "valid_only_mae_diagnostic": 14.907145026013149,
+                "complete_value_counts": {
+                  "50": 24,
+                  "0": 3,
+                  "80": 2,
+                  "100": 2,
+                  "70": 1
+                },
+                "constant_50_human_mae": 16.10028696607525
+              }
+            },
+            "clarification": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      6.25,
+                      6.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 6.25,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        18.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      12.5,
+                      12.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 12.5,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        25.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      26.25,
+                      26.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 26.25,
+                      "item_bootstrap_ci95": [
+                        11.25,
+                        41.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      32.5,
+                      32.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 32.5,
+                      "item_bootstrap_ci95": [
+                        13.75,
+                        51.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      6.25,
+                      6.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 6.25,
+                      "item_bootstrap_ci95": [
+                        -12.5,
+                        25.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      52.5,
+                      52.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 52.5,
+                      "item_bootstrap_ci95": [
+                        38.75,
+                        68.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      58.75,
+                      58.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 58.75,
+                      "item_bootstrap_ci95": [
+                        42.5,
+                        77.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      78.75,
+                      78.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 78.75,
+                      "item_bootstrap_ci95": [
+                        63.75,
+                        93.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      91.25,
+                      91.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 91.25,
+                      "item_bootstrap_ci95": [
+                        78.75,
+                        100.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  19.536560969075804,
+                  19.536560969075804
+                ],
+                "valid_only_mae_diagnostic": 19.536560969075804,
+                "complete_value_counts": {
+                  "50": 15,
+                  "100": 13,
+                  "20": 2,
+                  "80": 2
+                },
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      27.5,
+                      27.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 27.5,
+                      "item_bootstrap_ci95": [
+                        5.0,
+                        55.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      37.5,
+                      37.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 37.5,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        50.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      15.0,
+                      15.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 15.0,
+                      "item_bootstrap_ci95": [
+                        5.0,
+                        30.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      25.0,
+                      25.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 25.0,
+                      "item_bootstrap_ci95": [
+                        6.25,
+                        43.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      10.0,
+                      10.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 10.0,
+                      "item_bootstrap_ci95": [
+                        -13.781249999999998,
+                        32.5
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      47.5,
+                      47.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 47.5,
+                      "item_bootstrap_ci95": [
+                        25.0,
+                        71.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      75.0,
+                      75.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 75.0,
+                      "item_bootstrap_ci95": [
+                        56.25,
+                        93.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      62.5,
+                      62.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 62.5,
+                      "item_bootstrap_ci95": [
+                        50.0,
+                        81.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      100.0,
+                      100.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 100.0,
+                      "item_bootstrap_ci95": [
+                        100.0,
+                        100.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  23.55456484515394,
+                  23.55456484515394
+                ],
+                "valid_only_mae_diagnostic": 23.55456484515394,
+                "complete_value_counts": {
+                  "100": 16,
+                  "10": 3,
+                  "50": 13
+                },
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      12.5,
+                      12.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 12.5,
+                      "item_bootstrap_ci95": [
+                        -18.75,
+                        37.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      25.0,
+                      25.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 25.0,
+                      "item_bootstrap_ci95": [
+                        6.25,
+                        43.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      25.0,
+                      25.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 25.0,
+                      "item_bootstrap_ci95": [
+                        6.25,
+                        43.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      37.5,
+                      37.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 37.5,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        50.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      12.5,
+                      12.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 12.5,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        31.25
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      25.0,
+                      25.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 25.0,
+                      "item_bootstrap_ci95": [
+                        6.25,
+                        43.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      37.5,
+                      37.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 37.5,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        50.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      50.0,
+                      50.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 50.0,
+                      "item_bootstrap_ci95": [
+                        50.0,
+                        50.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      75.0,
+                      75.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 75.0,
+                      "item_bootstrap_ci95": [
+                        56.25,
+                        93.75
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  16.636717512939793,
+                  16.636717512939793
+                ],
+                "valid_only_mae_diagnostic": 16.636717512939793,
+                "complete_value_counts": {
+                  "50": 22,
+                  "0": 6,
+                  "100": 4
+                },
+                "constant_50_human_mae": 16.10028696607525
+              }
+            }
+          }
+        },
+        "common-chat": {
+          "binary": {
+            "comprehension": {
+              "n": 8,
+              "whole_response_valid_n": 0,
+              "complete_valid_n": 0,
+              "correct_all_n": 0,
+              "errors_and_invalid": [
+                {
+                  "id": "Alma/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No\n\nAssistant: Question: What is the meaning of the word \"thou",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Brook and Andrew used to meet every Friday to play chess at the park,",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Whitney was trying to set an appointment to interview Bob.\nThey were going",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "David and Lisa were making plans for next week. \nOn Saturday's evening,",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Rebecca and Mark are book enthusiasts and have made plans to someday visit the public",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "Yes, Rachel meant to say \"Yes\" in reply to the question. She",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, Richie cannot come pick you up at 3pm because he has an",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, Tony meant to say \"No\" in reply to the question.",
+                  "eos": true
+                }
+              ]
+            },
+            "fact-verifier": {
+              "n": 64,
+              "whole_response_valid_n": 0,
+              "complete_valid_n": 0,
+              "correct_all_n": 0,
+              "errors_and_invalid": [
+                {
+                  "id": "Alma/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Alma",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Alma",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, Alma could",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Alma",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, Alma could",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "Actual event:\nIt is revealed that Andrew did not think Brook was very clever.\n\n",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Andrew",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Bob",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "Actual event:\nIt is revealed that Bob was not in a mood for steak.\n\n",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, Bob was",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, Bob was",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "Actual event:\nIt is revealed that Lisa is not a horror fan.\n\nAdditionally,",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Lisa",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "Actual event:\nIt is revealed that Lisa is not a horror fan.\n\nAdditionally,",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, Lisa wanted",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Lisa",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, Lisa wanted",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Mark",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No, the target claim is not true. According to the actual event, Mark",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. Mark indeed had a new book he's",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. Mark indeed had a new book he's",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Rachel/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Richie/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Richie/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Richie/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Richie/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes.",
+                  "eos": true
+                },
+                {
+                  "id": "Tony/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "No.",
+                  "eos": true
+                },
+                {
+                  "id": "Tony/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, it is",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "Yes, the target claim is true. According to the actual event, Tony could",
+                  "eos": false
+                }
+              ]
+            }
+          },
+          "ratings": {
+            "original": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -198.0,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  69.30186976882993
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 1,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -86.625,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -86.625,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -185.625,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 1,
+                    "all_item_mean_bounds": [
+                      13.375,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 31,
+                "all_human_mae_bounds": [
+                  0.8554125881875003,
+                  62.49592712389403
+                ],
+                "valid_only_mae_diagnostic": 27.37320282200001,
+                "complete_value_counts": {
+                  "100": 1
+                },
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -200.0,
+                      200.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  66.10028696607526
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 16.10028696607525
+              }
+            },
+            "clarification": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -198.0,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  69.30186976882993
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -198.0,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  63.878851947519024
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -200.0,
+                      200.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  66.10028696607526
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 16.10028696607525
+              }
+            }
+          }
+        }
+      },
+      "wall_seconds": 234.96958490798716,
+      "run_fingerprints": [
+        {
+          "run": "E46-commitment-Qwen2.5-14B-literal",
+          "config_sha256": "15c15b74cdd9065311825d87c6ecb96d2f9b2980ccae78446d32df235dd8f556",
+          "raw_sha256": "f02378cb5b468654a26ae5a435c3ba50311ffea0ff84af71fd37141f4ee86077"
+        },
+        {
+          "run": "E46-commitment-Qwen2.5-14B-meaning",
+          "config_sha256": "e1f3f91783281b998e7d8c58f7bf5b18998f1fffd82544ff6347b3d9dfa4ab92",
+          "raw_sha256": "7ac4d8f3978ebec1dff2b28529a43373ce052819d4af0e23196c1d4f17e92fd0"
+        },
+        {
+          "run": "E46-commitment-Qwen2.5-14B-trust",
+          "config_sha256": "a35168585750c18895c2feb93d28a90e8b19f33b66d20fe8a6e18d9bbd807cf9",
+          "raw_sha256": "112a33b867dd0b5141122bb004706749814a4a91d2f30bbdb6c1557da91d2df5"
+        },
+        {
+          "run": "E46-commitment-Qwen2.5-14B-binary",
+          "config_sha256": "d6e78a80d63fba7b6b0ce5ef48091453bbcd53c6d9370f1eff3db8c8615ef3d2",
+          "raw_sha256": "51a8b0ec1170f21e361de9349a4006e996af71b9e83fd31501f35684cafaaf64"
+        }
+      ],
+      "config_sha256": "ff412d24f69e7c82044c94484b9abe74788bae4e472230aa8a38d60f46899f28",
+      "raw_sha256": "c7823bb71ea3e572c2470ccffed01ce8719b4b32c30ecacdc4168639466af50c"
+    },
+    "Qwen2.5-14B-Instruct": {
+      "interfaces": {
+        "bare": {
+          "binary": {
+            "comprehension": {
+              "n": 8,
+              "whole_response_valid_n": 0,
+              "complete_valid_n": 0,
+              "correct_all_n": 0,
+              "errors_and_invalid": [
+                {
+                  "id": "Alma/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\n\nAlma's response indicates that she cannot go swimming because she forgot her",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " No\n\nThe answer \"No\" does not directly reflect the meaning conveyed by Andrew",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " No\n\nExplanation: While Bob expressed enthusiasm for having steak, he didn't directly",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\n\nIt seems like Lisa is expressing her interest in horror movies by saying \"",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\n\nIt seems like Mark is expressing interest in the new book and implicitly agreeing",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nYou are an AI assistant. User will provide you with a task or",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. \n\nBased on Richie's response indicating he has an important presentation at ",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/comprehension",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\n\nGiven that Tony mentioned his ankle is hurting, it's likely he cannot",
+                  "eos": false
+                }
+              ]
+            },
+            "fact-verifier": {
+              "n": 64,
+              "whole_response_valid_n": 5,
+              "complete_valid_n": 5,
+              "correct_all_n": 5,
+              "errors_and_invalid": [
+                {
+                  "id": "Alma/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nThe actual event states that Alma did not forget her bathing suit at home",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nThe actual event states that Alma did not forget her bathing suit and could",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nThe actual event states that Alma did not forget her bathing suit at home",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event states that \"Alma could not go for",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\n\nThe actual event states that \"It is revealed that Alma indeed forgot her",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nThe actual event states that Alma forgot her bathing suit at home but also",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\n\nThe actual event states that \"It is revealed that Alma indeed forgot her",
+                  "eos": false
+                },
+                {
+                  "id": "Alma/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes. According to the actual event described, Alma could not go for a swim",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Andrew did not think Brook was very clever",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Andrew did not think Brook made the right",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Andrew did not think Brook was very clever",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event states that \"Andrew thought Brook made the right",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event explicitly states that \"Andrew indeed thought Brook was",
+                  "eos": false
+                },
+                {
+                  "id": "Andrew/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Andrew thought Brook didn't make the right",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. Based on the information provided, Bob was not in the mood for steak",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. Based on the information provided, Bob was not able to do the interview",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. Based on the information provided, Bob was not in the mood for steak",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event mentions that Bob was able to do the interview",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event explicitly states \"It is revealed that Bob indeed",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. Based on the information provided, Bob was not able to do the interview",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event explicitly states \"It is revealed that Bob indeed",
+                  "eos": false
+                },
+                {
+                  "id": "Bob/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes. Based on the information provided, the target claim that \"Bob was able",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. Based on the information provided, Lisa is not a horror fan since she",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. Based on the information provided, Lisa did not want to go watch the",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. Based on the information provided, Lisa is not a horror fan since she",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " No\nExplanation: The actual event states that Lisa is not a horror fan.",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " No\nExplanation: The actual event states that Lisa didn't want to go watch",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Lisa didn't want to go to watch",
+                  "eos": false
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes. The actual event states that Lisa wanted to go watch the scary movie that",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Mark did not have a new book he",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Mark did not want to go to the",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Mark did not have a new book he",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event mentions that Mark wanted to go to the public",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\n\nThe actual event states that \"Mark indeed had a new book he's",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Mark didn't want to go to the",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\n\nThe actual event states that \"Mark indeed had a new book he's",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event mentions that Mark wanted to go to the public",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Rachel did not need to work, so",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Rachel could go to the bike ride,",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nExplanation: The actual event states that \"Rachel did not need to work",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event states that \"Rachel could not go to the",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event states \"It is revealed that Rachel indeed needed",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nExplanation: The actual event states that \"Rachel could go to the bike",
+                  "eos": false
+                },
+                {
+                  "id": "Rachel/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes. According to the actual event, it is revealed that Rachel could not go",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Richie did not have an important presentation at",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nExplanation: The actual event states that Richie did not have an important presentation",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Richie did not have an important presentation at",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event states that Richie could not come to pick Sil",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes. According to the actual event described, Richie did indeed have an important presentation",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Richie could come to pick Silvia up",
+                  "eos": false
+                },
+                {
+                  "id": "Richie/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes. According to the actual event, Richie could not come to pick Silvia",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_false_meaning_false/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Tony's ankle was not hurting and he",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_false_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Tony was able to go to the gym",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_false_meaning_true/fact/literal",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No. According to the actual event, Tony's ankle was not hurtig,",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event states that \"it is revealed that Tony could",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event explicitly states \"It is revealed that Tony's",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_false/fact/meaning",
+                  "gold": "No",
+                  "prediction": null,
+                  "raw": " No\nExplanation: The actual event states that Tony was able to go to the",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_true/fact/literal",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes\nExplanation: The actual event directly states \"It is revealed that Tony's",
+                  "eos": false
+                },
+                {
+                  "id": "Tony/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": " Yes. Based on the information provided, since Tony's ankle was hurt and he",
+                  "eos": false
+                }
+              ]
+            }
+          },
+          "ratings": {
+            "original": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -198.0,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  69.30186976882993
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -198.0,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  63.878851947519024
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -200.0,
+                      200.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  66.10028696607526
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 16.10028696607525
+              }
+            },
+            "clarification": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -198.0,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  69.30186976882993
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -99.0,
+                      99.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -198.0,
+                      198.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      1.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  63.878851947519024
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 0,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      -100.0,
+                      100.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      -200.0,
+                      200.0
+                    ],
+                    "complete_four_corner_item_n": 0,
+                    "point_and_ci": null
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 0,
+                    "all_item_mean_bounds": [
+                      0.0,
+                      100.0
+                    ]
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 32,
+                "all_human_mae_bounds": [
+                  0.0,
+                  66.10028696607526
+                ],
+                "valid_only_mae_diagnostic": null,
+                "complete_value_counts": {},
+                "constant_50_human_mae": 16.10028696607525
+              }
+            }
+          }
+        },
+        "common-chat": {
+          "binary": {
+            "comprehension": {
+              "n": 8,
+              "whole_response_valid_n": 6,
+              "complete_valid_n": 6,
+              "correct_all_n": 6,
+              "errors_and_invalid": [
+                {
+                  "id": "Andrew/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "No\n\nBased on the context provided, it seems that Andrew is complimenting Brook",
+                  "eos": false
+                },
+                {
+                  "id": "Mark/comprehension",
+                  "gold": "Yes",
+                  "prediction": null,
+                  "raw": "No\n\nIt seems like Mark didn't directly answer Rebecca's question. His reply",
+                  "eos": false
+                }
+              ]
+            },
+            "fact-verifier": {
+              "n": 64,
+              "whole_response_valid_n": 64,
+              "complete_valid_n": 64,
+              "correct_all_n": 58,
+              "errors_and_invalid": [
+                {
+                  "id": "Bob/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": "No",
+                  "raw": "No",
+                  "eos": true
+                },
+                {
+                  "id": "Lisa/literal_false_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": "No",
+                  "raw": "No",
+                  "eos": true
+                },
+                {
+                  "id": "Lisa/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": "No",
+                  "raw": "No",
+                  "eos": true
+                },
+                {
+                  "id": "Mark/literal_true_meaning_true/fact/meaning",
+                  "gold": "Yes",
+                  "prediction": "No",
+                  "raw": "No",
+                  "eos": true
+                },
+                {
+                  "id": "Richie/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": "No",
+                  "raw": "No",
+                  "eos": true
+                },
+                {
+                  "id": "Tony/literal_true_meaning_false/fact/literal",
+                  "gold": "Yes",
+                  "prediction": "No",
+                  "raw": "No",
+                  "eos": true
+                }
+              ]
+            }
+          },
+          "ratings": {
+            "original": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      1.25,
+                      1.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 1.25,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        3.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      31.875,
+                      31.875
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 31.875,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        43.125
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      21.875,
+                      21.875
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 21.875,
+                      "item_bootstrap_ci95": [
+                        11.25,
+                        36.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      52.5,
+                      52.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 52.5,
+                      "item_bootstrap_ci95": [
+                        41.25,
+                        62.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      30.625,
+                      30.625
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 30.625,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        40.625
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      22.5,
+                      22.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 22.5,
+                      "item_bootstrap_ci95": [
+                        20.0,
+                        25.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      23.75,
+                      23.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 23.75,
+                      "item_bootstrap_ci95": [
+                        20.0,
+                        27.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      44.375,
+                      44.375
+                    ],
+                    "point_and_ci": {
+                      "mean": 44.375,
+                      "item_bootstrap_ci95": [
+                        35.0,
+                        58.125
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      76.25,
+                      76.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 76.25,
+                      "item_bootstrap_ci95": [
+                        67.5,
+                        85.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  30.077434770397645,
+                  30.077434770397645
+                ],
+                "valid_only_mae_diagnostic": 30.077434770397645,
+                "complete_value_counts": {
+                  "30": 9,
+                  "50": 5,
+                  "20": 11,
+                  "85": 7
+                },
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      15.5,
+                      15.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 15.5,
+                      "item_bootstrap_ci95": [
+                        1.875,
+                        31.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      33.75,
+                      33.75
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 33.75,
+                      "item_bootstrap_ci95": [
+                        18.125,
+                        49.375
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      8.625,
+                      8.625
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 8.625,
+                      "item_bootstrap_ci95": [
+                        0.5,
+                        18.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      26.875,
+                      26.875
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 26.875,
+                      "item_bootstrap_ci95": [
+                        13.75,
+                        40.625
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      18.25,
+                      18.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 18.25,
+                      "item_bootstrap_ci95": [
+                        4.625,
+                        33.75
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      27.0,
+                      27.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 27.0,
+                      "item_bootstrap_ci95": [
+                        18.5,
+                        33.125
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      42.5,
+                      42.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 42.5,
+                      "item_bootstrap_ci95": [
+                        32.5,
+                        55.625
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      35.625,
+                      35.625
+                    ],
+                    "point_and_ci": {
+                      "mean": 35.625,
+                      "item_bootstrap_ci95": [
+                        30.0,
+                        41.875
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      69.375,
+                      69.375
+                    ],
+                    "point_and_ci": {
+                      "mean": 69.375,
+                      "item_bootstrap_ci95": [
+                        53.75,
+                        85.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  18.238322212423487,
+                  18.238322212423487
+                ],
+                "valid_only_mae_diagnostic": 18.238322212423487,
+                "complete_value_counts": {
+                  "30": 11,
+                  "35": 6,
+                  "85": 6,
+                  "1": 1,
+                  "50": 6,
+                  "25": 1,
+                  "20": 1
+                },
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      5.625,
+                      5.625
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 5.625,
+                      "item_bootstrap_ci95": [
+                        -3.75,
+                        20.625
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      35.625,
+                      35.625
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 35.625,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        51.875
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      7.5,
+                      7.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 7.5,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        15.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      37.5,
+                      37.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 37.5,
+                      "item_bootstrap_ci95": [
+                        18.75,
+                        55.625
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      30.0,
+                      30.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 30.0,
+                      "item_bootstrap_ci95": [
+                        11.25,
+                        48.140624999999915
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      26.25,
+                      26.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 26.25,
+                      "item_bootstrap_ci95": [
+                        22.5,
+                        28.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      31.875,
+                      31.875
+                    ],
+                    "point_and_ci": {
+                      "mean": 31.875,
+                      "item_bootstrap_ci95": [
+                        21.25,
+                        46.875
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      33.75,
+                      33.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 33.75,
+                      "item_bootstrap_ci95": [
+                        27.5,
+                        40.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      69.375,
+                      69.375
+                    ],
+                    "point_and_ci": {
+                      "mean": 69.375,
+                      "item_bootstrap_ci95": [
+                        54.359375,
+                        80.625
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  12.855335644310443,
+                  12.855335644310443
+                ],
+                "valid_only_mae_diagnostic": 12.855335644310443,
+                "complete_value_counts": {
+                  "30": 14,
+                  "20": 8,
+                  "85": 6,
+                  "50": 4
+                },
+                "constant_50_human_mae": 16.10028696607525
+              }
+            },
+            "clarification": {
+              "literal": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      0.0,
+                      0.0
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 0.0,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        0.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      9.375,
+                      9.375
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 9.375,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        23.125
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      41.875,
+                      41.875
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 41.875,
+                      "item_bootstrap_ci95": [
+                        23.75,
+                        58.140624999999915
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      51.25,
+                      51.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 51.25,
+                      "item_bootstrap_ci95": [
+                        37.5,
+                        62.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      9.375,
+                      9.375
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 9.375,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        23.125
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      22.5,
+                      22.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 22.5,
+                      "item_bootstrap_ci95": [
+                        20.0,
+                        26.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      22.5,
+                      22.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 22.5,
+                      "item_bootstrap_ci95": [
+                        20.0,
+                        26.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      64.375,
+                      64.375
+                    ],
+                    "point_and_ci": {
+                      "mean": 64.375,
+                      "item_bootstrap_ci95": [
+                        43.75,
+                        85.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      73.75,
+                      73.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 73.75,
+                      "item_bootstrap_ci95": [
+                        60.0,
+                        85.0
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  30.121080957335614,
+                  30.121080957335614
+                ],
+                "valid_only_mae_diagnostic": 30.121080957335614,
+                "complete_value_counts": {
+                  "20": 12,
+                  "30": 8,
+                  "85": 11,
+                  "50": 1
+                },
+                "constant_50_human_mae": 20.30186976882994
+              },
+              "meaning": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      1.25,
+                      1.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 1.25,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        3.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      26.875,
+                      26.875
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 26.875,
+                      "item_bootstrap_ci95": [
+                        9.375,
+                        43.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      3.75,
+                      3.75
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 3.75,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        11.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      29.375,
+                      29.375
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 29.375,
+                      "item_bootstrap_ci95": [
+                        14.375,
+                        44.375
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      25.625,
+                      25.625
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 25.625,
+                      "item_bootstrap_ci95": [
+                        9.375,
+                        43.75
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      27.5,
+                      27.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 27.5,
+                      "item_bootstrap_ci95": [
+                        23.75,
+                        30.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      28.75,
+                      28.75
+                    ],
+                    "point_and_ci": {
+                      "mean": 28.75,
+                      "item_bootstrap_ci95": [
+                        26.25,
+                        30.0
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      31.25,
+                      31.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 31.25,
+                      "item_bootstrap_ci95": [
+                        26.25,
+                        37.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      58.125,
+                      58.125
+                    ],
+                    "point_and_ci": {
+                      "mean": 58.125,
+                      "item_bootstrap_ci95": [
+                        42.5,
+                        73.75
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  22.633071335596135,
+                  22.633071335596135
+                ],
+                "valid_only_mae_diagnostic": 22.633071335596135,
+                "complete_value_counts": {
+                  "30": 21,
+                  "85": 3,
+                  "20": 4,
+                  "50": 4
+                },
+                "constant_50_human_mae": 14.535101947519026
+              },
+              "trust": {
+                "n": 32,
+                "complete_numeric_n": 32,
+                "effects": {
+                  "implicit_at_literal_false": {
+                    "all_eight_item_mean_bounds": [
+                      8.125,
+                      8.125
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 8.125,
+                      "item_bootstrap_ci95": [
+                        0.0,
+                        21.875
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "implicit_at_literal_true": {
+                    "all_eight_item_mean_bounds": [
+                      32.5,
+                      32.5
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 32.5,
+                      "item_bootstrap_ci95": [
+                        17.5,
+                        46.25
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_false": {
+                    "all_eight_item_mean_bounds": [
+                      16.25,
+                      16.25
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 16.25,
+                      "item_bootstrap_ci95": [
+                        8.75,
+                        23.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_at_implicit_true": {
+                    "all_eight_item_mean_bounds": [
+                      40.625,
+                      40.625
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 40.625,
+                      "item_bootstrap_ci95": [
+                        26.875,
+                        53.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "interaction": {
+                    "all_eight_item_mean_bounds": [
+                      24.375,
+                      24.375
+                    ],
+                    "complete_four_corner_item_n": 8,
+                    "point_and_ci": {
+                      "mean": 24.375,
+                      "item_bootstrap_ci95": [
+                        10.0,
+                        39.375
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "corner_means": {
+                  "literal_false_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      26.25,
+                      26.25
+                    ],
+                    "point_and_ci": {
+                      "mean": 26.25,
+                      "item_bootstrap_ci95": [
+                        22.5,
+                        28.75
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_false_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      34.375,
+                      34.375
+                    ],
+                    "point_and_ci": {
+                      "mean": 34.375,
+                      "item_bootstrap_ci95": [
+                        25.0,
+                        49.375
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_false": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      42.5,
+                      42.5
+                    ],
+                    "point_and_ci": {
+                      "mean": 42.5,
+                      "item_bootstrap_ci95": [
+                        35.0,
+                        47.5
+                      ],
+                      "n_items": 8
+                    }
+                  },
+                  "literal_true_meaning_true": {
+                    "complete_n": 8,
+                    "all_item_mean_bounds": [
+                      75.0,
+                      75.0
+                    ],
+                    "point_and_ci": {
+                      "mean": 75.0,
+                      "item_bootstrap_ci95": [
+                        65.0,
+                        83.75
+                      ],
+                      "n_items": 8
+                    }
+                  }
+                },
+                "numeric_but_non_eos_n": 0,
+                "invalid_n": 0,
+                "all_human_mae_bounds": [
+                  10.821614612173695,
+                  10.821614612173695
+                ],
+                "valid_only_mae_diagnostic": 10.821614612173695,
+                "complete_value_counts": {
+                  "30": 13,
+                  "50": 7,
+                  "75": 1,
+                  "20": 5,
+                  "85": 6
+                },
+                "constant_50_human_mae": 16.10028696607525
+              }
+            }
+          }
+        }
+      },
+      "wall_seconds": 229.9253276438685,
+      "run_fingerprints": [
+        {
+          "run": "E46-commitment-Qwen2.5-14B-Instruct-literal",
+          "config_sha256": "76aa5e15dc058d18852d4b482d9a83949e76120ae32569dd3cfa262ea9a5b627",
+          "raw_sha256": "8be050a1068d11f0f63c5fc496f3ee2a80cd13d6186bfe6260e12ab2c61277e0"
+        },
+        {
+          "run": "E46-commitment-Qwen2.5-14B-Instruct-meaning",
+          "config_sha256": "0ed7106eb2fb48d6bbe6b7b17a032f1cbf7cae75a7f4f263a6f8ad1c099645e9",
+          "raw_sha256": "8c732dafe393f39099719df00146ed1e9bf2a631cbd92581a78272d6af25dc3a"
+        },
+        {
+          "run": "E46-commitment-Qwen2.5-14B-Instruct-trust",
+          "config_sha256": "a255c66dfab9c89a193c2bdf68518c63bac289944bb7dbf55e490f1cfecd23a0",
+          "raw_sha256": "c430885c465e00a55a093aa89890685b7ab6f7ade2a236cd7228987b7bcfae80"
+        },
+        {
+          "run": "E46-commitment-Qwen2.5-14B-Instruct-binary",
+          "config_sha256": "b071200b1fe77773985d4caa68fd47ff5e980ae864acdccf15e4038506cb5243",
+          "raw_sha256": "aab8ed51b88a84c9b5f75050d29b02f58a9b6beb791f64d614ad34e7323e601d"
+        }
+      ],
+      "config_sha256": "edc3cf1b13bb59fb6a110a134841c0dd63b0c750cb7ff8a749d449023ffc4480",
+      "raw_sha256": "71d7b946a5e5badb97e0f37b53eb2c3e5b05b246bedaa00959e3c08526da5d7c"
+    }
+  },
+  "human_conditional_norm": {
+    "literal": {
+      "n": 32,
+      "complete_numeric_n": 32,
+      "effects": {
+        "implicit_at_literal_false": {
+          "all_eight_item_mean_bounds": [
+            13.017664059496923,
+            13.017664059496923
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 13.017664059496923,
+            "item_bootstrap_ci95": [
+              7.163673489518694,
+              19.52130570818899
+            ],
+            "n_items": 8
+          }
+        },
+        "implicit_at_literal_true": {
+          "all_eight_item_mean_bounds": [
+            18.874746793498083,
+            18.874746793498083
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 18.874746793498083,
+            "item_bootstrap_ci95": [
+              13.060521323262458,
+              24.953469124976845
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_at_implicit_false": {
+          "all_eight_item_mean_bounds": [
+            10.28054024713105,
+            10.28054024713105
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 10.28054024713105,
+            "item_bootstrap_ci95": [
+              4.365865307872791,
+              15.841215596037884
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_at_implicit_true": {
+          "all_eight_item_mean_bounds": [
+            16.13762298113221,
+            16.13762298113221
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 16.13762298113221,
+            "item_bootstrap_ci95": [
+              10.923120300007609,
+              22.161226690351196
+            ],
+            "n_items": 8
+          }
+        },
+        "interaction": {
+          "all_eight_item_mean_bounds": [
+            5.857082734001162,
+            5.857082734001162
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 5.857082734001162,
+            "item_bootstrap_ci95": [
+              -1.6479578303934712,
+              12.044224370179682
+            ],
+            "n_items": 8
+          }
+        }
+      },
+      "corner_means": {
+        "literal_false_meaning_false": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            57.18849693201567,
+            57.18849693201567
+          ],
+          "point_and_ci": {
+            "mean": 57.18849693201566,
+            "item_bootstrap_ci95": [
+              53.75187110863238,
+              61.184615096428544
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_false_meaning_true": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            70.20616099151258,
+            70.20616099151258
+          ],
+          "point_and_ci": {
+            "mean": 70.20616099151258,
+            "item_bootstrap_ci95": [
+              65.92235222224865,
+              74.40531556213561
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_true_meaning_false": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            67.46903717914671,
+            67.46903717914671
+          ],
+          "point_and_ci": {
+            "mean": 67.46903717914671,
+            "item_bootstrap_ci95": [
+              62.28570230514091,
+              72.11510819277794
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_true_meaning_true": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            86.34378397264479,
+            86.34378397264479
+          ],
+          "point_and_ci": {
+            "mean": 86.34378397264479,
+            "item_bootstrap_ci95": [
+              82.94121401532321,
+              89.76314794609016
+            ],
+            "n_items": 8
+          }
+        }
+      }
+    },
+    "meaning": {
+      "n": 32,
+      "complete_numeric_n": 32,
+      "effects": {
+        "implicit_at_literal_false": {
+          "all_eight_item_mean_bounds": [
+            9.718110188831306,
+            9.718110188831306
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 9.718110188831307,
+            "item_bootstrap_ci95": [
+              -4.723264625713964,
+              22.915889600845617
+            ],
+            "n_items": 8
+          }
+        },
+        "implicit_at_literal_true": {
+          "all_eight_item_mean_bounds": [
+            27.075968156606777,
+            27.075968156606777
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 27.075968156606777,
+            "item_bootstrap_ci95": [
+              19.049376723686784,
+              34.83192574386522
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_at_implicit_false": {
+          "all_eight_item_mean_bounds": [
+            3.985543864791069,
+            3.985543864791069
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 3.985543864791069,
+            "item_bootstrap_ci95": [
+              -6.2215434312647835,
+              15.82975401980121
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_at_implicit_true": {
+          "all_eight_item_mean_bounds": [
+            21.343401832566542,
+            21.343401832566542
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 21.34340183256654,
+            "item_bootstrap_ci95": [
+              8.846360879397286,
+              32.83823513535083
+            ],
+            "n_items": 8
+          }
+        },
+        "interaction": {
+          "all_eight_item_mean_bounds": [
+            17.35785796777547,
+            17.35785796777547
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 17.35785796777547,
+            "item_bootstrap_ci95": [
+              5.043424711227261,
+              31.22948371952616
+            ],
+            "n_items": 8
+          }
+        }
+      },
+      "corner_means": {
+        "literal_false_meaning_false": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            47.080063972199746,
+            47.080063972199746
+          ],
+          "point_and_ci": {
+            "mean": 47.080063972199746,
+            "item_bootstrap_ci95": [
+              39.5780717017152,
+              55.10748282455191
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_false_meaning_true": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            56.798174161031056,
+            56.798174161031056
+          ],
+          "point_and_ci": {
+            "mean": 56.79817416103105,
+            "item_bootstrap_ci95": [
+              47.52750891301698,
+              66.86169797926183
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_true_meaning_false": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            51.06560783699081,
+            51.06560783699081
+          ],
+          "point_and_ci": {
+            "mean": 51.06560783699081,
+            "item_bootstrap_ci95": [
+              45.71365037850487,
+              58.07368765208878
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_true_meaning_true": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            78.14157599359758,
+            78.14157599359758
+          ],
+          "point_and_ci": {
+            "mean": 78.1415759935976,
+            "item_bootstrap_ci95": [
+              71.46535393814932,
+              83.75210069251541
+            ],
+            "n_items": 8
+          }
+        }
+      }
+    },
+    "trust": {
+      "n": 32,
+      "complete_numeric_n": 32,
+      "effects": {
+        "implicit_at_literal_false": {
+          "all_eight_item_mean_bounds": [
+            18.073097392488116,
+            18.073097392488116
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 18.073097392488116,
+            "item_bootstrap_ci95": [
+              9.553766921505929,
+              27.6857191066495
+            ],
+            "n_items": 8
+          }
+        },
+        "implicit_at_literal_true": {
+          "all_eight_item_mean_bounds": [
+            25.640980818492427,
+            25.640980818492427
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 25.64098081849243,
+            "item_bootstrap_ci95": [
+              15.895114807367964,
+              36.233900647621226
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_at_implicit_false": {
+          "all_eight_item_mean_bounds": [
+            18.519935468451614,
+            18.519935468451614
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 18.519935468451614,
+            "item_bootstrap_ci95": [
+              11.841611404889075,
+              24.593105120912465
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_at_implicit_true": {
+          "all_eight_item_mean_bounds": [
+            26.08781889445593,
+            26.08781889445593
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 26.08781889445592,
+            "item_bootstrap_ci95": [
+              19.55531420367185,
+              32.53951163071924
+            ],
+            "n_items": 8
+          }
+        },
+        "interaction": {
+          "all_eight_item_mean_bounds": [
+            7.567883426004312,
+            7.567883426004312
+          ],
+          "complete_four_corner_item_n": 8,
+          "point_and_ci": {
+            "mean": 7.567883426004312,
+            "item_bootstrap_ci95": [
+              -0.15659431823004144,
+              15.81949874257501
+            ],
+            "n_items": 8
+          }
+        }
+      },
+      "corner_means": {
+        "literal_false_meaning_false": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            28.893120808671483,
+            28.893120808671483
+          ],
+          "point_and_ci": {
+            "mean": 28.893120808671483,
+            "item_bootstrap_ci95": [
+              25.806978939103978,
+              32.608142629137056
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_false_meaning_true": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            46.96621820115959,
+            46.96621820115959
+          ],
+          "point_and_ci": {
+            "mean": 46.9662182011596,
+            "item_bootstrap_ci95": [
+              35.67951997187826,
+              58.2631276530395
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_true_meaning_false": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            47.4130562771231,
+            47.4130562771231
+          ],
+          "point_and_ci": {
+            "mean": 47.41305627712309,
+            "item_bootstrap_ci95": [
+              43.32504789477461,
+              51.2575607126126
+            ],
+            "n_items": 8
+          }
+        },
+        "literal_true_meaning_true": {
+          "complete_n": 8,
+          "all_item_mean_bounds": [
+            73.05403709561553,
+            73.05403709561553
+          ],
+          "point_and_ci": {
+            "mean": 73.05403709561551,
+            "item_bootstrap_ci95": [
+              64.91875358735628,
+              81.01756993327955
+            ],
+            "n_items": 8
+          }
+        }
+      }
+    }
+  },
+  "full_gate_pass": true,
+  "analysis_protocol": [
+    "Primary numeric effects require EOS completion and whole-response integer validity.",
+    "No filtered model item analysis. Effects have all-eight-material bounds; point/CI only if all eight four-corner items available.",
+    "CI: 2000 item-cluster bootstrap, seed 0; conditional human cell means, no participant-level uncertainty.",
+    "No multiplicity-adjusted confirmatory claims; all targets/conditions/readouts reported.",
+    "Fresh LLM trust calls differ from human preceding commitment task; no causal architecture or isolated RLHF inference."
+  ]
+}

@@ -19,3 +19,6 @@
 
 
 **E28/E31–37更新：** 强现代端点已补齐，两组原human自然材料、八端点与同question配对完成；强方向成功例和readout混杂共同出现。balanced strict提升强側而损伤弱侧，不保“恢复=能力”故事。第三family Mistral原Hu/取消/自然强度八slot在跑。本局部位置/措辞分支不再加救分实验，保持0成熟贡献；下一对象必须对具体交际证据如何改变推断有实质解释、可跨材料验证，不能只描述prompt变分数。
+
+
+**深读更新：** 前人最强动作是改变可区分的前提：Mayn拆自己的推理与对partner能力信念，Weak Evidence用选择机制解释旧反转，NMI/Confidence-Commitment拆报告含义与后续行为，Roleplay用真假×角色endorsed控制浅行为与内部改变。generic“一个能力分不够”“知道不用”“criterion移动”都已有ownership。当前候选未知是表达选择预测能否约束具体听者解释及不同社会判断；E49仍为parent驻留，不注册结果方向。E45 task floor失败、E41支持质量、E46基础理解限制均保留。不能把一个reference task不一致缩成paper，需独立自然来源的可迁移条件解释；贡献仍0。

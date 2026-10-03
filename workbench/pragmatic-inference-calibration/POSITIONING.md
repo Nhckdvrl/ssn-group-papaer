@@ -102,3 +102,24 @@ Raffel作者blog[When will models be good enough](https://huggingface.co/blog/cr
 | Strategic Dialogue Assessment / D&D2026 | 非合作courtroom、commitment/credibility/goal收益、原court对话评估 | 摘要/引言已读，53页未全文；不能claim首次将战略欺骗/社会trust接入语用。正式数值与原labels未核对 |
 
 corpus nearest “LLM pragmatic speaker commitment literal truth implicit meaning trust belief attribution”返回NAACL2025belief、ACL2025(RSA)²/INLI、EMNLP2024different pragmatic levels与Wave；最新primary搜索直接命中BWIM与2026implicit dominance，均纳入边界，不自动kill。另命中conditionals arXiv2605.21299（仅摘要）与LREC2026Emergence（仅摘要）：不算全文，不把已有alignment→intent representation说成我们的novelty。
+
+
+## 选择机制、元认知与角色的ownership（2026-10-03，分阅读范围）
+
+corpus nearest “language models speaker selection mechanism pragmatic inference world belief speaker intent commitment selective evidence”＋最新primary arXiv检索。词面commitment命中不等于相同scientific object，不输出kill。
+
+| 近邻 | 改变的前提/已拥有 | 当前边界与如何发展 |
+|---|---|---|
+| [Mayn2025](../../library/themes/pragmatic-inference/speaker-reasoning-2025.md) | 关于partner reasoning的信念影响解释、人类异质性；正文/附录A–E全文、E47描述norm复现 | E49只是文本迁移；缺photo/history不称human effect精确复现，literal-S0 posterior非L0 |
+| [Weak Evidence2022](../../library/themes/pragmatic-inference/weak-evidence-2022.md) | rhetorical selection解释已知反转并给speaker expectation条件预测；正文全文、SI未取得 | LLM weak-evidence已有2025大学slides直接展示，不首次发现；final filter727vs723未核对，不开无norm GPU |
+| [NMI2026](../../library/themes/pragmatic-inference/confidence-behavior-2026.md) | confidence形成/行为阈值、两类独立预测与steering；公开v3正文主线/Methods读 | generic sensitivity/criterion、可干预confidence均已有；社会speaker attribution不同，但差异不足自动novelty |
+| [Confidence-Commitment2026](../../library/themes/pragmatic-inference/confidence-commitment-2026.md) | verbal confidence更预测提交而非正确，probe/steering；核心论证与Methods深读，补充未全读 | 自己提交答案≠他人social责任。E48显示特定残差识别需要因果假设，不推翻实证或借bug转新领域 |
+| [Roleplay2026](../../library/themes/pragmatic-inference/roleplay-belief-2026.md) | 行为/内部truth representation分离、干预深度；正文主线、附录/代码未核对 | 不能generic表达≠内部相信/knowledge≠use；主要机制不直接从自报告推断 |
+| [SDA2026](../../library/themes/pragmatic-inference/strategic-dialogue-2026.md) | 目标相关承诺/credibility、非合作courtroom；§4/8–10已深入补读，非53页全文 | BEN/DET≠world truth；累积策略≠long-horizon planning；真实court data/labels未核对 |
+
+额外词面近邻[When Does a Language Model Commit?](https://arxiv.org/abs/2605.06723)只读检索摘要，研究有限答案偏好稳定时点，非社会commitment；不计全文或宣布无碰撞。EMNLP2024 Belief Revision由corpus命中，尚未深读。2025弱证据LLM primary slides只读相关excerpt，不能反向证明我们的联合选择机制对象无人做过。
+
+**compression risk仍高：** 单一reference游戏中的speaker/listener不一致、换现代checkpoint、一个新metric都不够。增量须能改变关于交际证据如何进入解释的已有结论，并跨独立材料保留；当前0成熟贡献。
+
+
+最新nearest重新检索speaker intent/world truth/selective disclosure，返回EMNLP2024不同pragmatic levels、ACL2026goal-directed alternatives/social world models、Wavelength与Wu等。前者正文已补读：拥有training-vs-eval reasoning、partner depth/lexicon/data information的区别，非LLM自然数据。ICML2026cached-confidence正文/关键方法已深读：拥有自己答案信号的缓存、检索、多干预，未拥有别人表达选择对自然意图/world belief的联合条件预测。以上只是ownership定位；compression risk仍高，E49/E50暂无共同可用的role测量，不以近邻存在关线。

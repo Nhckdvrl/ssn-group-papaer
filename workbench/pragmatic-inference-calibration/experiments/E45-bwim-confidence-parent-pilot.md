@@ -1,6 +1,6 @@
 # E45：BWIM原confidence协议有界pilot
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO / D1–D2；先原反馈基线，不改问答loss/agent框架
 - **对应：** C02/P09
 - **问题（一句话）：** 本地强open endpoints能否在目标行为反馈中保持literal task成功，同时让implicit解释的confidence有partner区别，为后续实际决策测量提供有效基线？
@@ -13,4 +13,6 @@
 - **算力预算：** 五端点四sourceepisode共800完整greedy，最多512输出，十独立jobs八锁；不调用API不training。原数据小、已下载权重，E41 ready时同锁排队，预计<8GPU·时；实际walltime/config全记。
 
 ## 结果
-E44 CPU/source/history门已通过；十作业八GPU锁运行，800trial generations，尚无全矩阵结果。无需新标注，C01/C02仍L0。
+十作业800trial全部完成，完整原source、实际每turn history/prompt/token、模型版本及数值重复门全通过；结果见[完整摘要](../results/E45-bwim-confidence-summary.json)。无歧义fully control的完整正确为Q25-3BInstr5/64、Q3-4B19/64、8B21/64、14B29/64、MistralInstr8/64。所有端点都未达到跑前task-floor参考；按B执行：不把partner confidence/preference变化当语用能力证据，不增加恢复prompt。Q3-14完整格式可用154/160、fully可用63/64，因此任务结构错误不能只归为格式。原每turnoutput不覆写；C01/C02仍L0。
+
+**POST-HOC 2026-10-03：** root逐一核对原16种fully instruction/初始结构/目标及14B错误原文，明显有front轴取反、数目/空间转换错误；还未独立标注。追加纯CPU全64control/model的z反射一致性诊断，只审最简单替代解释，不改correct标准、不选择子集重算pragmatic结论。

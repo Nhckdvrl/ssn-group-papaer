@@ -1,6 +1,6 @@
 # E41：stronger-matched-stage（2026-10-03）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** REPRO / D1–D2，stronger matched-stage boundary
 - **对应：** C01/C02/P02/P09
 - **问题（一句话）：** 同一Qwen2.5家族从3B到14B后，post-training对原自然语用判断/更新/背景信念归因的作用是否保留，还是此前主要反映较弱端点与读数可用性？
@@ -14,3 +14,12 @@
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 下载进行中；CPU所有原source/完整candidate prefix及同族input SHA已通过（results/E41-prefix-preflight.json、E41-projection-preflight.json）。八独立作业已排队，尚未GPU预测；C01/C02仍L0。
+
+
+全八作业25508预测完成；原Hu/Impli18468 source/token/fullchoice/独立完整likelihood gate通过：[parent summary](../results/E41-strong-parent-summary.json)；projection7040：[EOS-aware summary](../results/E41-strong-projection-summary.json)。Hu按原source original/no-story与phenomenon分开：原Hu裸Base→Instr Deceits .88→.94、Irony .688→.760、Humour .488→.568，同时IndirectSpeech .86→.82、Coherence .79→.77，不支持统一scalar能力变化。
+
+原natural Impli50items、两encoding平均后，Instr−Base initial endorsement −.228402 CI[−.320501,−.126782]；cancel-minus-irrelevant −.141030[−.256980,−.036192]。但candidate support原Base .009949→Instr .637239，format Base .005295→Instr .999911。不能把小概率候选归一化的stage差归因latent competence/policy；irrelevant也无完整human规范，非FPR。两条件全部保留，不换prompt救ranking。
+
+projection严格要求whole numeric+EOS：Base bare全0完整；Base chat prior p/notp2/10 of40、projection p/notp6/2 of840；Instr bare全0，Instr chat全部40/40与840/840。正命题human-valid MAE Instr prior .143181、projection .253986，但这不是两checkpoint可比较能力。原5token非EOS numeric只作diagnostic，全部缺失bounds保留、不选有效subset。
+
+首次summary gate错把Hu source condition当task接口condition；原raw正确保留original/no-story，接口由run与完整prompt/token识别。修正summary字段解释后全gate通过，不重跑/改raw。决策表C/D：强端点仍显示入口/候选质量混杂及现象不同方向，不升级统一criterion或RLHF claim。C01/C02仍L0。

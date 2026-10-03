@@ -56,25 +56,66 @@ def ratings_summary(rs,source=None):
     return out
 
 ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);ap.add_argument('--output',type=Path,required=True)
-a=ap.parse_args();assert not a.output.exists();rows,audit=prepare(a.root);pre=json.loads(Path('workbench/pragmatic-inference-calibration/results/E43-source-preflight.json').read_text())
+ap.add_argument('--qwen14-only',action='store_true')
+a=ap.parse_args();assert not a.output.exists();rows,audit=prepare(a.root)
+if a.qwen14_only:
+    from commitment_qwen14_data import common_model,selected,GROUPS
+    manifest=json.loads((a.root/'models/qwen25-14-stage-manifest.json').read_text())
+    model_specs=[(m['id'].split('/')[-1],m['id'],m['sha'],None) for m in manifest]
+    pre=json.loads(Path('workbench/pragmatic-inference-calibration/results/E46-source-preflight.json').read_text())
+else:
+    model_specs=specs(a.root)
+    pre=json.loads(Path('workbench/pragmatic-inference-calibration/results/E43-source-preflight.json').read_text())
 assert pre['gate_pass'] and pre['audit']==audit
 human={target:ratings_summary([r for r in rows if r['target']==target and r['task'] in ['commitment','trust'] and r['condition']=='original'])
     for target in ['literal','meaning','trust']}
 models={}
-for cp,mid,revision,parent in specs(a.root):
-    run=a.root/'runs'/('E43-commitment-'+cp);config=json.loads((run/'config.json').read_text())
+for cp,mid,revision,parent in model_specs:
+    if a.qwen14_only:
+        tok=AutoTokenizer.from_pretrained(common_model(a.root,cp),local_files_only=True)
+        configs=[];raw=[];fingerprints=[]
+        for group in GROUPS:
+            run=a.root/'runs'/('E46-commitment-'+cp+'-'+group)
+            cfg=json.loads((run/'config.json').read_text());rr=selected(rows,group)
+            assert cfg['complete'] and cfg['group']==group and cfg['n']==2*len(rr)
+            assert cfg['model']==mid and cfg['revision']==revision and cfg['source_audit']==audit
+            assert cfg['numerical_gate_pass'] and cfg['dtype']=='float32' and cfg['batch_size']==1 and cfg['max_new_tokens']==16
+            assert cfg['full_input_token_hashes']==pre['models'][cp]['full']
+            assert cfg['input_token_hashes']==pre['models'][cp]['groups'][group]
+            for interface in ['bare','common-chat']:
+                assert inputs(tok,rr,interface,cp)[2]==cfg['input_token_hashes'][interface]
+            sha=lambda name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
+            assert cfg['script_sha256']==sha('run_commitment_qwen14.py') and cfg['helper_sha256']==sha('commitment_qwen14_data.py')
+            assert cfg['original_dependency_sha256']==sha('commitment_data.py')==pre['original_dependency_sha256']
+            controls=json.loads((run/'numerical-control.json').read_text())
+            assert len(controls)==4 and all(z['pass'] and z['same_generated_ids'] and z['token_lp_delta']<.001 for z in controls)
+            chunk=[json.loads(l) for l in (run/'predictions.jsonl').read_text().splitlines()]
+            assert len(chunk)==cfg['n']
+            assert {(r['interface'],r['id']) for r in chunk}=={(interface,r['id']) for interface in ['bare','common-chat'] for r in rr}
+            raw.extend(chunk);configs.append(cfg)
+            fingerprints.append({'run':run.name,'config_sha256':hashlib.sha256((run/'config.json').read_bytes()).hexdigest(),
+                'raw_sha256':hashlib.sha256((run/'predictions.jsonl').read_bytes()).hexdigest()})
+        config=dict(configs[0],n=528,input_token_hashes=pre['models'][cp]['full'],wall_seconds=sum(c['wall_seconds'] for c in configs))
+    else:
+        run=a.root/'runs'/('E43-commitment-'+cp);config=json.loads((run/'config.json').read_text())
+        raw=[json.loads(l) for l in (run/'predictions.jsonl').read_text().splitlines()]
+        fingerprints=[{'run':run.name,'config_sha256':hashlib.sha256((run/'config.json').read_bytes()).hexdigest(),
+            'raw_sha256':hashlib.sha256((run/'predictions.jsonl').read_bytes()).hexdigest()}]
     assert config['complete'] and config['n']==528 and config['source_audit']==audit and config['numerical_gate_pass']
     assert config['model']==mid and config['revision']==revision and config['max_new_tokens']==16 and config['dtype']=='float32'
-    assert config['script_sha256']==hashlib.sha256(Path(__file__).with_name('run_commitment_parent.py').read_bytes()).hexdigest()
-    assert config['helper_sha256']==hashlib.sha256(Path(__file__).with_name('commitment_data.py').read_bytes()).hexdigest()
+    script='run_commitment_qwen14.py' if a.qwen14_only else 'run_commitment_parent.py'
+    helper='commitment_qwen14_data.py' if a.qwen14_only else 'commitment_data.py'
+    assert config['script_sha256']==hashlib.sha256(Path(__file__).with_name(script).read_bytes()).hexdigest()
+    assert config['helper_sha256']==hashlib.sha256(Path(__file__).with_name(helper).read_bytes()).hexdigest()
     assert all(z['pass'] for z in json.loads((run/'numerical-control.json').read_text()))
     tok=AutoTokenizer.from_pretrained(common_model(a.root,cp),local_files_only=True)
     texts={};plans={}
     for interface in ['bare','common-chat']:
-        t,ids,fp=inputs(tok,rows,interface,cp);assert fp==config['input_token_hashes'][interface]==pre['models'][cp][interface]
+        expected=pre['models'][cp]['full'][interface] if a.qwen14_only else pre['models'][cp][interface]
+        t,ids,fp=inputs(tok,rows,interface,cp);assert fp==config['input_token_hashes'][interface]==expected
         texts.update({(interface,r['id']):text for r,text in zip(rows,t)})
         plans.update({(interface,r['id']):r for r in rows})
-    raw=[json.loads(l) for l in (run/'predictions.jsonl').read_text().splitlines()];assert len(raw)==len(plans) and len({(r['interface'],r['id']) for r in raw})==528
+    assert len(raw)==len(plans) and len({(r['interface'],r['id']) for r in raw})==528
     for r in raw:
         k=r['interface'],r['id'];source=plans[k]
         assert all(r[key]==v for key,v in source.items() if key not in ['prompt','story','facts','human_values'])
@@ -96,8 +137,10 @@ for cp,mid,revision,parent in specs(a.root):
                 for target in ['literal','meaning','trust']}
         interfaces[interface]={'binary':binary,'ratings':ratings}
     models[cp]={'interfaces':interfaces,'wall_seconds':config['wall_seconds'],
-        'config_sha256':hashlib.sha256((run/'config.json').read_bytes()).hexdigest(),'raw_sha256':hashlib.sha256((run/'predictions.jsonl').read_bytes()).hexdigest()}
-out={'source_audit':audit,'n':5280,'models':models,'human_conditional_norm':human,'full_gate_pass':True,
+        'run_fingerprints':fingerprints,
+        'config_sha256':hashlib.sha256(json.dumps([z['config_sha256'] for z in fingerprints]).encode()).hexdigest(),
+        'raw_sha256':hashlib.sha256(json.dumps([z['raw_sha256'] for z in fingerprints]).encode()).hexdigest()}
+out={'source_audit':audit,'n':528*len(models),'models':models,'human_conditional_norm':human,'full_gate_pass':True,
     'analysis_protocol':['Primary numeric effects require EOS completion and whole-response integer validity.',
         'No filtered model item analysis. Effects have all-eight-material bounds; point/CI only if all eight four-corner items available.',
         'CI: 2000 item-cluster bootstrap, seed 0; conditional human cell means, no participant-level uncertainty.',

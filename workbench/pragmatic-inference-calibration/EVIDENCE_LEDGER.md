@@ -76,3 +76,26 @@ E38跑前audit：1760source/840human mean，prior源Josie四行高/低fact标签
 | RAILS2025 literal S0消息仍支持target2/3 | speaker policy与listener literal选择是不同对象 | literal partner=全部unlicensed gold | 高，原规则/两页全文；非我们finding | 先E44/E45原互动基线task floor，再决定行为目标 |
 
 E38/E39/E40/E42/E43完整结果见各results；E45运行，E41资产下载。没有成熟paper claim、C01/C02仍L0。
+
+
+## 深读、强配对与任务floor（E41/E45–E49）
+
+| Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E41自然Impli Instr−Base initial−.2284 CI[−.3205,−.1268]，cancel−irrelevant−.1410[−.2570,−.0362]；candidate mass .00995→.63724 | 初始判断/更新/入口支持质量不同对象 | post-training统一更爱脑补或归一化概率就是能力 | 高：完整18468gate；能力归因不足 | 原源/规范成立后联合选择机制，而非更多format rescue |
+| E41projection Base bare0完整、Instr chat全880每极性完整，原5token | 评分适用性依stage/interface | 只挑有效numeric比较能力 | 高：7040全raw/EOS/bounds | 不救原budget；独立natural分目标E46已完成 |
+| E45无歧义64controls五端点5/19/21/29/8正确；全未过.95 floor | build/coordinate失败仍是主要替代解释 | confidence4即模型过度推断partner | 高：800calls/全controls；root几何审非独立人审 | 不加prompt，先其它可靠parent；源几何11/64反射仅诊断 |
+| E46Base bare8/8+64/64，Instr chat6/8+58/64；各数值均32/32，但相反入口大量invalid | 理解/评分/入口可分离 | 最好入口差就是stage因果；cross-layer=脑补 | 高：1056全gate，八item归因不足 | E49同源两个交际角色；独立自然材料仍必要 |
+| E47两human retained79/160、四critical mean舍入parity；literal-S0关键posterior2/3 | 推断许可依表达选择过程 | literal partner全当unlicensed/FPR | 高：CPU原规则/全24source | E49文本迁移先control再关键条件，不伪造photo norm |
+| E48 oracle残差correctness .499–.501，threshold-noisy estimate commit .833–.847，独立report noise≈.5 | 残差关联需要额外路径假设 | 任何非truth残差就是policy/criterion机制 | 高：解析＋三seed反例；0LLM证据 | 联合独立观测/可区分因果操纵，停止本数学局部audit |
+| E49全部1080source/model preflight，OL SFT/DPO actualtoken一致，八端点运行 | 有parent支撑的联合观测可实施 | 为满卡制造无问题的表格 | 仪器证据，结果未齐 | 等全部完整、EOS/全行bounds/control；不挑模型或source |
+
+完整结果见E41/E45/E46/E47/E48各results；E49 RUNNING。C01/C02仍L0。
+
+
+2026-10-03 E49/E50完成：8640/6912原source读数完整，数值/source/token/EOS gates通过。E49无endpoint三身份全过无歧义控制；E50多数Qwen listener恢复，但speaker候选质量弱、身份effect随入口/terminal反转（Q3-8 bare full−.0180 vs content+.0048）。全部原item/missing bounds保留，不把generic role不一致或格式差叫新发现；C01/C02仍L0。当前未知需由独立自然source、成功理解与概率质量共同约束。E51跑前卡已写，核对dense OLMo2四stage和原IQAP/Circa输入；不追加E49/E50的局部prompt救分，资产预检尚在进行。
+
+E51/E52：原IQAP150×两入口与Circa433×两入口×两order，4stage8128/强Qwen配对4064。各native词表、完整backend与源/候选prefix已核对；Q25 native EOS角色不同，共同Instr terminal作为受控入口显式记录。E51固定权重下载、八槽等待；E52四卡实际计算且numerical/fullteacherforce gates通过。新增ICML2026缓存confidence正文/关键方法与EMNLP2024不同pragmatic levels正文深读，累计55分级卡。未升级C01/C02、未改PROPOSED。
+
+
+E52强Q25配对4064完成：IQAP chat方向+.2333 CI[.1467,.3133]而四类Brier+.2084[.1343,.2872]，但Base完整candidate mass8.04e−13/Instr无QA prior偏probable-yes .99697，不能升级能力/校准claim。Circa条件原序弱correct升.7969→.9766，negative弱class仍有原序.1154/逆序.8462的顺序混杂。E53明确POST-HOC无损格式审计全8640与固定6阳/15阴cases通过：四endpoint从0可用恢复962–1079，但无歧义semantic controls仍未共同通过，原primary不改，不将format失败叫能力negative。C01/C02仍L0。E51八槽等待固定权重，有限collector只汇总8作业全完成且校对通过的结果，不更新主张/状态或自主开实验；实际状态保存在本地data/E51-collector-status.json。
