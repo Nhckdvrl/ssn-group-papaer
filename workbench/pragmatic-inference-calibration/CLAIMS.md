@@ -21,6 +21,9 @@ Flan-T5-XL 1,365个选择与作者公开结果全部匹配，概率MAD=0.000077�
 ## 作废 / 降级记录
 当前有L1任务观察C03，没有已升级的语用能力/机制claim。不能因为解释未识别，把实际观测也记成零；不能因为观测成立就包装成成熟论文贡献。
 
+- 2026-10-03 **E65收尾：C03保持L1任务观察，语用解释优先级降级。** 三表述×两来源split，global bias/sharpness比identity减少90.9%–96.2%OOF DPO分布预测误差，残余human距离平均误差.004–.019；CI不构成残余等价零。constant预测失败，不声称模型忽视对话。见[E65卡](experiments/E65-global-answer-transport.md)与[汇总](results/E65-global-transport-summary.json)。
+- 2026-10-03 **E66–E68：C02硬许可仍L0，不升级stage能力。** canonical271/2285human对应成立，243项文本匹配支持graded测量；32项root语义pilot不是human gold。OLMo2格式控制114/128、97/128及顺序差未共同过gate；global诊断不得越过gate解释语用。Qwen8B/14B格式控制128/128、127/128，响应描述有效但不是新论文结构。E67初版WSJ item分组修为article整组，r1本地隔离；r2不筛seed/order/item。见[E66](experiments/E66-canonical-human-condition-audit.md)、[E67](experiments/E67-canonical-stage-response.md)、[E68](experiments/E68-cached-endpoint-controls.md)及各结果链接。
+
 - 2026-10-02 E03技术校对：初版Qwen3未显式关闭thinking，与parent不一致；16.4204 MAE作废为能力/复现证据，保留原文件并按原protocol重跑。不是预注册hypothesis的反例，也不是新finding。
 
 - 2026-10-03 E08：BF16 batch-dependent与Flan target-left-padding读数不通过gate，原文件保留，隔离科学解释；FP32/right-pad替代运行通过，不事后改旧结果。

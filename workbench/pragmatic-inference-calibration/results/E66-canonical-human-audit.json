@@ -1,0 +1,394 @@
+{
+  "experiment": "E66",
+  "upstream_commit": "15d1c58d1d3cb8c198c07ae5c1e63531a672b10d",
+  "hashes": {
+    "data/datasets/implicatureX.csv": "01d57e3acc0af4ee8298b77030e0188c6a8f58be22b1e13c5543f7ac9eb21484",
+    "data/prompts/prompts_implicatureX.csv": "04c20f4082a403dbe13df0e0560c5942a342fe5ebb69bdb0acd7e497e07e1647",
+    "data/crowdsourcing_annotation/prolific_responses.csv": "2cf3558983760b9e804681fdcb5996e12bbd419cc6d09c70323644a7c9e6b866",
+    "data/crowdsourcing_annotation/raw/prolific_trials.csv": "5197f248bb7e3ff5803ae7fa45eb31623bdf9932a8f2277ac9e2650651cc15b2",
+    "data/crowdsourcing_annotation/raw/prolific_attention_checks.csv": "0c74c605de674d81c320e04e27acb52461f45c5ac32d8547f7fafca27240d7d1",
+    "data/crowdsourcing_annotation/experiment/stimuli.csv": "033374dc2dae281d94fc624c8793242b00338bd2244d3c9da7cde18a318701a3",
+    "data/crowdsourcing_annotation/experiment/instructions.js": "a6b85a5d67421fe18920c0cf4e9ed70f976d5b45b544f4eec295970d51ad9721",
+    "data/crowdsourcing_annotation/experiment/experiment.html": "b851d270a1b4848bb2eb0ac8d6ef17857035ed5b6a9392d81d6995b94090a786",
+    "data/crowdsourcing_annotation/filter.ipynb": "e53f5db87525f1f868fafc5223a9aadf0446d5017137295a73b3bc7aca90691d",
+    "src/exps/generate_prompts.py": "41bbe8d56dda859437558c61561b419810bb48466edac7907ec0e0dd294c1c28"
+  },
+  "raw_trials": 3538,
+  "raw_attention_workers": 88,
+  "retained_workers": 76,
+  "released_response_rows": 2285,
+  "released_filter_multiset_exact": true,
+  "no_duplicate_item_condition_worker": true,
+  "same_worker_both_conditions": 0,
+  "items": 271,
+  "canonical_stimulus_field_matches": 243,
+  "fully_text_matched": 243,
+  "mismatch": {
+    "george_and_mamidi_19": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "george_and_mamidi_31": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "george_and_mamidi_35": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "ict_19": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "indirect_questions_10933": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_16495": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_17806": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_21789": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_26165": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": false
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": false
+      }
+    },
+    "indirect_questions_26457": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_28772": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "indirect_questions_32773": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_6975": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_9414": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "indirect_questions_9547": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "jhu_max_12": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "some_all_2": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "some_all_9": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "swb_1039_3077_utt@16": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "wsj_0158": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "wsj_0295": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": false
+      }
+    },
+    "wsj_0575": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "wsj_1218": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "wsj_1469": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "wsj_1617": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "wsj_2013": {
+      "baseline": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": true,
+        "scenario_presentation_match": false
+      }
+    },
+    "wsj_2281": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    },
+    "wsj_not_found_1": {
+      "baseline": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      },
+      "cancel": {
+        "q_presentation_match": false,
+        "scenario_presentation_match": true
+      }
+    }
+  },
+  "rating_counts": {
+    "1": 274,
+    "2": 377,
+    "3": 243,
+    "4": 158,
+    "5": 326,
+    "6": 520,
+    "7": 387
+  },
+  "ratings_per_cell_counts": {
+    "3": 62,
+    "4": 301,
+    "5": 179
+  },
+  "by_phenomenon": {
+    "discourse": {
+      "n_items": 31,
+      "text_match": 22,
+      "mean_raw_likert_change": -1.7408602150537635,
+      "item_bootstrap_ci95": [
+        -2.2193817204301074,
+        -1.273091397849463
+      ],
+      "n_raw_decreases": 27,
+      "n_raw_increases": 4
+    },
+    "naturally_occurring_conversational": {
+      "n_items": 50,
+      "text_match": 49,
+      "mean_raw_likert_change": -1.5856666666666666,
+      "item_bootstrap_ci95": [
+        -1.9820083333333336,
+        -1.189325
+      ],
+      "n_raw_decreases": 42,
+      "n_raw_increases": 7
+    },
+    "scalar": {
+      "n_items": 46,
+      "text_match": 44,
+      "mean_raw_likert_change": -2.6481884057971015,
+      "item_bootstrap_ci95": [
+        -2.959076086956522,
+        -2.3108514492753627
+      ],
+      "n_raw_decreases": 45,
+      "n_raw_increases": 1
+    },
+    "synthetic_conversational": {
+      "n_items": 144,
+      "text_match": 128,
+      "mean_raw_likert_change": -3.0913194444444443,
+      "item_bootstrap_ci95": [
+        -3.3059635416666664,
+        -2.8750954861111113
+      ],
+      "n_raw_decreases": 141,
+      "n_raw_increases": 2
+    }
+  },
+  "item_audit_path": "/data1/xiangding/work/pragmatic-inference-calibration/data/E66-canonical-human-audit/items.jsonl",
+  "item_audit_sha256": "8e7c67430f7188aaf539a851da23ed7b1351a0524a97116247569d59152a30de",
+  "derived_controls": {
+    "baseline": "human ratings exist",
+    "cancel": "human ratings exist",
+    "prior": "NO human norm; different question",
+    "irrelevant": "NO human norm",
+    "negation": "NO human norm",
+    "strengthen": "NO human norm"
+  },
+  "limitations": [
+    "Likert not probability; no binary inference license inferred",
+    "Canonical/stimuli text corrections are recorded as differences, not hidden or assumed gold",
+    "Target/cancellation layers remain unadjudicated, not machine-assigned gold",
+    "Item-bootstrap intervals ignore shared participant dependence; descriptive only",
+    "Human reasonableness vs model True/False wording remains different"
+  ],
+  "semantic_pilot": {
+    "path": "workbench/pragmatic-inference-calibration/results/E66-semantic-pilot.json",
+    "n": 32,
+    "reviewer": "root",
+    "not_gold": true,
+    "no_independent_human_adjudication": true
+  },
+  "audit_script_sha256": "db29b782aeb228a0b1328d47739d84b4edc9b76734c2237a89f2f39322df3bcb",
+  "ui_render_risk_summary": "results/E66-ui-render-risk.json"
+}

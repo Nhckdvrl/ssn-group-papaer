@@ -1,8 +1,15 @@
 # 我们现在相信什么 — 2026-10-03
 
-当前只推进C02/P02：具体含义的支持／不支持测量。以下历史读数不是当前实验排队。
+本轮C03收尾/C02-P02有限重建完成；不自动排新实验，建议人判断冻结，PROPOSED不擅改。以下历史读数不是当前实验排队。
 
-**当前支持的核心观察：** IQAP上OLMo SFT→DPO的四类human分布距离跨三种措辞都变差（E59），不是原单个词组的偶然效应；其无对话答案先验也变化，故仍未识别能力与policy的贡献。强Qwen方向准确提高却分布距离变差（E52），但Base候选支持极低，不能升级能力结论。E61人物评价与动机归因变化不同且后者接口质量弱；不能据此宣称两种能力分离。当前缺口是**同一候选含义的支持／不支持语境测量**；上述读数不替代此测量。
+**当前支持：** E65全局偏置+尖锐程度映射来源外预测E59主要阶段变化，三wordings和两split稳定；但constant忽略对话不成立，不把global账户叫纯bias。E66原human graded对照确实存在，E68两Qwen正常format端点可描述语境响应。**当前不支持：** E67同一OLMo2阶段pair的能力归因；控制/顺序gate未过，额外human特征无跨order稳定预测增益。没有达到论文验收条件，不换相邻对象或生成更多题续命。
+
+| 本轮 Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E65全局mapping对identity减少90.9%–96.2%OOF误差，残余距离均值.004–.019 | E59主要变化可由低维响应映射预测 | 把C03均值恶化直接叫pragmatic能力下降；constant忽视对话也失败 | 高，任务诊断；非因果 | 收尾，不追C03论文；不加复杂拟合 |
+| E66 271材料/2285human精确join，243文本匹配；32语义pilot含反驳/撤回/例外/计划变化 | 现成graded桥梁可用 | “没有human数据”与统一unlicensed/not-q硬gold | 高，文本/覆盖；三态未裁决 | 本轮已做E67/E68，不自动造新数据 |
+| E67 format控制SFT114/128、DPO97/128，SFT order median .259 | 协议/基础任务解释未排除 | 单凭阶段均值或global fit称能力/criterion变化 | 高，原计数；能力未识别 | 不继续局部修补；交人判断冻结 |
+| E68 Qwen format控制128/128、127/128，natural delta −.274/−.345，human rho .254/.282 | 固定q的语境响应确实可描述 | territory整体不可测；同时不支持超出parent的novelty | 中，graded描述/raters薄 | 无新稳定结构，本轮收尾 |
 
 | Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
 |---|---|---|---|---|

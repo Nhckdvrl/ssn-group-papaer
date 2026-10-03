@@ -13,3 +13,11 @@
 
 ## 2026-10-03公开cache与算术校对（E23–E25）
 19个open/nonthinking公开cache已按LFS OID下载保留。源归一化采用BF16全vocabsoftmax后选项再除，True+False偶偏离1；用True>.5与paper的True>False不必等价。自然50项Qwen3-4B原 .78，经pair重新归一诊断为.46；26/50均值落在.5±.001，median order gap .99917。Gemma4B .70→.40；较大模型大部分差较小，**主文自然任务人类差距并未因此消失**。同logitBF16/FP32算术重建，最大sum偏离.00293；精确source cache parity仍不成立，不扩大成新finding，不对未经核对的native源数字自动声称human-like能力。详见workbench results/E24-published-cache-boundary.json/E25-source-arithmetic-control.json。
+
+## 2026-10-03原human与测量桥梁复核（E66–E68）
+
+公开prolific_responses.csv含271项、2285评分、76保留worker；raw attention88 worker与论文招募90不补造。filter notebook按attention通过≥.8、去instruction和some_all_8后，发布multiset逐项一致；每格3–5评分，不同参与者见baseline/cancel，不是同worker配对。原analysis对worker作ddof1 z-score，z>0是相对个人量尺均值，不是binary许可概率。
+
+actual datapoint/API文字与canonical逐条对照：243项显示归一化文本匹配、28项拼写/标点/措辞差；另有16项字面speech annotation tags在人类innerHTML中可能不显示，不能因norm去tag就声称完全一致。三态许可未裁决，32项root语义pilot非human gold。
+
+本次重新核对Appendix E：negation使用语料类专属discourse marker，conversational的`I don't mean to imply`取消意图；Approx是同split随机取取消句，不自动中性；strengthen为人工连贯改写。原human评分只对应canonical，两类判断框架（Likert解释合理性与True/False）不同。**idea来源是研究belief negotiation与可撤回性；再加stage或continuous差并不足增量**，需可迁移的新条件解释。本轮没有得到这种结构，不靠claim ownership压缩成无人关心的切片。

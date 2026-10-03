@@ -1,0 +1,132 @@
+{
+  "experiment": "E66",
+  "post_hoc_technical_audit": true,
+  "n_flagged": 16,
+  "items": [
+    {
+      "item_id": "swb_0051_4364_utt@4",
+      "literal_model_annotation_tags": [
+        "music",
+        "swallowing"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0055_3156_utt@113",
+      "literal_model_annotation_tags": [
+        "breathing"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0062_4158_utt@133",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0066_2593_utt@3",
+      "literal_model_annotation_tags": [
+        "laughter",
+        "noise"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0230_3148_utt@94",
+      "literal_model_annotation_tags": [
+        "laughter",
+        "noise",
+        "static",
+        "throat_clearing"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0287_2819_utt@20",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0453_2139_utt@172",
+      "literal_model_annotation_tags": [
+        "breathing"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0453_2139_utt@94",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0501_3450_utt@74",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0574_4023_utt@121",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0869_2871_utt@211",
+      "literal_model_annotation_tags": [
+        "clicking"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_0869_2871_utt@88",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_1205_2441_utt@310",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_1327_4643_utt@4",
+      "literal_model_annotation_tags": [
+        "laughter",
+        "noise"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_1327_4643_utt@45",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    },
+    {
+      "item_id": "swb_1327_4643_utt@60",
+      "literal_model_annotation_tags": [
+        "laughter"
+      ],
+      "presentation_match": true
+    }
+  ],
+  "n_original_text_matched": 243,
+  "n_text_matched_without_cue_risk": 227,
+  "instructions_sha256": "a6b85a5d67421fe18920c0cf4e9ed70f976d5b45b544f4eec295970d51ad9721",
+  "source_lines": "instructions.js:471-488 uses innerHTML for scenario",
+  "issue": "Original matching stripped HTML-like tags on both model and human strings. Model sees literal <laughter>/<noise> etc; human browser innerHTML may omit these annotation cue names. Therefore normalized equality is not full visible-stimulus equivalence.",
+  "not_human_gold": true,
+  "decision": "Retain original 243 cohort; separately report 227 no-cue-risk sensitivity chosen solely by UI/source metadata, not model effects; no new inference or threshold change."
+}
