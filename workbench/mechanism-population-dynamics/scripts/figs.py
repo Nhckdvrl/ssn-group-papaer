@@ -327,8 +327,38 @@ def fig_scale_v2():
     fig.savefig(OUT / "fig_scale_v2.png", dpi=160)
 
 
+def fig_lockin():
+    """Fig 5b: how close the role layout is to its own final layout, vs fraction of training: Pythia 31M/70M/160M
+    (E40, previous-token maps, 10 seeds each), controlled S models (E46, parent runs), and the 1B same-seed effect (E37:
+    SI - SD relative to its final value). Shaded: the controlled critical period (1-2.5%)."""
+    e40 = json.loads((R / "e40" / "analysis.json").read_text())
+    e46 = json.loads((R / "e46" / "analysis.json").read_text())["lockin"]
+    e37 = json.loads((R / "e37" / "analysis.json").read_text())["steps"]
+    fig, ax = plt.subplots(figsize=(5.6, 3.6))
+    for size, col in (("31m", "#9ecae1"), ("70m", "#4292c6"), ("160m", "#08519c")):
+        c = e40[size]["S_prev"]["mean_curve"]
+        st = [int(s) for s in c if int(s) > 0]
+        ax.plot([s / 143000 for s in st], [c[str(s)] for s in st], "-", color=col, label=f"Pythia-{size} (own final)")
+    runs = [v for k, v in e46.items() if "M2" in next(iter(v.values()))]
+    st = sorted({int(s) for v in runs for s in v})
+    ax.plot([s / 10000 for s in st], [np.mean([v[str(s)]["M2"] for v in runs if str(s) in v]) for s in st], "-",
+            color="#DD8452", label="controlled S models (own final)")
+    fin = {m: e37["final"][m]["SI_minus_SD"] for m in ("M1", "M2", "M4")}
+    for s, frac in (("2500", 2500 / 69369), ("10000", 10000 / 69369)):
+        ax.scatter([frac], [np.mean([e37[s][m]["SI_minus_SD"] / fin[m] for m in fin])], color="#C44E52", zorder=3,
+                   label="1B: same-seed effect / its final value" if s == "2500" else None)
+    ax.axvspan(0.01, 0.025, color="#f4cccc", alpha=0.6, lw=0)
+    ax.set_xscale("log")
+    ax.set_xlabel("fraction of training")
+    ax.set_ylabel("similarity to the final layout")
+    ax.set_ylim(0, 1.15)
+    ax.legend(fontsize=7, frameon=False, loc="lower right")
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_lockin.png", dpi=160)
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
-    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance, fig_scale_v2):
+    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance, fig_scale_v2, fig_lockin):
         fn()
     print(sorted(p.name for p in OUT.glob("*.png")))
