@@ -37,11 +37,27 @@ def n_layers_heads(model):
     return c.num_hidden_layers, c.num_attention_heads
 
 
+_STATIC = {}
+
+
+def static(tok):
+    """Probe material that does not depend on the model (cached per tokenizer vocabulary in batch mode)."""
+    key = (tok.__class__.__name__, len(tok))
+    if key not in _STATIC:
+        from e35_census import natural_texts
+        import e26_factorial as e26
+        import e28_gating as e28
+        R, ix = e28.items()
+        enc = []
+        for i in ix:
+            cells = e26.build(R[i])[0]
+            enc += [e28.encode(tok, cells[c], R[i]["dist"]) for c in ("c1_decl", "c1_qa")]
+        _STATIC[key] = (natural_texts(tok), enc)
+    return _STATIC[key]
+
+
 @torch.no_grad()
 def measure(model, tok, bs=20):
-    from e35_census import natural_texts
-    import e26_factorial as e26
-    import e28_gating as e28
     L, H = n_layers_heads(model)
     dev = next(model.parameters()).device
     eos = tok.eos_token_id
@@ -58,7 +74,7 @@ def measure(model, tok, bs=20):
         nll = -lp[:, :-1].gather(-1, x[:, 1:, None])[..., 0]
         l1.append(nll[:, 1:128].mean().item())   # first copy (unpredictable)
         l2.append(nll[:, 129:].mean().item())    # second copy (copyable)
-    T = natural_texts(tok)
+    T, enc = static(tok)
     halves = {}
     for h, docs in (("a", T[:25]), ("b", T[25:])):
         m2, m3 = torch.zeros(L, H), torch.zeros(L, H)
@@ -71,14 +87,10 @@ def measure(model, tok, bs=20):
         halves[h] = (m2, m3)
     M2 = (halves["a"][0] + halves["b"][0]) / 2
     M3 = (halves["a"][1] + halves["b"][1]) / 2
-    R, ix = e28.items()
     M4 = torch.zeros(L, H)
-    for i in ix:
-        cells = e26.build(R[i])[0]
-        for c in ("c1_decl", "c1_qa"):
-            pid, pos = e28.encode(tok, cells[c], R[i]["dist"])
-            out = model(torch.tensor([pid], device=dev), output_attentions=True)
-            M4 += torch.stack([a[0, :, -1, pos].float().cpu() for a in out.attentions]) / (2 * len(ix))
+    for pid, pos in enc:
+        out = model(torch.tensor([pid], device=dev), output_attentions=True)
+        M4 += torch.stack([a[0, :, -1, pos].float().cpu() for a in out.attentions]) / len(enc)
     rel = lambda a, b: float(np.corrcoef(a.flatten().numpy(), b.flatten().numpy())[0, 1])
     res = {"L": L, "H": H, "loss_first": float(np.mean(l1)), "copy_loss_second": float(np.mean(l2)),
            "maps": {k: v.numpy().round(5).tolist() for k, v in (("M1", M1), ("M2", M2), ("M3", M3), ("M4", M4))},
@@ -90,14 +102,70 @@ def measure(model, tok, bs=20):
     return res
 
 
+def available(family, repo, rev):
+    """True only if the weights themselves are complete in the cache (the snapshot folder alone is not enough:
+    it appears as soon as the first small file of a concurrent download lands)."""
+    from pathlib import Path
+    from huggingface_hub import snapshot_download
+    try:
+        p = Path(snapshot_download(repo, revision=rev, cache_dir=str(mc.HF_CACHE), local_files_only=True,
+                                   allow_patterns=["*.json", "*.safetensors"] if family == "dd" else None))
+    except Exception:
+        return False
+    idx = p / "model.safetensors.index.json"
+    if idx.exists():
+        need = set(json.loads(idx.read_text())["weight_map"].values())
+        return all((p / f).exists() for f in need)
+    return (p / "model.safetensors").exists() or (family == "hf" and (p / "pytorch_model.bin").exists())
+
+
+def batch(jobs, worker, nworkers):
+    """Loop over a job file (lines: family repo rev out name); only jobs whose weights are already downloaded
+    (by prefetch.py); claim via mkdir; repeat until every job of this worker's share is done."""
+    import time
+    lines = [l.split() for l in open(jobs) if l.strip()]
+    mine = [l for j, l in enumerate(lines) if j % nworkers == worker]
+    while True:
+        left = 0
+        for fam, repo, rev, out, name in mine:
+            d = mc.RESULTS / out
+            if (d / f"{name}.json").exists():
+                continue
+            left += 1
+            if not available(fam, repo, rev):
+                continue
+            t0 = time.time()
+            try:
+                model, tok = load(fam, repo, rev)
+                res = measure(model, tok)
+            except Exception as e:
+                print("ERROR", name, repr(e)[:200], flush=True)
+                continue
+            res.update({"repo": repo, "rev": rev, "family": fam})
+            d.mkdir(exist_ok=True)
+            (d / f"{name}.json").write_text(json.dumps(res))
+            print(name, f"{time.time() - t0:.0f}s", {k: round(v, 3) for k, v in res.items() if k.endswith("_max")},
+                  flush=True)
+            del model
+            torch.cuda.empty_cache()
+        if left == 0:
+            return
+        time.sleep(60)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--family", choices=["hf", "dd"], required=True)
-    ap.add_argument("--repo", required=True)
-    ap.add_argument("--rev", required=True)
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--name", required=True)
+    ap.add_argument("--family", choices=["hf", "dd"])
+    ap.add_argument("--repo")
+    ap.add_argument("--rev")
+    ap.add_argument("--out")
+    ap.add_argument("--name")
+    ap.add_argument("--jobs")
+    ap.add_argument("--worker", type=int, default=0)
+    ap.add_argument("--nworkers", type=int, default=1)
     a = ap.parse_args()
+    if a.jobs:
+        return batch(a.jobs, a.worker, a.nworkers)
     out_dir = mc.RESULTS / a.out
     out_dir.mkdir(exist_ok=True)
     f = out_dir / f"{a.name}.json"
