@@ -1,0 +1,24 @@
+import fcntl,json,os,subprocess
+from concurrent.futures import ThreadPoolExecutor,as_completed
+from run_followup_queue import ROOT,PYTHON
+from projection_budget_data import specs
+
+def run(gpu,m):
+    cp,mid,sha,parent=m;name='E43-commitment-'+cp
+    env=os.environ.copy();env['CUDA_VISIBLE_DEVICES']=str(gpu)
+    with (ROOT/'gpu-locks'/f'{gpu}.lock').open('w') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX);assert not (ROOT/'runs'/name).exists()
+        print(json.dumps({'start':name,'gpu':gpu}),flush=True)
+        cmd=[PYTHON,'workbench/pragmatic-inference-calibration/scripts/run_commitment_parent.py','--root',str(ROOT),
+            '--model',str(ROOT/'models'/cp),'--model-id',mid,'--revision',sha,'--output',str(ROOT/'runs'/name)]
+        with (ROOT/(name+'.log')).open('w') as log:code=subprocess.run(cmd,env=env,stdout=log,stderr=subprocess.STDOUT).returncode
+        print(json.dumps({'done':name,'gpu':gpu,'exit':code}),flush=True)
+        if code:raise RuntimeError(name)
+if __name__=='__main__':
+    pre=json.loads(open('workbench/pragmatic-inference-calibration/results/E43-source-preflight.json').read());assert pre['gate_pass']
+    failed=[]
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        for f in as_completed([ex.submit(run,i%8,m) for i,m in enumerate(specs(ROOT))]):
+            try:f.result()
+            except Exception as e:failed.append(str(e))
+    print(json.dumps({'failed':failed}),flush=True);raise SystemExit(bool(failed))

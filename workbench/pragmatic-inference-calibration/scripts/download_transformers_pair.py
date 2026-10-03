@@ -4,8 +4,9 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from huggingface_hub import snapshot_download
 
-ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);a=ap.parse_args()
-manifest=json.loads((a.root/'models/mistral-stage-manifest.json').read_text())
+ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True)
+ap.add_argument('--manifest',type=Path);a=ap.parse_args()
+manifest=json.loads((a.manifest or a.root/'models/mistral-stage-manifest.json').read_text())
 
 def download(m):
     p=a.root/'models'/m['id'].split('/')[-1]

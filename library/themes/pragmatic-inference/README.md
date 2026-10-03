@@ -1,9 +1,19 @@
 # Pragmatic Inference — parent residency
 
-更新2026-10-03。已建立37篇论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
+更新2026-10-03。已建立47篇论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
 
 | 论文 / 阅读卡 | 证据范围 |
 |---|---|
+| [Human pragmatic components / PNAS2025](pragmatics-components-2025.md) | 正文全文；SI未读，Hu来源非独立 |
+| [BWIM / arXiv2026](bwim-2026.md) | 19页全文/附录A–C/关键code；本地confidence pilot |
+| [Listener adaptation / RAILS2025](listener-adaptation-2025.md) | 两页会议摘要全文；不是完整期刊论文 |
+| [Implicit dominance / Language and Cognition2026](implicit-dominance-2026.md) | main全文/源码/human；Exp2原回归parity，Exp1版本差异保留 |
+| [Prior beliefs modulate projection / 2021](prior-projection-2021.md) | 15页全文及附录；原human行数核对 |
+| [Gradient at-issueness / Theoretical Linguistics2023](gradient-atissue-2023.md) | 作者稿10页全文；理论非新实证 |
+| [Higher-order uncertainty / CogSci2017](higher-order-uncertainty-2017.md) | 全文/图；2019扩展仅摘要，不计全文 |
+| [LLM Beliefs Are in Their Heads / ACL2026main](beliefs-heads-2026.md) | main全文/关键A1/A3；A4全图及code未读 |
+| [SwDA Indirect Answers / NAACL2022 main](swda-indirect-2022.md) | main全文/关键附录；官方数据未发布 |
+| [Explicit belief representations / NAACL2025 main](projection-beliefs-2025.md) | main全文/附录B-C/源码；主回归未复现 |
 | [Was it Good? It was Provocative — ACL2010 / IQAP2011原数据](iqap-2010.md) | 阅读与未复现范围逐卡注明 |
 | [I'd rather just go to bed — CIRCA / EMNLP2020 main](circa-2020.md) | 阅读与未复现范围逐卡注明 |
 | [Addressing the Binning Problem in Calibration Assessment through Scalar Annotations — TACL2024](calibration-scalars-2024.md) | 阅读与未复现范围逐卡注明 |

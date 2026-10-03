@@ -13,6 +13,8 @@
 - **算力预算：** 8独立单卡任务×150×2×4完整序列，FP32 single sequence，GPU0–7文件锁，不用API/training/子agent；剩余E28锁释放后接上，不杀他人进程。
 
 ## 结果
+
+2026-10-03解释校对：原候选“probably meant Yes”是对意图的解释确信度，不等于说者表达了“probably Yes”。不改变预先声明的读数；跨任务的speaker certainty解释不成立，须分别描述。
 跑前冻结。原数据/PDF/完整token plans、预测置外部工作目录；代码与派生summary进git，保留所有失败。未知是自然解释方向与语义强度是否分离，不以某个hypothesis必须成立为目标。
 
 CPU全量预检通过：8端点×150×4×2 strict prefix/content boundary、三family内actual token hashes完全相同；65 evaluation未送模型。

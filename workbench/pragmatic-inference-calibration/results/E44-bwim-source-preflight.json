@@ -1,0 +1,51 @@
+{
+  "audit": {
+    "source_repo": "https://github.com/ltl-uva/build_what_i_mean",
+    "commit": "6384a1a5122df14374f2aa766c626ba09aa2d834",
+    "code_sha256": "28d49870b3f84636abffd0725b4e51cb16091f96faee8e44e16cd85d41bab153",
+    "csv_sha256": {
+      "List1_FINAL_stimuli_list.csv": "711ceceb15884f9b6cb9d763f330ce38b6b09e320750ed22f17da7dff34bde2d",
+      "List2_FINAL_stimuli_list.csv": "95be16ac1553a031de1b9c0177a9f66202561d83939bec83da133fccbeec1216"
+    },
+    "n_rows": 64,
+    "identical_prompt_different_target_pairs": 24,
+    "seeds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "n_trials_each_seed": 40,
+    "episode_sha256": "8fcf13f85d0d59af06780e5ca2660468ad0cf97200ab9b91731a19955ff8ac17",
+    "system_sha256": "689d754165d284df533a9e5f8a14eb3bc982bb6f3f70aab46db0debb72c790ff",
+    "limits": [
+      "Public repo implements QA with four sequential seeds; original confidence implementation and raw predictions not released here.",
+      "Confidence pilot uses paper Appendix A.1 and original material generator, fresh session per seed; not exact numerical reproduction.",
+      "No API QA, no trial-level human responses. Four sequences only, not original 30-sequence estimate.",
+      "Same prompt has probabilistic targets for literal partner; b-preference is not inherently an error."
+    ]
+  },
+  "models": {
+    "Qwen2.5-3B-Instruct": {
+      "gold_history_max_input_tokens": 15909,
+      "prompt_sha256": "a2e29a3853735f1d4fb557a6710af173bfa0922b83e27e1aeb166318e6a5724c"
+    },
+    "Qwen3-4B": {
+      "gold_history_max_input_tokens": 15913,
+      "prompt_sha256": "296b9c2054a72d993a6167cec91b3218233ec1178c449b1e49beeb0d11f8f609"
+    },
+    "Qwen3-8B": {
+      "gold_history_max_input_tokens": 15913,
+      "prompt_sha256": "296b9c2054a72d993a6167cec91b3218233ec1178c449b1e49beeb0d11f8f609"
+    },
+    "Qwen3-14B": {
+      "gold_history_max_input_tokens": 15913,
+      "prompt_sha256": "296b9c2054a72d993a6167cec91b3218233ec1178c449b1e49beeb0d11f8f609"
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "gold_history_max_input_tokens": 16797,
+      "prompt_sha256": "67f9b96a7e49b30593b41aeb5bdaf80d69ce86aed2b3e7f38500b37355bf88cb"
+    }
+  },
+  "gate_pass": true
+}

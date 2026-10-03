@@ -1,6 +1,6 @@
 # E35：第三family原自然材料的stage边界复核
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **对应：** C02/P02/P08；跨模型边界，不将8端点当8families
 - **问题（一句话）：** Qwen/OLMoE的自然解释与取消推断结构能否在独立Mistral真实Base/Instruct谱系重现？
 - **设置：** 官方mistralai/Mistral-7B-v0.3 SHA caa1feb0e54d415e2df31207e5f4e273e33509b1与Instruct SHA c170c708c41dac9275d15a8fff4eca08d52bab71，model card明确后者由前者instruction-finetune。non-gated/Apache2.0，Transformers索引所列权重约29GB/pair，不重复下载consolidated。先完整tokenizer/targets CPU preflight；原Hu、Wave、ImplicatureX与E33/E34相同自然材料复用，不新增benchmark/标签。是否兼容single-token协议未知，不能把不兼容当模型错。
@@ -22,3 +22,10 @@
 
 
 跑前完整预检通过：1365/1365/3464/6504全部full-choice前缀严格保持。Hu原尾空格不额外添加；Circa裸入口不添加空格。官方chat_template在追加assistant后会遗漏system（只在user是loop.last时合并system），因此冻结原generation prompt，再追加官方assistant序列`空格+content+EOS`，评分去掉EOS，原system完整保留。两个失败均在CPU、0预测；不是科学异常。除repeat外，首末每个候选以独立完整teacher forcing核对factored LP/概率<.001、argmax完全一致；不放宽数值gate。预检见results/E35-prefix-preflight.json。
+
+
+## 完成与证据限度
+
+八作业全部通过独立full teacher-forced LP/概率、repeatgate并完成；1365+1365+3464+6504=12698/model，two stages总25396。逐项原source字段/fullcandidateIDs/prompt SHA与跑前计划全匹配，Base/Instruct实际input一致。原natural Impli Instruct−Base initial endorsement −.29800 CI[−.36977,−.20836]；cancel-minus-irrelevant差+.01163[−.04586,.06584]。Base restricted numeric整体joint支持仅.06535，Instruct.98756；二者readout遵从显著不同，不能裸当latent能力。recognition .08/.14，不能点估计说Instruct更强或统一更爱推断。Hu分phenomenon有改善与恶化（Coherence chat .515→.660，Maxims .537→.347），同任务上也不是全局增益。
+
+Circa PN chat原序强/弱Base .7692/0、Instruct .8846/0；逆序.1538/.0769与.5000/.5000。顺序依赖仍限制科学解释。原完整结果与条件/支持率均见results/E35-third-family-summary.json。C01/C02仍L0；第三家族stage不支持统一criterion故事，但没有自动关线。

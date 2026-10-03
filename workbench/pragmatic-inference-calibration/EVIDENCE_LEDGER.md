@@ -57,3 +57,22 @@ E27/E29结果文件见results/，知识规范仍是parent规则，未成为推�
 | E37 Flan原序strict强侧+.346[.192,.539]、弱侧−.385[−.577,−.192] | 控制效应不限当前causal接口，但依然只是任务 | encoder-decoder自动消除偏差、统一stage原因 | 高：433原QA/1732读数；无stage因果 | 保留native baseline作边界，不补机制故事 |
 
 完整可审结果分别见results/E28、E31、E32、E33、E34、E36、E37的summary.json。全部source/CI/两order未挑选。C01/C02仍L0；没有共同licensed/unlicensed gold，没有d′。E35跑前CPU发现空格retokenization和官方template追加assistant时丢system，0预测修正，逐候选独立teacher forcing gate后才全量。
+
+
+| Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E35独立Mistral Base/Instruct25396读数source/token/完整似然gate通过，natural endorsement−.298[−.370,−.208]但conditional Δ+.0116[−.0459,.0658] | 同源stage效果依赖任务/入口，不能只看初始赞同 | post-training普遍更自由推断；generic SDT story | 高：原任务描述，source支持质量变.065→.988 | E38原human背景prior与speaker commitment的两任务，非本局部prompt优化 |
+
+E38跑前audit：1760source/840human mean，prior源Josie四行高/低fact标签对调保留、actualfact配human；三个公开certaintycache1680prompt一致，prior GPT4o四row不同不称parity。自然SwDA官方repo仍仅README待上传，未伪造两批human label。
+
+## 新source、完整生成与互动baseline（E38–E45）
+
+| Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E42 5196 nonEOS数字中3677延长成prose，prefix全相同、0变值 | 原短预算不能识别完整scalar回答 | 用5token numeric排名或归因stage | 高，完整selected audit；不是能力finding | 固定32诊断结束，不局部救prompt；相关旧解释隔离 |
+| E40 Exp2原703human/64条件、OLS9.268/2.982/18.285舍入parity；Exp1少5 | Exp2原norm可驻留，版本需分别审 | 三实验全精确复现 | 高，CPU原字段；mixed未复现 | E43分target原材料、独立转写仍缺 |
+| E43 Q3-14 chat facts64/64、meaning7/8，分目标all32完整；OL SFT61/64、8/8 | 判断目标可测；部分基本理解已成功 | 无条件把评分差异叫统一criterion/脑补 | 中，8item/prompt迁移；入口未一致 | E41更强matched stages；原其他材料先审意图显式变化，不立即Exp3堆量 |
+| E43 MistralInstr chat初始8/8但numeric2/1/11 of32 | 理解对照成功与评分接口失效可共存 | invalid就是pragmatic ignorance | 高，raw/parser完整 | 本读数不可用于stage效果，不继续格式修复 |
+| RAILS2025 literal S0消息仍支持target2/3 | speaker policy与listener literal选择是不同对象 | literal partner=全部unlicensed gold | 高，原规则/两页全文；非我们finding | 先E44/E45原互动基线task floor，再决定行为目标 |
+
+E38/E39/E40/E42/E43完整结果见各results；E45运行，E41资产下载。没有成熟paper claim、C01/C02仍L0。

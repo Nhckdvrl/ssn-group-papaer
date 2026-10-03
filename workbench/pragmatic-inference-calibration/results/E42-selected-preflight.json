@@ -1,0 +1,622 @@
+{
+  "Qwen2.5-3B": {
+    "audit": {
+      "parent_run": "E38-projection-Qwen2.5-3B",
+      "parent_config_sha256": "e0bbe3ed60f6e0d40be47bc87184498a0a95a7c97e38375ce0401244bbbc0955",
+      "n": 60,
+      "n_non_eos": 18,
+      "n_sentinels": 42,
+      "selected_key_sha256": "10ab7c43b9435239ac77901a50167bfdc7369c082564bd726c209fe22a320fc6",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "498148f55ec34d387fd7a57399df4510c76409abe519448e5550d3c7d8a9e78d"
+  },
+  "Qwen2.5-3B-Instruct": {
+    "audit": {
+      "parent_run": "E38-projection-Qwen2.5-3B-Instruct",
+      "parent_config_sha256": "12ab7786edc9e4605941a46c3baca8ea490176b0eb11234391f2e86b87bca41a",
+      "n": 140,
+      "n_non_eos": 119,
+      "n_sentinels": 21,
+      "selected_key_sha256": "93908092354c468b5335d6e52d1495bdcb810b95616c24767b3c25598ac82199",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "f5107cd7fb38b905d18fad3042f43ca8bb55bbb3e977c6a38d0ac1d3f4e8dfb0"
+  },
+  "OLMoE-1B-7B-0125": {
+    "audit": {
+      "parent_run": "E38-projection-OLMoE-1B-7B-0125",
+      "parent_config_sha256": "a753dcb106d7dada89210fc4c9378babcc29faf0620566ceede943da0fccf9a3",
+      "n": 21,
+      "n_non_eos": 0,
+      "n_sentinels": 21,
+      "selected_key_sha256": "b074765cc866fdd6346086047dab386edc0147d4c9634047e94ec6816c321b78",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "b2a35ce36ca50e17656ccb00c446549e0e0e120c47d373b5b1acac74f46e5bba"
+  },
+  "OLMoE-1B-7B-0125-SFT": {
+    "audit": {
+      "parent_run": "E38-projection-OLMoE-1B-7B-0125-SFT",
+      "parent_config_sha256": "233e3745582aae8cae832ac4943cf84a465aed1ee197acfa652a7d624d9d015d",
+      "n": 42,
+      "n_non_eos": 0,
+      "n_sentinels": 42,
+      "selected_key_sha256": "93e463cb8dcf330b8aea8254a223fc0ec595c70884ba4b1f86b4b1b046029d02",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "4e2995820e2a4ed69917c635f9ecde582674c22c03f55eeab180ab9bde557cd9"
+  },
+  "OLMoE-1B-7B-0125-DPO": {
+    "audit": {
+      "parent_run": "E38-projection-OLMoE-1B-7B-0125-DPO",
+      "parent_config_sha256": "d688e7e33d28f71cbed19d6f7d837fd17d6d77d5657e9207a5abf187507a0475",
+      "n": 42,
+      "n_non_eos": 0,
+      "n_sentinels": 42,
+      "selected_key_sha256": "93e463cb8dcf330b8aea8254a223fc0ec595c70884ba4b1f86b4b1b046029d02",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "4e2995820e2a4ed69917c635f9ecde582674c22c03f55eeab180ab9bde557cd9"
+  },
+  "Qwen3-4B": {
+    "audit": {
+      "parent_run": "E38-projection-Qwen3-4B",
+      "parent_config_sha256": "717f4708702b2adfc0f28a1db24daba7031ed8eefb2cdcc923d00d907edd5e59",
+      "n": 861,
+      "n_non_eos": 840,
+      "n_sentinels": 21,
+      "selected_key_sha256": "dc3ac72eb63f3af002333f36d3005b305a6a48e261416cde401233795f9c5884",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "d9de6a9b609adaa85e344c595593424e7c2786e6a913763634521d4f83d2046b"
+  },
+  "Qwen3-8B": {
+    "audit": {
+      "parent_run": "E38-projection-Qwen3-8B",
+      "parent_config_sha256": "4f1c7ae2168e14fd5842908575bbc9fca986346d510dd3b354b44099cbd5bf49",
+      "n": 861,
+      "n_non_eos": 840,
+      "n_sentinels": 21,
+      "selected_key_sha256": "dc3ac72eb63f3af002333f36d3005b305a6a48e261416cde401233795f9c5884",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "d9de6a9b609adaa85e344c595593424e7c2786e6a913763634521d4f83d2046b"
+  },
+  "Qwen3-14B": {
+    "audit": {
+      "parent_run": "E38-projection-Qwen3-14B",
+      "parent_config_sha256": "ff256f9828b3e34e94803db1750e7b94a9a0ba85c5454ba720d9bb1b8938ff09",
+      "n": 861,
+      "n_non_eos": 840,
+      "n_sentinels": 21,
+      "selected_key_sha256": "dc3ac72eb63f3af002333f36d3005b305a6a48e261416cde401233795f9c5884",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "d9de6a9b609adaa85e344c595593424e7c2786e6a913763634521d4f83d2046b"
+  },
+  "Mistral-7B-v0.3": {
+    "audit": {
+      "parent_run": "E39-projection-Mistral-7B-v0.3",
+      "parent_config_sha256": "8484490f2d01917fc0b6d67154d0ae0ef494539d43d0e43f91d4fb606307f8e7",
+      "n": 914,
+      "n_non_eos": 914,
+      "n_sentinels": 0,
+      "selected_key_sha256": "422db322eee920b367212010fb49f1d0f3c5381e91dee0bdb9d19d3594dcb5ac",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "ce24be6051f2f7ec5bfad1ba2033820a2d60c56e400b1a32820f5b5c9003b717"
+  },
+  "Mistral-7B-Instruct-v0.3": {
+    "audit": {
+      "parent_run": "E39-projection-Mistral-7B-Instruct-v0.3",
+      "parent_config_sha256": "7e1b118c4c0f6badd5d1a4b2806000ef8a460df93a8920c28cbbb045c108d285",
+      "n": 1651,
+      "n_non_eos": 1625,
+      "n_sentinels": 26,
+      "selected_key_sha256": "524ab47983faec53cd5c76ea59473425378136d43d168fc0588216bef158e344",
+      "source_audit": {
+        "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+        "source_sha256": {
+          "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+          "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+          "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+          "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+          "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+        },
+        "n": 1760,
+        "n_with_original_human_mean": 840,
+        "human_projection_match_p_rows": 800,
+        "human_prior_match_p_rows": 40,
+        "source_label_fact_mismatches": [
+          {
+            "task": "prior",
+            "index": 1,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 21,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          },
+          {
+            "task": "prior",
+            "index": 41,
+            "item": "Josie",
+            "source_prior_type": "high_prior",
+            "actual_fact_human_prior_type": "low_prior",
+            "fact": "Josie doesn't have a passport"
+          },
+          {
+            "task": "prior",
+            "index": 61,
+            "item": "Josie",
+            "source_prior_type": "low_prior",
+            "actual_fact_human_prior_type": "high_prior",
+            "fact": "Josie loves France."
+          }
+        ],
+        "source_labels_preserved": true,
+        "prior_instruction_duplicate_preserved": true,
+        "n_unique_human_facts": 40
+      }
+    },
+    "selected_input_token_sha256": "fd2e9386534244a67db4be726db017ab6fa56e6f582203dab961c4a8436e26d7"
+  }
+}

@@ -110,6 +110,18 @@ CoNLL2026 Sense and Sensitivity全文补读提醒：稳定性与human对应也�
 
 ## 12. 自然材料与强端点带来的修正
 
+构念校对：E33的“B probably meant Yes”衡量听者对意图解释的不确定性，不自动等于“B meant Probably Yes”所表达的说者不确定性。人群投票分布也不等于模型内在不确定性。Circa的条件/频率回答、IQAP意图分类、projection的speaker certainty必须分别保留；目前没有证据支持把三者统一称为一个“推断强度”变量。E33数值仍是预先声明的原意图候选读数，降级的是跨构念解释。
+
 E28/E31/E32补齐8B/14B及原alternative expectedness；E33真实IQAP human分布和E34原Circa同question自然回答完成。IQAP方向随强端点改善，Circa有条件解释也相当成功，这削弱“模型普遍不会调整强度”的大故事。负强度读数可以被选项顺序彻底改写；E36平衡的单句强度要求和E37原Flan native对照显示，强侧改善常伴弱侧恶化。因此局部prompt修补分支已经达到有界控制终点，不再给它加限定把instrument artifact保成paper。
 
 我们现在还不知道的是：**在字面证据相同而交际上可用于推断的证据不同的自然情境，强模型会不会做对相应的推断变化？** 目前Circa同问题换回答同时换semantic content/难度；IQAP是人群graded判断，不能直接因果解释speaker certainty。需要真实上下文、原人类norm和候选意义固定的材料，先检查信息是否真的可识别，再决定实验。NAACL2022 SwDA-IA的真实对话/上下文效应、NAACL2025 projection/RSA的belief attribution是新驻留入口，阅读与源码检查进行中；不立即再下载20个benchmark跑表。最新corpus近邻扫描显示CIS、DRInQ、social world models、goal-directed alternatives仍拥有相关层claim，定位只界定增量，不自动判死。
+
+## 13. 把“什么时候停止脑补”拆成可检验对象
+
+最新阅读把三件事明确分开：Degen/Tonhauser的世界先验与说者certainty；Koev对连续判断来源的理论替代（graded meaning或binary intent的不确定性）；Braun/Shetreet同话语真假交叉的literal/implicit commitment与trust。它们不能互换。E33的“probably meant Yes”仍是听者解释不确定性，不是说者表达“probably yes”。E38/E39原短numeric又受真实截断污染，E42全量有界校对已隔离，不围绕格式问题写paper。
+
+[PNAS2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12718303/)的776人两样本研究已有语用多组件证据；机制名称是解释假说，相关不是神经机制因果。Hu2023来自同材料谱系，不是第二个独立natural substrate；少数相关checkpoint不能照搬human factor analysis。我们需要的是同材料的证据作用能否在分目标判断中保存，而非把所有任务压成latent criterion。
+
+[BWIM2026](https://arxiv.org/abs/2603.19997v1)直接拥有partner-specific cancellation、confidence/action分离与澄清成本问题。最新public code与原confidence protocol有实现差异，E44已明确，E45先有界测试无歧义task floor，不以任务失败讲pragmatic ignorance。RAILS2025人类reference game更提示：literal speaker若随机选消息，收到一个消息仍可支持2/3目标posterior；literal speaker不等于literal listener，更不等于禁止推断。许可不是材料上的现成二值标签。
+
+目前最值得弄清楚的未知是：**面对同一句话的不同证据，模型究竟在更新世界事实、说者意图、说者承诺还是听者行动；训练改变了哪个目标之间的联系？** E43只测retrospective attribution，不能推prospective action。强成功、有限入口、控制失败全部保留；暂未得到跨family/readout稳定领域结构。下一研究动作由这些边界决定，不把“任何跨层效应都是脑补”保成预设故事。

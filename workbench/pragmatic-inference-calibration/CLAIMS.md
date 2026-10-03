@@ -34,3 +34,5 @@ Flan-T5-XL 1,365个选择与作者公开结果全部匹配，概率MAD=0.000077�
 
 - 2026-10-03 E28/E31–37：强现代端点与两组自然强度素材全部完成，有界strict/Flan控制完成。C01/C02不升级：IQAP含词汇/terminal prior、Circa负强度有巨大order effect；一句指令改善强侧可能恶化弱侧，不能用单侧恢复claim能力。原数据/条件/两order均保留，完整结果可审；E35第三family仍运行。没有post-training统一criterion证据。
 - E35跑前两次CPU gate：Hu尾部重复空格会retokenize；官方Mistral chat_template完整重渲染assistant时丢system。二者0 GPU预测，冻结原generation prefix与nativeassistant内容后全量前缀通过；不算模型语用错误。
+
+- 2026-10-03 E38/E39/E42：原5token生成的nonEOS numeric不是完整scalar answer。5196个中3677延长后成为prose；Q3裸、Q25Instr裸、MistralBase裸的相关短numeric解释隔离，原raw/摘要永久保留。E43完整源/human迁移已有结果，但入口/初始理解/事实读取/评分可用性未共同满足能力归因；无科学升级。

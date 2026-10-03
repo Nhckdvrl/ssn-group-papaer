@@ -79,3 +79,26 @@ E24源算术/顺序问题只修复仪器，不作为规避ownership的paper主�
 | Reference clarification arXiv2601.07820v2 | 不确定→澄清与实际信息使用脱节 | 互动停止/修复方向不是空白；当前静态实验不支持interaction claim |
 
 Raffel作者blog[When will models be good enough](https://huggingface.co/blog/craffel/when-will-language-models-be-good-enough)全文已读（观点性文章，不作实验事实）：科学问题应与具体使用目标/成本联系，不把8卡占用或更大model排名当价值判断。Potts教学页语义关系分析明确指出same-direction答案可经后承也可经cooperative/expert上界补全，未来对象需区分两条证据链。
+
+
+## 原真实语境与belief attribution近邻（2026-10-03）
+
+| Parent | 已拥有claim | 当前允许的research action | compression risk |
+|---|---|---|---|
+| SwDA-IA / NAACL2022main | 真实问答需前后context、human gold会变化、Circa迁移有限 | 取original两批norm/证据turns后区分信息缺失与利用；官方repo仅README当前不可跑 | 很高：只重新说更多context有益不够 |
+| Pan&Bergen / NAACL2025main | prior/predicate作用、人类projection graded、mixRSA比三API预测更好 | E38先源/human核对、frozen原numeric任务新stage端点，明确预测优劣不证表示必要性 | 很高：generic知道不用/graded prior与anotherRSA均已有 |
+| LLM Beliefs Are in Their Heads / ACL2026main | truth Accuracy/Use/Coherence/Uniformity的residual/head probes与steering | 正文阅读进行中；model自身belief-like truth representation ≠ 归给speaker的belief | 高：不能claim第一次belief方向/steerability；当前无机制主张 |
+
+最新corpus近邻检索仍出现CIS/DRInQ/nonverbal/social-world-models/goal-directed alternatives。只定位、不自动判死。39卡阅读范围逐卡标；最新human implicit-commitment论文正在取得正文，未读不计全文。
+
+## 真假、承诺与partner适应的最新ownership（2026-10-03）
+
+| 近邻 | 已拥有 | 允许的增量 / compression risk |
+|---|---|---|
+| Implicit dominance / Language and Cognition2026 | 同utterance真假交叉、implicit影响两层commitment、总体trust；三human实验 | E43迁移只是baseline；不能首次发现跨层影响，且原human也非两层独立。训练怎样改变目标间证据作用仍待跨素材/入口证据 |
+| Human components / PNAS2025 | 人类三组语用组件，两大样本复现 | generic“pragmatics不是一个数”已拥有；Hu材料同来源，模型样本量不足factor机制解释 |
+| BWIM / arXiv2603.19997 | partner特异cancel、confidence/action gap、澄清过多/过少 | 不能首次动态停止推断/首次询问；E45是task-floor基线，后续须新领域条件结构而非换local model |
+| Listener adaptation / RAILS2025 | 经验驱动partner信心改变、选目标仍偏好 | literal S0仍可产生2/3 posterior，不把literal partner全标negative；两页摘要不是完整期刊证据 |
+| Strategic Dialogue Assessment / D&D2026 | 非合作courtroom、commitment/credibility/goal收益、原court对话评估 | 摘要/引言已读，53页未全文；不能claim首次将战略欺骗/社会trust接入语用。正式数值与原labels未核对 |
+
+corpus nearest “LLM pragmatic speaker commitment literal truth implicit meaning trust belief attribution”返回NAACL2025belief、ACL2025(RSA)²/INLI、EMNLP2024different pragmatic levels与Wave；最新primary搜索直接命中BWIM与2026implicit dominance，均纳入边界，不自动kill。另命中conditionals arXiv2605.21299（仅摘要）与LREC2026Emergence（仅摘要）：不算全文，不把已有alignment→intent representation说成我们的novelty。

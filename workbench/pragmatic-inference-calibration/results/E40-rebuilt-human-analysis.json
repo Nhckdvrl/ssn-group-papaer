@@ -1,0 +1,68 @@
+{
+  "source_audit": {
+    "source": "OSF unmy6 Experiment 2",
+    "source_table_sha256": {
+      "list1.xlsx": "1a02ece6fa63bd558a40cedddfa496738ae6a2518a8d6458ec1effce4d91f20b",
+      "list1b.xlsx": "aa1c10b8236af12b62994a12fa50eb15451b0cb238f2e8defd21d01989a62d18",
+      "list2.xlsx": "3b56a79b370d4188e77f5050d6179e788e417208452ef9dbb6b11b3623de7e5e",
+      "list2b.xlsx": "7697a124cffa1e1e0ed227fb588e7613dc622c44bbd3a5a0deb590f316c916fc",
+      "list3.xlsx": "b32402166ebcb68068eea0fb65090cb1ff3d6cdbde0e029a752e2f97404bd871",
+      "list3b.xlsx": "6ec92b9dfab854b27a664cbd1de027a8fa1eeec3e7f5b78afd884344415345c5",
+      "list4.xlsx": "7d714c9eb4386ee0ccbab5c4b5b6b7446dcbbd51fe9243bc3afa3b5533c0fdbf",
+      "list4b.xlsx": "9a1949cabbd6143094587f91cad7ca905f96ac344ef371c9b22b005133b72431"
+    },
+    "human_sha256": "3fee4d7e76a374513c546a860310346eb8c37105ac6819862819b3c875668170",
+    "human_n": 703,
+    "human_participants": 93,
+    "commitment_cells": 64,
+    "trust_cells": 32,
+    "image_sha256": {
+      "forgot_bathing.jpg": "81d9b94b95301beeb8a73b5c3f82672ec3f3a83013d8f9671b2c6382c231caa7",
+      "chess.jpg": "6caa107d5e808f6bc11b3a6aeab5d01c11fd22130d9b521d7cd6a8ef0695c5d8",
+      "steak.jpg": "c1d603602017850f0d2647c4162678150302141a8176cc11470f5d92e6e27d34",
+      "ripper.jpg": "f375941632ac9f71ed487dde959286f4745dc5c2dedc86162f389d12197dc1c1",
+      "public_library.jpg": "e24f86faa6aee95b15c4dd3ad7c1c8cfa55e9944704b143f38ac675dc45051d2",
+      "work.jpg": "8084fefaa500c490204a590303c1cd3143e5179edbc197b46c343cdc89a845dc",
+      "church.jpg": "ceca44117e04b30d58ac4829c97095a1cafebbbe90055ff25c67ff3c0b9969e2",
+      "gym.jpg": "ab8cb85b81401d075d1766a3274b1e3b0d5f21b56ef4faab74e14cdc1f8c2a35"
+    },
+    "transcription_sha256": "008c30222abdd5d92406f7459bed72e40afb72450bd6c26b5a754a88117308e6",
+    "source_psyexp_sha256": "c9773d14b874f2ae64561deae5280602fa82d02f0239bbdc012cb271c7b2839e",
+    "clarification": "Evaluate the requested target separately: what the speaker committed to conveying, whether the reported facts are true, and how reliable the speaker is are distinct judgments.",
+    "n_each_interface": 264,
+    "prompt_sha256": "ecd338d77bdfbf1a16eb7805bebf059f1127bc79a569b4c39299af42c962edc3",
+    "limits": [
+      "Text adaptation; UI/timestamps omitted. Root visual transcription rechecked but not independently audited.",
+      "Human norms condition on correct initial interpretation; no model-based filtering.",
+      "Trust norms pool both preceding commitment probes; model calls have no such previous answer."
+    ]
+  },
+  "source_join_gate_pass": true,
+  "original_meaning_lm": {
+    "n": 356,
+    "terms": [
+      "Intercept",
+      "SoA_implicit",
+      "SoA_explicit",
+      "SoA_implicit:SoA_explicit"
+    ],
+    "coefficients": [
+      47.20771675633336,
+      9.268246585083324,
+      2.9820626257555465,
+      18.284805228457007
+    ],
+    "published_rounded_nonintercept": [
+      9.27,
+      2.98,
+      18.28
+    ],
+    "rounded_parity_pass": true
+  },
+  "source_code_sha256": "c140be42876177283055264d884024e6974978f319549ed64af6bb4b328b6590",
+  "limits": [
+    "Exp2 released code uses OLS for meaning after convergence failure; not reproducing the other R mixed models.",
+    "Exp1 filtering mismatch remains isolated; this audit does not claim all three experiments are exact.",
+    "Transcription rechecked by root, no independent human audit."
+  ]
+}

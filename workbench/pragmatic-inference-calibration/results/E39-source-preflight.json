@@ -1,0 +1,103 @@
+{
+  "audit": {
+    "source_revision": "ad2c36d75f9d14d192d193f7db919035c41619bd",
+    "source_sha256": {
+      "stimuli/prior_rate.csv": "7dfb5543480225aca759f7621e8cf7b5ed6f3e9493ba60038daaf3a66dad7e8d",
+      "stimuli/projection_rate_certainty.csv": "7cc4119f79530ec2deac05357fa8f34aceaa5dc6971a6c928988286c23371c12",
+      "data/prior/prior_means_human.csv": "db3db28a7890b65ed05b468884f77bdaadedec2f931e9d25cc5885a41fcb400b",
+      "data/projection/projection_prior.csv": "ae6e55636f40ac73fd7b770c57861ae855640c6cf6e974c6a80671678546e6b5",
+      "model.py": "9cba153c52b8e44dab1cb1ff452ba29ca4ab424952576870c774d51d57258b0e"
+    },
+    "n": 1760,
+    "n_with_original_human_mean": 840,
+    "human_projection_match_p_rows": 800,
+    "human_prior_match_p_rows": 40,
+    "source_label_fact_mismatches": [
+      {
+        "task": "prior",
+        "index": 1,
+        "item": "Josie",
+        "source_prior_type": "high_prior",
+        "actual_fact_human_prior_type": "low_prior",
+        "fact": "Josie doesn't have a passport"
+      },
+      {
+        "task": "prior",
+        "index": 21,
+        "item": "Josie",
+        "source_prior_type": "low_prior",
+        "actual_fact_human_prior_type": "high_prior",
+        "fact": "Josie loves France."
+      },
+      {
+        "task": "prior",
+        "index": 41,
+        "item": "Josie",
+        "source_prior_type": "high_prior",
+        "actual_fact_human_prior_type": "low_prior",
+        "fact": "Josie doesn't have a passport"
+      },
+      {
+        "task": "prior",
+        "index": 61,
+        "item": "Josie",
+        "source_prior_type": "low_prior",
+        "actual_fact_human_prior_type": "high_prior",
+        "fact": "Josie loves France."
+      }
+    ],
+    "source_labels_preserved": true,
+    "prior_instruction_duplicate_preserved": true,
+    "n_unique_human_facts": 40
+  },
+  "models": {
+    "Mistral-7B-v0.3": {
+      "bare": {
+        "input_token_hash": "0544840272a135fc699396f4bf2b8afd3e5f69bd1cc11d0924a68380f765e0d3",
+        "n": 1760,
+        "first_tokens": [
+          1,
+          2744,
+          1228,
+          1032,
+          11633
+        ]
+      },
+      "common-chat": {
+        "input_token_hash": "c2c717491aa744f6cd5246f80ef812d19dc38c67e5d352f0a74371196d7a55c6",
+        "n": 1760,
+        "first_tokens": [
+          1,
+          3,
+          1763,
+          1228,
+          1032
+        ]
+      }
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "bare": {
+        "input_token_hash": "0544840272a135fc699396f4bf2b8afd3e5f69bd1cc11d0924a68380f765e0d3",
+        "n": 1760,
+        "first_tokens": [
+          1,
+          2744,
+          1228,
+          1032,
+          11633
+        ]
+      },
+      "common-chat": {
+        "input_token_hash": "c2c717491aa744f6cd5246f80ef812d19dc38c67e5d352f0a74371196d7a55c6",
+        "n": 1760,
+        "first_tokens": [
+          1,
+          3,
+          1763,
+          1228,
+          1032
+        ]
+      }
+    }
+  }
+}

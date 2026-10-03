@@ -1,0 +1,10 @@
+{
+  "experiment": 2,
+  "readout": "original notebook lm: implicit commitment ~ SoA_implicit * SoA_explicit",
+  "n": 356,
+  "coefficients_order": ["intercept", "SoA_implicit", "SoA_explicit", "interaction"],
+  "coefficients": [47.20771675633336, 9.268246585083324, 2.9820626257555465, 18.284805228457007],
+  "paper_rounded_coefficients": [null, 9.27, 2.98, 18.28],
+  "rounding_parity": true,
+  "limits": ["Only original notebook ordinary linear regression reproduced; R mixed models not reproduced.", "Original paper describes mixed models; notebook uses lm for this outcome after convergence failure.", "Experiment 1 released trial count and paired-t do not match the paper; those claims remain isolated."]
+}

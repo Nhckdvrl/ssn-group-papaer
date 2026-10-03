@@ -23,3 +23,7 @@
 | P09 | IQAP无QA probable prior≈1；Q25Instruct bare full-vs-content强度差+.122→−.137 | E33 | 原full主/secondary content/null全报，不把prior当over-inference |
 | P10 | Circa负强度4B源/逆序strong acc .808→.038；strict8B强+.577而弱−.500 | E34/E36/E37 | 有界指令控制完成，停止局部prompt救分；真正语境证据待研究 |
 | P11 | Mistral数字两token、原尾空格retokenize，官方template追加assistant遗漏system | E35 | 全在CPU拦截；完整候选+冻结prefix、独立full teacher-forcing gate，第三family运行 |
+
+| P13 | E38/E39五token非EOS数字截断；E42 5196中3677延长变prose | E42 | 原数字不覆写；相关stage解释隔离，固定32诊断结束，不救排名 |
+| P14 | E43 MistralInstr chat数值完整覆盖2/1/11 of32；Q3-14 Mark初始理解不符human | E43 | 全bounds/失败保留，不筛材料；无两入口跨family能力结论 |
+| P15 | BWIM public QA code与paper confidence实现、seed session不同，原闭源答案器 | E44/E45 | 五model有限confidence协议迁移；不拿dummy Yellow或本地judge冒充原QA |
