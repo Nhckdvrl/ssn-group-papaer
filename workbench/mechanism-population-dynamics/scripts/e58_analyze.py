@@ -7,7 +7,7 @@ import numpy as np
 import mp_common as mc
 from fastsim import within_matrix
 
-SIZES = ("70m", "160m", "410m", "1b", "1.4b", "2.8b", "6.9b", "12b")
+SIZES = ("70m", "160m", "410m", "1b", "1.4b", "6.9b", "12b")  # 2.8b excluded: HF std and deduped finals are near-identical weights (P11)
 
 
 def load(size, tag, step=None):

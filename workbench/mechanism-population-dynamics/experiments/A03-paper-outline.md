@@ -20,7 +20,7 @@ Where do a language model's circuits come from — its random initialization or 
    - **Applications** (§7): component findings travel with the seed (10× transfer); attribute emergence, not location; seed-matched comparisons; no seed selection across recipes; the layout as a birth certificate (seed identification).
 
 ## 2. Natural experiment and ruler
-- 2.1 DataDecide and Pythia crossings, audited (step-0 identity at every Pythia size 70M–12B; training-start audit; the PolyPythias weight-seed finding).
+- 2.1 DataDecide and Pythia crossings, audited (step-0 identity at every Pythia size 70M–12B; training-start audit; two integrity findings in public suites: the PolyPythias weight-seed variants share the standard init, and the released pythia-2.8b-deduped final checkpoint is nearly identical to pythia-2.8b).
 - 2.2 Lemma 1 (the data cannot choose the head): permutation-invariant init + permutation-equivariant training ⇒ different-seed agreement is exactly chance for any data; above-chance agreement across corpora is carried by the seed. Observed: −0.02 to 0.00 for 9 roles — the theorem holds, and same-seed agreement (0.16–0.36) is pure inheritance.
 - 2.3 Nine head-role maps (incl. weight-only OV copying), "which layer" vs "which head", variance components, permutation / bootstrap / Mantel tests; the determination map.
 

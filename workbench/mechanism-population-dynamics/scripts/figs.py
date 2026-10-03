@@ -272,8 +272,8 @@ def fig_corpus_distance():
     fig.savefig(OUT / "fig_corpus_distance_e60.png", dpi=160)
 
 
-PYTHIA_PARAMS = {"70m": 19e6, "160m": 85e6, "410m": 302e6, "1b": 805e6, "1.4b": 1.21e9, "2.8b": 2.52e9, "6.9b": 6.44e9,
-                 "12b": 11.3e9}
+PYTHIA_PARAMS = {"70m": 19e6, "160m": 85e6, "410m": 302e6, "1b": 805e6, "1.4b": 1.21e9, "6.9b": 6.44e9,
+                 "12b": 11.3e9}  # 2.8b excluded (P11: HF std / deduped finals near-identical)
 
 
 def pythia_within():
