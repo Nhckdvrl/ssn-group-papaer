@@ -135,3 +135,15 @@ corpus nearest “language models speaker selection mechanism pragmatic inferenc
 | RI/SAGE2026 | partner-indexed channel理论 / 外部模块化Grice推理 | 原生训练谱系上可移植的证据归因预测，而非再提出统一框架 |
 
 这不是空白证明或新颖性自动判决。核心增量必须是来源条件结构对已有科学解释的改变；当前未取得。作者Per Ardua blog已读：small/large post-training方向相反只是作者自报，没有已核对raw/checkpoint/gold，作为反方向压力，不能当可靠发现。61卡按阅读范围计数，非61全文。
+
+
+## 实际理由与条件适应的扩展边界（2026-10-03）
+
+| 近邻 | 已拥有的对象 | 当前发展与风险 |
+|---|---|---|
+| Beltrama/Papafragou2023，Glossa | 人类relevance/information违规、知识理由/self-oriented理由、当次与人物评价差异 | E62源审/E63模型迁移是驻留。仅模型没像人或换checkpoint不构成新机制；trait词与时间frame共变 |
+| W&C-Sent，ACL2026 | 自然社媒对指定目标人物表达的warmth/competence，1633target-sentence pairs | 与从交际行为推断说者不同，不能复用标签造gold；通用社会评价检测已有ownership |
+| Bayesian Teaching，Nature Communications2026 | 交互偏好更新、Oracle/Bayesian竞争teacher、信息量敏感性、跨域训练迁移 | 普遍证据不用/首次Bayes教学都已拥有；我们当前自然交际证据的条件归因尚未识别，不能换名字claim |
+| Social-attribution aids，arXiv2603.27057 | 生成context/goal辅助灾害文本intent/theme分类 | 性能不唯一证明因果归因修复，未核对raw；不首次社会归因或再造prompt framework |
+
+以上来自公开primary全文与本地corpus nearest；阅读范围见卡。是否有paper增量由后续可识别证据决定，不因邻居强就关闭territory，也不因此压成一小种措辞。

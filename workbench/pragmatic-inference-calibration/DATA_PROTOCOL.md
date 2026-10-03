@@ -24,3 +24,6 @@ OpenCode可用于逐条独立审计/构造草稿，使用公开语言字段、JS
 E54导出400critical只白名单字段；E56全量配对核对前四类320critical、共享48 filler/48control变体，slot33只有尾空格归一，raw保留。第五类仅4/80一致，按跑前固定句规则保留为不可用配对，不因模型表现排除。公开噪声仅18句改动与正文30不符，明确release版本边界，绝不补造缺失句后称原复现。
 
 E57是原公开exposure的有限probe，不能替代I01所需跨独立自然source的数据；任何大效果先审格式/基础理解/排列/bounds与源差，再决定下一批数据如何补足识别。
+
+### 免费辅助审计更新
+E58已按真实native OpenCode修复调用：保留真实tools定义、全部permission ask，SpaceBunny-free20/20返回、cost全0、无tool use，18严格schema/引用有效。至少2项语义理由错，4项与源gold分歧；逐条人工语义核查与原source优先，candidate不自动gold。此前403/429与0usable是历史调用结果，不代表整个免费接口不可用。

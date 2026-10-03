@@ -1,6 +1,6 @@
 # Pragmatic Inference — parent residency
 
-更新2026-10-03。已建立62篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
+更新2026-10-03。已建立68篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
 
 | 论文 / 阅读卡 | 证据范围 |
 |---|---|
@@ -38,7 +38,7 @@
 | [Sense and Sensitivity (CoNLL2026)](sense-sensitivity-2026.md) | 正文/附录全文；代码与human raw未核对 |
 | [Knowledge and Implicature (2013)](knowledge-implicature-2013.md) | 全文12页、理论交互与规范假设 |
 | [Accommodation and Epistemic Vigilance (ACL2026 main)](accommodation-2026.md) | 正文/重要附录/生成与judge代码；未复现 |
-| [Social Meaning: Structure and Magnitude (arXiv2026)](social-meaning-2026.md) | 全文10页含附录；cache未核对 |
+| [Social Meaning: Structure and Magnitude (arXiv2026)](social-meaning-2026.md) | 全文10页含附录；E60原cache/核心code与human raw核对 |
 | [Discourse Connective Pragmatics (CoNLL2021)](discourse-connectives-2021.md) | 全文13页含附录；未复现 |
 | [Communicative Belief Updates / ImplicatureX (arXiv2026)](implicaturex-2026.md) | 全文正文、关键B/D/E/F；原formatter与读数核对，19个公开cache与算术/position边界已核对；精确概率parity未成立 |
 | [The Pragmatic Mind of Machines: Tracing the Emergence of Pragmatic Competence in Large Language Models（2026）](altprag-2026.md) | 正文/附录/代码/复现分别注明于卡内 |
@@ -72,3 +72,15 @@
 PDF/TXT、原code/data置于 `/data1/xiangding/work/pragmatic-inference-calibration`，不进git。E13/E18复现的是TACL2023 string predictor，未复现concept/GloVe主回归；EPITOME原SI评分已重建，IR release仅6完整item，不能称16item全复现。
 
 ALTPRAG/PaCE/listener–speaker按用户指定参考；投递仍只ACL/EMNLP/NAACL主会。近邻只做定位，不桌面关闭。
+
+[Clarification Is Not Correction（2026 preprint）](clarification-not-correction-2026.md)：正文与附录A–C，未审raw/judge；卡内注明阅读范围，不代表完整复现。
+
+[Social meaning and pragmatic reasoning（ELM2025）](social-precision-human-2025.md)：12页正文/两实验/讨论、两human raw与codebook；图像/全部UI与原lmer未复现。
+
+[Pragmatic violations / Glossa2023](violation-social-human-2023.md)：正文§1–8、原三套spec/data与R核心分析，描述norm已审，lmer/UI未复现。
+
+[W&C-Sent / ACL2026](wc-sent-2026.md)：正文/limits及关键定义/后处理附录，代码/raw未核对；区分描述目标与评价说者。
+
+[Social attribution aids / 2026preprint](social-attribution-aids-2026.md)：主要setup/结果/分析，非全文；分类性能不唯一识别社会归因机制。
+
+[Bayesian Teaching / Nature Communications2026](bayesian-teaching-2026.md)：正文、竞争teacher/prior/noise/信息量/human关键补充与作者blog深读，代码/raw未复现。

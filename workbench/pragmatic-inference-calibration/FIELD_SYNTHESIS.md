@@ -186,3 +186,21 @@ Gibson与Chen的研究动作是联合预测→exposure干预→混杂复核；EM
 
 
 E51收齐后的对象澄清：方向分数与人类四类分布可以分离，但这不能自动归因为speaker certainty丢失。IQAP definitely/probably判断的是听者如何解释B意图；自然语言输出的hedging又可以表达模型自己的不确定。EMNLP2024[Uncertainty in Words](../../library/themes/pragmatic-inference/uncertainty-words-2024.md)已经拥有intrinsic一致性与语言decisiveness的faithfulness对象。我们的有意义未知仍是不同交际证据如何分别约束具体含义、合理修复与停止推断，而不是再做generic confidence-expression mismatch。数据字段要明确uncertainty referent与event-role/world-entailment；E58逐条候选解释与原标签的分歧先做源语义审计，不自动视作发现或改gold。
+
+
+## E59/E60修正：先让条件关系可被识别
+IQAP同source SFT→DPO四类分布距离跨三措辞都变差，copy映射成功、原W0复算零差，削弱单一词组解释；但无对话prior同步移动，不识别内在语用能力。措辞稳健只是排除一个账户，不能自动写成偏好训练损害calibration的paper。继续独立材料而不再添加alias。
+
+ELM2025改变的是“表达形式索引人格”的前提：语境与实际知识信息约束表达选择理由，再约束人物印象。原模型研究用理论prompt改变trait评估，但这与模型是否响应实际证据不同。原human第二实验knowledge→trait变化较弱，lack-knowledge少了而speaker/hearer便利都增加；这提供多个可区分预测，不能把一条理论链预先当机制。
+
+当前更有信息量的未知是：模型在同对话上对动机的归因，是否与其人物评价有一致的来源条件作用，而训练如何改变这两个环节？E61是原norm下的小型驻留，不证明joint belief、causal mediation或实际hidden motives。若只剩不同任务分数、不稳读数或六scene局部效应，就回到证据归因主问题；若稳定则跨信息量/relevance素材验证，不缩成这六个例子。
+
+## 规模与训练差异什么时候有科学价值
+
+用户提出的警惕成立于一种情况：所谓语用异常只是基础任务不可读、答案接口不适配或总体能力地板，随更强模型消失且没有可迁移条件结构。E61目前motive候选支持不稳，就不能把它与trait的分化讲成能力分离。但“随规模/训练变化”本身不是低价值证据；若同一模型对已读懂的证据，在不同推断目标上有可预测的作用，且竞争训练账户/跨现象迁移能被区分，这种依赖可以成为对象。匹配stage仍共变数据/算法/budget，不能单因果归DPO。
+
+[Bayesian Teaching](../../library/themes/pragmatic-inference/bayesian-teaching-2026.md)给出具体研究动作：先比较跨轮更新而非总分，改变监督teacher而非只换模型，加入随机错误/prior控制，再用信息量干预与跨自然域迁移检验。真实人群中原模型首轮准确很高，仍不代表适应；反过来human choice不完全服从自报偏好，规范正确不等于行为对齐。这和我们的答案prior/人类分布问题相关，但不能借此宣布已经识别了内部Bayes或criterion。
+
+需要保持三个宽方向：具体含义推断的证据更新；表达选择引起的动机/社会评价；互动中的选择与信息利用。它们分别有parent，不是三个新workbench，也不是要全部再堆benchmark。选下一实验看哪个账户能被排除。E63用原知识理由条件约束第二方向；若可靠条件结构没有出现，就记录成功或未识别，不将题缩成某个prompt漏洞。
+
+新数据定位也需谨慎：[W&C-Sent](../../library/themes/pragmatic-inference/wc-sent-2026.md)是作者怎样描述目标人物，E61/E63是听者怎样从说者的交际选择评价说者；共同使用warmth/competence不使两种gold可互换。社会归因应用工作提供自然语料视野，但generated goal不是事实verifier。这些是数据选取约束，尚非贡献。

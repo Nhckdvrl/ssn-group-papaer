@@ -2,6 +2,8 @@
 
 当前推进 C01/C02、P02/P06；以下是驻留观察，不是升级后的科学claim。
 
+**当前支持的核心观察：** IQAP上OLMo SFT→DPO的四类human分布距离跨三种措辞都变差（E59），不是原单个词组的偶然效应；其无对话答案先验也变化，故仍未识别能力与policy的贡献。强Qwen方向准确提高却分布距离变差（E52），但Base候选支持极低，不能升级能力结论。E61人物评价与动机归因变化不同且后者接口质量弱；不能据此宣称两种能力分离。当前最有信息量的未知是**训练如何改变对具体交际证据的条件响应**，而非证明统一“更爱脑补”。
+
 | Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
 |---|---|---|---|---|
 | E04原Flan1,365选择全匹配；概率MAD0.000077 | 原MCQ harness有效 | 现代重实现完全造成差异 | 高，技术复现 | E12/E16同题同stage与readout |
@@ -120,3 +122,19 @@ E51完成：8128/8 logical jobs，source/input/numeric全gate，.6629GPU·时。
 
 
 E58完成：SpaceBunny-free官方CLI20/20成功、所有step cost0且无tools，18 exactquote/schema有效、4 event-role对源gold分歧；root逐项审阅至少2条有字面角色混入常识修复，world否定也不一致。支持CLI路径可用，削弱“strong free模型一条条做就能保证gold”的自动化假设；高技术/低语义可信，不替换原gold，不新增SDT negative。下一鉴别为原human任务语义与独立验证，不能把judge错误变成新模型能力claim。完整E58结果/原失败见summary。
+
+
+| Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E59 7392完整、原1800W0概率/LP零差；SFT→DPO三措辞Brier+.313/.342/.377且CI均正 | 原任务stage变化不是单个同义措辞的偶然现象 | 只由原definitely/probably组合造成 | 高描述，低能力归因 | 独立source同时测动机归因与人物评价，E61 |
+| OLMo两post-stage的copy全对、full mass高，但无对话prior也向probable-yes移动 | 条件判断仍受回答规范/类别prior影响 | “改词后稳健就证明pragmatic competence退化” | 高技术，中观测 | E61全部null/完整mass/两目标与单句control，不另加IQAP alias |
+| E60原17280cache/752human核对，独立arithmetic与author functions <1e-12；六scene每cell约15人 | 新parent可供独立条件关系驻留 | 下载PDF或重复次数等于场景数量 | 高源与算术，公开表有少数版本差 | E61小型辨别pilot；需要扩展scene时按独立方差设计采集 |
+| ELM人类即使consulted exact source仍常选不知道；social effect变化弱于简单理论预期 | 多动机账户、语境来源需分别建模 | knowledge availability＝perfect epistemic access的硬negative gold | 原source强，因果机制待识别 | 取得完整Exp2 stimuli后考察实际证据，不先换成全局literal指令 |
+
+| Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E61 12576完整，256独立数值控制通过；SFT→DPO trait MAE−.0737[−.1043,−.0467]，DPO→最终trait+.0354[.0119,.0601]、motive−.0535[−.0765,−.0266] | 两目标的任务读数变化可不一致 | 一个改善分数概括所有交际判断 | 描述中，能力解释低；仅六scene | E63独立source的实际reason条件，而非第三prompt救分 |
+| E61 chat trait mass高但motive OL SFT/DPO/最终 .515/.261/.429、MistralInstr .041；单句还能使mass大降 | 任务映射/输出支持是主要替代解释 | 用归一化数字直接证明目标能力分离 | 高技术，未识别语义能力 | 保留全部入口/full/content；不挑最佳接口升claim |
+| E62原三实验4192行/262retained，共享16scene；全人四trait/均值算术核对，E2两素材规格不可无歧义展开 | 有自然理由→社会评价的强parent与可审资产 | 下载原数据即可声称48独立场景或全协议复现 | 高源审计，未复现原lmer/UI | E63预先固定14可展开scene，另两项及全部human norm保留 |
+
+E63卡先于source展开与GPU，11040读数八独立卡运行；字串读取不是semantic motive能力，不将四trait差的差单因果归时间泛化。C01/C02仍L0，I01仍SEED。结果未收齐前不作效应判断。
