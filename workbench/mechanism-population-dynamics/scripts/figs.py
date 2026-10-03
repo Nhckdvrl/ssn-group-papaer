@@ -371,7 +371,7 @@ def fig_development_e57():
         early = min(cells, key=lambda k: cells[k]["frac"])
         final = max(cells, key=lambda k: cells[k]["frac"])
         ax.plot([p, p], [val(cells[early]), val(cells[final])], "-", color="#bbbbbb", zorder=1)
-        ax.scatter([p], [val(cells[early])], color="#55A868", zorder=2, label="earliest checkpoint (4–9%)" if size == "10M" else None)
+        ax.scatter([p], [val(cells[early])], color="#55A868", zorder=2, label="earliest checkpoint (3–9% of training)" if size == "10M" else None)
         ax.scatter([p], [val(cells[final])], color="#1b6ca8", marker="s", zorder=2, label="end of training" if size == "10M" else None)
     ax.set_xscale("log")
     ax.set_xlabel("parameters")
