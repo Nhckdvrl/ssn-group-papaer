@@ -9,6 +9,7 @@ mkdir -p ../results/e42/logs ../results/e42/claims ../results/e43/logs ../result
 if [ "$stage" = pairs ] || [ "$stage" = lmc ]; then
   for i in 0 1 2 3 4 5; do
     mkdir ../results/e43/claims/$stage-$i 2>/dev/null || continue
+    [ "$stage" = lmc ] && until [ "$(ssh -n -o BatchMode=yes ${g%%:*} "nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits -i ${g##*:}" 2>/dev/null)" -ge 25000 ] 2>/dev/null; do sleep 120; done
     run e43_basis.py --$stage --part $i/6 > ../results/e43/logs/$stage-$i.log 2>&1; echo "$stage $i exit=$?"
   done; exit
 fi

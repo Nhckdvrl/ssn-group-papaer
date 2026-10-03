@@ -132,8 +132,8 @@ def pairs(part):
             continue
         for k in (a, b):
             if k not in cache:
-                if len(cache) >= 3:
-                    cache.pop(next(iter(cache)))
+                for old in [c for c in cache if c not in (a, b)][: max(0, len(cache) - 2)]:
+                    cache.pop(old)  # keep at most 3 dumps, never evict the current pair
                 cache[k] = torch.load(DUMP / f"{k[0]}__{k[1]}.pt")
         f.write_text(json.dumps(pair_stats(cache[a], cache[b])))
         print("pair", f.stem, flush=True)
@@ -187,7 +187,7 @@ def analyze():
     rng = np.random.default_rng(0)
     metrics = sorted(next(iter(P.values())).keys())
     for m in metrics:
-        val = {p: float(np.mean(v[m])) for p, v in P.items()}
+        val = {p: float(np.nanmean(v[m])) for p, v in P.items()}
         g = {"SI": [], "SD": [], "DD": []}
         for p, v in val.items():
             g[cls(*p)].append(v)
@@ -203,7 +203,7 @@ def analyze():
             boots.append(np.mean(gg["SI"]) - np.mean(gg["SD"]))
         out["metrics"][m] = {**{c: float(np.mean(v)) for c, v in g.items()},
                              "SI_minus_SD": float(np.mean(g["SI"]) - np.mean(g["SD"])),
-                             "ci95": np.percentile(boots, [2.5, 97.5]).tolist(),
+                             "ci95": np.nanpercentile(boots, [2.5, 97.5]).tolist(),
                              "per_layer": {c: np.mean([P[p][m] for p in P if cls(*p) == c], 0).tolist()
                                            for c in ("SI", "SD", "DD")} if isinstance(next(iter(P.values()))[m], list) else None}
     lm = {}
