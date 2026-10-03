@@ -9,7 +9,7 @@
 - **证据尺度：** pilot只确定可测性；论文需要独立自然材料和多模型的可迁移结构，数量按方差/目标精度设计。多现象共享criterion不能预先假定。
 - **近邻：** ALTPRAG拥有stage gains；PaCE拥有over-inference/context flip；DRInQ拥有context-sensitive interpretation；generic SDT拥有sensitivity/bias分解。增量须改变科学归因或揭示值得知道的稳定边界，见[POSITIONING](POSITIONING.md)。
 - **停止损失：** 有效测量后若只剩强模型全面更好、不断加限定才成立，或数据识别仍不可行，提议人审；当前尚未完成核心检验。
-- **清理决定：** 用户要求清除额外扩展；社会评价、角色与noise repair退出当前实验计划。I01 PARKED，不继续为它找材料或铺卡。已有结果保留审计，不因不合主线删掉负结果。
+- **清理决定：** 用户要求清除额外扩展；社会评价、角色与noise repair退出当前实验计划。额外idea卡/实验文件已删除；旧代码/汇总从git历史追溯；额外raw后续按用户要求删除，不能由git恢复。主线失败记录保留。
 - **目标与状态：** ACL/EMNLP/NAACL主会；PROPOSED不变，无摘要story、无截稿倒排。
 
 [原提示词对照](logs/review-2026-10-03.md) · [当前研究判断](FIELD_SYNTHESIS.md) · [数据准入](DATA_PROTOCOL.md)

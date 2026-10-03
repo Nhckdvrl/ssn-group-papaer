@@ -1,7 +1,7 @@
 # Pragmatic Inference Calibration — LLM 语用推断的校准与边界
 
 **状态：PROPOSED；用户授权 D1/D2 驻留、env、全部八卡。** 不改变其他 ACTIVE 线。
-**更新：2026-10-03。** 目标 ACL / EMNLP / NAACL 主会；升线由人决定。
+**独立复核从[这里开始](logs/review-2026-10-03.md)。更新：2026-10-03。** 目标 ACL / EMNLP / NAACL 主会；升线由人决定。
 **对象：** 模型什么时候应该读懂言外之意、什么时候应该停止脑补？更强的语用表现来自更好的语境区分，还是更激进的推断倾向，或二者？
 **来源：RECONSTRUCTED。** ALTPRAG gains × PaCE literal-side cost 提供待测压力；不是已证实矛盾或 finding。SDT 只是一把候选尺。
 
@@ -18,7 +18,7 @@
 
 **C02 / P02：建立同一候选含义的双侧语境测量。** 先核对现成材料的许可依据与可比性；不足时有针对性改造自然语料，保留原项、变体与独立规范。数据通过语义与技术审查后，再运行模型/阶段矩阵。详见[数据准入](DATA_PROTOCOL.md)。
 
-社会评价、动机评分、角色迁移、噪声修复退出当前执行计划；I01已PARKED。E64额外分支已按用户要求停止，六模型完整、两Base部分输出保存，不做阶段排名。[停止快照](results/E64-stop-snapshot.json)。不删除既有结果或失败记录。
+社会评价、动机评分、角色迁移、噪声修复的额外实验文件与I01已实际删除。E64额外分支已按用户要求停止，停止时六模型完整、两Base部分；此后额外raw按用户要求删除，不做阶段排名。[停止快照](https://github.com/Nhckdvrl/ssn-group-papaer/blob/2738b95a579a4e4c2c1211d8c2f3461cd4a647f2/workbench/pragmatic-inference-calibration/results/E64-stop-snapshot.json)。主线结果和失败记录保留；额外代码/汇总只从git历史追溯。
 
 宽阅读继续服务原问题的竞争解释与测量；每个新实验必须说明如何识别推断边界，不能凭邻接任务的大效应换对象。[对照审计](logs/review-2026-10-03.md)
 
@@ -26,7 +26,7 @@
 
 [CLAIMS](CLAIMS.md) · [证据账本](EVIDENCE_LEDGER.md) · [当前研究判断](FIELD_SYNTHESIS.md) · [定位](POSITIONING.md) · [论文形态](PAPER_SHAPE.md) · [论文阅读](../../library/themes/pragmatic-inference/README.md)
 
-E01–E64原实验卡、结果与失败保持可追溯。旧拓展的“下一步”已退出当前计划，见[历史拓展记录](logs/field-expansions-2026-10-03.md)。
+核心实验卡、结果与失败保留；额外分支只从git历史追溯，不再留当前计划。见[删除清单](results/cleanup-2026-10-03.json)。
 
 ## 资产与复现
 
@@ -38,3 +38,5 @@ E01–E64原实验卡、结果与失败保持可追溯。旧拓展的“下一�
 - OpenCode免费官方路径已验证可用（E58）；辅助审计有语义错误，不自动当gold。无需子agent。
 
 2026-10-03用户授权清理额外扩展，主territory仍PROPOSED，未升ACTIVE/候选或关闭。
+
+本地额外分支数据已实际删除1897文件、占用约1.47GB；共用权重、核心source/run与论文资料保留。[本地删除清单](results/local-cleanup-2026-10-03.json)；额外raw不在git中，删除后不能由git恢复。

@@ -47,7 +47,7 @@ Flan-T5-XL 1,365个选择与作者公开结果全部匹配，概率MAD=0.000077�
 E52强Q25配对4064完成：IQAP chat方向+.2333 CI[.1467,.3133]而四类Brier+.2084[.1343,.2872]，但Base完整candidate mass8.04e−13/Instr无QA prior偏probable-yes .99697，不能升级能力/校准claim。Circa条件原序弱correct升.7969→.9766，negative弱class仍有原序.1154/逆序.8462的顺序混杂。E53明确POST-HOC无损格式审计全8640与固定6阳/15阴cases通过：四endpoint从0可用恢复962–1079，但无歧义semantic controls仍未共同通过，原primary不改，不将format失败叫能力negative。C01/C02仍L0。E51八槽等待固定权重，有限collector只汇总8作业全完成且校对通过的结果，不更新主张/状态或自主开实验；实际状态保存在本地data/E51-collector-status.json。
 
 
-2026-10-03 E57：23,552完整技术校对与missing bounds通过；Base入口invalid近全量，plausible语义控制没有全材料通过。E3源内不同端点noise效应方向不一致，不称训练criterion变化或新finding。见[实验卡](experiments/E57-source-exposure-response.md)与[完整原summary](results/E57-exposure-summary.json)。C02仍L0，I01仍SEED；E58先对20条原句盲态辅助审计，原gold不改。
+2026-10-03 E57：23,552完整技术校对与missing bounds通过；Base入口invalid近全量，plausible语义控制没有全材料通过。E3源内不同端点noise效应方向不一致，不称训练criterion变化或新finding。见[实验卡](https://github.com/Nhckdvrl/ssn-group-papaer/blob/2738b95a579a4e4c2c1211d8c2f3461cd4a647f2/workbench/pragmatic-inference-calibration/experiments/E57-source-exposure-response.md)与[完整原summary](https://github.com/Nhckdvrl/ssn-group-papaer/blob/2738b95a579a4e4c2c1211d8c2f3461cd4a647f2/workbench/pragmatic-inference-calibration/results/E57-exposure-summary.json)。C02仍L0，I01仍SEED；E58先对20条原句盲态辅助审计，原gold不改。
 
 
 E51八阶段/任务作业8128完成：SFT→DPO human四类Brier变差但polarity变化CI含零，完整candidate质量与terminal控制可核对；原null prior与Circa顺序仍混杂。见[E51卡](experiments/E51-dense-stage-natural-parents.md) / [summary](results/E51-dense-natural-summary.json)。不能直接叫语用能力下降或criterion shift，C02仍L0。
