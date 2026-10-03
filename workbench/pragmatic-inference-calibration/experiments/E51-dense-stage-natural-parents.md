@@ -19,3 +19,5 @@
 资产准备：metadata并行下载被tqdm内部锁异常中断，0模型预测；禁progress bar后顺序metadata完成，四revision固定。公开SFT只有PyTorch index/bin，safetensors-only downloader在该endpoint被asset gate拦截；独立使用既有download_models.py --pytorch-only，原文件/revision不变且torch weights_only=True。其它三endpoint的既有下载保留，不终止。四native backend完全相同的额外CPU证明见results/E51-tokenizer-backend-audit.json。CPU全source gate通过：IQAP300/model、max151tokens；Circa1732/model、max162tokens；总8128。队列已启动等待资产，未宣称八卡正在计算。
 
 CPU全量prefix/source preflight已通过；完整source结果不按方向改readout。Circa全部单token content时作精确共享prefix分解以减少重复forward，再与独立完整model logits比对，不用首token代替多token。运行脚本冻结，所有原失败/raw保留。
+
+下载调度补充：为避免最后Instruct等待前两个endpoint，另启既有download_models.py的固定revision下载；HF文件锁/cache复用，未改checkpoint或实验输入。八任务各自等待对应完整资产marker，不必等全部四stage才开始。collector有限等待并仅做原定汇总，不开新实验或升级主张。

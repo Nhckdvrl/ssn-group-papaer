@@ -164,3 +164,11 @@ EMNLP2024不同pragmatic-levels的结果提醒：lexicon未完全掌握时，最
 成熟增量的最低形态仍是领域特有的可迁移conditional prediction，能重解释已有训练/人类对齐结论；不是一个game、一个prompt的role gap，不是首次SDT/首次confidence。没有这一层证据时保留原数据、继续驻留，不缩小措辞硬保idea，也不以拥挤桌面关线。
 
 E52的较强Q25仍不支持把post-training简单讲成更愿意推断：方向判断改善、definite解释phrase下降、human分布Brier变差并存，而原candidate mass/无QA lexical prior不可忽略。不是漂亮的“accuracy↑校准↓”finding，因为这些比较未隔离读数/规范。E53再把format compliance与semantic task floor拆开：无损表示恢复大量raw的可读性，语义/位置错误仍存在。两者约束怎样解释测量，不把instrument repair作为novel scientific object。weak-evidence原shared.js的J0/S1/J1/J2与原replication说明已进一步阅读，完整likelihood包括重复stick instances，正式benchmark需固定sampling、threshold与norm，不把表面“literal”当negative gold。
+
+## 16. 从论文发展自己的问题：先找被混合的解释，不能只换设定
+
+ACL2026 production-choice正文与附录A–D补读完成，原仓库公开访问404，不能称代码驻留或复现。它从“surprisal是成本”发展到“相对哪一套备选，才是哪一方的成本”；Weak Evidence从“弱证据反转”发展到“期待怎样的选择过程，才应该反转”；Mayn从“听者推理水平”发展到“他认为partner会怎样说”。共同动作是让已有解释产生不同的条件预测，而不是在同一平均效应旁补一个metric。
+
+对我们的约束有三层：**语言上可预测**不自动等于**当前目标下可替代**，后者也不自动等于**当前说话者知道并能选择**。观察到对另一表达的高likelihood，只有在这些条件和具体候选意义明确后，才成为“没说它”的交际证据。Production-choice的history增加让goal-matching比例从4.7%升到15.2%，是parent的证据，不是我们的finding；它提示不能用context-free词频或开放续接概率替代goal-conditioned选择机制。
+
+当前需要检验的对象因而仍是选择过程预测与具体解释之间的条件联系。为使一个实验有信息量，需要先写清：若只是词汇prior，哪些同goal/不同goal条件会同向；若使用了speaker选择证据，哪些候选命题应改变、哪些不应改变；若只改变回答规范，独立意图读数和事实/责任读数应怎样分离。不是现在宣称三种机制已被识别。E49/E50原控制未共同成功，E52受candidate质量/顺序限制，不能从这些数据选一条漂亮解释。E51仍是较强同谱系自然parent边界，后续的新实验必须先取得符合上述识别条件的原材料与norm，不能靠后标标签制造答案。
