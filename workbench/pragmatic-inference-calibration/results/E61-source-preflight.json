@@ -1,0 +1,554 @@
+{
+  "models": [
+    {
+      "id": "allenai/OLMo-2-1124-13B",
+      "sha": "3fefddc1bf18a30e1d9b91000271630718f2aa8b",
+      "stage": "Base",
+      "family": "OLMo2"
+    },
+    {
+      "id": "allenai/OLMo-2-1124-13B-SFT",
+      "sha": "b7ec47ed94f3f1d244d9d3cc53eb5d269f8eceec",
+      "stage": "SFT",
+      "family": "OLMo2"
+    },
+    {
+      "id": "allenai/OLMo-2-1124-13B-DPO",
+      "sha": "97a7f33fc8b419808db4ff92795244021e5cf5c2",
+      "stage": "DPO",
+      "family": "OLMo2"
+    },
+    {
+      "id": "allenai/OLMo-2-1124-13B-Instruct",
+      "sha": "3a5c85baefbb1896a54d56fe2e76c0395627ddf4",
+      "stage": "RLVR",
+      "family": "OLMo2"
+    },
+    {
+      "id": "Qwen/Qwen2.5-14B",
+      "sha": "97e1e76335b7017d8f67c08a19d103c0504298c9",
+      "gated": false,
+      "safetensors": {
+        "parameters": {
+          "BF16": 14770033664
+        },
+        "total": 14770033664
+      },
+      "official_parent": "Qwen/Qwen2.5-14B",
+      "family": "Qwen2.5",
+      "stage": "Base"
+    },
+    {
+      "id": "Qwen/Qwen2.5-14B-Instruct",
+      "sha": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+      "gated": false,
+      "safetensors": {
+        "parameters": {
+          "BF16": 14770033664
+        },
+        "total": 14770033664
+      },
+      "official_parent": "Qwen/Qwen2.5-14B",
+      "family": "Qwen2.5",
+      "stage": "Instruct"
+    },
+    {
+      "id": "mistralai/Mistral-7B-v0.3",
+      "sha": "caa1feb0e54d415e2df31207e5f4e273e33509b1",
+      "gated": false,
+      "safetensors": {
+        "parameters": {
+          "BF16": 7248023552
+        },
+        "total": 7248023552
+      },
+      "official_parent": "mistralai/Mistral-7B-v0.3",
+      "family": "Mistral",
+      "stage": "Base"
+    },
+    {
+      "id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "sha": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+      "gated": false,
+      "safetensors": {
+        "parameters": {
+          "BF16": 7248023552
+        },
+        "total": 7248023552
+      },
+      "official_parent": "mistralai/Mistral-7B-v0.3",
+      "family": "Mistral",
+      "stage": "Instruct"
+    }
+  ],
+  "audits": {
+    "OLMo-2-1124-13B": {
+      "input_sha256": "1181d7e0eeb63a8c230028d370f832a8bebcf2fc1fa5d54208bcd64c53baf1a1",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 268
+    },
+    "OLMo-2-1124-13B-SFT": {
+      "input_sha256": "1181d7e0eeb63a8c230028d370f832a8bebcf2fc1fa5d54208bcd64c53baf1a1",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 268
+    },
+    "OLMo-2-1124-13B-DPO": {
+      "input_sha256": "1181d7e0eeb63a8c230028d370f832a8bebcf2fc1fa5d54208bcd64c53baf1a1",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 268
+    },
+    "OLMo-2-1124-13B-Instruct": {
+      "input_sha256": "1181d7e0eeb63a8c230028d370f832a8bebcf2fc1fa5d54208bcd64c53baf1a1",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 268
+    },
+    "Qwen2.5-14B": {
+      "input_sha256": "65a17a94aa2767b7ff131f3de4abafd8ae809914e43056e88d6fea65ed734d1c",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 291
+    },
+    "Qwen2.5-14B-Instruct": {
+      "input_sha256": "65a17a94aa2767b7ff131f3de4abafd8ae809914e43056e88d6fea65ed734d1c",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 291
+    },
+    "Mistral-7B-v0.3": {
+      "input_sha256": "39c16d70dcb4175e7c04e80601aded8e7546ca42612838c30f4cc3f95af7121e",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 290
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "input_sha256": "39c16d70dcb4175e7c04e80601aded8e7546ca42612838c30f4cc3f95af7121e",
+      "source_audit": {
+        "n_natural": 1536,
+        "n_copy_controls": 36,
+        "n_scenes": 6,
+        "n_original_condition_cells": 24,
+        "n_human_participants": 362,
+        "source_sha256": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+        "motives": [
+          [
+            "t3_appropriate",
+            "because it was the appropriate level of detail in the situation"
+          ],
+          [
+            "t3_giveMore",
+            "to give as much information as possible"
+          ],
+          [
+            "t3_tooMuchInf",
+            "to avoid giving too much information"
+          ],
+          [
+            "t3_didntKnow",
+            "because the speaker didn't know the exact information"
+          ],
+          [
+            "t3_avoidFalse",
+            "to avoid saying something that might be false"
+          ],
+          [
+            "t3_soundSmart",
+            "to sound smart"
+          ],
+          [
+            "t3_soundEasygoing",
+            "to sound easy-going"
+          ],
+          [
+            "t3_easierUnderstand",
+            "to make the information easier to understand"
+          ],
+          [
+            "t3_easierSpeaker",
+            "because it was easier for the speaker"
+          ],
+          [
+            "t3_none",
+            "none of these"
+          ]
+        ],
+        "control_instruction": "Evaluate the listener's impression warranted by this particular dialogue, rather than the speaker's actual hidden character or motives.",
+        "task3_is_binary_adaptation": true,
+        "counts_are_listener_ratings_not_truth": true
+      },
+      "max_tokens": 290
+    }
+  },
+  "helper_sha256": "f6649769cc746a15cea1c715db6c1904215a31029b1ccbefab9d9735bb699f6c",
+  "dependencies": {
+    "wording_data.py": "b8b460cd5e875fee7a86a33ea94b617c6f9fe0d0e202ad3ddea46c8d52d1eb68",
+    "audit_social_source.py": "10a8b6ca90b186424ce09f3509529419ec4fa5f1e1ab5aff0295d6d910feacdd",
+    "src/config.py": "63d9be86db2726c9eba21722468e20e9f167631b0aefe886329c50b0bb62c935",
+    "src/exp_texts.py": "5cc48895756310d65c65a4ae373e9f721e9ec4cc3dd7c64908ced286f02bc72e",
+    "prompts/build_prompts.py": "1a4cd6196b91b7a693af5f4f48806695a0036867fd023ac10c8a930116072737",
+    "E60-experiment1.csv": "cf016530d90e64817a14c4e50e5401612d107dc971800c53dc4a13628396f9a8",
+    "E60-codebook.csv": "73210ca8fa23209f748fdf1f0546155d80173ecfbf301303b0b419750497ad11",
+    "E60-original-social-prompts.json": "8ca6e969fea29edd12f3a96332149e14ec3845dbd42b9e44529ffda6f0d1e1a3"
+  },
+  "gate_pass": true
+}
