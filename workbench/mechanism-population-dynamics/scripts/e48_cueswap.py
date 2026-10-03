@@ -77,7 +77,8 @@ class Mix:
     """Per-sequence slot assignment and base windows from one RNG (identical across conditions); Flan windows from
     a second RNG over the condition's Flan file (same offsets for orig / swap up to the files' length difference)."""
 
-    def __init__(self, cond, seed):
+    def __init__(self, cond, seed, p_flan=None):
+        self.p_flan = P_FLAN if p_flan is None else p_flan
         self.base = {k: np.memmap(DATA / f"{k}.u16", dtype=np.uint16, mode="r") for k in BASE}
         self.names, self.p = list(BASE), np.array(list(BASE.values()))
         self.flan = None if cond == "none" else np.memmap(DATA / f"flan_{cond}.u16", dtype=np.uint16, mode="r")
@@ -86,7 +87,7 @@ class Mix:
     def next(self):
         rows = []
         for _ in range(BS):
-            is_flan = self.rng.random() < P_FLAN
+            is_flan = self.rng.random() < self.p_flan
             src = self.names[self.rng.choice(len(self.names), p=self.p)]
             x = self.base[src]
             off = self.rng.integers(0, len(x) - SEQ - 1)
@@ -118,9 +119,14 @@ def readout(model, tok):
     return res
 
 
-def train(size, seed, cond):
+def train(size, seed, cond, tokens=None, p_flan=None, evals_at=None):
     import dd_common as dd
+    tokens = TOKENS if tokens is None else tokens
+    p_flan = P_FLAN if p_flan is None else p_flan
+    evals_at = EVAL_AT if evals_at is None else evals_at
     name = f"{size}__{seed}__{cond}"
+    if tokens != TOKENS or p_flan != P_FLAN:  # E48b: dose-escalated runs get their own names
+        name += f"__p{int(round(p_flan * 100))}t{tokens // 1_000_000}M"
     f = OUT / f"{name}.json"
     if f.exists():
         return
@@ -129,11 +135,11 @@ def train(size, seed, cond):
     model, tok = dd.load(f"allenai/DataDecide-dolma1_7-no-flan-{size}", dd.rev(FINAL[size][seed], seed), dtype=torch.float32)
     model.config._attn_implementation = "sdpa"
     opt = torch.optim.AdamW(model.parameters(), lr=LR, betas=(0.9, 0.95), weight_decay=0.1, eps=1e-8)
-    steps = TOKENS // (BS * SEQ)
+    steps = tokens // (BS * SEQ)
     lr_at = lambda s: LR * min(1.0, (s + 1) / WARM) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * s / steps)))
-    data = Mix(cond, seed={"default": 1, "small-aux-2": 2, "small-aux-3": 3}[seed])
-    log = {"name": name, "size": size, "seed": seed, "cond": cond, "p_flan": P_FLAN, "evals": {}, "loss": {}}
-    evals = {t // (BS * SEQ): t for t in EVAL_AT}
+    data = Mix(cond, seed={"default": 1, "small-aux-2": 2, "small-aux-3": 3}[seed], p_flan=p_flan)
+    log = {"name": name, "size": size, "seed": seed, "cond": cond, "p_flan": p_flan, "tokens": tokens, "evals": {}, "loss": {}}
+    evals = {t // (BS * SEQ): t for t in evals_at if t <= tokens}
     t0 = time.time()
     model.train()
     for step in range(steps + 1):
@@ -165,20 +171,21 @@ def train(size, seed, cond):
     f.write_text(json.dumps(log))
 
 
-def analyze():
+def analyze(suffix="", evals_at=None, out_name="analysis.json"):
     import e18_trait as e18
+    evals_at = EVAL_AT if evals_at is None else evals_at
     from e32_cues import CELLS
     R = e18.rows()
     cats = sorted({r["cat"] for r in R})
     seeds = ("default", "small-aux-2", "small-aux-3")
     out = {}
     for size in FINAL:
-        L = {(s, c): json.loads((OUT / f"{size}__{s}__{c}.json").read_text())
-             for s in seeds for c in ("orig", "swap", "none") if (OUT / f"{size}__{s}__{c}.json").exists()}
+        L = {(s, c): json.loads((OUT / f"{size}__{s}__{c}{suffix}.json").read_text())
+             for s in seeds for c in ("orig", "swap", "none") if (OUT / f"{size}__{s}__{c}{suffix}.json").exists()}
         if len(L) < 9:
             continue
         out[size] = {}
-        for t in map(str, EVAL_AT):
+        for t in [str(x) for x in evals_at if all(str(x) in v["evals"] for v in L.values())]:
             E = {k: v["evals"][t] for k, v in L.items()}
             sh = sorted(set.intersection(*[set(e["known"]) for e in E.values()]))
             by = [ix for ix in ([i for i in sh if R[i]["cat"] == c] for c in cats) if len(ix) >= 10]
@@ -197,7 +204,7 @@ def analyze():
                 d = np.array([(F[(s, cond)][a] - F[(s, "none")][a]) - (F[(s, cond)][b] - F[(s, "none")][b]) for s in seeds])
                 row[f"specificity_{cond}:{a}>{b}"] = {"delta": float(d.mean()), "se": float(d.std(ddof=1) / np.sqrt(3))}
             out[size][t] = row
-    (OUT / "analysis.json").write_text(json.dumps(out, indent=1))
+    (OUT / out_name).write_text(json.dumps(out, indent=1))
     for size, rows in out.items():
         for t, r in rows.items():
             print(size, t, r["n_shared_known"], {k: f"{v['delta']:+.2f}({v['se']:.2f})" for k, v in r.items()
@@ -212,10 +219,16 @@ if __name__ == "__main__":
     ap.add_argument("--size")
     ap.add_argument("--seed")
     ap.add_argument("--cond", choices=["orig", "swap", "none"])
+    ap.add_argument("--tokens", type=int, default=None)
+    ap.add_argument("--p-flan", type=float, default=None)
+    ap.add_argument("--evals-at", default=None, help="comma-separated token counts")
     a = ap.parse_args()
     if a.prep:
         prep()
     elif a.train:
-        train(a.size, a.seed, a.cond)
+        train(a.size, a.seed, a.cond, a.tokens, a.p_flan,
+              [int(x) for x in a.evals_at.split(",")] if a.evals_at else None)
     elif a.analyze:
-        analyze()
+        sfx = f"__p{int(round(a.p_flan * 100))}t{a.tokens // 1_000_000}M" if a.tokens else ""
+        analyze(sfx, [int(x) for x in a.evals_at.split(",")] if a.evals_at else None,
+                "analysis.json" if not sfx else f"analysis{sfx}.json")

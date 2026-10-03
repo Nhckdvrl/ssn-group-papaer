@@ -27,3 +27,4 @@
 - **运维（2026-10-03 13:40，无结果产出前）：** 首轮在拥挤的 GPU 上反复显存不足（9 个 run 中 7 个失败，1 个跑到 5000 万 token）→ 全部作废（日志移至 `/home/xiang/mechpop_cache/e48_aborted/`），每步梯度累积从 4 个改为 16 个 micro-batch（每步梯度不变，只降低峰值显存），18 个 run 统一重跑。
 - **设计变更（15:09，在查看任何 E48 读数之前；原因：算力）：** 共卡导致每个 run 约 7 小时（每 2500 万 token 约 55 分钟）。→ **主判定点改为 1 亿 token**（P1–P3 都在 1 亿 token 处判定）；新启动的 run 训练到 1 亿 token 即停（学习率余弦按 1 亿 token 计算）；已在运行的 4 个 run（按 2 亿 token 的学习率计划）继续跑完，其 1 亿 token 读数用于判定（学习率计划不同，作为该点的局限写明），2 亿 token 读数只作描述。
   - 配对一致性：default 初始化的 orig / swap / none 三个 run 都按 2 亿 token 的计划启动（彼此一致，在 1 亿 token 处判定）；small-aux-2 的 orig 刚按旧计划启动 42 分钟，已停掉并按 1 亿 token 计划重跑，保证每个初始化内三种条件的学习率计划相同。
+- **调整（17:11，未查看任何配对分析）：** default 初始化的 orig / none 按旧的 2 亿 token 计划运行，又在最拥挤的卡上，4 小时只到 2500 万 token；为保证每个初始化内三个条件的学习率计划相同，default 的三个条件全部按 1 亿 token 计划在较空的卡上重跑；已完成的 default swap（2 亿 token 计划）移至 `/home/xiang/mechpop_cache/e48_aborted/`，只作描述，不参与判定。至此所有参与判定的 run 都使用 1 亿 token 计划。
