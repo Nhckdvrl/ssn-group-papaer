@@ -382,8 +382,52 @@ def fig_development_e57():
     fig.savefig(OUT / "fig_development_e57.png", dpi=160)
 
 
+DD_RECIPE = {  # DataDecide Table 2: (batch sequences of 2048 tokens, peak LR)
+    "4M": (32, 1.4e-2), "6M": (32, 1.2e-2), "8M": (32, 1.1e-2), "10M": (32, 1.0e-2), "14M": (32, 9.2e-3),
+    "16M": (32, 8.9e-3), "20M": (64, 8.4e-3), "60M": (96, 5.8e-3), "90M": (160, 4.9e-3), "150M": (192, 4.2e-3),
+    "300M": (320, 3.3e-3), "530M": (448, 2.8e-3), "750M": (576, 2.5e-3), "1B@7500": (704, 2.1e-3)}
+
+
+def fig_temperature():
+    """E62 / E62b + E45: inheritance vs SGD temperature (peak LR / tokens per batch). (a) controlled S models: same-seed
+    c4-papers inheritance and order-only similarity at step 2000; (b) DataDecide sizes: same-seed within-layer similarity."""
+    e = json.loads((R / "e62_analysis.json").read_text())
+    d = json.loads((R / "e45" / "analysis.json").read_text())
+    tok = {"bs16": 16 * 512, "bs64": 64 * 512, "bs512": 512 * 512, "lr3e-3": 64 * 512, "lr3e-4": 64 * 512}
+    lr = {"bs16": 1e-3, "bs64": 1e-3, "bs512": 1e-3, "lr3e-3": 3e-3, "lr3e-4": 3e-4}
+    fig, axes = plt.subplots(1, 2, figsize=(10.5, 3.6), sharex=True)
+    ax = axes[0]
+    pts = [(lr[k] / tok[k], v["M2"]["inherit_c4_papers"], v["M2"]["order_only"], k) for k, v in e.items()
+           if v["M2"]["inherit_c4_papers"] is not None]
+    pts.sort()
+    ax.plot([p[0] for p in pts], [p[1] for p in pts], "o-", color=C["SI"], label="same seed, c4 vs papers")
+    po = [p for p in pts if p[2] is not None]
+    ax.plot([p[0] for p in po], [p[2] for p in po], "s--", color="#55A868", label="same seed & corpus, other batch order")
+    for p in pts:
+        ax.annotate(p[3], (p[0], p[1]), fontsize=6, xytext=(3, -9), textcoords="offset points")
+    ax.set_xscale("log")
+    ax.invert_xaxis()
+    ax.set_xlabel("SGD temperature: peak LR / tokens per batch")
+    ax.set_ylabel("which-head similarity (step 2000)")
+    ax.set_title("controlled: lower temperature, the seed decides", fontsize=9)
+    ax.legend(fontsize=7, frameon=False)
+    ax = axes[1]
+    S = [s for s in DD_RECIPE if s in d]
+    x = [DD_RECIPE[s][1] / (DD_RECIPE[s][0] * 2048) for s in S]
+    y = [np.mean([d[s][m]["within_layer"]["SI"] for m in ("M1", "M2", "M4") if d[s][m]["decidable"]]) for s in S]
+    ax.plot(x, y, "o", color=C["SI"])
+    for xi, yi, s in zip(x, y, S):
+        ax.annotate(s.replace("@7500", ""), (xi, yi), fontsize=6, xytext=(3, 3), textcoords="offset points")
+    ax.set_xscale("log")
+    ax.set_xlabel("SGD temperature: peak LR / tokens per batch")
+    ax.set_ylabel("same seed, other corpus")
+    ax.set_title("DataDecide: the scaling recipe cools as models grow", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_temperature_e62.png", dpi=160)
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
-    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance, fig_scale_v2, fig_lockin, fig_development_e57):
+    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance, fig_scale_v2, fig_lockin, fig_development_e57, fig_temperature):
         fn()
     print(sorted(p.name for p in OUT.glob("*.png")))
