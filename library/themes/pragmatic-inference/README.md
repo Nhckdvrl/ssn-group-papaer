@@ -67,9 +67,9 @@
 | [On the Same Wavelength? Evaluating Pragmatic Reasoning in Language Models across Broad Concepts（EMNLP 2025 main）](wavelength-2025.md) | 正文/附录/代码/复现分别注明于卡内 |
 | [Rethinking Pragmatics in Large Language Models: Towards Open-Ended Evaluation and Preference Tuning（EMNLP 2024 main）](wu-2024.md) | 正文/附录/代码/复现分别注明于卡内 |
 
-[领域综合判断](../../../workbench/pragmatic-inference-calibration/FIELD_SYNTHESIS.md)连接语用、认知理论、目标模型、人类分布、互动grounding。作者blog（Kempner）和RSA讲解已读；访问失败的blog不计覆盖。
+[领域综合判断](https://github.com/Nhckdvrl/ssn-group-papaer/blob/51a578c1/workbench/pragmatic-inference-calibration/FIELD_SYNTHESIS.md)连接语用、认知理论、目标模型、人类分布、互动grounding。作者blog（Kempner）和RSA讲解已读；访问失败的blog不计覆盖。
 
-PDF/TXT、原code/data置于 `/data1/xiangding/work/pragmatic-inference-calibration`，不进git。E13/E18复现的是TACL2023 string predictor，未复现concept/GloVe主回归；EPITOME原SI评分已重建，IR release仅6完整item，不能称16item全复现。
+2026-10-03用户决定关闭本题；本地PDF/TXT、原code/data与实验raw已实际清理，论文卡作为知识库保留。环境和models暂留；旧执行记录从Git历史追溯。E13/E18复现的是TACL2023 string predictor，未复现concept/GloVe主回归；EPITOME原SI评分已重建，IR release仅6完整item，不能称16item全复现。
 
 ALTPRAG/PaCE/listener–speaker按用户指定参考；投递仍只ACL/EMNLP/NAACL主会。近邻只做定位，不桌面关闭。
 
