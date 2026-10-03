@@ -28,8 +28,11 @@ def main():
         src = M if m.startswith("R") else E35
         V = {k: np.array(src[k]["maps"][m] if m.startswith("R") else src[k][m]) for k in src}
         keys = list(V)
-        sims = {(a, b): (within(V[a], V[b]), spearmanr(V[a].max(1), V[b].max(1))[0])
-                for a, b in itertools.combinations(keys, 2)}
+        from fastsim import within_matrix
+        W = within_matrix([V[k] for k in keys])
+        P = np.corrcoef(np.stack([np.argsort(np.argsort(V[k].max(1))) for k in keys]).astype(float))
+        idx = {k: i for i, k in enumerate(keys)}
+        sims = {(a, b): (W[idx[a], idx[b]], P[idx[a], idx[b]]) for a, b in itertools.combinations(keys, 2)}
         g = {c: [v for p, v in sims.items() if cls(*p) == c] for c in ("SI", "SD", "DD")}
         boots = []
         for _ in range(500):
