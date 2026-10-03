@@ -29,7 +29,7 @@
 3. *The Seed and the Corpus: Nature and Nurture in Language Models*
 
 ## 3. 摘要（英文草稿）
-Is anything in a language model innate? We answer with a natural experiment hidden in public pretraining suites, in which the same random initializations were trained on up to 25 different corpora (DataDecide, 4M–1B parameters) or on two versions of the Pile (Pythia, 70M–12B). What is innate is the model's anatomy. Which attention heads become induction, previous-token, retrieval and six other kinds of heads is fixed by the seed before the model reads its corpus, and recurs on every corpus — so faithfully that a model's seed can be identified from its head layout alone (98–100%), even though its weights keep a correlation of only 0.04 with their initial values. Everything the model knows and does is learned: the corpus sets how strong its circuits are and when they form, there are no lucky seeds on 11 NLP benchmarks, and a 1% slice of instruction data teaches a habit — trusting a counterfactual context only when the question is introduced by the literal template "Question:", not "Q:" — that partly explains template sensitivity in context-faithfulness evaluation. As in Lenneberg's critical period for human language, the innate layout is fixed early, during the first 1–2.5% of training; afterwards even a switch to a new language — source code — no longer rewrites it. And it is shared across corpora only as far as their language is shared: the closer two corpora's word statistics, the more faithfully the same anatomy recurs.
+Is anything in a language model innate? We answer with a natural experiment hidden in public pretraining suites, in which the same random initializations were trained on up to 25 different corpora (DataDecide, 4M–1B parameters) or on two versions of the Pile (Pythia, 70M–12B). What is innate is the model's anatomy. Which attention heads become induction, previous-token, retrieval and six other kinds of heads is fixed by the seed before the model reads its corpus, and recurs on every corpus — so faithfully that a model's seed can be identified from its head layout alone (98–100%), even though its weights keep a correlation of only 0.04 with their initial values. Everything the model knows and does is learned: the corpus sets how strong its circuits are and when they form, there are no lucky seeds on 11 NLP benchmarks, and a 1% slice of instruction data teaches a habit — trusting a counterfactual context only when the question is introduced by the literal template "Question:", not "Q:" — that partly explains template sensitivity in context-faithfulness evaluation. As in Lenneberg's critical period for human language, the innate layout is fixed early, during the first 1–2.5% of training; afterwards even a switch to a new language — source code — no longer rewrites it. And it is shared across corpora as far as their content is shared: the closer two corpora's content-word statistics — what they are about, not how they say it — the more faithfully the same anatomy recurs.
 
 ## 4. 结构（ACL 长文 8 页）
 1. **Introduction：** 语言习得的先天 / 后天之争 → 对语言模型可以直接做实验（同一初始化 × 25 个语料）→ 钩子（权重忘了 seed，回路记得；1% 的数据教会一个模板习惯）→ 3–4 条贡献。
@@ -39,7 +39,7 @@ Is anything in a language model innate? We answer with a natural experiment hidd
    - 4.1 强度与出现时间；no lucky seeds（11 个 NLP 基准 × 14 个尺寸）；
    - 4.2 **“Question:” 习惯：** 1% 的 Flan；只认字面模板；PopQA、NQ-Swap；OLMo 2 中期训练；60M–1B；出现于预训练 3.6%；对评测的含义：问答格式的上下文忠实度 / 知识冲突评测部分测的是这个模板习惯；提示模板敏感性有预训练数据来源。
 5. **A critical period：** Lenneberg 的类比；1–2.5% 锁定；之后换成代码这种“新语言”也改不动；两个尺寸的受控模型 + 公开套件。
-6. **The language of the corpus：** 语料距离规律（每个尺寸、去混杂）；[E64：虚词 vs 实词统计]；自然语言 vs 代码；SGD 温度一段（模型越大越先天）。
+6. **What the corpus is about, not how it speaks：** 语料距离规律（每个尺寸、去混杂）；**E64：起作用的是实词分布（讲什么），不是虚词分布（怎么讲）——虚词在英文语料之间几乎不变，控制实词后没有额外作用**；自然语言 vs 代码；SGD 温度一段（模型越大越先天）。
 7. **Implications for NLP：**
    - 评测与可复现性：seed 匹配的比较；no lucky seeds；混合效应设计（呼应 ACL'25）；
    - 可解释性：结论按 seed 迁移；
@@ -49,14 +49,14 @@ Is anything in a language model innate? We answer with a natural experiment hidd
 ## 5. 贡献（ACL 风格，4 条）
 - **A natural experiment on what is innate in language models**: seeds × 25 corpora at 14 sizes and Pythia to 12B.
 - **Innate anatomy, acquired function**: head placement is inherited from the seed and identifies it; knowledge, timing, benchmarks and behaviour are learned; no lucky seeds.
-- **A critical period shaped by the language of the corpus**: the layout is fixed in the first 1–2.5% of training and shared across corpora in proportion to their word statistics; code re-draws it.
+- **A critical period shaped by what the corpus is about**: the layout is fixed in the first 1–2.5% of training and shared across corpora in proportion to their content-word statistics (not their function words); code re-draws it.
 - **A template habit learned from 1% of pretraining data**, with consequences for context-faithfulness evaluation.
 
 ## 6. 图（6 张）
 1. 钩子：(a) 25 个语料中最强头的分布（innate）；(b) “Question:” vs “Q:” vs “Query:” 的上下文采信（acquired）。
 2. 先天 / 后天地图。
 3. 关键期。
-4. 语料的语言：距离规律 + 虚词 / 实词 [E64]。
+4. 讲什么而非怎么讲：距离规律 + 实词 vs 虚词（E64）。
 5. “Question:” 习惯：跨尺寸、OLMo 2、出现时间。
 6. No lucky seeds。
 

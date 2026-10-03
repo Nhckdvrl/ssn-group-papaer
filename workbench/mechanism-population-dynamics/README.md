@@ -9,8 +9,9 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
-### 当前进展（2026-10-03 22:05）
-**一句话（论文叙事；对齐最新顶会的分析见 `experiments/A05`，英文大纲 `A03` v3，引言草稿 `A04`）：** *The seed picks the slot, the data fills it.* 语言模型里“哪个头承担哪个角色”由随机初始化决定，换掉整个预训练语料也不变，只看头的分工布局就能认出模型的 seed；模型表示什么、回路多强、何时出现、行为如何都由数据决定；算法与所在层是普适的。槽位在训练最初 1%–2.5% 的关键期内确定，之后成为吸引子；权重忘记了初始化（r = 0.04），解剖结构却记得。继承强度由语料的统计相似度与关键期内的 SGD 温度（学习率 / batch）决定；标准缩放配方随规模降温，所以模型越大越“先天”。
+### 当前进展（2026-10-04）
+**一句话：语言模型也有先天与后天。** 先天（seed）决定回路长在哪里——9 种头角色、14 个尺寸、2 个家族，数据原理上不能选择头，只看布局就能 98–100% 认出 seed，而权重只剩 0.04 的初始化相关（weights forget the seed, circuits remember it）；后天（数据）决定回路做什么、多强、何时出现、行为如何（no lucky seeds），1% 的指令数据就能写下一个由 “Question:” 触发的习惯；先天在训练最初 1–2.5% 的关键期写下；SGD 温度与语料讲的内容（实词，而非虚词）决定先天占多少，模型越大越先天。
+**两个投稿版本并行：** ICML / ICLR 版（`experiments/A03` v5、`A04` v4、`A06` v3；标题 *The Seed Picks the Slot, the Data Fills It*）与 ACL / EMNLP / NAACL 版（`experiments/A08`；标题 *Born to Copy, Taught to Trust: What Is Innate in a Language Model*）。叙事决策见 `A05`（对齐最新顶会）、`A07`（定稿与人的修正）。
 
 | 五条发现 + 应用 | 已完成的证据 | 进行中 |
 |---|---|---|
