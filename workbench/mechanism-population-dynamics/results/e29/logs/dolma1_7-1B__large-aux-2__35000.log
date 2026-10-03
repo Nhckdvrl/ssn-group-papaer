@@ -1,36 +1,9 @@
 Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
-Warning: Permanently added 'fvcrc13' (ED25519) to the list of known hosts.
-Traceback (most recent call last):
-  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e29_timecourse.py", line 95, in <module>
-    analyze() if a.analyze else compute(a.repo, a.seed, a.step)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e29_timecourse.py", line 24, in compute
-    model, tok = dd.load(repo, dd.rev(step, seed), dtype=torch.bfloat16)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/dd_common.py", line 71, in load
-    return model.to(device).eval(), tok
-           ^^^^^^^^^^^^^^^^
-  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/modeling_utils.py", line 4343, in to
-    return super().to(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1369, in to
-    return self._apply(convert)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
-    module._apply(fn)
-  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
-    module._apply(fn)
-  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
-    module._apply(fn)
-  [Previous line repeated 2 more times]
-  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 955, in _apply
-    param_applied = fn(param)
-                    ^^^^^^^^^
-  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in convert
-    return t.to(
-           ^^^^^
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 32.00 MiB. GPU 0 has a total capacity of 79.14 GiB of which 50.88 MiB is free. Process 3169019 has 72.08 GiB memory in use. Including non-PyTorch memory, this process has 822.00 MiB memory in use. Process 3183768 has 6.11 GiB memory in use. Of the allocated memory 388.51 MiB is allocated by PyTorch, and 19.49 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-Exception ignored in: <function ResourceTracker.__del__ at 0x145495d12de0>
+Warning: Permanently added 'fvcrc20' (ED25519) to the list of known hosts.
+Using the latest cached version of the dataset since gaotang/ParaConflict couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/xiang/.cache/huggingface/datasets/gaotang___para_conflict/default/0.0.0/d2b097583890081b26762e0caf4067eafff9bab4 (last modified on Fri Oct  2 17:52:29 2026).
+allenai/DataDecide-dolma1_7-1B large-aux-2 35000 n_known 1763 {'c1_decl': 4.61, 'c1_qa': 9.55} K 5.0
+Exception ignored in: <function ResourceTracker.__del__ at 0xdb6eed76ca0>
 Traceback (most recent call last):
   File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
   File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
