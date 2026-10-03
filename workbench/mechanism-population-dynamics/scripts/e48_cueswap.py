@@ -24,7 +24,7 @@ import mp_common as mc
 DATA = Path("/home/xiang/mechpop_cache/e46_data")
 OUT = mc.RESULTS / "e48"
 EOS = 50279
-SEQ, BS, MICRO, LR, WARM = 2048, 32, 4, 3e-4, 100
+SEQ, BS, MICRO, LR, WARM = 2048, 32, 16, 3e-4, 100  # MICRO 16 (2 sequences per micro-batch): memory only
 TOKENS = 200_000_000
 EVAL_AT = (0, 25_000_000, 50_000_000, 100_000_000, 200_000_000)
 P_FLAN = 0.10

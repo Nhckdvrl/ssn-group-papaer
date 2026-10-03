@@ -43,9 +43,9 @@ def main():
     R = load()
     fin = {n: r[max(r)] for n, r in R.items() if max(r) == 10000}
     HAS_IND.update(n for n, v in fin.items() if v["M1_max"] > 0.3)  # M1 comparisons only among runs with induction (E45 rule)
-    out["no_induction_runs"] = sorted(set(fin) - HAS_IND)
     out = {"n_runs": len(fin), "A": {}, "B": {}, "C": {}, "D": {}, "lockin": {}}
-    base = {n: parse(n) for n in fin if parse(n)[3] == "" and parse(n)[0] == parse(n)[2]}  # crossed runs (order = init)
+    out["no_induction_runs"] = sorted(set(fin) - HAS_IND)
+    base = {n: parse(n) for n in fin if parse(n)[3] == "" and parse(n)[0] == parse(n)[2] and "_std" not in n and "_lr" not in n}  # crossed runs (order = init)
     out["pc"] = {"M1max_final_min": min(v["M1_max"] for v in fin.values()), "gain_final_min": min(v["copy_gain"] for v in fin.values()),
                  "relM2_min": min(v["rel_M2"] for v in fin.values())}
     for m in MAPS:
