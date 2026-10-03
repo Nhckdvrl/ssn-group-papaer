@@ -9,6 +9,8 @@ import mp_common as mc
 
 D = mc.RESULTS / "e45"
 SIZES = ("4M", "6M", "8M", "10M", "14M", "16M", "20M", "60M", "90M", "150M", "300M", "530M", "750M", "1B@7500")
+# pre-registered exclusion (E45 card): its step0 shards differ from the other small-aux-2 1B models
+EXCLUDE = {("1B@7500", "fineweb-pro", "small-aux-2")}
 PARAMS = {"4M": 3.7e6, "6M": 6e6, "8M": 8.5e6, "10M": 9.9e6, "14M": 14.4e6, "16M": 16e6, "20M": 19.1e6, "60M": 57e6,
           "90M": 97.9e6, "150M": 151e6, "300M": 320e6, "530M": 530e6, "750M": 750e6, "1B@7500": 1.18e9}
 
@@ -22,7 +24,8 @@ def main():
     rng = np.random.default_rng(0)
     for size in SIZES:
         files = sorted(D.glob(f"{size}__*.json"))
-        M = {tuple(f.stem.split("__")[1:]): json.loads(f.read_text()) for f in files}
+        M = {tuple(f.stem.split("__")[1:]): json.loads(f.read_text()) for f in files
+             if (size, *f.stem.split("__")[1:]) not in EXCLUDE}
         recs = sorted({r for r, _ in M})
         seeds = sorted({s for _, s in M})
         recs = [r for r in recs if sum((r, s) in M for s in seeds) >= 2]
