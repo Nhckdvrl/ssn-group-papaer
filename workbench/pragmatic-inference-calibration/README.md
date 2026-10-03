@@ -48,7 +48,7 @@ source workbench/pragmatic-inference-calibration/scripts/env.sh
 "$PRAG_PYTHON" workbench/pragmatic-inference-calibration/scripts/summarize_sampling.py --root "$PRAG_ROOT" --output workbench/pragmatic-inference-calibration/results/E17-sampling-complete-summary.json
 ```
 
-具体参数/结果/失败见E01–E63。raw run禁止覆盖；旧thinking/BF16/target-padding失败原文件保留但隔离。2026-10-02用户授权PROPOSED驻留；没有升ACTIVE/候选或自动关闭territory。
+具体参数/结果/失败见E01–E64。raw run禁止覆盖；旧thinking/BF16/target-padding失败原文件保留但隔离。2026-10-02用户授权PROPOSED驻留；没有升ACTIVE/候选或自动关闭territory。
 
 E23–E25公开cache/浮点/顺序校对只属于测量修复。E26八卡全完成；E27三阶段完整tokenizer与BOS配对全部完成；E29八模型知识控制完成，部分入口/极性不能识别；E30有界数值校对；E28/E31强现代8B/14B全部完成；E32–34自然语料与期望矩阵完整；E36/37单句恢复控制完整；E35固定Mistral Base/Instruct完成资产/完整前缀预检八作业已完成；E38/E39原35200生成完成；E42截断校对完成；E43十端点5280calls完成；E45十独立作业800calls完成但五端点未过无歧义floor；E41配对14B25508完成；E46更强分目标1056完成；E47原人类source/norm核对完成；E48仅数学账户校对；E49/E50共15552原source联合role/readout读数完成、暂不升能力；E51完成dense四stage自然parent配对。任务视角仍是交际证据的条件使用，没有成熟论文claim。
 
@@ -62,4 +62,4 @@ E52强Q25自然配对4064完成：IQAP方向上升与人类四类Brier变差同�
 
 I01证据来源归因保持SEED：合理修复与无依据意图补全的边界，不能缩成单一prompt缺陷。E54/E56原材料全量审计，E55八端点12800完成，E57八端点23552生成全部完成、semantic controls/跨端点方向尚未共同识别；公开noise18句与正文30不符，前四类320critical固定，版本/控制/invalid边界保留。[数据规范](DATA_PROTOCOL.md) · [I01](ideas/I01-evidence-type-inference.md)。
 
-E59八卡7392完成，OLMo SFT→DPO三措辞Brier差+.313/.342/.377、CI均正，原1800行零差；无对话prior也变，不能归因能力。[图与全量结果](experiments/E59-interpretation-wording-stage.md)。E60原17280cache/752human核对，ELM动机/知识新parent驻留；E61八卡12576读数完成，人物评价/motive变化不统一，但motive支持质量不稳，未识别能力分离。E62原人类理由/人物评价4192行已审；E63八卡11040读数运行，以原14scene理由改变检查条件响应，单句/读取控制全保留。
+E59八卡7392完成，OLMo SFT→DPO三措辞Brier差+.313/.342/.377、CI均正，原1800行零差；无对话prior也变，不能归因能力。[图与全量结果](experiments/E59-interpretation-wording-stage.md)。E60原17280cache/752human核对，ELM动机/知识新parent驻留；E61八卡12576读数完成，人物评价/motive变化不统一，但motive支持质量不稳，未识别能力分离。E62原人类理由/人物评价4192行已审；E63八卡11040完成：人类体贴理由差+.55，OL三post-stage−.33至−.37、Mistral−.69、QwenInstr+.13；quote读取控制未共同可用，先E64八卡5520相同输入直接生成校对，不换prompt救排名。
