@@ -1,0 +1,200 @@
+{
+  "models": [
+    {
+      "id": "Qwen/Qwen2.5-14B",
+      "sha": "97e1e76335b7017d8f67c08a19d103c0504298c9"
+    },
+    {
+      "id": "Qwen/Qwen2.5-14B-Instruct",
+      "sha": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8"
+    },
+    {
+      "id": "mistralai/Mistral-7B-v0.3",
+      "sha": "caa1feb0e54d415e2df31207e5f4e273e33509b1"
+    },
+    {
+      "id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "sha": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+    },
+    {
+      "id": "allenai/OLMoE-1B-7B-0125-SFT",
+      "sha": "6f7a5b02aa069fdcb8d0cb6b837b9905a3d995d7"
+    },
+    {
+      "id": "Qwen/Qwen3-8B",
+      "sha": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    {
+      "id": "Qwen/Qwen3-14B",
+      "sha": "40c069824f4251a91eefaf281ebe4c544efd3e18"
+    },
+    {
+      "id": "Qwen/Qwen3-4B",
+      "sha": "1cfa9a7208912126459214e8b04321603b3df60c"
+    }
+  ],
+  "audits": {
+    "Qwen2.5-14B": {
+      "input_sha256": "44d7f64b5be940a87a878921224c34e80636fb12cb819ad05053809482202763",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 717,
+      "backend_sha256": "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c"
+    },
+    "Qwen2.5-14B-Instruct": {
+      "input_sha256": "44d7f64b5be940a87a878921224c34e80636fb12cb819ad05053809482202763",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 717,
+      "backend_sha256": "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c"
+    },
+    "Mistral-7B-v0.3": {
+      "input_sha256": "1f5f55f8aa93523cb46fb4d023e2a70df1eaa938a030acd8f1ebd1ef3db979b4",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 830,
+      "backend_sha256": "6a29b21cd60345826c6fa6c3346879b89263f09ecece51117f832e1e879c2783"
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "input_sha256": "1f5f55f8aa93523cb46fb4d023e2a70df1eaa938a030acd8f1ebd1ef3db979b4",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 830,
+      "backend_sha256": "6a29b21cd60345826c6fa6c3346879b89263f09ecece51117f832e1e879c2783"
+    },
+    "OLMoE-1B-7B-0125-SFT": {
+      "input_sha256": "268ea820b1b2926b6ddfc80515edb40991b9cc9f17f8d6dd21ae4e0631f5963d",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 775,
+      "backend_sha256": "51103f4d3c1c230ce9816b9b59e7815f80f4ea3114e4b78faf75b84d2dc6197c"
+    },
+    "Qwen3-8B": {
+      "input_sha256": "9bdcb48f35c9283e9d07a95c5fcd621d0bceffbad331f3dd5c23f110371c55cc",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 700,
+      "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794"
+    },
+    "Qwen3-14B": {
+      "input_sha256": "9bdcb48f35c9283e9d07a95c5fcd621d0bceffbad331f3dd5c23f110371c55cc",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 700,
+      "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794"
+    },
+    "Qwen3-4B": {
+      "input_sha256": "9bdcb48f35c9283e9d07a95c5fcd621d0bceffbad331f3dd5c23f110371c55cc",
+      "source_audit": {
+        "source_file": "/data1/xiangding/work/pragmatic-inference-calibration/data/E56-original-exposure-materials.json",
+        "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+        "n_critical": 320,
+        "n_unique_critical_item_clusters": 80,
+        "n_control_variants": 48,
+        "n_control_items": 12,
+        "n_filler_slots": 48,
+        "n_changed_filler_slots": 18,
+        "seeds": [
+          20261003,
+          20261004
+        ],
+        "n": 2944
+      },
+      "max_tokens": 700,
+      "backend_sha256": "a63080b4b30dc861fe1b0e420c53a241304dc81aff3d9bb315e6e33e2a1ab794"
+    }
+  },
+  "helper_sha256": "479627defc35721b2c52b6e5c5d7c95c6de59ea95416750c6c62dee33a6302e2",
+  "gate_pass": true
+}
