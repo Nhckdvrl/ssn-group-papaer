@@ -20,6 +20,13 @@ def load():
     return R
 
 
+def ok(m, *names):
+    return m != "M1" or all(n in HAS_IND for n in names)
+
+
+HAS_IND = set()
+
+
 def sim(a, b, m):
     A, B = np.array(a[m]), np.array(b[m])
     full = spearmanr(A.ravel(), B.ravel())[0]
@@ -35,6 +42,8 @@ def parse(name):
 def main():
     R = load()
     fin = {n: r[max(r)] for n, r in R.items() if max(r) == 10000}
+    HAS_IND.update(n for n, v in fin.items() if v["M1_max"] > 0.3)  # M1 comparisons only among runs with induction (E45 rule)
+    out["no_induction_runs"] = sorted(set(fin) - HAS_IND)
     out = {"n_runs": len(fin), "A": {}, "B": {}, "C": {}, "D": {}, "lockin": {}}
     base = {n: parse(n) for n in fin if parse(n)[3] == "" and parse(n)[0] == parse(n)[2]}  # crossed runs (order = init)
     out["pc"] = {"M1max_final_min": min(v["M1_max"] for v in fin.values()), "gain_final_min": min(v["copy_gain"] for v in fin.values()),
@@ -42,6 +51,8 @@ def main():
     for m in MAPS:
         g = {"SI": [], "SD": [], "DD": []}
         for a, b in itertools.combinations(base, 2):
+            if not ok(m, a, b):
+                continue
             (ia, ca, _, _), (ib, cb, _, _) = base[a], base[b]
             c = "SI" if ia == ib else "SD" if ca == cb else "DD"
             g[c].append(sim(fin[a], fin[b], m))
@@ -60,6 +71,8 @@ def main():
                 perm.update({n: i for n, i in zip(ns, inits)})
             gg = {"SI": [], "SD": []}
             for a, b in itertools.combinations(names, 2):
+                if not ok(m, a, b):
+                    continue
                 c = "SI" if perm[a] == perm[b] else "SD" if base[a][1] == base[b][1] else None
                 if c:
                     gg[c].append(sim(fin[a], fin[b], m)[0])
@@ -77,10 +90,10 @@ def main():
         key = "B" if (o != i and not tail) else "C" if (tail.startswith("_eps") or tail.startswith("_rerun")) else "D" if tail.startswith("_b") else None
         if not key:
             continue
-        out[key][n] = {m: sim(v, fin[ref], m) for m in MAPS}
+        out[key][n] = {m: sim(v, fin[ref], m) for m in MAPS if ok(m, n, ref)}
     # lock-in curves: each crossed run's map at step t vs its own final
     for n in base:
-        out["lockin"][n] = {t: {m: sim(R[n][t], fin[n], m)[0] for m in MAPS} for t in sorted(R[n]) if t > 0}
+        out["lockin"][n] = {t: {m: sim(R[n][t], fin[n], m)[0] for m in MAPS if ok(m, n)} for t in sorted(R[n]) if t > 0}
     (D / "analysis.json").write_text(json.dumps(out, indent=1))
     print("runs", out["n_runs"], "pc", out["pc"])
     for m in MAPS:
@@ -88,7 +101,7 @@ def main():
               "SI-SD", round(out["A"][m].get("SI_minus_SD", float("nan")), 3), "p", out["A"][m].get("perm_p"))
     for k in ("B", "C", "D"):
         for n, v in sorted(out[k].items()):
-            print(k, n, {m: tuple(round(x, 3) for x in v[m]) for m in MAPS})
+            print(k, n, {m: tuple(round(x, 3) for x in v[m]) for m in v})
 
 
 if __name__ == "__main__":
