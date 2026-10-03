@@ -357,8 +357,33 @@ def fig_lockin():
     fig.savefig(OUT / "fig_lockin.png", dpi=160)
 
 
+def fig_development_e57():
+    """E57: same-seed within-layer similarity (mean of M1/M2/M4) at the earliest shared checkpoint vs the final step,
+    per size, plus seed-identification accuracy at both (E61 early)."""
+    d = json.loads((R / "e57" / "analysis.json").read_text())
+    params = {"10M": 9.9e6, "20M": 19.1e6, "60M": 57e6, "150M": 151e6, "300M": 320e6, "750M": 750e6}
+    fig, ax = plt.subplots(figsize=(5.4, 3.4))
+    for size, p in params.items():
+        cells = {k: v for k, v in d.items() if k.startswith(size + "@")}
+        if not cells:
+            continue
+        val = lambda v: np.nanmean([v[m]["SI"] for m in ("M1", "M2", "M4") if v.get(m)])
+        early = min(cells, key=lambda k: cells[k]["frac"])
+        final = max(cells, key=lambda k: cells[k]["frac"])
+        ax.plot([p, p], [val(cells[early]), val(cells[final])], "-", color="#bbbbbb", zorder=1)
+        ax.scatter([p], [val(cells[early])], color="#55A868", zorder=2, label="earliest checkpoint (4–9%)" if size == "10M" else None)
+        ax.scatter([p], [val(cells[final])], color="#1b6ca8", marker="s", zorder=2, label="end of training" if size == "10M" else None)
+    ax.set_xscale("log")
+    ax.set_xlabel("parameters")
+    ax.set_ylabel("same-seed which-head similarity")
+    ax.legend(fontsize=7, frameon=False)
+    ax.set_title("the scale effect is present from the earliest checkpoint", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_development_e57.png", dpi=160)
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
-    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance, fig_scale_v2, fig_lockin):
+    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance, fig_scale_v2, fig_lockin, fig_development_e57):
         fn()
     print(sorted(p.name for p in OUT.glob("*.png")))
