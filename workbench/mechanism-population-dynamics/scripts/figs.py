@@ -188,8 +188,92 @@ def fig_critical_period():
     fig.savefig(OUT / "fig_critical_period_e46.png", dpi=160)
 
 
+def fig_hook():
+    """Fig 1: for each seed (rows) and role (columns), how often each head of the role's main layer is the layer's strongest
+    head across all 25 corpora of the 1B crossing (E35). Chance = 1/16. Role layer = the population's strongest layer."""
+    import glob
+    seeds = ["default", "large-aux-2", "large-aux-3"]
+    roles = (("M2", "previous-token"), ("M1", "induction"), ("M4", "retrieval"))
+    fig, axes = plt.subplots(3, 3, figsize=(11, 5.6), sharex=True, sharey=True)
+    for j, (m, name) in enumerate(roles):
+        allmaps = {s: [np.array(json.loads(open(f).read())["maps"][m])
+                       for f in sorted(glob.glob(str(mc.RESULTS / "e35" / f"*-1B__{s}.json"))) if "step" not in f] for s in seeds}
+        layer = int(np.argmax(np.mean([a.max(1) for v in allmaps.values() for a in v], 0)))
+        for i, s in enumerate(seeds):
+            top = np.bincount([int(a[layer].argmax()) for a in allmaps[s]], minlength=16) / len(allmaps[s])
+            ax = axes[i, j]
+            ax.bar(range(16), top, color=["#DD8452" if t == top.max() else "#9a9a9a" for t in top])
+            ax.axhline(1 / 16, color="k", ls=":", lw=1)
+            if i == 0:
+                ax.set_title(f"{name} heads (layer {layer})", fontsize=9)
+            if j == 0:
+                ax.set_ylabel(f"seed {i + 1}\nshare of corpora", fontsize=8)
+            if i == 2:
+                ax.set_xlabel("head index", fontsize=8)
+            ax.set_xticks(range(0, 16, 3))
+    fig.suptitle("Which head is the strongest, across 25 pretraining corpora (1B; dotted line = chance)", fontsize=10)
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_hook_1b_prevtoken.png", dpi=160)
+
+
+def fig_corpus_distance():
+    """E60: (a) 1B, 300 recipe pairs: unigram JS vs same-seed within-layer similarity (mean of M1/M2/M4), source-disjoint
+    pairs highlighted; (b) Spearman rho by size (all pairs and source-disjoint pairs)."""
+    import glob
+    from fastsim import within_matrix
+    d = json.loads((mc.RESULTS / "e60" / "recipe_distance.json").read_text())
+    dist = {tuple(sorted(k.split("|"))): v["js_uni"] for k, v in d["pairs"].items()}
+    fs = [f for f in sorted(glob.glob(str(mc.RESULTS / "e35" / "*-1B__*.json"))) if "step" not in f]
+    keys = [tuple(f.split("/")[-1][:-5].split("-1B__")) for f in fs]
+    J = [json.loads(open(f).read()) for f in fs]
+    S = np.nanmean(np.stack([within_matrix([j["maps"][m] for j in J]) for m in ("M1", "M2", "M4")]), 0)
+    acc = {}
+    for a in range(len(keys)):
+        for b in range(a + 1, len(keys)):
+            if keys[a][1] == keys[b][1] and keys[a][0] != keys[b][0]:
+                acc.setdefault(tuple(sorted((keys[a][0], keys[b][0]))), []).append(S[a, b])
+    dc = json.loads((mc.RESULTS / "e60" / "disjoint_control.json").read_text())
+    import collections, sys
+    sys.path.insert(0, "/home/xiang/mechpop_cache/datadecide")
+    import named_data_mixes as ndm
+    from e23_corpus_stats import RECIPES, sizes
+    sz = sizes()
+    W = {}
+    for name, key in RECIPES.items():
+        g = collections.defaultdict(float)
+        for p in ndm.DATA_PATHS[key]:
+            g[p.rsplit("/", 1)[0]] += sz.get(p, 0) or 0
+        t = sum(g.values())
+        W[name] = {k: v / t for k, v in g.items()}
+    ov = lambda a, b: sum(min(W[a].get(k, 0), W[b].get(k, 0)) for k in set(W[a]) | set(W[b]))
+    fig, axes = plt.subplots(1, 2, figsize=(10.5, 3.8), gridspec_kw={"width_ratios": [1.3, 1]})
+    ax = axes[0]
+    pts = [(dist[p], np.mean(v), ov(*p) < 1e-9) for p, v in acc.items() if p in dist]
+    for dis, col, lab in ((True, "#4C72B0", "no shared sources"), (False, "#c0c0c0", "shared sources")):
+        x = [p[0] for p in pts if p[2] == dis]; y = [p[1] for p in pts if p[2] == dis]
+        ax.scatter(x, y, s=10, color=col, label=lab, alpha=0.8)
+    ax.set_xscale("log")
+    ax.set_xlabel("corpus distance (unigram Jensen–Shannon)")
+    ax.set_ylabel("same-seed head-role similarity")
+    ax.set_title("1B: 300 corpus pairs × 3 seeds", fontsize=9)
+    ax.legend(fontsize=7)
+    ax = axes[1]
+    order = ["90M", "150M", "300M", "530M", "750M", "1B@7500"]
+    params = [97.9e6, 151e6, 320e6, 530e6, 750e6, 1.18e9]
+    for m, mk in (("M1", "o"), ("M2", "s"), ("M4", "^")):
+        ax.plot(params, [-dc[s][m]["disjoint"][0] for s in order], mk + "-", label=f"{dict(M1='induction', M2='prev-token', M4='retrieval')[m]}")
+    ax.set_xscale("log")
+    ax.set_xlabel("parameters")
+    ax.set_ylabel("−Spearman(distance, inheritance)\n(source-disjoint pairs)")
+    ax.set_ylim(0, 1)
+    ax.legend(fontsize=7)
+    ax.set_title("stronger at larger scale (E45 recipe sets)", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_corpus_distance_e60.png", dpi=160)
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
-    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period):
+    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance):
         fn()
     print(sorted(p.name for p in OUT.glob("*.png")))
