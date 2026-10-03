@@ -1,6 +1,6 @@
 # E64：E63同输入直接生成与引用控制校对（2026-10-03）
 
-- **状态：RUNNING。** 本卡先于CPU/GPU；不是第三prompt，也不改变E63 primary。
+- **状态：VOID。** 用户2026-10-03要求清理额外扩展，停止剩余计算；未完成全八模型协议，不能作阶段比较。原已产生数据和技术审计保留，不改变E63 primary。
 - **类型：REPRO / D2技术与读数审计。** C02/P02/I01；尚未注册E63机制主张。
 - **问题：** E63人物评价对知识理由的反向响应出现在实际生成中吗？低引用控制正确率，是完整候选限制/结束符造成的读数问题，还是相同提问下确实回答错误？
 - **设置：** 八模型完整E63 source/plan/raw固定；只使用原已跑common-chat所有行，原/单句指令均保留，不选正确项。每模型672 natural＋18 reference-copy=690，8共5520。没有更换问题、reason、候选、human norm或改scene。
@@ -14,3 +14,15 @@
 
 ## 结果
 待CPU/generation gate与全量完成。E63共11040已完成、2.90012GPU·时；256数值/source/概率算术门控通过。原human Ina−Unw体贴+.5497 CI[.2924,.7988]，OL SFT/DPO/最终−.3629/−.3338/−.3659（各CI负）、Mistral−.6885，QwenInstr+.1284。引用原chat OL三stage约.50–.52、QwenInstr.5536，因此没有“成功读取却误用”结论，先本审计。
+
+
+### 阶段性校对（POST-HOC格式审计，2026-10-03）
+五post-stage690各完整、三Base尚未齐；不选择完成模型作stage排名。[阶段性全状态/原与无损parse结果](../results/E64-interim-generation-audit.json)。OL SFT/DPO/最终原体贴56/56有效，生成Ina−Unw差−.7857 CI[−1.25,−.3571]/−.5714[−1.0357,−.1786]/−.6429[−1.0714,−.2857]，Mistral−.6071[−1,−.25]。反向不只是restricted likelihood读数，但不能作为原许可boundary主张。
+
+runner错误：Qwen source完整terminal包含im_end+newline，使用最后newline作stop，保留的正文含im_end导致原parser全部invalid。原输入/raw/primary不覆盖；secondary仅在生成tokens完整匹配source terminal suffix时剥离精确suffix，不能语义改写/推断标签。QwenInstr原体贴56/56恢复、差+.0714 CI[−.0714,.25]；quote .5536。不能将原invalid作模型能力证据，不能称已经精确native EOS复现。生成first-step全16/model数值gate通过，不保证终止/构念正确。
+
+Mistral部分quote说明把opening statement理解为整个对话开头，出现“他确实说过，但不是initial statement”的解释；引用控制的语义有效性不足。依决策B停止此probe的prompt优化，回源规范，不继续扩社会评价。用户原提示词重读后，该分支只收尾，不替代主territory。
+
+### 用户授权清理后的终止记录
+
+停止队列及经命令行/uid核对的两Base子进程，没有杀其他用户作业。六模型690条完整；OLMo Base488/690、Qwen Base398/690。全量已有5026/5520条JSON有效，输出不覆盖；[停止快照与hash](../results/E64-stop-snapshot.json)。这是停止额外分支，不是按结果筛幸存模型；不继续剩余计算、不做完整stage排名、不升科学主张。上述“五post-stage/三Base未齐”为较早快照。

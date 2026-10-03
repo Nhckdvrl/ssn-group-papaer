@@ -39,3 +39,6 @@
 - P20（E57）：Base chat严格EOS yes/no近全invalid；强Instr无歧义control较好、critical plausible仍有理解/任务规范差异。技术gate通过不能替代source语义有效性；E58区分event角色与世界蕴含，不把No直接当反命题蕴含，不能直接从本source产出SDT gold。
 
 - P05/P02：E58SpaceBunny20官方free响应全cost0，18技术valid，但4角色分歧且有明确role reason错误。工具deny导致官方free误拒绝的路径已分离，rate limit单独记录；candidate审计辅助发现风险，不得自动升为gold。原人工规范/逐条语义校对仍必要。
+
+- P21（E64）：Qwen聊天tail=im_end+newline，runner误以最后newline作EOS，primary正文保留im_end而全invalid；原raw/primary保留，POST-HOC精确token suffix剥离恢复固定候选，不作模型改善。first-step数值gate不能检验终止协议。
+- P22（E63/E64）：opening statement引用probe有对话开头/该说者首句歧义，低正确不能叫semantic inability；社会印象不提供具体含义许可。主执行漂移需回原boundary，不继续恢复此probe或扩矩阵。

@@ -1,27 +1,15 @@
 # 论文形态卡 — 2026-10-03
 
-- **一句话未知：** 语用理解进步中，哪些是更会区分语境，哪些是更倾向补充言外之意？
-- **形态：** 重新归因 / 跨现象finding / 测量工作均为可能，尚未选择。
-- **manuscript-critical contributions：** ❌ 当前为零。parent复现、解析修复、SDT、generic response bias不能单独成为贡献。
-- **摘要主张：** 无。C01/C02是驻留问题，不是paper claim。
-- **图表：** E01资产、E02/E06/E10格式/预算、E03/E17分布、E04/E13/E18公开结果匹配、E19/E20知识条件与readout、E21–E28原更新/stage/数值边界，均为instrument证据。
-- **基线：** Hu原Flan-T5-XL已逐项复现；Wavelength FP32/关闭thinking与3模型sampling完成；Multi原Qwen1.5-14B完成；TACL2023 BERT/GPT2 string复现；EPITOME原SI评分与partial IR资产核对；ImplicatureX七模型/19源cache完成，Qwen matched stages已测。
-- **证据标准：** 许可和选项类型可靠；ROC/连续score与单操作点分开；跨≥2家族与≥2现象边界；item/pair cluster CI；stage比较用真实连续Base/SFT/DPO checkpoints。难度、标签、prompt/chat模板/解码/格式先审计。
-- **近邻：** ALTPRAG拥有stage/free-form gains；PaCE拥有context flip/over-inference；DRInQ拥有人类语境许可与过强解释；CIS拥有表征偏移与item差异；generic SDT拥有sensitivity/bias分解。[定位](POSITIONING.md)
-- **compression risk：** 高。另一metric说明bias、模型更强但脑补均不足；能否改变已有结论尚无证据。
-- **停止损失：** 三轮逐步加限制或accuracy与辨别读数同排序且无边界，提议人审转向；不自动关线。
-- **目标：** ACL/EMNLP/NAACL主会；无截稿绑定、无周计划。
-- **决定：** 用户授权D1/D2；继续核对仪器，升线/科学产出判断待人。
+- **一句话未知：** 模型何时超越字面、何时停住？语用进步是更会区分语境，还是更倾向补充言外之意？
+- **形态：** 重新归因 / 跨现象finding / 测量工作为可能，尚未选择。
+- **摘要主张：** 无；成熟贡献为零。SDT、baseline复现、解析修复、generic response bias不能单独成为贡献。
+- **当前证据：** C01/C02为L0驻留问题；C03为E51/E59措辞稳健的L1任务观察，未识别语用能力或推断倾向。
+- **主要缺口：** 同一表达、同一候选含义在支持／不支持语境下的可信规范；现有三parent不能自动提供。
+- **识别要求：** 自然语境、具体q与强度固定、规范可靠、两侧难度与标签/措辞shortcut审查。stage用真实连续checkpoint；读数、格式、literal理解分别控制。配对/场景cluster CI，保留全部无效与争议项。
+- **证据尺度：** pilot只确定可测性；论文需要独立自然材料和多模型的可迁移结构，数量按方差/目标精度设计。多现象共享criterion不能预先假定。
+- **近邻：** ALTPRAG拥有stage gains；PaCE拥有over-inference/context flip；DRInQ拥有context-sensitive interpretation；generic SDT拥有sensitivity/bias分解。增量须改变科学归因或揭示值得知道的稳定边界，见[POSITIONING](POSITIONING.md)。
+- **停止损失：** 有效测量后若只剩强模型全面更好、不断加限定才成立，或数据识别仍不可行，提议人审；当前尚未完成核心检验。
+- **清理决定：** 用户要求清除额外扩展；社会评价、角色与noise repair退出当前实验计划。I01 PARKED，不继续为它找材料或铺卡。已有结果保留审计，不因不合主线删掉负结果。
+- **目标与状态：** ACL/EMNLP/NAACL主会；PROPOSED不变，无摘要story、无截稿倒排。
 
-**本轮扩展：** 最有信息量的未知目前是“不同交际证据怎样共同调节具体推断”，而非保住global criterion。EPITOME拥有mental-state使用缺口，ImplicatureX拥有撤回与prior控制，ICLR2026拥有目标权重。S1/S2/S3只是动作种子；必须有自然条件结构或对已有结论的实质重新归因才可能成为论文。宽泛知道不用/不会更新/格式偏差都不足。八卡只跑问题明确的独立实验；权重下载等待不称实验。
-
-**增量约束更新：** CoNLL2021已拆同题辨别与默认偏好；ACL2026 accommodation已有纠错/误报与QUD/source；Social Meaning2026已拆方向/强度。当前仍0成熟贡献，数据规范/入口/真实stage检查后才决定科学对象，不将数值或tokenizer bug卖成语用发现。
-
-
-**E28/E31–37更新：** 强现代端点已补齐，两组原human自然材料、八端点与同question配对完成；强方向成功例和readout混杂共同出现。balanced strict提升强側而损伤弱侧，不保“恢复=能力”故事。第三family Mistral原Hu/取消/自然强度八slot在跑。本局部位置/措辞分支不再加救分实验，保持0成熟贡献；下一对象必须对具体交际证据如何改变推断有实质解释、可跨材料验证，不能只描述prompt变分数。
-
-
-**深读更新：** 前人最强动作是改变可区分的前提：Mayn拆自己的推理与对partner能力信念，Weak Evidence用选择机制解释旧反转，NMI/Confidence-Commitment拆报告含义与后续行为，Roleplay用真假×角色endorsed控制浅行为与内部改变。generic“一个能力分不够”“知道不用”“criterion移动”都已有ownership。当前候选未知是表达选择预测能否约束具体听者解释及不同社会判断；E49仍为parent驻留，不注册结果方向。E45 task floor失败、E41支持质量、E46基础理解限制均保留。不能把一个reference task不一致缩成paper，需独立自然来源的可迁移条件解释；贡献仍0。
-
-
-**新的正面对象（I01 SEED，未定claim）：** 模型如何归因交际证据来决定合理修复与意图补全的边界？若跨自然材料与训练谱系出现来源特有的条件关系，或现有训练增益因此得到不同解释，才有论文尺度。成功的证据使用也值得解释。这个目标保持领域宽度；E55/E57不是把问题缩到四个句法现象，也不能将原生人类式noise repair当首次发现。数据自然性、独立scene数量与norm可靠性见DATA_PROTOCOL；当前贡献仍0。
+[原提示词对照](logs/review-2026-10-03.md) · [当前研究判断](FIELD_SYNTHESIS.md) · [数据准入](DATA_PROTOCOL.md)

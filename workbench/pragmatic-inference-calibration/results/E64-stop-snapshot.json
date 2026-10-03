@@ -1,0 +1,97 @@
+{
+  "time": "2026-10-03T08:22:22.170323+00:00",
+  "reason": "用户授权清理额外扩展；社会评价分支停止追加计算，原始输出保留。不是按模型结果筛选，也不作阶段排名。",
+  "stopped_processes": [
+    {
+      "pid": 2906593,
+      "command": "/data1/xiangding/env/pragmatic-inference-calibration/bin/python -u workbench/pragmatic-inference-calibration/scripts/run_violation_generation_queue.py",
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 2907259,
+      "command": "/data1/xiangding/env/pragmatic-inference-calibration/bin/python workbench/pragmatic-inference-calibration/scripts/run_violation_generation.py --root /data1/xiangding/work/pragmatic-inference-calibration --model /data1/xiangding/work/pragmatic-inference-calibration/models/OLMo-2-1124-13B --model-id allenai/OLMo-2-1124-13B --revision 3fefddc1bf18a30e1d9b91000271630718f2aa8b --output /data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-OLMo-2-1124-13B",
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 2907261,
+      "command": "/data1/xiangding/env/pragmatic-inference-calibration/bin/python workbench/pragmatic-inference-calibration/scripts/run_violation_generation.py --root /data1/xiangding/work/pragmatic-inference-calibration --model /data1/xiangding/work/pragmatic-inference-calibration/models/Qwen2.5-14B --model-id Qwen/Qwen2.5-14B --revision 97e1e76335b7017d8f67c08a19d103c0504298c9 --output /data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-Qwen2.5-14B",
+      "signal": "SIGTERM"
+    }
+  ],
+  "runs": [
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-Mistral-7B-Instruct-v0.3",
+      "rows": 690,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": true,
+      "raw_sha256": "2dd57a8070719f4b255eb311b6a45e29075560518fb909dcaaf51956203bba2b",
+      "summary_exists": false
+    },
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-Mistral-7B-v0.3",
+      "rows": 690,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": true,
+      "raw_sha256": "0bd5ae20f94a9df2844873eaad842e0ad34a58bc79a747466023acdc6449e338",
+      "summary_exists": false
+    },
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-OLMo-2-1124-13B",
+      "rows": 488,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": false,
+      "raw_sha256": "bfa00e859de55bcc2f425eda5031e33d8fb834840f71b9f5ee9cea40ee33292a",
+      "summary_exists": false
+    },
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-OLMo-2-1124-13B-DPO",
+      "rows": 690,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": true,
+      "raw_sha256": "f7a0988b2665dadf5a55063ecd9196f71cf447dc352dde188ef83d1ea9752d2e",
+      "summary_exists": false
+    },
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-OLMo-2-1124-13B-Instruct",
+      "rows": 690,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": true,
+      "raw_sha256": "f040fb4436c0db06d6f3df426d90d668a510af7b4c7879559199e365e1d1fb41",
+      "summary_exists": false
+    },
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-OLMo-2-1124-13B-SFT",
+      "rows": 690,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": true,
+      "raw_sha256": "2d96d97aefd98560c838955f857050271e7114e26a6ead91963a6db892e69dac",
+      "summary_exists": false
+    },
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-Qwen2.5-14B",
+      "rows": 398,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": false,
+      "raw_sha256": "001406338b935d150f6585988d568e8251050f21599e465aa74520d7ce16b214",
+      "summary_exists": false
+    },
+    {
+      "run": "/data1/xiangding/work/pragmatic-inference-calibration/runs/E64-violation-generation-Qwen2.5-14B-Instruct",
+      "rows": 690,
+      "invalid_json_lines": 0,
+      "expected_rows": 690,
+      "complete": true,
+      "raw_sha256": "beeea1075a90d284e16945fea8f1717813a17efc1cd4946384a7b94fd47cb21c",
+      "summary_exists": false
+    }
+  ],
+  "raw_preserved": true,
+  "scientific_claim_upgrade": false
+}
