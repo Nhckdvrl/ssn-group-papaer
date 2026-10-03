@@ -18,7 +18,7 @@
 ## 保留资产
 
 - 环境：`/data1/xiangding/env/pragmatic-inference-calibration`（约5.7GiB），未卸载或更改依赖；[锁文件](requirements.lock.txt)、[入口](scripts/env.sh)。
-- 模型：`/data1/xiangding/work/pragmatic-inference-calibration/models`（约362GiB），路径不变，922项文件/目录元数据核对未变；原completion/revision markers与模型清单保留。
+- 模型：已按用户后续明确指令删除`/data1/xiangding/work/pragmatic-inference-calibration/models`下20个模型目录和9个关联清单文件，约361GiB；不再占用本地磁盘。
 - 辅助环境包：同资产根目录的`pdf-tools`、`download-tools`，合计约20MiB。
 - 安装好的OpenCode及用户配置未动；[下载代理规则](NETWORK.md)和[直连wrapper](scripts/direct_download.sh)保留，不启动下载。
 - 已删除：实验raw/OOF、任务数据与标注、上游code/data副本、论文PDF/TXT、图片、队列/日志/安装记录，以及旧实验runner与本仓库缓存。知识库论文卡保留。
