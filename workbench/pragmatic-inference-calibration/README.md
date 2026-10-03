@@ -12,7 +12,7 @@
 3. **Wavelength FP32、关闭thinking与数值校对已完成。** Qwen2.5-3B / Qwen3-4B / 原14B 的原似然MAE为24.353 /16.406 /18.721；E28 Qwen3-8B/14B为14.435/16.113、两者差CI含零；human MAE=7.226。每模型另有3,200采样回答；采样均值相对原似然MAE差的三组pair-cluster CI均含零。[E17](results/E17-sampling-complete-summary.json) 强现代32B上限仍未跑，不据此称强模型能力不足。
 4. **仍不能报告Hit/FPR/d′。** Multi缺候选级推断类别，Hu no-story不是unlicensed，Wavelength是graded判断。25条试标许可分歧9/25、选项分歧61/125；未经gold审查的草案不使用。[E11 human norm](results/E11-human-norm-audit.json)
 5. **研究对象须比全局“爱脑补”更精确。** EPITOME已研究知识识别与语用使用；部分知识也能支持排除某个候选。不能把所有partial-access叫negative，也不能把数词的literal信息更新当pragmatic inference。[领域判断](FIELD_SYNTHESIS.md)
-6. **尚无成熟scientific finding。** 格式、位置、数值精度、原资产缺失都先归仪器/混杂；C01/C02仍L0，贡献=0。
+6. **有可重复观察，尚无成熟scientific finding。** C03/L1登记OLMo2 SFT→DPO在IQAP三表述下的human Brier差+.313/.342/.377（CI均正）；prior同步变化，能力/机制未识别。格式、位置、数值与原资产缺失归仪器/混杂；C01/C02仍L0，成熟贡献=0。
 
 ## 驻留交付与当前实验
 
