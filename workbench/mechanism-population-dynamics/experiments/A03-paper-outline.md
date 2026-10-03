@@ -33,7 +33,7 @@ Where do a language model's circuits come from? We separate nature from nurture 
 ## 4. The data fills it
 - 4.1 Strength (E35) and timing (E54: induction onset — corpus 0.81, seed 0.00; previous-token onset universal). Consistent with MDA: data modulates the emergence rate of heads.
 - 4.2 Behaviour: knowledge-conflict behaviour (E36, 0 / 12 seed effects), 11 benchmarks × 14 sizes (E51): no lucky seeds; seed variance is entirely seed × data interaction.
-- 4.3 A switch installed by 1% of the data (C04): factorial, cue dissection, development, OLMo 2 mid-training, three datasets, 60M–1B; template-swap continued pretraining [P: E48b].
+- 4.3 A switch installed by 1% of the data (C04): factorial, cue dissection, development, OLMo 2 mid-training, three datasets, 60M–1B; acquired in pretraining, not by continued pretraining at matched dose (E48 / E48b: +0.04 ± 0.04).
 - 4.4 Where the switch lives: distributed, not seed-placed (E50) — late, data-installed functions are hosted flexibly.
 
 ## 5. A critical period, then an attractor
