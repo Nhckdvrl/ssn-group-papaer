@@ -1,9 +1,17 @@
 # Pragmatic Inference — parent residency
 
-更新2026-10-03。已建立47篇论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
+更新2026-10-03。已建立55篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
 
 | 论文 / 阅读卡 | 证据范围 |
 |---|---|
+| [Cached verbal confidence / ICML2026](verbal-confidence-2026.md) | 正文全文、关键方法与limits；其余补充/代码未审 |
+| [Different pragmatic levels / EMNLP2024 main](pragmatic-levels-2024.md) | 正文全文、表与方程；原图/代码未审 |
+| [Speaker reasoning ability / Open Mind2025](speaker-reasoning-2025.md) | 正文与附录A–E全文、原models.R；E47描述norm复现 |
+| [Weak evidence / Open Mind2022](weak-evidence-2022.md) | 最终正文全文、关键代码；补充与最终raw filter未取得 |
+| [Confidence versus commit-readiness / arXiv2026](confidence-commitment-2026.md) | 核心论证/方法/关键结果/讨论/Fig9；E48仅账户数学审计 |
+| [Confidence drives behavior / NMI2026](confidence-behavior-2026.md) | 公开v3正文主线与Methods；补充/代码未核对 |
+| [Role-play versus belief / arXiv2026](roleplay-belief-2026.md) | 正文主要理论/方法/结果/limits；附录/代码未核对 |
+| [Strategic Dialogue Assessment / D&D2026](strategic-dialogue-2026.md) | 引言/§4/§8–10；其余正文/附录未读 |
 | [Human pragmatic components / PNAS2025](pragmatics-components-2025.md) | 正文全文；SI未读，Hu来源非独立 |
 | [BWIM / arXiv2026](bwim-2026.md) | 19页全文/附录A–C/关键code；本地confidence pilot |
 | [Listener adaptation / RAILS2025](listener-adaptation-2025.md) | 两页会议摘要全文；不是完整期刊论文 |
