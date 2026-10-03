@@ -97,3 +97,34 @@
 | Context-Parametric Inversion（ICLR 2025 Oral） | 指令微调中上下文依赖先升后降 | 同上；我们看的是预训练数据中的极小切片 | 低到中 |
 | MI as Statistical Estimation（ICML 2026） | 因果中介分数方差大，电路发现不稳定 | 我们把方差分解为初始化 / 数据 / 交互；E42 单头因果图的噪声与之一致（引用作为解释） | 低 |
 | SAEs trained on the same data learn different features（ICLR 2026） | SAE 的 seed 方差 | 正交（我们看模型的 seed，不看 SAE 的 seed） | 低 |
+
+## 8. 叙事尺度校准：同类论文怎样用有限证据陈述大命题（2026-10-03 21:10；人的指示：不要为严谨过度收窄）
+| 论文 | 标题 / 摘要中的命题 | 实际证据范围 | 不完美的部分怎么写 |
+|---|---|---|---|
+| Achille et al.（ICLR 2019） | “Similar to humans and animals, deep artificial neural networks exhibit critical periods” | CIFAR-10 上的 All-CNN / ResNet-18，一种主缺陷（模糊） | 不起作用的缺陷（翻转）写成发现的一部分：“不影响低层统计的缺陷没有持久影响”；用 Fisher 信息给机制解释 |
+| Chan et al.（NeurIPS 2022） | “this behavior is driven by the distributions of the training data itself” | Omniglot 合成任务、小 transformer | “RNN 不出现”写成“架构也重要”的第二个发现 |
+| Summers & Dinneen（ICML 2021） | “even one-bit changes … the same variability as full re-initialization” | CIFAR-10 上的小 ResNet | — |
+| Frankle et al.（ICML 2020） | “networks become stable to SGD noise early in training” | 几个视觉网络 | 小网络与大网络的差别写成“稳定出现的时间随规模变化” |
+| Pre-carved Niches（2026） | “The modular map is pre-carved” | 单个 Pythia-410M、两条轨迹 | 明确把能辩护的层级与留待后续的机制问题分开 |
+| Bali et al.（ICML 2026） | “Middle-layer instability”“Depth dependence” | 小 GPT-2 的重训 | — |
+| Tigges et al.（NeurIPS 2024） | “circuit analyses are consistent across training and scale” | Pythia 70M–2.8B、4 个任务 | 成分会换写成“算法不变、成分可换”的正面命题 |
+| Gurnee et al.（TMLR 2024） | “universal neurons” | 5 个 GPT-2 seed | 只有 1–5% 通用，写成“通用的那部分可解释”的正面命题 |
+
+**学到的写法：**
+1. 标题与第一句把现象写成模型类的一般性质（“deep networks exhibit…”“language models…”），具体设置放进方法与范围说明，不放进标题。
+2. 一个好记的概念（关键期、预刻、普适性）加一套围绕它的测量框架。
+3. 不完美或反向的子结果写成**边界条件**或**机制线索**，成为发现的一部分（Achille 的“翻转无持久影响”、Chan 的“RNN 不出现”），而不是在标题上打折扣。
+4. 摘要中给效应量与范围（“5× chance”“r = 0.04”“0 / 154”），不给修饰性的保留措辞。
+
+**我们的证据规模对比：** 14 个尺寸 × 2 个家族（Pythia 扩展到 12B 进行中，E58）+ 124 个析因模型（1B：75 + 49）+ 受控训练（关键期、吸引域、初始化尺度 × 学习率、语料边界），已超过上表多数论文。因此我们的命题可以写在“语言模型”这一层级。
+
+**据此确定的叙事（取代 §3 / §6 的表述，英文版见 A03）：**
+- **一句话：** 语言模型的回路“长在哪个头上”由随机初始化决定，模型从数据中学到的是其余的一切：表示什么、回路多强、何时出现、行为如何；算法本身与所在层是普适的。
+- **好记的概念：** *The seed picks the slot, the data fills it.*（初始化选槽位，数据填内容）；配套框架是**决定因素地图**（determination map）：每个机制性质 × {普适、初始化、数据、交互}。
+- **三个反直觉的点：** (1) 换掉整个预训练语料，头的身份不变；(2) 最终权重几乎不保留初始化（r = 0.04），角色却记得初始化（weights forget the seed, roles remember it）；(3) 规模越大，结构越“先天”。
+- **不完美的结果作为边界条件 / 机制线索写入：**
+  - 小模型、代码语料中继承弱（E46 A、E56）→ “继承需要规模，并需要早期统计相似的数据；与模态差异很大的数据（代码）在关键期内会重新打破对称性”。这与关键期结果是同一件事：位置由关键期内的对称性破缺决定。
+  - 单头消融的因果图继承较弱（E42）→ “消融定义的角色图同样被继承，但单头效应因冗余而偏小”（与 MI as Statistical Estimation 一致）。
+  - 开关的头级归因不由初始化决定（E50）→ “由数据装入的晚期功能以分布式方式实现，初始化的影响集中在早期对称性破缺形成的基础角色”。
+  - 线索替换干预（E48 低剂量相反方向；E48b 加大剂量进行中）→ 若仍不成立，写成“开关依赖从头预训练中的暴露”；DataDecide 有 / 无 Flan 的配对与 OLMo 2 中期训练本身已是数据层面的干预。
+  - 尺寸趋势的原因：E46c 否定了“初始化尺度 / 学习率”的解释 → E57 从发育角度检验（小模型是从未继承，还是继承后被冲掉）。

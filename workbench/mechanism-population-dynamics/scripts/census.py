@@ -112,10 +112,10 @@ def available(family, repo, rev):
                                    allow_patterns=["*.json", "*.safetensors"] if family == "dd" else None))
     except Exception:
         return False
-    idx = p / "model.safetensors.index.json"
-    if idx.exists():
-        need = set(json.loads(idx.read_text())["weight_map"].values())
-        return all((p / f).exists() for f in need)
+    for idx in (p / "model.safetensors.index.json", p / "pytorch_model.bin.index.json"):
+        if idx.exists():
+            need = set(json.loads(idx.read_text())["weight_map"].values())
+            return all((p / f).exists() for f in need)
     return (p / "model.safetensors").exists() or (family == "hf" and (p / "pytorch_model.bin").exists())
 
 
