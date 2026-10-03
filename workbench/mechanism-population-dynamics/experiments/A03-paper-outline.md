@@ -15,7 +15,7 @@ Where do a language model's circuits come from? We separate nature from nurture 
   2. **The seed picks the slot** (§3): placement is inherited across corpora and the data component is zero — at 14 sizes, in 2 families [P: up to 12B], for all 9 head roles we measured, including a weight-only copying score (E59); one head is the strongest in up to 56% of 25 corpora for a given seed (chance 6%).
   3. **The data fills it** (§4): strength, timing, content, behaviour and benchmarks come from the data; no lucky seeds; the "Question:" switch.
   4. **A critical period, then an attractor** (§5): the slot is fixed in the first 1–2.5% of training; afterwards weight-sized noise returns roles to their slots; the weights forget the seed (r = 0.04), the anatomy remembers it.
-  5. **Inheritance follows corpus statistics and scale** (§6): a dose–response law on corpus distance at every size, robust to shared sources; code re-draws the slot; stronger in larger models [P: E57, E46b2].
+  5. **Inheritance follows corpus statistics and scale** (§6): a dose–response law on corpus distance at every size, robust to shared sources; code re-draws the slot; inheritance grows along the scaling recipe [P: E62 — batch size as the mechanism].
 - Applications (§7): anatomical seed identification (98–100%); seed-matched designs for data attribution and model diffing; interpretability findings transfer across data within a seed, not across seeds.
 
 ## 2. A natural nature × nurture experiment
@@ -45,7 +45,7 @@ Where do a language model's circuits come from? We separate nature from nurture 
 ## 6. Inheritance follows corpus statistics and scale
 - 6.1 Corpus-distance law (E60, Fig 6): across DataDecide recipe pairs, unigram JS distance predicts same-seed similarity at every size (1B: ρ ≈ −0.56 to −0.60; 300M–1B: up to −0.8); holds on source-disjoint pairs (ρ −0.36 to −0.82) → token statistics, not shared documents.
 - 6.2 Beyond the natural range (E46, E56): c4–papers (JS 0.13) inherit (0.19), code pairs (0.40–0.43) re-draw the slot.
-- 6.3 Scale: inheritance grows with log parameters (E45, ρ 0.81–0.92); the distance law sharpens with scale (|ρ| ≈ 0.4–0.5 at 90M → 0.7–0.8 at ≥ 300M); developmental view [P: E57 — at 10M inheritance is already as weak at 8% of training as at the end: small models never inherit rather than forget]; controlled scale test [P: E46b2]; init scale and learning rate do not explain it (E46c).
+- 6.3 Scale: inheritance grows with log parameters (E45, ρ 0.81–0.92); the distance law sharpens with scale (|ρ| ≈ 0.4–0.5 at 90M → 0.7–0.8 at ≥ 300M); developmental view [P: E57 — at 10M inheritance is already as weak at 8% of training as at the end: small models never inherit rather than forget]; at fixed hyperparameters a 30× larger controlled model inherits no more (E46b), and init scale / learning rate do not matter (E46c) → the growth comes from the scaling recipe; candidate: batch size (DataDecide 32 → 704 sequences; Pythia 1024 at all sizes) [P: E62].
 - 6.4 Mechanism sketch: during the critical period the gradient signal is dominated by low-order token statistics (the unigram-output stage; Fehlauer et al., EMNLP 2025); corpora with the same statistics break the symmetry the same way.
 
 ## 7. Applications and consequences

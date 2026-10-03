@@ -54,14 +54,15 @@ def build(size, init_seed, init_std=0.02):
 class Stream:
     """Random 513-token windows from one corpus file; the order seed fixes the sequence of windows."""
 
-    def __init__(self, corpus, order_seed, start_step=0):
+    def __init__(self, corpus, order_seed, start_step=0, bs=BS):
         self.x = np.memmap(DATA / f"{corpus}.u16", dtype=np.uint16, mode="r")
         self.rng = np.random.default_rng(order_seed)
+        self.bs = bs
         for _ in range(start_step):  # advance so that a branch continues the parent's stream exactly
-            self.rng.integers(0, len(self.x) - SEQ - 1, BS)
+            self.rng.integers(0, len(self.x) - SEQ - 1, bs)
 
     def next(self):
-        off = self.rng.integers(0, len(self.x) - SEQ - 1, BS)
+        off = self.rng.integers(0, len(self.x) - SEQ - 1, self.bs)
         return torch.from_numpy(np.stack([self.x[o:o + SEQ + 1] for o in off]).astype(np.int64))
 
 
@@ -131,6 +132,10 @@ def run_name(a):
         n += f"_std{a.init_std:g}"
     if getattr(a, "lr", LR) != LR:
         n += f"_lr{a.lr:g}"
+    if getattr(a, "bs", BS) != BS:  # E62: batch size (sequences per step)
+        n += f"_bs{a.bs}"
+    if getattr(a, "steps", STEPS) != STEPS:
+        n += f"_st{a.steps}"
     return n
 
 
@@ -150,6 +155,7 @@ def main():
     ap.add_argument("--steps", type=int, default=STEPS)
     ap.add_argument("--init-std", type=float, default=0.02)
     ap.add_argument("--lr", type=float, default=LR)
+    ap.add_argument("--bs", type=int, default=BS)
     a = ap.parse_args()
     name = run_name(a)
     f = OUT / f"{name}.json"
@@ -177,7 +183,8 @@ def main():
     if a.eps:
         perturb(model, a.eps, seed=10_000 + a.init)
     same_stream = corpus == a.corpus and order == a.order
-    data = Stream(corpus, order, start if same_stream else 0)
+    data = Stream(corpus, order, start if same_stream else 0, bs=a.bs)
+    micro = max(MICRO, a.bs // 16)  # keep 16 sequences per micro-batch
     nat = torch.tensor(natural_texts(tokenizer()), device=dev)
     log = {"name": name, "args": vars(a), "measures": {}, "loss": {}}
     (RUNS / name).mkdir(parents=True, exist_ok=True)
@@ -198,10 +205,10 @@ def main():
             gr["lr"] = lr_at(step, a.lr)
         opt.zero_grad(set_to_none=True)
         loss = 0.0
-        for xc in x.chunk(MICRO):  # gradient accumulation over equal micro-batches = same mean-loss gradient, ~1/4 memory
+        for xc in x.chunk(micro):  # gradient accumulation over equal micro-batches = same mean-loss gradient
             with torch.autocast("cuda", dtype=torch.bfloat16):
                 logits = model(xc[:, :-1]).logits
-            lc = torch.nn.functional.cross_entropy(logits.float().reshape(-1, VOCAB), xc[:, 1:].reshape(-1)) / MICRO
+            lc = torch.nn.functional.cross_entropy(logits.float().reshape(-1, VOCAB), xc[:, 1:].reshape(-1)) / micro
             lc.backward()
             loss += float(lc)
             del logits, lc
