@@ -1,9 +1,10 @@
 # Pragmatic Inference — parent residency
 
-更新2026-10-03。已建立61篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
+更新2026-10-03。已建立62篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
 
 | 论文 / 阅读卡 | 证据范围 |
 |---|---|
+| [Uncertainty in Words / EMNLP2024 main](uncertainty-words-2024.md) | 正文/limits完整、附录A–D关键内容；代码/原输出与图未核对 |
 | [Resource-Rational Noisy Channel / EMNLP2025 main](resource-noisy-channel-2025.md) | 正文/limits、附录解释与核心generative code；算法未执行 |
 | [Cai humanlike psycholinguistics / arXiv2024 v2](cai-humanlike-2024.md) | noise结果/方法/讨论/重分析深读，非39页全文 |
 | [Noise与meaning prior / PNAS2013](noisy-channel-2013.md) | 正文六页及一页SI全文；原source审计，未精确回归parity |

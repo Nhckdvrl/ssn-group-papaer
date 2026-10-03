@@ -183,3 +183,6 @@ Gibson与Chen的研究动作是联合预测→exposure干预→混杂复核；EM
 当前I01只是SEED，未指定结果方向。E55全12800通过技术gate，但语义控制未共同成功、部分完整候选mass极低；不是paper claim。E56在原source固定320critical，发现release18改动与正文30不符，E57正在测公开版本的条件响应。它是驻留探针，不能靠该四类材料写领域结论；下一步优先独立knowledge/prior来源及合格数据构造，跨来源effect不直接相减。
 
 数据载体规范见[DATA_PROTOCOL](DATA_PROTOCOL.md)：自然性/控制性/人类norm分开，独立scene数量而非模型重复数决定证据宽度。可以构造或改造数据，但每项改动需标出改变的前提；无可靠许可gold时只报告响应，不造FPR。
+
+
+E51收齐后的对象澄清：方向分数与人类四类分布可以分离，但这不能自动归因为speaker certainty丢失。IQAP definitely/probably判断的是听者如何解释B意图；自然语言输出的hedging又可以表达模型自己的不确定。EMNLP2024[Uncertainty in Words](../../library/themes/pragmatic-inference/uncertainty-words-2024.md)已经拥有intrinsic一致性与语言decisiveness的faithfulness对象。我们的有意义未知仍是不同交际证据如何分别约束具体含义、合理修复与停止推断，而不是再做generic confidence-expression mismatch。数据字段要明确uncertainty referent与event-role/world-entailment；E58逐条候选解释与原标签的分歧先做源语义审计，不自动视作发现或改gold。

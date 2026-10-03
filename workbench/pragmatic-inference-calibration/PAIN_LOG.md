@@ -33,3 +33,9 @@
 | P18 | Mayn源identity photo/practice不能被一行文字视作等价；weak-evidence processed727 vs final723缺原filter | E47/E49/E50 | 明确文本迁移/派生speaker读数；未配gold不伪造标注，free OpenCode403仍无可用标签 |
 
 - P19（E53，POST-HOC）：strict parser拒绝完整JSON围栏/数字字符串，不能把schema失败叫语义错误。无损CPU审计恢复大量可用，但控制仍失败；原主读数不改、恢复不作能力提升、不追加prompt。
+
+
+- P05更新：大文件原shell代理导致默认走本地VPN；已加process-local direct-only policy，官方HF直连失败但镜像/CDN直连通过。E51只续缺失1.690GB且新shard全SHA校对，Base两作业继续。OpenCode不能概括不可用：LongCat旧403，MiMo当前429，Ling3.1官方CLI可回复、step cost0；E58工具全禁的盲审只作candidate。
+- P20（E57）：Base chat严格EOS yes/no近全invalid；强Instr无歧义control较好、critical plausible仍有理解/任务规范差异。技术gate通过不能替代source语义有效性；E58区分event角色与世界蕴含，不把No直接当反命题蕴含，不能直接从本source产出SDT gold。
+
+- P05/P02：E58SpaceBunny20官方free响应全cost0，18技术valid，但4角色分歧且有明确role reason错误。工具deny导致官方free误拒绝的路径已分离，rate limit单独记录；candidate审计辅助发现风险，不得自动升为gold。原人工规范/逐条语义校对仍必要。

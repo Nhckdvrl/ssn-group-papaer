@@ -1,6 +1,6 @@
 # E51：dense-stage-natural-parents（2026-10-03）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO / D1–D2，匹配训练谱系与自然parent条件测量
 - **对应：** C02/P02；不注册预设结果方向的idea
 - **问题（一句话）：** 在输入完全相同的较强dense开放谱系中，post-training对自然含义区分的改变，能否同时被原人类分布、同问题不同回答和候选概率质量约束？
@@ -25,3 +25,14 @@ CPU全量prefix/source preflight已通过；完整source结果不按方向改rea
 2026-10-03执行补充（不改科学协议）：Base pinned权重超过原队列2小时等待上限，预计需要仅对缺失Base两作业重排。先保留原超时，再用同一冻结worker/source/readout/seed/output basename；重排只在原两个Base waiting任务均打印超时、且原输出目录不存在时允许，不能重复启动或覆盖。SFT/最终Instruct已完成，DPO已下载并等GPU。旧collector若因队列下载超时退出，只能另开完整8作业gate后的有限collector，不汇总partial、不改原frozen summary SHA。
 
 执行排程审计：五original jobs已完整、两Base真实超时、DPO Circa仍等待固定GPU5；/proc核对0活动E51 scientific worker后，仅终止原waiting coordinator，保留日志与其它队列。DPO Circa改为任意空闲卡，同worker/输出basename/完整preflight；原collector与summary SHA不动，全8logical jobs gate后才总结。结果E51-scheduler-resume-audit.json，未杀训练/推断worker或他人进程。
+
+
+## 完成（2026-10-03）
+
+8 logical作业/8128读数完整，原source/actual输入/完整teacher-force/数值gate全部通过，成功合计.6629GPU·时；原下载/队列失败永久保留。结果[完整summary](../results/E51-dense-natural-summary.json)，冻结SHA 5aac66d3577213083aa8370379162ff3fd2f4b87fdc4d7e747700e2c197972e3。Base最后1.690GB通过mirror/CDN直连续传，新shardSHA校对后才发布marker；传输不改变revision。
+
+- IQAP common-chat方向accuracy Base/SFT/DPO/RLVR=.800/.740/.7333/.7467；四类human Brier=.3306/.5210/.8338/.8550。SFT→DPO方向差−.0067 CI[−.0400,.0267]，Brier差+.3128[.2772,.3475]，source-cluster敏感性[.2527,.3568]。没有把accuracy近似不变叫等效。
+- post-SFT chat完整candidate mass=.9216/.9324/.9782，full/content Brier差很小；SFT→DPO bare也Brier+.2340[.2056,.2612]。因此仅terminal改变不能解释全部变化；但无QA prior的四候选分布也从[.0918,.4695,.1535,.2853]变到[.0014,.6648,.0164,.3174]，仍有候选措辞/全局政策解释。
+- Base chat候选mass仅.000117、Circa两序语义argmax一致率0，Base与post-SFT差不能当能力因果。不是为了保住后面DPO局部差就删除Base，全部原入口/阶段保留。
+- Circa post-SFT数字质量高却顺序敏感：SFT/DPO/RLVR chat argmax一致率.7483/.6998/.6998。negative weak acc DPO源序0、逆序.8846；不能当推断倾向。conditional strong acc SFT→DPO源序−.1094[−.1641,−.0625]、逆序−.1562[−.2266,−.1016]，但relative弱class分离差源序−.1006[−.1313,−.0696]、逆序−.0077[−.0354,.0211]；排名/概率构念仍依赖入口。
+- 按决策B/C：保留不同读数/条件的变化，尚未识别统一latent criterion；不作d′、speaker certainty或纯DPO因果claim。IQAP目标写的是听者对B意图的definite/probable解释，不能重命名为B自身的知识概率。下一鉴别必须有候选措辞与不确定性referent的控制，以及独立原source的条件预测；不再简单多跑同一ranking表。C02仍L0、贡献0、状态PROPOSED。

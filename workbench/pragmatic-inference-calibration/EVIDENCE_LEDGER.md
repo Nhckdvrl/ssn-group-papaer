@@ -109,3 +109,14 @@ E52强Q25配对4064完成：IQAP chat方向+.2333 CI[.1467,.3133]而四类Brier+
 | E54 QJEP全局过滤与published人数未全部匹配，r1逐文件计数隔离 | human规范重建仍不确定 | 可把当前norm当精确published gold | 高，代码/计数 | 回到原metadata/export路径，不强行凑人数 |
 
 I01仍SEED，C01/C02仍L0。新的对象以证据来源的不同条件预测保持广度，而非追某个局部异常。OpenCode官方免费CLI仍403，0新增可用语义标注；schema/source审计不冒充独立语义标注。
+
+
+2026-10-03 E57完成（C02/P02）：23552生成完整、技术gate通过；没有端点全部semantic controls与plausible critical共同超过预设.95 heuristic。Q25Instr/Q3-8在E3 for-dative的default noise−clean两排列均同各自方向、跨端点却相反：−.1125 CI[−.225,−.025] / +.0625[.0125,.125]；Q3-14−.0125[−.0875,.05]。这削弱统一noise→更多修复叙事，但尚有source/词汇/blocked exposure混杂且多切片未校正，不升级科学claim。Q25Base/MistralBase invalid2931/2944，不把格式不可用当stage能力下降；所有bounds/两seed保留。下一未知是原Yes/No是否在角色理解与世界否定之间混用，E5820条盲态辅助审计先查源规范，不救排名。
+
+P05：1,689,854,457 bytes缺失权重直连续传，new shard SHA通过，11 cached shard原official metadata/revision/size与镜像吻合、未本轮全rehash。Base2作业已真实计算。OpenCode Ling3.1官方CLI返回OK且cost0；MiMo2.6当前429，原LongCat403不代表全部free不可用。E58只candidate audit、0GPU、tool权限deny、不切付费。
+
+
+E51完成：8128/8 logical jobs，source/input/numeric全gate，.6629GPU·时。SFT→DPO IQAP chat方向差−.0067[−.04,.0267]、四类human Brier+.3128[.2772,.3475]，bare也+.2340[.2056,.2612]；post-SFT候选mass高且full/content近同，削弱“只有EOS数值问题”。但no-dialogue prior也大幅改变、Circa order gap仍大（DPO negative弱accuracy0/.8846），不能归因pragmatic competence/criterion。Base candidate mass低，全部阶段保留但stage能力尚未识别。支持需研究条件结构/措辞偏好；削弱单一能力标量；confidence描述中、解释低；next：先核对原human任务不确定性的referent，再以独立可用source区分全局回答政策与语境证据。完整卡/summary见E51。
+
+
+E58完成：SpaceBunny-free官方CLI20/20成功、所有step cost0且无tools，18 exactquote/schema有效、4 event-role对源gold分歧；root逐项审阅至少2条有字面角色混入常识修复，world否定也不一致。支持CLI路径可用，削弱“strong free模型一条条做就能保证gold”的自动化假设；高技术/低语义可信，不替换原gold，不新增SDT negative。下一鉴别为原human任务语义与独立验证，不能把judge错误变成新模型能力claim。完整E58结果/原失败见summary。

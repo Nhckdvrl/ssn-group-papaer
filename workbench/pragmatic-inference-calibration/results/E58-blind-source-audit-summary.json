@@ -1,0 +1,46 @@
+{
+  "experiment": "E58",
+  "model": "opencode/space-bunny-free",
+  "version": "1.18.34",
+  "n_attempted": 20,
+  "n_independent_critical_clusters": 4,
+  "n_independent_control_clusters": 4,
+  "technical_schema_quote_valid": 18,
+  "technical_valid_is_not_semantic_validation": true,
+  "candidate_event_vs_source_disagreements": [
+    "A0001",
+    "A0005",
+    "A0009",
+    "A0011"
+  ],
+  "not_gold": true,
+  "original_labels_unchanged": true,
+  "all_reported_step_costs_zero": true,
+  "tools_used": false,
+  "scope": "one model, small preselected source pilot; no population effect or confidence interval",
+  "r1": {
+    "attempted": 3,
+    "usable": 0,
+    "stop": "403 when all tools denied"
+  },
+  "r2": {
+    "attempted": 3,
+    "usable": 0,
+    "stop": "75s timeouts; matching native log provider429"
+  },
+  "r3_config_sha256": "7a0f234c071486a9b99413a64b402112cb6f4962169f0d193a022c062a1c21b3",
+  "r3_annotations_sha256": "859ed9729829399b9f5cdc102de37065175a899a4494da4b02025131e349f65e",
+  "script_sha256": "0923359c5916c4bfd751ebbdf914e5f6bce5ba6f8f9264bf62a8ba33eb6b8acb",
+  "source_sha256": "131742c8449f28e2586c11bcf2efa91f1a576f1e2f0e483eb2b89150ddcff89d",
+  "raw_path": "/data1/xiangding/work/pragmatic-inference-calibration/data/E58-blind-source-audit-r3",
+  "root_posthoc_semantic_review_not_independent_human_gold": {
+    "A0001": "空间关系on被当成对称co-location，无法据此覆盖源角色标记；原词义/规范待核对。",
+    "A0005": "double-object明确把pencil放在recipient位，judge回答No却改成常识修复；字面角色与可实现性混淆。",
+    "A0009": "baked a cake Lucy的语法/命名歧义需回原材料/人类规范；不能从judge ambiguous自动改gold。",
+    "A0011": "Lucy是被烤的theme，不是for的beneficiary；judge的Yes混入了受益角色，不能直接采用。",
+    "A0014": "quote首字母小写，源为The，严格quote gate拒绝；仅case差异备注，原primary不事后宽松。",
+    "A0019": "quote来自question改写，非sentence substring，source gate正确拒绝。",
+    "world_entailment": "多处把未描述互逆事件当成世界否定，其它相近项却underdetermined；不能作为world gold。"
+  },
+  "decision": "Use the working native CLI path, but do not expand automatic gold labeling; first resolve row-level semantics/independent validation."
+}
