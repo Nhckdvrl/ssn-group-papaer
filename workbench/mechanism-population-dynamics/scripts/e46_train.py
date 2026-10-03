@@ -23,7 +23,7 @@ import mp_common as mc
 DATA = Path("/home/xiang/mechpop_cache/e46_data")
 RUNS = Path("/home/xiang/mechpop_cache/e46_runs")
 OUT = mc.RESULTS / "e46"
-SIZES = {"S": dict(L=4, H=8, d=256, ff=1024), "M": dict(L=6, H=8, d=512, ff=2048)}
+SIZES = {"S": dict(L=4, H=8, d=256, ff=1024), "M": dict(L=6, H=8, d=512, ff=2048), "L": dict(L=12, H=12, d=768, ff=3072)}
 SEQ, BS, STEPS, WARM, LR = 512, 64, 10000, 300, 1e-3
 MICRO = 4  # micro-batches per step (memory only; the step's gradient is unchanged)
 MEASURE = (0, 100, 250, 500, 750, 1000, 1500, 2000, 3000, 4000, 6000, 8000, 10000)
@@ -39,13 +39,13 @@ def tokenizer():
         eos_token="<|endoftext|>", pad_token="<|padding|>")
 
 
-def build(size, init_seed):
+def build(size, init_seed, init_std=0.02):
     from transformers import LlamaConfig, LlamaForCausalLM
     s = SIZES[size]
     cfg = LlamaConfig(vocab_size=VOCAB, hidden_size=s["d"], intermediate_size=s["ff"], num_hidden_layers=s["L"],
                       num_attention_heads=s["H"], num_key_value_heads=s["H"], max_position_embeddings=SEQ,
                       rms_norm_eps=1e-5, rope_theta=10000.0, tie_word_embeddings=False, attention_bias=False,
-                      mlp_bias=False, initializer_range=0.02)
+                      mlp_bias=False, initializer_range=init_std)
     cfg._attn_implementation = "sdpa"
     torch.manual_seed(init_seed)
     return LlamaForCausalLM(cfg)
@@ -107,10 +107,10 @@ def perturb(model, eps, seed):
             p.add_(eps * p.float().std() * torch.randn(p.shape, generator=g).to(p.device, p.dtype))
 
 
-def lr_at(step):
+def lr_at(step, lr=LR):
     if step < WARM:
-        return LR * (step + 1) / WARM
-    return LR * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * (step - WARM) / (STEPS - WARM))))
+        return lr * (step + 1) / WARM
+    return lr * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * (step - WARM) / (STEPS - WARM))))
 
 
 def run_name(a):
@@ -127,6 +127,10 @@ def run_name(a):
         n += f"_eps{a.eps:g}"
     if a.rerun:
         n += f"_rerun{a.rerun}"
+    if getattr(a, "init_std", 0.02) != 0.02:  # E46c factors (names of the default runs are unchanged)
+        n += f"_std{a.init_std:g}"
+    if getattr(a, "lr", LR) != LR:
+        n += f"_lr{a.lr:g}"
     return n
 
 
@@ -144,6 +148,8 @@ def main():
     ap.add_argument("--rerun", type=int, default=0)
     ap.add_argument("--save-branch-states", action="store_true")
     ap.add_argument("--steps", type=int, default=STEPS)
+    ap.add_argument("--init-std", type=float, default=0.02)
+    ap.add_argument("--lr", type=float, default=LR)
     a = ap.parse_args()
     name = run_name(a)
     f = OUT / f"{name}.json"
@@ -153,7 +159,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     torch.backends.cuda.matmul.allow_tf32 = True
     dev = "cuda"
-    model = build(a.size, a.init).to(dev)
+    model = build(a.size, a.init, a.init_std).to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=LR, betas=(0.9, 0.95), weight_decay=0.1, eps=1e-8)
     start = 0
     corpus, order = a.corpus, a.order
@@ -189,7 +195,7 @@ def main():
             break
         x = data.next().to(dev, non_blocking=True)
         for gr in opt.param_groups:
-            gr["lr"] = lr_at(step)
+            gr["lr"] = lr_at(step, a.lr)
         opt.zero_grad(set_to_none=True)
         loss = 0.0
         for xc in x.chunk(MICRO):  # gradient accumulation over equal micro-batches = same mean-loss gradient, ~1/4 memory
