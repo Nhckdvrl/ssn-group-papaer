@@ -102,10 +102,12 @@ def pair_stats(A, B, dev="cuda"):
     dh = ha.shape[-1] // H
     hi, hbm, ai, abm = [], [], [], []
     for l in range(L):
-        C = torch.zeros(H, H)
-        for i in range(H):
-            for j in range(H):
-                C[i, j] = _cka(ha[l, :, i * dh:(i + 1) * dh].to(dev), hb[l, :, j * dh:(j + 1) * dh].to(dev))
+        a, b = ha[l].to(dev).float(), hb[l].to(dev).float()
+        a, b = a - a.mean(0), b - b.mean(0)
+        blk = lambda M: M.reshape(H, dh, H, dh).pow(2).sum((1, 3))  # squared Frobenius norm of each (head i, head j) block
+        cross = blk(a.T @ b)                        # ||A_i^T B_j||_F^2
+        na_, nb_ = blk(a.T @ a).diagonal().sqrt(), blk(b.T @ b).diagonal().sqrt()  # ||A_i^T A_i||_F, ||B_j^T B_j||_F
+        C = (cross / (na_[:, None] * nb_[None, :])).cpu()  # linear CKA for every head pair (same as _cka)
         hi.append(float(C.diagonal().mean()))
         hbm.append(float(C.max(1).values.mean()))
         pa = A["att"][l].to(dev).float().transpose(0, 1).reshape(H, -1)

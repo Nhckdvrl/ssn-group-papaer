@@ -1,0 +1,21 @@
+Warning: Permanently added 'fvcrc00' (ED25519) to the list of known hosts.
+Warning: Permanently added 'fvcrc13' (ED25519) to the list of known hosts.
+lmc c4__default--c4__large-aux-3 {'L0': 3.548, 'L0.25': 7.419, 'L0.5': 9.95, 'L0.75': 7.77, 'L1.0': 3.596, 'barrier': 6.378}
+lmc c4__large-aux-2--c4__large-aux-3 {'L0': 3.556, 'L0.25': 7.957, 'L0.5': 10.673, 'L0.75': 7.657, 'L1.0': 3.596, 'barrier': 7.096}
+lmc c4__large-aux-3--falcon__large-aux-3 {'L0': 3.596, 'L0.25': 6.95, 'L0.5': 11.035, 'L0.75': 6.404, 'L1.0': 3.147, 'barrier': 7.664}
+lmc falcon__default--falcon__large-aux-3 {'L0': 3.125, 'L0.25': 7.174, 'L0.5': 9.772, 'L0.75': 7.154, 'L1.0': 3.147, 'barrier': 6.636}
+lmc falcon__large-aux-2--dclm-baseline__large-aux-2 {'L0': 3.12, 'L0.25': 6.277, 'L0.5': 9.628, 'L0.75': 6.097, 'L1.0': 2.926, 'barrier': 6.605}
+lmc falcon__large-aux-3--fineweb-pro__large-aux-3 {'L0': 3.147, 'L0.25': 6.466, 'L0.5': 10.697, 'L0.75': 6.809, 'L1.0': 3.465, 'barrier': 7.391}
+lmc dclm-baseline__default--dolma1_7__default {'L0': 2.951, 'L0.25': 6.607, 'L0.5': 9.839, 'L0.75': 6.256, 'L1.0': 2.795, 'barrier': 6.966}
+lmc dclm-baseline__large-aux-3--fineweb-pro__large-aux-3 {'L0': 2.945, 'L0.25': 6.255, 'L0.5': 10.407, 'L0.75': 7.829, 'L1.0': 3.465, 'barrier': 7.202}
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e43_basis.py", line 235, in <module>
+    pairs(a.part)
+    ^^^^^^^^^^^
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e43_basis.py", line 167, in lmc
+    res = {"L0": la}
+                     
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 0 has a total capacity of 79.14 GiB of which 75.50 MiB is free. Process 3265535 has 1.52 GiB memory in use. Process 3265537 has 5.76 GiB memory in use. Process 3266681 has 12.83 GiB memory in use. Process 3274618 has 9.54 GiB memory in use. Process 3275060 has 9.54 GiB memory in use. Process 3275255 has 9.54 GiB memory in use. Including non-PyTorch memory, this process has 13.20 GiB memory in use. Process 3278023 has 6.56 GiB memory in use. Process 3278152 has 10.51 GiB memory in use. Of the allocated memory 12.56 GiB is allocated by PyTorch, and 156.17 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
