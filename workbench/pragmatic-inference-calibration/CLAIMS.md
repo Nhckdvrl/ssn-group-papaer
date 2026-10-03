@@ -6,7 +6,7 @@
 |---|---|---|---|---|---|---|
 | C01 | 原始 MultiPragEval 数据与公开评测协议可在本地 open weights 上复现并保持客观评分。 | L0 | [E01](experiments/E01-substrate-audit.md)、[E02](experiments/E02-multiprageval-native-reproduction.md)；原14B四语言三seed完成；原数字误差与解码限制见状态页 | 官方 config、checkpoint/chat template/解码差异 | 2026-10-03 | 未校对 |
 | C02 | 至少一个自然 parent substrate 能分别识别 warranted 与 unwarranted inference，不能把所有错误叫 false alarm。 | L0 | [E01](experiments/E01-substrate-audit.md)、[E05](experiments/E05-annotation-feasibility.md)；标签可识别性未成立 | literal accuracy ≠ FPR；任务难度/措辞与 inference-choice 标签 | 2026-10-03 | 未校对 |
-| C03 | 在原IQAP开发集150项、OLMo2-13B共用聊天入口的固定四候选读数中，DPO相对SFT的human Brier距离增大，三种预定义表述均保留该方向。 | L1，任务观察 | [E51](experiments/E51-dense-stage-natural-parents.md)、[E59](experiments/E59-interpretation-wording-stage.md)；[完整结果](results/E59-wording-summary.json)：差+.3128/.3419/.3771，item与source cluster CI均正；192数值控制通过、原1800行零差、OL SFT/DPO chat copy全对 | 无对话prior同步变化；paraphrase新human norm未采；条件归一化不是内在belief；单checkpoint/开发集，算法与数据共变；不是能力下降/criterion或论文新颖性结论 | 2026-10-03 | root全量source/概率/数值校对；未独立会话校对 |
+| C03 | 在原IQAP开发集150项、OLMo2-13B共用聊天入口的固定四候选读数中，DPO相对SFT的human Brier距离增大，三种预定义表述均保留该方向。 | L1 | [E51](experiments/E51-dense-stage-natural-parents.md)、[E59](experiments/E59-interpretation-wording-stage.md)；[完整结果](results/E59-wording-summary.json)：差+.3128/.3419/.3771，item与source cluster CI均正；192数值控制通过、原1800行零差、OL SFT/DPO chat copy全对 | 仅任务观察；无对话prior同步变化；paraphrase新human norm未采；条件归一化不是内在belief；单checkpoint/开发集，算法与数据共变；不是能力下降/criterion或论文新颖性结论 | 2026-10-03 | root全量source/概率/数值校对；未独立会话校对 |
 
 ## 技术资产（不是paper贡献）
 
