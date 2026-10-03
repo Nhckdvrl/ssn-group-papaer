@@ -2,7 +2,7 @@
 
 来源：[最终论文](https://aclanthology.org/2025.emnlp-main.1207/) · [原代码](https://github.com/thomashikaru/noisy_channel_model)。评审未核对。
 
-1. **阅读：** 全正文/limitations；附录A–C与B算法解释已读，末页伪代码未逐行独立推演。README、config.jl、gen_model.jl核心generative model已读；完整proposal/Gen执行未复现。14页PDF SHA 670ba256a84ccf42d1992325538b3de123992d39a9ec16da26d2d5c5fd64eac8。
+1. **阅读：** 全正文/limitations；附录A–C与B算法解释已读，末页伪代码亦已读；公式文本顺序需以视觉/代码继续核对，未独立实现。README、config.jl、gen_model.jl核心generative model已读；完整proposal/Gen执行未复现。14页PDF SHA 670ba256a84ccf42d1992325538b3de123992d39a9ec16da26d2d5c5fd64eac8。
 2. **背景压力与idea来源：DOCUMENTED。** 人类在有限计算中处理开放空间的损坏表达，理想Bayesian解码不说明算法如何实现。问题从既有人类行为和计算限制长出，不是“大模型会不会错”。
 3. **改变前提：** 把LM当意义prior、独立错误模型当channel，用有限particle SMC/rejuvenation近似推理；计算预算成为解释变量。不是测原生LLM本身是否估计正确channel。
 4. **实验/数据：** GPT2、六种错误动作；504 Ryskin四条件材料与120 Qian agreement材料。不同粒子/第二遍rejuvenation/lookback产生非单调的人类对应性。后者只用更强human reanalysis的子条件，有明确资产选择，不能当全面语言覆盖。

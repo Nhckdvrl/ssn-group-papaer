@@ -21,3 +21,7 @@
 CPU全量prefix/source preflight已通过；完整source结果不按方向改readout。Circa全部单token content时作精确共享prefix分解以减少重复forward，再与独立完整model logits比对，不用首token代替多token。运行脚本冻结，所有原失败/raw保留。
 
 下载调度补充：为避免最后Instruct等待前两个endpoint，另启既有download_models.py的固定revision下载；HF文件锁/cache复用，未改checkpoint或实验输入。八任务各自等待对应完整资产marker，不必等全部四stage才开始。collector有限等待并仅做原定汇总，不开新实验或升级主张。
+
+2026-10-03执行补充（不改科学协议）：Base pinned权重超过原队列2小时等待上限，预计需要仅对缺失Base两作业重排。先保留原超时，再用同一冻结worker/source/readout/seed/output basename；重排只在原两个Base waiting任务均打印超时、且原输出目录不存在时允许，不能重复启动或覆盖。SFT/最终Instruct已完成，DPO已下载并等GPU。旧collector若因队列下载超时退出，只能另开完整8作业gate后的有限collector，不汇总partial、不改原frozen summary SHA。
+
+执行排程审计：五original jobs已完整、两Base真实超时、DPO Circa仍等待固定GPU5；/proc核对0活动E51 scientific worker后，仅终止原waiting coordinator，保留日志与其它队列。DPO Circa改为任意空闲卡，同worker/输出basename/完整preflight；原collector与summary SHA不动，全8logical jobs gate后才总结。结果E51-scheduler-resume-audit.json，未杀训练/推断worker或他人进程。
