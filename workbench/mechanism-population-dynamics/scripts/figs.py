@@ -272,8 +272,63 @@ def fig_corpus_distance():
     fig.savefig(OUT / "fig_corpus_distance_e60.png", dpi=160)
 
 
+PYTHIA_PARAMS = {"70m": 19e6, "160m": 85e6, "410m": 302e6, "1b": 805e6, "1.4b": 1.21e9, "2.8b": 2.52e9, "6.9b": 6.44e9,
+                 "12b": 11.3e9}
+
+
+def pythia_within():
+    """Within-layer similarity of Pythia std vs deduped (same init), mean over M1 / M2 / M4, final checkpoints."""
+    from fastsim import within_matrix
+    out = {}
+    for s in PYTHIA_PARAMS:
+        for d in ("e44", "e58"):
+            a, b = R / d / f"pythia-{s}-std.json", R / d / f"pythia-{s}-deduped.json"
+            if a.exists() and b.exists():
+                A, B = json.loads(a.read_text()), json.loads(b.read_text())
+                v = [within_matrix([A["maps"][m], B["maps"][m]])[0, 1] for m in ("M1", "M2", "M4")
+                     if m != "M1" or (A["M1_max"] > 0.3 and B["M1_max"] > 0.3)]
+                out[s] = float(np.mean(v))
+    return out
+
+
+def fig_scale_v2():
+    """Fig 4: (a) same-seed vs different-seed within-layer similarity by size (DataDecide, mean of roles) with Pythia
+    std-vs-deduped pairs; (b) anatomical seed-identification accuracy by size (E61)."""
+    d = json.loads((R / "e45" / "analysis.json").read_text())
+    params = {"4M": 3.7e6, "6M": 6e6, "8M": 8.5e6, "10M": 9.9e6, "14M": 14.4e6, "16M": 16e6, "20M": 19.1e6, "60M": 57e6,
+              "90M": 97.9e6, "150M": 151e6, "300M": 320e6, "530M": 530e6, "750M": 750e6, "1B@7500": 1.18e9}
+    S = [s for s in params if s in d]
+    mean_c = lambda s, c: np.mean([d[s][m]["within_layer"][c] for m in ("M1", "M2", "M4") if d[s][m]["decidable"]])
+    fig, axes = plt.subplots(1, 2, figsize=(10.5, 3.6))
+    ax = axes[0]
+    ax.plot([params[s] for s in S], [mean_c(s, "SI") for s in S], "o-", color=C["SI"], label="DataDecide: same seed, other corpus")
+    ax.plot([params[s] for s in S], [mean_c(s, "SD") for s in S], "o-", color=C["SD"], label="DataDecide: other seed, same corpus")
+    pw = pythia_within()
+    if pw:
+        ax.plot([PYTHIA_PARAMS[s] for s in pw], list(pw.values()), "D--", color="#8172B2", label="Pythia: same seed, Pile vs dedup")
+    ax.axhline(0, color="k", lw=0.5)
+    ax.set_xscale("log")
+    ax.set_xlabel("parameters")
+    ax.set_ylabel("which-head similarity (within layer)")
+    ax.legend(fontsize=7, frameon=False)
+    ax.set_title("the slot is inherited, more so at scale", fontsize=9)
+    ax = axes[1]
+    e = json.loads((R / "e61_seed_id.json").read_text())
+    S2 = [s for s in params if s in e]
+    ax.plot([params[s] for s in S2], [e[s]["all"]["accuracy"] for s in S2], "o-", color="#C44E52", label="identify the seed from the head layout")
+    ax.plot([params[s] for s in S2], [e[s]["all"]["chance"] for s in S2], ":", color="k", label="chance")
+    ax.set_xscale("log")
+    ax.set_ylim(0, 1.05)
+    ax.set_xlabel("parameters")
+    ax.set_ylabel("accuracy (leave-one-corpus-out)")
+    ax.legend(fontsize=7, frameon=False, loc="lower right")
+    ax.set_title("the anatomy identifies the seed", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_scale_v2.png", dpi=160)
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
-    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance):
+    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period, fig_hook, fig_corpus_distance, fig_scale_v2):
         fn()
     print(sorted(p.name for p in OUT.glob("*.png")))
