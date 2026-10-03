@@ -99,3 +99,13 @@ E51/E52：原IQAP150×两入口与Circa433×两入口×两order，4stage8128/强
 
 
 E52强Q25配对4064完成：IQAP chat方向+.2333 CI[.1467,.3133]而四类Brier+.2084[.1343,.2872]，但Base完整candidate mass8.04e−13/Instr无QA prior偏probable-yes .99697，不能升级能力/校准claim。Circa条件原序弱correct升.7969→.9766，negative弱class仍有原序.1154/逆序.8462的顺序混杂。E53明确POST-HOC无损格式审计全8640与固定6阳/15阴cases通过：四endpoint从0可用恢复962–1079，但无歧义semantic controls仍未共同通过，原primary不改，不将format失败叫能力negative。C01/C02仍L0。E51八槽等待固定权重，有限collector只汇总8作业全完成且校对通过的结果，不更新主张/状态或自主开实验；实际状态保存在本地data/E51-collector-status.json。
+
+
+| Observation | 支持解释 | 削弱解释 | confidence | next discriminating experiment |
+|---|---|---|---|---|
+| E55原400句×8端点×4入口目标=12800完整读数；source/token/numeric gates通过 | 原材料现代迁移可测 | 纯实现错误解释全部差异 | 高，技术；科学归因低 | 原source证据干预与独立生成，E57 |
+| Q25 chat Instr−Base implausible literal-prob benef−.1797[−.3199,−.0184]、active/passive+.0899[−.0465,.2263]；Instr full mass极低 | 变化依赖材料/测量，统一criterion未识别 | 所有post-training变化同向 | 中，描述；未排混杂 | E57同目标/不同source exposure，invalid bounds和基础理解 |
+| E56前四组80/80目标相同、第五4/80；18filler改动≠正文30 | 源版本必须逐项审计，可做有限固定目标干预 | 下载数据等于精确复现；补造缺项还称原source | 高，全量确定性；不是科学效果 | E57仅公开版本条件响应，再跨独立source |
+| E54 QJEP全局过滤与published人数未全部匹配，r1逐文件计数隔离 | human规范重建仍不确定 | 可把当前norm当精确published gold | 高，代码/计数 | 回到原metadata/export路径，不强行凑人数 |
+
+I01仍SEED，C01/C02仍L0。新的对象以证据来源的不同条件预测保持广度，而非追某个局部异常。OpenCode官方免费CLI仍403，0新增可用语义标注；schema/source审计不冒充独立语义标注。

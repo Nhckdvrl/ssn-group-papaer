@@ -1,0 +1,539 @@
+{
+  "qjep": [
+    {
+      "file": "data/Experiment1_baseline.csv",
+      "sha256": "322d322cc6f613bf1d1e5c4dc0f82f34a64d5a68a2c9b189c1e4c3925baa22cd",
+      "rows": 63,
+      "material_columns": 320,
+      "first_two_rows_are_responses": true,
+      "stimulus_text_missing": true,
+      "release_vs_code_variants": [
+        {
+          "drop_first_rows": 0,
+          "retained_subjects": 60,
+          "conditions": {
+            "DO_implausible": {
+              "n": 300,
+              "literal_rate": 0.5733333333333334
+            },
+            "PO_implausible": {
+              "n": 299,
+              "literal_rate": 0.7224080267558528
+            }
+          }
+        },
+        {
+          "drop_first_rows": 2,
+          "retained_subjects": 59,
+          "conditions": {
+            "DO_implausible": {
+              "n": 295,
+              "literal_rate": 0.5830508474576271
+            },
+            "PO_implausible": {
+              "n": 294,
+              "literal_rate": 0.7346938775510204
+            }
+          }
+        }
+      ]
+    },
+    {
+      "file": "data/Experiment1_silly.csv",
+      "sha256": "94df24fcc723f99a1e35425b459cf405cf1b7e9ef0728ff8ebcafb0920f824b8",
+      "rows": 65,
+      "material_columns": 320,
+      "first_two_rows_are_responses": true,
+      "stimulus_text_missing": true,
+      "release_vs_code_variants": [
+        {
+          "drop_first_rows": 0,
+          "retained_subjects": 60,
+          "conditions": {
+            "DO_implausible": {
+              "n": 300,
+              "literal_rate": 0.73
+            },
+            "PO_implausible": {
+              "n": 300,
+              "literal_rate": 0.86
+            }
+          }
+        },
+        {
+          "drop_first_rows": 2,
+          "retained_subjects": 58,
+          "conditions": {
+            "PO_implausible": {
+              "n": 290,
+              "literal_rate": 0.8655172413793103
+            },
+            "DO_implausible": {
+              "n": 290,
+              "literal_rate": 0.7275862068965517
+            }
+          }
+        }
+      ]
+    },
+    {
+      "file": "data/Experiment2_baseline.csv",
+      "sha256": "d3dabb3419325329c9f390b965f29b63ba5e0f9181f07ab887a8b528cb6ba1e9",
+      "rows": 220,
+      "material_columns": 320,
+      "first_two_rows_are_responses": true,
+      "stimulus_text_missing": true,
+      "release_vs_code_variants": [
+        {
+          "drop_first_rows": 0,
+          "retained_subjects": 209,
+          "conditions": {
+            "PO_implausible": {
+              "n": 1045,
+              "literal_rate": 0.7081339712918661
+            },
+            "DO_implausible": {
+              "n": 1045,
+              "literal_rate": 0.5014354066985646
+            }
+          }
+        },
+        {
+          "drop_first_rows": 2,
+          "retained_subjects": 207,
+          "conditions": {
+            "DO_implausible": {
+              "n": 1035,
+              "literal_rate": 0.4985507246376812
+            },
+            "PO_implausible": {
+              "n": 1035,
+              "literal_rate": 0.706280193236715
+            }
+          }
+        }
+      ]
+    },
+    {
+      "file": "data/Experiment2_silly.csv",
+      "sha256": "793cfaa50612340a5e7f0a1ff82002a689caa8dac70455f701c48f434625eaf0",
+      "rows": 230,
+      "material_columns": 320,
+      "first_two_rows_are_responses": true,
+      "stimulus_text_missing": true,
+      "release_vs_code_variants": [
+        {
+          "drop_first_rows": 0,
+          "retained_subjects": 211,
+          "conditions": {
+            "DO_implausible": {
+              "n": 1054,
+              "literal_rate": 0.6470588235294118
+            },
+            "PO_implausible": {
+              "n": 1054,
+              "literal_rate": 0.8330170777988615
+            }
+          }
+        },
+        {
+          "drop_first_rows": 2,
+          "retained_subjects": 209,
+          "conditions": {
+            "PO_implausible": {
+              "n": 1044,
+              "literal_rate": 0.8314176245210728
+            },
+            "DO_implausible": {
+              "n": 1044,
+              "literal_rate": 0.6446360153256705
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "gtp": [
+    {
+      "file": "data/GTP2013data/E10_noise_trans_intrans_raw_data_2013.csv",
+      "sha256": "6779fc36598033b56be381d22ab3627f15bd1ed59b4977743a198bb2e50eb090",
+      "rows": 4160,
+      "subjects": 52,
+      "critical_unique": 80,
+      "conditions": {
+        "Transitive_plausible": {
+          "n": 260,
+          "literal_rate": 0.9807692307692307
+        },
+        "Preposition_implausible": {
+          "n": 258,
+          "literal_rate": 0.6046511627906976
+        },
+        "Transitive_implausible": {
+          "n": 260,
+          "literal_rate": 0.5846153846153846
+        },
+        "Preposition_plausible": {
+          "n": 258,
+          "literal_rate": 0.9922480620155039
+        }
+      },
+      "critical_missing_response": 4
+    },
+    {
+      "file": "data/GTP2013data/E11_all_implaus_raw_data_2013.csv",
+      "sha256": "1493cfb248053eb89c3c3b5e2147e0f0a74291df89243705513b7382b0c2a31b",
+      "rows": 9280,
+      "subjects": 58,
+      "critical_unique": 400,
+      "conditions": {
+        "DO_for_implausible": {
+          "n": 288,
+          "literal_rate": 0.4965277777777778
+        },
+        "Transitive_implausible": {
+          "n": 289,
+          "literal_rate": 0.71280276816609
+        },
+        "plaus_obj": {
+          "n": 290,
+          "literal_rate": 0.9793103448275862
+        },
+        "DO_plausible": {
+          "n": 288,
+          "literal_rate": 0.9791666666666666
+        },
+        "Preposition_implausible": {
+          "n": 289,
+          "literal_rate": 0.8546712802768166
+        },
+        "active_plausible": {
+          "n": 290,
+          "literal_rate": 0.996551724137931
+        },
+        "DO_implausible": {
+          "n": 290,
+          "literal_rate": 0.6896551724137931
+        },
+        "PO_plausible": {
+          "n": 287,
+          "literal_rate": 0.9651567944250871
+        },
+        "passive_plausible": {
+          "n": 288,
+          "literal_rate": 0.9756944444444444
+        },
+        "Preposition_plausible": {
+          "n": 289,
+          "literal_rate": 0.9826989619377162
+        },
+        "Transitive_plausible": {
+          "n": 290,
+          "literal_rate": 0.9517241379310345
+        },
+        "plaus_subj": {
+          "n": 287,
+          "literal_rate": 0.9651567944250871
+        },
+        "PO_implausible": {
+          "n": 289,
+          "literal_rate": 0.7993079584775087
+        },
+        "DO_for_plausible": {
+          "n": 289,
+          "literal_rate": 0.986159169550173
+        },
+        "implaus_obj": {
+          "n": 287,
+          "literal_rate": 0.9337979094076655
+        },
+        "implaus_subj": {
+          "n": 290,
+          "literal_rate": 0.8758620689655172
+        },
+        "active_implausible": {
+          "n": 289,
+          "literal_rate": 0.9480968858131488
+        },
+        "PO_for_implausible": {
+          "n": 288,
+          "literal_rate": 0.7986111111111112
+        },
+        "passive_implausible": {
+          "n": 289,
+          "literal_rate": 0.9204152249134948
+        },
+        "PO_for_plausible": {
+          "n": 290,
+          "literal_rate": 0.9862068965517241
+        }
+      },
+      "critical_missing_response": 24
+    },
+    {
+      "file": "data/GTP2013data/E1_loc_inversion_raw_data_2013.csv",
+      "sha256": "05249ff1d02ef38d7424e14b58b57471b1e520c72bda5349cab84dbfdbcfc0bd",
+      "rows": 4320,
+      "subjects": 54,
+      "critical_unique": 80,
+      "conditions": {
+        "plaus_subj": {
+          "n": 269,
+          "literal_rate": 0.9628252788104089
+        },
+        "implaus_obj": {
+          "n": 269,
+          "literal_rate": 0.9330855018587361
+        },
+        "implaus_subj": {
+          "n": 270,
+          "literal_rate": 0.8555555555555555
+        },
+        "plaus_obj": {
+          "n": 270,
+          "literal_rate": 0.9851851851851852
+        }
+      },
+      "critical_missing_response": 2
+    },
+    {
+      "file": "data/GTP2013data/E2_DOPOto_raw_data_2013.csv",
+      "sha256": "5cf60fdac73f8775b13921866213201a4eb9a1c6deb881edb6be4d51c9932aee",
+      "rows": 4720,
+      "subjects": 59,
+      "critical_unique": 80,
+      "conditions": {
+        "DO_plausible": {
+          "n": 295,
+          "literal_rate": 0.9830508474576272
+        },
+        "DO_implausible": {
+          "n": 295,
+          "literal_rate": 0.47796610169491527
+        },
+        "PO_plausible": {
+          "n": 295,
+          "literal_rate": 0.9864406779661017
+        },
+        "PO_implausible": {
+          "n": 295,
+          "literal_rate": 0.6203389830508474
+        }
+      },
+      "critical_missing_response": 0
+    },
+    {
+      "file": "data/GTP2013data/E3_DOPOfor_raw_data_2013.csv",
+      "sha256": "be4b926c3d69e6e3404ecc46e1713a556c0a8a5ab8083a5b4c146fb39f64a7f5",
+      "rows": 4480,
+      "subjects": 56,
+      "critical_unique": 80,
+      "conditions": {
+        "PO_for_plausible": {
+          "n": 280,
+          "literal_rate": 0.9857142857142858
+        },
+        "DO_for_plausible": {
+          "n": 280,
+          "literal_rate": 0.9714285714285714
+        },
+        "DO_for_implausible": {
+          "n": 279,
+          "literal_rate": 0.27598566308243727
+        },
+        "PO_for_implausible": {
+          "n": 280,
+          "literal_rate": 0.5678571428571428
+        }
+      },
+      "critical_missing_response": 1
+    },
+    {
+      "file": "data/GTP2013data/E4_active_passive_raw_data_2013.csv",
+      "sha256": "1f44656a744231c9572b5ced8fbe32d4dad71ba45735565e2a63299385a1f307",
+      "rows": 4640,
+      "subjects": 58,
+      "critical_unique": 80,
+      "conditions": {
+        "active_implausible": {
+          "n": 288,
+          "literal_rate": 0.9861111111111112
+        },
+        "passive_plausible": {
+          "n": 289,
+          "literal_rate": 0.9930795847750865
+        },
+        "passive_implausible": {
+          "n": 285,
+          "literal_rate": 0.968421052631579
+        },
+        "active_plausible": {
+          "n": 290,
+          "literal_rate": 1.0
+        }
+      },
+      "critical_missing_response": 8
+    },
+    {
+      "file": "data/GTP2013data/E5_trans_intrans_raw_data_2013.csv",
+      "sha256": "6a94f325d67454bb1832b1996d7c55b6318a69e092a0a095574ebc6ab4590ee0",
+      "rows": 4560,
+      "subjects": 57,
+      "critical_unique": 80,
+      "conditions": {
+        "Preposition_implausible": {
+          "n": 285,
+          "literal_rate": 0.7964912280701755
+        },
+        "Transitive_plausible": {
+          "n": 284,
+          "literal_rate": 0.954225352112676
+        },
+        "Preposition_plausible": {
+          "n": 284,
+          "literal_rate": 0.971830985915493
+        },
+        "Transitive_implausible": {
+          "n": 285,
+          "literal_rate": 0.624561403508772
+        }
+      },
+      "critical_missing_response": 2
+    },
+    {
+      "file": "data/GTP2013data/E6_noise_locative_raw_data_2013.csv",
+      "sha256": "fb6d32450134c1a51429123ecf3119be93dc721ac33083d2fa49ad26b3bb37eb",
+      "rows": 4320,
+      "subjects": 54,
+      "critical_unique": 80,
+      "conditions": {
+        "plaus_obj": {
+          "n": 270,
+          "literal_rate": 0.9814814814814815
+        },
+        "plaus_subj": {
+          "n": 269,
+          "literal_rate": 0.9516728624535316
+        },
+        "implaus_obj": {
+          "n": 270,
+          "literal_rate": 0.9074074074074074
+        },
+        "implaus_subj": {
+          "n": 268,
+          "literal_rate": 0.7686567164179104
+        }
+      },
+      "critical_missing_response": 3
+    },
+    {
+      "file": "data/GTP2013data/E7_noise_DOPO_raw_data_2013.csv",
+      "sha256": "f25d71af88bcf31f8ef8fa7aa323af594e3505024593110e539e8cf7850550fd",
+      "rows": 4400,
+      "subjects": 55,
+      "critical_unique": 80,
+      "conditions": {
+        "PO_plausible": {
+          "n": 273,
+          "literal_rate": 0.9597069597069597
+        },
+        "PO_implausible": {
+          "n": 275,
+          "literal_rate": 0.5818181818181818
+        },
+        "DO_plausible": {
+          "n": 274,
+          "literal_rate": 0.9671532846715328
+        },
+        "DO_implausible": {
+          "n": 275,
+          "literal_rate": 0.36363636363636365
+        }
+      },
+      "critical_missing_response": 3
+    },
+    {
+      "file": "data/GTP2013data/E8_noise_DOPO_for_raw_data_2013.csv",
+      "sha256": "959d92832bb883d6e9ce8acff96794c8801e086619884256cfd756fa332c09e7",
+      "rows": 4240,
+      "subjects": 53,
+      "critical_unique": 80,
+      "conditions": {
+        "DO_for_implausible": {
+          "n": 265,
+          "literal_rate": 0.09811320754716982
+        },
+        "DO_for_plausible": {
+          "n": 265,
+          "literal_rate": 0.9622641509433962
+        },
+        "PO_for_implausible": {
+          "n": 264,
+          "literal_rate": 0.32575757575757575
+        },
+        "PO_for_plausible": {
+          "n": 263,
+          "literal_rate": 0.973384030418251
+        }
+      },
+      "critical_missing_response": 3
+    },
+    {
+      "file": "data/GTP2013data/E9_noise_active_passive_raw_data_2013.csv",
+      "sha256": "029afc1c6368ad3d0352e681b044a09facb8bda58efd1964ce7524dca189e9da",
+      "rows": 4000,
+      "subjects": 50,
+      "critical_unique": 80,
+      "conditions": {
+        "passive_implausible": {
+          "n": 249,
+          "literal_rate": 0.8594377510040161
+        },
+        "active_implausible": {
+          "n": 249,
+          "literal_rate": 0.8995983935742972
+        },
+        "passive_plausible": {
+          "n": 248,
+          "literal_rate": 0.9919354838709677
+        },
+        "active_plausible": {
+          "n": 250,
+          "literal_rate": 0.98
+        }
+      },
+      "critical_missing_response": 4
+    }
+  ],
+  "baseline_noise_matches": [
+    {
+      "baseline": "E1_loc_inversion_raw_data_2013.csv",
+      "noise": "E6_noise_locative_raw_data_2013.csv",
+      "identical_all_80_critical": true
+    },
+    {
+      "baseline": "E2_DOPOto_raw_data_2013.csv",
+      "noise": "E7_noise_DOPO_raw_data_2013.csv",
+      "identical_all_80_critical": true
+    },
+    {
+      "baseline": "E3_DOPOfor_raw_data_2013.csv",
+      "noise": "E8_noise_DOPO_for_raw_data_2013.csv",
+      "identical_all_80_critical": true
+    },
+    {
+      "baseline": "E4_active_passive_raw_data_2013.csv",
+      "noise": "E9_noise_active_passive_raw_data_2013.csv",
+      "identical_all_80_critical": true
+    },
+    {
+      "baseline": "E5_trans_intrans_raw_data_2013.csv",
+      "noise": "E10_noise_trans_intrans_raw_data_2013.csv",
+      "identical_all_80_critical": false
+    }
+  ],
+  "no_gpu_predictions": true,
+  "export_contains_only_linguistic_fields": true,
+  "qjep_original_script_directly_applicable": false,
+  "human_exact_parity_not_yet_established": true
+}

@@ -123,3 +123,15 @@ corpus nearest “language models speaker selection mechanism pragmatic inferenc
 
 
 最新nearest重新检索speaker intent/world truth/selective disclosure，返回EMNLP2024不同pragmatic levels、ACL2026goal-directed alternatives/social world models、Wavelength与Wu等。前者正文已补读：拥有training-vs-eval reasoning、partner depth/lexicon/data information的区别，非LLM自然数据。ICML2026cached-confidence正文/关键方法已深读：拥有自己答案信号的缓存、检索、多干预，未拥有别人表达选择对自然意图/world belief的联合条件预测。以上只是ownership定位；compression risk仍高，E49/E50暂无共同可用的role测量，不以近邻存在关线。
+
+
+## 修复与证据来源的正面定位（I01，2026-10-03）
+
+| Parent | 改变的前提 / 已有证据 | 我们可检验的实质发展 |
+|---|---|---|
+| Gibson2013 + Chen QJEP2026 | 人类联合signal error与meaning prior；等长度复核旧混杂 | 让不同证据来源对训练阶段变化提出不同预测，验证跨知识/修复/先验情景的条件结构 |
+| [Cai2024](https://arxiv.org/abs/2303.08014v2) | 原生ChatGPT/Vicuna修复形状差异；任务history也不同 | 从形状相似进一步测实际exposure响应与独立无歧义理解，不能只换模型复现DO/PO |
+| [Resource-Rational EMNLP2025](https://aclanthology.org/2025.emnlp-main.1207/) | 外部error-model与有限搜索能解释人类重分析 | 作为候选空间/预算的竞争账户，区分它与来源识别、意义prior、最终回答规范 |
+| RI/SAGE2026 | partner-indexed channel理论 / 外部模块化Grice推理 | 原生训练谱系上可移植的证据归因预测，而非再提出统一框架 |
+
+这不是空白证明或新颖性自动判决。核心增量必须是来源条件结构对已有科学解释的改变；当前未取得。作者Per Ardua blog已读：small/large post-training方向相反只是作者自报，没有已核对raw/checkpoint/gold，作为反方向压力，不能当可靠发现。61卡按阅读范围计数，非61全文。

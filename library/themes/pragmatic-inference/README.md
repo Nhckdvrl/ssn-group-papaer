@@ -1,9 +1,15 @@
 # Pragmatic Inference — parent residency
 
-更新2026-10-03。已建立55篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
+更新2026-10-03。已建立61篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
 
 | 论文 / 阅读卡 | 证据范围 |
 |---|---|
+| [Resource-Rational Noisy Channel / EMNLP2025 main](resource-noisy-channel-2025.md) | 正文/limits、附录解释与核心generative code；算法未执行 |
+| [Cai humanlike psycholinguistics / arXiv2024 v2](cai-humanlike-2024.md) | noise结果/方法/讨论/重分析深读，非39页全文 |
+| [Noise与meaning prior / PNAS2013](noisy-channel-2013.md) | 正文六页及一页SI全文；原source审计，未精确回归parity |
+| [Semantic prior / QJEP2025online–2026volume](semantic-prior-2026.md) | 正文主线完整、原数据管线；release与code版本差保留 |
+| [SAGE / arXiv2026](sage-2026.md) | 三case study方法/核心评估/讨论；部分正文与附录未全读 |
+| [Rational interlocutors / arXiv2026](rational-interlocutors-2026.md) | intro、理论/profiles/use/讨论深入读；综述与补充未全读 |
 | [Cached verbal confidence / ICML2026](verbal-confidence-2026.md) | 正文全文、关键方法与limits；其余补充/代码未审 |
 | [Different pragmatic levels / EMNLP2024 main](pragmatic-levels-2024.md) | 正文全文、表与方程；原图/代码未审 |
 | [Speaker reasoning ability / Open Mind2025](speaker-reasoning-2025.md) | 正文与附录A–E全文、原models.R；E47描述norm复现 |
