@@ -10,6 +10,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.ticker
 import numpy as np
 
 import mp_common as mc
@@ -56,6 +57,8 @@ def fig_scale():
         for c in ("SI", "SD", "DD"):
             ax.plot([params[s] for s in S], [d[s][m]["within_layer"][c] for s in S], "o-", color=C[c], label=c, ms=4)
         ax.set_xscale("log")
+        ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v / 1e6:g}M" if v < 1e9 else f"{v / 1e9:g}B"))
+        ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
         ax.set_title(title)
         ax.set_xlabel("non-embedding parameters")
         ax.axhline(0, color="k", lw=0.5)
