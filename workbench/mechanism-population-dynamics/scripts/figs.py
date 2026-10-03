@@ -108,8 +108,88 @@ def fig_flan_scale():
     fig.savefig(OUT / "fig_flan_scale_e47.png", dpi=160)
 
 
+# Determination map (Fig 2). Each row: property, determining factor, key statistic, experiment. Numbers are copied from
+# the result files cited in CLAIMS.md (C04 / C05) and the experiment cards.
+MAP = [
+    ("Algorithm (prev-token → induction composition)", "universal", "75 / 75 models", "E55"),
+    ("Layer hosting each role", "universal", "layer profile SI ≈ SD ≈ 0.54–0.83", "E35"),
+    ("Developmental time: previous-token heads", "universal", "corpus 0.01, seed 0.07 (n.s.)", "E54"),
+    ("Which head within the layer takes the role", "seed", "within-layer SI 0.30 vs SD 0.00; data comp. 0", "E35/E45"),
+    ("Residual-stream coordinates / outlier dims", "seed", "0.20 vs 0.00", "E43"),
+    ("Representation content (CKA, best match)", "data", "SD ≥ SI ≈ DD", "E43"),
+    ("Circuit strength", "data", "data sig. 4/6 metrics; seed comp. ≈ 0", "E35"),
+    ("Developmental time: induction heads", "data", "corpus 0.81, seed 0.00", "E54"),
+    ("Knowledge-conflict behaviour", "data", "seed main effect 0 / 12", "E36"),
+    ("Benchmarks (11 tasks × 14 sizes)", "data", "seed sig. in 4–8% of cells (= FPR)", "E51"),
+    ("“Question:” context-trust switch", "data", "+2.4 nats from ~1% Flan data", "C04"),
+    ("MLP neuron identity", "none", "0.008", "E43"),
+    ("Weight values", "none", "final vs init r = 0.04", "audit"),
+]
+
+
+def fig_determination_map():
+    cols = ["universal", "seed", "data", "none"]
+    head = ["Universal", "Seed (nature)", "Data (nurture)", "Neither"]
+    colour = {"universal": "#4C72B0", "seed": "#DD8452", "data": "#55A868", "none": "#8C8C8C"}
+    fig, ax = plt.subplots(figsize=(11.5, 0.42 * len(MAP) + 1.2))
+    for i, (prop, who, stat, exp) in enumerate(MAP):
+        y = len(MAP) - 1 - i
+        if i % 2 == 0:
+            ax.axhspan(y - 0.5, y + 0.5, color="#f2f2f2", zorder=0)
+        ax.text(-0.3, y, prop, ha="right", va="center", fontsize=9)
+        for j, c in enumerate(cols):
+            ax.scatter(j, y, s=170 if c == who else 25, color=colour[c] if c == who else "#d0d0d0", zorder=2)
+        ax.text(len(cols) - 0.4, y, f"{stat}  [{exp}]", ha="left", va="center", fontsize=8, color="#333333")
+    ax.set_xticks(range(len(cols)), head, fontsize=9)
+    ax.xaxis.tick_top()
+    ax.set_xlim(-0.5, len(cols) + 2.6)
+    ax.set_ylim(-0.7, len(MAP) - 0.3)
+    ax.set_yticks([])
+    for s in ax.spines.values():
+        s.set_visible(False)
+    ax.tick_params(length=0)
+    fig.subplots_adjust(left=0.36, right=0.99, top=0.9, bottom=0.03)
+    fig.savefig(OUT / "fig_determination_map.png", dpi=160)
+
+
+def fig_critical_period():
+    """E46 C/D: within-layer similarity to the unbranched parent after a perturbation at step k (S models, 10k steps)."""
+    import re
+    d = json.loads((mc.RESULTS / "e46" / "analysis.json").read_text())
+    A = d["A"]
+    arms = {"switch corpus to code": "tocode", "noise as large as the weights (ε = 1)": "eps1$", "noise ε = 0.1": "eps0.1$"}
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.6), sharey=True)
+    for ax, m in zip(axes, ("M1", "M2")):
+        for lab, pat in arms.items():
+            pts = {}
+            for k, v in d["D"].items():
+                mm = re.search(r"_b(\d+)_", k)
+                if mm and re.search(pat, k) and m in v:
+                    pts.setdefault(int(mm.group(1)), []).append(v[m][1])
+            # k = 0: same init trained on code from scratch (A, code pairs ≈ SI) or perturbed at init (C)
+            if pat == "tocode":
+                pts[0] = [A[m]["SI"]["within"]]
+            else:
+                eps = pat.strip("eps$")
+                pts[0] = [v[m][1] for k, v in d["C"].items() if k.endswith(f"_eps{eps}") and m in v]
+            ks = sorted(pts)
+            x = [max(k, 30) for k in ks]
+            ax.plot(x, [np.mean(pts[k]) for k in ks], "o-", label=lab)
+        rr = [v[m][1] for k, v in d["C"].items() if k.endswith("rerun1") and m in v]
+        ax.axhline(np.mean(rr), color="k", ls=":", lw=1, label="rerun (same seed, same data)")
+        ax.axvspan(100, 250, color="#f4cccc", alpha=0.6, lw=0)
+        ax.set_xscale("log")
+        ax.set_xticks([30, 100, 250, 1000, 4000], ["0", "100", "250", "1k", "4k"])
+        ax.set_xlabel("branch step k (of 10k)")
+        ax.set_title({"M1": "induction heads", "M2": "previous-token heads"}[m])
+    axes[0].set_ylabel("within-layer similarity to parent")
+    axes[1].legend(fontsize=7, loc="lower right")
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_critical_period_e46.png", dpi=160)
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
-    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale):
+    for fn in (fig_crossover, fig_scale, fig_benchmarks, fig_flan_scale, fig_determination_map, fig_critical_period):
         fn()
     print(sorted(p.name for p in OUT.glob("*.png")))
