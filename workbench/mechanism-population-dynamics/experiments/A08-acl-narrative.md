@@ -38,7 +38,7 @@ Is anything in a language model innate? We answer with a natural experiment hidd
 4. **Acquired: what the model knows and how it uses context：**
    - 4.1 强度与出现时间；no lucky seeds（11 个 NLP 基准 × 14 个尺寸）；
    - 4.2 **“Question:” 习惯：** 1% 的 Flan；只认字面模板；PopQA、NQ-Swap；OLMo 2 中期训练；60M–1B；出现于预训练 3.6%；对评测的含义：问答格式的上下文忠实度 / 知识冲突评测部分测的是这个模板习惯；提示模板敏感性有预训练数据来源。
-5. **A critical period：** Lenneberg 的类比；1–2.5% 锁定；之后换成代码这种“新语言”也改不动；两个尺寸的受控模型 + 公开套件。
+5. **A critical period：** Lenneberg 的类比；1–2.5% 锁定；之后换成代码这种“新语言”也改不动；两个尺寸的受控模型 + 公开套件（Pythia-12B 在训练 2% 时已共享分工）。
 6. **What the corpus is about, not how it speaks：** 语料距离规律（每个尺寸、去混杂）；**E64：起作用的是实词分布（讲什么），不是虚词分布（怎么讲）——虚词在英文语料之间几乎不变，控制实词后没有额外作用**；自然语言 vs 代码；SGD 温度一段（模型越大越先天）。
 7. **Implications for NLP：**
    - 评测与可复现性：seed 匹配的比较；no lucky seeds；混合效应设计（呼应 ACL'25）；
