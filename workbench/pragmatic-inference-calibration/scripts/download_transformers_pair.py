@@ -2,6 +2,8 @@
 import argparse,json,time
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
+from download_network import configure_direct_downloads
+ENDPOINT = configure_direct_downloads()
 from huggingface_hub import snapshot_download
 
 ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True)
@@ -13,11 +15,13 @@ def download(m):
     for attempt in range(3):
         try:
             snapshot_download(m['id'],revision=m['sha'],local_dir=p,max_workers=2,
+                endpoint=ENDPOINT,token=False,
                 allow_patterns=['*.json','*.jinja','tokenizer.model*','*.txt','README.md'])
             index=p/'model.safetensors.index.json'
             files=sorted(set(json.loads(index.read_text())['weight_map'].values())) if index.exists() else ['model.safetensors']
             assert all(x.endswith('.safetensors') and 'consolidated' not in x for x in files)
-            snapshot_download(m['id'],revision=m['sha'],local_dir=p,max_workers=2,allow_patterns=files)
+            snapshot_download(m['id'],revision=m['sha'],local_dir=p,max_workers=2,
+                allow_patterns=files,endpoint=ENDPOINT,token=False)
             assert all((p/f).is_file() and (p/f).stat().st_size>0 for f in files)
             (p/'DOWNLOAD_COMPLETE.json').write_text(json.dumps({'model':m['id'],'revision':m['sha'],
                 'selected_weight_files':files,'excluded_duplicate_consolidated':True},indent=2))
