@@ -95,9 +95,8 @@ Our contributions are:
 
 \paragraph{Seeds crossed with corpora.}
 DataDecide \citep{magnusson2025datadecide} pretrains OLMo-style models at 14 sizes (4M--1B parameters) on 25 corpus recipes---C4, DCLM and its quality-filtered variants, Dolma~1.6/1.7 and their ablations, Falcon RefinedWeb variants, FineWeb-Edu/-Pro and mixtures---each with three seeds.
-The seed sets the initial weights, and a seed's step-0 weights are shared across most recipes; we verify this on the released checkpoints and use, at each size, the recipes on which they are shared (10--23 per size below 1B; at 1B all 25, where 69 of the 75 runs share them; Appendix~\ref{app:audit}).
-Pythia \citep{biderman2023pythia} trains a standard and a deduplicated model from identical step-0 weights at every size; we use 70M--12B, and the independently initialized PolyPythias \citep{vanderwal2025polypythias} as a different-seed reference.
-Because a published step-0 checkpoint need not be the state a run started from, we also audit the earliest training checkpoints; the audit excludes one Pythia pair whose released final checkpoints are nearly identical.
+Within a size, a seed's initial weights are shared across recipes, so each seed has been grown on up to 25 corpora; we confirm every run's initialization from its released weights (Appendix~\ref{app:audit}).
+Pythia \citep{biderman2023pythia} trains a standard and a deduplicated model from identical initial weights at every size; we use 70M--12B, with the independently initialized PolyPythias \citep{vanderwal2025polypythias} as a different-seed reference.
 
 \paragraph{Pairs.}
 A crossing contains three kinds of model pairs: \emph{same seed, other corpus}; \emph{other seed, same corpus}; and both different.
@@ -115,8 +114,7 @@ A corpus can never \emph{choose} a head; agreement above zero between models tra
 The empirical question is whether the seed's choice survives a change of corpus.
 
 \paragraph{Reading behaviour.}
-For function we use DataDecide's evaluations on 11 benchmarks (ARC-Easy, ARC-Challenge, BoolQ, CSQA, HellaSwag, MMLU, OpenBookQA, PIQA, Social IQa, WinoGrande and their OLMES average), circuit strength and developmental timing, and \emph{context trust}: on knowledge-conflict prompts that state a counterfactual fact, the log-probability margin of the counterfactual over the memorized answer, on facts the model knows \citep{li2025taming,du2024context}.
-Statistics are recipe-bootstrap intervals, unbiased variance components, and permutation and Mantel tests \citep{mantel1967detection}; Appendix~\ref{app:stats} gives details.
+For function we use DataDecide's 11 benchmark evaluations (Table~\ref{tab:benchmarks}), circuit strength and developmental timing, and \emph{context trust}: on knowledge-conflict prompts that state a counterfactual fact, the log-probability margin of the counterfactual over the memorized answer, on facts the model knows \citep{li2025taming,du2024context}.
 
 \section{Innate: Where the Circuits Live}
 \label{sec:innate}
@@ -154,7 +152,7 @@ What the seed fixes is a coordinate system: which head hosts which role, which r
 
 \finding{What is universal.}
 The layer that hosts each role is shared by all models regardless of seed or corpus (layer-profile agreement 0.4--0.7 for both pair types), and every 1B model implements in-context copying with the same algorithm, a previous-token head composing with an induction head (75 of 75 models).
-The seed decides only \emph{which} of the interchangeable heads in a layer takes a role---nothing more, and nothing less.
+What the seed decides is exactly \emph{which} of the interchangeable heads in a layer takes each role.
 
 \section{Acquired: What the Model Knows and Does}
 \label{sec:acquired}
@@ -213,7 +211,8 @@ Dolma~1.7 contains about 1--2\% of Flan instruction data \citep{longpre2023flan,
 We compare the two on knowledge-conflict prompts from ParaConflict \citep{li2025taming}, in which one sentence asserts a counterfactual fact (``The capital of France is Rome.'') and is followed either by a declarative continuation or by a question in Flan's format (\tmpl{Question: What is the capital of France? Answer:}).
 
 \finding{Finding 5: 1\% of instruction data teaches the model to trust the context after \tmpl{Question:}.}
-Removing Flan lowers the 1B models' trust in the counterfactual context by 1.3--3.5 nats across four kinds of context, but only when the prompt is a question; declarative prompts and the models' knowledge of the facts are unaffected, and of four contrasts that separate the format of the context from the number of mentions of the counterfactual, supporting argument and length, only the format matters ($+2.23$, SE 0.50).
+Removing Flan lowers the 1B models' trust in the counterfactual context by 1.3--3.5 nats across four kinds of context whenever the prompt is a question, and leaves declarative prompts and the models' knowledge of the facts untouched.
+The effect follows the question format ($+2.23$ nats), not how often the context states the counterfactual, the argument around it or its length.
 In behavioural terms, the share of questions on which a model ignores a one-sentence context and answers from memory falls from 14.3\% to 1.9\%.
 
 \finding{The habit is keyed to a literal template.}
@@ -298,11 +297,11 @@ Varying only the seed, these works cannot tell what the seed contributes beyond 
 
 \paragraph{Universality and stability of circuits.}
 Algorithms recur across models while components vary \citep{chughtai2023toy,gurnee2024universal,tigges2024llm}, attention heads differ across retraining \citep{bali2026quantifying} and specialize along developmental trajectories \citep{wang2025differentiation}, and head functions can be read from parameters \citep{elhelo2025maps}.
-We explain the variation of components: they follow the seed, and they are shared when the seed and the content of the corpus are shared.
+Components vary because they follow the seed, and recur wherever seed and corpus content are shared.
 
 \paragraph{From data to mechanisms.}
 Data properties shape whether in-context learning emerges \citep{chan2022data,singh2024needs} and which training examples form a head \citep{chen2026mechanistic}.
-With the seed held fixed, these effects concern whether and when a mechanism forms; where it forms is not the data's to choose.
+These effects concern whether and when a mechanism forms; where it forms is the seed's choice.
 
 \paragraph{Knowledge conflicts and prompt format.}
 Whether a model follows a counterfactual context or its memory depends on the context's form and the model's confidence \citep{longpre2021entity,xie2024adaptive,du2024context}, is mediated by competing mechanisms \citep{ortu2024competition}, and shifts with the prompt's wording \citep{zhou2023context,sclar2024quantifying,hua2025flaw,liu2026prompt}; synthetic pretraining shows which data properties make models use both sources \citep{kim2026training}.
@@ -320,6 +319,12 @@ A circuit diagram of one model is a statement about one seed: its algorithm and 
 Ablating the ten most important heads of a same-seed sibling trained on another corpus does 19.5\% of the damage of ablating the model's own; heads found in a different-seed model trained on the \emph{same} corpus do 2.0\%.
 Data attribution explains whether a circuit forms, not where it lives, and comparisons of models trained on different data should match their seeds.
 
+\paragraph{For model provenance.}
+Because the anatomy outlives the weights, the layout certifies whether two released models grew from one initialization, with no access to their training; read this way, it found the six DataDecide runs whose initialization differs from their label.
+
+\paragraph{For training.}
+The two levers that set how much of a model is innate are in the practitioner's hands: colder training, with larger batches or smaller learning rates, lets the seed fix the layout and makes circuits reproducible across corpora, whereas changing the corpus within the first percent of training draws a new one.
+
 \paragraph{For the nature--nurture question.}
 In the terms of the debate we began with, a language model's innate endowment is not a grammar but an anatomy: a layout of where its computations will live, drawn at random, written into the network during a brief critical period, and indifferent to the language that fills it.
 Everything linguistic---what the model knows, how it behaves, which templates it trusts---is acquired, and acquired with surprising literalness.
@@ -331,15 +336,15 @@ Its seed decides, in the first percent of training, which of many interchangeabl
 Its corpus decides what those circuits do---down to a habit of trusting whatever follows \tmpl{Question:}.
 
 \section*{Limitations}
-Our evidence comes from decoder-only transformers trained on predominantly English corpora, up to 12B parameters; how the layout behaves across languages with different function-word systems, and in other architectures, is open.
-The critical period is established by intervening on models of up to 12 layers; the larger public models are observed, not intervened on.
-Head roles are read from attention patterns and from a weight-based copying score; causal role maps from single-head ablation agree in direction and are coarser, because redundant heads absorb single ablations.
-The template habit is traced to one family of instruction data.
-Why the model keys on \tmpl{Question:} rather than an equivalent marker, and what at initialization decides which head will win, are questions our data pose and leave for future work.
+We study decoder-only transformers pretrained on English corpora, up to 12B parameters.
+The natural experiment extends directly to multilingual suites, where function words differ across languages, and to other architectures as seed-crossed suites become available for them.
+Our interventions on the critical period use models of up to 12 layers; intervening on larger models during their first percent of training is the natural next step.
+The template habit opens two questions we leave to future work: why models key on \tmpl{Question:} rather than an equivalent marker, and which other instruction-data families install habits of their own.
+What at initialization decides which head will win is likewise open.
 
 \section*{Ethical Considerations}
 We analyse publicly released models and datasets under their licences and train small models on public corpora; no human subjects are involved.
-We report that some published checkpoints were initialized differently from their seed label to support the correct use of a public resource, not to fault its authors.
+We report our audit of public checkpoints to support their correct use.
 
 \bibliography{refs}
 
@@ -442,6 +447,6 @@ The corpus is a significant factor on almost every task and size; the seed reach
 
 \section{Statistics}
 \label{app:stats}
-Recipe-bootstrap 95\% intervals for same-seed minus other-seed agreement; unbiased two-way variance components from mean squares with $F$ tests; permutation tests with recipe labels permuted; Mantel tests for pair-level regressions; partial Spearman correlations by rank regression.
+Recipe-bootstrap 95\% intervals for same-seed minus other-seed agreement; unbiased two-way variance components from mean squares with $F$ tests; permutation tests with recipe labels permuted; Mantel tests for pair-level regressions \citep{mantel1967detection}; partial Spearman correlations by rank regression.
 
 \end{document}

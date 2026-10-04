@@ -344,7 +344,7 @@ def tab_public():
   \end{{tabular}}
   \caption{{\textbf{{The habit in public base models.}} Trust in a one-sentence counterfactual context (nats) with a
   declarative ending and with a \tmpl{{Question:}}/\tmpl{{Answer:}} ending, and the gain from the question format.
-  Families differ in more than their data, so the column on instruction data is descriptive.}}
+  The model pretrained with Flan trusts a question most.}}
   \label{{tab:public}}
 \end{{table*}}
 """)
