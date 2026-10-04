@@ -83,7 +83,7 @@
 - [AD-WM完整发布参照](results/E01_20261004_adwm_full_reference.json)：同新48原native近24/24、远18/24；physical20/24、8/24，全部96轨迹成功判据/源hash/native parity经独立复算。仅一发布seed，训练data未匹配，不是完整论文数字复现或同data方法因果gain。
 - [跨节点复现校对](results/E20_20261004_crossnode_restore_audit.json)：两节点48条factual位置轨迹逐点exact；A100 46/48 warm图像≤1 uint8差，RTX全部exact，原因不确定。主方法闭环不放宽守卫、不删anchor，改同RTX复跑；不是方法负结果。
 - [E01/E14完整训练支点预控](results/E01_E14_20261004_matched_learning_preflight.json)与[全部15训练终点](results/E14_20261005_three_seed_endpoint_audit.json)审计通过；[matched1056](results/E01_E14_20261005_matched_control_results.json)、[经验利用864](results/E20_20261005_experience_control_results.json)、[Push672](results/E20_20261005_pusht_fresh_control_results.json)全部真实轨迹独立校对。FULL-AD未稳定胜strongABS，数据利用小bank改善未稳定转为闭环gain，Push联合训练控制退化的模块原因仍待隔离。
-- [E13固定几何×预测对象](results/E13_20261005_predictive_object_endpoint_audit.json)：官方Fast相同head容量/初始，DIRECT与LOCAL各两geometry共四训练2825已完成且预控/终点审计通过；384实际闭环评测正在运行。已知方法轴，用于找下一真实增量，不预称新idea。
+- [E13固定几何×预测对象](results/E13_20261005_predictive_object_endpoint_audit.json)：官方Fast相同head容量/初始，DIRECT与LOCAL各两geometry共四训练2825已完成且预控/终点审计通过；[384闭环审计](results/E13_20261005_predictive_object_control_results.json)PRED DIRECT/LOCAL native31/29、VALUE39/22（各48），存在单source交互线索；[三source全部1152闭环](results/E13_20261005_predictive_object_three_seed_control_results.json)已审计，VALUE DIRECT/LOCAL native39/40/34 vs22/13/32，但对旧SEP/RC未稳定领先、source2增益仅2/48；首版seed覆盖输出整批排除。E14G0目标条件策略强对照正在预控，尚未确认新idea。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 

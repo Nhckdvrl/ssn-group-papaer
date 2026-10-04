@@ -330,3 +330,22 @@ A8实际接续2026-10-05：四cell各2825已全部DONE，源geometry/frozen所�
 首CPU预控因Model.training名称与nn.Module.training布尔字段冲突在loss/optimizer之前停止，两原队列与used source/failurelog完整保留20261005-E13-object-{geometry}-cpu-preflight，无训练/效用输出。仅rename训练模式方法为training_mode，增加phi-cache hash强制相等；source/prior/actions/features未改，原features producer sourcehash与最终trainer hash分开记。新CPU/CUDA retry1才是正式启动依据，预控后源码冻结；不是数值失败重抽数据。
 
 四训练固定终点之后完整same48/两接口384实际RTX闭环已启动：PRED physical0 PID3590795、VALUE physical1 PID3590796，logs/tmp/latent-E13-object-{PRED/VALUE}-RTX-control.log；actual source checkpoint/strict state/原warm state-pixels守卫已通过并产生真实轨迹。LOCAL与DIRECT各自同T1，旧LeWM H3与RC发布训练差别单列；两geometry source prior budgets不同，不以跨geometry原数称pureobjective causal。整批未齐，不筛prefix或partial结果，不称novelidea，科学主张0。
+
+### A8完整闭环结果与A9独立源重复（2026-10-05，追加运行前）
+
+[A8全部384](../results/E13_20261005_predictive_object_control_results.json)八groups/全部48/native成功/trace/checkpoint/source独立审计PASS。native PRED-DIRECT31、PRED-LOCAL29、VALUE-DIRECT39、VALUE-LOCAL22；physical20/21/44/19（各48）。DIRECT−LOCAL withinPRED native+4.17ppCI[−6.25,14.58]、physical−2.08[−10.42,4.17]；withinVALUE native+35.42[22.92,50]、physical+52.08[37.50,66.67]。oldH3 SEP32/33与RC H1ON38/34（native/physical）保留：VALUE-DIRECT相对SEP+14.58ppCI[0,29.17]、+22.92[8.33,37.50]，相对RC native+2.08CI[−12.5,16.67]、physical+20.83[6.25,33.33]。oldSEP有不同futuretargets/sampling/H3；RC发布training unmatched，不把参考差叫isolated因果。所有train/coreinit、futuretargets与loss手算/frozenphi、实际控制都已通过audit。
+
+这是可继续研究的交互线索，不能直接claimgoal表示一定非Markov、direct在所有goal表示更好或VALUE+Fast是首次。Value-GuidedJEPA/Fast/TemporalStraightening/TD-JEPA/ProWorld等均有ownership，当前只是shared-capacity matched port的一个source/开发48。不要把弱LOCAL作为solebaseline或把physical优势当原native普遍优势；两个geometryprior目标与compute不同。后续问题是goal-comparable结果空间与可组合动态状态是否必须相同、预测单位怎样与表示用途匹配。该问题值得关心，不把论文锁成某个TwoRoom起点/某个horizon或简单组件组合；仍不切paper叙事/PROPOSED/science0。
+
+A9先重复原source1/2的四cell，共八新训练2825与完整768控制，source0原结果全保留。使用既有same100/完整source1/2 ABS5650与SEP value phase2825，不重训或筛phi；新head初始化113000+seed/采样113100+seed/训练Torchseed=seed各pipeline独立，但每source四cell的head容量与完整初始tensors/clip indices保持common随机数。全部训练模型在HF，CPU保存init→CUDA继承；FP32 featurecache各geometry/source9295原事实帧、同5795starts，所有语义/physicalactions/目标/单frame/deploymentbudget同A8。新源码版本仅加入明确seed/source/unique artifact字段，不改A8 frozen源码与任何已报数字；CPU/CUDA同actualB128/手算/causal-prefix/grad/BN/nativefullcost0控全过才跑。四个实际空A100slots各source/geometry独立LOCAL/DIRECT顺序，不依赖跨节点通信；features共享nodepagecache，保存真实I/O/profile，不声称formal4并发吞吐。
+
+确认读数仍是两个geometry内DIRECT−LOCAL，并事前锁定interaction差值(PRED与VALUE预测对象收益之差)；near/far与总体全部报告、paired source+anchor bootstrap、同48共享开发task，≥3source不是144新task。数据/表示prior与head随机数都明确，主张不越过这些条件。下一history输入控制要保持训练target/容量/实际warm信息一致，操作task需另actualfactualcache/目标geometry可用性阳控；两者不是已启动/已跑通，不能先给数字。若重复不稳先读模型误差/候选支持/目标语义而非调λ网格；若稳定面对旧H3强SEP仍有益，再扩history/第二task/不同预算与完整近邻定位，仍先人审真正新narrative。
+
+A9执行校对：八新训练已全部2825终点/独立audit PASS（E13_20261005_predictive_object_repeat_endpoint_audit.json）。首版重复controller的train seed被decision seed覆盖，整批source1/2闭环输出排除，原used source/log/failure保留，见CLAIMS作废记录。A8与八训练未受影响。修正v2静态AST确认train_seed在evaluate体内无赋值、逐interface/anchor强制r.SEED/checkpoint/config相等，planner_seed独立。新raw/durable `20261005-E13-object-repeat-v2-control-{geometry}-{arm}-{interface}-RTX-s{1,2}` 完整768重跑，同全部48/targets/预算/成功定义，没有新训练数据或科学读数调整。
+
+
+### A9整批完整结果（2026-10-05）
+
+新v2全部768 DONE，原A8+v2共1152/24groups全trace/初始state/native成功/源hash与scaler独立审计PASS，[三source结果](../results/E13_20261005_predictive_object_three_seed_control_results.json)。PRED DIRECT/LOCAL native31/42/36 vs29/39/35，physical20/33/31 vs21/30/26；VALUE39/40/34 vs22/13/32，physical44/41/34 vs19/13/32（每source48）。withinVALUE平均native+31.94pp CI[4.17,56.25]、physical+38.19[6.25,63.19]；native交互+27.78[.69,52.08]，physical+33.33[−4.17,62.5]。source2 VALUE仅+2/48、physical交互负，不能把平均/CI包装成各seed稳健机制。
+
+VALUE-DIRECT对更强旧H3 SEP native+5.56pp CI[−12.5,21.53]、physical+9.03[−12.5,27.78]；对发布RC native−.69[−15.97,13.89]、physical+11.81[−5.56,27.08]，都未稳定领先。整体信息是shared Fast LOCAL对VALUE几何明显脆弱且有source异质性，DIRECT缓解不等于新的强baseline胜利；不claim非Markov/编码漂移唯一原因，不选择新paper narrative/science0。首版错误控制器整批完全排除，不使用其partial读数；原权重/checkpoint未改。下一独立方法轴E14G0官方GC-IDM/同goal零horizon GCBC/PAIRWISE：判断事实经验和表示怎样被使用才能产生控制，history/第二task仍须精确预控，不做prefixλ救援。

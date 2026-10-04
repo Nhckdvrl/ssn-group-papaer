@@ -30,3 +30,8 @@
 **撤回旧E16比较的严格data-only解释和“PBB被强基线吸收”判断，待公平重跑。** 独立CPU复验发现torch2.7.1 AdamW加载公共CPU state时会保留`step` tensor引用；多方法顺序运行使源state计数累加。权重/数据/gradient steps相同，但初始bias-correction历史不同。旧seed0七方法、seed1/2四方法及由这些模型计算的decision audit受影响；数值和原始文件全部保留，不能用于方法优劣或排序机制的因果结论。六方法objective matrix也受影响，已停止自身未完成进程、保留partial与invalidation artifact。
 
 [可复现校对](results/E16_20261002_optimizer_audit.json)。修复为每方法deepcopy完整optimizer state，并断言初始steps相同、源steps不可变、结束steps=初始+updates；所有原方法/seed/目标重跑，不筛选方法，不追加数据，不重训base。base checkpoint文件未被改写；E13无训练、E18每fork新optimizer均不受此alias影响。科学主张此前为0，继续为0；C00工程L1保留。
+
+
+### 2026-10-05｜E13 A9重复闭环控制器变量覆盖：整批排除
+
+A9首版`predictive_object_repeat_control.py`将训练seed参数在decision循环中覆盖为planner seed，导致后续interface元数据/输出路径错误，后续LOCAL等待错误checkpoint，且有跨队列输出路径碰撞。**首版source1/2闭环的全部输出排除正式比较**，包括已产生的DIRECT轨迹；不筛保留正确部分。自己的受影响队列已停止，原源码、四log、错误路径与失败记录完整保存于`~/.cache/latent-wm-results/20261005-E13-object-repeat-controller-seed-shadow-failure/`。A8 source0控制器没有该seed参数，384结果不受影响；八个重复训练checkpoint及独立endpoint audit不受影响。没有主张升级或以该批partial作方法判断；science0/C00 L1保持。修复另存v2，区分不可覆盖的train_seed与planner_seed，逐interface/anchor核对训练来源，使用新unique路径完整重跑全部768，不重训/重抽数据。

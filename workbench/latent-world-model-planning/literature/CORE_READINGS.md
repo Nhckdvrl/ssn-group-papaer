@@ -363,3 +363,17 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 - [PAVE（2608.30378v1）§2–5/AppA–B](https://arxiv.org/html/2608.30378v1)：继承JEPA-WAM的local paired-future训练与RECAP advantage条件化，把relative remaining-trajectory多horizon监督和独立distributional state value/20step advantage分开；所有有效轨迹教变化，actor只在positive条件部署，辅助预测器/critic不在线执行。LIBERO/Plus/RoboTwin、同manifest三seed，关闭policy evolution检验目标，另检验positive/null/negative/未标注BC。1.29B在线actor与我们的compactWM不同，不直接照搬资源规模；借鉴“经验物理正确≠行为值得模仿”的问题切分。原文明确in-sample critic calibration/coverage与chunk credit边界，未核验代码或数字复现。
 
 与当前结果的关系：SEP已知机制在三个source上far增益重复；CF混合四cell无稳定增益。下一设计要区分经验怎样教会动作后果、目标几何、策略/搜索，而不是把分阶段+混合换名。Fast-LeWM v2§3.3–3.7也再次核实causal state-conditioned action-prefix/dense multi-horizon与self-consistency；direct prediction已成熟，不claim首次。以上是定向方法阅读，不是新survey或已选论文叙事。
+
+
+### 2026-10-05 A8结果后的近邻设计读回（R2/R3，非新survey）
+
+- [Value-GuidedJEPA 2601.00844v1 App7.3](https://arxiv.org/html/2601.00844v1)：已明确分别学predictive VCReg representation和VF planning representation，前者预测、后者打分；其WS accuracy .60、未改善。两角色不是我们首次提出；该负结果提供边界，不关闭母问题。当前三seedSEP是已知baseline成功，A8只初见预测对象×固定前端交互，尚缺history/第二task/充分强参照。
+- [ProWorld 2608.01926v1 §3–5/AppH](https://arxiv.org/html/2608.01926v1)：从LeWM local consistency与long-goal进展歧义切入，借hyperbolic entailment/goal order。实际设计先在Euclidean z中历史3递归预测，再用qω投影到Lorentz目标空间；原文不是直接递归hyp embedding。未来对比、同trajectory goal-order与SIGReg共同训练，部署terminal/best/mean goal distances。四task包含Push/Cube/Scene/AntMaze，三trainseed；删除对比/目标order、逆序/随机对、Euclidean与terminal-only控制区分设计。代码原文注明accept后release，未核验release/未本地复现。已有AR加goal-aware geometry反例，A8不能claimAR普遍失败或首次dynamic/goal分离；exact待研究差是shared-capacity预测对象与表征用途的实际搭配效用，不是把两成熟组件相加。
+- [Bai/Xiong Temporal-Distance JEPA 2607.25337v1 §3.1/3.5/4](https://arxiv.org/html/2607.25337v1)：temporal mined distance与predictive rollout co-design，五步rollout loss对齐planner；拓扑task用temporal cost、contact task用latent L2。分训练几何与部署score用途、锁manifest与budget、消融mining/cost是可借鉴实验结构。其十seed主表与三seed诊断不同；不能混淆Bagatella2510.00739、不能把published数字当我们的复现。
+
+继承：direct prefix、Bellman/task geometry、不同空间职责均成熟；当前需要用独立source/history/第二task和strong value/完整RC证明新的可用设计，而非把single-source LOCAL落后写成普适表示定理。上述阅读不改变RESEARCH_PLAN已审优先/工作台状态。
+
+
+跨领域定向借鉴（A8后）：[Boots/Siddiqi/Gordon Closing the Learning-Planning Loop with PSRs §II–IV](https://www.cs.cmu.edu/~ggordon/boots-siddiqi-gordon-closing-loop-psrs.pdf)把state定义为干预action tests的未来观测概率、从谱辨识到真实闭环；PSR的充分statistic/可递归更新有严格条件，A8一个goal embedding或有限prefix不是PSR充分性证明。[Havens等1912.04201 §4.1–4.3](https://arxiv.org/pdf/1912.04201)已用多步reward-only监督latent dynamics；其规划保证需要所有H-step轨迹误差上界和优化精确，不能把有限MSE等同该保证。原文NeurIPS2019 workshop，不标成主会接收。
+
+[Latent Geometry Beyond Search 2605.08732 §4/AppD–G](https://arxiv.org/html/2605.08732v1)从在线latent search转为真实观测上goal/horizon条件单步IDM；1…50 hindsight goal、原始动作、frozen LeWM、逐步feedback。母问题是表征是否已使控制可摊销，不是新inverse名字；pairwise视频插值与训练分布失配是其方法来源。四任务/solver families/holdout episodes与data/noise/容量控制，已claim廉价GC-IDM，可复用强baseline。其Hmax1对照同时改goal分布，不能只当horizon输入消融；StageG0另加samegoal zero-horizon GCBC。已下载[官方代码](https://github.com/hdnndh/Latent-Geometry-Beyond-Search-Amortizing-Planning-in-World-Models)commit48c45b1…全文读model/dataset/train/eval，代码planner残留导入不存在PairwiseIDM，正式只独立加载真实GoalConditionedIDM组件；非该paper完整复现。

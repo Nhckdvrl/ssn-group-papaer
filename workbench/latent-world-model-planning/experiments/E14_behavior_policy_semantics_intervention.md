@@ -50,3 +50,25 @@
 完整初始化、297/204→93 optimizer步数/finite moment、encoder/projector所有参数与BN冻结、firstbatch/finalsampler、所有episode初始state/native success/trace/checkpoint/load来源通过独立reader。原value repeat384队列3574468已自然退出，禁止再启动同unique run。raw/durable全审计20261005-E14-three-seed-control-audit；git仅summary，完整rows留artifact。
 
 这是可靠的已有baseline机制支点，Value-Guided JEPA已拥有Sep/Joint与距离价值设计，不能叫新idea或原paper复现。下一增量应利用它理解有限经验、动作后果、可复用目标空间与不同模型使用方式；不围绕τ/λ网格优化已知方法，不因已有近邻关闭R1–R5，当前科学主张0。
+
+## Stage G0：相同事实经验中的目标条件策略强支点（2026-10-05，运行前）
+
+推进I09/R1/R2/R3与P04/P05。E14已知Bellman几何far收益重复，E13A8预测对象×几何单source有交互，尚不能把所有现象归CEM或首次两表示。新增竞争设计直接从原事实轨迹学目标条件单步动作；继承公开GC-IDM 2605.08732，非novel方法或其原paper完整数字复现。vendor commit48c45b1cb2b34dd2c1c61d222c8309de567fde55已读model/dataset/train/eval：官方原始动作训练，policy直接返回原始动作；horizon=min(remaining budget,50)，逐步真实反馈；不能额外反标准化。官方CLI默认200epoch/8192/3e−4与README/论文50epoch/1024/1e−3不同，事前选后者，不结果后择优。
+
+固定原same100事实、已有PRED/VALUE source0/1/2 FP32缓存9295帧，各自身几何冻结且全部六源Hash/BN已审；利用原cache_manifest.layout重建episode IDs/next-step合法索引，不把35stepclipstarts作next-step全集。每source两个geometry×三controller：GC-IDM（hindsight goals1…50/实际horizon输入）、GCBC-MATCHED（同goal/数据/模型capacity/init，只把horizon输入置0）、PAIRWISE（goals仅下一帧/horizon1，监督分布改变是强支点，不称horizon-only ablation）。最大未来min(50,episode剩余)，不跨episode；原生raw2D动作MSE、official1.5M MLP/3×512/LN/GELU/dropout.1/64sin+AdaLNzero，小head训练。
+
+各source common官方head初始化115000+source、split/shuffle115200+source/goal115100+source，within-source全部六head初始相同，GC-IDM与GCBC goals/样本相同。采样全部next-step合法starts，90/10frame split只作优化diagnostic（同episode并非held-out episodes）；所有方法使用相同split与每epoch无替换shuffle，B1024/drop_last、50epoch/AdamW1e−3WD1e−4/cosine→1e−5/clip1/FP32。固定final50终点，不按validation或efficacy挑best，样本/updates/cost独立记账；不同heads训计算不同于A8，不称matched total model training。
+
+阳性对照：重建全9295frame layout无孔/重叠、每start+goal同episode与1…50、训练source不含新48evalepisodes、phi-source/features/actionsSHA；独立officialDataset真实样例对齐raw action/goal/h；manual AdaLN-zero初始horizon无影响/解除零调制后goal和horizon真正有通道；实际B1024 loss手算/freshopt1step/finite gradients、frozenphi缓存不可变、CPU与CUDA预控过才训练。部署预控另检官方policy encode/remaining clamp/原动作返回与自写controller一致、全部exact warm pixels/states；这些部署控没有跑完之前不启动闭环，不把script准备好当结果。
+
+主读数：完整全部source/geometry/三arms原新48、100step budget、逐step真实反馈、native success16px/trace独立复算；同raw action native及clip[-1,1] physical两输出边界版本（GCpolicy不包含CEMproposal coordinate），不得混称与CEM接口只有一个因素不同。50step成绩另保留但不选budget；near/far/overall成功与help-harm paired source+anchorCI，action MSE仅辅。要问这些经验能否经不同使用方式形成可执行控制、goal distance支持规划是否也支持policy，以及传统反馈/动作抽象能否吸收A8交互。不是局部λ优化或为已有故事补一张小表。
+
+噪声地板：3train sources共享100train/48开发tasks，不能说144独立任务；PAIRWISE不指向远goal训练goalshift已知；paper pretrain/scaler/numerical协议未完全匹配。决策表（跑之前写）：GC-IDM/GCBC同目标数据即可强控制→提高独立policy baseline并检未来cost/shift/task复用的actual delta，不发明GC-IDM；task geometry利于CEM却伤policy/反之→设计input/output角色与训练对象的跨使用比较；全部弱且pairwise阳性好→分解hindsight目标行为可预测性/coverage，避免把CEM失效当全部世界模型上限；阳性失败→halt/留failure，不出方法胜负。独立A100slots，每head小，本地FP32 features只MB/no视频streaming、不改RESEARCH_PLAN优先/工作台状态。
+
+G0部署启动前校对：18个固定50epoch训练全部DONE（各400updates/409600samples），12个actualCPU/CUDA训练preflight全部PASS。官方Policy组件以AST完整抽取原GoalConditionedPolicy类，避开同文件不相干缺失PairwiseIDM导入，类body不改；实际source/encoder/projector/动作返回与0/50/99步remaining clamp对照、6个source×geometry各CPU/CUDA预控、全部48exact warm守卫先过才闭环。GCBC输入0/PAIRWISE1覆盖与官方Mode wrapper相同，三个方法raw动作，无错误逆标准化。controller保存success_by50及100完整轨迹，明列逐步反馈与CEM25承诺差别；1728完整source×geometry×arm×interface×48，正式summary等全部36groups齐后独立复算。
+
+### G1：操作任务目标条件策略支点（2026-10-05，数据编码前）
+
+不把G0导航比较变成单环境结论。先为PushT建立真正可训练的原事实goal-policy数据：固定发布LeWM encoder/projector，原HDF首86episode全帧、下一primitive action与1…50未来goal（原raw动作），与fresh48源episode全部disjoint。原发布encoder预训练split未知，明确这是head训练未见episodes而非整个系统unseen。只一次节点本地HDF顺序读/FP32 frozen encode，禁用DataParallel/跨节点stream，保存每episode row边界/episodeIDs、source模型SHA、HDF文件路径与既有hash参考、各encoded arraySHA、full frozen weights/BN不变。
+
+G1首先只编码资产与阳性控：真实原224RGB、同ImageNet normalized、encoder/projector严格303源、native encode与手算投影/小batch一致容差，first86frame ranges不重叠且future目标不跨episode、actions原样保存（terminal NaN保留/训练排除，不能标准化后再按raw执行）。编码pipeline若失败保留source/log，不出方法效用。下一GC-IDM/同goal GCBC/PAIRWISE各至少1训练seed，沿G0预控后完整原Pushfresh48/真实success角度+位置/100steps两输出bounds审计；仍未部署或确认Push方法gain，不以资产生成代替实验。对照已有发布CEM24/21与joint5/6，后续实际模型/采样/部署预控另补启动记录。没有增加sim训练steps，不支持模块冻结本身是novelty。

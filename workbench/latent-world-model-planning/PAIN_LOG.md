@@ -132,3 +132,13 @@ P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.jso
 Push joint更新控制损失已确定，但机制未知；新增两模块隔离actual训练全部2000/预控/独立checkpoint-accounting PASS，完整新任务192控制实际运行中。不叫encoder遗忘，不按小bank或partial结果救局部设计。当前科学主张0、PROPOSED不变。
 
 Stage5整批覆盖上述running：四groups192实际Push控制complete，独立完整trace/checkpoint/source/normalizer/初始25D状态/native成功/全部48分母与两interface审计PASS，见E20_20261005_pusht_module_control_results.json。DYNAMICS-ONLY native12(近11/远1)、physical9(8/1)；GEOMETRY-ONLY native12(10/2)、physical8(6/2)，发布24/21、原joint5/6（各48）。两隔离native对发布均−25pp pairedCI[−37.5,−12.5]。冻结减轻joint损失但不保住发布能力，不能简单归因仅encoder漂移；两模块职责仍需和experience/model-use/coverage一起理解，单seed不当一般定理。原两个RTX3584419/3584420已自然退出；不重启unique run、不将freeze包装成newidea。
+
+
+### 2026-10-05｜P04/P05：预测对象与规划表示存在可追查的交互
+
+E13A8 shared Fast head/capacity/初始化、same100事实35stepclips、两者部署T1，384闭环完整审计。PRED DIRECT/LOCAL native31/29、physical20/21；VALUE39/22、44/19（各48）。withinVALUE direct收益+35.42pp CI[22.92,50]、+52.08[37.5,66.67]，withinPRED CI跨0。完整H3 SEP32/33、RC38/34参照保留：VALUE-DIRECT native未显著胜RC，physical优于发布RC的比较训练未匹配。两个前端prior5650/2825且目标不同，不能说Bellman geometry本身因果造成非Markov、direct普遍优于recursive。单source/共享开发48不是新方法确认；旧prior/H3/targets/sampling与compute差异单列。证据[E13A8](results/E13_20261005_predictive_object_control_results.json)。
+
+价值在于可以检验重要设计问题：同一latent承担任务比较、动态状态、预测结果时是否存在用途张力，怎样改预测对象/训练条件改善实际控制。近邻Value-GuidedJEPA App7已试两表示（其WS未改善）；ProWorld在Euclidean z递归后投影hyperbolic goal space，不能claim首次分角色或AR在goal geometry不可用。A9八独立source1/2重复训练已完整审计PASS，正式全768控制重跑中；首版controller种子覆盖导致全批输出排除并记录CLAIMS，A8及模型未受影响。不以弱LOCAL为solebaseline、不局部调prefixλ，不改变已审路线；下一实验需区分history/conditioning、真实目标代价与candidate质量，并扩操作任务或变化后的复用。
+
+
+A9覆盖上一pending：三source完整1152控制已审计，PRED direct/local native31/42/36 vs29/39/35；VALUE39/40/34 vs22/13/32。withinVALUE+31.94pp CI[4.17,56.25]，但source2仅+2/48。physical交互CI[−4.17,62.5]含0；DIRECT对strong旧SEP与RC两个接口CI全含0。不能只报相对弱LOCAL的大gain而说新idea已确认。保留重要的表示用途×预测对象问题，增加E14G0真实goal-policy使用轴，研究母问题不缩成单框架的局部decoder优化；[整批源/轨迹/CI](results/E13_20261005_predictive_object_three_seed_control_results.json)。

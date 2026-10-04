@@ -139,3 +139,11 @@ E16曝光u56500/100epoch已complete39/48，HF E16_data_exposure_resume_s0/BASE10
 新增value全部三训练source、geometry四cell与Push两模块checkpoint继续HF `latent-wm-trained/`；完整轨迹/rows保留durable `20261005-E14-three-seed-control-audit`、`20261005-E20-geometry-control-audit`、`20261005-E01-rcaux-full-control-audit` 与各原unique run。git结果为summary、config/hash/统计/指向完整raw audit；已有四份matrix JSON本次仅去大rows，不改任何计数/CI。
 
 既有venv只补缺少scikit-learn1.7.2/scipy1.15.3/joblib1.5.2/threadpoolctl3.6.0，--no-deps，Torch2.7.1cu128/NumPy1.26.4/SWM0.0.6不变。依赖失败早于efficacy并完整留档。
+
+
+### 2026-10-05：预测对象重复与独立goal-policy轴
+
+- E13 source0/1/2十二Fast同capacity/head模型各u2825在标准HF `latent-wm-derived/20261005-E13-object-{geometry}-{arm}-A100-s{seed}`，完整独立训练与1152闭环审计已写portable。首版重复controller全部错误输出只diagnostic，旧source/log保留durable20261005-E13-object-repeat-controller-seed-shadow-failure，正式source1/2只用unique-v2-control-*。
+- [GC-IDM官方仓库](https://github.com/hdnndh/Latent-Geometry-Beyond-Search-Amortizing-Planning-in-World-Models)，本地ignored vendor/gc-idm，固定commit48c45b1cb2b34dd2c1c61d222c8309de567fde55。只复用真实GoalConditionedIDM/原Dataset；原eval文件PairwiseIDM导入缺失，原Policy类AST完整抽取和独立原body parity先控，未改变其类方法。无额外环境安装/官方完整数字复现声明。
+- E14G0十八policy heads `latent-wm-derived/20261005-E14-goalpolicy-{PRED/VALUE}-{GC-IDM/GCBC-MATCHED/PAIRWISE}-A100-s{0,1,2}/epoch50.ckpt`，initial.pt、state/optimizer/RNG齐备；400updates/409600样本/每head，原9295事实FP32feature caches复用。所有训练预控/终点审计PASS，实际controller12预控PASS，36组1728整批闭环进行中。raw/durable20261005-E14-goalpolicy-*/结果config记hash；无需重下载全pixels或新建conda。
+- Push G1 features只编码first86原HDF事实、freeze发布LeWM，node-local `/tmp/latent-wm-data/E14-goalpolicy-pusht-RELEASED-frozen-features`，durable20261005-E14-goalpolicy-pusht-RELEASED-features。源模型在HF，训练episode与fresh48source分离，published pretraining未知；未跑完不称已建成asset、尚未Push policy训练/部署。
