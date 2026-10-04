@@ -182,3 +182,11 @@ A11操作全2904query完成并独立审计：[H3完整结果](results/E13_202610
 
 
 2026-10-05 P04/P05/P08｜RWM/INTACT原理的目标复用pilot有条件线索，尚未胜strongfixed。F2全576审计PASS：Nav trackingfeedback nominal/gain/wind37/35/37，Push28/23/20（各48），对应REFRESH5为37/33/33和28/21/19。Pushgain vsHOLD+14.58ppCI[4.17,27.08]，vsREFRESH5区间含0；wind导航 vsREFRESH5正，但REFRESH15已36。开放预测current控制Pushgain15/48低于真实feedback23，支持读回实际state有用，不等价全新tracking/因果机制或任意goal泛化。下一组按新episode/三发布seed/fullpolicy确认，不在t10window调λ。科学主张0。
+
+### 2026-10-05｜P04/P05/P08：参考轨迹复用扩展没有稳定胜过强固定策略
+
+F3覆盖pending：[完整3456独立审计](results/E18_20261005_intact_full_recovery_results.json)PASS；六actualsource/native/causal/typedqueryCPU重算，共9071局部查询，全部种子/起点/条件保留。以下按published0/42/3072，各48：Nav nominal BASE25=36/34/34、GOAL15=35/34/35、GOAL5=28/24/26、REFERENCE5=36/27/15；gain=31/31/30、31/32/30、27/23/22、31/23/14；wind=28/27/31、32/28/31、24/27/22、28/26/16。Push nominal为25/28/23、28/26/25、28/28/25、26/26/26；gain为23/20/20、20/22/21、21/22/22、23/25/21；moment为24/24/22、24/24/22、24/26/22、24/24/22。
+
+SOURCE×anchor crossed95CI：Nav nominal REFERENCE5−BASE25=−18.06pp[−42.36,2.78]、help12/harm38，−GOAL5=0[−22.92,18.75]；Navgain−BASE25=−16.67[−37.5,2.08]，wind−GOAL15=−14.58[−32.64,2.08]。Push gain−GOAL5=+2.78[−3.47,9.03]，nominal−GOAL5=−2.08[−9.72,4.86]，moment−GOAL5=−1.39[−7.64,4.17]。三模型CI宽，不以跨0宣布等效；逐source大差完整保留。所有12cell/seed完成；原四RTX队列退出/CPUreader3667312完成。新goalbank公开预训练未见性未知，timing不做headline。
+
+F2小window/source0的conditional正信号没有在新的完整部署/三source中形成对最强fixed的稳定收益。不是新方法胜利，也不把reference-control母问题关掉。**不继续调reference融合/重建长度或挑model3072以外的种子救故事。** 可能是imaginedtarget的可实现性、共享local/global读出、控制训练分布、goal时间一致性等，当前不能作单原因。E14H0正在生成controller-induced真实后果，下一步比较实际训练对象/可执行经验模型及模块复用，仍保留人审I14/E20优先；science0/状态不升。

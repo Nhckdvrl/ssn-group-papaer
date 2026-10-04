@@ -413,3 +413,21 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 
 
 [RWM2505.15589v1 §3–5](https://arxiv.org/html/2505.15589v1)继承model-reference adaptive control与TD-MPC2，将nominal policy的world prediction作为瞬时reference，学reward-free residual controller，反向通过action Jacobian纠正实际偏差；thresholded action cost避免饱和，PointMass/Walker/Humanoid及domain-randomized baseline为关键证据。其Lipschitz、control authority、bounded model error/扰动与局部value曲率是假设，不是任意视觉latent证明；当前尚未完整复现其RL/onlineupdate。F2只借reference原则与INTACT已有local operator作训练freetarget复用，不能叫newRWM或首次plan-preserving feedback。[ACID2607.02403v1 §3/AppA/§6](https://arxiv.org/html/2607.02403v1)借独立flow-IDM校验forward→inverse action cycle，逐candidate spread匹配加入CEM cost；四model六task/预算与latency消融，依赖可观测逆映射，作者也承认POMDP/外生作用限制。F2可记录cycle诊断但不是ACID完整verifier或“cycle正确⇒物理正确”保证；分支动作冗余/未知扰动仍需真实效用证据。
+
+## 2026-10-05｜完整反馈扩展期间：预测对象、控制训练与适配的原文读回
+
+这些笔记服务I14/E20、I09/E14和R2/R3/R5，不新增survey或预选narrative。整批F3未齐；论文效果不是本地效果。
+
+- **Planning Limits [2609.39235v1](https://arxiv.org/html/2609.39235v1)，复读§3/§5/AppendixE/P。** 母问题是预测何时能给有用动作排序；来自固定短rollout与远goal的评分错配。改变imagined horizon而非仅加模型容量，匹配candidate×horizon×iteration预算，并用exact simulator定位评分问题。expert-vs-random识别不等于所有候选的真实regret，近expert扰动用于打破饱和；专家subgoal提供额外信息。多数比较一个trainseed，encoder冻结，不能推广“更好训练无用”。继承：分别测候选支持、评分与闭环；我们的增量仍需可训练方法及实测收益，长时TD/value或闭环option是可探索设计，而非重复其plannable-range定义。
+
+- **LePlanner [2609.13845v1](https://arxiv.org/html/2609.13845v1)，§3/AppendixA/B/C。** 源自search高成本与fixed-terminal deadline反复重置；共享refinement transformer通过冻结WM反传，把hindsight offset只用于arrival+hold训练loss，部署不输入deadline，并用conditional16-GMM约束数据支持。四任务、matched执行和预测calls；完整Push缓存233万frame/20kupdates，不能拿86episode小head代表它。AppendixA明确headlinePush98%来自11task-draw sweep中的较好draw；完整draw平均才是泛化参照。本地未复现。最接近新方法轴是控制器训练目标与WM用途共同设计；只加trajectory reference不是其完整方法，也不能claim首次防replan拖延。
+
+- **SPlaTES [RLJ2025原文](https://rlj.cs.umass.edu/2025/papers/RLJ_RLC_2025_136.pdf)，§4–5/AppendixB.4/A.3。** 母问题是长时primitive预测不稳定；继承DADS、options、TD-MPC2与iCEM，联合学习可预测、多样、task-related闭环skill。低层输入start abstract state与skill内时间；高层Gaussian mixture预测技能结果，小replay避免旧policy结果失效，skill-change处bootstrap支持可组合。Fetch/Ant五seed，对sharedunderlyingRL/DADS、densepotential、纠错输入、chainability和flatdistillation有消融。需要环境reward/在线RL与状态输入，不是视觉JEPA免费改装；HAC比较还改变actuator/reward权限。启发：控制器诱导的后果和原始动作后果应分别学习，终点速度/下一技能可执行性不能被静态终帧替代；不能claim首次预测feedback option。
+
+- **ReDRAW [2504.02252v1](https://arxiv.org/html/2504.02252v1)，§4–5/AppD–F。** 源于sim-to-real少数据finetune遗忘；冻结离散latentencoder/原动力学，MLP修正transition logits并重训想象actor–critic。四DMC及Duckiebot，预训900万envsteps、40k targetdecisionsteps，和frozen/fine-tune/replacement以及source/target采集策略对照；有速度proprio/full-observability与target专家数据，不能等同一episode在线自校准。继承的设计是保留表示/奖励复用、限制改动复杂度；E19应比较实际恢复与旧任务保留，降低fitting loss不够。
+
+- **Sandwich-Residuals [2609.21740v1](https://arxiv.org/html/2609.21740v1)，§III–V。** AdaJEPA改内部权重是否必要？前后小residual分别修action/visual输入及visual/proprio输出，目标和goal共用视觉校正；零/近零初始化，recent5buffer每cycle一Adamstep、每episodereset。21+7condition及DINO-WMCube，原CEM上下文3/200candidate/30elite/10iter，全variant保留；5评估seed不能未经核对当5独立pretrain。actionresidual在Ada模型还读proprio，像素only arm权限不同。已有interface残差claim ownership很近；新增仅低秩/小参数不够，值得测试forward correction能否同步保留inverse/goal读出及跨goal复用。FullINTACT的共享actor与CEM是不同control路径，模块更新必须真影响所比较的路径。
+
+- **ResWM [2603.11110v1](https://arxiv.org/html/2603.11110v1)，§3–4。** 读作动作坐标与动态观测的设计启发：residual action+相邻frame差编码+RSSM/imaginedactor，原文另有KL/energy regularizer，不能照摘要“无额外超参”当实现事实。DMC/Atari与消融宣称的效果尚未本地核对；上一动作是必要状态，不能只替换action token却不增对应信息。区分它与reference-control的RWM，二者不是同文；当前不以其headline决定方法。
+
+上述venue semantic nearest只给邻域（soft-state-invariant、TemporalStraightening、task-sufficient等），有词面无关结果，不是精确碰撞判决。后续优先实际训练/经验利用/更新集的增量与强对照，保留全部母问题。

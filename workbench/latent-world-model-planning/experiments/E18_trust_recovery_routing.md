@@ -220,3 +220,11 @@ shift从第6新步起，gain.7/Navwind+.15/Pushmoment×2与F1完全同定义；s
 阳控：六模型strictcfg/SHA/sharedencoder与全部sourceimmutability/BN；各实际CPU/CUDAgoalquery/localquery/manualtyped graph/clampedstd；GOAL5首macro对fullH5 bitexact；新48factual/warm/replay；初始BASE25/GOAL15/GOAL5/REFERENCE5首5同模型exact；reference首6完全按officialrollout_one_step复算。conditionalfeature只actualobservedpixels/goal/已发commands/imaginedrefs，truth仅成功与恢复；任何guard失败整组不作效用解释，留unique失败后再全重跑。
 
 决策：三来源/newepisode跨任务/正常不伤害且shift对strongestfixed稳定增益→与RWM/轨迹tracking/其他WAM近邻完整定位和强baseline后申请人审，不能因similarabstract关闭；只比BASE25好→known反馈reference支点，不是newnovelty；某task全null→用source/task结果设计模块更新/经验监督，不继续调macro参数。单卡独立task×trainseedjob，原RTX空槽或其他已授权空卡，localdataset cache/同node timings；新资产盘点不算实验效用。
+
+F3六task×publishedseed0/42/3072全pipeline DONE/3456episode；每actualCPUCUDA/完整新48短与完整macro/parity/source/precontrols都过，完整独立reader正在CPU队列3667312，log `/tmp/latent-E18-intact-F3-audit.log`。整批审计未完成，不报赢家；0/1/2/3原队列已自然完成，2/3仅在真正空闲后接续E14H0。
+
+F3覆盖pending：[完整3456独立审计](../results/E18_20261005_intact_full_recovery_results.json)PASS；六actualsource/native/causal/typedqueryCPU重算，共9071局部查询，全部种子/起点/条件保留。以下按published0/42/3072，各48：Nav nominal BASE25=36/34/34、GOAL15=35/34/35、GOAL5=28/24/26、REFERENCE5=36/27/15；gain=31/31/30、31/32/30、27/23/22、31/23/14；wind=28/27/31、32/28/31、24/27/22、28/26/16。Push nominal为25/28/23、28/26/25、28/28/25、26/26/26；gain为23/20/20、20/22/21、21/22/22、23/25/21；moment为24/24/22、24/24/22、24/26/22、24/24/22。
+
+SOURCE×anchor crossed95CI：Nav nominal REFERENCE5−BASE25=−18.06pp[−42.36,2.78]、help12/harm38，−GOAL5=0[−22.92,18.75]；Navgain−BASE25=−16.67[−37.5,2.08]，wind−GOAL15=−14.58[−32.64,2.08]。Push gain−GOAL5=+2.78[−3.47,9.03]，nominal−GOAL5=−2.08[−9.72,4.86]，moment−GOAL5=−1.39[−7.64,4.17]。三模型CI宽，不以跨0宣布等效；逐source大差完整保留。所有12cell/seed完成；原四RTX队列退出/CPUreader3667312完成。新goalbank公开预训练未见性未知，timing不做headline。
+
+F2小window/source0的conditional正信号没有在新的完整部署/三source中形成对最强fixed的稳定收益。不是新方法胜利，也不把reference-control母问题关掉。**不继续调reference融合/重建长度或挑model3072以外的种子救故事。** 可能是imaginedtarget的可实现性、共享local/global读出、控制训练分布、goal时间一致性等，当前不能作单原因。E14H0正在生成controller-induced真实后果，下一步比较实际训练对象/可执行经验模型及模块复用，仍保留人审I14/E20优先；science0/状态不升。
