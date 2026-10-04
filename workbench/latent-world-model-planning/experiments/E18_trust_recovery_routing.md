@@ -205,3 +205,18 @@ F2已在原RTX1/3实际启动wrapper3654985/6，logs/tmp/latent-E18-intact-waypo
 F2全576 DONE/独立native/因果commands/hidden shift/typedgraph/所有local query CPU重算/source/trace audit PASS：[结果](../results/E18_20261005_intact_waypoint_recovery_results.json)。WAYPOINT-FEEDBACK/OPEN各48：Nav nominal37/37、gain35/33、wind37/35；Push28/26、gain23/15、moment20/19。Push gain feedback−HOLD+14.58pp95CI[4.17,27.08]、vsREFRESH5+4.17[−4.17,12.5]，feedback−OPEN+16.67[6.25,27.08]；Nav wind vsREFRESH5+8.33[2.08,16.67]，但最强REFRESH15为36/48，尚无稳定强fixedbaseline胜利。正常Push vsREFRESH5=0且help2/harm2，不拿平均掩盖具体伤害。所有query再做CPU读出只验证保存input的actor graph，未每步独立重编码image，明确审计范围。原1/3 wrapper3654985/6已退出，禁止重启unique。
 
 目前是有用的候选设计线索，不是成立novel method或可投signal；继承INTACT已有共享local/goal action law、RWM/reference-control，不claim首次。下一步离开t10–25小window，新的episode与三独立发布trainseed0/42/3072确认完整部署vs强固定策略，保留人审优先I14/E20、R1–R5/状态，不预选paper narrative。
+
+
+### F3：新episode、三发布seed与完整部署（2026-10-05，运行前）
+
+对应I11/R5，兼R2/R3；F2只有条件线索，最强fixed已接近，不能继续在t10–25窗口弯绕。新两task各48episode（near/far24/24）×三独立publishedtrainseed0/42/3072×nominal/gain0.7/physics×四完整policy=3456episodes。固定goal100step预算，不从F0–F2成功/失败挑起点；新bank排除旧所有已用source episode及本地已知train/cache，公开预训练未见性未知。依原真factual continuation生成goal image/state，不使用dataset setter当原完整memory；全部warm10/state/pixels/actualgoal/factual replay exact，所有initialsuccess保留。newselectionseed121000/nav、122000/Push；startseed+1/resetseed+100+j，episode/clip ledger在任何model outcome前锁定。
+
+四策略BASE25=完整25plan执行25；GOAL15=完整25plan执行首15；GOAL5=官方horizon1执行5（与fullhorizon5首macro bitexact才用）；REFERENCE5=每25步以原goal actor生成完整25plan/reference6latent，先执行同原首5，随后每5以真实current+预测下一reference+causal过去5发出commands查询原local inverse mean，到25或预算端重建plan。真实feedback不改变已有reference，不用actualfuturetarget/physicsstate或condition作为input。此处第一macro保持originalpolicy，非F2先执行10；全部episode的策略变化确实是新deployment对照，不与F2window直接作因果差。NO新loss、NOgate、NO阈值或融合系数。
+
+shift从第6新步起，gain.7/Navwind+.15/Pushmoment×2与F1完全同定义；startwarm仍nominal，所有task/seed/condition/policy使用同bank。每个seed独立weights，不能把seed0三次repeat当trainseed；HF immutable0430df6…两额外archives按官方manifest SHA/bytes/sharedencoder/meta/epoch5/seed严格验，不改变既有seed0 helper、旧env/vendor或任一权重。模型放标准HF缓存。
+
+主读数为全48task×condition×trainseed的native成功/nearfar/help-harm、REFERENCE5对全部三个fixed的paired来源+anchor cluster95CI，以及每source真实方向；不按同批选bestseed/方法或删zeroeffect shift。envsteps/encoder/head/worldcalls/实际同节点timing分别记录，不混硬件/训练量，也不拿已优化GOAL5之外的冗余fullplan当速度solebaseline。单task特定shift正而nominal/另一task不稳不能称可投；若最强fixed吸收先保留，转向data/representation/update设计，R2/R5不关。
+
+阳控：六模型strictcfg/SHA/sharedencoder与全部sourceimmutability/BN；各实际CPU/CUDAgoalquery/localquery/manualtyped graph/clampedstd；GOAL5首macro对fullH5 bitexact；新48factual/warm/replay；初始BASE25/GOAL15/GOAL5/REFERENCE5首5同模型exact；reference首6完全按officialrollout_one_step复算。conditionalfeature只actualobservedpixels/goal/已发commands/imaginedrefs，truth仅成功与恢复；任何guard失败整组不作效用解释，留unique失败后再全重跑。
+
+决策：三来源/newepisode跨任务/正常不伤害且shift对strongestfixed稳定增益→与RWM/轨迹tracking/其他WAM近邻完整定位和强baseline后申请人审，不能因similarabstract关闭；只比BASE25好→known反馈reference支点，不是newnovelty；某task全null→用source/task结果设计模块更新/经验监督，不继续调macro参数。单卡独立task×trainseedjob，原RTX空槽或其他已授权空卡，localdataset cache/同node timings；新资产盘点不算实验效用。

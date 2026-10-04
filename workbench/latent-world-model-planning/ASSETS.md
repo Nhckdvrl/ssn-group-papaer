@@ -163,3 +163,9 @@ A10六OPEN-ROLLOUT模型2825 DONE/full independent endpoint auditPASS，HF laten
 INTACT原venv初次缺stable_pretraining，第二次strict发现transformers旧ViT keylayout和发布5.9不匹配，均在效用前被拒绝。仅下载官方stable_pretraining0.1.7 wheel并提取vit_hf函数源、验SHA，**没有安装或改变旧环境**。新隔离latent-wm-intact venv处理发布transformers5.9构造；Torch和原sim资产保留，CPU/CUDA actualmodel/环境parity尚待通过，不能把加载失败当方法负结果。
 
 INTACT补actual：新隔离venvlatent-wm-intact成功严格载入两task全部state及sharedencoder SHA与manifest05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178一致；actualCPU/CUDA full actor/五步递推/mean/scaler手算bitexact/原48环境恢复exact。Torch2.7.1cu128/NumPy1.26.4/SWM0.0.6与原env相同，transformers5.9.0隔离，官方依赖整体版本仍有偏差。全部192闭环独立trace/source审计PASS，参考E01_20261005_intact_published_control_results；vendor/baseenv不变，未做官方100×3evals数值复现。
+
+### E18F3：额外发布seed与新的评估起点
+
+HF immutable revision0430df6fcda1b0516d5747ded58acb72ceb1e6e7的seed42/3072全部task shard已按官方manifest SHA/bytes/sharedencoder/meta核对，连seed0共6records，raw `~/.cache/latent-wm-results/20261005-E01-intact-three-seed-assets/complete.json`。模型位于标准HF缓存及HFderived `intact-e5-goal-seed42/3072`；旧seed0/source/env未修改。新两task各48bank位于raw `20261005-E18-intact-fresh-bank48-{tworoom,pusht}`，各5760 preparationsteps，全部actualgoal/warm/factual replay exact，selection ledger在任何模型效用前锁定。
+
+F3六独立task×trainseed pipelines，各576完整episode，共3456；四固定策略/三condition/全部nearfar起点，实际原RTX队列GPU0→tworoom0/3072、GPU1→tworoom42/pusht3072、GPU2→pusht0、GPU3→pusht42。wrapper3661470/71/73/74，日志 `/tmp/latent-E18-intact-F3-RTX-g{0,1,2,3}.log`，只用INTACT隔离venv。当前actualCUDA context已建立，完整preflight与效用尚未完成；核对unique preflight/cell/pipeline complete/failure后继续，禁止重复启动。

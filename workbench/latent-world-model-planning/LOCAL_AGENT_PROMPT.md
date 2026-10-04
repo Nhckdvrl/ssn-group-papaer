@@ -162,3 +162,7 @@ F1上述retry1状态已被v2覆盖：原Gaussian tuple API误用被anchor0 guard
 
 
 覆盖F2pending：两task全576 DONE/fulltyped-query CPU/native/causal/source audit PASS，portable E18_20261005_intact_waypoint_recovery_results.json；原1/3wrapper3654985/6退出。feedback/open Nav nominal37/37、gain35/33、wind37/35；Push28/26、gain23/15、moment20/19；vsstrong REFRESH5只有Navwind正区间且REFRESH15已36，Pushgain23vs21区间含0。只是候选线索，不能宣布novelmethod/可投级signal或换humanpaperpriority。接续E18F3新的48episode×三published独立seed0/42/3072/fullpolicy强固定反馈；先资产HF hash/config/源manual/新的真实factualbank控，再铺全部署。所有故障和弱条件保留；RWM是NeurIPS2025 accepted corpus命中，不重新认领reference-control。科学0/PROPOSED/目标active。
+
+### F3运行恢复（2026-10-05）
+
+main bf01e70b含F2全576独立审计，仍无confirmed novel method。F3六完整部署pipeline实际在原RTX四fixed queues3661470/71/73/74；logs `/tmp/latent-E18-intact-F3-RTX-g{0,1,2,3}.log`，scripts/intact_full_recovery_queue.py固定GPU0导航0/3072、GPU1导航42→操作3072、GPU2操作0、GPU3操作42。先核对raw `20261005-E18-intact-F3-{task}-s{seed}-preflight/controls.json`、12cell complete/failure和pipeline.json，不能重启unique。新seed42/3072资产和两task新48bank已DONE，F3完整3456尚无整批数字。producer/intact_multi_seed_source只编译、当前actual预控进行；强GOAL5优化horizon1与full首macro exact才部署。全3456+独立reader齐后汇报，不筛condition/seed，不把CPU保存embedding actor重算称逐query视觉重编码。
