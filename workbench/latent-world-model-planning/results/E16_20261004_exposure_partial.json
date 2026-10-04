@@ -1,0 +1,169 @@
+{
+  "experiment": "20261003-E16-data-exposure-RTX-s0",
+  "artifact": "~/.cache/latent-wm-results/20261003-E16-data-exposure-RTX-s0",
+  "batch_complete": false,
+  "local_training_process_observed": false,
+  "interruption_cause": "unknown; no complete/failure record, do not infer a scientific failure",
+  "scope": "30-epoch snapshot only; planned 100-epoch endpoint absent; full independent audit pending",
+  "config": {
+    "dataset": "/tmp/latent-wm-data/tworoom.h5",
+    "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+    "architecture_config": "/home/xiang/.cache/huggingface/hub/models--quentinll--lewm-tworooms/snapshots/77adaae0bc31deab21c93740d1f8bb947cd0bdec/config.json",
+    "released_checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-tworoom-object.ckpt",
+    "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_exposure_s0",
+    "output": "/tmp/latent-wm-runs/20261003-E16-data-exposure-RTX-s0",
+    "durable": "/home/xiang/.cache/latent-wm-results/20261003-E16-data-exposure-RTX-s0",
+    "initial_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+    "source_manifest_sha256": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+    "eval_anchors_sha256": "654130d034d858e86e0f186f4816a232313fcf227e46e40f4ab6b9ddb619d496",
+    "dataset_sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623",
+    "action_norm_reference": "original seed0 base100",
+    "seed": 0,
+    "extra_seed": 40000,
+    "shuffle_seed": 33000,
+    "stops": [
+      16950,
+      56500
+    ],
+    "objective": "all 3 shifted MSE + .09 SIGReg(17,1024); no target detach",
+    "history": 3,
+    "frameskip": 5,
+    "batch_size": 128,
+    "precision": "bf16",
+    "gradient_clip": 1.0,
+    "optimizer": "deep-cloned full-state AdamW resume",
+    "lr": 5e-05,
+    "weight_decay": 0.001,
+    "scheduler": "constant LR pilot",
+    "clip_policy": "existing range(n-20), whole episodes",
+    "architecture": {
+      "_target_": "stable_worldmodel.wm.lewm.LeWM",
+      "encoder": {
+        "_target_": "stable_pretraining.backbone.utils.vit_hf",
+        "size": "tiny",
+        "patch_size": 14,
+        "image_size": 224,
+        "pretrained": false,
+        "use_mask_token": false
+      },
+      "predictor": {
+        "_target_": "stable_worldmodel.wm.lewm.module.Predictor",
+        "num_frames": 3,
+        "input_dim": 192,
+        "hidden_dim": 192,
+        "output_dim": 192,
+        "depth": 6,
+        "heads": 16,
+        "mlp_dim": 2048,
+        "dim_head": 64,
+        "dropout": 0.1,
+        "emb_dropout": 0.0
+      },
+      "action_encoder": {
+        "_target_": "stable_worldmodel.wm.lewm.module.Embedder",
+        "input_dim": 10,
+        "emb_dim": 192
+      },
+      "projector": {
+        "_target_": "stable_worldmodel.wm.lewm.module.MLP",
+        "input_dim": 192,
+        "output_dim": 192,
+        "hidden_dim": 2048,
+        "norm_fn": {
+          "_target_": "torch.nn.BatchNorm1d",
+          "_partial_": true
+        }
+      },
+      "pred_proj": {
+        "_target_": "stable_worldmodel.wm.lewm.module.MLP",
+        "input_dim": 192,
+        "output_dim": 192,
+        "hidden_dim": 2048,
+        "norm_fn": {
+          "_target_": "torch.nn.BatchNorm1d",
+          "_partial_": true
+        }
+      }
+    },
+    "script_sha256": "e5e136b4e2e00cbd2cd435e76efce51d3d975ff8ff1f157b3b2fe6f9f05ad132",
+    "lewm_pilot_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+    "builder_sha256": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74",
+    "source_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-data-compute-RTX-s0",
+    "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/BASE1000_u5650.ckpt",
+    "cpu_only": false,
+    "continuation": {
+      "source_sha256": "c804d278c214e7e0e014d4ab1433a938ccca8edd730c53000da43ab4f84010b1",
+      "source_updates": 5650,
+      "source_epochs": 10,
+      "optimizer_states": 297,
+      "valid_clips": 72359,
+      "updates_per_epoch": 565,
+      "stops": [
+        16950,
+        56500
+      ],
+      "planned_total_epochs": [
+        30,
+        100
+      ],
+      "source_model_sha256": "54eae799d581f2a3e2fdf2d3a8d274529ee6344ff28be07d2fe78a2b1830423a",
+      "next_order_sha256": "95db63a9cf93f6513635549663988d0ae20ded0094a99fa8e81780c339772afa",
+      "strict_model_load": true,
+      "optimizer_deepclone": true,
+      "source_immutable": true,
+      "rng_10_epochs_regenerated": true,
+      "eval_anchors_sha256": "654130d034d858e86e0f186f4816a232313fcf227e46e40f4ab6b9ddb619d496",
+      "action_norm_reference": "original seed0 base100",
+      "numpy_global_rng": "seed0 as in source setup; source saved only permutation generator",
+      "exposure_comparison": "BASE100 u5650 is 100.892857 epochs; BASE1000 100 is approximate exposure match"
+    },
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+  },
+  "snapshots": [
+    {
+      "condition": "BASE1000",
+      "updates": 16950,
+      "epochs": 30,
+      "epoch_fraction": 30,
+      "optimizer_parameter_states": 297,
+      "training_seconds": 3147.3360031209886,
+      "elapsed_seconds": 3151.7443880029023,
+      "initial_hdf5_read_seconds": 144.50086486712098,
+      "cached_pixel_bytes": 13902615552,
+      "training_peak_vram_gib": 12.567895412445068,
+      "source_sha256": "c804d278c214e7e0e014d4ab1433a938ccca8edd730c53000da43ab4f84010b1",
+      "source_updates": 5650,
+      "source_epochs": 10,
+      "optimizer_states": 297,
+      "valid_clips": 72359,
+      "updates_per_epoch": 565,
+      "stops": [
+        16950,
+        56500
+      ],
+      "planned_total_epochs": [
+        30,
+        100
+      ],
+      "source_model_sha256": "54eae799d581f2a3e2fdf2d3a8d274529ee6344ff28be07d2fe78a2b1830423a",
+      "next_order_sha256": "95db63a9cf93f6513635549663988d0ae20ded0094a99fa8e81780c339772afa",
+      "strict_model_load": true,
+      "optimizer_deepclone": true,
+      "source_immutable": true,
+      "rng_10_epochs_regenerated": true,
+      "eval_anchors_sha256": "654130d034d858e86e0f186f4816a232313fcf227e46e40f4ab6b9ddb619d496",
+      "action_norm_reference": "original seed0 base100",
+      "numpy_global_rng": "seed0 as in source setup; source saved only permutation generator",
+      "exposure_comparison": "BASE100 u5650 is 100.892857 epochs; BASE1000 100 is approximate exposure match",
+      "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_exposure_s0/BASE1000_u16950.ckpt",
+      "checkpoint_sha256": "9997279fd2f90fedb572cd8514dcf5809d1a839bae69be3cf2b9cf25746ce368",
+      "successes": 37,
+      "n": 48,
+      "evaluation_seconds": 95.28507053852081
+    }
+  ],
+  "provenance_sha256": {
+    "config.json": "607e166c3a32fd5509a881b672b118aeae1901c3b60aff8458204c6a16324536",
+    "summary.json": "f0abf7e04c52acb8c158dcfd420915da789cd791122d9f588af6863de77c0a73"
+  }
+}

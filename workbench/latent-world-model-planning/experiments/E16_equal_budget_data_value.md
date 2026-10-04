@@ -291,8 +291,17 @@ released LeWM最后在同48起点作正控，沿其full-dataset action statistic
 
 正控：sourcecheckpointSHA/strictstate/297steps均5650，deepcopy optimizer source不可变与end=5650+actualupdates；10epochpermutation NumPy state精确再生/nextorder相同，CUDA/CPU RNG还原、isolatedeval保留；new HF目录与raw/durable均不存在。primary原48 success/pairedhelp-harm/CI与trainupdates/wallclock/epoch分别报告，保留源6snapshot与released；max2snapshots、1exploratoryseed/独立授权GPU1。额外环境仅评测不采新data，raw `20261003-E16-data-exposure-RTX-s0`，HF `latent-wm-trained/E16_data_exposure_s0`。决策表（跑之前写）：large充分训练追上→旧equal-update差是optimization/exposure竞争解释，不重命名新规律；large仍弱→查data composition/regularizer/训练对象，方法应面对BASE10038强base，不救原selector；large明显改善→以其checkpoint扩第二task与公平data acquisition/预测目标。代码data_exposure_continue.py正CPU准备，root审后才GPU，当前无新读数。
 
+### 固定数据的充分训练独立种子（2026-10-03，训练前）
+
+推进P04/R1/R2：38/48是否只出现于首trainseed，关系到新方法应面对哪种强base。固定原seed0 BASE100全部episode/9295rows/7295clips/原norm与eval48；fresh架构/AdamW，trainseed1/2只改变初始化、训练CUDA/dropout/SIGReg投影与shuffle(33000+seed)，各5650updates≈100.893epochs，末尾只评全部48、评测localCEM/resetseed0，globaleval RNG固定0并保存恢复trainRNG。原三shiftMSE+.09SIGReg17/1024、frames0/5/10/15、20action支撑、b128/bf16/clip1/LR5e-5/WD1e-3/constantLR全部同；不用旧optimizer、不增加数据，不称原论文配方。trainseed0 CPU初始化需逐tensor复现原commoninit、实际loss/gradient/optimizer/RNG独立控通过再跑。
+
+uint8/controls/clipstarts/原行映射一次从原HDF严读为自含nodecache；raw terminal action允许保留NaN，只有实际20-action训练clip必须全finite，normalizer照原filterfinite，不悄悄删row。compressed nodecache只搬运一次、解压后逐fileSHA核验，模型各seed存HF不同目录。首独立batch计划两个空A10080GB各一job，启动freewrapper再次复核，A100计时不混RTX；无multi-node训练。主读数三trainseed各success与同48 help/harm、完整训练loss/steps/wallclock/hash，48episodeCI与trainseedvariation分开。决策表（跑之前写）：充分训练收益重复→新方法从该强data regime对比；不重复→保留全部seed并查训练/representation/goalcost，不挑38模型替paper筛seed。新162行脚本fixed_data_train_seed.py CPU准备中；尚无新train读数。
+
 曝光控制最终CPU/root审（GPU前）：独立145行、source SHA c804d278c214e7e0e014d4ab1433a938ccca8edd730c53000da43ab4f84010b1，297states5650/deepclone不可变、72359clips/565batches、模型manifest/norm/48anchors全通过；10epochs RNG和nextorder精确再生。script SHA e5e136b4e2e00cbd2cd435e76efce51d3d975ff8ff1f157b3b2fe6f9f05ad132。源未保存NumPy globalstate但训练shuffle用独立Generator已精确恢复，全局沿原seed0明示；CUDA/CPU restored。GPU1已空，free-wrapper再复核并真实context，启动两固定stops，不重写原6snapshot。
 
 ### Data×prediction-object matrix完整读数
 
 [六格修复重跑](../results/E16_20261003_objective_matrix.json)：NO-ADD ONE/TF-LONG/OPEN-LONG=21/14/16，UNIFORM=11/24/19，各48，全部297steps1680→2280/source不可变。uniform−no在ONE为−10/48 CI[-.375,-.0417]，TF为+10/48 [.0625,.3542]，OPEN+3/48 [−.1042,.2292]；TF/OPEN直接差CI均含0。仅一个pipeline、有额外label/正则frames与FLOPs差别；ONE(4frames)、LONG(6frames)不是独立horizon变量，最大open-loop forecast15而非部署25；6methods均未超过充分训练100条件38/48。交互读数只是新线索，不登记普遍data-loss原则，不能筛ONE/TF来救叙事。
+
+
+2026-10-04上传状态核对：[曝光控制partial](../results/E16_20261004_exposure_partial.json)30epochs/u16950保存37/48；原5650/10epochs为21/48，训练曝光是值得继续分辨的解释。100epochs终点未complete、最后日志epoch44/u24860、本机没有对应训练进程，原因未核对；不能写整批DONE或仍在运行，不以partial筛选终点。固定数据trainseed脚本最终170行SHA b17bb1efe80a1fff1816bd0a66681f41dd39b01d9533c5cb1f9970258bf0d747；CPU实际init/loss/gradient/optimizer/RNG控已通过，但没有已核对GPU训练读数。恢复需核对源checkpoint完整RNG/optimizer及remote staging，再沿原锁定终点执行，禁止凭日志步数拼接。

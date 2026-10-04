@@ -1,0 +1,139 @@
+{
+  "experiment": "20261003-E13-candidate-quality-CPU-s0",
+  "artifact": "~/.cache/latent-wm-results/20261003-E13-candidate-quality-CPU-s0",
+  "config": {
+    "bank": "/home/xiang/.cache/latent-wm-results/20261003-E13-two-backbone-fast-RTX-s0",
+    "reference": "/home/xiang/.cache/latent-wm-results/20261003-E13-two-backbone-reference-RTX-s0-retry1",
+    "output": "/tmp/latent-wm-runs/20261003-E13-candidate-quality-CPU-s0",
+    "durable": "/home/xiang/.cache/latent-wm-results/20261003-E13-candidate-quality-CPU-s0",
+    "preflight_only": false,
+    "seed": 81000,
+    "expected_anchors": 64,
+    "planned_max_environment_steps": 6400,
+    "script_sha256": "f693e79dcc57e863a599d1620b01c3a4938e905b03ae02d1f56449540aca985a",
+    "bank_seal_sha256": "19ffbe99c871bd77fed3c7968f9be5bf74287946cd375eb4e6470afa46462e30",
+    "reference_complete_sha256": "3529b980d7dd1ec250e47269e1878969c81658f5de136f0097e2e3e517372e98",
+    "reference_rows_sha256": "d42f2c9d060d690aa306ae179e8dcc6063375aa6387a1ecab235fb78d8a49cf1",
+    "bank_config_sha256": "2d2050675a55091ebdb3c38c3b6c83010354172f5f479c23396aef536e6576b7",
+    "reference_config_sha256": "56bd9ea1e2f4978fc80b7b58de9f891a3ca8dd3c5b32a86e43f4d0fe786dd0a3",
+    "restore_helper_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+    "source_datasets": {
+      "tworoom": "/tmp/latent-wm-data/tworoom.h5",
+      "pusht": "/tmp/latent-wm-data/pusht_expert_train.h5"
+    },
+    "packages": {
+      "stable-worldmodel": "0.0.6",
+      "gymnasium": "1.2.3",
+      "pymunk": "7.2.0",
+      "numpy": "1.26.4",
+      "torch": "2.7.1+cu128"
+    },
+    "scope": "all64 retained; expert future only positive control; no model or GPU; PushT public setter lacks dataset contact memory",
+    "distance_definition": "native installed state distance; separate 2D navigation or 4D agent/block position norm and 2pi wrapped angle, no symmetry correction"
+  },
+  "complete": {
+    "completed": true,
+    "anchors": 64,
+    "branches": 192,
+    "environment_steps": 5545,
+    "model_loaded": false,
+    "GPU_used": false
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "n": 16,
+      "successes": {
+        "Fast": 13,
+        "LeWM": 13,
+        "FACTUAL": 16
+      },
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "primary": true,
+      "scope": "selected25 candidate outcomes; g75 distance is proxy, FACTUAL uses full goal offset; not CEM elite mean or optimal regret"
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "n": 16,
+      "successes": {
+        "Fast": 7,
+        "LeWM": 7,
+        "FACTUAL": 16
+      },
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "primary": false,
+      "scope": "selected25 candidate outcomes; g75 distance is proxy, FACTUAL uses full goal offset; not CEM elite mean or optimal regret"
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "n": 16,
+      "successes": {
+        "Fast": 15,
+        "LeWM": 11,
+        "FACTUAL": 16
+      },
+      "helped": 0,
+      "harmed": 4,
+      "paired_success_gain": -0.25,
+      "paired_success_ci95": [
+        -0.5,
+        -0.0625
+      ],
+      "primary": true,
+      "scope": "selected25 candidate outcomes; g75 distance is proxy, FACTUAL uses full goal offset; not CEM elite mean or optimal regret"
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "n": 16,
+      "successes": {
+        "Fast": 2,
+        "LeWM": 1,
+        "FACTUAL": 16
+      },
+      "helped": 0,
+      "harmed": 1,
+      "paired_success_gain": -0.0625,
+      "paired_success_ci95": [
+        -0.1875,
+        0.0
+      ],
+      "primary": false,
+      "scope": "selected25 candidate outcomes; g75 distance is proxy, FACTUAL uses full goal offset; not CEM elite mean or optimal regret"
+    }
+  ],
+  "baseline_reproduction": {},
+  "upload_audit": {
+    "complete_and_no_failure": true,
+    "rows": 192,
+    "all_groups_16": true,
+    "env_steps_recomputed": true,
+    "raw_durable_identical_files": 198,
+    "summary_success_counts_recomputed": true,
+    "full_independent_trajectory_and_statistics_audit": "pending; do not upgrade scientific claims"
+  },
+  "provenance_sha256": {
+    "locked_selections.json": "cb7d6066642d84f90e7594a1e506c19ab5bf0f756598771fc69a057425cdc371",
+    "config.json": "85106b3370bac9ca5de8d31444120e3d2347629cfe37f6ffa61bbafdefc19afe",
+    "candidate_quality_cpu_used.py": "f693e79dcc57e863a599d1620b01c3a4938e905b03ae02d1f56449540aca985a",
+    "rows.json": "a428f1e24a0fcd5cbe01672cd6e632b2b9b45478c67d98c997a146d1c88a3d40",
+    "summary.json": "c4f799256eb8f188946283c690ddb77fbf93f02de899231affb63f90c3407ae6",
+    "complete.json": "3d959dc7bfb29d691eae89a0f0c461444df0475bee2eb83a48d2a6845429d921"
+  },
+  "limitations": "Single exploratory seed; episode CIs do not cover train-seed variance. A7 compares argmin candidates, not CEM elite-mean controllers; far-goal 25-step outcomes are limited. E17 uses extra task geometry labels and a shared initial native plan; MIX has extra head forwards. No novel method or manuscript-critical claim established."
+}

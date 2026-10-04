@@ -1,6 +1,6 @@
 # 实验索引｜菜单，不是关卡链
 
-每个ID只有一个当前文件。E00两任务原生preflight、E13 A0–A5、E16隔离后全部三pipeline/数据×compute/六格objective、E17 proposal/continuationcost、E11observer、E18连续适配均完整完成。当前运行E16训练曝光控制；E13 A6已sealed Fast bank，LeWM参考缺依赖的失败保留并准备重试；E17任务几何代价待严格CUDA预控。旧optimizer alias比较仍降级，以公平重跑为准。其余按卡内状态，可在运行前修订；新方法与解释实验可以并行。
+每个ID只有一个当前文件。E00两任务原生preflight、E13 A0–A7、E16隔离后全部三pipeline/数据×compute/六格objective、E17 proposal/continuationcost/任务几何、E11observer、E18连续适配已完整落盘；A7与任务几何仍待完整独立校对。E16曝光控制只完成30epochs快照，100epochs未complete且上传时本机进程已不在；不能当完整结果。固定数据trainseed1/2准备完成，未有已核对GPU结果。旧optimizer alias比较仍降级，以公平重跑为准。其余按卡内状态，可在运行前修订；新方法与解释实验可以并行。
 
 | ID | 当前文件 | 用途 |
 |---|---|---|

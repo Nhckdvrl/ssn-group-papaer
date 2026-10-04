@@ -70,7 +70,10 @@
 - [E11状态估计384episodes](results/E11_20261003_latent_observer.json)：操作nominal/gain/moment OBS4/4/3、PREFIX5 11/10/10（各16）；prior/fixedgain不胜经典time-alignment强对照，不称新idea。PushT原生7D距离含velocity，不能叫纯位置进展。
 - [E16数据×计算](results/E16_20261003_data_compute.json)全部完成：100轨迹在1680/5650updates为13/38，1000轨迹为19/21，released正控39（各48）；独立优化器/RNG审计通过，不能把equal-update差称数据价值规律。
 - [E16数据×目标](results/E16_20261003_objective_matrix.json)全部完成：NO ONE/TF/OPEN=21/14/16、UNIFORM=11/24/19（各48）；单pipeline、额外监督/regularizer目标改变，未胜充分训练强base。
-- 运行中：1000轨迹固定30/100epochs训练曝光控制；A6 Fast64physical banks已sealed，LeWM参考评分缺依赖的失败保留并准备隔离重试；E17任务几何代价在CUDA数值预控，尚未训练/闭环。精确process/artifact见当天日志。
+- [E13 A6两模型候选审计](results/E13_20261003_two_backbone_reference.json)已完成并独立复算：TOP20%对LeWM参考elite recall导航近/远=.777/.469、操作=.510/.190；实际参考批次900→90仍约42–44ms。参考模型排序不是真实后果，不支持加速或控制收益。
+- [E13 A7真实候选后果](results/E13_20261003_candidate_quality.json)192branches/5545steps完整落盘：Fast/LeWM近目标导航13/13、操作15/11（各16）；factual四组均16/16。上传前计数/hash核对通过，完整独立trajectory/statistics校对待做；不是两种原生CEM控制器比较。
+- [E17任务几何代价](results/E17_20261003_task_factor_cost.json)384episodes/24005steps完整落盘：导航远NATIVE25/PREFIX5/REAL-GEO/MIX-GEO/REAL-JOINT/MIX-JOINT=10/7/11/11/12/12；操作近14/11/9/9/10/9（各16）。尚无跨任务稳定收益；extra task labels、共享首计划、训练量边界见卡，独立完整校对待做。
+- E16曝光控制未完整结束：30epochs快照37/48已保存，100epochs终点没有complete；上传时本机无对应训练进程，不能标仍在运行或将partial当整批结果。固定数据trainseed1/2脚本与CPU预控已备好，没有已核对GPU训练结果。精确恢复入口见日志。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 
@@ -83,3 +86,9 @@
 完整旧目录（包括整理期间新增的I13/E19）以同一 Git tree 保存于 [历史快照](../../archive/latent-world-model-planning/pre-consolidation-2026-10-02/README.md)，包括原始文献笔记、所有重复方案和旧日志。没有删掉实验结果来整理叙事。映射与检查说明见 [整理记录](logs/2026-10-02-consolidation.md)。
 
 状态与资源分配仍由人决定；本地 agent 可在授权的本工作台内自主完成实验、分析、修订方法和下一轮研究，不需要每个 job 回来请示。
+
+## 2026-10-04方向审阅入口
+
+建议按本页 → [研究计划](RESEARCH_PLAN.md) → [痛点与失效记录](PAIN_LOG.md) → [主张账本](CLAIMS.md) → 对应实验卡/results阅读。**已有大量探索结果，尚未找到经强基线、独立训练种子和第二任务共同确认的novel方法。** 不应把工程修复、经典时间对齐、充分训练收益直接包装成论文。
+
+当前值得人判断的是问题/方法轴：R1中数据预算、训练曝光和预测目标的相互作用；R2中候选搜索质量与模型评分质量的区别；R3中短经验如何支撑长任务价值与复用。PBB v0不稳定，单纯self-consistency和换cost head未形成可靠收益，但R1–R5持续开放。RC-aux、PLDM、HIQL及近期objective工作提供强基线与idea来源；任何新叙事都需要说清继承和实际增量。此次上传不改变workbench状态、不升级科学主张，不预选论文方向。
