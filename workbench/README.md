@@ -124,8 +124,8 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | `CLAIMS.md` | 2026-10-02 | 已有八轮 52 次完成运行；人审撤回 acquisition 领先叙事，停止局部冻结探针，明确授权有界 MONOWEB 英语学习→德语迁移 baseline 修复；持续 ACTIVE 调度归属待人统一确认，不自行改其他线 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
 | `mechanism-population-dynamics` | ACTIVE-EXPLORE | ICML 2027 / NeurIPS 2027 | — | `CLAIMS.md` | 2026-10-01 | **人已确认开线**：利用公开 multi-seed × multi-checkpoint 模型群体研究 mechanistic claim 在什么抽象层次上可复现；第一轮不训练模型，先做已知 mechanism 的 causal baseline + population measurement |
-| `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **单入口 workbench 已收敛**：R1–R5持续开放；第一波 PBB(E16) + Planner-Stage Multi-Fidelity(E13)，第二波 Query Specialization(E17) / Utility Recovery(E18) / Selective Revaluation(E19)；7个唯一I、9张当前E卡；强近邻作为baseline/idea来源而非桌面kill；GPU结果=0，不改变ACTIVE分配 |
-| `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **literature-grounded / baseline-gated**：30 篇分级文献、12 张定向论文卡；I01 数据策略复用与再适配、I02 训练干预型数据研究、I03 多时域效用；E00–E03 已注册；GPU 结果=0，主张均 L0，不改变 ACTIVE 调度 |
+| `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
+| `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练完成、原定终点评分收尾中；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `pragmatic-inference-calibration` | CLOSED | — | — | `CLAIMS.md` | 2026-10-03 | **人明确决定终止本题**：有限核心检验已收尾，实验raw/data/旧runner与本地模型已清理；保留最终证据和环境，不再自动探索 |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |

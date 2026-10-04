@@ -56,3 +56,5 @@
 `P## / 首见 E## / 代码与父模型 hash / 输入与完整配置 / 量级与重复次数 / 更强 baseline 或一句指令能否消除 / 关联 C## / 下一项有区分力的实验`。
 
 优先记录强 baseline 为什么成功，包括不需要复杂动态生成的情形；不只收集支持预设 idea 的失败。
+
+**E13/E14运维收尾（2026-10-04）：** 弱I/O实际同时影响Python依赖导入和权重装载；训练成功不等于已评估。旧E14 judge的PGID限定清理漏掉EngineCore，watch错误信任cleanup_complete，成本低报。新接续使用逐文件SHA一致的节点本地judge权重、跨PGID继承token/start-ticks清理与独立guard，原失败与未知活跃成本保留；这属于工程修复，不另立paper idea。

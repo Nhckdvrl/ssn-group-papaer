@@ -109,3 +109,13 @@ AZR 的固定 `paper` 分支源码另缓存在 `/home/xiang/.cache/research/data
 - 官方 Curation-Bench clone：`/home/xiang/.cache/research/data-centric-rsi/CurationBench`，SHA `24eea1526492c00cee421f5db0793789e00aabb2`。[论文 B.1/Table 10](https://arxiv.org/html/2606.04261v2) 链的 LLaVA init 是 `anonneuripsmail/llava-1.5-7b-init@5736a39125fce6ca4d4eb20033ca7c46895878ab`；源码 README/训练默认用 `llava-hf/llava-1.5-7b-hf@b234b804b114d9e37bb655e11cbbb5f5e971b7a9`。HF 三份 14.1GB shard 的 SHA 两组均不同。E12 以论文 init 显式指定路径，不把默认模型结果比到论文 28.8/31.9。
 - 自包含 `Ethlake/llava-665k@235a8adf266bb6dc02a099dc0221d28dec058f54` 为第三方 Arrow，58 文件合计 **93,424,292,235 bytes**，标称 665,298 例；原始 `liuhaotian/LLaVA-Instruct-150K@9d451dc7629cfe0469f6ae4432b765cd603d5fcb` 的混合 JSON 1,029,887,963 bytes。E12 需按 ID 核 ICONS/ARDS 映射；官方 `icons.py` 跳过无图原 JSON 行并用顺序 Arrow index，`ards.py` 用原 `global_id−1`，不保证与此 Arrow 行序一致。
 - fvcrc10 只读检查：根目录剩 **289GB**、RAM **503GiB**；GPU0/2/3 检查时空闲，随时复核，不保留卡位。E12 已跑前写卡并开始把公开 Arrow 下载到节点本地 `/var/tmp/xiang-data-rsi/e12/`；**截至本次记录没有 E12 训练或评估结果**。大文件不进 git，下载脚本见 [`scripts/e12_fetch.py`](scripts/e12_fetch.py)，具体下载时间/哈希完成后追加。
+
+## 12. E12完成与E13/E14终点评分资产（2026-10-04）
+
+- E12校准已完成；上节“没有结果”是跑前历史。完整五模型八项向量、唯一预写重复及成本分别见 `results/E12_seed17_static_utility_summary.json` 与 `results/E12_seed17_cost_ledger.json`。不是原ICONS按10K预算重新求票；本地judge替代及训练配方边界沿E12实验卡。
+- E13六成功终点：`fvcrc13:/var/tmp/xiang-data-rsi/e13/train_runs/<name>/model/`；10号同SHA副本仍保留。E14两成功终点：`fvcrc12:/var/tmp/xiang-data-rsi/e14/train_runs/<name>/model/`；此次评分副本在 `fvcrc10:/var/tmp/xiang-data-rsi/e14/copied_models/<name>/`，28,262,294,096bytes，copy+SHA核验375.830s，见 `results/E14_closeout_copy_provenance.json`。
+- 当前原定评分原始预测、judge缓存、日志与逐进程清单在13号（E13）/10号（E14）的 `/var/tmp/xiang-data-rsi/closeout/attempt1/<name>/`；judge、coordinator在20号同根 `attempt1/`。旧失败与等待目录不覆盖。小结果逐支进入 `results/E13_*_s29_{raw_results,validated_scores,eval_manifest,completion}.json` 与E14同名格式。
+- 固定学生evalenv为 `/var/tmp/xiang-data-rsi/e12/vlmeval_venv`，freeze SHA `8ef6b4ec11c6d563e990ad7a2a3eebb9ac67d3c735792a769bcf86c450da9f40`；八TSV与E12一致。复用现成环境，没有新装/升级依赖；13号此前镜像此次实测import与完整冻结核对通过。
+- judge为 `Qwen3.5-27B@fc05daec18b0a78c049392ed2e771dde82bdf654`，20号本地 `/var/tmp/xiang-data-rsi/closeout/model/` 的24文件55,586,167,982bytes全SHA一致，核验217.068s。复制wall未完整留存，不猜值；权重加载本次实测44.75s。现成vLLM `0.23.0+cu129`、BF16/4096/maxseq16/.78/thinkingfalse不变；8034是此次独立服务端口。
+- 接续源码/真实PID/ticks见 `results/E13_E14_closeout_launch.json`；并行调度为 `scripts/e13_e14_closeout_parallel.py`。`scripts/e13_e14_process_guard.py`补充登记真实父子PID/start ticks，处理vLLM改写进程环境后token不可见的情况。原串行稿与local备用稿未启动；不是已验证的独立实验结果。
+- 只收完这八个已训练终点，不新增训练/seed/科学实验。完整分数、清理证据和成本完成后统一汇总；历史E14 judge超时与不完整清理成本纠正见 `results/E14_judge_startup_failure_audit.json`，不能复用旧cleanup_complete声明。

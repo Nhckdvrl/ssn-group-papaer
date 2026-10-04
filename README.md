@@ -67,7 +67,7 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 - **探索线**：`workbench/mechanism-population-dynamics/`（ICML 2027 / NeurIPS 2027）。
 - **PROPOSED**：`workbench/latent-world-model-planning/`，保持候选，不占 ACTIVE 名额。
 - **CLOSED（2026-10-03，人明确决定终止）**：[`workbench/pragmatic-inference-calibration/`](workbench/pragmatic-inference-calibration/README.md)，有限核心检验未形成论文项目；实验遗产和本地模型已清理，环境暂留，停止自动探索。
-- **PROPOSED（新增）**：[`workbench/data-centric-rsi/`](workbench/data-centric-rsi/README.md)，数据策略的可复用性、训练干预型数据研究与多时域学习效用；30 篇分级文献、12 张定向论文卡、3 个 idea、E00–E03；GPU 结果=0，不改变现有 ACTIVE 调度。
+- **PROPOSED（新增）**：[`workbench/data-centric-rsi/`](workbench/data-centric-rsi/README.md)，数据策略的可复用性、训练干预型数据研究与多时域学习效用；已有本地GPU闭环与E12强静态基线评分；E13/E14八支训练完成、原定终点评分收尾中，主张均L0；实时证据见该工作台状态页，不改变现有ACTIVE调度。
 - **已降级**：`workbench/video-world-model-temporal-interfaces/` → PAUSED（H 类 scientific-yield 决定）。块首接缝失聪仍是可靠诊断资产，但不再作为独立 MAIN paper story；只在新主线需要区分 causalization / distillation / rollout 损失时复用。
 - 完整登记表：[`workbench/README.md`](workbench/README.md) §9；检查：`python3 tools/process/check.py`。
 ## 仓库规则
