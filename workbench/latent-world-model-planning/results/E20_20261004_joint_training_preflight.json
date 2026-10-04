@@ -1,0 +1,114 @@
+{
+  "cpu": {
+    "passed": true,
+    "source_immutable": true,
+    "native_H3_plus_future5": true,
+    "script_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+    "records": [
+      {
+        "method": "PLAIN",
+        "loss": 0.482758492231369,
+        "base": 0.37030455470085144,
+        "aux": 0.0,
+        "finite_joint_gradient": true,
+        "first_optimizer_steps": 1,
+        "source_immutable": true,
+        "variance_decomposition": true
+      },
+      {
+        "method": "GLOBAL-SG",
+        "loss": 0.8530630469322205,
+        "base": 0.37030455470085144,
+        "aux": 0.37030455470085144,
+        "finite_joint_gradient": true,
+        "first_optimizer_steps": 1,
+        "source_immutable": true,
+        "variance_decomposition": true
+      },
+      {
+        "method": "CENTER",
+        "loss": 0.6682019233703613,
+        "base": 0.37030455470085144,
+        "aux": 0.1854434311389923,
+        "finite_joint_gradient": true,
+        "first_optimizer_steps": 1,
+        "source_immutable": true,
+        "variance_decomposition": true
+      },
+      {
+        "method": "DET-INVERSE",
+        "loss": 0.571806013584137,
+        "base": 0.37030455470085144,
+        "aux": 0.08904752135276794,
+        "finite_joint_gradient": true,
+        "first_optimizer_steps": 1,
+        "source_immutable": true,
+        "variance_decomposition": true
+      },
+      {
+        "method": "PROB-INVERSE",
+        "loss": 0.5288498401641846,
+        "base": 0.37030455470085144,
+        "aux": 0.04609134420752525,
+        "finite_joint_gradient": true,
+        "first_optimizer_steps": 1,
+        "source_immutable": true,
+        "variance_decomposition": true
+      }
+    ]
+  },
+  "cuda": {
+    "passed": true,
+    "device": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "source_script_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+    "records": [
+      {
+        "method": "PLAIN",
+        "bf16_joint_step": true,
+        "loss": 0.4337000846862793,
+        "finite_gradient": true,
+        "all12_full_bank_queries": true,
+        "eval_weights_unchanged": true,
+        "optimizer_states": 297
+      },
+      {
+        "method": "GLOBAL-SG",
+        "bf16_joint_step": true,
+        "loss": 0.6203298568725586,
+        "finite_gradient": true,
+        "all12_full_bank_queries": true,
+        "eval_weights_unchanged": true,
+        "optimizer_states": 297
+      },
+      {
+        "method": "CENTER",
+        "bf16_joint_step": true,
+        "loss": 0.5677946209907532,
+        "finite_gradient": true,
+        "all12_full_bank_queries": true,
+        "eval_weights_unchanged": true,
+        "optimizer_states": 297
+      },
+      {
+        "method": "DET-INVERSE",
+        "bf16_joint_step": true,
+        "loss": 0.4971085786819458,
+        "finite_gradient": true,
+        "all12_full_bank_queries": true,
+        "eval_weights_unchanged": true,
+        "optimizer_states": 301
+      },
+      {
+        "method": "PROB-INVERSE",
+        "bf16_joint_step": true,
+        "loss": 0.4655027389526367,
+        "finite_gradient": true,
+        "all12_full_bank_queries": true,
+        "eval_weights_unchanged": true,
+        "optimizer_states": 301
+      }
+    ]
+  },
+  "artifact": "~/.cache/latent-wm-results/20261004-E20-joint-training-preflight",
+  "limitations": "Execution/loss/indexing controls only; no method evidence"
+}

@@ -21,6 +21,40 @@ def steps(state):
     return [int(s['step']) for s in state['state'].values()]
 
 
+def resume_preflight(args, original, audit):
+    if not args.resume_checkpoint:
+        return original
+    prior = Path(args.resume_run)
+    row = next(r for r in json.loads((prior/'summary.json').read_text()) if r['updates']==16950)
+    assert digest(args.resume_checkpoint)==row['checkpoint_sha256']
+    c = torch.load(args.resume_checkpoint, map_location='cpu', weights_only=False)
+    assert c['config']==original['config'] and c['manifest']==original['manifest']
+    assert c['steps']==16950 and c['metadata']['epoch_fraction']==30
+    assert len(steps(c['optimizer']))==297 and set(steps(c['optimizer']))=={16950}
+    assert c['optimizer']['param_groups']==original['optimizer']['param_groups']
+    assert len(c['cuda_rng'])==1 and 'numpy_global_rng' in c
+    probe=np.random.default_rng(33000)
+    with h5py.File(args.dataset) as f:
+        lengths=f['ep_len'][:]
+    starts=[]; offset=0
+    for ep in sorted(c['manifest']['base_episodes']):
+        n=int(lengths[ep]); starts.extend(range(offset,offset+n-20)); offset+=n
+    for _ in range(30): probe.permutation(starts)
+    assert probe.bit_generator.state==c['numpy_rng']
+    model=architecture(c['config']); model.load_state_dict(c['state_dict'],strict=True)
+    optimizer=torch.optim.AdamW(model.parameters(),lr=5e-5,weight_decay=1e-3)
+    optimizer.load_state_dict(copy.deepcopy(c['optimizer']))
+    for key,state in optimizer.state_dict()['state'].items():
+        assert all(torch.equal(v,c['optimizer']['state'][key][name]) for name,v in state.items())
+        state['step'].add_(1)
+    assert set(steps(c['optimizer']))=={16950}
+    torch.Generator().set_state(c['torch_rng'])
+    audit.update(resume_updates=16950,resume_epochs=30,resume_checkpoint_sha256=digest(args.resume_checkpoint),
+                 resume_summary_sha256=digest(prior/'summary.json'),resume_full_optimizer_and_rng=True,
+                 resume_shuffle_30_epochs_regenerated=True,remaining_stops=[56500])
+    return c
+
+
 def preflight(args):
     source = Path(args.source_run); config = json.loads((source/'config.json').read_text())
     c = torch.load(args.checkpoint, map_location='cpu', weights_only=False)
@@ -82,6 +116,7 @@ def run(args):
     protected = [Path(args.source_run).resolve(), Path(args.checkpoint).resolve()]
     assert all(a!=b and a not in b.parents and b not in a.parents for a in locations for b in locations+protected if a is not b)
     c, config, audit = preflight(args)
+    c = resume_preflight(args, c, audit)
     if args.cpu_only:
         print(json.dumps(audit, indent=2)); return
     for p in locations: p.mkdir(parents=True, exist_ok=False)
@@ -95,11 +130,14 @@ def run(args):
     anchors = np.load(out/'eval_anchors.npz'); mean, std = [np.asarray(c['manifest'][k]) for k in ['action_mean', 'action_std']]
     model = architecture(c['config']); model.load_state_dict(c['state_dict'], strict=True); model = model.cuda()
     optimizer = torch.optim.AdamW(model.parameters(), lr=5e-5, weight_decay=1e-3); optimizer.load_state_dict(copy.deepcopy(c['optimizer']))
-    assert set(steps(optimizer.state_dict()))=={5650} and set(steps(c['optimizer']))=={5650}
+    source_step=c['steps']; source_epoch=int(c['metadata']['epoch_fraction'])
+    assert set(steps(optimizer.state_dict()))=={source_step} and set(steps(c['optimizer']))=={source_step}
     sigreg = SIGReg(knots=17, num_proj=1024).cuda(); rng = np.random.default_rng()
-    torch.set_rng_state(c['torch_rng']); torch.cuda.set_rng_state_all(c['cuda_rng']); rng.bit_generator.state = copy.deepcopy(c['numpy_rng']); np.random.seed(0)
-    begin = now(); training_seconds = 0.; step = 5650; logs = []; summaries = []; torch.cuda.reset_peak_memory_stats()
-    for epoch in range(10, 100):
+    torch.set_rng_state(c['torch_rng']); torch.cuda.set_rng_state_all(c['cuda_rng']); rng.bit_generator.state = copy.deepcopy(c['numpy_rng'])
+    if 'numpy_global_rng' in c: np.random.set_state(c['numpy_global_rng'])
+    else: np.random.seed(0)
+    begin = now(); training_seconds = 0.; step = source_step; logs = []; summaries = []; torch.cuda.reset_peak_memory_stats()
+    for epoch in range(source_epoch, 100):
         model.train().requires_grad_(True); order = rng.permutation(starts)
         for batch in range(565):
             tick = now(); ix = order[batch*128:(batch+1)*128]
@@ -116,8 +154,9 @@ def run(args):
             if step%25==0 or step in STOPS:
                 logs.append(dict(step=step, epoch_fraction=epoch+(batch+1)/565, loss=float(loss), pred_mse=float(mse), sigreg=float(reg))); dump(out/'training.json', logs)
             if step in STOPS:
-                assert batch==564 and set(steps(optimizer.state_dict()))=={step} and set(steps(c['optimizer']))=={5650}
+                assert batch==564 and set(steps(optimizer.state_dict()))=={step} and set(steps(c['optimizer']))=={source_step}
                 assert digest(args.checkpoint)==audit['source_sha256']
+                if args.resume_checkpoint: assert digest(args.resume_checkpoint)==audit['resume_checkpoint_sha256']
                 summary = dict(condition='BASE1000', updates=step, epochs=epoch+1, epoch_fraction=epoch+1, optimizer_parameter_states=297,
                                training_seconds=training_seconds, elapsed_seconds=now()-begin, initial_hdf5_read_seconds=io,
                                cached_pixel_bytes=cache.nbytes, training_peak_vram_gib=torch.cuda.max_memory_allocated()/2**30, **audit)
@@ -129,14 +168,16 @@ def run(args):
                 assert len(rows)==48; summary.update(successes=sum(r['success'] for r in rows), n=48, evaluation_seconds=now()-eval_start)
                 summaries.append(summary); dump(out/'summary.json', summaries); shutil.copytree(out, args.durable, dirs_exist_ok=True)
         print('epoch', epoch+1, 'updates', step, flush=True)
-    assert step==STOPS[-1] and len(summaries)==2
-    dump(out/'complete.json', dict(completed=True, snapshots=2, updates=step, source_immutable=digest(args.checkpoint)==audit['source_sha256']))
+    expected_snapshots=sum(s>source_step for s in STOPS)
+    assert step==STOPS[-1] and len(summaries)==expected_snapshots
+    dump(out/'complete.json', dict(completed=True, snapshots=expected_snapshots, updates=step, source_immutable=digest(args.checkpoint)==audit['source_sha256']))
     shutil.copytree(out, args.durable, dirs_exist_ok=True)
 
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     for name in ['dataset', 'source-run', 'checkpoint', 'model-cache', 'output', 'durable']: p.add_argument('--'+name, required=True)
+    p.add_argument('--resume-checkpoint'); p.add_argument('--resume-run')
     p.add_argument('--cpu-only', action='store_true'); args = p.parse_args()
     existed = Path(args.output).exists()
     try: run(args)
