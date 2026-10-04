@@ -5,7 +5,7 @@ set -e
 export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"
 here=$(cd "$(dirname "$0")" && pwd)
 tmp=$(mktemp -d)
-cp -r "$here"/main.tex "$here"/refs.bib "$here"/acl.sty "$here"/acl_natbib.bst "$here"/figures "$tmp"/
+cp -r "$here"/main.tex "$here"/refs.bib "$here"/acl.sty "$here"/acl_natbib.bst "$here"/figures "$here"/tables "$tmp"/
 cd "$tmp"
 out=main
 if [ "$1" = "final" ]; then sed 's/\\usepackage\[review\]{acl}/\\usepackage{acl}/' main.tex > final.tex; out=final; fi

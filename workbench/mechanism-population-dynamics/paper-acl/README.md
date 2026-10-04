@@ -10,7 +10,9 @@
 | `acl.sty`、`acl_natbib.bst` | 官方模板（github.com/acl-org/acl-style-files，2026-06 版），未修改 |
 | `template_acl_latex.tex` | 官方模板示例，仅供对照，不参与编译 |
 | `figures/*.pdf` | 由 `../scripts/figs_acl.py` 生成；图的尺寸即印刷尺寸（单栏 3.03 in、双栏 6.3 in），字体为 TrueType 的 Liberation Serif / Mono（与 Times 同宽度，嵌入为 Type 42，不含 Type 3 字体） |
+| `tables/*.tex` | 由 `../scripts/tables_acl.py` 从结果文件直接生成（正文 Table 1 / 3 与附录 Table 4–10），不要手改 |
 | `checklist.md` | ARR Responsible NLP checklist 的作答草稿（提交时填在 OpenReview 表单里） |
+| `build.sh` | 与 Overleaf 相同的 pdfLaTeX + BibTeX 编译（`./build.sh final` 编终版用于 aclpubcheck） |
 
 ## 编译（与 Overleaf 相同：pdfLaTeX + BibTeX）
 ```bash
@@ -22,7 +24,7 @@ Overleaf：上传本文件夹（不需要 `template_acl_latex.tex`），Compiler
 
 ## 重画图
 ```bash
-cd ../scripts && ~/.venvs/mechpop/bin/python figs_acl.py
+cd ../scripts && ~/.venvs/mechpop/bin/python figs_acl.py && ~/.venvs/mechpop/bin/python tables_acl.py
 ```
 
 ## ARR 要点（2026 CFP）
