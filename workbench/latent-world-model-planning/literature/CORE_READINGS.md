@@ -377,3 +377,19 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 跨领域定向借鉴（A8后）：[Boots/Siddiqi/Gordon Closing the Learning-Planning Loop with PSRs §II–IV](https://www.cs.cmu.edu/~ggordon/boots-siddiqi-gordon-closing-loop-psrs.pdf)把state定义为干预action tests的未来观测概率、从谱辨识到真实闭环；PSR的充分statistic/可递归更新有严格条件，A8一个goal embedding或有限prefix不是PSR充分性证明。[Havens等1912.04201 §4.1–4.3](https://arxiv.org/pdf/1912.04201)已用多步reward-only监督latent dynamics；其规划保证需要所有H-step轨迹误差上界和优化精确，不能把有限MSE等同该保证。原文NeurIPS2019 workshop，不标成主会接收。
 
 [Latent Geometry Beyond Search 2605.08732 §4/AppD–G](https://arxiv.org/html/2605.08732v1)从在线latent search转为真实观测上goal/horizon条件单步IDM；1…50 hindsight goal、原始动作、frozen LeWM、逐步feedback。母问题是表征是否已使控制可摊销，不是新inverse名字；pairwise视频插值与训练分布失配是其方法来源。四任务/solver families/holdout episodes与data/noise/容量控制，已claim廉价GC-IDM，可复用强baseline。其Hmax1对照同时改goal分布，不能只当horizon输入消融；StageG0另加samegoal zero-horizon GCBC。已下载[官方代码](https://github.com/hdnndh/Latent-Geometry-Beyond-Search-Amortizing-Planning-in-World-Models)commit48c45b1…全文读model/dataset/train/eval，代码planner残留导入不存在PairwiseIDM，正式只独立加载真实GoalConditionedIDM组件；非该paper完整复现。
+
+### 2026-10-05：策略边界的定向读回，不把更多policy模块当novelty
+
+[HIQL NeurIPS2023原文](https://arxiv.org/html/2307.11949v2) §3–5的切入点是远goal相邻动作价值差小，价值误差会淹没差异；同一个action-free expectile TD value提取high-level潜在subgoal和low-level action。它继承IQL/AWR与hindsight，关键设计是两层抽取改善信噪比，不是发明hierarchy；stochastic transition下action-free TD会把幸运结果当可控结果，文中明确限制。与我们的距离：当前GCBC/GCIDM是事实hindsight动作回归，没有value筛行为/跨轨迹传播或subgoal，不能拿它的Push失败代表HIQL，下一完整组合方法必须保留这些核心机制。
+
+[Efficient Hierarchical Implicit Flow Q-learning 2604.08960v1](https://arxiv.org/html/2604.08960v1) §3.1–3.2继承HIQL与MeanFlow，将高/低策略的表达与采样成本一起处理，并对goal representation加入LeJEPA views/SIGReg。作者用JVP mean velocity目标而非简单动作MSE，不能把换个MLP或零horizon叫复现；multimodal policy/联合goal representation已有近邻。我们的G2先固定capacity/data看真实过去信息，G3固定表示与回归结构看coverage×compute，未检查它的完整方法效果。
+
+[Data-Efficient Hierarchical GCRL via Normalizing Flows 2602.11142v1](https://arxiv.org/html/2602.11142v1) §IV-B/TableI–II用RealNVP exact-density high/low policies保留AWR目标，分full与limited data报告，Cube/Scene/AntSoccer与导航表现不同。它说明有限数据与多模态行为策略是可借用的成熟轴，不支持一切task flow都优于plain；与GC-IDM之间的实际张力是何时轨迹后果可由局部动作回归提取、何时需更丰富行动分布/组合/动态状态。G1失败仅一个headseed/86facts，先由G2/G3精准分解再发展方法，不宣称论文级解释。
+
+[RPSP ICML2018](https://proceedings.mlr.press/v80/hefny18a/hefny18a.pdf) §3–5/footnote6重新读回：以可观测future统计作state、moment初始化再joint policy-gradient+prediction，具体RFF/kernel-Bayes filter并非随便加history。尤其on-policy update采用one-step预测来避免多步未来action与observation非因果相关，干预futureaction而不是观察其policy相关性是PSR定义的一部分。这给I14的具体方法来源：问短/长预测对象怎样用真实action后果监督，而不是从history小head失败说belief没用。
+
+[Filter-Aware MPC L4DC2023](https://proceedings.mlr.press/v211/kayalibay23a/kayalibay23a.pdf) §1–3以未来state-estimator误差为trackability value并约束MPC，继承经典belief/dual-control；它不是只对当前prediction residual设threshold。我们尚未复现此完整controller，E18 tinyupdate/固定observer负结果不涉及其核心未来信息状态约束。
+
+[Capability Separation 2608.22197v1](https://arxiv.org/html/2608.22197v1) §3–5主问题是同observational数据下behavior reproduction与specified-action comparison的信息区别：unrestricted kernels/realizable population/exactoptimization下world-action与direct policy等价，observational conditional要consistency/exchangeability/positivity才能当intervention。论文不提供我们finitecompactmodels的训练方法或保证，不能拿它桌面kill policy/WM；也不能重新claim首次发现observational与do不同。
+
+[FACT2608.10232v1](https://arxiv.org/html/2608.10232v1) §3/§4.3把clean executed action置在future/value前，失败数据只监督后果不模仿失败动作；WAN2.2-5B、48actionchunk、成功/失败progress监督与可选best-ofN。有明确action条件attentionmask与maskfailedimitation的消融，不能仅加inverse小head称复现。它与FIRM构成I14强近邻：branch/failure consequence learning和policy supervision不同职责已成熟。进一步必须用同预算、真正的intervention candidates和完整闭环说明我们改变的设计价值。

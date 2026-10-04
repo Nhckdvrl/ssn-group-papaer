@@ -83,3 +83,26 @@ G0整批1728控制已DONE，36groups+24对象参考轨迹/源/全成功事件独
 时间读数精度校正：保存的success_by50是100步budget controller的前50步（GC-IDM前50步h输入一直50），**不是另跑50步预算policy**。first audit effects的budget字段过于含糊，原full artifact/source保留；v2只修正metadata为controller_budget100/evaluation_prefix_steps50或100，并重新独立全trace校对，实际成功/权重/动作/CI未改，未结果后新增读数。前50步GCBC明显更快，但不能因此claim它胜GC-IDM在独立50step-budget协议；该独立协议尚未运行。
 
 G1完整三个head终点独立审计PASS：共同官方CPU initial exact、每400AdamW state/finite、全部50epoch goal/shuffle RNG重生/firstbatch/409600items核对，portable E14_20261005_pusht_goal_policy_endpoint_audit.json。actualRTX，而目录A100是复用组件的legacy basename；源码/feature metadata/cfg/launchlog标明，禁止pool硬件timing。现在启动原Pushfresh48×三policy×raw/clip两个边界共288 controllerpipeline；预控先AST官方Policy对0/50/99 remaining/raw return exact、全部48/full25D warm state-pixels/native成功定义，CPU+CUDA六head对照齐才允许任何闭环读数。
+### G2：策略输入的动态状态对照（2026-10-05，运行前）
+
+推进P04/P05、R1/R4：强GC policy在导航可用，不自动说明单帧配置足以支持接触操作。继承FIRM配置/动态记忆与GC-IDM从真实观测提动作，先作高信息量matched history对照，不claim首次memory或新方法成立。任务Nav原PRED source0与Push published source0；各2arms TRUE-HISTORY与CURRENT-COPY。固定原训练facts缓存，合法starts要求同episode有此前10primitive帧，当前动作finite/下一帧合法；两arms使用完全相同starts、head初始化115000、shuffle115200、futuregoal115100、训练量50epoch/B1024（实际update数按两task合法starts披露）、原raw动作/MSE/LR1e−3/cosine/WD.0001/dropout.1/clip1/FP32。
+
+官方GC-IDM配置embed_dim576：当前输入concat(phi(o[t−10]),phi(o[t−5]),phi(o[t]))；COPY三个位置均phi(o[t])，goal输入三个位置均单幅goal embedding，horizon输入恒0（沿strong samegoal GCBC）。容量和初始完整tensors严格共同；真实history与COPY原始goal/action/采样indices逐例一致。不是训练联合encoder或完整belief/FIRM复现，head训练episode disjoint但Push published phi pretrain未知。未来hindsight跨度1…min(50,剩余)不跨episode，不用true物理state、goal velocity/outcome作为policy feature。
+
+阳性控：CPU/CUDA实际B1024 loss/gradient/step1finite，history-lag准确到原episode缓存边界，人工置换旧帧只改变HISTORY输入/COPY不变，同init原AdaLNzero/官方classbody不改，goals一致，phi缓存hash不改。部署必须重新实际warm replay记录11primitive帧，逐帧历史更新，抽0/5/10帧与既有bank3帧exact/fullstateexact；goal设置不改动力学。前10步不能用未来帧或重复goal填充。deployment100steps/raw与clip两输出版本原fresh48/near-far/完整trace/native success与独立审计，四methods所有弱结果保留。单seed×两taskpilot，不以48共享开发tasks报确认。
+
+主读数同task HISTORY−COPY paired success/near-far、真实action误差仅辅，既有GCBC/GC-IDM及完整CEM作capability参照（训练合法starts与容量不同明列）。noise为24+24开发任务配对CI/单headseed有限。history改善Push而Nav相近→下一完整WM方法加入可学习动态状态、动作后果监督与任务配置职责；COPY吸收→容量/训练解释优先；两者均弱→进一步数据覆盖/多模态策略与长任务组合，不依据这个冻结head负结果关闭R4。不调lags或挑弱baseline证明history，固定10/5/0作为已有LeWM三frame接口参照。
+
+### G3：策略数据覆盖与计算的独立校准（2026-10-05，编码前）
+
+G1全部288控制及独立trace/hash/native-angle审计PASS，GC-IDM/GCBC/PAIRWISE1/2/2，各48且均含一个initial-success；发布CEM24/21保留。不能从只86条head训练与成熟publishedphi的失利断言策略范式或memory因果。G2历史对照已独立运行；G3另测经验覆盖×计算，不等它来为history故事挑数据。实际HDF为18685episode/2336736frames，不是既有summary误估233673；禁拉全量。固定同publishedphi，缓存现有first86的9374帧直接复用，再append最小编号774个不在fresh48评估来源的episode（共860，含原86），一次节点本地顺序编码/原逐episode B64/FP32/全weights-BN frozenhash。只有事实pixels/actions，不含物理states/新goal/outcome。所有source/array/layout/SHA与first86subsetexact审计；HDF全hash未重读明确披露。
+
+后续锁四独立heads：同goal/horizon0 GCBC-MATCHED、同initial115000、B1024/AdamW1e−3 WD.0001/cosine eta1e−5/dropout.1/clip1，数据86或860 ×400或4000updates，从头各自freshopt；固定终点而非bestval。每update均匀有替换sample合法next-starts、hindsight1…50，indices采样115200、goal115100，固定验证90/10frame split的局限。新400与旧G1虽曝光相同但采样/调度参数化不同，要保留新86×400作匹配基线，不能直接借旧结果当公平对照。4000增加计算十倍、860增加episode十倍，报告实际帧数/样本曝光/总updates，不伪称完全固定epoch。CPU/CUDA原官方loss/raw-action/目标同episode/first86共同subset/sourceexact预控先过才训；四全head终点独立opt/RNG/weights审计后原fresh48/100steps/raw与clip完整384闭环，singletrainseedpilot。
+
+决策表：更多数据在4000有效而400无效→强调足够曝光与覆盖耦合，下一方法考虑行为多模态/可执行组合；增加计算足以吸收→训练校准优先，不把86弱policy包装成WM必要性；两者都弱而CEM强→history、动作分布、真实warm分布及预测查询支持都是竞争设计。G2与G3并行回答不同解释，不调若干局部action阈值，不更改I14/E20优先/状态或scienceclaims0。
+
+G1执行结果覆盖pending：全部六控制组288/native criterion/全25D起点/trace/源checkpoint/真实Policy CPUCUDA auditPASS，见E14_20261005_pusht_goal_policy_control_results.json；GCI1/GCBC2/PAIRWISE2（native及physical各48，含initial1），released24/21。单86facts headseed/phi预train未知，跨任务未成立，未确认novel方法。
+
+G2四50epoch350/358400items endpoints全部训练/actualCPUCUDA/独立opt与RNG审计PASS；首controller vendorimport identity assertion在import前控拒绝，效用0。原source/log/failure保留，不改训练/guard；v2 import正确官方Nav namespace在前，新unique-v2 paths，实际CPUCUDA全部48/11warm/fullstates exact/rawret控PASS才跑。两task384闭环当前未齐。G3原860cache104261/first86 exact/frozen303BN/nativeencode PASS；四86/860×400/4000全训练终点DONE，actualCPUCUDA与独立init/完整RNG/fullAdamW/调度endpoint auditPASS。独立原RTXGPU2部署queue3626303，log/tmp/latent-E14-coverage-control-RTX-queue.log，384控制预控正在进行，未有新的可解释效用矩阵。
+
+G2完整384已独立trace/checkpoint/全11warm/raw-vsclip/native-success审计PASS：Nav HISTORY/COPY44/45（near24/24、far20/21），Push3/2（near3/2、far0/0），每48均含initial1，两接口实际逐动作相同。Nav差−2.08pp95CI[−8.33,4.17]，Push+2.08[0,6.25]，一个headseed不含训练方差。见E14_20261005_history_policy_control_results.json；不会把一条额外成功叫memory修复，弱Push原因仍竞争，G3完整数据×计算在跑。原v2两个queue3622514/15自然完成；已等空的A10 source1/2 queue3623770/71实际接管各卡，未重启任何unique run。

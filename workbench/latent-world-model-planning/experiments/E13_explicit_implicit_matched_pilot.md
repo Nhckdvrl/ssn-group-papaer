@@ -349,3 +349,12 @@ A9执行校对：八新训练已全部2825终点/独立audit PASS（E13_20261005
 新v2全部768 DONE，原A8+v2共1152/24groups全trace/初始state/native成功/源hash与scaler独立审计PASS，[三source结果](../results/E13_20261005_predictive_object_three_seed_control_results.json)。PRED DIRECT/LOCAL native31/42/36 vs29/39/35，physical20/33/31 vs21/30/26；VALUE39/40/34 vs22/13/32，physical44/41/34 vs19/13/32（每source48）。withinVALUE平均native+31.94pp CI[4.17,56.25]、physical+38.19[6.25,63.19]；native交互+27.78[.69,52.08]，physical+33.33[−4.17,62.5]。source2 VALUE仅+2/48、physical交互负，不能把平均/CI包装成各seed稳健机制。
 
 VALUE-DIRECT对更强旧H3 SEP native+5.56pp CI[−12.5,21.53]、physical+9.03[−12.5,27.78]；对发布RC native−.69[−15.97,13.89]、physical+11.81[−5.56,27.08]，都未稳定领先。整体信息是shared Fast LOCAL对VALUE几何明显脆弱且有source异质性，DIRECT缓解不等于新的强baseline胜利；不claim非Markov/编码漂移唯一原因，不选择新paper narrative/science0。首版错误控制器整批完全排除，不使用其partial读数；原权重/checkpoint未改。下一独立方法轴E14G0官方GC-IDM/同goal零horizon GCBC/PAIRWISE：判断事实经验和表示怎样被使用才能产生控制，history/第二task仍须精确预控，不做prefixλ救援。
+### A10：强递归训练对照（2026-10-05，运行前）
+
+推进P04/P05与R2：A8/A9的LOCAL只接受teacher一步训练，不能从它的弱表现断言递归预测对象或value geometry不适用。增加成熟OPEN-ROLLOUT五步BPTT训练，继承同官方Fast head、容量、初始化113000+source、采样113100+source、same100事实5795starts/当前10+未来15…35/25动作、frozen FP32 phi及全部五个未来target。六个PRED/VALUE×source0/1/2独立单卡jobs，各2825updates/B128/AdamW5e−5/WD.001/bf16/clip1/noSIG，与已完成DIRECT/LOCAL对照相同最终曝光。OPEN每步输入前一步预测且不detach，所有五步监督；未来事实latent只作target，不能进入预测递推。递推BatchNorm/dropout调用方式与teacher/direct不同，记录此实现设计，不宣称纯计算或BN-only因果。
+
+预控先实际CPU/CUDA B128手算五步递推loss、早期prediction收到末步loss梯度、目标改动不能影响预测、freshopt所有参数finite/step1、frozenphi与BN不变、eval batch/subset与完整五步cost；全部通过才训练。失败保留原run/source/log。保存共同initial/firstids/最终RNG/完整AdamW/参数SHA，独立终点校对后才启动部署。主读数原完整48/near-far/native与physical合法CEM/100steps，递归部署五步，相同candidate budget，全部六source/geometry固定终点保留；不能按表现挑epoch/seed。paired source-anchor CI及强GC-IDM/GCBC、oldSEP/fullRC参照，预测MSE只是辅。
+
+决策表：OPEN吸收DIRECT收益→将此前线索解释为训练与部署条件差距，并保留强递归baseline；OPEN仍弱而DIRECT强→继续检查预测对象是否保留任务进度/动态状态，不跳到普适非Markov结论；两者均不胜成熟策略/RC→从复用、经验监督及history设计探索实际增量，不救同selector。只补现有方向的关键强对照，不更改人审优先、PROPOSED或scienceclaims0。训练snapshot仍HF，raw本地，六run全部报告。
+
+A10执行覆盖pending：六个2825终点全DONE，12actualCPUCUDA B128预控及独立六run共同初始化/firstids/finalRNG/fulloptimizer/frozenphi审计PASS，见E13_20261005_rollout_endpoint_audit.json；十二控制组576已锁，source0 GPU3实际运行，source1/2分别等原history0/1空卡。实际每geom先CPUCUDA完整cost手算exact/全部48warm守卫过才闭环，没有给效用结论。

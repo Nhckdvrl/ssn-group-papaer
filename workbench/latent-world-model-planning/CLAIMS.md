@@ -38,3 +38,5 @@ A9首版`predictive_object_repeat_control.py`将训练seed参数在decision循�
 
 
 2026-10-05 E14G0读数标注校正：所有controller预算100；success_by50为该controller前50步，不能称另跑50step-budget的胜负。首完整audit把前缀长度标budget过于含糊，原artifact/source保留；v2改controller_budget100/evaluation_prefix_steps50或100并全轨迹再核对，实际数字/CI/模型/运行协议未改，无主张由该歧义升级。G1首Push编码在无本地HDF的节点打开文件失败，尚无encoded样本/效用；原失败保留，在既有46GBcache节点用unique retry1、同86episode/相同source编码成功，没有重抽数据。
+
+2026-10-05工程校对：E14G2首history controller的import顺序造成JEPA vendor namespace冲突，源码identity assertion在模块加载时正确拒绝；两task均preflight/efficacy rows0，四训练与独立终点不受影响。failure+原source/log保留raw20261005-E14-history-control-import-failure。v2只调整明确组件import先后及新唯一artifact路径，所有guard保留；不把launchfailure当方法负结果，无scienceclaim升级/作废。PushG1完整288已独立审计，1/2/2含initial-success1，knownpolicy baseline的跨task失败，不是新机制结论。

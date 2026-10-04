@@ -147,3 +147,11 @@ A9覆盖上一pending：三source完整1152控制已审计，PRED direct/local n
 ### 2026-10-05｜P04/P05：事实经验经独立policy使用可强于候选搜索
 
 E14G018heads/1728完整闭环与actualCPU/CUDA/训练终点/原Policy/raw动作/源hash/全部native事件校对PASS。PRED GC-IDM43/46/44、samegoal GCBC43/44/44 vsDIRECT31/42/36（各48）；GC-IDM vsDIRECT +16.67pp CI[4.17,29.17]，成熟基线收益而非新方法。VALUE GC-IDM38/38/39、GCBC41/41/41、PAIRWISE42/30/40；PRED pairwise仅14/19/22，latent用途/监督分布依赖值得继续解释。不能说CEM失效代表事实经验没价值，也不能把零horizonGCBC称新技巧；逐步反馈/优化结构/targets/训练compute一起改变。100-step总体horizon input没有稳定胜samegoal zero输入；50读数只是100-budget前缀，不是独立50预算评测。证据[E14G0全matrix](results/E14_20261005_goal_policy_control_results.json)。下一数据/复用/shift问题要面对这个强支点，不在弱LOCAL小head上做救援叙事。
+
+### 2026-10-05｜P04/P05/P08：策略强支点具有跨任务边界，需要分解数据与状态
+
+[E14G1完整288审计](results/E14_20261005_pusht_goal_policy_control_results.json)：Push GC-IDM/GCBC/PAIRWISE1/2/2，各48（near1/2/2、far全0），所有方法均含原始起点成功1，raw/clip逐动作相同；发布CEM24native/21physical。GC-IDM−released native−47.92pp95CI[−60.42,−35.42]；一个headseed、first86 facts、publishedphi pretrain未知。完整终点/RNG、实际CPUCUDA策略返回、25D起点、angle-position criterion、trace来源均PASS，差距仍可能由head数据覆盖、单帧状态、行为回归、控制反馈/训练差异产生，不能归因唯一机制，也不以导航策略强关闭WM。
+
+连续动作已铺开：A10同初始化/容量/目标/B128/2825的五步BPTT强递归baseline六个sources，终点审计通过后完整576闭环；G2两task samecapacity/goals/init/starts TRUE-HISTORY vsCURRENT-COPY四训练350update已审计，实际v2控制384继续；G3 Push86/860×400/4000updates分离数据覆盖与计算，新860缓存104261事实帧已完成，四head正在原RTX跑。三个解释轴并行，不为DIRECT或history预定故事，不把冻结head负结果升成母问题判决。G2首launcher import collision被源identity assertion在efficacy之前拦住，完整failure/source/log保留，训练终点不受影响。科学主张0。
+
+G2完整384已独立trace/checkpoint/全11warm/raw-vsclip/native-success审计PASS：Nav HISTORY/COPY44/45（near24/24、far20/21），Push3/2（near3/2、far0/0），每48均含initial1，两接口实际逐动作相同。Nav差−2.08pp95CI[−8.33,4.17]，Push+2.08[0,6.25]，一个headseed不含训练方差。见E14_20261005_history_policy_control_results.json；不会把一条额外成功叫memory修复，弱Push原因仍竞争，G3完整数据×计算在跑。原v2两个queue3622514/15自然完成；已等空的A10 source1/2 queue3623770/71实际接管各卡，未重启任何unique run。
