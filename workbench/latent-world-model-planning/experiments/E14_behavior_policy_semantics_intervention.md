@@ -72,3 +72,14 @@ G0部署启动前校对：18个固定50epoch训练全部DONE（各400updates/409
 不把G0导航比较变成单环境结论。先为PushT建立真正可训练的原事实goal-policy数据：固定发布LeWM encoder/projector，原HDF首86episode全帧、下一primitive action与1…50未来goal（原raw动作），与fresh48源episode全部disjoint。原发布encoder预训练split未知，明确这是head训练未见episodes而非整个系统unseen。只一次节点本地HDF顺序读/FP32 frozen encode，禁用DataParallel/跨节点stream，保存每episode row边界/episodeIDs、source模型SHA、HDF文件路径与既有hash参考、各encoded arraySHA、full frozen weights/BN不变。
 
 G1首先只编码资产与阳性控：真实原224RGB、同ImageNet normalized、encoder/projector严格303源、native encode与手算投影/小batch一致容差，first86frame ranges不重叠且future目标不跨episode、actions原样保存（terminal NaN保留/训练排除，不能标准化后再按raw执行）。编码pipeline若失败保留source/log，不出方法效用。下一GC-IDM/同goal GCBC/PAIRWISE各至少1训练seed，沿G0预控后完整原Pushfresh48/真实success角度+位置/100steps两输出bounds审计；仍未部署或确认Push方法gain，不以资产生成代替实验。对照已有发布CEM24/21与joint5/6，后续实际模型/采样/部署预控另补启动记录。没有增加sim训练steps，不支持模块冻结本身是novelty。
+
+G1节点可行性修正：A100 source-loader通过后打开原HDF失败，该节点没有/tmp PushT文件；无encoder样本/训练/效用输出，旧source/log/failure完整durable保留。原文件46GB只在原RTX节点localcache，不跨节点复制/重复下载。新独立features-retry1源码仅改unique路径，在实际含该文件的RTX physical3运行，同first86/模型/输入/全部guards，不重抽episode或移除起点，hardware按实际记录。
+
+G1编码已完成retry1：86episode/9374实际帧，发布全303参数与BN hash不变，三个原始pixel批次native encode bit-exact、subset误差≤2.15e−6；只有打开文件的节点改变，数据没有重抽。新增source0 exploratory三head GC-IDM/GCBC-MATCHED/PAIRWISE，训练沿G0已控的官方组件/FP32、50epoch/B1024/400updates、raw2D单步action、samegoal/初始115000/split115200/goals115100；用9374frame独立episode map重建合法next-starts，90/10frame validation不当held-episode；固定final50，不选bestval。新Pushadapter只复用冻结G0函数，通过显式输入加载替换接入实际Push数组，source_adapter SHA和used原组件/adapter完整记录，所有Nav源/原script不改。实际CPU/CUDA官方Dataset/LOSS/AdaLN/梯度与sampler前控全部PASS才允许三head训练；部署尚未启动，须另Push真实角度/位置成功、full25D exact起点/像素与原Policy raw动作控。
+
+
+G0整批1728控制已DONE，36groups+24对象参考轨迹/源/全成功事件独立审计PASS，见E14_20261005_goal_policy_control_results.json。PRED GC-IDM43/46/44、GCBC43/44/44、PAIRWISE14/19/22；VALUE38/38/39、41/41/41、42/30/40（native各48；output-clip physical全部同数且逐动作相同）。PRED GC-IDM相对同geometry DIRECT +16.67pp CI[4.17,29.17]；geometry对GCBC无稳定差，GC-IDM对samegoal GCBC在100步无稳定增益。所有低结果保留。新增成熟策略支点阻止把DIRECT对弱LOCAL收益当新方法成功；policy逐步实际反馈/不同容量与target/compute等都是联合改变，不叫CEM单因素因果。
+
+时间读数精度校正：保存的success_by50是100步budget controller的前50步（GC-IDM前50步h输入一直50），**不是另跑50步预算policy**。first audit effects的budget字段过于含糊，原full artifact/source保留；v2只修正metadata为controller_budget100/evaluation_prefix_steps50或100，并重新独立全trace校对，实际成功/权重/动作/CI未改，未结果后新增读数。前50步GCBC明显更快，但不能因此claim它胜GC-IDM在独立50step-budget协议；该独立协议尚未运行。
+
+G1完整三个head终点独立审计PASS：共同官方CPU initial exact、每400AdamW state/finite、全部50epoch goal/shuffle RNG重生/firstbatch/409600items核对，portable E14_20261005_pusht_goal_policy_endpoint_audit.json。actualRTX，而目录A100是复用组件的legacy basename；源码/feature metadata/cfg/launchlog标明，禁止pool硬件timing。现在启动原Pushfresh48×三policy×raw/clip两个边界共288 controllerpipeline；预控先AST官方Policy对0/50/99 remaining/raw return exact、全部48/full25D warm state-pixels/native成功定义，CPU+CUDA六head对照齐才允许任何闭环读数。

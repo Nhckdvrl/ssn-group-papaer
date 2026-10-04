@@ -35,3 +35,6 @@
 ### 2026-10-05｜E13 A9重复闭环控制器变量覆盖：整批排除
 
 A9首版`predictive_object_repeat_control.py`将训练seed参数在decision循环中覆盖为planner seed，导致后续interface元数据/输出路径错误，后续LOCAL等待错误checkpoint，且有跨队列输出路径碰撞。**首版source1/2闭环的全部输出排除正式比较**，包括已产生的DIRECT轨迹；不筛保留正确部分。自己的受影响队列已停止，原源码、四log、错误路径与失败记录完整保存于`~/.cache/latent-wm-results/20261005-E13-object-repeat-controller-seed-shadow-failure/`。A8 source0控制器没有该seed参数，384结果不受影响；八个重复训练checkpoint及独立endpoint audit不受影响。没有主张升级或以该批partial作方法判断；science0/C00 L1保持。修复另存v2，区分不可覆盖的train_seed与planner_seed，逐interface/anchor核对训练来源，使用新unique路径完整重跑全部768，不重训/重抽数据。
+
+
+2026-10-05 E14G0读数标注校正：所有controller预算100；success_by50为该controller前50步，不能称另跑50step-budget的胜负。首完整audit把前缀长度标budget过于含糊，原artifact/source保留；v2改controller_budget100/evaluation_prefix_steps50或100并全轨迹再核对，实际数字/CI/模型/运行协议未改，无主张由该歧义升级。G1首Push编码在无本地HDF的节点打开文件失败，尚无encoded样本/效用；原失败保留，在既有46GBcache节点用unique retry1、同86episode/相同source编码成功，没有重抽数据。

@@ -142,3 +142,8 @@ E13A8 shared Fast head/capacity/初始化、same100事实35stepclips、两者部
 
 
 A9覆盖上一pending：三source完整1152控制已审计，PRED direct/local native31/42/36 vs29/39/35；VALUE39/40/34 vs22/13/32。withinVALUE+31.94pp CI[4.17,56.25]，但source2仅+2/48。physical交互CI[−4.17,62.5]含0；DIRECT对strong旧SEP与RC两个接口CI全含0。不能只报相对弱LOCAL的大gain而说新idea已确认。保留重要的表示用途×预测对象问题，增加E14G0真实goal-policy使用轴，研究母问题不缩成单框架的局部decoder优化；[整批源/轨迹/CI](results/E13_20261005_predictive_object_three_seed_control_results.json)。
+
+
+### 2026-10-05｜P04/P05：事实经验经独立policy使用可强于候选搜索
+
+E14G018heads/1728完整闭环与actualCPU/CUDA/训练终点/原Policy/raw动作/源hash/全部native事件校对PASS。PRED GC-IDM43/46/44、samegoal GCBC43/44/44 vsDIRECT31/42/36（各48）；GC-IDM vsDIRECT +16.67pp CI[4.17,29.17]，成熟基线收益而非新方法。VALUE GC-IDM38/38/39、GCBC41/41/41、PAIRWISE42/30/40；PRED pairwise仅14/19/22，latent用途/监督分布依赖值得继续解释。不能说CEM失效代表事实经验没价值，也不能把零horizonGCBC称新技巧；逐步反馈/优化结构/targets/训练compute一起改变。100-step总体horizon input没有稳定胜samegoal zero输入；50读数只是100-budget前缀，不是独立50预算评测。证据[E14G0全matrix](results/E14_20261005_goal_policy_control_results.json)。下一数据/复用/shift问题要面对这个强支点，不在弱LOCAL小head上做救援叙事。
