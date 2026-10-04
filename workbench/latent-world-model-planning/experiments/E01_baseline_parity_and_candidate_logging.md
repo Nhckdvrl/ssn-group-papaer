@@ -72,3 +72,17 @@ CPU actualpixels37同候选与CUDA两H完整model.get_cost vscached整段rollout
 [全部384实际闭环](../results/E01_20261005_rcaux_full_control_results.json)八groups、48全部anchor、真实初始state/trace hash/所有native成功事件/checkpoint/完整head/重新计算scaler/source审计PASS，GPU2原PID3579990自然退出。H1 head ON/OFF native38/33、physical34/31；H3 ON/OFF native37/34、physical35/32（各48）。H1 native ON−OFF+10.42pp paired-anchorCI[0,20.83]、H3+6.25[−2.08,14.58]；未确认跨训练seed新机制。所有近/远及真实envsteps保留，不按partial选择history或weight。
 
 规范以pinned object/vendorREADME weight.85为准，HF附带另旧config.35差异显式记录，未调权重。H1原history与H3port使用同原criterion：后者也评分两pastframes/预算7…1并clamp5；未擅改成另公式。原官方预算50、本任务100，发布训练数据/分割未知且与own100不匹配，所以是完整功能/开发能力比较、不是原paper数字复现或同data因果。依赖预控先因缺sklearn/scipy失败，无efficacy rows；只补既有环境缺包 --no-deps（sklearn1.7.2/scipy1.15.3/joblib1.5.2/threadpoolctl3.6.0），Torch/NumPy不变，失败原log保存20261005-E01-rcaux-dependency-preflight-failure。
+
+### INTACT完整联合训练公开支点（2026-10-05，运行前）
+
+对应D1/P04/P05/R3：冻结GC-policy在导航强、Push弱且86/860×400/4000没有显著恢复，不能代表end-to-end动作条件塑造表示。新增官方paper-runtime完整INTACT E5 goal-displacement seed0两个task，code653ee222、HF revision0430df6f、SHA/companions已经verified。paper-runtime五槽actor与当前clean四槽不同，严格使用发布config.json实例化全部encoder/predictor/projector/actor，全部state strict/finite，绝不用新root类套旧权重。metadata/sharedencoder/full runtime hashes记录；两任务数据与训练预算未匹配，发布pretraining split未知，仅强能力参照、不称paper numeric复现。
+
+先CPU/CUDA真实像素完整get_action五chunk与逐步手算actor语法/mean/递归history匹配、原BlockStandardScaler与实际最后五primitive动作匹配、任意future target action不进入info、参数BN不变、full48 state/pixels恢复exact。标准单观察H1：当前actual pixel加严格执行过的五primitive history，与官方StatefulActionHistoryPolicy输入语义一致；不能把相邻dataset目标action当prevaction。新环境已有10真实warm动作，无需padding。get_action horizon5；25primitive承诺执行，再反馈/规划，最多100。原official50-budget与本地100不同，不poolheadline。
+
+锁定两个task×native raw输出/physical输出clip×原fresh48=192，全部近/远/initial-success保留，native原位置/Push角度criterion，完整轨迹/源hash与每decision真实history记录。原官方primitive StandardScaler全dataset统计复用已审计缓存，而非自己的100训练norm；五槽actor特征手算和真正未来预测手算均先于efficacy。阳性factual原复放成功；噪声地板仅paired48task-anchor bootstrap，不含三个训练seed。单空RTXGPU2，独立单卡，env不升级。失败保留并停在相应guard，不放宽它。
+
+决策：若完整INTACT恢复Push，则后续数据/表示增量以完整联合模型为强支点，不能围绕弱冻结头救故事；若仍弱，先核对发布输入/数据/控制接口差异，再设计完整matched训练而非宣布policy不适用。next method必须有复用或真实控制收益，不把direct controller、intent-actor共享、分角色称首次。只有完整192与独立审计才报告效用，两个task都保留。
+
+INTACT第二preflight失败记录：发布transformers5.9的encoder.layers/q_proj/mlp与现环境encoder.encoder.layer/query/intermediate keylayout不兼容，strict=True拒绝，无模型效用。官方stable_pretraining0.1.7 wheel的vit_hf函数已下载读源/哈希，与tiny192/12/3/768/patch14构造一致，旧env不安装。新latent-wm-intact system-site-packages venv只隔离发布transformers与必要依赖，runtime/heads/weights不改；新唯一v3接续加载、原失败保留。新环境仍使用原SWM0.0.6/NumPy/Torch，若环境恢复/图像不exact则停止效用，不放宽guards。
+
+INTACT v3隔离venv已成功：transformers5.9.0、Torch2.7.1cu128、NumPy1.26.4、SWM0.0.6/pymunk7.2.0，旧env未变。使用提取的官方vit_hf函数、paper-runtime全部head；两个shard full state strict、sharedencoder SHA05c6b2f0…与manifest相同，CPU/CUDA full五chunkactor/递推手算bitexact、全部state keys以result实际记录、原full48state/pixels恢复exact。全部192完成/[独立causal trace与source审计](../results/E01_20261005_intact_published_control_results.json)PASS：TwoRoom37/48（near22/far15）、Push25/48（22/3），两interface相同且均含initial1；native执行1750/3030 envsteps。前述source/版本失败都保留、不择checkpoint/seed。完整joint强参照显著高于Push冻结head的1–5，不能把冻结策略失败认定为policy家族失败；不同data/pretrain/容量/100 vs官方50，不称训练causality或paper数字复现。不能拿Push25 vsreleased24的1条差值当methodgain。

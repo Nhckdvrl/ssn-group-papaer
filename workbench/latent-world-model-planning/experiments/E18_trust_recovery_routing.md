@@ -146,3 +146,14 @@ RTX重算512条旧baseline的success全部相同，但4条重规划的完成步�
 [config/hash/summary/controls](../results/E18_20261002_continuous_adaptation.json)，14,313执行/诊断/重放steps，common prefix state/pixel误差0。FROZEN/PREDLAST/PREDLAST+PROJECTOR顺序、各16：TwoRoom nominal10/10/9、gain.7=8/8/9、wind=8/8/9；PushT nominal5/4/3、gain.7=3/4/3、moment×2=3/2/3。没有稳定成功增益，不能转成update普遍无效或完整AdaJEPA反驳。Pusht更新有distance退化；success与distance分开汇报，fitting loss不作utility。
 
 此前E17 sameg25前16整25执行ZERO300为导航13/16、操作14/16，本次每5反馈FROZEN10/5，但两次plannerseed不同（68000/78000），**不能直接归因feedback**。新增共同初始plan、commit5/10/25和shift-warm控制已先写E13卡；若差由cold optimizerrestart解释，先加强MPC baseline，再研究update；如果仍有差，继续分辨预测对象、执行承诺、隐藏速度/反馈state替换，不预选narrative。
+
+
+### F0：完整联合强支点的反馈频率（2026-10-05，运行前）
+
+对应I11/P04/P05/P08/R5。INTACT全发布模型两task192已严格审计，Nav37/Push25（各48），证明冻结policy的弱结果不代表完整family。下一步跨控制接口，比较原EX25与EX5/EX1反馈；均用同完整publishedseed0、H1观测+causal原最后5primitive动作、同官方get_action horizon5的完整25primitive plan，仅执行prefix变。不是新的feedback方法，也不是EX1=新训练政策；固定模型、相同firstdecision prefix/同goal/同100step预算，不额外查询真实gain/futurestate。
+
+新两task×EX5/EX1×原全部48=192，仅原native输出不clip；原EX25native96为HOLD参照，不能用clip等同混倍。先各实际CPU/CUDAget_action完整25output与原preflightsource/手算一致、前1/5执行prefix切片无越界、原全48warm状态/pixels exact、BN/weights unchanged；全部过再部署。记录每decision实际past5、完整proposal、执行prefix、replan次数及CUDA同步solver时间。原checkpoint/data/near/far/initial-success保留，时序介入改变采样分布属于所研究的控制设计，不称训练因果。
+
+主读数：all/near/far成功、对EX25 paired48 help/harm/95CI、同起点首次plan逐项一致、envsteps、replan次数。噪声地板只anchor区间，一个trainseed；预先全部cell保留，不按近/远筛反馈或调阈值。昂贵fullH25实际算完再丢prefix，所以timing不能夸为最优implementation；若EX5有效，后续先测firstchunk H1短调用与fullH5第一chunk实际parity，成熟廉价固定feedback必须作为强基线。原RTX空GPU1/3各独立task，隔离INTACTvenv/source/环境不变，无router。
+
+决策表：fixedfeedback统一主导→以该固定策略为支点，不硬造gate；help/harm随实际state异质→下一步同state replay fork ledger，futureutility只离线label，部署feature仅observable残差/goal progress/actor uncertainty；feedback无收益→转向data/representation/可复用cost设计，不关闭R5。只是跨轴exploratory test，无科学主张/narrative/state升级。

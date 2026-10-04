@@ -358,3 +358,44 @@ VALUE-DIRECT对更强旧H3 SEP native+5.56pp CI[−12.5,21.53]、physical+9.03[�
 决策表：OPEN吸收DIRECT收益→将此前线索解释为训练与部署条件差距，并保留强递归baseline；OPEN仍弱而DIRECT强→继续检查预测对象是否保留任务进度/动态状态，不跳到普适非Markov结论；两者均不胜成熟策略/RC→从复用、经验监督及history设计探索实际增量，不救同selector。只补现有方向的关键强对照，不更改人审优先、PROPOSED或scienceclaims0。训练snapshot仍HF，raw本地，六run全部报告。
 
 A10执行覆盖pending：六个2825终点全DONE，12actualCPUCUDA B128预控及独立六run共同初始化/firstids/finalRNG/fulloptimizer/frozenphi审计PASS，见E13_20261005_rollout_endpoint_audit.json；十二控制组576已锁，source0 GPU3实际运行，source1/2分别等原history0/1空卡。实际每geom先CPUCUDA完整cost手算exact/全部48warm守卫过才闭环，没有给效用结论。
+
+### A10完整结果（2026-10-05）
+
+[完整576闭环](../results/E13_20261005_rollout_control_results.json)十二组与CPU/CUDA cost、全部48原始轨迹/状态/native success、不可覆盖训练seed与每decision planner seed、源checkpoint/normalizer已独立核对PASS。PRED OPEN native27/42/38、physical21/33/30；VALUE OPEN25/18/11、29/24/8（各source48）。OPEN−DIRECT withinPRED native−1.39pp CI[−10.42,8.33]、physical0[−6.94,6.25]；withinVALUE native−40.97[−56.25,−25]、physical−40.28[−56.94,−23.61]。成熟五步BPTT没有消除VALUE递推弱项，三个source方向一致；但目标空间prior训练与预算不同、BN调用方式不同，不能从此归因非Markov/梯度/抽象。全部六source与弱seed保留。强GC-IDM/GCBC、SEP与RC参照同时审计，不以弱LOCAL定义方法收益，science0/状态与已审主旨保持。
+
+### A11：完整动作后果与目标选择矩阵（2026-10-05，运行前）
+
+推进I14/P04/P05/P10、R1/R2/R3。A10使“只缺open-loop训练”不足以解释现有交互；G3的Push86/860×400/4000亦未稳定恢复policy控制。下一步区分：预测对象是否保留真实动作后果，还是latent goal评分本身选不好。使用既有完整44状态×11唯一合法common-reset branches，排除事先标注的duplicate1，保留所有factual失败起点；不再用固定12单goal queries挑阈值。
+
+导航三source×PRED/VALUE×DIRECT/LOCAL/OPEN十八端点全部固定2825，源已独立审计；同geometry重新FP32 encode完整bank实际current/history与五future，模型仅看actual当前image及预先执行的25action前缀，真实future只用于测量。每一branch endpoint作goal，完整484query矩阵同时报告含goal-generating candidate及去掉它的十candidate矩阵，避免同pixel自检索的100% oracle被当作强规划证据。32/12为旧branch训练方案的source分层，不是本轮十八fact-only模型的干预train/test；source均来自事实train episodes，所有intervention futures未参加十八head训练。只称开发query，不伪称新状态/新task。
+
+主读数：真实25步trajectory endpoint regret（native position distance减同bank最优）、native候选成功、全五prefix factual/干预MSE、以真实同state后果variation归一的相对后果误差。另用真实encoded endpoint的goal L2选candidate作为评分oracle参考；leave-goal-out的oracle并非必然成功。candidate选择只读预测latent/goal，physical state与真实未来只在选择之后评价，不称first-action regret、最优规划或闭环成功。相同bank/anchors按cluster汇总，不把484query当484独立state；不跨不同phi原始MSE直接排名。
+
+阳控：duplicate0/1 actual像素/动作/状态一致、所有branch共同history、trace SHA/ledger顺序/primitive25动作至五block对齐；全部model/frozenphi+BN/source immutability，DIRECT causal suffix手算/递归五step手算、CPU与CUDA actualmodel cost/single-batch一致（2e−4 absolute/1e−5relative），5step输出和current-only参考匹配。只在先控通过后生成完整矩阵；失败完整保留，不改目标/readout以救结果。操作任务沿用same bank与已完成released/联合训练模型原nativeH3 predictor作独立第二task参照，位置与wrapped angle原native判据，禁止7D距离当success。
+
+决策：误差主要在干预action effect→后续学习要以same-state真实后果区别监督，并与成熟action-NCE/SMWM/FIRM比较；真实latent oracle仍选错→须设计goal代价/表示用途；DIRECT仅在事实好、干预不佳→不能宣称解决规划，研究数据与预测对象配合；全矩阵不支持交互→按结果修改判断，不关R1–R5、不反复小query优化。该轮是方法设计依据，不能代替新任务完整闭环/强baseline，不预认novelty。原RTX独立单卡、bank各进程一次解压/复用，raw大数组不进git。
+
+### A12：操作任务匹配预测对象（2026-10-05，运行前）
+
+同R2/R4/P04/P05，用已完成first86 facts/9374 FP32 released-phi features及同raw动作，三shared-capacity Fast heads DIRECT/LOCAL/OPEN，各2825/B128/freshAdamW5e−5 WD.001/clip1/bf16。三个head同CPU初始化113000、clip采样113100、全部五target/current10→future15…35，frozen published encoder/projector全部参数与BN；不额外监督物理状态。训练只从同episode合法35动作/36帧完整clip抽样，same86未使用fresh48来源，发布encoder预训练未见性未知。动作使用原published完整StandardScaler，policy的raw动作不和此standardizedpredictor混用。
+
+CPU/CUDA实际B128五target索引与手算loss/末loss→firstprediction梯度、futuretarget不是输入、freshoptstep1/frozenphi、保存共同initial与每步sampler先控，全部过再训练。固定2825终点不择epoch，完整optimizer/sampler独立审计后原RTX fresh48/两接口/T1/H25EX25/max100 CEM300/30/30，全25D恢复/native位置角度成功/actualcost手算先控再部署。只一个headseed，三arm都保留；和原publishedH3/逐步policy的差异列账，不能当原Fast数值复现或纯history因果。若操作任务不重复导航交互，不以此关母问题；若完整训练不足，额外训练须所有arm匹配并由结果解释，不救一个弱arm。
+
+
+A11执行与整批读回：首次public-state shape误以为2D而实际为10D，guard在编码前拒绝；v2 CPU/CUDA encoding guard拒绝。权重全部SHA一致，实际三个current pixels CPU−CUDA max .0181217；cuDNN TF32默认开启，关闭后max1.00136e−5，CUDA cache/subsetmax6.4373e−6。保留两个failure/artifact/source/log，v3显式关闭matmul和cuDNN TF32，**原2e−4/1e−5容差未变**；不改以前训练/闭环数值，不将失败当方法负结果。
+
+v3十八模型/全部8712query已经完成，[独立全矩阵审计](../results/E13_20261005_full_branch_matrix_results.json)PASS。VALUE含goal candidate DIRECT/LOCAL/OPEN成功304/176/161、363/86/119、284/248/95（每source484）；DIRECT−OPEN +39.67pp cluster CI[29.20,50]，leave-goal-out+21.49pp[17.70,25.41]、endpoint regret−28.09pixels[−35.98,−18.91]。VALUE DIRECT−LOCAL leave-out+15.43[3.51,26.45]，source2regret没有改善；PRED DIRECT−LOCAL含goal反而−8.13pp[−11.09,−5.10]，leave-out+0.28[−1.10,1.58]。同state分支后果归一误差PRED LOCAL仍比DIRECT低；误差与任务读数不等价，不说direct普遍更准。
+
+事实标签另校正：bank branch0是ZERO、branch2才是FACTUAL；冻结producer的summary描述字段误把0叫factual，正式reader按actual branch IDs重算factual/其余counterfactual并另报zero。predictions/所有选择/原rows不变，旧描述不作为科学结论，failure+注记保留。Nav10D后8量同state分支恒定，真实native使用前2position；不把全10state当2D。old32/12不是本轮intervention train/test。该轮只导航开发bank；操作H3 branch reference尚未执行，不能说A11两task完成。
+
+A12三arm2825训练已全部DONE，CPU/CUDA五target/梯度/actual128预控与独立full optimizer、共同initial/全部2825clip RNG、frozen phi/BN审计PASS：[终点](../results/E13_20261005_pusht_object_endpoint_audit.json)。原RTX0/1/3训练自然结束，三个新control队列启动，完整288待齐再审计。DIRECT当前队列已完成，LOCAL/OPEN仍在原RTX，严禁读partial选择或重启unique run；主读数仍全48/near-far/native+physical/native角度位置/全部initial。
+
+A12完整288已DONE/[独立全轨迹审计](../results/E13_20261005_pusht_object_control_results.json)PASS：native DIRECT/LOCAL/OPEN2/2/1，physical2/1/1（各48/所有含initial-success1），far全0；发布H3 CEM24/21参照、G3 strongest GCBC5都保留。DIRECT−LOCAL native0 CI[−6.25,6.25]，DIRECT−OPEN+2.08[0,6.25]，均不能称方法有效。单headseed/86facts/T1/releasedphi未知预train；该支点的充分性明显不足，导航交互尚未跨操作成立。不得拿1条额外成功救direct故事，也不关R2/R4；下一步对齐完整joint强近邻/实际不同controller，而非反复此小head。
+
+
+A11操作H3延伸的运行前细化：锁定RELEASED及已完成PLAIN/GLOBAL-SG/CENTER/DET-INVERSE/PROB-INVERSE全部五个2000终点，不根据旧12query筛方法。完整44states×11unique branches×各endpoint goals=484每model、共2904；原32branch-train/12branch-query分层，这五个joint模型见过前32的干预future，发布预train未知。原fullH3预测器与五macro future递推，不用A12的T1 head；same原normalizer。物理主成功按native agent+block前4position<20及wrappedangle<π/9，7D距离仅诊断不用success或task-regret；另记position-distance regret、角度误差。含goal分支和leave-goal-out全部保留、真实latent oracle与zero-only参考，candidate通过latentcost选，未来物理只能后评。
+
+先full303/固定source/hash，CPU/CUDA actualpixel原生get_cost vs五步完整递推cost parity、全部weights/BN unchanged与cuDNN TF32关闭原容差、original duplicate0/1/samehistory/action25对应targets5预控过后评价。数据一次读取复用，每model独立encode/hash保存。一个source、44statecluster CI与全部旧分层，不把2904当独立test、不能与Nav不同phi rawMSE比较。原RTXGPU0，单卡、原env、全六模型结果与独立rows/array/physical/choice审计齐才解释。若CF方法被完整强参照吸收，则修改学习机制/经验使用而非反复12query或关闭R1。
+
+
+A11操作H3完整六endpoint/2904queries已完成，[全矩阵/trace/source/303weights/nativepose独立audit](../results/E13_20261005_pusht_full_branch_matrix_results.json)PASS。旧branch-query12含goal成功RELEASED/PLAIN/GLOBAL-SG/CENTER/DET/PROB为69/62/54/53/49/44（各132），CENTER−PLAIN−6.82pp95clusterCI[−12.12,−2.27]，PROB−PLAIN−13.64[−25,−3.03]；没有方法增益。**去掉goal-generating动作后的真实native可行支持仅8/132=6.06%**（相同physical候选，各model相同），chosen成功3/2/1/2/2/5、true-latent oracle5/4/3/3/3/4。不能把leave-out低成功直接叫ranking坏，也不能把包含生成动作的true-oracle100%当generalplanning成功。全44与32train分层完整保留、不删无支持goal；position-regret与angle-error辅助分开、不混7Dnorm/native判据。该bank已经对rank-utility辨别力给出具体限制，后续实际任务/closed-loop应有足够候选支持，不继续局部优化此bank。

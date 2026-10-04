@@ -1,0 +1,1011 @@
+{
+  "completed": true,
+  "stage": "coverage",
+  "controller_groups": 8,
+  "episodes": 384,
+  "counts": [
+    {
+      "task": "pusht",
+      "label": "e86-u400",
+      "interface": "native",
+      "seed": 0,
+      "near": 2,
+      "far": 0,
+      "n_per_tier": 24,
+      "new_env_steps": 4628,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "e86-u400",
+      "interface": "physical",
+      "seed": 0,
+      "near": 2,
+      "far": 0,
+      "n_per_tier": 24,
+      "new_env_steps": 4628,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "e86-u4000",
+      "interface": "native",
+      "seed": 0,
+      "near": 1,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4618,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "e86-u4000",
+      "interface": "physical",
+      "seed": 0,
+      "near": 1,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4618,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "e860-u400",
+      "interface": "native",
+      "seed": 0,
+      "near": 3,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4600,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "e860-u400",
+      "interface": "physical",
+      "seed": 0,
+      "near": 3,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4600,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "e860-u4000",
+      "interface": "native",
+      "seed": 0,
+      "near": 3,
+      "far": 2,
+      "n_per_tier": 24,
+      "new_env_steps": 4500,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "e860-u4000",
+      "interface": "physical",
+      "seed": 0,
+      "near": 3,
+      "far": 2,
+      "n_per_tier": 24,
+      "new_env_steps": 4500,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "reference": "PRIOR-CAPABILITY",
+      "interface": "native",
+      "seed": 0,
+      "near": 19,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3159,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "reference": "PRIOR-CAPABILITY",
+      "interface": "physical",
+      "seed": 0,
+      "near": 16,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3251,
+      "initial_successes": 1
+    }
+  ],
+  "effects": [
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u400",
+      "reference": "e86-u400",
+      "tier": "all",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u400",
+      "reference": "e86-u400",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u400",
+      "reference": "e86-u400",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "e86-u4000",
+      "tier": "all",
+      "mean_delta": 0.0625,
+      "paired_anchor_bootstrap_95": [
+        -0.020833333333333332,
+        0.14583333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "e86-u4000",
+      "tier": "near",
+      "mean_delta": 0.08333333333333333,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "e86-u4000",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u4000",
+      "reference": "e86-u400",
+      "tier": "all",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u4000",
+      "reference": "e86-u400",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u4000",
+      "reference": "e86-u400",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "e860-u400",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "e860-u400",
+      "tier": "near",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "e860-u400",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.4583333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.5833333333333334,
+        -0.3333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.7083333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.875,
+        -0.5
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.20833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.4583333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.5833333333333334,
+        -0.3541666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.75,
+      "paired_anchor_bootstrap_95": [
+        -0.9166666666666666,
+        -0.5833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e86-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.16666666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.3333333333333333,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.4166666666666667,
+      "paired_anchor_bootstrap_95": [
+        -0.5625,
+        -0.2708333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.6666666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.875,
+        -0.4166666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.16666666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.3958333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.5208333333333334,
+        -0.2708333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.6666666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.8333333333333334,
+        -0.4583333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "e860-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.125,
+      "paired_anchor_bootstrap_95": [
+        -0.2916666666666667,
+        0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "contrast": "data_by_compute_interaction",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u400",
+      "reference": "e86-u400",
+      "tier": "all",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u400",
+      "reference": "e86-u400",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u400",
+      "reference": "e86-u400",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "e86-u4000",
+      "tier": "all",
+      "mean_delta": 0.0625,
+      "paired_anchor_bootstrap_95": [
+        -0.020833333333333332,
+        0.14583333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "e86-u4000",
+      "tier": "near",
+      "mean_delta": 0.08333333333333333,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "e86-u4000",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u4000",
+      "reference": "e86-u400",
+      "tier": "all",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u4000",
+      "reference": "e86-u400",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u4000",
+      "reference": "e86-u400",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "e860-u400",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "e860-u400",
+      "tier": "near",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "e860-u400",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.3958333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.5208333333333334,
+        -0.2708333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.5833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.7916666666666666,
+        -0.375
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.20833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.3958333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.5208333333333334,
+        -0.2708333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.625,
+      "paired_anchor_bootstrap_95": [
+        -0.8333333333333334,
+        -0.4166666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e86-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.16666666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.3333333333333333,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.3541666666666667,
+      "paired_anchor_bootstrap_95": [
+        -0.5,
+        -0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.5416666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.75,
+        -0.2916666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u400",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.16666666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.3333333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.4583333333333333,
+        -0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.5416666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.75,
+        -0.3333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "e860-u4000",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.125,
+      "paired_anchor_bootstrap_95": [
+        -0.2916666666666667,
+        0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "contrast": "data_by_compute_interaction",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.125
+      ],
+      "train_sources": 1
+    }
+  ],
+  "groups": [
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 86,
+        "updates": 400,
+        "train_seed": 0,
+        "interface": "native",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e86-u400-RTX-s0/u400.ckpt",
+        "checkpoint_sha256": "3a81e80f3a2f46235c993b7cbbb5b75c93050fce832388392fbae9285859d29f",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e86-u400-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 86,
+        "updates": 400,
+        "train_seed": 0,
+        "interface": "physical",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e86-u400-RTX-s0/u400.ckpt",
+        "checkpoint_sha256": "3a81e80f3a2f46235c993b7cbbb5b75c93050fce832388392fbae9285859d29f",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e86-u400-physical-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 86,
+        "updates": 4000,
+        "train_seed": 0,
+        "interface": "native",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e86-u4000-RTX-s0/u4000.ckpt",
+        "checkpoint_sha256": "223544f081de7328e22e8941db3dd302a96023c4db3bac3c86f9c0984ad3c8ad",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e86-u4000-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 86,
+        "updates": 4000,
+        "train_seed": 0,
+        "interface": "physical",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e86-u4000-RTX-s0/u4000.ckpt",
+        "checkpoint_sha256": "223544f081de7328e22e8941db3dd302a96023c4db3bac3c86f9c0984ad3c8ad",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e86-u4000-physical-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 860,
+        "updates": 400,
+        "train_seed": 0,
+        "interface": "native",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e860-u400-RTX-s0/u400.ckpt",
+        "checkpoint_sha256": "94d74241f64f0a7f091ceee2fe5dadaa15c7e8de40d22dee5a65d5d5946bc504",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e860-u400-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 860,
+        "updates": 400,
+        "train_seed": 0,
+        "interface": "physical",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e860-u400-RTX-s0/u400.ckpt",
+        "checkpoint_sha256": "94d74241f64f0a7f091ceee2fe5dadaa15c7e8de40d22dee5a65d5d5946bc504",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e860-u400-physical-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 860,
+        "updates": 4000,
+        "train_seed": 0,
+        "interface": "native",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e860-u4000-RTX-s0/u4000.ckpt",
+        "checkpoint_sha256": "61da7f68f2a225ce4d10500aaaef92974b44e0b4fc9d5463ade3f47723135700",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e860-u4000-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "episodes": 860,
+        "updates": 4000,
+        "train_seed": 0,
+        "interface": "physical",
+        "budget": 100,
+        "history": 1,
+        "executed_steps_per_decision": 1,
+        "horizon_input": 0,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-coverage-e860-u4000-RTX-s0/u4000.ckpt",
+        "checkpoint_sha256": "61da7f68f2a225ce4d10500aaaef92974b44e0b4fc9d5463ade3f47723135700",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "8b9350ee41c1865e62bd83fc3c9aec37d9a1dd0724bd1fafc8e88cfc6e9362f2",
+        "trainer_sha256": "8038a090a52266067895c64d39e8a8b5b951c79cab7e548b476a78101283b079",
+        "policy_component_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "restore_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Known GCBC same phi, fixed data by compute matrix and matched new86x400 anchor; one trainseed, published encoder overlap unknown, all48development retained. Every-step true observations, raw action with optional output clip only. 50step readout is100-budget prefix."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-e860-u4000-physical-RTX-s0"
+    }
+  ],
+  "reference_groups": [
+    {
+      "config": {
+        "method": "RELEASED",
+        "interface": "native",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-pusht-object.ckpt",
+        "checkpoint_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "controller_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "action_mean": [
+          -0.007812755182385445,
+          0.006860560737550259
+        ],
+        "action_std": [
+          0.20824117958545685,
+          0.20649127662181854
+        ],
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "same 48 actual-continuation tasks; one transfer trainseed; AD published training unmatched; native may issue out-of-Box actions; not paper numeric replication"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-pusht-control-RELEASED-native-RTX-s0"
+    },
+    {
+      "config": {
+        "method": "RELEASED",
+        "interface": "physical",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-pusht-object.ckpt",
+        "checkpoint_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "controller_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "action_mean": [
+          -0.007812755182385445,
+          0.006860560737550259
+        ],
+        "action_std": [
+          0.20824117958545685,
+          0.20649127662181854
+        ],
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "same 48 actual-continuation tasks; one transfer trainseed; AD published training unmatched; native may issue out-of-Box actions; not paper numeric replication"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-pusht-control-RELEASED-physical-RTX-s0"
+    }
+  ],
+  "script_sha256": "84ba16c9864f75cd80f0f1b1ccf1525a0d13c27050378796a8960c20904860b5",
+  "scope": "Full preregistered matrix, all48/shared development task anchors and weak methods retained. One training seed per condition; paired anchor CI excludes training variation. Known baseline/design tests, frozen phi and published Push pretraining unknown. PRIOR-CAPABILITY differs in capacity, training starts or control feedback; it is context, not one-factor causal evidence. No novel method or manuscript-critical claim.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-coverage-control-audit/result.json"
+}

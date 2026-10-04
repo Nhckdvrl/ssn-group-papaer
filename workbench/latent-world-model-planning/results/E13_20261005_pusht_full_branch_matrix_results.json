@@ -1,0 +1,1664 @@
+{
+  "completed": true,
+  "models": 6,
+  "queries": 2904,
+  "counts": [
+    {
+      "method": "RELEASED",
+      "stratum": "all",
+      "states": 44,
+      "queries": 484,
+      "source_seeds": 1,
+      "success": 0.5330578512396694,
+      "leave_out_success": 0.028925619834710745,
+      "position_regret": 286.12933440810497,
+      "angle_error": 0.268321968124094,
+      "oracle_success": 0.026859504132231402,
+      "success_available": 0.057851239669421475,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "pretraining_split_unknown": true,
+        "branch_training_anchors": [],
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-pusht-object.ckpt",
+        "checkpoint_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "RELEASED",
+      "stratum": "branch_train32",
+      "states": 32,
+      "queries": 352,
+      "source_seeds": 1,
+      "success": 0.5369318181818181,
+      "leave_out_success": 0.03125,
+      "position_regret": 285.6790347833031,
+      "angle_error": 0.2527708459632001,
+      "oracle_success": 0.022727272727272728,
+      "success_available": 0.056818181818181816,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "pretraining_split_unknown": true,
+        "branch_training_anchors": [],
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-pusht-object.ckpt",
+        "checkpoint_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "RELEASED",
+      "stratum": "branch_query12",
+      "states": 12,
+      "queries": 132,
+      "source_seeds": 1,
+      "success": 0.5227272727272726,
+      "leave_out_success": 0.022727272727272724,
+      "position_regret": 287.33013340757634,
+      "angle_error": 0.30979162721981096,
+      "oracle_success": 0.03787878787878788,
+      "success_available": 0.06060606060606061,
+      "zero_success": 0.0909090909090909,
+      "source": {
+        "pretraining_split_unknown": true,
+        "branch_training_anchors": [],
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-pusht-object.ckpt",
+        "checkpoint_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "PLAIN",
+      "stratum": "all",
+      "states": 44,
+      "queries": 484,
+      "source_seeds": 1,
+      "success": 0.6652892561983471,
+      "leave_out_success": 0.022727272727272728,
+      "position_regret": 393.16997034547927,
+      "angle_error": 0.20964368331935299,
+      "oracle_success": 0.022727272727272728,
+      "success_available": 0.057851239669421475,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-PLAIN-RTX-s0",
+        "training_config_sha256": "d4af7c243957ae019bbab1c056bd5738ab1859208ab0cd6b911d3031e3e6568b",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-PLAIN-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "a2833429fef62a4aecc6e1db33dac398107885fecfa6bde9312bb17f41f664ef",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "PLAIN",
+      "stratum": "branch_train32",
+      "states": 32,
+      "queries": 352,
+      "source_seeds": 1,
+      "success": 0.7386363636363636,
+      "leave_out_success": 0.025568181818181816,
+      "position_regret": 392.6008043089827,
+      "angle_error": 0.180931160899864,
+      "oracle_success": 0.019886363636363636,
+      "success_available": 0.056818181818181816,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-PLAIN-RTX-s0",
+        "training_config_sha256": "d4af7c243957ae019bbab1c056bd5738ab1859208ab0cd6b911d3031e3e6568b",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-PLAIN-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "a2833429fef62a4aecc6e1db33dac398107885fecfa6bde9312bb17f41f664ef",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "PLAIN",
+      "stratum": "branch_query12",
+      "states": 12,
+      "queries": 132,
+      "source_seeds": 1,
+      "success": 0.46969696969696956,
+      "leave_out_success": 0.015151515151515152,
+      "position_regret": 394.6877464428034,
+      "angle_error": 0.28621040977132367,
+      "oracle_success": 0.030303030303030304,
+      "success_available": 0.06060606060606061,
+      "zero_success": 0.0909090909090909,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-PLAIN-RTX-s0",
+        "training_config_sha256": "d4af7c243957ae019bbab1c056bd5738ab1859208ab0cd6b911d3031e3e6568b",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-PLAIN-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "a2833429fef62a4aecc6e1db33dac398107885fecfa6bde9312bb17f41f664ef",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "GLOBAL-SG",
+      "stratum": "all",
+      "states": 44,
+      "queries": 484,
+      "source_seeds": 1,
+      "success": 0.640495867768595,
+      "leave_out_success": 0.014462809917355372,
+      "position_regret": 391.86886828159135,
+      "angle_error": 0.21302079803084129,
+      "oracle_success": 0.01859504132231405,
+      "success_available": 0.057851239669421475,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-GLOBAL-SG-RTX-s0",
+        "training_config_sha256": "eec4f0d04b33200985bf703f0fb00371ced4dd976b9f9dbd72492dba0b59c1cf",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-GLOBAL-SG-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "149025f41fafcdf266fae3f1d3acc9b331c2f6c565737871ed143e9115c5ca84",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "GLOBAL-SG",
+      "stratum": "branch_train32",
+      "states": 32,
+      "queries": 352,
+      "source_seeds": 1,
+      "success": 0.7272727272727273,
+      "leave_out_success": 0.017045454545454544,
+      "position_regret": 398.1271564455615,
+      "angle_error": 0.1894823890003785,
+      "oracle_success": 0.017045454545454544,
+      "success_available": 0.056818181818181816,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-GLOBAL-SG-RTX-s0",
+        "training_config_sha256": "eec4f0d04b33200985bf703f0fb00371ced4dd976b9f9dbd72492dba0b59c1cf",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-GLOBAL-SG-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "149025f41fafcdf266fae3f1d3acc9b331c2f6c565737871ed143e9115c5ca84",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "GLOBAL-SG",
+      "stratum": "branch_query12",
+      "states": 12,
+      "queries": 132,
+      "source_seeds": 1,
+      "success": 0.4090909090909091,
+      "leave_out_success": 0.007575757575757576,
+      "position_regret": 375.1800998443373,
+      "angle_error": 0.27578988877874216,
+      "oracle_success": 0.022727272727272724,
+      "success_available": 0.06060606060606061,
+      "zero_success": 0.0909090909090909,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-GLOBAL-SG-RTX-s0",
+        "training_config_sha256": "eec4f0d04b33200985bf703f0fb00371ced4dd976b9f9dbd72492dba0b59c1cf",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-GLOBAL-SG-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "149025f41fafcdf266fae3f1d3acc9b331c2f6c565737871ed143e9115c5ca84",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "CENTER",
+      "stratum": "all",
+      "states": 44,
+      "queries": 484,
+      "source_seeds": 1,
+      "success": 0.6466942148760331,
+      "leave_out_success": 0.022727272727272728,
+      "position_regret": 404.4822985747089,
+      "angle_error": 0.21695482322969992,
+      "oracle_success": 0.01859504132231405,
+      "success_available": 0.057851239669421475,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-CENTER-RTX-s0",
+        "training_config_sha256": "bcffcf2e5872404487cc0beebe1c70c1c4dd1026949d320591d76aa54bf669bf",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-CENTER-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "a7f4fc7b8f2da2c8961f334a8cb8093564dd9e45ee2b555a4b6bd9ddfa125c9e",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "CENTER",
+      "stratum": "branch_train32",
+      "states": 32,
+      "queries": 352,
+      "source_seeds": 1,
+      "success": 0.7386363636363636,
+      "leave_out_success": 0.025568181818181816,
+      "position_regret": 400.4930022636322,
+      "angle_error": 0.18618499893663665,
+      "oracle_success": 0.017045454545454544,
+      "success_available": 0.056818181818181816,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-CENTER-RTX-s0",
+        "training_config_sha256": "bcffcf2e5872404487cc0beebe1c70c1c4dd1026949d320591d76aa54bf669bf",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-CENTER-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "a7f4fc7b8f2da2c8961f334a8cb8093564dd9e45ee2b555a4b6bd9ddfa125c9e",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "CENTER",
+      "stratum": "branch_query12",
+      "states": 12,
+      "queries": 132,
+      "source_seeds": 1,
+      "success": 0.40151515151515144,
+      "leave_out_success": 0.015151515151515152,
+      "position_regret": 415.1204220709135,
+      "angle_error": 0.29900768801120214,
+      "oracle_success": 0.022727272727272724,
+      "success_available": 0.06060606060606061,
+      "zero_success": 0.0909090909090909,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-CENTER-RTX-s0",
+        "training_config_sha256": "bcffcf2e5872404487cc0beebe1c70c1c4dd1026949d320591d76aa54bf669bf",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-CENTER-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "a7f4fc7b8f2da2c8961f334a8cb8093564dd9e45ee2b555a4b6bd9ddfa125c9e",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "DET-INVERSE",
+      "stratum": "all",
+      "states": 44,
+      "queries": 484,
+      "source_seeds": 1,
+      "success": 0.6446280991735537,
+      "leave_out_success": 0.024793388429752063,
+      "position_regret": 285.02562153152417,
+      "angle_error": 0.23639336269515782,
+      "oracle_success": 0.022727272727272728,
+      "success_available": 0.057851239669421475,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-DET-INVERSE-RTX-s0",
+        "training_config_sha256": "3d6d4430ad362dcc3da848cdb5bb16ef7d87aeaad6a6fe6510baf33ec752aec5",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-DET-INVERSE-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "ddcf3385b57b79a11b7ac6f62c281c88eb834aab93a05905403319a68f5ea442",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "DET-INVERSE",
+      "stratum": "branch_train32",
+      "states": 32,
+      "queries": 352,
+      "source_seeds": 1,
+      "success": 0.7471590909090908,
+      "leave_out_success": 0.028409090909090908,
+      "position_regret": 246.73816520339724,
+      "angle_error": 0.1941772017824147,
+      "oracle_success": 0.022727272727272728,
+      "success_available": 0.056818181818181816,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-DET-INVERSE-RTX-s0",
+        "training_config_sha256": "3d6d4430ad362dcc3da848cdb5bb16ef7d87aeaad6a6fe6510baf33ec752aec5",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-DET-INVERSE-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "ddcf3385b57b79a11b7ac6f62c281c88eb834aab93a05905403319a68f5ea442",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "DET-INVERSE",
+      "stratum": "branch_query12",
+      "states": 12,
+      "queries": 132,
+      "source_seeds": 1,
+      "success": 0.37121212121212116,
+      "leave_out_success": 0.015151515151515152,
+      "position_regret": 387.1255050731958,
+      "angle_error": 0.34896979179580606,
+      "oracle_success": 0.022727272727272724,
+      "success_available": 0.06060606060606061,
+      "zero_success": 0.0909090909090909,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-DET-INVERSE-RTX-s0",
+        "training_config_sha256": "3d6d4430ad362dcc3da848cdb5bb16ef7d87aeaad6a6fe6510baf33ec752aec5",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-DET-INVERSE-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "ddcf3385b57b79a11b7ac6f62c281c88eb834aab93a05905403319a68f5ea442",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "PROB-INVERSE",
+      "stratum": "all",
+      "states": 44,
+      "queries": 484,
+      "source_seeds": 1,
+      "success": 0.6384297520661156,
+      "leave_out_success": 0.051652892561983466,
+      "position_regret": 222.827539366377,
+      "angle_error": 0.26999953206899846,
+      "oracle_success": 0.03099173553719008,
+      "success_available": 0.057851239669421475,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-PROB-INVERSE-RTX-s0",
+        "training_config_sha256": "232a29a0d4a9d1117e8e50d84d617c31477559d1bea73d31ef9c36eab829d2d6",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-PROB-INVERSE-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "d07361b4d7ea3f7b60c6bafa647c1348122d3987eda03c2f0d21d695f20329ff",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "PROB-INVERSE",
+      "stratum": "branch_train32",
+      "states": 32,
+      "queries": 352,
+      "source_seeds": 1,
+      "success": 0.7528409090909091,
+      "leave_out_success": 0.056818181818181816,
+      "position_regret": 204.87050407284812,
+      "angle_error": 0.21469219158974948,
+      "oracle_success": 0.03125,
+      "success_available": 0.056818181818181816,
+      "zero_success": 0.09090909090909091,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-PROB-INVERSE-RTX-s0",
+        "training_config_sha256": "232a29a0d4a9d1117e8e50d84d617c31477559d1bea73d31ef9c36eab829d2d6",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-PROB-INVERSE-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "d07361b4d7ea3f7b60c6bafa647c1348122d3987eda03c2f0d21d695f20329ff",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    {
+      "method": "PROB-INVERSE",
+      "stratum": "branch_query12",
+      "states": 12,
+      "queries": 132,
+      "source_seeds": 1,
+      "success": 0.3333333333333333,
+      "leave_out_success": 0.03787878787878788,
+      "position_regret": 270.71296681578764,
+      "angle_error": 0.4174857733469955,
+      "oracle_success": 0.030303030303030304,
+      "success_available": 0.06060606060606061,
+      "zero_success": 0.0909090909090909,
+      "source": {
+        "training_run": "20261004-E20-joint-pusht-PROB-INVERSE-RTX-s0",
+        "training_config_sha256": "232a29a0d4a9d1117e8e50d84d617c31477559d1bea73d31ef9c36eab829d2d6",
+        "branch_training_anchors": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "pretraining_split_unknown": true,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E20-joint-pusht-PROB-INVERSE-RTX-s0/u2000.ckpt",
+        "checkpoint_sha256": "d07361b4d7ea3f7b60c6bafa647c1348122d3987eda03c2f0d21d695f20329ff",
+        "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    }
+  ],
+  "effects": [
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.13223140495867772,
+      "paired_state_cluster_bootstrap_95": [
+        -0.18388429752066118,
+        -0.08057851239669422
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_train32",
+      "mean_delta": -0.20170454545454547,
+      "paired_state_cluster_bootstrap_95": [
+        -0.25,
+        -0.15909090909090912
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_query12",
+      "mean_delta": 0.05303030303030302,
+      "paired_state_cluster_bootstrap_95": [
+        -0.015151515151515157,
+        0.12878787878787878
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.006198347107438016,
+      "paired_state_cluster_bootstrap_95": [
+        -0.004132231404958678,
+        0.01859504132231405
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_train32",
+      "mean_delta": 0.005681818181818181,
+      "paired_state_cluster_bootstrap_95": [
+        -0.005681818181818182,
+        0.019886363636363636
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_query12",
+      "mean_delta": 0.007575757575757576,
+      "paired_state_cluster_bootstrap_95": [
+        -0.015151515151515152,
+        0.030303030303030304
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "all",
+      "mean_delta": -107.04063593737436,
+      "paired_state_cluster_bootstrap_95": [
+        -154.2990770128353,
+        -57.1611092090123
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_train32",
+      "mean_delta": -106.92176952567962,
+      "paired_state_cluster_bootstrap_95": [
+        -166.35634911905487,
+        -42.62285103526803
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_query12",
+      "mean_delta": -107.35761303522702,
+      "paired_state_cluster_bootstrap_95": [
+        -181.19962918649202,
+        -32.47033133398081
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "all",
+      "mean_delta": 0.05867828480474096,
+      "paired_state_cluster_bootstrap_95": [
+        0.01916012011677311,
+        0.1037869893396032
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_train32",
+      "mean_delta": 0.07183968506333609,
+      "paired_state_cluster_bootstrap_95": [
+        0.022549516240760105,
+        0.12854758648006454
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "RELEASED",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_query12",
+      "mean_delta": 0.02358121744848729,
+      "paired_state_cluster_bootstrap_95": [
+        -0.029873859802847662,
+        0.08412360699130265
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.024793388429752074,
+      "paired_state_cluster_bootstrap_95": [
+        -0.043388429752066124,
+        -0.008264462809917357
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_train32",
+      "mean_delta": -0.011363636363636367,
+      "paired_state_cluster_bootstrap_95": [
+        -0.022727272727272735,
+        -0.002840909090909092
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_query12",
+      "mean_delta": -0.06060606060606061,
+      "paired_state_cluster_bootstrap_95": [
+        -0.12121212121212117,
+        -0.007575757575757579
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": -0.008264462809917356,
+      "paired_state_cluster_bootstrap_95": [
+        -0.01859504132231405,
+        0.0
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_train32",
+      "mean_delta": -0.008522727272727272,
+      "paired_state_cluster_bootstrap_95": [
+        -0.022727272727272728,
+        0.0
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_query12",
+      "mean_delta": -0.007575757575757576,
+      "paired_state_cluster_bootstrap_95": [
+        -0.022727272727272724,
+        0.0
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "all",
+      "mean_delta": -1.3011020638879742,
+      "paired_state_cluster_bootstrap_95": [
+        -29.532629823856034,
+        27.554983332571382
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_train32",
+      "mean_delta": 5.526352136578822,
+      "paired_state_cluster_bootstrap_95": [
+        -27.411820577580723,
+        37.159489601668376
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_query12",
+      "mean_delta": -19.507646598466092,
+      "paired_state_cluster_bootstrap_95": [
+        -75.76129538652768,
+        33.79281010891079
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "all",
+      "mean_delta": 0.0033771147114883414,
+      "paired_state_cluster_bootstrap_95": [
+        -0.0098722971036998,
+        0.017322731849780677
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_train32",
+      "mean_delta": 0.008551228100514535,
+      "paired_state_cluster_bootstrap_95": [
+        -0.0037966678397692113,
+        0.024282485001396136
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "GLOBAL-SG",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_query12",
+      "mean_delta": -0.010420520992581506,
+      "paired_state_cluster_bootstrap_95": [
+        -0.0430876886294689,
+        0.01736049770103246
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.018595041322314054,
+      "paired_state_cluster_bootstrap_95": [
+        -0.03719008264462811,
+        -0.00413223140495868
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_train32",
+      "mean_delta": -3.469446951953614e-18,
+      "paired_state_cluster_bootstrap_95": [
+        -0.008522727272727276,
+        0.008522727272727265
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_query12",
+      "mean_delta": -0.06818181818181819,
+      "paired_state_cluster_bootstrap_95": [
+        -0.12121212121212122,
+        -0.022727272727272735
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "paired_state_cluster_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_train32",
+      "mean_delta": 0.0,
+      "paired_state_cluster_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_query12",
+      "mean_delta": 0.0,
+      "paired_state_cluster_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "all",
+      "mean_delta": 11.312328229229621,
+      "paired_state_cluster_bootstrap_95": [
+        -12.887626933905507,
+        35.77263704419001
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_train32",
+      "mean_delta": 7.8921979546494585,
+      "paired_state_cluster_bootstrap_95": [
+        -20.711584695548687,
+        37.338241163492896
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_query12",
+      "mean_delta": 20.432675628110047,
+      "paired_state_cluster_bootstrap_95": [
+        -23.37394572941852,
+        64.36482466128719
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "all",
+      "mean_delta": 0.007311139910346979,
+      "paired_state_cluster_bootstrap_95": [
+        -0.0016140176931982808,
+        0.01916465376809926
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_train32",
+      "mean_delta": 0.005253838036772669,
+      "paired_state_cluster_bootstrap_95": [
+        -0.004974274818015498,
+        0.019499939011875
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "CENTER",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_query12",
+      "mean_delta": 0.012797278239878472,
+      "paired_state_cluster_bootstrap_95": [
+        -0.0019134230100692371,
+        0.032899078437760944
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.020661157024793396,
+      "paired_state_cluster_bootstrap_95": [
+        -0.051652892561983466,
+        0.006198347107438013
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_train32",
+      "mean_delta": 0.008522727272727267,
+      "paired_state_cluster_bootstrap_95": [
+        -0.0028409090909090953,
+        0.019886363636363633
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_query12",
+      "mean_delta": -0.09848484848484847,
+      "paired_state_cluster_bootstrap_95": [
+        -0.18181818181818185,
+        -0.01515151515151515
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.002066115702479339,
+      "paired_state_cluster_bootstrap_95": [
+        -0.006198347107438016,
+        0.010330578512396695
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_train32",
+      "mean_delta": 0.002840909090909091,
+      "paired_state_cluster_bootstrap_95": [
+        -0.005681818181818182,
+        0.011363636363636364
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_query12",
+      "mean_delta": 0.0,
+      "paired_state_cluster_bootstrap_95": [
+        -0.022727272727272724,
+        0.022727272727272724
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "all",
+      "mean_delta": -108.14434881395515,
+      "paired_state_cluster_bootstrap_95": [
+        -151.7467696615324,
+        -64.35089100142582
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_train32",
+      "mean_delta": -145.86263910558546,
+      "paired_state_cluster_bootstrap_95": [
+        -189.2505861915127,
+        -99.6123901663997
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_query12",
+      "mean_delta": -7.562241369607634,
+      "paired_state_cluster_bootstrap_95": [
+        -97.18369577293866,
+        67.87721051608531
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "all",
+      "mean_delta": 0.026749679375804827,
+      "paired_state_cluster_bootstrap_95": [
+        0.0037661947418908513,
+        0.05080329498569009
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_train32",
+      "mean_delta": 0.013246040882550734,
+      "paired_state_cluster_bootstrap_95": [
+        -0.009055476620165303,
+        0.036201993711959875
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "DET-INVERSE",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_query12",
+      "mean_delta": 0.06275938202448242,
+      "paired_state_cluster_bootstrap_95": [
+        0.009479230453989868,
+        0.1197641112129113
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.026859504132231406,
+      "paired_state_cluster_bootstrap_95": [
+        -0.06818181818181818,
+        0.008264462809917356
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_train32",
+      "mean_delta": 0.014204545454545452,
+      "paired_state_cluster_bootstrap_95": [
+        -8.716985466783416e-18,
+        0.03125
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "success",
+      "stratum": "branch_query12",
+      "mean_delta": -0.13636363636363635,
+      "paired_state_cluster_bootstrap_95": [
+        -0.24999999999999997,
+        -0.030303030303030293
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.028925619834710745,
+      "paired_state_cluster_bootstrap_95": [
+        0.012396694214876032,
+        0.047520661157024795
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_train32",
+      "mean_delta": 0.03125,
+      "paired_state_cluster_bootstrap_95": [
+        0.011363636363636364,
+        0.056818181818181816
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "leave_out_success",
+      "stratum": "branch_query12",
+      "mean_delta": 0.022727272727272724,
+      "paired_state_cluster_bootstrap_95": [
+        0.0,
+        0.06060606060606061
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "all",
+      "mean_delta": -170.34243097910223,
+      "paired_state_cluster_bootstrap_95": [
+        -214.16060748900648,
+        -126.79826949819896
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_train32",
+      "mean_delta": -187.7303002361346,
+      "paired_state_cluster_bootstrap_95": [
+        -240.43989505570573,
+        -133.09739694364364
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "position_regret",
+      "stratum": "branch_query12",
+      "mean_delta": -123.97477962701574,
+      "paired_state_cluster_bootstrap_95": [
+        -194.0705090694648,
+        -61.930669612840774
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "all",
+      "mean_delta": 0.06035584874964544,
+      "paired_state_cluster_bootstrap_95": [
+        0.025920034155462388,
+        0.10266491443957368
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_train32",
+      "mean_delta": 0.03376103068988551,
+      "paired_state_cluster_bootstrap_95": [
+        0.009674707071603835,
+        0.060156900918028396
+      ],
+      "source_seeds": 1
+    },
+    {
+      "method": "PROB-INVERSE",
+      "reference": "PLAIN",
+      "metric": "angle_error",
+      "stratum": "branch_query12",
+      "mean_delta": 0.1312753635756719,
+      "paired_state_cluster_bootstrap_95": [
+        0.029125537239831346,
+        0.25791113664307064
+      ],
+      "source_seeds": 1
+    }
+  ],
+  "config": {
+    "script_sha256": "56370f7d8ecde39f2e9c344fd0d8d2e3298ca74d506b53c0aafa8faa4e180999",
+    "bank_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+    "bank_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+    "branches": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "methods": [
+      "RELEASED",
+      "PLAIN",
+      "GLOBAL-SG",
+      "CENTER",
+      "DET-INVERSE",
+      "PROB-INVERSE"
+    ],
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "scope": "Full H3 native predictors, all44 common-reset states/all11 unique branch endpoint goals. Five joint models trained on first32 branches; old12 held branch outcomes, published pretraining unknown. Offline25step choices, not closed-loop; position-only regret auxiliary, native success also requires angle. TF32 disabled for offline numeric parity; previous controls unchanged."
+  },
+  "full_matrix_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E13-pusht-full-branch-matrix",
+  "script_sha256": "ade4dd8b04c0d61947b814cd75dedebfc0f6052378d63862cb178a520387b486",
+  "scope": "44 actual states x11 branch endpoint goals per model, six frozen fullH3 sources, original native position AND angle success. Position regret only auxiliary; oracle future evaluation-only. One transferseed/32 branch-train+12 branch-query/published pretraining unknown. No closed-loop, novel method, causal full-data reproduction, or 2904 independent-test claim.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E13-pusht-full-branch-audit/result.json"
+}

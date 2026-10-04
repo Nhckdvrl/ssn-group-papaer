@@ -130,3 +130,23 @@ G2四historypolicies50epoch350/358400items DONE/独立endpointPASS，见E14_2026
 G3最新覆盖trainingpending：四86/860×400/4000全head DONE，actualCPUCUDA/独立init/完整samplers/finalRNG/fullfiniteAdamW/scheduler auditPASS，见E14_20261005_coverage_policy_endpoint_audit.json。原3621998自然退出，新GPU2部署queue3626303，log/tmp/latent-E14-coverage-control-RTX-queue.log；全部384先实际full25D/warm/原官方Policy rawreturn CPUCUDA预控，complete齐后用goal_policy_followup_control_audit.py coverage独立读整批。G2对应该reader history，需两个task pipelines全complete才读整批384。训练结果不当部署效用；当前控制进程状态每轮实查。
 
 G2完整384已独立trace/checkpoint/全11warm/raw-vsclip/native-success审计PASS：Nav HISTORY/COPY44/45（near24/24、far20/21），Push3/2（near3/2、far0/0），每48均含initial1，两接口实际逐动作相同。Nav差−2.08pp95CI[−8.33,4.17]，Push+2.08[0,6.25]，一个headseed不含训练方差。见E14_20261005_history_policy_control_results.json；不会把一条额外成功叫memory修复，弱Push原因仍竞争，G3完整数据×计算在跑。原v2两个queue3622514/15自然完成；已等空的A10 source1/2 queue3623770/71实际接管各卡，未重启任何unique run。
+
+
+### 2026-10-05覆盖旧pending：完整四组结果与INTACT版本边界
+
+G3全部384 DONE/独立auditPASS，86/860×400/4000=2/2/4/5（各48/native和clip同动作/initial1），数据、compute、interaction CI均跨0；旧3626303自然结束。A10完整576 DONE/独立auditPASS：PRED OPENnative27/42/38 vsDIRECT31/42/36，VALUE25/18/11 vs39/40/34；withinVALUE OPEN−DIRECT−40.97pp95CI[−56.25,−25]，physical−40.28。旧3623769/70/71均自然结束。不是新方法胜利，不关闭R2/R4，不把冻phi头当完整policy。
+
+A11全18模型/8712query DONE/full independentauditPASS，见E13_20261005_full_branch_matrix_results.json。VALUE direct−open含goal+39.67ppCI[29.20,50]，leave-goal-out+21.49[17.70,25.41]；PRED direct含goal反而弱且后果归一MSE更差。每484query其实44state×11goals/3sourcescluster，非8712独立state；onlyNav完成，Push H3reference待补。bank0 ZERO/2 FACTUAL/1duplicateZERO，正式reader校正冻结producer描述错误，预测与选择未改。Nav实际diagnostic10D后8sameanchor分支恒定，native前2position。第一次shapeguard失败、第二次CPU/CUDAcuDNN-TF32差.01812失败都保留原source/log，v3关闭TF32原2e−4/1e−5容差不变，freshsamebackendsubset6.437e−6；旧3636982自然结束，不能重启unique-v3。
+
+A12 Push3matchedFast DIRECT/LOCAL/OPEN全部2825 DONE、actualCPUCUDA B128/五target/梯度/RNG/frozenBN與独立endpointPASS、288闭环fulltrace/source/nativecriterion审计PASS：native2/2/1、physical2/1/1，每48含initial1、far0；publishedH3 CEM24/21。旧训练3633756/7/8及部署3639061/2/3都自然结束。一个headseed/86facts/T1/phi pretrain未知，不称direct普遍优胜或数据无用；不继续小head阈值救援。
+
+INTACT完整公开模型资产已verified：vendor653ee222、HF paper-e5-goal-v1解析0430df6f、两个84.7MBseed0shards和全部config.json/yaml/multitaskmetadata在HFderived/intact-e5-goal-seed0。paper_runtime五槽actordelta_condition_product与rootclean四槽不同，严禁套类/strict=False。初次preflight缺stable_pretraining；第二次strictencoderkeylayout旧transformers vs发布5.9不兼容，efficacy0、failure/source/log保留各original/v2CPU目录。官方0.1.7 wheel只读提取vit_hf函数，未装入旧env；新隔离latent-wm-intact system-site venv+transformers5.9，pinnedconstructor/runtime/全weights严格加载，各CPUCUDA五chunk/manual/rawlast5standardization/全部48warmexact过后完整192两task H1 DIRECT/nativeclip。只有实际执行过的warm/actions[-5:]进输入，goal未来不偷渡。发布50 vs本地100、pretrain未知、Torch/SWM现有差异显式列账，不冒numericpaper复现。
+
+INTACT v3源码+independentreader已写，隔离依赖安装后才能启动新unique-v3；v1/v2全部排除效用，旧3642047/3642882已退出。最新PID/log必须实查，不把这里未更新pending当真实进程。下一步：完成完整强邻并审计、补A11Push真正H3参照；从经验后果标签语义/预测对象×表示用途/任务复用分别设计实际方法pilot，面对AC-MTM/INTACT/FIRM/CoCo与成熟control，不宣称首次动作或分角色。状态PROPOSED/science0/C00L1保持，goalactive。所有结果与工程失败写卡/log/CLAIMS，不新handoff或survey。
+
+
+最新覆盖INTACT待启动与A11Push待补：INTACT v3在新隔离venv fullstrict共享encoder/hash/CPUCUDA五chunk手算/raw5norm/全48恢复exact全部PASS，192闭环及独立causal trace/source审计DONE。Nav37/48（22near/15far）、Push25/48（22/3），两个native/clip相同/initial1。见E01_20261005_intact_published_control_results；旧3644522自然退出。新envtransformers5.9/Torch2.7.1cu128/NumPy1.26.4/SWM0.0.6，.pth只复用旧sitepackages依赖，原env不改。官方0.1.7wheel精确提取vit_hf供构造，不安装稳定预训练全栈；original/v2strict失败efficacy0完整保留。
+
+A11Push fullH3 RELEASED+五joint2000，2904query/全部六CPUCUDA原get_cost手算bitexact/immutable303/TF32off/fullindependentaudit DONE；旧3645888自然退出。见E13_20261005_pusht_full_branch_matrix_results，branch_query12含goal69/62/54/53/49/44（每132），没有newmethodgain。leave-out物理native支持只有8/132=6.06%，chosen3/2/1/2/2/5、true-latentoracle5/4/3/3/3/4；低support不得被误当cost坏。32branchtrain/12query、一transferseed、unknownpretraining完整披露，七维norm不当成功。Nav/PushA11都完成，禁止重启旧unique artifacts。
+
+E18F0在运行前新增card，完整INTACT同H1/H25plan/同actualpast5/rawnative/budget100，只改执行prefix EX5/EX1；原EX25native37/25为HOLD参照。新两task192全部旧48，EX5/EX1均保留，每decision保存full25proposal+causalpast5+actualstates+CUDA同步solver时间，首decision与旧EX25逐项bitexact，所有preflight通过后才效用。新RTX1/3 PID3648207/3648208，logs/tmp/latent-E18-intact-feedback-{tworoom/pusht}-RTX.log。阶段不是router/gate新方法；若fixedfeedback统治先用strong固定策略，若有help/harm异质下一步same-state replayforkledger，不把futureutility做deploymentfeature。科学主张0/PROPOSED/goalactive不改。当前进程和预控每轮实查后更新，全部192齐再独立audit，不能报告partialwinner。

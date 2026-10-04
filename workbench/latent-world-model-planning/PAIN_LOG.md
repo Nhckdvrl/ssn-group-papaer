@@ -155,3 +155,21 @@ E14G018heads/1728完整闭环与actualCPU/CUDA/训练终点/原Policy/raw动作/
 连续动作已铺开：A10同初始化/容量/目标/B128/2825的五步BPTT强递归baseline六个sources，终点审计通过后完整576闭环；G2两task samecapacity/goals/init/starts TRUE-HISTORY vsCURRENT-COPY四训练350update已审计，实际v2控制384继续；G3 Push86/860×400/4000updates分离数据覆盖与计算，新860缓存104261事实帧已完成，四head正在原RTX跑。三个解释轴并行，不为DIRECT或history预定故事，不把冻结head负结果升成母问题判决。G2首launcher import collision被源identity assertion在efficacy之前拦住，完整failure/source/log保留，训练终点不受影响。科学主张0。
 
 G2完整384已独立trace/checkpoint/全11warm/raw-vsclip/native-success审计PASS：Nav HISTORY/COPY44/45（near24/24、far20/21），Push3/2（near3/2、far0/0），每48均含initial1，两接口实际逐动作相同。Nav差−2.08pp95CI[−8.33,4.17]，Push+2.08[0,6.25]，一个headseed不含训练方差。见E14_20261005_history_policy_control_results.json；不会把一条额外成功叫memory修复，弱Push原因仍竞争，G3完整数据×计算在跑。原v2两个queue3622514/15自然完成；已等空的A10 source1/2 queue3623770/71实际接管各卡，未重启任何unique run。
+
+
+### 2026-10-05｜P04/P05/P08：完整coverage、BPTT及反事实矩阵
+
+[E14G3完整384](results/E14_20261005_coverage_policy_control_results.json)：Push86×400/86×4000/860×400/860×4000分别2/2/4/5（每48/native与clip动作相同/含initial1），数据effect400为+4.17pp95CI[−4.17,12.5]、4000为+6.25[−2.08,14.58]；compute及interaction CI含0。单headseed、prior未知，额外数据/计算未稳定恢复已发布CEM24/21能力；不是“数据无用”或belief唯一原因。
+
+[E13A10完整576](results/E13_20261005_rollout_control_results.json)：PRED OPEN native27/42/38 vsDIRECT31/42/36，整体−1.39pp CI含0；VALUE OPEN25/18/11 vs39/40/34，−40.97pp95CI[−56.25,−25]，physical同向−40.28。完整五步BPTT没有吸收VALUE设计差距，但prior任务/预算与BN调用不同，不能据此宣布非Markov原因。全source保留，knownGCpolicy/SEP/RC仍为更强支点。
+
+[E13A11十八模型全8712query](results/E13_20261005_full_branch_matrix_results.json)：VALUE DIRECT−OPEN含goal +39.67ppCI[29.20,50]、leave-goal-out+21.49[17.70,25.41]，25step endpoint regret−28.09pixels[−35.98,−18.91]；PRED不存在同向普适收益。true-latent leave-outoracle每sourcePRED186/196/196、VALUE193/202/197（各484），regret PRED26.75/23.56/17.21、VALUE3.84/2.03/4.19；这是cost用途线索，原44state×11goals聚类、实际branch覆盖和阈值结构强相关，不将484当independentstate或宣称oracle闭环成功。全prefix action-effect误差PRED LOCAL优于DIRECT，说明不能只用latentMSE排序。真实动作后果/goal geometry/预测对象三者仍须配合actualbenefit验证。
+
+A11首次10D-state理解与第二次CPU/CUDA TF32守卫失败各完整保留，v3关闭TF32不放宽容差。producer把ZERO branch0描述成factual，正式reader依据实际branch2纠正annotation，预测/选择未改。A11操作H3 reference仍待做；A12 Push matchedDIRECT/LOCAL/OPEN训练/完整288已完成，独立读数audit进行，不用partial救想法。INTACT两task全joint发布权重下载验hash，isolated runtime严控加载，尚无强邻效用结论。
+
+A12覆盖pending：[全部288审计](results/E13_20261005_pusht_object_control_results.json)PASS，native DIRECT/LOCAL/OPEN2/2/1、physical2/1/1，各48含initial1、far全0；对releasedH3 24/21无能力优势。T1/frozenphi/86facts/一个source，不据此否定direct预测对象或把数据/历史/优化的混杂隐去。完整joint公开INTACT为必要强支点，现venv与其ViT keylayout真实冲突，独立新venv处理而非strict=False。
+
+完整jointINTACT强支点：[两task192已审计](results/E01_20261005_intact_published_control_results.json)Nav37/48（22near/15far）、Push25/48（22/3），native/clip相同、各initial1。发布joint模型恢复Push能力，说明先前冻结policy/小数据T1 Fast1–5不能代表end-to-end latent action family；不将data/容量/训练预算与反馈混杂当唯一representation因果。该强支点支持R3/R5继续研究经验使用、角色与复用，未确认novel方法。
+
+
+A11操作全2904query完成并独立审计：[H3完整结果](results/E13_20261005_pusht_full_branch_matrix_results.json)。旧12query-state×11goals含goal成功RELEASED69/PLAIN62/GLOBAL54/CENTER53/DET49/PROB44（各132），方法未改善。leave-goal-out真实native可行支持只有8/132=6.06%；全部模型同物理候选，所以低成功有支持上限，不能误解释成ranking/geometry唯一机制。chosen3/2/1/2/2/5，oracle5/4/3/3/3/4；这不是strongmethod证明。old32干预train/12query、一个transferseed、publishedpretrain未知保持，全部状态goal保留。A11导航/操作均已完成，诊断不等于新的control方法；下一步跨完整强支点的实际feedback/utility axis E18F0，不连续救44bank。
