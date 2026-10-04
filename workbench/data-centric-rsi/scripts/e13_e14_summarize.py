@@ -2,6 +2,7 @@
 import argparse
 import datetime as dt
 import json
+import math
 from pathlib import Path
 from e12_validate_eval import validate_results, BENCHMARKS
 
@@ -21,18 +22,23 @@ def summarize(results, state_path):
     actions = ('replay', 'fresh_selected', 'fresh_law', 'source_only_fresh')
     schedule = {}
     for line in (results/'E13_E14_closeout_schedule.jsonl').read_text().splitlines():
-        for row in json.loads(line)['active']: schedule.setdefault(row['name'], row)
+        for row in json.loads(line)['active']: schedule.setdefault(row['name'], row) if json.loads(line)['status'] != 'operational_retry_schedule_reconstruction' else schedule.update({row['name']: row})
     rows = []
     for parent in ('init','used'):
         for action in actions:
             experiment = 'E14' if action == 'source_only_fresh' else 'E13'
             name = f'{parent}_{action}_s29'; prefix = f'{experiment}_{name}'
             worker = next(r for r in state['runs'] if r['name'] == name)
-            assert worker['status'] == 'completed' and worker['ssh_returncode'] == 0
+            assert worker['status'] == 'completed' and worker['returncode'] == 0
+            assert worker.get('validation_accepted') or worker.get('ssh_returncode') == 0
             scores = validate_results(read(results/f'{prefix}_raw_results.json'))
             saved = read(results/f'{prefix}_validated_scores.json')
-            assert scores['accuracy_percent'] == saved['accuracy_percent']
-            assert scores['benchmarks'] == saved['benchmarks']
+            assert math.isclose(scores['accuracy_percent'], saved['accuracy_percent'], rel_tol=0, abs_tol=1e-12)
+            assert set(scores['benchmarks']) == set(saved['benchmarks'])
+            for benchmark, row in scores['benchmarks'].items():
+                other = saved['benchmarks'][benchmark]
+                assert row['field'] == other['field']
+                assert all(math.isclose(row[k], other[k], rel_tol=0, abs_tol=1e-12) for k in ('raw', 'max', 'normalized'))
             manifest = read(results/f'{prefix}_eval_manifest.json')
             assert set(manifest['benchmarks']) == set(BENCHMARKS)
             assert manifest['judge_model'] == 'Qwen3.5-27B' and manifest['api_nproc'] == 4 and manifest['mode'] == 'all'

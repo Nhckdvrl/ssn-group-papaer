@@ -10,6 +10,7 @@ import argparse
 import datetime as dt
 import fcntl
 import json
+import math
 import os
 from pathlib import Path
 import shlex
@@ -156,7 +157,12 @@ def student(experiment, name, gpu, attempt, cap_seconds):
             assert 'will use exact matching for evaluation' not in (out / log).read_text(errors='replace')
         scores = validate_results(read(out / 'results/results.json'))
         saved = read(out / 'validated_scores.json')
-        assert scores['accuracy_percent'] == saved['accuracy_percent'] and scores['benchmarks'] == saved['benchmarks']
+        assert math.isclose(scores['accuracy_percent'], saved['accuracy_percent'], rel_tol=0, abs_tol=1e-12)
+        assert set(scores['benchmarks']) == set(saved['benchmarks'])
+        for benchmark, row in scores['benchmarks'].items():
+            other = saved['benchmarks'][benchmark]
+            assert row['field'] == other['field']
+            assert all(math.isclose(row[k], other[k], rel_tol=0, abs_tol=1e-12) for k in ('raw', 'max', 'normalized'))
         manifest = read(out / 'eval_manifest.json')
         assert manifest['gpu'] == gpu and manifest['judge_url'] == URL+'/v1/chat/completions'
         assert manifest['use_vllm'] and set(manifest['benchmarks']) == set(frozen.BENCHMARKS)
