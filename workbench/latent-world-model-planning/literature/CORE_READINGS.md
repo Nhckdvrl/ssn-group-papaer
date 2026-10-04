@@ -324,3 +324,10 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 [CEE v1 §2–5](https://arxiv.org/html/2501.14543v1)已定向读原文，准确名称是Causal Effect Estimation，非Causal Effect Equivalence。它从动作冗余/无效探索出发，继承NPM、inverse dynamics与条件互信息；以inverse posterior相对policy的log-ratio训练N-value，再按转移分布KL近似进行state-dependent grouping和masking。Maze多actuator、MiniGrid、Atari的离散动作、PPO/NPM/NPM-Random及去classification对照，五seeds，测探索return。它没有要求inverse头对每个原始动作作唯一确定性回归；所以不能将“inverse无法恢复多对一动作”概括为现有inverse全部失效。
 
 我们的推演：动作表示/采样应继承其作用分布视角，但连续action-sequence、像素history、有限branch数据、可迁移latentMPC不是换名就自动有新意。I14必须用同数据概率inverse/普通预测及真实闭环证明新增机制有价值；目前未形成该证据。未复现CEE、未宣布first action equivalence、未以相近工作关闭R1/R4。
+
+本轮扩展的原文机制：
+
+- [IAEM AAAI2022 p2–3/实验消融](https://ojs.aaai.org/index.php/AAAI/article/download/20913/20672)已读：以latent residual表示动作作用，跨state同action contrastive学习共享作用，加individual作用、L1限制和state/action依赖gate处理非不变情形；GridWorld/Atari学习效率与reuse。故“共享作用+context residual/gate”不能直接当新结构，I14的增量仍需现代连续序列/必要history/同监督控制证据。只回读相关机制与消融，不声称逐页appendix校验。
+- [HIQL NeurIPS2023 §4–5/Algorithm1/AppendixD](https://proceedings.neurips.cc/paper_files/paper/2023/file/6d7c4a0727e089ed6cdd3151cbe8d8ba-Paper-Conference.pdf)已定向读：action-free expectile TD value，high policy生成value-derived subgoal表示，low policy作advantage weighted primitive动作回归；图像情形joint CNN goal representation并非frozen time-regression。备选E14必须保留Bellman传播与真正policy机制，不能用旧单head负结果否定它。标准长任务与future-imagegoal范围分开。
+- [PLDM v4 §3.3/4与官方代码](https://arxiv.org/html/2502.14819v4)再次接续，代码clone供对齐控制与clip-length实验；其原TwoRooms与SWM环境不同，尚未本地numeric replica。
+- [AD-WM官方代码](https://github.com/ad-wm/ad-wm-code/tree/7c27ebfdc4a2ba8e5a16268f2e4aa852fda72144)现已实际clone/read `paper_forward/normalized_recovery_loss`、JEPA residual预测和训练config：inverse目标learned act_emb且detach，MI目标batch ddof0 normalize、fixed-unit Gaussian NLL按embedding维度sum，KL .01，loss coefficients .1/.01。E20 raw10dim mean Gaussian不是此结构/标度。官方TwoRoom/PushT三trainseed发布checkpoint可复用，当前只下载seed3072两task+config/manifest到HF并做namespace/完整native控；不以下载代替数值复现。

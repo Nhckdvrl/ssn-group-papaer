@@ -1,0 +1,73 @@
+{
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-E01-adwm-cpu-preflight-retry1",
+  "controls": {
+    "passed": true,
+    "code_commit": "7c27ebfdc4a2ba8e5a16268f2e4aa852fda72144",
+    "hf_revision": "31ab745259718946aa83f2d6df19dfebb0c8ebd4",
+    "records": [
+      {
+        "task": "tworoom",
+        "checkpoint_sha256": "92ee6859434001ed500eec52da77d20a1efac6e6da5c1595c5640d2550794ef0",
+        "parameters": 19220654,
+        "state_dict_keys": 321,
+        "namespace_exact": true,
+        "residual_flag_true": true,
+        "inverse_and_mi_heads": true,
+        "residual_formula_exact": true,
+        "strict_copy_load": true,
+        "all_tensors_finite": true,
+        "h3_future5_native_cost_maxabs": 0.0,
+        "norm_artifact_sha256": "b4ca4bd285be9b8ec2b1e1614f5bd3ee8b34a8ac871a0212f47fb7cfa019b98d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint_sha256": "e61130c558de9ed5c9c740a58ecb08a97c5c92473b45fd275a425fb46f281e9e",
+        "parameters": 19220654,
+        "state_dict_keys": 321,
+        "namespace_exact": true,
+        "residual_flag_true": true,
+        "inverse_and_mi_heads": true,
+        "residual_formula_exact": true,
+        "strict_copy_load": true,
+        "all_tensors_finite": true,
+        "h3_future5_native_cost_maxabs": 9.5367431640625e-07,
+        "norm_artifact_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    ],
+    "scope": "complete published objects, exact namespace/residual and native CPU control; no GPU numerical replica or fair trained-method superiority"
+  },
+  "assets": {
+    "revision": "31ab745259718946aa83f2d6df19dfebb0c8ebd4",
+    "files": [
+      {
+        "task": "tworoom",
+        "path": "/home/xiang/.cache/huggingface/hub/models--ad-wm--ad-wm/snapshots/31ab745259718946aa83f2d6df19dfebb0c8ebd4/tworoom_res_inv_detachact_mifixedvar_seed3072_seedfix/config.yaml",
+        "filename": "tworoom_res_inv_detachact_mifixedvar_seed3072_seedfix/config.yaml",
+        "bytes": 1356,
+        "sha256": "e945c154714643dc8d903a17aca325ba3d9c02d0d9dab70ffad6eb74e8a7334c"
+      },
+      {
+        "task": "tworoom",
+        "path": "/home/xiang/.cache/huggingface/hub/models--ad-wm--ad-wm/snapshots/31ab745259718946aa83f2d6df19dfebb0c8ebd4/tworoom_res_inv_detachact_mifixedvar_seed3072_seedfix/tworoom_res_inv_detachact_mifixedvar_seed3072_seedfix_epoch_10_object.ckpt",
+        "filename": "tworoom_res_inv_detachact_mifixedvar_seed3072_seedfix/tworoom_res_inv_detachact_mifixedvar_seed3072_seedfix_epoch_10_object.ckpt",
+        "bytes": 77136934,
+        "sha256": "92ee6859434001ed500eec52da77d20a1efac6e6da5c1595c5640d2550794ef0"
+      },
+      {
+        "task": "pusht",
+        "path": "/home/xiang/.cache/huggingface/hub/models--ad-wm--ad-wm/snapshots/31ab745259718946aa83f2d6df19dfebb0c8ebd4/pusht_res_inv_detachact_mifixedvar_seed3072_seedfix/config.yaml",
+        "filename": "pusht_res_inv_detachact_mifixedvar_seed3072_seedfix/config.yaml",
+        "bytes": 1399,
+        "sha256": "8392295f0cca2d263b4c52bed8debb619dc0004298dc5a0d99e7d83fee53b83c"
+      },
+      {
+        "task": "pusht",
+        "path": "/home/xiang/.cache/huggingface/hub/models--ad-wm--ad-wm/snapshots/31ab745259718946aa83f2d6df19dfebb0c8ebd4/pusht_res_inv_detachact_mifixedvar_seed3072_seedfix/pusht_res_inv_detachact_mifixedvar_seed3072_seedfix_epoch_10_object.ckpt",
+        "filename": "pusht_res_inv_detachact_mifixedvar_seed3072_seedfix/pusht_res_inv_detachact_mifixedvar_seed3072_seedfix_epoch_10_object.ckpt",
+        "bytes": 77136284,
+        "sha256": "e61130c558de9ed5c9c740a58ecb08a97c5c92473b45fd275a425fb46f281e9e"
+      }
+    ]
+  },
+  "failed_preflight": "/home/xiang/.cache/latent-wm-results/20261004-E01-adwm-cpu-preflight-failed"
+}

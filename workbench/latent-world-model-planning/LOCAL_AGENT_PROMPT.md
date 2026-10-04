@@ -88,3 +88,9 @@ Fast-LeWM/cheap direct predictor广筛candidate，LeWM/multi-step/refined predic
 - 调用子agent默认用 **gpt-6.1-sol / high**，不使用ultra。已有agent若不符合则停止其任务，用指定配置重建；已有合格agent可followup。
 - 高信息量实验应横跨数据、预测对象、任务条件化、在线控制等方法轴；允许借鉴控制/系统辨识、goal-conditioned RL、搜索/图方法，不把小型诊断当预设paper。
 - 压缩恢复先读最新审计：E16旧跨方法比较因AdamW CPU step引用共享而降级，完整修复重跑才允许继续解释；旧日志保留但以最新审计为准。
+
+## 2026-10-04当前恢复锚点
+
+压缩后先读RESEARCH_PLAN §11–12、E20最新stage、log2026-10-04末尾和raw进程。15/15 Nav joint训练DONE，PLAIN8/11/9、CENTER12/11/8、PROB10/11/11（各12），开发CI跨零，科学主张0。全部三个A100闭环队列均在warm-history守卫失败、没有效用rows；失败已durable保留，不重启原unique run。跨节点CPU完整48factual位置轨迹exact，warm像素仅≤1级差异、具体原因未建立；RTX全部像素exact。main闭环改为原RTX GPU1全15方法模型，与已完成同hardware BASE/released对照；新bounded_local_method_queue PID3484913，log /tmp/latent-E20-bounded-method-all-RTX-queue.log，raw/durable20261004-E20-control-{METHOD}-s{seed}-physical-RTX，不按partial改目标/筛方法。
+
+PushT全部五arm sequential GPU3 PID3468517持续训练，官方完整AD-WM reference已DONE（Nav原native近24/24、远18/24；physical20/24、8/24；offline Nav12/12、Push3/12），源训练data未匹配，不能作loss因果gain/论文数字复现。独立trace/source/native parity审计通过，见E01_20261004_adwm_full_reference.json。曝光GPU2 PID3415599继续固定100epoch终点，不读partial挑checkpoint。正在运行的effect_training/effect_transfer/bounded_control/data_exposure源码freeze；修改另版本+卡段。下一动作除完整结果读回外，应推进完整近邻同data训练和真正Bellman/value/goal-policy机制，不能围绕CENTER阈值或旧self-consistency追加局部救援。

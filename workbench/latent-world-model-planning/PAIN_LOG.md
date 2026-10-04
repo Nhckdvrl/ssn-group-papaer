@@ -100,3 +100,9 @@ P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.jso
 
 
 2026-10-04 P04训练随机性补记：[固定data独立重训](results/E16_20261004_fixed_data_trainseeds.json)同BASE100/原norm/eval48/5650updates，seed0/1/2成功38/19/36。两个新run完整无failure，eval48计数/anchor SHA一致；完整独立optimizer/RNG审计待做。不筛19，不以38/36称充分训练必然接近released；计算曝光解释仍重要，但存在训练随机性需要分辨。E20三source方法matrix全部保留，增加数据与额外训练必须用PLAIN同曝光解释；不把弱source增益当机制成立。
+
+### 2026-10-04｜P04/P10：同数据动作目标的收益不能由单seed或小bank确认
+
+[E20整批15run](results/E20_20261004_joint_candidate_results.json)严格同数据/曝光/freshoptimizer与同sourceu0/query矩阵，PLAIN8/11/9、CENTER12/11/8、PROB-INVERSE10/11/11（每source12真实候选查询）。CENTER source0完美但source2低于plain；双向开发CI差[−.1667,.3611]，PROB[−.0278,.3333]，均未建立稳定收益。概率inverse对照目前比强推centered新loss更有价值，但它不是novelty，也不是完整AD-WM。重要下一判断是新sourceepisode闭环、跨任务、强同数据replay与完整近邻，不是继续围绕λ局部调参。原science claims0保持；不是方法母问题关闭或预选paper narrative。
+
+2026-10-04 P10工程校对：[跨节点完整复算](results/E20_20261004_crossnode_restore_audit.json)两节点48条factual真实位置轨迹全部exact；A100 46/48 warm图像有≤1级uint8差、RTX全exact，具体数值原因不确定。三个A100队列均在第一anchor守卫停止，效用rows0；失败不作方法负结果，不放宽守卫、不挑匹配anchor，主方法比较迁到原RTX同hardware。完整AD-WM参照原native42/48提示强方法可用，但其数据量/训练均未匹配，不能归因inverse或当ours已胜/败的公平结论。

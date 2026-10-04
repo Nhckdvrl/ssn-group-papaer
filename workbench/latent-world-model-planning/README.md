@@ -78,7 +78,9 @@
 - [E13 A7真实候选后果](results/E13_20261003_candidate_quality.json)192branches/5545steps完整落盘：Fast/LeWM近目标导航13/13、操作15/11（各16）；factual四组均16/16。上传前计数/hash核对通过，完整独立trajectory/statistics校对待做；不是两种原生CEM控制器比较。
 - [E17任务几何代价](results/E17_20261003_task_factor_cost.json)384episodes/24005steps完整落盘：导航远NATIVE25/PREFIX5/REAL-GEO/MIX-GEO/REAL-JOINT/MIX-JOINT=10/7/11/11/12/12；操作近14/11/9/9/10/9（各16）。尚无跨任务稳定收益；extra task labels、共享首计划、训练量边界见卡，独立完整校对待做。
 - [E16固定data独立trainseeds](results/E16_20261004_fixed_data_trainseeds.json)原seed0/新seed1/2为38/19/36（各48），新两个run完整，保留全部种子；不能称充分训练稳定等效released。曝光已从30epochs完整checkpoint恢复到锁定100epochs，终点仍未complete。
-- [E20新联合训练预控](results/E20_20261004_joint_training_preflight.json)CPU/CUDA实际五方法jointgradient/loss/索引/query控制全部PASS。两任务88anchors/1056真实合法branches/40040steps已落盘；新五arm×三个独立source的A100训练matrix开始首任务，不是新方法结果，待同数据强plain与native闭环。
+- [E20整批联合训练](results/E20_20261004_joint_candidate_results.json)15/15完成并经checkpoint/optimizer/RNG/query复核：PLAIN8/11/9、CENTER12/11/8、PROB10/11/11（每source12真实bank查询），开发差值CI仍跨零。新48独立episode factual exact；跨节点渲染守卫拦住三个A100队列（无效用rows），已保留失败并将全15方法模型迁到原RTX，与同hardware BASE/released对照比较；PushT五arm继续训练。尚无成立novel方法。
+- [AD-WM完整发布参照](results/E01_20261004_adwm_full_reference.json)：同新48原native近24/24、远18/24；physical20/24、8/24，全部96轨迹成功判据/源hash/native parity经独立复算。仅一发布seed，训练data未匹配，不是完整论文数字复现或同data方法因果gain。
+- [跨节点复现校对](results/E20_20261004_crossnode_restore_audit.json)：两节点48条factual位置轨迹逐点exact；A100 46/48 warm图像≤1 uint8差，RTX全部exact，原因不确定。主方法闭环不放宽守卫、不删anchor，改同RTX复跑；不是方法负结果。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 
