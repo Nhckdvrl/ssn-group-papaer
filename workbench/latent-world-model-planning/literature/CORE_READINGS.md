@@ -318,3 +318,9 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 [Bilinear WM v1 §3/5/B.2](https://arxiv.org/html/2609.36305v1)将encoder、normalized action map与高效控制一起设计；R^TR受非退化软约束，实际planner含reduced action space、finite-difference sensitivity、damping/line search。人审的多对一冲突推导有条件，不直接否定其实际soft-constraint模型；学习其表示—控制共同设计，而不只拿一个外部head比较完整系统。
 
 [OGBench原论文](https://arxiv.org/abs/2410.20092)作为备选短片段组合的标准goal-conditioned/task基线入口；标准benchmark与本地future-imagegoal必须分开报告。尚未声称本地安装、数值复现或完成HILP/HIQL；冻结时间回归负结果没有覆盖Bellman价值传播。
+
+## 2026-10-04｜CEE：从动作冗余研究继承什么
+
+[CEE v1 §2–5](https://arxiv.org/html/2501.14543v1)已定向读原文，准确名称是Causal Effect Estimation，非Causal Effect Equivalence。它从动作冗余/无效探索出发，继承NPM、inverse dynamics与条件互信息；以inverse posterior相对policy的log-ratio训练N-value，再按转移分布KL近似进行state-dependent grouping和masking。Maze多actuator、MiniGrid、Atari的离散动作、PPO/NPM/NPM-Random及去classification对照，五seeds，测探索return。它没有要求inverse头对每个原始动作作唯一确定性回归；所以不能将“inverse无法恢复多对一动作”概括为现有inverse全部失效。
+
+我们的推演：动作表示/采样应继承其作用分布视角，但连续action-sequence、像素history、有限branch数据、可迁移latentMPC不是换名就自动有新意。I14必须用同数据概率inverse/普通预测及真实闭环证明新增机制有价值；目前未形成该证据。未复现CEE、未宣布first action equivalence、未以相近工作关闭R1/R4。

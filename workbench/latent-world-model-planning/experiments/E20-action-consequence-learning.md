@@ -33,3 +33,13 @@ Stage1a训练matrix（执行前锁定，尚未训练）：Nav先用固定BASE100
 Stage1a root全文审/actual CPU和CUDA/bf16预控全部通过：五方法jointgradient/freshoptimizer firststep、source不可变、center与global SG误差手算/decomposition、H3历史+future5和原生rollout一致、全部held12完整bank queryeval且eval权重/buffers不变。source e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e。全controls/脚本/log已durable，portable E20_20261004_joint_training_preflight.json。将五arms各接source0/1/2（base devsuccess38/19/36全部保留）；source1弱不筛，方法对其增益必须面对PLAIN同data/update。五独立A100任务槽，各顺序3独立source seed，stage同nodecache/archiveSHA cb27e11df5653052d3fe6967f6c325258cf3824e1182ff80851c079ad07eb5f0，模型HF不同目录；A100 timing不混RTX。首GPU真实step确认后再扩大其余任务，不占已在用卡，source/selector/config固定。
 
 A100实际运行扩展：PLAIN首source0已到850updates并保存固定600快照，无failure；首job完成真实I/O/训练/完整candidate query控制后，第二GLOBAL-SG slot启动，待其首步确认再扩至其余三arms。source0的单partial读数不用于筛方法；三个source和所有五方法既定均保留。
+
+扩容前核对（2026-10-04）：PLAIN source0/1已过2000、source2到1050；GLOBAL-SG source0已过2000、source1到950。两并发真实训练约8GB/slot，没有failure；其余三目标CENTER/DET-INVERSE/PROB-INVERSE按既定2000updates×三source启动。扩至四个同node A100槽与第五个另一node同型号A100槽，所有输入已node-local stage/hash复核；不合并不同节点timing为无噪声性能结论。不依据任何partial效用筛选方法或seed。
+
+## Stage1b：独立source episode的闭环检验（运行前锁定）
+
+目的：Stage1a全bank离线选择能否转化为新episode/newgoal控制，同时区分继续训练收益与loss机制。固定新48个TwoRoom episodes（与BASE100、曝光1000、旧48和既有native/development来源episode取并集排除），seed105200/105201，不看WM输出；24个25-step future goals、24个75-step future goals，不把goal span叫预测horizon。两类均部署H25、execute25、最多100新envsteps，past3frames/10真实actions来自同fresh reset+合法10warm prefix；goal image/state来自原dataset，只用于目标/环境评估，未来actions不交planner。原始goal可能易/难全部保留，初始已成功单列。新set目前是方法开发验证，非事后独立confirmation。
+
+先CPU生成sealed selection ledger与actual warm history，全部48合法factual suffix阳控、精确freshwarm重复控通过再启动模型。新CEM仅复现现有300candidates/30elites/30iterations的算法，候选在physical域生成并clamp[-1,1]，cost入口按各model同source mean/std转换，elite mean/std来自同批实际评分的physical候选，执行同返回physical mean；不只clamp cost。禁止修改原native solver；保留同budget原normalized native控制。CPU手算采样/topk/mean/std及CUDA原生rollout parity通过后再跑。raw保留每decision动作/候选摘要/hash/成本/真实执行轨迹，权重和buffers hash前后相同。
+
+全部既定5arms×3source的固定u2000、3个BASE100 source以及released LeWM同physical接口，48×19=912episodes；released与3source另保留原native接口48×4=192episodes。每个seed方法gain相对同seedPLAIN及未继续source分别报，不筛选弱seed；所有失败记入分母、无survivor替换。主读数native success/100step、goal span分层和新steps；paired episode差值及95%CI、各独立trainseed原数，候选/goal pairs不是独立训练重复。不是完整AD-WM/SMWM复现，不把单导航验证当论文成立。失败预控只修工程并保留failure/newunique retry，不依效用改任务/预算；若离线好而闭环差，先解读候选覆盖/域迁移/代价而非lambda sweep。参考模型的预训练dataset split未核对，不能称它unseen episodes。新增cross-task、同数据replay充分训练、完整近邻和后续独立data/confirmation仍待执行。
