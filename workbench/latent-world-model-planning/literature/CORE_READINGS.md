@@ -348,3 +348,5 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 - [MBPO §4.2/§5–6](https://arxiv.org/html/1906.08253)：母问题是模型误差下如何保持样本效率，继承ensemble/PETS与SAC，通过从真实replay states出发的短模型rollout解耦task horizon与模型使用长度；比较强model-free/model-based与rollout使用方式。它生成模型经验供policy学习，不是实际simulator counterfactual分支，也不是我们的联合视觉表示训练。启发是采集、训练分布、模型使用三处干预分别估计效用，不能仅凭新增数据或模型误差写有效结论。
 
 读回范围为上述方法与决定性控制，未逐条校验全部数字/附录。没有新science claim；此次三arm数据利用是成熟baseline补全，不能被包装成新论文。
+
+2026-10-05开发bank结果后的近邻再读：[FIRM-WM §4.4/Alg1/AppD/F](https://arxiv.org/html/2609.22816v1)已经将factual与common-reset intervention的分源minibatch loss相加，并做full-pipeline factual-only/intervention-only控制；所以MIX/replay或两类覆盖互补不是我们的novelty。其tokenizer/grounder通常冻结、Push history与transition联合更新；当前E20则全JEPA encoder/predictor联合更新且无typed物理配置监督。这个训练权限/目标差异是需实验理解的边界，不是自动delta。AppB released CEM300/30/30、unbounded normalized与finalelite mean已明确，因此原native与physical必须分别完整报告。当前IID/REPLAY小bankgain不确认更强控制，不按相似论文关闭R1，下一贡献必须超出这些成熟对照。

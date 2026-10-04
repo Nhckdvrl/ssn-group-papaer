@@ -81,7 +81,7 @@
 - [E20整批联合训练](results/E20_20261004_joint_candidate_results.json)15/15完成并经checkpoint/optimizer/RNG/query复核：PLAIN8/11/9、CENTER12/11/8、PROB10/11/11（每source12真实bank查询），开发差值CI仍跨零。新48独立episode factual exact；[physical](results/E20_20261004_fresh_physical_control_results.json)/[native](results/E20_20261004_fresh_native_control_results.json)各15方法与三BASE整批校对，CENTER对PLAIN分别−4.9pp/+2.8pp、CI均跨零；跨节点失败完整保留，未放宽守卫；[PushT五arm](results/E20_20261004_pusht_candidate_results.json)已完整训练校对：4/4/4/3/4（各12），没有稳定开发gain；尚无成立novel方法。
 - [AD-WM完整发布参照](results/E01_20261004_adwm_full_reference.json)：同新48原native近24/24、远18/24；physical20/24、8/24，全部96轨迹成功判据/源hash/native parity经独立复算。仅一发布seed，训练data未匹配，不是完整论文数字复现或同data方法因果gain。
 - [跨节点复现校对](results/E20_20261004_crossnode_restore_audit.json)：两节点48条factual位置轨迹逐点exact；A100 46/48 warm图像≤1 uint8差，RTX全部exact，原因不确定。主方法闭环不放宽守卫、不删anchor，改同RTX复跑；不是方法负结果。
-- [E01/E14完整训练支点预控](results/E01_E14_20261004_matched_learning_preflight.json)CPU/CUDA actual loss/gradient/SG/Bellman/两阶段隔离/native parity全过；九个ABS/RES/FULL-AD×三seed与两个JOINT/SEPARATE支点共11次5650更新训练已启动（四独立A100槽）。训练终点的同48、physical/native评测已入队（11模型共1056episodes），整批效用尚未齐；E20三数据利用对照×三source已写卡预控，不是已发现idea。
+- [E01/E14完整训练支点预控](results/E01_E14_20261004_matched_learning_preflight.json)CPU/CUDA actual loss/gradient/SG/Bellman/两阶段隔离/native parity全过；九个ABS/RES/FULL-AD×三seed与两个JOINT/SEPARATE支点共11次5650训练已全部完成并经[完整endpoint审计](results/E01_E14_20261005_matched_endpoint_audit.json)。训练终点的同48、physical/native评测已入队（11模型共1056episodes），整批效用尚未齐；[E20数据利用九run](results/E20_20261005_experience_candidate_results.json)全部训练校对，小bank IID12/12/11、仅REPLAY11/11/11（各12）；newgoal两接口与Push672episodes正在实际运行，尚非novelidea。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 
