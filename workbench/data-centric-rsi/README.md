@@ -8,8 +8,8 @@
 **一句话（当前版本）：** 从强数据系统的真实训练行为中找值得发展的选择、生成与策略更新问题；数据改进器的可迁移能力是候选方向，不把RSI标签当选题边界。
 
 **已完成：** 关键文献分级阅读、主会近邻定位；E00 已建立 MATH→单卡 LoRA 训练→官方 scorer 的本地改造闭环。E08 统一确定性推理协议后，完整留出 1668 题上静态 120 条真实标注的三个 seed 比 base 高 3.66–4.20pp，E04 错误检索再高 0.78–1.32pp，低于预写的 2pp 追进门槛。E06/E07 的 Qwen2.5 本地教师质量 gate 失败；E09 Qwen3-32B thinking 20 次调用按严格格式仅 1/20 通过，事后诊断 13/20 完整可训练。E10 同卡重评的静态120比 base 高 4.26pp；嵌套静态960反比120低 0.96pp，且两状态错误检索动作 110/120 相同，未通过扩大状态/动作区分资格门。
-**当前收尾（2026-10-04）：** [E12](experiments/E12-curationbench-strong-policy-utility.md)强静态校准已完成：base **28.956**，random/均衡/ICONS公开池复用/ARDS **32.299/33.443/32.814/32.951**；同checkpoint唯一复跑 **32.247**（−0.052），八项全齐/无fallback。四SFT及六评价 **7.363 A100分配小时**，judge另计；ICONS臂是公开池复用，非原算法针对10K重新投票。
-[E13](experiments/E13-reuse-replenishment-action-pilot.md)六支和[E14](experiments/E14-source-only-replenishment-baseline.md)两支均已成功完成625窗口、保存终点，训练含前检/失败合计 **11.006 A100分配小时**。原E14 judge启动超时且清理遗漏子进程，成本已[纠正并保留](results/E14_judge_startup_failure_audit.json)，不能算方法负结果。用户要求仅补完这八支原定终点评分再上传；相同judge权重本地SHA校验完成，冻结八任务协议已在13/10号空闲单卡接续，[启动身份](results/E13_E14_closeout_launch.json)。尚未完成评分前不报告策略排序；不增加训练、seed或新实验。
+**当前收尾（2026-10-04）：** [E12](experiments/E12-curationbench-strong-policy-utility.md)强静态校准已完成：base **28.956**，random/均衡/ICONS公开池复用/ARDS **32.299/33.443/32.814/32.951**；同checkpoint唯一复跑 **32.247**（−0.052），八项全齐/无exact_matching策略降级。四SFT及六评价 **7.363 A100分配小时**，judge另计；ICONS臂是公开池复用，非原算法针对10K重新投票。
+[E13](experiments/E13-reuse-replenishment-action-pilot.md)六支和[E14](experiments/E14-source-only-replenishment-baseline.md)两支均已成功完成625窗口、保存终点，训练含前检/失败合计 **11.006 A100分配小时**。原E14 judge启动超时且清理遗漏子进程，成本已[纠正并保留](results/E14_judge_startup_failure_audit.json)，不能算方法负结果。**八终点×八任务已全部完成并独立复算，按用户要求停在当前步供人审。** init的重放/池内补货/匹配池外/source-only为 **33.337/32.913/33.118/32.784**，used为 **33.506/33.815/33.581/33.497**；池内−匹配池外 **−0.206/+0.234pp**，未显示明显不可替代资格收益。完整向量、评分异常、失败成本、近邻距离与选题判断见[本轮审阅入口](results/E13_E14_seed29_terminal_review.md)。E13/E14训练＋成功评分调度wall **14.287 A100h**，恢复judge **1.371 Blackwellh**另计；旧judge失败不抹掉。两条原生随机答案匹配记录保留；九组件与自有守护全部退出。当前尚未形成明确novelty的成形idea，不追加实验、不筛seed、不升级主张。
 **未完成：** 官方 GPT-4o 反馈数据生成原版复现、跨任务/学生状态验证、生成式数据动作的真实训练效用、论文主张验证。所有本地科学主张仍为 L0。
 
 ## 阅读入口

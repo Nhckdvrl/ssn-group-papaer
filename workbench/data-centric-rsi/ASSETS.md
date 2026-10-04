@@ -118,4 +118,6 @@ AZR 的固定 `paper` 分支源码另缓存在 `/home/xiang/.cache/research/data
 - 固定学生evalenv为 `/var/tmp/xiang-data-rsi/e12/vlmeval_venv`，freeze SHA `8ef6b4ec11c6d563e990ad7a2a3eebb9ac67d3c735792a769bcf86c450da9f40`；八TSV与E12一致。复用现成环境，没有新装/升级依赖；13号此前镜像此次实测import与完整冻结核对通过。
 - judge为 `Qwen3.5-27B@fc05daec18b0a78c049392ed2e771dde82bdf654`，20号本地 `/var/tmp/xiang-data-rsi/closeout/model/` 的24文件55,586,167,982bytes全SHA一致，核验217.068s。复制wall未完整留存，不猜值；权重加载本次实测44.75s。现成vLLM `0.23.0+cu129`、BF16/4096/maxseq16/.78/thinkingfalse不变；8034是此次独立服务端口。
 - 接续源码/真实PID/ticks见 `results/E13_E14_closeout_launch.json`；并行调度为 `scripts/e13_e14_closeout_parallel.py`。`scripts/e13_e14_process_guard.py`补充登记真实父子PID/start ticks，处理vLLM改写进程环境后token不可见的情况。原串行稿与local备用稿未启动；不是已验证的独立实验结果。
-- 只收完这八个已训练终点，不新增训练/seed/科学实验。完整分数、清理证据和成本完成后统一汇总；历史E14 judge超时与不完整清理成本纠正见 `results/E14_judge_startup_failure_audit.json`，不能复用旧cleanup_complete声明。
+- 只收完这八个已训练终点，不新增训练/seed/科学实验。完整分数、清理证据和成本已汇总于 `results/E13_E14_seed29_terminal_summary.json` 与 `results/E13_E14_seed29_terminal_review.md`，本轮已按用户要求停止；历史E14 judge超时与不完整清理成本纠正见 `results/E14_judge_startup_failure_audit.json`，不能复用旧cleanup_complete声明。
+
+- 最终八支原始JSON/validated scores/manifest/completion、各原worker结果、原协调器失败与CPU复核均入git；逐条原始预测/judge缓存/xlsx仍在上述节点目录，大文件不入git。九组件和三自有补充守护已退出、8034端口关闭，`results/E13_E14_resource_release.json`记录实际GPU快照而不假设他人任务停止。原生两条MMMU随机匹配与1815个length完成在cache/metrics audit中明确保留，不声称全程零评分异常。

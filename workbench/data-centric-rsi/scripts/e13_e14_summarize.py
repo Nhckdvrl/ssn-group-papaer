@@ -22,7 +22,12 @@ def summarize(results, state_path):
     actions = ('replay', 'fresh_selected', 'fresh_law', 'source_only_fresh')
     schedule = {}
     for line in (results/'E13_E14_closeout_schedule.jsonl').read_text().splitlines():
-        for row in json.loads(line)['active']: schedule.setdefault(row['name'], row) if json.loads(line)['status'] != 'operational_retry_schedule_reconstruction' else schedule.update({row['name']: row})
+        record = json.loads(line)
+        for row in record['active']:
+            if record['status'] == 'operational_retry_schedule_reconstruction':
+                schedule[row['name']] = row
+            else:
+                schedule.setdefault(row['name'], row)
     rows = []
     for parent in ('init','used'):
         for action in actions:
@@ -75,6 +80,7 @@ def summarize(results, state_path):
             'original_token_only_judge_cleanup_seconds':state['judge_launch_to_cleanup_seconds'],
             'prior_failed_judge_launch_to_shutdown_log_seconds':failed['launch_to_engine_shutdown_log_seconds'],
             'cost_scope':'A100 scheduled-worker wall includes CPU/import/checksum/SSH and up to one guard polling interval at teardown; sum across parallel branches, not kernel-active time. Judge recovery includes loading and waits. Old failed judge final resource-teardown time unknown; its log span is not an exact active-GPU allocation or a proved upper bound. Copy and staging costs recorded separately.',
+            'failed_prelaunch_eval_attempt':{'name':'used_fresh_law_s29','GPU_inference_started':False,'CPU_preflight_wall_seconds':None,'note':'Original card-idle rejection before launch is preserved; CPU/hash/SSH time for that rejected reservation not fully metered, excluded from successful GPU-worker wall totals.'},
             'API_paid_requests':0,'scientific_claim_upgrade':False,'train_seed_CI':None,
             'limitations':['One paired train seed, no training variance estimate; task/episode samples are not independent training replicates.',
                            'Existing eight public benchmarks were already observed in E12; this is not fresh private confirmation.',

@@ -1,0 +1,103 @@
+{
+  "experiment": "E13",
+  "name": "used_replay_s29",
+  "launch": {
+    "started_utc": "2026-10-04T13:11:25.656727+00:00",
+    "command": [
+      "/home/xiang/.venvs/data-centric-rsi/bin/python",
+      "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+      "--model",
+      "/var/tmp/xiang-data-rsi/e13/train_runs/used_replay_s29/model",
+      "--eval-data",
+      "/var/tmp/xiang-data-rsi/e12/LMUData",
+      "--judge-url",
+      "http://fvcrc20:8034/v1/chat/completions",
+      "--gpu",
+      "1",
+      "--out",
+      "/var/tmp/xiang-data-rsi/closeout/attempt1/used_replay_s29/eval"
+    ],
+    "gpu": 1,
+    "token": "bb28b6190c654c0686ac0b28816d02dd",
+    "cap_seconds": 5444,
+    "owner_pid": 3579810,
+    "owner_ticks": "1834398390",
+    "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+    "source_git_sha": "5cfea2a8f82e662c85570528f83d388d8fd4613a",
+    "pid": 3580245,
+    "start_ticks": "1834404194",
+    "guard_pid": 3580246,
+    "guard_ticks": "1834404194"
+  },
+  "status": "completed",
+  "scores": {
+    "model_key": "llava-1.5-7b-hf",
+    "benchmarks": {
+      "HallusionBench": {
+        "raw": 28.82925484282133,
+        "max": 100.0,
+        "normalized": 0.28829254842821334,
+        "field": "Overall mean(aAcc,fAcc,qAcc)"
+      },
+      "LLaVABench": {
+        "raw": 38.5,
+        "max": 100.0,
+        "normalized": 0.385,
+        "field": "overall Relative Score (main)"
+      },
+      "MMBench": {
+        "raw": 52.749140893470795,
+        "max": 100.0,
+        "normalized": 0.5274914089347079,
+        "field": "dev Overall \u00d7 100"
+      },
+      "MMMU_DEV_VAL": {
+        "raw": 33.77777777777778,
+        "max": 100.0,
+        "normalized": 0.3377777777777778,
+        "field": "validation Overall \u00d7 100"
+      },
+      "MMStar": {
+        "raw": 31.266666666666666,
+        "max": 100.0,
+        "normalized": 0.31266666666666665,
+        "field": "none Overall \u00d7 100"
+      },
+      "MMVet": {
+        "raw": 29.724770642201843,
+        "max": 100.0,
+        "normalized": 0.2972477064220184,
+        "field": "Overall acc"
+      },
+      "MathVista_MINI": {
+        "raw": 23.400000000000002,
+        "max": 100.0,
+        "normalized": 0.234,
+        "field": "Overall acc"
+      },
+      "OCRBench": {
+        "raw": 298.0,
+        "max": 1000.0,
+        "normalized": 0.298,
+        "field": "Final Score"
+      }
+    },
+    "accuracy_0_to_1": 0.335059513528673,
+    "accuracy_percent": 33.5059513528673,
+    "source_results": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_replay_s29/eval/results/results.json"
+  },
+  "completion": {
+    "status": "completed",
+    "results_dir": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_replay_s29/eval/results",
+    "error": null,
+    "wall_seconds": 1424.7
+  },
+  "cleanup": {
+    "utc": "2026-10-04T13:35:14.083837+00:00",
+    "before": [],
+    "remaining": []
+  },
+  "finished_utc": "2026-10-04T13:35:14.111233+00:00",
+  "eval_wrapper_seconds": 1428.4498789273202,
+  "returncode": 0
+}

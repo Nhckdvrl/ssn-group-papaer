@@ -11,6 +11,7 @@ import math
 from pathlib import Path
 import shlex
 import subprocess
+import time
 
 from e12_validate_eval import validate_results
 
@@ -43,6 +44,16 @@ def main():
     raw_state = fetch('fvcrc20', REMOTE + '/state.json')
     original = json.loads(raw_state)
     assert original.get('finished_utc') and not original['active']
+    # The live observer opens its file for writing; wait for its final record
+    # before appending the supplemental retry submission.
+    schedule_path = out/'E13_E14_closeout_schedule.jsonl'
+    deadline = time.monotonic() + 30
+    while True:
+        records = [json.loads(line) for line in schedule_path.read_text().splitlines()]
+        if any(r['status'] == original['status'] and not r['active'] and len(r['completed_names']) == 8 for r in records):
+            break
+        assert time.monotonic() < deadline, 'Schedule observer has not recorded coordinator termination'
+        time.sleep(1)
     save(out/'E13_E14_original_closeout_state.json', raw_state)
     cleanup = {'nodes': {node: [] for node in ('fvcrc20', 'fvcrc13', 'fvcrc10')}}
     audit = {'generated_utc': dt.datetime.now(dt.timezone.utc).isoformat(),
@@ -91,18 +102,23 @@ def main():
                               'original_worker_error': worker.get('error'), 'logs': log_audit,
                               'mean_recompute_difference': actual['accuracy_percent']-saved['accuracy_percent'],
                               'validation_accepted': True})
-        rows.append({**worker, 'original_worker_status': worker['status'],
-                     'status': 'completed', 'validation_accepted': True,
-                     'scores': saved, 'completion': completion})
+        reconciled = {**worker, 'original_worker_status': worker['status'],
+                      'original_worker_error': worker.get('error'),
+                      'status': 'completed', 'validation_accepted': True,
+                      'scores': saved, 'completion': completion}
+        reconciled.pop('error', None)
+        rows.append(reconciled)
     guard = json.loads(fetch('fvcrc20', REMOTE + '/judge/descendant_guard.json'))
     assert guard['cleanup_complete'] and not guard['active_pids']
     cleanup['nodes']['fvcrc20'].append({'name': 'judge', **guard})
     save(out/'E13_E14_descendant_cleanup.json', encode(cleanup))
     save(out/'E13_E14_closeout_validation_reconciliation.json', encode(audit))
     state = {**original, 'original_coordinator_status': original['status'],
+             'original_coordinator_error': original.get('error'),
              'original_coordinator_state_file': 'E13_E14_original_closeout_state.json',
              'status': 'eight_evaluations_completed', 'runs': rows,
              'reconciliation_audit': 'E13_E14_closeout_validation_reconciliation.json'}
+    state.pop('error', None)
     save(out/'E13_E14_closeout_state.json', encode(state))
     retry = json.loads(fetch('fvcrc13', REMOTE + '/used_fresh_law_s29_operational_retry_launch.json'))
     save(out/'E13_used_fresh_law_s29_operational_retry_launch.json', encode(retry))

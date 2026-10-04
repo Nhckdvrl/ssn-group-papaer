@@ -1,0 +1,24 @@
+{
+  "source_git_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+  "task_yaml_sha256": "df20fa6f3146ddf6b80c81b651ca0506aa11c65ae9e12cb3a19a240c8bc69590",
+  "model_path": "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_selected_s29/model",
+  "eval_data_path": "/var/tmp/xiang-data-rsi/e12/LMUData",
+  "judge_url": "http://fvcrc20:8034/v1/chat/completions",
+  "judge_model": "Qwen3.5-27B",
+  "benchmarks": [
+    "HallusionBench",
+    "LLaVABench",
+    "MMBench",
+    "MMMU_DEV_VAL",
+    "MMStar",
+    "MMVet",
+    "MathVista_MINI",
+    "OCRBench"
+  ],
+  "use_vllm": true,
+  "mode": "all",
+  "api_nproc": 4,
+  "gpu": 3,
+  "vlmeval_venv": "/var/tmp/xiang-data-rsi/e12/vlmeval_venv",
+  "import_shim": "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/compat/sitecustomize.py"
+}

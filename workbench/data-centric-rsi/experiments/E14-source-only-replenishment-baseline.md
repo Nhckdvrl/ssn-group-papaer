@@ -1,6 +1,6 @@
 # E14 — 删除监督量约束后的来源配方补货（2026-10-03，跑前）
 
-- **状态：** RUNNING（两队列已启动；init已真实训练，used修复启动前清单schema后按原seed接续）；E13尚无六支终点/评分，本卡及采样规则在看到E13结果前冻结。
+- **状态：** DONE；2个原定训练终点的八任务评分已全部完成。终点/原始分数复算/自有资源退出通过；单配对seed29，科学主张仍L0。按用户要求停在当前步，见[全轮审阅](../results/E13_E14_seed29_terminal_review.md)。
 - **类型：** EXPLORE；强简单竞争baseline，不是新框架或新的资格门。
 - **对应：** P03（简单静态成功）、P06（避免把局部细化当选题）；I01相关动作，不预设C01/C02、workbench/idea状态不变。
 - **问题（一句话）：** 去掉exact监督量匹配、仅保留旧策展集的来源配方，能否成为同预算下更简单而有用的实际补货行动？
@@ -36,7 +36,7 @@ E13检验replay/池内部分补货/池外source×exact n补货。其成功可能
 
 - **CPU动作已冻结**：[采样/剂量结果](../results/E14_cpu_source_only_summary.json)、[节点搬运](../results/E14_data_staging_manifest.json)，脚本39b709e/SHA1d631c48…；全10K fresh、旧完整key/旧image path/ICONS成员交集0、source slot一致、anchors0。实际监督量1,078,803（E13的1.96377倍）、input8,190,604、unique images9,674、zero labels0、truncated10/no末EOS9；不从token比推线性更新强度。与E13 fresh-law交254记录/694图像路径，允许并报告，未用于筛选。八任务污染clean/无跳项是原阈值语义，非零匹配。CPU82.194s，11文件1,483,944,780 bytes唯一copy22.531s，全source/target SHA一致；manifest SHA b649fa16fd8954caa1e90884407b257dc47b5b1ebf1ff08b1867412cb626664d。12节点路径`/var/tmp/xiang-data-rsi/e14/subsets/source_only_fresh/`。
 - **CPU launcher核对**：[小证据](../results/E14_CPU_launch_summary.json)，复用E13冻结read-only observer而不改其globals。双父11row processor与seed29 sampler核对通过；自有625窗口监督量和1,078,803，首窗1,553/min601/max4,011，均非零。此为CPU预期，不是GPU实测。预算watch经独立只读审查修复自有orphan/等待队列的cap退出漏洞；未加防御GPU测试。
-- 两支训练终点/八项效用/CI：待运行，训练方差未知。
+- 两支训练终点/八项效用已全部完成；训练CI/方差未知，见最终收尾。
 - 主张变化：C01–C04仍L0；该卡不是科学结果。
 - POST-HOC分析：尚无。
 
@@ -60,3 +60,8 @@ E14旧judge在NFS权重加载期间触发1800s超时，8支均未有终点效用
 **2026-10-04原定评分接续（运行前）**：用户再次明确要求补完8终点评分再上传。20号judge与10号GPU3已空闲，12号仍被他人占用；因此E14两终点也搬到10号，逐文件bytes/SHA对照原12号终点清单，计28.3GB左右搬运及wall。不改任何训练对象/评分规则。closeout脚本SHA `72227b059cb3e30e36db47d4cd17191b691dbceef79b9cf1929ba33c6ae3f06d`，八支按原顺序逐一评价，复用本地相同权重judge；原失败、全成本和未运行备选脚本保留。此为节点部署变化而非新实验。
 
 **并行部署补记（GPU前）**：13号现成evalenv完整freeze、八TSV和冻结源码逐项核验通过，四A100均idle，因此六E13使用13号原终点，E14使用10号SHA一致copy；最多5个独立单卡eval并行，共享相同judge（maxseq16不变），各job仍api_nproc4。并发和硬件部署可能影响推理/judge随机性，记录并限制单seed解释，不声称逐bit一致。新冻结脚本e13_e14_closeout_parallel.py SHA `0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2`；原串行稿未启动。E13单job上限由剩余18h预算均分为5444s，E14为10654s，失败和预检不抹掉；不新增评价重复。
+
+
+### 最终收尾（2026-10-04，停止于当前步）
+
+原定终点评分全部完成，无新增训练/seed/评分重复；完整均值、八项向量、预写差值见[全精度汇总](../results/E13_E14_seed29_terminal_summary.json)，解读/成本/界限见[人审入口](../results/E13_E14_seed29_terminal_review.md)。原协调器因直接浮点等号误拒以failed结束，原文件保留；CPU-only复核在1e−12绝对误差内接受全部八终点，不改metric。两次MMMU原生解析失败→随机选项按原评分器保留，非exact_matching模式降级。自有九组件和三个CPU守护已退出。C01–C04不升级，不从单seed小交互构造router、不追加局部matching实验；等待用户与同行审阅。
