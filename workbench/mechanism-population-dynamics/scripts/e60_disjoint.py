@@ -36,7 +36,7 @@ def main():
     dist = {tuple(sorted(k.split("|"))): v for k, v in d["pairs"].items()}
     rng = np.random.default_rng(0)
     e35 = sorted((mc.RESULTS / "e35").glob("*-1B__*.json"))
-    sets = {"1B": inheritance([f for f in e35 if "step" not in f.name],
+    sets = {"1B": inheritance([f for f in e35 if "step" not in f.name and tuple(f.stem.split("-1B__")) not in mc.UNVERIFIED_1B],
                               lambda f: (f.stem.split("-1B__")[0], f.stem.split("-1B__")[1]))}
     for size in ("90M", "150M", "300M", "530M", "750M", "1B@7500"):
         sets[size] = inheritance(sorted((mc.RESULTS / "e45").glob(f"{size}__*.json")), lambda f: tuple(f.stem.split("__")[1:3]))

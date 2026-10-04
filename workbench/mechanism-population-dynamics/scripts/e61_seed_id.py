@@ -63,6 +63,8 @@ def main():
         if "step" in f.name:
             continue
         r, s = f.stem.split("-1B__")
+        if (r, s) in mc.UNVERIFIED_1B:
+            continue
         d = json.loads(f.read_text())
         M[(r, s)] = d
     row = {"all": identify(M, ("M1", "M2", "M4"))}

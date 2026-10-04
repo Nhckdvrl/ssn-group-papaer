@@ -61,7 +61,7 @@ def main():
     ov = lambda a, b: sum(min(W[a].get(k, 0), W[b].get(k, 0)) for k in set(W[a]) | set(W[b]))
     rng = np.random.default_rng(0)
     e35 = sorted((mc.RESULTS / "e35").glob("*-1B__*.json"))
-    sets = {"1B": inheritance([f for f in e35 if "step" not in f.name], lambda f: (f.stem.split("-1B__")[0], f.stem.split("-1B__")[1]))}
+    sets = {"1B": inheritance([f for f in e35 if "step" not in f.name and tuple(f.stem.split("-1B__")) not in mc.UNVERIFIED_1B], lambda f: (f.stem.split("-1B__")[0], f.stem.split("-1B__")[1]))}
     for size in ("90M", "150M", "300M", "530M", "750M", "1B@7500"):
         sets[size] = inheritance(sorted((mc.RESULTS / "e45").glob(f"{size}__*.json")), lambda f: tuple(f.stem.split("__")[1:3]))
     out = {"n_fw_tokens": int(is_fw.sum()), "n_cw_tokens": int(is_cw.sum()), "by_size": {}}
@@ -78,6 +78,11 @@ def main():
             print(f"{size:8s} {m} n {len(pairs):3d} | rho fw {r['fw'][0]:+.3f} (p {r['fw'][1]:.3f}) cw {r['cw'][0]:+.3f} (p {r['cw'][1]:.3f}) | "
                   f"partial fw|cw {r['partial_fw_given_cw']:+.3f} cw|fw {r['partial_cw_given_fw']:+.3f}", flush=True)
     (mc.RESULTS / "e60" / "function_words.json").write_text(json.dumps(out, indent=1))
+    # per-pair values for the paper figure (source-disjoint 1B pairs): JS of each word class and same-seed inheritance
+    pairs = {"|".join(p): {"fw": D["fw"][p], "cw": D["cw"][p], "disjoint": ov(*p) < 1e-9,
+                           "inherit": {m: float(sets["1B"][m][p]) for m in sets["1B"] if p in sets["1B"][m]}}
+             for p in D["fw"]}
+    (mc.RESULTS / "e60" / "function_words_pairs.json").write_text(json.dumps(pairs, indent=1))
 
 
 if __name__ == "__main__":

@@ -15,7 +15,8 @@ def within(a, b):
 
 def main():
     rng = np.random.default_rng(0)
-    M = {tuple(f.stem.split("__")): json.loads(f.read_text()) for f in (mc.RESULTS / "e59").glob("*__*.json")}
+    M = {tuple(f.stem.split("__")): json.loads(f.read_text()) for f in (mc.RESULTS / "e59").glob("*__*.json")
+         if tuple(f.stem.split("__")) not in mc.UNVERIFIED_1B}
     E35 = {}
     for k in M:
         f = mc.RESULTS / "e35" / f"{k[0]}-1B__{k[1]}.json"

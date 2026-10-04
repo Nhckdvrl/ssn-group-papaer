@@ -101,3 +101,10 @@ def load_tl_model(repo, step, device="cuda"):
     model = HookedTransformer.from_pretrained(tl_name, hf_model=hf, device=device, dtype=torch.float32)
     model.eval()
     return model
+
+# P12 (2026-10-04, audit_step0_all.py): 1B DataDecide runs whose published step-0 weights differ from the step 0 shared
+# by their seed's other recipes (correlation 0.000; each pair shares an unlisted initialization of its own). Found blind
+# by the head layout (Fig 1). Excluded from every same-seed / different-seed comparison at 1B.
+UNVERIFIED_1B = {("dclm-baseline-qc-7p-fw2", "default"), ("dclm-baseline-qc-7p-fw3", "default"),
+                 ("dolma1_7-no-math-code", "default"), ("dolma1_7-no-reddit", "default"),
+                 ("falcon-and-cc-qc-orig-10p", "large-aux-3"), ("falcon-and-cc-qc-tulu-10p", "large-aux-3")}
