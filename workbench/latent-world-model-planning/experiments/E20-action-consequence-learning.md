@@ -1,6 +1,6 @@
 # E20：有限数据下真实动作后果学习（2026-10-04）
 
-- **状态：** RUNNING；Stage0/bank44与joint CPU/CUDA预控DONE，Stage1a方法训练开始；native闭环尚未运行。
+- **状态：** RUNNING；Nav15/15与Push五arm训练/离线校对DONE；新48 physical与强native闭环全方法matrix进行中。
 - **类型：** PILOT
 - **对应：** I14、P04/P10，R1/R2/R4。
 - **问题（一句话）：** 同样有限真实分支数据下，后果相关训练/表示机制是否超越充分训练的普通预测与inverse，并改善新动作/新目标控制？
@@ -67,3 +67,7 @@ RTX接口校准整批8组/384episodes complete且trace SHA/shape/真实success/p
 Stage1b跨节点故障校对（2026-10-04，CPU排查运行前）：三个A100队列均被warm-history pixel-exact守卫拦截；当前不使用任何该批效用读数。先完整保留各失败目录/config/log，再对锁定48个anchor逐一复算warm、重复restore和factual suffix，比较像素、真实position轨迹、SWM/pygame/torch版本与render backend。阳性是同节点fresh repeat与原factual控制，参考为原RTX缓存；不删anchor、不放宽守卫、不改目标/方法/预算。若是CPU渲染实现差异，记录差异来源；若物理轨迹也不同，先修契约再扩。可将完整方法matrix重定位到原RTX硬件并复用已完成同协议BASE/released对照，但须unique run且保持全五方法×三source，不混hardware timing。排查是工程校对，不是新science claim。
 
 故障初步排查与安全重定位（运行前）：A100节点完整48个factual轨迹均与RTX参考逐state exact，fresh repeat均exact；46/48 warm图像仅1级uint8差异，具体CPU数值dispatch原因未确认，不能冒充软件版本不同或物理模型失真。为不靠放宽守卫推进，主闭环matrix先在原RTX硬件运行全部五方法×三个source（15×48），与已完成同硬件同代码同ledger的BASE/released physical对照配对；A100失败完整保留。新队列bounded_local_method_queue.py/new raw20261004-E20-control-{METHOD}-s{seed}-physical-RTX，固定u2000/checkpoint/hash与预算，当前唯一空闲GPU1；完整矩阵不按partial选择。原native接口保持强参考，不把physical收益独立解释成模型收益。后续只有跨节点CPU契约明确后才恢复跨节点simulator评测。
+
+Stage1b强接口补充（追加运行前）：原native BASE/released与full AD明显比physical reference强，但初始化坐标/尺度与bounds一起变动，不能把任何方法只在较弱physical接口的收益包装成模型贡献。追加全部同15个u2000模型的原native接口48×15，不挑方法或source；同RTX、same fresh48、300/30/30、H25EX25/100step、原归一化与seed不变。physical整批保持原任务，native是预先完整新增factor，两接口分开报告及配对，不用partial选checkpoint。新native_method_queue.py/raw20261004-E20-control-{METHOD}-s{seed}-native-RTX，原Push五armqueue自然完成释放GPU3后才取得槽；不杀训练、不共占其他job。闭环gain须面对同data PLAIN与strong native，所有原阳控/tracehash/权重守卫不变。
+
+Stage2a PushT整批完成：五arm均2000updates/no-failure，全部source/norm/helper/数据/batch RNG一致、u0查询bit-exact、freshoptimizer 297/301states全2000。actual positions+wrapped angles/native成功判据逐query独立复算及两checkpoint/source SHA核验通过。PLAIN/GLOBAL-SG/CENTER/DET/PROB=4/4/4/3/4（各12），paired-anchor开发CI均跨零（DET差−.0833，95%[−.3333,.1667]，另三个对照差0但区间[−.25,.25]）。发布source pretraining未知、仅单transfer seed、held新branch不保证新states，不能叫跨任务确认或native闭环负结论；truebank包含exactgoalcandidate。结果E20_20261004_pusht_candidate_results.json，audit durable20261004-E20-pusht-result-audit。当前不继续调center/inverse系数；完整近邻、原native强接口、新wholeepisode控制、原experience replay与真实value机制是更有信息的设计问题。

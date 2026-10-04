@@ -32,6 +32,7 @@ ARMS = ['ABS', 'RESIDUAL', 'FULL-AD', 'VGIQL-JOINT', 'VGIQL-SEPARATE']
 ROOT = Path('/home/xiang/.cache/latent-wm-results')
 HF = Path('/home/xiang/.cache/huggingface/latent-wm-trained')
 UPDATES, BATCH = 5650, 128
+VG_DISCOUNT, VG_EXPECTILE = .98, .80
 
 
 def official_functions():
@@ -60,12 +61,17 @@ def make_model(cfg, seed, arm):
     torch.manual_seed(seed)
     model = architecture(cfg)
     assert type(model) is JEPA and len(model.state_dict()) == 303
-    common = state_hash(model.state_dict())
     source = HF/(['E16_data_compute_s0/common_cpu_initial.pt',
         'E16_fixed_data_trainseed_RTX_s1/initial_cpu.pt',
         'E16_fixed_data_trainseed_RTX_s2/initial_cpu.pt'][seed])
     initial = torch.load(source, map_location='cpu', weights_only=False)
-    assert set(initial) == set(model.state_dict()) and all(torch.equal(v, initial[k]) for k, v in model.state_dict().items())
+    assert set(initial) == set(model.state_dict())
+    constructor_mismatches = sum(not torch.equal(v, initial[k]) for k, v in model.state_dict().items())
+    # Seeded CPU initialization need not be bitwise equal across CPU hardware.
+    # Explicitly copy the same saved initialization into every matched model.
+    model.load_state_dict(initial, strict=True)
+    assert all(torch.equal(v, initial[k]) for k, v in model.state_dict().items())
+    common = state_hash(model.state_dict())
     model.residual_target = arm in ['RESIDUAL', 'FULL-AD']
     if arm == 'FULL-AD':
         with torch.random.fork_rng(devices=[]):
@@ -74,7 +80,8 @@ def make_model(cfg, seed, arm):
             model.mi_posterior_head = MLP(input_dim=384, output_dim=192, hidden_dim=1024, norm_fn=torch.nn.BatchNorm1d)
         assert len(model.state_dict()) == 321
     return model, dict(common_initial_tensor_sha256=common, initial_source_sha256=digest(source),
-        initial_source=str(source), head_seed=106100+seed if arm == 'FULL-AD' else None)
+        initial_source=str(source), constructor_mismatching_tensors=constructor_mismatches,
+        saved_initial_explicit_strict_copy=True, head_seed=106100+seed if arm == 'FULL-AD' else None)
 
 
 class LossContext:
@@ -90,9 +97,9 @@ def bellman_loss(z, goal_rows, current_rows, goal_embeddings):
     continuing = (current_rows != goal_rows).to(z.dtype)
     reward = -continuing
     # A reached image goal is absorbing; an observed departure is not a bootstrap.
-    target = reward + .99*continuing*(-torch.linalg.vector_norm(following-goal_embeddings, dim=-1)).detach()
+    target = reward + VG_DISCOUNT*continuing*(-torch.linalg.vector_norm(following-goal_embeddings, dim=-1)).detach()
     delta = target-value
-    return (torch.where(delta >= 0, .9, .1)*delta.square()).mean()
+    return (torch.where(delta >= 0, VG_EXPECTILE, 1-VG_EXPECTILE)*delta.square()).mean()
 
 
 def losses(model, sigreg, x, actions, arm, device, goal_spec=None, phase='joint'):
@@ -204,7 +211,7 @@ def preflight(args):
     model,_=make_model(cfg,0,'FULL-AD');model=model.to(device)
     mi=OFFICIAL['normalized_recovery_loss'](model,c,p,ae,recipe('FULL-AD'));mi.backward();assert ae.grad is None and c.grad is not None and p.grad is not None
     z=torch.tensor([[[0.],[1.],[2.],[3.]]],device=device,requires_grad=True);current_rows=torch.tensor([[0,1,2]],device=device);goal_rows=torch.tensor([[3,3,3]],device=device)
-    vf=bellman_loss(z,goal_rows,current_rows,z[:,-1:,:].expand(-1,3,-1));expected=torch.tensor(.9*(.02**2+.01**2)/3,device=device)
+    vf=bellman_loss(z,goal_rows,current_rows,z[:,-1:,:].expand(-1,3,-1));expected=torch.tensor(VG_EXPECTILE*((2*(1-VG_DISCOUNT))**2+(1-VG_DISCOUNT)**2)/3,device=device)
     assert torch.allclose(vf,expected,atol=1e-8);vf.backward();assert z.grad is not None and torch.isfinite(z.grad).all()
     identity=-torch.linalg.vector_norm(z[:,:3]-z[:,:3],dim=-1);assert (identity==0).all()
     terminal_loss=bellman_loss(z,current_rows,current_rows,z[:,:3]);assert terminal_loss==0

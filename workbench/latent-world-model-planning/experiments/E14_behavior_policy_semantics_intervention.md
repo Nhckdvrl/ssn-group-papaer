@@ -1,6 +1,6 @@
 # E14｜轨迹监督与规划性能
 
-- **状态：** PLANNED；未运行。
+- **状态：** RUNNING；真正Bellman表示学习的JOINT/SEPARATE完整支点预控PASS、A100训练队列已启动，效用未出。
 - **对应：** I09 / R1
 - **来源：** S2数据研究与S4经验reachability；原路线诊断和sampler笔记见历史。
 - **阳性对照：** 已观测可行路径检查正例预算语义；相同数据与seed的未改动基线；时间/动作接口一致。
@@ -17,7 +17,7 @@
 闭环成功/代价优先，候选评分与真实回放辅助；记录样本量、coverage、局部动作变化、训练量。提出独立因果机制时再做所需matching/干预；协方差proxy不等于可识别性定理。
 
 ## 结果与修订
-尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。
+最新状态见下方Stage0及实际config/预控/进程记录；此前未运行段落是原设计历史，不覆盖当前训练。
 
 ## Stage0：真正Bellman表示学习的最小完整支点（2026-10-04，运行前）
 
@@ -28,3 +28,7 @@
 原论文Table2与§5定向回读补充（运行前）：Sep/quasimetric强于若干joint/VCReg配置，不能让joint+SIGReg单null代表value方法。追加VGIQL-SEPARATE seed0：总5650updates不变，前2825仅encoder/projector Bellman表示（无SIGReg），后2825冻结encoder/projector并固定其BN，fresh optimizer训练predictor/action/pred_proj，仅factual预测；两个阶段checkpoint/optsteps分别保留。与JOINT的更新模块/曝光分配不同，显式报告而非孤立因果归因。新CPU读回发现selfgoal应吸收终止：target中bootstrap乘1[s!=g]；old预控只查identity值0而未查终止target，旧源码/limited-control artifact保留，不曾训练部署。新版在CPU/CUDA实际手算selfgoal target0和完整两阶段梯度/新optimizer隔离后运行。不是照搬Eq1的所有采样/训练设置；新的goals吸收语义按goal-reaching明示。若SEP null需先检查独立阶段训练充分性，不自动否定表示学习。两版本均wholeepisode新48、强baseline和总compute账本。
 
 最终运行前语义校对：goal identity改为真实uint8 pixels的完整SHA256一致（而非row相等），同image不同source row不再被当未到达。state IDs只由训练观测生成，重复像素与selfgoal/absorbing target阳控实算；不使用物理坐标或evaluation outcome。CPU第一版/吸收终止retry1控制与源码均保留，最终版另CPU/CUDAretry2才作启动依据。修正preflight参数数量计数（eval requires_grad=False不能误报params0）与分阶段最终optimizer只统计active parameters；这些都是GPU训练前发现，无已训练方法读数被改写。
+
+训练前原文App7.2再次核对：VF欧氏距离支点改用原文gamma=.98、tau=.80，覆盖早先.99/.9试写；paper明确过高两者可能不稳定。toy手算与CPU/CUDAretry3使用最终值。所有改动都在真实训练前，初稿preflight不当final训练契约。SIGReg/现代tinyViT/clip与planner仍是本地port的显式差异，不能把Sep效力或null说成原文numerical复现。
+
+最终代码/actualCPU/CUDA与正式训练启动控制同E01：全部Bellman手算/duplicatepixel identity/terminal0/SG/finiteness/Sep两阶段freshoptimizer与encoder freeze/官方native parity通过。两arm JOINT/SEP seed0固定5650 A100独立queue，共用最终源码0400260f…，JOINT+SIGReg和SEP无SIGReg的差异是已知方法轴，不能当孤立loss因果；训练不读任何部署outcome。第一真实训练步待确认，尚无value efficacy结果。source0/1原plain已真实训练，value与source2继续按node-local独立jobs。

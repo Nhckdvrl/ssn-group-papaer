@@ -1,6 +1,6 @@
 # E01｜强基线与共用评测
 
-- **状态：** PLANNED；未运行。
+- **状态：** RUNNING；完整发布AD-WM参照DONE，同数据三arm×三seed重训进行中；不称论文数字复现。
 - **对应：** 建设与R1–R5；不强挂论文claim
 - **来源：** S1–S4及ASSETS原生协议。
 - **阳性对照：** 先在熟悉ID任务检验native表现；真实轨迹回放和目标匹配检查。
@@ -17,7 +17,7 @@
 任务成功/代价、训练与推理成本，必要时固定候选regret/真实终点编码；大trace节点保存，git只存manifest/hash。
 
 ## 结果与修订
-尚未运行。实际执行前补code/data/config、种子、授权资源与运行预算。探索性改动允许，必须留版本；发现数据/接口错误时修正该运行，不自动关闭母问题。
+最新状态见下方Stage0及实际config/预控/进程记录；此前未运行段落是原设计历史，不覆盖当前训练。
 
 ## 2026-10-04｜AD-WM完整发布模型接续（运行前）
 
@@ -40,3 +40,7 @@ GPU reference运行源码7c45a38f775b889386110a4090ec8deb9e0b9c64b53c2ea510a3168
 直接从固定官方train.py提取pure paper_forward/inverse_features/normalized_recovery_loss三函数，保留源码SHA；不安装完整Lightning到live环境。模型组件仍官方AD namespace，严格303公共tensor/新增headkeys校对。恒定LR是本地匹配训练协议，非原Lightning scheduler数值复现。CPU/CUDA预控须通过loss逐项手算、ABS与原LeWM源objective一致、SG目标无梯度、fullencoder/predictor/action+heads梯度finite/freshoptimizer源state独立、H3+future5官方cost parity、正确cache真实索引；然后启动九独立single-GPU训练。模型与optimizer/RNG存HF，训练raw/cache本地；节点render有1LSB差故训练不进行simulator efficacy评分。完成后在原RTX用同新48 wholeepisodes/同plannerbudget比较所有九model，两个接口均面对强参照；fixedu5650未完成前不挑checkpoint。
 
 主读数：matched native success、新envsteps、same-bank真实candidate regret（开发readout）及独立trainseed原数；每pair episode/source CI，不扩candidate为n。阳控ABS回到原同data训练实现、officialloss手算；噪声baseline38/19/36说明不筛弱seed，数据/encoder维度间MSE不横向排能力。决策：FULL-AD稳定胜RES→进一步动作后果/数据组织设计；只RES有效→识别结构效应；均不胜充分plain→改变监督/表示/数据机制，不扫lambda。第一批为complete-method baseline calibration，不是novelty确认。训练预算九×5650，四A100独立slot至多，先实际单step/峰值再确认并发；不占其他工作。
+
+GPU启动前再校对：CPU实际完整loss/gradient控制通过；A100初次GPU预控在构建初始化对比处失败（没有训练步或效用）。源303 saved-init完全保留，不能要求不同CPU的seeded构造浮点结果bit-exact；新版每arm显式strict-copy同一保存的initial303 tensors，随后逐tensor exact断言，记录constructor mismatch数量与saved-init SHA。不是用不同initial放宽公平性守卫。old CUDA失败log/源码durable保留，retry3实际CPU+CUDA再跑后训练。
+
+最终CPU/CUDA retry3全部PASS：ABS/RESIDUAL/FULL-AD/VGIQL-JOINT/VGIQL-SEPARATE actualbf16 loss/手算/finite梯度/fresh step、learned-action target SG、Bellman absorbing/duplicatepixel语义、Sep完整两阶段、源three savedinitial加载exact与原生H3+5future成本maxabs0。代码SHA0400260fc47d21629414582d266eb39bca47693905f118b6e1782cdff666d077，GPUconstructor74/75tensor不bit-exact但saved303权重显式strict-copy之后全exact。实际启动同A100节点四独立slot：source0/1队列已真实1900/500updates、各14.8GB/95–97%利用率，1→2没有failed或共享数据stream；再启动source2和value队列到4，各node-local同41MB压缩cache解压1.4GB、manifest/原7文件SHA验证。三source每条依次ABS/RES/FULL-AD，共九5650；value sequential JOINT/SEP共二5650，全部完成前不筛方法/seed/readout，所有model/HF/raw unique。不是novel方法confirmation或跨节点simulator评测。
