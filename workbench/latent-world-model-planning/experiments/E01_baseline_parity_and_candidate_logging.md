@@ -32,3 +32,11 @@ GPU完整参照（运行前）：专用AD namespace fresh进程，官方seed3072
 GPU reference运行源码7c45a38f775b889386110a4090ec8deb9e0b9c64b53c2ea510a31689e76b2d38；两CPU原生控通过后启动专用RTX槽，新raw/durable20261004-E01-adwm-reference-RTX-s3072。没有先读其query读数改方法或目标。
 
 完整AD-WM reference已DONE：原native近24/24、远18/24，physical20/24、8/24；共96导航episode全部保留，两task各12offlinequeries（Nav12/12、Push3/12）。RTX GPU native cost maxabs均0；CPU Push约9.54e−7的旧读数保留不混写。完整trace SHA/初始位置/原native距离阈值成功复算/源checkpoint重新hash通过，见E01_20261004_adwm_full_reference.json。一个发布trainingseed/未知未匹配训练data，不能称同data loss增益或原paper数字复现；它是必须面对的full strong reference，而非raw inverse头替代。
+
+## 完整AD-WM同数据训练分解（2026-10-04，运行前）
+
+对应P04/I14与R1/R4：发布full reference强，但训练未匹配；需要区分residual结构与learned-action inverse/normalized recovery本身。锁定同BASE100的100episodes/9295rows/7295 clips、原norm、四frames0/5/10/15与20真实actions、joint encoder/predictor、fresh AdamW5e-5/1e-3/clip1/bf16/128batch/5650updates。三独立trainseed0/1/2全部保留；同各seed backbone303初始化和shuffle33000+seed。三arm ABS / RESIDUAL / FULL-AD，各seed顺序完成全部arm，绝不把已训练absolute权重加residual当同initialfunction。ABS/RES共有初始化weights，函数差异是显式结构干预。FULL-AD增加官方两个完整192dim embedding-recovery heads，目标SG/batch ddof0 normalize/fixed-unit NLL按192维sum/KL.01，权重inverse.1/MI.01/SIGReg.09；不用raw10dim替代。
+
+直接从固定官方train.py提取pure paper_forward/inverse_features/normalized_recovery_loss三函数，保留源码SHA；不安装完整Lightning到live环境。模型组件仍官方AD namespace，严格303公共tensor/新增headkeys校对。恒定LR是本地匹配训练协议，非原Lightning scheduler数值复现。CPU/CUDA预控须通过loss逐项手算、ABS与原LeWM源objective一致、SG目标无梯度、fullencoder/predictor/action+heads梯度finite/freshoptimizer源state独立、H3+future5官方cost parity、正确cache真实索引；然后启动九独立single-GPU训练。模型与optimizer/RNG存HF，训练raw/cache本地；节点render有1LSB差故训练不进行simulator efficacy评分。完成后在原RTX用同新48 wholeepisodes/同plannerbudget比较所有九model，两个接口均面对强参照；fixedu5650未完成前不挑checkpoint。
+
+主读数：matched native success、新envsteps、same-bank真实candidate regret（开发readout）及独立trainseed原数；每pair episode/source CI，不扩candidate为n。阳控ABS回到原同data训练实现、officialloss手算；噪声baseline38/19/36说明不筛弱seed，数据/encoder维度间MSE不横向排能力。决策：FULL-AD稳定胜RES→进一步动作后果/数据组织设计；只RES有效→识别结构效应；均不胜充分plain→改变监督/表示/数据机制，不扫lambda。第一批为complete-method baseline calibration，不是novelty确认。训练预算九×5650，四A100独立slot至多，先实际单step/峰值再确认并发；不占其他工作。
