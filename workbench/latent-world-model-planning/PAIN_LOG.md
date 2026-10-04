@@ -114,3 +114,9 @@ P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.jso
 下一竞争解释是batch经验覆盖、额外五future训练、旧经验保留，以及完整residual/learned-action/价值表示机制。E20事前锁定IID-BRANCH/REPLAY-ONLY/MIX三arm×三source；仅成熟必要对照，不是新idea宣告。E01九完整matched训练、E14 joint/sep继续完整终点评测，不救CENTER系数、不关闭R1–R5。原native可发行未匹配AD42/48是强参考，不作同数据loss归因。科学主张0保持。
 
 2026-10-05 P04/P10数据利用补记：[全部九run开发审计](results/E20_20261005_experience_candidate_results.json)IID12/12/11、REPLAY11/11/11、MIX11/10/10 vsGROUPED-PLAIN8/11/9，各source12已见状态上的新branch查询。IID差+.1944 CI[0,.4167]；单纯原经验replay+.1389[−.0556,.3889]，表明新增反事实价值不能由更好的bank读数确认。成熟shuffle/replay对照有信息，但不是论文增量；强closedloop全matrix仍待齐。下一问题是有限经验怎样同时教会动作后果与保留可复用规划用途，不归因SIGReg/batch或遗忘机制、不救CENTER、不围绕12query局部打磨。
+
+### 2026-10-05｜P04/P05/P10：经验应怎样变成可复用规划能力
+
+完整[Push闭环672](results/E20_20261005_pusht_fresh_control_results.json)原native released24/48，分支联合PLAIN5、各aux3–6；physicalreleased21、分支3–6，完整AD发布参照26/29（数据未匹配）。单transferseed开发，训练后能力丢失真实可复算，但原因未定位，不宣称表示漂移/SIGReg导致或干预数据普遍有害。Nav[经验利用864](results/E20_20261005_experience_control_results.json)IID/REPLAY/MIX对GROUPED原native−4.17/0/−2.78pp，全部source+anchor CI跨0；小bank近完美不是新goal控制功效，后果学习与规划复用需要分开验证。
+
+[匹配value支点](results/E01_E14_20261005_matched_control_results.json)source0 SEP远goal physical17/24 vsABS7、native13vs9，near分别16vs17、19vs21；总体gain在强nativeCI跨0。Value-Guided JEPA已拥有Sep机制，不是novelty；两个额外seed六value终点已完成且全部audit，闭环重复正在运行。Stage4 conditional2×2固定PRED/VALUE geometry×FACT/MIX/common reset decoder，分辨有限经验在表示/动力学上的用途；priorgeometry训练预算不同显式报告，不自动合并研究narrative，不沿CENTERλ或bankquery优化。R1–R5持续开放，science claims0。

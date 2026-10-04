@@ -350,3 +350,7 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 读回范围为上述方法与决定性控制，未逐条校验全部数字/附录。没有新science claim；此次三arm数据利用是成熟baseline补全，不能被包装成新论文。
 
 2026-10-05开发bank结果后的近邻再读：[FIRM-WM §4.4/Alg1/AppD/F](https://arxiv.org/html/2609.22816v1)已经将factual与common-reset intervention的分源minibatch loss相加，并做full-pipeline factual-only/intervention-only控制；所以MIX/replay或两类覆盖互补不是我们的novelty。其tokenizer/grounder通常冻结、Push history与transition联合更新；当前E20则全JEPA encoder/predictor联合更新且无typed物理配置监督。这个训练权限/目标差异是需实验理解的边界，不是自动delta。AppB released CEM300/30/30、unbounded normalized与finalelite mean已明确，因此原native与physical必须分别完整报告。当前IID/REPLAY小bankgain不确认更强控制，不按相似论文关闭R1，下一贡献必须超出这些成熟对照。
+
+2026-10-05闭环counterexample后的定向读回：[Value-GuidedJEPA §3–5/App7](https://arxiv.org/html/2601.00844v1)明确Sep/Joint及局部triplets对远goal覆盖不足；[FIRM §4.4/Alg1/AppD/F](https://arxiv.org/html/2609.22816v1)明确冻结typed前端、F+I和full-source消融。这些是Stage4成熟支点，冻结/混合本身不是novelty；其物理监督与我们的像素value几何不同但差异需证据。
+
+跨领域[Dream Rehearsal §2–5/§6.2](https://arxiv.org/html/2607.19749v1)：母问题是replay仍无法保留旧技能，继承ContinualDreamer/生成replay/self-imitation。它用模块冻结、同dreams不同actor学习通道与真实episode对照定位失效，再提出graded rehearsal；三seed MiniGrid/17M，非现代连续latentMPC。特别有用的是纠正real-episode-cloning动作错位后才比较，不把flattering弱baseline作为机制证据。我们的Push数据后控制下降原因仍未定位，不能直接借其actor/forgetting结论；可借同模块/同信号/同实际目标的隔离方式。原文counterexample/限制已读，未复现、未核验其代码或全部统计，当前不引用搜索中未核验JEPA-TTT伪ID条目。

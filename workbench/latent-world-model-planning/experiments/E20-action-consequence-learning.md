@@ -105,3 +105,25 @@ Stage3部署补充（运行前）：固定九个u2000，全部原RTX新48、原n
 2026-10-05实际运行补记：Stage3三个A100 arm队列已真实训练，各8GB，PID/原source0/1/2见当日日志；不是只写卡。Stage2b CPU48全部warm/完整diagnostic轨迹/goalpixels factual repeat exact、factual48成功，5760准备steps，全部初始success保留；portable E20_20261005_pusht_fresh_prepare.json。首本地Stage3 shell detached launcher PID3531292退出、日志为空且无CUDA/模型输出，原因未确认；它不构成method failure/efficacy，日志纠正。改独立process-session launch PID3536169（Stage3 RTXGPU3），新增Push全7参考/方法两接口queue PID3536170（RTXGPU0），均free-GPU wrapper，不重复任何有输出run。第一个非initial-success的控制决策强制执行model-native parity后才跑CEM。
 
 Stage3九trainruns全部complete/no-failure，独立source/u0 scores、297freshopt states2000与finiteweights/moments、64k encoder样本的新旧曝光、sampler RNG/边界、全部真实candidate argmin/distance/success复算PASS。固定u2000小bank每source12：GROUPED-PLAIN8/11/9，IID12/12/11，REPLAY11/11/11，MIX11/10/10。对GROUPED差IID+.1944、paired source+anchor CI[0,.4167]；REPLAY+.1389[−.0556,.3889]；MIX+.0833[−.1667,.3611]。仅WM已见source的新branch开发、同12queries，CI不是36独立任务；近完美bank排序不是可复用闭环能力。REPLAY同样改善，新增counterfactual经验价值不能由IID alone确认，不能把shuffle改名paper。强new48两接口整批controller仍未齐，不读partial筛方法/调目标。结果E20_20261005_experience_candidate_results.json；durable20261005-E20-experience-result-audit，代码与计数完整。
+
+## Stage4：经验与规划表示的交互（2026-10-05，运行前）
+
+对应I14/P04与备选I09：同样counterfactual经验可能适合学习动作后果，却不适合随意改变planner使用的状态几何。该交互是待检验假设，不归因当前encoder drift/SIGReg，也不把Value-Guided JEPA/FIRM的分阶段/混合数据重新命名为novelty。最小crossed2×2：固定两已取得的encoder/projector，PRED（同data A100 ABS源0u5650）与VALUE（同data VGIQL-SEPARATE源0value_phase_u2825）；各只重新训练动力学，FACT（原100事实经验）或MIX（64事实+64新legal分支）。两个encoder有不同训练目标及5650/2825 prior预算，因此不是纯value-objective因果；数据效应只先在各固定encoder内比较，交互是conditional pilot，所有prior成本单列。
+
+四cell同公共saved-init的predictor/action_encoder/pred_proj初始tensors，不能保留PRED已训decoder再称sameinit。encoder/projector参数与BN全部冻结eval，严格hash前后不变；93动态参数fresh AdamW5e−5/WD.001/clip1/bf16，2825updates/B128，八frames/五teacher future MSE，无SIGReg/aux；固定目标不参与grad。原事实5795合法n−35 clips，MIX newanchors0–31/排除duplicate1，全uniform独立采样，firstbatch/sampler两RNG/exposure计数保存，所有四cell的总encoder样本128×2825=361600，其中MIX各180800；FACT361600old/0new。额外sim步骤0（共享已生成bank），新增branch成本按原bank/训练实际使用anchors单列；不把FACT与MIX叫equal-interaction-cost。encoder geometry不横向比MSE能力，用真实动作后果与规划。
+
+主读数：新48 wholeepisode两接口sameH25EX25/300-30-30/100step、各goalspan真实success/newsteps；held12真实candidate regret/endpointdistance作为开发解释（sourcestates已见，不代替control）。参考保留same-seed充分ABS24/30与VALUE-SEP33/32（physical/native各48）、full AD发布data unmatched、大data full exposure强参照，不能只赢重置后的弱decoder就称novel。阳控两geometry严格snapshot键/每tensor拷贝、同93动态init、实际B128索引/五TF target手算、frozen204无grad且BN不动/动态93finite freshstep、源checkpoint不可变、model-native H3+5 parity；CPU/CUDA均过才铺四训练。噪声先一个exploratorysource，paired48不等于独立trainseed；如signal扩既有三source/第二task/预算。
+
+决策：MIX只在VALUE下有控制收益→进一步分辨goal geometry、数据覆盖与模块职责，并探索更强可复用设计；两geometry均收益→先保留简单data baseline；heldbank好但control差→不调少数query/λ，回看可复用预测对象与目标空间；四cell均null→用完整强baseline/两task新结果换竞争机制。母问题R1–R5持续开放；当前不切paper narrative或状态。两个空A100slots各固定geometry FACT→MIX sequential，node-localcache；模型HF/raw/durable unique20261005-E20-geometry-{PRED/VALUE}-{FACT/MIX}-A100-s0。实际timing/VRAM/I/O先由CPU/CUDA一步确认，不因为卡空就盲铺。
+
+### Stage2b / Stage3 完整实际闭环结果（2026-10-05）
+
+[全部Push672](../results/E20_20261005_pusht_fresh_control_results.json)14groups与[经验利用864](../results/E20_20261005_experience_control_results.json)18groups全部complete，独立trace SHA/初始真实state/native成功事件/全部48分母/≤100steps/训练checkpoint/hash/interface与sameRTX hardware校对PASS。Push native RELEASED24、PLAIN5、GLOBAL6、CENTER6、DET6、PROB3、完整AD-reference26（各48）；physical21/6/5/4/6/3/29。PLAIN对released native−.3958 CI[−.5417,−.25]，physical−.3125，原发布预训练未知、单transferseed，不能叫一般分支学习必然伤害或归因表示漂移。对PLAIN所有aux native差CI均跨0。all7模型/两接口/所有原48包括1初始success完整保留，不以失败换任务。
+
+Nav原native GROUPED-PLAIN26/29/27；IID28/27/21，REPLAY27/33/22，MIX32/19/27，各source48。IID相对GROUPED−.0417 paired source+anchor CI[−.1667,.0833]；REPLAY0 [−.1458,.1458]；MIX−.0278[−.2292,.1528]。physical分别GROUPED20/32/21、IID25/24/17、REPLAY22/19/15、MIX20/12/26，三gain CI也跨0。新data/旧replay small-bank进步都没有稳定新goal收益，不能把12query近完美当方法成功。Stage3原三train queues及RTX18control PID3536169、Push14control3536170均自然完成，不重复unique run。raw audits durable20261005-E20-{experience-control,pusht-fresh-control}-audit，全部开发效应/分层/steps/来源在portable JSON；science claims0保持。
+
+新增独立审计reader曾因Python3.10无hashlib.file_digest、Nav rows没有initial_success字段被拦；修为逐block SHA与从真实state独立派生initial_success（Push已有flag仍strict核对）。没有训练/任务/轨迹改动，也没有部分结果当完整结论。Push audit保存实际使用的first审计版本，Nav保存schema兼容版本。
+
+Stage4最小crossed4cell代码geometry_experience.py已写，CPU实际B128预控正在执行；A100实际CUDA全部四cell数据索引/五teacher target手算、204frozen参数及BN buffers不变、93finite动态梯度/freshoptimizer1step、strict共同init和native cost parity均PASS。只有两预控complete/hash匹配才训练；不能将代码/预控当正式run。Stage4是对经验价值×模块职责的conditional探索，不切新paper narrative。
+
+Stage4实际CPU/CUDA四cell B128全部PASS，portable E20_20261005_geometry_preflight.json；geometry_experience源码冻结且训练内强制双preflight/helperhash。两freeA100任务slots已launch：PRED physicalGPU2 PID3627210、VALUE GPU3 PID3627276，每条FACT→MIX各2825。log/tmp/latent-E20-geometry-{PRED/VALUE}-A100-queue.log；需查真实step，不把nohup PID当完成训练。geometry_control_queue.py固定终点后sameRTX完整4cells×2interfaces×48=384，全matrix无partial筛选。

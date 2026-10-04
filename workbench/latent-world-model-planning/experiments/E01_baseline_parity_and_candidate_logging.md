@@ -50,3 +50,7 @@ GPU启动前再校对：CPU实际完整loss/gradient控制通过；A100初次GPU
 使用matched_control_queue.py专用AD namespace，明确构建各arm residual/fullheads，再strict load其已固定终点；暂时传给原controller的architecture callable，finally恢复，仅当前独立进程，原bounded_control/live scripts不修改。保存matched arm/loader SHA/checkpoint/schema与判定traincomplete。队列原RTX GPU1 physical matrix自然完成后取槽；不杀训练或抢GPU。首次ABS actual native parity/完整episode守卫通过后按既定全部11model展开；加载失败保留unique failure，不改任务/预算。value单seed/两阶段曝光差异维持原范围，未得结果不称收益。
 
 2026-10-05全部十一train终点独立audit PASS：九matched ABS/RES/FULL三source与两value支点5650，common init/saved全部303（FULL含新增head共321）逐tensor exact，source内首128clip/finalshuffle一致，原官方loss脚本hash固定，所有weights与AdamW moments finite；ABS/RES/JOINT297states5650、FULL309states5650、SEP first204states2825/last93states2825，完整init与accounting均校对。结果E01_E14_20261005_matched_endpoint_audit.json，durable20261005-E01-E14-matched-endpoint-audit。只是初始化/训练预算证据，完整控制效用仍待原RTX全部22组，不当paper数值复现或science claim。
+
+### 2026-10-05同data完整训练与闭环整批读回
+
+[全部22groups/1056episodes](../results/E01_E14_20261005_matched_control_results.json)独立trace/source SHA/native成功/48分母审计PASS。ABS physical24/18/24、native30/23/24；RES8/17/16、8/20/20；FULL-AD23/19/23、24/20/28，各source48。FULL对ABS总体physical−.00694 CI[−.125,.1043]、native−.03472[−.1875,.1111]；对较弱RES的+16.7pp不能替代对ABS的比较。共同100data/5650constantLR/完整官方learned192D actionheads与pure loss的本地matched开发，不是原paper训练schedule数值复现。全部seed和原失败守卫保留，science claims0；value结果/三个seed重复详E14。

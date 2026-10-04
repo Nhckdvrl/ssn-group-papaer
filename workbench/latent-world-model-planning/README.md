@@ -60,6 +60,7 @@
 ## 当前证据与交付边界
 
 - **科学主张：0。** 论文报告值不是我们的实验结果。
+- 2026-10-05最新整批：[matched1056](results/E01_E14_20261005_matched_control_results.json)、[经验利用864](results/E20_20261005_experience_control_results.json)、[Push672](results/E20_20261005_pusht_fresh_control_results.json)全部独立轨迹校对。Push发布24/48原native→分支联合3–6；Nav三数据利用对照无稳定控制gain。source0分阶段value远目标有线索、已有近邻机制；三seed训练已齐、闭环重复中，新geometry×data交互先经CPU/CUDA阳控，尚未确认novelidea。
 - D1 完整数值复现未完成；D2 Fast两任务原生加载/训练步/闭环完成，LeWM有限数据训练已运行；均使用节点数据缓存。
 - E13：两任务20% TOP-M-SCREEN分别恢复96.9%/99.99%模型elite，未见实际耗时收益。扩到[256个长短目标/512配对episodes](results/E13_20261002_fidelity_value.json)：TwoRoom75步goal FULL300成功27/64、CHEAP900为47/64；PushT75步两者9/64。尚无self-consistency refinement控制收益；共卡timing不用于speedup。
 - E16：[全部公平三pipeline](results/E16_20261003_optclone_independent_seeds.json)NOADD7/16/19、uniform32/15/18、GLOBAL-U19/20/27、PBB20/11/13（各48），AdamW隔离guards全过。GLOBAL三个正gain，PBB不稳定，uniform首seed优势未重复；pipeline包含data/eval/init变化。旧污染模型比较降级，不作为当前证据。

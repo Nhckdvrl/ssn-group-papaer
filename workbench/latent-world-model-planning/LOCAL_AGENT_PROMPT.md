@@ -109,3 +109,17 @@ PushStage2b fresh48 CPU所有warm/完整diagnostic轨迹/goalpixels actualfactua
 曝光状态再次覆盖：GPU2 PID3415599已实际达到100epoch/u56500，正在旧原48完整终点评测，尚未整批complete；不再称训练未到98，不读取partial决定方法。原队列自己负责持久镜像。三controller全matrix等待目标为matched22组、experience18组、Push14组；原始成功/配对CI与各source完整读回后再科学解释。
 
 最新曝光覆盖：原1000/100epoch/u56500及48eval全部complete，39/48，独立checkpoint/optimizer/RNG/ledger-count audit PASS，结果E16_20261005_exposure_endpoint.json（无全trajectory独立成功事件重算）。原3415599退出。新足曝光1000参照sameE20fresh48两接口queue GPU2 PID3550488，log/tmp/latent-E16-BASE1000-fresh-RTX-queue.log，96episodes，已实际control且guard通过；不是同100-data公平gain/不是跨旧新eval相减，全部训练更新10x需要单列。四RTX控制slots仍运行，接续以全矩阵complete而非partial结果决定下一动作。
+
+## 2026-10-05完整矩阵恢复锚点（覆盖以上所有running记载）
+
+原matched22groups1056、经验利用18groups864、Push14groups672、freshBASE1000两组96 **均DONE并独立trace/hash/native-success审计PASS**；原RTX四pids全部自然退出，不重启unique run。最新portable分别E01_E14_20261005_matched_control_results.json、E20_20261005_experience_control_results.json、E20_20261005_pusht_fresh_control_results.json、E16_20261005_fresh_exposure_control.json。
+
+Pushnative RELEASED24/48、PLAIN5、GLOBAL/CENTER/DET6、PROB3、unmatchedAD26；physical21/6/5/4/6/3/29，所有branches jointtransfer明显低，但原因未建立、单seedunknownpretrain。Navnative GROUPED26/29/27、IID28/27/21、REPLAY27/33/22、MIX32/19/27；三gain CI均跨0。小bank进步不当novel/control成立。足曝光1000freshnative33/physical29，10xtrainupdate不能称dataonlygain。
+
+MatchedABS physical24/18/24 native30/23/24，FULL23/19/23与24/20/28、RES8/17/16与8/20/20；FULL相对strongABS两接口CI均跨0。source0valueSEP33/32 vsJOINT17/17 vsABS24/30（physical/native），far分别17/13 vsABS7/9（每tier24）；已有ValueGuidedJEPA机制，一source不能确认、更不能报novelty。
+
+新seed1/2 JOINT→SEP四train5650实际DONE，原A1003621335/3621386退出；三source完整六value+九base检查PASS，E14_20261005_three_seed_endpoint_audit.json。新RTX384controller正确launch PID3574468，log/tmp/latent-E14-three-seed-control-RTX-queue-retry1.log，value_seed_control_queue.py；firstlauncher3573734 localGPU index错误在context前退出，保留原log，不能当method失败。全matrix齐后与同seedABS比较，源码m SHA0400260f…freeze。
+
+E20Stage4 prereg crossedPRED/VALUE geometry×FACT/MIX，共同reset93动态初始；两个prior5650/2825不构成pureobjectivecausal。geometry_experience.py实际CPU预控正在执行，A100CUDA四cellactual B128/五TF/frozen204+BN/93grad/freshstep/nativeparity全部PASS；CPU complete/hash亦PASS后才可训练两个freeA100slots。卡段有完全config/阳控/噪声/决策；不是选中新narrative，science claims0/PROPOSED保持。接续必须查真实process/complete，不把这些running句永久保留为现状。
+
+Stage4实际CPU/CUDA四cell B128全部PASS，portable E20_20261005_geometry_preflight.json；geometry_experience源码冻结且训练内强制双preflight/helperhash。两freeA100任务slots已launch：PRED physicalGPU2 PID3627210、VALUE GPU3 PID3627276，每条FACT→MIX各2825。log/tmp/latent-E20-geometry-{PRED/VALUE}-A100-queue.log；需查真实step，不把nohup PID当完成训练。geometry_control_queue.py固定终点后sameRTX完整4cells×2interfaces×48=384，全matrix无partial筛选。

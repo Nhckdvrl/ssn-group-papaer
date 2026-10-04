@@ -32,3 +32,13 @@
 训练前原文App7.2再次核对：VF欧氏距离支点改用原文gamma=.98、tau=.80，覆盖早先.99/.9试写；paper明确过高两者可能不稳定。toy手算与CPU/CUDAretry3使用最终值。所有改动都在真实训练前，初稿preflight不当final训练契约。SIGReg/现代tinyViT/clip与planner仍是本地port的显式差异，不能把Sep效力或null说成原文numerical复现。
 
 最终代码/actualCPU/CUDA与正式训练启动控制同E01：全部Bellman手算/duplicatepixel identity/terminal0/SG/finiteness/Sep两阶段freshoptimizer与encoder freeze/官方native parity通过。两arm JOINT/SEP seed0固定5650 A100独立queue，共用最终源码0400260f…，JOINT+SIGReg和SEP无SIGReg的差异是已知方法轴，不能当孤立loss因果；训练不读任何部署outcome。第一真实训练步待确认，尚无value efficacy结果。source0/1原plain已真实训练，value与source2继续按node-local独立jobs。
+
+### 2026-10-05完整两阶段支点结果与独立seed重复（运行前）
+
+原single-source两value与九matched模型全22groups/1056episodes独立trace/hash/初始state/native成功复算PASS，见E01_E14_20261005_matched_control_results.json。same-seed0 ABS physical近17/远7，native21/9；JOINT physical8/9、native10/7；SEPARATE physical16/17、native19/13（各tier24）。SEP对ABS总体physical+.1875 CI[.0208,.3542]、native+.0417[−.0833,.1667]；SEP对JOINT两个接口+.3333/.3125且单seedpaired-episodeCI均正。重点是far改善/near损失、接口依赖与seed不确定性，不能包装为新方法；Value-Guided JEPA本已比较分阶段与联合，当前是baseline机制支点、非原paper数值复现、非novelty。FULL-AD同data三sources总体不稳定胜ABS，不能以相对较弱RES的gain替代强base。
+
+按第一exploratory hint扩到原独立trainseed1/2，每seed仍全部JOINT→SEPARATE各5650，原source saved初始化、sameBASE100/norm/encoder/predictor结构/γ.98/τ.8、goal_future50%/inbatch-random50%/self20%、pixelidentity、原3teacherfuture/目标SG/JOINT SIGReg.09与SEP2825value→2825dynamics均不改。原m训练代码0400260f…freeze，原seed0完整保留；seed1/2 ABS强参照已固定训练/闭环，不筛任何source。当前goal_spec只含local15step未来或batch末帧，跨context随机goal可能不可达；这个范围必须记录，不能把它当完整GC-IQL或一般long-goal算法。此次重复用于先分辨seed与目标/优化设计，暂不换采样器救数值。
+
+四新trainruns/两个独立A100slots，node-local原1.4GB cache、同stage源码/hash既有完整CPU/CUDA控/全部savedinit三source已验证；wrapper只取实际free。新HF/raw沿冻结m命名20261004-E14-{JOINT/SEPARATE}-A100-s{1,2}（实际启动2026-10-05；参数名VGIQL-JOINT/VGIQL-SEPARATE），不覆盖s0。完整终点后原RTXsame48两接口各source2arms/384episodes，samebudget/seed/精确warm守卫/全部目标分母，value_model_loader明确ABS303/schema。主读数分层success、每seed原数/paired source+anchorCI、新envsteps；single-src先前CI不升级独立seed证据。决策：far收益三源稳定且面对strongnative→完善真实goal机制/跨task/GCpolicy近邻以找增量；仅弱physical成立或seed不重复→保留counterexample，回看预测对象/goal语义/数据覆盖，不调τ/λ网格。R1–R5与主旨/PROPOSED保持，科学主张0。
+
+两个新source各JOINT/SEP全部固定5650已自然完成（四runs），合计三个source六value终点连原九baseline独立初始化/hash/data/firstbatch/finalsampler/finite全weights与moments/297×5650或204×2825→93×2825审计PASS；SEP保存value phase与final encoder/projector全部参数/buffers bit-exact相同。结果E14_20261005_three_seed_endpoint_audit.json。两原A100队列3621335/3621386已自然退出，禁止重复。新RTX384eval first launcher3573734因CUDA_VISIBLE_DEVICES=1却指定local --gpus1在mapping处失败、未初始化CUDA/没有controller输出；原log保留。修正仅launcher local索引0，新PID3574468/log/tmp/latent-E14-three-seed-control-RTX-queue-retry1.log，已确认实际GPU1 context，value_seed_control_queue.py显式同namespace/303/schema，训练/任务/预算未改。完整matrix未齐，不报partial效用。
