@@ -1,12 +1,12 @@
 """Prepare the local inputs that are not downloaded on demand by the other scripts.
 
-  prepare_data.py corpora   -> $MECHPOP_CACHE/e46_data/{c4,code,papers,books,flan}.u16
+  prepare_data.py corpora   -> $MECHPOP_CACHE/controlled_data/{c4,code,papers,books,flan}.u16
       Fixed-size prefixes of single source files of allenai/DataDecide-data-recipes (already tokenized with the OLMo
-      tokenizer, uint16 ids), read by HTTP range request. Used by e46_train.py (controlled pretraining) and
-      e48_cueswap.py (continued pretraining; run `e48_cueswap.py --prep` afterwards).
+      tokenizer, uint16 ids), read by HTTP range request. Used by controlled_pretraining.py (controlled pretraining) and
+      habit_continued_pretraining.py (continued pretraining; run `habit_continued_pretraining.py --prep` afterwards).
   prepare_data.py probes    -> $MECHPOP_CACHE/pile_eval_2000_seed42.pt
       2,000 random 1,024-token windows of NeelNanda/pile-10k (Pythia tokenizer, torch seed 42): the natural-text
-      probe material of census.py / e35_census.py.
+      probe material of head_roles.py / crossing_1b.py.
 
 Set HF_TOKEN if the dataset requires authentication.
 """
@@ -29,7 +29,7 @@ CORPORA = {
 
 
 def corpora():
-    out = CACHE / "e46_data"
+    out = CACHE / "controlled_data"
     out.mkdir(parents=True, exist_ok=True)
     headers = {"Authorization": f"Bearer {os.environ['HF_TOKEN']}"} if os.environ.get("HF_TOKEN") else {}
     for name, (path, nbytes) in CORPORA.items():
