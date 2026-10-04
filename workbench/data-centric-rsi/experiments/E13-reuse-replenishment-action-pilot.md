@@ -60,3 +60,5 @@ E14旧judge在NFS权重加载期间触发1800s超时，8支均未有终点效用
 新脚本e13_e14_closeout.py对每个进程用继承token+start ticks认证，跨PGID清理；真实CPU进程对照证明子进程清理且无关进程存活，见E13_E14_closeout_process_control.json。独立watch在owner退出/硬时限时清理。两实验原train+eval上限18/8 A100h保留，单eval最多3h；此次共享judge恢复分配另限8 Blackwellh，与已失败旧judge成本相加，不能重置历史账本。运行前逐终点复核旧hash并验证环境；有他人进程的卡继续等待。以上只是运维修复，C01–C04仍L0、训练CI未知。
 
 **2026-10-04原定评分接续（运行前）**：用户再次明确要求补完8终点评分再上传。20号judge与10号GPU3已空闲，12号仍被他人占用；因此E14两终点也搬到10号，逐文件bytes/SHA对照原12号终点清单，计28.3GB左右搬运及wall。不改任何训练对象/评分规则。closeout脚本SHA `72227b059cb3e30e36db47d4cd17191b691dbceef79b9cf1929ba33c6ae3f06d`，八支按原顺序逐一评价，复用本地相同权重judge；原失败、全成本和未运行备选脚本保留。此为节点部署变化而非新实验。
+
+**并行部署补记（GPU前）**：13号现成evalenv完整freeze、八TSV和冻结源码逐项核验通过，四A100均idle，因此六E13使用13号原终点，E14使用10号SHA一致copy；最多5个独立单卡eval并行，共享相同judge（maxseq16不变），各job仍api_nproc4。并发和硬件部署可能影响推理/judge随机性，记录并限制单seed解释，不声称逐bit一致。新冻结脚本e13_e14_closeout_parallel.py SHA `0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2`；原串行稿未启动。E13单job上限由剩余18h预算均分为5444s，E14为10654s，失败和预检不抹掉；不新增评价重复。
