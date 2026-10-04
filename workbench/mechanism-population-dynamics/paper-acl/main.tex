@@ -443,7 +443,7 @@ The corpus is a significant factor on almost every task and size; the seed reach
 \section{Artifacts, Compute and Software}
 \label{app:artifacts}
 \paragraph{Artifacts.} We use the DataDecide models (Apache~2.0) and data recipes (ODC-BY), Pythia and PolyPythias (Apache~2.0), OLMo~2 (Apache~2.0), ParaConflict (Apache~2.0), NQ-Swap (MIT) and PopQA as released by their authors, all for research use consistent with their intended use; the corpora are English.
-\paragraph{Compute.} All measurements are forward passes or small training runs on NVIDIA A100 80GB GPUs: about 1{,}100 public checkpoints and about 150 controlled pretraining runs of 4- to 12-layer models, in total roughly 200 GPU-hours.
+\paragraph{Compute.} All experiments ran on NVIDIA A100 80GB GPUs, about 150 GPU-hours in total, including exploratory runs; most of it went to the controlled pretraining runs, while measuring the public checkpoints takes a few minutes per model.
 \paragraph{Software.} PyTorch 2.8, Hugging Face Transformers 4.57 and Datasets 4.8, NumPy 1.26 and SciPy 1.17; models are loaded in bfloat16 with eager attention to read attention patterns. Benchmark scores are DataDecide's released OLMES evaluations \citep{magnusson2025datadecide}; marker counts in Dolma~1.7 come from the infini-gram index.
 
 \section{Statistics}
