@@ -1,0 +1,654 @@
+{
+  "node": "fvcrc13",
+  "observed_utc": "2026-10-02T17:31:43.311230+00:00",
+  "budget_watch": {
+    "utc": "2026-10-02T17:31:38.920916+00:00",
+    "conservative_train_queue_wrapper_seconds": 21512.323355,
+    "A100_total_train_eval_cap_seconds": 64800,
+    "scope": "Conservative train queue wrapper includes CPU preflight before GPU allocation. Eval scheduler must add later measured evaluation wall. Waiting before launch is excluded.",
+    "driver_pids": [
+      3073084,
+      3073085,
+      3073086,
+      3073087
+    ],
+    "driver_alive": [
+      false,
+      false,
+      true,
+      true
+    ],
+    "status": "monitoring"
+  },
+  "runs": {
+    "init_replay_s29": {
+      "parent": "init",
+      "action": "replay",
+      "gpu": 0,
+      "launcher_pid": 3073104,
+      "started_utc": "2026-10-02T15:59:23.301555+00:00",
+      "finished_utc": "2026-10-02T17:26:03.936142+00:00",
+      "returncode": 0,
+      "queue_wrapper_wall_seconds": 5200.635,
+      "prelaunch_gpu_memory_free_mib": 81019,
+      "prelaunch_no_compute_apps": true,
+      "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_replay_s29",
+      "launcher_pid_currently_exists": false,
+      "run_manifest.json_sha256": "22a15ae8908e9394688f412bb4e08fbd41babf08e19073b5a7dee2d19354705d",
+      "provenance": {
+        "parent_path": "/var/tmp/xiang-data-rsi/e13/parents/init",
+        "init_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+        "seed": 29,
+        "expected_steps": 625,
+        "expected_rows": 10000,
+        "expected_supervised_tokens": 549353,
+        "optimizer_scheduler_reset": true,
+        "resume_from_checkpoint": null,
+        "selection_manifest_path": "/var/tmp/xiang-data-rsi/e13/subsets/replay/e13_selection_manifest.json",
+        "selection_manifest_sha256": "6188df719211d4ee75cde65f33f38633fd6145b7fb10f7f85ab822a8b0d06e18",
+        "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+        "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+        "e12_launch_manifest_sha256": "3548b1f291fff93489ecf7e6dc530879b7c6e372e5d0274f0b227bd6bc5e55d1",
+        "e12_completion_sha256": "2ec4744d015e6067c0c588af8c71db32faab976557c056e7e257ed52a878912a"
+      },
+      "parent_weight_shard_manifest": [
+        {
+          "path": "model-00001-of-00003.safetensors",
+          "bytes": 4992930200,
+          "sha256": "78ce5928df765de8cc46daf9034a8ad093ddd4e3e7535ac8d7fa1a171023aca0"
+        },
+        {
+          "path": "model-00002-of-00003.safetensors",
+          "bytes": 4957878440,
+          "sha256": "8ad6fcd2a8f28b421bc49e9d15d809c233363a3c36c09cc7d8118b95e1960156"
+        },
+        {
+          "path": "model-00003-of-00003.safetensors",
+          "bytes": 4176137408,
+          "sha256": "24ae222cdbe3b57e692567df56829be975ea22d1f4899a111635f74fd834dc79"
+        }
+      ],
+      "selection_record_identity": {
+        "selected_positions_sha256": "3d3becde76dad14140fa64cbfd9f8a9d21dfadedbe0e577bf668a9442833c7df",
+        "selected_full_records_sha256": "59246dcca70b404a2ae0740728e2dd183f63fb176516427cdeb6040ed5a6b9f9"
+      },
+      "sampler_permutation_sha256": "9556c771b60ef10057be7fe8797b7b501f541bbde4859bb962f05bd573a7a7fa",
+      "runtime_manifest.json_sha256": "cda6eac22f79edadf1971b14fbf84a279d8f80b7f2132791829fc4163a81bdee",
+      "runtime": {
+        "model_accepts_loss_kwargs": true,
+        "accelerator_gradient_accumulation_steps": 1,
+        "trainer_gradient_accumulation_steps": 16,
+        "use_seedable_sampler": true,
+        "data_seed": 29,
+        "optimizer_initially_none": true,
+        "lr_scheduler_initially_none": true,
+        "initial_global_step": 0,
+        "compute_loss_func_is_none": true,
+        "label_smoother_is_none": true,
+        "training_arguments": {
+          "seed": 29,
+          "data_seed": 29,
+          "num_train_epochs": 1.0,
+          "max_steps": -1,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 16,
+          "learning_rate": 2e-05,
+          "warmup_ratio": 0.03,
+          "weight_decay": 0.0,
+          "bf16": true,
+          "gradient_checkpointing": true,
+          "dataloader_drop_last": false,
+          "group_by_length": false
+        }
+      },
+      "completion.json_sha256": "ca962557eef0d4cf53d5df687c15ba9fce40a9a280eb64d0dbe32cc9104e1d09",
+      "completion": {
+        "returncode": 0,
+        "wall_seconds": 4309.2,
+        "model_saved": true,
+        "observed_windows": 625,
+        "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_replay_s29"
+      },
+      "window_evidence": {
+        "trace_path": "/var/tmp/xiang-data-rsi/e13/train_runs/init_replay_s29/window_trace.jsonl",
+        "trace_sha256": "76719538ad16ea263a607652d8304ea92f7b541fea17d3046bdb15952876749e",
+        "trace_rows": 625,
+        "window_and_preupdate_step_sequence_contiguous": true,
+        "all_observed_N_equal_expected_and_sum_microbatch_n": true,
+        "observed_supervised_token_sum": 549353,
+        "microbatches_observed": 10000,
+        "last_trace": {
+          "window": 624,
+          "optimizer_step": 624,
+          "microbatch_n": [
+            2,
+            2,
+            2,
+            8,
+            2,
+            8,
+            10,
+            181,
+            113,
+            48,
+            8,
+            88,
+            2,
+            152,
+            7,
+            2
+          ],
+          "num_items_in_batch": 635,
+          "expected_n": 635
+        }
+      },
+      "last_completed_optimizer_steps_from_progress_log": 625,
+      "fatal_error_in_log_tail": true,
+      "terminal_model_structurally_complete": true,
+      "terminal_model_shard_bytes": 14126946736
+    },
+    "used_replay_s29": {
+      "parent": "used",
+      "action": "replay",
+      "gpu": 1,
+      "launcher_pid": 3073103,
+      "started_utc": "2026-10-02T15:59:23.299132+00:00",
+      "finished_utc": "2026-10-02T17:26:44.102001+00:00",
+      "returncode": 0,
+      "queue_wrapper_wall_seconds": 5240.803,
+      "prelaunch_gpu_memory_free_mib": 81019,
+      "prelaunch_no_compute_apps": true,
+      "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_replay_s29",
+      "launcher_pid_currently_exists": false,
+      "run_manifest.json_sha256": "02332f5d972d28685912fa0d904ae63eca9e80a731cd2be5a30a5b469a3d752b",
+      "provenance": {
+        "parent_path": "/var/tmp/xiang-data-rsi/e13/parents/used",
+        "init_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+        "seed": 29,
+        "expected_steps": 625,
+        "expected_rows": 10000,
+        "expected_supervised_tokens": 549353,
+        "optimizer_scheduler_reset": true,
+        "resume_from_checkpoint": null,
+        "selection_manifest_path": "/var/tmp/xiang-data-rsi/e13/subsets/replay/e13_selection_manifest.json",
+        "selection_manifest_sha256": "6188df719211d4ee75cde65f33f38633fd6145b7fb10f7f85ab822a8b0d06e18",
+        "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+        "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+        "e12_launch_manifest_sha256": "3548b1f291fff93489ecf7e6dc530879b7c6e372e5d0274f0b227bd6bc5e55d1",
+        "e12_completion_sha256": "2ec4744d015e6067c0c588af8c71db32faab976557c056e7e257ed52a878912a"
+      },
+      "parent_weight_shard_manifest": [
+        {
+          "path": "model-00001-of-00003.safetensors",
+          "bytes": 4992930688,
+          "sha256": "b9b9ead99dd33ce80f69a9657b54aa041c69ea0b53a924312672c17ba1eea272"
+        },
+        {
+          "path": "model-00002-of-00003.safetensors",
+          "bytes": 4957878552,
+          "sha256": "bdc6d93bfe357f963486ab28b894f051bf2fdca4bbdfbf7984b6d37d688b031d"
+        },
+        {
+          "path": "model-00003-of-00003.safetensors",
+          "bytes": 4176137496,
+          "sha256": "74ad90d9aaf1d27b07b57bf90fca4bba48191bacbd3efe8a33b9b1f54b832987"
+        }
+      ],
+      "selection_record_identity": {
+        "selected_positions_sha256": "3d3becde76dad14140fa64cbfd9f8a9d21dfadedbe0e577bf668a9442833c7df",
+        "selected_full_records_sha256": "59246dcca70b404a2ae0740728e2dd183f63fb176516427cdeb6040ed5a6b9f9"
+      },
+      "sampler_permutation_sha256": "9556c771b60ef10057be7fe8797b7b501f541bbde4859bb962f05bd573a7a7fa",
+      "runtime_manifest.json_sha256": "cda6eac22f79edadf1971b14fbf84a279d8f80b7f2132791829fc4163a81bdee",
+      "runtime": {
+        "model_accepts_loss_kwargs": true,
+        "accelerator_gradient_accumulation_steps": 1,
+        "trainer_gradient_accumulation_steps": 16,
+        "use_seedable_sampler": true,
+        "data_seed": 29,
+        "optimizer_initially_none": true,
+        "lr_scheduler_initially_none": true,
+        "initial_global_step": 0,
+        "compute_loss_func_is_none": true,
+        "label_smoother_is_none": true,
+        "training_arguments": {
+          "seed": 29,
+          "data_seed": 29,
+          "num_train_epochs": 1.0,
+          "max_steps": -1,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 16,
+          "learning_rate": 2e-05,
+          "warmup_ratio": 0.03,
+          "weight_decay": 0.0,
+          "bf16": true,
+          "gradient_checkpointing": true,
+          "dataloader_drop_last": false,
+          "group_by_length": false
+        }
+      },
+      "completion.json_sha256": "f48ef2671730cbbb218f5e9b24159dc3504207fc13e8a8a52f80a2c03dd9307a",
+      "completion": {
+        "returncode": 0,
+        "wall_seconds": 4348.4,
+        "model_saved": true,
+        "observed_windows": 625,
+        "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_replay_s29"
+      },
+      "window_evidence": {
+        "trace_path": "/var/tmp/xiang-data-rsi/e13/train_runs/used_replay_s29/window_trace.jsonl",
+        "trace_sha256": "76719538ad16ea263a607652d8304ea92f7b541fea17d3046bdb15952876749e",
+        "trace_rows": 625,
+        "window_and_preupdate_step_sequence_contiguous": true,
+        "all_observed_N_equal_expected_and_sum_microbatch_n": true,
+        "observed_supervised_token_sum": 549353,
+        "microbatches_observed": 10000,
+        "last_trace": {
+          "window": 624,
+          "optimizer_step": 624,
+          "microbatch_n": [
+            2,
+            2,
+            2,
+            8,
+            2,
+            8,
+            10,
+            181,
+            113,
+            48,
+            8,
+            88,
+            2,
+            152,
+            7,
+            2
+          ],
+          "num_items_in_batch": 635,
+          "expected_n": 635
+        }
+      },
+      "last_completed_optimizer_steps_from_progress_log": 625,
+      "fatal_error_in_log_tail": true,
+      "terminal_model_structurally_complete": true,
+      "terminal_model_shard_bytes": 14126946736
+    },
+    "init_fresh_selected_s29": {
+      "parent": "init",
+      "action": "fresh_selected",
+      "gpu": 2,
+      "launcher_pid": 3073102,
+      "started_utc": "2026-10-02T15:59:23.280918+00:00",
+      "finished_utc": "2026-10-02T17:26:43.564906+00:00",
+      "returncode": 0,
+      "queue_wrapper_wall_seconds": 5240.284,
+      "prelaunch_gpu_memory_free_mib": 81019,
+      "prelaunch_no_compute_apps": true,
+      "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_selected_s29",
+      "launcher_pid_currently_exists": false,
+      "run_manifest.json_sha256": "c2342ce441633f965494176fa553f0e0bbf1f50e8f4891f79c0671842d5cd35c",
+      "provenance": {
+        "parent_path": "/var/tmp/xiang-data-rsi/e13/parents/init",
+        "init_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+        "seed": 29,
+        "expected_steps": 625,
+        "expected_rows": 10000,
+        "expected_supervised_tokens": 549353,
+        "optimizer_scheduler_reset": true,
+        "resume_from_checkpoint": null,
+        "selection_manifest_path": "/var/tmp/xiang-data-rsi/e13/subsets/fresh_selected/e13_selection_manifest.json",
+        "selection_manifest_sha256": "dd9032d32428bcf4f592cb5c7a474f7dfcfe65734b1d74a1c06ff4274b59796f",
+        "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+        "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+        "e12_launch_manifest_sha256": "3548b1f291fff93489ecf7e6dc530879b7c6e372e5d0274f0b227bd6bc5e55d1",
+        "e12_completion_sha256": "2ec4744d015e6067c0c588af8c71db32faab976557c056e7e257ed52a878912a"
+      },
+      "parent_weight_shard_manifest": [
+        {
+          "path": "model-00001-of-00003.safetensors",
+          "bytes": 4992930200,
+          "sha256": "78ce5928df765de8cc46daf9034a8ad093ddd4e3e7535ac8d7fa1a171023aca0"
+        },
+        {
+          "path": "model-00002-of-00003.safetensors",
+          "bytes": 4957878440,
+          "sha256": "8ad6fcd2a8f28b421bc49e9d15d809c233363a3c36c09cc7d8118b95e1960156"
+        },
+        {
+          "path": "model-00003-of-00003.safetensors",
+          "bytes": 4176137408,
+          "sha256": "24ae222cdbe3b57e692567df56829be975ea22d1f4899a111635f74fd834dc79"
+        }
+      ],
+      "selection_record_identity": {
+        "selected_positions_sha256": "46a0184a6b6332d251abb502e7d31fcfafe1c1b7991c9643c2b4491bbe1febbd",
+        "selected_full_records_sha256": "ac1df1a0643532e592da1422fcc2a6ee7f6385e359a157af5287b5f61df9b40f"
+      },
+      "sampler_permutation_sha256": "9556c771b60ef10057be7fe8797b7b501f541bbde4859bb962f05bd573a7a7fa",
+      "runtime_manifest.json_sha256": "cda6eac22f79edadf1971b14fbf84a279d8f80b7f2132791829fc4163a81bdee",
+      "runtime": {
+        "model_accepts_loss_kwargs": true,
+        "accelerator_gradient_accumulation_steps": 1,
+        "trainer_gradient_accumulation_steps": 16,
+        "use_seedable_sampler": true,
+        "data_seed": 29,
+        "optimizer_initially_none": true,
+        "lr_scheduler_initially_none": true,
+        "initial_global_step": 0,
+        "compute_loss_func_is_none": true,
+        "label_smoother_is_none": true,
+        "training_arguments": {
+          "seed": 29,
+          "data_seed": 29,
+          "num_train_epochs": 1.0,
+          "max_steps": -1,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 16,
+          "learning_rate": 2e-05,
+          "warmup_ratio": 0.03,
+          "weight_decay": 0.0,
+          "bf16": true,
+          "gradient_checkpointing": true,
+          "dataloader_drop_last": false,
+          "group_by_length": false
+        }
+      },
+      "completion.json_sha256": "2b35f50e2d9f4a4486f9a0ed59450ec863c296ddab4515898a561a92409c97e6",
+      "completion": {
+        "returncode": 0,
+        "wall_seconds": 4349.0,
+        "model_saved": true,
+        "observed_windows": 625,
+        "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_selected_s29"
+      },
+      "window_evidence": {
+        "trace_path": "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_selected_s29/window_trace.jsonl",
+        "trace_sha256": "76719538ad16ea263a607652d8304ea92f7b541fea17d3046bdb15952876749e",
+        "trace_rows": 625,
+        "window_and_preupdate_step_sequence_contiguous": true,
+        "all_observed_N_equal_expected_and_sum_microbatch_n": true,
+        "observed_supervised_token_sum": 549353,
+        "microbatches_observed": 10000,
+        "last_trace": {
+          "window": 624,
+          "optimizer_step": 624,
+          "microbatch_n": [
+            2,
+            2,
+            2,
+            8,
+            2,
+            8,
+            10,
+            181,
+            113,
+            48,
+            8,
+            88,
+            2,
+            152,
+            7,
+            2
+          ],
+          "num_items_in_batch": 635,
+          "expected_n": 635
+        }
+      },
+      "last_completed_optimizer_steps_from_progress_log": 625,
+      "fatal_error_in_log_tail": true,
+      "terminal_model_structurally_complete": true,
+      "terminal_model_shard_bytes": 14126946736
+    },
+    "init_fresh_law_s29": {
+      "parent": "init",
+      "action": "fresh_law",
+      "gpu": 2,
+      "launcher_pid": 3108214,
+      "started_utc": "2026-10-02T17:26:43.835868+00:00",
+      "finished_utc": null,
+      "returncode": null,
+      "queue_wrapper_wall_seconds": null,
+      "prelaunch_gpu_memory_free_mib": 81019,
+      "prelaunch_no_compute_apps": true,
+      "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_law_s29",
+      "launcher_pid_currently_exists": true
+    },
+    "used_fresh_selected_s29": {
+      "parent": "used",
+      "action": "fresh_selected",
+      "gpu": 3,
+      "launcher_pid": 3073101,
+      "started_utc": "2026-10-02T15:59:23.277136+00:00",
+      "finished_utc": "2026-10-02T17:28:14.577618+00:00",
+      "returncode": 0,
+      "queue_wrapper_wall_seconds": 5331.3,
+      "prelaunch_gpu_memory_free_mib": 81019,
+      "prelaunch_no_compute_apps": true,
+      "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_selected_s29",
+      "launcher_pid_currently_exists": false,
+      "run_manifest.json_sha256": "aabc965c0f9452f011e92b7fb3a522f52b1700422fbbf0fb3b8bf278b25e9dc8",
+      "provenance": {
+        "parent_path": "/var/tmp/xiang-data-rsi/e13/parents/used",
+        "init_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+        "seed": 29,
+        "expected_steps": 625,
+        "expected_rows": 10000,
+        "expected_supervised_tokens": 549353,
+        "optimizer_scheduler_reset": true,
+        "resume_from_checkpoint": null,
+        "selection_manifest_path": "/var/tmp/xiang-data-rsi/e13/subsets/fresh_selected/e13_selection_manifest.json",
+        "selection_manifest_sha256": "dd9032d32428bcf4f592cb5c7a474f7dfcfe65734b1d74a1c06ff4274b59796f",
+        "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+        "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+        "e12_launch_manifest_sha256": "3548b1f291fff93489ecf7e6dc530879b7c6e372e5d0274f0b227bd6bc5e55d1",
+        "e12_completion_sha256": "2ec4744d015e6067c0c588af8c71db32faab976557c056e7e257ed52a878912a"
+      },
+      "parent_weight_shard_manifest": [
+        {
+          "path": "model-00001-of-00003.safetensors",
+          "bytes": 4992930688,
+          "sha256": "b9b9ead99dd33ce80f69a9657b54aa041c69ea0b53a924312672c17ba1eea272"
+        },
+        {
+          "path": "model-00002-of-00003.safetensors",
+          "bytes": 4957878552,
+          "sha256": "bdc6d93bfe357f963486ab28b894f051bf2fdca4bbdfbf7984b6d37d688b031d"
+        },
+        {
+          "path": "model-00003-of-00003.safetensors",
+          "bytes": 4176137496,
+          "sha256": "74ad90d9aaf1d27b07b57bf90fca4bba48191bacbd3efe8a33b9b1f54b832987"
+        }
+      ],
+      "selection_record_identity": {
+        "selected_positions_sha256": "46a0184a6b6332d251abb502e7d31fcfafe1c1b7991c9643c2b4491bbe1febbd",
+        "selected_full_records_sha256": "ac1df1a0643532e592da1422fcc2a6ee7f6385e359a157af5287b5f61df9b40f"
+      },
+      "sampler_permutation_sha256": "9556c771b60ef10057be7fe8797b7b501f541bbde4859bb962f05bd573a7a7fa",
+      "runtime_manifest.json_sha256": "cda6eac22f79edadf1971b14fbf84a279d8f80b7f2132791829fc4163a81bdee",
+      "runtime": {
+        "model_accepts_loss_kwargs": true,
+        "accelerator_gradient_accumulation_steps": 1,
+        "trainer_gradient_accumulation_steps": 16,
+        "use_seedable_sampler": true,
+        "data_seed": 29,
+        "optimizer_initially_none": true,
+        "lr_scheduler_initially_none": true,
+        "initial_global_step": 0,
+        "compute_loss_func_is_none": true,
+        "label_smoother_is_none": true,
+        "training_arguments": {
+          "seed": 29,
+          "data_seed": 29,
+          "num_train_epochs": 1.0,
+          "max_steps": -1,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 16,
+          "learning_rate": 2e-05,
+          "warmup_ratio": 0.03,
+          "weight_decay": 0.0,
+          "bf16": true,
+          "gradient_checkpointing": true,
+          "dataloader_drop_last": false,
+          "group_by_length": false
+        }
+      },
+      "completion.json_sha256": "9c0ba116528194a4a7e394f052a48689c2e89d22bf62b276be9b1bb20c9798b4",
+      "completion": {
+        "returncode": 0,
+        "wall_seconds": 4438.5,
+        "model_saved": true,
+        "observed_windows": 625,
+        "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_selected_s29"
+      },
+      "window_evidence": {
+        "trace_path": "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_selected_s29/window_trace.jsonl",
+        "trace_sha256": "76719538ad16ea263a607652d8304ea92f7b541fea17d3046bdb15952876749e",
+        "trace_rows": 625,
+        "window_and_preupdate_step_sequence_contiguous": true,
+        "all_observed_N_equal_expected_and_sum_microbatch_n": true,
+        "observed_supervised_token_sum": 549353,
+        "microbatches_observed": 10000,
+        "last_trace": {
+          "window": 624,
+          "optimizer_step": 624,
+          "microbatch_n": [
+            2,
+            2,
+            2,
+            8,
+            2,
+            8,
+            10,
+            181,
+            113,
+            48,
+            8,
+            88,
+            2,
+            152,
+            7,
+            2
+          ],
+          "num_items_in_batch": 635,
+          "expected_n": 635
+        }
+      },
+      "last_completed_optimizer_steps_from_progress_log": 625,
+      "fatal_error_in_log_tail": true,
+      "terminal_model_structurally_complete": true,
+      "terminal_model_shard_bytes": 14126946736
+    },
+    "used_fresh_law_s29": {
+      "parent": "used",
+      "action": "fresh_law",
+      "gpu": 3,
+      "launcher_pid": 3109110,
+      "started_utc": "2026-10-02T17:28:14.704609+00:00",
+      "finished_utc": null,
+      "returncode": null,
+      "queue_wrapper_wall_seconds": null,
+      "prelaunch_gpu_memory_free_mib": 81019,
+      "prelaunch_no_compute_apps": true,
+      "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_law_s29",
+      "launcher_pid_currently_exists": true
+    }
+  },
+  "queues": [
+    {
+      "gpu": 0,
+      "status": "completed",
+      "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+      "queue": [
+        [
+          "init",
+          "replay"
+        ]
+      ],
+      "runs": [
+        "init_replay_s29"
+      ]
+    },
+    {
+      "gpu": 1,
+      "status": "completed",
+      "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+      "queue": [
+        [
+          "used",
+          "replay"
+        ]
+      ],
+      "runs": [
+        "used_replay_s29"
+      ]
+    },
+    {
+      "gpu": 2,
+      "status": null,
+      "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+      "queue": [
+        [
+          "init",
+          "fresh_selected"
+        ],
+        [
+          "init",
+          "fresh_law"
+        ]
+      ],
+      "runs": [
+        "init_fresh_selected_s29",
+        "init_fresh_law_s29"
+      ]
+    },
+    {
+      "gpu": 3,
+      "status": null,
+      "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+      "queue": [
+        [
+          "used",
+          "fresh_selected"
+        ],
+        [
+          "used",
+          "fresh_law"
+        ]
+      ],
+      "runs": [
+        "used_fresh_selected_s29",
+        "used_fresh_law_s29"
+      ]
+    }
+  ],
+  "failed_runs": [],
+  "experiment": "E13",
+  "record": "实测训练执行证据；只读收集，不改变冻结训练设计",
+  "status": "training_in_progress",
+  "successful_training_terminal_count": 4,
+  "expected_training_count": 6,
+  "cost": {
+    "completed_queue_wrapper_seconds": 21013.022,
+    "completed_queue_wrapper_A100_hours": 5.836950555555556,
+    "completed_accelerate_wrapper_seconds": 17445.1,
+    "completed_accelerate_wrapper_A100_hours": 4.845861111111111,
+    "completed_preflight_difference_seconds": 3567.9220000000023,
+    "conservative_live_queue_wrapper_seconds": 21512.323355,
+    "measurement_scope": "queue wrapper包含CPU parent/hash/processor前检及后续accelerate导入、模型加载、训练和保存；accelerate completion不含前检。两者是单GPU wrapper分配wall，不能相加，kernel活跃时间未测。",
+    "A100_total_train_eval_cap_seconds": 64800,
+    "evaluation_seconds": "pending",
+    "Blackwell_judge_hours": "separate; pending",
+    "cpu_and_io_separate_seconds": null
+  },
+  "limitations": [
+    "窗口observer在一次更新开始前写入；进行中trace_rows不是已完成optimizer步数。终点依赖rc0、625条连续窗口、625 progress和完整3-shard checkpoint的共同证据。",
+    "parent与数据hash来自冻结launcher已核对并保存的run_manifest；此收集不重复扫描完整dataset或重新hash14GB权重。",
+    "训练终点不是八任务学习效用；本文件不升级C01–C04。单paired训练seed29，训练方差和CI未知。",
+    "CPU与I/O未分开测量；queue-wrapper减accelerate-wrapper仅表示前检wall差额，不能解释为精确CPU活跃时间。"
+  ]
+}

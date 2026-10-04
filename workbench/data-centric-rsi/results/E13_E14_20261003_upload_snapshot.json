@@ -1,0 +1,302 @@
+{
+  "purpose": "Current progress snapshot for user-authorized GitHub main upload; no new experiments or scientific claim upgrade",
+  "captured_utc": "2026-10-03T08:31:35.398920+00:00",
+  "nodes": {
+    "fvcrc13": {
+      "captured_utc": "2026-10-03T08:31:36.131455+00:00",
+      "e13": {
+        "node": "fvcrc13",
+        "runs": {
+          "init_fresh_law_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 4172.1,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_law_s29"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 549353,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+            "selection_manifest_sha256": "e0036be816f4258414fdfdf2def4fe4338821d1ccf7aaca4a1f7edc1f709ef52"
+          },
+          "init_fresh_selected_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 4349.0,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_selected_s29"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 549353,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+            "selection_manifest_sha256": "dd9032d32428bcf4f592cb5c7a474f7dfcfe65734b1d74a1c06ff4274b59796f"
+          },
+          "init_replay_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 4309.2,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/init_replay_s29"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 549353,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+            "selection_manifest_sha256": "6188df719211d4ee75cde65f33f38633fd6145b7fb10f7f85ab822a8b0d06e18"
+          },
+          "used_fresh_law_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 4198.8,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_law_s29"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 549353,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+            "selection_manifest_sha256": "e0036be816f4258414fdfdf2def4fe4338821d1ccf7aaca4a1f7edc1f709ef52"
+          },
+          "used_fresh_selected_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 4438.5,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_selected_s29"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 549353,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+            "selection_manifest_sha256": "dd9032d32428bcf4f592cb5c7a474f7dfcfe65734b1d74a1c06ff4274b59796f"
+          },
+          "used_replay_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 4348.4,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e13/train_runs/used_replay_s29"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 549353,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+            "selection_manifest_sha256": "6188df719211d4ee75cde65f33f38633fd6145b7fb10f7f85ab822a8b0d06e18"
+          }
+        },
+        "queues": [
+          {
+            "path": "/var/tmp/xiang-data-rsi/e13/train_queue/gpu0.json",
+            "status": "completed",
+            "runs": [
+              {
+                "parent": "init",
+                "action": "replay",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 5200.635,
+                "failure_phase": null
+              }
+            ]
+          },
+          {
+            "path": "/var/tmp/xiang-data-rsi/e13/train_queue/gpu1.json",
+            "status": "completed",
+            "runs": [
+              {
+                "parent": "used",
+                "action": "replay",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 5240.803,
+                "failure_phase": null
+              }
+            ]
+          },
+          {
+            "path": "/var/tmp/xiang-data-rsi/e13/train_queue/gpu2.json",
+            "status": "completed",
+            "runs": [
+              {
+                "parent": "init",
+                "action": "fresh_selected",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 5240.284,
+                "failure_phase": null
+              },
+              {
+                "parent": "init",
+                "action": "fresh_law",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 5590.846,
+                "failure_phase": null
+              }
+            ]
+          },
+          {
+            "path": "/var/tmp/xiang-data-rsi/e13/train_queue/gpu3.json",
+            "status": "completed",
+            "runs": [
+              {
+                "parent": "used",
+                "action": "fresh_selected",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 5331.3,
+                "failure_phase": null
+              },
+              {
+                "parent": "used",
+                "action": "fresh_law",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 5527.227,
+                "failure_phase": null
+              }
+            ]
+          }
+        ],
+        "evaluations": {}
+      }
+    },
+    "fvcrc12": {
+      "captured_utc": "2026-10-03T08:31:36.920130+00:00",
+      "e14": {
+        "node": "fvcrc12",
+        "runs": {
+          "init_source_only_fresh_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 3556.678,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e14/train_runs/init_source_only_fresh_s29",
+              "preflight_included": false,
+              "preflight_cost_source": "E14 train_queue wrapper"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 1078803,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "cf6456e11b2518af38214480ea80731de8118e2262be684fad389a2daf63ab1e",
+            "selection_manifest_sha256": "b649fa16fd8954caa1e90884407b257dc47b5b1ebf1ff08b1867412cb626664d"
+          },
+          "used_source_only_fresh_s29": {
+            "completion": {
+              "returncode": 0,
+              "wall_seconds": 3579.222,
+              "model_saved": true,
+              "observed_windows": 625,
+              "run_dir": "/var/tmp/xiang-data-rsi/e14/train_runs/used_source_only_fresh_s29",
+              "preflight_included": false,
+              "preflight_cost_source": "E14 train_queue wrapper"
+            },
+            "trace_rows": 625,
+            "actual_label_sum": 1078803,
+            "all_window_labels_match": true,
+            "data_seed": 29,
+            "optimizer_initially_none": true,
+            "initial_global_step": 0,
+            "launcher_sha256": "e1b1aefe2438568b2c002f950a8d5ad2bc91dbe6202097b959693df5ec637f16",
+            "selection_manifest_sha256": "b649fa16fd8954caa1e90884407b257dc47b5b1ebf1ff08b1867412cb626664d"
+          }
+        },
+        "queues": [
+          {
+            "path": "/var/tmp/xiang-data-rsi/e14/train_queue/gpu0.json",
+            "status": "completed",
+            "runs": [
+              {
+                "parent": "init",
+                "action": "source_only_fresh",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 3695.792,
+                "failure_phase": null
+              }
+            ]
+          },
+          {
+            "path": "/var/tmp/xiang-data-rsi/e14/train_queue/gpu1.json",
+            "status": "completed",
+            "runs": [
+              {
+                "parent": "used",
+                "action": "source_only_fresh",
+                "returncode": 1,
+                "queue_wrapper_wall_seconds": 37.934,
+                "failure_phase": "CPU parent-manifest name/path schema, before training"
+              },
+              {
+                "parent": "used",
+                "action": "source_only_fresh",
+                "returncode": 0,
+                "queue_wrapper_wall_seconds": 3756.783,
+                "failure_phase": null
+              }
+            ]
+          }
+        ],
+        "evaluations": {
+          "eval_batch": {
+            "status": "failed",
+            "error": "Judge startup timeout",
+            "train_queue_wrapper_seconds": 7490.509,
+            "finished_utc": "2026-10-02T19:07:50.230812+00:00",
+            "runs_count": 0,
+            "copies_count": 0
+          }
+        }
+      }
+    },
+    "fvcrc10": {
+      "captured_utc": "2026-10-03T08:31:37.703603+00:00",
+      "e13": {
+        "node": "fvcrc10",
+        "runs": {},
+        "queues": [],
+        "evaluations": {
+          "eval_batch": {
+            "status": "waiting_training",
+            "runs_count": 0,
+            "copies_count": 0
+          },
+          "eval_batch_v2": {
+            "status": "copying",
+            "train_queue_wrapper_seconds": 32131.094999999998,
+            "runs_count": 0,
+            "copies_count": 6
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Completed training is not completed downstream evaluation",
+    "No E13/E14 terminal utility or training confidence interval is established in this snapshot",
+    "e13_eval_batch_local.py is a prepared, not launched local-evaluation alternative; deployment validation unfinished"
+  ]
+}

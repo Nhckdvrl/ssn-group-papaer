@@ -45,3 +45,16 @@ E13检验replay/池内部分补货/池外source×exact n补货。其成功可能
 - **实际训练与评价接续**：[首窗口证据](../results/E14_first_runtime_windows.json)记录init实测59窗口，首N=1,553，所有已观察microbatch n/窗口N与CPU预期对应，seed/optimizer reset/GA/原loss均实测成立；59窗口不等于625终点。used v2启动与原失败见[恢复溯源](../results/E14_used_preflight_recovery.json)。[评价driver](../results/E14_eval_launch_provenance.json)在fvcrc12 PID1456317/ticks1819280067等双625终点，源码00862a288c…；[现成环境核对](../results/E14_eval_environment_preflight.json)已通过。独立fvcrc20 GPU3/8033复用E12同judge/checkpoint/配置，真实build0.23.0+cu129记录；新物理卡/port为部署偏离，judge尚未启动，已有他人进程则等待idle。终点本地使用、copy0，judge4h单列守护；旧waiting driver启动条件修复的原档案保留，未运行评价或挑checkpoint。
 
 - **双父真实训练已成立（17:46:36UTC）**：init/used实读158/67窗口，均有runtime、尚无completion。两卡约54.8GB，自有actual n/N与预期对应；used恢复已过全部父/数据/包/processor前检。此为运行进度，不是training utility。
+
+
+### 本轮收尾接续（2026-10-03，终点评分之前）
+
+用户要求仅收完已有八支，不再展开新实验。实读E13六支及E14两支均rc0、625窗口、终点保存；逐窗监督量与各自跑前清单一致，见[全终点快照](../results/E13_E14_20261003_upload_snapshot.json)。E13六训练queue wrapper32,131.095s，E14两训练含启动失败7,490.509s；合计11.006001 A100分配h，不是kernel活跃时间。
+
+E14旧judge在NFS权重加载期间触发1800s超时，8支均未有终点效用。原清理错误按PGID筛选，漏掉改变进程组的EngineCore；旧0.51379h成本和cleanup_complete不能作为完整成本/清理证据。启动至EngineCore退出日志45,003.459s（12.500961h），最后资源释放时刻与活跃GPU时间未知；原4h guard未生效。保留[原始快照与修正审计](../results/E14_judge_startup_failure_audit.json)，不把工程失败当方法负结果。
+
+接续只改调度：保留原状态/失败目录；安全停止E13等待driver330492/ticks1481834526（6copy、0eval、0judge）；使用已有10号六个SHA一致copy和12号两个本地终点。冻结E12 evaluator/validator/compat、vendor、环境、八TSV、judge模型revision及BF16/4096/16seq/.78/thinkingfalse配置不变。judge权重搬到20号本地并逐文件SHA核验；20号任一真正空闲卡/新port8034共享同judge，student用10/12任一真正空闲A100，记录实际卡。每次终点只评一次，首评不筛分；不换模型、不重训、不增加seed。
+
+新脚本e13_e14_closeout.py对每个进程用继承token+start ticks认证，跨PGID清理；真实CPU进程对照证明子进程清理且无关进程存活，见E13_E14_closeout_process_control.json。独立watch在owner退出/硬时限时清理。两实验原train+eval上限18/8 A100h保留，单eval最多3h；此次共享judge恢复分配另限8 Blackwellh，与已失败旧judge成本相加，不能重置历史账本。运行前逐终点复核旧hash并验证环境；有他人进程的卡继续等待。以上只是运维修复，C01–C04仍L0、训练CI未知。
+
+**2026-10-04原定评分接续（运行前）**：用户再次明确要求补完8终点评分再上传。20号judge与10号GPU3已空闲，12号仍被他人占用；因此E14两终点也搬到10号，逐文件bytes/SHA对照原12号终点清单，计28.3GB左右搬运及wall。不改任何训练对象/评分规则。closeout脚本SHA `72227b059cb3e30e36db47d4cd17191b691dbceef79b9cf1929ba33c6ae3f06d`，八支按原顺序逐一评价，复用本地相同权重judge；原失败、全成本和未运行备选脚本保留。此为节点部署变化而非新实验。
