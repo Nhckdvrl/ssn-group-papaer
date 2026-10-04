@@ -105,3 +105,5 @@ Stage3接续2026-10-05：experience源码4c4d5c45…freeze；实际node13 queues
 PushStage2b fresh48 CPU所有warm/完整diagnostic轨迹/goalpixels actualfactual repeat exact，5760steps，结果E20_20261005_pusht_fresh_prepare.json；独立session部署queueRTXGPU0 PID3536170，log/tmp/latent-E20-pusht-fresh-control-RTX-queue.log，全部五方法+released与完整AD参照两接口672episodes，只有一个transfertrainseed/pretrainunknown，不称confirmedgain。实际context/rows必须读log，不能重复启动。
 
 最新训练状态覆盖以上in-progress：E01/E14全部11终点已独立audit；E20经验利用九run全部2000 complete并audit、A100三个新queues已自然退出。开发bank IID12/12/11、REPLAY11/11/11、MIX11/10/10 vsGROUPED8/11/9，不能把replay同样gain叫新增数据价值，也不能把iid当novelmethod。GPU0 Push672、GPU1 matched1056、GPU3 experience864均实际control中，整批未齐；GPU2曝光锁定100epoch继续，最后98/u55370未endpoint。上述源码freeze，不新启同unique run；接续读log2026-10-05和各controller日志。main已pushfdeeb000，checkpoint审计后小commit接续待最新git核对。
+
+曝光状态再次覆盖：GPU2 PID3415599已实际达到100epoch/u56500，正在旧原48完整终点评测，尚未整批complete；不再称训练未到98，不读取partial决定方法。原队列自己负责持久镜像。三controller全matrix等待目标为matched22组、experience18组、Push14组；原始成功/配对CI与各source完整读回后再科学解释。
