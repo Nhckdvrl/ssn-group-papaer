@@ -13,6 +13,8 @@
 **一句话：语言模型也有先天与后天。** 先天（seed）决定回路长在哪里——9 种头角色、14 个尺寸、2 个家族，数据原理上不能选择头，只看布局就能 98–100% 认出 seed，而权重只剩 0.04 的初始化相关（weights forget the seed, circuits remember it）；后天（数据）决定回路做什么、多强、何时出现、行为如何（no lucky seeds），1% 的指令数据就能写下一个由 “Question:” 触发的习惯；先天在训练最初 1–2.5% 的关键期写下；SGD 温度与语料讲的内容（实词，而非虚词）决定先天占多少，模型越大越先天。
 **两个投稿版本并行：** ICML / ICLR 版（`experiments/A03` v5、`A04` v4、`A06` v3；标题 *The Seed Picks the Slot, the Data Fills It*）与 ACL / EMNLP / NAACL 版（`experiments/A08`；标题 *Born to Copy, Taught to Trust: What Is Innate in a Language Model*）。叙事决策见 `A05`（对齐最新顶会）、`A07`（定稿与人的修正）。
 
+**ACL 版论文稿已成形（2026-10-04）：** `paper-acl/`——官方 ACL 模板、正文 8 页 + Limitations + 附录、5 张正文图 + 1 张附录图（`scripts/figs_acl.py`）；本地用 TeX Live 2026 的 pdfLaTeX + BibTeX 编译无错误，终版模式 aclpubcheck “All Clear!”，可直接上传 Overleaf。画 Fig 1 时发现 P12：DataDecide 1B 有 6 个 run 的初始化与 seed 标签不符（头布局盲测 6/6 找出，权重核实），排除后 1B 的结果全部变强（见 `PAIN_LOG.md` P12、`CLAIMS.md` C05）。
+
 | 五条发现 + 应用 | 已完成的证据 | 进行中 |
 |---|---|---|
 | **1 析因设计与决定因素地图** | DataDecide 14 尺寸 + Pythia（step0 张量核对：70M–12B 全部同初始化）；13 项性质的地图（`results/figs/fig_determination_map.png`） | — |

@@ -69,7 +69,7 @@ Over 800 public models, plus controlled pretraining runs of our own, let us sepa
 \textbf{What is innate is the anatomy} (Figure~\ref{fig:hook}a).
 Which heads become the induction, previous-token and retrieval heads of a model---the copying circuitry behind in-context learning \citep{olsson2022context}---is fixed by its seed and recurs on every corpus, for all nine head roles we measure, at every size and in both suites.
 The seed can be read off the layout with 98--100\% accuracy even though the trained weights retain a correlation of only 0.04 with their initial values, and, read blind, the layout exposes six DataDecide checkpoints that were not initialized from the seed they are labelled with.
-Language models are \emph{born to copy}: where they will copy is decided before they read a word.
+The weights forget the seed; the circuits remember it. Language models are \emph{born to copy}: where they will copy is decided before they read a word.
 
 \textbf{What is acquired is everything the model knows and does.}
 How strong its circuits are, when they form, what it represents and how it performs on 11 benchmarks come from the corpus, with no main effect of the seed.
@@ -113,8 +113,8 @@ A corpus can therefore never \emph{choose} a head; agreement above zero between 
 The empirical question is whether the seed's choice survives a change of corpus.
 
 \paragraph{Reading behaviour.}
-For function we use DataDecide's evaluations on 11 benchmarks (ARC, BoolQ, CSQA, HellaSwag, MMLU, OpenBookQA, PIQA, Social IQa, WinoGrande and the OLMES average), circuit strength and developmental timing, and \emph{context trust}: on knowledge-conflict prompts that state a counterfactual fact, the log-probability margin of the counterfactual over the memorized answer, on facts the model knows \citep{li2025taming,du2024context}.
-Statistics are recipe-bootstrap intervals, unbiased variance components, permutation and Mantel tests \citep{mantel1967detection} (Appendix~\ref{app:stats}).
+For function we use DataDecide's evaluations on 11 benchmarks (ARC-Easy, ARC-Challenge, BoolQ, CSQA, HellaSwag, MMLU, OpenBookQA, PIQA, Social IQa, WinoGrande and their OLMES average), circuit strength and developmental timing, and \emph{context trust}: on knowledge-conflict prompts that state a counterfactual fact, the log-probability margin of the counterfactual over the memorized answer, on facts the model knows \citep{li2025taming,du2024context}.
+Statistics are recipe-bootstrap intervals, unbiased variance components, and permutation and Mantel tests \citep{mantel1967detection}; Appendix~\ref{app:stats} gives details.
 
 \section{Innate: Where the Circuits Live}
 \label{sec:innate}
@@ -136,14 +136,14 @@ The pattern holds for all nine roles (same seed 0.18--0.43, other seed $-0.02$ t
 It holds at all 14 DataDecide sizes, growing with size (Figure~\ref{fig:innate}a; Spearman with log parameters 0.81--0.92), and in the second suite: Pythia's two models from one seed agree at every size from 70M to 12B (0.38--0.72, against a permutation 95th percentile of 0.04--0.26), while independently initialized PolyPythias seeds agree at chance.
 
 \finding{Finding 2: The layout is a birth certificate.}
-Given a model and the corpus it was trained on withheld, we compare its head layout with models grown from each seed on other corpora and assign it to the seed whose models it resembles most.
-From 60M parameters on, this identifies the seed with 98--100\% accuracy (chance 33\%; 100\% for all 69 one-billion-parameter models and with five seeds at 1B, chance 20\%), already at 3--5\% of training (Figure~\ref{fig:innate}b); in Pythia the true sibling ranks first among ten candidates at every size.
+We hold out a model, compare its head layout with the models grown from each seed on the \emph{other} corpora, and assign it to the seed whose models it resembles most.
+From 60M parameters on, this identifies the seed with 98--100\% accuracy (chance 33\%; 100\% for all 69 one-billion-parameter models and with five seeds at 1B, chance 20\%), already at 3--5\% of training (Figure~\ref{fig:innate}b); in Pythia the true sibling ranks first among ten candidates at all three sizes with independently initialized alternatives.
 Applied without labels to the 75 one-billion-parameter models, the layout singles out six runs that agree with none of their nominal siblings but pairwise with each other (Figure~\ref{fig:hook}a, dark lines).
 Their published weights confirm it: the six runs were not initialized from their labelled seed's weights (correlation with them 0.000), and each pair shares an initialization of its own (Appendix~\ref{app:audit}).
 SeedPrints \citep{tong2026seedprints} identifies a lineage of weights from output biases; the anatomy identifies independently trained siblings whose weights have long diverged.
 
 \finding{Finding 3: The weights forget the seed; the coordinates do not.}
-Final weights correlate with their initial values at only 0.03--0.09, and same-seed models trained on different corpora are separated by a loss barrier as high as unrelated models \citep[7.5 vs.\ 7.0 nats;][]{frankle2020linear}.
+Final weights correlate with their initial values at only 0.03--0.09, and same-seed models trained on different corpora are not linearly connected: the loss barrier between them \citep{frankle2020linear} is 7.5 nats, close to the 7.8 between unrelated models and above the 7.0 between models that share only their corpus.
 Their representations are no more alike than unrelated models' under unit-invariant measures---CKA \citep{kornblith2019similarity} and best-match similarity, which are highest for models that share a corpus---and MLP neurons do not inherit their identity (0.008).
 What the seed fixes is a coordinate system: which head hosts which role, which residual dimensions carry variance (0.20 vs.\ 0.00) and which carry the massive outlier activations (0.17 vs.\ 0.00; Figure~\ref{fig:innate}c).
 
@@ -246,7 +246,7 @@ Their anatomy has one.
 We pretrain small Llama-style models on C4 and branch them at step $k$ of 10{,}000 by switching the corpus to source code or by adding Gaussian noise to every weight (Figure~\ref{fig:critical}a; Appendix~\ref{app:controlled}).
 Up to $k = 100$ (1\%), either intervention re-draws the layout: after a switch to code at 1\%, agreement with the untouched run is 0.09, and noise as large as the weights leaves 0.03 at step 0 and 0.36 at 1\%.
 From $k = 250$ (2.5\%) on, the layout is an attractor: noise as large as the weights themselves returns the roles to their heads (0.79--0.90 at 2.5\%, 0.93--0.99 from 5\%, the level of an exact rerun), and a switch to code preserves most of it (0.59 at 2.5\%, rising to 0.95 at 80\%).
-A 12-layer model shows the same window (a code switch at 1\% keeps 0.40, at 10\% 0.84; trained on code from scratch, 0.00).
+A 12-layer model shows the same window (a code switch at 1\% keeps 0.40, at 10\% 0.84; trained on code from scratch, $\approx 0$).
 The public suites lock in during the same window (Figure~\ref{fig:critical}b): the same-seed agreement of the DataDecide 1B models reaches its final level by 3.6\% of training, Pythia's previous-token heads by about 2\%, and Pythia-12B's two models already share their layout at 2.1\% (0.45--0.60; final 0.38--0.51).
 Before training, the layout cannot be read off the weights---no statistic of a head's initial weights or initial gradient predicts which head will win---so it is written collectively, by the first percent of experience.
 

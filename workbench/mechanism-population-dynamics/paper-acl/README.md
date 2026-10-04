@@ -14,9 +14,11 @@
 
 ## 编译（与 Overleaf 相同：pdfLaTeX + BibTeX）
 ```bash
-pdflatex main && bibtex main && pdflatex main && pdflatex main
+pdflatex main && bibtex main && pdflatex main && pdflatex main && pdflatex main
 ```
-Overleaf：上传本文件夹（不需要 `template_acl_latex.tex`），Compiler 选 pdfLaTeX，主文件 `main.tex`。
+Overleaf：上传本文件夹（不需要 `template_acl_latex.tex`），Compiler 选 pdfLaTeX，主文件 `main.tex`；Overleaf 用 latexmk 自动编到稳定。
+- 本地已用 TeX Live 2026（pdfTeX 1.40.29）+ BibTeX 编译：无错误、无未定义引用、无溢出；终版模式下 aclpubcheck “All Clear!”；所有字体嵌入，无 Type 3。
+- 审稿版的行号由 lineno 宏包生成，需要多编几遍才能定位稳定（少编一遍时，带通栏图的页面上行号可能画进版心）。
 
 ## 重画图
 ```bash
