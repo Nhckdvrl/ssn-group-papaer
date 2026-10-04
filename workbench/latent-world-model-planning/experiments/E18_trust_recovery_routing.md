@@ -200,3 +200,8 @@ F1全部864 DONE，v2独立reader完整native真实成功/因果commands/隐藏a
 F1首独立reader按NumPy均值重算小goal_progress时，两个较大CUDA float32 MSE相减的reduction误差3.58e−7超reader容差；原source/失败留20261005-E18-intact-fork-audit-reduction-failure，未写正式result。v2先按原容差独立校对两个component MSE，再重生这两个已验证scalar的float32减法，不放宽任何执行/状态/模型guard，训练/轨迹/原feature不改。已完整PASS；科学主张0保持。
 
 F2已在原RTX1/3实际启动wrapper3654985/6，logs/tmp/latent-E18-intact-waypoints-{task}-RTX.log；actualCPU/CUDA typed-graph/goal-native mean/std、整144prefix/48reference全部预控PASS。两task完整576待齐，用intact_waypoint_recovery_audit.py读全matrix并CPU独立重算全部保存的local query；不能拿Nav先完成当赢家。
+
+
+F2全576 DONE/独立native/因果commands/hidden shift/typedgraph/所有local query CPU重算/source/trace audit PASS：[结果](../results/E18_20261005_intact_waypoint_recovery_results.json)。WAYPOINT-FEEDBACK/OPEN各48：Nav nominal37/37、gain35/33、wind37/35；Push28/26、gain23/15、moment20/19。Push gain feedback−HOLD+14.58pp95CI[4.17,27.08]、vsREFRESH5+4.17[−4.17,12.5]，feedback−OPEN+16.67[6.25,27.08]；Nav wind vsREFRESH5+8.33[2.08,16.67]，但最强REFRESH15为36/48，尚无稳定强fixedbaseline胜利。正常Push vsREFRESH5=0且help2/harm2，不拿平均掩盖具体伤害。所有query再做CPU读出只验证保存input的actor graph，未每步独立重编码image，明确审计范围。原1/3 wrapper3654985/6已退出，禁止重启unique。
+
+目前是有用的候选设计线索，不是成立novel method或可投signal；继承INTACT已有共享local/goal action law、RWM/reference-control，不claim首次。下一步离开t10–25小window，新的episode与三独立发布trainseed0/42/3072确认完整部署vs强固定策略，保留人审优先I14/E20、R1–R5/状态，不预选paper narrative。

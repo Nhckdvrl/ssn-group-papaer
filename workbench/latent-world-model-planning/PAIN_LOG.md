@@ -179,3 +179,6 @@ A11操作全2904query完成并独立审计：[H3完整结果](results/E13_202610
 
 
 2026-10-05 P04/P05/P08｜同state有效恢复空间比wholepolicy频率更有限。E18F1全864独立auditPASS，HOLD/REFRESH15/REFRESH5：Nav nominal37/37/37、gain32/33/33、wind34/36/33，Push25/26/28、16/19/21、20/22/19（每48）。Push gain连续反馈+10.42ppCI[2.08,18.75]，但oracle vsbestfixed Nav0/0/0、Push+1/+1/+3，当前不能据此造复杂gate。momentshift实际改变24/48prefix，不筛零效果/吸收state；F0/F1介入起点/时长不同，不能把Nav harm定位为仅latefeedback。下一F2借RWM reference+完整actor localtarget复用，真实效用胜过模型误差，science0不升。
+
+
+2026-10-05 P04/P05/P08｜RWM/INTACT原理的目标复用pilot有条件线索，尚未胜strongfixed。F2全576审计PASS：Nav trackingfeedback nominal/gain/wind37/35/37，Push28/23/20（各48），对应REFRESH5为37/33/33和28/21/19。Pushgain vsHOLD+14.58ppCI[4.17,27.08]，vsREFRESH5区间含0；wind导航 vsREFRESH5正，但REFRESH15已36。开放预测current控制Pushgain15/48低于真实feedback23，支持读回实际state有用，不等价全新tracking/因果机制或任意goal泛化。下一组按新episode/三发布seed/fullpolicy确认，不在t10window调λ。科学主张0。

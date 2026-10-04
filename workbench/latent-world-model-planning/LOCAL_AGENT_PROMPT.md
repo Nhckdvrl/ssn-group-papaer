@@ -159,3 +159,6 @@ F1上述retry1状态已被v2覆盖：原Gaussian tuple API误用被anchor0 guard
 
 
 覆盖F1 pending：两task全864 DONE，v2 full independentaudit PASS，portable E18_20261005_intact_recovery_fork_results.json；原0/2 wrapper3652843/4退出。HOLD/REFRESH15/5 Nav nominal37/37/37、gain32/33/33、wind34/36/33，Push25/26/28、16/19/21、moment20/22/19（各48），onlyPushgain反馈+10.42ppCI[2.08,18.75]，oracle比bestfixed最多3条，不训复杂gate。reader原小delta NumPy/CUDA reduction失配故障保留，v2校对component后精确scalar减法，轨迹/模型/守卫不改。最新F2 actual1/3 wrapper3654985/6，logs/tmp/latent-E18-intact-waypoints-{task}-RTX.log，raw20261005-E18-intact-waypoints-{task}：真实typed CPUCUDA/144prefix/48reference全PASS，完整576待齐用intact_waypoint_recovery_audit.py审计再解释。不重启unique，不将RWM已有reference原则认领novelty。继续借baseline/数据/预测对象/反馈结果生长方法，science0/PROPOSED/人审优先保持。
+
+
+覆盖F2pending：两task全576 DONE/fulltyped-query CPU/native/causal/source audit PASS，portable E18_20261005_intact_waypoint_recovery_results.json；原1/3wrapper3654985/6退出。feedback/open Nav nominal37/37、gain35/33、wind37/35；Push28/26、gain23/15、moment20/19；vsstrong REFRESH5只有Navwind正区间且REFRESH15已36，Pushgain23vs21区间含0。只是候选线索，不能宣布novelmethod/可投级signal或换humanpaperpriority。接续E18F3新的48episode×三published独立seed0/42/3072/fullpolicy强固定反馈；先资产HF hash/config/源manual/新的真实factualbank控，再铺全部署。所有故障和弱条件保留；RWM是NeurIPS2025 accepted corpus命中，不重新认领reference-control。科学0/PROPOSED/目标active。
