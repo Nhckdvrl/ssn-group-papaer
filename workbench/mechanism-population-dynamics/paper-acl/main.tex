@@ -318,6 +318,7 @@ Context-faithfulness benchmarks should report their results across question temp
 A circuit diagram of one model is a statement about one seed: its algorithm and layers generalize, its head labels do not, except to siblings grown from the same seed on similar corpora.
 Ablating the ten most important heads of a same-seed sibling trained on another corpus does 19.5\% of the damage of ablating the model's own; heads found in a different-seed model trained on the \emph{same} corpus do 2.0\%.
 Data attribution explains whether a circuit forms, not where it lives, and comparisons of models trained on different data should match their seeds.
+Seed-matched siblings are, in turn, a free control: grown from one seed on different corpora, they share an anatomy, so every difference between their circuits is the data's doing.
 
 \paragraph{For model provenance.}
 Because the anatomy outlives the weights, the layout certifies whether two released models grew from one initialization, with no access to their training; read this way, it found the six DataDecide runs whose initialization differs from their label.
@@ -443,7 +444,7 @@ The corpus is a significant factor on almost every task and size; the seed reach
 \label{app:artifacts}
 \paragraph{Artifacts.} We use the DataDecide models (Apache~2.0) and data recipes (ODC-BY), Pythia and PolyPythias (Apache~2.0), OLMo~2 (Apache~2.0), ParaConflict (Apache~2.0), NQ-Swap (MIT) and PopQA as released by their authors, all for research use consistent with their intended use; the corpora are English.
 \paragraph{Compute.} All measurements are forward passes or small training runs on NVIDIA A100 80GB GPUs: about 1{,}100 public checkpoints and about 150 controlled pretraining runs of 4- to 12-layer models, in total roughly 200 GPU-hours.
-\paragraph{Software.} PyTorch, Hugging Face Transformers and Datasets, NumPy and SciPy; models are loaded in bfloat16 with eager attention to read attention patterns.
+\paragraph{Software.} PyTorch 2.8, Hugging Face Transformers 4.57 and Datasets 4.8, NumPy 1.26 and SciPy 1.17; models are loaded in bfloat16 with eager attention to read attention patterns. Benchmark scores are DataDecide's released OLMES evaluations \citep{magnusson2025datadecide}; marker counts in Dolma~1.7 come from the infini-gram index.
 
 \section{Statistics}
 \label{app:stats}
