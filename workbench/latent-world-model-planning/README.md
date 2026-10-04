@@ -45,9 +45,9 @@
 
 **H-A / R1：Planner-Boundary Branching (PBB)。** 在相同新增环境交互预算下，把same-state counterfactual branch数据优先采在CEM candidate ranking不稳定、可能改变selection的state；先做data-only方法，和random/coverage/global uncertainty/task-aware acquisition比较。近邻OnlineWM、Task-Sufficient WM、ToIA、D-JEPA/AD-WM提供强支点而非禁区。
 
-**H-B / R2：Planner-Stage Multi-Fidelity。** Fast-LeWM/cheap direct predictor筛大量候选，high-fidelity recursive/refined predictor只重评elite边界候选；在fixed wall-clock下比较pure cheap/pure expensive/random refine。Fast-LeWM已做direct prefix，DeepJEPA已做transition-depth adaptive compute，因此我们的差异必须落在**candidate-stage fidelity allocation**及其与transition-depth的互补性。
+**H-B / R2：Planner-Stage Multi-Fidelity。** Fast-LeWM/cheap direct predictor筛大量候选，high-fidelity recursive/refined predictor只重评elite边界候选；在fixed wall-clock下比较pure cheap/pure expensive/random refine。Fast-LeWM已做direct prefix；最新[核心阅读](literature/CORE_READINGS.md)已纠正旧candidate-vs-transition区分：DeepJEPA也处理candidate–time分配。当前尚缺真实高保真优势及实际延迟收益，不能把该区分当作已成立增量。
 
-两者都属于“重要问题 + 便宜决定性实验 + 大量独立确认”的RC-aux式科研经济学；只是当前起跑点，不是预先宣布的论文主旨。
+两者保留为首轮探索及其已有证据；当前追加优先级已降低，后续投入以本页顶部与RESEARCH_PLAN为准。
 
 ## 第二波也已具体化
 
@@ -55,7 +55,7 @@
 - **H-D / R5：Utility-Gated Recovery** — 用matched fork ledger学习什么时候HOLD / FEEDBACK / UPDATE / REPLAN真的值得做，而不是error大就更新。
 - **H-E / R2/R3/R5：Selective Revaluation** — reward/query、局部transition、全局dynamics变化后，比较最小充分更新模块与full update。
 
-它们不是“被近邻挤剩下的小角落”，而是从最新query-sufficiency、feedback/TTT、revaluation工作继续往**可训练方法 + planning consequence**发展。第一波H-A/H-B更优先只因为单位时间信息增益高。
+它们不是“被近邻挤剩下的小角落”，而是从最新query-sufficiency、feedback/TTT、revaluation工作继续往**可训练方法 + planning consequence**发展。这些入口继续保留，不覆盖本页顶部更新后的优先级。
 
 ## 当前证据与交付边界
 
