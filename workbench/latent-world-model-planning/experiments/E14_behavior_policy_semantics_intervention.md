@@ -1,6 +1,6 @@
 # E14｜轨迹监督与规划性能
 
-- **状态：** RUNNING；真正Bellman表示学习的JOINT/SEPARATE完整支点预控PASS、A100训练队列已启动，效用未出。
+- **状态：** RUNNING；JOINT/SEPARATE三训练source与完整闭环重复已完成；已知机制far收益重复，下一增量未确认。
 - **对应：** I09 / R1
 - **来源：** S2数据研究与S4经验reachability；原路线诊断和sampler笔记见历史。
 - **阳性对照：** 已观测可行路径检查正例预算语义；相同数据与seed的未改动基线；时间/动作接口一致。
@@ -42,3 +42,11 @@
 四新trainruns/两个独立A100slots，node-local原1.4GB cache、同stage源码/hash既有完整CPU/CUDA控/全部savedinit三source已验证；wrapper只取实际free。新HF/raw沿冻结m命名20261004-E14-{JOINT/SEPARATE}-A100-s{1,2}（实际启动2026-10-05；参数名VGIQL-JOINT/VGIQL-SEPARATE），不覆盖s0。完整终点后原RTXsame48两接口各source2arms/384episodes，samebudget/seed/精确warm守卫/全部目标分母，value_model_loader明确ABS303/schema。主读数分层success、每seed原数/paired source+anchorCI、新envsteps；single-src先前CI不升级独立seed证据。决策：far收益三源稳定且面对strongnative→完善真实goal机制/跨task/GCpolicy近邻以找增量；仅弱physical成立或seed不重复→保留counterexample，回看预测对象/goal语义/数据覆盖，不调τ/λ网格。R1–R5与主旨/PROPOSED保持，科学主张0。
 
 两个新source各JOINT/SEP全部固定5650已自然完成（四runs），合计三个source六value终点连原九baseline独立初始化/hash/data/firstbatch/finalsampler/finite全weights与moments/297×5650或204×2825→93×2825审计PASS；SEP保存value phase与final encoder/projector全部参数/buffers bit-exact相同。结果E14_20261005_three_seed_endpoint_audit.json。两原A100队列3621335/3621386已自然退出，禁止重复。新RTX384eval first launcher3573734因CUDA_VISIBLE_DEVICES=1却指定local --gpus1在mapping处失败、未初始化CUDA/没有controller输出；原log保留。修正仅launcher local索引0，新PID3574468/log/tmp/latent-E14-three-seed-control-RTX-queue-retry1.log，已确认实际GPU1 context，value_seed_control_queue.py显式同namespace/303/schema，训练/任务/预算未改。完整matrix未齐，不报partial效用。
+
+### 三独立训练源的完整闭环重复（2026-10-05）
+
+全部三source ABS/JOINT/SEP、两接口、18groups864实际轨迹独立审计PASS：[完整结果](../results/E14_20261005_three_seed_control_results.json)。native ABS30/23/24、JOINT17/2/7、SEP32/34/39（每source48）；physical24/18/24、17/4/15、33/33/40。native远24目标分别ABS9/6/5、SEP13/17/18；physical远ABS7/4/6、SEP17/16/20。SEP对ABS整体native+19.44pp、paired source+anchor95%CI[2.08,36.81]，physical+27.78pp[12.50,42.36]；far分别+38.89pp[12.50,62.50]与+50pp[33.33,66.67]，近native0pp。所有三个训练源保留，包括JOINT2/48，无幸存seed筛选；共享48开发任务不等于144独立新任务，只有三个训练种子的CI仍须谨慎。
+
+完整初始化、297/204→93 optimizer步数/finite moment、encoder/projector所有参数与BN冻结、firstbatch/finalsampler、所有episode初始state/native success/trace/checkpoint/load来源通过独立reader。原value repeat384队列3574468已自然退出，禁止再启动同unique run。raw/durable全审计20261005-E14-three-seed-control-audit；git仅summary，完整rows留artifact。
+
+这是可靠的已有baseline机制支点，Value-Guided JEPA已拥有Sep/Joint与距离价值设计，不能叫新idea或原paper复现。下一增量应利用它理解有限经验、动作后果、可复用目标空间与不同模型使用方式；不围绕τ/λ网格优化已知方法，不因已有近邻关闭R1–R5，当前科学主张0。

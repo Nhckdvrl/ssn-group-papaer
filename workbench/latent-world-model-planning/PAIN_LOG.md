@@ -120,3 +120,15 @@ P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.jso
 完整[Push闭环672](results/E20_20261005_pusht_fresh_control_results.json)原native released24/48，分支联合PLAIN5、各aux3–6；physicalreleased21、分支3–6，完整AD发布参照26/29（数据未匹配）。单transferseed开发，训练后能力丢失真实可复算，但原因未定位，不宣称表示漂移/SIGReg导致或干预数据普遍有害。Nav[经验利用864](results/E20_20261005_experience_control_results.json)IID/REPLAY/MIX对GROUPED原native−4.17/0/−2.78pp，全部source+anchor CI跨0；小bank近完美不是新goal控制功效，后果学习与规划复用需要分开验证。
 
 [匹配value支点](results/E01_E14_20261005_matched_control_results.json)source0 SEP远goal physical17/24 vsABS7、native13vs9，near分别16vs17、19vs21；总体gain在强nativeCI跨0。Value-Guided JEPA已拥有Sep机制，不是novelty；两个额外seed六value终点已完成且全部audit，闭环重复正在运行。Stage4 conditional2×2固定PRED/VALUE geometry×FACT/MIX/common reset decoder，分辨有限经验在表示/动力学上的用途；priorgeometry训练预算不同显式报告，不自动合并研究narrative，不沿CENTERλ或bankquery优化。R1–R5持续开放，science claims0。
+
+### 2026-10-05｜P04/P05/P10：可靠value支点与经验效用的分离
+
+[三seed完整闭环](results/E14_20261005_three_seed_control_results.json)：SEP native32/34/39 vssame-seed ABS30/23/24（各48），整体+19.44pp、paired source+anchor95%CI[2.08,36.81]；远24目标13/17/18 vs9/6/5，近平均无收益。三训练source与全部任务保留。已有Value-GuidedJEPA机制可靠，不是ours novelty，也非一般跨环境确认。
+
+[geometry×data四cell384控制](results/E20_20261005_geometry_control_results.json) native29/26/36/36、physical25/24/36/33（PRED-FACT/MIX、VALUE-FACT/MIX各48）；两geometry内MIX差与交互CI均含0，没显示goal geometry使分支data稳定有效。prior训练预算不同，不作objective-only解释。不能把value优点与CF混合相加就写成新方法。完整[训练审计](results/E20_20261005_geometry_module_endpoint_audit.json)通过。
+
+[完整RC-aux384](results/E01_20261005_rcaux_full_control_results.json)原head ON/OFF、H1/H3全部合法任务/真实成功复算：native38/33、37/34（各48），full312keys含9head/原criterion/官方scaler；训练data未知不与own100差值作因果。强近邻确实可用，这提高下一方法证据门槛，不关闭母问题。
+
+Push joint更新控制损失已确定，但机制未知；新增两模块隔离actual训练全部2000/预控/独立checkpoint-accounting PASS，完整新任务192控制实际运行中。不叫encoder遗忘，不按小bank或partial结果救局部设计。当前科学主张0、PROPOSED不变。
+
+Stage5整批覆盖上述running：四groups192实际Push控制complete，独立完整trace/checkpoint/source/normalizer/初始25D状态/native成功/全部48分母与两interface审计PASS，见E20_20261005_pusht_module_control_results.json。DYNAMICS-ONLY native12(近11/远1)、physical9(8/1)；GEOMETRY-ONLY native12(10/2)、physical8(6/2)，发布24/21、原joint5/6（各48）。两隔离native对发布均−25pp pairedCI[−37.5,−12.5]。冻结减轻joint损失但不保住发布能力，不能简单归因仅encoder漂移；两模块职责仍需和experience/model-use/coverage一起理解，单seed不当一般定理。原两个RTX3584419/3584420已自然退出；不重启unique run、不将freeze包装成newidea。

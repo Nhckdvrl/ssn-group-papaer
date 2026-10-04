@@ -127,3 +127,25 @@ Nav原native GROUPED-PLAIN26/29/27；IID28/27/21，REPLAY27/33/22，MIX32/19/27�
 Stage4最小crossed4cell代码geometry_experience.py已写，CPU实际B128预控正在执行；A100实际CUDA全部四cell数据索引/五teacher target手算、204frozen参数及BN buffers不变、93finite动态梯度/freshoptimizer1step、strict共同init和native cost parity均PASS。只有两预控complete/hash匹配才训练；不能将代码/预控当正式run。Stage4是对经验价值×模块职责的conditional探索，不切新paper narrative。
 
 Stage4实际CPU/CUDA四cell B128全部PASS，portable E20_20261005_geometry_preflight.json；geometry_experience源码冻结且训练内强制双preflight/helperhash。两freeA100任务slots已launch：PRED physicalGPU2 PID3627210、VALUE GPU3 PID3627276，每条FACT→MIX各2825。log/tmp/latent-E20-geometry-{PRED/VALUE}-A100-queue.log；需查真实step，不把nohup PID当完成训练。geometry_control_queue.py固定终点后sameRTX完整4cells×2interfaces×48=384，全matrix无partial筛选。
+
+## Stage5：操作任务上的学习模块隔离（2026-10-05，运行前）
+
+对应I14/P10与R1/R3/R4：Stage2b Push发布24/48native→五联合分支模型3–6，不能从控制下降直接指认encoder遗忘。最小隔离在同充分发布初始化下新增DYNAMICS-ONLY与GEOMETRY-ONLY，面对既有NO-UPDATE发布与JOINT-PLAIN，不改变数据采样/五TF/.09SIGReg/总2000updates/B32/8组×4分支/RNG105800/LR5e−5WD.001/bf16/clip1/原actionnorm。geometry模块为encoder+projector204参数，动态为predictor/action_encoder/pred_proj93；每arm只更新指定模块，另外模块参数和BN buffers均冻结eval。不重置decoder、不换geometryprior，不使用物理GT训练。目标数值仍完整PLAIN，DYNAMICS-ONLY中SIGReg只常数、不产生encoder梯度；trainable modules与其BN权限是共同干预，不能称纯梯度因果。
+
+CPU/CUDA actualB32/原firstbatch/RNG与fiveTF+SIGReg手算/两模块gradient及freshopt1step/不更新部分所有params-buffers hash不动/源weight严格sameinit/H3+5 nativeparity必须全过。额外shape核对：Push originalHDF训练pixels、branchhistory/future与新freshcontrollerhistory/goal均224×224；原eval Resize224是identity，本批没有发现分辨率失配，不据这一猜测改任务或制造解释。此前controls继续保留。
+
+两arm独立A100 free0/1各2000，small sharednode-localbranchbank，无新sim采集、无replay、无系数筛选。primary既有Pushactualfresh48sameledger/原native和physical各两arm=192episodes，H25EX25/300-30-30/最多100steps/θwrap+前4position成功、全部新起点分母；held12枝选择是辅助已见source开发。发布pretraining/data分割未知，只一transfer seed，不当独立3seed/第二task确认。trainhash/原initial/firstbatch/exposure/RNG/cost原生契约/轨迹全部保存，新增试验名20261005-E20-pusht-module-{DYNAMICS-ONLY/GEOMETRY-ONLY}-A100-s0。
+
+决策：only动态保留且learned效果有用→模块/data职责进入下一设计，冻结encoder本身是DINO-WM/FIRM/在线adapt成熟baseline不是novelty；only几何或两者均差→重新理解model使用/预测对象/数据覆盖，不以整个model冻结当新方法；两者均有效→joint optimization与stage设计再查，不能从本隔离自动归因表示漂移。Stage4 geometry×data与三个sourcevalue一起读回，避免只在导航或12query里反复打磨。当前不切paper叙事，不升science claim或改PROPOSED。
+
+### Stage4完整交互读回；Stage5真实启动（2026-10-05）
+
+四cell各2825训练全部DONE，[独立终点](../results/E20_20261005_geometry_module_endpoint_audit.json)检查geometry源与所有frozen参数/buffers bit-exact、共同动态initial、93状态×2825/finite AdamW moments、firstbatch/final两RNG逐步重生、361600总样本/FACT或MIX来源计数PASS。全部8控制groups384 episodes也独立trace/native-success/source审计PASS：[结果](../results/E20_20261005_geometry_control_results.json)。native PRED-FACT29/PRED-MIX26/VALUE-FACT36/VALUE-MIX36；physical25/24/36/33（各48）。MIX−FACT native PRED−6.25pp[−14.58,0]、VALUE0[−16.67,16.67]；physical−2.08[−10.42,6.25]与−6.25[−22.92,10.42]。交互分别+6.25pp[−12.50,25]与−4.17pp[−22.92,16.67]，未显示CF在value geometry下具有稳定新增效用。
+
+VALUE强于PRED是有信息的开发比较，但prior目标与2825/5650预算不同，不能当纯objective因果；也不能用重置后的弱decoder作solebaseline。原四训练/八部署进程均自然完成，禁止重启；不用lambda/少数query救这个混合故事。
+
+Stage5 actual CPU/CUDA两arm B32/五TF+.09SIGReg手算/freshopt/frozen模块全params与BN/sourceimmutability/native parity全PASS，见[预控](../results/E20_20261005_pusht_module_preflight.json)。两个A100模块训练各2000已实际DONE；[独立终点](../results/E20_20261005_pusht_module_endpoint_audit.json)再验同初始hash、204或93optimizer×2000、64000样本/firstbatch/2000步sampler再生/frozen tensors全部PASS。原训练3631153/3631219自然退出。
+
+same original Push48/两接口192实际控制已启动RTX physical0 DYNAMICS-ONLY PID3584419、physical1 GEOMETRY-ONLY3584420，logs/tmp/latent-E20-pusht-module-{ARM}-RTX-control.log；源码pusht_module_control.py严格303非residual结构/固定终点hash/原nativecost first-active parity/真实25D warm-state及pixels守卫。整批齐前不报partial机制或改任务；科学主张0，保留发布与原joint对照，不将冻结模块本身包装成novelty。
+
+Stage5整批覆盖上述running：四groups192实际Push控制complete，独立完整trace/checkpoint/source/normalizer/初始25D状态/native成功/全部48分母与两interface审计PASS，见E20_20261005_pusht_module_control_results.json。DYNAMICS-ONLY native12(近11/远1)、physical9(8/1)；GEOMETRY-ONLY native12(10/2)、physical8(6/2)，发布24/21、原joint5/6（各48）。两隔离native对发布均−25pp pairedCI[−37.5,−12.5]。冻结减轻joint损失但不保住发布能力，不能简单归因仅encoder漂移；两模块职责仍需和experience/model-use/coverage一起理解，单seed不当一般定理。原两个RTX3584419/3584420已自然退出；不重启unique run、不将freeze包装成newidea。

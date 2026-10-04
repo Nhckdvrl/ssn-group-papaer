@@ -60,7 +60,7 @@
 ## 当前证据与交付边界
 
 - **科学主张：0。** 论文报告值不是我们的实验结果。
-- 2026-10-05最新整批：[matched1056](results/E01_E14_20261005_matched_control_results.json)、[经验利用864](results/E20_20261005_experience_control_results.json)、[Push672](results/E20_20261005_pusht_fresh_control_results.json)全部独立轨迹校对。Push发布24/48原native→分支联合3–6；Nav三数据利用对照无稳定控制gain。source0分阶段value远目标有线索、已有近邻机制；三seed训练已齐、闭环重复中，新geometry×data交互先经CPU/CUDA阳控，尚未确认novelidea。
+- 2026-10-05最新：[三seed value闭环](results/E14_20261005_three_seed_control_results.json)SEP native32/34/39 vsABS30/23/24（各48），整体+19.4pp、95%CI[2.1,36.8]，已有Value-GuidedJEPA机制支点；[geometry×data384](results/E20_20261005_geometry_control_results.json)没有稳定CF混合增益；[完整RC-aux384](results/E01_20261005_rcaux_full_control_results.json)功能/轨迹审计通过，发布训练未匹配。[Push两模块192](results/E20_20261005_pusht_module_control_results.json)已审计native均12/48 vs发布24，模块冻结没有保住控制能力，尚未确认novelidea。
 - D1 完整数值复现未完成；D2 Fast两任务原生加载/训练步/闭环完成，LeWM有限数据训练已运行；均使用节点数据缓存。
 - E13：两任务20% TOP-M-SCREEN分别恢复96.9%/99.99%模型elite，未见实际耗时收益。扩到[256个长短目标/512配对episodes](results/E13_20261002_fidelity_value.json)：TwoRoom75步goal FULL300成功27/64、CHEAP900为47/64；PushT75步两者9/64。尚无self-consistency refinement控制收益；共卡timing不用于speedup。
 - E16：[全部公平三pipeline](results/E16_20261003_optclone_independent_seeds.json)NOADD7/16/19、uniform32/15/18、GLOBAL-U19/20/27、PBB20/11/13（各48），AdamW隔离guards全过。GLOBAL三个正gain，PBB不稳定，uniform首seed优势未重复；pipeline包含data/eval/init变化。旧污染模型比较降级，不作为当前证据。
@@ -78,11 +78,12 @@
 - [E13 A6两模型候选审计](results/E13_20261003_two_backbone_reference.json)已完成并独立复算：TOP20%对LeWM参考elite recall导航近/远=.777/.469、操作=.510/.190；实际参考批次900→90仍约42–44ms。参考模型排序不是真实后果，不支持加速或控制收益。
 - [E13 A7真实候选后果](results/E13_20261003_candidate_quality.json)192branches/5545steps完整落盘：Fast/LeWM近目标导航13/13、操作15/11（各16）；factual四组均16/16。上传前计数/hash核对通过，完整独立trajectory/statistics校对待做；不是两种原生CEM控制器比较。
 - [E17任务几何代价](results/E17_20261003_task_factor_cost.json)384episodes/24005steps完整落盘：导航远NATIVE25/PREFIX5/REAL-GEO/MIX-GEO/REAL-JOINT/MIX-JOINT=10/7/11/11/12/12；操作近14/11/9/9/10/9（各16）。尚无跨任务稳定收益；extra task labels、共享首计划、训练量边界见卡，独立完整校对待做。
-- [E16固定data独立trainseeds](results/E16_20261004_fixed_data_trainseeds.json)原seed0/新seed1/2为38/19/36（各48），新两个run完整，保留全部种子；不能称充分训练稳定等效released。[曝光终点100epochs/u56500](results/E16_20261005_exposure_endpoint.json)已complete并校对39/48，约同epoch但10xupdates/单source，不当数据only结论；新48两接口强参照正在部署。
+- [E16固定data独立trainseeds](results/E16_20261004_fixed_data_trainseeds.json)原seed0/新seed1/2为38/19/36（各48），新两个run完整，保留全部种子；不能称充分训练稳定等效released。[曝光终点100epochs/u56500](results/E16_20261005_exposure_endpoint.json)已complete并校对39/48，约同epoch但10xupdates/单source，不当数据only结论；[新48两接口96](results/E16_20261005_fresh_exposure_control.json)已审计native33/physical29。
 - [E20整批联合训练](results/E20_20261004_joint_candidate_results.json)15/15完成并经checkpoint/optimizer/RNG/query复核：PLAIN8/11/9、CENTER12/11/8、PROB10/11/11（每source12真实bank查询），开发差值CI仍跨零。新48独立episode factual exact；[physical](results/E20_20261004_fresh_physical_control_results.json)/[native](results/E20_20261004_fresh_native_control_results.json)各15方法与三BASE整批校对，CENTER对PLAIN分别−4.9pp/+2.8pp、CI均跨零；跨节点失败完整保留，未放宽守卫；[PushT五arm](results/E20_20261004_pusht_candidate_results.json)已完整训练校对：4/4/4/3/4（各12），没有稳定开发gain；尚无成立novel方法。
 - [AD-WM完整发布参照](results/E01_20261004_adwm_full_reference.json)：同新48原native近24/24、远18/24；physical20/24、8/24，全部96轨迹成功判据/源hash/native parity经独立复算。仅一发布seed，训练data未匹配，不是完整论文数字复现或同data方法因果gain。
 - [跨节点复现校对](results/E20_20261004_crossnode_restore_audit.json)：两节点48条factual位置轨迹逐点exact；A100 46/48 warm图像≤1 uint8差，RTX全部exact，原因不确定。主方法闭环不放宽守卫、不删anchor，改同RTX复跑；不是方法负结果。
-- [E01/E14完整训练支点预控](results/E01_E14_20261004_matched_learning_preflight.json)CPU/CUDA actual loss/gradient/SG/Bellman/两阶段隔离/native parity全过；九个ABS/RES/FULL-AD×三seed与两个JOINT/SEPARATE支点共11次5650训练已全部完成并经[完整endpoint审计](results/E01_E14_20261005_matched_endpoint_audit.json)。训练终点的同48、physical/native评测已入队（11模型共1056episodes），整批效用尚未齐；[E20数据利用九run](results/E20_20261005_experience_candidate_results.json)全部训练校对，小bank IID12/12/11、仅REPLAY11/11/11（各12）；newgoal两接口与Push672episodes正在实际运行，尚非novelidea。
+- [E01/E14完整训练支点预控](results/E01_E14_20261004_matched_learning_preflight.json)与[全部15训练终点](results/E14_20261005_three_seed_endpoint_audit.json)审计通过；[matched1056](results/E01_E14_20261005_matched_control_results.json)、[经验利用864](results/E20_20261005_experience_control_results.json)、[Push672](results/E20_20261005_pusht_fresh_control_results.json)全部真实轨迹独立校对。FULL-AD未稳定胜strongABS，数据利用小bank改善未稳定转为闭环gain，Push联合训练控制退化的模块原因仍待隔离。
+- [E13固定几何×预测对象](results/E13_20261005_predictive_object_endpoint_audit.json)：官方Fast相同head容量/初始，DIRECT与LOCAL各两geometry共四训练2825已完成且预控/终点审计通过；384实际闭环评测正在运行。已知方法轴，用于找下一真实增量，不预称新idea。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 

@@ -1,0 +1,1208 @@
+{
+  "completed": true,
+  "mode": "value",
+  "controller_groups": 18,
+  "episodes": 864,
+  "counts": [
+    {
+      "arm": "ABS",
+      "seed": 0,
+      "interface": "native",
+      "near": 21,
+      "far": 9,
+      "n_per_tier": 24,
+      "new_env_steps": 2560,
+      "initial_successes": 1
+    },
+    {
+      "arm": "ABS",
+      "seed": 0,
+      "interface": "physical",
+      "near": 17,
+      "far": 7,
+      "n_per_tier": 24,
+      "new_env_steps": 2962,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 0,
+      "interface": "native",
+      "near": 10,
+      "far": 7,
+      "n_per_tier": 24,
+      "new_env_steps": 3427,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 0,
+      "interface": "physical",
+      "near": 8,
+      "far": 9,
+      "n_per_tier": 24,
+      "new_env_steps": 3425,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 0,
+      "interface": "native",
+      "near": 19,
+      "far": 13,
+      "n_per_tier": 24,
+      "new_env_steps": 2582,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 0,
+      "interface": "physical",
+      "near": 16,
+      "far": 17,
+      "n_per_tier": 24,
+      "new_env_steps": 2441,
+      "initial_successes": 1
+    },
+    {
+      "arm": "ABS",
+      "seed": 1,
+      "interface": "native",
+      "near": 17,
+      "far": 6,
+      "n_per_tier": 24,
+      "new_env_steps": 2965,
+      "initial_successes": 1
+    },
+    {
+      "arm": "ABS",
+      "seed": 1,
+      "interface": "physical",
+      "near": 14,
+      "far": 4,
+      "n_per_tier": 24,
+      "new_env_steps": 3474,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 1,
+      "interface": "native",
+      "near": 2,
+      "far": 0,
+      "n_per_tier": 24,
+      "new_env_steps": 4625,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 1,
+      "interface": "physical",
+      "near": 3,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4456,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 1,
+      "interface": "native",
+      "near": 17,
+      "far": 17,
+      "n_per_tier": 24,
+      "new_env_steps": 2370,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 1,
+      "interface": "physical",
+      "near": 17,
+      "far": 16,
+      "n_per_tier": 24,
+      "new_env_steps": 2351,
+      "initial_successes": 1
+    },
+    {
+      "arm": "ABS",
+      "seed": 2,
+      "interface": "native",
+      "near": 19,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 2923,
+      "initial_successes": 1
+    },
+    {
+      "arm": "ABS",
+      "seed": 2,
+      "interface": "physical",
+      "near": 18,
+      "far": 6,
+      "n_per_tier": 24,
+      "new_env_steps": 3112,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 2,
+      "interface": "native",
+      "near": 6,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4238,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 2,
+      "interface": "physical",
+      "near": 10,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3552,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 2,
+      "interface": "native",
+      "near": 21,
+      "far": 18,
+      "n_per_tier": 24,
+      "new_env_steps": 2123,
+      "initial_successes": 1
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 2,
+      "interface": "physical",
+      "near": 20,
+      "far": 20,
+      "n_per_tier": 24,
+      "new_env_steps": 1935,
+      "initial_successes": 1
+    }
+  ],
+  "effects": [
+    {
+      "interface": "native",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.3541666666666667,
+      "source_deltas": [
+        -0.2708333333333333,
+        -0.4375,
+        -0.3541666666666667
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.4861111111111111,
+        -0.2152777777777778
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": -0.5416666666666666,
+      "source_deltas": [
+        -0.4583333333333333,
+        -0.625,
+        -0.5416666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.7083333333333334,
+        -0.375
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": -0.16666666666666666,
+      "source_deltas": [
+        -0.08333333333333333,
+        -0.25,
+        -0.16666666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.3333333333333333,
+        0.0
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": 0.19444444444444445,
+      "source_deltas": [
+        0.041666666666666664,
+        0.22916666666666666,
+        0.3125
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.020833333333333332,
+        0.3680555555555556
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        -0.08333333333333333,
+        0.0,
+        0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.18055555555555555,
+        0.19444444444444445
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": 0.3888888888888889,
+      "source_deltas": [
+        0.16666666666666666,
+        0.4583333333333333,
+        0.5416666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.125,
+        0.625
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "all",
+      "mean_delta": 0.5486111111111112,
+      "source_deltas": [
+        0.3125,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.3125,
+        0.75
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "near",
+      "mean_delta": 0.5416666666666666,
+      "source_deltas": [
+        0.375,
+        0.625,
+        0.625
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.3055555555555556,
+        0.75
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "far",
+      "mean_delta": 0.5555555555555556,
+      "source_deltas": [
+        0.25,
+        0.7083333333333334,
+        0.7083333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.25,
+        0.8333333333333334
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.20833333333333334,
+      "source_deltas": [
+        -0.14583333333333334,
+        -0.2916666666666667,
+        -0.1875
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.3541666666666667,
+        -0.0625
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": -0.3888888888888889,
+      "source_deltas": [
+        -0.375,
+        -0.4583333333333333,
+        -0.3333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.5972222222222222,
+        -0.16666666666666666
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": -0.027777777777777776,
+      "source_deltas": [
+        0.08333333333333333,
+        -0.125,
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.1527777777777778
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": 0.2777777777777778,
+      "source_deltas": [
+        0.1875,
+        0.3125,
+        0.3333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.125,
+        0.4236111111111111
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": 0.05555555555555555,
+      "source_deltas": [
+        -0.041666666666666664,
+        0.125,
+        0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.1527777777777778,
+        0.2777777777777778
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": 0.5,
+      "source_deltas": [
+        0.4166666666666667,
+        0.5,
+        0.5833333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "all",
+      "mean_delta": 0.4861111111111111,
+      "source_deltas": [
+        0.3333333333333333,
+        0.6041666666666666,
+        0.5208333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.3055555555555556,
+        0.6527777777777778
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "near",
+      "mean_delta": 0.4444444444444444,
+      "source_deltas": [
+        0.3333333333333333,
+        0.5833333333333334,
+        0.4166666666666667
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.25,
+        0.6527777777777778
+      ],
+      "train_sources": 3
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "far",
+      "mean_delta": 0.5277777777777778,
+      "source_deltas": [
+        0.3333333333333333,
+        0.625,
+        0.625
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.2916666666666667,
+        0.7364583333333283
+      ],
+      "train_sources": 3
+    }
+  ],
+  "groups": [
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6de92d12a9835a262a077503b16afff65e8d010394dd6f4fd560af6d0d364cb5",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 21,
+          "new_env_steps": 801
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 9,
+          "new_env_steps": 1759
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6de92d12a9835a262a077503b16afff65e8d010394dd6f4fd560af6d0d364cb5",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 960
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 2002
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-JOINT-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "172ca6a756bf00cdc557b752678cd27a33b85908797140069078869390be0b36",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6d962c2cef2c69f2050c6706e05a01a83b5a37be5f8c8dddb1f494b325eafd9b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-JOINT-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 10,
+          "new_env_steps": 1582
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 1845
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-JOINT-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "172ca6a756bf00cdc557b752678cd27a33b85908797140069078869390be0b36",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6d962c2cef2c69f2050c6706e05a01a83b5a37be5f8c8dddb1f494b325eafd9b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-JOINT-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 8,
+          "new_env_steps": 1653
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 9,
+          "new_env_steps": 1772
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-SEPARATE-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "0a15fca2215b0ff5ca150ccac1bec1536fcc7f3ef7b1b25b79588ca9dc3392e7",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "af19798560b54cdc76e800a6b604a8227e4b9693142afc736920292ebc5605d6",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-SEPARATE-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 958
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 13,
+          "new_env_steps": 1624
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-SEPARATE-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "0a15fca2215b0ff5ca150ccac1bec1536fcc7f3ef7b1b25b79588ca9dc3392e7",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "af19798560b54cdc76e800a6b604a8227e4b9693142afc736920292ebc5605d6",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-SEPARATE-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 16,
+          "new_env_steps": 1153
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 1288
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s1-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s1/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "a40d1b80b8ebf22f6e109f5258880c76c94d1989e1235a114d0191249e01b17b",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "a373aab4791a87b0872c21be03f20696d6c07a9dd72c591d30e1a9fa193210be",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s1-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 999
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 1966
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s1-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s1/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "a40d1b80b8ebf22f6e109f5258880c76c94d1989e1235a114d0191249e01b17b",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "a373aab4791a87b0872c21be03f20696d6c07a9dd72c591d30e1a9fa193210be",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s1-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 14,
+          "new_env_steps": 1205
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 4,
+          "new_env_steps": 2269
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-JOINT-s1-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s1/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "37d3441b302f671167b7db272d292f5954ace4abbb7bd61e8d03f3f0eb415126",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "04b2245a4a511e16ca5e6615e818f29bfd1015bd85ee0bc667ac5d51e261c017",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-JOINT-s1-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 2,
+          "new_env_steps": 2225
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 0,
+          "new_env_steps": 2400
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-JOINT-s1-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s1/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "37d3441b302f671167b7db272d292f5954ace4abbb7bd61e8d03f3f0eb415126",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "04b2245a4a511e16ca5e6615e818f29bfd1015bd85ee0bc667ac5d51e261c017",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-JOINT-s1-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 3,
+          "new_env_steps": 2131
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 1,
+          "new_env_steps": 2325
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-SEPARATE-s1-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s1/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "dbaadf51d4b372c07168f03687fb479a9b2101e69eaba1af49dce93191be5f10",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "fb6a398670fbeaaa5aee96aaca025b3765395a27288a15f2342df82e72843bc9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-SEPARATE-s1-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 1094
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 1276
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-SEPARATE-s1-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s1/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "dbaadf51d4b372c07168f03687fb479a9b2101e69eaba1af49dce93191be5f10",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "fb6a398670fbeaaa5aee96aaca025b3765395a27288a15f2342df82e72843bc9",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-SEPARATE-s1-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 1039
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 16,
+          "new_env_steps": 1312
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s2-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s2/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "63997b8274b4d15e203339d7ad07e4629aa99d490c963ea76f067bef902259ba",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "34e83379a567c734eb06bf73cf1ea616632f758086c3654fafccabac95fa076e",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s2-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 864
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2059
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s2-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s2/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "63997b8274b4d15e203339d7ad07e4629aa99d490c963ea76f067bef902259ba",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "34e83379a567c734eb06bf73cf1ea616632f758086c3654fafccabac95fa076e",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s2-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 18,
+          "new_env_steps": 927
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 2185
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-JOINT-s2-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s2/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "969e9e0e191b72e2bec27e8db273a781ed08cae356a48905394f1725e22a8b97",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "a9fc265c098e5bb014070e02c12e46218824d44e4c9f98abc6f1f9754088a08e",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-JOINT-s2-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 1881
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 1,
+          "new_env_steps": 2357
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-JOINT-s2-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s2/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "969e9e0e191b72e2bec27e8db273a781ed08cae356a48905394f1725e22a8b97",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "a9fc265c098e5bb014070e02c12e46218824d44e4c9f98abc6f1f9754088a08e",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-JOINT-s2-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 10,
+          "new_env_steps": 1503
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2049
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-SEPARATE-s2-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s2/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "34438acfaf2b01b2e1fb7bebcb2264ba4d0c7baa60c6460bbc2d5a13a9508276",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "b94e0c6741ea55cbb84d860543661b059f9244d2e2ef909eb9bf3ced0c15032d",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-SEPARATE-s2-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 21,
+          "new_env_steps": 877
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 18,
+          "new_env_steps": 1246
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-value-repeat-control-VGIQL-SEPARATE-s2-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s2/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "34438acfaf2b01b2e1fb7bebcb2264ba4d0c7baa60c6460bbc2d5a13a9508276",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "b94e0c6741ea55cbb84d860543661b059f9244d2e2ef909eb9bf3ced0c15032d",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-value-repeat-control-VGIQL-SEPARATE-s2-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 20,
+          "new_env_steps": 888
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 20,
+          "new_env_steps": 1047
+        }
+      ]
+    }
+  ],
+  "audit": {
+    "all_48_retained": true,
+    "all_trace_hashes_initial_states_native_success_recomputed": true,
+    "train_eval_checkpoint_and_loaders_match": true,
+    "same_hardware_and_ledger": true
+  },
+  "scope": "Development only, same48 tasks shared across independent value3 train sources or geometry1 source. Sep already known in Value-GuidedJEPA. Geometry prior objectives and5650/2825 budgets differ, dynamic init common reset; within-geometry data differences conditional, extra branch interaction costs differ. Interfaces also differ in initialization scale and bounds. Not original paper replication or novel method confirmation.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-three-seed-control-audit/result.json"
+}

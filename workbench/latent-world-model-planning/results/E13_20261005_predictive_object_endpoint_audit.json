@@ -1,0 +1,122 @@
+{
+  "completed": true,
+  "training_runs": 4,
+  "records": [
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "checkpoint_sha256": "0628dd83712ec988f19d9a667fc233d1b71283b716cab24079eeac7150695655",
+      "head_initial_sha256": "dced73d1e35f766bce5d0b1b84c7a05d12b2219ef97438440cc56ff9216dc6a5",
+      "frozen_phi_bit_exact": true,
+      "optimizer_states": 139,
+      "updates": 2825,
+      "first_ids_final_rng_exact": true,
+      "summary": {
+        "checkpoint_sha256": "0628dd83712ec988f19d9a667fc233d1b71283b716cab24079eeac7150695655",
+        "total_clips": 361600,
+        "total_future_targets": 1808000,
+        "optimizer_states": 139,
+        "frozen_phi_sha256": "388f8bdbb8e82a18df87f055bedddec853e658719fb7bd07eac02de0fa326ace",
+        "final_sampler": {
+          "bit_generator": "PCG64",
+          "state": {
+            "state": 314129246766490146917301148990820089915,
+            "inc": 276227176117894064685796982248165530723
+          },
+          "has_uint32": 0,
+          "uinteger": 3864856562
+        },
+        "train_seconds": 74.7249230928719,
+        "peak_vram_gib": 0.31321144104003906
+      }
+    },
+    {
+      "geometry": "PRED",
+      "arm": "LOCAL",
+      "checkpoint_sha256": "66de8534d8e3a09013b24b749f3df8c7c4d36b56dbab875dfa93cf2d49bed630",
+      "head_initial_sha256": "dced73d1e35f766bce5d0b1b84c7a05d12b2219ef97438440cc56ff9216dc6a5",
+      "frozen_phi_bit_exact": true,
+      "optimizer_states": 139,
+      "updates": 2825,
+      "first_ids_final_rng_exact": true,
+      "summary": {
+        "checkpoint_sha256": "66de8534d8e3a09013b24b749f3df8c7c4d36b56dbab875dfa93cf2d49bed630",
+        "total_clips": 361600,
+        "total_future_targets": 1808000,
+        "optimizer_states": 139,
+        "frozen_phi_sha256": "388f8bdbb8e82a18df87f055bedddec853e658719fb7bd07eac02de0fa326ace",
+        "final_sampler": {
+          "bit_generator": "PCG64",
+          "state": {
+            "state": 314129246766490146917301148990820089915,
+            "inc": 276227176117894064685796982248165530723
+          },
+          "has_uint32": 0,
+          "uinteger": 3864856562
+        },
+        "train_seconds": 74.0750138387084,
+        "peak_vram_gib": 0.3262653350830078
+      }
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "checkpoint_sha256": "84106bef2a0fe75b8ab1f04bc5a776e561949d88eec0fa4946eca47d3d0ab1dc",
+      "head_initial_sha256": "dced73d1e35f766bce5d0b1b84c7a05d12b2219ef97438440cc56ff9216dc6a5",
+      "frozen_phi_bit_exact": true,
+      "optimizer_states": 139,
+      "updates": 2825,
+      "first_ids_final_rng_exact": true,
+      "summary": {
+        "checkpoint_sha256": "84106bef2a0fe75b8ab1f04bc5a776e561949d88eec0fa4946eca47d3d0ab1dc",
+        "total_clips": 361600,
+        "total_future_targets": 1808000,
+        "optimizer_states": 139,
+        "frozen_phi_sha256": "7c61d772456fe001609c74e2583d99ae5baec3c1c6b98bba621e5daf9c1bec43",
+        "final_sampler": {
+          "bit_generator": "PCG64",
+          "state": {
+            "state": 314129246766490146917301148990820089915,
+            "inc": 276227176117894064685796982248165530723
+          },
+          "has_uint32": 0,
+          "uinteger": 3864856562
+        },
+        "train_seconds": 74.87518962100148,
+        "peak_vram_gib": 0.31321144104003906
+      }
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "LOCAL",
+      "checkpoint_sha256": "cc92624c1eda220e2e62d05f9c03937eeda73897209748175d13f6b484d7790f",
+      "head_initial_sha256": "dced73d1e35f766bce5d0b1b84c7a05d12b2219ef97438440cc56ff9216dc6a5",
+      "frozen_phi_bit_exact": true,
+      "optimizer_states": 139,
+      "updates": 2825,
+      "first_ids_final_rng_exact": true,
+      "summary": {
+        "checkpoint_sha256": "cc92624c1eda220e2e62d05f9c03937eeda73897209748175d13f6b484d7790f",
+        "total_clips": 361600,
+        "total_future_targets": 1808000,
+        "optimizer_states": 139,
+        "frozen_phi_sha256": "7c61d772456fe001609c74e2583d99ae5baec3c1c6b98bba621e5daf9c1bec43",
+        "final_sampler": {
+          "bit_generator": "PCG64",
+          "state": {
+            "state": 314129246766490146917301148990820089915,
+            "inc": 276227176117894064685796982248165530723
+          },
+          "has_uint32": 0,
+          "uinteger": 3864856562
+        },
+        "train_seconds": 73.9254657626152,
+        "peak_vram_gib": 0.3262653350830078
+      }
+    }
+  ],
+  "all_four_capacity_and_initial_head_exact": true,
+  "all_four_first_batches_and_final_samplers_equal": true,
+  "scope": "Independent source/frozenphi/feature arrays, initial head, strict full checkpoint, optimizer and sampling audit; priors differ, one source, no control or scientific novelty inference.",
+  "script_sha256": "6c8d56fbc88fd2b76911bce70d2b448e1ccf6d29f7d91674cec70a6b3239856c"
+}

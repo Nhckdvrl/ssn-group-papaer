@@ -310,3 +310,23 @@ A7只问同bank两个模型各自argmin的实际候选质量，不训练、不�
 
 
 2026-10-04上传核对：A7已complete64anchors/192branches/5545steps，198个raw/durable文件逐SHA相同、各method/stratum均16、所有trace SHA/selection IDs/初始pixel/summary success计数复算通过。近goal Fast/LeWM导航13/13、操作15/11（配对CI[-.5,-.0625]）；远goal7/7、2/1，仅25步候选后果，不能当长任务闭环。FACTUAL四组16/16。完整独立trajectory与CI审计仍pending；[portable结果](../results/E13_20261003_candidate_quality.json)。参考模型没有被证明具有更好真实候选质量，不继续把elite recall当control gain；科学主张0。
+
+## A8：固定目标几何中的预测对象对照（2026-10-05，运行前）
+
+对应R2/R3、P04/P05与I08，不改变已审paper narrative。三seed分阶段value远goal收益重复，但value geometry×CF MIX未成立；Push单模块冻结也没有保住发布控制。不继续self-consistency promotion阈值或把freeze+mix换名。最便宜下一比较直接复用Fast-LeWM官方action-prefix组件，在固定PRED/VALUE前端中比较DIRECT多horizon与LOCAL一步训练/递归使用，先区分预测对象与既有目标几何是否互补；direct prediction本身不是novelty。
+
+四cell PRED/VALUE×DIRECT/LOCAL，两个geometry sources与E20Stage4一致（ABS5650、SEP value phase2825，prior目标/budget不同，不能作puregeometryobjective因果）。encoder/projector所有params与BN frozen；Fast官方Embedder(state-conditioned causal transformer3layers6heads192)与ARPredictor6layers/2048hidden、pred_proj MLP统一一个保存CPU初始化seed113000，完整head同capacity/初始SHA，不加载发布Fast已训权重。两对象共同使用current单frame latent（原35stepclip第10步），五真实未来15/20/25/30/35与physical actions10…34，同样100episodes/5795合法starts；DIRECT从同current与前缀一次预测五future，LOCAL对五相邻真实latent/action作一步teacher target，部署递归五次。不给DIRECT future真实states，不把LOCAL训练teacher信息当部署feature；两者部署均T1，不与旧LeWMH3对比时伪称historymatched。
+
+固定phi先对9295训练frame FP32 encode形成node-local featurecache，source/image rows/hash/geometryprior/frozenBN/no-grad保存；cache仅训练事实obs，no physical state/no evaluation goals/outcomes。缓存FP32执行与旧pixel-bf16训练、DIRECTprefix位置和LOCALsingleprefix等差异列账，不冒称Fast完整数值复现；官方已具有jointdense训练，本pilot为固定geometry port。每cell B128/2825 freshAdamW5e−5WD.001/clip1/bf16，loss五真实targets平均MSE，无SIGReg（phi固定），共361600clips与1808000futuretargets；两对象forward compute不同，时间/VRAM另列，不当equalFLOPs。没有新增sim数据或CF混入。
+
+阳控：严格geometry源拷贝/immutability、共同head保存初始exact、CPU/CUDA实际B128五future/action索引不跨episode；DIRECT扰动后缀action不能改变前缀prediction（eval），LOCAL teacher prediction独立手算，所有trainable head finite gradients/freshopt1step、frozenphi全tensor/BN不变；actual25step cached terminal cost与完整encode+五prefix/五递归reference一致、批次/单candidate评分容差明确；任何失败halt并留原artifact。上述预控完成/hash冻结才铺四训练，不以emptyGPU代替校对。
+
+主读数：固定全部原新48两接口sameH25EX25/300-30-30/最多100step，全state/动作/goal初始pixel guards与success16px independentlytrace复算、paired sameanchor效应，near/far分层；strong oldABS/valueSEP/fullRC发布参照保留，发布data/训练不同明确。离线held12新branch排序/真实endpoint只辅助，不以model elite/MSE代控制。noise：一exploratory训练source、共享48开发tasks，不筛seed或目标；有真实方法增益才扩三source/第二任务及goalpolicy近邻。
+
+决策：DIRECT/LOCAL只在一个geometry内有明显收益→扩完整seed与二task，进一步辨coverage/表示用途/预测对象；两者均改善→保留更强成熟预测baseline再找增量；都不胜充分支点→转goal-policy/层次/复用与变化后的模块更新，不调prefixλ/少数queries救故事。母问题开放，不选择新论文主旨，不升science claim。节点localcache、四独立单GPU任务，HF checkpoint/raw durable unique20261005-E13-object-{PRED/VALUE}-{DIRECT/LOCAL}-A100-s0；仅实际empty slots，featurecache只各geometry生成一次再复用。
+
+A8实际接续2026-10-05：四cell各2825已全部DONE，源geometry/frozen所有参数与BN/officialFast共同head容量与保存initial exact/optstates×2825/finite moments/firstbatch与全部2825步sampler精确再生、361600clips/1808000future targets经独立endpointaudit PASS，见E13_20261005_predictive_object_endpoint_audit.json。actual CPU/CUDA B128四precontrols、DIRECT suffix扰动不改prefix、LOCAL目标手算/freshstep、fullactualpixel Cost vs五前缀/递归手算bit-exact0、batch/subset容差全PASS，见E13_20261005_predictive_object_preflight.json。features9295事实帧FP32 source/hash/node-local cache完整保留，不含goal/outcome。
+
+首CPU预控因Model.training名称与nn.Module.training布尔字段冲突在loss/optimizer之前停止，两原队列与used source/failurelog完整保留20261005-E13-object-{geometry}-cpu-preflight，无训练/效用输出。仅rename训练模式方法为training_mode，增加phi-cache hash强制相等；source/prior/actions/features未改，原features producer sourcehash与最终trainer hash分开记。新CPU/CUDA retry1才是正式启动依据，预控后源码冻结；不是数值失败重抽数据。
+
+四训练固定终点之后完整same48/两接口384实际RTX闭环已启动：PRED physical0 PID3590795、VALUE physical1 PID3590796，logs/tmp/latent-E13-object-{PRED/VALUE}-RTX-control.log；actual source checkpoint/strict state/原warm state-pixels守卫已通过并产生真实轨迹。LOCAL与DIRECT各自同T1，旧LeWM H3与RC发布训练差别单列；两geometry source prior budgets不同，不以跨geometry原数称pureobjective causal。整批未齐，不筛prefix或partial结果，不称novelidea，科学主张0。

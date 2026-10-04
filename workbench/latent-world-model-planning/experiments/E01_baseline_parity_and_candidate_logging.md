@@ -54,3 +54,21 @@ GPU启动前再校对：CPU实际完整loss/gradient控制通过；A100初次GPU
 ### 2026-10-05同data完整训练与闭环整批读回
 
 [全部22groups/1056episodes](../results/E01_E14_20261005_matched_control_results.json)独立trace/source SHA/native成功/48分母审计PASS。ABS physical24/18/24、native30/23/24；RES8/17/16、8/20/20；FULL-AD23/19/23、24/20/28，各source48。FULL对ABS总体physical−.00694 CI[−.125,.1043]、native−.03472[−.1875,.1111]；对较弱RES的+16.7pp不能替代对ABS的比较。共同100data/5650constantLR/完整官方learned192D actionheads与pure loss的本地matched开发，不是原paper训练schedule数值复现。全部seed和原失败守卫保留，science claims0；value结果/三个seed重复详E14。
+
+### 完整RC-aux发布邻居：实际GPU代价与新48闭环（2026-10-05，运行前）
+
+这是D1必要基线支点，支持I09/P05/R3，不是新idea。使用已严格CPU加载的官方312keys/完整ReachabilityHead object（HFbiubiu116/RC-aux pinned1cb0e604，SHA56979b8791dc76bab066c8c7a5aaa1c2947be8911b7a50202b69be46ab866099；官方code cbdf3786），不以LeWM terminal-only wrapper丢掉head。训练split/完整训练schedule未匹配，不称公平loss因果或原论文numeric复现。normalizer按官方eval.py全dataset finite-action StandardScaler，用本机节点cache一次读取并记录dataset引用hash/源码/实际statistics，不擅用ownBASE100norm。
+
+锁定四成本条件：H1（官方eval history_size=1）和H3（当前统一实际三pastframes的port）；各HEAD-ON=.85（同官方object与pinnedvendorREADME eval调用）/HEAD-OFF=0，同全部权重。此前HF附带config曾记录.35，与当前README/object不同，本批不靠held效用挑weight、不搜索λ；明确实施.85版本且不称消除发布配置差异。H3原criterion按pred[1:]计分包含两pastframes，horizon7..1/headclamp至5；保留官方原生计算，不能偷偷对齐paper公式后称publishedbaseline。
+
+CPU actualpixels37同候选与CUDA两H完整model.get_cost vscached整段rollout+原criterion parity；HEAD-OFF bit-exact terminalL2，HEAD-ON逐step sigmoid/head真实预算与multiplier手算、全部weights/buffers不变是阳控。37个physicallegal候选fixed RNG，不用hidden outcomes。两预控都PASS才GPU2顺序四成本×两接口×fresh48=384episodes；原b.restore精确warm/初始position/factualguard，两CEM300/30/30/H25EX25/最多100newsteps均freeze，seed105400与现有strongrefs一致。H1只给最后pastimage且无pastactions，H3给三frames/两pastmacro；goalimage正当任务输入、未来factualactions不进planner。
+
+主读数分层success/steps、同checkpointHEAD-ON/OFF paired48CI、H1/H3全部原数，primary原nativeH1+.85公开协议与H3port保留，不以胜的接口替代原协议。只一个publishedsource，共享48tasks不能当independenttrainseed。对已充分ABS/value/AD-reference只作能力参照，训练数据/预算不同。失败原raw完整保留，no threshold/λ rescue；源码/checkpoint/config/轨迹SHA与envdone逐真实state独立成功一致。决策：若head同encoder有效则作为后续完整strongneighbor，若无效也不能否定joint RC training/value母问题；后续增量需同data完整训练与newgoal/task证据。单freeRTXGPU2、不占新ACTIVE状态，不改原环境，模型HF。
+
+### 完整RC-aux原criterion控制结果（2026-10-05）
+
+[actualCPU/CUDA预控](../results/E01_20261005_rcaux_full_preflight.json)四条件native criterion vs cached rollout cost bit-exact0、reachability fullhead/logit/sigmoid/预算/clamp独立手算exact、weight0退化L2 exact。严格原发布object312keys含9head、SHA56979b8791dc76bab066c8c7a5aaa1c2947be8911b7a50202b69be46ab866099；官方StandardScaler完整finite actions归一化，不用own100norm。
+
+[全部384实际闭环](../results/E01_20261005_rcaux_full_control_results.json)八groups、48全部anchor、真实初始state/trace hash/所有native成功事件/checkpoint/完整head/重新计算scaler/source审计PASS，GPU2原PID3579990自然退出。H1 head ON/OFF native38/33、physical34/31；H3 ON/OFF native37/34、physical35/32（各48）。H1 native ON−OFF+10.42pp paired-anchorCI[0,20.83]、H3+6.25[−2.08,14.58]；未确认跨训练seed新机制。所有近/远及真实envsteps保留，不按partial选择history或weight。
+
+规范以pinned object/vendorREADME weight.85为准，HF附带另旧config.35差异显式记录，未调权重。H1原history与H3port使用同原criterion：后者也评分两pastframes/预算7…1并clamp5；未擅改成另公式。原官方预算50、本任务100，发布训练数据/分割未知且与own100不匹配，所以是完整功能/开发能力比较、不是原paper数字复现或同data因果。依赖预控先因缺sklearn/scipy失败，无efficacy rows；只补既有环境缺包 --no-deps（sklearn1.7.2/scipy1.15.3/joblib1.5.2/threadpoolctl3.6.0），Torch/NumPy不变，失败原log保存20261005-E01-rcaux-dependency-preflight-failure。

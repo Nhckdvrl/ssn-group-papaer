@@ -1,0 +1,846 @@
+{
+  "completed": true,
+  "mode": "geometry",
+  "controller_groups": 8,
+  "episodes": 384,
+  "counts": [
+    {
+      "geometry": "PRED",
+      "arm": "FACT",
+      "seed": 0,
+      "interface": "native",
+      "near": 22,
+      "far": 7,
+      "n_per_tier": 24,
+      "new_env_steps": 2476,
+      "initial_successes": 1
+    },
+    {
+      "geometry": "PRED",
+      "arm": "FACT",
+      "seed": 0,
+      "interface": "physical",
+      "near": 20,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 2829,
+      "initial_successes": 1
+    },
+    {
+      "geometry": "PRED",
+      "arm": "MIX",
+      "seed": 0,
+      "interface": "native",
+      "near": 20,
+      "far": 6,
+      "n_per_tier": 24,
+      "new_env_steps": 2651,
+      "initial_successes": 1
+    },
+    {
+      "geometry": "PRED",
+      "arm": "MIX",
+      "seed": 0,
+      "interface": "physical",
+      "near": 19,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 2937,
+      "initial_successes": 1
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "FACT",
+      "seed": 0,
+      "interface": "native",
+      "near": 20,
+      "far": 16,
+      "n_per_tier": 24,
+      "new_env_steps": 2058,
+      "initial_successes": 1
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "FACT",
+      "seed": 0,
+      "interface": "physical",
+      "near": 19,
+      "far": 17,
+      "n_per_tier": 24,
+      "new_env_steps": 1878,
+      "initial_successes": 1
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "MIX",
+      "seed": 0,
+      "interface": "native",
+      "near": 19,
+      "far": 17,
+      "n_per_tier": 24,
+      "new_env_steps": 2197,
+      "initial_successes": 1
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "MIX",
+      "seed": 0,
+      "interface": "physical",
+      "near": 18,
+      "far": 15,
+      "n_per_tier": 24,
+      "new_env_steps": 2290,
+      "initial_successes": 1
+    }
+  ],
+  "effects": [
+    {
+      "interface": "native",
+      "arm": "PRED-MIX",
+      "reference": "PRED-FACT",
+      "tier": "all",
+      "mean_delta": -0.0625,
+      "source_deltas": [
+        -0.0625
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.14583333333333334,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "PRED-MIX",
+      "reference": "PRED-FACT",
+      "tier": "near",
+      "mean_delta": -0.08333333333333333,
+      "source_deltas": [
+        -0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "PRED-MIX",
+      "reference": "PRED-FACT",
+      "tier": "far",
+      "mean_delta": -0.041666666666666664,
+      "source_deltas": [
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-MIX",
+      "reference": "VALUE-FACT",
+      "tier": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.16666666666666666,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-MIX",
+      "reference": "VALUE-FACT",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "source_deltas": [
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.25,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-MIX",
+      "reference": "VALUE-FACT",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "source_deltas": [
+        0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.2916666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-FACT",
+      "reference": "PRED-FACT",
+      "tier": "all",
+      "mean_delta": 0.14583333333333334,
+      "source_deltas": [
+        0.14583333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.020833333333333332,
+        0.3125
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-FACT",
+      "reference": "PRED-FACT",
+      "tier": "near",
+      "mean_delta": -0.08333333333333333,
+      "source_deltas": [
+        -0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.2916666666666667,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-FACT",
+      "reference": "PRED-FACT",
+      "tier": "far",
+      "mean_delta": 0.375,
+      "source_deltas": [
+        0.375
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.125,
+        0.625
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-MIX",
+      "reference": "PRED-MIX",
+      "tier": "all",
+      "mean_delta": 0.20833333333333334,
+      "source_deltas": [
+        0.20833333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.041666666666666664,
+        0.3541666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-MIX",
+      "reference": "PRED-MIX",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "source_deltas": [
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.25,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VALUE-MIX",
+      "reference": "PRED-MIX",
+      "tier": "far",
+      "mean_delta": 0.4583333333333333,
+      "source_deltas": [
+        0.4583333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.25,
+        0.6666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "contrast": "(VALUE MIX-FACT)-(PRED MIX-FACT)",
+      "tier": "all",
+      "mean_delta": 0.0625,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.25
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "contrast": "(VALUE MIX-FACT)-(PRED MIX-FACT)",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.2916666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "native",
+      "contrast": "(VALUE MIX-FACT)-(PRED MIX-FACT)",
+      "tier": "far",
+      "mean_delta": 0.08333333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.375
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "PRED-MIX",
+      "reference": "PRED-FACT",
+      "tier": "all",
+      "mean_delta": -0.020833333333333332,
+      "source_deltas": [
+        -0.020833333333333332
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.10416666666666667,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "PRED-MIX",
+      "reference": "PRED-FACT",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "source_deltas": [
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.16666666666666666,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "PRED-MIX",
+      "reference": "PRED-FACT",
+      "tier": "far",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-MIX",
+      "reference": "VALUE-FACT",
+      "tier": "all",
+      "mean_delta": -0.0625,
+      "source_deltas": [
+        -0.0625
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.22916666666666666,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-MIX",
+      "reference": "VALUE-FACT",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "source_deltas": [
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.25,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-MIX",
+      "reference": "VALUE-FACT",
+      "tier": "far",
+      "mean_delta": -0.08333333333333333,
+      "source_deltas": [
+        -0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.3333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-FACT",
+      "reference": "PRED-FACT",
+      "tier": "all",
+      "mean_delta": 0.22916666666666666,
+      "source_deltas": [
+        0.22916666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.041666666666666664,
+        0.3958333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-FACT",
+      "reference": "PRED-FACT",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "source_deltas": [
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.2916666666666667,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-FACT",
+      "reference": "PRED-FACT",
+      "tier": "far",
+      "mean_delta": 0.5,
+      "source_deltas": [
+        0.5
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.25,
+        0.75
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-MIX",
+      "reference": "PRED-MIX",
+      "tier": "all",
+      "mean_delta": 0.1875,
+      "source_deltas": [
+        0.1875
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.020833333333333332,
+        0.3541666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-MIX",
+      "reference": "PRED-MIX",
+      "tier": "near",
+      "mean_delta": -0.041666666666666664,
+      "source_deltas": [
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.2916666666666667,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VALUE-MIX",
+      "reference": "PRED-MIX",
+      "tier": "far",
+      "mean_delta": 0.4166666666666667,
+      "source_deltas": [
+        0.4166666666666667
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.16666666666666666,
+        0.6666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "contrast": "(VALUE MIX-FACT)-(PRED MIX-FACT)",
+      "tier": "all",
+      "mean_delta": -0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.22916666666666666,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "contrast": "(VALUE MIX-FACT)-(PRED MIX-FACT)",
+      "tier": "near",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        -0.25,
+        0.25
+      ],
+      "train_sources": 1
+    },
+    {
+      "interface": "physical",
+      "contrast": "(VALUE MIX-FACT)-(PRED MIX-FACT)",
+      "tier": "far",
+      "mean_delta": -0.08333333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        0.25
+      ],
+      "train_sources": 1
+    }
+  ],
+  "groups": [
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-PRED-FACT-native-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-PRED-FACT-A100-s0/u2825.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "003f93a2f96732bca2c8a2317c4b0b6fea2b4360d7734131eff98fa063faf6e3",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "444466c8d952808c73cc1cfbbc8a8c75f1fbe120c7ebaa581d4cb8fee27c038b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-PRED-FACT-native-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 22,
+          "new_env_steps": 574
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 1902
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-PRED-FACT-physical-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-PRED-FACT-A100-s0/u2825.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "003f93a2f96732bca2c8a2317c4b0b6fea2b4360d7734131eff98fa063faf6e3",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "444466c8d952808c73cc1cfbbc8a8c75f1fbe120c7ebaa581d4cb8fee27c038b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-PRED-FACT-physical-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 20,
+          "new_env_steps": 762
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2067
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-PRED-MIX-native-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-PRED-MIX-A100-s0/u2825.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "90da33ba3cc61962a8f55d921476300f7344419ef5f9057638046b459e7fe630",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "3f0ec0d7f4371fc0d185efafe019be3ec14c5569f40a7e399443f2de573944a1",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-PRED-MIX-native-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 20,
+          "new_env_steps": 714
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 1937
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-PRED-MIX-physical-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-PRED-MIX-A100-s0/u2825.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "90da33ba3cc61962a8f55d921476300f7344419ef5f9057638046b459e7fe630",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "3f0ec0d7f4371fc0d185efafe019be3ec14c5569f40a7e399443f2de573944a1",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-PRED-MIX-physical-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 826
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2111
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-VALUE-FACT-native-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-VALUE-FACT-A100-s0/u2825.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "38d6a1c8f42d6247963239ba01783f5d661baabae7baae26a06b4f0e26d88cc5",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "b321cdddf5d533c31a5937425cc6c143cb843207779687cdbbb92800e7644605",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-VALUE-FACT-native-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 20,
+          "new_env_steps": 734
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 16,
+          "new_env_steps": 1324
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-VALUE-FACT-physical-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-VALUE-FACT-A100-s0/u2825.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "38d6a1c8f42d6247963239ba01783f5d661baabae7baae26a06b4f0e26d88cc5",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "b321cdddf5d533c31a5937425cc6c143cb843207779687cdbbb92800e7644605",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-VALUE-FACT-physical-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 801
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 1077
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-VALUE-MIX-native-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-VALUE-MIX-A100-s0/u2825.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "2c61c526466d76150472f52b3119fb1cf237c3c2f10d15d1358b1ecf6e873c02",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "77b861ac9212a9de9795e3e13c882786eea0db2bad9f4a4babae5e3f3444ad58",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-VALUE-MIX-native-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 898
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 1299
+        }
+      ]
+    },
+    {
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E20-geometry-control-VALUE-MIX-physical-RTX-s0",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E20-geometry-VALUE-MIX-A100-s0/u2825.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "2c61c526466d76150472f52b3119fb1cf237c3c2f10d15d1358b1ecf6e873c02",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "77b861ac9212a9de9795e3e13c882786eea0db2bad9f4a4babae5e3f3444ad58",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 2825,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-VALUE-MIX-physical-RTX-s0",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 18,
+          "new_env_steps": 940
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 15,
+          "new_env_steps": 1350
+        }
+      ]
+    }
+  ],
+  "audit": {
+    "all_48_retained": true,
+    "all_trace_hashes_initial_states_native_success_recomputed": true,
+    "train_eval_checkpoint_and_loaders_match": true,
+    "same_hardware_and_ledger": true
+  },
+  "scope": "Development only, same48 tasks shared across independent value3 train sources or geometry1 source. Sep already known in Value-GuidedJEPA. Geometry prior objectives and5650/2825 budgets differ, dynamic init common reset; within-geometry data differences conditional, extra branch interaction costs differ. Interfaces also differ in initialization scale and bounds. Not original paper replication or novel method confirmation.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E20-geometry-control-audit/result.json"
+}

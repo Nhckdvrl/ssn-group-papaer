@@ -131,3 +131,11 @@ E01/E14十一完整训练审计durable20261005-E01-E14-matched-endpoint-audit、
 E16曝光u56500/100epoch已complete39/48，HF E16_data_exposure_resume_s0/BASE1000_u56500.ckpt SHA97b9080f34f341bd408ec17d37997b645324fb0587a90b75ed36b2520ae10f0a，原raw/durable20261004-E16-data-exposure-resume-RTX-s0。独立endpoint计数/optimizer/RNG audit durable20261005-E16-exposure-endpoint-audit，旧完整30epochcheckpoint/source留存。新fresh48评测raw/durable20261005-E16-BASE1000-fresh-{native/physical}-RTX；helper/source/hash原协议，训练更新10x与singletrainseed范围单列。
 
 2026-10-05新增完整审计：matched1056、经验利用864、Push672、freshBASE1000足曝光96，各portable JSON在results；raw/trace/checkpoint保留既有HF与durable资产根。E14三个source六value固定u5650已全DONE且独立审计，models沿20261004-E14-{VGIQL-JOINT/VGIQL-SEPARATE}-A100-s{0,1,2}；新seed实际启动2026-10-05。Stage4 geometry的四cell需查训练complete；source保留充分ABS encoder与value_phase_u2825，来源预算不同，未声称novel。
+
+### 2026-10-05新增已运行资产
+
+完整RC-aux HF `models--biubiu116--RC-aux/snapshots/1cb0e604f348191afb1393d63769d752d6b0881d/rcaux/checkpoints/pixel_control/tworoom_rcaux/rcaux_tworoom_object.ckpt`，SHA56979b8791dc76bab066c8c7a5aaa1c2947be8911b7a50202b69be46ab866099，312state keys/9head，pinned vendor cbdf3786b149df8145d6c7314f32f460d43c9695；完整官方criterion、原归一化、history port边界见E01卡，不称paper数值复现。
+
+新增value全部三训练source、geometry四cell与Push两模块checkpoint继续HF `latent-wm-trained/`；完整轨迹/rows保留durable `20261005-E14-three-seed-control-audit`、`20261005-E20-geometry-control-audit`、`20261005-E01-rcaux-full-control-audit` 与各原unique run。git结果为summary、config/hash/统计/指向完整raw audit；已有四份matrix JSON本次仅去大rows，不改任何计数/CI。
+
+既有venv只补缺少scikit-learn1.7.2/scipy1.15.3/joblib1.5.2/threadpoolctl3.6.0，--no-deps，Torch2.7.1cu128/NumPy1.26.4/SWM0.0.6不变。依赖失败早于efficacy并完整留档。
