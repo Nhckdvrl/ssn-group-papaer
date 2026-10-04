@@ -71,3 +71,35 @@ Stage1b跨节点故障校对（2026-10-04，CPU排查运行前）：三个A100�
 Stage1b强接口补充（追加运行前）：原native BASE/released与full AD明显比physical reference强，但初始化坐标/尺度与bounds一起变动，不能把任何方法只在较弱physical接口的收益包装成模型贡献。追加全部同15个u2000模型的原native接口48×15，不挑方法或source；同RTX、same fresh48、300/30/30、H25EX25/100step、原归一化与seed不变。physical整批保持原任务，native是预先完整新增factor，两接口分开报告及配对，不用partial选checkpoint。新native_method_queue.py/raw20261004-E20-control-{METHOD}-s{seed}-native-RTX，原Push五armqueue自然完成释放GPU3后才取得槽；不杀训练、不共占其他job。闭环gain须面对同data PLAIN与strong native，所有原阳控/tracehash/权重守卫不变。
 
 Stage2a PushT整批完成：五arm均2000updates/no-failure，全部source/norm/helper/数据/batch RNG一致、u0查询bit-exact、freshoptimizer 297/301states全2000。actual positions+wrapped angles/native成功判据逐query独立复算及两checkpoint/source SHA核验通过。PLAIN/GLOBAL-SG/CENTER/DET/PROB=4/4/4/3/4（各12），paired-anchor开发CI均跨零（DET差−.0833，95%[−.3333,.1667]，另三个对照差0但区间[−.25,.25]）。发布source pretraining未知、仅单transfer seed、held新branch不保证新states，不能叫跨任务确认或native闭环负结论；truebank包含exactgoalcandidate。结果E20_20261004_pusht_candidate_results.json，audit durable20261004-E20-pusht-result-audit。当前不继续调center/inverse系数；完整近邻、原native强接口、新wholeepisode控制、原experience replay与真实value机制是更有信息的设计问题。
+
+### Stage1b physical整批结果（2026-10-05记录，原20261004运行）
+
+15/15方法组及三同协议BASE均complete，864episodes全部trace/checkpoint SHA、实际状态/动作/步数/原native成功阈值、同RTX/ledger经独立复算。每source48：BASE19/15/17、PLAIN20/32/21、GLOBAL-SG15/29/17、CENTER19/27/20、DET18/22/20、PROB16/18/21。相对PLAIN平均success差依次−.0833/−.0486/−.0903/−.1250，paired source+anchor分层bootstrap95%CI分别[−.1875,.0208]/[−.1597,.0556]/[−.2153,.0069]/[−.2986,.0417]。这些辅助目标没有稳定胜过同数据PLAIN；CI宽，不宣布普适有害。新episode、目标与controller相比小bank均改变，不能把离线→闭环差直接归因单一指标。仅physical接口，强native全15仍按既定矩阵执行；不把physical当模型上限。结果[完整JSON](../results/E20_20261004_fresh_physical_control_results.json)，audit durable20261004-E20-fresh-physical-control-audit。科学主张0保持。
+
+## Stage3：新增经验价值与训练利用的必要对照（2026-10-05，运行前）
+
+对应I14/P04，研究有限经验怎样改善广泛规划用途，而非为CENTER救系数。physical矩阵只提示新增branch普通训练比aux更值得理解，尚不能区分训练时间、原经验遗忘和batch覆盖。沿用同三个BASE100源u5650与原归一化、同32训练anchors/排除重复branch1、全部12开发queries及新48闭环。已有GROUPED-PLAIN作为固定参考；新增三个arms全部×source0/1/2：IID-BRANCH（32独立anchor/branch项，允许重复）、REPLAY-ONLY（32原100episode事实clip，无新增分支）、MIX（16 IID新branch+16原事实clip）。同B32/2000 fresh AdamW更新、5e−5/WD.001/clip1/bf16、五teacher future targets、八frame SIGReg.09，全encoder/predictor联合更新，不加aux、不换初始化。新branch bank一次生成后共享，不新增sim采集。MIX新branch曝光为IID的一半，明确不是同新增数据曝光因果对比；所有arm总encoder样本/计算相同。三个源是独立trainseed、共享数据/48任务，不称独立数据采集。
+
+原事实clip必须重建每wholeepisode合法start：range(cache_row, cache_row+n−35)，像素offset0/5/…/35，35真实actions→7宏动作+第8dummy；不能复用旧n−20 clip starts，否则跨episode。重建5795合法clips、100episode边界与有限actions逐项assert；held query分支不入新增branch训练；原100事实replay包括WM已见的held分支source episodes，所以该小bank仍不是unseen-state检验。fresh48 episodes与原100和branch来源完全分离。原分支与事实history各占其自身合法indices，真实state/goal/held outcomes不进loss或sampler。取batch均匀规则事前锁定，不依held效用选样本。
+
+主读数：固定u2000原native新48 success及source原数/配对CI、真实envsteps；physical作同接口辅助。小bank真实selected distance/success仅开发诊断，不当长任务收益。阳控实际数据索引/teacher目标五项手算/SGReg八frame一致/PLAIN aux精确0、freshopt所有297states step1且源权重不变、原native H3+5 cost parity。噪声源三trainseeds既有19–38/48，完整配对source+anchor不扩n。事前决策：IID胜GROUPED→数据组织成为候选解释而非即刻SIGReg因果；MIX胜IID→面对replay成熟近邻进一步分离训练保留和新数据曝光；REPLAY同等或更强→不能把新增sim数据当有效采集，转向更有信息的经验/预测对象；均无增益→不调lambda，读完整AD/value支点重新设计。任何一格失败保留并停对应队列，不筛种子。预算九×2000独立单GPU任务；先CPU/CUDA实际预控，值学习GPU自然释放后再用空slot，不能修改在跑源码。所有模型HF、缓存node-local，raw含代码/hash/optimizer/RNG/失败；闭环必须原RTX精确历史守卫。
+
+跨领域来源定位：StreamMAE（arXiv2609.40333，§4/AppA）研究batch内近重复与独立shuffle控制，不能把它的MAE结论直接外推JEPA/SIGReg；MBPO（1906.08253）研究真实state分支短模型rollout以控制模型误差，和我们的真实counterfactual采集/联合表示训练不是同一方法。经验replay与batch多样性都是成熟设计，当前三arm是必要强对照，novelty仍须来自真实规划痛点及超出这些对照的有效增量。
+
+### Stage1b strong-native整批结果（2026-10-05，独立复算）
+
+15/15方法组与三same-hardware BASE完整864episodes，trace/初始state/步数/native成功/源训练→评测checkpoint hash全部PASS。[结果](../results/E20_20261004_fresh_native_control_results.json)，durable20261004-E20-fresh-native-control-audit。每source48：BASE30/19/26、PLAIN26/29/27、GLOBAL13/32/17、CENTER25/34/27、DET17/29/28、PROB24/19/28；对PLAIN平均差GLOBAL−.1389 CI[−.3333,.0486]，CENTER+.0278 [−.0833,.1458]，DET−.0556 [−.2014,.0556]，PROB−.0764 [−.2292,.0694]。保留全部sources和两接口。CENTER不是稳定方法gain，原生相对physical方向不同不能归因单bounds。广泛部署比较仍未支持novel方法，Stage3必要数据利用对照不因这些数字筛arm或换任务。
+
+Stage3最终CPU/CUDA实际预控全部PASS（源码4c4d5c45d06ed5da2a54f79bf6e568b06c9c53ebc0d7055aba4273bee1b8ce4b冻结）：三arm真实B32/8frame、5795完整边界clip、原五teacher target手算/aux精确0、全部297参数finite梯度/freshopt step1、源权重不变、三源严格加载、H3+5原native成本maxabs0。预控key no_query_sampling仅指branchbank的held12不参与新增分支采样；replay原100仍包含原模型见过的held-source episode，不能当未见状态证据。CPU/CUDA artifacts durable20261005-E20-experience-{cpu,cuda}-preflight，portable E20_20261005_experience_utilization_preflight.json。完整训练只在这两预控与源码hash一致时启用。
+
+Stage3部署补充（运行前）：固定九个u2000，全部原RTX新48、原native优先再physical，各9×2×48=864episodes；同ledger/seed/300-30-30/H25EX25/最多100steps/精确warm守卫，所有checkpoint/训练complete/hash确认才部署。experience_control_queue.py独立等待queue，不改既有matched/effect/exposure训练或bounded_control源码。训练失败持久镜像并停止，不筛存活种子。
+
+## Stage2b：PushT新起点实际闭环（2026-10-05，运行前）
+
+对应I14/P10/R1/R4，用真实操作控制补充Stage2a的小bank离线比较。固定48新source episodes，排除现有Push branchbank全部44与E17 train/eval开发sources；发布WM原预训练split未知，不称未见pretraining。episode从长度≥86的原专家数据均匀抽取，seed109000/109001，24短25未来/24长75未来goal；planner仍H25EX25/300-30-30、最多100新steps。不把goalspan称预测horizon。source clip用fresh reset+public7D setter，然后原合法10步warm生成三帧；goal由该实际factual continuation生成，避免用dataset图像假设接触solver恢复exact。保留全部合法clip，不能按模型/成功挑anchor；先密封source/action ledger，再生成真实goal派生表。实际factual目标replay与freshwarm跨重复状态/图像逐点exact为阳控，所有48均须过；不是完整原dataset物理状态恢复、不是原paper数值复现。
+
+保持Push relative=True/action_scale100，真实action Box[-1,1]^2；不把它误作absolute positions。native接口保持原normalized CEM初始化与unscale，Push真实step不clip，明确issued command可以超Box，模型比较只限同接口；physical接口所有candidate/execute均clamp，作为独立factor，不因其较弱或较强选方法。成功逐实际状态按原eval_state：前4位置norm<20且angle minimum(|Δ|,2π−|Δ|)<π/9；7D含速度distance仅辅助，实际envdone须与独立成功手算一致。不让factual futureactions/物理diagnostics进planner，只有三pastpixels、十pastactions与goalpixels。初始success全保留单列，四replans/100step预算不改。
+
+部署全部PLAIN/GLOBAL/CENTER/DET/PROB五个原锁定u2000与released LeWM，共6×2接口×48=576episodes；完整发布AD-WM另两接口96episodes参照，训练数据未匹配，不作公平loss因果。五个transfer只有一个trainseed，held48episode配对bootstrap不能升级独立trainseed或确认性结论。所有checkpoint/source/trainingcomplete/hash、runtime/task/controllerconfig、轨迹hash与成功判据保存。主读数success/newenvsteps、每goalspan原数与配对CI；阳控factual48与modelnative parity，噪声地板完整固定任务下配对离散波动。方法若只bankgain而闭环无效，重新考虑学习与任务覆盖；若操作/导航不一致，先看真实动作作用/表示/数据结构，不能调loss系数强救。CPU prepare全部guard通过再启GPU0（原任务自然释放，wrapper确认free）；单GPU独立queue、无环境改动，模型HF/raw本地。失败持久记录，不放宽物理守卫或挑能通过的seed。
+
+2026-10-05实际运行补记：Stage3三个A100 arm队列已真实训练，各8GB，PID/原source0/1/2见当日日志；不是只写卡。Stage2b CPU48全部warm/完整diagnostic轨迹/goalpixels factual repeat exact、factual48成功，5760准备steps，全部初始success保留；portable E20_20261005_pusht_fresh_prepare.json。首本地Stage3 shell detached launcher PID3531292退出、日志为空且无CUDA/模型输出，原因未确认；它不构成method failure/efficacy，日志纠正。改独立process-session launch PID3536169（Stage3 RTXGPU3），新增Push全7参考/方法两接口queue PID3536170（RTXGPU0），均free-GPU wrapper，不重复任何有输出run。第一个非initial-success的控制决策强制执行model-native parity后才跑CEM。

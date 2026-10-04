@@ -1,6 +1,6 @@
 # 实验索引｜菜单，不是关卡链
 
-每个ID只有一个当前文件。E00/E13 A0–A7、E16隔离重跑/数据×compute/objective/固定data新seed1/2、E17 proposal/cost/geometry、E11observer、E18连续适配已完整落盘；部分完整独立科学校对待做。E16曝光从30epochs恢复到原锁定100epochs，终点运行中；E20合法数据bank和joint CPU/CUDA预控完成，五方法×三个source训练开始，尚无方法结果。旧optimizer alias比较仍降级。当前优先I14/E20动作后果学习，备选I09/E14短经验可执行组合；旧PBB/自一致性/tiny-update降序，R1–R5持续开放。
+每个ID只有一个当前文件。E00/E13 A0–A7、E16隔离重跑/数据×compute/objective/固定data新seed1/2、E17 proposal/cost/geometry、E11observer、E18连续适配已完整落盘；部分完整独立科学校对待做。E16曝光从30epochs恢复到原锁定100epochs，终点运行中；E20五方法×三个source训练及两接口新48闭环已整批校对，尚无稳定方法gain；E01完整matched基线/E14真正Bellman支点在部署，E20三数据利用对照已写卡预控。旧optimizer alias比较仍降级。当前优先I14/E20动作后果学习，备选I09/E14短经验可执行组合；旧PBB/自一致性/tiny-update降序，R1–R5持续开放。
 
 | ID | 当前文件 | 用途 |
 |---|---|---|

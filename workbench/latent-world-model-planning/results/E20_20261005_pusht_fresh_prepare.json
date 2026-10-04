@@ -1,0 +1,4013 @@
+{
+  "completed": true,
+  "complete": {
+    "completed": true,
+    "n": 48,
+    "factual_all_success": true,
+    "all_warm_and_replay_exact": true,
+    "preparation_env_steps": 5760
+  },
+  "config": {
+    "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+    "selection_seed": 109000,
+    "start_seed": 109001,
+    "n": 48,
+    "excluded_source_episodes": [
+      69,
+      72,
+      135,
+      193,
+      269,
+      285,
+      308,
+      368,
+      520,
+      524,
+      693,
+      733,
+      743,
+      757,
+      765,
+      894,
+      952,
+      1033,
+      1184,
+      1200,
+      1204,
+      1325,
+      1398,
+      1405,
+      1449,
+      1472,
+      1621,
+      1678,
+      1701,
+      1736,
+      1771,
+      1814,
+      2064,
+      2082,
+      2204,
+      2253,
+      2338,
+      2365,
+      2528,
+      2647,
+      2755,
+      2763,
+      2797,
+      2940,
+      3015,
+      3032,
+      3123,
+      3274,
+      3283,
+      3563,
+      3578,
+      3680,
+      3748,
+      3791,
+      3953,
+      4222,
+      4366,
+      4389,
+      4452,
+      4462,
+      4511,
+      4772,
+      4857,
+      4886,
+      4926,
+      4951,
+      4962,
+      5017,
+      5038,
+      5099,
+      5226,
+      5234,
+      5240,
+      5290,
+      5411,
+      5455,
+      5499,
+      5701,
+      5748,
+      5749,
+      5810,
+      5854,
+      5863,
+      6036,
+      6267,
+      6325,
+      6335,
+      6423,
+      6615,
+      6779,
+      6781,
+      6838,
+      6950,
+      7033,
+      7206,
+      7328,
+      7465,
+      7555,
+      7639,
+      7659,
+      7977,
+      7986,
+      8007,
+      8015,
+      8039,
+      8040,
+      8149,
+      8167,
+      8184,
+      8268,
+      8303,
+      8349,
+      8405,
+      8429,
+      8448,
+      8490,
+      8611,
+      8633,
+      8705,
+      8857,
+      8868,
+      8880,
+      8914,
+      9118,
+      9311,
+      9545,
+      9549,
+      9551,
+      10095,
+      10128,
+      10272,
+      10282,
+      10298,
+      10360,
+      10415,
+      10583,
+      10645,
+      10706,
+      10883,
+      10933,
+      10936,
+      10969,
+      11192,
+      11238,
+      11409,
+      11519,
+      11575,
+      11739,
+      11744,
+      11802,
+      11875,
+      11895,
+      11925,
+      11942,
+      11958,
+      12027,
+      12091,
+      12119,
+      12133,
+      12487,
+      12510,
+      12566,
+      12584,
+      12688,
+      12745,
+      12760,
+      12808,
+      12820,
+      12841,
+      13013,
+      13235,
+      13239,
+      13290,
+      13409,
+      13453,
+      13531,
+      13588,
+      13592,
+      13649,
+      13712,
+      13715,
+      13999,
+      14049,
+      14087,
+      14107,
+      14132,
+      14385,
+      14409,
+      14446,
+      14487,
+      14534,
+      14565,
+      14612,
+      14975,
+      14994,
+      15007,
+      15089,
+      15094,
+      15175,
+      15194,
+      15510,
+      15631,
+      15764,
+      15775,
+      15784,
+      15884,
+      16062,
+      16118,
+      16241,
+      16284,
+      16291,
+      16435,
+      16500,
+      16538,
+      16614,
+      16628,
+      16668,
+      16741,
+      16900,
+      16973,
+      17054,
+      17069,
+      17100,
+      17125,
+      17171,
+      17230,
+      17364,
+      17399,
+      17415,
+      17432,
+      17558,
+      17767,
+      17922,
+      18045,
+      18107,
+      18129,
+      18133,
+      18191,
+      18576,
+      18633
+    ],
+    "script_sha256": "ba32666971fe806f90fbfaa6f199afc1aae561a3f155e925d62f178f558421bb",
+    "goal_source": "actual factual continuation after common fresh reset and legal warm actions",
+    "scope": "new source development; released pretraining split unknown; not original dataset contact-state restoration or paper replication"
+  },
+  "controls": [
+    {
+      "anchor": 0,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 1,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 2,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 3,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 4,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 5,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 6,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": true
+    },
+    {
+      "anchor": 7,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 8,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 9,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 10,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 11,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 12,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 13,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 14,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 15,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 16,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 17,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 18,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 19,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 20,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 21,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 22,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 23,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 24,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 25,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 26,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 27,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 28,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 29,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 30,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 31,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 32,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 33,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 34,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 35,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 36,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 37,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 38,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 39,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 40,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 41,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 42,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 43,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 44,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 45,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 46,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    },
+    {
+      "anchor": 47,
+      "factual_success": true,
+      "all_diagnostic_states_exact": true,
+      "all_warm_pixels_exact": true,
+      "goal_pixels_exact": true,
+      "environment_source_sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+      "initial_success": false
+    }
+  ],
+  "ledger": [
+    {
+      "anchor": 0,
+      "episode": 14653,
+      "source_initial_step": 62,
+      "reset_seed": 109100,
+      "initial_state": [
+        151.41954040527344,
+        183.12550354003906,
+        224.588623046875,
+        165.54823303222656,
+        6.1442694664001465,
+        54.40456008911133,
+        -39.76425552368164
+      ],
+      "warm_actions": [
+        [
+          0.0960669070482254,
+          -0.060464128851890564
+        ],
+        [
+          0.062542624771595,
+          -0.02907649800181389
+        ],
+        [
+          0.10163506865501404,
+          -0.014161488972604275
+        ],
+        [
+          0.07402957230806351,
+          -0.006615046877413988
+        ],
+        [
+          0.010847068391740322,
+          0.00693819485604763
+        ],
+        [
+          -0.011405812576413155,
+          0.0032517905347049236
+        ],
+        [
+          -0.12751366198062897,
+          -0.07614707946777344
+        ],
+        [
+          -0.17945419251918793,
+          -0.24420131742954254
+        ],
+        [
+          -0.14007583260536194,
+          -0.31228306889533997
+        ],
+        [
+          0.051527105271816254,
+          -0.4431845545768738
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "a9b6be8a8aa2b21c85b6ad8341e922f9febfe00766ba9efc1f657a3eaa3403c2",
+      "goal_state": [
+        295.93518472548044,
+        239.85622588184546,
+        253.5126578950981,
+        224.89275846773194,
+        0.7300590416321988,
+        7.576205190656442,
+        -38.41530352097011
+      ]
+    },
+    {
+      "anchor": 1,
+      "episode": 5894,
+      "source_initial_step": 9,
+      "reset_seed": 109101,
+      "initial_state": [
+        343.0688781738281,
+        198.0514678955078,
+        216.3063507080078,
+        382.3353271484375,
+        1.9185479879379272,
+        -0.8785211443901062,
+        148.1466064453125
+      ],
+      "warm_actions": [
+        [
+          -0.004779097158461809,
+          0.36786583065986633
+        ],
+        [
+          0.0011398476781323552,
+          0.40097886323928833
+        ],
+        [
+          -0.02037094160914421,
+          0.44300755858421326
+        ],
+        [
+          -0.04735585302114487,
+          0.46536770462989807
+        ],
+        [
+          -0.06817631423473358,
+          0.5055574774742126
+        ],
+        [
+          -0.12470179796218872,
+          0.5067105293273926
+        ],
+        [
+          -0.23242639005184174,
+          0.5095003247261047
+        ],
+        [
+          -0.32624930143356323,
+          0.4503476321697235
+        ],
+        [
+          -0.3122032582759857,
+          0.3401011526584625
+        ],
+        [
+          -0.24099349975585938,
+          0.24925531446933746
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "df12319fcf0a646ea5e4a9fee50dbd6d9e996d9e27b03a3a35bda3d3177e44ee",
+      "goal_state": [
+        211.0900298452632,
+        383.763403117884,
+        224.73155718446372,
+        307.166655310096,
+        1.4621649900052467,
+        34.59517178744838,
+        -74.26258612029581
+      ]
+    },
+    {
+      "anchor": 2,
+      "episode": 10877,
+      "source_initial_step": 75,
+      "reset_seed": 109102,
+      "initial_state": [
+        174.9051513671875,
+        425.51373291015625,
+        189.53494262695312,
+        319.5881042480469,
+        0.42068028450012207,
+        3.0587949752807617,
+        -38.33351516723633
+      ],
+      "warm_actions": [
+        [
+          -0.07076112926006317,
+          -0.10156673938035965
+        ],
+        [
+          -0.012954111211001873,
+          -0.06772663444280624
+        ],
+        [
+          -0.06496167927980423,
+          -0.04878468066453934
+        ],
+        [
+          -0.09124335646629333,
+          -0.05773922801017761
+        ],
+        [
+          -0.08636436611413956,
+          0.021062901243567467
+        ],
+        [
+          -0.16623727977275848,
+          -0.004935861099511385
+        ],
+        [
+          -0.1983867883682251,
+          -0.02061837539076805
+        ],
+        [
+          -0.13293063640594482,
+          -0.026916777715086937
+        ],
+        [
+          -0.0745355486869812,
+          -0.031072033569216728
+        ],
+        [
+          -0.09842941910028458,
+          0.05591687932610512
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "d84f923194cace1e06382ff10e11267c1b4a74456cc260aa44bd5b99a226fdb2",
+      "goal_state": [
+        139.33916327450214,
+        318.99043164816254,
+        194.70886937847388,
+        315.04768189050657,
+        0.8744852684857704,
+        16.622099659922394,
+        20.988801223493024
+      ]
+    },
+    {
+      "anchor": 3,
+      "episode": 5999,
+      "source_initial_step": 14,
+      "reset_seed": 109103,
+      "initial_state": [
+        294.3804626464844,
+        477.8191223144531,
+        363.19744873046875,
+        438.74298095703125,
+        3.2485194206237793,
+        190.6298828125,
+        16.435792922973633
+      ],
+      "warm_actions": [
+        [
+          0.3452942967414856,
+          -0.0024149944074451923
+        ],
+        [
+          0.36554276943206787,
+          -0.03777399659156799
+        ],
+        [
+          0.46411368250846863,
+          -0.031508270651102066
+        ],
+        [
+          0.3955296576023102,
+          -0.034820351749658585
+        ],
+        [
+          0.33003267645835876,
+          -0.07126272469758987
+        ],
+        [
+          0.260306715965271,
+          -0.10061989724636078
+        ],
+        [
+          0.18973733484745026,
+          -0.08066004514694214
+        ],
+        [
+          0.12575538456439972,
+          -0.07156166434288025
+        ],
+        [
+          0.0848134234547615,
+          -0.0809783935546875
+        ],
+        [
+          0.056837763637304306,
+          -0.06738781929016113
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "89030dc0d170f60de33011c1920d882c2f68ff2bb2699b5d60fc37fd2c083a10",
+      "goal_state": [
+        384.7366901814444,
+        285.9206198906742,
+        356.66059150541076,
+        315.5911354264824,
+        1.9569223985744257,
+        -36.39944824668133,
+        -52.41169508196483
+      ]
+    },
+    {
+      "anchor": 4,
+      "episode": 8936,
+      "source_initial_step": 6,
+      "reset_seed": 109104,
+      "initial_state": [
+        177.6520538330078,
+        436.9043884277344,
+        299.8959655761719,
+        368.740478515625,
+        5.820048809051514,
+        119.06241607666016,
+        28.155441284179688
+      ],
+      "warm_actions": [
+        [
+          0.3844514787197113,
+          0.09306853264570236
+        ],
+        [
+          0.43520981073379517,
+          0.07641759514808655
+        ],
+        [
+          0.449798047542572,
+          -0.0455721877515316
+        ],
+        [
+          0.3388735353946686,
+          -0.055488891899585724
+        ],
+        [
+          0.19606192409992218,
+          -0.06566661596298218
+        ],
+        [
+          0.1258000284433365,
+          -0.02490372210741043
+        ],
+        [
+          0.11447831243276596,
+          0.008357636630535126
+        ],
+        [
+          0.09861630201339722,
+          -0.06675834208726883
+        ],
+        [
+          0.05838291719555855,
+          -0.11307545751333237
+        ],
+        [
+          0.03071645461022854,
+          -0.15232862532138824
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "10ee08d197c40de920b917da7ed0974d102603ed8780d7a2e869f1fd3ff28fd1",
+      "goal_state": [
+        338.81829783410774,
+        244.20058479727794,
+        343.87441237454175,
+        310.98698030486463,
+        0.5184369853674244,
+        122.77155182597036,
+        36.47700253032983
+      ]
+    },
+    {
+      "anchor": 5,
+      "episode": 15126,
+      "source_initial_step": 6,
+      "reset_seed": 109105,
+      "initial_state": [
+        427.3528747558594,
+        368.4895935058594,
+        309.21343994140625,
+        405.8360900878906,
+        3.452967643737793,
+        50.053794860839844,
+        127.79843139648438
+      ],
+      "warm_actions": [
+        [
+          0.030331289395689964,
+          0.37181419134140015
+        ],
+        [
+          -0.07847084105014801,
+          0.5270369648933411
+        ],
+        [
+          -0.11842901259660721,
+          0.3766442835330963
+        ],
+        [
+          -0.1396644413471222,
+          0.3034375309944153
+        ],
+        [
+          -0.21973899006843567,
+          0.23622529208660126
+        ],
+        [
+          -0.21512039005756378,
+          0.18006162345409393
+        ],
+        [
+          -0.12625470757484436,
+          0.12471919506788254
+        ],
+        [
+          -0.09980172663927078,
+          0.01647169515490532
+        ],
+        [
+          -0.07226164638996124,
+          0.0384443998336792
+        ],
+        [
+          -0.20972506701946259,
+          -0.02155875228345394
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "2bcd1489427b8e3539a850570732c87e409d643e66358bb3c7daae9b8b0a8526",
+      "goal_state": [
+        366.8010792868033,
+        290.881452437951,
+        330.23543943469656,
+        313.3058156377554,
+        2.2368533401426496,
+        -25.885805057097123,
+        -45.35405365525346
+      ]
+    },
+    {
+      "anchor": 6,
+      "episode": 13248,
+      "source_initial_step": 60,
+      "reset_seed": 109106,
+      "initial_state": [
+        107.64324951171875,
+        281.245361328125,
+        184.3868865966797,
+        273.0826110839844,
+        0.13099783658981323,
+        72.53208923339844,
+        -24.52082061767578
+      ],
+      "warm_actions": [
+        [
+          0.23163242638111115,
+          -0.06313590705394745
+        ],
+        [
+          0.2275599092245102,
+          -0.059801261872053146
+        ],
+        [
+          0.18371665477752686,
+          -0.05593523755669594
+        ],
+        [
+          0.10462351888418198,
+          -0.02070171944797039
+        ],
+        [
+          -0.1370924413204193,
+          0.24154360592365265
+        ],
+        [
+          -0.2692200541496277,
+          0.6593217849731445
+        ],
+        [
+          -0.1825779229402542,
+          0.6997248530387878
+        ],
+        [
+          -0.049371812492609024,
+          0.6173149943351746
+        ],
+        [
+          0.03410327434539795,
+          0.49468544125556946
+        ],
+        [
+          0.12098854035139084,
+          0.42528265714645386
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "9e88b42a69be0518ff312a7a1ad32a1c7615218c7039d9bf805c8f36310f701b",
+      "goal_state": [
+        109.0800034064701,
+        391.5220238259067,
+        216.79495586191132,
+        280.8762917950314,
+        0.6105035847683883,
+        -154.5554496662647,
+        -196.12053693396632
+      ]
+    },
+    {
+      "anchor": 7,
+      "episode": 17719,
+      "source_initial_step": 32,
+      "reset_seed": 109107,
+      "initial_state": [
+        256.2862548828125,
+        194.25015258789062,
+        215.3316192626953,
+        241.70481872558594,
+        5.662860870361328,
+        70.4504165649414,
+        21.202741622924805
+      ],
+      "warm_actions": [
+        [
+          0.14742739498615265,
+          0.02439035102725029
+        ],
+        [
+          0.15567071735858917,
+          0.0990821048617363
+        ],
+        [
+          0.12704963982105255,
+          0.1160154938697815
+        ],
+        [
+          0.1460067331790924,
+          0.19992908835411072
+        ],
+        [
+          0.10299700498580933,
+          0.2037321925163269
+        ],
+        [
+          0.07768920809030533,
+          0.20395667850971222
+        ],
+        [
+          0.09365060925483704,
+          0.25709500908851624
+        ],
+        [
+          0.0647902637720108,
+          0.25161999464035034
+        ],
+        [
+          0.05985323339700699,
+          0.2538641691207886
+        ],
+        [
+          0.08704309165477753,
+          0.3013620972633362
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "0513ae2990d95c075ee1fb136eda1aa4ab8c7c1e6844e7552b5abf7a5e47e70b",
+      "goal_state": [
+        302.75840758318157,
+        439.7551672511402,
+        214.29538188266545,
+        256.05344048591775,
+        5.751245000202219,
+        -27.31926374113998,
+        -7.195416508284082
+      ]
+    },
+    {
+      "anchor": 8,
+      "episode": 11311,
+      "source_initial_step": 61,
+      "reset_seed": 109108,
+      "initial_state": [
+        334.90045166015625,
+        92.95515441894531,
+        423.2086486816406,
+        141.40731811523438,
+        3.74993896484375,
+        81.32246398925781,
+        -9.057740211486816
+      ],
+      "warm_actions": [
+        [
+          -0.28713226318359375,
+          -0.1990203559398651
+        ],
+        [
+          -0.23236724734306335,
+          -0.1050061509013176
+        ],
+        [
+          -0.2011645883321762,
+          0.06771048158407211
+        ],
+        [
+          -0.3368546664714813,
+          0.12393178045749664
+        ],
+        [
+          -0.17846259474754333,
+          -0.26650330424308777
+        ],
+        [
+          -0.2835177779197693,
+          0.07936742901802063
+        ],
+        [
+          -0.13192296028137207,
+          -0.17638082802295685
+        ],
+        [
+          -0.04804082587361336,
+          -0.11764227598905563
+        ],
+        [
+          -0.10278172791004181,
+          -0.1334652453660965
+        ],
+        [
+          -0.2070215344429016,
+          0.05087870731949806
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "0d3e2469aefe65eb923873f50aebb6d7c7a2fd998b532fcf4b54b5e2591660be",
+      "goal_state": [
+        227.7080916675963,
+        141.2496074344415,
+        423.2086486816406,
+        141.40731811523438,
+        3.74993896484375,
+        93.53220566548654,
+        -27.278570186204337
+      ]
+    },
+    {
+      "anchor": 9,
+      "episode": 4536,
+      "source_initial_step": 8,
+      "reset_seed": 109109,
+      "initial_state": [
+        75.57589721679688,
+        183.8395538330078,
+        72.00093841552734,
+        209.8092498779297,
+        5.443601131439209,
+        113.52238464355469,
+        -9.168689727783203
+      ],
+      "warm_actions": [
+        [
+          -0.22147445380687714,
+          0.01826830580830574
+        ],
+        [
+          -0.18089255690574646,
+          0.03578747436404228
+        ],
+        [
+          0.2888001501560211,
+          -0.10070566833019257
+        ],
+        [
+          -0.05697963386774063,
+          0.11259113997220993
+        ],
+        [
+          0.17768672108650208,
+          0.005762652028352022
+        ],
+        [
+          0.07081960141658783,
+          0.19228118658065796
+        ],
+        [
+          0.2694920599460602,
+          0.03627588227391243
+        ],
+        [
+          0.09146562218666077,
+          0.1268523782491684
+        ],
+        [
+          0.3329221308231354,
+          0.5567511916160583
+        ],
+        [
+          0.2256309539079666,
+          0.5106649994850159
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "9590e99bd80eba53c12acaff66fa0d7ab39ba6b7bf6fdd38a0c07ae327747cba",
+      "goal_state": [
+        29.180429913418372,
+        303.0059367521094,
+        158.68661050459332,
+        302.81569403644613,
+        5.950361107782201,
+        -47.33896937500266,
+        68.55706828172423
+      ]
+    },
+    {
+      "anchor": 10,
+      "episode": 11399,
+      "source_initial_step": 78,
+      "reset_seed": 109110,
+      "initial_state": [
+        191.91799926757812,
+        382.0598449707031,
+        241.06610107421875,
+        323.5010070800781,
+        2.0730035305023193,
+        -5.587847709655762,
+        -18.840015411376953
+      ],
+      "warm_actions": [
+        [
+          0.06202297657728195,
+          -0.18120752274990082
+        ],
+        [
+          0.07979856431484222,
+          -0.27317625284194946
+        ],
+        [
+          0.12579618394374847,
+          -0.32992586493492126
+        ],
+        [
+          0.060951344668865204,
+          -0.057898372411727905
+        ],
+        [
+          0.055279091000556946,
+          -0.13767004013061523
+        ],
+        [
+          0.061853814870119095,
+          -0.17189458012580872
+        ],
+        [
+          0.13048933446407318,
+          -0.10182943195104599
+        ],
+        [
+          -0.009058116003870964,
+          -0.20969437062740326
+        ],
+        [
+          -0.11439351737499237,
+          0.009600842371582985
+        ],
+        [
+          -0.09022518247365952,
+          0.17599661648273468
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "cce9e55776a383fb91e6e6305645109678605b8c4e287f9b45eb06f68ca1ebd2",
+      "goal_state": [
+        97.5399796546388,
+        198.76240232972268,
+        266.6824853356982,
+        273.56213295956616,
+        1.6901386118268225,
+        37.79187902656269,
+        7.561881943528285
+      ]
+    },
+    {
+      "anchor": 11,
+      "episode": 5696,
+      "source_initial_step": 13,
+      "reset_seed": 109111,
+      "initial_state": [
+        323.4859619140625,
+        300.0481262207031,
+        190.67047119140625,
+        297.3629455566406,
+        5.83919620513916,
+        -40.28107452392578,
+        94.03457641601562
+      ],
+      "warm_actions": [
+        [
+          -0.17964640259742737,
+          0.3222644627094269
+        ],
+        [
+          -0.16587379574775696,
+          0.3090713322162628
+        ],
+        [
+          -0.22931133210659027,
+          0.28161317110061646
+        ],
+        [
+          -0.22881875932216644,
+          0.23018357157707214
+        ],
+        [
+          -0.2138187438249588,
+          0.15343046188354492
+        ],
+        [
+          -0.15911820530891418,
+          0.135218545794487
+        ],
+        [
+          -0.10495362430810928,
+          0.14353829622268677
+        ],
+        [
+          -0.0936812311410904,
+          0.0989617109298706
+        ],
+        [
+          -0.048139069229364395,
+          0.07854215055704117
+        ],
+        [
+          -0.06908722966909409,
+          0.09218122065067291
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "e4f43987ff9b94a590121d4de9623f9b45f37943f8e13f4609ce7ba9467f56e0",
+      "goal_state": [
+        144.90695722403186,
+        422.0127121490787,
+        187.9580287864258,
+        297.5768966389135,
+        0.6152125305571099,
+        -31.129163535406843,
+        71.91135759853742
+      ]
+    },
+    {
+      "anchor": 12,
+      "episode": 3257,
+      "source_initial_step": 23,
+      "reset_seed": 109112,
+      "initial_state": [
+        297.68389892578125,
+        470.56951904296875,
+        237.62904357910156,
+        351.3216857910156,
+        6.163545608520508,
+        -58.836429595947266,
+        41.22417449951172
+      ],
+      "warm_actions": [
+        [
+          -0.14527061581611633,
+          0.10606910288333893
+        ],
+        [
+          -0.0936109647154808,
+          0.08224675059318542
+        ],
+        [
+          -0.07774234563112259,
+          0.07194513082504272
+        ],
+        [
+          -0.05548965930938721,
+          0.05442832037806511
+        ],
+        [
+          -0.05168679356575012,
+          0.042529478669166565
+        ],
+        [
+          -0.062115468084812164,
+          0.03993939980864525
+        ],
+        [
+          -0.08278470486402512,
+          0.018008949235081673
+        ],
+        [
+          -0.052653055638074875,
+          -0.04049774259328842
+        ],
+        [
+          -0.07466515153646469,
+          -0.056374937295913696
+        ],
+        [
+          -0.17798781394958496,
+          -0.11694368720054626
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "288563c36cd0f860f5985367df6eb343c0682387ea7a70bc52c214abd7334891",
+      "goal_state": [
+        275.87882584004046,
+        385.94078088984423,
+        231.78044346981062,
+        276.474221194864,
+        6.203743564673011,
+        -38.171618231943484,
+        -23.457600796689327
+      ]
+    },
+    {
+      "anchor": 13,
+      "episode": 6985,
+      "source_initial_step": 6,
+      "reset_seed": 109113,
+      "initial_state": [
+        283.8050842285156,
+        435.6255187988281,
+        332.2761535644531,
+        342.53387451171875,
+        4.1357645988464355,
+        207.38304138183594,
+        15.020637512207031
+      ],
+      "warm_actions": [
+        [
+          0.6049230694770813,
+          0.03960290551185608
+        ],
+        [
+          0.5919982194900513,
+          0.03142481669783592
+        ],
+        [
+          0.5658531188964844,
+          0.01665312610566616
+        ],
+        [
+          0.4993908405303955,
+          -0.04204273596405983
+        ],
+        [
+          0.43677884340286255,
+          -0.16006289422512054
+        ],
+        [
+          0.3440026044845581,
+          -0.24025405943393707
+        ],
+        [
+          0.2749960422515869,
+          -0.2428773194551468
+        ],
+        [
+          0.23386427760124207,
+          -0.30011802911758423
+        ],
+        [
+          0.21509860455989838,
+          -0.3954235315322876
+        ],
+        [
+          0.18304695188999176,
+          -0.3875243663787842
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "316424c33e5032cec1786e2731c7d45106b8e8e96d1df3c2b163bda70cb6bfb2",
+      "goal_state": [
+        440.09321833371064,
+        326.61163512989174,
+        326.9866391359563,
+        344.4148602597282,
+        4.821141241275718,
+        15.488056698788471,
+        112.2939013150092
+      ]
+    },
+    {
+      "anchor": 14,
+      "episode": 3475,
+      "source_initial_step": 0,
+      "reset_seed": 109114,
+      "initial_state": [
+        209.0,
+        237.0,
+        283.5550842285156,
+        314.27532958984375,
+        5.376175403594971,
+        0.0,
+        0.0
+      ],
+      "warm_actions": [
+        [
+          0.006824995391070843,
+          0.30081579089164734
+        ],
+        [
+          -0.03256084769964218,
+          0.17138917744159698
+        ],
+        [
+          -0.006293164100497961,
+          0.02022811584174633
+        ],
+        [
+          -0.011749655939638615,
+          -0.06138058751821518
+        ],
+        [
+          0.047045156359672546,
+          -0.18297094106674194
+        ],
+        [
+          0.15812386572360992,
+          -0.287693053483963
+        ],
+        [
+          0.2929467558860779,
+          -0.3123738467693329
+        ],
+        [
+          0.31694504618644714,
+          -0.23027916252613068
+        ],
+        [
+          0.3453681170940399,
+          -0.14761196076869965
+        ],
+        [
+          0.3350290060043335,
+          -0.08904056996107101
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "978d506c75f0d597a7e24b82ccdc133e891ff040534e6728be6476b207389f3d",
+      "goal_state": [
+        294.52354366128606,
+        408.18196530894164,
+        270.0463261151423,
+        318.90815684990673,
+        0.06126937692892298,
+        -65.0663389901908,
+        24.00563276336687
+      ]
+    },
+    {
+      "anchor": 15,
+      "episode": 2095,
+      "source_initial_step": 37,
+      "reset_seed": 109115,
+      "initial_state": [
+        281.041015625,
+        465.49139404296875,
+        228.96250915527344,
+        403.86627197265625,
+        3.3665404319763184,
+        -55.81093978881836,
+        -8.570913314819336
+      ],
+      "warm_actions": [
+        [
+          -0.07978273183107376,
+          -0.09064808487892151
+        ],
+        [
+          -0.058898817747831345,
+          -0.18857441842556
+        ],
+        [
+          -0.06441342085599899,
+          -0.08801282197237015
+        ],
+        [
+          0.0453948974609375,
+          -0.14969511330127716
+        ],
+        [
+          0.13619773089885712,
+          -0.223503977060318
+        ],
+        [
+          0.08752847462892532,
+          -0.17609985172748566
+        ],
+        [
+          0.04652870446443558,
+          -0.15949633717536926
+        ],
+        [
+          0.023303331807255745,
+          -0.21928969025611877
+        ],
+        [
+          0.05674446001648903,
+          -0.20134742558002472
+        ],
+        [
+          -0.011349214240908623,
+          -0.17025236785411835
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "edcbdb650284bbe35bc2bc954074a1173510d86703729811209ef2e072e3548d",
+      "goal_state": [
+        250.7205717003641,
+        211.02764693266388,
+        213.43635892526174,
+        268.1393559656304,
+        1.8411320674009615,
+        51.88845021495237,
+        -104.77275109945752
+      ]
+    },
+    {
+      "anchor": 16,
+      "episode": 18103,
+      "source_initial_step": 1,
+      "reset_seed": 109116,
+      "initial_state": [
+        268.2615661621094,
+        139.18028259277344,
+        140.40658569335938,
+        205.19366455078125,
+        0.5732536911964417,
+        104.54312133789062,
+        27.58957290649414
+      ],
+      "warm_actions": [
+        [
+          0.013994350098073483,
+          -0.06284884363412857
+        ],
+        [
+          -0.24031119048595428,
+          -0.19084526598453522
+        ],
+        [
+          -0.4053928554058075,
+          -0.20099225640296936
+        ],
+        [
+          -0.49285006523132324,
+          -0.1694287210702896
+        ],
+        [
+          -0.40917205810546875,
+          -0.1288512796163559
+        ],
+        [
+          -0.3472561836242676,
+          -0.08288846164941788
+        ],
+        [
+          -0.5122954249382019,
+          -0.048759058117866516
+        ],
+        [
+          -0.526620626449585,
+          -0.017587408423423767
+        ],
+        [
+          -0.45673635601997375,
+          0.037453096359968185
+        ],
+        [
+          -0.4204503297805786,
+          0.10192018747329712
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "44d7b8a3d8d6084d635843b94d4471c0d55bac7d6612b6f12b4baadccf742291",
+      "goal_state": [
+        72.13259163156756,
+        211.20884714321537,
+        155.0523384156034,
+        215.81281707011019,
+        0.6771375512321951,
+        35.65722506714322,
+        38.79170325889102
+      ]
+    },
+    {
+      "anchor": 17,
+      "episode": 14603,
+      "source_initial_step": 11,
+      "reset_seed": 109117,
+      "initial_state": [
+        273.4252014160156,
+        182.02854919433594,
+        383.8428649902344,
+        127.86876678466797,
+        0.3520668148994446,
+        -19.888614654541016,
+        -168.7998504638672
+      ],
+      "warm_actions": [
+        [
+          -0.009728348813951015,
+          -0.4959464967250824
+        ],
+        [
+          0.03958500549197197,
+          -0.43660682439804077
+        ],
+        [
+          0.013754567131400108,
+          -0.443376749753952
+        ],
+        [
+          0.039182279258966446,
+          -0.47443169355392456
+        ],
+        [
+          0.1167263612151146,
+          -0.4092422425746918
+        ],
+        [
+          0.2283431440591812,
+          -0.2745097875595093
+        ],
+        [
+          0.286718487739563,
+          -0.1909138262271881
+        ],
+        [
+          0.4018205404281616,
+          -0.13774843513965607
+        ],
+        [
+          0.3692329525947571,
+          -0.08574274182319641
+        ],
+        [
+          0.3999159634113312,
+          -0.03435318544507027
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "fa947538d85554438180c7fea20bfe9628a8085af98b572c703bde1d016ebaca",
+      "goal_state": [
+        386.04672545075783,
+        194.75864738765688,
+        363.408308936412,
+        192.33090678131157,
+        0.8221443457709315,
+        -7.196043939792423,
+        37.78049212000392
+      ]
+    },
+    {
+      "anchor": 18,
+      "episode": 17600,
+      "source_initial_step": 21,
+      "reset_seed": 109118,
+      "initial_state": [
+        79.08153533935547,
+        72.45452117919922,
+        114.38479614257812,
+        131.37245178222656,
+        0.3121287524700165,
+        -219.4535675048828,
+        -35.977294921875
+      ],
+      "warm_actions": [
+        [
+          -0.41206079721450806,
+          -0.014863126911222935
+        ],
+        [
+          -0.3113701045513153,
+          0.06262417882680893
+        ],
+        [
+          -0.2180863916873932,
+          0.09312210232019424
+        ],
+        [
+          -0.18295033276081085,
+          0.1447330117225647
+        ],
+        [
+          -0.11977947503328323,
+          0.17715317010879517
+        ],
+        [
+          -0.027934791520237923,
+          0.15326027572155
+        ],
+        [
+          0.025224579498171806,
+          0.12457603961229324
+        ],
+        [
+          0.07833589613437653,
+          0.1212170347571373
+        ],
+        [
+          0.10998452454805374,
+          0.12279881536960602
+        ],
+        [
+          0.12195386737585068,
+          0.11003045737743378
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "cb9a98be1399f4d82ca810e0a67a4f2c75961de43410f35885bb1babfb0e2319",
+      "goal_state": [
+        135.7266660792676,
+        165.24519304130126,
+        227.8644051140039,
+        233.87249693864436,
+        1.1264418129138587,
+        -111.78015251466076,
+        -2.601630021760555
+      ]
+    },
+    {
+      "anchor": 19,
+      "episode": 16189,
+      "source_initial_step": 9,
+      "reset_seed": 109119,
+      "initial_state": [
+        218.82667541503906,
+        276.7574157714844,
+        142.19264221191406,
+        379.57855224609375,
+        0.16052518784999847,
+        -221.85472106933594,
+        36.25447082519531
+      ],
+      "warm_actions": [
+        [
+          -0.5427714586257935,
+          0.07560692727565765
+        ],
+        [
+          -0.5064612030982971,
+          0.08135024458169937
+        ],
+        [
+          -0.45607683062553406,
+          0.09993269294500351
+        ],
+        [
+          -0.4020236134529114,
+          0.14738892018795013
+        ],
+        [
+          -0.4355497658252716,
+          0.14735886454582214
+        ],
+        [
+          -0.36850881576538086,
+          0.14126496016979218
+        ],
+        [
+          -0.3126462697982788,
+          0.17470388114452362
+        ],
+        [
+          -0.3061026930809021,
+          0.1864507645368576
+        ],
+        [
+          -0.2904391288757324,
+          0.1922171413898468
+        ],
+        [
+          -0.2558490037918091,
+          0.19807957112789154
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "a8d734f9f4e96322f835cebc4a5ed793ce5eaeb90682ffb63b7aa2f442087055",
+      "goal_state": [
+        119.37593496075296,
+        343.1830316845686,
+        187.71671537787128,
+        349.84596108330993,
+        0.7934058986133483,
+        37.52934654847507,
+        -99.60181868496736
+      ]
+    },
+    {
+      "anchor": 20,
+      "episode": 10916,
+      "source_initial_step": 7,
+      "reset_seed": 109120,
+      "initial_state": [
+        100.16744232177734,
+        185.94984436035156,
+        213.83612060546875,
+        456.122314453125,
+        2.502635955810547,
+        -182.32000732421875,
+        174.36981201171875
+      ],
+      "warm_actions": [
+        [
+          -0.39029982686042786,
+          0.41961997747421265
+        ],
+        [
+          -0.3387466371059418,
+          0.4360813498497009
+        ],
+        [
+          -0.2663309574127197,
+          0.40865692496299744
+        ],
+        [
+          -0.21004006266593933,
+          0.5110377669334412
+        ],
+        [
+          -0.16684824228286743,
+          0.5032234787940979
+        ],
+        [
+          -0.09444060176610947,
+          0.4397691488265991
+        ],
+        [
+          -0.039549216628074646,
+          0.40196505188941956
+        ],
+        [
+          0.02194901928305626,
+          0.38503366708755493
+        ],
+        [
+          0.07072608917951584,
+          0.37497976422309875
+        ],
+        [
+          0.1377248615026474,
+          0.42358142137527466
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "b358b627b69b08cc7a6bf3ab4229aae631d952052175917c5cf9bbfb9b37ce56",
+      "goal_state": [
+        170.99931103417975,
+        479.680871204205,
+        235.13644254355026,
+        436.8767011449603,
+        2.3119277212417173,
+        33.31407965953961,
+        -15.364991137404692
+      ]
+    },
+    {
+      "anchor": 21,
+      "episode": 13120,
+      "source_initial_step": 5,
+      "reset_seed": 109121,
+      "initial_state": [
+        68.54927062988281,
+        475.6097106933594,
+        306.1234436035156,
+        167.09722900390625,
+        6.0619049072265625,
+        -12.78990364074707,
+        35.96202087402344
+      ],
+      "warm_actions": [
+        [
+          0.4660007953643799,
+          -0.022229738533496857
+        ],
+        [
+          0.8045754432678223,
+          0.08820854127407074
+        ],
+        [
+          0.7976785898208618,
+          -0.08608755469322205
+        ],
+        [
+          0.7417585849761963,
+          -0.32785746455192566
+        ],
+        [
+          0.7799276113510132,
+          -0.4112057387828827
+        ],
+        [
+          0.6453506350517273,
+          -0.07863468676805496
+        ],
+        [
+          0.6418977379798889,
+          0.19732600450515747
+        ],
+        [
+          0.746758222579956,
+          -0.3457333743572235
+        ],
+        [
+          0.42128708958625793,
+          -0.15030206739902496
+        ],
+        [
+          0.48298147320747375,
+          -0.20164364576339722
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "171f3e8750c681a5e8e46e4f97bebf0ebf5f4d21d8f0dce8f839acf91e21dde8",
+      "goal_state": [
+        336.0151015513616,
+        168.98519743278106,
+        258.82974704899124,
+        186.72998512768004,
+        5.712211074623346,
+        -12.592116650406735,
+        86.79389879191642
+      ]
+    },
+    {
+      "anchor": 22,
+      "episode": 2767,
+      "source_initial_step": 6,
+      "reset_seed": 109122,
+      "initial_state": [
+        421.82861328125,
+        235.45738220214844,
+        243.1022186279297,
+        318.9599609375,
+        3.1837780475616455,
+        -159.376220703125,
+        -46.57607650756836
+      ],
+      "warm_actions": [
+        [
+          -0.4708358645439148,
+          -0.09899621456861496
+        ],
+        [
+          -0.6319102644920349,
+          -0.12968623638153076
+        ],
+        [
+          -0.49423596262931824,
+          -0.1072741225361824
+        ],
+        [
+          -0.3569841980934143,
+          -0.08791942149400711
+        ],
+        [
+          -0.2542601525783539,
+          -0.06522057205438614
+        ],
+        [
+          -0.3196026384830475,
+          -0.0598432682454586
+        ],
+        [
+          -0.33048513531684875,
+          -0.05319720879197121
+        ],
+        [
+          -0.4008520245552063,
+          -0.020418815314769745
+        ],
+        [
+          -0.31799039244651794,
+          -0.01406336110085249
+        ],
+        [
+          -0.37794485688209534,
+          -0.010124691762030125
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "6607a6695672acb5cd256629063736ec77b0875830a6cc2fb7aaa73fec255377",
+      "goal_state": [
+        131.62213365155583,
+        370.73217148649167,
+        242.7633715305462,
+        317.0767210037852,
+        0.8766637055513915,
+        9.261592851010196,
+        27.30768258066299
+      ]
+    },
+    {
+      "anchor": 23,
+      "episode": 4466,
+      "source_initial_step": 58,
+      "reset_seed": 109123,
+      "initial_state": [
+        91.15045166015625,
+        319.8866271972656,
+        194.22996520996094,
+        304.4710693359375,
+        0.38885214924812317,
+        -61.145286560058594,
+        126.88202667236328
+      ],
+      "warm_actions": [
+        [
+          -0.10137805342674255,
+          0.369447261095047
+        ],
+        [
+          -0.07034268230199814,
+          0.3772655129432678
+        ],
+        [
+          -0.07204507291316986,
+          0.4758712947368622
+        ],
+        [
+          -0.0039262971840798855,
+          0.5333443284034729
+        ],
+        [
+          0.05675530433654785,
+          0.47140857577323914
+        ],
+        [
+          0.1318032145500183,
+          0.3967048227787018
+        ],
+        [
+          0.21799162030220032,
+          0.261500746011734
+        ],
+        [
+          0.2520413100719452,
+          0.14679072797298431
+        ],
+        [
+          0.2583809196949005,
+          0.03772014379501343
+        ],
+        [
+          0.2368439882993698,
+          -0.05066278204321861
+        ]
+      ],
+      "goal_span": 25,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "a8f2cc36bd5b2a9533cc42adf78163a4c9cd2c263437e57843b32c547d5d5146",
+      "goal_state": [
+        105.5856579918143,
+        261.60994316038335,
+        221.56803330938303,
+        225.85703212723348,
+        0.3392601308105521,
+        23.134978600868493,
+        -171.7055718545287
+      ]
+    },
+    {
+      "anchor": 24,
+      "episode": 7036,
+      "source_initial_step": 17,
+      "reset_seed": 109124,
+      "initial_state": [
+        458.1795349121094,
+        355.4163818359375,
+        332.2761535644531,
+        342.53387451171875,
+        4.1357645988464355,
+        39.62998962402344,
+        -145.8979034423828
+      ],
+      "warm_actions": [
+        [
+          0.11281396448612213,
+          -0.36916255950927734
+        ],
+        [
+          0.07339868694543839,
+          -0.330482542514801
+        ],
+        [
+          0.02804095484316349,
+          -0.4288007915019989
+        ],
+        [
+          -0.04145607724785805,
+          -0.3864709436893463
+        ],
+        [
+          0.004518532194197178,
+          -0.3386591374874115
+        ],
+        [
+          -0.07182221114635468,
+          -0.329010933637619
+        ],
+        [
+          -0.08877759426832199,
+          -0.2965860962867737
+        ],
+        [
+          -0.14552412927150726,
+          -0.2859504222869873
+        ],
+        [
+          -0.18702079355716705,
+          -0.2058989554643631
+        ],
+        [
+          -0.16742965579032898,
+          -0.1783185750246048
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "54a22e954e473d9b5f5aa19cf56d29ee06813410e6179579d66d3df18f95c99a",
+      "goal_state": [
+        297.79621475762394,
+        343.2422689914683,
+        357.01088428511827,
+        294.9626618713471,
+        5.793122620773389,
+        0.8956946530331275,
+        -38.463569353646776
+      ]
+    },
+    {
+      "anchor": 25,
+      "episode": 4054,
+      "source_initial_step": 43,
+      "reset_seed": 109125,
+      "initial_state": [
+        265.0792236328125,
+        124.12713623046875,
+        332.80938720703125,
+        226.89830017089844,
+        0.991356611251831,
+        110.85874938964844,
+        -70.70943450927734
+      ],
+      "warm_actions": [
+        [
+          0.3547055423259735,
+          -0.12031327933073044
+        ],
+        [
+          0.45671138167381287,
+          -0.04892494156956673
+        ],
+        [
+          0.47458121180534363,
+          0.043052591383457184
+        ],
+        [
+          0.434781014919281,
+          0.1700046807527542
+        ],
+        [
+          0.4625861346721649,
+          0.3350081443786621
+        ],
+        [
+          0.3963749408721924,
+          0.36592239141464233
+        ],
+        [
+          0.32811254262924194,
+          0.4247657358646393
+        ],
+        [
+          0.24477161467075348,
+          0.5239713191986084
+        ],
+        [
+          0.14967080950737,
+          0.5326328277587891
+        ],
+        [
+          0.07966482639312744,
+          0.4702165126800537
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "066eaed5d0d0abe52a7319f5523f8d40c6d1a70118c21366b591a7fb483b8402",
+      "goal_state": [
+        157.7174047841806,
+        307.55155526782505,
+        247.6416577084437,
+        263.6443675619319,
+        0.8124505821616081,
+        10.352118364751997,
+        12.86975884256844
+      ]
+    },
+    {
+      "anchor": 26,
+      "episode": 3275,
+      "source_initial_step": 11,
+      "reset_seed": 109126,
+      "initial_state": [
+        374.0537109375,
+        362.30889892578125,
+        237.62904357910156,
+        351.3216857910156,
+        6.163545608520508,
+        2.7955515384674072,
+        131.1839599609375
+      ],
+      "warm_actions": [
+        [
+          -0.07457545399665833,
+          0.36778196692466736
+        ],
+        [
+          -0.16728077828884125,
+          0.37750279903411865
+        ],
+        [
+          -0.15358561277389526,
+          0.28747662901878357
+        ],
+        [
+          -0.21438415348529816,
+          0.24603551626205444
+        ],
+        [
+          -0.16654959321022034,
+          0.19017693400382996
+        ],
+        [
+          -0.17325055599212646,
+          0.24289476871490479
+        ],
+        [
+          -0.13166216015815735,
+          0.21013562381267548
+        ],
+        [
+          -0.18001361191272736,
+          0.16267168521881104
+        ],
+        [
+          -0.19643928110599518,
+          0.12923890352249146
+        ],
+        [
+          -0.17998634278774261,
+          0.09312421083450317
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "9e1d5a1e2ca0f03b74929e083c158758725f6714912ece60ae5196d82ed034bb",
+      "goal_state": [
+        128.87919865060059,
+        380.40966090580275,
+        227.76743570024138,
+        274.0229222309374,
+        0.7651960003442033,
+        1.8757866625962951,
+        -15.401383861267671
+      ]
+    },
+    {
+      "anchor": 27,
+      "episode": 7339,
+      "source_initial_step": 37,
+      "reset_seed": 109127,
+      "initial_state": [
+        418.4803771972656,
+        414.2025146484375,
+        283.7676696777344,
+        414.4208068847656,
+        4.706352710723877,
+        -55.96426773071289,
+        -1.9356415271759033
+      ],
+      "warm_actions": [
+        [
+          -0.16930395364761353,
+          0.007029269356280565
+        ],
+        [
+          -0.12217598408460617,
+          -0.03484807536005974
+        ],
+        [
+          -0.14965398609638214,
+          0.009104270488023758
+        ],
+        [
+          -0.10294389724731445,
+          0.04797009378671646
+        ],
+        [
+          -0.12138842791318893,
+          -0.013602519407868385
+        ],
+        [
+          -0.13035498559474945,
+          -0.01926373690366745
+        ],
+        [
+          -0.11904850602149963,
+          0.04448904097080231
+        ],
+        [
+          -0.14512108266353607,
+          -0.0001385366340400651
+        ],
+        [
+          -0.30252665281295776,
+          0.03566277027130127
+        ],
+        [
+          -0.2732976973056793,
+          -0.03748108819127083
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "53953bfffb4e0282ead0a016747d8a5380cded4511fcd6c3b5ab32f907877455",
+      "goal_state": [
+        130.0588055403217,
+        182.80737914252566,
+        207.68158997732402,
+        175.09947874681606,
+        0.5048697531034447,
+        35.97205728849217,
+        7.170458601459389
+      ]
+    },
+    {
+      "anchor": 28,
+      "episode": 17626,
+      "source_initial_step": 3,
+      "reset_seed": 109128,
+      "initial_state": [
+        124.2654037475586,
+        210.72015380859375,
+        116.7315444946289,
+        132.06338500976562,
+        0.27142226696014404,
+        -38.30467224121094,
+        -34.76314163208008
+      ],
+      "warm_actions": [
+        [
+          -0.04488417133688927,
+          -0.03556660935282707
+        ],
+        [
+          0.22035416960716248,
+          0.011417299509048462
+        ],
+        [
+          0.5322329998016357,
+          0.04181315004825592
+        ],
+        [
+          0.6365218162536621,
+          0.017400352284312248
+        ],
+        [
+          0.7195366024971008,
+          -0.023440858349204063
+        ],
+        [
+          0.48567995429039,
+          -0.04264815151691437
+        ],
+        [
+          0.30704599618911743,
+          -0.14258694648742676
+        ],
+        [
+          0.05572915077209473,
+          -0.28996017575263977
+        ],
+        [
+          -0.14715725183486938,
+          -0.44570305943489075
+        ],
+        [
+          -0.23129531741142273,
+          -0.42954522371292114
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "029ddbcb49884a13e0f158266f8482a6fb861b232f2c691615178bbdc74c33af",
+      "goal_state": [
+        172.8031801167279,
+        217.87106704181397,
+        247.03800368426295,
+        256.35493762713503,
+        0.5955631133589446,
+        25.76540183375155,
+        -2.473072361145555
+      ]
+    },
+    {
+      "anchor": 29,
+      "episode": 7541,
+      "source_initial_step": 25,
+      "reset_seed": 109129,
+      "initial_state": [
+        434.822021484375,
+        178.61557006835938,
+        400.1339111328125,
+        271.5799865722656,
+        3.0048575401306152,
+        -157.0727081298828,
+        48.52131271362305
+      ],
+      "warm_actions": [
+        [
+          -0.33393919467926025,
+          0.08176624774932861
+        ],
+        [
+          -0.4615357518196106,
+          0.06147150695323944
+        ],
+        [
+          -0.45388397574424744,
+          0.015208430588245392
+        ],
+        [
+          -0.32831117510795593,
+          0.022560475394129753
+        ],
+        [
+          -0.348398357629776,
+          0.037884220480918884
+        ],
+        [
+          -0.3298356235027313,
+          0.1276599019765854
+        ],
+        [
+          -0.2989499270915985,
+          0.23370526731014252
+        ],
+        [
+          -0.35098928213119507,
+          0.26595616340637207
+        ],
+        [
+          -0.2567928433418274,
+          0.24674531817436218
+        ],
+        [
+          -0.18456807732582092,
+          0.22478298842906952
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 1,
+      "factual_action_sha256": "4fdf7b8eb94728a7424772f34bce699ab01ff248f2d6cdaf6e96ccf986d6b5e4",
+      "goal_state": [
+        278.72373395954776,
+        276.56711060120824,
+        362.0723385606874,
+        208.98777430752125,
+        1.1715806676723062,
+        -17.038904407138574,
+        -20.460104563371686
+      ]
+    },
+    {
+      "anchor": 30,
+      "episode": 361,
+      "source_initial_step": 48,
+      "reset_seed": 109130,
+      "initial_state": [
+        399.6462707519531,
+        315.94940185546875,
+        367.90667724609375,
+        245.46731567382812,
+        0.894464910030365,
+        -8.17358112335205,
+        -74.51737976074219
+      ],
+      "warm_actions": [
+        [
+          -0.012194897048175335,
+          -0.1638634353876114
+        ],
+        [
+          -0.017768176272511482,
+          -0.20700015127658844
+        ],
+        [
+          -0.05106551572680473,
+          -0.19704830646514893
+        ],
+        [
+          -0.045536331832408905,
+          -0.17426066100597382
+        ],
+        [
+          -0.07904507964849472,
+          -0.12267439812421799
+        ],
+        [
+          -0.025013739243149757,
+          -0.1446405053138733
+        ],
+        [
+          -0.07253945618867874,
+          -0.04040515422821045
+        ],
+        [
+          -0.08589180558919907,
+          -0.10620870441198349
+        ],
+        [
+          0.021319586783647537,
+          -0.0954812690615654
+        ],
+        [
+          -0.07559923827648163,
+          -0.0908581092953682
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "e691357dbd172abc85265d892967359ea7db091ede83c57e9e0c056bbefde9d7",
+      "goal_state": [
+        266.90000855347586,
+        235.59421022624397,
+        259.5144346706042,
+        249.02641657713883,
+        0.74065303718799,
+        -26.85358362250604,
+        34.310827930917355
+      ]
+    },
+    {
+      "anchor": 31,
+      "episode": 10246,
+      "source_initial_step": 1,
+      "reset_seed": 109131,
+      "initial_state": [
+        419.826171875,
+        81.12434387207031,
+        346.8966369628906,
+        433.9515075683594,
+        1.5030001401901245,
+        -14.853649139404297,
+        102.80665588378906
+      ],
+      "warm_actions": [
+        [
+          -0.019123544916510582,
+          0.10041037946939468
+        ],
+        [
+          -0.019428938627243042,
+          -0.0044369082897901535
+        ],
+        [
+          6.307825242402032e-05,
+          -0.012740015983581543
+        ],
+        [
+          0.03021419607102871,
+          0.01145696360617876
+        ],
+        [
+          0.06088011711835861,
+          0.18589189648628235
+        ],
+        [
+          0.05695197731256485,
+          0.4098851680755615
+        ],
+        [
+          0.02420472539961338,
+          0.5519261956214905
+        ],
+        [
+          0.0013795613776892424,
+          0.6227077841758728
+        ],
+        [
+          -0.01676524616777897,
+          0.563659131526947
+        ],
+        [
+          0.06559780240058899,
+          0.5611408352851868
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "01bb65afda15377bb4fa05467317b1cde0375d1ad012cd07952163930b46b3c5",
+      "goal_state": [
+        244.43727168669727,
+        382.6516639889295,
+        223.7819396594457,
+        282.57708468895987,
+        0.27827587550312116,
+        -44.06170309303976,
+        6.457751115826993
+      ]
+    },
+    {
+      "anchor": 32,
+      "episode": 13703,
+      "source_initial_step": 29,
+      "reset_seed": 109132,
+      "initial_state": [
+        274.281494140625,
+        349.0473937988281,
+        175.7286376953125,
+        299.2843017578125,
+        5.453893661499023,
+        -40.198726654052734,
+        71.02708435058594
+      ],
+      "warm_actions": [
+        [
+          -0.19070854783058167,
+          0.1824539452791214
+        ],
+        [
+          -0.16145537793636322,
+          0.14585033059120178
+        ],
+        [
+          -0.22888578474521637,
+          0.15078844130039215
+        ],
+        [
+          -0.17897345125675201,
+          0.17024731636047363
+        ],
+        [
+          -0.11968143284320831,
+          0.0891406461596489
+        ],
+        [
+          -0.21505947411060333,
+          0.15141595900058746
+        ],
+        [
+          -0.2975589334964752,
+          0.1286509484052658
+        ],
+        [
+          -0.28888577222824097,
+          0.10925515741109848
+        ],
+        [
+          -0.23248879611492157,
+          0.10832125693559647
+        ],
+        [
+          -0.1818353682756424,
+          0.07735542953014374
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "362e2b48c69075d651f8c102e88fe324db0d08c7dae248761660cb5939ee498b",
+      "goal_state": [
+        152.72204908632014,
+        366.4185965705069,
+        181.86933748559596,
+        311.77715666783655,
+        6.272150455001168,
+        31.307826166117867,
+        -74.23929958291639
+      ]
+    },
+    {
+      "anchor": 33,
+      "episode": 6283,
+      "source_initial_step": 0,
+      "reset_seed": 109133,
+      "initial_state": [
+        181.0,
+        181.0,
+        144.1313934326172,
+        211.95855712890625,
+        0.29611751437187195,
+        0.0,
+        0.0
+      ],
+      "warm_actions": [
+        [
+          0.2589963972568512,
+          -0.11680682748556137
+        ],
+        [
+          -0.1915241926908493,
+          -0.07912392914295197
+        ],
+        [
+          -0.6000432372093201,
+          -0.1166999489068985
+        ],
+        [
+          -0.5565688014030457,
+          -0.08493804186582565
+        ],
+        [
+          -0.45198988914489746,
+          -0.039282992482185364
+        ],
+        [
+          -0.3421819806098938,
+          -0.01616244949400425
+        ],
+        [
+          -0.2947434186935425,
+          -0.00021533374092541635
+        ],
+        [
+          -0.28392788767814636,
+          0.03222275897860527
+        ],
+        [
+          -0.19506777822971344,
+          0.039744798094034195
+        ],
+        [
+          -0.1159183457493782,
+          0.03426550328731537
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "e6bac67fdc41e52416a512ca0c2aa1c99b3807faa6b242345798b67a5de1aaee",
+      "goal_state": [
+        130.93230384402182,
+        372.83252846223894,
+        233.99132696574603,
+        272.8865912758587,
+        0.7503029680856281,
+        60.99513242415225,
+        -2.7460321617429333
+      ]
+    },
+    {
+      "anchor": 34,
+      "episode": 7473,
+      "source_initial_step": 29,
+      "reset_seed": 109134,
+      "initial_state": [
+        417.04046630859375,
+        147.01263427734375,
+        320.9909973144531,
+        215.96693420410156,
+        4.33635950088501,
+        71.38957214355469,
+        170.98281860351562
+      ],
+      "warm_actions": [
+        [
+          -0.02833428978919983,
+          0.2970857620239258
+        ],
+        [
+          0.034442488104104996,
+          0.12948518991470337
+        ],
+        [
+          0.25328272581100464,
+          0.34467265009880066
+        ],
+        [
+          0.08725710958242416,
+          0.1321134865283966
+        ],
+        [
+          0.1233597844839096,
+          0.4048759639263153
+        ],
+        [
+          -0.14459866285324097,
+          0.2560611367225647
+        ],
+        [
+          0.0712290033698082,
+          -0.012681315653026104
+        ],
+        [
+          -0.031760074198246,
+          0.2679939866065979
+        ],
+        [
+          -0.0823618546128273,
+          0.35631105303764343
+        ],
+        [
+          0.1871044635772705,
+          0.040810443460941315
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "3c12464479fe5a5d605027963110a757454b74ca60a319a5b4f1af18847714d3",
+      "goal_state": [
+        228.81630296396227,
+        253.81640872894937,
+        309.1203691580512,
+        164.2229721628741,
+        5.505951094400088,
+        -68.49132847838432,
+        -46.35083691727026
+      ]
+    },
+    {
+      "anchor": 35,
+      "episode": 16524,
+      "source_initial_step": 11,
+      "reset_seed": 109135,
+      "initial_state": [
+        284.5141296386719,
+        402.0035705566406,
+        251.3258056640625,
+        393.78118896484375,
+        2.9425907135009766,
+        -5.140537261962891,
+        -47.850006103515625
+      ],
+      "warm_actions": [
+        [
+          0.04928416758775711,
+          -0.27595213055610657
+        ],
+        [
+          0.07864528894424438,
+          -0.32715821266174316
+        ],
+        [
+          0.14052589237689972,
+          -0.2737692892551422
+        ],
+        [
+          0.047293052077293396,
+          -0.3836764991283417
+        ],
+        [
+          -0.0032684989273548126,
+          -0.4585782587528229
+        ],
+        [
+          -0.04816184937953949,
+          -0.42139437794685364
+        ],
+        [
+          -0.061771292239427567,
+          -0.2834422290325165
+        ],
+        [
+          -0.10839097201824188,
+          -0.2380513995885849
+        ],
+        [
+          -0.13576528429985046,
+          -0.2585730254650116
+        ],
+        [
+          -0.27030014991760254,
+          -0.2581932842731476
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "11c742e777ec0b779008d3fa6b0dca59fd549f20da132b5b60fa446ffb618eea",
+      "goal_state": [
+        148.15563812936244,
+        341.0318515865949,
+        255.85856398259614,
+        259.64124705765295,
+        0.8587693120697153,
+        17.16692292391762,
+        -39.73134802364941
+      ]
+    },
+    {
+      "anchor": 36,
+      "episode": 8279,
+      "source_initial_step": 54,
+      "reset_seed": 109136,
+      "initial_state": [
+        321.7852783203125,
+        202.35203552246094,
+        260.0848083496094,
+        175.4390869140625,
+        4.276063442230225,
+        -42.06538009643555,
+        65.47344207763672
+      ],
+      "warm_actions": [
+        [
+          -0.14066888391971588,
+          0.42878320813179016
+        ],
+        [
+          -0.16284289956092834,
+          0.06717055290937424
+        ],
+        [
+          0.2204212248325348,
+          -0.07050067186355591
+        ],
+        [
+          -0.06989074498414993,
+          0.09715478867292404
+        ],
+        [
+          -0.03904817998409271,
+          -0.19641447067260742
+        ],
+        [
+          0.29366663098335266,
+          -0.15620075166225433
+        ],
+        [
+          -0.12326494604349136,
+          0.10140210390090942
+        ],
+        [
+          0.15982455015182495,
+          -0.09607618302106857
+        ],
+        [
+          0.26851579546928406,
+          0.056322820484638214
+        ],
+        [
+          0.23132681846618652,
+          0.12143460661172867
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "b888edae828330004e47a369001766585ef7191c0082ffa706206eac50be14d1",
+      "goal_state": [
+        197.43405882568118,
+        474.1014146937496,
+        249.6773934076618,
+        170.3231914953443,
+        4.435692459557749,
+        -69.53616766863192,
+        132.21648121151946
+      ]
+    },
+    {
+      "anchor": 37,
+      "episode": 196,
+      "source_initial_step": 28,
+      "reset_seed": 109137,
+      "initial_state": [
+        460.49505615234375,
+        242.42425537109375,
+        386.9733581542969,
+        282.2547912597656,
+        2.7307214736938477,
+        -38.34648895263672,
+        79.84446716308594
+      ],
+      "warm_actions": [
+        [
+          -0.0759367048740387,
+          0.14254608750343323
+        ],
+        [
+          -0.09370885044336319,
+          0.044215887784957886
+        ],
+        [
+          -0.2622004449367523,
+          -0.07492947578430176
+        ],
+        [
+          -0.42607492208480835,
+          -0.3984048068523407
+        ],
+        [
+          -0.02948489785194397,
+          -0.0035050141159445047
+        ],
+        [
+          -0.04199826344847679,
+          0.049000393599271774
+        ],
+        [
+          -0.01237922627478838,
+          0.008270323276519775
+        ],
+        [
+          -0.3144957721233368,
+          -0.3089597523212433
+        ],
+        [
+          -0.1015690267086029,
+          -0.10506299138069153
+        ],
+        [
+          -0.4626956284046173,
+          -0.10511836409568787
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "e27d31972a6e9561dcb9e8bd26c6912e2972f3a617f2994b44b21d004838f366",
+      "goal_state": [
+        133.4496169828379,
+        216.16858171044657,
+        362.34860789984987,
+        291.80383189630584,
+        2.9264671505382234,
+        42.78737662260376,
+        114.56202579636025
+      ]
+    },
+    {
+      "anchor": 38,
+      "episode": 13981,
+      "source_initial_step": 19,
+      "reset_seed": 109138,
+      "initial_state": [
+        250.81143188476562,
+        247.32571411132812,
+        171.18710327148438,
+        358.6932373046875,
+        3.9917707443237305,
+        16.393449783325195,
+        56.52769470214844
+      ],
+      "warm_actions": [
+        [
+          0.0686572715640068,
+          0.14144867658615112
+        ],
+        [
+          0.04977647215127945,
+          0.11337213218212128
+        ],
+        [
+          0.03692273423075676,
+          0.10873869061470032
+        ],
+        [
+          0.07908272743225098,
+          0.11314719170331955
+        ],
+        [
+          0.05870227515697479,
+          0.10247045010328293
+        ],
+        [
+          0.06327218562364578,
+          0.13922160863876343
+        ],
+        [
+          0.08561426401138306,
+          0.16682985424995422
+        ],
+        [
+          0.05767688527703285,
+          0.20573671162128448
+        ],
+        [
+          0.06296804547309875,
+          0.23629362881183624
+        ],
+        [
+          0.05818730220198631,
+          0.23570330440998077
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "55982c4a3f3d1b8cfdd434f85a4766db0c3b70060ba23c495f3400ad38702435",
+      "goal_state": [
+        197.4064606381406,
+        174.74582786771845,
+        249.76090346722185,
+        290.7589775615994,
+        4.3373353980112705,
+        146.92699064219718,
+        -123.87050104107364
+      ]
+    },
+    {
+      "anchor": 39,
+      "episode": 18069,
+      "source_initial_step": 0,
+      "reset_seed": 109139,
+      "initial_state": [
+        211.0,
+        441.0,
+        417.90386962890625,
+        214.12771606445312,
+        2.2178499698638916,
+        0.0,
+        0.0
+      ],
+      "warm_actions": [
+        [
+          -0.3809620440006256,
+          0.4814053773880005
+        ],
+        [
+          0.23795609176158905,
+          0.11158689856529236
+        ],
+        [
+          0.028486721217632294,
+          -0.16553455591201782
+        ],
+        [
+          0.27777644991874695,
+          0.009944411925971508
+        ],
+        [
+          0.03654903918504715,
+          -0.18315444886684418
+        ],
+        [
+          0.17262151837348938,
+          -0.2911299765110016
+        ],
+        [
+          0.3865320086479187,
+          -0.20487402379512787
+        ],
+        [
+          0.4616713523864746,
+          0.05875274911522865
+        ],
+        [
+          0.28317761421203613,
+          -0.3249620199203491
+        ],
+        [
+          0.4542427361011505,
+          -0.4839840233325958
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "c714a46296464384e211748b1551632fb1e9a8d1ba0b868c93091d75979d6dec",
+      "goal_state": [
+        198.38161728320233,
+        203.37948923933854,
+        323.75778488193407,
+        149.6512116757726,
+        0.8437300064667593,
+        11.884584392941608,
+        5.170212098603212
+      ]
+    },
+    {
+      "anchor": 40,
+      "episode": 12337,
+      "source_initial_step": 57,
+      "reset_seed": 109140,
+      "initial_state": [
+        50.35451126098633,
+        353.6358642578125,
+        162.5084228515625,
+        334.1846923828125,
+        1.1355139017105103,
+        26.504383087158203,
+        57.571434020996094
+      ],
+      "warm_actions": [
+        [
+          0.06667708605527878,
+          0.1387498378753662
+        ],
+        [
+          0.08531024307012558,
+          0.14144133031368256
+        ],
+        [
+          0.10327675193548203,
+          0.14137224853038788
+        ],
+        [
+          0.1174498125910759,
+          0.12647823989391327
+        ],
+        [
+          0.132314071059227,
+          0.13209524750709534
+        ],
+        [
+          0.10219185054302216,
+          0.1011437475681305
+        ],
+        [
+          0.052676405757665634,
+          0.06240769475698471
+        ],
+        [
+          0.010620011016726494,
+          0.03549758717417717
+        ],
+        [
+          -0.14488449692726135,
+          -0.0471385195851326
+        ],
+        [
+          -0.138344869017601,
+          -0.1057506650686264
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "98e6c820ecae08b510973d871bf50b2aad981be7b0ecb65ae2e2c95974d0db30",
+      "goal_state": [
+        303.1296661538004,
+        332.2669416188721,
+        262.13220047129846,
+        264.91059368303115,
+        0.8273138417306423,
+        -18.57997319622931,
+        -35.889894491694776
+      ]
+    },
+    {
+      "anchor": 41,
+      "episode": 17631,
+      "source_initial_step": 37,
+      "reset_seed": 109141,
+      "initial_state": [
+        76.61871337890625,
+        135.4160919189453,
+        155.1836700439453,
+        150.16717529296875,
+        0.5463468432426453,
+        74.17151641845703,
+        13.008868217468262
+      ],
+      "warm_actions": [
+        [
+          0.181757852435112,
+          0.0516308955848217
+        ],
+        [
+          0.18692603707313538,
+          0.003651761682704091
+        ],
+        [
+          0.2097264677286148,
+          0.03526218608021736
+        ],
+        [
+          0.18470415472984314,
+          0.011695683933794498
+        ],
+        [
+          0.13261710107326508,
+          0.00754647608846426
+        ],
+        [
+          0.1611751765012741,
+          0.05132989585399628
+        ],
+        [
+          0.1663399636745453,
+          0.1033807173371315
+        ],
+        [
+          0.1656220406293869,
+          0.05753713473677635
+        ],
+        [
+          0.11901185661554337,
+          0.09250127524137497
+        ],
+        [
+          0.10866349935531616,
+          0.12361892312765121
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "1116a72d88a88c92868e5f077bb5ce624a7ad9fcac09535f2e71dc208db042ff",
+      "goal_state": [
+        336.4887565931326,
+        347.583305256435,
+        270.18634516279235,
+        254.71838949932337,
+        0.7139114965736065,
+        -100.45032002241021,
+        67.29657502689196
+      ]
+    },
+    {
+      "anchor": 42,
+      "episode": 17840,
+      "source_initial_step": 92,
+      "reset_seed": 109142,
+      "initial_state": [
+        352.4613342285156,
+        99.0584487915039,
+        191.3893280029297,
+        178.8148193359375,
+        5.857283115386963,
+        114.01055908203125,
+        90.8339614868164
+      ],
+      "warm_actions": [
+        [
+          0.21199993789196014,
+          0.23047135770320892
+        ],
+        [
+          0.1741500049829483,
+          0.4447166621685028
+        ],
+        [
+          0.09214507043361664,
+          0.5729086995124817
+        ],
+        [
+          0.03294961526989937,
+          0.5224354267120361
+        ],
+        [
+          -0.07043391466140747,
+          0.49781474471092224
+        ],
+        [
+          -0.1469563990831375,
+          0.39437586069107056
+        ],
+        [
+          -0.20936210453510284,
+          0.3115331530570984
+        ],
+        [
+          -0.2986823320388794,
+          0.26235494017601013
+        ],
+        [
+          -0.30382049083709717,
+          0.18119533360004425
+        ],
+        [
+          -0.23604854941368103,
+          0.17229802906513214
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "7420dfb6a72a68b1daf130876119a1f4de1e34772956031231eca3976f350933",
+      "goal_state": [
+        103.5835864362214,
+        172.5757368567033,
+        62.361380231818444,
+        206.48627024050762,
+        4.610216832323502,
+        -64.61082360874387,
+        103.03037467458981
+      ]
+    },
+    {
+      "anchor": 43,
+      "episode": 11451,
+      "source_initial_step": 42,
+      "reset_seed": 109143,
+      "initial_state": [
+        202.45675659179688,
+        156.71060180664062,
+        207.8999481201172,
+        192.56161499023438,
+        0.9971057176589966,
+        -21.17854881286621,
+        27.99225616455078
+      ],
+      "warm_actions": [
+        [
+          -0.04660535976290703,
+          0.07709436118602753
+        ],
+        [
+          -0.04480661824345589,
+          0.07284580171108246
+        ],
+        [
+          -0.03378453478217125,
+          0.04922109842300415
+        ],
+        [
+          -0.02695675939321518,
+          0.03506529703736305
+        ],
+        [
+          -0.005311009474098682,
+          0.05563829094171524
+        ],
+        [
+          0.0948968455195427,
+          -0.24829868972301483
+        ],
+        [
+          0.003731748089194298,
+          -0.34452733397483826
+        ],
+        [
+          -0.17741122841835022,
+          -0.35444363951683044
+        ],
+        [
+          -0.5698229670524597,
+          -0.33488839864730835
+        ],
+        [
+          -0.38767534494400024,
+          -0.2063797116279602
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "947db387946c2808def2b3d57ca71ca9d432b79f5c6c0505efc45c291d22f470",
+      "goal_state": [
+        139.78815986445449,
+        384.00820109200674,
+        238.89946976786618,
+        290.27204099873956,
+        0.8344102839055426,
+        45.470981569083335,
+        -14.116953726426463
+      ]
+    },
+    {
+      "anchor": 44,
+      "episode": 6794,
+      "source_initial_step": 28,
+      "reset_seed": 109144,
+      "initial_state": [
+        411.77960205078125,
+        137.82179260253906,
+        387.2121276855469,
+        175.4934539794922,
+        1.8140695095062256,
+        -59.48381423950195,
+        -19.726911544799805
+      ],
+      "warm_actions": [
+        [
+          -0.11652814596891403,
+          -0.032101765275001526
+        ],
+        [
+          -0.08309213072061539,
+          -0.013485876843333244
+        ],
+        [
+          -0.1259087175130844,
+          -0.023849446326494217
+        ],
+        [
+          -0.29186633229255676,
+          -0.10085553675889969
+        ],
+        [
+          -0.26472941040992737,
+          -0.08858419209718704
+        ],
+        [
+          -0.20939558744430542,
+          -0.06754502654075623
+        ],
+        [
+          -0.19419847428798676,
+          -0.047751057893037796
+        ],
+        [
+          -0.19036969542503357,
+          -0.026506511494517326
+        ],
+        [
+          -0.17430412769317627,
+          -0.014751731418073177
+        ],
+        [
+          -0.1726853996515274,
+          -0.0063713314011693
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "1c0aaa9644c55e06d628f66b8857b8220dff8a9899302eb4af5699903e5d9ce5",
+      "goal_state": [
+        174.271952913882,
+        247.52044313495654,
+        227.30865659512455,
+        229.8001520751215,
+        0.6847126562766942,
+        32.30367585695926,
+        18.872240730932997
+      ]
+    },
+    {
+      "anchor": 45,
+      "episode": 9876,
+      "source_initial_step": 36,
+      "reset_seed": 109145,
+      "initial_state": [
+        236.82411193847656,
+        167.85728454589844,
+        307.93212890625,
+        232.91758728027344,
+        1.99755859375,
+        -18.238630294799805,
+        70.46463775634766
+      ],
+      "warm_actions": [
+        [
+          -0.0916845053434372,
+          0.24285279214382172
+        ],
+        [
+          -0.06740807741880417,
+          0.273002028465271
+        ],
+        [
+          -0.10867410153150558,
+          0.26836103200912476
+        ],
+        [
+          -0.09336261451244354,
+          0.271810382604599
+        ],
+        [
+          -0.10956712812185287,
+          0.2593414783477783
+        ],
+        [
+          -0.018692227080464363,
+          0.1781090646982193
+        ],
+        [
+          -0.10073844343423843,
+          0.26740628480911255
+        ],
+        [
+          -0.11626610159873962,
+          0.33203449845314026
+        ],
+        [
+          -0.053589630872011185,
+          0.18630412220954895
+        ],
+        [
+          -0.08130589127540588,
+          0.290117084980011
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "ebffb9cd9221247a0b07a006e3620783db3f3aefdb7f7e5c8364a747c0f7ca0f",
+      "goal_state": [
+        291.0296150198918,
+        226.79302137061592,
+        273.8643004077866,
+        232.51771160020817,
+        0.6526880108269882,
+        -18.85627813302596,
+        34.67895333642904
+      ]
+    },
+    {
+      "anchor": 46,
+      "episode": 14616,
+      "source_initial_step": 4,
+      "reset_seed": 109146,
+      "initial_state": [
+        315.7331848144531,
+        266.3599853515625,
+        383.7958984375,
+        127.94659423828125,
+        0.3516828417778015,
+        -56.775115966796875,
+        -26.162504196166992
+      ],
+      "warm_actions": [
+        [
+          -0.24013647437095642,
+          -0.13209976255893707
+        ],
+        [
+          -0.26946523785591125,
+          -0.22194012999534607
+        ],
+        [
+          -0.20238548517227173,
+          -0.1716344803571701
+        ],
+        [
+          -0.10597681999206543,
+          -0.24521906673908234
+        ],
+        [
+          -0.15044982731342316,
+          -0.31045007705688477
+        ],
+        [
+          -0.019467471167445183,
+          -0.36873576045036316
+        ],
+        [
+          -0.03722437471151352,
+          -0.4343368411064148
+        ],
+        [
+          0.02722913585603237,
+          -0.40337100625038147
+        ],
+        [
+          0.014211100526154041,
+          -0.46091723442077637
+        ],
+        [
+          0.041624393314123154,
+          -0.48412615060806274
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "7f350375246477dd560db3d828cebf1f2a7fbc865fb589b7b508e31c22aa31bd",
+      "goal_state": [
+        338.426297457327,
+        357.4105990332086,
+        264.628235671933,
+        268.19253065111684,
+        0.8836990835822489,
+        -132.23834255559566,
+        221.64298735685617
+      ]
+    },
+    {
+      "anchor": 47,
+      "episode": 4458,
+      "source_initial_step": 23,
+      "reset_seed": 109147,
+      "initial_state": [
+        180.97879028320312,
+        266.5693054199219,
+        145.42886352539062,
+        283.05706787109375,
+        6.232768535614014,
+        27.38970947265625,
+        37.742713928222656
+      ],
+      "warm_actions": [
+        [
+          0.04841085523366928,
+          0.11859402060508728
+        ],
+        [
+          0.03017314150929451,
+          0.12299948185682297
+        ],
+        [
+          0.03238667547702789,
+          0.0907130017876625
+        ],
+        [
+          0.02342301234602928,
+          -0.08924272656440735
+        ],
+        [
+          -0.06091209128499031,
+          -0.31921064853668213
+        ],
+        [
+          -0.16130001842975616,
+          -0.3266003429889679
+        ],
+        [
+          -0.282833456993103,
+          -0.2298249453306198
+        ],
+        [
+          -0.37630632519721985,
+          -0.14197714626789093
+        ],
+        [
+          -0.4209357500076294,
+          -0.06064334511756897
+        ],
+        [
+          -0.3977622091770172,
+          -0.004014766775071621
+        ]
+      ],
+      "goal_span": 75,
+      "clipped_source_components": 0,
+      "factual_action_sha256": "878c6d5aca41cb3a6feaca480b97edd57bd9176cc884a18095e9fe13e130abf3",
+      "goal_state": [
+        180.70681342014512,
+        208.8772557860866,
+        251.12693587970182,
+        238.18620802747836,
+        0.588296872355234,
+        25.891958605056875,
+        3.8392159470238094
+      ]
+    }
+  ],
+  "ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+  "initial_successes": 1,
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-pusht-fresh-control-bank48",
+  "scope": "Actual CPU factual/repeat engineering controls; no model/controller efficacy yet; released pretrain split unknown; goal generated from actual common-fresh continuation."
+}

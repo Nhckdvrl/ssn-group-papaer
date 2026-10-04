@@ -340,3 +340,11 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 - [Value-Guided JEPA §3–5/App7](https://arxiv.org/html/2601.00844)：真正expectile Bellman塑造−distance表示，对比Sep、joint、quasimetric与VCReg；若干Sep比joint强，VCReg联训亦可退化。App7.2原VF tau=.8/gamma=.98，过高会不稳定。其512dim CNN/MPPI/random Wall/Maze与当前192dim tinyViT/SIGReg/CEM/专家SWM数据不同。E14将joint与两阶段表示→动力学同时作为完整机制支点，不能用旧frozen时间回归负结果替代，也不能将port数字当原文复现。后续若有signal需要强GCpolicy/层次、真实长任务与第二task，经典value本身不是贡献。
 
 本轮只定向读上述method/关键对照与边界，未逐定理或全部附录校验；尚无新的成熟science claim。完整AD同data分解与Bellman表示训练是区分竞争设计的实证动作，不是预选新paper narrative。
+
+
+## 2026-10-05｜跨领域读回：经验怎样进入训练与规划
+
+- [StreamMAE v1 §4/AppA.1](https://arxiv.org/html/2609.40333v1)：母问题是连续视频可否支持有效SSL，继承MAE并改变输入/正则；以同一数据的iid、一次shuffle后stream、原时序stream分离batch内冗余与跨batch重叠。方法包含DataDrop/增强/crop，对照和dense transfer构成证据。我们的same-state四branch共享history可能改变有效batch覆盖，但当前未测到它导致退化，MAE结论不能直接外推SIGReg。E20 IID-BRANCH对照继承这种变量拆分；经典shuffle不是novelty，真实规划收益与训练分布必须单独检验。
+- [MBPO §4.2/§5–6](https://arxiv.org/html/1906.08253)：母问题是模型误差下如何保持样本效率，继承ensemble/PETS与SAC，通过从真实replay states出发的短模型rollout解耦task horizon与模型使用长度；比较强model-free/model-based与rollout使用方式。它生成模型经验供policy学习，不是实际simulator counterfactual分支，也不是我们的联合视觉表示训练。启发是采集、训练分布、模型使用三处干预分别估计效用，不能仅凭新增数据或模型误差写有效结论。
+
+读回范围为上述方法与决定性控制，未逐条校验全部数字/附录。没有新science claim；此次三arm数据利用是成熟baseline补全，不能被包装成新论文。

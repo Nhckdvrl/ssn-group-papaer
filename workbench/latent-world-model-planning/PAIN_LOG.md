@@ -106,3 +106,9 @@ P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.jso
 [E20整批15run](results/E20_20261004_joint_candidate_results.json)严格同数据/曝光/freshoptimizer与同sourceu0/query矩阵，PLAIN8/11/9、CENTER12/11/8、PROB-INVERSE10/11/11（每source12真实候选查询）。CENTER source0完美但source2低于plain；双向开发CI差[−.1667,.3611]，PROB[−.0278,.3333]，均未建立稳定收益。概率inverse对照目前比强推centered新loss更有价值，但它不是novelty，也不是完整AD-WM。重要下一判断是新sourceepisode闭环、跨任务、强同数据replay与完整近邻，不是继续围绕λ局部调参。原science claims0保持；不是方法母问题关闭或预选paper narrative。
 
 2026-10-04 P10工程校对：[跨节点完整复算](results/E20_20261004_crossnode_restore_audit.json)两节点48条factual真实位置轨迹全部exact；A100 46/48 warm图像有≤1级uint8差、RTX全exact，具体数值原因不确定。三个A100队列均在第一anchor守卫停止，效用rows0；失败不作方法负结果，不放宽守卫、不挑匹配anchor，主方法比较迁到原RTX同hardware。完整AD-WM参照原native42/48提示强方法可用，但其数据量/训练均未匹配，不能归因inverse或当ours已胜/败的公平结论。
+
+### 2026-10-05｜P04/P10：离线后果线索尚未转化成稳定新任务收益
+
+[E20 physical](results/E20_20261004_fresh_physical_control_results.json)与[strong-native](results/E20_20261004_fresh_native_control_results.json)各15方法+三BASE共864episodes整批独立trace/state/success/checkpoint复算PASS。physical PLAIN20/32/21 vsCENTER19/27/20；native PLAIN26/29/27 vsCENTER25/34/27，各48/source。CENTER相对plain physical−.0486 CI[−.1597,.0556]，native+.0278[−.0833,.1458]。小bankCENTER12/11/8不能支撑一般控制收益；任务/目标/controller都改变，不能归因单metric。三个train sources共享任务，不膨胀样本量。强native中plain相对原BASE30/19/26也非三个正gain，新增经验价值尚未确立。
+
+下一竞争解释是batch经验覆盖、额外五future训练、旧经验保留，以及完整residual/learned-action/价值表示机制。E20事前锁定IID-BRANCH/REPLAY-ONLY/MIX三arm×三source；仅成熟必要对照，不是新idea宣告。E01九完整matched训练、E14 joint/sep继续完整终点评测，不救CENTER系数、不关闭R1–R5。原native可发行未匹配AD42/48是强参考，不作同数据loss归因。科学主张0保持。
