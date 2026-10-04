@@ -60,5 +60,6 @@ R0 产物审计 → E01 复现已知机制（induction）→ E02 群体扫描（
 
 ## 12. Assets
 - claims `CLAIMS.md` · pain log `PAIN_LOG.md` · 实验卡 / 脚本 `experiments/`、`scripts/` · 日志 `logs/`
-- 缓存（不进 git）：`/home/xiang/mechpop_cache/hf`（HF 权重）、`datadecide/`（配方、全尺寸核查 `survey_all_sizes.json`、`e45_plan.json`、评测表 `evals/`）、`e43/`（激活转储，约 36 GB）、`e46_data/`（受控训练语料前缀与 Flan）、`e46_runs/`（受控训练 checkpoint）
+- 缓存（不进 git）：`/home/xiang/mechpop_cache/hf`（HF 权重）、`datadecide/`（配方、全尺寸核查 `survey_all_sizes.json`、`e45_plan.json`、评测表 `evals/`）、`e46_data/`（受控训练语料前缀与 Flan）、`e46_runs/`（受控训练 checkpoint）
+- 2026-10-04 清理（约 76 GB）：已删 E43 激活转储（可用 1B 权重重算）、OOM 中断的训练、Pythia-2.8B 两个版本（P11 已排除）、E30 未进论文的 gemma-2-2b / Qwen2.5-1.5B / SmolLM2-1.7B / OLMo-1B-0724；保留全部自训练 checkpoint 与论文用到的 DataDecide / Pythia / OLMo 2 权重（rebuttal 用）；逐头分数图在 `results/` 里，统计类重分析不需要权重
 - 环境：`~/.venvs/mechpop`（torch 2.8.0+cu128、transformers 4.57.6，transformer_lens 等 `--no-deps`）
