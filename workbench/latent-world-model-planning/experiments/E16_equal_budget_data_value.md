@@ -305,3 +305,8 @@ uint8/controls/clipstarts/原行映射一次从原HDF严读为自含nodecache；
 
 
 2026-10-04上传状态核对：[曝光控制partial](../results/E16_20261004_exposure_partial.json)30epochs/u16950保存37/48；原5650/10epochs为21/48，训练曝光是值得继续分辨的解释。100epochs终点未complete、最后日志epoch44/u24860、本机没有对应训练进程，原因未核对；不能写整批DONE或仍在运行，不以partial筛选终点。固定数据trainseed脚本最终170行SHA b17bb1efe80a1fff1816bd0a66681f41dd39b01d9533c5cb1f9970258bf0d747；CPU实际init/loss/gradient/optimizer/RNG控已通过，但没有已核对GPU训练读数。恢复需核对源checkpoint完整RNG/optimizer及remote staging，再沿原锁定终点执行，禁止凭日志步数拼接。
+
+
+2026-10-04人审反馈后、独立种子GPU运行前：保留原锁定固定data/eval48/终点5650及seed1/2；现有seed0提供第三个独立训练随机性条件，旧eval48仍为开发集，不能当确认集。原A100 placement目前两卡均占用，改为本机两张实际空闲RTX PRO 6000分别GPU0/1，各fresh process；数据/recipe/seed/终点不变，不混硬件timing。源码与先前CPU PASS SHA完全一致，既有venv和节点cache复用。新raw/durable `20261004-E16-fixed-data-trainseed-RTX-s1/s2`，模型HF `latent-wm-trained/E16_fixed_data_trainseed_RTX_s1/s2`，由freewrapper再次确认并创建实际context；本段在launch前写，不代表训练完成。完整训练曲线loss与终点success保留，未来增加中途success评测另锁协议，不回改此批。
+
+2026-10-04 exposure恢复运行前：原partial保持不动，不能从epoch44日志伪造checkpoint；从已保存完整u16950/epoch30恢复，仅完成原锁定u56500/100epochs终点。新增resume可选入口，先验证原5650 checkpoint/manifest/recipe，再逐SHA核对30epochs checkpoint/summary、strict weights、297完整AdamW/deepclone/source不可变、30epoch shuffle RNG再生、CPU/CUDA/NumPy全state。same RTX、constantLR、原48开发集与optimizer/RNG隔离eval不改；new raw/durable `20261004-E16-data-exposure-resume-RTX-s0`，new HF `E16_data_exposure_resume_s0`，原30epochs结果不重写。仅末端一snapshot的complete不代表重新生成此前所有曲线。CPU实际通过/root复核后独立GPU2，source SHA 9a36eb83df7b5d5eb53201e830bff9705c6acd8a8b9aa86592d0af3b429ac350。

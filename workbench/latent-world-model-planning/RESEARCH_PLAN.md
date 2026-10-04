@@ -1,6 +1,6 @@
 # 研究计划｜问题、方法与贡献的生长
 
-更新：2026-10-02。当前工作台的唯一科研计划；本页替代旧的多份 program/mine/positioning/novelty 文件。实验菜单见 [实验索引](experiments/README.md)，文献证据见 [核心阅读](literature/CORE_READINGS.md)。
+更新：2026-10-04（人审反馈后重排研究内容）。当前工作台的唯一科研计划；本页替代旧的多份 program/mine/positioning/novelty 文件。实验菜单见 [实验索引](experiments/README.md)，文献证据见 [核心阅读](literature/CORE_READINGS.md)。
 
 ## 1. 研究对象与选择标准
 
@@ -158,146 +158,41 @@ E18可直接比较固定 horizon、缩短/延长规划、增加候选、反馈�
 成熟论文包围绕一个中心贡献组织：最强可比基线、核心方法/问题的主结果、能区分解释的消融、至少一种有意义的范围/限制测试，计算与数据成本。需要更多任务时扩，不机械要求每个方向都先做完整论文级证据才能试原型。
 
 
-## 11. 第一波方法假设：从文献张力直接长方法，不等“空白”
+## 11. 当前优先问题：有限经验如何训练真实动作后果
 
-下面不是已成立的paper idea，而是**现在最值得本地agent迅速做实验的两个方法假设**。它们有明确近邻、也有明确增量；相近工作越多越要求比较做扎实，而不是自动放弃。
+人审明确继续小型世界模型领域，首选有限数据下的动作后果学习，备选短经验的可执行组合。PBB v0、多保真自一致性、tiny-update降低追加优先级，已有证据和原卡保留。R1–R5不关闭，PROPOSED/ACTIVE状态不变。
 
-### H-A｜Planner-Boundary Branching (PBB)：把新经验花在planner真正可能改主意的地方
+### 已有证据改变了哪些设计决定
 
-**母问题（R1）：** simulator/reset预算有限时，下一条world-model经验应该采哪里？
+- BASE100在1680→5650更新从13/48到38/48；BASE1000在10→30epochs从21/48到37/48，100epoch仍缺完整终点。固定updates、固定曝光和充分优化是三个比较，不再让弱base代表模型上限。
+- 公平三pipeline的PBB v0为20/11/13、NO为7/16/19，GLOBAL为19/20/27；它们改变data/eval/init，不能叫固定数据三trainseeds。暂不追加PBB阈值。
+- A6的参考排序和A7的真实候选质量不一致；A7近Push Fast15/16、LeWM11/16。未建立真正high-fidelity evaluator，也无实际缩小batch速度优势，暂停同类self-consistency promotion扩展。
+- Frozen demonstrated-time head没有Bellman传播/联合表示；observer fixedgain没有学习history；tiny-update没有完整系统辨识。负结果只约束这些实现，下一版必须保留所研究机制。
+- TwoRoom只修cost clipping没有统一CEM采样和elite update。新接口在物理合法动作域采样、评分、更新、执行，然后仅在模型入口按同一norm转换；旧native原样保留为对照，工程差异不能当novelty。
+- DeepJEPA已按candidate–step分配深度并讨论elite稳定；“candidate vs transition”不是充分定位，旧elite-set sufficiency算式不是论文贡献。
 
-已有工作已经分别说明：active querying可以追预测弱点；task-aware acquisition比全局uncertainty更有用；same-state counterfactual action branches能强化动作因果；candidate selection opportunity集中在少数决策。我们的工作假设把这些压力落到latent MPC的具体接口：
+### 首选方法循环（I14/E20）
 
-> **不是“最不确定的state”都同样值钱；更值钱的是那些候选动作排序不稳定、且排序翻转会改变planner选择的decision-critical states。**
+问题：紧凑模型如何保留对新动作/新目标控制有用的后果差异，同时不过度编码实际等效的动作？墙边/饱和只是诊断条件，不把题目缩成单一墙角；主要范围包括接触、必要历史、动作序列与跨目标控制。
 
-第一版不改loss，先只改**数据分配**，避免和D-JEPA/AD-WM的decision loss混在一起。CEM/iCEM运行时，用cheap ensemble/bootstrapped heads估计候选的rank disagreement，并结合top-2或elite-cutoff margin形成criticality score。对高criticality state做same-reset branch：执行2–K条竞争candidate prefix，把真实transition加入普通LeWM/RC-aux训练数据。若这个data-only版本优于random/coverage/global uncertainty/OnlineWM-like predictive-error acquisition，再考虑branch-aware ordinal或consistency loss。
+继承SMWM/AD-WM的动作相关表示、FIRM的真实common-reset分支、结构化动力学/动作抽象；不claim首次动作歧义或分支监督。普通预测+同样分支数据是最关键的强baseline。允许encoder/predictor联合训练，不永久冻结backbone。
 
-工作分数可从简单式开始：`criticality = selection_relevance × rank_instability × predicted_consequence_span`。这些因子都只能用query前可得信息；真实branch outcome只在被选中后揭示。
+第一版比较公共误差与相对后果误差：分支预测/目标减去同anchor均值，再匹配。这个loss只是残差方差重权，本身不足以novelty。对照需包括普通预测、同权重放大全局MSE、确定性/概率inverse及适当AD-WM复现；训练曝光/新数据比例/target detach与额外计算单列。若它不能胜强同数据训练，接受结果，改监督/表示机制而非只调lambda。
 
-**为什么不是机械拼接：** OnlineWM问模型哪里预测弱；ToIA问哪些观测能帮助task-relevant rollout；TOM/strategic model learning问policy相关区域；我们问的是**哪条新counterfactual经验最可能修正planner即将做出的候选选择**。这是一个不同的data-value定义。最终若实验显示普通task-aware uncertainty已等价或更好，就直接收敛为负结果/改设计，不靠改名保story。
+有真实作用歧义且plain/inverse存在可复现控制限制时，再开发依赖history与action的effect code或分段动力学；状态相关线性降秩不够，因为受阻方向和离开方向可能不同。保留必要动态状态，末帧近似相同不当完整等效。
 
-### H-B｜Planner-Stage Multi-Fidelity：广筛候选用快模型，elite附近才用高保真世界模型
+实验关系必须连续：合法动作完整小branch bank→充分训练同数据目标比较→新查询真实候选选择→native closed-loop→新任务/goal确认。每次修改写清解决上次哪个具体问题。原16/32/48起点为开发集，确认集另锁且不可参与调参。
 
-**母问题（R2）：** CEM一次要评估大量candidate，而只有很少candidate会进入elite set并影响下一轮search。是否有必要给所有candidate同样昂贵的predictive fidelity？
+### 备选方法循环（I09/E14）
 
-Fast-LeWM已经拥有parallel prefix prediction；DeepJEPA已经拥有transition-level adaptive depth。它们不是kill，而是构成两个强支点。我们的不同轴是：
+问题：短片段之间的连接能否被低层控制器在预算内实际完成，怎样学习这种可执行组合？允许goal-conditioned TD/value与联合表示、subgoal/option模型；不再以时间回归小head代表完整value路线。
 
-> **在planner的candidate population上分配prediction fidelity：cheap predictor负责高召回筛选，high-fidelity predictor只重评可能进入/改变elite set的candidate。**
+先对齐PLDM、HIQL/HILP、OGBench、RC-aux完整机制，再设计WM/value/goal-policy贡献分解。固定transitions/覆盖/动作分布，移除长组织和未来配对但保留真实桥接转移；不能删桥后要求恢复未知环境。比较learned value without WM、WM without learned value及强GC policy/hierarchy。标准OGBench长任务与trajectory future-imagegoal分开报告。
 
-最便宜原型甚至不用训练新模型：Fast-LeWM给N个candidate排序，保留top-M（M明显大于CEM elite K），再由LeWM/open-loop multi-step/high-fidelity predictor重评M个，最终elite只按高保真分数更新。比较同wall-clock下的纯Fast大N、纯LeWM小N、随机M重评、只重评top-M，以及elite-boundary/低margin重评。如果有清晰收益，再训练共享encoder的dual-fidelity head或学习screening-confidence。
+## 12. 当前实验投入与判断点
 
-与DeepJEPA的关系必须正面写：DeepJEPA决定“一个transition内部算几次”；H-B决定“候选群体中谁值得调用哪种predictor”。两者可组合；若DeepJEPA完整发布后，最强实验之一就是Fast screen → DeepJEPA refine。
+基线校准与新方法同时推进：E16固定BASE100 trainseed1/2，沿原5650终点；完整恢复BASE1000曝光终点；E20新branch data+训练机制；E14强长任务/value基线。优先单卡独立job、node-local cache、已有venv/HF缓存，不扩大单次模型规模。
 
-### 第二波而非关闭：H-C/H-D
+先3个独立trainseeds检验开发稳定性，核心结论再扩大至少5并复验独立data采样；数量是起点而非充分性保证。已有seed0不能筛掉，plannerseeds和candidatepairs不是训练重复。完整小bank先给真实选择误差，再给native闭环；真实延迟仅同设备受控负载测。
 
-R3的selective query conditioning、R5的feedback/recovery routing仍值得保留；它们目前近邻较多且首轮方法杠杆不如H-A/H-B直接。E17/E18可利用released checkpoints低成本并行摸底，不因暂列第二波而降级科学价值。
-
-### 第一波如何用多卡
-
-先用**一个导航任务 + 一个接触/操作任务**分别跑最小方法矩阵，不先做全家桶。H-A先比较5–6种acquisition policy的单seed探索，H-B先比较4–5种fidelity allocation的单seed探索。任何明显signal先复核实现，再把最有区分力的2–3种方案铺3个以上训练seed和第二任务族。GPU数用来缩短idea迭代周期，不用来一次性把所有组合做成大网格。
-
-这两个假设都允许失败。失败之后回R1/R2继续选方法，不把“有人做过active learning / adaptive compute”当作关闭理由。
-
-
-### H-B 的更具体方法核：elite-preserving fidelity allocation
-
-Fast-LeWM已经提供一个几乎零训练成本的第一实验：每个candidate都有cheap direct-prefix goal cost；论文的self-consistency需要额外做一条“经过中间prefix再到terminal”的预测路径。原论文对所有candidate统一加self-consistency，我们可以先问：
-
-> **如果只对可能进入/改变CEM elite set的candidate支付这次额外预测，能否用少量high-fidelity calls恢复接近full self-consistency的planning质量？**
-
-先把“高保真”定义为同一Fast-LeWM内部的direct + decomposed/self-consistency score，避免不同模型latent尺度不一致。然后再扩LeWM recursive、DeepJEPA或multi-step head。
-
-若cheap cost与high-fidelity cost的残差可以在held-out candidate bank上校准成区间 `[L_i, U_i]`，一个候选的“最好可能cost”仍差于当前elite边界时可以跳过；只有区间与elite阈值重叠的候选升级。后续可把这个规则做成 **Elite-Preserving CEM**：主要测top-K elite recall、high-fidelity call fraction、closed-loop success和fixed-wall-clock Pareto。严格coverage/概率保证只有校准成立后再写，不预注册理论结论。
-
-这个方向的novel narrative不是“多保真第一次用于规划”，而是：**modern latent-WM planners的compute bottleneck发生在成百上千candidate反复scoring；planner只消费elite set，因此prediction fidelity应该围绕elite preservation来分配。**
-
-
-## 12. 什么结果能长成顶会叙事，而不只是“一个小技巧涨点”
-
-### PBB 的叙事分叉
-
-**最强形态：data-value principle + method。**
-如果PBB在TwoRoom/Wall与Push-T/Cube都显示：同样的新增env-step预算下，candidate-boundary branches显著优于IID、coverage、global uncertainty与task-aware uncertainty，而且主要改善counterfactual ranking/elite regret而不是只扩大state coverage，那么论文可以讲：
-
-> **World models should acquire counterfactual experience where the planner's decision is fragile, not merely where prediction is globally uncertain.**
-
-方法可以仍很简单。novelty来自“planner-boundary data value”这个可验证原则、对应acquisition rule，以及跨任务证据。
-
-**中等但可继续形态：不同采样策略在不同任务占优。**
-如果导航偏coverage、接触任务偏PBB，不要把它判死。继续寻找决定这种差异的task factor（branching factor、contact multimodality、candidate margin、support density），可能长成“何时应该采哪类world-model data”的设计原则。
-
-**需要转向形态：PBB≈task-aware uncertainty。**
-这时不靠重新命名保idea。检查二者是否实际上选到同一states；若高度重合，贡献应转到更轻量的proxy、branch action selection或与training objective的联合设计。若没有实质增量，则回R1别的data-value路线。
-
-### Elite-Preserving CEM 的叙事分叉
-
-**最强形态：planner interface principle + efficient method。**
-如果selective refinement在fixed wall-clock下稳定超过pure Fast与pure expensive，并保持接近FULL-REFINE的elite set，且价值集中在少量candidate/后期CEM iterations，那么可以讲：
-
-> **Prediction fidelity in latent world-model planning should be allocated to preserving the optimizer's elite set, rather than uniformly to every imagined trajectory.**
-
-这与DeepJEPA的transition-depth routing是互补轴，与传统multi-fidelity optimization的区别由modern learned latent predictor、CEM elite dynamics和closed-loop control证据建立。
-
-**中等形态：只省计算、不提高success。**
-如果达到相同性能但显著减少refined calls/wall-clock，这仍可能是有价值的方法论文，前提是加速真实、实现通用、强于简单candidate reduction，并在多个任务保持质量。不要因为“只是效率”自动否定；Fast-LeWM本身就是效率+准确度型工作。
-
-**需要转向形态：cheap predictor的elite recall太低。**
-这时真正问题变成screening calibration。可以训练shared cheap head专门保证elite recall、用conformal/quantile residual做promotion interval，或者改成每轮先高保真校准少量sentinel candidates再决定refine set。不要硬缩M制造失败。
-
-### 两条线如何可能汇合
-
-PBB优化**训练时真实数据预算**，Elite-Preserving CEM优化**部署时模型计算预算**。如果两者都成立，可形成更大的统一观点：
-
-> **World-model resources should be spent around decision boundaries—environment interaction during learning, and predictive compute during planning.**
-
-但不要一开始强行合并。只有两条独立结果都成立、且共享candidate-boundary指标确实能解释收益时，再考虑统一论文；否则各自保持清晰。
-
-
-## Elite-set sufficiency：一个可以支撑方法的结构性事实
-
-CEM 对下一轮 proposal distribution 的更新只消费 elite candidate actions，而不是所有 candidate 的精确 cost。令 full high-fidelity evaluator 的 elite set 为 \(E\)，selective method 恢复的 elite set为 \(\hat E\)，两者大小都为 \(K\)。如果 \(E=\hat E\)，那么在相同 sampled candidate bank 下，**CEM 的下一轮 mean / population-variance update完全相同**；非elite candidate 的high-fidelity cost可以完全不知道。
-
-更一般地，若每个action-sequence向量 \(x_i\) 满足 \(\|x_i\|_2\le B\)，且两elite sets各错换 \(r\) 个candidate（对称差大小为 \(2r\)），则均值更新有直接界：
-\[
-\|\mu_E-\mu_{\hat E}\|_2 \le \frac{2rB}{K}.
-\]
-对二阶矩阵同理有 \(O(rB^2/K)\) 的扰动；协方差更新也因此随elite mismatch比例增长。这个推导很简单，**当前只作为待形式化/单元测试的设计依据，不登记为已证明论文定理**。
-
-这使H-B的目标从“近似所有high-fidelity costs”转成更贴合planner的任务：
-
-> **用尽可能少的 refined evaluations 保住 high-fidelity elite set。**
-
-因此 offline candidate-bank 的第一指标应是 elite recall / symmetric-difference，而不是全体candidate的MSE或Spearman。若这个接口成立，后续理论与算法都围绕elite-membership uncertainty自然生长。
-
-### H-C｜Selective Query Specialization：只在需要的地方任务化
-
-**母问题（R3）：** query-conditioned world model在当前任务上可能更强，但会不会为seen objective牺牲prediction reuse？
-
-直接近邻已经把“query决定需要区分什么”说清，所以我们不重复理论。方法假设是：保持query-agnostic predictive core，只在proposal/cost或少量predictor adapter上做任务化，并让adapter只在planner真正需要更细分辨率的candidates上启用。
-
-首轮E17比较COST-ONLY、PRED-ADAPTER、FULL-QUERY，seen/unseen goals与新query shift都测。若selective adapter能保住大部分seen gain、又明显降低unseen degradation或额外compute，这条线才值得扩；如果COST-ONLY已足够，就把“无需重学dynamics”的简化结论作为结果。
-
-### H-D｜Utility-Gated Recovery：不是error大就更新，而是问“这次干预值不值”
-
-**母问题（R5）：** feedback、TTT、replan、fallback都已有方法，但哪次deployment mismatch真正值得用哪种干预？
-
-E18先用matched fork ledger产生 `HOLD / FEEDBACK / SHORT-UPDATE / EXTRA-REPLAN` 的真实 `Δutility`，然后用部署可见的residual、elite margin、rank instability、progress等特征训练轻量router。核心不是检测异常，而是预测**intervention utility**。
-
-若固定feedback或固定update已经统治所有条件，保留简化结论；如果不同failure modes明显对应不同干预，并且router在预算匹配下优于always-X，才形成更大的可靠规划故事。
-
-### H-E｜Selective Revaluation：变化后重学哪一层
-
-**母问题（R2/R3/R5）：** reward/query变化、局部transition变化和全局dynamics shift不应该默认用同一种update recipe。
-
-E19把可更新对象分成TASK/COST、SHORT DYNAMICS、LONG-HORIZON、REPRESENTATION与FULL。先做固定module update对照；只有“minimal sufficient update set”在多个shift/task上稳定，才训练selector。
-
-这条线与经典successor revaluation的关系是直接继承：经典结果给出reward vs transition change的计算差异；我们要解决的是**modern compact visual WM中哪层参数/预测结构需要更新，以及如何以planning recovery而不是prediction loss衡量**。
-
-### 第一波/第二波资源排序不是科研评级
-
-当前工程上优先：
-1. E13 Stage A0：几乎零训练，最快验证candidate-stage fidelity；
-2. E16 Stage 0/1：branch bank + data acquisition，训练独立可大面积并行；
-3. E17/E18/E19：已有checkpoint可复用时并行小pilot。
-
-这个排序只由“单位时间信息增益”决定，不表示R3–R5价值较低。任何第二波pilot先出现强signal，都可以立即转为主线。
+方法是否继续由完整机制、强对照、随机性覆盖及下一修改依据判断，不按固定天数，也不由一篇近邻或一次null关闭母问题。人审出现有意义signal/叙事大改/manuscript-critical升级时再决定；现在没有确认novel方法，科学主张0。

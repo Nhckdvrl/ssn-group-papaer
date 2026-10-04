@@ -8,3 +8,5 @@
 - **研究边界：** 不要把coverage或动作激励解释当方向死亡；需要因果隔离才补相应匹配，不把残差效应当唯一论文。
 
 可根据结果修订或产生其他方案；此卡不是R1的唯一题目。
+
+2026-10-04人审：此母问题作为备选，重点移到短经验的实际可执行组合。Frozen demonstrated-time scalar不代表Bellman value/goal-policy/hierarchy；E14接RC-aux/PLDM/HIQL-HILP/OGBench强机制，匹配总transitions/覆盖与任务信息，保留真实bridge。learned value without WM与WM without learned value必要，标准长任务与future-imagegoal分开。当前未运行完整强baseline，不升级状态或science claim。

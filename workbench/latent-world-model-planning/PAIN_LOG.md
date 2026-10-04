@@ -97,3 +97,6 @@ P05/R3代价完整补记：[352episodes](results/E17_20261003_continuation_cost.
 P08/R4完整补记：[384episodes](results/E11_20261003_latent_observer.json)固定5步cadence，Pushnominal/gain/moment OBS4/4/3→PREFIX5 11/10/10，各16；prior/filter均不胜此classic强baseline。下一方法须对齐执行目标后再验证history/feedback，不调融合权重救null。原native task_distance含7D速度与未wrap角度，和success位置/角判据不同，不能从其均值归因失败尾部或纯position风险；原raw/读数保留，位置分解仅POST-HOC辅助。
 
 P04训练对象完整补记：[六格](results/E16_20261003_objective_matrix.json)NO ONE/TF/OPEN21/14/16，UNIFORM11/24/19，各48。branch效应随此训练设计变号，但ONE/LONG labels+SIGRegframes不匹配、onepipeline/weakbase，OPEN无稳定胜TF；只作数据利用×预测对象下一研究来源，不能直接升因果或顶会叙事。额外训练38强基线必须保留。
+
+
+2026-10-04 P04训练随机性补记：[固定data独立重训](results/E16_20261004_fixed_data_trainseeds.json)同BASE100/原norm/eval48/5650updates，seed0/1/2成功38/19/36。两个新run完整无failure，eval48计数/anchor SHA一致；完整独立optimizer/RNG审计待做。不筛19，不以38/36称充分训练必然接近released；计算曝光解释仍重要，但存在训练随机性需要分辨。E20三source方法matrix全部保留，增加数据与额外训练必须用PLAIN同曝光解释；不把弱source增益当机制成立。

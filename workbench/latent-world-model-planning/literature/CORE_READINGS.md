@@ -301,3 +301,20 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 [AD-WM v1§III–IV](https://arxiv.org/html/2609.30264v1)在residual predictor上加入预测transition的inverse/normalizedaction recovery，仿真jointencoder、部署丢head；matched数据/训练/规划与hardstart区分泛化，elite regret在自身encoder中度量，不跨表示MSE。继承inverse动力学而非发明动作对比；我们的data-only bank及候选promotion没有这个trainingdelta。
 
 [D-JEPA v1§4/A.2/D.1](https://arxiv.org/html/2609.24749v1)已经有双预测几何、scale-free ranks、wholecandidate-set relationaloperator、boundedcorrection和localboundary监督，再restricted predictoradaptation；执行outcomes给监督、heldoutcalibrationgate、完整256starts确认与sharednestedcandidate子集。故不能claim第一次candidate-boundary或双模型决策；A6目前仅预测对象筛选/真实调用经济学，不读executionoutcome，不把reference rank当任务真值。作用不同、相关很近，优先作为strongneighbor定位而非关闭R2。
+
+
+## 2026-10-04人审后：动作后果与compute定位纠正
+
+此次以用户粘贴报告正文为反馈；未取得链接中的23页PDF，不能把其阅读量声称为本agent完成。
+
+[DeepJEPA v1 §3.1–3.3/§4](https://arxiv.org/html/2610.00368v1)直接以candidate–time pair选择recurrent depth，保持外部CEM预算，并分析elite margin、cost correction、elite不变时mean/covariance不变；报告seed pairs和threshold sweep。我们的旧“candidate vs transition”区分不充分，elite-set sufficiency也不是新贡献。R2继续，但需要真实high-fidelity优势/actual latency或具体训练机制，而非换轴名。
+
+[SMWM v1 §3/§6](https://arxiv.org/html/2606.20104v1)以真实端点inverse MSE联合encoder/forward/inverse，兼作anti-collapse与action表示；明确限制为不同动作同可见变化、single frame不可识别速度。这为E20提供问题边界，不支持“首次动作不可恢复”。概率inverse可以表达条件均值/分布，必须作为强对照，不能由简单代数不等式判inverse普遍失败。
+
+[AD-WM v1 §III/IV-C](https://arxiv.org/html/2609.30264v1)继承inverse但迁到predicted transition，结合residual predictor/normalized learnedaction recovery；其Inv不是raw-command head的同义词。matched结构/梯度路径/目标标准化应核对；自写raw Gaussian inverse只能叫组件对照，不能宣称完整复现/战胜AD-WM。
+
+[FIRM v1 §1/4/AppendixD](https://arxiv.org/html/2609.22816v1)已同时处理配置/历史动态与common-reset实际分支，并明确public setter不等于完整solver记忆恢复。E20重新生成相同合法warm history、保留多步动态，仅建立新的实验契约；这不是分支首次发现。物理训练监督权限与方法结构必须匹配。
+
+[Bilinear WM v1 §3/5/B.2](https://arxiv.org/html/2609.36305v1)将encoder、normalized action map与高效控制一起设计；R^TR受非退化软约束，实际planner含reduced action space、finite-difference sensitivity、damping/line search。人审的多对一冲突推导有条件，不直接否定其实际soft-constraint模型；学习其表示—控制共同设计，而不只拿一个外部head比较完整系统。
+
+[OGBench原论文](https://arxiv.org/abs/2410.20092)作为备选短片段组合的标准goal-conditioned/task基线入口；标准benchmark与本地future-imagegoal必须分开报告。尚未声称本地安装、数值复现或完成HILP/HIQL；冻结时间回归负结果没有覆盖Bellman价值传播。

@@ -37,7 +37,11 @@
 
 [资源约束](../../RESOURCES.md)：研究室十几张 A100、8 张 RTX PRO 6000；实习处16张 H20；弱网络/弱磁盘/弱跨节点。使用独立单卡/单节点任务、节点内缓存、checkpoint 复用；不假定跨地点数据可混用。并行数由实际授权和 I/O 决定，不把“只有两条 ACTIVE”误读成“只能跑两个实验”。
 
-## 当前最值得开挖的两个方法假设
+## 当前优先：有限数据下真实动作后果学习
+
+2026-10-04人审后，优先[I14/E20](experiments/E20-action-consequence-learning.md)：同样合法common-reset分支数据，联合训练表示/动力学，比较plain prediction、误差重权、后果目标及deterministic/probabilistic inverse；完整近邻与native闭环仍是必要证据。备选[I09/E14](experiments/E14_behavior_policy_semantics_intervention.md)短片段可执行组合，需真正value传播/goal-policy强对照。基线校准与方法开发并行，PBB v0/self-consistency/tiny-update当前降序，不关闭R1–R5。
+
+## 保留的首轮方法假设（当前降低追加优先级）
 
 **H-A / R1：Planner-Boundary Branching (PBB)。** 在相同新增环境交互预算下，把same-state counterfactual branch数据优先采在CEM candidate ranking不稳定、可能改变selection的state；先做data-only方法，和random/coverage/global uncertainty/task-aware acquisition比较。近邻OnlineWM、Task-Sufficient WM、ToIA、D-JEPA/AD-WM提供强支点而非禁区。
 
@@ -73,7 +77,8 @@
 - [E13 A6两模型候选审计](results/E13_20261003_two_backbone_reference.json)已完成并独立复算：TOP20%对LeWM参考elite recall导航近/远=.777/.469、操作=.510/.190；实际参考批次900→90仍约42–44ms。参考模型排序不是真实后果，不支持加速或控制收益。
 - [E13 A7真实候选后果](results/E13_20261003_candidate_quality.json)192branches/5545steps完整落盘：Fast/LeWM近目标导航13/13、操作15/11（各16）；factual四组均16/16。上传前计数/hash核对通过，完整独立trajectory/statistics校对待做；不是两种原生CEM控制器比较。
 - [E17任务几何代价](results/E17_20261003_task_factor_cost.json)384episodes/24005steps完整落盘：导航远NATIVE25/PREFIX5/REAL-GEO/MIX-GEO/REAL-JOINT/MIX-JOINT=10/7/11/11/12/12；操作近14/11/9/9/10/9（各16）。尚无跨任务稳定收益；extra task labels、共享首计划、训练量边界见卡，独立完整校对待做。
-- E16曝光控制未完整结束：30epochs快照37/48已保存，100epochs终点没有complete；上传时本机无对应训练进程，不能标仍在运行或将partial当整批结果。固定数据trainseed1/2脚本与CPU预控已备好，没有已核对GPU训练结果。精确恢复入口见日志。
+- [E16固定data独立trainseeds](results/E16_20261004_fixed_data_trainseeds.json)原seed0/新seed1/2为38/19/36（各48），新两个run完整，保留全部种子；不能称充分训练稳定等效released。曝光已从30epochs完整checkpoint恢复到锁定100epochs，终点仍未complete。
+- [E20新联合训练预控](results/E20_20261004_joint_training_preflight.json)CPU/CUDA实际五方法jointgradient/loss/索引/query控制全部PASS。两任务88anchors/1056真实合法branches/40040steps已落盘；新五arm×三个独立source的A100训练matrix开始首任务，不是新方法结果，待同数据强plain与native闭环。
 - D5/D6 问题—方法地图、近邻定位、可生长方案和实验入口：已整理，随实验更新。
 - 尚无候选论文；目标会议具体届次由证据成熟度决定，不按文献数量或“没有撞车”决定。
 

@@ -1,6 +1,6 @@
 # 实验索引｜菜单，不是关卡链
 
-每个ID只有一个当前文件。E00两任务原生preflight、E13 A0–A7、E16隔离后全部三pipeline/数据×compute/六格objective、E17 proposal/continuationcost/任务几何、E11observer、E18连续适配已完整落盘；A7与任务几何仍待完整独立校对。E16曝光控制只完成30epochs快照，100epochs未complete且上传时本机进程已不在；不能当完整结果。固定数据trainseed1/2准备完成，未有已核对GPU结果。旧optimizer alias比较仍降级，以公平重跑为准。其余按卡内状态，可在运行前修订；新方法与解释实验可以并行。
+每个ID只有一个当前文件。E00/E13 A0–A7、E16隔离重跑/数据×compute/objective/固定data新seed1/2、E17 proposal/cost/geometry、E11observer、E18连续适配已完整落盘；部分完整独立科学校对待做。E16曝光从30epochs恢复到原锁定100epochs，终点运行中；E20合法数据bank和joint CPU/CUDA预控完成，五方法×三个source训练开始，尚无方法结果。旧optimizer alias比较仍降级。当前优先I14/E20动作后果学习，备选I09/E14短经验可执行组合；旧PBB/自一致性/tiny-update降序，R1–R5持续开放。
 
 | ID | 当前文件 | 用途 |
 |---|---|---|
@@ -13,6 +13,7 @@
 | E17 | [Selective Query Specialization](E17_query_placement_reuse.md) | R3；I10 |
 | E18 | [Utility-Gated Recovery](E18_trust_recovery_routing.md) | R5；I11 |
 | E19 | [Selective Revaluation](E19_revaluation_frontier.md) | R2/R3/R5；I13 |
+| E20 | [真实动作后果](E20-action-consequence-learning.md) | 当前优先R1/R2/R4；I14 |
 
 E02/E05/E06/E07候选/支持/oracle等诊断、E08–E10 negative实验、E12/E15历史后续方法卡已保留在[历史实验目录](../../../archive/latent-world-model-planning/pre-consolidation-2026-10-02/experiments/)，可以按需要复用，不再是许可门槛。E03/E04原metadata-only设计的无效记录保留，不重写成已运行null。
 
