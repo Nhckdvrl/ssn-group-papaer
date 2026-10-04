@@ -157,3 +157,46 @@ RTX重算512条旧baseline的success全部相同，但4条重规划的完成步�
 主读数：all/near/far成功、对EX25 paired48 help/harm/95CI、同起点首次plan逐项一致、envsteps、replan次数。噪声地板只anchor区间，一个trainseed；预先全部cell保留，不按近/远筛反馈或调阈值。昂贵fullH25实际算完再丢prefix，所以timing不能夸为最优implementation；若EX5有效，后续先测firstchunk H1短调用与fullH5第一chunk实际parity，成熟廉价固定feedback必须作为强基线。原RTX空GPU1/3各独立task，隔离INTACTvenv/source/环境不变，无router。
 
 决策表：fixedfeedback统一主导→以该固定策略为支点，不硬造gate；help/harm随实际state异质→下一步同state replay fork ledger，futureutility只离线label，部署feature仅observable残差/goal progress/actor uncertainty；feedback无收益→转向data/representation/可复用cost设计，不关闭R5。只是跨轴exploratory test，无科学主张/narrative/state升级。
+
+
+### F1：强联合模型的同状态恢复效用与干预类型（2026-10-05，运行前）
+
+对应I11/P04/P05/P08，母问题R5兼R4：真实观测误差何时值得改变已有计划？F0仅wholepolicy频率，不能拿不同controller走出的不同state作同state utility label。F1固定完整INTACT两task/original48/100step/首25plan；每起点先执行同一plan前10primitive，然后same reset+完整prefix replay恢复完整本次物理state/pixels，在t10 fork比较三种15step response：HOLD=旧plan剩余15；REFRESH15=真实当前像素/causal最后5已发command，官方full25plan首15；REFRESH5=相同freshplan首5、每5再次观测，执行共15。t25以后三者均按相同EX25 basepolicy继续至100；不是比较三种整个episode频率，也不把feedback+新action plan称纯observer因果。REFRESH15与HOLD相同新动作window、REFRESH5更多调用；额外compute完整报告，不称等墙钟。
+
+两task各全部48×nominal/gain0.7/physics×3=432，总864continuations；hidden shift从新执行第6步起：gain对发出的command乘.7；Nav physics为command+[.15,0]，Push为block moment×2且mass不改。模拟器仅用于实施shift和恢复，controller/feature不读shift/physics参数；真实past是agent已发command，而不是不可见scaled执行量。原warm10不shift。所有absorbing prefix成功保留；不是按失败筛state。原发布预训练未知、一个trainseed/48开发goal，不当确认或novel方法。
+
+阳控：原两taskCPU/CUDA/48warm与完整actor grammar守卫先过；所有初始plan CUDA bitexact F0/EX25；官方get_action(prefix_actions=首2macro,horizon3)必须bitexact原tail15，手算rollout_one_step首5/10与同原actor递推一致。nominal prefix必须bitexact原EX25trace前10或吸收点；每condition prefix独立replay全部state/pixel bitexact，shift在t5以前与nominal exact。事前报告每condition真正改变轨迹的比例、Push接触与moment变化，零效果起点仍保留，不依恢复收益择shift。全部source/frozen BN/weights unchanged；执行budget、angle+position native成功、pre-success停止守卫沿用，不允许放松。
+
+部署feature在fork未来执行前存：5/10步模型预测与真实编码residual、latent goal progress、actor clamped Gaussian variance、旧tail与新plan首15分歧；只用真实已观测images/已发commands/原model预测/current goal。future success和state仅离线标签，feature生成函数不接收condition、特权state或未来数组。不训练gate，不用这批拟合阈值后重报同批效用。
+
+主读数：各task/condition全48 success、vsHOLD help/harm/paired anchor bootstrap95CI、near/far全分母、envsteps/replaysteps/modelcalls；fork前成功单列，不丢失。独立reader重生原full25D或2D native成功、所有command因果历史、所有prefix与trace/sourceSHA、首次REFRESH15/5 proposal exact、t25后EX25协议。48anchor CI条件于一个model，condition间以sameanchor clustered，不把864当独立训练。噪声以paired episode区间，不按partial挑方法。
+
+决策：固定response在全部主要条件主导→保留强简单baseline，不造router；显著help/harm共存且可见features可区分→新增独立episode same-state数据，再比较固定/阈值/近邻的utility选择；只有人工shift收益→明确适用边界，追加自然失败/真实数据而非缩成moment特例；全部null→用结果转向CF监督/表示和task reuse，不关闭R5。最新cross-domain SA/DEHP/attention chunking已有sensitivity/uncertainty/adaptive length，后续不能claim首次adaptive chunking。两个授权空原RTX0/2，各独立task，无新ACTIVE资源；raw unique20261005-E18-intact-forks-{task}。
+
+
+F0完整192新episode+96原EX25 native参照全部独立source/causal过去5/首proposal bitexact/native真实成功/全trace审计PASS：[结果](../results/E18_20261005_intact_feedback_frequency_results.json)。Nav EX25/5/1=37/28/30，near22/18/19、far15/10/11；EX5−25=−18.75pp95CI[−35.42,−2.08]，help4/harm13。Push25/29/27，near22/23/21、far3/6/6；EX5−25=+8.33pp[2.08,16.67]，help4/harm0；EX1−25两task CI含0。EX5 calls Nav567/Push573，EX1为2707/2881（EX25原87/129）；新solver平均约.18sec，旧EX25无timing，不claim加速/最优实现。所有48/initial1保留、single trainseed、开发任务区间，不升级科学主张。wholepolicy反馈异质给F1动机，不等价同state utility gate证据。
+
+F1首launcher的源码多一个右括号，py_compile失败但串行shell继续launch；两个wrapper在import/model/预控前退出，效用0。原source/SHA/两logs保存raw20261005-E18-intact-fork-launch-syntax-failure。修正后使用subprocess check=True强制编译成功才launch，不改方法/目标/guard；新日志/tmp/latent-E18-intact-forks-{task}-RTX-retry1.log，原RTX0/2 wrapper3652205/3652206，实际CUDA context建立。完整864未齐，不把PID/部分guard当效用；后续reader整批审计。
+
+
+F1 API校对：首feature生成把原Gaussian tuple函数inverse_action_distribution当dictionary用；guard在anchor0/preflight内拒绝，两个task均正式continuation rows0。实际源码+failure+launcher完整保留raw20261005-E18-intact-forks-{task}。已读原jepa/module确认为inverse_action_parameters的规范dictionary（同原actor/clamped std）；v2只改这个API和新unique路径，不改任务/计划/feature定义/容差。v2两task全部144prefix组的exact replay、shift t5前一致、原nominaltrace、firstproposal/predictedtail/native/模型不可变全部PASS；实际432/task正在跑。原RTX0/2 wrapper3652843/4，logs/tmp/latent-E18-intact-forks-v2-{task}-RTX.log；独立intact_recovery_forks_audit.py准备好，整批complete齐才读效用。
+
+
+### F2：反馈改变什么——保留世界预测参考与重新追goal（2026-10-05，运行前）
+
+对应I11/R5，兼R2/R3的预测对象复用；承接INTACT的共享local/goal action law及RWM的reference tracking，**不claim首次用世界预测作控制target/新RWM**。F0导航更密反馈有损，不够说明反馈本身坏；换最终goal action plan可能改变原行为/承诺。F2复用F1相同原48×3condition/common10prefix/response至25/EX25suffix，加入两个训练free arm：WAYPOINT-FEEDBACK每5步用真实当前image编码、原first25plan预测的下一5step latent reference、真实已发last5commands查询原inverse_action_parameters mean；WAYPOINT-OPEN以同原预测当前latent代替真实当前pixel，其余target/history/预算相同。reference由原goal actor full25计划的官方world recursion产生，全部是model prediction，不能读真实future、data-state或shift参数。
+
+每task48×3×2=288，总576；与F1 HOLD/REFRESH15/REFRESH5同state ledger全矩阵比较。三次response决策均用actor output5primitive，不把goal5回路的25step生成冗余计算当公平速度优势；分别记encode/head/worldcall/model seconds，任何速度主张需优化后的REFRESH5强对照。OPEN有actual past commands，但不看新image，不误称无信息openloop。只是local-vs-global目标/实际反馈的exploratory factorial，不要靠融合系数、τ或挑subset救方法。
+
+阳控：source与原F1/preflight严格same、48warm/prefix全state/pixels exact；新actor接口actual CPU/CUDA goal/physical-next query手算five-slot graph/mean与clamped std一致；global-goal query mean bitexact原get_action首macro。CUDA原firstplan与F1 reference逐项exact，完整5×rollout_one_step reference首0/5/10必须bitexactF1 feature expected_embeddings，全部predictor/encoder/BN immutable。保存全部6 latent states、实际response current/target/previous action embedding/returned mean/logstd供独立reader重算typed graph。同model的forward→inverse cycle误差只记录，不假定为0或拿失败消融掉。
+
+主读数为全48 per task/condition成功、vsF1 HOLD及REFRESH5 help/harm和paired95CI、WAYPOINT-FEEDBACK vsOPEN、native位置/角度criterion、原全部initial/prefix-success和source/hash；同state吸收prefix全保留。预训练未知、一个modelseed/开发48不能作论文确认。若feedback tracking真有跨条件收益→与RWM/成熟trajectory tracking完整方法及强固定feedback比较，新的同budgetepisode、多个published/trainseeds、第二family确认；若OPEN一样有效→localtarget而非feedback解释；若两者弱→inverse读取想象局部target仍不可用，转向训练/CF监督/task复用，不连续调trace长度，不关闭R2/R5。原RTX1/3授权空卡，各独立task；raw unique20261005-E18-intact-waypoints-{task}。
+
+
+F1全部864 DONE，v2独立reader完整native真实成功/因果commands/隐藏applied/全部prefix与feature/source/首重算proposal/hash/control协议审计PASS：[结果](../results/E18_20261005_intact_recovery_fork_results.json)。HOLD/REFRESH15/REFRESH5各48：Nav nominal37/37/37、gain32/33/33、wind34/36/33；Push nominal25/26/28、gain16/19/21、moment20/22/19。Push gain REFRESH5−HOLD+10.42pp95CI[2.08,18.75]，help5/harm0；其他主要整体差CI含0。先知union比bestfixed：Nav三condition均0，Push分别+1/+1/+3条，**不足支持复杂gate**；未来标签oracle不是可部署能力。
+
+真实shift从t5改变prefix轨迹的比例：Nav gain44/48、wind43；Push gain47、moment24；零变化和prefix吸收仍保留。Nav nominal commonprefix吸收9/48、Push2/48（两taskinitial1）；数据不是864独立trainseed。F1 nominal没有Nav success harm，但F0与F1的反馈起始点/介入时长都不同，不能说harm只在t25后。下一F2比较不同target使用，而不是局部调频率/router。
+
+F1首独立reader按NumPy均值重算小goal_progress时，两个较大CUDA float32 MSE相减的reduction误差3.58e−7超reader容差；原source/失败留20261005-E18-intact-fork-audit-reduction-failure，未写正式result。v2先按原容差独立校对两个component MSE，再重生这两个已验证scalar的float32减法，不放宽任何执行/状态/模型guard，训练/轨迹/原feature不改。已完整PASS；科学主张0保持。
+
+F2已在原RTX1/3实际启动wrapper3654985/6，logs/tmp/latent-E18-intact-waypoints-{task}-RTX.log；actualCPU/CUDA typed-graph/goal-native mean/std、整144prefix/48reference全部预控PASS。两task完整576待齐，用intact_waypoint_recovery_audit.py读全matrix并CPU独立重算全部保存的local query；不能拿Nav先完成当赢家。

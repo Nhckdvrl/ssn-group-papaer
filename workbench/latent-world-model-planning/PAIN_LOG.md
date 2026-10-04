@@ -173,3 +173,9 @@ A12覆盖pending：[全部288审计](results/E13_20261005_pusht_object_control_r
 
 
 A11操作全2904query完成并独立审计：[H3完整结果](results/E13_20261005_pusht_full_branch_matrix_results.json)。旧12query-state×11goals含goal成功RELEASED69/PLAIN62/GLOBAL54/CENTER53/DET49/PROB44（各132），方法未改善。leave-goal-out真实native可行支持只有8/132=6.06%；全部模型同物理候选，所以低成功有支持上限，不能误解释成ranking/geometry唯一机制。chosen3/2/1/2/2/5，oracle5/4/3/3/3/4；这不是strongmethod证明。old32干预train/12query、一个transferseed、publishedpretrain未知保持，全部状态goal保留。A11导航/操作均已完成，诊断不等于新的control方法；下一步跨完整强支点的实际feedback/utility axis E18F0，不连续救44bank。
+
+
+2026-10-05 P04/P05/P08｜完整联合模型的wholepolicy反馈频率并非统一改善。E18F0全192新控制+96原参照独立审计PASS：Nav EX25/5/1=37/28/30，Push25/29/27（各48）；EX5−25 Nav−18.75ppCI[−35.42,−2.08]、help4/harm13，Push+8.33[2.08,16.67]、help4/harm0。EX1更多调用未统一胜EX5；单发布seed/开发48，不称feedback无用/可靠router。沿R5/R4同state fork分辨一次换计划、继续已有计划与多次反馈；与SA/DEHP/attention adaptive chunking保持定位，futureutility不能作feature。
+
+
+2026-10-05 P04/P05/P08｜同state有效恢复空间比wholepolicy频率更有限。E18F1全864独立auditPASS，HOLD/REFRESH15/REFRESH5：Nav nominal37/37/37、gain32/33/33、wind34/36/33，Push25/26/28、16/19/21、20/22/19（每48）。Push gain连续反馈+10.42ppCI[2.08,18.75]，但oracle vsbestfixed Nav0/0/0、Push+1/+1/+3，当前不能据此造复杂gate。momentshift实际改变24/48prefix，不筛零效果/吸收state；F0/F1介入起点/时长不同，不能把Nav harm定位为仅latefeedback。下一F2借RWM reference+完整actor localtarget复用，真实效用胜过模型误差，science0不升。
