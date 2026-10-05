@@ -22,6 +22,8 @@ N = int(os.environ.get("N_BASES", 200)); SEED0 = int(os.environ.get("SEED0", 180
 OUT = ROOT / "data" / os.environ.get("OUT", "numcls_pilot_T16"); OUT.mkdir(parents=True, exist_ok=True)
 attr_bank, label_bank = load_lexicon(os.environ.get("LEXICON"))
 HEADER = "Below are examples of numbers and their labels.\n\n"
+ALLF = ["parity_nat", "parity_non", "mag_non", "mag_nat"]
+FORMATS = os.environ.get("FORMATS", "parity_nat,parity_non,mag_non").split(",")
 
 
 def render(xs, ys, lw, q):
@@ -35,9 +37,9 @@ def render(xs, ys, lw, q):
 def main():
     conds = bd.conditions()
     rows = []
-    for fmt in ("parity_nat", "parity_non", "mag_non"):
+    for fmt in FORMATS:
         for i in range(N):
-            seed = SEED0 + 1000 * ("parity_nat", "parity_non", "mag_non").index(fmt) + i * 7919
+            seed = SEED0 + 1000 * ALLF.index(fmt) + i * 7919
             rng = np.random.default_rng(seed)
             cls = (lambda x: x % 2) if fmt.startswith("parity") else (lambda x: int(x >= 50))
             pool1 = [x for x in range(20, 80) if cls(x) == 1]; pool0 = [x for x in range(20, 80) if cls(x) == 0]
@@ -47,6 +49,8 @@ def main():
             qc = int(rng.integers(2)); q = int(p1.pop() if qc == 1 else p0.pop())
             if fmt == "parity_nat":
                 lw = ["even", "odd"]; s = 0 if i % 2 == 0 else 1     # A: label = class xor s (s=0 correct)
+            elif fmt == "mag_nat":
+                lw = ["small", "large"]; s = 0 if i % 2 == 0 else 1
             else:
                 while True:
                     lw = list(rng.choice(label_bank, 2, replace=False))

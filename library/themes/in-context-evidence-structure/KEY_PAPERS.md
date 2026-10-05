@@ -111,3 +111,23 @@
 ## Qiu et al. — *When Correct Demonstrations Hurt*（2605.26350, 2026）`[摘要]`
 - 正确但输入被扰动的 demo 也会伤 ICL（contextual evidence shift）：demo 的效用取决于它如何改变“证据混合”，与正确性分离。
 - 对我们：与 exemplar/相似度视角一致——demo 的影响由其在表示空间中与 query 的关系决定。
+
+## Yin & Steinhardt — *Which Attention Heads Matter for In-Context Learning?*（ICML 2025）`[摘要+引言]`
+- 12 个模型（70M–7B）、45 个自然语言 ICL 任务：归纳头与函数向量（FV）头几乎不重叠；消融 FV 头显著伤 few-shot ICL，消融归纳头影响有限；部分 FV 头在训练中由归纳头演化而来。
+- 对我们：他们的任务多为“变换”（反义词、翻译、大写…）。我们的边界（变换时间敏感 / 分类时间盲）给出一个新的机制假设——**FV 式的函数推断在 demo 间做时间敏感整合，归纳/检索式的按内容复制则对时间盲**。可检验：从 suffix vs disp 的 context 抽 FV 并 patch 到零样本 prompt。
+
+## Todd et al. — *Function Vectors in Large Language Models*（ICLR 2024）`[摘要+引言]`
+- 因果中介分析找到少数注意力头，其平均输出（FV）可在零样本 context 中触发任务执行；FV 可组合。
+- 对我们：提供抽取/patch 函数向量的工具；问题是 FV 如何在 demo 之间聚合证据（对时间结构是否敏感）——这在文献中没有人问过。
+
+## Hendel, Geva, Globerson — *In-Context Learning Creates Task Vectors*（EMNLP 2023 Findings）
+- ICL 可压缩为一个 task vector θ(S)，再作用于 query。
+- 对我们：θ(S) 对 S 的顺序/时间结构的依赖从未被刻画；我们可以测 θ(suffix_4) vs θ(disp_4)。
+
+## Pan, Gao, Chen, Chen — *What ICL “Learns” In-Context: Disentangling Task Recognition and Task Learning*（ACL Findings 2023）`[摘要]`
+- 分类任务上：TR（随机标签/保留语义先验）vs TL（抽象符号标签学新映射）；TL 随规模与 demo 数增长。
+- 对我们：我们的分类条件同时覆盖 TR+TL（自然标签 positive/negative、even/odd、small/large）与纯 TL（nonce 标签）——两者都时间盲；时间敏感与否不由 TR/TL 决定，而由“分类映射 vs 全局变换”决定。
+
+## Wei et al. — *Larger Language Models Do In-Context Learning Differently*（2023）`[摘要]`
+- 大模型能在翻转标签下覆盖语义先验、学会 semantically-unrelated labels。
+- 对我们：模型能学会翻转映射（Wei），却不知道翻转**何时**发生——在时间维度上，翻转证据被与原映射证据混在一个集合里。

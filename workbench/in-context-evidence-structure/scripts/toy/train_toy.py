@@ -19,38 +19,37 @@ import torch
 import torch.nn as nn
 from transformers import GPT2Config, GPT2LMHeadModel
 
-NA, T = 5, 16
+import os as _os
+NA, T = int(_os.environ.get('TOY_NA', 5)), 16
 L0, NL = 10, 24                 # label token ids [10, 34)
 SEQ = (NA + 1) * T + NA         # demos + query attributes
 VOCAB = L0 + NL
 
 
 def sample_family(fam, rng, B):
+    """Vectorised sampler (same generative process as the documented families)."""
     X = rng.integers(0, 2, size=(B, T + 1, NA))
-    labs = np.zeros((B, T), int)
-    pairs = np.array([rng.choice(NL, 2, replace=False) for _ in range(B)])
+    r = rng.random((B, NL)); pairs = np.argsort(r, axis=1)[:, :2]        # 2 distinct labels per sequence
     eps = rng.choice([0, .05, .1, .2], size=B)
-    for b in range(B):
-        if fam == "F2":
-            lam = rng.choice([0, .05, .1, .2]); st = rng.integers(2)
-            for t in range(T):
-                if t > 0 and rng.random() < lam:
-                    st = 1 - st
-                labs[b, t] = st
-            qrule = None
-        else:
-            a, s = rng.integers(NA), rng.integers(2)
-            lam = 0.0 if fam == "F1" else rng.choice([.05, .1, .2])
-            for t in range(T):
-                if t > 0 and rng.random() < lam:
-                    while True:
-                        a2, s2 = rng.integers(NA), rng.integers(2)
-                        if (a2, s2) != (a, s):
-                            a, s = a2, s2; break
-                labs[b, t] = X[b, t, a] ^ s
-        flip = rng.random(T) < eps[b]
-        labs[b] = labs[b] ^ flip
-    return X, labs, pairs
+    if fam == "F2":
+        lam = rng.choice([0, .05, .1, .2], size=B)
+        sw = rng.random((B, T)) < lam[:, None]; sw[:, 0] = False
+        st0 = rng.integers(2, size=B)
+        labs = (st0[:, None] + np.cumsum(sw, 1)) % 2
+    else:
+        lam = np.zeros(B) if fam == "F1" else rng.choice([.05, .1, .2], size=B)
+        a = np.zeros((B, T), int); s = np.zeros((B, T), int)
+        a[:, 0] = rng.integers(NA, size=B); s[:, 0] = rng.integers(2, size=B)
+        for t in range(1, T):
+            sw = rng.random(B) < lam
+            na = rng.integers(NA, size=B); ns = rng.integers(2, size=B)
+            same = (na == a[:, t - 1]) & (ns == s[:, t - 1])
+            ns = np.where(same, 1 - ns, ns)                                 # ensure a different rule
+            a[:, t] = np.where(sw, na, a[:, t - 1]); s[:, t] = np.where(sw, ns, s[:, t - 1])
+        labs = X[np.arange(B)[:, None], np.arange(T)[None, :], a] ^ s
+    flip = rng.random((B, T)) < eps[:, None]
+    labs = labs ^ flip
+    return X, labs.astype(int), pairs
 
 
 def to_tokens(X, labs, pairs):
@@ -85,6 +84,7 @@ def main():
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
+    torch.backends.cuda.matmul.allow_tf32 = True; torch.backends.cudnn.allow_tf32 = True
     cfg = GPT2Config(vocab_size=VOCAB, n_positions=SEQ + 8, n_embd=a.d, n_layer=a.layers, n_head=8,
                      resid_pdrop=0.0, embd_pdrop=0.0, attn_pdrop=0.0)
     model = GPT2LMHeadModel(cfg).cuda()
@@ -94,7 +94,8 @@ def main():
     t0 = time.time()
     for step in range(a.steps + 1):
         toks = torch.tensor(make_batch(a.mix, rng, a.bs)).cuda()
-        logits = model(toks).logits                               # B x S x V
+        with torch.autocast("cuda", dtype=torch.bfloat16):
+            logits = model(toks, use_cache=False).logits.float()  # B x S x V
         lg = logits[:, pos, :]                                    # predictions at last attr of each demo
         tgt = toks[:, pos + 1]
         loss = nn.functional.cross_entropy(lg.reshape(-1, VOCAB), tgt.reshape(-1))
