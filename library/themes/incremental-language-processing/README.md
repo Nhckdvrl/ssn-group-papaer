@@ -4,6 +4,8 @@
 **Primary territory card:** [T15 card](../../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)  
 **Workbench:** [incremental-interpretation-revision](../../../workbench/incremental-interpretation-revision/README.md)
 
+**持续阅读与解释地图：** [FIELD_MAP.md](FIELD_MAP.md)，记录实际阅读范围、近邻贡献归属、竞争解释和当前实验的信息价值。推荐方向不等于预定paper idea；不将校准当停步门槛。
+
 ## Scope
 Language-model processing as evidence arrives over time:
 - temporary ambiguity and commitment;

@@ -69,9 +69,15 @@ def main():
     elif args.experiment=='E06':
         from attachment_audit import analyze_attachment
         result=analyze_attachment(rows)
+    elif args.experiment=='E07':
+        from native_audit import analyze_native
+        result=analyze_native(rows)
+    elif args.experiment=='E08':
+        from focus_audit import analyze_focus
+        result=analyze_focus(rows)
     else:
-        from stimuli import analyze_jurayj
-        result=analyze_jurayj(rows)
+        from revision_map import analyze_revision
+        result=analyze_revision(rows)
     result.update(predictions_sha256=sha(args.predictions),row_count=len(rows),bootstrap_seed=20261005,bootstrap_draws=10000)
     args.out.write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result.get('gate_inputs',{}),indent=2))

@@ -76,7 +76,7 @@ def claims(row,family,condition):
         final=terminal(join([row['NP/Z'],row['Verb'],row['Rest']]))
         return initial,final,{
             'lingering':f'In this sentence, is "{row["NP/Z"]}" the direct object of "{row["Transitive Verb"]}"?',
-            'intended':f'In this sentence, is "{row["NP/Z"]}" the subject of the main clause?',
+            'intended':f'In this sentence, is "{row["NP/Z"]}" the grammatical subject of the verb phrase "{join([row["Verb"],row["Rest"]])}"?',
             'lingering_semantic':f'Does this sentence state that {initial[0].lower()+initial[1:-1]}?',
             'intended_semantic':f'Does this sentence state that {final[0].lower()+final[1:-1]}?'}
     if family=='NPS':
@@ -89,7 +89,7 @@ def claims(row,family,condition):
         final_sem=terminal(join([row['Subject'],verb,'that',row['NP/S'],row['Disambiguator'],row['Rest']]))
         return initial,final,{
             'lingering':f'In this sentence, is "{row["NP/S"]}" the direct object of "{verb}"?',
-            'intended':f'In this sentence, is "{row["NP/S"]}" the subject of the clause "{join([row["Disambiguator"],row["Rest"]])}"?',
+            'intended':f'In this sentence, is "{row["NP/S"]}" the grammatical subject of the verb phrase "{join([row["Disambiguator"],row["Rest"]])}"?',
             'lingering_semantic':f'Does this sentence state that {initial_sem[0].lower()+initial_sem[1:-1]}?',
             'intended_semantic':f'Does this sentence state that {final_sem[0].lower()+final_sem[1:-1]}?'}
     verb=row['Unambiguous verb'] if condition=='blocked' else row['Ambiguous verb']
@@ -105,7 +105,7 @@ def claims(row,family,condition):
     simple=terminal(join([subject,row['Disambiguator'],row['End']]))
     return initial,final,{
         'lingering':f'In this sentence, is "{verb}" a finite active verb with "{subject}" as its subject?',
-        'intended':f'In this sentence, is "{verb}" part of a passive relative clause modifying "{subject}"?',
+        'intended':f'In this sentence, is "{verb}" part of a relative clause modifying "{subject}"?',
         'lingering_semantic':f'Does this sentence state that {initial[0].lower()+initial[1:-1]}?',
         'intended_semantic':f'Does this sentence state that {final[0].lower()+final[1:-1]}?',
         'simple':f'Does this sentence state that {simple[0].lower()+simple[1:-1]}?'}
@@ -179,22 +179,29 @@ def validate(rows,components,cache):
                 canonical_parity='all variants match pinned make_sents.py after whitespace / repeated-final-period normalization',
                 flags=FLAGS,unsafe_initial_propositions=UNSAFE_INITIAL_PROPOSITIONS,hash_audit='verified before loading')
 
-def tasks_jurayj(path,tokenizer,experiment):
+def tasks_jurayj(path,tokenizer,experiment,system_frame='both',families=None):
     rows=[json.loads(line) for line in path.read_text().splitlines()]
-    # Unverified/ill-formed sentences remain in the generation ledger, never scored.
-    rows=[r for r in rows if r['clean_stratum'] and not r.get('question_audit_flag')]
+    assert rows and all('step_request_sha256' in r for r in rows),'E01 requires independent Step5 annotation'
+    # Historical agent flags are provenance only. Exclusion follows Step5's annotation.
+    rows=[r for r in rows if r['eligible']]
+    if families:rows=[r for r in rows if r['construction'] in families]
     root=verified_root(CACHE,'amouyal');tasks=[]
-    for order,file in [('reg','prefixes.json'),('rev','prefixes_rev.json')]:
-        pref=json.loads((root/'prefixes'/file).read_text())[0]
-        for r in rows:
-            q=pref['question'].replace('SENTENCE',r['sentence']).replace('QUESTION',r['question'])
-            tasks.append((r,f'raw_{order}_0',pref['system']+'\n\n'+q+'\n\n'+pref['suffix']))
+    pref=json.loads((root/'prefixes/prefixes.json').read_text())[0]
+    systems=['neutral','upstream'] if system_frame=='both' else [system_frame]
+    for frame in systems:
+        base=pref['system'].split('Here are a few examples')[0].strip() if frame=='neutral' else pref['system']
+        base+='\n\nAnswer only Yes or No.'
+        for order in ('reg','rev'):
             for repair in (False,True):
                 from infer import REPAIR
-                system=pref['system']+('\n\n'+REPAIR if repair else '')
-                chat=tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':q}],
-                    tokenize=False,add_generation_prompt=True,enable_thinking=False)+pref['suffix']
-                tasks.append((r,f'chat_{order}'+('_repair' if repair else ''),chat))
+                system=base+('\n\n'+REPAIR if repair else '')
+                for r in rows:
+                    q=(f'Here is the sentence:\n{r["sentence"]}\n\nAnswer this question:\n{r["question"]}' if order=='reg'
+                       else f'Answer this question:\n{r["question"]}\n\nHere is the sentence:\n{r["sentence"]}')
+                    chat=tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':q}],
+                        tokenize=False,add_generation_prompt=True,enable_thinking=False)
+                    item=dict(r,system_frame=frame,query_order=order,repair=repair,readout_version='verb_anchored_v2')
+                    tasks.append((item,f'{frame}_{order}'+('_repair' if repair else '_base'),chat))
     return tasks
 
 def analyze_jurayj(rows):

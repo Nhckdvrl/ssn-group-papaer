@@ -16,6 +16,9 @@
 - probe/hidden-state separability 不能单独升级为“模型保留旧解释”。
 
 ## 作废 / 降级 / 未通过记录
+- 2026-10-05 用户修订：取消agent用C00校准结果限制E01的停步gate；保留旧结果/证据等级，直接推进[E01](experiments/E01-component-revision-map.md)。C01/C02是measurement对象，不预注册novelty；最新论文ownership见[知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md)。
 - 2026-10-05：E00 不升 C00。句先有已知方向，但 prompt suite 整体不稳定；不得把选择句先视作通过。E03 注册追 why，原 E00 结果完整保留。
 
 - 2026-10-05：[E04](experiments/E04-known-positive-control.md) 正方向 +19.84 pp [14.04, 25.82]，但 nonGP 30.71%、raw specificity DiD CI 跨零；[E05](experiments/E05-response-meaning-calibration.md) 8B 的 assertion response 下句先 +30.43 pp、题先 −23.91 pp。C00 不升级；原协议有效性问题未解决，不能把 positive direction 当严格 gate。C01/C02 未运行。
+
+- 2026-10-05：[E06](experiments/E06-attachment-versus-event.md) GP subject-role控制仅0–5.80%，object-No高分不作为恢复证据；C00/C01/C02仍L0。nonGP joint读数是P06的测量痛点，不作隐藏parse或novelty主张。
