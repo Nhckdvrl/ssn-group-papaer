@@ -1,5 +1,13 @@
 # Draft outline (agent, 2026-10-05) — working title
 
+**Revision (19:50): the data now support a three-regime account. Preferred framing:**
+**When Is In-Context Evidence Additive? Noise, Change, and the Limits of Bayesian ICL** — the direction-reversal
+(noise-prefix) test is a test of non-additivity. Input-routed mappings: additive & exchangeable (set);
+lexical functions: additive with a recency kernel; surface-pattern / numeric-offset regimes: non-additive,
+change-point-like. Connects to Bigelow'25 (additivity in log-belief space holds for most ICL) and gives its boundary.
+
+(previous title below)
+
 **In-Context Learners Notice When the Rule Changes — Unless the Rule Is a Mapping**
 *(alt.: "Change Blindness in In-Context Classification"; "LLMs Track What to Do, Not Which Input Gets What")*
 
