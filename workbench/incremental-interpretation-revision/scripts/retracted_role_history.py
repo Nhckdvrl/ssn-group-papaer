@@ -97,7 +97,7 @@ def build(cache,out):
                 candidate_sha256={task:sha(out/f'{task}-candidates-v1.jsonl') for task in ('probability','nli')})
 
 
-def adopt(directory,reviews):
+def adopt(directory,reviews,version=1):
     mapping=json.loads((directory/'review-id-map.json').read_text());annotations={}
     for path in reviews:
         j=json.loads(path.read_text());assert j['model']=='gpt-6-luna'
@@ -125,7 +125,7 @@ def adopt(directory,reviews):
                 assert a['relation'] in ('entailed','contradicted','undetermined',None) and a['certainty'] in ('clear','interpretation_dependent','invalid')
                 r['gold_relation']=a['relation'] if a['certainty']=='clear' else None
             r.update(history_audit=a,history_review_sha256=h,eligible=eligible,faithful_history=faithful)
-        out=directory/f'{task}-audited-v1.jsonl';assert not out.exists();write_jsonl(out,rows)
+        out=directory/f'{task}-audited-v{version}.jsonl';assert not out.exists();write_jsonl(out,rows)
         report=dict(variants=len(rows),source_items=24,verb_families=12,candidate_sha256=sha(data),audited_sha256=sha(out),eligible=sum(r['eligible'] for r in rows),faithful_history=sum(r['faithful_history'] for r in rows),
                     grammar_counts=dict(collections.Counter(r['history_audit']['grammaticality'] for r in rows)),review_sha256=[sha(p) for p in reviews],
                     annotation_policy='Independent status/scope/priority/relations before inference; pre-update report contents are not asserted-world truth gold. All rows scored.')
@@ -254,9 +254,9 @@ def analyze(cache,rawpath,nlibase,nlirepair):
 if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--out',type=Path,required=True)
-    a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True)
+    a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True);a.add_argument('--version',type=int,choices=[1,2],default=1)
     n=s.add_parser('analyze');n.add_argument('--cache',type=Path,default=CACHE);n.add_argument('--raw',type=Path,required=True);n.add_argument('--base',type=Path,required=True);n.add_argument('--repair',type=Path,required=True);n.add_argument('--out',type=Path,required=True)
     a=p.parse_args()
     if a.action=='build':print(json.dumps(build(a.cache,a.out),indent=2))
-    elif a.action=='adopt':print(json.dumps(adopt(a.directory,a.reviews),indent=2))
+    elif a.action=='adopt':print(json.dumps(adopt(a.directory,a.reviews,a.version),indent=2))
     else:a.out.write_text(json.dumps(analyze(a.cache,a.raw,a.base,a.repair),indent=2)+'\n')
