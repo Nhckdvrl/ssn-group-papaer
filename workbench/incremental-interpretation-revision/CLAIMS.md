@@ -45,3 +45,5 @@
 - 2026-10-05：[E19](experiments/E19-late-exclusive-role-evidence.md)/[统计](results/E19-summary.json) 7源明确角色双向控制使R移动GP+8.51 [5.15,12.32]、cue+10.60 [7.75,13.55]；reference-only后history差R−5.52 [−8.06,−3.29]bits。控制有效不等于旧关联删除，但negated-NP最近提及仍竞争；C01/C02不升机制主张。
 
 - 2026-10-05：[E20](experiments/E20-exclusive-fact-versus-last-mention.md)/[统计](results/E20-summary.json) 同事实把允许对象最后说，7/7仍history R负，mean−3.40 [−4.28,−2.44]bits；GP绝对R+1.73 [.58,2.91]且role控制+9.56，不支持“完全不更新”。对象顺序解释部分，named remention仍未分；C01/C02不升语义机制主张。
+
+- 2026-10-05：[E21](experiments/E21-named-versus-generic-exclusion.md)/[统计](results/E21-summary.json)严格4源named相对generic减小GP−cue差+3.06 [2.03,4.38]bits，但POST-HOC拆分主要cue−2.97 [−3.77,−1.60]、GP+.09 [−.93,1.12]。不支持“named更好修复”，也未证明错误再绑定；C01/C02不升机制结论。
