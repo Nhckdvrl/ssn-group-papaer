@@ -11,3 +11,9 @@ step 9000 loss 0.8557 3996s
 step 10000 loss 0.8612 4439s
 step 11000 loss 0.8733 4883s
 step 12000 loss 0.8672 5327s
+step 13000 loss 0.8562 5771s
+step 14000 loss 0.8547 6214s
+step 15000 loss 0.8613 6657s
+Warning: The cache directory for DeepSpeed Triton autotune, /home/xiang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+rule {'allA': -0.863, 'acc': 0.665, 'cluster': 0.048, 'noise2_s3': 0.232, 'noise4_s5': 0.104, 'last_first': -0.17, 'suffix8_minus_prefix8': -0.007}
+surface {'allA': -5.885, 'acc': 1.0, 'cluster': 2.584, 'noise2_s3': -1.108, 'noise4_s5': -1.755, 'last_first': 0.766, 'suffix8_minus_prefix8': 3.672}
