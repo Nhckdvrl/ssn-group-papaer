@@ -164,21 +164,21 @@ def analyze_responses(experiment, cache, reviews, cohorts):
             annotations[a['item_id']] = a
     rows = []
     configs = []
-    for query in (('current', 'fair') if experiment == 'E38' else ('current',)):
+    for query in (('current', 'fair') if experiment == 'E38' else ('current','identity_status') if experiment=='E47' else ('current',)):
         path = cache / 'runs' / f'{experiment}-{query}'
         c = json.loads((path / 'config.json').read_text())
         assert sha(path / 'generations.jsonl') == c['generations_sha256']
         configs.append(c)
         rows.extend(map(json.loads, (path / 'generations.jsonl').read_text().splitlines()))
-    assert len(rows) == len(annotations) == {'E38': 1536, 'E39': 288, 'E40': 192, 'E43': 96, 'E45':192, 'E46':1536}[experiment]
+    assert len(rows) == len(annotations) == {'E38': 1536, 'E39': 288, 'E40': 192, 'E43': 96, 'E45':192, 'E46':1536, 'E47':1920}[experiment]
     for r in rows:
         a = annotations[r['item_id']]
         for k in ('passage_sha256', 'question_sha256', 'answer_sha256'):
             assert a[k] == r[k]
-        if a['correct'] is True and a['answer_class'] in ('equal_half', 'unspecified', 'source_candidate', 'other_candidate'):
+        if a['correct'] is True and a['answer_class'] in ('equal_half', 'unspecified', 'source_candidate', 'other_candidate','asserted_identity','unverified_quote','not_asserted'):
             assert a['answer_class'] == r['gold_answer_class'], 'Semantic class encoding disagrees with correct judgment: ' + r['item_id']
         r['response_audit'] = a
-    fields = ('fact_realization', 'selection_policy', 'candidate_order', 'role_evidence', 'mode') if experiment == 'E38' else ('fact_realization', 'role_evidence', 'mode')
+    fields = ('fact_realization', 'selection_policy', 'candidate_order', 'role_evidence', 'mode') if experiment == 'E38' else ('query','fact_realization','role_evidence','mode') if experiment=='E47' else ('fact_realization', 'role_evidence', 'mode')
     out = dict(configs=configs, review_sha256=[sha(p) for p in reviews], answer_classes=dict(collections.Counter(a['answer_class'] for a in annotations.values())),
                certainty=dict(collections.Counter(a['certainty'] for a in annotations.values())), correct=sum(a['correct'] is True for a in annotations.values()),
                cells={}, contrasts={}, per_family={})

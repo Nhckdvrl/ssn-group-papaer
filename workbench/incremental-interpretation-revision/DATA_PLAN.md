@@ -86,3 +86,7 @@ opencode免费模型与Step模型均可用于逐条数据审计；额度、格�
 ## 独立Ceháková/Chromý2025材料（E24 preparation，尚未推理）
 
 [Zenodo v1 record16358492](https://zenodo.org/records/16358492)原Stimuli.zip10,891 bytes已明确无代理下载，发布MD5及内部三CSV SHA通过；API license CC BY4.0，publisher copyright notice一并保留。384experimental QA/48source（24NPZ/24MVRR），每source8条件，96unique sentences；70filler/3practice。[source audit](results/D0-Cehakova2025-source-audit.json)记录revision/hash/license，原CSV/脚本只cache。correct编码已由127KB PC Ibex archive原脚本核对：as=[yes,no]、hasCorrect=parseInt(correct)，0=Yes/1=No；内部embedded CSV与Stimuli.zip逐字一致；原intransitive self问题不当逻辑gold。独立预测先在24NPZ/12同动词family验证C04，避免把派生版本当独立N；当前只提取/审字段，不事后挑源。
+
+## 语篇身份/指称的自然材料（2026-10-06，仅资产阶段）
+
+GUM pinned commit `22fdf87f9c71c96bcc771461d06e689b1f90020d`，下载所有news24/fiction19个dep文件：43文档、34,683 tokens、1,835 sentences，3,650,638 bytes，无代理，每文件SHA256与Git blob SHA1双验证。[审计](results/D0-GUM-natural-reference-audit.json)。已有coreference/entity/information-status/语法标注可用来核对角色迁移是否只在人工frame出现；不是另开coref研究对象。news文本CC-BY-2.5，fiction文本CC-BY-NC-SA-3.0，全部标注CC-BY-4.0（不能将全体叫单一许可）；原文只cache，尚无event-role semantic gold或模型推断。

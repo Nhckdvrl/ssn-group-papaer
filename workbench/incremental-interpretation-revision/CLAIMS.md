@@ -79,3 +79,5 @@
 - 2026-10-06：E43/E44反驳“普通语言中稳定反向角色迁移”的扩大解释，C05从E29–33的候选叙事收窄到已测描述/报告框架；等级仍L1，全部正负结果保留。E43 old J也负、new absolute D正，neutral subtraction不能认证纯role测量。E44普通场景ready old-role/availability576明确正确，new角色预测正；不借subset/order筛选挽救普遍叙事。E45追NP realization vs frame。
 
 - 2026-10-06校对：E40 old activity D+.291/−.358近0，此前“old控制有效”仅J/native成立。E45名字替换仍newother D−13.545/−12.625，但old+.173 CI跨0/−2.004，不能称name条件old正/new负；191/192native正确。frame影响可能包括一般反重复/提及，E46分开activity/neutral及new−old。
+
+- 2026-10-06：E46 8cell身份说明主newSame activity−6.556 [−7.935,−5.254]bits，identity×event−3.335 [−4.091,−2.500]；unused report非必要。new−old J的identity−4.357 [−6.206,−2.434]但event−.270 CI跨0，不能把general mention的全部效应叫关系机制。原人工frame中的必要表达成分更清楚，C05仍L1。E47区分assertion地位、quoted词串与纯名称曝光；尚无内部机制或一般能力结论。

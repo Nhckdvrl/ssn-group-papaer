@@ -57,8 +57,11 @@ def adopt(directory,reviews,experiment='E39',version=1):
             detail=a.get('raw',a.get('question',{}))
             assert isinstance(detail,dict) and not (set(detail)&set(a))
             normalized=dict(a,**detail)
+            if 'grammaticality' in normalized:
+                assert 'grammar' not in normalized or normalized['grammar']==normalized['grammaticality']
+                normalized['grammar']=normalized['grammaticality']
             assert a['id'] not in annotations;annotations[a['id']]=(normalized,sha(path))
-    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016),'E41':(4608,1152,5184),'E43':(960,96,1008),'E44':(3456,576,3744),'E45':(1920,192,2016),'E46':(9216,1536,9984)}[experiment]
+    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016),'E41':(4608,1152,5184),'E43':(960,96,1008),'E44':(3456,576,3744),'E45':(1920,192,2016),'E46':(9216,1536,9984),'E47':(9216,1920,10176)}[experiment]
     assert len(annotations)==sizes[2]
     report={};pending=[]
     for task,n in [('probability',sizes[0]),('question',sizes[1])]:
@@ -70,12 +73,15 @@ def adopt(directory,reviews,experiment='E39',version=1):
             if experiment in ('E41','E44'):
                 assert isinstance(a['availability_scope_clear'],bool)
                 r['eligible']=r['eligible'] and a['availability_scope_clear']
+            if experiment=='E47':
+                assert isinstance(a['identity_status_clear'],bool)
+                r['eligible']=r['eligible'] and a['identity_status_clear']
             if task=='probability':
                 for k in ('sentence_sha256','role_context_sha256','target_phrase_sha256'):assert a[k]==r[k]
                 r['faithful_named_roles']=a['role_scope_clear'] and a['distinct_recipients']
             else:
                 for k in ('passage_sha256','question_sha256'):assert a[k]==r[k]
-                assert a['answer_class'] in ('source_candidate','other_candidate','both_ready','unspecified',None) and a['certainty'] in ('clear','interpretation_dependent','invalid')
+                assert a['answer_class'] in ('source_candidate','other_candidate','both_ready','unspecified','asserted_identity','unverified_quote','not_asserted',None) and a['certainty'] in ('clear','interpretation_dependent','invalid')
                 r['gold_answer_class']=a['answer_class'] if a['certainty']=='clear' else None;r['eligible']=r['eligible'] and r['gold_answer_class'] is not None
         out=directory/f'{task}-audited-v{version}.jsonl';assert not out.exists()
         audit=dict(variants=n,candidate_sha256=sha(directory/f'{task}-candidates-v1.jsonl'),review_sha256=[sha(p) for p in reviews],eligible=sum(r['eligible'] for r in rr),grammar=dict(collections.Counter(r['audit']['grammar'] for r in rr)))

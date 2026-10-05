@@ -72,3 +72,7 @@ venue-nearest已回查accepted主会及arXiv入口，仅作定位；检索不完
 - native label mapping波动大，definition/query可引发重分析；R8一句scope控制不稳定恢复，不证明一般能力欠缺或预问内部状态。
 - E23实际续写错误证据未稳健成立。还需要自然功能用途/独立材料来判断现象的研究价值，不以其缺失桌面判死。
 - 现在有具体值得人评估的候选叙事；不自动升PROMISING、改ACTIVE分配或宣称Sasano已认可。后续由区分性结果改进account与定位。
+
+## E45–47 当前实验解释（优先于历史主旨）
+
+E45 propernames在固定frame仍newother D−13.545/−12.625bits，但old absolute D近0/负，不能直接叫old正/new负。E46 8cells找到了具体调节成分：identity主newSame D−6.556 [−7.935,−5.254]、identity×event−3.335 [−4.091,−2.500]，identity对new−old J−4.357 [−6.206,−2.434]；unused report非必要，E44/E45重复2304target drift0。还不知道身份断言地位、词串还是额外entity/actor曝光驱动它。E47冻结asserted/unverified exact quote/name inventory/absent，两event表达、两order全部测；先修复引用标点并全量外审v2，未按结果调整材料。一般global suppression已有Tang ICML2026 owner，一般next-mention/discourse preference已有Upadhye等owner；这仍是候选精确语言条件，非已认证好idea。GUM现成natural identity/reference资产已审，下一自然材料是检验同一个问题，不能因为有了新数据就换对象。

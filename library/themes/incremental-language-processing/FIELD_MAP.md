@@ -146,3 +146,5 @@ E33定位追加：Pucci/Li/Sinclair2026-09 preprint已拥有生产priming的词�
 2026-10-06 E43–44 transport反证更新：E43 old neutral扣除也负且new绝对D正；E44普通平衡名字场景old控制有效、新反转不稳定、ready正。C05限于描述NP/报告frame，不能将“known/used gap”或“反priming普遍机制”包装novelty。E45固定原frame只换名字，区分指称/属性与frame。这个否定的是扩大解读，不是agent关线。
 
 实际补读[Upadhye EMNLP2020](upadhye2020-discourse-reference-prediction.md)§1–5、[Tang ICML2026](tang2026-entity-tracking-state-changes.md)主文§1–7：next-mention/reference与local→global suppression均有明确owner。不能把E45名称替换本身或token反向标成novelty，下一须区分identity-level与referential-form-level迁移且保留自然用途。Tang附录未读，数据未审，不移植probe/训练。
+
+E46 8cells把人工frame作用分开：身份说明比report变化更大且与event reification交互，但identity statement meaning与词串/重复曝光还没分清。E47专门检验断言地位/未核实引用/纯inventory，引用控制已有Reset等owner，只有具体role迁移条件能成为精确增量。新[自然GUM资产](gum-natural-reference-assets.md)43文档只做来源审计，无event语义gold和推断；不另开研究对象。
