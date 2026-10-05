@@ -66,3 +66,5 @@ E01 snapshot2的三NPZ原题短final semantic≈1但role≈.013；cue extension�
 ### 扩大venue扫描与已发表近邻核对
 
 本地venue corpus已扩为36,979条（当前下载完成文件；2026ACL等尚在fetch，不是完整覆盖），nearest首先返回Hanna/Mueller NAACL2025与Amouyal ACL2025。已核对Hanna最终publication §6和附录C/H，保留“不广泛复用”的owner，同时记录不完整faithfulness与跨构式非特异干预的范围。nearest只是定位，不按接受/拒稿评分判我们的题。现cache17个PDF版本/16篇不同论文，下载不等于读完；ledger逐条注明范围。
+
+E11首批n1诊断中，完整subject span把unambiguous extended blocker原role .0404提高到.9999，而原final semantic=1；四既定配置full-span均恢复，head题先仍可失败。支持先前extension效应含instrument成分；不是所有GP是伪影、不是新revision机制。GP短句full-span与原题相同仍失败，待新GP long问句独立审完再判断。不能把反映元语言题理解的变化改名成模型思维修复。

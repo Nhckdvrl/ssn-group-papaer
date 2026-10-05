@@ -23,3 +23,5 @@
 - 2026-10-05：[E04](experiments/E04-known-positive-control.md) 正方向 +19.84 pp [14.04, 25.82]，但 nonGP 30.71%、raw specificity DiD CI 跨零；[E05](experiments/E05-response-meaning-calibration.md) 8B 的 assertion response 下句先 +30.43 pp、题先 −23.91 pp。C00 不升级；原协议有效性问题未解决，不能把 positive direction 当严格 gate。C01/C02 未运行。
 
 - 2026-10-05：[E06](experiments/E06-attachment-versus-event.md) GP subject-role控制仅0–5.80%，object-No高分不作为恢复证据；C00/C01/C02仍L0。nonGP joint读数是P06的测量痛点，不作隐藏parse或novelty主张。
+
+- 2026-10-05：[E11](experiments/E11-extension-role-reference-audit.md) n1外审概率pilot：无歧义blocked extended的原短NP role PYes=.0404→fullNP=.9999，final semantic=1；不再将这项role extension下降解释为digging-in/commitment。四配置fullNP同向，head有题先失败；GP extended的新增问句未审完，结论范围明确限制。不是拒绝C01，也不是升级其能力/机制主张；旧E01分数和全部prompt保留。

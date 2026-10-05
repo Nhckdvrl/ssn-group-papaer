@@ -23,3 +23,10 @@
 - 所有已normal-finish外审返回中取原先的前3源组（固定规则，不挑Qwen结果），本snapshot为9/30变体、50候选QA/49eligible、gold=0；完整cohort仍在外审，timeout不视OK，缺失见[D0](../results/D0-E11-opencode-snapshot1.json)。
 - 先跑此固定部分cohort的4既定配置（196任务），所有n1的paired CI=null，不能升级稳定结构主张；仅用于原先why问题的条件诊断，全部配置/输入保留。
 - raw input SHA `6ebfdf33cebedfbc9618f8767e9e48b3423a01c01ecb69f097924cbf740d8960`。外审对NPZ:1 extended comma中原短NP-role标interpretation-dependent，full/head标clear；该审计在本次Qwen结果之前返回，理由/原始JSON留cache，agent未自行gold。
+
+### Snapshot1结果（全量仍在外审）
+- 9/30变体、50QA/49eligible、196任务，20.81s / .00578 GPU·h；28组相同prompt重复PYes差=0。初始pilot只NPZ:1有extended配对，n1所有CI=null；NPZ:2只到short，不混报两个组的扩展效应。
+- NPZ:1 neutral/reg/base extended blocked：原role=.04037，fullNP=.99989，head=.99688，semantic=1；extended comma：原=.43799，fullNP=.99999，head=.99764，semantic=1。其short原role/fullNP为完全相同题且概率相同。
+- 完整NP在四reg/rev×base/repair配置中均将extended blocked/cue的PYes提高到约.999–1；head在题先blocked仍有失败（.5546/.0615），不选它作赢家模板。short GP fullNP仍≈.00429（句先）/≈.00099（题先），句先semantic=1/题先≈.00089，不能把引用修复当已经解决所有GP现象。
+- 按决策表：这一个项目的unambiguous role extension下降支持引用/constituent测量因素；停止把这部分当digging-in证据。n1且free审计无法建立稳定机制；GP extended和isolated extended本轮因外审timeout缺失，不能报告其结果。对所有当时incomplete外审做单worker重试，原失败保留独立目录，不基于Qwen结果选重试。
+- [summary](../results/E11-opencode-snapshot1-summary.json)、[scores](../results/E11-opencode-snapshot1-scores.csv)、[config](../results/E11-opencode-snapshot1-config.json)。C01/C02保持L0，不升级novelty。
