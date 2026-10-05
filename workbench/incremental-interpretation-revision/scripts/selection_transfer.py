@@ -55,7 +55,12 @@ def adopt(directory,reviews):
     for path in reviews:
         j=json.loads(path.read_text());assert j['model']=='gpt-6-luna'
         for a in j['reviews']:
-            assert a['id'] not in annotations;annotations[a['id']]=(a,sha(path))
+            # Two reviewers interpreted the displayed raw/question schema as
+            # nested objects. Normalize only field locations, never labels.
+            detail=a.get('raw',a.get('question',{}))
+            assert isinstance(detail,dict) and not (set(detail)&set(a))
+            normalized=dict(a,**detail)
+            assert a['id'] not in annotations;annotations[a['id']]=(normalized,sha(path))
     assert len(annotations)==4608
     report={}
     for task,n in [('probability',3840),('question',1536)]:

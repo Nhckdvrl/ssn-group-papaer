@@ -16,3 +16,7 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 跑前instruction核对：R8 exact sentence为`Report an unreported selection outcome as unspecified, while answering chance questions from the stated probabilities for the new selection.` chance与未公布outcome显式区分，避免scope恢复把fair概率题也误答unknown；尚未推理，未改数据/gold。
+
+## 跑前审计
+
+三独立Luna全文审4608packets（raw3840+question768），ID/适用hash覆盖一致；人工感、称谓可能共指、故意矛盾的续写备选都在原notes保留，未按模型结果选择input。所有selection scope clear、1536question mode tasks eligible/gold-proposed一致。两审采用嵌套raw/question字段，adapter仅展平字段位置，标签/哈希/原review字节不变；原格式错误前fail-fast，无推理开始。语法标准不同（第三全acceptable、前两对bath/cuddle/shaving记marginal），grammar common按全条件完整覆盖冻结。数字及hash见[D0](../results/D0-E38-selection-audit.json)。3840causal target pairs/hash已核，尚未推理。
