@@ -31,7 +31,9 @@
 - measurement validity.
 
 ## 主张摘要
-见 [CLAIMS.md](CLAIMS.md)。[E07](experiments/E07-native-readout-transfer.md) 在native boundary保留顺序反转：neutral/base交互+60.87 pp [44.93,76.81]；C03登记L1测量事实，非novelty。[E08](experiments/E08-reading-focus-versus-final-query.md) 4968任务：目标固定末尾后，initial−final focus的GP交互+1.45 pp [−10.14,+13.04]；句后final focus同时提高GP/nonGP的No得分，简单reading-goal故事支持不足。[E01](experiments/E01-component-revision-map.md) 独立Step5已审3/626句、13QA，104任务完成；其余因HTTP402额度不足未完成，不能用单个lexical set升级稳定结构。[领域知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md) 有9篇PDF、实际阅读范围、近邻ownership和详细论文卡。旧E00–E06的正负结果保留，不阻止探索。
+见 [CLAIMS.md](CLAIMS.md)。[E07](experiments/E07-native-readout-transfer.md) native顺序交互+60.87 pp [44.93,76.81]，C03为L1固定协议测量；[E08](experiments/E08-reading-focus-versus-final-query.md) 固定末尾目标题后，initial−final focus的GP交互+1.45 [−10.14,+13.04]，简单reading-goal故事支持不足。[E09](experiments/E09-published-comprehension-transfer.md) 原始SAP题句先cue−GP +33.33 [22.22,44.44] / +19.44 [11.11,29.17]，仍有mapping/顺序混杂；[E10](experiments/E10-question-versus-option-access.md) 拆位置后保留混合结构，不能归因task-directed parse。
+
+[E01](experiments/E01-component-revision-map.md) Step5已审3/626句、13QA/104任务，其余因HTTP402额度不足待审；此前授权free opencode外审探索层25句/101eligible QA，808任务、gold全部null。NPZ延长/role/semantic分离只作小样本线索，追unambiguous extension也影响role的原因。[知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md) 13篇PDF缓存、逐篇读取范围和近邻贡献归属；尚无已经证成的novel idea，继续围绕interpretation revision推进。
 
 ## 痛点摘要
 见 [PAIN_LOG.md](PAIN_LOG.md)。

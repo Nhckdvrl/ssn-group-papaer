@@ -18,6 +18,7 @@
 | [Hassan et al. 2026](https://arxiv.org/abs/2607.15565) §1–8 + A/D/F/G/H | VLM顺序反转；echoing；outcome-independent注意力knockout；内容/计算/距离控制 | 提前question影响编码、末尾question负责访问；重复解决分工 | 通用task-position/readout故事已有强owner；需语言revision的具体预测与后果，而不是把image换成句子 |
 | [Yoshida et al. ACL 2026](https://aclanthology.org/2026.acl-long.1694/) §1–7 + Limitations | 受控训练概率能拟合人类GP，held-out词、自然语料和跨构式检验；SRC/ORC失败对照 | 现成LM失败不足否定surprisal解释的存在性 | 更新Huang之后的争论；固定模型问答失败也不能直接归因revision算法；不是当前做训练的理由 |
 | [Han et al. 2025 v2](https://arxiv.org/abs/2504.09402) §1–4 | 分步阅读/重语境化；数学题中添加Revise条件；attention与错误类型 | backwards-dependency难度、重复/指令修复 | 这些通用结论也不是新故事；添加条件的干预仍混杂长度和任务改变，需要更明确语言证据预测 |
+| [Maina-Kilaas & Levy 2026](https://arxiv.org/abs/2603.23624) 正文Methods/两实验/Discussion | GP×extension×comma/object×finality；Maze与SPR | digging-in受测量位置/任务影响，非句末没有明确正效应 | E01 extension不能自动解释为时间越长承诺越强；他们也未证明严格零效应 |
 
 PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份reading-manifest记录URL、页数、hash；原文不进git。以上标明读取范围，后续读实验/附录再更新，不将下载等同已读。
 
@@ -45,6 +46,12 @@ PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份rea
 Huang/Yoshida共同使用的SAP有原始人类理解题、两选项、作者gold，省去自构元语言问题。[E09](../../../workbench/incremental-interpretation-revision/experiments/E09-published-comprehension-transfer.md) 用同题GP/early-cue×query-order×选项mapping检验E01问题是否迁移；24共享词汇组按cluster抽样。Excel与CSV的6个歧义target flag分歧保留两种来源，不自己重新标注。未下载人类participant数据，不能把已发表汇总当已完成逐项人机对齐。
 
 MiMo外审概率探索层只保留完整normal-finish、逐题覆盖和hash一致的行，全部gold=null；与Step5层隔离。初始两组NPZ有extension/role/semantic分离，但样本很小、free审核仍需复核，当前只是后续测量线索，不是稳定新主张。
+
+## E09/E10后当前最值得追的压力
+
+原始SAP题仍有真实cue效应（句先pooled +33.33 / +19.44 pp，两个mapping），所以不能把全部GP困难归为自构元语言问题。但拆Q/options位置后结果依赖mapping；固定options末尾，Q的位置交互在一个mapping由cue条件答得更差驱动，另一个mapping的CI跨0。暂不以query-order提出paper主旨。后续优先解释E01中无歧义extension也使role回答下降的异常，而不是继续找获胜prompt；仍需同item语言证据与下游后果，不能只把role/semantic不同叫novelty。
+
+近日primary检索另发现：[Lee & Shin 2026 paraphrase](https://pure.dongguk.edu/en/publications/probing-good-enough-processing-in-large-language-models-with-a-pa/)、[Storer & Zimmerman 2026 trajectory](https://arxiv.org/abs/2610.00840)、[Acevedo et al. ICML2026](https://proceedings.mlr.press/v306/acevedo26a.html)、[Han et al. ICLR2025 causal assessment](https://proceedings.iclr.cc/paper_files/paper/2025/hash/88139fdcc82fc597090620d77b023282-Abstract-Conference.html)。均目前只读primary摘要，不能冒充全文核对；这些方向的任务变化/轨迹/语义几何/表层敏感性都有近邻。venue nearest已在部分18013条库运行（ICLR2025/ICML2026），完整fetch仍在进行，BM25有不相关的garden/path误匹配；不是完整novelty证明，也不依据拒稿标签判断我们的idea。
 
 ## Sasano依据
 
