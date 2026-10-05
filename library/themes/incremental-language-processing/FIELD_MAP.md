@@ -15,6 +15,7 @@
 | [Baitalik & Datta 2026](https://aclanthology.org/2026.acl-srw.32/) §3–7 | 100 GP/control pairs；surprisal vs pseudo-surprisal；downstream AUC、hidden divergence | 架构相关disruption/recovery signature | 不能把surprisal回落叫最终解释已正确；三构式/架构对比和recovery曲线已有owner |
 | [Zeng 2026](https://aclanthology.org/2026.findings-acl.57/) §1–5、Limitations | 4090 prototype/metaphor pairs；Gemma；noncausal oracle；value信息传递、word-specific steering | 后续token承担延迟语义计算 | “原token不更新、后续token整合”已有owner；句法revision不能自动等同该metaphor机制，steering能控制生成也不直接证明实际晚cue依赖同一途径 |
 | [Huang 2024](https://tallinzen.net/media/papers/huang_et_al_2024_jml.pdf) RQ/Methods框架、Comprehension/General Discussion | 2000人、七构式；filler拟合surprisal→RT；对关键项检验数量、排序和item差异 | surprisal不足解释人类disambiguation cost | 提醒明确解释对象；本文跨构式reading-time证据不能直接当我们LLM问答的机制解释。具体模型拟合/附录未读完 |
+| [Hassan et al. 2026](https://arxiv.org/abs/2607.15565) §1–8 + A/D/F/G/H | VLM顺序反转；echoing；outcome-independent注意力knockout；内容/计算/距离控制 | 提前question影响编码、末尾question负责访问；重复解决分工 | 通用task-position/readout故事已有强owner；需语言revision的具体预测与后果，而不是把image换成句子 |
 
 PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份reading-manifest记录URL、页数、hash；原文不进git。以上标明读取范围，后续读实验/附录再更新，不将下载等同已读。
 
@@ -30,6 +31,12 @@ PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份rea
 同一lexical set保留GP、显式cue、blocker/lexical replacement、extension；逐项Step5审计后比较role与asserted-proposition读数。重点观察哪些操作一起变化、哪些分离、哪些随query顺序改变。报告所有配置与配对CI，不把任一漂亮模板当结论。
 
 若只有已知GP/cue效应，继续把它当measurement；若出现稳定、能改变预测的交互，再登记一个自然RQ，读其最近邻并设计能区分至少两解释的追加实验。当前没有已经证成的新paper idea。
+
+## E08反馈与定位更新
+
+固定最终问句于句末，句前initial−final focus的GP−nonGP交互+1.45 pp [−10.14,+13.04]；句后final focus提高GP与nonGP的原始No得分幅度相近。提前相关initial−无关initial的概率交互存在，但67-set敏感性及near-floor不允许选它称特殊revision机制。见[E08完整卡](../../../workbench/incremental-interpretation-revision/experiments/E08-reading-focus-versus-final-query.md)。降低泛泛reading-goal叙事的支持，优先E01语言操作与双读数，不继续优化prompt赢家。
+
+近邻读出/echoing不自动否定语言修订问题。当前仍未区分：旧事件的词汇合理性补全、句法角色重分析失败、以No回答但不建立正确最终解释。要让三者对同一个语言干预给出不同预测，才能从测量进入idea；区别概念本身不是finding。
 
 ## Sasano依据
 

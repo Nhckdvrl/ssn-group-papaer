@@ -31,7 +31,7 @@
 - measurement validity.
 
 ## 主张摘要
-见 [CLAIMS.md](CLAIMS.md)。[E07](experiments/E07-native-readout-transfer.md) 在native boundary保留顺序反转：neutral/base交互+60.87 pp [44.93,76.81]；C03登记L1测量事实，非novelty。[E08](experiments/E08-reading-focus-versus-final-query.md) 固定末尾目标题，区分提前reading focus与回答启动/位置。[E01](experiments/E01-component-revision-map.md) 独立Step5已审3/626句、13QA，104任务完成；其余因HTTP402额度不足未完成，不能用单个lexical set升级稳定结构。[领域知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md) 有8篇PDF、实际阅读范围、近邻ownership和详细论文卡。旧E00–E06的正负结果保留，不阻止探索。
+见 [CLAIMS.md](CLAIMS.md)。[E07](experiments/E07-native-readout-transfer.md) 在native boundary保留顺序反转：neutral/base交互+60.87 pp [44.93,76.81]；C03登记L1测量事实，非novelty。[E08](experiments/E08-reading-focus-versus-final-query.md) 4968任务：目标固定末尾后，initial−final focus的GP交互+1.45 pp [−10.14,+13.04]；句后final focus同时提高GP/nonGP的No得分，简单reading-goal故事支持不足。[E01](experiments/E01-component-revision-map.md) 独立Step5已审3/626句、13QA，104任务完成；其余因HTTP402额度不足未完成，不能用单个lexical set升级稳定结构。[领域知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md) 有9篇PDF、实际阅读范围、近邻ownership和详细论文卡。旧E00–E06的正负结果保留，不阻止探索。
 
 ## 痛点摘要
 见 [PAIN_LOG.md](PAIN_LOG.md)。

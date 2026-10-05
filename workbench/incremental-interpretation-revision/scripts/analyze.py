@@ -79,6 +79,7 @@ def main():
         from revision_map import analyze_revision
         result=analyze_revision(rows)
     result.update(predictions_sha256=sha(args.predictions),row_count=len(rows),bootstrap_seed=20261005,bootstrap_draws=10000)
+    result['analysis_code_sha256']={p.name:sha(p) for p in Path(__file__).parent.glob('*.py') if p.name in ('analyze.py','focus_audit.py','native_audit.py','revision_map.py')}
     args.out.write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result.get('gate_inputs',{}),indent=2))
 

@@ -39,7 +39,7 @@ def analyze_focus(rows):
             ix={(r['pair_id'],r['prompt_id'],r['condition'],r['question_type']):r for r in sub};ids=sorted({r['pair_id'] for r in sub})
             def values(pid,c,q,m):return {s:ix[(s,pid,c,q)][m] for s in ids}
             def diff(a,b):return {s:a[s]-b[s] for s in a.keys()&b.keys()}
-            def stat(v):return estimate(list(v.values()))
+            def stat(v):return estimate([v[s] for s in sorted(v)])
             prefix=f'{stratum}/{subtype}'
             for q in ('simple','lingering'):
                 for m in ('p_yes','correct','choice_mass'):
