@@ -49,15 +49,16 @@ def build(cache,directory):
     return dict(raw=2880,native_contexts=144,native_variants=288,fields_sha256=sha(directory/'named-role-fields-v2.json'),candidate_sha256={k:sha(directory/f'{k}-candidates-v1.jsonl') for k in ('probability','question')})
 
 
-def adopt(directory,reviews):
+def adopt(directory,reviews,experiment='E39',version=1):
     annotations={}
     for path in reviews:
         j=json.loads(path.read_text());assert j['model']=='gpt-6-luna'
         for a in j['reviews']:
             assert a['id'] not in annotations;annotations[a['id']]=(a,sha(path))
-    assert len(annotations)==3024
-    report={}
-    for task,n in [('probability',2880),('question',288)]:
+    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016)}[experiment]
+    assert len(annotations)==sizes[2]
+    report={};pending=[]
+    for task,n in [('probability',sizes[0]),('question',sizes[1])]:
         rr=list(map(json.loads,(directory/f'{task}-candidates-v1.jsonl').read_text().splitlines()));assert len(rr)==n
         for r in rr:
             a,h=annotations[r['review_id'] if task=='probability' else r['context_id']]
@@ -70,9 +71,13 @@ def adopt(directory,reviews):
                 for k in ('passage_sha256','question_sha256'):assert a[k]==r[k]
                 assert a['answer_class'] in ('source_candidate','other_candidate',None) and a['certainty'] in ('clear','interpretation_dependent','invalid')
                 r['gold_answer_class']=a['answer_class'] if a['certainty']=='clear' else None;r['eligible']=r['eligible'] and r['gold_answer_class'] is not None
-        out=directory/f'{task}-audited-v1.jsonl';assert not out.exists();write_jsonl(out,rr)
-        audit=dict(variants=n,audited_sha256=sha(out),candidate_sha256=sha(directory/f'{task}-candidates-v1.jsonl'),review_sha256=[sha(p) for p in reviews],eligible=sum(r['eligible'] for r in rr),grammar=dict(collections.Counter(r['audit']['grammar'] for r in rr)))
+        out=directory/f'{task}-audited-v{version}.jsonl';assert not out.exists()
+        audit=dict(variants=n,candidate_sha256=sha(directory/f'{task}-candidates-v1.jsonl'),review_sha256=[sha(p) for p in reviews],eligible=sum(r['eligible'] for r in rr),grammar=dict(collections.Counter(r['audit']['grammar'] for r in rr)))
         if task=='question':audit['proposed_agreement']=sum(r['gold_answer_class']==r['proposed_answer_class'] for r in rr)
+        pending.append((task,out,rr,audit))
+    # Validate every task before writing either audited data file.
+    for task,out,rr,audit in pending:
+        write_jsonl(out,rr);audit['audited_sha256']=sha(out)
         out.with_suffix('.audit.json').write_text(json.dumps(audit,indent=2)+'\n');report[task]=audit
     return report
 
