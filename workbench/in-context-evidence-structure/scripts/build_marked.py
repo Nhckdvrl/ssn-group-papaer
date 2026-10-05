@@ -16,7 +16,9 @@ from ices.oracle import all_oracles_fast  # noqa
 ROOT = Path(__file__).resolve().parents[1]
 T = 16
 N = int(os.environ.get("N_BASES", 300)); SEED0 = int(os.environ.get("SEED0", 700000))
-OUT = ROOT / "data" / os.environ.get("OUT", "marked"); OUT.mkdir(parents=True, exist_ok=True)
+OUT = ROOT / "data" / os.environ.get("OUT", "marked")
+MODE = os.environ.get("MODE", "marked")   # marked | daystamp
+OUT.mkdir(parents=True, exist_ok=True)
 
 
 def pat(b):
@@ -62,19 +64,26 @@ def main():
                 qc = int(rng.integers(2)); q = f"Review: {P[1][i1.pop()] if qc else P[0][i0.pop()]}"
             for name, pt in PATS.items():
                 labs = []; body = ""
-                for x, ci, ch in zip(xs, c, pt):
+                for t, (x, ci, ch) in enumerate(zip(xs, c, pt)):
                     yA = int(ci) ^ s
-                    if ch == "A":
+                    if MODE == "daystamp":
+                        y = yA if ch == "A" else 1 - yA
+                        body += f"{x} (day {t + 1})\nLabel: {lw[y]}\n\n"; labs.append(y)
+                    elif ch == "A":
                         body += f"{x}\nLabel: {lw[yA]}\n\n"; labs.append(yA)
                     else:
                         body += f"{x}\nLabel: {lw[1 - yA].upper()}\n\n"; labs.append(1 - yA)
                 qA = qc ^ s; qB = 1 - qA
-                cands = [" " + lw[qA], " " + lw[qB], " " + lw[qA].upper(), " " + lw[qB].upper()]
+                qq = q + " (day 17)" if MODE == "daystamp" else q
+                if MODE == "daystamp":
+                    cands = [" " + lw[qA], " " + lw[qB]]
+                else:
+                    cands = [" " + lw[qA], " " + lw[qB], " " + lw[qA].upper(), " " + lw[qB].upper()]
                 o = all_oracles_fast(c[:, None], labs, [qc], 1)
                 v = o["meta_p_rule_query"]; o["meta_pB"] = v if qB == 1 else 1 - v
                 v = o["set_p_rule_query"]; o["set_pB"] = v if qB == 1 else 1 - v
                 rows.append({"uid": f"{fmt}:{name}|mk_{fmt}_{seed}", "cond": f"{fmt}:{name}", "base_id": f"mk_{fmt}_{seed}",
-                             "pattern": pt, "labels": labs, "prompt": head + body + f"{q}\nLabel:", "cands": cands,
+                             "pattern": pt, "labels": labs, "prompt": head + body + f"{qq}\nLabel:", "cands": cands,
                              "query_label_A": 0, "query_label_B": 1, "oracle": o})
     with open(OUT / "rows.jsonl", "w") as f:
         for r in rows:
