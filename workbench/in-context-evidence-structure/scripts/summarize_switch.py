@@ -22,11 +22,12 @@ def logit(p):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("dirs", nargs="+"); ap.add_argument("--out")
+    ap.add_argument("--data", default="switch_pilot_T16"); ap.add_argument("--formats", default="const,irr5,rule5")
     a = ap.parse_args()
     meta = {}
-    for l in open(ROOT / "data/switch_pilot_T16/rows.jsonl"):
+    for l in open(ROOT / "data" / a.data / "rows.jsonl"):
         r = json.loads(l)
-        meta[r["uid"]] = (r["cond"], r["base_id"], r["query_label_B"], logit(r["oracle"]["meta_pB"]))
+        meta[r["uid"]] = (r["cond"], r["base_id"], r["query_label_B"], logit(r["oracle"]["meta_pB"]), logit(r["oracle"]["set_pB"]))
     out = []
     for d in a.dirs:
         models = sorted({re.sub(r"\.s\d+\.jsonl$", "", os.path.basename(f)) for f in glob.glob(d + "/*.s*.jsonl")})
@@ -37,17 +38,17 @@ def main():
                     s = json.loads(l)
                     if s["uid"] not in meta:
                         continue
-                    c, b, qb, mo = meta[s["uid"]]
+                    c, b, qb, mo, so = meta[s["uid"]]
                     lo1 = s["lp"][1] - s["lp"][0]
                     fm, p = c.split(":", 1)
-                    recs.append((fm, p, b, lo1 if qb == 1 else -lo1, mo))
-            df = pd.DataFrame(recs, columns=["fmt", "pat", "base", "lo", "meta"]).drop_duplicates(["fmt", "pat", "base"])
-            for fm in ("const", "irr5", "rule5"):
+                    recs.append((fm, p, b, lo1 if qb == 1 else -lo1, mo, so))
+            df = pd.DataFrame(recs, columns=["fmt", "pat", "base", "lo", "meta", "set"]).drop_duplicates(["fmt", "pat", "base"])
+            for fm in a.formats.split(","):
                 D = df[df.fmt == fm]
                 if D.empty or D.pat.nunique() < 10:
                     continue
                 pv = D.pivot_table(index="base", columns="pat", values="lo")
-                pm = D.groupby("pat").meta.mean()
+                pm = D.groupby("pat").meta.mean(); ps = D.groupby("pat")["set"].mean(); pl = D.groupby("pat").lo.mean()
                 need = ["suffix_4", "disp_4", "noise_2__suffix_3", "suffix_3", "single_16", "single_1", "allA"]
                 if any(n not in pv for n in need):
                     continue
@@ -58,7 +59,9 @@ def main():
                                 CSI=cl.mean() / mcl, noise=nz.mean(), noise_lo=boot_ci(nz)[1], noise_hi=boot_ci(nz)[2],
                                 meta_noise=mnz, NDI=-nz.mean() / abs(mnz), recency=rc.mean(), scale=float(pv.allA.abs().mean()),
                                 CSIn=(cl.mean() / abs(pv.allA.mean())) / (mcl / abs(pm.allA)),
-                                NDIn=(-nz.mean() / abs(pv.allA.mean())) / (abs(mnz) / abs(pm.allA))))
+                                NDIn=(-nz.mean() / abs(pv.allA.mean())) / (abs(mnz) / abs(pm.allA)),
+                                r_meta=np.corrcoef(pl, pm)[0, 1], r_set=np.corrcoef(pl, ps)[0, 1],
+                                stale=(pv.block_late4_return2 - pv.block_start4).mean() if "block_start4" in pv else np.nan))
     D = pd.DataFrame(out)
     pd.set_option("display.width", 250)
     print(D.round(2).to_string(index=False))
