@@ -31,7 +31,7 @@ def main():
     if not rows:
         print("nothing to do"); return
     tok = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype),
+    model = AutoModelForCausalLM.from_pretrained(args.model, torch_dtype=getattr(torch, args.dtype),
                                                  device_map="cuda").eval()
     bos = [tok.bos_token_id] if (tok.bos_token_id is not None and
                                  tok("a")["input_ids"][:1] == [tok.bos_token_id]) else []
@@ -51,29 +51,24 @@ def main():
     order = sorted(range(len(seqs)), key=lambda i: -len(seqs[i][2]))
     res = {}
     t0 = time.time()
-    pad = tok.pad_token_id if tok.pad_token_id is not None else 0
     with torch.no_grad():
         for b in range(0, len(order), args.bs):
             idx = order[b:b + args.bs]
             L = max(len(seqs[i][2]) for i in idx)
-            K = max(len(seqs[i][2]) - seqs[i][3] for i in idx) + 1      # positions needed at the end
+            pad = tok.pad_token_id if tok.pad_token_id is not None else 0
             ids = torch.full((len(idx), L), pad, dtype=torch.long)
             att = torch.zeros((len(idx), L), dtype=torch.long)
-            for j, i in enumerate(idx):                                  # LEFT padding
-                s_ = seqs[i][2]
-                ids[j, L - len(s_):] = torch.tensor(s_); att[j, L - len(s_):] = 1
-            pos = (att.cumsum(1) - 1).clamp(min=0)
-            out = model(input_ids=ids.cuda(), attention_mask=att.cuda(), position_ids=pos.cuda(),
-                        logits_to_keep=K, use_cache=False)
-            logp = torch.log_softmax(out.logits.float(), -1)             # (B, K, V): logits for positions L-K..L-1
             for j, i in enumerate(idx):
-                uid, ci, s_, k = seqs[i]
-                n_cont = len(s_) - k
-                tgt = torch.tensor(s_[k:], device=logp.device)
-                # token at absolute (padded) position L-n_cont+m is predicted by logits at L-n_cont+m-1
-                rel = torch.arange(K - 1 - n_cont, K - 1, device=logp.device)
-                lps = logp[j, rel, tgt]
-                res.setdefault(uid, {})[ci] = (float(lps.sum()), float(lps[0]), n_cont)
+                s = seqs[i][2]
+                ids[j, :len(s)] = torch.tensor(s); att[j, :len(s)] = 1
+            logits = model(input_ids=ids.cuda(), attention_mask=att.cuda()).logits.float()
+            logp = torch.log_softmax(logits, -1)
+            for j, i in enumerate(idx):
+                uid, ci, s, k = seqs[i]
+                tgt = torch.tensor(s[k:], device=logp.device)
+                pos = torch.arange(k - 1, len(s) - 1, device=logp.device)
+                lps = logp[j, pos, tgt]
+                res.setdefault(uid, {})[ci] = (float(lps.sum()), float(lps[0]), len(s) - k)
             if b // args.bs % 50 == 0:
                 print(f"{b}/{len(order)} {time.time()-t0:.0f}s", flush=True)
     with open(args.out, "a") as f:

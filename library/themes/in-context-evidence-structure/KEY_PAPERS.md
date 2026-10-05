@@ -98,3 +98,16 @@
 - **Nassar et al. (2010 J Neurosci; 2012 Nat Neurosci; Nassar, Bruckner & Frank 2019 eLife)**：changepoint 条件下学习率随惊讶上升，oddball（离群）条件下随惊讶下降——同样的预测误差，统计语境决定其意义。**我们的 E02 是 ICL 版 changepoint-vs-oddball。**
 - **Piray & Daw (2021 Nat Commun)**：联合估计 stochasticity 与 volatility；噪声↑ → 学习率↓，波动↑ → 学习率↑；二者需要互相解释掉。
 - Behrens et al. 2007（volatility 调节学习率）；Adams & MacKay 2007（BOCPD）。
+
+## Chan, Dasgupta, Kim, Kumaran, Lampinen, Hill — *Transformers Generalize Differently from Information Stored in Context vs in Weights*（2022）`[摘要+引言]`
+1. 形态：认知科学范式（Dasgupta 2022 的 rule-vs-exemplar 判别分类任务）+ 受控训练。
+2. 发现：受控刺激上 in-context 泛化偏 **exemplar**，in-weights 偏 **rule**；但在自然语言预训练模型上 ICL 显著偏 rule，且模型越大越 rule；假说：语言中稀疏的规则结构使 rule-based ICL 涌现（用受控数据验证）。
+3. 对我们：rule vs exemplar 已被占有；我们的增量是把它与 **时间证据结构** 连起来——exemplar 式聚合天然对时间盲（只看相似度），因此 (i) 无法区分噪声与变化，(ii) 对变化的适应是“局部的”（只在与新例相似的 query 上翻转）。Qwen3-8B pilot：单点翻转影响由相似度决定（规则属性同值 +0.61、每个无关属性 +0.15），exemplar 模型逐条拟合最好——与 Chan 的“大模型更 rule”是否一致，要看规模扫描。
+
+## Li, Ding, Hu — *Understanding Generalization and Forgetting in In-Context Continual Learning*（2605.28705, 2026）`[摘要]`
+- 线性/masked 线性注意力理论：多任务顺序 prompt 中注意力均匀/因果聚合历史 → 任务间干扰、遗忘；bias–variance–interference 分解。
+- 对我们：理论上“注意力聚合不区分时间”；我们在真实 LLM 上直接测到“相似度而非时间”的聚合。
+
+## Qiu et al. — *When Correct Demonstrations Hurt*（2605.26350, 2026）`[摘要]`
+- 正确但输入被扰动的 demo 也会伤 ICL（contextual evidence shift）：demo 的效用取决于它如何改变“证据混合”，与正确性分离。
+- 对我们：与 exemplar/相似度视角一致——demo 的影响由其在表示空间中与 query 的关系决定。
