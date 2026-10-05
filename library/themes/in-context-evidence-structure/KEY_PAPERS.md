@@ -131,3 +131,7 @@
 ## Wei et al. — *Larger Language Models Do In-Context Learning Differently*（2023）`[摘要]`
 - 大模型能在翻转标签下覆盖语义先验、学会 semantically-unrelated labels。
 - 对我们：模型能学会翻转映射（Wei），却不知道翻转**何时**发生——在时间维度上，翻转证据被与原映射证据混在一个集合里。
+
+## Wang, Ward, Zhang — *Comparative Reversal Learning Reveals Rigid Adaptation in LLMs Under Non-stationary Uncertainty*（IPMU 2026; arXiv 2604.04182）`[摘要]`
+- LLM 作为两臂概率反转学习任务中的决策策略（DeepSeek-V3.2 / Gemini-3 / GPT-5.2 vs 人类）：win-stay 近天花板、lose-shift 衰减，反转后坚持；分层 RL 拟合给出多种僵化来源。
+- 距离：多轮决策 + 自身选择的反馈（agentic bandit）；无 noise-vs-change 的规范检验、无“全局 vs 按输入路由”的边界、无机制。我们的分类映射翻转正是监督式 ICL 中的反转学习；可在叙事上把“LLM 的 in-context 反转学习失败”与认知科学的反转学习/认知灵活性文献接上。
