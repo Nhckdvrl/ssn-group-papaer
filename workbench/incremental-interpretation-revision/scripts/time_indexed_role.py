@@ -13,6 +13,7 @@ from event_identity import digest
 from event_constraint_state import CURRENT_WORLD
 
 BASE='Answer the question in one short phrase, using the passage.'
+SELECTION_SCOPE='Keep the earlier activity separate from the new selection; if the selection outcome is not reported, say that it is unspecified.'
 
 
 def build(cache,directory):
@@ -60,21 +61,24 @@ def adopt(directory,reviews):
 
 def run(args):
     assert not args.out.exists();a=json.loads(args.data.with_suffix('.audit.json').read_text());assert sha(args.data)==a['audited_sha256']
-    allrows=list(map(json.loads,args.data.read_text().splitlines()));assert len(allrows)==a['variants']==1056
-    rows=[r for r in allrows if r['query']==args.query];assert len(rows)==(192 if args.query=='initial' else 432)
+    allrows=list(map(json.loads,args.data.read_text().splitlines()));expected=1056 if args.experiment=='E37' else 1536
+    assert len(allrows)==a['variants']==expected
+    rows=[r for r in allrows if r['query']==args.query]
+    assert len(rows)==({'initial':192,'current':432,'new':432}[args.query] if args.experiment=='E37' else {'current':1152,'fair':384}[args.query])
+    recovery=CURRENT_WORLD if args.experiment=='E37' else SELECTION_SCOPE
     tok=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left');tok.pad_token_id=tok.eos_token_id
     prompts={}
     for r in rows:
         assert digest(r['passage'])==r['passage_sha256'] and digest(r['question'])==r['question_sha256']
-        prompt=tok.apply_chat_template([dict(role='system',content=BASE+('\n'+CURRENT_WORLD if r['mode']=='priority' else '')),dict(role='user',content='Passage:\n'+r['passage']+'\n\nQuestion:\n'+r['question'])],tokenize=False,add_generation_prompt=True,enable_thinking=False)
+        prompt=tok.apply_chat_template([dict(role='system',content=BASE+('\n'+recovery if r['mode']=='priority' else '')),dict(role='user',content='Passage:\n'+r['passage']+'\n\nQuestion:\n'+r['question'])],tokenize=False,add_generation_prompt=True,enable_thinking=False)
         prompts[r['item_id']]=prompt
     torch.manual_seed(0);torch.set_num_threads(8);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     args.out.mkdir(parents=True);start=time.time()
     model=AutoModelForCausalLM.from_pretrained(args.model,local_files_only=True,torch_dtype=torch.float32,attn_implementation='sdpa').to('cuda').eval()
     for p in model.parameters():p.requires_grad_(False)
-    cfg=dict(experiment='E37',query=args.query,task_count=len(rows),model_manifest=json.loads((args.model/'manifest.json').read_text()),dtype='float32',tf32=False,attention='sdpa',seed=0,frozen=True,thinking=False,batch_size=8,
+    cfg=dict(experiment=args.experiment,query=args.query,task_count=len(rows),model_manifest=json.loads((args.model/'manifest.json').read_text()),dtype='float32',tf32=False,attention='sdpa',seed=0,frozen=True,thinking=False,batch_size=8,
              do_sample=False,max_new_tokens=48,data_sha256=sha(args.data),audit_sha256=sha(args.data.with_suffix('.audit.json')),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),code_sha256=sha(Path(__file__)),
-             torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(),base_instruction=BASE,priority_instruction=CURRENT_WORLD)
+             torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(),base_instruction=BASE,priority_instruction=recovery)
     (args.out/'config.json').write_text(json.dumps(cfg,indent=2)+'\n')
     with (args.out/'generations.jsonl').open('w') as f,torch.inference_mode():
         for off in range(0,len(rows),8):
@@ -94,7 +98,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--directory',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True)
-    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--query',choices=['current','initial','new'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--experiment',choices=['E37','E38'],default='E37');r.add_argument('--query',choices=['current','initial','new','fair'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
     x=p.parse_args()
     if x.action=='build':print(json.dumps(build(x.cache,x.directory),indent=2))
     elif x.action=='adopt':print(json.dumps(adopt(x.directory,x.reviews),indent=2))
