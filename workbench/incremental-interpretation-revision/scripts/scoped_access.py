@@ -83,7 +83,7 @@ def adopt(data,reviews,idmap,out):
         assert type(a['question_valid']) is bool
         r.update(audit=a,audit_review_sha256=h,eligible=a['question_valid'],gold=a['answer'] if a['question_valid'] and a['certainty']=='clear' else None)
     write_jsonl(out,rows)
-    report=dict(variants=len(rows),source_items=24,verb_families=12,candidate_sha256=sha(data),audited_sha256=sha(out),eligible=sum(r['eligible'] for r in rows),clear_gold=sum(r['gold'] is not None for r in rows),review_sha256=[sha(p) for p in reviews])
+    report=dict(variants=len(rows),source_items=24,verb_families=12,candidate_sha256=sha(data),audited_sha256=sha(out),eligible=sum(r['eligible'] for r in rows),clear_gold=sum(r['gold'] is not None for r in rows),proposed_label_agreement=sum(r['gold']==r['proposed_gold'] for r in rows),review_sha256=[sha(p) for p in reviews])
     out.with_suffix('.audit.json').write_text(json.dumps(report,indent=2)+'\n');return report
 
 

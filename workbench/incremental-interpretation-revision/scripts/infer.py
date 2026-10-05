@@ -51,6 +51,7 @@ def main():
     assert not (args.out/'predictions.jsonl').exists(),'Do not silently overwrite a run'
     torch.manual_seed(0);torch.set_num_threads(8)
     torch.backends.cuda.matmul.allow_tf32=False
+    torch.backends.cudnn.allow_tf32=False
     tokenizer=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left')
     if tokenizer.pad_token_id is None:tokenizer.pad_token=tokenizer.eos_token
     start=time.time()
@@ -93,11 +94,13 @@ def main():
     config=dict(experiment=args.experiment,model=str(args.model),model_manifest=json.loads((args.model/'manifest.json').read_text()),
                 torch=torch.__version__,transformers=transformers.__version__,cuda=torch.version.cuda,
                 gpu=torch.cuda.get_device_name(),dtype=args.dtype,softmax='float32',attention='sdpa',
+                tf32=False,
                 frozen=True,thinking=False,batch_size=args.batch_size,seed=0,choice_token_ids=tokens,
                 task_count=len(tasks),system_frame=args.system_frame,families=args.families,git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
                 recovery_mode=args.recovery_mode,
                 code_sha256={p.name:sha(p) for p in Path(__file__).parent.glob('*.py')},
                 data_sha256=sha(args.data) if args.data else sha(args.cache/'normalized'/('sap.jsonl' if args.experiment in ('E09','E10') else 'amouyal.jsonl')))
+    if args.experiment=='E26':config['independent_audit_sha256']=sha(args.data.with_suffix('.audit.json'))
     (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
     with (args.out/'predictions.jsonl').open('w') as f, torch.inference_mode():
         for offset in range(0,len(tasks),args.batch_size):
