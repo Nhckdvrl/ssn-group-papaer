@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     meta = {}
-    for l in open(ROOT / "data/vocabsep/rows.jsonl"):
+    for l in open(ROOT / "data" / __import__("os").environ.get("DATA", "vocabsep") / "rows.jsonl"):
         r = json.loads(l); meta[r["uid"]] = r
     recs = []
     for f in [g for a in sys.argv[1:] for g in glob.glob(a)]:
@@ -18,13 +18,13 @@ def main():
             s = json.loads(l)
             if s["uid"] in meta:
                 r = meta[s["uid"]]; lp = np.array(s["lp"]); qA = r["qA"]
-                task, vn = r["cond"].split(":")[0].rsplit("_", 1)
+                task, vn = (r["cond"].split(":")[0].split("_", 2)[0] + "_" + r["cond"].split(":")[0].split("_", 2)[1], r["cond"].split(":")[0].split("_", 2)[2]) if r["cond"].startswith("mag_nat") else r["cond"].split(":")[0].split("_", 1)
                 recs.append(dict(task=task, vocab=vn, mp=r["cond"].split(":")[1], base=r["base_id"], ann=r["qann"], qc=r["qclass"],
                                  pB=lp[1 - qA] - lp[qA], mass=np.exp(lp).sum()))
     D = pd.DataFrame(recs).drop_duplicates(["task", "vocab", "mp", "base", "ann", "qc"])
     for task, X in D.groupby("task"):
         print(f"\n=== {task}  bases {X.base.nunique()}")
-        for vn in ("same", "case", "syn", "nonce"):
+        for vn in [v for v in ("same", "case", "syn", "nonce") if v in set(X.vocab)] or sorted(set(X.vocab), key=lambda v: list(X.vocab.unique()).index(v)):
             Y = X[X.vocab == vn]
             v = Y.pivot_table(index=["base", "qc"], columns=["mp", "ann"], values="pB")
             sam = v[("inter", 1)] - v[("A", 1)]; alex = v[("inter", 0)] - v[("A", 0)]

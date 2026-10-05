@@ -14,6 +14,15 @@ OUT = ROOT / "data" / os.environ.get("OUT", "vocabsep"); OUT.mkdir(parents=True,
 NAMES = ("Alex", "Sam")
 NONCE = json.load(open(ROOT / "data" / "lexicon.json"))["labels"]
 SYN = {"mag_nat": ["little", "big"], "sst": ["bad", "good"]}
+GRADED = {"sst": [("same", None), ("case", "CASE"), ("bad_good", ["bad", "good"]), ("unfav_fav", ["unfavorable", "favorable"]),
+                  ("poor_great", ["poor", "great"]), ("dislike_like", ["dislike", "like"]), ("pess_opt", ["pessimistic", "optimistic"]),
+                  ("no_yes", ["no", "yes"]), ("low_high", ["low", "high"]), ("cold_warm", ["cold", "warm"]), ("0_1", ["0", "1"]),
+                  ("B_A", ["B", "A"]), ("nonce", "NONCE")],
+          "mag_nat": [("same", None), ("case", "CASE"), ("little_big", ["little", "big"]), ("tiny_huge", ["tiny", "huge"]),
+                      ("minor_major", ["minor", "major"]), ("few_many", ["few", "many"]), ("low_high", ["low", "high"]),
+                      ("short_tall", ["short", "tall"]), ("less_more", ["less", "more"]), ("weak_strong", ["weak", "strong"]),
+                      ("cold_hot", ["cold", "hot"]), ("0_1", ["0", "1"]), ("B_A", ["B", "A"]), ("nonce", "NONCE")]}
+VOCABSET = os.environ.get("VOCABSET", "four")
 
 
 def main():
@@ -34,7 +43,10 @@ def main():
                 i1 = list(rng.choice(len(P[1]), 10, replace=False)); i0 = list(rng.choice(len(P[0]), 10, replace=False))
                 xs = [P[1][i1.pop()] if k else P[0][i0.pop()] for k in c]; qx = {1: P[1][i1.pop()], 0: P[0][i0.pop()]}
             nz = [str(w) for w in rng.choice(NONCE, 2, replace=False)]
-            vocabs = {"same": lw, "case": [w.upper() for w in lw], "syn": SYN[fmt], "nonce": nz}
+            if VOCABSET == "graded":
+                vocabs = {k: (lw if v is None else [w.upper() for w in lw] if v == "CASE" else nz if v == "NONCE" else v) for k, v in GRADED[fmt]}
+            else:
+                vocabs = {"same": lw, "case": [w.upper() for w in lw], "syn": SYN[fmt], "nonce": nz}
             for vn, sv in vocabs.items():
                 for mp in ("A", "inter"):
                     body = ""
