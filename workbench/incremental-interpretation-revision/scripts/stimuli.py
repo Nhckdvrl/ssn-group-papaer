@@ -181,8 +181,8 @@ def validate(rows,components,cache):
 
 def tasks_jurayj(path,tokenizer,experiment,system_frame='both',families=None):
     rows=[json.loads(line) for line in path.read_text().splitlines()]
-    assert rows and all('step_request_sha256' in r for r in rows),'E01 requires independent Step5 annotation'
-    # Historical agent flags are provenance only. Exclusion follows Step5's annotation.
+    assert rows and all('step_request_sha256' in r or (r.get('audit_tier')=='external_advisory' and 'audit_request_sha256' in r and r['gold'] is None) for r in rows),'E01 requires independently reviewed inputs; advisory cohorts must remain unscored'
+    # Historical agent flags are provenance only. External annotation determines eligibility.
     rows=[r for r in rows if r['eligible']]
     if families:rows=[r for r in rows if r['construction'] in families]
     root=verified_root(CACHE,'amouyal');tasks=[]

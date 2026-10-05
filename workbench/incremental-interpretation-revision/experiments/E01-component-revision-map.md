@@ -24,6 +24,7 @@
 - **算力预算：** GPU0/1/2/3四独立单卡，按family×system分块，预计合计<2 GPU·h；复用现有venv/模型/cache。实际待记录。API审计并发≤8，数据为公开上游许可材料与衍生问题，不上传密钥或私有资产。
 
 ## 结果（跑完后填写；不改上面的内容）
+- 外审探索层更新（该批推理之前）：此前用户明确授权opencode免费模型逐条审计；Step5因402不可用时，另冻结MiMo-v2.6-flash-free完整外部预审行，机械检查输入/hash/ID/normal finish与覆盖。只纳入源lexical-set序号≤3的已返回变体（事前源序号，不看推理结果；缺失逐项报告），与Step5 cohort隔离。全部gold=null，仅报告PYes、choice mass与配对概率效应，不能计算能力正确率或据此升级C01/C02。语义裁决来自外部模型，agent不自行标注；后续Step5复核仍必要。free模型质量尚不确定，不称等同人审。
 - 执行范围更新（首次E01推理之前）：Step5完成3/626句变体、13QA（NPZ:1 GP/cue short + MVRR:1 lexical/extended），随后返回HTTP402 quota_exceeded。先运行这13条已核对的104个任务检验读数；全量measurement保持待审，不把未完成行当OK。n=1的lexical-set contrast只报点值、不报虚假零宽CI，不能升级稳定结构主张。已异步告知人补充额度；此前授权opencode继续外部预审，与Step5最终标签分开。
 - 数字（含CI）：
 - 结果文件：
