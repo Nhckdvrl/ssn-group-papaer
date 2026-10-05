@@ -15,6 +15,7 @@ SOURCES = {
     'turing': ('https://github.com/microsoft/turing-experiments', 'f00115e793f5f728eccf13044bb299d64901de57', 'MIT'),
     'sap': ('https://github.com/caplabnyu/sapbenchmark', '15e61066d510b5349e17740e6488c976abc3e1ac', 'MIT'),
     'slattery2013': ('https://faculty.wcas.northwestern.edu/myo507/Papers/SlatteryEtAL_GoodEnough_Published.pdf', 'c5289cc80095e3a83ffc4f189e51b36583cda3b7011786a327b57e919c1df5f2', '©2013 Elsevier; no open redistribution license verified'),
+    'cehakova2025': ('https://zenodo.org/records/16358492', '16358492:v1', 'CC BY 4.0 (Zenodo metadata); retain publisher copyright notice'),
 }
 
 def sha(path):
@@ -31,6 +32,14 @@ def read_table(path):
 def audit(cache):
     out = {'date': '2026-10-05', 'sources': {}}
     for name, (url, revision, license_name) in SOURCES.items():
+        if name=='cehakova2025':
+            root=cache/'upstream/cehakova2025'; p=root/'audit.json'
+            if not p.exists():continue
+            report=json.loads(p.read_text())
+            assert report['revision']['record_id']==16358492 and report['sha256']==sha(root/'Stimuli.zip')
+            for f in report['files']:assert sha(root/'stimuli'/f['name'])==f['sha256']
+            out['sources'][name]=report
+            continue
         if name=='slattery2013':
             p=cache/'normalized/slattery2013.audit.json'
             if not p.exists():continue

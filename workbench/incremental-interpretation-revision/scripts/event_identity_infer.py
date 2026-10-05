@@ -36,7 +36,7 @@ def prepare(data, tokenizer, expected_targets=2):
         indices = r['target_span_word_indices']
         assert all(0 < i < len(words) for i in indices)
         context = encoded['input_ids'][:wi[indices[0]][0]]
-        key = (r['pair_id'], r['source_np_option'], r['condition'], r['episode_anchor'], r.get('role_evidence'), r.get('exclusion_style'))
+        key = (r['pair_id'], r['source_np_option'], r['condition'], r['episode_anchor'], r.get('role_evidence'), r.get('exclusion_style'), r.get('readout_frame'))
         if key in context_tokens:
             assert context_tokens[key] == context, 'Alternatives have different pre-target causal contexts'
         context_tokens[key] = context
@@ -46,7 +46,14 @@ def prepare(data, tokenizer, expected_targets=2):
             assert context == other['input_ids'][:first], 'Crossover changed causal pre-target tokens'
         groups[r['item_id']] = dict(ids=encoded['input_ids'], indices=wi,
                                     token_sha256=digest(json.dumps(encoded['input_ids'], separators=(',', ':'))))
-    assert len(context_tokens) * expected_targets == len(rows)
+    if isinstance(expected_targets, dict):
+        counts={}
+        for r in rows:
+            key=(r['pair_id'],r['source_np_option'],r['condition'],r['episode_anchor'],r.get('role_evidence'),r.get('exclusion_style'),r.get('readout_frame'))
+            counts[key]=counts.get(key,0)+1
+        assert all(n==expected_targets[key[-1]] for key,n in counts.items())
+    else:
+        assert len(context_tokens) * expected_targets == len(rows)
     return rows, groups
 
 
@@ -55,7 +62,7 @@ def run(args):
     tokenizer = AutoTokenizer.from_pretrained(args.model, local_files_only=True, padding_side='left')
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
-    rows, groups = prepare(args.data, tokenizer, expected_targets={'E16':1,'E19':3,'E20':3,'E21':3}.get(args.experiment,2))
+    rows, groups = prepare(args.data, tokenizer, expected_targets={'E16':1,'E19':3,'E20':3,'E21':3,'E24':{'activity':3,'neutral_entity':2}}.get(args.experiment,2))
     args.out.mkdir(parents=True)
     torch.manual_seed(0); torch.set_num_threads(8)
     torch.backends.cuda.matmul.allow_tf32 = False
@@ -124,7 +131,7 @@ def run(args):
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('--data', type=Path, required=True)
-    p.add_argument('--experiment', choices=['E14', 'E15', 'E16', 'E17', 'E18', 'E19', 'E20', 'E21', 'E22'], default='E14')
+    p.add_argument('--experiment', choices=['E14', 'E15', 'E16', 'E17', 'E18', 'E19', 'E20', 'E21', 'E22', 'E24'], default='E14')
     p.add_argument('--model', type=Path, default=CACHE / 'models/Qwen3-8B')
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--batch-size', type=int, default=4)

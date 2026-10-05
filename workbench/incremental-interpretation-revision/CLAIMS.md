@@ -10,7 +10,6 @@
 | C01 | interpretation revision 可被“最终解释支持”和“初始错误解释残留”两个读数分开测量 | L0 | [E01](experiments/E01-component-revision-map.md) / [partial](results/E01-partial-summary.json)：独立Step5审核3句/13QA，104任务；NPZ对比只有一个lexical set，role与semantic不同响应待全量核对 | 受控构式中不同读数的响应具有稳定、可重复结构；不把语义兼容命题强标错误 |
 | C02 | 不同 cue timing / cue strength 条件下存在可区分 competing accounts 的 revision structure | L0 | 仅 territory hypothesis | 预先写出不同解释的预测并由 E01/E02 区分 |
 | C03 | 固定Qwen3-8B的GP/nonGP问答差值随query顺序反向，且反转不依赖assistant prefill或few-shot demos | L1（measurement；非novelty） | [E03](experiments/E03-e00-order-and-assertion-audit.md)、[E07](experiments/E07-native-readout-transfer.md) / [E07结果](results/E07-summary.json)：neutral/native/base交互+60.87 pp [44.93,76.81]；全部8个boundary×system×instruction交互正；67-set sensitivity同方向 | 下一步[E08](experiments/E08-reading-focus-versus-final-query.md)将final query固定，区分reading focus与回答启动/位置；目前不归因为内部parse或一般LLM能力 |
-
 | C04 | 同一排他事实的具名/泛指表述对后续实体提及与活动患者偏好产生不同响应，且GP与逗号历史调节该响应 | L1（局部measurement，非能力/机制/novelty） | [E21](experiments/E21-named-versus-generic-exclusion.md)、[E22](experiments/E22-post-correction-entity-versus-role-use.md)/[E22统计](results/E22-summary.json)：严格4源named−generic的relation-minus-neutral变化GP−2.792 [−3.680,−1.904]bits、cue−.174 [−1.124,1.201]；全7同方向。各原角色事实仍有效，未知实际错误 | 独立来源预测/实际角色使用、混杂审计后才讨论更一般解释；当前不能把概率偏好叫false belief或内部绑定 |
 
 **禁止提前升级：**
@@ -49,3 +48,5 @@
 - 2026-10-05：[E20](experiments/E20-exclusive-fact-versus-last-mention.md)/[统计](results/E20-summary.json) 同事实把允许对象最后说，7/7仍history R负，mean−3.40 [−4.28,−2.44]bits；GP绝对R+1.73 [.58,2.91]且role控制+9.56，不支持“完全不更新”。对象顺序解释部分，named remention仍未分；C01/C02不升语义机制主张。
 
 - 2026-10-05：[E21](experiments/E21-named-versus-generic-exclusion.md)/[统计](results/E21-summary.json)严格4源named相对generic减小GP−cue差+3.06 [2.03,4.38]bits，但POST-HOC拆分主要cue−2.97 [−3.77,−1.60]、GP+.09 [−.93,1.12]。不支持“named更好修复”，也未证明错误再绑定；C01/C02不升机制结论。
+
+- 2026-10-05：[E23](experiments/E23-functional-role-continuation.md)/[首审](results/E23-first-review-summary.json)/[次审](results/E23-summary.json)实际续写不支持稳定的role-violation结论：224标签10→6明确contradiction，严格4源NP0 base均无明确违反但多患者省略。首次GP差CI含0且语义标注不稳定；C04局限likelihood，不能升能力/false-belief/机制等级。原审计和全部输出不作废、不删改，POST-HOC完整次审透明保留。

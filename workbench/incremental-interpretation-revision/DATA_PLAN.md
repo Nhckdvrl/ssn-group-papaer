@@ -82,3 +82,7 @@ opencode免费模型与Step模型均可用于逐条数据审计；额度、格�
 ## 问句之外的自然后文：Slattery2013
 
 [E13](experiments/E13-natural-followup-without-diagnostic-question.md)来自已读原论文AppendixB的24原两句item/96作者四条件变体。[D0](results/D0-Slattery-source-audit.json)记录PDF SHA、copyright、规范化、完整S2一致性与字面reference缺失；不是MIT开放数据，不复制原text/normalized到git。`scripts/slattery.py`与shared schema仅扩作者comma/NP选项，无新增语义gold，source9/10仍保留主读数。PDF双栏running header初次试抽取混入item11，已在任何推理前按y>50pt crop修正；独立逐source外审进行，不能把机械parity当人工语义gold。
+
+## 独立Ceháková/Chromý2025材料（E24 preparation，尚未推理）
+
+[Zenodo v1 record16358492](https://zenodo.org/records/16358492)原Stimuli.zip10,891 bytes已明确无代理下载，发布MD5及内部三CSV SHA通过；API license CC BY4.0，publisher copyright notice一并保留。384experimental QA/48source（24NPZ/24MVRR），每source8条件，96unique sentences；70filler/3practice。[source audit](results/D0-Cehakova2025-source-audit.json)记录revision/hash/license，原CSV/脚本只cache。correct编码已由127KB PC Ibex archive原脚本核对：as=[yes,no]、hasCorrect=parseInt(correct)，0=Yes/1=No；内部embedded CSV与Stimuli.zip逐字一致；原intransitive self问题不当逻辑gold。独立预测先在24NPZ/12同动词family验证C04，避免把派生版本当独立N；当前只提取/审字段，不事后挑源。

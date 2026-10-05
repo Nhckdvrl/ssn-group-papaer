@@ -104,3 +104,7 @@ E11首批n1诊断中，完整subject span把unambiguous extended blocker原role 
 复读Cao2025 §4确认原error-control是删除matrix predicate产生duplicate-determiner不合法前缀，并非本次NPZ的直接材料，不能挂一个malformed条件就冒充同设定复现。补读[Sturt2007摘要/出版社片段](sturt2007-semantic-persistence.md)确认更晚semantic persistence已有owner；新增实际正文[Blott2020](blott2020-semantic-recovery.md)强调词义/语法修订、人类task-dependent failure与尾部neutral-region控制。其48词义框架是现成潜在资产；不因此把I01改成另一个lexical-ambiguity项目。现在18篇不同PDF论文/19版本，新增1,084,077 bytes直接无代理，非全篇read claim。
 
 2026-10-05最新primary检索与venue nearest：最近仍Amouyal2025/Yoshida2026及不相关event/entity论文；搜不到精确三factor条件不等于novelty证明。Slattery/Cao/Hanna/Li/Amouyal对generic ling­er­ing、reflexive binding、QA差与paraphrase validation的ownership保持。当前增量是条件化复用的竞争解释，而不是garden-path存在。
+
+## E21–23之后的新增ownership核对
+
+[Zhou ICML2026](zhou2026-negation.md)已主张否定组合/抑制与shortcut并存；[Mann2025](mann2025-ironic-negation.md)已测negation-induced词可及性；[Seo EMNLP2025](seo2025-neghalu.md)摘要已覆盖否定语境下的不忠实判断（methods未读）。宽泛否定失败/双机制不是本线新颖性。E22发现的是GP历史调节role-minus-entity差，需实际关系后果与独立source预测；E23语义输出包含残缺/再次GP句，不能按第一NP词强判活动患者，已做独立二次校对。只定位，不自动判死I01。
