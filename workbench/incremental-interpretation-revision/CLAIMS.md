@@ -48,3 +48,5 @@
 - 2026-10-05：[E20](experiments/E20-exclusive-fact-versus-last-mention.md)/[统计](results/E20-summary.json) 同事实把允许对象最后说，7/7仍history R负，mean−3.40 [−4.28,−2.44]bits；GP绝对R+1.73 [.58,2.91]且role控制+9.56，不支持“完全不更新”。对象顺序解释部分，named remention仍未分；C01/C02不升语义机制主张。
 
 - 2026-10-05：[E21](experiments/E21-named-versus-generic-exclusion.md)/[统计](results/E21-summary.json)严格4源named相对generic减小GP−cue差+3.06 [2.03,4.38]bits，但POST-HOC拆分主要cue−2.97 [−3.77,−1.60]、GP+.09 [−.93,1.12]。不支持“named更好修复”，也未证明错误再绑定；C01/C02不升机制结论。
+
+- 2026-10-05：[E23](experiments/E23-functional-role-continuation.md)/[首审](results/E23-first-review-summary.json)/[次审](results/E23-summary.json)实际续写不支持稳定的role-violation结论：224标签10→6明确contradiction，严格4源NP0 base均无明确违反但多患者省略。首次GP差CI含0且语义标注不稳定；C04局限likelihood，不能升能力/false-belief/机制等级。原审计和全部输出不作废、不删改，POST-HOC完整次审透明保留。
