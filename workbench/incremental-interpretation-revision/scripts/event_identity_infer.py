@@ -13,7 +13,7 @@ from data import CACHE, sha
 from event_identity import digest
 
 
-def prepare(data, tokenizer):
+def prepare(data, tokenizer, expected_targets=2):
     report = json.loads(data.with_suffix('.audit.json').read_text())
     assert report['audited_sha256'] == sha(data)
     rows = list(map(json.loads, data.read_text().splitlines()))
@@ -40,9 +40,13 @@ def prepare(data, tokenizer):
         if key in context_tokens:
             assert context_tokens[key] == context, 'Alternatives have different pre-target causal contexts'
         context_tokens[key] = context
+        if 'context_reference_sentence' in r:
+            other = tokenizer(r['context_reference_sentence'], add_special_tokens=False, return_offsets_mapping=True)
+            first = next(i for i, (a,b) in enumerate(other['offset_mapping']) if b > r['target_start_char'] and r['context_reference_sentence'][a:b].strip())
+            assert context == other['input_ids'][:first], 'Crossover changed causal pre-target tokens'
         groups[r['item_id']] = dict(ids=encoded['input_ids'], indices=wi,
                                     token_sha256=digest(json.dumps(encoded['input_ids'], separators=(',', ':'))))
-    assert len(context_tokens) * 2 == len(rows)
+    assert len(context_tokens) * expected_targets == len(rows)
     return rows, groups
 
 
@@ -51,7 +55,7 @@ def run(args):
     tokenizer = AutoTokenizer.from_pretrained(args.model, local_files_only=True, padding_side='left')
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
-    rows, groups = prepare(args.data, tokenizer)
+    rows, groups = prepare(args.data, tokenizer, expected_targets=1 if args.experiment=='E16' else 2)
     args.out.mkdir(parents=True)
     torch.manual_seed(0); torch.set_num_threads(8)
     torch.backends.cuda.matmul.allow_tf32 = False
@@ -104,7 +108,7 @@ def run(args):
                 print(f'{offset+len(batch)}/{len(keys)} raw inputs elapsed={time.time()-start:.1f}s', flush=True)
     with (args.out / 'scores.jsonl').open('w') as f:
         for r in rows:
-            out = {k: v for k, v in r.items() if k not in ('sentence', 'initial_parse_claim', 'final_parse_claim')}
+            out = {k: v for k, v in r.items() if k not in ('sentence', 'context_reference_sentence', 'initial_parse_claim', 'final_parse_claim')}
             wb = scores[r['item_id']]; span = r['target_span_word_indices']
             out.update(token_sha256=groups[r['item_id']]['token_sha256'], word_bits=wb,
                        target_total_bits=sum(wb[i] for i in span), target_word_count=len(span),
@@ -120,7 +124,7 @@ def run(args):
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('--data', type=Path, required=True)
-    p.add_argument('--experiment', choices=['E14', 'E15'], default='E14')
+    p.add_argument('--experiment', choices=['E14', 'E15', 'E16'], default='E14')
     p.add_argument('--model', type=Path, default=CACHE / 'models/Qwen3-8B')
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--batch-size', type=int, default=4)

@@ -31,7 +31,6 @@ def analyze(old, new, cache):
     for r in r1:
         parent = r['parent_E14_item_id']
         a, b = material0[parent], material1[r['item_id']]
-        before = a['sentence'][:a['authored_followup_start_word']]  # no semantic inference from future text
         # The bridge is located between exact S1 and authored S2; verify the
         # complete strings differ by just the preregistered lexical change.
         start = len(a['sentence'].split('. ', 1)[0]) + 2
