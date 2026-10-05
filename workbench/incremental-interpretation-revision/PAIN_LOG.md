@@ -15,3 +15,5 @@
 | P06 | 2026-10-05 | E06 GP main-subject角色控制0–5.80%，object No题最高100%；nonGP两角色正确且event初始Yes组合31.88–47.83% | 全69 sets、两order×一句恢复；67 clean同结论 | 单个role-No/event-No不能当revision proxy；问句任务影响与语用补全仍竞争 | 用户要求继续系统观察；E01实际VP锚定+native boundary，全部配置报告，不选prompt赢家 |
 
 | P07 | 2026-10-05 | 去掉prefill/示例仍保留巨大顺序交互；题先GP拒绝initial更多，但simple final回答更差 | E07完整4416评估，69/67sets | “拒绝初始命题”可能是回答默认值/任务影响，不能单独等同修订 | E08固定最终目标题，相关/极性对应无关focus×before/after区分reading goal与回答启动 |
+
+| P08 | 2026-10-05 | E01无歧义NPZ extension也降低原短NP角色支持（NPZ:1 blocked约1→.040、nonGP约1→.119），final semantic约1保持 | 独立free外审snapshot1、neutral/reg/base，gold=null | 不能把role下降直接归为digging-in；短NP引用与完整subject、一般NP复杂度竞争 | E11先外审head/full-span与isolated控制；三源组pilot，不把测量修复称novelty |

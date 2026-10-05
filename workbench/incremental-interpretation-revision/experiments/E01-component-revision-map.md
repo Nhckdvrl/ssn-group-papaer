@@ -31,3 +31,8 @@
 - 按决策表执行了什么：
 - 主张变化：
 - POST-HOC：
+
+### Snapshot2更新（本批推理之前）
+- 仍使用事前登记的各family源序号≤3，不按Qwen结果选择；完整外审覆盖54/60变体、232候选QA、228eligible，gold全部null。新增外审返回补齐更多NPS/MVRR和NPZ配对，未审/timeout六变体仍保留缺失记录，不当作语义无效。
+- 8个既定配置全跑，共1824任务；snapshot1结果与输入原样保留。新增行允许追三family的cue/blocker/extension读数结构，但每family最多3词汇组，区间只是小样本描述，不能称跨词汇稳定机制。
+- 输入SHA256 `32756bdc1f60848ab0764e4ae900ed5025f6f5cdc512b3198f862c06d7764a52`；审计与来源见[D0](../results/D0-opencode-exploratory-snapshot2.json)。
