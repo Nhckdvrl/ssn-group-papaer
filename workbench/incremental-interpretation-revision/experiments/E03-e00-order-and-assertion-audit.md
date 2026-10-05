@@ -1,6 +1,6 @@
 # E03：E00 顺序反转与断言标准审计（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** DIAG / REPRO
 - **对应：** C00 / P01 / P03
 - **问题（一句话）：** E00 GP effect 的符号反转来自 question-before-sentence、few-shot bundle、推理数值误差，还是问题诱发了未明说宾语的语用补全？
@@ -25,8 +25,10 @@
 - **算力预算：** 两张空闲 H20 独立推理，估计合计 <0.5 GPU·h；无训练。
 
 ## 结果（跑完后填写；不改上面的内容）
-- 数字（含 CI）：
-- 结果文件：
-- 按决策表执行了什么：
-- 主张变化：
-- POST-HOC：
+- 数字（含 CI）：FP32，固定 reg demo/raw/无指令时：句先 +28.99 pp [17.39, 40.58]、题先 −37.68 pp [−52.17, −23.19]；order interaction +66.67 pp [49.28, 84.06]。换 rev demo 时交互 +50.72 pp [34.78, 66.67]。所有 8 个 demo/interface/instruction cell 的 order interaction 为 +49.28 至 +73.91 pp，CI 全为正。
+- assertion 未消除反转：reg demo/raw 句先 +39.13 pp [27.54, 50.72]、题先 −34.78 pp [−47.83, −20.29]。
+- 数值：BF16/FP32 同 4,416 prompts 27 accuracy flips（0.61%）；mean abs P(Yes) delta=0.00495、max=0.19446。数值会影响个别概率，不能解释巨大顺序交互；后续固定 FP32。
+- 结果文件：[FP32 summary](../results/E03-fp32-summary.json)、[BF16 summary](../results/E03-bf16-summary.json)、[precision comparison](../results/E03-precision-comparison.json)；对应 score CSV 与 config 同目录。
+- 按决策表执行了什么：query-order 分支；demo bundle 与 numerical precision 不解释符号反转；assertion 未修复 calibration。对上 upstream 发布结果后，注册 E04 已知 positive-control model（只加一个）。E01 尚未运行。
+- 主张变化：C00 未升级；P03 从“可能 harness error”细化为固定 Qwen3-8B protocol 中稳定 query-order dependence。不能升级成一般 recovery/能力/机制 claim。
+- POST-HOC：上游 release 对应 Qwen3-8B 也含同方向反转；4,416 rows matched，概率 mean absolute delta=0.0410（上游 warped generate scores 与本地 unwarped logprob 也不同），不声称逐点 byte-identical replication。

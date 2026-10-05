@@ -1,6 +1,6 @@
 # E04：已知阳性模型的独立本地校准（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** REPRO / instrument validation
 - **对应：** C00 / P03
 - **问题（一句话）：** 同一 harness 能否在上游已经给出稳定预期方向的固定 Qwen3-1.7B 上复现 GP-specific deficit，并满足 simple/nonGP 与 prompt 波动检查？
