@@ -254,7 +254,7 @@ def analyze(cache,rawpath,nlibase,nlirepair):
 if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--out',type=Path,required=True)
-    a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True);a.add_argument('--version',type=int,choices=[1,2],default=1)
+    a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True);a.add_argument('--version',type=int,choices=[1,2,3],default=1)
     n=s.add_parser('analyze');n.add_argument('--cache',type=Path,default=CACHE);n.add_argument('--raw',type=Path,required=True);n.add_argument('--base',type=Path,required=True);n.add_argument('--repair',type=Path,required=True);n.add_argument('--out',type=Path,required=True)
     a=p.parse_args()
     if a.action=='build':print(json.dumps(build(a.cache,a.out),indent=2))

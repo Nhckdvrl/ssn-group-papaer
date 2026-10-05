@@ -4,17 +4,17 @@
     "source_items": 24,
     "verb_families": 12,
     "candidate_sha256": "e35dd005daa320ebe773de1a25405823d33d2cc1889af9f988c0b3d640873e79",
-    "audited_sha256": "a3a266b5f8f623b9ff248dec3e3abd0023da8e1f28aa6838a8c6a36f308bdf8c",
+    "audited_sha256": "7787a683b9ed937777093c111a7a1dc6968fd1d17057bd94071f2d481ddcfda2",
     "eligible": 1920,
-    "faithful_history": 1472,
+    "faithful_history": 1920,
     "grammar_counts": {
       "acceptable": 1440,
       "marginal": 480
     },
     "review_sha256": [
-      "ede6c86541a13b66ed81be4d18ca48ce46a75bbdf2a90ced51b831640f74bcae",
+      "582cc5de648e4674f014fcf49f9a27b601958e7af9971d5234cceef229112157",
       "fde3adfae651aa31e08b0deb9a95d0b95fe9837e56951de8d430e86ada2d98ad",
-      "f77164b16a0ff76e41d29bcb6c1270f4560295a1b4094097a52db2a37656d416"
+      "5b27108bf907c176a4548605e5f3b90e8ab2de57b43aaa77543d43d2ea17502b"
     ],
     "annotation_policy": "Independent status/scope/priority/relations before inference; pre-update report contents are not asserted-world truth gold. All rows scored."
   },
@@ -23,17 +23,17 @@
     "source_items": 24,
     "verb_families": 12,
     "candidate_sha256": "05e9ad8c5bcbc4e105322a8f67c79918f95c2c2063d6f68b2aca5039eb6860c2",
-    "audited_sha256": "99592c60d61f49c9b6af85414607bb91569b7e37e168eed579175c99ad4bf34e",
+    "audited_sha256": "c5bf725831092ec3966c5a99c1e151a488400f12bcde086f47114c5debd5c44a",
     "eligible": 768,
-    "faithful_history": 640,
+    "faithful_history": 768,
     "grammar_counts": {
       "acceptable": 576,
       "marginal": 192
     },
     "review_sha256": [
-      "ede6c86541a13b66ed81be4d18ca48ce46a75bbdf2a90ced51b831640f74bcae",
+      "582cc5de648e4674f014fcf49f9a27b601958e7af9971d5234cceef229112157",
       "fde3adfae651aa31e08b0deb9a95d0b95fe9837e56951de8d430e86ada2d98ad",
-      "f77164b16a0ff76e41d29bcb6c1270f4560295a1b4094097a52db2a37656d416"
+      "5b27108bf907c176a4548605e5f3b90e8ab2de57b43aaa77543d43d2ea17502b"
     ],
     "annotation_policy": "Independent status/scope/priority/relations before inference; pre-update report contents are not asserted-world truth gold. All rows scored.",
     "clear_gold": 768,
@@ -43,5 +43,11 @@
       "undetermined": 384,
       "entailed": 192
     }
+  },
+  "scope_schema_correction": {
+    "v1_raw_faithful": 1472,
+    "v1_nli_faithful": 640,
+    "affected_review_shard": 2,
+    "correction": "Old role-constraint scope, not target event; reviewer independently reread and corrected scope only. Shard0 rereview retained too. No model inference on v1/v2; input bytes, statuses, priority and gold unchanged."
   }
 }

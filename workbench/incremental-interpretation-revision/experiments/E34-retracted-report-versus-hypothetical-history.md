@@ -19,3 +19,6 @@
 ## 跑前逐条审计与工具核验
 
 三独立Luna各896，共2688输入完整ID/hash覆盖。Raw1920全部eligible/faithful、grammar1440acceptable/480marginal；NLI768全clear（192E/192C/384U）且与verified final父语义一致，grammar576/192。三审相同锚语法边缘意见保留，不由执行者自判语义。384pre/1536post raw、初始/最终角色词袋、1920目标因果token identity及数目核验通过；尚未运行实验模型。[audit](../results/D0-E34-history-audit.json)。
+
+
+跑前schema勘误：首次adopt实际faithful raw1472/NLI640，前段文字误写全量faithful。分片2将event_scope按target所属event读，448 raw/128 NLI标changed；另两审按ROLE FACT约束范围。执行者先误要求分片0重审（其原标签本已local），随后按ID定位分片2，原审计员独立重读896句，另存review-2-scope-v2，只有scope与说明变化。原v1/v2及审计都保留；实际使用audited-v3，raw1920/NLI768全faithful，gold/status/priority/input字节不变，前后逐行ID/句hash同一。全局失败即停的命令执行已启用，避免前置assert失败仍提交后续步骤。所有审计勘误均在任何模型推理前完成。
