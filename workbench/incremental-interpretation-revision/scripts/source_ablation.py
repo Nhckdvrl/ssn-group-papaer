@@ -94,7 +94,7 @@ def adopt(directory,reviews):
         j=json.loads(path.read_text());assert j['model']=='gpt-6-luna'
         for r in j['reviews']:
             key=mapping[r['id']];assert key not in ann;ann[key]=(r,sha(path))
-    assert len(ann)==1632
+    assert len(ann)==len(mapping)
     reports={}
     for task in ('probability','nli'):
         data=directory/f'{task}-candidates-v1.jsonl';rows=list(map(json.loads,data.read_text().splitlines()))
