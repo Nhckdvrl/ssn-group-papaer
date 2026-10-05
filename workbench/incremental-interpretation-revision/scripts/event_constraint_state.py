@@ -64,7 +64,7 @@ def adopt(data,reviews,idmap,out):
 
 def run(args):
     assert not args.out.exists();report=json.loads(args.data.with_suffix('.audit.json').read_text());assert report['audited_sha256']==sha(args.data)
-    rows=list(map(json.loads,args.data.read_text().splitlines()));assert len(rows)==960
+    rows=list(map(json.loads,args.data.read_text().splitlines()));assert len(rows)==report['variants'] and len({r['item_id'] for r in rows})==len(rows)
     tok=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left');tok.pad_token_id=tok.eos_token_id
     labels={letter:[i for word,i in tok.get_vocab().items() if word.replace('Ġ','').replace('▁','').strip()==letter] for letter in 'ABC'};assert all(labels.values())
     configs=[('base',0),('base',1),('base',2)] if args.mode=='base' else [('repair',0)]
@@ -80,7 +80,7 @@ def run(args):
     args.out.mkdir(parents=True);start=time.time()
     model=AutoModelForCausalLM.from_pretrained(args.model,local_files_only=True,torch_dtype=torch.float32,attn_implementation='sdpa').to('cuda').eval()
     for p in model.parameters():p.requires_grad_(False)
-    cfg=dict(experiment='E28',mode=args.mode,model=str(args.model),model_manifest=json.loads((args.model/'manifest.json').read_text()),dtype='float32',tf32=False,attention='sdpa',seed=0,frozen=True,thinking=False,
+    cfg=dict(experiment=args.experiment,mode=args.mode,model=str(args.model),model_manifest=json.loads((args.model/'manifest.json').read_text()),dtype='float32',tf32=False,attention='sdpa',seed=0,frozen=True,thinking=False,
              task_count=len(tasks),data_sha256=sha(args.data),audit_sha256=sha(args.data.with_suffix('.audit.json')),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
              code_sha256=sha(Path(__file__)),torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(),batch_size=8,
              class_labels=labels,base_definition=BASE,scope_repair=REPAIR,mapping_policy='Three cyclic mappings for base; canonical map0 paired repair. Compare repair only with base map0.')
@@ -106,7 +106,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--out',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--data',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True);a.add_argument('--idmap',type=Path,required=True);a.add_argument('--out',type=Path,required=True)
-    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--mode',choices=['base','repair'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--mode',choices=['base','repair'],required=True);r.add_argument('--experiment',choices=['E28','E29'],default='E28');r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
     x=p.parse_args()
     if x.action=='build':print(json.dumps(build(x.cache,x.out),indent=2))
     elif x.action=='adopt':print(json.dumps(adopt(x.data,x.reviews,x.idmap,x.out),indent=2))
