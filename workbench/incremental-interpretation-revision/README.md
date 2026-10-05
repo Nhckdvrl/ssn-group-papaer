@@ -15,10 +15,10 @@
 ## 论文形态卡
 当前候选主旨[I01](ideas/I01-event-reference-or-lexical-echo.md)：**被排除的参与者为什么在下一事件里更容易被预测？**
 
-已出现可检验的具体finding：具名role证据在原event帮助对应患者预测，换到同谓词新event反向；换人物不消除、换谓词使作用向正方向移动（绝对变正依赖事实词序）；native scope判读另呈正向外推。候选形态是“角色证据的迁移对象与边界→竞争解释→区分性语言干预”，尚未认定内部机制或普遍novelty。
+已出现可检验的具体finding：具名role证据在原event帮助对应患者预测，换到同谓词新event反向；E33自然释义在换actor新event也反向，说明原stem重复不是必要条件；换人物不消除、换谓词使作用向正方向移动（绝对变正依赖事实词序）；native scope判读另呈正向外推。候选形态是“角色证据的迁移对象与边界→竞争解释→区分性语言干预”，尚未认定内部机制或普遍novelty。
 
 ## Idea 组合
-[I01](ideas/I01-event-reference-or-lexical-echo.md)仍PILOT，有E29/E30/E31连续判别支持，当前主张C05为L1。E32同词袋事实改序后predicate差仍+1.94/+2.36bits，但neutral/绝对方向变化，不能忽略focus。下一同一动作的自然释义测试区分surface predicate retrieval与语义关系aftereffect；所有构造继续独立逐条审核。不自动升PROMISING、不改变ACTIVE容量分配。C04的GP历史响应是另一测量，不用source-free C05追认GP-specific finding。
+[I01](ideas/I01-event-reference-or-lexical-echo.md)仍PILOT，有E29–E33连续判别支持，当前主张C05为L1。E32同词袋事实改序后predicate差仍+1.94/+2.36bits，但neutral/绝对方向变化，不能忽略focus。E33同基本动作8family的释义也迁移到otherActor新event（两order J−2.17/−2.14bits），原词重复不足、词汇boost仍影响，sameActor不确定。下一真正preliminary report的修订history对照，而非继续改同义词；所有构造继续独立逐条审核。不自动升PROMISING、不改变ACTIVE容量分配。C04的GP历史响应是另一测量，不用source-free C05追认GP-specific finding。
 
 ## 主张摘要
 见 [CLAIMS.md](CLAIMS.md)。[E07](experiments/E07-native-readout-transfer.md) native顺序交互+60.87 pp [44.93,76.81]，C03为L1固定协议测量；[E08](experiments/E08-reading-focus-versus-final-query.md) 固定末尾目标题后，initial−final focus的GP交互+1.45 [−10.14,+13.04]，简单reading-goal故事支持不足。[E09](experiments/E09-published-comprehension-transfer.md) 原始SAP题句先cue−GP +33.33 [22.22,44.44] / +19.44 [11.11,29.17]，仍有mapping/顺序混杂；[E10](experiments/E10-question-versus-option-access.md) 拆位置后保留混合结构，不能归因task-directed parse。[E12](experiments/E12-input-probability-versus-answer-access.md) source消歧词交互+1.47 bits [.47,2.52]主要来自cue更易预测，不能叫承诺加深；转[E13](experiments/E13-natural-followup-without-diagnostic-question.md)原始自然后文用途：全S2 GP差−.031 / −.003 bits、两CI跨0，局部reference结果不确定。

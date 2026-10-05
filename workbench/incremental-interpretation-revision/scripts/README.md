@@ -43,3 +43,14 @@ CUDA_VISIBLE_DEVICES=0 "$IIR_PYTHON" workbench/incremental-interpretation-revisi
 ```
 
 原text与逐词分数仅cache；公开摘要按24 source-set配对bootstrap。第一源词无前文，整词不评分；S2全部词均有前文。首batch以library masked-label loss独立校对S2 shift/indexing，不把surprisal解释为语义gold。
+
+
+E32/E33事实词序及动作迁移（所有材料先独立逐条审计）：
+
+```bash
+source workbench/incremental-interpretation-revision/scripts/env.sh
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/role_fact_transfer_order.py analyze --new "$IIR_CACHE/runs/E32-probability" --out workbench/incremental-interpretation-revision/results/E32-summary.json
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/action_paraphrase_transfer.py analyze --new "$IIR_CACHE/runs/E33-probability" --out workbench/incremental-interpretation-revision/results/E33-summary.json
+```
+
+build/adopt入口见各脚本与实验卡。E33字段v1/v2与原材料均cache-only，固定字段hash见D0-E33审计。E29/E31/E32父分数原样复用；E33独立action-clear8与自然/parent交集7/6在推理前定义，所有variant含related都评分。Qwen3-8B冻结FP32，本地cache、原venv、无任何训练或representation probe；网络先source上述环境去掉所有代理。
