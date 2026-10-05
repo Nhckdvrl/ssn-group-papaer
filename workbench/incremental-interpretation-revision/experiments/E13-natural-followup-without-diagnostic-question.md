@@ -18,3 +18,7 @@
 - 独立审计：待返回；source四variant同S2和shared schema已机械核对。
 - 主张变化：无。
 - POST-HOC：无。
+
+### 独立转录审核v1（任何E13模型推理之前）
+- 24source-item请求全部终止，23normal-finish完整，92个variant问题均外审回答faithful Yes；请求与原template/variant/hash/ID覆盖逐项核对，无tool调用。这里只确认原材料展开，不是semantic gold或人审能力证据。
+- source13（reciprocal item）因进程timeout无完整回答，未算完成；独立retry1单worker，明确零基source option0/1指代，保留全部原失败。无E13实验分数，样本/读数未按结果调整。见[external audit](../results/D0-Slattery-external-transcription-v1.json)。
