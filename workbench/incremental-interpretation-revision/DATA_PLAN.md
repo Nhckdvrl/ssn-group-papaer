@@ -9,7 +9,7 @@
 | source | files / scale | role | redistribution |
 |---|---|---|---|
 | Amouyal et al. ACL 2026 release | `extended_gardenpath_experiments.csv` + other difficult-structure CSVs; includes sentence/question/answers/set_id/condition | behavioral positive control + human-aligned task format | follow upstream license; record revision/hash |
-| Jurayj et al. BlackboxNLP 2022 | 43 NP/Z, 20 NP/S, 20 MV/RR component rows + `make_sents.py` | controlled generation of ambiguity, blocker, comma/`that`, unreduced, context/extension variants | Apache-2.0 repo; retain attribution |
+| Jurayj et al. BlackboxNLP 2022 | audited revision: 43 NP/Z, 19 NP/S, 28 MV/RR component rows + `make_sents.py` (original plan's 20/20 was inaccurate) | controlled generation of ambiguity, blocker, comma/`that`, unreduced, context/extension variants | Apache-2.0 repo; retain attribution |
 | Microsoft Turing Experiments | `Christianson_2001.tsv`, `Alternates_2022.tsv` | independent classical GP replication | keep source provenance; follow repo license |
 
 ## Local normalized schema
@@ -62,3 +62,7 @@ This lets us measure **residual old-interpretation support and successful new-in
 - no white-box labels.
 
 Those are conditional on a concrete competing-account question emerging from E00/E01.
+
+## Audit / loader status (2026-10-05)
+
+Pinned revisions, licenses, exact hashes and counts: [D0 audit](results/D0-audit.md), [machine-readable manifest](results/D0-source-audit.json). Local loader: `scripts/data.py`; cache-only normalized data. Missing upstream gold/position stays null. E00 question type is confounded with Yes/No polarity; main readout remains within-set same-question GP/nonGP contrast. Generated Jurayj gold requires a separate pre-inference audit; lexical blocker effects cannot be pooled with same-verb explicit cues.

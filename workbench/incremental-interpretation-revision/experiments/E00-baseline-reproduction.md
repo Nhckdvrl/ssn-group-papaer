@@ -28,6 +28,16 @@
   - C：模型在 GP 上接近饱和但 simple 正常 → 换第二个开放家族作 instrumentation check；仍不声称“新模型消除了 GP”。
 - **算力预算：** < 1 GPU·h 量级；先单模型全量，禁止为了“更完整”一开始并行很多模型。
 
+## 执行细化（2026-10-05，首轮推理之前）
+- 固定切片为 276 rows / 69 set_id，每组 GP/nonGP × simple/GP question，不筛题。GP question gold 全 No、simple 全 Yes；question-type 对照有极性混杂，不能独立支撑能力差异。
+- 原协议优先：完整 upstream `prefixes.json` 和 `prefixes_rev.json`，各 8 个 prefix；保留 raw continuation `system + "\n\n" + question + "\n\n" + suffix`，不套 chat template。报告全部 16 个 prefix，不选赢家。
+- logprob：FP32 softmax 下汇总上游 clean_word 匹配的 Yes/No token variants；P(correct) 在两类 token mass 内归一化，accuracy = P(correct)>0.5。额外保存两类 mass，不能把低 mass 的 forced accuracy 当自然输出有效性。
+- 原生 Qwen chat 单独作为 instrumentation contrast：enable_thinking=False，固定 prefix 0，sentence-first / question-first 各一；再加一句 `Read the whole sentence and revise any initial interpretation before answering.`，单独标记为 instruction control。先报告原协议结果，不事后改主读数。
+- bootstrap：先在每 set/condition/question_type 内平均固定 prompt 的结果，再按 69 set_id cluster 重采样 10,000 次（seed 20261005）；主要差异 nonGP−GP on GP questions，另报 simple 差异、difference-in-differences 与 subtype。prompt 波动报各 prefix effect 的 min/max、SD 和配对 order delta，不只报 pooled CI。
+- 完全相同 raw_reg_0 prompt 全量重复一次，报告概率漂移和 accuracy flips，不择 prompt。
+- 固定模型 Qwen/Qwen3-8B（HF revision b968826d9c46dd6066d109eabc6255188de91218；若直连镜像需另记镜像 revision 和逐文件 hash）。复用已有 venv torch 2.7.1+cu126 / transformers 4.51.3；单卡 BF16 eval/inference_mode，无训练。
+- 若原协议 positive control 通过，进入 E01；若 chat 恢复，结论限定为协议/默认行为，不升级成不可恢复能力缺损。预算估计保留原 <1 GPU·h，实际记录。
+
 ## 结果（跑完后填写；不改上面的内容）
 - 数字（含 CI / prompt-order 波动）：
 - 结果文件：

@@ -60,3 +60,4 @@
 ## 资产位置
 - 上游数据/代码先下载到本地 cache，不直接复制进 git；来源和 hash 见 DATA_PLAN。
 - 本仓库新增脚本放 `scripts/`，实验卡放 `experiments/`，结果摘要放 `results/`；大模型/大 raw 不进 git。
+- 本地 cache：`/data1/xiangding/work/incremental-interpretation-revision/`（upstream / normalized / models / runs）；[审计](results/D0-audit.md)、[复现入口](scripts/README.md)。下载显式无代理；复用已有 venv。
