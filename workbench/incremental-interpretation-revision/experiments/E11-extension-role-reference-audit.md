@@ -1,6 +1,6 @@
 # E11：加长主语后的角色读数，是引用方式还是修订失败？（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** MEASUREMENT / P06异常追why；不注册paper novelty
 - **对应：** C01 / P06 / P08
 - **问题（一句话）：** 无歧义句中的extension使原角色回答下降，是把NP中心词当完整主语的引用歧义，还是最终事件理解也受损？
@@ -18,3 +18,8 @@
 - 结果文件：
 - 主张变化：
 - POST-HOC：
+
+### 部分cohort（本批推理之前）
+- 所有已normal-finish外审返回中取原先的前3源组（固定规则，不挑Qwen结果），本snapshot为9/30变体、50候选QA/49eligible、gold=0；完整cohort仍在外审，timeout不视OK，缺失见[D0](../results/D0-E11-opencode-snapshot1.json)。
+- 先跑此固定部分cohort的4既定配置（196任务），所有n1的paired CI=null，不能升级稳定结构主张；仅用于原先why问题的条件诊断，全部配置/输入保留。
+- raw input SHA `6ebfdf33cebedfbc9618f8767e9e48b3423a01c01ecb69f097924cbf740d8960`。外审对NPZ:1 extended comma中原短NP-role标interpretation-dependent，full/head标clear；该审计在本次Qwen结果之前返回，理由/原始JSON留cache，agent未自行gold。

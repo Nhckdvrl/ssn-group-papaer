@@ -62,3 +62,7 @@ MiMo外审概率探索层只保留完整normal-finish、逐题覆盖和hash一�
 新增实际正文卡：[Slattery2013](slattery2013-competing-representations.md)、[Ceháková2023](cehakova2023-diverse-reanalyses.md)、[Storer2026](storer2026-contextual-trajectory.md)、[Han ADCE](han2025-causal-comprehension.md)；邻域定位[Belief-R](wilie2024-belief-revision.md)只读定义/构造，未查完结果。Slattery E1 downstream reflexive和E2次句后果已区分新parse与旧解释；Ceháková自由答案展示merged/partial/incoherent等不同结果。因此不能把“两读数/下游后果/局部与整体不同”写成首次提出。Storer的高GP轨迹分类也不是事件正确的证据，critical-token holdout约54.9%的失败需一同阅读。ADCE强调表面敏感不足推翻意义理解，但其介入近似/正确样本选择/标签意义保留都有限制；不照搬指标宣称内部因果。
 
 E01 snapshot2的三NPZ原题短final semantic≈1但role≈.013；cue extension仅role下降。这使E11成为必要instrument检查，不是新paper主张。NPZ和MVRR extension的final semantic方向也不同且n≤3；先确认语言操作的读数有效性，再看晚证据影响哪些实际事件依赖。新发现OSF有Czech原题作为潜在资产，尚未下载/审计；不因可获得数据而立即换语言或研究对象。
+
+### 扩大venue扫描与已发表近邻核对
+
+本地venue corpus已扩为36,979条（当前下载完成文件；2026ACL等尚在fetch，不是完整覆盖），nearest首先返回Hanna/Mueller NAACL2025与Amouyal ACL2025。已核对Hanna最终publication §6和附录C/H，保留“不广泛复用”的owner，同时记录不完整faithfulness与跨构式非特异干预的范围。nearest只是定位，不按接受/拒稿评分判我们的题。现cache17个PDF版本/16篇不同论文，下载不等于读完；ledger逐条注明范围。
