@@ -15,9 +15,13 @@ from analyze import estimate
 
 # Pre-inference linguistic audit; no exclusions based on model performance.
 FLAGS={
+    'NPZ:20':'As long as conditional: standalone final event is not unconditionally asserted',
     'NPZ:26':'In case conditional: dropping conditional antecedent does not preserve assertion truth',
+    'NPZ:27':'Source typo burglers in extension; preserve upstream bytes, quarantine complete paired set',
     'NPZ:36':'In case conditional: dropping conditional antecedent does not preserve assertion truth',
+    'NPZ:37':'Source typo boooks in main clause; preserve upstream bytes, quarantine complete paired set',
     'NPZ:41':'In case conditional: dropping conditional antecedent does not preserve assertion truth',
+    'NPS:7':'Source extension had rode has nonstandard participle; no silent correction',
     'NPS:17':'insured used with clausal complement; possible insure/ensure lexical issue',
     'MVRR:9':'sketched/drawn a portrait has doubtful recipient passive with artist',
     'MVRR:12':'composed a carefully worded excuse has doubtful recipient passive with student',
@@ -27,6 +31,14 @@ FLAGS={
     'MVRR:26':'stitched/woven a shawl has doubtful recipient passive with girl',
 }
 NON_OBJECT_BLOCKERS={4:'PP',12:'PP',24:'PP',25:'adverb',28:'infinitive',30:'adverb',32:'infinitive',33:'adverb',35:'PP',40:'PP'}
+UNSAFE_INITIAL_PROPOSITIONS={
+    'MVRR:5':'active consumed rapidly and entirely leaves the consumed entity unspecified',
+    'MVRR:6':'active pledged to complete secrecy has questionable argument realization',
+    'MVRR:7':'active neglected in the chaos omits the neglected entity',
+    'MVRR:11':'active campaign intended to be popular introduces agency not licensed by the passive',
+    'MVRR:16':'active stabbed deeply and fatally omits the stabbed entity',
+    'MVRR:17':'active jumped completely past omits the landmark; complete pair already quarantined',
+}
 ACTIVE_PAST={'given':'gave','taken':'took','beaten':'beat','grown':'grew','eaten':'ate','sworn':'swore',
              'forgotten':'forgot','ridden':'rode','drawn':'drew','driven':'drove','known':'knew',
              'written':'wrote','begun':'began','done':'did','thrown':'threw','bitten':'bit',
@@ -83,7 +95,12 @@ def claims(row,family,condition):
     verb=row['Unambiguous verb'] if condition=='blocked' else row['Ambiguous verb']
     subject=join([row['Start'],row['Noun']])
     aux=row['Unreduced content'].split()[-1]
-    initial=terminal(join([subject,ACTIVE_PAST.get(verb,verb),row['RC contents']]))
+    # Initial semantic interpretation belongs to the GP stimulus. Converting
+    # blocked participles into active verbs can produce missing arguments,
+    # e.g. "the captive took into the cave". Keep the original GP proposition
+    # fixed, and identify the lexical replacement as a separate control.
+    initial_verb=row['Ambiguous verb']
+    initial=terminal(join([subject,ACTIVE_PAST.get(initial_verb,initial_verb),row['RC contents']]))
     final=terminal(join([subject,aux,verb,row['RC contents']]))
     simple=terminal(join([subject,row['Disambiguator'],row['End']]))
     return initial,final,{
@@ -105,7 +122,8 @@ def build(cache):
                     sentence,start,disamb=canonical(row,family,condition,extended)
                     initial,final,questions=claims(row,family,condition)
                     ext=row['Intervener'] if family=='MVRR' else row['Extension']
-                    cue={'NPZ':'comma','NPS':'that','MVRR':'unreduced'}[family] if condition=='explicit_cue' else ('lexical_selection' if condition=='blocked' and family!='NPZ' or condition=='non_gp' else 'object_slot' if condition=='blocked' else 'none')
+                    blocker=NON_OBJECT_BLOCKERS.get(i,'direct_object') if family=='NPZ' and condition=='blocked' else None
+                    cue={'NPZ':'comma','NPS':'that','MVRR':'unreduced'}[family] if condition=='explicit_cue' else ('lexical_selection' if condition=='blocked' and family!='NPZ' or condition=='non_gp' else 'object_slot' if condition=='blocked' and blocker=='direct_object' else 'non_object_modifier' if condition=='blocked' else 'none')
                     for qtype,q in questions.items():
                         diagnostic=qtype=='lingering_semantic' and family in ('NPS','MVRR')
                         gold=None if diagnostic or sid in FLAGS else 'No' if qtype.startswith('lingering') else 'Yes'
@@ -124,10 +142,11 @@ def build(cache):
                             extension_length=len(ext.split()) if extended else 0,extended=extended,
                             source_row_id=f'{file}:{i}',pair_id=sid,audit_flag=FLAGS.get(sid),
                             clean_stratum=sid not in FLAGS,
-                            blocker_class=NON_OBJECT_BLOCKERS.get(i,'direct_object') if family=='NPZ' and condition=='blocked' else None,
+                            blocker_class=blocker,
                             readout_kind='syntactic_role' if qtype in ('intended','lingering') else 'asserted_proposition',
                             diagnostic_only=diagnostic,gold_status='unverified' if sid in FLAGS else 'diagnostic_no_gold' if diagnostic else 'audited',
-                            lexical_absence_control=(family=='NPZ' and condition=='non_gp') or (family=='NPS' and condition=='blocked' and qtype=='lingering_semantic')))
+                            question_audit_flag=UNSAFE_INITIAL_PROPOSITIONS.get(sid) if qtype=='lingering_semantic' else None,
+                            lexical_absence_control=(family=='NPZ' and condition=='non_gp') or (family in ('NPS','MVRR') and condition=='blocked' and qtype=='lingering_semantic')))
     return out,components
 
 def validate(rows,components,cache):
@@ -158,12 +177,12 @@ def validate(rows,components,cache):
                     assert actual==terminal(join([s])),(family,i,condition,ext,actual,s)
     return dict(component_rows=90,qa_rows=len(rows),counts=dict(counts),unique_sentence_variants=len({(r['pair_id'],r['condition'],r['extended']) for r in rows}),
                 canonical_parity='all variants match pinned make_sents.py after whitespace / repeated-final-period normalization',
-                flags=FLAGS,hash_audit='verified before loading')
+                flags=FLAGS,unsafe_initial_propositions=UNSAFE_INITIAL_PROPOSITIONS,hash_audit='verified before loading')
 
 def tasks_jurayj(path,tokenizer,experiment):
     rows=[json.loads(line) for line in path.read_text().splitlines()]
     # Unverified/ill-formed sentences remain in the generation ledger, never scored.
-    rows=[r for r in rows if r['clean_stratum']]
+    rows=[r for r in rows if r['clean_stratum'] and not r.get('question_audit_flag')]
     root=verified_root(CACHE,'amouyal');tasks=[]
     for order,file in [('reg','prefixes.json'),('rev','prefixes_rev.json')]:
         pref=json.loads((root/'prefixes'/file).read_text())[0]
@@ -194,10 +213,10 @@ def analyze_jurayj(rows):
                 for q in ('intended','lingering','intended_semantic','lingering_semantic'):
                     for c in ('explicit_cue','blocked'):
                         for e in (False,True):
-                            out['paired_effects'][f'{stratum}/{suite}/{family}/{c}_minus_gp/{int(e)}/{q}']=estimate([d[(family,c,e,q)]-d[(family,'gp',e,q)] for d in ds])
+                            out['paired_effects'][f'{stratum}/{suite}/{family}/{c}_minus_gp/{int(e)}/{q}']=estimate([d[(family,c,e,q)]-d[(family,'gp',e,q)] for d in ds if (family,c,e,q) in d and (family,'gp',e,q) in d])
                     for c in ('gp','explicit_cue','blocked'):
-                        out['paired_effects'][f'{stratum}/{suite}/{family}/{c}/extension_minus_short/{q}']=estimate([d[(family,c,True,q)]-d[(family,c,False,q)] for d in ds])
-                    out['paired_effects'][f'{stratum}/{suite}/{family}/extension_DiD_gp_minus_cue/{q}']=estimate([d[(family,'gp',True,q)]-d[(family,'gp',False,q)]-d[(family,'explicit_cue',True,q)]+d[(family,'explicit_cue',False,q)] for d in ds])
+                        out['paired_effects'][f'{stratum}/{suite}/{family}/{c}/extension_minus_short/{q}']=estimate([d[(family,c,True,q)]-d[(family,c,False,q)] for d in ds if (family,c,True,q) in d and (family,c,False,q) in d])
+                    out['paired_effects'][f'{stratum}/{suite}/{family}/extension_DiD_gp_minus_cue/{q}']=estimate([d[(family,'gp',True,q)]-d[(family,'gp',False,q)]-d[(family,'explicit_cue',True,q)]+d[(family,'explicit_cue',False,q)] for d in ds if all((family,c,e,q) in d for c in ('gp','explicit_cue') for e in (False,True))])
                 for c in ('gp','explicit_cue','blocked'):
                     for e in (False,True):
                         # Joint correctness at each fixed prompt, then average within item.

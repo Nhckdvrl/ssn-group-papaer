@@ -77,7 +77,28 @@ def record(**kwargs):
                 final_parse_claim=None, ambiguity_start=None, disambiguator_index=None,
                 cue_type=None, extension_length=0, source_row_id=None)
     base.update(kwargs)
+    validate_record(base)
     return base
+
+def validate_record(row):
+    """Shared schema invariants, including genuinely absent source annotations."""
+    required = ('item_id','source','construction','condition','sentence',
+                'question_type','question','gold','initial_parse_claim',
+                'final_parse_claim','ambiguity_start','disambiguator_index',
+                'cue_type','extension_length','source_row_id')
+    assert all(key in row for key in required)
+    assert row['source'] in SOURCES
+    for key in ('item_id','construction','condition','sentence','source_row_id'):
+        assert isinstance(row[key],str) and row[key].strip(), (key,row[key])
+    assert row['gold'] in (None,'Yes','No')
+    for key in ('question_type','question','initial_parse_claim','final_parse_claim','cue_type'):
+        assert row[key] is None or isinstance(row[key],str),key
+    for key in ('ambiguity_start','disambiguator_index'):
+        value=row[key]
+        assert value is None or (type(value) is int and 0<=value<len(row['sentence'].split())),(key,value)
+    assert type(row['extension_length']) is int and row['extension_length']>=0
+    if row['gold'] is not None:
+        assert row['question'] and row['question_type']
 
 def amouyal(cache):
     root = verified_root(cache, 'amouyal')

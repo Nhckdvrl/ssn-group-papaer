@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Incremental interpretation local record v1",
+  "type": "object",
+  "required": [
+    "item_id",
+    "source",
+    "construction",
+    "condition",
+    "sentence",
+    "question_type",
+    "question",
+    "gold",
+    "initial_parse_claim",
+    "final_parse_claim",
+    "ambiguity_start",
+    "disambiguator_index",
+    "cue_type",
+    "extension_length",
+    "source_row_id"
+  ],
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "construction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "condition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sentence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_row_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "enum": [
+        "amouyal",
+        "jurayj",
+        "turing"
+      ]
+    },
+    "question_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "question": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "initial_parse_claim": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "final_parse_claim": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cue_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gold": {
+      "enum": [
+        "Yes",
+        "No",
+        null
+      ]
+    },
+    "ambiguity_start": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "0-based whitespace-word index; null if unannotated upstream"
+    },
+    "disambiguator_index": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "0-based whitespace-word index; null if unannotated upstream"
+    },
+    "extension_length": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Inserted extension words, not total sentence length"
+    }
+  },
+  "additionalProperties": true
+}
