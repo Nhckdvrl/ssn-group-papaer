@@ -1,0 +1,102 @@
+"""E30 preregistered marker intervention; paired families, all label mappings."""
+import argparse
+import collections
+import json
+from pathlib import Path
+import numpy as np
+from data import CACHE,sha
+from aspect_reference import read_run
+from analyze_source_ablation import stat,diff
+
+
+def analyze(cache,probability,nli,repair_second,repair_separate):
+    pc,pr=read_run(probability);assert len(pr)==768
+    oc,orr=read_run(cache/'runs/E29-probability');assert len(orr)==1152
+    for k in ('model_manifest','dtype','tf32','attention','seed','torch','transformers','batch_size','frozen'):assert pc[k]==oc[k],k
+    raw=[dict(r,boundary_marker='original' if r['readout_actor_mode']=='original_activity' else 'separate') for r in orr]+pr
+    nr=[];nc=[]
+    for p,marker,count in ((cache/'runs/E29-nli','separate',1440),(nli,'second',576),(repair_second,'second',192),(repair_separate,'separate',192)):
+        c=json.loads((p/'config.json').read_text());assert sha(p/'predictions.jsonl')==c['predictions_sha256']
+        rr=list(map(json.loads,(p/'predictions.jsonl').read_text().splitlines()));assert len(rr)==count==c['task_count']
+        nr.extend(dict(r,boundary_marker=marker) for r in rr if r['readout_kind'] in ('same_actor_new_activity','other_actor_new_activity'));nc.append(c)
+    assert len(nr)==1536
+    for c in nc:
+        for k in ('model_manifest','dtype','tf32','attention','seed','torch','transformers','frozen'):assert c[k]==pc[k],k
+        for k in ('base_definition','scope_repair','thinking','batch_size','mapping_policy'):assert c[k]==nc[0][k],k
+        assert all(set(c['class_labels'][k])==set(nc[0]['class_labels'][k]) for k in nc[0]['class_labels'])
+    out=dict(experiment='E30',physical_raw_tasks=768,physical_native_tasks=960,source_items=24,
+             actual_gpu_hours=pc['gpu_hours']+sum(c['gpu_hours'] for c in nc[1:]),bootstrap_unit='12 verb families, two published sources averaged',
+             bootstrap_draws=10000,bootstrap_seed=20261005,analysis_code_sha256=sha(Path(__file__)),
+             interpretation='One-word distinct-event marker intervention. Retention excludes an exact separate-token trigger, not all contrast/pragmatics or proof of a hidden event graph.',
+             input_scores_sha256=dict(raw=pc['scores_sha256'],raw_parent=oc['scores_sha256'],native=[c['predictions_sha256'] for c in nc]),
+             probability=dict(units='bits',cohorts={},cells={},contrasts={},per_family={}),nli=dict(units='percentage points',cohorts={},cells={},contrasts={},per_family={}))
+    families=collections.defaultdict(set)
+    for r in raw:families[r['verb_family']].add(r['pair_id'])
+    def qualifies(r,co):
+        if co=='all':return True
+        if co=='eligible':return r['eligible']
+        if co=='anchor_cross_clear':return r['anchor_cross_semantics_clear'] is True
+        if co=='anchor_cross_acceptable':return r['anchor_cross_grammaticality']=='acceptable'
+        return r['prior_faithful'] and r['faithful_ablation']
+    for cohort in ('all','eligible','anchor_cross_clear','anchor_cross_acceptable','prior_and_ablation_faithful'):
+        sub=[r for r in raw if qualifies(r,cohort)];counts=collections.Counter(r['pair_id'] for r in sub)
+        keep={f:sorted(sids) for f,sids in families.items() if all(counts[sid]==80 for sid in sids)}
+        out['probability']['cohorts'][cohort]=keep;details={f:{} for f in keep};vectors={}
+        ix={(r['pair_id'],r['boundary_marker'],r['readout_actor_mode'],r['role_evidence'],r['exclusion_style'],r['readout_frame'],r['target_kind']):r for r in sub}
+        for marker,modes in (('original',('original_activity',)),('separate',('same_actor','other_actor')),('second',('same_actor','other_actor'))):
+            for mode in modes:
+                for style in ('named','generic'):
+                    for frame in ('activity','neutral_entity'):
+                        vv={}
+                        for f,sids in keep.items():
+                            obs=[]
+                            for sid in sids:
+                                mm={}
+                                for e in ('reference_only','initial_patient_only'):
+                                    k=(sid,marker,mode,e,style,frame);a,b=ix[(*k,'source_np')],ix[(*k,'other_source_np')];assert a['target_context_sha256']==b['target_context_sha256']
+                                    mm[e]=b['target_total_bits']-a['target_total_bits']
+                                obs.append(mm['initial_patient_only']-mm['reference_only'])
+                            vv[f]=float(np.mean(obs))
+                        key=f'D/{marker}/{mode}/{style}/{frame}';vectors[marker,mode,style,frame]=vv;out['probability']['cells'][cohort+'/'+key]=stat(vv)
+                        for f in keep:details[f][key]=vv[f]
+                    vv=diff(vectors[marker,mode,style,'activity'],vectors[marker,mode,style,'neutral_entity']);key=f'J/{marker}/{mode}/{style}';vectors[marker,mode,style,'J']=vv;out['probability']['cells'][cohort+'/'+key]=stat(vv)
+                    for f in keep:details[f][key]=vv[f]
+        for mode in ('same_actor','other_actor'):
+            for style in ('named','generic'):
+                for measure in ('activity','neutral_entity','J'):
+                    vv=diff(vectors['second',mode,style,measure],vectors['separate',mode,style,measure]);key=f'second_minus_separate/{mode}/{style}/{measure}';out['probability']['contrasts'][cohort+'/'+key]=stat(vv)
+                    for f in keep:details[f][key]=vv[f]
+        out['probability']['per_family'][cohort]=[dict(verb_family=f,source_items=keep[f],**details[f]) for f in sorted(keep)]
+        sub=[r for r in nr if r['gold_relation'] is not None and qualifies(r,cohort)];counts=collections.Counter(r['pair_id'] for r in sub)
+        keep={f:sorted(sids) for f,sids in families.items() if all(counts[sid]==64 for sid in sids)}
+        out['nli']['cohorts'][cohort]=keep;details={f:{} for f in keep};vectors={}
+        for label,mode,maps in (('base_all','base',(0,1,2)),('base_map0','base',(0,)),('base_map1','base',(1,)),('base_map2','base',(2,)),('repair_map0','repair',(0,))):
+            for marker in ('separate','second'):
+                for kind in ('same_actor_new_activity','other_actor_new_activity'):
+                    rr=[r for r in sub if r['mode']==mode and r['mapping_shift'] in maps and r['boundary_marker']==marker and r['readout_kind']==kind]
+                    for measure in ('correct','p_correct','p_entailed','p_contradicted','p_undetermined','choice_mass','greedy_label_valid','signed_role'):
+                        vv={}
+                        for f,sids in keep.items():
+                            obs=[r for r in rr if r['pair_id'] in sids];assert len(obs)==8*len(maps)
+                            if measure=='signed_role':
+                                ref=[r for r in obs if r['role_evidence']=='reference_only'];np_only=[r for r in obs if r['role_evidence']=='initial_patient_only']
+                                value=50*(np.mean([r['p_relation']['contradicted'] for r in ref])-np.mean([r['p_relation']['contradicted'] for r in np_only])+np.mean([r['p_relation']['entailed'] for r in np_only])-np.mean([r['p_relation']['entailed'] for r in ref]))
+                            else:value=100*float(np.mean([r['p_relation'][measure[2:]] if measure.startswith('p_') and measure!='p_correct' else r[measure] for r in obs]))
+                            vv[f]=value
+                        vectors[marker,kind,label,measure]=vv;key=f'{marker}/{kind}/{label}/{measure}';out['nli']['cells'][cohort+'/'+key]=stat(vv)
+                        if measure in ('correct','signed_role'):
+                            for f in keep:details[f][key]=vv[f]
+            for kind in ('same_actor_new_activity','other_actor_new_activity'):
+                for measure in ('correct','signed_role'):
+                    key=f'second_minus_separate/{kind}/{label}/{measure}';vv=diff(vectors['second',kind,label,measure],vectors['separate',kind,label,measure]);out['nli']['contrasts'][cohort+'/'+key]=stat(vv)
+                    for f in keep:details[f][key]=vv[f]
+        for marker in ('separate','second'):
+            for kind in ('same_actor_new_activity','other_actor_new_activity'):
+                for measure in ('correct','signed_role'):
+                    key=f'repair_minus_base_map0/{marker}/{kind}/{measure}';out['nli']['contrasts'][cohort+'/'+key]=stat(diff(vectors[marker,kind,'repair_map0',measure],vectors[marker,kind,'base_map0',measure]))
+        out['nli']['per_family'][cohort]=[dict(verb_family=f,source_items=keep[f],**details[f]) for f in sorted(keep)]
+    return out
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--cache',type=Path,default=CACHE);p.add_argument('--probability',type=Path,required=True);p.add_argument('--nli',type=Path,required=True);p.add_argument('--repair-second',type=Path,required=True);p.add_argument('--repair-separate',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.write_text(json.dumps(analyze(a.cache,a.probability,a.nli,a.repair_second,a.repair_separate),indent=2)+'\n')

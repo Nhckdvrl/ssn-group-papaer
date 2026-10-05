@@ -16,3 +16,5 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 尚未跑。E29方向拆分为POST-HOC已单独标注，E30是该预测的事前独立测试，不追改E29。I01 PILOT/C04 L1。
+
+**跑前外审完成：** 960改动逐条确认仅separate→second；概率768全部eligible/faithful（608acceptable/160marginal），192NLI全部clear/undetermined/faithful（152acceptable/40marginal）。独立审核仍标原有anchor搭配边缘，不因新marker筛掉难例；预设anchor第三审清楚/自然层原样保留。模型评分全部，所有raw及audit hash见D0-E30-probability/nli-audit.json。
