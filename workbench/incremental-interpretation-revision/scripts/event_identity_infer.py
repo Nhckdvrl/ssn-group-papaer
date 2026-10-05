@@ -36,7 +36,7 @@ def prepare(data, tokenizer, expected_targets=2):
         indices = r['target_span_word_indices']
         assert all(0 < i < len(words) for i in indices)
         context = encoded['input_ids'][:wi[indices[0]][0]]
-        key = (r['pair_id'], r['source_np_option'], r['condition'], r['episode_anchor'], r.get('role_evidence'), r.get('exclusion_style'), r.get('readout_frame'))
+        key = (r['pair_id'], r['source_np_option'], r['condition'], r['episode_anchor'], r.get('role_evidence'), r.get('exclusion_style'), r.get('fact_realization'), r.get('readout_frame'))
         if key in context_tokens:
             assert context_tokens[key] == context, 'Alternatives have different pre-target causal contexts'
         context_tokens[key] = context
@@ -49,7 +49,7 @@ def prepare(data, tokenizer, expected_targets=2):
     if isinstance(expected_targets, dict):
         counts={}
         for r in rows:
-            key=(r['pair_id'],r['source_np_option'],r['condition'],r['episode_anchor'],r.get('role_evidence'),r.get('exclusion_style'),r.get('readout_frame'))
+            key=(r['pair_id'],r['source_np_option'],r['condition'],r['episode_anchor'],r.get('role_evidence'),r.get('exclusion_style'),r.get('fact_realization'),r.get('readout_frame'))
             counts[key]=counts.get(key,0)+1
         assert all(n==expected_targets[key[-1]] for key,n in counts.items())
     else:

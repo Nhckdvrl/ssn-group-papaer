@@ -14,3 +14,7 @@
 - **命令：** `affirmative_role.py build/adopt/analyze` + `event_identity_infer.py --experiment E36` + `event_constraint_state.py run --experiment E36 --mode base/repair`。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+## 跑前数据核验（2026-10-06）
+
+独立构造者Luna给24source×两角色48肯定句；另两审分片共2592完整输入，分片0全部mention-first、分片1全部mention-last，非同句双审。所有ID/sentence/target/proposition hash一致，raw1920/native672均faithful/eligible；native96E/96C/480U全部clear且与原role gold一致。两审语法有不同边缘标准，raw/native分布见[审计](../results/D0-E36-affirmative-audit.json)，共同acceptable层预先按两form完整覆盖冻结。FP32 tokenizer1920 causal contexts与目标核验通过。跑前发现旧prepare grouping尚未区分fact_realization，已加metadata discriminator，句子和标签未变、任何推理前修复。

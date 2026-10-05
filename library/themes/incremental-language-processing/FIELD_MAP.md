@@ -128,3 +128,7 @@ E29消融完整S1后仍有新活动效应，不能卖GP的必要残留；E30 sec
 E32前继续核对Lacina2026正文（§3–5，强度依赖prior）与Rana2026 negative-instruction pressure preprint（存在概率示例不一致）。宽泛备选激活/禁词rebound不作主旨；对应paper cards登记实际读取范围，E32测试更具体的旧角色事实词序/焦点及跨事件预测。
 
 E33定位追加：Pucci/Li/Sinclair2026-09 preprint已拥有生产priming的词汇/semantic alignment与coherence（含Qwen3-8B-Base）；Capuano2023有人类否定/contrastive focus的合理备选选择。普通semantic transfer并非新颖性证书。本线精确增量应是event/action/actor边界下同role证据的方向和使用结构；source-free C05是首次给定角色事实，尚非已测actual wrong belief的修订。venue-nearest本次主会检索返回memory/event inference等宽近邻、未见精确同claim；不完整，不判死或认证novelty。
+
+## 2026-10-06：修订history的最新ownership核对
+
+新增实际范围卡：[Reset Is Not Recovery](shnaidman2026-false-context-recovery.md)、[主动retraction](yangjia2025-spontaneous-retraction.md)、[epistemic表达](li2025-epistemic-modality.md)。泛泛“撤回后残留”“semantic非label”“知道但不主动修正”“fact/belief区分”均有直接owner；不是桌面杀I01。我们需要的是同一角色事实在old/new event、同/不同动作里的方向结构及干预边界。E34真实history的来源效应−.433bits并不自动取得generic revision novelty；E35校对current-world任务解读，E36直接检验显式negated alternative是否必要。KaBLE的Nature主来源在本次工具读取失败，此前仅摘要/metadata核对，不冒充全文读完/数据已审。
