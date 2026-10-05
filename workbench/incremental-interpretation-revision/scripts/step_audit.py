@@ -25,6 +25,7 @@ class Auditor:
         self.secret=os.environ.get('STEPFUN_API_KEY') or Path('/data1/xiangding/.config/ssn-research/stepfun.key').read_text().strip()
         self.api_style=api_style
         self.max_tokens=max_tokens
+        self.quota_exhausted=threading.Event()
         self.endpoint='https://api.stepfun.com/v1/'+('messages' if api_style=='messages' else 'chat/completions')
     def one(self,item):
         uid=hashlib.sha256(item['variant_id'].encode()).hexdigest()[:20]
@@ -38,6 +39,8 @@ class Auditor:
         if result_path.exists():
             prior=json.loads(result_path.read_text())
             if prior.get('request_sha256')==request_sha and prior.get('status')=='complete':return prior
+        if self.quota_exhausted.is_set():
+            return {'status':'deferred_quota','variant_id':item['variant_id'],'request_sha256':request_sha,'proxy_used':False}
         (self.out/f'{uid}.request.json').write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n')
         last_error='not_started';start=time.time()
         for attempt in range(4):
@@ -48,7 +51,13 @@ class Auditor:
                     last_error=f'HTTP {r.status_code}'
                     detail=r.json().get('error',{})
                     last_error+=' '+str(detail.get('type','unknown'))+' '+str(detail.get('message',''))[:240]
-                    if r.status_code in (429,500,502,503,504):time.sleep(min(20,3*(attempt+1)));continue
+                    if r.status_code==402:
+                        self.quota_exhausted.set()
+                        break  # Account-wide resource failure: never fan out more requests.
+                    if r.status_code==429:
+                        print(item['variant_id'],'throttled; backing off',45*(attempt+1),'seconds',flush=True)
+                        time.sleep(45*(attempt+1));continue
+                    if r.status_code in (500,502,503,504):time.sleep(min(20,3*(attempt+1)));continue
                     # Never log response headers / credential-bearing request repr.
                     detail=r.json().get('error',{})
                     last_error+=' '+str(detail.get('type','unknown'))+' '+str(detail.get('param',''))
@@ -94,9 +103,11 @@ def items_from(rows):
     return list(items.values())
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--data',type=Path,default=CACHE/'normalized/jurayj.jsonl');ap.add_argument('--out',type=Path,default=CACHE/'step5-audit-E01-v7');ap.add_argument('--limit',type=int);ap.add_argument('--workers',type=int,default=4);ap.add_argument('--api-style',choices=['messages','chat'],default='messages');ap.add_argument('--max-tokens',type=int,default=32768);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--data',type=Path,default=CACHE/'normalized/jurayj.jsonl');ap.add_argument('--out',type=Path,default=CACHE/'step5-audit-E01-v7');ap.add_argument('--limit',type=int);ap.add_argument('--workers',type=int,default=4);ap.add_argument('--api-style',choices=['messages','chat'],default='messages');ap.add_argument('--max-tokens',type=int,default=65536);args=ap.parse_args()
     assert 1<=args.workers<=8
     rows=[json.loads(x) for x in args.data.read_text().splitlines()];items=items_from(rows)
+    # Complete lexical sets across all families early; do not order by model results.
+    items.sort(key=lambda i:(int(i['variant_id'].split(':')[1]),{'NPZ':0,'NPS':1,'MVRR':2}[i['construction']]))
     if args.limit:items=items[:args.limit]
     auditor=Auditor(args.out,args.api_style,args.max_tokens)
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:reports=list(pool.map(auditor.one,items))

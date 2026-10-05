@@ -1,6 +1,6 @@
 # E01：跨构式 revision structure 系统测量（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** MEASUREMENT / residency
 - **对应：** C01 / C02 / P02 / P03 / P06
 - **问题（一句话）：** cue、blocker、歧义延长对最终解释与初始解释支持的作用，是否随读数和阅读任务的先后顺序出现可解释的结构？
@@ -24,6 +24,7 @@
 - **算力预算：** GPU0/1/2/3四独立单卡，按family×system分块，预计合计<2 GPU·h；复用现有venv/模型/cache。实际待记录。API审计并发≤8，数据为公开上游许可材料与衍生问题，不上传密钥或私有资产。
 
 ## 结果（跑完后填写；不改上面的内容）
+- 执行范围更新（首次E01推理之前）：Step5完成3/626句变体、13QA（NPZ:1 GP/cue short + MVRR:1 lexical/extended），随后返回HTTP402 quota_exceeded。先运行这13条已核对的104个任务检验读数；全量measurement保持待审，不把未完成行当OK。n=1的lexical-set contrast只报点值、不报虚假零宽CI，不能升级稳定结构主张。已异步告知人补充额度；此前授权opencode继续外部预审，与Step5最终标签分开。
 - 数字（含CI）：
 - 结果文件：
 - 按决策表执行了什么：
