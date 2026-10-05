@@ -41,3 +41,7 @@
 - 2026-10-05：[E17](experiments/E17-relation-versus-entity-accessibility.md)/[统计](results/E17-summary.json) 7源neutral GP患者提及差−.98 [−2.53,.69]而原谓词续写+7.82 [5.39,10.23]；额外scope interaction A_K+1.41 [.54,2.41]，neutral自身+.70 [.46,.93]。限制entity-salience-only解释，仍含lexical predicate retrieval/repair竞争，未建立新semantic mechanism，C01/C02保留L0。
 
 - 2026-10-05：[E18](experiments/E18-predicate-paraphrase-transfer.md)/[统计](results/E18-summary.json) 独立faithful9源释义A+1.44 [.90,1.91]bits，strict episodic4（含1marginal）D_M_same+6.95 [4.89,9.68]。限制exact surface-verb echo但未证明prior correction完成或internal semantic state。I01已登记PILOT，C01/C02不升机制主张。
+
+- 2026-10-05：[E19](experiments/E19-late-exclusive-role-evidence.md)/[统计](results/E19-summary.json) 7源明确角色双向控制使R移动GP+8.51 [5.15,12.32]、cue+10.60 [7.75,13.55]；reference-only后history差R−5.52 [−8.06,−3.29]bits。控制有效不等于旧关联删除，但negated-NP最近提及仍竞争；C01/C02不升机制主张。
+
+- 2026-10-05：[E20](experiments/E20-exclusive-fact-versus-last-mention.md)/[统计](results/E20-summary.json) 同事实把允许对象最后说，7/7仍history R负，mean−3.40 [−4.28,−2.44]bits；GP绝对R+1.73 [.58,2.91]且role控制+9.56，不支持“完全不更新”。对象顺序解释部分，named remention仍未分；C01/C02不升语义机制主张。

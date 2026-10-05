@@ -36,7 +36,7 @@ def prepare(data, tokenizer, expected_targets=2):
         indices = r['target_span_word_indices']
         assert all(0 < i < len(words) for i in indices)
         context = encoded['input_ids'][:wi[indices[0]][0]]
-        key = (r['pair_id'], r['source_np_option'], r['condition'], r['episode_anchor'])
+        key = (r['pair_id'], r['source_np_option'], r['condition'], r['episode_anchor'], r.get('role_evidence'))
         if key in context_tokens:
             assert context_tokens[key] == context, 'Alternatives have different pre-target causal contexts'
         context_tokens[key] = context
@@ -55,7 +55,7 @@ def run(args):
     tokenizer = AutoTokenizer.from_pretrained(args.model, local_files_only=True, padding_side='left')
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
-    rows, groups = prepare(args.data, tokenizer, expected_targets=1 if args.experiment=='E16' else 2)
+    rows, groups = prepare(args.data, tokenizer, expected_targets={'E16':1,'E19':3,'E20':3}.get(args.experiment,2))
     args.out.mkdir(parents=True)
     torch.manual_seed(0); torch.set_num_threads(8)
     torch.backends.cuda.matmul.allow_tf32 = False
@@ -124,7 +124,7 @@ def run(args):
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('--data', type=Path, required=True)
-    p.add_argument('--experiment', choices=['E14', 'E15', 'E16', 'E17', 'E18'], default='E14')
+    p.add_argument('--experiment', choices=['E14', 'E15', 'E16', 'E17', 'E18', 'E19', 'E20'], default='E14')
     p.add_argument('--model', type=Path, default=CACHE / 'models/Qwen3-8B')
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--batch-size', type=int, default=4)
