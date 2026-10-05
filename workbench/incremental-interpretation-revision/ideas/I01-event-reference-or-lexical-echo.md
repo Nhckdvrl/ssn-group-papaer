@@ -39,3 +39,5 @@ same事实把正确对象最后说，history R仍−3.40 [−4.28,−2.44]bits�
 **E22更新：** post-correction neutral控制显示named提升两条件的实体可及性，而关系−neutral变化在GP为−2.79 [−3.68,−1.90]、cue−.17 [−1.12,1.20]bits（严格4源）。不是简单“否定污染关系”；证据更支持语义排除与实体显眼程度共同作用，需实际角色使用和独立source才有叙事价值。C04是measurement事实，I01仍PILOT。
 
 **E23更新：** free continuation的patient省略、再次GP残句和自我否定使functional指标不稳定；224首审10/次审6明确违反，clear4源NP0 base无明确违反但大量unknown。不得把C04概率差升级false belief。独立E24检验C04结构预测；I01仍PILOT，不当PROMISING。
+
+**E24更新：** 独立24原NPZ/12family保持history×named/generic×activity/neutral交互−.795 [−1.210,−.394]，strict9−.766 [−1.168,−.363]bits。精确问题进一步收敛为“纠正改变哪一种关系、作用范围有多大？”下一用原event/同actor新event/另一actor新event区分event-specific修订与actor-conditioned/predicate-global关联。它仍是incremental interpretation revision对象，不变成通用negation paper；PILOT不自动升级。

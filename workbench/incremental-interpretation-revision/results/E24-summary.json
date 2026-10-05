@@ -1,0 +1,3895 @@
+{
+  "experiment": "E24",
+  "physical_tasks": 960,
+  "source_items": 24,
+  "units": "bits",
+  "bootstrap_unit": "12 published verb families, two original items per family",
+  "prediction": "Named-minus-generic relation-minus-neutral patient preference should be more negative after GP than comma if E22 structure transfers.",
+  "formulas": {
+    "M": "bits(other-family-author NP) - bits(own NP)",
+    "R": "bits(own NP) - bits(source reference)",
+    "history_role_specific_change": "[(M_named-M_generic)_GP - (M_named-M_generic)_cue]_activity minus neutral"
+  },
+  "interpretation": "Independent frames and more explicit activity readout; not semantic accuracy or hidden-state mechanism. Same-verb item pairs are clustered before bootstrap.",
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261005,
+  "scores_sha256": "4685bd06fe67fdfb92c1f33c88eea4d1936ca2d8cd70e68123bca82b2fb2b3a1",
+  "analysis_code_sha256": "e3a616e190f42409961a0958c5e3be7044c2c396c527fcae9230817b214b4b41",
+  "cells": {
+    "all/M/activity/reference_only/named/gp": {
+      "estimate": 13.039700908974433,
+      "ci95": [
+        11.200652285054094,
+        14.749122141402525
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/activity/reference_only/named/explicit_cue": {
+      "estimate": 12.52220806813178,
+      "ci95": [
+        10.696698338895414,
+        14.244527485425351
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/activity/reference_only/generic/gp": {
+      "estimate": 13.382655811185638,
+      "ci95": [
+        11.329426233672226,
+        15.372548128660613
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/activity/reference_only/generic/explicit_cue": {
+      "estimate": 11.526223140458265,
+      "ci95": [
+        9.588464550091885,
+        13.479362069532119
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/activity/initial_patient_only/named/gp": {
+      "estimate": 15.481419012658685,
+      "ci95": [
+        13.164806197489087,
+        17.70816134918496
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/activity/initial_patient_only/named/explicit_cue": {
+      "estimate": 14.260919491488798,
+      "ci95": [
+        11.937376817896924,
+        16.51465063250022
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/activity/initial_patient_only/generic/gp": {
+      "estimate": 15.674309832858853,
+      "ci95": [
+        13.543193734554613,
+        17.718698422354645
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/activity/initial_patient_only/generic/explicit_cue": {
+      "estimate": 14.400138310389593,
+      "ci95": [
+        12.260726183449151,
+        16.47149829645641
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/reference_only/named/gp": {
+      "estimate": 12.577036667304734,
+      "ci95": [
+        10.637772433056186,
+        14.34694446949288
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/reference_only/named/explicit_cue": {
+      "estimate": 12.7825913556541,
+      "ci95": [
+        10.765551210691532,
+        14.649313617800363
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/reference_only/generic/gp": {
+      "estimate": 11.894619695221385,
+      "ci95": [
+        9.90347820345002,
+        13.743451586039736
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/reference_only/generic/explicit_cue": {
+      "estimate": 11.556672293692827,
+      "ci95": [
+        9.458105515999097,
+        13.636390041955746
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/initial_patient_only/named/gp": {
+      "estimate": 12.770249374210835,
+      "ci95": [
+        10.464271581879196,
+        14.940226843285684
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/initial_patient_only/named/explicit_cue": {
+      "estimate": 12.359484347514808,
+      "ci95": [
+        10.157460956221136,
+        14.481735875628267
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/initial_patient_only/generic/gp": {
+      "estimate": 13.310778520613288,
+      "ci95": [
+        10.938584273223144,
+        15.572458226249243
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/M/neutral_entity/initial_patient_only/generic/explicit_cue": {
+      "estimate": 12.844826677503685,
+      "ci95": [
+        10.738526074464122,
+        14.85893687600425
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/reference_only/named/gp": {
+      "estimate": 0.4500143827321305,
+      "ci95": [
+        -0.2486039793823996,
+        1.1540120112297565
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/initial_patient_only/named/gp": {
+      "estimate": -3.9198595054027123,
+      "ci95": [
+        -4.976428198034194,
+        -2.949539027981013
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/reference_only/named/explicit_cue": {
+      "estimate": 1.5691959375078568,
+      "ci95": [
+        0.7145676849277891,
+        2.449172534104413
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/initial_patient_only/named/explicit_cue": {
+      "estimate": -3.308592579798964,
+      "ci95": [
+        -4.305837156115013,
+        -2.3449021332767597
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/reference_only/generic/gp": {
+      "estimate": 0.4873557976832406,
+      "ci95": [
+        -0.14297529067254494,
+        1.0972826477378337
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/initial_patient_only/generic/gp": {
+      "estimate": -6.817366935540728,
+      "ci95": [
+        -7.885644893430315,
+        -5.87388683526915
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/reference_only/generic/explicit_cue": {
+      "estimate": 2.8883305923625358,
+      "ci95": [
+        2.197041013365879,
+        3.5522242300781497
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/initial_patient_only/generic/explicit_cue": {
+      "estimate": -4.979663841501558,
+      "ci95": [
+        -6.131877920335562,
+        -4.036836425828309
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/reference_only/named/gp": {
+      "estimate": 13.039700908974433,
+      "ci95": [
+        11.200652285054094,
+        14.749122141402525
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/reference_only/named/explicit_cue": {
+      "estimate": 12.52220806813178,
+      "ci95": [
+        10.696698338895414,
+        14.244527485425351
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/reference_only/generic/gp": {
+      "estimate": 13.382655811185638,
+      "ci95": [
+        11.329426233672226,
+        15.372548128660613
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/reference_only/generic/explicit_cue": {
+      "estimate": 11.526223140458265,
+      "ci95": [
+        9.588464550091885,
+        13.479362069532119
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/initial_patient_only/named/gp": {
+      "estimate": 15.481419012658685,
+      "ci95": [
+        13.164806197489087,
+        17.70816134918496
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/initial_patient_only/named/explicit_cue": {
+      "estimate": 14.260919491488798,
+      "ci95": [
+        11.937376817896924,
+        16.51465063250022
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/initial_patient_only/generic/gp": {
+      "estimate": 15.674309832858853,
+      "ci95": [
+        13.543193734554613,
+        17.718698422354645
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/activity/initial_patient_only/generic/explicit_cue": {
+      "estimate": 14.400138310389593,
+      "ci95": [
+        12.260726183449151,
+        16.47149829645641
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/reference_only/named/gp": {
+      "estimate": 12.577036667304734,
+      "ci95": [
+        10.637772433056186,
+        14.34694446949288
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/reference_only/named/explicit_cue": {
+      "estimate": 12.7825913556541,
+      "ci95": [
+        10.765551210691532,
+        14.649313617800363
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/reference_only/generic/gp": {
+      "estimate": 11.894619695221385,
+      "ci95": [
+        9.90347820345002,
+        13.743451586039736
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/reference_only/generic/explicit_cue": {
+      "estimate": 11.556672293692827,
+      "ci95": [
+        9.458105515999097,
+        13.636390041955746
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/initial_patient_only/named/gp": {
+      "estimate": 12.770249374210835,
+      "ci95": [
+        10.464271581879196,
+        14.940226843285684
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/initial_patient_only/named/explicit_cue": {
+      "estimate": 12.359484347514808,
+      "ci95": [
+        10.157460956221136,
+        14.481735875628267
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/initial_patient_only/generic/gp": {
+      "estimate": 13.310778520613288,
+      "ci95": [
+        10.938584273223144,
+        15.572458226249243
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/M/neutral_entity/initial_patient_only/generic/explicit_cue": {
+      "estimate": 12.844826677503685,
+      "ci95": [
+        10.738526074464122,
+        14.85893687600425
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/reference_only/named/gp": {
+      "estimate": 0.4500143827321305,
+      "ci95": [
+        -0.2486039793823996,
+        1.1540120112297565
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/initial_patient_only/named/gp": {
+      "estimate": -3.9198595054027123,
+      "ci95": [
+        -4.976428198034194,
+        -2.949539027981013
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/reference_only/named/explicit_cue": {
+      "estimate": 1.5691959375078568,
+      "ci95": [
+        0.7145676849277891,
+        2.449172534104413
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/initial_patient_only/named/explicit_cue": {
+      "estimate": -3.308592579798964,
+      "ci95": [
+        -4.305837156115013,
+        -2.3449021332767597
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/reference_only/generic/gp": {
+      "estimate": 0.4873557976832406,
+      "ci95": [
+        -0.14297529067254494,
+        1.0972826477378337
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/initial_patient_only/generic/gp": {
+      "estimate": -6.817366935540728,
+      "ci95": [
+        -7.885644893430315,
+        -5.87388683526915
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/reference_only/generic/explicit_cue": {
+      "estimate": 2.8883305923625358,
+      "ci95": [
+        2.197041013365879,
+        3.5522242300781497
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/initial_patient_only/generic/explicit_cue": {
+      "estimate": -4.979663841501558,
+      "ci95": [
+        -6.131877920335562,
+        -4.036836425828309
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "acceptable/M/activity/reference_only/named/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/activity/reference_only/named/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/activity/reference_only/generic/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/activity/reference_only/generic/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/activity/initial_patient_only/named/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/activity/initial_patient_only/named/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/activity/initial_patient_only/generic/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/activity/initial_patient_only/generic/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/reference_only/named/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/reference_only/named/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/reference_only/generic/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/reference_only/generic/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/initial_patient_only/named/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/initial_patient_only/named/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/initial_patient_only/generic/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/M/neutral_entity/initial_patient_only/generic/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/reference_only/named/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/initial_patient_only/named/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/reference_only/named/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/initial_patient_only/named/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/reference_only/generic/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/initial_patient_only/generic/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/reference_only/generic/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/initial_patient_only/generic/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "faithful_role_frame/M/activity/reference_only/named/gp": {
+      "estimate": 12.700319903281828,
+      "ci95": [
+        10.436118193263084,
+        14.932726069506154
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/activity/reference_only/named/explicit_cue": {
+      "estimate": 12.19069225796395,
+      "ci95": [
+        9.956438200744904,
+        14.414936239696624
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/activity/reference_only/generic/gp": {
+      "estimate": 13.335174558166829,
+      "ci95": [
+        10.761546202425638,
+        15.879434333110435
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/activity/reference_only/generic/explicit_cue": {
+      "estimate": 11.5538717204084,
+      "ci95": [
+        9.023209486027351,
+        14.12596994598603
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/activity/initial_patient_only/named/gp": {
+      "estimate": 15.315699648551849,
+      "ci95": [
+        12.419181580626173,
+        18.182544468421515
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/activity/initial_patient_only/named/explicit_cue": {
+      "estimate": 13.99046572116721,
+      "ci95": [
+        11.100759401635473,
+        16.92775229530202
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/activity/initial_patient_only/generic/gp": {
+      "estimate": 15.606676193523324,
+      "ci95": [
+        12.944956836449759,
+        18.164057203708214
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/activity/initial_patient_only/generic/explicit_cue": {
+      "estimate": 14.025568844336602,
+      "ci95": [
+        11.459447396039549,
+        16.548074357030497
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/reference_only/named/gp": {
+      "estimate": 12.0319081288245,
+      "ci95": [
+        9.834973985567276,
+        14.135331926049872
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/reference_only/named/explicit_cue": {
+      "estimate": 12.096221951560842,
+      "ci95": [
+        9.874530940420097,
+        14.167915610731063
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/reference_only/generic/gp": {
+      "estimate": 11.529426679843002,
+      "ci95": [
+        9.102294407929811,
+        13.884141155415112
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/reference_only/generic/explicit_cue": {
+      "estimate": 11.087622612714767,
+      "ci95": [
+        8.633780708774509,
+        13.546712369968493
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/initial_patient_only/named/gp": {
+      "estimate": 12.35141427276863,
+      "ci95": [
+        9.54421694751622,
+        15.060346702682889
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/initial_patient_only/named/explicit_cue": {
+      "estimate": 11.692362093263203,
+      "ci95": [
+        9.165655487361882,
+        14.190564748665524
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/initial_patient_only/generic/gp": {
+      "estimate": 12.971952934956384,
+      "ci95": [
+        10.045397604218063,
+        15.82172705014495
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/M/neutral_entity/initial_patient_only/generic/explicit_cue": {
+      "estimate": 12.35197743276755,
+      "ci95": [
+        9.822461029576758,
+        14.730827846119384
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/reference_only/named/gp": {
+      "estimate": 0.23882321032902432,
+      "ci95": [
+        -0.5513338144542811,
+        1.0697920118932305
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/initial_patient_only/named/gp": {
+      "estimate": -4.414737739039866,
+      "ci95": [
+        -5.516767714662126,
+        -3.436471190662385
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/reference_only/named/explicit_cue": {
+      "estimate": 1.3542649202253314,
+      "ci95": [
+        0.42386477716804116,
+        2.3619418764117746
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/initial_patient_only/named/explicit_cue": {
+      "estimate": -3.752973557155605,
+      "ci95": [
+        -4.753522884381689,
+        -2.843597091072217
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/reference_only/generic/gp": {
+      "estimate": 0.3855680968635069,
+      "ci95": [
+        -0.43283829119918665,
+        1.1845081593766726
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/initial_patient_only/generic/gp": {
+      "estimate": -7.313723520013607,
+      "ci95": [
+        -8.496688131842529,
+        -6.312416636018962
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/reference_only/generic/explicit_cue": {
+      "estimate": 2.6450884061403284,
+      "ci95": [
+        1.8235637434590293,
+        3.424900996799402
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/initial_patient_only/generic/explicit_cue": {
+      "estimate": -5.154464964027284,
+      "ci95": [
+        -6.556878443635409,
+        -4.068712041407788
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    }
+  },
+  "contrasts": {
+    "all/named_minus_generic/activity/reference_only/gp": {
+      "estimate": -0.34295490221120417,
+      "ci95": [
+        -0.926960980038469,
+        0.2128395031652568
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/named_minus_generic/neutral_entity/reference_only/gp": {
+      "estimate": 0.6824169720833501,
+      "ci95": [
+        0.24924900083181759,
+        1.1559866573506345
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/role_specific_change/reference_only/gp": {
+      "estimate": -1.0253718742945541,
+      "ci95": [
+        -1.574942722353929,
+        -0.5099756272044034
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/named_minus_generic/activity/reference_only/explicit_cue": {
+      "estimate": 0.9959849276735137,
+      "ci95": [
+        0.22978383536877425,
+        1.6925583438579146
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/named_minus_generic/neutral_entity/reference_only/explicit_cue": {
+      "estimate": 1.2259190619612734,
+      "ci95": [
+        0.6665796091469626,
+        1.7451609788229687
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/role_specific_change/reference_only/explicit_cue": {
+      "estimate": -0.22993413428775966,
+      "ci95": [
+        -0.896440248839402,
+        0.32820328891005673
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/history_role_specific_change/reference_only": {
+      "estimate": -0.7954377400067946,
+      "ci95": [
+        -1.2101200831277916,
+        -0.3939386753617632
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/named_minus_generic/activity/initial_patient_only/gp": {
+      "estimate": -0.19289082020016698,
+      "ci95": [
+        -0.6530168627907793,
+        0.22066554015909784
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/named_minus_generic/neutral_entity/initial_patient_only/gp": {
+      "estimate": -0.5405291464024534,
+      "ci95": [
+        -0.7523710904759354,
+        -0.32798746496749426
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/role_specific_change/initial_patient_only/gp": {
+      "estimate": 0.3476383262022864,
+      "ci95": [
+        -0.21935134754191188,
+        0.8861307871772925
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/named_minus_generic/activity/initial_patient_only/explicit_cue": {
+      "estimate": -0.13921881890079627,
+      "ci95": [
+        -0.8257636411425968,
+        0.5149294069027139
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/named_minus_generic/neutral_entity/initial_patient_only/explicit_cue": {
+      "estimate": -0.485342329988877,
+      "ci95": [
+        -0.8424041140824556,
+        -0.20235996222278727
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/role_specific_change/initial_patient_only/explicit_cue": {
+      "estimate": 0.3461235110880807,
+      "ci95": [
+        -0.28669882311660333,
+        0.947123665511996
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/history_role_specific_change/initial_patient_only": {
+      "estimate": 0.0015148151142057031,
+      "ci95": [
+        -0.3938304934054031,
+        0.39783342773904795
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/role_effect/named/gp": {
+      "estimate": 4.369873888134843,
+      "ci95": [
+        3.2594232280196183,
+        5.497473660045096
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/role_effect/named/explicit_cue": {
+      "estimate": 4.877788517306821,
+      "ci95": [
+        3.5793248775874673,
+        6.204971825768774
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/role_effect/generic/gp": {
+      "estimate": 7.304722733223969,
+      "ci95": [
+        6.348917135945782,
+        8.411123996299404
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "all/R/role_effect/generic/explicit_cue": {
+      "estimate": 7.8679944338640935,
+      "ci95": [
+        6.659286657856859,
+        9.283418149017498
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/activity/reference_only/gp": {
+      "estimate": -0.34295490221120417,
+      "ci95": [
+        -0.926960980038469,
+        0.2128395031652568
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/neutral_entity/reference_only/gp": {
+      "estimate": 0.6824169720833501,
+      "ci95": [
+        0.24924900083181759,
+        1.1559866573506345
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/role_specific_change/reference_only/gp": {
+      "estimate": -1.0253718742945541,
+      "ci95": [
+        -1.574942722353929,
+        -0.5099756272044034
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/activity/reference_only/explicit_cue": {
+      "estimate": 0.9959849276735137,
+      "ci95": [
+        0.22978383536877425,
+        1.6925583438579146
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/neutral_entity/reference_only/explicit_cue": {
+      "estimate": 1.2259190619612734,
+      "ci95": [
+        0.6665796091469626,
+        1.7451609788229687
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/role_specific_change/reference_only/explicit_cue": {
+      "estimate": -0.22993413428775966,
+      "ci95": [
+        -0.896440248839402,
+        0.32820328891005673
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/history_role_specific_change/reference_only": {
+      "estimate": -0.7954377400067946,
+      "ci95": [
+        -1.2101200831277916,
+        -0.3939386753617632
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/activity/initial_patient_only/gp": {
+      "estimate": -0.19289082020016698,
+      "ci95": [
+        -0.6530168627907793,
+        0.22066554015909784
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/neutral_entity/initial_patient_only/gp": {
+      "estimate": -0.5405291464024534,
+      "ci95": [
+        -0.7523710904759354,
+        -0.32798746496749426
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/role_specific_change/initial_patient_only/gp": {
+      "estimate": 0.3476383262022864,
+      "ci95": [
+        -0.21935134754191188,
+        0.8861307871772925
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/activity/initial_patient_only/explicit_cue": {
+      "estimate": -0.13921881890079627,
+      "ci95": [
+        -0.8257636411425968,
+        0.5149294069027139
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/named_minus_generic/neutral_entity/initial_patient_only/explicit_cue": {
+      "estimate": -0.485342329988877,
+      "ci95": [
+        -0.8424041140824556,
+        -0.20235996222278727
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/role_specific_change/initial_patient_only/explicit_cue": {
+      "estimate": 0.3461235110880807,
+      "ci95": [
+        -0.28669882311660333,
+        0.947123665511996
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/history_role_specific_change/initial_patient_only": {
+      "estimate": 0.0015148151142057031,
+      "ci95": [
+        -0.3938304934054031,
+        0.39783342773904795
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/role_effect/named/gp": {
+      "estimate": 4.369873888134843,
+      "ci95": [
+        3.2594232280196183,
+        5.497473660045096
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/role_effect/named/explicit_cue": {
+      "estimate": 4.877788517306821,
+      "ci95": [
+        3.5793248775874673,
+        6.204971825768774
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/role_effect/generic/gp": {
+      "estimate": 7.304722733223969,
+      "ci95": [
+        6.348917135945782,
+        8.411123996299404
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "eligible/R/role_effect/generic/explicit_cue": {
+      "estimate": 7.8679944338640935,
+      "ci95": [
+        6.659286657856859,
+        9.283418149017498
+      ],
+      "n_sets": 12,
+      "verb_families": [
+        "bathed",
+        "cuddled",
+        "disrobed",
+        "dressed",
+        "embraced",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "met",
+        "shaved"
+      ]
+    },
+    "acceptable/named_minus_generic/activity/reference_only/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/named_minus_generic/neutral_entity/reference_only/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/role_specific_change/reference_only/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/named_minus_generic/activity/reference_only/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/named_minus_generic/neutral_entity/reference_only/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/role_specific_change/reference_only/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/history_role_specific_change/reference_only": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/named_minus_generic/activity/initial_patient_only/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/named_minus_generic/neutral_entity/initial_patient_only/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/role_specific_change/initial_patient_only/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/named_minus_generic/activity/initial_patient_only/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/named_minus_generic/neutral_entity/initial_patient_only/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/role_specific_change/initial_patient_only/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/history_role_specific_change/initial_patient_only": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/role_effect/named/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/role_effect/named/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/role_effect/generic/gp": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "acceptable/R/role_effect/generic/explicit_cue": {
+      "estimate": null,
+      "ci95": null,
+      "n_sets": 0,
+      "verb_families": []
+    },
+    "faithful_role_frame/named_minus_generic/activity/reference_only/gp": {
+      "estimate": -0.6348546548850007,
+      "ci95": [
+        -1.2545657242958743,
+        -0.029945520259853944
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/named_minus_generic/neutral_entity/reference_only/gp": {
+      "estimate": 0.502481448981497,
+      "ci95": [
+        0.08674305879200499,
+        0.9340748033589784
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/role_specific_change/reference_only/gp": {
+      "estimate": -1.1373361038664977,
+      "ci95": [
+        -1.780042504850361,
+        -0.5539159291216899
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/named_minus_generic/activity/reference_only/explicit_cue": {
+      "estimate": 0.6368205375555489,
+      "ci95": [
+        -0.18867000472835363,
+        1.3880623922786772
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/named_minus_generic/neutral_entity/reference_only/explicit_cue": {
+      "estimate": 1.0085993388460741,
+      "ci95": [
+        0.40471487347450524,
+        1.5358288155661688
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/role_specific_change/reference_only/explicit_cue": {
+      "estimate": -0.3717788012905253,
+      "ci95": [
+        -1.239284946433165,
+        0.3526630942968442
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/history_role_specific_change/reference_only": {
+      "estimate": -0.7655573025759723,
+      "ci95": [
+        -1.1680868540424854,
+        -0.36348861642181873
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/named_minus_generic/activity/initial_patient_only/gp": {
+      "estimate": -0.29097654497147435,
+      "ci95": [
+        -0.8323434920619346,
+        0.18811046155622332
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/named_minus_generic/neutral_entity/initial_patient_only/gp": {
+      "estimate": -0.6205386621877551,
+      "ci95": [
+        -0.853912449359066,
+        -0.386817667982541
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/role_specific_change/initial_patient_only/gp": {
+      "estimate": 0.32956211721628076,
+      "ci95": [
+        -0.33283477451639354,
+        0.9451477422068516
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/named_minus_generic/activity/initial_patient_only/explicit_cue": {
+      "estimate": -0.03510312316939235,
+      "ci95": [
+        -0.8504545290333528,
+        0.718077301879465
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/named_minus_generic/neutral_entity/initial_patient_only/explicit_cue": {
+      "estimate": -0.6596153395043479,
+      "ci95": [
+        -1.0477425066961183,
+        -0.3985552051001125
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/role_specific_change/initial_patient_only/explicit_cue": {
+      "estimate": 0.6245122163349556,
+      "ci95": [
+        0.09899823981233768,
+        1.1671980943323836
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/history_role_specific_change/initial_patient_only": {
+      "estimate": -0.2949500991186748,
+      "ci95": [
+        -0.6293984642485156,
+        0.007321616531246238
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/role_effect/named/gp": {
+      "estimate": 4.653560949368891,
+      "ci95": [
+        3.5450829914646502,
+        5.837131051581895
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/role_effect/named/explicit_cue": {
+      "estimate": 5.107238477380936,
+      "ci95": [
+        3.8826709752934727,
+        6.366649926764805
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/role_effect/generic/gp": {
+      "estimate": 7.699291616877114,
+      "ci95": [
+        6.571345507443079,
+        8.963950434496473
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    },
+    "faithful_role_frame/R/role_effect/generic/explicit_cue": {
+      "estimate": 7.799553370167612,
+      "ci95": [
+        6.473395282526263,
+        9.509960585384558
+      ],
+      "n_sets": 9,
+      "verb_families": [
+        "bathed",
+        "disrobed",
+        "dressed",
+        "fought",
+        "healed",
+        "hid",
+        "hugged",
+        "kissed",
+        "shaved"
+      ]
+    }
+  },
+  "per_family": {
+    "all": [
+      {
+        "verb_family": "bathed",
+        "source_items": [
+          "Cehakova:item85",
+          "Cehakova:item86"
+        ],
+        "M_activity_reference_only_named_gp": 12.355208315886557,
+        "M_activity_reference_only_named_explicit_cue": 11.235389418900013,
+        "M_activity_reference_only_generic_gp": 11.506559413857758,
+        "M_activity_reference_only_generic_explicit_cue": 9.05905038304627,
+        "M_activity_initial_patient_only_named_gp": 13.296089331852272,
+        "M_activity_initial_patient_only_named_explicit_cue": 13.439815379213542,
+        "M_activity_initial_patient_only_generic_gp": 13.536803671624511,
+        "M_activity_initial_patient_only_generic_explicit_cue": 11.91143657732755,
+        "M_neutral_entity_reference_only_named_gp": 10.858327969908714,
+        "M_neutral_entity_reference_only_named_explicit_cue": 11.325993061065674,
+        "M_neutral_entity_reference_only_generic_gp": 9.97105224430561,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 10.100957930088043,
+        "M_neutral_entity_initial_patient_only_named_gp": 9.998539119958878,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.481918923556805,
+        "M_neutral_entity_initial_patient_only_generic_gp": 10.895153224468231,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 10.79129846021533,
+        "history_role_specific_change_reference_only": -0.9899307284504175,
+        "history_role_specific_change_initial_patient_only": -1.1818585738074034
+      },
+      {
+        "verb_family": "cuddled",
+        "source_items": [
+          "Cehakova:item75",
+          "Cehakova:item76"
+        ],
+        "M_activity_reference_only_named_gp": 15.349453561007977,
+        "M_activity_reference_only_named_explicit_cue": 13.978451207280159,
+        "M_activity_reference_only_generic_gp": 15.46681988146156,
+        "M_activity_reference_only_generic_explicit_cue": 12.114544458687305,
+        "M_activity_initial_patient_only_named_gp": 19.56807285035029,
+        "M_activity_initial_patient_only_named_explicit_cue": 18.277339577674866,
+        "M_activity_initial_patient_only_generic_gp": 19.302946640644222,
+        "M_activity_initial_patient_only_generic_explicit_cue": 18.790207136422396,
+        "M_neutral_entity_reference_only_named_gp": 15.86583710834384,
+        "M_neutral_entity_reference_only_named_explicit_cue": 16.764475595206022,
+        "M_neutral_entity_reference_only_generic_gp": 14.565500624477863,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 15.53971640765667,
+        "M_neutral_entity_initial_patient_only_named_gp": 15.455753073096275,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 16.237401634454727,
+        "M_neutral_entity_initial_patient_only_generic_gp": 15.702183600515127,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 15.923304058611393,
+        "history_role_specific_change_reference_only": -2.0568503653630614,
+        "history_role_specific_change_initial_patient_only": 1.338521871715784
+      },
+      {
+        "verb_family": "disrobed",
+        "source_items": [
+          "Cehakova:item81",
+          "Cehakova:item82"
+        ],
+        "M_activity_reference_only_named_gp": 13.252276286482811,
+        "M_activity_reference_only_named_explicit_cue": 13.8757333047688,
+        "M_activity_reference_only_generic_gp": 14.331816244870424,
+        "M_activity_reference_only_generic_explicit_cue": 12.142343699932098,
+        "M_activity_initial_patient_only_named_gp": 16.062386543489993,
+        "M_activity_initial_patient_only_named_explicit_cue": 13.7129459194839,
+        "M_activity_initial_patient_only_generic_gp": 17.56983033195138,
+        "M_activity_initial_patient_only_generic_explicit_cue": 14.725758705288172,
+        "M_neutral_entity_reference_only_named_gp": 13.10740014910698,
+        "M_neutral_entity_reference_only_named_explicit_cue": 12.899520620703697,
+        "M_neutral_entity_reference_only_generic_gp": 13.580072239041328,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.81538537144661,
+        "M_neutral_entity_initial_patient_only_named_gp": 14.226974725723267,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 12.40871188044548,
+        "M_neutral_entity_initial_patient_only_generic_gp": 14.96938817948103,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 12.988741010427475,
+        "history_role_specific_change_reference_only": -1.2561222240328789,
+        "history_role_specific_change_initial_patient_only": -0.3322466788813472
+      },
+      {
+        "verb_family": "dressed",
+        "source_items": [
+          "Cehakova:item77",
+          "Cehakova:item78"
+        ],
+        "M_activity_reference_only_named_gp": 18.287877310067415,
+        "M_activity_reference_only_named_explicit_cue": 17.6459698677063,
+        "M_activity_reference_only_generic_gp": 20.594998437911272,
+        "M_activity_reference_only_generic_explicit_cue": 18.95086083561182,
+        "M_activity_initial_patient_only_named_gp": 21.78779545519501,
+        "M_activity_initial_patient_only_named_explicit_cue": 20.329978555440903,
+        "M_activity_initial_patient_only_generic_gp": 21.60463486611843,
+        "M_activity_initial_patient_only_generic_explicit_cue": 20.1377929225564,
+        "M_neutral_entity_reference_only_named_gp": 18.08532240986824,
+        "M_neutral_entity_reference_only_named_explicit_cue": 18.01522535830736,
+        "M_neutral_entity_reference_only_generic_gp": 18.305303677916527,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 19.027571994811296,
+        "M_neutral_entity_initial_patient_only_named_gp": 19.24729871749878,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 17.746948711574078,
+        "M_neutral_entity_initial_patient_only_generic_gp": 20.18017576355487,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 18.246525950729847,
+        "history_role_specific_change_reference_only": -1.7945955283939838,
+        "history_role_specific_change_initial_patient_only": 0.42427476309239864
+      },
+      {
+        "verb_family": "embraced",
+        "source_items": [
+          "Cehakova:item73",
+          "Cehakova:item74"
+        ],
+        "M_activity_reference_only_named_gp": 12.431284736841917,
+        "M_activity_reference_only_named_explicit_cue": 11.352066083811224,
+        "M_activity_reference_only_generic_gp": 12.096233990043402,
+        "M_activity_reference_only_generic_explicit_cue": 10.017005393281579,
+        "M_activity_initial_patient_only_named_gp": 13.650605408824049,
+        "M_activity_initial_patient_only_named_explicit_cue": 12.447720816358924,
+        "M_activity_initial_patient_only_generic_gp": 12.811917854007334,
+        "M_activity_initial_patient_only_generic_explicit_cue": 11.56973406020552,
+        "M_neutral_entity_reference_only_named_gp": 11.214632466435432,
+        "M_neutral_entity_reference_only_named_explicit_cue": 10.866810359060764,
+        "M_neutral_entity_reference_only_generic_gp": 11.27673102170229,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 9.606510750949383,
+        "M_neutral_entity_initial_patient_only_named_gp": 10.807546451687813,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.024906691163778,
+        "M_neutral_entity_initial_patient_only_generic_gp": 11.539142183959484,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 10.460155297070742,
+        "history_role_specific_change_reference_only": 0.3223882196471095,
+        "history_role_specific_change_initial_patient_only": 0.25704792502801865
+      },
+      {
+        "verb_family": "fought",
+        "source_items": [
+          "Cehakova:item91",
+          "Cehakova:item92"
+        ],
+        "M_activity_reference_only_named_gp": 7.508924826979637,
+        "M_activity_reference_only_named_explicit_cue": 7.298134028911591,
+        "M_activity_reference_only_generic_gp": 7.769406393170357,
+        "M_activity_reference_only_generic_explicit_cue": 7.213768094778061,
+        "M_activity_initial_patient_only_named_gp": 9.419617891311646,
+        "M_activity_initial_patient_only_named_explicit_cue": 8.418663363903761,
+        "M_activity_initial_patient_only_generic_gp": 11.153647780418396,
+        "M_activity_initial_patient_only_generic_explicit_cue": 9.789198419079185,
+        "M_neutral_entity_reference_only_named_gp": 6.953576922416687,
+        "M_neutral_entity_reference_only_named_explicit_cue": 8.355590015649796,
+        "M_neutral_entity_reference_only_generic_gp": 5.3556298315525055,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 6.593755811452866,
+        "M_neutral_entity_initial_patient_only_named_gp": 5.453751504421234,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 6.553331419825554,
+        "M_neutral_entity_initial_patient_only_generic_gp": 5.715266793966293,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 7.48918591439724,
+        "history_role_specific_change_reference_only": -0.18096038699150085,
+        "history_role_specific_change_initial_patient_only": -1.0378340389579535
+      },
+      {
+        "verb_family": "healed",
+        "source_items": [
+          "Cehakova:item93",
+          "Cehakova:item94"
+        ],
+        "M_activity_reference_only_named_gp": 17.01292944699526,
+        "M_activity_reference_only_named_explicit_cue": 16.660682648420334,
+        "M_activity_reference_only_generic_gp": 16.787307031452656,
+        "M_activity_reference_only_generic_explicit_cue": 15.597868353128433,
+        "M_activity_initial_patient_only_named_gp": 20.92430137936026,
+        "M_activity_initial_patient_only_named_explicit_cue": 20.52495795302093,
+        "M_activity_initial_patient_only_generic_gp": 20.42181422188878,
+        "M_activity_initial_patient_only_generic_explicit_cue": 19.150631844997406,
+        "M_neutral_entity_reference_only_named_gp": 14.528088390827179,
+        "M_neutral_entity_reference_only_named_explicit_cue": 14.347781747579575,
+        "M_neutral_entity_reference_only_generic_gp": 13.973837554454803,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 13.27003788948059,
+        "M_neutral_entity_initial_patient_only_named_gp": 16.53715478628874,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 16.669606536626816,
+        "M_neutral_entity_initial_patient_only_generic_gp": 17.767795577645302,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 17.038011118769646,
+        "history_role_specific_change_reference_only": -0.3136988580226898,
+        "history_role_specific_change_initial_patient_only": -0.009602741338312626
+      },
+      {
+        "verb_family": "hid",
+        "source_items": [
+          "Cehakova:item71",
+          "Cehakova:item72"
+        ],
+        "M_activity_reference_only_named_gp": 11.184030711650848,
+        "M_activity_reference_only_named_explicit_cue": 11.170791640877724,
+        "M_activity_reference_only_generic_gp": 12.215938471257687,
+        "M_activity_reference_only_generic_explicit_cue": 11.8571597635746,
+        "M_activity_initial_patient_only_named_gp": 12.791840994730592,
+        "M_activity_initial_patient_only_named_explicit_cue": 10.722574718296528,
+        "M_activity_initial_patient_only_generic_gp": 13.169262515380979,
+        "M_activity_initial_patient_only_generic_explicit_cue": 12.927079018205404,
+        "M_neutral_entity_reference_only_named_gp": 11.677670378237963,
+        "M_neutral_entity_reference_only_named_explicit_cue": 11.910356286913157,
+        "M_neutral_entity_reference_only_generic_gp": 11.552904017269611,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.621176850050688,
+        "M_neutral_entity_initial_patient_only_named_gp": 12.256383936852217,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.68694955855608,
+        "M_neutral_entity_initial_patient_only_generic_gp": 12.271230971440673,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 12.739085707813501,
+        "history_role_specific_change_reference_only": -0.18112656101584435,
+        "history_role_specific_change_initial_patient_only": -0.21020633541047573
+      },
+      {
+        "verb_family": "hugged",
+        "source_items": [
+          "Cehakova:item87",
+          "Cehakova:item88"
+        ],
+        "M_activity_reference_only_named_gp": 12.863132983446121,
+        "M_activity_reference_only_named_explicit_cue": 12.115250043570995,
+        "M_activity_reference_only_generic_gp": 14.415443256497383,
+        "M_activity_reference_only_generic_explicit_cue": 12.856040075421333,
+        "M_activity_initial_patient_only_named_gp": 17.50362478196621,
+        "M_activity_initial_patient_only_named_explicit_cue": 15.584340501576662,
+        "M_activity_initial_patient_only_generic_gp": 16.962279362604022,
+        "M_activity_initial_patient_only_generic_explicit_cue": 14.738130871206522,
+        "M_neutral_entity_reference_only_named_gp": 13.136944983154535,
+        "M_neutral_entity_reference_only_named_explicit_cue": 13.113371849060059,
+        "M_neutral_entity_reference_only_generic_gp": 11.761034652590752,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 10.853307962417603,
+        "M_neutral_entity_initial_patient_only_named_gp": 11.370686709880829,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.922730267047882,
+        "M_neutral_entity_initial_patient_only_generic_gp": 11.832274861633778,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 11.33225205540657,
+        "history_role_specific_change_reference_only": 0.07263331487774849,
+        "history_role_specific_change_initial_patient_only": -0.2527978476136923
+      },
+      {
+        "verb_family": "kissed",
+        "source_items": [
+          "Cehakova:item89",
+          "Cehakova:item90"
+        ],
+        "M_activity_reference_only_named_gp": 7.65264705568552,
+        "M_activity_reference_only_named_explicit_cue": 7.109221190214157,
+        "M_activity_reference_only_generic_gp": 7.301412429660559,
+        "M_activity_reference_only_generic_explicit_cue": 5.312772959470749,
+        "M_activity_initial_patient_only_named_gp": 8.665861817076802,
+        "M_activity_initial_patient_only_named_explicit_cue": 7.336713836528361,
+        "M_activity_initial_patient_only_generic_gp": 8.93298675864935,
+        "M_activity_initial_patient_only_generic_explicit_cue": 7.415850608609617,
+        "M_neutral_entity_reference_only_named_gp": 6.859665423631668,
+        "M_neutral_entity_reference_only_named_explicit_cue": 5.688938394188881,
+        "M_neutral_entity_reference_only_generic_gp": 6.540283635258675,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 4.70991438627243,
+        "M_neutral_entity_initial_patient_only_named_gp": 6.869739569723606,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 5.825977720320225,
+        "M_neutral_entity_initial_patient_only_generic_gp": 7.280450236052275,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 6.1889659985899925,
+        "history_role_specific_change_reference_only": -0.7855713851749897,
+        "history_role_specific_change_initial_patient_only": -0.1402657814323902
+      },
+      {
+        "verb_family": "met",
+        "source_items": [
+          "Cehakova:item79",
+          "Cehakova:item80"
+        ],
+        "M_activity_reference_only_named_gp": 14.392793480306864,
+        "M_activity_reference_only_named_explicit_cue": 15.219749204814434,
+        "M_activity_reference_only_generic_gp": 13.012244839221239,
+        "M_activity_reference_only_generic_explicit_cue": 12.198282349854708,
+        "M_activity_initial_patient_only_named_gp": 14.717053055763245,
+        "M_activity_initial_patient_only_named_explicit_cue": 14.491782013326883,
+        "M_activity_initial_patient_only_generic_gp": 15.516767757944763,
+        "M_activity_initial_patient_only_generic_explicit_cue": 16.211598929017782,
+        "M_neutral_entity_reference_only_named_gp": 15.55679727345705,
+        "M_neutral_entity_reference_only_named_explicit_cue": 16.893812749534845,
+        "M_neutral_entity_reference_only_generic_gp": 13.128364577889442,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 13.745236851274967,
+        "M_neutral_entity_initial_patient_only_named_gp": 15.816964510828257,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 16.820245005190372,
+        "M_neutral_entity_initial_patient_only_generic_gp": 15.740440048277378,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 16.586663879454136,
+        "history_role_specific_change_reference_only": -0.9207750111818314,
+        "history_role_specific_change_initial_patient_only": 1.0771588766947389
+      },
+      {
+        "verb_family": "shaved",
+        "source_items": [
+          "Cehakova:item83",
+          "Cehakova:item84"
+        ],
+        "M_activity_reference_only_named_gp": 14.185852192342281,
+        "M_activity_reference_only_named_explicit_cue": 12.605058178305626,
+        "M_activity_reference_only_generic_gp": 15.09368934482336,
+        "M_activity_reference_only_generic_explicit_cue": 10.994981318712234,
+        "M_activity_initial_patient_only_named_gp": 17.389778641983867,
+        "M_activity_initial_patient_only_named_explicit_cue": 15.844201263040304,
+        "M_activity_initial_patient_only_generic_gp": 17.10882623307407,
+        "M_activity_initial_patient_only_generic_explicit_cue": 15.434240631759167,
+        "M_neutral_entity_reference_only_named_gp": 13.080176532268524,
+        "M_neutral_entity_reference_only_named_explicit_cue": 13.209220230579376,
+        "M_neutral_entity_reference_only_generic_gp": 12.724722266197205,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.79649531841278,
+        "M_neutral_entity_initial_patient_only_named_gp": 15.202199384570122,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 13.935083821415901,
+        "M_neutral_entity_initial_patient_only_generic_gp": 15.835840806365013,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 14.35373067855835,
+        "history_role_specific_change_reference_only": -1.4606433659791946,
+        "history_role_specific_change_initial_patient_only": 0.08598634228110313
+      }
+    ],
+    "eligible": [
+      {
+        "verb_family": "bathed",
+        "source_items": [
+          "Cehakova:item85",
+          "Cehakova:item86"
+        ],
+        "M_activity_reference_only_named_gp": 12.355208315886557,
+        "M_activity_reference_only_named_explicit_cue": 11.235389418900013,
+        "M_activity_reference_only_generic_gp": 11.506559413857758,
+        "M_activity_reference_only_generic_explicit_cue": 9.05905038304627,
+        "M_activity_initial_patient_only_named_gp": 13.296089331852272,
+        "M_activity_initial_patient_only_named_explicit_cue": 13.439815379213542,
+        "M_activity_initial_patient_only_generic_gp": 13.536803671624511,
+        "M_activity_initial_patient_only_generic_explicit_cue": 11.91143657732755,
+        "M_neutral_entity_reference_only_named_gp": 10.858327969908714,
+        "M_neutral_entity_reference_only_named_explicit_cue": 11.325993061065674,
+        "M_neutral_entity_reference_only_generic_gp": 9.97105224430561,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 10.100957930088043,
+        "M_neutral_entity_initial_patient_only_named_gp": 9.998539119958878,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.481918923556805,
+        "M_neutral_entity_initial_patient_only_generic_gp": 10.895153224468231,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 10.79129846021533,
+        "history_role_specific_change_reference_only": -0.9899307284504175,
+        "history_role_specific_change_initial_patient_only": -1.1818585738074034
+      },
+      {
+        "verb_family": "cuddled",
+        "source_items": [
+          "Cehakova:item75",
+          "Cehakova:item76"
+        ],
+        "M_activity_reference_only_named_gp": 15.349453561007977,
+        "M_activity_reference_only_named_explicit_cue": 13.978451207280159,
+        "M_activity_reference_only_generic_gp": 15.46681988146156,
+        "M_activity_reference_only_generic_explicit_cue": 12.114544458687305,
+        "M_activity_initial_patient_only_named_gp": 19.56807285035029,
+        "M_activity_initial_patient_only_named_explicit_cue": 18.277339577674866,
+        "M_activity_initial_patient_only_generic_gp": 19.302946640644222,
+        "M_activity_initial_patient_only_generic_explicit_cue": 18.790207136422396,
+        "M_neutral_entity_reference_only_named_gp": 15.86583710834384,
+        "M_neutral_entity_reference_only_named_explicit_cue": 16.764475595206022,
+        "M_neutral_entity_reference_only_generic_gp": 14.565500624477863,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 15.53971640765667,
+        "M_neutral_entity_initial_patient_only_named_gp": 15.455753073096275,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 16.237401634454727,
+        "M_neutral_entity_initial_patient_only_generic_gp": 15.702183600515127,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 15.923304058611393,
+        "history_role_specific_change_reference_only": -2.0568503653630614,
+        "history_role_specific_change_initial_patient_only": 1.338521871715784
+      },
+      {
+        "verb_family": "disrobed",
+        "source_items": [
+          "Cehakova:item81",
+          "Cehakova:item82"
+        ],
+        "M_activity_reference_only_named_gp": 13.252276286482811,
+        "M_activity_reference_only_named_explicit_cue": 13.8757333047688,
+        "M_activity_reference_only_generic_gp": 14.331816244870424,
+        "M_activity_reference_only_generic_explicit_cue": 12.142343699932098,
+        "M_activity_initial_patient_only_named_gp": 16.062386543489993,
+        "M_activity_initial_patient_only_named_explicit_cue": 13.7129459194839,
+        "M_activity_initial_patient_only_generic_gp": 17.56983033195138,
+        "M_activity_initial_patient_only_generic_explicit_cue": 14.725758705288172,
+        "M_neutral_entity_reference_only_named_gp": 13.10740014910698,
+        "M_neutral_entity_reference_only_named_explicit_cue": 12.899520620703697,
+        "M_neutral_entity_reference_only_generic_gp": 13.580072239041328,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.81538537144661,
+        "M_neutral_entity_initial_patient_only_named_gp": 14.226974725723267,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 12.40871188044548,
+        "M_neutral_entity_initial_patient_only_generic_gp": 14.96938817948103,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 12.988741010427475,
+        "history_role_specific_change_reference_only": -1.2561222240328789,
+        "history_role_specific_change_initial_patient_only": -0.3322466788813472
+      },
+      {
+        "verb_family": "dressed",
+        "source_items": [
+          "Cehakova:item77",
+          "Cehakova:item78"
+        ],
+        "M_activity_reference_only_named_gp": 18.287877310067415,
+        "M_activity_reference_only_named_explicit_cue": 17.6459698677063,
+        "M_activity_reference_only_generic_gp": 20.594998437911272,
+        "M_activity_reference_only_generic_explicit_cue": 18.95086083561182,
+        "M_activity_initial_patient_only_named_gp": 21.78779545519501,
+        "M_activity_initial_patient_only_named_explicit_cue": 20.329978555440903,
+        "M_activity_initial_patient_only_generic_gp": 21.60463486611843,
+        "M_activity_initial_patient_only_generic_explicit_cue": 20.1377929225564,
+        "M_neutral_entity_reference_only_named_gp": 18.08532240986824,
+        "M_neutral_entity_reference_only_named_explicit_cue": 18.01522535830736,
+        "M_neutral_entity_reference_only_generic_gp": 18.305303677916527,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 19.027571994811296,
+        "M_neutral_entity_initial_patient_only_named_gp": 19.24729871749878,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 17.746948711574078,
+        "M_neutral_entity_initial_patient_only_generic_gp": 20.18017576355487,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 18.246525950729847,
+        "history_role_specific_change_reference_only": -1.7945955283939838,
+        "history_role_specific_change_initial_patient_only": 0.42427476309239864
+      },
+      {
+        "verb_family": "embraced",
+        "source_items": [
+          "Cehakova:item73",
+          "Cehakova:item74"
+        ],
+        "M_activity_reference_only_named_gp": 12.431284736841917,
+        "M_activity_reference_only_named_explicit_cue": 11.352066083811224,
+        "M_activity_reference_only_generic_gp": 12.096233990043402,
+        "M_activity_reference_only_generic_explicit_cue": 10.017005393281579,
+        "M_activity_initial_patient_only_named_gp": 13.650605408824049,
+        "M_activity_initial_patient_only_named_explicit_cue": 12.447720816358924,
+        "M_activity_initial_patient_only_generic_gp": 12.811917854007334,
+        "M_activity_initial_patient_only_generic_explicit_cue": 11.56973406020552,
+        "M_neutral_entity_reference_only_named_gp": 11.214632466435432,
+        "M_neutral_entity_reference_only_named_explicit_cue": 10.866810359060764,
+        "M_neutral_entity_reference_only_generic_gp": 11.27673102170229,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 9.606510750949383,
+        "M_neutral_entity_initial_patient_only_named_gp": 10.807546451687813,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.024906691163778,
+        "M_neutral_entity_initial_patient_only_generic_gp": 11.539142183959484,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 10.460155297070742,
+        "history_role_specific_change_reference_only": 0.3223882196471095,
+        "history_role_specific_change_initial_patient_only": 0.25704792502801865
+      },
+      {
+        "verb_family": "fought",
+        "source_items": [
+          "Cehakova:item91",
+          "Cehakova:item92"
+        ],
+        "M_activity_reference_only_named_gp": 7.508924826979637,
+        "M_activity_reference_only_named_explicit_cue": 7.298134028911591,
+        "M_activity_reference_only_generic_gp": 7.769406393170357,
+        "M_activity_reference_only_generic_explicit_cue": 7.213768094778061,
+        "M_activity_initial_patient_only_named_gp": 9.419617891311646,
+        "M_activity_initial_patient_only_named_explicit_cue": 8.418663363903761,
+        "M_activity_initial_patient_only_generic_gp": 11.153647780418396,
+        "M_activity_initial_patient_only_generic_explicit_cue": 9.789198419079185,
+        "M_neutral_entity_reference_only_named_gp": 6.953576922416687,
+        "M_neutral_entity_reference_only_named_explicit_cue": 8.355590015649796,
+        "M_neutral_entity_reference_only_generic_gp": 5.3556298315525055,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 6.593755811452866,
+        "M_neutral_entity_initial_patient_only_named_gp": 5.453751504421234,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 6.553331419825554,
+        "M_neutral_entity_initial_patient_only_generic_gp": 5.715266793966293,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 7.48918591439724,
+        "history_role_specific_change_reference_only": -0.18096038699150085,
+        "history_role_specific_change_initial_patient_only": -1.0378340389579535
+      },
+      {
+        "verb_family": "healed",
+        "source_items": [
+          "Cehakova:item93",
+          "Cehakova:item94"
+        ],
+        "M_activity_reference_only_named_gp": 17.01292944699526,
+        "M_activity_reference_only_named_explicit_cue": 16.660682648420334,
+        "M_activity_reference_only_generic_gp": 16.787307031452656,
+        "M_activity_reference_only_generic_explicit_cue": 15.597868353128433,
+        "M_activity_initial_patient_only_named_gp": 20.92430137936026,
+        "M_activity_initial_patient_only_named_explicit_cue": 20.52495795302093,
+        "M_activity_initial_patient_only_generic_gp": 20.42181422188878,
+        "M_activity_initial_patient_only_generic_explicit_cue": 19.150631844997406,
+        "M_neutral_entity_reference_only_named_gp": 14.528088390827179,
+        "M_neutral_entity_reference_only_named_explicit_cue": 14.347781747579575,
+        "M_neutral_entity_reference_only_generic_gp": 13.973837554454803,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 13.27003788948059,
+        "M_neutral_entity_initial_patient_only_named_gp": 16.53715478628874,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 16.669606536626816,
+        "M_neutral_entity_initial_patient_only_generic_gp": 17.767795577645302,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 17.038011118769646,
+        "history_role_specific_change_reference_only": -0.3136988580226898,
+        "history_role_specific_change_initial_patient_only": -0.009602741338312626
+      },
+      {
+        "verb_family": "hid",
+        "source_items": [
+          "Cehakova:item71",
+          "Cehakova:item72"
+        ],
+        "M_activity_reference_only_named_gp": 11.184030711650848,
+        "M_activity_reference_only_named_explicit_cue": 11.170791640877724,
+        "M_activity_reference_only_generic_gp": 12.215938471257687,
+        "M_activity_reference_only_generic_explicit_cue": 11.8571597635746,
+        "M_activity_initial_patient_only_named_gp": 12.791840994730592,
+        "M_activity_initial_patient_only_named_explicit_cue": 10.722574718296528,
+        "M_activity_initial_patient_only_generic_gp": 13.169262515380979,
+        "M_activity_initial_patient_only_generic_explicit_cue": 12.927079018205404,
+        "M_neutral_entity_reference_only_named_gp": 11.677670378237963,
+        "M_neutral_entity_reference_only_named_explicit_cue": 11.910356286913157,
+        "M_neutral_entity_reference_only_generic_gp": 11.552904017269611,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.621176850050688,
+        "M_neutral_entity_initial_patient_only_named_gp": 12.256383936852217,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.68694955855608,
+        "M_neutral_entity_initial_patient_only_generic_gp": 12.271230971440673,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 12.739085707813501,
+        "history_role_specific_change_reference_only": -0.18112656101584435,
+        "history_role_specific_change_initial_patient_only": -0.21020633541047573
+      },
+      {
+        "verb_family": "hugged",
+        "source_items": [
+          "Cehakova:item87",
+          "Cehakova:item88"
+        ],
+        "M_activity_reference_only_named_gp": 12.863132983446121,
+        "M_activity_reference_only_named_explicit_cue": 12.115250043570995,
+        "M_activity_reference_only_generic_gp": 14.415443256497383,
+        "M_activity_reference_only_generic_explicit_cue": 12.856040075421333,
+        "M_activity_initial_patient_only_named_gp": 17.50362478196621,
+        "M_activity_initial_patient_only_named_explicit_cue": 15.584340501576662,
+        "M_activity_initial_patient_only_generic_gp": 16.962279362604022,
+        "M_activity_initial_patient_only_generic_explicit_cue": 14.738130871206522,
+        "M_neutral_entity_reference_only_named_gp": 13.136944983154535,
+        "M_neutral_entity_reference_only_named_explicit_cue": 13.113371849060059,
+        "M_neutral_entity_reference_only_generic_gp": 11.761034652590752,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 10.853307962417603,
+        "M_neutral_entity_initial_patient_only_named_gp": 11.370686709880829,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.922730267047882,
+        "M_neutral_entity_initial_patient_only_generic_gp": 11.832274861633778,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 11.33225205540657,
+        "history_role_specific_change_reference_only": 0.07263331487774849,
+        "history_role_specific_change_initial_patient_only": -0.2527978476136923
+      },
+      {
+        "verb_family": "kissed",
+        "source_items": [
+          "Cehakova:item89",
+          "Cehakova:item90"
+        ],
+        "M_activity_reference_only_named_gp": 7.65264705568552,
+        "M_activity_reference_only_named_explicit_cue": 7.109221190214157,
+        "M_activity_reference_only_generic_gp": 7.301412429660559,
+        "M_activity_reference_only_generic_explicit_cue": 5.312772959470749,
+        "M_activity_initial_patient_only_named_gp": 8.665861817076802,
+        "M_activity_initial_patient_only_named_explicit_cue": 7.336713836528361,
+        "M_activity_initial_patient_only_generic_gp": 8.93298675864935,
+        "M_activity_initial_patient_only_generic_explicit_cue": 7.415850608609617,
+        "M_neutral_entity_reference_only_named_gp": 6.859665423631668,
+        "M_neutral_entity_reference_only_named_explicit_cue": 5.688938394188881,
+        "M_neutral_entity_reference_only_generic_gp": 6.540283635258675,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 4.70991438627243,
+        "M_neutral_entity_initial_patient_only_named_gp": 6.869739569723606,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 5.825977720320225,
+        "M_neutral_entity_initial_patient_only_generic_gp": 7.280450236052275,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 6.1889659985899925,
+        "history_role_specific_change_reference_only": -0.7855713851749897,
+        "history_role_specific_change_initial_patient_only": -0.1402657814323902
+      },
+      {
+        "verb_family": "met",
+        "source_items": [
+          "Cehakova:item79",
+          "Cehakova:item80"
+        ],
+        "M_activity_reference_only_named_gp": 14.392793480306864,
+        "M_activity_reference_only_named_explicit_cue": 15.219749204814434,
+        "M_activity_reference_only_generic_gp": 13.012244839221239,
+        "M_activity_reference_only_generic_explicit_cue": 12.198282349854708,
+        "M_activity_initial_patient_only_named_gp": 14.717053055763245,
+        "M_activity_initial_patient_only_named_explicit_cue": 14.491782013326883,
+        "M_activity_initial_patient_only_generic_gp": 15.516767757944763,
+        "M_activity_initial_patient_only_generic_explicit_cue": 16.211598929017782,
+        "M_neutral_entity_reference_only_named_gp": 15.55679727345705,
+        "M_neutral_entity_reference_only_named_explicit_cue": 16.893812749534845,
+        "M_neutral_entity_reference_only_generic_gp": 13.128364577889442,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 13.745236851274967,
+        "M_neutral_entity_initial_patient_only_named_gp": 15.816964510828257,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 16.820245005190372,
+        "M_neutral_entity_initial_patient_only_generic_gp": 15.740440048277378,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 16.586663879454136,
+        "history_role_specific_change_reference_only": -0.9207750111818314,
+        "history_role_specific_change_initial_patient_only": 1.0771588766947389
+      },
+      {
+        "verb_family": "shaved",
+        "source_items": [
+          "Cehakova:item83",
+          "Cehakova:item84"
+        ],
+        "M_activity_reference_only_named_gp": 14.185852192342281,
+        "M_activity_reference_only_named_explicit_cue": 12.605058178305626,
+        "M_activity_reference_only_generic_gp": 15.09368934482336,
+        "M_activity_reference_only_generic_explicit_cue": 10.994981318712234,
+        "M_activity_initial_patient_only_named_gp": 17.389778641983867,
+        "M_activity_initial_patient_only_named_explicit_cue": 15.844201263040304,
+        "M_activity_initial_patient_only_generic_gp": 17.10882623307407,
+        "M_activity_initial_patient_only_generic_explicit_cue": 15.434240631759167,
+        "M_neutral_entity_reference_only_named_gp": 13.080176532268524,
+        "M_neutral_entity_reference_only_named_explicit_cue": 13.209220230579376,
+        "M_neutral_entity_reference_only_generic_gp": 12.724722266197205,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.79649531841278,
+        "M_neutral_entity_initial_patient_only_named_gp": 15.202199384570122,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 13.935083821415901,
+        "M_neutral_entity_initial_patient_only_generic_gp": 15.835840806365013,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 14.35373067855835,
+        "history_role_specific_change_reference_only": -1.4606433659791946,
+        "history_role_specific_change_initial_patient_only": 0.08598634228110313
+      }
+    ],
+    "acceptable": [],
+    "faithful_role_frame": [
+      {
+        "verb_family": "bathed",
+        "source_items": [
+          "Cehakova:item85",
+          "Cehakova:item86"
+        ],
+        "M_activity_reference_only_named_gp": 12.355208315886557,
+        "M_activity_reference_only_named_explicit_cue": 11.235389418900013,
+        "M_activity_reference_only_generic_gp": 11.506559413857758,
+        "M_activity_reference_only_generic_explicit_cue": 9.05905038304627,
+        "M_activity_initial_patient_only_named_gp": 13.296089331852272,
+        "M_activity_initial_patient_only_named_explicit_cue": 13.439815379213542,
+        "M_activity_initial_patient_only_generic_gp": 13.536803671624511,
+        "M_activity_initial_patient_only_generic_explicit_cue": 11.91143657732755,
+        "M_neutral_entity_reference_only_named_gp": 10.858327969908714,
+        "M_neutral_entity_reference_only_named_explicit_cue": 11.325993061065674,
+        "M_neutral_entity_reference_only_generic_gp": 9.97105224430561,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 10.100957930088043,
+        "M_neutral_entity_initial_patient_only_named_gp": 9.998539119958878,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.481918923556805,
+        "M_neutral_entity_initial_patient_only_generic_gp": 10.895153224468231,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 10.79129846021533,
+        "history_role_specific_change_reference_only": -0.9899307284504175,
+        "history_role_specific_change_initial_patient_only": -1.1818585738074034
+      },
+      {
+        "verb_family": "disrobed",
+        "source_items": [
+          "Cehakova:item81",
+          "Cehakova:item82"
+        ],
+        "M_activity_reference_only_named_gp": 13.252276286482811,
+        "M_activity_reference_only_named_explicit_cue": 13.8757333047688,
+        "M_activity_reference_only_generic_gp": 14.331816244870424,
+        "M_activity_reference_only_generic_explicit_cue": 12.142343699932098,
+        "M_activity_initial_patient_only_named_gp": 16.062386543489993,
+        "M_activity_initial_patient_only_named_explicit_cue": 13.7129459194839,
+        "M_activity_initial_patient_only_generic_gp": 17.56983033195138,
+        "M_activity_initial_patient_only_generic_explicit_cue": 14.725758705288172,
+        "M_neutral_entity_reference_only_named_gp": 13.10740014910698,
+        "M_neutral_entity_reference_only_named_explicit_cue": 12.899520620703697,
+        "M_neutral_entity_reference_only_generic_gp": 13.580072239041328,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.81538537144661,
+        "M_neutral_entity_initial_patient_only_named_gp": 14.226974725723267,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 12.40871188044548,
+        "M_neutral_entity_initial_patient_only_generic_gp": 14.96938817948103,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 12.988741010427475,
+        "history_role_specific_change_reference_only": -1.2561222240328789,
+        "history_role_specific_change_initial_patient_only": -0.3322466788813472
+      },
+      {
+        "verb_family": "dressed",
+        "source_items": [
+          "Cehakova:item77",
+          "Cehakova:item78"
+        ],
+        "M_activity_reference_only_named_gp": 18.287877310067415,
+        "M_activity_reference_only_named_explicit_cue": 17.6459698677063,
+        "M_activity_reference_only_generic_gp": 20.594998437911272,
+        "M_activity_reference_only_generic_explicit_cue": 18.95086083561182,
+        "M_activity_initial_patient_only_named_gp": 21.78779545519501,
+        "M_activity_initial_patient_only_named_explicit_cue": 20.329978555440903,
+        "M_activity_initial_patient_only_generic_gp": 21.60463486611843,
+        "M_activity_initial_patient_only_generic_explicit_cue": 20.1377929225564,
+        "M_neutral_entity_reference_only_named_gp": 18.08532240986824,
+        "M_neutral_entity_reference_only_named_explicit_cue": 18.01522535830736,
+        "M_neutral_entity_reference_only_generic_gp": 18.305303677916527,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 19.027571994811296,
+        "M_neutral_entity_initial_patient_only_named_gp": 19.24729871749878,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 17.746948711574078,
+        "M_neutral_entity_initial_patient_only_generic_gp": 20.18017576355487,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 18.246525950729847,
+        "history_role_specific_change_reference_only": -1.7945955283939838,
+        "history_role_specific_change_initial_patient_only": 0.42427476309239864
+      },
+      {
+        "verb_family": "fought",
+        "source_items": [
+          "Cehakova:item91",
+          "Cehakova:item92"
+        ],
+        "M_activity_reference_only_named_gp": 7.508924826979637,
+        "M_activity_reference_only_named_explicit_cue": 7.298134028911591,
+        "M_activity_reference_only_generic_gp": 7.769406393170357,
+        "M_activity_reference_only_generic_explicit_cue": 7.213768094778061,
+        "M_activity_initial_patient_only_named_gp": 9.419617891311646,
+        "M_activity_initial_patient_only_named_explicit_cue": 8.418663363903761,
+        "M_activity_initial_patient_only_generic_gp": 11.153647780418396,
+        "M_activity_initial_patient_only_generic_explicit_cue": 9.789198419079185,
+        "M_neutral_entity_reference_only_named_gp": 6.953576922416687,
+        "M_neutral_entity_reference_only_named_explicit_cue": 8.355590015649796,
+        "M_neutral_entity_reference_only_generic_gp": 5.3556298315525055,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 6.593755811452866,
+        "M_neutral_entity_initial_patient_only_named_gp": 5.453751504421234,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 6.553331419825554,
+        "M_neutral_entity_initial_patient_only_generic_gp": 5.715266793966293,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 7.48918591439724,
+        "history_role_specific_change_reference_only": -0.18096038699150085,
+        "history_role_specific_change_initial_patient_only": -1.0378340389579535
+      },
+      {
+        "verb_family": "healed",
+        "source_items": [
+          "Cehakova:item93",
+          "Cehakova:item94"
+        ],
+        "M_activity_reference_only_named_gp": 17.01292944699526,
+        "M_activity_reference_only_named_explicit_cue": 16.660682648420334,
+        "M_activity_reference_only_generic_gp": 16.787307031452656,
+        "M_activity_reference_only_generic_explicit_cue": 15.597868353128433,
+        "M_activity_initial_patient_only_named_gp": 20.92430137936026,
+        "M_activity_initial_patient_only_named_explicit_cue": 20.52495795302093,
+        "M_activity_initial_patient_only_generic_gp": 20.42181422188878,
+        "M_activity_initial_patient_only_generic_explicit_cue": 19.150631844997406,
+        "M_neutral_entity_reference_only_named_gp": 14.528088390827179,
+        "M_neutral_entity_reference_only_named_explicit_cue": 14.347781747579575,
+        "M_neutral_entity_reference_only_generic_gp": 13.973837554454803,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 13.27003788948059,
+        "M_neutral_entity_initial_patient_only_named_gp": 16.53715478628874,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 16.669606536626816,
+        "M_neutral_entity_initial_patient_only_generic_gp": 17.767795577645302,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 17.038011118769646,
+        "history_role_specific_change_reference_only": -0.3136988580226898,
+        "history_role_specific_change_initial_patient_only": -0.009602741338312626
+      },
+      {
+        "verb_family": "hid",
+        "source_items": [
+          "Cehakova:item71",
+          "Cehakova:item72"
+        ],
+        "M_activity_reference_only_named_gp": 11.184030711650848,
+        "M_activity_reference_only_named_explicit_cue": 11.170791640877724,
+        "M_activity_reference_only_generic_gp": 12.215938471257687,
+        "M_activity_reference_only_generic_explicit_cue": 11.8571597635746,
+        "M_activity_initial_patient_only_named_gp": 12.791840994730592,
+        "M_activity_initial_patient_only_named_explicit_cue": 10.722574718296528,
+        "M_activity_initial_patient_only_generic_gp": 13.169262515380979,
+        "M_activity_initial_patient_only_generic_explicit_cue": 12.927079018205404,
+        "M_neutral_entity_reference_only_named_gp": 11.677670378237963,
+        "M_neutral_entity_reference_only_named_explicit_cue": 11.910356286913157,
+        "M_neutral_entity_reference_only_generic_gp": 11.552904017269611,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.621176850050688,
+        "M_neutral_entity_initial_patient_only_named_gp": 12.256383936852217,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.68694955855608,
+        "M_neutral_entity_initial_patient_only_generic_gp": 12.271230971440673,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 12.739085707813501,
+        "history_role_specific_change_reference_only": -0.18112656101584435,
+        "history_role_specific_change_initial_patient_only": -0.21020633541047573
+      },
+      {
+        "verb_family": "hugged",
+        "source_items": [
+          "Cehakova:item87",
+          "Cehakova:item88"
+        ],
+        "M_activity_reference_only_named_gp": 12.863132983446121,
+        "M_activity_reference_only_named_explicit_cue": 12.115250043570995,
+        "M_activity_reference_only_generic_gp": 14.415443256497383,
+        "M_activity_reference_only_generic_explicit_cue": 12.856040075421333,
+        "M_activity_initial_patient_only_named_gp": 17.50362478196621,
+        "M_activity_initial_patient_only_named_explicit_cue": 15.584340501576662,
+        "M_activity_initial_patient_only_generic_gp": 16.962279362604022,
+        "M_activity_initial_patient_only_generic_explicit_cue": 14.738130871206522,
+        "M_neutral_entity_reference_only_named_gp": 13.136944983154535,
+        "M_neutral_entity_reference_only_named_explicit_cue": 13.113371849060059,
+        "M_neutral_entity_reference_only_generic_gp": 11.761034652590752,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 10.853307962417603,
+        "M_neutral_entity_initial_patient_only_named_gp": 11.370686709880829,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 10.922730267047882,
+        "M_neutral_entity_initial_patient_only_generic_gp": 11.832274861633778,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 11.33225205540657,
+        "history_role_specific_change_reference_only": 0.07263331487774849,
+        "history_role_specific_change_initial_patient_only": -0.2527978476136923
+      },
+      {
+        "verb_family": "kissed",
+        "source_items": [
+          "Cehakova:item89",
+          "Cehakova:item90"
+        ],
+        "M_activity_reference_only_named_gp": 7.65264705568552,
+        "M_activity_reference_only_named_explicit_cue": 7.109221190214157,
+        "M_activity_reference_only_generic_gp": 7.301412429660559,
+        "M_activity_reference_only_generic_explicit_cue": 5.312772959470749,
+        "M_activity_initial_patient_only_named_gp": 8.665861817076802,
+        "M_activity_initial_patient_only_named_explicit_cue": 7.336713836528361,
+        "M_activity_initial_patient_only_generic_gp": 8.93298675864935,
+        "M_activity_initial_patient_only_generic_explicit_cue": 7.415850608609617,
+        "M_neutral_entity_reference_only_named_gp": 6.859665423631668,
+        "M_neutral_entity_reference_only_named_explicit_cue": 5.688938394188881,
+        "M_neutral_entity_reference_only_generic_gp": 6.540283635258675,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 4.70991438627243,
+        "M_neutral_entity_initial_patient_only_named_gp": 6.869739569723606,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 5.825977720320225,
+        "M_neutral_entity_initial_patient_only_generic_gp": 7.280450236052275,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 6.1889659985899925,
+        "history_role_specific_change_reference_only": -0.7855713851749897,
+        "history_role_specific_change_initial_patient_only": -0.1402657814323902
+      },
+      {
+        "verb_family": "shaved",
+        "source_items": [
+          "Cehakova:item83",
+          "Cehakova:item84"
+        ],
+        "M_activity_reference_only_named_gp": 14.185852192342281,
+        "M_activity_reference_only_named_explicit_cue": 12.605058178305626,
+        "M_activity_reference_only_generic_gp": 15.09368934482336,
+        "M_activity_reference_only_generic_explicit_cue": 10.994981318712234,
+        "M_activity_initial_patient_only_named_gp": 17.389778641983867,
+        "M_activity_initial_patient_only_named_explicit_cue": 15.844201263040304,
+        "M_activity_initial_patient_only_generic_gp": 17.10882623307407,
+        "M_activity_initial_patient_only_generic_explicit_cue": 15.434240631759167,
+        "M_neutral_entity_reference_only_named_gp": 13.080176532268524,
+        "M_neutral_entity_reference_only_named_explicit_cue": 13.209220230579376,
+        "M_neutral_entity_reference_only_generic_gp": 12.724722266197205,
+        "M_neutral_entity_reference_only_generic_explicit_cue": 11.79649531841278,
+        "M_neutral_entity_initial_patient_only_named_gp": 15.202199384570122,
+        "M_neutral_entity_initial_patient_only_named_explicit_cue": 13.935083821415901,
+        "M_neutral_entity_initial_patient_only_generic_gp": 15.835840806365013,
+        "M_neutral_entity_initial_patient_only_generic_explicit_cue": 14.35373067855835,
+        "history_role_specific_change_reference_only": -1.4606433659791946,
+        "history_role_specific_change_initial_patient_only": 0.08598634228110313
+      }
+    ]
+  },
+  "cohorts": {
+    "all": {
+      "hid": [
+        "Cehakova:item71",
+        "Cehakova:item72"
+      ],
+      "embraced": [
+        "Cehakova:item73",
+        "Cehakova:item74"
+      ],
+      "cuddled": [
+        "Cehakova:item75",
+        "Cehakova:item76"
+      ],
+      "dressed": [
+        "Cehakova:item77",
+        "Cehakova:item78"
+      ],
+      "met": [
+        "Cehakova:item79",
+        "Cehakova:item80"
+      ],
+      "disrobed": [
+        "Cehakova:item81",
+        "Cehakova:item82"
+      ],
+      "shaved": [
+        "Cehakova:item83",
+        "Cehakova:item84"
+      ],
+      "bathed": [
+        "Cehakova:item85",
+        "Cehakova:item86"
+      ],
+      "hugged": [
+        "Cehakova:item87",
+        "Cehakova:item88"
+      ],
+      "kissed": [
+        "Cehakova:item89",
+        "Cehakova:item90"
+      ],
+      "fought": [
+        "Cehakova:item91",
+        "Cehakova:item92"
+      ],
+      "healed": [
+        "Cehakova:item93",
+        "Cehakova:item94"
+      ]
+    },
+    "eligible": {
+      "hid": [
+        "Cehakova:item71",
+        "Cehakova:item72"
+      ],
+      "embraced": [
+        "Cehakova:item73",
+        "Cehakova:item74"
+      ],
+      "cuddled": [
+        "Cehakova:item75",
+        "Cehakova:item76"
+      ],
+      "dressed": [
+        "Cehakova:item77",
+        "Cehakova:item78"
+      ],
+      "met": [
+        "Cehakova:item79",
+        "Cehakova:item80"
+      ],
+      "disrobed": [
+        "Cehakova:item81",
+        "Cehakova:item82"
+      ],
+      "shaved": [
+        "Cehakova:item83",
+        "Cehakova:item84"
+      ],
+      "bathed": [
+        "Cehakova:item85",
+        "Cehakova:item86"
+      ],
+      "hugged": [
+        "Cehakova:item87",
+        "Cehakova:item88"
+      ],
+      "kissed": [
+        "Cehakova:item89",
+        "Cehakova:item90"
+      ],
+      "fought": [
+        "Cehakova:item91",
+        "Cehakova:item92"
+      ],
+      "healed": [
+        "Cehakova:item93",
+        "Cehakova:item94"
+      ]
+    },
+    "acceptable": {},
+    "faithful_role_frame": {
+      "hid": [
+        "Cehakova:item71",
+        "Cehakova:item72"
+      ],
+      "dressed": [
+        "Cehakova:item77",
+        "Cehakova:item78"
+      ],
+      "disrobed": [
+        "Cehakova:item81",
+        "Cehakova:item82"
+      ],
+      "shaved": [
+        "Cehakova:item83",
+        "Cehakova:item84"
+      ],
+      "bathed": [
+        "Cehakova:item85",
+        "Cehakova:item86"
+      ],
+      "hugged": [
+        "Cehakova:item87",
+        "Cehakova:item88"
+      ],
+      "kissed": [
+        "Cehakova:item89",
+        "Cehakova:item90"
+      ],
+      "fought": [
+        "Cehakova:item91",
+        "Cehakova:item92"
+      ],
+      "healed": [
+        "Cehakova:item93",
+        "Cehakova:item94"
+      ]
+    }
+  }
+}
