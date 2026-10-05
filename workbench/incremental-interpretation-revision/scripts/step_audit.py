@@ -20,18 +20,19 @@ Each answer object: item_id, question_valid (boolean), answer (Yes/No/null), cer
 Null proposed gold is intentionally an unscored diagnostic, not permission to invent a No label. Still judge question validity and report answer/interpretation uncertainty. If any question is malformed or its gold depends on a contestable reading, mark it explicitly. You are annotating data, not deciding whether a research direction should continue. Do not return a study-level pass/fail threshold.'''
 
 class Auditor:
-    def __init__(self,out,api_style='messages'):
+    def __init__(self,out,api_style='messages',max_tokens=32768):
         self.out=out;out.mkdir(parents=True,exist_ok=True)
         self.secret=os.environ.get('STEPFUN_API_KEY') or Path('/data1/xiangding/.config/ssn-research/stepfun.key').read_text().strip()
         self.api_style=api_style
+        self.max_tokens=max_tokens
         self.endpoint='https://api.stepfun.com/v1/'+('messages' if api_style=='messages' else 'chat/completions')
     def one(self,item):
         uid=hashlib.sha256(item['variant_id'].encode()).hexdigest()[:20]
         payload={'model':'step-5-preview','messages':[{'role':'system','content':PROMPT},{'role':'user','content':json.dumps(item,ensure_ascii=False)}],
-                 'temperature':1.0,'max_tokens':8192,'reasoning_effort':'medium'}
+                 'temperature':1.0,'max_tokens':self.max_tokens,'reasoning_effort':'medium'}
         if self.api_style=='messages':
             payload={'model':'step-5-preview','system':PROMPT,'messages':[{'role':'user','content':json.dumps(item,ensure_ascii=False)}],
-                     'temperature':0.5,'max_tokens':8192,'output_config':{'effort':'low'}}
+                     'temperature':0.5,'max_tokens':self.max_tokens,'output_config':{'effort':'low'}}
         request_sha=hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
         result_path=self.out/f'{uid}.review.json'
         if result_path.exists():
@@ -42,7 +43,7 @@ class Auditor:
         for attempt in range(4):
             try:
                 s=requests.Session();s.trust_env=False
-                r=s.post(self.endpoint,headers={'Authorization':'Bearer '+self.secret},json=payload,timeout=(20,240))
+                r=s.post(self.endpoint,headers={'Authorization':'Bearer '+self.secret},json=payload,timeout=(20,900))
                 if not r.ok:
                     last_error=f'HTTP {r.status_code}'
                     detail=r.json().get('error',{})
@@ -93,11 +94,11 @@ def items_from(rows):
     return list(items.values())
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--data',type=Path,default=CACHE/'normalized/jurayj.jsonl');ap.add_argument('--out',type=Path,default=CACHE/'step5-audit-E01-v6');ap.add_argument('--limit',type=int);ap.add_argument('--workers',type=int,default=4);ap.add_argument('--api-style',choices=['messages','chat'],default='messages');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--data',type=Path,default=CACHE/'normalized/jurayj.jsonl');ap.add_argument('--out',type=Path,default=CACHE/'step5-audit-E01-v7');ap.add_argument('--limit',type=int);ap.add_argument('--workers',type=int,default=4);ap.add_argument('--api-style',choices=['messages','chat'],default='messages');ap.add_argument('--max-tokens',type=int,default=32768);args=ap.parse_args()
     assert 1<=args.workers<=8
     rows=[json.loads(x) for x in args.data.read_text().splitlines()];items=items_from(rows)
     if args.limit:items=items[:args.limit]
-    auditor=Auditor(args.out,args.api_style)
+    auditor=Auditor(args.out,args.api_style,args.max_tokens)
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:reports=list(pool.map(auditor.one,items))
     manifest={'model':'step-5-preview','endpoint':auditor.endpoint,'dataset_sha256':sha(args.data),'prompt_sha256':hashlib.sha256(PROMPT.encode()).hexdigest(),
               'concurrency':args.workers,'variants_requested':len(items),'questions_requested':sum(len(i['questions']) for i in items),

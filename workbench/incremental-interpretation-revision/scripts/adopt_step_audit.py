@@ -54,5 +54,5 @@ def adopt(data, audit_dir, out):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--data',type=Path,default=CACHE/'normalized/jurayj.jsonl')
-    p.add_argument('--audit-dir',type=Path,default=CACHE/'step5-audit-E01-v6');p.add_argument('--out',type=Path,default=CACHE/'normalized/jurayj-step5.jsonl')
+    p.add_argument('--audit-dir',type=Path,default=CACHE/'step5-audit-E01-v7');p.add_argument('--out',type=Path,default=CACHE/'normalized/jurayj-step5.jsonl')
     args=p.parse_args();print(json.dumps(adopt(args.data,args.audit_dir,args.out),indent=2))

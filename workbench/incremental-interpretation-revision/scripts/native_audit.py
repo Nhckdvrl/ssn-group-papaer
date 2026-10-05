@@ -27,7 +27,7 @@ def tasks_native(cache,tokenizer,system_frame='both'):
 def analyze_native(rows):
     out={'cells':{},'condition_gaps':{},'boundary_effects':{},'order_interactions':{}}
     for stratum in ('all69','source_question_clean67'):
-        rr=[r for r in rows if stratum=='all69' or r['pair_id'] not in ('hyp5_14','hyp5_18')]
+        rr=[r for r in rows if stratum=='all69' or r['pair_id'] not in ('set_hyp5_14','set_hyp5_18')]
         for subtype in ('pooled','prob','reflexive'):
             sub=rr if subtype=='pooled' else [r for r in rr if r['subtype']==subtype]
             ix={(r['pair_id'],r['prompt_id'],r['condition'],r['question_type']):r for r in sub}
