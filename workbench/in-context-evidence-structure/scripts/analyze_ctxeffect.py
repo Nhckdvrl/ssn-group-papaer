@@ -35,13 +35,16 @@ def main():
         v = piv["pB"]
         inter = (v[("inter", 1)] - v[("inter", 0)]) - (v[("same", 1)] - v[("same", 0)])
         v = piv["pL"]
-        main = (v[("main", 1)] - v[("main", 0)]) - (v[("same", 1)] - v[("same", 0)])
+        has_main = ("main", 1) in v.columns
+        main = (v[("main", 1)] - v[("main", 0)]) - (v[("same", 1)] - v[("same", 0)]) if has_main else None
         # also: how much does each manipulation move the ALEX queries (spill-over, should be ~0 for a conditioning learner)
         spill_inter = piv["pB"][("inter", 0)] - piv["pB"][("same", 0)]
-        spill_main = piv["pL"][("main", 0)] - piv["pL"][("same", 0)]
+        spill_main = piv["pL"][("main", 0)] - piv["pL"][("same", 0)] if has_main else None
         sam_inter = piv["pB"][("inter", 1)] - piv["pB"][("same", 1)]
-        sam_main = piv["pL"][("main", 1)] - piv["pL"][("same", 1)]
-        print(f"  interaction binding {fmt(*boot_ci(inter.dropna()))}   [Sam shift {sam_inter.mean():+.2f}, Alex spill-over {spill_inter.mean():+.2f}]")
+        sam_main = piv["pL"][("main", 1)] - piv["pL"][("same", 1)] if has_main else None
+        print(f"  interaction binding {fmt(*boot_ci(inter.dropna()))}   [Sam shift {sam_inter.mean():+.2f}, Alex spill-over {spill_inter.mean():+.2f}, ratio {spill_inter.mean() / sam_inter.mean():.2f}]")
+        if not has_main:
+            continue
         print(f"  main effect         {fmt(*boot_ci(main.dropna()))}   [Sam shift {sam_main.mean():+.2f}, Alex spill-over {spill_main.mean():+.2f}]")
 
 
