@@ -13,6 +13,7 @@ from event_identity import digest
 
 RELATIONS=('entailed','contradicted','undetermined')
 REPAIR='Apply participant descriptions to the actor and activity they specify; a different activity may have an unspecified patient.'
+CURRENT_WORLD='Use only the final verified account to decide what actually happened; the superseded initial description is not an additional fact about that event.'
 BASE='Classify the relation of the proposed fact to the passage. Entailed means it necessarily follows; contradicted means it cannot be true together with the passage; undetermined means neither. Answer only the indicated letter.'
 
 
@@ -67,14 +68,15 @@ def run(args):
     rows=list(map(json.loads,args.data.read_text().splitlines()));assert len(rows)==report['variants'] and len({r['item_id'] for r in rows})==len(rows)
     tok=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left');tok.pad_token_id=tok.eos_token_id
     labels={letter:[i for word,i in tok.get_vocab().items() if word.replace('Ġ','').replace('▁','').strip()==letter] for letter in 'ABC'};assert all(labels.values())
-    configs=[('base',0),('base',1),('base',2)] if args.mode=='base' else [('repair',0)]
+    configs=[(args.mode,0),(args.mode,1),(args.mode,2)] if args.mode in ('base','current_world') else [('repair',0)]
     tasks=[]
     for mode,shift in configs:
         mapping={RELATIONS[i]:'ABC'[(i+shift)%3] for i in range(3)}
         lines='\n'.join(f'{letter}: {relation}' for relation,letter in sorted(mapping.items(),key=lambda q:q[1]))
         for r in rows:
             assert digest(r['passage'])==r['sentence_sha256'] and digest(r['proposition'])==r['proposition_sha256']
-            prompt=tok.apply_chat_template([{'role':'system','content':BASE+('\n'+REPAIR if mode=='repair' else '')},{'role':'user','content':'Passage:\n'+r['passage']+'\n\nProposed fact:\n'+r['proposition']+'\n\nLabels:\n'+lines}],tokenize=False,add_generation_prompt=True,enable_thinking=False)
+            instruction=REPAIR if mode=='repair' else CURRENT_WORLD if mode=='current_world' else ''
+            prompt=tok.apply_chat_template([{'role':'system','content':BASE+('\n'+instruction if instruction else '')},{'role':'user','content':'Passage:\n'+r['passage']+'\n\nProposed fact:\n'+r['proposition']+'\n\nLabels:\n'+lines}],tokenize=False,add_generation_prompt=True,enable_thinking=False)
             tasks.append((r,mode,shift,mapping,prompt))
     torch.manual_seed(0);torch.set_num_threads(8);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     args.out.mkdir(parents=True);start=time.time()
@@ -83,7 +85,8 @@ def run(args):
     cfg=dict(experiment=args.experiment,mode=args.mode,model=str(args.model),model_manifest=json.loads((args.model/'manifest.json').read_text()),dtype='float32',tf32=False,attention='sdpa',seed=0,frozen=True,thinking=False,
              task_count=len(tasks),data_sha256=sha(args.data),audit_sha256=sha(args.data.with_suffix('.audit.json')),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
              code_sha256=sha(Path(__file__)),torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(),batch_size=8,
-             class_labels=labels,base_definition=BASE,scope_repair=REPAIR,mapping_policy='Three cyclic mappings for base; canonical map0 paired repair. Compare repair only with base map0.')
+             class_labels=labels,base_definition=BASE,scope_repair=REPAIR,current_world_repair=CURRENT_WORLD,
+             mapping_policy='Three cyclic mappings for base; canonical map0 paired repair. Compare repair only with base map0.' if args.mode!='current_world' else 'Three cyclic mappings, each paired with the corresponding base mapping.')
     (args.out/'config.json').write_text(json.dumps(cfg,indent=2)+'\n')
     with (args.out/'predictions.jsonl').open('w') as f,torch.inference_mode():
         for off in range(0,len(tasks),8):
@@ -106,7 +109,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--out',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--data',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True);a.add_argument('--idmap',type=Path,required=True);a.add_argument('--out',type=Path,required=True)
-    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--mode',choices=['base','repair'],required=True);r.add_argument('--experiment',choices=['E28','E29','E30','E31','E34'],default='E28');r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--mode',choices=['base','repair','current_world'],required=True);r.add_argument('--experiment',choices=['E28','E29','E30','E31','E34','E35','E36'],default='E28');r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
     x=p.parse_args()
     if x.action=='build':print(json.dumps(build(x.cache,x.out),indent=2))
     elif x.action=='adopt':print(json.dumps(adopt(x.data,x.reviews,x.idmap,x.out),indent=2))

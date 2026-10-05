@@ -67,3 +67,5 @@
 
 
 - 2026-10-06：[E33](experiments/E33-same-action-paraphrase-transfer.md)/[统计](results/E33-summary.json)独立basic clear8场景，旧event释义J+3.926 [3.005,4.912]bits；otherActor new两事实顺序−2.165 [−3.541,−.949]/−2.144 [−3.877,−.296]。sameActor J不确定但释义−不同动作差仍负，所有all/related、自然7、strict6完整保留。限制exact new-stem重复解释，词汇boost/focus/语义关联仍竞争。C05扩充L1条件性测量，不升级actual revision mechanism；source-free条件没有asserted错误初始事实，下一须直接测history，而非继续词汇局部优化。
+
+- 2026-10-06：E34 [卡](experiments/E34-retracted-report-versus-hypothetical-history.md)/[统计](results/E34-summary.json)，预注册newother/ref-only factual−hypothetical H_J−.433 [−.710,−.129]bits；final old J+2.477、new−2.264，但冲突old-source native仅54.17 [51.39,57.64]%，不得称成功修订后的残留。C05保留L1/I01 PILOT；E35一句current-world优先级区分任务解读与final访问，E36准备affirmative角色实现区分focus。无需人决定执行这些已授权区分实验。

@@ -1,6 +1,6 @@
 # E34：被撤回的角色解释，还是仅被提到的关系？（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；用户明确要求持续验证直到找到合适idea，不停在候选汇报，不进入论文组织。
 - **问题（一句话）：** 最终角色事实和历史关系词句相同时，初始描述是否曾被当作事实，会不会改变被撤回关系对新事件的影响？
@@ -10,7 +10,7 @@
 - **噪声地板 + MIE：** 固定FP32误差远低于统计CI，来源/替换语义与n12才是重点；pre-update两个不同status不保证initial belief已经形成。CI/逐family说明不确定，不设停步阈值，不以几千derived rows当独立n。teacher独立标旧描述证据状态、替换优先级、最终事实scope及gold，不由执行者自行检查语义。
 - **混杂审计：** factual/hypothetical标签本身可改变注意/语用，来源依赖不是latent belief证明；superseded与verified是明确的优先级线索，不能宣称所有自然纠正。初始引用内容不直接标物理世界真值，只有after supersession最终verified事实建立post gold。consistent也被同句supersede，转接词完全相同；与prior conflict条件不能不同说“错误”。只测同V/换actor最强结构，未扩semantic/verb grid，目标source NP vs另作者NP非完整患者分布。native提问可引起重分析，与question-free预测不强合隐状态。R8仍保留一句instruction控制。
 - **决策表（跑之前写）：** old final可访问、new prior作用随factual/hypo与冲突变化 → 来源/撤回history对未来关系使用有信息，下一区分撤回具体事件 vs新事件替换及自然功能后果；history两status近同但初始内容仍影响 → ordinary relation priming/contrast更充分，收窄revision叙事并依结果追context作用，不强命名新机制；new主要由final事实而非prior/source决定 → 当前C05是最后fact的aftereffect，不能叫撤回旧解释残留，下一选备选生成/事件对比的具体预测；old final错误与prior同时迁移 → 更新失败竞争增强，先校对NLI/一句恢复与报告来源，不能叫成功修订后的双系统；pre role无效/审核不清 → 优先来源/材料why，不盲目扩大sweep。以上均继续同I01探索，不自动关线或进论文。
-- **算力预算：** 已有venv/pinned Qwen3-8B FP32/SDPA/TF32=false/seed0，raw batch4/native8；GPU0/1/2独立，预计≤.18 GPU·h。**实际：** 待填。
+- **算力预算：** 已有venv/pinned Qwen3-8B FP32/SDPA/TF32=false/seed0，raw batch4/native8；GPU0/1/2独立，预计≤.18 GPU·h。**实际：** .137167 GPU·h（raw1920/native3072）。
 - **命令：** `scripts/retracted_role_history.py build/adopt/analyze`；`event_identity_infer.py --experiment E34`，`event_constraint_state.py run --experiment E34 --mode base/repair`。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
@@ -22,3 +22,10 @@
 
 
 跑前schema勘误：首次adopt实际faithful raw1472/NLI640，前段文字误写全量faithful。分片2将event_scope按target所属event读，448 raw/128 NLI标changed；另两审按ROLE FACT约束范围。执行者先误要求分片0重审（其原标签本已local），随后按ID定位分片2，原审计员独立重读896句，另存review-2-scope-v2，只有scope与说明变化。原v1/v2及审计都保留；实际使用audited-v3，raw1920/NLI768全faithful，gold/status/priority/input字节不变，前后逐行ID/句hash同一。全局失败即停的命令执行已启用，避免前置assert失败仍提交后续步骤。所有审计勘误均在任何模型推理前完成。
+
+## 2026-10-06结果
+
+- [完整统计](../results/E34-summary.json)，raw1920/native3072，12family paired bootstrap。预注册primary最终ref-only/newother的 factual−hypothetical初始作用H_J −.433 [−.710,−.129]bits；平衡final后−.533 [−.709,−.358]。两status初始作用均反向（factual−1.817 [−2.388,−1.251]，hypothetical−1.283 [−1.864,−.686]），不能只说被当事实的旧描述才影响。
+- pre-update old J为+1.433 [.785,2.085]/+1.171 [.499,1.847]，原role内容可影响预测；两status差+.262 [−.036,.533]不确定，未证明模型已形成fact belief。post-update final role对old J+2.477 [1.887,3.215]/+3.338 [2.575,4.097]，对newother J−2.264 [−3.102,−1.427]/−2.243 [−3.191,−1.291]。early role postold的平衡H_J也负−.661/−.548，不是简单同向旧关系残留。
+- native old-source conflicting correct factual54.17 [51.39,57.64]%，hypothetical67.36 [61.81,73.61]%；consistent93.06/98.61。maps对冲突factual60.42/52.08/50.00，hypothetical89.58/60.42/52.08；choice_mass约99.9%，不属无效输出。generic scope一句恢复map0 factual仅62.50%，未建立成功修订。newother U约86.81–90.97%、unrelated100%。
+- C05仍L1。加入真正修订历史支持来源依赖的预测作用，但不得把old final正向概率响应当成功修订证明。下一E35用一条current-world优先级指令区分任务解读/不可访问final；同时准备E36去掉显式negated-alternative的角色证据实现，检验核心结构是否仅focus形式。不会从E34结果抽选赢家样本。
