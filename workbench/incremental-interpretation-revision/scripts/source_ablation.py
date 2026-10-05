@@ -25,7 +25,8 @@ def build(cache, out):
             if r['condition']!='gp' or r['target_kind']=='source_reference':
                 continue
             f = fields[r['pair_id'].split(':')[1]]
-            anchor = f['actor'][0].upper()+f['actor'][1:]+' took part in an '+f['activity_np']+'.'
+            article = 'an' if f['activity_np'].startswith(('act of ', 'embrace')) else 'a'
+            anchor = f['actor'][0].upper()+f['actor'][1:]+' took part in '+article+' '+f['activity_np']+'.'
             old = source[(r['pair_id'],r['condition'])]
             assert r['sentence'].startswith(old+' ')
             text = anchor+r['sentence'][len(old):]
@@ -51,7 +52,8 @@ def build(cache, out):
     for r in map(json.loads,(cache/'E28-material-preparation-v1/audited-v1.jsonl').read_text().splitlines()):
         if r['condition']!='gp': continue
         f = fields[r['pair_id'].split(':')[1]]
-        anchor = f['actor'][0].upper()+f['actor'][1:]+' took part in an '+f['activity_np']+'.'
+        article = 'an' if f['activity_np'].startswith(('act of ', 'embrace')) else 'a'
+        anchor = f['actor'][0].upper()+f['actor'][1:]+' took part in '+article+' '+f['activity_np']+'.'
         old = source[(r['pair_id'],r['condition'])]
         assert r['passage'].startswith(old+' ')
         passage = anchor+r['passage'][len(old):]

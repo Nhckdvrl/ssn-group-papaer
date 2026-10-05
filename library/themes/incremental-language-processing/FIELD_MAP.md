@@ -108,3 +108,9 @@ E11首批n1诊断中，完整subject span把unambiguous extended blocker原role 
 ## E21–23之后的新增ownership核对
 
 [Zhou ICML2026](zhou2026-negation.md)已主张否定组合/抑制与shortcut并存；[Mann2025](mann2025-ironic-negation.md)已测negation-induced词可及性；[Seo EMNLP2025](seo2025-neghalu.md)摘要已覆盖否定语境下的不忠实判断（methods未读）。宽泛否定失败/双机制不是本线新颖性。E22发现的是GP历史调节role-minus-entity差，需实际关系后果与独立source预测；E23语义输出包含残缺/再次GP句，不能按第一NP词强判活动患者，已做独立二次校对。只定位，不自动判死I01。
+
+## E28之后：新增priming近邻，收紧而不桌面关线
+
+[Sinclair TACL2022](sinclair2022-structural-persistence.md)与[Jumelet ACL Findings2024](jumelet2024-structural-priming.md)实际读定义/数据/词级因子与讨论：被冻结LM的跨句结构持续、verb引出的semantic-role预期、function word/词汇boost和inverse frequency已存在。[Van Gompel2006](vangompel2006-garden-path-priming.md)primary摘要更直接：GP相对comma会prime后续transitive结构，并保持memory与未完整重分析竞争。不能把E25迁移本身卖novelty。新增两PDF直接无代理，阅读范围与hash逐卡记录，下载不代表完整全文阅读。
+
+E28明确的unknown类别可以输出（unrelated100%），但同actor新activity U仅33.68%、换actor65.28%，GP/cue近同形；label mapping大幅改变类别，不能宣布local约束已完整使用。这与E25 likelihood跨actor更强的梯度不同。E29源S1消融并行测两用途，只检验source necessity/correction sufficiency，不再堆问答措辞；需要进一步得到修订特异的预测结构才能形成候选论文，不能把近邻存在自动关线。
