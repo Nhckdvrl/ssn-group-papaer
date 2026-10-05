@@ -127,8 +127,33 @@ def adopt(directory,reviews):
     return reports
 
 
+def cross(directory,review):
+    j=json.loads(review.read_text());assert j['model']=='gpt-6-luna'
+    by={r['source_id']:r for r in j['source_reviews']};assert len(by)==24
+    relations={r['id']:r for s in by.values() for r in s['relations']};assert len(relations)==96
+    reports={}
+    for task in ('probability','nli'):
+        old=directory/f'{task}-audited-v1.jsonl';rows=list(map(json.loads,old.read_text().splitlines()))
+        for r in rows:
+            a=by[r['pair_id']];assert a['anchor_sha256']==r['source_anchor_sha256']
+            r.update(anchor_cross_semantics_clear=a['anchor_semantics_clear'],anchor_cross_grammaticality=a['anchor_grammaticality'],anchor_cross_review_sha256=sha(review))
+            if r['item_id'] in relations:
+                q=relations[r['item_id']]
+                assert q['sentence_sha256']==r['sentence_sha256'] and q['proposition_sha256']==r['proposition_sha256']
+                assert q['relation']==r['gold_relation'] and q['certainty']=='clear'
+        path=directory/f'{task}-audited-v2.jsonl';assert not path.exists();write_jsonl(path,rows)
+        report=json.loads(old.with_suffix('.audit.json').read_text())
+        report.update(audited_sha256=sha(path),parent_audited_sha256=sha(old),anchor_cross_review_sha256=sha(review),
+                      cross_clear=sum(r['anchor_cross_semantics_clear'] is True for r in rows),
+                      cross_acceptable=sum(r['anchor_cross_grammaticality']=='acceptable' for r in rows),
+                      cross_relations_agree=96,annotation_policy='Original row reviews and gold preserved; independent anchor flags add pre-inference sensitivity strata, do not remove model tasks.')
+        path.with_suffix('.audit.json').write_text(json.dumps(report,indent=2)+'\n');reports[task]=report
+    return reports
+
+
 if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--out',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True)
-    x=p.parse_args();print(json.dumps(build(x.cache,x.out) if x.action=='build' else adopt(x.directory,x.reviews),indent=2))
+    c=s.add_parser('cross');c.add_argument('--directory',type=Path,required=True);c.add_argument('--review',type=Path,required=True)
+    x=p.parse_args();print(json.dumps(build(x.cache,x.out) if x.action=='build' else adopt(x.directory,x.reviews) if x.action=='adopt' else cross(x.directory,x.review),indent=2))
