@@ -95,3 +95,54 @@ def regime_map():
 
 if __name__ == "__main__" and len(__import__("sys").argv) > 1 and __import__("sys").argv[1] == "map":
     regime_map()
+
+
+def marked_fig():
+    import json as _j
+    meta = {}
+    for l in open(ROOT / "data/marked/rows.jsonl"):
+        r = _j.loads(l); meta[r["uid"]] = (r["cond"], r["base_id"], r["oracle"]["meta_pB"])
+    pats = ["allA", "single_16", "disp_4", "suffix_4", "noise_2__suffix_3", "prefix_8", "suffix_8"]
+    names = {"allA": "no\nchange", "single_16": "1 late\nflip", "disp_4": "4 scattered", "suffix_4": "4 at end",
+             "noise_2__suffix_3": "3 at end +\n2 scattered", "prefix_8": "8 first\n(stale)", "suffix_8": "8 last"}
+    models = ["Qwen3-8B", "Qwen2.5-7B", "Mistral-7B-v0.3"]
+    fig, axes = plt.subplots(1, 2, figsize=(11, 3.8), sharey=True, facecolor=SURF)
+    for ax, fm, title in ((axes[0], "mag_nat", "Numbers: small / large"), (axes[1], "sst", "Reviews: positive / negative")):
+        ax.set_facecolor(SURF)
+        orc = {}
+        for mi, m in enumerate(models):
+            fs = glob.glob(str(ROOT / f"results/marked/{m}.s*.jsonl"))
+            if not fs:
+                continue
+            rec = []
+            for f in fs:
+                for l in open(f):
+                    s = _j.loads(l); c, b, mo = meta[s["uid"]]
+                    if not c.startswith(fm):
+                        continue
+                    p = np.exp(np.array(s["lp"])); p = p / p.sum()
+                    rec.append((c.split(":")[1], p[2] + p[3], p[1] + p[3], mo))
+            D = pd.DataFrame(rec, columns=["pat", "upper", "newmap", "meta"]).groupby("pat").mean()
+            xs = np.arange(len(pats))
+            ax.plot(xs + (mi - 1) * 0.08, D.loc[pats, "upper"], marker="o", ms=5, lw=1.6, color="#2a78d6", alpha=0.9,
+                    label="writes new format (upper case)" if mi == 0 else None)
+            ax.plot(xs + (mi - 1) * 0.08, D.loc[pats, "newmap"], marker="^", ms=5, lw=1.6, color="#eb6834", alpha=0.9,
+                    label="uses new mapping" if mi == 0 else None)
+            orc = D.loc[pats, "meta"]
+        ax.plot(np.arange(len(pats)), orc, color=INK, lw=1.2, ls=(0, (3, 3)), label="Bayes: P(new regime)")
+        ax.set_xticks(range(len(pats))); ax.set_xticklabels([names[p] for p in pats], fontsize=7)
+        ax.set_title(title, loc="left", fontsize=10, color=INK); ax.set_ylim(-0.02, 1.02)
+        ax.grid(axis="y", color=GRID, lw=0.8); ax.set_axisbelow(True)
+        for s_ in ("top", "right"):
+            ax.spines[s_].set_visible(False)
+        ax.tick_params(colors=MUTED, labelsize=7)
+    axes[0].set_ylabel("probability at the query", fontsize=8, color=INK)
+    axes[0].legend(frameon=False, fontsize=7, loc="upper left")
+    fig.text(0.01, 0.01, "New-regime demos are written in upper case AND use the reversed mapping. Lines = 3 models (Qwen3-8B, Qwen2.5-7B, Mistral-7B), 300 bases each.",
+             fontsize=7, color=MUTED)
+    fig.tight_layout(rect=(0, 0.04, 1, 1)); fig.savefig(OUT / "fig_marked_drift.png", dpi=200); fig.savefig(OUT / "fig_marked_drift.pdf")
+    print("saved marked fig")
+
+
+if __name__ == "__main__" and len(__import__("sys").argv) > 1 and __import__("sys").argv[1] == "marked":
+    marked_fig()
