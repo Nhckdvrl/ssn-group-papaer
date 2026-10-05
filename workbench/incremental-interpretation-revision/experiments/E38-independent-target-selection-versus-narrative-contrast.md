@@ -20,3 +20,5 @@
 ## 跑前审计
 
 三独立Luna全文审4608packets（raw3840+question768），ID/适用hash覆盖一致；人工感、称谓可能共指、故意矛盾的续写备选都在原notes保留，未按模型结果选择input。所有selection scope clear、1536question mode tasks eligible/gold-proposed一致。两审采用嵌套raw/question字段，adapter仅展平字段位置，标签/哈希/原review字节不变；原格式错误前fail-fast，无推理开始。语法标准不同（第三全acceptable、前两对bath/cuddle/shaving记marginal），grammar common按全条件完整覆盖冻结。数字及hash见[D0](../results/D0-E38-selection-audit.json)。3840causal target pairs/hash已核，尚未推理。
+
+跑前审计标签勘误：前段“proposed一致”写早了，v1真实agreement1388/1536。74个question contexts（148mode tasks）均来自审计0的other-first顺序，文字notes已正确识别选中实体，但source_candidate被解释为第一列候选。原审计员重读全部270question，按packet固定source/other实体修正74编码并新增answer_text，1266raw判读不变，另存review-0-entity-frame-v2；原v1及summary保留。最终实际用audited-v2，1536/1536固定实体标签一致；所有句子、问题、目标与prefix hash不变。任何模型推理前完成，不由执行者自动交换gold。

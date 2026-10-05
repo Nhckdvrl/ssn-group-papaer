@@ -50,7 +50,7 @@ def build(cache,directory):
     return dict(raw=3840,native_contexts=768,native_variants=1536,full_rendered_packets=4608,fields_sha256=sha(directory/'selection-fields-v3.json'),candidate_sha256={k:sha(directory/f'{k}-candidates-v1.jsonl') for k in ('probability','question')})
 
 
-def adopt(directory,reviews):
+def adopt(directory,reviews,version=1):
     annotations={}
     for path in reviews:
         j=json.loads(path.read_text());assert j['model']=='gpt-6-luna'
@@ -76,7 +76,7 @@ def adopt(directory,reviews):
                 for k in ('passage_sha256','question_sha256'):assert a[k]==r[k]
                 assert a['answer_class'] in ('equal_half','unspecified','source_candidate','other_candidate',None) and a['certainty'] in ('clear','interpretation_dependent','invalid')
                 r['gold_answer_class']=a['answer_class'] if a['certainty']=='clear' else None;r['eligible']=r['eligible'] and r['gold_answer_class'] is not None
-        out=directory/f'{task}-audited-v1.jsonl';assert not out.exists();write_jsonl(out,rr)
+        out=directory/f'{task}-audited-v{version}.jsonl';assert not out.exists();write_jsonl(out,rr)
         audit=dict(variants=n,audited_sha256=sha(out),candidate_sha256=sha(directory/f'{task}-candidates-v1.jsonl'),review_sha256=[sha(p) for p in reviews],eligible=sum(r['eligible'] for r in rr),grammar=dict(collections.Counter(r['audit']['grammar'] for r in rr)))
         if task=='question':audit['proposed_agreement']=sum(r['gold_answer_class']==r['proposed_answer_class'] for r in rr)
         out.with_suffix('.audit.json').write_text(json.dumps(audit,indent=2)+'\n');report[task]=audit
@@ -84,5 +84,5 @@ def adopt(directory,reviews):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','adopt']);p.add_argument('--cache',type=Path,default=CACHE);p.add_argument('--directory',type=Path,required=True);p.add_argument('--reviews',type=Path,nargs='+');a=p.parse_args()
-    print(json.dumps(build(a.cache,a.directory) if a.action=='build' else adopt(a.directory,a.reviews),indent=2))
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','adopt']);p.add_argument('--cache',type=Path,default=CACHE);p.add_argument('--directory',type=Path,required=True);p.add_argument('--reviews',type=Path,nargs='+');p.add_argument('--version',type=int,choices=[1,2],default=1);a=p.parse_args()
+    print(json.dumps(build(a.cache,a.directory) if a.action=='build' else adopt(a.directory,a.reviews,a.version),indent=2))
