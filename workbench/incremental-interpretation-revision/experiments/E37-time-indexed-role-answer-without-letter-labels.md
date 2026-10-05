@@ -14,3 +14,7 @@
 - **命令：** `time_indexed_role.py build/adopt/run`；后续独立response审计与paired分析。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+## 跑前材料审计
+
+24source问句由独立Luna构造；另两独立审查全部672contexts（1056mode tasks），passage/question全部hash匹配，clear/eligible1056，外部语义标签与proposed1056一致。审计共source216/reference216/unspecified240contexts，语法acceptable504/marginal168，未选删源。base与priority同context共享语义gold；初始问题只问引文内容、new问题不把未说当无人。详见[D0](../results/D0-E37-query-audit.json)。未开始生成。
