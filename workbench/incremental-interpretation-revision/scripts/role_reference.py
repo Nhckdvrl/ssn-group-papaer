@@ -97,6 +97,51 @@ def analyze_reference(rows):
     return result
 
 
+def missing_cohort(cohort, parent, out):
+    """Only new reviewed questions need new model inference."""
+    old_config=json.loads((parent/'config.json').read_text())
+    assert old_config['predictions_sha256']==sha(parent/'predictions.jsonl')
+    old={r['item_id']:r for r in map(json.loads,(CACHE/'normalized/E11-opencode-snapshot1.jsonl').read_text().splitlines())}
+    assert old_config['data_sha256']==sha(CACHE/'normalized/E11-opencode-snapshot1.jsonl')
+    rows=list(map(json.loads,cohort.read_text().splitlines()))
+    for r in rows:
+        if r['item_id'] in old:assert r==old[r['item_id']],'Prior external annotation changed'
+    new=[r for r in rows if r['item_id'] not in old]
+    assert not out.exists();write_jsonl(out,new)
+    return dict(rows=len(new),eligible=sum(r['eligible'] for r in new),sha256=sha(out))
+
+
+def combine_reference(cohort, parent, new, out):
+    from transformers import AutoTokenizer
+    from stimuli import tasks_jurayj
+    configs=[];scores=[]
+    for run in (parent,new):
+        cfg=json.loads((run/'config.json').read_text())
+        assert cfg['predictions_sha256']==sha(run/'predictions.jsonl')
+        rr=list(map(json.loads,(run/'predictions.jsonl').read_text().splitlines()))
+        assert len(rr)==cfg['task_count'];configs.append(cfg);scores+=rr
+    for key in ('model_manifest','dtype','thinking','frozen','torch','transformers'):
+        assert configs[0][key]==configs[1][key],key
+    assert {k:sorted(v) for k,v in configs[0]['choice_token_ids'].items()}=={k:sorted(v) for k,v in configs[1]['choice_token_ids'].items()},'Choice vocabulary changed'
+    tokenizer=AutoTokenizer.from_pretrained(configs[0]['model'],local_files_only=True,padding_side='left')
+    tasks=tasks_jurayj(cohort,tokenizer,'E11','neutral')
+    index={(r['item_id'],r['prompt_id']):r for r in scores}
+    assert len(index)==len(scores)==len(tasks)
+    import hashlib
+    for r,pid,prompt in tasks:
+        old=index[(r['item_id'],pid)]
+        assert old['prompt_sha256']==hashlib.sha256(prompt.encode()).hexdigest()
+        assert old['gold']==r['gold'] is None
+    assert not out.exists();out.mkdir(parents=True)
+    write_jsonl(out/'predictions.jsonl',scores)
+    cfg=dict(experiment='E11',task_count=len(scores),data_sha256=sha(cohort),inference_subruns=configs,
+             predictions_sha256=sha(out/'predictions.jsonl'),new_inference_tasks=configs[1]['task_count'],
+             reused_inference_tasks=configs[0]['task_count'],merge_code_sha256=sha(Path(__file__)),
+             choice_token_set_identity_verified=True,original_choice_token_order_preserved_in_subrun_configs=True,
+             reuse='Same independently reviewed row, model, precision and full prompt hash; prior snapshot scores reused without evaluating again.')
+    (out/'config.json').write_text(json.dumps(cfg,indent=2)+'\n')
+
+
 if __name__ == '__main__':
     p=argparse.ArgumentParser(); p.add_argument('--cache',type=Path,default=CACHE)
     p.add_argument('--out',type=Path,required=True); a=p.parse_args()

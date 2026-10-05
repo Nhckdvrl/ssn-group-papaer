@@ -74,3 +74,7 @@ Pinned revisions, licenses, exact hashes and counts: [D0 audit](results/D0-audit
 Huang 2024 / Yoshida 2026共同使用的[公开SAP材料](https://github.com/caplabnyu/sapbenchmark)，固定revision `15e61066d510b5349e17740e6488c976abc3e1ac`、MIT、5文件blob/SHA256及统计见[审计](results/D0-SAP-source-audit.json)。原Excel有72 GP/explicit-cue题对、144句、24共享lexical sets；原问题/答案无需agent构造。Excel与CSV仅有6个目标标记差异，全部保留。原文cache `upstream/sap-discovery/`、共享schema loader `scripts/sap.py`；E09用原题迁移校对E01元语言读数，不更换研究对象。未下载人类participant数据，不伪造人机配对结果。
 
 Step5额度不足时，按此前授权保留opencode外部预审的独立概率探索层，全部gold=null，与Step5层分开；无gold能力分数、不升级C01/C02、不把外部模型审计宣称等同人审。
+
+## 问句之外的自然后文：Slattery2013
+
+[E13](experiments/E13-natural-followup-without-diagnostic-question.md)来自已读原论文AppendixB的24原两句item/96作者四条件变体。[D0](results/D0-Slattery-source-audit.json)记录PDF SHA、copyright、规范化、完整S2一致性与字面reference缺失；不是MIT开放数据，不复制原text/normalized到git。`scripts/slattery.py`与shared schema仅扩作者comma/NP选项，无新增语义gold，source9/10仍保留主读数。PDF双栏running header初次试抽取混入item11，已在任何推理前按y>50pt crop修正；独立逐source外审进行，不能把机械parity当人工语义gold。

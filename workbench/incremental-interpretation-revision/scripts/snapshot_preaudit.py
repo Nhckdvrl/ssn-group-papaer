@@ -7,20 +7,28 @@ from pathlib import Path
 from data import CACHE,sha,write_jsonl
 from step_audit import items_from
 
-def snapshot(data,audit_dir,out,max_set):
+def snapshot(data,audit_dir,out,max_set,additional_audit_dirs=()):
     rows=[json.loads(x) for x in data.read_text().splitlines()]
     annotations={};reports=[];missing=[]
     for item in items_from(rows):
         if int(item['variant_id'].split(':')[1])>max_set:continue
         uid=hashlib.sha256(item['variant_id'].encode()).hexdigest()[:20]
-        p=audit_dir/f'{uid}.review.json'
+        roots=[audit_dir,*additional_audit_dirs]
+        candidates=[(root,root/f'{uid}.review.json') for root in roots if (root/f'{uid}.review.json').exists()]
+        complete=[(root,p) for root,p in candidates if json.loads(p.read_text())['status']=='complete_advisory']
+        if len(complete)>1:
+            parsed=[json.loads(p.read_text()) for _,p in complete]
+            assert len({r['request_sha256'] for r in parsed})==1,'Different independent audit inputs'
+            signatures=[(r['annotation']['grammaticality'],sorted((a['item_id'],a['question_valid'],a['answer'],a['certainty']) for a in r['annotation']['answers'])) for r in parsed]
+            assert all(x==signatures[0] for x in signatures),'External auditors disagree; preserve and resolve before adopting'
+        root,p=(complete or candidates or [(audit_dir,audit_dir/f'{uid}.review.json')])[0]
         if not p.exists():missing.append({'variant_id':item['variant_id'],'status':'pending'});continue
         r=json.loads(p.read_text())
         if r['status']!='complete_advisory':missing.append({'variant_id':item['variant_id'],'status':r['status']});continue
-        request=json.loads((audit_dir/f'{uid}.request.json').read_text())
+        request=json.loads((root/f'{uid}.request.json').read_text())
         assert json.loads(request['message'].split('INPUT JSON:\n',1)[1])==item,'stale input'
         assert r['request_sha256']==hashlib.sha256(json.dumps(request,sort_keys=True).encode()).hexdigest()
-        event_path=audit_dir/f'{uid}.events.jsonl'
+        event_path=root/f'{uid}.events.jsonl'
         assert sha(event_path)==r['events_sha256']
         events=[json.loads(l) for l in event_path.read_text().splitlines() if l]
         finishes=[e for e in events if e['type']=='step_finish']
@@ -47,6 +55,7 @@ def snapshot(data,audit_dir,out,max_set):
     assert not out.exists(),'immutable cohort: use a new snapshot path'
     write_jsonl(out,selected)
     summary=dict(source_sha256=sha(data),snapshot_sha256=sha(out),max_source_set_index=max_set,
+                 audit_directories=[str(audit_dir),*[str(p) for p in additional_audit_dirs]],
                  variants_complete=len(reports),variants_missing=missing,question_rows=len(selected),
                  eligible=sum(r['eligible'] for r in selected),gold_labels=0,proxy_used=False,
                  scope='Prior authorized independent opencode advisory; probability-only, not Step5-validated ability scores.',
@@ -60,5 +69,6 @@ def snapshot(data,audit_dir,out,max_set):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--data',type=Path,default=CACHE/'normalized/jurayj.jsonl')
     p.add_argument('--audit-dir',type=Path,default=CACHE/'opencode-preaudit-E01-v2')
+    p.add_argument('--additional-audit-dir',type=Path,action='append',default=[])
     p.add_argument('--max-set',type=int,default=3);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
-    s=snapshot(a.data,a.audit_dir,a.out,a.max_set);print(json.dumps({k:v for k,v in s.items() if k not in ('provenance','variants_missing')},indent=2))
+    s=snapshot(a.data,a.audit_dir,a.out,a.max_set,a.additional_audit_dir);print(json.dumps({k:v for k,v in s.items() if k not in ('provenance','variants_missing')},indent=2))

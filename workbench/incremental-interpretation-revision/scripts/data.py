@@ -14,6 +14,7 @@ SOURCES = {
     'jurayj': ('https://github.com/wjurayj/garden-path-gpt2', 'ad30c4248df5dcdda163bd6f05add419e1210c42', 'Apache-2.0'),
     'turing': ('https://github.com/microsoft/turing-experiments', 'f00115e793f5f728eccf13044bb299d64901de57', 'MIT'),
     'sap': ('https://github.com/caplabnyu/sapbenchmark', '15e61066d510b5349e17740e6488c976abc3e1ac', 'MIT'),
+    'slattery2013': ('https://faculty.wcas.northwestern.edu/myo507/Papers/SlatteryEtAL_GoodEnough_Published.pdf', 'c5289cc80095e3a83ffc4f189e51b36583cda3b7011786a327b57e919c1df5f2', '©2013 Elsevier; no open redistribution license verified'),
 }
 
 def sha(path):
@@ -30,6 +31,14 @@ def read_table(path):
 def audit(cache):
     out = {'date': '2026-10-05', 'sources': {}}
     for name, (url, revision, license_name) in SOURCES.items():
+        if name=='slattery2013':
+            p=cache/'normalized/slattery2013.audit.json'
+            if not p.exists():continue
+            report=json.loads(p.read_text())
+            assert report['revision_pdf_sha256']==revision==sha(cache/'papers/slattery2013.pdf')
+            assert report['normalized_sha256']==sha(cache/'normalized/slattery2013.jsonl')
+            out['sources'][name]=dict(report,revision=revision,files={'papers/slattery2013.pdf':{'sha256':revision,'bytes':(cache/'papers/slattery2013.pdf').stat().st_size}})
+            continue
         if name=='sap':
             root=cache/'upstream/sap-discovery'
             if not (root/'audit.json').exists():continue
@@ -75,7 +84,7 @@ def audit(cache):
 def verified_root(cache, source):
     manifest = json.loads((cache/'audit.json').read_text())
     assert manifest['sources'][source]['revision'] == SOURCES[source][1]
-    root = cache/'upstream'/('sap-discovery' if source=='sap' else source)
+    root = cache if source=='slattery2013' else cache/'upstream'/('sap-discovery' if source=='sap' else source)
     for rel, meta in manifest['sources'][source]['files'].items():
         assert sha(root/rel) == meta['sha256'], f'Hash mismatch: {source}/{rel}'
     return root
