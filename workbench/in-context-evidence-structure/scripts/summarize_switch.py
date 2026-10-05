@@ -61,7 +61,9 @@ def main():
                                 CSIn=(cl.mean() / abs(pv.allA.mean())) / (mcl / abs(pm.allA)),
                                 NDIn=(-nz.mean() / abs(pv.allA.mean())) / (abs(mnz) / abs(pm.allA)),
                                 r_meta=np.corrcoef(pl, pm)[0, 1], r_set=np.corrcoef(pl, ps)[0, 1],
-                                stale=(pv.block_late4_return2 - pv.block_start4).mean() if "block_start4" in pv else np.nan))
+                                recn=rc.mean() / abs(pv.allA.mean()),
+                                meta_recn=(pm.single_16 - pm.single_1) / abs(pm.allA),
+                                stale=(pv.block_late4_return2 - pv.block_start4).mean() if "block_late4_return2" in pv else np.nan))
     D = pd.DataFrame(out)
     pd.set_option("display.width", 250)
     print(D.round(2).to_string(index=False))
