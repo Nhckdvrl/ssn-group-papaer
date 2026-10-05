@@ -88,3 +88,10 @@ E11首批n1诊断中，完整subject span把unambiguous extended blocker原role 
 固定279独立审核变体/1158eligible QA，三个family、四配置全测。NPZ同9组initial-event的extension GP−cue交互句先+51.63 [21.60,84.02]pp（repair+40.98），题先−20.29 [−53.11,9.93]（repair−10.66）；不能统一解释为延时增强承诺。NPS“长GP降低final-event”主要由源7原had rode marginal句驱动，预登记acceptable层大幅减弱；保留两个strata，追数据why。NPZ无歧义extension仍降低原role回答，不能略过E11引用压力。
 
 下一语言干预须分开**等待多久、modifier加入什么事件信息、NP引用复杂度**。先外审原modifier是否独立许可/支持初始事件，再设计同词数/信息或位置控制，不继续扩query模板。不同答案质量和不同时点的概率不自行组成内部双parse机制；[E01完整统计](../../../workbench/incremental-interpretation-revision/results/E01-external-snapshot3.md)与E13都只为下一区分性实验提供预测约束。
+
+
+## 事件身份问题的近邻定位（primary摘录，不冒充全文）
+
+[Malyutina/den Ouden2016](malyutina2016-blended-interpretations.md)句图任务已区分initial vs blended解释；[Ceháková/Chromý2025](cehakova2025-disrupted-final-interpretations.md)已有两region×正确/错误理解题，挑战全局faithful新解释；[Christianson2024](christianson2024-rereading-and-question-order.md)已有question-before/重读与理解的对照。读到的范围与未读部分逐卡明示，三个HTML/摘要记录不计为新增cached PDFs。venue nearest返回Amouyal/Hanna/Yoshida等已知owner，也有无关protein/event匹配，不据此做自动判决。
+
+独立Luna全17 NPZ原modifier关系审计：全部初始event未明确assert、modifier不entail，但全句也不exclude；specific support Yes2/No10/uncertain5。这不能证明Qwen进行了正确pragmatic inference，也不能把不被assert叫logical false。下一候选比较应区分**同一事件参与者的改绑、额外兼容事件的补全、任务/引用影响**，并保证后文读数对事件身份有约束；当前只有问题收紧，没有已证成新idea。泛泛混合解释与final/initial分离均已有owner，新增量需从精确干预及功能后果获得。

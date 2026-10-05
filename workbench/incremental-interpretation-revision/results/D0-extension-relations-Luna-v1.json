@@ -1,0 +1,59 @@
+{
+  "model": "gpt-6-luna",
+  "source_items": 17,
+  "annotation_questions": 68,
+  "packets_sha256": "f87cd9d43091e3e09aa8a2f9a53200a34fe6d2ce1dbe0ff96e86d74a6d3a2866",
+  "review_sha256": "f4c868d4b92d6ec1d786ceaf96015b82a7a9bed53e63d58954b038a3cf104c90",
+  "cohort_sha256": "b161273b173d2ff8b69773acb1af67acd4a936ef95d0069f0fbf71668cceff5b",
+  "cache": "/data1/xiangding/work/incremental-interpretation-revision/luna-extension-relations-v1.json",
+  "input_hash_and_id_coverage_verified": true,
+  "provider_raw_finish_events_available": false,
+  "semantic_gold_adopted": 0,
+  "counts": {
+    "asserted": {
+      "answer_counts": {
+        "No": 17
+      },
+      "certainty_counts": {
+        "clear": 17
+      }
+    },
+    "extension_entails": {
+      "answer_counts": {
+        "No": 17
+      },
+      "certainty_counts": {
+        "clear": 17
+      }
+    },
+    "excluded": {
+      "answer_counts": {
+        "No": 17
+      },
+      "certainty_counts": {
+        "clear": 17
+      }
+    },
+    "specific_support": {
+      "answer_counts": {
+        "No": 10,
+        "None": 5,
+        "Yes": 2
+      },
+      "certainty_counts": {
+        "clear": 12,
+        "interpretation_dependent": 5
+      }
+    }
+  },
+  "uncertain_item_ids": [
+    "extension_relation:NPZ:2:specific_support",
+    "extension_relation:NPZ:6:specific_support",
+    "extension_relation:NPZ:12:specific_support",
+    "extension_relation:NPZ:13:specific_support",
+    "extension_relation:NPZ:15:specific_support"
+  ],
+  "scope": "User-authorized independent per-source semantic relation audit, no model scores or proposed gold supplied. These annotation questions were never used for Qwen inference; existing experiment scores/labels unchanged.",
+  "opencode_status": "First two source requests process-timeout (124); failures preserved. Remaining free audit may continue independently.",
+  "annotation_correction": "Subagent verbal summary said 4 uncertain support questions; machine-checked output contains 5, and all are retained."
+}
