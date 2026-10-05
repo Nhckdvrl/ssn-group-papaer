@@ -40,7 +40,7 @@ def tasks_e00(cache,tokenizer):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
     ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
-    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09','E10','E11','E26'],default='E00')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09','E10','E11','E26','E27'],default='E00')
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
     ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
     ap.add_argument('--system-frame',choices=['both','neutral','upstream'],default='both')
@@ -79,7 +79,7 @@ def main():
     elif args.experiment=='E10':
         from option_access import tasks_access
         tasks=tasks_access(args.cache,tokenizer)
-    elif args.experiment=='E26':
+    elif args.experiment in ('E26','E27'):
         from scoped_access import tasks_scope
         assert args.data is not None
         tasks=tasks_scope(args.data,tokenizer,args.recovery_mode)
@@ -100,7 +100,7 @@ def main():
                 recovery_mode=args.recovery_mode,
                 code_sha256={p.name:sha(p) for p in Path(__file__).parent.glob('*.py')},
                 data_sha256=sha(args.data) if args.data else sha(args.cache/'normalized'/('sap.jsonl' if args.experiment in ('E09','E10') else 'amouyal.jsonl')))
-    if args.experiment=='E26':config['independent_audit_sha256']=sha(args.data.with_suffix('.audit.json'))
+    if args.experiment in ('E26','E27'):config['independent_audit_sha256']=sha(args.data.with_suffix('.audit.json'))
     (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
     with (args.out/'predictions.jsonl').open('w') as f, torch.inference_mode():
         for offset in range(0,len(tasks),args.batch_size):

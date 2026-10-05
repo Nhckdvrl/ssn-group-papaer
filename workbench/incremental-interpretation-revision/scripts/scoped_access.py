@@ -12,7 +12,7 @@ REPAIR = 'Keep the actors and activities distinct: apply each participant restri
 
 def tasks_scope(data,tokenizer,recovery_mode='both'):
     report=json.loads(data.with_suffix('.audit.json').read_text());assert report['audited_sha256']==sha(data)
-    rows=list(map(json.loads,data.read_text().splitlines()));assert len(rows)==report['variants']==1536
+    rows=list(map(json.loads,data.read_text().splitlines()));assert len(rows)==report['variants']
     modes=('base','repair') if recovery_mode=='both' else (recovery_mode,)
     tasks=[]
     for mode in modes:
