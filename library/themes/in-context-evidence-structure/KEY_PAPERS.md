@@ -123,3 +123,11 @@
 ## Hendel, Geva, Globerson — *In-Context Learning Creates Task Vectors*（EMNLP 2023 Findings）
 - ICL 可压缩为一个 task vector θ(S)，再作用于 query。
 - 对我们：θ(S) 对 S 的顺序/时间结构的依赖从未被刻画；我们可以测 θ(suffix_4) vs θ(disp_4)。
+
+## Pan, Gao, Chen, Chen — *What ICL “Learns” In-Context: Disentangling Task Recognition and Task Learning*（ACL Findings 2023）`[摘要]`
+- 分类任务上：TR（随机标签/保留语义先验）vs TL（抽象符号标签学新映射）；TL 随规模与 demo 数增长。
+- 对我们：我们的分类条件同时覆盖 TR+TL（自然标签 positive/negative、even/odd、small/large）与纯 TL（nonce 标签）——两者都时间盲；时间敏感与否不由 TR/TL 决定，而由“分类映射 vs 全局变换”决定。
+
+## Wei et al. — *Larger Language Models Do In-Context Learning Differently*（2023）`[摘要]`
+- 大模型能在翻转标签下覆盖语义先验、学会 semantically-unrelated labels。
+- 对我们：模型能学会翻转映射（Wei），却不知道翻转**何时**发生——在时间维度上，翻转证据被与原映射证据混在一个集合里。

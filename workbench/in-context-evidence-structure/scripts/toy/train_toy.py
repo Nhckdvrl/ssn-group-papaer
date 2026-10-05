@@ -84,6 +84,7 @@ def main():
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
+    torch.backends.cuda.matmul.allow_tf32 = True; torch.backends.cudnn.allow_tf32 = True
     cfg = GPT2Config(vocab_size=VOCAB, n_positions=SEQ + 8, n_embd=a.d, n_layer=a.layers, n_head=8,
                      resid_pdrop=0.0, embd_pdrop=0.0, attn_pdrop=0.0)
     model = GPT2LMHeadModel(cfg).cuda()
@@ -93,7 +94,8 @@ def main():
     t0 = time.time()
     for step in range(a.steps + 1):
         toks = torch.tensor(make_batch(a.mix, rng, a.bs)).cuda()
-        logits = model(toks).logits                               # B x S x V
+        with torch.autocast("cuda", dtype=torch.bfloat16):
+            logits = model(toks, use_cache=False).logits.float()  # B x S x V
         lg = logits[:, pos, :]                                    # predictions at last attr of each demo
         tgt = toks[:, pos + 1]
         loss = nn.functional.cross_entropy(lg.reshape(-1, VOCAB), tgt.reshape(-1))
