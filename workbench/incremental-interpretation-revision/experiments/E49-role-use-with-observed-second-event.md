@@ -14,3 +14,5 @@
 - **命令：** 待实现；任何推断前填输入hash、审计及实际预检。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+- **推断前实际输入：** authoredv2fields01c49f8221691af04ce1dc2c2bd6ca4d629d01916d3573980c9e836845606b47（v1问句重复the/possessive由原作者修复，v1保留）；1536contexts全文独立审计、3072variants全部eligible/proposedagreement，全部prompt tokenize<1024，canonicalold/newclasses与独立gold一致。[D0](../results/D0-E49-input-audit.json)。second/recap各2context-shards共4GPU；一个context两mode始终同shard，固定词典序不按结果。命令observed_role_use.py build/adopt，time_indexed_role.py run --experiment E49 --query second/recap --num-shards2 --shard-index0/1，analyze_observed_roles.py。

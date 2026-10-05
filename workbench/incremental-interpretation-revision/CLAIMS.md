@@ -83,3 +83,5 @@
 - 2026-10-06：E46 8cell身份说明主newSame activity−6.556 [−7.935,−5.254]bits，identity×event−3.335 [−4.091,−2.500]；unused report非必要。new−old J的identity−4.357 [−6.206,−2.434]但event−.270 CI跨0，不能把general mention的全部效应叫关系机制。原人工frame中的必要表达成分更清楚，C05仍L1。E47区分assertion地位、quoted词串与纯名称曝光；尚无内部机制或一般能力结论。
 
 - 2026-10-06：E47纯name inventory−absent newSame D−3.849 [−5.053,−2.670]bits；unverified−asserted仅+1.076 [.264,1.815]。因此不得把E46身份主作用归为身份断言含义，mere actor/entity exposure与语篇结构仍主竞争解释。inventory对new−old J CI跨0，predicate差+1.940 [1.232,2.660]独立报告。native old患者1536correct、status383/384，不将readout gap单独作为novelty。C05仍L1，已进一步收窄。
+
+- 2026-10-06：E48 [卡](experiments/E48-referent-preserving-form-crossover.md)/[统计](results/E48-summary.json) alias固定后表达匹配old D增强+2.721/+3.455、newSame更负−1.521/−2.076bits，paired CI均不跨0；跨形式较弱但I1 Desc→Name仍−.968 [−1.682,−.253]，不能宣称完全词汇局限。mapping96correct，old758/768；I0 Desc→Desc平均old+5.863/new−2.913但first CI跨0，不包装各order稳定。C05仍L1/I01PILOT，下一E49明确第二角色事实后的实际复述，不以一般binding/priming或gap认证好idea。

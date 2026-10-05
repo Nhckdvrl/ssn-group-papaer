@@ -47,7 +47,7 @@ def run(args):
             s = requests.Session()
             s.trust_env = False
             r = s.post('https://api.stepfun.com/step_plan/v1/messages', headers={'Authorization': 'Bearer ' + secret},
-                       json=payload, timeout=(15, 180))
+                       json=payload, timeout=(15, args.read_timeout))
             if not r.ok:
                 raise RuntimeError('Step5 HTTP ' + str(r.status_code))
             response = r.json()
@@ -85,6 +85,7 @@ if __name__ == '__main__':
     p.add_argument('--workers', type=int, default=8)
     p.add_argument('--max-tokens', type=int, default=16384)
     p.add_argument('--protocol', choices=['roles','alias'], default='roles')
+    p.add_argument('--read-timeout', type=int, default=180)
     a = p.parse_args()
     assert 1 <= a.workers <= 8
     run(a)

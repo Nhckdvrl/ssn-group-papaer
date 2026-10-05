@@ -63,34 +63,44 @@ def adopt(directory,reviews):
 
 def run(args):
     assert not args.out.exists();a=json.loads(args.data.with_suffix('.audit.json').read_text());assert sha(args.data)==a['audited_sha256']
-    allrows=list(map(json.loads,args.data.read_text().splitlines()));expected={'E37':1056,'E38':1536,'E39':288,'E40':192,'E41':1152,'E43':96,'E44':576,'E45':192,'E46':1536,'E47':1920,'E48':864}[args.experiment]
+    allrows=list(map(json.loads,args.data.read_text().splitlines()));expected={'E37':1056,'E38':1536,'E39':288,'E40':192,'E41':1152,'E43':96,'E44':576,'E45':192,'E46':1536,'E47':1920,'E48':864,'E49':3072}[args.experiment]
     assert len(allrows)==a['variants']==expected
     rows=[r for r in allrows if r['query']==args.query]
-    assert len(rows)=={'E37':{'initial':192,'current':432,'new':432},'E38':{'current':1152,'fair':384},'E39':{'current':288},'E40':{'current':192},'E41':{'current':576,'availability':576},'E43':{'current':96},'E44':{'current':384,'availability':192},'E45':{'current':192},'E46':{'current':1536},'E47':{'current':1536,'identity_status':384},'E48':{'current':768,'alias':96}}[args.experiment][args.query]
-    recovery={'E37':CURRENT_WORLD,'E38':SELECTION_SCOPE,'E39':EARLIER_ROLE_SCOPE,'E40':EARLIER_ROLE_SCOPE,'E41':AVAILABILITY_SCOPE,'E43':EARLIER_ROLE_SCOPE,'E44':AVAILABILITY_SCOPE,'E45':EARLIER_ROLE_SCOPE,'E46':EARLIER_ROLE_SCOPE,'E47':('Keep an unverified example quotation distinct from what the passage itself asserts when reporting the status of the identity claim.' if args.query=='identity_status' else EARLIER_ROLE_SCOPE),'E48':'Use the name-description associations stated in the passage and keep a role in the stated earlier activity separate from a mention or another activity.'}[args.experiment]
+    assert len(rows)=={'E37':{'initial':192,'current':432,'new':432},'E38':{'current':1152,'fair':384},'E39':{'current':288},'E40':{'current':192},'E41':{'current':576,'availability':576},'E43':{'current':96},'E44':{'current':384,'availability':192},'E45':{'current':192},'E46':{'current':1536},'E47':{'current':1536,'identity_status':384},'E48':{'current':768,'alias':96},'E49':{'second':1536,'recap':1536}}[args.experiment][args.query]
+    assert 0<=args.shard_index<args.num_shards
+    if args.num_shards!=1:
+        assert args.experiment=='E49'
+        contexts=sorted({r['context_id'] for r in rows})
+        chosen=set(contexts[args.shard_index::args.num_shards])
+        rows=[r for r in rows if r['context_id'] in chosen]
+        assert len(rows)==768 and args.num_shards==2
+    recovery={'E37':CURRENT_WORLD,'E38':SELECTION_SCOPE,'E39':EARLIER_ROLE_SCOPE,'E40':EARLIER_ROLE_SCOPE,'E41':AVAILABILITY_SCOPE,'E43':EARLIER_ROLE_SCOPE,'E44':AVAILABILITY_SCOPE,'E45':EARLIER_ROLE_SCOPE,'E46':EARLIER_ROLE_SCOPE,'E47':('Keep an unverified example quotation distinct from what the passage itself asserts when reporting the status of the identity claim.' if args.query=='identity_status' else EARLIER_ROLE_SCOPE),'E48':'Use the name-description associations stated in the passage and keep a role in the stated earlier activity separate from a mention or another activity.','E49':'Keep each reported patient linked to its own actor and activity, using the name-description associations stated in the passage.'}[args.experiment]
+    base_instruction='Answer the question concisely, using only the passage.' if args.experiment=='E49' else BASE
+    token_cap=96 if args.experiment=='E49' else 48
     tok=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left');tok.pad_token_id=tok.eos_token_id
     prompts={}
     for r in rows:
         assert digest(r['passage'])==r['passage_sha256'] and digest(r['question'])==r['question_sha256']
-        prompt=tok.apply_chat_template([dict(role='system',content=BASE+('\n'+recovery if r['mode']=='priority' else '')),dict(role='user',content='Passage:\n'+r['passage']+'\n\nQuestion:\n'+r['question'])],tokenize=False,add_generation_prompt=True,enable_thinking=False)
+        prompt=tok.apply_chat_template([dict(role='system',content=base_instruction+('\n'+recovery if r['mode']=='priority' else '')),dict(role='user',content='Passage:\n'+r['passage']+'\n\nQuestion:\n'+r['question'])],tokenize=False,add_generation_prompt=True,enable_thinking=False)
         prompts[r['item_id']]=prompt
     torch.manual_seed(0);torch.set_num_threads(8);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     args.out.mkdir(parents=True);start=time.time()
     model=AutoModelForCausalLM.from_pretrained(args.model,local_files_only=True,torch_dtype=torch.float32,attn_implementation='sdpa').to('cuda').eval()
     for p in model.parameters():p.requires_grad_(False)
     cfg=dict(experiment=args.experiment,query=args.query,task_count=len(rows),model_manifest=json.loads((args.model/'manifest.json').read_text()),dtype='float32',tf32=False,attention='sdpa',seed=0,frozen=True,thinking=False,batch_size=8,
-             do_sample=False,max_new_tokens=48,data_sha256=sha(args.data),audit_sha256=sha(args.data.with_suffix('.audit.json')),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),code_sha256=sha(Path(__file__)),
-             torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(),base_instruction=BASE,priority_instruction=recovery)
+             do_sample=False,max_new_tokens=token_cap,data_sha256=sha(args.data),audit_sha256=sha(args.data.with_suffix('.audit.json')),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),code_sha256=sha(Path(__file__)),
+             torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(),base_instruction=base_instruction,priority_instruction=recovery)
+    cfg.update(num_shards=args.num_shards,shard_index=args.shard_index)
     (args.out/'config.json').write_text(json.dumps(cfg,indent=2)+'\n')
     with (args.out/'generations.jsonl').open('w') as f,torch.inference_mode():
         for off in range(0,len(rows),8):
             rr=rows[off:off+8];pp=[prompts[r['item_id']] for r in rr];inputs=tok(pp,return_tensors='pt',padding=True).to('cuda')
-            gen=model.generate(**inputs,do_sample=False,max_new_tokens=48,pad_token_id=tok.pad_token_id,eos_token_id=tok.eos_token_id,use_cache=True)
+            gen=model.generate(**inputs,do_sample=False,max_new_tokens=token_cap,pad_token_id=tok.pad_token_id,eos_token_id=tok.eos_token_id,use_cache=True)
             for i,r in enumerate(rr):
                 ids=gen[i,inputs['input_ids'].shape[1]:].tolist()
                 if tok.eos_token_id in ids:ids=ids[:ids.index(tok.eos_token_id)+1]
                 answer=tok.decode(ids,skip_special_tokens=True)
-                f.write(json.dumps(dict(r,answer=answer,answer_sha256=digest(answer),generated_token_ids=ids,prompt_sha256=digest(pp[i]),eos_reached=bool(ids and ids[-1]==tok.eos_token_id),cap_reached=len(ids)==48 and ids[-1]!=tok.eos_token_id))+'\n')
+                f.write(json.dumps(dict(r,answer=answer,answer_sha256=digest(answer),generated_token_ids=ids,prompt_sha256=digest(pp[i]),eos_reached=bool(ids and ids[-1]==tok.eos_token_id),cap_reached=len(ids)==token_cap and ids[-1]!=tok.eos_token_id))+'\n')
             f.flush()
             if off%64==0:print(f'{off+len(rr)}/{len(rows)} elapsed={time.time()-start:.1f}s',flush=True)
     elapsed=time.time()-start;cfg.update(gpu_hours=elapsed/3600,wall_seconds=elapsed,generations_sha256=sha(args.out/'generations.jsonl'),peak_gpu_bytes=torch.cuda.max_memory_allocated());(args.out/'config.json').write_text(json.dumps(cfg,indent=2)+'\n')
@@ -100,7 +110,8 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--directory',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True)
-    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--experiment',choices=['E37','E38','E39','E40','E41','E43','E44','E45','E46','E47','E48'],default='E37');r.add_argument('--query',choices=['current','initial','new','fair','availability','identity_status','alias'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--experiment',choices=['E37','E38','E39','E40','E41','E43','E44','E45','E46','E47','E48','E49'],default='E37');r.add_argument('--query',choices=['current','initial','new','fair','availability','identity_status','alias','second','recap'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r.add_argument('--num-shards',type=int,default=1);r.add_argument('--shard-index',type=int,default=0)
     x=p.parse_args()
     if x.action=='build':print(json.dumps(build(x.cache,x.directory),indent=2))
     elif x.action=='adopt':print(json.dumps(adopt(x.directory,x.reviews),indent=2))

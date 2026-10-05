@@ -1,6 +1,6 @@
 # E48：同一指称实体的事实表达×后续表达交叉（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；E47表明额外名单影响预测，不能把词表改变直接归为身份含义。
 - **问题（一句话）：** 在名字与描述明确共指时，角色证据的后续作用跟着同一实体走，还是依赖事实和读数的表达匹配？
@@ -20,3 +20,13 @@
 - **推断前计数校对：** 24sources×2role×2order×2fact形式×2inventory×2mode=768 current；alias96；native864。此前384遗漏mode倍数；全部设计因子均保留，不删条件，raw9216不变。全文audit9648。
 
 - **输入实际冻结（推断前）：** v2fields SHA256 2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450；raw9216/native864全部eligible；171raw语法marginal，其余可接受；全部问答proposed/gold一致；4shards各2304、1152causal target pairs实际token预检通过。[D0](../results/D0-E48-input-audit.json)。Step field审计网络部分超时，完整Luna全文审计已齐；Step是辅助意见，不作停步gate。
+
+### 实际结果
+
+推断snapshot936ac2b6，raw9216/native864全部完成，实际0.1376GPU·h。两order先平均的matching交互（matched−cross）old activity I0+2.721 [1.398,4.253]、I1+3.455 [2.509,4.462]bits；newSame I0−1.521 [−2.511,−.582]、I1−2.076 [−2.961,−1.250]。new−old J matching I0−5.348 [−6.744,−4.069]、I1−6.889 [−8.204,−5.816]，不同−同V J matching +1.494/+2.066。
+
+绝对direction不能只看交互：Desc→Desc/I0 old D+5.863 [3.534,8.801]、newSame−2.913 [−4.561,−1.366]；Desc→Name/I0 old+2.602但newSame−.584 CI跨0。I1 cross Desc→Name new−.968 [−1.682,−.253]，Name→Desc−1.304 CI跨0；不说“完全无跨实体传递”。逐order里I0 Desc→Desc first CI跨0、last明确负，不能把平均写成各order稳定。
+
+全部响应外审：mapping96/96正确；old患者758/768正确，10错误为fought8、bathed2，全部clear；恢复指令未消除这10。不是alias不可访问，也不证明hidden entity memory被写坏。全部all12/eligible12/grammar10/nonpossessive11/parent11/9/9完整保存。C05仍L1：表达匹配加强角色后效应，较强的entity-independent普遍反转不成立；native近完整正确不作为novelty。下一已预登记E49直接功能用途、自然GUM原文材料。
+
+[全统计](../results/E48-summary.json)；[图](../results/E48-referent-form-crossover.png)。所有原始输入/审计/响应cache保留，v1审计字段误解不用于分析。
