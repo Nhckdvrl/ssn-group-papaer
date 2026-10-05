@@ -60,7 +60,7 @@ def adopt_neutral(data,reviews,idmap,out):
     return report
 
 
-def analyze(cache,newpath):
+def analyze(cache,newpath,frame='neutral',strata=('all','eligible','acceptable','neutral_role_clear','episodic_reference')):
     parents={};configs={}
     for ex in ('E14','E15'):
         configs[ex],rs=read_run(cache/'runs'/ex);parents.update({r['item_id']:r for r in rs})
@@ -81,7 +81,7 @@ def analyze(cache,newpath):
         s=estimate([v[k] for k in sorted(v)]) if len(v)>1 else dict(estimate=next(iter(v.values()),None),ci95=None,n_sets=len(v))
         return dict(s,pair_ids=sorted(v))
     def diff(a,b):return {k:a[k]-b[k] for k in a.keys()&b.keys()}
-    for stratum in ('all','eligible','acceptable','neutral_role_clear','episodic_reference'):
+    for stratum in strata:
         for option in (0,1,'both'):
             rr=[r for r in neutral if stratum=='all' or (r['eligible'] and r[stratum])]
             ix={(r['pair_id'],r['source_np_option'],r['condition'],r['episode_anchor'],r['target_kind']):r for r in rr}
@@ -114,6 +114,14 @@ def analyze(cache,newpath):
             result['per_source'][prefix]=[dict(pair_id=k,**{f'K_{a}':v[k] for a,v in Ks.items() if k in v},
                 A_neutral=Ds['same']['neutral'][k]-Ds['continued_separate']['neutral'][k],
                 A_relation=Ds['same']['relation'][k]-Ds['continued_separate']['relation'][k]) for k in sorted(common)]
+    if frame != 'neutral':
+        for section in ('cells','contrasts','per_source'):
+            if section != 'per_source':
+                result[section]={k.replace('neutral',frame):v for k,v in result[section].items()}
+            else:
+                for entries in result[section].values():
+                    for entry in entries:
+                        entry['A_'+frame]=entry.pop('A_neutral')
     return result
 
 
