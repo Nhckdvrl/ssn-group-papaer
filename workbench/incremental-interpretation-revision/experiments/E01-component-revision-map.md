@@ -58,3 +58,8 @@
 - NPZ句先base原final-role nonGP extension −24.41 pp [−47.20,−3.46] n13，GP −30.36 [−60.26,−1.53] n10；无歧义下降重复而final-event多近ceiling，E11引用问题不能略去。
 - NPS final-event下降why：eligible句先base DiD −8.49 pp n8，acceptable −.027 pp n7；差异NPS:7原had rode，long GP外审marginal/PYes=.3232，comma long≈1。两个strata均为跑前规则，原项目不删除、不悄改。MVRR句先base final-event DiD +17.45 [−.14,45.28] n7，尚非稳定机制。
 - [解读](../results/E01-external-snapshot3.md)、[完整分项](../results/E01-external-snapshot3-summary.json)、[config](../results/E01-external-snapshot3-config.json)、[scores](../results/E01-external-snapshot3-scores.csv)。C01/C02仍L0，C03保留。下一步从语言信息而不是模板继续拆解释；尚无够支撑paper的idea。
+
+
+### 后续原modifier语义审计（新干预之前）
+- 全部snapshot3涉及的NPZ source IDs，不按Qwen效果选项；原四GP/comma×short/long文本与components不改。独立opencode逐source标注：初始event是否明确asserted、extension本身是否entail、完整句是否exclude该event、extension是否提供超出共享参与者的具体支持。允许null/interpretation-dependent；不会将这些审计问句用作Qwen评测题或修改此前gold。
+- `audit_extension_relations.py`保留cache packets/request/events/hash/覆盖；2workers，连同原E01外审4workers共6≤8。主执行agent只检查来源/覆盖，不能自定semantic relation。目的是为长度/事件信息/引用复杂度的区分性干预准备数据，不预注册结果，不称新idea。
