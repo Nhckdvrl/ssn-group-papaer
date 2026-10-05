@@ -55,7 +55,7 @@ def run(args):
     args.out.mkdir(parents=True)
     torch.manual_seed(0); torch.set_num_threads(8)
     torch.backends.cuda.matmul.allow_tf32 = False
-    cfg = dict(experiment='E14', task_count=len(rows), source_items=len({r['pair_id'] for r in rows}),
+    cfg = dict(experiment=args.experiment, task_count=len(rows), source_items=len({r['pair_id'] for r in rows}),
                model=str(args.model), model_manifest=json.loads((args.model / 'manifest.json').read_text()),
                data_sha256=sha(args.data), independent_audit_sha256=sha(args.data.with_suffix('.audit.json')),
                code_sha256={p.name: sha(p) for p in Path(__file__).parent.glob('*.py')},
@@ -120,6 +120,7 @@ def run(args):
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('--data', type=Path, required=True)
+    p.add_argument('--experiment', choices=['E14', 'E15'], default='E14')
     p.add_argument('--model', type=Path, default=CACHE / 'models/Qwen3-8B')
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--batch-size', type=int, default=4)
