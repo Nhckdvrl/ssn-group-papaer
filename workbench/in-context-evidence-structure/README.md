@@ -40,7 +40,10 @@
 | E20 字符串操作 | 首/末字母、去首/末字母：方向错（集合/recency）——“表层规律→结构推断”被证伪 |
 | E21 最近邻 | 数字 small/large：suffix_8 时靠近新 demo 的 query +0.73、靠近旧 demo 的 −0.90；prefix_8 完全对称（靠近过时 demo 的照样按过时映射）；oracle 两者相同 |
 | **E22 标记漂移** | 新 regime 用大写标记：P(大写) 规范地跟踪（成簇 +5.1、噪声 −2.5、后8−前8 +9.5），P(新映射) 不跟（噪声方向反）；suffix_8 时写大写但用新映射仅 ~48% |
-| 进行中 | thinking 重跑；E22/E21/E19/E20 多模型；32B/4B/0.6B night_core；toy v3 |
+| E09 thinking | 20000 token 重跑：规则学习准确率 96%，但成簇=零散（+0.002）、加噪声无影响（+0.005）、新旧块无差别 → 推理不救 |
+| E23 时间戳 | 每条 demo 标 “day k”：只有轻微 recency，噪声方向仍错 |
+| E22 复现 | Qwen3-8B / Qwen2.5-7B / Mistral-7B 三模型一致；主图 `results/figs/fig_marked_drift.png` |
+| 进行中 | E22/E23 更多模型；32B/4B/0.6B night_core；toy v3 |
 
 **阻塞：** StepFun step-5 配额已用尽（quota_exceeded），nonce 词库审计停在 25 个已接受属性名；确认版实验需要审计词库。
 

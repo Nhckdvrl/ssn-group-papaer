@@ -1,6 +1,6 @@
 # E09：显式推理（Qwen3 thinking）能否恢复潜在层面的时间推断？（2026-10-05）
 
-- **状态：** 可见 CoT DONE；thinking 第一轮作废（截断），第二轮（max_tokens 20000）运行中
+- **状态：** DONE
 - **对应：** C02；与推理模型的关系
 - **设计：** E02a 的 100 个 base × 8 个条件（allA、suffix_4、disp_4、noise_2__suffix_4、suffix_8、block_start4、single_1、single_16）。原始 few-shot prompt 去掉末尾 `Label:`，包成 chat 用户消息并追问“最后一个 item 的标签是什么？最后一行写 Answer: <label>”。thinking=1 vs thinking=0（同格式对照），每个 prompt 采样 8 次（T=0.6, top_p=0.95, top_k=20），P(B)=#B/#有效答案。
 - **预测：** 若推理能显式维持“当前规则”的假设并检查时间结构，则 suffix_4 ≫ disp_4、前缀噪声降低 P(B)；若推理只是更准确地做集合式计数，则 suffix≈disp。
@@ -16,3 +16,8 @@ allA 0.370、single_1 0.353、single_16 0.348、disp_4 0.418、suffix_4 0.406、
 
 
 **可见 CoT 配对检验（`scripts/analyze_think.py`）：** suffix_4−disp_4 = −0.014 [−0.082,0.055]；noise_2__suffix_4−suffix_4 = **+0.068 [0.015,0.120]**（方向错）；suffix_8−block_start4 = +0.102 [0.015,0.190]（弱 recency）。
+
+**thinking 第二轮（50 base × 6 条件 × 4 样本，max_tokens 20000；1156/1200=96% 想完并作答）：**
+allA 0.040、disp_4 0.428、suffix_4 0.430、noise_2__suffix_4 0.435、block_start4 0.380、suffix_8 0.457（P(B)）。
+配对：suffix_4−disp_4 = +0.002 [−0.163,0.160]；noise−suffix_4 = +0.005 [−0.093,0.103]；suffix_8−block_start4 = +0.077 [−0.092,0.238]。
+**判读：** thinking 把规则学习提升到近乎完美（准确率 96%），但对矛盾证据的时间组织完全不敏感（成簇=零散、加噪声无影响、新旧块无差别）——测试时推理不能恢复噪声/变化的区分。
