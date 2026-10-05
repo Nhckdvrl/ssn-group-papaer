@@ -21,6 +21,7 @@ territory 是可以长期积累专长的科学领域，不是题目。按流程 
 | T13 | Game NPCs / interactive characters | [`themes/game-npc-social/`](themes/game-npc-social/README.md) |
 | T14 | Cross-lingual capability formation / multilingual learning dynamics | [`themes/multilingual/`](themes/multilingual/README.md) |
 | T15 | Incremental language processing / interpretation revision | [`themes/incremental-language-processing/`](themes/incremental-language-processing/README.md) |
+| T16 | In-context evidence structure / adaptive aggregation | [themes/in-context-evidence-structure/](themes/in-context-evidence-structure/README.md) |
 | — | 多智能体与大小模型协作（2026-09-30 新增；territory 扫描推荐，待人确认） | [`themes/multi-agent-collaboration/`](themes/multi-agent-collaboration/README.md) |
 | — | 理解与生成 / 统一多模态（2026-09-30 新增） | [`themes/unified-multimodal/`](themes/unified-multimodal/README.md) |
 | — | 视频生成与世界模型（2026-09-30 新增；对应当前主线 workbench） | [`themes/video-world-models/`](themes/video-world-models/README.md) |
