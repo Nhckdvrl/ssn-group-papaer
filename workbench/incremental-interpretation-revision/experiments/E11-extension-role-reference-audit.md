@@ -30,3 +30,7 @@
 - 完整NP在四reg/rev×base/repair配置中均将extended blocked/cue的PYes提高到约.999–1；head在题先blocked仍有失败（.5546/.0615），不选它作赢家模板。short GP fullNP仍≈.00429（句先）/≈.00099（题先），句先semantic=1/题先≈.00089，不能把引用修复当已经解决所有GP现象。
 - 按决策表：这一个项目的unambiguous role extension下降支持引用/constituent测量因素；停止把这部分当digging-in证据。n1且free审计无法建立稳定机制；GP extended和isolated extended本轮因外审timeout缺失，不能报告其结果。对所有当时incomplete外审做单worker重试，原失败保留独立目录，不基于Qwen结果选重试。
 - [summary](../results/E11-opencode-snapshot1-summary.json)、[scores](../results/E11-opencode-snapshot1-scores.csv)、[config](../results/E11-opencode-snapshot1-config.json)。C01/C02保持L0，不升级novelty。
+
+### Snapshot2（新增推理之前）
+- 合并原review目录与独立retry1，输入/事件hash/normal-finish/逐题ID一致；23/30变体、128QA/125eligible；原失败保留，7未完成仍不算OK。全部gold=null，原source前3规则不变。原审核行逐字段一致，先前49eligible/196任务不再重跑，仅新76eligible/304任务新推理。合计500分析行；merge时核对全部完整prompt SHA和模型/精度/choice token config。
+- 新推理输入SHA `07370661a8ac8a4a2abaedf60ad62dcef224ea26c9b7692a7ee1660c29d5bda1`；[D0](../results/D0-E11-opencode-snapshot2.json)。目标仍原先head/full-span/isolated与extension对照，非新增模板选择。
