@@ -76,3 +76,5 @@ venue-nearest已回查accepted主会及arXiv入口，仅作定位；检索不完
 ## E45–47 当前实验解释（优先于历史主旨）
 
 E45 propernames在固定frame仍newother D−13.545/−12.625bits，但old absolute D近0/负，不能直接叫old正/new负。E46 8cells找到了具体调节成分：identity主newSame D−6.556 [−7.935,−5.254]、identity×event−3.335 [−4.091,−2.500]，identity对new−old J−4.357 [−6.206,−2.434]；unused report非必要，E44/E45重复2304target drift0。还不知道身份断言地位、词串还是额外entity/actor曝光驱动它。E47冻结asserted/unverified exact quote/name inventory/absent，两event表达、两order全部测；先修复引用标点并全量外审v2，未按结果调整材料。一般global suppression已有Tang ICML2026 owner，一般next-mention/discourse preference已有Upadhye等owner；这仍是候选精确语言条件，非已认证好idea。GUM现成natural identity/reference资产已审，下一自然材料是检验同一个问题，不能因为有了新数据就换对象。
+
+E47进一步否定“身份断言是主要原因”：inventory不声明关系仍newSame D下降−3.849bits，quoted与asserted差仅1.076。清单对new−old J CI跨0，普通提及与关系用途不强合；对谓词差有+1.940bits，不能简化成仅一般曝光。原事实角色与assertion status能直接访问，尚未找到可推荐的一般新机制。下一用同referent的不同表达及自然entity-role材料检验，而非继续扫identity近义词；同一研究问题不新开对象。

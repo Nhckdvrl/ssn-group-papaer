@@ -81,3 +81,5 @@
 - 2026-10-06校对：E40 old activity D+.291/−.358近0，此前“old控制有效”仅J/native成立。E45名字替换仍newother D−13.545/−12.625，但old+.173 CI跨0/−2.004，不能称name条件old正/new负；191/192native正确。frame影响可能包括一般反重复/提及，E46分开activity/neutral及new−old。
 
 - 2026-10-06：E46 8cell身份说明主newSame activity−6.556 [−7.935,−5.254]bits，identity×event−3.335 [−4.091,−2.500]；unused report非必要。new−old J的identity−4.357 [−6.206,−2.434]但event−.270 CI跨0，不能把general mention的全部效应叫关系机制。原人工frame中的必要表达成分更清楚，C05仍L1。E47区分assertion地位、quoted词串与纯名称曝光；尚无内部机制或一般能力结论。
+
+- 2026-10-06：E47纯name inventory−absent newSame D−3.849 [−5.053,−2.670]bits；unverified−asserted仅+1.076 [.264,1.815]。因此不得把E46身份主作用归为身份断言含义，mere actor/entity exposure与语篇结构仍主竞争解释。inventory对new−old J CI跨0，predicate差+1.940 [1.232,2.660]独立报告。native old患者1536correct、status383/384，不将readout gap单独作为novelty。C05仍L1，已进一步收窄。
