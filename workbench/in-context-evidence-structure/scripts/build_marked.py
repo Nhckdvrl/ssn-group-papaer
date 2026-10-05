@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 T = 16
 N = int(os.environ.get("N_BASES", 300)); SEED0 = int(os.environ.get("SEED0", 700000))
 OUT = ROOT / "data" / os.environ.get("OUT", "marked")
-MODE = os.environ.get("MODE", "marked")   # marked | daystamp
+MODE = os.environ.get("MODE", "marked")   # marked | daystamp | nonce (B demos use 2 audited nonce label words)
 OUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -62,6 +62,8 @@ def main():
                 i1 = list(rng.choice(len(P[1]), 9, replace=False)); i0 = list(rng.choice(len(P[0]), 9, replace=False))
                 xs = [f"Review: {P[1][i1.pop()] if ci else P[0][i0.pop()]}" for ci in c]
                 qc = int(rng.integers(2)); q = f"Review: {P[1][i1.pop()] if qc else P[0][i0.pop()]}"
+            if MODE == "nonce":
+                nz = [str(w) for w in np.random.default_rng(seed + 7).choice(json.load(open(ROOT / "data" / "lexicon.json"))["labels"], 2, replace=False)]
             for name, pt in PATS.items():
                 labs = []; body = ""
                 for t, (x, ci, ch) in enumerate(zip(xs, c, pt)):
@@ -71,12 +73,16 @@ def main():
                         body += f"{x} (day {t + 1})\nLabel: {lw[y]}\n\n"; labs.append(y)
                     elif ch == "A":
                         body += f"{x}\nLabel: {lw[yA]}\n\n"; labs.append(yA)
+                    elif MODE == "nonce":
+                        body += f"{x}\nLabel: {nz[1 - yA]}\n\n"; labs.append(1 - yA)
                     else:
                         body += f"{x}\nLabel: {lw[1 - yA].upper()}\n\n"; labs.append(1 - yA)
                 qA = qc ^ s; qB = 1 - qA
                 qq = q + " (day 17)" if MODE == "daystamp" else q
                 if MODE == "daystamp":
                     cands = [" " + lw[qA], " " + lw[qB]]
+                elif MODE == "nonce":
+                    cands = [" " + lw[qA], " " + lw[qB], " " + nz[qA], " " + nz[qB]]
                 else:
                     cands = [" " + lw[qA], " " + lw[qB], " " + lw[qA].upper(), " " + lw[qB].upper()]
                 o = all_oracles_fast(c[:, None], labs, [qc], 1)

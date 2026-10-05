@@ -14,7 +14,7 @@ def lg(p):
 
 def main():
     meta = {}
-    for l in open(ROOT / "data/marked/rows.jsonl"):
+    for l in open(ROOT / "data" / __import__("os").environ.get("DATA", "marked") / "rows.jsonl"):
         r = json.loads(l); meta[r["uid"]] = (r["cond"], r["base_id"], lg(r["oracle"]["meta_pB"]))
     recs = []
     for f in glob.glob(sys.argv[1]):
