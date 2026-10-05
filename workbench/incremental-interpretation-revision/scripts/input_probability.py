@@ -181,11 +181,44 @@ def analyze(path):
     return result
 
 
+def joint_cue(path):
+    """Explicit POST-HOC check of aggregated versus itemwise opposing effects."""
+    cfg=json.loads((path/'config.json').read_text())
+    assert cfg['scores_sha256']==sha(path/'scores.jsonl') and cfg['protocol']=='E10'
+    rows=list(map(json.loads,(path/'scores.jsonl').read_text().splitlines()))
+    assert len(rows)==cfg['task_count']
+    groups=collections.defaultdict(dict)
+    for r in rows:
+        if not r['repair'] and r['option_position']=='post' and r['condition']=='explicit_cue':
+            groups[(r['pair_id'],r['construction'],r['option_mapping'])][r['question_position']]=r
+    effects=[]
+    for k,d in sorted(groups.items()):
+        assert set(d)=={'pre','post'}
+        effects.append(dict(pair_id=k[0],construction=k[1],mapping=k[2],
+                            word_change=d['pre']['disambiguator_bits']-d['post']['disambiguator_bits'],
+                            answer_change=d['pre']['answer_correct']-d['post']['answer_correct'],
+                            answer_probability_change=d['pre']['answer_p_correct']-d['post']['answer_p_correct']))
+    byset=collections.defaultdict(list)
+    for r in effects:byset[r['pair_id']].append(r)
+    metrics=['word_change','answer_change','answer_probability_change']
+    v={s:{m:float(np.mean([r[m] for r in rr])) for m in metrics} for s,rr in byset.items()}
+    result={m:estimate([v[s][m] for s in sorted(v)]) for m in metrics}
+    x=np.array([v[s]['word_change'] for s in sorted(v)]);y=np.array([v[s]['answer_change'] for s in sorted(v)])
+    result.update(post_hoc=True,scope='Fixed options post/base; both mappings and three constructions averaged within each of 24 source lexical sets. Association is descriptive, not causal.',
+                  pearson_r=float(np.corrcoef(x,y)[0,1]),source_lexical_sets_both_word_facilitated_and_answer_harmed=int(np.sum((x<0)&(y<0))),
+                  source_lexical_sets=len(v),source_scores_sha256=cfg['scores_sha256'],rows=effects,
+                  interpretation='Opposing aggregate means do not establish opposing effects on every item or a common mechanism.')
+    return result
+
+
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--cache',type=Path,default=CACHE)
     p.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
     p.add_argument('--protocol',choices=['E08','E10']);p.add_argument('--batch-size',type=int,default=8)
-    p.add_argument('--out',type=Path);p.add_argument('--analyze',type=Path);a=p.parse_args()
+    p.add_argument('--out',type=Path);p.add_argument('--analyze',type=Path);p.add_argument('--joint-cue',type=Path);a=p.parse_args()
+    if a.joint_cue:
+        a.out.write_text(json.dumps(joint_cue(a.joint_cue),indent=2)+'\n')
+        raise SystemExit(0)
     if a.analyze:
         a.out.write_text(json.dumps(analyze(a.analyze),indent=2)+'\n')
     else:

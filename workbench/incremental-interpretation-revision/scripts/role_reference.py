@@ -120,8 +120,9 @@ def combine_reference(cohort, parent, new, out):
         assert cfg['predictions_sha256']==sha(run/'predictions.jsonl')
         rr=list(map(json.loads,(run/'predictions.jsonl').read_text().splitlines()))
         assert len(rr)==cfg['task_count'];configs.append(cfg);scores+=rr
-    for key in ('model_manifest','dtype','choice_token_ids','thinking','frozen','torch','transformers'):
+    for key in ('model_manifest','dtype','thinking','frozen','torch','transformers'):
         assert configs[0][key]==configs[1][key],key
+    assert {k:sorted(v) for k,v in configs[0]['choice_token_ids'].items()}=={k:sorted(v) for k,v in configs[1]['choice_token_ids'].items()},'Choice vocabulary changed'
     tokenizer=AutoTokenizer.from_pretrained(configs[0]['model'],local_files_only=True,padding_side='left')
     tasks=tasks_jurayj(cohort,tokenizer,'E11','neutral')
     index={(r['item_id'],r['prompt_id']):r for r in scores}
@@ -136,6 +137,7 @@ def combine_reference(cohort, parent, new, out):
     cfg=dict(experiment='E11',task_count=len(scores),data_sha256=sha(cohort),inference_subruns=configs,
              predictions_sha256=sha(out/'predictions.jsonl'),new_inference_tasks=configs[1]['task_count'],
              reused_inference_tasks=configs[0]['task_count'],merge_code_sha256=sha(Path(__file__)),
+             choice_token_set_identity_verified=True,original_choice_token_order_preserved_in_subrun_configs=True,
              reuse='Same independently reviewed row, model, precision and full prompt hash; prior snapshot scores reused without evaluating again.')
     (out/'config.json').write_text(json.dumps(cfg,indent=2)+'\n')
 

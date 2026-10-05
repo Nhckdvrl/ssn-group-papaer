@@ -68,3 +68,9 @@ E01 snapshot2的三NPZ原题短final semantic≈1但role≈.013；cue extension�
 本地venue corpus已扩为36,979条（当前下载完成文件；2026ACL等尚在fetch，不是完整覆盖），nearest首先返回Hanna/Mueller NAACL2025与Amouyal ACL2025。已核对Hanna最终publication §6和附录C/H，保留“不广泛复用”的owner，同时记录不完整faithfulness与跨构式非特异干预的范围。nearest只是定位，不按接受/拒稿评分判我们的题。现cache17个PDF版本/16篇不同论文，下载不等于读完；ledger逐条注明范围。
 
 E11首批n1诊断中，完整subject span把unambiguous extended blocker原role .0404提高到.9999，而原final semantic=1；四既定配置full-span均恢复，head题先仍可失败。支持先前extension效应含instrument成分；不是所有GP是伪影、不是新revision机制。GP短句full-span与原题相同仍失败，待新GP long问句独立审完再判断。不能把反映元语言题理解的变化改名成模型思维修复。
+
+## E12：更具体地分开source processing与最终answer，但不把gap改名为idea
+
+同一E10全部原prompt里，固定options末尾的Q前−后×GP−cue在disamb word为+1.47 bits [.47,2.52]（repair+1.54）；主要cue降低surprisal−2.22，GP自身区间跨0，因此“提问加深初始承诺”尚不成立。与原cue QA下降并列可知这两个读数不能代替；事后平均mapping有cue accuracy −11.11 pp [−20.14,−2.78]，只有8/24clusters同时word改善/QA损伤，相关也不支持统一逐项反向机制。全部分项/局部和whole指标保留。
+
+[Hu & Levy2023](hu2023-metalinguistic-measurement.md)已明确prompt/probability gap；Hanna2025与Hassan2026也拥有预测/QA特征与early goal/late access叙事。下一阶段用已有Slattery自然后文，区分没有问句的input-history影响与问句再激活/元语言额外需求。不是“有后效应即novel”，仍需晚证据传播的具体范围和解释。当前18个PDF版本/17篇不同论文缓存；COLM Hu/Frank PDF直接403，不能当全文已读。venue corpus 41,117记录，2026ACL已加入；ICLR2026等缺源仍明示，检索不作科学判决。

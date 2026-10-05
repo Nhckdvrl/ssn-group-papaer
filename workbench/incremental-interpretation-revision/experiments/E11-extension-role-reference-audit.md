@@ -34,3 +34,9 @@
 ### Snapshot2（新增推理之前）
 - 合并原review目录与独立retry1，输入/事件hash/normal-finish/逐题ID一致；23/30变体、128QA/125eligible；原失败保留，7未完成仍不算OK。全部gold=null，原source前3规则不变。原审核行逐字段一致，先前49eligible/196任务不再重跑，仅新76eligible/304任务新推理。合计500分析行；merge时核对全部完整prompt SHA和模型/精度/choice token config。
 - 新推理输入SHA `07370661a8ac8a4a2abaedf60ad62dcef224ea26c9b7692a7ee1660c29d5bda1`；[D0](../results/D0-E11-opencode-snapshot2.json)。目标仍原先head/full-span/isolated与extension对照，非新增模板选择。
+
+### Snapshot2结果
+- 304新推理 /27.75s / .00771 GPU·h，加原196复用得500分析行；全部gold/correct null。60相同prompt组max概率差3.93e−6。模型/vocab选择token集合相同，但get_vocab迭代次序不同使config列表次序变化；merge按集合比较，原顺序与config保留，不因此重跑或改旧分数。
+- 三源组comma/extended句先base完整NP−原role +31.49 pp [7.81,56.20]（n3），repair +9.49 [0.14,18.81]；题先差约0或+.27 pp，表明原role并非普遍损伤，保持四配置完整。isolated long两个组的完整NP−原role≈0。blocked有两组、full-NP作用不齐，所有分项见summary。
+- NPZ:3 GP extended原/full-NP role句先都≈0，final semantic≈1、initial semantic≈1；题先initial semantic大幅下降，final仍≈1。full引用不能修复所有GP困难，也不能把两个semantic Yes当内部双parse（sail waters可能语义兼容）。NPZ:1/2 GP extended新问句两次外审未完成，保留缺失，不猜其分数。C01/C02不升级。
+- [summary](../results/E11-opencode-snapshot2-summary.json)、[scores](../results/E11-opencode-snapshot2-scores.csv)、[config](../results/E11-opencode-snapshot2-config.json)。第一遍30variant外审已终止：22完整/8不完整；retry1额外补1句，三请求2仍不完整。Free质量/Step5复核仍待；没有把失败变OK。

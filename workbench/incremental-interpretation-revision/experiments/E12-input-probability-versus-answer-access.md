@@ -1,6 +1,6 @@
 # E12：原始句子概率与最终答案访问分开测（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** MEASUREMENT / abnormal-result follow-up，非paper idea
 - **对应：** C03 / C02 / P07
 - **问题（一句话）：** 提前问题/选项的影响是否已经进入模型对原句的逐词预测，还是主要发生在末尾答案读出？
@@ -24,3 +24,16 @@
 ### 跑前机械核对
 - [alignment](../results/E12-preinference-alignment.json)：E08全部4968 parent prompts SHA匹配，1380 unique causal prefixes；E10全部2304 SHA匹配，1728 unique prefixes；72/72 GP/cue消歧词同词；所有词有token，所有source token只归属一个源word，无跨非空白header。没有按模型答案筛选数据。
 - 固定options在末尾时，两个mapping在句子截止点之前token-prefix相同，source processing读数是同一计算复用，不是两次独立复现；原末尾answer不同mapping的结果仍分别报告。配置记录unique-prefix物理计数与全部parent分析行。
+
+### 结果
+- E10：2304原prompt/1728实际source prefixes，84.40s / .02344 GPU·h；E08：4968/1380，72.50s / .02014 GPU·h。共3108独立prefix、35,756源词；7272分析行含合法复用，不计作7272新模型调用。全parent prompt/source region对齐均保留。
+- 主读数：base固定options末尾，Q前−后×GP−cue消歧词 +1.4716 bits [0.4708,2.5249]（24clusters），repair +1.5396 [0.6580,2.4719]。GP−cue基础差句先11.3625 [9.7786,12.9836]，题先12.8342 [11.0441,14.6738]。两个mapping source-prefix相同，主source统计相同是复用，不是两份复现。
+- 关键分解：GP自身Q前−后 −.7485 [−1.8875,+.3424] bits，cue −2.2202 [−3.7944,−.7825]。因此交互增加主要来自clear-cue更容易预测，不能叫GP承诺加深。MVRR交互+2.8924 [.9653,4.8923]；NPZ +.6944 [−1.4696,2.6856]、NPS +.8281 [−.0947,1.8048]。不是所有构式均已稳。
+- 次读数：disamb+两词交互+.4347 [−.0050,.8742]、post-disamb平均−.0108 [−.1256,.1058]，效应位置/metric不同；全句mean交互−.2996 [−.4193,−.1801]。不得选择单词效应直接推广整个修订过程。E08 related initial−final×GP−nonGP whole mean −.3991 [−.6807,−.1060]，对应无关initial对照 −.1571 [−.4119,.1039]；clean67同方向，相关性/词汇预激活解释仍竞争。
+- 结论与原答案并列：早Q已经改变原文预测，纯answer-position不足描述全部响应；但不是唯一syntax解释。主要cue facilitation与原E10 cue accuracy下降并存，不称同一机制或全面能力下降。Hu/Levy2023与Hanna2025已经覆盖prompt/probability及prediction/QA gap，不能改名包装novelty。下一动作转自然后文语言依赖，检验是否在没有诊断问句时仍有初始解释影响，不继续位置模板sweep。
+- C03固定协议L1保留，C01/C02不升级为内部parse或revision机制。
+- [E10 source summary](../results/E12-E10-source-summary.json)、[scores](../results/E12-E10-source-scores.csv)、[config](../results/E12-E10-source-config.json)；[E08 source summary](../results/E12-E08-source-summary.json)、[scores](../results/E12-E08-source-scores.csv)、[config](../results/E12-E08-source-config.json)；[figure](../results/E12-source-and-answer.png)。
+
+### POST-HOC：aggregate相反不等于逐项普遍相反
+- 因看到cue source facilitation与answer harm并存，事后在固定options post/base、两个mapping平均、每cluster三构式平均下检验：word −2.2202 [−3.7944,−.7825] bits；cue answer accuracy −11.11 pp [−20.14,−2.78]，Pcorrect −10.71 [−18.83,−3.01]。原分项仍全部报告，不改主读数。
+- 24clusters中8个同时word更易预测/答案变差，逐cluster Pearson r=−.397（word-surprisal变化 vs accuracy变化），并不支持“每个易预测项目都更难理解”或统一机制。代码joint_cue与[结果](../results/E12-joint-cue-POSTHOC.json)可复算。这条事后探索不得包装为预注册finding。
