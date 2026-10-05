@@ -44,6 +44,8 @@ E31 POST-HOC具名J的actor匹配差同V+1.81 [1.11,2.53]bits、不同V+1.42 [.3
 |---|---|---|
 | Van Gompel2006、Slattery2013、Sturt2007、Huang/Ferreira2021、Ceháková2023/25 | GP后结构/semantic persistence、不同final表征、memory与reanalysis竞争 | 不能首次宣称跨句残留；需要晚来role证据在event/actor/predicate边界的方向及用途预测 |
 | Sinclair TACL2022、Jumelet2024、Zhou/Frank/McCoy NAACL2025 | frozen LM结构priming、semantic-role预期、lexical boost/IFE | 不能把跨actor/谓词依赖泛泛叫新priming；本线测具体排他角色信息在新event的反向作用，及限定条件 |
+| Pucci/Li/Sinclair2026-09 production priming | 结构priming与lexical/semantic alignment共同作用、coherence增强生成复用 | 普通semantic transfer或后续生成作用不是增量；须保留角色证据方向/事件身份的具体问题 |
+| Capuano2023 conversational negation alternatives | 语境/合理备选影响否定后的相对activation | 不能首次宣称修正激活备选；source-free C05尚不是真正先错后改的history测试 |
 | Mann2025、Zhou ICML2026、Lacina2026人类focus alternatives | 否定后词可及性、构造/抑制与捷径并存、备选激活后受context筛选 | 不能卖not-X rebound或双机制；须证明relation-specific而非entity-only，明确event/predicate依赖。focus account未排除 |
 | McCoy/Pavlick/Linzen ACL2019 HANS | NLI lexical overlap、subsequence/constituent及negation shortcuts | 不能把native换谓词改善叫新scope机制；这是辅助读数，普通词/极性匹配仍竞争，主干在正常患者预测的scope/predicate方向结构 |
 | Hu/Levy2023、Hanna/Mueller2025、Hassan2026 | probability/QA及encoding/access差异 | 相反读数本身不是增量；预测改变须来自同role信息的事件/谓词/人物干预，避免wording pooling伪影 |
@@ -54,6 +56,7 @@ venue-nearest已回查accepted主会及arXiv入口，仅作定位；检索不完
 
 ## 证据边界 / 当前判断
 
+- source-free C05没有asserted initial错误事实，属于首次角色约束的后续使用；它不能单独建立“纠正后的旧关系残留”。下一具体方向是同final角色证据下匹配consistent/被撤回的preliminary report，区分修订history与仅最后fact的focus/priming；不是换研究对象或泛化belief benchmark。
 - 当前是[C05](../CLAIMS.md) L1固定模型/协议测量。C04的GP历史×表述交互仍保留，与C05无S1的角色aftereffect不能强合为同一机制。
 - 具名两个role世界同样提到患者NP及reference对象，避免generic中只有允许患者时才引入NP的巨大salience差；这也是E30/E31跑前选named主读数的理由。所有style全报，不从结果筛措辞。
 - 具名与generic不同；源场景24词汇材料、12family不是任意自然语料。新V改动包含meaning/selection；第三审anchor与12个selection-odd意见全部留在预设敏感层。

@@ -18,3 +18,8 @@
 ## 跑前材料核验
 
 字段v2 SHA256 `53af46bed8c0dfa1265e38b15576c111448ab36b71f69b2fc163fdda6827607b`，960候选SHA256 `0ced9807641d11fd0d2af95f16934c106301db2b77c04a23981aae7610cfe6a6`，24源各40variant，96 old-neutral exact unchanged。旧event控制明确保留`continued that particular [original activity]`身份桥，只改末尾readout谓词/名词；新event的bridge与readout均无原stem（旧anchor/fact原样）。最初build因旧readout实际是`In that same...`而assert，空输出目录删除后修正，未生成坏版、更未推理。两者不作纯词频匹配，旧control只核对释义角色用途是否响应。
+
+
+## 2026-10-06跑前全量审计
+
+两独立审480/480，全960 old fact preserved/角色/event identity/target前动作clear；semantic-match clear672/related288，没有把encounter/wash/hair removal/treating追认同义。共同完整basic clear 8 family：cuddled, disrobed, dressed, embraced, fought, hid, hugged, kissed；96旧neutral无改，标签clear不扩大整个family。grammar acceptable472/marginal488，两审标准不同，保留全部意见，未自动修改词。事前加basic∩anchor-acceptable7与basic∩parent-faithful6敏感层，原whole-cohorts各自仍报；未运行模型。960输入的pre-target token identity已通过。

@@ -129,17 +129,18 @@ def analyze(cache,newpath):
     def qualifies(r,co):
         if co=='all':return True
         if co=='eligible':return r['para_eligible']
-        if co=='basic_action_clear':return r['para_eligible'] and r['para_basic_clear']
+        if co.startswith('basic_action_clear'):return r['para_eligible'] and r['para_basic_clear']
         if co=='anchor_cross_clear':return r['anchor_cross_semantics_clear'] is True
         if co=='anchor_cross_acceptable':return r['anchor_cross_grammaticality']=='acceptable'
         return True
     def stat_record(co,store,key,v,details):
         out[store][co+'/'+key]=stat(v)
         for f in v:details[f][key]=v[f]
-    for co in ('all','eligible','basic_action_clear','anchor_cross_clear','anchor_cross_acceptable','prior_and_ablation_faithful'):
+    for co in ('all','eligible','basic_action_clear','basic_action_clear_and_anchor_acceptable','basic_action_clear_and_prior_faithful','anchor_cross_clear','anchor_cross_acceptable','prior_and_ablation_faithful'):
         counts=collections.Counter(r['pair_id'] for r in new if qualifies(r,co))
         keep={f:sorted(sids) for f,sids in families.items() if all(counts[sid]==40 for sid in sids)}
-        if co=='prior_and_ablation_faithful':keep={f:sids for f,sids in keep.items() if f in summaries['E31']['probability']['cohorts'][co]}
+        parent_co='anchor_cross_acceptable' if co=='basic_action_clear_and_anchor_acceptable' else 'prior_and_ablation_faithful' if co in ('prior_and_ablation_faithful','basic_action_clear_and_prior_faithful') else None
+        if parent_co:keep={f:sids for f,sids in keep.items() if f in summaries['E31']['probability']['cohorts'][parent_co]}
         out['cohorts'][co]=keep;details={f:{} for f in keep};vvs={}
         base31={r['verb_family']:r for r in summaries['E31']['probability']['per_family']['all']}
         base32={r['verb_family']:r for r in summaries['E32']['per_family']['all']}
