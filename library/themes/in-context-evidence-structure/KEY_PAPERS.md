@@ -135,3 +135,7 @@
 ## Wang, Ward, Zhang — *Comparative Reversal Learning Reveals Rigid Adaptation in LLMs Under Non-stationary Uncertainty*（IPMU 2026; arXiv 2604.04182）`[摘要]`
 - LLM 作为两臂概率反转学习任务中的决策策略（DeepSeek-V3.2 / Gemini-3 / GPT-5.2 vs 人类）：win-stay 近天花板、lose-shift 衰减，反转后坚持；分层 RL 拟合给出多种僵化来源。
 - 距离：多轮决策 + 自身选择的反馈（agentic bandit）；无 noise-vs-change 的规范检验、无“全局 vs 按输入路由”的边界、无机制。我们的分类映射翻转正是监督式 ICL 中的反转学习；可在叙事上把“LLM 的 in-context 反转学习失败”与认知科学的反转学习/认知灵活性文献接上。
+
+## *The Alchemy of Thought: Understanding In-Context Learning Through Supervised Classification*（arXiv 2601.01290, 2026）`[摘要]`
+- 6 个文本分类数据集、3 个 LLM：demo 相关度高时 ICL 行为更接近 kNN 而非逻辑回归（“attention 更像 kNN 而非 GD”）；相关度低时 LLM 借参数记忆胜出。无时间/顺序分析。
+- 对我们：kNN/核回归视角（还有 Han 2023、Cho 2025）已被占有；我们的增量是它的**时间后果**——分类 ICL 按输入相似度而非时间选证据（“最近邻，不是最近期”，E21），以及“输出漂移被跟踪 vs concept drift 不被跟踪”的解离（E22）与规范的方向相反检验。
