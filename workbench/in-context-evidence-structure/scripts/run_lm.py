@@ -99,8 +99,9 @@ def main():
     with open(args.out, "a") as f:
         for r in rows:
             d = res[r["uid"]]
-            f.write(json.dumps({"uid": r["uid"], "lp": [d[0][0], d[1][0]], "lp_first": [d[0][1], d[1][1]],
-                                "ntok": [d[0][2], d[1][2]]}) + "\n")
+            nc = len(r["cands"])
+            f.write(json.dumps({"uid": r["uid"], "lp": [d[c][0] for c in range(nc)], "lp_first": [d[c][1] for c in range(nc)],
+                                "ntok": [d[c][2] for c in range(nc)]}) + "\n")
     print("done", len(rows), f"{time.time()-t0:.0f}s")
 
 

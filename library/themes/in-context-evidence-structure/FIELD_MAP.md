@@ -55,3 +55,8 @@ ICL 研究在 2021–2026 形成了四条互相不太对话的线：
 3. **可交换集合**：按输入路由的映射（nonce 规则、SST、奇偶/大小翻转、类别条件变换）——连 recency 都很弱。
 机制：时间（不）敏感性已存在于 query 处的任务状态（E17b，ρ=0.95）；标签流的结构推断由晚层游程头承载（E10）。原因：任务同质的训练统计（E12 toy 从零复现；E18 LoRA 部分修复）。
 **对领域的意义：** “ICL 是 Bayesian 吗”的争论需要按 regime 类型分开回答；“order sensitivity”在三类里含义完全不同（结构推断 / recency 偏置 / 无方向的特异性噪声）。
+
+## 7. 20:15 更新：用流式学习的标准术语重述（Gama et al. 2014, ACM CSUR *A Survey on Concept Drift Adaptation*）
+- **prior / output-distribution drift**（P(y) 或输出形态变化：标签流、大写↔反转、输出语言）→ LLM 的 in-context 聚合**能**做方向正确的变化/噪声区分（标签流 13/13 模型；大写多数；翻译 2/3 模型）。
+- **real concept drift**（P(y|x) 变而 P(y) 不变：所有分类翻转、反义↔同义、首/末字母、字母后继、类别条件变换）→ **不能**（集合或仅 recency）；唯一例外是数值偏移在 Qwen3 系列。
+- 候选主旨：**In-context learners detect output drift, not concept drift.** 在流式学习里，real drift 恰恰是需要“重新训练”的那一类；ICL 作为“无需训练的适应”，在最需要的地方失灵。
