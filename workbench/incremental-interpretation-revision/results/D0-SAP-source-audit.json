@@ -1,0 +1,86 @@
+{
+  "url": "https://github.com/caplabnyu/sapbenchmark",
+  "revision": "15e61066d510b5349e17740e6488c976abc3e1ac",
+  "license": "MIT",
+  "proxy_used": false,
+  "files": {
+    "LICENSE": {
+      "sha256": "43e8c6ddd8961b25ccd8942bf0e81fb92d320da15249ce994b81ff8db9fd8e96",
+      "git_blob_sha1": "5523c6edebaac7ed4efbb6cadf579ed050951c31",
+      "bytes": 1066
+    },
+    "readme_SAP.txt": {
+      "sha256": "830ddddde9a90ff2352297866936bf7146b88cd96f78d2843cdacb1407f840e9",
+      "git_blob_sha1": "9d88753d817af18cd8196fd6511c7961826a93ff",
+      "bytes": 1303
+    },
+    "Items for all subsets.xlsx": {
+      "sha256": "967a0e79ac6337bdba62c9c0c5e56e66ddfd8b7bb6a496b4fc220014e6e992c4",
+      "git_blob_sha1": "8db9e3b753701c156086b72e0451a1657db2473b",
+      "bytes": 49830
+    },
+    "Surprisals/data/items_ClassicGP.csv": {
+      "sha256": "484631a2f6201a0818d6c5faf0c9cb2964bd5bebe3de68fcb4392c9f363b5ba5",
+      "git_blob_sha1": "e0836b14d0a9249d9f72189588100e023c39e92c",
+      "bytes": 18182
+    },
+    "SAP_preprocessing.R": {
+      "sha256": "820d2e4d9368ed4157bb27a2d06157069cf4b45b947a68c60146ad755751d89d",
+      "git_blob_sha1": "5465450e8c88c4e0a2e16e006400061b6c147874",
+      "bytes": 13899
+    }
+  },
+  "subset": "72 published ClassicGP paired sentence/questions; no participant or huge fitted-model downloads",
+  "rows": 72,
+  "sentence_variants": 144,
+  "lexical_sets": 24,
+  "constructions": {
+    "NPS_UAMB": 24,
+    "NPZ_UAMB": 24,
+    "MVRR_UAMB": 24
+  },
+  "source_option1_gold": 30,
+  "source_option0_gold": 42,
+  "yes_no_questions": 60,
+  "target_mark_xlsx": 34,
+  "target_mark_csv": 40,
+  "target_mark_disagreements": [
+    {
+      "item": 1,
+      "construction": "NPS",
+      "xlsx": false,
+      "csv": true
+    },
+    {
+      "item": 2,
+      "construction": "NPS",
+      "xlsx": false,
+      "csv": true
+    },
+    {
+      "item": 2,
+      "construction": "NPZ",
+      "xlsx": false,
+      "csv": true
+    },
+    {
+      "item": 4,
+      "construction": "NPS",
+      "xlsx": false,
+      "csv": true
+    },
+    {
+      "item": 6,
+      "construction": "NPS",
+      "xlsx": false,
+      "csv": true
+    },
+    {
+      "item": 7,
+      "construction": "NPS",
+      "xlsx": false,
+      "csv": true
+    }
+  ],
+  "canonical": "Original Excel; same sentence/question/options/gold in CSV, both target flags retained"
+}

@@ -59,6 +59,11 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('predictions',type=Path);ap.add_argument('--out',type=Path,required=True)
     ap.add_argument('--experiment',default='E00');args=ap.parse_args()
     rows=[json.loads(line) for line in args.predictions.read_text().splitlines()]
+    config_path=args.predictions.parent/'config.json'
+    if config_path.exists():
+        config=json.loads(config_path.read_text())
+        assert config.get('predictions_sha256')==sha(args.predictions),'Run is unfinished or predictions changed; wait for inference completion'
+        assert len(rows)==config['task_count'],'incomplete task coverage'
     if args.experiment in ('E00','E04'):result=e00(rows)
     elif args.experiment=='E03':
         from order_audit import analyze_order
@@ -75,10 +80,20 @@ def main():
     elif args.experiment=='E08':
         from focus_audit import analyze_focus
         result=analyze_focus(rows)
+    elif args.experiment=='E09':
+        from sap import analyze_sap
+        result=analyze_sap(rows)
+    elif args.experiment=='E10':
+        from option_access import analyze_access
+        result=analyze_access(rows)
+    elif args.experiment=='E11':
+        from role_reference import analyze_reference
+        result=analyze_reference(rows)
     else:
         from revision_map import analyze_revision
         result=analyze_revision(rows)
     result.update(predictions_sha256=sha(args.predictions),row_count=len(rows),bootstrap_seed=20261005,bootstrap_draws=10000)
+    result['analysis_code_sha256']={p.name:sha(p) for p in Path(__file__).parent.glob('*.py') if p.name in ('analyze.py','focus_audit.py','native_audit.py','revision_map.py','sap.py','option_access.py','role_reference.py')}
     args.out.write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result.get('gate_inputs',{}),indent=2))
 

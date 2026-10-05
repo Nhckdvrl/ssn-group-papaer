@@ -34,7 +34,7 @@ def analyze_native(rows):
             ids=sorted({r['pair_id'] for r in sub})
             def vals(pid,c,q,m):return {s:ix[(s,pid,c,q)][m] for s in ids if (s,pid,c,q) in ix}
             def diff(a,b):return {s:a[s]-b[s] for s in a.keys()&b.keys()}
-            def stats(x):return estimate(list(x.values())) if x else {'estimate':None,'ci95':None,'n_sets':0}
+            def stats(x):return estimate([x[s] for s in sorted(x)]) if x else {'estimate':None,'ci95':None,'n_sets':0}
             prefix=f'{stratum}/{subtype}'
             for m in ('correct','p_yes','choice_mass'):
                 for pid in sorted({r['prompt_id'] for r in sub}):

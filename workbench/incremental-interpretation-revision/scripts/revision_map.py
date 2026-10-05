@@ -19,7 +19,7 @@ def analyze_revision(rows):
             if len(values)==1:
                 return {'n_sets':1,'estimate':float(next(iter(values.values()))),'ci95':None,'pair_ids':sorted(values),
                         'uncertainty_note':'Only one lexical set: a bootstrap interval would give spurious zero-width precision.'}
-            return dict(estimate(list(values.values())),pair_ids=sorted(values)) if values else {'n_sets':0,'estimate':None,'ci95':None,'pair_ids':[]}
+            return dict(estimate([values[s] for s in sorted(values)]),pair_ids=sorted(values)) if values else {'n_sets':0,'estimate':None,'ci95':None,'pair_ids':[]}
         prompts=sorted({r['prompt_id'] for r in selected})
         for family in ('NPZ','NPS','MVRR'):
             sub=[r for r in selected if r['construction']==family]
