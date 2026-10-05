@@ -41,10 +41,11 @@ def analyze(cache,probability,nli):
     rows=old+anchor;conditions=('gp','explicit_cue','event_anchor_only');modes=('original_activity','same_actor','other_actor')
     families=collections.defaultdict(set)
     for r in rows:families[r['verb_family']].add(r['pair_id'])
-    for cohort in ('all','eligible','prior_and_ablation_faithful'):
+    for cohort in ('all','eligible','anchor_acceptable_common','prior_and_ablation_faithful'):
         def qualifies(r):
             if cohort=='all':return True
             if cohort=='eligible':return r['eligible']
+            if cohort=='anchor_acceptable_common':return r['condition']!='event_anchor_only' or r['acceptable']
             return r['prior_faithful'] and (r['condition']!='event_anchor_only' or r['faithful_ablation'])
         ix={(r['pair_id'],r['condition'],r['readout_actor_mode'],r['role_evidence'],r['exclusion_style'],r['readout_frame'],r['target_kind']):r for r in rows if qualifies(r)}
         keep={f:sorted(sids) for f,sids in families.items() if all((sid,c,m,e,s,fr,t) in ix for sid in sids for c in conditions for m in modes for e in ('reference_only','initial_patient_only') for s in ('named','generic') for fr in ('activity','neutral_entity') for t in ('source_np','other_source_np'))}
@@ -81,8 +82,10 @@ def analyze(cache,probability,nli):
                         for f in keep:details[f][key]=vv[f]
         out['probability']['per_family'][cohort]=[dict(verb_family=f,source_items=keep[f],**details[f]) for f in sorted(keep)]
     rows=on+nn;kinds=('old_supported','old_excluded','same_actor_new_activity','other_actor_new_activity','unrelated_unknown_control')
-    for cohort in ('clear_gold','prior_and_ablation_faithful_clear_gold'):
-        sub=[r for r in rows if r['gold_relation'] is not None and (cohort=='clear_gold' or (r['prior_faithful'] and (r['condition']!='event_anchor_only' or r['faithful_ablation'])))]
+    for cohort in ('clear_gold','anchor_acceptable_common_clear_gold','prior_and_ablation_faithful_clear_gold'):
+        sub=[r for r in rows if r['gold_relation'] is not None and (cohort=='clear_gold' or
+             (cohort=='anchor_acceptable_common_clear_gold' and (r['condition']!='event_anchor_only' or r['acceptable'])) or
+             (cohort=='prior_and_ablation_faithful_clear_gold' and r['prior_faithful'] and (r['condition']!='event_anchor_only' or r['faithful_ablation'])))]
         bysource=collections.Counter(r['pair_id'] for r in sub)
         keep={f:sorted(sids) for f,sids in families.items() if all(bysource[sid]==180 for sid in sids)}
         out['nli']['cohorts'][cohort]=keep;details={f:{} for f in keep};carry={};accuracies={}
