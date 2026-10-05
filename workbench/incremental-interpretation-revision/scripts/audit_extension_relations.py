@@ -15,6 +15,9 @@ PROMPT = '''You are independently annotating published English NP/Z stimuli, not
 
 
 def packets(cache, cohort):
+    provenance = json.loads(cohort.with_suffix('.audit-summary.json').read_text())
+    assert provenance['snapshot_sha256'] == sha(cohort)
+    assert provenance['source_sha256'] == sha(cache / 'normalized/jurayj.jsonl')
     source = list(map(json.loads, (cache / 'normalized/jurayj.jsonl').read_text().splitlines()))
     components = {r['pair_id']: r['components'] for r in map(json.loads, (cache / 'normalized/jurayj-components.jsonl').read_text().splitlines())}
     selected = list(map(json.loads, cohort.read_text().splitlines()))
@@ -62,6 +65,8 @@ if __name__ == '__main__':
         reviews = list(pool.map(lambda item: preaudit_variants.one(item, a.model, a.out), items))
     report = dict(model=a.model, workers=a.workers, source_items=len(items), questions=4 * len(items),
                   cohort_sha256=sha(a.cohort), packets_sha256=sha(a.out / 'packets.json'),
+                  source_sha256=sha(a.cache / 'normalized/jurayj.jsonl'),
+                  components_sha256=sha(a.cache / 'normalized/jurayj-components.jsonl'),
                   proxy_used=False, semantic_gold_adopted=0,
                   scope='Source-relation annotation to design a later language intervention; no new Qwen prompts, stimuli or inference.',
                   reviews=reviews)
