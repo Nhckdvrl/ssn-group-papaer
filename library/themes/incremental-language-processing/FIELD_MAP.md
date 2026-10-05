@@ -150,3 +150,7 @@ E33定位追加：Pucci/Li/Sinclair2026-09 preprint已拥有生产priming的词�
 E46 8cells把人工frame作用分开：身份说明比report变化更大且与event reification交互，但identity statement meaning与词串/重复曝光还没分清。E47专门检验断言地位/未核实引用/纯inventory，引用控制已有Reset等owner，只有具体role迁移条件能成为精确增量。新[自然GUM资产](gum-natural-reference-assets.md)43文档只做来源审计，无event语义gold和推断；不另开研究对象。
 
 E47实际结果：inventory−absent newSame D−3.849bits、unverified−asserted仅+1.076；原identity meaning非必要，不能包装静态身份导致错误global constraint。old患者1536正确、status383/384，泛泛知道/使用gap已有owner。清单对new−old J CI跨0但谓词差+1.940，下一需要reference identity/form和自然材料，而不是词句/模型sweep。
+
+## E48前补读：检索干扰不等同解释修订
+
+[Gur-Arieh/Geva/Geiger ICLR2026](gur-arieh2026-mixing-entity-retrieval.md)实际读v2§1–3.4：三binding检索机制＋反事实输出区分；[Van Dyke/McElree2006](vandyke2006-retrieval-interference.md)实际读Intro/设计/Discussion：保持encoded load、改变retrieval cue区分解释。一般词汇与实体检索、类别匹配、cue-overload均不是本线首创。E48别名交叉用于必要表达定位，下一需要明确角色gold的用途或自然语篇证据；不用提示概率gap包装新颖性。
