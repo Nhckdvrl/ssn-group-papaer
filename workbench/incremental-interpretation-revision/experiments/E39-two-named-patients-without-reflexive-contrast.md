@@ -1,6 +1,6 @@
 # E39：两个具名患者，移除self/reciprocal结构混杂（2026-10-06）
 
-- **状态：** COMPLETED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；role evidence还是reflexive/non-reflexive construction及一般action association。
 - **问题（一句话）：** 当两个role世界都为非自向的具名患者、词袋对称时，旧/新event的预测方向翻转还存在吗？

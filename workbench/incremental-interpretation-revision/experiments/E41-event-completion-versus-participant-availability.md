@@ -14,3 +14,5 @@
 - **命令：** availability_roles.py build/adopt + event_identity_infer.py E41 + time_indexed_role.py E41 current/availability；raw perpolicy分片无跨GPU集群，全部cache留hash。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+跑前R8固定单句：`Answer readiness questions from the new activity description, treating unreported conditions as unspecified; for earlier participant questions, use the explicitly reported earlier activity.` 三独立Luna全5184packet审计、候选/协议范围/hash覆盖；ready描述全部starting conditions，不只是willing。D0记录全部grammar/uncertain，尚未推理。4608causal contexts已核。

@@ -1,0 +1,11 @@
+{
+  "experiment": "E38",
+  "first_response_review_sha256": "b625bcb303c5c85219abb6c1812f379f5164e68166563d08bd94324b5f053096",
+  "corrected_review_sha256": "1c130520b78b1d6eed1c2cff05d3c58de56f1d8e6c931bfe83f30b72da5acb09",
+  "independent_cross_review_sha256": "e08ec5199f3ed83092748df99633b4a78876ea89e1342b8b1a897d8c6769aab3",
+  "changed_class_codes": 37,
+  "class_agreement_corrected_cross": 768,
+  "interpretation_dependent_cross": 4,
+  "cause": "Auditor manually transcribed per-chunk class arrays with errors; nonunique ID suffix used in a later patch overwrote wrong row. Full ID/hash binding was preserved and did not verify semantic correctness. Original response audit retained; cross-auditor independently reread all 768 actual packets. No gold auto-swapping.",
+  "actual_inputs_outputs_unchanged": true
+}

@@ -29,20 +29,27 @@ def run(args):
             assert old['request_sha256'] == request_hash
             return old
         (args.out / (uid + '.request.json')).write_text(json.dumps(payload, indent=2) + '\n')
-        s = requests.Session()
-        s.trust_env = False
-        start = time.time()
-        r = s.post('https://api.stepfun.com/step_plan/v1/messages', headers={'Authorization': 'Bearer ' + secret},
-                   json=payload, timeout=(15, 180))
-        if not r.ok:
-            raise RuntimeError('Step5 HTTP ' + str(r.status_code))
-        response = r.json()
         rp = args.out / (uid + '.response.json')
-        rp.write_text(json.dumps(response, indent=2) + '\n')
+        start = time.time()
+        reused = rp.exists()
+        if reused:
+            response = json.loads(rp.read_text())
+        else:
+            s = requests.Session()
+            s.trust_env = False
+            r = s.post('https://api.stepfun.com/step_plan/v1/messages', headers={'Authorization': 'Bearer ' + secret},
+                       json=payload, timeout=(15, 180))
+            if not r.ok:
+                raise RuntimeError('Step5 HTTP ' + str(r.status_code))
+            response = r.json()
+            rp.write_text(json.dumps(response, indent=2) + '\n')
         if response['stop_reason'] != 'end_turn':
             print(uid, 'incomplete', response['stop_reason'], flush=True)
             return dict(id=uid, status='incomplete', stop_reason=response['stop_reason'], response_sha256=sha(rp))
         content = ''.join(b['text'] for b in response['content'] if b['type'] == 'text')
+        content = content.strip()
+        if content.startswith('```json\n') and content.endswith('```'):
+            content = content[len('```json\n'):-3].strip()
         annotation = json.loads(content)
         assert annotation['id'] == uid
         assert annotation['grammar'] in ('acceptable', 'marginal', 'unacceptable')
@@ -50,7 +57,7 @@ def run(args):
             assert type(annotation[key]) is bool
         assert set(annotation['fact_patients']) == set(row['facts']) == set(annotation['exhaustivity'])
         report = dict(status='complete',model=response.get('model'), fields_sha256=sha(args.fields), request_sha256=request_hash,
-                      response_sha256=sha(rp), proxy_used=False, wall_seconds=time.time() - start,
+                      response_sha256=sha(rp), proxy_used=False, response_reused=reused, wall_seconds=None if reused else time.time() - start,
                       annotation=annotation)
         path.write_text(json.dumps(report, indent=2) + '\n')
         print(uid, 'complete', annotation['grammar'], flush=True)
