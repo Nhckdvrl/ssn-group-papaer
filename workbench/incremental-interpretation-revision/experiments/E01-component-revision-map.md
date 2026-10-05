@@ -36,3 +36,8 @@
 - 仍使用事前登记的各family源序号≤3，不按Qwen结果选择；完整外审覆盖54/60变体、232候选QA、228eligible，gold全部null。新增外审返回补齐更多NPS/MVRR和NPZ配对，未审/timeout六变体仍保留缺失记录，不当作语义无效。
 - 8个既定配置全跑，共1824任务；snapshot1结果与输入原样保留。新增行允许追三family的cue/blocker/extension读数结构，但每family最多3词汇组，区间只是小样本描述，不能称跨词汇稳定机制。
 - 输入SHA256 `32756bdc1f60848ab0764e4ae900ed5025f6f5cdc512b3198f862c06d7764a52`；审计与来源见[D0](../results/D0-opencode-exploratory-snapshot2.json)。
+
+### Snapshot2结果
+- 完整1824任务/228eligible QA，189.35s、0.05260 GPU·h，前3源组每family最多3lexical sets，缺失的6变体仍未补标。全部正确率字段null。neutral/reg/base NPZ final semantic short GP≈1、cue=1；原role short GP=.0134 [.0000,.0360]、cue=.6681 [.0043,1.0000]。NPZ cue extension−short role −21.69 pp [−56.20,+1.17]，semantic约0；nonGP role −44.63 [−88.05,−1.21]（n2），semantic约0。不是“语义理解无损”的全能力证明，只是这些独立调用对原句中最终事件的支持。
+- MVRR long−short final semantic +48.69 pp [≈0,+97.39]（n2），role基本near floor；与NPZ长句方向不同，不能预设所有构式extension=更深承诺。NPS GP long仅一组、CI=null。更多组到来前不把方向差作为稳定跨构式finding。
+- [summary](../results/E01-opencode-snapshot2-summary.json)、[scores](../results/E01-opencode-snapshot2-scores.csv)、[config](../results/E01-opencode-snapshot2-config.json)。全八prompt保留；C01/C02不升级。按原决策追读数具体异常：E11外部head/full-NP/isolated审计已启动；不追加赢家prompt。
