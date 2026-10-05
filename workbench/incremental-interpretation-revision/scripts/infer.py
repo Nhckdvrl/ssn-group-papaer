@@ -40,7 +40,7 @@ def tasks_e00(cache,tokenizer):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
     ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
-    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06'],default='E00')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07'],default='E00')
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
     ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
     ap.add_argument('--system-frame',choices=['both','neutral','upstream'],default='both')
@@ -65,6 +65,9 @@ def main():
     elif args.experiment=='E06':
         from attachment_audit import tasks_attachment
         tasks=tasks_attachment(args.cache,tokenizer)
+    elif args.experiment=='E07':
+        from native_audit import tasks_native
+        tasks=tasks_native(args.cache,tokenizer,args.system_frame)
     else:
         from stimuli import tasks_jurayj
         assert args.data is not None

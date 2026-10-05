@@ -69,6 +69,9 @@ def main():
     elif args.experiment=='E06':
         from attachment_audit import analyze_attachment
         result=analyze_attachment(rows)
+    elif args.experiment=='E07':
+        from native_audit import analyze_native
+        result=analyze_native(rows)
     else:
         from revision_map import analyze_revision
         result=analyze_revision(rows)

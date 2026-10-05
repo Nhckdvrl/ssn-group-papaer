@@ -21,6 +21,14 @@ schema 含 DATA_PLAN 全部字段。未标注 ambiguity position、无上游 com
 
 后续诊断运行：`infer.py --experiment E03/E04/E05/E06 --dtype float32 --out 新目录`；E04 指定 `--model "$IIR_CACHE/models/Qwen3-1.7B"`。1.7B 用 `download_hf.py --repo Qwen/Qwen3-1.7B --revision 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e --out "$IIR_CACHE/models/Qwen3-1.7B"` 获取。下载直接请求镜像并 `trust_env=False`；已有正确文件按 hash 跳过，不重复下载。
 
-[共享 JSON Schema](schema.json) 与 `data.validate_record` 对齐；系统 Python 已有 jsonschema，可对 cache JSONL 逐条校验，无需向推理 venv 安装包。完整校验见 `../results/D0-schema-validation.json`。构造 Jurayj 时 `stimuli.py` 比较全部626句与固定上游 generator；疑似原句/语义问题保留在 ledger，但未经核实的 paired sets 与坏诊断题不进入推理。模型审计只作 advisory，严格记录 coverage 和输入版本；不能用一次模型 OK 自动升级 gold。
+[共享 JSON Schema](schema.json) 与 `data.validate_record` 对齐；系统 Python 已有 jsonschema，可对 cache JSONL 逐条校验，无需向推理 venv 安装包。完整校验见 `../results/D0-schema-validation.json`。构造 Jurayj 时 `stimuli.py` 比较全部626句与固定上游 generator；疑似原句/语义问题保留在 ledger。2026-10-05用户指定由Step5逐句逐题独立标注，不由agent自判语义gold；旧Ling advisory与历史agent flags保留作provenance，不作为E01筛选规则。
 
-E01 尚未注册/执行；必须先解决 strict calibration gate 或由人明确修改。E06 只使用自然 Amouyal 原句校准角色与事件读数，衍生552条QA在本地 `normalized/E06-attachment.jsonl`，句子未修改，问题生成代码/输入audit/hash进git。
+E01已注册；用户明确取消以calibration为停步gate，按系统测量继续。E06只使用自然Amouyal原句校准角色与事件读数，衍生552条QA在本地 `normalized/E06-attachment.jsonl`，旧结果和标签不修改。
+
+E01独立审计与推理入口（先核对实际返回完整，再批量）：
+```bash
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/step_audit.py --workers 4
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/adopt_step_audit.py
+CUDA_VISIBLE_DEVICES=0 "$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/infer.py --experiment E01 --data "$IIR_CACHE/normalized/jurayj-step5.jsonl" --dtype float32 --system-frame neutral --families NPZ --out "$IIR_CACHE/runs/E01-neutral-NPZ"
+```
+密钥读取仓库外0600文件或环境变量；HTTP显式`trust_env=False`，请求/响应hash、finish reason与ID完整覆盖记录在cache。实际API限流返回account concurrency=5，客户端默认4且绝不超过用户指定8；截断/timeout不算完成，不用相同截断参数盲重试。`adopt_step_audit.py`机械核对版本/覆盖并应用Step标签；全部诊断题保留null gold。`revision_map.py`保存contrast实际pair intersection和CI，role/semantic分开报告。
