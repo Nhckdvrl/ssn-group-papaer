@@ -22,7 +22,7 @@
 禁止预注册“LLM 不会完整修订”“旧解释一定残留”等结果。
 
 ## Idea 组合
-尚无 PROMISING idea。先完成 baseline / measurement。首批压力：
+已有第一条证据驱动的候选问题 [I01](ideas/I01-event-reference-or-lexical-echo.md)：活动回指与原词重现，哪个使旧患者关系再次影响正常续写？处于PILOT，尚无PROMISING idea。首批压力：
 - commitment timing；
 - revision completeness；
 - cue timing / cue strength；
@@ -33,7 +33,7 @@
 ## 主张摘要
 见 [CLAIMS.md](CLAIMS.md)。[E07](experiments/E07-native-readout-transfer.md) native顺序交互+60.87 pp [44.93,76.81]，C03为L1固定协议测量；[E08](experiments/E08-reading-focus-versus-final-query.md) 固定末尾目标题后，initial−final focus的GP交互+1.45 [−10.14,+13.04]，简单reading-goal故事支持不足。[E09](experiments/E09-published-comprehension-transfer.md) 原始SAP题句先cue−GP +33.33 [22.22,44.44] / +19.44 [11.11,29.17]，仍有mapping/顺序混杂；[E10](experiments/E10-question-versus-option-access.md) 拆位置后保留混合结构，不能归因task-directed parse。[E12](experiments/E12-input-probability-versus-answer-access.md) source消歧词交互+1.47 bits [.47,2.52]主要来自cue更易预测，不能叫承诺加深；转[E13](experiments/E13-natural-followup-without-diagnostic-question.md)原始自然后文用途：全S2 GP差−.031 / −.003 bits、两CI跨0，局部reference结果不确定。
 
-[E01](experiments/E01-component-revision-map.md) Step5已审3/626句、13QA/104任务，其余因HTTP402额度不足待审；free opencode外审snapshot1/2原概率层保持gold=null；最新授权下snapshot3固定279句/1158eligible QA、999独立clear标签，4632任务三构式分卡已完成（.09771 GPU·h），correct仅外部标注agreement。NPZ同9源组initial-event extension交互句先+51.63 [21.60,84.02]pp、题先−20.29 [−53.11,9.93]，尚不支持统一承诺解释，[E11](experiments/E11-extension-role-reference-audit.md)首批196任务n1：无歧义long blocked role .0404→fullNP .9999（CI=null）；继续外审，追unambiguous extension也影响role的原因。[知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md) 17篇论文/18个PDF版本缓存、逐篇读取范围和近邻贡献归属；[E14](experiments/E14-event-identity-versus-extra-event.md) 无诊断Q、7明确活动的same−separate患者偏好交互−2.61 bits [−3.78,−1.09]，暂有aspect/referent混杂；接E15单词级控制拆解释。尚无已证成的novel idea。
+[E01](experiments/E01-component-revision-map.md) Step5已审3/626句、13QA/104任务，其余因HTTP402额度不足待审；free opencode外审snapshot1/2原概率层保持gold=null；最新授权下snapshot3固定279句/1158eligible QA、999独立clear标签，4632任务三构式分卡已完成（.09771 GPU·h），correct仅外部标注agreement。NPZ同9源组initial-event extension交互句先+51.63 [21.60,84.02]pp、题先−20.29 [−53.11,9.93]，尚不支持统一承诺解释，[E11](experiments/E11-extension-role-reference-audit.md)首批196任务n1：无歧义long blocked role .0404→fullNP .9999（CI=null）；继续外审，追unambiguous extension也影响role的原因。[知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md) 17篇论文/18个PDF版本缓存、逐篇读取范围和近邻贡献归属；[E14](experiments/E14-event-identity-versus-extra-event.md) 无诊断Q、7明确活动的same−separate患者偏好交互−2.61 bits [−3.78,−1.09]，暂有aspect/referent混杂；接E15单词级控制拆解释。E15/E16/E17分解得到患者特异、依赖原谓词的续写差异，接E18语义保持的谓词释义；尚无已证成的novel idea。
 
 ## 痛点摘要
 见 [PAIN_LOG.md](PAIN_LOG.md)。

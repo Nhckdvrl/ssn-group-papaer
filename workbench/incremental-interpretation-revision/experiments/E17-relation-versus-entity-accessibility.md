@@ -1,6 +1,6 @@
 # E17：原事件依赖与中性实体感知（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** EXPLORE
 - **对应：** P10；E16患者特异测量的解释范围、C01/C02。
 - **问题（一句话）：** GP的原患者偏好及same/separate调节，是一般实体可及性，还是需要重新调用原事件谓词？
@@ -11,9 +11,15 @@
 - **噪声地板 + MIE：** FP32词级漂移≈1e−5bits；7主source抽样宽度为主要不确定性。无任意效应gate，效应大小/CI/逐项模式决定解释。
 - **混杂审计：** 两frame的语义谓词及S2结构本来就不同，不把frame交互当隔离某个神经机制。notice新对象需引入新实体，对own/other差值会有基础影响；cross NP choice平均及GP/comma提及次数同一，报告独立ref flags。relation frame重复原verb，neutral不重复，因此若relation特异，仍有verb-NP lexical retrieval vs语义event binding竞争；下一步才区分。不存在教师标签正确率，所有输入评分、selection oddity不按模型结果排除。
 - **决策表（跑之前写）：** neutral D_M/A_M也接近relation → 一般entity accessibility足以解释更多，降低event-binding叙事；relation K/A_K稳定且neutral较小 → 原谓词依赖的reuse更受支持，接同词汇合法/非法结构或late explicit role证据控制，不能直接称内部event graph；neutral也有部分变化且K保留 → 混合解释量化，不选漂亮source；CI宽/各source反向 → 查结构与material，不铺新模型/prompt。
-- **算力预算：** 一张空闲H20，528新输入，预计≤.03 GPU·h。**实际：** 待运行。
+- **算力预算：** 一张空闲H20，528新输入，预计≤.03 GPU·h。**实际：** 21.141s / 0.00587247 GPU·h；528新输入。
 - **命令：** workbench内 `source scripts/env.sh`；`$IIR_PYTHON scripts/event_identity_infer.py --experiment E17 --data $IIR_CACHE/E17-material-preparation-v2/audited-v1.jsonl --out $IIR_CACHE/runs/E17`；`scripts/entity_accessibility.py analyze --cache $IIR_CACHE --new $IIR_CACHE/runs/E17 --out results/E17-summary.json`。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
-待运行；C01/C02仍L0。
+- 两审查528/528语法acceptable、neutral-role-clear；source 7组/全22均完整。不确定notice-wager selection保留，未筛选。
+- 7原episodic：neutral D_M无桥−1.304 [−2.610,.060]、same−.976 [−2.534,.689]、continued-separate−1.675 [−3.279,.111]bits；relation对应为+7.843/+7.823/+5.712。
+- K无桥+9.147 [6.183,11.896]、same+8.799 [5.749,11.736]、continued-separate+7.386 [4.939,9.796]。不能把CI跨0称neutral严格为0。
+- neutral活动桥交互A_neutral +.698 [.463,.927]，7/7正；relation A+2.111 [1.167,3.137]；A_K+1.413 [.539,2.411]，6/7正。全22 A_neutral+.112 [−.369,.509]、A_K+1.270 [.494,2.062]。
+- [统计](../results/E17-summary.json)、[config](../results/E17-config.json)、[分数](../results/E17-scores.csv)，执行git `2568a3ed8`。
+- 按混合解释分支：实体可及性不能解释全部患者特异GP响应；桥也调节neutral提及，不能讲纯粹事件scope。原谓词/患者依赖的额外响应稳定，但verb-NP关联与语义event binding仍竞争。此时应登记一个有证据来源的候选问题、更新近邻定位，下一decisive pilot区分词汇联结与合法结构修订，不继续堆这个桥。
+- C01/C02仍L0（尚无新语义能力/内部机制主张）；新增的是受控测量，不宣称已找到顶会idea。
