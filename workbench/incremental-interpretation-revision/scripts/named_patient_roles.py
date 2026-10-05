@@ -55,7 +55,7 @@ def adopt(directory,reviews,experiment='E39',version=1):
         j=json.loads(path.read_text());assert j['model']=='gpt-6-luna'
         for a in j['reviews']:
             assert a['id'] not in annotations;annotations[a['id']]=(a,sha(path))
-    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016)}[experiment]
+    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016),'E41':(4608,1152,5184)}[experiment]
     assert len(annotations)==sizes[2]
     report={};pending=[]
     for task,n in [('probability',sizes[0]),('question',sizes[1])]:
@@ -64,12 +64,15 @@ def adopt(directory,reviews,experiment='E39',version=1):
             a,h=annotations[r['review_id'] if task=='probability' else r['context_id']]
             assert a['grammar'] in ('acceptable','marginal','unacceptable') and isinstance(a['role_scope_clear'],bool) and isinstance(a['distinct_recipients'],bool)
             r.update(audit=a,audit_review_sha256=h,acceptable=a['grammar']=='acceptable',eligible=a['grammar']!='unacceptable' and a['role_scope_clear'] and a['distinct_recipients'])
+            if experiment=='E41':
+                assert isinstance(a['availability_scope_clear'],bool)
+                r['eligible']=r['eligible'] and a['availability_scope_clear']
             if task=='probability':
                 for k in ('sentence_sha256','role_context_sha256','target_phrase_sha256'):assert a[k]==r[k]
                 r['faithful_named_roles']=a['role_scope_clear'] and a['distinct_recipients']
             else:
                 for k in ('passage_sha256','question_sha256'):assert a[k]==r[k]
-                assert a['answer_class'] in ('source_candidate','other_candidate',None) and a['certainty'] in ('clear','interpretation_dependent','invalid')
+                assert a['answer_class'] in ('source_candidate','other_candidate','both_ready','unspecified',None) and a['certainty'] in ('clear','interpretation_dependent','invalid')
                 r['gold_answer_class']=a['answer_class'] if a['certainty']=='clear' else None;r['eligible']=r['eligible'] and r['gold_answer_class'] is not None
         out=directory/f'{task}-audited-v{version}.jsonl';assert not out.exists()
         audit=dict(variants=n,candidate_sha256=sha(directory/f'{task}-candidates-v1.jsonl'),review_sha256=[sha(p) for p in reviews],eligible=sum(r['eligible'] for r in rr),grammar=dict(collections.Counter(r['audit']['grammar'] for r in rr)))
