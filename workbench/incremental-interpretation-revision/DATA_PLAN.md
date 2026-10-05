@@ -85,4 +85,4 @@ opencode免费模型与Step模型均可用于逐条数据审计；额度、格�
 
 ## 独立Ceháková/Chromý2025材料（E24 preparation，尚未推理）
 
-[Zenodo v1 record16358492](https://zenodo.org/records/16358492)原Stimuli.zip10,891 bytes已明确无代理下载，发布MD5及内部三CSV SHA通过；API license CC BY4.0，publisher copyright notice一并保留。384experimental QA/48source（24NPZ/24MVRR），每source8条件，96unique sentences；70filler/3practice。[source audit](results/D0-Cehakova2025-source-audit.json)记录revision/hash/license，原CSV/脚本只cache。correct编码先保留不猜0/1映射，task script正在核对；原intransitive self问题不当逻辑gold。独立预测先在24NPZ/12同动词family验证C04，避免把派生版本当独立N；当前只提取/审字段，不事后挑源。
+[Zenodo v1 record16358492](https://zenodo.org/records/16358492)原Stimuli.zip10,891 bytes已明确无代理下载，发布MD5及内部三CSV SHA通过；API license CC BY4.0，publisher copyright notice一并保留。384experimental QA/48source（24NPZ/24MVRR），每source8条件，96unique sentences；70filler/3practice。[source audit](results/D0-Cehakova2025-source-audit.json)记录revision/hash/license，原CSV/脚本只cache。correct编码已由127KB PC Ibex archive原脚本核对：as=[yes,no]、hasCorrect=parseInt(correct)，0=Yes/1=No；内部embedded CSV与Stimuli.zip逐字一致；原intransitive self问题不当逻辑gold。独立预测先在24NPZ/12同动词family验证C04，避免把派生版本当独立N；当前只提取/审字段，不事后挑源。
