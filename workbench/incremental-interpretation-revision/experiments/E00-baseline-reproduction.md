@@ -1,6 +1,6 @@
 # E00：公开 Garden-Path 行为基线复现（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** REPRO
 - **对应：** C00
 - **问题（一句话）：** 本地 frozen-model harness 能否在 Amouyal 公开数据上复现已知的 GP-specific comprehension deficit，而 simple comprehension 保持基本正常？

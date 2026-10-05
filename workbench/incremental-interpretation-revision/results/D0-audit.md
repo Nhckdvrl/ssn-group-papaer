@@ -24,3 +24,5 @@
 
 ## 下载记录
 用户追加“下载不得走代理”之后，立即停止原下载。默认环境此前含本地 HTTP/HTTPS/ALL proxy；GitHub 小数据 clone 和 HF 初始部分下载发生在追加约束之前。后续 `scripts/env.sh` 清除代理，ModelScope 下载额外使用 `requests.Session.trust_env=False`。HF 直连失败，ModelScope 官方镜像直连可用。模型 mirror revision 与实际 SHA256 另存 manifest；不声称镜像 bytes 与 HF revision 已独立核对。
+
+补充核验：hf-mirror.com 无代理直连成功，HF revision 固定 b968826d9c46dd6066d109eabc6255188de91218。实际模型/tokenizer/config/LICENSE 的 14 个文件全部通过该 HF revision 的 LFS SHA256 或 git blob SHA1 校验，ModelScope 下载 bytes 可复用。[模型清单](D0-model-manifest.json)。
