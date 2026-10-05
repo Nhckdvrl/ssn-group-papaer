@@ -38,3 +38,10 @@
 [主统计](../results/E31-summary.json)、[native表述分层](../results/E31-nli-wording-summary.json)、[raw配置](../results/E31-probability-config.json)、[base](../results/E31-nli-base-config.json)、[repair](../results/E31-nli-repair-config.json)。
 
 **跑前独立外审与诊断补充：** 两审1920材料完整，NLI384全clear/undetermined，全部eligible/faithful。第二审发现12新搭配odd（8raw/4NLI，babies healing），第一审未标odd，分歧保留不覆盖；全部model评分，跑前增加selection-no-odd共同family敏感层，不因部分新V效果筛样本。neutral行选择关联未指定标uncertain是合理字段语义，不当成无效刺激。E30另外做POST-HOC native wording分层：named也同向迁移（sameActor separate63.40/second71.99pp），因此不是将raw named与native pooled混比制造相反方向；该分层全部结果/脚本保留，E31将named/generic native分层事前列为诊断读数。所有label maps依旧全报。
+
+
+### POST-HOC：actor与predicate不能合称一种旧关系保留
+
+按事前具名J的全部cohort再做actor对比，同V同actor−换actor为+1.812 [1.107,2.527]bits，不同V为+1.425 [.344,2.461]；actor×predicate交互+.387 [−.309,1.040]。人物标签匹配与谓词匹配的行为方向可能不同，但CI跨0不证明可加性，更不证明隐层关系分解。原词身份、only/focus以及否定/肯定对象的词序和动词距离仍竞争。新统计明确POST-HOC，脚本复现了初始one-off的每个数字。
+
+[分解统计](../results/E31-posthoc-identity-contrasts.json)，`scripts/decompose_identity_transfer.py`。
