@@ -139,3 +139,12 @@
 ## *The Alchemy of Thought: Understanding In-Context Learning Through Supervised Classification*（arXiv 2601.01290, 2026）`[摘要]`
 - 6 个文本分类数据集、3 个 LLM：demo 相关度高时 ICL 行为更接近 kNN 而非逻辑回归（“attention 更像 kNN 而非 GD”）；相关度低时 LLM 借参数记忆胜出。无时间/顺序分析。
 - 对我们：kNN/核回归视角（还有 Han 2023、Cho 2025）已被占有；我们的增量是它的**时间后果**——分类 ICL 按输入相似度而非时间选证据（“最近邻，不是最近期”，E21），以及“输出漂移被跟踪 vs concept drift 不被跟踪”的解离（E22）与规范的方向相反检验。
+
+## Xiong, Cai, …, Lee, Papailiopoulos — *Everything Everywhere All at Once: LLMs can In-Context Learn Multiple Tasks in Superposition*（ICLR 2025, arXiv 2410.05603）`[摘要]`
+- **发现：** 上下文里混合多种任务的 demo 时，模型的输出分布是各任务答案的混合（“任务叠加”），内部是各任务向量的混合；越大的模型越能同时保持多个任务。
+- **与我们的距离：** 我们的 concept drift 场景正是“同一输入格式下两个相反映射的叠加”。叠加文献把混合当作能力；我们问的是混合**是否按时间结构加权**——E02/E16 显示分类映射的混合权重≈两种映射的计数（可交换），E22 显示即使 regime 被标出，混合权重也不随“哪种映射更新”改变。E24 检验另一侧：混合能否按**输入可检索的上下文**（标注者名）来选择——若能，则“叠加 + 按相似度选择”可行，缺的是“按时间选择”。
+- **idea 来源：** 训练分布的任务混合 → 推理时的任务向量混合；我们的 toy（E12）与之同源（任务同质的训练 → 时间盲）。
+
+## Krishna Kumar — *Semantic Anchors in ICL: Why Small LLMs Cannot Flip Their Labels*（arXiv 2511.21038, 2025）`[摘要]`
+- **发现：** 1–12B 模型在全部反转标签的 demo 下学不会“反语义”分类器（semantic override 率为 0）；ICL 调整输入在已有语义方向上的投影，而不重写标签含义。
+- **与我们的距离：** 我们的自然任务一半 base 使用反转映射；在数字 small/large 上 allA 准确率 0.97（Qwen3-4B），说明在只有 2 类、输入简单时反转是可学的，与其结论在任务难度上有边界差异。对我们更重要的含义：若“映射”主要是投影到固定语义方向，那么 concept drift 要求在上下文内重写这一投影，比改写输出格式（只需复制表面特征）难得多——这与 E22 的格式/映射解离同向，可作为机制节的相关讨论。
