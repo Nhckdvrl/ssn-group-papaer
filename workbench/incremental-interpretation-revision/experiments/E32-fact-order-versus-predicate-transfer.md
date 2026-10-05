@@ -14,3 +14,7 @@
 - **命令：** `scripts/role_fact_transfer_order.py build/adopt/analyze`；冻结推理`event_identity_infer.py --experiment E32`。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+## 跑前审计与输入核对
+
+960独立逐条audit，ID/hash全覆盖；grammar acceptable720/marginal240，所有facts/scope/target角色clear。parent flags全部保留；新order字段独立。词袋相同、因果目标token一致、24source各40variant核验。旧锚的bath/shaving/cuddle边缘意见如实保留；尚无新order模型分数。

@@ -1,8 +1,7 @@
-# Scalar alternative activation for implicature processing: a lexical decision study with antonyms and negation（Language and Cognition 2026；primary摘要/引言部分）
+# Scalar alternative activation for implicature processing: a lexical decision study with antonyms and negation（Language and Cognition 2026；primary正文部分）
 
-[作者机构PDF](https://bpb-us-e1.wpmucdn.com/sites.northwestern.edu/dist/b/6807/files/2026/01/Lacinaetal_2026_LanguageandCognition.pdf)，DOI10.1017/langcog.2026.10060。实际读abstract、§1.1/1.2概念与两理论预测；实验细节/统计未核对，未本地下载全文，不计cached PDF。
+[作者机构PDF](https://bpb-us-e1.wpmucdn.com/sites.northwestern.edu/dist/b/6807/files/2026/01/Lacinaetal_2026_LanguageandCognition.pdf)，DOI10.1017/langcog.2026.10060。已读abstract、§1.1/1.2、§3预测/材料/程序/结果、§4联合分析设计及结果、§5discussion。参考文献与全部模型诊断未核对；22页primary PDF经浏览器读取，本地无代理下载失败（Network unreachable），仍不计cached PDF。
 
-- **形态/来源（DOCUMENTED）：** 用negation与antonym两操作区分scale限定激活与较广备选激活后受context筛选的account；3个人类lexical-decision实验，无LM实验。
-- **已拥有：** 与词关联的多种备选可能先激活再收窄；否定可取消某些activation，only/focus也涉及备选及exclusion。这些宽认知观点不属于本线novelty。
-- **对I01的竞争解释：** 具名not-X/only-Y可能为同谓词下一event提供关系备选；这是由既有理论启发的解释，不是已被我们的数据证明的机制，也不等同scalar adjective结论。
-- **精确距离：** 我们的对象是跨event/actor/predicate的participant关系使用与native范围判读，并非重新做人类scalar priming。需要等价信息的focus/否定形式干预和同一动作释义，才能区分备选激活、词关联和semantic relation记忆。
+- **形态/来源：** 比较只激活同尺度强项与较广关联词先激活后受语境收窄两个account。3个人类lexical-decision实验，否定和反义关系共同干预；不是LM工作。
+- **实测：** 非否定反义词有较弱priming，否定的同尺度/反义prime缺少清晰priming；联合分析直接测否定×prime类型，Bayes-factor的支持强度依赖prior。不能用“一个显著另一个不显著”替代交互，也不能把这些词反应时结论推广为一般关系抑制。
+- **对I01：** 宽泛备选先激活再筛选不是novelty；但它不直接预测我们跨event/actor/predicate的排他患者方向。`not-X but only-Y`也不是单一形容词否定，需要词序、focus及同动作释义区分，不从论文名称认定已证实focus机制。

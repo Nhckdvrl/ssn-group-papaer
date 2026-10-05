@@ -124,3 +124,5 @@ E29消融完整S1后仍有新活动效应，不能卖GP的必要残留；E30 sec
 [Zhou/Frank/McCoy NAACL2025](zhou2025-error-driven-priming.md) actual methods/discussion提醒自然连续上下文的predictive adaptation/IFE已有owner。[Britton2024](britton2024-discourse-connectives.md)仅primary摘要说明connectives可使event expectations反转；[Lacina2026](lacina2026-focus-alternatives.md)primary引言说明focus/negation备选激活是既有解释资源。不能把context contrast或否定后备选自身当新机制，须保留scope/predicate/participant的具体预测结构。读取范围逐卡明示，不把primary metadata等同读完全文。
 
 进一步回读[HANS ACL2019](mccoy2019-nli-heuristics.md)正文三heuristic、negation与模板设计：NLI里lexical/polarity匹配是必须保留的普通解释，E31换V分类改善不是新scope mechanism的独立证据。候选主干维持在正常患者预测的方向与scope/predicate依赖；native只作辅助，不能以其错误包装首次“模型不理解事件”。下一同动作释义也须控制结构/词邻近，而不单纯找保留效果的同义词。
+
+E32前继续核对Lacina2026正文（§3–5，强度依赖prior）与Rana2026 negative-instruction pressure preprint（存在概率示例不一致）。宽泛备选激活/禁词rebound不作主旨；对应paper cards登记实际读取范围，E32测试更具体的旧角色事实词序/焦点及跨事件预测。
