@@ -56,3 +56,5 @@
 - 2026-10-05：[E26](experiments/E26-scoped-constraint-access-versus-portable-trace.md)/[统计](results/E26-summary.json)原句final主体读数GP94.79/91.67%、cue100/100%，但互补scope比较base原活动两问全部No（平均50）；八项joint base0。未建立scoped constraint access，不把50%叫scope failure；先E27匹配allowed-proposition控制区分No default/命题验证/比较算子。C04 L1/I01 PILOT。
 
 - 2026-10-05：[E28](experiments/E28-three-way-event-constraint-state.md)/[统计](results/E28-summary.json)未证明局部约束与portable预测共存时scope判断正确：all12新活动U同actor33.68 [23.96,44.79]% /otherActor65.28 [59.72,70.49]%，unrelated U100%；signed-role迁移GP58.60/12.34pp、cue55.92/13.53，映射波动大。不能归因为GP-specific或与E25同一机制；C04 L1/I01 PILOT，下一源S1消融。
+
+- 2026-10-05：[E29](experiments/E29-source-ablation-dual-readout.md)/[统计](results/E29-summary.json)移除完整S1仍有native scope迁移，同actor61.25 [52.07,70.07]pp、换actor10.97 [4.81,18.79]，GP不是必要条件。具名事实的患者预测J旧event+2.88 [1.81,3.83]bits，新同actor−1.59 [−2.45,−.71]、另一actor−3.06 [−4.12,−2.04]；POST-HOC实际activity方向也翻转，非只neutral主导。generic不同、边界词contrast竞争尚未排除，C04 L1/I01 PILOT；不能硬合为旧绑定残留。

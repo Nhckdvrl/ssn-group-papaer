@@ -33,7 +33,11 @@ def analyze(cache,probability,nli):
         for k in ('model_manifest','dtype','tf32','attention','seed','torch','transformers','frozen'):assert c[k]==cfg[k],k
     assert cfg['batch_size']==configs[1]['batch_size']==configs[2]['batch_size']==4
     assert nc['batch_size']==oc['batch_size']==8
-    for k in ('base_definition','scope_repair','class_labels','mapping_policy','thinking'):assert nc[k]==oc[k],k
+    for k in ('base_definition','scope_repair','mapping_policy','thinking'):assert nc[k]==oc[k],k
+    # Rust-backed get_vocab iteration can return identical token sets in a
+    # different order across processes. The label classes must be identical.
+    assert nc['class_labels'].keys()==oc['class_labels'].keys()
+    assert all(set(nc['class_labels'][k])==set(oc['class_labels'][k]) for k in nc['class_labels'])
     out=dict(experiment='E29',physical_probability_tasks=1152,physical_nli_tasks=1440,source_items=24,
              actual_gpu_hours=cfg['gpu_hours']+nc['gpu_hours'],bootstrap_unit='12 verb families, two published source items averaged',
              bootstrap_draws=10000,bootstrap_seed=20261005,

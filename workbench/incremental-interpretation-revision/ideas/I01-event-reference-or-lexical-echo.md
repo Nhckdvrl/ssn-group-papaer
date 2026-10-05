@@ -43,3 +43,6 @@
 
 
 **E28反馈：** unrelated U控制全正确，但新活动U同actor仅33.68 [23.96,44.79]% /otherActor65.28 [59.72,70.49]%；正负旧role carryover58.60/12.34pp，cue55.92/13.53几乎同形且label mapping波动大。因此不能宣称local scoped-use已经成功。E25 likelihood与E28分类迁移的actor梯度不同，不能硬合成同一残留机制。下一[E29](../experiments/E29-source-ablation-dual-readout.md)消融源S1、保留明确旧活动事实并平行测两种用途，区分source-conditioned memory与correction自身过推广；不是继续优化YesNo，状态仍PILOT。
+
+
+**E29反馈与更精确的解释压力：** 源S1被完全移除，native旧role正负向新活动迁移仍强；这部分不需GP历史。具名role的患者预测方向在原event为正、新event为负，而neutral近0；generic受未提及NP的salience主导，不能概括。候选问题因此收紧为：**晚来的参与者信息，何时被当成新事件的惯例，何时被当成应改变的关系？** 下一E30分离explicit boundary词的对比意味与两事件的身份不同；这不是generic QA/prob gap，须预测哪种边界使患者迁移改变。原priming/GP/negation owners不变。尚无机制/能力升级，仍PILOT。
