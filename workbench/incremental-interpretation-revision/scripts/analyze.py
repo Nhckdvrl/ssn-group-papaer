@@ -63,6 +63,9 @@ def main():
     elif args.experiment=='E03':
         from order_audit import analyze_order
         result=analyze_order(rows)
+    elif args.experiment=='E05':
+        from response_audit import analyze_response
+        result=analyze_response(rows)
     else:
         from stimuli import analyze_jurayj
         result=analyze_jurayj(rows)

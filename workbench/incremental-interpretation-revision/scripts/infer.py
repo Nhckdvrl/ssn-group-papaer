@@ -40,7 +40,7 @@ def tasks_e00(cache,tokenizer):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
     ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
-    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04'],default='E00')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05'],default='E00')
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
     ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
     ap.add_argument('--out',type=Path,required=True);args=ap.parse_args()
@@ -57,11 +57,16 @@ def main():
     elif args.experiment=='E03':
         from order_audit import tasks_order
         tasks=tasks_order(args.cache,tokenizer)
+    elif args.experiment=='E05':
+        from response_audit import tasks_response
+        tasks=tasks_response(args.cache,tokenizer)
     else:
         from stimuli import tasks_jurayj
         assert args.data is not None
         tasks=tasks_jurayj(args.data,tokenizer,args.experiment)
     tokens={choice:[idx for word,idx in tokenizer.get_vocab().items() if clean_word(word)==choice.lower()] for choice in ('Yes','No')}
+    for choice in ('A','B'):
+        tokens[choice]=[idx for word,idx in tokenizer.get_vocab().items() if word.replace('Ġ','').replace('▁','').strip()==choice]
     assert all(tokens.values())
     config=dict(experiment=args.experiment,model=str(args.model),model_manifest=json.loads((args.model/'manifest.json').read_text()),
                 torch=torch.__version__,transformers=transformers.__version__,cuda=torch.version.cuda,
@@ -77,9 +82,9 @@ def main():
             inputs=tokenizer([x[2] for x in batch],return_tensors='pt',padding=True).to('cuda')
             logits=model(**inputs,logits_to_keep=1).logits[:,-1,:].float()
             probs=logits.softmax(-1)
-            yes=probs[:,tokens['Yes']].sum(-1);no=probs[:,tokens['No']].sum(-1)
             for j,(r,pid,prompt) in enumerate(batch):
-                py=float((yes[j]/(yes[j]+no[j])).item());mass=float((yes[j]+no[j]).item())
+                yes=probs[j,tokens[r.get('yes_label','Yes')]].sum();no=probs[j,tokens[r.get('no_label','No')]].sum()
+                py=float((yes/(yes+no)).item());mass=float((yes+no).item())
                 item={k:v for k,v in r.items() if k not in ('sentence','question','initial_parse_claim','final_parse_claim')}
                 item.update(prompt_id=pid,prompt_sha256=hashlib.sha256(prompt.encode()).hexdigest(),
                     input_tokens=int(inputs['attention_mask'][j].sum()),p_yes=py,choice_mass=mass,

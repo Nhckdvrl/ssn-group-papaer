@@ -1,5 +1,6 @@
 """Optional advisory audit; exact row coverage is checked, never auto-approved."""
 import concurrent.futures
+import argparse
 import json
 import os
 from pathlib import Path
@@ -19,7 +20,11 @@ def one(batch,index):
     env.update(NO_PROXY='*',no_proxy='*')
     with stdout.open('w') as out,stderr.open('w') as err:
         try:
-            p=subprocess.run(['opencode','run',PROMPT,'--pure','-m','opencode/ling-3.1-flash-free','--dir',str(CACHE),'--format','json','--file',str(source)],
+            # Large --file attachments are silently truncated by opencode's file
+            # reader. Supply compact bounded JSON in the actual message instead.
+            message=PROMPT+'\n\nINPUT JSON:\n'+json.dumps(batch,separators=(',',':'))
+            assert len(message.encode())<30000, 'Split audit batches before sending'
+            p=subprocess.run(['opencode','run',message,'--pure','-m','opencode/ling-3.1-flash-free','--dir',str(CACHE),'--format','json'],
                              env=env,stdout=out,stderr=err,timeout=360)
             code=p.returncode
         except subprocess.TimeoutExpired:code=124
@@ -43,6 +48,7 @@ def one(batch,index):
     print(index,status,flush=True);return report
 
 if __name__=='__main__':
+    ap=argparse.ArgumentParser();ap.add_argument('--repair',action='store_true');args=ap.parse_args()
     rows=[json.loads(l) for l in (CACHE/'normalized/jurayj.jsonl').read_text().splitlines()]
     sets={}
     for r in rows:
@@ -50,8 +56,13 @@ if __name__=='__main__':
         key=f'{r["condition"]}:{int(r["extended"])}'
         v=item['variants'].setdefault(key,{'sentence':r['sentence'],'questions':[],'blocker_class':r['blocker_class']})
         v['questions'].append({'type':r['question_type'],'question':r['question'],'gold':r['gold'],'gold_status':r['gold_status']})
-    items=list(sets.values());batches=[items[i:i+10] for i in range(0,len(items),10)]
+    items=list(sets.values())
+    if args.repair:
+        done=json.loads((CACHE/'opencode-audit/partial-valid-reviews.json').read_text())
+        items=[r for r in items if r['pair_id'] not in done]
+    batches=[items[i:i+2] for i in range(0,len(items),2)]
+    offset=100 if args.repair else 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        results=list(pool.map(lambda z:one(*z),[(batch,i) for i,batch in enumerate(batches)]))
-    (CACHE/'opencode-audit/manifest.json').write_text(json.dumps({'model':'opencode/ling-3.1-flash-free',
+        results=list(pool.map(lambda z:one(*z),[(batch,offset+i) for i,batch in enumerate(batches)]))
+    (CACHE/'opencode-audit'/('repair-manifest.json' if args.repair else 'manifest.json')).write_text(json.dumps({'model':'opencode/ling-3.1-flash-free',
             'proxy_used':False,'advisory_only':True,'results':results},indent=2)+'\n')
