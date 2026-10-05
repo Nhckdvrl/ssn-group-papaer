@@ -47,16 +47,19 @@ def main():
         for r, o in zip(rows, outs):
             words = [c.strip() for c in r["cands"]]
             ans = []
+            tails = []
             for c in o.outputs:
                 txt = c.text
-                m = re.findall(r"Answer:\s*\**\s*([A-Za-z]+)", txt)
-                last = m[-1].lower() if m else None
-                ans.append(words.index(last) if last in words else -1)
+                tail = txt[-300:]
+                tails.append(tail)
+                hits = [(m.start(), k) for k, w in enumerate(words)
+                        for m in re.finditer(r"(?i)(?<![a-z])" + re.escape(w) + r"(?![a-z])", tail)]
+                ans.append(max(hits)[1] if hits else -1)
             nB = sum(1 for x in ans if x == r["query_label_B"]); nA = sum(1 for x in ans if x == r["query_label_A"])
             f.write(json.dumps({"uid": r["uid"], "cond": r["cond"], "base_id": r["base_id"], "ans": ans,
                                 "nB": nB, "nA": nA, "n": len(ans),
                                 "lens": [len(c.token_ids) for c in o.outputs],
-                                "sample_text": o.outputs[0].text[-1500:]}) + "\n")
+                                "tails": tails, "sample_text": o.outputs[0].text[-1500:]}) + "\n")
     print("done", len(rows))
 
 

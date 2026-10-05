@@ -21,9 +21,14 @@ def main():
     ap.add_argument("--bs", type=int, default=16)
     ap.add_argument("--suffix", default="\n\n")
     ap.add_argument("--dtype", default="bfloat16")
+    ap.add_argument("--ablate", default="", help="comma list of L:H heads to zero (pre o_proj)")
+    ap.add_argument("--conds", default="", help="optional comma list of conds to keep")
     args = ap.parse_args()
 
     rows = [json.loads(l) for i, l in enumerate(open(args.inp)) if i % args.nshard == args.shard]
+    if args.conds:
+        keep = set(args.conds.split(","))
+        rows = [r for r in rows if r["cond"] in keep]
     done = set()
     if os.path.exists(args.out):
         done = {json.loads(l)["uid"] for l in open(args.out)}
@@ -33,6 +38,21 @@ def main():
     tok = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype),
                                                  device_map="cuda").eval()
+    if args.ablate:
+        heads = {}
+        for lh in args.ablate.split(","):
+            l, h = map(int, lh.split(":")); heads.setdefault(l, []).append(h)
+        cfg = model.config
+        hd = getattr(cfg, "head_dim", None) or cfg.hidden_size // cfg.num_attention_heads
+        layers = model.model.layers
+        for l, hs in heads.items():
+            def pre(mod, inp, hs=hs):
+                x = inp[0].clone()
+                for h in hs:
+                    x[..., h * hd:(h + 1) * hd] = 0
+                return (x,) + tuple(inp[1:])
+            layers[l].self_attn.o_proj.register_forward_pre_hook(pre)
+        print("ablating", heads, flush=True)
     bos = [tok.bos_token_id] if (tok.bos_token_id is not None and
                                  tok("a")["input_ids"][:1] == [tok.bos_token_id]) else []
 
