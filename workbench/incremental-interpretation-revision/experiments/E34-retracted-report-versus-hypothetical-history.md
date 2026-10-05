@@ -14,3 +14,8 @@
 - **命令：** `scripts/retracted_role_history.py build/adopt/analyze`；`event_identity_infer.py --experiment E34`，`event_constraint_state.py run --experiment E34 --mode base/repair`。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+
+## 跑前逐条审计与工具核验
+
+三独立Luna各896，共2688输入完整ID/hash覆盖。Raw1920全部eligible/faithful、grammar1440acceptable/480marginal；NLI768全clear（192E/192C/384U）且与verified final父语义一致，grammar576/192。三审相同锚语法边缘意见保留，不由执行者自判语义。384pre/1536post raw、初始/最终角色词袋、1920目标因果token identity及数目核验通过；尚未运行实验模型。[audit](../results/D0-E34-history-audit.json)。
