@@ -33,3 +33,7 @@ faithful完整9源的释义same/separate交互+1.44 [.90,1.91]bits，lexeme完�
 ## E20反馈（2026-10-05）
 
 same事实把正确对象最后说，history R仍−3.40 [−4.28,−2.44]bits（7/7负），但较原改善+2.11 [.64,3.94]；双向角色事实移动GP+9.56、cue+9.39。不能说不会修订：GP ref-only绝对R已+1.73 [.58,2.91]，整体偏向正确允许对象。当前自然问题是**正确角色信息进入后，为什么以前的关联仍影响后文使用？** 最近提及只解释一部分，E21区分否定中重新点名与先前relation的持续影响。不将正常概率置信度差自动当capability failure，也不以“semantic hysteresis”命名代替新颖性。
+
+**E21更新：** 严格4源named/generic的history差变化+3.06 [2.03,4.38]bits主要来自cue的允许reference支持下降−2.97，而GP变化+.09不确定。尚未确定这是实体salience还是活动关系联想，更未证明实际错误；接E22 neutral关系控制与free continuation，PILOT不升级。
+
+**E22更新：** post-correction neutral控制显示named提升两条件的实体可及性，而关系−neutral变化在GP为−2.79 [−3.68,−1.90]、cue−.17 [−1.12,1.20]bits（严格4源）。不是简单“否定污染关系”；证据更支持语义排除与实体显眼程度共同作用，需实际角色使用和独立source才有叙事价值。C04是measurement事实，I01仍PILOT。

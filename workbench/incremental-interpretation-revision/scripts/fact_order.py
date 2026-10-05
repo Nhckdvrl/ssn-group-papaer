@@ -25,25 +25,26 @@ def adopt_order(data,reviews,idmap,out):
     return report
 
 
-def analyze(cache,path):
-    c0,r0=read_run(cache/'runs/E19');c1,r1=read_run(path)
-    assert len(r0)==336 and len(r1)==168
+def analyze(cache,path,old_experiment='E19',old_order='affirm_then_negate',new_orders=('negate_then_affirm',),new_field=None):
+    c0,r0=read_run(cache/'runs'/old_experiment);c1,r1=read_run(path)
+    assert len(r1)==168*len(new_orders)
     for k in ('model_manifest','dtype','tf32','attention','seed','torch','transformers','batch_size','frozen'):assert c0[k]==c1[k],k
-    rows=[dict(r,fact_order='affirm_then_negate') for r in r0 if r['episode_anchor']=='same']
-    rows += [dict(r,fact_order='negate_then_affirm') for r in r1]
-    assert len(rows)==336
+    rows=[dict(r,fact_order=old_order) for r in r0 if r['episode_anchor']=='same']
+    rows += [dict(r,fact_order=r[new_field] if new_field else new_orders[0]) for r in r1]
+    assert len(rows)==168*(1+len(new_orders))
+    orders=(old_order,*new_orders)
     result=dict(experiment='E20',units='bits',primary='Change in GP-minus-comma history dependence when affirmed rather than negated patient is mentioned last, same exclusive facts.',
         formulas={'R':'bits(own NP) - bits(source reference)','M':'bits(other NP) - bits(own NP)','order_history':'D_negate_then_affirm - D_affirm_then_negate'},
         interpretation='Distinguishes last-mention echo from invariant prior role influence, not hidden-state belief or raw probability-as-accuracy.',
-        physical_tasks=168,bootstrap_draws=10000,bootstrap_seed=20261005,cells={},contrasts={},per_source={},
-        scores_sha256={'E19':c0['scores_sha256'],'E20':c1['scores_sha256']},analysis_code_sha256=sha(Path(__file__)))
+        physical_tasks=len(r1),bootstrap_draws=10000,bootstrap_seed=20261005,cells={},contrasts={},per_source={},
+        scores_sha256={old_experiment:c0['scores_sha256'],c1['experiment']:c1['scores_sha256']},analysis_code_sha256=sha(Path(__file__)))
     def stat(v):
         s=estimate([v[k] for k in sorted(v)]) if len(v)>1 else dict(estimate=next(iter(v.values()),None),ci95=None,n_sets=len(v))
         return dict(s,pair_ids=sorted(v))
     def diff(a,b):return {k:a[k]-b[k] for k in a.keys()&b.keys()}
     for stratum in ('all','eligible','acceptable','faithful_order'):
         # Apply the new version's independently defined cohort to both orders.
-        keep={ (r['pair_id'],r['source_np_option'],r['condition'],r['role_evidence'],r['target_kind']) for r in r1 if stratum=='all' or r[stratum]}
+        keep=set.intersection(*({(r['pair_id'],r['source_np_option'],r['condition'],r['role_evidence'],r['target_kind']) for r in r1 if (not new_field or r[new_field]==order) and (stratum=='all' or r[stratum])} for order in new_orders))
         rr=[r for r in rows if (r['pair_id'],r['source_np_option'],r['condition'],r['role_evidence'],r['target_kind']) in keep]
         ix={(r['pair_id'],r['source_np_option'],r['condition'],r['role_evidence'],r['fact_order'],r['target_kind']):r for r in rr}
         assert len(ix)==len(rr)
@@ -51,7 +52,7 @@ def analyze(cache,path):
             prefix=f'{stratum}/option{option}';effects={}
             for measure in ('R','M'):
                 ds={};vs={}
-                for order in ('affirm_then_negate','negate_then_affirm'):
+                for order in orders:
                     for e in ('reference_only','initial_patient_only'):
                         cells={}
                         for condition in ('gp','explicit_cue'):
@@ -69,8 +70,10 @@ def analyze(cache,path):
                         vs[(order,e)]=cells;ds[(order,e)]=diff(cells['gp'],cells['explicit_cue'])
                         result['contrasts'][f'{prefix}/{measure}/D/{order}/{e}']=stat(ds[(order,e)])
                 for e in ('reference_only','initial_patient_only'):
-                    result['contrasts'][f'{prefix}/{measure}/order_history/{e}']=stat(diff(ds[('negate_then_affirm',e)],ds[('affirm_then_negate',e)]))
-                for order in ('affirm_then_negate','negate_then_affirm'):
+                    for new_order in new_orders:
+                        name=f'{prefix}/{measure}/order_history/{e}' if len(new_orders)==1 else f'{prefix}/{measure}/style_history/{new_order}/{e}'
+                        result['contrasts'][name]=stat(diff(ds[(new_order,e)],ds[(old_order,e)]))
+                for order in orders:
                     for c in ('gp','explicit_cue'):
                         result['contrasts'][f'{prefix}/{measure}/role_effect/{order}/{c}']=stat(diff(vs[(order,'reference_only')][c],vs[(order,'initial_patient_only')][c]))
                 effects[measure]=ds
