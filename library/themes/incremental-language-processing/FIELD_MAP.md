@@ -132,3 +132,5 @@ E33定位追加：Pucci/Li/Sinclair2026-09 preprint已拥有生产priming的词�
 ## 2026-10-06：修订history的最新ownership核对
 
 新增实际范围卡：[Reset Is Not Recovery](shnaidman2026-false-context-recovery.md)、[主动retraction](yangjia2025-spontaneous-retraction.md)、[epistemic表达](li2025-epistemic-modality.md)。泛泛“撤回后残留”“semantic非label”“知道但不主动修正”“fact/belief区分”均有直接owner；不是桌面杀I01。我们需要的是同一角色事实在old/new event、同/不同动作里的方向结构及干预边界。E34真实history的来源效应−.433bits并不自动取得generic revision novelty；E35校对current-world任务解读，E36直接检验显式negated alternative是否必要。KaBLE的Nature主来源在本次工具读取失败，此前仅摘要/metadata核对，不冒充全文读完/数据已审。
+
+2026-10-06追加：[Wagner/Abend ICML2026](wagner2026-word-world-probabilities.md)区分strings/response/world概率；[Jang v2](jang2026-described-versus-sampled-distributions.md)仅primary摘要、[TimeLitmus](gong2026-timelitmus.md)摘要/§1。E38是语境条件诊断，不把fair logprobs不等于50%或两用途gap包装成novelty。E37 natural who问题的默认互指需独立校对，不能将初审0%文字有据agreement当普遍能力失败。

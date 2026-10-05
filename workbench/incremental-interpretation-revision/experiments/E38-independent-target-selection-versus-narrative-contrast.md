@@ -14,3 +14,5 @@
 - **命令：** `selection_transfer.py build/adopt`、`event_identity_infer.py --experiment E38`、`time_indexed_role.py run --experiment E38 --query current/fair`。完整选择fields-v1/v2/v3及raw留本地cache，hash持续记录。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+跑前instruction核对：R8 exact sentence为`Report an unreported selection outcome as unspecified, while answering chance questions from the stated probabilities for the new selection.` chance与未公布outcome显式区分，避免scope恢复把fair概率题也误答unknown；尚未推理，未改数据/gold。

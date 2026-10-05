@@ -13,7 +13,7 @@ from event_identity import digest
 from event_constraint_state import CURRENT_WORLD
 
 BASE='Answer the question in one short phrase, using the passage.'
-SELECTION_SCOPE='Keep the earlier activity separate from the new selection; if the selection outcome is not reported, say that it is unspecified.'
+SELECTION_SCOPE='Report an unreported selection outcome as unspecified, while answering chance questions from the stated probabilities for the new selection.'
 
 
 def build(cache,directory):
