@@ -14,3 +14,5 @@ allA 0.370、single_1 0.353、single_16 0.348、disp_4 0.418、suffix_4 0.406、
 **thinking 第一轮（max_tokens 6000）作废：** 只有 886/4800 个样本在预算内想完并给出 “Answer”，其余答案取自截断的推理尾部，不能当作答案。可读样本的定性模式与集合式一致（suffix_4 0.485 ≈ disp_4 0.473；噪声前缀 0.513），仅作参考。
 **第二轮：** 50 base × 6 条件 × 4 样本，max_tokens 20000（运行中）。
 
+
+**可见 CoT 配对检验（`scripts/analyze_think.py`）：** suffix_4−disp_4 = −0.014 [−0.082,0.055]；noise_2__suffix_4−suffix_4 = **+0.068 [0.015,0.120]**（方向错）；suffix_8−block_start4 = +0.102 [0.015,0.190]（弱 recency）。
