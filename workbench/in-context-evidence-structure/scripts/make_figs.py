@@ -146,3 +146,47 @@ def marked_fig():
 
 if __name__ == "__main__" and len(__import__("sys").argv) > 1 and __import__("sys").argv[1] == "marked":
     marked_fig()
+
+
+def local_fig():
+    import json as _j
+    meta = {}
+    for l in open(ROOT / "data/local_nat/rows.jsonl"):
+        r = _j.loads(l); meta[r["uid"]] = r
+    models = ["Qwen3-8B", "Qwen2.5-7B", "Mistral-7B-v0.3"]
+    fig, axes = plt.subplots(1, 3, figsize=(10, 3.3), sharey=True, facecolor=SURF)
+    for ax, m in zip(axes, models):
+        ax.set_facecolor(SURF)
+        rec = []
+        for f in glob.glob(str(ROOT / f"results/local_nat/{m}.s*.jsonl")):
+            for l in open(f):
+                s = _j.loads(l); r = meta[s["uid"]]
+                p = np.exp(np.array(s["lp"])); p = p / p.sum()
+                pat = r["cond"].split(":")[1]
+                # B = later regime in suffix_8, earlier regime in prefix_8
+                p_last = p[r["query_label_B"]] if pat == "suffix_8" else p[r["query_label_A"]]
+                pm = r["oracle"]["meta_pB"]; pm_last = pm if pat == "suffix_8" else 1 - pm
+                rec.append((pat, r["qrank"], p_last, pm_last))
+        D = pd.DataFrame(rec, columns=["pat", "q", "plast", "bayes"])
+        D = D[D.pat.isin(["suffix_8", "prefix_8"])].groupby(["pat", "q"]).mean()
+        pats = ["suffix_8", "prefix_8"]; lab = {"suffix_8": "mapping 1 → mapping 2", "prefix_8": "mapping 2 → mapping 1"}
+        x = np.arange(2); w = 0.36
+        ax.bar(x - w / 2, [D.loc[(p, "near"), "plast"] for p in pats], w * 0.92, color="#2a78d6", label="query resembles the last 8 demos")
+        ax.bar(x + w / 2, [D.loc[(p, "far"), "plast"] for p in pats], w * 0.92, color="#eb6834", label="query resembles the first 8 demos")
+        ax.axhline(D.bayes.mean(), color=INK, lw=1.2, ls=(0, (3, 3)), label="Bayes (both queries)")
+        ax.axhline(0.5, color=MUTED, lw=0.8)
+        ax.set_xticks(x); ax.set_xticklabels([lab[p] for p in pats], fontsize=8); ax.set_ylim(0, 1)
+        ax.set_title(m, loc="left", fontsize=9, color=INK)
+        for s_ in ("top", "right"):
+            ax.spines[s_].set_visible(False)
+        ax.tick_params(colors=MUTED, labelsize=7)
+    axes[0].set_ylabel("P(answer follows the LAST 8 demos)", fontsize=8, color=INK)
+    axes[0].legend(frameon=False, fontsize=7, loc="upper left")
+    fig.text(0.01, 0.01, "Numbers small/large, natural labels; first 8 demos use one mapping, last 8 the reversed one. 300 bases x 2 classes per model.",
+             fontsize=7, color=MUTED)
+    fig.tight_layout(rect=(0, 0.05, 1, 1)); fig.savefig(OUT / "fig_nearest_not_newest.png", dpi=200); fig.savefig(OUT / "fig_nearest_not_newest.pdf")
+    print("saved local fig")
+
+
+if __name__ == "__main__" and len(__import__("sys").argv) > 1 and __import__("sys").argv[1] == "local":
+    local_fig()
