@@ -22,3 +22,8 @@
 ### 独立转录审核v1（任何E13模型推理之前）
 - 24source-item请求全部终止，23normal-finish完整，92个variant问题均外审回答faithful Yes；请求与原template/variant/hash/ID覆盖逐项核对，无tool调用。这里只确认原材料展开，不是semantic gold或人审能力证据。
 - source13（reciprocal item）因进程timeout无完整回答，未算完成；独立retry1单worker，明确零基source option0/1指代，保留全部原失败。无E13实验分数，样本/读数未按结果调整。见[external audit](../results/D0-Slattery-external-transcription-v1.json)。
+
+### 转录审核v2：格式拒收的why（仍在任何E13推理之前）
+- 更正上文“source13 timeout”：原v1与retry1都是exit0/normal stop、全4ID完整；唯一问题是answer用了boolean true而非Yes字符串，严格client格式校验拒收。旧报告/原事件/请求不改；本轮没有语义拒绝，也没有未完成LLM输出。
+- 仅transcription任务按true/false→faithful Yes/No转换，全部原answer保留、没有新semantic gold；[v2](../results/D0-Slattery-external-transcription-v2.json)核对24源item/96variants全部faithful Yes、4boolean转换、完整ID/hash/normal finish。retry1同样4true明确对应相同作者展开，不能叫两个独立人审。
+- 源13不排除，原24/96完整cohort与主读数保持；修正发生在任何E13模型结果之前。

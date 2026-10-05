@@ -4,6 +4,7 @@ No experiment semantic labels are created. Failed attempts remain cache-only.
 """
 import argparse
 import concurrent.futures
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -30,6 +31,47 @@ def items(cache):
         questions=[dict(item_id=r['item_id'],question=f'Is this faithful to source option {r["source_np_option"]}, comma {r["condition"]=="explicit_cue"}? RENDERED: '+r['sentence'],proposed_gold=None,readout_kind='transcription_check') for r in rr]
         out.append(dict(variant_id=f'Slattery:{i}:published:0',construction='NPZ',sentence='SOURCE TEMPLATE: '+templates[i],questions=questions))
     return out
+
+
+def adopt_transcription_review(root,cache=CACHE):
+    """Normalize only the transcription answer field, never semantic gold.
+
+    Source13 returned boolean true twice with normal completion and exact IDs.
+    Keep the original strict-client rejection and raw events as provenance.
+    """
+    scope=json.loads((root/'scope.json').read_text())
+    assert scope['dataset_sha256']==sha(cache/'normalized/slattery2013.jsonl')
+    expected={i['variant_id']:i for i in items(cache)};reviews=[]
+    for f in root.glob('*.review.json'):
+        original=json.loads(f.read_text());uid=f.name.split('.')[0]
+        request=json.loads((root/(uid+'.request.json')).read_text())
+        assert json.loads(request['message'].split('INPUT JSON:\n',1)[1])==expected[original['variant_id']]
+        assert original['request_sha256']==hashlib.sha256(json.dumps(request,sort_keys=True).encode()).hexdigest()
+        events_path=root/(uid+'.events.jsonl');assert original['events_sha256']==sha(events_path)
+        events=list(map(json.loads,events_path.read_text().splitlines()))
+        finish=[e for e in events if e['type']=='step_finish']
+        assert original['exit_code']==0 and finish[-1]['part']['reason']=='stop'
+        assert not any(e['type'] in ('tool','tool_use','tool_call') for e in events)
+        text=''.join(e.get('part',{}).get('text','') for e in events if e['type']=='text')
+        text=re.sub(r'^```(?:json)?\s*|\s*```$','',text.strip());annotation=json.loads(text)
+        assert annotation['variant_id']==original['variant_id']
+        ids=[a['item_id'] for a in annotation['answers']]
+        assert len(ids)==len(set(ids)) and set(ids)=={q['item_id'] for q in expected[original['variant_id']]['questions']}
+        answers=[]
+        for a in annotation['answers']:
+            raw=a['answer'];assert type(raw) is bool or raw in ('Yes','No',None)
+            faithful=('Yes' if raw else 'No') if type(raw) is bool else raw
+            answers.append({k:a[k] for k in ['item_id','question_valid','certainty']} | dict(faithful=faithful,original_answer=raw,boolean_format_normalized=type(raw) is bool))
+        reviews.append(dict(variant_id=original['variant_id'],original_client_status=original['status'],
+                            adoption_status='normal_finish_transcription_review',model=original['model'],
+                            request_sha256=original['request_sha256'],events_sha256=original['events_sha256'],answers=answers))
+    assert len(reviews)==24
+    return dict(scope,source_items_complete=24,variants_reviewed=96,semantic_gold_labels=0,
+                schema_adaptation='For this transcription-only task, boolean true/false means faithful Yes/No. Raw events/client failures preserved; no semantic labels changed.',
+                boolean_adapted_answers=sum(a['boolean_format_normalized'] for r in reviews for a in r['answers']),
+                faithful_yes=sum(a['faithful']=='Yes' for r in reviews for a in r['answers']),
+                faithful_no=sum(a['faithful']=='No' for r in reviews for a in r['answers']),
+                reviews=sorted(reviews,key=lambda x:x['variant_id']))
 
 
 if __name__=='__main__':
