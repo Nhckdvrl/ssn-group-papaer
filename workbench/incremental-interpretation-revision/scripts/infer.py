@@ -40,7 +40,7 @@ def tasks_e00(cache,tokenizer):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
     ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
-    ap.add_argument('--experiment',choices=['E00','E01','E02','E03'],default='E00')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04'],default='E00')
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
     ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
     ap.add_argument('--out',type=Path,required=True);args=ap.parse_args()
@@ -53,7 +53,7 @@ def main():
     start=time.time()
     model=AutoModelForCausalLM.from_pretrained(args.model,local_files_only=True,torch_dtype=getattr(torch,args.dtype),attn_implementation='sdpa').to('cuda').eval()
     for parameter in model.parameters():parameter.requires_grad_(False)
-    if args.experiment=='E00':tasks=tasks_e00(args.cache,tokenizer)
+    if args.experiment in ('E00','E04'):tasks=tasks_e00(args.cache,tokenizer)
     elif args.experiment=='E03':
         from order_audit import tasks_order
         tasks=tasks_order(args.cache,tokenizer)

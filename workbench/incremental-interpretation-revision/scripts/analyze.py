@@ -59,7 +59,7 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('predictions',type=Path);ap.add_argument('--out',type=Path,required=True)
     ap.add_argument('--experiment',default='E00');args=ap.parse_args()
     rows=[json.loads(line) for line in args.predictions.read_text().splitlines()]
-    if args.experiment=='E00':result=e00(rows)
+    if args.experiment in ('E00','E04'):result=e00(rows)
     elif args.experiment=='E03':
         from order_audit import analyze_order
         result=analyze_order(rows)
