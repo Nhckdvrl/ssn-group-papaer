@@ -50,6 +50,7 @@ def build(cache):
                             and x['extended']==r['extended'] and x['question_type']=='intended_semantic')
             out.append(dict(original, item_id='E11:'+semantic['item_id']+':isolated',
                             question=semantic['question'], question_type='intended_semantic',
+                            parent_item_id=semantic['item_id'],
                             readout_kind='asserted_proposition', sentence=sentence,
                             condition='isolated', cue_type='isolated_main_clause',
                             ambiguity_start=None, disambiguator_index=None,
@@ -57,6 +58,43 @@ def build(cache):
     assert len(out)==168 and len({r['item_id'] for r in out})==len(out)
     assert all(r['gold'] is None for r in out)
     return out
+
+
+def analyze_reference(rows):
+    from analyze import estimate
+    from revision_map import analyze_revision
+    result=analyze_revision(rows)
+    contrasts={}
+    for stratum in ('eligible','acceptable'):
+        subset=[r for r in rows if stratum=='eligible' or r['clean_stratum']]
+        index={(r['pair_id'],r['prompt_id'],r['condition'],r['extended'],r['question_type']):r for r in subset}
+        assert len(index)==len(subset)
+        def measure(values):
+            if len(values)<2:
+                return dict(n_sets=len(values),estimate=next(iter(values.values()),None),ci95=None,pair_ids=sorted(values))
+            return dict(estimate([values[s] for s in sorted(values)]),pair_ids=sorted(values))
+        def values(pid,c,e,q):
+            return {sid:index[(sid,pid,c,e,q)]['p_yes'] for sid in sorted({r['pair_id'] for r in subset})
+                    if (sid,pid,c,e,q) in index}
+        def diff(a,b):return {s:a[s]-b[s] for s in a.keys()&b.keys()}
+        for pid in sorted({r['prompt_id'] for r in subset}):
+            for c in sorted({r['condition'] for r in subset}):
+                for q in ('full_subject','subject_head','intended_semantic'):
+                    for e in (False,True):
+                        contrasts[f'{stratum}/{pid}/{c}/{int(e)}/{q}_minus_original_role']=measure(diff(values(pid,c,e,q),values(pid,c,e,'intended')))
+                    long=diff(values(pid,c,True,q),values(pid,c,True,'intended'))
+                    short=diff(values(pid,c,False,q),values(pid,c,False,'intended'))
+                    contrasts[f'{stratum}/{pid}/{c}/extension_by_readout/{q}']=measure(diff(long,short))
+    matched=[]
+    by_prompt={}
+    for r in rows:by_prompt.setdefault(r['prompt_sha256'],[]).append(r)
+    for group in by_prompt.values():
+        if len(group)>1:
+            matched.append(max(r['p_yes'] for r in group)-min(r['p_yes'] for r in group))
+    result.update(reference_contrasts=contrasts,
+                  same_prompt_repeat=dict(groups=len(matched),max_probability_delta=max(matched,default=None)),
+                  audit_scope='Independent advisory probability diagnostics; all gold/correct labels null; at most three lexical sets.')
+    return result
 
 
 if __name__ == '__main__':

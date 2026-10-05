@@ -40,7 +40,7 @@ def tasks_e00(cache,tokenizer):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
     ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
-    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09','E10'],default='E00')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09','E10','E11'],default='E00')
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
     ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
     ap.add_argument('--system-frame',choices=['both','neutral','upstream'],default='both')

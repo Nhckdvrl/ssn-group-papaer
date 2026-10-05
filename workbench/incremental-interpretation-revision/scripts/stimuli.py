@@ -200,7 +200,7 @@ def tasks_jurayj(path,tokenizer,experiment,system_frame='both',families=None):
                        else f'Answer this question:\n{r["question"]}\n\nHere is the sentence:\n{r["sentence"]}')
                     chat=tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':q}],
                         tokenize=False,add_generation_prompt=True,enable_thinking=False)
-                    item=dict(r,system_frame=frame,query_order=order,repair=repair,readout_version='verb_anchored_v2')
+                    item=dict(r,system_frame=frame,query_order=order,repair=repair,readout_version=r.get('readout_version','verb_anchored_v2'))
                     tasks.append((item,f'{frame}_{order}'+('_repair' if repair else '_base'),chat))
     return tasks
 
