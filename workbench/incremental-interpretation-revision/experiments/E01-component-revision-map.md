@@ -63,3 +63,7 @@
 ### 后续原modifier语义审计（新干预之前）
 - 全部snapshot3涉及的NPZ source IDs，不按Qwen效果选项；原四GP/comma×short/long文本与components不改。独立opencode逐source标注：初始event是否明确asserted、extension本身是否entail、完整句是否exclude该event、extension是否提供超出共享参与者的具体支持。允许null/interpretation-dependent；不会将这些审计问句用作Qwen评测题或修改此前gold。
 - `audit_extension_relations.py`保留cache packets/request/events/hash/覆盖；2workers，连同原E01外审4workers共6≤8。主执行agent只检查来源/覆盖，不能自定semantic relation。目的是为长度/事件信息/引用复杂度的区分性干预准备数据，不预注册结果，不称新idea。
+
+## 原登记全量measurement完成块（2026-10-06，尚未新推断）
+
+E01目前仍为279/626变体的snapshot3，不将局部完成称全量。保留旧3snapshots/labels/不稳定效应；独立Step5逐条重审完整626variants/2672QA、90lexical sets，在新不可变cache `E01-Step5-full-v1`，最多8并发、无代理、max_tokens16384。仍原八配置和role/semantic分项；NP引用与unasserted≠false边界必须逐行标不确定，无语义gold的diagnostic不强迫No。完整原始题的测量作为D4原协议完成，不靠多跑已知GP差当novelty；下一必须区分role引用/语义补全/真实句法证据的不同作用。新batch使用当前独立审计labels，旧labels不重写；推断前冻结输入、完整审计counts/hash及计分规则。E48/49限定frame线与三构式baseline分开，不新开workbench。

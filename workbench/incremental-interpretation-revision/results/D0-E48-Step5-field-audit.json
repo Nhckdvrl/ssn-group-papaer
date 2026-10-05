@@ -1,0 +1,1173 @@
+{
+  "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+  "model": "step-5-preview",
+  "endpoint": "https://api.stepfun.com/step_plan/v1/messages",
+  "proxy_used": false,
+  "concurrency": 1,
+  "items": 24,
+  "reports": [
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "5a43147708b3258f9f5e4dbfe68c2b542e5cbe6e3d3a79a5494b32b6d0b81523",
+      "response_sha256": "5828c76702bc474a0d3b3f8efed356850f992fa2927467f450dfe7fe3f49f019",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 124.76361036300659,
+      "annotation": {
+        "id": "item71",
+        "referents_distinct": true,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the mother",
+          "minimal_desc_other": "the boy",
+          "minimal_source": "Alice",
+          "minimal_other": "Ben"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is answerable with the alias intro plus any one of the alternative fact realizations. With a description fact, the fact identifies the hidden patient descriptively and the alias intro supplies the name; with a name fact, the name is directly explicit. The question presupposes a retrievable explicit patient, but none of the fact forms asserts that no other person was also hidden in the old act.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No old hiding fact entails that Alice or Ben is unavailable to a different actor in a later new activity. 'Hiding' may support a defeasible result-state reading of concealment, but that is not logical entailment of later unavailability, and no later actor or activity is supplied here.",
+        "alternative_explanations": [
+          "A reader may pragmatically infer exclusivity from a hiding sentence with one singular patient, but that is not semantic exhaustivity.",
+          "A reader may infer later unavailability from the result state of being hidden, but such a result state is defeasible and time-bounded.",
+          "Narrative alternation between an old actor and a later different actor can invite an exclusion inference without any entailed exclusion.",
+          "Role descriptions such as 'the mother' are potentially re-bindable in a new context with another mother, but no such later context is present in this field audit."
+        ],
+        "notes": "Words were audited literally, not via the author notes. The alias intro gives two ordinary naming mappings, the mother-to-Alice and the boy-to-Ben. It uses no only/different marker; distinctness is supported by ordinary incompatibility of the role descriptions rather than by an explicit disjointness statement. The name and description fact forms are extensional equivalents under those mappings in this row.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions only query which name is associated with which description. They should not be read as asserting participation in a hiding event or as excluding the other described person from that event."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "bf8d672d52391a03a9d2826ca06a1cf98880039791475fe14026f3534a7bac23",
+      "response_sha256": "e77803732d901031df15a7ac44ffea22fad446f6b2381952e55520b783ad461e",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 114.35805749893188,
+      "annotation": {
+        "id": "item72",
+        "referents_distinct": true,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the boy",
+          "minimal_desc_other": "the mother",
+          "minimal_source": "Ben",
+          "minimal_other": "Alice"
+        },
+        "question_valid": true,
+        "question_notes": "For each alternative fact realization, the current question is answerable: description facts are resolved through the alias intro, while name facts already make the target name explicit. The singular phrase 'that old act of hiding' is acceptable if only one fact realization is rendered.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "The old hiding facts concern a past event by the kidnapper. They do not logically entail that Ben or Alice is unavailable to a different actor in any later new activity. Any such unavailability would be a contextual or narrative inference, not an entailment.",
+        "alternative_explanations": [
+          "The alias intro does not explicitly say 'different people' or 'respectively', so a formal same-referent-with-two-labels reading remains possible, though ordinary boy/mother contrast makes it unlikely.",
+          "'the mother' is relational/category-based and has no explicit possessor; in a different later context with another salient mother, it could rebind, so the mapping relies on discourse continuity rather than logical rigidity.",
+          "The hiding sentences assert one patient but are non-exhaustive; they do not exclude the other candidate from also being hidden.",
+          "A past hiding event might imply being hidden at that time, but it does not entail unavailability to a different actor in a later event; bridging to such an exclusion is pragmatic.",
+          "The name-realization facts may make the current question feel redundant because the queried name is overtly the patient, but this does not invalidate the question."
+        ],
+        "notes": "Independently checked the alias intro and each alternative fact without concatenating role worlds. The intro clearly maps each description to a name, and the patient role within each single fact is clear. All hiding assertions are positive but non-exhaustive. Ordinary discourse treats the boy and the mother as two introduced referents, but strict distinctness is not separately asserted. No later unavailability for a different actor is entailed.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions only ask which name the account associates with each description; they do not query exclusivity or event roles. The description-name mapping is explicit, but depends on discourse continuity rather than a possessive binder."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "680f9d82e34f642e8e3a9a29c2e7ca281cf1b08d5bc5483fb5bee7e1a52d6614",
+      "response_sha256": "4eaace6b91b8631e00891a9ccbfdfb4dc65e05bcfea753286d06d1af99ec3158",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 143.74181628227234,
+      "annotation": {
+        "id": "item73",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the girl",
+          "minimal_desc_other": "the daughter",
+          "minimal_source": "Chloe",
+          "minimal_other": "David"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is interpretable for each alternative realization. With minimal_desc_source it targets the girl and alias_intro gives Chloe; with minimal_desc_other it targets the daughter and alias_intro gives David; with minimal_source/minimal_other the name is present in the fact itself. The singular phrasing \u2018the entity\u2019 does not by itself license an exhaustivity inference unless only one realization is presented.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "The old embracing fact does not entail that Chloe or David is unavailable to any different actor in any later activity. No later new activity or contrasting actor is introduced, the embracing assertion is nonexclusive, and physical or narrative occupation in one event is not a logical unavailability condition for another event.",
+        "alternative_explanations": [
+          "\u2018The girl\u2019 and \u2018the daughter\u2019 can overlap in a single referent; satisfying both descriptions does not strictly imply two people.",
+          "Different proper names do not logically preclude one person having two names, so the alias intro underdetermines strict distinctness.",
+          "\u2018The daughter\u2019 is relational/possessive-like and lacks an overt possessor, so it may be context-bound or rebindable in a fuller passage.",
+          "\u2018The friends\u2019 is a plural group; the material does not specify whether Chloe, David, both, or neither belongs to that group.",
+          "The gender stereotype mismatch between \u2018the daughter\u2019 and the name \u2018David\u2019 is pragmatically unusual but not semantically or grammatically invalid."
+        ],
+        "notes": "The alias intro is an ordinary non-exclusive naming context: it maps \u2018the girl\u2019 to Chloe and \u2018the daughter\u2019 to David. The four fact sentences are alternative realizations, not to be concatenated. Descriptive patients are accurately identified as exact object NPs. The current and alias questions are answerable from the supplied row, but strict distinctness of the named referents and the contextual anchoring/rebinding risk of \u2018the daughter\u2019 should be checked in any full rendering.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The intro explicitly links each description to a name, but it does not state exclusivity, participant role, or non-overlap between \u2018the girl\u2019 and \u2018the daughter\u2019. The relational description \u2018the daughter\u2019 lacks an explicit possessor and may need full-context review for rebinding. The plural actor \u2018the friends\u2019 leaves group membership unspecified."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "ff02b31274e856c02d70435964f8614fcece87f6eaf65e2ba5acf6e523965e17",
+      "response_sha256": "8696fcac1c3c4e0a0a5363da288292848ec61c7a4198ddd722df1505a1a0a641",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 123.95286870002747,
+      "annotation": {
+        "id": "item74",
+        "referents_distinct": true,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the daughter",
+          "minimal_desc_other": "the girl",
+          "minimal_source": "David",
+          "minimal_other": "Chloe"
+        },
+        "question_valid": true,
+        "question_notes": "Checked alias_intro plus each single fact separately, not combined. With 'The parents were embracing the daughter.', the account explicitly gives 'David'; with '...the girl.', it gives 'Chloe'; the name facts directly give 'David' or 'Chloe'. Each realization has one patient NP, so the singular old-act question is answerable.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No entailment. The old embracing facts are nonexclusive and do not state continued occupancy, exclusion after the event, or unavailability to another actor. Any such inference would be pragmatic event-result reasoning or narrative alternation, not logical entailment.",
+        "alternative_explanations": [
+          "'the daughter' and 'the girl' are potentially overlapping descriptions and are not explicitly stated to denote different people; distinctness relies on ordinary two-introduction reading.",
+          "'the parents' is a group subject; the material does not specify whether David or Chloe overlaps with parents-group membership.",
+          "'the daughter' and 'the girl' are relational or generic descriptions that could rebind if a later context changes the possessor/family or introduces a separate actor set.",
+          "The four facts are alternative single-fact realizations; combining source and other facts would wrongly create one event with multiple patients and affect scope/exhaustivity.",
+          "Physical contact in an embracing event may suggest temporary unavailability, but that is plausible occupancy, not entailed by wording."
+        ],
+        "notes": "Independently reviewed. The alias intro grammatically and locally links 'the daughter' to David and 'the girl' to Chloe, but does not use 'only', exclusivity, explicit distinctness, or participant-nonoverlap claims. Alias and fact questions were assessed separately for each alternative fact realization. The descriptions are interpretable but not logically unique, so global de-re rigidity across new contexts would require later whole-rendered review.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias intro locally fixes 'the daughter' as David and 'the girl' as Chloe within this account. It assigns names only; it does not assert exclusivity, candidate membership in 'the parents', or availability. The descriptions remain semantically capable of overlap and relational rebinding in a different later context."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "247029fa6791f69e8d277ab0bca7f9f2db8a358d49598cffce98c7168056b5b4",
+      "response_sha256": "9a87af94bf930b3a18bd20783386a0832b7085e1bc4f3b5f90d20d4f1ab7ff6d",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 123.56523776054382,
+      "annotation": {
+        "id": "item75",
+        "referents_distinct": true,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the couple's nephew",
+          "minimal_desc_other": "the puppy",
+          "minimal_source": "Emma",
+          "minimal_other": "Milo"
+        },
+        "question_valid": true,
+        "question_notes": "Valid for each alternative single-fact realization: with minimal_desc_source the account gives Emma, with minimal_desc_other it gives Milo, and the name-differing facts can answer directly. It should not be applied to a concatenated source+other passage, where the singular 'the entity' would be ambiguous. The question does not itself assert exclusivity.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No. A past positive cuddling sentence with one patient NP is non-exhaustive and does not state that a different actor was excluded or that the patient was unavailable later. At most it may describe temporary occupancy during the old event; later unavailability would require additional exclusivity, result-state, scheduling, or target-sentence assumptions.",
+        "alternative_explanations": [
+          "The single patient NP is a non-exhaustive mention; another participant could also have been present or cuddled.",
+          "The possessive description 'the couple's nephew' is anchored to the salient couple in these facts but could need re-anchoring if a different couple is introduced later.",
+          "Past physical involvement may produce a temporary result state, but not a permanent unavailability entailment.",
+          "The alias introduction links descriptions to names but adds no 'only' or exclusivity clause."
+        ],
+        "notes": "The alias_intro clearly maps 'the couple's nephew' to Emma and 'the puppy' to Milo. It does not explicitly assert non-identity between the two described referents, but the ordinary sortal contrast between nephew and puppy, together with separate naming clauses, supports distinct referents in normal discourse. The facts are all positive single-patient assertions and lack only/exclusivity wording.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The name and description versions are equivalent per supplied fact: 'the couple's nephew' -> Emma and 'the puppy' -> Milo. The possessive descriptor is fixed to the same couple in these examples; if a later different actor or different couple becomes salient, 'the couple's nephew' would require re-resolution. No claim is made that the nephew is or is not a member of the couple, and no exclusivity claim is made."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "7026639bf41cf2c64db789e8be7df9081ccccb08f3541dbe5511b9883d652367",
+      "response_sha256": "f3b1a3722d52c7d6f6275ba64e6a2dab74e699b3dade914c141a6e9e4504dd9d",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 163.73611307144165,
+      "annotation": {
+        "id": "item76",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the puppy",
+          "minimal_desc_other": "the babies' nephew",
+          "minimal_source": "Milo",
+          "minimal_other": "Emma"
+        },
+        "question_valid": true,
+        "question_notes": "Evaluated with alias_intro plus each single fact realization separately. For minimal_desc_source and minimal_source the requested name is Milo; for minimal_desc_other and minimal_other it is Emma. The current question presupposes a cuddling event, so alias_intro alone would not be sufficient; each fact realization supplies that event. The singular phrasing does not impose exclusivity.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "None of the old facts entails that either candidate is unavailable to a different actor in a later new activity. The facts describe past cuddling events at most with temporary physical involvement; they do not assert persistent possession, exclusion, non-participation, or inability to interact later. A later inconsistent-looking narrative can be consistent with the old event because events can alternate and candidates are not exhaustively characterized by the old act.",
+        "alternative_explanations": [
+          "A positive assertion that the babies cuddled X is non-exhaustive and does not exclude other unmentioned patients or activities.",
+          "Plausible temporary physical occupancy by the babies is only a pragmatic inference, not logical unavailability entailment.",
+          "Cuddling does not clearly create a lasting result-state preventing a different later actor from interacting with the same candidate.",
+          "The current question would be ambiguous only if the source and other fact realizations were combined, because then two distinct named patients could be under discussion; under the stated protocol they are alternative single facts.",
+          "alias_intro links descriptions to names without explicitly stating that the two descriptions or names pick different entities; lexical/pragmatic cues favor distinctness but do not strictly guarantee it.",
+          "The relational description 'the babies' nephew' is anchored to the explicit group 'the babies' in the old facts; an anaphoric/relative possessive in a different later context could rebind, but the exact wording here is locally stable."
+        ],
+        "notes": "The alias intro maps 'the puppy' to Milo and 'the babies' nephew' to Emma, and this mapping is explicit. The mappings do not contain only/exclusivity language and do not themselves introduce a participant role. In each fact realization, the patient NP is clear, but the assertion is not exhaustive about all participants or all cuddled entities. The group 'the babies' could in principle include or overlap with another referent, but neither the alias intro nor the facts asserts membership or non-membership. 'The babies' nephew' is grammatical but somewhat pragmatically unusual because a plural baby group is presented as having a single common nephew; it remains interpretable and should not be rejected on purely prescriptive grammar grounds.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias_intro clearly names the puppy as Milo and the babies' nephew as Emma. 'The puppy' and 'the babies' nephew' are locally fixed in this row because the alias intro directly links each description to a name and the facts retain the same patient descriptions. However, the intro does not explicitly state that the two named referents are distinct, so referent distinctness remains logically underdetermined even though ordinary lexical cues make co-reference pragmatically unlikely. The possessive description 'the babies' nephew' is not a fully context-free rigid description; it depends on the identity of the possessor group. Here that possessor group is explicit and stable within the old facts, but a later different actor context using a relative possessive could create rebinding risk. The account does not say whether Emma belongs to the babies."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "c2dd6e6791a062cc1e1d2eade5c7f1c37a3c3e37417acef3fe316d50fc17635d",
+      "response_sha256": "8a3f978bb7ac44048b9471b6ba43dc58610ec820a1d8fed669e33285477ad16b",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 99.61062955856323,
+      "annotation": {
+        "id": "item77",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the model",
+          "minimal_desc_other": "the toddler",
+          "minimal_source": "Grace",
+          "minimal_other": "Henry"
+        },
+        "question_valid": true,
+        "question_notes": "Valid when paired with any one selected fact plus alias_intro. The singular 'that old act' presupposes one instantiated dressing event and would be ambiguous if all four alternative facts were presented simultaneously. It asks only for the explicitly supplied name and does not require exclusivity.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later actor or later new activity is introduced. A past dressing event does not logically entail that any candidate is unavailable to a different actor later.",
+        "alternative_explanations": [
+          "The intro does not explicitly state that Grace and Henry are distinct entities; one referent could in principle bear multiple names or descriptions.",
+          "Each positive fact mentions one patient but is not stated as exhaustive, so the unmentioned candidate is not excluded.",
+          "A temporary physical-occupancy reading is pragmatically possible but is not an entailment of unavailability.",
+          "Later reuse of 'the model' or 'the toddler' could be rebound only if a new naming context outweighed the alias intro; ordinary anaphoric continuity favors stable reference."
+        ],
+        "notes": "The alias_intro gives ordinary naming mappings ('the model' with Grace, 'the toddler' with Henry) but asserts no exhaustivity, distinctness, or event participation. The descriptions 'the model' and 'the toddler' are potentially overlapping properties, so strict logical uniqueness of separate referents is unstated. The current question is answerable for any single alternative fact; ambiguity arises only if multiple facts are co-presented. The nominalization 'old act of dressing' is somewhat heavy but interpretable; no possessive binding issue is present.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "Alias intro has ordinary discourse-scope naming information: it associates each description with a name but does not say 'only', assert distinctness, or assign event roles. With a single alternative fact, ordinary reading keeps the description-name link stable, while strict uniqueness of separate referents remains unverified."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "a8fd7e74ea6d3203f22a89091895994e097b9689bb049625edbc30fd22e0767c",
+      "response_sha256": "d4df9926da6f1951642d6dfdcd9597ea2ca5d5fb5702bb201ef8a04e88642a86",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 115.39165306091309,
+      "annotation": {
+        "id": "item78",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the toddler",
+          "minimal_desc_other": "the model",
+          "minimal_source": "Henry",
+          "minimal_other": "Grace"
+        },
+        "question_valid": true,
+        "question_notes": "Checked separately against alias_intro plus each single fact. With minimal_desc_source or minimal_source, the current question is answerable as Henry; with minimal_desc_other or minimal_other, it is answerable as Grace. It presupposes an old dressing event but does not encode exclusivity. If all four facts were pooled, 'that old act' would not uniquely select one event, so this validity claim uses the required separate-fact reading.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later activity is specified in this field audit, and the old dressing facts are positive, time-bound, non-exclusive assertions. They do not logically entail that Henry or Grace is unavailable to any different actor in any later new activity. Physical single-dressing plausibility, discourse ordering, and possible result-state continuity are not logical entailments.",
+        "alternative_explanations": [
+          "The toddler and the model can overlap in principle, e.g. a toddler who is also a model; the alias intro does not explicitly say the two descriptions select different entities.",
+          "A single definite object NP may be the explicitly dressed patient without excluding other participants or unmentioned patients.",
+          "A past dressing event may leave a temporary dressed-state or suggest narrative occupancy, but neither logically blocks a different actor from a later activity.",
+          "Explicit mention of one patient can create implicatures, but these are cancellable and not entailments."
+        ],
+        "notes": "The alias intro clearly makes the name-description associations Henry-the toddler and Grace-the model, but it does not use 'only', 'different', or an exclusivity operator. The four facts are alternatives and were not concatenated. Formal proof of distinct referents is lacking because one person could in principle be both the toddler and the model with both names. Proper names are treated as the fixed protocol candidates.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias intro provides explicit name associations without asserting exclusivity or participant roles. The alias questions are scoped to the descriptions 'the toddler' and 'the model', not to activity participation. Distinctness is not entailed even though ordinary discourse naturally supports treating the two descriptions as sharing the introduced named referents in this local context."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "62b72ba536af91f6520dd218eeeb4e1756890eb62788d6acd901fffba558faca",
+      "response_sha256": "a8a5eff69153dca6230aa43d2c9d09d4a439b95b687fb954e2391dcba098df2f",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 123.93578577041626,
+      "annotation": {
+        "id": "item79",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the boss",
+          "minimal_desc_other": "the husband",
+          "minimal_source": "Iris",
+          "minimal_other": "Jack"
+        },
+        "question_valid": true,
+        "question_notes": "Checked separately for alias_intro plus each single fact. Each realization presents one old-meeting patient whose description/name is fixed by alias_intro: the boss -> Iris, the husband -> Jack, Iris -> Iris, Jack -> Jack. The singular 'the entity' is read as the patient of that realization. If the two descriptions turned out to overlap on one referent, that referent could have two names, but each single-fact realization still licenses the queried explicit name.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No old fact entails that a candidate is unavailable to a different actor in a later activity. Meeting someone earlier is not a logical exclusion, occupancy, or blocking condition. Any later-unavailability inference would rely on defeasible narrative or physical-occupancy reasoning, not semantic entailment.",
+        "alternative_explanations": [
+          "'the boss' and 'the husband' are role/relational descriptions that can overlap, so one person could be both Iris and Jack unless distinctness is explicitly stated.",
+          "Distinct proper names and the two-clause naming pattern are suggestive, but they do not strictly entail two different referents.",
+          "Each meeting fact is non-exhaustive: meeting one described participant does not exclude the other candidate from participation.",
+          "Relational or possessive-style descriptions may rebind if a later independently reviewed context introduces a different actor/possessor.",
+          "The coworkers form a group subject; their membership is unspecified, and no overlap exclusion with Iris/Jack is stated.",
+          "No awkward nominalization is introduced; 'was called' is interpretable as an ordinary naming expression."
+        ],
+        "notes": "The alias intro explicitly names the two descriptions rather than asserting exclusivity, participant lists, or referent distinctness. The fact patients are exact literal object NPs. Source/description-source and other/description-other readings match under the supplied alias mapping, but Iris and Jack are not logically forced to be distinct. The material is interpretable; rebinding and overlap risks are recorded rather than treated as automatic rejection.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "Within alias_intro and each supplied old fact, 'the boss' is fixed to Iris and 'the husband' to Jack. This is ordinary naming continuity, not a strict uniqueness guarantee across arbitrary later possessor-changing contexts. Later whole-rendered review should check whether any new actor context rebinds a relational description. No real possessive binding problem occurs inside this row, and no awkward nominalization blocks interpretation."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "cfb5a4ff3a26973f600c8aee071808a404efd15e2cc124d51460aaaa91f79548",
+      "response_sha256": "8d3f12d70a99699def46afd00b9e6095851b6c3b09cb63f09bb1eb764b24a9f7",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 157.4780523777008,
+      "annotation": {
+        "id": "item80",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the husband",
+          "minimal_desc_other": "the boss",
+          "minimal_source": "Jack",
+          "minimal_other": "Iris"
+        },
+        "question_valid": true,
+        "question_notes": "When checked as alias_intro plus exactly one fact, each fact supplies a single explicit patient, so the singular reference to 'the entity the family was meeting' is determinate. The current question does not require concatenating the source-role and other-role facts. The phrase 'old act of meeting' depends on the supplied meeting fact being framed as the earlier event.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "The old meeting sentence does not logically entail that either candidate is unavailable to a different actor in a later new activity. Even where one candidate is explicitly mentioned as patient, the direct object is non-exhaustive, and an earlier event does not constrain later participation.",
+        "alternative_explanations": [
+          "'The husband' and 'the boss' are role/relational descriptions that can overlap in one referent; the text does not explicitly rule out one person satisfying both.",
+          "'The family' is an unspecified group; the candidates are not asserted to be family members or non-members, and meeting a relative or boss does not require non-membership.",
+          "A singular direct object in 'meeting X' is not logically exhaustive, so non-mention of the other description does not prove the other participant was absent.",
+          "Naming clauses like 'was called Jack' can introduce aliases or names; different proper names only pragmatically suggest distinct individuals rather than strictly entailing distinctness.",
+          "Statements about an earlier meeting do not impose constraints on a later event, even with the same action or a different actor."
+        ],
+        "notes": "The alias_intro provides an explicit surface association between 'the husband' and 'Jack' and between 'the boss' and 'Iris'. However, it does not explicitly assert that Jack and Iris are different people, so strict logical distinctness is uncertain despite the ordinary pragmatic tendency to read the two named candidates as distinct. The pattern is still interpretable, and within each single-fact check the description and name versions denote the same patient. All old-act patient mentions are non-exhaustive, and no later unavailability is entailed.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions ask only for the name associated with each description in alias_intro; they do not imply an activity role, exclusivity, or an old/new actor list. No overt possessive binding is present, although 'husband' and 'boss' are relational role nouns. The alias_intro does not state family membership or candidate non-overlap."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "94fee23f8a002374ee3e92ef7f544ed5e308938fe4e496cade5b854323bd3a50",
+      "response_sha256": "46121c01773653daacf4c487bb4e652268a8e2ac8cb9a798936df61840fafcec",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 129.08917260169983,
+      "annotation": {
+        "id": "item81",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the grandmother",
+          "minimal_desc_other": "the queen",
+          "minimal_source": "Kate",
+          "minimal_other": "Liam"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is answerable for each supplied fact if the fact is rendered immediately before it: the name-realization facts explicitly answer with Kate or Liam, and the description-realization facts are answerable through the explicit alias_intro name association. It asks only for the explicit name/description association, not exclusivity or participation in another activity. The phrase 'that old act of disrobing' creates a discourse dependency on the immediately preceding fact, so rendering order matters.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No unavailability entailment is present. A report that the nurse was disrobing Kate/the grandmother/Liam/the queen does not logically prevent a different actor from interacting with that person in a later activity. Any physical-occupancy or narrative-continuity inference would be defeasible and is not stated. No later new activity is supplied in this row.",
+        "alternative_explanations": [
+          "Each fact is non-exhaustive: naming or describing one patient does not exclude another participant from being present or involved.",
+          "The alias_intro does not explicitly state that the grandmother and the queen are distinct people, so referential overlap is not logically ruled out.",
+          "The gender stereotype mismatch in 'the queen\u2014Liam' is odd but works as an explicit naming assertion, not as a validity problem.",
+          "A report about an earlier event does not automatically concern a later event, even with the same actor/action.",
+          "'That old act of disrobing' is an awkward but interpretable nominalization; it requires nearby context for resolution."
+        ],
+        "notes": "Kate and Liam are treated as fixed source and other named referents, not merely as first and second sentence entities. The four facts are alternative single realizations and should not be concatenated. The wording creates no possessive binding or group referent. Strictly, referent distinctness between 'the grandmother' and 'the queen' is not asserted; ordinary context suggests the intended split, but one referent with both descriptions and two names is not formally excluded. The naming clauses are nevertheless explicit enough to fix each description with its assigned name in the supplied account. The facts state roles clearly: the nurse is the agent and the NP object is the patient. No old/new actor comparison or unavailability judgment is encoded.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions ask only for names associated with descriptions and do not imply any event role or exclusivity. With the supplied alias_intro, 'the grandmother' is associated with Kate and 'the queen' is associated with Liam. These associations are clear for the current account, but the intro does not itself entail that the two descriptions cannot overlap in one referent."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "d80f0b0a1b0e33e41bc937369a81539b35c5e337a5213277f44dfe0727619ccf",
+      "response_sha256": "f340d19d649bfe5abdb076b5879bddf1c769c84da4d749884b8a2be92c0ac620",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 59.85165810585022,
+      "annotation": {
+        "id": "item82",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the queen",
+          "minimal_desc_other": "the grandmother",
+          "minimal_source": "Liam",
+          "minimal_other": "Kate"
+        },
+        "question_valid": true,
+        "question_notes": "Current_question is answerable with alias_intro plus any single fact. For minimal_desc_source and minimal_desc_other, alias_intro supplies the name for the described patient. For minimal_source and minimal_other, the name is explicit in the fact itself. The question does not presuppose exclusivity, a later activity, or unavailability.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later new activity or different later actor is stated. A prior disrobing event does not logically entail unavailability for any later context.",
+        "alternative_explanations": [
+          "Alias_intro names two descriptions without asserting only/exclusivity or explicit distinctness; the queen and the grandmother could in principle overlap in one referent with two names/aliases.",
+          "The current_question references 'that old act of disrobing' but supplies no new later activity, so no unavailability implication arises.",
+          "Gender associations between descriptions and names (queen/Liam, grandmother/Kate) are unusual but interpretable and do not disrupt the naming links."
+        ],
+        "notes": "Alias_intro is a straightforward two-clause naming statement: 'The queen was called Liam, and the grandmother was called Kate.' It clearly links each description to a name but does not explicitly say the two descriptions pick out different entities, nor does it exclude one referent holding both descriptions. Each fact variant mentions exactly one patient; positive mention is non-exhaustive and not evidence of exclusivity. The stable de-re descriptions and minimal name forms are semantically equivalent in their respective pairs because of the alias naming. No possessive/relational rebinding is present; descriptions are role descriptions fixed by the alias.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "Alias_questions ask only about the name associated with a given description. alias_intro associates 'the queen' with Liam and 'the grandmother' with Kate, making both questions directly answerable. The scope is naming-only; no participant-identity, exclusivity, or activity-role assertion is made beyond those associations."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "c113fecf038b0cc5968a49eec46907b4a8050b95b37b7676e119494642c06121",
+      "response_sha256": "3199754ab0bea725c5e35788a17d8dba04f9c83dc0ab0e59d9cb0cd27f516bef",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 109.55006265640259,
+      "annotation": {
+        "id": "item83",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the actor",
+          "minimal_desc_other": "the businessman",
+          "minimal_source": "Maya",
+          "minimal_other": "Noah"
+        },
+        "question_valid": true,
+        "question_notes": "For each alternative alias_intro+fact pair, the question is answerable. With minimal_desc_source/other it requires linking the patient description through alias_intro to Maya/Noah; with minimal_source/other the patient name is directly present. The question asks for the named referent, not exclusivity or uniqueness.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later new activity is supplied, and the past shaving reports by themselves are neither exclusive nor existence-preserving. Plausible physical occupancy at an old shaving time might explain non-overlap under a different temporal assumption, but it is not logical entailment of later unavailability.",
+        "alternative_explanations": [
+          "The two occupational descriptions could denote one person with two names or roles, so distinct referents are not guaranteed.",
+          "A singular definite object in a past shaving sentence does not exclude additional unmentioned patients or participants.",
+          "Prior possession or use of an assistant or event slot could make plausible nonparticipation in a simultaneous activity, but not in a later one.",
+          "Role descriptions such as actor and businessman are context-dependent titles, not guarantees of unique identity."
+        ],
+        "notes": "alias_intro gives a clear local naming association: the actor is called Maya, the businessman is called Noah. It does not assert exclusivity or disjointness. The four facts are alternative realizations; description forms are equivalent to name forms under the alias mapping, while each is nonexclusive for other possible participants. No later unavailability is entailed.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions ask only which name the account associates with each description. They do not ask whether the actor or businessman was the unique patient, participant, or a distinct entity; therefore alias_intro suffices."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "832e7258346501a413c236f1a46f769c6e54b11c8aa8408c137af49be761c9db",
+      "response_sha256": "98b71c42600638808db3469796d8f537459acd428096cb445760c89926678a3c",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 127.06550598144531,
+      "annotation": {
+        "id": "item84",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the businessman",
+          "minimal_desc_other": "the actor",
+          "minimal_source": "Noah",
+          "minimal_other": "Maya"
+        },
+        "question_valid": true,
+        "question_notes": "For each single-fact condition, the question is answerable: in minimal_desc_* the answer is supplied by alias_intro plus the literal patient description; in minimal_* the name is the direct patient NP. The question does not require exclusivity, distinctness, or later availability.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later activity is specified, and no fact states that either candidate was occupied, scheduled, prohibited, or otherwise unavailable to another actor. Plausible temporary physical occupancy during the shaving event is not logical entailment of later unavailability.",
+        "alternative_explanations": [
+          "The source and other description/name forms are linked only by the alias_intro naming pattern, not by an explicit distinctness claim.",
+          "A single person could satisfy both descriptions and be called both names; the text does not forbid overlapping descriptions or aliases.",
+          "Each minimal fact asserts one patient but does not exclude co-patients in the same old shaving event.",
+          "The definite role descriptions are contextually salient but not logically unique or exhaustive descriptors."
+        ],
+        "notes": "Audit based on actual wording only. alias_intro says the businessman was called Noah and the actor was called Maya, but never uses only/different and does not list participants. All minimal facts keep the same agent phrase and verb, differing only in the patient NP. The source and other fact forms are same-participant readings under the alias_intro, but the two named candidates are not logically forced to be distinct. No possessive or relational NP appears that would rebind; the actor/businessman overlap remains a real but interpretable ambiguity, not a reason to reject the naming context.",
+        "alias_identity_clear": false,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias_questions ask only for the explicit name-description association. They do not ask who participated in the shaving event, who was the sole patient, or whether Noah and Maya are distinct people."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "6949851e087cf91c851521a35f4b323b41ef88e820861eb8237c47fd8e0a418c",
+      "response_sha256": "f53096ff34cd8e2fa49cee8c555232faa995cdd95b8bbc6e661cc53735f80c4d",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 111.10310339927673,
+      "annotation": {
+        "id": "item85",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the son",
+          "minimal_desc_other": "the child",
+          "minimal_source": "Olivia",
+          "minimal_other": "Peter"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is answerable for alias_intro plus each alternative fact singly. It asks for the name associated with the one stated patient and does not require the patient to be the only participant.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later activity or different actor is supplied, and the old bathing sentence does not logically entail that any candidate is unavailable later. Any momentary occupancy or narrative alternation would be pragmatic, not entailment.",
+        "alternative_explanations": [
+          "The descriptions 'the son' and 'the child' overlap; one person could satisfy both, and 'was called Olivia/Peter' could supply aliases rather than establish two distinct people.",
+          "Relational definite descriptions can rebind across a new context or possessor; strict cross-event de-re uniqueness is not encoded here.",
+          "'Called' can denote a nickname or reported name rather than an exclusive legal identity.",
+          "The four facts are alternatives; each states one bathed patient but does not exclude others."
+        ],
+        "notes": "Wording verified as supplied. The alias intro names the son as Olivia and the child as Peter; source and other facts were not concatenated as one passage. Role and grammar are clear. All four patient assertions are positive but non-exhaustive.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": false,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The local naming associations are clear, but the alias intro does not explicitly say the two descriptions are different or exclusive referents. Later whole-rendered review should confirm whether the intended referents remain fixed across any new context."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "f8d34ba79d1868a49d037b1ba615f996b74bc542c0949c6a77a2ab654ac8537e",
+      "response_sha256": "bb7aff68941dd959257f067382c5a7ad98b431fd8a3100a698c2a62485e14378",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 115.44525957107544,
+      "annotation": {
+        "id": "item86",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the child",
+          "minimal_desc_other": "the son",
+          "minimal_source": "Peter",
+          "minimal_other": "Olivia"
+        },
+        "question_valid": true,
+        "question_notes": "When evaluated as alias_intro plus one single fact realization, the patient is fixed by the object NP and the naming link supplies the requested name. Across all four alternative facts together, the question would overpresuppose a unique patient.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later new activity or different actor is supplied. The old bathing event does not logically entail unavailability in any later activity; physical occupancy or result-state effects could only make simultaneity pragmatically less likely.",
+        "alternative_explanations": [
+          "Bathing may physically occupy both the patient and the nanny, making concurrent participation elsewhere implausible.",
+          "Result-state semantics may make the patient temporarily wet or busy but not semantically unavailable.",
+          "Narrative alternation can invite a contrast inference that the unmentioned description was not involved.",
+          "Informational relevance may strengthen a non-exhaustive positive assertion into an exhaustive reading."
+        ],
+        "notes": "The alias intro names each description but does not explicitly assert distinct referents. 'the child' and 'the son' are compatible descriptions, and 'the son' is relational; strict distinctness and unique membership are not logically guaranteed. Author notes were treated as data, not proof.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "'The child was called Peter' and 'the son was called Olivia' provide ordinary name links for the descriptions in the current discourse. No possessor or competing 'son' is introduced, so a different later actor does not by itself force rebinding. However, the two descriptions can overlap in denotation in principle; the intro does not strictly guarantee that Peter and Olivia are two distinct referents."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "e3c0ae3e1f6d0483190bdf19a6201e460376b7feb995054fd4c567f1a8b8cc90",
+      "response_sha256": "515348ee0c261952b7345e6c91a46963d30deab004756ef7447738f29cca6e01",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 98.84132552146912,
+      "annotation": {
+        "id": "item87",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the father",
+          "minimal_desc_other": "the teacher",
+          "minimal_source": "Quinn",
+          "minimal_other": "Rosa"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is valid when alias_intro is paired with any single fact: with a descriptive fact, the name is supplied by the alias mapping (the father to Quinn, the teacher to Rosa); with a name fact, the requested name is explicit in the fact itself. With alias_intro alone it is not applicable because no old hugging event is present. The question does not require the hugged entity to be the only hugged entity.",
+        "grammar": "acceptable",
+        "unavailability_entailed": null,
+        "unavailability_notes": "No later activity with a different actor is supplied in this field row, and none of the old facts expresses a state or result entailing unavailability. Physical occupancy during the old hugging is at most plausible, not logically entailed; a statement about an earlier event also does not constrain a later event.",
+        "alternative_explanations": [
+          "Although the two naming clauses use different names, the wording does not logically rule out one entity having both descriptions/names.",
+          "'the father' and 'the teacher' can overlap in a single referent and do not guarantee two distinct participants.",
+          "'the siblings' is a group subject; the facts do not specify group membership or whether the patient overlaps with the huggers.",
+          "When a fact already contains 'Quinn' or 'Rosa', the current question can be answered directly from that fact rather than requiring the alias_intro.",
+          "Ordinary discourse may bias toward two distinct people because two different names are introduced, but this is not strict logical entailment."
+        ],
+        "notes": "The alias_intro is an ordinary two-clause naming pattern assigning names to descriptions; it does not use 'only', assert exclusivity, assert participant distinctness, or introduce an old/new actor list. The four facts are separate alternatives and are not to be concatenated. Each fact is a positive assertion with a singular patient NP and a group actor, so each is non-exhaustive about other possible patients. Under the alias mapping, description and name fact forms are equivalent for each candidate. Semantic referents are not logically forced to be distinct.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "alias_intro separately binds 'the father' to Quinn and 'the teacher' to Rosa. The alias questions query only these naming associations and imply no activity role or exclusivity. The current question is event-scoped and requires one fact; with a descriptive fact, alias continuity supplies the name, and with a name fact the name is explicit. No participant disjointness, exclusivity, or group-member disjointness is asserted, and source and other fact worlds are not combined."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "1801f23f43c203352c2c5f992f31623744371ce8da99514b170e21e3afcc406d",
+      "response_sha256": "10f638af5f196cd8556f90ebb7e6ee9f37f8303836fd03c7cf2cb8d3cd87ca7f",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 57.777530670166016,
+      "annotation": {
+        "id": "item88",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the teacher",
+          "minimal_desc_other": "the father",
+          "minimal_source": "Rosa",
+          "minimal_other": "Quinn"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is interpretable for alias_intro plus each single fact. In the descriptive facts the answer comes from linking the described patient to the name-bearing alias in alias_intro; in the name-bearing facts the patient name is explicit. The phrase 'the entity' is compatible with the single object in each supplied fact. It does not require exclusivity or a later event.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "The row introduces only an old act of hugging by 'the kids' and does not introduce a different actor or a later new activity. Therefore the old fact does not logically entail that Rosa or Quinn is unavailable to anyone. Any unavailability conclusion would require an extra pragmatic or occupancy assumption, not entailment from the supplied facts.",
+        "alternative_explanations": [
+          "'The kids' is an unspecified plural/group; its members may overlap with the teacher or father, but the facts do not state membership or exclusion.",
+          "Being hugged in one event does not necessarily make a person categorically unavailable for a different later event with other actors.",
+          "A single person could be both the teacher and the father; alias_intro does not explicitly rule out one referent bearing two names or occupying both roles.",
+          "The definite descriptions 'the teacher' and 'the father' are functionally distinct here through naming, but definite-description uniqueness is not explicitly asserted.",
+          "The positive hugging assertions mention one patient each but do not say no other person was also hugged."
+        ],
+        "notes": "The alias clause directly associates the teacher with Rosa and the father with Quinn; these identifications are clear. However, the clause does not explicitly say Rosa and Quinn are different people, and the teacher/father properties are not mutually exclusive, so strict distinctness is not entailed. The descriptive and name-bearing fact versions are plausible equivalents under the alias mapping: 'the teacher'\u2192Rosa and 'the father'\u2192Quinn. No possessive-binding problem or awkward nominalization blocks interpretation; 'called' supplies a naming relation rather than a possessive or variable-binding construction. The group subject 'the kids' remains underspecified and is not asserted to exclude the named candidates or any overlapping referents.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions correctly target the naming associations without asking about activity roles or exclusivity. 'The teacher' is linked to Rosa and 'the father' to Quinn. The intro is non-exclusive, does not provide an old/new actor list, and does not assert participant identity beyond the naming relation. Desk-overlap remains possible because teacher and father can apply to the same real-world person; ordinary discourse supports the alias links but not strict distinctness."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "3eb2f527206dc1536bf6a4f1038eefcd8ecc78e0b5946ff53072051b8a812c20",
+      "response_sha256": "ff5c420286747719b4c494c7a714096b8e8e4da8ae6539540eb8108c938e4057",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 141.47492694854736,
+      "annotation": {
+        "id": "item89",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the girl",
+          "minimal_desc_other": "the boy",
+          "minimal_source": "Sam",
+          "minimal_other": "Tessa"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is answerable for each single-fact realization when rendered with alias_intro: the fact mentions a patient, and the account provides the associated name. Its singular 'the entity' is naturally limited to the overt patient of the selected fact; non-exhaustivity does not block that. With alias_intro alone, the question would presuppose a missing old kissing event, so it is not independently valid there.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later new activity is supplied, and the old kissing fact does not logically entail that a candidate is unavailable to a different actor later. At most, realistic world knowledge might suggest temporary physical occupancy or an event-local result state; that is not semantic entailment. Later narrative alternation cannot be inferred from the old fact.",
+        "alternative_explanations": [
+          "A later event with a different actor is semantically independent; the same candidate could interact with another actor after the old act.",
+          "The facts are non-exhaustive, so non-mention of the other description does not establish exclusion or unavailability.",
+          "An event result-state may hold at or after the old act without creating a restriction on future participation with another actor.",
+          "Group membership of the grandparents relative to Sam/Tessa is not specified, so the old fact alone does not settle whether the candidates could also be group members.",
+          "The gendered descriptions with cross-gender names may invite pragmatic inference about nicknames or unusual name-gender pairing, but do not by themselves introduce another referent."
+        ],
+        "notes": "alias_intro directly maps the girl to Sam and the boy to Tessa. It does not assert exclusivity, participant identity, or old/new actor lists. The four facts are separate alternatives, not a conjunctive source/other world. Each fact is non-exhaustive: one overt patient does not entail that another was excluded. Ordinary reading strongly suggests two referents for the two gendered descriptions, but the alias_intro does not logically force distinctness. The cross-gender name/description pairing is pragmatically unusual but interpretable.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions target only the description-name pairing, not activity role or exclusivity. There is no possessive/relational description liable to rebind here; 'the girl' and 'the boy' are simple definite descriptions. Ordinary discourse fixes them to Sam and Tessa for this supplied window, though strict two-referent distinctness is not explicitly guaranteed."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "9d449fc390979008ed0811c8ff9450f2be1d0e4da926590cdf8471c14310f774",
+      "response_sha256": "637688871bba36d4a20e8fa845ca7b9034fb15e653d3999b81053533242c9afd",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 120.02254629135132,
+      "annotation": {
+        "id": "item90",
+        "referents_distinct": true,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the boy",
+          "minimal_desc_other": "the girl",
+          "minimal_source": "Tessa",
+          "minimal_other": "Sam"
+        },
+        "question_valid": true,
+        "question_notes": "With alias_intro plus any single fact, the direct object supplies one explicit patient, and the name or alias gives its name. The singular question is valid only when facts are checked separately, not when source and other facts are concatenated.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later new activity or different later actor is supplied. The old kissing event does not entail a persistent result-state, exclusive occupancy, or unavailability of any candidate.",
+        "alternative_explanations": [
+          "Definite singular patient wording is compatible with additional unmentioned patients; no 'only' is stated.",
+          "The old kissing event is eventive and does not by itself preclude later participation by the same candidate.",
+          "The plural actor 'the ladies' is an underspecified group; overlap with Tessa or Sam is neither asserted nor excluded.",
+          "In a richer discourse, bare descriptions like 'the boy' or 'the girl' could rebind if another salient boy or girl were introduced, but no such competitor appears in the supplied passage."
+        ],
+        "notes": "The alias_intro explicitly states two naming clauses: 'The boy was called Tessa' and 'the girl was called Sam.' For each single-fact reading, the description-source and name-source forms align, as do the other forms. The unusual gender-name associations are socially marked but not grammatically unacceptable or logically contradictory. No exclusivity or unavailability is expressed.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions are valid because the intro explicitly links each description to a name and does not introduce activity roles. Each fact should be assessed only with alias_intro and not combined with the other alternative fact world. The plural 'ladies' does not alter the patient mapping."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "2999d50dfbeb038e059a7d0baf1b0d218fc305f3aa7b8825720babad1095f770",
+      "response_sha256": "eb825e87288553111115e8c5dbdd911d00f6a67a9479bae8c520373441278fb6",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 78.85267233848572,
+      "annotation": {
+        "id": "item91",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the man",
+          "minimal_desc_other": "the woman",
+          "minimal_source": "Uma",
+          "minimal_other": "Victor"
+        },
+        "question_valid": true,
+        "question_notes": "The question is answerable for each fact realization: directly from named patients in the minimal_source/minimal_other versions and via the alias-intro naming in the description versions. The singular phrase 'the entity' should not be overread as asserting uniqueness or exclusivity.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No logical entailment that any candidate is unavailable to a different actor in a later new activity. At most, physical or event-local occupancy is inferred for the old fighting, and it does not transfer to a new act or a different actor.",
+        "alternative_explanations": [
+          "The old fighting only constrains the candidate during that event, not later activities.",
+          "A different actor could interact with the same candidate after or independently of the old fight.",
+          "The fact assertions are non-exhaustive and do not exclude other participants or later availability.",
+          "Group membership overlap between the boxers and the candidates is unconstrained and cannot create unavailability by entailment."
+        ],
+        "notes": "The alias-intro pairings are explicit, but logical distinctness between 'the man' and 'the woman' is not forced. The gender-description/name mismatches are unusual but interpretable and not a reason for ungrammaticality. 'The boxers' is a group subject; no claim is made about overlap with the named patients. The nominalization 'that old act of fighting' is somewhat awkward but interpretable. No possessive/relational description occurs, though the definite descriptions could in principle be rebound in a later rendered context unless explicitly maintained.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": false,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions are scoped to naming associations only and do not imply activity roles, exclusivity, or participant distinctness. Plain anaphoric continuity is plausible, but strict de-re fixation is not guaranteed by the intro alone."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "2181329fb75b4efc77bb6c03ff7c189e7eab9888c4ff4598d9fa467a69baf677",
+      "response_sha256": "1a255b17227efc52eb0977c9ad277e47e1555d36738c3b797154d14651773727",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 120.46943235397339,
+      "annotation": {
+        "id": "item92",
+        "referents_distinct": true,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the woman",
+          "minimal_desc_other": "the man",
+          "minimal_source": "Victor",
+          "minimal_other": "Uma"
+        },
+        "question_valid": true,
+        "question_notes": "Valid for each single-fact realization: description-based facts are answerable through the explicit alias mappings, and name-based facts are directly answerable. The question does not require exhaustivity or exclusivity.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No. The old fighting event only places the candidate in the patient role in that event. It does not entail unavailability to a different actor in a later activity, and no later activity is supplied here.",
+        "alternative_explanations": [
+          "The fighting fact is temporally bounded and does not determine later availability.",
+          "The fact is positive and non-exhaustive, so other participants are not excluded.",
+          "Being the patient of 'the classmates' does not assert non-membership in that group or exclusivity of participation.",
+          "The name-description links are stable, and no later actor or context introduces a rival referent."
+        ],
+        "notes": "Each fact was audited only with the alias intro, not as a concatenated passage. 'The woman was called Victor' and 'the man was called Uma' provide explicit name links. Although the intro does not literally say 'different', the ordinary disjoint meanings of 'the woman' and 'the man' sufficiently mark two referents. The unconventional gender associations of the names are irrelevant because 'was called' explicitly supplies the naming relation.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions only ask which name is associated with each description. They do not imply participation in the fighting event, exclusivity, group membership, or later availability."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "77c7c372b9f557e49654dc3f719200167b5a216fdbf59d085f7164de4ef8a89c",
+      "response_sha256": "7c94052e190cb687d81f7654ccf864fc9ce60ee8c89fd18f6e962f97ffc6dae5",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 152.68653917312622,
+      "annotation": {
+        "id": "item93",
+        "referents_distinct": false,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the soldier",
+          "minimal_desc_other": "the uncle",
+          "minimal_source": "Willa",
+          "minimal_other": "Xander"
+        },
+        "question_valid": true,
+        "question_notes": "The current question is answerable with alias_intro plus any one of the four alternative facts. Description facts inherit the explicit name from the alias intro; name facts give the name directly. It asks for the healed patient in the old act, not for exclusivity or later participation.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No old healing statement entails later unavailability. There is no temporal relation to a later activity, no exclusivity marker such as 'only', and 'the medic was healing X' does not by itself create a logical unavailability condition for another actor.",
+        "alternative_explanations": [
+          "'the soldier' and 'the uncle' are compatible descriptions and could overlap in one individual; the intro does not state they are disjoint.",
+          "In a wider context, definite role descriptions could be ambiguous if multiple soldiers/uncles were salient, though the supplied intro gives a natural local antecedent.",
+          "The healing sentences are non-exclusive, so silence about the other description or name is not evidence of exclusion or non-participation.",
+          "Any inference from being healed to later unavailability would require additional result-state, temporal-overlap, or uniqueness assumptions."
+        ],
+        "notes": "Facts were checked separately with the alias intro, not concatenated. The local description-to-name mapping is explicit: the soldier -> Willa, the uncle -> Xander. However, strict cross-referent distinctness is not entailed because one person could bear both descriptions or names. Role scope is clear in each healing fact; the fixed candidate is the patient. No grammatical problems found.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias questions are description-to-name queries only. They imply neither participation in the healing event nor exclusivity. The intro supports 'the soldier = Willa' and 'the uncle = Xander', but it does not explicitly state that these are two distinct people."
+      }
+    },
+    {
+      "status": "complete",
+      "model": "step-5-preview",
+      "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+      "request_sha256": "e45b0407aed730ac833c1a0a8b1fd402e0a49ff6cdcdbc55222bd9742752eb0e",
+      "response_sha256": "5e151306e24581fb86e7e386177b1ced5d2cb119dbb6b5863a085c4a7bd58736",
+      "proxy_used": false,
+      "response_reused": false,
+      "wall_seconds": 116.89252471923828,
+      "annotation": {
+        "id": "item94",
+        "referents_distinct": true,
+        "role_scope_clear": true,
+        "exhaustivity": {
+          "minimal_desc_source": "nonexclusive",
+          "minimal_desc_other": "nonexclusive",
+          "minimal_source": "nonexclusive",
+          "minimal_other": "nonexclusive"
+        },
+        "fact_patients": {
+          "minimal_desc_source": "the uncle",
+          "minimal_desc_other": "the soldier",
+          "minimal_source": "Xander",
+          "minimal_other": "Willa"
+        },
+        "question_valid": true,
+        "question_notes": "Checked separately against alias_intro plus each alternative fact. For minimal_desc_source the patient is 'the uncle' and the alias name is Xander; for minimal_desc_other it is 'the soldier' and Willa; for minimal_source/minimal_other the name is already the overt patient NP. The singular 'the entity' does not assert exclusivity; each healing sentence is nonexhaustive.",
+        "grammar": "acceptable",
+        "unavailability_entailed": false,
+        "unavailability_notes": "No later new activity is supplied to this field audit, and the old healing fact does not logically entail future unavailability to a different actor. Past activity/progressive semantics may suggest occupancy, but that is not entailment; the later target sentence needs separate whole-rendered review.",
+        "alternative_explanations": [
+          "Each overt healing sentence names or describes one patient without excluding another unmentioned patient.",
+          "Past healing-in-progress can leave a result-state, but result-state semantics does not entail that a different later actor cannot also heal or interact with the referent.",
+          "The descriptions 'the uncle' and 'the soldier' are property/relational descriptions and could in principle overlap in one referent; the naming sentence does not explicitly state that Xander and Willa are distinct.",
+          "A relational description such as 'the uncle' or 'the soldier' could rebind relative to a different later actor unless the named referent remains discourse-salient."
+        ],
+        "notes": "Author notes were not treated as semantic evidence. The alias_intro uses neutral naming only ('was called'), with no only/exclusive participant claim and no concatenation of role worlds. The four fact forms are alternative single realizations, each with one overt patient NP. Ordinary discourse links the uncle to Xander and the soldier to Willa, and the description/name fact pairs are referentially equivalent within each supplied alias+fact pairing. Strict logical uniqueness/distinctness is not explicitly asserted, but the two fixed named candidates are treated as distinct referents without automatic rejection of the interpretable naming context.",
+        "alias_identity_clear": true,
+        "fixed_de_re_descriptions": true,
+        "fact_form_equivalence": {
+          "source": "clear",
+          "other": "clear"
+        },
+        "alias_question_source_valid": true,
+        "alias_question_other_valid": true,
+        "alias_scope_notes": "The alias intro directly associates 'the uncle' with Xander and 'the soldier' with Willa via 'was called'. It does not say only or exclusive and does not assert participant exclusivity. Ordinary reading treats the two named referents as distinct, but strict logical distinctness is not entailed by the naming clauses alone."
+      }
+    }
+  ]
+}

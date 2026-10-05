@@ -154,3 +154,7 @@ E47实际结果：inventory−absent newSame D−3.849bits、unverified−assert
 ## E48前补读：检索干扰不等同解释修订
 
 [Gur-Arieh/Geva/Geiger ICLR2026](gur-arieh2026-mixing-entity-retrieval.md)实际读v2§1–3.4：三binding检索机制＋反事实输出区分；[Van Dyke/McElree2006](vandyke2006-retrieval-interference.md)实际读Intro/设计/Discussion：保持encoded load、改变retrieval cue区分解释。一般词汇与实体检索、类别匹配、cue-overload均不是本线首创。E48别名交叉用于必要表达定位，下一需要明确角色gold的用途或自然语篇证据；不用提示概率gap包装新颖性。
+
+### 自然role用途的近邻与资产
+
+[Li/Ji/Han2021](li2021-wikievents-informative-roles.md)实际读§1–4.6：nearest/informative共指、additionalcontext分散event focus已有owner。WikiEvents六release只暴露entitycoref，不能把mentionID当event identity。外部新近检索EV2 AAAI2025、event co-occurrences及argument-centric CDcoref目前仅primary摘要，不能据此自动否定/认可本线。E49/E50当前用途是在同两事件真事实下区分联合重构与格式，不把一般角色/检索gap叫novelty。

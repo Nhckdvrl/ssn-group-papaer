@@ -90,3 +90,9 @@ opencode免费模型与Step模型均可用于逐条数据审计；额度、格�
 ## 语篇身份/指称的自然材料（2026-10-06，仅资产阶段）
 
 GUM pinned commit `22fdf87f9c71c96bcc771461d06e689b1f90020d`，下载所有news24/fiction19个dep文件：43文档、34,683 tokens、1,835 sentences，3,650,638 bytes，无代理，每文件SHA256与Git blob SHA1双验证。[审计](results/D0-GUM-natural-reference-audit.json)。已有coreference/entity/information-status/语法标注可用来核对角色迁移是否只在人工frame出现；不是另开coref研究对象。news文本CC-BY-2.5，fiction文本CC-BY-NC-SA-3.0，全部标注CC-BY-4.0（不能将全体叫单一许可）；原文只cache，尚无event-role semantic gold或模型推断。
+
+GUM完整外审最终v2：174候选均保留，160role/reference clear并非160personpatientgold；仅14有明确pre-event Name+Description（6文档，多同源事件）。18有两种form但部分same-entity不清，原审计/修订全cache保留，[结果](results/D0-GUM-natural-role-review.json)。没有GUM推断。
+
+## 已标注自然event-role资产（2026-10-06）
+
+WikiEvents作者S3六release文件直连下载，repository253e0889b2377e0f7084cb406cf5d4142ee8a365、S3 ETag/LastModified2021-09-23+六SHA256；无不可证的immutable data revision声称。[审计](results/D0-WikiEvents-source-audit.json)。Train/dev/test206/20/20docs、3241/345/365events、4542/428/566rolelinks、实体coref4682/402/451clusters；本文本是Wikipedia reference中的news，不是全部Wikipedia文本。代码MIT、论文researchrelease不等于news文本再分发授权；raw只cache `upstream/wikievents-audit/`。Loader `scripts/wikievents.py` 保留原句/标注/null：原absolute offsets不能用于released concat document text，用每原句核对，train6span/text不一致显式保留，dev/test0。六release未暴露event-coref，mentionID不同不证明事件不同；仍需语义外审。目前仅source/schema审计，无模型推断，不另开event extraction题目。
