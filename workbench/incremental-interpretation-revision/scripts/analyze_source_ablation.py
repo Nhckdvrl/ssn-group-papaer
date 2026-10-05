@@ -30,7 +30,10 @@ def analyze(cache,probability,nli):
     oc=json.loads((cache/'runs/E28-base/config.json').read_text());assert sha(cache/'runs/E28-base/predictions.jsonl')==oc['predictions_sha256']
     on=list(map(json.loads,(cache/'runs/E28-base/predictions.jsonl').read_text().splitlines()));assert len(on)==2880
     for c in configs[1:]+[nc,oc]:
-        for k in ('model_manifest','dtype','tf32','attention','seed','torch','transformers','batch_size','frozen'):assert c[k]==cfg[k],k
+        for k in ('model_manifest','dtype','tf32','attention','seed','torch','transformers','frozen'):assert c[k]==cfg[k],k
+    assert cfg['batch_size']==configs[1]['batch_size']==configs[2]['batch_size']==4
+    assert nc['batch_size']==oc['batch_size']==8
+    for k in ('base_definition','scope_repair','class_labels','mapping_policy','thinking'):assert nc[k]==oc[k],k
     out=dict(experiment='E29',physical_probability_tasks=1152,physical_nli_tasks=1440,source_items=24,
              actual_gpu_hours=cfg['gpu_hours']+nc['gpu_hours'],bootstrap_unit='12 verb families, two published source items averaged',
              bootstrap_draws=10000,bootstrap_seed=20261005,
