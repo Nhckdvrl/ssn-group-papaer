@@ -14,3 +14,5 @@
 - **命令：** 待材料/完整审计后写实际SHA与命令；任何推断前完成。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+- **推断前完整输入：** fields9dc7ccfe871e78b54927ffdbdd96b85e0db698915b301b9ab4835246fcdc85f7；768unchangedE49contexts×3Qs=2304audits，4608variants全部eligible/proposedagreement/grammaracceptable，全部prompt actualtoken<1024。[D0](../results/D0-E50-input-audit.json)。原E49因differentV反而较差，不能以此预设sameV共享角色collapse；原决定表保留，三格式全跑。run time_indexed_role.py --experiment E50 --query pair_names/unanchored_recap/anchored_recap --num-shards2 --shard-index0/1；analysis analyze_observed_roles.py --experiment E50。

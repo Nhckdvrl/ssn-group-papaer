@@ -85,3 +85,5 @@
 - 2026-10-06：E47纯name inventory−absent newSame D−3.849 [−5.053,−2.670]bits；unverified−asserted仅+1.076 [.264,1.815]。因此不得把E46身份主作用归为身份断言含义，mere actor/entity exposure与语篇结构仍主竞争解释。inventory对new−old J CI跨0，predicate差+1.940 [1.232,2.660]独立报告。native old患者1536correct、status383/384，不将readout gap单独作为novelty。C05仍L1，已进一步收窄。
 
 - 2026-10-06：E48 [卡](experiments/E48-referent-preserving-form-crossover.md)/[统计](results/E48-summary.json) alias固定后表达匹配old D增强+2.721/+3.455、newSame更负−1.521/−2.076bits，paired CI均不跨0；跨形式较弱但I1 Desc→Name仍−.968 [−1.682,−.253]，不能宣称完全词汇局限。mapping96correct，old758/768；I0 Desc→Desc平均old+5.863/new−2.913但first CI跨0，不包装各order稳定。C05仍L1/I01PILOT，下一E49明确第二角色事实后的实际复述，不以一般binding/priming或gap认证好idea。
+
+- 2026-10-06：E49 [卡](experiments/E49-role-use-with-observed-second-event.md)/[统计](results/E49-summary.json)第二patient直接问1530/1536正确，formal joint976/1536true、54unknown；basejoint bounds61.98–64.97%，pairedfamily95CI宽。congruenceCI跨0，differentV在incongruent/base反而约−20pp，不能把C05预测偏移和这些角色错误认同为同一机制。首轮审计格式误判作废解读、完整重审/cross及951firstcorrected对照保留。C05L1/I01PILOT不升级；E50区分普通复述/联合Names/actor retrieval cue。

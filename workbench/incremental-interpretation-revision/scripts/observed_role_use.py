@@ -40,14 +40,15 @@ def build(cache,directory):
     return dict(native_variants=len(rows),contexts=len(packets),fields_sha256=sha(directory/'observed-second-role-fields-v2.json'),candidate_sha256=sha(directory/'question-candidates-v1.jsonl'))
 
 
-def adopt(directory,reviews):
+def adopt(directory,reviews,experiment='E49'):
     annotations={}
     for p in reviews:
         j=json.loads(p.read_text());assert j['model']=='gpt-6-luna'
         for r in j['reviews']:
             assert r['id'] not in annotations;annotations[r['id']]=(r,sha(p))
-    assert len(annotations)==1536
-    rows=list(map(json.loads,(directory/'question-candidates-v1.jsonl').read_text().splitlines()));assert len(rows)==3072
+    variants,contexts={'E49':(3072,1536),'E50':(4608,2304)}[experiment]
+    assert len(annotations)==contexts
+    rows=list(map(json.loads,(directory/'question-candidates-v1.jsonl').read_text().splitlines()));assert len(rows)==variants
     for r in rows:
         a,h=annotations[r['context_id']]
         for k in ('passage_sha256','question_sha256'):assert r[k]==a[k]

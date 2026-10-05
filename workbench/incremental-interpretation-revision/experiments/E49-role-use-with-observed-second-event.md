@@ -1,6 +1,6 @@
 # E49：第二事件角色已有明确证据时的实际使用（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；E48尚未推断，本卡不按E48结果挑fact/target赢家。
 - **问题（一句话）：** 旧活动角色对下一活动的预测偏移，是否会干扰已有明确证据的第二活动角色使用，尤其在证据需通过共指映射时？
@@ -16,3 +16,15 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 - **推断前实际输入：** authoredv2fields01c49f8221691af04ce1dc2c2bd6ca4d629d01916d3573980c9e836845606b47（v1问句重复the/possessive由原作者修复，v1保留）；1536contexts全文独立审计、3072variants全部eligible/proposedagreement，全部prompt tokenize<1024，canonicalold/newclasses与独立gold一致。[D0](../results/D0-E49-input-audit.json)。second/recap各2context-shards共4GPU；一个context两mode始终同shard，固定词典序不按结果。命令observed_role_use.py build/adopt，time_indexed_role.py run --experiment E49 --query second/recap --num-shards2 --shard-index0/1，analyze_observed_roles.py。
+
+### 实际结果与校对
+
+全部3072 outputs完成，snapshotb8086c54，fourwall161.30/160.76/221.29/236.60s，cap0。第二patient直接问1530/1536明确正确；formal两事件recap独立全量cross审计1536：joint976true/506false/54unknown，旧actor1033true/459false/44unknown、旧patient1158/325/53，新patient1384/118/34。首次shard0审计对缺冠词和triple分段误判，原文件保留、v2重审全1536；原first corrected全recap951true与cross976true、96joint标签分歧（全部分类/正确标签共333items有分歧），两完整统计并报，不多数投票挑样本。
+
+**采用规则（POST-HOC校对，非新Qwen推断）：** 原first corrected负责全部second单问，独立third blind全recap＋分项＋null作为primary；first corrected全recap仍独立secondary。重复强调是model audit而非人类gold；没有按模型effect选case。真实roles错位存在，但不能把漏项/unparseable都强判falsebelief。
+
+主要有效读数（paired12family bootstrap）：base joint下/上界61.98 [45.70,76.43] /64.97 [49.48,79.04]%，priority65.10 [48.96,79.30]/69.14 [53.91,82.16]。原预登记complete-family clear读数及所有cells不删，null会减少该primary细分n；另POST-HOC uncertainty sensitivity按全12family保留全部输出，把unknown分别作为0/1界限，非新gold。Congruent−incongruent joint base−4.95..+1.04pp、priority−6.25..+1.82pp，全部CI跨0，不支持sharedpatient强机制。different−sameV在incongruent/base下−22.40 [−37.50,−8.33]到−19.79 [−34.90,−5.73]pp，方向与C05预测like读数相反：不能把两个异常强合为同一反向记忆过程。
+
+结论：literal与formal joint用途分离，但一般QA/生成gap已有owner；问题可能主要是三元组格式/姓名指令解读、event retrieval/输出重构。C05仍L1/I01PILOT，不宣称找到好idea。E50已登记三用途精确区分，不扩大模型。
+
+[全统计](../results/E49-summary.json)、[first corrected对照](../results/E49-corrected-first-summary.json)。Cache E49全部原响应、四审计版本、disagreements与primary recipe保留；sourcehash每item核对，正确canonicalclass须与Gold一致。
