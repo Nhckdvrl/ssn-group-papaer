@@ -26,7 +26,7 @@ class Auditor:
         self.api_style=api_style
         self.max_tokens=max_tokens
         self.quota_exhausted=threading.Event()
-        self.endpoint='https://api.stepfun.com/v1/'+('messages' if api_style=='messages' else 'chat/completions')
+        self.endpoint='https://api.stepfun.com/step_plan/v1/'+('messages' if api_style=='messages' else 'chat/completions')
     def one(self,item):
         uid=hashlib.sha256(item['variant_id'].encode()).hexdigest()[:20]
         payload={'model':'step-5-preview','messages':[{'role':'system','content':PROMPT},{'role':'user','content':json.dumps(item,ensure_ascii=False)}],
