@@ -106,7 +106,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--out',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--data',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True);a.add_argument('--idmap',type=Path,required=True);a.add_argument('--out',type=Path,required=True)
-    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--mode',choices=['base','repair'],required=True);r.add_argument('--experiment',choices=['E28','E29','E30','E31'],default='E28');r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--mode',choices=['base','repair'],required=True);r.add_argument('--experiment',choices=['E28','E29','E30','E31','E34'],default='E28');r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
     x=p.parse_args()
     if x.action=='build':print(json.dumps(build(x.cache,x.out),indent=2))
     elif x.action=='adopt':print(json.dumps(adopt(x.data,x.reviews,x.idmap,x.out),indent=2))
