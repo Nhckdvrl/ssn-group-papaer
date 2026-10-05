@@ -95,3 +95,12 @@ E11首批n1诊断中，完整subject span把unambiguous extended blocker原role 
 [Malyutina/den Ouden2016](malyutina2016-blended-interpretations.md)句图任务已区分initial vs blended解释；[Ceháková/Chromý2025](cehakova2025-disrupted-final-interpretations.md)已有两region×正确/错误理解题，挑战全局faithful新解释；[Christianson2024](christianson2024-rereading-and-question-order.md)已有question-before/重读与理解的对照。读到的范围与未读部分逐卡明示，三个HTML/摘要记录不计为新增cached PDFs。venue nearest返回Amouyal/Hanna/Yoshida等已知owner，也有无关protein/event匹配，不据此做自动判决。
 
 独立Luna全17 NPZ原modifier关系审计：全部初始event未明确assert、modifier不entail，但全句也不exclude；specific support Yes2/No10/uncertain5。这不能证明Qwen进行了正确pragmatic inference，也不能把不被assert叫logical false。下一候选比较应区分**同一事件参与者的改绑、额外兼容事件的补全、任务/引用影响**，并保证后文读数对事件身份有约束；当前只有问题收紧，没有已证成新idea。泛泛混合解释与final/initial分离均已有owner，新增量需从精确干预及功能后果获得。
+
+
+## E14–E17之后：从测量进入第一个候选RQ，但不声称novelty
+
+独立审定的7episodic source中，固定continued的同/另一活动变化保留患者特异交互+2.11 [1.17,3.14]bits；一般entity noticed续写的GP差与原谓词续写相差+8.80 [5.75,11.74]，scope额外差+1.41 [.54,2.41]。neutral自身也有+.70 [.46,.93]，不是纯event graph证明。[I01](../../../workbench/incremental-interpretation-revision/ideas/I01-event-reference-or-lexical-echo.md)问旧关系被再次使用的触发来源，下一E18换谓词表达但保持事件/患者关系，不扩大模型或prompt。只有在语义保持后仍转移，并能区分noisy-channel与真正恢复后再用，才可能形成有增量的叙事；现在仍是PILOT。
+
+复读Cao2025 §4确认原error-control是删除matrix predicate产生duplicate-determiner不合法前缀，并非本次NPZ的直接材料，不能挂一个malformed条件就冒充同设定复现。补读[Sturt2007摘要/出版社片段](sturt2007-semantic-persistence.md)确认更晚semantic persistence已有owner；新增实际正文[Blott2020](blott2020-semantic-recovery.md)强调词义/语法修订、人类task-dependent failure与尾部neutral-region控制。其48词义框架是现成潜在资产；不因此把I01改成另一个lexical-ambiguity项目。现在18篇不同PDF论文/19版本，新增1,084,077 bytes直接无代理，非全篇read claim。
+
+2026-10-05最新primary检索与venue nearest：最近仍Amouyal2025/Yoshida2026及不相关event/entity论文；搜不到精确三factor条件不等于novelty证明。Slattery/Cao/Hanna/Li/Amouyal对generic ling­er­ing、reflexive binding、QA差与paraphrase validation的ownership保持。当前增量是条件化复用的竞争解释，而不是garden-path存在。

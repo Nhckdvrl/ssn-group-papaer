@@ -19,3 +19,6 @@
 | P08 | 2026-10-05 | E01无歧义NPZ extension也降低原短NP角色支持（NPZ:1 blocked约1→.040、nonGP约1→.119），final semantic约1保持 | 独立free外审snapshot1、neutral/reg/base，gold=null | 不能把role下降直接归为digging-in；短NP引用与完整subject、一般NP复杂度竞争 | E11先外审head/full-span与isolated控制；三源组pilot，不把测量修复称novelty |
 
 | P09 | 2026-10-05 | E12 earlyQ sourceGP−cue disamb交互+1.47 bits，但主要cue词更易预测−2.22；原cue答案反而下降，aggregate/逐项不等价 | E10同prompt源word概率+原QA，24clusters、base/repair | 不可把GP差值变大叫承诺加深；也不可用易预测当已正确理解 | 下一步没有诊断Q的自然后文功能依赖，区分question reactivation与input-history影响，先用已发表原材料 |
+
+
+| P10 | 2026-10-05 | 初始事件常未assert但未exclude；Slattery原22字面ref后文仅7明确episode，11generic/4modal | 独立Luna关系/temporal scope审核，任何E14推理前 | initial Yes及后文surprisal不能直接等于同一事件未改绑；extra event/semantic expectation仍竞争 | E14普通叙事same/separate activity×患者continuation，预先报告episode与全source分项 |

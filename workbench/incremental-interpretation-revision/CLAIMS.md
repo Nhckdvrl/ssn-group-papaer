@@ -33,3 +33,9 @@
 
 
 - 2026-10-05：[E01 snapshot3](results/E01-external-snapshot3.md) / [完整统计](results/E01-external-snapshot3-summary.json)：NPZ initial-event extension DiD句先+51.63 [21.60,84.02]pp、题先−20.29 [−53.11,9.93]n9，统一commitment解释支持不足；NPS源7语法marginal主导eligible部分读数，acceptable同步报告；不将外部annotation agreement或原role题当内部parse能力。C01/C02仍L0。
+
+- 2026-10-05：[E14](experiments/E14-event-identity-versus-extra-event.md)/[E15](experiments/E15-fixed-aspect-event-reference.md)：7episodic组原same−separate −2.61 [−3.78,−1.09]bits，固定continued仍−1.97 [−2.78,−.69]，aspect/预设贡献−.63 [−1.10,−.22]。只支持混合的条件续写响应；source-NP相对self/reciprocal偏好尚不能证明患者特异旧绑定，C01/C02维持L0。
+
+- 2026-10-05：[E16](experiments/E16-patient-specific-crossover.md) / [统计](results/E16-summary.json)：7episodic固定continued的患者特异桥交互A_M+2.11 [1.17,3.14]bits，7/7正；other-NP相对ref交互+.14 [−1.06,1.30]。排除“仅一般self/each-other抑制”不足以解释全部结果；仍未排除一般entity accessibility/lexical association，C01/C02不升级机制主张。
+
+- 2026-10-05：[E17](experiments/E17-relation-versus-entity-accessibility.md)/[统计](results/E17-summary.json) 7源neutral GP患者提及差−.98 [−2.53,.69]而原谓词续写+7.82 [5.39,10.23]；额外scope interaction A_K+1.41 [.54,2.41]，neutral自身+.70 [.46,.93]。限制entity-salience-only解释，仍含lexical predicate retrieval/repair竞争，未建立新semantic mechanism，C01/C02保留L0。
