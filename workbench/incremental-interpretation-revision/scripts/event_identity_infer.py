@@ -131,7 +131,7 @@ def run(args):
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('--data', type=Path, required=True)
-    p.add_argument('--experiment', choices=['E14', 'E15', 'E16', 'E17', 'E18', 'E19', 'E20', 'E21', 'E22', 'E24'], default='E14')
+    p.add_argument('--experiment', choices=['E14', 'E15', 'E16', 'E17', 'E18', 'E19', 'E20', 'E21', 'E22', 'E24', 'E25', 'E29'], default='E14')
     p.add_argument('--model', type=Path, default=CACHE / 'models/Qwen3-8B')
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--batch-size', type=int, default=4)

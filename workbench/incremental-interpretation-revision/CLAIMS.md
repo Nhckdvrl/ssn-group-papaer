@@ -10,7 +10,7 @@
 | C01 | interpretation revision 可被“最终解释支持”和“初始错误解释残留”两个读数分开测量 | L0 | [E01](experiments/E01-component-revision-map.md) / [partial](results/E01-partial-summary.json)：独立Step5审核3句/13QA，104任务；NPZ对比只有一个lexical set，role与semantic不同响应待全量核对 | 受控构式中不同读数的响应具有稳定、可重复结构；不把语义兼容命题强标错误 |
 | C02 | 不同 cue timing / cue strength 条件下存在可区分 competing accounts 的 revision structure | L0 | 仅 territory hypothesis | 预先写出不同解释的预测并由 E01/E02 区分 |
 | C03 | 固定Qwen3-8B的GP/nonGP问答差值随query顺序反向，且反转不依赖assistant prefill或few-shot demos | L1（measurement；非novelty） | [E03](experiments/E03-e00-order-and-assertion-audit.md)、[E07](experiments/E07-native-readout-transfer.md) / [E07结果](results/E07-summary.json)：neutral/native/base交互+60.87 pp [44.93,76.81]；全部8个boundary×system×instruction交互正；67-set sensitivity同方向 | 下一步[E08](experiments/E08-reading-focus-versus-final-query.md)将final query固定，区分reading focus与回答启动/位置；目前不归因为内部parse或一般LLM能力 |
-| C04 | 同一排他事实的具名/泛指表述对后续实体提及与活动患者偏好产生不同响应，且GP与逗号历史调节该响应 | L1（局部measurement，非能力/机制/novelty） | [E21](experiments/E21-named-versus-generic-exclusion.md)、[E22](experiments/E22-post-correction-entity-versus-role-use.md)/[E22统计](results/E22-summary.json)：严格4源named−generic的relation-minus-neutral变化GP−2.792 [−3.680,−1.904]bits、cue−.174 [−1.124,1.201]；全7同方向。各原角色事实仍有效，未知实际错误 | 独立来源预测/实际角色使用、混杂审计后才讨论更一般解释；当前不能把概率偏好叫false belief或内部绑定 |
+| C04 | 同一排他事实的具名/泛指表述对后续实体提及与活动患者偏好产生不同响应，且GP与逗号历史调节该响应 | L1（局部measurement，非能力/机制/novelty） | [E21](experiments/E21-named-versus-generic-exclusion.md)、[E22](experiments/E22-post-correction-entity-versus-role-use.md)/[E22统计](results/E22-summary.json)：严格4源named−generic的relation-minus-neutral变化GP−2.792 [−3.680,−1.904]bits、cue−.174 [−1.124,1.201]；全7同方向；[E24](experiments/E24-independent-correction-use-transfer.md)/[统计](results/E24-summary.json)独立12family主history交互−.795 [−1.210,−.394]、strict9−.766 [−1.168,−.363]。角色事实有效，实际错误未稳健成立 | 独立来源预测/实际角色使用、混杂审计后才讨论更一般解释；当前不能把概率偏好叫false belief或内部绑定 |
 
 **禁止提前升级：**
 - 上游已报告的 garden-path effect 不是我们的 C-level novelty；
@@ -50,3 +50,9 @@
 - 2026-10-05：[E21](experiments/E21-named-versus-generic-exclusion.md)/[统计](results/E21-summary.json)严格4源named相对generic减小GP−cue差+3.06 [2.03,4.38]bits，但POST-HOC拆分主要cue−2.97 [−3.77,−1.60]、GP+.09 [−.93,1.12]。不支持“named更好修复”，也未证明错误再绑定；C01/C02不升机制结论。
 
 - 2026-10-05：[E23](experiments/E23-functional-role-continuation.md)/[首审](results/E23-first-review-summary.json)/[次审](results/E23-summary.json)实际续写不支持稳定的role-violation结论：224标签10→6明确contradiction，严格4源NP0 base均无明确违反但多患者省略。首次GP差CI含0且语义标注不稳定；C04局限likelihood，不能升能力/false-belief/机制等级。原审计和全部输出不作废、不删改，POST-HOC完整次审透明保留。
+
+- 2026-10-05：[E25](experiments/E25-event-versus-actor-correction-scope.md)/[统计](results/E25-summary.json)：C04信号迁移到同actor新event I−1.249 [−1.757,−.762]bits、另一actor新event−2.070 [−3.099,−1.200]；actor_transfer−.820 [−1.460,−.322]。不支持以此信号单独证明old event绑定未修订；portable association解释增加，但未证明scope错误。C04仍L1，下一E26 scope/final interpretation读数独立审计。
+
+- 2026-10-05：[E26](experiments/E26-scoped-constraint-access-versus-portable-trace.md)/[统计](results/E26-summary.json)原句final主体读数GP94.79/91.67%、cue100/100%，但互补scope比较base原活动两问全部No（平均50）；八项joint base0。未建立scoped constraint access，不把50%叫scope failure；先E27匹配allowed-proposition控制区分No default/命题验证/比较算子。C04 L1/I01 PILOT。
+
+- 2026-10-05：[E28](experiments/E28-three-way-event-constraint-state.md)/[统计](results/E28-summary.json)未证明局部约束与portable预测共存时scope判断正确：all12新活动U同actor33.68 [23.96,44.79]% /otherActor65.28 [59.72,70.49]%，unrelated U100%；signed-role迁移GP58.60/12.34pp、cue55.92/13.53，映射波动大。不能归因为GP-specific或与E25同一机制；C04 L1/I01 PILOT，下一源S1消融。

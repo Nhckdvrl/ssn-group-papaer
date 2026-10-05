@@ -40,16 +40,18 @@ def tasks_e00(cache,tokenizer):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
     ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
-    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09','E10','E11'],default='E00')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09','E10','E11','E26','E27'],default='E00')
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
     ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
     ap.add_argument('--system-frame',choices=['both','neutral','upstream'],default='both')
+    ap.add_argument('--recovery-mode',choices=['both','base','repair'],default='both')
     ap.add_argument('--families',nargs='+',choices=['NPZ','NPS','MVRR'])
     ap.add_argument('--out',type=Path,required=True);args=ap.parse_args()
     args.out.mkdir(parents=True,exist_ok=True)
     assert not (args.out/'predictions.jsonl').exists(),'Do not silently overwrite a run'
     torch.manual_seed(0);torch.set_num_threads(8)
     torch.backends.cuda.matmul.allow_tf32=False
+    torch.backends.cudnn.allow_tf32=False
     tokenizer=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left')
     if tokenizer.pad_token_id is None:tokenizer.pad_token=tokenizer.eos_token
     start=time.time()
@@ -77,6 +79,10 @@ def main():
     elif args.experiment=='E10':
         from option_access import tasks_access
         tasks=tasks_access(args.cache,tokenizer)
+    elif args.experiment in ('E26','E27'):
+        from scoped_access import tasks_scope
+        assert args.data is not None
+        tasks=tasks_scope(args.data,tokenizer,args.recovery_mode)
     else:
         from stimuli import tasks_jurayj
         assert args.data is not None
@@ -88,10 +94,13 @@ def main():
     config=dict(experiment=args.experiment,model=str(args.model),model_manifest=json.loads((args.model/'manifest.json').read_text()),
                 torch=torch.__version__,transformers=transformers.__version__,cuda=torch.version.cuda,
                 gpu=torch.cuda.get_device_name(),dtype=args.dtype,softmax='float32',attention='sdpa',
+                tf32=False,
                 frozen=True,thinking=False,batch_size=args.batch_size,seed=0,choice_token_ids=tokens,
                 task_count=len(tasks),system_frame=args.system_frame,families=args.families,git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+                recovery_mode=args.recovery_mode,
                 code_sha256={p.name:sha(p) for p in Path(__file__).parent.glob('*.py')},
                 data_sha256=sha(args.data) if args.data else sha(args.cache/'normalized'/('sap.jsonl' if args.experiment in ('E09','E10') else 'amouyal.jsonl')))
+    if args.experiment in ('E26','E27'):config['independent_audit_sha256']=sha(args.data.with_suffix('.audit.json'))
     (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
     with (args.out/'predictions.jsonl').open('w') as f, torch.inference_mode():
         for offset in range(0,len(tasks),args.batch_size):

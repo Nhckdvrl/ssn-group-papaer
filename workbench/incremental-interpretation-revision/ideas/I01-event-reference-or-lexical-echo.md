@@ -1,41 +1,45 @@
-# I01：旧关系再次影响续写，触发它的是活动回指还是原词重现？（2026-10-05）
+# I01：纠正一个事件后，留下的是事件关系还是可迁移的谓词关联？（2026-10-05）
 
-- **状态：** PILOT（候选问题；不是已经找到的好paper idea）
-- **来源：** P10；E14/E15把指向与aspect分开；E16患者特异交叉；E17中性entity control。先有异常与解释淘汰，再提出RQ，不从概念二分猜题。
-- **研究动作：** 条件化异常 + 竞争解释分离 + 语义保持的语言干预。
-- **如果为真，主张是：** 在相同最终合法句法下，旧患者关联对后续功能使用的影响取决于活动指向和后文谓词。更强的“已修订却被重新激活”还需证明最终解释确实恢复，当前不能写。
-- **证据：** 原episodic7源：E15固定continued同/另一活动interaction −1.97 [−2.78,−.69]bits；E16患者特异 A_M+2.11 [1.17,3.14]、7/7正；E17关系使用−中性提及 K_same+8.80 [5.75,11.74]，额外scope A_K+1.41 [.54,2.41]，但neutral自身+.70 [.46,.93]。全22也保留A_K+1.27 [.49,2.06]。这支持一个条件化reuse问题，不能证明semantic event graph。
-- **不同结果的信息增益：** 原谓词释义后患者效应保留 → 狭义原词echo不足，继续区分关系记忆与noisy-channel对源句的repair；释义后下降且变换语义/语法可信 → 原词重新访问旧关联更相关，不能讲完整semantic persistence；语义忠实性不够/切片不足 → 数据结论不确定，优先找已发表近义材料，不以分数挑同义词。
+- **状态：** PILOT；当前候选问题，不是已证成的顶会idea。
+- **来源：** 驻留测量E14–E25与P10/P11；研究动作： P10/P11，E14–E25的条件化异常、竞争解释分离和独立source预测；不从二分提示词猜题。
+- **自然问题：** 后来的证据排除了原活动的一位参与者。模型后续仍偏向或抑制那个人，是因为原事件关系没改好，还是因为词/关系关联记忆被带到了别的活动？
+- **当前具体观察：** E22同角色事实的具名/泛指表述改变activity-minus-neutral的GP历史效应；E24独立24 source/12verb-family迁移−.795 [−1.210,−.394]bits。E25这个信号继续出现于同actor新event−1.249 [−1.757,−.762]、另一actor新event−2.070 [−3.099,−1.200]；严格9同向。它不是old actor/old event专属的证据。
+- **待检验主旨：** 要判断修订到底改变了什么，必须区分局部事件约束的可用性与可迁移的关系预测痕迹。不能仅用一个患者continuation的surprisal信号证明old event未修订。更强的positive account需找到痕迹依赖哪些信息以及在哪种正常用途有后果。
 
-| 最近邻 | 已拥有的claim | 待验证的增量 / compression risk |
+| 竞争解释 | 判别预测 | 当前证据 |
 |---|---|---|
-| Slattery et al. 2013；Sturt2007 | late semantic persistence、下游reflexive与旧解释、竞争句法/语义解释 | 同/另一活动×患者/中性提及×原谓词/释义，区分reuse的触发来源；“仍有旧解释”本身完全被拥有 |
-| Cao & Schuler2025 CMCL | completion、error-control、reflexive binding、noisy-channel/局部错误忽略 | 需要event-reference效应在合法性/释义控制下的预测；只加binding readout会被压缩成重复 |
-| Hanna & Mueller2025 NAACL；Li2024；Amouyal2025 | parse/QA不复用、initial/final问答、lingering、cue、paraphrase验证 | 不讲一般readout gap，问question-free正常后文中关系何时再次使用；paraphrase本身也已有owner |
+| 原事件绑定未被完整更新 | 痕迹应特别对应原event/actor；final/scoped用途可能错 | E25跨新event/actor更强，专属归因不足；E23实际错误不稳定 |
+| 同人物的关系关联被改变 | 同actor新活动保留，换actor应弱 | E25换actor没有消失而更强，actor-only不足 |
+| 谓词/模板相关的可迁移关联 | 跨actor/新event保留，可与局部scope知识共存 | E25支持迁移；E26正在测scope与原S1 final的共同可访问性 |
+| 一般实体可及性 | neutral与activity应平行变化 | E17/E22/E24的matched-neutral控制不能解释全部结构 |
 
-- **最便宜的决定性 pilot：** [E18](../experiments/E18-predicate-paraphrase-transfer.md)，同source/NP/GP-cue/活动指向，独立构造与复核谓词释义；固定原始对照E16。阳性对照/噪声/决策表以事前实验卡为准，不刷更多prompt。
-- **预期论文形态：** 解释条件化功能失败的受控研究；有可预测语言干预才有paper narrative。若只剩一般GP-deficit，继续在本territory测量，不自动关线。
-- **排序打分（1–3，agent provisional）：** 证据2、增量清楚度1、形态匹配2、成本3、可完成性2、信息增益3。不能替人给Sasano签品味。
-- **仍缺什么：** exact lemma-independent transfer、late explicit role证据/合法与malformed control、真正恢复后再用的证据、跨现成source独立验证。当前只有第一条有数据来源的候选问题，没有PROMISING或顶会like宣称。
-- **最新定位：** 2026-10-05 venue-nearest：Amouyal2025、Yoshida2026，另有大量不相关entity/event检索项；最新primary arXiv检索未发现这个精确factorization，但搜索覆盖不完整，不能当新颖性证明；[知识库](../../../library/themes/incremental-language-processing/FIELD_MAP.md)。
+## 已完成的关键判别
+
+- [E14–E16](../experiments/E16-patient-specific-crossover.md)：固定continued的scope调节含patient-specific成分，7episodic A_M+2.11 [1.17,3.14]；aspect也有贡献，不是pure event图。
+- [E17](../experiments/E17-relation-versus-entity-accessibility.md)：关系使用与neutral提及分开，entity-only不足。
+- [E18](../experiments/E18-predicate-paraphrase-transfer.md)：独立faithful9source释义A+1.44 [.90,1.91]，exact lemma重复非必要，但predicate association仍竞争。
+- [E19/E20](../experiments/E20-exclusive-fact-versus-last-mention.md)：双向role事实明确改变R，肯定对象放最后仍有history差；整体GP已偏允许对象，不能叫完全没更新。
+- [E21/E22](../experiments/E22-post-correction-entity-versus-role-use.md)：较小GP−cue差主要cue下降；named提高实体可及性，在GP又相对抑制活动患者关联。不能卖否定重插错误关系。
+- [E23](../experiments/E23-functional-role-continuation.md)：224实际续写，首/次独立审10/6contradiction、84/88unknown；再次GP/省略patient/自我否定让功能错误证据不稳，全部保留。
+- [E24/E25](../experiments/E25-event-versus-actor-correction-scope.md)：独立source预测与event/actor范围，见上述paired CI；12same-verb家族是bootstrap单位，不是派生句数量。
+
+## 定位与increment压力
+
+| 最近邻 | 已拥有的claim | 必须讲清的增量 |
+|---|---|---|
+| Slattery2013、Sturt2007、Huang/Ferreira2021、Ceháková2023/25 | lingering、后文reflexive、global interpretation与local parse、多种final解释 | 区分一个关系信号的event/actor适用范围与predicate迁移，不能再说“仍有旧解释” |
+| Cao/Schuler2025、Amouyal2025、Hanna/Mueller2025 | completion/error-controls、paraphrase、syntax/QA不复用 | 不能只加binding/更多模型；需要portable关联的范围预测及具体用途 |
+| Hu/Levy2023、Zhou ICML2026、Mann2025 | metalinguistic/probability差、否定机制/shortcut并存、词可及性 | 不能卖generic readout gap或“not X使X显眼”；要用跨不相关actor/event的迁移识别relation trace的对象 |
+| Chen CMN2026、Xu BeliefTrack2026、Hase2024 | revision/elaboration结构区分、scope/更新/保持及belief逻辑一致性 | 不把概率变化当图边retraction；本线对象是语言解释产生的关系预测如何迁移，而不是通用belief更新benchmark |
+
+- **已完成访问校准：** [E26](../experiments/E26-scoped-constraint-access-versus-portable-trace.md)，同source上独立审计scoped compatibility与原S1 matrix-proposition正反控制、native回答与一句恢复。正确QA不证明question出现前内部已经更新；结果必须按读数用途解读。
+- **论文形态候选：** 修订测量的对象识别 + 可预测的portable relation-memory结构。还欠自然功能后果/来源干预；仅有漂亮差值不够。
+- **仍缺/不确定：** 实际local event约束及源句final解释能否共同使用；portable效应依赖原谓词关联、source replay还是更一般语义；已有owner能否压缩这个精确增量；自然用途是否值得reviewer关心。不得以近邻存在自动关线。
+- **最新定位：** venue-nearest + primary arXiv已核对negation与incremental narrative近邻，读取范围见知识库；搜索不完整，不作新颖性认证。此卡从E14原活动回指/原词echo问题演化而来，研究对象始终是incremental interpretation revision，非新开线。
+
+**E26反馈：** source final/assertion原主体与swap读数高，但原事件兼容/矛盾两问都No，joint scoped-access base0；不能宣称已正确scoped修订。E27只加已允许患者的匹配proposition，区分No default与truth-verification替代比较任务。这里是instrument原因校准，PILOT不升级，旧全部结果保留。
+
+**E27反馈：** 匹配allowed命题的两问joint全部100%，所以非整体No-default或整体truth-verification。原excluded失败及new未指定患者的“不一致”可能是unknown/contradiction混淆。下一三类语义关系+unknown阳性对照，明确这些状态；仍不宣布scoped-state访问已成立。
 
 
-## E18反馈（2026-10-05）
-
-faithful完整9源的释义same/separate交互+1.44 [.90,1.91]bits，lexeme完全重现不是必要条件；4 episodic∩faithful小样本含1语法marginal，不能夸成大范围机制。现RQ更清楚：**弱句法消歧留下的患者关联，强语义角色证据能否在活动范围内覆盖？** 原“修订成功再重激活”没有证据，明确不用这个headline。接E19双向only-self/only-NP的scope限定叙事信息；若强证据覆盖则把先前结果限定为disambiguation强度/功能reuse，不把可纠正的关联讲成不可删除记忆。该动作继续I01而非换研究对象，仍PILOT。
-
-
-## E19反馈（2026-10-05）
-
-不是明确角色信息完全无效：同活动GP的R移动+8.51 [5.15,12.32]bits，cue+10.60 [7.75,13.55]；但同样reference-only句后GP−cue仍−5.52 [−8.06,−3.29]。这使“强cue可完全覆盖”不够；不能直接解释成不可删除，因为否定NP被最后提及可能重新喂入旧association。下一[E20](../experiments/E20-exclusive-fact-versus-last-mention.md)交换only/not对象出现顺序，保留同一事实，区分recent lexical echo与relation history。7源same明确，separate中3源target scope不确定；不会把全部世界兼容NP叫错。新近邻[CBM](../../../library/themes/incremental-language-processing/xu2026-contextual-belief-management.md)/[DeltaLogic](../../../library/themes/incremental-language-processing/dhanda2026-deltalogic.md)已有一般update/stay/isolation与inertia，候选必须保持predicate/episode具体增量。
-
-
-## E20反馈（2026-10-05）
-
-same事实把正确对象最后说，history R仍−3.40 [−4.28,−2.44]bits（7/7负），但较原改善+2.11 [.64,3.94]；双向角色事实移动GP+9.56、cue+9.39。不能说不会修订：GP ref-only绝对R已+1.73 [.58,2.91]，整体偏向正确允许对象。当前自然问题是**正确角色信息进入后，为什么以前的关联仍影响后文使用？** 最近提及只解释一部分，E21区分否定中重新点名与先前relation的持续影响。不将正常概率置信度差自动当capability failure，也不以“semantic hysteresis”命名代替新颖性。
-
-**E21更新：** 严格4源named/generic的history差变化+3.06 [2.03,4.38]bits主要来自cue的允许reference支持下降−2.97，而GP变化+.09不确定。尚未确定这是实体salience还是活动关系联想，更未证明实际错误；接E22 neutral关系控制与free continuation，PILOT不升级。
-
-**E22更新：** post-correction neutral控制显示named提升两条件的实体可及性，而关系−neutral变化在GP为−2.79 [−3.68,−1.90]、cue−.17 [−1.12,1.20]bits（严格4源）。不是简单“否定污染关系”；证据更支持语义排除与实体显眼程度共同作用，需实际角色使用和独立source才有叙事价值。C04是measurement事实，I01仍PILOT。
-
-**E23更新：** free continuation的patient省略、再次GP残句和自我否定使functional指标不稳定；224首审10/次审6明确违反，clear4源NP0 base无明确违反但大量unknown。不得把C04概率差升级false belief。独立E24检验C04结构预测；I01仍PILOT，不当PROMISING。
+**E28反馈：** unrelated U控制全正确，但新活动U同actor仅33.68 [23.96,44.79]% /otherActor65.28 [59.72,70.49]%；正负旧role carryover58.60/12.34pp，cue55.92/13.53几乎同形且label mapping波动大。因此不能宣称local scoped-use已经成功。E25 likelihood与E28分类迁移的actor梯度不同，不能硬合成同一残留机制。下一[E29](../experiments/E29-source-ablation-dual-readout.md)消融源S1、保留明确旧活动事实并平行测两种用途，区分source-conditioned memory与correction自身过推广；不是继续优化YesNo，状态仍PILOT。
