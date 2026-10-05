@@ -1,6 +1,6 @@
 # E06：自然原句上的 attachment 与 event readout（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** DIAG / measurement repair
 - **对应：** C00 / P01 / P03 / P04
 - **问题（一句话）：** 事件问句的错误是否伴随句法角色错误，还是在正确句法分析下补全了未被断言的事件关系？
@@ -20,11 +20,13 @@
   - 角色控制可靠而 event 初始 Yes仍多、joint 组合跨order稳 → 将原事件 readout 从syntax能力代理中降级，设计能区分语用补全与问句诱导的下一项；仍不追认原 E00 通过。
   - attachment 本身呈稳定GP-specific deficit且nonGP控制好 → 得到新的候选 measurement protocol，先明确记录原 gate 未通过，再让人确认后才注册E01。
   - 两读数都不稳定 / 控制仍坏 → 带全量结果更新人审，不增加模型或参数 sweep。
-- **算力预算：** GPU0独立单卡，<0.15 GPU·h；复用现有模型/venv。**实际：** 待记录。
+- **算力预算：** GPU0独立单卡，<0.15 GPU·h；复用现有模型/venv。**实际：** 271.27s / 0.0754 GPU·h / 2,208 evaluations。
 
 ## 结果（跑完后填写；不改上面的内容）
-- 数字（含 CI）：
-- 结果文件：
-- 按决策表执行了什么：
-- 主张变化：
-- POST-HOC：
+- 数字（含 CI）：GP main-clause-subject accuracy：reg/base 5.80%、reg/repair 2.90%、rev/base 与 rev/repair 0%；相应nonGP 94.20%、82.61%、69.57%、59.42%。direct-object No在两个rev配置GP/nonGP均100%，不能解释为恢复（subject Yes控制同时失败）。
+- 两角色正确、event初始Yes组合：nonGP reg/base 43.48% [31.88, 55.07]，reg/repair 34.78% [23.19, 46.38]，rev/base 47.83% [36.23, 59.42]，rev/repair 31.88% [21.74, 43.48]；GP对应1.45%、1.45%、0%、0%。只说明nonGP在不同问句下可出现读数分歧，不证明hidden parse或GP recovery。
+- 事前登记67-set clean层：nonGP组合44.78%、35.82%、47.76%、31.34%；GP约1.49%、1.49%、0%、0%。两处源题问题不足以解释主异常。event原问句无repair与E05的552个hash全部相同、accuracy flips=0；概率漂移见repeat审计。
+- 结果文件：[summary](../results/E06-summary.json)、[无题目scores](../results/E06-scores.csv)、[config](../results/E06-config.json)、[输入audit](../results/E06-input-audit.json)、[重复audit](../results/E06-event-repeat-audit.json)。
+- 按决策表执行了什么：GP subject control失败、order/readout不稳定 → 更新人审，不进入E01、不扩模型；没有选择role-No高分宣告positive control通过。
+- 主张变化：C00不升级；C01的GP双读数instrument仍未建立。nonGP组合为局部测量痛点P06，未升为科学主张。
+- POST-HOC：main clause术语或句首while的默认分析可能影响答案；未检验，不能归因。

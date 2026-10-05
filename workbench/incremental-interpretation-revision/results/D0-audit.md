@@ -26,3 +26,11 @@
 用户追加“下载不得走代理”之后，立即停止原下载。默认环境此前含本地 HTTP/HTTPS/ALL proxy；GitHub 小数据 clone 和 HF 初始部分下载发生在追加约束之前。后续 `scripts/env.sh` 清除代理，ModelScope 下载额外使用 `requests.Session.trust_env=False`。HF 直连失败，ModelScope 官方镜像直连可用。模型 mirror revision 与实际 SHA256 另存 manifest；不声称镜像 bytes 与 HF revision 已独立核对。
 
 补充核验：hf-mirror.com 无代理直连成功，HF revision 固定 b968826d9c46dd6066d109eabc6255188de91218。实际模型/tokenizer/config/LICENSE 的 14 个文件全部通过该 HF revision 的 LFS SHA256 或 git blob SHA1 校验，ModelScope 下载 bytes 可复用。[模型清单](D0-model-manifest.json)。
+
+## 构造与 gold 的逐条校对补充
+- 626个 canonical sentence variants 与固定 upstream generator全部parity；只统一 whitespace 和重复句末period，原句不默改。2672衍生QA放cache；共享schema对三个来源全部3044记录通过校验。
+- 目前whole-pair quarantine 14组（NPZ6/NPS2/MVRR6），76组为暂定清洁层；不是已批准的E01数据。源字节/全部条件仍留ledger。conditional assertion、原始拼写/分词形式错误、疑似recipient-passive都有明确记录，见 [generation audit](D0-Jurayj-generation-audit.json)。
+- 人工已阅读全部90 component rows，并完整核对22组高风险/跨构式的原句变体和题目。opencode free model对旧构造版本返回89/90个可解析ID响应；保守的完整输入+响应覆盖仅83/90，另6组旧附件输入边界未确认，不算完整审核，缺的MVRR26已人工检查并在最初的paired-set quarantine中；其模型调用超时，无完成审核声明。完整覆盖/输入版本/输出hash见 [advisory audit](D0-Jurayj-advisory-audit.json)。附件截断与超时均保留，不算OK。
+- 修复后MVRR initial semantic proposition固定原GP谓词；避免blocked动词转换成主动造成缺论元（如captive took into...）。六组主动诊断语义/论元未核实，标question_audit_flag，不进推理；NPS/MVRR initial semantic一律null gold，不把可兼容命题强判No。blocker中非宾语修饰不标object-slot。
+- **尚未核实：** free model多次提出未证实的“主动past-participial relative”或错误entailment推断；不自动采纳，也不以模型OK认证全部语法。[British Council语法说明](https://learnenglish.britishcouncil.org/grammar/c1-grammar/participle-clauses)只给通常规律，不足以给每个边缘词汇配价作判决。各行blocker是否完全消除歧义、边缘被动/修饰语附着、constructed question的任务有效性仍是E01前的核对项。E01没有运行，不能将当前audit写成已批准实验材料。
+- Amouyal原gold另发现hyp5_14 tomato/tomatoes与hyp5_18 floor/road不一致。E00/E04保持原协议，不事后改数据；E06事前登记67-set sensitivity，未改变主异常。

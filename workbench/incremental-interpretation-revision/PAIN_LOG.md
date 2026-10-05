@@ -9,3 +9,7 @@
 | P03 | 2026-10-05 | E00 同模型 GP effect 随 reg/rev 反向；16-prefix pooled −2.81 pp，prompt range 65.22 pp；repeat probability drift 0.0865 | 全量 E00、原协议/原生 chat/一句恢复对照 | positive control 尚不稳定，不能进入 E01 | E03 正交 query/demo/interface/instruction，并核对 FP32 数值 |
 
 | P04 | 2026-10-05 | 1.7B 重现正方向 +19.84 pp，但 nonGP lingering accuracy=30.71%；raw specificity DiD CI 跨 0；No 的含义/输出标签/语用补全未区分 | E04 全量固定 protocol | 方向复现不等于 GP-specific interpretation instrument 已有效 | E05 改 response label/明确 assertion meaning，原题/gold 不变 |
+
+| P05 | 2026-10-05 | Amouyal hyp5_14 simple 题写 tomato 而句子 tomatoes；hyp5_18 题问 floor 但句子 road；Jurayj 原句 had rode / burglers / boooks，部分构造主动诊断缺论元 | 逐条输入校对，全部在对应新推理之前发现 | 发布数据也不能当作 gold oracle；旧复现保留字节/标签，不能事后悄改 | E06 全69 + 事前登记67-set source-question clean；Jurayj 对称 quarantine / 不可用诊断标记；raw留cache |
+
+| P06 | 2026-10-05 | E06 GP main-subject角色控制0–5.80%，object No题最高100%；nonGP两角色正确且event初始Yes组合31.88–47.83% | 全69 sets、两order×一句恢复；67 clean同结论 | 单个role-No/event-No不能当revision proxy；问句任务影响与语用补全仍竞争 | 人审选修复分支；术语替换未检验，不归因；不选prompt赢家 |

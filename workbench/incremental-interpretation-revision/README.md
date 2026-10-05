@@ -31,7 +31,7 @@
 - measurement validity.
 
 ## 主张摘要
-见 [CLAIMS.md](CLAIMS.md)。E00 全 16-prefix 主对照 −2.81 pp [−11.50, 5.89]，prompt 波动 65.22 pp；gate B，C00 尚未通过。[E03](experiments/E03-e00-order-and-assertion-audit.md) 确认当前 query order 驱动反转，FP32 不能消除；[E04](experiments/E04-known-positive-control.md) 复现 1.7B 正方向，但 nonGP lingering floor；[E05](experiments/E05-response-meaning-calibration.md) 标签/断言说明仍不能恢复稳定读数。E01 暂未运行；[完整人审](logs/review-2026-10-05.md)。
+见 [CLAIMS.md](CLAIMS.md)。E00 全 16-prefix 主对照 −2.81 pp [−11.50, 5.89]，prompt 波动 65.22 pp；gate B，C00 尚未通过。[E03](experiments/E03-e00-order-and-assertion-audit.md) 确认当前 query order 驱动反转，FP32 不能消除；[E04](experiments/E04-known-positive-control.md) 复现 1.7B 正方向，但 nonGP lingering floor；[E05](experiments/E05-response-meaning-calibration.md) 标签/断言说明仍不能恢复稳定读数。[E06](experiments/E06-attachment-versus-event.md) 的 GP subject 控制也失败（0–5.80%）。E01 暂未运行；[完整人审](logs/review-2026-10-05.md)。
 
 ## 痛点摘要
 见 [PAIN_LOG.md](PAIN_LOG.md)。
