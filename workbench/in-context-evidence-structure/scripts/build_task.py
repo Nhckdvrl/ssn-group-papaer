@@ -17,6 +17,13 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ices.oracle import all_oracles_fast  # noqa
 import build_dim as bd  # noqa
+from functools import lru_cache
+
+
+@lru_cache(maxsize=None)
+def _ORC(labs):
+    """label-stream oracle depends only on the A/B label sequence -> cache"""
+    return all_oracles_fast(np.ones((len(labs), 1), int), list(labs), [1], 1)
 
 ROOT = Path(__file__).resolve().parents[1]
 T = 16
@@ -33,7 +40,10 @@ def words():
     return W
 
 
-FN = {"upper": lambda w: w.upper(), "rev": lambda w: w[::-1]}
+FN = {"upper": lambda w: w.upper(), "rev": lambda w: w[::-1],
+      "first": lambda w: w[0], "last": lambda w: w[-1],
+      "dropfirst": lambda w: w[1:], "droplast": lambda w: w[:-1]}
+PAIRS = [tuple(p.split("-")) for p in os.environ.get("PAIRS", "upper-rev").split(",")]
 
 
 def render(ws, outs, q):
@@ -45,20 +55,24 @@ def render(ws, outs, q):
 
 
 def main():
-    W = words(); print(len(W), "words; e.g.", W[:10])
+    W = words()
+    W = [w for w in W if all(FN[a](w) != FN[b](w) for a, b in PAIRS)]
+    print(len(W), "words; e.g.", W[:10])
     conds = bd.conditions()
     rows = []
     for i in range(N):
         seed = SEED0 + i * 7919
         rng = np.random.default_rng(seed)
-        A, B = ("upper", "rev") if i % 2 == 0 else ("rev", "upper")
+        pa = PAIRS[i % len(PAIRS)] if len(PAIRS) > 1 and os.environ.get("MIXPAIRS") else PAIRS[0]
+        A, B = pa if (i // max(1, len(PAIRS) if os.environ.get("MIXPAIRS") else 1)) % 2 == 0 else pa[::-1]
         ws = list(rng.choice(W, T + 1, replace=False)); q = ws[T]; ws = ws[:T]
         for name, pat in conds.items():
             outs = [FN[A](w) if ch == "A" else FN[B](w) for w, ch in zip(ws, pat)]
             labs = [0 if ch == "A" else 1 for ch in pat]          # 0 = task A evidence, 1 = task B
-            o = all_oracles_fast(np.ones((T, 1), int), labs, [1], 1)
+            o = dict(_ORC(tuple(labs)))
             o["meta_pB"] = o["meta_p_rule_query"]; o["set_pB"] = o["set_p_rule_query"]; o["sequence_pB"] = o["sequence_p_rule_query"]
-            rows.append({"uid": f"{A}_{B}:{name}|task_{seed}", "cond": f"task:{name}", "base_id": f"task_{seed}",
+            gname = os.environ.get("GNAME", "task")
+            rows.append({"uid": f"{A}_{B}:{name}|{gname}_{seed}", "cond": f"{gname}:{name}", "base_id": f"{gname}_{seed}",
                          "pattern": pat, "labels": labs, "prompt": render(ws, outs, q),
                          "cands": [" " + FN[A](q), " " + FN[B](q)], "query_label_A": 0, "query_label_B": 1,
                          "base": {"words": ws, "q": q, "A": A, "B": B}, "oracle": o})
