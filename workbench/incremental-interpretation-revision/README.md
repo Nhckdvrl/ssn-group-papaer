@@ -67,3 +67,5 @@
 - 本地 cache：`/data1/xiangding/work/incremental-interpretation-revision/`（upstream / normalized / models / runs）；[审计](results/D0-audit.md)、[复现入口](scripts/README.md)。下载显式无代理；复用已有 venv。
 
 **2026-10-05 用户修订：** 人明确要求取消agent附加的停步gate，继续系统观察与idea生长；进入E01（不追认E00通过），构造/改造语义标注审计改用Step5，最多8并发。持续论文阅读写入既有 `library/themes/incremental-language-processing/`。先前等待科学分支的请求已被此指令替代，不再据此停步。
+
+**最新审计授权（2026-10-05）：** opencode免费模型与Step均可逐条审数据；必要时用GPT Luna子agent复核。此授权替代此前Step-only要求，不追改已跑实验的null gold；审计来源、完成情况与不确定项持续记录。

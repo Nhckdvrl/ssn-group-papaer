@@ -1,6 +1,6 @@
 # E13：没有诊断问句的自然后文，是否仍受初始解释影响？（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** MEASUREMENT / P09下一信息问题，非paper novelty
 - **对应：** C01 / C02 / P06 / P09
 - **问题（一句话）：** 原句的GP历史是否在没有理解题时影响自然后文的自反/相互事件承接，还是当前错答主要来自诊断任务？
@@ -27,3 +27,9 @@
 - 更正上文“source13 timeout”：原v1与retry1都是exit0/normal stop、全4ID完整；唯一问题是answer用了boolean true而非Yes字符串，严格client格式校验拒收。旧报告/原事件/请求不改；本轮没有语义拒绝，也没有未完成LLM输出。
 - 仅transcription任务按true/false→faithful Yes/No转换，全部原answer保留、没有新semantic gold；[v2](../results/D0-Slattery-external-transcription-v2.json)核对24源item/96variants全部faithful Yes、4boolean转换、完整ID/hash/normal finish。retry1同样4true明确对应相同作者展开，不能叫两个独立人审。
 - 源13不排除，原24/96完整cohort与主读数保持；修正发生在任何E13模型结果之前。
+
+
+### 首次推理前实现核对
+- `followup_probability.py`加载原24/96 cache，重新抽取与normalized逐字典一致；96外审ID、源PDF/normalized SHA全部核对。普通raw text不套chat、无BOS、首词null；原词token对齐全部2480词、22–37 tokens/variant，无跨词token。
+- 首batch额外以transformers masked-label loss核对S2 causal shift；这是数值实现检查，不增加实验条件或事后选窗。主S2 mean、字面reference及其前后最多两词、两个作者排序块按上面读数实现。option交互明确为option0−option1；不自行标plausible/implausible。
+- 运行入口见scripts/README；固定FP32/TF32 false/seed0/batch4，复用本地8B权重；本次推进P09/C01/C02，不升级novelty。
