@@ -16,3 +16,5 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 跑前R8固定单句：`Answer readiness questions from the new activity description, treating unreported conditions as unspecified; for earlier participant questions, use the explicitly reported earlier activity.` 三独立Luna全5184packet审计、候选/协议范围/hash覆盖；ready描述全部starting conditions，不只是willing。D0记录全部grammar/uncertain，尚未推理。4608causal contexts已核。
+
+跑前记录勘误：上一提交提前写“4608已核”且D0输出因adapter失败为空；推理未开始。审计2把raw/question字段嵌套，adapter展平字段位置，原review字节/所有语义标签不变，重新adopt完成全量gold/hash/causal预检后才允许推理。本次上述预检真实完成，原失败没有被当作语义通过。
