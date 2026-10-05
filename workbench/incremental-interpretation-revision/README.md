@@ -31,7 +31,7 @@
 - measurement validity.
 
 ## 主张摘要
-见 [CLAIMS.md](CLAIMS.md)。当前无科学主张，只有注册边界与数据来源。
+见 [CLAIMS.md](CLAIMS.md)。E00 全 16-prefix 主对照 −2.81 pp [−11.50, 5.89]，prompt 波动 65.22 pp；gate B，C00 尚未通过。按 [E03](experiments/E03-e00-order-and-assertion-audit.md) 追顺序反转原因，E01 暂未运行。
 
 ## 痛点摘要
 见 [PAIN_LOG.md](PAIN_LOG.md)。

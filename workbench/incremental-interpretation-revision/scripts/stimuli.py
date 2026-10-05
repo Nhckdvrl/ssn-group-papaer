@@ -15,6 +15,9 @@ from analyze import estimate
 
 # Pre-inference linguistic audit; no exclusions based on model performance.
 FLAGS={
+    'NPZ:26':'In case conditional: dropping conditional antecedent does not preserve assertion truth',
+    'NPZ:36':'In case conditional: dropping conditional antecedent does not preserve assertion truth',
+    'NPZ:41':'In case conditional: dropping conditional antecedent does not preserve assertion truth',
     'NPS:17':'insured used with clausal complement; possible insure/ensure lexical issue',
     'MVRR:9':'sketched/drawn a portrait has doubtful recipient passive with artist',
     'MVRR:12':'composed a carefully worded excuse has doubtful recipient passive with student',
@@ -59,23 +62,36 @@ def claims(row,family,condition):
         subject=re.sub(r'^(?:As long as|Even though|In case|As|When|After|Though|While|Because|Although|As long as|Once|Before)\s+','',row['Start'])
         initial=terminal(join([subject,row['Transitive Verb'],row['NP/Z']]))
         final=terminal(join([row['NP/Z'],row['Verb'],row['Rest']]))
-        return initial,final,{'lingering':f'Does this sentence state that {initial[0].lower()+initial[1:-1]}?',
-                              'intended':f'Does this sentence state that {final[0].lower()+final[1:-1]}?'}
+        return initial,final,{
+            'lingering':f'In this sentence, is "{row["NP/Z"]}" the direct object of "{row["Transitive Verb"]}"?',
+            'intended':f'In this sentence, is "{row["NP/Z"]}" the subject of the main clause?',
+            'lingering_semantic':f'Does this sentence state that {initial[0].lower()+initial[1:-1]}?',
+            'intended_semantic':f'Does this sentence state that {final[0].lower()+final[1:-1]}?'}
     if family=='NPS':
         verb=row['Unambiguous Verb'] if condition=='blocked' else row['Ambiguous Verb']
         initial=f'"{row["NP/S"]}" is the direct object of "{verb}".'
         final=f'"{row["NP/S"]}" is the subject of the embedded clause.'
-        return initial,final,{'lingering':f'In this sentence, is "{row["NP/S"]}" the direct object of "{verb}"?',
-                              'intended':f'In this sentence, is "{row["NP/S"]}" the subject of the clause "{join([row["Disambiguator"],row["Rest"]])}"?'}
+        # Keep a grammatical object-taking verb in this semantic diagnostic.
+        # In the lexical condition its absence is a confound, reported explicitly.
+        initial_sem=terminal(join([row['Subject'],row['Ambiguous Verb'],row['NP/S']]))
+        final_sem=terminal(join([row['Subject'],verb,'that',row['NP/S'],row['Disambiguator'],row['Rest']]))
+        return initial,final,{
+            'lingering':f'In this sentence, is "{row["NP/S"]}" the direct object of "{verb}"?',
+            'intended':f'In this sentence, is "{row["NP/S"]}" the subject of the clause "{join([row["Disambiguator"],row["Rest"]])}"?',
+            'lingering_semantic':f'Does this sentence state that {initial_sem[0].lower()+initial_sem[1:-1]}?',
+            'intended_semantic':f'Does this sentence state that {final_sem[0].lower()+final_sem[1:-1]}?'}
     verb=row['Unambiguous verb'] if condition=='blocked' else row['Ambiguous verb']
     subject=join([row['Start'],row['Noun']])
     aux=row['Unreduced content'].split()[-1]
     initial=terminal(join([subject,ACTIVE_PAST.get(verb,verb),row['RC contents']]))
     final=terminal(join([subject,aux,verb,row['RC contents']]))
     simple=terminal(join([subject,row['Disambiguator'],row['End']]))
-    return initial,final,{'lingering':f'Does this sentence state that {initial[0].lower()+initial[1:-1]}?',
-                          'intended':f'Does this sentence state that {final[0].lower()+final[1:-1]}?',
-                          'simple':f'Does this sentence state that {simple[0].lower()+simple[1:-1]}?'}
+    return initial,final,{
+        'lingering':f'In this sentence, is "{verb}" a finite active verb with "{subject}" as its subject?',
+        'intended':f'In this sentence, is "{verb}" part of a passive relative clause modifying "{subject}"?',
+        'lingering_semantic':f'Does this sentence state that {initial[0].lower()+initial[1:-1]}?',
+        'intended_semantic':f'Does this sentence state that {final[0].lower()+final[1:-1]}?',
+        'simple':f'Does this sentence state that {simple[0].lower()+simple[1:-1]}?'}
 
 def build(cache):
     root=verified_root(cache,'jurayj');out=[];components=[]
@@ -91,28 +107,39 @@ def build(cache):
                     ext=row['Intervener'] if family=='MVRR' else row['Extension']
                     cue={'NPZ':'comma','NPS':'that','MVRR':'unreduced'}[family] if condition=='explicit_cue' else ('lexical_selection' if condition=='blocked' and family!='NPZ' or condition=='non_gp' else 'object_slot' if condition=='blocked' else 'none')
                     for qtype,q in questions.items():
+                        diagnostic=qtype=='lingering_semantic' and family in ('NPS','MVRR')
+                        gold=None if diagnostic or sid in FLAGS else 'No' if qtype.startswith('lingering') else 'Yes'
+                        if family=='NPS':structural_initial,structural_final=initial,final
+                        elif family=='NPZ':
+                            structural_initial=f'"{row["NP/Z"]}" is the direct object of "{row["Transitive Verb"]}".'
+                            structural_final=f'"{row["NP/Z"]}" is the subject of the main clause.'
+                        else:
+                            active_verb=row['Unambiguous verb'] if condition=='blocked' else row['Ambiguous verb']
+                            structural_initial=f'"{active_verb}" is a finite active verb with "{join([row["Start"],row["Noun"]])}" as subject.'
+                            structural_final=f'"{active_verb}" is in a passive relative clause.'
                         out.append(record(item_id=f'jurayj:{sid}:{condition}:{int(extended)}:{qtype}',source='jurayj',
                             construction=family,condition=condition,sentence=sentence,question_type=qtype,question=q,
-                            gold='No' if qtype=='lingering' else 'Yes',initial_parse_claim=initial,final_parse_claim=final,
+                            gold=gold,initial_parse_claim=structural_initial,final_parse_claim=structural_final,
                             ambiguity_start=start,disambiguator_index=disamb,cue_type=cue,
                             extension_length=len(ext.split()) if extended else 0,extended=extended,
                             source_row_id=f'{file}:{i}',pair_id=sid,audit_flag=FLAGS.get(sid),
                             clean_stratum=sid not in FLAGS,
                             blocker_class=NON_OBJECT_BLOCKERS.get(i,'direct_object') if family=='NPZ' and condition=='blocked' else None,
-                            readout_kind='syntactic_role' if family=='NPS' else 'asserted_proposition',
-                            lexical_absence_control=family=='NPZ' and condition=='non_gp'))
+                            readout_kind='syntactic_role' if qtype in ('intended','lingering') else 'asserted_proposition',
+                            diagnostic_only=diagnostic,gold_status='unverified' if sid in FLAGS else 'diagnostic_no_gold' if diagnostic else 'audited',
+                            lexical_absence_control=(family=='NPZ' and condition=='non_gp') or (family=='NPS' and condition=='blocked' and qtype=='lingering_semantic')))
     return out,components
 
 def validate(rows,components,cache):
     assert len(components)==90
     assert len({r['item_id'] for r in rows})==len(rows)
     counts=collections.Counter(r['construction'] for r in rows)
-    assert counts=={'NPZ':43*8*2,'NPS':19*6*2,'MVRR':28*6*3},counts
+    assert counts=={'NPZ':43*8*4,'NPS':19*6*4,'MVRR':28*6*5},counts
     # No post-result filtering; flags fixed in this source before any E01 run.
     for r in rows:
         assert r['disambiguator_index']>r['ambiguity_start']
         assert 'nan' not in r['sentence'].split()
-        assert r['gold']==('No' if r['question_type']=='lingering' else 'Yes')
+        if r['gold_status']=='audited':assert r['gold']==('No' if r['question_type'].startswith('lingering') else 'Yes')
     # Compare all canonical variants with actual upstream make_sents.py.
     import importlib.util,contextlib,io
     root=verified_root(cache,'jurayj')
@@ -135,6 +162,8 @@ def validate(rows,components,cache):
 
 def tasks_jurayj(path,tokenizer,experiment):
     rows=[json.loads(line) for line in path.read_text().splitlines()]
+    # Unverified/ill-formed sentences remain in the generation ledger, never scored.
+    rows=[r for r in rows if r['clean_stratum']]
     root=verified_root(CACHE,'amouyal');tasks=[]
     for order,file in [('reg','prefixes.json'),('rev','prefixes_rev.json')]:
         pref=json.loads((root/'prefixes'/file).read_text())[0]
@@ -162,7 +191,7 @@ def analyze_jurayj(rows):
                 out['cells'][f'{stratum}/{suite}/{family}/{c}/{int(e)}/{q}']=estimate([d[key] for d in averaged.values() if key in d])
             for family in ('NPZ','NPS','MVRR'):
                 ds=[d for d in averaged.values() if any(k[0]==family for k in d)]
-                for q in ('intended','lingering'):
+                for q in ('intended','lingering','intended_semantic','lingering_semantic'):
                     for c in ('explicit_cue','blocked'):
                         for e in (False,True):
                             out['paired_effects'][f'{stratum}/{suite}/{family}/{c}_minus_gp/{int(e)}/{q}']=estimate([d[(family,c,e,q)]-d[(family,'gp',e,q)] for d in ds])

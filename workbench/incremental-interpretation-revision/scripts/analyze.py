@@ -60,6 +60,9 @@ def main():
     ap.add_argument('--experiment',default='E00');args=ap.parse_args()
     rows=[json.loads(line) for line in args.predictions.read_text().splitlines()]
     if args.experiment=='E00':result=e00(rows)
+    elif args.experiment=='E03':
+        from order_audit import analyze_order
+        result=analyze_order(rows)
     else:
         from stimuli import analyze_jurayj
         result=analyze_jurayj(rows)

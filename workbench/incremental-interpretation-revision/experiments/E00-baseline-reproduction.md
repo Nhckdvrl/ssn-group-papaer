@@ -1,6 +1,6 @@
 # E00：公开 Garden-Path 行为基线复现（2026-10-05）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO
 - **对应：** C00
 - **问题（一句话）：** 本地 frozen-model harness 能否在 Amouyal 公开数据上复现已知的 GP-specific comprehension deficit，而 simple comprehension 保持基本正常？
@@ -39,8 +39,10 @@
 - 若原协议 positive control 通过，进入 E01；若 chat 恢复，结论限定为协议/默认行为，不升级成不可恢复能力缺损。预算估计保留原 <1 GPU·h，实际记录。
 
 ## 结果（跑完后填写；不改上面的内容）
-- 数字（含 CI / prompt-order 波动）：
-- 结果文件：
-- 按决策表执行了什么：
-- 主张变化：
-- POST-HOC：
+- 数字（含 CI / prompt-order 波动）：16-prefix pooled nonGP−GP lingering accuracy = −2.81 pp [−11.50, 5.89]；simple = +10.69 pp [6.88, 14.86]；specificity DiD = −13.50 pp [−22.92, −3.80]。正对照 gate B（未通过）。
+- 句先 raw_reg0：+28.99 pp [17.39, 40.58]，simple GP/nonGP 均 98.55%；题先 raw_rev0：−24.64 pp [−37.68, −13.01]。完整 raw prefix effect range −34.78 到 +30.43 pp，SD 26.97 pp。不能选择句先 prompt 宣布稳定复现。
+- native chat pooled：−7.25 pp [−17.39, 3.62]；一句 generic revise：−21.01 pp [−31.16, −10.87]。未恢复 stable GP deficit。repeat accuracy flips=0，max P(Yes) delta=0.0865（批次 padding/numerical precision 待 E03 核对）。
+- 结果文件：[summary](../results/E00-summary.json)、[逐条无题目 score 表](../results/E00-scores.csv)、[config](../results/E00-config.json)；原始 predictions hash 见 config，保存在本地 cache。
+- 按决策表执行了什么：B → E03 正交拆解 query order/demo bundle/断言标准/数值精度；E01 不运行。
+- 主张变化：C00 仍 L0，未通过 gate；新增 P03。
+- POST-HOC：检查发现 reg/rev examples 的内容与格式也不同，不能从 E00 独立归因于 query order。此归因仅由新注册 E03 检验。
