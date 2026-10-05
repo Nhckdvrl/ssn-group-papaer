@@ -112,4 +112,5 @@ E02 的设计必须让这四种解释产生不同预测。
 - procedural generator / exact oracle：scripts/
 - experiment cards：experiments/
 - small generated manifests / summaries：results/
-- 大 raw/model cache 不进 git。
+- 大 raw/model cache 不进 git。注意力探针原始数组：`results/*/attn_*.npz`（NFS 本地，不进 git；可用 `scripts/attn_probe.py` 重建）。
+- nonce prompt 行（`data/*/rows.jsonl`）由 `scripts/build_*.py` 以固定种子重建；LM 打分 `results/*/*.s*.jsonl` 进 git。
