@@ -1,6 +1,6 @@
 # E40：普通角色事实还是排他焦点？（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；E39已排除self/reciprocal必要性，但only/focus和一般角色关系仍竞争。
 - **问题（一句话）：** 不包含only/not/but的普通肯定患者事实，是否仍在旧event帮助、新同类event反向影响预测？
@@ -16,3 +16,5 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 跑前审计：两个独立Luna全文2016packets完成；原QA schema请求漏了共用grammar/scope/distinct字段，adapter在推理前fail-fast，原审计员重读96questions补齐字段为v2，raw判读/文字/答案不变。中间partial probability-v1仅cache保留未推理；adopt改为全任务验证后才写文件，实际用audited-v2。Step5附加field-level交叉审计进行，初4096tokens有10次max_tokens截断，未采用不完整JSON，扩到16384一次修复，不作为科学门槛或筛input依据。1920 causal-target pairs已核，尚未推理。
+
+[完整统计](../results/E40-summary.json)：first/last old J+4.736 [3.362,6.075]/+6.313 [4.767,7.738]bits；newother同V J−9.921 [−11.649,−8.000]/−7.238 [−8.731,−5.667]；different−same J+5.070/+4.255，两个CI正。去only没有消除反向，first反而比E39 only更负−2.353 [−3.198,−1.474]；last变化CI跨0，完整因素全部报告，不选择first。native192内容正确、189clear/3简写nephew指称不确定；actual run f044bc71。Step5额外24fields审核23acceptable/1marginal、scope/distinct/question全部clear、96facts全nonexclusive，不改Luna grammar共同比较层。[Step](../results/D0-E40-Step5-cross-audit.json)是post-hoc交叉，不假称前置human gold。only/focus不必要，物理availability与叙事关系反重复接E41。

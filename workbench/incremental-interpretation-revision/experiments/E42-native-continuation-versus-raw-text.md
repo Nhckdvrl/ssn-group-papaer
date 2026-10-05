@@ -1,6 +1,6 @@
 # E42：角色反向作用能否进入原生续写？（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；raw-text使用post-trained模型可能是协议伪影，不能只用正确QA给raw做能力背书。
 - **问题（一句话）：** E40无only的旧正／新反向，是否也出现在模型原生chat条件续写、并经一句事件范围指令保持？
@@ -14,3 +14,5 @@
 - **命令：** native_role_continuation.py prepare/run/analyze，原E40 audited-v2数据完全冻结。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+[完整统计](../results/E42-summary.json)：native base old activity D两order+32.973 [27.923,38.078]/+21.043 [12.067,29.420]；newother同V activity D−69.382 [−75.343,−63.011]/−65.768 [−73.198,−57.783]bits。matched-neutral J−52.820 [−58.657,−46.868]/−48.213 [−54.294,−42.683]；scope mode仍−50.360/−41.637。方向进入原生条件续写，一句scope不能消除。native也有极强neutral作用（old D−33.210/−51.606），因此不只报J或把大数叫机制更强；target loss0–64bits、manual/HF首batch误差<1e−6，两alt native pretarget tokens全一致，分段/target原字节沿用，已追查没有数值/装配异常。幅度依任务分布、saturation/teacher-forced prefix，不直接对应world probability、hidden beliefs或自由生成错误。actual run7f4b2641，两mode合计3840，全部order/actor/predicate/grammar层保留。

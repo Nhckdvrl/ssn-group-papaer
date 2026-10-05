@@ -1,6 +1,6 @@
 # E38：未公布的新事件选择，还是普通叙事对比？（2026-10-06）
 
-- **状态：** RUNNING — raw/native完成，输出独立盲审中
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；把role-transfer解释分为正常叙事alternatives与忽视明确独立性，不注册概率/QA gap为novelty。
 - **问题（一句话）：** 新活动对象明确来自独立公平抽签、结果未公布时，旧角色事实的反向预测作用是否仍在，是否影响对未公布结果的回答？
@@ -26,3 +26,5 @@
 ## 首批结果：raw完成，native尚未统计
 
 3840 raw FP32 frozen已完成；[全条件统计](../results/E38-raw-summary.json)。affirmative-first主fair−procedure-unknown J两candidate顺序+.907 [.306,1.499]/+.767 [.226,1.322]bits，平均+.837 [.347,1.357]；unknown/fair平均J分别−1.512 [−2.211,−.926]/−.675 [−1.125,−.173]。contrast-parent公平减弱对比−.191 [−.618,.261]，CI跨0，不泛化抑制效果到所有措辞。公布selected-source−selected-other对activity M正向16.08–17.39bits，各CI正；不能把selected固定时旧role差仍负当不遵守selected。1536 actual answers已交两独立Luna按hash-sort分片盲审，尚未用答题结果主张能力错误。
+
+输出独立复核完成：[统计](../results/E38-summary.json)。1536回答均被判内容正确，1532clear、4候选their nephew被简写the nephew的指称interpretation-dependent。结果、未报告selection与1/2概率都能直接回答，base与一句R8同形；不支持新selection grounding能力失败。初审1有37错误类别编码；原审重读v2与第三人独立全768交叉审类别一致768/768，第三人保留上述4指称不确定。[勘误](../results/D0-E38-response-audit-correction.json)记录非唯一ID后缀补丁与抄写class错误，原artifact和初统计留cache未覆盖。实际inputs/模型outputs一字未改。

@@ -16,7 +16,7 @@ def average(vectors):
 
 def analyze(experiment, cache, reviews):
     cfg, rows = read_run(cache / 'runs' / (experiment + '-probability'))
-    expected = {'E38': 3840, 'E39': 2880, 'E40': 1920}[experiment]
+    expected = {'E38': 3840, 'E39': 2880, 'E40': 1920, 'E43': 960}[experiment]
     assert len(rows) == expected
     parent = Path(__file__).resolve().parents[1] / 'results/E31-summary.json'
     parent_cohorts = json.loads(parent.read_text())['probability']['cohorts']
@@ -27,7 +27,7 @@ def analyze(experiment, cache, reviews):
             return tuple(r[k] for k in fields)
         return (r['fact_realization'], r['readout_actor_mode'], r.get('boundary_marker', 'old') if r['readout_actor_mode'] != 'original_activity' else 'old')
     conditions = sorted({condition(r) for r in rows})
-    roles = ('initial_patient_only', 'reference_only') if e38 else ('source_patient_stated', 'other_patient_stated') if experiment == 'E40' else ('source_patient_only', 'other_patient_only')
+    roles = ('initial_patient_only', 'reference_only') if e38 else ('source_patient_stated', 'other_patient_stated') if experiment in ('E40','E43') else ('source_patient_only', 'other_patient_only')
     source_families = collections.defaultdict(set)
     for r in rows:
         source_families[r['verb_family']].add(r['pair_id'])
@@ -37,7 +37,7 @@ def analyze(experiment, cache, reviews):
                bootstrap_seed=20261005, units='bits', raw_config=cfg,
                probability=dict(cells={}, contrasts={}, cohorts={}, per_family={}),
                interpretation='Conditional string preference, not an event probability, hidden state, or ability error.')
-    parent_path = Path(__file__).resolve().parents[1] / ('results/E39-summary.json' if experiment == 'E40' else 'results/E36-summary.json')
+    parent_path = Path(__file__).resolve().parents[1] / ('results/E40-summary.json' if experiment == 'E43' else 'results/E39-summary.json' if experiment == 'E40' else 'results/E36-summary.json')
     parent_probability = json.loads(parent_path.read_text())['probability']
     out['parent_summary_sha256'] = sha(parent_path)
     for cohort in ('all', 'eligible', 'grammar_common', 'anchor_cross_clear', 'anchor_cross_acceptable', 'prior_and_ablation_faithful'):
@@ -107,6 +107,12 @@ def analyze(experiment, cache, reviews):
                 parent_key = f'J/{form}/other_actor/same_began'
                 key = 'J/' + '/'.join(c)
             else:
+                if experiment=='E43':
+                    for parent_form in ('plain_mention_first','plain_mention_last'):
+                        parent_key=f'J/{parent_form}/{c[1]}/{c[2]}'
+                        pv={f:pp[f][parent_key] for f in keep}
+                        record('contrasts','minus_frozen_parent/'+parent_form+'/'+'/'.join(c),diff(vectors['J/'+'/'.join(c)],pv))
+                    continue
                 parent_form = form.replace('plain_', 'affirmative_') if experiment == 'E40' else 'contrast_parent' if form == 'contrast_named' else form
                 actor = c[1] if experiment == 'E40' or c[1] != 'original_activity' else 'old_activity'
                 parent_key = f'J/{parent_form}/{actor}/{c[2]}'
@@ -136,7 +142,7 @@ def analyze_responses(experiment, cache, reviews, cohorts):
         assert sha(path / 'generations.jsonl') == c['generations_sha256']
         configs.append(c)
         rows.extend(map(json.loads, (path / 'generations.jsonl').read_text().splitlines()))
-    assert len(rows) == len(annotations) == {'E38': 1536, 'E39': 288, 'E40': 192}[experiment]
+    assert len(rows) == len(annotations) == {'E38': 1536, 'E39': 288, 'E40': 192, 'E43': 96}[experiment]
     for r in rows:
         a = annotations[r['item_id']]
         for k in ('passage_sha256', 'question_sha256', 'answer_sha256'):
@@ -172,7 +178,7 @@ def analyze_responses(experiment, cache, reviews, cohorts):
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
-    p.add_argument('--experiment', choices=['E38', 'E39', 'E40'], required=True)
+    p.add_argument('--experiment', choices=['E38', 'E39', 'E40', 'E43'], required=True)
     p.add_argument('--cache', type=Path, default=CACHE)
     p.add_argument('--reviews', type=Path, nargs='*', default=[])
     p.add_argument('--out', type=Path, required=True)

@@ -134,3 +134,11 @@ E33定位追加：Pucci/Li/Sinclair2026-09 preprint已拥有生产priming的词�
 新增实际范围卡：[Reset Is Not Recovery](shnaidman2026-false-context-recovery.md)、[主动retraction](yangjia2025-spontaneous-retraction.md)、[epistemic表达](li2025-epistemic-modality.md)。泛泛“撤回后残留”“semantic非label”“知道但不主动修正”“fact/belief区分”均有直接owner；不是桌面杀I01。我们需要的是同一角色事实在old/new event、同/不同动作里的方向结构及干预边界。E34真实history的来源效应−.433bits并不自动取得generic revision novelty；E35校对current-world任务解读，E36直接检验显式negated alternative是否必要。KaBLE的Nature主来源在本次工具读取失败，此前仅摘要/metadata核对，不冒充全文读完/数据已审。
 
 2026-10-06追加：[Wagner/Abend ICML2026](wagner2026-word-world-probabilities.md)区分strings/response/world概率；[Jang v2](jang2026-described-versus-sampled-distributions.md)仅primary摘要、[TimeLitmus](gong2026-timelitmus.md)摘要/§1。E38是语境条件诊断，不把fair logprobs不等于50%或两用途gap包装成novelty。E37 natural who问题的默认互指需独立校对，不能将初审0%文字有据agreement当普遍能力失败。
+
+## E38–43：从“剩下旧解释”转向可区分的事件角色迁移
+
+新读[Hong *SEM2024](hong2024-script-causal-inference.md)核心方法/availability读数，[Denning OpenMind2026](denning2026-thematic-role-knowledge.md)引言/Experiment1方法，[Rai ACL2026](rai2026-frame-event-inference.md)§1–3。source/world probability、状态QA/后文预测gap、角色表征和宽泛event reasoning已有清楚owner；不是做more models或generic不能更新belief。
+
+目前区分证据：E39两个非反身具名对象保留old正/newother反向；E40没有only/not仍反向；E41明确解除旧事件占用与结果状态后反向仍在，模型可读出ready；E42原生条件续写也反向（含强neutral作用，不按大数夸张）。这条结构不能由显式否定／反身／raw格式／物理不能再参与充分解释，但普通叙事关系反重复、两演员两候选场景的allocation prior仍竞争。E43移除整个account/候选/报告脚手架做minimal语言transport，未据此提前认证novelty。所有新近邻只定位，既有scope／priming owners不自动判死I01。
+
+2026-10-06额外检索：Kauf CogSci2023 event plausibility、Matsuki2011 event knowledge、Getty2024 thesis anti-priming；本次只检索摘要/部分引言，不假称完整复读，Kauf的reporting bias已提醒“低文本概率≠不可能”。Britton2024出版社HTML读取失败，仍保持原卡摘要范围。它们指导竞争解释，不作为宣称我们已首创反priming的依据。

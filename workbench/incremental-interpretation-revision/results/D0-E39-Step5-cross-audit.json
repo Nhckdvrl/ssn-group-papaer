@@ -1,0 +1,832 @@
+{
+  "experiment": "E39",
+  "timing": "POST-HOC additional independent material check; main Luna whole-input audits preceded inference",
+  "provider": "stepfun",
+  "model": "step-5-preview",
+  "proxy_used": false,
+  "concurrency": 8,
+  "fields_sha256": "f43ba9670b00485674356c18a5174262960b62d4efe3ec64e1a0174b19f53671",
+  "summary_sha256": "ba806548c20d07b36b46a529a9aa89feb856ab4a52da46b194aa416cdb81ecae",
+  "items": 24,
+  "grammar": {
+    "acceptable": 24
+  },
+  "scope_clear": 24,
+  "distinct_referents": 24,
+  "question_valid": {
+    "None": 23,
+    "True": 1
+  },
+  "exhaustivity": {
+    "exclusive": 144
+  },
+  "unavailability_entailed": {
+    "False": 24
+  },
+  "annotations": [
+    {
+      "id": "item71",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the mother",
+        "contrast_other": "the boy",
+        "affirmative_first_source": "the mother",
+        "affirmative_first_other": "the boy",
+        "affirmative_last_source": "the mother",
+        "affirmative_last_other": "the boy"
+      },
+      "question_valid": null,
+      "question_notes": "No question field is supplied in this row, so there is no query to validate.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The facts are confined by 'In that act of hiding' to one old hiding event and assign patients within that event. They do not state or quantify over the later new activity, the kidnapper, or either candidate's availability there. Any unavailability inference would require an added result-state, physical-occupancy, temporal-adjacency, or narrative-alternation premise rather than logical entailment.",
+      "alternative_explanations": [
+        "A later-activity unavailability judgment may arise from assuming a result state continues, e.g. someone already hidden remains hidden, rather than from the old fact's content.",
+        "The report-mention sentence may be pragmatically misread as asserting the mentioned candidate participated in hiding, although it is only a discourse-level mention.",
+        "In affirmative_first_source, 'the boy' appears before the mother in the report sentence; because source_candidate is a fixed referent, surface order must not be treated as the patient or as the 'first entity'.",
+        "If the mother and the boy were construed as one group or plural referent, 'only' would be infelicitous; the explicit distinctness blocks that reading.",
+        "The nominal phrase 'act of hiding' is interpretable and not an awkward count-event anchor for this row; the noted awkwardness concerns other activity nouns such as shaving, bath, or cuddle."
+      ],
+      "notes": "The mother and the boy are explicitly distinct and separate from the protester and kidnapper, so there is no group-referent or identity ambiguity. All role assignments are event-scoped to 'that act of hiding': the protester is the hider and the quoted NP is the patient. There is no possessive binding in the stimuli. The affirmative variants pair an exclusive patient assertion with a mere report mention before or after it; that mention does not make the exclusivity non-exhaustive, and first/last surface order does not change the fixed source_candidate/other_candidate patient assignment. Grammar is acceptable and the wording is interpretable. Nothing in the old fact entails unavailability of a candidate to a different actor in a later activity."
+    },
+    {
+      "id": "item72",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the boy",
+        "contrast_other": "the mother",
+        "affirmative_first_source": "the boy",
+        "affirmative_first_other": "the mother",
+        "affirmative_last_source": "the boy",
+        "affirmative_last_other": "the mother"
+      },
+      "question_valid": null,
+      "question_notes": "No question was provided in the input row.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The facts only assert an exclusive patient role for one candidate in the old hiding event with the kidnapper; they do not logically entail that the other candidate is unavailable to a different actor (the protester) in a later, separate activity. Mere discourse mention or physical hiding in one event does not create a necessary exclusion for a future event with another actor.",
+      "alternative_explanations": [
+        "Plausible physical occupancy: a reader may infer that someone being hidden is physically occupied and thus unavailable, but this is defeasible world knowledge, not logical entailment.",
+        "Event/result-state semantics: the hiding act may produce a result state (being hidden), but result states are not necessarily preserved into a distinct later event with a different actor.",
+        "Narrative alternation: shifting from the kidnapper-hiding event to a new scene with the protester does not imply continuity of participant sets.",
+        "Informational redundancy: the 'report also mentions' sentence adds discourse presence but no participant status in the hiding event and no unavailability information for a later activity.",
+        "Topic/actor continuity: reuse of a hiding-related predicate between old and new activities does not entail identical patients or availability constraints."
+      ],
+      "notes": "Referents are explicitly distinct. Role scope is locally restricted to the respective hiding acts; report-mention sentences do not confer participant status in the event. The activity NP 'act of hiding' is acceptable here; generic awkwardness about 'shaving/bath/cuddle' in the limitations is irrelevant to this item. First/last sentence order does not change the exclusive patient assignment. There is no possessive binding, group referent, or awkward nominalization in the supplied wording."
+    },
+    {
+      "id": "item73",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the girl",
+        "contrast_other": "the daughter",
+        "affirmative_first_source": "the girl",
+        "affirmative_first_other": "the daughter",
+        "affirmative_last_source": "the girl",
+        "affirmative_last_other": "the daughter"
+      },
+      "question_valid": null,
+      "question_notes": "No explicit question string is supplied in the row; the audit hinge is whether an old-exclusive fact entails later unavailability, captured separately by unavailability_entailed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "All fact realizations only assign patienthood inside an old activity ('In that embrace ... only X'); none asserts a later new activity, availability, or exclusion from an interaction with the parents/fixed other actor. 'The report also mentions the daughter/girl' is a discourse-level mention, not participation, so it neither contradicts the exclusive patient nor entails unavailability. Any felt exclusion is plausible physical occupancy or redundancy, not logical entailment.",
+      "alternative_explanations": [
+        "Plausible physical occupancy: being the exclusive patient of one embrace may make concurrent participation elsewhere less likely without entailing unavailability.",
+        "Event/result-state overgeneralization: reading the old exclusive patient fact as a persistent state carrying into a distinct later activity.",
+        "Narrative alternation of a participant assertion vs. a mere report mention (first/last) being misread as excluding the other candidate.",
+        "Informational redundancy: treating 'the report also mentions Y' as evidence that Y was absent from the old activity.",
+        "Group referent overlap: 'the friends' and 'the parents' are group NPs that could share members; the row fixes candidate-vs-actor distinctness but does not assert the two actor groups are disjoint."
+      ],
+      "notes": "Ambiguity: 'The report also mentions X' momentarily introduces the non-patient candidate, but the fact keys and identity notes keep the activity role scoped to 'In that embrace'. Group referents: 'the friends' (original actor) and 'the parents' (fixed other actor) are plural/group NPs; the row says the girl and daughter are each distinct from both and notes that group referents may share members without being identical, so do not assume a disjoint later actor. Possessive binding: none. Awkward nominalization/event anchor: 'In that embrace' counts/nominalizes the activity, and the limitations flag shaving/bath/cuddle-style anchors as slightly awkward; 'embrace' as a countable event is borderline but interpretable, so grammar is rated acceptable, not rejected."
+    },
+    {
+      "id": "item74",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "only the daughter",
+        "contrast_other": "only the girl",
+        "affirmative_first_source": "only the daughter",
+        "affirmative_first_other": "only the girl",
+        "affirmative_last_source": "only the daughter",
+        "affirmative_last_other": "only the girl"
+      },
+      "question_valid": null,
+      "question_notes": "No explicit question string is supplied in the row; the relevant inference question is only implicit (whether an old-event exclusive patient fact entails unavailability to a different actor in a later new activity).",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The facts are explicitly scoped to 'In that embrace' and assign only an event-local patient role. They do not assert anything about the friends, a separate later new activity, or any state of availability/occupancy beyond the single old embrace. Distinctness of referents and local exhaustivity do not logically entail cross-event, cross-actor unavailability.",
+      "alternative_explanations": [
+        "A reader may overextend the 'only' quantifier from the single old event to all later interactions; this is pragmatic overgeneralization, not entailment.",
+        "'The report also mentions the girl/daughter' could be misread as participation in the embrace, but it is only a textual/discourse mention and introduces informational redundancy, not event inclusiveness.",
+        "The distinct plural groups 'the parents' and 'the friends' could be conflated with individual members; group referent distinctness does not entail non-overlap of members across events.",
+        "The count event anchor 'In that embrace' may suggest a result-state that occupies the patient, but no result-state semantics is stated that carries over to another actor or activity.",
+        "Narrative alternation between an old-activity assertion and a report mention does not by itself establish a contrasting next event."
+      ],
+      "notes": "The identity intro explicitly separates the daughter from the girl and from both the parents and the friends, but distinctness alone creates no participation or exclusion facts. All six variants use the same old event ('that embrace'); the contrast variants use explicit negation plus 'only', and the affirmative variants use 'only', so the event-local patient exhaustivity is exclusive. The affirmative variants add only a report mention of the other candidate; under the supplied rule, that is narrative-level information and does not make the event nonexclusive."
+    },
+    {
+      "id": "item75",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "their nephew",
+        "contrast_other": "the puppy",
+        "affirmative_first_source": "their nephew",
+        "affirmative_first_other": "the puppy",
+        "affirmative_last_source": "their nephew",
+        "affirmative_last_other": "the puppy"
+      },
+      "question_valid": null,
+      "question_notes": "No target question text is supplied; only fact realizations are present, so question validity is not assessable.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No. Every fact is locally scoped by 'In that cuddle' and assigns a patient role only within that old event. Exclusivity in that event does not entail that the contrasting candidate is unavailable to a different actor, such as the babies, in any later activity.",
+      "alternative_explanations": [
+        "A plausible physical-occupancy reading may arise for the same old event, but it does not generalize unavailability to a later event.",
+        "Event/result-state semantics: 'cuddle' is treated as a bounded event anchor, not as a persistent state that would block later participation.",
+        "First/last report-mention order is narrative presentation, not semantic exclusion; the report sentence identifies or mentions a referent without asserting event participation.",
+        "Informational redundancy may make the non-patient candidate salient, but salience is not logical exclusion.",
+        "Group referents: 'the couple' and 'the babies' are distinct actors, and 'their nephew' binds to the couple; group referents may share members without being identical."
+      ],
+      "notes": "Verified wording matches the supplied facts. Fixed referents are source_candidate='their nephew' and other_candidate='the puppy'. The report-mention clauses are mere mentions and do not assert that the mentioned candidate participated in the cuddle. The slightly countable use of 'that cuddle' is awkward but interpretable."
+    },
+    {
+      "id": "item76",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the puppy",
+        "contrast_other": "their nephew",
+        "affirmative_first_source": "the puppy",
+        "affirmative_first_other": "their nephew",
+        "affirmative_last_source": "the puppy",
+        "affirmative_last_other": "their nephew"
+      },
+      "question_valid": true,
+      "question_notes": "The probe is answerable and the correct answer is no: the facts only fix the cuddled patient within one named event ('In that cuddle') with actor 'the babies'. They do not mention the couple, any later activity, or any availability/unavailability condition for a different actor.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No logical entailment. 'Only' is scoped to the patient of the single event 'that cuddle'; it does not assert a persistent result state, a uniqueness/availability condition, or a restriction on a different actor in a later distinct activity. Any 'the puppy is taken' impression is defeasible physical occupancy during the event, not entailment. 'Cuddle' has no result-state semantics that carries the patient forward into an unrelated later event. The report mention ('The report also mentions ...') is narrative-level and neither excludes nor includes participation.",
+      "alternative_explanations": [
+        "Defeasible physical occupancy: while the babies cuddle the puppy, a hearer may assume the puppy is momentarily occupied, but this is cancellable and not entailed.",
+        "Scope overgeneralization of 'only': reading 'only the puppy' as a global availability/uniqueness claim instead of an event-local patient restriction.",
+        "Conflation of a report mention with participation: treating 'The report also mentions their nephew' as if he were (or were excluded from) the cuddle or a later event.",
+        "Patient competition between 'the puppy' and 'their nephew' as rival candidates for the cuddled role, pushing exclusivity beyond the target event.",
+        "Actor-substitution expectation: assuming the couple's later use is blocked because the babies used the puppy, which is neither stated nor implied.",
+        "Result-state overreach: treating the activity verb 'cuddle' as leaving a lasting 'unavailable' state that persists into unrelated later activities."
+      ],
+      "notes": "source_candidate='the puppy' and other_candidate='their nephew' are fixed named referents; they are not 'first vs second entity'. The puppy is non-human; the identity intro's use of 'entities' and its explicit anti-coreference statement are appropriate. Group referents 'the babies', 'the couple', and 'their nephew' are distinct discourse referents but may share real-world members; the materials treat them as non-coreferential. Real ambiguity/awkwardness: 'their nephew' binds by default to the nearest plural subject 'the babies', which is pragmatically odd (babies with a nephew); the identity intro only says the nephew differs from the babies and the couple and does not resolve whose nephew 'their' denotes, so the possessor antecedent is genuinely underspecified. 'In that cuddle' uses an activity noun as a countable anchored event ('that cuddle'), which is stiff but interpretable. The two affirmative orderings only swap a participant assertion and a mere report mention; they do not change entailment. The old fact never refers to the couple or the later new activity, so any unavailability claim is an external rider, not an entailed consequence."
+    },
+    {
+      "id": "item77",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the model",
+        "contrast_other": "the toddler",
+        "affirmative_first_source": "the model",
+        "affirmative_first_other": "the toddler",
+        "affirmative_last_source": "the model",
+        "affirmative_last_other": "the toddler"
+      },
+      "question_valid": null,
+      "question_notes": "No question is supplied in this row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The facts are anchored to one old act of dressing by the tailor and state that only the model or only the toddler was dressed in that act. This does not entail that the other candidate is unavailable to the babysitter or any different actor in a later activity. A report mention additionally identifies a referent but does not assert participation in the old act or continued unavailability later.",
+      "alternative_explanations": [
+        "Exclusivity within the old act limits the patient role for that event only, not access to any later event actor.",
+        "The excluded candidate may be mentioned in a report without participating in the old act.",
+        "Distinctness from the babysitter is an identity constraint, not evidence about availability.",
+        "Plausible physical occupancy or result-state interpretations are not logical entailments from the stated facts."
+      ],
+      "notes": "The candidate identities are fixed by the source_candidate and other_candidate tags, not by sentence order. In affirmative variants, moving the report-mention sentence before or after the assertion only changes narrative order; it does not make the mentioned candidate a patient in the old act. 'Act of dressing' and 'was dressing' are somewhat formal and nominalized but interpretable and grammatically acceptable."
+    },
+    {
+      "id": "item78",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the toddler",
+        "contrast_other": "the model",
+        "affirmative_first_source": "the toddler",
+        "affirmative_first_other": "the model",
+        "affirmative_last_source": "the toddler",
+        "affirmative_last_other": "the model"
+      },
+      "question_valid": null,
+      "question_notes": "No question text was supplied in the row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "All facts are explicitly scoped to 'that act of dressing' and concern the babysitter as actor with a patient. They do not mention the tailor or a later activity, and they state no persistent result-state or availability constraint. Thus no candidate is logically entailed to be unavailable to another actor in a later new activity; same-time physical occupancy is at most plausible, not entailed.",
+      "alternative_explanations": [
+        "Physical occupancy during the prior dressing act is only plausible same-time crowding, not a logical barrier to later participation.",
+        "'Only' or 'not X but only Y' excludes co-patients within the same dressing event, not candidates from separate later events.",
+        "The report-mention sentences are meta-linguistic references and do not assign an activity role.",
+        "Referential distinctness from the tailor identifies discourse referents only; it does not encode exclusivity or availability.",
+        "Narrative adjacency or mention order does not by itself create a temporal consequence between the acts."
+      ],
+      "notes": "The source and other candidates are fixed distinct referents, not first/second linear entities. No possessives or group referents are present. The patient assertions are exclusive for their locally scoped dressing act; report mentions are not participation claims. 'In that act of dressing' is a mildly awkward but acceptable event nominalization, and 'only' is naturally read as patient-exclusive under that scope."
+    },
+    {
+      "id": "item79",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the boss",
+        "contrast_other": "the husband",
+        "affirmative_first_source": "the boss",
+        "affirmative_first_other": "the husband",
+        "affirmative_last_source": "the boss",
+        "affirmative_last_other": "the husband"
+      },
+      "question_valid": null,
+      "question_notes": "No question text is supplied in the row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No entailment. Every old-activity assertion is explicitly scoped by 'In that meeting' and concerns the coworkers' meeting patient. It does not quantify over a later new activity or the family, so it cannot logically entail that either candidate is unavailable to a different actor later. At most, readers may draw defeasible pragmatic inferences about occupancy or narrative alternation.",
+      "alternative_explanations": [
+        "'The report also mentions the husband/boss' is a report-level mention and may make the other candidate salient without asserting participation in the meeting.",
+        "'only the boss/husband' is scoped to the meeting event; exclusivity there does not transfer to later availability.",
+        "Any inferred unavailability could come from temporal sequence or result-state reasoning about being occupied in a meeting, not from the literal facts.",
+        "Group referents such as 'the coworkers' or 'the family' may overlap in membership while remaining distinct discourse referents; this does not create exclusion."
+      ],
+      "notes": "All six fact strings are grammatical; the demonstrative 'that meeting' is context-dependent but interpretable. The contrast forms explicitly assert exclusivity with 'not X but only Y'. The affirmative forms keep exclusivity in the 'only' clause, while the report-mention clause is separate and non-participatory. The first/last ordering swaps the report mention and the participant assertion, but it does not change the literal event patient. There is no possessive binding or awkward nominalization in these items. The possible ambiguity is whether a discourse-level 'report mention' is mistaken for meeting participation, which the literal wording does not support."
+    },
+    {
+      "id": "item80",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the husband",
+        "contrast_other": "the boss",
+        "affirmative_first_source": "the husband",
+        "affirmative_first_other": "the boss",
+        "affirmative_last_source": "the husband",
+        "affirmative_last_other": "the boss"
+      },
+      "question_valid": null,
+      "question_notes": "No comprehension question is supplied in this item row.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The fact realizations describe only the old meeting event ('In that meeting') and do not mention the later new activity, the coworkers, or any scheduling/availability conflict. The identity introduction explicitly states that the husband and the boss are distinct from the coworkers and that mentioning the latter only introduces a discourse referent; it does not assert participation in the old activity or unavailability in the new one. Therefore the old facts do not logically entail that a candidate is unavailable to a different actor in a later activity.",
+      "alternative_explanations": [
+        "Report mention could be pragmatically misread as implying the other candidate was present in the meeting, but it is only a textual/narrative reference.",
+        "The exclusive marker 'only' could be misconstrued as excluding unmentioned third parties beyond the explicit candidate, but within the supplied scope it only contrasts the two named candidates.",
+        "Physical occupancy of the husband or boss in the old meeting might make later attendance seem implausible, but that is world-knowledge plausibility, not logical entailment.",
+        "Group referents (family, coworkers) may overlap in membership without entailing identity between the husband and the boss."
+      ],
+      "notes": "Identity intro explicitly distinguishes the husband, the boss, the family, and the coworkers; referents are clear and role scope is confined to the old meeting. All six fact realizations contain an explicit exclusivity operator ('only' or 'not X but only Y') scoping the patient role to 'that meeting'. Literal patient NPs are exact. Grammar is acceptable; transitive 'meet' with an NP object is interpretable, and report-mention sentences are grammatical. No question is present. The old event facts do not entail unavailability of either candidate to the coworkers or any other actor in a separate later activity; any such reading would rely on extraneous physical or narrative assumptions rather than the supplied semantics."
+    },
+    {
+      "id": "item81",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the grandmother",
+        "contrast_other": "the queen",
+        "affirmative_first_source": "the grandmother",
+        "affirmative_first_other": "the queen",
+        "affirmative_last_source": "the grandmother",
+        "affirmative_last_other": "the queen"
+      },
+      "question_valid": null,
+      "question_notes": "No question text was supplied in this row, so no question can be independently validated.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The supplied facts describe only the patient role in the earlier 'act of disrobing' with the nurse as actor. They do not logically entail that either the grandmother or the queen is unavailable to a different actor in any later new activity; such an inference would require extra assumptions about event sequencing or physical occupancy, not entailment.",
+      "alternative_explanations": [
+        "'only' can be read as local, event-bound exhaustivity over patients in that single act rather than as a global exclusion across later events and actors.",
+        "The report-mention sentences introduce a discourse referent for the other candidate without asserting participation in the old act, so any effect may be informational prominence or redundancy.",
+        "Later availability may be constrained by world knowledge such as someone already being disrobed or occupied, but that is pragmatic physical occupancy, not logical entailment.",
+        "Narrative alternation between candidates can produce contrast without entailing mutual exclusivity across different events."
+      ],
+      "notes": "Referents are named: the grandmother and the queen are explicitly distinct, and each is distinct from the nurse and peasant; this fixes reference identity, not co-presence in the old event. Role scope is clear because every fact is anchored by 'In that act of disrobing', with the nurse as agent and the target candidate as patient. 'Only' makes all six event assertions locally exclusive patient statements. The affirmative report-mention clauses are metalinguistic mentions, not event participations, and their position does not change the old-fact patient. No group referents, possessive binding, or true grammatical ambiguity are present; the nominalized 'act of disrobing' and progressive 'was disrobing' are slightly stiff but interpretable."
+    },
+    {
+      "id": "item82",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the queen",
+        "contrast_other": "the grandmother",
+        "affirmative_first_source": "the queen",
+        "affirmative_first_other": "the grandmother",
+        "affirmative_last_source": "the queen",
+        "affirmative_last_other": "the grandmother"
+      },
+      "question_valid": null,
+      "question_notes": "No question is supplied in the provided row.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The exclusive scope 'In that act of disrobing' restricts every claim to a single past event with the peasant as actor. It does not logically entail that the sole patient candidate is unavailable to the nurse or any other actor in a later, separate activity. Any such conclusion would require additional premises.",
+      "alternative_explanations": [
+        "Physical-occupancy inference: the candidate may be pragmatically assumed busy with the peasant in the old event and therefore unable to participate with the nurse later, but this is not stated or entailed.",
+        "Report-mention misreading: in affirmative variants, the sentence 'The report also mentions the [other candidate]' supplies only a textual discourse referent and does not assert participation in the disrobing; a superficial reading could wrongly infer exclusion.",
+        "Narrative-alternation assumption: readers may expect alternating actors/patients across events even though the text provides no logical or semantic bridge between the old act and the new activity.",
+        "Event/result-state extension: completion of the old disrobing could be loosely connected to later availability, but the text offers no explicit result-state entailment."
+      ],
+      "notes": "All six fact variants contain explicit exclusivity markers ('only', 'not ... but only') and are clearly scoped by 'In that act of disrobing'. The literal patient NPs match the fixed source and other candidates. Referents are explicitly distinct. The affirmative report mentions introduce the other candidate only as a discourse referent and do not assert participation in the event. Nominalizations such as 'act of disrobing' are slightly formal but acceptable. No possessive binding or group ambiguity is present. The old exclusive patient fact does not entail unavailability to a different actor in a later new activity."
+    },
+    {
+      "id": "item83",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "only the actor",
+        "contrast_other": "only the businessman",
+        "affirmative_first_source": "only the actor",
+        "affirmative_first_other": "only the businessman",
+        "affirmative_last_source": "only the actor",
+        "affirmative_last_other": "only the businessman"
+      },
+      "question_valid": null,
+      "question_notes": "No question text is supplied in the row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The facts are explicitly scoped to the old activity with 'In that shaving' and the assistant as actor. None mentions a later new activity or the barber, so none logically entails that either the actor or the businessman is unavailable to a different actor later. Any such inference would be pragmatic, not entailed.",
+      "alternative_explanations": [
+        "Plausible physical occupancy: being the patient in the old event does not preclude being a patient in a later event with another actor.",
+        "Event/result-state semantics: 'In that shaving' restricts the assertion to the old event only and has no temporal projection to a new activity.",
+        "Narrative alternation/information redundancy: the affirmative first/last sentences add a report-mention statement, which could be pragmatically misread as participation but does not change the event fact.",
+        "Group referents could share members without being identical, but here the candidates are explicitly introduced as distinct entities, so identity is controlled."
+      ],
+      "notes": "The identity introduction explicitly makes the actor and the businessman distinct referents and also distinct from the assistant and the barber; there is no possessive binding problem and no group-referent conflation. 'Only the actor'/'only the businessman' is exhaustive within the old-event assertion, and the contrast versions overtly exclude the other candidate in that same old event. The 'report also mentions' sentences are narrative-level report mentions, not participant assertions; swapping them before or after the event assertion should not alter factivity or exhaustivity. The role scope is clear: each assertion is limited by 'In that shaving,' so the role of the assistant and patient is not open-ended. The count-event nominalization 'In that shaving' (and similar activity nouns) is somewhat awkward but interpretable, so no universal grammar rejection is warranted. The old facts do not entail unavailability of either candidate to a different actor in a later new activity."
+    },
+    {
+      "id": "item84",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the businessman",
+        "contrast_other": "the actor",
+        "affirmative_first_source": "the businessman",
+        "affirmative_first_other": "the actor",
+        "affirmative_last_source": "the businessman",
+        "affirmative_last_other": "the actor"
+      },
+      "question_valid": null,
+      "question_notes": "No explicit question is supplied in the row; if the intended question is whether the old fact entails later unavailability to the assistant, that inference is not licensed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "All six sentences are scoped to the old event with 'In that shaving'. 'only' or 'not X but only Y' makes the patient-local claim exclusive for that shaving, but it does not state or entail anything about the candidates' availability to the assistant in any later new activity. Excluding a candidate from the old shaving also does not logically entail later availability or unavailability. The affirmative report mentions are language-level mentions and do not add event participation or exclusion.",
+      "alternative_explanations": [
+        "Plausible physical occupancy: a candidate being shaved in the old event may be pragmatically assumed occupied, but no overlap or simultaneity with a later activity is stated.",
+        "Event/result-state semantics: 'was shaving only X' predicates an event, not a resulting state of ongoing unavailability for a different actor.",
+        "Narrative alternation: first/last versions merely swap the report-mention sentence with the event assertion, changing information order rather than participant status.",
+        "Informational redundancy/salience: 'The report also mentions the other candidate' makes the non-patient discourse-given but is not evidence of participation or exclusion.",
+        "Unresolved discourse anaphora: 'The report' and 'also' presuppose an antecedent not present in the isolated row; any confusion from co-mention is contextual, not semantic entailment."
+      ],
+      "notes": "source_candidate=the businessman and other_candidate=the actor are distinct individuals, distinct from the barber and assistant; labels are fixed referents, not sentence-order slots. Exhaustivity is exclusive for every old shaving realization: the asserted event patient is either only the businessman or only the actor. The affirmative 'report also mentions' sentences do not convert the mentioned candidate into an event participant. The countable event anchor 'that shaving' is slightly awkward in isolation but interpretable; no possessive binding or group-reference conflict is asserted."
+    },
+    {
+      "id": "item85",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the son",
+        "contrast_other": "the child",
+        "affirmative_first_source": "the son",
+        "affirmative_first_other": "the child",
+        "affirmative_last_source": "the son",
+        "affirmative_last_other": "the child"
+      },
+      "question_valid": null,
+      "question_notes": "No question supplied for this row.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "Exclusive old-activity facts are scoped to 'In that bath' and assign the past patient role only. They do not entail that either candidate is unavailable to any different actor in a later new activity; absence from one past event is not a result-state or persistent physical-occupancy fact.",
+      "alternative_explanations": [
+        "Plausible physical occupancy: a child not bathed in that past event may merely be elsewhere; this is an inference, not a logical entailment.",
+        "Event/result-state semantics: bathing has no persistent result that would make a participant unavailable later.",
+        "Narrative alternation: the affirmative report clause mentioning the other candidate may create informational redundancy but changes no activity role.",
+        "Discourse-level mention: 'The report also mentions X' only introduces a referent and does not assert participation in the bath."
+      ],
+      "notes": "Identity intro explicitly marks the son and the child as distinct referents and distinct from the father/nanny. The old-activity fact sentences are scoped by 'In that bath', using a slightly nominalized countable event anchor; this is mildly essayistic but interpretable, not a grammar error. 'Only' supplies the exclusive patient scope. The report-mention clauses are discourse-level and do not assert participation, so first/last ordering cleanly separates assertion from mention. No group NP, possessive binding, or real patient-role ambiguity occurs; the separate new-activity actor is mentioned only in the identity note and is not part of any stated old-activity patient role."
+    },
+    {
+      "id": "item86",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the child",
+        "contrast_other": "the son",
+        "affirmative_first_source": "the child",
+        "affirmative_first_other": "the son",
+        "affirmative_last_source": "the child",
+        "affirmative_last_other": "the son"
+      },
+      "question_valid": null,
+      "question_notes": "No question or probe text was supplied in this row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The old-fact clauses are scoped to a completed prior bathing event with a fixed actor (the nanny). They do not logically entail that a candidate is unavailable to a different actor in a later new activity. Event/result-state semantics of the bath do not bridge to unavailability for the father later. Any such conclusion would arise only from pragmatic reasoning about physical occupancy, narrative alternation, or informational redundancy, not from entailment.",
+      "alternative_explanations": [
+        "Plausible physical occupancy if the prior bath were treated as ongoing or immediately preceding the later activity.",
+        "Narrative alternation: participants may infer that a new actor in a subsequent event will select the contrasting patient.",
+        "Informational redundancy: reusing the same patient across events could make the explicit exclusivity in the old fact seem pragmatically strange, prompting a different-patient inference."
+      ],
+      "notes": "The identity introduction establishes the child and the son as distinct fixed referents, but only as discourse referents, not as participants in the old activity or in any new activity. Role scope is unambiguous: every fact realization is limited to the nanny's prior bath. The 'report also mentions' clauses are metalinguistic and do not add the mentioned candidate as a participant. The activity anchor 'In that bath' is slightly awkward as a countable event NP but remains interpretable. Source and other labels map to the target identities of A and B, not to surface order."
+    },
+    {
+      "id": "item87",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "only the father",
+        "contrast_other": "only the teacher",
+        "affirmative_first_source": "only the father",
+        "affirmative_first_other": "only the teacher",
+        "affirmative_last_source": "only the father",
+        "affirmative_last_other": "only the teacher"
+      },
+      "question_valid": null,
+      "question_notes": "No explicit downstream question text is supplied, so question validity cannot be assessed from the row alone.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The old hug fact is locally event-internal: 'only the father' / 'only the teacher' restricts the patient of that specific hug. It entails exclusion of the non-selected candidate from that same hug, but it does not entail that the non-selected candidate is unavailable to a different actor, such as the kids, in any later new activity. No temporal, causal, permission, availability, or cross-event premise is stated. Mere report mention of the other candidate is a discourse-level mention, not participation or unavailability.",
+      "alternative_explanations": [
+        "Same-event exclusivity may reflect the local semantics of 'only' within the described hug.",
+        "Physical occupancy or narrative alternation could make one hug have a single immediate patient without implying any later unavailability.",
+        "Event-result-state semantics would not make having hugged one candidate preclude hugging another candidate later.",
+        "Report mention can create informational redundancy or narrative continuation without asserting the mentioned referent participated.",
+        "Group referents like 'the siblings' and 'the kids' may overlap without collapsing referent identity, so their mention does not by itself establish unavailability."
+      ],
+      "notes": "The identity introduction establishes that the father and the teacher are distinct referents, but it does not assert their presence or participation in the old hug except where the fact sentences do so. Role scope is explicitly marked by 'In that hug'. In affirmative/first and affirmative/last versions, the 'report also mentions' sentence is a mere mention and should not be confused with a participant assertion. The source/other labels correctly track fixed candidate identities rather than sentence order. 'That hug' as an event anchor is interpretable and does not create a true grammatical rejection, though the template note about 'shaving/bath/cuddle' suggests some event anchors are more natural than others. Possessive binding is not involved; group-reference overlap is possible but not problematic here."
+    },
+    {
+      "id": "item88",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the teacher",
+        "contrast_other": "the father",
+        "affirmative_first_source": "the teacher",
+        "affirmative_first_other": "the father",
+        "affirmative_last_source": "the teacher",
+        "affirmative_last_other": "the father"
+      },
+      "question_valid": null,
+      "question_notes": "No question field is present in the supplied row; validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The exclusive patient assignment applies only within the locally framed old event ('In that hug'). It does not logically entail unavailability of either candidate to a different actor (e.g., the siblings) in any later or separate new activity. Physical occupancy in one occasion-bound hug event does not exhaustively block participation in distinct future events.",
+      "alternative_explanations": [
+        "Plausible physical occupancy: being hugged by the kids at time T might pragmatically explain temporary unavailability to others at time T, but this is not logical entailment and is not stated.",
+        "Event/result-state semantics: a result state from an earlier hug does not persist to categorically exclude a different actor in a later new activity.",
+        "Narrative alternation / informational redundancy: affirmative versions insert a report mention of the non-hugged candidate, but this is metalinguistic information and does not create a participant role or weaken the exclusive patient reading of the hug clause.",
+        "Group referent overlap: the identity note warns that groups can share members without being identical; however, here the source and other candidates are explicitly distinct individuals, so no group-level ambiguity actually arises in these sentences."
+      ],
+      "notes": "The identity introduction explicitly fixes 'the teacher' and 'the father' as mutually distinct referents and distinct from the kids and siblings. All local frames are 'In that hug', so scope is clear. The affirmative versions pair an exclusive 'only' patient claim with a separate report mention of the other candidate; the report mention is non-participatory and does not alter exhaustivity of the hug. The limitations mention awkward count nouns ('shaving','bath','cuddle') that do not appear in the actual stimuli; the real activity is 'hug', and 'In that hug' is slightly unusual but fully interpretable as a referential event anchor. No questions accompany the row."
+    },
+    {
+      "id": "item89",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the girl",
+        "contrast_other": "the boy",
+        "affirmative_first_source": "the girl",
+        "affirmative_first_other": "the boy",
+        "affirmative_last_source": "the girl",
+        "affirmative_last_other": "the boy"
+      },
+      "question_valid": null,
+      "question_notes": "No question sentence was supplied in the row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No logical entailment. The strongest facts exclude a candidate only as a patient of the same old kissing event with the grandparents. They do not state that the excluded candidate cannot be available to the ladies or participate in a later, different activity. Any unavailability reading would require extra assumptions such as same-time physical occupancy, a persistent result state, narrative alternation/redundancy, or overextending local 'only' beyond its event scope. A report mention is metalinguistic and cannot entail later unavailability.",
+      "alternative_explanations": [
+        "Narrative alternation: mentioning one candidate in the old event may pragmatically set up the other for a later role without entailing exclusion.",
+        "Informational redundancy: 'The report also mentions the boy/girl' may be mistaken for participation even though it only asserts a textual mention.",
+        "Plausible physical occupancy or event-result-state reasoning about kissing could suggest unavailability, but no such constraint is stated.",
+        "Local 'only' could be misread globally across discourse rather than as exhaustivity for the single event 'that kiss'."
+      ],
+      "notes": "Verified wording: all six facts are explicitly scoped by 'In that kiss'; the report-mention clauses only say that the report mentions the other candidate and do not assign participation. Surface order is not used for labels: source_candidate remains 'the girl' and other_candidate remains 'the boy' even though 'the boy' appears first in contrast_source. fact_patients are recorded as nominal head NPs without the focus particle 'only'; exclusivity is recorded separately. 'That kiss' is a count-event nominalization but acceptable here; the limitation about shaving/bath/cuddle is template-level and not a grammatical rejection. No possessive binding is present. The referents are distinct from one another and from the group actors grandparents/ladies, but that distinctness only fixes reference and does not create unavailability for any later activity."
+    },
+    {
+      "id": "item90",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the boy",
+        "contrast_other": "the girl",
+        "affirmative_first_source": "the boy",
+        "affirmative_first_other": "the girl",
+        "affirmative_last_source": "the boy",
+        "affirmative_last_other": "the girl"
+      },
+      "question_valid": null,
+      "question_notes": "No question text was supplied in this row, so direct question validity cannot be audited from the material alone.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The facts are explicitly scoped to 'In that kiss' and only assign patients of the old kissing event involving the ladies. They do not state any availability, unavailability, participation, or non-participation relation between either candidate and the grandparents in a later new activity. Distinctness in the identity introduction is referential only and does not entail physical unavailability later.",
+      "alternative_explanations": [
+        "Readers may import world knowledge that being kissed by one actor makes a person physically occupied and therefore unavailable to a different actor at a later time, but this is not entailed by the facts.",
+        "The result state of the old kiss is not asserted to extend into or block a later new activity.",
+        "The report mention of the other candidate may be mistaken for an assertion that the mentioned candidate participated in the old kiss or was excluded from it.",
+        "Narrative juxtaposition of an old event and a later actor may invite a contrastive alternation inference that is not logically licensed.",
+        "Group actors such as the ladies and the grandparents could be conflated if overlap is assumed; the identity introduction only stipulates distinctness of named referents, not shared or disjoint membership."
+      ],
+      "notes": "All six fact realizations are worded with clear local scope ('In that kiss'). Source/other labels track the fixed referents 'the boy' and 'the girl', not sentence order. The contrast construction 'not X but only Y' is somewhat marked but interpretable. The affirmative variants differ only in whether the other candidate appears in an adjacent report mention; that mention is narrative/informational and does not alter the exclusive patient status of the kiss fact. No possessive-binding or nominalization issue arises in this item."
+    },
+    {
+      "id": "item91",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the man",
+        "contrast_other": "the woman",
+        "affirmative_first_source": "the man",
+        "affirmative_first_other": "the woman",
+        "affirmative_last_source": "the man",
+        "affirmative_last_other": "the woman"
+      },
+      "question_valid": null,
+      "question_notes": "No target question or answer set is supplied in the row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No logical entailment. The old-fact assertion only states who was the patient in that old fight. It does not assert post-event state, location, temporal overlap, or anything that would make the same candidate unavailable to the classmates in a later activity. Availability in a new event would require extra assumptions.",
+      "alternative_explanations": [
+        "Plausible physical occupancy or event/result-state semantics: participants may infer the candidate is tired, injured, or still occupied after the fight.",
+        "Over-scope of 'only': participants might incorrectly apply the old-fight exclusivity to the later new activity or to all activities.",
+        "Mere report mention treated as participation: the sentence 'The report also mentions ...' could be misread as reintroducing the other candidate as an event alternative.",
+        "Narrative alternation/informational redundancy: moving the report-mention sentence before or after the assertion may create an illusion of stronger exclusion.",
+        "Group-referent spillover: participants may imagine overlap among the boxers, classmates, or candidates, but the wording only asserts candidate distinctness."
+      ],
+      "notes": "Verified wording: source variants use 'the man' as the sole old-fight patient and mention 'the woman' only as a report mention; other variants reverse this. The old-fact scope is locally set by 'In that fight'. The first/last manipulation changes ordering, not exhaustivity or participation. No possessive-binding problem; 'report' is ordinary communication metonymy."
+    },
+    {
+      "id": "item92",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the woman",
+        "contrast_other": "the man",
+        "affirmative_first_source": "the woman",
+        "affirmative_first_other": "the man",
+        "affirmative_last_source": "the woman",
+        "affirmative_last_other": "the man"
+      },
+      "question_valid": null,
+      "question_notes": "No explicit question text is included in the supplied row; question validity cannot be assessed from the row alone.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No. The exclusive patient facts are scoped to 'In that fight' and concern only the prior event with the classmates as actor. They do not logically entail that either candidate is unavailable to a different actor, the boxers, in a later new activity. Referent distinctness alone does not entail non-presence or non-availability. Plausible physical occupancy, event-overlap, or result-state inferences are not logical entailment.",
+      "alternative_explanations": [
+        "Physical/result-state persistence: injury, detention, fatigue, or continued engagement during the old fight might make unavailable availability plausible without entailing it.",
+        "Temporal overlap: if the old fight and the new activity are construed as simultaneous or nearly adjacent, readers may infer unavailability even though it is not entailed.",
+        "Narrative alternation with the same action or actor may bias a cross-event exclusivity inference.",
+        "The report mention may be misread as participation due to discourse salience or informational redundancy, especially when it precedes or follows the fighting assertion."
+      ],
+      "notes": "The two candidates are stipulated to be distinct referents, but the identity introduction does not assert their presence, participation, or availability in any activity. The fighting assertions are locally exclusive as written. The first/last affirmative variants swap a report-level mention with the event assertion; 'The report also mentions the man/woman' does not state participation in the fight. No possessive binding is present. Group referents such as 'the classmates' and 'the boxers' should not be conflated with the individual candidates."
+    },
+    {
+      "id": "item93",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "the soldier",
+        "contrast_other": "the uncle",
+        "affirmative_first_source": "the soldier",
+        "affirmative_first_other": "the uncle",
+        "affirmative_last_source": "the soldier",
+        "affirmative_last_other": "the uncle"
+      },
+      "question_valid": null,
+      "question_notes": "No target question is supplied in this row, so question validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "All facts are linguistically bounded by 'In that act of healing' and state only the patient role in that old event. They do not logically entail anything about a later new activity, a different actor (the doctor), or the candidate's availability. At most one could make a pragmatic physical-occupancy inference about the earlier moment, which is not entailment and does not carry forward to the later activity.",
+      "alternative_explanations": [
+        "Pragmatic physical occupancy: being healed in the old act may suggest temporal engagement, but not unavailability for a later activity.",
+        "Narrative redundancy vs. participation: report mentions are separate discourse acts and do not assert the mentioned candidate participated in the healing act.",
+        "Scope overextension: a reader might incorrectly carry the local 'only' exclusivity or the old-event temporal frame forward to the new doctor-activity, but the sentence scope does not license this."
+      ],
+      "notes": "Identity intro explicitly marks the soldier and the uncle as distinct from each other and from the medic and doctor. Every fact realization is clearly scoped to the old healing act and uses exclusive quantifiers ('only' or 'not X but only Y'). The affirmative variants correctly separate a mere report mention from the exclusive old-patient assertion, and the report mention does not assert participation. The contrast formulations are slightly redundant stylistically but remain fully grammatical and interpretable. No possessive binding, group referent ambiguity, or awkward nominalization affects interpretation."
+    },
+    {
+      "id": "item94",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "contrast_source": "exclusive",
+        "contrast_other": "exclusive",
+        "affirmative_first_source": "exclusive",
+        "affirmative_first_other": "exclusive",
+        "affirmative_last_source": "exclusive",
+        "affirmative_last_other": "exclusive"
+      },
+      "fact_patients": {
+        "contrast_source": "only the uncle",
+        "contrast_other": "only the soldier",
+        "affirmative_first_source": "only the uncle",
+        "affirmative_first_other": "only the soldier",
+        "affirmative_last_source": "only the uncle",
+        "affirmative_last_other": "only the soldier"
+      },
+      "question_valid": null,
+      "question_notes": "No actual question text is supplied in this row, so validity cannot be assessed.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The old facts only assert who the doctor healed in that act: not the other candidate but only the stated candidate, or only the stated candidate. This excludes other patients within that same healing event, but it does not entail that either candidate is unavailable to the medic in any later new activity. The identity intro merely introduces the medic as a distinct actor; no later activity fact is given.",
+      "alternative_explanations": [
+        "Within-event patient exclusivity does not imply cross-event unavailability or temporal exclusion.",
+        "Physical occupancy or result-state after one healing act is plausible inference, not logical entailment.",
+        "Narrative alternation between the doctor and the medic may implicate disjoint patients, but such an implicature is cancellable.",
+        "The report also mentions X is an informational/report-level mention and does not assert participation or exclusion in the healing act.",
+        "Group referents or shared membership are not at issue here, since the identity intro explicitly separates the uncle and the soldier."
+      ],
+      "notes": "Fixed candidates are the uncle and the soldier, not the first and second NP in a sentence. First/last variants should not be reanalyzed as changing participation; the report mention remains a mere mention. The phrase act of healing is a slightly formal but interpretable nominalization, and no possessive-binding or group-reference ambiguity is present."
+    }
+  ],
+  "caveats": "Field-level expert audit, not human gold and not a whole-continuation re-audit; grammaticality judgments differ from Luna and do not change preregistered cohorts. None means later event not present in field packet; do not recode as a forced No."
+}
