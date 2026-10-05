@@ -3,7 +3,7 @@
 # waits until the GPU is free, then runs items sequentially (remote, detached)
 HOST=$1; GPU=$2; ITEMS=$3; BS=${4:-32}
 D=/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure
-CMD="cd $D/scripts; while nvidia-smi -i $GPU --query-compute-apps=pid --format=csv,noheader | grep -q .; do sleep 30; done; "
+CMD="cd $D/scripts; if [ -n \"$NOT_BEFORE\" ]; then while [ \$(date +%H) -lt $NOT_BEFORE ]; do sleep 60; done; fi; while nvidia-smi -i $GPU --query-compute-apps=pid --format=csv,noheader | grep -q .; do sleep 30; done; "
 for IT in $ITEMS; do
   IFS=: read DN M SH NS <<< "$IT"; SH=${SH:-0}; NS=${NS:-1}
   N=$(basename $M); MD=models--$(echo $M | sed "s#/#--#g")
