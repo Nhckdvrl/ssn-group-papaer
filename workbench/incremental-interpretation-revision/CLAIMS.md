@@ -50,3 +50,5 @@
 - 2026-10-05：[E21](experiments/E21-named-versus-generic-exclusion.md)/[统计](results/E21-summary.json)严格4源named相对generic减小GP−cue差+3.06 [2.03,4.38]bits，但POST-HOC拆分主要cue−2.97 [−3.77,−1.60]、GP+.09 [−.93,1.12]。不支持“named更好修复”，也未证明错误再绑定；C01/C02不升机制结论。
 
 - 2026-10-05：[E23](experiments/E23-functional-role-continuation.md)/[首审](results/E23-first-review-summary.json)/[次审](results/E23-summary.json)实际续写不支持稳定的role-violation结论：224标签10→6明确contradiction，严格4源NP0 base均无明确违反但多患者省略。首次GP差CI含0且语义标注不稳定；C04局限likelihood，不能升能力/false-belief/机制等级。原审计和全部输出不作废、不删改，POST-HOC完整次审透明保留。
+
+- 2026-10-05：[E25](experiments/E25-event-versus-actor-correction-scope.md)/[统计](results/E25-summary.json)：C04信号迁移到同actor新event I−1.249 [−1.757,−.762]bits、另一actor新event−2.070 [−3.099,−1.200]；actor_transfer−.820 [−1.460,−.322]。不支持以此信号单独证明old event绑定未修订；portable association解释增加，但未证明scope错误。C04仍L1，下一E26 scope/final interpretation读数独立审计。
