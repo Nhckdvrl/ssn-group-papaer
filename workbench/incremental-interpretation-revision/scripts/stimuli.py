@@ -181,7 +181,13 @@ def validate(rows,components,cache):
 
 def tasks_jurayj(path,tokenizer,experiment,system_frame='both',families=None):
     rows=[json.loads(line) for line in path.read_text().splitlines()]
-    assert rows and all('step_request_sha256' in r or (r.get('audit_tier')=='external_advisory' and 'audit_request_sha256' in r and r['gold'] is None) for r in rows),'E01 requires independently reviewed inputs; advisory cohorts must remain unscored'
+    assert rows and all('step_request_sha256' in r or (
+        'audit_request_sha256' in r and 'audit_response_sha256' in r and (
+            r.get('audit_tier')=='external_advisory' and r['gold'] is None or
+            r.get('audit_tier')=='external_model_annotation' and (
+                r['gold'] is None or r['eligible'] and not r['diagnostic_only'] and
+                r['auditor_certainty']=='clear' and r['gold']==r['auditor_answer'])))
+        for r in rows),'E01 requires independently reviewed inputs and provenance-consistent labels'
     # Historical agent flags are provenance only. External annotation determines eligibility.
     rows=[r for r in rows if r['eligible']]
     if families:rows=[r for r in rows if r['construction'] in families]

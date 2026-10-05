@@ -41,3 +41,12 @@
 - 完整1824任务/228eligible QA，189.35s、0.05260 GPU·h，前3源组每family最多3lexical sets，缺失的6变体仍未补标。全部正确率字段null。neutral/reg/base NPZ final semantic short GP≈1、cue=1；原role short GP=.0134 [.0000,.0360]、cue=.6681 [.0043,1.0000]。NPZ cue extension−short role −21.69 pp [−56.20,+1.17]，semantic约0；nonGP role −44.63 [−88.05,−1.21]（n2），semantic约0。不是“语义理解无损”的全能力证明，只是这些独立调用对原句中最终事件的支持。
 - MVRR long−short final semantic +48.69 pp [≈0,+97.39]（n2），role基本near floor；与NPZ长句方向不同，不能预设所有构式extension=更深承诺。NPS GP long仅一组、CI=null。更多组到来前不把方向差作为稳定跨构式finding。
 - [summary](../results/E01-opencode-snapshot2-summary.json)、[scores](../results/E01-opencode-snapshot2-scores.csv)、[config](../results/E01-opencode-snapshot2-config.json)。全八prompt保留；C01/C02不升级。按原决策追读数具体异常：E11外部head/full-NP/isolated审计已启动；不追加赢家prompt。
+
+
+### Snapshot3：扩大独立词汇覆盖（本批推理前登记）
+- 核心信息问题仍是语言操作如何改变final/initial的role与assertion支持；不再加prompt模板。新用户授权免费opencode/Step均可标注，必要时Luna逐条补审。
+- 截取当前**全部已完成**独立opencode逐variant审核，不以模型结果、构式效应或audit快慢选源组。冻结279/626变体、1189QA、1158eligible：NPZ121/NPS85/MVRR73；未完成/失效情况完整保留。源数据SHA `abc1ac0061ce91aa867d54cd8bc74914b07f5771650b90da56b8decb69cd14d8`，新snapshot SHA `b161273b173d2ff8b69773acb1af67acd4a936ef95d0069f0fbf71668cceff5b`。主分析只用两个条件共同具备的source-set交集，报告每项n/IDs；acceptable stratum一并报告，不补出不存在的完整pairs。
+- 主要读数仍PYes与GP/cue/blocker/nonGP×extension及order交互；**新批次**次读数采用eligible、非diagnostic、certainty=clear的外部答案999个（Yes628/No371）。190个无label保留null，含语义兼容diagnostic；correct只是外部model annotation agreement，不称人类gold能力。此前snapshot1/2结果与null gold全部保持原样，不追改旧实验。本批Luna6超时补审另存，不混入这张固定MiMo cohort。
+- 固定已使用的neutral/native、句先/题先×base/一句repair四配置，共4632独立任务。三构式分别在GPU0/1/6单卡并行，共同8B FP32/TF32 false/batch32，预算<.15 GPU·h；没有新增模型、训练/SAE/probe。组合器核对每个预期prompt hash、完整任务数、数据/模型/代码/choice token集合相同。
+- 竞争解释与决策：GP特异extension损伤、cue也损伤的通用NP/问句问题、语义补全/兼容性与role不一致三者由对应配对交互区分。若role损伤同时发生于cue，按E11引用对照解读，不叫GP承诺；若final/initial的语言操作响应在更多源组仍分离，优先针对该语言依赖设计后续证据操作，不能将分离本身称新idea；若小样本方向不重复则如实降级线索，不搜索模板赢家。
+- noise不作为停步gate；沿用FP32已知prob漂移且报告source-cluster CI。分项用于找下一决定性操作，不用单一显著项升级C01/C02。

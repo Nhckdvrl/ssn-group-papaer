@@ -31,7 +31,7 @@ PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份rea
 
 ## E01如何提供信息
 
-同一lexical set保留GP、显式cue、blocker/lexical replacement、extension；逐项Step5审计后比较role与asserted-proposition读数。重点观察哪些操作一起变化、哪些分离、哪些随query顺序改变。报告所有配置与配对CI，不把任一漂亮模板当结论。
+同一lexical set保留GP、显式cue、blocker/lexical replacement、extension；逐项独立模型审计后比较role与asserted-proposition读数（最新用户授权opencode/Step均可，必要时Luna复核）。重点观察哪些操作一起变化、哪些分离、哪些随query顺序改变。报告所有配置与配对CI，不把任一漂亮模板当结论。
 
 若只有已知GP/cue效应，继续把它当measurement；若出现稳定、能改变预测的交互，再登记一个自然RQ，读其最近邻并设计能区分至少两解释的追加实验。当前没有已经证成的新paper idea。
 
@@ -74,3 +74,10 @@ E11首批n1诊断中，完整subject span把unambiguous extended blocker原role 
 同一E10全部原prompt里，固定options末尾的Q前−后×GP−cue在disamb word为+1.47 bits [.47,2.52]（repair+1.54）；主要cue降低surprisal−2.22，GP自身区间跨0，因此“提问加深初始承诺”尚不成立。与原cue QA下降并列可知这两个读数不能代替；事后平均mapping有cue accuracy −11.11 pp [−20.14,−2.78]，只有8/24clusters同时word改善/QA损伤，相关也不支持统一逐项反向机制。全部分项/局部和whole指标保留。
 
 [Hu & Levy2023](hu2023-metalinguistic-measurement.md)已明确prompt/probability gap；Hanna2025与Hassan2026也拥有预测/QA特征与early goal/late access叙事。下一阶段用已有Slattery自然后文，区分没有问句的input-history影响与问句再激活/元语言额外需求。不是“有后效应即novel”，仍需晚证据传播的具体范围和解释。当前18个PDF版本/17篇不同论文缓存；COLM Hu/Frank PDF直接403，不能当全文已读。venue corpus 41,117记录，2026ACL已加入；ICLR2026等缺源仍明示，检索不作科学判决。
+
+
+## E13与下一信息问题
+
+原24两句/96作者条件、无诊断问句：全S2 GP−comma −.031 / −.003 bits，两CI均跨0；literal reference交互+.905 [−.296,2.260]，其后两词−.377 [−.637,−.111]。不能用局部分项把整体null改写成稳定lingering或宣称彻底消失。复读Slattery E2 rationale与Table4确认作者早已对比全局失败/局部hangover/plausibility；其中RAT/reciprocal强制自指事件是published setting，不等同所有optional-transitive初始事件在逻辑上都错误。
+
+当前核心压力是**晚证据改变哪些角色和事件依赖、哪些后果仍被先前解释影响**。E11显示问句引用问题，E13限制泛化全局残留解释。先用E01新固定外审cohort扩大独立词汇覆盖，不追加更多position模板；找语言操作的稳定分离后才设计能区分残余事件、语义补全和问答影响的干预。这个问题框架不算已形成新idea。所有现有材料和干预的owner仍明确列出，不能把“区分两个读数”当增量。
