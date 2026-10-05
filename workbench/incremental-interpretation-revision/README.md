@@ -31,7 +31,7 @@
 - measurement validity.
 
 ## 主张摘要
-见 [CLAIMS.md](CLAIMS.md)。E00 全 16-prefix 主对照 −2.81 pp [−11.50, 5.89]，prompt 波动 65.22 pp；gate B，C00 尚未通过。[E03](experiments/E03-e00-order-and-assertion-audit.md) 确认当前 query order 驱动反转，FP32 不能消除；[E04](experiments/E04-known-positive-control.md) 复现 1.7B 正方向，但 nonGP lingering floor；[E05](experiments/E05-response-meaning-calibration.md) 标签/断言说明仍不能恢复稳定读数。[E06](experiments/E06-attachment-versus-event.md) 的 GP subject 控制也失败（0–5.80%）。E01 暂未运行；[完整人审](logs/review-2026-10-05.md)。
+见 [CLAIMS.md](CLAIMS.md)。E00 全 16-prefix 主对照 −2.81 pp [−11.50, 5.89]，prompt 波动 65.22 pp。[E03](experiments/E03-e00-order-and-assertion-audit.md) 确认当前 query order 驱动反转，FP32 不能消除；[E04](experiments/E04-known-positive-control.md) 复现 1.7B 正方向，但 nonGP lingering floor；[E05](experiments/E05-response-meaning-calibration.md) 标签/断言说明仍不能恢复稳定读数。[E06](experiments/E06-attachment-versus-event.md) 的 GP subject 控制也失败（0–5.80%）。这些结果限定旧测量的解释，不阻止系统探索。[E01](experiments/E01-component-revision-map.md) 已登记，正在独立审计候选数据；[领域知识库](../../library/themes/incremental-language-processing/README.md) 持续记录已读正文、ownership 与竞争解释。
 
 ## 痛点摘要
 见 [PAIN_LOG.md](PAIN_LOG.md)。
@@ -39,7 +39,7 @@
 ## 第一驻留块
 1. D0 数据与 license/revision/hash audit。
 2. [E00](experiments/E00-baseline-reproduction.md)：复现至少一个现代开放模型上的已知 GP-specific behavioral deficit。
-3. E00 通过后，才用 Jurayj componentized stimuli 做 GP / early cue / blocker / longer ambiguity 的系统测量。
+3. 按用户修订直接推进 Jurayj componentized stimuli 的 GP / early cue / blocker / longer ambiguity 系统测量；保留E00的不稳定结果，不追认旧对照通过。
 4. 行为出现稳定结构前，不做 probe/SAE/patching fishing。
 5. 每个新实验必须写清它区分的至少两个解释。
 
@@ -50,6 +50,8 @@
 - Baitalik & Datta ACL SRW 2026：NP/Z、NP/S、MV/RR recovery dynamics；
 - Zeng et al. Findings ACL 2026：delayed lexical disambiguation / deferred semantic drift；
 - Jurayj et al. BlackboxNLP 2022：GP traversal + componentized stimuli。
+- Li et al. CogSci 2024：逐段语义问答、逗号、parse shift 和 attention；
+- Hanna & Mueller 2024/2025：多种parse的句法特征与后续问答特征不复用。
 
 任何 lead 都要回答：
 > 为什么这不是“已有 GP/ambiguity paper + 更多模型/更多结构”？
@@ -61,3 +63,5 @@
 - 上游数据/代码先下载到本地 cache，不直接复制进 git；来源和 hash 见 DATA_PLAN。
 - 本仓库新增脚本放 `scripts/`，实验卡放 `experiments/`，结果摘要放 `results/`；大模型/大 raw 不进 git。
 - 本地 cache：`/data1/xiangding/work/incremental-interpretation-revision/`（upstream / normalized / models / runs）；[审计](results/D0-audit.md)、[复现入口](scripts/README.md)。下载显式无代理；复用已有 venv。
+
+**2026-10-05 用户修订：** 人明确要求取消agent附加的停步gate，继续系统观察与idea生长；进入E01（不追认E00通过），构造/改造语义标注审计改用Step5，最多8并发。持续论文阅读写入既有 `library/themes/incremental-language-processing/`。先前等待科学分支的请求已被此指令替代，不再据此停步。

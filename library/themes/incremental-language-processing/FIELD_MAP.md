@@ -1,0 +1,36 @@
+# Interpretation revision：阅读地图与当前解释（2026-10-05）
+
+研究对象保持不变：后来的语言证据如何改变先前解释，以及改变后如何用于继续理解。推荐材料是入口；不是固定paper题目，也不是门槛。
+
+## 已读正文与贡献归属
+
+| 工作 / 正文来源 | 实际读数与研究动作 | 已覆盖的主张 | 对当前探索的约束 |
+|---|---|---|---|
+| [Jurayj 2022](https://aclanthology.org/2022.blackboxnlp-1.25/) §2–3 | component variants；surprisal、hidden-state几何；歧义延长、blocker、comma/that/unreduced | 不同构式的cue效应、潜在但未实现的GP | 这些操作不是我们发明的；repo 43/19/28 与文中43/20/20不一致，按固定revision报告 |
+| [Li 2024](https://arxiv.org/abs/2405.16042) Methods–Discussion | 24 NPZ；五chunk；初始命题Yes/No概率；comma；probe parse shift；attention | lingering、incremental sem QA、comma改善、重分析spillover | 两解释读数/时间曲线/逗号效应单独不新；论文预检final question高后主要测initial，不能据此假定我们的final正确 |
+| [Amouyal 2025](https://aclanthology.org/2025.acl-long.403/) §2–7 | GP/nonGP、plausibility、verbtype；同题人机；释义和图像验证 | 结构困难、合理性补全、论元需求及跨任务相关 | 本文明确optional-transitive初始命题常是“未必”而不是逻辑假；不能把No accuracy直接写成消除初始表征 |
+| [Amouyal 2026 v1](https://arxiv.org/html/2510.07141v1) + release | 七类结构、难度排序；Qwen8 exception；prefix实验 | 更广构式的人机difficulty profile | 我们的E00/E03反转不是“首次发现所有LLM都会GP” |
+| [Cao & Schuler 2025](https://aclanthology.org/2025.cmcl-1.20/) §3–7、appendix stimuli | 30 RC/complement prefixes、50 completions/项；构造无合法completion的error对照；72 reflexive pairs | inverse scaling、局部矛盾可能被当成文本错误；下游binding检验 | 好实验的关键是追加error对照区分两解释；“初始parse影响下游”也已被测过 |
+| [Hanna & Mueller v1](https://arxiv.org/abs/2412.05353) §4–7 | GP continuation；SAE circuits、因果干预、action probe；QA circuit | 多parse特征；预测的syntax特征很少用于后续QA | 泛泛representation/use gap不新；其结论依赖模型/读数/feature operationalization。阅读不意味着执行SAE/probe |
+| [Baitalik & Datta 2026](https://aclanthology.org/2026.acl-srw.32/) §3–7 | 100 GP/control pairs；surprisal vs pseudo-surprisal；downstream AUC、hidden divergence | 架构相关disruption/recovery signature | 不能把surprisal回落叫最终解释已正确；三构式/架构对比和recovery曲线已有owner |
+| [Zeng 2026](https://aclanthology.org/2026.findings-acl.57/) §1–5、Limitations | 4090 prototype/metaphor pairs；Gemma；noncausal oracle；value信息传递、word-specific steering | 后续token承担延迟语义计算 | “原token不更新、后续token整合”已有owner；句法revision不能自动等同该metaphor机制，steering能控制生成也不直接证明实际晚cue依赖同一途径 |
+| [Huang 2024](https://tallinzen.net/media/papers/huang_et_al_2024_jml.pdf) RQ/Methods框架、Comprehension/General Discussion | 2000人、七构式；filler拟合surprisal→RT；对关键项检验数量、排序和item差异 | surprisal不足解释人类disambiguation cost | 提醒明确解释对象；本文跨构式reading-time证据不能直接当我们LLM问答的机制解释。具体模型拟合/附录未读完 |
+
+PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份reading-manifest记录URL、页数、hash；原文不进git。以上标明读取范围，后续读实验/附录再更新，不将下载等同已读。
+
+## 领域真正有争议的事情
+
+- surprisal的disruption、最终问答、可提取parse、生成的后续依赖不是同一个现象。已知它们能不一致；更值得知道的是何种证据、任务或条件决定这种不一致及其后果。
+- 结构不许可一个对象附着，并不排除事件在世界中发生；NP/S知道一个命题也不排除认识其参与者，passive事件也不总排除主动/intransitive命题。诊断必须区分句法角色、assertion和可能性。
+- 小模型回答失败不等于incremental parsing失败；强模型错误也可能是noisy-channel修复、论元补全或回答默认值。控制应改变解释所需的证据，而不是只换更多模型。
+- “读完后再问”与“带着问题读”的差异可能值得追，但当前E03只证明行为对顺序敏感；尚未证明task-directed revision，也未排除距离/格式/回答倾向。需要语言条件×任务位置交互及其解释。
+
+## E01如何提供信息
+
+同一lexical set保留GP、显式cue、blocker/lexical replacement、extension；逐项Step5审计后比较role与asserted-proposition读数。重点观察哪些操作一起变化、哪些分离、哪些随query顺序改变。报告所有配置与配对CI，不把任一漂亮模板当结论。
+
+若只有已知GP/cue效应，继续把它当measurement；若出现稳定、能改变预测的交互，再登记一个自然RQ，读其最近邻并设计能区分至少两解释的追加实验。当前没有已经证成的新paper idea。
+
+## Sasano依据
+
+按仓库[原始品味入口](../../../search/sasano-taste/README.md)：自然、清楚、结果本身值得知道，一个RQ对应一个finding；不以模型/数据更新或概念二分作为题目生成器。我们据此评估观察，不替人宣称他已认可某个idea。
