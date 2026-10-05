@@ -142,3 +142,5 @@ E33定位追加：Pucci/Li/Sinclair2026-09 preprint已拥有生产priming的词�
 目前区分证据：E39两个非反身具名对象保留old正/newother反向；E40没有only/not仍反向；E41明确解除旧事件占用与结果状态后反向仍在，模型可读出ready；E42原生条件续写也反向（含强neutral作用，不按大数夸张）。这条结构不能由显式否定／反身／raw格式／物理不能再参与充分解释，但普通叙事关系反重复、两演员两候选场景的allocation prior仍竞争。E43移除整个account/候选/报告脚手架做minimal语言transport，未据此提前认证novelty。所有新近邻只定位，既有scope／priming owners不自动判死I01。
 
 2026-10-06额外检索：Kauf CogSci2023 event plausibility、Matsuki2011 event knowledge、Getty2024 thesis anti-priming；本次只检索摘要/部分引言，不假称完整复读，Kauf的reporting bias已提醒“低文本概率≠不可能”。Britton2024出版社HTML读取失败，仍保持原卡摘要范围。它们指导竞争解释，不作为宣称我们已首创反priming的依据。
+
+2026-10-06 E43–44 transport反证更新：E43 old neutral扣除也负且new绝对D正；E44普通平衡名字场景old控制有效、新反转不稳定、ready正。C05限于描述NP/报告frame，不能将“known/used gap”或“反priming普遍机制”包装novelty。E45固定原frame只换名字，区分指称/属性与frame。这个否定的是扩大解读，不是agent关线。

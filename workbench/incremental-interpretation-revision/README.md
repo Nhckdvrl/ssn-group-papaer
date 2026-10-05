@@ -13,17 +13,17 @@
 **重要边界：** garden-path 是第一个 calibration substrate，不是注册 novelty；ACL 2025/2026 已经直接研究 GP 难度、lingering misinterpretation、human/LLM comparison 与 recovery dynamics。
 
 ## 论文形态卡
-当前候选主旨[I01](ideas/I01-event-reference-or-lexical-echo.md)：**被排除的参与者为什么在下一事件里更容易被预测？**
-
-已出现可检验的具体finding：具名role证据在原event帮助对应患者预测，换到同谓词新event反向；E33自然释义在换actor新event也反向，说明原stem重复不是必要条件；换人物不消除、换谓词使作用向正方向移动（绝对变正依赖事实词序）；native scope判读另呈正向外推。候选形态是“角色证据的迁移对象与边界→竞争解释→区分性语言干预”，尚未认定内部机制或普遍novelty。
+当前探索[I01](ideas/I01-event-reference-or-lexical-echo.md)：**角色证据为何在某些表达条件下反向影响下一事件的参与者预测？** 尚未找到可确认的顶会主旨；继续追造成此边界的变量，不进入写论文。
 
 ## Idea 组合
-[I01](ideas/I01-event-reference-or-lexical-echo.md)仍PILOT，有E29–E33连续判别支持，当前主张C05为L1。E32同词袋事实改序后predicate差仍+1.94/+2.36bits，但neutral/绝对方向变化，不能忽略focus。E33同基本动作8family的释义也迁移到otherActor新event（两order J−2.17/−2.14bits），原词重复不足、词汇boost仍影响，sameActor不确定。下一真正preliminary report的修订history对照，而非继续改同义词；所有构造继续独立逐条审核。不自动升PROMISING、不改变ACTIVE容量分配。C04的GP历史响应是另一测量，不用source-free C05追认GP-specific finding。
+I01仍PILOT、C05仍L1并收窄。E39–40在描述NP＋account/identity/report框架中，移除反身、显式否定与only后，old角色证据正向、newother同V反向；E41双方ready仍反向，E42原生条件续写也保留。**E43最小名字事实、E44普通名字场景没有保留稳定绝对反转**，不能宣称一般跨事件角色机制。E45固定E40全部frame仅替换NP为E43名字，区分指称形式与frame；不是扩大模型或新开对象。C04的GP历史响应与source-free C05分开。
 
 ## 主张摘要
-见 [CLAIMS.md](CLAIMS.md)。[E07](experiments/E07-native-readout-transfer.md) native顺序交互+60.87 pp [44.93,76.81]，C03为L1固定协议测量；[E08](experiments/E08-reading-focus-versus-final-query.md) 固定末尾目标题后，initial−final focus的GP交互+1.45 [−10.14,+13.04]，简单reading-goal故事支持不足。[E09](experiments/E09-published-comprehension-transfer.md) 原始SAP题句先cue−GP +33.33 [22.22,44.44] / +19.44 [11.11,29.17]，仍有mapping/顺序混杂；[E10](experiments/E10-question-versus-option-access.md) 拆位置后保留混合结构，不能归因task-directed parse。[E12](experiments/E12-input-probability-versus-answer-access.md) source消歧词交互+1.47 bits [.47,2.52]主要来自cue更易预测，不能叫承诺加深；转[E13](experiments/E13-natural-followup-without-diagnostic-question.md)原始自然后文用途：全S2 GP差−.031 / −.003 bits、两CI跨0，局部reference结果不确定。
+[账本](CLAIMS.md)保留全部阴性、prompt波动及降级。C00–02仍L0；E00 pooled GP差−2.81pp CI跨0，用户取消停步gate后执行E01，没有追认校准通过。C03是query顺序的固定协议测量。C04是GP history×角色表述的局部概率交互，E23实际续写失败未稳定。
 
-[E01](experiments/E01-component-revision-map.md) Step5已审3/626句、13QA/104任务，其余因HTTP402额度不足待审；free opencode外审snapshot1/2原概率层保持gold=null；最新授权下snapshot3固定279句/1158eligible QA、999独立clear标签，4632任务三构式分卡已完成（.09771 GPU·h），correct仅外部标注agreement。NPZ同9源组initial-event extension交互句先+51.63 [21.60,84.02]pp、题先−20.29 [−53.11,9.93]，尚不支持统一承诺解释，[E11](experiments/E11-extension-role-reference-audit.md)首批196任务n1：无歧义long blocked role .0404→fullNP .9999（CI=null）；继续外审，追unambiguous extension也影响role的原因。[知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md) 已缓存的多篇PDF和部分HTML/摘要条目、逐篇实际读取范围与近邻贡献归属；[E14](experiments/E14-event-identity-versus-extra-event.md) 无诊断Q、7明确活动的same−separate患者偏好交互−2.61 bits [−3.78,−1.09]，暂有aspect/referent混杂；接E15单词级控制拆解释。E15–E20得到患者特异、释义迁移和明确role事实响应；E21较小history gap主要cue下降。E22严格4源named−generic的relation-minus-neutral变化GP−2.79 [−3.68,−1.90]bits、cue−.17 [−1.12,1.20]，C04仅L1局部测量。E23 224续写首/次审10/6明确违反、84/88unknown，功能失败未稳健成立。E24独立24原source/12verb-family交互−.80 [−1.21,−.39]bits，方向迁移；E25新事件/新人物也保留信号（−1.25/−2.07bits），E28三类判断显示未知类别可用、同actor正负迁移强于换actor，而GP/cue接近且映射波动大，不能把它与likelihood强合为同一机制；E29移除S1仍有scope迁移，具名患者预测方向却在旧/新event翻转（+2.65/−1.86bits），neutral近0、generic不同；E30改second仍反向；E31同aspect换谓词使具名方向由−1.36转+1.53bits，扣neutral差+2.50 [1.47,3.68]，C05 L1；已有具体候选I01，下一释义区分原词与语义关系，未认定机制/novelty。
+C05最新边界：[E40](results/E40-summary.json) newother/sameV J两order−9.92/−7.24bits；[E41](results/E41-summary.json) ready仍−6.24/−6.61；[E43](results/E43-summary.json) absolute D全为正，old neutral扣除也负；[E44](results/E44-summary.json) 普通平衡场景old D+10.17/+9.05，新other无协议+2.62/−1.32(last CI跨0)，ready+5.76/+4.12。E44 native576/576明确正确。不能用neutral subtraction自动认证纯关系效应，不能把条件字符串概率叫世界概率或false belief。原negative结果不删，普通语言transport反证如实保留。
+
+[知识库](../../library/themes/incremental-language-processing/FIELD_MAP.md)记录实际读取范围及ownership：GP/lingering、priming、retraction、state-QA/预测gap、一般role binding均有直接近邻。下一增量须来自精确必要变量及自然功能后果，不能靠“有人没测过这个模板”认证novelty。
 
 ## 痛点摘要
 见 [PAIN_LOG.md](PAIN_LOG.md)。

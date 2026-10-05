@@ -1,6 +1,6 @@
 # E44：普通场景中的平衡实体曝光与角色迁移（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；E43揭示未提候选的曝光主导与neutral非等价，不再泛称最小事实有绝对反转。
 - **问题（一句话）：** 两个名字都在普通场景中被提及、没有account/候选枚举时，旧患者对新事件的反向作用是否成立并经双方ready保持？
@@ -10,7 +10,11 @@
 - **噪声地板 + MIE：** fixed FP32 batch4/8、同names不会按scores调整，derived3456非独立n。原E43 old D+26.808、newother D+20.878，但old J−3.035/new J−5.848，说明简单中性相减不能保证关系测量有效；此实验要一起看旧阳性和新绝对方向。
 - **混杂审计：** bystander在场不等于逻辑没有参加旧活动；只能叫未明确描述的role alternative。nearby可能引入可用性／叙事背景的对比，所以new ready支路明确解除状态解释，同时保留两个order。names usual nonalias读法、actor群体成员可能重叠如实记，报告全部wordbag/hash/语法；没有only/not/account/candidate词，ready控制不可偷偷指定patient或否定旧事实。
 - **决策表（跑之前写）：** old控制有效、平衡自然场景新other反向且ready保持 → 反向需要关系备选共同可及，但不需人工report/candidate脚手架或不能再参与，主推条件化角色竞争；平衡后仍正 → 旧模板／词汇类型是重要边界，继续定位其因而非编普遍机制；仅nearby反向ready消失 → availability解释，收窄story；只有J负但oldJ也负/absoluteD正 → 不称角色反转，追neutral validity；order独占效果 → salience/focus混合，全报。由结果推进同I01，不换研究对象、盲扩模型或进入写论文。
-- **算力预算：** raw按protocol独立GPU1/3，nativeGPU2/6，现有venv/frozen Qwen3-8B，预计≤.15GPU·h；**实际：** 待填。
+- **算力预算：** raw按protocol独立GPU1/3，nativeGPU2/6，现有venv/frozen Qwen3-8B，预计≤.15GPU·h；**实际：** raw56.22+90.93s，native两支独立记录config，全部3456raw/576native完成。
 - **命令：** balanced_scene_roles.py build/adopt/split + frozen likelihood/direct report queries。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
+
+[结果](../results/E44-summary.json)：old activity D两order +10.174 [8.038,12.169]/+9.054 [7.534,10.549]bits，旧角色控制有效；newother/sameV no_protocol +2.623 [1.175,4.179]/−1.320 [−4.035,1.195]，J +6.243 [4.596,7.900]/−.999 [−4.452,2.101]。追加ready后activity D +5.760 [4.447,7.091]/+4.124 [2.616,5.533]，J +8.402 [7.432,9.363]/+3.483 [1.806,5.028]。同/不同V预先对比没有重现原来稳定正向predicate gap，ready有反方向差；全cohort/family/neutral在JSON，不挑first/last。
+
+两名Luna独立actual-response审核各288条，三hash+全ID一致，576/576明确正确，其中old-role384、ready192；R8未改变正确性，有限family CI仍报告。**结论：C05必须限于原报告/参与者表达条件，普通名字场景没有稳定绝对反转；不能把matched-neutral负叫纯role effect，也不能宣称跨普通语言成立。** 下一E45只改NP realization，匹配原frame追why，不更换研究对象。

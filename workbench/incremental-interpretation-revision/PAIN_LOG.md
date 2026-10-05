@@ -24,3 +24,5 @@
 | P10 | 2026-10-05 | 初始事件常未assert但未exclude；Slattery原22字面ref后文仅7明确episode，11generic/4modal | 独立Luna关系/temporal scope审核，任何E14推理前 | initial Yes及后文surprisal不能直接等于同一事件未改绑；extra event/semantic expectation仍竞争 | E14普通叙事same/separate activity×患者continuation，预先报告episode与全source分项 |
 
 | P11 | 2026-10-05 | E23 free continuation的首NP不一定是活动患者，后面可能又有finite verb；明确否定/纠正也不能只按首词判角色 | 224 greedy、匿名完整二审：首审10→次审6contradiction、12label disagreement，unknown84/88；48token cap全体 | 不从首NP/单一teacher错误率升级false belief，功能读数不足给C04加能力结论 | 两套审计及bounds均保存；E24用独立source检验C04概率预测，另需合格的角色使用场景，不扩sampling找错误 |
+
+- 2026-10-06 / P11追加：E43/44普通名字语言transport未支持普遍角色反转，neutral subtraction在old也负；原模板描述/报告frame、possessive重绑定与正常叙事偏好仍竞争。E45只改指称NP，必须先逐条whole-input审核，不以more-model或subset显著来避开反证。

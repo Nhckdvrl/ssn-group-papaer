@@ -1,0 +1,624 @@
+{
+  "experiment": "E43",
+  "timing": "Additional field-level cross-audit alongside inference; main whole-input Luna audit was prior to inference",
+  "provider": "stepfun",
+  "model": "step-5-preview",
+  "proxy_used": false,
+  "concurrency": 8,
+  "items": 24,
+  "fields_sha256": "a748860310302004549a9434bf3edce2cecf402535f5e12c51f91fd17f33ba29",
+  "summary_sha256": "b0239a585e9827ba8dce50ebe9924ea09993b3b954da5c7069da68c50553c9b3",
+  "scope_clear": 24,
+  "distinct_referents": 24,
+  "grammar": {
+    "acceptable": 24
+  },
+  "exhaustivity": {
+    "nonexclusive": 48
+  },
+  "question_valid": {
+    "True": 23,
+    "None": 1
+  },
+  "annotations": [
+    {
+      "id": "item71",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Alice",
+        "minimal_other": "Ben"
+      },
+      "question_valid": true,
+      "question_notes": "The question targets information explicitly given as the object of the transitive verb; the nominalization 'that old act of hiding' is slightly awkward but interpretable.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No later new activity or different actor is provided. The old hiding report does not logically entail later unavailability; physical occupancy, narrative alternation, or informational redundancy would be extra-logical inferences.",
+      "alternative_explanations": [
+        "Hiding Alice does not entail that Ben was not also a patient of the same or another hiding event.",
+        "Without 'only' or another exclusive modifier, the positive transitive clauses are non-exhaustive.",
+        "Alice and Ben are distinct proper-name referents unless an unstated alias or group relation is introduced elsewhere.",
+        "An earlier transitive event or result state does not by itself entail unavailability in a later activity."
+      ],
+      "notes": "Both facts are simple past-progressive transitive clauses with clear roles. The named candidates are fixed distinct referents, and the reported patient in each clause is explicit."
+    },
+    {
+      "id": "item72",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Ben",
+        "minimal_other": "Alice"
+      },
+      "question_valid": true,
+      "question_notes": "The question is explicit and does not require exclusivity. However, \"that old act\" is singular; if both minimal_source and minimal_other are treated as one combined account, the referent act becomes ambiguous and both patient NPs would be explicit answers.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No later activity, second actor, or availability claim is present. The past-progressive hiding fact reports an ongoing old event and does not logically entail later unavailability. Physical concealment or captivity may make unavailability plausible, but that is world knowledge, not semantic entailment.",
+      "alternative_explanations": [
+        "The past-progressive \"was hiding\" specifies an ongoing event without determining its temporal extent, completion, or a later time.",
+        "The patient NP is unmodified by \"only\" or \"instead of,\" so it does not exclude another hidden participant.",
+        "The indefinite role description \"the kidnapper\" does not identify a unique later actor or exclude a different actor from a new activity.",
+        "If \"hiding\" is read as physical concealment or detention, apparent unavailability is inferred from event/result-state or occupancy assumptions, not entailment.",
+        "The singular phrase \"that old act of hiding\" is ambiguous if the account contains both fact realizations."
+      ],
+      "notes": "Ben and Alice are patient NPs in the supplied facts, not the first and second entities by sentence position. The clauses do not use possessive binding or group referents. \"Old act of hiding\" is a slightly awkward nominalization but interpretable. The named candidates are distinct as participant labels, although the clauses alone do not add an explicit distinctness introduction."
+    },
+    {
+      "id": "item73",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Chloe",
+        "minimal_other": "David"
+      },
+      "question_valid": true,
+      "question_notes": "The question retrieves the explicit direct-object patient of the past-progressive embrace. In either clause the actor 'the friends' is clear and 'that old act of embracing' unambiguously picks out the single event; the presupposition of an explicitly named patient is satisfied. Caveat: if both role clauses are forced into one account at once, the singular 'that old act' becomes awkward because the account would contain two embracing clauses with two explicit patients (Chloe and David); as separate fact realizations the question is valid.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The row posits no later new activity and no different actor. The past-progressive clauses only report an old embracing event with a named patient; they assert no exclusivity, no endpoint, and no carryover to any subsequent act, so they cannot entail that Chloe or David is unavailable to a different actor later.",
+      "alternative_explanations": [
+        "A named patient may be one of the plural subject 'the friends'; ordinary relevance often reads the object as outside that group, but the clauses do not strictly require disjointness.",
+        "Past-progressive 'were embracing' denotes an ongoing event rather than a completed result-state, so it sets no exclusivity or availability boundary.",
+        "Positive non-exhaustive mention permits co-patients: being embraced in one act does not exclude another person from being embraced or from later acts.",
+        "The indefinite plural actor 'the friends' neither binds nor singles out the other candidate; any exclusion impression comes from focus on one named patient, not from entailment.",
+        "If the two clauses are collapsed into one account, apparent conflict comes from narrative alternation or presentation, not from any clause internally entailing exclusivity or unavailability."
+      ],
+      "notes": "Two minimal past-progressive role clauses differ only in the patient proper name (Chloe vs David) while preserving actor 'the friends' and predicate 'were embracing'. Chloe and David are lexically distinct named referents, and each clause explicitly marks the patient role and event scope. No exclusivity or unavailability is stated or entailed. The stimuli are grammatically acceptable and interpretable; the only open question is whether the clauses alone force the named patients to be disjoint from the collective subject, which is uncertain but does not affect the role assignment."
+    },
+    {
+      "id": "item74",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "David",
+        "minimal_other": "Chloe"
+      },
+      "question_valid": true,
+      "question_notes": "The question targets the explicit patient in the specified past-progressive clause. It correctly asks for the explicit assertion rather than treating a mere mention as an assertion. The demonstrative 'that old act' needs a supplied antecedent, but the antecedent is identifiable in the fact.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No later new activity is introduced. An old act of embracing does not logically entail that either candidate became unavailable to any different actor in a subsequent event; any physical-occupancy inference is pragmatic, not semantic, and the past-progressive clause carries no result-state excluding later participation.",
+      "alternative_explanations": [
+        "Physical occupancy: the parents' arms could be occupied, but this is world knowledge and not encoded entailment.",
+        "Narrative alternation: the two candidate names may simply be contrasted without either being excluded from other participation.",
+        "Informational redundancy: strict exclusivity would require overt markers such as 'only' or 'no one else'."
+      ],
+      "notes": "The clauses are simple past-progressive transitives differing only in the patient proper name; 'The parents' is the actor and David/Chloe are distinct patients. There is no group referent or possessive binding problem. The question's nominalization 'act of embracing' is somewhat heavy but interpretable, so no grammar rejection is warranted."
+    },
+    {
+      "id": "item75",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Emma",
+        "minimal_other": "Milo"
+      },
+      "question_valid": true,
+      "question_notes": "The question asks for the explicitly mentioned patient of the old cuddling event, not for an exclusive account. It is answerable for each fact: Emma in minimal_source and Milo in minimal_other. If both fact versions are presented simultaneously as one account, the singular phrasing about 'the account' and 'that old act' would need specification.",
+      "grammar": "acceptable",
+      "unavailability_entailed": null,
+      "unavailability_notes": "No later new activity or different later actor is supplied, so later unavailability is not assessable. Even if a later activity were added, the old past-progressive cuddling fact would not logically entail unavailable status; any such inference would depend on added physical-occupancy or result-state assumptions.",
+      "alternative_explanations": [
+        "The positive assertion does not exclude the unmentioned candidate as an additional patient in the same or overlapping event.",
+        "'The couple' could possibly include the named patient, but the syntactic object role remains clear.",
+        "'Milo' may be a pet name, but here it functions as the literal object NP and explicit patient.",
+        "Past-progressive describes an ongoing old event; it does not by itself impose a bounded result or later unavailability."
+      ],
+      "notes": "Both fact realizations are ordinary past-progressive clauses with explicit proper-name objects: Emma in minimal_source and Milo in minimal_other. They are nonexclusive assertions; neither contains 'only' nor any exhaustivity marker. The source and other candidate names are treated as fixed distinct named referents, though neither clause by itself resolves whether the named individual might also be part of 'the couple.' No later actor/activity is given, so unavailability is not a logical entailment."
+    },
+    {
+      "id": "item76",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Milo",
+        "minimal_other": "Emma"
+      },
+      "question_valid": true,
+      "question_notes": "The question targets the patient explicitly named in the old cuddling act and does not presuppose exclusivity, distinctness, or any later unavailability.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The past-progressive clause describes an ongoing cuddling event but does not encode a result state, exclusive possession, or physical exclusion that would entail unavailability for any subsequent or concurrent activity; no later activity is described in the stimulus.",
+      "alternative_explanations": [
+        "Singular mention of a proper-name patient may generate a defeasible exclusivity implicature, but this is not logical entailment.",
+        "A progressive activity can suggest temporary physical contact, yet such occupancy is pragmatic and does not entail unavailability.",
+        "Distinctness of Milo and Emma is supplied by the fixed experimental referents (puppy vs. person), not asserted by the clauses themselves.",
+        "The group subject 'the babies' is non-specific as to individual members, so the assertion is non-exhaustive with respect to which babies participated."
+      ],
+      "notes": "Both minimal clauses are simple past-progressive transitives with the group subject 'the babies' and a singular proper-name object. Milo is a pet/puppy name and Emma is a common person name, so the fixed referents are distinct, though the clauses alone do not encode that distinctness. There is no possessive binding, awkward nominalization, or group-referent ambiguity affecting the patient role."
+    },
+    {
+      "id": "item77",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Grace",
+        "minimal_other": "Henry"
+      },
+      "question_valid": true,
+      "question_notes": "The question is interpretable and targets the explicitly named patient of the old progressive event. The word 'explicitly' makes it compatible with a non-exhaustive source fact and does not require denying the other candidate. The phrase 'old act of dressing' is a slightly awkward nominalization but not fatal.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No later new activity or result-state is stated. The past-progressive report 'was dressing X' locates the tailor's earlier activity and does not logically entail that X is unavailable to a different actor afterward.",
+      "alternative_explanations": [
+        "The clauses are non-exhaustive positive assertions; naming one patient does not exclude the other.",
+        "An earlier event with the same action or actor does not automatically determine a later event with a different actor.",
+        "The progressive describes an ongoing activity rather than asserting a persistent result state of being dressed.",
+        "Any inference that one patient completely occupied the dressing event is pragmatic, not entailment.",
+        "There are no group referents or possessive-binding configurations in the supplied clauses; both patients are singular proper names."
+      ],
+      "notes": "Grace and Henry are distinct fixed named referents. Both fact strings are simple past-progressive actives with agent 'the tailor' and a proper-name patient; there is no negation, 'only', group referent, possessive binding, or identity introduction to complicate patient identity. The current question contains an awkward nominalization, 'that old act of dressing,' but it remains interpretable and does not make the item invalid."
+    },
+    {
+      "id": "item78",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Henry",
+        "minimal_other": "Grace"
+      },
+      "question_valid": true,
+      "question_notes": "The question asks for explicit mention rather than exclusivity, so it can be answered directly from either supplied fact realization. It is deictic ('that old act of dressing') and singular ('the account'), so validity assumes the intended account is made visible in context.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The past-progressive dressing facts do not entail that the other candidate is unavailable to a different actor in a later activity, because they are non-exhaustive and no later activity is specified. At most they create a narrative or physical-occupancy implicature.",
+      "alternative_explanations": [
+        "The babysitter may have dressed both children in the same episode, with each sentence selecting one explicit patient.",
+        "The two statements may describe separate old dressing events rather than competing roles in one event.",
+        "Any apparent conflict is due to informational redundancy or task packaging, not logical contradiction.",
+        "A later activity involving the other child remains compatible with either dressing fact because availability is not asserted."
+      ],
+      "notes": "Henry and Grace are fixed distinct named referents; no group referent or possessive binding is present. The object NPs are exact literal patients. The phrase 'old act of dressing' is an awkward but interpretable nominalization, not grounds for rejecting the stimulus on grammaticality."
+    },
+    {
+      "id": "item79",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Iris",
+        "minimal_other": "Jack"
+      },
+      "question_valid": true,
+      "question_notes": "Each version asks for the patient explicitly named by its clause (Iris or Jack). It does not require an exclusivity inference or a claim that the other participant was absent.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The past-progressive meeting clauses do not logically entail that either named patient becomes unavailable to any different actor in a later activity. Any blocking or occupancy reading would be pragmatic rather than semantic.",
+      "alternative_explanations": [
+        "Participants may use conversational implicature and treat the named patient as the only one met, despite non-exhaustive wording.",
+        "A later activity or separate actor would be needed to assess availability; none is stated here.",
+        "The group referent 'the coworkers' may invite questions about whether Iris or Jack is included in the group, but this is not determined by the clauses."
+      ],
+      "notes": "No possessive binding or awkward nominalization occurs. The main linguistic issue is the group referent 'the coworkers' combined with a positive but non-exhaustive patient assertion: naming Iris or Jack does not exclude other possible patients. The stimuli are grammatical and interpretable."
+    },
+    {
+      "id": "item80",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Jack",
+        "minimal_other": "Iris"
+      },
+      "question_valid": true,
+      "question_notes": "The question asks for the explicitly named patient of the past-progressive meeting event. Each minimal clause supplies a literal object NP, so the requested information is present. It does not require exclusivity or unavailability. The phrase 'old act of meeting' is slightly deictic/nominalized but interpretable.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The supplied facts mention only an earlier meeting event with 'The family' as actor and Jack or Iris as patient. No later new activity, different actor, or blocking state is stated, so unavailability is not entailed.",
+      "alternative_explanations": [
+        "A positive non-exhaustive patient mention ('The family was meeting Jack') does not imply that Iris was not also met.",
+        "'The family' is a collective group NP whose membership could possibly include the named patient; this is a real group-reference ambiguity but does not make the clauses contradictory.",
+        "The past-progressive describes an ongoing event, not a completed exclusive transaction or a future availability-blocking result state.",
+        "The paired source/other clauses may show counterbalanced reported mentions or informational redundancy rather than exclusion.",
+        "Under the simplest reading, Jack and Iris are distinct fixed named referents; distinctness comes from the candidate labels, not from the clauses alone."
+      ],
+      "notes": "Both role clauses are simple, grammatical past-progressives with actor 'The family', auxiliary 'was', predicate 'meeting', and proper-name objects Jack and Iris. Neither clause is exhaustive. There is no possessive-binding problem. The question's 'old act of meeting' is mildly nominalized but not unacceptable. No later-activity unavailability is expressed or entailed."
+    },
+    {
+      "id": "item81",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Kate",
+        "minimal_other": "Liam"
+      },
+      "question_valid": true,
+      "question_notes": "Answerable from a single displayed past-progressive clause; the question uses a slightly heavy nominalized reference ('that old act of disrobing') but remains interpretable. It presupposes one account/event at a time rather than the simultaneous display of both minimal facts.",
+      "grammar": "acceptable",
+      "unavailability_entailed": null,
+      "unavailability_notes": "The row supplies no later new activity or different later actor, so an unavailability entailment cannot be evaluated. The old disrobing fact alone does not logically preclude any candidate from later participation with a different actor; any unavailability would be pragmatic, not entailment-based.",
+      "alternative_explanations": [
+        "A past-progressive disrobing event can be followed by another activity with the same or a different candidate without logical contradiction.",
+        "Physical modesty, attention, or narrative inversion may make a later availability pragmatically odd, but these are not logical entailments.",
+        "Result-state semantics of 'disrobe' do not create a permanent or exclusive unavailability state.",
+        "The positive assertion about one patient does not exclude co-reference or plurality beyond what is explicitly stated."
+      ],
+      "notes": "The actual stimulus clauses contain no genuine group-referent, possessive-binding, or awkward nominalization problem. 'Kate' and 'Liam' are ordinary distinct proper names, and the transitive past-progressive 'was disrobing [Name]' clearly marks the named referent as patient. The supplied author note about possible coreference with a group or actor is not instantiated by these exact strings and should not be imported as an ambiguity. Each assertion is non-exhaustive: it does not state that the other named candidate was not also disrobed. The question's 'old act of disrobing' is a nominalization in the comprehension prompt, not in the experimental facts."
+    },
+    {
+      "id": "item82",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Liam",
+        "minimal_other": "Kate"
+      },
+      "question_valid": true,
+      "question_notes": "The question asks only who is explicitly named as patient in the account; both supplied clauses contain an explicit proper-name object, so it is answerable from either realization without requiring exclusivity.",
+      "grammar": "acceptable",
+      "unavailability_entailed": null,
+      "unavailability_notes": "The supplied facts describe only a single past-progressive event and mention no later activity, transition-blocking result state, or availability claim, so no unavailability of any candidate for a different actor is entailed.",
+      "alternative_explanations": [
+        "The affirmative predicate is non-exhaustive, so the other candidate could have been disrobed concurrently or sequentially in the same act.",
+        "Any reading that one candidate was excluded or unavailable would rest on pragmatic inference rather than literal entailment."
+      ],
+      "notes": "Liam and Kate are distinct proper-name referents in unambiguous patient roles. Each clause is a positive, non-exhaustive past-progressive assertion with no exclusivity operator, so neither excludes the other candidate. The question targets explicit mention, which the text supports. No later event is described, so unavailability is not entailed."
+    },
+    {
+      "id": "item83",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Maya",
+        "minimal_other": "Noah"
+      },
+      "question_valid": true,
+      "question_notes": "The question targets the explicitly named patient of the old shaving act and does not require an exclusivity inference.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "Neither fact entails unavailability to a different actor in a later activity. The sentences describe an old past-progressive event with unspecified boundaries and no later event, blocking consequence, or different actor. Physical occupancy during the old event is at most a pragmatic inference, not logical entailment.",
+      "alternative_explanations": [
+        "The past-progressive wording leaves event start and end unspecified, so later interaction with any candidate remains logically open.",
+        "No exclusivity marker excludes additional patients within the old shaving event.",
+        "The assistant is not identified as either candidate, reducing possessive or coreferential ambiguity.",
+        "Maya and Noah are ordinary distinct personal names; no group referent or awkward nominalization is present."
+      ],
+      "notes": "Both clauses are grammatical ordinary past-progressive transitives with 'the assistant' as agent and a proper-name patient. The object NPs are literal and unambiguous. There is no real possessive-binding issue, group referent, or awkward nominalization. The only genuine semantic openness is aspectual: the progressive leaves event boundaries unstated; the clauses do not establish exclusivity, future unavailability, or a link to any different actor."
+    },
+    {
+      "id": "item84",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Noah",
+        "minimal_other": "Maya"
+      },
+      "question_valid": true,
+      "question_notes": "The question asks for the explicit patient of the past-progressive action described as an old act of shaving. The source fact explicitly names Noah, so the question is directly answerable from the supplied text.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The past-progressive clause reports an activity at a past time. It does not assert a result state, future obstruction, or any fact about a later new activity, so it cannot logically entail that Noah is unavailable to a different actor later. Any such inference would rely on physical-occupancy assumptions or narrative alternation, not on entailment.",
+      "alternative_explanations": [
+        "The barber may have been occupied during that specific past interval but remained available afterward.",
+        "The progressive could describe one episode among many without excluding other patients or later actors.",
+        "Narrative alternation between the two source clauses might invite an exclusivity inference, but that inference is not encoded in the literal semantics."
+      ],
+      "notes": "The two role clauses are ordinary single past-progressive actives with unambiguous agent/patient mappings. Noah and Maya are fixed distinct named candidates; the wording contains no possessives, nominalizations, pronouns, group referents, or anaphoric links that would support coreference with the barber or with each other. The input note flags theoretical coreference uncertainty, but the literal text provides no basis for treating the names as non-distinct. Each assertion is non-exhaustive and confined to the stated old event, leaving later availability entirely open."
+    },
+    {
+      "id": "item85",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Olivia",
+        "minimal_other": "Peter"
+      },
+      "question_valid": null,
+      "question_notes": "The question is grammatical and asks for the explicitly named patient, but the row does not supply the discourse antecedent selecting which 'old act of bathing' is meant. Because both minimal_source and minimal_other are present, 'the account' is under-specified; it would be valid only if the actual context presents one of the two fact clauses as the queried old act.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No later new activity or different actor is supplied. The old fact 'The father was bathing Olivia' or 'The father was bathing Peter' is a positive non-exhaustive assertion about one bathing episode; it does not logically make either candidate unavailable to a different actor in a later activity. Same actor or same action across episodes does not transfer unavailability.",
+      "alternative_explanations": [
+        "Naming Olivia with no explicit 'also' or 'only' can invite a cancellable exhaustive implicature, not entailment.",
+        "Plausible physical occupancy during the same bathing event may make a candidate seem temporarily unavailable, but this does not entail later unavailability to another actor.",
+        "Event/result-state semantics may suggest someone already bathed is unavailable for immediate repetition, but this is defeasible and not entailed.",
+        "Narrative alternation between Olivia and Peter across fact clauses can imply different episodes or contrasts without excluding either.",
+        "Informational redundancy or repetition avoidance can motivate not mentioning the other candidate without asserting exclusion."
+      ],
+      "notes": "Wording verified. Both fact clauses are ordinary past-progressive transitives with 'the father' as agent and the proper-name object as the only overt patient. They do not contain 'only' and are nonexclusive with respect to the other candidate. No group patient, possessive binding, or genuine reflexive/same-entity reading is present. 'old act of bathing' is an awkward but interpretable nominalization; the fronted 'who' remains associated with the transitive verb 'bathing'."
+    },
+    {
+      "id": "item86",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Peter",
+        "minimal_other": "Olivia"
+      },
+      "question_valid": true,
+      "question_notes": "The question uses 'the account' and 'that old act of bathing'; when paired with either fact realization, it unambiguously targets that realization's stated patient. It is valid as presented.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The past-progressive report 'The nanny was bathing [Name]' encodes an ongoing event at some past interval. It does not entail that the named patient becomes unavailable for a subsequent activity or to a different actor; no result state, completion, or temporal boundary is asserted.",
+      "alternative_explanations": [
+        "Physical occupancy during bathing is a pragmatic world assumption, not a semantic entailment.",
+        "The agent (nanny) may be occupied, but the patient\u2019s later availability is not constrained by the sentence.",
+        "Past progressive can describe an unbounded ongoing event whose termination is unspecified.",
+        "No lexical aspect of 'bathe' contains a resultant state of unavailability.",
+        "The two fact realizations are independent reports; neither excludes the other candidate from being present in the event or later available."
+      ],
+      "notes": "Peter and Olivia are distinct common proper names used as the two candidates. The sentences are simple past-progressive transitive clauses with the nanny as agent and a proper name as patient. Each fact is non-exhaustive with respect to additional patients. The current question is coherent and answerable. Nothing in the facts entails unavailability of either candidate for any later event."
+    },
+    {
+      "id": "item87",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Quinn",
+        "minimal_other": "Rosa"
+      },
+      "question_valid": true,
+      "question_notes": "The question is well-formed, unambiguous, and directly answerable from the explicit patient named in the relevant account. It does not require assuming exhausted participation or excluding other individuals.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No later activity is described, and neither past-progressive fact contains exclusivity, permission, completion, or availability semantics. The older assertion that the siblings hugged Quinn (or Rosa) does not logically entail that either candidate was unavailable to a different actor in any subsequent or concurrent activity.",
+      "alternative_explanations": [
+        "Possible in-group identity: either Quinn or Rosa could, in principle, be members of the plural referent 'the siblings', allowing the sentence to identify someone as both a member of the agent group and the named patient. This is an ordinary coreference possibility, not a defect.",
+        "Non-exhaustive event participation: a progressive report asserts that the named patient was hugged but leaves open whether other patients were also hugged in the same event or by the same actor set.",
+        "No later-event anchor: because no second or subsequent scenario is supplied, any inference about unavailability would depend on unsupported narrative extrapolation rather than semantic entailment."
+      ],
+      "notes": "Both facts are single ordinary past-progressive role clauses; each substitutes a proper name for the patient and preserves the actor, auxiliary, and progressive predicate. The source and other candidates are distinct fixed referents. The plural group 'the siblings' creates a real group-referent ambiguity in which a named patient could also belong to the actor set, but the grammatical patient role in each clause is explicit and unambiguous. Neither clause is exclusive; each simply names an asserted patient. The current question is grammatical and asks only for the explicitly named patient, so it is valid. No awkward nominalization or possessive binding is present. Crucially, no later activity is described, so the older assertion does not logically entail unavailability of either candidate for any different later actor or action; any such reading would be speculative narrative alternation rather than semantic entailment."
+    },
+    {
+      "id": "item88",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Rosa",
+        "minimal_other": "Quinn"
+      },
+      "question_valid": true,
+      "question_notes": "The question asks for the patient explicitly named by the old hugging event. In minimal_source that patient is Rosa; in minimal_other it is Quinn. The wording does not require exclusivity, so the positive mention is compatible with another possible patient.",
+      "grammar": "acceptable",
+      "unavailability_entailed": null,
+      "unavailability_notes": "No later new activity or unavailability statement is present. The old fact only describes kids hugging Rosa or Quinn; it does not logically entail later unavailability to a different actor. Plausible physical occupancy during the hug is not an entailment about a subsequent event, and event/result-state readings are not forced.",
+      "alternative_explanations": [
+        "The plural subject 'the kids' permits distributed hugging by different children.",
+        "The event mention may be narratively relevant without excluding the other candidate as an additional patient.",
+        "A completed or backgrounded old event can be followed by another unrelated involvement.",
+        "Physical occupancy during the old hug is at most temporary and does not entail later unavailability."
+      ],
+      "notes": "The exact literal patient NPs are Rosa and Quinn. Neither positive assertion is exclusive. The two proper-name candidates are treated as distinct referents, although the clauses themselves do not introduce or assert that identity; no linguistic conflict arises. The nominalization 'act of hugging' is slightly awkward but interpretable and does not block the question. Possible coreference between a named patient and the group 'the kids' does not change the grammatical patient role."
+    },
+    {
+      "id": "item89",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Sam",
+        "minimal_other": "Tessa"
+      },
+      "question_valid": true,
+      "question_notes": "Probes explicit mention, not implicature: the explicit patient is the literal object NP (Sam in minimal_source, Tessa in minimal_other), and the question does not ask whether the other candidate was excluded. It presupposes a salient 'account' and 'that old act' supplied by the trial context; the definite nominalization 'act of kissing' is heavy but interpretable.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "No later/different-actor activity is supplied in this row. Independently, the past-progressive description ('were kissing X') is event-descriptive and non-exhaustive; it encodes no result-state, exclusivity, or possessive/holding relation that would make any candidate unavailable to another actor in a later event. Any unavailability impression would come from narrative alternation or informational redundancy, not entailment.",
+      "alternative_explanations": [
+        "A quantity/manner scalar implicature from naming a single patient can suggest exclusivity without entailing it.",
+        "Reading 'an act of kissing' as one bounded episode can make the patients seem physically occupied, but the past-progressive wording does not encode a result-state.",
+        "Narrative alternation or informational redundancy with a later mention of the other candidate can be misread as exclusion of the earlier patient.",
+        "The group definite 'the grandparents' leaves open coreference between a named patient and a member of the actor set, inviting an unstated contrast.",
+        "The paired source/other proper-name substitution can impose a forced-choice framing that makes the two patients look mutually exclusive."
+      ],
+      "notes": "Both minimal variants are ordinary past-progressive clauses sharing the group actor 'the grandparents' and differing only in the patient proper name (Sam vs Tessa); neither asserts exclusivity, so a positive mention of one patient is not evidence that the other was excluded. Sam and Tessa are fixed distinct named referents, but the group referent 'the grandparents' is a genuine ambiguity: the clauses do not rule out that a named candidate is also a grandparent (coreference with a member of the actor set); this does not collapse Sam with Tessa. The question is acceptable and valid; the awkward nominalization 'act of kissing' is heavy but interpretable and is not grounds for rejection."
+    },
+    {
+      "id": "item90",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Tessa",
+        "minimal_other": "Sam"
+      },
+      "question_valid": true,
+      "question_notes": "Answerable from the source realization as 'Tessa'; it asks only for the explicitly named patient. The phrase 'that old act of kissing' is an awkward but interpretable nominalization and presupposes an antecedent account not included in this row.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "Neither past-progressive kissing fact entails that its patient is unavailable to a different actor in any later activity. At most it describes an event with possible same-time physical occupancy; it creates no persistent exclusion or result state, and no later activity is stated.",
+      "alternative_explanations": [
+        "No identity introduction is supplied; 'the ladies' could overlap with Tessa or Sam, and Tessa/Sam are not explicitly stated to be non-coreferential or non-overlapping with the group.",
+        "The object NPs are positive but lack 'only' or other exclusivity marking, so another patient such as the other candidate is not logically excluded.",
+        "The question depends on an antecedent 'account' and 'old act of kissing'; without discourse context, its target could be ambiguous between the two minimal realizations.",
+        "A later event involving the same actor/action would be a separate event; the old fact neither entails nor contradicts it."
+      ],
+      "notes": "Tessa and Sam are treated as distinct fixed named candidates. Syntactic roles are clear: 'the ladies' is the subject/actor and the proper name is the direct object/patient. The author note's uncertainty about distinct identity is not fully supported by the wording, but possible group/name coreference is not excluded."
+    },
+    {
+      "id": "item91",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Uma",
+        "minimal_other": "Victor"
+      },
+      "question_valid": true,
+      "question_notes": "The question asks for the explicitly stated patient of the old fighting assertion. Depending on the version, Uma or Victor is the direct-object patient, so the question is answerable from the wording. It does not require exclusivity of that patient.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The old progressive fighting assertions do not entail unavailability to any later actor. They identify a patient in an old event but contain no availability claim, exclusivity marker, or later activity. At most, they could suggest participation during the described event, not permanent or later unavailability.",
+      "alternative_explanations": [
+        "The object NP can be one target in an event that could involve additional participants; there is no 'only' or 'no one else'.",
+        "'The boxers' is an underspecified plural group, so a named patient could in principle overlap with group membership without changing the direct-object role.",
+        "Past-progressive wording describes an ongoing old event, which does not logically exclude other simultaneous or later activities."
+      ],
+      "notes": "The clauses are grammatical; Uma and Victor are distinct fixed named referents. No possessive binding or awkward nominalization is present. The main interpretive limits are the non-exhaustive object scope and the underspecified plural group 'the boxers'."
+    },
+    {
+      "id": "item92",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Victor",
+        "minimal_other": "Uma"
+      },
+      "question_valid": true,
+      "question_notes": "The wh-question targets the literal object of the progressive clause. It is directly answerable from the object NP: 'Victor' in minimal_source and 'Uma' in minimal_other. Singular 'Who' should not be read as entailing that no other patient was fought. If both minimal facts are considered together, 'the account' must be resolved to one selected fact to avoid an apparent multiple-answer problem.",
+      "grammar": "acceptable",
+      "unavailability_entailed": null,
+      "unavailability_notes": "No later new activity or later-availability question is supplied. The old progressive fight clause does not logically entail that Victor or Uma was unavailable to a different actor later; any such block would rely on event-continuation, result-state, physical occupancy, or narrative-alternation assumptions rather than entailment.",
+      "alternative_explanations": [
+        "A positive assertion naming one patient does not exclude additional patients.",
+        "Perceived exclusivity may come from forced-choice task framing or question wording rather than sentence semantics.",
+        "Later exclusion or incompatibility might be inferred from narrative alternation between Victor and Uma or from physical occupation during the same fight.",
+        "'The classmates' is a group noun, but no membership relation to Victor or Uma is specified; there is no possessive binding or awkward possessed nominalization."
+      ],
+      "notes": "The wording is straightforward: source actor is 'the classmates', auxiliary and progressive predicate are preserved, and each patient is a simple proper-name NP. The gerund nominalization 'act of fighting' is interpretable and should not be rejected as ungrammatical merely because it is less common."
+    },
+    {
+      "id": "item93",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Willa",
+        "minimal_other": "Xander"
+      },
+      "question_valid": true,
+      "question_notes": "The wh-question is interpretable as an explicit-mention probe: in minimal_source the medic is explicitly said to be healing Willa, and in minimal_other Xander. However, it presupposes an 'old act' and a definite 'account' not encoded in the isolated strings, so it is valid only if the row is used as a version-specific item rather than presenting both facts as one unified account.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "Neither 'The medic was healing Willa' nor 'The medic was healing Xander' entails that the named patient is unavailable to a different actor in a later activity. These are past-progressive event reports with no exclusivity marker, result-state expression, or blocking relation; any unavailability inference would rely on pragmatic physical-occupancy reasoning, not logical entailment.",
+      "alternative_explanations": [
+        "The medic may have healed both candidates in the same episode; neither clause contains 'only' or otherwise excludes a co-patient.",
+        "Past-progressive 'was healing' presents the event as ongoing in the past but does not entail a residual result state that blocks later participation by another actor.",
+        "The phrase 'that old act' may trigger narrative-background reasoning rather than an entailment from the minimal clause itself."
+      ],
+      "notes": "The two fact realizations are minimally paired transitive past-progressive clauses with the actor 'the medic' and the exact patient NPs 'Willa' and 'Xander'. Roles are unambiguous and the two names are distinct. The author notes raise uncertainty about referents and mention puppy candidates/pet name Milo, but no group referent, possessive binding, or Milo appears in the supplied stimuli; that note appears irrelevant or copied from a different row. No passed threshold judgement is made here."
+    },
+    {
+      "id": "item94",
+      "referents_distinct": true,
+      "role_scope_clear": true,
+      "exhaustivity": {
+        "minimal_source": "nonexclusive",
+        "minimal_other": "nonexclusive"
+      },
+      "fact_patients": {
+        "minimal_source": "Xander",
+        "minimal_other": "Willa"
+      },
+      "question_valid": true,
+      "question_notes": "Question requests the explicitly mentioned patient in the presented past-progressive fact; wording is grammatical and appropriate for either counterbalanced version.",
+      "grammar": "acceptable",
+      "unavailability_entailed": false,
+      "unavailability_notes": "The stimulus contains only a single past-progressive healing event. It specifies no later activity, no different actor, and no exclusivity constraint, so it does not entail unavailability of any candidate to anyone in any subsequent scenario.",
+      "alternative_explanations": [
+        "Physical-occupancy heuristic: one might infer the doctor was busy with the named patient and thus unavailable to others, but the stimulus does not state or logically imply this.",
+        "Event/result-state semantics: the past-progressive describes an ongoing event whose boundaries are unspecified; it does not assert completion, interruption, or continuation.",
+        "Narrative-alternation assumption: if a later trial presents a different patient, readers might assume alternation, but this fact alone provides no evidence for or against a later change."
+      ],
+      "notes": "Verified wording matches the author description: two independent single clauses with the same agent/auxiliary/predicate and different object NPs. Xander and Willa are distinct fixed person names; referents are not ambiguous in the supplied sentences. Roles are unambiguous: 'The doctor' is the agent and the proper name is the patient. Both assertions are positive non-exhaustive statements and do not exclude the other candidate. No later activity or alternative actor appears in the provided data, so no unavailability is entailed. No group referents, possessive binding, awkward nominalization, or real linguistic ambiguity are present."
+    }
+  ],
+  "caveat": "One question-valid=false note is conditional on both alternative worlds being present in the field packet (item85). Actual experimental contexts contain only one old clause; two independent whole-context auditors and actual answer audit judge all 96 tasks clear. Retain this discrepancy, do not automatically replace field-level or whole-context labels."
+}

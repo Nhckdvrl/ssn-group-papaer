@@ -1,6 +1,6 @@
 # 主张账本 — Incremental Interpretation & Revision
 
-**状态：2026-10-05 / PROPOSED baseline residency。**
+**状态：2026-10-06 / PROPOSED baseline residency。**
 
 当前有局限于固定模型/协议的本地测量事实C03–C05，已有具体候选I01，但尚无已确立的一般机制或新颖性判断。C00–C02仍是待验证对象，不能写成revision机制finding。
 
@@ -11,7 +11,7 @@
 | C02 | 不同 cue timing / cue strength 条件下存在可区分 competing accounts 的 revision structure | L0 | 仅 territory hypothesis | 预先写出不同解释的预测并由 E01/E02 区分 |
 | C03 | 固定Qwen3-8B的GP/nonGP问答差值随query顺序反向，且反转不依赖assistant prefill或few-shot demos | L1（measurement；非novelty） | [E03](experiments/E03-e00-order-and-assertion-audit.md)、[E07](experiments/E07-native-readout-transfer.md) / [E07结果](results/E07-summary.json)：neutral/native/base交互+60.87 pp [44.93,76.81]；全部8个boundary×system×instruction交互正；67-set sensitivity同方向 | 下一步[E08](experiments/E08-reading-focus-versus-final-query.md)将final query固定，区分reading focus与回答启动/位置；目前不归因为内部parse或一般LLM能力 |
 | C04 | 同一排他事实的具名/泛指表述对后续实体提及与活动患者偏好产生不同响应，且GP与逗号历史调节该响应 | L1（局部measurement，非能力/机制/novelty） | [E21](experiments/E21-named-versus-generic-exclusion.md)、[E22](experiments/E22-post-correction-entity-versus-role-use.md)/[E22统计](results/E22-summary.json)：严格4源named−generic的relation-minus-neutral变化GP−2.792 [−3.680,−1.904]bits、cue−.174 [−1.124,1.201]；全7同方向；[E24](experiments/E24-independent-correction-use-transfer.md)/[统计](results/E24-summary.json)独立12family主history交互−.795 [−1.210,−.394]、strict9−.766 [−1.168,−.363]。角色事实有效，实际错误未稳健成立 | 独立来源预测/实际角色使用、混杂审计后才讨论更一般解释；当前不能把概率偏好叫false belief或内部绑定 |
-| C05 | 固定Qwen3-8B中，具名排他角色信息对患者相对预测的作用在旧/新同谓词活动方向相反，跨人物保留，换谓词改变方向；native范围判读对同role信息另呈正向迁移 | L1（具体行为measurement；非普遍能力/隐机制） | [E29](experiments/E29-source-ablation-dual-readout.md)/[拆分](results/E29-posthoc-role-decomposition.json)、[E30](experiments/E30-event-boundary-versus-participant-contrast.md)、[E31](experiments/E31-predicate-match-versus-narrative-contrast.md)/[统计](results/E31-summary.json)：同actor具名D同V−1.363 [−2.333,−.446]bits→不同V+1.525 [.592,2.368]，matched-neutral后差+2.504 [1.471,3.681]；换actor差+2.892 [1.725,3.983]，strict9/无odd11同形 | E33已限制exact new-stem repetition-only，下一actual correction history vs first-time角色事实、独立自然用途；不把相反读数或单模型作novelty，C04与C05不强合机制 |
+| C05 | 固定Qwen3-8B中，描述NP与account/identity/report框架内，旧角色证据对旧事件预测正向、对新other同谓词预测反向；普通名字场景未稳定迁移 | L1（限定协议measurement；2026-10-06收窄） | [E40](experiments/E40-plain-role-versus-exhaustive-focus.md)/[统计](results/E40-summary.json) 两order新J−9.921/−7.238；[E41](results/E41-summary.json) ready两order−6.236/−6.611；[E43](results/E43-summary.json) 最小事实所有new absolute D正，old J也负；[E44](experiments/E44-balanced-natural-scene-versus-entity-exposure.md)/[统计](results/E44-summary.json) old D+10.174/+9.054，newother D+2.623/−1.320(last CI跨0)，ready D+5.760/+4.124，native576明确正确 | E45固定原frame只改proper-name realization，区分NP语义/指称与frame；不得称一般角色反转或成功修订后残留，先定位自然语言必要变量及功能后果 |
 
 **禁止提前升级：**
 - 上游已报告的 garden-path effect 不是我们的 C-level novelty；
@@ -75,3 +75,5 @@
 - 2026-10-06：E36 [卡](experiments/E36-affirmative-role-versus-negated-alternative.md)/[统计](results/E36-summary.json)，肯定only、mention-first old J+2.296 [1.194,3.357]、newother同V−1.790 [−2.739,−.838]，predicate差+1.352 [.352,2.325]bits；mention-last otherActor−.246 CI跨0，all-order普遍反向不成立。显式not-X非必要、only/focus/recency未排除。C05 L1；E37无字母标签事实回答、E38明确新事件独立抽样继续高信息量区分。
 
 - 2026-10-06：E37 [卡](experiments/E37-time-indexed-role-answer-without-letter-labels.md)/[统计](results/E37-summary.json)，624current/initial/account直接短语全correct、joint100% [100,100]。432new问句初审文字支持0%，第三审自然correctness全uncertain，不能称真实role error；首次new entity分类参照框不一致，已标无效解读、原数保留。C05 L1，E38用明确选择结果/概率取代活动默认who读法继续why。
+
+- 2026-10-06：E43/E44反驳“普通语言中稳定反向角色迁移”的扩大解释，C05从E29–33的候选叙事收窄到已测描述/报告框架；等级仍L1，全部正负结果保留。E43 old J也负、new absolute D正，neutral subtraction不能认证纯role测量。E44普通场景ready old-role/availability576明确正确，new角色预测正；不借subset/order筛选挽救普遍叙事。E45追NP realization vs frame。

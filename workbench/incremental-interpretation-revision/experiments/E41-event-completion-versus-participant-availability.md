@@ -21,4 +21,4 @@
 
 [完整统计](../results/E41-summary.json)：ready otherActor同V Jfirst−6.236 [−8.067,−4.618]/last−6.611 [−8.409,−4.910]bits；平均−6.423 [−8.142,−4.833]。ready−ended平均−.320 [−1.293,.566]、ended−unknown平均−.344 [−1.111,.330]，没有反向消失；last ended−unknown更负−1.117 [−2.017,−.394]，不能笼统说protocol完全没作用。grammar全条件共同严格4family与全部/parent层并列，不挑审计员或改grammar标准。
 
-独立盲审native1152：明确ready availability192/192correct、clear；old-role576中569可按字面确认、7个nephew省略物主不确定。未报告readiness384均完整回答说明未报告，但其中359前置“No”有未知/否定歧义，不宣称此项完整能力正确；总783clear/369 interpretation-dependent。scope/base全保留，单familynull不填错/不强求恢复。指称审计标准两人有3 vs7差异保留，ready正控制不依赖这些词。明确可参与性并未解除反向，因此占用/结果状态不足以解释全部结构，普通叙事anti-repetition及人为角色配对继续竞争。actual run2162f20b，三raw/两native合计预算内。E43 minimal普通事实transport追数据脚手架，E42已检查native格式。
+独立盲审native1152：明确ready availability192/192correct、clear；old-role576中566明确＋3省略指称可恢复、7个nephew省略物主不确定。未报告readiness384均完整回答说明未报告，但其中359前置“No”有未知/否定歧义，不宣称此项完整能力正确；总783clear/369 interpretation-dependent。scope/base全保留，单familynull不填错/不强求恢复。指称审计标准两人有3 vs7差异保留，ready正控制不依赖这些词。明确可参与性并未解除反向，因此占用/结果状态不足以解释全部结构，普通叙事anti-repetition及人为角色配对继续竞争。actual run2162f20b，三raw/两native合计预算内。E43 minimal普通事实transport追数据脚手架，E42已检查native格式。

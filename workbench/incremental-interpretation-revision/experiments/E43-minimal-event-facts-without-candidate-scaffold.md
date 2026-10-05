@@ -1,6 +1,6 @@
 # E43：最小普通事件事实，移除候选／报告脚手架（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；E40无only仍反向、E41ready不消除后的transport，防止在自造account/candidate结构里局部优化。
 - **问题（一句话）：** 一句普通肯定事件事实，在无双候选身份引言／unused-object report／only时，是否仍对下一同类事件的患者预测反向？
@@ -16,3 +16,7 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 跑前：两个Luna独立全文1008packets，names按通常非alias英语读法distinct，不假定actor成员一定disjoint；QA96gold-proposed一致。语法边缘集中在原new/continued shaving nominal bridge，minimal旧句本身正常。全部target字符/causal prefix已实际验证960，名字及所有input未按任何分数改写；Step5附加field交叉进行，未依其结果选择source。
+
+[完整统计](../results/E43-summary.json)：old activity D+26.808 [24.103,29.825]，newother同V D+20.878 [17.432,24.514]bits，**新事件绝对反向不成立**。matched-neutral Jnew−5.848，但old J也−3.035 [−5.021,−.762]，不能只看负J就说纯role反向。两个actor predicate差J分别+3.563 [−.163,7.011]/+1.622 [−1.410,4.638]，均CI跨0。所有eligible/name/reference、grammar和原parent层保留。名字未提一侧引入极大曝光差，中性读数不是对所有语境等价的“纯实体”校正。
+
+native旧reported-role96/96正确、clear，actualrun c72b1e5d。Step24field scope/distinct全部通过、48facts全nonexclusive、语法24acceptable；item85问句疑点来自field包同时列两个备选world（实际input只一个world），保留模型原note与完整Luna实际上下文审计，不改任何gold。C05仍L1，收窄到关系备选共同可及的语境，不能称一般普通事实均绝对反转。下一E44用自然在场句配平曝光+两order+ready，区分原report/candidate脚手架与co-accessibility，不换模型或筛掉本次负结果。

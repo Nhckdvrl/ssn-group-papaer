@@ -28,8 +28,14 @@ def run(args):
             old = json.loads(path.read_text())
             assert old['request_sha256'] == request_hash
             return old
-        (args.out / (uid + '.request.json')).write_text(json.dumps(payload, indent=2) + '\n')
         rp = args.out / (uid + '.response.json')
+        request_path=args.out / (uid + '.request.json')
+        if rp.exists():
+            assert request_path.exists()
+            prior_payload=json.loads(request_path.read_text())
+            assert hashlib.sha256(json.dumps(prior_payload,sort_keys=True).encode()).hexdigest()==request_hash, 'Changed request requires a new audit version directory'
+        else:
+            request_path.write_text(json.dumps(payload, indent=2) + '\n')
         start = time.time()
         reused = rp.exists()
         if reused:
