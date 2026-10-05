@@ -23,8 +23,18 @@ def plot(path, cohort):
                 draw(ax, np.arange(len(values)) + off, values, marker, order.replace('_', ' '))
             ax.set_xticks(range(5), labels, rotation=22, ha='right')
             ax.set_title(form.replace('_', ' '))
+    elif experiment == 'E41':
+        forms=('plain_mention_first','plain_mention_last')
+        policies=('status_unknown','ended_only','ended_and_ready')
+        fig,axes=plt.subplots(1,2,figsize=(10,4),sharey=True)
+        for ax,actor in zip(axes,('same_actor','other_actor')):
+            for off,form,marker in zip((-.06,.06),forms,('o','s')):
+                values=[cells[f'{cohort}/J/{form}/{actor}/same_began/{policy}'] for policy in policies]
+                draw(ax,np.arange(3)+off,values,marker,form.replace('_',' '))
+            ax.set_xticks(range(3),('Status unreported','Earlier activity ended','Both restored and ready'))
+            ax.set_title(actor.replace('_',' ')+' | same action')
     else:
-        forms = ('contrast_named', 'affirmative_mention_first', 'affirmative_mention_last') if experiment == 'E39' else ('plain_mention_first', 'plain_mention_last')
+        forms = ('minimal_plain',) if experiment=='E43' else ('contrast_named', 'affirmative_mention_first', 'affirmative_mention_last') if experiment == 'E39' else ('plain_mention_first', 'plain_mention_last')
         fig, axes = plt.subplots(1, 2, figsize=(10, 4), sharey=True)
         for ax, actor in zip(axes, ('same_actor', 'other_actor')):
             for off, form, marker in zip(np.linspace(-.14, .14, len(forms)), forms, ('o', 's', '^')):

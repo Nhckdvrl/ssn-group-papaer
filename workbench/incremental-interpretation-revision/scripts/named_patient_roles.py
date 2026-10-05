@@ -58,7 +58,7 @@ def adopt(directory,reviews,experiment='E39',version=1):
             assert isinstance(detail,dict) and not (set(detail)&set(a))
             normalized=dict(a,**detail)
             assert a['id'] not in annotations;annotations[a['id']]=(normalized,sha(path))
-    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016),'E41':(4608,1152,5184),'E43':(960,96,1008)}[experiment]
+    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016),'E41':(4608,1152,5184),'E43':(960,96,1008),'E44':(3456,576,3744)}[experiment]
     assert len(annotations)==sizes[2]
     report={};pending=[]
     for task,n in [('probability',sizes[0]),('question',sizes[1])]:
@@ -67,7 +67,7 @@ def adopt(directory,reviews,experiment='E39',version=1):
             a,h=annotations[r['review_id'] if task=='probability' else r['context_id']]
             assert a['grammar'] in ('acceptable','marginal','unacceptable') and isinstance(a['role_scope_clear'],bool) and isinstance(a['distinct_recipients'],bool)
             r.update(audit=a,audit_review_sha256=h,acceptable=a['grammar']=='acceptable',eligible=a['grammar']!='unacceptable' and a['role_scope_clear'] and a['distinct_recipients'])
-            if experiment=='E41':
+            if experiment in ('E41','E44'):
                 assert isinstance(a['availability_scope_clear'],bool)
                 r['eligible']=r['eligible'] and a['availability_scope_clear']
             if task=='probability':
