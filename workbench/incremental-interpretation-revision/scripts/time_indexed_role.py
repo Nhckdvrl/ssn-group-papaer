@@ -14,6 +14,7 @@ from event_constraint_state import CURRENT_WORLD
 
 BASE='Answer the question in one short phrase, using the passage.'
 SELECTION_SCOPE='Report an unreported selection outcome as unspecified, while answering chance questions from the stated probabilities for the new selection.'
+EARLIER_ROLE_SCOPE='Apply the participant description only to the actor and the earlier activity named in the question.'
 
 
 def build(cache,directory):
@@ -61,11 +62,11 @@ def adopt(directory,reviews):
 
 def run(args):
     assert not args.out.exists();a=json.loads(args.data.with_suffix('.audit.json').read_text());assert sha(args.data)==a['audited_sha256']
-    allrows=list(map(json.loads,args.data.read_text().splitlines()));expected=1056 if args.experiment=='E37' else 1536
+    allrows=list(map(json.loads,args.data.read_text().splitlines()));expected={'E37':1056,'E38':1536,'E39':288}[args.experiment]
     assert len(allrows)==a['variants']==expected
     rows=[r for r in allrows if r['query']==args.query]
-    assert len(rows)==({'initial':192,'current':432,'new':432}[args.query] if args.experiment=='E37' else {'current':1152,'fair':384}[args.query])
-    recovery=CURRENT_WORLD if args.experiment=='E37' else SELECTION_SCOPE
+    assert len(rows)=={'E37':{'initial':192,'current':432,'new':432},'E38':{'current':1152,'fair':384},'E39':{'current':288}}[args.experiment][args.query]
+    recovery={'E37':CURRENT_WORLD,'E38':SELECTION_SCOPE,'E39':EARLIER_ROLE_SCOPE}[args.experiment]
     tok=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left');tok.pad_token_id=tok.eos_token_id
     prompts={}
     for r in rows:
@@ -98,7 +99,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--directory',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True)
-    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--experiment',choices=['E37','E38'],default='E37');r.add_argument('--query',choices=['current','initial','new','fair'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--experiment',choices=['E37','E38','E39'],default='E37');r.add_argument('--query',choices=['current','initial','new','fair'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
     x=p.parse_args()
     if x.action=='build':print(json.dumps(build(x.cache,x.directory),indent=2))
     elif x.action=='adopt':print(json.dumps(adopt(x.directory,x.reviews),indent=2))
