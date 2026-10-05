@@ -17,7 +17,8 @@ import build_dim as bd  # noqa
 ROOT = Path(__file__).resolve().parents[1]
 T = 16
 N = int(os.environ.get("N_BASES", 200)); SEED0 = int(os.environ.get("SEED0", 90000))
-OUT = ROOT / "data" / os.environ.get("OUT", "nl_sst_pilot_T16"); OUT.mkdir(parents=True, exist_ok=True)
+OUT = ROOT / "data" / os.environ.get("OUT", "nl_sst_pilot_T16")
+LABELS = os.environ.get("LABELS", "nonce")   # nonce | natural; OUT.mkdir(parents=True, exist_ok=True)
 attr_bank, label_bank = load_lexicon(os.environ.get("LEXICON"))
 HEADER = "Below are examples of reviews and their labels.\n\n"
 
@@ -54,6 +55,10 @@ def main():
             if lw[0][0] != lw[1][0]:
                 break
         s = int(rng.integers(2))                  # label index of positive under rule A
+        if LABELS == "natural":
+            # label words carry meaning: index 0 = 'negative', 1 = 'positive'.
+            # even bases: rule A = correct mapping (s=1), B = flipped; odd bases: A = flipped, B = correct
+            lw = ["negative", "positive"]; s = 1 if i % 2 == 0 else 0
         pol = np.array([1] * 8 + [0] * 8)[rng.permutation(T)]
         pos = list(rng.choice(len(P[1]), 9, replace=False)); neg = list(rng.choice(len(P[0]), 9, replace=False))
         texts = []
@@ -69,7 +74,7 @@ def main():
             qb = 1 - qA
             for k in ("set", "sequence", "meta"):
                 v = o[f"{k}_p_rule_query"]; o[f"{k}_pB"] = v if qb == 1 else 1 - v
-            rows.append({"uid": f"sst:{name}|sst_{seed}", "cond": f"sst:{name}", "base_id": f"sst_{seed}",
+            rows.append({"uid": f"{LABELS}:{name}|sst_{seed}", "cond": f"{LABELS}:{name}", "base_id": f"sst_{seed}",
                          "pattern": pat, "labels": labs, "prompt": render(texts, labs, lw, qtext),
                          "cands": [" " + lw[0], " " + lw[1]], "query_label_A": qA, "query_label_B": qb,
                          "base": {"pol": pol.tolist(), "qpol": qpol, "label_words": lw, "s": s},
