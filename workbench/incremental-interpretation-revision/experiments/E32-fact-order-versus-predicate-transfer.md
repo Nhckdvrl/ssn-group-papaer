@@ -17,4 +17,6 @@
 
 ## 跑前审计与输入核对
 
-960独立逐条audit，ID/hash全覆盖；grammar acceptable720/marginal240，所有facts/scope/target角色clear。parent flags全部保留；新order字段独立。词袋相同、因果目标token一致、24source各40variant核验。旧锚的bath/shaving/cuddle边缘意见如实保留；尚无新order模型分数。
+960独立逐条audit，ID/hash全覆盖；grammar acceptable600/marginal360（首审360/120、次审240/240，次审另将embrace/hug/kiss锚搭配标边缘，分歧保留），所有facts/scope/target角色clear。parent flags全部保留；新order字段独立。词袋相同、因果目标token一致、24source各40variant核验。旧锚的bath/shaving/cuddle边缘意见如实保留；尚无新order模型分数。
+
+跑前计数勘误：上次卡文字误将首审比例套到全量；实际采用adopt报告600/360，立即纠正，所有audit/input/hash不变，未开始模型推理。
