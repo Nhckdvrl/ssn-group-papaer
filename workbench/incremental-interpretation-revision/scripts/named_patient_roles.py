@@ -58,7 +58,7 @@ def adopt(directory,reviews,experiment='E39',version=1):
             assert isinstance(detail,dict) and not (set(detail)&set(a))
             normalized=dict(a,**detail)
             assert a['id'] not in annotations;annotations[a['id']]=(normalized,sha(path))
-    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016),'E41':(4608,1152,5184),'E43':(960,96,1008),'E44':(3456,576,3744),'E45':(1920,192,2016)}[experiment]
+    sizes={'E39':(2880,288,3024),'E40':(1920,192,2016),'E41':(4608,1152,5184),'E43':(960,96,1008),'E44':(3456,576,3744),'E45':(1920,192,2016),'E46':(9216,1536,9984)}[experiment]
     assert len(annotations)==sizes[2]
     report={};pending=[]
     for task,n in [('probability',sizes[0]),('question',sizes[1])]:

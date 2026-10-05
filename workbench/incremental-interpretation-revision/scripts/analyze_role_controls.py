@@ -170,7 +170,7 @@ def analyze_responses(experiment, cache, reviews, cohorts):
         assert sha(path / 'generations.jsonl') == c['generations_sha256']
         configs.append(c)
         rows.extend(map(json.loads, (path / 'generations.jsonl').read_text().splitlines()))
-    assert len(rows) == len(annotations) == {'E38': 1536, 'E39': 288, 'E40': 192, 'E43': 96, 'E45':192}[experiment]
+    assert len(rows) == len(annotations) == {'E38': 1536, 'E39': 288, 'E40': 192, 'E43': 96, 'E45':192, 'E46':1536}[experiment]
     for r in rows:
         a = annotations[r['item_id']]
         for k in ('passage_sha256', 'question_sha256', 'answer_sha256'):

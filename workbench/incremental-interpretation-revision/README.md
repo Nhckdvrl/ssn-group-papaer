@@ -16,7 +16,7 @@
 当前探索[I01](ideas/I01-event-reference-or-lexical-echo.md)：**角色证据为何在某些表达条件下反向影响下一事件的参与者预测？** 尚未找到可确认的顶会主旨；继续追造成此边界的变量，不进入写论文。
 
 ## Idea 组合
-I01仍PILOT、C05仍L1并收窄。E39–40在描述NP＋account/identity/report框架中，移除反身、显式否定与only后，old角色证据正向、newother同V反向；E41双方ready仍反向，E42原生条件续写也保留。**E43最小名字事实、E44普通名字场景没有保留稳定绝对反转**，不能宣称一般跨事件角色机制。E45固定E40全部frame仅替换NP为E43名字，区分指称形式与frame；不是扩大模型或新开对象。C04的GP历史响应与source-free C05分开。
+I01仍PILOT、C05仍L1并收窄。E39–40在描述NP＋account/identity/report框架中，移除反身、显式否定与only后，old J正向（absolute D近0）、newother同V反向；E41双方ready仍反向，E42原生条件续写也保留。**E43最小名字事实、E44普通名字场景没有保留稳定绝对反转**，不能宣称一般跨事件角色机制。E45名字在原frame仍反向但old absolute control偏弱；E46析因拆identity/report/event表达，分开一般提及与关系作用；不是扩大模型或新开对象。C04的GP历史响应与source-free C05分开。
 
 ## 主张摘要
 [账本](CLAIMS.md)保留全部阴性、prompt波动及降级。C00–02仍L0；E00 pooled GP差−2.81pp CI跨0，用户取消停步gate后执行E01，没有追认校准通过。C03是query顺序的固定协议测量。C04是GP history×角色表述的局部概率交互，E23实际续写失败未稳定。
