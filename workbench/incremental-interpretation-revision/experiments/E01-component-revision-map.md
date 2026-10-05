@@ -26,8 +26,8 @@
 ## 结果（跑完后填写；不改上面的内容）
 - 外审探索层更新（该批推理之前）：此前用户明确授权opencode免费模型逐条审计；Step5因402不可用时，另冻结MiMo-v2.6-flash-free完整外部预审行，机械检查输入/hash/ID/normal finish与覆盖。只纳入源lexical-set序号≤3的已返回变体（事前源序号，不看推理结果；缺失逐项报告），与Step5 cohort隔离。全部gold=null，仅报告PYes、choice mass与配对概率效应，不能计算能力正确率或据此升级C01/C02。语义裁决来自外部模型，agent不自行标注；后续Step5复核仍必要。free模型质量尚不确定，不称等同人审。
 - 执行范围更新（首次E01推理之前）：Step5完成3/626句变体、13QA（NPZ:1 GP/cue short + MVRR:1 lexical/extended），随后返回HTTP402 quota_exceeded。先运行这13条已核对的104个任务检验读数；全量measurement保持待审，不把未完成行当OK。n=1的lexical-set contrast只报点值、不报虚假零宽CI，不能升级稳定结构主张。已异步告知人补充额度；此前授权opencode继续外部预审，与Step5最终标签分开。
-- 数字（含CI）：
-- 结果文件：
+- 数字（含CI）：Step5层13QA/104任务（3变体，单lexical组contrast CI=null）。free外审snapshot1共25变体104QA、101 eligible/808任务，88.12s / 0.02448 GPU·h、全部gold=null；13共同问题的外审答案13/13相同、certainty相同，这只是很小覆盖的审核一致性，不是全量质量证明。NPZ前两source sets句先cue−GP final-role PYes短+97.98 pp [96.40,99.57]、extended+66.88 [43.80,89.95]；GP extension−short initial semantic +97.12 pp [94.41,99.82]，显式cue约0。blocked/unambiguous extension也可降低role支持，须追读数/NP引用而非只选GP好看的故事。n=2区间不能代表已证成稳定结构。
+- 结果文件：[Step5层](../results/E01-partial-summary.json)、[free概率层](../results/E01-opencode-snapshot1-summary.json)、[外审来源与缺失](../results/D0-opencode-exploratory-snapshot1.json)、[free scores](../results/E01-opencode-snapshot1-scores.csv)、[config](../results/E01-opencode-snapshot1-config.json)。
 - 按决策表执行了什么：
 - 主张变化：
 - POST-HOC：

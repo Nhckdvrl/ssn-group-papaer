@@ -16,6 +16,8 @@
 | [Zeng 2026](https://aclanthology.org/2026.findings-acl.57/) §1–5、Limitations | 4090 prototype/metaphor pairs；Gemma；noncausal oracle；value信息传递、word-specific steering | 后续token承担延迟语义计算 | “原token不更新、后续token整合”已有owner；句法revision不能自动等同该metaphor机制，steering能控制生成也不直接证明实际晚cue依赖同一途径 |
 | [Huang 2024](https://tallinzen.net/media/papers/huang_et_al_2024_jml.pdf) RQ/Methods框架、Comprehension/General Discussion | 2000人、七构式；filler拟合surprisal→RT；对关键项检验数量、排序和item差异 | surprisal不足解释人类disambiguation cost | 提醒明确解释对象；本文跨构式reading-time证据不能直接当我们LLM问答的机制解释。具体模型拟合/附录未读完 |
 | [Hassan et al. 2026](https://arxiv.org/abs/2607.15565) §1–8 + A/D/F/G/H | VLM顺序反转；echoing；outcome-independent注意力knockout；内容/计算/距离控制 | 提前question影响编码、末尾question负责访问；重复解决分工 | 通用task-position/readout故事已有强owner；需语言revision的具体预测与后果，而不是把image换成句子 |
+| [Yoshida et al. ACL 2026](https://aclanthology.org/2026.acl-long.1694/) §1–7 + Limitations | 受控训练概率能拟合人类GP，held-out词、自然语料和跨构式检验；SRC/ORC失败对照 | 现成LM失败不足否定surprisal解释的存在性 | 更新Huang之后的争论；固定模型问答失败也不能直接归因revision算法；不是当前做训练的理由 |
+| [Han et al. 2025 v2](https://arxiv.org/abs/2504.09402) §1–4 | 分步阅读/重语境化；数学题中添加Revise条件；attention与错误类型 | backwards-dependency难度、重复/指令修复 | 这些通用结论也不是新故事；添加条件的干预仍混杂长度和任务改变，需要更明确语言证据预测 |
 
 PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份reading-manifest记录URL、页数、hash；原文不进git。以上标明读取范围，后续读实验/附录再更新，不将下载等同已读。
 
@@ -37,6 +39,12 @@ PDF正文在本地 `.../incremental-interpretation-revision/papers/`，两份rea
 固定最终问句于句末，句前initial−final focus的GP−nonGP交互+1.45 pp [−10.14,+13.04]；句后final focus提高GP与nonGP的原始No得分幅度相近。提前相关initial−无关initial的概率交互存在，但67-set敏感性及near-floor不允许选它称特殊revision机制。见[E08完整卡](../../../workbench/incremental-interpretation-revision/experiments/E08-reading-focus-versus-final-query.md)。降低泛泛reading-goal叙事的支持，优先E01语言操作与双读数，不继续优化prompt赢家。
 
 近邻读出/echoing不自动否定语言修订问题。当前仍未区分：旧事件的词汇合理性补全、句法角色重分析失败、以No回答但不建立正确最终解释。要让三者对同一个语言干预给出不同预测，才能从测量进入idea；区别概念本身不是finding。
+
+## 从阅读获得更好的原始资产
+
+Huang/Yoshida共同使用的SAP有原始人类理解题、两选项、作者gold，省去自构元语言问题。[E09](../../../workbench/incremental-interpretation-revision/experiments/E09-published-comprehension-transfer.md) 用同题GP/early-cue×query-order×选项mapping检验E01问题是否迁移；24共享词汇组按cluster抽样。Excel与CSV的6个歧义target flag分歧保留两种来源，不自己重新标注。未下载人类participant数据，不能把已发表汇总当已完成逐项人机对齐。
+
+MiMo外审概率探索层只保留完整normal-finish、逐题覆盖和hash一致的行，全部gold=null；与Step5层隔离。初始两组NPZ有extension/role/semantic分离，但样本很小、free审核仍需复核，当前只是后续测量线索，不是稳定新主张。
 
 ## Sasano依据
 
