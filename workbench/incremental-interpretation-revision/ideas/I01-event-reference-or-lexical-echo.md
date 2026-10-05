@@ -1,7 +1,7 @@
 # I01：纠正一个事件后，留下的是事件关系还是可迁移的谓词关联？（2026-10-05）
 
 - **状态：** PILOT；当前候选问题，不是已证成的顶会idea。
-- **来源/研究动作：** P10/P11，E14–E25的条件化异常、竞争解释分离和独立source预测；不从二分提示词猜题。
+- **来源：** 驻留测量E14–E25与P10/P11；研究动作： P10/P11，E14–E25的条件化异常、竞争解释分离和独立source预测；不从二分提示词猜题。
 - **自然问题：** 后来的证据排除了原活动的一位参与者。模型后续仍偏向或抑制那个人，是因为原事件关系没改好，还是因为词/关系关联记忆被带到了别的活动？
 - **当前具体观察：** E22同角色事实的具名/泛指表述改变activity-minus-neutral的GP历史效应；E24独立24 source/12verb-family迁移−.795 [−1.210,−.394]bits。E25这个信号继续出现于同actor新event−1.249 [−1.757,−.762]、另一actor新event−2.070 [−3.099,−1.200]；严格9同向。它不是old actor/old event专属的证据。
 - **待检验主旨：** 要判断修订到底改变了什么，必须区分局部事件约束的可用性与可迁移的关系预测痕迹。不能仅用一个患者continuation的surprisal信号证明old event未修订。更强的positive account需找到痕迹依赖哪些信息以及在哪种正常用途有后果。
@@ -32,7 +32,7 @@
 | Hu/Levy2023、Zhou ICML2026、Mann2025 | metalinguistic/probability差、否定机制/shortcut并存、词可及性 | 不能卖generic readout gap或“not X使X显眼”；要用跨不相关actor/event的迁移识别relation trace的对象 |
 | Chen CMN2026、Xu BeliefTrack2026、Hase2024 | revision/elaboration结构区分、scope/更新/保持及belief逻辑一致性 | 不把概率变化当图边retraction；本线对象是语言解释产生的关系预测如何迁移，而不是通用belief更新benchmark |
 
-- **当前下一决定性动作：** [E26](../experiments/E26-scoped-constraint-access-versus-portable-trace.md)，同source上独立审计scoped compatibility与原S1 matrix-proposition正反控制、native回答与一句恢复。正确QA不证明question出现前内部已经更新；结果必须按读数用途解读。
+- **已完成访问校准：** [E26](../experiments/E26-scoped-constraint-access-versus-portable-trace.md)，同source上独立审计scoped compatibility与原S1 matrix-proposition正反控制、native回答与一句恢复。正确QA不证明question出现前内部已经更新；结果必须按读数用途解读。
 - **论文形态候选：** 修订测量的对象识别 + 可预测的portable relation-memory结构。还欠自然功能后果/来源干预；仅有漂亮差值不够。
 - **仍缺/不确定：** 实际local event约束及源句final解释能否共同使用；portable效应依赖原谓词关联、source replay还是更一般语义；已有owner能否压缩这个精确增量；自然用途是否值得reviewer关心。不得以近邻存在自动关线。
 - **最新定位：** venue-nearest + primary arXiv已核对negation与incremental narrative近邻，读取范围见知识库；搜索不完整，不作新颖性认证。此卡从E14原活动回指/原词echo问题演化而来，研究对象始终是incremental interpretation revision，非新开线。
@@ -40,3 +40,6 @@
 **E26反馈：** source final/assertion原主体与swap读数高，但原事件兼容/矛盾两问都No，joint scoped-access base0；不能宣称已正确scoped修订。E27只加已允许患者的匹配proposition，区分No default与truth-verification替代比较任务。这里是instrument原因校准，PILOT不升级，旧全部结果保留。
 
 **E27反馈：** 匹配allowed命题的两问joint全部100%，所以非整体No-default或整体truth-verification。原excluded失败及new未指定患者的“不一致”可能是unknown/contradiction混淆。下一三类语义关系+unknown阳性对照，明确这些状态；仍不宣布scoped-state访问已成立。
+
+
+**E28反馈：** unrelated U控制全正确，但新活动U同actor仅33.68 [23.96,44.79]% /otherActor65.28 [59.72,70.49]%；正负旧role carryover58.60/12.34pp，cue55.92/13.53几乎同形且label mapping波动大。因此不能宣称local scoped-use已经成功。E25 likelihood与E28分类迁移的actor梯度不同，不能硬合成同一残留机制。下一[E29](../experiments/E29-source-ablation-dual-readout.md)消融源S1、保留明确旧活动事实并平行测两种用途，区分source-conditioned memory与correction自身过推广；不是继续优化YesNo，状态仍PILOT。

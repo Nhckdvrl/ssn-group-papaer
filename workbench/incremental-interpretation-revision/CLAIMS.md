@@ -54,3 +54,5 @@
 - 2026-10-05：[E25](experiments/E25-event-versus-actor-correction-scope.md)/[统计](results/E25-summary.json)：C04信号迁移到同actor新event I−1.249 [−1.757,−.762]bits、另一actor新event−2.070 [−3.099,−1.200]；actor_transfer−.820 [−1.460,−.322]。不支持以此信号单独证明old event绑定未修订；portable association解释增加，但未证明scope错误。C04仍L1，下一E26 scope/final interpretation读数独立审计。
 
 - 2026-10-05：[E26](experiments/E26-scoped-constraint-access-versus-portable-trace.md)/[统计](results/E26-summary.json)原句final主体读数GP94.79/91.67%、cue100/100%，但互补scope比较base原活动两问全部No（平均50）；八项joint base0。未建立scoped constraint access，不把50%叫scope failure；先E27匹配allowed-proposition控制区分No default/命题验证/比较算子。C04 L1/I01 PILOT。
+
+- 2026-10-05：[E28](experiments/E28-three-way-event-constraint-state.md)/[统计](results/E28-summary.json)未证明局部约束与portable预测共存时scope判断正确：all12新活动U同actor33.68 [23.96,44.79]% /otherActor65.28 [59.72,70.49]%，unrelated U100%；signed-role迁移GP58.60/12.34pp、cue55.92/13.53，映射波动大。不能归因为GP-specific或与E25同一机制；C04 L1/I01 PILOT，下一源S1消融。
