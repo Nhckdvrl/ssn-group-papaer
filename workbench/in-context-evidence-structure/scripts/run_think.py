@@ -18,7 +18,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model"); ap.add_argument("--inp"); ap.add_argument("--conds"); ap.add_argument("--out")
     ap.add_argument("--max_bases", type=int, default=100); ap.add_argument("--n", type=int, default=8)
-    ap.add_argument("--think", type=int, default=1); ap.add_argument("--max_tokens", type=int, default=6000)
+    ap.add_argument("--think", type=int, default=1); ap.add_argument("--max_tokens", type=int, default=6000); ap.add_argument("--max_model_len", type=int, default=8192)
     a = ap.parse_args()
     conds = set(a.conds.split(","))
     tok = AutoTokenizer.from_pretrained(a.model)
@@ -40,7 +40,7 @@ def main():
         msgs = [{"role": "user", "content": body}]
         prompts.append(tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True,
                                                enable_thinking=bool(a.think)))
-    llm = LLM(a.model, dtype="bfloat16", max_model_len=8192, gpu_memory_utilization=0.88, seed=0)
+    llm = LLM(a.model, dtype="bfloat16", max_model_len=a.max_model_len, gpu_memory_utilization=0.88, seed=0)
     sp = SamplingParams(n=a.n, temperature=0.6, top_p=0.95, top_k=20, max_tokens=a.max_tokens, seed=0)
     outs = llm.generate(prompts, sp)
     with open(a.out, "w") as f:
