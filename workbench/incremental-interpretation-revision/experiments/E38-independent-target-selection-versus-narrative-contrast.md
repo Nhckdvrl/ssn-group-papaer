@@ -1,6 +1,6 @@
 # E38：未公布的新事件选择，还是普通叙事对比？（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** RUNNING — raw/native完成，输出独立盲审中
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；把role-transfer解释分为正常叙事alternatives与忽视明确独立性，不注册概率/QA gap为novelty。
 - **问题（一句话）：** 新活动对象明确来自独立公平抽签、结果未公布时，旧角色事实的反向预测作用是否仍在，是否影响对未公布结果的回答？
@@ -22,3 +22,7 @@
 三独立Luna全文审4608packets（raw3840+question768），ID/适用hash覆盖一致；人工感、称谓可能共指、故意矛盾的续写备选都在原notes保留，未按模型结果选择input。所有selection scope clear、1536question mode tasks eligible/gold-proposed一致。两审采用嵌套raw/question字段，adapter仅展平字段位置，标签/哈希/原review字节不变；原格式错误前fail-fast，无推理开始。语法标准不同（第三全acceptable、前两对bath/cuddle/shaving记marginal），grammar common按全条件完整覆盖冻结。数字及hash见[D0](../results/D0-E38-selection-audit.json)。3840causal target pairs/hash已核，尚未推理。
 
 跑前审计标签勘误：前段“proposed一致”写早了，v1真实agreement1388/1536。74个question contexts（148mode tasks）均来自审计0的other-first顺序，文字notes已正确识别选中实体，但source_candidate被解释为第一列候选。原审计员重读全部270question，按packet固定source/other实体修正74编码并新增answer_text，1266raw判读不变，另存review-0-entity-frame-v2；原v1及summary保留。最终实际用audited-v2，1536/1536固定实体标签一致；所有句子、问题、目标与prefix hash不变。任何模型推理前完成，不由执行者自动交换gold。
+
+## 首批结果：raw完成，native尚未统计
+
+3840 raw FP32 frozen已完成；[全条件统计](../results/E38-raw-summary.json)。affirmative-first主fair−procedure-unknown J两candidate顺序+.907 [.306,1.499]/+.767 [.226,1.322]bits，平均+.837 [.347,1.357]；unknown/fair平均J分别−1.512 [−2.211,−.926]/−.675 [−1.125,−.173]。contrast-parent公平减弱对比−.191 [−.618,.261]，CI跨0，不泛化抑制效果到所有措辞。公布selected-source−selected-other对activity M正向16.08–17.39bits，各CI正；不能把selected固定时旧role差仍负当不遵守selected。1536 actual answers已交两独立Luna按hash-sort分片盲审，尚未用答题结果主张能力错误。
