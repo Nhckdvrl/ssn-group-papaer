@@ -13,6 +13,7 @@ SOURCES = {
     'amouyal': ('https://github.com/samsam3232/comparing_humans_llms_processing_difficulties', '072efefa01cb9716c2d14752eb1d4bf9830b0b81', 'MIT'),
     'jurayj': ('https://github.com/wjurayj/garden-path-gpt2', 'ad30c4248df5dcdda163bd6f05add419e1210c42', 'Apache-2.0'),
     'turing': ('https://github.com/microsoft/turing-experiments', 'f00115e793f5f728eccf13044bb299d64901de57', 'MIT'),
+    'sap': ('https://github.com/caplabnyu/sapbenchmark', '15e61066d510b5349e17740e6488c976abc3e1ac', 'MIT'),
 }
 
 def sha(path):
@@ -29,6 +30,14 @@ def read_table(path):
 def audit(cache):
     out = {'date': '2026-10-05', 'sources': {}}
     for name, (url, revision, license_name) in SOURCES.items():
+        if name=='sap':
+            root=cache/'upstream/sap-discovery'
+            if not (root/'audit.json').exists():continue
+            report=json.loads((root/'audit.json').read_text())
+            assert report['revision']==revision
+            for rel,meta in report['files'].items():assert sha(root/rel)==meta['sha256']
+            out['sources'][name]=report
+            continue
         root = cache / 'upstream' / name
         actual = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip()
         assert actual == revision, (name, actual, revision)
@@ -66,7 +75,7 @@ def audit(cache):
 def verified_root(cache, source):
     manifest = json.loads((cache/'audit.json').read_text())
     assert manifest['sources'][source]['revision'] == SOURCES[source][1]
-    root = cache/'upstream'/source
+    root = cache/'upstream'/('sap-discovery' if source=='sap' else source)
     for rel, meta in manifest['sources'][source]['files'].items():
         assert sha(root/rel) == meta['sha256'], f'Hash mismatch: {source}/{rel}'
     return root

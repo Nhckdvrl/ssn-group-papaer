@@ -40,7 +40,7 @@ def tasks_e00(cache,tokenizer):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
     ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
-    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08'],default='E00')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09'],default='E00')
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
     ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
     ap.add_argument('--system-frame',choices=['both','neutral','upstream'],default='both')
@@ -71,6 +71,9 @@ def main():
     elif args.experiment=='E08':
         from focus_audit import tasks_focus
         tasks=tasks_focus(args.cache,tokenizer)
+    elif args.experiment=='E09':
+        from sap import tasks_sap
+        tasks=tasks_sap(args.cache,tokenizer)
     else:
         from stimuli import tasks_jurayj
         assert args.data is not None
@@ -85,7 +88,7 @@ def main():
                 frozen=True,thinking=False,batch_size=args.batch_size,seed=0,choice_token_ids=tokens,
                 task_count=len(tasks),system_frame=args.system_frame,families=args.families,git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
                 code_sha256={p.name:sha(p) for p in Path(__file__).parent.glob('*.py')},
-                data_sha256=sha(args.data) if args.data else sha(args.cache/'normalized/amouyal.jsonl'))
+                data_sha256=sha(args.data) if args.data else sha(args.cache/'normalized'/('sap.jsonl' if args.experiment=='E09' else 'amouyal.jsonl')))
     (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
     with (args.out/'predictions.jsonl').open('w') as f, torch.inference_mode():
         for offset in range(0,len(tasks),args.batch_size):
