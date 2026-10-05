@@ -64,7 +64,7 @@ def adopt(data, reviews, idmap_path, out):
             audit_grammar=a['grammaticality'], audit_reference_status=a['reference_status'], audit_selectional_status=a['selectional_status'],
             audit_reason=a['reason'], audit_review_sha256=h, audit_provider='gpt-6-luna'))
     write_jsonl(out, output)
-    report = dict(audited_sha256=sha(out), candidate_sha256=sha(data), variants=len(rows), source_items=22,
+    report = dict(audited_sha256=sha(out), candidate_sha256=sha(data), variants=len(rows), source_items=len({r['pair_id'] for r in rows}),
         eligible=sum(r['eligible'] for r in output), acceptable=sum(r['acceptable'] for r in output),
         grammar_counts=dict(collections.Counter(r['audit_grammar'] for r in output)),
         selectional_counts=dict(collections.Counter(r['audit_selectional_status'] for r in output)),

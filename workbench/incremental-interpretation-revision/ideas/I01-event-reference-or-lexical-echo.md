@@ -23,3 +23,8 @@
 ## E18反馈（2026-10-05）
 
 faithful完整9源的释义same/separate交互+1.44 [.90,1.91]bits，lexeme完全重现不是必要条件；4 episodic∩faithful小样本含1语法marginal，不能夸成大范围机制。现RQ更清楚：**弱句法消歧留下的患者关联，强语义角色证据能否在活动范围内覆盖？** 原“修订成功再重激活”没有证据，明确不用这个headline。接E19双向only-self/only-NP的scope限定叙事信息；若强证据覆盖则把先前结果限定为disambiguation强度/功能reuse，不把可纠正的关联讲成不可删除记忆。该动作继续I01而非换研究对象，仍PILOT。
+
+
+## E19反馈（2026-10-05）
+
+不是明确角色信息完全无效：同活动GP的R移动+8.51 [5.15,12.32]bits，cue+10.60 [7.75,13.55]；但同样reference-only句后GP−cue仍−5.52 [−8.06,−3.29]。这使“强cue可完全覆盖”不够；不能直接解释成不可删除，因为否定NP被最后提及可能重新喂入旧association。下一[E20](../experiments/E20-exclusive-fact-versus-last-mention.md)交换only/not对象出现顺序，保留同一事实，区分recent lexical echo与relation history。7源same明确，separate中3源target scope不确定；不会把全部世界兼容NP叫错。新近邻[CBM](../../../library/themes/incremental-language-processing/xu2026-contextual-belief-management.md)/[DeltaLogic](../../../library/themes/incremental-language-processing/dhanda2026-deltalogic.md)已有一般update/stay/isolation与inertia，候选必须保持predicate/episode具体增量。
