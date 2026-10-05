@@ -81,3 +81,17 @@ E11首批n1诊断中，完整subject span把unambiguous extended blocker原role 
 原24两句/96作者条件、无诊断问句：全S2 GP−comma −.031 / −.003 bits，两CI均跨0；literal reference交互+.905 [−.296,2.260]，其后两词−.377 [−.637,−.111]。不能用局部分项把整体null改写成稳定lingering或宣称彻底消失。复读Slattery E2 rationale与Table4确认作者早已对比全局失败/局部hangover/plausibility；其中RAT/reciprocal强制自指事件是published setting，不等同所有optional-transitive初始事件在逻辑上都错误。
 
 当前核心压力是**晚证据改变哪些角色和事件依赖、哪些后果仍被先前解释影响**。E11显示问句引用问题，E13限制泛化全局残留解释。先用E01新固定外审cohort扩大独立词汇覆盖，不追加更多position模板；找语言操作的稳定分离后才设计能区分残余事件、语义补全和问答影响的干预。这个问题框架不算已形成新idea。所有现有材料和干预的owner仍明确列出，不能把“区分两个读数”当增量。
+
+
+### E01扩大后仍需语言因子拆解
+
+固定279独立审核变体/1158eligible QA，三个family、四配置全测。NPZ同9组initial-event的extension GP−cue交互句先+51.63 [21.60,84.02]pp（repair+40.98），题先−20.29 [−53.11,9.93]（repair−10.66）；不能统一解释为延时增强承诺。NPS“长GP降低final-event”主要由源7原had rode marginal句驱动，预登记acceptable层大幅减弱；保留两个strata，追数据why。NPZ无歧义extension仍降低原role回答，不能略过E11引用压力。
+
+下一语言干预须分开**等待多久、modifier加入什么事件信息、NP引用复杂度**。先外审原modifier是否独立许可/支持初始事件，再设计同词数/信息或位置控制，不继续扩query模板。不同答案质量和不同时点的概率不自行组成内部双parse机制；[E01完整统计](../../../workbench/incremental-interpretation-revision/results/E01-external-snapshot3.md)与E13都只为下一区分性实验提供预测约束。
+
+
+## 事件身份问题的近邻定位（primary摘录，不冒充全文）
+
+[Malyutina/den Ouden2016](malyutina2016-blended-interpretations.md)句图任务已区分initial vs blended解释；[Ceháková/Chromý2025](cehakova2025-disrupted-final-interpretations.md)已有两region×正确/错误理解题，挑战全局faithful新解释；[Christianson2024](christianson2024-rereading-and-question-order.md)已有question-before/重读与理解的对照。读到的范围与未读部分逐卡明示，三个HTML/摘要记录不计为新增cached PDFs。venue nearest返回Amouyal/Hanna/Yoshida等已知owner，也有无关protein/event匹配，不据此做自动判决。
+
+独立Luna全17 NPZ原modifier关系审计：全部初始event未明确assert、modifier不entail，但全句也不exclude；specific support Yes2/No10/uncertain5。这不能证明Qwen进行了正确pragmatic inference，也不能把不被assert叫logical false。下一候选比较应区分**同一事件参与者的改绑、额外兼容事件的补全、任务/引用影响**，并保证后文读数对事件身份有约束；当前只有问题收紧，没有已证成新idea。泛泛混合解释与final/initial分离均已有owner，新增量需从精确干预及功能后果获得。

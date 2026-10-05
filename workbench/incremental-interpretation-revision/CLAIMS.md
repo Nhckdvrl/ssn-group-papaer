@@ -30,3 +30,6 @@
 
 
 - 2026-10-05：[E13](experiments/E13-natural-followup-without-diagnostic-question.md) / [结果](results/E13-summary.json) question-free全自然S2 GP−comma −.031 [−.255,.211] / −.003 [−.173,.176]bits，不支持普遍后文代价；字面reference option交互+.905 [−.296,2.260]、其后邻词−.377 [−.637,−.111]，局部解读不确定。没有新能力/内部双parse/novelty主张；C01/C02保留L0。
+
+
+- 2026-10-05：[E01 snapshot3](results/E01-external-snapshot3.md) / [完整统计](results/E01-external-snapshot3-summary.json)：NPZ initial-event extension DiD句先+51.63 [21.60,84.02]pp、题先−20.29 [−53.11,9.93]n9，统一commitment解释支持不足；NPS源7语法marginal主导eligible部分读数，acceptable同步报告；不将外部annotation agreement或原role题当内部parse能力。C01/C02仍L0。
