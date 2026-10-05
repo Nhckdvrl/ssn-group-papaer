@@ -42,8 +42,9 @@
 | **E22 标记漂移** | 新 regime 用大写标记：P(大写) 规范地跟踪（成簇 +5.1、噪声 −2.5、后8−前8 +9.5），P(新映射) 不跟（噪声方向反）；suffix_8 时写大写但用新映射仅 ~48% |
 | E09 thinking | 20000 token 重跑：规则学习准确率 96%，但成簇=零散（+0.002）、加噪声无影响（+0.005）、新旧块无差别 → 推理不救 |
 | E23 时间戳 | 每条 demo 标 “day k”：只有轻微 recency，噪声方向仍错 |
-| E22 复现 | Qwen3-8B / Qwen2.5-7B / Mistral-7B 三模型一致；主图 `results/figs/fig_marked_drift.png` |
-| 进行中 | E22/E23 更多模型；32B/4B/0.6B night_core；toy v3 |
+| E22 复现 | 8 个模型（含 Base、1.7B–14B）× 2 任务：格式通道 16/16 规范；映射通道最多弱 recency（Qwen3-14B SST 部分绑定）；主图 `results/figs/fig_marked_drift.png` |
+| E16 扩到 Qwen3-4B | 10 格式：标签流/大小写/±3/±1/±10 噪声方向规范（−0.5 到 −8.0）；大小/奇偶/SST/条件变换/字母±1 方向反 |
+| 进行中 | E24 输入侧标记（6 模型）；32B night_core 与 E22；0.6B night_core；toy v3 |
 
 **阻塞：** StepFun step-5 配额已用尽（quota_exceeded），nonce 词库审计停在 25 个已接受属性名；确认版实验需要审计词库。
 
