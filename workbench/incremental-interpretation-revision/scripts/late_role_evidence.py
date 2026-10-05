@@ -11,13 +11,13 @@ from analyze import estimate
 from patient_crossover import adopt
 
 
-def build(cache,fields_path,out):
+def build(cache,fields_path,out,anchors=('same','continued_separate'),experiment='E19'):
     assert not out.exists()
     fields={(r['pair_id'],r['np_option']):r for r in json.loads(fields_path.read_text())['rows']}
     packets={r['pair_id']:r for r in json.loads((fields_path.parent/'role-evidence-packets.json').read_text())['packets']}
     parents=[]
     for ex in ('E14','E15'):
-        parents += [(ex,r) for r in map(json.loads,(cache/f'{ex}-material-preparation-v1/audited-v1.jsonl').read_text().splitlines()) if r['target_kind']=='source_np' and r['episode_anchor'] in ('same','continued_separate') and r['episodic_reference']]
+        parents += [(ex,r) for r in map(json.loads,(cache/f'{ex}-material-preparation-v1/audited-v1.jsonl').read_text().splitlines()) if r['target_kind']=='source_np' and r['episode_anchor'] in anchors and r['episodic_reference']]
     refs={}
     for ex in ('E14','E15'):
         refs.update({r['item_id']:r for r in map(json.loads,(cache/f'{ex}-material-preparation-v1/audited-v1.jsonl').read_text().splitlines())})
@@ -39,16 +39,16 @@ def build(cache,fields_path,out):
                 start=r['target_start_char']+len(statement)+1;stop=start+len(phrase)
                 words=list(re.finditer(r'\S+',text));span=[i for i,w in enumerate(words) if w.start()<stop and w.end()>start]
                 assert ' '.join(words[i].group() for i in span)==phrase
-                nr=dict(r,item_id=f'E19:{r["item_id"]}:{evidence}:{kind}',target_kind=kind,sentence=text,parent_item_id=r['item_id'],parent_experiment=ex,
+                nr=dict(r,item_id=f'{experiment}:{r["item_id"]}:{evidence}:{kind}',target_kind=kind,sentence=text,parent_item_id=r['item_id'],parent_experiment=ex,
                     role_evidence=evidence,target_start_char=start,target_stop_char=stop,target_span_word_indices=span,target_phrase_sha256=digest(phrase),target_context_sha256=digest(text[:start]),sentence_sha256=digest(text),
                     authored_followup_start_word=r['authored_followup_start_word']+len(statement.split()),role_fields_sha256=sha(fields_path),
                     transformation='Exact S1 and same/separate bridge retained. Independently constructed explicit role evidence limited to original episode inserted between S1 and bridge; author S2 target is reference/own/other NP.')
                 for k in list(nr):
                     if k.startswith('audit_'):del nr[k]
                 output.append(nr)
-    assert len(output)==336
+    assert len(output)==7*2*2*2*len(anchors)*3
     write_jsonl(out,output)
-    return dict(variants=336,source_items=7,candidate_sha256=sha(out),fields_sha256=sha(fields_path))
+    return dict(variants=len(output),source_items=7,candidate_sha256=sha(out),fields_sha256=sha(fields_path))
 
 
 def adopt_roles(data,reviews,idmap,out):
