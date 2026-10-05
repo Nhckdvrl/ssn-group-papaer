@@ -1,6 +1,6 @@
 # E16：患者特异续写还是一般 self/reciprocal 偏好（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** EXPLORE
 - **对应：** P10；C01/C02解释边界；E15后竞争解释拆分。
 - **问题（一句话）：** GP历史使后文特异偏向前文那个患者，还是只普遍降低原self/each-other续写？活动指向变化调节哪一部分？
@@ -11,9 +11,14 @@
 - **噪声地板 + MIE：** 原FP32词级漂移约1e−5bits；7源主切片sampling不确定性主要。没有任意阈值；CI、效应量和逐source共同改变解释。
 - **混杂审计：** 交叉S1 choice×S2 target消除NP基础词频偏好；GP/cue提及次数相同但句法线索不同。other-NP通常引入新实体，故绝对M含mention advantage，不能称错误绑定；GP/cue交互与桥调节才区分解释。原source两NP的plausibility/selectional差异报告独立flags及option分项。明确episode切片继承E14事前定义，不按新结果重标。noisy-channel句法repair仍未区分，患者特异结果不等于semantic revision完整性。
 - **决策表（跑之前写）：** D_M明显正且A_M解释E15的主要变化 → 患者特异reuse比一般ref-form抑制更受支持，下一步用身份词匹配/合法与malformed结构控制分离事件绑定与文本repair；D_M小/A_M小而R仍变化 → 降低患者特异解释，追ref-form或一般语义预期；D_M正但A_M小 → 有患者特异GP响应，桥变化另有来源，不能讲scope-controlled reuse；源组反向或CI宽 → 保留混合/异质性，检查材料结构，不扩prompt/model sweep。
-- **算力预算：** 一张空闲H20，352新inputs，预计≤.03 GPU·h。**实际：** 待运行。
+- **算力预算：** 一张空闲H20，352新inputs，预计≤.03 GPU·h。**实际：** 17.082s / 0.00474495 GPU·h；352新输入。
 - **命令：** 在workbench内 `source scripts/env.sh`，`$IIR_PYTHON scripts/event_identity_infer.py --experiment E16 --data $IIR_CACHE/E16-material-preparation-v1/audited-v1.jsonl --out $IIR_CACHE/runs/E16`；统计 `scripts/patient_crossover.py analyze --cache $IIR_CACHE --new $IIR_CACHE/runs/E16 --out results/E16-summary.json`。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
-待运行；C01/C02维持L0。
+- 独立审查352/352acceptable，selectional odd128保留、指称新实体160保留，无semantic gold。运行前352个pre-target token contexts与原own-NP完全相同。
+- 7 episodic源：无桥 D_M +7.843 [5.422,10.183]bits；continued-same +7.823 [5.387,10.230]；continued-separate +5.712 [4.096,7.306]；began-separate +5.418 [3.862,7.040]。
+- 固定continued A_M +2.111 [1.167,3.137]，7/7 source正。A_R_own −1.974 [−2.783,−.694]；A_R_other +.138 [−1.058,1.301]。全22 A_M +1.382 [.679,2.089]、A_R_other −.044 [−.589,.526]。逐source恒等式均通过。
+- [统计](../results/E16-summary.json)、[config](../results/E16-config.json)、[去文本分数](../results/E16-scores.csv)。执行git `90cf43402`；原E14/E15配置/权重一致。
+- 更支持患者特异响应，原桥调节不能全归一般ref-form抑制。但own NP本来就是提及过的实体，尚未排除GP改变一般实体可及性/词汇关联；下一对照应比较依赖原事件的patient continuation与不依赖原事件的实体提及，不把关系记忆当已验证。
+- C01/C02维持L0。结果不能独自说明syntactic repair完成、内部event graph或novelty。
