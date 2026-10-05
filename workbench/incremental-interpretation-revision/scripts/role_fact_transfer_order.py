@@ -92,6 +92,8 @@ def adopt(directory,reviews):
 
 def analyze(cache,newpath):
     freshcfg,new=read_run(newpath);old=[];configs={}
+    parent_summary=Path(__file__).resolve().parents[1]/'results/E31-summary.json'
+    parent_cohorts=json.loads(parent_summary.read_text())['probability']['cohorts']
     for ex in ('E29','E31'):
         c,rr=read_run(cache/f'runs/{ex}-probability');configs[ex]=c
         for k in ('model_manifest','dtype','tf32','attention','seed','torch','transformers','batch_size','frozen'):
@@ -102,6 +104,7 @@ def analyze(cache,newpath):
     out=dict(experiment='E32',units='bits',physical_raw_tasks=len(new),actual_gpu_hours=freshcfg['gpu_hours'],
              bootstrap_unit='12 verb families, two sources averaged',bootstrap_draws=10000,bootstrap_seed=20261005,
              analysis_code_sha256=sha(Path(__file__)),input_scores_sha256=dict(new=freshcfg['scores_sha256'],**{k:c['scores_sha256'] for k,c in configs.items()}),
+             registered_parent_cohorts_sha256=sha(parent_summary),
              interpretation='Fact block order intervention; contrast/focus changes with linear position. Not a pure token-distance or semantic mechanism intervention.',
              cohorts={},cells={},contrasts={},per_family={})
     def qualifies(r,co):
@@ -117,6 +120,10 @@ def analyze(cache,newpath):
     for cohort in ('all','eligible','anchor_cross_clear','anchor_cross_acceptable','prior_and_ablation_faithful','order_faithful'):
         chosen=[r for r in new if qualifies(r,cohort)];counts=collections.Counter(r['pair_id'] for r in chosen)
         keep={f:sorted(sids) for f,sids in families.items() if all(counts[sid]==40 for sid in sids)}
+        # Preserve the previously registered full-style common-source cohorts;
+        # restricting fresh inference to named facts must not broaden strict9.
+        if cohort!='order_faithful':
+            keep={f:sids for f,sids in keep.items() if f in parent_cohorts[cohort] and set(sids)==set(parent_cohorts[cohort][f])}
         out['cohorts'][cohort]=keep;selected={r['parent_item_id'] for r in chosen};rr=chosen+[r for r in old if r['item_id'] in selected]
         ix={(r['pair_id'],r['fact_order'],r['boundary_marker'],r['readout_actor_mode'],r['role_evidence'],r['readout_frame'],r['target_kind']):r for r in rr}
         assert len(ix)==len(rr)

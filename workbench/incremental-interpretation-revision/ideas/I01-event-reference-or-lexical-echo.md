@@ -3,7 +3,7 @@
 - **状态：** PILOT；已收敛到有区分性实验支撑的候选主旨，未认定普遍机制或完成新颖性认证。
 - **来源：** P10/P11；驻留E14–E25的事件/患者范围异常，E29方向拆分与E30/E31事前预测检验。研究对象始终是晚来语言证据如何改变角色关系及后续使用；不以GP存在/更多模型生成题目。
 - **自然问题：** 旧活动里明确排除了一位参与者。下一次活动开始后，这条信息会让他更不被预测，还是反而成为一种关系备选？这个影响跟着事件、人物还是谓词走？
-- **当前候选finding：** 固定Qwen3-8B，具名排他角色事实对患者相对预测的影响在旧event为正、同谓词新event为负；换人物仍负，换谓词后改变方向。中性实体提及不能解释全部结构。显式三类关系判读却容易按旧role方向外推，更受人物/谓词匹配影响，不能用这些不同用途证明一个统一未修订的old belief。
+- **当前候选finding：** 固定Qwen3-8B，具名排他角色事实对患者相对预测的影响在旧event为正、同谓词新event为负；换人物仍负。E31原词序下换谓词变正，E32交换事实词序后未普遍变正，更稳的是换谓词使matched-neutral后的预测作用向正方向移动。普通实体可及性解释一部分绝对反向，不能解释全部谓词结构。显式三类关系判读却容易按旧role方向外推，更受人物/谓词匹配影响，不能用这些不同用途证明一个统一未修订的old belief。
 - **拟议论文形态：** 一个角色证据迁移的问题 → 事件/人物/谓词身份的区分性行为证据 → relational aftereffect的可预测边界。不是通用scope benchmark或representation/QA差值论文。
 
 ## 最小证据主干
@@ -16,6 +16,7 @@ D是“明确允许旧患者−明确排除旧患者”对同一患者相对另�
 | 一般entity accessibility | E29 POST-HOC完整cell拆分 + E30/E31事前控制 | 新event activity方向翻转，而neutral近0或小；matched-neutral后的主交互仍在。generic表现不同，不能泛称所有措辞 |
 | separate字面触发 | [E30](../experiments/E30-event-boundary-versus-participant-contrast.md) | second边界同actor D−1.64 [−2.64,−.80]、换actor−2.11 [−2.90,−1.28]；明确另一event但不需exact separate词 |
 | 谓词关联vs一般新事件对比 | [E31](../experiments/E31-predicate-match-versus-narrative-contrast.md) | 同aspect began，同actor同V D−1.36 [−2.33,−.45]→不同V+1.53 [.59,2.37]；扣neutral差+2.50 [1.47,3.68]；换actor差+2.89 [1.72,3.98]。strict9/无odd11同形 |
+| 近V位置/事实词序 | [E32](../experiments/E32-fact-order-versus-predicate-transfer.md) | 同词袋交换affirm/negate位置，绝对反向更强但neutral也变，sameActor关系特异J不确定；different−same J差仍+1.94 [1.04,2.84]/+2.36 [1.44,3.36]。绝对换V变正并不跨order保持 |
 | 范围推断是否同方向 | E28–E31全映射/R8 | E31同actor正确U同V22.22%→不同V58.33%，paired+36.11 [19.10,52.08]pp；未完全恢复。matched named旧role carryover同V75.71→不同V33.04pp，与患者预测的同V反向作用不同 |
 
 [主统计E31](../results/E31-summary.json)、[native表述分层](../results/E31-nli-wording-summary.json)、[E31图](../results/E31-predicate-transfer.png)。E29实际activity方向拆分、E30 native风格分层均明确标POST-HOC；其后E30/E31对应预测/控制跑前写入卡。完整不利和uncertain分项保留。
@@ -27,13 +28,13 @@ D是“明确允许旧患者−明确排除旧患者”对同一患者相对另�
 | 原事件关系未修订的单一信号 | 影响应特别对应旧event/actor，方向与旧关系相容 | 新event具名方向反转、跨actor、无源S1仍在；当前读数不能作为此归因的专属证据，未证明任何隐状态已删除 |
 | 一般实体可及性 | activity与neutral响应平行，换V不应改变额外J | E29/E31 matched-neutral交互不支持充分解释 |
 | 任意新事件都要换参与者的叙事对比 | 同/不同V都反向 | E31同aspect条件换V改变方向，解释不足 |
-| 谓词依赖的关系aftereffect | 同V新event反向、换actor保留、换V减弱/变向 | 当前最匹配的行为account；不等同内部机制证明 |
+| 谓词依赖的关系aftereffect | 同V新event反向、换actor保留、换V减弱/变向 | 谓词依赖的相对作用获得E31/E32支持，绝对极性随order改变；不等同内部机制证明 |
 | 原词/句型检索 vs语义关系记忆 | 换同一动作的自然释义时应有不同迁移 | 尚未区分：E31换V同时改变meaning/适配度，下一决定性测试 |
 | only/focus alternative与显式否定形式 | 等价role证据的focus/否定实现应改变aftereffect | 仍竞争；不能将限定模板的结果说成一般语言修订算法 |
 
 E31 POST-HOC具名J的actor匹配差同V+1.81 [1.11,2.53]bits、不同V+1.42 [.34,2.46]，与谓词匹配的负向差并不平行；这提示不能用单一旧关系信号概括，但未证明可加性或内部因子分解。[完整统计](../results/E31-posthoc-identity-contrasts.json)。
 
-**先处理的具体混杂：** 当前`not X but only Y`把被排除对象放在动词附近，允许对象放最后。E20只在旧source/旧event读数检查过另一词序，不足以排除C05新event反向是这种线性位置造成的。E32交换同一事实中的两个块，词袋相同，配套旧event/neutral及同不同V控制；but焦点仍可改变，不能将其称纯位置手术。
+**已检验的具体混杂：** E32交换`not X but only Y`为`only Y but not X`，词袋与角色真值相同。同V新event反向保留，故近V的否定对象不是必要条件；但neutral显著改变，differentV绝对方向不跨order保持，不能把词序或focus排除。更稳的证据是各order内different−same的matched-neutral作用差。
 
 **下一最有信息量的动作：** 保持同一动作、actor、活动身份及角色真值，独立构造/审核自然释义，比较原词与释义的患者方向和scope use；配套旧event正/负控制。释义改变行动强度、范围或患者集合的项保留uncertain，不由执行者自判等价。不扩模型/提示词/同义词sweep。
 

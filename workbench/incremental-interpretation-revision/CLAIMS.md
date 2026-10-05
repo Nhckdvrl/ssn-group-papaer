@@ -61,3 +61,6 @@
 - 2026-10-05：[E29](experiments/E29-source-ablation-dual-readout.md)/[统计](results/E29-summary.json)移除完整S1仍有native scope迁移，同actor61.25 [52.07,70.07]pp、换actor10.97 [4.81,18.79]，GP不是必要条件。具名事实的患者预测J旧event+2.88 [1.81,3.83]bits，新同actor−1.59 [−2.45,−.71]、另一actor−3.06 [−4.12,−2.04]；POST-HOC实际activity方向也翻转，非只neutral主导。generic不同、边界词contrast竞争尚未排除，C04 L1/I01 PILOT；不能硬合为旧绑定残留。
 
 - 2026-10-05：[E30](experiments/E30-event-boundary-versus-participant-contrast.md)/[统计](results/E30-summary.json)具名患者反向预测在second边界仍在：sameActor activity方向−1.641 [−2.635,−.805]、other−2.109 [−2.905,−1.278]bits，neutral近0；原event+2.646。只排除exact separate触发，不排所有contrast/关系抑制。native旧方向迁移仍正，既有一句scope控制不稳定修复，不能包装generic gap或强机制；C04 L1，下一cross-predicate区分。
+
+
+- 2026-10-05：[E32](experiments/E32-fact-order-versus-predicate-transfer.md)/[统计](results/E32-summary.json)同token事实改序后，同V新event绝对反向保留（sameActor −3.213/other −4.483bits），但neutral也反向，sameActor J CI跨0、other J−3.307 [−4.769,−1.875]。不同V绝对变正不跨order保持；更稳的是different−same的matched-neutral J差+1.937 [1.043,2.841]/+2.359 [1.444,3.359]。因此C05保留L1历史测量，收窄“换V改变绝对方向”到具体事实表述；不升级成语义关系或普遍反向机制。
