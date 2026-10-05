@@ -2,7 +2,7 @@
 
 **状态：2026-10-05 / PROPOSED baseline residency。**
 
-当前有局限于固定模型/协议的本地测量事实C03/C04，尚无已确立的paper idea。C00–C02仍是待验证对象，不能写成revision机制finding。
+当前有局限于固定模型/协议的本地测量事实C03–C05，已有具体候选I01，但尚无已确立的一般机制或新颖性判断。C00–C02仍是待验证对象，不能写成revision机制finding。
 
 | ID | 待验证对象 | 等级 | 当前证据 | 升级条件 |
 |---|---|---|---|---|
@@ -11,6 +11,7 @@
 | C02 | 不同 cue timing / cue strength 条件下存在可区分 competing accounts 的 revision structure | L0 | 仅 territory hypothesis | 预先写出不同解释的预测并由 E01/E02 区分 |
 | C03 | 固定Qwen3-8B的GP/nonGP问答差值随query顺序反向，且反转不依赖assistant prefill或few-shot demos | L1（measurement；非novelty） | [E03](experiments/E03-e00-order-and-assertion-audit.md)、[E07](experiments/E07-native-readout-transfer.md) / [E07结果](results/E07-summary.json)：neutral/native/base交互+60.87 pp [44.93,76.81]；全部8个boundary×system×instruction交互正；67-set sensitivity同方向 | 下一步[E08](experiments/E08-reading-focus-versus-final-query.md)将final query固定，区分reading focus与回答启动/位置；目前不归因为内部parse或一般LLM能力 |
 | C04 | 同一排他事实的具名/泛指表述对后续实体提及与活动患者偏好产生不同响应，且GP与逗号历史调节该响应 | L1（局部measurement，非能力/机制/novelty） | [E21](experiments/E21-named-versus-generic-exclusion.md)、[E22](experiments/E22-post-correction-entity-versus-role-use.md)/[E22统计](results/E22-summary.json)：严格4源named−generic的relation-minus-neutral变化GP−2.792 [−3.680,−1.904]bits、cue−.174 [−1.124,1.201]；全7同方向；[E24](experiments/E24-independent-correction-use-transfer.md)/[统计](results/E24-summary.json)独立12family主history交互−.795 [−1.210,−.394]、strict9−.766 [−1.168,−.363]。角色事实有效，实际错误未稳健成立 | 独立来源预测/实际角色使用、混杂审计后才讨论更一般解释；当前不能把概率偏好叫false belief或内部绑定 |
+| C05 | 固定Qwen3-8B中，具名排他角色信息对患者相对预测的作用在旧/新同谓词活动方向相反，跨人物保留，换谓词改变方向；native范围判读对同role信息另呈正向迁移 | L1（具体行为measurement；非普遍能力/隐机制） | [E29](experiments/E29-source-ablation-dual-readout.md)/[拆分](results/E29-posthoc-role-decomposition.json)、[E30](experiments/E30-event-boundary-versus-participant-contrast.md)、[E31](experiments/E31-predicate-match-versus-narrative-contrast.md)/[统计](results/E31-summary.json)：同actor具名D同V−1.363 [−2.333,−.446]bits→不同V+1.525 [.592,2.368]，matched-neutral后差+2.504 [1.471,3.681]；换actor差+2.892 [1.725,3.983]，strict9/无odd11同形 | 同一动作的自然释义区分原词/语义关系、独立自然用途和混杂审计；不把相反读数本身或单一模型现象作novelty；C04与C05不强合机制 |
 
 **禁止提前升级：**
 - 上游已报告的 garden-path effect 不是我们的 C-level novelty；

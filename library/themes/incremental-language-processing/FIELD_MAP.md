@@ -114,3 +114,13 @@ E11首批n1诊断中，完整subject span把unambiguous extended blocker原role 
 [Sinclair TACL2022](sinclair2022-structural-persistence.md)与[Jumelet ACL Findings2024](jumelet2024-structural-priming.md)实际读定义/数据/词级因子与讨论：被冻结LM的跨句结构持续、verb引出的semantic-role预期、function word/词汇boost和inverse frequency已存在。[Van Gompel2006](vangompel2006-garden-path-priming.md)primary摘要更直接：GP相对comma会prime后续transitive结构，并保持memory与未完整重分析竞争。不能把E25迁移本身卖novelty。新增两PDF直接无代理，阅读范围与hash逐卡记录，下载不代表完整全文阅读。
 
 E28明确的unknown类别可以输出（unrelated100%），但同actor新activity U仅33.68%、换actor65.28%，GP/cue近同形；label mapping大幅改变类别，不能宣布local约束已完整使用。这与E25 likelihood跨actor更强的梯度不同。E29源S1消融并行测两用途，只检验source necessity/correction sufficiency，不再堆问答措辞；需要进一步得到修订特异的预测结构才能形成候选论文，不能把近邻存在自动关线。
+
+## E29–E31：已有具体候选，增量放在角色信息迁移的方向和对象
+
+E29消融完整S1后仍有新活动效应，不能卖GP的必要残留；E30 second边界保留具名患者反向作用；E31同aspect began里，同actor同V D−1.36→不同V+1.53bits，扣neutral后差+2.50 [1.47,3.68]，换actor差+2.89 [1.72,3.98]。一般entity accessibility、exact separate触发、任意新event都需换患者的解释不足，predicate-dependent关系aftereffect形成了可检验account。native旧方向迁移与其不是同一测量，全部label mappings/R8保留，不能从两者构造隐双状态证明。
+
+这项C05与C04的GP history×wording交互分开；有具体候选[I01](../../../workbench/incremental-interpretation-revision/ideas/I01-event-reference-or-lexical-echo.md)，不追认原C00校准成功或宣布novelty。新V同时改meaning/适配，下一保持同一动作的自然释义区分surface retrieval与semantic relation；不开展同义词/模型sweep。
+
+[Zhou/Frank/McCoy NAACL2025](zhou2025-error-driven-priming.md) actual methods/discussion提醒自然连续上下文的predictive adaptation/IFE已有owner。[Britton2024](britton2024-discourse-connectives.md)仅primary摘要说明connectives可使event expectations反转；[Lacina2026](lacina2026-focus-alternatives.md)primary引言说明focus/negation备选激活是既有解释资源。不能把context contrast或否定后备选自身当新机制，须保留scope/predicate/participant的具体预测结构。读取范围逐卡明示，不把primary metadata等同读完全文。
+
+进一步回读[HANS ACL2019](mccoy2019-nli-heuristics.md)正文三heuristic、negation与模板设计：NLI里lexical/polarity匹配是必须保留的普通解释，E31换V分类改善不是新scope mechanism的独立证据。候选主干维持在正常患者预测的方向与scope/predicate依赖；native只作辅助，不能以其错误包装首次“模型不理解事件”。下一同动作释义也须控制结构/词邻近，而不单纯找保留效果的同义词。
