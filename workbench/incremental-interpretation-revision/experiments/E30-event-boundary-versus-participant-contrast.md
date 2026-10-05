@@ -28,3 +28,5 @@ second−separate同actorJ−.016 [−.687,.620]，换actor+.780 [.170,1.312]（
 [完整统计](../results/E30-summary.json)、[raw config](../results/E30-probability-config.json)、[native base](../results/E30-nli-base-config.json)、[second repair](../results/E30-nli-second-repair-config.json)、[separate repair](../results/E30-nli-separate-repair-config.json)。E29 POST-HOC拆分不追注册为旧假设；E30是事前预测检验，C04 L1/I01 PILOT。
 
 **跑前外审完成：** 960改动逐条确认仅separate→second；概率768全部eligible/faithful（608acceptable/160marginal），192NLI全部clear/undetermined/faithful（152acceptable/40marginal）。独立审核仍标原有anchor搭配边缘，不因新marker筛掉难例；预设anchor第三审清楚/自然层原样保留。模型评分全部，所有raw及audit hash见D0-E30-probability/nli-audit.json。
+
+**POST-HOC表述校对：** 为避免raw named与native pooled风格错配，完整native named/generic分层；named sameActor carryover separate63.40 [51.96,74.48]pp /second71.99 [61.41,81.63]，other17.24 [10.06,26.14]/29.08 [19.96,38.87]。generic全量另报，不能掩盖style差异。图B用匹配named但标明post-hoc，[数据](../results/E30-posthoc-nli-wording.json)可复现，E31事前报分层。

@@ -105,6 +105,7 @@ def adopt(directory,reviews):
             assert a['anchor_coherent'] in (True,False,None)
             r.update(audit=a,audit_review_sha256=h,eligible=a['grammaticality']!='unacceptable' and a['anchor_coherent'] is True,
                      acceptable=a['grammaticality']=='acceptable' and a['anchor_coherent'] is True,
+                     selectional_plausibility=a.get('selectional_plausibility','not_annotated'),
                      faithful_ablation=a['old_fact_scope']=='local_old_activity' and a['anchor_coherent'] is True and a['grammaticality']!='unacceptable')
             if task=='nli':
                 assert a['proposition_sha256']==r['proposition_sha256']
@@ -121,6 +122,7 @@ def adopt(directory,reviews):
                     eligible=sum(r['eligible'] for r in rows),acceptable=sum(r['acceptable'] for r in rows),
                     faithful_ablation=sum(r['faithful_ablation'] for r in rows),
                     grammar_counts=dict(collections.Counter(r['audit']['grammaticality'] for r in rows)),
+                    selectional_counts=dict(collections.Counter(r['selectional_plausibility'] for r in rows)),
                     review_sha256=[sha(p) for p in reviews])
         if task=='nli':report.update(clear_gold=sum(r['gold_relation'] is not None for r in rows),relation_agreement_with_parent=sum(r['gold_relation']==r['prior_relation'] for r in rows))
         path.with_suffix('.audit.json').write_text(json.dumps(report,indent=2)+'\n');reports[task]=report

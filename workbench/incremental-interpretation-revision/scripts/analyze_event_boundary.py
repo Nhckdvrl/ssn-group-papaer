@@ -44,8 +44,9 @@ def analyze(cache,probability,nli,repair_second,repair_separate,experiment='E30'
         if co=='eligible':return r['eligible']
         if co=='anchor_cross_clear':return r['anchor_cross_semantics_clear'] is True
         if co=='anchor_cross_acceptable':return r['anchor_cross_grammaticality']=='acceptable'
+        if co=='selection_no_odd_common':return r.get('selectional_plausibility')!='odd'
         return r['prior_faithful'] and r['faithful_ablation']
-    for cohort in ('all','eligible','anchor_cross_clear','anchor_cross_acceptable','prior_and_ablation_faithful'):
+    for cohort in ('all','eligible','anchor_cross_clear','anchor_cross_acceptable','prior_and_ablation_faithful',*(('selection_no_odd_common',) if cross_predicate else ())):
         sub=[r for r in raw if qualifies(r,cohort)];counts=collections.Counter(r['pair_id'] for r in sub)
         keep={f:sorted(sids) for f,sids in families.items() if all(counts[sid]==(112 if cross_predicate else 80) for sid in sids)}
         out['probability']['cohorts'][cohort]=keep;details={f:{} for f in keep};vectors={}

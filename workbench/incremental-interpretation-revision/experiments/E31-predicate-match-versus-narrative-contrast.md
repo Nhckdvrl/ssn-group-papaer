@@ -16,3 +16,5 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 待外审。I01 PILOT/C04 L1，候选主旨来自E29/E30数据，而非提前选择结果。
+
+**跑前独立外审与诊断补充：** 两审1920材料完整，NLI384全clear/undetermined，全部eligible/faithful。第二审发现12新搭配odd（8raw/4NLI，babies healing），第一审未标odd，分歧保留不覆盖；全部model评分，跑前增加selection-no-odd共同family敏感层，不因部分新V效果筛样本。neutral行选择关联未指定标uncertain是合理字段语义，不当成无效刺激。E30另外做POST-HOC native wording分层：named也同向迁移（sameActor separate63.40/second71.99pp），因此不是将raw named与native pooled混比制造相反方向；该分层全部结果/脚本保留，E31将named/generic native分层事前列为诊断读数。所有label maps依旧全报。
