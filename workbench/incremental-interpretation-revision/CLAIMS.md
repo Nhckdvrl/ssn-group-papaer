@@ -27,3 +27,6 @@
 - 2026-10-05：[E11](experiments/E11-extension-role-reference-audit.md) n1外审概率pilot：无歧义blocked extended的原短NP role PYes=.0404→fullNP=.9999，final semantic=1；不再将这项role extension下降解释为digging-in/commitment。四配置fullNP同向，head有题先失败；GP extended的新增问句未审完，结论范围明确限制。不是拒绝C01，也不是升级其能力/机制主张；旧E01分数和全部prompt保留。
 
 - 2026-10-05：[E12](experiments/E12-input-probability-versus-answer-access.md) source processing存在提前Q效应，24clusters的GP−cue disamb交互+1.47 bits [.47,2.52]由cue facilitation主导；source word预测与最终QA不可混作同一读数。C03固定协议测量保留，C01/C02仍L0，不据此主张内部parse/承诺机制或novelty。
+
+
+- 2026-10-05：[E13](experiments/E13-natural-followup-without-diagnostic-question.md) / [结果](results/E13-summary.json) question-free全自然S2 GP−comma −.031 [−.255,.211] / −.003 [−.173,.176]bits，不支持普遍后文代价；字面reference option交互+.905 [−.296,2.260]、其后邻词−.377 [−.637,−.111]，局部解读不确定。没有新能力/内部双parse/novelty主张；C01/C02保留L0。

@@ -1,6 +1,6 @@
 # E13：没有诊断问句的自然后文，是否仍受初始解释影响？（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** MEASUREMENT / P09下一信息问题，非paper novelty
 - **对应：** C01 / C02 / P06 / P09
 - **问题（一句话）：** 原句的GP历史是否在没有理解题时影响自然后文的自反/相互事件承接，还是当前错答主要来自诊断任务？
@@ -22,3 +22,23 @@
 ### 独立转录审核v1（任何E13模型推理之前）
 - 24source-item请求全部终止，23normal-finish完整，92个variant问题均外审回答faithful Yes；请求与原template/variant/hash/ID覆盖逐项核对，无tool调用。这里只确认原材料展开，不是semantic gold或人审能力证据。
 - source13（reciprocal item）因进程timeout无完整回答，未算完成；独立retry1单worker，明确零基source option0/1指代，保留全部原失败。无E13实验分数，样本/读数未按结果调整。见[external audit](../results/D0-Slattery-external-transcription-v1.json)。
+
+### 转录审核v2：格式拒收的why（仍在任何E13推理之前）
+- 更正上文“source13 timeout”：原v1与retry1都是exit0/normal stop、全4ID完整；唯一问题是answer用了boolean true而非Yes字符串，严格client格式校验拒收。旧报告/原事件/请求不改；本轮没有语义拒绝，也没有未完成LLM输出。
+- 仅transcription任务按true/false→faithful Yes/No转换，全部原answer保留、没有新semantic gold；[v2](../results/D0-Slattery-external-transcription-v2.json)核对24源item/96variants全部faithful Yes、4boolean转换、完整ID/hash/normal finish。retry1同样4true明确对应相同作者展开，不能叫两个独立人审。
+- 源13不排除，原24/96完整cohort与主读数保持；修正发生在任何E13模型结果之前。
+
+
+### 首次推理前实现核对
+- `followup_probability.py`加载原24/96 cache，重新抽取与normalized逐字典一致；96外审ID、源PDF/normalized SHA全部核对。普通raw text不套chat、无BOS、首词null；原词token对齐全部2480词、22–37 tokens/variant，无跨词token。
+- 首batch额外以transformers masked-label loss核对S2 causal shift；这是数值实现检查，不增加实验条件或事后选窗。主S2 mean、字面reference及其前后最多两词、两个作者排序块按上面读数实现。option交互明确为option0−option1；不自行标plausible/implausible。
+- 运行入口见scripts/README；固定FP32/TF32 false/seed0/batch4，复用本地8B权重；本次推进P09/C01/C02，不升级novelty。
+
+
+### 首次推理结果
+- 完整96原变体/24源组，2384实际评分词（第一源词96个为null），8.852s / .002459 GPU·h。首batch masked-label vs手算S2 loss差1.10e−7 nats，所有数值finite。主读数全24源组保留，字面reference次读数22。
+- **主读数**S2 GP−comma：option0 −.0307 bits [−.2547,.2110]，option1 −.0030 [−.1727,.1758]；option0−1交互−.0277 [−.2172,.1449]。目前不支持全后文uniform代价，也不能称严格零历史效应。
+- **次读数**literal reference GP−comma：option0 +1.2135 [−.2278,2.8607]，option1 +.3085 [−.7835,1.4866]；NP-option交互+.9050 [−.2960,2.2602]。pre-reference交互−.2833 [−.5855,.0015]，post-reference交互−.3770 [−.6372,−.1115]。全次读数/作者排序块均报，不以单个CI排除0宣布机制或挑新窗口。
+- 作者last12的reference交互+.367 [.014,.705]与其后邻词−.379 [−.672,−.093]方向不同；first12 reference宽CI。仅能保留局部依赖/预期重分配等竞争解释，尚未证明旧事件残留、新parse正确或两个内部表征。所有source/factor/区域见[完整摘要](../results/E13-summary.json)、[数字CSV](../results/E13-scores.csv)、[config](../results/E13-config.json)、[图](../results/E13-natural-followup.png)。原text与逐词分数留cache。
+- 复读Slattery Experiment2 rationale：作者已用局部vs全局后文处理、plausibility及新旧解释竞争区分理论；不能把本轮question-free/局部分项改名novelty。C01/C02仍L0，C03固定问答测量保留。下一步先完成较多独立词汇项目的E01语言操作图，避免把单一小区域当paper故事。
+- POST-HOC：无新选样或读数；所有预登记主/次读数完整报告。上述机制解读只是候选解释。

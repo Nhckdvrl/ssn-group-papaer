@@ -73,7 +73,11 @@ Pinned revisions, licenses, exact hashes and counts: [D0 audit](results/D0-audit
 
 Huang 2024 / Yoshida 2026共同使用的[公开SAP材料](https://github.com/caplabnyu/sapbenchmark)，固定revision `15e61066d510b5349e17740e6488c976abc3e1ac`、MIT、5文件blob/SHA256及统计见[审计](results/D0-SAP-source-audit.json)。原Excel有72 GP/explicit-cue题对、144句、24共享lexical sets；原问题/答案无需agent构造。Excel与CSV仅有6个目标标记差异，全部保留。原文cache `upstream/sap-discovery/`、共享schema loader `scripts/sap.py`；E09用原题迁移校对E01元语言读数，不更换研究对象。未下载人类participant数据，不伪造人机配对结果。
 
-Step5额度不足时，按此前授权保留opencode外部预审的独立概率探索层，全部gold=null，与Step5层分开；无gold能力分数、不升级C01/C02、不把外部模型审计宣称等同人审。
+此前opencode外审的概率探索层保持原协议和null gold，不追改已跑分数。
+
+## 当前独立审计授权（2026-10-05，最新用户修订）
+
+opencode免费模型与Step模型均可用于逐条数据审计；额度、格式或判断分歧无法解决时，可用GPT Luna子agent逐条复核。**不再把Step-only当作审计或研究推进条件。** 选择取决于任务和可用性，保留provider/model、逐ID答案、输入/响应hash、完成状态和不确定项；语义标注不由主执行agent自判。新标签的采用规则在相应推理前写清，既有null-gold实验不追改为能力分数；模型审计不宣称等同人类gold。下载仍全部无代理，API最多8并发。
 
 ## 问句之外的自然后文：Slattery2013
 

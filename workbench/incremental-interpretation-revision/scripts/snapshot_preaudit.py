@@ -1,4 +1,8 @@
-"""Freeze an externally reviewed exploratory cohort; never promote advisory gold."""
+"""Freeze reviewed inputs; optional new-cohort labels under user authorization.
+
+The default preserves the original probability-only protocol. Explicit label
+adoption creates a new immutable cohort; it never changes earlier runs.
+"""
 import argparse
 import collections
 import hashlib
@@ -7,7 +11,7 @@ from pathlib import Path
 from data import CACHE,sha,write_jsonl
 from step_audit import items_from
 
-def snapshot(data,audit_dir,out,max_set,additional_audit_dirs=()):
+def snapshot(data,audit_dir,out,max_set,additional_audit_dirs=(),adopt_clear_labels=False):
     rows=[json.loads(x) for x in data.read_text().splitlines()]
     annotations={};reports=[];missing=[]
     for item in items_from(rows):
@@ -50,6 +54,10 @@ def snapshot(data,audit_dir,out,max_set,additional_audit_dirs=()):
                auditor_grammar=v['grammaticality'],auditor_relation_status=a['relation_status'],
                auditor_blocker_status=v['blocker_status'],auditor_ambiguity_status=v['ambiguity_status'],
                eligible=eligible,clean_stratum=eligible and v['grammaticality']=='acceptable')
+        if adopt_clear_labels:
+            r['audit_tier']='external_model_annotation'
+            r['gold']=a['answer'] if eligible and not r['diagnostic_only'] and a['certainty']=='clear' else None
+            r['gold_status']='external_model_clear_annotation' if r['gold'] is not None else 'diagnostic_or_uncertain_no_gold'
         selected.append(r)
     assert selected and len({r['item_id'] for r in selected})==len(selected)
     assert not out.exists(),'immutable cohort: use a new snapshot path'
@@ -57,8 +65,9 @@ def snapshot(data,audit_dir,out,max_set,additional_audit_dirs=()):
     summary=dict(source_sha256=sha(data),snapshot_sha256=sha(out),max_source_set_index=max_set,
                  audit_directories=[str(audit_dir),*[str(p) for p in additional_audit_dirs]],
                  variants_complete=len(reports),variants_missing=missing,question_rows=len(selected),
-                 eligible=sum(r['eligible'] for r in selected),gold_labels=0,proxy_used=False,
-                 scope='Prior authorized independent opencode advisory; probability-only, not Step5-validated ability scores.',
+                 eligible=sum(r['eligible'] for r in selected),gold_labels=sum(r['gold'] is not None for r in selected),proxy_used=False,
+                 adopt_clear_labels=adopt_clear_labels,
+                 scope=('User-authorized independent model annotations; scores measure annotation agreement, not human-validated ability. Diagnostic/uncertain answers remain unscored.' if adopt_clear_labels else 'Independent opencode review; original probability-only protocol, no gold adoption.'),
                  grammar_counts=dict(collections.Counter(r['annotation']['grammaticality'] for r in reports)),
                  coverage=dict(collections.Counter(r['variant_id'].split(':')[0] for r in reports)),
                  annotation_model=sorted({r['model'] for r in reports}),
@@ -70,5 +79,6 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--data',type=Path,default=CACHE/'normalized/jurayj.jsonl')
     p.add_argument('--audit-dir',type=Path,default=CACHE/'opencode-preaudit-E01-v2')
     p.add_argument('--additional-audit-dir',type=Path,action='append',default=[])
+    p.add_argument('--adopt-clear-labels',action='store_true',help='New cohort only: adopt eligible, clear, non-diagnostic external answers. Existing probability-only snapshots unchanged.')
     p.add_argument('--max-set',type=int,default=3);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
-    s=snapshot(a.data,a.audit_dir,a.out,a.max_set,a.additional_audit_dir);print(json.dumps({k:v for k,v in s.items() if k not in ('provenance','variants_missing')},indent=2))
+    s=snapshot(a.data,a.audit_dir,a.out,a.max_set,a.additional_audit_dir,a.adopt_clear_labels);print(json.dumps({k:v for k,v in s.items() if k not in ('provenance','variants_missing')},indent=2))
