@@ -72,6 +72,9 @@ def main():
     elif args.experiment=='E07':
         from native_audit import analyze_native
         result=analyze_native(rows)
+    elif args.experiment=='E08':
+        from focus_audit import analyze_focus
+        result=analyze_focus(rows)
     else:
         from revision_map import analyze_revision
         result=analyze_revision(rows)
