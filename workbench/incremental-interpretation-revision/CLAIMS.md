@@ -33,3 +33,5 @@
 
 
 - 2026-10-05：[E01 snapshot3](results/E01-external-snapshot3.md) / [完整统计](results/E01-external-snapshot3-summary.json)：NPZ initial-event extension DiD句先+51.63 [21.60,84.02]pp、题先−20.29 [−53.11,9.93]n9，统一commitment解释支持不足；NPS源7语法marginal主导eligible部分读数，acceptable同步报告；不将外部annotation agreement或原role题当内部parse能力。C01/C02仍L0。
+
+- 2026-10-05：[E14](experiments/E14-event-identity-versus-extra-event.md)/[E15](experiments/E15-fixed-aspect-event-reference.md)：7episodic组原same−separate −2.61 [−3.78,−1.09]bits，固定continued仍−1.97 [−2.78,−.69]，aspect/预设贡献−.63 [−1.10,−.22]。只支持混合的条件续写响应；source-NP相对self/reciprocal偏好尚不能证明患者特异旧绑定，C01/C02维持L0。

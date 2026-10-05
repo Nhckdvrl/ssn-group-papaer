@@ -1,6 +1,6 @@
 # E15：固定 continued 拆分活动指向与先前活动预设（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** EXPLORE（E14 异常后的语言干预，不做模型/prompt sweep）
 - **对应：** P10；C01/C02 的解释边界。不是预设 paper idea。
 - **问题（一句话）：** E14 的 same−separate 变化，来自活动指向不同，还是 continued/began 与先前活动预设同时变化？
@@ -11,9 +11,13 @@
 - **噪声地板 + MIE：** 已知FP32词级数值漂移约1e−5bits；主要不确定性为source异质性与7组主样本。以分解结果的大小、方向、CI及逐项一致性改变解释，没有预先任意效果门槛。
 - **混杂审计：** A固定continued，仍改变that particular/a separate（活动指向与determiner语义不能完全分开）；B固定a separate，continued同时引入先前进行中的另一活动，可能是预设accommodation而非纯aspect。跨anchor的桥长相同；S1原样；所有audited变体均评分。新旧run检查权重manifest、precision、attention、batch、库版本一致。独立scope标记来自E14原后文，保持不随结果改动。词汇预测/文本repair仍是竞争解释，单次分解不能证明内部event graph。
 - **决策表（跑之前写）：** A保留大部分负interaction而B小 → 活动指向条件下的旧绑定使用仍值得追，随后控制determiner与指向清晰度；A小而B负 → 当前桥变化主要与continued的活动预设有关，不能讲event identity；A/B均明显 → 混合解释，先找分别响应的source结构；CI宽或源组反向 → 报告异质性并追具体材料，不加模型/prompt sweep。任何结果都不自动关闭territory或宣布novelty。
-- **算力预算：** 一张空闲H20、预计≤0.03 GPU·时；只176新输入，528旧输入仅统计复用。**实际：** 待运行。
+- **算力预算：** 一张空闲H20、预计≤0.03 GPU·时；只176新输入，528旧输入仅统计复用。**实际：** 11.918 s / 0.00331047 GPU·时；176 个新输入。
 - **命令：** `source scripts/env.sh` 后运行 `$IIR_PYTHON scripts/event_identity_infer.py --experiment E15 --data $IIR_CACHE/E15-material-preparation-v1/audited-v1.jsonl --out $IIR_CACHE/runs/E15`；分析用 `scripts/aspect_reference.py --old $IIR_CACHE/runs/E14 --new $IIR_CACHE/runs/E15 --cache $IIR_CACHE --out results/E15-summary.json`。以上路径在本workbench内执行。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
-待运行。C01/C02维持L0。
+- 主7组：A −1.9738 bits [−2.7832,−0.6943]；B −0.6341 [−1.0995,−0.2212]；原I −2.6079 [−3.7788,−1.0900]。A负6/7，B负6/7；逐source A+B=I 恒等成立。
+- 全22组：A −1.4263 [−2.1085,−0.6472]；B −0.7196 [−1.1014,−0.3821]。全部分项/每source见 [统计](../results/E15-summary.json)、[config](../results/E15-config.json)、[去文本scores](../results/E15-scores.csv)。
+- 实际运行git `58003f10c`，材料单词变化176/176核对，新旧权重与数值配置完全一致；HF/manual loss差见config。
+- 按事前混合解释分支：reference变化保留主要interaction，aspect/预设也贡献；不能将全部效应称事件身份。下一步区分患者特异reuse与一般reflexive/reciprocal不偏好，再控制same/separate指向词。
+- C01/C02仍L0，未证明内部event graph或新paper finding；本实验不是instruction能力评测。
