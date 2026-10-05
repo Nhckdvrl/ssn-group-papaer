@@ -31,7 +31,7 @@ def analyze_response(rows):
     from analyze import estimate
     sets=collections.defaultdict(lambda:collections.defaultdict(list))
     for r in rows:sets[r['pair_id']][(r['response_mode'],r['query_order'],r['condition'],r['question_type'])].append(r)
-    out={'cells':{},'effects':{},'label_variation':{},'interactions':{}}
+    out={'cells':{},'effects':{},'label_variation':{},'interactions':{},'mode_contrasts':{}}
     for metric in ('correct','p_correct','choice_mass'):
         avg={sid:{k:np.mean([r[metric] for r in rr]) for k,rr in d.items()} for sid,d in sets.items()}
         for key in sorted({k for d in avg.values() for k in d}):out['cells'][metric+'/'+ '/'.join(key)]=estimate([d[key] for d in avg.values()])
@@ -41,6 +41,14 @@ def analyze_response(rows):
                     out['effects'][f'{metric}/{mode}/{order}/{q}']=estimate([d[(mode,order,'non_gp',q)]-d[(mode,order,'gp',q)] for d in avg.values()])
                 out['effects'][f'{metric}/{mode}/{order}/specificity_DiD']=estimate([d[(mode,order,'non_gp','lingering')]-d[(mode,order,'gp','lingering')]-d[(mode,order,'non_gp','simple')]+d[(mode,order,'gp','simple')] for d in avg.values()])
             out['interactions'][f'{metric}/{mode}/order']=estimate([d[(mode,'reg','non_gp','lingering')]-d[(mode,'reg','gp','lingering')]-d[(mode,'rev','non_gp','lingering')]+d[(mode,'rev','gp','lingering')] for d in avg.values()])
+        # Registered response-mode comparison: retain item pairing and average
+        # the two A/B mappings before comparing modes.
+        for after,before in [('letter','standard'),('asserted','letter')]:
+            for order in ('reg','rev'):
+                for condition in ('gp','non_gp'):
+                    for q in ('simple','lingering'):
+                        key=f'{metric}/{after}_minus_{before}/{order}/{condition}/{q}'
+                        out['mode_contrasts'][key]=estimate([d[(after,order,condition,q)]-d[(before,order,condition,q)] for d in avg.values()])
     for mode in ('letter','asserted'):
         for order in ('reg','rev'):
             for condition in ('gp','non_gp'):

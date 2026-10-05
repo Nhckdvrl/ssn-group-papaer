@@ -1,6 +1,6 @@
 # E05：响应标签与 No 的语义校准（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** DIAG / measurement validity
 - **对应：** C00 / P01 / P03 / P04
 - **问题（一句话）：** E04 nonGP 的 GP-question floor 是 Yes/No 响应偏置、把未明说的宾语作语用补全，还是特定句法修订困难？
@@ -24,8 +24,12 @@
 - **算力预算：** GPU0（8B）、GPU2（1.7B）两独立单卡，估计合计 <0.3 GPU·h，复用已下载权重和 venv。
 
 ## 结果（跑完后填写；不改上面的内容）
-- 数字（含 CI）：
-- 结果文件：
-- 按决策表执行了什么：
-- 主张变化：
-- POST-HOC：
+- 数字（含 CI）：8B standard 句先 lingering paired difference +26.09 pp [13.04, 39.13]、题先 −34.78 pp [−49.28, −20.29]；asserted 句先 +30.43 pp [20.29, 40.58]、题先 −23.91 pp [−36.23, −12.32]。specificity DiD 分别 +19.57 pp [8.70, 31.16] / −57.97 pp [−73.91, −42.75]。反转仍未消除。
+- 8B nonGP lingering：standard 句先/题先 49.28%/43.48%；letter 47.10%/21.74%；asserted 63.77%/33.33%。asserted−letter 的 nonGP accuracy 改变 +16.67 pp [9.42, 24.64] / +11.59 pp [4.35, 19.57]，但不足以恢复稳定测量。
+- 1.7B nonGP lingering：standard 36.23%/43.48%、letter 26.81%/26.09%、asserted 13.04%/6.52%；asserted−letter −13.77 pp [−21.01, −7.25] / −19.57 pp [−28.26, −11.59]。单换标签或加入此语义说明没有解救 floor。
+- 解释边界：pure label explanation 不足；该 assertion wording 未解决 task meaning，不能据此排除所有语用解释。条件分数强依赖 query order，不作能力/修订机制结论。两模型结果不合并。最大 mapping P(correct) 差：8B 28.97 pp、1.7B 18.52 pp（完整 CI 见 summary）。
+- 实际算力：2,760 evaluations/model；8B 350.58s、1.7B 86.02s，合计约 0.1213 GPU·h。
+- 结果文件：[8B summary](../results/E05-8B-summary.json)、[1.7B summary](../results/E05-1.7B-summary.json)；对应 scores.csv / config.json；大 predictions 留本地 cache。
+- 按决策表执行了什么：baseline/floor/顺序仍坏 → 不进入 E01，不扩模型；整理 [人审](../logs/review-2026-10-05.md)，继续完成独立的数据审计。
+- 主张变化：C00 仍 L0，C01/C02 尚无推理结果；不制造 novelty。
+- POST-HOC：无结果驱动的筛题/选 mapping；mode contrast 是上半部分预先要求的同 set 比较。

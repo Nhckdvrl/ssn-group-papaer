@@ -1,6 +1,6 @@
 # E04：已知阳性模型的独立本地校准（2026-10-05）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO / instrument validation
 - **对应：** C00 / P03
 - **问题（一句话）：** 同一 harness 能否在上游已经给出稳定预期方向的固定 Qwen3-1.7B 上复现 GP-specific deficit，并满足 simple/nonGP 与 prompt 波动检查？
@@ -21,8 +21,10 @@
 - **算力预算：** 空闲 GPU2 单卡，估计 <0.1 GPU·h（full FP32）；无训练、无 SAE/probe。
 
 ## 结果（跑完后填写；不改上面的内容）
-- 数字（含 CI / 波动）：
-- 结果文件：
-- 按决策表执行了什么：
-- 主张变化：
-- POST-HOC：
+- 数字（含 CI / 波动）：raw 16-prefix nonGP−GP lingering accuracy +19.84 pp [14.04, 25.82]；全部 prefix 为正（2.90–36.23 pp，SD 9.10 pp）。GP/nonGP lingering 10.87%/30.71%，simple 75.72%/91.12%；simple difference +15.40 pp [11.14, 19.75]；specificity DiD +4.44 pp [−2.99, 11.96]。
+- Native chat paired lingering difference +27.54 pp [20.27, 35.51]，specificity +17.39 pp [6.52, 28.26]；generic revise 未解除 nonGP floor。
+- FP32 repeat：0 flips，max probability delta 2.0146e−5。
+- 结果文件：[summary](../results/E04-summary.json)、[config](../results/E04-config.json)、[HF model manifest](../results/D0-Qwen3-1.7B-manifest.json)；逐条 score 表单独保存。
+- 按决策表执行了什么：方向复现成立，但 nonGP floor 与 generic condition loss 尚未解除，严格 gate 暂不宣布通过；E05 区分 response bias/task meaning。
+- 主张变化：C00 保留 L0/未通过严格 gate；新增 P04；不把选择 smaller model 或 noisy positive direction 写成 novelty。
+- POST-HOC：无新增筛选；已注册 raw specificity 支持不了“effect 只在 GP-question”，已如实报告，不据此筛任何 prompt。

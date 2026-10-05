@@ -17,3 +17,5 @@
 
 ## 作废 / 降级 / 未通过记录
 - 2026-10-05：E00 不升 C00。句先有已知方向，但 prompt suite 整体不稳定；不得把选择句先视作通过。E03 注册追 why，原 E00 结果完整保留。
+
+- 2026-10-05：[E04](experiments/E04-known-positive-control.md) 正方向 +19.84 pp [14.04, 25.82]，但 nonGP 30.71%、raw specificity DiD CI 跨零；[E05](experiments/E05-response-meaning-calibration.md) 8B 的 assertion response 下句先 +30.43 pp、题先 −23.91 pp。C00 不升级；原协议有效性问题未解决，不能把 positive direction 当严格 gate。C01/C02 未运行。
