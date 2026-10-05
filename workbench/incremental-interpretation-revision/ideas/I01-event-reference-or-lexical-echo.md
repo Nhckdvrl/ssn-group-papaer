@@ -38,3 +38,5 @@
 - **最新定位：** venue-nearest + primary arXiv已核对negation与incremental narrative近邻，读取范围见知识库；搜索不完整，不作新颖性认证。此卡从E14原活动回指/原词echo问题演化而来，研究对象始终是incremental interpretation revision，非新开线。
 
 **E26反馈：** source final/assertion原主体与swap读数高，但原事件兼容/矛盾两问都No，joint scoped-access base0；不能宣称已正确scoped修订。E27只加已允许患者的匹配proposition，区分No default与truth-verification替代比较任务。这里是instrument原因校准，PILOT不升级，旧全部结果保留。
+
+**E27反馈：** 匹配allowed命题的两问joint全部100%，所以非整体No-default或整体truth-verification。原excluded失败及new未指定患者的“不一致”可能是unknown/contradiction混淆。下一三类语义关系+unknown阳性对照，明确这些状态；仍不宣布scoped-state访问已成立。
