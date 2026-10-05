@@ -431,3 +431,8 @@ E13 A4只做线性knots/constant action basis，不是完整iCEM，也不是新�
 - **ResWM [2603.11110v1](https://arxiv.org/html/2603.11110v1)，§3–4。** 读作动作坐标与动态观测的设计启发：residual action+相邻frame差编码+RSSM/imaginedactor，原文另有KL/energy regularizer，不能照摘要“无额外超参”当实现事实。DMC/Atari与消融宣称的效果尚未本地核对；上一动作是必要状态，不能只替换action token却不增对应信息。区分它与reference-control的RWM，二者不是同文；当前不以其headline决定方法。
 
 上述venue semantic nearest只给邻域（soft-state-invariant、TemporalStraightening、task-sufficient等），有词面无关结果，不是精确碰撞判决。后续优先实际训练/经验利用/更新集的增量与强对照，保留全部母问题。
+### 2026-10-05｜H1预测对象与经验组合的原文校准
+
+[LEAP，NeurIPS2019，1911.08453v1 §3–5/AppA](https://arxiv.org/html/1911.08453v1)：继承TDM，把goal-conditioned value当短控制器的隐式后果模型，用VAE限制可行视觉子目标，CEM优化多段最大不可达程度。导航U墙、Push-and-Reach、Ant600步，强TDM25/100、同奖励RIG、state-PETS和表示/范数/优化器消融。它已拥有视觉goal-policy组合与可执行性问题；不能把DIRECT后果head/经验子目标首次当贡献。其value需真正训练TD与actor，不等价复制目标图；因果数据预算和时间不变性仍需本地验证。借鉴的关键是动作抽象和状态支持一起受控，以及故意要求暂时离目标更远的标准长任务。
+
+[Flow Policies as Actions of Skill-Level World Models，作者项目页](https://andreumatoses.github.io/research/flow-skill-wm)：网页注明submitted ICRA2027，paper/code coming soon，**不是已接收全文深读**。网页Method/Setup/Results说明flow一次输出256-step OPEN-LOOP技能，LeWM预测整技能终点；12万脚本chunk/7500起点×16branches，四抽象共享训练/planner。symbolic与learned代码差距很大部分来自proposal知道合法动作；超过六技能的beam pruning会删除暂时不接近目标的必要操作。它没有closed-loop技能内反馈，本地H0是固定真实反馈控制器、tiny视觉/因果过去信息；但技能级后果预测/更短搜索/合法性问题并非无人区。我们若有增量，必须在同candidate support和强原始动力学下说明真实决策收益，不能用隐式privileged候选或beam宽度故事代替。网页数值未本地复现，待全文release再核具体评价seed/许可。

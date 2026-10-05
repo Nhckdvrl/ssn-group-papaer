@@ -108,3 +108,41 @@ G2四50epoch350/358400items endpoints全部训练/actualCPUCUDA/独立opt与RNG�
 G2完整384已独立trace/checkpoint/全11warm/raw-vsclip/native-success审计PASS：Nav HISTORY/COPY44/45（near24/24、far20/21），Push3/2（near3/2、far0/0），每48均含initial1，两接口实际逐动作相同。Nav差−2.08pp95CI[−8.33,4.17]，Push+2.08[0,6.25]，一个headseed不含训练方差。见E14_20261005_history_policy_control_results.json；不会把一条额外成功叫memory修复，弱Push原因仍竞争，G3完整数据×计算在跑。原v2两个queue3622514/15自然完成；已等空的A10 source1/2 queue3623770/71实际接管各卡，未重启任何unique run。
 
 G3完整覆盖pending（2026-10-05）：[全部384](../results/E14_20261005_coverage_policy_control_results.json)实际CPU/CUDA部署、八组trace/全25D warm/pixels/原raw policy返回/100budget/native成功、源与动作核对PASS。86×400/4000成功均2/48，860×400/4000为4/5，native与clip所有实际动作一致，每48含initial1。数据增益400为+4.17pp95CI[−4.17,12.5]、4000为+6.25[−2.08,14.58]；86增加训练0[−6.25,6.25]、860为+2.08[−6.25,10.42]，交互+2.08[−8.33,12.5]。一seed anchorCI不包含训练方差；更多事实覆盖/优化没有稳定恢复releasedCEM24/21能力，不把该端点差直接归因几何/多模态。新86×400 anchor为本轮replacement/perupdatecosine配方，不借G1充同训练baseline。原G3和A10自有队列均自然退出，原始全部弱方法保留。后续对齐真实后果、预测对象与policy抽取，非继续调同head步数。
+
+### H0：控制器诱导的真实后果，运行前（2026-10-05）
+
+对应I09/P04/P05/P08/R1/R2，保持人审I14/E20优先，不替换narrative。承接SPlaTES/option models、PLDM、PlanningLimits、INTACT：高层要选择的对象如果是feedback policy，原始开环action consequence并非它的真实后果。假设是学习/使用可执行经验组合是否能在少数据下改善长任务，H0先建立正确训练对象与强支点，**不是新skill方法或先证明tracking有效**。
+
+同一完整INTACT publishedseed0、原legal common-reset44/task、每anchor全部11去重branch endpoint goal（0 ZERO、2 FACTUAL、3–11合法分支；1重复ZERO排除），三固定controller OPEN25/GOAL5/REFERENCE5各预算25。goal image来自原保存的真实experience；nativegoalstate只在evaluator设置/判成功，不进policy。先恢复原goal下完整warm10，再设给定candidate goal；全部controller同query起点state/pixels/past5完全相同。initial/中途成功吸收保留，earlystop计实际steps；不是额外持有全部future轨迹或把policy获得goal看作免费action后果。生成2×44×11×3=2904固定controller continuations，source0探索数据；以前11goal不是独立anchor，bootstrap以44anchor聚类。no-shift，固定25一次，不做chunk/horizon sweep。
+
+阳性对照：原bank全trace SHA/88ledger/去重含义；actualwarm3image与完整Nav10/Push25diagnostics exact；三个querycontroller首5bitexact原H5首macro/原H1，actualCPU/CUDAtypedhead与手算；相同goal/setter不改agent/object dynamics，三controller各reset replay至query起点exact；不改source/weights/BN。source选择/prediction函数只能拿currentimage/goalimage/causal发出commands/imaginedreference，不读branch futureoutcome。原真实branch成功上界只是diagnostic，原bank含训练开发episode/发布prior未知，不能作独立确认。
+
+保存start/fullcontroller轨迹、每5steps的observedpixels与发出commands、modelreference/queries/returnedmean、hash/controller descriptor，供后续在trainanchor0–31和heldanchor32–43明确分离下学习option-outcome model。主读数每task/controller全484query的实际达到goal比例、budget/early-success、leave-self-goal后的可支持最终goal集合/候选oracle覆盖、三controller成对help/harm及clustered95CI；oracle只离线不部署，latentprediction误差待真正训练后才有。噪声：44sourceanchor、一个modelseed；同anchor多个goal不独立，相关全保留。
+
+决策表：反馈controller本身强→保留它作最强directpolicy、不能把额外head讲胜利；反馈后的后果/可连接性与open plan明显不同→下一H1比较同数据的primitive-rollout、直接policy-outcome预测与可执行性监督，并实际高层部署，对强GC/value方案；相同则不包装新抽象，继续I14数据/表示方法。若接口guard失败，在任何正式效用前保留唯一failure，修接口，不降低阈值/筛goal。单卡/task原RTX新空2/3优先，本地bank缓存，预算实际报告，raw机器留、git仅config/hash/summary。未启动，H1未训练。
+
+H0原RTX2/3空卡actualwrapper3666938/39启动，logs `/tmp/latent-E14-controller-consequence-{task}-RTX.log`；原全部44/task完整warm/factual25diagnostics/pixels、sourceSHA/去重branch/actualCPUCUDA五槽typedglobal/local和short/full首macro预控已PASS，两个完整1452continuations正在生成。没有读partial结果/没有训练outcomehead，原bank大raw留机器。
+### H1：训练可执行后果与原始动力学的匹配比较（运行前，2026-10-05）
+
+对应I09/P04/P05/P08、R1/R2，并服务人审优先I14的数据语义问题。继承SPlaTES/DADS/LEAP与INTACT，不认领首次技能模型、feedback预测或层次规划。假设：当候选是固定视觉反馈控制器，而非已知完整动作串时，直接学习该控制器的实际后果可能改善候选排序；原始动力学的同数据BPTT更新是必要强对照。
+
+固定H0全部2904与公开source0；训练anchor0–31，held32–43，两task同划分，held图像/目标/结果不参与训练或归一化。三控制器都保留，初始已成功完整报告但不计主要排序效应。所有结果是development，非新的确认episode；未知公开pretrain overlap照旧。
+
+比较FROZEN-WORLD、FINETUNE-WORLD、DIRECT-CONTROLLER、GOAL-COPY、CURRENT-COPY。FINETUNE只训练完整公开predictor/pred_proj，phi/projector/action_encoder/actor冻结，真实已执行五步macro的五前缀BPTT，不能用deployment未来真实动作；不足完整5步的吸收片段不伪造zero-action物理训练。DIRECT为当前z、给定子目标差、过去真实5command、三控制器one-hot→五前缀实际z残差，两层512/GELU，每前缀loss等权；到达子目标提前终止后按已观测终点吸收填充，明确其任务停止语义。数据与目标形式的差异是方法差，非单loss因果。两训练各固定1000 AdamW updates/B128，LR原predictor1e−4、新head1e−3、weight_decay.01、clip1，无best-checkpoint择优，seed0 exploratory；同时记录有效样本/active params/时间。
+
+启动前进一步锁训练采样：两方法都只采train anchor且至少执行5步的行，使用同一seed、同128000个row IDs；不足5步与initial行数量完整披露，held readout保留它们并另报告noninitial子集。DIRECT吸收prefix与BPTT有效完整macro的监督量不同，分别记账；主要解释必须同时看执行满25步与提前吸收两层，不能将停止语义优势称物理动力学改善。归一化只从该train子集拟合。
+
+阳性对照：缓存B1真实visual encoding与CPU/CUDA原容差；future-action graph索引独立手算；world一次prediction与官方rollout相同；headzero→CURRENT-COPY；held输入或label修改不能改变train采样/归一化；optimizer仅active参数，冻结全部weights/BN；实际梯度非零/finite。噪声地板：44/32/12是anchor数而非数千独立样本；CI按held anchor配对bootstrap，单trainseed不包含训练方差。
+
+主读数：held同candidate bank真实latent-cost regret、native选中成功与oracle支持、排名（含/去掉候选子目标=最终目标分别报告），五prefix误差按成功/未成功分层；不只报告MSE，不拿goal-copy败给弱head当新方法证据。用于给定controller子目标的真实query允许，但bank含同起点真实经验子目标，不能把该offline支持当部署可用信息。
+
+决策表：若DIRECT排序不超过FINETUNE/FROZEN/GOAL-COPY，保留负结果并理解support/停止语义/表征，不调head宽度反复救。若有排序信号，立即比较实际闭环：候选只能来自TRAIN经验池和给定最终目标，禁止held未来中间图；同候选/同controller执行对照，强BASE25/GOAL5同时保留。offline信号不能替代closed-loop。若closed-loop仍弱，跨goal候选支持、长时value与数据覆盖是竞争解释，不关闭R1/R2。全部预控后独立单GPU铺两task×两方法；模型HF缓存，encoded数组和raw在node-local cache，不需大训练框架。
+### H2A：与高层部署一致的定长控制器后果（运行前，2026-10-05）
+
+H0/H1给定候选任务、native子目标吸收；该语义不能直接当最终任务固定的层次option。新H2A采**定长物理后果**：环境保持原最终任务目标，不设候选物理goal，不因子目标或native最终goal命中中断collector的25-step counterfactual轨迹；done只作离线评价，逐步native hit保存。该forced continuation只用于模型训练，真实closed-loop仍第一次最终任务成功立即停。原H0/H1有效范围不变，不事后更改其轨迹/读数。
+
+两task采用E18F3新48episode（与H0/训练memory source episodes互斥，公开pretraining overlap未知），每起点17给定image子目标×OPEN25/GOAL5=1632完整25-step轨迹，共3264/81600新envsteps，加真实10-step warm restore成本另记。17候选为给定最终goal+TRAIN H0 anchor0–31去重经验图的8 nearest-to-final-goal和8 uniform剩余，固定seed131001/131002+j，不读任何branch真实future/hiddenstate；最终goal的nearest只是proposal，不是learned acquisition。所有候选和顺序在first rollout前sealed，train/held source anchor0–31/32–47，近远层分别保留。新48曾用于F3评价，属development而非未看过确认集。
+
+阳性对照：全部48真实warm pixels/full diagnostic/factual goalbank控；每个候选共享完全相同初始physical state/currentpixels，collector final-goal不变；OPEN和GOAL首5issuedactions exact，global plan/CPUCUDA/kernel控从完整公开source继承并核第一actual新query；future outcome不进候选selector；all25命令有真实对应状态，重复branch replay exact，native hits逐步核。噪声地板：唯一48physical起点/单source，method大量行不作独立样本。
+
+主读数先是完整轨迹/信息权限校对与真实candidate support（anytime、terminal，final-only与memory分别报告）；这一步是可执行经验资产，不是新方法。H2B训练前将固定预算/模型/读数另写；DIRECT若组合多段必须预测未来实际command history供下一controller使用，不能凭空清零或偷真实未来动作。部署比较同一完整三option路径bank、原始动力学与controller-outcome预测，独立强BASE25/GOAL5和无WM近邻作为参照；不使用held未来子目标、不将one-stage greedy失败当hierarchy上限。不因H1或H2局部null关闭R1/R2/I14。
