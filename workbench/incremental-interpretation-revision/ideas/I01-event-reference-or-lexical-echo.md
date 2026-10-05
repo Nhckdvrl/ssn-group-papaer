@@ -18,3 +18,8 @@
 - **排序打分（1–3，agent provisional）：** 证据2、增量清楚度1、形态匹配2、成本3、可完成性2、信息增益3。不能替人给Sasano签品味。
 - **仍缺什么：** exact lemma-independent transfer、late explicit role证据/合法与malformed control、真正恢复后再用的证据、跨现成source独立验证。当前只有第一条有数据来源的候选问题，没有PROMISING或顶会like宣称。
 - **最新定位：** 2026-10-05 venue-nearest：Amouyal2025、Yoshida2026，另有大量不相关entity/event检索项；最新primary arXiv检索未发现这个精确factorization，但搜索覆盖不完整，不能当新颖性证明；[知识库](../../../library/themes/incremental-language-processing/FIELD_MAP.md)。
+
+
+## E18反馈（2026-10-05）
+
+faithful完整9源的释义same/separate交互+1.44 [.90,1.91]bits，lexeme完全重现不是必要条件；4 episodic∩faithful小样本含1语法marginal，不能夸成大范围机制。现RQ更清楚：**弱句法消歧留下的患者关联，强语义角色证据能否在活动范围内覆盖？** 原“修订成功再重激活”没有证据，明确不用这个headline。接E19双向only-self/only-NP的scope限定叙事信息；若强证据覆盖则把先前结果限定为disambiguation强度/功能reuse，不把可纠正的关联讲成不可删除记忆。该动作继续I01而非换研究对象，仍PILOT。

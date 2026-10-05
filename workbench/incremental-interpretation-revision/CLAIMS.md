@@ -39,3 +39,5 @@
 - 2026-10-05：[E16](experiments/E16-patient-specific-crossover.md) / [统计](results/E16-summary.json)：7episodic固定continued的患者特异桥交互A_M+2.11 [1.17,3.14]bits，7/7正；other-NP相对ref交互+.14 [−1.06,1.30]。排除“仅一般self/each-other抑制”不足以解释全部结果；仍未排除一般entity accessibility/lexical association，C01/C02不升级机制主张。
 
 - 2026-10-05：[E17](experiments/E17-relation-versus-entity-accessibility.md)/[统计](results/E17-summary.json) 7源neutral GP患者提及差−.98 [−2.53,.69]而原谓词续写+7.82 [5.39,10.23]；额外scope interaction A_K+1.41 [.54,2.41]，neutral自身+.70 [.46,.93]。限制entity-salience-only解释，仍含lexical predicate retrieval/repair竞争，未建立新semantic mechanism，C01/C02保留L0。
+
+- 2026-10-05：[E18](experiments/E18-predicate-paraphrase-transfer.md)/[统计](results/E18-summary.json) 独立faithful9源释义A+1.44 [.90,1.91]bits，strict episodic4（含1marginal）D_M_same+6.95 [4.89,9.68]。限制exact surface-verb echo但未证明prior correction完成或internal semantic state。I01已登记PILOT，C01/C02不升机制主张。
