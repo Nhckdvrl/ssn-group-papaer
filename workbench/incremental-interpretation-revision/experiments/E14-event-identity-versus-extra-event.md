@@ -1,6 +1,6 @@
 # E14：事件回指是否改变GP历史对后文患者选择的影响？（2026-10-05）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** PILOT / competing-account measurement；非已确立idea
 - **对应：** C01 / C02 / P09 / P10
 - **问题（一句话）：** 在没有诊断题的后文中，继续原活动与另起活动是否改变GP历史对原self/reciprocal与初始对象NP的相对支持？
@@ -20,3 +20,11 @@
 
 ## 结果（跑完后填写，不改以上预测）
 - 待推理；C01/C02仍L0，没有内部两个event或revision failure主张。
+
+
+### 首轮完整结果
+- 完整528原/派生raw输入，21.949s / .006097 GPU·h；masked target loss差1.07e−7 nats。88个无桥原reference与E13完整token IDs一致，2168词数值max差5.51e−5 bits、mean1.26e−6；输入/模型版本保持。
+- **预登记7明确episode主交互**I_same−separate −2.6079 bits [−3.7788,−1.0900]；D_none −11.7096 [−14.8653,−8.6700]、D_same −11.2440 [−13.8886,−8.8043]、D_separate −8.6361 [−10.8183,−6.5973]。two-option在source内平均，n7，不把44/176样本当独立组。
+- 全22源组同交互−2.1459 [−2.9844,−1.2897]。R绝对值同时报：无桥GP −7.207、comma +2.184；same GP −5.386/comma +3.783，separate GP −3.801/comma +3.223 bits。长coreNP与短ref不同，不能以raw符号单独作能力准确率；但GP/cue的词汇替代固定，强paired差不是whole-S2 mean≈0能否定的。
+- [完整摘要](../results/E14-summary.json)、[config](../results/E14-config.json)、[CSV](../results/E14-scores.csv)、[E13同输入校对](../results/E14-baseline-reproduction.json)。变化更支持history/reference条件有区别的测量线索，尚不能主张event-specific机制，因为continued/began与同一/另一referent一起变化。
+- 下一信息实验E15只加continued a separate，同aspect比较same/separate、同separate比较continued/began；若差来自aspect/presupposed continuation则会改变候选account，不扩模型或窗口。主张仍C01/C02 L0；这是待解释测量，不把GP存在叫novelty。
