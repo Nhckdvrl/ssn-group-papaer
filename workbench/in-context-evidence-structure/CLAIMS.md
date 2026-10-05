@@ -1,17 +1,21 @@
-
 # CLAIMS — In-Context Evidence Structure
 
-**2026-10-05：PROPOSED baseline residency。当前无论文级科学 finding。**
+**2026-10-05 傍晚更新（agent）。** 主旨：In-context learners track changes in *what to do*, not in *which input gets what*。
 
-| ID | 主张 / 待验证对象 | 等级 | 当前依据 | 升级条件 |
+| ID | 主张（含适用范围） | 等级 | 依据（实验卡 / 结果文件） | 升级条件 / 待补 |
 |---|---|---|---|---|
-| C00 | 本地 procedural task 能让 frozen LM 在 episode-randomized nonce mapping 上表现出可靠 few-shot task learning，而不是仅靠 label semantics / copy | L0 | 设计成立，尚未本地运行 | E00 通过；0-shot vs few-shot、held-out query、nonce remap 全部报告 |
-| C01 | 我们能稳定测出 demonstration 的 position-wise influence，并在 exchangeable 与 obvious-change 两个阳性条件下得到可区分 readout | L0 | 文献给出预期方向，尚未本地运行 | E01 通过，readout 波动小于两极差异 |
-| C02 | frozen LM 的 evidence weighting 会/不会随 stable-vs-change 的统计证据系统改变 | L0 | 这是 workbench 科学对象，不预注册方向 | E02 matched pilot + CI；必须与 fixed-prior / set / sequence / adaptive accounts 比较 |
-| C03 | structure selectivity（若存在）能跨任务族或 evidence type 泛化 | L0 | 未测试 | E02 成立后用第二 substrate 达 L3 范围前不得泛化 |
+| C00 | 程序化 nonce 规则任务支持真实 in-context 任务学习（未饱和、换字典稳定） | L1 | E00 debug（Qwen3-8B / Base，40/格）；`results/e00_debug` | nonce 词库 step-5 审计后的确认版（配额阻塞） |
+| C01 | 方向性测量工具有效：exact 层级 Bayes oracle（λ×ε）+ 成簇选择性 + 前缀噪声方向检验 + A→B vs B→A；阳性对照（标签流）上 13 个模型都测到规范方向效应 | L3 | `scripts/ices/oracle.py`（28 单测）；E05/E06/E16 | — |
+| C02 | **分类式 ICL 的变化盲**：当 regime 是按输入类别路由的映射（nonce 规则、SST、奇偶、大小、类别条件变换）时，LLM 把证据当可交换集合汇总——成簇≈零散、前缀噪声方向与 oracle 相反、T=64 时 A→B≈B→A、适应是局部的、指令与可见 CoT 不改变 | **L3** | E02a/E04/E07/E08/E13/E15/E16/condarith；13 模型（Qwen3 0.6–32B、Base、Qwen2.5 7/32B、Mistral-7B、Llama-2-7B、gemma-2-2b、Qwen3.5-9B）；确认版新种子 300 base/格式 + bootstrap CI；`results/*/summary.csv` | 混杂审计见下；thinking 结果待补 |
+| C03 | **全局规则的变化感知**：标签流（含无关输入/独特 id）与格式变换（大写↔反转）在几乎所有模型上时间敏感且方向规范；关系性全局函数（±3/±1/±10）时间敏感、强度随模型能力上升（Qwen3-8B/14B 强；Llama-2/Mistral 弱）；字母 ±1 例外（接近 0/反向） | L3（标签流/大写）、L2（关系性函数） | E05/E06/E11/E11b/E16/conf_rel | 更多模型的关系性函数；解释字母例外 |
+| C04 | 隐式先验：表层标签流 λ≈0.02–0.05、ε≈0.05–0.1；分类 λ=0、ε=0.3 | L1 | E10b（Qwen3-8B） | 多模型拟合 |
+| C05 | 机制：分类映射没有可迁移的任务向量、注意力按输入相似度检索（位置只调制检索锐度）；全局函数被压缩为随时间更新的任务向量（patch 后保留成簇/噪声方向/过时折扣）；标签流的时间整合由晚层“游程头”承载（消融 −73%） | L4（单模型） | E06 注意力探针、E10、E17、E17b（进行中） | 多模型复现 E17；E17b 的跨格式相关 |
+| C06 | 为什么：时间盲由训练统计（上下文内映射稳定）学来——在易变分类流上 LoRA 后，未见过的自然语言分类向时间加权移动（mag 明显、parity/SST 较弱；噪声方向未转负） | L1 | E18（seed 0） | 种子 1/2、4× 剂量；toy v2 |
 
-**禁止提前升级**
-- order sensitivity 本身不是 C-level novelty；
-- recency under change 不是 novelty；
-- one noisy demo hurts 不是 novelty；
-- probe 可分离某个 task state 不能单独证明 adaptive structure inference。
+**混杂审计（C02 升 L2/L3 时）：** 1 噪声地板：bf16 batch 噪声 ~0.1 nats/条、无方向，200–300 base 平均后 ≈0.007 — 已控制。2 工具有效性：标签流阳性对照 13/13 模型测到 — 已控制。3 选窗：配对设计、所有条件共享输入/名字/query — 无关。4 自校准：所有条件同一读数（exact 序列 log-odds）— 已控制；跨任务比较用尺度归一化（CSIn/NDIn）。5 提示词默认值：E03（change/noise 指令）、E09（可见 CoT）— 已控制（不能恢复）。6 输入一致性：同一 tokenizer/同一 prompt 字节 — 已控制。7 幸存种子：全部 base 报告，无筛选 — 已控制。8 算力匹配：不适用（测量型主张）。9 数据重叠：pilot 与确认版种子分离（确认版 ≥500000）— 已控制。10 事后切片：边界被修正两次（E11b、E13 证伪前两种表述），在卡中如实记录；确认版预测跑前写定 — 已控制。11 饱和：分类任务 accA 0.79–0.99 未饱和；标签流 |logit| 很大（~25）用归一化指数比较 — 已注明。12 系统特有：13 模型 4 族 — 已控制。
+
+**作废 / 修正记录**
+- 2026-10-05：表述“表层 vs 潜在（label shift vs concept drift）”被 E11b（±3 纯条件变化仍时间敏感）证伪。
+- 2026-10-05：表述“单条 demo 是否可识别 regime”被 E13（自然标签翻转仍时间盲）证伪。
+- 2026-10-05：E12 toy v1 未学会分类 ICL，不可判读（非否定）。
+- 2026-10-05：E10 的“游程头”不是通用时间整合电路（对 ±3/大写无特异作用）。
