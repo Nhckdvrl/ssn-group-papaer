@@ -41,7 +41,9 @@ def one(item,model,out):
             'model':model,'exit_code':code,'proxy_used':False,'advisory_only':True}
     try:
         assert code==0,'process did not finish normally'
-        assert any(x.get('type')=='step_finish' for x in ev),'missing finish event'
+        finishes=[x for x in ev if x.get('type')=='step_finish']
+        assert finishes and finishes[-1].get('part',{}).get('reason')=='stop','missing normal finish event'
+        report['usage']=finishes[-1]['part'].get('tokens')
         a=json.loads(text);assert a['variant_id']==item['variant_id']
         ids=[x['item_id'] for x in a['answers']]
         assert len(ids)==len(set(ids)) and set(ids)=={x['item_id'] for x in item['questions']}
