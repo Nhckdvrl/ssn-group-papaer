@@ -126,3 +126,5 @@ E29消融完整S1后仍有新活动效应，不能卖GP的必要残留；E30 sec
 进一步回读[HANS ACL2019](mccoy2019-nli-heuristics.md)正文三heuristic、negation与模板设计：NLI里lexical/polarity匹配是必须保留的普通解释，E31换V分类改善不是新scope mechanism的独立证据。候选主干维持在正常患者预测的方向与scope/predicate依赖；native只作辅助，不能以其错误包装首次“模型不理解事件”。下一同动作释义也须控制结构/词邻近，而不单纯找保留效果的同义词。
 
 E32前继续核对Lacina2026正文（§3–5，强度依赖prior）与Rana2026 negative-instruction pressure preprint（存在概率示例不一致）。宽泛备选激活/禁词rebound不作主旨；对应paper cards登记实际读取范围，E32测试更具体的旧角色事实词序/焦点及跨事件预测。
+
+E33定位追加：Pucci/Li/Sinclair2026-09 preprint已拥有生产priming的词汇/semantic alignment与coherence（含Qwen3-8B-Base）；Capuano2023有人类否定/contrastive focus的合理备选选择。普通semantic transfer并非新颖性证书。本线精确增量应是event/action/actor边界下同role证据的方向和使用结构；source-free C05是首次给定角色事实，尚非已测actual wrong belief的修订。venue-nearest本次主会检索返回memory/event inference等宽近邻、未见精确同claim；不完整，不判死或认证novelty。
