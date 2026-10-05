@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     meta = {}
-    for l in open(ROOT / "data/ctxeffect/rows.jsonl"):
+    for l in open(ROOT / "data" / __import__("os").environ.get("DATA", "ctxeffect") / "rows.jsonl"):
         r = json.loads(l); meta[r["uid"]] = r
     recs = []
     for f in [g for a in sys.argv[1:] for g in glob.glob(a)]:

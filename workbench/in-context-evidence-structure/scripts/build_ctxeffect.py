@@ -18,6 +18,7 @@ T = 16
 N = int(os.environ.get("N_BASES", 300)); SEED0 = int(os.environ.get("SEED0", 820000))
 OUT = ROOT / "data" / os.environ.get("OUT", "ctxeffect"); OUT.mkdir(parents=True, exist_ok=True)
 NAMES = ("Alex", "Sam")
+TAGPOS = os.environ.get("TAGPOS", "adj")    # adj: content, Annotator, Label   |   far: Annotator, content, Label
 
 
 def main():
@@ -54,12 +55,16 @@ def main():
                         ys.append(Lw)
                     else:
                         ys.append(yA)
-                body = "".join(f"{key}: {x}\nAnnotator: {NAMES[a]}\nLabel: {lw[y]}\n\n" for x, a, y in zip(xs, ann, ys))
+                if TAGPOS == "far":
+                    body = "".join(f"Annotator: {NAMES[a]}\n{key}: {x}\nLabel: {lw[y]}\n\n" for x, a, y in zip(xs, ann, ys))
+                else:
+                    body = "".join(f"{key}: {x}\nAnnotator: {NAMES[a]}\nLabel: {lw[y]}\n\n" for x, a, y in zip(xs, ann, ys))
                 for qa in (0, 1):
                     for qc in (0, 1):
                         rows.append({"uid": f"{fmt}:{cond}|q{NAMES[qa]}{qc}|ce_{fmt}_{seed}", "cond": f"{fmt}:{cond}", "qann": qa,
                                      "qclass": qc, "base_id": f"ce_{fmt}_{seed}", "labels": ys, "ann": ann,
-                                     "prompt": head + body + f"{key}: {qx[qc]}\nAnnotator: {NAMES[qa]}\nLabel:",
+                                     "prompt": head + body + (f"Annotator: {NAMES[qa]}\n{key}: {qx[qc]}\nLabel:" if TAGPOS == "far"
+                                                              else f"{key}: {qx[qc]}\nAnnotator: {NAMES[qa]}\nLabel:"),
                                      "cands": [" " + lw[0], " " + lw[1]], "qA": int(qc ^ s), "L": int(Lw)})
     with open(OUT / "rows.jsonl", "w") as f:
         for r in rows:
