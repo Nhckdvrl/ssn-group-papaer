@@ -11,6 +11,13 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ices.oracle import all_oracles_fast  # noqa
 import build_dim as bd  # noqa
+from functools import lru_cache
+
+
+@lru_cache(maxsize=None)
+def _ORC(labs):
+    """label-stream oracle depends only on the A/B label sequence -> cache"""
+    return all_oracles_fast(np.ones((len(labs), 1), int), list(labs), [1], 1)
 
 ROOT = Path(__file__).resolve().parents[1]
 T = 16
@@ -51,7 +58,7 @@ def main():
             for name, pat in conds.items():
                 ys = [fA(x) if ch == "A" else fB(x) for x, ch in zip(xs, pat)]
                 labs = [0 if ch == "A" else 1 for ch in pat]
-                o = all_oracles_fast(np.ones((T, 1), int), labs, [1], 1)
+                o = dict(_ORC(tuple(labs)))
                 o["meta_pB"] = o["meta_p_rule_query"]; o["set_pB"] = o["set_p_rule_query"]; o["sequence_pB"] = o["sequence_p_rule_query"]
                 rows.append({"uid": f"{fmt}:{name}|{fmt}_{seed}", "cond": f"{fmt}:{name}", "base_id": f"{fmt}_{seed}",
                              "pattern": pat, "labels": labs, "prompt": render(xs, ys, q),
