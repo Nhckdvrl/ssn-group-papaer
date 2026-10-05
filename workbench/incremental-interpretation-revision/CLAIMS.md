@@ -43,3 +43,5 @@
 - 2026-10-05：[E18](experiments/E18-predicate-paraphrase-transfer.md)/[统计](results/E18-summary.json) 独立faithful9源释义A+1.44 [.90,1.91]bits，strict episodic4（含1marginal）D_M_same+6.95 [4.89,9.68]。限制exact surface-verb echo但未证明prior correction完成或internal semantic state。I01已登记PILOT，C01/C02不升机制主张。
 
 - 2026-10-05：[E19](experiments/E19-late-exclusive-role-evidence.md)/[统计](results/E19-summary.json) 7源明确角色双向控制使R移动GP+8.51 [5.15,12.32]、cue+10.60 [7.75,13.55]；reference-only后history差R−5.52 [−8.06,−3.29]bits。控制有效不等于旧关联删除，但negated-NP最近提及仍竞争；C01/C02不升机制主张。
+
+- 2026-10-05：[E20](experiments/E20-exclusive-fact-versus-last-mention.md)/[统计](results/E20-summary.json) 同事实把允许对象最后说，7/7仍history R负，mean−3.40 [−4.28,−2.44]bits；GP绝对R+1.73 [.58,2.91]且role控制+9.56，不支持“完全不更新”。对象顺序解释部分，named remention仍未分；C01/C02不升语义机制主张。

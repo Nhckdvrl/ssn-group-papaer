@@ -28,3 +28,8 @@ faithful完整9源的释义same/separate交互+1.44 [.90,1.91]bits，lexeme完�
 ## E19反馈（2026-10-05）
 
 不是明确角色信息完全无效：同活动GP的R移动+8.51 [5.15,12.32]bits，cue+10.60 [7.75,13.55]；但同样reference-only句后GP−cue仍−5.52 [−8.06,−3.29]。这使“强cue可完全覆盖”不够；不能直接解释成不可删除，因为否定NP被最后提及可能重新喂入旧association。下一[E20](../experiments/E20-exclusive-fact-versus-last-mention.md)交换only/not对象出现顺序，保留同一事实，区分recent lexical echo与relation history。7源same明确，separate中3源target scope不确定；不会把全部世界兼容NP叫错。新近邻[CBM](../../../library/themes/incremental-language-processing/xu2026-contextual-belief-management.md)/[DeltaLogic](../../../library/themes/incremental-language-processing/dhanda2026-deltalogic.md)已有一般update/stay/isolation与inertia，候选必须保持predicate/episode具体增量。
+
+
+## E20反馈（2026-10-05）
+
+same事实把正确对象最后说，history R仍−3.40 [−4.28,−2.44]bits（7/7负），但较原改善+2.11 [.64,3.94]；双向角色事实移动GP+9.56、cue+9.39。不能说不会修订：GP ref-only绝对R已+1.73 [.58,2.91]，整体偏向正确允许对象。当前自然问题是**正确角色信息进入后，为什么以前的关联仍影响后文使用？** 最近提及只解释一部分，E21区分否定中重新点名与先前relation的持续影响。不将正常概率置信度差自动当capability failure，也不以“semantic hysteresis”命名代替新颖性。
