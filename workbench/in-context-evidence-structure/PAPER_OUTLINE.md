@@ -1,3 +1,39 @@
+# Draft outline (agent, 2026-10-05 20:40) — CURRENT
+
+**Nearest, Not Newest: In-Context Learners Detect Output Drift but Not Concept Drift**
+
+## Abstract (current draft)
+When some in-context examples contradict the rest, a rational learner must decide whether they are noise or
+a sign that the task changed, and the answer lies in how the contradictions are organized in time. We turn
+this change-point-vs-oddball distinction into an exact test for LLMs, with an exact Bayesian oracle that
+jointly infers volatility and noise and makes a direction-reversing prediction: adding scattered
+contradictions earlier in the context should make a late run of contradictions *less* believable, whereas
+any additive accumulation of evidence predicts the opposite. Borrowing the stream-learning distinction
+between output (prior) drift and real concept drift, we find a sharp dissociation across 13 open models
+(0.6B–32B, four families, base and post-trained). When the change shows up in the outputs themselves — a
+label stream, an output format, an output language — models behave like change-point detectors and move in
+the normative direction. When the change is in the input–output relation — every classification remapping
+we tested, natural or nonce labels, plus lexical and string functions — evidence is pooled additively:
+exchangeably for classification, with a fixed recency kernel for functions; never in the normative
+direction. The failure is not about knowing that something changed: when we mark the new regime by
+writing its labels in upper case, the model switches to upper case with near certainty and with normative
+sensitivity to noise, yet applies the new mapping at chance — the format follows the change, the content
+does not. Instead, predictions follow the nearest neighbours in input space regardless of when they were
+observed ("nearest, not newest"), instructions and chain-of-thought do not help, and 64 demonstrations do
+not distinguish A→B from B→A. The temporal signature is already present in the task state carried at the
+query, task-homogeneous training reproduces the dissociation in small transformers, and fine-tuning on
+volatile classification streams only moves classification from exchangeable to recency-weighted pooling.
+In-context learning, in short, adapts to what the outputs look like, not to what the task has become.
+
+## Section map
+1 Intro (paradigm Fig.1; output vs concept drift) · 2 Measurement (oracle, three probes, sign test) ·
+3 Output drift is tracked (label streams ×13 models; format/language) · 4 Concept drift is not
+(classification ×13; NL; T=64; instructions/CoT; nearest-not-newest E21/E04) · 5 Same answer, two
+behaviours (E22) · 6 Where it lives (task-state patching E17b; run heads E10) · 7 Why (toy E12; LoRA E18) ·
+8 Implications (agents, continual ICL, evaluation of order effects, Bayesian ICL debate) · Map of 15+
+formats in appendix (incl. numeric-shift exception in Qwen3).
+
+---
 # Draft outline (agent, 2026-10-05) — working title
 
 **Revision (19:50): the data now support a three-regime account. Preferred framing:**
