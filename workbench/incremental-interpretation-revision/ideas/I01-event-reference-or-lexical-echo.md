@@ -46,3 +46,6 @@
 
 
 **E29反馈与更精确的解释压力：** 源S1被完全移除，native旧role正负向新活动迁移仍强；这部分不需GP历史。具名role的患者预测方向在原event为正、新event为负，而neutral近0；generic受未提及NP的salience主导，不能概括。候选问题因此收紧为：**晚来的参与者信息，何时被当成新事件的惯例，何时被当成应改变的关系？** 下一E30分离explicit boundary词的对比意味与两事件的身份不同；这不是generic QA/prob gap，须预测哪种边界使患者迁移改变。原priming/GP/negation owners不变。尚无机制/能力升级，仍PILOT。
+
+
+**E30事前预测保留：** separate→second后具名患者activity方向sameActor−1.64 [−2.64,−.80]bits、other−2.11 [−2.90,−1.28]，neutral近0、原event+2.65；native按旧方向泛化仍在。此处值得讨论的候选主旨是**事件边界会翻转参与者信息的预测作用，但关系判断仍容易沿用旧事件事实**。不能以两个读数相反本身作novelty；需要对象依赖的可检验account。下一E31只测新predicate匹配：predicate-linked inhibition/复用 vs一般叙事参与者对比。人类/LM priming、discourse connective reversal已有owner；不讲首次发现contrast。I01仍PILOT，未请求/自动改线状态。
