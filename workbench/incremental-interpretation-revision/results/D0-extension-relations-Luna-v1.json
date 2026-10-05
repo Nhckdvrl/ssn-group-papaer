@@ -54,6 +54,13 @@
     "extension_relation:NPZ:15:specific_support"
   ],
   "scope": "User-authorized independent per-source semantic relation audit, no model scores or proposed gold supplied. These annotation questions were never used for Qwen inference; existing experiment scores/labels unchanged.",
-  "opencode_status": "First two source requests process-timeout (124); failures preserved. Remaining free audit may continue independently.",
-  "annotation_correction": "Subagent verbal summary said 4 uncertain support questions; machine-checked output contains 5, and all are retained."
+  "opencode_status": {
+    "reason": "Luna independently completed all 17/68 relation annotations. Stop this redundant semantic-only opencode job after repeated process timeouts; preserve requests/events/client failures. Original E01 full-audit workers untouched.",
+    "stopped_processes": 3,
+    "reports_finished": 10,
+    "complete": 0,
+    "timeouts": 10
+  },
+  "annotation_correction": "Subagent verbal summary said 4 uncertain support questions; machine-checked output contains 5, and all are retained.",
+  "unfinished_requests_are_not_invalid_data": true
 }
