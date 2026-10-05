@@ -50,3 +50,11 @@
 - 固定已使用的neutral/native、句先/题先×base/一句repair四配置，共4632独立任务。三构式分别在GPU0/1/6单卡并行，共同8B FP32/TF32 false/batch32，预算<.15 GPU·h；没有新增模型、训练/SAE/probe。组合器核对每个预期prompt hash、完整任务数、数据/模型/代码/choice token集合相同。
 - 竞争解释与决策：GP特异extension损伤、cue也损伤的通用NP/问句问题、语义补全/兼容性与role不一致三者由对应配对交互区分。若role损伤同时发生于cue，按E11引用对照解读，不叫GP承诺；若final/initial的语言操作响应在更多源组仍分离，优先针对该语言依赖设计后续证据操作，不能将分离本身称新idea；若小样本方向不重复则如实降级线索，不搜索模板赢家。
 - noise不作为停步gate；沿用FP32已知prob漂移且报告source-cluster CI。分项用于找下一决定性操作，不用单一显著项升级C01/C02。
+
+
+### Snapshot3结果（完整四配置，不选赢家）
+- 三family全部完成、4632实际新推理任务，总.097710 GPU·h；每个task的prompt hash/完整ID/模型dtype/token集合/代码commit机械核对，三个family无重复calls。旧snapshot1/2原样保留。
+- NPZ同9源组initial-semantic extension GP−cue DiD：句先base +51.63 pp [21.60,84.02]、repair +40.98 [15.09,67.95]；题先base −20.29 [−53.11,9.93]、repair −10.66 [−32.92,.79]。不称统一digging-in；query-driven reading/readout/语义补全仍竞争。
+- NPZ句先base原final-role nonGP extension −24.41 pp [−47.20,−3.46] n13，GP −30.36 [−60.26,−1.53] n10；无歧义下降重复而final-event多近ceiling，E11引用问题不能略去。
+- NPS final-event下降why：eligible句先base DiD −8.49 pp n8，acceptable −.027 pp n7；差异NPS:7原had rode，long GP外审marginal/PYes=.3232，comma long≈1。两个strata均为跑前规则，原项目不删除、不悄改。MVRR句先base final-event DiD +17.45 [−.14,45.28] n7，尚非稳定机制。
+- [解读](../results/E01-external-snapshot3.md)、[完整分项](../results/E01-external-snapshot3-summary.json)、[config](../results/E01-external-snapshot3-config.json)、[scores](../results/E01-external-snapshot3-scores.csv)。C01/C02仍L0，C03保留。下一步从语言信息而不是模板继续拆解释；尚无够支撑paper的idea。
