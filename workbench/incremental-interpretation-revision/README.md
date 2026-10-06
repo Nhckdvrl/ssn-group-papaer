@@ -1,7 +1,7 @@
 # Incremental Interpretation & Revision
 
 ## 状态（中文进度页）
-**当前执行：用户于2026-10-06明确要求暂停，研究目标已暂停，无新实验/API任务。** 完整尝试、失败、反证与未完成项见[阶段总结](PROGRESS_SUMMARY_2026-10-06.md)，文件入口见[索引](FILE_INDEX.md)。注册状态与科学等级不因暂停自动改动。
+**当前执行：用户于2026-10-06明确要求暂停，研究目标已暂停，无新实验/API任务。** 完整尝试、失败、反证与未完成项见[阶段总结](PROGRESS_SUMMARY_2026-10-06.md)，文件入口见[索引](FILE_INDEX.md)。失败原因诊断与转向建议见[诊断](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)（agent建议，待人决定）。注册状态与科学等级不因暂停自动改动。
 **状态：** PROPOSED — 2026-10-05 人明确授权先做 training-free baseline residency；不改变当前 ACTIVE-MAIN / ACTIVE-EXPLORE 分配。  
 **territory 卡：** [Territory Card](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)  
 **数据计划：** [DATA_PLAN.md](DATA_PLAN.md)  
