@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 from analyze_reading_map import load
 from data import sha
+from model_identity import manifest_identity
 
 
 def association(values):
@@ -50,7 +51,7 @@ def analyze(data, answer_runs, word_runs, out):
         assert cfg['predictions_sha256']==sha(directory/'predictions.jsonl')
         model=Path(cfg['model_path']).name
         if model not in words:continue
-        assert cfg['model_manifest_sha256']==word_cfg[model]['model_manifest_sha256']
+        assert manifest_identity(cfg)==manifest_identity(word_cfg[model])
         dtype=cfg['arguments']['dtype'];assert answer_dtypes.setdefault(model,dtype)==dtype
         references.append(dict(kind='answer',path=str(directory),configuration_sha256=sha(directory/'config.json')))
         for r in load(directory/'predictions.jsonl'):

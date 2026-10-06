@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import numpy as np
 from data import sha, write_jsonl
+from model_identity import manifest_identity
 
 
 def load(path):
@@ -187,7 +188,7 @@ def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None, s
         predictions = load(directory/'predictions.jsonl'); model = Path(config['model_path']).name
         r1_lengths={tuple(r[k] for k in ('item_id','format','order','prompt_index','mapping')):r.get('prompt_tokens')
             for r in predictions if r['reading']=='R1' and not r['repair']}
-        identity = config['model_manifest_sha256'], config['arguments']['dtype']
+        identity = manifest_identity(config), config['arguments']['dtype']
         assert identities.setdefault(model, identity) == identity, 'Do not merge different model bytes/precisions'
         output['runs'].append(dict(path=str(directory), config_sha256=sha(directory/'config.json')))
         for r in predictions:

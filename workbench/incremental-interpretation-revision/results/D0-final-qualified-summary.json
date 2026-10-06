@@ -1,0 +1,384 @@
+{
+  "data_summary": {
+    "data_sha256": "f6970dd7e80df56b202f14cc616ce9053b7eb72b8550312914b28ee9e7c03458",
+    "rows": 1732,
+    "annotation_scope": 1284,
+    "complete_final": 1281,
+    "complete_both": 1281,
+    "status_counts": {
+      "agreed": 1184,
+      "adjudicated": 97,
+      "incomplete": 3
+    },
+    "semantic_agreement_cluster_bootstrap": {
+      "estimate": 0.8919529837251357,
+      "ci95": [
+        0.8722121760096444,
+        0.910716169379144
+      ],
+      "n_clusters": 237
+    },
+    "semantic_agreement_micro": 0.8672911787665886,
+    "annotation_failures_never_pass": true,
+    "model": "step-5-preview",
+    "by_construction": {
+      "MVRR": {
+        "rows": 400,
+        "final_complete": 398,
+        "semantic_labels_yn": {
+          "NEITHER": 219,
+          "ENTAILED": 179
+        },
+        "strata": {
+          "NEITHER": 219,
+          "ENTAILED": 179
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 314,
+          "marginal/marginal": 21,
+          "marginal/acceptable": 13,
+          "acceptable/unacceptable": 8,
+          "marginal/unacceptable": 7,
+          "acceptable/marginal": 7,
+          "unacceptable/marginal": 11,
+          "unacceptable/unacceptable": 10,
+          "unacceptable/acceptable": 7
+        },
+        "genuine_pairs": 0
+      },
+      "NPS": {
+        "rows": 208,
+        "final_complete": 208,
+        "semantic_labels_yn": {
+          "NEITHER": 117,
+          "ENTAILED": 73,
+          "CONTRADICTED": 4
+        },
+        "strata": {
+          "NEITHER": 117,
+          "ENTAILED": 73,
+          "CONTRADICTED": 4,
+          "ENTAILED_CHOICE": 12,
+          "UNCERTAIN_CHOICE": 2
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 207,
+          "unacceptable/acceptable": 1
+        },
+        "genuine_pairs": 2
+      },
+      "NPVP": {
+        "rows": 160,
+        "final_complete": 159,
+        "semantic_labels_yn": {
+          "NEITHER": 94,
+          "ENTAILED": 65
+        },
+        "strata": {
+          "NEITHER": 94,
+          "ENTAILED": 65
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 149,
+          "marginal/acceptable": 3,
+          "marginal/unacceptable": 1,
+          "unacceptable/unacceptable": 2,
+          "acceptable/unacceptable": 3,
+          "acceptable/marginal": 1
+        },
+        "genuine_pairs": 0
+      },
+      "NPZ": {
+        "rows": 516,
+        "final_complete": 516,
+        "semantic_labels_yn": {
+          "ENTAILED": 232,
+          "NEITHER": 269,
+          "CONTRADICTED": 5
+        },
+        "strata": {
+          "ENTAILED": 232,
+          "NEITHER": 269,
+          "CONTRADICTED": 5,
+          "ENTAILED_CHOICE": 9,
+          "UNCERTAIN_CHOICE": 1
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 510,
+          "acceptable/unacceptable": 1,
+          "marginal/acceptable": 1,
+          "unacceptable/acceptable": 2,
+          "unacceptable/unacceptable": 1,
+          "marginal/marginal": 1
+        },
+        "genuine_pairs": 0
+      }
+    },
+    "source_gold_consistency": {
+      "Yes": {
+        "rows": 613,
+        "literal_labels": {
+          "ENTAILED": 530,
+          "NEITHER": 83
+        }
+      },
+      "No": {
+        "rows": 644,
+        "literal_labels": {
+          "NEITHER": 616,
+          "ENTAILED": 19,
+          "CONTRADICTED": 9
+        }
+      }
+    },
+    "genuine_pairs_by_construction": {
+      "MVRR": 0,
+      "NPS": 2,
+      "NPVP": 0,
+      "NPZ": 0
+    },
+    "landmarks": {
+      "rows_available": 441,
+      "paired_questions_usable": 196,
+      "position_origin_counts": {
+        "None": 833,
+        "two-pass Step5 agreement": 245,
+        "unique control word aligned to Step5 GP landmark": 196,
+        "Step5 landmark inconsistent across questions for the same sentence": 10
+      }
+    },
+    "countermodel_validation": {
+      "scope_rows": 238,
+      "complete_both": 238,
+      "status_counts": {
+        "agreed": 212,
+        "adjudicated": 26
+      },
+      "semantic_agreement_cluster_bootstrap": {
+        "estimate": 0.9104239256678281,
+        "ci95": [
+          0.8653002806813781,
+          0.9495160665892374
+        ],
+        "n_clusters": 123
+      },
+      "semantic_agreement_micro": 0.8907563025210085,
+      "interpretation": "Separate blinded T1-only audit; compatibility grammar/position fields never replace original T2/T3. Main two-pass reliability above describes the original v4 calls."
+    },
+    "interpretation": "Agreement is reliability of two independent shuffled calls to the same annotator model, not a proof of semantic truth. Wh placeholder NEITHER labels are excluded from YN label counts. Empty genuine strata are missing evidence, not absence of model errors."
+  },
+  "validation_and_changes": {
+    "published_data_sha256": "3e7599c325f5a9ff50090be2cc08040f7c4af10a131d20946689b42d49f58dcb",
+    "original_annotation_sha256": "63bd971369ea81c18777f71e83e40f9b527f8b1dbdca44e23d793661589907fd",
+    "validation_annotation_sha256": "7fde5eedc0252fe51d37b17462ecd244d550fc90971f809f66f6d409ccc2fa8b",
+    "merged_annotation_sha256": "7dad94df508834f5569a2d8a4d3d32848e73487de070f814988102142f456c4f",
+    "validation_scope": {
+      "source_data_sha256": "18f957bb0748efc814a6d98fc91f14a8fb7b88e8e8dc20e3268434c023ae3887",
+      "cohort_sha256": "a15420d5801697d2a55a71a8a2f100f8062a9b024884258b7ab4bc1692138541",
+      "rows": 238,
+      "selection_counts": {
+        "fixed_noncontradiction_comparison": 104,
+        "potential_contradiction": 134
+      },
+      "selection": "Any chosen or first/second-pass CONTRADICTED; plus input-hash seed5207 fixed 10% comparison. Blind to prior labels and model behavior.",
+      "original_T2_T3_retained": true,
+      "compatibility_fields_not_quality_gold": true,
+      "annotation_effort": "medium"
+    },
+    "validation_summary": {
+      "model": "step-5-preview",
+      "endpoint": "https://api.stepfun.com/step_plan/v1/messages",
+      "proxy_used": false,
+      "max_batch": 2,
+      "workers": 4,
+      "data_sha256": "a15420d5801697d2a55a71a8a2f100f8062a9b024884258b7ab4bc1692138541",
+      "items": 238,
+      "complete_both": 238,
+      "disagreements": 26,
+      "adjudications": 26,
+      "agreement": 0.8907563025210085,
+      "unresolved": 0,
+      "annotated_sha256": "7fde5eedc0252fe51d37b17462ecd244d550fc90971f809f66f6d409ccc2fa8b"
+    },
+    "validation_status_counts": {
+      "agreed": 212,
+      "adjudicated": 26
+    },
+    "label_changes": [
+      {
+        "before": [
+          "CONTRADICTED",
+          []
+        ],
+        "after": [
+          "CONTRADICTED",
+          []
+        ],
+        "rows": 9
+      },
+      {
+        "before": [
+          "CONTRADICTED",
+          []
+        ],
+        "after": [
+          "ENTAILED",
+          []
+        ],
+        "rows": 4
+      },
+      {
+        "before": [
+          "CONTRADICTED",
+          []
+        ],
+        "after": [
+          "NEITHER",
+          []
+        ],
+        "rows": 60
+      },
+      {
+        "before": [
+          "ENTAILED",
+          []
+        ],
+        "after": [
+          "ENTAILED",
+          []
+        ],
+        "rows": 52
+      },
+      {
+        "before": [
+          "ENTAILED",
+          []
+        ],
+        "after": [
+          "NEITHER",
+          []
+        ],
+        "rows": 6
+      },
+      {
+        "before": [
+          "NEITHER",
+          []
+        ],
+        "after": [
+          "ENTAILED",
+          []
+        ],
+        "rows": 3
+      },
+      {
+        "before": [
+          "NEITHER",
+          []
+        ],
+        "after": [
+          "NEITHER",
+          []
+        ],
+        "rows": 94
+      },
+      {
+        "before": [
+          "NEITHER",
+          [
+            "CONTRADICTED",
+            "ENTAILED"
+          ]
+        ],
+        "after": [
+          "NEITHER",
+          [
+            "CONTRADICTED",
+            "ENTAILED"
+          ]
+        ],
+        "rows": 4
+      },
+      {
+        "before": [
+          "NEITHER",
+          [
+            "CONTRADICTED",
+            "ENTAILED"
+          ]
+        ],
+        "after": [
+          "NEITHER",
+          [
+            "NEITHER",
+            "NEITHER"
+          ]
+        ],
+        "rows": 2
+      },
+      {
+        "before": [
+          "NEITHER",
+          [
+            "ENTAILED",
+            "CONTRADICTED"
+          ]
+        ],
+        "after": [
+          "NEITHER",
+          [
+            "ENTAILED",
+            "CONTRADICTED"
+          ]
+        ],
+        "rows": 2
+      },
+      {
+        "before": [
+          "NEITHER",
+          [
+            "ENTAILED",
+            "CONTRADICTED"
+          ]
+        ],
+        "after": [
+          "NEITHER",
+          [
+            "ENTAILED",
+            "NEITHER"
+          ]
+        ],
+        "rows": 2
+      }
+    ],
+    "interpretation": "Scoped T1 countermodel revalidation; original two-pass grammar/landmarks retained. Failed revalidation is unknown, never a pass. No model outcomes were used."
+  },
+  "manifest": {
+    "rows": 1732,
+    "labelled": 1281,
+    "genuine_pairs": 2,
+    "semantic_strata": {
+      "ENTAILED": 549,
+      "NEITHER": 699,
+      "CONTRADICTED": 9,
+      "unresolved": 3,
+      "published_nonrevision_control": 448,
+      "ENTAILED_CHOICE": 21,
+      "UNCERTAIN_CHOICE": 3
+    },
+    "position_available": 441,
+    "data_sha256": "3e7599c325f5a9ff50090be2cc08040f7c4af10a131d20946689b42d49f58dcb",
+    "position_inconsistent_sentences": 1,
+    "ambiguity_span_inconsistent_sentences": 21,
+    "raw_clusters": 365,
+    "linked_analysis_clusters": 341,
+    "annotation_sha256": "7dad94df508834f5569a2d8a4d3d32848e73487de070f814988102142f456c4f",
+    "assembled_sha256": "f6970dd7e80df56b202f14cc616ce9053b7eb72b8550312914b28ee9e7c03458",
+    "pass_sha256": {
+      "pass1.jsonl": "4c5e16e6ba2b8c4ab564ec055f7ba5ca29a86a58da66b82847980f784d716176",
+      "pass2.jsonl": "b6118e113afdc6a5ddc4880c7f7d8bcc989aa96e9f7956ff8ed19abfe7ec4471"
+    },
+    "landmark_policy": "Original independently agreed T2, with original cross-question conflicts retained; T1-only validation never supplies positions."
+  },
+  "interpretation": "Final registered literal-semantic qualification after countermodel validation. Only two initial NPS factive-prove pairs meet strict C eligibility, so no broad capability inference is possible from that subset. Published non-entailment convention remains valid; source-faithfulness/explicit support experiments continue. Two disputed other-target pragmatic controls do not enter preregistered initial/final analyses."
+}
