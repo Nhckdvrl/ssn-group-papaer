@@ -6,7 +6,7 @@
   - 研究从暂停中恢复，并重置主线：采用 [ROUTE](ROUTE.md) 中的路线，放弃 I01/C05；
   - 先广后深；允许一开始就做白盒；
   - 标注只用 Step5；
-  - 资源：同一节点上的 8 张 H20，不用付费 API。
+  - 资源：同一节点上的 8 张 H20；按后续用户指定，标注消耗Step Plan套餐Credit，禁止现金账户接口。
 - **执行模式：** 自主执行。本地 agent 按 [EXECUTION_BRIEF](EXECUTION_BRIEF.md) 全程推进，原人审节点改为自审；只有真正卡住，或遇到开线/关线/改状态/进入候选这类决定时，才回来找人（EXECUTION_BRIEF §6.7）。开跑前必须先完成 §1 的整体认知建设。
 - **territory 卡：** [Territory Card](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)　**目标会议：** ACL / EMNLP / NAACL（按证据成熟度选周期）。
 
@@ -46,9 +46,10 @@
 - 本地 cache：`/data1/xiangding/work/incremental-interpretation-revision/`（upstream / normalized / models / runs）。原始数据、模型和逐条输出不进 git；复现入口见 [scripts/README.md](scripts/README.md)。
 - 当前自主执行：[E52](experiments/E52-genuine-revision-reading-map.md)，1732公开QA/309 GP pairs；全文综合和“我的理解”见当日日志/领域地图。Step5全部走Step Plan，≤5项/批；HF资产只走镜像，本地推理离线。E52完整资产在上述cache的`E52/`，精度/接口失败同样保留。
 - 数据资格：原双轮/裁决资产`E52/step-full-v4/`保留；反例世界双轮复核完成，最终主分析入口`E52/qualified-v3.jsonl`保留原S/Q/gold和独立T2/T3。严格矛盾仅覆盖2个NPS词汇组，不代表全部理解错误；`qualified-v2`仅为历史资格。
-- E52完整14模型/5族地图已统计，尚无合格idea或因果机制证据。[E53](experiments/E53-faithful-two-sentence-paraphrase.md)三族10260复述已生成，T4双轮盲审未完成；[E59](experiments/E59-source-grounding-versus-world-question.md)已执行评分，尚未正式分析。C06–C09均L0。
+- E52完整14模型/5族地图、[E59](experiments/E59-source-grounding-versus-world-question.md)三族源支持测量、[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)三族问句前可见性干预均已统计。明确源支持任务中仍有差距，可见性干预未有稳定选择性恢复；控制损伤与GP修复分别报告。尚无合格idea，C06–C09均L0。
 - **2026-10-07 执行调整：** 根据用户提醒停止追加实验与标注，在途API已收束、资产保留，重新审视科学问题与研究价值；注册状态不变。诊断见[当日日志](logs/2026-10-07.md)。
-- **同日继续：** 用户要求从综述、最新顶会与arXiv继续深读。E59三族原始评分与资格投影/分析已完成；[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)先登记新问题与协议，开始问句前的可见性干预校验。E53标注仍待恢复，注册状态不变。
+- **同日继续：** 用户要求由综述、最新顶会与arXiv重建认识；新增[18篇精读卡](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)。[E55](experiments/E55-natural-cue-source-patching.md)自然cue源位置替换在三族运行；[E53](experiments/E53-faithful-two-sentence-paraphrase.md)10260复述的原完整T4双盲审核已恢复，未解读部分标签。注册状态不变。
+- 新资产：上述cache的`E59/source-scope-final-v1.json`、`E54/prequestion-oracle-map-v1.json`与`E54/figures-v1/`（PNG/PDF），E55的`data-v1.jsonl`/`runs-v1/`与instrument失败/修正记录；git的小摘要引用完整结果SHA。
 
 ## 决策记录
 - **2026-10-05：** 人选择本 territory，授权 training-free baseline residency；取消 agent 自加的停步 gate；构造与语义审计改用 Step。
