@@ -40,11 +40,13 @@ def _sim(args):
         for x in a:
             _, _, term, _, _ = env.step(np.clip(x, -1, 1).astype(np.float32))
             hit = hit or bool(term)
-            if term and task in ('reacher', 'cube'):  # stop at the terminal step (auto-reset / goal reached)
+            if term and (task in ('reacher', 'cube') or task.startswith('pmaze')):  # stop at the terminal step (auto-reset / goal reached)
                 break
         d = dist_info(env, task)
         if task == 'tworoom':
             end_ok = d < 16.0
+        elif task.startswith('pmaze'):
+            end_ok = d <= 1.0
         elif task == 'reacher':
             end_ok = d < 0.05
         elif task == 'cube':
@@ -55,6 +57,8 @@ def _sim(args):
         out.append((d, bool(end_ok), hit))
         if task == 'tworoom':
             fs_ = env.agent_position.numpy().astype(np.float64)
+        elif task.startswith('pmaze'):
+            fs_ = np.array(env.u.get_xy(), dtype=np.float64)
         elif task == 'reacher':
             fs_ = np.array(env.env.physics.data.qpos, dtype=np.float64)
         elif task == 'cube':

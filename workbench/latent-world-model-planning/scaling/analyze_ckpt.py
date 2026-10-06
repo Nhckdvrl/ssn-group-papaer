@@ -40,7 +40,7 @@ def analyze(ckpt, data, n_val=4096, n_train=8192, seed=0):
         raw = data.meta['qpos'][:, :2]
         raw = np.concatenate([np.cos(raw), np.sin(raw)], 1)  # angles -> unit circle coords
     else:
-        raw = data.meta['proprio' if task == 'tworoom' else 'state'][:, :4 if task == 'pusht' else 2]
+        raw = data.meta['proprio' if (task == 'tworoom' or task.startswith('pmaze')) else 'state'][:, :4 if task == 'pusht' else 2]
     st = torch.as_tensor(raw.astype(np.float32), device='cuda')
     gen = torch.Generator(device='cuda').manual_seed(seed)
 

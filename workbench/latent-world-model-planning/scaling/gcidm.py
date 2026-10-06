@@ -37,8 +37,10 @@ def encode_all(model, data):
     return out
 
 
-def train(ckpt, steps=20000, max_h=100, bs=8192, lr=3e-4, seed=0):
+def train(ckpt, steps=20000, max_h=None, bs=8192, lr=3e-4, seed=0):
     cfg = json.loads((Path(ckpt).parent / 'config.json').read_text())
+    if max_h is None:  # same protocol as before for the original tasks; long-range mazes need 200
+        max_h = 200 if cfg['task'].startswith('pmaze') else 100
     data = GPUData(cfg['task'], res=cfg.get('res', 64), device='cuda', pixels_on='cpu')
     wm = torch.load(ckpt, map_location='cuda', weights_only=False).eval()
     z = encode_all(wm, data)  # indexed by remapped frame index

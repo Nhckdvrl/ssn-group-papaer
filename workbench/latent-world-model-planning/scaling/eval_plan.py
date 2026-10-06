@@ -36,7 +36,7 @@ def eval_set(task, res, n, offset, seed=0, split_seed=0, val_frac=0.05):
     elif task == 'cube':
         st = np.concatenate([meta['qpos'], meta['qvel'], meta['privileged_block_0_pos'], meta['privileged_block_0_quat']], 1)
     else:
-        st = meta['proprio' if task == 'tworoom' else 'state']
+        st = meta['proprio' if (task == 'tworoom' or task.startswith('pmaze')) else 'state']
     g = np.random.default_rng(1000 + seed + offset)
     eligible = val_eps[ep_len[val_eps] > offset + 1]
     eps = g.choice(eligible, size=n, replace=len(eligible) < n)
@@ -48,7 +48,28 @@ def eval_set(task, res, n, offset, seed=0, split_seed=0, val_frac=0.05):
     return rows
 
 
+class PMazeEnv:
+    """OGBench pointmaze with the same fixed global top-down render as render_pmaze.py (goal marker hidden)."""
+
+    def __init__(self, size):
+        import sys as _s
+        _s.argv = _s.argv[:1] + [size]
+        import render_pmaze
+        render_pmaze.SIZE = size
+        self.u, self.r, self.cam = render_pmaze.make_renderer()
+        self.u._terminate_at_goal = True
+
+    def render(self):
+        self.r.update_scene(self.u.data, camera=self.cam)
+        return self.r.render()
+
+    def step(self, a):
+        return self.u.step(a)
+
+
 def make_env(task):
+    if task.startswith('pmaze'):
+        return PMazeEnv(task[len('pmaze'):])
     import gymnasium as gym
     import stable_worldmodel  # noqa: F401
     if task == 'reacher':
@@ -72,6 +93,12 @@ def reset_env(env, task, start, goal, seed):
         env.set_state(goal[:nq], np.zeros(nq))
         goal_img = np.asarray(env.render()).copy()
         env.set_state(start[:nq], start[nq:])
+    elif task.startswith('pmaze'):
+        env.u.reset(seed=seed)
+        env.u.set_state(goal[:2], np.zeros(2))
+        goal_img = np.asarray(env.render()).copy()
+        env.u.set_state(start[:2], np.zeros(2))
+        env.u.set_goal(goal_xy=np.asarray(goal[:2], dtype=np.float64))
     elif task == 'cube':
         env.reset(seed=seed)
         env.set_state(goal[:21], np.zeros(20))
@@ -89,6 +116,8 @@ def dist_info(env, task):
         return float(torch.norm(env.agent_position - env.target_position))
     if task == 'reacher':
         return float(np.abs(env.env.physics.data.qpos - env.env.task.target_qpos).max())
+    if task.startswith('pmaze'):
+        return float(np.linalg.norm(env.u.get_xy() - env.u.cur_goal_xy))
     if task == 'cube':
         return float(np.linalg.norm(env._data.joint('object_joint_0').qpos[:3] - env._data.mocap_pos[env._cube_target_mocap_ids[0]]))
     st = np.asarray(env._get_obs(), dtype=np.float64)
@@ -196,7 +225,7 @@ def sfa_basis(model, task, k, dev, n=20000, seed=0, lag=5):
     return W.contiguous()
 
 
-def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, frameskip=5, dev='cuda', pca=0, sfa=0):
+def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, frameskip=5, dev='cuda', pca=0, sfa=0, mix=0):
     cfg_path = Path(ckpt).parent / 'config.json'
     if cfg_path.exists():
         cfg = json.loads(cfg_path.read_text())
@@ -212,6 +241,10 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
     adim = len(am)
     A = adim * frameskip
     proj = pca_basis(model, task, pca, dev) if pca else (sfa_basis(model, task, sfa, dev) if sfa else None)
+    if mix:  # multi-scale cost: full latent L2 (local precision) + slow-feature L2 (long range), equal far-field scale
+        W = sfa_basis(model, task, mix, dev)
+        D = W.shape[0]
+        proj = torch.cat([W * (D / mix) ** 0.5, torch.eye(D, device=dev)], 1)
     with torch.no_grad(), torch.autocast('cuda', dtype=torch.bfloat16):
         g_emb = model.encode({'pixels': prep(goals, res, dev)})['emb'][:, 0].float()
     done = np.zeros(len(rows), bool)
