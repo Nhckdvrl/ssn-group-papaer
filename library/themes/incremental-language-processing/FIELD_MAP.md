@@ -164,3 +164,34 @@ E47实际结果：inventory−absent newSame D−3.849bits、unverified−assert
 [QAQA ACL2023](kim2023-questionable-assumptions.md)、[Wang/Blanco EMNLP2025](wang2025-false-assumptions.md)、[existential presupposition LREC2026](woergoetter2026-existential-presupposition.md)、[SATA-Bench v3](xu2025-sata-bench.md)分别记录真实读取范围。False/questionable assumptions、task-elicited projection、事实验证与实际回答分离、多答案count/selection bias均已有owner；不据检索判死本线，也不靠换成role slots就认证novelty。
 
 E50列表41.41%、actor锚定普通复述98.05%，E51去two-names后的literal-schema约82%、repeat约91%，说明question/output pressure值得区分，但完整Step回答审核仅936/4608，count文字定义和alias/格式仍混杂。C05L1/I01PILOT未升级。用户明确暂停；仅归档，无新研究任务。[全部尝试与失败](../../../workbench/incremental-interpretation-revision/PROGRESS_SUMMARY_2026-10-06.md)。
+
+
+## 2026-10-06 自主重启：EXECUTION_BRIEF §1 全文阅读与账户更新
+
+本次重新阅读的范围是下面19篇的主文（背景/压力、相关工作、材料、方法、结果、讨论/局限），并回查与实验设计有关的附录；Thoughtology只要求并实际阅读§9和相关G图说明。不声称每篇所有附录/参考文献逐字精读。旧阅读范围不被覆盖。PDF/提取正文留本地 papers/；下载清单 E52-reading-downloads.json（下载不等于读完）。
+
+| 来源 | 压力与idea来源 / 近邻距离 | 材料规模与构造 | 开放问题 / 对本线的约束 |
+|---|---|---|---|
+| [Amouyal 2025](https://aclanthology.org/2025.acl-long.403/) | 从人类残留误解区分syntax、合理性、论元要求；同任务而非仅surprisal | 45 optionally-transitive组×合理性×GP +24反身/非宾格组；456 QA，人类每项10人，8少样本提示 | 明示及物命题是not necessarily仍统一No；复述/图像也有误解，但不能由此直接推出parse被丢弃。原文§1–7及提示/材料/复述附录 |
+| [Amouyal 2026 v2](https://arxiv.org/html/2510.07141v2) | 将单构式扩为统一人机难度框架；留下“丢弃错解”猜想 | 七结构、31模型；继承Subj/Obj，其他新40组/来源24干扰组；8提示，thinking因成本只1提示 | GPT-5 thinking有大GP收益，是“thinking没帮助”的反例；不能省略。主文§1–5、提示/材料附录 |
+| [Li 2024](https://arxiv.org/abs/2405.16042) | 人类lingering与spillover；直接问答+结构probe+attention | 24经典句，5chunk，comma有无，GPT2/Llama2/FlanT5/RoBERTa | 双向模型也误读反对E4充分性，但规模/任务不匹配；attention热图不是因果证据。主文全文 |
+| [Cao & Schuler 2025](https://aclanthology.org/2025.cmcl-1.20/) | 生成真实结构后果；用错误文本对照区分不重分析与noisy-channel | 30改自Altmann前缀、每项50温度1续写；72 reflexive对 | inverse scaling限定于这些构式/模型；更大模型可能反转。malformed控制不是通用“读错”，不可只搬结论。主文§1–7及刺激附录 |
+| [Huang 2024 SAP](https://tallinzen.net/media/papers/huang_et_al_2024_jml.pdf) | 用高精度item级效应检验surprisal统一解释 | 2000人、七构式、经典GP每构式24组共享lexical sets；COCA配价、plausibility/cloze常模，多轮norm | 在fillers拟合、critical预测；方向可对但量级/排序不对。问答不是RT、不把surprisal回落当修订成功。主文Intro–Conclusion，原题/常模附录回查 |
+| [Timkey/Dillon/Linzen 2026](https://arxiv.org/html/2605.15440) | 检验“LM并行parse太多”的可操作版本 | SAP；RNNG×topdown/leftcorner×2语料×5seed；beam1–1000，forcedGP/fullparallel | beam变窄会增大效应但仍不足；k=1两条件parse都差。不是强LLM QA已保留正确结构的证明。主文§1–7 |
+| [Paape/Linzen/Vasishth 2026 v2](https://arxiv.org/html/2602.04489v2) | 跨阅读范式联合RT/判断、区分初始概率/冲突/重分析 | 7公开实验、四范式NPZ/RR；17 MPT/纯surprisal/混合模型，LOO比较 | pragmatic inference明确进入模型；MPT+surprisal更好，不宜说预测完全无关。主文全；反对把均值成本单机制化 |
+| [Hanna & Mueller NAACL2025](https://aclanthology.org/2025.naacl-long.164/) | 从相关probe进到causal SAE，区分repair/reanalysis | 72 GP改编句，Pythia70M/Gemma2-2B；MVRR概率读数失效后未做主分析 | 双parse特征共存，QA少重用/YesNo feature；faithfulness不理想，不能排除别的syntax circuits。主文§1–7、limitations、Gemma附录相关部分 |
+| [Zeng 2026](https://aclanthology.org/2026.findings-acl.57/) | 静态source token如何实现后到词义消歧 | 4090 P–M对，WordNet/ChainNet+Gemini生成、人工检查；Gemma | 单目标oracle、value packet、词specific steering已有owner；表征变化/可控生成不等于QA实际恢复，也不能叫语义上理想gold。主文§1–5/局限及构造说明 |
+| [Tang ICML2026](https://arxiv.org/abs/2605.30233) | 从静态binding走向PUT/REMOVE/MOVE，机制预测新失败 | 7box/100object；Gemma2-2B、CodeLlama13B、Llama3.1-70B；新增失败每类300例 | query时并行汇总、global removal及修复已有owner；explicit mention可能促使非增量策略。负probe不等于所有表征都不存在。主文§1–7，相关probe定义 |
+| [Prakash ICLR2026 v3](https://arxiv.org/html/2505.14685v3) | 用counterfactual证明pointer/address/payload，而非仅信息可读 | CausalToM两人物两对象及visibility；每干预80个原正确例，3模型、BigToM扩展 | 成功例筛选限制failure解释；visibility payload确切含义未分清。支持late retrieval可行而非GP既定机制。主文§1–8及方法定义 |
+| [Guo CICM 2026](https://arxiv.org/html/2609.38866) | 更新后旧值胜出，区分遗忘与selection | 1200 preference对话，180ledger，24decision，40复杂logs；probe五折dialogue split | 84.8/82.2是probe概率不是accuracy；routing的parser已知正确值，reminder在部分模型更强。泛泛retained-not-selected被占有。主文§1–9和scoring/routing相关说明 |
+| [Oh & Demberg 2026 v2](https://arxiv.org/html/2606.08644v2) | swap是否重建global world，还是query时rebinding | 三box/三object，干预发现100、留出300；Gemma2-9B/Gemma3-12B/Llama3/8B | 38/672头恢复.89 vs full1.0，random.34；家族QK机制不同。GP若只重复这个机制仍压缩风险高。主文§1–7及指标/额外box说明 |
+| [CASTLE 2025 v2](https://arxiv.org/html/2509.07301v2) | token效率与静态key瓶颈；autoregressive lookahead-key更新 | 0.16–1.3B、FineWebEdu50B、同配方，8下游任务 | GP是引言动机，不是其行为机制验证；控制attention-only与增加投影计算有别。主文§1–4，复杂度公式核对；证明附录未逐式复算 |
+| [Prompt Repetition](https://arxiv.org/html/2512.14982) | 利用第二份token看到前份未来，移动到prefill | 7商业模型、7benchmarks，70组合47win/0loss；padding及×3 | reasoning28组合5win/1loss/22tie，不能说收益严格消失；没有截断重复的GP归因。主文全、A全 |
+| [Echo Embeddings ICLR2025](https://arxiv.org/html/2402.15449v2) | 反对embedding必须改双向架构；重复+autoencode指令 | 合成early/late discrimination、MTEB56/MINI28；Mistral/Llama/S-Llama，compute matched | 某些模型直接放开mask变差，oracle null要警惕distribution shift；mean/last pooling和zero/finetune不同。主文§1–5及compute设置 |
+| [Madureira ACL2024](https://arxiv.org/html/2402.13113v2) | RI系统为何修改早期labels，三角states比较 | SAP NP/S24+MVRR24、NNC281；BERT/RoBERTa与两个dependency parsers | 只测短程、states变化不等于理解行为；需同配方encoder/decoder，Ettin提供资产但objective仍不同。主文§1–6/局限、相关alignment说明 |
+| [Ettin ICLR2026 v2](https://arxiv.org/html/2507.11412v2) | 现有架构对比被数据/尺寸混杂；Pythia式开放配对 | 17M–1B paired、最高2Ttokens、open数据顺序/236checkpoint；CLM/MLM | 不只mask不同，训练objective也不同；跨objective继续训不足追平。小模型QA不可靠，E56用角色probe或改写评分。主文§1–7 |
+| [Thoughtology §9](https://arxiv.org/html/2504.07128) | reasoning时长能否类比人类处理成本 | DeepSeekR1，Amouyal114pairs×5run及comparative illusions | GP链平均多200–300tokens，人类困难与时长相关但控制链也rumination；长度不是修订质量。§9全及G图说明；其他章节未作为精读完成 |
+
+### 对 E52 的直接修正（先于任何新模型结果）
+
+“no longer grammatical attachment”和“世界中绝不发生该事件”不同；RR主动问句是否为CONTRADICTED必须逐题审，不能整类预标。R2严格不能看到disambiguator，R3只匹配长度不匹配语义，R5任务先知/R6计算不同。重复收益本身被Prompt Repetition拥有；潜在增量是经过语义审计后GP特有的选择性收益与位置干预，不是多模型复制。当前四账户均未科学证成，C06–C09保留L0。

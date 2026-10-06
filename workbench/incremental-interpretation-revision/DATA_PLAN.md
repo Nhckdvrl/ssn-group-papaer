@@ -101,3 +101,9 @@ WikiEvents作者S3六release文件直连下载，repository253e0889b2377e0f7084c
 
 ### 2026-10-06 用户资源/审计修订
 构造、改造、新增标注与必要逐条语义审核使用 **Step Plan / step-5-preview**；Messages https://api.stepfun.com/step_plan/v1/messages，Chat https://api.stepfun.com/step_plan/v1/chat/completions；禁止现金账户端点。Key只读本地私有配置、不写git或日志，总并发≤8。现成高认可度自然数据优先复用公开标注，只查来源、版本/hash、license、loader/适配所需检查，不对全库机械重审。历史Luna审计保留来源，不追改成Step审核。
+
+### 2026-10-06 自主执行中的用户再次确认
+逐条语义审计仅用 Step Plan 的 `step-5-preview`；Messages/Chat 完整路径只允许 `/step_plan/v1/messages` 与 `/step_plan/v1/chat/completions`，禁止现金账户。密钥只存本地私有配置，不写版本库或请求日志。一般自然、认可度高的数据集复用公开标注，不做全库机械审核；GP 材料缺失且直接决定真实错误资格的三类蕴含标签属于必要新增标注。
+
+### 2026-10-06 模型传输约束
+用户要求 Hugging Face 只用镜像站，禁止直连（避免 VPN 流量）。模型下载使用 hf-mirror.com 或已可达的 ModelScope 公共镜像；固定镜像 revision/逐文件SHA，推理 local_files_only。此前少量HF metadata连通诊断已结束；没有正在运行的HF直连下载。
