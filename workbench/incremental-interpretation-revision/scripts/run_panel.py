@@ -30,7 +30,7 @@ class AdoptedProcess:
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--data', type=Path, required=True)
     ap.add_argument('--out', type=Path, default=CACHE/'E52/runs')
-    ap.add_argument('--stage', choices=['legacy', 'map', 'map-unlabelled', 'landmarks', 'thinking', 'surprisal','paraphrase'], required=True)
+    ap.add_argument('--stage', choices=['legacy', 'map', 'map-unlabelled', 'landmarks', 'thinking', 'surprisal','paraphrase','source-scope'], required=True)
     ap.add_argument('--models', nargs='+')
     ap.add_argument('--calibration-out',type=Path,help='Directory containing completed legacy runs; defaults to --out.')
     ap.add_argument('--dtype',choices=['bfloat16','float16','float32'],default='bfloat16')
@@ -44,7 +44,7 @@ def main():
     waiting = list(args.models); running = {}; done = {}; failed = {}
     locks_root = CACHE/'E52/gpu-slots'; locks_root.mkdir(exist_ok=True)
     gpu_locks = [(locks_root/str(gpu)).open('a') for gpu in range(8)]
-    script = Path(__file__).with_name({'thinking':'thinking_map.py','surprisal':'disambiguator_surprisal.py','paraphrase':'paraphrase_map.py'}.get(args.stage,'reading_map.py'))
+    script = Path(__file__).with_name({'thinking':'thinking_map.py','surprisal':'disambiguator_surprisal.py','paraphrase':'paraphrase_map.py','source-scope':'source_scope_map.py'}.get(args.stage,'reading_map.py'))
     for procdir in Path('/proc').iterdir():
         if not procdir.name.isdigit(): continue
         try:
@@ -92,9 +92,9 @@ def main():
             if args.stage=='thinking':cmd+=['--cap','2048']
             elif args.stage=='paraphrase':cmd+=['--cap','256']
             else:cmd+=['--batch-size','16']
-            if args.stage not in ('thinking','surprisal','paraphrase'):cmd+=['--dtype',args.dtype]
+            if args.stage not in ('thinking','surprisal','paraphrase','source-scope'):cmd+=['--dtype',args.dtype]
             if args.stage == 'legacy': cmd += ['--mode', 'legacy', '--legacy-processed', '--formats', 'A', '--readings', 'R0']
-            elif args.stage == 'map-unlabelled': cmd += ['--formats', 'A', 'B', '--readings', 'R0', 'R1', 'R3', 'R4', 'R5', '--repair']
+            elif args.stage == 'map-unlabelled': cmd += ['--formats', *args.formats, '--readings', 'R0', 'R1', 'R3', 'R4', 'R5', '--repair']
             elif args.stage == 'landmarks': cmd += ['--formats', *args.formats, '--readings', 'R2']
             elif args.stage=='map': cmd += ['--formats', 'A', 'B', '--readings', 'R0', 'R1', 'R2', 'R3', 'R4', 'R5', '--repair']
             env = dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu), HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')

@@ -81,7 +81,8 @@ def main():
             # Bounded groups save completed outputs even if a later group fails.
             for begin in range(0, len(tasks), 256):
                 batch = tasks[begin:begin+256]
-                outputs = engine.generate([t[2] for t in batch], params, use_tqdm=False)
+                inputs=[dict(prompt_token_ids=tokenizer.encode(t[2],add_special_tokens=False)) for t in batch]
+                outputs = engine.generate(inputs, params, use_tqdm=False)
                 for (row, mapping, prompt), generated in zip(batch, outputs):
                     completion = generated.outputs[0]
                     displayed_options=row['options'][::1 if mapping==0 else -1]
@@ -93,6 +94,7 @@ def main():
                         order='reg', prompt_index=0, mapping=mapping, repair=False, mode='generation',
                         candidate_gold=gold, prompt=prompt, prompt_sha256=hashlib.sha256(prompt.encode()).hexdigest(),
                         prompt_tokens=len(generated.prompt_token_ids), generated_token_ids=list(completion.token_ids),
+                        prompt_start_token_ids=list(generated.prompt_token_ids[:8]),add_special_tokens=False,
                         text=completion.text, answer=answer, answer_status=status,
                         finish_reason=completion.finish_reason, capped=completion.finish_reason=='length',
                         p_correct=None, correct=(answer==['A','B'][gold]) if answer is not None else False)

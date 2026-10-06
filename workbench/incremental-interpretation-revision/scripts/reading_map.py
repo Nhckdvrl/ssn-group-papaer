@@ -134,7 +134,8 @@ def generate_tasks(rows, tokenizer, formats, readings, mode, include_repair=Fals
 
 def encode_choices(tokenizer, task):
     # Re-tokenize the full candidate string; trailing-space merges are part of the target.
-    sequences = [tokenizer.encode(task['prompt']+choice, add_special_tokens=True) for choice in task['candidates']]
+    add_special=not (task['format']=='B' and tokenizer.chat_template)
+    sequences = [tokenizer.encode(task['prompt']+choice, add_special_tokens=add_special) for choice in task['candidates']]
     common = shared_prefix(sequences)
     assert common > 0 and all(len(s) > common for s in sequences), 'Empty/identical candidate continuation'
     return sequences, common
@@ -272,7 +273,8 @@ def main():
                 record.update({k: t[k] for k in ('format', 'reading', 'order', 'prompt_index', 'mapping', 'repair')})
                 record.update(mode=args.mode, candidate_gold=gold, prompt_sha256=hashlib.sha256(t['prompt'].encode()).hexdigest(),
                     prompt=t['prompt'], candidates=t['candidates'],
-                    prompt_tokens=len(tokenizer.encode(t['prompt'], add_special_tokens=True)),
+                    prompt_tokens=len(tokenizer.encode(t['prompt'], add_special_tokens=not (t['format']=='B' and tokenizer.chat_template))),
+                    add_special_tokens=not (t['format']=='B' and tokenizer.chat_template),
                     candidate_logprobs=score, p_correct=None, correct=None)
                 if args.mode=='legacy':record['legacy_choice_step']=legacy_steps[batch_index]
                 if score is not None:

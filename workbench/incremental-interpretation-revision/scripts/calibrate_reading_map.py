@@ -65,7 +65,7 @@ def public(directory, data):
 def precision(a, b, subset=False):
     config_a, records_a = predictions(a); config_b, records_b = predictions(b)
     assert config_a['data_sha256'] == config_b['data_sha256']
-    fields = ('item_id', 'format', 'reading', 'order', 'prompt_index', 'mapping', 'repair', 'prompt_sha256')
+    fields = ('item_id', 'format', 'reading', 'order', 'prompt_index', 'mapping', 'repair', 'prompt_sha256','prompt_tokens')
     def keyed(rows):
         out = {tuple(r[f] for f in fields): r for r in rows}
         assert len(out) == len(rows), 'Duplicate prediction keys'

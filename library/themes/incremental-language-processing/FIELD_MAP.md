@@ -209,3 +209,14 @@ E50列表41.41%、actor锚定普通复述98.05%，E51去two-names后的literal-s
 2026-10-06补读：Jurayj2022由原§2–3扩至全文（引言、related work、数据构造、讨论、局限）。其83基础句上的几何变化用于发现未实现的歧义、并非正确角色的行为/因果验证；不同revision条目数不掩盖。Maina-Kilaas/Levy2026扩至全文：30项Maze/36项SPR、167/225保留参与者、16模型五族；sentence-final wrap-up与resolution任务效应、RT分析筛正确comprehension而accuracy本身没有显著效应都须保留，不能把标题“no evidence”转成证明严格零效应，也不能由长度操纵直接称承诺增强。这些方法/观察可借来设计修订账户的控制，非自动禁区。[Jurayj正文](https://arxiv.org/html/2205.12302)、[Maina-Kilaas/Levy正文](https://arxiv.org/html/2603.23624)。
 
 问句scope核对：Amouyal2025正文已明确optionally-transitive的No是“not necessarily”约定；这个约定本身不是我们新发现的数据错误。E52 literal T1过滤只划定较窄的矛盾资格，不应自动取消作者的任务语用解释。要判定“理解错误”必须用E53所断言角色的忠实复述或E59明确同一事件/句中角色的问句，保留原YN任务及其读数；额外事件world-compatible与是否忠实表达source是不同测量对象。不能单凭NEITHER比例升级成“领域旗舰结论错误”。
+
+补读[McCoy/Pavlick/Linzen ACL2019 HANS](https://aclanthology.org/P19-1334/)全文§1–9及相关human附录：从可区分的lexical overlap/subsequence/constituent预测出发，30模板各1000项，控制双方角色合理性与verb-frame曝光；4个MNLI模型和补充训练/留出模板转移。其NP/Z、NP/S已有初始子序列被误当蕴含的任务，方法与控制可以借用；尚未测本线的完整重读/位置因果机制。特别是§4脚注明确active/passive逆角色也常在neutral与pragmatic contradiction间含糊，故合并non-entailment；语义三类不能机械取代原二分类任务。普通词汇重合失败或“可表示却未用”可以成为故事的一部分，需在完整修订叙事中说明什么新认识值得兴奋，而非以这些局部相同为理由排除方向。
+
+### 从读数异常补读的控制（2026-10-06）
+
+| 工作 / 已读范围 | idea来源、证据与可借控制 | 与修订故事的距离 |
+|---|---|---|
+| [Yang/Jian/Li NAACL2025 Option Symbol Matters](https://aclanthology.org/2025.naacl-long.95/) 主文§1–6/limitations | MMLU/RACE、5个模型、4套符号；平均约10pp差，one-token符号path patching定位中层头，CEDE均值激活校准用1000题；方法详细只Llama2-7B。可以借symbol/content读出与因果对照；其“next-token训练导致缺乏语义绑定”的宏观解释不是直接训练干预证明。 | 一般字母偏置与校准不是我们的新颖性，但可组成GP测量/机制故事。E59运行前加letters/单token words，不在单一偏置模型上连锁。 |
+| [Ok/Lee ACL2026 Lost in Prompt Order](https://aclanthology.org/2026.findings-acl.1921/) 主文§1–5/limitations、相关工作A、B模板/评价 | 21 decoder/4benchmarks，CQO−QOC约14.7pp；选项回忆、instruction/base/ICL、去context、attention/gradient、切边和patch/QOCO/CoT。可借同信息可见性与晚查询补偿的控制。encoder-only21.6%近chance，零gap不能当完整能力；architecture匹配不充分，早期选项表征与后文独立的公式不是全模型无法后段整合的证明。 | 已有选项key看不到context与重复/patch收益；我们R5的选项始终位于S之后，并非其QOC。GP歧义区的角色修订可与该路径共同构成叙事，完整增量看新预测/因果后果，不因局部相似排除。 |
+
+venue-corpus重建仅得到2417主会记录（主要ACL/NAACL2025；多个远程列表失败），nearest返回Hanna、Amouyal、符号偏置等入口；这不是全面新颖性保证。依照规则排除EACL/Findings接收元数据，论文阅读按brief允许，不输出自动判决。

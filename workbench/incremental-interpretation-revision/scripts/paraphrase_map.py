@@ -101,13 +101,16 @@ def main():
     params=SamplingParams(temperature=0,max_tokens=args.cap,seed=52)
     with (args.out/'predictions.jsonl').open('w') as stream:
         for begin in range(0,len(tasks),256):
-            batch=tasks[begin:begin+256];outputs=engine.generate([t[3] for t in batch],params,use_tqdm=False)
+            batch=tasks[begin:begin+256]
+            inputs=[dict(prompt_token_ids=tokenizer.encode(t[3],add_special_tokens=not bool(tokenizer.chat_template))) for t in batch]
+            outputs=engine.generate(inputs,params,use_tqdm=False)
             for (row,fmt,reading,p),generated in zip(batch,outputs):
                 completion=generated.outputs[0]
                 # Simple source-paper format statistic only; T4 is authoritative.
                 parts=sentence_parts(completion.text)
                 record=dict(item_id=row['item_id'],sentence_sha256=row['sentence_sha256'],format=fmt,reading=reading,
                     prompt=p,prompt_sha256=digest(p),prompt_tokens=len(generated.prompt_token_ids),
+                    prompt_start_token_ids=list(generated.prompt_token_ids[:8]),add_special_tokens=not bool(tokenizer.chat_template),
                     text=completion.text,text_sha256=digest(completion.text),generated_token_ids=list(completion.token_ids),
                     finish_reason=completion.finish_reason,capped=completion.finish_reason=='length',
                     automatic_sentence_parts=parts,automatic_two_sentences=len(parts)==2)

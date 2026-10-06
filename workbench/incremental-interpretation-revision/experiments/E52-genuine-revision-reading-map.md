@@ -93,3 +93,9 @@ Gemma精度/class/fallback仍不足以重合公开值；source复现改用未改
 ### 重复来源与R3计算资格（效应分析前固定）
 输入字节检查发现SAP与Čeháková共享24个MVRR GP句，只有其中5组原问句也相同（10个gp/control QA）。主bootstrap将完全相同GP句连接既有lexical cluster，并传播到该cluster全部问句/构式；原cluster_id保留，新增analysis_cluster_id，365个来源cluster连接后为341个。去重敏感性移除完整的重复question pair：只看句子、问句、选项集合与gold文本，固定SAP优先、Amouyal其次、Čeháková最后，不能因语义通过或模型表现换来源。主结果与去重结果都报，不把共享框架当独立材料。
 R3虽然孤立填充句token数等于S，少数任务在完整prompt的词边界合并后仍比R1少1token；按完整任务身份逐一比较prompt_tokens，不相等的任务保留原输出、从R1/R3等计算对比排除。每reading的gp/control cell及原始收益先取同问句两侧交集，不能由缺失组成制造差距。补充mixed模型读取同一主分析的validated-task ledger，使filler质量、实际长度与去重排除一致。新tokenizer引入的3种filler正做增量Step审计，固定复用此前20种的全部标签，不重标挑有利版本。
+
+### 原生模板token仪器修正（真实误读主分析前；描述图暂不采用）
+为安排高信息量追问，在D0进行中先算了三族FP32按原数据答案约定的initial_all描述图；genuine/NEITHER未估，不作能力归因。低control触发token检查，发现我把已含BOS的native template再用add_special_tokens=True编码。完整14-tokenizer输入检查确认5个受影响：Llama8、Mistral24、Gemma4/12/27-it；Qwen、OLMo和base路径按实际token序列核对，不因成绩选择版本。
+所有旧输出与interim图保留，受影响B暂不采用；改为已渲染chat不重复special tokens，普通文本A/base仍由tokenizer加所需special。五模型全部1732题B×全部阅读/repair在runs-native-v2重算；三族FP32确认中Gemma12/Llama8在confirmation-native-v2重算，Qwen8实际token序列一致、保留原固定面板。旧完整run的所有A任务用输入格式投影保留、不按结果筛。完整prompt长度/精度比较纳入prompt_tokens，防止仅文本SHA相同就混合不同输入token。
+三族14材料/28任务2D与等价4D因果mask分数完全一致，证明掩码仪器的一致性，未开放任何未来边；其输入尚为旧BOS政策，后续mask使用纠正native输入。这不是oracle的科学效果或能力证据。source/special-token完整性修复本身不作finding。官方[Transformers v4.51.3说明](https://github.com/huggingface/transformers/blob/v4.51.3/docs/source/en/chat_templating.md)在GitHub核对，未直连HF。
+全14 tokenizer的R3 catalog仍只23种filler，增量v3没有新文本，无新增API调用；WT保存sentence-final/punctuation标记，按原公式条件于trailing whitespace，不能当document-EOS概率或人类读时。

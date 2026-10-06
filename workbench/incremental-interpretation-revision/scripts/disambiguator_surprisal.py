@@ -39,7 +39,9 @@ def encode_word(row, tokenizer):
     if tokens[:len(before)] != before: return None, 'Tokenization crosses previous word boundary'
     assert len(tokens) > len(before)
     return dict(tokens=tokens, n=len(before), context=prefix,
-                displayed_word=span.group(), full_prefix=full), None
+                displayed_word=span.group(), full_prefix=full,
+                sentence_final_word=index==len(spans)-1,
+                contains_terminal_punctuation=bool(re.search(r'[.!?]$',span.group()))), None
 
 
 def scores(model, batch, pad, boundaries):
@@ -99,6 +101,7 @@ def main():
     report=dict(data_sha256=sha(args.data),model_manifest_sha256=sha(args.model/'manifest.json'),
         model_path=str(args.model),torch=torch.__version__,transformers=transformers.__version__,
         source='https://arxiv.org/html/2406.10851v1',formula='log P_WT(word)=log P_raw(word)+log P(boundary|after)-log P(boundary|before)',
+        boundary_convention='Whitespace-starting tokens only, excluding specials; WT conditional on trailing whitespace, not document-EOS probability.',
         boundary_ids=boundaries,tasks=len(tasks),missing=len(missing),seed=52,
         surprisal_sha256=sha(args.out/'surprisal.jsonl'),missing_sha256=sha(args.out/'missing.jsonl'),
         code_sha256=sha(Path(__file__)),gpu_hours=(time.monotonic()-start)/3600)
