@@ -1,7 +1,6 @@
 """E53 question-free, faithful two-sentence generation on immutable published text."""
 import argparse
 import collections
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -10,7 +9,7 @@ import time
 
 from data import sha,write_jsonl
 from data_v2 import digest
-from reading_map import REPAIR,chat
+from reading_map import REPAIR
 
 INSTRUCTION=('You are a linguistic experiment subject. You will be presented with a sentence, '
     'and you will need to split it into two sentences that convey the exact same '
@@ -36,6 +35,14 @@ Sentence: They looked for the treasure, hoping to find salvation.
 Splitted:
 1. The looked for the treasure.
 2. They hoped to find salvation.'''
+
+
+def sentence_parts(text):
+    text=text.rsplit('</think>',1)[-1].strip()
+    text=re.sub(r'^Splitted:\s*','',text,flags=re.IGNORECASE)
+    # Numbering is formatting, not an additional sentence. Keep all prose.
+    text=re.sub(r'(?:^|(?<=[.!?])\s+)\d+[.)]\s*',' ',text,flags=re.MULTILINE).strip()
+    return [x.strip() for x in re.split(r'(?<=[.!?])\s+',text) if x.strip()]
 
 
 def build(data,out):
@@ -98,7 +105,7 @@ def main():
             for (row,fmt,reading,p),generated in zip(batch,outputs):
                 completion=generated.outputs[0]
                 # Simple source-paper format statistic only; T4 is authoritative.
-                parts=[x.strip() for x in re.split(r'(?<=[.!?])\s+',completion.text.strip()) if x.strip()]
+                parts=sentence_parts(completion.text)
                 record=dict(item_id=row['item_id'],sentence_sha256=row['sentence_sha256'],format=fmt,reading=reading,
                     prompt=p,prompt_sha256=digest(p),prompt_tokens=len(generated.prompt_token_ids),
                     text=completion.text,text_sha256=digest(completion.text),generated_token_ids=list(completion.token_ids),

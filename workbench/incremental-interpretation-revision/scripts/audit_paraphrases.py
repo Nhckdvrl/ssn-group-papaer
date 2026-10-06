@@ -40,12 +40,27 @@ Return ONLY strict JSON {"annotations":[...]} with one object for every item:
 "disamb_word":null,"amb_span":null}.'''
 
 
+BASE_VALIDATE=step_gp_audit.validate
+
+
+def validate_t4(annotation,row):
+    BASE_VALIDATE(annotation,row,note_limit=35)
+    assert annotation['label']=='NEITHER'
+    assert annotation['option_labels'] in (['ENTAILED','CONTRADICTED'],['CONTRADICTED','ENTAILED'],['NEITHER','NEITHER'])
+    assert annotation['grammar']=='acceptable' and annotation['naturalness']==5
+    assert annotation['disamb_word_index'] is None and annotation['amb_span'] is None
+    return annotation
+
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--data',type=Path,required=True)
     ap.add_argument('--runs',type=Path,nargs='+',required=True);ap.add_argument('--out',type=Path,required=True)
     ap.add_argument('--workers',type=int,default=8,choices=range(1,9))
+    ap.add_argument('--source-limit',type=int,help='Instrument smoke: first fixed input source IDs, all conditions retained.')
+    ap.add_argument('--blocking-slot',type=int,choices=range(8),help='Use one shared slot for a small instrument smoke during D0.')
     ap.add_argument('--previous-audits',type=Path,nargs='*',default=[]);args=ap.parse_args()
     metadata={r['item_id']:r for r in map(json.loads,args.data.read_text().splitlines())}
+    if args.source_limit:metadata={k:metadata[k] for k in sorted(metadata)[:args.source_limit]}
     previous={};previous_scopes=[]
     for directory in args.previous_audits:
         labels=directory/'step5/annotated.jsonl';assert (directory/'step5/summary.json').exists()
@@ -59,17 +74,20 @@ def main():
         assert config.get('predictions_sha256')==sha(directory/'predictions.jsonl'),'Run must be complete'
         model=Path(config['model_path']).name;run_hashes.append(dict(path=str(directory),config_sha256=sha(directory/'config.json')))
         for row in map(json.loads,(directory/'predictions.jsonl').read_text().splitlines()):
+            if row['item_id'] not in metadata:continue
             source=metadata[row['item_id']];assert source['sentence_sha256']==row['sentence_sha256']
             text=row['text'];assert digest(text)==row['text_sha256']
+            unfinished=('<think>' in text and '</think>' not in text)
             final=text.rsplit('</think>',1)[-1]
             packet='SOURCE:\n'+source['sentence']+'\n\nPARAPHRASE:\n'+final
             fingerprint=digest(packet);uid='E53-T4:'+fingerprint
-            candidates[uid]=dict(item_id=uid,sentence=packet,sentence_sha256=fingerprint,
-                question='Judge only the source/paraphrase role relation.',question_format='2opt',
-                options=['CORRECT_ROLES','GP_MISREADING'],needs_revision=True)
+            if not unfinished:
+                candidates[uid]=dict(item_id=uid,sentence=packet,sentence_sha256=fingerprint,
+                    question='Judge only the source/paraphrase role relation.',question_format='2opt',
+                    options=['CORRECT_ROLES','GP_MISREADING'],needs_revision=True)
             assignments.append(dict(model=model,item_id=row['item_id'],format=row['format'],reading=row['reading'],
                 audit_id=uid,packet_sha256=fingerprint,text_sha256=row['text_sha256'],capped=row['capped'],
-                unfinished_thinking=('<think>' in text and '</think>' not in text)))
+                unfinished_thinking=unfinished))
     args.out.mkdir(parents=True,exist_ok=True)
     new={k:v for k,v in candidates.items() if k not in previous}
     for uid in candidates.keys()&previous.keys():assert candidates[uid]['sentence_sha256']==previous[uid]['sentence_sha256']
@@ -77,19 +95,14 @@ def main():
     write_jsonl(args.out/'assignment.jsonl',assignments)
     scope=dict(source_data_sha256=sha(args.data),runs=run_hashes,assignments=len(assignments),
         distinct_packets=len(candidates),new_packets=len(new),previous_audits=previous_scopes,
+        source_limit=args.source_limit,instrument_only=args.source_limit is not None,
         assignment_sha256=sha(args.out/'assignment.jsonl'),blinded_to_gold_and_model=True,
         timing='Before T4 effect interpretation; complete runs selected by preregistered model panel, not outcomes')
     (args.out/'scope.json').write_text(json.dumps(scope,indent=2)+'\n')
-    original_validate=step_gp_audit.validate
-    def validate(annotation,row):
-        original_validate(annotation,row)
-        assert annotation['label']=='NEITHER'
-        assert annotation['option_labels'] in (['ENTAILED','CONTRADICTED'],['CONTRADICTED','ENTAILED'],['NEITHER','NEITHER'])
-        assert annotation['disamb_word_index'] is None and annotation['amb_span'] is None
-        return annotation
-    step_gp_audit.validate=validate;step_gp_audit.PROMPT=PROMPT
+    step_gp_audit.validate=validate_t4;step_gp_audit.PROMPT=PROMPT
     # Full T4 uses all available shared slots; no extra concurrency beyond eight.
     os.environ.pop('STEP_PLAN_BLOCKING_SLOT',None)
+    if args.blocking_slot is not None:os.environ['STEP_PLAN_BLOCKING_SLOT']=str(args.blocking_slot)
     sys.argv=[sys.argv[0],'--data',str(data),'--out',str(args.out/'step5'),'--workers',str(args.workers),'--batch-size','2']
     step_gp_audit.main()
 

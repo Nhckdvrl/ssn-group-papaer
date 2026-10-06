@@ -207,3 +207,5 @@ E50列表41.41%、actor锚定普通复述98.05%，E51去two-names后的literal-s
 以上只补定位。表中的已有观察/claim归属用于学习和准确归因，不表示禁止使用相同方法、现象或局部解释；它们可以成为新故事的组成部分。人再次明确：探索目标是证明后值得兴奋的完整新叙事，而非完全空白的空间；从广面实验和意外结果追问，不以局部重合关线。更大模型、更多构式、隐藏状态可读性或换问句增益均不足以自动认证idea；E52需独立真实错误定义、CI与之后的选择性因果证据。完整故事形成后再评价覆盖与compression risk，未引用EACL、不以接收率作科学判决。
 
 2026-10-06补读：Jurayj2022由原§2–3扩至全文（引言、related work、数据构造、讨论、局限）。其83基础句上的几何变化用于发现未实现的歧义、并非正确角色的行为/因果验证；不同revision条目数不掩盖。Maina-Kilaas/Levy2026扩至全文：30项Maze/36项SPR、167/225保留参与者、16模型五族；sentence-final wrap-up与resolution任务效应、RT分析筛正确comprehension而accuracy本身没有显著效应都须保留，不能把标题“no evidence”转成证明严格零效应，也不能由长度操纵直接称承诺增强。这些方法/观察可借来设计修订账户的控制，非自动禁区。[Jurayj正文](https://arxiv.org/html/2205.12302)、[Maina-Kilaas/Levy正文](https://arxiv.org/html/2603.23624)。
+
+问句scope核对：Amouyal2025正文已明确optionally-transitive的No是“not necessarily”约定；这个约定本身不是我们新发现的数据错误。E52 literal T1过滤只划定较窄的矛盾资格，不应自动取消作者的任务语用解释。要判定“理解错误”必须用E53所断言角色的忠实复述或E59明确同一事件/句中角色的问句，保留原YN任务及其读数；额外事件world-compatible与是否忠实表达source是不同测量对象。不能单凭NEITHER比例升级成“领域旗舰结论错误”。

@@ -48,7 +48,7 @@ def packet(row):
         'indexed_words': [{'index': i, 'word': w} for i, w in enumerate(row['sentence'].split())]}
 
 
-def validate(annotation, row):
+def validate(annotation, row, note_limit=20):
     assert annotation['item_id'] == row['item_id']
     assert annotation['sentence_sha256'] == row['sentence_sha256']
     labels = ('ENTAILED', 'CONTRADICTED', 'NEITHER')
@@ -56,7 +56,7 @@ def validate(annotation, row):
     assert type(annotation['confidence']) in (int, float) and 0 <= annotation['confidence'] <= 1
     assert annotation['grammar'] in ('acceptable', 'marginal', 'unacceptable')
     assert type(annotation['naturalness']) is int and 1 <= annotation['naturalness'] <= 5
-    assert isinstance(annotation['note'], str) and len(annotation['note'].split()) <= 20
+    assert isinstance(annotation['note'], str) and len(annotation['note'].split()) <= note_limit,'note exceeds declared word limit'
     opts = annotation['option_labels']
     assert isinstance(opts, list) and all(x in labels for x in opts)
     assert len(opts) == (0 if row['question_format'] == 'yn' else len(row['options']))

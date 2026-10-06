@@ -18,6 +18,8 @@ source workbench/incremental-interpretation-revision/scripts/env.sh
 
 增量filler审计用`audit_reading_fillers.py --previous-audits <所有已完成目录>`，分析时`--filler-audits`同时传入原/增量目录，不重复选择标签。`analyze_reading_map.py --deduplicate`另写输入字节去重敏感性；主分析连接共享GP句的既有cluster。完整prompt的R3/R1长度不等记排除；分析同时输出小字段的外部validated-task ledger。补充模型用`mixed_reading_map.py --data <qualified> --map-summary <主分析json> --out <json>`，沿用全部质量排除，区间仍是VB posterior近似而非bootstrap。
 
+E53：`paraphrase_map.py --data <published-v2> --build-out <E53/sentences.jsonl>`合并相同原句；`run_panel.py --stage paraphrase --data <sentences> --models Qwen3-8B gemma-3-12b-it Meta-Llama-3.1-8B-Instruct --calibration-out <E52/runs> --out <E53/runs>`用共享GPU锁生成。`audit_paraphrases.py --data <sentences> --runs <完成目录...> --out <audit> --previous-audits <此前完成目录...>`只给source/output、相同文本盲复用。`analyze_paraphrases.py --metadata <qualified> --data <sentences> --runs <完成目录...> --audits <全部不重复audit目录...> --out <json>`要求每个final都有审计记录；未知/失败不当语义误读，T4与两句格式分开。仪器`--source-limit 5 --blocking-slot 0`不用于科学效应筛选。
+
 ```bash
 source workbench/incremental-interpretation-revision/scripts/env.sh
 # git download 必须沿用上述无代理环境，并禁用 git 自有 proxy 设置。
