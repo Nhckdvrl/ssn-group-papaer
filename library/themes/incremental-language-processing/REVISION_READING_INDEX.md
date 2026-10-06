@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-17篇主文（2综述+15研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+18篇主文（3综述+15研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -19,3 +19,4 @@
 - [Beyond Single-shot Writing: Deep Research Agents are Unreliable at Multi-turn Report Revision](chen2026-report-revision-regression.md)
 - [When Attribution Patching Lies: Diagnosis and a Second-Order Correction](zhang2026-attribution-patching-curvature.md)
 - [Learn from Your Mistakes: Self-Correcting Masked Diffusion Models](schiff2026-proseco.md)
+- [The Quest for the Right Mediator](mueller2025-right-causal-mediator-survey.md)
