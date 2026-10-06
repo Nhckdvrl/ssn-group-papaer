@@ -110,6 +110,7 @@ def request(rows, pass_number, directory, attempt=0):
             raise TransportUnavailable('Step Plan authentication/authorization HTTP '+str(response['http_status']))
         assert response['http_status'] == 200, 'HTTP '+str(response['http_status'])
         body = response['body']
+        assert body.get('model') == MODEL, 'Unexpected response model='+str(body.get('model'))
         assert body.get('stop_reason') == 'end_turn', 'stop_reason='+str(body.get('stop_reason'))
         text = ''.join(x['text'] for x in body['content'] if x['type'] == 'text').strip()
         if text.startswith('```'):

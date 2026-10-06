@@ -43,6 +43,15 @@ def main():
     output['landmarks']=dict(rows_available=sum(r['disamb_word_index'] is not None for r in rows),
         paired_questions_usable=sum(all(r['disamb_word_index'] is not None and r['disamb_word_index']>0 for r in group) for group in matched),
         position_origin_counts=dict(collections.Counter(str(r.get('position_origin')) for r in scope)))
+    validated=[r for r in scope if 'step5_semantic_validation_status' in r]
+    if validated:
+        complete=[r for r in validated if len(r.get('step5_semantic_validation_passes',[]))==2]
+        values=[(r,float(semantic(r['step5_semantic_validation_passes'][0])==semantic(r['step5_semantic_validation_passes'][1]))) for r in complete]
+        output['countermodel_validation']=dict(scope_rows=len(validated),complete_both=len(complete),
+            status_counts=dict(collections.Counter(r['step5_semantic_validation_status'] for r in validated)),
+            semantic_agreement_cluster_bootstrap=aggregate(values),
+            semantic_agreement_micro=sum(v for r,v in values)/len(values) if values else None,
+            interpretation='Separate blinded T1-only audit; compatibility grammar/position fields never replace original T2/T3. Main two-pass reliability above describes the original v4 calls.')
     output['interpretation']='Agreement is reliability of two independent shuffled calls to the same annotator model, not a proof of semantic truth. Wh placeholder NEITHER labels are excluded from YN label counts. Empty genuine strata are missing evidence, not absence of model errors.'
     args.out.write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
 

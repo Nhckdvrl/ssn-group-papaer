@@ -27,6 +27,7 @@ def merge(published, qualified, original, validation, destination, out):
         checked = checks[uid]
         assert checked['sentence_sha256'] == record['sentence_sha256']
         record['step5_v4_annotation'] = prior
+        record['step5_v4_status'] = record['step5_status']
         record['step5_semantic_validation_status'] = checked['step5_status']
         record['step5_semantic_validation_passes'] = checked.get('step5_passes', [])
         statuses[checked['step5_status']] += 1
