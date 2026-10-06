@@ -1,14 +1,14 @@
-# 文件索引（2026-10-06，用户暂停）
+# 文件索引（2026-10-06：主线已重置；新路线见 ROUTE / EXECUTION_BRIEF）
 
 ## 先读这几份
 
-1. [完整阶段总结](PROGRESS_SUMMARY_2026-10-06.md)：51次尝试逐项结果、失败、反证、未完成项及当前判断。
-2. [诊断与转向建议](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)：失败原因（执行/数据/领域）分析与新主线建议，待人决定。
-   - [方向筛选](SCREENING_2026-10-06.md)：全文精读、[公开结果审计](results/D0-Amouyal-released-item-type-audit.json)（`scripts/analyze_amouyal_released.py`）、候选比较与C1数据方案。
-3. [README](README.md)：简短状态页；注册仍PROPOSED，实际研究已按用户要求暂停。
-4. [CLAIMS](CLAIMS.md)：C00–C05证据等级与降级记录；没有L2/L3主旨。
-5. [PAIN_LOG](PAIN_LOG.md)：数据/读数/语义审计痛点；不是科学结论的替代品。
-6. [I01](ideas/I01-event-reference-or-lexical-echo.md)：唯一当前探索idea，仍PILOT；局部角色预测/用途结构不等于好paper。
+1. [README](README.md)：状态页（新路线、人的决定）。
+2. [EXECUTION_BRIEF](EXECUTION_BRIEF.md)：给本地 agent 的执行与探究说明（认知建设、第一块地图、追问菜单、数据与 Step5 标注、护栏）。
+3. [ROUTE](ROUTE.md)：领域全景、三方矛盾、路线依据与近邻定位。
+4. [I02](ideas/I02-garden-path-misreading-attribution.md)：当前主 idea。[CLAIMS](CLAIMS.md)：C06–C09（新路线）与历史 C00–C05。
+5. [DIAGNOSIS](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)：51 个实验的失败原因分析。[PROGRESS_SUMMARY](PROGRESS_SUMMARY_2026-10-06.md)：E00–E51 逐项记录。
+6. [公开结果审计](results/D0-Amouyal-released-item-type-audit.json)（`scripts/analyze_amouyal_released.py`）：新路线的起点证据。
+7. [PAIN_LOG](PAIN_LOG.md)：P00–P14。[I01](ideas/I01-event-reference-or-lexical-echo.md)：PARKED。
 
 ## 实验档案
 

@@ -17,4 +17,4 @@
 - **核心 finding：** GP 对 LLM 特别难（GPT-5 非 GP 93.7%、GP 46.8%）；thinking 对非 GP 的帮助更一致，在 GP 上反而常常有害，例外是 GPT-5（Subj/Obj +55、NP/S +47）。随规模增大，结构难度排序与人更接近；"太弱或太强都不像人"（sweet spot）。
 - **作者明确留下的问题：** 猜想 GP 难是因为要"从记忆中丢弃错误解释"，并写明"设计实验检验这个猜想是未来的关键方向"。
 - **我们的审计**（`workbench/incremental-interpretation-revision/results/D0-Amouyal-released-item-type-audit.json`）：GP 平均值中混入了及物 Subj/Obj 和部分 NP/S 条目，这些条目在无歧义对照句上同样大量答 Yes，属于问题语义问题。真实错误条目（反身 Subj/Obj、RR、NP/VP）上，强模型仍有 25–65pp 的真实缺陷。
-- **对我们：** 见 `workbench/incremental-interpretation-revision/SCREENING_2026-10-06.md` 中的 C1。
+- **对我们：** 见 `workbench/incremental-interpretation-revision/ROUTE.md` 中的 C1。

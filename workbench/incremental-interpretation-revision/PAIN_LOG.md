@@ -32,3 +32,6 @@
 | P12 | 2026-10-06 | Step Plan批量完整JSON协议未能稳定完成：E51每批24回答，39/192批完整；108 max_tokens、45 schema/覆盖失败；E01亦61/626未完整 | 原请求/响应/manifest全保留，无新调用 | 未完成不是semantic通过；成功批不能代表总体，E51不能给最终语义结论 | 用户暂停，不重试；恢复后先解决批大小/协议完成性，不能以无脑更大token重跑替代原因分析 |
 
 - P11暂停补记：E51去two-names仍有literal同patient劣势，但正确description与错误Name格式、count的name-string解读必须分开；外部全量审核未完成。当前不扩大sweep、不升级能力/novelty。
+
+| P13 | 2026-10-06 | 领域旗舰数据（Amouyal）中，及物 Subj/Obj 和多数 NP/S 条目的 GP 问句命题按最终解析只是"不一定"，强模型在无歧义对照句上同样答 Yes（GPT-5 及物对照 24.4%） | 公开 31 个模型结果加人类数据审计（`results/D0-Amouyal-released-item-type-audit.json`） | 约一半的"GP 错误"不是 GP 效应；与 P01/P06/P10 是同一个问题 | 新路线用 Step5 三类标签只保留真实错误条目，"不一定"条目单独报告 |
+| P14 | 2026-10-06 | E24–E51 共 28 个实验复用同一批 24 句（12 族），只用 Qwen3-8B；而 Qwen3-8B 在反身 Subj/Obj 上几乎没有 GP 差距（47.7% 对 51.8%） | 实验卡与公开结果审计 | 设计空间被压成一个点，每条主张只有 4–12 个 cluster | EXECUTION_BRIEF §6：≥3 族、≥2 构式，禁止单模型连锁实验和旧模板扰动 |

@@ -1,6 +1,6 @@
 # 主张账本 — Incremental Interpretation & Revision
 
-**状态：2026-10-06 / PROPOSED baseline residency；用户明确暂停研究，当前仅归档。**
+**状态：2026-10-06 / PROPOSED baseline residency；人决定重置主线并恢复研究（C06–C09 为新路线）。**
 
 当前有局限于固定模型/协议的本地测量事实C03–C05，已有具体候选I01，但尚无已确立的一般机制或新颖性判断。C00–C02仍是待验证对象，不能写成revision机制finding。
 
@@ -12,6 +12,13 @@
 | C03 | 固定Qwen3-8B的GP/nonGP问答差值随query顺序反向，且反转不依赖assistant prefill或few-shot demos | L1（measurement；非novelty） | [E03](experiments/E03-e00-order-and-assertion-audit.md)、[E07](experiments/E07-native-readout-transfer.md) / [E07结果](results/E07-summary.json)：neutral/native/base交互+60.87 pp [44.93,76.81]；全部8个boundary×system×instruction交互正；67-set sensitivity同方向 | 下一步[E08](experiments/E08-reading-focus-versus-final-query.md)将final query固定，区分reading focus与回答启动/位置；目前不归因为内部parse或一般LLM能力 |
 | C04 | 同一排他事实的具名/泛指表述对后续实体提及与活动患者偏好产生不同响应，且GP与逗号历史调节该响应 | L1（局部measurement，非能力/机制/novelty） | [E21](experiments/E21-named-versus-generic-exclusion.md)、[E22](experiments/E22-post-correction-entity-versus-role-use.md)/[E22统计](results/E22-summary.json)：严格4源named−generic的relation-minus-neutral变化GP−2.792 [−3.680,−1.904]bits、cue−.174 [−1.124,1.201]；全7同方向；[E24](experiments/E24-independent-correction-use-transfer.md)/[统计](results/E24-summary.json)独立12family主history交互−.795 [−1.210,−.394]、strict9−.766 [−1.168,−.363]。角色事实有效，实际错误未稳健成立 | 独立来源预测/实际角色使用、混杂审计后才讨论更一般解释；当前不能把概率偏好叫false belief或内部绑定 |
 | C05 | 固定Qwen3-8B中，account/identity/report框架内，新other同谓词患者预测反向；普通名字场景未稳定迁移，非排他条件old absolute控制偏弱 | L1（限定协议measurement；2026-10-06收窄） | [E40](experiments/E40-plain-role-versus-exhaustive-focus.md)/[统计](results/E40-summary.json) 两order新J−9.921/−7.238；[E41](results/E41-summary.json) ready两order−6.236/−6.611；[E43](results/E43-summary.json) 最小事实所有new absolute D正，old J也负；[E44](experiments/E44-balanced-natural-scene-versus-entity-exposure.md)/[统计](results/E44-summary.json) old D+10.174/+9.054，newother D+2.623/−1.320(last CI跨0)，ready D+5.760/+4.124，native576明确正确 | E45名字仍反向但old absolute D近0/负；E46匹配分解frame；不得称一般角色反转或成功修订后残留，先定位自然语言必要变量及功能后果 |
+
+| C06 | 在初始命题按最终解析确实为假的 GP 条目上，开放模型（≥3 族）存在 GP 特有的理解缺陷；"不一定"类条目没有 GP 特有差距 | L0 | 公开结果审计（[结果](results/D0-Amouyal-released-item-type-audit.json)，无新推断）：GPT-5 RR 62.5% 对 98.8%、反身 52.1% 对 100%；及物对照 24.4% | D0-v2 Step5 标签加 E52 地图，cluster bootstrap CI |
+| C07 | 让歧义区能看到消歧词（读两遍 / 非因果 oracle）会（或不会）选择性缩小真实 GP 差距，并相对截断重复和填充对照报告 | L0 | 待验证（E52/E54） | ≥3 族、≥2 构式，CI 能分开 R1 与 R2/R3 |
+| C08 | 模型给出 GP 误读时，正确解析在后段位置是（或不是）线性可读的 | L0 | 待验证（E55） | 同序线索句训练的探针，在多个模型上做留出验证 |
+| C09 | 作答时对旧位置（或后段位置）的读取对误读有因果贡献 | L0 | 待验证（E55） | 位置级修补或注意力切断的效应，在 ≥2 个模型上成立 |
+
+**2026-10-06 主线重置：** C00–C05 属于旧路线，是历史测量，保留，不再推进；C05 对应的 I01 PARKED。新路线见 [ROUTE](ROUTE.md) 与 [EXECUTION_BRIEF](EXECUTION_BRIEF.md)。
 
 **禁止提前升级：**
 - 上游已报告的 garden-path effect 不是我们的 C-level novelty；

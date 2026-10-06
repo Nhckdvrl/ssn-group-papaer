@@ -1,5 +1,7 @@
 # Data Plan — Incremental Interpretation & Revision
 
+> **2026-10-06 新路线：** 数据来源、配对规则、统一 schema、真实错误条目的定义、规模对齐与 Step5 标注协议见 [EXECUTION_BRIEF](EXECUTION_BRIEF.md) §4。以下内容是旧路线的来源审计与许可记录（仍然有效，可复用）。
+
 ## Principle
 
 **Reuse first; synthesize only to separate explanations.** Garden-path stimuli are calibration data, not the final novelty.
