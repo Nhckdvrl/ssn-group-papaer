@@ -44,8 +44,9 @@
 - [DATA_PLAN](DATA_PLAN.md)：数据来源、许可与审计；新路线的数据方案见 EXECUTION_BRIEF §4。
 - 本地 cache：`/data1/xiangding/work/incremental-interpretation-revision/`（upstream / normalized / models / runs）。原始数据、模型和逐条输出不进 git；复现入口见 [scripts/README.md](scripts/README.md)。
 - 当前自主执行：[E52](experiments/E52-genuine-revision-reading-map.md)，1732公开QA/309 GP pairs；全文综合和“我的理解”见当日日志/领域地图。Step5全部走Step Plan，≤5项/批；HF资产只走镜像，本地推理离线。E52完整资产在上述cache的`E52/`，精度/接口失败同样保留。
-- 数据资格：原双轮/裁决资产`E52/step-full-v4/`保留；两遍一致仍可能把角色逆转误当字面矛盾，已登记反例世界复核。`qualified-v2`只作待复核历史资格，最终主分析入口将为`qualified-v3`，不改变原S/Q/gold或独立T2/T3。
-- [E53](experiments/E53-faithful-two-sentence-paraphrase.md)：三族10260个纠正原生输入的复述已生成，T4双轮盲审进行；[E59](experiments/E59-source-grounding-versus-world-question.md)：明确答案语义与字母/词读出对照已登记，待语义资格复核后运行。C06–C09均L0。
+- 数据资格：原双轮/裁决资产`E52/step-full-v4/`保留；反例世界双轮复核完成，最终主分析入口`E52/qualified-v3.jsonl`保留原S/Q/gold和独立T2/T3。严格矛盾仅覆盖2个NPS词汇组，不代表全部理解错误；`qualified-v2`仅为历史资格。
+- E52完整14模型/5族地图已统计，尚无合格idea或因果机制证据。[E53](experiments/E53-faithful-two-sentence-paraphrase.md)三族10260复述已生成，T4双轮盲审未完成；[E59](experiments/E59-source-grounding-versus-world-question.md)已执行评分，尚未正式分析。C06–C09均L0。
+- **2026-10-07 执行调整：** 根据用户提醒停止追加实验与标注，在途API已收束、资产保留，重新审视科学问题与研究价值；注册状态不变。诊断见[当日日志](logs/2026-10-07.md)。
 
 ## 决策记录
 - **2026-10-05：** 人选择本 territory，授权 training-free baseline residency；取消 agent 自加的停步 gate；构造与语义审计改用 Step。
