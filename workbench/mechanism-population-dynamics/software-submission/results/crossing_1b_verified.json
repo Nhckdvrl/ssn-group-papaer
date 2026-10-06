@@ -1,0 +1,74 @@
+{
+ "n_models": 69,
+ "excluded": [
+  "dclm-baseline-qc-7p-fw2|default",
+  "dclm-baseline-qc-7p-fw3|default",
+  "dolma1_7-no-math-code|default",
+  "dolma1_7-no-reddit|default",
+  "falcon-and-cc-qc-orig-10p|large-aux-3",
+  "falcon-and-cc-qc-tulu-10p|large-aux-3"
+ ],
+ "agreement": {
+  "M1": {
+   "SI": 0.32961790207875125,
+   "SD": -0.01765397115749352,
+   "DD": 0.0015519674552957633,
+   "n_models": 69,
+   "ci95_SI_minus_SD": [
+    0.3208651173663289,
+    0.3743145262231339
+   ]
+  },
+  "M2": {
+   "SI": 0.42339813770009727,
+   "SD": -0.013497959562688412,
+   "DD": -0.001400004719185378,
+   "n_models": 69,
+   "ci95_SI_minus_SD": [
+    0.40373953102784305,
+    0.4737000534054805
+   ]
+  },
+  "M3": {
+   "SI": 0.18320464694456418,
+   "SD": -0.01429129876584195,
+   "DD": -0.00012071659077666526,
+   "n_models": 69,
+   "ci95_SI_minus_SD": [
+    0.1613371706577493,
+    0.2276439881668756
+   ]
+  },
+  "M4": {
+   "SI": 0.31068338969383685,
+   "SD": -0.0026953201775841594,
+   "DD": 0.0005744801443453342,
+   "n_models": 69,
+   "ci95_SI_minus_SD": [
+    0.2790226681345653,
+    0.3506940532119804
+   ]
+  }
+ },
+ "variance_components": {
+  "n_recipes_balanced": 19,
+  "M1": {
+   "frac_heads_seed_sig": 0.7265625,
+   "frac_heads_corpus_sig": 0.04296875,
+   "median_share_seed": 0.2144909142312996,
+   "median_share_corpus": 0.0
+  },
+  "M2": {
+   "frac_heads_seed_sig": 0.78515625,
+   "frac_heads_corpus_sig": 0.04296875,
+   "median_share_seed": 0.33426852070978297,
+   "median_share_corpus": 0.0
+  },
+  "M4": {
+   "frac_heads_seed_sig": 0.6640625,
+   "frac_heads_corpus_sig": 0.07421875,
+   "median_share_seed": 0.23276585956260243,
+   "median_share_corpus": 0.0
+  }
+ }
+}

@@ -295,7 +295,6 @@ def fig2_innate():
 def fig3_critical():
     import re
     d = json.loads((R / "e46" / "analysis.json").read_text())
-    A = d["A"]
     H = 3.3
     fig = plt.figure(figsize=(COL, H))
     ax = axes_in(fig, 0.5, 1.95, 2.45, 1.08)

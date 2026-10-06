@@ -116,7 +116,7 @@ def kendall_z(a, b):
 
 def identify(keys, S):
     seeds = sorted({s for _, s in keys})
-    hits, flagged = [], []
+    hits = []
     for i, q in enumerate(keys):
         score = {}
         for s in seeds:
