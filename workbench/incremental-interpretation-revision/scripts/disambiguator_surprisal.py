@@ -30,6 +30,7 @@ def encode_word(row, tokenizer):
     index = row.get('disamb_word_index')
     if index is None: return None, 'No independently accepted landmark'
     spans = list(re.finditer(r'\S+', row['sentence']))
+    assert 0 <= index < len(spans), 'Landmark must index the unchanged source sentence'
     span = spans[index]
     prefix = row['sentence'][:span.start()].rstrip()
     full = row['sentence'][:span.end()]
@@ -88,7 +89,9 @@ def main():
     config=AutoConfig.from_pretrained(args.model,local_files_only=True)
     klass=Gemma3ForConditionalGeneration if config.model_type=='gemma3' else AutoModelForCausalLM
     start=time.monotonic()
-    model=klass.from_pretrained(args.model,local_files_only=True,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda').eval()
+    model=None
+    if tasks:
+        model=klass.from_pretrained(args.model,local_files_only=True,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda').eval()
     with (args.out/'surprisal.jsonl').open('w') as stream:
         for begin in range(0,len(tasks),args.batch_size):
             batch=tasks[begin:begin+args.batch_size]
@@ -103,6 +106,7 @@ def main():
         source='https://arxiv.org/html/2406.10851v1',formula='log P_WT(word)=log P_raw(word)+log P(boundary|after)-log P(boundary|before)',
         boundary_convention='Whitespace-starting tokens only, excluding specials; WT conditional on trailing whitespace, not document-EOS probability.',
         boundary_ids=boundaries,tasks=len(tasks),missing=len(missing),seed=52,
+        dtype='bfloat16',status='complete' if tasks else 'No accepted tokenizable landmarks; no model forward or zero-effect estimate',
         surprisal_sha256=sha(args.out/'surprisal.jsonl'),missing_sha256=sha(args.out/'missing.jsonl'),
         code_sha256=sha(Path(__file__)),gpu_hours=(time.monotonic()-start)/3600)
     (args.out/'config.json').write_text(json.dumps(report,indent=2)+'\n')
