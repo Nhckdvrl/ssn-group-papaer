@@ -7,7 +7,7 @@
   - 先广后深；允许一开始就做白盒；
   - 标注只用 Step5；
   - 资源：同一节点上的 8 张 H20，不用付费 API。
-- **给本地 agent 的执行说明：** [EXECUTION_BRIEF](EXECUTION_BRIEF.md)。开跑前必须先完成 §1 的整体认知建设。
+- **执行模式：** 自主执行。本地 agent 按 [EXECUTION_BRIEF](EXECUTION_BRIEF.md) 全程推进，原人审节点改为自审；只有真正卡住，或遇到开线/关线/改状态/进入候选这类决定时，才回来找人（EXECUTION_BRIEF §6.7）。开跑前必须先完成 §1 的整体认知建设。
 - **territory 卡：** [Territory Card](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)　**目标会议：** ACL / EMNLP / NAACL（按证据成熟度选周期）。
 
 ## 一句话（当前主线）
@@ -46,4 +46,4 @@
 
 ## 决策记录
 - **2026-10-05：** 人选择本 territory，授权 training-free baseline residency；取消 agent 自加的停步 gate；构造与语义审计改用 Step。
-- **2026-10-06：** 人要求暂停并归档（E51 后）。同日，人接受诊断，决定重置主线、采用新路线、恢复研究、标注只用 Step5、先广后深、允许白盒，并上传 main 交给本地 agent 执行。
+- **2026-10-06：** 人要求暂停并归档（E51 后）。同日，人接受诊断，决定重置主线、采用新路线、恢复研究、标注只用 Step5、先广后深、允许白盒，并上传 main 交给本地 agent 执行。随后人决定采用**自主执行模式**：本地 agent 全程自主推进，原人审节点改为自审，只有真正卡住或需要人做的状态类决定时才回来找人；这条决定覆盖 AGENTS/EXECUTION 中"决策点请人审"的默认规则。

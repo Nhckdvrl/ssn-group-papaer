@@ -1,6 +1,6 @@
 # I02：强 LLM 为什么在能看到整句的情况下仍然读错 garden-path 句？（2026-10-06）
 
-- **状态：** PILOT（人于 2026-10-06 决定采用，执行见 [EXECUTION_BRIEF](../EXECUTION_BRIEF.md)）
+- **状态：** PILOT（人于 2026-10-06 决定采用，自主执行模式，执行见 [EXECUTION_BRIEF](../EXECUTION_BRIEF.md)）
 - **来源：**
   - 近邻之间的分歧：理解问答研究认为 GP 对 LLM 特别难、原因未知（Amouyal'26 的猜想）；surprisal 研究认为 LLM 不怎么被 garden-path；架构研究把因果掩码当作前提（CASTLE）。
   - 测量异常：对公开结果的审计（`results/D0-Amouyal-released-item-type-audit.json`）显示约一半的"GP 错误"来自问句语义。
