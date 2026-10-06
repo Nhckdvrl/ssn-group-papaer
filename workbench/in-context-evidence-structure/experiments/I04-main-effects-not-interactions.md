@@ -1,6 +1,6 @@
 # I04：In-context learners learn main effects of context, not context × input interactions——concept drift 盲是其特例（2026-10-06）
 
-- **状态：** PROMISING（I01 的推广与机制化；I02“TR/TL”被 E27 否定，I03“边缘统计”被 E28/E29 支持并并入本卡）
+- **状态：** CLAIM-TRACK（2026-10-06 人决定：作为本 workbench 主 idea；下一阶段先做机制）。原状态 PROMISING（I01 的推广与机制化；I02“TR/TL”被 E27 否定，I03“边缘统计”被 E28/E29 支持并并入本卡）
 - **来源：** 稳定 anomaly（E02a 起的“前缀噪声方向错”在 13 模型 × 多任务复现）→ 一系列竞争解释被逐一排除：表层 vs 潜在（E11b 否）、单条可识别（E13 否）、可识别任务（E27 否）、输出标记（E22：8B 不绑定）、时间写进内容（E23 否）、输入侧标记（E24/E24b 否）。剩下的唯一一致描述：**被规范地跟踪的变化都改变了某个与输入无关的输出侧统计；时间盲的变化都只改变条件结构而保持这些边缘统计不变**（E28、E29 的分解直接验证），并且同样的规律在非时间的上下文变量（标注者）上成立（E30）。
 - **研究动作：** 归纳—推广（把“漂移”问题重述为上下文 × 输入交互的学习问题）+ 分解测量（同一答案的边缘/条件成分；删除影响的通道 × 相似度拆分）+ 引入成熟构念（Gama 2014 的 virtual vs real drift；联想学习中的 outcome density vs contingency；统计中的 main effect vs interaction）。
 - **如果为真，主张是：** 冻结 LLM 的 in-context 证据有两种存储：

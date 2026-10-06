@@ -26,3 +26,4 @@
 Qwen2.5-7B 的完整梯度（溢出比）：SST——同词 0.91、unfavorable/favorable 0.69、CASE 0.67、bad/good 0.64、pessimistic/optimistic 0.63、dislike/like 0.54、cold/warm 0.48、poor/great 0.46、low/high 0.36、no/yes 0.26、B/A 0.05、0/1 0.04、nonce 0.00；数字——同词 0.77、CASE 0.29、tiny/huge 0.25、minor/major 0.23、short/tall 0.21、low/high 0.19、few/many 0.15、little/big 0.15、weak/strong 0.14、cold/hot 0.13、less/more 0.12、0/1 0.06、B/A 0.00、nonce 0.00。Sam 移动在各词表间相近（2.5–4.8），溢出比的变化来自 Alex 溢出而不是 Sam 学没学会。
 - 结果文件：`results/vocabgrad/summary.csv`、`results/vocabgrad/anchor_*.json`
 - **按决策：** 强相关（8/8 格 ρ=0.75–0.96）→ 得到定量规律：**上下文之间的证据泄漏随两套输出标签的语义相似度单调增加**，外部嵌入与模型内部锚点表示都能预测。SST 的情感词比数字的大小词泄漏更多（同等相似度下），说明“同一语义维度”的词更易合并。
+- **Qwen3-14B：** 数字 bge +0.90 / 锚点 +0.83 / +0.77；SST +0.92 / +0.86 / +0.87。累计 5 模型 × 2 任务 10/10 格 ρ=0.75–0.96（全部 p≤0.003）。
