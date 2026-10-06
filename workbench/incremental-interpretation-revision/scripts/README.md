@@ -14,6 +14,8 @@ source workbench/incremental-interpretation-revision/scripts/env.sh
 
 实际自主执行将地图分为不依赖标签的`map-unlabelled`和完成双遍位置审计后的`landmarks`，按完整task key合并；已有输出不能覆盖，完整地图与分片不能同时重复运行。`download_panel.py`只下载ModelScope镜像的逐文件固定revision/size/SHA256；推理`local_files_only=True`且HF离线，环境HF_ENDPOINT为hf-mirror.com。`step_gp_audit.py`只允许step-5-preview/Step Plan，0600仓库外密钥；单批≤5、共享并发≤8，两个打乱pass及第三遍裁决原包全留。`import_step_pass2.py`在主pass2开始前盲导入另四并发的独立pass2；API schema失败保留、429只做传输退避。运行参数和限制见E52卡，不能把CLI历史重试误作新协议。
 
+`thinking_map.py`/`run_panel.py --stage thinking`使用隔离的`/data1/xiangding/env/iir-e52-generation/`（vLLM0.9.2、torch2.7.0+cu126、transformers4.51.3），原评分环境不改；安装只走PyPI清华镜像，TMPDIR/PIP_CACHE_DIR在外部E52数据盘。固定完整输出与最后think闭合后的答案，R0-generation做匹配控制，cap/未知另报。`audit_reading_fillers.py`独立T3两遍；分析`--filler-audits`强制核验R3输入。`disambiguator_surprisal.py`采用词尾空白质量校正，raw/WT都存；`balanced_map.py`只计算固定面板均衡macro，`mixed_reading_map.py`的VB区间不是主bootstrap CI。全部详细协议/修订时点见E52卡，尚无新能力主张。
+
 ```bash
 source workbench/incremental-interpretation-revision/scripts/env.sh
 # git download 必须沿用上述无代理环境，并禁用 git 自有 proxy 设置。

@@ -53,3 +53,28 @@ depth-charge四组应分成正向/反向各自hard/baseline；原统一文件暂
 
 ### 原协议全量首批校准与精度原因
 BF16/作者processed首步：1.7B 17808有效公开匹配/278 decision flips，4B18124/100、8B18338/103；各自746/781/808首步无候选，原公开CSV710/359/118缺失分数均保留。Gemma4B仅85首步有效、19179无候选，作者最多3步parser与模型默认top-k/top-p使首步校准不足；不把这些缺失算模型答错。1.7B固定224小样本改作者默认FP16：0 flips，平均概率差.001452、最大.013018，比BF16 processed明显接近；不据此宣称全量逐题复现通过。新条件用候选完整序列联合评分，不带采样过滤。生成另建隔离环境，原评分venv不变。
+
+### 精度噪声扩展（能力分析前登记）
+固定全部1732题，四个已就绪模型Qwen1.7/4/8和Gemma4，B格式R0×两mapping×一句恢复，共6928任务/模型，用GPU4–7 FP32与主地图同任务BF16对照；未按结果挑条目。GPU0–3同时计算主地图，8卡独立任务而非跨卡训练。逐task比较翻转及概率delta并分构式报告；若概率效应与精度噪声不可分，按accuracy优先、概率主张降级，不能把小样本0翻转外推为全量稳定。
+
+### Thinking与词边界读数固定（运行前）
+R6采用Qwen原生chat B，两选项mapping都greedy生成，cap2048；只解析最后一个`</think>`之后独立的A/B（可带句号），未闭合/格式失败/cap分别报告，主生成准确率按全部预选输入分母，失败记未作出正确回答而不说语义错误。另生成同一原生B的thinking-off R0-generation（cap32），与R6直接比较，避免把自由生成与强制候选评分的差别当thinking效果；R6不伪造候选概率，也不评分推理之前的logits。首次只用原14材料仪器smoke核对解析/引擎，完整面板随后同协议运行，不挑smoke里的成功题。
+
+消歧surprisal按Oh & Schuler2024公式重分配词尾whitespace质量：raw log P(word)+log P(boundary|after)−log P(boundary|before)，boundary对所有起于空白的词表token边缘化（排除special）。保存原始和WT读数、两端质量、真实上下文/显示词；跨词重token化、无认可位置记缺失，不能只说“带词首空格就正确”。公开mat/matron概率树与不同长度leftpad CPU独立数值校对得到.2/.6的规范词概率。此读数是次要预测性协变量，不证明QA理解或world belief。
+
+### Thinking仪器v1–v3校对（完整R6前）
+v1错误地要求thinking-on的prompt已含`<think>`，实际模板由模型生成此标签，assert失败及28个off输出保留；v2改为验证没有off的空闭合块，56个两mapping输出全部完成、cap0。严格裸A/B parser误把54个清楚的`A. Yes`等标作格式失败；v3机械重解析全部56个缓存，接受label与当前显示选项文本严格一致的`A. option`，冲突/多标签/非literal文本仍失败，不看gold、不重采样挑输出。全部56可解析（off28、on28），旧parser结果保留在每条previous_answer_status，原始v2整目录不改。完整R6从v3协议起跑。
+
+### 仪器自审：precision与batch layout（地图归因前）
+1.7B全量B固定6928项：BF16/FP32 60 flips（.866%）、平均概率差.007679/max.845305；相同BF16、B子集独立批次布局相对全A/B地图35 flips（.505%）、平均.004911/max.864055。后者不是完全相同batch layout的重复；极端概率噪声仍存在，不能称greedy等于数值完全一致。假说表E1/E2/E4仍未得到能力证据，E3已有读数风险；当前仪器异常只是测量限制，审稿人不会把精度修正本身当科学增量。停止围绕1.7B做局部链，继续强模型/三族面板；小效应概率归因须经稳定精度复核。
+
+### 汇总与supplementary模型（能力分析前固定）
+主cluster-bootstrap之外，补充有限面板macro：每模型内均衡构式、每族内均衡模型、再均衡族；所有模型/构式共享同一lexical cluster重采样次数（SAP跨构式保持依赖）。缺失cell不填0，非可估bootstrap draw数量另报；模型不是随机抽样，CI只表示当前面板的材料不确定性。已知5个Qwen值1、Gemma/Llama各0的例子仍给1/3，不能被Qwen计数主导。混合logistic补充采用statsmodels BinomialBayesMixedGLM VB，固定效应含条件×reading×构式及mapping，随机截距cluster/model；固定系数Normal(0,2²)、log随机SD Normal(0,1²)，maxiter200、gtol1e−5，收敛/警告全报；其95%区间是近似posterior区间，不能冒充主bootstrap CI。无合格观测明确不拟合、不补0。R8恢复与R6对matched-generation的对比均独立报告。
+
+统一分析额外保留SAP的source_disamb_word_index；作者位置不自动冒充“两遍Step确认”，无两遍可靠位置时R2缺失。Čeháková的ambcor与ambmis都归initial，discor/dismis归final，保留推理输入中的粗target字段并新增analysis_question_target；原句/问题/gold不变。
+
+### R3输入补审（POST-HOC时点，效应分析前）
+发现R3程序填充句尚缺独立T3，补审全部当前三族使用的20种不同完整句，两遍Step Plan/step-5-preview、batch2；审计只看填充句，不看任何模型输出。两遍20/20 grammatical acceptable，全部naturalness4–5，没有临时GP消歧点。T1字段是固定NEITHER兼容占位，不能把其100%一致率冒充语义审计一致率。记录补审晚于R3计算、早于任何阅读效应解读；R3分析强制要求独立filler审计，失败/未知不进入R1/R3对比，不能静默通过。未来tokenizer如引入新填充句须增量补审。API辅助任务阻塞获取共享第0slot以免饥饿，仍与其余调用总共≤8，不取消GP在途请求。
+
+### 作者Gemma仪器未通过（继续独立修复，不作能力结论）
+公开Gemma4B 19264 regular行中4631两候选同时0（24.0%），不能当有效概率或错误。原首步数据、BF16三步fallback、FP16尝试原样保留：FP16 generate出现非有限概率，属于数值失败；BF16三步15766有分数但与未剔零质量的公开值仍大幅不一致，不称复现成功。进一步核对原base_inference：Gemma直接加载Gemma3ForCausalLM且未指定dtype（默认FP32），不是Qwen的FastChat FP16路径。正在按此类/精度完整对齐；public comparator剔开blank/nonfinite/zero-both并报告缺失数量。旧比较文件保留，重算用新文件，后续新阅读条件暂不依赖未校准Gemma A的概率叙事。

@@ -30,18 +30,21 @@ class AdoptedProcess:
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--data', type=Path, required=True)
     ap.add_argument('--out', type=Path, default=CACHE/'E52/runs')
-    ap.add_argument('--stage', choices=['legacy', 'map', 'map-unlabelled', 'landmarks'], required=True)
-    ap.add_argument('--models', nargs='+', default=MODELS); args = ap.parse_args()
+    ap.add_argument('--stage', choices=['legacy', 'map', 'map-unlabelled', 'landmarks', 'thinking', 'surprisal'], required=True)
+    ap.add_argument('--models', nargs='+')
+    ap.add_argument('--generation-python',type=Path,default=Path('/data1/xiangding/env/iir-e52-generation/bin/python'))
+    args = ap.parse_args()
+    if args.models is None:args.models=MODELS[:5] if args.stage=='thinking' else MODELS
     args.out.mkdir(parents=True, exist_ok=True)
     waiting = list(args.models); running = {}; done = {}; failed = {}
     locks_root = CACHE/'E52/gpu-slots'; locks_root.mkdir(exist_ok=True)
     gpu_locks = [(locks_root/str(gpu)).open('a') for gpu in range(8)]
-    script = Path(__file__).with_name('reading_map.py')
+    script = Path(__file__).with_name({'thinking':'thinking_map.py','surprisal':'disambiguator_surprisal.py'}.get(args.stage,'reading_map.py'))
     for procdir in Path('/proc').iterdir():
         if not procdir.name.isdigit(): continue
         try:
             command = procdir.joinpath('cmdline').read_bytes().decode().split('\0')
-            if not any(Path(part).name == 'reading_map.py' for part in command) or '--out' not in command: continue
+            if not any(Path(part).name == script.name for part in command) or '--out' not in command: continue
             out = Path(command[command.index('--out')+1])
             ready = next((name for name in waiting if out == args.out/f'{name}-{args.stage}'), None)
             if ready is None: continue
@@ -78,12 +81,15 @@ def main():
                 failed[ready] = 'Prior incomplete run retained; requires explicit retry version'
                 fcntl.flock(gpu_locks[gpu], fcntl.LOCK_UN); continue
             log = (args.out/f'{ready}-{args.stage}.log').open('a')
-            cmd = [sys.executable, '-u', str(script), '--data', str(args.data),
-                   '--model', str(CACHE/'models'/ready), '--out', str(out), '--batch-size', '16']
+            executable=str(args.generation_python) if args.stage=='thinking' else sys.executable
+            cmd = [executable, '-u', str(script), '--data', str(args.data),
+                   '--model', str(CACHE/'models'/ready), '--out', str(out)]
+            if args.stage=='thinking':cmd+=['--cap','2048']
+            else:cmd+=['--batch-size','16']
             if args.stage == 'legacy': cmd += ['--mode', 'legacy', '--legacy-processed', '--formats', 'A', '--readings', 'R0']
             elif args.stage == 'map-unlabelled': cmd += ['--formats', 'A', 'B', '--readings', 'R0', 'R1', 'R3', 'R4', 'R5', '--repair']
             elif args.stage == 'landmarks': cmd += ['--formats', 'A', 'B', '--readings', 'R2']
-            else: cmd += ['--formats', 'A', 'B', '--readings', 'R0', 'R1', 'R2', 'R3', 'R4', 'R5', '--repair']
+            elif args.stage=='map': cmd += ['--formats', 'A', 'B', '--readings', 'R0', 'R1', 'R2', 'R3', 'R4', 'R5', '--repair']
             env = dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu), HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')
             proc = subprocess.Popen(cmd, env=env, stdout=log, stderr=subprocess.STDOUT,
                                     pass_fds=(gpu_locks[gpu].fileno(),))

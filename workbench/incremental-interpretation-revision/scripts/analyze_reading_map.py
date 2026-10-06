@@ -14,10 +14,16 @@ def load(path):
 def assemble(data, annotation, out):
     rows = load(data); labels = {r['item_id']: r for r in load(annotation)}
     for row in rows:
+        row['source_disamb_word_index']=row['disamb_word_index']
+        row['disamb_word_index']=None
+        row['amb_span']=None
         # Keep the immutable inference input, but correct analysis metadata for the
         # two polarity-matched depth-charge pairs instead of pooling three controls.
         row['analysis_pair_id'] = row['pair_id']
         row['analysis_condition'] = row['condition']
+        row['analysis_question_target'] = row['question_target']
+        if row['source'] == 'cehakova2025':
+            row['analysis_question_target'] = 'initial' if row['source_question_type'].startswith('amb') else 'final'
         if row['source'] == 'amouyal' and row['construction'] == 'DEPTH':
             typ = row['source_sent_type']
             row['analysis_pair_id'] += ':inverse' if typ.startswith('inv_') else ':regular'
@@ -41,7 +47,7 @@ def assemble(data, annotation, out):
             else:
                 row['semantic_stratum'] = 'ENTAILED_CHOICE' if a['option_labels'][row['gold']] == 'ENTAILED' else 'UNCERTAIN_CHOICE'
             others = [r for r in group if r['analysis_condition'] != row['analysis_condition']]
-            if not row['needs_revision'] or row['question_target'] != 'initial' or conditions != {'gp', 'control'} or not others: continue
+            if not row['needs_revision'] or row['analysis_question_target'] != 'initial' or conditions != {'gp', 'control'} or not others: continue
             candidate = [row, *others]
             if any(r.get('step5_status') not in ('agreed', 'adjudicated') for r in candidate): continue
             if any(not r.get('step5_grammar_agreed') or r['step5_annotation']['grammar'] != 'acceptable' for r in candidate): continue
@@ -64,11 +70,21 @@ def assemble(data, annotation, out):
             positions = [i for i, token in enumerate(r['sentence'].split()) if token.strip('.,;:').lower() == word.strip('.,;:').lower()]
             if len(positions) == 1:
                 r.update(disamb_word_index=positions[0], position_origin='unique control word aligned to Step5 GP landmark')
+    accepted_positions=collections.defaultdict(set)
+    for r in rows:
+        if r['condition']=='gp' and r.get('position_origin')=='two-pass Step5 agreement':
+            accepted_positions[r['sentence_sha256']].add(r['disamb_word_index'])
+    inconsistent={s for s,positions in accepted_positions.items() if len(positions)>1}
+    for group in paired.values():
+        if any(r['condition']=='gp' and r['sentence_sha256'] in inconsistent for r in group):
+            for r in group:
+                r.update(disamb_word_index=None,amb_span=None,position_origin='Step5 landmark inconsistent across questions for the same sentence')
     write_jsonl(out, rows)
     summary = dict(rows=len(rows), labelled=sum(r.get('step5_status') in ('agreed', 'adjudicated') for r in rows),
         genuine_pairs=len({r['pair_id'] for r in rows if r['genuine']}),
         semantic_strata=dict(collections.Counter(r['semantic_stratum'] for r in rows)),
         position_available=sum(r['disamb_word_index'] is not None for r in rows), data_sha256=sha(data),
+        position_inconsistent_sentences=len(inconsistent),
         annotation_sha256=sha(annotation), assembled_sha256=sha(out))
     out.with_suffix('.manifest.json').write_text(json.dumps(summary, indent=2)+'\n'); print(json.dumps(summary))
 
@@ -77,15 +93,25 @@ def estimate(values, seed=52):
     if not values: return dict(estimate=None, ci95=None, n_clusters=0)
     x = np.asarray([values[k] for k in sorted(values)], dtype=float)
     if len(x) == 1: return dict(estimate=float(x[0]), ci95=None, n_clusters=1)
+    if np.all(x == x[0]): return dict(estimate=float(x[0]), ci95=[float(x[0]),float(x[0])], n_clusters=len(x))
     rng = np.random.default_rng(seed); means = []
     for _ in range(100): means.extend(x[rng.integers(0, len(x), size=(100, len(x)))].mean(1))
     return dict(estimate=float(x.mean()), ci95=list(map(float, np.quantile(means, [.025, .975]))), n_clusters=len(x))
 
 
-def analyze(data, run_dirs, out):
+def analyze(data, run_dirs, out, filler_audits=None):
     metadata = {r['item_id']: r for r in load(data)}; output = dict(models={}, data_sha256=sha(data), runs=[])
     per_model = collections.defaultdict(dict)
     identities = {}
+    filler_labels={};filler_scopes=[];filler_rejections=collections.Counter()
+    for directory in filler_audits or []:
+        scope=json.loads((directory/'scope.json').read_text())
+        step=directory/'step5'
+        assert (step/'summary.json').exists(),'Incomplete filler audit'
+        for r in load(step/'annotated.jsonl'):
+            assert r['sentence_sha256'] not in filler_labels,'Do not choose among duplicate filler audit versions'
+            filler_labels[r['sentence_sha256']]=r
+        filler_scopes.append(dict(path=str(directory),scope=scope,annotation_sha256=sha(step/'annotated.jsonl')))
     for directory in run_dirs:
         config = json.loads((directory/'config.json').read_text())
         assert config.get('predictions_sha256') == sha(directory/'predictions.jsonl'), 'Incomplete or modified run'
@@ -94,13 +120,24 @@ def analyze(data, run_dirs, out):
         assert identities.setdefault(model, identity) == identity, 'Do not merge different model bytes/precisions'
         output['runs'].append(dict(path=str(directory), config_sha256=sha(directory/'config.json')))
         for r in predictions:
-            assert r['mode'] == 'sequence', 'Legacy processed scores are instrument calibration, not primary map'
+            assert r['mode'] in ('sequence', 'generation'), 'Legacy processed scores are instrument calibration, not primary map'
             assert metadata[r['item_id']]['sentence_sha256'] == r['sentence_sha256']
+            if r['reading']=='R3':
+                assert filler_labels,'R3 inference needs independent filler quality audit before interpretation'
+                sentence=metadata[r['item_id']]['sentence']
+                matches=[f for f in filler_labels.values() if f['sentence']+'\n'+sentence in r['prompt']]
+                assert len(matches)==1,'Missing or ambiguous audited filler; audit all distinct actual fillers first'
+                filler=matches[0]
+                accepted=(filler.get('step5_status') in ('agreed','adjudicated') and filler.get('step5_grammar_agreed') and
+                    filler['step5_annotation']['grammar']=='acceptable' and all(a['disamb_word_index'] is None for a in filler['step5_passes']))
+                if not accepted:
+                    filler_rejections[model]+=1;continue
             key = tuple(r[k] for k in ('item_id', 'format', 'reading', 'order', 'prompt_index', 'mapping', 'repair'))
             assert key not in per_model[model], 'Duplicate inference task; do not pick favorable runs'
             per_model[model][key] = r
     paired_metadata = collections.defaultdict(list)
     for m in metadata.values(): paired_metadata[(m.get('analysis_pair_id', m['pair_id']), m['question'])].append(m)
+    effects=[]
     for model, keyed in per_model.items():
         predictions = list(keyed.values())
         for construction in sorted({r['construction'] for r in predictions} | {'pooled'}):
@@ -110,9 +147,10 @@ def analyze(data, run_dirs, out):
                     def eligible(r):
                         m = metadata[r['item_id']]
                         if stratum == 'genuine': return m['genuine']
-                        if stratum == 'NEITHER': return m['question_target'] == 'initial' and m['semantic_stratum'] == 'NEITHER'
-                        if stratum == 'initial_all': return m['question_target'] == 'initial'
-                        if stratum == 'final': return m['question_target'] == 'final'
+                        target = m.get('analysis_question_target', m['question_target'])
+                        if stratum == 'NEITHER': return target == 'initial' and m['semantic_stratum'] == 'NEITHER'
+                        if stratum == 'initial_all': return target == 'initial'
+                        if stratum == 'final': return target == 'final'
                         return not m['needs_revision']
                     eligible_ids = {r['item_id'] for r in selected if eligible(r)}
                     # Require both sides of the SAME question to be in the stratum.
@@ -127,6 +165,7 @@ def analyze(data, run_dirs, out):
                         items = collections.defaultdict(list)
                         for r in subset:
                             if not r['matched_question_exact']: continue
+                            if r[metric] is None: continue  # Generated final answers have no candidate probability.
                             m = metadata[r['item_id']]
                             qkey = m.get('analysis_pair_id', r['pair_id']), m['question']
                             items[(r['reading'], m.get('analysis_condition', r['condition']), r['cluster_id'], qkey, r['item_id'])].append(float(r[metric]))
@@ -144,22 +183,51 @@ def analyze(data, run_dirs, out):
                             gp, control = question_cells.get((reading, 'gp'), {}), question_cells.get((reading, 'control'), {})
                             common = gp.keys() & control.keys(); gaps[reading] = {k: control[k]-gp[k] for k in common}
                         key = f'{construction}/{fmt}/{stratum}/{metric}'
-                        report = dict(cells={f'{k[0]}/{k[1]}': estimate(v) for k, v in cells.items()},
-                                      gaps={k: estimate(cluster_mean(v)) for k, v in gaps.items()}, reductions={}, raw_gains={})
+                        def summarize(values, statistic):
+                            effects.extend(dict(model=model,construction=construction,format=fmt,stratum=stratum,metric=metric,
+                                statistic=statistic,cluster_id=cluster,value=value) for cluster,value in values.items())
+                            return estimate(values)
+                        report = dict(cells={f'{k[0]}/{k[1]}': summarize(v,f'cell/{k[0]}/{k[1]}') for k, v in cells.items()},
+                                      gaps={k: summarize(cluster_mean(v),f'gap/{k}') for k, v in gaps.items()}, reductions={}, raw_gains={})
                         for reading, gap in gaps.items():
                             if reading == 'R0': continue
                             base = gaps.get('R0', {}); common = base.keys() & gap.keys()
-                            report['reductions'][reading] = estimate(cluster_mean({k: base[k]-gap[k] for k in common}))
+                            report['reductions'][reading] = summarize(cluster_mean({k: base[k]-gap[k] for k in common}),f'reduction/{reading}')
                             report['raw_gains'][reading] = {}
                             for condition in ('gp', 'control'):
                                 a, b = question_cells.get(('R0', condition), {}), question_cells.get((reading, condition), {})
                                 common = a.keys() & b.keys()
-                                report['raw_gains'][reading][condition] = estimate(cluster_mean({k: b[k]-a[k] for k in common}))
+                                report['raw_gains'][reading][condition] = summarize(cluster_mean({k: b[k]-a[k] for k in common}),f'gain/{reading}/{condition}')
                         report['R1_vs_controls'] = {}
                         for reading in ('R2', 'R3'):
                             a, b = gaps.get('R1', {}), gaps.get(reading, {}); common = a.keys() & b.keys()
-                            report['R1_vs_controls'][reading] = estimate(cluster_mean({k: b[k]-a[k] for k in common}))
+                            report['R1_vs_controls'][reading] = summarize(cluster_mean({k: b[k]-a[k] for k in common}),f'R1_vs/{reading}')
+                        # R8: report the one-instruction recovery separately, not discarded.
+                        repair_items=collections.defaultdict(list)
+                        for r in selected:
+                            if r['item_id'] not in eligible_ids or r['reading']!='R0' or not r['matched_question_exact'] or r[metric] is None: continue
+                            m=metadata[r['item_id']];qkey=m.get('analysis_pair_id',r['pair_id']),m['question']
+                            if qkey not in pairs:continue
+                            repair_items[(bool(r['repair']),m.get('analysis_condition',r['condition']),r['cluster_id'],qkey,r['item_id'])].append(float(r[metric]))
+                        repair_cells=collections.defaultdict(lambda:collections.defaultdict(list))
+                        for (repair,condition,cluster,qkey,item),values in repair_items.items():repair_cells[(repair,condition)][(cluster,qkey)].append(np.mean(values))
+                        repair_cells={k:{q:float(np.mean(v)) for q,v in values.items()} for k,values in repair_cells.items()}
+                        report['instruction_recovery']={}
+                        gains={}
+                        for condition in ('gp','control'):
+                            a,b=repair_cells.get((False,condition),{}),repair_cells.get((True,condition),{})
+                            common=a.keys()&b.keys();gains[condition]={k:b[k]-a[k] for k in common}
+                            report['instruction_recovery'][condition]=summarize(cluster_mean(gains[condition]),f'instruction_gain/{condition}')
+                        common=gains['gp'].keys()&gains['control'].keys()
+                        report['instruction_recovery']['selective_gain']=summarize(cluster_mean({k:gains['gp'][k]-gains['control'][k] for k in common}),'instruction_selective_gain')
+                        report['thinking_vs_matched_generation']={}
+                        a,b=gaps.get('R0-generation',{}),gaps.get('R6',{})
+                        common=a.keys()&b.keys()
+                        report['thinking_vs_matched_generation']['gap_reduction']=summarize(cluster_mean({k:a[k]-b[k] for k in common}),'thinking_matched_reduction')
                         output['models'].setdefault(model, {})[key] = report
+    effects_path=out.with_suffix('.cluster-effects.jsonl');write_jsonl(effects_path,effects)
+    output['cluster_effects_path']=str(effects_path);output['cluster_effects_sha256']=sha(effects_path)
+    output['filler_audits']=filler_scopes;output['filler_quality_excluded_tasks']=dict(filler_rejections)
     output['interpretation'] = 'NEITHER/initial_all are agreement with the published No convention, not semantic accuracy. No automatic scientific account selection.'
     out.write_text(json.dumps(output, ensure_ascii=False, indent=2)+'\n')
 
@@ -167,6 +235,7 @@ def analyze(data, run_dirs, out):
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(); ap.add_argument('--data', type=Path, required=True)
     ap.add_argument('--annotation', type=Path); ap.add_argument('--runs', type=Path, nargs='*')
+    ap.add_argument('--filler-audits',type=Path,nargs='*')
     ap.add_argument('--out', type=Path, required=True); args = ap.parse_args()
     if args.annotation: assemble(args.data, args.annotation, args.out)
-    else: analyze(args.data, args.runs, args.out)
+    else: analyze(args.data, args.runs, args.out,args.filler_audits)

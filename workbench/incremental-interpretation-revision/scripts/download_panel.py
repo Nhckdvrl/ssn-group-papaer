@@ -13,6 +13,11 @@ def download(listing, out):
     repo = doc['repo']; out.mkdir(parents=True, exist_ok=True)
     files = [f for f in doc['data']['Files'] if f['Type'] == 'blob' and
              f['Name'] != '.gitattributes' and not f['Path'].startswith('original/')]
+    excluded=[]
+    if any(f['Name'].startswith('model-') and f['Name'].endswith('.safetensors') for f in files):
+        excluded=[f for f in files if f['Name']=='consolidated.safetensors' or
+                  (f['Name'].startswith('pytorch_model') and f['Name'].endswith('.bin'))]
+        files=[f for f in files if f not in excluded]
     def fetch(meta):
         path = out/meta['Path']; path.parent.mkdir(parents=True, exist_ok=True)
         if path.exists() and path.stat().st_size == meta['Size'] and sha(path) == meta['Sha256']:
@@ -41,7 +46,7 @@ def download(listing, out):
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool: list(pool.map(fetch, files))
     manifest = dict(model=repo, download_origin='https://modelscope.cn', proxy_used=False,
                     hf_byte_identity='Not independently verified; mirror per-file revision, size and SHA256 pinned.',
-                    listing_sha256=sha(listing), files=files)
+                    listing_sha256=sha(listing), files=files,excluded_duplicate_original_formats=excluded)
     (out/'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
     print(repo, 'DONE', flush=True)
 

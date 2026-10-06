@@ -13,7 +13,7 @@ import time
 
 import torch
 import transformers
-from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, Gemma3ForConditionalGeneration
+from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, Gemma3ForConditionalGeneration, Gemma3ForCausalLM
 from data import CACHE, sha
 
 REPAIR = 'Read the whole sentence and revise any initial interpretation before answering.'
@@ -163,7 +163,7 @@ def sequence_scores(model, sequences, common_lengths, pad_id):
     return values
 
 
-def legacy_scores(model, tokenizer, tasks, processed=False):
+def legacy_scores(model, tokenizer, tasks, processed=False, up_to_three=False, selected_steps=None):
     encoded = tokenizer([t['prompt'] for t in tasks], padding=True, return_tensors='pt').to(model.device)
     encoded.pop('token_type_ids', None)
     positions = encoded['attention_mask'].cumsum(-1)-1; positions.masked_fill_(encoded['attention_mask'] == 0, 0)
@@ -185,12 +185,31 @@ def legacy_scores(model, tokenizer, tasks, processed=False):
         ALIAS_BANK[tokenizer.name_or_path] = aliases_by_word
     bank = ALIAS_BANK[tokenizer.name_or_path]
     values = []
+    aliases_all=[]
     for i, task in enumerate(tasks):
         aliases = [bank[option.lower().replace('the ', '')] for option in task['legacy_options']]
+        aliases_all.append(aliases)
         if not all(aliases): values.append(None); continue
         a, b = [torch.logsumexp(logits[i, ids], 0) for ids in aliases]
         if not torch.isfinite(a) and not torch.isfinite(b): values.append(None); continue
         values.append([float(a), float(b)])
+    steps=[0 if value is not None else None for value in values]
+    missing=[i for i,value in enumerate(values) if value is None and all(aliases_all[i])]
+    if up_to_three and missing:
+        assert processed, 'Upstream three-step parser requires processed generate scores'
+        subset=tokenizer([tasks[i]['prompt'] for i in missing],padding=True,return_tensors='pt').to(model.device)
+        subset.pop('token_type_ids',None)
+        with torch.inference_mode():
+            # Preserve the author's generation_config defaults and a fixed seed.
+            # Their archived sampled prefixes/seed are unavailable, not recreated.
+            generated=model.generate(**subset,return_dict_in_generate=True,output_scores=True,
+                                     max_new_tokens=3,pad_token_id=tokenizer.eos_token_id)
+        for j,i in enumerate(missing):
+            for step,score in enumerate(generated.scores):
+                a,b=[torch.logsumexp(score[j,ids].float(),0) for ids in aliases_all[i]]
+                if torch.isfinite(a) or torch.isfinite(b):
+                    values[i]=[float(a),float(b)];steps[i]=step;break
+    if selected_steps is not None: selected_steps.extend(steps)
     return values
 
 
@@ -201,6 +220,8 @@ def main():
     ap.add_argument('--readings', nargs='+', default=['R0', 'R1', 'R2', 'R3', 'R4', 'R5'])
     ap.add_argument('--mode', choices=['sequence', 'legacy'], default='sequence')
     ap.add_argument('--legacy-processed', action='store_true', help='Replicate upstream generate() temperature/top-k/top-p score processing.')
+    ap.add_argument('--legacy-up-to-three',action='store_true',help='Use upstream first-viable score among up to three generated tokens for missing first-step aliases.')
+    ap.add_argument('--gemma-text-only',action='store_true',help='Match upstream Gemma3ForCausalLM text-only loading.')
     ap.add_argument('--batch-size', type=int, default=16); ap.add_argument('--limit', type=int)
     ap.add_argument('--shard', default='0/1'); ap.add_argument('--repair', action='store_true')
     ap.add_argument('--dtype', choices=['bfloat16', 'float16', 'float32'], default='bfloat16'); args = ap.parse_args()
@@ -210,7 +231,7 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.model, local_files_only=True, padding_side='left')
     if tokenizer.pad_token_id is None: tokenizer.pad_token = tokenizer.eos_token
     config = AutoConfig.from_pretrained(args.model, local_files_only=True)
-    klass = Gemma3ForConditionalGeneration if config.model_type == 'gemma3' else AutoModelForCausalLM
+    klass = (Gemma3ForCausalLM if args.gemma_text_only else Gemma3ForConditionalGeneration) if config.model_type == 'gemma3' else AutoModelForCausalLM
     start = time.monotonic()
     model = klass.from_pretrained(args.model, local_files_only=True, torch_dtype=getattr(torch, args.dtype),
                                  attn_implementation='sdpa').to('cuda').eval()
@@ -233,16 +254,17 @@ def main():
     with (args.out/'predictions.jsonl').open('w') as stream:
         for begin in range(0, len(tasks), args.batch_size):
             batch = tasks[begin:begin+args.batch_size]
+            legacy_steps=[]
             if args.mode == 'legacy':
                 assert all(t['format'] == 'A' for t in batch)
-                scores = legacy_scores(model, tokenizer, batch, args.legacy_processed)
+                scores = legacy_scores(model, tokenizer, batch, args.legacy_processed,args.legacy_up_to_three,legacy_steps)
             else:
                 enc = [encode_choices(tokenizer, t) for t in batch]
                 sequences = [s for ss, n in enc for s in ss]
                 common = [n for ss, n in enc for s in ss]
                 scored = sequence_scores(model, sequences, common, tokenizer.pad_token_id)
                 scores = [scored[i:i+2] for i in range(0, len(scored), 2)]
-            for t, score in zip(batch, scores):
+            for batch_index,(t, score) in enumerate(zip(batch, scores)):
                 row = t['row']; gold = 0 if args.mode == 'legacy' else t.get('candidate_gold', row['gold'])
                 record = {k: row.get(k) for k in ('item_id', 'pair_id', 'cluster_id', 'source', 'construction',
                     'condition', 'question_target', 'source_question_type', 'source_sent_type', 'needs_revision',
@@ -252,6 +274,7 @@ def main():
                     prompt=t['prompt'], candidates=t['candidates'],
                     prompt_tokens=len(tokenizer.encode(t['prompt'], add_special_tokens=True)),
                     candidate_logprobs=score, p_correct=None, correct=None)
+                if args.mode=='legacy':record['legacy_choice_step']=legacy_steps[batch_index]
                 if score is not None:
                     normalizer = max(score)+math.log(sum(math.exp(s-max(score)) for s in score))
                     record.update(p_correct=math.exp(score[gold]-normalizer), correct=score[gold] > score[1-gold])

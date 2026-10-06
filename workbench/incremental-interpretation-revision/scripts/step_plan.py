@@ -15,6 +15,10 @@ def slot():
     SLOT_PATH.mkdir(exist_ok=True)
     files=[(SLOT_PATH/str(i)).open('a') for i in range(8)];held=None
     try:
+        blocking_slot=os.environ.get('STEP_PLAN_BLOCKING_SLOT')
+        if blocking_slot is not None:
+            index=int(blocking_slot);assert 0<=index<8
+            held=files[index];fcntl.flock(held,fcntl.LOCK_EX)
         while held is None:
             for f in files:
                 try:
