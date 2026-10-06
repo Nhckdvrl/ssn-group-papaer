@@ -31,6 +31,7 @@ Return ONLY strict JSON {"annotations":[...]} with one object per supplied item:
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--data',type=Path,required=True)
+    parser.add_argument('--previous-audits',type=Path,nargs='*',default=[],help='Reuse all prior finished labels; audit only previously unseen filler bytes.')
     parser.add_argument('--out',type=Path,required=True);args=parser.parse_args()
     rows=[json.loads(x) for x in args.data.read_text().splitlines()]
     args.out.mkdir(parents=True,exist_ok=True)
@@ -46,9 +47,19 @@ def main():
                 question='Unused compatibility placeholder',question_format='yn',options=['Yes','No'],needs_revision=True)
             ledger.append(dict(model=model.name,item_id=row['item_id'],filler_sha256=fingerprint,
                 sentence_sha256=row['sentence_sha256'],token_length=len(tokenizer.encode(text,add_special_tokens=False))))
-    data=args.out/'fillers.jsonl';write_jsonl(data,[candidates[k] for k in sorted(candidates)])
+    previous={};previous_scopes=[]
+    for directory in args.previous_audits:
+        assert (directory/'step5/summary.json').exists(),'Prior audit must be complete'
+        labels=directory/'step5/annotated.jsonl'
+        for r in map(json.loads,labels.read_text().splitlines()):
+            assert r['sentence_sha256'] not in previous,'No duplicate prior versions'
+            previous[r['sentence_sha256']]=r
+        previous_scopes.append(dict(path=str(directory),annotation_sha256=sha(labels)))
+    new={k:v for k,v in candidates.items() if k not in previous}
+    data=args.out/'fillers.jsonl';write_jsonl(data,[new[k] for k in sorted(new)])
     write_jsonl(args.out/'assignment.jsonl',ledger)
     (args.out/'scope.json').write_text(json.dumps(dict(source_data_sha256=sha(args.data),distinct_fillers=len(candidates),
+        new_fillers=len(new),reused_fillers=len(candidates)-len(new),previous_audits=previous_scopes,
         assignment_sha256=sha(args.out/'assignment.jsonl'),timing='POST-HOC to R3 computation, before any reading-effect interpretation; reviewers see filler text only'),indent=2)+'\n')
     # Blocking on one of the SAME shared slots prevents starvation behind the two
     # long-running full-data drivers. Total active calls still cannot exceed eight.

@@ -195,3 +195,15 @@ E50列表41.41%、actor锚定普通复述98.05%，E51去two-names后的literal-s
 ### 对 E52 的直接修正（先于任何新模型结果）
 
 “no longer grammatical attachment”和“世界中绝不发生该事件”不同；RR主动问句是否为CONTRADICTED必须逐题审，不能整类预标。R2严格不能看到disambiguator，R3只匹配长度不匹配语义，R5任务先知/R6计算不同。重复收益本身被Prompt Repetition拥有；潜在增量是经过语义审计后GP特有的选择性收益与位置干预，不是多模型复制。当前四账户均未科学证成，C06–C09保留L0。
+
+### 2026-10-06 E52进行中补充定位（主文核对，不作自动判决）
+
+| 工作 | idea来源与实测对象 | 与I02的距离/归属 |
+|---|---|---|
+| [Baitalik & Datta ACL SRW2026](https://aclanthology.org/2026.acl-srw.32/) | 100 GP/control pairs，NPZ41/NPS35/MVRR24；GPT2两型号与3种masked模型，surprisal/PLL与消歧处层间几何；2个Pythia未过数值审计，保留失败。主文/讨论/局限已读。 | 拥有architecture-aware GP恢复读数比较；未测理解QA或因果干预，未来明确提出这两项。我们不能卖作首次比较架构或“几何变化即修订”。跨模型CL/PLL差中差仍不是同单位能力读数。 |
+| [Alan Zhou et al. 2026 Syntactic Belief Update](https://arxiv.org/abs/2606.27206) | 从词surprisal不足转向完整SUD树分布的Rényi更新；RoBERTa增量重算parser，SAP72对，另有同训练数据CL/supertag基线。主文及相关训练/统计附录核对。 | 拥有纯句法信念更新解释人类GP成本；跨构式层级有效，构式内条目差异与全部人类成本仍未解释。不进入这条人类读时线，不把非词概率读数当新颖性；我们的目标是审计后LLM理解错误的因果归因。 |
+| [Shijia Zhou et al. LREC2024](https://aclanthology.org/2024.lrec-main.336/) | 自然语料323句/212形容词，so…that构式因果方向与NLI；跨词汇probe对照BoW；问法/Yes偏置和句子vs词位置证据。主文/结果/局限已读。 | 已拥有“浅词汇线索+内部可分却答案偏置”的相邻观察；不是GP先采纳后推翻，不能用一般constructions难代替修订。若观察到通用lexical overlap，必须防守HANS与本篇，不能当I02增量。 |
+
+以上只补定位。表中的已有观察/claim归属用于学习和准确归因，不表示禁止使用相同方法、现象或局部解释；它们可以成为新故事的组成部分。人再次明确：探索目标是证明后值得兴奋的完整新叙事，而非完全空白的空间；从广面实验和意外结果追问，不以局部重合关线。更大模型、更多构式、隐藏状态可读性或换问句增益均不足以自动认证idea；E52需独立真实错误定义、CI与之后的选择性因果证据。完整故事形成后再评价覆盖与compression risk，未引用EACL、不以接收率作科学判决。
+
+2026-10-06补读：Jurayj2022由原§2–3扩至全文（引言、related work、数据构造、讨论、局限）。其83基础句上的几何变化用于发现未实现的歧义、并非正确角色的行为/因果验证；不同revision条目数不掩盖。Maina-Kilaas/Levy2026扩至全文：30项Maze/36项SPR、167/225保留参与者、16模型五族；sentence-final wrap-up与resolution任务效应、RT分析筛正确comprehension而accuracy本身没有显著效应都须保留，不能把标题“no evidence”转成证明严格零效应，也不能由长度操纵直接称承诺增强。这些方法/观察可借来设计修订账户的控制，非自动禁区。[Jurayj正文](https://arxiv.org/html/2205.12302)、[Maina-Kilaas/Levy正文](https://arxiv.org/html/2603.23624)。

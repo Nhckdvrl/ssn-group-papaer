@@ -16,7 +16,7 @@ def main():
     def semantic(a):return a['label'],tuple(a['option_labels'])
     def aggregate(values):
         grouped=collections.defaultdict(list)
-        for row,value in values:grouped[row['cluster_id']].append(value)
+        for row,value in values:grouped[row.get('analysis_cluster_id',row['cluster_id'])].append(value)
         return estimate({k:sum(v)/len(v) for k,v in grouped.items()})
     agreement=aggregate([(r,float(semantic(r['step5_passes'][0])==semantic(r['step5_passes'][1]))) for r in both])
     output=dict(data_sha256=sha(args.data),rows=len(rows),annotation_scope=len(scope),

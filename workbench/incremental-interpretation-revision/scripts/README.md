@@ -16,6 +16,8 @@ source workbench/incremental-interpretation-revision/scripts/env.sh
 
 `thinking_map.py`/`run_panel.py --stage thinking`使用隔离的`/data1/xiangding/env/iir-e52-generation/`（vLLM0.9.2、torch2.7.0+cu126、transformers4.51.3），原评分环境不改；安装只走PyPI清华镜像，TMPDIR/PIP_CACHE_DIR在外部E52数据盘。固定完整输出与最后think闭合后的答案，R0-generation做匹配控制，cap/未知另报。`audit_reading_fillers.py`独立T3两遍；分析`--filler-audits`强制核验R3输入。`disambiguator_surprisal.py`采用词尾空白质量校正，raw/WT都存；`balanced_map.py`只计算固定面板均衡macro，`mixed_reading_map.py`的VB区间不是主bootstrap CI。全部详细协议/修订时点见E52卡，尚无新能力主张。
 
+增量filler审计用`audit_reading_fillers.py --previous-audits <所有已完成目录>`，分析时`--filler-audits`同时传入原/增量目录，不重复选择标签。`analyze_reading_map.py --deduplicate`另写输入字节去重敏感性；主分析连接共享GP句的既有cluster。完整prompt的R3/R1长度不等记排除；分析同时输出小字段的外部validated-task ledger。补充模型用`mixed_reading_map.py --data <qualified> --map-summary <主分析json> --out <json>`，沿用全部质量排除，区间仍是VB posterior近似而非bootstrap。
+
 ```bash
 source workbench/incremental-interpretation-revision/scripts/env.sh
 # git download 必须沿用上述无代理环境，并禁用 git 自有 proxy 设置。

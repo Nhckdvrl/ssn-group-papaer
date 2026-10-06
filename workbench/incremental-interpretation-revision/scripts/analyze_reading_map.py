@@ -11,8 +11,47 @@ def load(path):
     return [json.loads(line) for line in path.read_text().splitlines()]
 
 
+def link_shared_clusters(rows):
+    """Identical GP sentence bytes link existing lexical clusters across sources."""
+    parents={r['cluster_id']:r['cluster_id'] for r in rows}
+    def find(k):
+        while parents[k]!=k:
+            parents[k]=parents[parents[k]];k=parents[k]
+        return k
+    groups=collections.defaultdict(list)
+    for r in rows:
+        if r['needs_revision'] and r['condition']=='gp':groups[r['sentence_sha256']].append(r)
+    for group in groups.values():
+        if len({r['source'] for r in group})<2:continue
+        roots=sorted({find(r['cluster_id']) for r in group})
+        for root in roots[1:]:parents[root]=roots[0]
+    for r in rows:r['analysis_cluster_id']=find(r['cluster_id'])
+
+
+def duplicate_question_pairs(rows):
+    """Sensitivity: remove whole duplicate question pairs using input-only priority."""
+    groups=collections.defaultdict(list)
+    for r in rows:groups[(r.get('analysis_pair_id',r['pair_id']),r['question'])].append(r)
+    signatures=collections.defaultdict(list)
+    for key,group in groups.items():
+        if {r.get('analysis_condition',r['condition']) for r in group}!={'gp','control'}:continue
+        signature=tuple(sorted((r.get('analysis_condition',r['condition']),r['sentence_sha256'],r['question'],
+            r['question_format'],tuple(sorted(r['options'])),r['options'][r['gold']]) for r in group))
+        signatures[signature].append((key,group))
+    priority={'sap':0,'amouyal':1,'cehakova2025':2};excluded={};ledger=[]
+    for copies in signatures.values():
+        if len(copies)<2:continue
+        copies.sort(key=lambda x:(min(priority[r['source']] for r in x[1]),x[0]))
+        keep=copies[0][0]
+        for key,group in copies[1:]:
+            ledger.append(dict(kept_question_pair=keep,excluded_question_pair=key,item_ids=[r['item_id'] for r in group]))
+            excluded.update({r['item_id']:keep for r in group})
+    return excluded,ledger
+
+
 def assemble(data, annotation, out):
     rows = load(data); labels = {r['item_id']: r for r in load(annotation)}
+    link_shared_clusters(rows)
     pass_paths=[annotation.parent/f'pass{n}.jsonl' for n in (1,2)]
     if all(p.exists() for p in pass_paths):
         passes=[{a['item_id']:a for a in load(p)} for p in pass_paths]
@@ -44,7 +83,9 @@ def assemble(data, annotation, out):
         paired[(row['analysis_pair_id'], row['question'])].append(row)
     for key, group in paired.items():
         conditions = {r['analysis_condition'] for r in group}
+        control_types={r['control_type'] for r in group if r['analysis_condition']=='control'}
         for row in group:
+            row['analysis_control_type']=next(iter(control_types)) if len(control_types)==1 else 'multiple_author_controls'
             row['genuine'] = False
             row['semantic_stratum'] = 'published_nonrevision_control' if not row['needs_revision'] else 'unresolved'
             if row.get('step5_status') not in ('agreed', 'adjudicated'): continue
@@ -95,6 +136,7 @@ def assemble(data, annotation, out):
         semantic_strata=dict(collections.Counter(r['semantic_stratum'] for r in rows)),
         position_available=sum(r['disamb_word_index'] is not None for r in rows), data_sha256=sha(data),
         position_inconsistent_sentences=len(inconsistent),
+        raw_clusters=len({r['cluster_id'] for r in rows}),linked_analysis_clusters=len({r['analysis_cluster_id'] for r in rows}),
         annotation_sha256=sha(annotation), assembled_sha256=sha(out))
     summary['pass_sha256']={p.name:sha(p) for p in pass_paths if p.exists()}
     out.with_suffix('.manifest.json').write_text(json.dumps(summary, indent=2)+'\n'); print(json.dumps(summary))
@@ -110,8 +152,9 @@ def estimate(values, seed=52):
     return dict(estimate=float(x.mean()), ci95=list(map(float, np.quantile(means, [.025, .975]))), n_clusters=len(x))
 
 
-def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None):
+def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None, sources=None, control_types=None, deduplicate=False):
     metadata = {r['item_id']: r for r in load(data)}; output = dict(models={}, data_sha256=sha(data), runs=[])
+    duplicate_ids,duplicate_ledger=duplicate_question_pairs(list(metadata.values())) if deduplicate else ({},[])
     per_model = collections.defaultdict(dict)
     identities = {}
     final_labels={};final_scopes=[];final_review_counts=collections.Counter()
@@ -122,7 +165,7 @@ def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None):
             final_labels[r['item_id']]=r
         final_scopes.append(dict(path=str(directory),scope=json.loads((directory/'scope.json').read_text()),
             annotation_sha256=sha(directory/'step5/annotated.jsonl')))
-    filler_labels={};filler_scopes=[];filler_rejections=collections.Counter()
+    filler_labels={};filler_scopes=[];filler_rejections=collections.Counter();compute_mismatches=collections.Counter()
     for directory in filler_audits or []:
         scope=json.loads((directory/'scope.json').read_text())
         step=directory/'step5'
@@ -135,12 +178,19 @@ def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None):
         config = json.loads((directory/'config.json').read_text())
         assert config.get('predictions_sha256') == sha(directory/'predictions.jsonl'), 'Incomplete or modified run'
         predictions = load(directory/'predictions.jsonl'); model = Path(config['model_path']).name
+        r1_lengths={tuple(r[k] for k in ('item_id','format','order','prompt_index','mapping')):r.get('prompt_tokens')
+            for r in predictions if r['reading']=='R1' and not r['repair']}
         identity = config['model_manifest_sha256'], config['arguments']['dtype']
         assert identities.setdefault(model, identity) == identity, 'Do not merge different model bytes/precisions'
         output['runs'].append(dict(path=str(directory), config_sha256=sha(directory/'config.json')))
         for r in predictions:
+            m=metadata[r['item_id']]
+            if r['item_id'] in duplicate_ids:continue
+            if sources and m['source'] not in sources:continue
+            if control_types and m.get('analysis_control_type',m['control_type']) not in control_types:continue
             assert r['mode'] in ('sequence', 'generation'), 'Legacy processed scores are instrument calibration, not primary map'
             assert metadata[r['item_id']]['sentence_sha256'] == r['sentence_sha256']
+            r['cluster_id']=m.get('analysis_cluster_id',m['cluster_id'])
             if r['mode']=='generation' and r['answer_status'] not in ('complete','complete_labelled_option','unfinished_thinking'):
                 uid=f'{model}:{r["reading"]}:{r["item_id"]}:mapping{r["mapping"]}'
                 audit=final_labels.get(uid)
@@ -159,6 +209,10 @@ def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None):
             if r['reading']=='R4' and metadata[r['item_id']].get('analysis_condition',r['condition'])=='gp':
                 continue  # Original coarse DEPTH labels did not define a cue manipulation.
             if r['reading']=='R3':
+                matching=tuple(r[k] for k in ('item_id','format','order','prompt_index','mapping'))
+                assert matching in r1_lengths,'R3 compute validation requires the matching R1 task'
+                if r['prompt_tokens']!=r1_lengths[matching]:
+                    compute_mismatches[model]+=1;continue
                 assert filler_labels,'R3 inference needs independent filler quality audit before interpretation'
                 sentence=metadata[r['item_id']]['sentence']
                 matches=[f for f in filler_labels.values() if f['sentence']+'\n'+sentence in r['prompt']]
@@ -209,6 +263,14 @@ def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None):
                         for (reading, condition, cluster, question, item), scores in items.items():
                             question_cells[(reading, condition)][(cluster, question)].append(np.mean(scores))
                         question_cells = {k: {q: float(np.mean(scores)) for q, scores in v.items()} for k, v in question_cells.items()}
+                        # Descriptive cells and raw gains use the same question pairs
+                        # on BOTH sides, including after a quality/compute exclusion.
+                        for reading in {k[0] for k in question_cells}:
+                            if reading=='R4':continue
+                            common=question_cells.get((reading,'gp'),{}).keys()&question_cells.get((reading,'control'),{}).keys()
+                            for condition in ('gp','control'):
+                                cell=question_cells.get((reading,condition),{})
+                                question_cells[(reading,condition)]={q:v for q,v in cell.items() if q in common}
                         def cluster_mean(values):
                             groups = collections.defaultdict(list)
                             for (cluster, question), value in values.items(): groups[cluster].append(value)
@@ -263,8 +325,15 @@ def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None):
                         output['models'].setdefault(model, {})[key] = report
     effects_path=out.with_suffix('.cluster-effects.jsonl');write_jsonl(effects_path,effects)
     output['cluster_effects_path']=str(effects_path);output['cluster_effects_sha256']=sha(effects_path)
+    ledger_path=out.with_suffix('.validated-tasks.jsonl')
+    task_fields=('item_id','format','reading','order','prompt_index','mapping','repair','mode','correct','matched_question_exact')
+    write_jsonl(ledger_path,[dict(model=model,**{k:r[k] for k in task_fields}) for model,keyed in per_model.items() for r in keyed.values()])
+    output['validated_tasks_path']=str(ledger_path);output['validated_tasks_sha256']=sha(ledger_path)
     output['filler_audits']=filler_scopes;output['filler_quality_excluded_tasks']=dict(filler_rejections)
+    output['R3_actual_prompt_length_excluded_tasks']=dict(compute_mismatches)
     output['final_choice_audits']=final_scopes;output['final_choice_review_counts']=dict(final_review_counts)
+    output['source_filter']=sources;output['control_type_filter']=control_types
+    output['deduplication']=dict(enabled=deduplicate,priority=['sap','amouyal','cehakova2025'],excluded_items=len(duplicate_ids),pairs=duplicate_ledger)
     output['interpretation'] = 'NEITHER/initial_all are agreement with the published No convention, not semantic accuracy. No automatic scientific account selection.'
     out.write_text(json.dumps(output, ensure_ascii=False, indent=2)+'\n')
 
@@ -274,6 +343,9 @@ if __name__ == '__main__':
     ap.add_argument('--annotation', type=Path); ap.add_argument('--runs', type=Path, nargs='*')
     ap.add_argument('--filler-audits',type=Path,nargs='*')
     ap.add_argument('--final-choice-audits',type=Path,nargs='*')
+    ap.add_argument('--sources',nargs='*',choices=['amouyal','sap','cehakova2025'])
+    ap.add_argument('--control-types',nargs='*')
+    ap.add_argument('--deduplicate',action='store_true',help='Input-only exact duplicate question-pair sensitivity; SAP priority, never label/outcome priority.')
     ap.add_argument('--out', type=Path, required=True); args = ap.parse_args()
     if args.annotation: assemble(args.data, args.annotation, args.out)
-    else: analyze(args.data, args.runs, args.out,args.filler_audits,args.final_choice_audits)
+    else: analyze(args.data, args.runs, args.out,args.filler_audits,args.final_choice_audits,args.sources,args.control_types,args.deduplicate)

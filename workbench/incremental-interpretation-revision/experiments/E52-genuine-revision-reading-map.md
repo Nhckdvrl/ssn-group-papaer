@@ -89,3 +89,7 @@ Gemma精度/class/fallback仍不足以重合公开值；source复现改用未改
 
 ### Gemma A复现自审后继续
 未改写上游parser、FP32 text model、逐题无padding、固定seed52/53：193个两seed都有效的任务仅1个decision flip/平均概率差.01654；与公开有效记录342个匹配仍131 flips/平均.37752，明显不在本地采样噪声内。原始3token上下文、两个seed及所有先前失败保留。不宣称复现通过，Gemma A暂为描述读数、不支撑与原文对齐的能力叙事；不按更有利版本选输出。停止围绕该局部校准异常连锁，假说表仍无E1/E2/E4能力证据，E3的问句问题仍待完整D0-v2；该软件/版本差异本身不是科学finding。三族B FP32确认与其余族/格式的系统测量继续，尚无资源级真正卡住。
+
+### 重复来源与R3计算资格（效应分析前固定）
+输入字节检查发现SAP与Čeháková共享24个MVRR GP句，只有其中5组原问句也相同（10个gp/control QA）。主bootstrap将完全相同GP句连接既有lexical cluster，并传播到该cluster全部问句/构式；原cluster_id保留，新增analysis_cluster_id，365个来源cluster连接后为341个。去重敏感性移除完整的重复question pair：只看句子、问句、选项集合与gold文本，固定SAP优先、Amouyal其次、Čeháková最后，不能因语义通过或模型表现换来源。主结果与去重结果都报，不把共享框架当独立材料。
+R3虽然孤立填充句token数等于S，少数任务在完整prompt的词边界合并后仍比R1少1token；按完整任务身份逐一比较prompt_tokens，不相等的任务保留原输出、从R1/R3等计算对比排除。每reading的gp/control cell及原始收益先取同问句两侧交集，不能由缺失组成制造差距。补充mixed模型读取同一主分析的validated-task ledger，使filler质量、实际长度与去重排除一致。新tokenizer引入的3种filler正做增量Step审计，固定复用此前20种的全部标签，不重标挑有利版本。

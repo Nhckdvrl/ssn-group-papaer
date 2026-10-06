@@ -13,28 +13,29 @@ from data import sha
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--data',type=Path,required=True)
-    parser.add_argument('--runs',type=Path,nargs='+',required=True);parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--map-summary',type=Path,required=True,help='Use the primary analysis ledger after identical quality/compute exclusions.')
+    parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--stratum',choices=['genuine','initial_all'],default='genuine');args=parser.parse_args()
     metadata={r['item_id']:r for r in map(json.loads,args.data.read_text().splitlines())}
     observations=[];seen=set()
-    for directory in args.runs:
-        config=json.loads((directory/'config.json').read_text());assert config['predictions_sha256']==sha(directory/'predictions.jsonl')
-        model=Path(config['model_path']).name
-        with (directory/'predictions.jsonl').open() as stream:
+    summary=json.loads(args.map_summary.read_text());assert summary['data_sha256']==sha(args.data)
+    ledger=Path(summary['validated_tasks_path']);assert sha(ledger)==summary['validated_tasks_sha256']
+    with ledger.open() as stream:
             for line in stream:
-                r=json.loads(line);m=metadata[r['item_id']]
+                r=json.loads(line);m=metadata[r['item_id']];model=r['model']
                 eligible=m['genuine'] if args.stratum=='genuine' else m.get('analysis_question_target',m['question_target'])=='initial'
                 if not eligible or r['format']!='B' or r['mode']!='sequence' or r['repair'] or r['correct'] is None or not r['matched_question_exact']:continue
                 if r['reading'] not in ('R0','R1','R2','R3','R5'):continue
                 key=model,r['item_id'],r['reading'],r['mapping'];assert key not in seen;seen.add(key)
-                observations.append(dict(correct=int(r['correct']),model=model,pair=m['cluster_id'],
+                observations.append(dict(correct=int(r['correct']),model=model,pair=m.get('analysis_cluster_id',m['cluster_id']),
                     question_pair=(m.get('analysis_pair_id',m['pair_id']),m['question']),
                     construction=m['construction'],condition=m.get('analysis_condition',m['condition']),reading=r['reading'],mapping=r['mapping']))
     paired=collections.defaultdict(set)
     for r in observations:paired[(r['model'],r['question_pair'],r['reading'])].add(r['condition'])
     before=len(observations)
     observations=[r for r in observations if paired[(r['model'],r['question_pair'],r['reading'])]=={'gp','control'}]
-    report=dict(data_sha256=sha(args.data),stratum=args.stratum,observations=len(observations),unpaired_rows_excluded=before-len(observations),seed=52,
+    report=dict(data_sha256=sha(args.data),map_summary_sha256=sha(args.map_summary),validated_tasks_sha256=sha(ledger),
+        stratum=args.stratum,observations=len(observations),unpaired_rows_excluded=before-len(observations),seed=52,
         formula='correct ~ C(condition)*C(reading)*C(construction) + C(mapping)',
         random_intercepts=['lexical cluster (SAP shared across constructions)','model'],
         method='statsmodels BinomialBayesMixedGLM variational Bayes; posterior normal intervals, not cluster-bootstrap CIs',
