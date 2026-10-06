@@ -33,3 +33,5 @@ E52查到重复BOS后，核对vLLM实际prompt_tokens：Gemma12旧252 vs模板25
 
 ### 重新思考后恢复（2026-10-07；T4效果仍未解读）
 因用户明确要求继续深入探索，E53被用于I03/I04的另一自然用途：QA缺陷是否也进入角色表达。按原6条件、全部三族输出恢复双遍盲审和分歧裁决，原定义/批大小2/Step Plan step-5-preview/共8并发均不改；全部缓存与暂停记录保留。当前审模型新生成文本，不重审已完成的原句T1/T3，也不根据已有部分T4标签缩小范围。resume记录external E53/research-resume-v1.json，正在审核，尚无代表总体的角色数字。
+
+- 2026-10-07 API算力优先级调整：完整数据与原双遍协议/缓存不变，两路driver各2worker，给新E63留4worker，共享总并发8。接管全部8请求槽、待返回/保存后替换driver，未取消HTTP；记录external E63/api-rebalance-v1.json。不是研究暂停或状态改变。

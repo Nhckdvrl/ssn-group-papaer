@@ -44,3 +44,5 @@
 POST-HOC描述核对：前半层切断全体words选No频率分别增加59.40pp / 70.79 / 52.81，支持响应偏好/信息损伤作为竞争解释，不能单凭这个比例完成因果归因。mask仍有分布变化，晚窗口弱效应不证明深层源中没有关系。
 
 完整结果`/data1/xiangding/work/incremental-interpretation-revision/E60/source-consumption-depth-map-v1.json`及cluster-effects；git小摘要[结果](../results/E60-source-consumption-depth-summary.json)引用data/config/predictions/完整结果SHA。C06–C09仍L0；I05“选择性推迟消费会修复”没有获支持，SEED状态不改，结束当前mask/位置扫描。下一步E63在同一任务未知的源前缀上，将同一donor状态用于原QA和自由角色表达，检验E55是否超出Yes/No输出；不是继续优化窗口。
+
+- 静态科学图：external `E60/figures-v1/source_access_repair_and_damage.{png,pdf}`，NPZ示例展示全部四窗口、两目标/GP与cue及95%CI；其他构式/读出保留完整map，不以图示切片替代总体。

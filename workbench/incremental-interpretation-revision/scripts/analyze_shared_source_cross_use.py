@@ -100,6 +100,18 @@ def main():
                                     joint.append((a,value))
                                 reports[prefix+'/hard_transitions']=dict(n_tasks=len(pairs),counts=dict(transitions))
                                 report(prefix+'/joint_QA_role_repair',joint)
+                                for op in ('BASE','PAIR'):
+                                    joint_cells=collections.Counter();discordance=[]
+                                    for r in sub:
+                                        if r['operation']!=op:continue
+                                        role=ri[(r['source_unit'],op)]
+                                        if role['category'] is None:
+                                            joint_cells['role_unknown']+=1;discordance.append((r,None));continue
+                                        rc=role['category']=='CORRECT_ROLES'
+                                        joint_cells[('QA_right' if r['correct'] else 'QA_wrong')+('/role_right' if rc else '/role_wrong')]+=1
+                                        discordance.append((r,float(not r['correct'] and rc)))
+                                    reports[prefix+'/joint_status/'+op]=dict(n_tasks=sum(joint_cells.values()),counts=dict(joint_cells))
+                                    report(prefix+'/QA_wrong_role_correct/'+op,discordance)
     assert families=={'Qwen3-8B','gemma-3-12b-it','Meta-Llama-3.1-8B-Instruct'},'Full predetermined family panel required'
     effect=args.out.with_suffix('.cluster-effects.jsonl');write_jsonl(effect,effects)
     args.out.write_text(json.dumps(dict(data_sha256=sha(args.data),sources_sha256=sha(args.sources),runs=runs,audits=audit_reports,reports=reports,
