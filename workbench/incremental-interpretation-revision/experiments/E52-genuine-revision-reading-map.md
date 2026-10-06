@@ -102,3 +102,6 @@ R3虽然孤立填充句token数等于S，少数任务在完整prompt的词边界
 
 ### 纠正native输入后的精度复核
 固定三族完整19180任务，纠正BOS后的BF16/FP32+batch-layout：Qwen8 69翻转（.360%）、Gemma12 46（.240%）、Llama8 98（.511%），平均概率delta .003212/.002362/.005278，最大 .452/.613/.116，缺失0。各任务完整prompt/token数一致；这不是纯dtype干预。文件 E52/precision/*-bf16-fp32-native-v2.json；以前重复BOS的noise结果只留历史，不能替代。大delta提醒不能以总体低翻转率证明逐条概率可靠，主科学效应需按cell复核两精度。
+
+### T1反例世界复核（源标签自审触发，能力主分析前）
+固定seed5206从两遍C的GP源句抽查5项（不看模型回答），MVRR两例的理由仅为被动接受者而非主动施事；这不足以排除兼容的另一次主动事件。两遍一致不保证遵守open-world准则，不能直接当真实矛盾gold。原v4全部保留、不取消在途裁决；v4完成后盲复核任何chosen/pass1/pass2中出现C的受控条目，另取item输入hash seed5207固定10%的其他条目作为比较，不按模型错误筛选。每项两遍随机批2、分歧第三遍，Step Plan/step-5-preview、四并发加T4四并发总≤8。每个NEITHER必须具体兼容反例世界，每个C必须说明原S/Q中的直接不相容，不能把role逆转自动当额外事件不可能；T2/T3固定占位只供schema，最终保留原v4独立grammar/landmark。failed复核成为未知。原qualified-v2是待复核历史资格，主分析改用确定性合并的qualified-v3，源字节/gold不改；选取、变更矩阵、一致率/缺失和proof全部保存。此修订POST-HOC于推理计算，先于真实错误能力主分析；E59世界类别同样用v3，source G2的C/N映射均No。不会把此标注问题本身升级成领域理解结论错误。

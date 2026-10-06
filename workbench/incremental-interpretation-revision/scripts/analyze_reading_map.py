@@ -122,20 +122,27 @@ def assemble(data, annotation, out):
             if len(positions) == 1:
                 r.update(disamb_word_index=positions[0], position_origin='unique control word aligned to Step5 GP landmark')
     accepted_positions=collections.defaultdict(set)
+    accepted_spans=collections.defaultdict(set)
     for r in rows:
         if r['condition']=='gp' and r.get('position_origin')=='two-pass Step5 agreement':
             accepted_positions[r['sentence_sha256']].add(r['disamb_word_index'])
+            accepted_spans[r['sentence_sha256']].add(tuple(r['amb_span']) if r['amb_span'] is not None else None)
     inconsistent={s for s,positions in accepted_positions.items() if len(positions)>1}
+    inconsistent_spans={s for s,spans in accepted_spans.items() if len(spans)>1}
     for group in paired.values():
         if any(r['condition']=='gp' and r['sentence_sha256'] in inconsistent for r in group):
             for r in group:
                 r.update(disamb_word_index=None,amb_span=None,position_origin='Step5 landmark inconsistent across questions for the same sentence')
+        elif any(r['condition']=='gp' and r['sentence_sha256'] in inconsistent_spans for r in group):
+            for r in group:
+                r.update(amb_span=None,ambiguity_span_origin='Step5 spans inconsistent across questions for the same sentence')
     write_jsonl(out, rows)
     summary = dict(rows=len(rows), labelled=sum(r.get('step5_status') in ('agreed', 'adjudicated') for r in rows),
         genuine_pairs=len({r['pair_id'] for r in rows if r['genuine']}),
         semantic_strata=dict(collections.Counter(r['semantic_stratum'] for r in rows)),
         position_available=sum(r['disamb_word_index'] is not None for r in rows), data_sha256=sha(data),
         position_inconsistent_sentences=len(inconsistent),
+        ambiguity_span_inconsistent_sentences=len(inconsistent_spans),
         raw_clusters=len({r['cluster_id'] for r in rows}),linked_analysis_clusters=len({r['analysis_cluster_id'] for r in rows}),
         annotation_sha256=sha(annotation), assembled_sha256=sha(out))
     summary['pass_sha256']={p.name:sha(p) for p in pass_paths if p.exists()}
