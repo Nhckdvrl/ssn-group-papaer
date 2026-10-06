@@ -20,6 +20,10 @@ source workbench/incremental-interpretation-revision/scripts/env.sh
 
 E53：`paraphrase_map.py --data <published-v2> --build-out <E53/sentences.jsonl>`合并相同原句；`run_panel.py --stage paraphrase --data <sentences> --models Qwen3-8B gemma-3-12b-it Meta-Llama-3.1-8B-Instruct --calibration-out <E52/runs> --out <E53/runs>`用共享GPU锁生成。`audit_paraphrases.py --data <sentences> --runs <完成目录...> --out <audit> --previous-audits <此前完成目录...>`只给source/output、相同文本盲复用。`analyze_paraphrases.py --metadata <qualified> --data <sentences> --runs <完成目录...> --audits <全部不重复audit目录...> --out <json>`要求每个final都有审计记录；未知/失败不当语义误读，T4与两句格式分开。仪器`--source-limit 5 --blocking-slot 0`不用于科学效应筛选。
 
+Native纠正：`encode_choices`对已渲染chat不再加special；普通A/base文本仍加。受影响五模型的B在`E52/runs-native-v2`，Gemma12/Llama8 FP32在`confirmation-native-v2`；旧全部A用`project_run_format.py --source <完成旧run> --out <projection> --format A`保留。分析不能同时传入旧受影响B与纠正B。E53采用Qwen旧正确token与`E53/runs-native-v2`两族，旧全T4等待队列已取消；新全T4目录`T4-full-native-v2`。首8token/策略保存，生成显式传prompt_token_ids避免vLLM再次加BOS。
+
+E59：`source_scope_map.py --data <qualified-v2> --build-out <E59/data.jsonl>`从完成Step T1机械派生三scope任务gold，原gold保留；`run_panel.py --stage source-scope --models Qwen3-8B gemma-3-12b-it Meta-Llama-3.1-8B-Instruct --data <data> --out <E59/runs> --calibration-out <E52/runs>`固定FP32、letters/words全交叉。`analyze_source_scope.py --runs <三族完成目录...> --out <json>`主O2→G2只同gold配对，不直接比较W3的绝对概率；独立合成已知恢复/控制稳定/三选项隔离自检通过。
+
 ```bash
 source workbench/incremental-interpretation-revision/scripts/env.sh
 # git download 必须沿用上述无代理环境，并禁用 git 自有 proxy 设置。
