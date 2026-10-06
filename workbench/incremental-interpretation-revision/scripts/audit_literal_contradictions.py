@@ -94,8 +94,10 @@ def main():
                  rows=len(selected), selection_counts=dict(reasons),
                  selection='Any chosen or first/second-pass CONTRADICTED; plus input-hash seed5207 fixed 10% comparison. Blind to prior labels and model behavior.',
                  original_T2_T3_retained=True, compatibility_fields_not_quality_gold=True)
+    scope['annotation_effort'] = 'medium'
     (args.out/'scope.json').write_text(json.dumps(scope, indent=2)+'\n')
     step_gp_audit.PROMPT = PROMPT
+    step_gp_audit.EFFORT = 'medium'
     step_gp_audit.validate = validate
     sys.argv = [sys.argv[0], '--data', str(cohort), '--out', str(args.out/'step5'),
                 '--workers', str(args.workers), '--batch-size', '2']

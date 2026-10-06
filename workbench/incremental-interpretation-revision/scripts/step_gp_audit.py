@@ -10,6 +10,8 @@ from data import sha, write_jsonl
 from data_v2 import digest
 from step_plan import MODEL, MESSAGES, post
 
+EFFORT = 'low'
+
 
 class TransportUnavailable(RuntimeError):
     pass
@@ -84,7 +86,7 @@ def request(rows, pass_number, directory, attempt=0):
     system = PROMPT + ('\nThis is a reasoned adjudication pass. Add a rationale field explaining the final parse and decisive semantic reasoning. Do not see or guess prior labels.' if pass_number == 3 else '')
     payload = dict(model=MODEL, system=system,
                    messages=[dict(role='user', content=json.dumps({'items': [packet(r) for r in rows]}, ensure_ascii=False))],
-                   max_tokens=32768, output_config=dict(effort='low'))
+                   max_tokens=32768, output_config=dict(effort=EFFORT))
     prefix.with_suffix('.request.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2)+'\n')
     start = time.monotonic()
     report = dict(pass_number=pass_number, attempt=attempt, item_ids=[r['item_id'] for r in rows],
@@ -160,6 +162,9 @@ def main():
     args.out.mkdir(parents=True, exist_ok=True)
     protocol = {'prompt_sha256': digest(PROMPT), 'data_sha256': sha(args.data),
                 'batch_size': args.batch_size, 'limit': args.limit, 'model': MODEL, 'endpoint': MESSAGES}
+    # Preserve the already-running low-effort protocol and its blind pass-2 cache
+    # compatibility; new nondefault effort must be explicit in its own protocol.
+    if EFFORT != 'low': protocol['effort'] = EFFORT
     protocol_path = args.out/'protocol.json'
     if protocol_path.exists(): assert json.loads(protocol_path.read_text()) == protocol, 'Changed protocol requires a new version directory'
     else: protocol_path.write_text(json.dumps(protocol, indent=2)+'\n')
