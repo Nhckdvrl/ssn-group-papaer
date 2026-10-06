@@ -34,7 +34,9 @@ def apply(W, X):
 def analyze(ckpt, data, n_val=4096, n_train=8192, seed=0):
     model = torch.load(ckpt, map_location='cuda', weights_only=False).eval()
     task = data.task
-    if task == 'reacher':
+    if task == 'cube':
+        raw = np.concatenate([data.meta['privileged_block_0_pos'], data.meta['proprio_effector_pos']], 1)
+    elif task == 'reacher':
         raw = data.meta['qpos'][:, :2]
         raw = np.concatenate([np.cos(raw), np.sin(raw)], 1)  # angles -> unit circle coords
     else:

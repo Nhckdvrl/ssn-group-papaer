@@ -34,7 +34,7 @@ class DistHead(nn.Module):
 
 def train_head(ckpt, steps=20000, max_h=100, bs=8192, lr=3e-4, seed=0):
     cfg = json.loads((Path(ckpt).parent / 'config.json').read_text())
-    data = GPUData(cfg['task'], res=cfg.get('res', 64), device='cuda')
+    data = GPUData(cfg['task'], res=cfg.get('res', 64), device='cuda', pixels_on='cpu')
     wm = torch.load(ckpt, map_location='cuda', weights_only=False).eval()
     z = encode_all(wm, data)
     ep_off, ep_len = data.meta['ep_offset'].astype(np.int64), data.meta['ep_len'].astype(np.int64)
@@ -86,7 +86,8 @@ def plan_eval(head, wm, data, task, offset, n, S=300, iters=30, topk=30, H=5, se
     goals = [reset_env(env, task, r[2], r[3], seed=seed * 100000 + k) for k, (env, r) in enumerate(zip(envs, rows))]
     with torch.autocast('cuda', dtype=torch.bfloat16):
         g = wm.encode({'pixels': prep(goals, res, 'cuda')})['emb'][:, 0].float()
-    fs, A = data.fs, 2 * data.fs
+    adim = data.actions.shape[-1]
+    fs, A = data.fs, adim * data.fs
     am, asd = data.act_mean, data.act_std
     budget = 2 * offset
     done = np.zeros(len(rows), bool); success = np.zeros(len(rows), bool); steps = np.zeros(len(rows), int)
@@ -106,7 +107,7 @@ def plan_eval(head, wm, data, task, offset, n, S=300, iters=30, topk=30, H=5, se
             idx = cost.topk(topk, dim=1, largest=False).indices
             el = torch.gather(cand, 1, idx[..., None, None].expand(-1, -1, H, A))
             mean, std = el.mean(1), el.std(1, correction=0)
-        acts = mean.cpu().numpy().reshape(B, H * fs, 2) * asd + am
+        acts = mean.cpu().numpy().reshape(B, H * fs, adim) * asd + am
         for j, k in enumerate(ai):
             for x in acts[j]:
                 _, _, term, _, _ = envs[k].step(np.clip(x, -1, 1).astype(np.float32))

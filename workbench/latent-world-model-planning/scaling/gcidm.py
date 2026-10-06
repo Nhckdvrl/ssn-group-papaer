@@ -30,7 +30,7 @@ def encode_all(model, data):
     out = torch.empty(N, model.projector.net[-1].out_features if hasattr(model.projector, 'net') else 192,
                       device='cuda', dtype=torch.float32)
     for i in range(0, N, 2048):
-        px = data.pixels[i:i + 2048].permute(0, 3, 1, 2).float().div_(255)
+        px = data.pixels[i:i + 2048].to('cuda', non_blocking=True).permute(0, 3, 1, 2).float().div_(255)
         px = ((px - data.mean) / data.std)[:, None]
         with torch.autocast('cuda', dtype=torch.bfloat16):
             out[i:i + 2048] = model.encode({'pixels': px})['emb'][:, 0].float()
@@ -39,7 +39,7 @@ def encode_all(model, data):
 
 def train(ckpt, steps=20000, max_h=100, bs=8192, lr=3e-4, seed=0):
     cfg = json.loads((Path(ckpt).parent / 'config.json').read_text())
-    data = GPUData(cfg['task'], res=cfg.get('res', 64), device='cuda')
+    data = GPUData(cfg['task'], res=cfg.get('res', 64), device='cuda', pixels_on='cpu')
     wm = torch.load(ckpt, map_location='cuda', weights_only=False).eval()
     z = encode_all(wm, data)  # indexed by remapped frame index
     meta = data.meta
@@ -57,7 +57,7 @@ def train(ckpt, steps=20000, max_h=100, bs=8192, lr=3e-4, seed=0):
     ends = torch.as_tensor(np.concatenate(ends), device='cuda')
     torch.manual_seed(seed)
     D = z.shape[1]
-    net = GoalConditionedIDM(IDMConfig(embed_dim=D, action_dim=2, frameskip=fs, max_horizon=max_h)).cuda()
+    net = GoalConditionedIDM(IDMConfig(embed_dim=D, action_dim=data.actions.shape[-1], frameskip=fs, max_horizon=max_h)).cuda()
     opt = torch.optim.AdamW(net.parameters(), lr=lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=steps, eta_min=lr / 100)
     gen = torch.Generator(device='cuda').manual_seed(seed)
@@ -98,7 +98,7 @@ def closed_loop(net, wm, data, task, offset, n, seed=0, res=64):
             e = wm.encode({'pixels': prep(imgs, res, 'cuda')})['emb'][:, 0].float()
         # remaining horizon to the goal as in training: the dataset offset minus steps taken (>=fs)
         rem = torch.as_tensor(np.maximum(offset - steps[act_idx], fs), device='cuda')
-        a = net(e, g[act_idx], rem).float().cpu().numpy().reshape(len(act_idx), fs, 2) * asd + am
+        a = net(e, g[act_idx], rem).float().cpu().numpy().reshape(len(act_idx), fs, len(am)) * asd + am
         for j, k in enumerate(act_idx):
             for x in a[j]:
                 _, _, term, _, _ = envs[k].step(np.clip(x, -1, 1).astype(np.float32))

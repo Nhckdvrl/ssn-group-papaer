@@ -10,6 +10,7 @@ from pathlib import Path
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--tasks', default='tworoom')
+    p.add_argument('--script', default='gcidm')
     p.add_argument('--roots', default='/tmp/latent-wm-runs/scaling/*,/home/xiang/.cache/latent-wm-results/scaling/*')
     a = p.parse_args()
     tasks = a.tasks.split(',')
@@ -23,14 +24,14 @@ def main():
             if cfg['task'] not in tasks:
                 continue
             ck = Path(rd) / f"model_{cfg['steps']:07d}.pt"
-            out = Path(rd) / 'eval' / f'gcidm_{ck.stem}.json'
-            lock = Path(rd) / 'eval' / f'gcidm_{ck.stem}.lock'
+            out = Path(rd) / 'eval' / f'{a.script}_{ck.stem}.json'
+            lock = Path(rd) / 'eval' / f'{a.script}_{ck.stem}.lock'
             if not ck.exists() or out.exists() or lock.exists():
                 continue
             lock.parent.mkdir(exist_ok=True)
             lock.write_text('x')
             offs = '25,50,75' if cfg['task'] == 'tworoom' else '25,50'
-            r = subprocess.run(['/home/xiang/.venvs/latent-wm/bin/python', 'gcidm.py', '--ckpt', str(ck), '--offsets', offs],
+            r = subprocess.run(['/home/xiang/.venvs/latent-wm/bin/python', f'{a.script}.py', '--ckpt', str(ck), '--offsets', offs],
                                capture_output=True, text=True, cwd=str(Path(__file__).parent))
             print(Path(rd).name, r.stdout.strip().splitlines()[-1:] if r.stdout else '', r.stderr[-300:] if r.returncode else '', flush=True)
             lock.unlink(missing_ok=True)

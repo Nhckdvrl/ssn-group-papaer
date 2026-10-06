@@ -8,5 +8,6 @@ while true; do
     /home/xiang/.venvs/latent-wm/bin/python bank_metrics.py --runs $RUNS 2>&1 | grep -v -i warn
     /home/xiang/.venvs/latent-wm/bin/python analyze_ckpt.py --runs $RUNS 2>&1 | grep -v -i warn
   done
+  for T in tworoom pusht; do /home/xiang/.venvs/latent-wm/bin/python kernel_ell.py --task $T 2>&1 | grep -v -i warn; done
   sleep 900
 done

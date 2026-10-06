@@ -40,13 +40,15 @@ def _sim(args):
         for x in a:
             _, _, term, _, _ = env.step(np.clip(x, -1, 1).astype(np.float32))
             hit = hit or bool(term)
-            if term and task == 'reacher':  # dm_control auto-resets after a terminal step
+            if term and task in ('reacher', 'cube'):  # stop at the terminal step (auto-reset / goal reached)
                 break
         d = dist_info(env, task)
         if task == 'tworoom':
             end_ok = d < 16.0
         elif task == 'reacher':
             end_ok = d < 0.05
+        elif task == 'cube':
+            end_ok = d <= 0.04
         else:
             st = np.asarray(env._get_obs(), dtype=np.float64)
             end_ok, _ = env.eval_state(env.goal_state, st)
@@ -55,6 +57,8 @@ def _sim(args):
             fs_ = env.agent_position.numpy().astype(np.float64)
         elif task == 'reacher':
             fs_ = np.array(env.env.physics.data.qpos, dtype=np.float64)
+        elif task == 'cube':
+            fs_ = np.array(env._data.joint('object_joint_0').qpos[:3], dtype=np.float64)
         else:
             fs_ = np.asarray(env._get_obs(), dtype=np.float64)
         out[-1] = out[-1] + (fs_,)
@@ -78,11 +82,11 @@ def build(task, offset, M, K_r, H, seed, out):
         expert = act[i0:i0 + steps].copy()
         expert = np.nan_to_num((expert - am) / asd)
         if len(expert) < steps:
-            expert = np.concatenate([expert, np.zeros((steps - len(expert), 2))])
-        c = [rng.standard_normal((steps, 2)) for _ in range(K_r)]
+            expert = np.concatenate([expert, np.zeros((steps - len(expert), act.shape[1]))])
+        c = [rng.standard_normal((steps, act.shape[1])) for _ in range(K_r)]
         c.append(expert)
         for sig in [0.1, 0.3, 0.6]:
-            c += [expert + sig * rng.standard_normal((steps, 2)) for _ in range(K_r // 4)]
+            c += [expert + sig * rng.standard_normal((steps, act.shape[1])) for _ in range(K_r // 4)]
         c = np.stack(c)  # (K, steps, 2) normalized
         cands.append(c)
         jobs.append((task, start, goal, c * asd + am, seed * 100000 + k))

@@ -69,7 +69,7 @@ class GPUData:
     """Windows of `num_steps` frames spaced by `frameskip`; actions concatenated per block."""
 
     def __init__(self, task, res=64, frameskip=5, num_steps=4, device='cuda', episodes=None,
-                 val_frac=0.05, split_seed=0):
+                 val_frac=0.05, split_seed=0, pixels_on=None):
         root = Path(os.environ.get('LWM_DATA', '/tmp/latent-wm-data/lowres')) / f'{task}_{res}'
         meta = np.load(root / 'meta.npz')
         self.task, self.fs, self.T = task, frameskip, num_steps
@@ -107,10 +107,11 @@ class GPUData:
         remap = -np.ones(len(act), dtype=np.int64)
         remap[idx] = np.arange(len(idx))
         self.remap = torch.as_tensor(remap, device=device)
-        self.pixels = torch.empty((len(idx), res, res, 3), dtype=torch.uint8, device=device)
+        pdev = pixels_on or device
+        self.pixels = torch.empty((len(idx), res, res, 3), dtype=torch.uint8, device=pdev)
         B = 200_000
         for i in range(0, len(idx), B):
-            self.pixels[i:i + B] = torch.from_numpy(np.ascontiguousarray(px[idx[i:i + B]])).to(device)
+            self.pixels[i:i + B] = torch.from_numpy(np.ascontiguousarray(px[idx[i:i + B]])).to(pdev)
         self.actions = torch.as_tensor(np.nan_to_num((act - self.act_mean) / self.act_std, nan=0.0), device=device)
         self.mean, self.std = IMNET_MEAN.to(device), IMNET_STD.to(device)
         self.device = device

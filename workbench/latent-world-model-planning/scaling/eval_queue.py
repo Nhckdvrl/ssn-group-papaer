@@ -81,6 +81,9 @@ def main():
                 torch.cuda.empty_cache()
                 if 'out of memory' not in repr(e).lower():
                     (ed / f'{key}.fail').write_text(traceback.format_exc())
+                else:
+                    lock.unlink(missing_ok=True)
+                    time.sleep(600)  # wait for memory to free up instead of hammering the GPU
                 print('FAIL', r, key, repr(e), flush=True)
                 continue
                 print(json.dumps({'run': Path(r).name, 'ck': ck, 'off': off, 'budget': f'{s}x{it}',

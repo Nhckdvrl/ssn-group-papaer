@@ -45,7 +45,8 @@ def main():
     np.random.seed(a.seed)
     dev = 'cuda'
     data = GPUData(a.task, res=a.res, episodes=a.episodes or None, device=dev)
-    model = add_aux_heads(build_model(a.size, img=a.res, patch=a.patch, latent=a.latent or None), a.aux).to(dev)
+    adim = data.fs * data.actions.shape[-1]
+    model = add_aux_heads(build_model(a.size, img=a.res, patch=a.patch, latent=a.latent or None, action_dim=adim), a.aux, action_dim=adim).to(dev)
     sigreg = SIGReg(knots=17, num_proj=1024).to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd)
 
