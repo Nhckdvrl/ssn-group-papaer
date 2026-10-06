@@ -1,0 +1,921 @@
+{
+ "size": "150M",
+ "seeds": [
+  "default",
+  "small-aux-2",
+  "small-aux-3"
+ ],
+ "reference_recipe": {
+  "default": "dclm-baseline",
+  "small-aux-2": "dclm-baseline",
+  "small-aux-3": "dclm-baseline"
+ },
+ "used_step": 37500,
+ "step0_cross_seed": {
+  "default|small-aux-2": -0.0,
+  "default|small-aux-3": -0.0003,
+  "small-aux-2|small-aux-3": 0.0002
+ },
+ "runs": [
+  {
+   "recipe": "dclm-baseline",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2398,
+    "small-aux-2": -0.0001,
+    "small-aux-3": -0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0328,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.0002
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 342,
+   "final_listed": 423865,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.2386,
+    "small-aux-3": 0.0
+   },
+   "used_vs_step0": {
+    "default": 0.0004,
+    "small-aux-2": 0.0338,
+    "small-aux-3": 0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.0004,
+    "small-aux-3": 0.2354
+   },
+   "used_vs_step0": {
+    "default": -0.0,
+    "small-aux-2": -0.0,
+    "small-aux-3": 0.035
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2292,
+    "small-aux-2": 0.0002,
+    "small-aux-3": -0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0305,
+    "small-aux-2": 0.0001,
+    "small-aux-3": -0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 342,
+   "final_listed": 423865,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": 0.2261,
+    "small-aux-3": -0.0003
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.032,
+    "small-aux-3": -0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 342,
+   "final_listed": 423865,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0005,
+    "small-aux-2": 0.0002,
+    "small-aux-3": 0.2323
+   },
+   "used_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": -0.0,
+    "small-aux-3": 0.0313
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2369,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.0001
+   },
+   "used_vs_step0": {
+    "default": 0.0331,
+    "small-aux-2": 0.0004,
+    "small-aux-3": 0.0001
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": 0.2325,
+    "small-aux-3": -0.0003
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.0303,
+    "small-aux-3": 0.0
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 207,
+   "final_listed": 256260,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": 0.0005,
+    "small-aux-2": -0.0004,
+    "small-aux-3": 0.234
+   },
+   "used_vs_step0": {
+    "default": 0.0002,
+    "small-aux-2": 0.0005,
+    "small-aux-3": 0.0321
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2341,
+    "small-aux-2": 0.0001,
+    "small-aux-3": -0.0001
+   },
+   "used_vs_step0": {
+    "default": 0.0334,
+    "small-aux-2": 0.0003,
+    "small-aux-3": 0.0005
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 244,
+   "final_listed": 302510,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.2382,
+    "small-aux-3": 0.0001
+   },
+   "used_vs_step0": {
+    "default": -0.0005,
+    "small-aux-2": 0.0344,
+    "small-aux-3": -0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 64,
+   "final_listed": 77510,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.2355
+   },
+   "used_vs_step0": {
+    "default": 0.0002,
+    "small-aux-2": -0.0,
+    "small-aux-3": 0.0316
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-qc-10p",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 33,
+   "final_listed": 38167,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2366,
+    "small-aux-2": 0.0001,
+    "small-aux-3": -0.0003
+   },
+   "used_vs_step0": {
+    "default": 0.0345,
+    "small-aux-2": 0.0004,
+    "small-aux-3": -0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-qc-10p",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.2368,
+    "small-aux-3": -0.0
+   },
+   "used_vs_step0": {
+    "default": 0.0003,
+    "small-aux-2": 0.0339,
+    "small-aux-3": -0.0001
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dclm-baseline-qc-10p",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.2353
+   },
+   "used_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": -0.0003,
+    "small-aux-3": 0.0328
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_6plus",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.226,
+    "small-aux-2": 0.0004,
+    "small-aux-3": -0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0292,
+    "small-aux-2": 0.0004,
+    "small-aux-3": 0.0001
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_6plus",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 342,
+   "final_listed": 423865,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.2205,
+    "small-aux-3": 0.0001
+   },
+   "used_vs_step0": {
+    "default": 0.0003,
+    "small-aux-2": 0.0294,
+    "small-aux-3": 0.0
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_6plus",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 342,
+   "final_listed": 423865,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0006,
+    "small-aux-2": -0.0002,
+    "small-aux-3": 0.2295
+   },
+   "used_vs_step0": {
+    "default": -0.0003,
+    "small-aux-2": -0.0,
+    "small-aux-3": 0.0323
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2247,
+    "small-aux-2": 0.0004,
+    "small-aux-3": 0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0303,
+    "small-aux-2": 0.0003,
+    "small-aux-3": 0.0009
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 283,
+   "final_listed": 351260,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": 0.2216,
+    "small-aux-3": -0.0
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.0301,
+    "small-aux-3": 0.0
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 342,
+   "final_listed": 423865,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": -0.0002,
+    "small-aux-3": 0.227
+   },
+   "used_vs_step0": {
+    "default": -0.0,
+    "small-aux-2": 0.0007,
+    "small-aux-3": 0.0334
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-flan",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2229,
+    "small-aux-2": 0.0001,
+    "small-aux-3": -0.0
+   },
+   "used_vs_step0": {
+    "default": 0.0297,
+    "small-aux-2": 0.0001,
+    "small-aux-3": -0.0004
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-flan",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 50,
+   "final_listed": 60010,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": 0.2237,
+    "small-aux-3": -0.0002
+   },
+   "used_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": 0.0306,
+    "small-aux-3": 0.0007
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-flan",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 80,
+   "final_listed": 97510,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": 0.0002,
+    "small-aux-3": 0.2258
+   },
+   "used_vs_step0": {
+    "default": 0.0003,
+    "small-aux-2": 0.0,
+    "small-aux-3": 0.0311
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-math-code",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2375,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0351,
+    "small-aux-2": -0.0001,
+    "small-aux-3": 0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-math-code",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": 0.2381,
+    "small-aux-3": 0.0004
+   },
+   "used_vs_step0": {
+    "default": -0.0004,
+    "small-aux-2": 0.0331,
+    "small-aux-3": -0.0
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-math-code",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 100,
+   "final_listed": 122510,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": 0.0,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.2405
+   },
+   "used_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": -0.0001,
+    "small-aux-3": 0.0341
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-reddit",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2285,
+    "small-aux-2": 0.0003,
+    "small-aux-3": -0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0318,
+    "small-aux-2": 0.0002,
+    "small-aux-3": -0.0002
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-reddit",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 33,
+   "final_listed": 38760,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0003,
+    "small-aux-2": 0.2205,
+    "small-aux-3": -0.0003
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.0294,
+    "small-aux-3": -0.0004
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "dolma1_7-no-reddit",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 96,
+   "final_listed": 117510,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": 0.0002,
+    "small-aux-3": 0.2246
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": -0.0007,
+    "small-aux-3": 0.0299
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.238,
+    "small-aux-2": -0.0003,
+    "small-aux-3": -0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0329,
+    "small-aux-2": -0.0002,
+    "small-aux-3": 0.0004
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 50,
+   "final_listed": 60010,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0002,
+    "small-aux-2": 0.239,
+    "small-aux-3": 0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0002,
+    "small-aux-2": 0.0325,
+    "small-aux-3": 0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 297,
+   "final_listed": 368760,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0005,
+    "small-aux-2": 0.0005,
+    "small-aux-3": 0.2395
+   },
+   "used_vs_step0": {
+    "default": -0.0003,
+    "small-aux-2": 0.0003,
+    "small-aux-3": 0.0338
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-10p",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2365,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0321,
+    "small-aux-2": 0.0004,
+    "small-aux-3": 0.0002
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-10p",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 298,
+   "final_listed": 371483,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.237,
+    "small-aux-3": 0.0005
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.0318,
+    "small-aux-3": 0.0002
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-10p",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 292,
+   "final_listed": 362510,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0003,
+    "small-aux-2": -0.0005,
+    "small-aux-3": 0.2404
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": -0.0001,
+    "small-aux-3": 0.034
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-20p",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2371,
+    "small-aux-2": 0.0002,
+    "small-aux-3": 0.0003
+   },
+   "used_vs_step0": {
+    "default": 0.0349,
+    "small-aux-2": 0.0,
+    "small-aux-3": 0.0003
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-20p",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.2372,
+    "small-aux-3": -0.0001
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.0337,
+    "small-aux-3": -0.0002
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-20p",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 342,
+   "final_listed": 423865,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": 0.0003,
+    "small-aux-3": 0.24
+   },
+   "used_vs_step0": {
+    "default": -0.0003,
+    "small-aux-2": 0.0002,
+    "small-aux-3": 0.0328
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-tulu-10p",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2363,
+    "small-aux-2": 0.0001,
+    "small-aux-3": 0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.033,
+    "small-aux-2": 0.0005,
+    "small-aux-3": -0.0004
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-tulu-10p",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": -0.0,
+    "small-aux-2": 0.2392,
+    "small-aux-3": -0.0
+   },
+   "used_vs_step0": {
+    "default": 0.0006,
+    "small-aux-2": 0.0336,
+    "small-aux-3": -0.0001
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "falcon-and-cc-qc-tulu-10p",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": -0.0001,
+    "small-aux-3": 0.2407
+   },
+   "used_vs_step0": {
+    "default": -0.0001,
+    "small-aux-2": 0.0002,
+    "small-aux-3": 0.0346
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "fineweb-edu",
+   "seed": "default",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "5f619957",
+   "earliest_vs_step0": {
+    "default": 0.2373,
+    "small-aux-2": 0.0,
+    "small-aux-3": -0.0005
+   },
+   "used_vs_step0": {
+    "default": 0.0356,
+    "small-aux-2": -0.0001,
+    "small-aux-3": -0.0001
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "fineweb-edu",
+   "seed": "small-aux-2",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 40,
+   "final_listed": 47510,
+   "sha0": "3eb98b49",
+   "earliest_vs_step0": {
+    "default": -0.0002,
+    "small-aux-2": 0.241,
+    "small-aux-3": -0.0002
+   },
+   "used_vs_step0": {
+    "default": 0.0001,
+    "small-aux-2": 0.0359,
+    "small-aux-3": -0.0004
+   },
+   "starts_from_label": true
+  },
+  {
+   "recipe": "fineweb-edu",
+   "seed": "small-aux-3",
+   "earliest_step": 1250,
+   "used_step": 37500,
+   "n_steps_listed": 32,
+   "final_listed": 38157,
+   "sha0": "bdd48e03",
+   "earliest_vs_step0": {
+    "default": 0.0002,
+    "small-aux-2": -0.0,
+    "small-aux-3": 0.2418
+   },
+   "used_vs_step0": {
+    "default": 0.0006,
+    "small-aux-2": -0.0004,
+    "small-aux-3": 0.0344
+   },
+   "starts_from_label": true
+  }
+ ]
+}

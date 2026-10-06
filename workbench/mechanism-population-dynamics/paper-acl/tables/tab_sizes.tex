@@ -2,34 +2,36 @@
 \begin{table*}[t]
   \centering
   \footnotesize
-  \setlength{\tabcolsep}{4.5pt}
-  \begin{tabular}{@{}lrrrrrrcr@{}}
+  \setlength{\tabcolsep}{2.4pt}
+  \begin{tabular}{@{}lrrrrrrrcr@{}}
     \toprule
-    Parameters & Recipes & Seeds & \makecell[r]{Same seed,\\other corpus} & \makecell[r]{Other seed,\\same corpus} &
-    \makecell[r]{Seed ID\\(\%)} & \makecell[r]{Seed ID at\\3--9\% (\%)} & \makecell{$\rho$(corpus distance,\\agreement)} &
+    Parameters & \makecell[r]{Checkpoint\\(share)} & Recipes & Seeds & \makecell[r]{Same init.,\\other corpus} & \makecell[r]{Other init.,\\same corpus} &
+    \makecell[r]{Init. ID\\(\%)} & \makecell[r]{Init. ID at\\3--9\% (\%)} & \makecell{$\rho$(corpus distance,\\agreement)} &
     \makecell[r]{LR per batch\\token ($10^{-9}$)} \\
     \midrule
-    3.7M & 18 & 3 & 0.03 & 0.00 & 56 & -- & -- & 213.6 \\
-    6.0M & 23 & 3 & 0.05 & $-$0.01 & 77 & -- & -- & 183.1 \\
-    8.5M & 17 & 3 & 0.02 & 0.00 & 65 & -- & -- & 167.8 \\
-    9.9M & 16 & 3 & 0.04 & 0.00 & 81 & 72 & -- & 152.6 \\
-    14M & 18 & 3 & 0.08 & $-$0.01 & 83 & -- & -- & 140.4 \\
-    16M & 13 & 3 & 0.09 & 0.00 & 85 & -- & -- & 135.8 \\
-    19M & 20 & 3 & 0.02 & $-$0.01 & 63 & 61 & -- & 64.1 \\
-    57M & 17 & 3 & 0.08 & 0.00 & 98 & 100 & $-$0.20 to $-$0.33 & 29.5 \\
-    98M & 20 & 3 & 0.11 & 0.01 & 100 & -- & $-$0.43 to $-$0.50 & 15.0 \\
-    151M & 15 & 3 & 0.23 & $-$0.03 & 100 & 100 & $-$0.47 to $-$0.64 & 10.7 \\
-    320M & 15 & 3 & 0.22 & $-$0.01 & 100 & 100 & $-$0.69 to $-$0.78 & 5.0 \\
-    530M & 10 & 3 & 0.34 & 0.01 & 100 & -- & $-$0.65 to $-$0.71 & 3.1 \\
-    750M & 10 & 3 & 0.37 & 0.02 & 100 & 100 & $-$0.66 to $-$0.77 & 2.1 \\
-    1.2B$^\dagger$ & 10 & 5 & 0.36 & $-$0.01 & 100 & -- & $-$0.75 to $-$0.83 & 1.5 \\
-    1.2B (final) & 25 & 3 & 0.35 & $-$0.01 & 100 & -- & $-$0.76 to $-$0.80 & 1.5 \\
+    3.7M & 5{,}725 (100\%) & 18 & 3 & 0.03 & 0.00 & 56 & -- & -- & 213.6 \\
+    6.0M & 9{,}182 (100\%) & 23 & 3 & 0.05 & $-$0.01 & 77 & -- & -- & 183.1 \\
+    8.5M & 13{,}039 (100\%) & 17 & 3 & 0.02 & 0.00 & 65 & -- & -- & 167.8 \\
+    9.9M & 15{,}117 (100\%) & 16 & 3 & 0.04 & 0.00 & 81 & 72 & -- & 152.6 \\
+    14M & 21{,}953 (100\%) & 18 & 3 & 0.08 & $-$0.01 & 83 & -- & -- & 140.4 \\
+    16M & 24{,}432 (100\%) & 13 & 3 & 0.09 & 0.00 & 85 & -- & -- & 135.8 \\
+    19M & 14{,}584 (100\%) & 20 & 3 & 0.02 & $-$0.01 & 63 & 61 & -- & 64.1 \\
+    57M & 29{,}042 (100\%) & 17 & 3 & 0.08 & 0.00 & 98 & 100 & $-$0.20 to $-$0.33 & 29.5 \\
+    98M & 29{,}901 (100\%) & 20 & 3 & 0.11 & 0.01 & 100 & -- & $-$0.43 to $-$0.50 & 15.0 \\
+    151M & 37{,}500 (98\%) & 15 & 3 & 0.23 & $-$0.03 & 100 & 100 & $-$0.47 to $-$0.64 & 10.7 \\
+    320M & 45{,}000 (98\%) & 15 & 3 & 0.22 & $-$0.01 & 100 & 100 & $-$0.69 to $-$0.78 & 5.0 \\
+    530M & 51{,}250 (89\%) & 10 & 3 & 0.34 & 0.01 & 100 & -- & $-$0.65 to $-$0.71 & 3.1 \\
+    750M & 27{,}500 (43\%) & 10 & 3 & 0.37 & 0.02 & 100 & 100 & $-$0.66 to $-$0.77 & 2.1 \\
+    1.2B$^\dagger$ & 7{,}500 (11\%) & 10 & 5 & 0.36 & $-$0.01 & 100 & -- & $-$0.75 to $-$0.83 & 1.5 \\
+    1.2B & 69{,}369 (100\%) & 25 & 3 & 0.35 & $-$0.01 & 100 & -- & $-$0.76 to $-$0.80 & 1.5 \\
     \bottomrule
   \end{tabular}
-  \caption{\textbf{DataDecide at every size.} Which-head agreement (mean over induction, previous-token and retrieval
-  maps; induction only where models have induction heads), leave-one-corpus-out seed identification (chance 33\%; 20\%
-  with five seeds), the Spearman correlation between unigram corpus distance and same-seed agreement over corpus pairs
-  (range over roles), and the SGD temperature of the recipe. $\dagger$: five seeds at step 7{,}500 (10\% of training);
-  final: the verified 3-seed crossing at the end of training.}
+  \caption{\textbf{DataDecide at every size.} The checkpoint used (DataDecide revision \texttt{step<N>-seed-<seed>}; share
+  of the default seed's training), the recipes whose three seeds share their step-0 weights, which-head agreement (mean
+  over induction, previous-token and retrieval maps; induction only where models have induction heads), leave-one-corpus-out
+  identification of the initialization from the head layout (chance 33\%; 20\% with five seeds), the Spearman correlation
+  between unigram corpus distance and same-initialization agreement over corpus pairs (range over roles), and the recipe's
+  learning rate per batch token. $\dagger$: five seeds at 11\% of training; last row: the verified three-seed crossing at
+  the end of training. Every run starts from its labelled initialization (Appendix~\ref{app:audit}).}
   \label{tab:sizes}
 \end{table*}

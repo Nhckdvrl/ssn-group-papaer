@@ -9,7 +9,10 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
-### 当前进展（2026-10-04）
+### 当前进展（2026-10-06）
+**专家评审后重构 ACL 稿：** 主线收为“初始化决定层内哪个头担任哪个角色（层的位置所有模型共享）；这一分工由早期一小段学习确定；共享多少取决于语料实词相似度与梯度噪声；初始化不决定模型做什么（Flan 案例：行为变了、布局不动，习惯部分经由初始化安置的检索头表达）”。先天 / 后天二分、“weights forget the seed”、provenance 应用已删除。新实验 E65–E68（Flan 与布局、warm-up / 优化器对照、全尺寸初始化核查、权重与 SeedPrints 识别 baseline）见 `logs/2026-10-06.md`。原稿备份在 `paper-acl-v1/`。
+
+### 历史进展（2026-10-04）
 **一句话：语言模型也有先天与后天。** 先天（seed）决定回路长在哪里——9 种头角色、14 个尺寸、2 个家族，数据原理上不能选择头，只看布局就能 98–100% 认出 seed，而权重只剩 0.04 的初始化相关（weights forget the seed, circuits remember it）；后天（数据）决定回路做什么、多强、何时出现、行为如何（no lucky seeds），1% 的指令数据就能写下一个由 “Question:” 触发的习惯；先天在训练最初 1–2.5% 的关键期写下；SGD 温度与语料讲的内容（实词，而非虚词）决定先天占多少，模型越大越先天。
 **两个投稿版本并行：** ICML / ICLR 版（`experiments/A03` v5、`A04` v4、`A06` v3；标题 *The Seed Picks the Slot, the Data Fills It*）与 ACL / EMNLP / NAACL 版（`experiments/A08`；标题 *Born to Copy, Taught to Trust: What Is Innate in a Language Model*）。叙事决策见 `A05`（对齐最新顶会）、`A07`（定稿与人的修正）。
 
