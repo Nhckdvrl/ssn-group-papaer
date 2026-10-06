@@ -1,6 +1,6 @@
 # E50：两事件联合角色使用与复述格式（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；E49部分真实复述出现actor/patient混淆，首轮审计另含格式误判，正在全量重审，尚不采用错误率。
 - **问题（一句话）：** 两事件联合使用的失败来自关系重构的干扰，还是actor–action–patient格式/姓名指令的任务解读？
@@ -16,3 +16,8 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 - **推断前完整输入：** fields9dc7ccfe871e78b54927ffdbdd96b85e0db698915b301b9ab4835246fcdc85f7；768unchangedE49contexts×3Qs=2304audits，4608variants全部eligible/proposedagreement/grammaracceptable，全部prompt actualtoken<1024。[D0](../results/D0-E50-input-audit.json)。原E49因differentV反而较差，不能以此预设sameV共享角色collapse；原决定表保留，三格式全跑。run time_indexed_role.py --experiment E50 --query pair_names/unanchored_recap/anchored_recap --num-shards2 --shard-index0/1；analysis analyze_observed_roles.py --experiment E50。
+
+- **全部推断完成：** 4608outputs，cap0；Qwen code commit e916c5eb，六shards总.27645GPU·h。输入不改，全部完整答案外审；review0 v1→v2只修N1996旧患者class与已判wrong患者之间的不一致，未改变准确率；其他版本及第一过程summary保留cache。最终review2在审计完成消息前仍有写入，以最终SHA为准，不采用过程计数。
+- **主结果：** pair_names/base joint41.406% [36.719,46.484]；同patient−不同patient **−54.688pp [−60.677,−47.917]**。priority增加15.885pp [11.719,20.052]，仍未接近普通复述。unanchored/base joint上下界89.063–96.094%，CI两端[83.724,94.141]/[92.969,98.438]；anchored/base98.047% [96.484,99.349]，priority同均值但paired差CI跨0。Anchored−pair_names +56.641pp [51.823,61.328]；相对E49 formal +33.073..36.068pp，两端CI均正。其余Name/Desc、inventory、V、R8、全部family/未知边界见统计文件，未按分数筛源。
+- **按决策表：** 普通复述高正确而列表很差，反驳直接把E49 formal失败当一般角色使用崩溃。POST-HOC发现pair_names的two names/entities问法可能诱发不同实体预设；E51在任何新推断前登记无该措辞的联合问法、分栏赋值、reported不同名字计数及一句允许重复的恢复。该混杂必须实验区分，不能把问法压力叫novel机制。
+- **结果文件：** [E50-summary.json](../results/E50-summary.json)，configs/全部review SHA均记录；第一过程统计cache first-summary-v1.json；raw与原审计均不进git。C05仍L1、I01仍PILOT，不认证好idea。

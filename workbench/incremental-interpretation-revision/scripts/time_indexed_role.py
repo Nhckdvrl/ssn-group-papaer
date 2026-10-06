@@ -63,20 +63,20 @@ def adopt(directory,reviews):
 
 def run(args):
     assert not args.out.exists();a=json.loads(args.data.with_suffix('.audit.json').read_text());assert sha(args.data)==a['audited_sha256']
-    allrows=list(map(json.loads,args.data.read_text().splitlines()));expected={'E37':1056,'E38':1536,'E39':288,'E40':192,'E41':1152,'E43':96,'E44':576,'E45':192,'E46':1536,'E47':1920,'E48':864,'E49':3072,'E50':4608}[args.experiment]
+    allrows=list(map(json.loads,args.data.read_text().splitlines()));expected={'E37':1056,'E38':1536,'E39':288,'E40':192,'E41':1152,'E43':96,'E44':576,'E45':192,'E46':1536,'E47':1920,'E48':864,'E49':3072,'E50':4608,'E51':4608}[args.experiment]
     assert len(allrows)==a['variants']==expected
     rows=[r for r in allrows if r['query']==args.query]
-    assert len(rows)=={'E37':{'initial':192,'current':432,'new':432},'E38':{'current':1152,'fair':384},'E39':{'current':288},'E40':{'current':192},'E41':{'current':576,'availability':576},'E43':{'current':96},'E44':{'current':384,'availability':192},'E45':{'current':192},'E46':{'current':1536},'E47':{'current':1536,'identity_status':384},'E48':{'current':768,'alias':96},'E49':{'second':1536,'recap':1536},'E50':{'pair_names':1536,'unanchored_recap':1536,'anchored_recap':1536}}[args.experiment][args.query]
+    assert len(rows)=={'E37':{'initial':192,'current':432,'new':432},'E38':{'current':1152,'fair':384},'E39':{'current':288},'E40':{'current':192},'E41':{'current':576,'availability':576},'E43':{'current':96},'E44':{'current':384,'availability':192},'E45':{'current':192},'E46':{'current':1536},'E47':{'current':1536,'identity_status':384},'E48':{'current':768,'alias':96},'E49':{'second':1536,'recap':1536},'E50':{'pair_names':1536,'unanchored_recap':1536,'anchored_recap':1536},'E51':{'neutral_pair':1536,'keyed_roles':1536,'distinct_name_count':1536}}[args.experiment][args.query]
     assert 0<=args.shard_index<args.num_shards
     if args.num_shards!=1:
-        assert args.experiment in ('E49','E50')
+        assert args.experiment in ('E49','E50','E51')
         contexts=sorted({r['context_id'] for r in rows})
         chosen=set(contexts[args.shard_index::args.num_shards])
         rows=[r for r in rows if r['context_id'] in chosen]
         assert len(rows)==768 and args.num_shards==2
-    recovery={'E37':CURRENT_WORLD,'E38':SELECTION_SCOPE,'E39':EARLIER_ROLE_SCOPE,'E40':EARLIER_ROLE_SCOPE,'E41':AVAILABILITY_SCOPE,'E43':EARLIER_ROLE_SCOPE,'E44':AVAILABILITY_SCOPE,'E45':EARLIER_ROLE_SCOPE,'E46':EARLIER_ROLE_SCOPE,'E47':('Keep an unverified example quotation distinct from what the passage itself asserts when reporting the status of the identity claim.' if args.query=='identity_status' else EARLIER_ROLE_SCOPE),'E48':'Use the name-description associations stated in the passage and keep a role in the stated earlier activity separate from a mention or another activity.','E49':'Keep each reported patient linked to its own actor and activity, using the name-description associations stated in the passage.','E50':'Keep each reported patient linked to its own actor and activity, using the name-description associations stated in the passage.'}[args.experiment]
-    base_instruction='Answer the question concisely, using only the passage.' if args.experiment in ('E49','E50') else BASE
-    token_cap=96 if args.experiment in ('E49','E50') else 48
+    recovery={'E37':CURRENT_WORLD,'E38':SELECTION_SCOPE,'E39':EARLIER_ROLE_SCOPE,'E40':EARLIER_ROLE_SCOPE,'E41':AVAILABILITY_SCOPE,'E43':EARLIER_ROLE_SCOPE,'E44':AVAILABILITY_SCOPE,'E45':EARLIER_ROLE_SCOPE,'E46':EARLIER_ROLE_SCOPE,'E47':('Keep an unverified example quotation distinct from what the passage itself asserts when reporting the status of the identity claim.' if args.query=='identity_status' else EARLIER_ROLE_SCOPE),'E48':'Use the name-description associations stated in the passage and keep a role in the stated earlier activity separate from a mention or another activity.','E49':'Keep each reported patient linked to its own actor and activity, using the name-description associations stated in the passage.','E50':'Keep each reported patient linked to its own actor and activity, using the name-description associations stated in the passage.','E51':'A name may be used more than once; use the name reported for each activity.'}[args.experiment]
+    base_instruction='Answer the question concisely, using only the passage.' if args.experiment in ('E49','E50','E51') else BASE
+    token_cap=96 if args.experiment in ('E49','E50','E51') else 48
     tok=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left');tok.pad_token_id=tok.eos_token_id
     prompts={}
     for r in rows:
@@ -110,7 +110,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     b=s.add_parser('build');b.add_argument('--cache',type=Path,default=CACHE);b.add_argument('--directory',type=Path,required=True)
     a=s.add_parser('adopt');a.add_argument('--directory',type=Path,required=True);a.add_argument('--reviews',type=Path,nargs='+',required=True)
-    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--experiment',choices=['E37','E38','E39','E40','E41','E43','E44','E45','E46','E47','E48','E49','E50'],default='E37');r.add_argument('--query',choices=['current','initial','new','fair','availability','identity_status','alias','second','recap','pair_names','unanchored_recap','anchored_recap'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
+    r=s.add_parser('run');r.add_argument('--data',type=Path,required=True);r.add_argument('--experiment',choices=['E37','E38','E39','E40','E41','E43','E44','E45','E46','E47','E48','E49','E50','E51'],default='E37');r.add_argument('--query',choices=['current','initial','new','fair','availability','identity_status','alias','second','recap','pair_names','unanchored_recap','anchored_recap','neutral_pair','keyed_roles','distinct_name_count'],required=True);r.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B');r.add_argument('--out',type=Path,required=True)
     r.add_argument('--num-shards',type=int,default=1);r.add_argument('--shard-index',type=int,default=0)
     x=p.parse_args()
     if x.action=='build':print(json.dumps(build(x.cache,x.directory),indent=2))

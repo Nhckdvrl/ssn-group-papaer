@@ -46,7 +46,7 @@ def adopt(directory,reviews,experiment='E49'):
         j=json.loads(p.read_text());assert j['model']=='gpt-6-luna'
         for r in j['reviews']:
             assert r['id'] not in annotations;annotations[r['id']]=(r,sha(p))
-    variants,contexts={'E49':(3072,1536),'E50':(4608,2304)}[experiment]
+    variants,contexts={'E49':(3072,1536),'E50':(4608,2304),'E51':(4608,2304)}[experiment]
     assert len(annotations)==contexts
     rows=list(map(json.loads,(directory/'question-candidates-v1.jsonl').read_text().splitlines()));assert len(rows)==variants
     for r in rows:
@@ -58,10 +58,15 @@ def adopt(directory,reviews,experiment='E49'):
         r.update(audit=a,audit_review_sha256=h,acceptable=a['grammar']=='acceptable',gold_old_answer_class=a['old_answer_class'] if a['certainty']=='clear' else None,
                  gold_answer_class=a['second_answer_class'] if a['certainty']=='clear' else None,
                  eligible=a['grammar']!='unacceptable' and all(a[k] for k in ('role_scope_clear','alias_identity_clear','fixed_de_re_descriptions')) and a['certainty']=='clear')
+        if experiment=='E51':
+            assert a['reported_name_count'] in (1,2,None) and type(a['no_distinct_referent_presupposition']) is bool
+            r.update(gold_reported_name_count=a['reported_name_count'] if a['certainty']=='clear' else None)
+            r['eligible']=r['eligible'] and a['no_distinct_referent_presupposition'] and r['gold_reported_name_count'] is not None
     out=directory/'question-audited-v1.jsonl';assert not out.exists();write_jsonl(out,rows)
     audit=dict(variants=len(rows),contexts=len(annotations),audited_sha256=sha(out),candidate_sha256=sha(directory/'question-candidates-v1.jsonl'),review_sha256=[sha(p) for p in reviews],
                eligible=sum(r['eligible'] for r in rows),grammar=dict(collections.Counter(r['audit']['grammar'] for r in rows)),
                proposed_agreement=sum(r['gold_answer_class']==r['proposed_answer_class'] and r['gold_old_answer_class']==r['proposed_old_answer_class'] for r in rows))
+    if experiment=='E51':audit['count_proposed_agreement']=sum(r['gold_reported_name_count']==r['proposed_reported_name_count'] for r in rows)
     out.with_suffix('.audit.json').write_text(json.dumps(audit,indent=2)+'\n');return audit
 
 

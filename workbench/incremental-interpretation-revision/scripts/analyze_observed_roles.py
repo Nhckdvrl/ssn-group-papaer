@@ -71,6 +71,30 @@ def analyze(cache,reviews,experiment='E49'):
                 for cg in ('congruent','incongruent'):
                     ls,us=pool(query,mode,metric,cg,'same_began');ld,ud=pool(query,mode,metric,cg,'different_began')
                     record('uncertainty_bounds',f'pooled_different_minus_same_lower/{query}/{cg}/{mode}/{metric}',diff(ld,us));record('uncertainty_bounds',f'pooled_different_minus_same_upper/{query}/{cg}/{mode}/{metric}',diff(ud,ls))
+        # Predeclared format and R8 comparisons, with all uncertain answers
+        # retained. Compare family vectors rather than unrelated CI endpoints.
+        for query in queries:
+            metrics=('second_correct','unsupported_patient') if query=='second' else ('old_correct','second_correct','joint_correct','unsupported_patient')
+            for metric in metrics:
+                lb,ub=pool(query,'base',metric);lp,up=pool(query,'priority',metric)
+                record('uncertainty_bounds',f'pooled_priority_minus_base_lower/{query}/{metric}',diff(lp,ub))
+                record('uncertainty_bounds',f'pooled_priority_minus_base_upper/{query}/{metric}',diff(up,lb))
+        if experiment=='E50':
+            previous=json.loads((Path(__file__).parents[1]/'results/E49-summary.json').read_text())
+            for q1,q0 in [('unanchored_recap','pair_names'),('anchored_recap','pair_names'),('anchored_recap','unanchored_recap')]:
+                for mode,metric in itertools.product(('base','priority'),('old_correct','second_correct','joint_correct')):
+                    la,ua=pool(q1,mode,metric);lb,ub=pool(q0,mode,metric)
+                    record('uncertainty_bounds',f'pooled_format_lower/{q1}_minus_{q0}/{mode}/{metric}',diff(la,ub))
+                    record('uncertainty_bounds',f'pooled_format_upper/{q1}_minus_{q0}/{mode}/{metric}',diff(ua,lb))
+            for query,mode,metric in itertools.product(queries,('base','priority'),('old_correct','second_correct','joint_correct')):
+                lo,hi=pool(query,mode,metric)
+                old=previous['per_family'][cohort]
+                assert lo.keys()==old.keys()
+                oldlo={f:old[f][f'pooled_lower/recap/{mode}/{metric}'] for f in lo}
+                oldhi={f:old[f][f'pooled_upper/recap/{mode}/{metric}'] for f in lo}
+                record('uncertainty_bounds',f'pooled_format_lower/{query}_minus_E49_formal/{mode}/{metric}',diff(lo,oldhi))
+                record('uncertainty_bounds',f'pooled_format_upper/{query}_minus_E49_formal/{mode}/{metric}',diff(hi,oldlo))
+            out['historical_comparison_sha256']=sha(Path(__file__).parents[1]/'results/E49-summary.json')
         for c in conditions:
             rr=[r for r in chosen if condition(r)==c];query=c[0]
             metrics=('second_correct','unsupported_patient') if query=='second' else ('old_correct','second_correct','joint_correct','unsupported_patient')

@@ -87,3 +87,5 @@
 - 2026-10-06：E48 [卡](experiments/E48-referent-preserving-form-crossover.md)/[统计](results/E48-summary.json) alias固定后表达匹配old D增强+2.721/+3.455、newSame更负−1.521/−2.076bits，paired CI均不跨0；跨形式较弱但I1 Desc→Name仍−.968 [−1.682,−.253]，不能宣称完全词汇局限。mapping96correct，old758/768；I0 Desc→Desc平均old+5.863/new−2.913但first CI跨0，不包装各order稳定。C05仍L1/I01PILOT，下一E49明确第二角色事实后的实际复述，不以一般binding/priming或gap认证好idea。
 
 - 2026-10-06：E49 [卡](experiments/E49-role-use-with-observed-second-event.md)/[统计](results/E49-summary.json)第二patient直接问1530/1536正确，formal joint976/1536true、54unknown；basejoint bounds61.98–64.97%，pairedfamily95CI宽。congruenceCI跨0，differentV在incongruent/base反而约−20pp，不能把C05预测偏移和这些角色错误认同为同一机制。首轮审计格式误判作废解读、完整重审/cross及951firstcorrected对照保留。C05L1/I01PILOT不升级；E50区分普通复述/联合Names/actor retrieval cue。
+
+- 2026-10-06：E50 [卡](experiments/E50-joint-role-use-versus-recap-format.md)/[统计](results/E50-summary.json)：列表joint41.41% [36.72,46.48]、同patient−不同patient−54.69pp [−60.68,−47.92]，而actor锚定普通复述98.05%。反驳将formal复述错误直接扩为一般角色使用失败；two names问法的不同实体预设是POST-HOC竞争解释，E51事前无该预设/分栏/计数/允许重复对照。未把该差认证novelty，C05L1/I01PILOT。

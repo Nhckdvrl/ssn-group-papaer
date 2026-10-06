@@ -26,3 +26,5 @@
 | P11 | 2026-10-05 | E23 free continuation的首NP不一定是活动患者，后面可能又有finite verb；明确否定/纠正也不能只按首词判角色 | 224 greedy、匿名完整二审：首审10→次审6contradiction、12label disagreement，unknown84/88；48token cap全体 | 不从首NP/单一teacher错误率升级false belief，功能读数不足给C04加能力结论 | 两套审计及bounds均保存；E24用独立source检验C04概率预测，另需合格的角色使用场景，不扩sampling找错误 |
 
 - 2026-10-06 / P11追加：E43/44普通名字语言transport未支持普遍角色反转，neutral subtraction在old也负；原模板描述/报告frame、possessive重绑定与正常叙事偏好仍竞争。E45只改指称NP，必须先逐条whole-input审核，不以more-model或subset显著来避开反证。
+
+- 2026-10-06 / P11追加：E50列表joint41.41%、anchored普通复述98.05%，同patient列表特别差，但原two names/entities可诱发distinctness预设。E51固定全部facts，比较neutral joint/role-keyed/count与repeat恢复，不能先称内部role失效。
