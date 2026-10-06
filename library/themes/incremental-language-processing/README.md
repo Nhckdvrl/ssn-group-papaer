@@ -6,7 +6,7 @@
 
 **持续阅读与解释地图：** [FIELD_MAP.md](FIELD_MAP.md)，记录实际阅读范围、近邻贡献归属、竞争解释和当前实验的信息价值。推荐方向不等于预定paper idea；不将校准当停步门槛。
 
-**2026-10-07重新思考：** [18篇精读卡索引](REVISION_READING_INDEX.md)与[跨领域综合](REVISION_RESEARCH_SYNTHESIS.md)，覆盖综述及最新NeurIPS/ICML/ICLR/CVPR/ACL/EMNLP。摘要、下载、主文、附录与最终版本核对分别记录。
+**2026-10-07重新思考：** [20篇精读卡索引](REVISION_READING_INDEX.md)与[跨领域综合](REVISION_RESEARCH_SYNTHESIS.md)，覆盖综述及最新NeurIPS/ICML/ICLR/CVPR/ACL/EMNLP。摘要、下载、主文、附录与最终版本核对分别记录。
 
 ## Scope
 Language-model processing as evidence arrives over time:

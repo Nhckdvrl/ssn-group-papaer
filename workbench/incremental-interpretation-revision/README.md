@@ -27,7 +27,7 @@
 ## 主张与 idea
 - [CLAIMS](CLAIMS.md)：新路线是 C06–C09（L0，待验证）。C00–C05 是旧路线的历史测量，保留，不再推进。
 - [I02](ideas/I02-garden-path-misreading-attribution.md)：当前主 idea（PILOT）。[I01](ideas/I01-event-reference-or-lexical-echo.md)：PARKED。
-- [I03](ideas/I03-transferable-interpretation-repair.md)与[I04](ideas/I04-selective-relational-error-correction.md)：跨用途修订、修复与保持的选择性（SEED）；新精读与整体画像见[知识库综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。尚未认定合格idea。
+- [I03](ideas/I03-transferable-interpretation-repair.md)与[I04](ideas/I04-selective-relational-error-correction.md)：跨用途修订、修复与保持的选择性（SEED）；[I05](ideas/I05-premature-source-consumption.md)检验源信息消费时机（SEED）。新精读与整体画像见[知识库综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。尚未认定合格idea。
 - [PAIN_LOG](PAIN_LOG.md)：P13 记录问句语义混杂，P14 记录单模型与复用 24 句的教训。
 
 ## 近邻与可借的研究方法（完整定位见 ROUTE §1.3）
@@ -48,8 +48,8 @@
 - 数据资格：原双轮/裁决资产`E52/step-full-v4/`保留；反例世界双轮复核完成，最终主分析入口`E52/qualified-v3.jsonl`保留原S/Q/gold和独立T2/T3。严格矛盾仅覆盖2个NPS词汇组，不代表全部理解错误；`qualified-v2`仅为历史资格。
 - E52完整14模型/5族地图、[E59](experiments/E59-source-grounding-versus-world-question.md)三族源支持测量、[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)三族问句前可见性干预均已统计。明确源支持任务中仍有差距，可见性干预未有稳定选择性恢复；控制损伤与GP修复分别报告。尚无合格idea，C06–C09均L0。
 - **2026-10-07 执行调整：** 根据用户提醒停止追加实验与标注，在途API已收束、资产保留，重新审视科学问题与研究价值；注册状态不变。诊断见[当日日志](logs/2026-10-07.md)。
-- **同日继续：** 用户要求由综述、最新顶会与arXiv重建认识；新增[18篇精读卡](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)。[E55](experiments/E55-natural-cue-source-patching.md)自然cue源位置替换在三族运行；[E53](experiments/E53-faithful-two-sentence-paraphrase.md)10260复述的原完整T4双盲审核已恢复，未解读部分标签。注册状态不变。
-- 新资产：上述cache的`E59/source-scope-final-v1.json`、`E54/prequestion-oracle-map-v1.json`与`E54/figures-v1/`（PNG/PDF），E55的`data-v1.jsonl`/`runs-v1/`与instrument失败/修正记录；git的小摘要引用完整结果SHA。
+- **同日继续：** 用户要求由综述、最新顶会与arXiv重建认识；新增[20篇精读卡](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)。[E55](experiments/E55-natural-cue-source-patching.md)自然cue源位置替换已完成；[E60](experiments/E60-source-consumption-depth.md)保持源计算不变的消费时机干预已完成，初始收益伴随正确关系损伤；[E53](experiments/E53-faithful-two-sentence-paraphrase.md)10260复述的原完整T4双盲审核已恢复，未解读部分标签。[E63](experiments/E63-shared-source-cross-use-patching.md)改用同一任务未知源缓存检验QA/自由角色的共同功能。注册状态不变。
+- 新资产：上述cache的`E59/source-scope-final-v1.json`、`E54/prequestion-oracle-map-v1.json`与`E54/figures-v1/`（PNG/PDF），E55的`natural-cue-patch-map-v1.json`、E60的`source-consumption-depth-map-v1.json`，以及E63输入/仪器和全部失败版本；git的小摘要引用完整结果SHA。
 
 ## 决策记录
 - **2026-10-05：** 人选择本 territory，授权 training-free baseline residency；取消 agent 自加的停步 gate；构造与语义审计改用 Step。

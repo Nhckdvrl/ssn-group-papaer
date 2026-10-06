@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-18篇主文（3综述+15研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+20篇主文（3综述+17研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -20,3 +20,7 @@
 - [When Attribution Patching Lies: Diagnosis and a Second-Order Correction](zhang2026-attribution-patching-curvature.md)
 - [Learn from Your Mistakes: Self-Correcting Masked Diffusion Models](schiff2026-proseco.md)
 - [The Quest for the Right Mediator](mueller2025-right-causal-mediator-survey.md)
+- [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
+- [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
+
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述20篇。
