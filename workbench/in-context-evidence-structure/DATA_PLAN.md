@@ -1,6 +1,13 @@
 
 # DATA_PLAN — In-Context Evidence Structure
 
+> **2026-10-06 实际使用的数据（以此为准；下文为 10-05 的初始方案）**
+> - **自然、公认数据集（直接使用，不送审）：** SetFit/sst5（两极）、fancyzhx/ag_news（K=4）、CogComp/trec 粗粒度（K=6，parquet 修订版）、Yelp/yelp_review_full（1/5 星，E35）、Todd et al. function-vector 任务（`data/fv_tasks/`，E19）。
+> - **程序化数据（无需审计）：** 两位数大小/奇偶、±k 算术、类别条件算术、字母后继、大小写↔反转、标签流。
+> - **构造的 nonce 词（逐条审计）：** StepFun step-5（Step Plan 接口）审计的标签词 84 个、属性名 26 个（`data/lexicon.json`、`data/lexicon_step5_verdicts.json`）；用于 E00–E02a 与 E31–E33、E32 的 nonce 标签。
+> - **未用于结论：** DICES-350（`data/dices/`，评分者间 kappa 中位 0.19，噪声过大）。
+> - 所有 `data/*/rows.jsonl` 由 `scripts/build_*.py` 以固定种子重建，不进 git。
+
 ## 0. Principle
 **Build exact-gold procedural episodes first.** Public ICL datasets are calibration sources, not the core dataset.
 

@@ -1,4 +1,6 @@
-# Draft outline (agent, 2026-10-05 20:40) — CURRENT
+> **已被取代（2026-10-06）。** 这是 10-05 晚的旧版提纲（“Nearest, not newest”）。当前主 idea 与论文形态见 [`ideas/I04-output-indexed-evidence.md`](ideas/I04-output-indexed-evidence.md) 与 [`PAPER_SHAPE.md`](PAPER_SHAPE.md)。保留作历史。
+
+# Draft outline (agent, 2026-10-05 20:40) — SUPERSEDED
 
 **Nearest, Not Newest: In-Context Learners Detect Output Drift but Not Concept Drift**
 
