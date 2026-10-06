@@ -1,6 +1,6 @@
 # E59：源断言与世界补全是否在问答中混合？（2026-10-06）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** MEASUREMENT + CLAIM；§3 E59问题形式菜单。
 - **对应：** I02 / C06–C09 / P13；先前误读由晚到语法证据排除时，回答是否按source断言还是可能的世界补全来判断？
 - **问题（一句话）：** 明确“No=未被句子断言”，或者提供Not determined，是否会改变原GP问答差距及完整重读的收益？
@@ -25,3 +25,7 @@
 ### 读出控制补充（运行前；由E52纠正输入后的字母偏置触发）
 Llama8纠正native的R0仍2947/3464选择A（两mapping已保留），不能把接近50%的准确率直接推为理解能力。三族独立prefix-only forward（不输入任何候选答案）与候选序列评分对照，LP最大差<9e−5；2D/4D纯因果mask一致，未见候选未来泄漏或索引错误。这是读数/能力的限制，不能把符号偏置本身当本线finding。
 E59跑前追加相同三scope×R0/R1/R5的letters与words两种响应；显示选项与顺序一样，只把答复指令从A/B(/C)改为Yes/No(/Unknown)。W3把Not determined标为Unknown并明确定义；三族各候选均为单token（在完整prefix中验证），避免多词长度偏置。所有组合保留（每YN句60任务），不据结果挑读出；原Q/S仍不改，gold仍机械来自已完成Step5。主O2→G2对比按两readout分别报，W3不直接对比绝对概率。借用已有MCQA symbol-bias工作的诊断控制，完整叙事需由修订内容与因果后果决定。
+
+### 推理与语义资格解耦（新条件推理前登记）
+原D0-v4已完成但literal反例复核仍进行；E52 R2/原句surprisal全14模型与三族FP32 R2已完成，空出GPU。先按原v4独立T3与精确S/Q配对形成输入超集，不以暂定T1类别筛；G2/W3 gold一律PENDING/None，不能提前分析。三族固定FP32、全部scope/readout/reading/option-order的候选LP原样保存，O2原gold保留。完整qualified-v3完成后，以本卡原定T1/T3/同类配对规则投影全部合格任务、确定性赋gold；若任一合格任务缺失则拒绝分析，不挑成功题或更好模型。旧资格及超集输出全留。该解耦只减少等待，不改变主读数、资格或假说决策表。
+所有候选在完整prefix里都是单token，使用不含任何答案的prefix-only forward计算相同的候选联合LP。每模型首个固定输入×三scope×两readout共6任务，与独立完整候选序列LP数值核对，最大差<1e−3才继续；guard失败保留并修复，不能当能力差。保存检验、token/prompt/hash、原始gold-free scores，资格投影不产生新GPU时。

@@ -15,6 +15,7 @@ def main():
     reports={};effects=[];run_reports=[];seen_models=set()
     for directory in args.runs:
         cfg=json.loads((directory/'config.json').read_text());assert cfg.get('predictions_sha256')==sha(directory/'predictions.jsonl')
+        assert not cfg.get('blind_scoring'), 'Complete semantic qualification required before effect analysis'
         model=Path(cfg['model_path']).name;assert model not in seen_models;seen_models.add(model)
         rows=load(directory/'predictions.jsonl');run_reports.append(dict(path=str(directory),config_sha256=sha(directory/'config.json')))
         assert len({(r['item_id'],r['scope'],r['readout'],r['reading'],r['mapping']) for r in rows})==len(rows)
