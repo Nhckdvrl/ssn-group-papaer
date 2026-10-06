@@ -9,10 +9,19 @@ source workbench/incremental-interpretation-revision/scripts/env.sh
 "$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/data_v2.py --out "$IIR_CACHE/E52/published-v2.jsonl"
 "$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/step_gp_audit.py --data "$IIR_CACHE/E52/published-v2.jsonl" --out "$IIR_CACHE/E52/step-full-v4" --workers 4 --batch-size 2
 "$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/analyze_reading_map.py --data "$IIR_CACHE/E52/published-v2.jsonl" --annotation "$IIR_CACHE/E52/step-full-v4/annotated.jsonl" --out "$IIR_CACHE/E52/qualified-v2.jsonl"
-"$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/run_panel.py --data "$IIR_CACHE/E52/qualified-v2.jsonl" --stage map
+"$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/run_panel.py --data "$IIR_CACHE/E52/published-v2.jsonl" --stage map-unlabelled
 ```
 
 实际自主执行将地图分为不依赖标签的`map-unlabelled`和完成双遍位置审计后的`landmarks`，按完整task key合并；已有输出不能覆盖，完整地图与分片不能同时重复运行。`download_panel.py`只下载ModelScope镜像的逐文件固定revision/size/SHA256；推理`local_files_only=True`且HF离线，环境HF_ENDPOINT为hf-mirror.com。`step_gp_audit.py`只允许step-5-preview/Step Plan，0600仓库外密钥；单批≤5、共享并发≤8，两个打乱pass及第三遍裁决原包全留。`import_step_pass2.py`在主pass2开始前盲导入另四并发的独立pass2；API schema失败保留、429只做传输退避。运行参数和限制见E52卡，不能把CLI历史重试误作新协议。
+
+原`qualified-v2`的潜在C还须反例世界复核，主语义分析采用`qualified-v3`：
+
+```bash
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/audit_literal_contradictions.py --data "$IIR_CACHE/E52/qualified-v2.jsonl" --out "$IIR_CACHE/E52/countermodel-audit-v1" --workers 4
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/merge_literal_validation.py --published "$IIR_CACHE/E52/published-v2.jsonl" --qualified "$IIR_CACHE/E52/qualified-v2.jsonl" --original "$IIR_CACHE/E52/step-full-v4" --validation "$IIR_CACHE/E52/countermodel-audit-v1" --destination "$IIR_CACHE/E52/step-final-v5" --out "$IIR_CACHE/E52/qualified-v3.jsonl"
+```
+
+该T1复核两遍/分歧三遍、medium effort，选择全部潜在C和固定10%比较，盲于模型表现；只更改语义标签，原独立T2/T3及其冲突排除保留。一般可信自然数据不重新逐项审计。R2和surprisal已按原可靠T2盲计算，合并后的T2保持相同，不因语义复核重算；分析需检查S/word/hash。`summarize_dataset_audit.py`分别记录原标注与反例复核可靠性。
 
 `thinking_map.py`/`run_panel.py --stage thinking`使用隔离的`/data1/xiangding/env/iir-e52-generation/`（vLLM0.9.2、torch2.7.0+cu126、transformers4.51.3），原评分环境不改；安装只走PyPI清华镜像，TMPDIR/PIP_CACHE_DIR在外部E52数据盘。固定完整输出与最后think闭合后的答案，R0-generation做匹配控制，cap/未知另报。`audit_reading_fillers.py`独立T3两遍；分析`--filler-audits`强制核验R3输入。`disambiguator_surprisal.py`采用词尾空白质量校正，raw/WT都存；`balanced_map.py`只计算固定面板均衡macro，`mixed_reading_map.py`的VB区间不是主bootstrap CI。全部详细协议/修订时点见E52卡，尚无新能力主张。
 
@@ -22,7 +31,9 @@ E53：`paraphrase_map.py --data <published-v2> --build-out <E53/sentences.jsonl>
 
 Native纠正：`encode_choices`对已渲染chat不再加special；普通A/base文本仍加。受影响五模型的B在`E52/runs-native-v2`，Gemma12/Llama8 FP32在`confirmation-native-v2`；旧全部A用`project_run_format.py --source <完成旧run> --out <projection> --format A`保留。分析不能同时传入旧受影响B与纠正B。E53采用Qwen旧正确token与`E53/runs-native-v2`两族，旧全T4等待队列已取消；新全T4目录`T4-full-native-v2`。首8token/策略保存，生成显式传prompt_token_ids避免vLLM再次加BOS。
 
-E59：`source_scope_map.py --data <qualified-v2> --build-out <E59/data.jsonl>`从完成Step T1机械派生三scope任务gold，原gold保留；`run_panel.py --stage source-scope --models Qwen3-8B gemma-3-12b-it Meta-Llama-3.1-8B-Instruct --data <data> --out <E59/runs> --calibration-out <E52/runs>`固定FP32、letters/words全交叉。`analyze_source_scope.py --runs <三族完成目录...> --out <json>`主O2→G2只同gold配对，不直接比较W3的绝对概率；独立合成已知恢复/控制稳定/三选项隔离自检通过。
+E59：`source_scope_map.py --data <qualified-v3> --build-out <E59/data-v1.jsonl>`从完成Step T1机械派生三scope任务gold，原gold保留。实际先用`--data <qualified-v2> --build-out <E59/blind-data-v1.jsonl> --blind`形成原语法资格超集，G2/W3 gold为空；`run_panel.py --stage source-scope --models Qwen3-8B gemma-3-12b-it Meta-Llama-3.1-8B-Instruct --data <blind-data> --out <E59/runs-blind-v1> --calibration-out <E52/runs>`固定FP32、letters/words全交叉。verified单token候选以prefix-only LP等价计算，每族固定6项与完整joint LP独立核对。最终用`qualify_source_scope_run.py --data <data-v1> --run <某族blind完成目录> --out <新qualified目录>`投影所有合格任务、机械赋值，缺任一预定任务就拒绝采用。`analyze_source_scope.py --runs <三族qualified完成目录...> --out <json>`拒绝blind，主O2→G2只同gold配对，不直接比较W3的绝对概率；`balanced_source_classes.py --effects <cluster-effects> --out <json>`另报W3类别均衡与缺失类别。
+
+`published_reading_map.py`重用全部公开结果（含GPT-5/o3，无商业API），保留prefix覆盖和无效质量；`plot_reading_map.py`输出静态PNG/PDF、95%CI及missing；`analyze_word_answer_relation.py`将相同非句末word的原/WT surprisal与R0逐题回答关联，常量/稀疏层不估成零。它们都是测量/展示入口，不自动选假说或认证新颖性。
 
 ```bash
 source workbench/incremental-interpretation-revision/scripts/env.sh
