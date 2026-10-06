@@ -99,3 +99,6 @@ R3虽然孤立填充句token数等于S，少数任务在完整prompt的词边界
 所有旧输出与interim图保留，受影响B暂不采用；改为已渲染chat不重复special tokens，普通文本A/base仍由tokenizer加所需special。五模型全部1732题B×全部阅读/repair在runs-native-v2重算；三族FP32确认中Gemma12/Llama8在confirmation-native-v2重算，Qwen8实际token序列一致、保留原固定面板。旧完整run的所有A任务用输入格式投影保留、不按结果筛。完整prompt长度/精度比较纳入prompt_tokens，防止仅文本SHA相同就混合不同输入token。
 三族14材料/28任务2D与等价4D因果mask分数完全一致，证明掩码仪器的一致性，未开放任何未来边；其输入尚为旧BOS政策，后续mask使用纠正native输入。这不是oracle的科学效果或能力证据。source/special-token完整性修复本身不作finding。官方[Transformers v4.51.3说明](https://github.com/huggingface/transformers/blob/v4.51.3/docs/source/en/chat_templating.md)在GitHub核对，未直连HF。
 全14 tokenizer的R3 catalog仍只23种filler，增量v3没有新文本，无新增API调用；WT保存sentence-final/punctuation标记，按原公式条件于trailing whitespace，不能当document-EOS概率或人类读时。
+
+### 纠正native输入后的精度复核
+固定三族完整19180任务，纠正BOS后的BF16/FP32+batch-layout：Qwen8 69翻转（.360%）、Gemma12 46（.240%）、Llama8 98（.511%），平均概率delta .003212/.002362/.005278，最大 .452/.613/.116，缺失0。各任务完整prompt/token数一致；这不是纯dtype干预。文件 E52/precision/*-bf16-fp32-native-v2.json；以前重复BOS的noise结果只留历史，不能替代。大delta提醒不能以总体低翻转率证明逐条概率可靠，主科学效应需按cell复核两精度。

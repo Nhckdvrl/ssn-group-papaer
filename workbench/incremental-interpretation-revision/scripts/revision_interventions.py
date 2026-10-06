@@ -14,11 +14,14 @@ def token_region(offsets, start, end):
     return [i for i, (a, b) in enumerate(offsets) if b > a and a < end and b > start]
 
 
-def sentence_regions(tokenizer, prompt, row):
+def sentence_regions(tokenizer, prompt, row, *, add_special_tokens):
     start = prompt.rfind(row['sentence'])
     assert start >= 0
     end = start+len(row['sentence'])
-    encoded = tokenizer(prompt, return_offsets_mapping=True)
+    # The caller must use the same policy as the actual forward pass. A rendered
+    # native chat prompt already includes the tokenizer's special tokens.
+    encoded = tokenizer(prompt, return_offsets_mapping=True,
+                        add_special_tokens=add_special_tokens)
     offsets = encoded['offset_mapping']
     sentence_tokens = token_region(offsets, start, end)
     assert sentence_tokens

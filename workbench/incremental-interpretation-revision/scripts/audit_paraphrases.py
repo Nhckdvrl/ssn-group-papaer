@@ -58,6 +58,7 @@ def main():
     ap.add_argument('--workers',type=int,default=8,choices=range(1,9))
     ap.add_argument('--source-limit',type=int,help='Instrument smoke: first fixed input source IDs, all conditions retained.')
     ap.add_argument('--blocking-slot',type=int,choices=range(8),help='Use one shared slot for a small instrument smoke during D0.')
+    ap.add_argument('--only-pass2',action='store_true',help='Independent second-pass worker; packets imported without label selection.')
     ap.add_argument('--previous-audits',type=Path,nargs='*',default=[]);args=ap.parse_args()
     metadata={r['item_id']:r for r in map(json.loads,args.data.read_text().splitlines())}
     if args.source_limit:metadata={k:metadata[k] for k in sorted(metadata)[:args.source_limit]}
@@ -104,6 +105,7 @@ def main():
     os.environ.pop('STEP_PLAN_BLOCKING_SLOT',None)
     if args.blocking_slot is not None:os.environ['STEP_PLAN_BLOCKING_SLOT']=str(args.blocking_slot)
     sys.argv=[sys.argv[0],'--data',str(data),'--out',str(args.out/'step5'),'--workers',str(args.workers),'--batch-size','2']
+    if args.only_pass2:sys.argv+=['--only-pass2']
     step_gp_audit.main()
 
 
