@@ -67,3 +67,6 @@
 ## 原登记全量measurement完成块（2026-10-06，尚未新推断）
 
 E01目前仍为279/626变体的snapshot3，不将局部完成称全量。保留旧3snapshots/labels/不稳定效应；独立Step5逐条重审完整626variants/2672QA、90lexical sets，在新不可变cache `E01-Step5-full-v1`，最多8并发、无代理、max_tokens16384。仍原八配置和role/semantic分项；NP引用与unasserted≠false边界必须逐行标不确定，无语义gold的diagnostic不强迫No。完整原始题的测量作为D4原协议完成，不靠多跑已知GP差当novelty；下一必须区分role引用/语义补全/真实句法证据的不同作用。新batch使用当前独立审计labels，旧labels不重写；推断前冻结输入、完整审计counts/hash及计分规则。E48/49限定frame线与三构式baseline分开，不新开workbench。
+
+### 2026-10-06全量Step Plan审计结束与用户暂停
+626请求实际全部结束，565complete /61incomplete；对应2405/2672QA完成、267QA未完成（59 max_tokens、2JSON解析失败）。Plan endpoint/model/manifestSHA见[暂停快照](../results/D0-StepPlan-pause-snapshot.json)。未adopt为新的全量Gold、未运行新的E01 inference；既有279变体/4632任务snapshot3保持原字节与来源。用户要求暂停，无后台请求、不自动重试。不能把请求结束、565完成或QA审核计数叫完整E01验证通过。

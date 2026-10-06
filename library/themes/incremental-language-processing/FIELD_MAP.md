@@ -158,3 +158,9 @@ E47实际结果：inventory−absent newSame D−3.849bits、unverified−assert
 ### 自然role用途的近邻与资产
 
 [Li/Ji/Han2021](li2021-wikievents-informative-roles.md)实际读§1–4.6：nearest/informative共指、additionalcontext分散event focus已有owner。WikiEvents六release只暴露entitycoref，不能把mentionID当event identity。外部新近检索EV2 AAAI2025、event co-occurrences及argument-centric CDcoref目前仅primary摘要，不能据此自动否定/认可本线。E49/E50当前用途是在同两事件真事实下区分联合重构与格式，不把一般角色/检索gap叫novelty。
+
+## 2026-10-06暂停前已读论文补记／当前边界
+
+[QAQA ACL2023](kim2023-questionable-assumptions.md)、[Wang/Blanco EMNLP2025](wang2025-false-assumptions.md)、[existential presupposition LREC2026](woergoetter2026-existential-presupposition.md)、[SATA-Bench v3](xu2025-sata-bench.md)分别记录真实读取范围。False/questionable assumptions、task-elicited projection、事实验证与实际回答分离、多答案count/selection bias均已有owner；不据检索判死本线，也不靠换成role slots就认证novelty。
+
+E50列表41.41%、actor锚定普通复述98.05%，E51去two-names后的literal-schema约82%、repeat约91%，说明question/output pressure值得区分，但完整Step回答审核仅936/4608，count文字定义和alias/格式仍混杂。C05L1/I01PILOT未升级。用户明确暂停；仅归档，无新研究任务。[全部尝试与失败](../../../workbench/incremental-interpretation-revision/PROGRESS_SUMMARY_2026-10-06.md)。

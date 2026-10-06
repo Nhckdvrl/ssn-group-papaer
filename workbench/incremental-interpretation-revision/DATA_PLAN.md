@@ -96,3 +96,6 @@ GUM完整外审最终v2：174候选均保留，160role/reference clear并非160p
 ## 已标注自然event-role资产（2026-10-06）
 
 WikiEvents作者S3六release文件直连下载，repository253e0889b2377e0f7084cb406cf5d4142ee8a365、S3 ETag/LastModified2021-09-23+六SHA256；无不可证的immutable data revision声称。[审计](results/D0-WikiEvents-source-audit.json)。Train/dev/test206/20/20docs、3241/345/365events、4542/428/566rolelinks、实体coref4682/402/451clusters；本文本是Wikipedia reference中的news，不是全部Wikipedia文本。代码MIT、论文researchrelease不等于news文本再分发授权；raw只cache `upstream/wikievents-audit/`。Loader `scripts/wikievents.py` 保留原句/标注/null：原absolute offsets不能用于released concat document text，用每原句核对，train6span/text不一致显式保留，dev/test0。六release未暴露event-coref，mentionID不同不证明事件不同；仍需语义外审。目前仅source/schema审计，无模型推断，不另开event extraction题目。
+
+### 2026-10-06 用户资源/审计修订
+构造、改造、新增标注与必要逐条语义审核使用 **Step Plan / step-5-preview**；Messages https://api.stepfun.com/step_plan/v1/messages，Chat https://api.stepfun.com/step_plan/v1/chat/completions；禁止现金账户端点。Key只读本地私有配置、不写git或日志，总并发≤8。现成高认可度自然数据优先复用公开标注，只查来源、版本/hash、license、loader/适配所需检查，不对全库机械重审。历史Luna审计保留来源，不追改成Step审核。

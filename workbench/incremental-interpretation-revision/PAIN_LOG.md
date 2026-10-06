@@ -28,3 +28,7 @@
 - 2026-10-06 / P11追加：E43/44普通名字语言transport未支持普遍角色反转，neutral subtraction在old也负；原模板描述/报告frame、possessive重绑定与正常叙事偏好仍竞争。E45只改指称NP，必须先逐条whole-input审核，不以more-model或subset显著来避开反证。
 
 - 2026-10-06 / P11追加：E50列表joint41.41%、anchored普通复述98.05%，同patient列表特别差，但原two names/entities可诱发distinctness预设。E51固定全部facts，比较neutral joint/role-keyed/count与repeat恢复，不能先称内部role失效。
+
+| P12 | 2026-10-06 | Step Plan批量完整JSON协议未能稳定完成：E51每批24回答，39/192批完整；108 max_tokens、45 schema/覆盖失败；E01亦61/626未完整 | 原请求/响应/manifest全保留，无新调用 | 未完成不是semantic通过；成功批不能代表总体，E51不能给最终语义结论 | 用户暂停，不重试；恢复后先解决批大小/协议完成性，不能以无脑更大token重跑替代原因分析 |
+
+- P11暂停补记：E51去two-names仍有literal同patient劣势，但正确description与错误Name格式、count的name-string解读必须分开；外部全量审核未完成。当前不扩大sweep、不升级能力/novelty。

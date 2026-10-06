@@ -1,0 +1,3144 @@
+{
+  "date": "2026-10-06",
+  "user_requested_pause": true,
+  "config_count": 122,
+  "scope": "Existing local run inventory; do not sum reused analytic rows as independent experiments. No new inference performed.",
+  "runs": [
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E00",
+      "config_sha256": "28803cd926504b215e81e7d5dcb0f0114303c707fb280a287f1b9c150086e953",
+      "experiment": "E00",
+      "task_count": 5796,
+      "gpu_hours": 0.04448627101050483,
+      "wall_seconds": 160.1505753993988,
+      "gpu": "NVIDIA H20",
+      "git_commit": "c9cb96aa1d1489af7f8ec8e3b3c276136af7c6d8",
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "13b35d7a0e2f0989d412fe6e9450af9ae67c8729bcf3f456885fa2e629a0d99c",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3993022,
+          "sha256": "13b35d7a0e2f0989d412fe6e9450af9ae67c8729bcf3f456885fa2e629a0d99c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E01-opencode-first3-snapshot1",
+      "config_sha256": "93d89c2b7426f90605736700440293e60fa58a4e080afd5a0435029002510359",
+      "experiment": "E01",
+      "task_count": 808,
+      "gpu_hours": 0.024476862218644885,
+      "wall_seconds": 88.11670327186584,
+      "gpu": "NVIDIA H20",
+      "git_commit": "43a2ad847e4971e97cdca3395b33d3fe3367387f",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "4f75d3bef05a213054e7e394642f7b3747c2ed92effd3364ba01dc3e3064a515",
+      "predictions_sha256": "bd0ce20b0f871a0d286c19f37c96a0f44c20035722d3f8b18a5289163b2d685c",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1172927,
+          "sha256": "bd0ce20b0f871a0d286c19f37c96a0f44c20035722d3f8b18a5289163b2d685c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E01-opencode-first3-snapshot2",
+      "config_sha256": "4a68de29bde48b637518cbe721f605b88ea58ac7ab4d832c22fcfef2a93da81b",
+      "experiment": "E01",
+      "task_count": 1824,
+      "gpu_hours": 0.05259785453478495,
+      "wall_seconds": 189.3522756099701,
+      "gpu": "NVIDIA H20",
+      "git_commit": "5eb945214a2a1df9a124dd19ee87373c946057c6",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "32756bdc1f60848ab0764e4ae900ed5025f6f5cdc512b3198f862c06d7764a52",
+      "predictions_sha256": "ec9a5c3d1bf3e83c7f7210ec18c90b0a82960aaee59e8e18279f75d7bcd9b936",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2646567,
+          "sha256": "ec9a5c3d1bf3e83c7f7210ec18c90b0a82960aaee59e8e18279f75d7bcd9b936"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E01-snapshot3",
+      "config_sha256": "1a9ee4728e5c7b3deb4e5d937040e86311a79152000fcbf99b737c16946a58da",
+      "experiment": "E01",
+      "task_count": 4632,
+      "gpu_hours": 0.09770950794219971,
+      "data_sha256": "b161273b173d2ff8b69773acb1af67acd4a936ef95d0069f0fbf71668cceff5b",
+      "predictions_sha256": "48c73678cf7f7d97fd8a5c4baa5585144f23a888a395272b6332f3721d14aea6",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 6833668,
+          "sha256": "48c73678cf7f7d97fd8a5c4baa5585144f23a888a395272b6332f3721d14aea6"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E01-snapshot3-MVRR",
+      "config_sha256": "55a4a9293f935e4a990fc690082df64969991973d729bfe2d0b90ba189ef3860",
+      "experiment": "E01",
+      "task_count": 1440,
+      "gpu_hours": 0.03074268102645874,
+      "wall_seconds": 110.67365145683289,
+      "gpu": "NVIDIA H20",
+      "git_commit": "4c43c73411f17576b3895c11c545437058d912b3",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "b161273b173d2ff8b69773acb1af67acd4a936ef95d0069f0fbf71668cceff5b",
+      "predictions_sha256": "3917defc5ce1f448d2fa16e73a0218481797ba55c49f116e12608d362a9f7ec0",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2135213,
+          "sha256": "3917defc5ce1f448d2fa16e73a0218481797ba55c49f116e12608d362a9f7ec0"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E01-snapshot3-NPS",
+      "config_sha256": "40d47da42b4c6eb8baaf475b363865876a9709bcdb2f4381584f680e02fee1f3",
+      "experiment": "E01",
+      "task_count": 1360,
+      "gpu_hours": 0.029028219911787244,
+      "wall_seconds": 104.50159001350403,
+      "gpu": "NVIDIA H20",
+      "git_commit": "4c43c73411f17576b3895c11c545437058d912b3",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "b161273b173d2ff8b69773acb1af67acd4a936ef95d0069f0fbf71668cceff5b",
+      "predictions_sha256": "afb7146aa45d3cb165e229df784f1d440dcf4ee94d70c190a1b88e72be042d3e",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2001691,
+          "sha256": "afb7146aa45d3cb165e229df784f1d440dcf4ee94d70c190a1b88e72be042d3e"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E01-snapshot3-NPZ",
+      "config_sha256": "b5bae47d3f63ec5b3fd9897d8b7ddd736e2c3c89cb43b3f221c44844933fe000",
+      "experiment": "E01",
+      "task_count": 1832,
+      "gpu_hours": 0.03793860700395372,
+      "wall_seconds": 136.57898473739624,
+      "gpu": "NVIDIA H20",
+      "git_commit": "4c43c73411f17576b3895c11c545437058d912b3",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "b161273b173d2ff8b69773acb1af67acd4a936ef95d0069f0fbf71668cceff5b",
+      "predictions_sha256": "7ca6aed3277412a3d197798e6d0f19325f9ae0dec93340754d08752b52ab8a20",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2696764,
+          "sha256": "7ca6aed3277412a3d197798e6d0f19325f9ae0dec93340754d08752b52ab8a20"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E01-step5-partial-v7",
+      "config_sha256": "b43fd7ecd29ddec95963ecd8d54b338d645de9b817d7cd00cb35e26aa8709044",
+      "experiment": "E01",
+      "task_count": 104,
+      "gpu_hours": 0.005158439477284749,
+      "wall_seconds": 18.57038187980652,
+      "gpu": "NVIDIA H20",
+      "git_commit": "05c680d5d0d3c3459c84c72ff5c753a03b52b736",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "45a2e982c7bd9d6cb48657844632f162626752ffc69ad9fbecba5136a8a370e4",
+      "predictions_sha256": "dc532c49b03e8988db5eea267a77a35a37c478de7e04ef15953364c2d026cec8",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 150381,
+          "sha256": "dc532c49b03e8988db5eea267a77a35a37c478de7e04ef15953364c2d026cec8"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E03-bf16",
+      "config_sha256": "d26587a1f2168e15f2abc8ac9e12765b376231f4c88aa1affd286ed5c25995a7",
+      "experiment": "E03",
+      "task_count": 4416,
+      "gpu_hours": 0.038874582913186816,
+      "wall_seconds": 139.94849824905396,
+      "gpu": "NVIDIA H20",
+      "git_commit": "a4b6d03ed06a9dcbbd9ade6e66ca11bc5e925727",
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "4d5c15a3781f5adad4497b32d801840b138a6242e4277589fde362c614ac499f",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3529867,
+          "sha256": "4d5c15a3781f5adad4497b32d801840b138a6242e4277589fde362c614ac499f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E03-fp32",
+      "config_sha256": "a80b6e2534945f863032951d5b15384f82e4f64e95c7a3b0999b4f9b33e00550",
+      "experiment": "E03",
+      "task_count": 4416,
+      "gpu_hours": 0.15024391849835714,
+      "wall_seconds": 540.8781061172485,
+      "gpu": "NVIDIA H20",
+      "git_commit": "a4b6d03ed06a9dcbbd9ade6e66ca11bc5e925727",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "2288496e6936bd624ccb9bbc3211d6389bb6d2e93a29bbb9a95f1d6d0f163bdd",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3529933,
+          "sha256": "2288496e6936bd624ccb9bbc3211d6389bb6d2e93a29bbb9a95f1d6d0f163bdd"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E04",
+      "config_sha256": "a7e21e550480bbcac5ac9083318b3d5886792dabccc44f801ffa7814fa10a24a",
+      "experiment": "E04",
+      "task_count": 5796,
+      "gpu_hours": 0.043106145792537263,
+      "wall_seconds": 155.182124376297,
+      "gpu": "NVIDIA H20",
+      "git_commit": "fdab845981ccc33eb1870c09616da23fa8f9fc20",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "6e0fb1b7b756235cc8ec5ed3313a8d60481e19906b5d3871e28973a465ba0406",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3994078,
+          "sha256": "6e0fb1b7b756235cc8ec5ed3313a8d60481e19906b5d3871e28973a465ba0406"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E05-1.7B",
+      "config_sha256": "5fdbd85b29fa17235a9ce8a4114b370d1af495fc7873af5e77a3b4aa858b563c",
+      "experiment": "E05",
+      "task_count": 2760,
+      "gpu_hours": 0.023894094162517122,
+      "wall_seconds": 86.01873850822449,
+      "gpu": "NVIDIA H20",
+      "git_commit": "0765e84fb16c3c7d73a09aa307faba3872694ef5",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "e702647ab40afcfdd7ad823e5ed84b9a5d0cd2b8e14b07e06f6c944359abfbaf",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2144528,
+          "sha256": "e702647ab40afcfdd7ad823e5ed84b9a5d0cd2b8e14b07e06f6c944359abfbaf"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E05-8B",
+      "config_sha256": "2e0a032a53dd3f153d54f89a199a951165d54426022f9022c02ab4e74c53d2f2",
+      "experiment": "E05",
+      "task_count": 2760,
+      "gpu_hours": 0.09738266130288442,
+      "wall_seconds": 350.57758045196533,
+      "gpu": "NVIDIA H20",
+      "git_commit": "0765e84fb16c3c7d73a09aa307faba3872694ef5",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "e86b6e04e34d9f6cb00051d9570b4437154e857fd56e8d8a51b8e850b17561a7",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2145421,
+          "sha256": "e86b6e04e34d9f6cb00051d9570b4437154e857fd56e8d8a51b8e850b17561a7"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E06",
+      "config_sha256": "6228eb0089409b2d4d56e94395c1316e869c2f7f5957be5a2e0d21c55664c810",
+      "experiment": "E06",
+      "task_count": 2208,
+      "gpu_hours": 0.07535191549195183,
+      "wall_seconds": 271.2668950557709,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ff36126d2ec3b18b27b0ba7985063a4b7cffdc11",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "2a38ee163d24d1040ad58cd0cc384a96fcaa8b3701606efe35bcc6aab4006ad6",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2034382,
+          "sha256": "2a38ee163d24d1040ad58cd0cc384a96fcaa8b3701606efe35bcc6aab4006ad6"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E07",
+      "config_sha256": "cfd25f490918d798199313e7396b35486ddaa25e00c801985128666b635333fd",
+      "experiment": "E07",
+      "task_count": 4416,
+      "gpu_hours": 0.11269265373547872,
+      "predictions_sha256": "9929f23656bdfa91f2ed56541d33bbba35b4a682ce43ae2aa4303f1253fb5897",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3463268,
+          "sha256": "9929f23656bdfa91f2ed56541d33bbba35b4a682ce43ae2aa4303f1253fb5897"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E07-neutral",
+      "config_sha256": "e73b5285b121cc1b1edfefe2d5c365a5ed76026c7fdaf8b0e50399f771be5155",
+      "experiment": "E07",
+      "task_count": 2208,
+      "gpu_hours": 0.0396980232000351,
+      "wall_seconds": 142.91288304328918,
+      "gpu": "NVIDIA H20",
+      "git_commit": "4579c4a9a19b16eb5b61ddd60029d2c6710c4c0f",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "c10ceac10e1aae2da014a012a7cea20d1d117d31047ecf807d3db394059cb9b9",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1725196,
+          "sha256": "c10ceac10e1aae2da014a012a7cea20d1d117d31047ecf807d3db394059cb9b9"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E07-upstream",
+      "config_sha256": "c08eb9efd688b7c4fa58f23aac5e8c0ab339d4178b985ae33475c683b354d70a",
+      "experiment": "E07",
+      "task_count": 2208,
+      "gpu_hours": 0.07299463053544362,
+      "wall_seconds": 262.7806694507599,
+      "gpu": "NVIDIA H20",
+      "git_commit": "4579c4a9a19b16eb5b61ddd60029d2c6710c4c0f",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "8e375a75b5becf8527bbee88116fa4d1770d59646944903f13bc43e80fbeed08",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1738072,
+          "sha256": "8e375a75b5becf8527bbee88116fa4d1770d59646944903f13bc43e80fbeed08"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E08",
+      "config_sha256": "f48f4a886420e359b20a99fe9c1ad2c7a2389df205f1942de2b232fd02692292",
+      "experiment": "E08",
+      "task_count": 4968,
+      "gpu_hours": 0.08462378170755175,
+      "wall_seconds": 304.6456139087677,
+      "gpu": "NVIDIA H20",
+      "git_commit": "1a23ae8eef2f07c79d20465dd7933171bfedf977",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+      "predictions_sha256": "3e65f7ce8f18f1454035ad0037ab84d0a74d0becd6a659714543ce34bc1ddb66",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3709936,
+          "sha256": "3e65f7ce8f18f1454035ad0037ab84d0a74d0becd6a659714543ce34bc1ddb66"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E09",
+      "config_sha256": "c568e2cada14d8675d1b84cfa10c4e8711588c65095bab0fc932fa530805327a",
+      "experiment": "E09",
+      "task_count": 1152,
+      "gpu_hours": 0.01945353044403924,
+      "wall_seconds": 70.03270936012268,
+      "gpu": "NVIDIA H20",
+      "git_commit": "810aef47068c5c493585a050d7698d92e9239165",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "ca8553197b3c50847ccc8bf1e5951743ee288c08e1662af49ee5582520bb0efe",
+      "predictions_sha256": "16b04a23952f32abb4a15eed7bce4ff936c750c3f9f445fd3de93de85b6d1db9",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1284133,
+          "sha256": "16b04a23952f32abb4a15eed7bce4ff936c750c3f9f445fd3de93de85b6d1db9"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E10",
+      "config_sha256": "381e5bf2bf46f0ca461215ab0dd3e3cfd2d1e64ac02ce136cf1466c2e0562d9c",
+      "experiment": "E10",
+      "task_count": 2304,
+      "predictions_sha256": "15b282273e2c2ec6c23882142df0f7720fab33155c407e17f21b43520d54bd0a",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2841671,
+          "sha256": "15b282273e2c2ec6c23882142df0f7720fab33155c407e17f21b43520d54bd0a"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E10-mixed",
+      "config_sha256": "0f89454ac78c4aff27c00757f967e46c28dcc9b04ef7486a959c8e2650b468da",
+      "experiment": "E10",
+      "task_count": 1152,
+      "gpu_hours": 0.01951618320412106,
+      "wall_seconds": 70.25825929641724,
+      "gpu": "NVIDIA H20",
+      "git_commit": "255b43078f78d0879566344814e62be0270dc618",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "ca8553197b3c50847ccc8bf1e5951743ee288c08e1662af49ee5582520bb0efe",
+      "predictions_sha256": "806fbdfadb8775ec7faf15115b710ba2b9d44f4d8d3ea55ecc512f860f1f762e",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1334050,
+          "sha256": "806fbdfadb8775ec7faf15115b710ba2b9d44f4d8d3ea55ecc512f860f1f762e"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E11-opencode-snapshot1",
+      "config_sha256": "507b63895b89c1feae453921993f631a3cd1738cd4976de5f91dac42a19dd7ae",
+      "experiment": "E11",
+      "task_count": 196,
+      "gpu_hours": 0.005779647562238905,
+      "wall_seconds": 20.80673050880432,
+      "gpu": "NVIDIA H20",
+      "git_commit": "8f020a87b953d4594eda52ea6239dcabbaf7e3c5",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "6ebfdf33cebedfbc9618f8767e9e48b3423a01c01ecb69f097924cbf740d8960",
+      "predictions_sha256": "6b1dadcdde194e66641e5315adb6b9bf4216c1791c944c24fa4013e0e17d8a51",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 297370,
+          "sha256": "6b1dadcdde194e66641e5315adb6b9bf4216c1791c944c24fa4013e0e17d8a51"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E11-opencode-snapshot2",
+      "config_sha256": "dacbdee67f2d7cc84a33a4ffb7a3adfad103aae4505570167030732b6ac609f9",
+      "experiment": "E11",
+      "task_count": 500,
+      "data_sha256": "97ceb5fca7568991253e1c367f6e6f478cf415a57704bc452e004c63b18ba06d",
+      "predictions_sha256": "a6c884253534b8f00e58b79d1d9d7331453e8ebac903aa4db8c96d025524e5f7",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 759488,
+          "sha256": "a6c884253534b8f00e58b79d1d9d7331453e8ebac903aa4db8c96d025524e5f7"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E11-opencode-snapshot2-new",
+      "config_sha256": "d589b28d1e9debfc891c5fc684ed909aed8de4b999f9adf7c41e759aa9ae6cd2",
+      "experiment": "E11",
+      "task_count": 304,
+      "gpu_hours": 0.007707228130764431,
+      "wall_seconds": 27.746020793914795,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ede3337c1ef42aff4940f37e10afa5bb598b4223",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 32,
+      "data_sha256": "07370661a8ac8a4a2abaedf60ad62dcef224ea26c9b7692a7ee1660c29d5bda1",
+      "predictions_sha256": "8e7d6a48d6909c87688c8cbee7f363e8cee64e78a9a44df71dfaf8c014610b97",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 462118,
+          "sha256": "8e7d6a48d6909c87688c8cbee7f363e8cee64e78a9a44df71dfaf8c014610b97"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E12-E08-source",
+      "config_sha256": "54d8286225782de80a5c31a24ee3be1fac87a485c95278cd6f96d78a2911e23d",
+      "experiment": "E12",
+      "task_count": 4968,
+      "gpu_hours": 0.020139600170983207,
+      "wall_seconds": 72.50255966186523,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e53f58077ebc57ff6ccc58922e6edf5f23972e94",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "scores_sha256": "901721e5a26ad898db29d6710ff59bb9583f3c52b8ef3785112b03bd6f961db8",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 6983625,
+          "sha256": "901721e5a26ad898db29d6710ff59bb9583f3c52b8ef3785112b03bd6f961db8"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E12-E10-source",
+      "config_sha256": "91d82f8fe2f06aad3f8b251c7409f22c232c8f2305643344051d4a810be0e0df",
+      "experiment": "E12",
+      "task_count": 2304,
+      "gpu_hours": 0.023444748322168987,
+      "wall_seconds": 84.40109324455261,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e53f58077ebc57ff6ccc58922e6edf5f23972e94",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "scores_sha256": "c2b53e01ab4432d766eacb71e1638e02d6d29691fb613501d70b16425bc84f4f",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 4720373,
+          "sha256": "c2b53e01ab4432d766eacb71e1638e02d6d29691fb613501d70b16425bc84f4f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E13",
+      "config_sha256": "c569aa4a410db23c177cf5d5e900785a9de92afb6c489071d7e1a50fd02fbf58",
+      "experiment": "E13",
+      "task_count": 96,
+      "gpu_hours": 0.002458866967095269,
+      "wall_seconds": 8.851921081542969,
+      "gpu": "NVIDIA H20",
+      "git_commit": "4da2c0390e95c29e25a9594120620f98b0c82a76",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "scores_sha256": "33769b7f4fd41ebb5a27968bc3a85fa90b5d6e99763163a442dd2181683f7a9f",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 120140,
+          "sha256": "33769b7f4fd41ebb5a27968bc3a85fa90b5d6e99763163a442dd2181683f7a9f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E14",
+      "config_sha256": "4f22f44df8cea9d8736e909da6c46a82361527dfd84d089a5f2f21a44d8bbce7",
+      "experiment": "E14",
+      "task_count": 528,
+      "gpu_hours": 0.0060968287785847985,
+      "wall_seconds": 21.948583602905273,
+      "gpu": "NVIDIA H20",
+      "git_commit": "04303f0c6586991b458528bd8adbd0028e4d8d69",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "3afa0089ff50ce9c8d06d881918e07aa095070d3a8cc6116e077eff5a4064704",
+      "scores_sha256": "0fa222b30ca712576256f36b84fde8e4c8e318aac56ce3a4a26b7c3e5447123c",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 1786523,
+          "sha256": "0fa222b30ca712576256f36b84fde8e4c8e318aac56ce3a4a26b7c3e5447123c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E15",
+      "config_sha256": "f52a9e8793bf648a18e667912d1675330b0b1195c26c25d4117304c6e68f3f74",
+      "experiment": "E15",
+      "task_count": 176,
+      "gpu_hours": 0.003310468660460578,
+      "wall_seconds": 11.917687177658081,
+      "gpu": "NVIDIA H20",
+      "git_commit": "58003f10c17292cd6bc818dfb22cae7d7bd7134e",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "9d3e84d0379cc20fabfe1f24dfd753e669c2db008b05056f9e6f0a347f8ff55c",
+      "scores_sha256": "76b9b33712f45d497d5c37a1dcf5b09dc3c11338298f8b7ad10821ee26dec637",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 640054,
+          "sha256": "76b9b33712f45d497d5c37a1dcf5b09dc3c11338298f8b7ad10821ee26dec637"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E16",
+      "config_sha256": "4410e2dd02801a226954ec98c7e601ed89fd8c479f40282d0a47efeb445db71d",
+      "experiment": "E16",
+      "task_count": 352,
+      "gpu_hours": 0.004744950135548909,
+      "wall_seconds": 17.081820487976074,
+      "gpu": "NVIDIA H20",
+      "git_commit": "90cf43402bee9ae0d9c6196737eb06ede669a065",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "c0251c7ee83ce09044e0f338e3a0795836b4d1e441a56a4bc0b60bac4c9e7986",
+      "scores_sha256": "3725d414de03d5b18ea16339af2d07a27af4ca4a6973c6727d7fd75c3a9e96f2",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 1347522,
+          "sha256": "3725d414de03d5b18ea16339af2d07a27af4ca4a6973c6727d7fd75c3a9e96f2"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E17",
+      "config_sha256": "69c5909495aca3093e858dba82a13cd0bb132483c25db4d29afa7a2ced5e60aa",
+      "experiment": "E17",
+      "task_count": 528,
+      "gpu_hours": 0.005872468683454726,
+      "wall_seconds": 21.14088726043701,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2568a3ed8237ac94ff8f4d374c6b64e437a6ebb3",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "5a5c2355ccfd56059062a666c5038257d49bd7cf58799a3e710d0c813f1f0f3d",
+      "scores_sha256": "65acd831c73c48ee9e6d0d7230da03ccf00ece7c176ab9208c60b74e21c594dc",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 2206661,
+          "sha256": "65acd831c73c48ee9e6d0d7230da03ccf00ece7c176ab9208c60b74e21c594dc"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E18",
+      "config_sha256": "1101c73b36dac8d31bfff2bb50228555845e9c4f41052c31debac864a04696ce",
+      "experiment": "E18",
+      "task_count": 528,
+      "gpu_hours": 0.006189828515052795,
+      "wall_seconds": 22.283382654190063,
+      "gpu": "NVIDIA H20",
+      "git_commit": "0d314aed5b12fc380f2a9c562e1146221f084a91",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "94e61d197b203d3fafcd1c2c3c7e9cc48e28f03d26788d1f887048de2d892590",
+      "scores_sha256": "d246d8892cb9655af84cf8a5c71a93823ea1e35b2f69acaf746070bc020c296e",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 2388453,
+          "sha256": "d246d8892cb9655af84cf8a5c71a93823ea1e35b2f69acaf746070bc020c296e"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E19",
+      "config_sha256": "53da7910aec80213f8c2b5741a9534fdfe6c4bde4bc2331a0c8984200d9abdb2",
+      "experiment": "E19",
+      "task_count": 336,
+      "gpu_hours": 0.005571434034241571,
+      "wall_seconds": 20.057162523269653,
+      "gpu": "NVIDIA H20",
+      "git_commit": "5db67bcd8675f1369d85f22453b3d56106315a3b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "1a912257cef5359e17ec662dcb328a2a6857c9bbbe7d0d716dd7596de0935df3",
+      "scores_sha256": "bef9fdb1670c66b5ab76366e1e98cb2dffcde51b1f9e79abd4ec833bc39b51c8",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 1811455,
+          "sha256": "bef9fdb1670c66b5ab76366e1e98cb2dffcde51b1f9e79abd4ec833bc39b51c8"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E20",
+      "config_sha256": "30bdf056b59250e3af727878cf0c87db49538a1bfffeb62cfbf86db26092670d",
+      "experiment": "E20",
+      "task_count": 168,
+      "gpu_hours": 0.0036581922902001276,
+      "wall_seconds": 13.169492244720459,
+      "gpu": "NVIDIA H20",
+      "git_commit": "f8062c50a3f3ffe15c55158f938e9a2ed1690b93",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "3baae0f5a79408ecb18db0c2ce4a473b8f796d6b75ffbf0fa3d3da2e9cd77fe2",
+      "scores_sha256": "77f25ece57140de1cd38710f221f1bfeeb3cd305d766e53b4639a48b9938df4d",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 888898,
+          "sha256": "77f25ece57140de1cd38710f221f1bfeeb3cd305d766e53b4639a48b9938df4d"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E21",
+      "config_sha256": "9883e29ff105e4bc062785f7760e5a928181c3387022680c1796ee1ce06fbb60",
+      "experiment": "E21",
+      "task_count": 336,
+      "gpu_hours": 0.005449455579121907,
+      "wall_seconds": 19.618040084838867,
+      "gpu": "NVIDIA H20",
+      "git_commit": "02c2c52ff3986078f873ed36ba72af8ed2fcf10c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "aa5d9cbb1302e612e5f47aface074928c55b100b9e42a344a8795f46add26e6c",
+      "scores_sha256": "6030f5385a928edc7d4ab7339aa44fac9160ccce7cb3863dcdc6760a074f13d0",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 1766841,
+          "sha256": "6030f5385a928edc7d4ab7339aa44fac9160ccce7cb3863dcdc6760a074f13d0"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E22",
+      "config_sha256": "ee14c1ef842065a07836b3e8a99ee65eab5bfcd9e58fbc41bccbd5e467a06eda",
+      "experiment": "E22",
+      "task_count": 224,
+      "gpu_hours": 0.004162603749169244,
+      "wall_seconds": 14.985373497009277,
+      "gpu": "NVIDIA H20",
+      "git_commit": "48b35482f99b05535bc83249541e59155882d504",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "d4b3f64f5797f6a3c862f80b81f44a6208f102bc487dd4a2812d21de7570dc84",
+      "scores_sha256": "c9001f71e3d2908f3ca1d78357c2ce905c33212f82d3a469c561d76229ece69f",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 1091958,
+          "sha256": "c9001f71e3d2908f3ca1d78357c2ce905c33212f82d3a469c561d76229ece69f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E23",
+      "config_sha256": "3930f2263d25d91050455279a361ef9d9b8cd4c4a05b43e03d1d94a4a6271f08",
+      "experiment": "E23",
+      "task_count": 224,
+      "gpu_hours": 0.016202133430374993,
+      "wall_seconds": 58.327680349349976,
+      "gpu": "NVIDIA H20",
+      "git_commit": "8e9a5003990bc407216dac320ffd90ba56b6b8b8",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "78cce03540e826092dc6e26c8ae82ae829c51977b93c338df71a734590d1d317",
+      "audit_sha256": "e35c6f03673e269c07ff3ee54af4b130fe01eb750eed5e2e25da53736e6f6103",
+      "generations_sha256": "1b7e68835cec2e7dd8abf28f2d028777b329c6ec947d098682164286a4b7b851",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 761579,
+          "sha256": "1b7e68835cec2e7dd8abf28f2d028777b329c6ec947d098682164286a4b7b851"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E24",
+      "config_sha256": "1896ab141f48d811023f9b306df0d62b0193c8e3bc98accfd825752461afc3b3",
+      "experiment": "E24",
+      "task_count": 960,
+      "gpu_hours": 0.01187329716152615,
+      "wall_seconds": 42.74386978149414,
+      "gpu": "NVIDIA H20",
+      "git_commit": "8fe38e1069462bcd029ed416b6a8758b2d952883",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "bc342265d8625714d18de76654e4d22cb1794f94512b3759337fcf747ca5a20c",
+      "scores_sha256": "4685bd06fe67fdfb92c1f33c88eea4d1936ca2d8cd70e68123bca82b2fb2b3a1",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 4005272,
+          "sha256": "4685bd06fe67fdfb92c1f33c88eea4d1936ca2d8cd70e68123bca82b2fb2b3a1"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E25",
+      "config_sha256": "1aea91068d1d3c0d8d44afddf9cff184fa28ca8bd3ebea5257b3ae4bfb770dea",
+      "experiment": "E25",
+      "task_count": 1536,
+      "gpu_hours": 0.019785635736253526,
+      "wall_seconds": 35.703463554382324,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2cb2d6ec679c125d26838659ff52a9bdd83f7e09",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "2ee97a5391b9755b32e759ffc9ddc27edf94a747cb8001e1b9fd154722b2e6ef",
+      "scores_sha256": "07fe5896ddac55c40253be6b04019e5303a0c615236bf102d3d81f1aa0be16bf",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 6384724,
+          "sha256": "07fe5896ddac55c40253be6b04019e5303a0c615236bf102d3d81f1aa0be16bf"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E25-other_actor",
+      "config_sha256": "f3e1ce088f2a6da9ff6004a06b9dc93622ae80da66ac790fcd567f9936e446ca",
+      "experiment": "E25",
+      "task_count": 768,
+      "gpu_hours": 0.009917628765106202,
+      "wall_seconds": 35.703463554382324,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2cb2d6ec679c125d26838659ff52a9bdd83f7e09",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "bf811b3957cb27e328fef186f1dff17ddf3eb83b7cd9f3e478eb82d9b6e80130",
+      "scores_sha256": "c0b99970e02faae38ee3270d568e230d5d1b16a315e42a1eee0f7685f14a113c",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 3564696,
+          "sha256": "c0b99970e02faae38ee3270d568e230d5d1b16a315e42a1eee0f7685f14a113c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E25-same_actor",
+      "config_sha256": "d3ae66839c68dd1e3474e91bb07845c0983506322b6a5c96fcb55ec14976ec43",
+      "experiment": "E25",
+      "task_count": 768,
+      "gpu_hours": 0.009868006971147326,
+      "wall_seconds": 35.52482509613037,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2cb2d6ec679c125d26838659ff52a9bdd83f7e09",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "82686bf5dcada116d9b3476c5bafc7bacf97237f6b04fe14719f03ea9f06ed29",
+      "scores_sha256": "93b0089ecdc516aa589754ff4dac69232c8e16d6be5211b9c312becbffeca402",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 3533164,
+          "sha256": "93b0089ecdc516aa589754ff4dac69232c8e16d6be5211b9c312becbffeca402"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E26-base",
+      "config_sha256": "8b8bb2ead4e730d0cfcaaeb8effca3394ce175e2d5fe82891e3af29e4f1be5d3",
+      "experiment": "E26",
+      "task_count": 1536,
+      "gpu_hours": 0.031024184491899278,
+      "wall_seconds": 111.68706393241882,
+      "gpu": "NVIDIA H20",
+      "git_commit": "34fa6637bcf65ee0597eb2ad9c8c0803d4898443",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "251176e651557d1d800f6e2a9902d25f6ab874bd2fcb32aa31c9139d55ef6630",
+      "predictions_sha256": "fcd555800e8d5d01e72856c68e6737cf13c3e36c53d082dc81ad8ef1a4c48980",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3595912,
+          "sha256": "fcd555800e8d5d01e72856c68e6737cf13c3e36c53d082dc81ad8ef1a4c48980"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E26-repair",
+      "config_sha256": "066ce32a0f134f958250999408754cec1730015a4964ecb31a23593d5ba63cbd",
+      "experiment": "E26",
+      "task_count": 1536,
+      "gpu_hours": 0.03732963820298513,
+      "wall_seconds": 134.3866970539093,
+      "gpu": "NVIDIA H20",
+      "git_commit": "34fa6637bcf65ee0597eb2ad9c8c0803d4898443",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "251176e651557d1d800f6e2a9902d25f6ab874bd2fcb32aa31c9139d55ef6630",
+      "predictions_sha256": "d179664ffd3d984ca0212ceceade1c32ce4f602055c3532a7a8a861b726d320f",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3600938,
+          "sha256": "d179664ffd3d984ca0212ceceade1c32ce4f602055c3532a7a8a861b726d320f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E27",
+      "config_sha256": "a109499c51a26cc02ec838f368ac7ba88031faf06260977c1e740e2fb8ba6c38",
+      "experiment": "E27",
+      "task_count": 768,
+      "gpu_hours": 0.018070485724343194,
+      "wall_seconds": 65.05374836921692,
+      "gpu": "NVIDIA H20",
+      "git_commit": "69ffb68b769033bd3066d5e596d5accd1de4d408",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "e789c14446043efe413c725996400cfed2f80379c01cfb14d5a627bb238bdf77",
+      "predictions_sha256": "c206244550087dc8ebc7a90cc396bee4a3890750d96e07b2f8119442360eceb3",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1937731,
+          "sha256": "c206244550087dc8ebc7a90cc396bee4a3890750d96e07b2f8119442360eceb3"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E28-base",
+      "config_sha256": "b186346d81e5d6e56d4844f1d384167c6bba961f8a491b599f15b03ad0d930c2",
+      "experiment": "E28",
+      "task_count": 2880,
+      "gpu_hours": 0.0716041229168574,
+      "wall_seconds": 257.77484250068665,
+      "gpu": "NVIDIA H20",
+      "git_commit": "74c0eb122a244fba4f5f5f4703490f99f3410c69",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "c47e4e8634780e804dd314e68a8eb79fc89275e90680cfe3502e69b14598d161",
+      "audit_sha256": "eec553cf0fcc78035aa5ab024ee6cbfe9c0fa25ed0a0054fa78cc84606eb40b9",
+      "predictions_sha256": "ff6159e060c685e18ac9f9bca38eeee37c27cf89c40c2a50cf3b44ae98af8506",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 4193317,
+          "sha256": "ff6159e060c685e18ac9f9bca38eeee37c27cf89c40c2a50cf3b44ae98af8506"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E28-repair",
+      "config_sha256": "676affc8f0f090a80cc76de89d2ee52423f75be87703b38c72ac3668b06ec33c",
+      "experiment": "E28",
+      "task_count": 960,
+      "gpu_hours": 0.029064360592100356,
+      "wall_seconds": 104.63169813156128,
+      "gpu": "NVIDIA H20",
+      "git_commit": "74c0eb122a244fba4f5f5f4703490f99f3410c69",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "c47e4e8634780e804dd314e68a8eb79fc89275e90680cfe3502e69b14598d161",
+      "audit_sha256": "eec553cf0fcc78035aa5ab024ee6cbfe9c0fa25ed0a0054fa78cc84606eb40b9",
+      "predictions_sha256": "330074f9f57f4ddf5598a2816a7a66ff31237b5c54f588b9c06103bbf259f16c",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1399275,
+          "sha256": "330074f9f57f4ddf5598a2816a7a66ff31237b5c54f588b9c06103bbf259f16c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E29-nli",
+      "config_sha256": "5e78eb7d19fa23c4866e055b0f549a68150b2a0c60e978118b1eeb7df740d2ae",
+      "experiment": "E29",
+      "task_count": 1440,
+      "gpu_hours": 0.03358138057920668,
+      "wall_seconds": 120.89297008514404,
+      "gpu": "NVIDIA H20",
+      "git_commit": "89c3bb8c9ddea47b634f51533b92ebd2e8999c0a",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "68a5f131bce1b33db8d69cbaf4695534384b7b6b07f74479713ce30309a85620",
+      "audit_sha256": "691656947b0ef98fcf54b4750a4ac12e51eb6c3eccdb4ffe695037978f93005f",
+      "predictions_sha256": "39536ad21169b784f17aad53291f150bc1373907bef34adeb43a765fe0dc83eb",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2860332,
+          "sha256": "39536ad21169b784f17aad53291f150bc1373907bef34adeb43a765fe0dc83eb"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E29-probability",
+      "config_sha256": "28af6db120ca3058b1e572f40b9b9619636dd23ffd11dc24b97caed5ac39e243",
+      "experiment": "E29",
+      "task_count": 1152,
+      "gpu_hours": 0.012992889682451884,
+      "wall_seconds": 46.77440285682678,
+      "gpu": "NVIDIA H20",
+      "git_commit": "89c3bb8c9ddea47b634f51533b92ebd2e8999c0a",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "6b3e25e213ce6a448bcaaa218ed9512e84c710eac49149268e71c62aada51ef4",
+      "scores_sha256": "51d3894450a3ca1fc556c48c5deddd962a00a2592cabc42dd288bd04bd328c04",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 4944646,
+          "sha256": "51d3894450a3ca1fc556c48c5deddd962a00a2592cabc42dd288bd04bd328c04"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E30-nli-base",
+      "config_sha256": "e21ac8709403eb4080eb8a2a465f6a896282c8c80bebb5c6e4ff1c3bd422ee63",
+      "experiment": "E30",
+      "task_count": 576,
+      "gpu_hours": 0.014686406850814819,
+      "wall_seconds": 52.87106466293335,
+      "gpu": "NVIDIA H20",
+      "git_commit": "05d627f5cb091cc3a8701a7e919de4868f83955b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "a8378f9ad0c5be9060afab92f7cb41e1fac009e575178364f1e1d475be70d9e3",
+      "audit_sha256": "287aed72863c59720601a90c70eec8e409996567454637bff16ad165aa64ea36",
+      "predictions_sha256": "a83918aa61069e1541fe2d3b168d416cceb8fc4f43918ba5ed4751e373f07a40",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1278149,
+          "sha256": "a83918aa61069e1541fe2d3b168d416cceb8fc4f43918ba5ed4751e373f07a40"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E30-nli-second-repair",
+      "config_sha256": "701087438f346ea14e7a1978e9617f6c2b1cf13c19152e16b41119148228f024",
+      "experiment": "E30",
+      "task_count": 192,
+      "gpu_hours": 0.00708886636628045,
+      "wall_seconds": 25.51991891860962,
+      "gpu": "NVIDIA H20",
+      "git_commit": "05d627f5cb091cc3a8701a7e919de4868f83955b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "a8378f9ad0c5be9060afab92f7cb41e1fac009e575178364f1e1d475be70d9e3",
+      "audit_sha256": "287aed72863c59720601a90c70eec8e409996567454637bff16ad165aa64ea36",
+      "predictions_sha256": "7d0aa46b0249fb8ce4f414eabc987425d049d2a81fa68777111385b74604cb3a",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 426389,
+          "sha256": "7d0aa46b0249fb8ce4f414eabc987425d049d2a81fa68777111385b74604cb3a"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E30-nli-separate-repair",
+      "config_sha256": "9fd3db5415fc943d42b13e6d35e7b8ae702863ff257c4b1b1cf259c5b5380ef4",
+      "experiment": "E30",
+      "task_count": 192,
+      "gpu_hours": 0.007023290064599779,
+      "wall_seconds": 25.283844232559204,
+      "gpu": "NVIDIA H20",
+      "git_commit": "05d627f5cb091cc3a8701a7e919de4868f83955b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "7f2a544a1cc318e989b1785b82b07ba1110734c70595902774d58d302c640d72",
+      "audit_sha256": "6d9fd343f5927f760bfd650beb2c1221bd9f24a90428201e7020349816735089",
+      "predictions_sha256": "08f611aeb094f7bdf4a1ad97e681ea784bb2c80f6718ce36a7be56bcb123cf88",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 383000,
+          "sha256": "08f611aeb094f7bdf4a1ad97e681ea784bb2c80f6718ce36a7be56bcb123cf88"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E30-probability",
+      "config_sha256": "d6096131c94721937fc77926444d7b0b020b5d26589fb42fe7abfe66f9fa23c0",
+      "experiment": "E30",
+      "task_count": 768,
+      "gpu_hours": 0.009257365597618951,
+      "wall_seconds": 33.32651615142822,
+      "gpu": "NVIDIA H20",
+      "git_commit": "05d627f5cb091cc3a8701a7e919de4868f83955b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "b2f8a259696f862bbbbc12b06389a0403e1faeca65de1a0d2e38c40d9272bdb9",
+      "scores_sha256": "fa59f7c64e934c24578aa3b2e1fd7bee0e68b62e4af643dd8858dc3bee680cfe",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 3380723,
+          "sha256": "fa59f7c64e934c24578aa3b2e1fd7bee0e68b62e4af643dd8858dc3bee680cfe"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E31-nli-base",
+      "config_sha256": "c3edc28c301697fd5600a79f91f0034b029d04fb4e66aad0b9281892ab1081ff",
+      "experiment": "E31",
+      "task_count": 1152,
+      "gpu_hours": 0.02735702057679494,
+      "wall_seconds": 98.48527407646179,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6832ee3d8b076998056ea34183135d02b6a9edd1",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "5ebf7159b873f1c6399879a50d10a5bc45a47705e3fb4ac3c4d3b72dfe9f508b",
+      "audit_sha256": "1ee80996ea7e09d8595f870c1c91f9ba86c27ec734e726be612569c39b670510",
+      "predictions_sha256": "4949ddae7a4f79b689e8ff664e468dabd6b5774b550bd9f509b0bff49f8552a7",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 2840563,
+          "sha256": "4949ddae7a4f79b689e8ff664e468dabd6b5774b550bd9f509b0bff49f8552a7"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E31-nli-repair",
+      "config_sha256": "0e51e828ba00695fa0c289d6578ea95bbd8ce58eb62165edabfeb1c7095e85eb",
+      "experiment": "E31",
+      "task_count": 384,
+      "gpu_hours": 0.012288664314481947,
+      "wall_seconds": 44.23919153213501,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6832ee3d8b076998056ea34183135d02b6a9edd1",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "5ebf7159b873f1c6399879a50d10a5bc45a47705e3fb4ac3c4d3b72dfe9f508b",
+      "audit_sha256": "1ee80996ea7e09d8595f870c1c91f9ba86c27ec734e726be612569c39b670510",
+      "predictions_sha256": "30bfdeb45dc0466d2d3b803aad318bb55d772050f8e231dc5e8492a5d0c17270",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 947501,
+          "sha256": "30bfdeb45dc0466d2d3b803aad318bb55d772050f8e231dc5e8492a5d0c17270"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E31-probability",
+      "config_sha256": "d961e3ffdec036fbcccfc58b4be76c44fe852a9eba4937b37c6262961892e646",
+      "experiment": "E31",
+      "task_count": 1536,
+      "gpu_hours": 0.01666735390822093,
+      "wall_seconds": 60.00247406959534,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6832ee3d8b076998056ea34183135d02b6a9edd1",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "eb26a5d38e377f515bfea5440e156c9e9ca139d80a68ee4e2ab35601d73bdd21",
+      "scores_sha256": "0f08849ef1ba591b04e29ae639f89972c25456b39c13cc9f2c95af77518d4aae",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 7396292,
+          "sha256": "0f08849ef1ba591b04e29ae639f89972c25456b39c13cc9f2c95af77518d4aae"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E32-probability",
+      "config_sha256": "4a5de44e3cd0d79ad569361f80f60779ee0c47ca13d73c75fcf99f46feae0569",
+      "experiment": "E32",
+      "task_count": 960,
+      "gpu_hours": 0.011013914611604479,
+      "wall_seconds": 39.65009260177612,
+      "gpu": "NVIDIA H20",
+      "git_commit": "187a5d94a0669db3c552ae0b637094835f1c6a16",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "1f31d607a888b276555e7d4c614152854e48fef7d3019089a1a0bf31723b4621",
+      "scores_sha256": "6bddaf88c01d674caaae23bb1fd479bd3a9b6894e75a85d0c88d9b50abbb5c0f",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 4694299,
+          "sha256": "6bddaf88c01d674caaae23bb1fd479bd3a9b6894e75a85d0c88d9b50abbb5c0f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E33-probability",
+      "config_sha256": "62cdd9292c8434e83b0880d7975dc756999cd5899cc4d27cde0e295b85df64ee",
+      "experiment": "E33",
+      "task_count": 960,
+      "gpu_hours": 0.01093296057648129,
+      "wall_seconds": 39.35865807533264,
+      "gpu": "NVIDIA H20",
+      "git_commit": "4752d1eab3ebbdbb73112ac86a06bb1bb38fff7f",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "470250eb82f0a6801de4eef39fe7c9dae6a1b4f195b6046f97173b51bb7a5374",
+      "scores_sha256": "30a473dd916ed924a570ae07a969892b2b78f88be393286ea7ef7a67b2b1d9f0",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 5319738,
+          "sha256": "30a473dd916ed924a570ae07a969892b2b78f88be393286ea7ef7a67b2b1d9f0"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E34-nli-base",
+      "config_sha256": "df3095059f7e6b216b9af7afdcdeff39ca6f822f578152ff173d36d52ff11507",
+      "experiment": "E34",
+      "task_count": 2304,
+      "gpu_hours": 0.0744884204864502,
+      "wall_seconds": 268.1583137512207,
+      "gpu": "NVIDIA H20",
+      "git_commit": "51516dfdc88989c118ec2cb5bdbc694db511311b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "c5bf725831092ec3966c5a99c1e151a488400f12bcde086f47114c5debd5c44a",
+      "audit_sha256": "cd5005d9c3b0928c872770b45e4a417fd843371f81b62930d8d17c46befc5d1e",
+      "predictions_sha256": "e5cffb37ea9119ecad32332b384e0fa9161ca22c4f7373cf81853d9404d184e8",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 9256199,
+          "sha256": "e5cffb37ea9119ecad32332b384e0fa9161ca22c4f7373cf81853d9404d184e8"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E34-nli-repair",
+      "config_sha256": "9cdbd2f6971c3109f206cf2d05ddaa6f38167ed11cfe27cba711c79bc53c3d14",
+      "experiment": "E34",
+      "task_count": 768,
+      "gpu_hours": 0.028882850143644546,
+      "wall_seconds": 103.97826051712036,
+      "gpu": "NVIDIA H20",
+      "git_commit": "51516dfdc88989c118ec2cb5bdbc694db511311b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "c5bf725831092ec3966c5a99c1e151a488400f12bcde086f47114c5debd5c44a",
+      "audit_sha256": "cd5005d9c3b0928c872770b45e4a417fd843371f81b62930d8d17c46befc5d1e",
+      "predictions_sha256": "b7e7e71140109be49c77bbdee6dd74008297ab3a9cf39056ccf9f900293de469",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 3086804,
+          "sha256": "b7e7e71140109be49c77bbdee6dd74008297ab3a9cf39056ccf9f900293de469"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E34-probability",
+      "config_sha256": "6c3296146d7871bb9465bd8c9e6a50a658a1cb345f7f878bdaa76d7299a2454b",
+      "experiment": "E34",
+      "task_count": 1920,
+      "gpu_hours": 0.03379569503996107,
+      "wall_seconds": 121.66450214385986,
+      "gpu": "NVIDIA H20",
+      "git_commit": "51516dfdc88989c118ec2cb5bdbc694db511311b",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "7787a683b9ed937777093c111a7a1dc6968fd1d17057bd94071f2d481ddcfda2",
+      "scores_sha256": "28e9e218a728d989b17f4f57ff06c24bfd7d2cbc867761162cb5e55cd2ed22b1",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 11459790,
+          "sha256": "28e9e218a728d989b17f4f57ff06c24bfd7d2cbc867761162cb5e55cd2ed22b1"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E35-current-world",
+      "config_sha256": "df08f648a0631b90ab85197fc87c5731b10c461742b000c4f75ac7ec0b8ef53c",
+      "experiment": "E35",
+      "task_count": 2304,
+      "gpu_hours": 0.08437364293469322,
+      "wall_seconds": 303.74511456489563,
+      "gpu": "NVIDIA H20",
+      "git_commit": "5be38286decac95bdd52d52c3fcd04c9fa2455b1",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "c5bf725831092ec3966c5a99c1e151a488400f12bcde086f47114c5debd5c44a",
+      "audit_sha256": "cd5005d9c3b0928c872770b45e4a417fd843371f81b62930d8d17c46befc5d1e",
+      "predictions_sha256": "2a5e52559e30d5ff7ce40120d28114fd8876e439efca0e0c5500a8e32b5f1cd8",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 9276782,
+          "sha256": "2a5e52559e30d5ff7ce40120d28114fd8876e439efca0e0c5500a8e32b5f1cd8"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E36-nli-base",
+      "config_sha256": "21d916d38a501d3c5a27925c32e3eb6a55217ead76b95132f0cc8eddbcc1298a",
+      "experiment": "E36",
+      "task_count": 2016,
+      "gpu_hours": 0.04983589834637112,
+      "wall_seconds": 179.40923404693604,
+      "gpu": "NVIDIA H20",
+      "git_commit": "8ddda649edef8d00af712fd7fbf2b0cb503d8664",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "35e47d26a0e70ee71b55d392e5cd8ccbec2316e63bca7a8668077d4367dc7390",
+      "audit_sha256": "6e107def0a77e73007526655a6dfbb3e972d595a3ad764f999a0a02e1f4efbe8",
+      "predictions_sha256": "8d1376b65423fe22543fa7132f991d2ca68b70da9e03ff09821de647404a6264",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 4953082,
+          "sha256": "8d1376b65423fe22543fa7132f991d2ca68b70da9e03ff09821de647404a6264"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E36-nli-repair",
+      "config_sha256": "0a072b1ee4c6584fa0a0fb1017eaefb25d1493672c78229aa0a97d21f00ca717",
+      "experiment": "E36",
+      "task_count": 672,
+      "gpu_hours": 0.020648888481987846,
+      "wall_seconds": 74.33599853515625,
+      "gpu": "NVIDIA H20",
+      "git_commit": "8ddda649edef8d00af712fd7fbf2b0cb503d8664",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "data_sha256": "35e47d26a0e70ee71b55d392e5cd8ccbec2316e63bca7a8668077d4367dc7390",
+      "audit_sha256": "6e107def0a77e73007526655a6dfbb3e972d595a3ad764f999a0a02e1f4efbe8",
+      "predictions_sha256": "99e883fd123938ade36285f462e91a47ac297656b349584dec4b39a40ccdfe4c",
+      "outputs": [
+        {
+          "file": "predictions.jsonl",
+          "bytes": 1652192,
+          "sha256": "99e883fd123938ade36285f462e91a47ac297656b349584dec4b39a40ccdfe4c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E36-probability",
+      "config_sha256": "1b85b583e3afb9f5629f413c1863d7a671180f409bb94c06ef5aa9702adb3d10",
+      "experiment": "E36",
+      "task_count": 1920,
+      "gpu_hours": 0.02138474742571513,
+      "wall_seconds": 76.98509073257446,
+      "gpu": "NVIDIA H20",
+      "git_commit": "8ddda649edef8d00af712fd7fbf2b0cb503d8664",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "d3e53e24dd7aaa21b96a86efac3f86d8e3f448387a8a13a8bb8154d6b7844329",
+      "scores_sha256": "d7c0ea1a0653ba40e202cf6650034ccb92976f7a9d9243e2c91ac7c002c85cf6",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 9224838,
+          "sha256": "d7c0ea1a0653ba40e202cf6650034ccb92976f7a9d9243e2c91ac7c002c85cf6"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E37-current",
+      "config_sha256": "53c4d7953590ec463b6a487048205fb89932668b4e6ca7076b192581a895382c",
+      "experiment": "E37",
+      "query": "current",
+      "task_count": 432,
+      "gpu_hours": 0.017966900865236918,
+      "wall_seconds": 64.6808431148529,
+      "gpu": "NVIDIA H20",
+      "git_commit": "feace15f89f21be6bf2173f9ff31e63f86e593b5",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "10be834a113237c7aafcb2cb950af3cbf05bbccabdcc54bf025ce50ad504eaa6",
+      "audit_sha256": "021033c8c4443ee3b6f0d96e7432aa4a26f9fd0f00f176cedc5bfc3de4f95798",
+      "generations_sha256": "cec0ebe2e5532f46335a705d5a6a46fd5ef48dcdb440bc112c657281f1c22c7d",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 1216818,
+          "sha256": "cec0ebe2e5532f46335a705d5a6a46fd5ef48dcdb440bc112c657281f1c22c7d"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E37-initial",
+      "config_sha256": "915e68ecd929cdafb8c7c9692feebc072487e0c64dfc4790ae76e8d2f81b7197",
+      "experiment": "E37",
+      "query": "initial",
+      "task_count": 192,
+      "gpu_hours": 0.008262328306833903,
+      "wall_seconds": 29.74438190460205,
+      "gpu": "NVIDIA H20",
+      "git_commit": "feace15f89f21be6bf2173f9ff31e63f86e593b5",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "10be834a113237c7aafcb2cb950af3cbf05bbccabdcc54bf025ce50ad504eaa6",
+      "audit_sha256": "021033c8c4443ee3b6f0d96e7432aa4a26f9fd0f00f176cedc5bfc3de4f95798",
+      "generations_sha256": "1f8325867920ff94fee55bb4d42cd93db35512d00e948b4d09523f4582c8e628",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 576818,
+          "sha256": "1f8325867920ff94fee55bb4d42cd93db35512d00e948b4d09523f4582c8e628"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E37-new",
+      "config_sha256": "8c690061e6bcd44f214a1a412a45874ced176a029098128f082c799d3d7ab312",
+      "experiment": "E37",
+      "query": "new",
+      "task_count": 432,
+      "gpu_hours": 0.018540685309304132,
+      "wall_seconds": 66.74646711349487,
+      "gpu": "NVIDIA H20",
+      "git_commit": "feace15f89f21be6bf2173f9ff31e63f86e593b5",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "10be834a113237c7aafcb2cb950af3cbf05bbccabdcc54bf025ce50ad504eaa6",
+      "audit_sha256": "021033c8c4443ee3b6f0d96e7432aa4a26f9fd0f00f176cedc5bfc3de4f95798",
+      "generations_sha256": "46f2567ca7569c32490a35a954b4b3c7db2aa08d242424a4d63dceb7ac114148",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 1232643,
+          "sha256": "46f2567ca7569c32490a35a954b4b3c7db2aa08d242424a4d63dceb7ac114148"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E38-current",
+      "config_sha256": "b875739466a2fc1e2837e9492da6bd7d40a35edcb4db33b4f33c0ed90c682bfb",
+      "experiment": "E38",
+      "query": "current",
+      "task_count": 1152,
+      "gpu_hours": 0.0588449443048901,
+      "wall_seconds": 211.84179949760437,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ea98905772be9342d4b74a3cccb4bc3af875bdaa",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "5921f567e48a9f103a5f2455fb392bc3a5b9aa670ce611b357b227043df8cfdb",
+      "audit_sha256": "525d5bbb4956822ca943243e239271d74ca5f88641cb1fb4b447c9c764396ddd",
+      "generations_sha256": "962fa1942dc7b796680b948928ef610690cbc675567ff34e57acdcd7b87f774b",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 3104396,
+          "sha256": "962fa1942dc7b796680b948928ef610690cbc675567ff34e57acdcd7b87f774b"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E38-fair",
+      "config_sha256": "7899c8cef6f017d38cc941f12eac29c1fb1fe8e27af1c11e93c6f63e759282b3",
+      "experiment": "E38",
+      "query": "fair",
+      "task_count": 384,
+      "gpu_hours": 0.018715280493100485,
+      "wall_seconds": 67.37500977516174,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ea98905772be9342d4b74a3cccb4bc3af875bdaa",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "5921f567e48a9f103a5f2455fb392bc3a5b9aa670ce611b357b227043df8cfdb",
+      "audit_sha256": "525d5bbb4956822ca943243e239271d74ca5f88641cb1fb4b447c9c764396ddd",
+      "generations_sha256": "30e16f59f9e149968430cc5d11c76da7a3d3cfe609780ac9ced6043ab70e9cc3",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 1040882,
+          "sha256": "30e16f59f9e149968430cc5d11c76da7a3d3cfe609780ac9ced6043ab70e9cc3"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E38-probability",
+      "config_sha256": "ab61d58072755be3c2c46cf4f5f79368bccb1dca24b5a6d5091699926105a422",
+      "experiment": "E38",
+      "task_count": 3840,
+      "gpu_hours": 0.08049488630559709,
+      "wall_seconds": 289.78159070014954,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ea98905772be9342d4b74a3cccb4bc3af875bdaa",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "81c69a9baca92a9939ab2542a0832823e9c78047a8325cfb4a34bfa26af9edab",
+      "scores_sha256": "e04a9dda7de6db13561ff914ff0673bf656fcd269441cf1479f830d4436ee68b",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 25694901,
+          "sha256": "e04a9dda7de6db13561ff914ff0673bf656fcd269441cf1479f830d4436ee68b"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E39-current",
+      "config_sha256": "e266b33ff20b75d13a387531e505ffe51cc62e7ffa6c017aa883559e30720582",
+      "experiment": "E39",
+      "query": "current",
+      "task_count": 288,
+      "gpu_hours": 0.010036973158518474,
+      "wall_seconds": 36.133103370666504,
+      "gpu": "NVIDIA H20",
+      "git_commit": "47fc1fc6650b951d8ef57659fdba8e9cfa738eac",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "72599356f906860bbbdf28cb8468a83b646f71354a5280a261e3550760eeaa81",
+      "audit_sha256": "fc4d61eef604f5d6ad3829d30e2632826881501eeb57b33f94287c42f61bf346",
+      "generations_sha256": "b7fef412ca72d9d79a3897619a523dde06bdd610a850c193328fb42b159c43d5",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 683581,
+          "sha256": "b7fef412ca72d9d79a3897619a523dde06bdd610a850c193328fb42b159c43d5"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E39-probability",
+      "config_sha256": "3e8ab21d2d52069099b192b46fa4f5c7325dddcfe43e31df9ba399d747eef1ce",
+      "experiment": "E39",
+      "task_count": 2880,
+      "gpu_hours": 0.04406137890285916,
+      "wall_seconds": 158.62096405029297,
+      "gpu": "NVIDIA H20",
+      "git_commit": "47fc1fc6650b951d8ef57659fdba8e9cfa738eac",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "5a1a46c0e9e95a995c467a07a0b34971e47594bde97c891ceeec58eb13b04143",
+      "scores_sha256": "5f08961fc5dac49aa4d80f362e0b1563b4d52473915de0b661c022f12cc8da11",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 16172534,
+          "sha256": "5f08961fc5dac49aa4d80f362e0b1563b4d52473915de0b661c022f12cc8da11"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E40-current",
+      "config_sha256": "808de80a5271812eb5a05871ccaa44246f5d28c7fb9fa6be9eddd1ec961ef385",
+      "experiment": "E40",
+      "query": "current",
+      "task_count": 192,
+      "gpu_hours": 0.006952077150344849,
+      "wall_seconds": 25.027477741241455,
+      "gpu": "NVIDIA H20",
+      "git_commit": "f044bc71e778b3e8457a4dab78d5969943b00b8e",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "bba17fe99dce0ec42877b562adbbe099fff3a7986e0f8f4f6a0e65ac1880a66c",
+      "audit_sha256": "4e45393214b0524e728799d57fcf736256d3ee5e4d77ebdef2e2998de1267148",
+      "generations_sha256": "4f16eb8603f21586ff9b0926fe3629d69e3bf61f7b66daea331b4411a87ef3bb",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 452369,
+          "sha256": "4f16eb8603f21586ff9b0926fe3629d69e3bf61f7b66daea331b4411a87ef3bb"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E40-probability",
+      "config_sha256": "617ed32422f40b9a32dd5a6bd1e819e09d6876675b3c262d4f8a838be3e98738",
+      "experiment": "E40",
+      "task_count": 1920,
+      "gpu_hours": 0.029940719736946952,
+      "wall_seconds": 107.78659105300903,
+      "gpu": "NVIDIA H20",
+      "git_commit": "f044bc71e778b3e8457a4dab78d5969943b00b8e",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "22fb9618a1f70cc001f85955e13512bcd945fc19a6340e7d03cc45118f59502d",
+      "scores_sha256": "7a1632c766377531338eba68f6f8afd12715e51274f10b49935b4e61d4d76410",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 10568047,
+          "sha256": "7a1632c766377531338eba68f6f8afd12715e51274f10b49935b4e61d4d76410"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E41-availability",
+      "config_sha256": "4bb4f3dc97e41b7fe2ffbf1bb0204ac36514d220d2b29ef47e8e11beeed7c9a9",
+      "experiment": "E41",
+      "query": "availability",
+      "task_count": 576,
+      "gpu_hours": 0.039189481735229494,
+      "wall_seconds": 141.08213424682617,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2162f20b6964a81f5795f81c50708014da68bf2c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "4acb8ea4d4578f6844790de8ef862743bd3dbe770b81a1625a13ce444229e2d7",
+      "audit_sha256": "e35d1c37f343e689c97aeb7f1e9422421c61a3c3125787fdc00882a70765fbd2",
+      "generations_sha256": "13636777b65ff3cd3f795fdc09af54cc70d926ca56e36f59afd3876185111580",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 1913157,
+          "sha256": "13636777b65ff3cd3f795fdc09af54cc70d926ca56e36f59afd3876185111580"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E41-current",
+      "config_sha256": "ebdb5612740c7b5d66b4feb80fc50673c4e11003d7e1aa311ae5744abf9a36d9",
+      "experiment": "E41",
+      "query": "current",
+      "task_count": 576,
+      "gpu_hours": 0.023722430401378208,
+      "wall_seconds": 85.40074944496155,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2162f20b6964a81f5795f81c50708014da68bf2c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "4acb8ea4d4578f6844790de8ef862743bd3dbe770b81a1625a13ce444229e2d7",
+      "audit_sha256": "e35d1c37f343e689c97aeb7f1e9422421c61a3c3125787fdc00882a70765fbd2",
+      "generations_sha256": "2db58094af4a306334a2aaff2f291e2063b3a9db7ac4b229fe0488bd9d1a171a",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 1727884,
+          "sha256": "2db58094af4a306334a2aaff2f291e2063b3a9db7ac4b229fe0488bd9d1a171a"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E41-ended_and_ready",
+      "config_sha256": "d6af85c5a121236398eb22717ca805686611f6bbaaa0820916d910194ec108d6",
+      "experiment": "E41",
+      "task_count": 1536,
+      "gpu_hours": 0.03558778027693431,
+      "wall_seconds": 128.1160089969635,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2162f20b6964a81f5795f81c50708014da68bf2c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "9966fa7333b7a086b58ce97d66a97e5421011d8df446bcad98ac1e237721cb31",
+      "scores_sha256": "f64165973ec86e6272f9b05a19e15e8f6bd2cac12cbc322155c1dc39e9664855",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 9797871,
+          "sha256": "f64165973ec86e6272f9b05a19e15e8f6bd2cac12cbc322155c1dc39e9664855"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E41-ended_only",
+      "config_sha256": "9576b34cbe88a28ac77e43aa8470d05294fa59a977ed4397b380edef30103785",
+      "experiment": "E41",
+      "task_count": 1536,
+      "gpu_hours": 0.035055296619733174,
+      "wall_seconds": 126.19906783103943,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2162f20b6964a81f5795f81c50708014da68bf2c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "7cdef21401d8d782115429e953b1b15d83c2bdf82744fb64defe986a784dc6ca",
+      "scores_sha256": "fdc6aab03435cf27960545a4dc4c07151e156c404135ba8310c7806cf243240d",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 9788731,
+          "sha256": "fdc6aab03435cf27960545a4dc4c07151e156c404135ba8310c7806cf243240d"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E41-status_unknown",
+      "config_sha256": "5c6a9567a1900ee5136033af1b563cfd585c699698ca12f8ddb5a458c6ce04eb",
+      "experiment": "E41",
+      "task_count": 1536,
+      "gpu_hours": 0.03468932535913256,
+      "wall_seconds": 124.8815712928772,
+      "gpu": "NVIDIA H20",
+      "git_commit": "2162f20b6964a81f5795f81c50708014da68bf2c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "fcea10109f49c7acb7f15845d70ba9514d5f29a8ee02dafbd681e7bf3414f16a",
+      "scores_sha256": "f8e5695154f8c169621ce6a53d27ee1610e146821f624f94f9a848cedb99838c",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 9741930,
+          "sha256": "f8e5695154f8c169621ce6a53d27ee1610e146821f624f94f9a848cedb99838c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E42-base",
+      "config_sha256": "3d385053d67bfe16a8cca918fd9f4c185c3d6ecd6538032d7f8e0e6adba17e7a",
+      "experiment": "E42",
+      "task_count": 1920,
+      "gpu_hours": 0.04115180863274468,
+      "wall_seconds": 148.14651107788086,
+      "gpu": "NVIDIA H20",
+      "git_commit": "7f4b26414ac417901043b64befed53725a1e3686",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "22fb9618a1f70cc001f85955e13512bcd945fc19a6340e7d03cc45118f59502d",
+      "scores_sha256": "e7c29a14a2e83f0b8be54c8e3562686fc50af7b2677cc799b8559231f698a7fe",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 7918206,
+          "sha256": "e7c29a14a2e83f0b8be54c8e3562686fc50af7b2677cc799b8559231f698a7fe"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E42-scope",
+      "config_sha256": "f14a137df93d31d9f75ce1a8c8b799ac72df75509df69a23c9aff7d2606cf839",
+      "experiment": "E42",
+      "task_count": 1920,
+      "gpu_hours": 0.04420559379789565,
+      "wall_seconds": 159.14013767242432,
+      "gpu": "NVIDIA H20",
+      "git_commit": "7f4b26414ac417901043b64befed53725a1e3686",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "22fb9618a1f70cc001f85955e13512bcd945fc19a6340e7d03cc45118f59502d",
+      "scores_sha256": "1aff5014b7897eae6f88f422c0bcd512a532e1c39d3a7820928befc306a24326",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 7919955,
+          "sha256": "1aff5014b7897eae6f88f422c0bcd512a532e1c39d3a7820928befc306a24326"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E43-current",
+      "config_sha256": "f8deb1ae1b8d8c56e21d3cfbeacdca6729610727d6d15adc98dc0ca4335f203e",
+      "experiment": "E43",
+      "query": "current",
+      "task_count": 96,
+      "gpu_hours": 0.0035151305463578964,
+      "wall_seconds": 12.654469966888428,
+      "gpu": "NVIDIA H20",
+      "git_commit": "c72b1e5d5b82790dd160aa900311854ae396a62f",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "047612e7fcc9268fe4595d32e6302c10eb49dd987ac2e9b57749d5bfa36ac34f",
+      "audit_sha256": "9606a3499556f35eae6839b0ec11b323fd22e47d6c74c74746fa3900a75557dd",
+      "generations_sha256": "7e66d4703c907674b40c00b1eff3c0b24250472f7879bc79cde718ca02b72756",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 189776,
+          "sha256": "7e66d4703c907674b40c00b1eff3c0b24250472f7879bc79cde718ca02b72756"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E43-probability",
+      "config_sha256": "fd86b4904971302c9857875bcad4215192668315eaaa5dd62f8cd44f7f604cbb",
+      "experiment": "E43",
+      "task_count": 960,
+      "gpu_hours": 0.008013002011511061,
+      "wall_seconds": 28.84680724143982,
+      "gpu": "NVIDIA H20",
+      "git_commit": "c72b1e5d5b82790dd160aa900311854ae396a62f",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "be58136f381034728ae58b7035fa04f04f1ed28340d51c9aeb019132a5a6f5c0",
+      "scores_sha256": "b15a644248bcf3941cacf8e5e047088491701e3ae925c451e3d40697755b9201",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 4665190,
+          "sha256": "b15a644248bcf3941cacf8e5e047088491701e3ae925c451e3d40697755b9201"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E44-availability",
+      "config_sha256": "04e12cd161cce86fd15323331c81369eb69714a055e1c0f6ef705b304a02099a",
+      "experiment": "E44",
+      "query": "availability",
+      "task_count": 192,
+      "gpu_hours": 0.014471551842159695,
+      "wall_seconds": 52.0975866317749,
+      "gpu": "NVIDIA H20",
+      "git_commit": "a3ffaa5ff93c7981dda1bd4b5f9369e68e766e10",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "708442067e91356eee55ec96433e4091dd5f2927e6979a18910cea37344a1cfc",
+      "audit_sha256": "64eae76dcbda52a1333a738db6250709d41032ba7ffece8bd4831292edf1fdb6",
+      "generations_sha256": "e7aa9409a5db4d80a998cfcb81cd831538497e651be6ee4ed53cc911574d5872",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 601937,
+          "sha256": "e7aa9409a5db4d80a998cfcb81cd831538497e651be6ee4ed53cc911574d5872"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E44-current",
+      "config_sha256": "bb991b6f328e8774e615188956d92cdad4cae253d7e0c13779fe8f12c2f00d7f",
+      "experiment": "E44",
+      "query": "current",
+      "task_count": 384,
+      "gpu_hours": 0.01206685675515069,
+      "wall_seconds": 43.44068431854248,
+      "gpu": "NVIDIA H20",
+      "git_commit": "a3ffaa5ff93c7981dda1bd4b5f9369e68e766e10",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "708442067e91356eee55ec96433e4091dd5f2927e6979a18910cea37344a1cfc",
+      "audit_sha256": "64eae76dcbda52a1333a738db6250709d41032ba7ffece8bd4831292edf1fdb6",
+      "generations_sha256": "d7f4d93b958ce98eabcd492cc7ddde7b73db3433ee1e80a394e6d39d7c6892a0",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 992460,
+          "sha256": "d7f4d93b958ce98eabcd492cc7ddde7b73db3433ee1e80a394e6d39d7c6892a0"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E44-no_protocol",
+      "config_sha256": "8110290bd771a024db167ced638c7a5373e95f57c3bec43360eb6fbc0f441d7f",
+      "experiment": "E44",
+      "task_count": 1920,
+      "gpu_hours": 0.015617993738916185,
+      "wall_seconds": 56.22477746009827,
+      "gpu": "NVIDIA H20",
+      "git_commit": "a3ffaa5ff93c7981dda1bd4b5f9369e68e766e10",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "92ce3f4d5202a58aba88f0ce51567916a456a79f6b09aa895ad45b00bc0e66fc",
+      "scores_sha256": "8164b4773acd097faeedd301b5e6979fc4fcb18148fc01ccb2e9530d8efefd55",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 9870443,
+          "sha256": "8164b4773acd097faeedd301b5e6979fc4fcb18148fc01ccb2e9530d8efefd55"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E44-ready",
+      "config_sha256": "6790f200c8621be485b08e4d032317ab714fcc4f34d7f3c8f0fbc5a203707a35",
+      "experiment": "E44",
+      "task_count": 1536,
+      "gpu_hours": 0.025258317589759827,
+      "wall_seconds": 90.92994332313538,
+      "gpu": "NVIDIA H20",
+      "git_commit": "a3ffaa5ff93c7981dda1bd4b5f9369e68e766e10",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "7e229fda8a6f0f3ca2fd3909ce757238662dbd242f4fd5414e2eae681170ad30",
+      "scores_sha256": "8cfab760259d65f9892662fcfb6db822eada9811a3994bc754bcb2e23e09a027",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 9565797,
+          "sha256": "8cfab760259d65f9892662fcfb6db822eada9811a3994bc754bcb2e23e09a027"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E45-current",
+      "config_sha256": "2e0e678e911d62dc65797c52537b42266c747d15feb2110f173854e0c276c993",
+      "experiment": "E45",
+      "query": "current",
+      "task_count": 192,
+      "gpu_hours": 0.006724973056051466,
+      "wall_seconds": 24.20990300178528,
+      "gpu": "NVIDIA H20",
+      "git_commit": "57f4f9e88438ba67f20144f7cb2718b7f178e772",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "e96ff176368682c3f773da207ec974c085a0dcfa75ad8aa027b760f894274620",
+      "audit_sha256": "8eae5fb0b61490fa1bde02f71789344442d1f8fb2a612c96b2f3a2b763dd8de0",
+      "generations_sha256": "be4c96f62fdb8611d05fa92b11599d561249349375c6d081d02dd1dd1d06e476",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 446777,
+          "sha256": "be4c96f62fdb8611d05fa92b11599d561249349375c6d081d02dd1dd1d06e476"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E45-probability",
+      "config_sha256": "e53e4eafb46b29f5507cc6dcb819b7d0fe6ad444d3e2e22359129a373aff78a9",
+      "experiment": "E45",
+      "task_count": 1920,
+      "gpu_hours": 0.029126685129271614,
+      "wall_seconds": 104.85606646537781,
+      "gpu": "NVIDIA H20",
+      "git_commit": "57f4f9e88438ba67f20144f7cb2718b7f178e772",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "ef848d63d5c6bfc4c18fa40569b1de7b570c8156503d29a2867f42ef6da8bf19",
+      "scores_sha256": "2d8cb25f737f75d67f52da3e3ce98a0808a70f6235e6891b13adc7029244ecb2",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 11298521,
+          "sha256": "2d8cb25f737f75d67f52da3e3ce98a0808a70f6235e6891b13adc7029244ecb2"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E46-I0E0",
+      "config_sha256": "49386a1273d3e23ec9792f03c78bdcb21afb92f71a38a01f7dd74b22785082fe",
+      "experiment": "E46",
+      "task_count": 2304,
+      "gpu_hours": 0.01940414249897003,
+      "wall_seconds": 69.85491299629211,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ade1654bd7d6353bb680a67a2c7b47261f377976",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "8614623ec03eeb7fc016999f6bf009c5d0d84cdc646ebd451478a9eb22fd27fa",
+      "scores_sha256": "33fe0fe725efcd064506a2513f18eeb676bdc2d167b3f7e1e80be90f83d54a92",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 11704614,
+          "sha256": "33fe0fe725efcd064506a2513f18eeb676bdc2d167b3f7e1e80be90f83d54a92"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E46-I0E1",
+      "config_sha256": "ddfbc5795d892cbd309fb313fcddde8a87a1741191b2582e9dc193e07974fb67",
+      "experiment": "E46",
+      "task_count": 2304,
+      "gpu_hours": 0.02421009805467394,
+      "wall_seconds": 87.15635299682617,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ade1654bd7d6353bb680a67a2c7b47261f377976",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "b83d85f40f10bf0e8a306158c82531ffa887d00b0966b3043dbf28dccf351dbe",
+      "scores_sha256": "2f2eb46f598625602f9e6e27ea99540159d31f0fc49ed60647f2039e692ba56d",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 12229242,
+          "sha256": "2f2eb46f598625602f9e6e27ea99540159d31f0fc49ed60647f2039e692ba56d"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E46-I1E0",
+      "config_sha256": "3d62d2f24bcb4a2c24dcad6c45f206a02cd02505ae5354d9d0d5a300818d5254",
+      "experiment": "E46",
+      "task_count": 2304,
+      "gpu_hours": 0.028331637051370408,
+      "wall_seconds": 101.99389338493347,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ade1654bd7d6353bb680a67a2c7b47261f377976",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "66c18012226ee3517176d45b8d70fb725e9a0b8f4f248a710230a05c6880e972",
+      "scores_sha256": "543dbee8b31024a39eb2d033ea0293a03da7fdcac9b98f69e2034fe80b79c060",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 12656374,
+          "sha256": "543dbee8b31024a39eb2d033ea0293a03da7fdcac9b98f69e2034fe80b79c060"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E46-I1E1",
+      "config_sha256": "6676feb86d4a5dc3781466c3f6d28fb2cc6a13398e710ed70b1b3739b413bb85",
+      "experiment": "E46",
+      "task_count": 2304,
+      "gpu_hours": 0.03465330488151974,
+      "wall_seconds": 124.75189757347107,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ade1654bd7d6353bb680a67a2c7b47261f377976",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "ef51554bcccde179c186d50d61a76b10fb773f8679e044afb934c282fbcb76b2",
+      "scores_sha256": "fe2254bb8fd98e73e0733ad8571be1ba4b7a90eb44dcdced24827e47e756393c",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 13222626,
+          "sha256": "fe2254bb8fd98e73e0733ad8571be1ba4b7a90eb44dcdced24827e47e756393c"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E46-current",
+      "config_sha256": "e833e2b1cf0bdea9fe3188f528bb339a963d4058a946dc4bab1664e58d6077d7",
+      "experiment": "E46",
+      "query": "current",
+      "task_count": 1536,
+      "gpu_hours": 0.034768071505758495,
+      "wall_seconds": 125.16505742073059,
+      "gpu": "NVIDIA H20",
+      "git_commit": "ade1654bd7d6353bb680a67a2c7b47261f377976",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "24e0b62e2c40879ec75aa16445192cb21809ba112aa1963c43affeadfb6ae396",
+      "audit_sha256": "80313991e4674ceeb61c2b0f4927644ba6e17c2fa8ad8bf250508580b29ddb8b",
+      "generations_sha256": "288bd0e4df73e21527a2c58649661c6d963e4ae9100713e7b2b4f5c4a45bc09a",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 3459707,
+          "sha256": "288bd0e4df73e21527a2c58649661c6d963e4ae9100713e7b2b4f5c4a45bc09a"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E47-absent",
+      "config_sha256": "f31e5721654b477601e6a747c5952e2f44be61c42e415316de58d7121cb3b35e",
+      "experiment": "E47",
+      "task_count": 2304,
+      "gpu_hours": 0.021384220520655313,
+      "wall_seconds": 76.98319387435913,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6e880f7bd3920fd123bccf42ef4d73cd4662f5f9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "9eda885516227de656d3227e748b94893a7f7842ced291d8c194c40c6f88ef9d",
+      "scores_sha256": "a31ce4c02e0a88c36fffb18744d2f92904762e500af6b6811742dde9db9e4ee8",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 11497546,
+          "sha256": "a31ce4c02e0a88c36fffb18744d2f92904762e500af6b6811742dde9db9e4ee8"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E47-asserted",
+      "config_sha256": "685d7fd78cfadfcb94e1a1420bd05d0483ffc961d4f5a41b51dcbcb48493d687",
+      "experiment": "E47",
+      "task_count": 2304,
+      "gpu_hours": 0.03159289883242713,
+      "wall_seconds": 113.73443579673767,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6e880f7bd3920fd123bccf42ef4d73cd4662f5f9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "388c43f34bf93667a270f78557b6a50c597073250688813a4e1c08f53fb5c879",
+      "scores_sha256": "41f7fd020a09c4406eb9fcddbb171dbf495a172dea0e557e122cfc6374ae8101",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 12670328,
+          "sha256": "41f7fd020a09c4406eb9fcddbb171dbf495a172dea0e557e122cfc6374ae8101"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E47-current",
+      "config_sha256": "8592b25149e1d359cfd7ff390c742900060098f51930ab5a4121b114eac84f74",
+      "experiment": "E47",
+      "query": "current",
+      "task_count": 1536,
+      "gpu_hours": 0.03751536991861131,
+      "wall_seconds": 135.05533170700073,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6e880f7bd3920fd123bccf42ef4d73cd4662f5f9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "66db95d39f1cd2ff192c2437b9988f1706e64f2d6e6fb23fe59bbc776ac515bd",
+      "audit_sha256": "799d4d8dd9fb9bec39c64dddd40a542f7f57f5f4c91e10dc9642497c6c76c5d2",
+      "generations_sha256": "30f22859280750bb43c60f5ccfc561ff9540493a05cbafa2ec0d47edfba414ac",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 3663146,
+          "sha256": "30f22859280750bb43c60f5ccfc561ff9540493a05cbafa2ec0d47edfba414ac"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E47-identity_status",
+      "config_sha256": "b924b949115bbd86ebc398a4cc1598d888db6498ee864f8026dcb47c638769d1",
+      "experiment": "E47",
+      "query": "identity_status",
+      "task_count": 384,
+      "gpu_hours": 0.015843685931629603,
+      "wall_seconds": 57.03726935386658,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6e880f7bd3920fd123bccf42ef4d73cd4662f5f9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "66db95d39f1cd2ff192c2437b9988f1706e64f2d6e6fb23fe59bbc776ac515bd",
+      "audit_sha256": "799d4d8dd9fb9bec39c64dddd40a542f7f57f5f4c91e10dc9642497c6c76c5d2",
+      "generations_sha256": "2a800ed7efcbd33d87b5a7703204ab11ee944982a922ac6d4c1f8abd5fd17128",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 965685,
+          "sha256": "2a800ed7efcbd33d87b5a7703204ab11ee944982a922ac6d4c1f8abd5fd17128"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E47-name_inventory",
+      "config_sha256": "3476d13ed90787f45ecc17a944f5cc2dc39e37c6ce669dca50cb51a7a85cdd14",
+      "experiment": "E47",
+      "task_count": 2304,
+      "gpu_hours": 0.029352480702930027,
+      "wall_seconds": 105.6689305305481,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6e880f7bd3920fd123bccf42ef4d73cd4662f5f9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "3e206175f2a45e0ecb146fcc30597884264f9afe15b553f6107c203884b2bd8d",
+      "scores_sha256": "8bf3c7511b89f0e5eec108af8d9d084f25cbd70d5f7439276bb619ef868bd6d2",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 12352684,
+          "sha256": "8bf3c7511b89f0e5eec108af8d9d084f25cbd70d5f7439276bb619ef868bd6d2"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E47-quoted_unverified",
+      "config_sha256": "3fac97e66adb79e6866b0054e369d10a96cb028041fa335b7ca0bb0f5cacf7ad",
+      "experiment": "E47",
+      "task_count": 2304,
+      "gpu_hours": 0.03761652343802982,
+      "wall_seconds": 135.41948437690735,
+      "gpu": "NVIDIA H20",
+      "git_commit": "6e880f7bd3920fd123bccf42ef4d73cd4662f5f9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "52d6649aa18fcf5edeb626c72503916fd98824ab0b8fee35d712bb62d1fb447d",
+      "scores_sha256": "b54b17e4dad5ce4003e7260534b63776a530583060392f5100d9539ae65f90ca",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 13239031,
+          "sha256": "b54b17e4dad5ce4003e7260534b63776a530583060392f5100d9539ae65f90ca"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E48-alias",
+      "config_sha256": "ac11d28d84948080c34da72075b48ad6507e110caf8f389cfd1dd11495aeb64c",
+      "experiment": "E48",
+      "query": "alias",
+      "task_count": 96,
+      "gpu_hours": 0.0046584844589233395,
+      "wall_seconds": 16.770544052124023,
+      "gpu": "NVIDIA H20",
+      "git_commit": "936ac2b64b5af21dce7c448fd9d344c6a0df9ca9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "aa2278974e25edc8ff1644cb1dff50221e74acbd16231be24ea27111856c6b82",
+      "audit_sha256": "3d538df349ccc166b7049b911b92c9b5ff95b593b76dd05d99d0db4ae5552e78",
+      "generations_sha256": "79bc05dd2bf4c20adb7311953f955da24d8c34c6c24920c99df28ed323dbf15d",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 195967,
+          "sha256": "79bc05dd2bf4c20adb7311953f955da24d8c34c6c24920c99df28ed323dbf15d"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E48-current",
+      "config_sha256": "c7790c28923da95c2ac29b9429b792e7ab2e7a028dcdb2c87d37ed5a972c10c5",
+      "experiment": "E48",
+      "query": "current",
+      "task_count": 768,
+      "gpu_hours": 0.019724576075871785,
+      "wall_seconds": 71.00847387313843,
+      "gpu": "NVIDIA H20",
+      "git_commit": "936ac2b64b5af21dce7c448fd9d344c6a0df9ca9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 48,
+      "data_sha256": "aa2278974e25edc8ff1644cb1dff50221e74acbd16231be24ea27111856c6b82",
+      "audit_sha256": "3d538df349ccc166b7049b911b92c9b5ff95b593b76dd05d99d0db4ae5552e78",
+      "generations_sha256": "7d87ecb66168b7f20758e68428fe49f467906f94c4cb8f63a916fd7439dc6e23",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 1650047,
+          "sha256": "7d87ecb66168b7f20758e68428fe49f467906f94c4cb8f63a916fd7439dc6e23"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E48-description-to-description",
+      "config_sha256": "8c947092611dd163310be46a91579c8868b4afd92887bac5882556af290c9719",
+      "experiment": "E48",
+      "task_count": 2304,
+      "gpu_hours": 0.028746403919325935,
+      "wall_seconds": 103.48705410957336,
+      "gpu": "NVIDIA H20",
+      "git_commit": "936ac2b64b5af21dce7c448fd9d344c6a0df9ca9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "18690b1d5bb269abbe06b5e3bfeef96af979404a4fa315d0c913319a08e07d65",
+      "scores_sha256": "15c9d8f7fc242f767d5cdf5dcbbd6a2076ea3fec5383c49c6853b30d057607da",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 12215195,
+          "sha256": "15c9d8f7fc242f767d5cdf5dcbbd6a2076ea3fec5383c49c6853b30d057607da"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E48-description-to-name",
+      "config_sha256": "d647000af10400c031d40d9343d59f1b06f25ecb4fcb853666731ce49166ed7b",
+      "experiment": "E48",
+      "task_count": 2304,
+      "gpu_hours": 0.028378067678875393,
+      "wall_seconds": 102.16104364395142,
+      "gpu": "NVIDIA H20",
+      "git_commit": "936ac2b64b5af21dce7c448fd9d344c6a0df9ca9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "f1ccb058faca519bfdd1f1a33de1a97e36aa56c4c14a88653d016fed7440254e",
+      "scores_sha256": "e5b7d7d6abd796876dd98cc4b671a666d6ef75825d3d37a050e044ce023313c6",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 12089848,
+          "sha256": "e5b7d7d6abd796876dd98cc4b671a666d6ef75825d3d37a050e044ce023313c6"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E48-name-to-description",
+      "config_sha256": "29e962bb960488a83c5aaca40e78eb8189183cc9397bdca4ad817123e46306d0",
+      "experiment": "E48",
+      "task_count": 2304,
+      "gpu_hours": 0.02815816389189826,
+      "wall_seconds": 101.36939001083374,
+      "gpu": "NVIDIA H20",
+      "git_commit": "936ac2b64b5af21dce7c448fd9d344c6a0df9ca9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "329db7628f86ec6593a0a841598447c3e0f885c26d1481a11e0c6b145ade9343",
+      "scores_sha256": "0c4e2409fd7c2ecad07f14e384ef2b4770b5453bbc225b02e96c09858f37e7d7",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 12057227,
+          "sha256": "0c4e2409fd7c2ecad07f14e384ef2b4770b5453bbc225b02e96c09858f37e7d7"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E48-name-to-name",
+      "config_sha256": "dad3f8f5c273fc9623f6d65f5643b77e53432d7c0a5946b94b6f195afcb5f9b6",
+      "experiment": "E48",
+      "task_count": 2304,
+      "gpu_hours": 0.027933522529072233,
+      "wall_seconds": 100.56068110466003,
+      "gpu": "NVIDIA H20",
+      "git_commit": "936ac2b64b5af21dce7c448fd9d344c6a0df9ca9",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 4,
+      "data_sha256": "840bdc1cf8364097eb5fb7e28f3b6b524b32a01fa342ceee24929fe340bba1a0",
+      "scores_sha256": "92b7bbd322db907b0efb8efa5c8f44db71ee7e038f3b6a6f34e981cf58731509",
+      "outputs": [
+        {
+          "file": "scores.jsonl",
+          "bytes": 11932667,
+          "sha256": "92b7bbd322db907b0efb8efa5c8f44db71ee7e038f3b6a6f34e981cf58731509"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E49-recap-0",
+      "config_sha256": "6bcd6eda5d2bb651789732ce1db409d24bf6674334038452dedcd2a012e854d1",
+      "experiment": "E49",
+      "query": "recap",
+      "task_count": 768,
+      "gpu_hours": 0.06147032095326318,
+      "wall_seconds": 221.29315543174744,
+      "gpu": "NVIDIA H20",
+      "git_commit": "b8086c5414834c65d0c52569e77f9ea7c5674f16",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "2bce2f37b7738c09726513c66fd08e2ca93f7be1f625c9fd9517f203f08c51eb",
+      "audit_sha256": "26e76104b0da9420375d77c76f9ca45a4288cf7342eb44e0a220c83f98dca853",
+      "generations_sha256": "c94f21e2837cda863b51a2130769bc0bbb8dcaf8122cec27cfa0ef9083f63e20",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2417228,
+          "sha256": "c94f21e2837cda863b51a2130769bc0bbb8dcaf8122cec27cfa0ef9083f63e20"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E49-recap-1",
+      "config_sha256": "607f4bb10c77785fc8f22bc340f695317d822d373034d78dc5b942a0cfb8708c",
+      "experiment": "E49",
+      "query": "recap",
+      "task_count": 768,
+      "gpu_hours": 0.0657215701871448,
+      "wall_seconds": 236.5976526737213,
+      "gpu": "NVIDIA H20",
+      "git_commit": "b8086c5414834c65d0c52569e77f9ea7c5674f16",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "2bce2f37b7738c09726513c66fd08e2ca93f7be1f625c9fd9517f203f08c51eb",
+      "audit_sha256": "26e76104b0da9420375d77c76f9ca45a4288cf7342eb44e0a220c83f98dca853",
+      "generations_sha256": "546f70de58dd23d993adafee0e2e5237561567719e24d0c4f19f265769db9e30",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2414822,
+          "sha256": "546f70de58dd23d993adafee0e2e5237561567719e24d0c4f19f265769db9e30"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E49-second-0",
+      "config_sha256": "75aeb6d6a4440a77b3decb8f1ab540501d0b869015558eb421c552602ed93c28",
+      "experiment": "E49",
+      "query": "second",
+      "task_count": 768,
+      "gpu_hours": 0.04480601323975457,
+      "wall_seconds": 161.30164766311646,
+      "gpu": "NVIDIA H20",
+      "git_commit": "b8086c5414834c65d0c52569e77f9ea7c5674f16",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "2bce2f37b7738c09726513c66fd08e2ca93f7be1f625c9fd9517f203f08c51eb",
+      "audit_sha256": "26e76104b0da9420375d77c76f9ca45a4288cf7342eb44e0a220c83f98dca853",
+      "generations_sha256": "8ee2bef8d2dd4b7afbe28a00f893276e5d55c7d81c69fb4140e5bbbd4467772d",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2288253,
+          "sha256": "8ee2bef8d2dd4b7afbe28a00f893276e5d55c7d81c69fb4140e5bbbd4467772d"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E49-second-1",
+      "config_sha256": "47229fa5c6ee0c434c34b0a05419dca70c32f26a98b43ddded70322464391be3",
+      "experiment": "E49",
+      "query": "second",
+      "task_count": 768,
+      "gpu_hours": 0.04465619729624854,
+      "wall_seconds": 160.76231026649475,
+      "gpu": "NVIDIA H20",
+      "git_commit": "b8086c5414834c65d0c52569e77f9ea7c5674f16",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "2bce2f37b7738c09726513c66fd08e2ca93f7be1f625c9fd9517f203f08c51eb",
+      "audit_sha256": "26e76104b0da9420375d77c76f9ca45a4288cf7342eb44e0a220c83f98dca853",
+      "generations_sha256": "cd5f6aa3166022fe7421d86ebcf0c4bc0ed4a97fd12d52b322c9d158890bbe38",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2281732,
+          "sha256": "cd5f6aa3166022fe7421d86ebcf0c4bc0ed4a97fd12d52b322c9d158890bbe38"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E50-anchored_recap-0",
+      "config_sha256": "c563eef2cc861085fe812e7786b923ddebbb4bbdfd79789d3d7d6b6a88eba312",
+      "experiment": "E50",
+      "query": "anchored_recap",
+      "task_count": 768,
+      "gpu_hours": 0.04631007293860118,
+      "wall_seconds": 166.71626257896423,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e916c5eb2971c0e5fe7acaf9cead393c4136b23c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "3bb843e151776bafad1d2cd978c86176ef26d5a9286bb7d383787dfe768442f3",
+      "audit_sha256": "61730dfe9ff1bd870903824dab74ede9dcae2d127463784a50106e8fc5ff4450",
+      "generations_sha256": "d6b3c431b1bd4821cea695de58686c711967632106a1369525ebb98358e47db8",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2217574,
+          "sha256": "d6b3c431b1bd4821cea695de58686c711967632106a1369525ebb98358e47db8"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E50-anchored_recap-1",
+      "config_sha256": "0848d25d7cc2bc12a5b63546b7db2d837e9a525b9b77a9f231ff3bacb40e92f3",
+      "experiment": "E50",
+      "query": "anchored_recap",
+      "task_count": 768,
+      "gpu_hours": 0.04321188304159376,
+      "wall_seconds": 155.56277894973755,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e916c5eb2971c0e5fe7acaf9cead393c4136b23c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "3bb843e151776bafad1d2cd978c86176ef26d5a9286bb7d383787dfe768442f3",
+      "audit_sha256": "61730dfe9ff1bd870903824dab74ede9dcae2d127463784a50106e8fc5ff4450",
+      "generations_sha256": "d3bfc75ab9043eac62e6c0b905dac100c07aca15ca2d3020dade32daf32c101f",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2201717,
+          "sha256": "d3bfc75ab9043eac62e6c0b905dac100c07aca15ca2d3020dade32daf32c101f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E50-pair_names-0",
+      "config_sha256": "e38dbd33a210ba00583a242154b57262fd221b483f805a9b004c4b498937e3b0",
+      "experiment": "E50",
+      "query": "pair_names",
+      "task_count": 768,
+      "gpu_hours": 0.041091782384448584,
+      "wall_seconds": 147.9304165840149,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e916c5eb2971c0e5fe7acaf9cead393c4136b23c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "3bb843e151776bafad1d2cd978c86176ef26d5a9286bb7d383787dfe768442f3",
+      "audit_sha256": "61730dfe9ff1bd870903824dab74ede9dcae2d127463784a50106e8fc5ff4450",
+      "generations_sha256": "246da62dfbdbb22f7935e878eb124177cdce59092fa926b1f6833e19ff801dac",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2100690,
+          "sha256": "246da62dfbdbb22f7935e878eb124177cdce59092fa926b1f6833e19ff801dac"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E50-pair_names-1",
+      "config_sha256": "22337fd1a25efdbfe5ffc27fa3b7e1522741b7f1671cdeac11e9a1c144ee913d",
+      "experiment": "E50",
+      "query": "pair_names",
+      "task_count": 768,
+      "gpu_hours": 0.03743329187234243,
+      "wall_seconds": 134.75985074043274,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e916c5eb2971c0e5fe7acaf9cead393c4136b23c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "3bb843e151776bafad1d2cd978c86176ef26d5a9286bb7d383787dfe768442f3",
+      "audit_sha256": "61730dfe9ff1bd870903824dab74ede9dcae2d127463784a50106e8fc5ff4450",
+      "generations_sha256": "1e23e70047fe6067358d731f9f1f365d0815d612e32431e7df174252348843cf",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2102908,
+          "sha256": "1e23e70047fe6067358d731f9f1f365d0815d612e32431e7df174252348843cf"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E50-unanchored_recap-0",
+      "config_sha256": "199c6ad06b9a8d20751dd33f4b709d0abe37daaeb403eaa57d6faf7017d729f5",
+      "experiment": "E50",
+      "query": "unanchored_recap",
+      "task_count": 768,
+      "gpu_hours": 0.05605493903160095,
+      "wall_seconds": 201.79778051376343,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e916c5eb2971c0e5fe7acaf9cead393c4136b23c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "3bb843e151776bafad1d2cd978c86176ef26d5a9286bb7d383787dfe768442f3",
+      "audit_sha256": "61730dfe9ff1bd870903824dab74ede9dcae2d127463784a50106e8fc5ff4450",
+      "generations_sha256": "bf3dbbd6244b8a25c528f77a5db6632c5d1b671b788895a96b1c39d375df29d4",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2249808,
+          "sha256": "bf3dbbd6244b8a25c528f77a5db6632c5d1b671b788895a96b1c39d375df29d4"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E50-unanchored_recap-1",
+      "config_sha256": "d2885e5b9a61875219a310a1a2efc42d2562039c0162aa5be6d17b8a2c778cd1",
+      "experiment": "E50",
+      "query": "unanchored_recap",
+      "task_count": 768,
+      "gpu_hours": 0.05234801491101583,
+      "wall_seconds": 188.45285367965698,
+      "gpu": "NVIDIA H20",
+      "git_commit": "e916c5eb2971c0e5fe7acaf9cead393c4136b23c",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "3bb843e151776bafad1d2cd978c86176ef26d5a9286bb7d383787dfe768442f3",
+      "audit_sha256": "61730dfe9ff1bd870903824dab74ede9dcae2d127463784a50106e8fc5ff4450",
+      "generations_sha256": "4769bbbab4425bb14777d856b92529d28331af19aa80c705acb8602417ea0b82",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2216844,
+          "sha256": "4769bbbab4425bb14777d856b92529d28331af19aa80c705acb8602417ea0b82"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E51-distinct_name_count-0",
+      "config_sha256": "aaf5bf358799b02afe9d78c1306362b1990770470a1787bd565e5954aa578157",
+      "experiment": "E51",
+      "query": "distinct_name_count",
+      "task_count": 768,
+      "gpu_hours": 0.06316633654965295,
+      "wall_seconds": 227.3988115787506,
+      "gpu": "NVIDIA H20",
+      "git_commit": "41a60c1be6a8b4a1c7c7599e4b076ac1a32c1615",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "06ba3860fb93f9efb75bbec514ad253f21f3188c9bf93060b9625b53fa09a168",
+      "audit_sha256": "233052e26ac0083955369c5d7f8fe423bb13882759e189239b48c1b99e432209",
+      "generations_sha256": "569c3ba6798e2a954bc933c2c6cdc92ab6da79597f0aa2a25557b19c10b00e1d",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2309757,
+          "sha256": "569c3ba6798e2a954bc933c2c6cdc92ab6da79597f0aa2a25557b19c10b00e1d"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E51-distinct_name_count-1",
+      "config_sha256": "383f5f5e5dc9fe21523d2614547f49beb811bc3ec9a9657d0e27236c0f891c3a",
+      "experiment": "E51",
+      "query": "distinct_name_count",
+      "task_count": 768,
+      "gpu_hours": 0.07436705516444313,
+      "wall_seconds": 267.72139859199524,
+      "gpu": "NVIDIA H20",
+      "git_commit": "41a60c1be6a8b4a1c7c7599e4b076ac1a32c1615",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "06ba3860fb93f9efb75bbec514ad253f21f3188c9bf93060b9625b53fa09a168",
+      "audit_sha256": "233052e26ac0083955369c5d7f8fe423bb13882759e189239b48c1b99e432209",
+      "generations_sha256": "25b20334d0d6f1d4689271c2b69ff500712e6117922f331abebbd5e344c74ed4",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2352800,
+          "sha256": "25b20334d0d6f1d4689271c2b69ff500712e6117922f331abebbd5e344c74ed4"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E51-keyed_roles-0",
+      "config_sha256": "d021e0d3384b74d46949630b59cf29a39e51bce4e460c224b2ad34a131469f66",
+      "experiment": "E51",
+      "query": "keyed_roles",
+      "task_count": 768,
+      "gpu_hours": 0.06166024009386698,
+      "wall_seconds": 221.97686433792114,
+      "gpu": "NVIDIA H20",
+      "git_commit": "41a60c1be6a8b4a1c7c7599e4b076ac1a32c1615",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "06ba3860fb93f9efb75bbec514ad253f21f3188c9bf93060b9625b53fa09a168",
+      "audit_sha256": "233052e26ac0083955369c5d7f8fe423bb13882759e189239b48c1b99e432209",
+      "generations_sha256": "e33d7c6236c96ce059278e211ff962d7af3a36adc90341ca931a84835523a3a9",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2231839,
+          "sha256": "e33d7c6236c96ce059278e211ff962d7af3a36adc90341ca931a84835523a3a9"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E51-keyed_roles-1",
+      "config_sha256": "1e2e84f27334da60051aa47163eab781900826a402a6b07f46b8c502621c65a4",
+      "experiment": "E51",
+      "query": "keyed_roles",
+      "task_count": 768,
+      "gpu_hours": 0.060521294143464834,
+      "wall_seconds": 217.8766589164734,
+      "gpu": "NVIDIA H20",
+      "git_commit": "41a60c1be6a8b4a1c7c7599e4b076ac1a32c1615",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "06ba3860fb93f9efb75bbec514ad253f21f3188c9bf93060b9625b53fa09a168",
+      "audit_sha256": "233052e26ac0083955369c5d7f8fe423bb13882759e189239b48c1b99e432209",
+      "generations_sha256": "246e809969a4128076c73f03183cee6c6258dd585811625533f9b58baa30a16f",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2231152,
+          "sha256": "246e809969a4128076c73f03183cee6c6258dd585811625533f9b58baa30a16f"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E51-neutral_pair-0",
+      "config_sha256": "de19c8b824155c5b529d366ff8458418e9c267f47549d80441a152ac12b8a6b6",
+      "experiment": "E51",
+      "query": "neutral_pair",
+      "task_count": 768,
+      "gpu_hours": 0.029581620229615104,
+      "wall_seconds": 106.49383282661438,
+      "gpu": "NVIDIA H20",
+      "git_commit": "41a60c1be6a8b4a1c7c7599e4b076ac1a32c1615",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 0,
+      "data_sha256": "06ba3860fb93f9efb75bbec514ad253f21f3188c9bf93060b9625b53fa09a168",
+      "audit_sha256": "233052e26ac0083955369c5d7f8fe423bb13882759e189239b48c1b99e432209",
+      "generations_sha256": "fd21d9e8d5016f9c5cacd201d749a318b8801aab504c8204299719623fb75414",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2095734,
+          "sha256": "fd21d9e8d5016f9c5cacd201d749a318b8801aab504c8204299719623fb75414"
+        }
+      ]
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/runs/E51-neutral_pair-1",
+      "config_sha256": "4b0d3c33f1add23067825ecfb59d972000dc92362b52970ce2015112539127aa",
+      "experiment": "E51",
+      "query": "neutral_pair",
+      "task_count": 768,
+      "gpu_hours": 0.029819595416386922,
+      "wall_seconds": 107.35054349899292,
+      "gpu": "NVIDIA H20",
+      "git_commit": "41a60c1be6a8b4a1c7c7599e4b076ac1a32c1615",
+      "dtype": "float32",
+      "attention": "sdpa",
+      "tf32": false,
+      "seed": 0,
+      "frozen": true,
+      "batch_size": 8,
+      "max_new_tokens": 96,
+      "num_shards": 2,
+      "shard_index": 1,
+      "data_sha256": "06ba3860fb93f9efb75bbec514ad253f21f3188c9bf93060b9625b53fa09a168",
+      "audit_sha256": "233052e26ac0083955369c5d7f8fe423bb13882759e189239b48c1b99e432209",
+      "generations_sha256": "066f930325b0bc35fa7f18627b6548d4fea1492f9364da91134d292c84dc5f3c",
+      "outputs": [
+        {
+          "file": "generations.jsonl",
+          "bytes": 2099216,
+          "sha256": "066f930325b0bc35fa7f18627b6548d4fea1492f9364da91134d292c84dc5f3c"
+        }
+      ]
+    }
+  ]
+}

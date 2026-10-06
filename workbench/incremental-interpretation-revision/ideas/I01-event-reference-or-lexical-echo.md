@@ -80,3 +80,6 @@ E45 propernames在固定frame仍newother D−13.545/−12.625bits，但old absol
 E47进一步否定“身份断言是主要原因”：inventory不声明关系仍newSame D下降−3.849bits，quoted与asserted差仅1.076。清单对new−old J CI跨0，普通提及与关系用途不强合；对谓词差有+1.940bits，不能简化成仅一般曝光。原事实角色与assertion status能直接访问，尚未找到可推荐的一般新机制。下一用同referent的不同表达及自然entity-role材料检验，而非继续扫identity近义词；同一研究问题不新开对象。
 
 E48表达交叉显示matched对old D正向、newSame D负向；跨form效应减弱，不能把同指称QA可访问等同预测同一个内部状态。匹配的new−old J交互−5.35/−6.89bits是较具体结构，仍可由篇章/词汇关联解释。现在不是进一步扫措辞：E49已经预登记明确第二事实后的literal/两事件复述用途，检验实际角色错误；自然GUM原文角色外审进行。尚无可确认的好idea。
+
+### 2026-10-06用户暂停时
+I01仍PILOT，无已验证顶会主旨，不进入论文。E43/E44反驳普通语言的普遍反向迁移；E46–48把指称形式、库存/语篇作用显露出来；E49/E50真实用途差异很大但格式/预设仍竞争。E51 neutral literal joint约82%、repeat约91%，并非最终语义审核；Step仅936/4608完整且有大量max_tokens/schema失败。用户要求暂停，研究目标已paused，无后台实验/API请求。[完整尝试和失败](../PROGRESS_SUMMARY_2026-10-06.md)。后续问题是留档而非继续执行的计划；没有自动升PROMISING或关闭territory。

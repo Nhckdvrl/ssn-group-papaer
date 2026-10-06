@@ -1,6 +1,6 @@
 # 主张账本 — Incremental Interpretation & Revision
 
-**状态：2026-10-06 / PROPOSED baseline residency。**
+**状态：2026-10-06 / PROPOSED baseline residency；用户明确暂停研究，当前仅归档。**
 
 当前有局限于固定模型/协议的本地测量事实C03–C05，已有具体候选I01，但尚无已确立的一般机制或新颖性判断。C00–C02仍是待验证对象，不能写成revision机制finding。
 
@@ -89,3 +89,5 @@
 - 2026-10-06：E49 [卡](experiments/E49-role-use-with-observed-second-event.md)/[统计](results/E49-summary.json)第二patient直接问1530/1536正确，formal joint976/1536true、54unknown；basejoint bounds61.98–64.97%，pairedfamily95CI宽。congruenceCI跨0，differentV在incongruent/base反而约−20pp，不能把C05预测偏移和这些角色错误认同为同一机制。首轮审计格式误判作废解读、完整重审/cross及951firstcorrected对照保留。C05L1/I01PILOT不升级；E50区分普通复述/联合Names/actor retrieval cue。
 
 - 2026-10-06：E50 [卡](experiments/E50-joint-role-use-versus-recap-format.md)/[统计](results/E50-summary.json)：列表joint41.41% [36.72,46.48]、同patient−不同patient−54.69pp [−60.68,−47.92]，而actor锚定普通复述98.05%。反驳将formal复述错误直接扩为一般角色使用失败；two names问法的不同实体预设是POST-HOC竞争解释，E51事前无该预设/分栏/计数/允许重复对照。未把该差认证novelty，C05L1/I01PILOT。
+
+- 2026-10-06用户暂停归档：E51六shards4608输出已完成、count5条cap；POST-HOC保守literal-schema neutral joint81.51–82.42%、repeat91.28–91.54%，同patient劣势仍在，但不能当完整语义结论。Step Plan仅39/192批、936/4608回答完整，153批max_tokens/schema失败；没有按成功批升级C05、没有继续发请求。E01完整输入审计565/626变体、2405/2672QA完成，无新的全量推断。C00–02 L0/C03–05 L1、I01PILOT不变；原失败、反证和审核版本均留cache。[完整总结](PROGRESS_SUMMARY_2026-10-06.md)、[Step快照](results/D0-StepPlan-pause-snapshot.json)。
