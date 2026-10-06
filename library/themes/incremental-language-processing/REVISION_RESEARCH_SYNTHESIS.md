@@ -98,6 +98,24 @@
 
 **生长路径：** 固定相机视角下单次答案常用语义先验补不足，几何特征注入又依赖训练；因此把几何变成原接口可消费的反证，比较单新视角、同视角重看、concat/interleaved和不同轨迹。重要边界：重建用1fps/默认100帧而初始模型仅8帧，且VGGT提供额外先验，不能称原信息完全相同或纯纠错机制；joint与sequential也未严格等生成算力。论文的“重看原视角变差”与我们的压力相通，但这个阴性不单独证明partial observability是唯一瓶颈。可借“什么证据能推翻旧假说”的设计，而非把一次重读升级成方法。
 
+### 多轮报告修订的损伤：Chen等，ACL 2026 main，主文§1–8及局限；附录C.3/E.5
+
+[会议原文](https://aclanthology.org/2026.acl-long.609/)。MR DRE复用3个专家清单数据集，5个DRA、3种反馈；多轮/反馈数量实验用75题，两个作者审核100条反馈。分开覆盖、反馈采纳、原覆盖破坏与引用；主表内容反馈break平均约31%，格式约21%，与摘要16–27%不能混报。统计是按题配对单侧t检验，不是所有观察都显著；break大于0的检验因量本身非负，信息量有限。
+
+**生长路径：** 从单次报告benchmark转到用户修改的真实使用循环，发现高采纳率掩盖对其他内容和过去编辑的破坏。相对ResearchRubrics/RigorousBench/ResearcherBench及迭代起草，增量是有反馈的修订对象和纵向保持测量。模型/scaffold信息与成本不齐、清单/judge质量和报告长度影响读数，原因尚未解释；局部prompt/独立reviser有改善而非“完全无效”。对I04的压力：一般“修订有副作用”也已有明确证据，必须找到结构性失败边界及可迁移机制，不能把名称改为关系就算novelty。
+
+### 因果定位估计何时不可靠：Zhang/Wang，NeurIPS 2026名单核对，arXiv 2606.09899v1，主文§1–5
+
+[正文](https://arxiv.org/abs/2606.09899)。5模型族至9B，事实补全/IOI/greater-than；用真实activation patching作单组件干预参照，比较first-order attribution、HVP/MS-HVP、IG/IH/GIM。大步二阶校正仍可过冲，分步界依赖局部三阶光滑；公式可核对，完整附录证明未重新推导。
+
+**生长路径：** 便宜归因分数给错误回路→误差来自下游网络曲率而非局部激活→诊断与有成本的校正。与AtP*/GIM/IG距离是误差对象和网络级二阶项，不是“patching从此可直接证明语义”。独立组件效应之和不等于联合patch；参考干预的因果值也依赖替换选择/指标。文内有25GPUh总计与大模型多GPUh、Gemma激活类型等表述矛盾，不能照抄成本/普遍收益。我们的首轮直接做有限patch，避免用gradient近似的null筛掉位置；以后扩组件时才考虑筛选工具。
+
+### 训练误差恢复而非只放开重写：Schiff等，NeurIPS 2026名单核对，arXiv 2602.11590v2，主文§1–7及局限
+
+[正文](https://arxiv.org/abs/2602.11590)。ProSeCo将模型完整预测当误差噪声，以同权重第二forward预测干净文本；推理交替unmask/correct。LLaDA8B SFT约40B tokens、4数学/代码集，另QM9及OWT（1Msteps/5000生成）；同SFT配方vanilla、ReMDM/PRISM/AR对照。HumanEval48.17→62.20是带采样纠错的最佳配置，不是相同forward数的纯训练收益；仅新loss而无纠错采样为52.44。
+
+**生长路径：** 冻结已生成token/分布漂移→不是只重mask，而是学会修正自身特有错误→保持接口、权重共享并评测速度/质量前沿。与self-conditioning、unrolled部分mask轨迹、ReMDM及Hollow Transformer距离，是训练输入的误差分布和已decoded位置纠错。增加训练forward，NFE也不是硬件wallclock速度；各benchmark选择不同纠错预算、无主文跨seedCI。输入句不能像生成答案一样任意替换；可借“已学得错误恢复”与“具有未来访问”必须分开的认识，不因E54 null否定可训练修订。
+
 ### 仅核对摘要：Knowing Without Saying，NeurIPS 2026
 
 [官方页面](https://neurips.cc/virtual/2026/poster/148815)已读摘要；完整PDF尚不可得。作者称中层编码上下文答案、末层逆转，并区分knowledge/output方向。暂只记为需要补全文的强近邻；不引用具体方法效果，不以它关闭“表征/使用”探索。
