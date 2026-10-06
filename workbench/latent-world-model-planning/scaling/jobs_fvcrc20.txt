@@ -1,0 +1,12 @@
+# width x latent factorial (latent dim decoupled from width)
+16 tworoom S 0 0 60000 --latent 768
+16 tworoom L 0 0 60000 --latent 192
+35 pusht S 0 0 60000 --latent 768
+35 pusht L 0 0 60000 --latent 192
+16 tworoom M 0 0 60000 --latent 192
+35 pusht M 0 0 60000 --latent 192
+# data scaling at S
+14 tworoom S 0 600 60000
+14 tworoom S 0 2400 60000
+30 pusht S 0 1100 60000
+30 pusht S 0 4400 60000
