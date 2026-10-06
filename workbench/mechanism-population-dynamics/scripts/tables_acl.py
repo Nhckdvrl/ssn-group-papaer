@@ -182,7 +182,7 @@ def tab_sizes():
         rho = [dist[s][m]["js_uni"][0] for m in ("M1", "M2", "M4") if s in dist and m in dist[s]]
         rho = f"{f2(max(rho))} to {f2(min(rho))}" if rho else "--"
         lr = DD_RECIPE[s][1] / (DD_RECIPE[s][0] * 2048)
-        lab = "1.2B$^\\dagger$" if s == "1B@7500" else DD_PARAMS[s]
+        lab = "1B$^\\dagger$" if s == "1B@7500" else s
         pk = "1B" if s == "1B@7500" else s
         rows.append(f"    {lab} & {ckpt(plan[pk]['step'], plan[pk]['step'] / plan[pk]['default_final'])} & "
                     f"{v['n_recipes']} & {len(v['seeds'])} & {f2(si)} & {f2(sd)} & "
@@ -191,7 +191,7 @@ def tab_sizes():
     si = np.mean([v[m]["SI"] for m in ("M1", "M2", "M4")])
     sd = np.mean([v[m]["SD"] for m in ("M1", "M2", "M4")])
     rho = [dist["1B"][m]["js_uni"][0] for m in ("M1", "M2", "M4")]
-    rows.append(f"    1.2B & {ckpt(69369, 1.0)} & 25 & 3 & {f2(si)} & {f2(sd)} & {ident['1B_E35']['all']['accuracy'] * 100:.0f} & -- & "
+    rows.append(f"    1B & {ckpt(69369, 1.0)} & 25 & 3 & {f2(si)} & {f2(sd)} & {ident['1B_E35']['all']['accuracy'] * 100:.0f} & -- & "
                 f"{f2(max(rho))} to {f2(min(rho))} & 1.5 \\\\")
     write("tab_sizes", rf"""\begin{{table*}}[t]
   \centering
@@ -200,7 +200,7 @@ def tab_sizes():
   \begin{{tabular}}{{@{{}}lrrrrrrrcr@{{}}}}
     \toprule
     Parameters & \makecell[r]{{Checkpoint\\(share)}} & Recipes & Seeds & \makecell[r]{{Same init.,\\other corpus}} & \makecell[r]{{Other init.,\\same corpus}} &
-    \makecell[r]{{Init. ID\\(\%)}} & \makecell[r]{{Init. ID at\\3--9\% (\%)}} & \makecell{{$\rho$(corpus distance,\\agreement)}} &
+    \makecell[r]{{Init. ID\\(\%)}} & \makecell[r]{{Init. ID,\\early (\%)}} & \makecell{{$\rho$(corpus distance,\\agreement)}} &
     \makecell[r]{{LR per batch\\token ($10^{{-9}}$)}} \\
     \midrule
 {chr(10).join(rows)}
@@ -209,7 +209,7 @@ def tab_sizes():
   \caption{{\textbf{{DataDecide at every size.}} The checkpoint used (DataDecide revision \texttt{{step<N>-seed-<seed>}}; share
   of the default seed's training), the recipes whose three seeds share their step-0 weights, which-head agreement (mean
   over induction, previous-token and retrieval maps; induction only where models have induction heads), leave-one-corpus-out
-  identification of the initialization from the head layout (chance 33\%; 20\% with five seeds), the Spearman correlation
+  identification of the initialization from the head layout at that checkpoint and at the earliest available one (3--9\% of training; chance 33\%, 20\% with five seeds), the Spearman correlation
   between unigram corpus distance and same-initialization agreement over corpus pairs (range over roles), and the recipe's
   learning rate per batch token. $\dagger$: five seeds at 11\% of training; last row: the verified three-seed crossing at
   the end of training. Every run starts from its labelled initialization (Appendix~\ref{{app:audit}}).}}
@@ -224,7 +224,7 @@ def tab_ident():
     e = json.loads((R / "e68" / "analysis.json").read_text())
     rows = []
     for s in list(DD_PARAMS) + ["1B"]:
-        lab = "1.2B$^\\dagger$" if s == "1B@7500" else "1.2B" if s == "1B" else DD_PARAMS[s]
+        lab = "1B$^\\dagger$" if s == "1B@7500" else s
         lay = ident["1B_E35" if s == "1B" else s]["all"]["accuracy"]
         w, sp = e[s]["weights"], e[s]["seedprints"]
         rows.append(f"    {lab} & {100 * lay:.0f} & {100 * w['accuracy']:.0f} & {100 * sp['accuracy']:.0f} & "
@@ -297,7 +297,8 @@ def tab_critical():
   \end{{tabular}}
   \caption{{\textbf{{Interventions during controlled pretraining.}} Which-head agreement (mean of induction and previous-token
   maps) between the final layout of a run intervened on at a given step and the uninterrupted run, for the default 300-step
-  learning-rate warm-up, a 1{{,}}000-step warm-up, and branches that start with a freshly initialized optimizer. Step 0 for
+  learning-rate warm-up, a 1{{,}}000-step warm-up, and branches that start with a freshly initialized optimizer; means
+  over two initializations (one for the 12-layer model). Step 0 for
   the code switch: the same initialization trained on code from scratch; noise is Gaussian, scaled to each tensor's standard
   deviation.}}
   \label{{tab:critical}}
@@ -362,8 +363,10 @@ def tab_habit_sizes():
     \bottomrule
   \end{{tabular}}
   \caption{{\textbf{{The \tmpl{{Question:}} habit at every size.}} Flan minus no-Flan DataDecide models: added trust in the
-  counterfactual context relative to a declarative ending, in nats (SE). The Flan template carries the effect at every
-  size; equivalent templates do not.}}
+  counterfactual context relative to a declarative ending, in nats (SE). Flan's template carries the effect at every
+  size, and more than the equivalent \tmpl{{Q:}}/\tmpl{{A:}} and \tmpl{{Query:}}/\tmpl{{Response:}} templates at every size
+  (pooled over sizes by $0.93 \pm 0.29$ and $0.98 \pm 0.32$ nats); below 1B, \tmpl{{Answer:}} alone often carries much
+  of it.}}
   \label{{tab:habit_sizes}}
 \end{{table*}}
 """)
