@@ -25,6 +25,8 @@ def analyze(data, root, out):
     scores = collections.defaultdict(list)
     counts = collections.Counter()
     files = []
+    prefix_coverage = collections.defaultdict(set)
+    observation_counts = collections.Counter()
     csv.field_size_limit(sys.maxsize)
     for path in sorted(root.glob('*.csv')):
         files.append(dict(path=str(path), sha256=sha(path)))
@@ -51,6 +53,9 @@ def analyze(data, root, out):
                 scores[(record['model'], record['compute_type'], row['item_id'])].append(
                     dict(correct=float(correct > incorrect),
                          p_correct=correct / (correct + incorrect)))
+                panel_key = record['model'], record['compute_type']
+                prefix_coverage[panel_key].add((record['order'], int(record['prompt_index'])))
+                observation_counts[panel_key] += 1
                 counts['valid_matched_rows'] += 1
     pairs = collections.defaultdict(list)
     for row in metadata:
@@ -103,6 +108,8 @@ def analyze(data, root, out):
         summaries[f'{model}/{compute}'] = panel
     report = dict(data_sha256=sha(data), source_files=files, counts=dict(counts),
                   models=summaries,
+                  protocol_coverage={f'{m}/{c}':dict(valid_matched_observations=observation_counts[(m,c)],
+                      prefix_combinations=sorted(prefix_coverage[(m,c)])) for m,c in sorted(prefix_coverage)},
                   protocol='Released processed-choice scores; all matching observations retained. Ties count as no strict correct-choice preference.',
                   interpretation='Secondary published convention map. NEITHER/initial_all are task agreement, not literal semantic accuracy; no native-score replication or causal inference is claimed.')
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')

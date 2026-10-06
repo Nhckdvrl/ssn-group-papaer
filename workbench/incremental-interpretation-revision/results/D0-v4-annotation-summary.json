@@ -1,0 +1,198 @@
+{
+  "qualification_provisional": true,
+  "literal_countermodel_audit_pending": true,
+  "annotation_summary": {
+    "model": "step-5-preview",
+    "endpoint": "https://api.stepfun.com/step_plan/v1/messages",
+    "proxy_used": false,
+    "max_batch": 2,
+    "workers": 4,
+    "data_sha256": "3e7599c325f5a9ff50090be2cc08040f7c4af10a131d20946689b42d49f58dcb",
+    "items": 1284,
+    "complete_both": 1281,
+    "disagreements": 170,
+    "adjudications": 170,
+    "agreement": 0.8672911787665886,
+    "unresolved": 3,
+    "annotated_sha256": "63bd971369ea81c18777f71e83e40f9b527f8b1dbdca44e23d793661589907fd"
+  },
+  "data_summary": {
+    "data_sha256": "18f957bb0748efc814a6d98fc91f14a8fb7b88e8e8dc20e3268434c023ae3887",
+    "rows": 1732,
+    "annotation_scope": 1284,
+    "complete_final": 1281,
+    "complete_both": 1281,
+    "status_counts": {
+      "agreed": 1111,
+      "adjudicated": 170,
+      "incomplete": 3
+    },
+    "semantic_agreement_cluster_bootstrap": {
+      "estimate": 0.8919529837251357,
+      "ci95": [
+        0.8722121760096444,
+        0.910716169379144
+      ],
+      "n_clusters": 237
+    },
+    "semantic_agreement_micro": 0.8672911787665886,
+    "annotation_failures_never_pass": true,
+    "model": "step-5-preview",
+    "by_construction": {
+      "MVRR": {
+        "rows": 400,
+        "final_complete": 398,
+        "semantic_labels_yn": {
+          "NEITHER": 166,
+          "ENTAILED": 177,
+          "CONTRADICTED": 55
+        },
+        "strata": {
+          "NEITHER": 166,
+          "ENTAILED": 177,
+          "CONTRADICTED": 55
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 314,
+          "marginal/marginal": 21,
+          "marginal/acceptable": 13,
+          "acceptable/unacceptable": 8,
+          "marginal/unacceptable": 7,
+          "acceptable/marginal": 7,
+          "unacceptable/marginal": 11,
+          "unacceptable/unacceptable": 10,
+          "unacceptable/acceptable": 7
+        },
+        "genuine_pairs": 10
+      },
+      "NPS": {
+        "rows": 208,
+        "final_complete": 208,
+        "semantic_labels_yn": {
+          "NEITHER": 114,
+          "ENTAILED": 75,
+          "CONTRADICTED": 5
+        },
+        "strata": {
+          "NEITHER": 114,
+          "ENTAILED": 75,
+          "CONTRADICTED": 5,
+          "ENTAILED_CHOICE": 14
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 207,
+          "unacceptable/acceptable": 1
+        },
+        "genuine_pairs": 2
+      },
+      "NPVP": {
+        "rows": 160,
+        "final_complete": 159,
+        "semantic_labels_yn": {
+          "NEITHER": 96,
+          "ENTAILED": 63
+        },
+        "strata": {
+          "NEITHER": 96,
+          "ENTAILED": 63
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 149,
+          "marginal/acceptable": 3,
+          "marginal/unacceptable": 1,
+          "unacceptable/unacceptable": 2,
+          "acceptable/unacceptable": 3,
+          "acceptable/marginal": 1
+        },
+        "genuine_pairs": 0
+      },
+      "NPZ": {
+        "rows": 516,
+        "final_complete": 516,
+        "semantic_labels_yn": {
+          "ENTAILED": 233,
+          "NEITHER": 260,
+          "CONTRADICTED": 13
+        },
+        "strata": {
+          "ENTAILED": 233,
+          "NEITHER": 260,
+          "CONTRADICTED": 13,
+          "ENTAILED_CHOICE": 9,
+          "UNCERTAIN_CHOICE": 1
+        },
+        "grammar_two_pass": {
+          "acceptable/acceptable": 510,
+          "acceptable/unacceptable": 1,
+          "marginal/acceptable": 1,
+          "unacceptable/acceptable": 2,
+          "unacceptable/unacceptable": 1,
+          "marginal/marginal": 1
+        },
+        "genuine_pairs": 1
+      }
+    },
+    "source_gold_consistency": {
+      "Yes": {
+        "rows": 613,
+        "literal_labels": {
+          "ENTAILED": 531,
+          "NEITHER": 80,
+          "CONTRADICTED": 2
+        }
+      },
+      "No": {
+        "rows": 644,
+        "literal_labels": {
+          "NEITHER": 556,
+          "ENTAILED": 17,
+          "CONTRADICTED": 71
+        }
+      }
+    },
+    "genuine_pairs_by_construction": {
+      "MVRR": 10,
+      "NPS": 2,
+      "NPVP": 0,
+      "NPZ": 1
+    },
+    "landmarks": {
+      "rows_available": 441,
+      "paired_questions_usable": 196,
+      "position_origin_counts": {
+        "None": 833,
+        "two-pass Step5 agreement": 245,
+        "unique control word aligned to Step5 GP landmark": 196,
+        "Step5 landmark inconsistent across questions for the same sentence": 10
+      }
+    },
+    "interpretation": "Agreement is reliability of two independent shuffled calls to the same annotator model, not a proof of semantic truth. Wh placeholder NEITHER labels are excluded from YN label counts. Empty genuine strata are missing evidence, not absence of model errors."
+  },
+  "manifest": {
+    "rows": 1732,
+    "labelled": 1281,
+    "genuine_pairs": 13,
+    "semantic_strata": {
+      "ENTAILED": 548,
+      "NEITHER": 636,
+      "CONTRADICTED": 73,
+      "unresolved": 3,
+      "published_nonrevision_control": 448,
+      "ENTAILED_CHOICE": 23,
+      "UNCERTAIN_CHOICE": 1
+    },
+    "position_available": 441,
+    "data_sha256": "3e7599c325f5a9ff50090be2cc08040f7c4af10a131d20946689b42d49f58dcb",
+    "position_inconsistent_sentences": 1,
+    "ambiguity_span_inconsistent_sentences": 21,
+    "raw_clusters": 365,
+    "linked_analysis_clusters": 341,
+    "annotation_sha256": "63bd971369ea81c18777f71e83e40f9b527f8b1dbdca44e23d793661589907fd",
+    "assembled_sha256": "18f957bb0748efc814a6d98fc91f14a8fb7b88e8e8dc20e3268434c023ae3887",
+    "pass_sha256": {
+      "pass1.jsonl": "4c5e16e6ba2b8c4ab564ec055f7ba5ca29a86a58da66b82847980f784d716176",
+      "pass2.jsonl": "b6118e113afdc6a5ddc4880c7f7d8bcc989aa96e9f7956ff8ed19abfe7ec4471"
+    }
+  },
+  "interpretation": "Original v4 annotation stage completed; provisional literal-contradiction qualification is not adopted as primary truth pending blinded countermodel validation. Original T2/T3 remains independently usable. No model capability claim."
+}
