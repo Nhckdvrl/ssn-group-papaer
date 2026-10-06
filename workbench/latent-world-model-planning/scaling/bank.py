@@ -27,7 +27,9 @@ def _sim(args):
     torch.set_num_threads(1)
     from eval_plan import make_env, reset_env, dist_info
     env = make_env(task)
+    import cv2
     out = []
+    finals = []
     goal_img = None
     for k, a in enumerate(acts):
         g = reset_env(env, task, start, goal, seed)
@@ -38,6 +40,8 @@ def _sim(args):
         for x in a:
             _, _, term, _, _ = env.step(np.clip(x, -1, 1).astype(np.float32))
             hit = hit or bool(term)
+            if term and task == 'reacher':  # dm_control auto-resets after a terminal step
+                break
         d = dist_info(env, task)
         if task == 'tworoom':
             end_ok = d < 16.0
@@ -47,7 +51,15 @@ def _sim(args):
             st = np.asarray(env._get_obs(), dtype=np.float64)
             end_ok, _ = env.eval_state(env.goal_state, st)
         out.append((d, bool(end_ok), hit))
-    return out, start_img, goal_img
+        if task == 'tworoom':
+            fs_ = env.agent_position.numpy().astype(np.float64)
+        elif task == 'reacher':
+            fs_ = np.array(env.env.physics.data.qpos, dtype=np.float64)
+        else:
+            fs_ = np.asarray(env._get_obs(), dtype=np.float64)
+        out[-1] = out[-1] + (fs_,)
+        finals.append(cv2.resize(np.ascontiguousarray(env.render()), (64, 64), interpolation=cv2.INTER_AREA))
+    return out, start_img, goal_img, np.stack(finals)
 
 
 def build(task, offset, M, K_r, H, seed, out):
@@ -79,11 +91,14 @@ def build(task, offset, M, K_r, H, seed, out):
     dist = np.array([[r[0] for r in rr[0]] for rr in res])
     end_ok = np.array([[r[1] for r in rr[0]] for rr in res])
     hit = np.array([[r[2] for r in rr[0]] for rr in res])
+    final_state = np.array([[r[3] for r in rr[0]] for rr in res])
     start_px = np.stack([rr[1] for rr in res])
     goal_px = np.stack([rr[2] for rr in res])
+    final_px = np.stack([rr[3] for rr in res])  # (M,K,64,64,3) true end frames
+    states = np.stack([np.concatenate([r[2], r[3]]) for r in rows])
     kind = np.array(['random'] * K_r + ['expert'] + [f'exp{s}' for s in [0.1, 0.3, 0.6] for _ in range(K_r // 4)])
     np.savez_compressed(out, cands=np.stack(cands).astype(np.float32), dist=dist, end_ok=end_ok, hit=hit,
-                        start_px=start_px, goal_px=goal_px, kind=kind, episodes=np.array([[r[0], r[1]] for r in rows]),
+                        start_px=start_px, goal_px=goal_px, final_px=final_px, final_state=final_state, states=states, kind=kind, episodes=np.array([[r[0], r[1]] for r in rows]),
                         H=H, offset=offset, act_mean=am, act_std=asd)
     print('built', out, dist.shape, 'expert end_ok', end_ok[:, K_r].mean(), 'random end_ok', end_ok[:, :K_r].mean())
 

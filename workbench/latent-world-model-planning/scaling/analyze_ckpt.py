@@ -129,6 +129,8 @@ def main():
             cache[cfg['task']] = GPUData(cfg['task'], res=cfg.get('res', 64), device='cuda')
         data = cache[cfg['task']]
         for ck in sorted(r.glob('model_*.pt')):
+            if os.environ.get('CKS') and ck.stem.split('_')[1] not in os.environ['CKS'].split(','):
+                continue
             o = r / 'eval' / f'diag_{ck.stem}.json'
             if o.exists():
                 continue

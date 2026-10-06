@@ -131,7 +131,15 @@ class GPUData:
         return {'pixels': px, 'action': act}
 
 
-def lewm_loss(model, sigreg, batch, history=3, num_preds=1, lambd=0.09):
+def add_aux_heads(model, aux, action_dim=10):
+    """Attach heads for representative 2026 LeWM follow-up objectives (kept in the model object)."""
+    d = model.pred_proj.net[-1].out_features
+    if aux == 'idm':  # inverse dynamics on latent pairs (Perception-for-Action / Keeping-Plannable style)
+        model.idm_head = MLP(input_dim=2 * d, output_dim=action_dim, hidden_dim=512, norm_fn=nn.LayerNorm)
+    return model
+
+
+def lewm_loss(model, sigreg, batch, history=3, num_preds=1, lambd=0.09, aux='', aux_w=0.1):
     out = model.encode(batch)
     emb, act_emb = out['emb'], out['act_emb']
     ctx_emb, ctx_act = emb[:, :history], act_emb[:, :history]
@@ -139,4 +147,23 @@ def lewm_loss(model, sigreg, batch, history=3, num_preds=1, lambd=0.09):
     pred = model.predict(ctx_emb, ctx_act)
     pred_loss = (pred - tgt).pow(2).mean()
     sig = sigreg(emb.transpose(0, 1))
-    return pred_loss + lambd * sig, pred_loss.detach(), sig.detach(), emb.detach()
+    loss = pred_loss + lambd * sig
+    if aux == 'idm':
+        act = batch['action'][:, :history]
+        a_enc = model.idm_head(torch.cat([emb[:, :-1], emb[:, 1:]], -1).flatten(0, 1)).view_as(act)
+        a_pred = model.idm_head(torch.cat([emb[:, :-1], pred], -1).flatten(0, 1)).view_as(act)
+        loss = loss + aux_w * ((a_enc - act).pow(2).mean() + (a_pred - act).pow(2).mean())
+    elif aux == 'straight':  # temporal straightening: curvature of encoder latent trajectories
+        v = emb[:, 1:] - emb[:, :-1]
+        cos = F.cosine_similarity(v[:, 1:], v[:, :-1], dim=-1)
+        loss = loss + aux_w * (1 - cos).mean()
+    elif aux == 'multistep':  # open-loop multi-horizon prediction (RC-aux time axis)
+        cur = emb[:, :1]
+        ol = []
+        for t in range(history):
+            p = model.predict(cur[:, -history:], act_emb[:, max(0, t + 1 - history):t + 1])[:, -1:]
+            ol.append(p)
+            cur = torch.cat([cur, p], 1)
+        ol = torch.cat(ol, 1)
+        loss = loss + (ol[:, 1:] - emb[:, 2:]).pow(2).mean()
+    return loss, pred_loss.detach(), sig.detach(), emb.detach()

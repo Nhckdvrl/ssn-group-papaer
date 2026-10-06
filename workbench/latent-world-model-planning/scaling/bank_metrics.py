@@ -12,6 +12,7 @@ Per (checkpoint, bank): costs (M,K) saved to <run>/eval/bank_<bank>_<ckpt>.npz a
 import argparse
 import glob
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -58,6 +59,8 @@ def main():
             bname = Path(bf).stem
             b = np.load(bf)
             for ck in sorted(r.glob('model_*.pt')):
+                if os.environ.get('CKS') and ck.stem.split('_')[1] not in os.environ['CKS'].split(','):
+                    continue
                 o = r / 'eval' / f'bank_{bname}_{ck.stem}.json'
                 if o.exists():
                     continue

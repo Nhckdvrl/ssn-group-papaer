@@ -75,9 +75,12 @@ def main():
                 out = run(str(ckpt), task, off, N, s, it, min(30, s // 2), 5, 0)
                 out['eval_host'] = host
                 res.write_text(json.dumps(out))
-            except Exception as e:  # keep the worker alive; record the failure
+            except Exception as e:  # keep the worker alive; record the failure (OOM is transient: retry later)
                 import traceback
-                (ed / f'{key}.fail').write_text(traceback.format_exc())
+                import torch
+                torch.cuda.empty_cache()
+                if 'out of memory' not in repr(e).lower():
+                    (ed / f'{key}.fail').write_text(traceback.format_exc())
                 print('FAIL', r, key, repr(e), flush=True)
                 continue
                 print(json.dumps({'run': Path(r).name, 'ck': ck, 'off': off, 'budget': f'{s}x{it}',
