@@ -488,19 +488,20 @@ def fig4_flan():
     # (c) POST-HOC E65: the Flan-specific part of the habit (Question: minus Q:) in attention to the context entity
     h = a["posthoc_template_contrast"]["question_minus_q"]
     ax = axes_in(fig, 1.98, 0.3, 0.99, 0.78)
-    title(ax, "c", "Where the habit acts", x=-0.34)
-    vals = [("share of\nheads", h["share_expected"], LIGHT), ("share of\nthe gain", h["share_top10_retrieval"], ACQ)]
-    ax.bar([0, 1], [v[1] for v in vals], color=[v[2] for v in vals], width=0.6, zorder=2)
+    title(ax, "c", "Top-10 retrieval heads", x=-0.34)
+    vals = [("heads", h["share_expected"], LIGHT), ("attention\nto entity", h["top10_share_of_entity_attention"], OTHER),
+            ("added by\nFlan", h["share_top10_retrieval"], ACQ)]
+    ax.bar(range(3), [v[1] for v in vals], color=[v[2] for v in vals], width=0.6, zorder=2)
     for xi, (_, v, col) in enumerate(vals):
         ax.text(xi, v + 0.012, f"{100 * v:.0f}%", ha="center", va="bottom", fontsize=5.8,
                 color=col if col != LIGHT else "#777777")
-    ax.set_xticks([0, 1], [v[0] for v in vals], fontsize=5.8)
+    ax.set_xticks(range(3), [v[0] for v in vals], fontsize=5.8)
     ax.tick_params(axis="x", length=0)
     ax.axhline(0, color=INK, lw=0.6)
     grid(ax)
     ax.set_ylim(0, 0.4)
     ax.yaxis.set_major_formatter(mt.PercentFormatter(1.0, decimals=0))
-    ax.set_ylabel("top-10 retrieval heads", fontsize=6.2)
+    ax.set_ylabel("their share of", fontsize=6.2)
     save(fig, "fig4_flan")
 
 

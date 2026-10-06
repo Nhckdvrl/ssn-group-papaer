@@ -174,15 +174,22 @@ def template_contrast():
             c = pair_class(a, b)
             if c in g:
                 g[c].append(within(M[a].mean(0), M[b].mean(0)))
-        share = []
+        share, base, cross = [], [], []
         for k in fl:
             h, r = M[k].mean(0).ravel(), A(k, "decl").mean(0).ravel()
-            share.append(float(h[np.argsort(-r)[:10]].clip(0).sum() / h.clip(0).sum()))
+            top = np.argsort(-r)[:10]
+            share.append(float(h[top].clip(0).sum() / h.clip(0).sum()))
+            base.append(float(r[top].sum() / r.sum()))  # the same heads' share of the attention to the entity itself
+            for hd, hm in ((0, 1), (1, 0)):  # cross-fit: heads chosen on one half of the items, gain read on the other
+                rr, hh = A(k, "decl")[hd].ravel(), M[k][hm].ravel()
+                cross.append(float(hh[np.argsort(-rr)[:10]].clip(0).sum() / hh.clip(0).sum()))
         out[name] = {"split_half": float(np.mean([within(M[k][0], M[k][1]) for k in fl])),
                      "total_flan": float(np.mean([M[k].mean(0).sum() for k in fl])),
                      "total_noflan": float(np.mean([M[k].mean(0).sum() for k in nf])),
                      "SI": float(np.mean(g["SI"])), "SD": float(np.mean(g["SD"])),
                      "share_top10_retrieval": float(np.mean(share)), "share_expected": 10 / M[fl[0]][0].size,
+                     "share_top10_retrieval_crossfit": float(np.mean(cross)),
+                     "top10_share_of_entity_attention": float(np.mean(base)),
                      "vs_noflan_sibling_same_seed": float(np.mean(
                          [within(M[k].mean(0), M[("dolma1_7-no-flan", k[1])].mean(0)) for k in fl]))}
         print("(posthoc)", name, {k: round(v, 3) for k, v in out[name].items()})

@@ -151,9 +151,9 @@
     "novel": 2.492196666666667
    },
    "dolma1_7-no-code__large-aux-2": {
-    "QA": 4.6878910000000005,
-    "QA_short": 3.068575666666666,
-    "novel": 3.2286666666666655
+    "QA": 4.680322333333333,
+    "QA_short": 3.0613946666666654,
+    "novel": 3.2170539999999996
    },
    "dolma1_7-no-code__large-aux-3": {
     "QA": 1.548452666666667,
@@ -218,9 +218,9 @@
     "novel": 0.22071350000000223
    },
    "dolma1_7-no-code__large-aux-2": {
-    "QA": 1.9091249999999995,
-    "QA_short": 0.9225694999999998,
-    "novel": 0.9858475000000002
+    "QA": 1.9305280000000007,
+    "QA_short": 0.940846999999998,
+    "novel": 1.0062820000000041
    },
    "dolma1_7-no-code__large-aux-3": {
     "QA": -1.1154615000000003,
@@ -264,14 +264,14 @@
    }
   },
   "mean_behaviour_flan": {
-   "QA": 3.2404218333333334,
-   "QA_short": 1.7907258666666663,
-   "novel": 1.5207528999999997
+   "QA": 3.239664966666667,
+   "QA_short": 1.7900077666666665,
+   "novel": 1.5195916333333332
   },
   "mean_total_attention_flan": {
-   "QA": 0.05913145000000064,
-   "QA_short": -0.4831573499999996,
-   "novel": -0.4964246999999995
+   "QA": 0.061271750000000756,
+   "QA_short": -0.48132959999999975,
+   "novel": -0.4943812499999991
   },
   "mean_behaviour_noflan": {
    "QA": 0.8427774444444441,
@@ -283,69 +283,73 @@
    "QA_short": -0.6224796666666675,
    "novel": -0.5250504999999995
   },
-  "split_half_habit": 0.9748619936577242,
-  "split_half_retrieval": 0.9885294117647059,
+  "split_half_habit": 0.9746965524812534,
+  "split_half_retrieval": 0.9884926470588236,
   "agreement_habit": {
    "SI": [
-    0.21064762443438917,
+    0.2111425339366516,
     13
    ],
    "SD": [
-    -0.03288143382352941,
+    -0.03285845588235294,
     8
    ],
    "DD": [
-    0.012461703431372546,
+    0.012545955882352938,
     24
    ],
    "ci95_SI_minus_SD": [
     0.13336397058823532,
-    0.44903492647058824
+    0.4491727941176471
    ]
   },
   "agreement_retrieval_decl": {
    "SI": [
-    0.39278846153846153,
+    0.3930712669683257,
     13
    ],
    "SD": [
-    -0.009352022058823531,
+    -0.00978860294117647,
     8
    ],
    "DD": [
-    0.0022901348039215696,
+    0.002259497549019609,
     24
    ],
    "ci95_SI_minus_SD": [
     0.2681525735294117,
-    0.6169577205882353
+    0.6181985294117647
    ]
   },
-  "habit_vs_own_retrieval": -0.25691176470588234,
-  "habit_vs_noflan_sibling_retrieval": -0.024522058823529414,
-  "habit_vs_other_seed_retrieval": 0.0020767682072829136,
-  "habit_share_in_top10_retrieval": 0.14862017119365328
+  "habit_vs_own_retrieval": -0.25680147058823527,
+  "habit_vs_noflan_sibling_retrieval": -0.024558823529411765,
+  "habit_vs_other_seed_retrieval": 0.002059261204481795,
+  "habit_share_in_top10_retrieval": 0.14864360302688417
  },
  "posthoc_template_contrast": {
   "question_minus_q": {
-   "split_half": 0.9667402420101616,
-   "total_flan": 0.5422888,
+   "split_half": 0.9665930512570963,
+   "total_flan": 0.54260135,
    "total_noflan": -0.20916433333333337,
-   "SI": 0.11342029124239657,
-   "SD": -0.026055951879087713,
-   "share_top10_retrieval": 0.29050205508893,
+   "SI": 0.11320005013839286,
+   "SD": -0.026735619420577516,
+   "share_top10_retrieval": 0.2904760018971985,
    "share_expected": 0.0390625,
-   "vs_noflan_sibling_same_seed": 0.050787110878080764
+   "share_top10_retrieval_crossfit": 0.29781465955003406,
+   "top10_share_of_entity_attention": 0.295509826338156,
+   "vs_noflan_sibling_same_seed": 0.05074332677934694
   },
   "question_minus_query": {
-   "split_half": 0.9622456820003229,
-   "total_flan": 0.5555561499999999,
+   "split_half": 0.9621713018970409,
+   "total_flan": 0.555653,
    "total_noflan": -0.3065935,
-   "SI": 0.09570892114664177,
-   "SD": -0.009082165685098465,
-   "share_top10_retrieval": 0.3094165174187208,
+   "SI": 0.09600541260542915,
+   "SD": -0.008973622163269863,
+   "share_top10_retrieval": 0.30942779798766107,
    "share_expected": 0.0390625,
-   "vs_noflan_sibling_same_seed": -0.01050917183955036
+   "share_top10_retrieval_crossfit": 0.31530267647120935,
+   "top10_share_of_entity_attention": 0.295509826338156,
+   "vs_noflan_sibling_same_seed": -0.009834565369168147
   }
  }
 }
