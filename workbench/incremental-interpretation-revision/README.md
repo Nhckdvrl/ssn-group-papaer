@@ -27,6 +27,7 @@
 ## 主张与 idea
 - [CLAIMS](CLAIMS.md)：新路线是 C06–C09（L0，待验证）。C00–C05 是旧路线的历史测量，保留，不再推进。
 - [I02](ideas/I02-garden-path-misreading-attribution.md)：当前主 idea（PILOT）。[I01](ideas/I01-event-reference-or-lexical-echo.md)：PARKED。
+- [I03](ideas/I03-transferable-interpretation-repair.md)与[I04](ideas/I04-selective-relational-error-correction.md)：跨用途修订、修复与保持的选择性（SEED）；新精读与整体画像见[知识库综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。尚未认定合格idea。
 - [PAIN_LOG](PAIN_LOG.md)：P13 记录问句语义混杂，P14 记录单模型与复用 24 句的教训。
 
 ## 近邻与可借的研究方法（完整定位见 ROUTE §1.3）
@@ -47,6 +48,7 @@
 - 数据资格：原双轮/裁决资产`E52/step-full-v4/`保留；反例世界双轮复核完成，最终主分析入口`E52/qualified-v3.jsonl`保留原S/Q/gold和独立T2/T3。严格矛盾仅覆盖2个NPS词汇组，不代表全部理解错误；`qualified-v2`仅为历史资格。
 - E52完整14模型/5族地图已统计，尚无合格idea或因果机制证据。[E53](experiments/E53-faithful-two-sentence-paraphrase.md)三族10260复述已生成，T4双轮盲审未完成；[E59](experiments/E59-source-grounding-versus-world-question.md)已执行评分，尚未正式分析。C06–C09均L0。
 - **2026-10-07 执行调整：** 根据用户提醒停止追加实验与标注，在途API已收束、资产保留，重新审视科学问题与研究价值；注册状态不变。诊断见[当日日志](logs/2026-10-07.md)。
+- **同日继续：** 用户要求从综述、最新顶会与arXiv继续深读。E59三族原始评分与资格投影/分析已完成；[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)先登记新问题与协议，开始问句前的可见性干预校验。E53标注仍待恢复，注册状态不变。
 
 ## 决策记录
 - **2026-10-05：** 人选择本 territory，授权 training-free baseline residency；取消 agent 自加的停步 gate；构造与语义审计改用 Step。
