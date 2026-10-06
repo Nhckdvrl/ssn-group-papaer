@@ -20,7 +20,7 @@ def main():
         comp = lambda x: {"bias": (x["maj"] - x["min"]) / 2, "cond": (x["maj"] + x["min"]) / 2}
         E = comp(eff)
         print(f"\n===== {m} / {task}  n={len(common)}   noise effect: bias {E['bias'].mean():+.2f}  cond {E['cond'].mean():+.2f}  (maj {eff['maj'].mean():+.2f}, min {eff['min'].mean():+.2f})")
-        for ps in [k for k in ("all", "anchors", "inputs", "noise_anchors", "pred", "after") if k in z.files]:
+        for ps in [k for k in ("all", "anchors", "inputs", "noise_anchors", "pred", "after", "mid_anchors", "mid_other") if k in z.files]:
             rem = {r: g(ps, r) - g("clean", r)[:, None] for r in ("maj", "min")}
             R = comp(rem)
             line = []

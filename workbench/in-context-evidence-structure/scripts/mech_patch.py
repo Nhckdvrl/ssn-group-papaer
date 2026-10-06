@@ -11,6 +11,7 @@ Output: logit(B answer) - logit(A answer) for clean, noisy, and each patch.
 usage: mech_patch.py --model M --out NPZ [--n_bases 150]"""
 import argparse, json, re
 PRED = False
+MID = False
 import numpy as np, torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -19,8 +20,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--model"); ap.add_argument("--out"); ap.add_argument("--n_bases", type=int, default=150)
     ap.add_argument("--data", default="imbal")
-    ap.add_argument("--pred", action="store_true"); a = ap.parse_args()
-    global PRED; PRED = a.pred
+    ap.add_argument("--pred", action="store_true"); ap.add_argument("--mid", action="store_true"); a = ap.parse_args()
+    global PRED, MID; PRED = a.pred; MID = a.mid
     root = __file__.rsplit("/", 2)[0]
     rows = [json.loads(l) for l in open(f"{root}/data/{a.data}/rows.jsonl")]
     by = {}
@@ -84,7 +85,14 @@ def main():
             pred = [labc[t] - 1 for t in range(6, 16)]                       # the ':' of "Label:" just before each label word (demos 6-15)
             assert all(tok.decode(idc[p]).strip() == ":" for p in pred), [tok.decode(idc[p]) for p in pred]
             after = [p for p in range(labc[5] + 1, len(idc) - 1) if p not in anc]   # everything after the last noise demo, except the final-run anchors and the answer
-            sets = (("anchors", anc), ("inputs", inp), ("noise_anchors", noise_anc), ("all", allpos)) if not PRED else (("pred", pred), ("after", after))
+            mid_anc = [labc[t] for t in range(6, 13)]
+            mid_other = [p for p in after if p not in mid_anc and p < labc[13]]
+            if MID:
+                sets = (("mid_anchors", mid_anc), ("mid_other", mid_other))
+            elif PRED:
+                sets = (("pred", pred), ("after", after))
+            else:
+                sets = (("anchors", anc), ("inputs", inp), ("noise_anchors", noise_anc), ("all", allpos))
             for name, pos in sets:
                 vals = []
                 for l in layers:
