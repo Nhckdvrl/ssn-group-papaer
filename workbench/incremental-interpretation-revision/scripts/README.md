@@ -2,6 +2,18 @@
 
 原始数据、规范化 stimuli、完整 prompt、权重和逐条 prediction 留在 `/data1/xiangding/work/incremental-interpretation-revision/`。固定上游 revision 和 SHA256 见 `../results/D0-source-audit.json`；所有 loader 先核验 hash。复用 `/data1/xiangding/env/pragmatic-inference-calibration/`，torch 2.7.1+cu126、transformers 4.51.3。新任务不恢复已关闭的旧项目。
 
+当前E52入口（旧实验命令只供历史复现）：
+
+```bash
+source workbench/incremental-interpretation-revision/scripts/env.sh
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/data_v2.py --out "$IIR_CACHE/E52/published-v2.jsonl"
+"$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/step_gp_audit.py --data "$IIR_CACHE/E52/published-v2.jsonl" --out "$IIR_CACHE/E52/step-full-v4" --workers 4 --batch-size 2
+"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/analyze_reading_map.py --data "$IIR_CACHE/E52/published-v2.jsonl" --annotation "$IIR_CACHE/E52/step-full-v4/annotated.jsonl" --out "$IIR_CACHE/E52/qualified-v2.jsonl"
+"$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/run_panel.py --data "$IIR_CACHE/E52/qualified-v2.jsonl" --stage map
+```
+
+实际自主执行将地图分为不依赖标签的`map-unlabelled`和完成双遍位置审计后的`landmarks`，按完整task key合并；已有输出不能覆盖，完整地图与分片不能同时重复运行。`download_panel.py`只下载ModelScope镜像的逐文件固定revision/size/SHA256；推理`local_files_only=True`且HF离线，环境HF_ENDPOINT为hf-mirror.com。`step_gp_audit.py`只允许step-5-preview/Step Plan，0600仓库外密钥；单批≤5、共享并发≤8，两个打乱pass及第三遍裁决原包全留。`import_step_pass2.py`在主pass2开始前盲导入另四并发的独立pass2；API schema失败保留、429只做传输退避。运行参数和限制见E52卡，不能把CLI历史重试误作新协议。
+
 ```bash
 source workbench/incremental-interpretation-revision/scripts/env.sh
 # git download 必须沿用上述无代理环境，并禁用 git 自有 proxy 设置。
