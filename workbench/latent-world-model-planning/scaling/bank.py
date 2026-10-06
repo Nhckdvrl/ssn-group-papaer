@@ -41,6 +41,8 @@ def _sim(args):
         d = dist_info(env, task)
         if task == 'tworoom':
             end_ok = d < 16.0
+        elif task == 'reacher':
+            end_ok = d < 0.05
         else:
             st = np.asarray(env._get_obs(), dtype=np.float64)
             end_ok, _ = env.eval_state(env.goal_state, st)

@@ -31,8 +31,10 @@ def eval_set(task, res, n, offset, seed=0, split_seed=0, val_frac=0.05):
     rng = np.random.default_rng(split_seed)
     perm = rng.permutation(len(ep_len))
     val_eps = np.sort(perm[:int(round(val_frac * len(ep_len)))])
-    key = 'proprio' if task == 'tworoom' else 'state'
-    st = meta[key]
+    if task == 'reacher':
+        st = np.concatenate([meta['qpos'], meta['qvel']], 1)
+    else:
+        st = meta['proprio' if task == 'tworoom' else 'state']
     g = np.random.default_rng(1000 + seed + offset)
     eligible = val_eps[ep_len[val_eps] > offset + 1]
     eps = g.choice(eligible, size=n, replace=len(eligible) < n)
@@ -47,6 +49,8 @@ def eval_set(task, res, n, offset, seed=0, split_seed=0, val_frac=0.05):
 def make_env(task):
     import gymnasium as gym
     import stable_worldmodel  # noqa: F401
+    if task == 'reacher':
+        return gym.make('swm/ReacherDMControl-v0', task='qpos_match').unwrapped
     name = 'swm/TwoRoom-v1' if task == 'tworoom' else 'swm/PushT-v1'
     return gym.make(name, render_mode='rgb_array').unwrapped
 
@@ -57,6 +61,12 @@ def reset_env(env, task, start, goal, seed):
         env._set_state(start.astype(np.float32))
         env._set_goal_state(goal.astype(np.float32))
         goal_img = env._target_img.cpu().numpy().transpose(1, 2, 0)
+    elif task == 'reacher':
+        nq = len(start) // 2
+        env.reset(seed=seed, options={'target_qpos': goal[:nq]})
+        env.set_state(goal[:nq], np.zeros(nq))
+        goal_img = np.asarray(env.render()).copy()
+        env.set_state(start[:nq], start[nq:])
     else:
         env.reset(seed=seed, options={'state': start, 'goal_state': goal})
         goal_img = env._goal
@@ -66,6 +76,8 @@ def reset_env(env, task, start, goal, seed):
 def dist_info(env, task):
     if task == 'tworoom':
         return float(torch.norm(env.agent_position - env.target_position))
+    if task == 'reacher':
+        return float(np.abs(env.env.physics.data.qpos - env.env.task.target_qpos).max())
     st = np.asarray(env._get_obs(), dtype=np.float64)
     _, d = env.eval_state(env.goal_state, st)
     return float(d)

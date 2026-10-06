@@ -34,8 +34,12 @@ def apply(W, X):
 def analyze(ckpt, data, n_val=4096, n_train=8192, seed=0):
     model = torch.load(ckpt, map_location='cuda', weights_only=False).eval()
     task = data.task
-    key = 'proprio' if task == 'tworoom' else 'state'
-    st = torch.as_tensor(data.meta[key][:, :4 if task == 'pusht' else 2].astype(np.float32), device='cuda')
+    if task == 'reacher':
+        raw = data.meta['qpos'][:, :2]
+        raw = np.concatenate([np.cos(raw), np.sin(raw)], 1)  # angles -> unit circle coords
+    else:
+        raw = data.meta['proprio' if task == 'tworoom' else 'state'][:, :4 if task == 'pusht' else 2]
+    st = torch.as_tensor(raw.astype(np.float32), device='cuda')
     gen = torch.Generator(device='cuda').manual_seed(seed)
 
     def windows(val, n):

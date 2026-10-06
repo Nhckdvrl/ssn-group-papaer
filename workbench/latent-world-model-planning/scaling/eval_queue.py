@@ -19,15 +19,16 @@ N = 200
 def plan_for(run_dir):
     task = json.loads((Path(run_dir) / 'config.json').read_text())['task']
     steps = json.loads((Path(run_dir) / 'config.json').read_text())['steps']
-    offsets = [25, 50, 100] if task == 'tworoom' else [25, 50]
+    offsets = [25, 50, 75] if task == 'tworoom' else [25, 50]
     jobs = []
     for ck in [5000, 20000, steps]:
         for off in offsets:
-            if ck != steps and off == 100:
+            if ck != steps and off == 75:
                 continue
             jobs.append((ck, off, 300, 30))
-    for s, it in [(30, 3), (100, 10), (1000, 30), (3000, 30)]:
-        jobs.append((steps, 50, s, it))
+    for off in [25, 50]:
+        for s, it in [(30, 3), (100, 10), (1000, 30), (3000, 30)]:
+            jobs.append((steps, off, s, it))
     return task, jobs
 
 
@@ -46,8 +47,11 @@ def main():
             if not (Path(r) / 'config.json').exists():
                 continue
             task, jobs = plan_for(r)
+            final = json.loads((Path(r) / 'config.json').read_text())['steps']
             for ck, off, s, it in jobs:
-                todo.append((s * it, ck, r, task, off, s, it))
+                default = (s, it) == (300, 30)
+                pri = 0 if (ck == final and default) else 1 if (ck == 20000 and default) else 3 if ck == 5000 else 2
+                todo.append(((pri, s * it, off), ck, r, task, off, s, it))
         todo.sort()
         for _, ck, r, task, off, s, it in todo:
             ckpt = Path(r) / f'model_{ck:07d}.pt'
@@ -66,9 +70,16 @@ def main():
             except FileExistsError:
                 continue
             try:
+                if (ed / f'{key}.fail').exists():
+                    continue
                 out = run(str(ckpt), task, off, N, s, it, min(30, s // 2), 5, 0)
                 out['eval_host'] = host
                 res.write_text(json.dumps(out))
+            except Exception as e:  # keep the worker alive; record the failure
+                import traceback
+                (ed / f'{key}.fail').write_text(traceback.format_exc())
+                print('FAIL', r, key, repr(e), flush=True)
+                continue
                 print(json.dumps({'run': Path(r).name, 'ck': ck, 'off': off, 'budget': f'{s}x{it}',
                                   'sr': out['success_rate'], 'sec': round(out['seconds'])}), flush=True)
             finally:

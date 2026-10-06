@@ -17,7 +17,8 @@ def main():
     p.add_argument('--res', type=int, default=64)
     p.add_argument('--workers', type=int, default=20)
     a = p.parse_args()
-    src = {'tworoom': '/tmp/latent-wm-data/tworoom.h5', 'pusht': '/tmp/latent-wm-data/pusht_expert_train.h5'}[a.task]
+    src = {'tworoom': '/tmp/latent-wm-data/tworoom.h5', 'pusht': '/tmp/latent-wm-data/pusht_expert_train.h5',
+           'reacher': '/tmp/latent-wm-data/reacher.h5', 'cube': '/tmp/latent-wm-data/cube_single_expert.h5'}[a.task]
     out = f'/tmp/latent-wm-data/lowres/{a.task}_{a.res}'
     os.makedirs(out, exist_ok=True)
     import hdf5plugin, h5py
