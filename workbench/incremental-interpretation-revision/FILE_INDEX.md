@@ -4,6 +4,7 @@
 
 1. [完整阶段总结](PROGRESS_SUMMARY_2026-10-06.md)：51次尝试逐项结果、失败、反证、未完成项及当前判断。
 2. [诊断与转向建议](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)：失败原因（执行/数据/领域）分析与新主线建议，待人决定。
+   - [方向筛选](SCREENING_2026-10-06.md)：全文精读、[公开结果审计](results/D0-Amouyal-released-item-type-audit.json)（`scripts/analyze_amouyal_released.py`）、候选比较与C1数据方案。
 3. [README](README.md)：简短状态页；注册仍PROPOSED，实际研究已按用户要求暂停。
 4. [CLAIMS](CLAIMS.md)：C00–C05证据等级与降级记录；没有L2/L3主旨。
 5. [PAIN_LOG](PAIN_LOG.md)：数据/读数/语义审计痛点；不是科学结论的替代品。

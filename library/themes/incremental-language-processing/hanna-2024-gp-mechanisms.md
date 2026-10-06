@@ -15,3 +15,6 @@
 ## Final NAACL2025核对
 
 [出版PDF](https://aclanthology.org/2025.naacl-long.164.pdf)的§6及B/C/D/H/I附录已重读，独立hash见ledger。QA IoU NP/S=0%、NP/Z=.2%及“不广泛复用”保留。重要范围：Pythia QA常constant50%，因此只对Gemma做后续功能结论。QA阳性题也存在，不是单一No评分。Appendix C回收faithfulness：Pythia NP/S .20、NP/Z3.48；Gemma NP/S .07、NP/Z.23，作者承认需要数百/数千features才能近1。因此有限feature组没有效果不足以彻底排除其他syntax用途；这是研究范围，不是桌面否定已有工作。Appendix H跨construct非特异干预改变NPZ约10pp也一并报告，不能写所有干预严格零。泛泛predicting/QA gap仍是明确owner；不以发现证据限制直接宣称我们的novelty。
+
+## 2026-10-06 复读要点
+RQ3 原话：LM 既不修补先前的结构预测，也不通过重分析生成新的句法特征。Gemma-2-2B 的 GP 问答主要由与句法无关的 Yes/No 倾向特征驱动（例如在 "Certainly / Of course" 上激活的特征）。作者把"识别歧义"留作未来工作。对 C1 来说，这意味着：小模型的问答读数会被回答倾向污染，所以必须选真实缺陷大的中等规模模型，并用复述和蕴含状态分层的读数。
