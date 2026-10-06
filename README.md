@@ -69,6 +69,7 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 - **CLOSED（2026-10-03，人明确决定终止）**：[`workbench/pragmatic-inference-calibration/`](workbench/pragmatic-inference-calibration/README.md)，有限核心检验未形成论文项目；实验遗产和本地模型已清理，环境暂留，停止自动探索。
 - **PROPOSED（新增）**：[`workbench/data-centric-rsi/`](workbench/data-centric-rsi/README.md)，数据策略的可复用性、训练干预型数据研究与多时域学习效用；已有本地GPU闭环与E12强静态基线评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审，主张均L0；实时证据见该工作台状态页，不改变现有ACTIVE调度。
 - **已降级**：`workbench/video-world-model-temporal-interfaces/` → PAUSED（H 类 scientific-yield 决定）。块首接缝失聪仍是可靠诊断资产，但不再作为独立 MAIN paper story；只在新主线需要区分 causalization / distillation / rollout 损失时复用。
+- **主推候选储备（2026-10-06，人决定）**：[`workbench/in-context-evidence-structure/`](workbench/in-context-evidence-structure/README.md)（PAUSED）。主 idea：in-context learner 按输出存放证据——输出侧的漂移被规范追踪，concept drift（输出被重新分配给不同输入）被混在一起；13 个模型、建设性修复（换输出词）与读标签头机制已有证据。暂停推进，之后作为主推 candidate 恢复。
 - 完整登记表：[`workbench/README.md`](workbench/README.md) §9；检查：`python3 tools/process/check.py`。
 ## 仓库规则
 - 顶层目录代表阶段 / 功能，不代表题目；不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验。

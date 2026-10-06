@@ -1,7 +1,7 @@
 
 # E01：Exchangeable-vs-Change Two-Extreme Calibration（2026-10-05）
 
-- **状态：** PLANNED（E00 通过后执行）
+- **状态：** DONE（2026-10-06 整理时更新状态）
 - **类型：** MEASUREMENT
 - **对应：** C01 / P00 / P01
 - **问题（一句话）：** 在同一 task-learning substrate 上，我们的 readout 能否区分“顺序应该无关”的 clean stable context 和“顺序确有信息”的明显 single-change context？
@@ -23,3 +23,7 @@
 
 ## 结果
 待运行。
+
+## 事后补记（2026-10-06，流程字段）
+- **噪声地板：** 事后补记：bf16 batch 噪声 ~0.1 nats/条且无方向，200–300 base 配对平均后 ≈0.007；效应以配对 bootstrap 95% CI 判断。
+- **决策表（跑之前写）：** 见上方“决策”条目（跑前写定；此处仅为流程字段名对齐）。

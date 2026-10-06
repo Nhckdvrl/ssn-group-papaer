@@ -9,3 +9,15 @@ scripts/vendor/
 data/_*
 data/*/attn_subset.jsonl
 results/**/*.npz
+# external raw data (download: see README §8) and process logs
+data/dices/
+data/smoke/
+logs/smoke/
+logs/anchor_*.log
+logs/mech_*.log
+logs/vals_*.log
+logs/patch*.log
+logs/build_*.log
+# keep only code, docs, small summaries and figures in git; detailed outputs stay local (NFS)
+results/**/*.jsonl
+logs/*.log

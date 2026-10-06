@@ -1,7 +1,7 @@
 
 # E02：Matched Noise-vs-Change Structure-Inference Pilot（2026-10-05）
 
-- **状态：** PLANNED（E01 通过后执行）
+- **状态：** DONE（2026-10-06 整理时更新状态）
 - **类型：** PILOT
 - **对应：** C02 / P04
 - **问题（一句话）：** 当 contradiction 数量相同但时间组织不同，frozen LM 会把矛盾解释成随机 noise 还是 persistent regime change，并据此改变 demonstration weighting 吗？
@@ -26,3 +26,8 @@
 
 ## 结果
 待运行。
+
+## 事后补记（2026-10-06，流程字段）
+- **阳性对照：** 事后补记：本线统一的阳性对照为标签流条件（E05/E06），同一工具下 13/13 模型测到规范方向效应；此卡跑时未单列。
+- **噪声地板：** 事后补记：bf16 batch 噪声 ~0.1 nats/条且无方向，200–300 base 配对平均后 ≈0.007；效应以配对 bootstrap 95% CI 判断。
+- **决策表（跑之前写）：** 见上方“决策”条目（跑前写定；此处仅为流程字段名对齐）。

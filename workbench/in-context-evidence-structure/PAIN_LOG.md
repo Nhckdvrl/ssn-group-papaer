@@ -8,3 +8,11 @@
 | P02 | 2026-10-05 | sequential-correlations work 已占 effective context length | correlation 只能作为后续 pressure family | E02 先做 noise-vs-change |
 | P03 | 2026-10-05 | Jiao 2026 已占 single corrupted demo + internal conflict mechanism | isolated conflict/position heads 不是我们的 lead | 用其 task 只做外部 calibration |
 | P04 | 2026-10-05 | 最大 reviewer compression 风险是“InvICL + nonstationary ICL 拼表” | 必须形成一个结构选择量或 predictive account | E02 直接比较 four accounts 与 exact meta oracle |
+| P05 | 2026-10-05 | NFS 读权重约 40 MB/s，32B 首次加载 ~25 分钟 | 32B 实验排队变慢 | 小模型暂存到 `/tmp/xiang_hf/hub`（`scripts/stage_model.sh`）；32B 依赖页缓存 |
+| P06 | 2026-10-05 | StepFun 先误用现金账户接口（`/v1`），额度耗尽 | 审计中断、产生现金费用 | 改用 Step Plan（Credit）接口 `api.stepfun.com/step_plan/v1`；只审计真正构造的数据 |
+| P07 | 2026-10-05 | 自然标签词的置换/翻转映射难学（semantic anchors） | K 类置换 allA 准确率仅 0.16–0.34 | E25 只作方向性证据；二分类用 base 间平衡的翻转 |
+| P08 | 2026-10-06 | 同一张卡放两条排队脚本，交接时两个 32B 同时加载 → OOM | 两个 32B 任务失败重跑 | 同一张卡只放一条队列 |
+| P09 | 2026-10-06 | 远程命令中 `pkill -f <模式>` 匹配到自身 shell，把新启动的任务一起杀掉 | E37 一次重跑实际未执行 | 不在同一命令里先 pkill 再启动；按 pid 停 |
+| P10 | 2026-10-06 | 锚点 value 投影初版乘了每次运行的 1/rms | 跨提示比较被缩放污染，初版数字作废 | 投影方向只乘 norm 权重，rms 另存（健全性检查：旧锚点逐位相同） |
+| P11 | 2026-10-06 | 真实多标注者数据（DICES）评分者噪声大 | 交互泄漏无法与“无交互可学”区分 | 暂不做真实标注者版本；需结构更清楚的 perspectivist 数据 |
+

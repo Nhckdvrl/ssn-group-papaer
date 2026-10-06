@@ -7,7 +7,7 @@ from pathlib import Path
 
 import aiohttp
 
-URL = "https://api.stepfun.com/v1/chat/completions"
+URL = "https://api.stepfun.com/step_plan/v1/chat/completions"  # Step Plan credit account; never the cash /v1 endpoint
 MODEL = "step-5-preview"
 
 

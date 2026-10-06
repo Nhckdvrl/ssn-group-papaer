@@ -1,124 +1,80 @@
+# In-Context Evidence Structure（ICES）
 
-# In-Context Evidence Structure
+## 状态
+- **状态：** PAUSED——主推候选储备（2026-10-06 人决定：I04 为主 idea；暂停推进，留作之后主推的 candidate）。不占 ACTIVE 名额。
+- **主 idea：** [`ideas/I04-output-indexed-evidence.md`](ideas/I04-output-indexed-evidence.md)
+- **目标会议：** ICML / ICLR（ICL 理论与机制叙事）；备选 ACL / EMNLP（标签语义、标注者视角、非平稳 NLP 场景叙事）。
+- **证据账本：** [`CLAIMS.md`](CLAIMS.md)　**实验索引：** [`experiments/INDEX.md`](experiments/INDEX.md)　**论文形态卡：** [`PAPER_SHAPE.md`](PAPER_SHAPE.md)　**日志：** [`logs/`](logs/)
+- **territory 卡：** [T16](../../search/our-taste/TERRITORY_IN_CONTEXT_EVIDENCE_STRUCTURE_2026-10-05.md)　**知识库：** [`library/themes/in-context-evidence-structure/`](../../library/themes/in-context-evidence-structure/)（FIELD_MAP、KEY_PAPERS）
 
-## 状态（中文进度页）
-**状态：** PROPOSED — 2026-10-05 人要求把 ICL 方向做到“可以正式注册 workbench”为止；本线已通过直接 ownership audit，允许 training-free baseline residency；不改变当前 ACTIVE-MAIN / ACTIVE-EXPLORE 分配。  
-**territory 卡：** [T16](../../search/our-taste/TERRITORY_IN_CONTEXT_EVIDENCE_STRUCTURE_2026-10-05.md)  
-**数据计划：** [DATA_PLAN.md](DATA_PLAN.md)  
-**目标会议 / 截稿：** ICML / ICLR / NeurIPS / ACL；当前不提前锁论文形态。  
-**上次人审：** 2026-10-05
+## 1. 研究问题
+**起点（T16）：** 冻结 LLM 能不能判断上下文里的反例是“噪声”还是“规则变了”，并据此调整证据的汇总方式？
+**测量工具：** exact 层级 Bayes oracle（联合推断变化率 λ 与噪声率 ε）给出一个**方向相反**的预测——在后缀反例之前加零散噪声，规范学习者应**更不**相信后缀；而任何正权重的可加汇总都会**更**相信。配合成簇检验（同样数量的反例，连成一串 vs 零散）与新旧对调检验（A→B vs B→A）。
 
-## 当前进展（2026-10-05，agent 更新）
-**一句话结论（2026-10-05 17:00 修订）：LLM 能察觉“要做什么”变了，察觉不到“哪个输入得到什么”变了。** 当 regime 是作用于所有输入的全局变换（标签流、大写↔反转、x+3↔x−3）时，模型按序列整合证据，能区分噪声与变化（方向与 exact Bayes oracle 一致）；当 regime 是按输入类别的分类映射（nonce 规则、SST 情感（nonce 或自然标签）、数字大小/奇偶）时，模型按类别/相似度检索 demo 并当作可交换集合汇总——不区分噪声与变化、不能被指令或可见 CoT 纠正、长上下文也分不出 A→B 与 B→A、对变化只做局部（相似 item）适应。
+**收敛后的问题：** 模型在什么情况下能追踪变化、在什么情况下把新旧证据混在一起——以及为什么。
 
-| 实验 | 结果（数字见实验卡） |
+## 2. 核心 idea（I04）
+> **In-context learner 按“输出”存放输入-输出证据。** 某个输出得到的支持，来自带这个输出的 demo 的、按输入相似度加权的汇总；这份汇总在时间与上下文上可交换。
+> 因此：**改变“用哪些输出”的变化看得见**（标签流、格式、输出语言、换了新词的新 regime），**把已有输出重新分配给不同输入的变化看不见**（concept drift、因人而异的映射），而且新旧输出标签越相似，证据混得越多。
+
+机制（Qwen3-8B、Qwen2.5-7B）：一族晚层“读标签”注意力头从答案位置读取 demo 的标签词，按内容相似度选择、不看位置；旧 demo 的标签位置因因果掩码不可改写，新 demo 也不写入“变了”的信号——于是条件证据只能被可交换地汇总。
+
+## 3. 证据（按主张组织；数字与 CI 见 CLAIMS 与实验卡）
+| 主张 | 关键数字 | 实验 | 等级* |
+|---|---|---|---|
+| 输出侧变化被规范追踪 | 标签流噪声检验 13/13 模型为负；E22 格式通道 16/16；全局变换（±k、大小写↔反转）到 32B 更强 | E05/E06/E11/E16/E22 | L2 |
+| 条件结构被可交换汇总 | 13 模型（0.6B–32B）噪声方向错；thinking、指令、T=64、时间戳、K=4/6、任务切换都不改变；与 set oracle r≈0.98 | E02a/E03/E07–E09/E16/E23/E25/E27 | L2 |
+| 看最近邻，不看最近期 | 预测跟随“query 像哪一半 demo”，两种顺序对称（32B 差 ≤0.04） | E04/E21 | L2 |
+| 同一答案内：察觉变化但不重置 | 大写标记时格式规范、映射平坦；删除影响：格式通道旧 demo 支持度为负 8/8，映射通道为正 16/16 | E22/E26 | L2 |
+| 时间结构只在“偏向新输出”的成分上 | 不均衡翻转：条件成分噪声方向错 12/12（6 模型）；少数类 query 被拉错 | E28/E29 | L2 |
+| 证据按输出身份分开 | 分隔阶梯：不同输出词 0.00 ≪ 输入领域 0.36–0.49 < 上下文标签 0.51–0.91 < 时间（完全合并） | E24/E30/E31/E35 | L2 |
+| 泄漏 ∝ 标签语义相似度 | 14 套标签词，ρ=0.75–0.96（5 模型 × 2 任务） | E33 | L2 |
+| 建设性修复：新 regime 换新词 | concept drift 变得可追踪，11/12 格（含 1.7B/2B） | E32 | L2 |
+| 机制：读标签头 + 不可改写的锚点 | 逐头分解重建 r=0.9997；注意力：同类 ×2–69 ≫ 标注者 ×1.5–2.6 ≫ 位置 ≈0；因果修补：方向错误的噪声效应 = 晚层直接读噪声锚点 | E36/E37/E38 | L2 |
+| 为什么（训练统计） | toy：任务同质数据复现解离，易变数据推不动；LoRA 只得到近因 | E12/E18 | L1 |
+
+\*等级见 CLAIMS：凡已满足 L3 泛化条件（≥2 家族、≥2 任务）的主张，在独立校对前一律记为 L2。
+
+关键图（`results/figs/`）：
+- `fig_marked_drift.png`：格式跟随变化、映射不跟（E22）
+- `fig_nearest_not_newest.png`：看最近邻不看最近期（E21）
+- `fig_structure_selectivity.png` / `fig_regime_map.png`：跨任务 × 模型地图
+- `fig_label_similarity_leakage.png`：泄漏 vs 标签语义相似度（E33）
+
+## 4. 被实验否定的解释
+表层 vs 潜在（E11b）· 单条 demo 可识别 regime（E13）· “可复制标签”（condarith）· 任务识别 vs 任务学习（E27）· 时间写进内容（E23）· 输入侧标签分流（E24）· 主效应来自相邻 token 统计（E34）· 映射与主效应由两组头承载（E36）· 新锚点是运行滤波器（E37）· “Label:” 预测位置存放运行估计（E38b）· 游程头 = 边缘通道（E28b）。详见 I04 §5 与 CLAIMS 作废记录。
+
+## 5. 最近邻（完整定位见 I04 §6）
+Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. ICLR'24 · Falck et al. ICML'24 · Zhao et al. ICML'21 · Xiong et al. ICLR'25（任务叠加）· Dudley ICML'26 / Qin ICLR'26（训练模型的变化检测）· Cho et al. ICLR'25 / Yang-Cho-Inoue ICLR'26（检索电路、TR/TL 头）。
+**最危险的压缩：** “ICL = kNN + 标签偏置”——回应见 I04 §6。
+
+## 6. 恢复推进时的下一步（按信息量排序）
+1. 读标签头消融：映射效应与泄漏应同时消失（机制的因果确认）。
+2. 非 Qwen 模型的机制复现（需单 token 标签，如 Llama-3 系列）。
+3. 为什么：预训练数据中“同一输出被重新分配给不同输入”的稀缺性。
+4. 后果：真实非平稳 NLP 场景（内容审核政策更新、标注规范变化、多用户个性化）；DICES 真实评分者噪声过大（kappa 中位 0.19），需更干净的数据。
+
+## 7. 目录
+| 路径 | 内容 |
 |---|---|
-| D0 oracle | exact 层级 Bayes（规则 × 波动 λ × 噪声 ε），28 个单测通过；预测“前缀零散噪声令后缀反例更不可信”（方向相反检验） |
-| E00 仪器 | Qwen3-8B T=16 准确率 ~0.85–0.9，换字典稳定、未饱和 |
-| E02a 结构网格 | 6 个模型（Qwen3 1.7/8/8B-Base、Qwen2.5-7B、Mistral-7B、gemma-2-2b）：位置核平坦、成簇≈零散、前缀噪声使 P(B) **上升**（oracle 下降）、与 set oracle 相关 0.88–0.99；影响由输入相似度决定 |
-| E03 指令 | “规则可能改变”/“少数标签是错的”指令完全不改变签名 |
-| E04 局部更新 | 末尾 8 条反转后，只有与反转 demo 相似的 query 翻转（+0.55），其余仍按旧规则（−0.96）；oracle 两者相同 |
-| E05 输入维度 | d=0（纯标签流）强时间敏感：suffix4−disp4 +10.7、前缀噪声 −4.75（oracle 同向）；d≥1 立即变为集合式 |
-| E06 开关 | 标签流不变、只加无关输入或独特 id：时间敏感**保留**；只有标签依赖输入（规则任务）时消失 → 开关是“表层 vs 潜在”，不是“可区分 item” |
-| E07 自然语言 | SST-5 两极句子：suffix4−disp4 +0.21（oracle +4.02），前缀噪声 +2.1/+4.3（oracle −1.7/−1.9），与 set 相关 0.99 |
-| E08 长上下文/对齐 | T=64：“32 旧→32 新” vs 反序 LM 差 0.05（oracle 6.89）；末尾表层游程为新规则 B 词时 suffix−disp +0.65，为旧规则 A 词时 −0.92（方向反） |
-| 注意力探针 | 标签流中注意力集中于末尾 B 游程（76% vs 均匀 25%）、不按无关输入相似度；规则任务中按相似度、对 B 游程不敏感 |
-| 扫描 | 13 个模型（Qwen3 0.6/1.7/4/8/14/32B、Qwen3-8B-Base、Qwen2.5-7B/32B、Mistral-7B、Llama-2-7B、gemma-2-2b、Qwen3.5-9B 门控线性注意力混合）潜在层签名全部一致：成簇≈零散、前缀噪声方向错误；Base 与 post-trained 的表层/潜在解离相同 |
-| 隐式先验 | 表层（const）最佳拟合 λ≈0.02–0.05、ε≈0.05–0.1（条件均值 R² 0.38 vs 可交换 0.19） |
-| E09 可见 CoT | 非 thinking 模式“想一想”：suffix_4 0.41 ≈ disp_4 0.42，前缀噪声使 P(B) 升至 0.46（方向错），且基础规则学习变差（allA 准确率 0.63）；thinking 模式运行中 |
-| E10 消融 | 16 个晚层“游程头”消融使标签流噪声方向效应 −73%（对照头无效）；分类任务不受影响 |
-| E11/E11b/E13/E15 边界 | 全局变换时间敏感：大写↔反转 suffix−disp +17.2、±3 +5.9（噪声方向均正确）；分类映射时间盲：SST 自然标签 +0.35（噪声方向错）、数字大小 −0.24、奇偶(自然词) +0.51 |
-| E16 确认（无 nonce） | 4 模型 × 6 格式（全新种子）：分类（奇偶/大小/SST）全部时间盲、噪声方向反；大写↔反转/标签流全部时间敏感；±3 因模型而异 |
-| E17 任务向量 | ±3 的任务向量（L22 单个残差）可迁移且自带时间结构（成簇 +0.62、噪声 −0.30、过时折扣 +0.58，CI 均不含 0）；大小分类没有可迁移向量 |
-| condarith | 类别条件变换（答案不可复制）仍时间盲 → 原则是“按输入路由”，不是“可复制” |
-| 进行中 | thinking 模式；关系性全局变换（字母±1、数字±1/±10）；LoRA 易变分类 vs 稳定分类（E18）；toy v2；晚间跨模型扫描 |
+| `ideas/` | I04（主 idea）、I01（早期版本） |
+| `experiments/` | E00–E38 实验卡（跑前写决策表；早期 pilot 的事后补写已标注）；`INDEX.md` 为总索引 |
+| `CLAIMS.md` | 主张账本 C00–C09、混杂审计、作废记录 |
+| `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_OUTLINE.md` 为 10-05 旧版提纲（已被取代，保留作历史） |
+| `DATA_PLAN.md` | 数据方案与实际使用的数据 |
+| `PAIN_LOG.md` | 痛点与工程坑 |
+| `scripts/` | 数据构造、打分、分析、机制脚本；见 [`scripts/README.md`](scripts/README.md) |
+| `results/` | git 里只有汇总表（csv/json）与图；逐条打分 `*.jsonl` 与大数组只在本地 |
+| `logs/` | 每日日志 `YYYY-MM-DD.md`（训练/进程日志只在本地） |
 
-**阻塞：** StepFun step-5 配额已用尽（quota_exceeded），nonce 词库审计停在 25 个已接受属性名；确认版实验需要审计词库。
+## 8. 复现与资产
+- **环境：** `/home/xiang/miniconda3/envs/verl-clean`（transformers 4.57）；Qwen3.5 / Nemotron-H 用 `openslime` + `scripts/vendor`（tf 5.12，不进 git）。
+- **数据：** `data/*/rows.jsonl` 由 `scripts/build_*.py` 以固定种子重建（不进 git）。自然数据集直接下载使用：SetFit/sst5、fancyzhx/ag_news、CogComp/trec、Yelp/yelp_review_full、Todd et al. FV 任务（`data/fv_tasks/`）。nonce 词库经 StepFun step-5（Step Plan 接口）逐条审计：`data/lexicon.json`（标签词 84、属性名 26）。DICES-350 原始 csv 在 `data/dices/`（未使用于结论）。
+- **打分：** `scripts/run_lm.py`（左填充 + 显式 position_ids + 精确多 token log-prob）；多机排队 `scripts/run_queue2.sh HOST GPU "DATA:MODEL ..." BS`、即时启动 `scripts/launch.sh`。
+- **只在本地（不进 git，NFS `/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/`）：** 逐条 LM 打分 `results/*/*.jsonl`（约 570MB，可用 `run_lm.py` 按卡重跑）、训练/进程日志 `logs/*.log`、机制数组 `results/mech/*.npz`（逐头 DLA、锚点 value、注意力；可用 `scripts/mech_*.py` 重建）、注意力探针 `results/*/attn_*.npz`、LoRA/toy 权重 `/tmp/xiang_*`（fvcrc13 本地）。
+- **算力备注：** fvcrc10/13/20 的空卡；NFS 约 40 MB/s，32B 模型首次加载需 ~25 分钟；同一张卡上的任务只放一条队列（两条队列会在交接时撞车导致 OOM）。
 
-## 一句话（当前版本）
-> **冻结 LLM 能不能判断 demonstrations 的顺序究竟是 nuisance 还是 signal，并依据上下文的统计结构，自适应地从 set-like 聚合切换到 sequence-like evidence weighting？**
-
-更宽的 territory 对象：LLM 如何在 context 内识别 exchangeable / correlated / evolving evidence，并相应决定每条 demonstration 应该算多少、旧证据是否仍有效。
-
-## 为什么现在可以正式驻留
-
-强近邻形成清楚的文献张力：
-- ICML 2024 / ICLR 2025：i.i.d./独立 demos 的正确对称性接近 exchangeability；order sensitivity 是问题；
-- ICLR 2026 / regime-change / sequential-correlation work：非平稳或相关 context 中，order/recency 又是真信息；
-- 现有工作主要分别研究某一种已知数据结构。
-
-本 workbench 的第一科学对象不是“order matters”，而是：
-> **同一个 pretrained frozen LM 是否会从 demonstrations 本身推断当前应采用哪一种 evidence structure。**
-
-直接检索截至 2026-10-05 未找到以该 adaptive structure inference 为主对象的工作；新近邻出现时必须重新定位。
-
-## Ownership fence
-
-不能注册为我们的主张：
-- ICL order sensitivity；
-- iid exchangeability/martingale violation；
-- invariant ICL method；
-- nonstationary recency advantage；
-- in-context changepoint detection；
-- sequential correlation / effective context length；
-- single corrupted-demo conflict；
-- in-context continual-learning forgetting；
-- temporary task vectors/representations。
-
-最危险的 reviewer compression：
-> “InvICL + nonstationary ICL 放进同一张表。”
-
-未来 lead 必须给出新的 **structure-selective measurement / predictive account / consequence**，而非覆盖更多 regime。
-
-## 第一驻留块
-
-1. **D0**：实现 exact-gold nonce attribute-rule generator + exact set/sequence/meta oracle；固定 pilot/confirm seeds。
-2. **E00**：单模型 clean STABLE 条件验证真正 demonstration-dependent task learning，有足够 headroom，排除 label semantics / copy。
-3. **E01**：两个极端校准——clean exchangeable vs obvious single-change；验证 M1/M2/M3 能区分 set-like 与 sequence-like 行为。
-4. **E02**：核心决定性 pilot——matched NOISE-vs-CHANGE。控制 contradiction count、token budget、input/label marginal，观察模型是否依据矛盾的时间组织改变 evidence weighting。
-5. E02 前禁止 probe/SAE/task-vector fishing；E02 后也只有在 competing accounts 需要时才做白盒。
-
-## 核心 competing accounts
-
-1. **Fixed positional prior**：无论统计结构如何，基本使用同一套 recency/primacy 权重。
-2. **Set learner**：近似 exchangeable；stationary 做得好，但真实 change 后更新慢。
-3. **Sequence heuristic**：普遍迷信最近样本；change 做得好，但把孤立 noise 当成 regime shift。
-4. **Adaptive structure learner**：随着 context 对 stable/change 的证据改变，证据权重向相应 oracle 移动。
-
-E02 的设计必须让这四种解释产生不同预测。
-
-## 标准 measurement
-
-- M1 stationary permutation dispersion；
-- M2 per-position counterfactual demo influence kernel；
-- M3 set-oracle / sequence-oracle / meta-oracle fit；
-- M4 structure selectivity：模型 evidence weighting 是否随 evidence structure 发生规范方向的改变。
-
-不把 overall accuracy 当唯一结论。
-
-## Idea 组合
-目前不预注册 paper idea。首批 pressure families：
-- symmetry / exchangeability；
-- dependence / redundancy；
-- nonstationarity；
-- structure inference；
-- conflict attribution（noise vs new regime）；
-- cross-task transfer；
-- mechanism（条件分支）。
-
-## 主张摘要
-见 [CLAIMS.md](CLAIMS.md)。当前只有 instrument/measurement 主张，没有论文 finding。
-
-## 痛点摘要
-见 [PAIN_LOG.md](PAIN_LOG.md)。
-
-## 决策记录
-- **2026-10-05：REGISTERED / PROPOSED。** 人要求继续 ownership audit 直到找到彻底可以注册的 ICL workbench。generic forgetting、latent retention、change-point、conflict、temporary task-state 等入口因直接近邻降级；最终选择 evidence-structure inference 作为 territory。
-- 不自行抢占现有 ACTIVE 槽位；baseline residency 可执行。
-
-## 资产位置
-- procedural generator / exact oracle：scripts/
-- experiment cards：experiments/
-- small generated manifests / summaries：results/
-- 大 raw/model cache 不进 git。注意力探针原始数组：`results/*/attn_*.npz`（NFS 本地，不进 git；可用 `scripts/attn_probe.py` 重建）。
-- nonce prompt 行（`data/*/rows.jsonl`）由 `scripts/build_*.py` 以固定种子重建；LM 打分 `results/*/*.s*.jsonl` 进 git。
+## 9. 决策记录
+- **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。
+- **2026-10-06：** 人决定 I04 为主 idea，先做机制；机制阶段完成第一轮（E36–E38）。
+- **2026-10-06：** 人决定暂停推进，留作之后主推的 candidate；转去找新题。

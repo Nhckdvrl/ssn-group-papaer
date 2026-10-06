@@ -1,7 +1,7 @@
 
 # E00：Nonce Rule Task Learning Instrument Validation（2026-10-05）
 
-- **状态：** PLANNED
+- **状态：** DONE（2026-10-06 整理时更新状态）
 - **类型：** REPRO / INSTRUMENT
 - **对应：** C00
 - **问题（一句话）：** frozen open LM 能否仅凭 demonstrations 学会 episode-randomized hidden rule，并在 held-out input 上稳定泛化，从而给后续 evidence-structure 实验提供有效仪器？
@@ -20,3 +20,6 @@
 
 ## 结果
 待运行。
+
+## 事后补记（2026-10-06，流程字段）
+- **决策表（跑之前写）：** 见上方“决策”条目（跑前写定；此处仅为流程字段名对齐）。
