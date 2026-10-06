@@ -22,8 +22,13 @@ def main():
         heads = set(np.argsort(-Hs["s8-p8_bias"].ravel())[:20]) | set(np.argsort(-Hs["s8-p8_cond"].ravel())[:20])
         hl = [divmod(int(k), H) for k in heads]
         print(f"\n===== {model} / {task}  reading heads {len(hl)}")
-        sumv = lambda u, ts: float(sum(vp[idx[u]][l, h, ts].astype(float).sum() for l, h in hl))
-        sumav = lambda u, ts: float(sum((vp[idx[u]][l, h, ts].astype(float) * at[idx[u]][l, h, ts].astype(float)).sum() for l, h in hl)) / rms[idx[u]]
+        Li = np.array([l for l, _ in hl]); Hi = np.array([h for _, h in hl])
+        ii = np.array([idx[u] for u in T.uid])
+        V = vp[ii][:, Li, Hi, :].astype(np.float32).sum(1)                                   # [n, 16]
+        AV = (vp[ii][:, Li, Hi, :].astype(np.float32) * at[ii][:, Li, Hi, :].astype(np.float32)).sum(1) / rms[ii][:, None]
+        row = {u: k for k, u in enumerate(T.uid)}
+        sumv = lambda u, ts: float(V[row[u], ts].sum())
+        sumav = lambda u, ts: float(AV[row[u], ts].sum())
         def delta(p1, p2, ts, f):
             out = {}
             for q in ("maj", "min"):
