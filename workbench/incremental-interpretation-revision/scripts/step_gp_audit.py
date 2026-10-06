@@ -179,6 +179,10 @@ def main():
     output = []
     for r in rows:
         uid = r['item_id']; record = dict(r)
+        if uid in both:
+            a,b=passes[0][uid],passes[1][uid]
+            record.update(step5_passes=[a,b],step5_grammar_agreed=a['grammar']==b['grammar'],
+                step5_position_agreed=(a['disamb_word_index'],a['amb_span'])==(b['disamb_word_index'],b['amb_span']))
         if uid not in both:
             record['step5_status'] = 'incomplete'
         elif uid in {d['item_id'] for d in disagree} and uid not in adjudicated:

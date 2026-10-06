@@ -20,7 +20,7 @@
   - 构式/模型异质 → 保留完整归因地图，机制追问须跨族，不挑单模型局部链。
   - D0-v2显示原“矛盾”实际多数NEITHER → 完整报告测量纠正；按可用真实条目铺图；必要时E59角色问句（先Step5审）区分同一事件与额外事件，不改原gold。
   - 接口/资产失败 → 保存失败、独立修复；确实无法解决才按§6.7(a)回人。
-- **算力预算：** 初估地图12–30 GPU·h（含完整A面板与thinking，不保证几十分钟/模型）；实测后追加。Step CPU/API，原始请求本地。**实际：** 尚未运行。
+- **算力预算：** 初估地图12–30 GPU·h（含完整A面板与thinking，不保证几十分钟/模型）；实测后追加。Step CPU/API，原始请求本地。**实际：** 已运行，首批完成的1.7/4/Gemma4地图分别.367/.819/.781 GPU·h；其余配置逐run累计，不能把尚未完成的完整面板预算当实耗。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 - 无新推断结果，无新CI。C06–C09 L0。
@@ -78,3 +78,14 @@ v1错误地要求thinking-on的prompt已含`<think>`，实际模板由模型生�
 
 ### 作者Gemma仪器未通过（继续独立修复，不作能力结论）
 公开Gemma4B 19264 regular行中4631两候选同时0（24.0%），不能当有效概率或错误。原首步数据、BF16三步fallback、FP16尝试原样保留：FP16 generate出现非有限概率，属于数值失败；BF16三步15766有分数但与未剔零质量的公开值仍大幅不一致，不称复现成功。进一步核对原base_inference：Gemma直接加载Gemma3ForCausalLM且未指定dtype（默认FP32），不是Qwen的FastChat FP16路径。正在按此类/精度完整对齐；public comparator剔开blank/nonfinite/zero-both并报告缺失数量。旧比较文件保留，重算用新文件，后续新阅读条件暂不依赖未校准Gemma A的概率叙事。
+
+### 三族FP32确认面板（效应分析前登记）
+固定Qwen3-8B、Gemma3-12B-it、Llama3.1-8B-Instruct，全部1732题、B两mapping、R0/R1/R3/R4/R5及R0一句恢复，FP32独立单卡复算；不按已看到的效应选材料。FP32与BF16作为独立面板分析，不混为重复样本；R2在完整Step位置资格后补两种精度。此扩展是前述probability/layout敏感性尚未解决的确认测量，不围绕弱1.7B继续局部研究链。原BF16全面板仍完整保留；若效应在稳定精度下不成立，降级相关概率主张而不筛选更有利版本。
+
+### 非标准final答案独立审计与源parser仪器
+四个已完成Qwen thinking/off中63个非标准但结束的final回答，交Step5两遍匹配显示选项（两批独立打乱、分歧第三遍）；只看post-think最终文本及选项，不提供句子/问题/gold，未闭合thinking不送审，label与文字冲突保留UNKNOWN。不改原prediction，独立审计映射在分析时核hash采用，所有未知/失败仍单列。两遍字段中的T1/T3固定兼容值不作世界语义/语法gold。
+Gemma精度/class/fallback仍不足以重合公开值；source复现改用未改写的上游parser函数AST、原generate(max_new_tokens=3)与默认采样、逐prompt无padding，固定14材料×16提示，seed52/53都报告、保存实际3token上下文，不筛seed。这是E52标准仪器校准，不以其局部波动作科学finding。已从hf-mirror.com获取不重定向的元数据，两权重SHA与ModelScope完全一致，未直连HF；对应镜像revision093f9f388b31de276ce2de164bdc2081324b9767，未证明与作者当时revision相同。
+最终资格额外要求两遍grammar都acceptable，第三遍不能把两个marginal升级为accepted；T2采用原两遍共识，第三遍位置冲突记缺失。未裁决的T1分歧同样保留两遍标签供一致率分母，不能因裁决失败使一致率虚高。
+
+### Gemma A复现自审后继续
+未改写上游parser、FP32 text model、逐题无padding、固定seed52/53：193个两seed都有效的任务仅1个decision flip/平均概率差.01654；与公开有效记录342个匹配仍131 flips/平均.37752，明显不在本地采样噪声内。原始3token上下文、两个seed及所有先前失败保留。不宣称复现通过，Gemma A暂为描述读数、不支撑与原文对齐的能力叙事；不按更有利版本选输出。停止围绕该局部校准异常连锁，假说表仍无E1/E2/E4能力证据，E3的问句问题仍待完整D0-v2；该软件/版本差异本身不是科学finding。三族B FP32确认与其余族/格式的系统测量继续，尚无资源级真正卡住。

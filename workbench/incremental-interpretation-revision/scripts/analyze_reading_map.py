@@ -13,6 +13,13 @@ def load(path):
 
 def assemble(data, annotation, out):
     rows = load(data); labels = {r['item_id']: r for r in load(annotation)}
+    pass_paths=[annotation.parent/f'pass{n}.jsonl' for n in (1,2)]
+    if all(p.exists() for p in pass_paths):
+        passes=[{a['item_id']:a for a in load(p)} for p in pass_paths]
+        for uid in passes[0].keys()&passes[1].keys():
+            a,b=passes[0][uid],passes[1][uid]
+            labels[uid].update(step5_passes=[a,b],step5_grammar_agreed=a['grammar']==b['grammar'],
+                step5_position_agreed=(a['disamb_word_index'],a['amb_span'])==(b['disamb_word_index'],b['amb_span']))
     for row in rows:
         row['source_disamb_word_index']=row['disamb_word_index']
         row['disamb_word_index']=None
@@ -50,7 +57,8 @@ def assemble(data, annotation, out):
             if not row['needs_revision'] or row['analysis_question_target'] != 'initial' or conditions != {'gp', 'control'} or not others: continue
             candidate = [row, *others]
             if any(r.get('step5_status') not in ('agreed', 'adjudicated') for r in candidate): continue
-            if any(not r.get('step5_grammar_agreed') or r['step5_annotation']['grammar'] != 'acceptable' for r in candidate): continue
+            if any(not r.get('step5_grammar_agreed') or r['step5_annotation']['grammar'] != 'acceptable' or
+                any(a['grammar']!='acceptable' for a in r['step5_passes']) for r in candidate): continue
             def contradicted(r):
                 annotation = r['step5_annotation']
                 if r['question_format'] == 'yn': return annotation['label'] == 'CONTRADICTED' and r['options'][r['gold']] == 'No'
@@ -60,8 +68,10 @@ def assemble(data, annotation, out):
     for group in paired.values():
         gps = [r for r in group if r['condition'] == 'gp' and r.get('step5_status') in ('agreed', 'adjudicated')]
         if not gps: continue
-        gp = gps[0]; a = gp['step5_annotation']
+        gp = gps[0]; a = gp['step5_passes'][0]
         if not gp.get('step5_position_agreed'): continue
+        adjudicated=gp['step5_annotation']
+        if (adjudicated['disamb_word_index'],adjudicated['amb_span'])!=(a['disamb_word_index'],a['amb_span']):continue
         index = a['disamb_word_index']; word = a['disamb_word']
         if index is None: continue
         gp.update(disamb_word_index=index, amb_span=a['amb_span'], position_origin='two-pass Step5 agreement')
@@ -86,6 +96,7 @@ def assemble(data, annotation, out):
         position_available=sum(r['disamb_word_index'] is not None for r in rows), data_sha256=sha(data),
         position_inconsistent_sentences=len(inconsistent),
         annotation_sha256=sha(annotation), assembled_sha256=sha(out))
+    summary['pass_sha256']={p.name:sha(p) for p in pass_paths if p.exists()}
     out.with_suffix('.manifest.json').write_text(json.dumps(summary, indent=2)+'\n'); print(json.dumps(summary))
 
 
@@ -99,10 +110,18 @@ def estimate(values, seed=52):
     return dict(estimate=float(x.mean()), ci95=list(map(float, np.quantile(means, [.025, .975]))), n_clusters=len(x))
 
 
-def analyze(data, run_dirs, out, filler_audits=None):
+def analyze(data, run_dirs, out, filler_audits=None, final_choice_audits=None):
     metadata = {r['item_id']: r for r in load(data)}; output = dict(models={}, data_sha256=sha(data), runs=[])
     per_model = collections.defaultdict(dict)
     identities = {}
+    final_labels={};final_scopes=[];final_review_counts=collections.Counter()
+    for directory in final_choice_audits or []:
+        assert (directory/'step5/summary.json').exists(),'Incomplete final-choice audit'
+        for r in load(directory/'step5/annotated.jsonl'):
+            assert r['item_id'] not in final_labels,'Duplicate final-answer audit; never select favorable versions'
+            final_labels[r['item_id']]=r
+        final_scopes.append(dict(path=str(directory),scope=json.loads((directory/'scope.json').read_text()),
+            annotation_sha256=sha(directory/'step5/annotated.jsonl')))
     filler_labels={};filler_scopes=[];filler_rejections=collections.Counter()
     for directory in filler_audits or []:
         scope=json.loads((directory/'scope.json').read_text())
@@ -122,6 +141,23 @@ def analyze(data, run_dirs, out, filler_audits=None):
         for r in predictions:
             assert r['mode'] in ('sequence', 'generation'), 'Legacy processed scores are instrument calibration, not primary map'
             assert metadata[r['item_id']]['sentence_sha256'] == r['sentence_sha256']
+            if r['mode']=='generation' and r['answer_status'] not in ('complete','complete_labelled_option','unfinished_thinking'):
+                uid=f'{model}:{r["reading"]}:{r["item_id"]}:mapping{r["mapping"]}'
+                audit=final_labels.get(uid)
+                if audit is not None:
+                    text=r['text'].rsplit('</think>',1)[1] if r['reading']=='R6' else r['text']
+                    assert __import__('hashlib').sha256(text.encode()).hexdigest()==audit['sentence_sha256']
+                    if audit.get('step5_status') in ('agreed','adjudicated'):
+                        labels=audit['step5_annotation']['option_labels']
+                        if labels in (['ENTAILED','CONTRADICTED'],['CONTRADICTED','ENTAILED']):
+                            choice=labels.index('ENTAILED')
+                            r.update(correct=choice==r['candidate_gold'],answer_status='Step5_validated_final_choice')
+                            final_review_counts[model+'/resolved']+=1
+                        else:final_review_counts[model+'/ambiguous']+=1
+                    else:final_review_counts[model+'/unresolved_audit']+=1
+                else:final_review_counts[model+'/not_audited']+=1
+            if r['reading']=='R4' and metadata[r['item_id']].get('analysis_condition',r['condition'])=='gp':
+                continue  # Original coarse DEPTH labels did not define a cue manipulation.
             if r['reading']=='R3':
                 assert filler_labels,'R3 inference needs independent filler quality audit before interpretation'
                 sentence=metadata[r['item_id']]['sentence']
@@ -228,6 +264,7 @@ def analyze(data, run_dirs, out, filler_audits=None):
     effects_path=out.with_suffix('.cluster-effects.jsonl');write_jsonl(effects_path,effects)
     output['cluster_effects_path']=str(effects_path);output['cluster_effects_sha256']=sha(effects_path)
     output['filler_audits']=filler_scopes;output['filler_quality_excluded_tasks']=dict(filler_rejections)
+    output['final_choice_audits']=final_scopes;output['final_choice_review_counts']=dict(final_review_counts)
     output['interpretation'] = 'NEITHER/initial_all are agreement with the published No convention, not semantic accuracy. No automatic scientific account selection.'
     out.write_text(json.dumps(output, ensure_ascii=False, indent=2)+'\n')
 
@@ -236,6 +273,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser(); ap.add_argument('--data', type=Path, required=True)
     ap.add_argument('--annotation', type=Path); ap.add_argument('--runs', type=Path, nargs='*')
     ap.add_argument('--filler-audits',type=Path,nargs='*')
+    ap.add_argument('--final-choice-audits',type=Path,nargs='*')
     ap.add_argument('--out', type=Path, required=True); args = ap.parse_args()
     if args.annotation: assemble(args.data, args.annotation, args.out)
-    else: analyze(args.data, args.runs, args.out,args.filler_audits)
+    else: analyze(args.data, args.runs, args.out,args.filler_audits,args.final_choice_audits)
