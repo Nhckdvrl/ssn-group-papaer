@@ -8,7 +8,7 @@ import signal
 import subprocess
 import sys
 import time
-from data import sha
+from data import sha,write_jsonl
 
 
 def share_api_slots(root):
@@ -44,7 +44,7 @@ def share_api_slots(root):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,required=True);args=parser.parse_args();root=args.root
+    parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,required=True);parser.add_argument('--role-v2',action='store_true');args=parser.parse_args();root=args.root
     script=Path(__file__).parent;names=['Qwen3-8B','gemma-3-12b-it','Meta-Llama-3.1-8B-Instruct'];runs=[root/'runs-v1'/name for name in names]
     start=time.monotonic();last=None
     while True:
@@ -61,15 +61,42 @@ def main():
     share_api_slots(root)
     previous=[root.parent/'E63/T4-full-v1',root.parent/'E53/T4-instrument-v2']
     sources=root.parent/'E63/sources-v1.jsonl';data=root.parent/'E63/data-v1.jsonl'
-    subprocess.run([sys.executable,str(script/'audit_paraphrases.py'),'--data',str(sources),'--runs',*map(str,runs),'--out',str(root/'T4-full-v1'),
+    audit_runs=runs;auditor='audit_paraphrases.py';version='v1'
+    if args.role_v2:
+        version='v2';auditor='audit_paraphrases_role_v2.py'
+        # Input-defined correction scope: every MVRR packet, irrespective of old labels.
+        source_rows=[json.loads(l) for l in sources.read_text().splitlines()]
+        mvrr={r['sentence'] for r in source_rows if r['construction']=='MVRR'}
+        retained=[];removed=0;original=[]
+        for directory in previous:
+            labels=directory/'step5/annotated.jsonl';original.append(dict(path=str(directory),sha256=sha(labels)))
+            for row in map(json.loads,labels.read_text().splitlines()):
+                source=row['sentence'].split('\n\nPARAPHRASE:\n',1)[0].removeprefix('SOURCE:\n')
+                if source in mvrr:removed+=1
+                else:retained.append(row)
+        assert len({r['item_id'] for r in retained})==len(retained)
+        legacy=root/'legacy-non-MVRR-v1';(legacy/'step5').mkdir(parents=True,exist_ok=True)
+        write_jsonl(legacy/'step5/annotated.jsonl',retained)
+        (legacy/'step5/summary.json').write_text(json.dumps(dict(complete=True,retained=len(retained),removed_MVRR=removed,
+            policy='Completed v1 labels retained only outside the input-defined MVRR correction scope; no filtering by outcome or direction.'))+'\n')
+        (legacy/'scope.json').write_text(json.dumps(dict(original=original,scope='Input-defined non-MVRR completed legacy labels. MVRR regenerated with role-v2 clarification.',annotation_sha256=sha(legacy/'step5/annotated.jsonl')),indent=2)+'\n')
+        previous=[legacy]
+        audit_runs=[root.parent/'E63/runs-v1'/name for name in names]+runs
+    audit=root/f'T4-full-{version}'
+    subprocess.run([sys.executable,str(script/auditor),'--data',str(sources),'--runs',*map(str,audit_runs),'--out',str(audit),
         '--workers','4','--previous-audits',*map(str,previous)],check=True)
     results=[]
     for reference,comparison in [('BASE_BANK','FULL_BANK'),('BASE_BANK','TARGET_BANK'),('BASE_BANK','CONTEXT_BANK'),('CONTEXT_BANK','TARGET_BANK')]:
-        out=root/f'{comparison}-minus-{reference}-v1.json'
+        out=root/f'{comparison}-minus-{reference}-{version}.json'
         subprocess.run([sys.executable,str(script/'analyze_source_bank_routes.py'),'--data',str(data),'--sources',str(sources),'--runs',*map(str,runs),
-            '--audits',str(root/'T4-full-v1'),*map(str,previous),'--reference-condition',reference,'--comparison-condition',comparison,'--out',str(out)],check=True)
+            '--audits',str(audit),*map(str,previous),'--reference-condition',reference,'--comparison-condition',comparison,'--out',str(out)],check=True)
         results.append(dict(path=str(out),sha256=sha(out),reference=reference,comparison=comparison))
-    (root/'complete-map-v1.json').write_text(json.dumps(dict(results=results,policy='All registered families, source cohorts and conditions; complete blind audit before outcome analysis.'),indent=2)+'\n')
+    if args.role_v2:
+        e63=root.parent/'E63/shared-source-cross-use-map-v2.json'
+        subprocess.run([sys.executable,str(script/'analyze_shared_source_cross_use.py'),'--data',str(data),'--sources',str(sources),
+            '--runs',*[str(root.parent/'E63/runs-v1'/name) for name in names],'--audits',str(audit),*map(str,previous),'--out',str(e63)],check=True)
+        results.append(dict(path=str(e63),sha256=sha(e63),scope='E63 same frozen runs, corrected MVRR T4 v2; original v1 preserved.'))
+    (root/f'complete-map-{version}.json').write_text(json.dumps(dict(results=results,policy='All registered families, source cohorts and conditions; complete blind audit before outcome analysis.'),indent=2)+'\n')
     print('E64 all contrasts ready',flush=True)
 
 

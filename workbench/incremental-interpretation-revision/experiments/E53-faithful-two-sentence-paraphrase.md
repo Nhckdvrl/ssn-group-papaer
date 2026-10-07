@@ -35,3 +35,5 @@ E52查到重复BOS后，核对vLLM实际prompt_tokens：Gemma12旧252 vs模板25
 因用户明确要求继续深入探索，E53被用于I03/I04的另一自然用途：QA缺陷是否也进入角色表达。按原6条件、全部三族输出恢复双遍盲审和分歧裁决，原定义/批大小2/Step Plan step-5-preview/共8并发均不改；全部缓存与暂停记录保留。当前审模型新生成文本，不重审已完成的原句T1/T3，也不根据已有部分T4标签缩小范围。resume记录external E53/research-resume-v1.json，正在审核，尚无代表总体的角色数字。
 
 - 2026-10-07 API算力优先级调整：完整数据与原双遍协议/缓存不变，两路driver各2worker，给新E63留4worker，共享总并发8。接管全部8请求槽、待返回/保存后替换driver，未取消HTTP；记录external E63/api-rebalance-v1.json。不是研究暂停或状态改变。
+
+- POST-HOC T4语态/施事澄清：E63的固定顺序完整标注复核发现inchoative merge被主动形态误判施事（P15）。E53原完整双遍缓存继续保留；完成后所有MVRR输出按role-v2规则重新双盲，非MVRR有效相同packet复用，未解决技术失败重试，不根据旧类别选条。自动完整纠正/地图worker为finish_paraphrases_role_v2.py，PID652847；最终元数据qualified-v3已检查覆盖全部570源/member IDs。没有源句重审或生成重跑。

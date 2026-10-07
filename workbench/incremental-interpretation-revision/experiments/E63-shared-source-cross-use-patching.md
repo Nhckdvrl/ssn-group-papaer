@@ -39,3 +39,7 @@ MVRR GP角色正确收益（19源clusters）：Qwen+31.58pp [5.26,57.89]，Gemma
 - 分析细化（完整T4/效果读取之前）：另报同一源QA×角色正确的四格表、QA错误但角色正确的配对cluster估计，与co-repair一起解释共同与用途特定变化；unknown独立显示、不计语义错误。所有原定主读数不改，不能把角色BASE已正确的QA修复误叫“两用途都修复”。
 
 - 全体生成完成：三族各1888QA/216复述，共5664评分/648输出，GPU·h .133059/.245587/.134714，合计.513360；54GP源/51连通词汇cluster，MVRR19/NPS26/NPZ9 GP源。495独立source/output包进入Step Plan双盲（不重复审计源），完整统计须等全部审核；不解读部分T4类别比例。
+
+### POST-HOC 标注规则纠正（v1保留）
+
+已完成裁决的固定顺序抽查发现：department was merged→department merged 被仅凭主动句式判为施事变化；merge可作inchoative，语法主语不等于施事。原CORRECT_ROLES/GP_MISREADING/OTHER意图未变，但判定规则需澄清。原v1结果与74裁决全部保留；MVRR角色数字及共同修复结论暂待v2复核，QA分数不受影响。按输入construction=MVRR完整重审E63/E64全部相关输出，不按旧标签/收益挑条；使用新双遍/第三遍、Step Plan batch2，非MVRR已审完全相同packet复用。新结果另存v2、比较所有更改。

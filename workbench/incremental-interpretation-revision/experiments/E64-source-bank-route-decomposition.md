@@ -28,3 +28,9 @@
 三族各3776QA，全部原E63任务键×四bank完整覆盖。MVRR initial TARGET−CONTEXT：Qwen+43.33pp [20,66.67]，Gemma+19.44 [0,38.89]，Llama+18.33 [5,35]，15clusters；TARGET−BASE +36.67 [6.67,63.33]/+12.78 [−11.11,34.44]/+18.33 [5,35]。CONTEXT−BASE −6.67/−6.67/0，其区间均含零。NPZ仅9clusters，TARGET−CONTEXT +22.22 [0,55.56]/+11.11 [−22.22,44.44]/+27.78 [5.56,50]；NPS弱cue与多数null完整报告。final与反向cue作用不能略过，均在[QA摘要](../results/E64-complete-QA-summary.json)及完整地图/SHA中。
 
 只支持固定source-bank的QA位置中介线索：在Qwen/Llama MVRR中，歧义词的反事实轨迹比其余源轨迹作用大；Gemma不强判。它不是已存在的正确parse、不是自由角色修复、不是整合后的新颖性结论。角色生成/T4继续；本局部链E63/E64后不继续拆层/扫位置。转向E65完整四构式goal→未询问关系的预测矩阵。
+
+### POST-HOC T4澄清与v2完整图
+
+同E63的语法voice/语义agent实际标注错误：所有MVRR输出改用role-v2规则完整双盲，不挑误例；其它既有packet标签复用。合并E63/E64完整生成面板一次去重审计，恢复两个实验完整图；原v1与所有模型输出保留，不改QA/cohort/源库干预。旧等待driver在任何HTTP启动前替换为v2 driver633093，生成进程不受影响。该纠正不新增pilot。E53后续MVRR也须按相同澄清重审，未完整前不使用其角色结论。
+
+- 三族完整生成：11328 QA/1296自由输出，GPU·h .289351/.535684/.324346，合计1.149381。合并E63/E64角色1944 assignments、656独立packet；287相同非MVRR有效旧包复用，369新包/全部相关MVRR按role-v2双盲。不读部分T4类别。API安全接管后E53每pass2worker（657536/657537）、E64四worker，共8；原随机顺序/缓存不变，无HTTP取消。

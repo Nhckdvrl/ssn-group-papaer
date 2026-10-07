@@ -37,3 +37,7 @@
 | P14 | 2026-10-06 | E24–E51 共 28 个实验复用同一批 24 句（12 族），只用 Qwen3-8B；而 Qwen3-8B 在反身 Subj/Obj 上几乎没有 GP 差距（47.7% 对 51.8%） | 实验卡与公开结果审计 | 设计空间被压成一个点，每条主张只有 4–12 个 cluster | EXECUTION_BRIEF §6：≥3 族、≥2 构式，禁止单模型连锁实验和旧模板扰动 |
 
 | P15 | 2026-10-06 | 取消客户端请求后Step服务端仍占并发，后续请求429；旧driver把429当semantic失败立即拆单扇出 | E52 step-full-v2/v3 raw/request与interrupted.json | 总本地并发≤8不保证服务端已释放取消请求；429不是标签 | E52 v4有界传输退避、保存每次response、暂用4并发；不给429消耗语义重试或通过计数 |
+
+### P15：语法voice被误当语义agent（2026-10-07）
+
+E63完整T4固定顺序抽查中，department was merged→department merged被第三遍仅凭主动形态判施事；inchoative merge仍可描述patient经历合并。不是原始可信benchmark要逐条重审，而是新输出的role判定存在具体shortcut。v1保存；E63/E64所有MVRR packet按role-v2澄清双遍重审，E53随后同规则处理；非MVRR既有完全相同packet复用。未改类别定义、模型输出或QA；语义角色必须由实际词义/论元赋值决定，模糊情况OTHER。MVRR旧role数字在v2前暂定，QA不受影响。
