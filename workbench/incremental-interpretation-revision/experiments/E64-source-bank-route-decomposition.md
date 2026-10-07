@@ -7,7 +7,8 @@
 - **方法：** 为每个任务未知源，缓存所有block后的两套完整源轨迹：原BASE和E63自然cue局部修补后PAIR。随后任务完整prefix推理在每个block后覆写全部源位置，使其只能读取指定的固定源库。四个科学条件：BASE_BANK（全部原轨迹）；FULL_BANK（全部PAIR轨迹）；TARGET_BANK（仅原歧义词token使用PAIR轨迹，其余源用BASE）；CONTEXT_BANK（歧义词BASE，其余源PAIR）。两组源位置不重叠、并集为全部S，FULL是二者同时替换的阳性对照。不同用途/问句/答案都不能进入缓存。
 - **解释边界：** TARGET的晚层轨迹也包含它原先受到的传播影响，不能叫纯早层原向量；CONTEXT包含全部其他词，不只消歧词。操作分解消费者访问的源位置中介，不能证明这些向量只编码语义、不能将两项效应相加或据此证明原GP拥有正确解析。冻结原源轨迹可能有数值差异，先通过原BASE/FULL完整原生重算复现再解释。
 - **主读数：** 原QA正确率与p_correct（words/letters、两mapping、initial/final/all、samegold与全部）；新复述CORRECT_ROLES/GP_MISREADING/OTHER/cap/unknown。BASE_BANK为统计参考，FULL/TARGET/CONTEXT收益与原正确损失全部报告；QA×角色共同修复、角色已正确但QA错误分开。按E63源unit→相同S→词汇cluster平均，10k bootstrap95%CI，seed64；不筛baseline错误、cue成功、族/构式或最佳condition。
-- **阳性对照、噪声地板：** 固定输入排序首4源及所有对应QA仪器：BASE_BANK对NATIVE_BASE、FULL_BANK对原E63单层PAIR，候选LP差<.001；16步greedy须相同。每层保存轨迹，source-only与native full-prefix所有源位置abs<.001或relativeL2<1e-5；混合轨迹的源输出必须与指定bank完全一致；非源输出不能被覆写。全部三族仪器通过后才运行科学条件。冻结条件中完整源不依赖任务，提前已逐字验证所有用途的源prefix相同。
+- **阳性对照：** 固定输入排序首4源及所有对应QA仪器：BASE_BANK对NATIVE_BASE、FULL_BANK对原E63单层PAIR，候选LP差<.001；16步greedy须相同。每层保存轨迹，source-only与native full-prefix所有源位置abs<.001或relativeL2<1e-5；混合轨迹的源输出必须与指定bank完全一致；非源输出不能被覆写。全部三族仪器通过后才运行科学条件。冻结条件中完整源不依赖任务，提前已逐字验证所有用途的源prefix相同。
+- **噪声地板：** FP32/eager的固定输入原生与源库LP差<.001、16步greedy相同；所有源位置abs<.001或relativeL2<1e-5，混合输出与指定bank精确相同。
 - **决策表（跑之前写）：** FULL复现但TARGET独有→入口在歧义词的任务读取，追词关系/内容分解；CONTEXT独有→源后续位置介导，追后段绑定形成/更新；两组单独都弱但FULL强→互补/交互，需独立机制变量而非直接命名；QA与角色依赖不同组→用途组装的具体证据，设计新用途和自然构式迁移；全部弱/区间宽→该入口不足，回完整E53与任务条件R5线索，不继续局部层数grid。任何结果都不自动认定合格idea。
 - **预算与数据质控：** 三族独立单卡0/1/2，各≤3GPU·h，与E53共两个pilot；已缓存HF模型全部离线，禁止直连。只审新output包，复用完全相同S/output已完成双盲标签，其余Step Plan step-5-preview、batch2≤5、4workers且共享总并发≤8，双遍独立顺序/第三遍裁决。完整审核前不读取部分语义比例。原始缓存、轨迹、配置、SHA和全部失败外置E64，小摘要进git。
 
