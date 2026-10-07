@@ -31,3 +31,9 @@
 - MVRR没有共同恢复：INITIAL initial+2.47/−16.67/+16.05；同一initial目标下完全同题与其他原initial问句方向可不同（Llama+35.19 vs−14.06pp）。NPVP joint增益也不一致，提前FINAL甚至损伤cue正确final。完整letters/p_correct复核方向：NPZ INITIAL初始收益三族仍正，Llama INITIAL→NPZ/NPS未问final迁移仍正；绝不只展示这两个有利模型面板。
 - 当前三句话故事：提前关注“旧关系是否成立”能改善多个模型的修订判定，但其跨关系迁移不统一。最终关系的提前目标未必促进撤销旧关系，部分族甚至强化不一致。目标的作用发生在源编码还是后续组装尚未知；问句先放/重复本身已有近邻，不足认定novelty。
 - 推翻与最高信息量下一步：E66只让提前目标经源token抵达后续消费者，保持源的原生编码逐层不变，比较目标效应是否保留；若普遍消失，则转向问句直接作答路径而非“目标改变了源解释”。不追加目标措辞/层位置网格；两次局部追问后再自诊断。
+
+### POST-HOC目标语义命名校对（P16）
+
+原question_target≠预期更新操作：NPZ有17初始目标源支持Yes，MVRR有19最终目标源支持No；完整原条件/数据/读数保留，不将其整体命名撤销/建立。另以input-only initialNo_finalYes、initialYes、finalNo全部层及evalGold拆分已有输出，先保留全图再限定解释。拆分晚于E65全效应、早于E66全效应与E67角色效应，非事前主分析；没有补跑提示/重新逐条审原数据。
+
+- P16完整input层已读：initialNo_finalYes NPZ71clusters，INITIAL joint Q/G/L+19.01 [8.45,29.58]/11.97 [1.41,22.54]/35.21 [24.65,45.77]pp；INITIAL→真正final Yes−7.04 [−12.68,−2.11]/+5.63 [.70,11.97]/+32.39 [22.54,42.25]pp。NPZ的17 initialYes组在Q/L joint增益0，Gemma+8.82 CI含0。MVRR canonical只有8clusters仍不稳定，NPVP canonical joint不增，不挑NPZ/Llama包装普遍机制。外置goal-truth-strata-posthoc-v1.json、小摘要results/E65-goal-truth-posthoc-summary.json，原主图不换。

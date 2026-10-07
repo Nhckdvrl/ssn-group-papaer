@@ -25,7 +25,7 @@
 - 原作者 gold 为 No 的部分条目上，公开答题差距达 25–65pp（GPT-5 RR 62.5% 对 98.8%）；旧 D0 把 RR 等整类视为“确实为假”尚不充分，需 E52 双遍逐题区分 CONTRADICTED 与 NEITHER，不能直接当作真实语义错误。
 
 ## 主张与 idea
-- [CLAIMS](CLAIMS.md)：新路线是 C06–C09（L0，待验证）。C00–C05 是旧路线的历史测量，保留，不再推进。
+- [CLAIMS](CLAIMS.md)：新路线是 C06–C09（C06–08 L0；C09为限定协议L1因果测量）。C00–C05 是旧路线的历史测量，保留，不再推进。
 - [I02](ideas/I02-garden-path-misreading-attribution.md)：当前主 idea（PILOT）。[I01](ideas/I01-event-reference-or-lexical-echo.md)：PARKED。
 - [I03](ideas/I03-transferable-interpretation-repair.md)与[I04](ideas/I04-selective-relational-error-correction.md)：跨用途修订、修复与保持的选择性（SEED）；[I05](ideas/I05-premature-source-consumption.md)检验源信息消费时机（SEED）。新精读与整体画像见[知识库综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。尚未认定合格idea。
 - [PAIN_LOG](PAIN_LOG.md)：P13 记录问句语义混杂，P14 记录单模型与复用 24 句的教训。
@@ -46,9 +46,9 @@
 - 本地 cache：`/data1/xiangding/work/incremental-interpretation-revision/`（upstream / normalized / models / runs）。原始数据、模型和逐条输出不进 git；复现入口见 [scripts/README.md](scripts/README.md)。
 - 当前自主执行：[E52](experiments/E52-genuine-revision-reading-map.md)，1732公开QA/309 GP pairs；全文综合和“我的理解”见当日日志/领域地图。Step5全部走Step Plan，≤5项/批；HF资产只走镜像，本地推理离线。E52完整资产在上述cache的`E52/`，精度/接口失败同样保留。
 - 数据资格：原双轮/裁决资产`E52/step-full-v4/`保留；反例世界双轮复核完成，最终主分析入口`E52/qualified-v3.jsonl`保留原S/Q/gold和独立T2/T3。严格矛盾仅覆盖2个NPS词汇组，不代表全部理解错误；`qualified-v2`仅为历史资格。
-- E52完整14模型/5族地图、[E59](experiments/E59-source-grounding-versus-world-question.md)三族源支持测量、[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)三族问句前可见性干预均已统计。明确源支持任务中仍有差距，可见性干预未有稳定选择性恢复；控制损伤与GP修复分别报告。尚无合格idea，C06–C09均L0。
+- E52完整14模型/5族地图、[E59](experiments/E59-source-grounding-versus-world-question.md)三族源支持测量、[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)三族问句前可见性干预均已统计。明确源支持任务中仍有差距，可见性干预未有稳定选择性恢复；控制损伤与GP修复分别报告。尚无合格idea，能力/解析主张仍未建立。
 - **2026-10-07 执行调整：** 根据用户提醒停止追加实验与标注，在途API已收束、资产保留，重新审视科学问题与研究价值；注册状态不变。诊断见[当日日志](logs/2026-10-07.md)。
-- **同日继续：** 用户要求由综述、最新顶会与arXiv重建认识；新增[31篇精读卡](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)。[E55](experiments/E55-natural-cue-source-patching.md)自然cue源位置替换已完成；[E60](experiments/E60-source-consumption-depth.md)保持源计算不变的消费时机干预已完成，初始收益伴随正确关系损伤；[E53](experiments/E53-faithful-two-sentence-paraphrase.md)10260复述的原完整T4双盲审核已恢复，未解读部分标签。[E63](experiments/E63-shared-source-cross-use-patching.md)同一任务未知源缓存的三族QA/角色生成已全部完成，495新文本完整双遍和74分歧裁决已结束；初版未支持三族共同角色恢复，MVRR的语态/施事判定正在v2纠正。[E64](experiments/E64-source-bank-route-decomposition.md)以核心源位置分解检验用途路径，三族完整问答/生成已结束，QA地图已自审，role-v2完整审核中。[E65](experiments/E65-goal-conditioned-cross-question-reading.md)三族四构式的提前目标→未询问关系完整矩阵已自审（892QA/178clusters）；NPZ INITIAL联合收益跨三族，但跨关系修复不统一；E66切分目标经源与直接作答路径，E67在完整四构式上检验自由关系迁移，与角色纠正独立推进。注册状态不变。
+- **同日继续：** 用户要求由综述、最新顶会与arXiv重建认识；新增[31篇精读卡](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)。[E55](experiments/E55-natural-cue-source-patching.md)自然cue源位置替换已完成；[E60](experiments/E60-source-consumption-depth.md)保持源计算不变的消费时机干预已完成，初始收益伴随正确关系损伤；[E53](experiments/E53-faithful-two-sentence-paraphrase.md)10260复述的原完整T4双盲审核已恢复，未解读部分标签。[E63](experiments/E63-shared-source-cross-use-patching.md)同一任务未知源缓存的三族QA/角色生成已全部完成，495新文本完整双遍和74分歧裁决已结束；初版未支持三族共同角色恢复，MVRR的语态/施事判定正在v2纠正。[E64](experiments/E64-source-bank-route-decomposition.md)以核心源位置分解检验用途路径，三族完整问答/生成已结束，QA地图已自审，role-v2完整审核中。[E65](experiments/E65-goal-conditioned-cross-question-reading.md)三族四构式的提前目标→未询问关系完整矩阵已自审（892QA/178clusters）；NPZ INITIAL联合收益跨三族，但跨关系修复不统一；E66完整路径切分已自审：源路径不能保留原生目标收益；E68对称切断目标→源正在检验直接作答是否足够，E67完整四构式自由关系迁移并行，与角色纠正独立推进。注册状态不变。
 - 新资产：上述cache的`E59/source-scope-final-v1.json`、`E54/prequestion-oracle-map-v1.json`与`E54/figures-v1/`（PNG/PDF），E55的`natural-cue-patch-map-v1.json`、E60的`source-consumption-depth-map-v1.json`，以及E60的`figures-v1/`、E63输入/仪器/全部失败版本和`T4-full-v1/`审核缓存；git的小摘要引用完整结果SHA。
 
 ## 决策记录

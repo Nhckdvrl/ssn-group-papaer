@@ -18,3 +18,7 @@
 - 全输入356S/178clusters已核对，源manifest SHA3edaec29912ca958d3fcea831f5cce4a4bfe7f8d98535e6948b6f8ae8ee7a887。首次wrapper漏传旧greedy接口的空donor字段，三族在首次forward前KeyError，科学输出均0；失败代码/config/log保留failed-before-generation-v1。补齐无效空donor信息并验证BASE无hook，原prompt/data/cap/条件不改，用runs-v2继续。
 
 - 分析用独立合成fixture验证：role/joint真实迁移+1，已达cap的正确标签不算完整成功，未知标签保持missing且上/下界分开；不以标注失败当语义错误。结果外置stat-fixture-v1/verified.json，未读科学role输出/部分标签比例。
+
+### POST-HOC目标语义命名校对（P16）
+
+原question_target≠预期更新操作：NPZ有17初始目标源支持Yes，MVRR有19最终目标源支持No；完整原条件/数据/读数保留，不将其整体命名撤销/建立。另以input-only initialNo_finalYes、initialYes、finalNo全部层及evalGold拆分已有输出，先保留全图再限定解释。拆分晚于E65全效应、早于E66全效应与E67角色效应，非事前主分析；没有补跑提示/重新逐条审原数据。

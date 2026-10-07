@@ -197,3 +197,15 @@ Yoshida ACL2026将代理失败与理论失败分开，论文创新的尺度在�
 | 只准备同题答法/No偏好/词汇匹配 | MVRR同目标下同题与其他initial Q方向相反，cue也受影响；NPZ Llama正final同时变好使纯No解释不足 | E67换输出用途，同源主要关系完整恢复而非计词共现 | 若不跨用途，应调整研究对象，不把作答便利改名语义更新 |
 
 E66和E67是对同一个新目标异常的两次局部追问；完成后更新表及研究价值，不继续措辞/位置扫描。它们独立于E53的大规模角色标注和P15真实标签错误的纠正，标注质量工作不能成为搁置新核心实验的自设等待门槛。
+
+**P16解释命名校对：** 上述撤销/建立是待检验对象，原initial/final不是操作标签。NPZ17 initialYes、MVRR19 finalNo等使全矩阵不能如此整体命名。输入canonical initialNo_finalYes NPZ71cluster中INITIAL joint三族仍+19.01/11.97/35.21pp，但Q真final Yes−7.04pp、G+5.63、L+32.39；MVRR仅8canonical，NPVP joint不增。这是E65效应后新加的POST-HOC语义层，原主图/资格不变，完整非canonical层同时保留。
+
+### E66后的假说更新：原生收益依赖哪个路径？
+
+| 竞争解释 | E66完整结果 | 对称E68判别 |
+|---|---|---|
+| 提前目标已经形成可复用更优源解释，后续只读S即可 | NPZ INITIAL联合效果从原生+15.17/+11.24/+28.09pp到source-only−10.67/−11.24/−17.42，三族paired差CI负；NPS收益也显著减弱，解释被削弱 | 若READ_ONLY仍保留收益，目标进入S并非必要 |
+| 目标必须同时塑造源编码并指导其读取 | Source-only损失兼容这个解释，不是源无信息证明 | READ_ONLY也损失则joint依赖仍在；不用单个mask null宣布不存在parse |
+| 源写入与后续直接目标消费相互抵消 | source-only NPZ负而native正，FINAL在Llama对称变化；这是线索而非完成机制 | READ_ONLY好于native且source-only差，才支持相反功能效应；E67另看自然角色后果 |
+
+这次自审改变了原“目标触发共享修订”的优先级，属于换解释而非堆防御条件。E68只新增READ_ONLY一个路径，不加NEITHER/层位置网格，不将三路径相加当完整factorial。若跨用途仍不能建立明确关系后果，不能只凭encoding/readout split认证好idea。C09现升限定协议L1源状态→QA测量，能力与潜在parse依旧未建立。

@@ -41,3 +41,10 @@
 ### P15：语法voice被误当语义agent（2026-10-07）
 
 E63完整T4固定顺序抽查中，department was merged→department merged被第三遍仅凭主动形态判施事；inchoative merge仍可描述patient经历合并。不是原始可信benchmark要逐条重审，而是新输出的role判定存在具体shortcut。v1保存；E63/E64所有MVRR packet按role-v2澄清双遍重审，E53随后同规则处理；非MVRR既有完全相同packet复用。未改类别定义、模型输出或QA；语义角色必须由实际词义/论元赋值决定，模糊情况OTHER。MVRR旧role数字在v2前暂定，QA不受影响。
+
+
+## P16：原question_target不是预期修订操作标签（2026-10-07）
+
+- E65后完整输入核对发现：INITIAL GP目标NPZ72No/17Yes，NPS35No/1Yes，MVRR27No，NPVP26No；FINAL GP目标NPZ88Yes/1No，NPS26Yes/10No，MVRR8Yes/19No，NPVP23Yes/3No。cue对应数量同样。原initial/final只是位置/关系标签，不能自动命名“撤销旧关系/建立正确关系”。科学输入资格/原gold/Step标签无改动，不是要重审成熟数据。
+- POST-HOC的输入定义分析：完整all之外同时输出initialNo_finalYes、initialYes、finalNo，并按eval gold Yes/No拆开；保留原完整主结果。首次拆分晚于E65效果，早于E66完整效果和E67角色效果，明确不冒充事前层。不是按成功效应筛样本。
+- 收紧的是解释命名：某个问题涉及早期关系未必就是初始误读，对最终区域提问也未必确认正确关系。只有实际问题内容/源支持模式相符才可检验对应入口假说；输入定义层依旧不能把prompt语义当内部状态。

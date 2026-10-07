@@ -1,8 +1,8 @@
 # 主张账本 — Incremental Interpretation & Revision
 
-**状态：2026-10-06 / PROPOSED baseline residency；人决定重置主线并恢复研究（C06–C09 为新路线）。**
+**状态：2026-10-07 / PROPOSED baseline residency；人决定重置主线并恢复研究（C06–C09 为新路线）。**
 
-当前有局限于固定模型/协议的本地测量事实C03–C05，已有具体候选I01，但尚无已确立的一般机制或新颖性判断。C00–C02仍是待验证对象，不能写成revision机制finding。
+C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了限定协议的源状态→QA因果测量；尚无已确立的一般能力机制或新颖性判断。C00–C02仍是待验证对象，不能写成revision机制finding。
 
 | ID | 待验证对象 | 等级 | 当前证据 | 升级条件 |
 |---|---|---|---|---|
@@ -14,9 +14,9 @@
 | C05 | 固定Qwen3-8B中，account/identity/report框架内，新other同谓词患者预测反向；普通名字场景未稳定迁移，非排他条件old absolute控制偏弱 | L1（限定协议measurement；2026-10-06收窄） | [E40](experiments/E40-plain-role-versus-exhaustive-focus.md)/[统计](results/E40-summary.json) 两order新J−9.921/−7.238；[E41](results/E41-summary.json) ready两order−6.236/−6.611；[E43](results/E43-summary.json) 最小事实所有new absolute D正，old J也负；[E44](experiments/E44-balanced-natural-scene-versus-entity-exposure.md)/[统计](results/E44-summary.json) old D+10.174/+9.054，newother D+2.623/−1.320(last CI跨0)，ready D+5.760/+4.124，native576明确正确 | E45名字仍反向但old absolute D近0/负；E46匹配分解frame；不得称一般角色反转或成功修订后残留，先定位自然语言必要变量及功能后果 |
 
 | C06 | 在清晰任务定义的真实 GP 角色错误上，开放模型（≥3 族）存在 GP 特有的理解缺陷；需区分字面矛盾、源支持与原No约定 | L0 | [E52](experiments/E52-genuine-revision-reading-map.md) / [最终资格](results/D0-final-qualified-summary.json)、[地图](results/E52-reading-map-summary.json)：严格C只有NPS2对；NEITHER原No任务仍有24.03pp gap [21.60,26.56]，不是世界语义准确率。尚无跨构式能力或角色机制证据 | E59明确源支持+E53忠实角色，≥3族/≥2构式真实错误与高阳性对照；CI能分开竞争解释 |
-| C07 | 让歧义区能看到消歧词（读两遍 / 非因果 oracle）会（或不会）选择性缩小真实 GP 差距，并相对截断重复和填充对照报告 | L0 | [E52地图](results/E52-reading-map-summary.json)：NEITHER原约定有限面板R1缩小−1.22pp [−2.76,.39]；Llama MVRR表面改善主要是control下降。genuine太窄，不能由这些读数直接否定/支持架构机制；oracle尚未运行 | ≥3 族、≥2 构式，CI 能分开 R1 与 R2/R3；另核对原始GP/control收益 |
+| C07 | 让歧义区能看到消歧词（读两遍 / 非因果 oracle）会（或不会）选择性缩小真实 GP 差距，并相对截断重复和填充对照报告 | L0 | [E52地图](results/E52-reading-map-summary.json)：NEITHER原约定有限面板R1缩小−1.22pp [−2.76,.39]；Llama MVRR表面改善主要是control下降。genuine太窄，不能由这些读数直接否定/支持架构机制；[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)已完整运行，未见三族稳定选择性修复；null不等于架构原因被排除 | ≥3 族、≥2 构式，CI 能分开 R1 与 R2/R3；另核对原始GP/control收益 |
 | C08 | 模型给出 GP 误读时，正确解析在后段位置是（或不是）线性可读的 | L0 | 待验证（E55） | 同序线索句训练的探针，在多个模型上做留出验证 |
-| C09 | 作答时对旧位置（或后段位置）的读取对误读有因果贡献 | L0 | 待验证（E55） | 位置级修补或注意力切断的效应，在 ≥2 个模型上成立 |
+| C09 | 已测源后G2协议中，源的原歧义词状态会因果影响关系答案；这不等于定位了语法因素或正确潜在parse | L1（限定协议因果测量；非novelty/能力） | [E55](experiments/E55-natural-cue-source-patching.md)/[统计](results/E55-natural-cue-patch-summary.json)三族自然cue修补；[E64](experiments/E64-source-bank-route-decomposition.md)/[完整QA](results/E64-complete-QA-summary.json)：冻结全源轨迹后MVRR TARGET−CONTEXT Q43.33 [20,66.67]/G19.44 [0,38.89]/L18.33 [5,35]pp、15clusters；NPZ Q22.22 [0,55.56]/G11.11 [−22.22,44.44]/L27.78 [5.56,50]pp、9clusters；三族/三构式全部测，NPS弱cue/NPVP缺配对保留。E66提前目标路径进一步变化见日志，不认证共享role恢复 | L2须独立混杂审计与跨用途语义功能；wholevec中语法/词汇/位置等未分，G较弱、NPZ数量少；role-v2未完成不升解析/能力 |
 
 **2026-10-06 主线重置：** C00–C05 属于旧路线，是历史测量，保留，不再推进；C05 对应的 I01 PARKED。新路线见 [ROUTE](ROUTE.md) 与 [EXECUTION_BRIEF](EXECUTION_BRIEF.md)。
 
@@ -100,3 +100,6 @@
 - 2026-10-06用户暂停归档：E51六shards4608输出已完成、count5条cap；POST-HOC保守literal-schema neutral joint81.51–82.42%、repeat91.28–91.54%，同patient劣势仍在，但不能当完整语义结论。Step Plan仅39/192批、936/4608回答完整，153批max_tokens/schema失败；没有按成功批升级C05、没有继续发请求。E01完整输入审计565/626变体、2405/2672QA完成，无新的全量推断。C00–02 L0/C03–05 L1、I01PILOT不变；原失败、反证和审核版本均留cache。[完整总结](PROGRESS_SUMMARY_2026-10-06.md)、[Step快照](results/D0-StepPlan-pause-snapshot.json)。
 
 - 2026-10-07 E52自审：C06仍L0，删除原“NEITHER没有GP差距”的扩大预测——它在原No约定下被完整地图反驳，不能由N标签自动说行为差距消失。调整待验证对象为清晰任务中的真实源角色错误，改动依据D0最终资格+E52地图、先于E59效应与E53角色解读；旧证据、原预测和结果不抹去。C07–09均L0，未把不同解释的measurement风险升成新能力/机制/novelty主张，未改workbench状态。
+
+
+- 2026-10-07本次自主自审：[E55](experiments/E55-natural-cue-source-patching.md)、[E64](experiments/E64-source-bank-route-decomposition.md)/[完整QA结果](results/E64-complete-QA-summary.json)已建立有限源状态→答案的因果测量，C09由待验证L0升为限定协议L1。三族/三构式全图同报，最稳是MVRR Q/L、G和NPZ更弱，NPS/NPVP限制不抹去；不升级内部正确parse/C08、真实自由role/C06，不认定novelty。E66源hidden保持、目标直达后续去除，使原生INITIAL NPZ/NPS答题收益显著损失；只注册路径依赖发现，不据此直接认证源写入有害，E68对称干预与E67完整自由角色接续。所有旧“L0”日志保留其当时节点，正式账本以本条为新等级。
