@@ -111,3 +111,5 @@ C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了�
 - 2026-10-07 [E73](experiments/E73-correct-answer-carry-to-next-relation.md)/[摘要](results/E73-correct-answer-carry-summary.json)、[E74](experiments/E74-cue-interpretation-retention-after-ambiguity.md)/[摘要](results/E74-cue-interpretation-retention-summary.json)完整：首labelcut不是三族共同恢复；原cue/GP混合中NPZ初始关系三族损伤，但顺序不支持统一recency且cue非共同高位。限定measurement，C09L1/C06–08L0不变，不认证latent parse/qualified idea。E75区分形成期间cross-source与Task消费。
 
 - 2026-10-07 [E76](experiments/E76-event-first-relational-draft-to-original-qa.md)/[摘要](results/E76-event-first-draft-summary.json)：三族四构式全部2016格闭合，EVENT_FIRST无共同两关系保持优势，letters/words异质与caps保留；原QA gold只评完整pipeline，不认证中间正确parse或能力。C09限定L1/C06–08 L0不变。E77只检验原Source后续消费的核心竞争解释。
+
+- 2026-10-07 [E71](experiments/E71-correct-prefix-and-later-binding.md)/[摘要](results/E71-correct-prefix-binding-summary.json)、[E77](experiments/E77-retire-original-after-draft.md)/[摘要](results/E77-retire-original-summary.json)：正确P1消费与原Source消费都不是三族两构式共同修复入口；NPZ预填候选近满分、MVRR未稳定恢复、cue损伤与两readout异质保留。限定measurement，不升级latentparse/能力/novelty，C09L1/C06–08L0不变。E78强模型真实pipeline在途。
