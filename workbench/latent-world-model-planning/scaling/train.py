@@ -32,6 +32,7 @@ def main():
     p.add_argument('--ckpts', default='')
     p.add_argument('--compile', type=int, default=1)
     p.add_argument('--aux', default='')
+    p.add_argument('--sigreg_w', type=float, default=0.09)
     p.add_argument('--aux_w', type=float, default=0.1)
     p.add_argument('--out', required=True)
     a = p.parse_args()
@@ -64,7 +65,7 @@ def main():
     (out / 'config.json').write_text(json.dumps(cfg, indent=1))
     np.savez(out / 'split.npz', train_eps=data.train_eps, val_eps=data.val_eps)
     print(json.dumps({k: cfg[k] for k in ['size', 'params', 'train_episodes', 'train_windows']}), flush=True)
-    loss_fn = (lambda b: lewm_loss(model, sigreg, b, aux=a.aux, aux_w=a.aux_w))
+    loss_fn = (lambda b: lewm_loss(model, sigreg, b, lambd=a.sigreg_w, aux=a.aux, aux_w=a.aux_w))
     if a.compile:
         loss_fn = torch.compile(loss_fn)
     gen = torch.Generator(device=dev).manual_seed(a.seed)

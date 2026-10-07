@@ -1,3 +1,13 @@
+# SIGReg-weight intervention (prediction: weaker isotropy pressure -> longer bandwidth -> better far-goal L2 planning)
+14 tworoom S 0 0 60000 --sigreg_w 0.01
+14 tworoom S 0 0 60000 --sigreg_w 0.03
+14 tworoom S 0 0 60000 --sigreg_w 0.27
+32 pusht S 0 0 60000 --sigreg_w 0.03
+32 pusht S 0 0 60000 --sigreg_w 0.27
+# Visual PointMaze-medium, second seed (data synced to /dev/shm)
+14 pmazemedium S 1 0 60000
+14 pmazemedium M 1 0 60000
+14 pmazemedium XS 1 0 60000
 14 tworoom XXS 2 0 60000
 14 tworoom XS 2 0 60000
 14 tworoom S 2 0 60000
