@@ -22,3 +22,5 @@
 三族全80源的CPU/token预检通过，最长91/93/114tokens；P1/source均在cut query之前，两候选完整重分词，无科学读数。完整资格→三族GPU→全图driver1452320已等待；统计fixture检查先cluster均值（不把重复源当独立簇）与缺失None。实际Step已有请求完成，不将等待slot耗时当模型能力或标注失败。
 
 在新子句完整盲审前，按已登记固定小仪器单独检查计算路径（无科学效果读取）：三族instrument-v1 native4D/2D整候选LP最大差均0、源/P1及全部前查询hidden差均0、全部cut非空且不新增未来边；无全体模型predictions。完整科学范围仍必须等语义资格锁定，driver不越过该依赖。
+
+**运行中排队修复（不改变标注/科学协议）：** 第一遍最后一批一直等共享槽位，20分钟以上且无实际HTTP。先停止本进程调度并核对/proc/locks为0持有槽位，再替换等待进程1428296→1695278，以现有STEP_PLAN_BLOCKING_SLOT=0有序取得一个共享槽位；未取消在途HTTP，所有已完成request/response/review原样复用，原log保留，后续audit-v1-fifo.log。总HTTP≤8、两个worker、批5/seed5201/5202/双遍/第三遍/输入SHA均不变。剩余批35.4秒完成，pass1.jsonl共240行；第二遍继续，未读取部分语义效果。完整126panel展示脚本已准备，须complete-map哈希闭合后才运行。
