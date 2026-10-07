@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-73篇主文（5综述+68研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+76篇主文（5综述+71研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -124,3 +124,9 @@
 - [Memory-R2 NeurIPS2026初始名单／作者v1](yan2026-memory-r2.md)：主文与方法App全文，同anchor局部rerollout／global组合；中间credit与标准全轨迹RL理论范围区分。
 
 - [Theory of Space ICLR2026](zhang2026-theory-of-space.md)：正式main与protocol/promptApp精读，acquisition/formation/maintain/revision/exploitation切分；显式mapproxy与latent机制界限。
+
+- [De-Presuppose *SEM2025](dipta2025-de-presuppose.md)：正式main与全部方法/结果附录；问题暗含假设污染验证已有ownership，I08需检验任务收益与同源明确误角色相反的具体增量。
+
+- [Query visibility作者v1](luo2026-query-visibility.md)：main全部／补表，matched-budget query作用量化；已有query-aware/reuse叙事，I08不靠相同泛概念自称novel。
+
+- [Good-enough paraphrase正式2026期刊](lee2026-good-enough-paraphrase.md)：main全部，24经典词汇/两旧GPT，已有题型差异与question诱导解释假说；I08必须由明确干预/同源联合后果形成更具体增量。

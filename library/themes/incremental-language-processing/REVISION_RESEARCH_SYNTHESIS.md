@@ -352,3 +352,9 @@ E82完整三族/1008格读完，现代Ministral NPZ初始84.55%而final28.09%（
 AttriMem不是只重分终点scalar，而以固定答案在maskedmemory下的偏好推tokencredit，已有future-answer细粒度processreward；local predictive sufficiency更把相邻预测pair与recursiveclosure联系到可训练约束，各host实现不完全同projection。一般“重建不够／future-use好／fine-grained更好”已有owner，不能拿它当I07整个novel叙事，也不因此关闭领域。
 
 两篇研究动作都先明确**缺哪种辨别信息**再改变学习接口，并让任务后果评估它。I07若成立，应找到某类关系修订与内容credit的可预测分离：撤回旧关系、建立替代关系、保存仍正确事实的作用不同；此为待检验对象，非先验真理／新方法已证。E95同model实际语义比较vs旧逆向排序只提供下一核心诊断，E93原社区1744题则改变范围，E67全角色图改变真实失败对象。读书期间GPU不闲置，全部queue沿既有锁／deadline；不再从E94regex诊断挖一堆局部控制。
+
+### 2026-10-08：I08的新问题与最近邻边界
+
+E67完整同源三族图显示阅读目标在旧forced-choice QA提高的同时使明确GP角色误读增加19–21pp、OTHER不增加。这把问题从“修复效果是否迁移”转成“目标任务收益能否掩盖解释损伤”。目标不是断言，普通YN疑问句也不当然携带语言学上的存在预设。De-Presuppose已有问题未核实假设影响验证／去预设改善目标正确率；我们的增量只有在actual QA与同源角色显式相反、且界限可辨别时才更具体，单纯question hallucination不新。仍需E98当下三族结果，I08SEED不升级。
+
+E97完整Min族则削弱I07的“语义理解完整只是reward错”强版本：作者人类语用UPDATE gold-c actual约8.1%、raw31.8%，MAINTAIN约78.1%、raw27.3%，不能用总平均相近掩盖相反分层，也不把任务语用Gold冒称经典逻辑真值。下一由完整现代自然P/credit和actualQA/faithfulness改变认识，不沿格式或reward模板继续小修。

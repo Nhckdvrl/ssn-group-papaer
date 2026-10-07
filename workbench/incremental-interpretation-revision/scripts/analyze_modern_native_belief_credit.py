@@ -45,21 +45,27 @@ def semantic_metrics(assignment, annotations):
     return out
 
 
-def analyze(root):
+def analyze(root, selected_models=None, audit_root=None, output_name='modern-native-belief-credit-map-v1.json', manifest_name='complete-map-v1.json'):
+    models = MODELS if selected_models is None else selected_models
+    assert models and set(models) <= set(MODELS)
+    audit_root = root if audit_root is None else audit_root
     data = root/'data-v1.jsonl'
     rows = list(map(json.loads, data.read_text().splitlines()))
-    scope = json.loads((root/'scope-v1.json').read_text())
-    assert scope['data_sha256'] == sha(data)
-    assert scope['packet_sha256'] == sha(root/'packets-v1.jsonl')
-    assert scope['assignment_sha256'] == sha(root/'assignments-v1.jsonl')
-    summary = json.loads((root/'step5/summary.json').read_text())
-    assert summary['data_sha256'] == sha(root/'packets-v1.jsonl')
-    assert summary['annotated_sha256'] == sha(root/'step5/annotated.jsonl')
-    annotations = {r['item_id']: r for r in map(json.loads, (root/'step5/annotated.jsonl').read_text().splitlines())}
-    assignments = {(r['model'], r['item_id'], r['source_condition']): r for r in map(json.loads, (root/'assignments-v1.jsonl').read_text().splitlines())}
+    if audit_root == root:
+        scope = json.loads((root/'scope-v1.json').read_text())
+        assert scope['data_sha256'] == sha(data)
+        assert scope['packet_sha256'] == sha(root/'packets-v1.jsonl')
+        assert scope['assignment_sha256'] == sha(root/'assignments-v1.jsonl')
+    summary = json.loads((audit_root/'step5/summary.json').read_text())
+    assert summary['data_sha256'] == sha(audit_root/'packets-v1.jsonl')
+    assert summary['annotated_sha256'] == sha(audit_root/'step5/annotated.jsonl')
+    annotations = {r['item_id']: r for r in map(json.loads, (audit_root/'step5/annotated.jsonl').read_text().splitlines())}
+    assignments = {(r['model'], r['item_id'], r['source_condition']): r for r in map(json.loads, (audit_root/'assignments-v1.jsonl').read_text().splitlines()) if r['model'] in models}
     index, provenance = {}, []
     meta = {r['item_id']: r for r in rows}
     for run in json.loads((root/'runner-pids-v1.json').read_text()):
+        if run['model'] not in models:
+            continue
         out = Path(run['out'])
         cfg = json.loads((out/'config.json').read_text())
         assert cfg['predictions_sha256'] == sha(out/'predictions.jsonl') and cfg['data_sha256'] == sha(data)
@@ -80,11 +86,11 @@ def analyze(root):
             index[key] = p
         provenance.append(dict(model=run['model'], shard=run['shard'], config_sha256=sha(out/'config.json'),
                                predictions_sha256=cfg['predictions_sha256'], gpu_hours=cfg['gpu_hours'], instrument=cfg['instrument']))
-    expected = {(m, r['item_id'], 'GENERATION', s, '') for m in MODELS for r in rows for s in ['gp', 'control']}
-    expected |= {(m, r['item_id'], 'RECONSTRUCTION', s, t) for m in MODELS for r in rows for s in ['gp', 'control'] for t in ['gp', 'control']}
-    assert set(index) == expected and len(assignments) == 300
+    expected = {(m, r['item_id'], 'GENERATION', s, '') for m in models for r in rows for s in ['gp', 'control']}
+    expected |= {(m, r['item_id'], 'RECONSTRUCTION', s, t) for m in models for r in rows for s in ['gp', 'control'] for t in ['gp', 'control']}
+    assert set(index) == expected and len(assignments) == 100*len(models)
     records, quality = [], []
-    for model in MODELS:
+    for model in models:
         for r in rows:
             sm = {s: semantic_metrics(assignments[model, r['item_id'], s], annotations) for s in ['gp', 'control']}
             for side in ['gp', 'control']:
@@ -126,7 +132,7 @@ def analyze(root):
                         raw_opposes_lower=float(all(rr*g < 0 for g in possible)), raw_opposes_upper=float(any(rr*g < 0 for g in possible)))
                 records.append(z)
     panels, counts = [], []
-    for model in MODELS:
+    for model in models:
         for ct in ['ALL', 'MVRR', 'NPZ', 'NPS']:
             for condition in ['gp', 'control']:
                 rs = [r for r in records if r['model'] == model and r['condition'] == condition and (ct == 'ALL' or r['construction'] == ct)]
@@ -170,15 +176,16 @@ def analyze(root):
                     panels.append(dict(model=model, construction=ct, condition='CUE-target-minus-GP-target',
                         reference=reference, subset='all_eligible', metric='alignment_'+bound,
                         **estimate(rs, values, seed=96)))
-    out = root/'modern-native-belief-credit-map-v1.json'
+    out = root/output_name
     assert not out.exists()
     out.write_text(json.dumps(dict(data_sha256=sha(data), panels=panels, counts=counts, records=records,
-        native_quality_records=quality, runs=provenance, audit_summary=summary,
+        native_quality_records=quality, runs=provenance, audit_summary=summary, models=models,
+        analysis_scope='Full three-family cohort' if selected_models is None else 'INTERIM complete-family hypothesis generation; full fixed cohort continues.',
         statistics='Complete current natural writers/selfgraders; Source then original published-pair cluster10000 seed96. All unknown bounded and structural NA reported; changed/tie diagnostic subsets.',
         limits='Only frozen registered common-Q semantics, not full-sentence equivalence certification. Untrained content-reconstruction analogue, not ABBEL reproduction. No hidden Source-bank transplant and no reward-selected generation.'), indent=2)+'\n')
-    result = dict(map_sha256=sha(out), actual_outputs=300, reconstruction_scores=600,
+    result = dict(map_sha256=sha(out), actual_outputs=100*len(models), reconstruction_scores=200*len(models),
         gpu_hours=sum(r['gpu_hours'] for r in provenance), panels=len(panels),
         audited_distinct_packets=summary['items'], audit_unresolved=summary['unresolved'],
         new_source_annotation_calls=0, annotation='Only Step Plan step-5-preview; double blind and disagreement adjudication.')
-    (root/'complete-map-v1.json').write_text(json.dumps(result, indent=2)+'\n')
+    (root/manifest_name).write_text(json.dumps(result, indent=2)+'\n')
     print('E96 COMPLETE', result, flush=True)

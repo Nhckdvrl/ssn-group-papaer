@@ -17,3 +17,7 @@
 启动前data SHA387f20470b08b24c70f43d1b99b9fa00a3f18b72c04980a06fbfd1c89f072666，新P审核按每model 250个原共同Q assignment构建；Source原数据0新审核，4排除pair资格固定。初次builder误用无pandas系统python在0forward／0HTTP前退出，已改用既有CPU环境，未安装依赖或改data。
 
 03:55，首Min族100自然输出与200LP全部完成，仅metadata。为缩短新数据标注等待，在任何E96 HTTP/科学标签读取前调整审核流水线：按**完整model族**固定输入做匿名原子双遍，完成的精确P/Q packet以SHA去重复用，所有三族仍进同最终主图；未完成族绝不提前抽样。每个phase独立data/summarySHA，最终合并只复用已有有效同packet标签，UNKNOWN仍保留；主Source资格／读数／模型／cap不变。原finisher全族等待在0HTTP前退出，仅流水线改变而非挑结果。
+
+04:50 在任何新P语义效果读取前，完整Min族100自然P+200评分+232完整双遍/31裁决/0unknown可生成INTERIM all-scope供假说探索；全三族主图继续，不按Source/label筛。延续03:57 E93/E95完整族先读的prospective顺序调整，原指标和所有共同Q不变。optional analyzer参数只变完整族scope，默认全三族主图不变。
+
+04:51 完整Min族INTERIM 520panels自审：100P/200LP/.0344569GPUh，232packet两遍/31裁决/0unknown/0Pcap，map48aa680d625c8cb1e8e59a8c6d9577ca6fb04c92f599b049e0a30f9db7ff50af。共同原QA pattern GP50.2[40.8,59.3]%→cue84.5[76.6,91.7]%；fidelity36eligible/14structuralNA，GP.051[−.144,.241]→cue.806[.653,.931]；同固定P credit alignment原GP−.028[−.306,.250]、cue+.472[.250,.694]，paired改善+.500[.167,.833]。MVRR17pair pattern alignment GP−.412[−.765,−.059]→cue+.529[.176,.824]，NPZ/NPS改善较弱。自然输出与同grader中出现恢复后的内容更保真但原难观察更偏旧误读，强于旧hiddenbank版本的实质对象；仍一完整族，不认证三族规律、RL实际训练后果或全句等价。Q/G全范围待封版，不补多reward模板。

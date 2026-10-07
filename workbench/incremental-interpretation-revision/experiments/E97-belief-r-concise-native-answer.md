@@ -14,3 +14,7 @@
 原E93单族全scope支持的是接口未完成边界而非已证能力失效，错误已明确写入日志；这一步为恢复核心测量，不复制一串防御控制。
 
 启动前data SHA5477a87d5a03b2382cddc54058b0a9787e35bdeb17d97ecfff83241c2c7ccf41，与E93字节相同；仅nativeuser末尾一句输出要求变化，cap64和原parser不改。各fixedinstrument必须停＋有效答案后科学forward，0API／0新LP。
+
+04:47 INTERIM complete Min族全1744题封版，map SHA22760533a659d1f7688e3769bc8953ca21273c1611413c0e2fa329560f66ed13，388panel/.1637366GPUh/0cap/18unknown，不读其它partial族。所有Gold/modus/transition/agreement/rowcounts已自审：clustered全actual lower30.45[26.59,34.51]%/upper31.93[27.99,35.98]%，原raw30.49[27.37,33.69]%；UPDATE-c actual8.11[6.14,10.24]%/upper9.53[7.35,11.82]%，raw31.78[27.82,35.79]%；MAINTAIN-ab actual78.06[73.22,82.60]%，raw27.26[22.84,31.69]%。因此“不需修订时能答、需撤回时困难”比understanding intact故事更合此族；raw错/actual对与反向各21%左右，不能从总平均相近推对齐。实际reference是作者人类语用Gold，不说现代模型经典逻辑能力低。Q/G主全scope继续，I07仍SEED，C不升降。
+
+05:23Q/G shard1 fixed首题concise instrument failed stopped/valid，0scientific题；不选择其它首题或cap/wording补救，不运行其它未启动分片。两族3488计划题记UNAVAILABLE而非0分，Min完整原输出仍有效。独立E98队列前驱改为同slot已完成E96，不让旧格式失败阻塞新问题；model/data/随机种子/新任务全部不变。补存同首instrument输出以确认失败类型，未读scientific部分效果。

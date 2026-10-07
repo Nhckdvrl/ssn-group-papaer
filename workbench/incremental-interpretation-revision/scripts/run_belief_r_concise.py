@@ -46,6 +46,15 @@ def run(a):
     fixed = tasks[0]
     one = generated(model, tok, fixed)
     assert generated(model, tok, fixed)['output_tokens'] == one['output_tokens']
+    if a.instrument_only:
+        a.out.mkdir(parents=True, exist_ok=True)
+        path = a.out/'instrument-only-v2.json'
+        assert not path.exists()
+        path.write_text(json.dumps(dict(model=a.model.name, shard=a.shard, item_id=fixed['row']['item_id'],
+            prompt_sha256=digest(fixed['prompt']), data_sha256=sha(data), output=one,
+            repeat_exact=True, scientific_forward_started=False), indent=2)+'\n')
+        print('E97 INSTRUMENT ONLY', a.model.name, one['stopped'], one['valid'], flush=True)
+        return
     assert one['stopped'] and one['valid'], 'Concise-answer instrument failed; do not launch scientific forward or change wording.'
     a.out.mkdir(parents=True, exist_ok=True)
     assert not (a.out/'predictions.jsonl').exists()
@@ -81,4 +90,5 @@ if __name__ == '__main__':
         p.add_argument('--'+name, type=Path, required=True)
     for name in ['gpu', 'shard', 'shards']:
         p.add_argument('--'+name, type=int, required=True)
+    p.add_argument('--instrument-only', action='store_true')
     run(p.parse_args())

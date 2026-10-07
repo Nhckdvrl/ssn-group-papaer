@@ -7,3 +7,5 @@
 - **研究动作：** 实际QA＋未经询问的free interpretation作为两个用途，固定同Sourceprefix；一句question/evidence分离是核心R8，不扫更多Goal/窗口。如果新模型不出现，就改适用范围而非守旧故事。
 - **定位：** Hu/Levy的任务读出差、Hanna的多parse、false-presupposition QA和query-awarecompression都有ownership。一般QA不等于understanding／memory不可靠不新；拟增量须是明确输入干预导致accuracy和错误关系反向，并有同Source与可恢复的操作边界。其它人做过邻域不关线，尚未全文核对新QA近邻，持续阅读。
 - **下一：** E98原既有50发表pair／三当前族／actualYN＋freeP，GOAL/NATIVE/QUESTION_ONLY；Gold未知保留，所有Source/GP-cue/construct并列。未找到结果前不先设计昂贵训练，也不按完整paper的全控制门槛拖探索。
+
+E99首次POST-HOC同源joint已核：旧三族word QAcorrect且明确GPwrong增量17.2[11.6,22.9]/12.4[7.3,17.8]/29.9[23.7,36.2]pp，letters同正，主要NPZ/NPS。map6f29db10942a00f4b7d1700340a545fd8148fa92e990ce36e0867c3fc387ea22；更具体地排除仅不同Source边际平均抵消，但旧QA仍forced-choice，不能取代E98当下actual用途。

@@ -14,8 +14,10 @@
 
 最近邻定位：Hu/Levy已有QA/probability构念差；Hanna已有GP多parse和QA不复用；false-presupposition QA研究已有拒绝假问题；query-awarecompression已有query可见性与reuse差。拟增量是非assertive目标问题的输入干预使任务correctness与明确错关系相反，尤其同Source能答对但自由表达更错；还不声称这是新机制已证。新目标不是修旧Goal路线的窗口/格式，而是原完整数据揭示的不同后果。
 
-04:48任何E98 forward/API前数据预检：E67 item_id与E96不同，且12/100 Source无exact sentenceSHA（不是14，逐条计数已核对）；不用近似句子/同cluster替换。固定fallback上述原题排序，Source100不删。dataSHA b9b09ff4383765c281c5d9830ba99cf9c67587a6b4d50c8fde94fde361ab67a5，GoalGoldNo88/Yes12/NA0，goal_origin E67_INITIAL88/fallback12。全100主图加88原INITIAL子图在任何效果前确定。
+04:44任何E98 forward/API前数据预检：E67 item_id与E96不同，且12/100 Source无exact sentenceSHA（不是14，逐条计数已核对）；不用近似句子/同cluster替换。固定fallback上述原题排序，Source100不删。dataSHA b9b09ff4383765c281c5d9830ba99cf9c67587a6b4d50c8fde94fde361ab67a5，GoalGoldNo88/Yes12/NA0，goal_origin E67_INITIAL88/fallback12。全100主图加88原INITIAL子图在任何效果前确定。
 
-04:49三族100×3 QA/P sourceprefix全部CPU一致；8slot已按E97 sealed cfg排队。完整首源six-use repeat/stopped/QAparse instrumentation优先；不预读任何E98 P效果。
+04:44三族100×3 QA/P sourceprefix全部CPU一致；8slot已按E97 sealed cfg排队。完整首源six-use repeat/stopped/QAparse instrumentation优先；不预读任何E98 P效果。
 
-04:58 POST-HOC instrument gate amendment，尚未读任何E98 scientific outcome/role/QAeffect：Min slot4首源P达到96固定cap而确定性repeat无误，slot5首源通过并已继续；旧gate将固定首P的cap变成全shard过滤，造成非科学幸存选择。保存pre-instrument-amendment-code原脚本；改为P非空+tokenrepeat完全一致，stopped/cap真实记录，所有P cap在主要role/joint读数严格UNKNOWN上下界，不猜结论、不升cap、不改wording、不移除Source。QA首源stopped/parse严格gate保持。仅重启原失败slot4，其它原native输出未更改，两个gate版本cfg/provenance都保留。此前首P-must-stop预注册偏离明确登记，不包装成原始设计。
+04:46 POST-HOC instrument gate amendment，尚未读任何E98 scientific outcome/role/QAeffect：Min slot4首源P达到96固定cap而确定性repeat无误，slot5首源通过并已继续；旧gate将固定首P的cap变成全shard过滤，造成非科学幸存选择。保存pre-instrument-amendment-code原脚本；改为P非空+tokenrepeat完全一致，stopped/cap真实记录，所有P cap在主要role/joint读数严格UNKNOWN上下界，不猜结论、不升cap、不改wording、不移除Source。QA首源stopped/parse严格gate保持。仅重启原失败slot4，其它原native输出未更改，两个gate版本cfg/provenance都保留。此前首P-must-stop预注册偏离明确登记，不包装成原始设计。
+
+05:24E97两族首仪器失败，不使其阻塞新任务；六未启动E98 queue改等同slot E96 sealed，pid谱系及原前驱保存，prompt/data/metrics不变。
