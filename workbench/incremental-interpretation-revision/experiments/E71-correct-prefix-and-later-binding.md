@@ -18,3 +18,7 @@
 尚无模型科学读数。数据/代码/盲审范围闭合后再运行；C06–08 L0/C09限定L1不变。
 
 输入范围闭合：40对/80S（17MVRR、23NPZ）/240新source-clause原子。初步41只表示GP问题可用数量，原cue同题资格过滤后40；不按行为选择。draft SHA5ed22f45c0c6fff5253117ab16d15bc0bb766c12b300234aa23ca1b9e1453068；packet SHA4f1526635658c064dd53c5174d75bbbe78d1b1c3fa53dd94b1928adc0b55f878。双遍审核1428296（2worker、批5、共享实际8HTTP）已启动。没有科学模型读数，资格须全审核后冻结。
+
+三族全80源的CPU/token预检通过，最长91/93/114tokens；P1/source均在cut query之前，两候选完整重分词，无科学读数。完整资格→三族GPU→全图driver1452320已等待；统计fixture检查先cluster均值（不把重复源当独立簇）与缺失None。实际Step已有请求完成，不将等待slot耗时当模型能力或标注失败。
+
+在新子句完整盲审前，按已登记固定小仪器单独检查计算路径（无科学效果读取）：三族instrument-v1 native4D/2D整候选LP最大差均0、源/P1及全部前查询hidden差均0、全部cut非空且不新增未来边；无全体模型predictions。完整科学范围仍必须等语义资格锁定，driver不越过该依赖。

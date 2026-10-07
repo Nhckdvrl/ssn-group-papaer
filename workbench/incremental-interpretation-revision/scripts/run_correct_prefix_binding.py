@@ -10,7 +10,6 @@ import time
 from data import CACHE,sha,write_jsonl
 from data_v2 import digest
 from natural_cue_patching import blocks
-from reading_map import sequence_scores
 from revision_interventions import token_region
 from shared_source_cross_use import render
 
@@ -129,8 +128,10 @@ def run(a):
         checks.append(dict(item_id=t['row']['item_id'],native_LP_max_difference=diff,earlier_hidden_max_difference=maximum,removed_edges=counts))
     a.out.mkdir(parents=True,exist_ok=True);assert not (a.out/'predictions.jsonl').exists()
     (a.out/'instrument.json').write_text(json.dumps(checks,indent=2)+'\n')
-    config=dict(data_sha256=sha(a.data),model_path=str(a.model),model_manifest_sha256=sha(a.model/'manifest.json'),code_sha256=sha(Path(__file__)),dtype='float32',attention='eager',seed=71,sources=len(rows),tasks=2*len(rows),gpu_index=a.gpu,phase='science')
+    config=dict(data_sha256=sha(a.data),model_path=str(a.model),model_manifest_sha256=sha(a.model/'manifest.json'),code_sha256=sha(Path(__file__)),dtype='float32',attention='eager',seed=71,sources=len(rows),tasks=2*len(rows),gpu_index=a.gpu,phase='instrument_only' if a.instrument_only else 'science')
     (a.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
+    if a.instrument_only:
+        print('E71 instrument passed',a.model.name,flush=True);return
     with (a.out/'predictions.jsonl').open('w') as f:
         for j,t in enumerate(tasks):
             for op,cut in [('NATIVE',False),('CUT_P1',True)]:
@@ -143,6 +144,6 @@ def run(a):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['freeze','run']);p.add_argument('--root',type=Path);p.add_argument('--data',type=Path);p.add_argument('--model',type=Path);p.add_argument('--out',type=Path);p.add_argument('--gpu',type=int);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['freeze','run']);p.add_argument('--root',type=Path);p.add_argument('--data',type=Path);p.add_argument('--model',type=Path);p.add_argument('--out',type=Path);p.add_argument('--gpu',type=int);p.add_argument('--instrument-only',action='store_true');a=p.parse_args()
     if a.mode=='freeze':freeze(a.root)
     else:run(a)
