@@ -16,6 +16,8 @@
 
 ## 结果
 
+**标签完成前的解释范围校对：** `source_bank_routes.py::bank_hooks`逐层重写全部Source位置。TARGET_BANK中非目标位置始终为BASE，不允许目标修补在这些位置重新传播；目标位置的PAIR轨迹则已包含原quarter-layer修补后的计算。故本实验测固定混合源库下consumer表达哪些断言，不能凭“initial改变而final未改变”独立证明native Source内部传播失败。原FULL_BANK/E63 PAIR允许该quarter-layer干预的后续源传播，但也不等于完整真实cue输入。保持所有读数/数据/条件；这是解释范围收紧，不追加控制或重跑。
+
 未读取新原子标签或效果。
 
 **标注前范围收紧：** 第一构建草案包括六个旧科学条件，未发出任何HTTP，依用户“只最核心有辨别力”指导收为BASE/TARGET一个配对对比；三族/全部源/两侧不筛。不是用新标签选条件，原草案与manifest外置保留，旧全图不变。每原子P/Q一项，≤5项/请求，不借复合packet打包多于5个标签。
