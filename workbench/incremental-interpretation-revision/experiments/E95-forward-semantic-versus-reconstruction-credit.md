@@ -17,3 +17,5 @@
 启动前data SHA1727d0654c1bd863dfe332b574f822c80b9949b4c01b4d4d01819450a40cb804；249／324 fidelity可定义（更好TARGET41／Tie163／更好BASE45），75NA全部保留；pattern全324。三个native输入token范围Q176–309／G178–310／Min684–814。Tie占比高，主全量与预注册changed诊断都必须看，不能仅凭Tie匹配宣称理解能力。
 
 03:24，所有科学forward仍等待E93锁，分析器为已有完全相同P锚增加identical_interpretations分组；不是采新输入／改主读数，不改变主all和changed/Tie预注册scope。
+
+2026-10-08 03:57，任何科学effect读取前prospective分析次序调整：Min族全部shards已完成 全324冻结P对／1296真实回答，可先生成**完整单族探索地图**指导假说；其余固定Q/G任务继续，三族完整主图／所有原指标／CI／cap／data／parser均不改。独立interim文件及scope只供假说生成，不叫三族共同finding、不挑Source或已做对题；这覆盖前述等待全模型才读取的次序约定，原因是尽快利用已释放卡做核心追问，符合用户探索阶段／不防御推进要求。原primary map仍只全三族到齐后生成；未看任何partial Source/teacher labels。

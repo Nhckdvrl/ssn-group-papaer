@@ -11,7 +11,9 @@ from forward_semantic_credit import rank
 from analyze_correct_answer_carry import estimate
 
 
-def analyze(root):
+def analyze(root, selected_models=None, output_name='forward-semantic-credit-map-v1.json', manifest_name='complete-map-v1.json'):
+    models = MODELS if selected_models is None else selected_models
+    assert models and set(models) <= set(MODELS)
     data = root / 'data-v1.jsonl'
     rows = [json.loads(s) for s in data.read_text().splitlines()]
     meta = {r['item_id']: r for r in rows}
@@ -19,6 +21,8 @@ def analyze(root):
     for experiment, target in [('E91', raw), ('E95', index)]:
         parent = root.parent / experiment
         for run in json.loads((parent / 'runner-pids-v1.json').read_text()):
+            if run['model'] not in models:
+                continue
             out = Path(run['out'])
             cfg = json.loads((out / 'config.json').read_text())
             assert cfg['predictions_sha256'] == sha(out / 'predictions.jsonl')
@@ -41,11 +45,11 @@ def analyze(root):
             provenance.append(dict(experiment=experiment, model=run['model'], shard=run['shard'],
                                    config_sha256=sha(out / 'config.json'), predictions_sha256=cfg['predictions_sha256'],
                                    gpu_hours=cfg['gpu_hours'], code_sha256=cfg['code_sha256']))
-    expected = {(m, r['item_id'], mode, o) for m in MODELS for r in rows
+    expected = {(m, r['item_id'], mode, o) for m in models for r in rows
                 for mode in ['NATIVE', 'RECOVERY'] for o in [0, 1]}
-    assert set(index) == expected and len(raw) == 648 * 3
+    assert set(index) == expected and len(raw) == 648 * len(models)
     records = []
-    for grader in MODELS:
+    for grader in models:
         for r in rows:
             b, t = [raw[grader, r['E91_item_ids'][k]] for k in ['BASE_BANK', 'TARGET_BANK']]
             assert b['observation_tokens'] == t['observation_tokens']
@@ -80,7 +84,7 @@ def analyze(root):
                             unknown=float(ar is None), capped=float(p['capped']))
                     records.append(z)
     panels, counts = [], []
-    for grader in MODELS:
+    for grader in models:
         for mode in ['NATIVE', 'RECOVERY']:
             cohort = [r for r in records if r['grader'] == grader and r['mode'] == mode]
             groups = {'all': cohort}
@@ -112,7 +116,7 @@ def analyze(root):
                                 **estimate(rs, [r['metrics'][reference][metric] for r in rs], seed=95)))
     # The recovery contrast is paired on exactly the same item and candidate order.
     ri = {(r['grader'], r['item_id'], r['mode'], r['order_index']): r for r in records}
-    for grader in MODELS:
+    for grader in models:
         for reference in ['fidelity', 'pattern']:
             rs = [r for r in records if r['grader'] == grader and r['mode'] == 'NATIVE' and reference in r['metrics']]
             for condition in ['ALL', 'gp', 'control']:
@@ -125,14 +129,15 @@ def analyze(root):
                         values.append(rec['actual_'+bound+'_correct'] - nat['actual_'+('upper' if bound == 'lower' else 'lower')+'_correct'])
                     panels.append(dict(grader=grader, mode='RECOVERY-minus-NATIVE', group='condition:'+condition,
                         reference=reference, subset='all_eligible', metric=bound, **estimate(sub, values, seed=95)))
-    out = root / 'forward-semantic-credit-map-v1.json'
+    out = root / output_name
     assert not out.exists()
     out.write_text(json.dumps(dict(data_sha256=sha(data), panels=panels, counts=counts, records=records, runs=provenance,
+        models=models, analysis_scope='Full preregistered panel' if selected_models is None else 'INTERIM complete model-family data, hypothesis generation only; original full panel continues.',
         statistics='Source then original lexical cluster; 10000 bootstrap seed95. All paired texts retained. Fidelity NA explicit; changed and tie subsets diagnostic, not outcome selection.',
         limits='Actual content comparison is a different interface from observation reconstruction. Same frozen registered questions only, not complete-world semantic certification. Uses explicit post-hoc corrected teacher labels, not current graders as Gold. No shared Bayes-joint assumption.'), indent=2)+'\n')
     result = dict(map_sha256=sha(out), panels=len(panels), actual_outputs=len(index),
                   gpu_hours=sum(r['gpu_hours'] for r in provenance if r['experiment'] == 'E95'), new_api_calls=0)
-    (root / 'complete-map-v1.json').write_text(json.dumps(result, indent=2)+'\n')
+    (root / manifest_name).write_text(json.dumps(result, indent=2)+'\n')
     print('E95 COMPLETE', result, flush=True)
 
 

@@ -65,3 +65,7 @@ E82/E86/E87的原NPZ17个GoldYes反身/互指初始关系，三族words几乎全
 ## P20：观察重建奖励未必识别语义误读（OPEN探索痛点）
 
 来自E90的抑制与正关系差异、ABBEL全文的观察重建credit。已知自然句解释有遗漏/错接，重建原Source的likelihood是否区分它们尚不确定；不以理论可能性称已有算法错。E91复用E70全648输出/1280原子双审，直接测配对reward与两维语义保真，0新增数据审核。若为真可发展保真内容credit，若否修改猜想；不是换措辞或新建workbench。
+
+## P21：目标问句改善问答，却增加明确错误关系（OPEN探索痛点）
+
+E67完整T4-v2 3033双遍／373裁决／7失败补全0unknown，完整Source356/178clusters/三旧模型/四构式；同E65 pooledGP source-Gold一致QA提高Q/G/L words+17.8/+6.78/+26.55pp，而自由GPmisreading+20.22/+19.10/+21.35pp（CI均正），OTHER不增加。这不是只有QA收益未迁移，而是明确错误更多。INPUT initial有Yes/No(P16)，不把所有Goal问句叫false premise；QA是原forced-choice接口，不能直接叫actual答题能力。I08/E98用当下三族原固定100Source、真实QA与freeP共同用途及一句“question不是evidence”，不复活mask/goal词句修复网格。

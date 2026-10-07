@@ -1,6 +1,6 @@
 # E67：提前目标的收益能迁移到自由关系复述吗？（2026-10-07）
 
-- **状态：** RUNNING；先卡后运行。
+- **状态：** DONE；先卡后运行。
 - **对应：** I03/I04、C06/C09、P13/P15。E65完整矩阵后提出，E66还在运行；本实验不依赖E66效果，提前登记不选择有效的模型/目标/构式。
 - **与先前解释修订的关系：** 二元QA目标可能只准备某个答案；若撤销旧关系/建立正确关系成为可复用理解，应在不询问任何事实Q的自由输出上留下正确关系。这是同一源同一目标、换真正用途的核心检验。
 - **条件与数据：** E65全部356原S/178clusters/4构式，原initial与final目标不改；NONE/INITIAL/FINAL读完S后均只有相同Amouyal原论文的faithful two-sentence指令，source先于Task。不显示eval Q、答案、G2规则、选项、不先生成目标Q回答。3原定模型族各356×3=1068自由输出，总3204。源材料仅由E65输入资格决定，未过滤模型正确率。两个目标可含结构/词汇线索，不能自动视为纯目标心理变量。
@@ -30,3 +30,5 @@ E67尚未发出任何T4请求、三族仍生成时，前瞻改为每批5项（�
 三族全部生成闭合：3204自由输出，Q/G/L GPU·h1.511452/1.977292/3.041235，合计6.529980。三个完整predictions SHA d1245386a269427d8b14addfd7eb1da3715ee3490e2776baf6a365b5cffceeca / aa27c25a6f9aea55441a266826eced19dec07b8f4cc8dc61775a942b911d16b0 / 69f7e36a27fcda5c794486b78cee003ce2e815b190904a3b180ccede1eb3a103。T4-full-v2批5完整双盲接续，复用已完成v2 exact packet，仅构建scope与接口进度可读，未读部分语义效果。卡仍RUNNING，主张级别不变。
 
 2026-10-08 03:22完整审核仍在独立第三遍裁决，metadata-only两遍各缺4／3个有效请求，先补齐原失败IDs（非内容／效果筛选）；原T4-role-v2 prompt／同两遍pass号／单worker批1／共享StepPlan8slots，不覆盖原审核。原第三遍封版后仅对仍无有效结果的裁决请求补，已有有效标签逐字断言不变；独立T4-failure-completion-v1保留原summary／annotation SHA及失败补全来源。原图与新完整图各留版本，未知上下界照旧。正常原社区数据不重审。
+
+完整T4-role-v2双遍3033／373裁决、7失败pass补全后3033/3033／0unknown，原版summary/地图保留，新完整地图 SHA3a8b7bcde6fe75a1c6f65b215263ac5f336607a9a5d49e46acfc232cb8c15f81；完整2400scope已按主要role/cap/QA-joint逐组自审。三族pooled GP INITIAL使CORRECT_ROLES降低、GP_MISREADING增加，OTHER不增加；不是只有QA-only null。问答改善与明确误角色方向相反，未证明唯一latentparse。下一按新的accuracy/faithfulness分离对象设计当下模型actualQA＋freeinterpretation核心对比；不是第三个goal恢复措辞网格，不更改原Source/cap/角色定义或主张等级。

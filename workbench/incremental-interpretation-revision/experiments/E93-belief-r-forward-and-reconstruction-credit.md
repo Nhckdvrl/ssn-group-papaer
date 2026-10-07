@@ -17,3 +17,5 @@
 CPU三族完整5232重建/3488实际输出条件各通过；data SHA5477a87d5a03b2382cddc54058b0a9787e35bdeb17d97ecfff83241c2c7ccf41。三族native two-mode实际suffix逐一保存，Qwen开启think、Gemma按官方template选择thought频道、Minstral无单独强制thought入口。全26,160条件在8卡启动，0新API/0下载；完成全部scope前不读partial科学效应。
 
 2026-10-08 01:58运行时算力估计修正（只读进度／elapsed，未看partial效应）：8任务运行约32min，各Q/G分片约70–85／486–666 Source，Min更快。原20GPU·h是估计，不是人规定硬配额；按实测速率预计约25–30GPU·h，修正估计上限32GPU·h，输入／模式／cap／parser／读数完全不变，0新下载/API。预计在08:55之前完成；08:55释放timer仍优先于任何实验完整性。不能事后提高256cap或挑快速条目。
+
+2026-10-08 03:57，任何科学effect读取前prospective分析次序调整：Min族全部shards已完成 Belief-R全1744原题，可先生成**完整单族探索地图**指导假说；其余固定Q/G任务继续，三族完整主图／所有原指标／CI／cap／data／parser均不改。独立interim文件及scope只供假说生成，不叫三族共同finding、不挑Source或已做对题；这覆盖前述等待全模型才读取的次序约定，原因是尽快利用已释放卡做核心追问，符合用户探索阶段／不防御推进要求。原primary map仍只全三族到齐后生成；未看任何partial Source/teacher labels。

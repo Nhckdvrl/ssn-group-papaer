@@ -10,12 +10,16 @@ from current_open_baseline import MODELS
 from analyze_correct_answer_carry import estimate
 
 
-def analyze(root):
+def analyze(root, selected_models=None, output_name='belief-r-forward-reconstruction-map-v1.json', manifest_name='complete-map-v1.json'):
+    models = MODELS if selected_models is None else selected_models
+    assert models and set(models) <= set(MODELS)
     rows = [json.loads(s) for s in (root/'data-v1.jsonl').read_text().splitlines()]
     meta = {r['item_id']: r for r in rows}
     index = {}
     provenance = []
     for run in json.loads((root/'runner-pids-v1.json').read_text()):
+        if run['model'] not in models:
+            continue
         p = Path(run['out'])
         cfg = json.loads((p/'config.json').read_text())
         assert cfg['predictions_sha256'] == sha(p/'predictions.jsonl')
@@ -34,11 +38,11 @@ def analyze(root):
         provenance.append(dict(model=run['model'], shard=run['shard'],
                                config_sha256=sha(p/'config.json'), predictions_sha256=cfg['predictions_sha256'],
                                code_sha256=cfg['code_sha256'], gpu_hours=cfg['gpu_hours']))
-    assert len(index) == len(rows)*5*3
+    assert len(index) == len(rows)*5*len(models)
     panels = []
     disagreements = []
     raw = []
-    for model in MODELS:
+    for model in models:
         values = {}
         details = {}
         for r in rows:
@@ -111,15 +115,16 @@ def analyze(root):
                                    operation=operation, value=point, CI95=[None, None],
                                    clusters=len({r['cluster_id'] for r in rows}), sources=len(rows),
                                    scope='Descriptive author row-weighted macro; per-stratum clustered CI above, no invented macro CI.'))
-    out = root/'belief-r-forward-reconstruction-map-v1.json'
+    out = root/output_name
     assert not out.exists()
     out.write_text(json.dumps(dict(panels=panels, disagreements=disagreements, descriptive_counts=raw, runs=provenance,
-                                   data_sha256=sha(root/'data-v1.jsonl'),
+                                   data_sha256=sha(root/'data-v1.jsonl'), models=models,
+                                   analysis_scope='Full preregistered panel' if selected_models is None else 'INTERIM complete model-family data, hypothesis generation only; original full panel continues.',
                                    statistics='All1744 original author rows; Source then atomic seed cluster bootstrap10000 seed93. Author row-weighted BREU separate; actual answers cap/unknown bounded. Conditional success strata are diagnostic only.',
                                    limits='Author pragmatic suppression Gold is not classical entailment truth. Fixed raw observation-reconstruction analogue; comparison of two prompt orderings does not certify one Bayes joint. Prior21 unmatched records retained, initial labels NA.'), indent=2)+'\n')
-    m = dict(map_sha256=sha(out), gpu_hours=sum(r['gpu_hours'] for r in provenance), new_actual_outputs=len(rows)*2*3,
-             new_reconstruction_scores=len(rows)*3*3, new_api_calls=0, panels=len(panels))
-    (root/'complete-map-v1.json').write_text(json.dumps(m, indent=2)+'\n')
+    m = dict(map_sha256=sha(out), gpu_hours=sum(r['gpu_hours'] for r in provenance), new_actual_outputs=len(rows)*2*len(models),
+             new_reconstruction_scores=len(rows)*3*len(models), new_api_calls=0, panels=len(panels), models=models)
+    (root/manifest_name).write_text(json.dumps(m, indent=2)+'\n')
     print('E93 COMPLETE', m, flush=True)
 
 
