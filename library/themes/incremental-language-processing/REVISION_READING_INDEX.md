@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-27篇主文（3综述+24研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+31篇主文（3综述+28研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -23,7 +23,7 @@
 - [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
 - [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
 
-[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述27篇。
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述31篇。
 
 - [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
 - [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
@@ -36,3 +36,9 @@
 - [Modality Order Consistency：定向TTT（arXiv2026）](gupta2026-modality-consistency-ttt.md)
 
 - [RILKE：局部表征控制与改写泛化（ACL2026正式主文）](liu2026-rilke-lifelong-representation-control.md)
+
+- [Surprisal存在性与理论视角（ACL2026正式主文）](yoshida2026-surprisal-existence.md)
+- [JitMem：策展时机与即时credit（2026年9月预印本）](zhou2026-jitmem-read-time-curation.md)
+- [Good-enough复述：直接近邻（KJELL2026正式主文）](lee2026-good-enough-paraphrase.md)
+
+- [增量CWE轨迹：变化不等于关系修复（2026年9月预印本）](storer2026-incremental-contextual-trajectories.md)
