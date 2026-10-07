@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-45篇主文（3综述+42研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+46篇主文（3综述+42研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -23,7 +23,7 @@
 - [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
 - [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
 
-[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述45篇。
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述46篇。
 
 - [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
 - [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
@@ -68,3 +68,5 @@
 原知识库复读，不计新增：[结构建立与旧解释清理分离：人类直接机制祖先（JML2013）](slattery2013-competing-representations.md)
 
 - [自发撤回：当下belief与后续W/V机制（COLM2026作者v4；旧选段升级全文）](yangjia2025-spontaneous-retraction.md)
+
+- [Beliefs and Behavior：共同latent怎样跨行动预测（CMU/TSE9月预印本）](smolin2026-beliefs-behavior.md)
