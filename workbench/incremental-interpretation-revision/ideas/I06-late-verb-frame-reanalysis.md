@@ -25,3 +25,8 @@
 **为什么值得挖：** 它区分“不再相信旧关系”和“已经得到新关系”，可能解释为什么同一修订动作改善平均分却让模型少断言正确事实。不是再一个提示工程方案；关系更新应有可预测的后果。如果只能复现人类partial reanalysis和已知QA/parse差距，增量仍薄，需要调整，不能硬认证合格成稿idea。
 
 **下一唯一核心：** 将EARLY框架影响限定到问句前Source，在原生无Hint的回答环境中消费这份源计算，检验正角色恢复是否留下可携带解释。whole-source不认证单一valence因子、源位置时机可能含通用提示作用；结果会区分source解释与回答时显式策略，比继续第3个Hint/mask网格信息量高。原全151发表组全部族保留，弱控制单列；不按baseline是否正确选材料。
+
+
+## E90后收窄，不继续源/Hint网格
+
+[E90](../experiments/E90-frame-information-through-source.md)G NPZ17正关系源bank0→5.9%（CI含0），没有携带E89 EARLY100%；Q/M仍0，主要GoldNo改善。MVRR G final正关系+29.2[12.5,45.9]pp及GP joint+13[1.9,27.8]，部分可迁移。whole-bank不覆盖完整KV/recurrent/hint通路，不能用null排除源表示。三步后的诚实判断：有值得挖的论元重建对象，尚无具体稳定规律；“frame已经编译成完整解释”预测被削弱。下一从实际缺失的关系内容选操作，不再给此Hint/Source程序做控制链。E87普通QA G NPZ cue94.1/GP0提示隐含反身理解有实际能力锚，strict任务仍是部分因素；Min控制弱单列。保持SEED，未关闭/认证候选。
