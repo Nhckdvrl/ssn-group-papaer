@@ -131,3 +131,5 @@ C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了�
 - 2026-10-07 [E89](experiments/E89-early-versus-late-predicate-frame.md)/[摘要](results/E89-predicate-frame-timing-summary.json)：9408真实答案/0API，Gemma两构式正角色恢复、Q/Min No-only异质，cue与final损伤保留。支持I06探索对象：错误依赖解除与替代论元重建的区别；不认证valence神经因子、共同完整恢复或novelty。C06–08 L0/C09限定L1不变。
 
 - 2026-10-08 [E90](experiments/E90-frame-information-through-source.md)/[摘要](results/E90-frame-source-bank-summary.json)：完整9408实际答案的frame源中介，多数改善GoldNo、G部分MVRR正关系改善而NPZ正关系5.9%CI含0；完整可携带解释未建立，whole-source不认证唯一valence。C06–08 L0/C09限定L1不变，I06继续按具体关系操作探索。
+
+- 2026-10-08 [E91](experiments/E91-reconstruction-reward-and-revised-meaning.md)/[E92](experiments/E92-observation-surface-and-semantic-credit.md)：固定P的观察表达改变content credit与原语义的对齐，Q-generator跨三graderGP改善、反向下降，主要MVRR/其它generator弱。支持I07研究问题，不宣告原作者RL机制被证伪、complete semantic invariance或合格成稿。C06–08L0/C09限定L1不变。

@@ -1,6 +1,6 @@
 # E92：固定同一解释，重建奖励是否受观察表达形式支配？（2026-10-08）
 
-- **状态：** RUNNING；生成器E431在任何科学效果前改E92。
+- **状态：** DONE；生成器E431在任何科学效果前改E92。
 - **对应：** P20 / I06，C06–C09；E91首次内容reward探索，唯一第二核心对比，不衍生reward提示/温度网格。
 - **问题：** 同一个实际解释P对原Source的重建评分可能遗漏语义修订收益；将目标变成原发表配对的消歧表述，是否更能奖励忠实关系？同P/同grader/同rawcontext，只变观测surface，反向给原cue输出重建GP观察也完整测。
 - **数据：** E91原648输出/108Source不动；E63 donor_sentence_sha256定位发表GP-cue母句，按已有E70同问句Gold一致的input资格保留100Source（50pairs）/600P。4pairs（NPZ1/MVRR2/NPS1）的commonQ Gold不一致，效果前排除、原因全文留表，不新审原语料、不按模型分数挑。14Source还存在独有问句，E92语义读数仅使用两侧共同问句；对应P的原双盲标签直接复用，完整原atoms/指标另留，不改变E91主读数。所有generator/输出条件仍在，0API；commonQ一致不是全语义同义的证明，资格只承诺注册关系不改变。
@@ -12,3 +12,16 @@
 - **算力：** ≤1GPU·h，8独立H20 3/3/2、现有模型离线，0新下载/0新API。每任务08:55早释放、09:00硬停，之后不自行恢复。
 
 CPU全三族600目标边界通过，1800原context SHA逐一与E91缓存一致。data SHAab4b6f2735910163d1e0fdc58ff980c6e32a6036266cd376ad54c3d954f81a5f；8卡已运行，完全复用同一scorer code（日志内E91是复用程序标签，实际root/配置均E92）；无新Gold或API。
+
+## 完整结果与自审
+
+1800评分/.075381GPU·h/0API，全72面板/900grader×P对，map SHA40fa568ee48ae16a588c5ca7798feca47b98399ef515645aaece491db4382883，[摘要](../results/E92-observation-surface-summary.json)。全部grader×generator×构式×两侧，alignment/meanLP interaction/正关系与错误断言/原反向cue、ties、不同目标token长度都读，未筛reward有效者。
+
+- Q-generator GP，改用发表cue目标后语义alignment变化Q/G/M +.278[.056,.500]/+.222[.056,.444]/+.222[.056,.444]（alignment取−1/0/+1，不是正确率pp）。11个语义发生变化的P对，奖励一致/相反由6/5→11/0、3/8→7/4、5/6→9/2。全eligibleSource/同P不变，Gold缺维NA，按Source→cluster加权。
+- Q-generator反向cue→GP alignment−.222[−.444,−.056]/−.111[−.278,0]/−.167[−.389,0]；另外两generator GP主变化Meta+.167/.167/.167（CI前两到0、第三跨0），Gemma0/0/.111（均CI含0）。不是所有generator共同普遍恢复。
+- 主要来自MVRR：Q-generator该构式GP+.615[.154,1.077]/+.615[.154,1.077]/+.462[0,.923]，反向−.615[−1.077,−.154]/−.308[−.769,0]/−.462[−.923,0]；NPZ多格弱/null或某G-generator下降，NPS多数没有语义变化，不能宣告两构式通则。
+- 更高LP本身不是更忠实：大部分raw mean interaction正，原cue反向GP也有正的TARGET−BASE幅度变化却语义alignment下降；因此不以目标更易预测叫方法收益。正关系与减少未支持断言维度都完整保留，部分总alignment变化由No改善贡献。
+
+**探索结论：** 同一解释的语义内容未变，registered common-Q支持不变，但观察表述改变会改变credit与语义修订的关系。它为I07提供一个新视角/方法问题，不是单纯表述校准；当前来自固定未训练grader、主要MVRR/一个generator，距离真实RL有效方法仍不确定。原输入4pairGold冲突/独有Q限定scope，不叫全部语义等价，也不说ABBEL被证伪。
+
+E91→92这个二步块到此收束，更新竞争解释/近邻尺度，不继续surface/score模板网格。下一社区现成Belief-R按作者语用Gold检验前向判定与重建奖励的失配；不bulk审计。C06–08L0/C09限定L1不变，I07仅探索SEED，注册状态不变。
