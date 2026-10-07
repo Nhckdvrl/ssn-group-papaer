@@ -331,3 +331,18 @@ McGee出版社主文全文成为第57篇（4综述+53研究）：选最强可能
 E82完整三族/1008格读完，现代Ministral NPZ初始84.55%而final28.09%（cue94.10%），一句恢复不能共同修好两关系。不能仍把所有失败写成初始误读残留；具体后关系、No倾向与源句形式判定待区分。E85原Blott192句/48人类norm框架已沿用四条件原金标、0API铺8卡；意义连贯任务不同于source entailment，不能从任务间的平均差直接宣布词义能改角色不能改。
 
 第58篇Uselis ICML2026：把内部binding与外部失败的已知矛盾追到可共享函数和未见组合泛化，是值得借的idea尺度；存在性对照避免把旧模型失败升为架构定理。我们的可修订功能差异若为真，要预测新的具体关系后果而非只给新名字。当前仍无合格idea，C06–08L0/C09限定L1不变。
+
+### E91/E92后的新对象：修订credit；近邻提供研究尺度，不代替新颖性判决
+
+新增Sbrolli／Huang survey／ABBEL／Agent-BRACE／ReBel／MetaRAG／MemTrain／MemoryRewardBench，累计66主文（5综述＋61研究）；完整scope在各卡和ledger，不把综述覆盖数或下载计成阅读。E88–90结束frame／source块，完整正关系没有跨族建立；E91/92开始测已有648真实解释的内容credit，具体发表观察表达影响语义排序，但主要MVRR／Q-generator，I07仍SEED。
+
+| 信号／近邻 | 已有研究动作与ownership | 对解释修订还需回答的具体问题 |
+|---|---|---|
+| ABBEL latest-observation LP | 无teacher的belief内容重建＋两阶段memory/action训练 | 正确关系重析时重建分是否漏奖；未训练类比不能证伪作者RL |
+| Agent-BRACE／CBM | 真状态或verifier对coverage／错误／stale／校准监督 | 是否捕捉替代关系而非仅删除旧断言；我们不能声称首创state reward |
+| ReBel | observable predicate pending验证＋belief-anchor grouping | 验证对象与行动后state变化明确；不是字面观测LP同一机制 |
+| MetaRAG | answerability提示probe与动作一致性＋final正确gate | 泛称internal grader有错／加gate不够新；实际关系更新失配才是待检验对象 |
+| MemTrain | masked实体历史回填EM反馈写memory，预训练后任务泛化 | 保存旧内容与修改旧解释不同；实体回填不等于整句LP，也未测试我们的机制 |
+| MemoryRewardBench | 中间memory judge与同结局不同过程的偏好对象 | 一般memory scoring不可靠已有；必须有新的具体更新操作、信号或后果 |
+
+我们的理想增量不是这张表中任何“他没做GP，所以加GP”的切片。它应说明当新证据要求改变已有关系时，哪些自监督内容信号能／不能给正确修订credit，以及这个差异如何改变学习或后续用途。如果完整E93显示原任务也弱，或重建相当，更应改解释而非守住一个提前命名的故事。E67完整自由断言是另一个会改变对象的入口，不将教师审核等待变成局部控制理由。独立1744社区原Gold与两原作者前向模式已在8卡跑，0新审计；原C等级／注册不变。
