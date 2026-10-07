@@ -26,7 +26,7 @@ def main():
             ck = Path(rd) / f"model_{cfg['steps']:07d}.pt"
             out = Path(rd) / 'eval' / f'{a.script}_{ck.stem}.json'
             lock = Path(rd) / 'eval' / f'{a.script}_{ck.stem}.lock'
-            if not ck.exists() or out.exists() or lock.exists():
+            if not ck.exists() or out.exists() or lock.exists() or time.time() - ck.stat().st_mtime < 120:
                 continue
             lock.parent.mkdir(exist_ok=True)
             lock.write_text('x')

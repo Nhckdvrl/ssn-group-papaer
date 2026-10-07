@@ -23,6 +23,7 @@ torch.set_num_threads(2)
 from wm import IMNET_MEAN, IMNET_STD  # noqa: F401  (also puts vendor/le-wm on sys.path)
 
 DATA = Path(os.environ.get('LWM_DATA', '/tmp/latent-wm-data/lowres'))
+GAP = os.environ.get('LWM_GAP', '') == '1'
 
 
 NATIVE = Path('/tmp/latent-wm-data/native')
@@ -376,6 +377,7 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
     steps = np.zeros(len(rows), int)
     budget = 2 * offset
     gen = torch.Generator(device=dev).manual_seed(seed)
+    pending, pending_done = {}, []
     t0 = time.time()
     n_plans = 0
     while not done.all() and steps.max() < budget:
@@ -400,6 +402,19 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
         else:
             plan = cem(model, e0, g_emb[act_idx], horizon, A, samples, iters, topk, gen, proj=proj)
         n_plans += 1
+        if GAP:  # E23 diagnosis: predicted vs realised cost improvement of the executed plan
+            Wg = proj if (proj is not None and not callable(proj)) else None
+            cf = (lambda v: v if Wg is None else v @ Wg)
+            with torch.no_grad(), torch.autocast('cuda', dtype=torch.bfloat16):
+                emb, ae = e0[:, None], model.action_encoder(plan)
+                for t in range(horizon):
+                    emb = torch.cat([emb, model.predict(emb[:, -3:], ae[:, max(0, t + 1 - 3):t + 1])[:, -1:].float()], 1)
+            c_now = (cf(e0) - cf(g_emb[act_idx])).norm(dim=-1).float().cpu().numpy()
+            c_pred = (cf(emb[:, -1].float()) - cf(g_emb[act_idx])).norm(dim=-1).float().cpu().numpy()
+            for j, k in enumerate(act_idx):
+                if k in pending:
+                    pending_done.append((pending[k][0], pending[k][1], c_now[j]))
+            pending = {int(k): (c_now[j], c_pred[j]) for j, k in enumerate(act_idx)}
         acts = plan.cpu().numpy().reshape(len(act_idx), horizon * frameskip, adim) * asd + am
         for j, k in enumerate(act_idx):
             for a in acts[j]:
@@ -418,7 +433,8 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
             'iters': iters, 'topk': topk, 'horizon': horizon, 'seed': seed,
             'success': success.tolist(), 'steps': steps.tolist(), 'final_dist': final,
             'episodes': [[r[0], r[1]] for r in rows], 'success_rate': float(success.mean()),
-            'seconds': time.time() - t0, 'n_plans': n_plans}
+            'seconds': time.time() - t0, 'n_plans': n_plans,
+            **({'gap': [[float(x) for x in r] for r in pending_done]} if GAP else {})}
 
 
 def main():

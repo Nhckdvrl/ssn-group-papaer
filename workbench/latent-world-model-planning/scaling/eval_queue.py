@@ -58,7 +58,7 @@ def main():
         todo.sort()
         for _, ck, r, task, off, s, it in todo:
             ckpt = Path(r) / f'model_{ck:07d}.pt'
-            if not ckpt.exists():
+            if not ckpt.exists() or time.time() - ckpt.stat().st_mtime < 120:  # skip checkpoints still being written
                 continue
             ed = Path(r) / 'eval'
             ed.mkdir(exist_ok=True)

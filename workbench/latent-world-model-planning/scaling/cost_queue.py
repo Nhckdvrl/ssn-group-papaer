@@ -42,7 +42,7 @@ def main():
             if a.tasks and task not in a.tasks.split(','):
                 continue
             ck = rd / f"model_{cfg['steps']:07d}.pt"
-            if not ck.exists():
+            if not ck.exists() or time.time() - ck.stat().st_mtime < 120:  # skip checkpoints still being written
                 continue
             ed = rd / 'eval'
             ed.mkdir(exist_ok=True)
@@ -86,7 +86,10 @@ def main():
                     did = True
                 except Exception as e:  # noqa: BLE001
                     print(rd.name, mode, off, 'ERROR', repr(e)[:300], flush=True)
-                    (ed / f'{mode}_{ck.stem}_{off}.fail').write_text(repr(e))
+                    if 'out of memory' in repr(e).lower():
+                        time.sleep(300)  # transient: retry later instead of marking the job failed
+                    else:
+                        (ed / f'{mode}_{ck.stem}_{off}.fail').write_text(repr(e))
                 finally:
                     lock.unlink(missing_ok=True)
                     torch.cuda.empty_cache()
