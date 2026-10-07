@@ -1,0 +1,3350 @@
+{
+  "map_path": "/data1/xiangding/work/incremental-interpretation-revision/E85/lexical-semantic-recovery-map-v1.json",
+  "map_sha256": "011ac4e742f945c22b7e0d99110c1514a5c376b33872ae222e72f16b41686b76",
+  "complete": {
+    "all_models_complete": true,
+    "shards": 8,
+    "panels": 180,
+    "map_sha256": "011ac4e742f945c22b7e0d99110c1514a5c376b33872ae222e72f16b41686b76",
+    "gpu_hours": 0.2668614655783555
+  },
+  "data_sha256": "50ada5e61baa4ade9bd0def26780f25145b200e82082b07af90b9899d173ca6c",
+  "panels": [
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.9583333333333334,
+      "CI95": [
+        0.8958333333333334,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9479166666666666,
+      "CI95": [
+        0.8854166666666666,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.010416666666666666,
+      "CI95": [
+        -0.03125,
+        0.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8622293599809168,
+      "CI95": [
+        0.8041408291739166,
+        0.9117678355058777
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.851737158897401,
+      "CI95": [
+        0.7993572967542667,
+        0.8980803772574236
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.010492201083515708,
+      "CI95": [
+        -0.020292359201494855,
+        1.9592985062376807e-05
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.9375,
+      "CI95": [
+        0.8645833333333334,
+        0.9895833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9791666666666666,
+      "CI95": [
+        0.9375,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.041666666666666664,
+      "CI95": [
+        0.0,
+        0.09375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.865116369887957,
+      "CI95": [
+        0.8139684488771192,
+        0.910210113123729
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8861023365568551,
+      "CI95": [
+        0.8484243252525377,
+        0.9188104519685222
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.020985966668898137,
+      "CI95": [
+        0.006721589845444217,
+        0.036777207619842704
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.5729166666666666,
+      "CI95": [
+        0.4270833333333333,
+        0.7083333333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.6041666666666666,
+      "CI95": [
+        0.4583333333333333,
+        0.75
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.03125,
+      "CI95": [
+        0.0,
+        0.08333333333333333
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.5764557039761335,
+      "CI95": [
+        0.47289074786116486,
+        0.6802691630409367
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.6102849198282786,
+      "CI95": [
+        0.5180900469796071,
+        0.7027068977833146
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.03382921585214505,
+      "CI95": [
+        0.010350197179313752,
+        0.059532301528033536
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.6041666666666666,
+      "CI95": [
+        0.4583333333333333,
+        0.75
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7083333333333334,
+      "CI95": [
+        0.5729166666666666,
+        0.8333333333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.10416666666666667,
+      "CI95": [
+        0.03125,
+        0.1875
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.6042744820848239,
+      "CI95": [
+        0.5106218408146139,
+        0.6978771167653245
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.67570577361743,
+      "CI95": [
+        0.5929787988291121,
+        0.7560533822746957
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.07143129153260588,
+      "CI95": [
+        0.04611627616211447,
+        0.09839230603009311
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.9270833333333334,
+      "CI95": [
+        0.8541666666666666,
+        0.9895833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.875,
+      "CI95": [
+        0.78125,
+        0.9583333333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.052083333333333336,
+      "CI95": [
+        -0.11458333333333333,
+        -0.010416666666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8544216047373633,
+      "CI95": [
+        0.7966109223154625,
+        0.9070081059808487
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8104974296034988,
+      "CI95": [
+        0.7463204833164859,
+        0.869296731331475
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.04392417513386463,
+      "CI95": [
+        -0.05752016735190374,
+        -0.03155931051328534
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.875,
+      "CI95": [
+        0.7916666666666666,
+        0.9479166666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7708333333333334,
+      "CI95": [
+        0.6458333333333334,
+        0.875
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.10416666666666667,
+      "CI95": [
+        -0.17708333333333334,
+        -0.041666666666666664
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8120208580166387,
+      "CI95": [
+        0.7523292875572403,
+        0.8684821489154388
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7294614021437827,
+      "CI95": [
+        0.6583528161989255,
+        0.7981462424107132
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.08255945587285607,
+      "CI95": [
+        -0.09993806564256112,
+        -0.06591537664302419
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.84375,
+      "CI95": [
+        0.7395833333333334,
+        0.9375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.78125,
+      "CI95": [
+        0.6666666666666666,
+        0.8854166666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.0625,
+      "CI95": [
+        -0.125,
+        -0.010416666666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.7697730829629439,
+      "CI95": [
+        0.6953172827048336,
+        0.8359251914828852
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7085330048977706,
+      "CI95": [
+        0.6342602532006973,
+        0.7760107018066428
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.06124007806517336,
+      "CI95": [
+        -0.08167138128626776,
+        -0.04099408761920011
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.8020833333333334,
+      "CI95": [
+        0.6875,
+        0.90625
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.625,
+      "CI95": [
+        0.4895833333333333,
+        0.75
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.17708333333333334,
+      "CI95": [
+        -0.2708333333333333,
+        -0.09375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.7137379508148252,
+      "CI95": [
+        0.6412262185316169,
+        0.7791255720191683
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.6125787375284171,
+      "CI95": [
+        0.536855403149453,
+        0.6842671142785346
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.10115921328640808,
+      "CI95": [
+        -0.12222238777739525,
+        -0.08045769302186301
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.3854166666666667,
+      "CI95": [
+        0.23958333333333334,
+        0.53125
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.34375,
+      "CI95": [
+        0.19791666666666666,
+        0.4895833333333333
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.041666666666666664,
+      "CI95": [
+        -0.09375,
+        0.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.2857736560047832,
+      "CI95": [
+        0.19808892250159138,
+        0.3748754885747904
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.24145223906912242,
+      "CI95": [
+        0.16296067431202008,
+        0.3209940709287542
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.04432141693566075,
+      "CI95": [
+        -0.07190061026553878,
+        -0.019723350145167774
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.3333333333333333,
+      "CI95": [
+        0.1875,
+        0.4791666666666667
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.2708333333333333,
+      "CI95": [
+        0.15625,
+        0.3958333333333333
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.0625,
+      "CI95": [
+        -0.15625,
+        0.020833333333333332
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.26084188780313294,
+      "CI95": [
+        0.18226088669395574,
+        0.34068656888279625
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.21039656293942519,
+      "CI95": [
+        0.13970493686539381,
+        0.28320457589018777
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.05044532486370775,
+      "CI95": [
+        -0.07656650898253213,
+        -0.025377551820408555
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.9479166666666666,
+      "CI95": [
+        0.8854166666666666,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9583333333333334,
+      "CI95": [
+        0.8958333333333334,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.010416666666666666,
+      "CI95": [
+        0.0,
+        0.03125
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.9466478512319659,
+      "CI95": [
+        0.8814568257830495,
+        0.9992194550349538
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9583307317707191,
+      "CI95": [
+        0.8958312208685587,
+        0.9999999749242651
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.011682880538753134,
+      "CI95": [
+        3.0604069288975315e-05,
+        0.034269032909139255
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.9375,
+      "CI95": [
+        0.8541666666666666,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9583333333333334,
+      "CI95": [
+        0.8958333333333334,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.020833333333333332,
+      "CI95": [
+        0.0,
+        0.0625
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.939845539832285,
+      "CI95": [
+        0.8618275907434608,
+        0.9997917984861524
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9582498787824099,
+      "CI95": [
+        0.8957498855012345,
+        0.9999999854299492
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.018404338950124742,
+      "CI95": [
+        1.201480398432659e-09,
+        0.055088347753882536
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.65625,
+      "CI95": [
+        0.5208333333333334,
+        0.78125
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8125,
+      "CI95": [
+        0.6875,
+        0.9166666666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.15625,
+      "CI95": [
+        0.0625,
+        0.2604166666666667
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.6587429812443869,
+      "CI95": [
+        0.5265438020157696,
+        0.7844562954780446
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8081005633268113,
+      "CI95": [
+        0.6897309163097637,
+        0.9120427888007154
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.14935758208242442,
+      "CI95": [
+        0.061039477379024015,
+        0.24632333612175086
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.6770833333333334,
+      "CI95": [
+        0.5416666666666666,
+        0.8020833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7916666666666666,
+      "CI95": [
+        0.6666666666666666,
+        0.8958333333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.11458333333333333,
+      "CI95": [
+        0.010416666666666666,
+        0.21875
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.6719599876402641,
+      "CI95": [
+        0.5377981525732652,
+        0.80153432467818
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7974128439034098,
+      "CI95": [
+        0.67867121134823,
+        0.90148187503565
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.12545285626314573,
+      "CI95": [
+        0.03102940848442403,
+        0.22874902803744174
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.8958333333333334,
+      "CI95": [
+        0.7916666666666666,
+        0.9791666666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7291666666666666,
+      "CI95": [
+        0.6041666666666666,
+        0.84375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.16666666666666666,
+      "CI95": [
+        -0.2708333333333333,
+        -0.07291666666666667
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8943610905610792,
+      "CI95": [
+        0.8001570672841049,
+        0.974698467983687
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7293931443828048,
+      "CI95": [
+        0.6031861573040361,
+        0.8431732838884348
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.16496794617827426,
+      "CI95": [
+        -0.26728921612699763,
+        -0.07592420241069767
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.8854166666666666,
+      "CI95": [
+        0.7916666666666666,
+        0.96875
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.7291666666666666,
+      "CI95": [
+        0.6041666666666666,
+        0.84375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.15625,
+      "CI95": [
+        -0.2604166666666667,
+        -0.0625
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.884945055775185,
+      "CI95": [
+        0.7880536381995888,
+        0.9643342952018202
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.726724457592362,
+      "CI95": [
+        0.5982351590013987,
+        0.8438180465436869
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.15822059818282297,
+      "CI95": [
+        -0.25954487862069475,
+        -0.06951058133226343
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.84375,
+      "CI95": [
+        0.7395833333333334,
+        0.9270833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.5625,
+      "CI95": [
+        0.4270833333333333,
+        0.6979166666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.28125,
+      "CI95": [
+        -0.3958333333333333,
+        -0.16666666666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8458317508914105,
+      "CI95": [
+        0.7488921855916358,
+        0.9290761009103462
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.5615162451500393,
+      "CI95": [
+        0.4277372089222072,
+        0.6956330434377378
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.2843155057413714,
+      "CI95": [
+        -0.3980916285252441,
+        -0.17758885338514757
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.8333333333333334,
+      "CI95": [
+        0.7291666666666666,
+        0.9270833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.5625,
+      "CI95": [
+        0.4270833333333333,
+        0.6979166666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.2708333333333333,
+      "CI95": [
+        -0.3958333333333333,
+        -0.16666666666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8280770577647432,
+      "CI95": [
+        0.7217457017256113,
+        0.920507907948243
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.5484434547490235,
+      "CI95": [
+        0.4133748559703383,
+        0.6831249587904947
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.2796336030157199,
+      "CI95": [
+        -0.39662190130849817,
+        -0.17116553124872846
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.2916666666666667,
+      "CI95": [
+        0.16666666666666666,
+        0.4166666666666667
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.14583333333333334,
+      "CI95": [
+        0.0625,
+        0.25
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.14583333333333334,
+      "CI95": [
+        -0.25,
+        -0.052083333333333336
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.2879048699875791,
+      "CI95": [
+        0.16340415700815974,
+        0.4153489649107714
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.15023016844390777,
+      "CI95": [
+        0.06258962697664085,
+        0.2540487307797319
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.1376747015436713,
+      "CI95": [
+        -0.2386629088084246,
+        -0.04548528703866849
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.2604166666666667,
+      "CI95": [
+        0.125,
+        0.3958333333333333
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.16666666666666666,
+      "CI95": [
+        0.0625,
+        0.2708333333333333
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.09375,
+      "CI95": [
+        -0.20833333333333334,
+        0.020833333333333332
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.267885552192021,
+      "CI95": [
+        0.13697247721086,
+        0.4003795906880804
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.16083703487899997,
+      "CI95": [
+        0.06310925143012204,
+        0.2677499170138365
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.10704851731302101,
+      "CI95": [
+        -0.21533866583795355,
+        -0.0016770270516928154
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.7291666666666666,
+      "CI95": [
+        0.6041666666666666,
+        0.84375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.71875,
+      "CI95": [
+        0.59375,
+        0.8333333333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.010416666666666666,
+      "CI95": [
+        -0.052083333333333336,
+        0.020833333333333332
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.6910964611959369,
+      "CI95": [
+        0.5991534015548811,
+        0.7780894016775555
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.6618967494268888,
+      "CI95": [
+        0.5798817343553876,
+        0.7401219852012214
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.02919971176904808,
+      "CI95": [
+        -0.04665843400820628,
+        -0.010704057886358507
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.7604166666666666,
+      "CI95": [
+        0.6354166666666666,
+        0.875
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8020833333333334,
+      "CI95": [
+        0.6875,
+        0.90625
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.041666666666666664,
+      "CI95": [
+        0.0,
+        0.09375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.7730293027337972,
+      "CI95": [
+        0.669606376081654,
+        0.8680928006918723
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.783694085365045,
+      "CI95": [
+        0.6883220633358624,
+        0.8705252395717982
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.010664782631247845,
+      "CI95": [
+        -0.008548735260194102,
+        0.03288635364961644
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.4270833333333333,
+      "CI95": [
+        0.2916666666666667,
+        0.5625
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.4166666666666667,
+      "CI95": [
+        0.28125,
+        0.5520833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.010416666666666666,
+      "CI95": [
+        -0.0625,
+        0.052083333333333336
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.3998093425536346,
+      "CI95": [
+        0.2902260784044258,
+        0.5152479826487639
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.39341758965895696,
+      "CI95": [
+        0.2920317491675169,
+        0.4989892653020314
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.006391752894677705,
+      "CI95": [
+        -0.027789976569835544,
+        0.013673944849890585
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.46875,
+      "CI95": [
+        0.3333333333333333,
+        0.6145833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.4583333333333333,
+      "CI95": [
+        0.3229166666666667,
+        0.59375
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.010416666666666666,
+      "CI95": [
+        -0.07291666666666667,
+        0.041666666666666664
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.46840573206726943,
+      "CI95": [
+        0.341816494412818,
+        0.6006247790876784
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.4633857312162581,
+      "CI95": [
+        0.3414538871096682,
+        0.5886888033606742
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.005020000851011386,
+      "CI95": [
+        -0.034843211714566995,
+        0.021380884766539092
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.96875,
+      "CI95": [
+        0.9166666666666666,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.96875,
+      "CI95": [
+        0.9270833333333334,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.0,
+      "CI95": [
+        -0.041666666666666664,
+        0.041666666666666664
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.9174390244664633,
+      "CI95": [
+        0.8721013878113323,
+        0.956802651654
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8985786644574194,
+      "CI95": [
+        0.8532376321146222,
+        0.9385853143300428
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.01886036000904392,
+      "CI95": [
+        -0.038158856380958825,
+        0.001404132780244774
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.9583333333333334,
+      "CI95": [
+        0.8958333333333334,
+        1.0
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9375,
+      "CI95": [
+        0.8645833333333334,
+        0.9895833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.020833333333333332,
+      "CI95": [
+        -0.08333333333333333,
+        0.041666666666666664
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.9082922128207093,
+      "CI95": [
+        0.8477669641456581,
+        0.9589450612496876
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.889863829967512,
+      "CI95": [
+        0.8298413088550162,
+        0.9413422657085385
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.01842838285319726,
+      "CI95": [
+        -0.050910356246464776,
+        0.015216974422722594
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.8958333333333334,
+      "CI95": [
+        0.8125,
+        0.96875
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.9270833333333334,
+      "CI95": [
+        0.8541666666666666,
+        0.9895833333333334
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.03125,
+      "CI95": [
+        0.0,
+        0.07291666666666667
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8674862771512855,
+      "CI95": [
+        0.8001262746668848,
+        0.9266154685887779
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8506269648327898,
+      "CI95": [
+        0.7856388717987859,
+        0.9088483759710763
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.016859312318495686,
+      "CI95": [
+        -0.032509319773487276,
+        -0.002188061377284785
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.8645833333333334,
+      "CI95": [
+        0.7604166666666666,
+        0.9479166666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.875,
+      "CI95": [
+        0.78125,
+        0.9479166666666666
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.010416666666666666,
+      "CI95": [
+        -0.020833333333333332,
+        0.052083333333333336
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.8408463027497639,
+      "CI95": [
+        0.7536183505227163,
+        0.9183335786541716
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.8255144150932949,
+      "CI95": [
+        0.7419736340570056,
+        0.9009225757810883
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.015331887656468833,
+      "CI95": [
+        -0.04025819074012888,
+        0.005922250832871584
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.3020833333333333,
+      "CI95": [
+        0.14583333333333334,
+        0.4583333333333333
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.3020833333333333,
+      "CI95": [
+        0.14583333333333334,
+        0.4479166666666667
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.0,
+      "CI95": [
+        -0.052083333333333336,
+        0.052083333333333336
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.2912871186423023,
+      "CI95": [
+        0.17676005489307223,
+        0.40539260427623947
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.26847915976793196,
+      "CI95": [
+        0.1703465905781069,
+        0.3676167163771001
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "words",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": -0.02280795887437037,
+      "CI95": [
+        -0.048262646594560664,
+        0.005527224421789683
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "DIRECT",
+      "value": 0.2916666666666667,
+      "CI95": [
+        0.13541666666666666,
+        0.4479166666666667
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.34375,
+      "CI95": [
+        0.19791666666666666,
+        0.4895833333333333
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.052083333333333336,
+      "CI95": [
+        -0.020833333333333332,
+        0.125
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "DIRECT",
+      "value": 0.30462357066652773,
+      "CI95": [
+        0.17000231151965903,
+        0.4394634340526209
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER",
+      "value": 0.32030835414878706,
+      "CI95": [
+        0.20211059318998265,
+        0.43993260972424564
+      ],
+      "clusters": 48,
+      "sources": 48
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous-minus-ambiguous",
+      "readout": "letters",
+      "metric": "p_correct",
+      "operation": "ONE_RECOVER-minus-DIRECT",
+      "value": 0.01568478348225923,
+      "CI95": [
+        -0.016637474494105246,
+        0.053135755956402554
+      ],
+      "clusters": 48,
+      "sources": 48
+    }
+  ],
+  "runs": [
+    {
+      "model": "Qwen3.8-27B",
+      "shard": 0,
+      "gpu_hours": 0.020242370474475642,
+      "predictions_sha256": "0814c61fa202c574c7956d0b82cab3a8aaa5e3b8d7a8321a494fb7503235778f",
+      "config_sha256": "683679c78aab071d808867b8534de927ca5db9291b3430655b173300b9cfbe23",
+      "model_manifest_sha256": "01e8dd2ce75a392fafe8e698e69718c4d68bc9b921302585f1de6b89a75715a0",
+      "prefix_full_LP_max_delta": 0.19766759872436523,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "shard": 1,
+      "gpu_hours": 0.0239247365108329,
+      "predictions_sha256": "5f263be3c8e7682ce61ba2201416b8447cb24c8109c0a745c2120624a640995e",
+      "config_sha256": "670d8dd101ff5a674fe7653f8df03e79b507e316cf62f0e2a4778a327d0fec3e",
+      "model_manifest_sha256": "01e8dd2ce75a392fafe8e698e69718c4d68bc9b921302585f1de6b89a75715a0",
+      "prefix_full_LP_max_delta": 0.18295860290527344,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "shard": 2,
+      "gpu_hours": 0.022920928471915736,
+      "predictions_sha256": "61664ea50efa5ad5b2be6e3a4eaf86c7f049816a3fa3a1c4f74e9f29657ea093",
+      "config_sha256": "08605751af01b85c820ca8e4426296ee5e6be8429220e904511629023195f560",
+      "model_manifest_sha256": "01e8dd2ce75a392fafe8e698e69718c4d68bc9b921302585f1de6b89a75715a0",
+      "prefix_full_LP_max_delta": 0.20774412155151367,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "shard": 0,
+      "gpu_hours": 0.019217139891956725,
+      "predictions_sha256": "9bec9e2ade4c0403e8926dca12455699fb769aca0736377f0512dfcc7794fa07",
+      "config_sha256": "13d94b08d20e212b82cd4dd874d9e2682dba43b03ad49b4e8e7af09480516c64",
+      "model_manifest_sha256": "d58f157bf03e61c38d658e8bc9fb7cea7b0db0da8730edb95784f2e269b11369",
+      "prefix_full_LP_max_delta": 0.6874923706054688,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "shard": 1,
+      "gpu_hours": 0.02280177194081868,
+      "predictions_sha256": "ceeca32b4cb8823891c5abe7e310b2d734d7045299a926bf35d3f47bbf68ebcd",
+      "config_sha256": "8f352721a83d81c0a73f514991b17ad5b512b13de67555bedec644c518ea4e72",
+      "model_manifest_sha256": "d58f157bf03e61c38d658e8bc9fb7cea7b0db0da8730edb95784f2e269b11369",
+      "prefix_full_LP_max_delta": 1.906697392463684,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "shard": 2,
+      "gpu_hours": 0.021963535926899768,
+      "predictions_sha256": "81d5160102599c06cb69002ebfa479a3b0f7bda105888047020c52e52c1c6b74",
+      "config_sha256": "ac8bae07b6bdbde77ce9cf337568aa42a5502dc9379b7592b8f6b649b2b7cd47",
+      "model_manifest_sha256": "d58f157bf03e61c38d658e8bc9fb7cea7b0db0da8730edb95784f2e269b11369",
+      "prefix_full_LP_max_delta": 0.53125,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "shard": 0,
+      "gpu_hours": 0.07042931908864476,
+      "predictions_sha256": "71969c9c7de2928cd3cbe10db0d6a7eb900359dce48d4b5dacf092d1e46cd906",
+      "config_sha256": "003b3b560e2bb994fea9f64d84f9526894ab325119c2442a081eed15c411d875",
+      "model_manifest_sha256": "5660e761de9d3cbd98eca8555fb95192b87396f8d092d6adfb5b8767e1845cc2",
+      "prefix_full_LP_max_delta": 0.103080153465271,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "shard": 1,
+      "gpu_hours": 0.0653616632728113,
+      "predictions_sha256": "3eef93c3046c2095b9e40fc2f1877943557745abaceb05a7cc1b181b869608f0",
+      "config_sha256": "0c3a5318d560cbe26d1c9df4b1f6ecda69897b607687c8ec963f37d4c4fd1251",
+      "model_manifest_sha256": "5660e761de9d3cbd98eca8555fb95192b87396f8d092d6adfb5b8767e1845cc2",
+      "prefix_full_LP_max_delta": 0.1222233772277832,
+      "score_function": "full_scores",
+      "repeat_LP_max_delta": 0.0
+    }
+  ],
+  "mapping_noise": [
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.125
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.08333333333333333
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.08333333333333333
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.08333333333333333
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.08333333333333333
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.0625
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.0
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.041666666666666664
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_mapping_flip": 0.020833333333333332
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_mapping_flip": 0.08333333333333333
+    }
+  ],
+  "prompt_lengths": [
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 77.75,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.75,
+      "max_tokens": 93
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 77.75,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.75,
+      "max_tokens": 93
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 77.75,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.75,
+      "max_tokens": 93
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 77.75,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.75,
+      "max_tokens": 93
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 77.85416666666667,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.85416666666667,
+      "max_tokens": 93
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 77.85416666666667,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.85416666666667,
+      "max_tokens": 93
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 77.79166666666667,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.79166666666667,
+      "max_tokens": 93
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 77.79166666666667,
+      "max_tokens": 81
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 89.79166666666667,
+      "max_tokens": 93
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 78.6875,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.6875,
+      "max_tokens": 95
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 78.6875,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.6875,
+      "max_tokens": 95
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 78.6875,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.6875,
+      "max_tokens": 95
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 78.6875,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.6875,
+      "max_tokens": 95
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 78.70833333333333,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.70833333333333,
+      "max_tokens": 95
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 78.70833333333333,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.70833333333333,
+      "max_tokens": 95
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 78.70833333333333,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.70833333333333,
+      "max_tokens": 95
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 78.70833333333333,
+      "max_tokens": 83
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 90.70833333333333,
+      "max_tokens": 95
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0416666666666,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0416666666666,
+      "max_tokens": 605
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0416666666666,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0416666666666,
+      "max_tokens": 605
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0833333333334,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0833333333334,
+      "max_tokens": 605
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0833333333334,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "coherent_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0833333333334,
+      "max_tokens": 605
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0833333333334,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0833333333334,
+      "max_tokens": 605
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0833333333334,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_unambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0833333333334,
+      "max_tokens": 605
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0416666666666,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "words",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0416666666666,
+      "max_tokens": 605
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "DIRECT",
+      "mean_tokens": 588.0416666666666,
+      "max_tokens": 592
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "condition": "anomalous_ambiguous",
+      "readout": "letters",
+      "operation": "ONE_RECOVER",
+      "mean_tokens": 601.0416666666666,
+      "max_tokens": 605
+    }
+  ],
+  "statistics": "48 original lexical frames; average mappings per sentence; paired cluster bootstrap10000 seed85.",
+  "limits": "Original coherence gold, not logical entailment or direct sense identity. Human initial dominance is not model commitment. Comparison with E82 is descriptive across different tasks; no automatic mechanism or ability claim."
+}
