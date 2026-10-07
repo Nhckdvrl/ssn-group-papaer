@@ -9,7 +9,7 @@ from data import sha, write_jsonl
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--data',type=Path,required=True);parser.add_argument('--runs',type=Path,nargs='+',required=True)
-    parser.add_argument('--out',type=Path,required=True);args=parser.parse_args();metadata={r['item_id']:r for r in load(args.data)}
+    parser.add_argument('--out',type=Path,required=True);parser.add_argument('--seed',type=int,default=65);args=parser.parse_args();metadata={r['item_id']:r for r in load(args.data)}
     reports={};effects=[];provenance=[];families=set()
     def report(key,records):
         # Same unit->sentence->lexical-cluster weighting as the E63 map.
@@ -22,7 +22,7 @@ def main():
         clusters=collections.defaultdict(list)
         for (cluster,sentence),values in sentences.items():clusters[cluster].append(float(np.mean(values)))
         values={cluster:float(np.mean(v)) for cluster,v in clusters.items()}
-        reports[key]=dict(estimate(values,seed=65),n_records=len(records),n_source_units=len(grouped),n_sentences=len(sentences))
+        reports[key]=dict(estimate(values,seed=args.seed),n_records=len(records),n_source_units=len(grouped),n_sentences=len(sentences))
         effects.extend(dict(report=key,cluster_id=k,value=v) for k,v in values.items())
     for run in args.runs:
         cfg=json.loads((run/'config.json').read_text());model=Path(cfg['model_path']).name
