@@ -89,3 +89,12 @@ INTACT v3隔离venv已成功：transformers5.9.0、Torch2.7.1cu128、NumPy1.26.4
 
 
 2026-10-05 E18F3前置资产（运行前）：接续完整INTACT source0，在同HF immutable revision0430df6…下载官方trainseed42/3072 archives，仅取Nav/Push权重与对应config/epoch5meta，按PAPER_E5_GOAL_MANIFEST bytes/SHA/sharedencoder验。已有source0/cache/env不改，无GPUtrain/efficacy；新的跨sourcefullcontrol归E18F3，不从官方下载headline生成本地主张。raw资产ledger unique20261005-E01-intact-three-seed-assets。
+### INTACT时间语义校准：完整history与两条world rollout路径（运行前，2026-10-05）
+
+H1实际训练与endpoint/heldreader已DONE，原始predictor更新明显优于冷启动DIRECT；这是合法scope读数，不构成预测对象优劣因果，DIRECT未继承完整world预训练。读回源代码发现`JEPA.rollout`采用每个leading state的forward action，而`rollout_one_step`把incoming previous-action history最后槽替为新action；多步时其旧槽可能与state时间错开。完整source使用1-frame初始化是否弱于3-frame真实history也尚未系统校准。只指出代码差异，不先宣布bug或改已运行源码。当前H2B尚未训练/部署，先完成该D1校准。
+
+固定同公开source0、oldH0完整两task1452/actual5-prefix视觉与causal command、共同11given goal；对已知真实未来commands（仅offline诊断）比较H1+LEGACY、H1+FORWARD-ALIGNED、H3+LEGACY、H3+FORWARD-ALIGNED。H3用真实warm0/5/10三帧，forward actions为warm0–4/warm5–9/当前candidate；actor incoming previous history为reset前zero/warm0–4/warm5–9，二者不能混成同array。不足完整5步的片段只计完整macro targets，提前吸收不当物理转移。监督/encoder冻结，未训练任何新参数。
+
+阳性对照：FORWARD-ALIGNED whole known-command trajectory逐prefix与原source `JEPA.rollout` bitexact（h3将已知warm10在candidate序列前两槽显式填入），LEGACY逐prefix与原source `rollout_one_step` bitexact、真实warmpixels/已执行history不使用dataset未来替代；全部权重/normalizerhash不变，CPU/CUDA按原tolerance。主读数1…5prefix标准化/原latent MSE，H1/H3×alignment交互、同anchor/goal cluster；不拿未来真实commands的teacher评分冒充deployment。另核官方metadata/config/train sampler的action stats与实际scaler来源/frameskip，差异单列。
+
+决策表：若历史/对齐恢复较大部分错误，之后方法比较须加该强初始化/推理对照，原H1结果限定工程scope，不能称训练作用源于新机制；实际control再用原legacy与strong aligned/H3同任务协议比较。若差异小，保留negative工程校准，继续H2的方法训练和多段闭环。此处是baseline correction/measurement，非新idea，不以修source bug作paper narrative，不关闭任何母问题、不删除此前完整结果。单GPU独立cell、原RNG与信息权限，raw/cache，不触其他workbench。

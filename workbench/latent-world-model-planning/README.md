@@ -1,6 +1,6 @@
 # Latent World Model Planning｜紧凑隐空间世界模型工作台
 
-**状态：PROPOSED（不占 ACTIVE 名额）。2026-10-07 接手后转向“规模科学”层（I15 / E21），探索中，科学主张 0。**
+**状态：主问题 = I16（人 2026-10-07 同意）；论文级实验 E23 已基本跑完，2026-10-07 22:30 按人要求暂停全部实验。科学主张尚未登记（待独立校对）。**
 
 ## 一页结论（2026-10-07 下午）
 
@@ -12,23 +12,26 @@
    - 撤回 / 未成立：跨房间切分（坐标轴错）；指数 = −1/状态维数；压低 latent 维度无效；慢特征对 PushT 有害（与方块姿态不对齐）。
 3. **还缺：** SIGReg 权重因果干预（在跑）；切换规则的留出验证（Reacher 已一致，Cube / 大迷宫待做）；每格 ≥3 种子；224px 锚点；形式化命题。
 
-## 当前在跑
+## 论文级实验 E23 结论（2026-10-07，详见 [E23](experiments/E23-paper-grid.md)、[日志](logs/2026-10-07.md)）
 
-| 内容 | 位置 |
+| 检验 | 结果 |
 |---|---|
-| 5 档尺寸（1.7M–285M）× PushT / TwoRoom / Reacher × 种子；latent 维度析因；数据缩放；规模 × 技巧 | fvcrc20（4×RTX PRO 6000）、fvcrc10（4×A100），`scaling/sched.py` 队列 |
-| 闭环评测（n=200，offset 25/50/75，CEM 算力扫描 30×3 – 3000×30） | `scaling/eval_queue.py` |
-| 候选库（模拟器真值）排序 / best-of-N / 真实动力学代价 | `scaling/bank*.py`、`scaling/oracle_bank.py` |
-| 摊销策略 GC-IDM | `scaling/gcidm*.py` |
+| 规模 × 3 种子（TwoRoom） | CEM + L2 每十倍参数 −9.3pp（off50，CI [−10.4, −8.0]）；慢特征 / auto 斜率 +1 ~ +4pp，成功率 92–99% |
+| 官方发布 LeWM（224px） | 度量视野 TwoRoom 10 / PushT 35 步；TwoRoom 远目标 L2 32.5% → auto 90%；PushT 规则保持 L2 |
+| SIGReg 因果（3 种子） | λ=0.01 → off50 80.7%、off75 60.3%（默认 63.2 / 37.7）；λ=0.003 坍缩；λ 减小抬高水平但规模效应仍在 |
+| 统一变量 | 规模与 λ 都推高 D_eff；26 个检查点上 L2 成功率对 log D_eff 的 R² 0.83–0.89；E[K²]=1/D_eff，P(K≥0.5)·D_eff 为常数 |
+| 留出环境（冻结规则） | PointMaze-large L2 15–20% → auto 82–83%；Cube、visual-antmaze 不伤害（antmaze 上所有方法都失败，控制瓶颈） |
+| 迷宫修复随规模 | 补齐种子后 auto 斜率 ≈ 0（−0.2 ~ +2.4pp）；慢特征近似直线距离，需绕墙远目标约 40% |
+| 局限 | λ×规模：各向同性压力只解释部分规模效应；DINOv2 冻结特征度量视野不随编码器变大缩短（现象限于各向同性训练） |
 
-汇总：`python scaling/report.py` → `results/E21_scaling_table.json`。大文件（检查点、数据）在 `/tmp/latent-wm-runs/scaling/`（fvcrc20）与 `/home/xiang/.cache/latent-wm-results/scaling/`（共享盘）。
+**暂停时未完成：** TwoRoom L 种子 2（53.5k 步）；E24 VICReg 推广检验（[卡](experiments/E24-vicreg-generality.md)，刚启动无结果）。恢复步骤见 [日志 22:30 节](logs/2026-10-07.md)。大文件（检查点、数据）在 `/tmp/latent-wm-runs/scaling/`（fvcrc20）与 `/home/xiang/.cache/latent-wm-results/scaling/`（共享盘）。
 
 ## 入口
 
 | 要做什么 | 去哪里 |
 |---|---|
 | 领域画像、谱系、角度所有权、热度数据、深读卡 | [library/themes/latent-world-models/](../../library/themes/latent-world-models/README.md) |
-| 当前 idea 与实验卡 | [I15](ideas/I15-scaling-planning.md)、[E21](experiments/E21-scaling-planning.md) |
+| 当前 idea 与实验卡 | [I16](ideas/I16-latent-bandwidth.md)、[E21](experiments/E21-scaling-planning.md)、[E22](experiments/E22-latent-bandwidth-law.md)、[E23](experiments/E23-paper-grid.md)、[E24](experiments/E24-vicreg-generality.md) |
 | 资产（环境、数据、权重、venv） | [ASSETS.md](ASSETS.md)；MuJoCo 依赖隔离在 `/home/xiang/.cache/latent-wm-pydeps/`（PYTHONPATH，不改 venv） |
 | 前任的研究计划、实验、主张账本（历史） | [RESEARCH_PLAN.md](RESEARCH_PLAN.md)、[experiments/](experiments/README.md)、[CLAIMS.md](CLAIMS.md)、[PAIN_LOG.md](PAIN_LOG.md) |
 

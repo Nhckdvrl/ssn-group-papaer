@@ -1,0 +1,2978 @@
+{
+  "completed": true,
+  "training": [
+    {
+      "task": "tworoom",
+      "arm": "FINETUNE-WORLD",
+      "passed": true,
+      "eligible_rows": 735,
+      "updates": 1000,
+      "sampler_sha256": "a25c9273cb77aa797ca522498ae63ed3c2d1f8ed2d219a6bd3104ea26a552ce9",
+      "independent_initial_optimizer_norm_split_checks": true,
+      "hardware": "NVIDIA A100 80GB PCIe",
+      "elapsed_seconds": 104.90921805426478,
+      "checkpoint_sha256": "831e085a849f5e7af5dd24ce5569cfec090566e26b9a46f8429a2ca1f657b394",
+      "raw_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-outcome-tworoom-FINETUNE-WORLD-s0"
+    },
+    {
+      "task": "tworoom",
+      "arm": "DIRECT-CONTROLLER",
+      "passed": true,
+      "eligible_rows": 735,
+      "updates": 1000,
+      "sampler_sha256": "a25c9273cb77aa797ca522498ae63ed3c2d1f8ed2d219a6bd3104ea26a552ce9",
+      "independent_initial_optimizer_norm_split_checks": true,
+      "hardware": "NVIDIA A100 80GB PCIe",
+      "elapsed_seconds": 3.243399005383253,
+      "checkpoint_sha256": "376c497ad970d6936fa01223b7f983eb70da3c91239804121e6f37fbf0020e24",
+      "raw_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-outcome-tworoom-DIRECT-CONTROLLER-s0"
+    },
+    {
+      "task": "pusht",
+      "arm": "FINETUNE-WORLD",
+      "passed": true,
+      "eligible_rows": 960,
+      "updates": 1000,
+      "sampler_sha256": "6e4ef7f6173879796ad5f60c1ca72f2b69c8474cba97d3f35ac8feee1ca73660",
+      "independent_initial_optimizer_norm_split_checks": true,
+      "hardware": "NVIDIA A100 80GB PCIe",
+      "elapsed_seconds": 145.5279815979302,
+      "checkpoint_sha256": "8f09c7214eed24a70b43e3d4597e0da974ca853efa3d8fa561b22482234b2fd8",
+      "raw_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-outcome-pusht-FINETUNE-WORLD-s0"
+    },
+    {
+      "task": "pusht",
+      "arm": "DIRECT-CONTROLLER",
+      "passed": true,
+      "eligible_rows": 960,
+      "updates": 1000,
+      "sampler_sha256": "6e4ef7f6173879796ad5f60c1ca72f2b69c8474cba97d3f35ac8feee1ca73660",
+      "independent_initial_optimizer_norm_split_checks": true,
+      "hardware": "NVIDIA A100 80GB PCIe",
+      "elapsed_seconds": 4.5841054283082485,
+      "checkpoint_sha256": "fe0766b78662c9ad194ecd535b78ad5c908e71d18428df6eba48759d8b2a4059",
+      "raw_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-outcome-pusht-DIRECT-CONTROLLER-s0"
+    }
+  ],
+  "fit": [
+    {
+      "task": "tworoom",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.4278470277786255,
+        3.3979647159576416,
+        3.9574644565582275,
+        4.200289249420166,
+        4.157715797424316
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "NONINITIAL",
+      "rows": 300,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.3092726469039917,
+        3.2865521907806396,
+        3.7567131519317627,
+        3.9313268661499023,
+        3.852134943008423
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "FULL25",
+      "rows": 179,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.2271934747695923,
+        2.9324660301208496,
+        3.285353183746338,
+        3.4035825729370117,
+        3.316584587097168
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "ABSORBED",
+      "rows": 121,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.4306968450546265,
+        3.810370683670044,
+        4.454013347625732,
+        4.712033271789551,
+        4.6443939208984375
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.11925564706325531,
+        0.4180183410644531,
+        0.6342289447784424,
+        0.775050938129425,
+        0.8832926750183105
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "NONINITIAL",
+      "rows": 300,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.050004467368125916,
+        0.2716587483882904,
+        0.4509700536727905,
+        0.5893130302429199,
+        0.6845019459724426
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "FULL25",
+      "rows": 179,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.01411169208586216,
+        0.03630704805254936,
+        0.07929658889770508,
+        0.13739052414894104,
+        0.18809475004673004
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "ABSORBED",
+      "rows": 121,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.10310199856758118,
+        0.6198240518569946,
+        1.0008013248443604,
+        1.257859230041504,
+        1.4188560247421265
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.0780442953109741,
+        1.394350290298462,
+        1.3994418382644653,
+        1.3838130235671997,
+        1.4550532102584839
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "NONINITIAL",
+      "rows": 300,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.3556429147720337,
+        1.7348430156707764,
+        1.7313157320022583,
+        1.709303617477417,
+        1.8013185262680054
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "FULL25",
+      "rows": 179,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.2819899320602417,
+        1.7359861135482788,
+        1.7315824031829834,
+        1.7244428396224976,
+        1.8618913888931274
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "ABSORBED",
+      "rows": 121,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.4646016359329224,
+        1.7331534624099731,
+        1.7309234142303467,
+        1.6869088411331177,
+        1.7117085456848145
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "GOAL-COPY",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.6451845169067383,
+        1.6257001161575317,
+        1.5916087627410889,
+        1.5808098316192627,
+        1.5771963596343994
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "GOAL-COPY",
+      "stratum": "NONINITIAL",
+      "rows": 300,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.9013367891311646,
+        1.8756179809570312,
+        1.8306175470352173,
+        1.8163628578186035,
+        1.8115925788879395
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "GOAL-COPY",
+      "stratum": "FULL25",
+      "rows": 179,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.8571423292160034,
+        1.8408557176589966,
+        1.805519938468933,
+        1.81902277469635,
+        1.813698649406433
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "GOAL-COPY",
+      "stratum": "ABSORBED",
+      "rows": 121,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.9667136669158936,
+        1.9270436763763428,
+        1.8677449226379395,
+        1.8124278783798218,
+        1.8084748983383179
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "CURRENT-COPY",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.0133239030838013,
+        1.3690282106399536,
+        1.4037679433822632,
+        1.4000251293182373,
+        1.4188141822814941
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "CURRENT-COPY",
+      "stratum": "NONINITIAL",
+      "rows": 300,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.337587594985962,
+        1.807117223739624,
+        1.8529735803604126,
+        1.8480331897735596,
+        1.8728348016738892
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "CURRENT-COPY",
+      "stratum": "FULL25",
+      "rows": 179,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.3234717845916748,
+        1.8465582132339478,
+        1.9138251543045044,
+        1.9268046617507935,
+        1.9705010652542114
+      ]
+    },
+    {
+      "task": "tworoom",
+      "predictor": "CURRENT-COPY",
+      "stratum": "ABSORBED",
+      "rows": 121,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.3584702014923096,
+        1.7487715482711792,
+        1.7629530429840088,
+        1.7315053939819336,
+        1.7283514738082886
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.06086786836385727,
+        0.10331164300441742,
+        0.15368710458278656,
+        0.1966732293367386,
+        0.26315876841545105
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "NONINITIAL",
+      "rows": 360,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.06014547869563103,
+        0.1024818941950798,
+        0.15430431067943573,
+        0.19878216087818146,
+        0.2693403661251068
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "FULL25",
+      "rows": 314,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.05991536006331444,
+        0.1023031622171402,
+        0.15842141211032867,
+        0.20722629129886627,
+        0.2788901925086975
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FROZEN-WORLD",
+      "stratum": "ABSORBED",
+      "rows": 46,
+      "unique_anchors": 8,
+      "prefix_normalized_MSE": [
+        0.06171628087759018,
+        0.1037018895149231,
+        0.12620091438293457,
+        0.14114175736904144,
+        0.20415444672107697
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.01740236207842827,
+        0.035683512687683105,
+        0.06352338194847107,
+        0.08758309483528137,
+        0.13122256100177765
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "NONINITIAL",
+      "rows": 360,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.01598968170583248,
+        0.0332222580909729,
+        0.06130582466721535,
+        0.08496953547000885,
+        0.1302872747182846
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "FULL25",
+      "rows": 314,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.015367220155894756,
+        0.03121935948729515,
+        0.06163341552019119,
+        0.08737858384847641,
+        0.13105210661888123
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "FINETUNE-WORLD",
+      "stratum": "ABSORBED",
+      "rows": 46,
+      "unique_anchors": 8,
+      "prefix_normalized_MSE": [
+        0.020238667726516724,
+        0.046894412487745285,
+        0.059069667011499405,
+        0.06852512806653976,
+        0.12506712973117828
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.3704359233379364,
+        0.727048933506012,
+        0.8409797549247742,
+        0.9337189793586731,
+        0.9969711303710938
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "NONINITIAL",
+      "rows": 360,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.4060960114002228,
+        0.7957781553268433,
+        0.9192541837692261,
+        1.0199984312057495,
+        1.0883244276046753
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "FULL25",
+      "rows": 314,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.4019298553466797,
+        0.8135000467300415,
+        0.9610674977302551,
+        1.0723477602005005,
+        1.1472808122634888
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "DIRECT-CONTROLLER",
+      "stratum": "ABSORBED",
+      "rows": 46,
+      "unique_anchors": 8,
+      "prefix_normalized_MSE": [
+        0.4345340132713318,
+        0.674808919429779,
+        0.6338317394256592,
+        0.6626591682434082,
+        0.6858825087547302
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "GOAL-COPY",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.3167496919631958,
+        1.2134984731674194,
+        1.123607873916626,
+        1.0558520555496216,
+        0.9860402941703796
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "GOAL-COPY",
+      "stratum": "NONINITIAL",
+      "rows": 360,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.4481595754623413,
+        1.3345832824707031,
+        1.2357035875320435,
+        1.1611721515655518,
+        1.084378957748413
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "GOAL-COPY",
+      "stratum": "FULL25",
+      "rows": 314,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        1.5644581317901611,
+        1.4625312089920044,
+        1.3793781995773315,
+        1.3156962394714355,
+        1.2320690155029297
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "GOAL-COPY",
+      "stratum": "ABSORBED",
+      "rows": 46,
+      "unique_anchors": 8,
+      "prefix_normalized_MSE": [
+        0.6542957425117493,
+        0.4611993134021759,
+        0.25496751070022583,
+        0.10637738555669785,
+        0.07623466849327087
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "CURRENT-COPY",
+      "stratum": "ALL-HELD",
+      "rows": 396,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.3164563477039337,
+        0.6986502408981323,
+        0.9111728072166443,
+        1.050301194190979,
+        1.121836543083191
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "CURRENT-COPY",
+      "stratum": "NONINITIAL",
+      "rows": 360,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.34810197353363037,
+        0.7685152888298035,
+        1.0022900104522705,
+        1.1553312540054321,
+        1.2340202331542969
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "CURRENT-COPY",
+      "stratum": "FULL25",
+      "rows": 314,
+      "unique_anchors": 12,
+      "prefix_normalized_MSE": [
+        0.3429817855358124,
+        0.7836952209472656,
+        1.0395861864089966,
+        1.20437753200531,
+        1.2910370826721191
+      ]
+    },
+    {
+      "task": "pusht",
+      "predictor": "CURRENT-COPY",
+      "stratum": "ABSORBED",
+      "rows": 46,
+      "unique_anchors": 8,
+      "prefix_normalized_MSE": [
+        0.38305291533470154,
+        0.6648975014686584,
+        0.7477046847343445,
+        0.8205405473709106,
+        0.8448139429092407
+      ]
+    }
+  ],
+  "selection": [
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 32,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 8,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.2,
+          "regret": 0.059076452255249025,
+          "recall": 0.4
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.7,
+          "regret": 0.10869547724723816,
+          "recall": 0.13333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.4,
+          "regret": 0.08185096383094788,
+          "recall": 0.2
+        },
+        "GOAL-COPY": {
+          "success": 0.6,
+          "regret": 0.16879539787769318,
+          "recall": 0.13333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.18292876482009887,
+          "recall": 0.06666666666666667
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 32,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 6,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.2,
+          "regret": 0.040777212381362914,
+          "recall": 0.4
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.5,
+          "regret": 0.11901917457580566,
+          "recall": 0.1
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.3,
+          "regret": 0.06524613499641418,
+          "recall": 0.13333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.3,
+          "regret": 0.13344269394874572,
+          "recall": 0.3
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.15627324283123017,
+          "recall": 0.06666666666666667
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 33,
+      "noninitial_final_goals": 9,
+      "oracle_native_support": 4,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1111111111111111,
+          "regret": 0.07984958092371623,
+          "recall": 0.07407407407407407
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3333333333333333,
+          "regret": 0.04237662669685152,
+          "recall": 0.2962962962962963
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1111111111111111,
+          "regret": 0.09668043586942884,
+          "recall": 0.14814814814814814
+        },
+        "GOAL-COPY": {
+          "success": 0.2222222222222222,
+          "regret": 0.11627005537350972,
+          "recall": 0.14814814814814814
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.12464752131038243,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 33,
+      "noninitial_final_goals": 9,
+      "oracle_native_support": 4,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.07963450749715169,
+          "recall": 0.1111111111111111
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.2222222222222222,
+          "regret": 0.049004984398682915,
+          "recall": 0.3333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1111111111111111,
+          "regret": 0.08896094891760084,
+          "recall": 0.1111111111111111
+        },
+        "GOAL-COPY": {
+          "success": 0.1111111111111111,
+          "regret": 0.0917235877778795,
+          "recall": 0.1111111111111111
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.11692803435855442,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 34,
+      "noninitial_final_goals": 8,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.09169049933552742,
+          "recall": 0.0
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.25,
+          "regret": 0.05253949388861656,
+          "recall": 0.16666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.375,
+          "regret": 0.09560656920075417,
+          "recall": 0.041666666666666664
+        },
+        "GOAL-COPY": {
+          "success": 0.375,
+          "regret": 0.06345008686184883,
+          "recall": 0.125
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.0898963063955307,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 34,
+      "noninitial_final_goals": 8,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.06870295852422714,
+          "recall": 0.0
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.125,
+          "regret": 0.04083256796002388,
+          "recall": 0.16666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.375,
+          "regret": 0.07075183093547821,
+          "recall": 0.041666666666666664
+        },
+        "GOAL-COPY": {
+          "success": 0.25,
+          "regret": 0.036420997232198715,
+          "recall": 0.041666666666666664
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.06690876558423042,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 35,
+      "noninitial_final_goals": 8,
+      "oracle_native_support": 4,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.125,
+          "regret": 0.11204319447278976,
+          "recall": 0.125
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.25,
+          "regret": 0.05233992636203766,
+          "recall": 0.4583333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.375,
+          "regret": 0.03434564918279648,
+          "recall": 0.37499999999999994
+        },
+        "GOAL-COPY": {
+          "success": 0.125,
+          "regret": 0.07528065145015717,
+          "recall": 0.041666666666666664
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.15131953358650208,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 35,
+      "noninitial_final_goals": 8,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.125,
+          "regret": 0.07510754838585854,
+          "recall": 0.20833333333333331
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.050726186484098434,
+          "recall": 0.4583333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.25,
+          "regret": 0.04351980984210968,
+          "recall": 0.41666666666666663
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.06750050187110901,
+          "recall": 0.0
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.11928927525877953,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 36,
+      "noninitial_final_goals": 6,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.16666666666666666,
+          "regret": 0.0736947034796079,
+          "recall": 0.27777777777777773
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.5,
+          "regret": 0.10340288778146108,
+          "recall": 0.3333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.19917292892932892,
+          "recall": 0.1111111111111111
+        },
+        "GOAL-COPY": {
+          "success": 0.16666666666666666,
+          "regret": 0.18558129916588464,
+          "recall": 0.1111111111111111
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.18534648915131888,
+          "recall": 0.16666666666666666
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 36,
+      "noninitial_final_goals": 6,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.16666666666666666,
+          "regret": 0.007726229727268219,
+          "recall": 0.3333333333333333
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.16666666666666666,
+          "regret": 0.0463591068983078,
+          "recall": 0.4444444444444444
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.14453010757764181,
+          "recall": 0.1111111111111111
+        },
+        "GOAL-COPY": {
+          "success": 0.16666666666666666,
+          "regret": 0.05033977081378301,
+          "recall": 0.3333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.13070366779963175,
+          "recall": 0.16666666666666666
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 37,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 5,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.05261315703392029,
+          "recall": 0.1
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.4,
+          "regret": 0.0547331690788269,
+          "recall": 0.2
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.4,
+          "regret": 0.0699078768491745,
+          "recall": 0.0
+        },
+        "GOAL-COPY": {
+          "success": 0.4,
+          "regret": 0.08102387487888336,
+          "recall": 0.06666666666666667
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.05773814022541046,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 37,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 5,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.05204328298568726,
+          "recall": 0.06666666666666667
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.4,
+          "regret": 0.021066617965698243,
+          "recall": 0.2
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.3,
+          "regret": 0.0666164368391037,
+          "recall": 0.0
+        },
+        "GOAL-COPY": {
+          "success": 0.3,
+          "regret": 0.06441751718521119,
+          "recall": 0.03333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.05716826617717743,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 38,
+      "noninitial_final_goals": 7,
+      "oracle_native_support": 4,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.22721551997320993,
+          "recall": 0.0
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.5714285714285714,
+          "regret": 0.03909631392785481,
+          "recall": 0.6666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.14285714285714285,
+          "regret": 0.0924931498510497,
+          "recall": 0.2857142857142857
+        },
+        "GOAL-COPY": {
+          "success": 0.14285714285714285,
+          "regret": 0.25210547021457125,
+          "recall": 0.23809523809523808
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.18528465713773454,
+          "recall": 0.14285714285714285
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 38,
+      "noninitial_final_goals": 7,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.1720978958266122,
+          "recall": 0.14285714285714285
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.2857142857142857,
+          "regret": 0.0009311863354274205,
+          "recall": 0.619047619047619
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.14285714285714285,
+          "regret": 0.06316726761204856,
+          "recall": 0.23809523809523808
+        },
+        "GOAL-COPY": {
+          "success": 0.14285714285714285,
+          "regret": 0.22334337660244533,
+          "recall": 0.19047619047619047
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.14428916147777013,
+          "recall": 0.2857142857142857
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 39,
+      "noninitial_final_goals": 7,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.056649589112826755,
+          "recall": 0.2857142857142857
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.2857142857142857,
+          "regret": 0.014661388737814767,
+          "recall": 0.619047619047619
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.14285714285714285,
+          "regret": 0.08889677907739367,
+          "recall": 0.047619047619047616
+        },
+        "GOAL-COPY": {
+          "success": 0.14285714285714285,
+          "regret": 0.12150348935808454,
+          "recall": 0.19047619047619047
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.13030607572623662,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 39,
+      "noninitial_final_goals": 7,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.0648582513843264,
+          "recall": 0.2857142857142857
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.14285714285714285,
+          "regret": 0.01008886524609157,
+          "recall": 0.6666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.14285714285714285,
+          "regret": 0.08125938475131989,
+          "recall": 0.09523809523809523
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.09212678032261985,
+          "recall": 0.33333333333333337
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.12266868140016284,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 40,
+      "noninitial_final_goals": 7,
+      "oracle_native_support": 5,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.14285714285714285,
+          "regret": 0.2486292804990496,
+          "recall": 0.047619047619047616
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.7142857142857143,
+          "regret": 0.04925200981753213,
+          "recall": 0.19047619047619047
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.14410043827125005,
+          "recall": 0.047619047619047616
+        },
+        "GOAL-COPY": {
+          "success": 0.7142857142857143,
+          "regret": 0.10013925816331591,
+          "recall": 0.23809523809523808
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.14410043827125005,
+          "recall": 0.2857142857142857
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 40,
+      "noninitial_final_goals": 7,
+      "oracle_native_support": 5,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.2342536449432373,
+          "recall": 0.09523809523809523
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.7142857142857143,
+          "regret": 0.03509983846119472,
+          "recall": 0.47619047619047616
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.14047740825584956,
+          "recall": 0.14285714285714285
+        },
+        "GOAL-COPY": {
+          "success": 0.42857142857142855,
+          "regret": 0.105377625141825,
+          "recall": 0.3333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.14047740825584956,
+          "recall": 0.2857142857142857
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 41,
+      "noninitial_final_goals": 8,
+      "oracle_native_support": 5,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.21947072073817253,
+          "recall": 0.041666666666666664
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.625,
+          "regret": 0.06775455176830292,
+          "recall": 0.29166666666666663
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.125,
+          "regret": 0.09540453925728798,
+          "recall": 0.125
+        },
+        "GOAL-COPY": {
+          "success": 0.25,
+          "regret": 0.14828021451830864,
+          "recall": 0.16666666666666666
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.2236468829214573,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 41,
+      "noninitial_final_goals": 8,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.17201528325676918,
+          "recall": 0.041666666666666664
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.25,
+          "regret": 0.04457712545990944,
+          "recall": 0.25
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.13116444274783134,
+          "recall": 0.041666666666666664
+        },
+        "GOAL-COPY": {
+          "success": 0.125,
+          "regret": 0.12889494001865387,
+          "recall": 0.041666666666666664
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.17619144544005394,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 42,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 5,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.06709946990013123,
+          "recall": 0.3
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.5,
+          "regret": 0.10963482558727264,
+          "recall": 0.13333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.5,
+          "regret": 0.1077101469039917,
+          "recall": 0.06666666666666667
+        },
+        "GOAL-COPY": {
+          "success": 0.5,
+          "regret": 0.1323099285364151,
+          "recall": 0.03333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.05275234580039978,
+          "recall": 0.1
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 42,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.07095037996768952,
+          "recall": 0.4
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3,
+          "regret": 0.058540511131286624,
+          "recall": 0.16666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.2,
+          "regret": 0.07827917337417603,
+          "recall": 0.13333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.2,
+          "regret": 0.1163334459066391,
+          "recall": 0.0
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.05083510577678681,
+          "recall": 0.1
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 43,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 8,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.21797919720411302,
+          "recall": 0.06666666666666667
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.8,
+          "regret": 0.15148723125457764,
+          "recall": 0.3666666666666667
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.4,
+          "regret": 0.08347361534833908,
+          "recall": 0.3333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.5,
+          "regret": 0.2039031893014908,
+          "recall": 0.26666666666666666
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.3735091477632523,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 43,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 6,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.19287929236888884,
+          "recall": 0.13333333333333333
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3,
+          "regret": 0.15823830366134645,
+          "recall": 0.4666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.3,
+          "regret": 0.09128647744655609,
+          "recall": 0.26666666666666666
+        },
+        "GOAL-COPY": {
+          "success": 0.4,
+          "regret": 0.1792697250843048,
+          "recall": 0.16666666666666666
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.3392978489398956,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 32,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.035276785120368005,
+          "recall": 0.6333333333333332
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.030347302183508874,
+          "recall": 0.6666666666666667
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.2942163970321417,
+          "recall": 0.13333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.22334461472928524,
+          "recall": 0.16666666666666666
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.253904664516449,
+          "recall": 0.39999999999999997
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 32,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 0,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.02760239839553833,
+          "recall": 0.7666666666666666
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.0264080286026001,
+          "recall": 0.7333333333333334
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.2983939409255981,
+          "recall": 0.06666666666666667
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.29315600395202634,
+          "recall": 0.03333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.2209215998649597,
+          "recall": 0.4333333333333333
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 33,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.1517154335975647,
+          "recall": 0.6666666666666666
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.06152287721633911,
+          "recall": 0.5666666666666667
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.3180975079536438,
+          "recall": 0.2333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.20129151344299318,
+          "recall": 0.3333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.4293595552444458,
+          "recall": 0.4
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 33,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 0,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.12012839317321777,
+          "recall": 0.4666666666666666
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.0948251724243164,
+          "recall": 0.3
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.2631756901741028,
+          "recall": 0.13333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.2982994556427002,
+          "recall": 0.03333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.16235203742980958,
+          "recall": 0.4
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 34,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.3,
+          "regret": 0.03795658852905035,
+          "recall": 0.4333333333333333
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3,
+          "regret": 0.03307037781924009,
+          "recall": 0.5333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.2,
+          "regret": 0.42988788671791556,
+          "recall": 0.2
+        },
+        "GOAL-COPY": {
+          "success": 0.3,
+          "regret": 0.5420501889660955,
+          "recall": 0.3
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.36516694277524947,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 34,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.2,
+          "regret": 0.045080599188804624,
+          "recall": 0.5
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.2,
+          "regret": 0.03045234680175781,
+          "recall": 0.6
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.5087775558233261,
+          "recall": 0.2
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.690822896361351,
+          "recall": 0.3333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.33011950105428695,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 35,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.09463285878300667,
+          "recall": 0.2
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.0,
+          "recall": 0.9666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.059323009103536606,
+          "recall": 0.8
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.1999434597790241,
+          "recall": 0.33333333333333337
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.5203092277050019,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 35,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.12050690203905105,
+          "recall": 0.1
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.011511003971099854,
+          "recall": 0.9666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.05324004590511322,
+          "recall": 0.7
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.21428531557321548,
+          "recall": 0.2666666666666667
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.4933691293001175,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 36,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.0872666884213686,
+          "recall": 0.7333333333333333
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.2,
+          "regret": 0.05759423561394215,
+          "recall": 0.7666666666666667
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.21299090683460237,
+          "recall": 0.36666666666666664
+        },
+        "GOAL-COPY": {
+          "success": 0.2,
+          "regret": 0.22813168466091155,
+          "recall": 0.5
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.8647819250822067,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 36,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.12046982645988465,
+          "recall": 0.8333333333333333
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.10670320391654968,
+          "recall": 0.8666666666666668
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.2020399808883667,
+          "recall": 0.36666666666666664
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.2521289199590683,
+          "recall": 0.4333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.7672211825847626,
+          "recall": 0.1
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 37,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.14018059372901917,
+          "recall": 0.29999999999999993
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.054622510075569154,
+          "recall": 0.6666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.12751712799072265,
+          "recall": 0.16666666666666666
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.20457538962364197,
+          "recall": 0.3
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.8253708481788635,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 37,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.1681973397731781,
+          "recall": 0.5666666666666667
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.06588963270187378,
+          "recall": 0.6333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.12155772373080254,
+          "recall": 0.4333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.13257510587573051,
+          "recall": 0.6
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.7802048742771148,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 38,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.01030886908993125,
+          "recall": 0.6
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.10867358399555087,
+          "recall": 0.4333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.2,
+          "regret": 0.6084585871547461,
+          "recall": 0.13333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.10298544093966484,
+          "recall": 0.39999999999999997
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 1.0656177639961242,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 38,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.014147605001926421,
+          "recall": 0.7
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.11546482741832734,
+          "recall": 0.4666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.7616764515638351,
+          "recall": 0.16666666666666666
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.11225701570510864,
+          "recall": 0.4333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.9822776675224304,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 39,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 4,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.3,
+          "regret": 0.20191363841295243,
+          "recall": 1.0
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3,
+          "regret": 0.0047389458864927295,
+          "recall": 0.9666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.4,
+          "regret": 0.24872984522953628,
+          "recall": 0.33333333333333337
+        },
+        "GOAL-COPY": {
+          "success": 0.3,
+          "regret": 0.42261010557413103,
+          "recall": 0.4
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.9369744390249253,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 39,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 2,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.19283356368541718,
+          "recall": 0.9333333333333332
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.00022253096103668212,
+          "recall": 0.9666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.25479069650173186,
+          "recall": 0.23333333333333334
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.5447918385267257,
+          "recall": 0.26666666666666666
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.8755076646804809,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 40,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 0,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.08000225573778152,
+          "recall": 0.6666666666666667
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.020125561952590944,
+          "recall": 0.7666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.4372566305100918,
+          "recall": 0.26666666666666666
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.2531338378787041,
+          "recall": 0.3
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.9911704301834107,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 40,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 0,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.05726579427719116,
+          "recall": 0.7333333333333333
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.0050647974014282225,
+          "recall": 0.7666666666666667
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.42304039001464844,
+          "recall": 0.3333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.2713822603225708,
+          "recall": 0.36666666666666664
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.951631224155426,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 41,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.2,
+          "regret": 0.04913659524172544,
+          "recall": 0.8
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3,
+          "regret": 0.02859706822782755,
+          "recall": 0.8
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.3,
+          "regret": 0.5101448720321059,
+          "recall": 0.4333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.2,
+          "regret": 0.36572101302444937,
+          "recall": 0.36666666666666664
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.6838158786296844,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 41,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 0,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.08083794116973878,
+          "recall": 0.7999999999999999
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.037776291370391846,
+          "recall": 0.8666666666666666
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.5766679108142853,
+          "recall": 0.39999999999999997
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.36543142795562744,
+          "recall": 0.3333333333333333
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.5083607137203217,
+          "recall": 0.13333333333333333
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 42,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.3,
+          "regret": 0.21618444919586183,
+          "recall": 0.2333333333333333
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3,
+          "regret": 0.007246127724647522,
+          "recall": 0.8333333333333334
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.3,
+          "regret": 0.005920474231243133,
+          "recall": 0.7666666666666666
+        },
+        "GOAL-COPY": {
+          "success": 0.3,
+          "regret": 0.32643474750220774,
+          "recall": 0.4
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 1.1664811104536057,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 42,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 3,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.3,
+          "regret": 0.23322361186146737,
+          "recall": 0.3
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.3,
+          "regret": 0.004854747653007507,
+          "recall": 1.0
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.2,
+          "regret": 0.15659741945564748,
+          "recall": 0.9
+        },
+        "GOAL-COPY": {
+          "success": 0.2,
+          "regret": 0.47796665988862513,
+          "recall": 0.4
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 1.15779547393322,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "anchor": 43,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 1,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.1,
+          "regret": 0.032283222675323485,
+          "recall": 0.7666666666666666
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.1,
+          "regret": 0.04487423598766327,
+          "recall": 0.8333333333333333
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.1,
+          "regret": 0.5684674680233002,
+          "recall": 0.3333333333333333
+        },
+        "GOAL-COPY": {
+          "success": 0.1,
+          "regret": 0.3541934311389923,
+          "recall": 0.36666666666666664
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 1.005499404668808,
+          "recall": 0.0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "anchor": 43,
+      "noninitial_final_goals": 10,
+      "oracle_native_support": 0,
+      "metrics": {
+        "FROZEN-WORLD": {
+          "success": 0.0,
+          "regret": 0.07849801778793335,
+          "recall": 0.5666666666666667
+        },
+        "FINETUNE-WORLD": {
+          "success": 0.0,
+          "regret": 0.03596067428588867,
+          "recall": 0.6666666666666667
+        },
+        "DIRECT-CONTROLLER": {
+          "success": 0.0,
+          "regret": 0.6461745440959931,
+          "recall": 0.26666666666666666
+        },
+        "GOAL-COPY": {
+          "success": 0.0,
+          "regret": 0.3345158636569977,
+          "recall": 0.26666666666666666
+        },
+        "CURRENT-COPY": {
+          "success": 0.0,
+          "regret": 0.6632585465908051,
+          "recall": 0.0
+        }
+      }
+    }
+  ],
+  "differences": [
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "success",
+      "mean_delta": 0.1771825396825397,
+      "paired_held_anchor_bootstrap_95": [
+        0.0631919642857143,
+        0.2806572420634921
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "regret",
+      "mean_delta": -0.026364022696380895,
+      "paired_held_anchor_bootstrap_95": [
+        -0.0714351626898029,
+        0.019856500334436526
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "recall",
+      "mean_delta": 0.005279982363315697,
+      "paired_held_anchor_bootstrap_95": [
+        -0.09692460317460318,
+        0.10892912257495589
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "success",
+      "mean_delta": -0.24649470899470896,
+      "paired_held_anchor_bootstrap_95": [
+        -0.39351851851851855,
+        -0.10036210317460321
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "regret",
+      "mean_delta": 0.02863909920194635,
+      "paired_held_anchor_bootstrap_95": [
+        0.0004668715942858033,
+        0.05503940693174228
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "recall",
+      "mean_delta": -0.1728284832451499,
+      "paired_held_anchor_bootstrap_95": [
+        -0.26760361552028217,
+        -0.08829227292768964
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "success",
+      "mean_delta": -0.097255291005291,
+      "paired_held_anchor_bootstrap_95": [
+        -0.23204365079365083,
+        0.00925925925925926
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "regret",
+      "mean_delta": -0.038249985260701676,
+      "paired_held_anchor_bootstrap_95": [
+        -0.072272538039242,
+        -0.007021994819549276
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "recall",
+      "mean_delta": 0.001884920634920631,
+      "paired_held_anchor_bootstrap_95": [
+        -0.06359375,
+        0.07698908730158723
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "success",
+      "mean_delta": 0.2476521164021164,
+      "paired_held_anchor_bootstrap_95": [
+        0.1520767195767196,
+        0.3434920634920634
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "regret",
+      "mean_delta": -0.059319434211485916,
+      "paired_held_anchor_bootstrap_95": [
+        -0.11486232271839289,
+        -0.013811670681979102
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "recall",
+      "mean_delta": 0.08499779541446208,
+      "paired_held_anchor_bootstrap_95": [
+        -0.0063516865079365015,
+        0.17728257275132275
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "success",
+      "mean_delta": 0.13584656084656085,
+      "paired_held_anchor_bootstrap_95": [
+        0.05171957671957672,
+        0.2154761904761905
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "regret",
+      "mean_delta": -0.013815588662745773,
+      "paired_held_anchor_bootstrap_95": [
+        -0.050156044946717354,
+        0.02344828964856566
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "recall",
+      "mean_delta": -0.040542328042328046,
+      "paired_held_anchor_bootstrap_95": [
+        -0.1281448412698413,
+        0.044642857142857144
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "success",
+      "mean_delta": -0.10707671957671956,
+      "paired_held_anchor_bootstrap_95": [
+        -0.24901124338624342,
+        0.020505952380952337
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "regret",
+      "mean_delta": 0.03589791289318806,
+      "paired_held_anchor_bootstrap_95": [
+        0.004489132086155079,
+        0.06443326799255653
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "recall",
+      "mean_delta": -0.21802248677248678,
+      "paired_held_anchor_bootstrap_95": [
+        -0.3125669642857143,
+        -0.1298594576719577
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "success",
+      "mean_delta": -0.025198412698412703,
+      "paired_held_anchor_bootstrap_95": [
+        -0.12281746031746033,
+        0.06547619047619047
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "regret",
+      "mean_delta": -0.018660961550773764,
+      "paired_held_anchor_bootstrap_95": [
+        -0.054297786419348855,
+        0.014143946442097698
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "recall",
+      "mean_delta": -0.012764550264550272,
+      "paired_held_anchor_bootstrap_95": [
+        -0.1074074074074074,
+        0.0918022486772486
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "success",
+      "mean_delta": 0.17681878306878304,
+      "paired_held_anchor_bootstrap_95": [
+        0.10598462301587301,
+        0.24732142857142855
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "regret",
+      "mean_delta": -0.046314290000332735,
+      "paired_held_anchor_bootstrap_95": [
+        -0.09058390394762333,
+        -0.011276424019006158
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "recall",
+      "mean_delta": 0.06891534391534392,
+      "paired_held_anchor_bootstrap_95": [
+        -0.0048280423280423245,
+        0.1565162037037037
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "success",
+      "mean_delta": 0.01666666666666667,
+      "paired_held_anchor_bootstrap_95": [
+        -0.01666666666666666,
+        0.049999999999999996
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "regret",
+      "mean_delta": 0.22367939452330268,
+      "paired_held_anchor_bootstrap_95": [
+        0.08752425554111447,
+        0.3594310500461143
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "recall",
+      "mean_delta": -0.23888888888888885,
+      "paired_held_anchor_bootstrap_95": [
+        -0.42777777777777776,
+        -0.008333333333333323
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "success",
+      "mean_delta": 4.625929269271485e-18,
+      "paired_held_anchor_bootstrap_95": [
+        -0.033333333333333326,
+        0.03333333333333334
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "regret",
+      "mean_delta": 0.2807998238441845,
+      "paired_held_anchor_bootstrap_95": [
+        0.1809720037165486,
+        0.37674393057706757
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "recall",
+      "mean_delta": -0.3861111111111111,
+      "paired_held_anchor_bootstrap_95": [
+        -0.47222222222222215,
+        -0.2944444444444445
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "success",
+      "mean_delta": 0.008333333333333337,
+      "paired_held_anchor_bootstrap_95": [
+        -0.025000000000000005,
+        0.04166666666666668
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "regret",
+      "mean_delta": 0.033049607129457086,
+      "paired_held_anchor_bootstrap_95": [
+        -0.0803323420668797,
+        0.1553599748605241
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "recall",
+      "mean_delta": 0.0,
+      "paired_held_anchor_bootstrap_95": [
+        -0.10277777777777779,
+        0.12500000000000003
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "success",
+      "mean_delta": 0.16666666666666666,
+      "paired_held_anchor_bootstrap_95": [
+        0.10833333333333334,
+        0.2333333333333333
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "regret",
+      "mean_delta": -0.440620123137099,
+      "paired_held_anchor_bootstrap_95": [
+        -0.6390054457894682,
+        -0.2529762482639248
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "INCLUDING-GOAL",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "recall",
+      "mean_delta": 0.28055555555555556,
+      "paired_held_anchor_bootstrap_95": [
+        0.1111111111111111,
+        0.45
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "success",
+      "mean_delta": -0.008333333333333331,
+      "paired_held_anchor_bootstrap_95": [
+        -0.03333333333333333,
+        0.01666666666666667
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "regret",
+      "mean_delta": 0.25061169642334186,
+      "paired_held_anchor_bootstrap_95": [
+        0.1050983967507879,
+        0.4012312031545055
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FROZEN-WORLD",
+      "metric": "recall",
+      "mean_delta": -0.2555555555555555,
+      "paired_held_anchor_bootstrap_95": [
+        -0.4611111111111112,
+        -0.002777777777777759
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "success",
+      "mean_delta": -0.016666666666666666,
+      "paired_held_anchor_bootstrap_95": [
+        -0.049999999999999996,
+        0.016666666666666666
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "regret",
+      "mean_delta": 0.31091659103209773,
+      "paired_held_anchor_bootstrap_95": [
+        0.19750077073229477,
+        0.4329319308659371
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "FINETUNE-WORLD",
+      "metric": "recall",
+      "mean_delta": -0.3861111111111111,
+      "paired_held_anchor_bootstrap_95": [
+        -0.4916666666666667,
+        -0.2833333333333333
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "success",
+      "mean_delta": 0.008333333333333333,
+      "paired_held_anchor_bootstrap_95": [
+        0.0,
+        0.025000000000000005
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "regret",
+      "mean_delta": 0.023209965539475283,
+      "paired_held_anchor_bootstrap_95": [
+        -0.1121920219855383,
+        0.17956936764686057
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "GOAL-COPY",
+      "metric": "recall",
+      "mean_delta": 0.036111111111111115,
+      "paired_held_anchor_bootstrap_95": [
+        -0.07777777777777777,
+        0.16666666666666666
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "success",
+      "mean_delta": 0.05000000000000001,
+      "paired_held_anchor_bootstrap_95": [
+        0.016666666666666666,
+        0.09166666666666666
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "regret",
+      "mean_delta": -0.3022406054350237,
+      "paired_held_anchor_bootstrap_95": [
+        -0.5147877888715204,
+        -0.10271833559187754
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "stratum": "LEAVE-GOAL-OUT",
+      "method": "DIRECT-CONTROLLER",
+      "baseline": "CURRENT-COPY",
+      "metric": "recall",
+      "mean_delta": 0.2611111111111111,
+      "paired_held_anchor_bootstrap_95": [
+        0.07499999999999997,
+        0.45
+      ],
+      "unique_anchors": 12,
+      "train_seeds": 1,
+      "source_models": 1
+    }
+  ],
+  "script_sha256": "2d6efd5a48f63c9cca660edb5f39e739b4eaff683d869145d687d7641fd8b38f",
+  "full_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-outcome-evaluation",
+  "scope": "H0 task-subgoal absorption, fixed supplied-experience candidate bank. Train32/held12 anchors per task, one source0/head seed. Held queries exclude initial successes and separately leave matching subgoal out. Native labels/evaluation future actions never predictor input. This is not deployed hierarchical planning or a fixed-duration option method; H2 separates that interface. CIs over anchors omit training variation; unknown published pretraining overlap."
+}
