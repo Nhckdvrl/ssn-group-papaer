@@ -15,3 +15,5 @@
 先构建并CPU三族全输入校对，科学generation排在E93之后。Source／P与全部atoms保持同8项更正版本，原E91/E92 score完全复用。
 
 启动前data SHA1727d0654c1bd863dfe332b574f822c80b9949b4c01b4d4d01819450a40cb804；249／324 fidelity可定义（更好TARGET41／Tie163／更好BASE45），75NA全部保留；pattern全324。三个native输入token范围Q176–309／G178–310／Min684–814。Tie占比高，主全量与预注册changed诊断都必须看，不能仅凭Tie匹配宣称理解能力。
+
+03:24，所有科学forward仍等待E93锁，分析器为已有完全相同P锚增加identical_interpretations分组；不是采新输入／改主读数，不改变主all和changed/Tie预注册scope。

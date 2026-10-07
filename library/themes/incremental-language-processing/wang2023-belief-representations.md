@@ -1,0 +1,11 @@
+# Learning Belief Representations for Partially Observable Deep RL（ICML2023）
+
+`[证据级别：正式主文及方法附录精读]` [PMLR正式稿](https://proceedings.mlr.press/v202/wang23p.html)，Andrew Wang／Andrew C. Li／Toryn Q. Klassen／Rodrigo Toro Icarte／Sheila A. McIlraith，Toronto/Vector/PUC Chile。19p PDF SHA2b15e42a3a884321f94565866809986bb218ff410921b698bad9d004f017db47。Main1–6 pp1–9全文；AppA/B pp13–15／D p19全读，C超参数仅边界／关键词未全读；Fig5/6/7/8 pp7–8视觉核。代码链接已给但本会话未运行／全读，不伪称独立复现。
+
+1. **idea来源（RECONSTRUCTED）：** 部分可观测RL的循环policy同时要学记忆和行动，买信息短期cost高且还不会利用→会停止获取重要信息→用训练可见state给比稀疏reward/近期观测更直接的信号→state feature只编码不可观察但task相关部分→先学belief再训练policy。研究动作是弱学习信号与exploration反馈相互影响，不是首次beliefstate。
+2. **方法：** 三阶段Believer。joint stochastic stateϕ(s)/observationψ(o)预测reward及next两个encoding，stateϕ施KL bottleneck让当前observable冗余交ψ；冻结ϕ，history/z VAE建p(ϕ(s)|h)，belief近似为n samples，经DeepSetmean聚合；PPO policy看当前o与belief，不看GTstate。VAE可onpolicyfinetune，不称全过程完全固定表示。
+3. **近邻距离与假设：** asymmetric actorcritic已有训练privilegedstate，model-based未来obs/reward预测和VAE也已有。本文把task相关且不可观察state representation与belief modeling分开，缓解当前观测重建易忽略关键隐藏box的问题。trainstateGT必要，非unlabeledtext自监督；bottleneck经验作用不是自动证明得到数学最小充分statistic。
+4. **实验载体：** 五自制/改造域Sphinx、Cookie、LyingSphinx、NoisyTVSphinx、EscapeRoom，offline随机action state-labelled小数据并计frames，5seeds curves标准误，不是自然languagebenchmark。Sphinx3box／talkcost.2，正确选择reward1；Lying50%随机回答／.05cost；NoisyTV外圈无关颜色；EscapeRoom17dprivilegedstate与100×100视觉observations。recurrentPPO／biased-unbiasedasymmetriccritic／sequentialVAE，所有policyPPO/尽量同架构大batch；EscapeRoom因image重建难删除seqVAE，不能说所有baseline五域都测。
+5. **重要结果：** Sphinx零talkcost所有方法可学最优，cost.2部分baseline停在随机.33；cost.3仅Believer持续seekinfo并较强，不说所有任务都必然同结果。mainFig5 Sphinx约.75/.8optimal、Cookie约7.5return、NoisyTV约.75、EscapeRoom约.9终点是视觉近似未逐run精确读数；LyingSphinx与其它较强baseline接近而非巨大margin。Discardobservablestate对Sphinx关键但Cookie无优势；noKL／noRepL阴性支持任务相关隐藏表示，真实限制全留。
+6. **机制尺度：** 先定义会改探索行为的缺失信号，再操纵获取信息的真实cost、看learningcurve而不是attention。belief2d聚类图区分已知box/未知uncertainty是信息诊断，不单独证明每个policy用它；性能／ablation承担功能证据。可借低信息重建高分与高价值少数statefeature缺失的竞争对象，不能将本文泛化成所有observationreward错。
+7. **对I07的定位：** 一般“观测可预测性不保证有用belief”的旧邻域很早已有。我们需要具体的新认识：新证据要求改变关系时，能理解语义的model为何在某种内容credit上失配，或什么更新操作受到影响；还没有证明learnedpolicy会因它不修订，今晚不强行加昂贵RL完整paper门槛。借cost／信号→行为因果链寻找有意义后果，而不是复制三个阶段到GP切片。

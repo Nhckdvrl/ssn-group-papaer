@@ -84,7 +84,7 @@ def analyze(root):
         for mode in ['NATIVE', 'RECOVERY']:
             cohort = [r for r in records if r['grader'] == grader and r['mode'] == mode]
             groups = {'all': cohort}
-            for field in ['generator', 'construction', 'condition', 'order_index', 'fidelity_rank', 'pattern_rank']:
+            for field in ['generator', 'construction', 'condition', 'order_index', 'fidelity_rank', 'pattern_rank', 'identical_interpretations']:
                 for value in sorted({str(r[field]) for r in cohort}):
                     groups[field + ':' + value] = [r for r in cohort if str(r[field]) == value]
             for g in sorted({r['generator'] for r in cohort}):

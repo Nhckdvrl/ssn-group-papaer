@@ -346,3 +346,9 @@ E82完整三族/1008格读完，现代Ministral NPZ初始84.55%而final28.09%（
 | MemoryRewardBench | 中间memory judge与同结局不同过程的偏好对象 | 一般memory scoring不可靠已有；必须有新的具体更新操作、信号或后果 |
 
 我们的理想增量不是这张表中任何“他没做GP，所以加GP”的切片。它应说明当新证据要求改变已有关系时，哪些自监督内容信号能／不能给正确修订credit，以及这个差异如何改变学习或后续用途。如果完整E93显示原任务也弱，或重建相当，更应改解释而非守住一个提前命名的故事。E67完整自由断言是另一个会改变对象的入口，不将教师审核等待变成局部控制理由。独立1744社区原Gold与两原作者前向模式已在8卡跑，0新审计；原C等级／注册不变。
+
+### 最新未来用途／归因工作后的尺度对齐（70 MAIN，5综述＋65研究）
+
+AttriMem不是只重分终点scalar，而以固定答案在maskedmemory下的偏好推tokencredit，已有future-answer细粒度processreward；local predictive sufficiency更把相邻预测pair与recursiveclosure联系到可训练约束，各host实现不完全同projection。一般“重建不够／future-use好／fine-grained更好”已有owner，不能拿它当I07整个novel叙事，也不因此关闭领域。
+
+两篇研究动作都先明确**缺哪种辨别信息**再改变学习接口，并让任务后果评估它。I07若成立，应找到某类关系修订与内容credit的可预测分离：撤回旧关系、建立替代关系、保存仍正确事实的作用不同；此为待检验对象，非先验真理／新方法已证。E95同model实际语义比较vs旧逆向排序只提供下一核心诊断，E93原社区1744题则改变范围，E67全角色图改变真实失败对象。读书期间GPU不闲置，全部queue沿既有锁／deadline；不再从E94regex诊断挖一堆局部控制。
