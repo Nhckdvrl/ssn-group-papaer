@@ -25,7 +25,7 @@ def main(a):
     # Reuse a completed, corrected pool only if available now, by exact packet SHA.
     e64=root.parent/'E64/T4-full-v2'
     if (e64/'step5/summary.json').exists():previous=[e64,root.parent/'E64/legacy-non-MVRR-v1']
-    cmd=[sys.executable,str(script/'audit_paraphrases_role_v2.py'),'--data',str(root/'sources-v1.jsonl'),'--runs',*map(str,runs),'--out',str(audits[0]),'--workers','4']
+    cmd=[sys.executable,str(script/'audit_paraphrases_role_v2.py'),'--data',str(root/'sources-v1.jsonl'),'--runs',*map(str,runs),'--out',str(audits[0]),'--workers','4','--batch-size','5']
     if previous:cmd+=['--previous-audits',*map(str,previous)]
     subprocess.run(cmd,check=True)
     out=root/'goal-to-free-role-map-v1.json'

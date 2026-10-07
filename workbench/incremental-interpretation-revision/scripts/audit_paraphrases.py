@@ -56,6 +56,7 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--data',type=Path,required=True)
     ap.add_argument('--runs',type=Path,nargs='+',required=True);ap.add_argument('--out',type=Path,required=True)
     ap.add_argument('--workers',type=int,default=8,choices=range(1,9))
+    ap.add_argument('--batch-size',type=int,default=2,choices=range(1,6))
     ap.add_argument('--source-limit',type=int,help='Instrument smoke: first fixed input source IDs, all conditions retained.')
     ap.add_argument('--blocking-slot',type=int,choices=range(8),help='Use one shared slot for a small instrument smoke during D0.')
     ap.add_argument('--only-pass2',action='store_true',help='Independent second-pass worker; packets imported without label selection.')
@@ -96,7 +97,7 @@ def main():
     write_jsonl(args.out/'assignment.jsonl',assignments)
     scope=dict(source_data_sha256=sha(args.data),runs=run_hashes,assignments=len(assignments),
         distinct_packets=len(candidates),new_packets=len(new),previous_audits=previous_scopes,
-        source_limit=args.source_limit,instrument_only=args.source_limit is not None,
+        source_limit=args.source_limit,instrument_only=args.source_limit is not None,batch_size=args.batch_size,
         assignment_sha256=sha(args.out/'assignment.jsonl'),blinded_to_gold_and_model=True,
         timing='Before T4 effect interpretation; complete runs selected by preregistered model panel, not outcomes')
     (args.out/'scope.json').write_text(json.dumps(scope,indent=2)+'\n')
@@ -104,7 +105,7 @@ def main():
     # Full T4 uses all available shared slots; no extra concurrency beyond eight.
     os.environ.pop('STEP_PLAN_BLOCKING_SLOT',None)
     if args.blocking_slot is not None:os.environ['STEP_PLAN_BLOCKING_SLOT']=str(args.blocking_slot)
-    sys.argv=[sys.argv[0],'--data',str(data),'--out',str(args.out/'step5'),'--workers',str(args.workers),'--batch-size','2']
+    sys.argv=[sys.argv[0],'--data',str(data),'--out',str(args.out/'step5'),'--workers',str(args.workers),'--batch-size',str(args.batch_size)]
     if args.only_pass2:sys.argv+=['--only-pass2']
     step_gp_audit.main()
 

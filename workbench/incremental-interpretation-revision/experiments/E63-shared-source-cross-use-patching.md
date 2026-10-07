@@ -43,3 +43,9 @@ MVRR GP角色正确收益（19源clusters）：Qwen+31.58pp [5.26,57.89]，Gemma
 ### POST-HOC 标注规则纠正（v1保留）
 
 已完成裁决的固定顺序抽查发现：department was merged→department merged 被仅凭主动句式判为施事变化；merge可作inchoative，语法主语不等于施事。原CORRECT_ROLES/GP_MISREADING/OTHER意图未变，但判定规则需澄清。原v1结果与74裁决全部保留；MVRR角色数字及共同修复结论暂待v2复核，QA分数不受影响。按输入construction=MVRR完整重审E63/E64全部相关输出，不按旧标签/收益挑条；使用新双遍/第三遍、Step Plan batch2，非MVRR已审完全相同packet复用。新结果另存v2、比较所有更改。
+
+### v2完整纠正与自审（2026-10-07）
+
+P15复核已闭合，原v1保留。完整共同审核656包（1944assignments）：287有效非MVRR复用、369新/重审双遍，49分歧全裁决、一致86.72%、0 unresolved。E63 v2共享地图SHA24d8942c8b8d211c526f584f37601a5f20e18dd22c7920c6ebcaf96e2796fa48；审核SHA aaf64c2d4c86f04fd6b7b5fd3916ce825f82b5864d5d5aebea0e79c8c73959e0，原模型/QA/资格未变。MVRR GP角色PAIR−BASE Q/G/L +36.84 [10.53,63.16]/+10.53 [−21.05,42.11]/+10.53 [−26.32,47.37]pp，19clusters；反向cue −52.63/−47.37/−52.63且三族CI负。NPZ GP +66.67/0/+22.22（后两CI含0），9源；NPS弱cue/NPVP缺失保留。完整738格核心×E63/E64五图由[E64纠正摘要](../results/E64-corrected-cross-use-summary.json)引用，不以局部正结果宣称共享parse。
+
+自审：纠正有必要，也没有使三族正向共同恢复成立；反向歧义状态能损坏明确cue角色。固定输入顺序例子有局部V1正确、V2仍错/缺失，因此联合null不能称所有关系毫无变化。下一E70原Q原子脚印，一个BASE/TARGET对比，无GPU重跑；E71区分源约束传播与正确局部表达的后续消费，不再源位置grid。C06–08 L0/C09限定L1不变，无合格idea、无人需作状态决定。

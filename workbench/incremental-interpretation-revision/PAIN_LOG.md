@@ -48,3 +48,7 @@ E63完整T4固定顺序抽查中，department was merged→department merged被�
 - E65后完整输入核对发现：INITIAL GP目标NPZ72No/17Yes，NPS35No/1Yes，MVRR27No，NPVP26No；FINAL GP目标NPZ88Yes/1No，NPS26Yes/10No，MVRR8Yes/19No，NPVP23Yes/3No。cue对应数量同样。原initial/final只是位置/关系标签，不能自动命名“撤销旧关系/建立正确关系”。科学输入资格/原gold/Step标签无改动，不是要重审成熟数据。
 - POST-HOC的输入定义分析：完整all之外同时输出initialNo_finalYes、initialYes、finalNo，并按eval gold Yes/No拆开；保留原完整主结果。首次拆分晚于E65效果，早于E66完整效果和E67角色效果，明确不冒充事前层。不是按成功效应筛样本。
 - 收紧的是解释命名：某个问题涉及早期关系未必就是初始误读，对最终区域提问也未必确认正确关系。只有实际问题内容/源支持模式相符才可检验对应入口假说；输入定义层依旧不能把prompt语义当内部状态。
+
+## P17：完整角色正确率不能定位部分修复（2026-10-07）
+
+E64-v2所有两用途结果闭合后，以输入排序首2 MVRR源核对三族四bank文本：某些输出已经改对V1受事/被动关系，仍把V2附着到错误内层NP。旧CORRECT_ROLES要求全部源关系，作为联合读数没有错；但用它的null断言“哪个角色完全没改”不成立。保留全部T4-v2、原S/Q/gold、模型输出和原主图。后续E70以前向模型效果后登记的POST-HOC测量，用原公开多问题投影自由表达中的具体源断言，分别报告恢复/未断言/多断言，不拿全部No当关系恢复，不改旧资格、不选择修补成功文本。V1语义patient与主动语法形态的P15澄清仍适用。

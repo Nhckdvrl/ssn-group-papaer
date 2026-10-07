@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-33篇主文（3综述+30研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+36篇主文（3综述+33研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -23,7 +23,7 @@
 - [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
 - [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
 
-[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述33篇。
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述36篇。
 
 - [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
 - [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
@@ -45,3 +45,8 @@
 
 - [Task-specific Knowledge：联合对象与因果子网（2026年6月预印本）](elhelo2026-task-specific-knowledge.md)
 - [Prefix Steering：改变控制时段（2026年10月4日预印本）](zhu2026-prefix-steering.md)
+
+- [Targeted noisy-channel reanalysis：重新确定修订对象（CoNLL2026 Outstanding）](clark2026-targeted-noisy-channel.md)
+
+- [Priors in Time：时间先验与功能充分性的距离（ICLR2026，作者v3）](lubana2026-priors-in-time.md)
+- [In-context deployment：有结构不等于可灵活使用（ACL2026正式主文）](lepori2026-in-context-deployment.md)
