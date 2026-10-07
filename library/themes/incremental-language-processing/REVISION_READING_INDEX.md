@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-62篇主文（5综述+57研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+64篇主文（5综述+59研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -23,7 +23,7 @@
 - [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
 - [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
 
-[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述62篇。
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述64篇。
 
 - [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
 - [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
@@ -102,3 +102,7 @@
 - [ABBEL作者v2](lidayan2026-abbel.md)：主文全部与训练/Algorithm4等；最新观察重建credit、两阶段belief/action，内存代理/多调用/版本与实现边界保留。
 
 - [Agent-BRACE作者v1](singh2026-agent-brace.md)：主文全读/关键reward与calibration附录；tracking包含新增信息缺失惩罚，WEP/Brier及不同reward相反用途的边界保留。
+
+- [ReBel作者v1](tang2026-rebel.md)：主文及A-F已精读；observability/pending credit与belief grouping不混成重建reward，模型/验证／理论及表格scope局限保留。
+
+- [MetaRAG作者v1](qi2026-metarag.md)：主文及A–N完整，搜索边界的同policy probe＋最终正确性gate；同名2024工作、额外检索成本及提示概率的构念边界分开。

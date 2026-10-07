@@ -15,3 +15,5 @@
 - **算力：** ≤20GPU·h（思考输出的最坏预算），8独立H20 Q3/G3/M2，现有离线国内资产0新下载/0API；每任务deadline guard，08:55独立停卡/删权重，09:00硬停，不自行恢复。若cap高，按预注册报告未知，不再事后增思考长度。
 
 CPU三族完整5232重建/3488实际输出条件各通过；data SHA5477a87d5a03b2382cddc54058b0a9787e35bdeb17d97ecfff83241c2c7ccf41。三族native two-mode实际suffix逐一保存，Qwen开启think、Gemma按官方template选择thought频道、Minstral无单独强制thought入口。全26,160条件在8卡启动，0新API/0下载；完成全部scope前不读partial科学效应。
+
+2026-10-08 01:58运行时算力估计修正（只读进度／elapsed，未看partial效应）：8任务运行约32min，各Q/G分片约70–85／486–666 Source，Min更快。原20GPU·h是估计，不是人规定硬配额；按实测速率预计约25–30GPU·h，修正估计上限32GPU·h，输入／模式／cap／parser／读数完全不变，0新下载/API。预计在08:55之前完成；08:55释放timer仍优先于任何实验完整性。不能事后提高256cap或挑快速条目。

@@ -10,6 +10,6 @@
 
 **若为真为何值得兴奋：** 外部观察本来是自监督学习正确修订的锚，却可能被同一错误感知模型变成确认旧解释的信号。这会把GP的行为缺陷连接到agent memory训练的credit问题，给出内容reward该约束哪一种变化的实际机制与方法入口。它比“LLM偶尔误读”更有后果；如果只在这一小群MVRR/一个generator生效，范围仍不够，不能硬夸。
 
-**近邻与compression risk：** ABBEL拥有观测reconstruction与belief内容监督；Agent-BRACE/CBM已有缺失、错误、stale belief rewards；ReBel已有基于观察的一致性credit（当前仅摘要，待深读）；Kamoi/self-correction已有内部grader不可靠压力。一般“reward可能错”与一般“state不等于action”不新。拟增量是**正确替代关系的内容credit为何会随同注册语义的观察表达改变**，如何由解释/评分通道产生、能否在其它自然更新域预测与改善。
+**近邻与compression risk：** ABBEL拥有观测reconstruction与belief内容监督；Agent-BRACE/CBM已有缺失、错误、stale belief rewards；ReBel已有基于观察的一致性credit（主文／关键附录已深读，非字面重建）；Kamoi/self-correction已有内部grader不可靠压力。MetaRAG已有同policy一致性reward＋最终correctness gate。一般“reward可能错”与一般“state不等于action”不新。拟增量是**正确替代关系的内容credit为何会随同注册语义的观察表达改变**，如何由解释/评分通道产生、能否在其它自然更新域预测与改善。
 
 **最便宜的下一核心：** 社区现成Belief-R完整数据，不改其语用Gold，不bulk审计；比较同一更新下的前向判定与观察重建对候选belief的排序，看问题是否只限GP输入。任务范围与原作者定义保持，未来构造/修改才用Step Plan双盲。若外域不成立，则收窄机制对象或另找依赖类型，不继续surface/score模板网格。不关闭线、不自动认定novelty，不改registry。

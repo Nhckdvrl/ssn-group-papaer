@@ -29,3 +29,8 @@
 原伪代码形式max(sum,−.9)全ties，**不当作作者实际训练reward失败**。固定作者源码8ed3bf8：sum/token数或64、`min(...,ceiling)`上限、下限−5；source selected code已读，完整默认config/训练未复现。复用原mean分数的敏感性单列外置`posthoc-author-code-score-and-matched-denominators.json`，保留原主登记。上限clip有些ties但不是全体；GP同39源例如G-grader/Qgen31ties、2一致/5相反，与raw结果不混成新主读数。
 
 **下一核心：** 同一P固定，只把重建目标改成发表的配对消歧观察（反向也报），检验reward与语义一致是否随观察surface变化。用现成控制句、既有Gold，0API；input common-Q Gold冲突的4pair提前排除，仅做Gold一致的等价注册关系，不按模型/效果筛。若一致性不改善，此猜想降低，回真实关系更新；不做reward prompt/calibration网格。当前探索idea尚未形成稳定新叙事，C06–08L0/C09限定L1不变。
+# 2026-10-08 POST-HOC逐token诊断（先写口径，非新GPU实验）
+
+已知完整E91/E92结果后，分析E91保存的逐token分数：TARGET−BASE的总分差，是否主要来自观察第一个token，还是继续存在于其余token。保留全972配对及全构式／两侧／九generator×grader，不挑错例；固定first/rest及按相对token位置四等分，不依据效应找边界。原Gold/主读数不改，不把相对位置称句法disambiguator；原论文与Step5位置存在缺失／分歧，今晚不为这份诊断再审位置。记录总分可加性、同一观察token数、全部scope的alignment与语义质量完整cohort；语义变化条件计数只作诊断。0新forward／0API／0GPU。若首token界面效应能解释原信号，收窄I07；若多段混合也不直接宣告解释机制成立。本诊断不给新主张等级。
+
+
