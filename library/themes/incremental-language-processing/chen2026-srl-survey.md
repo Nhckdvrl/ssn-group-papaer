@@ -1,0 +1,11 @@
+# A Systematic Survey of Semantic Role Labeling in the Era of Pretrained Language Models（作者v4）
+
+[原文v4](https://arxiv.org/abs/2502.08660v4)，2026-06-25版本，arXiv作者注明Artificial Intelligence Review接收；最终出版社稿未核对。54页PDF SHA5211d72c35ebf8b5e16a86a73dfabc747371d5360dbf6d982f9bf77567f053b2。**主文§1–11/p1–43完整**，含定义/方法/数据/误差/未来；p44–54参考文献未逐项读原研究。HIT深圳/Oslo/Charles University，约200 primary refs是作者收集规模，不是我们读了200篇。
+
+1. **组织与idea来源：** 旧SRL调查早于LLM/多模态，作者按架构、syntax、场景、模态组织，并把错误和使用条件连接到选择指南。关键研究动作是从方法年代记改为“上一范式留下什么问题、下一范式怎样回应”；具体primary研究仍需回原文核对，survey总括不是新因果证据。
+2. **研究对象要分清：** PropBank ARG编号依赖predicate sense，不是所有ARG0=agent/ARG1=patient；FrameNet frame-specific，NomBank nominal predicate。Span exactmatch兼测边界，dependency只测head；SRL不独立解细粒度entity identity，AMR有更广语义，EE有domain ontology。QA-SRL把annotation转自然问题但不自动等价原role类。对P15的约束：voice≠agent，role标签≠万能事件语义，应该测实际predicate/participant/source-support。
+3. **成熟数据入口：** CoNLL2005/2009/2012、FrameNet/PropBank/NomBank/ConSD、UniversalPropBank及对话DuConv/NewsDialog/PersonalDialog，数据大量天然已有标注，没理由再bulk人工或Step重审。GP探索若需扩大自然role coverage，可以优先其句法/角色标注筛真实结构；但筛出来不是天然GP解释金标。经典44k句量级与特殊构式24–100组是不同研究规模，不能拿十几个自造句作整个方法论证。语料license与具体version需用时核实，本文未下载新语料。
+4. **范式怎样生长：** statistical语法feature＋structured inference→neural减feature依赖但引入训练量/域差→graph明示关系但受parser质量/强PLM冗余影响→generative灵活统一subtasks但输出validity受限。Global CRF、biaffine/high-order graph、constrained decoding、QA-reformulation、retrieved rolesets早有，不能把“先写结构再答”独立当idea创新。未来值得做的是具体机制/泛化/真实用途，而非仅再拼一个graph。
+5. **旧方法共同痛点与实际证据：** 新闻域与Brown差距、adjunct语义依赖、长距离/implicit arguments、boundary与角色语义混杂、sense→role级联。提示LLM的低F1常含格式/边界/标签库存不足，不能直接说没有意义理解。图帮助取决于预测syntax可靠性、encoder强度、数据和domain，gold parse比raw text的信息不等不能全当架构优势；更大的F1不是所有关系共同正确。对话cross-sentence role低于intra，形成正确局部不能替代联合约束。所有表跨论文、checkpoint/input不齐，作者明确不作微小分数排名。
+6. **需要谨慎的总括：** 作者把nexttoken说成“对完整结构没有awareness/机制”，并以之称fundamental architectural mismatch；这是解读，不是表达能力不可能性定理（我们已读Huang ICLR2026给出构造，不能把因果架构直接判死）。§2强调ARG编号sense-specific、§2.3又说ARG0泛agent，表例get/sense的边界未独立核对。§7.2某句说低parse质量时syntax帮助，与§7.3低质量会反转的条件不一致，应回specific原研究。所谓语义图能保证输出可验证也不保证内容真；相关primary如Spaulding2025/SIFT/PromptSRL尚未在本轮读，不冒充ownership已全面核对。
+7. **对E76及后续：** 端到端原QA能看中间草稿的实际用途，不必先把新输出审批为数据；角色原因则需新增output审计。正结果若只等同structured prompting，已知近邻很密；仍可从哪个修订操作产生/破坏共同约束发展独立叙事，不关闭区域。最值得迁移的开放对象是predicate-conditioned角色、角色识别与identity链接分离、以及共享参数生成如何保持全局约束，均须由真实GP错误及精准实验长出。当前不另开SRL线，不启动大规模新语料标注。

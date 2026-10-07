@@ -109,3 +109,5 @@ C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了�
 - 2026-10-07 [E72卡](experiments/E72-joint-and-separate-relation-use.md)/[完整摘要](results/E72-joint-relation-use-summary.json)：NPZ65 No/Yes联合任务三族同时增加正确final和源未支持initial的概率，没有共同修订；其它構式、truth-strata、顺序和cue全部保留。是有限任务measurement，不升级latent parse/能力/novelty。C09仍限定L1，C06–08 L0；P18/E73直接检验首答案消费，0新API。
 
 - 2026-10-07 [E73](experiments/E73-correct-answer-carry-to-next-relation.md)/[摘要](results/E73-correct-answer-carry-summary.json)、[E74](experiments/E74-cue-interpretation-retention-after-ambiguity.md)/[摘要](results/E74-cue-interpretation-retention-summary.json)完整：首labelcut不是三族共同恢复；原cue/GP混合中NPZ初始关系三族损伤，但顺序不支持统一recency且cue非共同高位。限定measurement，C09L1/C06–08L0不变，不认证latent parse/qualified idea。E75区分形成期间cross-source与Task消费。
+
+- 2026-10-07 [E76](experiments/E76-event-first-relational-draft-to-original-qa.md)/[摘要](results/E76-event-first-draft-summary.json)：三族四构式全部2016格闭合，EVENT_FIRST无共同两关系保持优势，letters/words异质与caps保留；原QA gold只评完整pipeline，不认证中间正确parse或能力。C09限定L1/C06–08 L0不变。E77只检验原Source后续消费的核心竞争解释。

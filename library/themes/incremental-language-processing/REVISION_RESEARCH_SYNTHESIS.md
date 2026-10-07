@@ -4,15 +4,15 @@
 
 ## 当前认识与开放问题
 
-48篇实际主文的入口见[阅读索引](REVISION_READING_INDEX.md)，其中3篇综述；全文/选段/摘要按ledger分别记。新近邻不是否决器，下面将已知主旨与待证问题分开。后面的阅读生长路径和各完整自审保留其历史节点。
+51篇实际主文的入口见[阅读索引](REVISION_READING_INDEX.md)，其中4篇综述；全文/选段/摘要按ledger分别记。新近邻不是否决器，下面将已知主旨与待证问题分开。后面的阅读生长路径和各完整自审保留其历史节点。
 
 | 领域关心的对象 | 已获得的认识 | 最能改变解释的当前节点 |
 |---|---|---|
 | 给定源是否真的支持模型报告的事件 | E59明确源支持后仍有差距；原No常是未断言，不能整体叫世界矛盾；E69在45原发表sets中cue也有大合理性效应、improb GP仍有差距 | 不是再换问句，而是观察哪些源关系真正改变 |
 | 解释在源里形成还是在使用时组装 | E55/E64歧义区有因果QA作用；E64-v2反向cue MVRR角色三族明显损伤，正向共同恢复不稳；whole-vector不认证语法因子 | E70同一源/同一干预的原子断言脚印，全部族/构式/两侧 |
 | 修订目标能否形成可继续使用的解释 | E65提前goal有部分跨关系收益，但E66/E68分路径结果异质，不能叫source写入普遍有害或readout普遍更好 | E67三族3204自由输出已齐，完整T4双遍正在运行；不继续goal/mask网格 |
-| 正确局部表达是否影响下一绑定 | 固定输入例子V1受事正确、V2错/未表达，不足以定机制；源不传播、表达干扰、仅遗漏仍竞争 | E71原40对/80源新子句先盲审，保持文本/位置/源计算，仅native与P1后续消费cut；没有科学结果 |
-| 明确证据如何保留与共同使用 | E72共同回答没有共同修订；E73首labelcut、E74原cue/GP顺序、E75cross-source cut都没有三族两构式共同恢复，不能归为统一recency或污染 | 局部块已自审收束，E76三族四构式事件规划草稿→原QA端到端运行，原数据不再bulk审计 |
+| 正确局部表达是否影响下一绑定 | 固定输入例子V1受事正确、V2错/未表达，不足以定机制；源不传播、表达干扰、仅遗漏仍竞争 | E71完整盲审后38对/76源：MVRR仍错但cut无共同恢复，NPZ预填正确P1后候选近满分且cut损伤；结束局部P1控制，回真实自由表达/原子脚印 |
+| 明确证据如何保留与共同使用 | E72共同回答没有共同修订；E73首labelcut、E74原cue/GP顺序、E75cross-source cut都没有三族两构式共同恢复，不能归为统一recency或污染 | E76全2016格无共同规划优势，L部分关系损失/收益取舍；E77同文本/位置切原Source后续消费，区分草稿丢失与Source重新组装，0API不重审原数据 |
 
 **贡献尺度的校准：** 一般partial interpretation已有Amouyal/人类/Lee；一般几何不等于可使用已有Lepori；一般context干扰/错误路径竞争已有Hu SSC-GRPO/Li TCR；binding IDs及跨ID转换已有Feng/Jung。我们要找的是自然解释修订的具体、可预测且有后果的规律，可以借它们的方法和对象区分，不能只更换数据或命名。即便E71成立，也还要区分强制正确prefill与真实自然产生，不能据候选概率直接认证能力。
 
@@ -275,3 +275,13 @@ E75完整cut-cross Source图没有共同恢复：NPZ CUE_GP初始Q/G/L−2.17/+9
 Aljaafari2026正式全文把semantic-role next-word circuits扩到训练时结构/功能轨迹，实际prepositional词库、最后checkpoint成功子集，不认证自然GP agent/theme修订。一般“形成≠功能”有明确近邻，新增仍需具体修订操作与可预测用途，而非只有head图。主文/表格时间方向与CI不一致保留在卡，不把疑点变为桌面关线或以成功nexttoken替代真实错误。新精读累计47篇主文（3综述+44研究），该篇附录/代码未全读。
 
 SEEM ACL2026正式全文/附录的研究动作是graph→passage→event→原文扩展，把已有frame/图与证据组织接口结合，而不是找无近邻空白。LoCoMo1986/LongMemEval500成熟资产＋三backbone、清楚组件收益；更多检索token/LLM生成与错误固化仍限制归因。E76可以先用成熟源gold评价草稿的端到端用途，仅机制归因才审新增notes；source pointer不等于内容蕴含。新精读48篇主文（3综述+45研究），不新增agent-memory工作线。
+
+SRL最新v4综述主文43页完整补入，累计49篇主文（4survey+45research）。Structured prompting/global约束/高阶role图的邻域很密，但不据此关线；E76必须从实际关系修订的共同后果发展增量，不能把低token-level F1当无语义、也不能把“nexttoken没有结构机制”当定理。成熟SRL自然语料已有role/syntax，若需要规模与结构扩展应优先复用标注，而非bulk Step复核全语料；筛选GP及新增output语义是不同资格问题。
+
+### 语义分解与用途：Spaulding ACL2025 Findings
+
+[原文](https://aclanthology.org/2025.findings-acl.623/)。主文与limitations全读，AppA/B与Fig5–7详见卡；从属性分解到实际SRL而非笼统理解排名，GPT共同属性context会降低role准确，小模型异质。44/100 SRL错例属性没有错误并不新发现潜在层级，原Pipeline低分大部是边界exact。对GP可借对象拆解/自然现成标注，不能把普通属性知识与用途差距叫自己novel，也不据此关闭修订空间。
+
+### 生成式标注的监督接口：Dukić SIFT作者v2
+
+[原文](https://arxiv.org/abs/2509.00921v2)，主文全读/AppA scope记录，接收状态未核对。现成MetaICL框架里改监督response范围与span:label接口，多族多任务得清晰方法结果；SRL多shot常损伤，CM/LLM2Vec适应范围与监督token不等，不能抽为架构定律。贡献来自真实任务接口压力，不要求空白领域，也不能机械复制structured输出到GP。
