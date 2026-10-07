@@ -14,3 +14,5 @@
 05:21完整Min族400真实比较已sealed，在读取效果前登记首完整族INTERIM（原三族主图继续），逐条joinE96首完整族既有T1。默认metric/全100Source/两候选顺序不改，未读其他partial。
 
 05:24完整Min INTERIM400输出/.04679GPUh/1648panels SHAce135d2e8642c5ebf58725a09a14607c61387b902a7d1c0277f2f1b02108fb01，原Source changed fidelity实际tie68%、correct2%[0,6]%/alignment−.28[−.42,−.14]，cue tie84%、alignment0[−.14,.12]；actual-minus-raw非共同改善。原句judge亦无法可靠区分，不能声称理解正确仅inverse错。全3族继续，R8/其它ct全部同报，不加wordinggrid。
+
+05:37POST-HOC核心解释诊断（0新输出/标注）：E96同Source共同Q逐条correct vector定义dominance，避免整体定性judge与scalarfidelity权重歧义。完整Min50pair：cue逐条dominate30、GPdominate1、equal19、tradeoff0；原Source NATIVE60个cue-dominate顺序决策中42tie/18选差P/0选好P，cueSource51tie/4选差/5选好。不是两候选各有不同错误的tradeoff造成tie；但依然只是原已注册Q有限语义，不把OTHER未测内容称full equivalence。诊断文件E100/posthoc-pointwise-dominance-Min-v1.json，两parentSHA明示，不升级能力/C。R8 pooled GP patternalignment delta bounds[−.161,−.130]且CI负，Tie减少不是修复；不再追加更强grammar措辞。

@@ -129,4 +129,4 @@
 
 - [Query visibility作者v1](luo2026-query-visibility.md)：main全部／补表，matched-budget query作用量化；已有query-aware/reuse叙事，I08不靠相同泛概念自称novel。
 
-- [Good-enough paraphrase正式2026期刊](lee2026-good-enough-paraphrase.md)：main全部，24经典词汇/两旧GPT，已有题型差异与question诱导解释假说；I08必须由明确干预/同源联合后果形成更具体增量。
+- [AVPO九月底作者v1](zhao2026-faithful-activation-verbalization.md)：main全/方法App和指定稳定性，query-agnostic文本readout与QA/anchor preference；已有语义recoverability与lexical区别，不冒充新方法。

@@ -1,6 +1,6 @@
 # E93：社区Belief-R的真实前向判定与观察重建credit是否一致？（2026-10-08）
 
-- **状态：** RUNNING；生成器E431在任何科学forward前改E93。
+- **状态：** DONE；生成器E431在任何科学forward前改E93。
 - **对应：** I07 / P20，C06–C09；E91/92观察surface二步块已收束。此为独立领域与真实原任务检验，不继续surface/score模板网格。
 - **问题：** 在新前提下选择正确结论，与由结论重建新前提是否为同一能力/同一内容reward？若重建判定在前向已做对时仍错，才提高“内容credit继承解释/打分接口偏差”的优先级。经典逻辑与作者语用任务不可混淆。
 - **数据：** 官方HKUST Belief-R EMNLP2024，GitHub固定treee9cec77b14e7deea9d26b3b04c41fc08ab2094e3，1912 time_t及1744 time_t1。完整1744修订问句/人类Gold a/b/c/204atomic_idx、modus ponens/tollens原样用，0API、不bulk审计；readme/code/PDF已核任务。它是人类suppression/语用Gold，不当纯经典蕴含GT，不因当前模型不同意重标数据。
@@ -19,3 +19,5 @@ CPU三族完整5232重建/3488实际输出条件各通过；data SHA5477a87d5a03
 2026-10-08 01:58运行时算力估计修正（只读进度／elapsed，未看partial效应）：8任务运行约32min，各Q/G分片约70–85／486–666 Source，Min更快。原20GPU·h是估计，不是人规定硬配额；按实测速率预计约25–30GPU·h，修正估计上限32GPU·h，输入／模式／cap／parser／读数完全不变，0新下载/API。预计在08:55之前完成；08:55释放timer仍优先于任何实验完整性。不能事后提高256cap或挑快速条目。
 
 2026-10-08 03:57，任何科学effect读取前prospective分析次序调整：Min族全部shards已完成 Belief-R全1744原题，可先生成**完整单族探索地图**指导假说；其余固定Q/G任务继续，三族完整主图／所有原指标／CI／cap／data／parser均不改。独立interim文件及scope只供假说生成，不叫三族共同finding、不挑Source或已做对题；这覆盖前述等待全模型才读取的次序约定，原因是尽快利用已释放卡做核心追问，符合用户探索阶段／不防御推进要求。原primary map仍只全三族到齐后生成；未看任何partial Source/teacher labels。
+
+05:34全三族/八shard闭合，10464 actual+15696LP/25.70556GPUh/1362panels，mapSHAf3953fb34e12f094633ae7c130ef57c904933a1f4bcc846328575c68b1b0fd8d。所有DIRECT各1744cap+unknown；CoT Q1489cap/1027UNKNOWN、G1744/1744、Min1715cap/1743UNKNOWN，仅已停止+valid保能力下界，其余UNKNOWN上下界，不将0下界叫能力0%。原instrument未要求validfinal是测量失误，E97一句FORMAT只Min通过完整science，Q/G首仪器仍cap，无进一步grid。Raw原人类语用Gold各约30–32%，与BASE task能力的三族对照不可辨，不能认证I07understanding intact。原modality/Gold/priorNA21与所有strata保留，0新Source/老师调用。
