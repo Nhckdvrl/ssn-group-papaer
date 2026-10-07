@@ -23,3 +23,5 @@
 05:24E97两族首仪器失败，不使其阻塞新任务；六未启动E98 queue改等同slot E96 sealed，pid谱系及原前驱保存，prompt/data/metrics不变。
 
 06:04首完整Min族P匿名T4已268两遍/35裁决/0unresolved、复用原valid同packet，300assignments完整；在读角色效果前登记INTERIM all100Source/3mode联合作用，whole3family主图继续。语义labels只用封版该族，未读正在进行G/Q partial；合并audit输入SHA保留，所有cap12解释UNKNOWN界限，不按stopped筛样本。
+
+2026-10-08T06:48:43.674159+08:00 E98第二完整族Qwen INTERIM：600actual/.124373943GPUh，170新packet完整两遍/14裁决/91.765%agreement/0unresolved，mapbabc90d632cb86c3191c8d56fb76a0659aa7675c66b35be206a3eda4b08895de。全100Source QA native78.65%→goal83.33%，paired+4.69[−1.04,10.94]pp；GP50 QA+2.08[−4.17,8.33]pp，但correctroles−29.17[−41.67,−16.67]pp、GPwrong+27.08[14.58,39.58]pp、同S QAcorrect+explicitGPwrong联合+20.83[10.42,33.33]pp。NPS联合+34[20,48]pp最强，NPZ0/MVRR弱同报，不伪造全构式规律。QUESTION_ONLY一句R8总体role恢复0 CI跨0；GP仅−2.08pp misreading，CI含0。实际Yes17/No83三个mode总数相同但逐题答案不同，不以它推理解完整。Min实际QA完全不变/role损伤CI弱，故当下统一“goal优化QA却损伤忠实度”还没成立；Gemma全范围审核继续。
