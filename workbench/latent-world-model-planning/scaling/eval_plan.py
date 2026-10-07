@@ -150,6 +150,9 @@ def rollout_cost(model, emb0, goal, cand, chunk=8192, hist=3, proj=None):
                 pred = model.predict(emb[:, -hist:], act_emb[:, max(0, t + 1 - hist):t + 1])[:, -1:]
                 emb = torch.cat([emb, pred.float()], 1)
         diff = emb[:, -1] - g0[i:i + chunk]
+        if callable(proj):
+            res.append(proj(diff))
+            continue
         if proj is not None:
             diff = diff @ proj
         res.append(diff.pow(2).sum(-1))
@@ -225,7 +228,64 @@ def sfa_basis(model, task, k, dev, n=20000, seed=0, lag=5):
     return W.contiguous()
 
 
-def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, frameskip=5, dev='cuda', pca=0, sfa=0, mix=0):
+@torch.no_grad()
+def metric_horizon(model, task, dev, frac=0.9, n=2000, seed=2, lags=(1, 2, 5, 10, 15, 25, 35, 50, 75, 100, 150), return_plateau=False):
+    """Smallest temporal lag at which the median full-latent L2 distance reaches `frac` of its plateau
+    (plateau = median at the largest available lag), measured on training trajectories."""
+    root = DATA / f'{task}_64'
+    px = np.load(root / 'pixels.npy', mmap_mode='r')
+    meta = np.load(root / 'meta.npz')
+    off, ln = meta['ep_offset'].astype(np.int64), meta['ep_len'].astype(np.int64)
+    g = np.random.default_rng(seed)
+    def enc(idx):
+        o = np.argsort(idx); out = []
+        for i in range(0, len(idx), 1024):
+            x = torch.as_tensor(np.ascontiguousarray(px[idx[o[i:i + 1024]]]), device=dev).permute(0, 3, 1, 2).float().div_(255)
+            x = ((x - IMNET_MEAN.to(dev)) / IMNET_STD.to(dev))[:, None]
+            with torch.autocast('cuda', dtype=torch.bfloat16):
+                out.append(model.encode({'pixels': x})['emb'][:, 0].float())
+        z = torch.cat(out); r = torch.empty_like(z); r[torch.as_tensor(o, device=dev)] = z
+        return r
+    med = []
+    for h in lags:
+        okk = np.nonzero(ln > h + 1)[0]
+        if len(okk) == 0:
+            break
+        eps = g.choice(okk, n)
+        a = off[eps] + (g.random(n) * (ln[eps] - h - 1)).astype(np.int64)
+        med.append((h, (enc(a) - enc(a + h)).norm(dim=-1).median().item()))
+    plateau = med[-1][1]
+    if return_plateau:
+        return next(h for h, m in med if m >= frac * plateau), plateau
+    return next(h for h, m in med if m >= frac * plateau)
+
+
+@torch.no_grad()
+def slow_threshold(model, task, W, dev, lag=25, n=4000, seed=1):
+    """Median squared slow-feature distance between training frames `lag` env steps apart."""
+    root = DATA / f'{task}_64'
+    px = np.load(root / 'pixels.npy', mmap_mode='r')
+    meta = np.load(root / 'meta.npz')
+    off, ln = meta['ep_offset'].astype(np.int64), meta['ep_len'].astype(np.int64)
+    g = np.random.default_rng(seed)
+    ok = np.nonzero(ln > lag + 1)[0]
+    eps = g.choice(ok, n)
+    a = off[eps] + (g.random(n) * (ln[eps] - lag - 1)).astype(np.int64)
+    def enc(idx):
+        zs = []
+        for i in range(0, len(idx), 1024):
+            x = torch.as_tensor(np.ascontiguousarray(px[np.sort(idx[i:i + 1024])]), device=dev).permute(0, 3, 1, 2).float().div_(255)
+            x = ((x - IMNET_MEAN.to(dev)) / IMNET_STD.to(dev))[:, None]
+            with torch.autocast('cuda', dtype=torch.bfloat16):
+                zs.append(model.encode({'pixels': x})['emb'][:, 0].float())
+        return torch.cat(zs)
+    o = np.argsort(a)
+    a = a[o]
+    za, zb = enc(a), enc(a + lag)
+    return float(((za - zb) @ W).pow(2).sum(-1).median())
+
+
+def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, frameskip=5, dev='cuda', pca=0, sfa=0, mix=0, gate=0, switch=0, auto=0, sat=0):
     cfg_path = Path(ckpt).parent / 'config.json'
     if cfg_path.exists():
         cfg = json.loads(cfg_path.read_text())
@@ -241,6 +301,28 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
     adim = len(am)
     A = adim * frameskip
     proj = pca_basis(model, task, pca, dev) if pca else (sfa_basis(model, task, sfa, dev) if sfa else None)
+    if sat:  # saturation rule: full L2 while the current-goal full-L2 distance is below 0.9 x its plateau, else slow features
+        Wsat = sfa_basis(model, task, sat, dev)
+        _, plateau = metric_horizon(model, task, dev, return_plateau=True)
+        print('sat: full-L2 plateau', round(plateau, 3), flush=True)
+    if auto:  # same as switch, threshold at the measured full-L2 metric horizon (no cap)
+        switch, uncapped = auto, True
+    else:
+        uncapped = False
+    if switch:  # slow-then-fast: slow-feature cost until the goal is within one planning horizon, then full L2
+        Wsw = sfa_basis(model, task, switch, dev)
+        mh = metric_horizon(model, task, dev)  # where the full L2 stops carrying ordering information
+        thr = slow_threshold(model, task, Wsw, dev, lag=mh if uncapped else max(1, min(mh, horizon * frameskip)))
+        print('switch: full-L2 metric horizon', mh, 'steps; slow threshold', round(thr, 3), flush=True)
+    if gate:  # distance-gated multi-scale cost: slow-feature distance everywhere; full L2 switched on near the goal
+        W = sfa_basis(model, task, gate, dev)
+        D = W.shape[0]
+        tau2 = 0.2 * gate  # slow features are whitened: random pairs have squared distance ~2k
+
+        def proj(diff, W=W, D=D, tau2=tau2):
+            ds = (diff @ W).pow(2).sum(-1)
+            df = diff.pow(2).sum(-1) * (gate / D)
+            return ds + torch.exp(-ds / tau2) * df
     if mix:  # multi-scale cost: full latent L2 (local precision) + slow-feature L2 (long range), equal far-field scale
         W = sfa_basis(model, task, mix, dev)
         D = W.shape[0]
@@ -259,7 +341,22 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
         imgs = [envs[k].render() for k in act_idx]
         with torch.no_grad(), torch.autocast('cuda', dtype=torch.bfloat16):
             e0 = model.encode({'pixels': prep(imgs, res, dev)})['emb'][:, 0].float()
-        plan = cem(model, e0, g_emb[act_idx], horizon, A, samples, iters, topk, gen, proj=proj)
+        if sat:
+            near = ((e0 - g_emb[act_idx]).norm(dim=-1) < 0.9 * plateau).cpu().numpy()
+            plan = torch.empty(len(act_idx), horizon, A, device=dev)
+            for mask, pr in [(near, None), (~near, Wsat)]:
+                if mask.any():
+                    sel = torch.as_tensor(np.nonzero(mask)[0], device=dev)
+                    plan[sel] = cem(model, e0[sel], g_emb[act_idx][sel], horizon, A, samples, iters, topk, gen, proj=pr)
+        elif switch:
+            near = (((e0 - g_emb[act_idx]) @ Wsw).pow(2).sum(-1) <= thr).cpu().numpy()
+            plan = torch.empty(len(act_idx), horizon, A, device=dev)
+            for mask, pr in [(near, None), (~near, Wsw)]:
+                if mask.any():
+                    sel = torch.as_tensor(np.nonzero(mask)[0], device=dev)
+                    plan[sel] = cem(model, e0[sel], g_emb[act_idx][sel], horizon, A, samples, iters, topk, gen, proj=pr)
+        else:
+            plan = cem(model, e0, g_emb[act_idx], horizon, A, samples, iters, topk, gen, proj=proj)
         n_plans += 1
         acts = plan.cpu().numpy().reshape(len(act_idx), horizon * frameskip, adim) * asd + am
         for j, k in enumerate(act_idx):
