@@ -21,3 +21,7 @@
 2026-10-08 E96首完整Min当下native同writer/grader新增实质边界：100自然P/200score/完整盲T1，固定P source目标消歧使semantic fidelity credit alignment+.500[.167,.833]，map48aa680d625c8cb1e8e59a8c6d9577ca6fb04c92f599b049e0a30f9db7ff50af（INTERIM）。E97 UPDATE actual仅8.1%，故不以“懂了只是credit错”讲故事，而问重建困难观察是否复制尚未撤回的解释。两族待测，尚SEED，不认定作者RL方法已失效。
 
 **2026-10-08完整三族后的更具体机制种子：** [E101](../experiments/E101-disambiguation-region-reconstruction-credit.md)显示same-P/GP-target重建的前缀项三族皆负，消歧起后缀Q/Min明确正、G方向正但CI0；11/13/16条总分偏旧解释而后缀偏cue解释。[E102](../experiments/E102-revision-evidence-credit-oracle.md)唯一固定位置oracle把全部50上的正确选择提高Q10.42[3.13,18.75]、G8.33[−2.08,20.83]、Min21.88[9.38,35.42]pp。因此探索对象从泛泛“评价器也读错”变为**已经出现的修订证据，被全序列重建的前缀credit抵消**。它与已有semantic reconstruction/future-use rewards的距离在于修订证据与被解释前缀之间可观测的竞争，而非我们首创token或semantic reward。suffix还是T2 oracle，原候选含cue来源，不声称自动方法、训练收益或唯一神经机制；[E103](../experiments/E103-native-pool-revision-credit-selection.md)正在检验同原观察候选池中的功能后果。现有证据够支撑一个值得追的探索切口，尚不能直接认证合格idea。
+
+**跨域反证边界：** [E104](../experiments/E104-belief-r-revision-evidence-credit.md)原Belief-R全1744×三族缓存LP唯一then后缀oracle，UPDATE选择Q/Min显著变差（−12.72/−25.12pp），G近零；MAINTAIN反而改善。故目前没有通用信念修订reward修复，I07新prefix cancellation对象只得到GP语法歧义支持。不得挑小部分局部抵消条目来遮住这个整体反证；作者语用Gold界限保留。原E96表述干预证据仍成立，E103检验真实proposal池后果。
+
+2026-10-08T06:38:57.045221+08:00 E104解释校正（原数字/SHA/条件完整保留）：原条件句唯一then是结构边界，未被认证为引发人类语用suppression的最早证据位置；alternative-cause等关键内容常在antecedent。因此其负结果只排除这次机械consequent-only迁移，不能作为“真正语义修订证据oracle在跨域失败”的反证，也不能声称否定通用prefix cancellation机制。当前跨域机制仍未核对/未建立；不继续扫描cut或事后挑语义位置。这是实验解释限制，不是Source数据错误或重标需求。

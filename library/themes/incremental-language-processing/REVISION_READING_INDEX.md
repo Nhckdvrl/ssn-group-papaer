@@ -130,3 +130,9 @@
 - [Query visibility作者v1](luo2026-query-visibility.md)：main全部／补表，matched-budget query作用量化；已有query-aware/reuse叙事，I08不靠相同泛概念自称novel。
 
 - [AVPO九月底作者v1](zhao2026-faithful-activation-verbalization.md)：main全/方法App和指定稳定性，query-agnostic文本readout与QA/anchor preference；已有语义recoverability与lexical区别，不冒充新方法。
+
+- [CTRL-RAG：可归因概率不自动等于忠实内容（arXiv2026，ANT Med-AQ，未核接收）](tan2026-ctrl-rag.md)：主文/指定App已精读，版本范围见卡。
+
+- [Self-CTRL：独立行为与说明之间的一致性训练（arXiv2026，MIT CSAIL）](pres2026-self-ctrl.md)：主文/指定App已精读，版本范围见卡。
+
+- [Position：以跨输入关系作为优化对象（ICML2026，作者组接收页核；所读为March5作者稿）](pres2026-consistency-position.md)：主文/指定App已精读，版本范围见卡。

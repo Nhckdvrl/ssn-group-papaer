@@ -11,3 +11,5 @@
 - **噪声地板：** BF16/eager，每候选独立固定seed，原96cap不增加，Teacher一致率/unknown完整报告；T2是位置oracle而非自动发现机制；同池选择改善只证contentselection，非learnedpolicy/RL训练已改善或唯一内部parse。
 - **决策表（跑之前写）：** 池有忠实P、WHOLE常选GPwrong而suffix跨族/ct提高selected正确关系→有功能后果的revision credit cancellation；只有Cue来源旧池有效、本原S池无good候选→原先依赖proposal可获得性，收紧；有good候选但两个评分都无改善→区域LP优势不兑现，不继续调窗口；模型/ct混合→保留边界，不挑种子拼统一规律。
 - **算力：** 估≤3GPUh，八既有独立slot Q3/G3/Min2，全已释放旧科学任务后启动，0新model/下载。既有持久08:55timer/09:00硬stop及queue/per-source guards覆盖，CPU/API可完成既有数据审核。目标是探索高价值idea，今晚不补完整训练论文。
+
+2026-10-08T06:37:02.629845+08:00 GPU三族8分片全完成：1200候选assignment中150原greedy重用，1050新增采样P+1050新GP-target LP；.412222494GPUh，无queue/GPU仍在途。原source/context/offset/all8target一致验证通过，全部分片first-seed生成tokenexact和LPexact。T4完整族blind流水线仍RUNNING（首Min163新distinct packet，其余同packet复用），不读partial teacher效果；原09:00deadline/timer保持。

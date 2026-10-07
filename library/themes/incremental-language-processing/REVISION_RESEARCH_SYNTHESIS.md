@@ -358,3 +358,9 @@ AttriMem不是只重分终点scalar，而以固定答案在maskedmemory下的偏
 E67完整同源三族图显示阅读目标在旧forced-choice QA提高的同时使明确GP角色误读增加19–21pp、OTHER不增加。这把问题从“修复效果是否迁移”转成“目标任务收益能否掩盖解释损伤”。目标不是断言，普通YN疑问句也不当然携带语言学上的存在预设。De-Presuppose已有问题未核实假设影响验证／去预设改善目标正确率；我们的增量只有在actual QA与同源角色显式相反、且界限可辨别时才更具体，单纯question hallucination不新。仍需E98当下三族结果，I08SEED不升级。
 
 E97完整Min族则削弱I07的“语义理解完整只是reward错”强版本：作者人类语用UPDATE gold-c actual约8.1%、raw31.8%，MAINTAIN约78.1%、raw27.3%，不能用总平均相近掩盖相反分层，也不把任务语用Gold冒称经典逻辑真值。下一由完整现代自然P/credit和actualQA/faithfulness改变认识，不沿格式或reward模板继续小修。
+
+### 当前探索对象：全段重建credit中的修订证据抵消
+
+E96当前原生writer/self-grader完整三族、E101/E102冻结LP给出更具体的反馈对象：原GP前缀term对更忠实解释为负，消歧起suffix有正信号；唯一T2 oracle把正确选择Q/G/Min提高10.42/8.33/21.88pp，G总体CI含0。不能把一般self-grader有偏说成novelty，须看E103同原S八候选实际选择与E105更多proposal预算是否放大偏误；两块已在盲label前冻结，不用更多prompt。
+
+[Self-CTRL](pres2026-self-ctrl.md)、[ICML consistency Position](pres2026-consistency-position.md)、[CTRL-RAG](tan2026-ctrl-rag.md)把当前unique主文增至79（5综述、1position、73研究）。它们既提供方法尺度，也已有一般一致性、token/contrast credit、correctness gate的ownership。可借的是重新定义评价关系后检验功能后果，而不是复制评分器改名。E104对原Belief-R的then结构切分虽完整三族反向，但then不是经过认证的语义修订证据，不能冒当强跨域反证；其主作用是暴露机械切分迁移不成立，原数不改/不调cut。
