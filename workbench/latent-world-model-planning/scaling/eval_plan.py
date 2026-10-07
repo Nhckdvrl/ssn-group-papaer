@@ -25,13 +25,25 @@ from wm import IMNET_MEAN, IMNET_STD  # noqa: F401  (also puts vendor/le-wm on s
 DATA = Path(os.environ.get('LWM_DATA', '/tmp/latent-wm-data/lowres'))
 
 
+NATIVE = Path('/tmp/latent-wm-data/native')
+
+
+def droot(task, res=64):
+    """Training-data root: the 64px arrays, or the native-resolution episode subset (prep_native.py)."""
+    return DATA / f'{task}_64' if res == 64 else NATIVE / f'{task}_{res}'
+
+
+def frames(task, idx, res=64):
+    """Training frames (indices into droot(task, res)) as uint8 (N,res,res,3)."""
+    return np.ascontiguousarray(np.load(droot(task, res) / 'pixels.npy', mmap_mode='r')[np.asarray(idx)])
+
 def eval_set(task, res, n, offset, seed=0, split_seed=0, val_frac=0.05):
     meta = np.load(DATA / f'{task}_{res}' / 'meta.npz')
     ep_off, ep_len = meta['ep_offset'].astype(np.int64), meta['ep_len'].astype(np.int64)
     rng = np.random.default_rng(split_seed)
     perm = rng.permutation(len(ep_len))
     val_eps = np.sort(perm[:int(round(val_frac * len(ep_len)))])
-    if task == 'reacher':
+    if task == 'reacher' or task.startswith('vantmaze'):
         st = np.concatenate([meta['qpos'], meta['qvel']], 1)
     elif task == 'cube':
         st = np.concatenate([meta['qpos'], meta['qvel'], meta['privileged_block_0_pos'], meta['privileged_block_0_quat']], 1)
@@ -67,7 +79,26 @@ class PMazeEnv:
         return self.u.step(a)
 
 
+class VAntEnv:
+    """OGBench visual-antmaze: 64x64 'back' camera that follows the ant (same renderer as the dataset)."""
+
+    def __init__(self, size):
+        import gymnasium as gym
+        import ogbench  # noqa: F401
+        self.u = gym.make(f'visual-antmaze-{size}-v0').unwrapped
+        self.u.reset(seed=0)
+        self.u._terminate_at_goal = True
+
+    def render(self):
+        return self.u.render()
+
+    def step(self, a):
+        return self.u.step(a)
+
+
 def make_env(task):
+    if task.startswith('vantmaze'):
+        return VAntEnv(task[len('vantmaze'):])
     if task.startswith('pmaze'):
         return PMazeEnv(task[len('pmaze'):])
     import gymnasium as gym
@@ -99,6 +130,13 @@ def reset_env(env, task, start, goal, seed):
         goal_img = np.asarray(env.render()).copy()
         env.u.set_state(start[:2], np.zeros(2))
         env.u.set_goal(goal_xy=np.asarray(goal[:2], dtype=np.float64))
+    elif task.startswith('vantmaze'):
+        nq = 15
+        env.u.reset(seed=seed)
+        env.u.set_state(goal[:nq], np.zeros(len(goal) - nq))
+        goal_img = np.asarray(env.render()).copy()
+        env.u.set_state(start[:nq], start[nq:])
+        env.u.set_goal(goal_xy=np.asarray(goal[:2], dtype=np.float64))
     elif task == 'cube':
         env.reset(seed=seed)
         env.set_state(goal[:21], np.zeros(20))
@@ -116,7 +154,7 @@ def dist_info(env, task):
         return float(torch.norm(env.agent_position - env.target_position))
     if task == 'reacher':
         return float(np.abs(env.env.physics.data.qpos - env.env.task.target_qpos).max())
-    if task.startswith('pmaze'):
+    if task.startswith('pmaze') or task.startswith('vantmaze'):
         return float(np.linalg.norm(env.u.get_xy() - env.u.cur_goal_xy))
     if task == 'cube':
         return float(np.linalg.norm(env._data.joint('object_joint_0').qpos[:3] - env._data.mocap_pos[env._cube_target_mocap_ids[0]]))
@@ -175,13 +213,13 @@ def cem(model, emb0, goal, H, A, S, iters, topk, gen, proj=None):
 
 
 @torch.no_grad()
-def pca_basis(model, task, k, dev, n=20000, seed=0):
+def pca_basis(model, task, k, dev, n=20000, seed=0, res=64):
     """Top-k principal directions of encoder latents on training frames (low-frequency subspace)."""
-    px = np.load(DATA / f'{task}_64' / 'pixels.npy', mmap_mode='r')
+    px = np.load(droot(task, res) / 'pixels.npy', mmap_mode='r')
     idx = np.sort(np.random.default_rng(seed).choice(len(px), n, replace=False))
     zs = []
     for i in range(0, n, 2048):
-        x = torch.as_tensor(np.ascontiguousarray(px[idx[i:i + 2048]]), device=dev).permute(0, 3, 1, 2).float().div_(255)
+        x = torch.as_tensor(frames(task, idx[i:i + 2048], res), device=dev).permute(0, 3, 1, 2).float().div_(255)
         x = ((x - IMNET_MEAN.to(dev)) / IMNET_STD.to(dev))[:, None]
         with torch.autocast('cuda', dtype=torch.bfloat16):
             zs.append(model.encode({'pixels': x})['emb'][:, 0].float())
@@ -192,9 +230,9 @@ def pca_basis(model, task, k, dev, n=20000, seed=0):
 
 
 @torch.no_grad()
-def sfa_basis(model, task, k, dev, n=20000, seed=0, lag=5):
+def sfa_basis(model, task, k, dev, n=20000, seed=0, lag=5, res=64):
     """Slow-feature directions of encoder latents: minimise E||W^T (z_{t+lag} - z_t)||^2 s.t. W^T Sigma W = I."""
-    root = DATA / f'{task}_64'
+    root = droot(task, res)
     px = np.load(root / 'pixels.npy', mmap_mode='r')
     meta = np.load(root / 'meta.npz')
     off, ln = meta['ep_offset'].astype(np.int64), meta['ep_len'].astype(np.int64)
@@ -208,7 +246,7 @@ def sfa_basis(model, task, k, dev, n=20000, seed=0, lag=5):
         zs = []
         for i in range(0, len(idx), 2048):
             j = idx[order[i:i + 2048]]
-            x = torch.as_tensor(np.ascontiguousarray(px[j]), device=dev).permute(0, 3, 1, 2).float().div_(255)
+            x = torch.as_tensor(frames(task, j, res), device=dev).permute(0, 3, 1, 2).float().div_(255)
             x = ((x - IMNET_MEAN.to(dev)) / IMNET_STD.to(dev))[:, None]
             with torch.autocast('cuda', dtype=torch.bfloat16):
                 zs.append(model.encode({'pixels': x})['emb'][:, 0].float())
@@ -229,10 +267,10 @@ def sfa_basis(model, task, k, dev, n=20000, seed=0, lag=5):
 
 
 @torch.no_grad()
-def metric_horizon(model, task, dev, frac=0.9, n=2000, seed=2, lags=(1, 2, 5, 10, 15, 25, 35, 50, 75, 100, 150), return_plateau=False):
+def metric_horizon(model, task, dev, frac=0.9, n=2000, seed=2, lags=(1, 2, 5, 10, 15, 25, 35, 50, 75, 100, 150), return_plateau=False, return_curve=False, W=None, res=64):
     """Smallest temporal lag at which the median full-latent L2 distance reaches `frac` of its plateau
     (plateau = median at the largest available lag), measured on training trajectories."""
-    root = DATA / f'{task}_64'
+    root = droot(task, res)
     px = np.load(root / 'pixels.npy', mmap_mode='r')
     meta = np.load(root / 'meta.npz')
     off, ln = meta['ep_offset'].astype(np.int64), meta['ep_len'].astype(np.int64)
@@ -240,7 +278,7 @@ def metric_horizon(model, task, dev, frac=0.9, n=2000, seed=2, lags=(1, 2, 5, 10
     def enc(idx):
         o = np.argsort(idx); out = []
         for i in range(0, len(idx), 1024):
-            x = torch.as_tensor(np.ascontiguousarray(px[idx[o[i:i + 1024]]]), device=dev).permute(0, 3, 1, 2).float().div_(255)
+            x = torch.as_tensor(frames(task, idx[o[i:i + 1024]], res), device=dev).permute(0, 3, 1, 2).float().div_(255)
             x = ((x - IMNET_MEAN.to(dev)) / IMNET_STD.to(dev))[:, None]
             with torch.autocast('cuda', dtype=torch.bfloat16):
                 out.append(model.encode({'pixels': x})['emb'][:, 0].float())
@@ -253,17 +291,20 @@ def metric_horizon(model, task, dev, frac=0.9, n=2000, seed=2, lags=(1, 2, 5, 10
             break
         eps = g.choice(okk, n)
         a = off[eps] + (g.random(n) * (ln[eps] - h - 1)).astype(np.int64)
-        med.append((h, (enc(a) - enc(a + h)).norm(dim=-1).median().item()))
+        d = enc(a) - enc(a + h)
+        med.append((h, (d @ W if W is not None else d).norm(dim=-1).median().item()))
     plateau = med[-1][1]
+    if return_curve:
+        return med
     if return_plateau:
         return next(h for h, m in med if m >= frac * plateau), plateau
     return next(h for h, m in med if m >= frac * plateau)
 
 
 @torch.no_grad()
-def slow_threshold(model, task, W, dev, lag=25, n=4000, seed=1):
+def slow_threshold(model, task, W, dev, lag=25, n=4000, seed=1, res=64):
     """Median squared slow-feature distance between training frames `lag` env steps apart."""
-    root = DATA / f'{task}_64'
+    root = droot(task, res)
     px = np.load(root / 'pixels.npy', mmap_mode='r')
     meta = np.load(root / 'meta.npz')
     off, ln = meta['ep_offset'].astype(np.int64), meta['ep_len'].astype(np.int64)
@@ -274,7 +315,7 @@ def slow_threshold(model, task, W, dev, lag=25, n=4000, seed=1):
     def enc(idx):
         zs = []
         for i in range(0, len(idx), 1024):
-            x = torch.as_tensor(np.ascontiguousarray(px[np.sort(idx[i:i + 1024])]), device=dev).permute(0, 3, 1, 2).float().div_(255)
+            x = torch.as_tensor(frames(task, np.sort(idx[i:i + 1024]), res), device=dev).permute(0, 3, 1, 2).float().div_(255)
             x = ((x - IMNET_MEAN.to(dev)) / IMNET_STD.to(dev))[:, None]
             with torch.autocast('cuda', dtype=torch.bfloat16):
                 zs.append(model.encode({'pixels': x})['emb'][:, 0].float())
@@ -291,31 +332,32 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
         cfg = json.loads(cfg_path.read_text())
         am, asd = np.array(cfg['act_mean']), np.array(cfg['act_std'])
         res = cfg.get('res', res)
-    else:  # released checkpoint: dataset column statistics
+    else:  # released checkpoint: dataset column statistics, native 224px frames
         act = np.load(DATA / f'{task}_64' / 'meta.npz')['action'].astype(np.float64)
         am, asd = np.nanmean(act, 0), np.nanstd(act, 0)
+        res = int(os.environ.get('LWM_RES', 224))
     model = torch.load(ckpt, map_location=dev, weights_only=False).eval()
     rows = eval_set(task, 64, n, offset, seed=seed)
     envs = [make_env(task) for _ in rows]
     goals = [reset_env(env, task, r[2], r[3], seed=seed * 100000 + k) for k, (env, r) in enumerate(zip(envs, rows))]
     adim = len(am)
     A = adim * frameskip
-    proj = pca_basis(model, task, pca, dev) if pca else (sfa_basis(model, task, sfa, dev) if sfa else None)
+    proj = pca_basis(model, task, pca, dev, res=res) if pca else (sfa_basis(model, task, sfa, dev, res=res) if sfa else None)
     if sat:  # saturation rule: full L2 while the current-goal full-L2 distance is below 0.9 x its plateau, else slow features
-        Wsat = sfa_basis(model, task, sat, dev)
-        _, plateau = metric_horizon(model, task, dev, return_plateau=True)
+        Wsat = sfa_basis(model, task, sat, dev, res=res)
+        _, plateau = metric_horizon(model, task, dev, return_plateau=True, res=res)
         print('sat: full-L2 plateau', round(plateau, 3), flush=True)
     if auto:  # same as switch, threshold at the measured full-L2 metric horizon (no cap)
         switch, uncapped = auto, True
     else:
         uncapped = False
     if switch:  # slow-then-fast: slow-feature cost until the goal is within one planning horizon, then full L2
-        Wsw = sfa_basis(model, task, switch, dev)
-        mh = metric_horizon(model, task, dev)  # where the full L2 stops carrying ordering information
-        thr = slow_threshold(model, task, Wsw, dev, lag=mh if uncapped else max(1, min(mh, horizon * frameskip)))
+        Wsw = sfa_basis(model, task, switch, dev, res=res)
+        mh = metric_horizon(model, task, dev, res=res)  # where the full L2 stops carrying ordering information
+        thr = slow_threshold(model, task, Wsw, dev, lag=mh if uncapped else max(1, min(mh, horizon * frameskip)), res=res)
         print('switch: full-L2 metric horizon', mh, 'steps; slow threshold', round(thr, 3), flush=True)
     if gate:  # distance-gated multi-scale cost: slow-feature distance everywhere; full L2 switched on near the goal
-        W = sfa_basis(model, task, gate, dev)
+        W = sfa_basis(model, task, gate, dev, res=res)
         D = W.shape[0]
         tau2 = 0.2 * gate  # slow features are whitened: random pairs have squared distance ~2k
 
@@ -324,7 +366,7 @@ def run(ckpt, task, offset, n, samples, iters, topk, horizon, seed, res=64, fram
             df = diff.pow(2).sum(-1) * (gate / D)
             return ds + torch.exp(-ds / tau2) * df
     if mix:  # multi-scale cost: full latent L2 (local precision) + slow-feature L2 (long range), equal far-field scale
-        W = sfa_basis(model, task, mix, dev)
+        W = sfa_basis(model, task, mix, dev, res=res)
         D = W.shape[0]
         proj = torch.cat([W * (D / mix) ** 0.5, torch.eye(D, device=dev)], 1)
     with torch.no_grad(), torch.autocast('cuda', dtype=torch.bfloat16):

@@ -65,7 +65,7 @@ def main():
     p.add_argument('--roots', default='/tmp/latent-wm-runs/scaling,/home/xiang/.cache/latent-wm-results/scaling')
     a = p.parse_args()
     data = GPUData(a.task, device='cuda', pixels_on='cpu')
-    if a.task == 'tworoom' or a.task.startswith('pmaze'):
+    if a.task == 'tworoom' or a.task.startswith(('pmaze', 'vantmaze')):
         st = data.meta['proprio'][:, :2].astype(np.float64)
         key_fn = lambda idx: st[idx]
     elif a.task == 'pusht':

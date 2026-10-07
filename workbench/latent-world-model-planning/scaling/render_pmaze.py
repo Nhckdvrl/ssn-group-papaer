@@ -14,7 +14,7 @@ import numpy as np
 
 SIZE = sys.argv[1] if len(sys.argv) > 1 else 'medium'
 SRC = f'/tmp/latent-wm-data/ogbench/pointmaze-{SIZE}-navigate-v0.npz'
-OUT = f'/tmp/latent-wm-data/lowres/pmaze{SIZE}_64'
+OUT = os.path.join(os.environ.get('LWM_DATA', '/tmp/latent-wm-data/lowres'), f'pmaze{SIZE}_64')
 
 
 def make_renderer():
@@ -69,7 +69,7 @@ if __name__ == '__main__':
              ep_offset=starts.astype(np.int64), ep_len=ep_len.astype(np.int32))
     mm = np.lib.format.open_memmap(f'{OUT}/pixels.npy', mode='w+', dtype=np.uint8, shape=(len(qpos), 64, 64, 3))
     chunks = [(s, qpos[s:s + 20000]) for s in range(0, len(qpos), 20000)]
-    with Pool(12) as p:
+    with Pool(int(os.environ.get("NPROC", 12))) as p:
         for i, (s, arr) in enumerate(p.imap_unordered(work, chunks)):
             mm[s:s + len(arr)] = arr
             print(i, len(chunks), flush=True)

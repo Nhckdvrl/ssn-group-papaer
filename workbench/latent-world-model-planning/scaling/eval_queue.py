@@ -19,13 +19,16 @@ N = 200
 def plan_for(run_dir):
     task = json.loads((Path(run_dir) / 'config.json').read_text())['task']
     steps = json.loads((Path(run_dir) / 'config.json').read_text())['steps']
-    offsets = [25, 50, 75] if task == 'tworoom' else ([50, 100, 200] if task.startswith('pmaze') else [25, 50])
+    offsets = [25, 50, 75] if task == 'tworoom' else ([50, 100, 200] if task.startswith('pmaze') else ([25, 50, 100] if task.startswith('vantmaze') else [25, 50]))
     jobs = []
     for ck in [5000, 20000, steps]:
         for off in offsets:
-            if ck != steps and off in (75, 200):
+            if ck != steps and (off in (75, 200) or (task.startswith('vantmaze') and off == 100)):
                 continue
             jobs.append((ck, off, 300, 30))
+    cfg = json.loads((Path(run_dir) / 'config.json').read_text())
+    if cfg.get('seed', 0) != 0 or not Path(run_dir).name.endswith('_st%d' % steps):
+        return task, jobs  # E23: planning-compute sweeps only on seed-0 base runs
     for off in ([50, 100] if task.startswith('pmaze') else [25, 50]):
         for s, it in [(30, 3), (100, 10), (1000, 30), (3000, 30)]:
             jobs.append((steps, off, s, it))

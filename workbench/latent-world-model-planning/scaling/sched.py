@@ -69,7 +69,7 @@ def main():
                 f.write(j + '\n')
             launched = True
             break
-        time.sleep(90 if launched else 120)
+        time.sleep(300 if launched else 120)  # let the new job finish loading its data onto the GPU
 
 
 if __name__ == '__main__':

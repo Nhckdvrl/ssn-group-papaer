@@ -30,7 +30,7 @@ def main():
                 continue
             lock.parent.mkdir(exist_ok=True)
             lock.write_text('x')
-            offs = '25,50,75' if cfg['task'] == 'tworoom' else ('50,100,200' if cfg['task'].startswith('pmaze') else '25,50')
+            offs = '25,50,75' if cfg['task'] == 'tworoom' else ('50,100,200' if cfg['task'].startswith('pmaze') else ('25,50,100' if cfg['task'].startswith('vantmaze') else '25,50'))
             r = subprocess.run(['/home/xiang/.venvs/latent-wm/bin/python', f'{a.script}.py', '--ckpt', str(ck), '--offsets', offs],
                                capture_output=True, text=True, cwd=str(Path(__file__).parent))
             print(Path(rd).name, r.stdout.strip().splitlines()[-1:] if r.stdout else '', r.stderr[-300:] if r.returncode else '', flush=True)
