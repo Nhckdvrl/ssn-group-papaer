@@ -12,7 +12,7 @@
 | 解释在源里形成还是在使用时组装 | E55/E64歧义区有因果QA作用；E64-v2反向cue MVRR角色三族明显损伤，正向共同恢复不稳；whole-vector不认证语法因子 | E70同一源/同一干预的原子断言脚印，全部族/构式/两侧 |
 | 修订目标能否形成可继续使用的解释 | E65提前goal有部分跨关系收益，但E66/E68分路径结果异质，不能叫source写入普遍有害或readout普遍更好 | E67三族3204自由输出已齐，完整T4双遍正在运行；不继续goal/mask网格 |
 | 正确局部表达是否影响下一绑定 | 固定输入例子V1受事正确、V2错/未表达，不足以定机制；源不传播、表达干扰、仅遗漏仍竞争 | E71完整盲审后38对/76源：MVRR仍错但cut无共同恢复，NPZ预填正确P1后候选近满分且cut损伤；结束局部P1控制，回真实自由表达/原子脚印 |
-| 明确证据如何保留与共同使用 | E72共同回答没有共同修订；E73首labelcut、E74原cue/GP顺序、E75cross-source cut都没有三族两构式共同恢复，不能归为统一recency或污染 | E76全2016格无共同规划优势，L部分关系损失/收益取舍；E77全2688格没有共同Source消费修复，正确关系常受损；E78三族更强模型的实际草稿消费流程已铺8卡，原数据0API不重审 |
+| 明确证据如何保留与共同使用 | E72共同回答没有共同修订；E73首labelcut、E74原cue/GP顺序、E75cross-source cut都没有三族两构式共同恢复，不能归为统一recency或污染 | E76全2016格无共同规划优势，L部分关系损失/收益取舍；E77全2688格没有共同Source消费修复，正确关系常受损；E78强三族全2016格只有异质端到端收益，未有共同方法；草稿块已自审收束，转已确认正确P1后的Source直接消费，0新API不重审原数据 |
 
 **贡献尺度的校准：** 一般partial interpretation已有Amouyal/人类/Lee；一般几何不等于可使用已有Lepori；一般context干扰/错误路径竞争已有Hu SSC-GRPO/Li TCR；binding IDs及跨ID转换已有Feng/Jung。我们要找的是自然解释修订的具体、可预测且有后果的规律，可以借它们的方法和对象区分，不能只更换数据或命名。即便E71成立，也还要区分强制正确prefill与真实自然产生，不能据候选概率直接认证能力。
 
@@ -289,3 +289,9 @@ SRL最新v4综述主文43页完整补入，累计49篇主文（4survey+45researc
 ### 匹配为何发生：Lee Harvard QK分解
 
 [作者原文](https://arxiv.org/abs/2602.04752v1)，main全读/附录范围见卡。从scalar attention到positive/negative二阶矩，toy理论/因果验证，再分semantic与binding匹配；真实LM主要attention而非最终答案，未核对接收。对GP可借routing/content对象划分，必须先有真实共同的修订后果，不能把whole-state patch、attention变化、effective rank叫正确内部parse。
+
+### E78–79完整自审后：重新区分修订对象
+
+E78三更大模型真实草稿pipeline全2016格，MVRR只有Gemma稳健端到端收益，NPZ仍关系取舍/映射异质，cue损伤不能隐藏。E79已确认正确P1后，只切Source晚消费，MVRR仅Qwen稳恢复，NPZ三族正确关系损伤；两块收束，不扫同类mask/措辞。泛化故事仍不成立，尚无合格idea，不能因相近论文桌面关线。
+
+[Clark EMNLP2025](clark2025-resource-rational-noisy-channel.md)新增全文，现53主文；Clark2026 CoNLL已读正式稿，不把arXiv回看重复计数。新竞争对象是输入本身是否被推断有生产错误，而非世界内容合理性。现成892QA E80运行，一个输入可靠性对比，无新gold/审核；文字metadata并非noise posterior的证明。只有它能预测实际补词/换词解释操作，保住真实两关系与cue，并导出可复用后果，才可能建立值得兴奋的增量。

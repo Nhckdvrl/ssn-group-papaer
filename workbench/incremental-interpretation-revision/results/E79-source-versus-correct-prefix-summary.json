@@ -1,0 +1,3577 @@
+{
+  "experiment": "E79",
+  "complete": {
+    "all_models_complete": true,
+    "panels": 234,
+    "map_sha256": "f4f0685a13107101da67e84586f06c71ca847e391433c6b2ccce7130ed206105",
+    "gpu_hours": 0.034736355088146716
+  },
+  "data_sha256": "e082e1039b1f5a39f181d92c373dd7c0f6cd79689d282c30c1a4adbcdfebd0b7",
+  "qualification_manifest": {
+    "data_sha256": "e082e1039b1f5a39f181d92c373dd7c0f6cd79689d282c30c1a4adbcdfebd0b7",
+    "draft_sha256": "5ed22f45c0c6fff5253117ab16d15bc0bb766c12b300234aa23ca1b9e1453068",
+    "audit_summary": {
+      "model": "step-5-preview",
+      "endpoint": "https://api.stepfun.com/step_plan/v1/messages",
+      "proxy_used": false,
+      "max_batch": 5,
+      "workers": 2,
+      "data_sha256": "4f1526635658c064dd53c5174d75bbbe78d1b1c3fa53dd94b1928adc0b55f878",
+      "items": 240,
+      "complete_both": 240,
+      "disagreements": 34,
+      "adjudications": 34,
+      "agreement": 0.8583333333333333,
+      "unresolved": 0,
+      "annotated_sha256": "a3c17d9daa07b29272aa0da71be60a2f0c5093e772d64e99a5dd99dddff3b1b5"
+    },
+    "sources": 76,
+    "clusters": 38,
+    "excluded": [
+      {
+        "pair_id": "cehakova2025:item117",
+        "reasons": {
+          "gp": [
+            "p2_correct:source-support",
+            "p2_unsupported:source-support"
+          ],
+          "cue": []
+        }
+      },
+      {
+        "pair_id": "cehakova2025:item97",
+        "reasons": {
+          "gp": [
+            "p2_unsupported:source-support"
+          ],
+          "cue": []
+        }
+      }
+    ],
+    "qualification_before_model_behavior": true
+  },
+  "parent_map_sha256": "88417f8673139430b6404fef894a882978849896a40317f34e93f6c5bf9454b9",
+  "panels": [
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.3333333333333333,
+      "CI95": [
+        0.13333333333333333,
+        0.6
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.4666666666666667,
+      "CI95": [
+        0.2,
+        0.7333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.7333333333333333,
+      "CI95": [
+        0.5333333333333333,
+        0.9333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.13333333333333333,
+      "CI95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.4,
+      "CI95": [
+        0.13333333333333333,
+        0.6666666666666666
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.26666666666666666,
+      "CI95": [
+        0.0,
+        0.5333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.3365343345471395,
+      "CI95": [
+        0.13507385963644575,
+        0.5637046876915207
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.42685513171423406,
+      "CI95": [
+        0.23160333705693908,
+        0.6334797833927513
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.7461078872668993,
+      "CI95": [
+        0.5330153504515355,
+        0.933544582321254
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.09032079716709458,
+      "CI95": [
+        -0.04655861475696043,
+        0.23161976029224668
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.4095735527197598,
+      "CI95": [
+        0.1937322616759401,
+        0.6331099861897905
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.3192527555526652,
+      "CI95": [
+        0.0716547622351562,
+        0.569731205362324
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": -2.277714411417643,
+      "CI95": [
+        -6.937380832036336,
+        2.5965524864196765
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": -0.07035929361979167,
+      "CI95": [
+        -3.4459556627273558,
+        3.5183720874786357
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 10.421992365519205,
+      "CI95": [
+        4.811334034601847,
+        16.002609014511105
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 2.2073551177978517,
+      "CI95": [
+        -0.7015352725982665,
+        4.974465084075927
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 12.699706776936848,
+      "CI95": [
+        8.527459290822348,
+        16.857622400919595
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 10.492351659138997,
+      "CI95": [
+        6.1973528480529785,
+        14.400681866010025
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.9333333333333333,
+      "CI95": [
+        0.8,
+        1.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.8666666666666667,
+      "CI95": [
+        0.6666666666666666,
+        1.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.9333333333333333,
+      "CI95": [
+        0.8,
+        1.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.06666666666666667,
+      "CI95": [
+        -0.26666666666666666,
+        0.13333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.0,
+      "CI95": [
+        -0.2,
+        0.2
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.06666666666666667,
+      "CI95": [
+        0.0,
+        0.2
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.8939931197840426,
+      "CI95": [
+        0.7495066226636639,
+        0.9887975016307946
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.8919197120305071,
+      "CI95": [
+        0.7623981991097784,
+        0.9978464577518464
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.933736049618872,
+      "CI95": [
+        0.801208404682779,
+        0.9999999999364382
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.00207340775353552,
+      "CI95": [
+        -0.13820869230550412,
+        0.1417443524386516
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.03974292983482943,
+      "CI95": [
+        -0.14199914849484863,
+        0.22237436368324112
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.04181633758836498,
+      "CI95": [
+        -0.05595953642841465,
+        0.16050578320819653
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 14.881193288167317,
+      "CI95": [
+        9.031180928548176,
+        20.253357369105018
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 12.050862471262613,
+      "CI95": [
+        7.717496019999186,
+        16.390561225414277
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 28.402208455403645,
+      "CI95": [
+        21.371826883951822,
+        34.71501214981079
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -2.830330816904704,
+      "CI95": [
+        -6.649991526603698,
+        1.043797059059142
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 13.521015167236328,
+      "CI95": [
+        7.368954334259033,
+        19.80482433319092
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 16.35134598414103,
+      "CI95": [
+        10.326992053190867,
+        22.179438355763754
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "correct",
+      "operation": "interaction",
+      "value": 0.4,
+      "CI95": [
+        0.13333333333333333,
+        0.6666666666666666
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "p_correct",
+      "operation": "interaction",
+      "value": 0.36983062288493046,
+      "CI95": [
+        0.13145425711800862,
+        0.6119334987864375
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "margin",
+      "operation": "interaction",
+      "value": -0.8213083902994792,
+      "CI95": [
+        -7.024198195139567,
+        5.335403531392415
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.9130434782608695,
+      "CI95": [
+        0.782608695652174,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.6956521739130435,
+      "CI95": [
+        0.5217391304347826,
+        0.8695652173913043
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.08695652173913043,
+      "CI95": [
+        -0.21739130434782608,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.30434782608695654,
+      "CI95": [
+        -0.4782608695652174,
+        -0.13043478260869565
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.21739130434782608,
+      "CI95": [
+        -0.43478260869565216,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9999868516094723,
+      "CI95": [
+        0.999960772976069,
+        0.9999999782361103
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.9129862237914174,
+      "CI95": [
+        0.7829468895655024,
+        0.9999809962318388
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.6918254593714516,
+      "CI95": [
+        0.5183489819945375,
+        0.8498667557086315
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.0870006278180551,
+      "CI95": [
+        -0.21702689576827022,
+        -1.8909988935816373e-05
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.3081613922380208,
+      "CI95": [
+        -0.481650862802944,
+        -0.150133107755349
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.22116076441996568,
+      "CI95": [
+        -0.43408234360427844,
+        -0.016165625185356348
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 29.39706756757653,
+      "CI95": [
+        24.632142896237582,
+        33.87734378213468
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 14.635692310074102,
+      "CI95": [
+        10.80505530519978,
+        18.046179544051057
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 4.482782529748005,
+      "CI95": [
+        -0.9988861871802287,
+        9.88400734403859
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -14.761375257502431,
+      "CI95": [
+        -18.694166790143303,
+        -10.479183674895246
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -24.914285037828527,
+      "CI95": [
+        -30.62483793237935,
+        -19.24341349705406
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -10.152909780326096,
+      "CI95": [
+        -15.901276608945235,
+        -4.472575158399088
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.4782608695652174,
+      "CI95": [
+        0.2608695652173913,
+        0.6956521739130435
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.5217391304347826,
+      "CI95": [
+        -0.7391304347826086,
+        -0.30434782608695654
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.5217391304347826,
+      "CI95": [
+        -0.7391304347826086,
+        -0.30434782608695654
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9845331213156384,
+      "CI95": [
+        0.9536026939544324,
+        0.9999999987898166
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.9999767698443568,
+      "CI95": [
+        0.9999310413038266,
+        0.9999999894221715
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.4696207156885354,
+      "CI95": [
+        0.2780673026467182,
+        0.6619343404737555
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.015443648528718441,
+      "CI95": [
+        -1.2969734313233763e-06,
+        0.04632908478146942
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.514912405627103,
+      "CI95": [
+        -0.7013460571188713,
+        -0.3307961068271655
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.5303560541558214,
+      "CI95": [
+        -0.7219107216823539,
+        -0.33804169898699993
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 32.078250454819724,
+      "CI95": [
+        26.143079297050186,
+        37.85148307940234
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 22.51886783540249,
+      "CI95": [
+        19.78275684715937,
+        25.17763933851991
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": -1.223595660665761,
+      "CI95": [
+        -6.428893561985182,
+        3.8992500429568024
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -9.559382619417232,
+      "CI95": [
+        -14.044396592336504,
+        -5.001043177428454
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -33.30184611548548,
+      "CI95": [
+        -40.12591649073621,
+        -26.278152523610903
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -23.74246349606825,
+      "CI95": [
+        -29.16958347717705,
+        -18.07642363270988
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "correct",
+      "operation": "interaction",
+      "value": 0.21739130434782608,
+      "CI95": [
+        0.0,
+        0.43478260869565216
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "p_correct",
+      "operation": "interaction",
+      "value": 0.20675101338908214,
+      "CI95": [
+        0.04034819578047084,
+        0.38606948855085604
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "margin",
+      "operation": "interaction",
+      "value": 8.387561077656953,
+      "CI95": [
+        2.5329357188680897,
+        14.22814689265645
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.3333333333333333,
+      "CI95": [
+        0.13333333333333333,
+        0.6
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.3333333333333333,
+      "CI95": [
+        0.13333333333333333,
+        0.6
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.4666666666666667,
+      "CI95": [
+        0.2,
+        0.7333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.0,
+      "CI95": [
+        -0.3333333333333333,
+        0.3333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.13333333333333333,
+      "CI95": [
+        -0.13333333333333333,
+        0.4
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.13333333333333333,
+      "CI95": [
+        -0.13333333333333333,
+        0.4
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.32660286667901406,
+      "CI95": [
+        0.12621635847557888,
+        0.548173924116985
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.3260503786886485,
+      "CI95": [
+        0.12353476658200929,
+        0.5507554235982819
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.487008414144824,
+      "CI95": [
+        0.2548059887640254,
+        0.7224545588686782
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.0005524879903656265,
+      "CI95": [
+        -0.2700641250964012,
+        0.2651869413432549
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.1604055474658099,
+      "CI95": [
+        -0.045558489060896,
+        0.3870326565460507
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.1609580354561755,
+      "CI95": [
+        -0.026009057897003272,
+        0.3805586428093668
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": -4.382752863566081,
+      "CI95": [
+        -10.556292136510214,
+        1.9918508720397914
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": -8.523201115926106,
+      "CI95": [
+        -14.676066029866536,
+        -2.445712046623231
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": -6.0912495970726015,
+      "CI95": [
+        -16.24547529230515,
+        3.6483194254835394
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -4.140448252360026,
+      "CI95": [
+        -9.274010303815205,
+        0.7423696184158287
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -1.7084967335065206,
+      "CI95": [
+        -10.142901290555795,
+        5.568857959012188
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 2.4319515188535052,
+      "CI95": [
+        -6.064565884272258,
+        9.824841772814592
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.7333333333333333,
+      "CI95": [
+        0.5333333333333333,
+        0.9333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.7333333333333333,
+      "CI95": [
+        0.4666666666666667,
+        0.9333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.26666666666666666,
+      "CI95": [
+        -0.4666666666666667,
+        -0.06666666666666667
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.26666666666666666,
+      "CI95": [
+        -0.5333333333333333,
+        -0.06666666666666667
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.0,
+      "CI95": [
+        -0.26666666666666666,
+        0.26666666666666666
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9995659215156304,
+      "CI95": [
+        0.9987140064100932,
+        0.9999973562968332
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.7347643025618182,
+      "CI95": [
+        0.5269726938284104,
+        0.9245914870088714
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.703846038644176,
+      "CI95": [
+        0.4667450241854147,
+        0.9064616247615886
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.26480161895381227,
+      "CI95": [
+        -0.4726468217756873,
+        -0.07488875452317191
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.29571988287145434,
+      "CI95": [
+        -0.5332426910994511,
+        -0.09309734314505055
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.030918263917642096,
+      "CI95": [
+        -0.28978700256208867,
+        0.2245907735938657
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 23.376841227213543,
+      "CI95": [
+        16.791569913228354,
+        30.459542318979896
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 8.503891690572102,
+      "CI95": [
+        2.984451529184977,
+        14.378577583630877
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 13.926487350463868,
+      "CI95": [
+        4.331351003646851,
+        24.133581473032628
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -14.872949536641439,
+      "CI95": [
+        -21.266287953058878,
+        -8.924607801437379
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -9.450353876749675,
+      "CI95": [
+        -22.364251352945963,
+        3.2450053024291976
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 5.422595659891765,
+      "CI95": [
+        -5.2823369026184075,
+        17.31022176583608
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "correct",
+      "operation": "interaction",
+      "value": 0.4,
+      "CI95": [
+        0.2,
+        0.6666666666666666
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "p_correct",
+      "operation": "interaction",
+      "value": 0.45612543033726427,
+      "CI95": [
+        0.20003772551941015,
+        0.7228414249720132
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "margin",
+      "operation": "interaction",
+      "value": 7.741857143243154,
+      "CI95": [
+        -6.627456061045329,
+        21.177741047243266
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.8260869565217391,
+      "CI95": [
+        0.6521739130434783,
+        0.9565217391304348
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.9130434782608695,
+      "CI95": [
+        0.782608695652174,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.17391304347826086,
+      "CI95": [
+        -0.34782608695652173,
+        -0.043478260869565216
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.08695652173913043,
+      "CI95": [
+        -0.21739130434782608,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.08695652173913043,
+      "CI95": [
+        0.0,
+        0.21739130434782608
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9999999448171535,
+      "CI95": [
+        0.9999998350608145,
+        0.9999999998804517
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.8264333759427297,
+      "CI95": [
+        0.6535346168729401,
+        0.9565472026254249
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.9088775991804107,
+      "CI95": [
+        0.7784806401616452,
+        0.9999835205351194
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.1735665688744237,
+      "CI95": [
+        -0.34646532672141767,
+        -0.043452797009455986
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.0911223456367427,
+      "CI95": [
+        -0.22151919514536564,
+        -1.6479153486883267e-05
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.08244422323768101,
+      "CI95": [
+        0.0002386538014572537,
+        0.20664813075010038
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 35.81613022348155,
+      "CI95": [
+        30.465852551874907,
+        41.572180046205936
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 12.886522067629773,
+      "CI95": [
+        8.133955380190974,
+        17.422304137893345
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 33.42232169275699,
+      "CI95": [
+        23.76645172678906,
+        42.656831412730014
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -22.929608155851778,
+      "CI95": [
+        -28.58600511810054,
+        -17.19125042376311
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -2.393808530724567,
+      "CI95": [
+        -11.11239469051361,
+        6.465249206708823
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 20.53579962512721,
+      "CI95": [
+        13.180175177947335,
+        27.88906809609869
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.9130434782608695,
+      "CI95": [
+        0.782608695652174,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.08695652173913043,
+      "CI95": [
+        -0.21739130434782608,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.08695652173913043,
+      "CI95": [
+        -0.21739130434782608,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9999999682091112,
+      "CI95": [
+        0.9999999130128663,
+        0.9999999999982212
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.9983772736875124,
+      "CI95": [
+        0.9951330342224428,
+        0.9999998346176052
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.9127964742822577,
+      "CI95": [
+        0.7823678913196818,
+        0.9999999622055314
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.00162269452159879,
+      "CI95": [
+        -0.004866961644297256,
+        -1.19868545869279e-07
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.08720349392685343,
+      "CI95": [
+        -0.21763208298037318,
+        -3.778176235251205e-08
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.08558079940525463,
+      "CI95": [
+        -0.21626239285844992,
+        0.002993737282724974
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 42.58134317398071,
+      "CI95": [
+        36.78960481467454,
+        48.1915904055471
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 19.834527824235998,
+      "CI95": [
+        16.917251610237617,
+        22.825190556049346
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 33.761849444845446,
+      "CI95": [
+        24.975686189402705,
+        42.3442694083504
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -22.746815349744715,
+      "CI95": [
+        -28.574390671045883,
+        -16.82830315621003
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -8.819493729135264,
+      "CI95": [
+        -17.641718057445857,
+        -0.2677029645961268
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 13.92732162060945,
+      "CI95": [
+        5.075110866194186,
+        22.950595395979672
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "correct",
+      "operation": "interaction",
+      "value": 0.0,
+      "CI95": [
+        -0.17391304347826086,
+        0.17391304347826086
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "p_correct",
+      "operation": "interaction",
+      "value": -0.003918851709889254,
+      "CI95": [
+        -0.17800005263924348,
+        0.16994864995173162
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "margin",
+      "operation": "interaction",
+      "value": 6.425685198410697,
+      "CI95": [
+        -3.332263148349264,
+        16.44488681140153
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.4,
+      "CI95": [
+        0.13333333333333333,
+        0.6666666666666666
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.5333333333333333,
+      "CI95": [
+        0.26666666666666666,
+        0.8
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.6,
+      "CI95": [
+        0.3333333333333333,
+        0.8666666666666667
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.13333333333333333,
+      "CI95": [
+        -0.2,
+        0.4666666666666667
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.2,
+      "CI95": [
+        -0.06666666666666667,
+        0.4666666666666667
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.06666666666666667,
+      "CI95": [
+        -0.26666666666666666,
+        0.4
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.41040976078781205,
+      "CI95": [
+        0.20167688989976984,
+        0.6313153989343998
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.5519636906107909,
+      "CI95": [
+        0.34009477834342616,
+        0.7582610460539547
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.6304940245419387,
+      "CI95": [
+        0.40277754345141903,
+        0.8500341181695672
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.14155392982297893,
+      "CI95": [
+        -0.08710704379161245,
+        0.38444054090973506
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.22008426375412665,
+      "CI95": [
+        -0.014872837026721823,
+        0.4631988584416052
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.07853033393114775,
+      "CI95": [
+        -0.1990339246125309,
+        0.3377961254021867
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": -2.075931676228841,
+      "CI95": [
+        -4.44524232228597,
+        0.29492179393768253
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": -0.753371016184489,
+      "CI95": [
+        -3.2974563932418826,
+        1.589388696352638
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 2.420968500773112,
+      "CI95": [
+        -0.6074990049997965,
+        5.5098569838205975
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 1.3225606600443522,
+      "CI95": [
+        -0.5908775305747985,
+        3.4587997309366836
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 4.496900177001953,
+      "CI95": [
+        2.113270360628764,
+        6.69946755727132
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 3.174339516957601,
+      "CI95": [
+        0.010564199288686502,
+        5.9683129986127215
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.8666666666666667,
+      "CI95": [
+        0.6666666666666666,
+        1.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.13333333333333333,
+      "CI95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.13333333333333333,
+      "CI95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.8802162576452941,
+      "CI95": [
+        0.7258227611055733,
+        0.9832668667248662
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.973057341892377,
+      "CI95": [
+        0.9433010893161774,
+        0.9956794014800084
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.9643711514789022,
+      "CI95": [
+        0.9099086497053946,
+        0.9967911804826597
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.09284108424708284,
+      "CI95": [
+        -0.009916461180764098,
+        0.23562894773939913
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 0.08415489383360804,
+      "CI95": [
+        -0.027586113764239046,
+        0.23773366239873722
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.008686190413474825,
+      "CI95": [
+        -0.0710002365036329,
+        0.042827712857951686
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 4.568932914733887,
+      "CI95": [
+        2.725662344296773,
+        6.402718995412191
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 6.152581818898519,
+      "CI95": [
+        4.703183173338572,
+        7.678280640443165
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 8.272844632466635,
+      "CI95": [
+        5.827739663124084,
+        10.826904144287107
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 1.5836489041646322,
+      "CI95": [
+        -0.374082883199056,
+        3.6074182971318565
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": 3.703911717732747,
+      "CI95": [
+        1.5710175371170045,
+        5.901504824956258
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": 2.1202628135681154,
+      "CI95": [
+        -1.0291118383407591,
+        5.168056318759916
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "correct",
+      "operation": "interaction",
+      "value": 0.06666666666666667,
+      "CI95": [
+        -0.26666666666666666,
+        0.4
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "p_correct",
+      "operation": "interaction",
+      "value": 0.13592936992051863,
+      "CI95": [
+        -0.18023612509247983,
+        0.4275892170248858
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp-minus-cue",
+      "metric": "margin",
+      "operation": "interaction",
+      "value": 0.7929884592692057,
+      "CI95": [
+        -2.3537055110931395,
+        3.270660390853881
+      ],
+      "clusters": 15,
+      "sources": 15
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.9565217391304348,
+      "CI95": [
+        0.8695652173913043,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 0.8695652173913043,
+      "CI95": [
+        0.7391304347826086,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.43478260869565216,
+      "CI95": [
+        0.21739130434782608,
+        0.6521739130434783
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.08695652173913043,
+      "CI95": [
+        -0.21739130434782608,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.5217391304347826,
+      "CI95": [
+        -0.7391304347826086,
+        -0.30434782608695654
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.43478260869565216,
+      "CI95": [
+        -0.6521739130434783,
+        -0.21739130434782608
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9526655941155409,
+      "CI95": [
+        0.8647894656844808,
+        0.9992834891483521
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.8485322689091287,
+      "CI95": [
+        0.7029060314624342,
+        0.9656766393937641
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.45654619520460715,
+      "CI95": [
+        0.2835248347640435,
+        0.6312017867634027
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.1041333252064123,
+      "CI95": [
+        -0.22350964090367595,
+        -0.016378123517328865
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.4961193989109339,
+      "CI95": [
+        -0.6718064728095453,
+        -0.3187156976231767
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.39198607370452165,
+      "CI95": [
+        -0.580984764930255,
+        -0.1917794063034307
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 11.1755421731783,
+      "CI95": [
+        8.65134754880615,
+        13.491880255030548
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 4.267542880514394,
+      "CI95": [
+        1.8148140658502994,
+        6.377380576341048
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": -0.36608057436735736,
+      "CI95": [
+        -2.64872115176657,
+        2.024820516420447
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -6.907999292663906,
+      "CI95": [
+        -8.710890550069188,
+        -5.143637111783027
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -11.541622747545658,
+      "CI95": [
+        -13.91360832621222,
+        -9.04324350097905
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -4.633623454881751,
+      "CI95": [
+        -7.1862188012703605,
+        -1.8475412793781452
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.4782608695652174,
+      "CI95": [
+        0.2608695652173913,
+        0.6956521739130435
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.5217391304347826,
+      "CI95": [
+        -0.7391304347826086,
+        -0.30434782608695654
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.5217391304347826,
+      "CI95": [
+        -0.7391304347826086,
+        -0.30434782608695654
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.999278154371921,
+      "CI95": [
+        0.9981578889148048,
+        0.9999982277228966
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1",
+      "value": 0.9986187446977148,
+      "CI95": [
+        0.9967392099152962,
+        0.9997760250761003
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.49964787336144345,
+      "CI95": [
+        0.3163850703092563,
+        0.681801036512125
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -0.0006594096742059878,
+      "CI95": [
+        -0.002847588672349714,
+        0.0010149830461725047
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -0.49963028101047735,
+      "CI95": [
+        -0.683014357168732,
+        -0.31708491925363363
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "p_correct",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -0.4989708713362714,
+      "CI95": [
+        -0.6829969388416898,
+        -0.31607563859843624
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "NATIVE",
+      "value": 16.11564082749512,
+      "CI95": [
+        13.810908136387235,
+        18.31895499533933
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1",
+      "value": 9.996701131696286,
+      "CI95": [
+        8.68162517729013,
+        11.335260200241338
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE",
+      "value": 0.010623558707859205,
+      "CI95": [
+        -2.604448343359906,
+        2.571309239968009
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_P1-minus-NATIVE",
+      "value": -6.118939695798832,
+      "CI95": [
+        -8.21225703753855,
+        -4.05279729180038
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-NATIVE",
+      "value": -16.10501726878726,
+      "CI95": [
+        -19.167231571188438,
+        -12.98268740846087
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "cue",
+      "metric": "margin",
+      "operation": "CUT_SOURCE_LATE-minus-CUT_P1",
+      "value": -9.986077572988426,
+      "CI95": [
+        -12.681553429365158,
+        -7.29440255890722
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "correct",
+      "operation": "interaction",
+      "value": 0.0,
+      "CI95": [
+        -0.21739130434782608,
+        0.21739130434782608
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "p_correct",
+      "operation": "interaction",
+      "value": 0.0035108820995433834,
+      "CI95": [
+        -0.1516645908677596,
+        0.16345936307025954
+      ],
+      "clusters": 23,
+      "sources": 23
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp-minus-cue",
+      "metric": "margin",
+      "operation": "interaction",
+      "value": 4.5633945212416025,
+      "CI95": [
+        2.1289814184541287,
+        7.149820995557567
+      ],
+      "clusters": 23,
+      "sources": 23
+    }
+  ],
+  "runs": [
+    {
+      "model": "Qwen3-8B",
+      "shard": 0,
+      "gpu_hours": 0.0039020524711425725,
+      "config_sha256": "2e0867aca332fce93ebf8a899b931ec536d5cbb043be0cf3e6d5e7ca59a58ea8",
+      "predictions_sha256": "5a66267e9ec2542f0fc7f991ff86df84f87957ec38bddd0c7adf0bf04b9fbde0",
+      "parent_predictions_sha256": "918002e08a7bf62a8723fe7ca94582cbbfa667dccda3a8666aa022210482d432",
+      "instrument": [
+        {
+          "item_id": "E71:00e8194a15a3b4cda4fef81d7c77e3f1c8e54c1514e6033353f146f1c56fde94:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            154,
+            154
+          ]
+        },
+        {
+          "item_id": "E71:12ddfd87cb83bd2c799297f23865f192d790873fec9a7da12c4f06854b7ef25f:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 1,
+      "gpu_hours": 0.003619030583326498,
+      "config_sha256": "193c200897cb5fa3000909f8109f9a45775933f4486eadee964dc905b53c16ce",
+      "predictions_sha256": "cfb578b0489d2361b42b6f8a634dd2093e5e2d48c4639964e1212c5bc4ec9ae9",
+      "parent_predictions_sha256": "918002e08a7bf62a8723fe7ca94582cbbfa667dccda3a8666aa022210482d432",
+      "instrument": [
+        {
+          "item_id": "E71:00e8194a15a3b4cda4fef81d7c77e3f1c8e54c1514e6033353f146f1c56fde94:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            165
+          ]
+        },
+        {
+          "item_id": "E71:0b04b46d2ea76b5f2392cc99a9d6183008db07a6597951de8181161dac750d72:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            187,
+            187
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 2,
+      "gpu_hours": 0.0040166220136193765,
+      "config_sha256": "6a5c0901cbbf233acfca508b8a5ea72be8ddf54f35fb706c4bd41bf5beb8dcc1",
+      "predictions_sha256": "bde16dec34912b6b43f4476ecfcf3f4d039a3dca425b668ba540b374e2ed340f",
+      "parent_predictions_sha256": "918002e08a7bf62a8723fe7ca94582cbbfa667dccda3a8666aa022210482d432",
+      "instrument": [
+        {
+          "item_id": "E71:017327287d187f7d00eab89b262b4d8084de950b638d6691af6747922ed22486:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            165
+          ]
+        },
+        {
+          "item_id": "E71:017327287d187f7d00eab89b262b4d8084de950b638d6691af6747922ed22486:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            154,
+            154
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 0,
+      "gpu_hours": 0.005323917057248764,
+      "config_sha256": "e96d3be93afb011dce7ab0cb729e0c299c41fe0d10998f8c417f9fb14e9424d5",
+      "predictions_sha256": "f34c25d009a2817314fb3e6eada10e7964bbc1e4b3ef9328ceeab6fab942e49b",
+      "parent_predictions_sha256": "a12d419916484b343ab9bbe8cf2946cfe58e3f2f5e1b6cad2298f91b16dbecf0",
+      "instrument": [
+        {
+          "item_id": "E71:00e8194a15a3b4cda4fef81d7c77e3f1c8e54c1514e6033353f146f1c56fde94:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            165
+          ]
+        },
+        {
+          "item_id": "E71:017327287d187f7d00eab89b262b4d8084de950b638d6691af6747922ed22486:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            165
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 1,
+      "gpu_hours": 0.006454518133606244,
+      "config_sha256": "74ed92b5af4f2a02241d195d897a3e35caac0d563a1e3c631ccfda101e197fa5",
+      "predictions_sha256": "c8bb8b728179fde5b9d0ee9b99714acedc4c36f06b06316c74a612ed04a2f98c",
+      "parent_predictions_sha256": "a12d419916484b343ab9bbe8cf2946cfe58e3f2f5e1b6cad2298f91b16dbecf0",
+      "instrument": [
+        {
+          "item_id": "E71:00e8194a15a3b4cda4fef81d7c77e3f1c8e54c1514e6033353f146f1c56fde94:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            154,
+            154
+          ]
+        },
+        {
+          "item_id": "E71:017327287d187f7d00eab89b262b4d8084de950b638d6691af6747922ed22486:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            154,
+            154
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 0,
+      "gpu_hours": 0.0036351040847107975,
+      "config_sha256": "54774abe8c6d4bc3352bb98e72191a5178e3a32d1118541d847d0ee929bba9a4",
+      "predictions_sha256": "4074615a9ba37b7234a89782e2c3ad261934cff27352d462b0c86f541e75bb45",
+      "parent_predictions_sha256": "7962a37123472ffb33d6f360abd65eb59a72359ff10df4074c40ba78b613ed4a",
+      "instrument": [
+        {
+          "item_id": "E71:00e8194a15a3b4cda4fef81d7c77e3f1c8e54c1514e6033353f146f1c56fde94:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            154,
+            154
+          ]
+        },
+        {
+          "item_id": "E71:12ddfd87cb83bd2c799297f23865f192d790873fec9a7da12c4f06854b7ef25f:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 1,
+      "gpu_hours": 0.0037157923825240384,
+      "config_sha256": "fc59fdc53cd045bf5cba0bcd2cc082e9ed9d843579dab6364b0fd8469eefa666",
+      "predictions_sha256": "6fda8b68187d7a7bc04b014652f5eab0817d6064b7c0cf07f34ae49ffad7c7f1",
+      "parent_predictions_sha256": "7962a37123472ffb33d6f360abd65eb59a72359ff10df4074c40ba78b613ed4a",
+      "instrument": [
+        {
+          "item_id": "E71:00e8194a15a3b4cda4fef81d7c77e3f1c8e54c1514e6033353f146f1c56fde94:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            165
+          ]
+        },
+        {
+          "item_id": "E71:0b04b46d2ea76b5f2392cc99a9d6183008db07a6597951de8181161dac750d72:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            187,
+            187
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 2,
+      "gpu_hours": 0.004069318361968423,
+      "config_sha256": "a5a8191567473c3435aac2e59cfffa4ff7747245dad635407df21a11c29dbd7e",
+      "predictions_sha256": "422dcdfcd6288b5752fc0c3893d0251571f8987e06e14919cb5d7cf18ea559cc",
+      "parent_predictions_sha256": "7962a37123472ffb33d6f360abd65eb59a72359ff10df4074c40ba78b613ed4a",
+      "instrument": [
+        {
+          "item_id": "E71:017327287d187f7d00eab89b262b4d8084de950b638d6691af6747922ed22486:cue",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            165,
+            165
+          ]
+        },
+        {
+          "item_id": "E71:017327287d187f7d00eab89b262b4d8084de950b638d6691af6747922ed22486:gp",
+          "native_LP_max_delta": 0.0,
+          "parent_LP_max_delta": 0.0,
+          "pre_second_clause_hidden_max_delta": 0.0,
+          "removed_edges_per_layer": [
+            154,
+            154
+          ]
+        }
+      ]
+    }
+  ],
+  "statistics": "lexical cluster means, paired bootstrap10000 seed71 as mother E71",
+  "limits": "Correct P1 is forced, candidate whole-clause likelihood. Only later direct Source consumption cut; Source information may still flow through P1/Task. Not spontaneous correctness or latent parse proof.",
+  "external_asset_path": "/data1/xiangding/work/incremental-interpretation-revision/E79"
+}

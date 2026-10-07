@@ -113,3 +113,5 @@ C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了�
 - 2026-10-07 [E76](experiments/E76-event-first-relational-draft-to-original-qa.md)/[摘要](results/E76-event-first-draft-summary.json)：三族四构式全部2016格闭合，EVENT_FIRST无共同两关系保持优势，letters/words异质与caps保留；原QA gold只评完整pipeline，不认证中间正确parse或能力。C09限定L1/C06–08 L0不变。E77只检验原Source后续消费的核心竞争解释。
 
 - 2026-10-07 [E71](experiments/E71-correct-prefix-and-later-binding.md)/[摘要](results/E71-correct-prefix-binding-summary.json)、[E77](experiments/E77-retire-original-after-draft.md)/[摘要](results/E77-retire-original-summary.json)：正确P1消费与原Source消费都不是三族两构式共同修复入口；NPZ预填候选近满分、MVRR未稳定恢复、cue损伤与两readout异质保留。限定measurement，不升级latentparse/能力/novelty，C09L1/C06–08L0不变。E78强模型真实pipeline在途。
+
+- 2026-10-07 [E78](experiments/E78-stronger-model-relational-draft-pipeline.md)/[摘要](results/E78-stronger-draft-summary.json)、[E79](experiments/E79-source-versus-correct-prefix.md)/[完整234格摘要](results/E79-source-versus-correct-prefix-summary.json)完成：强三族草稿用途与正确P1后的Source切断都未建立三族两构式共同恢复，cue/最终关系损伤保留。C06–08仍L0，C09仍限定L1；不认证latent parse/能力/novelty。停止草稿和P1/Source局部mask网格，E80只对原发表892QA测输入可靠性竞争解释，0新API。
