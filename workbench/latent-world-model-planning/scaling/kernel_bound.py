@@ -67,7 +67,7 @@ def measure(ck, task):
 
 
 if __name__ == '__main__':
-    pat = re.compile(r'^(?P<task>[a-z]+)_(XXS|XS|S|M|L)_ep0_s\d_st60000(sigreg_w[0-9.]+)?$')
+    pat = re.compile(r'^(?P<task>[a-z]+)_(XXS|XS|S|M|L)_ep0_s\d_st60000(sigreg_w[0-9.]+|regvicregsigreg_w[0-9.]+)?$')
     roots = sys.argv[1].split(',') if len(sys.argv) > 1 else ['/tmp/latent-wm-runs/scaling', '/home/xiang/.cache/latent-wm-results/scaling']
     for r in roots:
         for rd in sorted(glob.glob(f'{r}/*')):

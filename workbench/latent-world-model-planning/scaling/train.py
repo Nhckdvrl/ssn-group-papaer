@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from wm import GPUData, SIGReg, add_aux_heads, build_model, lewm_loss, n_params
+from wm import GPUData, SIGReg, VICRegReg, add_aux_heads, build_model, lewm_loss, n_params
 
 
 def main():
@@ -33,6 +33,7 @@ def main():
     p.add_argument('--compile', type=int, default=1)
     p.add_argument('--aux', default='')
     p.add_argument('--sigreg_w', type=float, default=0.09)
+    p.add_argument('--reg', default='sigreg', choices=['sigreg', 'vicreg'])
     p.add_argument('--aux_w', type=float, default=0.1)
     p.add_argument('--out', required=True)
     a = p.parse_args()
@@ -48,7 +49,7 @@ def main():
     data = GPUData(a.task, res=a.res, episodes=a.episodes or None, device=dev)
     adim = data.fs * data.actions.shape[-1]
     model = add_aux_heads(build_model(a.size, img=a.res, patch=a.patch, latent=a.latent or None, action_dim=adim), a.aux, action_dim=adim).to(dev)
-    sigreg = SIGReg(knots=17, num_proj=1024).to(dev)
+    sigreg = SIGReg(knots=17, num_proj=1024).to(dev) if a.reg == 'sigreg' else VICRegReg().to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd)
 
     def lr_at(s):

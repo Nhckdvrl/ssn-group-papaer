@@ -140,6 +140,24 @@ def add_aux_heads(model, aux, action_dim=10):
     return model
 
 
+class VICRegReg(torch.nn.Module):
+    """VICReg-style anti-collapse term (variance hinge + covariance decorrelation; Bardes et al. 2022), the
+    regularizer family of PLDM-type latent world models. Input (T, B, D) like SIGReg; frames pooled over T."""
+
+    def __init__(self, cov_w=0.04):
+        super().__init__()
+        self.cov_w = cov_w
+
+    def forward(self, x):
+        z = x.reshape(-1, x.shape[-1]).float()
+        z = z - z.mean(0)
+        std = torch.sqrt(z.var(0) + 1e-4)
+        v = F.relu(1 - std).mean()
+        c = (z.T @ z) / (len(z) - 1)
+        off = c - torch.diag(torch.diag(c))
+        return v + self.cov_w * off.pow(2).sum() / z.shape[1]
+
+
 def lewm_loss(model, sigreg, batch, history=3, num_preds=1, lambd=0.09, aux='', aux_w=0.1):
     out = model.encode(batch)
     emb, act_emb = out['emb'], out['act_emb']

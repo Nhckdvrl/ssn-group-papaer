@@ -20,7 +20,7 @@ OFFS = {'tworoom': [25, 50, 75], 'pmazemedium': [50, 100, 200], 'pmazelarge': [5
 def wanted(name):
     # base runs and SIGReg-weight runs; other variants (latent dim, aux, data size) are E21/E22 material
     tail = name.split('_st60000')[-1]
-    return tail == '' or tail.startswith('sigreg_w')
+    return tail == '' or tail.startswith('sigreg_w') or tail.startswith('regvicreg')
 
 
 def main():
