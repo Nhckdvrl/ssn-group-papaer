@@ -117,3 +117,5 @@ C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了�
 - 2026-10-07 [E78](experiments/E78-stronger-model-relational-draft-pipeline.md)/[摘要](results/E78-stronger-draft-summary.json)、[E79](experiments/E79-source-versus-correct-prefix.md)/[完整234格摘要](results/E79-source-versus-correct-prefix-summary.json)完成：强三族草稿用途与正确P1后的Source切断都未建立三族两构式共同恢复，cue/最终关系损伤保留。C06–08仍L0，C09仍限定L1；不认证latent parse/能力/novelty。停止草稿和P1/Source局部mask网格，E80只对原发表892QA测输入可靠性竞争解释，0新API。
 
 - 2026-10-07 [E80](experiments/E80-grammar-trust-and-noisy-interpretation.md)/[摘要](results/E80-grammar-trust-summary.json)全2016格：输入信任/可能遗漏metadata无共同两关系保持，NPZ TRUST相对native final三族显著损伤，所有cue/letters阴性保留。C06–08 L0/C09限定L1不变，不认证noise机制或能力，结束此提示块；E81以原Source逐词条件LP换测量对象，0新API。
+
+- 2026-10-07 [E81](experiments/E81-inverse-source-evidence.md)/[摘要](results/E81-inverse-source-summary.json)全1008格：NPVP final正确率共同提高但初始/cue损伤，其他构式没有共同joint恢复；逆向证据不认证同一joint/latent parse/能力，评分块收束。C06–08 L0/C09限定L1不变，下一E82更新2026原生强baseline，不按正cell追加校准。

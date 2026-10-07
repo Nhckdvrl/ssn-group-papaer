@@ -1,0 +1,5333 @@
+{
+  "complete": {
+    "all_models_complete": true,
+    "shards": 8,
+    "panels": 1008,
+    "map_sha256": "f9254ac89e4867d3f43f172d976419ec562f2b6e682c1bd399ecc550ae85fabe",
+    "gpu_hours": 0.6971511322891779
+  },
+  "external_map": "/data1/xiangding/work/incremental-interpretation-revision/E81/inverse-source-map-v1.json",
+  "data_sha256": "45137a88328224095c3d8bf1dc969f63eed7822a4f1ef4412949528c935b406b",
+  "primary_words_gp_panels": [
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.3950617283950617,
+      "CI95": [
+        0.24691358024691357,
+        0.5555555555555556
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.18518518518518517,
+      "CI95": [
+        0.10493827160493827,
+        0.27777777777777773
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.20987654320987656,
+      "CI95": [
+        -0.3888888888888889,
+        -0.04320987654320988
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.3761227339331342,
+      "CI95": [
+        0.22986056707991748,
+        0.5326861929023182
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.18276277707135247,
+      "CI95": [
+        0.10534417358980769,
+        0.26684631508736584
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.1933599568617818,
+      "CI95": [
+        -0.3643125927481346,
+        -0.0332773466848435
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.6018518518518519,
+      "CI95": [
+        0.4537037037037037,
+        0.7407407407407407
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.6018518518518519,
+      "CI95": [
+        0.48148148148148145,
+        0.7129629629629629
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.0,
+      "CI95": [
+        -0.12037037037037036,
+        0.1388888888888889
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.6066330827544346,
+      "CI95": [
+        0.4605077830671044,
+        0.7459376912052158
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.607926685142891,
+      "CI95": [
+        0.5007863927400926,
+        0.7118125770008089
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.0012936023884564775,
+      "CI95": [
+        -0.11795043847288915,
+        0.13030073609565737
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.5,
+      "CI95": [
+        0.3950308641975308,
+        0.6086419753086418
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.3771604938271605,
+      "CI95": [
+        0.3117283950617284,
+        0.43827160493827155
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.1228395061728395,
+      "CI95": [
+        -0.22592592592592592,
+        -0.01790123456790123
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.49121595994146894,
+      "CI95": [
+        0.39009820307802867,
+        0.5951280372117532
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.37749595855705,
+      "CI95": [
+        0.32000419377121725,
+        0.4311276197335946
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.11372000138441904,
+      "CI95": [
+        -0.2127069505581789,
+        -0.01504092594083494
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.12962962962962962,
+      "CI95": [
+        0.018518518518518517,
+        0.25925925925925924
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.12962962962962962,
+      "CI95": [
+        -0.25925925925925924,
+        -0.018518518518518517
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.1348314606741573,
+      "CI95": [
+        0.07303370786516854,
+        0.20224719101123595
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.19662921348314608,
+      "CI95": [
+        0.14606741573033707,
+        0.25
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.06179775280898876,
+      "CI95": [
+        -0.028089887640449437,
+        0.15168539325842698
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.13200782533577457,
+      "CI95": [
+        0.07153641831738554,
+        0.19697372844299338
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.2023406588327138,
+      "CI95": [
+        0.1569858882492656,
+        0.2505921929832132
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.07033283349693926,
+      "CI95": [
+        -0.014256957778870144,
+        0.15409471665909863
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.9550561797752809,
+      "CI95": [
+        0.9101123595505618,
+        0.9887640449438202
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5758426966292135,
+      "CI95": [
+        0.5056179775280899,
+        0.6460674157303371
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.3792134831460674,
+      "CI95": [
+        -0.4550561797752809,
+        -0.29775280898876405
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9530262421389225,
+      "CI95": [
+        0.9075858259517308,
+        0.9875698152559591
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.5764763589579504,
+      "CI95": [
+        0.5210323501889262,
+        0.6330727615214028
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.3765498831809721,
+      "CI95": [
+        -0.44295626374665265,
+        -0.30647770020317383
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.548689138576779,
+      "CI95": [
+        0.5098314606741573,
+        0.5880149812734082
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.38857677902621723,
+      "CI95": [
+        0.3450374531835206,
+        0.4321278089887639
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.1601123595505618,
+      "CI95": [
+        -0.22659176029962544,
+        -0.09269662921348315
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.5460609556999829,
+      "CI95": [
+        0.5083270045360394,
+        0.5841940392508244
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.39200595638359154,
+      "CI95": [
+        0.354966119698006,
+        0.42977616207212527
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.1540549993163913,
+      "CI95": [
+        -0.21432521235663293,
+        -0.09239473966381369
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.10674157303370786,
+      "CI95": [
+        0.0449438202247191,
+        0.17415730337078653
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.05056179775280899,
+      "CI95": [
+        0.016853932584269662,
+        0.0898876404494382
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.056179775280898875,
+      "CI95": [
+        -0.1348314606741573,
+        0.016853932584269662
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.1111111111111111,
+      "CI95": [
+        0.027777777777777776,
+        0.2222222222222222
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.05555555555555555,
+      "CI95": [
+        0.0,
+        0.1388888888888889
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.05555555555555555,
+      "CI95": [
+        -0.16666666666666666,
+        0.05555555555555555
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.11548121220938484,
+      "CI95": [
+        0.028182699596433936,
+        0.22597994688749107
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.05002545454592319,
+      "CI95": [
+        4.877062009781259e-05,
+        0.1276910469986812
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.06545575766346165,
+      "CI95": [
+        -0.17260845606031158,
+        0.03365903335131478
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.7361111111111112,
+      "CI95": [
+        0.5972222222222222,
+        0.875
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.6388888888888888,
+      "CI95": [
+        0.4861111111111111,
+        0.7777777777777778
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.09722222222222222,
+      "CI95": [
+        -0.2222222222222222,
+        0.013888888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.7317871228940122,
+      "CI95": [
+        0.5928941198667561,
+        0.8706718416826394
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.6469486172256073,
+      "CI95": [
+        0.5016849715538293,
+        0.7880916176947734
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.08483850566840496,
+      "CI95": [
+        -0.21134671412095735,
+        0.029559221770370687
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.4236111111111111,
+      "CI95": [
+        0.3333333333333333,
+        0.5138888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.3472222222222222,
+      "CI95": [
+        0.2777777777777778,
+        0.4166666666666667
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.0763888888888889,
+      "CI95": [
+        -0.1597222222222222,
+        0.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.4236341675516986,
+      "CI95": [
+        0.33576083725877737,
+        0.513219469607167
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.3484870358857652,
+      "CI95": [
+        0.2791315069305639,
+        0.41444076476349473
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.07514713166593334,
+      "CI95": [
+        -0.15399468242876044,
+        -0.00034040041050691913
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.08333333333333333,
+      "CI95": [
+        0.0,
+        0.19444444444444445
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.08333333333333333,
+      "CI95": [
+        -0.19444444444444445,
+        0.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.3269230769230769,
+      "CI95": [
+        0.15384615384615385,
+        0.5
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.057692307692307696,
+      "CI95": [
+        0.0,
+        0.11538461538461539
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.2692307692307692,
+      "CI95": [
+        -0.4230769230769231,
+        -0.1346153846153846
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.32300273156584514,
+      "CI95": [
+        0.15656632970445425,
+        0.49888970253889253
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.11476999274085298,
+      "CI95": [
+        0.05530627761421953,
+        0.18306204480944313
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.20823273882499216,
+      "CI95": [
+        -0.38178125039391675,
+        -0.04861745518516035
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.36538461538461536,
+      "CI95": [
+        0.19230769230769232,
+        0.5384615384615384
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.8846153846153846,
+      "CI95": [
+        0.7307692307692307,
+        1.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.5192307692307693,
+      "CI95": [
+        0.2692307692307692,
+        0.75
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.3829755625604043,
+      "CI95": [
+        0.21310499259574098,
+        0.5576085623450847
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.8845386252609273,
+      "CI95": [
+        0.7307700297714206,
+        0.9999086418716548
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.5015630627005229,
+      "CI95": [
+        0.2509327037710749,
+        0.7306091557675443
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.34615384615384615,
+      "CI95": [
+        0.21153846153846154,
+        0.4807692307692308
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.47115384615384615,
+      "CI95": [
+        0.3942307692307692,
+        0.5384615384615384
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.125,
+      "CI95": [
+        -0.028846153846153848,
+        0.27884615384615385
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.3529891470631247,
+      "CI95": [
+        0.22252540720686273,
+        0.49071311368244896
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.49965430900089014,
+      "CI95": [
+        0.4232235605638153,
+        0.5646512995649129
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.14666516193776544,
+      "CI95": [
+        -0.01366029105284631,
+        0.3019143269687544
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.15384615384615385,
+      "CI95": [
+        0.038461538461538464,
+        0.3076923076923077
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.057692307692307696,
+      "CI95": [
+        0.0,
+        0.11538461538461539
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.09615384615384616,
+      "CI95": [
+        -0.25,
+        0.038461538461538464
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.41358024691358025,
+      "CI95": [
+        0.27160493827160487,
+        0.5617283950617283
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.16666666666666666,
+      "CI95": [
+        0.09876543209876543,
+        0.2345679012345679
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.24691358024691357,
+      "CI95": [
+        -0.41358024691358025,
+        -0.08641975308641976
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.405653052007802,
+      "CI95": [
+        0.2644795562874164,
+        0.5486905644545295
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.172083425065562,
+      "CI95": [
+        0.10736294633238799,
+        0.24000936496399963
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.23356962694223998,
+      "CI95": [
+        -0.3964048132803544,
+        -0.07963291566801177
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.5,
+      "CI95": [
+        0.35185185185185186,
+        0.6481481481481481
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5555555555555556,
+      "CI95": [
+        0.42592592592592593,
+        0.6759259259259259
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.05555555555555555,
+      "CI95": [
+        -0.12962962962962962,
+        0.23148148148148148
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.4997317099179543,
+      "CI95": [
+        0.3516581347337891,
+        0.6476719514868335
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.5614129531014815,
+      "CI95": [
+        0.4395505104130349,
+        0.6776422221827209
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.06168124318352719,
+      "CI95": [
+        -0.11464191328144202,
+        0.2284342292584447
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.4611111111111111,
+      "CI95": [
+        0.35308641975308636,
+        0.5716049382716049
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.3506172839506173,
+      "CI95": [
+        0.2777777777777778,
+        0.4148148148148149
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.11049382716049383,
+      "CI95": [
+        -0.23765432098765432,
+        0.01234567901234568
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.4568902145510642,
+      "CI95": [
+        0.34756548706122453,
+        0.5684329313563297
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.35356152885065306,
+      "CI95": [
+        0.2867291826833152,
+        0.41242917443135746
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.10332868570041126,
+      "CI95": [
+        -0.22910391838817118,
+        0.016235422039979623
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.12962962962962962,
+      "CI95": [
+        0.018518518518518517,
+        0.25925925925925924
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.12962962962962962,
+      "CI95": [
+        -0.25925925925925924,
+        -0.018518518518518517
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.21910112359550563,
+      "CI95": [
+        0.1404494382022472,
+        0.30337078651685395
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.25280898876404495,
+      "CI95": [
+        0.1797752808988764,
+        0.33146067415730335
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.033707865168539325,
+      "CI95": [
+        -0.08707865168539326,
+        0.1544943820224719
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.22009594736065263,
+      "CI95": [
+        0.1422466401369635,
+        0.30236340238024845
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.2507188678594075,
+      "CI95": [
+        0.18336202551834885,
+        0.3216495254140793
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.03062292049875485,
+      "CI95": [
+        -0.08442044660409641,
+        0.14485964079066296
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.9297752808988764,
+      "CI95": [
+        0.8764044943820225,
+        0.9747191011235955
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.797752808988764,
+      "CI95": [
+        0.7331460674157303,
+        0.8567415730337079
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.13202247191011235,
+      "CI95": [
+        -0.21629213483146068,
+        -0.05056179775280899
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.9273016153515676,
+      "CI95": [
+        0.8738777573549564,
+        0.9714825206159609
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.8013490578422621,
+      "CI95": [
+        0.7410602535140939,
+        0.856675864915041
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.12595255750930542,
+      "CI95": [
+        -0.20289473787014836,
+        -0.048003422031910235
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.5758426966292135,
+      "CI95": [
+        0.5252808988764045,
+        0.6245318352059925
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5262172284644194,
+      "CI95": [
+        0.4826779026217228,
+        0.5692883895131087
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.049625468164794004,
+      "CI95": [
+        -0.11797752808988764,
+        0.02200374531835206
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.5750524246563791,
+      "CI95": [
+        0.5245757789039625,
+        0.6239303500300775
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.527820774549352,
+      "CI95": [
+        0.4886733305686574,
+        0.5673858855952222
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.04723165010702712,
+      "CI95": [
+        -0.11327925691490628,
+        0.02097512251728722
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.19662921348314608,
+      "CI95": [
+        0.11797752808988764,
+        0.2808988764044944
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.11797752808988764,
+      "CI95": [
+        0.06179775280898876,
+        0.1797752808988764
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.07865168539325842,
+      "CI95": [
+        -0.1797752808988764,
+        0.02247191011235955
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.08333333333333333,
+      "CI95": [
+        0.0,
+        0.19444444444444445
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.3333333333333333,
+      "CI95": [
+        0.19444444444444445,
+        0.4861111111111111
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.25,
+      "CI95": [
+        0.06944444444444445,
+        0.4166666666666667
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.0858680831496831,
+      "CI95": [
+        0.002920172015136792,
+        0.19447832369842621
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.3344724957864423,
+      "CI95": [
+        0.20050269887802788,
+        0.4761389576871766
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.24860441263675925,
+      "CI95": [
+        0.07917153685614306,
+        0.4144111556420193
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.7777777777777778,
+      "CI95": [
+        0.6388888888888888,
+        0.9166666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.6527777777777778,
+      "CI95": [
+        0.5,
+        0.7920138888888838
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.125,
+      "CI95": [
+        -0.2222222222222222,
+        -0.041666666666666664
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.7775768183342249,
+      "CI95": [
+        0.6387190131867471,
+        0.9162861499661411
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.6512472260359418,
+      "CI95": [
+        0.5002554779616651,
+        0.7941060582696096
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.12632959229828317,
+      "CI95": [
+        -0.22742620983962406,
+        -0.0421001403095185
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.4305555555555556,
+      "CI95": [
+        0.3472222222222222,
+        0.5138888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.4930555555555556,
+      "CI95": [
+        0.3819444444444444,
+        0.6041666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.0625,
+      "CI95": [
+        -0.027777777777777776,
+        0.1527777777777778
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.43172245074195403,
+      "CI95": [
+        0.3484945639548969,
+        0.5138235914812006
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.49285986091119205,
+      "CI95": [
+        0.38596235378229854,
+        0.6002976622993351
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.06113741016923803,
+      "CI95": [
+        -0.026720184785651465,
+        0.14721303589758347
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.05555555555555555,
+      "CI95": [
+        0.0,
+        0.1388888888888889
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.25,
+      "CI95": [
+        0.125,
+        0.3888888888888889
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.19444444444444445,
+      "CI95": [
+        0.027777777777777776,
+        0.3611111111111111
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.23076923076923078,
+      "CI95": [
+        0.07692307692307693,
+        0.38461538461538464
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.23076923076923078,
+      "CI95": [
+        0.09615384615384616,
+        0.38461538461538464
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.0,
+      "CI95": [
+        -0.21153846153846154,
+        0.21153846153846154
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.2373786192663963,
+      "CI95": [
+        0.08411784528667827,
+        0.393457803264615
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.22208178675951845,
+      "CI95": [
+        0.08900465479582789,
+        0.3701281411913524
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.015296832506877954,
+      "CI95": [
+        -0.21864048372588182,
+        0.18727186513179436
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.46153846153846156,
+      "CI95": [
+        0.2692307692307692,
+        0.6538461538461539
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.7692307692307693,
+      "CI95": [
+        0.6153846153846154,
+        0.9230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.3076923076923077,
+      "CI95": [
+        0.07692307692307693,
+        0.5384615384615384
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.46906315857742903,
+      "CI95": [
+        0.28207954837460125,
+        0.6514874091366498
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.7565900402417961,
+      "CI95": [
+        0.5919204041541251,
+        0.9089061340911642
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.28752688166436724,
+      "CI95": [
+        0.05547051967112578,
+        0.5190623850232327
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.34615384615384615,
+      "CI95": [
+        0.19230769230769232,
+        0.5
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5,
+      "CI95": [
+        0.3942307692307692,
+        0.5961538461538461
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.15384615384615385,
+      "CI95": [
+        -0.028846153846153848,
+        0.33653846153846156
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.3532208889219126,
+      "CI95": [
+        0.20992973694793507,
+        0.4987141303404018
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.48933591350065725,
+      "CI95": [
+        0.3912937358211395,
+        0.5857366902109435
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.1361150245787446,
+      "CI95": [
+        -0.04183742019399808,
+        0.31614850183076587
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.19230769230769232,
+      "CI95": [
+        0.038461538461538464,
+        0.34615384615384615
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.15384615384615385,
+      "CI95": [
+        0.038461538461538464,
+        0.28846153846153844
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.038461538461538464,
+      "CI95": [
+        -0.23076923076923078,
+        0.15384615384615385
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.5123456790123456,
+      "CI95": [
+        0.38271604938271603,
+        0.6358024691358025
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.3395061728395061,
+      "CI95": [
+        0.20987654320987653,
+        0.4814814814814814
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.1728395061728395,
+      "CI95": [
+        -0.3703703703703703,
+        0.031018518518516294
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.5264912501968102,
+      "CI95": [
+        0.41774284307186976,
+        0.6324953525670087
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.3329116146809797,
+      "CI95": [
+        0.24297505180818216,
+        0.430988341128762
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.19357963551583054,
+      "CI95": [
+        -0.33881329029406865,
+        -0.03920669715308476
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.48148148148148145,
+      "CI95": [
+        0.3148148148148148,
+        0.6481481481481481
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.49074074074074076,
+      "CI95": [
+        0.3611111111111111,
+        0.6203703703703703
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.009259259259259259,
+      "CI95": [
+        -0.2222222222222222,
+        0.25
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.47688499514916954,
+      "CI95": [
+        0.3578250074415563,
+        0.5975317127624564
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.5209226571044583,
+      "CI95": [
+        0.39837765268688935,
+        0.643209479286509
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.04403766195528883,
+      "CI95": [
+        -0.15741185644576058,
+        0.24689504386009023
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.4962962962962963,
+      "CI95": [
+        0.3981481481481482,
+        0.5944444444444444
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.4049382716049383,
+      "CI95": [
+        0.32222222222222224,
+        0.4938271604938272
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.09135802469135802,
+      "CI95": [
+        -0.2234567901234568,
+        0.059259259259259255
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.5027198310838399,
+      "CI95": [
+        0.4278930975956796,
+        0.5823892094633911
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.4232657753640053,
+      "CI95": [
+        0.36183772694068317,
+        0.49197524522805813
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.07945405571983447,
+      "CI95": [
+        -0.18072597840029428,
+        0.03096820399647991
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.1111111111111111,
+      "CI95": [
+        0.0,
+        0.25925925925925924
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.07407407407407407,
+      "CI95": [
+        0.0,
+        0.18518518518518517
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.037037037037037035,
+      "CI95": [
+        -0.18518518518518517,
+        0.1111111111111111
+      ],
+      "clusters": 27,
+      "sources": 27
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.6123595505617978,
+      "CI95": [
+        0.5168539325842697,
+        0.7023876404494362
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.3061797752808989,
+      "CI95": [
+        0.22752808988764045,
+        0.3904494382022472
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.3061797752808989,
+      "CI95": [
+        -0.4129915730337078,
+        -0.19382022471910113
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.5964389218320482,
+      "CI95": [
+        0.5180639706575448,
+        0.6706566985681013
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.3385980209436595,
+      "CI95": [
+        0.2803386746580797,
+        0.3999359139926522
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.2578409008883887,
+      "CI95": [
+        -0.35095452976668656,
+        -0.16256274545875798
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.49157303370786515,
+      "CI95": [
+        0.4016151685393259,
+        0.5814606741573034
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.7668539325842697,
+      "CI95": [
+        0.6938202247191011,
+        0.8342696629213483
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.2752808988764045,
+      "CI95": [
+        0.16292134831460675,
+        0.3848314606741573
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.4953865530943132,
+      "CI95": [
+        0.4247508941390193,
+        0.5658971088993414
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.7657526876073634,
+      "CI95": [
+        0.7048631795250445,
+        0.8230080399740198
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.27036613451305014,
+      "CI95": [
+        0.17772631063305366,
+        0.3642414642411932
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.550561797752809,
+      "CI95": [
+        0.48642322097378277,
+        0.6132958801498127
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5383895131086142,
+      "CI95": [
+        0.4882958801498127,
+        0.5898876404494382
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.012172284644194759,
+      "CI95": [
+        -0.08286516853932584,
+        0.06132958801498128
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.544940675353836,
+      "CI95": [
+        0.4953987458463768,
+        0.5933049735220738
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.5537295957410308,
+      "CI95": [
+        0.5129276342739506,
+        0.5965771178106628
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.008788920387194787,
+      "CI95": [
+        -0.054520137711876214,
+        0.07368504625803111
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.24157303370786518,
+      "CI95": [
+        0.15730337078651685,
+        0.3258426966292135
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.19101123595505617,
+      "CI95": [
+        0.11797752808988764,
+        0.2696629213483146
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.05056179775280899,
+      "CI95": [
+        -0.15168539325842698,
+        0.056179775280898875
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.5972222222222222,
+      "CI95": [
+        0.4444444444444444,
+        0.75
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5138888888888888,
+      "CI95": [
+        0.3611111111111111,
+        0.6666666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.08333333333333333,
+      "CI95": [
+        -0.3333333333333333,
+        0.18055555555555555
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.6440328255906828,
+      "CI95": [
+        0.5335377154472553,
+        0.7502761844305239
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.4950162183272938,
+      "CI95": [
+        0.38205054888586143,
+        0.6065705174102846
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.14901660726338892,
+      "CI95": [
+        -0.32718556926406045,
+        0.03244166042521418
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.3611111111111111,
+      "CI95": [
+        0.2222222222222222,
+        0.5
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.6527777777777778,
+      "CI95": [
+        0.5138888888888888,
+        0.7916666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.2916666666666667,
+      "CI95": [
+        0.05555555555555555,
+        0.5277777777777778
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.4091586057576946,
+      "CI95": [
+        0.2965404502855165,
+        0.5252057317752651
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.6401356073858095,
+      "CI95": [
+        0.502943136097112,
+        0.7754064644791778
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.23097700162811505,
+      "CI95": [
+        0.01791634776510011,
+        0.4382383621841972
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.4791666666666667,
+      "CI95": [
+        0.3819444444444444,
+        0.5763888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5833333333333334,
+      "CI95": [
+        0.4652777777777778,
+        0.7013888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.10416666666666667,
+      "CI95": [
+        -0.06944444444444445,
+        0.2847222222222222
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.5265957156741886,
+      "CI95": [
+        0.457337437559071,
+        0.596779880536236
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.5675759128565516,
+      "CI95": [
+        0.47547937048296346,
+        0.6610466498229407
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.040980197182363044,
+      "CI95": [
+        -0.09148356585578683,
+        0.17497330012389511
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.18055555555555555,
+      "CI95": [
+        0.06944444444444445,
+        0.3055555555555556
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.375,
+      "CI95": [
+        0.2361111111111111,
+        0.5138888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.19444444444444445,
+      "CI95": [
+        0.0,
+        0.3888888888888889
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.9423076923076923,
+      "CI95": [
+        0.8461538461538461,
+        1.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.23076923076923078,
+      "CI95": [
+        0.07692307692307693,
+        0.38461538461538464
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.7115384615384616,
+      "CI95": [
+        -0.8653846153846154,
+        -0.5384615384615384
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.8962306098848452,
+      "CI95": [
+        0.8232086883010118,
+        0.9531116434327936
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.21763640234533044,
+      "CI95": [
+        0.1275293584436956,
+        0.3143090422590923
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.6785942075395147,
+      "CI95": [
+        -0.776325448986275,
+        -0.5769516917098094
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.25,
+      "CI95": [
+        0.09615384615384616,
+        0.4230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.7692307692307693,
+      "CI95": [
+        0.6153846153846154,
+        0.9230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.5192307692307693,
+      "CI95": [
+        0.21153846153846154,
+        0.7884615384615384
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.2772692855137235,
+      "CI95": [
+        0.14887617909015083,
+        0.41201931670669256
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.7209551730482333,
+      "CI95": [
+        0.5675845224229163,
+        0.8603793566648504
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": 0.4436858875345099,
+      "CI95": [
+        0.18958500533455938,
+        0.6770200735385143
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.5961538461538461,
+      "CI95": [
+        0.5,
+        0.6923076923076923
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.5,
+      "CI95": [
+        0.3942307692307692,
+        0.6057692307692307
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.09615384615384616,
+      "CI95": [
+        -0.2692307692307692,
+        0.0673076923076923
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "NATIVE",
+      "value": 0.5867499476992845,
+      "CI95": [
+        0.5125281973378959,
+        0.6615888828107866
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE",
+      "value": 0.46929578769678193,
+      "CI95": [
+        0.38175426903565424,
+        0.5481279009030073
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "all",
+      "metric": "p_correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.1174541600025024,
+      "CI95": [
+        -0.2561002907691558,
+        0.013126090210776192
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "NATIVE",
+      "value": 0.25,
+      "CI95": [
+        0.09615384615384616,
+        0.4230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE",
+      "value": 0.15384615384615385,
+      "CI95": [
+        0.038461538461538464,
+        0.28846153846153844
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "target": "joint_all_questions",
+      "metric": "correct",
+      "operation": "INVERSE-minus-NATIVE",
+      "value": -0.09615384615384616,
+      "CI95": [
+        -0.3269230769230769,
+        0.1346153846153846
+      ],
+      "clusters": 26,
+      "sources": 26
+    }
+  ],
+  "runs": [
+    {
+      "model": "Qwen3-8B",
+      "shard": 0,
+      "gpu_hours": 0.07028596695777702,
+      "config_sha256": "9f04ad590ff59f7fd9d0e292ae14b63eddc9b66da93cfd84a6d0086a5066985f",
+      "predictions_sha256": "bdbc8bccd7f3122ffe3b9b8a0fcf4575c4ee2a148be116261538c73ce0b5ffd9",
+      "native_predictions_sha256": "2c30a65834f48542fbec1382b48d56893326d16571a98518f610be26327fe0c8",
+      "parent_LP_max_delta": 0.00022029876708984375,
+      "inverse_batch_LP_max_delta": 0.0001354217529296875
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 1,
+      "gpu_hours": 0.06411062282083245,
+      "config_sha256": "6b3fa4dd0acd4040b513edd751e3ece5fcf4e2bdca9822d39c3fb9ee18b8ae1b",
+      "predictions_sha256": "f73c8f63bf424379b66edd091bd4f8ce79077afc3a0b97680010880da5f7acc2",
+      "native_predictions_sha256": "2c30a65834f48542fbec1382b48d56893326d16571a98518f610be26327fe0c8",
+      "parent_LP_max_delta": 0.00022125244140625,
+      "inverse_batch_LP_max_delta": 2.002716064453125e-05
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 2,
+      "gpu_hours": 0.0660972173816602,
+      "config_sha256": "31d16a257704db87525365291c49cc2b18f33f5b1774736c017fc71d35d5184a",
+      "predictions_sha256": "f87500484e26e72c09c62e32c6e6f73ab244e184df7d6042206f60ec4a67953b",
+      "native_predictions_sha256": "2c30a65834f48542fbec1382b48d56893326d16571a98518f610be26327fe0c8",
+      "parent_LP_max_delta": 0.00023555755615234375,
+      "inverse_batch_LP_max_delta": 0.0002835765480995178
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 0,
+      "gpu_hours": 0.12047368456085678,
+      "config_sha256": "0be0d0b5a1023232fc4460e392029b6752ca96af8583ecf485962b1911f6dee2",
+      "predictions_sha256": "786e991bfe90273efe8c8d5c244a3f199d200a6dca8b5fc605997008e59af4c6",
+      "native_predictions_sha256": "29b38ce11ed8a49d9cae903956c4f2a1c005a7a843e4b252f2e87985b2e87cd4",
+      "parent_LP_max_delta": 0.000118255615234375,
+      "inverse_batch_LP_max_delta": 0.00018024444580078125
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 1,
+      "gpu_hours": 0.15481575956141266,
+      "config_sha256": "9afc9d95a0d0b4eac349ffd9f82a703dcfc597bd7e87b190f3b271cc4c6cd5ec",
+      "predictions_sha256": "5d7ed6b95d146ef8bf3746a7d458d44da7a4e78e5f02abd3b12295f27253444a",
+      "native_predictions_sha256": "29b38ce11ed8a49d9cae903956c4f2a1c005a7a843e4b252f2e87985b2e87cd4",
+      "parent_LP_max_delta": 0.000164031982421875,
+      "inverse_batch_LP_max_delta": 0.00019741058349609375
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 0,
+      "gpu_hours": 0.07816397688474454,
+      "config_sha256": "797ffa6f3d391814d8456e7eda93534d76422baafc60f422bd748d46c500d832",
+      "predictions_sha256": "335796b6bda5dd79fb3ddf083d16d93c8d4c1c6e685913583e65abbe071fad5d",
+      "native_predictions_sha256": "9a3d4032422bf78cf7a8af81f637e7d12359a59cfe625bc9a088cfc0f44ad02e",
+      "parent_LP_max_delta": 7.62939453125e-05,
+      "inverse_batch_LP_max_delta": 2.3087486624717712e-05
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 1,
+      "gpu_hours": 0.07087768710108422,
+      "config_sha256": "ff5379c8c10e44eadd47745f13fcb4e5ec09c419e14da1b137732293c74fc50f",
+      "predictions_sha256": "082b367b110012fb2fcd2016705ee49049716a018551206d283284745b7dc162",
+      "native_predictions_sha256": "9a3d4032422bf78cf7a8af81f637e7d12359a59cfe625bc9a088cfc0f44ad02e",
+      "parent_LP_max_delta": 7.390975952148438e-05,
+      "inverse_batch_LP_max_delta": 8.654780685901642e-05
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 2,
+      "gpu_hours": 0.07232621702081006,
+      "config_sha256": "043353ca346bd5f8e4119de96f04c3bf1e92d30f3bbdf0b00310044ef8895737",
+      "predictions_sha256": "389afe7550213b58146d664e8867eeb6375f3e33e889e8b1fbf557f34a73984f",
+      "native_predictions_sha256": "9a3d4032422bf78cf7a8af81f637e7d12359a59cfe625bc9a088cfc0f44ad02e",
+      "parent_LP_max_delta": 0.000133514404296875,
+      "inverse_batch_LP_max_delta": 0.00012046843767166138
+    }
+  ],
+  "prompt_lengths": [
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 113.65346534653466,
+      "max_tokens": 118,
+      "tasks": 404
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 141.6039603960396,
+      "max_tokens": 144,
+      "tasks": 404
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 115.65346534653466,
+      "max_tokens": 120,
+      "tasks": 404
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 141.6039603960396,
+      "max_tokens": 144,
+      "tasks": 404
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 112.73303167420815,
+      "max_tokens": 119,
+      "tasks": 884
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 141.3710407239819,
+      "max_tokens": 144,
+      "tasks": 884
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 113.15384615384616,
+      "max_tokens": 120,
+      "tasks": 884
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 141.3710407239819,
+      "max_tokens": 144,
+      "tasks": 884
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 109.125,
+      "max_tokens": 117,
+      "tasks": 288
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 140.73611111111111,
+      "max_tokens": 145,
+      "tasks": 288
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 110.125,
+      "max_tokens": 118,
+      "tasks": 288
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 140.73611111111111,
+      "max_tokens": 145,
+      "tasks": 288
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 105.5,
+      "max_tokens": 110,
+      "tasks": 208
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 140.3846153846154,
+      "max_tokens": 143,
+      "tasks": 208
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 105.57692307692308,
+      "max_tokens": 110,
+      "tasks": 208
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 140.3846153846154,
+      "max_tokens": 143,
+      "tasks": 208
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 116.43564356435644,
+      "max_tokens": 121,
+      "tasks": 404
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 138.55445544554456,
+      "max_tokens": 141,
+      "tasks": 404
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 118.43564356435644,
+      "max_tokens": 123,
+      "tasks": 404
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 138.55445544554456,
+      "max_tokens": 141,
+      "tasks": 404
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 115.29864253393666,
+      "max_tokens": 121,
+      "tasks": 884
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 138.24886877828055,
+      "max_tokens": 142,
+      "tasks": 884
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 115.71945701357465,
+      "max_tokens": 121,
+      "tasks": 884
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 138.24886877828055,
+      "max_tokens": 142,
+      "tasks": 884
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 112.05555555555556,
+      "max_tokens": 120,
+      "tasks": 288
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 137.72222222222223,
+      "max_tokens": 142,
+      "tasks": 288
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 113.05555555555556,
+      "max_tokens": 121,
+      "tasks": 288
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 137.72222222222223,
+      "max_tokens": 142,
+      "tasks": 288
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 108.38461538461539,
+      "max_tokens": 111,
+      "tasks": 208
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 137.34615384615384,
+      "max_tokens": 139,
+      "tasks": 208
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 108.38461538461539,
+      "max_tokens": 111,
+      "tasks": 208
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 137.34615384615384,
+      "max_tokens": 139,
+      "tasks": 208
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 136.65346534653466,
+      "max_tokens": 141,
+      "tasks": 404
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 159.6039603960396,
+      "max_tokens": 162,
+      "tasks": 404
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 138.65346534653466,
+      "max_tokens": 143,
+      "tasks": 404
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 159.6039603960396,
+      "max_tokens": 162,
+      "tasks": 404
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 135.73303167420815,
+      "max_tokens": 142,
+      "tasks": 884
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 159.3710407239819,
+      "max_tokens": 162,
+      "tasks": 884
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 136.15384615384616,
+      "max_tokens": 143,
+      "tasks": 884
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 159.3710407239819,
+      "max_tokens": 162,
+      "tasks": 884
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 132.125,
+      "max_tokens": 140,
+      "tasks": 288
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 158.73611111111111,
+      "max_tokens": 163,
+      "tasks": 288
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 133.125,
+      "max_tokens": 141,
+      "tasks": 288
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 158.73611111111111,
+      "max_tokens": 163,
+      "tasks": 288
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "operation": "NATIVE",
+      "mean_tokens": 128.5,
+      "max_tokens": 133,
+      "tasks": 208
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "operation": "INVERSE",
+      "mean_tokens": 158.3846153846154,
+      "max_tokens": 161,
+      "tasks": 208
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "control",
+      "operation": "NATIVE",
+      "mean_tokens": 128.57692307692307,
+      "max_tokens": 133,
+      "tasks": 208
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "control",
+      "operation": "INVERSE",
+      "mean_tokens": 158.3846153846154,
+      "max_tokens": 161,
+      "tasks": 208
+    }
+  ],
+  "mapping_noise": [
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.009900990099009901
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.09900990099009901
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.0594059405940594
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.13861386138613863
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.009900990099009901
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.1782178217821782
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.06930693069306931
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.12871287128712872
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.013574660633484163
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.38009049773755654
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.02262443438914027
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.39819004524886875
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.013574660633484163
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.22171945701357465
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.03167420814479638
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.2895927601809955
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.013888888888888888
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.05555555555555555
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.0
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.041666666666666664
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.013888888888888888
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.08333333333333333
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.0
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.05555555555555555
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.07692307692307693
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.057692307692307696
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.038461538461538464
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.0
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.038461538461538464
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.019230769230769232
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.019230769230769232
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.019230769230769232
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.019801980198019802
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.10891089108910891
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.06930693069306931
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.1782178217821782
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.009900990099009901
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.1782178217821782
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.009900990099009901
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.24752475247524752
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.01809954751131222
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.17194570135746606
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.03167420814479638
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.22171945701357465
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.00904977375565611
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.15384615384615385
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.027149321266968326
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.14027149321266968
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.0
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.06944444444444445
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.013888888888888888
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.041666666666666664
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.013888888888888888
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.05555555555555555
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.013888888888888888
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.06944444444444445
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.0
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.07692307692307693
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.019230769230769232
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.15384615384615385
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.07692307692307693
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.09615384615384616
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.11538461538461539
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.17307692307692307
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.0594059405940594
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.06930693069306931
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.5247524752475248
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.10891089108910891
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.0594059405940594
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.13861386138613863
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.31683168316831684
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.1782178217821782
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.06787330316742081
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.11764705882352941
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.4072398190045249
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.1583710407239819
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.058823529411764705
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.07239819004524888
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.3438914027149321
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.17194570135746606
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.09722222222222222
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.1111111111111111
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.4027777777777778
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.09722222222222222
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.1388888888888889
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.06944444444444445
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.3611111111111111
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.027777777777777776
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.038461538461538464
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.038461538461538464
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.19230769230769232
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "gp",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.09615384615384616
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "words",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.038461538461538464
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "words",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.057692307692307696
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "NATIVE",
+      "mean_QA_correct_flip": 0.23076923076923078
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "condition": "control",
+      "readout": "letters",
+      "operation": "INVERSE",
+      "mean_QA_correct_flip": 0.09615384615384616
+    }
+  ],
+  "limits": "Inverse Source LP normalized across proposed labels is an evidence score, not calibrated semantic posterior. Tasks and encoding differ from native QA; no native ability or pure Bayes-factorization claim.",
+  "review": "Inverse scoring does not preserve the two relations jointly; cue damage and mapping flips retained. Block closes without template/calibration sweep."
+}

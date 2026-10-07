@@ -1,6 +1,6 @@
 # E70：同一源修补到底改了哪些断言，是否传递到依赖关系？（2026-10-07）
 
-- **状态：** RUNNING；E64-v2完整效果后POST-HOC测量选择，原子标签读取前固定本卡与读数。
+- **状态：** DONE；E64-v2完整效果后POST-HOC测量选择，原子标签读取前固定本卡与读数。
 - **对应：** I03/I04、C09/P17。因果入口已有，完整CORRECT_ROLES只能说明所有关系是否共同正确，不能定位部分修复。输入排序首2 MVRR源已见真实V1受事恢复但V2仍错接/遗漏；不是为了证明原猜想追加防御控制。
 - **问题：** 原歧义区修补是共同恢复源断言，还是仅改一部分、另一些不传递或反而损坏？聚焦隐式GP解释修订的后果，不做一般输出事实benchmark。
 - **数据与方法：** 已有E64三族BASE_BANK/TARGET_BANK完整自由输出，一个核心配对对比；保留全部输入资格108units/54GP源/51clusters（MVRR19/NPZ9/NPS26；NPVP缺失明确）。原S/Q/gold/模型/源库一律不改、不重跑；只把已发表、最终已资格的**原始yes/no问题**作为新自由文本的语义原子。原问题来自E52 qualified-v3，可覆盖旧patch run没有评分但同一原S已有的其他问题；按S SHA匹配、Q去重，source G2 gold按原完成T1 ENTAILED→Yes、C/N→No映射。原FULL/CONTEXT/E63完整role图仍是既有证据，不再为了本新粒度重标所有条件。
@@ -18,8 +18,19 @@
 
 **标签完成前的解释范围校对：** `source_bank_routes.py::bank_hooks`逐层重写全部Source位置。TARGET_BANK中非目标位置始终为BASE，不允许目标修补在这些位置重新传播；目标位置的PAIR轨迹则已包含原quarter-layer修补后的计算。故本实验测固定混合源库下consumer表达哪些断言，不能凭“initial改变而final未改变”独立证明native Source内部传播失败。原FULL_BANK/E63 PAIR允许该quarter-layer干预的后续源传播，但也不等于完整真实cue输入。保持所有读数/数据/条件；这是解释范围收紧，不追加控制或重跑。
 
-未读取新原子标签或效果。
+完整原子标注与地图现已完成，结果见下。
 
 **标注前范围收紧：** 第一构建草案包括六个旧科学条件，未发出任何HTTP，依用户“只最核心有辨别力”指导收为BASE/TARGET一个配对对比；三族/全部源/两侧不筛。不是用新标签选条件，原草案与manifest外置保留，旧全图不变。每原子P/Q一项，≤5项/请求，不借复合packet打包多于5个标签。
 
 648原输出assignments→1280独立P/Q标注项。data SHAcdb513311ab5792a5a5377f5178c96615d46a042e4e991398bc9ec830e521880、assignment SHAe00b45caf8802f42960d4d8a3d06b31b9a870e139578e8c07eea9f8413b77c36。初版将needs_revision设False，被通用queue过滤成空输入，0 HTTP/0科学标签；空日志/summary保存，改queue标记True不表示重审原S。已核对全部1280进入队列，实际审核1263766/完整地图等待1274278。所有未知仍missing；部分修复/最终损伤/未知排除/四格与空构式的合成fixture已通过。未读部分语义比例。
+
+
+### 全部标注与语义结果、自审
+
+1280原子项双遍全部完成，183/183分歧裁决，一致率85.703%、unresolved0；2790完整reports（846空格、108单簇CI不可估），648输出assignment不筛。map SHA5954e972bda6ba627f2fc0168cd425440ea6eedb1dec40174e2763ff973329a5，annotation SHA45dceaa16a89a8e5fc3e39fd1e923d7313854eaa639a3c322de67737c1f337ec。所有构式/两侧/全部指标已读；Yes正确与entailed相同，No正确为其补数，joint上下界在未知0时相同，已逐格核对。
+
+MVRR GP initial sourceYes表达TARGET−BASE Q/G/L +30.0 [0,60] / +50.0 [20,80] / +80.0 [50,100]pp（10clusters），确有正断言补出，不可把改善全部解释成删除No。final sourceYes +0 [-20,20] / +13.3 [0,33.3] / -6.7 [-20,0]；initial与final原正断言同时表达（9clusters）+11.1 [0,33.3] / +22.2 [0,55.6] / +11.1 [0,33.3]，没有共同完整建立。MVRR cue initial sourceYes -75.0 [-100,-50] / -66.7 [-91.7,-41.7] / -50.0 [-75,-25]（12clusters），final sourceYes +0 / +0 / +5.3 [0,15.8]；反向损伤集中初始关系，正断言both -66.7 [-91.7,-41.7] / -58.3 [-83.3,-33.3] / -33.3 [-58.3,-8.3]。
+
+NPZ GP initial sourceYes +50 [0,100] / +50 [0,100] / +25 [0,75]（4clusters），both同向但CI均含0；9clusters全问题源模式联合差+44.4 [11.1,77.8] / +22.2 [0,55.6] / +22.2 [0,55.6]，不能都叫正确positive关系恢复。NPS只有1个initial sourceYes簇（非全No），两关系同时正向资格为0，initial No减少的CI都含0；未证成跨构式joint修复，NPVP没有cohort。全部空格/单簇/负效应与原问题粒度同报。
+
+当前最好故事：固定混合源库能改变具体早期关系的表达，MVRR的反向效果跨族，正向部分恢复也真实。它没有共同恢复完整解释；因非目标Source逐层BASE回放，不能独立证明native源内传播失败。未达到合格idea标准，C09限定L1/C06–08L0不变；该原子脚印块自审结束，下一E84拆K/V核心consumer入口与E82当下强baseline，0原数据重审，无需人决定。

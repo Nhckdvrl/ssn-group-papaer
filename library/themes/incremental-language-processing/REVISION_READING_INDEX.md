@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-55篇主文（4综述+51研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+57篇主文（4综述+52研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -23,7 +23,7 @@
 - [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
 - [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
 
-[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述55篇。
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述57篇。
 
 - [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
 - [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
@@ -88,3 +88,7 @@
 - [PoCO EMNLP2025](park2025-poco-overcorrection.md)：候选搜索与编辑保持分工，双目标监督；主文/AppA全读，CoNLL14相对Gold阴性、API版本与主文附录评分不一致保留。
 
 - [Min ACL2022 Channel Prompting](min2022-channel-prompting.md)：主文/AppB精读；逆向评分有明确owner，零样本和head tuning反证完整保留，未将Bayes推导当现代chat的同一joint证明。
+
+- [Wang ACL2026 grammaticality](wang2026-implicit-grammaticality.md)：MIT正式main精读/App范围明确，gram/prob/关系功能分开；base和监督probe边界、不普适Dutch读数保留。
+
+- [McGee Cognitive Science2026](mcgee2026-syntactic-encapsulation.md)：出版社主文全文；从syntax定位到可渗透性，attention证据与实际修订因果分开；Llama依赖数正文不一致保留，附录/代码未读。
