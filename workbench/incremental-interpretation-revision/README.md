@@ -57,4 +57,7 @@
 
 - 核心新节点：E69原发表45sets语义×结构图已完成（10944评分），合理性与GP差距并存，不能统一归为早期编码过时；E70只对既有BASE/TARGET自由输出标原Q的断言脚印（1280原子项、≤5/批）；E71原发表40对的新正确子句先盲审，再检验正确第一句的后续消费。E67三族3204自由输出已全部完成（6.530GPU·h），T4完整双遍运行中，批5/共享8/分歧裁决不变。所有新结果尚不等于合格idea。
 
-- 最新核心块：[E70](experiments/E70-atomic-repair-footprints.md)1280原子双遍/183裁决与完整地图已自审；[E84](experiments/E84-source-key-versus-value-revision.md)5664 K/V条件、.237GPU·h/0API完成，无共同完整修复，统计勘误保留。[E82](experiments/E82-current-open-model-baseline.md)复用原892QA的当下强模型测试三族8分片全21408条件完成（1.271GPU·h），已完整自审；[E85](experiments/E85-lexical-semantic-recovery-transfer.md)复用人类词义48框架/192句原coherence金标，8卡全4608条件运行；不新增原数据审核。
+- 最新核心块：[E70](experiments/E70-atomic-repair-footprints.md)1280原子双遍/183裁决与完整地图已自审；[E84](experiments/E84-source-key-versus-value-revision.md)5664 K/V条件、.237GPU·h/0API完成，无共同完整修复，统计勘误保留。[E82](experiments/E82-current-open-model-baseline.md)复用原892QA的当下强模型测试三族8分片全21408条件完成（1.271GPU·h），已完整自审；[E85](experiments/E85-lexical-semantic-recovery-transfer.md)复用人类词义48框架/192句原coherence金标，8卡全4608条件完成；不新增原数据审核。
+
+- **最后一晚（人2026-10-07晚决定）：** 先找值得追的探索idea，不要求现在补齐成稿证据。[I06](ideas/I06-late-verb-frame-reanalysis.md)问早期谓词论元框架是否需重算；[E88](experiments/E88-verb-versus-noun-lookahead.md)复用151发表源组/784QA，18816条件已闭合，0新API，分析在途；每两项核心实验重新[对齐](REASSESSMENT_2026-10-07_2225.md)，不继续防御提示网格。
+- **资源硬截止：** 2026-10-08 09:00北京时间前停止本工作全部GPU；持久timer 08:55提前释放、监测到09:02，不触碰他人服务。已删除11个完成实验模型的可再下载权重294.97GiB及8.64GB残片/安装缓存，项目约198GiB；剩余6模型权重停卡后也释放。全部tokenizer/config/revision/manifest、科学数据/结果保留，外置删除清单与国内镜像下载脚本可用于重建；原manifest不表示当前权重仍存在。

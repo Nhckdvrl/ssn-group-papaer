@@ -10,3 +10,11 @@
 7. **证据边界：** 实读范围：Main 1-9, discussion and limitations; extensive appendices not read。PDF与失败/版本记录位于`/data1/xiangding/work/incremental-interpretation-revision/papers/reassessment-2026-10-07`；未核对的最终版本、review/score或附录不补猜测。第4项的局限必须随结论引用。
 8. **可迁移研究动作：** 把第3项前提转成能被推翻的测量，并保留旧解释与阳性对照；先对齐对象和信息/算力，再决定是否迁移方法。
 9. **对我们：** 第4项给出具体可借动作与不可外推边界；与I03/I04的共同定位见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。当前没有因此升级主张或得到合格idea。
+
+### 2026-10-07晚重新对齐（不是新增精读计数）
+
+重新读原87页v1主文pp1–15全部，AppA/B pp19–20、C1–2 pp20–22、E/F p28及G开头p29；图6/7 p11–12已视觉核对，G–Q全图/代码未读。PDF SHA0fa4f6d7aae8acddca950e6fced47c298f6a6dd7d7ffc9678ad898b93c066003。原卡已MAIN，不能重复计为第59篇。
+
+方法上的关键边界：§6 patch是把**整段activation替换为仿射embedding输出**，并非保持正交分量的投影内替换；steering才保留embedding外分量，图7的“belief subspace”措辞需与此区别。δ在发射矩阵零空间，不改变已知理论NTP，却改变状态坐标；后续可解码传播仍不是一般自然语言能力。probe每sequence用最后5k位置随机20/80划分，时序点不是独立语料；理论目标已知。§6传播结论排除Gemma类别，不能借其六模型总数称所有三族传播都成立。40过程刻意来自slow-mixing/low-entropy已知可预测区域；未建立任意HMM结论。
+
+对本线的研究动作：需要一个**当前问答看不见而后续关系用途可区分**的具体修订对象，不能只给旧QA换评分或复述名字；同时不能把HMM理论GT的确定性搬到NEITHER问句上。E70正断言部分恢复仍是功能入口，缺少理论可预测的关系后果。E87只确认实际答案对象，不当成belief机制贡献；不因此追加探针/层位防御网格。
