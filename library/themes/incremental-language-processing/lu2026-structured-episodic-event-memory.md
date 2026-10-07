@@ -1,0 +1,10 @@
+# Structured Episodic Event Memory（ACL2026 main）
+
+[正式论文](https://aclanthology.org/2026.acl-long.277/)，17页SHA809996a7cedb0a2a9c69a59e43a8c519233ef58f37e976b300fd70240fa51a2d。主文§1–6/limitations完整，AppA1–3/B1–4/C全部文本与表/提示已读，参考文献未逐项核对。东南大学/哈工大深圳/Alibaba。正式作者稿，不仅摘要。
+
+1. **问题/idea来源（重建）：** RAG碎片、GraphRAG刚性relation索引不足重建连续事件；借Tulving episodic/semantic memory区分、Minsky/Fillmore frame，组合event层与static fact图，再以provenance反向扩展原证据。不是“别人没做过graph”，而是将已有graph、摘要、原文索引组织为不同粒度的检索接口。
+2. **方法：** EML抽6槽Participants/Action/Time/Location/Causality/Manner与summary，每event原文pointer；先取最相关旧frame，由LLM judge同一event才fusion、union pointers。GML抽(s,r,o,time)事实，embedding相近entity合并；query抽quadruple→图传播→初始passages→对应frame→pointer union扩回原文。最终原文＋frame＋facts一起给生成器，不仅给摘要；实际RPE最多2×初始top5 budget，不是无上限完整episode保证。C提示要求原文优先，但允许未与原文矛盾的summary/facts补充，**非矛盾不等于原文蕴含**。
+3. **规模/结果：** LoCoMo1986QA/10长多session dialogs，LongMemEval500手工curatedQA，可信社区资产直接使用。Qwen3Next80B为主，Pangu7B次，GPT-OSS120B只LoCoMo附录。对HippoRAG2：LoCoMo F1 58.3→61.1，J76.2→78.0，LongMemEval60.6→65.0(+4.4pp)。正文J“+1.5”与表实际+1.8不一致。SEEM LoCoMo open-domain F1 26.6 vsHip34.7退步；小模型LongMemEval60.8仍低于RelevantOnly68.6。AppA Table8 Mean65.81是六类别macro，主65.0是500QA micro，可由325/500复算，不是假数据矛盾。
+4. **验证/边界：** 去EEF −2.6F1/−3.0J最大，去RPE −.9/.9；top3→10检索提高约5.9F1，但取到更多原文，不能纯归因frame规划。4段增量77.6J vs全batch78.0，不等于逐turn无限稳定。B4图/frameembeddingcosine .46基于1282/1986有效pair，低重叠不是因果互补证明。所有主要judge用DeepseekV3.2，无重复seed/CI；不同检索单位top5/top10和扩展budget不等token。重LLM抽取/fusion成本未量化，初始错误可能长期固化（作者明确limitations）。Pointer只保证追溯，不能保证role抽取真或grounding完整；B示例Reason“affectionate curiosity”未附源支持核验。
+5. **近邻距离与贡献尺度：** HippoRAG2有图传播/非参数memory，Mem0/Graphiti有更新，RAPTOR有摘要；增量是event frame作桥扩展源证据及dual粒度组织，然后在两个成熟benchmark和三backbone给实测收益与关键组件。方法故事可以来自具体共同缺陷而非空白研究空间，理论严格保证不是必要前提。main-event-first不在本篇对比，GP修订也未测；不能据图/frame已有owner关线。
+6. **对我们：** E76同源＋中间草稿符合“记忆帮助定位原证据”的可迁移接口，原金标直接评价end-to-end，不必先对每个generated frame做semantic dataset审批。若要解释为什么变好/坏，新增notes的原子关系/source support需Step检查，成熟原S不用重审。仅结构草稿涨分不够新；值得追的是哪个修订操作把正确局部关系变成稳定的后续约束，或哪种常识补全在结构化中被固化。本篇提供自然长期用途的应用视角，当前不另开agent-memory实验线。
