@@ -1,7 +1,7 @@
-"""Figures for the ACL version of the paper (paper-acl/figures/*.pdf), drawn from finished analyses only.
+"""Figures for the ACL version of the paper (paper-acl-v2/figures/*.pdf), drawn from finished analyses only.
   fig1_hook        E35 (which-head agreement among all 75 1B models, ordered by seed) + E32 (Flan effect by template)
-  fig2_innate      E45 / E44 / E58 (agreement by size), E61 (seed identification), E43 / E59 (coordinates vs content)
-  fig3_critical    E46 / E46b (branching), E40 / E46 / E58 (lock-in during training)
+  fig2_components  E45 / E44 / E58 (agreement by size), E61 (seed identification), E43 / E59 (coordinates vs content)
+  fig3_early       E46 / E46b (branching), E40 / E46 / E58 (lock-in during training)
   fig4_flan        E32 (Flan effect by template), E65 (head layout and habit map with / without Flan)
   fig4_question    (appendix) E47 + E32 (sizes), E29 (pretraining), E30 (OLMo 2 mid-training), E34 / E49 (other datasets)
   fig5_content     E64 (content vs function words; per-pair file written by e64_function_words.py)
@@ -22,7 +22,7 @@ import numpy as np
 import mp_common as mc
 
 R = mc.RESULTS
-OUT = mc.RESULTS.parent / "paper-acl" / "figures"
+OUT = mc.RESULTS.parent / "paper-acl-v2" / "figures"
 COL, TXT = 3.03, 6.3
 SEED, ACQ, OTHER, PYTH, BLUE, SKY = "#D55E00", "#009E73", "#8C8C8C", "#7B5EA7", "#0072B2", "#56B4E9"
 LIGHT, INK, GRID, CP = "#CFCFCF", "#262626", "#E9E9E9", "#FBE3D6"
@@ -122,9 +122,9 @@ def fig1_hook():
     si = np.nanmean([S[i, j] for i in good for j in good if i // n == j // n and i != j])
     sd = np.nanmean([S[i, j] for i in good for j in good if i // n != j // n and i % n == j % n])
 
-    fig = plt.figure(figsize=(COL, 3.3))
-    fig.text(0.0, 3.25 / 3.3, "(a) Which head takes a role, 75 models at 1B", fontsize=7.4, fontweight="bold", va="top")
-    ax = axes_in(fig, 0.2, 1.36, 1.68, 1.68)
+    fig = plt.figure(figsize=(COL, 3.72))
+    fig.text(0.0, 3.67 / 3.72, "(a) Which head takes a role, 75 models at 1B", fontsize=7.4, fontweight="bold", va="top")
+    ax = axes_in(fig, 0.2, 1.78, 1.68, 1.68)
     cmap = plt.get_cmap("magma").copy()
     cmap.set_bad("#F2F2F2")
     im = ax.imshow(S, cmap=cmap, vmin=0, vmax=0.5, interpolation="nearest")
@@ -141,47 +141,50 @@ def fig1_hook():
         sp.set_visible(False)
     ax.text(0.5, -0.025, f"{n} pretraining corpora per initialization", transform=ax.transAxes, ha="center", va="top", fontsize=6.3,
             color="#555555")
-    cax = axes_in(fig, 1.94, 1.36, 0.07, 1.68)
+    cax = axes_in(fig, 1.94, 1.78, 0.07, 1.68)
     cb = fig.colorbar(im, cax=cax)
     cb.set_ticks([0, 0.25, 0.5], labels=["0", "0.25", "0.5"])
     cb.outline.set_linewidth(0.4)
     cb.ax.tick_params(labelsize=6, length=1.8, width=0.5, pad=1)
     cb.set_label("which-head agreement", fontsize=6.3, labelpad=1.5)
     tx = 2.38 / COL
-    for y, head, v, col in ((2.98, "same init.,\nother corpus", f"{si:.2f}", SEED),
-                            (2.33, "other init.,\nsame corpus", signed(sd), OTHER)):
-        fig.text(tx, y / 3.3, head, fontsize=6.4, va="top", linespacing=1.1)
-        fig.text(tx, (y - 0.27) / 3.3, v, fontsize=11, va="top", color=col, fontweight="bold")
-    fig.add_artist(plt.Line2D([tx + 0.012], [1.565 / 3.3], marker=">", color=INK, ms=2.8, mew=0, transform=fig.transFigure))
-    fig.text(tx + 0.035, 1.6 / 3.3, "initialized\ndifferently\n(App. A)", fontsize=5.9, va="top", color="#555555",
+    for y, head, v, col in ((3.40, "same init.,\nother corpus", f"{si:.2f}", SEED),
+                            (2.75, "other init.,\nsame corpus", signed(sd), OTHER)):
+        fig.text(tx, y / 3.72, head, fontsize=6.4, va="top", linespacing=1.1)
+        fig.text(tx, (y - 0.27) / 3.72, v, fontsize=11, va="top", color=col, fontweight="bold")
+    fig.add_artist(plt.Line2D([tx + 0.012], [1.985 / 3.72], marker=">", color=INK, ms=2.8, mew=0, transform=fig.transFigure))
+    fig.text(tx + 0.035, 2.02 / 3.72, "initialized\ndifferently\n(App. A)", fontsize=5.9, va="top", color="#555555",
              linespacing=1.1)
-    # (b) the two levels of a role map, mean over the nine roles (E59 analysis: within-layer and layer-profile)
+    # (b) correspondence at four levels: layer profile and within-layer head agreement of the nine role maps (E59),
+    # and within-layer agreement of the IOI END->IO attention map and of the IOI single-head ablation map (E74)
     e59 = json.loads((R / "e59" / "analysis.json").read_text())
+    e74 = json.loads((R / "e74" / "analysis.json").read_text())
     roles = [k for k in e59 if isinstance(e59[k], dict) and "SI" in e59[k]]
     val = lambda c, q: float(np.mean([e59[r][c][q] for r in roles]))
-    fig.text(0.0, 1.06 / 3.3, "(b) Layer vs. head within the layer (9 roles)", fontsize=7.4, fontweight="bold", va="top")
-    ax = axes_in(fig, 0.98, 0.3, 1.97, 0.64)
-    groups = [("layer_profile", "which layer"), ("within", "which head\nin the layer")]
-    pairs = [("SI", "same init., other corpus", SEED), ("SD", "other init., same corpus", OTHER),
-             ("DD", "both different", LIGHT)]
-    for gi, (q, _) in enumerate(groups):
-        for pi, (c, _, col) in enumerate(pairs):
-            yy = (1 - gi) * 1.0 + (1 - pi) * 0.26
-            v = val(c, q)
-            ax.barh(yy, v, height=0.22, color=col, zorder=2)
+    rows = [("which layer\n(9 roles)", val("SI", "layer_profile"), val("SD", "layer_profile")),
+            ("which head\n(9 roles)", val("SI", "within"), val("SD", "within")),
+            ("which head:\nIOI attention", e74["att_io"]["SI"], e74["att_io"]["SD"]),
+            ("which head:\nIOI causal effect", e74["single_ablation_drop"]["SI"], e74["single_ablation_drop"]["SD"])]
+    fig.text(0.0, 1.48 / 3.72, "(b) What corresponds across runs (1B)", fontsize=7.4, fontweight="bold", va="top")
+    ax = axes_in(fig, 0.98, 0.3, 1.97, 1.08)
+    for i, (lab, si_, sd_) in enumerate(rows):
+        y0 = (len(rows) - 1 - i) * 1.0
+        for v, dy, col in ((si_, 0.17, SEED), (sd_, -0.17, OTHER)):
+            ax.barh(y0 + dy, v, height=0.3, color=col, zorder=2)
             s = "0.00" if abs(v) < 0.005 else signed(v) if v < 0 else f"{v:.2f}"
-            ax.text(max(v, 0) + 0.012, yy, s, va="center", fontsize=5.8, color=col if col != LIGHT else "#777777")
-    ax.set_yticks([1.0, 0.0], [g[1] for g in groups], fontsize=6.4)
+            ax.text(max(v, 0) + 0.012, y0 + dy, s, va="center", fontsize=5.6, color=col)
+    ax.set_yticks([(len(rows) - 1 - i) * 1.0 for i in range(len(rows))], [r[0] for r in rows], fontsize=5.9,
+                  linespacing=0.95)
     ax.tick_params(axis="y", length=0)
     ax.axvline(0, color=INK, lw=0.6)
     ax.spines["left"].set_visible(False)
     grid(ax, "x")
     ax.set_xlim(-0.05, 0.75)
-    ax.set_ylim(-0.42, 1.42)
+    ax.set_ylim(-0.5, len(rows) - 0.5)
     ax.set_xlabel("agreement between two models", fontsize=6.6)
-    for pi, (c, lab, col) in enumerate(pairs):  # legend in the empty lower right, aligned with the bars
-        yy = (1 - pi) * 0.26
-        ax.barh(yy, 0.03, left=0.42, height=0.16, color=col, zorder=2)
+    for i, (lab, col) in enumerate((("same init., other corpus", SEED), ("other init., same corpus", OTHER))):
+        yy = 1.25 - i * 0.42
+        ax.barh(yy, 0.03, left=0.42, height=0.24, color=col, zorder=2)
         ax.text(0.465, yy, lab, fontsize=5.8, ha="left", va="center", color=INK)
     save(fig, "fig1_hook")
     return dict(n_corpora=n, same_seed=round(si, 3), same_corpus=round(sd, 3), n_bad=len(bad))
@@ -207,7 +210,7 @@ def pythia_within():
     return out
 
 
-def fig2_innate():
+def fig2_components():
     d = json.loads((R / "e45" / "analysis.json").read_text())
     S = [s for s in DD_PARAMS if s in d]
     mean_c = lambda s, c: np.mean([d[s][m]["within_layer"][c] for m in ("M1", "M2", "M4") if d[s][m]["decidable"]])
@@ -288,11 +291,11 @@ def fig2_innate():
     tag(ax, 0.24, 1.7, "shared corpus", ACQ, size=6.0)
     ax.set_xlabel("gain over unrelated models")
     title(ax, "c", "What the initialization shares", x=-0.82)
-    save(fig, "fig2_innate")
+    save(fig, "fig2_components")
 
 
 # ---------------------------------------------------------------- Fig 3
-def fig3_critical():
+def fig3_early():
     import re
     d = json.loads((R / "e46" / "analysis.json").read_text())
     H = 3.3
@@ -358,7 +361,7 @@ def fig3_critical():
     ax.set_xlabel("share of training")
     ax.set_ylabel("agreement with\nthe final layout")
     title(ax, "b", "Most of the layout is in place by 2–4%", x=-0.2)
-    save(fig, "fig3_critical")
+    save(fig, "fig3_early")
 
 
 # ---------------------------------------------------------------- Fig 4
@@ -618,9 +621,90 @@ def figA_warmup():
     save(fig, "figA_warmup")
 
 
+# ---------------------------------------------------------------- Fig: task circuits (E73 / E74)
+def fig_circuits():
+    """(a) Pythia: ablating the standard model's top-k IOI heads (by direct logit attribution) in its same-initialization
+    deduplicated sibling, relative to ablating the sibling's own top-k, against how concentrated the circuit is (share of
+    positive attribution in the top three heads, mean of the pair); k = 3 filled, k = 10 hollow; grey: independently
+    initialized PolyPythias. (b) DataDecide 1B: set-level transfer of the source's top-k heads (additive single-head
+    ablation drops) for seed-matched, same-corpus and unrelated pairs, and random heads. (c) Seed-matched 1B pairs:
+    transfer (k = 5) against the source circuit's concentration."""
+    e73 = json.loads((R / "e73" / "analysis.json").read_text())
+    e74 = json.loads((R / "e74" / "analysis.json").read_text())
+    H = 1.9
+    fig = plt.figure(figsize=(TXT, H))
+    conc = lambda f: (lambda x: float(np.sort(x)[::-1][:3].sum() / x.sum()))(np.array(json.loads(f.read_text())["dla"]).ravel().clip(0))
+    # (a)
+    ax = axes_in(fig, 0.45, 0.36, 1.6, 1.25)
+    grid(ax)
+    sizes = ["160m", "410m", "1b", "1.4b", "6.9b", "12b"]
+    lab = {"160m": "160M", "410m": "410M", "1b": "1B", "1.4b": "1.4B", "6.9b": "6.9B", "12b": "12B"}
+    for s in sizes:
+        f0, f1 = R / "e73" / f"pythia-{s}.json", R / "e73" / f"pythia-{s}-deduped.json"
+        if s not in e73 or "deduped" not in e73[s]["by_kind"] or not f1.exists():
+            continue
+        c = (conc(f0) + conc(f1)) / 2
+        y = e73[s]["by_kind"]["deduped"]["transfer3"]
+        ax.plot(c, y, "o", color=SEED, mec="white", ms=5, zorder=4)
+        dx, dy = {"160m": (0.012, 0.04), "1b": (0.012, 0.04), "410m": (-0.05, 0.16), "1.4b": (0.025, -0.07),
+                  "6.9b": (-0.075, -0.1), "12b": (-0.06, 0.06)}[s]
+        ax.text(c + dx, y + dy, lab[s], fontsize=5.6, color=SEED)
+        fk = R / "e73" / f"pythia-{s}-deduped_k10.json"
+        if fk.exists():
+            d = json.loads(fk.read_text())
+            yk = (d["logit_diff"] - d["ablate"]["ref10"]) / (d["logit_diff"] - d["ablate"]["own10"])
+            ax.plot(c, yk, "o", mfc="white", mec=SEED, mew=0.9, ms=4.6, zorder=4)
+            ax.plot([c, c], [y, yk], color=SEED, lw=0.6, alpha=0.5, zorder=3)
+        if "seed" in e73[s]["by_kind"]:
+            ax.plot(conc(f0), e73[s]["by_kind"]["seed"]["transfer3"], "s", color=OTHER, mec="white", ms=4.2, zorder=4)
+    ax.axhline(0, color=INK, lw=0.5)
+    ax.set_xlim(0.1, 0.8)
+    ax.set_ylim(-0.15, 1.1)
+    ax.set_xlabel("circuit concentration (top-3 share)")
+    ax.set_ylabel("transfer of top-k heads")
+    tag(ax, 0.12, 1.0, "same init. (deduped), k = 3", SEED, size=5.8, va="top")
+    tag(ax, 0.12, 0.88, "○ k = 10", SEED, size=5.8, va="top")
+    tag(ax, 0.12, 0.76, "■ other init. (PolyPythias)", OTHER, size=5.8, va="top")
+    title(ax, "a", "Pythia: IOI, Pile vs. dedup.", x=-0.25)
+    # (b)
+    ax = axes_in(fig, 2.62, 0.36, 1.45, 1.25)
+    grid(ax)
+    sl = e74["set_level"]
+    ks = sorted(int(k) for k in sl)
+    for key, col, mk, name in (("SI", SEED, "o", "same init."), ("SD", OTHER, "s", "same corpus"),
+                               ("DD", LIGHT, "^", "unrelated"), ("random", INK, "", "random heads")):
+        line(ax, ks, [sl[str(k)][key] for k in ks], col, marker=mk or None, ls=":" if key == "random" else "-", ms=3.2)
+    ax.set_xscale("log")
+    ax.set_xticks(ks, [str(k) for k in ks])
+    ax.minorticks_off()
+    ax.set_xlabel("k (source heads ablated)")
+    ax.set_ylabel("transfer")
+    ax.set_ylim(0, 0.22)
+    tag(ax, 3.1, 0.205, "same init.", SEED, size=5.8, va="top")
+    tag(ax, 3.1, 0.185, "same corpus", OTHER, size=5.8, va="top")
+    tag(ax, 3.1, 0.165, "unrelated", "#999999", size=5.8, va="top")
+    tag(ax, 3.1, 0.145, "random heads", INK, size=5.8, va="top")
+    title(ax, "b", "DataDecide 1B: IOI, 25 corpora", x=-0.3)
+    # (c) IOI heads through training: overlap of the standard and deduplicated models' top-3 heads (E73 timecourse)
+    ax = axes_in(fig, 4.75, 0.36, 1.45, 1.25)
+    grid(ax)
+    tc = json.loads((R / "e73" / "timecourse_analysis.json").read_text())
+    for size, col, name in (("160m", SEED, "160M"), ("410m", BLUE, "410M")):
+        st = sorted(int(s) for s in tc[size])
+        line(ax, [s / 143000 for s in st], [tc[size][str(s)]["std_vs_dedup_top3"] for s in st], col, ms=3.2)
+        tag(ax, 0.5, tc[size][str(st[-1])]["std_vs_dedup_top3"] + 0.07, name, col, size=6.0, ha="center")
+    ax.set_xscale("log")
+    pct(ax)
+    ax.set_ylim(-0.05, 1.0)
+    ax.set_xlabel("share of training")
+    ax.set_ylabel("shared top-3 IOI heads")
+    title(ax, "c", "Pythia siblings during training", x=-0.3)
+    save(fig, "fig_circuits")
+
+
 if __name__ == "__main__":
     import sys
-    fns = {f.__name__: f for f in (fig1_hook, fig2_innate, fig3_critical, fig4_flan, fig4_question, fig5_content,
-                                       figA_temperature, figA_warmup)}
+    fns = {f.__name__: f for f in (fig1_hook, fig2_components, fig3_early, fig4_flan, fig4_question, fig5_content,
+                                       figA_temperature, figA_warmup, fig_circuits)}
     for name in (sys.argv[1:] or fns):
         print(name, fns[name]())

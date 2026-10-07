@@ -17,15 +17,14 @@
 \usepackage{xcolor}
 \usepackage[inline]{enumitem}
 
-\definecolor{innate}{HTML}{D55E00}
-\definecolor{acquired}{HTML}{009E73}
-\newcommand{\innate}[1]{\textcolor{innate}{#1}}
-\newcommand{\acquired}[1]{\textcolor{acquired}{#1}}
+\definecolor{init}{HTML}{D55E00}
+\definecolor{corpus}{HTML}{009E73}
+\newcommand{\byinit}[1]{\textcolor{init}{#1}}
+\newcommand{\bycorpus}[1]{\textcolor{corpus}{#1}}
 \newcommand{\tmpl}[1]{\texttt{#1}}
-\newcommand{\finding}[1]{\paragraph{#1}}
 \newtheorem{lemma}{Lemma}
 
-\title{Born to Copy, Taught to Trust:\\ What Is Innate in a Language Model}
+\title{Which Head Takes Which Role? Initialization Leaves a Trace\\ in Attention-Head Specialization}
 
 \author{Anonymous ACL submission}
 
@@ -33,129 +32,192 @@
 \maketitle
 
 \begin{abstract}
-Is anything in a language model innate?
-We answer with a natural experiment hidden in public pretraining suites, where the same random initializations were trained on up to 25 different corpora (DataDecide, 4M--1B parameters) or on two versions of the Pile (Pythia, 70M--12B).
-What is innate is the model's anatomy.
-Which attention heads become induction, previous-token, retrieval and six other kinds of heads is fixed by the random seed before the model reads a word and recurs on every corpus---so faithfully that the head layout alone identifies a model's seed (98--100\%), while the weights keep a correlation of only 0.04 with their initial values.
-Read blind, the layout even exposes six public checkpoints that were initialized differently from their seed label.
-Everything the model knows and does is acquired: the corpus sets how strong its circuits are and when they form, no seed is lucky on 11 benchmarks at 14 sizes, and a 1\% slice of instruction data teaches a habit---trusting a counterfactual context after the literal template \tmpl{Question:} but not after \tmpl{Q:}---that shapes context-faithfulness evaluation.
-As in Lenneberg's critical period, the innate layout is written in the first 1--2.5\% of training, after which not even a switch to a new language, source code, rewrites it; and it recurs across corpora as far as they share content words: what a corpus is about, not how it speaks.
+Attention heads in a trained language model specialize into roles such as induction, previous-token and retrieval heads, but which head takes which role differs between training runs.
+How much of this difference comes from the random initialization and how much from the training data is unknown, because studies of training variability change only one of the two.
+We separate them with public model suites that train the same initializations on different corpora: DataDecide (three initializations, up to 25 corpora, 4M--1B parameters) and Pythia (one initialization, two versions of the Pile, 70M--12B).
+For nine head roles, models broadly agree on the layer that hosts a role, while which head within that layer takes it follows the initialization rather than the corpus: models that share an initialization agree on it across natural-language corpora, and models that share only a corpus do not.
+In controlled pretraining, this assignment is made during a short early stretch of training: perturbing the weights reassigns roles only within the first few percent of training, while switching the corpus rewrites a share of the assignment that shrinks the later the switch comes.
+How much of it two corpora share follows the similarity of their content words and the learning rate per batch token.
+The initialization's effect on head roles carries across corpora, but its effect on behaviour does not: no initialization performs consistently better across corpora on 10 benchmarks, and removing Flan instruction data (1--2\% of the corpus) changes how models use a counterfactual context after the template \tmpl{Question:} while leaving their head layout as intact as other data ablations do.
 \end{abstract}
 
 \section{Introduction}
+\label{sec:intro}
 
 \begin{figure}[t!]
   \centering
   \includegraphics[width=\columnwidth]{figures/fig1_hook.pdf}
-  \caption{\textbf{Innate anatomy, acquired behaviour.}
-  (a)~Agreement on \emph{which} head in a layer takes a role, between all 75 one-billion-parameter DataDecide models (3 seeds $\times$ 25 corpora), ordered by seed: models grown from one seed agree on every corpus (bright blocks), models grown on one corpus from different seeds do not.
-  Dark lines ($\blacktriangleright$): six runs initialized differently from their seed label (\S\ref{sec:innate}), excluded from the means.
-  (b)~1\% of Flan data in pretraining raises trust in a counterfactual context after \tmpl{Question:}, not after \tmpl{Q:} or \tmpl{Query:} (1B, $\pm$ SE).}
+  \caption{\textbf{Models that share an initialization agree on which heads take each role.}
+  (a)~Agreement on \emph{which} head in a layer takes a role (within-layer rank correlation of head scores, mean over induction, previous-token and retrieval maps) between all 75 one-billion-parameter DataDecide models, three initializations $\times$ 25 corpora, ordered by initialization.
+  Bright blocks: models that share an initialization agree on every corpus; models that share only a corpus do not.
+  $\blacktriangleright$: six runs initialized differently from their label (\S\ref{sec:trace}), excluded from all means.
+  (b)~The two levels of a role map, mean over nine roles: the layer profile is similar for all pairs, the head within the layer only for pairs that share an initialization.}
   \label{fig:hook}
 \end{figure}
 
-Whether language is innate or learned has organized the study of acquisition for half a century.
-One tradition credits children with an innate language faculty \citep{chomsky1965aspects}, another builds language from usage with general-purpose learning \citep{tomasello2003constructing}, and the window in which a first language is acquired natively has been read as the mark of a maturational schedule \citep{lenneberg1967biological}.
-Language models have entered this debate as learners whose inductive biases and input can be controlled \citep{warstadt2022artificial}: they learn possible languages more easily than impossible ones \citep{kallini2024mission}, show no critical period for a second language unless one is engineered into them \citep{constantinescu2025critical}, and acquire innate-like structural biases from pre-pretraining \citep{mita2026lad}.
+Mechanistic interpretability describes a model through the roles of its components: an induction head completes a pattern seen earlier in the context \citep{olsson2022context}, a previous-token head attends to the preceding position, and retrieval heads copy a fact from the context into the prediction \citep{wu2025retrieval}.
+When a model is trained again, its algorithms tend to recur while the components that implement them change \citep{chughtai2023toy,gurnee2024universal,tigges2024llm,bali2026quantifying}.
+Two sources of this change are confounded.
+Studies of seed variability retrain on a fixed corpus \citep{sellam2022multiberts,vanderwal2025polypythias,bali2026quantifying}, and studies that relate mechanisms to data vary the data under one initialization or many unrelated ones \citep{chan2022data,singh2024needs,chen2026mechanistic}.
+Neither design can tell whether the head that takes a role is chosen by the initialization, by the data, or by neither.
 
-These studies ask what a language model can learn from its input.
-We ask what in a language model is innate.
-A language model has exactly one endowment that precedes its experience---the random draw of its initial weights, its \emph{seed}---and one experience, its pretraining corpus.
-We call a property of the trained model \emph{innate} if the seed determines it whatever the corpus, and \emph{acquired} if the corpus determines it whatever the seed.
-Practice assumes that nothing of the seed survives training: seed variation is averaged away as noise \citep{reimers2017reporting,dodge2020fine,sellam2022multiberts}, training is held to erase the initialization \citep{das2026forget}, and interpretable circuits are traced to the data that formed them \citep{chen2026mechanistic}.
-Testing it requires the same seed grown on different corpora, an experiment that public suites have already run.
-DataDecide \citep{magnusson2025datadecide} trains three seeds on up to 25 corpora at each of 14 sizes, and Pythia \citep{biderman2023pythia} trains a model on the Pile and on the deduplicated Pile from one initialization at every size up to 12B parameters.
-Their 800 models, with controlled pretraining runs of our own, let us separate the two.
+We separate the two with a natural experiment that public pretraining suites already contain.
+DataDecide \citep{magnusson2025datadecide} trains three initializations on up to 25 corpora at each of 14 sizes, and Pythia \citep{biderman2023pythia} trains one initialization on the Pile and on the deduplicated Pile at every size up to 12B parameters.
+Comparing models that share an initialization but not a corpus with models that share a corpus but not an initialization shows how much each factor contributes.
+For nine head roles we ask two questions: which layer hosts the role, and which head within that layer takes it.
+Heads within a layer are interchangeable, so independently initialized models agree on the second question only by chance, which gives every comparison a baseline of zero (\S\ref{sec:setup}).
 
-\textbf{What is innate is the anatomy} (Figure~\ref{fig:hook}a).
-Which heads become a model's induction, previous-token and retrieval heads---the copying circuitry behind in-context learning \citep{olsson2022context}---is fixed by its seed and recurs on every corpus, for all nine head roles we measure, at every size and in both suites.
-The layout identifies the seed with 98--100\% accuracy although the trained weights keep a correlation of only 0.04 with their initial values; read blind, it even exposes six DataDecide checkpoints that were initialized differently from their seed label.
-The weights forget the seed; the circuits remember it.
-Language models are \emph{born to copy}: where they will copy is decided before they read a word.
+The two questions have different answers (Figure~\ref{fig:hook}).
+All models largely agree on the layer.
+Only models that share an initialization agree on the head within the layer, and they do so across corpora: under one initialization, the same head of layer~7 is the strongest induction head on 14 of 25 corpora (chance: 1.6).
+The agreement holds for all nine roles, at all 14 DataDecide sizes and in Pythia up to 12B, and it is specific enough to tell which initialization a model came from.
+Comparing layouts without labels, we found six DataDecide checkpoints that, as their released weights confirm, were initialized differently from their label (\S\ref{sec:trace}).
 
-\textbf{What is acquired is everything the model knows and does.}
-How strong its circuits are, when they form, what it represents and how it performs on 11 benchmarks come from the corpus, with no main effect of the seed.
-One acquired habit shows how specific this teaching is (Figure~\ref{fig:hook}b): a 1\% slice of instruction data teaches a model to trust a counterfactual context when the question is introduced by \tmpl{Question:}, not by the equivalent \tmpl{Q:}, across sizes, datasets and two independent training stacks.
-Language models are \emph{taught to trust}, and how much they trust a context depends on the template a benchmark happens to use.
+We then ask when the assignment is made and what decides how much of it carries over to another corpus.
+In controlled pretraining, switching the corpus or perturbing the weights during the first 1\% of training reassigns the roles; a few percent later, a model returns to its assignment even after noise as large as its weights, and a switch of corpus rewrites only part of it, less the later it comes (\S\ref{sec:when}).
+How much of the assignment two corpora share follows the similarity of their content words, and how strongly the initialization decides it at all follows the learning rate per batch token, which also explains why larger DataDecide models agree more (\S\ref{sec:conditions}).
 
-\textbf{The two meet in a critical period.}
-As in Lenneberg's account, the innate layout is written early: in controlled pretraining, switching the corpus or adding noise during the first 1\% of training re-draws it, whereas from 2.5\% on even noise as large as the weights returns every role to its head.
-The layout then recurs across corpora as far as they share \emph{content words}---what the corpora are about---while their function words, how they speak, play no part.
+Finally, we ask whether the initialization's effect on heads carries over to behaviour (\S\ref{sec:boundary}).
+How strong a circuit becomes, when it forms and how a model scores on 10 benchmarks follow the corpus, and no initialization does consistently better across corpora.
+A case study on one data component makes the division concrete.
+Removing Flan, 1--2\% of Dolma~1.7, changes how models use a counterfactual context introduced by Flan's template \tmpl{Question:}, while the head layout of these models stays as close to its seed-matched siblings as under any other change of corpus.
+The attention that Flan adds to the context after \tmpl{Question:} is spread over the heads that already attend to it: the data changes what the existing retrieval heads do, not which heads they are.
 
 Our contributions are:
 \begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
-  \item A \textbf{natural experiment on nature and nurture in language models}, built from seed $\times$ corpus crossings in public suites at 21 model sizes from 4M to 12B parameters, with a measurement that separates which layer from which head hosts a role and a symmetry argument under which the corpus provably cannot choose the head (\S\ref{sec:setup}).
-  \item \textbf{Innate anatomy, acquired function}: head placement is inherited from the seed, identifies it and exposes checkpoints whose initialization differs from their label; knowledge, timing, benchmarks and behaviour are learned, and no seed is lucky (\S\ref{sec:innate}, \S\ref{sec:acquired}).
-  \item \textbf{A template habit learned from 1\% of pretraining data}, keyed to \tmpl{Question:}, present in public base models, with consequences for context-faithfulness evaluation (\S\ref{sec:question}).
-  \item \textbf{A critical period shaped by what the corpus is about}: the layout is written in the first 1--2.5\% of training and shared across corpora according to their content words, not their function words (\S\ref{sec:critical}, \S\ref{sec:content}).
+  \item A seed $\times$ corpus design built from public suites at 21 sizes from 4M to 12B parameters, with a measurement that separates which layer from which head hosts a role and a permutation-symmetry baseline (\S\ref{sec:setup}).
+  \item Evidence that which head within a layer takes each role follows the shared initialization rather than the corpus, at every size and for every role we measure, together with an audit of the suites' initializations (\S\ref{sec:trace}).
+  \item Controlled experiments that locate when the assignment is fixed and identify corpus content and the stochastic-gradient noise scale as what determines how much of it is kept (\S\ref{sec:when}, \S\ref{sec:conditions}).
+  \item Evidence that this structural effect does not carry over to behaviour, with a case study of a template habit that 1--2\% of the pretraining data strengthens while the head layout is preserved, and its consequences for knowledge-conflict evaluation (\S\ref{sec:boundary}).
 \end{itemize}
 
-\section{A Natural Experiment}
+\section{Setup and Measurement}
 \label{sec:setup}
 
-\paragraph{Seeds crossed with corpora.}
-DataDecide \citep{magnusson2025datadecide} pretrains OLMo-style models at 14 sizes (4M--1B parameters) on 25 corpus recipes---C4, DCLM and its quality-filtered variants, Dolma~1.6/1.7 and their ablations, Falcon RefinedWeb variants, FineWeb-Edu/-Pro and mixtures---each with three seeds.
-Within a size, a seed's initial weights are shared across recipes, so each seed has been grown on up to 25 corpora; we confirm every run's initialization from its released weights (Appendix~\ref{app:audit}).
-Pythia \citep{biderman2023pythia} trains a standard and a deduplicated model from identical initial weights at every size; we use 70M--12B, with the independently initialized PolyPythias \citep{vanderwal2025polypythias} as a different-seed reference.
+\paragraph{Initializations crossed with corpora.}
+DataDecide pretrains OLMo-style models at 14 sizes (4M--1B parameters) on 25 corpus recipes---C4, DCLM and its quality-filtered variants, Dolma~1.6/1.7 and their ablations, Falcon RefinedWeb variants, FineWeb-Edu/-Pro and mixtures---each with three seeds.
+Within a size, a seed's initial weights are shared across recipes, so each initialization has been trained on up to 25 corpora.
+Pythia trains a standard and a deduplicated model from identical initial weights at every size; we use 70M--12B, with the independently initialized PolyPythias \citep{vanderwal2025polypythias} as a reference.
+A DataDecide seed sets both the initial weights, which we check for every run (Appendix~\ref{app:audit}), and the data order. The order is not tied to any head and yields different batches on different corpora, so of what seed-matched runs share, only the initial weights can favour a particular head.
+Model pairs fall into three types: \emph{same initialization, other corpus} (seed-matched pairs); \emph{other initialization, same corpus}; and both different.
 
-\paragraph{Pairs.}
-A crossing contains three kinds of model pairs: \emph{same seed, other corpus}; \emph{other seed, same corpus}; and both different.
-A property is \innate{innate} if same-seed pairs agree more than same-corpus pairs, \acquired{acquired} if the reverse holds, and universal if all pairs agree.
+\paragraph{Head-role maps.}
+For each model we compute a [layer $\times$ head] map for each of nine roles from fixed probe material (Appendix~\ref{app:roles}): induction, previous-token, retrieval (attention from the answer position to the context entity in knowledge-conflict prompts), attention sink \citep{xiao2024efficient}, duplicate-token, current-token, two-back and delimiter heads, and each head's OV copying score, which is computed from the weights alone \citep{elhage2021mathematical}.
 
-\paragraph{Reading the anatomy.}
-For each model we compute a [layer $\times$ head] map for each of nine head roles from fixed probe material (Appendix~\ref{app:roles}): induction, previous-token, retrieval (attention from the answer position to the context entity in knowledge-conflict prompts), attention sink \citep{xiao2024efficient}, duplicate-token, current-token, two-back and delimiter heads, and, as a measure that involves no attention pattern, each head's OV copying score computed from its weights alone \citep{elhage2021mathematical}.
-A role map answers two questions at once: which \emph{layer} hosts the role and which \emph{head} within that layer takes it.
-We measure the first with the rank correlation of per-layer profiles and the second, the \emph{which-head agreement}, with the Spearman correlation of the head scores within each layer, averaged over layers.
+\paragraph{Two levels of agreement.}
+A role map says which \emph{layer} hosts a role and which \emph{head} within the layer takes it.
+We compare two models on the first with the rank correlation of their per-layer profiles and on the second with the \emph{which-head agreement}: the Spearman correlation of head scores within each layer, averaged over layers.
 
-\paragraph{The corpus cannot choose the head.}
-Heads within a layer are interchangeable: permuting them, with their query, key, value and output weights, leaves the network's function unchanged, the initialization distribution is invariant to the permutation, and gradient-based optimizers respect it.
-Whatever the corpus, each head is therefore equally likely to become, say, the induction head, and two independently initialized models agree on which head does only at chance---a which-head agreement of exactly zero in expectation (Lemma~\ref{lem:symmetry}, Appendix~\ref{app:lemma}).
-A corpus can never \emph{choose} a head; agreement above zero between models trained on different corpora is carried by their shared seed.
-The empirical question is whether the seed's choice survives a change of corpus.
+\paragraph{The chance baseline.}
+Permuting the heads of a layer, together with their query, key, value and output weights, leaves the network's function unchanged; the initialization distribution and gradient-based training respect this symmetry.
+Two independently initialized models therefore agree on which head takes a role only by chance, and their expected which-head agreement is exactly zero, whatever their corpora (Lemma~\ref{lem:symmetry}, Appendix~\ref{app:lemma}).
+Agreement above zero between models trained on different corpora thus measures what their shared initialization carries through training.
 
-\paragraph{Reading behaviour.}
-For function we use DataDecide's 11 benchmark evaluations (Table~\ref{tab:benchmarks}), circuit strength and developmental timing, and \emph{context trust}: on knowledge-conflict prompts that state a counterfactual fact, the log-probability margin of the counterfactual over the memorized answer, on facts the model knows \citep{li2025taming,du2024context}.
+\paragraph{Behaviour.}
+We use DataDecide's 11 benchmark evaluations, circuit strength and developmental timing, and \emph{context trust}: on knowledge-conflict prompts that state a counterfactual fact, the log-probability margin of the counterfactual over the memorized answer, on facts the model knows \citep{li2025taming,du2024context}.
 
-\section{Innate: Where the Circuits Live}
-\label{sec:innate}
+\section{Heads Follow the Initialization}
+\label{sec:trace}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig2_innate.pdf}
-  \caption{\textbf{The seed places the heads.}
-  (a)~Which-head agreement (mean over induction, previous-token and retrieval maps) for DataDecide model pairs grown from the same seed on different corpora and from different seeds on the same corpus, at 14 sizes, and for Pythia models grown from one seed on the Pile and on the deduplicated Pile, up to 12B.
-  (b)~Identifying a model's seed from its head layout, leaving its corpus out: accuracy at the end of training and at 3--5\% of training.
-  (c)~Similarity gained over unrelated models by sharing the seed or the corpus: the seed is shared in index-aligned quantities (which head, which residual dimension), the corpus in unit-invariant ones (CKA, best match).}
-  \label{fig:innate}
+  \caption{\textbf{The trace across sizes, as an identifier, and in other quantities.}
+  (a)~Which-head agreement (mean over induction, previous-token and retrieval maps) for DataDecide pairs with the same initialization and different corpora and with different initializations and the same corpus, at 14 sizes, and for Pythia's two models from one initialization, up to 12B.
+  (b)~Identifying a model's initialization from its head layout, leaving its corpus out, at the end of training and at 3--5\% of training.
+  (c)~Similarity gained over unrelated models by sharing the initialization or the corpus: the initialization is shared in index-aligned quantities, the corpus in unit-invariant ones.}
+  \label{fig:trace}
 \end{figure*}
 
 \input{tables/tab_roles}
 
-\finding{Finding 1: The seed decides which head takes each role.}
-In the 1B crossing, two models grown from the same seed on different corpora agree on which head within a layer takes each role, whereas two models grown on the same corpus from different seeds agree at chance (Table~\ref{tab:roles}a, Figure~\ref{fig:hook}a).
-Concretely, under one seed a single head of layer 7 is the strongest induction head on 14 of the 25 corpora, where chance predicts 1.6.
-The pattern holds for all nine roles (0.18--0.43 against $-0.02$ to $0.00$), including the copying score computed from the weights alone, with five seeds at 1B, and on corpus pairs that share no data source.
-Decomposing every head's rank into seed, corpus and residual components gives a median corpus component of exactly zero: the seed effect is significant for 66--79\% of heads, the corpus effect for 4--7\%, the false-positive rate.
-Inheritance holds at all 14 DataDecide sizes, growing with size (Figure~\ref{fig:innate}a; Spearman with log parameters 0.81--0.92), and in the second suite: Pythia's two models from one seed agree at every size from 70M to 12B, far above a permutation null (Table~\ref{tab:roles}b), while independently initialized PolyPythias seeds agree at chance.
+\paragraph{Same initialization, same heads.}
+In the 1B crossing, models with the same initialization agree on which head within a layer takes each role, while models with different initializations agree at chance, even on the same corpus (Table~\ref{tab:roles}a, Figure~\ref{fig:hook}).
+This holds for all nine roles (0.18--0.43 against $-0.02$ to $0.00$), including the copying score computed from the weights alone, with five initializations at 1B, and on corpus pairs that share no data source.
+Agreement is not limited to the ranking of weak heads: in the three layers where a role is strongest, the strongest head of two seed-matched models is the same one 2--5 times as often as chance (12--30\% against 6\%; Appendix~\ref{app:roles}).
+When every head's within-layer rank is decomposed into initialization, corpus and residual components, the initialization is significant for 66--79\% of heads, that is, an initialization favours the same heads across corpora; the corpus main effect, which the symmetry rules out, is at the false-positive rate (4--7\%).
+The agreement holds at all 14 DataDecide sizes and grows with size (Figure~\ref{fig:trace}a; Spearman with log parameters 0.81--0.92).
+In Pythia, the two models from one initialization agree at every size from 70M to 12B, far above a permutation null (Table~\ref{tab:roles}b), while independently initialized PolyPythias agree at chance.
 
-\finding{Finding 2: The layout is a birth certificate.}
-We hold out a model, compare its head layout with the models grown from each seed on the \emph{other} corpora, and assign it to the seed whose models it resembles most.
-From 60M parameters on, this identifies the seed with 98--100\% accuracy (chance: 33\%, or 20\% with five seeds), including all 69 one-billion-parameter models, and already at 3--5\% of training (Figure~\ref{fig:innate}b, Table~\ref{tab:sizes}); in Pythia the true sibling ranks first among ten candidates at all three sizes with independently initialized alternatives.
-Applied without labels to the 75 one-billion-parameter models, the layout singles out six runs that agree with none of their nominal siblings but pairwise with each other (Figure~\ref{fig:hook}a, dark lines).
-Their published weights confirm it: the six runs were not initialized from their labelled seed's weights (correlation 0.000), and each pair shares an initialization of its own (Table~\ref{tab:audit}).
-SeedPrints \citep{tong2026seedprints} identifies a lineage of weights from output biases; the anatomy identifies independently trained siblings whose weights have long diverged.
+\paragraph{Depth is shared across models.}
+The layer profile of each role agrees at 0.4--0.7 for every pair type (Figure~\ref{fig:hook}b), and all 75 1B models implement in-context copying with the same two-step algorithm, a previous-token head composing with an induction head.
+Where in depth a role lives and how it is computed are largely common to all models; the initialization, not the corpus, biases which of the interchangeable heads in a layer carries it.
 
-\finding{Finding 3: The weights forget the seed; the coordinates do not.}
-Final weights correlate with their initial values at only 0.03--0.09, and same-seed models trained on different corpora are not linearly connected: the loss barrier between them \citep{frankle2020linear} is 7.5 nats, close to the 7.8 between unrelated models and above the 7.0 between models that share only their corpus.
-Their representations are no more alike than unrelated models' under unit-invariant measures---CKA \citep{kornblith2019similarity} and best-match similarity, both highest for models that share a corpus---and MLP neurons do not inherit their identity (0.008).
-What the seed fixes is a coordinate system: which head hosts which role, which residual dimensions carry variance (0.20 vs.\ 0.00) and which carry the massive outlier activations (0.17 vs.\ 0.00; Figure~\ref{fig:innate}c).
+\paragraph{The layout is specific to the initialization.}
+We hold out a model, compare its head layout with the models trained from each initialization on the \emph{other} corpora, and assign it to the closest one.
+From 60M parameters on, this identifies the initialization with 98--100\% accuracy (chance: 33\%, or 20\% with five seeds), including all 69 verified 1B models, and already at 3--5\% of training (Figure~\ref{fig:trace}b, Table~\ref{tab:sizes}); in Pythia, the true sibling ranks first among ten candidates at all three sizes with independently initialized alternatives.
+Applied without labels to the 75 1B models, the layout singles out six runs that agree with none of their nominal siblings but pairwise with each other (Figure~\ref{fig:hook}a, $\blacktriangleright$).
+Their released weights confirm that these runs were not initialized from their seed's weights (correlation 0.000) and that each pair shares an initialization of its own (Table~\ref{tab:audit}).
 
-\finding{What is universal.}
-The layer that hosts each role is shared by all models regardless of seed or corpus (layer-profile agreement 0.4--0.7 for both pair types), and every 1B model implements in-context copying with the same algorithm, a previous-token head composing with an induction head (75 of 75 models).
-What the seed decides is exactly \emph{which} of the interchangeable heads in a layer takes each role.
+\paragraph{What carries the trace.}
+Seed-matched models on different corpora have drifted far apart: their weights correlate at only 0.01--0.04 (other pairs 0.000), enough to identify the initialization (Table~\ref{tab:ident}), they are not linearly connected (loss barrier 7.5 nats, against 7.8 for unrelated models; \citealp{frankle2020linear}), and under unit-invariant measures, CKA \citep{kornblith2019similarity} and best-match similarity, their representations are no closer than those of unrelated models (Figure~\ref{fig:trace}c).
+What they share are index-aligned quantities: which head hosts a role, and which residual dimensions carry most variance (0.20 vs.\ 0.00) and the massive outlier activations (0.17 vs.\ 0.00).
+The head layout is the functional form of this trace.
 
-\section{Acquired: What the Model Knows and Does}
-\label{sec:acquired}
+\section{When the Assignment Is Fixed}
+\label{sec:when}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig3_critical.pdf}
+  \caption{\textbf{The assignment is fixed early.}
+  (a)~Controlled pretraining (4 layers $\times$ 8 heads, 10k steps): agreement of the final layout with the uninterrupted run after switching the corpus to code or adding Gaussian noise to every weight at a given step; hollow circles: a 12-layer model.
+  (b)~Agreement of the layout with its own final layout during training, in public suites and controlled runs; star: Pythia-12B at 2.1\%.
+  Shaded: 1--2.5\% of training.}
+  \label{fig:when}
+\end{figure}
+
+\input{tables/tab_critical}
+
+\paragraph{Intervening during training.}
+We pretrain small Llama-style models on C4 and branch them at step $k$ of 10{,}000, either switching the corpus to source code or adding Gaussian noise to every weight (Figure~\ref{fig:when}a, Table~\ref{tab:critical}).
+Up to $k = 100$ (1\% of training), both interventions reassign the roles: after a switch to code, agreement with the uninterrupted run is 0.09, and noise as large as the weights leaves 0.03 at step 0 and 0.36 at step 100.
+From $k = 250$ (2.5\%) on, the model returns to its assignment after the same noise (0.85 at 2.5\%, 0.95--0.98 from 5\%, the level of an exact rerun).
+A switch to code still rewrites part of the layout, a smaller part the later it comes: agreement is 0.60 at 2.5\%, 0.71 at 10\% and 0.95 at 80\%.
+A 12-layer model behaves alike: a switch to code at 1\% keeps 0.40 of the layout and at 10\% 0.84, while training on code from the start keeps none.
+
+\paragraph{What closes the window.}
+The early steps are also the warm-up of the learning rate (300 steps), and the branches inherit the optimizer's state, so we repeat the noise branches with a 1{,}000-step warm-up and, separately, with a freshly initialized optimizer (Appendix~\ref{app:warmup}).
+With the longer warm-up the window closes later in steps (0.70 at 2.5\%, 0.87 from 5\%), and the two schedules align when agreement is plotted against the learning applied before the intervention, the cumulative learning rate (Figure~\ref{fig:warmup}).
+Resetting the optimizer changes little (0.81, 0.91 and 0.97 at 2.5, 5 and 10\%).
+The window thus tracks the amount of early learning more closely than the number of steps, and the assignment it leaves is held in the parameters rather than in the optimizer state.
+
+\paragraph{Public suites.}
+The public models also settle early (Figure~\ref{fig:when}b).
+The same-initialization agreement of the DataDecide 1B models reaches its final level by 3.6\% of training, Pythia's previous-token heads stabilize by about 2\%, and Pythia-12B's two models already share their layout at 2.1\% (Table~\ref{tab:roles}b).
+Before training, none of the statistics of a head's initial weights or initial gradient that we tested predicts which head will take a role, so the assignment is not readable at step 0; it is set by the first steps of training on top of the initialization.
+
+\section{What Decides How Much Is Kept}
+\label{sec:conditions}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig5_content.pdf}
+  \caption{\textbf{Similar content words, similar heads.}
+  (a)~1B pairs of DataDecide corpora that share no data source: Jensen--Shannon distance between their content-word distributions vs.\ the which-head agreement of same-initialization models trained on them.
+  (b)~Negative partial Spearman correlation between distance and agreement for content words (controlling for function words) and for function words (controlling for content words), by size; bars span the three roles; $\dagger$: 1B with five seeds at 10\% of training.}
+  \label{fig:content}
+\end{figure}
+
+The agreement between same-initialization models varies: across corpus pairs, across sizes and across training setups.
+Two quantities track this variation.
+
+\paragraph{Corpus similarity.}
+Across DataDecide's corpus pairs, the Jensen--Shannon distance between two corpora's unigram distributions predicts how closely an initialization's layout recurs on both.
+The relation holds at every size from 60M on and strengthens with size (Spearman $-0.20$ to $-0.33$ at 60M, $-0.65$ to $-0.83$ from 300M on, $-0.76$ to $-0.80$ across the 300 corpus pairs at 1B; Mantel $p < 0.001$ from 90M; Table~\ref{tab:sizes}), on pairs that share no data source ($-0.36$ to $-0.82$), and after partialling out source overlap.
+Bigram distance predicts less ($-0.55$ to $-0.62$ at 1B).
+Splitting the vocabulary into function words \citep{yang2026function} and content words shows which part of the distribution matters (Figure~\ref{fig:content}).
+Content-word distance predicts agreement at every size ($\rho$ from $-0.23$ to $-0.69$), also when function-word distance is controlled (partial $\rho$ $-0.25$ to $-0.78$), whereas function-word distance, once content words are controlled, no longer predicts lower agreement (its partial $\rho$ turns positive, $\ge 0.09$, as two collinear distances do); the English web corpora in DataDecide use function words alike.
+Controlled pretraining extends the relation to more distant corpora: C4 and scientific papers share the layout (0.19 $\pm$ 0.06 over nine initializations), pairs involving source code share none ($\approx$ 0), and Pythia's two versions of the Pile, nearly identical in content, share it most.
+
+\paragraph{Gradient noise.}
+Which head takes a role is settled when the symmetry between heads breaks early in training, by the initialization together with the gradient noise of those steps.
+The noise of stochastic gradients scales with the learning rate per example in a batch \citep{smith2018bayesian,jastrzebski2018three}, and lowering it lets the initialization decide more.
+At fixed model size, runs that differ only in the order of their batches agree 0.43 with 16-sequence batches and 0.90 with 512-sequence batches, and same-initialization agreement between C4 and scientific papers rises from 0.01 to 0.22 (Appendix~\ref{app:temperature}); tripling the learning rate acts like quartering the batch.
+This can account for the growth with size in DataDecide: its recipes lower the learning rate per batch token 140-fold from 4M to 1B, whereas a 30$\times$ larger controlled model at a fixed rate keeps no more of its initialization, and Pythia, trained with large batches at every size, keeps it at 70M.
+
+\section{Behaviour Follows the Corpus}
+\label{sec:boundary}
 
 \begin{table}[t]
   \centering
@@ -163,185 +225,111 @@ What the seed decides is exactly \emph{which} of the interchangeable heads in a 
   \setlength{\tabcolsep}{2.4pt}
   \begin{tabular}{@{}llr@{}}
     \toprule
-    Property & Set by & Key statistic \\
+    Property & Follows & Key statistic \\
     \midrule
-    Which head takes a role & \innate{seed} & 0.18--0.43 vs.\ 0.00 \\
-    Residual-stream coordinates & \innate{seed} & 0.20 vs.\ 0.00 \\
-    Layer that hosts a role & universal & 0.4--0.7, all pairs \\
-    Copying algorithm & universal & 75 / 75 models \\
-    Circuit strength & \acquired{corpus} & 4 / 6 measures \\
-    Onset of induction heads & \acquired{corpus} & 81\% vs.\ 0\% \\
-    Representation content & \acquired{corpus} & CKA, best match \\
-    11 benchmarks, 14 sizes & \acquired{corpus} & seed sig.\ 4--8\% \\
-    Knowledge-conflict behaviour & \acquired{corpus} & seed sig.\ 0 / 12 \\
-    \tmpl{Question:} habit & \acquired{corpus} & $+2.4$ nats \\
-    Weight values & neither & $r = 0.04$ \\
+    Which head takes a role & \byinit{initialization} & 0.18--0.43 vs.\ 0.00 \\
+    Residual coordinates & \byinit{initialization} & 0.20 vs.\ 0.00 \\
+    Layer that hosts a role & all models & 0.4--0.7, all pairs \\
+    Copying algorithm & all models & 75 / 75 models \\
+    Circuit strength & \bycorpus{corpus} & 4 / 6 measures \\
+    Onset of induction heads & \bycorpus{corpus} & 81\% vs.\ 0\% \\
+    Representations & \bycorpus{corpus} & CKA, best match \\
+    10 benchmarks, 14 sizes & \bycorpus{corpus} & init.\ sig.\ 4--8\% \\
+    Knowledge conflicts & \bycorpus{corpus} & init.\ sig.\ 0 / 12 \\
+    \tmpl{Question:} habit & \bycorpus{corpus} & $+2.4$ nats \\
     \bottomrule
   \end{tabular}
-  \caption{\textbf{What is innate and what is acquired.} For each property, the factor that determines it and the key statistic: same-seed vs.\ other-seed agreement; variance share of corpus vs.\ seed; or share of cells with a significant seed effect (5\% is the false-positive rate).}
+  \caption{\textbf{Which properties follow the initialization and which the corpus.} Key statistic: same- vs.\ different-initialization agreement; variance share of corpus vs.\ initialization; or share of cells with a significant initialization effect (5\% is the false-positive rate).}
   \label{tab:map}
 \end{table}
 
-\finding{Finding 4: Everything functional comes from the corpus.}
-How strongly a circuit is expressed is set by the corpus (significant corpus effect on 4 of 6 strength measures, seed component $\approx$ 0).
-So is when it forms: in controlled pretraining with six seeds and three corpora, the corpus explains 81\% of the variance in the onset of induction heads and the seed none ($p$ = 0.0001 vs.\ 0.47), whereas previous-token heads form at the same time under every seed and corpus.
-Across 11 benchmarks $\times$ 14 sizes, the seed has a significant main effect in 3.9\% (accuracy) and 7.8\% (per-byte likelihood) of the 154 cells---the false-positive rate---and the corpus in 75\% and 98\% (median variance components: seed 0.000, corpus 0.49--0.83; Table~\ref{tab:benchmarks}).
-Behaviour under knowledge conflict shows no seed effect either (0 of 12 conditions).
-There are no lucky seeds: all seed variance in function is seed $\times$ corpus interaction, so a seed that does well on one corpus is no more likely to do well on another (Table~\ref{tab:map}).
+\paragraph{Strength, timing and performance follow the corpus.}
+How strongly a circuit is expressed follows the corpus (significant corpus effect on 4 of 6 strength measures, initialization component $\approx$ 0), and so does when it forms: in controlled pretraining with six initializations and three corpora, the corpus explains 81\% of the variance in the onset of induction heads and the initialization none ($p$ = 0.0001 vs.\ 0.47).
+Across 10 benchmarks and their average at 14 sizes, the initialization has a significant main effect in 3.9\% (accuracy) and 7.8\% (per-byte likelihood) of the 154 cells, about the 5\% expected by chance, and the corpus in 75\% and 98\% (median variance components: initialization 0.000, corpus 0.49--0.83; Table~\ref{tab:benchmarks}); behaviour under knowledge conflict shows no initialization effect in any of 12 conditions.
+What the initialization does contribute is specific to the corpus it is trained on (with one run per cell, interaction and run-to-run noise are not separable): an initialization that does well on one corpus is no more likely to do well on another (Table~\ref{tab:map}).
 
-\subsection{A Template Habit from 1\% of the Data}
+\subsection{Case Study: A Data Component and the \tmpl{Question:} Template}
 \label{sec:question}
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig4_question.pdf}
-  \caption{\textbf{The \tmpl{Question:} habit is learned from pretraining data.}
-  Added trust in a counterfactual context (log-probability margin of the counterfactual over the memorized answer, relative to a declarative prompt; nats, $\pm$ SE).
-  (a)~Flan minus no-Flan DataDecide models at every size, for the Flan template and two equivalent templates.
-  (b)~During pretraining of the 1B models: present at the first checkpoint (3.6\%); declarative prompts unaffected.
-  (c)~OLMo~2 1B before and after mid-training on a mixture with 16.6\% FLAN (three mid-training runs).
-  (d)~PopQA counterfactuals and NQ-Swap (\tmpl{Question:} vs.\ \tmpl{Q:}).}
-  \label{fig:question}
-\end{figure*}
+  \includegraphics[width=\columnwidth]{figures/fig4_flan.pdf}
+  \caption{\textbf{Flan changes behaviour, not the head layout} (1B).
+  (a)~Flan minus no-Flan models: added trust in a counterfactual context relative to a declarative prompt, by template ($\pm$ SE over initializations).
+  (b)~Which-head agreement (mean over nine roles) of same-initialization pairs with and without Flan, of same-initialization pairs of other Dolma~1.7 ablations, and of different-initialization pairs.
+  (c)~The ten strongest retrieval heads of each Flan model: their share of all heads, of the attention to the context entity, and of the attention that Flan adds after \tmpl{Question:} (relative to \tmpl{Q:}).}
+  \label{fig:flan}
+\end{figure}
 
 \input{tables/tab_template}
 
-The clearest window on what a corpus teaches is a component that some corpora contain and others do not.
-Dolma~1.7 contains about 1--2\% of Flan instruction data \citep{longpre2023flan,soldaini2024dolma}, and DataDecide includes a Dolma~1.7 recipe with Flan removed, trained from the same seeds.
-We compare the two on knowledge-conflict prompts from ParaConflict \citep{li2025taming}, in which one sentence asserts a counterfactual fact (``The capital of France is Rome.'') and is followed either by a declarative continuation or by a question in Flan's format (\tmpl{Question: What is the capital of France? Answer:}).
+The previous results concern where roles are placed and show that performance does not follow the placement.
+This case study asks the converse question for one data component that clearly changes behaviour: does it move the head layout, and where is the behaviour it teaches expressed?
+We compare seed-matched models trained with and without the component.
+Dolma~1.7 contains about 1--2\% of Flan instruction data \citep{longpre2023flan,soldaini2024dolma}, and DataDecide trains a Dolma~1.7 recipe with Flan removed from the same initializations.
+We compare the two on knowledge-conflict prompts from ParaConflict \citep{li2025taming}: one sentence asserts a counterfactual fact (``The capital of France is Rome.'') and is followed by a declarative continuation or by a question in Flan's format (\tmpl{Question: What is the capital of France? Answer:}).
 
-\finding{Finding 5: 1\% of instruction data teaches the model to trust the context after \tmpl{Question:}.}
-Removing Flan lowers the 1B models' trust in the counterfactual context by 1.3--3.5 nats across four kinds of context whenever the prompt is a question, and leaves declarative prompts and the models' knowledge of the facts untouched.
-The effect follows the question format ($+2.23$ nats), not how often the context states the counterfactual, the argument around it or its length.
-In behavioural terms, the share of questions on which a model ignores a one-sentence context and answers from memory falls from 14.3\% to 1.9\%.
+\paragraph{Flan adds trust after \tmpl{Question:}.}
+Removing Flan lowers the 1B models' trust in the counterfactual context by 1.3--3.5 nats across four kinds of context when the prompt is a question, and leaves declarative prompts and the models' knowledge of the facts unchanged.
+The share of questions on which a model ignores a one-sentence context and answers from memory rises from 1.9\% to 14.3\%.
+The effect is tied to Flan's own wording (Figure~\ref{fig:flan}a, Table~\ref{tab:template}): at 1B \tmpl{Question:} alone carries most of it, and across the seven sizes Flan's template exceeds the equivalent \tmpl{Q:}~\dots~\tmpl{A:} by $0.93 \pm 0.29$ nats and \tmpl{Query:}~\dots~\tmpl{Response:} by $0.98 \pm 0.32$, although \tmpl{Q:} is three times as frequent as \tmpl{Question:} in Dolma~1.7; a question about a different entity triggers it as strongly.
+It is present from 3.6\% of pretraining, at sizes from 60M on, on PopQA counterfactuals \citep{mallen2023popqa} and NQ-Swap \citep{longpre2021entity}, and in OLMo~2 \citep{olmo2024olmo2} after mid-training on a mixture with FLAN (Appendix~\ref{app:question}).
 
-\finding{The habit is keyed to a literal template.}
-The trigger is Flan's own wording (Table~\ref{tab:template}).
-\tmpl{Question:} alone carries most of the effect, whereas the equivalent \tmpl{Q:}~\dots~\tmpl{A:} and \tmpl{Query:}~\dots~\tmpl{Response:} leave trust where it is---although \tmpl{Q:} occurs three times as often as \tmpl{Question:} in Dolma~1.7.
-The habit does not read the question: a question about a different entity triggers it as strongly.
+\paragraph{The layout is preserved.}
+Seed-matched models with and without Flan agree on which head takes each role at 0.45 (mean over nine roles), as closely as seed-matched pairs of other Dolma~1.7 ablations (0.40), while different initializations agree at $-0.03$ (Figure~\ref{fig:flan}b).
+Removing Flan changes the behaviour without lowering the agreement that the shared initialization produces.
 
-\finding{It holds across sizes, datasets and stacks.}
-The habit is present at six of seven sizes from 60M to 1B (Figure~\ref{fig:question}a), appears by 3.6\% of pretraining and grows to $+2.4$ nats (Figure~\ref{fig:question}b), and replicates on PopQA counterfactuals \citep[$+1.91$;][]{mallen2023popqa} and on NQ-Swap \citep{longpre2021entity}, where on natural reading-comprehension passages it is strongest after \tmpl{Question:} and extends to \tmpl{Q:} (Figure~\ref{fig:question}d).
-In an independent stack, OLMo~2 \citep{olmo2024olmo2}, mid-training on a mixture containing FLAN raises it from $\approx$ 0 to $+1.4$--$2.3$ nats in each of three independent runs, while trust under declarative prompts falls (Figure~\ref{fig:question}c).
-Taught early, the habit takes a small dose; taught late, a large one: the from-scratch 1B models have it after about 50M Flan tokens, continued pretraining of a Flan-free 60M model on 90M Flan tokens does not install it ($+0.04 \pm 0.04$), and OLMo~2 acquires it within its first 5B tokens of mid-training, which contain about 0.8B FLAN tokens.
-Unlike the roles of \S\ref{sec:innate}, the heads that implement it are consistent within a model (split-half 0.93) but not placed by the seed (0.11 vs.\ 0.02): a function taught by specific data is hosted flexibly.
+\paragraph{Where the habit acts.}
+To locate the habit, we measure each head's attention from the last prompt token to the counterfactual entity, the read-out of the retrieval role, and take the difference between \tmpl{Question:} and \tmpl{Q:} prompts.
+Models trained with Flan attend more to the context after \tmpl{Question:} (summed over heads, $+0.54$), models without Flan less ($-0.21$).
+The added attention is spread over the heads that already attend to the entity: the model's ten strongest retrieval heads carry 30\% of its attention to the entity and receive 29\% of the addition (30\% when the heads are chosen on held-out items; Figure~\ref{fig:flan}c), and models with the same initialization agree on where it falls (0.11, against $-0.03$ for different initializations).
+Flan changes how much the existing retrieval heads attend after its template, not which heads retrieve.
 
-\finding{Consequences for evaluation.}
-Context-faithfulness and knowledge-conflict benchmarks commonly pose their questions in exactly this format, and every public base model we tested trusts a counterfactual context more after \tmpl{Question:} than in a declarative prompt, by 1.0--4.6 nats, most of all the one pretrained with Flan (Table~\ref{tab:public}).
-A model's score on such benchmarks therefore reflects, besides its faithfulness, a habit that a small slice of its pretraining data installed and that a change of template removes.
-This gives prompt-template sensitivity \citep{sclar2024quantifying,hua2025flaw,liu2026prompt} a concrete origin in the pretraining corpus, beside the data properties that shape knowledge use \citep{kim2026training}.
-
-\section{A Critical Period for the Anatomy}
-\label{sec:critical}
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\columnwidth]{figures/fig3_critical.pdf}
-  \caption{\textbf{A critical period.}
-  (a)~Controlled pretraining (4 layers $\times$ 8 heads, 10k steps): agreement of the final layout with the untouched run after switching the corpus to code or adding Gaussian noise to every weight at a given step; hollow circles: a 12-layer model.
-  (b)~Agreement of the layout with its own final layout during training in public suites and controlled runs; star: Pythia-12B at 2.1\%.
-  Shaded: 1--2.5\% of training.}
-  \label{fig:critical}
-\end{figure}
-
-Lenneberg's critical period describes a window in which language is acquired natively and after which the native language is no longer overwritten.
-\citet{constantinescu2025critical} found that language models show no such window for the \emph{behaviour} of a second language.
-Their anatomy has one.
-
-\finding{Finding 6: The layout is written in the first 1--2.5\% of training.}
-We pretrain small Llama-style models on C4 and branch them at step $k$ of 10{,}000 by switching the corpus to source code or by adding Gaussian noise to every weight (Figure~\ref{fig:critical}a; Table~\ref{tab:critical}).
-Up to $k = 100$ (1\%), either intervention re-draws the layout: after a switch to code at 1\%, agreement with the untouched run is 0.09, and noise as large as the weights leaves 0.03 at step 0 and 0.36 at 1\%.
-From $k = 250$ (2.5\%) on, the layout is an attractor: noise as large as the weights themselves returns the roles to their heads (0.85 at 2.5\%, 0.95--0.98 from 5\%, the level of an exact rerun), and a switch to code preserves most of it (0.60 at 2.5\%, rising to 0.95 at 80\%).
-A 12-layer model shows the same window (a code switch at 1\% keeps 0.40, at 10\% 0.84; trained on code from scratch, $\approx 0$).
-The public suites lock in during the same window (Figure~\ref{fig:critical}b): the same-seed agreement of the DataDecide 1B models reaches its final level by 3.6\% of training, Pythia's previous-token heads by about 2\%, and Pythia-12B's two models already share their layout at 2.1\% (Table~\ref{tab:roles}b).
-Before training, the layout cannot be read off the weights---no statistic of a head's initial weights or initial gradient predicts which head will win---so it is written collectively, by the first percent of experience.
-
-\finding{Why larger models are more innate.}
-Which head wins is a symmetry-breaking event, decided by the initial condition and by the noise present at the moment of breaking.
-The lower the stochastic-gradient temperature---the learning rate per token of batch \citep{smith2018bayesian,jastrzebski2018three}---the more the seed alone decides: at fixed size, models that differ only in the order of their batches agree 0.43 with 16-sequence batches and 0.90 with 512-sequence batches, and same-seed agreement across corpora rises from 0.01 to 0.22 (Appendix~\ref{app:temperature}).
-Standard scaling recipes train larger models colder (DataDecide's learning rate per batch token falls 140-fold from 4M to 1B), and a 30$\times$ larger model at fixed temperature inherits no more; Pythia, trained with large batches at every size, is innate already at 70M.
-
-\section{What the Corpus Is About, Not How It Speaks}
-\label{sec:content}
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\columnwidth]{figures/fig5_content.pdf}
-  \caption{\textbf{The layout is shared as far as content is shared.}
-  (a)~1B pairs of DataDecide corpora that share no data source: Jensen--Shannon distance between their content-word distributions vs.\ the which-head agreement of same-seed models trained on them.
-  (b)~Negative partial Spearman correlation between distance and agreement for content words (controlling for function words) and for function words (controlling for content words), by size; bars span the three roles; $\dagger$: 1B with five seeds at 10\% of training.}
-  \label{fig:content}
-\end{figure}
-
-If the layout is chosen while the first percent of the corpus is read, two corpora should yield the same layout to the extent that they present the same early statistics.
-
-\finding{Finding 7: The closer two corpora's content words, the more faithfully the layout recurs.}
-Across DataDecide's corpus pairs, the Jensen--Shannon distance between their unigram distributions predicts how faithfully a seed's layout is reproduced on both.
-The law holds at every size from 60M on and sharpens with scale (Spearman $-0.20$ to $-0.33$ at 60M, $-0.65$ to $-0.83$ from 300M on, $-0.76$ to $-0.80$ across the 300 corpus pairs at 1B; Mantel $p < 0.001$ from 90M; Table~\ref{tab:sizes}), on pairs that share no data source ($-0.36$ to $-0.82$), and after partialling out source overlap.
-Bigram distance predicts less ($-0.55$ to $-0.62$ at 1B): the signal lies in which words a corpus uses.
-Splitting the vocabulary into function words, the statistical scaffold of grammar \citep{yang2026function}, and content words separates how a corpus speaks from what it is about.
-The law is carried by content words (Figure~\ref{fig:content}): content-word distance predicts agreement at every size ($\rho$ $-0.23$ to $-0.69$), also when function-word distance is controlled (partial $\rho$ $-0.25$ to $-0.78$), whereas function-word distance, once content words are controlled, no longer predicts lower agreement at any size (partial $\rho \ge 0.09$)---English web corpora all use their function words alike.
-Beyond this range the law holds in the extreme: in controlled pretraining, C4 and scientific papers share the layout (0.19 $\pm$ 0.06 over nine seeds), whereas any pair involving source code re-draws it ($\approx$ 0), and Pythia's two versions of the Pile, nearly identical in content, share it most of all.
+\paragraph{Consequences for evaluation.}
+Context-faithfulness and knowledge-conflict benchmarks commonly pose questions in exactly this format, and every public base model we tested trusts a counterfactual context more after \tmpl{Question:} than in a declarative prompt, by 1.0--4.6 nats, most of all the model pretrained with Flan (Table~\ref{tab:public}).
+A score on such benchmarks therefore mixes faithfulness with a habit that a small slice of pretraining data strengthens and a change of template removes, which gives prompt-template sensitivity \citep{sclar2024quantifying,hua2025flaw,liu2026prompt} a concrete source in the pretraining corpus.
 
 \section{Related Work}
 \label{sec:related}
 
-\paragraph{Language models as learners.}
-Language models are increasingly used to test claims about acquisition: what is learnable from input \citep{warstadt2022artificial,kallini2024mission}, the order in which words and structures are acquired \citep{chang2022word,chen2024sudden}, critical periods \citep{constantinescu2025critical,mita2025working} and innate constraints \citep{mita2026lad}.
-We study the learner itself and find an innate component that is anatomical rather than linguistic, together with a critical period that the behaviour does not show.
-
-\paragraph{Seeds in NLP.}
-Seed variation is a known source of irreproducibility in fine-tuning and pretraining \citep{reimers2017reporting,dodge2020fine,mccoy2020berts,sellam2022multiberts}, studied as noise to be modelled \citep{benitosantos2025robust} or as convergence across training \citep{fehlauer2025convergence,vanderwal2025polypythias}.
-SeedPrints \citep{tong2026seedprints} shows that a seed leaves an identifiable output signature.
-Varying only the seed, these works cannot tell what the seed contributes beyond noise; crossing seeds with corpora shows that it contributes a heritable anatomy and no function.
+\paragraph{Seeds and training variability.}
+Seed variation is a known source of irreproducibility in fine-tuning and pretraining \citep{reimers2017reporting,dodge2020fine,mccoy2020berts,sellam2022multiberts}, modelled as noise \citep{benitosantos2025robust} or studied as convergence across training \citep{fehlauer2025convergence,vanderwal2025polypythias}; SeedPrints \citep{tong2026seedprints} identifies a seed from output biases.
+Crossing seeds with corpora separates the initialization from the data: its effect on head placement carries across corpora, its effect on behaviour does not.
 
 \paragraph{Universality and stability of circuits.}
-Algorithms recur across models while components vary \citep{chughtai2023toy,gurnee2024universal,tigges2024llm}, attention heads differ across retraining \citep{bali2026quantifying} and specialize along developmental trajectories \citep{wang2025differentiation}, and head functions can be read from parameters \citep{elhelo2025maps}.
-Components vary because they follow the seed, and recur wherever seed and corpus content are shared.
+Hidden units of independently trained networks correspond only up to permutation \citep{li2016convergent,entezari2022role,ainsworth2023git}, and models fine-tuned from one pretrained checkpoint often stay in one basin \citep{neyshabur2020transferred}, though not always \citep{juneja2023linear}.
+Algorithms recur across models while components vary \citep{chughtai2023toy,gurnee2024universal,tigges2024llm}; attention heads differ across retraining \citep{bali2026quantifying}, specialize along developmental trajectories \citep{wang2025differentiation}, and can be read from their parameters \citep{elhelo2025maps}.
+Without any alignment, a shared initialization makes heads correspond across corpora, although the models are not linearly connected.
 
-\paragraph{From data to mechanisms.}
-Data properties shape whether in-context learning emerges \citep{chan2022data,singh2024needs} and which training examples form a head \citep{chen2026mechanistic}.
-These effects concern whether and when a mechanism forms; where it forms is the seed's choice.
+\paragraph{Data and the formation of mechanisms.}
+Data properties decide whether in-context learning emerges \citep{chan2022data,singh2024needs}, and individual training examples shape when a head forms \citep{chen2026mechanistic}.
+We find that the corpus sets whether, when and how strongly a mechanism forms, while the initialization sets where.
+Early training is known to be decisive for what a network can still learn \citep{achille2019critical} and for which basin it ends in \citep{frankle2020linear}; we show the same for which head takes which role.
 
 \paragraph{Knowledge conflicts and prompt format.}
 Whether a model follows a counterfactual context or its memory depends on the context's form and the model's confidence \citep{longpre2021entity,xie2024adaptive,du2024context}, is mediated by competing mechanisms \citep{ortu2024competition}, and shifts with the prompt's wording \citep{zhou2023context,sclar2024quantifying,hua2025flaw,liu2026prompt}; synthetic pretraining shows which data properties make models use both sources \citep{kim2026training}.
-We trace one such format effect to a 1\% slice of natural pretraining data and to a literal template.
+We trace one such format effect to a 1--2\% slice of natural pretraining data.
 
-\section{Implications and Conclusion}
+\section{Discussion and Conclusion}
 \label{sec:conclusion}
 
-\paragraph{For evaluation and reproducibility.}
-No seed is lucky across corpora, so seed selection cannot be transferred between recipes, and sharing seeds across recipes does not reduce the noise of recipe comparisons; mixed-effects analyses should model seed $\times$ corpus interaction rather than a seed main effect.
-Context-faithfulness benchmarks should report their results across question templates.
+\paragraph{Interpretability.}
+A circuit found in one model generalizes to other models in its algorithm and its layers; its head labels transfer only partly, and only to models with the same initialization.
+Ablating the ten heads that matter most for induction in a same-initialization sibling trained on another corpus does 19.5\% of the damage of ablating the model's own, against 10\% for random heads in the same layers and 2.0\% for heads found in a different-initialization model trained on the \emph{same} corpus (1B, six corpora).
+Comparisons of circuits across training data should therefore match initializations, and seed-matched siblings in public suites provide such comparisons: their heads correspond, so differences between their circuits can be attributed to the data.
 
-\paragraph{For interpretability and data attribution.}
-A circuit diagram of one model is a statement about one seed: its algorithm and layers generalize, its head labels do not, except to siblings grown from the same seed on similar corpora.
-Ablating the ten most important heads of a same-seed sibling trained on another corpus does 19.5\% of the damage of ablating the model's own; heads found in a different-seed model trained on the \emph{same} corpus do 2.0\%.
-Data attribution explains whether a circuit forms, not where it lives, and comparisons of models trained on different data should match their seeds.
-Seed-matched siblings are, in turn, a free control: grown from one seed on different corpora, they share an anatomy, so every difference between their circuits is the data's doing.
-
-\paragraph{For model provenance.}
-Because the anatomy outlives the weights, the layout certifies whether two released models grew from one initialization, with no access to their training; read this way, it found the six DataDecide runs whose initialization differs from their label.
-
-\paragraph{For training.}
-The two levers that set how much of a model is innate are in the practitioner's hands: colder training, with larger batches or smaller learning rates, lets the seed fix the layout and makes circuits reproducible across corpora, whereas changing the corpus within the first percent of training draws a new one.
-
-\paragraph{For the nature--nurture question.}
-In the terms of the debate we began with, a language model's innate endowment is not a grammar but an anatomy: a layout of where its computations will live, drawn at random, written into the network during a brief critical period, and indifferent to the language that fills it.
-Everything linguistic---what the model knows, how it behaves, which templates it trusts---is acquired, and acquired with surprising literalness.
-The classical picture of the child is reversed: there the knowledge is innate and its placement flexible; here the placement is innate and the knowledge learned.
+\paragraph{Training and evaluation.}
+Larger batches or smaller learning rates make head assignments more reproducible across corpora; seed selection does not carry over between recipes.
 
 \paragraph{Conclusion.}
-A language model is born with an anatomy and taught everything else.
-Its seed decides, in the first percent of training, which of many interchangeable heads will carry each of its copying circuits, and this decision survives the change of corpus, the forgetting of the initial weights and the rest of training.
-Its corpus decides what those circuits do---down to a habit of trusting whatever follows \tmpl{Question:}.
+Models trained from one initialization on different corpora agree on which heads take each role; the agreement is set by a small amount of early learning and grows with corpus similarity and lower gradient noise, while what the heads do follows the corpus.
 
 \section*{Limitations}
-We study decoder-only transformers pretrained on English corpora, up to 12B parameters.
-The natural experiment extends directly to multilingual suites, where function words differ across languages, and to other architectures as seed-crossed suites become available for them.
-Our interventions on the critical period use models of up to 12 layers; intervening on larger models during their first percent of training is the natural next step.
-The template habit opens two questions we leave to future work: why models key on \tmpl{Question:} rather than an equivalent marker, and which other instruction-data families install habits of their own.
-What at initialization decides which head will win is likewise open.
+We study decoder-only transformers with multi-head attention, pretrained on English corpora, up to 12B parameters, and define head roles through attention patterns and OV circuits; with grouped-query attention, heads are interchangeable only within and across groups, which changes the baseline.
+Multilingual seed-crossed suites would test the corpus-similarity relation where function words differ across corpora, and other architectures can be added as such suites appear.
+Our interventions during training use models of up to 12 layers; intervening on larger models in their first percent of training is the natural next step.
+The template habit is one data component; why models key on \tmpl{Question:} rather than an equivalent marker, and which other instruction-data families install habits of their own, are open.
+Which property of the initialization decides which head will take a role is likewise open.
 
 \section*{Ethical Considerations}
 We analyse publicly released models and datasets under their licences and train small models on public corpora; no human subjects are involved.
@@ -360,6 +348,11 @@ We report our audit of public checkpoints to support their correct use.
 Pythia's standard and deduplicated models have tensor-identical step-0 weights at 70M, 160M, 410M, 1.4B and 2.8B, rounding-level identical weights at 1B (correlation 0.99993) and identical files at 6.9B and 12B.
 For DataDecide we compare one weight matrix of every released step-0 checkpoint with the step 0 of the same seed's C4 run, reading the tensor directly from the hosted files.
 
+\paragraph{All sizes.}
+Below 1B, we use for each size the recipes whose three seeds share their published step-0 weights (by file hash) and the checkpoint listed in Table~\ref{tab:sizes}: the final checkpoint up to 90M, and at larger sizes a checkpoint available for all selected runs (43--98\% of training; 11\% for the five-seed 1B set).
+For every one of these 686 runs we compare the earliest training checkpoint (step 1{,}250; 2{,}500 at 1B) with the step-0 weights of every seed.
+Each correlates with its own seed's step 0 (0.05--0.41, rising with size) and with no other seed's ($\le 0.009$), except one 1B run at 11\% of training (FineWeb-Pro, seed 3), which matches no seed and is excluded.
+
 \paragraph{Training start.}
 A published step-0 checkpoint need not be the state a run started from, so we compare the earliest training checkpoint with every candidate initialization.
 The DataDecide 1B runs of C4, Dolma~1.7 and DCLM correlate at step 2{,}500 only with their own seed's step-0 weights (0.23 vs.\ 0.000).
@@ -369,10 +362,10 @@ PolyPythias' ``weight-seed'' variants at 160M, in contrast, were trained from th
 Six 1B DataDecide runs disagree with all their nominal siblings in Figure~\ref{fig:hook}a: the DCLM-QC 7\% FineWeb-2/3 recipes and the Dolma~1.7 no-math-code / no-Reddit ablations of seed 1, and the Falcon-and-CC QC original / Tulu recipes of seed 3 (Table~\ref{tab:audit}).
 Their published step-0 weights differ from their seed's, their step-2{,}500 weights correlate with no seed's step 0, and each pair's step-2{,}500 weights correlate with each other as strongly as those of two genuine siblings: each pair was trained from an initialization of its own.
 All other 69 runs share their seed's step-0 weights exactly, so the layout flagged exactly the six runs that differ.
-We exclude them from every same-seed and different-seed comparison at 1B.
+We exclude them from every same- and different-initialization comparison at 1B.
 
 \paragraph{A near-duplicate Pythia pair.}
-The released final checkpoint of pythia-2.8b-deduped is nearly identical to that of pythia-2.8b (attention-weight correlation 0.993, embedding correlation 0.985), whereas models grown from one initialization on different data retain a correlation of only 0.03--0.09 with it; we exclude the 2.8B pair.
+The released final checkpoint of pythia-2.8b-deduped is nearly identical to that of pythia-2.8b (attention-weight correlation 0.993, embedding correlation 0.985), whereas models trained from one initialization on different data retain a correlation of only 0.03--0.09 with it; we exclude the 2.8B pair.
 
 \section{Head Roles}
 \label{app:roles}
@@ -383,8 +376,18 @@ The released final checkpoint of pythia-2.8b-deduped is nearly identical to that
 \textbf{Duplicate-token}, \textbf{current-token}, \textbf{two-back} and \textbf{delimiter}: attention to an earlier copy of the current token, to itself, to $t-2$ and to punctuation, on natural text.
 \textbf{OV copying}: the share of positive eigenvalue mass of the head's OV circuit composed with the embedding and unembedding \citep{elhage2021mathematical}, computed from weights alone.
 An induction map is used only when the model has an induction head (maximum score $> 0.3$).
+Split-half reliabilities are 0.99--1.00 for the previous-token, sink, current-token, two-back and delimiter maps, so differences in agreement between roles are not differences in measurement noise.
 
-\section{The Corpus Cannot Choose the Head}
+\paragraph{Agreement on the strongest head.}
+Which-head agreement averages a rank correlation over all layers.
+Restricted to the three layers where a role is strongest at 1B, it is as high or higher (0.19--0.47 for seed-matched pairs, $-0.07$ to $0.03$ for other pairs) than in the remaining layers (0.18--0.43).
+In those three layers, the strongest head of two seed-matched models is the same in 12--30\% of cases across the nine roles (different initializations: 4--9\%; chance: 6\%), and their three strongest heads overlap by 27--48\% (chance: 19\%).
+The example of Section~\ref{sec:intro} is the most consistent of the three initializations: under the other two, the most frequent strongest induction head wins on 11 of 21 and 9 of 23 corpora with an induction head.
+
+\paragraph{Ablation-defined roles.}
+Defining a head's role by the effect of ablating it rather than by its attention pattern gives the same picture, more weakly: maps of each head's contribution to induction and to context use agree at 0.10--0.12 between seed-matched 1B models trained on different corpora and at 0.00 between models with different initializations (six corpora, three initializations).
+
+\section{Head Permutation Symmetry and the Chance Baseline}
 \label{app:lemma}
 \begin{lemma}
 \label{lem:symmetry}
@@ -397,48 +400,83 @@ Then for every corpus $D$, $P(w(\theta_T) = h \mid D) = 1/H$, and two independen
 By (i)--(ii), $\theta_T$ and $\pi\theta_T$ have the same distribution given $D$, so $w(\theta_T)$ is uniform over heads.
 Independent initializations make $w$ and $w'$ independent, so they agree with probability $\sum_h (1/H)^2 = 1/H$; averaging over permutations sends any rank correlation to zero in expectation.
 \end{proof}
-Different-seed pairs indeed agree at $-0.02$ to $0.00$ for all nine roles (Table~\ref{tab:roles}a).
+The lemma fixes the baseline for pairs with independent initializations; it makes no prediction for pairs that share one, whose agreement is the quantity we measure.
+Different-initialization pairs agree at $-0.02$ to $0.00$ for all nine roles (Table~\ref{tab:roles}a).
 
 \section{Results at Every Size}
 \label{app:sizes}
 \input{tables/tab_sizes}
-Table~\ref{tab:sizes} lists, for every DataDecide size, the recipes and seeds used, same-seed and other-seed agreement, seed identification at the end of training and in the earliest checkpoints, the corpus-distance law and the recipe's SGD temperature.
-Inheritance is weak up to 20M parameters, where most models have not yet formed an induction head, and strong from 150M on.
+Table~\ref{tab:sizes} lists, for every DataDecide size, the recipes and seeds used, same- and different-initialization agreement, initialization identification at the end of training and in the earliest checkpoints, the corpus-distance relation and the recipe's learning rate per batch token.
+Agreement is weak up to 20M parameters, where most models have not yet formed an induction head, and strong from 150M on.
+
+\section{Identifying the Initialization}
+\label{app:ident}
+\input{tables/tab_ident}
+Table~\ref{tab:ident} compares identification from the head layout with two baselines on the same leave-one-corpus-out task.
+Final weights identify the initialization at every size: same-initialization pairs keep a weight correlation of 0.01--0.04, other pairs 0.000.
+SeedPrints \citep{tong2026seedprints}, a rank test on final hidden states for random token sequences, identifies it from 60M on; its statistic is also raised for pairs that share only a corpus, which the head layout and the weights are not.
+On the six 1B runs with an unlisted initialization, all three methods agree: each run is closest to its partner run and to none of its nominal siblings.
 
 \section{Controlled Pretraining}
 \label{app:controlled}
-\input{tables/tab_critical}
 Llama-style models (RMSNorm, SwiGLU, RoPE, untied embeddings, OLMo tokenizer): 4 layers $\times$ 8 heads, $d = 256$; and 12 layers $\times$ 12 heads, $d = 768$.
 AdamW (learning rate $10^{-3}$, $\beta = (0.9, 0.95)$, weight decay 0.1), 300 warm-up steps, cosine decay to 10\%, batches of 64 $\times$ 512 tokens, 10{,}000 steps.
 Corpora: the first 400M tokens of single DataDecide sources for web text (C4), code (StarCoder), scientific papers (peS2o) and books (Gutenberg).
 Branches continue from the parent's saved model and optimizer state at step $k \in \{100, 250, 500, 1000, 2000, 4000, 8000\}$, either switching the corpus or adding $\epsilon \cdot \mathrm{std}(W) \cdot \mathcal{N}(0, 1)$ to every tensor (Table~\ref{tab:critical}).
-At initialization the basin is finite: perturbations up to 1\% of the weight scale leave the layout unchanged (0.91--0.99), 10\% partly re-draw it (0.57), and 100\% re-draw it fully (0.05--0.18).
+At initialization the basin is finite: perturbations up to 1\% of the weight scale leave the layout unchanged (0.91--0.99), 10\% partly reassign it (0.74; 0.57 and 0.91 for the two initializations), and 100\% reassign it fully (0.03).
 
-\section{SGD Temperature}
+\section{Warm-up and Optimizer State}
+\label{app:warmup}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/figA_warmup.pdf}
+  \caption{\textbf{The window tracks cumulative learning.} Agreement of the final layout with the uninterrupted run after noise as large as the weights at 1, 2.5, 5, 10 and 20\% of training, against the cumulative learning rate before the intervention (in units of the peak rate), for warm-ups of 300 and 1{,}000 steps; crosses: branches with a freshly initialized optimizer (300-step warm-up). Means over two initializations and the induction and previous-token maps.}
+  \label{fig:warmup}
+\end{figure}
+We repeat the noise branches of Appendix~\ref{app:controlled} with two parents whose learning rate warms up over 1{,}000 instead of 300 steps, branching at $k \in \{100, 250, 500, 1000, 2000\}$, and with branches that discard the parent's AdamW state at $k \in \{250, 500, 1000\}$.
+A parent continued from its own step-2{,}000 state reproduces its final layout (0.995--1.00), so the comparisons are not limited by run-to-run noise.
+With the longer warm-up, a switch to code keeps 0.41 of the layout at 2.5\% and 0.69 at 10\% (0.60 and 0.71 with the default warm-up).
+Changing only the warm-up, with the same initialization and data order, changes part of the final layout (agreement 0.21--0.59 for induction and 0.62--0.67 for previous-token maps), another sign that the first steps of training help decide which head takes a role.
+
+\section{Gradient Noise}
 \label{app:temperature}
 \begin{figure}[h]
   \centering
   \includegraphics[width=\columnwidth]{figures/figA_temperature.pdf}
-  \caption{\textbf{Colder training, more innate.} (a)~Controlled models at step 2{,}000: which-head agreement between runs that differ only in batch order, and between C4 and scientific-paper runs from one seed, against the learning rate per batch token. (b)~DataDecide: same-seed agreement against the recipe's learning rate per batch token.}
+  \caption{\textbf{Less gradient noise, more agreement.} (a)~Controlled models at step 2{,}000: which-head agreement between runs that differ only in batch order, and between C4 and scientific-paper runs from one initialization, against the learning rate per batch token. (b)~DataDecide: same-initialization agreement against the recipe's learning rate per batch token.}
   \label{fig:temperature}
 \end{figure}
 \input{tables/tab_temperature}
-At fixed size we vary the batch (16, 64, 512 sequences) and the learning rate ($3\cdot10^{-3}$, $10^{-3}$, $3\cdot10^{-4}$) and read the layout at step 2{,}000, after the critical period (Table~\ref{tab:temperature}).
+At fixed size we vary the batch (16, 64, 512 sequences) and the learning rate ($3\cdot10^{-3}$, $10^{-3}$, $3\cdot10^{-4}$) and read the layout at step 2{,}000, after the assignment is fixed (Table~\ref{tab:temperature}).
 Order-only agreement is ordered by the learning rate per batch token, and tripling the learning rate acts like quartering the batch.
 
-\section{No Lucky Seeds}
+\section{Initialization Effects on Benchmarks}
 \label{app:benchmarks}
 \input{tables/tab_benchmarks}
-Table~\ref{tab:benchmarks} breaks the benchmark analysis of \S\ref{sec:acquired} down by task.
-The corpus is a significant factor on almost every task and size; the seed reaches significance in 0--2 of 14 sizes per task, as expected by chance, and its median variance share is zero on every task.
+Table~\ref{tab:benchmarks} breaks the benchmark analysis of \S\ref{sec:boundary} down by task.
+The corpus is a significant factor on almost every task and size; the initialization reaches significance in 0--2 of 14 sizes per task, as expected by chance, and its median variance share is zero on every task.
 
 \section{The Template Habit in Detail}
 \label{app:question}
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig4_question.pdf}
+  \caption{\textbf{The \tmpl{Question:} habit across sizes, training and datasets.}
+  Added trust in a counterfactual context (log-probability margin of the counterfactual over the memorized answer, relative to a declarative prompt; nats, $\pm$ SE).
+  (a)~Flan minus no-Flan DataDecide models at every size, for the Flan template and two equivalent templates.
+  (b)~During pretraining of the 1B models: present at the first checkpoint (3.6\%); declarative prompts unaffected.
+  (c)~OLMo~2 1B before and after mid-training on a mixture with 16.6\% FLAN (three mid-training runs).
+  (d)~PopQA counterfactuals and NQ-Swap (\tmpl{Question:} vs.\ \tmpl{Q:}).}
+  \label{fig:question}
+\end{figure*}
 \input{tables/tab_habit_sizes}
 \input{tables/tab_public}
 \paragraph{Prompts.} Context $S$ = the first sentence of a ParaConflict substitution conflict; declarative: $S$ + answer stem; QA: $S$ + \tmpl{Question:} $q$ \tmpl{Answer:} + stem; variants replace the markers (Table~\ref{tab:template}).
 \paragraph{Items.} Facts known to every compared model (the memorized answer is more likely than the counterfactual without context): 1{,}680 ParaConflict items over six relations, 1{,}299 PopQA items, and 3{,}533 (DataDecide) and 3{,}750 (OLMo~2) NQ-Swap items. Standard errors use the seed-to-seed variance pooled over four 1B recipes with three seeds each.
-\paragraph{Sizes and public models.} Table~\ref{tab:habit_sizes} gives every template at every size; Table~\ref{tab:public} gives the trust of public base models with and without the question format.
+\paragraph{Across sizes, training and datasets.} The habit is present at six of seven sizes from 60M to 1B (Figure~\ref{fig:question}a, Table~\ref{tab:habit_sizes}), appears by 3.6\% of pretraining and grows to $+2.4$ nats (Figure~\ref{fig:question}b), and replicates on PopQA counterfactuals ($+1.91$) and on NQ-Swap, where on natural reading-comprehension passages it is strongest after \tmpl{Question:} and extends to \tmpl{Q:} (Figure~\ref{fig:question}d).
+In OLMo~2, mid-training on a mixture containing FLAN raises it from $\approx$ 0 to $+1.4$--$2.3$ nats in each of three runs, while trust under declarative prompts falls (Figure~\ref{fig:question}c); the mixture contains other data as well, so this replication shows the habit in a second training stack rather than isolating FLAN.
+Continued pretraining of a Flan-free 60M model on 90M Flan tokens does not install it ($+0.04 \pm 0.04$).
+\paragraph{Public models.} Table~\ref{tab:public} gives the trust of public base models with and without the question format.
 
 \section{Artifacts, Compute and Software}
 \label{app:artifacts}
@@ -448,6 +486,6 @@ The corpus is a significant factor on almost every task and size; the seed reach
 
 \section{Statistics}
 \label{app:stats}
-Recipe-bootstrap 95\% intervals for same-seed minus other-seed agreement; unbiased two-way variance components from mean squares with $F$ tests; permutation tests with recipe labels permuted; Mantel tests for pair-level regressions \citep{mantel1967detection}; partial Spearman correlations by rank regression.
+Recipe-bootstrap 95\% intervals for same- minus different-initialization agreement; unbiased two-way variance components from mean squares with $F$ tests; permutation tests with recipe labels permuted; Mantel tests for pair-level regressions \citep{mantel1967detection}; partial Spearman correlations by rank regression.
 
 \end{document}

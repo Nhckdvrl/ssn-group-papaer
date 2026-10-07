@@ -6,7 +6,7 @@
   \begin{tabular}{@{}lccc@{}}
     \multicolumn{4}{@{}l}{\textit{(a) DataDecide 1B, 3 seeds $\times$ 25 corpora (69 models)}} \\
     \toprule
-    Role & same seed & other seed & gap, 95\% CI \\
+    Role & same init. & other init. & gap, 95\% CI \\
     \midrule
     Two-back & 0.43 & 0.00 & [0.40, 0.46] \\
     Previous-token & 0.42 & $-$0.01 & [0.40, 0.47] \\
@@ -22,7 +22,7 @@
 
   \vspace{6pt}
   \begin{tabular}{@{}lcccc@{}}
-    \multicolumn{5}{@{}l}{\textit{(b) Pythia, one seed: Pile vs.\ deduplicated Pile}} \\
+    \multicolumn{5}{@{}l}{\textit{(b) Pythia, one initialization: Pile vs.\ deduplicated Pile}} \\
     \toprule
     Size & induction & prev.-token & retrieval & null \\
     \midrule
@@ -36,9 +36,10 @@
     12B, at 2.1\% & 0.55 & 0.60 & 0.45 & 0.04 \\
     \bottomrule
   \end{tabular}
-  \caption{\textbf{Head placement is inherited from the seed.} Which-head agreement (within-layer Spearman of head
-  scores). (a)~All nine roles at 1B for models grown from the same seed on different corpora and from different seeds
-  on the same corpus; the gap's interval is a recipe bootstrap. (b)~Pythia's two models from one initialization; null:
+  \caption{\textbf{Models with the same initialization agree on which head takes each role.} Which-head agreement
+  (within-layer Spearman of head scores). (a)~All nine roles at 1B for models with the same initialization trained on
+  different corpora and with different initializations trained on the same corpus; the gap's interval is a recipe
+  bootstrap. (b)~Pythia's two models from one initialization; null:
   95th percentile after permuting heads within layers; no induction head at 70M.}
   \label{tab:roles}
 \end{table}

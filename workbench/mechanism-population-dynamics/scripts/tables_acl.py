@@ -1,4 +1,4 @@
-"""LaTeX tables for the ACL version (paper-acl/tables/*.tex), generated from finished analyses so that no number is
+"""LaTeX tables for the ACL version (paper-acl-v2/tables/*.tex), generated from finished analyses so that no number is
 copied by hand. Main text: tab_roles (E59 on the verified 1B crossing + E58 Pythia), tab_template (E32, E26; marker
 counts from the E32 card, infini-gram on Dolma 1.7). Appendix: tab_audit (P12), tab_sizes (E45 / E61 / E60),
 tab_critical (E46 / E46b), tab_benchmarks (E51), tab_habit_sizes (E47 + E32), tab_public (E30), tab_temperature (E62)."""
@@ -10,7 +10,7 @@ import numpy as np
 import mp_common as mc
 
 R = mc.RESULTS
-OUT = mc.RESULTS.parent / "paper-acl" / "tables"
+OUT = mc.RESULTS.parent / "paper-acl-v2" / "tables"
 MINUS = "$-$"
 
 
@@ -251,6 +251,50 @@ def tab_ident():
 """)
 
 
+def tab_circuits():
+    """E73 / E74: IOI circuit transfer, Pythia by size and DataDecide 1B."""
+    e73 = json.loads((R / "e73" / "analysis.json").read_text())
+    conc = lambda f: (lambda x: float(np.sort(x)[::-1][:3].sum() / x.sum()))(
+        np.array(json.loads(f.read_text())["dla"]).ravel().clip(0))
+    names = {"160m": "160M", "410m": "410M", "1b": "1B", "1.4b": "1.4B", "6.9b": "6.9B", "12b": "12B"}
+    rows = []
+    for s, lab in names.items():
+        if s not in e73 or "deduped" not in e73[s]["by_kind"]:
+            continue
+        f0, f1 = R / "e73" / f"pythia-{s}.json", R / "e73" / f"pythia-{s}-deduped.json"
+        c = (conc(f0) + conc(f1)) / 2
+        dd = e73[s]["by_kind"]["deduped"]
+        k10 = "--"
+        fk = R / "e73" / f"pythia-{s}-deduped_k10.json"
+        if fk.exists():
+            d = json.loads(fk.read_text())
+            k10 = f2((d["logit_diff"] - d["ablate"]["ref10"]) / (d["logit_diff"] - d["ablate"]["own10"]))
+        sd = e73[s]["by_kind"].get("seed")
+        rows.append(f"    {lab} & {c:.2f} & {f2(dd['transfer3'])} & {f2(dd['transfer5'])} & {k10} & "
+                    f"{f2(sd['transfer3']) if sd else '--'} & {f2(dd['layermatched3'])} \\\\")
+    write("tab_circuits", rf"""\begin{{table}}[t]
+  \centering
+  \footnotesize
+  \setlength{{\tabcolsep}}{{3pt}}
+  \begin{{tabular}}{{@{{}}lcccccc@{{}}}}
+    \toprule
+    & & \multicolumn{{3}}{{c}}{{seed-matched (dedup.)}} & other init. & \\
+    \cmidrule(lr){{3-5}}
+    Pythia & \makecell{{top-3\\share}} & $k{{=}}3$ & $k{{=}}5$ & $k{{=}}10$ & $k{{=}}3$ & \makecell{{layer-\\matched}} \\
+    \midrule
+{chr(10).join(rows)}
+    \bottomrule
+  \end{{tabular}}
+  \caption{{\textbf{{IOI circuit transfer in Pythia.}} Share of the positive direct logit attribution carried by the
+  three strongest heads (mean of the standard and deduplicated model), and the drop in the target's logit difference
+  when the standard model's top-$k$ heads are mean-ablated, relative to ablating the target's own top-$k$: in the
+  deduplicated sibling, in independently initialized PolyPythias (160M, 410M), and for random heads in the layers of the
+  target's own top-3.}}
+  \label{{tab:circuits}}
+\end{{table}}
+""")
+
+
 def tab_critical():
     d = json.loads((R / "e46" / "analysis.json").read_text())
     e56 = json.loads((R / "e56_analysis.json").read_text())
@@ -431,6 +475,6 @@ def tab_temperature():
 
 if __name__ == "__main__":
     for fn in (tab_roles, tab_template, tab_audit, tab_sizes, tab_critical, tab_benchmarks, tab_habit_sizes, tab_public,
-               tab_temperature, tab_ident):
+               tab_temperature, tab_ident, tab_circuits):
         fn()
         print(fn.__name__, "ok")
