@@ -133,3 +133,5 @@ C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了�
 - 2026-10-08 [E90](experiments/E90-frame-information-through-source.md)/[摘要](results/E90-frame-source-bank-summary.json)：完整9408实际答案的frame源中介，多数改善GoldNo、G部分MVRR正关系改善而NPZ正关系5.9%CI含0；完整可携带解释未建立，whole-source不认证唯一valence。C06–08 L0/C09限定L1不变，I06继续按具体关系操作探索。
 
 - 2026-10-08 [E91](experiments/E91-reconstruction-reward-and-revised-meaning.md)/[E92](experiments/E92-observation-surface-and-semantic-credit.md)：固定P的观察表达改变content credit与原语义的对齐，Q-generator跨三graderGP改善、反向下降，主要MVRR/其它generator弱。支持I07研究问题，不宣告原作者RL机制被证伪、complete semantic invariance或合格成稿。C06–08L0/C09限定L1不变。
+
+- 2026-10-08语义校对：[E70定点更正及传播](results/E70-posthoc-semantic-correction-summary.json)确认Sourcepatient的两个支持标签与两个P原子标签需改。旧E70/E91/E92原数保留但这些原子不能再作语义证据；POST-HOC覆盖全scope，未按reward/成功筛项。E70部分正关系修复仍成立、both仍未共同成立；E92核心信号保持而其它弱，I07仅SEED。C06–08L0/C09限QA协议L1不升，后续引用语义数量用更正版。源QA历史单条相关读数仍留可复现记录，不能假设其原Gold全正确。

@@ -15,3 +15,5 @@
 **最便宜的下一核心：** 社区现成Belief-R完整数据，不改其语用Gold，不bulk审计；比较同一更新下的前向判定与观察重建对候选belief的排序，看问题是否只限GP输入。任务范围与原作者定义保持，未来构造/修改才用Step Plan双盲。若外域不成立，则收窄机制对象或另找依赖类型，不继续surface/score模板网格。不关闭线、不自动认定novelty，不改registry。
 
 **机制仍有三个竞争解释（E93效应读取前）：** (1) grader沿用观察的误解释；(2) grader即使能识别含义，条件于正确belief的语言生产偏好仍可能更喜欢显式、无歧义表述，故原GP的逆向预测低分；(3) 新观察与正确更新不一一对应，inverse ranking本身缺必要prior／任务信息。E92只能说明观察表达参与credit，不能区分这三者。当前核心价值来自明确的“关系更新→训练信号”后果，不能把标题中的继承偏差当已证事实。MemTrain实体回填、MemoryRewardBench过程judge、CERL未来用途训练都有ownership；不凭它们的存在判死，也不把同类主题换名当新idea。
+
+**语义校对补记：** E70八定点项更正已传播全E70/E91/E92，E91 G-grader/Q-generator同40语义源reward−7.093[−14.201,−.771]与正质量并存；E92主Q-generator alignment及CI保持，其它仍弱。旧数保留、更正不是人类独立Gold；后续用[更正摘要](../results/E70-posthoc-semantic-correction-summary.json)。E94真实观测参照CPU图有时间偏好，但主要新信息覆盖与当前parser实现问题，不把它改名为新合格idea，不继续修bug局部网格。

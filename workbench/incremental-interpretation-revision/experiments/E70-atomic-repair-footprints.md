@@ -38,3 +38,9 @@ NPZ GP initial sourceYes +50 [0,100] / +50 [0,100] / +25 [0,75]（4clusters）�
 ### 2026-10-08 POST-HOC语义标签异常定点复核（审核前写）
 
 读E91固定按Source SHA排序的每构式前三条完整P/Q，发现patient原句的主动／被动／主句主体Gold互相不一致、cleaner省宾语P被标明确有floor、两种assistant-shave P对self使用不同蕴含口径。只复核这些具体疑点及同构式正关系锚，共8项；不是随机可靠性样本，不据此估总体错误率，也不bulk重审其它成熟社区数据。Step Plan／step-5-preview、≤5/request，两独立遍＋分歧裁决；题目／旧Gold／模型／条件／奖励都不发给teacher（只给原S或P及原Q）。通用最终词序／不得补论元／保留合理兼容事件的口径固定，新版本；旧标签、raw outputs、maps全部不改。0GPU。若确认差错，指出影响的Source／原子与各既有统计scope，以POST-HOC更正／不确定性报告，不删困难样本或升级主张。E93原1744社区Gold不受此审核影响。
+
+### POST-HOC语义校对完成（2026-10-08，旧结果保留）
+
+8异常定点Step Plan项双遍全完成／2分歧裁决／agreement75%（只这8项，不是总体可靠性），annotation SHA5ab5c619368a6a4d4bd59d4322e087958f0603ceff1965b23ada1dffe8451943。patient源主动refusal改非蕴含、treatment致场景改NEITHER；省floor的cleaner P改NEITHER；bare progressive shaving P按lexical reflexive同口径改ENTAILED；其它锚保留。只改已确认packet的语义overlay，不改任何模型输出、评分、原eligibility或旧data/map。见[统一更正摘要](../results/E70-posthoc-semantic-correction-summary.json)。
+
+E70全文2790scope重算，MVRR initial正断言修复Q/G/L+40[10,70]/+60[30,90]/+90[70,100]pp，完整正关系both+12.5/+25/+12.5仍CI含0，资格9→8簇。E91 GP语义cohort39→40、质量Q/G/L+.2667[.0875,.4542]/+.2958[.1083,.5001]/+.3625[.175,.5625]；G-grader/Q-generator同40源reward−7.093[−14.201,−.771]、其它8CI含0。E92原600条／50pair资格不重开，2P行更正、核心Q-generator alignment+.278/.222/.222及CI不变（仍主要MVRR）；其它generator弱。原token分区诊断是更正前cohort，保留历史scope，不冒充当前完整语义统计。不是独立人类Gold或一般机制证据，C06–08L0/C09限定L1不变，不继续这8项反复teacher投票。

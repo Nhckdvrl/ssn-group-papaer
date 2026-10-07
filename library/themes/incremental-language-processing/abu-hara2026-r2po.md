@@ -1,0 +1,12 @@
+# Reflective Prompted Policy Optimization: Trajectory-Grounded Revision and Salience Bias（NeurIPS2026 initial名单，作者v1）
+
+`[证据级别：主文精读＋指定方法／机制附录]` [作者v1](https://arxiv.org/abs/2605.08315v1)，[官方初始接收名单](https://neurips.cc/Conferences/2026/AcceptedPapersInitial)缓存中标题与三作者逐项匹配；最终camera-ready未核。Rahaf Abu Hara／Vaibbhav Murarri／Claudio Zito，Heriot-Watt Dubai。30p PDF SHA260f56ec9ed2a4483ab2248fd2dd354bdc0a0dc826af414c328ddbdfff446bb8。
+
+1. **读过的范围：** Main1–5 pp1–9全部；AppA协议p13、B/C p15–16、E算法p17、F阈值p18、I操作定义pp18–22、K环境pp26–27、L提示pp27–30；B开头／表5、D/G/H全表／曲线和J余例pp23–25未全读。主表1/2 p5、表3／正文p7、机制p8视觉检查；没有运行代码，不将相同模型的两角色称独立模型。
+2. **idea来源（RECONSTRUCTED）：** OPRO／ProPS用外部policy参数与scalar return历史，知道失败却缺少失败的行为原因→增加真实状态／动作／reward轨迹给Critic提出局部参数修订→发现更丰富的best/worst/median证据反而令Critic盯单次灾难、破坏多数成功轨迹→改用median轨迹＋总体频率统计＋强policy保留规则，之后按实际执行结果选较好proposal。重点从“LLM再想一次”发展到证据表现形式如何改变修订目标。
+3. **研究对象／方法尺度：** GPT-oss20b-cloud同一family两role，训练的是compact linear/tabular外部控制器参数，并非agentic LLM policy的参数RL。新全球proposal每轮重新生成，critic-revision后keepbetter；保留规则CartPole480/Pong2.8等环境阈值。不是每轮一定优于历史best，也不能从奖励500上界推每轮改进量错误。两段职责和可观察轨迹信息是方法对象。
+4. **数据／baseline／成本：** 十环境（7 Gym/MuJoCo＋自制Maze/Nim/Pong），10独立run，K20rollouts，200 LLM calls／4000 episodes。两调用100轮对单调用200轮；ProPS/ProPS+同模型复测和SB3 strongest-per-env相对清晰，4000episodes并非同environment steps／时间／容量预算。AppD历史GPT4o/8000episode另scope，不能拼成严格samebudget消融。只有一个LLM family，无跨族能力机制证据。
+5. **主要读数与阴性：** mean-best十环境match/exceed，Maze/Nim有tie不说严格全胜；mean九环境较强，MountainCarContinuous81.61±5.18低于SAC82.33±2.57，作者称统计tie。CartPole mean474.67±16.90／best500；Swimmer260.35±36.05。PureSearch／ActorSecondPass不足说明多call本身不够；RepTraj高于AlwaysCritic显示选定实际行为后果有意义，不是只换提示就独立证机制。
+6. **机制证据的尺度：** salience bias是操作proxy（最差轨迹被提及、worst<median、修订reward下降），CartPole233/304回退76.6%，Pong101/323回退31.3%；宽定义CartPole80.8%。文本mention关联不等于内部因果注意机制，也非所有任务普遍偏差。Pongworst=median例可改善+.62、median=best而单outlier例−.35，关键在失败是否代表整体，不是永远不能读worst。默认阈值half／none消融主要CartPole/Pong，不能写十环境robustness全部核实。
+7. **最近邻距离／claim ownership：** 两role优化、执行feedback、trajectory reflection、keepbetter均有既有邻域；作者有价值的组合增量是compact policy search中轨迹信息以及有比例意识的修订。本线不能把“反思会过改／给总体统计更好”占成新idea。I07问registered关系修订的逆向credit，不是复制本论文salience bias到语言例子；二者共同可借的是从actual失败找到任务相关证据对象，随后改变方法职责。
+8. **对我们的行动：** E91/92已经有表达×semantic-credit线索，E94主要parser/时间诊断，不应只因为容易修就追它。E95要看grader实际判别与原观察重建是否分离，E93用原社区Gold改变范围。若差异值得兴奋，下一要形成能预测learning/后续用途的核心操作，而不是继续若干token／提示控制。全图保留多数一致和阴性，避免最显眼8异常代替总体现象；不是因为其他人做过reflection而关闭territory。

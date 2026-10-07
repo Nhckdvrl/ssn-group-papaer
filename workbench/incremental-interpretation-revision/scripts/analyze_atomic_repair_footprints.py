@@ -7,12 +7,30 @@ from analyze_source_bank_routes import summarize
 from data import sha,write_jsonl
 
 
-def analyze(root,out):
+def analyze(root,out,semantic_overlay=None):
     scope=json.loads((root/'scope-v1.json').read_text());summary=json.loads((root/'step5/summary.json').read_text())
     packets={r['item_id']:r for r in map(json.loads,(root/'packets-v1.jsonl').read_text().splitlines())}
     assert scope['packet_data_sha256']==sha(root/'packets-v1.jsonl')==summary['data_sha256']
     assert summary['items']==len(packets)==scope['distinct_packets'],'Never analyze an empty/partial queue as complete'
     assignments=[json.loads(l) for l in (root/'assignments-v1.jsonl').read_text().splitlines()];assert scope['assignment_sha256']==sha(root/'assignments-v1.jsonl')
+    atom_overrides={}
+    if semantic_overlay is not None:
+        # Explicit POST-HOC overlay; original packets, annotations, and maps stay intact.
+        revised={}
+        for r in map(json.loads,semantic_overlay.read_text().splitlines()):
+            key=r['generator'],r['source_unit'],r['operation']
+            assert key not in revised
+            revised[key]=r
+        assert len(revised)==len(assignments)
+        for row in assignments:
+            r=revised[row['model'],row['source_unit'],row['operation']]
+            assert r['sentence_sha256']==row['sentence_sha256']
+            atoms={q['question_id']:q for q in r['atoms']}
+            assert set(atoms)=={q['question_id'] for q in row['questions']}
+            for q in row['questions']:
+                a=atoms[q['question_id']];assert a['question']==q['text']
+                q['source_gold']=a['source_gold']
+                atom_overrides[row['model'],row['source_unit'],row['operation'],q['question_id']]=a['paraphrase_label']
     labels={r['item_id']:r for r in map(json.loads,(root/'step5/annotated.jsonl').read_text().splitlines())};assert set(labels)==set(packets)
     observed={}
     for uid,r in labels.items():
@@ -27,6 +45,8 @@ def analyze(root,out):
         effects.extend(dict(report=key,cluster_id=c,value=x) for c,x in cs.items())
     def atom(row,q):
         if row['unfinished_thinking']:return None
+        if semantic_overlay is not None:
+            return atom_overrides[row['model'],row['source_unit'],row['operation'],q['question_id']]
         return observed[row['atom_packets'][q['question_id']]]
     def qsubset(row,target,gold):return [q for q in row['questions'] if (target=='all' or q['target']==target) and (gold=='both' or q['source_gold']==gold)]
     def value(row,q,metric):
@@ -88,10 +108,12 @@ def analyze(root,out):
                         report(f'{model}/{c}/{cond}/positive_assertions/{state}/{op}',records)
     e=out.with_suffix('.cluster-effects.jsonl');write_jsonl(e,effects)
     out.write_text(json.dumps(dict(scope_sha256=sha(root/'scope-v1.json'),annotation_sha256=sha(root/'step5/annotated.jsonl'),summary=summary,reports=reports,counts=dict(counts),
+        posthoc_semantic_overlay_sha256=None if semantic_overlay is None else sha(semantic_overlay),
+        annotation_scope='Original completed 1280-packet audit summary; eight anomaly-targeted rechecks are a separate explicit overlay when present.',
         cluster_effects_sha256=sha(e),code_sha256=sha(Path(__file__)),
         interpretation='Semantic entailment of original published questions in generated P, not model QA or latent parse. Missing labels excluded with counts/bounds. Source No not added does not establish a correct positive relation.'),indent=2)+'\n')
     print('E70 complete map',len(reports),flush=True)
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();analyze(a.root,a.out)
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--semantic-overlay',type=Path);a=p.parse_args();analyze(a.root,a.out,a.semantic_overlay)

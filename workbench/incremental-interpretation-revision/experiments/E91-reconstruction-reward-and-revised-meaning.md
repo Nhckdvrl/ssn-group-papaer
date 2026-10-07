@@ -34,3 +34,9 @@
 已知完整E91/E92结果后，分析E91保存的逐token分数：TARGET−BASE的总分差，是否主要来自观察第一个token，还是继续存在于其余token。保留全972配对及全构式／两侧／九generator×grader，不挑错例；固定first/rest及按相对token位置四等分，不依据效应找边界。原Gold/主读数不改，不把相对位置称句法disambiguator；原论文与Step5位置存在缺失／分歧，今晚不为这份诊断再审位置。记录总分可加性、同一观察token数、全部scope的alignment与语义质量完整cohort；语义变化条件计数只作诊断。0新forward／0API／0GPU。若首token界面效应能解释原信号，收窄I07；若多段混合也不直接宣告解释机制成立。本诊断不给新主张等级。
 
 
+
+### POST-HOC语义校对完成（2026-10-08，旧结果保留）
+
+8异常定点Step Plan项双遍全完成／2分歧裁决／agreement75%（只这8项，不是总体可靠性），annotation SHA5ab5c619368a6a4d4bd59d4322e087958f0603ceff1965b23ada1dffe8451943。patient源主动refusal改非蕴含、treatment致场景改NEITHER；省floor的cleaner P改NEITHER；bare progressive shaving P按lexical reflexive同口径改ENTAILED；其它锚保留。只改已确认packet的语义overlay，不改任何模型输出、评分、原eligibility或旧data/map。见[统一更正摘要](../results/E70-posthoc-semantic-correction-summary.json)。
+
+E70全文2790scope重算，MVRR initial正断言修复Q/G/L+40[10,70]/+60[30,90]/+90[70,100]pp，完整正关系both+12.5/+25/+12.5仍CI含0，资格9→8簇。E91 GP语义cohort39→40、质量Q/G/L+.2667[.0875,.4542]/+.2958[.1083,.5001]/+.3625[.175,.5625]；G-grader/Q-generator同40源reward−7.093[−14.201,−.771]、其它8CI含0。E92原600条／50pair资格不重开，2P行更正、核心Q-generator alignment+.278/.222/.222及CI不变（仍主要MVRR）；其它generator弱。原token分区诊断是更正前cohort，保留历史scope，不冒充当前完整语义统计。不是独立人类Gold或一般机制证据，C06–08L0/C09限定L1不变，不继续这8项反复teacher投票。
