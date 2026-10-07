@@ -125,3 +125,7 @@ C03–C05是旧路线的历史测量，I01已由人PARKED。当前C09建立了�
 - 2026-10-07 [E86](experiments/E86-source-acceptance-versus-comprehension.md)/[完整摘要](results/E86-source-acceptance-summary.json)：ordinary QA共同改善NPZ final，但G/M initial受损、joint无共同恢复；Min grammar cue失败而Gemma NPS接受100%仍关系出错。输入拒绝不足通用解释；仅有限任务行为，不认证latent parse/能力或novelty。C06–08L0/C09限定L1不变；结束该合同措辞块，下一直接检验实际生成答案与强制二选项读数。
 
 - 2026-10-07 [E87](experiments/E87-actual-answer-versus-forced-choice.md)/[摘要](results/E87-actual-answer-summary.json)：真实greedy答案中的关系错误保留。事前literal格式未知与POST-HOC明确选项语义解析分开，后者全解析/冲突0/cap0；Q grammar cue生成接受比bare强制候选高，限定E86概率解释。未升级能力/latentparse/novelty，C06–08L0/C09限定L1不变；结束测量局部块，转早期verb论元重析猜想。
+
+- 2026-10-07 [E88](experiments/E88-verb-versus-noun-lookahead.md)/[完整摘要](results/E88-verb-frame-lookahead-summary.json)：NPZ三族名词可见性优于动词，并改善GP joint；语法frame/隐式正关系恢复未建立，cue损伤与L letters大噪声保留。I06的简单动词入口预测不受支持，更新为解除附着/论元重建竞争；C06–08L0/C09限定L1不变，不升级native parse或novelty。
+
+- 2026-10-07 [E89](experiments/E89-early-versus-late-predicate-frame.md)/[摘要](results/E89-predicate-frame-timing-summary.json)：9408真实答案/0API，Gemma两构式正角色恢复、Q/Min No-only异质，cue与final损伤保留。支持I06探索对象：错误依赖解除与替代论元重建的区别；不认证valence神经因子、共同完整恢复或novelty。C06–08 L0/C09限定L1不变。

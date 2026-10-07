@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-58篇主文（4综述+54研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+59篇主文（4综述+55研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -23,7 +23,7 @@
 - [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
 - [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
 
-[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述58篇。
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述59篇。
 
 - [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
 - [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
@@ -94,3 +94,5 @@
 - [McGee Cognitive Science2026](mcgee2026-syntactic-encapsulation.md)：出版社主文全文；从syntax定位到可渗透性，attention证据与实际修订因果分开；Llama依赖数正文不一致保留，附录/代码未读。
 
 - [Uselis ICML2026 binding functions](uselis2026-binding-functions.md)：正式主文全文/指定附录/图表；从内部可读与跨用途失败的矛盾推进到函数共享泛化，test选择上包络与对象计数不一致保留。
+
+- [Sbrolli NeurIPS2026 Auto-Comp](sbrolli2026-compositional-binding.md)：主文完整/指定附录与表格；从交换错误走到重复元素绑定，候选集大小/实际回答接口与数据计数局限保留。

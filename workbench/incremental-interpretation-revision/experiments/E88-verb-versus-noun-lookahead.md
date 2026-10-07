@@ -1,6 +1,6 @@
 # E88：晚到证据应回到动词还是名词？（2026-10-07）
 
-- **状态：** RUNNING；生成器E431任何科学运行前改E88。
+- **状态：** DONE；生成器E431任何科学运行前改E88。
 - **对应：** I06 / C06–C09 / P19；先前解释修订涉及早期动词的valence/voice/complement框架，首个核心pilot，不以先补齐论文证据为前提。
 - **问题：** 只让早期V1源token看整句后文，是否比只让关键NP源token看后文更能恢复原关系？NPZ反身/互指、MVRR被动双宾语、NPS补语变化全覆盖；不只做17阳性条目。
 - **数据：** 原E82完整892资格QA，由item ID取原E54同S/Q/Gold/analysis字段，原QA严格G2/native与模型三族Qwen3-8B/Gemma3-12B/Llama3.1-8B复用。所需干预词位置仅机械定位：原句中完整读出的有限V1 surface词表、发表元数据和精确cue同词映射；NPZ/NPS为V1后至disambiguator或relative-marker前的NP（去除up/off/down particle），MVRR为V1之前主语NP。程序assert词表候选唯一且在消歧前，全部词位置清单效果前留档；不新增自然度/语义审计。若定位有含混，仅对该缺失字段用Step Plan，不能猜；目前未发新API。
@@ -16,3 +16,14 @@
 CPU数据预检完成：151发表GP源组/302S/784QA，NPZ89、MVRR27、NPS35。缺失原physical disambiguator的1NPS源排除，原控制配套排除，不按效果选条目。独立unique same-word span能支持作者的clause reorder；先用monotone alignment误排65NPZ的预检v0保留，未有GPU效果时纠正。原S/Q/Gold/analysis字段与E54/E82全部一致。输入SHAfc606921c06ccddac080d8df14651aaecfe6df71a26e9ab27425561d5525c9e3，新增18816条件，0API；全部151位置清单效果前已核对，包含原metadata lesson误指词记录。
 
 三族CPU6272新条件/族、全部baseline母prompt SHA预检通过。8卡PID3350586–3350593，18816条件已全部闭合；各分片4D因果对2D与母E54 LP最大差全0，FP32预算实际.468391GPU·h，完整分析器PID3368118。尚未读partial科学效应。
+
+
+## 核心结果与自审
+
+18816条件/.468391GPU·h/0API全闭合；map SHA3f4caff630e40b63e42fb68de2b183275e8345d6615e0a9de353bf0bd02e7945。[完整摘要](../results/E88-verb-frame-lookahead-summary.json)保留7560格、252joint及全部frame/Gold/edge/mapping，不按最好cell解释。
+
+NPZ words initial VERB−NOUN Q/G/L −9.55[−15.73,−3.93]/−12.36[−19.10,−5.62]/−13.48[−22.47,−5.06]pp；名词入口比动词更好。NOUN−BASE +7.58[2.81,13.20]/+8.43[3.37,14.61]/+22.19[13.76,30.90]，final +.56CI含0/+2.81[.56,6.18]/+1.97CI含0。GP joint +7.87[2.81,13.48]/+8.43[3.37,14.61]/+15.17[7.30,23.60]；Gemma cue joint−7.87[−13.48,−2.81]保留。letters NPZ名词入口同样较好，但L letters mapping最高90%，不能称读出鲁棒完整能力。
+
+17个initial GoldYes反身/互指关系：Q/G baseline及两oracle均0%；L baseline8.82%，NOUN17.65%，改变量CI含0。名词入口改善主要是撤销原不支持关系，未共同补出完整事件框架。MVRR无三族共同verb优势，L final words受损；NPS cue初始弱、不据null定位能力。V/NP边数与token数不等，不能叫相同预算的神经变量比较。
+
+自审：**首个非因果工具未支持“回到动词就能修好”的简单I06版本。** 更有辨别力的候选对象是解除旧附着与重建论元解释的分离；不能把它立刻认证新机制。只再做一个语法frame信息EARLY/LATE对比，检验是需在编码时重算，还是后续读出能重建。C06–08L0/C09限定L1不变；探索idea不要求当晚完整论文证据，不继续mask/层位网格。
