@@ -11,3 +11,7 @@
 7. **方法细读：** Eq5重建的是**最新观察ot**，条件同时含新belief、旧belief、last action，绝非要求重建旧belief。Eq6的Bayes同joint解释不能自动从两个不同排列的chat prompt保证，要实际核查。Algorithm4把观测token logP求和后max(score,−.9)；是否code也使用sum/该cap未核对。PBP主文Eq4与AppD2 batch-centering叙述不完全相同，记录而不凭文字宣告实现错。
 8. **证据范围与边界：** 已读Main1–7 pp1–12全、AppD训练/lock22–24、D2/3与Algorithm4 pp27–30全；Table1/2 p10视觉核对。AppendixA/B/C及剩余D pp16–21/25–26未全读，代码未读。所谓memory为peak input+output token代理，未量实际VRAM；frontier部分reasoning只summary估计，不能当实际完整cost。训练4×A100 PCI总时长12–30小时/配置，不外推成单小时全RL复现。
 9. **对我们／开放压力：** 借先定位真实信息错误再选择内容reward，而非一串提示。I06源抑制/正论元未完全重建，提示我们反问**重建原观察的奖励是否能分清忠实解释与语义错接？** 此为新探索猜想；不能凭逻辑可能性宣告ABBEL失效，须在固定自然Source/完整已标输出上测reward与语义保真的配对。已有E70原子盲审可复用，0新原数据审计；这比继续frame-source层位网格更有信息量。
+
+## 2026-10-08 code-selected校对（不新增MAIN计数）
+
+固定作者tree revision8ed3bf8f7767b15b260e567b82b043f489754163，已读`rollout_loop.py`1080–1205的context/labels/compute_log_prob/reward，SHA121fe9349db8e5fe489369153ef704b4f6a87491e3ff57c8242eeaecd3573214；env/launch其它路径仅关键词定位，不称全代码审计。实现1158行将sum除以目标token数或常数64，随后`min(grade, ceiling)`及下限−5；这与Algorithm4的raw sum后max(−.9)不同。default div_by_const尚需读完整配置，不能假定。E91保留原登记rawSum/mean/pseudocode clip；代码基准敏感性明确POST-HOC，只复用原所有分数，不能用pseudocode全tie宣告实际reward没有信号。Eq5 observation conditional对象仍一致。

@@ -1,0 +1,14 @@
+# E92：固定同一解释，重建奖励是否受观察表达形式支配？（2026-10-08）
+
+- **状态：** RUNNING；生成器E431在任何科学效果前改E92。
+- **对应：** P20 / I06，C06–C09；E91首次内容reward探索，唯一第二核心对比，不衍生reward提示/温度网格。
+- **问题：** 同一个实际解释P对原Source的重建评分可能遗漏语义修订收益；将目标变成原发表配对的消歧表述，是否更能奖励忠实关系？同P/同grader/同rawcontext，只变观测surface，反向给原cue输出重建GP观察也完整测。
+- **数据：** E91原648输出/108Source不动；E63 donor_sentence_sha256定位发表GP-cue母句，按已有E70同问句Gold一致的input资格保留100Source（50pairs）/600P。4pairs（NPZ1/MVRR2/NPS1）的commonQ Gold不一致，效果前排除、原因全文留表，不新审原语料、不按模型分数挑。14Source还存在独有问句，E92语义读数仅使用两侧共同问句；对应P的原双盲标签直接复用，完整原atoms/指标另留，不改变E91主读数。所有generator/输出条件仍在，0API；commonQ一致不是全语义同义的证明，资格只承诺注册关系不改变。
+- **条件：** 对每P使用配对Source为teacher-forced观测目标，context/Source原P/空prior/固定action与E91完全相同，3当下grader×600=1800新评分；E91原目标全部重用，限定同资格cohort比较。GP端是消歧表述重建，cue端是反向歧义表述重建；不是添加新事实，也不是直接给QA提示。
+- **主读数：** mean token logP的TARGET_BANK−BASE_BANK变化（paired目标长度不同，不以sum幅度当交互主读数）；奖励排序与Δ正关系保留/Δ未支持断言/Δ保真的全cohort sign alignment，重建配对Source相对原Source的alignment差；Pearson/cluster CI与tie数辅助。原sum/实际token长度全保留。Source→lexical cluster，10000bootstrap seed92；逐grader×generator×构式×两原侧全报，缺Gold维度NA保留不造0。
+- **阳性对照：** CPU全部600目标文本/对应SHA/共同Q Gold资格逐条核对；原context SHA逐个匹配E91。固定输入首个Source reward两次LP完全相同，sum/mean=逐token计算；一套raw模板不换措辞，已有非歧义侧是反向压力而非事后选正确子集。
+- **噪声地板：** single-sequence BF16/eager/full teacher forcing、固定母资产/parser无新label。两目标各自SourceToken长度记录；同一目标内两P长度差不是新增噪声控制网格，长度描述完整保留。CI、raw/代码clip-ties全报，clip方向已从作者selected代码核对，但本实验主读数为未clip mean，不以伪代码全tie诊断训练。
+- **决策表（跑之前写）：** 消歧目标明显改善语义alignment、反向破坏且跨grader稳定→自然表达形式使观察重建credit漏掉语义修订，下一为具体reward目标设计/社区真实update检验；只是LP涨分但排序不改→可预测性变化不足以成为新机制，修改假说；两向都无改善或大异质→这个canonical-target方法未定位稳定缺口，回真实输出/新的独立内容节点，不继续template/score calibration；输入语义资格不足→保留未知，不能把cue当GT方法。探索idea先行，不要求此pilot完成论文证据。
+- **算力：** ≤1GPU·h，8独立H20 3/3/2、现有模型离线，0新下载/0新API。每任务08:55早释放、09:00硬停，之后不自行恢复。
+
+CPU全三族600目标边界通过，1800原context SHA逐一与E91缓存一致。data SHAab4b6f2735910163d1e0fdc58ff980c6e32a6036266cd376ad54c3d954f81a5f；8卡已运行，完全复用同一scorer code（日志内E91是复用程序标签，实际root/配置均E92）；无新Gold或API。
