@@ -12,10 +12,12 @@
 
 **近邻与compression risk：** ABBEL拥有观测reconstruction与belief内容监督；Agent-BRACE/CBM已有缺失、错误、stale belief rewards；ReBel已有基于观察的一致性credit（主文／关键附录已深读，非字面重建）；Kamoi/self-correction已有内部grader不可靠压力。MetaRAG已有同policy一致性reward＋最终correctness gate。一般“reward可能错”与一般“state不等于action”不新。拟增量是**正确替代关系的内容credit为何会随同注册语义的观察表达改变**，如何由解释/评分通道产生、能否在其它自然更新域预测与改善。
 
-**最便宜的下一核心：** 社区现成Belief-R完整数据，不改其语用Gold，不bulk审计；比较同一更新下的前向判定与观察重建对候选belief的排序，看问题是否只限GP输入。任务范围与原作者定义保持，未来构造/修改才用Step Plan双盲。若外域不成立，则收窄机制对象或另找依赖类型，不继续surface/score模板网格。不关闭线、不自动认定novelty，不改registry。
+**当前最高信息量的下一核心：** E103从同一原GP观察自然采七个候选，加原greedy组成固定八候选池，比较WHOLE与原T2后缀oracle的实际选择忠实度。如果只有cue来源候选对有效而同原观察不能产生好候选，必须收紧；若池有好解释而WHOLE漏选、suffix恢复，才把评分分解推进到真实内容选择后果。社区Belief-R扩域已经E93/E97测过，仪器不可用与Min修订困难如实保存，不继续格式网格，不把未测到当0能力。
 
 **机制仍有三个竞争解释（E93效应读取前）：** (1) grader沿用观察的误解释；(2) grader即使能识别含义，条件于正确belief的语言生产偏好仍可能更喜欢显式、无歧义表述，故原GP的逆向预测低分；(3) 新观察与正确更新不一一对应，inverse ranking本身缺必要prior／任务信息。E92只能说明观察表达参与credit，不能区分这三者。当前核心价值来自明确的“关系更新→训练信号”后果，不能把标题中的继承偏差当已证事实。MemTrain实体回填、MemoryRewardBench过程judge、CERL未来用途训练都有ownership；不凭它们的存在判死，也不把同类主题换名当新idea。
 
 **语义校对补记：** E70八定点项更正已传播全E70/E91/E92，E91 G-grader/Q-generator同40语义源reward−7.093[−14.201,−.771]与正质量并存；E92主Q-generator alignment及CI保持，其它仍弱。旧数保留、更正不是人类独立Gold；后续用[更正摘要](../results/E70-posthoc-semantic-correction-summary.json)。E94真实观测参照CPU图有时间偏好，但主要新信息覆盖与当前parser实现问题，不把它改名为新合格idea，不继续修bug局部网格。
 
 2026-10-08 E96首完整Min当下native同writer/grader新增实质边界：100自然P/200score/完整盲T1，固定P source目标消歧使semantic fidelity credit alignment+.500[.167,.833]，map48aa680d625c8cb1e8e59a8c6d9577ca6fb04c92f599b049e0a30f9db7ff50af（INTERIM）。E97 UPDATE actual仅8.1%，故不以“懂了只是credit错”讲故事，而问重建困难观察是否复制尚未撤回的解释。两族待测，尚SEED，不认定作者RL方法已失效。
+
+**2026-10-08完整三族后的更具体机制种子：** [E101](../experiments/E101-disambiguation-region-reconstruction-credit.md)显示same-P/GP-target重建的前缀项三族皆负，消歧起后缀Q/Min明确正、G方向正但CI0；11/13/16条总分偏旧解释而后缀偏cue解释。[E102](../experiments/E102-revision-evidence-credit-oracle.md)唯一固定位置oracle把全部50上的正确选择提高Q10.42[3.13,18.75]、G8.33[−2.08,20.83]、Min21.88[9.38,35.42]pp。因此探索对象从泛泛“评价器也读错”变为**已经出现的修订证据，被全序列重建的前缀credit抵消**。它与已有semantic reconstruction/future-use rewards的距离在于修订证据与被解释前缀之间可观测的竞争，而非我们首创token或semantic reward。suffix还是T2 oracle，原候选含cue来源，不声称自动方法、训练收益或唯一神经机制；[E103](../experiments/E103-native-pool-revision-credit-selection.md)正在检验同原观察候选池中的功能后果。现有证据够支撑一个值得追的探索切口，尚不能直接认证合格idea。

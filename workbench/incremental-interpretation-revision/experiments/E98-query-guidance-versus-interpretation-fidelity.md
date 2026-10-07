@@ -21,3 +21,5 @@
 04:46 POST-HOC instrument gate amendment，尚未读任何E98 scientific outcome/role/QAeffect：Min slot4首源P达到96固定cap而确定性repeat无误，slot5首源通过并已继续；旧gate将固定首P的cap变成全shard过滤，造成非科学幸存选择。保存pre-instrument-amendment-code原脚本；改为P非空+tokenrepeat完全一致，stopped/cap真实记录，所有P cap在主要role/joint读数严格UNKNOWN上下界，不猜结论、不升cap、不改wording、不移除Source。QA首源stopped/parse严格gate保持。仅重启原失败slot4，其它原native输出未更改，两个gate版本cfg/provenance都保留。此前首P-must-stop预注册偏离明确登记，不包装成原始设计。
 
 05:24E97两族首仪器失败，不使其阻塞新任务；六未启动E98 queue改等同slot E96 sealed，pid谱系及原前驱保存，prompt/data/metrics不变。
+
+06:04首完整Min族P匿名T4已268两遍/35裁决/0unresolved、复用原valid同packet，300assignments完整；在读角色效果前登记INTERIM all100Source/3mode联合作用，whole3family主图继续。语义labels只用封版该族，未读正在进行G/Q partial；合并audit输入SHA保留，所有cap12解释UNKNOWN界限，不按stopped筛样本。

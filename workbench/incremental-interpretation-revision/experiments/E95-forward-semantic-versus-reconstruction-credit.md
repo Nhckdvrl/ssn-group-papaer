@@ -1,6 +1,6 @@
 # E95：实际语义比较能否识别被逆向credit漏奖的关系修订？（2026-10-08）
 
-- **状态：** RUNNING（CPU三族1296tasks逐项通过，8slot等待E93锁）；生成器E431在任何forward前改E95。
+- **状态：** DONE；完整注册三族已封版，旧INTERIM版本保留。
 - **对应：** I07 / P20，E91/92块与E94具体实现诊断均已收束，现假说包括误读、语言生产偏好、inverse不适定；不是新领域或新主线。
 - **问题：** 同一grader能够实际选择较正确的解释，是否仍在原观察重建排序中漏奖它？这个比较决定“grader不会理解”与“评分通道没给理解credit”的相对优先级，不继续LP suffix／模板／clip控制。
 - **设置：** E91全部648冻结P，108原Source／54发表pair／三个old generators，使用8项Step Plan明确POST-HOC更正后的全部原子支持labels。P和Source／问题内容完全不改，源相关已有标签不再重审。三当前grader Q/G/Min，native greedy真实A/B/C回答（C=Tie），两个候选顺序，两个模式：NATIVE语义比较；RECOVERY仅追加一句要求globally correct grammatical parse、避免按局部prefix选，R8对照。Source／原Q集／两个原P，完全无teacher labels／bank名／模型名／奖励入prompt。64token cap事前固定，不使用forced-choice LP作为实际行为。108×3generator×2order×2mode×3grader=3888新实际输出。
@@ -19,3 +19,5 @@
 03:24，所有科学forward仍等待E93锁，分析器为已有完全相同P锚增加identical_interpretations分组；不是采新输入／改主读数，不改变主all和changed/Tie预注册scope。
 
 2026-10-08 03:57，任何科学effect读取前prospective分析次序调整：Min族全部shards已完成 全324冻结P对／1296真实回答，可先生成**完整单族探索地图**指导假说；其余固定Q/G任务继续，三族完整主图／所有原指标／CI／cap／data／parser均不改。独立interim文件及scope只供假说生成，不叫三族共同finding、不挑Source或已做对题；这覆盖前述等待全模型才读取的次序约定，原因是尽快利用已释放卡做核心追问，符合用户探索阶段／不防御推进要求。原primary map仍只全三族到齐后生成；未看任何partial Source/teacher labels。
+
+2026-10-08T06:22:28.509912+08:00 完整范围自审：完整三族3888actual/2.394932GPUh，主map forward-semantic-credit-map-v1.json SHA2dbdea41f9ef512f95660b12d589431a3aa0c6b0c54f06b117fa18f32bdbff98。NATIVE每族648输出，Q210/G623/Min0未知；G626 cap包括3已解析，仍上下界按原协议全报。一句RECOVERY Q321/G648/Min5未知。Min95.45%实际Tie，changed不能可靠区分；Q/Gcap使界限宽，不给能力0分，也不支持understanding intact only inverse wrong。全249fidelity eligible/75NA保留，0Source标注，不继续比较措辞网格。

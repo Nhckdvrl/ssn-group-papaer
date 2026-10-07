@@ -1,6 +1,6 @@
 # E97：Belief-R一句简短输出要求，恢复可解释的真实答题读数（2026-10-08）
 
-- **状态：** RUNNING（CPU三族1744原题通过，8slot等相应E96完成），生成器E431在任何forward前更名E97。
+- **状态：** DONE；计划范围与完整/仪器不可用范围详见下面结果，不把UNAVAILABLE记零分。
 - **对应：** I07 / P20，E93完整Min族已见DIRECT1744/1744 cap/unknown，COT1715cap／仅1finalchoice；原图保留上下界，不当0%能力。E95 Minchanged大多Tie，不支持会判断正确解释但漏credit，不能预设更好故事。
 - **问题：** 一句只交最终答案的输出要求是否恢复原社区任务的可用前向读数？该锚能区分格式／预算无答案和实际语用task失败，不给256思考cap加码，不猜截断中的推理结论。
 - **数据：** 完整原E93 1744／204atomicseed，人类语用suppression Gold，Source/question/ABC字节与Gold完全不变，prior21NA照旧。0source审计/0API，raw scores复用原E93，未覆写原失败图。
@@ -18,3 +18,5 @@
 04:47 INTERIM complete Min族全1744题封版，map SHA22760533a659d1f7688e3769bc8953ca21273c1611413c0e2fa329560f66ed13，388panel/.1637366GPUh/0cap/18unknown，不读其它partial族。所有Gold/modus/transition/agreement/rowcounts已自审：clustered全actual lower30.45[26.59,34.51]%/upper31.93[27.99,35.98]%，原raw30.49[27.37,33.69]%；UPDATE-c actual8.11[6.14,10.24]%/upper9.53[7.35,11.82]%，raw31.78[27.82,35.79]%；MAINTAIN-ab actual78.06[73.22,82.60]%，raw27.26[22.84,31.69]%。因此“不需修订时能答、需撤回时困难”比understanding intact故事更合此族；raw错/actual对与反向各21%左右，不能从总平均相近推对齐。实际reference是作者人类语用Gold，不说现代模型经典逻辑能力低。Q/G主全scope继续，I07仍SEED，C不升降。
 
 05:23Q/G shard1 fixed首题concise instrument failed stopped/valid，0scientific题；不选择其它首题或cap/wording补救，不运行其它未启动分片。两族3488计划题记UNAVAILABLE而非0分，Min完整原输出仍有效。独立E98队列前驱改为同slot已完成E96，不让旧格式失败阻塞新问题；model/data/随机种子/新任务全部不变。补存同首instrument输出以确认失败类型，未读scientific部分效果。
+
+2026-10-08T06:22:28.509912+08:00 完整范围自审：原全Min1744已封版/.1637366GPUh；Q/G fixed首题instrument失败、3488科学题UNAVAILABLE，终态外置full-scope-instrument-unavailable-v1.json；不追加措辞/cap，不把未运行记0能力。原完整MinINTERIM有效，其它原输出不捏造，原计划三族不是三族完成finding。

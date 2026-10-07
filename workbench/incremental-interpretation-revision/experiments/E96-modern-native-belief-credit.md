@@ -1,6 +1,6 @@
 # E96：当前模型自然生成的解释，是否受到同模型内容credit的错奖？（2026-10-08）
 
-- **状态：** RUNNING（CPU三族100Source校对通过，8slot逐个等待E95）（生成器E431于任何forward前更名E96）。
+- **状态：** DONE；完整注册三族已封版，旧INTERIM版本保留。
 - **对应：** I07 / P20；新scope由已完成E91/E92出发，未读取E93/E95任何partial effect。不是第三个suffix／模板／mask控制。
 - **问题：** 旧模型经Source-bank干预的P上已见语义与重建失配，该对象是否也存在于当前模型自然生成的解释？现代模型若已不产生相关误解释或credit能分辨它，则显著降低当前适用性；若出现，才有更现实的self-supervision对象。
 - **数据：** 原E92预先固定的50发表pair／100Source（MVRR／NPZ／NPS），原GP与社区cue句直接使用，不生成新Source。原4pair因共同Q Gold不一致被input-only排除，今晚不重开资格。仅保留原两侧共同Q/Gold支持，明确不是认证全句逻辑同义；原P完全不复用。新P来自三当前模型各100原句、原native chat、不做hidden transplant／不提前指定QA。原Source／question／Gold资格保持，明确8项更正版本并保留旧来源。
@@ -21,3 +21,5 @@
 04:50 在任何新P语义效果读取前，完整Min族100自然P+200评分+232完整双遍/31裁决/0unknown可生成INTERIM all-scope供假说探索；全三族主图继续，不按Source/label筛。延续03:57 E93/E95完整族先读的prospective顺序调整，原指标和所有共同Q不变。optional analyzer参数只变完整族scope，默认全三族主图不变。
 
 04:51 完整Min族INTERIM 520panels自审：100P/200LP/.0344569GPUh，232packet两遍/31裁决/0unknown/0Pcap，map48aa680d625c8cb1e8e59a8c6d9577ca6fb04c92f599b049e0a30f9db7ff50af。共同原QA pattern GP50.2[40.8,59.3]%→cue84.5[76.6,91.7]%；fidelity36eligible/14structuralNA，GP.051[−.144,.241]→cue.806[.653,.931]；同固定P credit alignment原GP−.028[−.306,.250]、cue+.472[.250,.694]，paired改善+.500[.167,.833]。MVRR17pair pattern alignment GP−.412[−.765,−.059]→cue+.529[.176,.824]，NPZ/NPS改善较弱。自然输出与同grader中出现恢复后的内容更保真但原难观察更偏旧误读，强于旧hiddenbank版本的实质对象；仍一完整族，不认证三族规律、RL实际训练后果或全句等价。Q/G全范围待封版，不补多reward模板。
+
+2026-10-08T06:22:28.509912+08:00 完整范围自审：完整三当前族300自然P/600LP/.150377928GPUh，750原子assignment/434 distinct新packet两遍及分歧裁决0unresolved；主map modern-native-belief-credit-map-v1.json SHA aa4a4824ee62f89e6953e8354ccaaceaefaf0cc4173e40689140752f9b4474c0。固定同P更换GP→cue target，fidelity alignment增量Q+.444[.167,.722]、G+.500[.222,.778]、Min+.500[.167,.833]；MVRR pattern增量三族皆+.941[.471,1.412]，NPZ/NPS更弱且CI含0。GP自身P pattern46.94/52.26/50.17%对cue77.60/79.17/84.48%，不说理解完好；fidelity为正保留减unsupported的有符号指标，不能误报准确率。全部50留主图/14fidelity结构NA保持，0新Source重审。

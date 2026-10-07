@@ -1,6 +1,6 @@
 # E100：现代自然解释的实际比较与重建credit
 
-- **状态：** RUNNING，自动E431在任何forward前更名E100。
+- **状态：** DONE；计划范围与完整/仪器不可用范围详见下面结果，不把UNAVAILABLE记零分。
 - **对应：** I07/P20；先前解释的修订生成由E96原社区GP-cue两句自然输出承担，评价是否复制难观察的误解。
 - **问题：** E96自然cue-P比GP-P更忠实，原难句的inverse重建credit对其不敏感或反向：是model不理解参考句，还是实际语义比较与inversecredit不同？旧E95候选均残缺/tie高；本块直接用同代原生writer候选，不重复旧候选格式网格。
 - **数据：** E96冻结50发表pair/100Source/三当前family，每family用自己原greedy GP-P/cue-P两个候选，不改P、不按已读质量筛；未完输出也保留并给未知界限。全部原共同问题定义语义对象，Source和Q不重审；教师标签沿E96完整封版匿名T1。
@@ -16,3 +16,5 @@
 05:24完整Min INTERIM400输出/.04679GPUh/1648panels SHAce135d2e8642c5ebf58725a09a14607c61387b902a7d1c0277f2f1b02108fb01，原Source changed fidelity实际tie68%、correct2%[0,6]%/alignment−.28[−.42,−.14]，cue tie84%、alignment0[−.14,.12]；actual-minus-raw非共同改善。原句judge亦无法可靠区分，不能声称理解正确仅inverse错。全3族继续，R8/其它ct全部同报，不加wordinggrid。
 
 05:37POST-HOC核心解释诊断（0新输出/标注）：E96同Source共同Q逐条correct vector定义dominance，避免整体定性judge与scalarfidelity权重歧义。完整Min50pair：cue逐条dominate30、GPdominate1、equal19、tradeoff0；原Source NATIVE60个cue-dominate顺序决策中42tie/18选差P/0选好P，cueSource51tie/4选差/5选好。不是两候选各有不同错误的tradeoff造成tie；但依然只是原已注册Q有限语义，不把OTHER未测内容称full equivalence。诊断文件E100/posthoc-pointwise-dominance-Min-v1.json，两parentSHA明示，不升级能力/C。R8 pooled GP patternalignment delta bounds[−.161,−.130]且CI负，Tie减少不是修复；不再追加更强grammar措辞。
+
+2026-10-08T06:22:28.509912+08:00 完整范围自审：原计划1200输出实际528：Min完整400+.04679GPUh；Q只有原shard0 128输出，其余Q2/G3的固定首instrument失败0科学输出，共672 UNAVAILABLE。终态外置full-scope-instrument-unavailable-v1.json保留所有cfg/log/pred SHA，等待全8shard的CPU分析器已终止，Qpartial不用于主效应。Min完整原INTERIM有效，POST-HOC原Q向量逐项支配cue30/GP1/equal19/tradeoff0；cue支配30的native GP-target60决策42tie/18选坏/0选好，不能解释为两个P不同Q的质量tradeoff，亦不认证所有未问事实。
