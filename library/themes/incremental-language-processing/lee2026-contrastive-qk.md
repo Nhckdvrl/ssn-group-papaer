@@ -1,0 +1,9 @@
+# Lee等：通过对比协方差分解QK特征（Harvard作者v1）
+
+1. **来源/范围：** [arXiv2602.04752v1](https://arxiv.org/abs/2602.04752v1)，Harvard/Technion/Kempner（Viégas/Wattenberg注明工作在Harvard完成）。主文§1–7 pp1–8完整；AppA/B推导pp11–12、D/E方法pp13–14及F说明、G两族结果Fig19–20 pp19–20完整；其余F图/参考文献/代码未全审。PDF20p外置SHA08647ee2e7424dd3dfb06bfb004bb0c6191a2bf70b94b765de2c1739505ae7e0。接收状态未核对，官方既有NeurIPS9094缓存无该题名；ICML keyword不是接收证明。
+2. **压力/idea来源（RECONSTRUCTED）：** scalar attention无法告诉为何匹配→现有SAE/probe已先定特征，或PCA仅看到部分低维→直接构造保持其他因素的positive/negative QK二阶矩差→SVD分出query/key不同坐标→toy可知潜变量与干预、再在真实LM semantic filter/多binding机制上验证。与Feng/Prakash/Gur-Arieh距离是定位已有机制的低秩子空间，而非首次发现模型binding或order ID。工具贡献有理论/因果用途，不是画PCA即新机制。
+3. **方法/理论条件：** C±=E[q kᵀ|±]实际uncentered second moments，∆C隔离特征取决于匹配条件，toy还假设K不编码payload(W_K A_y≈0)、噪声忽略、独立/均值0条件。rank取99% Frobenius能量，是有效rank heuristic不是天然role维数定律；superposition与feature split会使人定义变量和模型“特征单位”不同。一般自然GP cue变化不自动满足只变一个feature的前提。
+4. **规模/实验：** toy d32/head8或16、latent ranks网格、16payload/10classes，离散/连续准确约99%（连续head8约85%），51200 test换subspace坐标移attention；真实Llama3.1-8B和Qwen3-4B，semantic 2000 prompts/5至13categories/head top3选择、1000test；binding3000 prompts×9entity-box，先按head attention30%筛9heads，1000test/不同query entity。这些是定位工具范围，非所有heads/模型形成普遍机制。
+5. **读出层级：** categorical约rank1/category（合5dim），order常2–3/lexical9–10不同head/模型；subspace swap比同rank随机更能改attention。main与AppG主要报告attention转移和pre-softmax logit归因，不是最终QA正确率/完整下游semantic恢复。因此可为本线routing/content分解提供动作，但不独立证明内部解释已正确、或我方能力已成立。
+6. **归因边界：** ∆C数据条件需要先知道找什么，不是无监督feature discovery。q=q_order+q_lex+residual能确切重组logit，但两投影不正交时顺序敏感，逐步projection不自动产生独立语义变量。高lexical logit可能只是rank大。随机subspace rank快接head维数时可近似全替换，作者在F明说。几何图不表示实体实际cause参与者role（object-box事实与GP患者/施事不是同对象）。
+7. **对我们怎样借：** E55/64 coarse whole-state patch只证明有限因果作用，正向角色不一致时先定位发生的具体错误动作，再考虑“地址匹配/内容值”分解；没有目标共同后果就不扫heads或PCA。E77完整阴性与E78三强族真实消费实验先回答行为对象，之后才决定最有区分力的一个因果动作。一般binding/知道但不使用多近邻已拥有，但不因相近自动关线或判死GP。

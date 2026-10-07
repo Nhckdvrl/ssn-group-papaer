@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-51篇主文（4综述+47研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+52篇主文（4综述+48研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -23,7 +23,7 @@
 - [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
 - [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
 
-[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述51篇。
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述52篇。
 
 - [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
 - [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
@@ -80,3 +80,5 @@
 - [Spaulding ACL2025 proto-role](spaulding2025-proto-role-context.md)：主文完整；属性与role一致/不一致不独立证明latent语义机制，Pipeline大部分低分来自严格span边界，记录One-arg gold/silver歧义。
 
 - [Dukić SIFT作者v2](dukic2025-sift-generative-labeling.md)：主文完整/AppA明确scope；任务表示/监督接口贡献，不同baseline适应范围、监督token成本和SRL多shot阴性保留。
+
+- [Lee QK作者v1](lee2026-contrastive-qk.md)：主文全读/附录scope明确，Harvard工具贡献从未知scalar机制→可分解匹配；attention干预与实际答案恢复分开，接受未核对。

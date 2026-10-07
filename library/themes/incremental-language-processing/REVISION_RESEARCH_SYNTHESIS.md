@@ -4,7 +4,7 @@
 
 ## 当前认识与开放问题
 
-51篇实际主文的入口见[阅读索引](REVISION_READING_INDEX.md)，其中4篇综述；全文/选段/摘要按ledger分别记。新近邻不是否决器，下面将已知主旨与待证问题分开。后面的阅读生长路径和各完整自审保留其历史节点。
+52篇实际主文的入口见[阅读索引](REVISION_READING_INDEX.md)，其中4篇综述；全文/选段/摘要按ledger分别记。新近邻不是否决器，下面将已知主旨与待证问题分开。后面的阅读生长路径和各完整自审保留其历史节点。
 
 | 领域关心的对象 | 已获得的认识 | 最能改变解释的当前节点 |
 |---|---|---|
@@ -285,3 +285,7 @@ SRL最新v4综述主文43页完整补入，累计49篇主文（4survey+45researc
 ### 生成式标注的监督接口：Dukić SIFT作者v2
 
 [原文](https://arxiv.org/abs/2509.00921v2)，主文全读/AppA scope记录，接收状态未核对。现成MetaICL框架里改监督response范围与span:label接口，多族多任务得清晰方法结果；SRL多shot常损伤，CM/LLM2Vec适应范围与监督token不等，不能抽为架构定律。贡献来自真实任务接口压力，不要求空白领域，也不能机械复制structured输出到GP。
+
+### 匹配为何发生：Lee Harvard QK分解
+
+[作者原文](https://arxiv.org/abs/2602.04752v1)，main全读/附录范围见卡。从scalar attention到positive/negative二阶矩，toy理论/因果验证，再分semantic与binding匹配；真实LM主要attention而非最终答案，未核对接收。对GP可借routing/content对象划分，必须先有真实共同的修订后果，不能把whole-state patch、attention变化、effective rank叫正确内部parse。
