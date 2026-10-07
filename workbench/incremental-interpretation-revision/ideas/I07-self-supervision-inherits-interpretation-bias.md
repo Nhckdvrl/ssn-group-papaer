@@ -13,3 +13,5 @@
 **近邻与compression risk：** ABBEL拥有观测reconstruction与belief内容监督；Agent-BRACE/CBM已有缺失、错误、stale belief rewards；ReBel已有基于观察的一致性credit（主文／关键附录已深读，非字面重建）；Kamoi/self-correction已有内部grader不可靠压力。MetaRAG已有同policy一致性reward＋最终correctness gate。一般“reward可能错”与一般“state不等于action”不新。拟增量是**正确替代关系的内容credit为何会随同注册语义的观察表达改变**，如何由解释/评分通道产生、能否在其它自然更新域预测与改善。
 
 **最便宜的下一核心：** 社区现成Belief-R完整数据，不改其语用Gold，不bulk审计；比较同一更新下的前向判定与观察重建对候选belief的排序，看问题是否只限GP输入。任务范围与原作者定义保持，未来构造/修改才用Step Plan双盲。若外域不成立，则收窄机制对象或另找依赖类型，不继续surface/score模板网格。不关闭线、不自动认定novelty，不改registry。
+
+**机制仍有三个竞争解释（E93效应读取前）：** (1) grader沿用观察的误解释；(2) grader即使能识别含义，条件于正确belief的语言生产偏好仍可能更喜欢显式、无歧义表述，故原GP的逆向预测低分；(3) 新观察与正确更新不一一对应，inverse ranking本身缺必要prior／任务信息。E92只能说明观察表达参与credit，不能区分这三者。当前核心价值来自明确的“关系更新→训练信号”后果，不能把标题中的继承偏差当已证事实。MemTrain实体回填、MemoryRewardBench过程judge、CERL未来用途训练都有ownership；不凭它们的存在判死，也不把同类主题换名当新idea。
