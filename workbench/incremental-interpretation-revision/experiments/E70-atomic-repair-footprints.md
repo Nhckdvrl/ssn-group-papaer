@@ -34,3 +34,7 @@ MVRR GP initial sourceYes表达TARGET−BASE Q/G/L +30.0 [0,60] / +50.0 [20,80] 
 NPZ GP initial sourceYes +50 [0,100] / +50 [0,100] / +25 [0,75]（4clusters），both同向但CI均含0；9clusters全问题源模式联合差+44.4 [11.1,77.8] / +22.2 [0,55.6] / +22.2 [0,55.6]，不能都叫正确positive关系恢复。NPS只有1个initial sourceYes簇（非全No），两关系同时正向资格为0，initial No减少的CI都含0；未证成跨构式joint修复，NPVP没有cohort。全部空格/单簇/负效应与原问题粒度同报。
 
 当前最好故事：固定混合源库能改变具体早期关系的表达，MVRR的反向效果跨族，正向部分恢复也真实。它没有共同恢复完整解释；因非目标Source逐层BASE回放，不能独立证明native源内传播失败。未达到合格idea标准，C09限定L1/C06–08L0不变；该原子脚印块自审结束，下一E84拆K/V核心consumer入口与E82当下强baseline，0原数据重审，无需人决定。
+
+### 2026-10-08 POST-HOC语义标签异常定点复核（审核前写）
+
+读E91固定按Source SHA排序的每构式前三条完整P/Q，发现patient原句的主动／被动／主句主体Gold互相不一致、cleaner省宾语P被标明确有floor、两种assistant-shave P对self使用不同蕴含口径。只复核这些具体疑点及同构式正关系锚，共8项；不是随机可靠性样本，不据此估总体错误率，也不bulk重审其它成熟社区数据。Step Plan／step-5-preview、≤5/request，两独立遍＋分歧裁决；题目／旧Gold／模型／条件／奖励都不发给teacher（只给原S或P及原Q）。通用最终词序／不得补论元／保留合理兼容事件的口径固定，新版本；旧标签、raw outputs、maps全部不改。0GPU。若确认差错，指出影响的Source／原子与各既有统计scope，以POST-HOC更正／不确定性报告，不删困难样本或升级主张。E93原1744社区Gold不受此审核影响。
