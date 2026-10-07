@@ -78,7 +78,7 @@ def run(args):
     from source_scope_map import sequence_scores
     maximum=0
     for t in local:
-        a=single_token_scores(model,[t['encoded']],tok.pad_token_id)[0];b=sequence_scores(model,[t['encoded']],tok.pad_token_id)[0]
+        a=single_token_scores(model,[t['encoded']],tok.pad_token_id)[0];b=sequence_scores(model,t['encoded'][0],[t['encoded'][1]]*len(t['encoded'][0]),tok.pad_token_id)
         maximum=max(maximum,*[abs(x-y) for x,y in zip(a,b)])
     assert maximum<.001
     (args.out/'instrument.json').write_text(json.dumps(dict(fixed_sources=sorted(fixed),independent_LP_max_delta=maximum,source_prefix_identical_within_goal=True),indent=2)+'\n')
