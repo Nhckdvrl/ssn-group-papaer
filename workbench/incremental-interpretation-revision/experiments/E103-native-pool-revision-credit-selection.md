@@ -1,6 +1,6 @@
 # E103：同一原观察的自然候选池，评价器会选择哪种解释？
 
-- **状态：** DONE；三族8分片已通过原prompt/LP/T2全50预检并启动，blind T4 finisher在途。
+- **状态：** DONE；三族8分片与全部blind T4已封版；243新packet/42第三遍/0未解决，角色类别收益的含义另由E107检验。
 - **对应：** I07/P20；E101/E102完整三族之后的新功能后果，原问题需撤回早期角色关系。
 - **问题：** prefix reward抵消修订证据是否影响真实内容选择？同原GP观察生成候选，WHOLE重建与T2后缀oracle选择的自由解释忠实度谁更高？不声称自动reward方法/训练收益。
 - **数据：** E96固定50已发表GP源/三当前族，MVRR17、NPZ8、NPS25，所有Source沿用、不改句/问题/Gold、不做Source重审。每Source8候选：j0原E96 native greedy P及原GP-target LP逐字复用；j1–7同一原S、原Amouyal指令/4例、原native nonthinking模板，temperature .8/top_p .95/max96，hashSource×model×j固定seed，全部七种seed保留，无幸存筛选。3×50×7=1050新P+1050新score，150 greedy完整原样保留。

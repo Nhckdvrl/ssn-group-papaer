@@ -20,6 +20,6 @@
 - 同活动7源：reference-only versus initial-only的R变化，GP +8.511 [5.146,12.319]bits，cue +10.598 [7.752,13.551]，阳性对照可用。reference-only后GP R+.229，cue+5.745；initial-only后GP−8.283，cue−4.853。绝对R不是准确率。
 - 相同明确reference-only句后，GP−cue R仍−5.516 [−8.056,−3.290]bits、M+4.321 [2.555,6.683]；无late句时R−11.244 [−13.889,−8.804]。强角色信息显著改变偏好但没消除history。
 - 明确范围4源：reference-only后的same−separate history交互−.018 [−.502,.690]，原−2.603 [−3.040,−2.237]；并非严格scope覆盖已证明，且separate活动对象没有正误gold。
-- [统计](../results/E19-summary.json)、[config](../results/E19-config.json)、[分数](../results/E19-scores.csv)，执行git `5db67bcd8`。
+- [统计](../results/E19-summary.json)、[config](../results/E19-config.json)、[分数](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E19-scores.csv)，执行git `5db67bcd8`。
 - Metadata勘误：generic adopter将report source_items硬编码22，实际7；原cache audit report/hash与model config不改，corrected audit旁存，见[D0勘误](../results/D0-E19-audit-erratum.json)。模型按实际rows统计7，所有文本/teacher flags/推理保持不变。helper已修，不能把错误统计静默改掉。
 - 按强cue有效且残余分支：追why。当前only-X/not-Y把被否定Y放最近，下一E20固定同activity、交换否定/肯定对象出现顺序，以分开nearest mention echo与仍沿用旧relation。不称成功恢复后再激活、不把scope不确定句判能力失败。I01仍PILOT、C01/C02仍L0。

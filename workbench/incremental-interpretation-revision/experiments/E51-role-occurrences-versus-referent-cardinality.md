@@ -1,5 +1,7 @@
 # E51：role-occurrences-versus-referent-cardinality（2026-10-06）
 
+> 2026-10-08整理：科学完成度 **PARTIAL**；推断完成但全量Step语义审计仍PARTIAL。下方RUNNING为历史未结项记录，当前没有该实验进程或队列；原数据、失败和缺项保留。
+
 - **状态：** RUNNING（未结项；推断完成，审计PARTIAL；2026-10-06用户明确暂停，无后台任务）
 - **类型：** PILOT
 - **对应：** C05 / I01 / P11；E50 pair_names 的同patient世界特别差，普通actor锚定复述接近正确；尚不能据此声称一般关系使用失败。

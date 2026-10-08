@@ -19,6 +19,6 @@
 - 独立审查352/352acceptable，selectional odd128保留、指称新实体160保留，无semantic gold。运行前352个pre-target token contexts与原own-NP完全相同。
 - 7 episodic源：无桥 D_M +7.843 [5.422,10.183]bits；continued-same +7.823 [5.387,10.230]；continued-separate +5.712 [4.096,7.306]；began-separate +5.418 [3.862,7.040]。
 - 固定continued A_M +2.111 [1.167,3.137]，7/7 source正。A_R_own −1.974 [−2.783,−.694]；A_R_other +.138 [−1.058,1.301]。全22 A_M +1.382 [.679,2.089]、A_R_other −.044 [−.589,.526]。逐source恒等式均通过。
-- [统计](../results/E16-summary.json)、[config](../results/E16-config.json)、[去文本分数](../results/E16-scores.csv)。执行git `90cf43402`；原E14/E15配置/权重一致。
+- [统计](../results/E16-summary.json)、[config](../results/E16-config.json)、[去文本分数](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E16-scores.csv)。执行git `90cf43402`；原E14/E15配置/权重一致。
 - 更支持患者特异响应，原桥调节不能全归一般ref-form抑制。但own NP本来就是提及过的实体，尚未排除GP改变一般实体可及性/词汇关联；下一对照应比较依赖原事件的patient continuation与不依赖原事件的实体提及，不把关系记忆当已验证。
 - C01/C02维持L0。结果不能独自说明syntactic repair完成、内部event graph或novelty。

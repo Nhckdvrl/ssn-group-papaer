@@ -25,4 +25,4 @@ MVRR句先base final-event extension DiD +17.45 pp [−.14,45.28] n7；其它三
 
 更大的独立词汇覆盖仍不支持“延长统一增加承诺”或“所有低role回答说明旧parse没修好”。下一步拆开歧义等待长度、modifier提供的事件信息和NP引用复杂度：先对原modifier与初始事件的关系作独立外审，再用语义信息/位置受控且逐条审核的语言操作区分解释；不追加更多query模板找赢家。E13自然S2主效应小且CI跨0，提醒用真正有区分力的后文依赖，不能将任意整体概率或No回答当修订成功。
 
-完整四配置、两strata、所有pair IDs与CI见[E01 JSON](E01-external-snapshot3-summary.json)，数字逐条表见[CSV](E01-external-snapshot3-scores.csv)，来源/模型/代码和三个完整子run见[config](E01-external-snapshot3-config.json)。C01/C02仍L0；没有自动科学停步gate，没有已证成的新idea。
+完整四配置、两strata、所有pair IDs与CI见[E01 JSON](E01-external-snapshot3-summary.json)，数字逐条表见[CSV](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E01-external-snapshot3-scores.csv)，来源/模型/代码和三个完整子run见[config](E01-external-snapshot3-config.json)。C01/C02仍L0；没有自动科学停步gate，没有已证成的新idea。

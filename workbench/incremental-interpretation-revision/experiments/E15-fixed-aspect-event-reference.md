@@ -17,7 +17,7 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 - 主7组：A −1.9738 bits [−2.7832,−0.6943]；B −0.6341 [−1.0995,−0.2212]；原I −2.6079 [−3.7788,−1.0900]。A负6/7，B负6/7；逐source A+B=I 恒等成立。
-- 全22组：A −1.4263 [−2.1085,−0.6472]；B −0.7196 [−1.1014,−0.3821]。全部分项/每source见 [统计](../results/E15-summary.json)、[config](../results/E15-config.json)、[去文本scores](../results/E15-scores.csv)。
+- 全22组：A −1.4263 [−2.1085,−0.6472]；B −0.7196 [−1.1014,−0.3821]。全部分项/每source见 [统计](../results/E15-summary.json)、[config](../results/E15-config.json)、[去文本scores](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E15-scores.csv)。
 - 实际运行git `58003f10c`，材料单词变化176/176核对，新旧权重与数值配置完全一致；HF/manual loss差见config。
 - 按事前混合解释分支：reference变化保留主要interaction，aspect/预设也贡献；不能将全部效应称事件身份。下一步区分患者特异reuse与一般reflexive/reciprocal不偏好，再控制same/separate指向词。
 - C01/C02仍L0，未证明内部event graph或新paper finding；本实验不是instruction能力评测。

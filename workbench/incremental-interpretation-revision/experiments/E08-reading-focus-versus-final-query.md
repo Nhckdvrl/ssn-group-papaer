@@ -17,7 +17,7 @@
 - 数字（含CI）：4968/4968任务。base无focus GP simple98.55%、nonGP simple100%；GP lingering14.49%、nonGP34.78%。相关initial−final focus对lingering accuracy的GP−nonGP交互：句前+1.45 pp [−10.14,+13.04]，句后−7.25 [−20.29,+5.80]；不支持简单的独特GP reading-goal交互，也不证明其不存在。
 - 句后final focus−对应无关final：GP lingering +23.19 pp [13.04,33.33]、nonGP +21.74 [13.04,31.88]，交互+1.45 [−11.59,+14.49]；相同final focus放句前减去句后：GP −18.84 [−28.99,−8.70]、nonGP −21.74 [−31.88,−11.59]。更符合后置内容影响问答/语义整合，而非只对GP的早期承诺修订；“究竟回答启动还是正确推理”仍未区分。
 - 保留不整齐的结果：before initial−无关initial的pYes交互−12.74 pp [−23.76,−1.47]，67-source-clean变−11.01 [−22.04,+0.40]；repair下仍负。initial/final本身交互CI跨0，near-floor GP与nonGP不同baseline可产生此模式，不能挑这一contrast称机制。全部概率、accuracy、choice mass、67-set、prob/reflexive分项均报告。
-- 结果文件：[summary](../results/E08-summary.json)、[scores](../results/E08-scores.csv)、[config](../results/E08-config.json)、[figure](../results/E08-focus.png)；原句题/原模型输出在cache runs/E08。
+- 结果文件：[summary](../results/E08-summary.json)、[scores](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E08-scores.csv)、[config](../results/E08-config.json)、[figure](../results/E08-focus.png)；原句题/原模型输出在cache runs/E08。
 - 按决策表执行了什么：降低“query先到即促进特殊revision”作为主旨的支持；回到E01语言cue/blocker/extension与双读数系统测量，不优化获胜prompt、不扩模型。读取2026近邻Ask Twice, Look Twice及其重复/读出ownership；近邻存在只约束定位，不关闭territory。
 - 主张变化：C03只保留E07固定协议行为事实；C01/C02不升级。E08不能支持内部parse改变，也不能用No增加叫recovery。
 - POST-HOC：技术统计复核将lexical-set顺序显式排序，避免Python hash seed改变有限bootstrap抽样；未改实验读数/条件/样本。两种PYTHONHASHSEED的E08 summary完全相同，analysis source hash单独保存，inference config原始code hash保留。

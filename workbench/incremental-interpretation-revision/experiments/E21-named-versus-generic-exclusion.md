@@ -21,4 +21,4 @@
 
 **POST-HOC：** 将已注册R差值拆回GP与cue两cell（无新endpoint/筛cohort）。严格4源named-minus-generic：GP自身+.094 [−.931,1.120]，cue−2.966 [−3.767,−1.596]；差距缩小主要来自cue支持下降，不能叫GP更好修复。named/generic GP绝对R+2.500/+2.406都偏允许reference；role事实仍使两条件强烈移动。不能由概率边际推出实际错误或隐状态。
 
-结果：[summary](../results/E21-summary.json)、[POST-HOC分解](../results/E21-decomposition.json)、[配置](../results/E21-config.json)、[每source](../results/E21-per-source.csv)。按决策表追原因：E22纠正后neutral noticed控制，区分额外实体提及与活动关系利用；随后实际free continuation+一句恢复控制、独立现成材料预测。I01仍PILOT，C01/C02仍L0，不转成“否定重插入错误关系”的既定叙事。
+结果：[summary](../results/E21-summary.json)、[POST-HOC分解](../results/E21-decomposition.json)、[配置](../results/E21-config.json)、[每source](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E21-per-source.csv)。按决策表追原因：E22纠正后neutral noticed控制，区分额外实体提及与活动关系利用；随后实际free continuation+一句恢复控制、独立现成材料预测。I01仍PILOT，C01/C02仍L0，不转成“否定重插入错误关系”的既定叙事。

@@ -35,4 +35,4 @@ signed-role-carryover GP同actor58.60 [48.95,67.89]pp、换actor12.34 [7.24,18.2
 
 **下一决定性动作：** E29源句消融，两种读数并行，检验新活动正负迁移需要最初完整S1，还是仅明确排他事实足以产生；保持全部label映射但不再加问答措辞。E28不足以支持“正确scoped修订与portable预测同时成立”的强主旨，I01 PILOT/C04 L1，未升级。
 
-[统计](../results/E28-summary.json)、[family](../results/E28-per-family.csv)、[base config](../results/E28-base-config.json)、[repair config](../results/E28-repair-config.json)、[独立材料审计](../results/D0-E28-relation-audit.json)。
+[统计](../results/E28-summary.json)、[family](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E28-per-family.csv)、[base config](../results/E28-base-config.json)、[repair config](../results/E28-repair-config.json)、[独立材料审计](../results/D0-E28-relation-audit.json)。

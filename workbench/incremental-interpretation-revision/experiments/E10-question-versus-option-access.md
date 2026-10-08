@@ -16,7 +16,7 @@
 ## 结果（跑完后填写；不改上面的内容）
 - 数字（含CI）：全部2304行完整（1152新、1152复用），corner prompt/hash与原E09完全一致。固定选项末尾、Q前−后：Opt1=A GP +1.39 pp [−6.94,+11.11]、cue −18.06 [−29.17,−6.94]，交互+19.44 [8.33,31.94]；Opt1=B GP −1.39 [−11.11,+9.72]、cue −4.17 [−13.89,+5.56]，交互+2.78 [−6.94,+12.50]。主要正交互并不是GP独特改善，而可由cue回答变差产生；mapping改变后交互不稳定。
 - 固定Q在前、选项前−后的GP−cue交互：Opt1=A 0.00 [−11.11,+11.11]、Opt1=B +12.50 [2.78,22.22]。固定Q在后则+4.17 [−1.39,9.72] / 0 [−8.33,+8.33]。问题与选项位置都影响行为，结构依赖mapping，不能归为纯选项距离或独立的task-directed revision。repair与三个family分项全部保留。
-- 结果文件：[完整统计](../results/E10-summary.json)、[scores](../results/E10-scores.csv)、[config与复用provenance](../results/E10-config.json)、[图](../results/E10-access.png)。
+- 结果文件：[完整统计](../results/E10-summary.json)、[scores](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E10-scores.csv)、[config与复用provenance](../results/E10-config.json)、[图](../results/E10-access.png)。
 - 按决策表执行了什么：报告混合结构，降低以query-order孵化主旨的支持；不继续找获胜布局。主对象回到E01语言操作与角色/自然语义读数的异常，先解释unambiguous extension也使role困难的原因；原始自然题E09也有真实cue影响，不能把全部GP困难归为元语言伪影。
 - 主张变化：无预定升级。
 - POST-HOC：无。

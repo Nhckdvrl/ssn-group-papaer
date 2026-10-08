@@ -3,7 +3,16 @@ import argparse,json,time
 from pathlib import Path
 from data import sha
 from joint_relation_use import MODELS
-from finish_correct_prefix_binding import estimate
+import collections
+import numpy as np
+
+def estimate(values,clusters):
+    grouped=collections.defaultdict(list)
+    for v,c in zip(values,clusters):grouped[c].append(float(v))
+    x=np.array([np.mean(grouped[c]) for c in sorted(grouped)])
+    if not len(x):return dict(value=None,CI95=None,clusters=0,sources=0)
+    rng=np.random.default_rng(71);boot=x[rng.integers(len(x),size=(10000,len(x)))].mean(-1)
+    return dict(value=float(x.mean()),CI95=list(map(float,np.quantile(boot,[.025,.975]))),clusters=len(x),sources=len(values))
 
 OPS=['NATIVE','CUT_P1','CUT_SOURCE_LATE','CUT_P1-minus-NATIVE','CUT_SOURCE_LATE-minus-NATIVE','CUT_SOURCE_LATE-minus-CUT_P1']
 

@@ -1,89 +1,40 @@
-# 本地复现入口
+# 保留脚本与历史复现
 
-原始数据、规范化 stimuli、完整 prompt、权重和逐条 prediction 留在 `/data1/xiangding/work/incremental-interpretation-revision/`。固定上游 revision 和 SHA256 见 `../results/D0-source-audit.json`；所有 loader 先核验 hash。复用 `/data1/xiangding/env/pragmatic-inference-calibration/`，torch 2.7.1+cu126、transformers 4.51.3。新任务不恢复已关闭的旧项目。
+本目录2026-10-08清理后保留126个Python科学/分析/共享脚本。141个历史实验流程、临时等待/封版/补包与画图脚本已从当前工作树退役；它们的内容、SHA与恢复提交保存在[资产清单](../results/ANALYSIS_ASSETS.json)。不把已经完成的等待器和历史“下一步”当运行队列。
 
-当前E52入口（旧实验命令只供历史复现）：
-
-```bash
-source workbench/incremental-interpretation-revision/scripts/env.sh
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/data_v2.py --out "$IIR_CACHE/E52/published-v2.jsonl"
-"$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/step_gp_audit.py --data "$IIR_CACHE/E52/published-v2.jsonl" --out "$IIR_CACHE/E52/step-full-v4" --workers 4 --batch-size 2
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/analyze_reading_map.py --data "$IIR_CACHE/E52/published-v2.jsonl" --annotation "$IIR_CACHE/E52/step-full-v4/annotated.jsonl" --out "$IIR_CACHE/E52/qualified-v2.jsonl"
-"$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/run_panel.py --data "$IIR_CACHE/E52/published-v2.jsonl" --stage map-unlabelled
-```
-
-实际自主执行将地图分为不依赖标签的`map-unlabelled`和完成双遍位置审计后的`landmarks`，按完整task key合并；已有输出不能覆盖，完整地图与分片不能同时重复运行。`download_panel.py`只下载ModelScope镜像的逐文件固定revision/size/SHA256；推理`local_files_only=True`且HF离线，环境HF_ENDPOINT为hf-mirror.com。`step_gp_audit.py`只允许step-5-preview/Step Plan，0600仓库外密钥；单批≤5、共享并发≤8，两个打乱pass及第三遍裁决原包全留。`import_step_pass2.py`在主pass2开始前盲导入另四并发的独立pass2；API schema失败保留、429只做传输退避。运行参数和限制见E52卡，不能把CLI历史重试误作新协议。
-
-原`qualified-v2`的潜在C还须反例世界复核，主语义分析采用`qualified-v3`：
+完整清理前代码：`859e48c87cfbecaf017c0fd8e286ef18f59a61cd`。每个run附带的原源码快照、config、prompt、数据/输出SHA仍在外置目录。恢复历史代码时使用固定提交，避免拿最新模块混跑旧实验：
 
 ```bash
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/audit_literal_contradictions.py --data "$IIR_CACHE/E52/qualified-v2.jsonl" --out "$IIR_CACHE/E52/countermodel-audit-v1" --workers 4
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/merge_literal_validation.py --published "$IIR_CACHE/E52/published-v2.jsonl" --qualified "$IIR_CACHE/E52/qualified-v2.jsonl" --original "$IIR_CACHE/E52/step-full-v4" --validation "$IIR_CACHE/E52/countermodel-audit-v1" --destination "$IIR_CACHE/E52/step-final-v5" --out "$IIR_CACHE/E52/qualified-v3.jsonl"
+git show 859e48c87cfbecaf017c0fd8e286ef18f59a61cd:workbench/incremental-interpretation-revision/scripts/finish_native_revision_pool.py
 ```
 
-该T1复核两遍/分歧三遍、medium effort，选择全部潜在C和固定10%比较，盲于模型表现；只更改语义标签，原独立T2/T3及其冲突排除保留。一般可信自然数据不重新逐项审计。R2和surprisal已按原可靠T2盲计算，合并后的T2保持相同，不因语义复核重算；分析需检查S/word/hash。`summarize_dataset_audit.py`分别记录原标注与反例复核可靠性。
+## 共同资产与约束
 
-`thinking_map.py`/`run_panel.py --stage thinking`使用隔离的`/data1/xiangding/env/iir-e52-generation/`（vLLM0.9.2、torch2.7.0+cu126、transformers4.51.3），原评分环境不改；安装只走PyPI清华镜像，TMPDIR/PIP_CACHE_DIR在外部E52数据盘。固定完整输出与最后think闭合后的答案，R0-generation做匹配控制，cap/未知另报。`audit_reading_fillers.py`独立T3两遍；分析`--filler-audits`强制核验R3输入。`disambiguator_surprisal.py`采用词尾空白质量校正，raw/WT都存；`balanced_map.py`只计算固定面板均衡macro，`mixed_reading_map.py`的VB区间不是主bootstrap CI。全部详细协议/修订时点见E52卡，尚无新能力主张。
+外置根目录 `/data1/xiangding/work/incremental-interpretation-revision/`。数据/规范化版本/完整输出/LP/Step审计原包/失败/结果均保留；完整大统计的使用见[results/README](../results/README.md)。模型权重已清理；09:00资源截止已实际执行，当前没有GPU实验或API审计队列，不能自动下载/重载模型。
 
-增量filler审计用`audit_reading_fillers.py --previous-audits <所有已完成目录>`，分析时`--filler-audits`同时传入原/增量目录，不重复选择标签。`analyze_reading_map.py --deduplicate`另写输入字节去重敏感性；主分析连接共享GP句的既有cluster。完整prompt的R3/R1长度不等记排除；分析同时输出小字段的外部validated-task ledger。补充模型用`mixed_reading_map.py --data <qualified> --map-summary <主分析json> --out <json>`，沿用全部质量排除，区间仍是VB posterior近似而非bootstrap。
+[env.sh](env.sh)配置无代理与国内HF镜像；推理必须离线。原评分环境 `/data1/xiangding/env/pragmatic-inference-calibration/`，当前模型环境 `/data1/xiangding/env/interpretation-current-models/`，E52生成环境 `/data1/xiangding/env/iir-e52-generation/`；具体torch/transformers/quantization以run config为准，不跨环境当纯模型尺度对比。
 
-E53：`paraphrase_map.py --data <published-v2> --build-out <E53/sentences.jsonl>`合并相同原句；`run_panel.py --stage paraphrase --data <sentences> --models Qwen3-8B gemma-3-12b-it Meta-Llama-3.1-8B-Instruct --calibration-out <E52/runs> --out <E53/runs>`用共享GPU锁生成。`audit_paraphrases.py --data <sentences> --runs <完成目录...> --out <audit> --previous-audits <此前完成目录...>`只给source/output、相同文本盲复用。`analyze_paraphrases.py --metadata <qualified> --data <sentences> --runs <完成目录...> --audits <全部不重复audit目录...> --out <json>`要求每个final都有审计记录；未知/失败不当语义误读，T4与两句格式分开。仪器`--source-limit 5 --blocking-slot 0`不用于科学效应筛选。
+新标注/定点审计只允许Step Plan `step-5-preview`、每批≤5、全局共享≤8；凭证仅在仓库外私有配置。成熟自然数据不无差别重审。此次整理没有调用API。
 
-Native纠正：`encode_choices`对已渲染chat不再加special；普通A/base文本仍加。受影响五模型的B在`E52/runs-native-v2`，Gemma12/Llama8 FP32在`confirmation-native-v2`；旧全部A用`project_run_format.py --source <完成旧run> --out <projection> --format A`保留。分析不能同时传入旧受影响B与纠正B。E53采用Qwen旧正确token与`E53/runs-native-v2`两族，旧全T4等待队列已取消；新全T4目录`T4-full-native-v2`。首8token/策略保存，生成显式传prompt_token_ids避免vLLM再次加BOS。
+## 保留入口
 
-E59：`source_scope_map.py --data <qualified-v3> --build-out <E59/data-v1.jsonl>`从完成Step T1机械派生三scope任务gold，原gold保留。实际先用`--data <qualified-v2> --build-out <E59/blind-data-v1.jsonl> --blind`形成原语法资格超集，G2/W3 gold为空；`run_panel.py --stage source-scope --models Qwen3-8B gemma-3-12b-it Meta-Llama-3.1-8B-Instruct --data <blind-data> --out <E59/runs-blind-v1> --calibration-out <E52/runs>`固定FP32、letters/words全交叉。verified单token候选以prefix-only LP等价计算，每族固定6项与完整joint LP独立核对。最终用`qualify_source_scope_run.py --data <data-v1> --run <某族blind完成目录> --out <新qualified目录>`投影所有合格任务、机械赋值，缺任一预定任务就拒绝采用。`analyze_source_scope.py --runs <三族qualified完成目录...> --out <json>`拒绝blind，主O2→G2只同gold配对，不直接比较W3的绝对概率；`balanced_source_classes.py --effects <cluster-effects> --out <json>`另报W3类别均衡与缺失类别。
+| 功能 | 入口 | 结果/协议 |
+|---|---|---|
+| 原源与统一输入 | `data.py`、`data_v2.py`、`stimuli.py` | 数据固定revision/字节/hash与资格版本；不把未知Gold补成No |
+| 旧广面阅读/复述/源支持 | `run_panel.py`、`reading_map.py`、`paraphrase_map.py`、`source_scope_map.py` | E52/E53/E59；原生BOS纠正前后分开，E53科学范围仍PARTIAL |
+| 语义、filler与新输出审计 | `step_gp_audit.py`、`audit_literal_contradictions.py`、`audit_reading_fillers.py`、`audit_paraphrases_role_v2.py`、`step_role_audit.py` | Step Plan固定协议；技术失败、语态与语义角色区别全部保留 |
+| 白盒可见性/自然源状态/用途 | `prequestion_oracle_map.py`、`natural_cue_patching.py`、`shared_source_cross_use.py`及对应`analyze_*` | 完整三族/层/位置/双向图；干预不单独认证语法变量 |
+| 原关系/目标/实际回答分析 | `analyze_goal_*`、`analyze_joint_relation_use.py`、`analyze_actual_answer.py`、`analyze_query_guidance_fidelity.py` | 原mapping/Gold/cap/unknown；旧forced-choice与当前actual分开 |
+| 当前强模型与词义/frame | `current_open_baseline.py`、`run_lexical_semantic_recovery.py`、`run_predicate_frame_hint.py`、`run_frame_source_bank.py` | E82/E85/E89/E90；完整序列BF16评分分支，不冒称prefix一致 |
+| 重建反馈与自然候选 | `run_reconstruction_reward.py`、`run_modern_native_belief_credit.py`、`run_native_revision_pool.py` | E91/E96/E103；未训练analogue，不冒充作者RL复现 |
+| 前后credit/预算/自动规则 | `analyze_disambiguation_credit.py`、`analyze_revision_evidence_oracle.py`、`analyze_proposal_budget_credit.py`、`analyze_positive_innovation_credit.py` | E101/E102/E105/E106；冻结候选/位置/规则，不调cutoff |
+| 关键依赖与条件候选 | `critical_dependency_audit.py`、`analyze_critical_dependency_commitment.py`、`analyze_dependency_credit_pairs.py` | E107双遍全243、严格/自然隐式支持与条件覆盖分开 |
+| GPU截止与离线下载入口 | `gpu_deadline.py`、`download_panel.py`、`download_current_models.py` | 只保留入口，不代表授权重新占卡；下载仅国内镜像 |
 
-`published_reading_map.py`重用全部公开结果（含GPT-5/o3，无商业API），保留prefix覆盖和无效质量；`plot_reading_map.py`输出静态PNG/PDF、95%CI及missing；`analyze_word_answer_relation.py`将相同非句末word的原/WT surprisal与R0逐题回答关联，常量/稀疏层不估成零。它们都是测量/展示入口，不自动选假说或认证新颖性。
+其余保留分析器是各完整结果的消费入口，共享依赖经静态闭包核对。唯一原来依赖临时等待器的E79 `estimate`函数已逐字提取到其分析器，科学公式未改；其他保留科学脚本未改。
 
-```bash
-source workbench/incremental-interpretation-revision/scripts/env.sh
-# git download 必须沿用上述无代理环境，并禁用 git 自有 proxy 设置。
-git -c http.proxy= clone https://github.com/samsam3232/comparing_humans_llms_processing_difficulties "$IIR_CACHE/upstream/amouyal"
-git -C "$IIR_CACHE/upstream/amouyal" checkout 072efefa01cb9716c2d14752eb1d4bf9830b0b81
-# Jurayj / Microsoft 同样按 data.py SOURCES 的 URL / revision 下载；Microsoft 可 sparse checkout。
-python3 workbench/incremental-interpretation-revision/scripts/data.py --audit-out workbench/incremental-interpretation-revision/results/D0-source-audit.json
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/download_hf.py --repo Qwen/Qwen3-8B --revision b968826d9c46dd6066d109eabc6255188de91218 --out "$IIR_CACHE/models/Qwen3-8B"
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/verify_hf_mirror.py
-CUDA_VISIBLE_DEVICES=0 "$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/infer.py --experiment E00 --out "$IIR_CACHE/runs/E00"
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/analyze.py "$IIR_CACHE/runs/E00/predictions.jsonl" --out workbench/incremental-interpretation-revision/results/E00-summary.json
-```
+## 不在当前目录里的工作
 
-schema 含 DATA_PLAN 全部字段。未标注 ambiguity position、无上游 comprehension gold 时使用 null，不从结果倒填；另保留 pair_id、upstream 条件与 row ID。位置定义为 0-based whitespace word index，tokenizer-specific positions 在推理资产中另记。bootstrap 的独立单位是 lexical set，不是 prompt/question/condition 行。
+旧E00–51材料/协议、一次性格式投影、失败补包、封版等待和全部`plot_*`在固定Git提交可恢复，已经生成的图仍保留。E108没有科学结果：原准备代码保存在固定提交，数据与CPU核验保留外置，当前工作树不留未授权运行入口。
 
-`infer.py` 保留 upstream Yes/No vocab variant 聚合，但用 FP32 softmax，保存两类 choice mass、greedy token、全部 prompt hash。不把归一化的 P(correct) 等同于模型自然输出概率。
-
-后续诊断运行：`infer.py --experiment E03/E04/E05/E06 --dtype float32 --out 新目录`；E04 指定 `--model "$IIR_CACHE/models/Qwen3-1.7B"`。1.7B 用 `download_hf.py --repo Qwen/Qwen3-1.7B --revision 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e --out "$IIR_CACHE/models/Qwen3-1.7B"` 获取。下载直接请求镜像并 `trust_env=False`；已有正确文件按 hash 跳过，不重复下载。
-
-[共享 JSON Schema](schema.json) 与 `data.validate_record` 对齐；系统 Python 已有 jsonschema，可对 cache JSONL 逐条校验，无需向推理 venv 安装包。完整校验见 `../results/D0-schema-validation.json`。构造 Jurayj 时 `stimuli.py` 比较全部626句与固定上游 generator；疑似原句/语义问题保留在 ledger。2026-10-05最新用户授权opencode免费模型/Step逐句逐题独立标注，必要时GPT Luna子agent复核，不由主执行agent自判语义gold；旧Ling advisory与历史agent flags保留作provenance，不作为E01筛选规则。
-
-E01已注册；用户明确取消以calibration为停步gate，按系统测量继续。E06只使用自然Amouyal原句校准角色与事件读数，衍生552条QA在本地 `normalized/E06-attachment.jsonl`，旧结果和标签不修改。
-
-E01独立审计与推理入口（先核对实际返回完整，再批量）：
-```bash
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/step_audit.py --workers 4
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/adopt_step_audit.py
-CUDA_VISIBLE_DEVICES=0 "$IIR_PYTHON" -u workbench/incremental-interpretation-revision/scripts/infer.py --experiment E01 --data "$IIR_CACHE/normalized/jurayj-step5.jsonl" --dtype float32 --system-frame neutral --families NPZ --out "$IIR_CACHE/runs/E01-neutral-NPZ"
-```
-密钥读取仓库外0600文件或环境变量；HTTP显式`trust_env=False`，请求/响应hash、finish reason与ID完整覆盖记录在cache。实际API限流返回account concurrency=5，客户端默认4且绝不超过用户指定8；截断/timeout不算完成，不用相同截断参数盲重试。`adopt_step_audit.py`机械核对版本/覆盖并应用Step标签；全部诊断题保留null gold。`revision_map.py`保存contrast实际pair intersection和CI，role/semantic分开报告。
-
-
-E13原两句question-free likelihood（24源组/96作者变体）：
-
-```bash
-source workbench/incremental-interpretation-revision/scripts/env.sh
-CUDA_VISIBLE_DEVICES=0 "$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/followup_probability.py run --out "$IIR_CACHE/runs/E13"
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/followup_probability.py analyze "$IIR_CACHE/runs/E13" --out workbench/incremental-interpretation-revision/results/E13-summary.json
-```
-
-原text与逐词分数仅cache；公开摘要按24 source-set配对bootstrap。第一源词无前文，整词不评分；S2全部词均有前文。首batch以library masked-label loss独立校对S2 shift/indexing，不把surprisal解释为语义gold。
-
-
-E32/E33事实词序及动作迁移（所有材料先独立逐条审计）：
-
-```bash
-source workbench/incremental-interpretation-revision/scripts/env.sh
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/role_fact_transfer_order.py analyze --new "$IIR_CACHE/runs/E32-probability" --out workbench/incremental-interpretation-revision/results/E32-summary.json
-"$IIR_PYTHON" workbench/incremental-interpretation-revision/scripts/action_paraphrase_transfer.py analyze --new "$IIR_CACHE/runs/E33-probability" --out workbench/incremental-interpretation-revision/results/E33-summary.json
-```
-
-build/adopt入口见各脚本与实验卡。E33字段v1/v2与原材料均cache-only，固定字段hash见D0-E33审计。E29/E31/E32父分数原样复用；E33独立action-clear8与自然/parent交集7/6在推理前定义，所有variant含related都评分。Qwen3-8B冻结FP32，本地cache、原venv、无任何训练或representation probe；网络先source上述环境去掉所有代理。
+历史卡里命令记录其当时版本；已删除代码的Markdown链接已指向固定Git历史，inline命令不是承诺当前目录可直接执行。执行旧协议前用原代码版本和config核对，不在整理阶段重跑。

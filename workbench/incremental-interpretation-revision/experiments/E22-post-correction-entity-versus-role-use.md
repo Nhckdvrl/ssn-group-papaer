@@ -19,4 +19,4 @@
 
 解释：cue中named对原患者的增强大致跟neutral实体提及一起变化；GP中named提高neutral可及性，却相对抑制原活动患者关联。因此不能把E21的cue下降称角色错误污染，也不能用纯实体salience解释GP全部响应。它与语义排除有效、但mentioned entity仍显眼的混合解释相容；尚无内部机制或实际角色错误证明。
 
-[统计](../results/E22-summary.json)、[每source](../results/E22-per-source.csv)、[配置](../results/E22-config.json)、[审计](../results/D0-E22-material-audit.json)。acceptable-only全部GP缺失，D为null而不是伪造通过；主eligible/外部faithful matched层保留GP。按决策表下一实际free continuation+一句恢复控制，随后独立材料预测，不继续7句措辞循环。C04登记为L1局部measurement，I01仍PILOT。
+[统计](../results/E22-summary.json)、[每source](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E22-per-source.csv)、[配置](../results/E22-config.json)、[审计](../results/D0-E22-material-audit.json)。acceptable-only全部GP缺失，D为null而不是伪造通过；主eligible/外部faithful matched层保留GP。按决策表下一实际free continuation+一句恢复控制，随后独立材料预测，不继续7句措辞循环。C04登记为L1局部measurement，I01仍PILOT。

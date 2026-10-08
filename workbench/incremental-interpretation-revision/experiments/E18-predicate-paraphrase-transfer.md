@@ -20,5 +20,5 @@
 - faithful9源：释义后的D_M与same/separate调节仍存在，A_paraphrase+1.439 [.895,1.908]bits；与原谓词A的差+.273 [−.931,1.506]，CI跨0不等于等价。
 - 原7 episodic（包含related含义变化）及全部22各分项保留。全22 D_M_none+4.693 [3.449,5.992]、same+5.489 [4.061,7.002]、separate+4.283 [3.104,5.558]；A+1.206 [.775,1.620]。
 - episodic∩faithful4源：D_M_none+6.505 [4.685,8.616]、same+6.955 [4.886,9.679]、separate+5.756 [4.028,7.643]；A+1.198 [.280,2.117]，3/4正。但含source23marginal，不能把这层夸成独立高质量大样本。
-- [统计](../results/E18-summary.json)、[config](../results/E18-config.json)、[分数](../results/E18-scores.csv)，执行git `0d314aed5`。
+- [统计](../results/E18-summary.json)、[config](../results/E18-config.json)、[分数](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E18-scores.csv)，执行git `0d314aed5`。
 - 按transfer分支：限制exact original-verb echo，但semantic association、source noisy-channel修复与未完成句法恢复仍竞争。接E19明确同episode角色信息的双向对照；不继续换同义词找赢家，不称已恢复后再激活。I01仍PILOT，C01/C02仍L0。

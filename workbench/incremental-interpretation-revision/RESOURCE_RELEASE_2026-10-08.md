@@ -1,6 +1,6 @@
 # 资源释放与资产入口（2026-10-08）
 
-**08:19 已提前停用本工作GPU并删完剩余模型权重。** 整个本用户目录实测约38GiB，当前项目缓存约17GiB，CPU/API标注和分析继续。08:55持久timer实际运行并成功退出，09:00:04/24检查无占卡；09:01:42完整实核0本用户GPU/0本工作queue、17目录0权重，见[核验摘要](results/resource-release-20261008-summary.json)。他人进程不在释放范围。
+**08:19 已提前停用本工作GPU并删完剩余模型权重。** 整个本用户目录实测约38GiB，当前项目约17GiB。08:55持久timer实际运行并成功退出，09:00:04/24检查无占卡；09:01:42完整实核0本用户GPU/0本工作queue、17目录0权重，见[核验摘要](results/resource-release-20261008-summary.json)。他人进程不在释放范围。E107标注已完整结束，本次仅CPU整理，无API在途请求。
 
 - 本项目根目录：`/data1/xiangding/work/incremental-interpretation-revision/`。
 - 今日剩余6模型38个权重文件删除190652941768bytes（177.5594GiB）；清单 `model-weight-release-inventory.json`，SHA `dcefbcbd20f5fbf4c5e050225b43b82d624340c0cee43a147d910959e94983d7`。
@@ -13,4 +13,4 @@
 
 `GPU_RELEASE_REQUESTED.json`已08:19写入，runner拒绝重新占卡；持久服务为`ssn-iir-release-20261008.timer/service`，本地helper `gpu_deadline_release_v1.py`。今后需人重新授权GPU并更新截止规则，恢复权重只能走国内HF镜像；入口见[scripts/download_current_models.py](scripts/download_current_models.py)、[scripts/download_panel.py](scripts/download_panel.py)，不直连HF。当前CPU结果分析无需权重。
 
-仓库保持原注册/证据等级，不改线状态。最近科学入口为[重新对齐](REASSESSMENT_2026-10-07_2355.md)、[E103](experiments/E103-native-pool-revision-credit-selection.md)/[E105](experiments/E105-added-proposals-reconstruction-faithfulness.md)/[E106](experiments/E106-positive-observation-innovation-credit.md)完整图；[E107](experiments/E107-critical-dependency-commitment-audit.md)仍标注中，不能因已停GPU假称研究完成。
+仓库保持原注册/证据等级，不改线状态。最新入口为[探索总结](EXPLORATION_SUMMARY.md)、[逐次方向与结果](EXPLORATION_RECORD.md)、[E107](experiments/E107-critical-dependency-commitment-audit.md)完整终图与[摘要](results/E107-critical-dependency-summary.json)。E108仅准备；资源释放与档案收尾不等于找题任务完成。

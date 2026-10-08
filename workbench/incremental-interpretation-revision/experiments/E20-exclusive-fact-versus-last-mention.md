@@ -19,5 +19,5 @@
 - 168/168独立acceptable、facts preserved clear；全部28 role statements词袋精确保持，只增加but一个词，dry off粒子位置另记。
 - reference-only：肯定对象最后时GP−cue R−3.403 [−4.276,−2.444]bits，原−5.516 [−8.056,−3.290]；order-history改变+2.113 [.643,3.942]。M仍+3.598 [2.524,4.782]，改变−.722 [−2.081,.222]。全部7 source R_D负，不是个别source抽样赢家。
 - initial-only：新R_D−3.566 [−4.420,−2.801]，order-change−.137 [−.926,.771]。新双向role事实R效果GP+9.556 [6.804,12.828]、cue+9.393 [7.346,11.768]。GP reference-only R+1.732 [.585,2.906]、cue+5.135 [4.359,5.967]；整体已偏向允许对象，不能称所有case错误或旧解释完全主导。
-- [统计](../results/E20-summary.json)、[config](../results/E20-config.json)、[分数](../results/E20-scores.csv)，执行git `f8062c50a`。
+- [统计](../results/E20-summary.json)、[config](../results/E20-config.json)、[分数](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E20-scores.csv)，执行git `f8062c50a`。
 - 按混合解释：对象顺序有贡献，但nearest-last不能解释全部history。更强role cue可移动偏好而残余offset仍在，不是“模型不会更新”。下一E21同排他事实的named/generic/minimal三表达，区分点名否定Y刷新旧association与prior relation独立保留。I01 PILOT，C01/C02仍L0，不升级成内部机制/能力证据。

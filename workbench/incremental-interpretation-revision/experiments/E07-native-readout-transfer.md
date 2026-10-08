@@ -15,7 +15,7 @@
 
 ## 结果（跑完后填写；不改上面的内容）
 - 数字（含CI）：neutral/base/native，句先nonGP−GP lingering +21.74 pp [11.59,33.33]，题先−39.13 pp [−52.17,−26.09]；交互+60.87 pp [44.93,76.81]。upstream/base/native交互+59.42 pp [43.48,76.81]。全部8个system×repair×boundary组合交互43.48–66.67 pp，CI均正；67-set sensitivity同方向。neutral/native的GP simple句先95.65%→题先62.32%，lingering正确率17.39%→81.16%；nonGP simple保持98.55%/97.10%。choice mass接近1，反转不依赖低选项mass。
-- 结果文件：[summary](../results/E07-summary.json)、[scores](../results/E07-scores.csv)、[config](../results/E07-config.json)、[paired CI figure](../results/E07-boundary-order-effects.png)。4416完整任务，GPU0/1独立，合计0.11269 GPU·h。13-qa E01外审子集与E07原始问题不同，不能混合计数。
+- 结果文件：[summary](../results/E07-summary.json)、[scores](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E07-scores.csv)、[config](../results/E07-config.json)、[paired CI figure](../results/E07-boundary-order-effects.png)。4416完整任务，GPU0/1独立，合计0.11269 GPU·h。13-qa E01外审子集与E07原始问题不同，不能混合计数。
 - 按决策表执行了什么：prefill-only解释不够；保留query/evidence-use与回答倾向竞争，E01检查语言操作×query order。不再寻找一个“通过”的模板。源码预检发现源set ID需带set_前缀，运行前修正，不是结果后筛样本。
 - 主张变化：C00/C01/C02保持原等级；E07支持P03的跨boundary行为事实，不声称新parse机制或novelty。
 - POST-HOC：无。

@@ -5,6 +5,7 @@
 - **注册：** PROPOSED（人授权的 baseline residency；不改变 ACTIVE-MAIN / ACTIVE-EXPLORE 分配）。C06–08 L0，C09限定问答协议L1；尚未认证合格idea，未进入候选。
 - **2026-10-06 人决定：** 从暂停恢复，重置到[ROUTE](ROUTE.md)，放弃I01/C05；先广后深，允许白盒，使用同节点8张H20。
 - **执行模式：** 自主推进[EXECUTION_BRIEF](EXECUTION_BRIEF.md)，原人审节点自审后继续；仅§6.7真正卡住或人专属开关线/状态/候选决定时回来。
+- **2026-10-08当前任务：** 人要求整理workbench、清理一次性脚本、保留每次探索方向与结果、认真总结并上传GitHub main；本次仅CPU整理，没有实验或API队列，不自动执行历史“下一步”。未改变注册/idea/主张状态。
 - **数据/API：** 现成成熟数据优先直接用；需新标注/修改/定点审计时只用Step Plan `step-5-preview`、≤5项/批、全局并发≤8，禁止现金接口。HF仅国内镜像，推理离线。
 - **硬资源约束：** 2026-10-08 09:00北京时间前释放全部GPU。08:19已提前停用并删完剩余权重，09:01实际核验本用户GPU/本工作queue/模型权重均0；本用户目录约38GiB、项目约17GiB。科学数据与结果保留。见[资源释放](RESOURCE_RELEASE_2026-10-08.md)。
 - **territory：** [T15](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)；ACL/EMNLP/NAACL按证据成熟度选周期，不投Findings，不参考EACL。
@@ -15,7 +16,7 @@
 
 最初的归因区域仍是增量编码过时、作答选择、合理性组装、测量语义四方竞争。GP错答案、消歧surprisal、双向/重复阅读不能单独认证内部解析。原作者部分No表示not necessarily；源支持、明确矛盾与可能的额外事件分开，不能把所有GoldNo当世界虚假。
 
-**当前结论：没有合格idea。** 已有问答与自由关系表达的分离、撤回旧关系与建立新依赖的分离，以及两族有限候选中的重建credit竞争；尚未连成有足够解释力与重要后果的叙事。[整体诊断](REASSESSMENT_2026-10-07_2355.md)末节核对了E107终图，并承认重复“局部正结果→收缩→补实验”的执行问题；实验卡和精读数量不能代替科学推进。
+**当前结论：没有合格idea。** 已有问答与自由关系表达的分离、撤回旧关系与建立新依赖的分离，以及两族有限候选中的重建credit竞争；尚未连成有足够解释力与重要后果的叙事。先读[探索总结](EXPLORATION_SUMMARY.md)与[103张卡的逐次方向/结果](EXPLORATION_RECORD.md)：两轮都重复了“局部正结果→收缩→补实验”，实验与精读数量不能代替科学推进。总结保留重要线索、反证、仪器失败和未执行项，不据此关闭领域。
 
 | 核心结果 | 完整证据与实际含义 |
 |---|---|
@@ -35,9 +36,9 @@ E93/E95/E97/E100的cap、unknown、Tie和整族仪器不可用全部保留，不
 
 - [领域地图](../../library/themes/incremental-language-processing/FIELD_MAP.md)、[86篇主文精读索引](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)、[跨领域综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。5综述/2 position/79研究；所读版本/附录/接收/代码核对分开，摘要与下载不混计。
 - 最新近邻：ABBEL/ReBel/Agent-BRACE的belief内容信号、TRLM的inverse feedback、IW-OPD的prefix compatibility、Self-CTRL的一致性、Causal Quotient的表示/使用/尺度、BeliefMem的候选置信记忆、Dark Room的奖励传递机制。定位与increment写在论文卡，不自动输出关线判决。
-- 外置根目录：`/data1/xiangding/work/incremental-interpretation-revision/`；`E##/`保留原数据、输入/配置、输出/LP、审核、map及complete标记；原始数据、模型、PDF不进git。当前95个已存在map文件索引及17模型0权重状态见[释放清单](RESOURCE_RELEASE_2026-10-08.md)，历史/interim不冒充独立完成结论。
+- 外置根目录：`/data1/xiangding/work/incremental-interpretation-revision/`；保留原数据、输入/配置、输出/LP、审核、map及complete标记；原始数据、模型、PDF不进git。[结果资产](results/README.md)与[清理清单](results/ANALYSIS_ASSETS.json)索引114份原样外置的大统计/CSV、141个历史脚本和固定Git恢复提交；科学失败/旧版不删除、不压缩。
 - E52主资格入口`E52/qualified-v3.jsonl`，原v2/双轮/裁决资产保留。E53旧T4-native-v2为6244/6247双遍、635裁决、3未解决，属于语态澄清前协议，不当当前role-v2能力证据；没有继续读partial效果。
-- [scripts/README](scripts/README.md)与各实验卡提供复现入口；当前tokenizer/config/revision/manifest可用、权重已释放。重新GPU/下载需人新增资源授权，模型只走国内镜像。
+- [scripts/README](scripts/README.md)保留126个科学/分析/共享脚本；临时等待、补包、历史流程与画图入口退役，原代码可在固定Git提交恢复。当前tokenizer/config/revision/manifest可用、权重已释放；重新GPU/下载需人新增资源授权，模型只走国内镜像。
 - 历史入口：[E00–51总结](PROGRESS_SUMMARY_2026-10-06.md)、[旧路线诊断](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)、[FILE_INDEX](FILE_INDEX.md)、[DATA_PLAN](DATA_PLAN.md)、[CLAIMS](CLAIMS.md)、[PAIN_LOG](PAIN_LOG.md)。原事实与失败均保留在git历史/实验卡/日志。
 
 ## 人的决定记录

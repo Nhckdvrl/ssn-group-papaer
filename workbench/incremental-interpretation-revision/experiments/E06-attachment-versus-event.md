@@ -26,7 +26,7 @@
 - 数字（含 CI）：GP main-clause-subject accuracy：reg/base 5.80%、reg/repair 2.90%、rev/base 与 rev/repair 0%；相应nonGP 94.20%、82.61%、69.57%、59.42%。direct-object No在两个rev配置GP/nonGP均100%，不能解释为恢复（subject Yes控制同时失败）。
 - 两角色正确、event初始Yes组合：nonGP reg/base 43.48% [31.88, 55.07]，reg/repair 34.78% [23.19, 46.38]，rev/base 47.83% [36.23, 59.42]，rev/repair 31.88% [21.74, 43.48]；GP对应1.45%、1.45%、0%、0%。只说明nonGP在不同问句下可出现读数分歧，不证明hidden parse或GP recovery。
 - 事前登记67-set clean层：nonGP组合44.78%、35.82%、47.76%、31.34%；GP约1.49%、1.49%、0%、0%。两处源题问题不足以解释主异常。event原问句无repair与E05的552个hash全部相同、accuracy flips=0；概率漂移见repeat审计。
-- 结果文件：[summary](../results/E06-summary.json)、[无题目scores](../results/E06-scores.csv)、[config](../results/E06-config.json)、[输入audit](../results/E06-input-audit.json)、[重复audit](../results/E06-event-repeat-audit.json)。
+- 结果文件：[summary](../results/E06-summary.json)、[无题目scores](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E06-scores.csv)、[config](../results/E06-config.json)、[输入audit](../results/E06-input-audit.json)、[重复audit](../results/E06-event-repeat-audit.json)。
 - 按决策表执行了什么：GP subject control失败、order/readout不稳定 → 更新人审，不进入E01、不扩模型；没有选择role-No高分宣告positive control通过。
 - 主张变化：C00不升级；C01的GP双读数instrument仍未建立。nonGP组合为局部测量痛点P06，未升为科学主张。
 - POST-HOC：main clause术语或句首while的默认分析可能影响答案；未检验，不能归因。

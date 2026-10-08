@@ -20,6 +20,6 @@
 - 7原episodic：neutral D_M无桥−1.304 [−2.610,.060]、same−.976 [−2.534,.689]、continued-separate−1.675 [−3.279,.111]bits；relation对应为+7.843/+7.823/+5.712。
 - K无桥+9.147 [6.183,11.896]、same+8.799 [5.749,11.736]、continued-separate+7.386 [4.939,9.796]。不能把CI跨0称neutral严格为0。
 - neutral活动桥交互A_neutral +.698 [.463,.927]，7/7正；relation A+2.111 [1.167,3.137]；A_K+1.413 [.539,2.411]，6/7正。全22 A_neutral+.112 [−.369,.509]、A_K+1.270 [.494,2.062]。
-- [统计](../results/E17-summary.json)、[config](../results/E17-config.json)、[分数](../results/E17-scores.csv)，执行git `2568a3ed8`。
+- [统计](../results/E17-summary.json)、[config](../results/E17-config.json)、[分数](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E17-scores.csv)，执行git `2568a3ed8`。
 - 按混合解释分支：实体可及性不能解释全部患者特异GP响应；桥也调节neutral提及，不能讲纯粹事件scope。原谓词/患者依赖的额外响应稳定，但verb-NP关联与语义event binding仍竞争。此时应登记一个有证据来源的候选问题、更新近邻定位，下一decisive pilot区分词汇联结与合法结构修订，不继续堆这个桥。
 - C01/C02仍L0（尚无新语义能力/内部机制主张）；新增的是受控测量，不宣称已找到顶会idea。

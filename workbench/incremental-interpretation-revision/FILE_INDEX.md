@@ -1,81 +1,44 @@
-# 文件索引（2026-10-06：主线已重置；新路线见 ROUTE / EXECUTION_BRIEF）
+# 文件索引（2026-10-08整理）
 
-## 先读这几份
+## 建议阅读顺序
 
-1. [README](README.md)：状态页（新路线、人的决定）。
-2. [EXECUTION_BRIEF](EXECUTION_BRIEF.md)：给本地 agent 的执行与探究说明（认知建设、第一块地图、追问菜单、数据与 Step5 标注、护栏）。
-3. [ROUTE](ROUTE.md)：领域全景、三方矛盾、路线依据与近邻定位。
-4. [I02](ideas/I02-garden-path-misreading-attribution.md)：当前主 idea。[CLAIMS](CLAIMS.md)：C06–C09（新路线）与历史 C00–C05。
-5. [DIAGNOSIS](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)：51 个实验的失败原因分析。[PROGRESS_SUMMARY](PROGRESS_SUMMARY_2026-10-06.md)：E00–E51 逐项记录。
-6. [公开结果审计](results/D0-Amouyal-released-item-type-audit.json)（`scripts/analyze_amouyal_released.py`）：新路线的起点证据。
-7. [PAIN_LOG](PAIN_LOG.md)：P00–P14。[I01](ideas/I01-event-reference-or-lexical-echo.md)：PARKED。
+1. [README](README.md)：当前状态、资源、关键结论和人的授权。
+2. [探索总结](EXPLORATION_SUMMARY.md)：研究对象怎样变化、真实成果、失败原因与保留的问题。
+3. [逐次探索记录](EXPLORATION_RECORD.md)：103张实际实验卡逐项的方向、结果、边界和完成度；包含部分完成和未执行准备。
+4. [CLAIMS](CLAIMS.md)与[PAIN_LOG](PAIN_LOG.md)：主张证据等级、作废/更正、具体测量问题。
+5. [领域地图](../../library/themes/incremental-language-processing/FIELD_MAP.md)、[主文阅读索引](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)、[文献综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)：谱系、idea来源、近邻距离与已读范围。
+6. [结果资产](results/README.md)及[脚本入口](scripts/README.md)：完整数据、结果、历史代码在哪里，哪些仍可直接使用。
 
-## 实验档案
+## 每次探索怎样查
 
-所有事前卡、结果勘误和阴性证据留在 `experiments/`，不移动编号或重写历史。完整逐项索引见阶段总结§3；[机器可读卡片库存](results/EXPERIMENT_INVENTORY_2026-10-06.json)。E02没有卡/实验，明确保留这个编号空缺。
+`experiments/`保留全部原卡、事前设计、事后分析和勘误；`ideas/`保留I01–I08各次研究问题；`logs/`保留当时理解和动作。目录没有重新编号。E02、E56–58、E61–62没有实验卡，不伪造补齐。
 
-| 组 | 问题 | 原卡范围 |
+[机器库存](results/EXPLORATION_INVENTORY_2026-10-08.json)逐卡记录方向/结果/边界、科学完成度、卡片SHA、结果文件、代码与外置终图入口。E01/E11/E51/E53是PARTIAL；E97/E100有UNAVAILABLE模型；E108只有准备，不能算已运行。
+
+| 方向 | 卡片范围 | 总结里的关键区别 |
 |---|---|---|
-| Calibration与任务读数 | GP deficit、order、label、boundary、cue/focus | E00/E01/E03–E12 |
-| 自然后文与患者依赖 | whole-S2、event/aspect、patient crossover、entity/verb | E13–E18 |
-| 晚到角色事实与功能用途 | named/generic、recency、free continuation、independent sources | E19–E24 |
-| 事件范围和新活动 | old/new actor/event、comparison、NLI、source necessity、predicate | E25–E33 |
-| 真修订history与输出任务 | retraction/hypothetical、R8、affirmative、time-role、selection | E34–E42 |
-| 普通语言transport与frame | minimal/balanced/proper names、三因素、inventory/status、alias form | E43–E48 |
-| 明说第二角色的联合使用 | direct/formal/ordinary/pair/keyed/count，完整审计及未完成 | E49–E51 |
+| 旧基线、顺序与任务语义 | E00–12（无E02） | 仪器问题与能力证据 |
+| 自然后文、患者与事件 | E13–24 | 续写偏好与真实关系错误 |
+| 事件范围、迁移与历史 | E25–42 | 先解释后修订与首次角色约束 |
+| 自然迁移、frame与输出格式 | E43–51 | 普通场景反证、人工框架/格式限制 |
+| 新广面与源支持定义 | E52/53/59 | 原No任务、世界真值、自由角色 |
+| 可见性、源替换与消费路径 | E54/55/60/63/64 | 因果入口与完整语法机制 |
+| 目标、共同关系与多版本 | E65–75 | 问答收益与可复用解释 |
+| 草稿、可靠性、逆向证据与K/V | E76–84 | 方法收益、信息移除与真正修订 |
+| 当前模型、词义与论元框架 | E82/85–90 | 旧关系撤回与新依赖建立 |
+| 观察重建credit与真实候选 | E91–107 | 产生好候选、选择好候选、少承诺 |
+| 未执行自由belief准备 | E108 | 仅CPU准备，GPU/API/下载0 |
 
-## 数据来源、schema与审计
+## 结果与代码
 
-- [DATA_PLAN](DATA_PLAN.md)：数据边界、原源revision/license/hash、Step Plan新指令。
-- [最初D0](results/D0-audit.md)、[逐文件source manifest](results/D0-source-audit.json)：Amouyal、Jurayj、Turing的锁定字节、规模与问题。
-- [模型manifest](results/D0-model-manifest.json)：权重/tokenizer/config字节与HF revision独立核验。
-- [GUM最终候选审核统计](results/D0-GUM-natural-role-review.json)、[WikiEvents source/schema audit](results/D0-WikiEvents-source-audit.json)：自然资产现状；两者尚无Qwen推断；[14-pair适配检查](results/D0-WikiEvents-pair-adaptation-review.json)保留全部候选和不确定项。
-- `results/D0-E*-*.json`：各次材料候选/hash、外审来源、eligible/grammar/cohort、构造勘误；不把审核模型当人类oracle。
-- [Step Plan暂停快照](results/D0-StepPlan-pause-snapshot.json)：E01 565/626、E51 39/192批完整；剩余失败类别与本地manifest哈希。没有新请求/后台运行。
+- [ANALYSIS_ASSETS](results/ANALYSIS_ASSETS.json)：114份大统计/CSV的原样外置路径、bytes、SHA及固定Git历史链接；141个退役脚本的原SHA与恢复提交；201个一次性/缓存文件删除清单。数据不压缩、不重标、不删除科学失败。
+- [results/README](results/README.md)：解释JSON资产指针和CSV外置；分析时使用原文件，不能把指针当统计图。
+- [scripts/README](scripts/README.md)：保留的126个科学/分析/共享脚本及依赖；历史等待器、补丁、旧流程与画图脚本从当前工作树退役，可在固定提交恢复。
+- [资源释放](RESOURCE_RELEASE_2026-10-08.md)：GPU、模型权重与本地空间实际交接记录。
+- 外置根目录：`/data1/xiangding/work/incremental-interpretation-revision/`。大数据、完整模型输出、LP、审计原包、失败、论文和run源码快照均保留。
 
-## 结果怎么找
+## 历史理解与决定
 
-- 原 `results/E##-summary.json` 是各次已提交统计，旧原始bytes不改，配套图/CSV/config可按编号找。
-- E23 first/second、E49 corrected-first/primary都保留；有争议统计在卡里标来源与无效解释，不能挑分数更好版本。
-- [E51小统计](results/E51-literal-schema-compact.json)只保存literal-schema的数字、CI、未知上下界；不是完整Step语义结论。完整3.76MB新分析原样留cache，SHA/路径在文件里。
-- [run库存](results/RUN_INVENTORY_2026-10-06.json)索引实际本地run/config/结果hash；不能把复用分析行当新的独立推断。
-- [分析资产索引](results/ANALYSIS_ASSETS.json)列较大的既有统计/分数表原SHA及本地备份。没有压缩包；本次不新增大数据、checkpoint、逐条response或大分析文件。
-
-## 代码入口
-
-复现环境/CLI见 [scripts/README.md](scripts/README.md)，先source [env.sh](scripts/env.sh)，复用既有venv，资源下载无代理。
-
-| 功能 | 入口 |
-|---|---|
-| 原源审计、统一schema、component构造 | `scripts/data.py`及各D0卡记录的构造入口 |
-| FP32原生/原协议choice inference | `scripts/infer.py`，E00–E12各卡记录CLI和配置 |
-| 自然后文、角色/事件条件概率 | `followup_probability.py`及各E13–E48卡所列builder/analyzer |
-| 最后几轮固定事实角色问答 | `observed_role_use.py`、`joint_role_use.py`、`time_indexed_role.py` |
-| 完整回答已有语义统计 | `analyze_observed_roles.py`；只使用其卡记录的冻结外审文件 |
-| E51保守格式解析 | `analyze_role_occurrence_literals.py`；输出到本地cache，未解析为null |
-| 构造句问审计 | `step_audit.py`、`step_role_audit.py`；Step Plan固定端点/model |
-| E51回答批审计失败的完整实现 | `step_joint_role_audit.py`；192批/39完整，保留失败，当前不重跑 |
-| Plan端点与并发控制 | `step_plan.py`；只接受Plan Messages/Chat URL，进程共享8槽，无代理；不含key |
-| 自然WikiEvents loader/schema | `wikievents.py`；source-offset陷阱已处理，不自动把annotation ID当独立事件 |
-
-仅源码/文档整理，不执行上述入口。私有key在本机私有配置，任何命令、索引、正文均不回显或上传。
-
-## 知识库和过程账
-
-- [领域地图](../../library/themes/incremental-language-processing/FIELD_MAP.md)：GP/lingering、priming、revision、entity retrieval、presupposition/multi-answer的owner与实际阅读范围。
-- `library/themes/incremental-language-processing/*.md`：原论文/资产卡。摘要、部分正文、全文区分；没有把检索结果当完整阅读。
-- [2026-10-05日志](logs/2026-10-05.md)、[2026-10-06日志](logs/2026-10-06.md)：实验→数字→升/降级→后续问题，保留原过程。
-
-## 本地cache布局（完整原文件，不压缩）
-
-`/data1/xiangding/work/incremental-interpretation-revision/`
-
-- `upstream/`：固定上游代码/原数据与许可、source manifest。
-- `normalized/`：统一loader输出；canonical/source bytes的关系见D0。
-- `models/`：本地Qwen权重与模型manifest。
-- `runs/E*/`：配置、scores/predictions/generations、原prompt/回答/hash。
-- `E##-material-preparation-v*/`：作者字段、rendered材料、各审计版本/失败、最终冻结输入。
-- `E01-Step5-full-v1/` / `E51-StepPlan-full-answer-audit-v1/`：请求/响应/完成或失败的逐批报告。
-- `analysis-originals-2026-10-06/`：既有大分析的原字节备份；不是压缩版。
-
-GitHub没有原始语料搬运、checkpoint或私有凭证。本次只提交文档、源代码、small stats/index；既有历史大分析保持原版本。
+- [E00–51总结](PROGRESS_SUMMARY_2026-10-06.md)和[旧路线诊断](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)：第一轮研究对象漂移与失败。
+- [22:25重新对齐](REASSESSMENT_2026-10-07_2225.md)、[23:55以后重新对齐](REASSESSMENT_2026-10-07_2355.md)：第二轮各节点预测与后续纠正。里面的“下一步/在途”是历史记录，当前结论以README和探索总结为准。
+- [EXECUTION_BRIEF](EXECUTION_BRIEF.md)、[ROUTE](ROUTE.md)、[DATA_PLAN](DATA_PLAN.md)：原授权、设计空间、护栏和数据/Step Plan约束；整理没有自行改线状态。

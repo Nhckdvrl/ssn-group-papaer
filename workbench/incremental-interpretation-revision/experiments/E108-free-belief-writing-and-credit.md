@@ -15,3 +15,5 @@
 - **算力预算：** 约1–2 GPU·h，三独立单卡可串行，不需8卡；实际0/队列0。API仅新P需标注时Step Plan step-5-preview，批≤5/全局8/high，Source不审。权重需新资源授权后复用公共共享资产或国内镜像恢复，当前guard拒绝GPUrun。
 
 入口：scripts/free_belief_contract.py build（CPU冻结数据）；scripts/run_free_belief_pool.py（generation/score/实际消费）。先准备源码、数据和tokenizer核验，不发新API、不加载权重；现有GPU hard-stop不绕过。
+
+2026-10-08人要求整理后，未执行准备源码从当前工作树退役，保留在固定Git提交 `859e48c87cfbecaf017c0fd8e286ef18f59a61cd`；外置E108数据、CPU核验与manifest保留。科学GPU/API/下载/队列仍0，不将准备算结果、不自动恢复。

@@ -30,5 +30,5 @@
 - 不同V D_activity：sameActor −.978 [−2.167,.249]、otherActor −2.183 [−2.958,−1.348]，故E31“不同V变正”不是跨事实词序不变量。不同V−同V的J仍正：sameActor +1.937 [1.043,2.841]、otherActor +2.359 [1.444,3.359]，strict9为+2.245 [1.129,3.307]/+2.620 [1.407,3.877]。
 - predicate J差的order change分别−.567 [−1.232,.010]/−.533 [−1.509,.399]；CI跨0不证明两order相同。actor对比及所有branch/neutral/family保留，无prompt/model sweep。
 - 按跑前决策：近V位置不足，但focus/order明显改变实体可及性与绝对方向；候选应围绕事件/谓词条件的相对预测结构，不能硬讲“换词完全修复”。C05历史protocol measurement保留L1，限定泛化；I01仍PILOT。
-- [统计](../results/E32-summary.json)、[每family](../results/E32-per-family.csv)、[配置](../results/E32-probability-config.json)、[audit](../results/D0-E32-order-audit.json)。实际运行git `187a5d94a0669db3c552ae0b637094835f1c6a16`。
+- [统计](../results/E32-summary.json)、[每family](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E32-per-family.csv)、[配置](../results/E32-probability-config.json)、[audit](../results/D0-E32-order-audit.json)。实际运行git `187a5d94a0669db3c552ae0b637094835f1c6a16`。
 - 分析实现校对：首次汇总named-only会把旧all-style-defined prior-faithful9扩大为12，未用该扩大层更新主张；修为固定E31跑前共同cohort后重新汇总。all12及主contrast不变，strict9按原固定family，完整summary含parent-cohort hash，不改读数/筛family。

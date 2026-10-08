@@ -1,0 +1,4254 @@
+{
+  "cards": 103,
+  "number_gaps": [
+    2,
+    56,
+    57,
+    58,
+    61,
+    62
+  ],
+  "experiments": [
+    {
+      "id": "E00",
+      "number": 0,
+      "card": "experiments/E00-baseline-reproduction.md",
+      "title": "E00：公开 Garden-Path 行为基线复现（2026-10-05）",
+      "card_sha256": "a01c90b5344a63f73d52bca8b96ed3cdcc42cf617a9eb4cf6b56a94b8f054a7f",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "原Amouyal16-prefix复现；pooled nonGP−GP lingering −2.81 [−11.50,5.89]pp，simple +10.69；句先+28.99、题先−24.64",
+      "interpretation_limits": "不支持稳定pooled已知方向；完整prompt波动保留；极性混杂不能单独叫GP能力差",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E00-config.json",
+          "bytes": 13462,
+          "sha256": "28803cd926504b215e81e7d5dcb0f0114303c707fb280a287f1b9c150086e953"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E00-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E00-summary.json",
+          "bytes": 127817,
+          "sha256": "f6b8decc9696142048364b961268befe8de6947505330a8f1750b981f8ff98d5"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E00-upstream-numerical-comparison.json",
+          "bytes": 1340,
+          "sha256": "690477e3b01760d27f7b2afe20747e031ab23a9c5a86b3c3827f381f318e61fc"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E01",
+      "number": 1,
+      "card": "experiments/E01-component-revision-map.md",
+      "title": "E01：跨构式 revision structure 系统测量（2026-10-05）",
+      "card_sha256": "9e0ec061e7c2c64cef29026e168753d468187067af4bc297afe747957c189d99",
+      "scientific_status": "PARTIAL",
+      "code_references": [
+        {
+          "filename": "audit_extension_relations.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "NP/Z、NP/S、MV/RR的cue/blocker/extension和final/initial双读数；多snapshot推进至279变体、4632任务",
+      "interpretation_limits": "全量measurement未完成；NP引用、未assert≠false、prompt/mapping、词汇替换语义仍影响读数；最新完整审计565/626，不追认漏项",
+      "status_line_at_cleanup": "- **状态：** RUNNING",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E01-external-snapshot3-config.json",
+          "bytes": 52740,
+          "sha256": "1a9ee4728e5c7b3deb4e5d937040e86311a79152000fcbf99b737c16946a58da"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-external-snapshot3-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-external-snapshot3-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E01-external-snapshot3.md",
+          "bytes": 2914,
+          "sha256": "d9ea1affde55d8ef588c5935c0803cfd366f00da79f52941b933a68fd6376f49"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E01-opencode-snapshot1-config.json",
+          "bytes": 14786,
+          "sha256": "93d89c2b7426f90605736700440293e60fa58a4e080afd5a0435029002510359"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-opencode-snapshot1-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-opencode-snapshot1-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E01-opencode-snapshot2-config.json",
+          "bytes": 15053,
+          "sha256": "4a68de29bde48b637518cbe721f605b88ea58ac7ab4d832c22fcfef2a93da81b"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-opencode-snapshot2-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-opencode-snapshot2-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E01-partial-config.json",
+          "bytes": 14504,
+          "sha256": "b43fd7ecd29ddec95963ecd8d54b338d645de9b817d7cd00cb35e26aa8709044"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-partial-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E01-partial-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E03",
+      "number": 3,
+      "card": "experiments/E03-e00-order-and-assertion-audit.md",
+      "title": "E03：E00 顺序反转与断言标准审计（2026-10-05）",
+      "card_sha256": "9b7ef8daaebb152f0154f67e6dfe283ae64abb06736687f0d7b4ccc1a06db9f2",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "正交拆order/demo/interface/precision；FP32 order交互+66.67 [49.28,84.06]pp，所有8cell同方向",
+      "interpretation_limits": "BF16只造成0.61% accuracy flips，解释不了大反转；assertion也没解决；不是新revision机制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E03-bf16-config.json",
+          "bytes": 13554,
+          "sha256": "d26587a1f2168e15f2abc8ac9e12765b376231f4c88aa1affd286ed5c25995a7"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E03-bf16-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E03-bf16-summary.json",
+          "bytes": 65122,
+          "sha256": "f6a3f555cbe26a702908558e7e87ae6c59f5532e93e047d134e4702cf0511714"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E03-fp32-config.json",
+          "bytes": 13551,
+          "sha256": "a80b6e2534945f863032951d5b15384f82e4f64e95c7a3b0999b4f9b33e00550"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E03-fp32-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E03-fp32-summary.json",
+          "bytes": 65102,
+          "sha256": "5af3b3e15af8380253ecb641636f0397b1e7c91e672096ddbcc15ad840722f72"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E03-order-effects.pdf",
+          "bytes": 21483,
+          "sha256": "337e2f19106c2f094745e0c08da344fcd265d90350e860a7211c4a0a28ee2757"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E03-order-effects.png",
+          "bytes": 130020,
+          "sha256": "eee19ea416ddf54698764f17da7a1d9bc05052926a26820a34380702bdd86395"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E03-precision-comparison.json",
+          "bytes": 275,
+          "sha256": "4c97cdf1fff342e2afc5a10bdc442f6e0f8e3b9c968b0aab91b00d8d9df76dfe"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E04",
+      "number": 4,
+      "card": "experiments/E04-known-positive-control.md",
+      "title": "E04：已知阳性模型的独立本地校准（2026-10-05）",
+      "card_sha256": "2a25fe9e96e63b70ae25711ee0979e6740669da445f9d19219768963a798c3a9",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "Qwen3-1.7B已知对照；pooled +19.84 [14.04,25.82]pp",
+      "interpretation_limits": "nonGP lingering仅30.71%，specificity CI跨0；仅方向复现，未解决instrument问题",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E04-config.json",
+          "bytes": 4572,
+          "sha256": "a7e21e550480bbcac5ac9083318b3d5886792dabccc44f801ffa7814fa10a24a"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E04-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E04-summary.json",
+          "bytes": 127775,
+          "sha256": "1d562ad6408d1b7ccc2e765e14d5247060a464eeba48abe3522953ae8a846381"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E05",
+      "number": 5,
+      "card": "experiments/E05-response-meaning-calibration.md",
+      "title": "E05：响应标签与 No 的语义校准（2026-10-05）",
+      "card_sha256": "b883f6aa3d262023d3968adef03909c45b7fd0bb7288cd60a45c68ae134051eb",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "standard/letter/asserted与两模型；8B asserted句先+30.43、题先−23.91pp",
+      "interpretation_limits": "换label与一句语义说明未解除顺序/floor；1.7B部分更差；所有mapping报告",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E05-1.7B-config.json",
+          "bytes": 4831,
+          "sha256": "5fdbd85b29fa17235a9ce8a4114b370d1af495fc7873af5e77a3b4aa858b563c"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E05-1.7B-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E05-1.7B-summary.json",
+          "bytes": 38685,
+          "sha256": "efb775619ced66d09dfac2a7985e6a4e2326021e04e8b279e7cc237a1a144e18"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E05-8B-config.json",
+          "bytes": 13998,
+          "sha256": "2e0a032a53dd3f153d54f89a199a951165d54426022f9022c02ab4e74c53d2f2"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E05-8B-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E05-8B-summary.json",
+          "bytes": 38745,
+          "sha256": "b404ac6340bdd07102fb51714f7e151f800c1ada117759710dbfd523306869ce"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E06",
+      "number": 6,
+      "card": "experiments/E06-attachment-versus-event.md",
+      "title": "E06：自然原句上的 attachment 与 event readout（2026-10-05）",
+      "card_sha256": "ed0a667fd17cfa0db75d8e9ad61363452fd0390da1b70d00be1d9942f075dbbf",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "区分主句subject、direct-object、initial event；GP subject控制0–5.80%，nonGP joint约32–48%",
+      "interpretation_limits": "object-No高分不是恢复；67-source clean敏感性没有解除异常",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E06-code-revision-alias.json",
+          "bytes": 384,
+          "sha256": "2edc19a3d8b32b8b3b15a9dea5f01a6452d5a224340f2f35c8a26d3561790aaf"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E06-config.json",
+          "bytes": 14092,
+          "sha256": "6228eb0089409b2d4d56e94395c1316e869c2f7f5957be5a2e0d21c55664c810"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E06-event-repeat-audit.json",
+          "bytes": 122,
+          "sha256": "8121e8855b4685a0deb5d1d2e740786e8f17327090e5fb638420d3b8312daa82"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E06-input-audit.json",
+          "bytes": 390,
+          "sha256": "9b892ec307ce82b1f5fd19970a9e66ac68a862345d364a64f9cbd5bff256fcbb"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E06-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E06-summary.json",
+          "bytes": 84241,
+          "sha256": "2666d22fd754dfc5c212832c93aafcbacdb0206c8daaf2bee85d99e67965891b"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E07",
+      "number": 7,
+      "card": "experiments/E07-native-readout-transfer.md",
+      "title": "E07：发布问答在原生回答边界下的迁移（2026-10-05）",
+      "card_sha256": "9d22c743000912bf9ef2f2ea15f91403fc6ed3137ee719d5e3e36468846aa475",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "移除prefill/fewshot并换native；order交互+60.87 [44.93,76.81]pp",
+      "interpretation_limits": "不依赖raw边界，但仍不能归因内部parse；C03只保留协议事实",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E07-boundary-order-effects.pdf",
+          "bytes": 17894,
+          "sha256": "3432b7f37763f2e0c96e8f0509fe10d71f5e6bbbb165b2df08e89cdb68129c9a"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E07-boundary-order-effects.png",
+          "bytes": 89292,
+          "sha256": "cb0be833b2f6a6b052cd93d742bb67c1ff9fe475c365bbfe7903e6689367ea2c"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E07-config.json",
+          "bytes": 32236,
+          "sha256": "cfd25f490918d798199313e7396b35486ddaa25e00c801985128666b635333fd"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E07-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E07-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E08",
+      "number": 8,
+      "card": "experiments/E08-reading-focus-versus-final-query.md",
+      "title": "E08：提前的阅读关注问题与固定最终问答（2026-10-05）",
+      "card_sha256": "608a37776a9987e8cdfa3e8d9a9d75aeb541130069b85f91bdaa5c17286cf692",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "固定最终query在末尾，前/后相关及无关focus；before交互+1.45、after−7.25pp，均CI跨0",
+      "interpretation_limits": "后置final focus对GP/nonGP都提升约22–23pp；不支持简单GP-specific早期阅读目标解释",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E08-config.json",
+          "bytes": 14690,
+          "sha256": "f48f4a886420e359b20a99fe9c1ad2c7a2389df205f1942de2b232fd02692292"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E08-focus.pdf",
+          "bytes": 21842,
+          "sha256": "64b99afe8d12337ca4c7ec8512be959889549d2f5a00161c795fd7fc172c0127"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E08-focus.png",
+          "bytes": 92635,
+          "sha256": "e518fad0d85dca2b845299843cad2b36849de7a5ece9ad3855da7ef8897f50f4"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E08-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E08-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E09",
+      "number": 9,
+      "card": "experiments/E09-published-comprehension-transfer.md",
+      "title": "E09：原始人类理解题中的cue与任务顺序（2026-10-05）",
+      "card_sha256": "dd7a974f795b4e5e1dcb719c475a6a63a88aa7be7aa2a799f83c694e87e7b296",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "原SAP自然comprehension题1152任务；句先cue−GP +33.33/+19.44pp",
+      "interpretation_limits": "已知cue有效但选项mapping/顺序仍强；不能包装更多GP结构为贡献",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E09-config.json",
+          "bytes": 14868,
+          "sha256": "c568e2cada14d8675d1b84cfa10c4e8711588c65095bab0fc932fa530805327a"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E09-cue-effects.pdf",
+          "bytes": 20947,
+          "sha256": "3bd3710dbefab6ef0915398b4aff5f19afa9586d575067d7d46592cdeaaca0a6"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E09-cue-effects.png",
+          "bytes": 85078,
+          "sha256": "ccd354112c59c3a450c6fe1e25b8935a18072f1c478eae4cef444273851a7779"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E09-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E09-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E10",
+      "number": 10,
+      "card": "experiments/E10-question-versus-option-access.md",
+      "title": "E10：拆问题与选项的位置（2026-10-05）",
+      "card_sha256": "0fb2268c4006b1a704522144cd9f37248bbda92d267fcd1cd14e0e9f393e3ec8",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "分离question/option位置；2304分析行；一个mapping交互+19.44，另一个+2.78 CI跨0",
+      "interpretation_limits": "大差可由cue答案下降引起；不继续找最佳布局",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E10-access.pdf",
+          "bytes": 19959,
+          "sha256": "e19c911fc19458ada78c4be378971b93a2f052493e4efd34d26ab477f68fb86e"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E10-access.png",
+          "bytes": 54756,
+          "sha256": "2f7d23a5d35385d0f37a4bdc3258c364810af804caf36a70b512ce568d079d8b"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E10-config.json",
+          "bytes": 33302,
+          "sha256": "381e5bf2bf46f0ca461215ab0dd3e3cfd2d1e64ac02ce136cf1466c2e0562d9c"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E10-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E10-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E11",
+      "number": 11,
+      "card": "experiments/E11-extension-role-reference-audit.md",
+      "title": "E11：加长主语后的角色读数，是引用方式还是修订失败？（2026-10-05）",
+      "card_sha256": "82b2c92110e9b7f200630b07da2074d1c80008249307994aefa71c906fbb39e2",
+      "scientific_status": "PARTIAL",
+      "code_references": [],
+      "finding": "完整NP/head/原短NP和isolated主句；500分析行；comma extended fullNP−原role +31.49 [7.81,56.20]pp n3",
+      "interpretation_limits": "无歧义extension下降部分是引用/constituent测量伪影；不能叫digging-in",
+      "status_line_at_cleanup": "- **状态：** RUNNING",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E11-E12-code-revision-alias.json",
+          "bytes": 3273,
+          "sha256": "722286582d3171b554d0e3daa184686657fbf803ac73606a828e20e791a230b4"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E11-opencode-snapshot1-config.json",
+          "bytes": 15056,
+          "sha256": "507b63895b89c1feae453921993f631a3cd1738cd4976de5f91dac42a19dd7ae"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E11-opencode-snapshot1-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E11-opencode-snapshot1-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E11-opencode-snapshot2-config.json",
+          "bytes": 33948,
+          "sha256": "dacbdee67f2d7cc84a33a4ffb7a3adfad103aae4505570167030732b6ac609f9"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E11-opencode-snapshot2-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E11-opencode-snapshot2-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E12",
+      "number": 12,
+      "card": "experiments/E12-input-probability-versus-answer-access.md",
+      "title": "E12：原始句子概率与最终答案访问分开测（2026-10-05）",
+      "card_sha256": "f0e00eebcfd7fd30d779bf24e2d56c352e14f03f76b04c12d66943cafb8412bf",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "代码input_probability.py",
+          "location": "historical_reference_or_external",
+          "snapshot_commit": null
+        }
+      ],
+      "finding": "输入disambiguator surprisal与最终QA分开；早Q交互+1.47 [.47,2.52]bits",
+      "interpretation_limits": "cue facilitation主导且cue答案可下降；prediction/QA gap已有owner；不是统一能力下降",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E12-E08-source-config.json",
+          "bytes": 15229,
+          "sha256": "54d8286225782de80a5c31a24ee3be1fac87a485c95278cd6f96d78a2911e23d"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E12-E08-source-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E12-E08-source-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E12-E10-source-config.json",
+          "bytes": 15229,
+          "sha256": "91d82f8fe2f06aad3f8b251c7409f22c232c8f2305643344051d4a810be0e0df"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E12-E10-source-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E12-E10-source-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E12-joint-cue-POSTHOC.json",
+          "bytes": 32615,
+          "sha256": "0e417758ef87c085e636aa86cf0cb690be826d946a24c6a1daf46bc23946ff65"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E12-preinference-alignment.json",
+          "bytes": 925,
+          "sha256": "fa9ba0a458539b128fd1cb699dc7a38b95266774abf43c4cea4c38ff3e8f7571"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E12-source-and-answer.pdf",
+          "bytes": 20077,
+          "sha256": "2e4c1f459e467caab13ddb42b83bfee13a64fbcc9cac60a92f30f1ba46f88d01"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E12-source-and-answer.png",
+          "bytes": 107335,
+          "sha256": "aa798563d01d03cbe26380416698c87a57af902ac6a8a7d118c20809d65ad3b0"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E13",
+      "number": 13,
+      "card": "experiments/E13-natural-followup-without-diagnostic-question.md",
+      "title": "E13：没有诊断问句的自然后文，是否仍受初始解释影响？（2026-10-05）",
+      "card_sha256": "7ab43b6c4c7879d57f3c2ea24ca57e01cdd48c7bd97a73fba083f5f527f69c67",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "followup_probability.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "Slattery原自然后文，无diagnostic Q；whole-S2 GP−comma约−.031/−.003bits，CI跨0",
+      "interpretation_limits": "没有普遍后文代价；局部reference与邻词方向不同，不能只选窗口",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E13-config.json",
+          "bytes": 16115,
+          "sha256": "c569aa4a410db23c177cf5d5e900785a9de92afb6c489071d7e1a50fd02fbf58"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E13-natural-followup.pdf",
+          "bytes": 19031,
+          "sha256": "a9920a1c322dceffa4f2c59897e982b5a650efb7d8bd32bd7e8af663879d620d"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E13-natural-followup.png",
+          "bytes": 106002,
+          "sha256": "7ebee824057ac905504fe37bdd8558112de468292466ccee8552b77262237dad"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E13-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E13-summary.json",
+          "bytes": 70495,
+          "sha256": "85a0ad6b36782a2d7e092c1b53bb2d2d31a2e23f5a7f1378650664513450942e"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E14",
+      "number": 14,
+      "card": "experiments/E14-event-identity-versus-extra-event.md",
+      "title": "E14：事件回指是否改变GP历史对后文患者选择的影响？（2026-10-05）",
+      "card_sha256": "7853d702fdb76dc3ef14a4c93d88930ebdc11292103b4d6bb42b4aa19ddac128",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "same/separate activity桥；7明确episode交互−2.608 [−3.779,−1.090]bits",
+      "interpretation_limits": "aspect/事件预设/长短NP竞争；后文并非全episode，不能把全部自然句强算同事件",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E14-baseline-reproduction.json",
+          "bytes": 464,
+          "sha256": "1942aa38b32db98d9275925b240acb4a2881f34e296965a29922531323c95ca7"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E14-config.json",
+          "bytes": 16354,
+          "sha256": "4f22f44df8cea9d8736e909da6c46a82361527dfd84d089a5f2f21a44d8bbce7"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E14-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E14-summary.json",
+          "bytes": 159272,
+          "sha256": "69a3bc35822ecfd0462f1f949e48fc2253eaa6b768b3c1e7d8a8c67e4b96bf87"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E15",
+      "number": 15,
+      "card": "experiments/E15-fixed-aspect-event-reference.md",
+      "title": "E15：固定 continued 拆分活动指向与先前活动预设（2026-10-05）",
+      "card_sha256": "de01d859dd20db0fcf9d99a566149bb1b46563862e7acd81c44533ba4e084458",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "aspect_reference.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "固定continued分解；事件指向−1.974、aspect−.634bits，两CI负",
+      "interpretation_limits": "两成分都贡献；没有隔离内部event graph",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E15-config.json",
+          "bytes": 16446,
+          "sha256": "f52a9e8793bf648a18e667912d1675330b0b1195c26c25d4117304c6e68f3f74"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E15-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E15-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E16",
+      "number": 16,
+      "card": "experiments/E16-patient-specific-crossover.md",
+      "title": "E16：患者特异续写还是一般 self/reciprocal 偏好（2026-10-05）",
+      "card_sha256": "61a3c0c2dccdeb037e37dd689239c2a2c22251c3edaf0fcbf364a418ec6768be",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "patient_crossover.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "两患者NP交叉，排一般self/reciprocal抑制；桥交互+2.111 [1.167,3.137]bits",
+      "interpretation_limits": "患者特异但实体曝光/lexical association仍竞争，非能力准确率",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E16-config.json",
+          "bytes": 16543,
+          "sha256": "4410e2dd02801a226954ec98c7e601ed89fd8c479f40282d0a47efeb445db71d"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E16-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E16-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E17",
+      "number": 17,
+      "card": "experiments/E17-relation-versus-entity-accessibility.md",
+      "title": "E17：原事件依赖与中性实体感知（2026-10-05）",
+      "card_sha256": "4a0ad013609860b140a710fab7860a377f43f66eb35bb35ea8b0f094688888c6",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "entity_accessibility.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "原关系vs noticed中性提及；same neutral −.976 CI跨0，relation +7.823；额外交互+1.413 [.539,2.411]",
+      "interpretation_limits": "限制entity-only解释，仍不能排谓词检索/语义关联；中性并非严格零",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E17-E20-role-history.pdf",
+          "bytes": 17839,
+          "sha256": "3f9373cdd4e98eca13fb782bd92b86624a54a830f47a62217a693a8022d22e01"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E17-E20-role-history.png",
+          "bytes": 95307,
+          "sha256": "e682a279d0cea49b2fb91deb8447d450e5cb9f14ebf179f92ea89d419270d5eb"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E17-config.json",
+          "bytes": 16641,
+          "sha256": "69c5909495aca3093e858dba82a13cd0bb132483c25db4d29afa7a2ced5e60aa"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E17-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E17-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E18",
+      "number": 18,
+      "card": "experiments/E18-predicate-paraphrase-transfer.md",
+      "title": "E18：换谓词表达后，原患者偏好是否转移？（2026-10-05）",
+      "card_sha256": "f2f1fe35008cd9e534dac924e2d7cf15c84e41f8aac1cc6beb075dc0a1383ecc",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "predicate_transfer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "独立动作释义；faithful9交互+1.439 [.895,1.908]bits",
+      "interpretation_limits": "exact verb echo不足；related/faithful/边缘语法分项保留，不能叫完整semantic机制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E18-config.json",
+          "bytes": 16742,
+          "sha256": "1101c73b36dac8d31bfff2bb50228555845e9c4f41052c31debac864a04696ce"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E18-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E18-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E19",
+      "number": 19,
+      "card": "experiments/E19-late-exclusive-role-evidence.md",
+      "title": "E19：明确活动内角色证据能否覆盖旧关联？（2026-10-05）",
+      "card_sha256": "ac8efb1f358d1ca8dd55451b4e3fbca057d5d3333ecf24a525bbfceffd71dbe5",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "late_role_evidence.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "加晚到only-X/not-Y双向角色事实；GP移动+8.51、cue+10.60bits",
+      "interpretation_limits": "fact有效不等于旧关联删除；separate后文3源可能仍回指旧活动，strict范围只有4源",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E19-config.json",
+          "bytes": 16835,
+          "sha256": "53da7910aec80213f8c2b5741a9534fdfe6c4bde4bc2331a0c8984200d9abdb2"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E19-scores.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E19-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E20",
+      "number": 20,
+      "card": "experiments/E20-exclusive-fact-versus-last-mention.md",
+      "title": "E20：同事实换对象顺序，区分否定对象最近提及与旧关系影响（2026-10-05）",
+      "card_sha256": "3bd24595236b3801029f1a2b1139392edf5e6156578ad6ce7402b62d0f79a977",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "fact_order.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "同事实改变最后提及对象；7/7 history R负，均值−3.403 [−4.276,−2.444]bits",
+      "interpretation_limits": "顺序解释部分；绝对GP已支持允许对象，不能称完全不更新",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E20-config.json",
+          "bytes": 16926,
+          "sha256": "30bdf056b59250e3af727878cf0c87db49538a1bfffeb62cfbf86db26092670d"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E20-scores.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E20-summary.json",
+          "bytes": 226413,
+          "sha256": "9ccf3ae65956f165a8f6ccb519edd53dad702866815911ca347aad4839625a67"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E21",
+      "number": 21,
+      "card": "experiments/E21-named-versus-generic-exclusion.md",
+      "title": "E21：点名排除、泛指排除与最简排他句（2026-10-05）",
+      "card_sha256": "7a6bb05fbe4c3a54dd3e0bbe206e3e4b47c9072a69ca1950dd5127542207f964",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "exclusion.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "具名vs泛指排除；严格4源history读数差+3.06 [2.03,4.38]bits",
+      "interpretation_limits": "POST-HOC主要cue−2.97bits、GP约+.09；不是named更好修复",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E21-config.json",
+          "bytes": 17109,
+          "sha256": "9883e29ff105e4bc062785f7760e5a928181c3387022680c1796ee1ce06fbb60"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E21-decomposition.json",
+          "bytes": 2357,
+          "sha256": "593d0b47bcb24486d5c1d512c9d4c2e94671c8d71c2a62ccf0ac582445d39c9f"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E21-per-source.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E21-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E22",
+      "number": 22,
+      "card": "experiments/E22-post-correction-entity-versus-role-use.md",
+      "title": "E22：纠正后的实体可及性与活动关系利用（2026-10-05）",
+      "card_sha256": "6f2f614117d8c5bf80e98bae647e453b39d0c0010c57575126ac1121ac452d84",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "post_correction_entity.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "named/generic×关系/neutral，GP−cue差−2.792 [−3.680,−1.904]bits",
+      "interpretation_limits": "局部测量C04；acceptable-only无GP，读数null；还没有实际错绑定证据",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E22-config.json",
+          "bytes": 17210,
+          "sha256": "ee14c1ef842065a07836b3e8a99ee65eab5bfcd9e58fbc41bccbd5e467a06eda"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E22-per-source.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E22-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E23",
+      "number": 23,
+      "card": "experiments/E23-functional-role-continuation.md",
+      "title": "E23：角色事实是否约束实际续写，以及一句指令能否恢复（2026-10-05）",
+      "card_sha256": "735a1fb302d990358f2d44edf632819179911ca9eb52677b93898d91e967324f",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "functional_continuation.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "224实际greedy续写＋一句恢复，完整外审",
+      "interpretation_limits": "首审10→次审6明确contradiction，unknown多、48token cap多；首NP不是患者，功能失败不稳",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E23-audit-comparison.json",
+          "bytes": 842,
+          "sha256": "b56d3ce11a98a7c27a0acb0d6ca4f2e32fcaef7d7f1c36cb9fb4b790934ae1cb"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E23-config.json",
+          "bytes": 30660,
+          "sha256": "3930f2263d25d91050455279a361ef9d9b8cd4c4a05b43e03d1d94a4a6271f08"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E23-first-review-summary.json"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E23-per-source.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E23-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E24",
+      "number": 24,
+      "card": "experiments/E24-independent-correction-use-transfer.md",
+      "title": "E24：独立来源检验纠正后关系利用的history交互（2026-10-05）",
+      "card_sha256": "7712480fcb83ef6c91101656f9e0bafaf5affebb5869c0cb55f509d2d875e398",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "correction_transfer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "12family独立来源；history交互−.795 [−1.210,−.394]bits，strict9−.766",
+      "interpretation_limits": "跨source有概率结构，不能追认E23能力错误或event-specific精准修订",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E24-config.json",
+          "bytes": 17505,
+          "sha256": "1896ab141f48d811023f9b306df0d62b0193c8e3bc98accfd825752461afc3b3"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E24-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E24-summary.json",
+          "bytes": 116998,
+          "sha256": "fd1f9f0dc843f335ea97cdc23be3a311d778281faea641d0bf3fa8b4260490a6"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E25",
+      "number": 25,
+      "card": "experiments/E25-event-versus-actor-correction-scope.md",
+      "title": "E25：纠正影响原事件、同人物新事件，还是另一人物的新事件？（2026-10-05）",
+      "card_sha256": "d66d6f7590f9c49199e9d23db2a5b881924205730d257840fd4f39a4cdc429a1",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "correction_scope.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "两张卡分别event_identity_infer.py",
+          "location": "historical_reference_or_external",
+          "snapshot_commit": null
+        }
+      ],
+      "finding": "原事件/同actor新事件/另一actor新事件；后两交互−1.249/−2.070bits",
+      "interpretation_limits": "迁移不是只在旧event；新患者未指定，不能叫world scope错误",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E25-config.json",
+          "bytes": 18730,
+          "sha256": "1aea91068d1d3c0d8d44afddf9cff184fa28ca8bd3ebea5257b3ae4bfb770dea"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E25-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E25-scope-trace.pdf",
+          "bytes": 28582,
+          "sha256": "94e255e6c40169f19a5ea07a20dfe058f355e090a8f1bc9b2fff2ca0fed6cc4f"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E25-scope-trace.png",
+          "bytes": 228477,
+          "sha256": "f87abfa776077fb06eea59aaa0584d11a6a2025dbd39b6373937560a47f3c7e7"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E25-summary.json",
+          "bytes": 181864,
+          "sha256": "844af28315442718f330315e441e076674780b99a8415403e0b6b725cce10624"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E26",
+      "number": 26,
+      "card": "experiments/E26-scoped-constraint-access-versus-portable-trace.md",
+      "title": "E26：事件约束能正确访问时，可迁移的关系预测痕迹意味着什么？（2026-10-05）",
+      "card_sha256": "2ee2a2996487a83218ba15cb8930989dc72d2c447ad3809f2fec0b0fbc54e44d",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_scoped_access.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "infer.py",
+          "location": "current_scripts",
+          "snapshot_commit": null
+        },
+        {
+          "filename": "scoped_access.py",
+          "location": "current_scripts",
+          "snapshot_commit": null
+        }
+      ],
+      "finding": "scope比较和final解释；八项joint base0，旧活动两互补题全No",
+      "interpretation_limits": "两问平均50%不是scope能力；先测算子与回答默认值",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E26-base-config.json",
+          "bytes": 17623,
+          "sha256": "8b8bb2ead4e730d0cfcaaeb8effca3394ce175e2d5fe82891e3af29e4f1be5d3"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E26-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E26-polarity-decomposition.json",
+          "bytes": 2651,
+          "sha256": "9299499d3a5c64afd54140c24c076ca31993973ec1c0fd7550a6947e47d5d460"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E26-repair-config.json",
+          "bytes": 17623,
+          "sha256": "066ce32a0f134f958250999408754cec1730015a4964ecb31a23593d5ba63cbd"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E26-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E27",
+      "number": 27,
+      "card": "experiments/E27-allowed-fact-relation-positive-control.md",
+      "title": "E27：只添加明确允许患者的匹配关系比较阳性控制（2026-10-05）",
+      "card_sha256": "773c56cfd2c033ebea6371f908bfd8abf612ad075d0ffd40eae6288300e1be3d",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "allowed_relation.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "infer.py",
+          "location": "current_scripts",
+          "snapshot_commit": null
+        },
+        {
+          "filename": "scoped_access.py",
+          "location": "current_scripts",
+          "snapshot_commit": null
+        }
+      ],
+      "finding": "匹配allowed命题；768新任务，allowed比较joint100%，excluded仍joint0",
+      "interpretation_limits": "排纯No/default和全套truth验证，但支持/兼容/不确定任务解读仍竞争",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E27-config.json",
+          "bytes": 17716,
+          "sha256": "a109499c51a26cc02ec838f368ac7ba88031faf06260977c1e740e2fb8ba6c38"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E27-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E27-summary.json",
+          "bytes": 129474,
+          "sha256": "2bbaf41e58fa6b7cefea00499af321de40de0747df9f0923d68dd17c9edbf371"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E28",
+      "number": 28,
+      "card": "experiments/E28-three-way-event-constraint-state.md",
+      "title": "E28：supported / contradicted / undetermined的事件状态（2026-10-05）",
+      "card_sha256": "835c656101ee4b86e6b93f5441659ffadeec2dbe0da7389e78846285a26a2946",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_event_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_constraint_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "E/C/U三类、cyclic labels、unrelated控制；新sameActor U33.68%、other65.28%、unrelated100%",
+      "interpretation_limits": "label/mapping波动强；未建立正确scoped状态与portable预测共存",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E28-base-config.json",
+          "bytes": 13504,
+          "sha256": "b186346d81e5d6e56d4844f1d384167c6bba961f8a491b599f15b03ad0d930c2"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E28-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E28-repair-config.json",
+          "bytes": 13507,
+          "sha256": "676affc8f0f090a80cc76de89d2ee52423f75be87703b38c72ac3668b06ec33c"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E28-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E29",
+      "number": 29,
+      "card": "experiments/E29-source-ablation-dual-readout.md",
+      "title": "E29：移除完整源句，区分source记忆与纠正句自身迁移（2026-10-05）",
+      "card_sha256": "9c3f694e8f5a3dfce5de976d4455bced72eb45532a9cd6cb7986a13acdc6452a",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_constraint_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "source_ablation.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "移除原S1，保留角色事实；raw旧J+2.88、新same−1.59/other−3.06bits",
+      "interpretation_limits": "GP不是必要；source-free不能叫GP修订残留；一般提及与contrast竞争",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E29-nli-config.json",
+          "bytes": 13505,
+          "sha256": "5e78eb7d19fa23c4866e055b0f549a68150b2a0c60e978118b1eeb7df740d2ae"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E29-nli-per-family.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E29-posthoc-role-decomposition.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E29-probability-config.json",
+          "bytes": 18285,
+          "sha256": "28af6db120ca3058b1e572f40b9b9619636dd23ffd11dc24b97caed5ac39e243"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E29-probability-per-family.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E29-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E30",
+      "number": 30,
+      "card": "experiments/E30-event-boundary-versus-participant-contrast.md",
+      "title": "E30：新事件的患者反向预测来自边界身份，还是separate的对比意味？（2026-10-05）",
+      "card_sha256": "c709a8268031cbb5dce21c226e69f07f14a0eab9fef3ba36fc534472268be7d9",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_constraint_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "source_ablation.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "separate→second边界；新same/other activity约−1.64/−2.11bits",
+      "interpretation_limits": "exact separate非必要；native与预测不同，不能强合机制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E30-nli-base-config.json",
+          "bytes": 13504,
+          "sha256": "e21ac8709403eb4080eb8a2a465f6a896282c8c80bebb5c6e4ff1c3bd422ee63"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E30-nli-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E30-nli-second-repair-config.json",
+          "bytes": 13505,
+          "sha256": "701087438f346ea14e7a1978e9617f6c2b1cf13c19152e16b41119148228f024"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E30-nli-separate-repair-config.json",
+          "bytes": 13507,
+          "sha256": "9fd3db5415fc943d42b13e6d35e7b8ae702863ff257c4b1b1cf259c5b5380ef4"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E30-participant-transfer.pdf",
+          "bytes": 23933,
+          "sha256": "e6397158d2f252a4cad138e809d7156eda2f5f1943edb50f13836b2ab90561d4"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E30-participant-transfer.png",
+          "bytes": 152398,
+          "sha256": "c17eea6d1a03fac8153d4d4220a29d3b452dd6aac8ded55b265f0fcc1774f5b3"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E30-posthoc-nli-wording.json",
+          "bytes": 7938,
+          "sha256": "507b67f24bed79841e07f2a74329ab89aaa517eb5b05c6b05f360354188dec28"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E30-probability-config.json",
+          "bytes": 18581,
+          "sha256": "d6096131c94721937fc77926444d7b0b020b5d26589fb42fe7abfe66f9fa23c0"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E30-probability-per-family.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E30-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E31",
+      "number": 31,
+      "card": "experiments/E31-predicate-match-versus-narrative-contrast.md",
+      "title": "E31：谓词关联，还是新事件的一般参与者对比？（2026-10-05）",
+      "card_sha256": "2047d650e4c570147d2b63fb6b0c69ba2a73b07f1305042e7f7d11fed18b90b7",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_event_boundary.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "decompose_identity_transfer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_constraint_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "source_ablation.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "同/不同V，old/new actor及NLI；出现predicate-dependent结构，登记C05 L1",
+      "interpretation_limits": "换V同时改meaning/selection；不能证明语义role存储或普遍反转",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E31-nli-base-config.json",
+          "bytes": 13504,
+          "sha256": "c3edc28c301697fd5600a79f91f0034b029d04fb4e66aad0b9281892ab1081ff"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E31-nli-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E31-nli-repair-config.json",
+          "bytes": 13506,
+          "sha256": "0e51e828ba00695fa0c289d6578ea95bbd8ce58eb62165edabfeb1c7095e85eb"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E31-nli-wording-summary.json",
+          "bytes": 84196,
+          "sha256": "0413fa5e11629d2db1f856b27919f017e5912b646c70ea5d356198b698611031"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E31-posthoc-identity-contrasts.json",
+          "bytes": 8003,
+          "sha256": "3109154fe29506e3b6c6dcdb24dd73df94082d25f215561c4a5330d46cab91c7"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E31-predicate-transfer.pdf",
+          "bytes": 24015,
+          "sha256": "3255dc6e7ada2859371874f828eb92f9bebba818e98954bb75f2fd3c21f46223"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E31-predicate-transfer.png",
+          "bytes": 161365,
+          "sha256": "815f1794c7ce57e26786b76d06c1f080063dad0287896c2e729b03e8d969b2b9"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E31-probability-config.json",
+          "bytes": 18876,
+          "sha256": "d961e3ffdec036fbcccfc58b4be76c44fe852a9eba4937b37c6262961892e646"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E31-probability-per-family.csv"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E31-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E32",
+      "number": 32,
+      "card": "experiments/E32-fact-order-versus-predicate-transfer.md",
+      "title": "E32：反向患者预测跟随角色事实，还是跟随否定对象的位置？（2026-10-05）",
+      "card_sha256": "89729b2c3d82db057572e9558b67eadff34a41682dc5ff95aa59ac47c79ed724",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "role_fact_transfer_order.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "同token事实换序；sameV新activity−3.21/−4.48bits，different−same J+1.94/+2.36",
+      "interpretation_limits": "neutral也变；绝对不同V方向不跨order保留，不能只报J",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E32-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E32-probability-config.json",
+          "bytes": 19086,
+          "sha256": "4a5de44e3cd0d79ad569361f80f60779ee0c47ca13d73c75fcf99f46feae0569"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E32-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E33",
+      "number": 33,
+      "card": "experiments/E33-same-action-paraphrase-transfer.md",
+      "title": "E33：新事件关系预测跟随原词，还是跟随动作意义？（2026-10-05）",
+      "card_sha256": "b4fd7c4b0f7e920d0301d3042432e800edf91d5896c6d543b723ba35d0708032",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "action_paraphrase_transfer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "同一基本动作释义，两order；clear8新other J−2.165/−2.144bits，old+3.926",
+      "interpretation_limits": "exact新stem重复不足；非GP、未assert旧错误，仍只是动作/表述相关aftereffect",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E33-action-transfer-all.pdf",
+          "bytes": 24848,
+          "sha256": "ccf7e7eca12bc06c62582136d7bd999ab5b26c056cfc33b4ee7ec6a981c4558b"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E33-action-transfer-all.png",
+          "bytes": 181209,
+          "sha256": "d6d7cd18d96f1c13cf59f241fbae7feb9a34542d927c9005e90b8283bff39f2e"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E33-action-transfer.pdf",
+          "bytes": 24373,
+          "sha256": "6f1bc3d915e2a34ee17cdefde2db89f65cfb6e2e442571788ce6e9eafe4d0315"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E33-action-transfer.png",
+          "bytes": 179674,
+          "sha256": "cd88c79abc5684d8adefd1ec264b8af84da34158e13562d811331713c6aa45b9"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E33-per-family.csv"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E33-probability-config.json",
+          "bytes": 19290,
+          "sha256": "62cdd9292c8434e83b0880d7975dc756999cd5899cc4d27cde0e295b85df64ee"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E33-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E34",
+      "number": 34,
+      "card": "experiments/E34-retracted-report-versus-hypothetical-history.md",
+      "title": "E34：被撤回的角色解释，还是仅被提到的关系？（2026-10-06）",
+      "card_sha256": "9a187f0db39f969f8a47ccf7b13d95264d30c2df7b1ad12a61e741404f69c123",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_constraint_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "retracted_role_history.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "真撤回report vs hypothetical prior，相同final；来源H_J−.433 [−.710,−.129]bits",
+      "interpretation_limits": "factual与hypo都有痕迹；冲突old-source native仅54.17%，不能叫成功revision后残留",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E34-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E35",
+      "number": 35,
+      "card": "experiments/E35-current-world-priority-recovery.md",
+      "title": "E35：当前事实优先级的一句恢复（2026-10-06）",
+      "card_sha256": "35368696f0b93cd6f3907245bcbd15c293443e09482a7ba66601eb726d73af95",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_current_world.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_constraint_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "一句current-world priority；54.17→68.75%，paired+14.58 [12.50,16.67]pp",
+      "interpretation_limits": "三label mapping91.67/62.50/52.08；只部分恢复，不能挑一个map称能力完整",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E35-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E36",
+      "number": 36,
+      "card": "experiments/E36-affirmative-role-versus-negated-alternative.md",
+      "title": "E36：肯定式角色证据，还是显式否定备选项？（2026-10-06）",
+      "card_sha256": "df2c3052ce407ca7a480cdb81c58aa4f490d4d98e82391e1036e8ce04beca698",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "affirmative_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_constraint_state.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "肯定only、提及顺序；first oldJ+2.296、新other−1.790bits",
+      "interpretation_limits": "显式not非必要，但last other CI跨0；all-order普遍反向未成立",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E36-role-transfer-all.pdf",
+          "bytes": 21311,
+          "sha256": "e68dc0d80c4ca2e43c4586fbd21c4577b558924acdbb587a451a9419350e632c"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E36-role-transfer-all.png",
+          "bytes": 133081,
+          "sha256": "f1b825f91ef32907e90401fef1408b5c0a236be32238246a9b6816e13ba7a0cb"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E36-role-transfer-grammar8.pdf",
+          "bytes": 21018,
+          "sha256": "2982d7e8281426f5e3169313111656f71bf4d4a64ec3db056353af71ef8d722c"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E36-role-transfer-grammar8.png",
+          "bytes": 131422,
+          "sha256": "ab29b6a2d30f5d8b53ca762bd6f9d4f5b474d45b5185b4d879c9b1826a71b232"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E36-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E37",
+      "number": 37,
+      "card": "experiments/E37-time-indexed-role-answer-without-letter-labels.md",
+      "title": "E37：直接回答旧/当前/新事件的角色，无字母标签（2026-10-06）",
+      "card_sha256": "6d82fda995b594f2868324885a319b7679615adea4e222218399fca552b5b664",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "自然短语current/initial/account；624明确正确，joint100%",
+      "interpretation_limits": "新who题432初审“文字有据0%”不是自然错误率；第三审语用不确定，首审指称参照不一致",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E37-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E38",
+      "number": 38,
+      "card": "experiments/E38-independent-target-selection-versus-narrative-contrast.md",
+      "title": "E38：未公布的新事件选择，还是普通叙事对比？（2026-10-06）",
+      "card_sha256": "ff767ed1cf4b2302e47846b1d4ccb26bfd35fa0caeba499242dc7fc2f63fc6bd",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "selection_transfer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "明确independent selection/fairness/selected-outcome；fairness效应局部，native1532clear＋4可恢复",
+      "interpretation_limits": "文本预测不是概率信念；知道1/2不等于下一字符串概率1/2；不以generic gap认证novelty",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E38-raw-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E38-role-control-all.pdf",
+          "bytes": 20984,
+          "sha256": "480fbe793ca92e0f8fe1084b2d68433af84331583ea00cb638c7dc1bde81f29f"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E38-role-control-all.png",
+          "bytes": 128114,
+          "sha256": "4a913662577ace11542205e28d8b3674e6f657848a6d7eacef2bbe80b53d6b68"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E38-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E39",
+      "number": 39,
+      "card": "experiments/E39-two-named-patients-without-reflexive-contrast.md",
+      "title": "E39：两个具名患者，移除self/reciprocal结构混杂（2026-10-06）",
+      "card_sha256": "50d343a907a9655bb2359516fdcf2a0ebb2686e36d6d542acaf9698f42b67893",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "named_patient_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "两个非反身named患者",
+      "interpretation_limits": "反身非必要；仍在人工frame，不能叫ordinary language普遍作用",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E39-raw-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E39-role-control-all.pdf",
+          "bytes": 19922,
+          "sha256": "2de7977d609d2e6f94fa0fe2b0288165ebf409f7c93ebc0aa03a8b2496a18a6a"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E39-role-control-all.png",
+          "bytes": 145172,
+          "sha256": "24f56975bfd5a996804702ec9b86465c2b6736db6748476539f6aa02a4683bf3"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E39-role-control-grammar_common.pdf",
+          "bytes": 20295,
+          "sha256": "3e0ead3add132487b87112c6219fd16829b415b60d1110230fda95ab6960d6f0"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E39-role-control-grammar_common.png",
+          "bytes": 141399,
+          "sha256": "f8dda83ea8c9c92777e1a65e2f2e99eac08bd969335125a08412f9b2b4606b15"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E39-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E40",
+      "number": 40,
+      "card": "experiments/E40-plain-role-versus-exhaustive-focus.md",
+      "title": "E40：普通角色事实还是排他焦点？（2026-10-06）",
+      "card_sha256": "9156e1017b6a47c221946ce75c7b524c7f47ec85618af4c83bb22fc73b99a135",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_role_controls.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "plain_role_facts.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "去only/not；新other J−9.921/−7.238bits",
+      "interpretation_limits": "old absolute D+.291/−.358近0，所谓old控制仅J/native成立；没有绝对old正/new负完整控制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E40-raw-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E40-role-control-all.pdf",
+          "bytes": 18730,
+          "sha256": "4704e2d12740a9f89e5bb42df881a0cec9e57d5e0886558861a739619662211f"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E40-role-control-all.png",
+          "bytes": 122219,
+          "sha256": "0532a50192429df34fe20d418edf9baafbfd5a023524584863bb9c785836906e"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E40-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E41",
+      "number": 41,
+      "card": "experiments/E41-event-completion-versus-participant-availability.md",
+      "title": "E41：对象占用／状态后果，还是跨事件关系反重复？（2026-10-06）",
+      "card_sha256": "12a66759430ea49e0ea90e1e2c29530242906b21c2de2035b9856a1fd339dd09",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "availability_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "结束/未知/明确ready；ready新J−6.236/−6.611，availability192/192正确",
+      "interpretation_limits": "物理不能再参加不足以解释；原姓名/possessive指称问题保留，不把unknown前置No强判正确",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E41-raw-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E41-role-control-all.pdf",
+          "bytes": 19630,
+          "sha256": "d6e11cd65c8f83b5c567684fc91f0b0ce94b28dbf2b84a5d3a4a6a11e98466dd"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E41-role-control-all.png",
+          "bytes": 98716,
+          "sha256": "404b8b260447a09bbd4f9729f0d2eebe589c88a9e185bbe79250baa23f634c36"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E41-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E42",
+      "number": 42,
+      "card": "experiments/E42-native-continuation-versus-raw-text.md",
+      "title": "E42：角色反向作用能否进入原生续写？（2026-10-06）",
+      "card_sha256": "e6dbfa67cab844bffed3e3993ff3598b98026b21849fc4cd6ed686b8e2e444a0",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "native_role_continuation.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "原生条件续写评分；old activity正、新same负",
+      "interpretation_limits": "native也有很强neutral响应；teacher-forcing大数不是自由生成错误、world belief或新机制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E42-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E43",
+      "number": 43,
+      "card": "experiments/E43-minimal-event-facts-without-candidate-scaffold.md",
+      "title": "E43：最小普通事件事实，移除候选／报告脚手架（2026-10-06）",
+      "card_sha256": "6f093ebf27911917b05cca2fd2746e066946de6b89385bcb0d0f05a3a8902769",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "minimal_role_facts.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "最小普通名字事实；oldD+26.808、新same+20.878，native96/96正确",
+      "interpretation_limits": "**普通语言绝对反转被否定**；old J也负，neutral subtraction不能自动认证纯role",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E43-raw-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E43-role-control-all.pdf",
+          "bytes": 18691,
+          "sha256": "a52a3c4de98ac7d2493cfba40beeea7365888e20d29227a5ae594c9254635bfa"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E43-role-control-all.png",
+          "bytes": 89351,
+          "sha256": "6dc050cfa195f7ef1ab55ee4ffb1d1d6029b61436b9dc907ace1e846e7e9f16f"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E43-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E44",
+      "number": 44,
+      "card": "experiments/E44-balanced-natural-scene-versus-entity-exposure.md",
+      "title": "E44：普通场景中的平衡实体曝光与角色迁移（2026-10-06）",
+      "card_sha256": "8da442295d5a749f67521b4700dd49e12940345e4508b1743a7c628406f51588",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "balanced_scene_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "普通场景配平提及、两order、ready；old+10.17/+9.05，新+2.62/−1.32(last CI跨0)，ready+5.76/+4.12",
+      "interpretation_limits": "**普遍跨自然场景故事不成立**；native576正确；保留反证、不筛order",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E44-raw-summary.json"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E44-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E45",
+      "number": 45,
+      "card": "experiments/E45-scaffold-preserving-proper-name-substitution.md",
+      "title": "E45：固定报告框架，仅将描述NP换成名字（2026-10-06）",
+      "card_sha256": "cfb6fdbc9147a61bc5fb3774f2f9ed73728eb165958028c19ccaedde2c2e51f2",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_role_controls.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "event_identity_infer.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "scaffold_name_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "原frame只换proper names；新D−13.545/−12.625",
+      "interpretation_limits": "不是description/possessive单独造成；old+.173 CI跨0/−2.004，old阳性控制偏弱",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E45-raw-summary.json"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E45-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E46",
+      "number": 46,
+      "card": "experiments/E46-factorized-discourse-scaffold.md",
+      "title": "E46：三个语篇成分的匹配析因检验（2026-10-06）",
+      "card_sha256": "c143cbd5df8e16b5e4cfbfbbd22af32842e33c4953590a4aae6b82c77ba52d91",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_factorized_scaffold.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "factorized_scaffold_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "identity/report/event三因素；identity新D−6.556、interaction−3.335bits，native1534/1536正确",
+      "interpretation_limits": "report非必要；event作用含一般提及；identity meaning/词串曝光尚未分开",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E46-raw-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E46-scaffold-factors-all.pdf",
+          "bytes": 31206,
+          "sha256": "2c3d9371952b333a8b1d4b9f26778ab4a3011f12e0ba2783f2f604c232a0a463"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E46-scaffold-factors-all.png",
+          "bytes": 150474,
+          "sha256": "b1813bcb76ea8f17b6a1c2baa7967f35974cea9051fdcba00f2e2aaa8b39574b"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E46-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E47",
+      "number": 47,
+      "card": "experiments/E47-identity-assertion-versus-mention-list.md",
+      "title": "E47：身份断言、未核实引用与名称清单（2026-10-06）",
+      "card_sha256": "19d12a4aa29b4b26ff30cb600c379c60e3f1b269404e97177b4752a9346db3cb",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_identity_status.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "identity_status_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "断言/未核实引用/纯inventory；inventory−absent−3.849，quote−assert+1.076bits",
+      "interpretation_limits": "身份断言非主必要条件；new−old J inventory CI跨0；不是global关系排他机制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E47-raw-summary.json"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E47-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E48",
+      "number": 48,
+      "card": "experiments/E48-referent-preserving-form-crossover.md",
+      "title": "E48：同一指称实体的事实表达×后续表达交叉（2026-10-06）",
+      "card_sha256": "c47983afbf8f5d2d7e144f2492fbe630eb7d2649a06202a916ad8c01426ea133",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_referent_forms.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "referent_form_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "alias固定，fact/readout Name/Desc交叉；matching old增强+2.721/+3.455，新更负−1.521/−2.076bits",
+      "interpretation_limits": "表达匹配重要；跨形式并非全零，order也不齐；alias96正确、old758/768，不叫新entity机制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E48-raw-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E48-referent-form-crossover.pdf",
+          "bytes": 24338,
+          "sha256": "f58acdbe2f73bcf17b91fb2be335f83633f380302347493d7250b7d1c5c12e2a"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E48-referent-form-crossover.png",
+          "bytes": 99536,
+          "sha256": "4996abab2fe4731858959bfebbed40347d10f787c3d4e9029f54bd1a6ca9068c"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E48-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E49",
+      "number": 49,
+      "card": "experiments/E49-role-use-with-observed-second-event.md",
+      "title": "E49：第二事件角色已有明确证据时的实际使用（2026-10-06）",
+      "card_sha256": "c67f43b88a095bc2ebb69dec512815bc15598629e69c25200b0768ea67ad91e0",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_observed_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "命令observed_role_use.py",
+          "location": "historical_reference_or_external",
+          "snapshot_commit": null
+        }
+      ],
+      "finding": "真明说第二角色，单问vs formal recap；单问1530/1536，recap joint976true/506false/54unknown",
+      "interpretation_limits": "audit首轮格式误判后完整重审；congruence CI跨0、不同V反而更差，不能合成C05同一机制",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E49-corrected-first-summary.json"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E49-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E50",
+      "number": 50,
+      "card": "experiments/E50-joint-role-use-versus-recap-format.md",
+      "title": "E50：两事件联合角色使用与复述格式（2026-10-06）",
+      "card_sha256": "ddfce3777f5b71accb48f2e5dc0daf3f62e380df40ad45aad3386128e20d0ac1",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_observed_roles.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "三种联合用途；pair41.406% [36.719,46.484]，普通anchored98.047% [96.484,99.349]；pair同−异−54.688pp",
+      "interpretation_limits": "任务/输出格式很强；two names/entities可能诱发distinctness；generic retrieval/use gap非novelty",
+      "status_line_at_cleanup": "- **状态：** DONE",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E50-summary.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E51",
+      "number": 51,
+      "card": "experiments/E51-role-occurrences-versus-referent-cardinality.md",
+      "title": "E51：role-occurrences-versus-referent-cardinality（2026-10-06）",
+      "card_sha256": "70807ab424f6bf816562292f97e6843282a84b2237322b1043c6c9c661cdc4e7",
+      "scientific_status": "PARTIAL",
+      "code_references": [
+        {
+          "filename": "time_indexed_role.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "neutral pair/keyed/count×base/repeat；4608推断完；literal neutral joint81.51–82.42%，repeat91.28–91.54%",
+      "interpretation_limits": "neutral仍同−异−26.56..−24.74pp，但最终语义审计缺；keyed多格式未解析、count定义/描述字串混杂和5cap；不作为已验证idea",
+      "status_line_at_cleanup": "- **状态：** RUNNING（未结项；推断完成，审计PARTIAL；2026-10-06用户明确暂停，无后台任务）",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E51-literal-schema-compact.json"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E52",
+      "number": 52,
+      "card": "experiments/E52-genuine-revision-reading-map.md",
+      "title": "E52：真实 GP 修订错误的广面阅读地图（2026-10-06）",
+      "card_sha256": "45f27135179ba0bd13716c6bb95233cf06950a1d7aa741094cfc251dda6e6c13",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "公开GP阅读地图：1732 QA、309 pair、14模型/5族；原No任务中NEITHER gap 24.03pp [21.60,26.56]。重复阅读未形成稳定选择性修复。",
+      "interpretation_limits": "原No多为not necessarily；严格字面矛盾仅NPS两对，不能把原任务准确率称世界真值准确率。",
+      "status_line_at_cleanup": "- **状态：** DONE（广面测量及最终资格已封版；2026-10-08整理时纠正过时RUNNING，历史过程保留）。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E52-preparation-summary.json",
+          "bytes": 1424,
+          "sha256": "17975369b399f2955ef829912e7fb1f97a43f64a18d5dc096b716aba78b2e34f"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E52-reading-map-summary.json",
+          "bytes": 40931,
+          "sha256": "4264129c711a4987ed22d5d29158c4ad4e96746dae2eb020339ea2542d03ea02"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E52/full-bf16-final-map-v2.json",
+          "bytes": 9832032,
+          "sha256": "89044bcc0408f74455c0df1542da4c2ac9eee3052fc2a12d3ba413619b6d2895"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E52/interim-native-fp32-convention-map.json",
+          "bytes": 924634,
+          "sha256": "fcd6d8343500f9263163c1fd2223c16d5bf280d4d86e6690110724cf369825fa"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E52/interim-native-fp32-corrected-convention-map.json",
+          "bytes": 924787,
+          "sha256": "6e356081f1ff27be261963a199a9d6a2d2acd229da104bce69dad696b89e1418"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E52/native-fp32-final-map-v1.json",
+          "bytes": 1283219,
+          "sha256": "17063ca8ecaf364b31e0d5a91115b6b93ead490fdc17b98d4acc9310e314dacb"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E52/published-all-models-map-v1.json",
+          "bytes": 1726128,
+          "sha256": "9fd545e64248ba97ccf94fd2b3ae70a425ca7670d15e71610ccab64fd1515228"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E52/runs/map-unlabelled-status.json",
+          "bytes": 459,
+          "sha256": "a5a97d34f4ddffd2e47148e5f0453ca417147505009c2e506a36d98fdc3f68bd"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E52/runs-native-v2/map-unlabelled-status.json",
+          "bytes": 251,
+          "sha256": "89ee795ba2ae505fc97e46ad6d22affd2dc9c895ba00567c720caaf3bb8fda10"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E53",
+      "number": 53,
+      "card": "experiments/E53-faithful-two-sentence-paraphrase.md",
+      "title": "E53：先前误读是否进入自由复述？（2026-10-06）",
+      "card_sha256": "fe73e1d595806c2eea4bc65517fe2b8a1590f0a2cfc3e8cc7799878f4b7eeb26",
+      "scientific_status": "PARTIAL",
+      "code_references": [
+        {
+          "filename": "地图worker为finish_paraphrases_role_v2.py",
+          "location": "historical_reference_or_external",
+          "snapshot_commit": null
+        }
+      ],
+      "finding": "原生两句自由复述已生成；完整盲审6244/6247双遍，3项未解决。后续role-v2没有封版终图。",
+      "interpretation_limits": "科学完成度PARTIAL；旧语态/施事规则有已知问题，不能作为当前完整角色能力证据。",
+      "status_line_at_cleanup": "- **状态：** RUNNING",
+      "result_assets": [],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E54",
+      "number": 54,
+      "card": "experiments/E54-prequestion-oracle-and-revision-selectivity.md",
+      "title": "E54：问句前的可见性干预与修订选择性（2026-10-07）",
+      "card_sha256": "262fb58ba2befc56fd6434f0c8ef91c13b4c11642065491106db2cf1adf4c197",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "同模型问句前非因果可见性干预全三族完成，没有稳定选择性修复；部分gap缩小来自cue损伤。",
+      "interpretation_limits": "这个oracle的弱结果不能排除所有增量编码或内部修订机制。",
+      "status_line_at_cleanup": "- **状态：** DONE（完整三族/全部预定读出及配对统计）",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E54-prequestion-oracle-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E54/prequestion-oracle-map-v1.json",
+          "bytes": 5354828,
+          "sha256": "52b14c93185ee1b10a4dae7f0bad255b54a43e30f429263d06b616abcdd1a065"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E55",
+      "number": 55,
+      "card": "experiments/E55-natural-cue-source-patching.md",
+      "title": "E55：自然线索句的问句前位置替换（2026-10-07）",
+      "card_sha256": "679fa17b5329722d10c97bf689a4caa3d88d565de24635631e7ee825fcd9cdac",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "自然cue源状态替换能改变GP问答，反向替换也能损坏cue；完整三族/四层/三位置/双向。",
+      "interpretation_limits": "残差混合语法、词汇与位置等因素；不能把whole-state效应当已识别语法变量。",
+      "status_line_at_cleanup": "- **状态：** DONE（完整三族/4层/3位置/双向干预及统计）",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E55-natural-cue-patch-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E55/natural-cue-patch-map-v1.json",
+          "bytes": 9276480,
+          "sha256": "d2ea0744318c127334a75b55de5ef09f7127442f053364d0f2e7d8efa5b74be7"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E59",
+      "number": 59,
+      "card": "experiments/E59-source-grounding-versus-world-question.md",
+      "title": "E59：源断言与世界补全是否在问答中混合？（2026-10-06）",
+      "card_sha256": "56f74fb312ea1c3b1610c6cb776af0118a841cad43c789a3850ef313bebc62bb",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "明确源支持G2下，MVRR同Gold gap Q/G/L 63.79[49.14,77.61]/58.62[43.10,74.14]/37.07[18.97,54.31]pp，29簇。",
+      "interpretation_limits": "任务语义澄清没有消除缺陷；源支持与世界额外事件可能性必须分开。",
+      "status_line_at_cleanup": "- **状态：** DONE（完整三族评分、最终资格、全部分层与W3类别均衡已完成）",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E59-question-first-component-review.json",
+          "bytes": 13161,
+          "sha256": "0ed5575c4a699e26f45e8928ef20ce402ef0bb1b7702752c4975021a7cc8d9bb"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E59-source-scope-summary.json",
+          "bytes": 50975,
+          "sha256": "c14b2376b7110b652278d9ab9ec0d713d3999828cd26d6f5c029a1f3815a51cc"
+        }
+      ],
+      "external_maps": [],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E60",
+      "number": 60,
+      "card": "experiments/E60-source-consumption-depth.md",
+      "title": "E60：问句在哪些层消费源句？（2026-10-07）",
+      "card_sha256": "5bd481b8a27d23e1f991d7625a79d811c654795ac78ae321147abc2e281059a9",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "三族各20280评分、1.456 GPU·h；改变消费时机有修复与损伤，没有支持共同选择性推迟消费。",
+      "interpretation_limits": "早/晚不同不等于识别了错误源，也不能用一个窗口的收益说明整体解释修复。",
+      "status_line_at_cleanup": "- **状态：** DONE；科学运行前登记。生成器E431已在运行前改用本线菜单保留E60。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E60-source-consumption-depth-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E60/source-consumption-depth-map-v1.json",
+          "bytes": 3316473,
+          "sha256": "e7d69738d9501af7494365d12bf2ba8a1b82619ff0411794c48a81efadb35332"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E63",
+      "number": 63,
+      "card": "experiments/E63-shared-source-cross-use-patching.md",
+      "title": "E63：同一源状态是否共同改变问答与自由角色表达？（2026-10-07）",
+      "card_sha256": "30158fb6a1af9b916490eb69b82a3e42c303ab1b1d22ad7f8feb5a69f64c4225",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "共同源状态跨QA/复述：role-v2后MVRR GP PAIR−BASE角色Q+36.84[10.53,63.16]pp，G/L弱；反向cue三族损伤。",
+      "interpretation_limits": "标注纠正保留v1；共同QA×角色恢复没有普遍成立，联合null也不能证明局部关系全未变。",
+      "status_line_at_cleanup": "- **状态：** DONE（完整三族生成、双遍及第三遍裁决、自审完成）；先卡后代码/科学运行，生成器E431运行前改为E63，菜单E61/E62保留。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E63-shared-source-cross-use-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E63/complete-map-v1.json",
+          "bytes": 362,
+          "sha256": "a7a70b7fa85b145d46433bd5f0a8402b9961cfddc0be28b3fa3a90465abc9172"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E63/shared-source-cross-use-map-v1.json",
+          "bytes": 1366683,
+          "sha256": "8b3692f1230268bbb8fbd7d4c6bdc300465d318ecc368556623569522a997694"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E63/shared-source-cross-use-map-v2.json",
+          "bytes": 1366752,
+          "sha256": "24d8942c8b8d211c526f584f37601a5f20e18dd22c7920c6ebcaf96e2796fa48"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E64",
+      "number": 64,
+      "card": "experiments/E64-source-bank-route-decomposition.md",
+      "title": "E64：问答和角色表达读取修补后的哪个源位置？（2026-10-07）",
+      "card_sha256": "73b7972af57f3a940dabfb03472d5a6c4cc4e9e744b94d14f7cea86385214f51",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "拆源target/context路径：MVRR问答TARGET−CONTEXT Q/G/L 43.33/19.44/18.33pp；角色恢复有限，反向target有明确误读。",
+      "interpretation_limits": "C09仅限定问答因果入口L1；没有共同完整角色修复或唯一latent parse。",
+      "status_line_at_cleanup": "- **状态：** DONE，科学运行前登记；生成器E431改为本线E64。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E64-complete-QA-summary.json",
+          "bytes": 116807,
+          "sha256": "5a29f70aaa16f072c638d6df36c474dc5d4e1733e9758dbb65e9e769709b1efe"
+        },
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E64-corrected-cross-use-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E64/complete-QA-map-v1.json",
+          "bytes": 1828023,
+          "sha256": "feb9039767b81fdd0149c165921e394d208d130287c60efc25842da24b752655"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E64/complete-map-v2.json",
+          "bytes": 1551,
+          "sha256": "153b38bc9cec290544c7cac22f5269262174b53fd3d74799ddbd85e317ccfa56"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E65",
+      "number": 65,
+      "card": "experiments/E65-goal-conditioned-cross-question-reading.md",
+      "title": "E65：提前目标会帮助未被询问的关系吗？（2026-10-07）",
+      "card_sha256": "1a1ffb3a10195cddbdcbfffdfacf2327cf46843b528b422b70b40816dfff3777",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "提前INITIAL目标使NPZ全部问句共同正确率+15.17/+11.24/+28.09pp，CI正；未问final在Q却下降。",
+      "interpretation_limits": "目标收益没有共同迁移到最终关系；original initial/final位置标签不自动等于撤回/建立操作。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后代码/科学运行。E64完整QA节点已自审，E65不依赖未结束的角色标注。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E65-goal-by-question-summary.json",
+          "bytes": 211233,
+          "sha256": "2585fb5f9f923f7e2151829e54f952a95d921878fc40293c4958bce4ba25f06f"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E65-goal-truth-posthoc-summary.json",
+          "bytes": 151590,
+          "sha256": "ec1e46712a015c945f16ceecfb7693d04b7e35877d3b21d81e5b21cb78089313"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E65/complete-map-v1.json",
+          "bytes": 291,
+          "sha256": "11a32788a8c5992a42f384f5c53e9bd9cd3a0987df16ba31a7917f3eff3bc00b"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E65/goal-by-question-map-v1.json",
+          "bytes": 2317531,
+          "sha256": "657643df00f02f2b19268e4f728f725caef6048cf0434bc1f342092c78cbede7"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E65/stat-fixture-v1/map.json",
+          "bytes": 1759267,
+          "sha256": "1c6e5eb3218a31ce677dc4c024952e1c2a82137fcda79ae2e5baf847cc1e7913"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E66",
+      "number": 66,
+      "card": "experiments/E66-goal-to-source-only-routing.md",
+      "title": "E66：提前目标经源编码还是直接参与作答？（2026-10-07）",
+      "card_sha256": "f44932036689a841817d96fb5e86af72d83ec91beedaae253ca6fe3860789250",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "把目标只经源编码传递，NPZ initial反而−8.43/−10.67/−18.54pp（words CI负）。",
+      "interpretation_limits": "削弱源介导整体修订解释；source-only切分不是隔离了单一语法或认知变量。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后代码/科学运行。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E66-goal-path-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E66/complete-map-v1.json",
+          "bytes": 423,
+          "sha256": "ea21fcdf3c2c76b4350f02459c16634d56c358f928b7bff2f11006f7b6875d31"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E67",
+      "number": 67,
+      "card": "experiments/E67-reading-goal-to-free-relations.md",
+      "title": "E67：提前目标的收益能迁移到自由关系复述吗？（2026-10-07）",
+      "card_sha256": "bdb0cd5fb6c91ec067d6b32c52c377522b1cd5f09ca5e3f639535f2dddd1806d",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "3204自由输出/6.530 GPU·h；3033 packet完整更正审计，旧三族提前目标增加明确GP误关系、降低完整角色正确。",
+      "interpretation_limits": "QA收益与自由关系方向分离；同源联合后果见E99，不证明唯一内部解析。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后运行。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E67/complete-map-v1.json",
+          "bytes": 188,
+          "sha256": "7343c0c58e6455abeed827e08dac432b340f16a1ec2e5d7bef32cb9f681c5930"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E67/goal-to-free-role-map-failure-completion-v1.json",
+          "bytes": 627870,
+          "sha256": "3a8b7bcde6fe75a1c6f65b215263ac5f336607a9a5d49e46acfc232cb8c15f81"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E67/goal-to-free-role-map-v1.json",
+          "bytes": 628088,
+          "sha256": "b59ae95fe398abc343a50a299ca0176d5bc400db4ba60e1253dc1e6658e7752f"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E67/stat-fixture-v1/map.json",
+          "bytes": 471642,
+          "sha256": "9331f4071b0fc78dcd712d9fa89b2d823dd31959ca1c434d55b89ddf949c6772"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E68",
+      "number": 68,
+      "card": "experiments/E68-goal-only-at-readout.md",
+      "title": "E68：提前问题只进入后续作答，是否保留或增强收益？（2026-10-07）",
+      "card_sha256": "92efd245e941a512e7d18765d3f882c5bb2cbf60ee6082a8066f37cc5e217642",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "目标只在readout进入也可大幅提高NPZ joint；真final Yes收益弱或受损。",
+      "interpretation_limits": "不能把答题条件化收益称源解释更新；目标路径局部块结束，没有机制主张升级。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后代码/运行，完整地图自审后不追加目标/掩码网格。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E68-goal-readout-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E68/complete-map-v1.json",
+          "bytes": 622,
+          "sha256": "5ca3d6c0520f7591a3d094757d1a20a2b0932821b733ca33133128338d3bd770"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E69",
+      "number": 69,
+      "card": "experiments/E69-plausibility-versus-structural-revision.md",
+      "title": "E69：源支持任务中，合理性还是暂时句法误接造成错误？（2026-10-07）",
+      "card_sha256": "a074aa9bb4252d92cc11898d1dc393f8a02eea14099c9ed9e1f7b0a007007c83",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "合理性对GP/cue判断均有强影响；GP×合理性交互随words/letters反向。",
+      "interpretation_limits": "一般合理性效应已有近邻；缺少稳定、可因果区分的两类错误机制。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后代码/运行，完整三族全部因子自审。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E69-plausibility-structure-summary.json",
+          "bytes": 214030,
+          "sha256": "67e14e094ab7b7393b2ac88bfe2b87b45179af0bcbc9f5b6c2f63ae2b1909eda"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E69/complete-map-v1.json",
+          "bytes": 193,
+          "sha256": "adfa2082e53fe60e5bdd4fd0f92e79fc3ca0cbc8829cf22611fc250423971963"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E69/plausibility-structure-map-v1.json",
+          "bytes": 213735,
+          "sha256": "bfcd2ffdd2fdc0eac4b3491568f69b88a8c7a1b2802114f96e3ac54dac53e7b4"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E69/stat-fixture-v1/map.json",
+          "bytes": 56186,
+          "sha256": "948e4705da916279e31fe08a3878c65f1ca6ad9c52ef971473e7c4f2cb96da17"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E70",
+      "number": 70,
+      "card": "experiments/E70-atomic-repair-footprints.md",
+      "title": "E70：同一源修补到底改了哪些断言，是否传递到依赖关系？（2026-10-07）",
+      "card_sha256": "c6f74b7ef945c3b6388968b6637e43d456da0310c8667ef791d36178362fab42",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "source_bank_routes.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "将完整角色改为原问题原子脚印；更正后MVRR initial正断言恢复+40/+60/+90pp（CI正），完整both仍弱。",
+      "interpretation_limits": "8定点语义更正传播E70/E91/E92；旧资格9→8簇，旧图保留；局部断言恢复不等于完整解释。",
+      "status_line_at_cleanup": "- **状态：** DONE；E64-v2完整效果后POST-HOC测量选择，原子标签读取前固定本卡与读数。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E70-atomic-repair-summary.json"
+        },
+        {
+          "kind": "repository",
+          "path": "results/E70-posthoc-semantic-correction-summary.json",
+          "bytes": 91751,
+          "sha256": "8f55868b61cae40a5d1460a00fe3162cc9fd49f78312f806d678f0d6c3b92103"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E70/atomic-repair-map-v1.json",
+          "bytes": 813906,
+          "sha256": "5954e972bda6ba627f2fc0168cd425440ea6eedb1dec40174e2763ff973329a5"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E70/complete-map-v1.json",
+          "bytes": 184,
+          "sha256": "144d886805e30b50a15ad5ee8a649edf17c89ea1b519ebf817fcdc708b0b1c91"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E70/posthoc-semantic-overlay-map-v1.json",
+          "bytes": 811676,
+          "sha256": "aab006222ac7aaefac6cc7e949df6e72510627a0aa62a697c9a2420e7468ae36"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E70/stat-fixture-v1/map.json",
+          "bytes": 232525,
+          "sha256": "8a375833ade29ad8d8559298ff07f5a65badaf5f19cf09b62b7c1b18ff1c305d"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E71",
+      "number": 71,
+      "card": "experiments/E71-correct-prefix-and-later-binding.md",
+      "title": "E71：正确的第一句解释，会不会妨碍后续正确绑定？（2026-10-07）",
+      "card_sha256": "9f7c2121974c4efec484d551b9cc99289cc383f5a40e0736c17d4e490d9a1fbf",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "正确第一句prefill后，NPZ下一关系近满分；MVRR仍弱，切P1无三族共同恢复。",
+      "interpretation_limits": "正确局部表述的帮助取决于构式；prefill本身不是自发修订，也不是可携带状态的充分证明。",
+      "status_line_at_cleanup": "- **状态：** DONE；输入资格先全审并冻结，再做完整三族测量。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E71-correct-prefix-binding-summary.json",
+          "bytes": 42400,
+          "sha256": "bc126a9487811cd26a757cf4f04975721b4c1be07e0b15d7bad7e05bedb0c5c0"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E71/complete-map-v1.json",
+          "bytes": 135,
+          "sha256": "a9faf0117033893d2e131f04570afdc6e013a107fa2c68df3fd05cb5bd26d7f1"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E71/correct-prefix-binding-map-v1.json",
+          "bytes": 42129,
+          "sha256": "88417f8673139430b6404fef894a882978849896a40317f34e93f6c5bf9454b9"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E72",
+      "number": 72,
+      "card": "experiments/E72-joint-and-separate-relation-use.md",
+      "title": "E72：共同回答原始关系问题，能否恢复联合解释？（2026-10-07）",
+      "card_sha256": "3bdf61e269e10e972a1a3479756166b7445b75664eb1196e6560e035fa402038",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "共同回答两个关系在NPZ提高final、降低initial；MVRR/NPS/NPVP的joint效应弱或混合。",
+      "interpretation_limits": "原No/Yes模式全部报告；一般Yes启动与首答案串联仍是竞争解释。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后运行。最新用户要求立即铺开，优先现成数据，只有新标注/修改需要API。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E72-joint-relation-use-summary.json",
+          "bytes": 196970,
+          "sha256": "32d62712d291ca431d9b05982cf51e35573d3b71ee289b788d448329c8bc1338"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E72/complete-map-v1.json",
+          "bytes": 187,
+          "sha256": "0f99bcb7ce041b966958b8d341a4f28128e96f13cdfc9a8d3dbc4cb9af02ae0e"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E72/joint-relation-use-map-v1.json",
+          "bytes": 871324,
+          "sha256": "fa5def33ba01cbe38304e2bf25f0c40bdfe6505dc163653348b651352d306f3c"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E73",
+      "number": 73,
+      "card": "experiments/E73-correct-answer-carry-to-next-relation.md",
+      "title": "E73：正确首答案向后一个关系的传递（2026-10-07）",
+      "card_sha256": "a50ea6723b6d4081427810c39f001e356fd6b3cc2460a4e2ad0bce206dbc7922",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "正确首答案prefill后切首答案消费，关系间影响异质；NPVP final三族下降，cue亦损伤。",
+      "interpretation_limits": "没有共同关系传播修复；不能把所有串行依赖当GP特有失败。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后运行。E72局部异常的第一个因果追问。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E73-correct-answer-carry-summary.json",
+          "bytes": 133774,
+          "sha256": "76acdd8fa2347a496394149a00706c11c06e98bbe8d883aefe55cef2ff0c9fd2"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E73/complete-map-v1.json",
+          "bytes": 187,
+          "sha256": "1d661f979f63889aea8e66c3872f62bcfb2f3039ceb843616dba3cc596a75853"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E73/correct-answer-carry-map-v1.json",
+          "bytes": 608882,
+          "sha256": "c54403f335b11df56e542dd6a2934f90dac30f8b78b4b3cf86d204118927581f"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E74",
+      "number": 74,
+      "card": "experiments/E74-cue-interpretation-retention-after-ambiguity.md",
+      "title": "E74：原无歧义解释在后续歧义版本中能否保留？（2026-10-07）",
+      "card_sha256": "104a719b65d82fabe8d1db462a353fd5bbbd3458901c729d77b5f0804cf7f214",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "cue与GP两个版本共读并不保证保持cue解释；MVRR initial在Q/L下降，顺序不符合简单最后句覆盖。",
+      "interpretation_limits": "没有直接证明两个latent parse共存或覆盖；实际共同关系使用仍混合。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后运行。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E74-cue-interpretation-retention-summary.json",
+          "bytes": 120388,
+          "sha256": "5a1a538f6c53502f74c9807a0b0d26a580d21971095e66e57520f02b6db0dfa1"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E74/complete-map-v1.json",
+          "bytes": 187,
+          "sha256": "e7c013a004b2245c8e7d6e1e6e1e4b5a6bcae3fc522aab9120e36316609a97ae"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E74/cue-interpretation-retention-map-v1.json",
+          "bytes": 553788,
+          "sha256": "a2a1f6156cd5e82ce73b6216874c7a3b5805583986bd0c84dc413d95a4fb67dc"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E75",
+      "number": 75,
+      "card": "experiments/E75-cross-source-consumption-in-reinterpretation.md",
+      "title": "E75：两个原版本在编码时相互消费，还是在回答时重新组合？（2026-10-07）",
+      "card_sha256": "9e3aa20d626ca5a96a9f0560212e400001b3dd5223d48dad37d81679b46c751c",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "切两个Source间编码消费没有共同恢复，有些正确final反而下降。",
+      "interpretation_limits": "正常跨源整合本身有用；结果不能定位唯一consumer原因。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后运行。E74异常第一个因果追问。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E75-cross-source-consumption-summary.json",
+          "bytes": 124493,
+          "sha256": "f7f614c1fe08feae74b0b4cf043f82ecd1398322897c6094fb4ca4bceb0dd402"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E75/complete-map-v1.json",
+          "bytes": 186,
+          "sha256": "9c7b278c479c5e2e4c537d53d2b0f22ad7556a86d9d071635cf60f53f79a6585"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E75/cross-source-consumption-map-v1.json",
+          "bytes": 527617,
+          "sha256": "2902ebe6a76df5774741511ec4312c1bafb8462ac0cf002d43ae7c8c99362efe"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E76",
+      "number": 76,
+      "card": "experiments/E76-event-first-relational-draft-to-original-qa.md",
+      "title": "E76：按主事件先行生成关系草稿，再回答原问题（2026-10-07）",
+      "card_sha256": "9d51e1a8b7f9b02cd7257fdbc3e12ee938bb375dae3363472698a033a574058d",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "主事件先行关系草稿→原QA的方法动作没有共同两关系保持，部分模型/构式收益伴损伤。",
+      "interpretation_limits": "草稿未经完整审核时不能用于内部关系机制归因；直接任务收益不足以称新方法。",
+      "status_line_at_cleanup": "- **状态：** DONE；先卡后运行，方法动作探索，不先假设novelty。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E76-event-first-draft-summary.json",
+          "bytes": 233453,
+          "sha256": "8e826a426470eb14c3bb82110cd260b70e9a1d9434b345378a56802a8ba24dbc"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E76/complete-map-v1.json",
+          "bytes": 186,
+          "sha256": "5ff71a61812e80d6648a5f2373d2ce46d35938103910229ca4d1f557ee96dc1e"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E76/event-first-draft-map-v1.json",
+          "bytes": 814918,
+          "sha256": "a285491a92949f67a2d131951c43b63aa47e0a8a49212b543e000b8df8ab5f78"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E77",
+      "number": 77,
+      "card": "experiments/E77-retire-original-after-draft.md",
+      "title": "E77：关系草稿消费时停止读取原Source（2026-10-07）",
+      "card_sha256": "1710b453e1e9f00af1c07c495a5207629f6b4ace40f7fdc4d4d695422a64193e",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "有草稿后停止再读原Source：21408新QA/1.743 GPU·h，未共同恢复，部分initial收益伴final损失。",
+      "interpretation_limits": "attention cut使任务要求的Source不可用；不等于自然draft-only部署。",
+      "status_line_at_cleanup": "- **状态：** DONE；仓库生成器全局E431重命名本workbench E77，先卡后运行。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E77-retire-original-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E77/complete-map-v1.json",
+          "bytes": 171,
+          "sha256": "b10570816447f8d4e58c9aa617a9d4f121685ab5d6679660378f7f1abf5c90ee"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E77/retire-original-map-v1.json",
+          "bytes": 1217156,
+          "sha256": "088c5dda6788337f03abc6273278539b767fdab11ef682d3f7ad4b0b84b7e608"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E78",
+      "number": 78,
+      "card": "experiments/E78-stronger-model-relational-draft-pipeline.md",
+      "title": "E78：强模型的关系草稿，真实消费流程（2026-10-07）",
+      "card_sha256": "dc4c73494cad0e8142e1a45e727133273a6dc969c4181151c778208ce91b4bf4",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "更强三族真实DIRECT/Source+draft/draft-only流程有局部端到端收益，没有共同完整关系保持。",
+      "interpretation_limits": "草稿含Source原样引用Q2/G22/Min95 of356，draft-only不是保证移除了原文信息。",
+      "status_line_at_cleanup": "- **状态：** DONE；仓库生成器E431在运行前改用本线E78，非事后补卡。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E78-stronger-draft-summary.json",
+          "bytes": 232037,
+          "sha256": "6fed984e265dedc982350ef55e1f4d8c1845ec8ae415cb75610cc64bd6147d29"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E78/complete-map-v1.json",
+          "bytes": 185,
+          "sha256": "6a10def1bfc8d38fb148968884a8c4650b74d33ddd505279b8a438eb52f9506a"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E78/stronger-draft-map-v1.json",
+          "bytes": 824776,
+          "sha256": "69dc6e9e8aa0293a8b806d4f3b82bbe1bb0fe8728c04708d21ad7b22839e6fbc"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E79",
+      "number": 79,
+      "card": "experiments/E79-source-versus-correct-prefix.md",
+      "title": "E79：已确认正确P1后，Source与P1对下一关系的因果作用（2026-10-07）",
+      "card_sha256": "f272825194e9e7fa7300a992761decfa32cac81a350320f42f90bf018fef1a64",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "正确P1后只切晚期Source消费，MVRR概率恢复Q+40.96[19.37,63.31]pp，G/L弱，NPZ/cue有损伤。",
+      "interpretation_limits": "未识别跨族共同机制；不能靠挑一族把信息移除称修订方法。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431运行前改本线E79，非POST-HOC补卡。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E79-source-versus-correct-prefix-summary.json",
+          "bytes": 86302,
+          "sha256": "8b42cb89c90e93c7664f86e912416ee4c7d55b20176512185aeddbe0c328937e"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E79/complete-map-v1.json",
+          "bytes": 172,
+          "sha256": "d0ba237398debd401fbdbdbf5d5d295d1491f01101aace554d336732fd5d40f7"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E79/source-versus-correct-prefix-map-v1.json",
+          "bytes": 85992,
+          "sha256": "f4f0685a13107101da67e84586f06c71ca847e391433c6b2ccce7130ed206105"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E80",
+      "number": 80,
+      "card": "experiments/E80-grammar-trust-and-noisy-interpretation.md",
+      "title": "E80：合法GP的输入信任与潜在语法纠正（2026-10-07）",
+      "card_sha256": "2cbaa294a353e3e9753a91432b87853bf15d3b017c0bd81edaa838074181bb1e",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "TRUST/NOISY输入可靠性信息改变答案，但initial收益常伴final损伤，没有共同两关系保持。",
+      "interpretation_limits": "prompt不等于内部实际编辑；不能据此证明或永久排除噪声通道解释。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在模型运行前改本线E80，非事后补卡。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E80-grammar-trust-summary.json",
+          "bytes": 239061,
+          "sha256": "fc4dc84650f4be7e2b0c4b28bd548d5280be818ff1d33fe551dc418b531da635"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E80/complete-map-v1.json",
+          "bytes": 186,
+          "sha256": "63068a15b7483add14ca6c892ba065abf57a9aa6d72e9932aba1e41c748bf1f8"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E80/grammar-trust-map-v1.json",
+          "bytes": 811336,
+          "sha256": "538bfb8eb267bc972a0239034d312214af3c3740119218b10f889b4e14c87929"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E81",
+      "number": 81,
+      "card": "experiments/E81-inverse-source-evidence.md",
+      "title": "E81：答案选择与逐词解释Source的逆向证据（2026-10-07）",
+      "card_sha256": "39f3bcceaff8f8a246550543116620bd7dd1af5844b08c3d4e327e4e075eb0ab",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "逆向逐词解释Source改善NPVP final，却损initial/joint及cue；MVRR更差。",
+      "interpretation_limits": "逆向生成分数不是校准语义posterior；词级任务与判断不可透明互换。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在运行前改本线E81，非POST-HOC。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E81-inverse-source-summary.json",
+          "bytes": 129773,
+          "sha256": "ba9dfc2c40ad6842b5cc8b6e56a325aad85075c8f3f8a71a75feb7df5815684f"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E81/complete-map-v1.json",
+          "bytes": 186,
+          "sha256": "11b97833a80c79f94f4358d53178a0e3adfd9ded82339bcc4adab5804a66c796"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E81/full-map-reviewed-v1.json",
+          "bytes": 140,
+          "sha256": "d29a52b8b9eb9b415baeafa655c02279ba525b754fa40e085152c51291e394d8"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E81/inverse-source-map-v1.json",
+          "bytes": 415532,
+          "sha256": "f9254ac89e4867d3f43f172d976419ec562f2b6e682c1bd399ecc550ae85fabe"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E82",
+      "number": 82,
+      "card": "experiments/E82-current-open-model-baseline.md",
+      "title": "E82：当前开放模型上确认真实GP痛点（2026-10-07）",
+      "card_sha256": "dc5a68f04241616ceb298285964b6f055d7321b99bcf7565ed4f8229d3665cf8",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "当前三族21408条件完成；NPZ Min initial84.55%、final28.09%；一句恢复没有共同完整收益。",
+      "interpretation_limits": "真正错误仍在，瓶颈不限于旧关系未撤回；BF16完整序列评分分支与量化来源保留。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何模型评分前改本线E82，非POST-HOC。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E82-current-open-model-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E82/complete-map-v1.json",
+          "bytes": 186,
+          "sha256": "f96e709087784be25b1b3ad765bb266ec4923cca50ae3a817c5cd99ee033c70b"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E82/current-open-model-map-v1.json",
+          "bytes": 420457,
+          "sha256": "44ec602cdb12d94dc3af334125a6104f86b0121d65906d8801e84788ec8439b5"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E83",
+      "number": 83,
+      "card": "experiments/E83-disambiguation-evidence-versus-prefix-prior.md",
+      "title": "E83：后到证据与早期字符串代价分开（2026-10-07）",
+      "card_sha256": "896ea80a49217c8809661efb787616b691b1c64c9c8f45bdbef892b859e48db4",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "分开前缀与后到证据，MVRR initial LATE−WHOLE +59.06/+57.61/+31.88pp，CI正；NPZ/NPS亦正。",
+      "interpretation_limits": "这是条件于已给候选的评分；对native完整关系恢复不共同、cue损伤大，不是唯一内部解析证据。",
+      "status_line_at_cleanup": "- **状态：** DONE，POST-HOC（由已完成E81整体阴性提出新的读数）；本卡先于任何token分段效果读取，非重写E81主读数。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E83-disambiguation-evidence-summary.json",
+          "bytes": 250115,
+          "sha256": "c4c3acb4ea10b9db7966e3a20edc4d9e6bad2ec4a9a02648bdc28c3de0a58f4b"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E83/complete-map-v1.json",
+          "bytes": 169,
+          "sha256": "2f31fd76a6d246d33c5eaacfb9433ccecaeb3094ee0ff81fbbe6912ae101d781"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E83/disambiguation-evidence-map-v1.json",
+          "bytes": 816084,
+          "sha256": "6f922950161b78ada51efcaa25c0f0b12a0943841d2a1dbca4114b3429785fb1"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E83/full-map-reviewed-v1.json",
+          "bytes": 128,
+          "sha256": "afe2300ded77c0e106ebd3f98a393b7e31160ac11436ef2d67e2ce0292092b1c"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E84",
+      "number": 84,
+      "card": "experiments/E84-source-key-versus-value-revision.md",
+      "title": "E84：关系修订的源地址匹配与内容取出（2026-10-07）",
+      "card_sha256": "9e07d74ceaf2584e7b5f20504648dd70bba3fef9a5942776170f7522c333a7fc",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "K/V分解中V引起更多关系变化；MVRR VALUE joint +13.16/0/+5.26pp，未共同完整恢复。",
+      "interpretation_limits": "V也损坏正确cue，K亦调制；尚未识别relation-specific神经变量。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何效果前改本线E84，非POST-HOC。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E84-source-key-value-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E84/complete-map-v1.json",
+          "bytes": 188,
+          "sha256": "170e4d23e57fe17acf5a52dd56c78ff98e2c7f9040300f70f7c40902808b0880"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E84/complete-map-v2.json",
+          "bytes": 188,
+          "sha256": "6c441b8fb27d76ec22626b6ee5d41758d9bd1af72750b7eff38635c448e5dbaf"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E84/map-v1-void.json",
+          "bytes": 369,
+          "sha256": "27a0038d8988b402991ff3d1ea9cb386d27119f2a5edd4acfd20536e07d625f6"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E84/source-key-value-map-v1.json",
+          "bytes": 1712404,
+          "sha256": "649e5c6124a6675cbc8a48bd5a29a8e06e33f8a31592a96a91c4e61db9c2f408"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E84/source-key-value-map-v2.json",
+          "bytes": 1713042,
+          "sha256": "3b69b7fd235c8c9dcde309024baf00f69304a8ee7ef6ae6154cb9f9f6b91a73f"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E85",
+      "number": 85,
+      "card": "experiments/E85-lexical-semantic-recovery-transfer.md",
+      "title": "E85：从句法旧关系到词义旧解释的现成材料迁移（2026-10-07）",
+      "card_sha256": "7817678c1fe5de83e45101e24442af03dd7c56b046617c378e6042220ed9a3ee",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "现成人类词义材料48框架/192句：歧义gap Q/G/Min 38.54/29.17/30.21pp，CI正。",
+      "interpretation_limits": "推翻预设词义易恢复、只有角色困难；连贯性判断不能直接与GP关系任务等量比较。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何模型结果前改本线E85，非POST-HOC。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E85-lexical-semantic-recovery-summary.json",
+          "bytes": 85531,
+          "sha256": "95b167776b572bac3b8759580741cdae8c96cac04e90fb1b1b3504528f596eb8"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E85/complete-map-v1.json",
+          "bytes": 185,
+          "sha256": "10d267d24f0131cf5c5c56be8f9870102d728ddb0f8b9989601a23533b7a0ee2"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E85/lexical-semantic-recovery-map-v1.json",
+          "bytes": 85118,
+          "sha256": "011ac4e742f945c22b7e0d99110c1514a5c376b33872ae222e72f16b41686b76"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E86",
+      "number": 86,
+      "card": "experiments/E86-source-acceptance-versus-comprehension.md",
+      "title": "E86：拒绝源句还是读错关系？（2026-10-07）",
+      "card_sha256": "5c470cf782069696f0a7477a459ed6dedfc04df50ed399507af2bd536289143d",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "普通理解相对严格支持提高NPZ final +17.70/+20.22/+36.80pp，却损部分initial；Gemma NPS认可语法仍错关系。",
+      "interpretation_limits": "输入拒绝不足解释；Min语法阳性对照弱，不能讲共同拒绝机制。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在效果前改E86，非POST-HOC。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E86-source-acceptance-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E86/complete-map-v1.json",
+          "bytes": 203,
+          "sha256": "faccfb517b6772789d948212ca967ceb6ca87f324831d61e538e88fcf85786ea"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E86/source-acceptance-map-v1.json",
+          "bytes": 1039916,
+          "sha256": "54147e32eaae86674cf4ce07f8495e1e55a10f08cfe2e418941285840795cffa"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E87",
+      "number": 87,
+      "card": "experiments/E87-actual-answer-versus-forced-choice.md",
+      "title": "E87：现代模型实际作答与强制二选项读数（2026-10-07）",
+      "card_sha256": "a5e515ef8922d9f47cdc07a4388c95161f589745cf38bcfe872f70c158dd1dbc",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "18192实际输出闭合；literal未知经原选项一致解析全部明确，cap0；多数QA强制评分与实际回答相近。",
+      "interpretation_limits": "原v1格式范围与POST-HOC v2语义解析分开；Gram接受率有明显接口差，强制mass不自动等于实际行为。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何效果前改E87。",
+      "result_assets": [
+        {
+          "kind": "external_original",
+          "catalog": "ANALYSIS_ASSETS.json",
+          "repository_path": "results/E87-actual-answer-summary.json"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E87/actual-answer-map-v1.json",
+          "bytes": 1079828,
+          "sha256": "6e27a4d0b670c32b117f0ad7d814fb9ef8ce773fdb356b3721a28fe8e898796a"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E87/actual-answer-map-v2-posthoc-option-semantics.json",
+          "bytes": 1067305,
+          "sha256": "27c3c21025d7f6f99acd5ba6cda24dbcc9bac11bf12f222940cb6beda41779b7"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E87/complete-map-v1.json",
+          "bytes": 209,
+          "sha256": "6310c0d8a10129c28115bf2aa3a3a3df275d9e39f02d55621a058bf16de116c4"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E87/complete-map-v2-posthoc-option-semantics.json",
+          "bytes": 209,
+          "sha256": "c7711fb6bbd08bf13ae08d9ae1d7bc11d180bc70d8ba6d5a8fd994ccc96627a9"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E88",
+      "number": 88,
+      "card": "experiments/E88-verb-versus-noun-lookahead.md",
+      "title": "E88：晚到证据应回到动词还是名词？（2026-10-07）",
+      "card_sha256": "70e4e4936808a9db7314b10b8dfee3b5dd19ef6ac7ebb37f28687682cc2121aa",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "动词或名词非因果lookahead：NPZ NOUN收益强于VERB；17个正initial关系未共同补全。",
+      "interpretation_limits": "未支持回到动词就修好；边数/token预算不等，不是同预算神经变量比较。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431任何科学运行前改E88。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E88-verb-frame-lookahead-summary.json",
+          "bytes": 240670,
+          "sha256": "b34c5e65bfb6cd91acea5936937c5db2f888f8618b666845aec7ce65fc1c4bb5"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E88/complete-map-v1.json",
+          "bytes": 205,
+          "sha256": "82093202f0f2bdb2ea2e1e0e055bc879f7e751dd4730e81747928f4b7a3e833a"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E88/verb-frame-lookahead-map-v1.json",
+          "bytes": 3220173,
+          "sha256": "3f4caff630e40b63e42fb68de2b183275e8345d6615e0a9de353bf0bd02e7945"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E89",
+      "number": 89,
+      "card": "experiments/E89-early-versus-late-predicate-frame.md",
+      "title": "E89：正确动词框架要在读句前知道，还是读完也能重建？（2026-10-07）",
+      "card_sha256": "b40d7d6790b76f1b283c132249e6472d3acff765a702c221dec6521e510d6181",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "frame EARLY/LATE 9408实际输出；Gemma NPZ正initial 0→100/73.5%，Q/Min仍0。",
+      "interpretation_limits": "拒绝旧关系与建立替代关系可分；hint还损cue，不能称已识别native valence重算机制。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431科学效果前改E89。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E89-predicate-frame-timing-summary.json",
+          "bytes": 113910,
+          "sha256": "2ee606435dd6cbd718a3443b93ed3c9907cdad161d925bb63aa9745827864dde"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E89/complete-map-v1.json",
+          "bytes": 208,
+          "sha256": "adaac0e94b5b384990e6bb34cf4c8880e53090a87b73e2491fb7372eba1a57c2"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E89/predicate-frame-timing-map-v1.json",
+          "bytes": 2389501,
+          "sha256": "76ac3f99f5f1ca71bc0fe5923ebbef0a403d306f07b29765fa5ccab93d0bf8f4"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E90",
+      "number": 90,
+      "card": "experiments/E90-frame-information-through-source.md",
+      "title": "E90：正确frame信息能否经源解释迁移，而不是留在答题提示中？（2026-10-08）",
+      "card_sha256": "48db57028cb9341524b94dc0af41c984a3c2c85dc3051ae6f7558aa1f6e6d634",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "frame信息仅经源bank传递，9408实际输出；Gemma NPZ正initial只0→5.9%，没传递E89的100%恢复。",
+      "interpretation_limits": "source只传部分抑制/局部MVRR正角色；bank未覆盖所有hint/KV信息，不能以null证明无源状态。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何forward/科学效应前改E90。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E90-frame-source-bank-summary.json",
+          "bytes": 105751,
+          "sha256": "303cbddcb6d5ffd9d113831bad6c8b8cc7da297dbc27e40eb5a49fffd84515ac"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E90/complete-map-v1.json",
+          "bytes": 208,
+          "sha256": "dfb5a7df71ba7bff3a903a2c3f4cb7cc0433251fd939ab3ad226ff484a8e8189"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E90/frame-source-bank-map-v1.json",
+          "bytes": 2381531,
+          "sha256": "2b0252326f1dbbf46f974931f9d2a3c9015615a942053f28dac4b662157e3b5e"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E91",
+      "number": 91,
+      "card": "experiments/E91-reconstruction-reward-and-revised-meaning.md",
+      "title": "E91：重建原观察的奖励能分清忠实解释与语义误读吗？（2026-10-08）",
+      "card_sha256": "769f27cad7973403fba3c78b1900369af7fc832a6061b6e0bc5985c5837cb4b9",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "自然P的重建reward与保真性不总同向；更正后G-grader/Q-generator同40源reward差−7.093[−14.201,−.771]nats。",
+      "interpretation_limits": "未训练raw analogue；其他8组CI含0，不是ABBEL作者训练被证伪。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何科学forward前改E91。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E91-reconstruction-reward-summary.json",
+          "bytes": 57230,
+          "sha256": "f72e5e9549e2c3af52f550d8c7b5c293eee316b1611827b221e664db62812ecb"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E91/complete-map-v1.json",
+          "bytes": 207,
+          "sha256": "f340ed7700687b55485fc944db78132bdbebad4e861083229436bcd05de4d348"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E91/posthoc-semantic-overlay-map-v1.json",
+          "bytes": 1614901,
+          "sha256": "7adb8e8369f928fe22b82a375306f42889d260452b32677ff8a2b2d5234b1015"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E91/posthoc-token-region-map-v1.json",
+          "bytes": 1888535,
+          "sha256": "f050db59685bde233c95f28e346134189c4d76c848634f36dffba15dba624692"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E91/reconstruction-reward-map-v1.json",
+          "bytes": 1576163,
+          "sha256": "42068895256021dcdbf2023adcf4702c3bb641e7af4ed7e362c258898f6dccb9"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E92",
+      "number": 92,
+      "card": "experiments/E92-observation-surface-and-semantic-credit.md",
+      "title": "E92：固定同一解释，重建奖励是否受观察表达形式支配？（2026-10-08）",
+      "card_sha256": "d408f5f34ef2f92c2303946e7265e9b6ac4b9f26496c2306a0b146c2e4057e66",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "同P/context仅换发表配对观察：Q-generator三grader alignment +.278/.222/.222，CI正，主要MVRR。",
+      "interpretation_limits": "另generator弱；共同QA同Gold不保证全句逻辑同义；观察表达参与credit，机制尚未区分。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何科学效果前改E92。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E92-observation-surface-summary.json",
+          "bytes": 75416,
+          "sha256": "ffe1071b088651842b4474a05ba6484b6b3e75c25c55861b4c1343380bff3b1b"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E92/complete-map-v1.json",
+          "bytes": 207,
+          "sha256": "6156802c9925c5be983575178948935101862e4e560a0682ce504e7e600a6239"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E92/observation-surface-reward-map-v1.json",
+          "bytes": 1562438,
+          "sha256": "40fa568ee48ae16a588c5ca7798feca47b98399ef515645aaece491db4382883"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E92/posthoc-semantic-overlay-map-v1.json",
+          "bytes": 1904367,
+          "sha256": "3acba7497e4f6c0ef0ef01864f29e9f0bbdae62ca950914f29bf8cd71d05506f"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E93",
+      "number": 93,
+      "card": "experiments/E93-belief-r-forward-and-reconstruction-credit.md",
+      "title": "E93：社区Belief-R的真实前向判定与观察重建credit是否一致？（2026-10-08）",
+      "card_sha256": "fc438be7ea8ae36bd9f575fd08c4628a07a2cb930bb592e904499736db219131",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "Belief-R全1744×3族：10464实际输出、15696LP、25.706 GPU·h；DIRECT全部cap/unknown，COT亦大量未知。",
+      "interpretation_limits": "未先保证valid final便放大运行，是测量失误；不能记0能力或支持理解完好只评分错。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何科学forward前改E93。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E93/belief-r-forward-reconstruction-map-v1.json",
+          "bytes": 3811432,
+          "sha256": "f3953fb34e12f094633ae7c130ef57c904933a1f4bcc846328575c68b1b0fd8d"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E93/complete-map-v1.json",
+          "bytes": 231,
+          "sha256": "ccf2f95102d3dff71b09cba00550f070f8caeb5b876dd471baa04edc1c510f21"
+        }
+      ],
+      "instrument_validity": "PRIMARY_ACTUAL_FORWARD_INVALID_OR_UNKNOWN_BOUNDED"
+    },
+    {
+      "id": "E94",
+      "number": 94,
+      "card": "experiments/E94-observable-credit-temporal-alignment.md",
+      "title": "E94：原观察是否按正确时刻给belief修订credit？（2026-10-08）",
+      "card_sha256": "5f13a8a35369c1400d2f153178cc75a7be79bc6b2034de48fb55c9b1578a8dd7",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "ReBel公开426成功trace/4983转移CPU图有时间参照偏好，同时put/heat/cool暴露parser实现问题。",
+      "interpretation_limits": "observable reference不是完整world truth；不能包装成普遍奖励幻觉，也未修regex刷结果。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何reward计算前改E94。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E94-observable-credit-timing-summary.json",
+          "bytes": 40442,
+          "sha256": "8f2cd80bf9fc45b04c03c4cfa5303680145ff8bd4952f74cd74a7e6a96580ab1"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E94/observable-credit-timing-map-v1.json",
+          "bytes": 40237,
+          "sha256": "b0ce10f9f7fb03c3155faacf88f324b4a4accf79a97bcc787c234907c3e5fb62"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E95",
+      "number": 95,
+      "card": "experiments/E95-forward-semantic-versus-reconstruction-credit.md",
+      "title": "E95：实际语义比较能否识别被逆向credit漏奖的关系修订？（2026-10-08）",
+      "card_sha256": "fe98be35adc0f6714d8478a937674a5f3ecb4d4e00894c8228065458600d352b",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "324冻结P对、三族3888实际比较/2.395 GPU·h；Q/G大量unknown/cap，Min native95.45% Tie。",
+      "interpretation_limits": "没有支持语义判别良好仅inverse错；Tie与未回答不当0能力。",
+      "status_line_at_cleanup": "- **状态：** DONE；完整注册三族已封版，旧INTERIM版本保留。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E95/complete-map-v1.json",
+          "bytes": 189,
+          "sha256": "b693e99ea96ce93facfd94915605bab969bcf465e0b3a2f238ab874e6ba37147"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E95/forward-semantic-credit-map-v1.json",
+          "bytes": 17159291,
+          "sha256": "2dbdea41f9ef512f95660b12d589431a3aa0c6b0c54f06b117fa18f32bdbff98"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E96",
+      "number": 96,
+      "card": "experiments/E96-modern-native-belief-credit.md",
+      "title": "E96：当前模型自然生成的解释，是否受到同模型内容credit的错奖？（2026-10-08）",
+      "card_sha256": "66d8a132700454acff8ea461910725222e48356432573077efa4e7f910d31a40",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "当前三族300自然P/600LP：固定P换GP→cue target使fidelity alignment +.444/.500/.500，CI正，主要MVRR。",
+      "interpretation_limits": "原发表50 pair；GP P保真性本身仍弱，没有理解完好或实际训练失效证据。",
+      "status_line_at_cleanup": "- **状态：** DONE；完整注册三族已封版，旧INTERIM版本保留。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E96/complete-map-v1.json",
+          "bytes": 388,
+          "sha256": "36eea2a5ddec2e26b520d9ac79631cef59448179f764765065b5a8cdb0cf5722"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E96/modern-native-belief-credit-map-v1.json",
+          "bytes": 2135389,
+          "sha256": "aa4a4824ee62f89e6953e8354ccaaceaefaf0cc4173e40689140752f9b4474c0"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E97",
+      "number": 97,
+      "card": "experiments/E97-belief-r-concise-native-answer.md",
+      "title": "E97：Belief-R一句简短输出要求，恢复可解释的真实答题读数（2026-10-08）",
+      "card_sha256": "894a3814fd5cb6b1b1adbb04ce591b74513a3e9d321a47c1afb6aa1de770cb1b",
+      "scientific_status": "TERMINAL_WITH_UNAVAILABLE_MODELS",
+      "code_references": [],
+      "finding": "一句简短答案格式仅Min通过并完整1744题，UPDATE实际正确8.11%；Q/G首instrument失败，3488题未运行。",
+      "interpretation_limits": "完成度是三族范围有交代，非三族科学运行完成；UNAVAILABLE不记0分。",
+      "status_line_at_cleanup": "- **状态：** DONE；计划范围与完整/仪器不可用范围详见下面结果，不把UNAVAILABLE记零分。",
+      "result_assets": [],
+      "external_maps": [],
+      "instrument_validity": "MODEL_DEPENDENT_UNAVAILABLE_RETAINED"
+    },
+    {
+      "id": "E98",
+      "number": 98,
+      "card": "experiments/E98-query-guidance-versus-interpretation-fidelity.md",
+      "title": "E98：提前问得更准，是否反而解释得更错？（2026-10-08）",
+      "card_sha256": "b3624f7b74d1656642d5472d4786e3516842c1c3c0b4f4725fe26647f4910af1",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "当前三族1800实际回答；GP QA目标收益Q+2.08/G+3.13pp均CI含0、Min0；同源QA正确+错角色仅Q明确+20.83[10.42,33.33]pp。",
+      "interpretation_limits": "不能讲当前三族共同任务收益悖论；QUESTION_ONLY一句未共同恢复。",
+      "status_line_at_cleanup": "- **状态：** DONE；生成器E431在任何forward前更名E98。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E98/query-guidance-fidelity-map-v1.json",
+          "bytes": 6184244,
+          "sha256": "1d996c75bcabe9bb928515d617e1785322c50e7404cc69a2a385fbeb671ad048"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E98/query-guidance-fidelity-map-v1.json.manifest.json",
+          "bytes": 263,
+          "sha256": "20273283859196bc6e4900877cd06a8ad593358244a7d4d946f4788707d05354"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E99",
+      "number": 99,
+      "card": "experiments/E99-goal-qa-correct-with-explicit-misreading.md",
+      "title": "E99：同源问答正确与明确角色误读的联合读数",
+      "card_sha256": "487b3e0738d77061e54b200307dec37e0dc26804332d2269eb9f245ca1c8cec9",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "旧三族同Source QA正确且明确GP错角色联合增Q17.23/G12.43/L29.94pp，CI正；letters同向。",
+      "interpretation_limits": "比边际反向更具体，仍是旧forced-choice协议；未识别独有因果解释。",
+      "status_line_at_cleanup": "- **状态：** DONE，自动E431在任何计算前更名E99。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E99/complete-map-v1.json",
+          "bytes": 171,
+          "sha256": "5f3a6ad560f70b8c391cfdabc983b128e5dbf8da26cd7d00d7c68519a04ac7ac"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E99/same-source-qa-explicit-misreading-map-v1.json",
+          "bytes": 10968578,
+          "sha256": "6f29db10942a00f4b7d1700340a545fd8148fa92e990ce36e0867c3fc387ea22"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E100",
+      "number": 100,
+      "card": "experiments/E100-native-meaning-comparison-versus-reconstruction.md",
+      "title": "E100：现代自然解释的实际比较与重建credit",
+      "card_sha256": "00c09113f1afe64c4676f92b6d4391b85021e301033a93cf1c088db20e762ac2",
+      "scientific_status": "TERMINAL_WITH_UNAVAILABLE_MODELS",
+      "code_references": [],
+      "finding": "计划1200实际528：Min完整400、Q部分128，672未执行；Min逐问题cue支配30对，60判断42Tie/18选坏/0选好。",
+      "interpretation_limits": "Q partial不读主效应；只原注册Q有限语义，不是所有事实Gold或三族完成图。",
+      "status_line_at_cleanup": "- **状态：** DONE；计划范围与完整/仪器不可用范围详见下面结果，不把UNAVAILABLE记零分。",
+      "result_assets": [],
+      "external_maps": [],
+      "instrument_validity": "MODEL_DEPENDENT_UNAVAILABLE_RETAINED"
+    },
+    {
+      "id": "E101",
+      "number": 101,
+      "card": "experiments/E101-disambiguation-region-reconstruction-credit.md",
+      "title": "E101：重建credit的消歧前后贡献",
+      "card_sha256": "c490db52b07eda256a60f25eee5055a7f132e1f9476a7e83d50aedc86f0957e4",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "固定P/GP target：prefix三族偏旧P，suffix Q/Min偏cue P；11/13/16条整体与suffix排序相反。",
+      "interpretation_limits": "原候选含cue来源；首源反例suffix仍偏旧P保留，不以局部word取代主suffix。",
+      "status_line_at_cleanup": "- **状态：** DONE；完整注册三族已封版，旧INTERIM版本保留。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E101/disambiguation-credit-map-v1.json",
+          "bytes": 405802,
+          "sha256": "15346d37be15b3e01a32c4059632bb18cbb27f036abf20e076452d2f7a9011a6"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E101/disambiguation-credit-map-v1.json.manifest.json",
+          "bytes": 244,
+          "sha256": "393cc72e2a8a719b90a141f94ed1ee325ea21f621e269a1b602cc226442c9ebc"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E102",
+      "number": 102,
+      "card": "experiments/E102-revision-evidence-credit-oracle.md",
+      "title": "E102：只评价修订证据的内容credit oracle",
+      "card_sha256": "4b364b21fe3e5db58874cbc08418717eb3f02adb0a1a0f3a603454b3ac5aca9f",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "唯一T2 suffix oracle全50正确选择提高Q10.42[3.13,18.75]/G8.33[−2.08,20.83]/Min21.88[9.38,35.42]pp。",
+      "interpretation_limits": "G总体CI含0；cue来源候选与oracle位置限制，不能称自动修复方法。",
+      "status_line_at_cleanup": "- **状态：** DONE；完整注册三族已封版，旧INTERIM版本保留。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E102/revision-evidence-oracle-map-v1.json",
+          "bytes": 1262891,
+          "sha256": "cbe92ffae660bae729233093164ce8cf9c135148cbfe1b87b10e3b0e3c417b43"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E102/revision-evidence-oracle-map-v1.json.manifest.json",
+          "bytes": 245,
+          "sha256": "17bc57c1a249553a5f246b8c0a8d34100d86394fddfe948ab2963097176f295b"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E103",
+      "number": 103,
+      "card": "experiments/E103-native-pool-revision-credit-selection.md",
+      "title": "E103：同一原观察的自然候选池，评价器会选择哪种解释？",
+      "card_sha256": "02536b92f9cc3d30edd1717c18633ce4dd40525c8d7822879f22ba1789ef78c8",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "同原S八候选、1200assignment；原角色criterion suffix−whole Q+2.08/G+6.25/Min+8.33pp，仅Min CI正。",
+      "interpretation_limits": "全243新packet/42第三遍；MVRR无新增好候选。E107显示原角色提升不能当完整意义修复。",
+      "status_line_at_cleanup": "- **状态：** DONE；三族8分片与全部blind T4已封版；243新packet/42第三遍/0未解决，角色类别收益的含义另由E107检验。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E103/native-pool-revision-credit-map-v1.json",
+          "bytes": 1273185,
+          "sha256": "3651682f64f571660779a386bbd2dd0581d41e5ca9aa9be318ec5c4ddba2f333"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E103/native-pool-revision-credit-map-v1.json.manifest.json",
+          "bytes": 236,
+          "sha256": "01d01a9c7138001e52d37b756e4480e307207aa44e7d1fb22adb1b883bedf8fb"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E104",
+      "number": 104,
+      "card": "experiments/E104-belief-r-revision-evidence-credit.md",
+      "title": "E104：语用信念更新中的前后重建credit，是否同样抵消？",
+      "card_sha256": "63459a354e545f8f9a3be3d9bd08aa21f5ba6cc4d4113d3a42afef2885d4d880",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "Belief-R唯一then后缀使UPDATE选择Q−12.72/Min−25.12pp，CI负，MAINTAIN反而改善。",
+      "interpretation_limits": "then是结构边界，未认证为修订证据位置；只否定本次机械迁移，不能否定真正跨域机制。",
+      "status_line_at_cleanup": "- **状态：** DONE；完整三族CPU图已封版，自动E431在任何新统计前更名E104。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E104/belief-r-revision-evidence-map-v1.json",
+          "bytes": 7104012,
+          "sha256": "aee39d833bdbd7f43c719b85328fb659157d4400d6a51b8c502fb18870d91b4d"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E104/complete-map-v1.json",
+          "bytes": 167,
+          "sha256": "d2909fd4372ddc613073df1a4dad0fa7a526e0b9b1b6f779ef236d0db483c450"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E105",
+      "number": 105,
+      "card": "experiments/E105-added-proposals-reconstruction-faithfulness.md",
+      "title": "E105：增加同源候选预算，会奖励更好的修订还是更好的误读？",
+      "card_sha256": "361bd02989b4733e92c669f4a8c60a6f347934ce34f46fad46ce6a572e81b133",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "固定1/2/4/8预算，WHOLE k8−k1 Q+13.54[5.21,22.92]pp，G0/Min弱；池oracle也改善。",
+      "interpretation_limits": "不支持更多搜索普遍越错；原T4曲线还不等于完整依赖修复。",
+      "status_line_at_cleanup": "- **状态：** DONE；自动E431在统计前更名E105。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E105/complete-map-v1.json",
+          "bytes": 149,
+          "sha256": "7fe83071d58969145fe288bb0fc56c3ca8ab748b540ea2d5c5d8e4d85608bcb5"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E105/proposal-budget-credit-map-v1.json",
+          "bytes": 2856040,
+          "sha256": "1fd77be4fc22b35850e91f37e949cf802e0109d24634bbd306380efa2c75c6a8"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E106",
+      "number": 106,
+      "card": "experiments/E106-positive-observation-innovation-credit.md",
+      "title": "E106：不借人工消歧位置的正观测增益，能否选择忠实修订？",
+      "card_sha256": "139c3b6933dca416489a2edfa3a609c2b29e52b3e3118cd701de837960f2c614",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [],
+      "finding": "唯一无T2的positive innovation规则：自动−WHOLE Q−2.08、G/Min+2.08pp，没有稳健共同修复。",
+      "interpretation_limits": "0 cutoff未调；阴性结果不靠公式/窗口网格补救。",
+      "status_line_at_cleanup": "- **状态：** DONE；自动E431在任何新forward/统计前更名E106。",
+      "result_assets": [],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E106/positive-innovation-credit-map-v1.json",
+          "bytes": 761900,
+          "sha256": "ba791147f901a72fe4c42117d972d2f92b65390be3bbedd1cd603a2b5dacf15a"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E106/positive-innovation-credit-map-v1.json.manifest.json",
+          "bytes": 177,
+          "sha256": "d4a903af05ed2d5aac67117779d1499df9e3f21aff3f8fea125c9ca19749cb1a"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E107",
+      "number": 107,
+      "card": "experiments/E107-critical-dependency-commitment-audit.md",
+      "title": "E107：角色正确是明确修订了依赖，还是留下了未绑定内容？",
+      "card_sha256": "6c74774e1242deeadfe7c077c32018d3f2d5a63e3fabc39b5e964f64845ca3c0",
+      "scientific_status": "MEASUREMENT_COMPLETED",
+      "code_references": [
+        {
+          "filename": "analyze_dependency_credit_pairs.py",
+          "location": "current_scripts",
+          "snapshot_commit": null
+        }
+      ],
+      "finding": "243/243双遍、57裁决、0未解决；明确新依赖收益Q+6.25[−2.08,16.67]/G0/Min+4.17[−4.17,12.5]pp；两族条件候选有prefix/suffix竞争。",
+      "interpretation_limits": "Min旧误关系−14.58pp但未绑定+10.42pp；14/50、13/50条件覆盖不是全域理解完好，implicit不自动错误。",
+      "status_line_at_cleanup": "- **状态：** DONE；自动E431在新HTTP/统计前更名E107。",
+      "result_assets": [
+        {
+          "kind": "repository",
+          "path": "results/E107-critical-dependency-summary.json",
+          "bytes": 18617,
+          "sha256": "88c308c6ff9440ac3a2f25b05a39e8a8cb1686cf2cc1ffb36f76f0f0e7d83ab9"
+        }
+      ],
+      "external_maps": [
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E107/complete-map-v1.json",
+          "bytes": 141,
+          "sha256": "2f4144b8f8f748c4a5530191ef5ce62725dd58c57213786ab0720057e0e8ac31"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E107/complete-map-v2.json",
+          "bytes": 141,
+          "sha256": "bd69bb1b122c8429a62abbfe9b8fd4b687a2dc822bfbd99daa386f85ecc253ec"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E107/conditional-dependency-credit-map-v1.json",
+          "bytes": 549139,
+          "sha256": "9223402ba46f1cb4a98a1ffa0517fe3ac71beffba2a8604e6e9269080e2af005"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E107/conditional-dependency-credit-map-v2.json",
+          "bytes": 557847,
+          "sha256": "0c0b5928f493143a3bbfd3f5cdd7882477189bd9ecb27ba002fb2ca34ccba03a"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E107/critical-dependency-commitment-map-v1.json",
+          "bytes": 2400433,
+          "sha256": "a75eb32a66ec738e7676c2851fea33d0370a5a6fbd5f8cf52d17be488a30d0ce"
+        },
+        {
+          "path": "/data1/xiangding/work/incremental-interpretation-revision/E107/critical-dependency-commitment-map-v2.json",
+          "bytes": 2400609,
+          "sha256": "27a0143a36b5a800c02f54c44606c3286433672eb4a403be6a1e5b8ec8b7d727"
+        }
+      ],
+      "instrument_validity": "See experiment card for control/noise/semantic limits"
+    },
+    {
+      "id": "E108",
+      "number": 108,
+      "card": "experiments/E108-free-belief-writing-and-credit.md",
+      "title": "E108：自由belief写入与实际读取中的修订credit（2026-10-08）",
+      "card_sha256": "67dfda763202e50c5e735da2543e3a38a82b684f46506195475520bfdae3e197",
+      "scientific_status": "PLANNED_NOT_RUN",
+      "code_references": [
+        {
+          "filename": "free_belief_contract.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        },
+        {
+          "filename": "run_free_belief_pool.py",
+          "location": "fixed_git_snapshot",
+          "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd"
+        }
+      ],
+      "finding": "只准备自由belief写入数据/代码及CPU tokenizer核验；GPU/API/下载/队列均0。",
+      "interpretation_limits": "PLANNED_NOT_RUN；代码已从当前工作树清理并保留固定Git快照，不能算成果或自动继承为下一实验。",
+      "status_line_at_cleanup": "- **状态：** PLANNED；自动E431在任何GPU/API/统计前改E108。09:00后不占GPU、不重下模型，等人提供新资源。",
+      "result_assets": [],
+      "external_maps": [],
+      "instrument_validity": "NO_SCIENTIFIC_RUN"
+    }
+  ],
+  "date": "2026-10-08",
+  "snapshot_commit": "859e48c87cfbecaf017c0fd8e286ef18f59a61cd",
+  "status_counts": {
+    "MEASUREMENT_COMPLETED": 96,
+    "PARTIAL": 4,
+    "TERMINAL_WITH_UNAVAILABLE_MODELS": 2,
+    "PLANNED_NOT_RUN": 1
+  },
+  "limits": "Counts refer to cards/measurement status, not independent scientific discoveries or idea certification. Historical status lines retained; no active queues. E108 prepared only.",
+  "asset_catalog": "ANALYSIS_ASSETS.json",
+  "disambiguation": "Old Q/G/L and current Q/G/Min model cohorts differ; percentages/pp/nats and explicit/implicit commitment criteria must not be merged.",
+  "map_scope_note": "External map list includes INTERIM/history/final; validity and primary status must be checked against experiment card, not file existence."
+}

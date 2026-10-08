@@ -19,4 +19,4 @@
 
 固定No、整套问题都在验证命题真假两种简单解释不足；失败特别出现在forbidden/unknown的关系判断，并且contradict问法近似No-default。兼容性也可能被读为支持/蕴含，从“不确定”误到“不一致”；尚不能叫真正scope失效。按决策表转三类关系（entailed/contradicted/undetermined）及独立unknown阳性控制，让已允许、已排除、新活动尚未指定三种状态明确分开；保持相同source/passage，不继续同义词/YesNo提示优化。
 
-[统计](../results/E27-summary.json)、[每family](../results/E27-per-family.csv)、[配置](../results/E27-config.json)、[audit](../results/D0-E27-question-audit.json)。旧E26不追认为joint通过，不升C04能力主张；I01 PILOT。
+[统计](../results/E27-summary.json)、[每family](https://github.com/Nhckdvrl/ssn-group-papaer/blob/859e48c87cfbecaf017c0fd8e286ef18f59a61cd/workbench/incremental-interpretation-revision/results/E27-per-family.csv)、[配置](../results/E27-config.json)、[audit](../results/D0-E27-question-audit.json)。旧E26不追认为joint通过，不升C04能力主张；I01 PILOT。
