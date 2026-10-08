@@ -1,6 +1,6 @@
 # Mechanism Population Dynamics
 
-**Status:** **ACTIVE-EXPLORE** — 2026-10-01 human-confirmed  
+**Status:** **PAUSED** — 2026-10-08 人决定停止投入（E75 / E76 之后）；原 ACTIVE-EXPLORE（2026-10-01）  
 **Lane:** our-taste / mechanistic interpretability / model science  
 **Target:** ICML 2027 / NeurIPS 2027  
 **Territory card:** [`../../search/our-taste/TERRITORY_MECHANISM_POPULATION_2026-10-01.md`](../../search/our-taste/TERRITORY_MECHANISM_POPULATION_2026-10-01.md)
@@ -67,6 +67,8 @@ R0 产物审计 → E01 复现已知机制（induction）→ E02 群体扫描（
 ## 11. Decision record
 - **2026-10-01：** 人选定本 territory 为唯一的 ACTIVE-EXPLORE。
 - **2026-10-03：** 人：校对免了，按同题材成熟顶会论文的标准补工作量、补实验，叙事按好论文的方式包装、对齐顶会尺度（→ A02、E42–E51）。
+
+- **2026-10-08：** 人看过 E75 / E76 后决定停止投入；转为准备两个候补（ICES 恢复 + 注意力选头 idea 的定位）。
 
 ## 12. Assets
 - claims `CLAIMS.md` · pain log `PAIN_LOG.md` · 实验卡 / 脚本 `experiments/`、`scripts/` · 日志 `logs/`
