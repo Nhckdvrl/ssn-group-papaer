@@ -6,6 +6,8 @@ M3 sink; same probes as crossing_1b/head_roles.py) are measured at fixed checkpo
   controlled_pretraining.py --size S --init 1 --corpus c4 --order 1 --eps 1e-4            # init perturbation at step 0
   controlled_pretraining.py --size S --init 1 --corpus c4 --order 1 --branch 1000 --eps 0.1   # perturb weights at step 1000
   controlled_pretraining.py --size S --init 1 --corpus c4 --order 1 --branch 1000 --to-corpus code --to-order 7  # switch data
+  controlled_pretraining.py --size S --init 1 --corpus c4 --order 1 --warm 1000 --save-branch-states       # longer warm-up
+  controlled_pretraining.py --size S --init 1 --corpus c4 --order 1 --branch 250 --eps 1 --reset-opt         # fresh optimizer
 """
 import os
 _CACHE = os.environ.get("MECHPOP_CACHE", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cache"))  # see README
@@ -106,10 +108,10 @@ def perturb(model, eps, seed):
             p.add_(eps * p.float().std() * torch.randn(p.shape, generator=g).to(p.device, p.dtype))
 
 
-def lr_at(step, lr=LR):
-    if step < WARM:
-        return lr * (step + 1) / WARM
-    return lr * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * (step - WARM) / (STEPS - WARM))))
+def lr_at(step, lr=LR, warm=WARM):
+    if step < warm:
+        return lr * (step + 1) / warm
+    return lr * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * (step - warm) / (STEPS - warm))))
 
 
 def run_name(a):
@@ -134,6 +136,10 @@ def run_name(a):
         n += f"_bs{a.bs}"
     if getattr(a, "steps", STEPS) != STEPS:
         n += f"_st{a.steps}"
+    if getattr(a, "warm", WARM) != WARM:  # warm-up length (warmup_window.py)
+        n += f"_w{a.warm}"
+    if getattr(a, "reset_opt", False):  # branch with a fresh optimizer state (warmup_window.py)
+        n += "_ro"
     return n
 
 
@@ -154,6 +160,8 @@ def main():
     ap.add_argument("--init-std", type=float, default=0.02)
     ap.add_argument("--lr", type=float, default=LR)
     ap.add_argument("--bs", type=int, default=BS)
+    ap.add_argument("--warm", type=int, default=WARM)
+    ap.add_argument("--reset-opt", action="store_true")
     a = ap.parse_args()
     name = run_name(a)
     f = OUT / f"{name}.json"
@@ -169,10 +177,11 @@ def main():
     corpus, order = a.corpus, a.order
     if a.branch is not None:  # continue from the parent's saved state at step `branch`
         parent = run_name(argparse.Namespace(**{**vars(a), "branch": None, "eps": 0.0, "to_corpus": None,
-                                                "to_order": None, "rerun": 0}))
+                                                "to_order": None, "rerun": 0, "reset_opt": False}))
         st = torch.load(RUNS / parent / f"state{a.branch}.pt", map_location=dev)
         model.load_state_dict(st["model"])
-        opt.load_state_dict(st["opt"])
+        if not a.reset_opt:
+            opt.load_state_dict(st["opt"])
         start = a.branch
         if a.to_corpus:
             corpus = a.to_corpus
@@ -200,7 +209,7 @@ def main():
             break
         x = data.next().to(dev, non_blocking=True)
         for gr in opt.param_groups:
-            gr["lr"] = lr_at(step, a.lr)
+            gr["lr"] = lr_at(step, a.lr, a.warm)
         opt.zero_grad(set_to_none=True)
         loss = 0.0
         for xc in x.chunk(micro):  # gradient accumulation over equal micro-batches = same mean-loss gradient

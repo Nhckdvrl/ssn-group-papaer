@@ -1,6 +1,6 @@
 """LaTeX tables for the ACL version (outputs/tables/*.tex), generated from finished analyses so that no number is
 copied by hand. Main text: tab_roles (more_roles on the verified 1B crossing + pythia_large Pythia), tab_template (habit_templates, habit_format; marker
-counts from infini-gram on Dolma 1.7, see infgram_counts.py). Appendix: tab_audit (Appendix A), tab_sizes (crossing_sizes / seed_identification / corpus_distance),
+counts from the public infini-gram API on Dolma 1.7). Appendix: tab_audit (paper Appendix A), tab_sizes (crossing_sizes / seed_identification / corpus_distance),
 tab_critical (controlled_pretraining / controlled_pretraining), tab_benchmarks (no_lucky_seeds), tab_habit_sizes (habit_sizes + habit_templates), tab_public (habit_olmo2_public), tab_temperature (sgd_temperature)."""
 import json
 import re
@@ -56,7 +56,7 @@ def tab_roles():
   \begin{{tabular}}{{@{{}}lccc@{{}}}}
     \multicolumn{{4}}{{@{{}}l}}{{\textit{{(a) DataDecide 1B, 3 seeds $\times$ 25 corpora ({e['n_models']} models)}}}} \\
     \toprule
-    Role & same seed & other seed & gap, 95\% CI \\
+    Role & same init. & other init. & gap, 95\% CI \\
     \midrule
 {a}
     \bottomrule
@@ -64,16 +64,17 @@ def tab_roles():
 
   \vspace{{6pt}}
   \begin{{tabular}}{{@{{}}lcccc@{{}}}}
-    \multicolumn{{5}}{{@{{}}l}}{{\textit{{(b) Pythia, one seed: Pile vs.\ deduplicated Pile}}}} \\
+    \multicolumn{{5}}{{@{{}}l}}{{\textit{{(b) Pythia, one initialization: Pile vs.\ deduplicated Pile}}}} \\
     \toprule
     Size & induction & prev.-token & retrieval & null \\
     \midrule
 {b}
     \bottomrule
   \end{{tabular}}
-  \caption{{\textbf{{Head placement is inherited from the seed.}} Which-head agreement (within-layer Spearman of head
-  scores). (a)~All nine roles at 1B for models grown from the same seed on different corpora and from different seeds
-  on the same corpus; the gap's interval is a recipe bootstrap. (b)~Pythia's two models from one initialization; null:
+  \caption{{\textbf{{Models with the same initialization agree on which head takes each role.}} Which-head agreement
+  (within-layer Spearman of head scores). (a)~All nine roles at 1B for models with the same initialization trained on
+  different corpora and with different initializations trained on the same corpus; the gap's interval is a recipe
+  bootstrap. (b)~Pythia's two models from one initialization; null:
   95th percentile after permuting heads within layers; no induction head at 70M.}}
   \label{{tab:roles}}
 \end{{table}}
@@ -83,7 +84,7 @@ def tab_roles():
 def tab_template():
     e = json.loads((R / "habit_templates" / "analysis.json").read_text())["cells"]
     d26 = json.loads((R / "habit_format" / "analysis.json").read_text())["contrasts"]["cell:c1_decl"]
-    # infini-gram counts in Dolma 1.7, queried with infgram_counts.py before the experiment
+    # infini-gram counts in Dolma 1.7 (public API, index v4_dolma-v1_7_llama), queried before the experiment
     counts = {"Question:": 11312890, "Answer:": 9644632, "Q:": 38387178, "A:": 6887014, "Query:": 146036,
               "Response:": 745776}
     m = lambda w: f"{counts[w] / 1e6:.1f}M" if counts[w] >= 1e6 else f"{counts[w] / 1e6:.2f}M"
@@ -107,7 +108,7 @@ def tab_template():
     declarative (no question) & -- & {f2(d26['delta'], True)} & {d26['se']:.2f} \\
     \bottomrule
   \end{{tabular}}
-  \caption{{\textbf{{The habit is keyed to Flan's literal template.}} Flan minus no-Flan models (1B, three seeds each):
+  \caption{{\textbf{{The habit is keyed to Flan's literal template.}} Flan minus no-Flan models (1B, three initializations each):
   added trust in the counterfactual context relative to a declarative ending, in nats. Example:
   \textit{{The capital of France is Rome.}} \tmpl{{Question:}} \textit{{What is the capital of France?}} \tmpl{{Answer:}}
   \textit{{The capital of France is}}~\dots; $q'$ asks about another entity. Marker counts: occurrences in the
@@ -167,6 +168,8 @@ def tab_sizes():
     ident = json.loads((R / "seed_identification.json").read_text())
     dist = json.loads((R / "corpus_distance" / "analysis.json").read_text())
     early = json.loads((R / "seed_identification_early.json").read_text())
+    plan = json.loads((mc.CACHE / "datadecide" / "datadecide_plan.json").read_text())
+    ckpt = lambda step, frac: f"{step:,}".replace(",", "{,}") + f" ({100 * frac:.0f}\\%)"
     rows = []
     for s in DD_PARAMS:
         v = d[s]
@@ -178,34 +181,71 @@ def tab_sizes():
         rho = [dist[s][m]["js_uni"][0] for m in ("M1", "M2", "M4") if s in dist and m in dist[s]]
         rho = f"{f2(max(rho))} to {f2(min(rho))}" if rho else "--"
         lr = DD_RECIPE[s][1] / (DD_RECIPE[s][0] * 2048)
-        lab = "1.2B$^\\dagger$" if s == "1B@7500" else DD_PARAMS[s]
-        rows.append(f"    {lab} & {v['n_recipes']} & {len(v['seeds'])} & {f2(si)} & {f2(sd)} & "
+        lab = "1B$^\\dagger$" if s == "1B@7500" else s
+        pk = "1B" if s == "1B@7500" else s
+        rows.append(f"    {lab} & {ckpt(plan[pk]['step'], plan[pk]['step'] / plan[pk]['default_final'])} & "
+                    f"{v['n_recipes']} & {len(v['seeds'])} & {f2(si)} & {f2(sd)} & "
                     f"{ident[s]['all']['accuracy'] * 100:.0f} & {ea} & {rho} & {lr * 1e9:.1f} \\\\")
     v = json.loads((R / "crossing_1b_verified.json").read_text())["agreement"]
     si = np.mean([v[m]["SI"] for m in ("M1", "M2", "M4")])
     sd = np.mean([v[m]["SD"] for m in ("M1", "M2", "M4")])
     rho = [dist["1B"][m]["js_uni"][0] for m in ("M1", "M2", "M4")]
-    rows.append(f"    1.2B (final) & 25 & 3 & {f2(si)} & {f2(sd)} & {ident['1B_E35']['all']['accuracy'] * 100:.0f} & -- & "
+    rows.append(f"    1B & {ckpt(69369, 1.0)} & 25 & 3 & {f2(si)} & {f2(sd)} & {ident['1B_final']['all']['accuracy'] * 100:.0f} & -- & "
                 f"{f2(max(rho))} to {f2(min(rho))} & 1.5 \\\\")
     write("tab_sizes", rf"""\begin{{table*}}[t]
   \centering
   \footnotesize
-  \setlength{{\tabcolsep}}{{4.5pt}}
-  \begin{{tabular}}{{@{{}}lrrrrrrcr@{{}}}}
+  \setlength{{\tabcolsep}}{{2.4pt}}
+  \begin{{tabular}}{{@{{}}lrrrrrrrcr@{{}}}}
     \toprule
-    Parameters & Recipes & Seeds & \makecell[r]{{Same seed,\\other corpus}} & \makecell[r]{{Other seed,\\same corpus}} &
-    \makecell[r]{{Seed ID\\(\%)}} & \makecell[r]{{Seed ID at\\3--9\% (\%)}} & \makecell{{$\rho$(corpus distance,\\agreement)}} &
+    Parameters & \makecell[r]{{Checkpoint\\(share)}} & Recipes & Seeds & \makecell[r]{{Same init.,\\other corpus}} & \makecell[r]{{Other init.,\\same corpus}} &
+    \makecell[r]{{Init. ID\\(\%)}} & \makecell[r]{{Init. ID,\\early (\%)}} & \makecell{{$\rho$(corpus distance,\\agreement)}} &
     \makecell[r]{{LR per batch\\token ($10^{{-9}}$)}} \\
     \midrule
 {chr(10).join(rows)}
     \bottomrule
   \end{{tabular}}
-  \caption{{\textbf{{DataDecide at every size.}} Which-head agreement (mean over induction, previous-token and retrieval
-  maps; induction only where models have induction heads), leave-one-corpus-out seed identification (chance 33\%; 20\%
-  with five seeds), the Spearman correlation between unigram corpus distance and same-seed agreement over corpus pairs
-  (range over roles), and the SGD temperature of the recipe. $\dagger$: five seeds at step 7{{,}}500 (10\% of training);
-  final: the verified 3-seed crossing at the end of training.}}
+  \caption{{\textbf{{DataDecide at every size.}} The checkpoint used (DataDecide revision \texttt{{step<N>-seed-<seed>}}; share
+  of the default seed's training), the recipes whose three seeds share their step-0 weights, which-head agreement (mean
+  over induction, previous-token and retrieval maps; induction only where models have induction heads), leave-one-corpus-out
+  identification of the initialization from the head layout at that checkpoint and at the earliest available one (3--9\% of training; chance 33\%, 20\% with five seeds), the Spearman correlation
+  between unigram corpus distance and same-initialization agreement over corpus pairs (range over roles), and the recipe's
+  learning rate per batch token. $\dagger$: five seeds at 11\% of training; last row: the verified three-seed crossing at
+  the end of training. Every run starts from its labelled initialization (Appendix~\ref{{app:audit}}).}}
   \label{{tab:sizes}}
+\end{{table*}}
+""")
+
+
+def tab_ident():
+    """seed_identification (head layout) vs identification_baselines baselines (final weights, SeedPrints): leave-one-corpus-out identification accuracy."""
+    ident = json.loads((R / "seed_identification.json").read_text())
+    e = json.loads((R / "identification_baselines" / "analysis.json").read_text())
+    rows = []
+    for s in list(DD_PARAMS) + ["1B"]:
+        lab = "1B$^\\dagger$" if s == "1B@7500" else s
+        lay = ident["1B_final" if s == "1B" else s]["all"]["accuracy"]
+        w, sp = e[s]["weights"], e[s]["seedprints"]
+        rows.append(f"    {lab} & {100 * lay:.0f} & {100 * w['accuracy']:.0f} & {100 * sp['accuracy']:.0f} & "
+                    f"{w['same_seed_mean']:.3f} & {sp['same_seed_mean']:.1f} & {sp['same_corpus_mean']:.1f} \\\\")
+    write("tab_ident", rf"""\begin{{table*}}[t]
+  \centering
+  \footnotesize
+  \setlength{{\tabcolsep}}{{6pt}}
+  \begin{{tabular}}{{@{{}}lrrrrrr@{{}}}}
+    \toprule
+    & \multicolumn{{3}}{{c}}{{Identified (\%)}} & \makecell[r]{{Weight\\correlation}} & \multicolumn{{2}}{{c}}{{SeedPrints $z$}} \\
+    \cmidrule(lr){{2-4}} \cmidrule(l){{6-7}}
+    Size & head layout & weights & SeedPrints & same init. & same init. & same corpus \\
+    \midrule
+{chr(10).join(rows)}
+    \bottomrule
+  \end{{tabular}}
+  \caption{{\textbf{{Identifying the initialization three ways.}} Leave-one-corpus-out accuracy from the head layout,
+  from the correlation of final weights (a fixed sample of 2M attention and MLP weights) and from SeedPrints
+  \citep{{tong2026seedprints}}; mean weight correlation of same-initialization pairs, and mean SeedPrints statistic of
+  same-initialization and of same-corpus, different-initialization pairs. $\dagger$: five seeds at 11\% of training.}}
+  \label{{tab:ident}}
 \end{{table*}}
 """)
 
@@ -227,30 +267,41 @@ def tab_critical():
     code[0] = [np.mean([controlled_pairs[m]["SI_code"] for m in ("M1", "M2")])]
     n1[0], n01[0] = c0("1"), c0("0.1")
     big = {0: L["L_i1_code_o1"], 100: L["L_i1_c4_o1_b100_tocode_too300"], 1000: L["L_i1_c4_o1_b1000_tocode_too1200"]}
+    exp66 = json.loads((R / "warmup_window.json").read_text())  # warm-up 1000 steps and optimizer reset (warmup_window)
+    mean66 = lambda sec: {int(k): float(np.mean([np.mean(list(x.values())) for x in v.values()])) for k, v in sec.items()}
+    w_noise, w_code, reset = mean66(exp66["warm1000"]["noise"]), mean66(exp66["warm1000"]["code"]), mean66(exp66["reset_opt"])
     rows = []
     for k in (0, 100, 250, 500, 1000, 2000, 4000, 8000):
         g = lambda a: f2(np.mean(a[k])) if k in a else "--"
+        h = lambda a: f2(a[k]) if k in a else "--"
         bb = f2(np.mean(list(big[k].values()))) if k in big else "--"
-        rows.append(f"    {k} & {k / 100:g}\\% & {g(code)} & {g(n1)} & {g(n01)} & {bb} \\\\")
+        rows.append(f"    {k} & {k / 100:g}\\% & {g(code)} & {g(n1)} & {g(n01)} & {bb} & {h(w_code)} & {h(w_noise)} & "
+                    f"{h(reset)} \\\\")
     rr = np.mean([np.mean([v[m][1] for m in ("M1", "M2") if m in v]) for k, v in d["C"].items() if k.endswith("rerun1")])
-    write("tab_critical", rf"""\begin{{table}}[h]
+    write("tab_critical", rf"""\begin{{table*}}[t]
   \centering
   \footnotesize
-  \setlength{{\tabcolsep}}{{3pt}}
-  \begin{{tabular}}{{@{{}}rrcccc@{{}}}}
+  \setlength{{\tabcolsep}}{{5pt}}
+  \begin{{tabular}}{{@{{}}rrcccccccc@{{}}}}
     \toprule
-    Step & Share & \makecell{{Switch\\to code}} & \makecell{{Noise\\100\%}} & \makecell{{Noise\\10\%}} & \makecell{{Code, 12\\layers}} \\
+    & & \multicolumn{{4}}{{c}}{{300-step warm-up}} & \multicolumn{{2}}{{c}}{{1{{,}}000-step warm-up}} & \makecell{{Optimizer\\reset}} \\
+    \cmidrule(lr){{3-6}} \cmidrule(lr){{7-8}} \cmidrule(l){{9-9}}
+    Step & Share & \makecell{{Switch\\to code}} & \makecell{{Noise\\100\%}} & \makecell{{Noise\\10\%}} & \makecell{{Code,\\12 layers}} &
+    \makecell{{Switch\\to code}} & \makecell{{Noise\\100\%}} & \makecell{{Noise\\100\%}} \\
     \midrule
 {chr(10).join(rows)}
     \midrule
-    \multicolumn{{2}}{{@{{}}l}}{{exact rerun}} & \multicolumn{{4}}{{c}}{{{f2(rr)}}} \\
+    \multicolumn{{2}}{{@{{}}l}}{{exact rerun}} & \multicolumn{{7}}{{c}}{{{f2(rr)}}} \\
     \bottomrule
   \end{{tabular}}
-  \caption{{\textbf{{The critical period in numbers.}} Which-head agreement (mean of induction and previous-token maps)
-  between the final layout of a run intervened on at a given step and the untouched run. Step 0 for the code switch:
-  the same seed trained on code from scratch.}}
+  \caption{{\textbf{{Interventions during controlled pretraining.}} Which-head agreement (mean of induction and previous-token
+  maps) between the final layout of a run intervened on at a given step and the uninterrupted run, for the default 300-step
+  learning-rate warm-up, a 1{{,}}000-step warm-up, and branches that start with a freshly initialized optimizer; means
+  over two initializations (one for the 12-layer model). Step 0 for
+  the code switch: the same initialization trained on code from scratch; noise is Gaussian, scaled to each tensor's standard
+  deviation.}}
   \label{{tab:critical}}
-\end{{table}}
+\end{{table*}}
 """)
 
 
@@ -277,12 +328,12 @@ def tab_benchmarks():
     \toprule
     & \multicolumn{{4}}{{c}}{{Accuracy}} & \multicolumn{{4}}{{c}}{{Correct-answer likelihood per byte}} \\
     \cmidrule(lr){{2-5}} \cmidrule(l){{6-9}}
-    Benchmark & seed sig. & corpus sig. & seed share & corpus share & seed sig. & corpus sig. & seed share & corpus share \\
+    Benchmark & init. sig. & corpus sig. & init. share & corpus share & init. sig. & corpus sig. & init. share & corpus share \\
     \midrule
 {chr(10).join(rows)}
     \bottomrule
   \end{{tabular}}
-  \caption{{\textbf{{No lucky seeds.}} For each benchmark, the number of the 14 model sizes at which the seed or the corpus
+  \caption{{\textbf{{Initialization effects on benchmarks.}} For each benchmark, the number of the 14 model sizes at which the initialization or the corpus
   has a significant main effect ($p < 0.05$, two-way ANOVA over recipes and seeds) and the median unbiased variance
   share of each factor across sizes.}}
   \label{{tab:benchmarks}}
@@ -311,8 +362,10 @@ def tab_habit_sizes():
     \bottomrule
   \end{{tabular}}
   \caption{{\textbf{{The \tmpl{{Question:}} habit at every size.}} Flan minus no-Flan DataDecide models: added trust in the
-  counterfactual context relative to a declarative ending, in nats (SE). The Flan template carries the effect at every
-  size; equivalent templates do not.}}
+  counterfactual context relative to a declarative ending, in nats (SE). Flan's template carries the effect at every
+  size, and more than the equivalent \tmpl{{Q:}}/\tmpl{{A:}} and \tmpl{{Query:}}/\tmpl{{Response:}} templates at every size
+  (pooled over sizes by $0.93 \pm 0.29$ and $0.98 \pm 0.32$ nats); below 1B, \tmpl{{Answer:}} alone often carries much
+  of it.}}
   \label{{tab:habit_sizes}}
 \end{{table*}}
 """)
@@ -368,7 +421,7 @@ def tab_temperature():
 {chr(10).join(rows)}
     \bottomrule
   \end{{tabular}}
-  \caption{{\textbf{{SGD temperature.}} Same-seed which-head agreement of previous-token maps at step 2{{,}}000 between runs
+  \caption{{\textbf{{Gradient noise.}} Same-initialization which-head agreement of previous-token maps at step 2{{,}}000 between runs
   that differ only in batch order, and between runs on C4 and on scientific papers.}}
   \label{{tab:temperature}}
 \end{{table}}
@@ -377,6 +430,6 @@ def tab_temperature():
 
 if __name__ == "__main__":
     for fn in (tab_roles, tab_template, tab_audit, tab_sizes, tab_critical, tab_benchmarks, tab_habit_sizes, tab_public,
-               tab_temperature):
+               tab_temperature, tab_ident):
         fn()
         print(fn.__name__, "ok")

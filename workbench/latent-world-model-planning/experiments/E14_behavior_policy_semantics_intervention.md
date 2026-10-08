@@ -146,3 +146,21 @@ H0/H1给定候选任务、native子目标吸收；该语义不能直接当最终
 阳性对照：全部48真实warm pixels/full diagnostic/factual goalbank控；每个候选共享完全相同初始physical state/currentpixels，collector final-goal不变；OPEN和GOAL首5issuedactions exact，global plan/CPUCUDA/kernel控从完整公开source继承并核第一actual新query；future outcome不进候选selector；all25命令有真实对应状态，重复branch replay exact，native hits逐步核。噪声地板：唯一48physical起点/单source，method大量行不作独立样本。
 
 主读数先是完整轨迹/信息权限校对与真实candidate support（anytime、terminal，final-only与memory分别报告）；这一步是可执行经验资产，不是新方法。H2B训练前将固定预算/模型/读数另写；DIRECT若组合多段必须预测未来实际command history供下一controller使用，不能凭空清零或偷真实未来动作。部署比较同一完整三option路径bank、原始动力学与controller-outcome预测，独立强BASE25/GOAL5和无WM近邻作为参照；不使用held未来子目标、不将one-stage greedy失败当hierarchy上限。不因H1或H2局部null关闭R1/R2/I14。
+### H0整批结果与范围（2026-10-05）
+
+全2904/独立8033实际B1视觉queries、全部primitive/full10或25D物理状态/goal源图/causal过去命令/五槽actor/原world递归重算PASS，见[结果文件](../results/E14_20261005_controller_consequence_results.json)。OPEN25/GOAL5/REFERENCE5：Nav225/287/241（各484，含初始118），Push95/101/88（含初始44）。按44anchor×11goal cluster paired CI：NavGOAL5−OPEN25+12.81pp[9.09,16.94]，REF−GOAL5−9.50[−12.60,−6.40]；PushGOAL5−OPEN25+1.24[0,2.48]，REF−GOAL5−2.69[−4.13,−1.45]。这是已知控制方式在给定short-experience goal上的量级，不是新方法/3seed确认；不与F3不同目标bank的差异作目标距离唯一因果。
+
+leave-self-goal anytime oracle Nav206/239/208、Push62/66/66，terminal190/222/201、15/17/19。它包含原初始已到goal：Push44条可被任何候选初始state命中，因此额外真实非初始support很小，不能以离线oracle吹memory组合成功；H1已事前排initial/分开含goal与leave-goal。预train未知、源source0、old44是development数据，science0/主张不升级。H1两方法已在独立单A100 actual CPUCUDA/非零有限梯度/同sampler/held mutation invariance控后开始1000update训练，效用未出；H2新fixed-duration bank实际生成，不沿REF参数救故事。
+### H2B：定长后果模型与真正多段规划（训练前锁定，2026-10-05）
+
+H2A采样不依赖split；核对现有F3 ledger后发现前24为near、后24为far，因此在**尚无H2模型训练/整批效用分析前**修正H2B split为train `[0..15,24..39]`（near16/far16）、held `[16..23,40..47]`（near8/far8）。旧H2A0–31/32–47草案保留，不能让onlyfar held误报总体泛化；所有候选仍只来自旧H0 TRAIN0–31及给定finalgoal，collector/candidate/轨迹不改。
+
+预测对象三arm：FROZEN-WORLD、同实际25-step经验FINETUNE-WORLD、DIRECT-CONTROLLER。继承完整公开phi/actor/source0，只有predictor/pred_proj更新或新的两层512/GELU直接五prefix残差head；预算同H1固定1000/B128/seed0、两LR/WD/clip不变，同128000 row sampler/训练only normalization，不择checkpoint。所有25个真实命令均完整，不再训练人为吸收subgoal帧。DIRECT未来动作history必须从**预测的prefix state+固定原actor+已知过去**按因果顺序产生（OPEN25用原公开world在option起点生成的完整plan），不能使用保存的真实futurecommand或清零历史；这些预测命令只供高层想象，实际执行永远原固定控制器在实际像素上重新计算。
+
+独立控制：世界step/source全parity、两device真实loss/非零finitegrad、zerohead CURRENT-copy、shared初始化及optimizer/frozenphi-BN、near/far split与held perturb invariance、完整sample128000和1000optstep、分块batch预测与B1同原容差、至少一whole多option轨迹typed因果手算。models在HF、原data留cache，必要的compact编码按节点stage，单GPU jobs，不依赖DDP。
+
+offline：held16起点×17subgoal×两controller真实candidate bank，主读数selected native anytime success、真实latent-prefix-cost regret、oracle support、elite recall，近/远分开；FROZEN、FINETUNE、DIRECT、GOAL/CURRENT-COPY全部保留。anytime native判定逐primitive、模型只给5步prefix，额外报告prefix-granularity oracle，不能忽略采样分辨率。模型fit包括5prefix错误，训练loss不作部署效用。
+
+closed-loop（offline无论正负都至少做exploratory实际部署）：同一48 development episode，其中held16为泛化主读数，100envstep预算/首次native success吸收。每次decision使用sealed该episode的17候选images，三option/75step完整路径bank256固定seed（两个前option随机选query/controller，最后option为given finalgoal；加入全final/OPEN与全final/GOAL强路径），所有arm同pathbank，不用中间beam-distance pruning；remaining budget缩短lookahead。选择最低predicted末段/五prefix到finalgoal latent距离的完整路径，实际只执行第一option25step再观测/重规划，GOAL option内部每5反馈，环境taskgoal保持不变。强BASE25、GOAL5单独作为无高层参照，可重用已逐trace核对的F3 source0 nominal同bank结果，首proposal须bitexact。不能把oracle bank或训练episode成功当paper证据；same candidate bank不等于fixed wall-clock，calls/latency分开如实记。
+
+决策表：direct比world改善offline且闭环超过最强fixed才有方法线索，继承Fast/policy dynamics/options/LEAP成熟对象，不claimfirst。若offline好而closed-loop差，优先区分多段外推、当前goal支持/静态scene兼容、sourcephi目标几何与state/history预测；不靠改预算/beam阈值救。若所有模型相似，保留与强known方法的准确位置，扩真实数据/完整表示训练或goal-policy/value机制才有意义，不能据冻phi小pilot关闭母问题。任何明显可投级signal之后再多trainseed/新goalbank/第二family确认并请人审；当前science0、非新narrative选定。

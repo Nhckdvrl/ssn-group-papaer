@@ -1,0 +1,409 @@
+{
+ "n_models": 69,
+ "logit_diff": 4.353004476298457,
+ "dla": {
+  "SI": 0.07520662295724954,
+  "SD": 0.0013160275960603118,
+  "DD": -0.004299273394408992,
+  "top1_global_SI": 0.05111402359108781,
+  "top1_global_SD": 0.0,
+  "top1_global_DD": 0.021052631578947368
+ },
+ "single_ablation_drop": {
+  "SI": 0.06876496503746073,
+  "SD": 0.00440988960502758,
+  "DD": 0.006934307253808894,
+  "top1_global_SI": 0.04325032765399738,
+  "top1_global_SD": 0.0,
+  "top1_global_DD": 0.019078947368421053
+ },
+ "att_io": {
+  "SI": 0.2907827935877114,
+  "SD": -0.0023810021377462655,
+  "DD": 0.0002466001722052618,
+  "top1_global_SI": 0.12450851900393185,
+  "top1_global_SD": 0.0,
+  "top1_global_DD": 0.008552631578947369
+ },
+ "transfer": {
+  "same_seed": 0.084062564954916,
+  "other_seed": 0.06297573037532735,
+  "random": 0.04228821241193369,
+  "layermatched": 0.004161277035301168,
+  "n_same_seed": 66,
+  "n_other_seed": 132,
+  "n_random": 66,
+  "n_layermatched": 66
+ },
+ "transfer_same_seed_by_recipe": [
+  [
+   "dclm-baseline",
+   "default",
+   -0.013353186728790399
+  ],
+  [
+   "dclm-baseline",
+   "large-aux-2",
+   0.026894786010795133
+  ],
+  [
+   "dclm-baseline",
+   "large-aux-3",
+   0.0555910752378669
+  ],
+  [
+   "dclm-baseline-25p-dolma1.7-75p",
+   "default",
+   -0.02702603523455483
+  ],
+  [
+   "dclm-baseline-25p-dolma1.7-75p",
+   "large-aux-2",
+   -0.021710996457141994
+  ],
+  [
+   "dclm-baseline-25p-dolma1.7-75p",
+   "large-aux-3",
+   0.02771089225639466
+  ],
+  [
+   "dclm-baseline-50p-dolma1.7-50p",
+   "default",
+   0.04183765074395203
+  ],
+  [
+   "dclm-baseline-50p-dolma1.7-50p",
+   "large-aux-2",
+   -0.027114707990246602
+  ],
+  [
+   "dclm-baseline-50p-dolma1.7-50p",
+   "large-aux-3",
+   0.021822447519551803
+  ],
+  [
+   "dclm-baseline-75p-dolma1.7-25p",
+   "default",
+   -0.0038993277651879895
+  ],
+  [
+   "dclm-baseline-75p-dolma1.7-25p",
+   "large-aux-2",
+   0.2225465158701204
+  ],
+  [
+   "dclm-baseline-75p-dolma1.7-25p",
+   "large-aux-3",
+   0.08830343762169644
+  ],
+  [
+   "dclm-baseline-qc-10p",
+   "default",
+   0.025515090946942737
+  ],
+  [
+   "dclm-baseline-qc-10p",
+   "large-aux-2",
+   0.13854322840283792
+  ],
+  [
+   "dclm-baseline-qc-10p",
+   "large-aux-3",
+   -0.033718911122173574
+  ],
+  [
+   "dclm-baseline-qc-20p",
+   "default",
+   -0.009187406734569858
+  ],
+  [
+   "dclm-baseline-qc-20p",
+   "large-aux-2",
+   -0.011833530838509996
+  ],
+  [
+   "dclm-baseline-qc-20p",
+   "large-aux-3",
+   0.042824752888280845
+  ],
+  [
+   "dclm-baseline-qc-7p-fw2",
+   "large-aux-2",
+   -0.07988881267824266
+  ],
+  [
+   "dclm-baseline-qc-7p-fw2",
+   "large-aux-3",
+   0.02862785896549626
+  ],
+  [
+   "dclm-baseline-qc-7p-fw3",
+   "large-aux-2",
+   0.7033524753161434
+  ],
+  [
+   "dclm-baseline-qc-7p-fw3",
+   "large-aux-3",
+   0.06826595418661592
+  ],
+  [
+   "dclm-baseline-qc-fw-10p",
+   "default",
+   -0.010325664969539586
+  ],
+  [
+   "dclm-baseline-qc-fw-10p",
+   "large-aux-2",
+   0.28332768052040663
+  ],
+  [
+   "dclm-baseline-qc-fw-10p",
+   "large-aux-3",
+   -0.022200190765269443
+  ],
+  [
+   "dclm-baseline-qc-fw-3p",
+   "default",
+   -0.021031667179227317
+  ],
+  [
+   "dclm-baseline-qc-fw-3p",
+   "large-aux-2",
+   0.1318058109280346
+  ],
+  [
+   "dclm-baseline-qc-fw-3p",
+   "large-aux-3",
+   -0.027822986200850268
+  ],
+  [
+   "dolma1_6plus",
+   "default",
+   -0.024642031717131415
+  ],
+  [
+   "dolma1_6plus",
+   "large-aux-2",
+   0.05039317525909019
+  ],
+  [
+   "dolma1_6plus",
+   "large-aux-3",
+   0.04575452949146146
+  ],
+  [
+   "dolma1_7",
+   "default",
+   0.03552608067771389
+  ],
+  [
+   "dolma1_7",
+   "large-aux-2",
+   -0.05109186446239063
+  ],
+  [
+   "dolma1_7",
+   "large-aux-3",
+   0.012219101862349572
+  ],
+  [
+   "dolma1_7-no-code",
+   "default",
+   -0.01392123219142012
+  ],
+  [
+   "dolma1_7-no-code",
+   "large-aux-2",
+   0.011299334049750533
+  ],
+  [
+   "dolma1_7-no-code",
+   "large-aux-3",
+   0.3008551904866267
+  ],
+  [
+   "dolma1_7-no-flan",
+   "default",
+   -0.01850629129793313
+  ],
+  [
+   "dolma1_7-no-flan",
+   "large-aux-2",
+   -0.5874794664605261
+  ],
+  [
+   "dolma1_7-no-flan",
+   "large-aux-3",
+   0.18839738100031048
+  ],
+  [
+   "dolma1_7-no-math-code",
+   "large-aux-2",
+   0.033250563363026606
+  ],
+  [
+   "dolma1_7-no-math-code",
+   "large-aux-3",
+   0.12521860746216
+  ],
+  [
+   "dolma1_7-no-reddit",
+   "large-aux-2",
+   0.2163645829491151
+  ],
+  [
+   "dolma1_7-no-reddit",
+   "large-aux-3",
+   0.06095414888976267
+  ],
+  [
+   "falcon",
+   "default",
+   0.09132344572120056
+  ],
+  [
+   "falcon",
+   "large-aux-2",
+   0.7647197111730714
+  ],
+  [
+   "falcon",
+   "large-aux-3",
+   0.14774135279215367
+  ],
+  [
+   "falcon-and-cc",
+   "default",
+   0.009738769758108785
+  ],
+  [
+   "falcon-and-cc",
+   "large-aux-2",
+   -0.13661063222295433
+  ],
+  [
+   "falcon-and-cc",
+   "large-aux-3",
+   0.2762946870225357
+  ],
+  [
+   "falcon-and-cc-qc-10p",
+   "default",
+   -0.013260601653587402
+  ],
+  [
+   "falcon-and-cc-qc-10p",
+   "large-aux-2",
+   0.7955403313585399
+  ],
+  [
+   "falcon-and-cc-qc-10p",
+   "large-aux-3",
+   0.015329968849138903
+  ],
+  [
+   "falcon-and-cc-qc-20p",
+   "default",
+   -0.010424996226388572
+  ],
+  [
+   "falcon-and-cc-qc-20p",
+   "large-aux-2",
+   0.2451939670765843
+  ],
+  [
+   "falcon-and-cc-qc-20p",
+   "large-aux-3",
+   0.20871162994032416
+  ],
+  [
+   "falcon-and-cc-qc-orig-10p",
+   "default",
+   1.6345904862448215e-05
+  ],
+  [
+   "falcon-and-cc-qc-orig-10p",
+   "large-aux-2",
+   -0.07097978097198582
+  ],
+  [
+   "falcon-and-cc-qc-tulu-10p",
+   "default",
+   0.01643750315805743
+  ],
+  [
+   "falcon-and-cc-qc-tulu-10p",
+   "large-aux-2",
+   -0.03213661429681759
+  ],
+  [
+   "fineweb-edu",
+   "default",
+   -0.045624214976913685
+  ],
+  [
+   "fineweb-edu",
+   "large-aux-2",
+   0.05146677182389074
+  ],
+  [
+   "fineweb-edu",
+   "large-aux-3",
+   0.8400067368478942
+  ],
+  [
+   "fineweb-pro",
+   "default",
+   0.07782348967808124
+  ],
+  [
+   "fineweb-pro",
+   "large-aux-2",
+   -0.06123172278818856
+  ],
+  [
+   "fineweb-pro",
+   "large-aux-3",
+   0.39560509694405205
+  ]
+ ],
+ "set_level": {
+  "3": {
+   "SI": 0.07249540520574614,
+   "SD": 0.023025217844947245,
+   "DD": 0.03689237545756765,
+   "random": 0.014702285891092936,
+   "n_SI": 1526
+  },
+  "5": {
+   "SI": 0.09504114819176482,
+   "SD": 0.034288146951242875,
+   "DD": 0.04709316841636692,
+   "random": 0.02011490029789445,
+   "n_SI": 1526
+  },
+  "10": {
+   "SI": 0.11732978583116549,
+   "SD": 0.0592514054928957,
+   "DD": 0.0726101416797249,
+   "random": 0.03252414563604646,
+   "n_SI": 1526
+  },
+  "20": {
+   "SI": 0.1598678010867286,
+   "SD": 0.10591957581413505,
+   "DD": 0.11921979918431663,
+   "random": 0.05704100488752895,
+   "n_SI": 1526
+  }
+ },
+ "same_init_transfer_law_k5": {
+  "n_pairs": 1526,
+  "rho_concentration": 0.005328862159190539,
+  "rho_content_word_distance": -0.0957683686819105,
+  "concentration_range": [
+   0.25354418016519437,
+   0.5525517587690596
+  ]
+ }
+}

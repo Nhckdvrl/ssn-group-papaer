@@ -1,0 +1,9 @@
+# E23 (2026-10-07) on fvcrc10 GPUs 0,2: PushT third seeds + SIGReg on PushT; Reacher reruns (XXS crashed, L OOM)
+32 pusht M 2 0 60000
+32 pusht S 0 0 60000 --sigreg_w 0.01
+32 pusht S 1 0 60000 --sigreg_w 0.01
+28 reacher XXS 0 0 60000
+28 reacher XS 1 0 60000
+28 reacher S 1 0 60000
+28 reacher M 1 0 60000
+46 pusht L 2 0 60000

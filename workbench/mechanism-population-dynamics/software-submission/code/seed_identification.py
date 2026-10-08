@@ -69,7 +69,7 @@ def main():
     row = {"all": identify(M, ("M1", "M2", "M4"))}
     for m in ("M1", "M2", "M4"):
         row[m] = identify(M, (m,))
-    out["1B_E35"] = row
+    out["1B_final"] = row
     print(f"1B crossing_1b   all {row['all']['accuracy']:.2f} (chance {row['all']['chance']:.2f}, n {row['all']['n']}) | " +
           " ".join(f"{m} {row[m]['accuracy']:.2f}" for m in ("M1", "M2", "M4")))
     # Pythia: deduped query vs candidates std + seed1..9 (PolyPythias); std shares the deduped init

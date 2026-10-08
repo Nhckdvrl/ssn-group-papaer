@@ -173,3 +173,16 @@ F3最终覆盖：完整3456/9071localquery独立auditPASS，portable E18_2026100
 最新H0/H1/H2恢复覆盖：H0全2904 COMPLETE，独立逐primitive replay/逐B1视觉encoding/explicitactor+world/kernelreader在RTX0 PID3674985（父3673539）继续Push审计，Nav1452/3303visualqueries已PASS；全result未齐前无H0efficacy结论。H1两B1cache各1452 COMPLETE，训练事前固定32/12、两arms同128000sampler和吸收/完整macro语义，Nav单A100 queue3668245、Push553548（不同已授权节点，log `/tmp/latent-E14-controller-outcome-{task}-A100-train.log` 需在对应机器读），等待wholeaudit后1000updates两arms；本地原等待队列3674604/5在无训练输出前移走，已停止，不是失败训练或重复run。H1RTX2全矩阵endpoint/held选择readerqueue3678982，log `/tmp/latent-E14-controller-outcome-evaluate.log`，正式portable `E14_20261005_controller_outcome_learning_results.json`尚无。
 
 新H2A两个RTX1/3 producer3677593/3678129，logs `/tmp/latent-E14-fixed-controller-experience-{task}.log`，raw `20261005-E14-fixed-controller-experience-{task}`：NEW F3bank48、TRAIN H0memory0–31、finalgoal+8nearest+8uniform共17imagequeries×OPEN25/GOAL5，source0，1632轨迹/task。其controller25步collector不改最终taskgoal、不用子目标native终止并继续采集full25（native最终hit仅离线记录）；真实闭环仍首次finalgoal success吸收。这是避免H0 task吸收直接移植到option部署的语义混杂。H2B还未训练/实现，下一步必须独立审计bank、固定训练budget，并预测下一option必需的actual command history，实际多段samecandidate闭环，不清零未知历史、不用heldfuture图，不锁one-stagegreedy。I14人审优先/science0/PROPOSED/goalactive不变；未confirmed idea。
+
+
+### 用户要求暂停全部任务（覆盖此前 active/pending 记录）
+
+暂停时间：2026-10-05T10:06:30.095585+09:00。持久目标已 paused；不再启动实验、读文献或追加分析。已向本地 H2A 独立审计队列及其子进程组 3684338 发送 SIGTERM，保留全部完整银行与中断审计原文件，未完成审计不算 PASS。远端 H1 训练此前已完成，停止状态逐机核对。
+
+暂停快照：H0 全 2904 后果轨迹与独立逐物理/视觉审计完成；H1 两任务四个固定 1000-update 训练及独立读数审计完成，DIRECT 冷启动头没有胜过强 FINETUNE-WORLD，不能据此关闭母问题。H2A 两任务各 1632 full25 轨迹完成，完整独立审计被用户暂停；H2B 尚未训练或部署。E01 temporal-contract 预控实际失败：编码数值 parity 最大绝对差 0.00102761 超过事前 0.0002 容差，正式比较无有效结果；原 source/failure/log 保留，不在暂停期间修复或重跑。science claims 仍 0，C00 工程 L1，workbench PROPOSED 不变。
+
+完成结果与新原型存在本地未提交修改；最近已推送 main 为 a5982dd2。恢复时先读本条及对应实验卡，核对真实进程与 complete/failure/interruption，保留失败与中断尝试，不能重启已完成 unique runs；仅在用户明确要求恢复后继续。
+
+暂停核对补记：本地审计父/子 PID 3684338/3686503 均已退出，nvidia-smi 无计算进程；fvcrc10/13 SSH 实查无本 workbench 队列或运行进程。fvcrc11 当前 SSH 连接失败，不能冒称实查完成；本轮没有在该节点启动任务。无活动子 agent。
+
+其余授权节点核对：fvcrc12/15 SSH 实查无本 workbench 进程；fvcrc21 当前 No route to host，未核对成功，本轮未在该节点启动任务。暂停后未启动任何新研究任务。

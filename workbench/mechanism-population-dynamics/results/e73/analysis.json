@@ -1,0 +1,608 @@
+{
+ "160m": {
+  "reference": {
+   "logit_diff": 4.312792778015137,
+   "acc": 0.9850000143051147,
+   "top": [
+    "8.9",
+    "8.10",
+    "8.2",
+    "10.1",
+    "10.7"
+   ]
+  },
+  "by_kind": {
+   "deduped": {
+    "logit_diff": 3.9673473834991455,
+    "acc": 0.9750000238418579,
+    "within_dla": 0.34965034965034963,
+    "ref_top1_in_target_top3": 1.0,
+    "ref_top3_overlap": 0.6666666666666666,
+    "transfer3": 0.8466172839374154,
+    "random3": -0.006141567031913152,
+    "layermatched3": -0.00036428852324733684,
+    "transfer5": 0.994346238301649,
+    "random5": 0.004715527205878049,
+    "layermatched5": -0.018566672815706047,
+    "n": 1
+   },
+   "data-seed": {
+    "logit_diff": 3.4214231173197427,
+    "acc": 0.9766666690508524,
+    "within_dla": 0.3284770784770785,
+    "ref_top1_in_target_top3": 1.0,
+    "ref_top3_overlap": 0.7777777777777777,
+    "transfer3": 0.953083639158477,
+    "random3": -0.008597517530310902,
+    "layermatched3": -0.0010744511033765373,
+    "transfer5": 0.838771216330887,
+    "random5": -0.0017648759392605016,
+    "layermatched5": 0.002701120182439018,
+    "n": 3
+   },
+   "seed": {
+    "logit_diff": 3.8381561968061657,
+    "acc": 0.981111122502221,
+    "within_dla": 0.014986745812745542,
+    "ref_top1_in_target_top3": 0.3333333333333333,
+    "ref_top3_overlap": 0.14814814814814814,
+    "transfer3": -0.0353724506340601,
+    "random3": -0.008781395233506472,
+    "layermatched3": -0.005038221339994747,
+    "transfer5": -0.023774174110998112,
+    "random5": 0.0002990279853752071,
+    "layermatched5": -0.009040526665425177,
+    "n": 9
+   }
+  },
+  "models": {
+   "data-seed1": {
+    "kind": "data-seed",
+    "logit_diff": 3.4943010807037354,
+    "acc": 0.9850000143051147,
+    "within_dla": 0.3304195804195805,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 0.6666666666666666,
+    "transfer3": 0.848259267640552,
+    "random3": -0.00219715571822707,
+    "layermatched3": -0.004030033916099657,
+    "transfer5": 0.8385546175364821,
+    "random5": -0.0065575081838223324,
+    "layermatched5": 0.007513496964304815
+   },
+   "data-seed2": {
+    "kind": "data-seed",
+    "logit_diff": 3.5829076766967773,
+    "acc": 0.9800000190734863,
+    "within_dla": 0.3350815850815851,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 1.0,
+    "transfer3": 1.0,
+    "random3": -0.014918425420260952,
+    "layermatched3": 0.0005500835488694597,
+    "transfer5": 0.9264719846217088,
+    "random5": 0.005399951301040612,
+    "layermatched5": 0.01102318472249304
+   },
+   "data-seed3": {
+    "kind": "data-seed",
+    "logit_diff": 3.187060594558716,
+    "acc": 0.9649999737739563,
+    "within_dla": 0.31993006993006995,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 0.6666666666666666,
+    "transfer3": 1.010991649834879,
+    "random3": -0.008676971452444684,
+    "layermatched3": 0.0002565970571005854,
+    "transfer5": 0.7512870468344702,
+    "random5": -0.004137070934999784,
+    "layermatched5": -0.0104333211394808
+   },
+   "deduped": {
+    "kind": "deduped",
+    "logit_diff": 3.9673473834991455,
+    "acc": 0.9750000238418579,
+    "within_dla": 0.34965034965034963,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 0.6666666666666666,
+    "transfer3": 0.8466172839374154,
+    "random3": -0.006141567031913152,
+    "layermatched3": -0.00036428852324733684,
+    "transfer5": 0.994346238301649,
+    "random5": 0.004715527205878049,
+    "layermatched5": -0.018566672815706047
+   },
+   "seed1": {
+    "kind": "seed",
+    "logit_diff": 3.9418303966522217,
+    "acc": 0.9950000047683716,
+    "within_dla": 0.09906759906759909,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.019621454135214576,
+    "random3": -0.007501089593611071,
+    "layermatched3": 0.005607265347887322,
+    "transfer5": -0.005266404214500893,
+    "random5": 0.014776237274868915,
+    "layermatched5": 0.0011891261373544468
+   },
+   "seed2": {
+    "kind": "seed",
+    "logit_diff": 4.356842041015625,
+    "acc": 0.9900000095367432,
+    "within_dla": 0.010489510489510467,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.00866091612432353,
+    "random3": -0.0031754711907723008,
+    "layermatched3": -0.000432473532046001,
+    "transfer5": 0.007903286351141776,
+    "random5": -0.011669462849918669,
+    "layermatched5": -0.010654632053278566
+   },
+   "seed3": {
+    "kind": "seed",
+    "logit_diff": 2.6401538848876953,
+    "acc": 0.9200000166893005,
+    "within_dla": -0.006993006993006992,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.3333333333333333,
+    "transfer3": 0.0028574053008986857,
+    "random3": -0.008267444939687679,
+    "layermatched3": 0.001183995223320761,
+    "transfer5": 0.002746308844637634,
+    "random5": 0.00432233575902807,
+    "layermatched5": -0.055072194348787004
+   },
+   "seed4": {
+    "kind": "seed",
+    "logit_diff": 4.413483142852783,
+    "acc": 0.9950000047683716,
+    "within_dla": -0.09673659673659675,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.010110965143500465,
+    "random3": 0.0021712327260024044,
+    "layermatched3": -0.0031841999625690735,
+    "transfer5": -0.12152513312581673,
+    "random5": 0.0001770198273858268,
+    "layermatched5": 0.023704572601305773
+   },
+   "seed5": {
+    "kind": "seed",
+    "logit_diff": 3.741166114807129,
+    "acc": 0.9950000047683716,
+    "within_dla": -0.08190250446850689,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 0.3333333333333333,
+    "transfer3": -0.030261806995223225,
+    "random3": -0.023856753341259924,
+    "layermatched3": -0.0022547353535633968,
+    "transfer5": 0.026996667138478463,
+    "random5": 0.024508587824790352,
+    "layermatched5": 0.011936875619784302
+   },
+   "seed6": {
+    "kind": "seed",
+    "logit_diff": 4.268754482269287,
+    "acc": 0.9950000047683716,
+    "within_dla": 0.0844988344988345,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 0.3333333333333333,
+    "transfer3": -0.21912121372590554,
+    "random3": -0.024116262444397372,
+    "layermatched3": -0.013914994174962931,
+    "transfer5": -0.14453869187485005,
+    "random5": -0.019170811450633617,
+    "layermatched5": -0.009744673582436674
+   },
+   "seed7": {
+    "kind": "seed",
+    "logit_diff": 4.315517425537109,
+    "acc": 0.9850000143051147,
+    "within_dla": 0.07109557109557109,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.0465263704510408,
+    "random3": 0.009109197416797127,
+    "layermatched3": 0.012325145072650015,
+    "transfer5": -0.038393526639290285,
+    "random5": -0.004835314736434303,
+    "layermatched5": 0.03208707605197969
+   },
+   "seed8": {
+    "kind": "seed",
+    "logit_diff": 3.7707488536834717,
+    "acc": 0.9800000190734863,
+    "within_dla": -0.005244755244755252,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.04369750454514235,
+    "random3": -0.00806301612902944,
+    "layermatched3": -0.014126007966035907,
+    "transfer5": -0.04339043267914354,
+    "random5": 0.00491210488682005,
+    "layermatched5": -0.013631530694746244
+   },
+   "seed9": {
+    "kind": "seed",
+    "logit_diff": 3.094909429550171,
+    "acc": 0.9750000238418579,
+    "within_dla": 0.06060606060606061,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 0.3333333333333333,
+    "transfer3": 0.01924700757726293,
+    "random3": -0.015332949605600003,
+    "layermatched3": -0.03054798671463351,
+    "transfer5": 0.10150035920036059,
+    "random5": -0.010329444667529762,
+    "layermatched5": -0.061179359720002324
+   }
+  }
+ },
+ "410m": {
+  "reference": {
+   "logit_diff": 3.5499749183654785,
+   "acc": 1.0,
+   "top": [
+    "11.4",
+    "18.8",
+    "17.6",
+    "17.10",
+    "18.12"
+   ]
+  },
+  "by_kind": {
+   "deduped": {
+    "logit_diff": 3.211402654647827,
+    "acc": 0.9850000143051147,
+    "within_dla": 0.05915719664884709,
+    "ref_top1_in_target_top3": 0.0,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.05254321406653897,
+    "random3": -0.0036772055678500363,
+    "layermatched3": -0.001824664949571966,
+    "transfer5": 0.080297963079104,
+    "random5": 0.01489928359451418,
+    "layermatched5": 0.02196092252841802,
+    "n": 1
+   },
+   "seed": {
+    "logit_diff": 3.397543509801229,
+    "acc": 0.9577777783075968,
+    "within_dla": -0.017711451882614915,
+    "ref_top1_in_target_top3": 0.1111111111111111,
+    "ref_top3_overlap": 0.037037037037037035,
+    "transfer3": 0.04532150683058434,
+    "random3": -0.0073850686820554285,
+    "layermatched3": -0.017108551000752165,
+    "transfer5": 0.006150365935243406,
+    "random5": 0.0017247568100427525,
+    "layermatched5": -0.0005342425927233013,
+    "n": 9
+   }
+  },
+  "models": {
+   "deduped": {
+    "kind": "deduped",
+    "logit_diff": 3.211402654647827,
+    "acc": 0.9850000143051147,
+    "within_dla": 0.05915719664884709,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.05254321406653897,
+    "random3": -0.0036772055678500363,
+    "layermatched3": -0.001824664949571966,
+    "transfer5": 0.080297963079104,
+    "random5": 0.01489928359451418,
+    "layermatched5": 0.02196092252841802
+   },
+   "seed1": {
+    "kind": "seed",
+    "logit_diff": 3.6909823417663574,
+    "acc": 1.0,
+    "within_dla": -0.11326254190827623,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.00017247986286263663,
+    "random3": -0.009385444120530318,
+    "layermatched3": -0.009561431023549321,
+    "transfer5": 0.044105053274090505,
+    "random5": -0.022136545234181966,
+    "layermatched5": -0.0028134528081317283
+   },
+   "seed2": {
+    "kind": "seed",
+    "logit_diff": 3.7829065322875977,
+    "acc": 1.0,
+    "within_dla": 0.06674404349738496,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.0014878455404766812,
+    "random3": 0.0017780347787660325,
+    "layermatched3": -0.027172902110323825,
+    "transfer5": -0.007577442619259329,
+    "random5": 0.0031993638340806724,
+    "layermatched5": -0.02255567177823908
+   },
+   "seed3": {
+    "kind": "seed",
+    "logit_diff": 3.717010498046875,
+    "acc": 1.0,
+    "within_dla": -0.030560960580211533,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.012363079528882067,
+    "random3": 0.0010903002305374938,
+    "layermatched3": -0.011877248035853636,
+    "transfer5": -0.016247040327407425,
+    "random5": 0.005101469870507661,
+    "layermatched5": -0.02802726983499433
+   },
+   "seed4": {
+    "kind": "seed",
+    "logit_diff": 0.669060230255127,
+    "acc": 0.625,
+    "within_dla": 0.09051368818646716,
+    "ref_top1_in_target_top3": true,
+    "ref_top3_overlap": 0.3333333333333333,
+    "transfer3": 0.35440954008651737,
+    "random3": 0.000686636460531163,
+    "layermatched3": -0.004536931403627461,
+    "transfer5": 0.24668983903821942,
+    "random5": -0.012973975770216266,
+    "layermatched5": -0.00031781515290837806
+   },
+   "seed5": {
+    "kind": "seed",
+    "logit_diff": 3.5438072681427,
+    "acc": 1.0,
+    "within_dla": -0.0010573179421772734,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.0040564873394589975,
+    "random3": -0.007811116834873421,
+    "layermatched3": -0.027249296113515835,
+    "transfer5": -0.005260965104712513,
+    "random5": 0.007755283280355581,
+    "layermatched5": 0.024063547408059393
+   },
+   "seed6": {
+    "kind": "seed",
+    "logit_diff": 3.6935842037200928,
+    "acc": 1.0,
+    "within_dla": 0.059218600031137075,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.06072696986013779,
+    "random3": -0.01980339869197377,
+    "layermatched3": -0.005928348986923738,
+    "transfer5": 0.04830681037431683,
+    "random5": 0.062399169875094716,
+    "layermatched5": 0.026591938660868706
+   },
+   "seed7": {
+    "kind": "seed",
+    "logit_diff": 3.147632360458374,
+    "acc": 0.9950000047683716,
+    "within_dla": -0.11285320450862983,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.018481038367254402,
+    "random3": -0.013866486079688137,
+    "layermatched3": -0.022541076846293244,
+    "transfer5": 0.008671203957454951,
+    "random5": -0.018504066159011456,
+    "layermatched5": 0.007611510451104093
+   },
+   "seed8": {
+    "kind": "seed",
+    "logit_diff": 3.9433608055114746,
+    "acc": 1.0,
+    "within_dla": -0.08775475041085623,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.009248261156375072,
+    "random3": -0.0039515709128677004,
+    "layermatched3": 0.010749090866531759,
+    "transfer5": -0.25661788000539726,
+    "random5": -0.00042491348602260857,
+    "layermatched5": 0.0029294485343659064
+   },
+   "seed9": {
+    "kind": "seed",
+    "logit_diff": 4.389547348022461,
+    "acc": 1.0,
+    "within_dla": -0.030390623308372302,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.0013715244915484272,
+    "random3": -0.015202572968400205,
+    "layermatched3": -0.055858815353214186,
+    "transfer5": -0.006716285170114564,
+    "random5": -0.00889297492022156,
+    "layermatched5": -0.012290418814634295
+   }
+  }
+ },
+ "1b": {
+  "reference": {
+   "logit_diff": 4.083144664764404,
+   "acc": 1.0,
+   "top": [
+    "12.1",
+    "14.2",
+    "11.6",
+    "11.5",
+    "10.5"
+   ]
+  },
+  "by_kind": {
+   "deduped": {
+    "logit_diff": 3.395437717437744,
+    "acc": 1.0,
+    "within_dla": 0.45386904761904767,
+    "ref_top1_in_target_top3": 0.0,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.901715002164276,
+    "random3": -0.0955408119434867,
+    "layermatched3": -0.05413308721949408,
+    "transfer5": 0.7036345009453114,
+    "random5": 0.12268778050679248,
+    "layermatched5": 0.07562152105603444,
+    "n": 1
+   }
+  },
+  "models": {
+   "deduped": {
+    "kind": "deduped",
+    "logit_diff": 3.395437717437744,
+    "acc": 1.0,
+    "within_dla": 0.45386904761904767,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.901715002164276,
+    "random3": -0.0955408119434867,
+    "layermatched3": -0.05413308721949408,
+    "transfer5": 0.7036345009453114,
+    "random5": 0.12268778050679248,
+    "layermatched5": 0.07562152105603444
+   }
+  }
+ },
+ "1.4b": {
+  "reference": {
+   "logit_diff": 4.0008416175842285,
+   "acc": 1.0,
+   "top": [
+    "10.7",
+    "13.1",
+    "14.6",
+    "15.15",
+    "13.6"
+   ]
+  },
+  "by_kind": {
+   "deduped": {
+    "logit_diff": 3.557131052017212,
+    "acc": 1.0,
+    "within_dla": 0.20145175709798435,
+    "ref_top1_in_target_top3": 0.0,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.05005299733615308,
+    "random3": 0.0020253751753868676,
+    "layermatched3": -0.014376035799255749,
+    "transfer5": -0.06921125314791447,
+    "random5": 0.012112647379869943,
+    "layermatched5": -0.013902638491957116,
+    "n": 1
+   }
+  },
+  "models": {
+   "deduped": {
+    "kind": "deduped",
+    "logit_diff": 3.557131052017212,
+    "acc": 1.0,
+    "within_dla": 0.20145175709798435,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": -0.05005299733615308,
+    "random3": 0.0020253751753868676,
+    "layermatched3": -0.014376035799255749,
+    "transfer5": -0.06921125314791447,
+    "random5": 0.012112647379869943,
+    "layermatched5": -0.013902638491957116
+   }
+  }
+ },
+ "6.9b": {
+  "reference": {
+   "logit_diff": 3.445625066757202,
+   "acc": 0.9750000238418579,
+   "top": [
+    "20.28",
+    "25.15",
+    "10.27",
+    "14.23",
+    "19.31"
+   ]
+  },
+  "by_kind": {
+   "deduped": {
+    "logit_diff": 3.7881250381469727,
+    "acc": 0.9950000047683716,
+    "within_dla": 0.15481299443671356,
+    "ref_top1_in_target_top3": 0.0,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.042910481177327556,
+    "random3": 0.004415446866996001,
+    "layermatched3": 0.006498774516635983,
+    "transfer5": 0.0797939457924145,
+    "random5": 0.006280481122507983,
+    "layermatched5": -0.00011486058028126127,
+    "n": 1
+   }
+  },
+  "models": {
+   "deduped": {
+    "kind": "deduped",
+    "logit_diff": 3.7881250381469727,
+    "acc": 0.9950000047683716,
+    "within_dla": 0.15481299443671356,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.042910481177327556,
+    "random3": 0.004415446866996001,
+    "layermatched3": 0.006498774516635983,
+    "transfer5": 0.0797939457924145,
+    "random5": 0.006280481122507983,
+    "layermatched5": -0.00011486058028126127
+   }
+  }
+ },
+ "12b": {
+  "reference": {
+   "logit_diff": 3.4160938262939453,
+   "acc": 0.9649999737739563,
+   "top": [
+    "20.11",
+    "23.15",
+    "18.5",
+    "16.9",
+    "20.13"
+   ]
+  },
+  "by_kind": {
+   "deduped": {
+    "logit_diff": 3.061718702316284,
+    "acc": 0.9350000023841858,
+    "within_dla": 0.07480061475902094,
+    "ref_top1_in_target_top3": 0.0,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.15673352535918783,
+    "random3": 0.004272712358339804,
+    "layermatched3": 0.00846056988386899,
+    "transfer5": 0.1520395731580562,
+    "random5": 0.0013817584576416345,
+    "layermatched5": 0.008617322727715478,
+    "n": 1
+   }
+  },
+  "models": {
+   "deduped": {
+    "kind": "deduped",
+    "logit_diff": 3.061718702316284,
+    "acc": 0.9350000023841858,
+    "within_dla": 0.07480061475902094,
+    "ref_top1_in_target_top3": false,
+    "ref_top3_overlap": 0.0,
+    "transfer3": 0.15673352535918783,
+    "random3": 0.004272712358339804,
+    "layermatched3": 0.00846056988386899,
+    "transfer5": 0.1520395731580562,
+    "random5": 0.0013817584576416345,
+    "layermatched5": 0.008617322727715478
+   }
+  }
+ }
+}

@@ -9,11 +9,16 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
-### 当前进展（2026-10-04）
+### 当前进展（2026-10-06）
+**v2（2026-10-08）：** 研究问题升级为“不同预训练 run 之间机制在什么意义上对应、由什么决定”：层与算法共享，组件跟随初始化，task circuit 只部分对应（IOI，E73 / E74），功能跟随语料；见 `paper-acl-v2/` 与 `experiments/A09`。
+
+**专家评审后重构 ACL 稿（v1）：** 主线收为“初始化决定层内哪个头担任哪个角色（层的位置所有模型共享）；这一分工由早期一小段学习确定；共享多少取决于语料实词相似度与梯度噪声；初始化不决定模型做什么（Flan 案例：行为变了、布局不动，习惯部分经由初始化安置的检索头表达）”。先天 / 后天二分、“weights forget the seed”、provenance 应用已删除。新实验 E65–E68（Flan 与布局、warm-up / 优化器对照、全尺寸初始化核查、权重与 SeedPrints 识别 baseline）见 `logs/2026-10-06.md`。论文版本：`paper-acl-v0/`（最初的 *Born to Copy* 版）、`paper-acl-v1/`（专家评审后的重构版）、`paper-acl-v2/`（研究意义升级版，进行中，见 `experiments/A09`）。
+
+### 历史进展（2026-10-04）
 **一句话：语言模型也有先天与后天。** 先天（seed）决定回路长在哪里——9 种头角色、14 个尺寸、2 个家族，数据原理上不能选择头，只看布局就能 98–100% 认出 seed，而权重只剩 0.04 的初始化相关（weights forget the seed, circuits remember it）；后天（数据）决定回路做什么、多强、何时出现、行为如何（no lucky seeds），1% 的指令数据就能写下一个由 “Question:” 触发的习惯；先天在训练最初 1–2.5% 的关键期写下；SGD 温度与语料讲的内容（实词，而非虚词）决定先天占多少，模型越大越先天。
 **两个投稿版本并行：** ICML / ICLR 版（`experiments/A03` v5、`A04` v4、`A06` v3；标题 *The Seed Picks the Slot, the Data Fills It*）与 ACL / EMNLP / NAACL 版（`experiments/A08`；标题 *Born to Copy, Taught to Trust: What Is Innate in a Language Model*）。叙事决策见 `A05`（对齐最新顶会）、`A07`（定稿与人的修正）。
 
-**ACL 版论文稿已成形（2026-10-04）：** `paper-acl/`——官方 ACL 模板、正文 8 页 + Limitations + 附录、5 张正文图 + 1 张附录图（`scripts/figs_acl.py`）；本地用 TeX Live 2026 的 pdfLaTeX + BibTeX 编译无错误，终版模式 aclpubcheck “All Clear!”，可直接上传 Overleaf。画 Fig 1 时发现 P12：DataDecide 1B 有 6 个 run 的初始化与 seed 标签不符（头布局盲测 6/6 找出，权重核实），排除后 1B 的结果全部变强（见 `PAIN_LOG.md` P12、`CLAIMS.md` C05）。
+**ACL 版论文稿已成形（2026-10-04）：** 现为 `paper-acl-v0/`——官方 ACL 模板、正文 8 页 + Limitations + 附录、5 张正文图 + 1 张附录图（`scripts/figs_acl.py`）；本地用 TeX Live 2026 的 pdfLaTeX + BibTeX 编译无错误，终版模式 aclpubcheck “All Clear!”，可直接上传 Overleaf。画 Fig 1 时发现 P12：DataDecide 1B 有 6 个 run 的初始化与 seed 标签不符（头布局盲测 6/6 找出，权重核实），排除后 1B 的结果全部变强（见 `PAIN_LOG.md` P12、`CLAIMS.md` C05）。
 
 | 五条发现 + 应用 | 已完成的证据 | 进行中 |
 |---|---|---|

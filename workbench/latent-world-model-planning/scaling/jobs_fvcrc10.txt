@@ -1,0 +1,30 @@
+# SIGReg-weight intervention (prediction: weaker isotropy pressure -> longer bandwidth -> better far-goal L2 planning)
+14 tworoom S 0 0 60000 --sigreg_w 0.01
+14 tworoom S 0 0 60000 --sigreg_w 0.03
+14 tworoom S 0 0 60000 --sigreg_w 0.27
+32 pusht S 0 0 60000 --sigreg_w 0.03
+32 pusht S 0 0 60000 --sigreg_w 0.27
+# Visual PointMaze-medium, second seed (data synced to /dev/shm)
+14 pmazemedium S 1 0 60000
+14 pmazemedium M 1 0 60000
+14 pmazemedium XS 1 0 60000
+14 tworoom XXS 2 0 60000
+14 tworoom XS 2 0 60000
+14 tworoom S 2 0 60000
+32 pusht XXS 1 0 60000
+32 pusht XXS 2 0 60000
+32 pusht XS 2 0 60000
+32 pusht S 2 0 60000
+# scale x tricks (representative 2026 LeWM follow-up objectives)
+32 pusht S 0 0 60000 --aux idm
+32 pusht S 0 0 60000 --aux straight
+32 pusht S 0 0 60000 --aux multistep
+32 pusht XS 0 0 60000 --aux idm
+32 pusht XS 0 0 60000 --aux straight
+32 pusht XS 0 0 60000 --aux multistep
+36 pusht M 0 0 60000 --aux idm
+36 pusht M 0 0 60000 --aux straight
+36 pusht M 0 0 60000 --aux multistep
+14 tworoom S 0 0 60000 --aux idm
+14 tworoom S 0 0 60000 --aux straight
+14 tworoom S 0 0 60000 --aux multistep
