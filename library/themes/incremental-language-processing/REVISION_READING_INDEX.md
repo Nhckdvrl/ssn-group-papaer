@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-85篇主文（5综述+1 position+79研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+86篇主文（5综述+2 position+79研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -148,3 +148,5 @@
 - [Dark Room作者v2](wang2026-dark-room-reward.md)：固定信号换传递通道与placebo归属，条件化的GRPO失败机制；独立研究者预印本，代码未独立复现。
 
 - [LEDOM最新July2026作者v4](yin2026-ledom-v4.md)：reverse model与inverse-feedback假设，理论/采样预算/图表范围分别核；只读取论文无模型下载。
+
+- [Meta-Factivity ACL2026 short position](liu2026-meta-factivity.md)：evaluation对象从事实标签到commitment reasoning/regulation；四文本probe与未实例化框架的边界明确。

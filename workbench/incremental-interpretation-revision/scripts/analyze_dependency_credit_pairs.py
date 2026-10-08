@@ -21,9 +21,10 @@ def load(path):
     return [json.loads(line) for line in path.read_text().splitlines()]
 
 
-def analyze(root):
-    mainpath = root/'critical-dependency-commitment-map-v1.json'
-    seal = json.loads((root/'complete-map-v1.json').read_text())
+def analyze(root, mainmap='critical-dependency-commitment-map-v1.json', mainmarker='complete-map-v1.json',
+            output='conditional-dependency-credit-map-v1.json', marker='conditional-dependency-credit-complete-v1.json'):
+    mainpath = root/mainmap
+    seal = json.loads((root/mainmarker).read_text())
     assert seal['map_sha256'] == sha(mainpath)
     main = json.loads(mainpath.read_text())
     parent = root.parent/'E103'
@@ -77,7 +78,7 @@ def analyze(root):
         for metric in sorted(eligible[0]['metrics']) if eligible else []:
             panels.append(dict(model=model,construction=ct,contrast=name,scope='CONDITIONAL_TWO_CATEGORIES_AVAILABLE',
                 metric=metric,**estimate(eligible,[r['metrics'][metric] for r in eligible],seed=107)))
-    path = root/'conditional-dependency-credit-map-v1.json'; assert not path.exists()
+    path = root/output; assert not path.exists()
     result = dict(E107_map_sha256=sha(mainpath),E103_runs=provenance,
         contrasts={name:dict(good=sorted(g),bad=sorted(b)) for name,(g,b) in CONTRASTS.items()},
         records=records,panels=panels,counts=counts,new_GPU_hours=0,new_API=0,
@@ -85,12 +86,16 @@ def analyze(root):
         limits='Explicit vs unbound measures dependency commitment. Implicit discourse is not false. Conditional availability is not all-Source ability. Arithmetic decomposition is not a unique neural mechanism or an actual training result.')
     path.write_text(json.dumps(result,indent=2)+'\n')
     manifest = dict(map_sha256=sha(path),panels=len(panels),records=len(records),new_GPU_hours=0,new_API=0)
-    (root/'conditional-dependency-credit-complete-v1.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    (root/marker).write_text(json.dumps(manifest,indent=2)+'\n')
     print('E107 secondary complete',manifest,flush=True)
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,required=True)
+    parser.add_argument('--mainmap',default='critical-dependency-commitment-map-v1.json')
+    parser.add_argument('--mainmarker',default='complete-map-v1.json')
+    parser.add_argument('--output',default='conditional-dependency-credit-map-v1.json')
+    parser.add_argument('--marker',default='conditional-dependency-credit-complete-v1.json')
     parser.add_argument('--wait',action='store_true');args=parser.parse_args()
-    while args.wait and not (args.root/'complete-map-v1.json').exists():time.sleep(20)
-    analyze(args.root)
+    while args.wait and not (args.root/args.mainmarker).exists():time.sleep(20)
+    analyze(args.root,args.mainmap,args.mainmarker,args.output,args.marker)

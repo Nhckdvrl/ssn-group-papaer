@@ -89,8 +89,12 @@ def request(rows, pass_number, directory, attempt=0):
                    max_tokens=32768, output_config=dict(effort=EFFORT))
     prefix.with_suffix('.request.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2)+'\n')
     start = time.monotonic()
+    # High-effort reasoning can outlive seven minutes. A client read timeout does
+    # not cancel server-side generation; premature retries consume provider slots.
+    read_timeout = 900 if EFFORT == 'high' else 420
     report = dict(pass_number=pass_number, attempt=attempt, item_ids=[r['item_id'] for r in rows],
                   endpoint=MESSAGES, model=MODEL, proxy_used=False,
+                  transport_read_timeout_seconds=read_timeout,
                   request_sha256=sha(prefix.with_suffix('.request.json')), status='failed')
     try:
         for transport_attempt in range(12):
@@ -98,7 +102,7 @@ def request(rows, pass_number, directory, attempt=0):
             if response_path.exists():
                 response = json.loads(response_path.read_text())
             else:
-                response_http = post(MESSAGES, payload, timeout=(15, 420))
+                response_http = post(MESSAGES, payload, timeout=(15, read_timeout))
                 response = {'http_status': response_http.status_code, 'body': response_http.json()}
                 response_path.write_text(json.dumps(response, ensure_ascii=False, indent=2)+'\n')
             if response['http_status'] not in (429, 500, 502, 503, 504): break

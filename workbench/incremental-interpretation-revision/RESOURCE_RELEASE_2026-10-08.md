@@ -1,6 +1,6 @@
 # 资源释放与资产入口（2026-10-08）
 
-**08:19 已提前停用本工作GPU并删完剩余模型权重。** 整个本用户目录实测约38GiB，当前项目缓存约17GiB，CPU/API标注和分析继续。09:00实际核验尚待执行；08:55持久timer会再次检查并监测到09:02。他人进程不在释放范围。
+**08:19 已提前停用本工作GPU并删完剩余模型权重。** 整个本用户目录实测约38GiB，当前项目缓存约17GiB，CPU/API标注和分析继续。08:55持久timer实际运行并成功退出，09:00:04/24检查无占卡；09:01:42完整实核0本用户GPU/0本工作queue、17目录0权重，见[核验摘要](results/resource-release-20261008-summary.json)。他人进程不在释放范围。
 
 - 本项目根目录：`/data1/xiangding/work/incremental-interpretation-revision/`。
 - 今日剩余6模型38个权重文件删除190652941768bytes（177.5594GiB）；清单 `model-weight-release-inventory.json`，SHA `dcefbcbd20f5fbf4c5e050225b43b82d624340c0cee43a147d910959e94983d7`。

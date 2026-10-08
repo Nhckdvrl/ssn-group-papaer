@@ -36,3 +36,5 @@ Start from released psycholinguistic stimuli and frozen models. Use garden-path 
 08:32补充：BeliefMem/Dark Room全文及指定方法附录已读，累计84 unique MAIN（5综述/1 position/78研究）。前者保留多候选、未校准confidence与规则式冲突，后者same-signal delivery/normalizer与placebo机制；共同提醒一般候选不确定性/预测奖励失败并非我们的独占贡献。E107仍完整审核在途，不读partial。
 
 08:44 LEDOM最新v4精读加入，累计85 unique MAIN（5综述/1 position/79研究）；其Proposition以posterior degradation为前提，并非任意正确内容都应更可重建。对I07的可辨别定位是：需要重解释同一观察时，完整正确解释能否违反这个排序假设，以及前缀credit是否抵消实际新关系证据；未测reverse-trained LEDOM，也不把其近邻存在当关线理由。
+
+09:09补读正式ACL2026 short Meta-Factivity position，累计86 unique MAIN（5综述/2 position/79研究）。一般commitment regulation与knowledge-action gap不独占；I07要落在观察重建与特定关系修订相反credit，E107完整依赖图待封。

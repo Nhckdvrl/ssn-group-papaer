@@ -16,12 +16,19 @@ def load(p):
 
 def main(a):
     parent = a.root / 'T4-full-v2'
-    original = parent / 'step5'
-    out = a.root / 'T4-failure-completion-v1'
+    original = a.original_audit or parent / 'step5'
+    packets = a.packets or parent / 'paraphrases.jsonl'
+    out = a.out or a.root / 'T4-failure-completion-v1'
     out.mkdir(exist_ok=True)
-    step.PROMPT = audit_paraphrases.PROMPT
-    step.validate = audit_paraphrases.validate_t4
-    rows = load(parent / 'paraphrases.jsonl')
+    if a.protocol == 'critical-dependency':
+        import critical_dependency_audit as dependency
+        step.PROMPT, step.validate, step.EFFORT = dependency.PROMPT, dependency.validate, 'high'
+    else:
+        step.PROMPT = audit_paraphrases.PROMPT
+        step.validate = audit_paraphrases.validate_t4
+    while a.wait and not (original / 'summary.json').exists():
+        time.sleep(20)
+    rows = load(packets)
     passes = []
     initial = []
     for n in [1, 2]:
@@ -36,7 +43,7 @@ def main(a):
         passes.append(existing)
     (out / 'input-provenance.json').write_text(json.dumps(dict(
         selection='Missing annotation IDs only, never semantic labels or model effects.',
-        original_packets_sha256=sha(parent / 'paraphrases.jsonl'), passes=initial,
+        original_packets_sha256=sha(packets), passes=initial,
         prompt_sha256=__import__('hashlib').sha256(step.PROMPT.encode()).hexdigest(),
         workers=1, batch_size=1, endpoint=step.MESSAGES, model=step.MODEL), indent=2)+'\n')
     while not (original / 'summary.json').exists():
@@ -78,12 +85,18 @@ def main(a):
                    model=step.MODEL, max_batch=1, workers=1, proxy_used=False,
                    original_summary_sha256=sha(original / 'summary.json'),
                    original_annotation_sha256=sha(original / 'annotated.jsonl'),
-                   failure_completion_only=True, existing_valid_annotations_unchanged=True)
+                   failure_completion_only=True, existing_valid_annotations_unchanged=True,
+                   effort=step.EFFORT, protocol=a.protocol)
     (audit / 'summary.json').write_text(json.dumps(summary, indent=2)+'\n')
-    print('E67 failure completion sealed', summary, flush=True)
+    print('Failure-only completion sealed', summary, flush=True)
 
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('--root', type=Path, required=True)
+    p.add_argument('--original-audit', type=Path)
+    p.add_argument('--packets', type=Path)
+    p.add_argument('--out', type=Path)
+    p.add_argument('--protocol', choices=['role-v2', 'critical-dependency'], default='role-v2')
+    p.add_argument('--wait', action='store_true')
     main(p.parse_args())
