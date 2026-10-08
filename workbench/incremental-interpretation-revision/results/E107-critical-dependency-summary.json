@@ -1,0 +1,712 @@
+{
+  "primary_map": "/data1/xiangding/work/incremental-interpretation-revision/E107/critical-dependency-commitment-map-v2.json",
+  "primary_sha256": "27a0143a36b5a800c02f54c44606c3286433672eb4a403be6a1e5b8ec8b7d727",
+  "secondary_map": "/data1/xiangding/work/incremental-interpretation-revision/E107/conditional-dependency-credit-map-v2.json",
+  "secondary_sha256": "0c0b5928f493143a3bbfd3f5cdd7882477189bd9ecb27ba002fb2ca34ccba03a",
+  "source_count": 50,
+  "models": [
+    "Qwen3.8-27B",
+    "gemma-4-31B-it",
+    "Ministral-3-14B-Instruct-2512"
+  ],
+  "assignments": 1200,
+  "distinct_packets": 243,
+  "complete_both": 243,
+  "adjudications": 57,
+  "agreement": 0.7654320987654321,
+  "unresolved": 0,
+  "new_GPU_hours": 0,
+  "new_P": 0,
+  "original_valid_labels_unchanged": true,
+  "selected_quality_panels": [
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/EXPLICIT_FINAL_lower",
+      "value": 0.0625,
+      "CI95": [
+        -0.020833333333333332,
+        0.16666666666666666
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/GENERIC_UNBOUND_lower",
+      "value": -0.020833333333333332,
+      "CI95": [
+        -0.0625,
+        0.0
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/INITIAL_MISREADING_lower",
+      "value": -0.10416666666666667,
+      "CI95": [
+        -0.20833333333333334,
+        -0.020833333333333332
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/explicit_or_implicit_lower",
+      "value": 0.0625,
+      "CI95": [
+        -0.020833333333333332,
+        0.16666666666666666
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE/EXPLICIT_FINAL_lower",
+      "value": 0.375,
+      "CI95": [
+        0.23958333333333334,
+        0.5104166666666666
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "metric": "WHOLE/EXPLICIT_FINAL_lower",
+      "value": 0.2916666666666667,
+      "CI95": [
+        0.16666666666666666,
+        0.4166666666666667
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/EXPLICIT_FINAL_lower",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/GENERIC_UNBOUND_lower",
+      "value": 0.020833333333333332,
+      "CI95": [
+        0.0,
+        0.0625
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/INITIAL_MISREADING_lower",
+      "value": -0.041666666666666664,
+      "CI95": [
+        -0.10416666666666667,
+        0.0
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/explicit_or_implicit_lower",
+      "value": 0.020833333333333332,
+      "CI95": [
+        0.0,
+        0.0625
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE/EXPLICIT_FINAL_lower",
+      "value": 0.3229166666666667,
+      "CI95": [
+        0.1875,
+        0.4583333333333333
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "metric": "WHOLE/EXPLICIT_FINAL_lower",
+      "value": 0.3229166666666667,
+      "CI95": [
+        0.1875,
+        0.4583333333333333
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/EXPLICIT_FINAL_lower",
+      "value": 0.041666666666666664,
+      "CI95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/GENERIC_UNBOUND_lower",
+      "value": 0.10416666666666667,
+      "CI95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/INITIAL_MISREADING_lower",
+      "value": -0.14583333333333334,
+      "CI95": [
+        -0.25,
+        -0.0625
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE-minus-WHOLE/explicit_or_implicit_lower",
+      "value": 0.041666666666666664,
+      "CI95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "metric": "REVISION_EVIDENCE/EXPLICIT_FINAL_lower",
+      "value": 0.3229166666666667,
+      "CI95": [
+        0.19791666666666666,
+        0.4583333333333333
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "metric": "WHOLE/EXPLICIT_FINAL_lower",
+      "value": 0.28125,
+      "CI95": [
+        0.15625,
+        0.40625
+      ],
+      "clusters": 48,
+      "sources": 50
+    }
+  ],
+  "conditional_coverage": [
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "all_sources": 50,
+      "eligible_sources": 14,
+      "NA_sources": 36,
+      "eligible_pairs": 155,
+      "unknown_candidates": 1
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "supported_vs_initial",
+      "all_sources": 50,
+      "eligible_sources": 15,
+      "NA_sources": 35,
+      "eligible_pairs": 171,
+      "unknown_candidates": 1
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_unbound",
+      "all_sources": 50,
+      "eligible_sources": 2,
+      "NA_sources": 48,
+      "eligible_pairs": 22,
+      "unknown_candidates": 1
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "all_sources": 50,
+      "eligible_sources": 4,
+      "NA_sources": 46,
+      "eligible_pairs": 44,
+      "unknown_candidates": 0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "supported_vs_initial",
+      "all_sources": 50,
+      "eligible_sources": 5,
+      "NA_sources": 45,
+      "eligible_pairs": 51,
+      "unknown_candidates": 0
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_unbound",
+      "all_sources": 50,
+      "eligible_sources": 1,
+      "NA_sources": 49,
+      "eligible_pairs": 8,
+      "unknown_candidates": 0
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "all_sources": 50,
+      "eligible_sources": 13,
+      "NA_sources": 37,
+      "eligible_pairs": 116,
+      "unknown_candidates": 0
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "supported_vs_initial",
+      "all_sources": 50,
+      "eligible_sources": 15,
+      "NA_sources": 35,
+      "eligible_pairs": 129,
+      "unknown_candidates": 0
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_unbound",
+      "all_sources": 50,
+      "eligible_sources": 6,
+      "NA_sources": 44,
+      "eligible_pairs": 51,
+      "unknown_candidates": 0
+    }
+  ],
+  "conditional_panels": [
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "ALL_SOURCES_EXISTENCE",
+      "metric": "any_prefix_cancellation",
+      "value": 0.08333333333333333,
+      "CI95": [
+        0.020833333333333332,
+        0.16666666666666666
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "before/good_rank_share",
+      "value": 0.23882783882783884,
+      "CI95": [
+        0.07728937728937729,
+        0.43076923076923074
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "before/mean_credit_difference",
+      "value": -2.207475252728227,
+      "CI95": [
+        -3.6987926346545947,
+        -0.78485796711966
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "prefix_cancellation/pair_share",
+      "value": 0.21978021978021978,
+      "CI95": [
+        0.03076923076923077,
+        0.4351648351648351
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix-minus-whole/good_rank_share",
+      "value": 0.21978021978021983,
+      "CI95": [
+        0.030769230769230764,
+        0.4351648351648351
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix/good_rank_share",
+      "value": 0.8461538461538461,
+      "CI95": [
+        0.6538461538461539,
+        1.0
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix/mean_credit_difference",
+      "value": 2.7512965828206433,
+      "CI95": [
+        1.2464282178591233,
+        4.370371610401319
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "whole/good_rank_share",
+      "value": 0.6263736263736265,
+      "CI95": [
+        0.4021978021978022,
+        0.8417582417582418
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "whole/mean_credit_difference",
+      "value": 0.5438213300924162,
+      "CI95": [
+        -1.459936913971765,
+        2.504984264193097
+      ],
+      "clusters": 13,
+      "sources": 14
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "ALL_SOURCES_EXISTENCE",
+      "metric": "any_prefix_cancellation",
+      "value": 0.020833333333333332,
+      "CI95": [
+        0.0,
+        0.0625
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "before/good_rank_share",
+      "value": 0.6666666666666666,
+      "CI95": [
+        0.25,
+        1.0
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "before/mean_credit_difference",
+      "value": 1.199965695568244,
+      "CI95": [
+        -5.415285862376914,
+        7.824614711702452
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "prefix_cancellation/pair_share",
+      "value": 0.08333333333333333,
+      "CI95": [
+        0.0,
+        0.25
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix-minus-whole/good_rank_share",
+      "value": -0.08333333333333333,
+      "CI95": [
+        -0.25,
+        0.0
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix/good_rank_share",
+      "value": 0.8333333333333334,
+      "CI95": [
+        0.49999999999999994,
+        1.0
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix/mean_credit_difference",
+      "value": 9.851719128969792,
+      "CI95": [
+        -3.6223500454216264,
+        22.32359226764147
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "whole/good_rank_share",
+      "value": 0.9166666666666666,
+      "CI95": [
+        0.7499999999999999,
+        1.0
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "gemma-4-31B-it",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "whole/mean_credit_difference",
+      "value": 11.051684824538038,
+      "CI95": [
+        2.7050958613079272,
+        22.487157855487567
+      ],
+      "clusters": 4,
+      "sources": 4
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "ALL_SOURCES_EXISTENCE",
+      "metric": "any_prefix_cancellation",
+      "value": 0.07291666666666667,
+      "CI95": [
+        0.010416666666666666,
+        0.15625
+      ],
+      "clusters": 48,
+      "sources": 50
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "before/good_rank_share",
+      "value": 0.07692307692307693,
+      "CI95": [
+        0.0,
+        0.1648351648351648
+      ],
+      "clusters": 13,
+      "sources": 13
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "before/mean_credit_difference",
+      "value": -1.598007824538862,
+      "CI95": [
+        -2.5104043260130253,
+        -0.7047507542452432
+      ],
+      "clusters": 13,
+      "sources": 13
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "prefix_cancellation/pair_share",
+      "value": 0.17239010989010992,
+      "CI95": [
+        0.03296703296703297,
+        0.35096153846153844
+      ],
+      "clusters": 13,
+      "sources": 13
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix-minus-whole/good_rank_share",
+      "value": 0.13942307692307696,
+      "CI95": [
+        -0.01722184065934061,
+        0.3337912087912088
+      ],
+      "clusters": 13,
+      "sources": 13
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix/good_rank_share",
+      "value": 0.6794871794871794,
+      "CI95": [
+        0.44230769230769224,
+        0.8847756410256387
+      ],
+      "clusters": 13,
+      "sources": 13
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "suffix/mean_credit_difference",
+      "value": 1.6973018209079382,
+      "CI95": [
+        0.2180458934835277,
+        3.3208923141720965
+      ],
+      "clusters": 13,
+      "sources": 13
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "whole/good_rank_share",
+      "value": 0.5400641025641025,
+      "CI95": [
+        0.32050709706959707,
+        0.7561813186813187
+      ],
+      "clusters": 13,
+      "sources": 13
+    },
+    {
+      "model": "Ministral-3-14B-Instruct-2512",
+      "construction": "ALL",
+      "contrast": "explicit_vs_initial",
+      "scope": "CONDITIONAL_TWO_CATEGORIES_AVAILABLE",
+      "metric": "whole/mean_credit_difference",
+      "value": 0.09929399636907567,
+      "CI95": [
+        -0.9548180379018686,
+        1.2772829234557637
+      ],
+      "clusters": 13,
+      "sources": 13
+    }
+  ],
+  "limits": "Explicit vs coherent implicit are separate. New dependency dimension does not overwrite old role maps. Conditional 14/4/13 source cohorts are not all-Source ability. No actual training/automatic repair/unique latent parse proof."
+}

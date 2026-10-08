@@ -6,7 +6,7 @@
 - **2026-10-06 人决定：** 从暂停恢复，重置到[ROUTE](ROUTE.md)，放弃I01/C05；先广后深，允许白盒，使用同节点8张H20。
 - **执行模式：** 自主推进[EXECUTION_BRIEF](EXECUTION_BRIEF.md)，原人审节点自审后继续；仅§6.7真正卡住或人专属开关线/状态/候选决定时回来。
 - **数据/API：** 现成成熟数据优先直接用；需新标注/修改/定点审计时只用Step Plan `step-5-preview`、≤5项/批、全局并发≤8，禁止现金接口。HF仅国内镜像，推理离线。
-- **硬资源约束：** 2026-10-08 09:00北京时间前释放全部GPU。08:19已提前停用并删完剩余权重；本用户目录实测约38GiB、项目缓存约17GiB。08:55持久检查和09:00实核仍保留，CPU/API可继续。见[资源释放](RESOURCE_RELEASE_2026-10-08.md)。
+- **硬资源约束：** 2026-10-08 09:00北京时间前释放全部GPU。08:19已提前停用并删完剩余权重，09:01实际核验本用户GPU/本工作queue/模型权重均0；本用户目录约38GiB、项目约17GiB。科学数据与结果保留。见[资源释放](RESOURCE_RELEASE_2026-10-08.md)。
 - **territory：** [T15](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)；ACL/EMNLP/NAACL按证据成熟度选周期，不投Findings，不参考EACL。
 
 ## 当前研究问题
@@ -15,7 +15,7 @@
 
 最初的归因区域仍是增量编码过时、作答选择、合理性组装、测量语义四方竞争。GP错答案、消歧surprisal、双向/重复阅读不能单独认证内部解析。原作者部分No表示not necessarily；源支持、明确矛盾与可能的额外事件分开，不能把所有GoldNo当世界虚假。
 
-**最新重新对齐：** [当前最好故事/反证/下一核心](REASSESSMENT_2026-10-07_2355.md)，含08:12完成E103/E105/E106后的判断；过程和旧预测保留在[日志](logs/2026-10-08.md)，不继续奖励阈值、Goal措辞或mask局部网格。
+**当前结论：没有合格idea。** 已有问答与自由关系表达的分离、撤回旧关系与建立新依赖的分离，以及两族有限候选中的重建credit竞争；尚未连成有足够解释力与重要后果的叙事。[整体诊断](REASSESSMENT_2026-10-07_2355.md)末节核对了E107终图，并承认重复“局部正结果→收缩→补实验”的执行问题；实验卡和精读数量不能代替科学推进。
 
 | 核心结果 | 完整证据与实际含义 |
 |---|---|
@@ -24,10 +24,10 @@
 | [E98](experiments/E98-query-guidance-versus-interpretation-fidelity.md)当前三族实际输出 | 1800actual；GP QA收益Q/G均CI含0、Min0；联合错角色仅Q明确+20.83[10.42,33.33]pp，不能讲当前共同Goal收益悖论 |
 | [E96](experiments/E96-modern-native-belief-credit.md)原生proposal/self-grader | 50发表pair/三族/300P/600LP；换消歧观察target使fidelity alignment三族+.444/.500/.500且CI正，主要MVRR；不等于完整理解完好 |
 | [E101](experiments/E101-disambiguation-region-reconstruction-credit.md)/[E102](experiments/E102-revision-evidence-credit-oracle.md) | 固定候选前缀credit三族偏旧解释、后段Q/Min偏修订；T2位置oracle改善选择10.42/8.33/21.88pp，G总体CI含0；原pool含cue来源 |
-| [E103](experiments/E103-native-pool-revision-credit-selection.md)同原S八候选 | 全50/三族1200assignment，suffix−whole原角色正确lower Q+2.08/G+6.25/Min+8.33pp，仅Min CI正、主要NPS；MVRR无新增good候选 |
+| [E103](experiments/E103-native-pool-revision-credit-selection.md)同原S八候选 | 全50/三族1200assignment；原角色类别Min +8.33pp不能解释为完整意义修复，E107新依赖读数未显示稳健完整恢复；MVRR无新增good候选 |
 | [E105](experiments/E105-added-proposals-reconstruction-faithfulness.md)/[E106](experiments/E106-positive-observation-innovation-credit.md) | Q whole预算1→8改善13.54[5.21,22.92]pp，不支持更多搜索更错；唯一无T2 positivegain无稳健跨族修复，不调cutoff |
 | [E104](experiments/E104-belief-r-revision-evidence-credit.md)跨域原1744 | 机械then后缀使UPDATE Q/Min更差；then未认证语义revision证据位置，不能据此反驳真正跨域机制，也不扫描其它cut |
-| [E107](experiments/E107-critical-dependency-commitment-audit.md)当前在途核心 | 全1200/243匿名packet高effort双遍；分明确新依赖、自然隐式、未绑定、旧误关系，旧T4角色标签不覆盖；等全图再判断选择是否真正建立替代依赖 |
+| [E107](experiments/E107-critical-dependency-commitment-audit.md)完整依赖审计 | 243/243双遍、57裁决、0未解决；全50明确依赖suffix−whole Q+6.25[−2.08,16.67]/G0/Min+4.17[−4.17,12.5]pp。Q/Min条件候选14/50与13/50源有prefix反对、suffix支持正确依赖的credit竞争；仍非广泛修复或训练后果 |
 
 E93/E95/E97/E100的cap、unknown、Tie和整族仪器不可用全部保留，不记为0能力或“已懂仅评分错”。完整范围与失败版本见各实验卡；I07/I08仍SEED，不因近邻已做部分工作桌面判死。新故事须证明值得兴奋的具体关系更新机制或后果，不寻找完全空白。
 

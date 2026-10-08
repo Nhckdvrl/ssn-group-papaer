@@ -1,6 +1,6 @@
 # E107：角色正确是明确修订了依赖，还是留下了未绑定内容？
 
-- **状态：** RUNNING；自动E431在新HTTP/统计前更名E107。
+- **状态：** DONE；自动E431在新HTTP/统计前更名E107。
 - **对应：** I07/P20与I06谓词框架；E103完整Min效果后固定顺序读全部4个positive案例引发的POST-HOC指标质量追问，不覆盖旧T4。
 - **问题：** suffix所选“correct roles”可能来自删除实体object而只说understood/noticed/discovered something；原T4不分明确clausal content argument与语篇隐式联系。区分旧误关系撤销、新依赖明确绑定、语境可恢复、未承诺；不能把语法object形式直接当语义错。
 - **数据：** E103固定全50GP Source/三族/全部1200候选assignment和所有exact Source/P packet，只审新增生成文本所承诺的关键依赖，不改/重审现成Source/Gold，不挑收益Source。cap/unfinished全部保留UNKNOWN。
@@ -17,3 +17,7 @@
 2026-10-08 08:25 封版前补充**次要内容credit读数**，不改变上面all-Source主指标/判据/标签/selection policy：在全三族同Source池所有known stopped候选中，分别比较EXPLICIT_FINAL vs INITIAL_MISREADING、EXPLICIT+IMPLICIT vs INITIAL，以及EXPLICIT vs GENERIC_UNBOUND。全候选对等权、再按Source→原cluster汇总；显式和unbound的比较只测承诺度偏好，不把implicit当错误。报告每格有两类别的Source覆盖/NA/unknown、whole/before/suffix的平均差和正确rank率、whole负而suffix正的比例。conditional pair分析不冒称全Source平均能力。另在all50上报是否出现至少一对完整修订被prefix抵消，未有eligible pair的Source只对这个存在事件记0，不当0能力。先核whole=before+suffix且all8同target，原unknown/cap候选不补标签。代码`analyze_dependency_credit_pairs.py`只等原E107 complete-map标记后读全图，无新GPU/API/位置规则；结果若只遗漏/隐式间重排，收紧内容修订叙事，不继续奖励网格。
 
 2026-10-08T08:58:19.297039+08:00 数据完整性补齐在科学效应读取前登记：E107第一遍242/243，1条schema失败未通过；等待原summary后复用既有failure-only helper，原valid标签逐项assert不变，只请求missing pass/third ID。新增completion-v1批1/workers1/high effort，仍Step Plan/全局8、0Source重审/0GPU。high transport timeout900秒仅后续新进程，既有主worker仍原420秒并继续；prompt/类别/候选/读数不改。原map v1/失败全保留，新全覆盖map v2和conditional v2另封；不读取partial/v1效应来决定标签修补。
+
+2026-10-08T09:39:22.236444+08:00 E107全覆盖v2封版自审：243/243双遍、57第三裁决、76.543%agreement、0unresolved；原v1的一条schema失败仅补1pass+1third，原valid标签不变。主图27a0143a36b5a800c02f54c44606c3286433672eb4a403be6a1e5b8ec8b7d727（1704panel），次图0c0b5928f493143a3bbfd3f5cdd7882477189bd9ecb27ba002fb2ca34ccba03a（268panel/450records），0GPU/新P。全50明确依赖suffix−whole lower Q+6.25[−2.08,16.67]/G0[0,0]/Min+4.17[−4.17,12.5]pp；含自然implicit支持仍Q+6.25/G+2.08/Min+4.17，CI均不能证共同完整恢复。Min INITIAL−14.58[−25,−6.25]pp，同时UNBOUND+10.42[0,20.83]，NPS INITIAL−20[−36,−4]、UNBOUND+16[0,36]、EXPLICIT+4[−8,16]pp。故原E103 +8.33角色收益不能称完整意义恢复，收紧I07方法故事，不改旧图。
+
+2026-10-08T09:39:22.236444+08:00 原同Source explicit vs initial的条件score对比仍有真实线索：Q14/50Source(155pairs) prefix−2.2075[−3.6988,−.7849]、suffix+2.7513[1.2464,4.3704]nats；Min13/50(116pairs)−1.598[−2.5104,−.7048]/+1.6973[.218,3.3209]；G仅4/50(44pairs)，prefix+1.2CI跨0，不能称三族共同。全50存在至少一对明确正确P被prefix抵消的cluster均值Q8.33[2.08,16.67]%/G2.08[0,6.25]%/Min7.29[1.04,15.62]%；条件可比较Source覆盖和NA全报，非所有Source理解完好或实际RL反证。下一最高信息量是原真实belief写入合同与实际使用后果，区分两句复述下的碎片化、proposal限制与feedback失配；不继续更多cut/cutoff。C/registry仍不变，I07作为探索问题保留，不自动认证合格idea。
