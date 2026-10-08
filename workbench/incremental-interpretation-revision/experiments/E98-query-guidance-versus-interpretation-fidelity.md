@@ -1,6 +1,6 @@
 # E98：提前问得更准，是否反而解释得更错？（2026-10-08）
 
-- **状态：** RUNNING；生成器E431在任何forward前更名E98。
+- **状态：** DONE；生成器E431在任何forward前更名E98。
 - **对应：** I08 / P21，源于已闭合E65/E67 complete-v2+失败补全地图，不读任何在途teacher部分效果。不改变workbench注册，I07其它固定模型继续。
 - **问题：** 提前目标问句能改善真实回答，却把同源自由解释推向明确错误关系吗？只改善requested读数未必改善meaning；问句是hypothesis不是premise，要检验model是否将goal中的关系当成证据，还是一般目标选择/输出组装不同。
 - **数据：** 既有E96固定50发表pair／100Source／MVRR-NPZ-NPS，不生成新Source/Goal。其中88 Source的INITIAL问题沿E67原字节；另12 Source不存在exact E67句子，按既有original question_id字典序选首题，不能按共享项目编号套用其它句子的旧Goal。两种goal_origin分别全scope报告；这12条不命名INITIAL诱导。其源支持Yes/No/未知仅用既有更正E91原QA标签exact文本匹配，未匹配标NA不造Gold、不重新审原句。所有100Source进入所有条件，GoalGold分层仅input定义，不能把所有INITIAL命名false assumption（P16）。
@@ -25,3 +25,5 @@
 06:04首完整Min族P匿名T4已268两遍/35裁决/0unresolved、复用原valid同packet，300assignments完整；在读角色效果前登记INTERIM all100Source/3mode联合作用，whole3family主图继续。语义labels只用封版该族，未读正在进行G/Q partial；合并audit输入SHA保留，所有cap12解释UNKNOWN界限，不按stopped筛样本。
 
 2026-10-08T06:48:43.674159+08:00 E98第二完整族Qwen INTERIM：600actual/.124373943GPUh，170新packet完整两遍/14裁决/91.765%agreement/0unresolved，mapbabc90d632cb86c3191c8d56fb76a0659aa7675c66b35be206a3eda4b08895de。全100Source QA native78.65%→goal83.33%，paired+4.69[−1.04,10.94]pp；GP50 QA+2.08[−4.17,8.33]pp，但correctroles−29.17[−41.67,−16.67]pp、GPwrong+27.08[14.58,39.58]pp、同S QAcorrect+explicitGPwrong联合+20.83[10.42,33.33]pp。NPS联合+34[20,48]pp最强，NPZ0/MVRR弱同报，不伪造全构式规律。QUESTION_ONLY一句R8总体role恢复0 CI跨0；GP仅−2.08pp misreading，CI含0。实际Yes17/No83三个mode总数相同但逐题答案不同，不以它推理解完整。Min实际QA完全不变/role损伤CI弱，故当下统一“goal优化QA却损伤忠实度”还没成立；Gemma全范围审核继续。
+
+2026-10-08T07:14:58.219678+08:00 三当前族完整主图 query-guidance-fidelity-map-v1.json SHA1d996c75bcabe9bb928515d617e1785322c50e7404cc69a2a385fbeb671ad048，1800actual/.364404345GPUh/19680panel，900P assignment/544新distinct packet分阶段双遍和62裁决，0unresolved；merged annSHAc4e000b9be01a2322a4ce35ab5c0458edfa1fc5ea38313c907e104fe65245dae。GP50 Goal−native QA Q+2.08[−4.17,8.33]/G+3.13[−4.17,10.42]/Min0[0,0]pp，无三族共同actual收益。joint QAcorrect+explicitGPwrong Q+20.83[10.42,33.33]/G+9.38[−3.13,22.92]/Minlower+4.17[−8.33,16.67]/upper+12.5[−1.04,26.04]pp。Q GPcorrectroles−29.17[−41.67,−16.67]、GPwrong+27.08[14.58,39.58]pp；G/Min较弱CI0。Q NPS主要joint+34pp，其它ct弱，不能用它写三当下族普遍Goal优化QA却伤faithfulness；原旧三族E99规律仍独立有效且scope不同。QUESTION_ONLY一句R8 Q/G GPwrong变化−2.08/0pp CI含0、Minunknown范围宽，无共同完整修复。

@@ -13,3 +13,5 @@
 05:55Min完整50对/100panels/SHA1b5f1adc1903bf049f17b57b006888b0412e1fcd59472c685e1f44c9b147075d：所有GP cueP-minus-GPP before−2.516[−3.498,−1.694]nats、from+1.776[.749,2.865]、whole−.740[−2.249,.494]；36fidelity eligible对齐before−2.702[−4.020,−1.624]、from+1.938[.859,2.977]。NPZ/NPS从消歧起CI正，MVRR后段整体不稳定但word正；不是无处有修订信号。16/50 whole负而from正，保留所有tie/null；只诊断加和贡献，非因果internalstate证明。新E102单一suffix oracle检验选择质量，旧readout不改。
 
 2026-10-08T06:22:28.509912+08:00 完整范围自审：完整三族150原pair×同两P缓存LP分解，0GPU/API，主map disambiguation-credit-map-v1.json SHA15346d37be15b3e01a32c4059632bb18cbb27f036abf20e076452d2f7a9011a6。ALL before Q−2.282[−2.982,−1.607]/G−7.949[−11.303,−4.624]/Min−2.516[−3.498,−1.694]nats；from Q+1.638[.851,2.448]/G+2.533[−.030,5.287]/Min+1.776[.749,2.865]。各族11/13/16条whole偏GP而suffix偏cue；G后缀均值方向正但CI0，不能写全三族每项显著。fidelity参照亦prefix皆负，from仅Q/MinCI分开零。不是唯一latent解释或神经因果移除。
+
+2026-10-08T06:52:41.365394+08:00 固定原数据首Source（不是选成功案例）politician/bill/received：Q/G/Min from margin为−2.874/−6.115/−.833nats，皆仍偏旧P；Min只有word margin+.221，后续又抵消。该反例与整体图同时保留，不能声称任一Source完整suffix均含正确修订信号；不能把WORD局部诊断替换主suffix。

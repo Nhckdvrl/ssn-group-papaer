@@ -1,6 +1,6 @@
 # E103：同一原观察的自然候选池，评价器会选择哪种解释？
 
-- **状态：** RUNNING；三族8分片已通过原prompt/LP/T2全50预检并启动，blind T4 finisher在途。
+- **状态：** DONE；三族8分片已通过原prompt/LP/T2全50预检并启动，blind T4 finisher在途。
 - **对应：** I07/P20；E101/E102完整三族之后的新功能后果，原问题需撤回早期角色关系。
 - **问题：** prefix reward抵消修订证据是否影响真实内容选择？同原GP观察生成候选，WHOLE重建与T2后缀oracle选择的自由解释忠实度谁更高？不声称自动reward方法/训练收益。
 - **数据：** E96固定50已发表GP源/三当前族，MVRR17、NPZ8、NPS25，所有Source沿用、不改句/问题/Gold、不做Source重审。每Source8候选：j0原E96 native greedy P及原GP-target LP逐字复用；j1–7同一原S、原Amouyal指令/4例、原native nonthinking模板，temperature .8/top_p .95/max96，hashSource×model×j固定seed，全部七种seed保留，无幸存筛选。3×50×7=1050新P+1050新score，150 greedy完整原样保留。
@@ -13,3 +13,7 @@
 - **算力：** 估≤3GPUh，八既有独立slot Q3/G3/Min2，全已释放旧科学任务后启动，0新model/下载。既有持久08:55timer/09:00硬stop及queue/per-source guards覆盖，CPU/API可完成既有数据审核。目标是探索高价值idea，今晚不补完整训练论文。
 
 2026-10-08T06:37:02.629845+08:00 GPU三族8分片全完成：1200候选assignment中150原greedy重用，1050新增采样P+1050新GP-target LP；.412222494GPUh，无queue/GPU仍在途。原source/context/offset/all8target一致验证通过，全部分片first-seed生成tokenexact和LPexact。T4完整族blind流水线仍RUNNING（首Min163新distinct packet，其余同packet复用），不读partial teacher效果；原09:00deadline/timer保持。
+
+2026-10-08T07:20:00.395734+08:00 E103首完整Min同原S八候选（50源/400assignments），mapa1518b8d1db14a89348f776005e70948ee5e5a342063a0668456fd0ba68d27d3，.078246924GPUh/163新packet两遍/32裁决/80.368%agreement/0unresolved。全50greedy正确roles42.71%，whole43.75%，suffix52.08%，pooloracle60.42%；suffix−whole正确+8.33[2.08,16.67]pp、GPwrong−12.5[−22.92,−4.17]pp，已有实际selection后果。NPS正确+16[4,32]pp/GPwrong−20[−36,−7.9]pp；MVRR correct无改善且greedy=pooloracle47.06%，没有新增good候选，不能把cue-source对上的原MVRRoracle收益直接迁移到sameSourcepool。NPZsuffix=whole，greedy差CI0，所有异质保留；还不称三族/两构式合格finding。
+
+2026-10-08T07:57:25.298407+08:00 完整三族1200原候选assignment、243新distinct packet，两遍/46第三裁决/0unresolved；900panel/.412222494GPUh。主map3651682f64f571660779a386bbd2dd0581d41e5ca9aa9be318ec5c4ddba2f333。原T4角色criterion下 suffix−whole正确lower Q+2.08[−4.17,10.42]/G+6.25[0,14.58]/Min+8.33[2.08,16.67]pp；Q有1cap，point difference不能替代lower bound。GPwrong lower变化Q−6.25[−14.58,0]/G−6.25[−14.58,0]/Min−12.5[−22.92,−4.17]pp。不能写全三族共同显著。所有当前收益尚不是完整source意义修复：看到完整Min的4positive例子含bareunderstood/discovered/noticed something，E107另POST-HOC维度将分明确依赖/语篇隐式/未绑定，旧T4有效范围不重写、不把implicit自动错。
