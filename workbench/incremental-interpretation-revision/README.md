@@ -1,64 +1,45 @@
 # Incremental Interpretation & Revision
 
-## 状态
-- **注册：** PROPOSED（人授权的 baseline residency；不改变当前 ACTIVE-MAIN / ACTIVE-EXPLORE 分配）。
-- **2026-10-06 人决定：**
-  - 研究从暂停中恢复，并重置主线：采用 [ROUTE](ROUTE.md) 中的路线，放弃 I01/C05；
-  - 先广后深；允许一开始就做白盒；
-  - 标注只用 Step5；
-  - 资源：同一节点上的 8 张 H20；按后续用户指定，标注消耗Step Plan套餐Credit，禁止现金账户接口。
-- **执行模式：** 自主执行。本地 agent 按 [EXECUTION_BRIEF](EXECUTION_BRIEF.md) 全程推进，原人审节点改为自审；只有真正卡住，或遇到开线/关线/改状态/进入候选这类决定时，才回来找人（EXECUTION_BRIEF §6.7）。开跑前必须先完成 §1 的整体认知建设。
-- **territory 卡：** [Territory Card](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)　**目标会议：** ACL / EMNLP / NAACL（按证据成熟度选周期）。
+## 状态与授权
 
-## 一句话（当前主线）
-> 强 LLM 能看到整句话，为什么仍然读错 garden-path 句？在增量编码过时、作答时选择失败、合理性组装、测量问题这四种解释之间做归因，再用机制解释模型的"修订"在哪里成功、在哪里失败（[I02](ideas/I02-garden-path-misreading-attribution.md)）。
+- **注册：** PROPOSED（人授权的 baseline residency；不改变 ACTIVE-MAIN / ACTIVE-EXPLORE 分配）。C06–08 L0，C09限定问答协议L1；尚未认证合格idea，未进入候选。
+- **2026-10-06 人决定：** 从暂停恢复，重置到[ROUTE](ROUTE.md)，放弃I01/C05；先广后深，允许白盒，使用同节点8张H20。
+- **执行模式：** 自主推进[EXECUTION_BRIEF](EXECUTION_BRIEF.md)，原人审节点自审后继续；仅§6.7真正卡住或人专属开关线/状态/候选决定时回来。
+- **数据/API：** 现成成熟数据优先直接用；需新标注/修改/定点审计时只用Step Plan `step-5-preview`、≤5项/批、全局并发≤8，禁止现金接口。HF仅国内镜像，推理离线。
+- **硬资源约束：** 2026-10-08 09:00北京时间前释放全部GPU。08:19已提前停用并删完剩余权重；本用户目录实测约38GiB、项目缓存约17GiB。08:55持久检查和09:00实核仍保留，CPU/API可继续。见[资源释放](RESOURCE_RELEASE_2026-10-08.md)。
+- **territory：** [T15](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)；ACL/EMNLP/NAACL按证据成熟度选周期，不投Findings，不参考EACL。
 
-**为什么是这条路线**（详见 [ROUTE](ROUTE.md) §0–§1）：三个社区在这个问题上互相矛盾。
-- 理解问答研究：GP 对 LLM 特别难（GPT-5 非 GP 93.7%、GP 46.8%），原因留作未来工作；
-- surprisal 研究：LLM 在消歧处并不太惊讶，而且同时保留两种解析；
-- 架构研究：把因果掩码当作 GP 失败的原因。
+## 当前研究问题
 
-已有证据（Li 中双向模型同样认同误解；thinking 的效果因模型而异，GPT-5 是明显例外）已经在质疑因果掩码的充分解释。
+强模型看到完整句后，旧关系的撤回与正确替代关系的建立为何可能分离？进一步问：当自监督内容奖励重建的观察本身必须改读，它是否把原表达的可预测性误当作正确修订的credit？这是[I06](ideas/I06-late-verb-frame-reanalysis.md)/[I07](ideas/I07-self-supervision-inherits-interpretation-bias.md)的探索切口，不能先假定一般机制成立。
 
-**已有的起点证据：** 对 Amouyal 公开的 31 个模型结果的审计（[结果](results/D0-Amouyal-released-item-type-audit.json)，无新推断）显示：
-- 及物 Subj/Obj 和多数 NP/S 条目在无歧义对照句上同样被答 Yes，提示需区分句中断言与可能的额外事件；仅凭此不能完成错误归因。作者已说明部分 No 意为 not necessarily，原任务约定保留；
-- 原作者 gold 为 No 的部分条目上，公开答题差距达 25–65pp（GPT-5 RR 62.5% 对 98.8%）；旧 D0 把 RR 等整类视为“确实为假”尚不充分，需 E52 双遍逐题区分 CONTRADICTED 与 NEITHER，不能直接当作真实语义错误。
+最初的归因区域仍是增量编码过时、作答选择、合理性组装、测量语义四方竞争。GP错答案、消歧surprisal、双向/重复阅读不能单独认证内部解析。原作者部分No表示not necessarily；源支持、明确矛盾与可能的额外事件分开，不能把所有GoldNo当世界虚假。
 
-## 主张与 idea
-- [CLAIMS](CLAIMS.md)：新路线是 C06–C09（C06–08 L0；C09为限定协议L1因果测量）。C00–C05 是旧路线的历史测量，保留，不再推进。
-- [I02](ideas/I02-garden-path-misreading-attribution.md)：当前主 idea（PILOT）。[I01](ideas/I01-event-reference-or-lexical-echo.md)：PARKED。
-- [I03](ideas/I03-transferable-interpretation-repair.md)与[I04](ideas/I04-selective-relational-error-correction.md)：跨用途修订、修复与保持的选择性（SEED）；[I05](ideas/I05-premature-source-consumption.md)检验源信息消费时机（SEED）。新精读与整体画像见[知识库综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。尚未认定合格idea。
-- [PAIN_LOG](PAIN_LOG.md)：P13 记录问句语义混杂，P14 记录单模型与复用 24 句的教训。
+**最新重新对齐：** [当前最好故事/反证/下一核心](REASSESSMENT_2026-10-07_2355.md)，含08:12完成E103/E105/E106后的判断；过程和旧预测保留在[日志](logs/2026-10-08.md)，不继续奖励阈值、Goal措辞或mask局部网格。
 
-## 近邻与可借的研究方法（完整定位见 ROUTE §1.3）
-- Amouyal ACL'25/'26：人机行为比较、GP 特别难；
-- Hanna & Mueller NAACL'25：2B 模型上 GP 特征共存，QA 不复用；
-- Zeng Findings'26：词汇修订的推迟机制、非因果 oracle；
-- Guo et al. 2026（CICM）/ Tang ICML'26 / Prakash ICLR'26：显式更新中的"保留但未选中"、查询时汇总、lookback；
-- CASTLE / Prompt Repetition：因果掩码有害的前提、重复输入。
+| 核心结果 | 完整证据与实际含义 |
+|---|---|
+| [E52](experiments/E52-genuine-revision-reading-map.md)广面起点 | 1732公开QA/309 GP pair，14模型/5族；任务语义与能力证据分开；§1精读和“我的理解”已写日志 |
+| [E67](experiments/E67-reading-goal-to-free-relations.md)/[E99](experiments/E99-goal-qa-correct-with-explicit-misreading.md)旧三族Goal后果 | 同S QA正确＋明确误角色联合增17/12/30pp；完整自由角色3204输出已封版，非仅QA均值或唯一latent parse |
+| [E98](experiments/E98-query-guidance-versus-interpretation-fidelity.md)当前三族实际输出 | 1800actual；GP QA收益Q/G均CI含0、Min0；联合错角色仅Q明确+20.83[10.42,33.33]pp，不能讲当前共同Goal收益悖论 |
+| [E96](experiments/E96-modern-native-belief-credit.md)原生proposal/self-grader | 50发表pair/三族/300P/600LP；换消歧观察target使fidelity alignment三族+.444/.500/.500且CI正，主要MVRR；不等于完整理解完好 |
+| [E101](experiments/E101-disambiguation-region-reconstruction-credit.md)/[E102](experiments/E102-revision-evidence-credit-oracle.md) | 固定候选前缀credit三族偏旧解释、后段Q/Min偏修订；T2位置oracle改善选择10.42/8.33/21.88pp，G总体CI含0；原pool含cue来源 |
+| [E103](experiments/E103-native-pool-revision-credit-selection.md)同原S八候选 | 全50/三族1200assignment，suffix−whole原角色正确lower Q+2.08/G+6.25/Min+8.33pp，仅Min CI正、主要NPS；MVRR无新增good候选 |
+| [E105](experiments/E105-added-proposals-reconstruction-faithfulness.md)/[E106](experiments/E106-positive-observation-innovation-credit.md) | Q whole预算1→8改善13.54[5.21,22.92]pp，不支持更多搜索更错；唯一无T2 positivegain无稳健跨族修复，不调cutoff |
+| [E104](experiments/E104-belief-r-revision-evidence-credit.md)跨域原1744 | 机械then后缀使UPDATE Q/Min更差；then未认证语义revision证据位置，不能据此反驳真正跨域机制，也不扫描其它cut |
+| [E107](experiments/E107-critical-dependency-commitment-audit.md)当前在途核心 | 全1200/243匿名packet高effort双遍；分明确新依赖、自然隐式、未绑定、旧误关系，旧T4角色标签不覆盖；等全图再判断选择是否真正建立替代依赖 |
 
-从广面实验和意外结果找叙事，近邻的局部发现与方法可以复用。完整故事形成后，说明证明它为何值得兴奋、带来什么新认识，以及是否被近邻完整覆盖；不寻找完全空白的空间，不因局部相似关线。
+E93/E95/E97/E100的cap、unknown、Tie和整族仪器不可用全部保留，不记为0能力或“已懂仅评分错”。完整范围与失败版本见各实验卡；I07/I08仍SEED，不因近邻已做部分工作桌面判死。新故事须证明值得兴奋的具体关系更新机制或后果，不寻找完全空白。
 
-## 历史与资产
-- [DIAGNOSIS](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)：51 个实验为什么没有得到好 idea（执行为主因，数据为次因，领域本身没有被证伪）。
-- [PROGRESS_SUMMARY](PROGRESS_SUMMARY_2026-10-06.md)：E00–E51 逐项结果、失败与勘误。[FILE_INDEX](FILE_INDEX.md)：文件入口。
-- [DATA_PLAN](DATA_PLAN.md)：数据来源、许可与审计；新路线的数据方案见 EXECUTION_BRIEF §4。
-- 本地 cache：`/data1/xiangding/work/incremental-interpretation-revision/`（upstream / normalized / models / runs）。原始数据、模型和逐条输出不进 git；复现入口见 [scripts/README.md](scripts/README.md)。
-- 当前自主执行：[E52](experiments/E52-genuine-revision-reading-map.md)，1732公开QA/309 GP pairs；全文综合和“我的理解”见当日日志/领域地图。Step5全部走Step Plan，≤5项/批；HF资产只走镜像，本地推理离线。E52完整资产在上述cache的`E52/`，精度/接口失败同样保留。
-- 数据资格：原双轮/裁决资产`E52/step-full-v4/`保留；反例世界双轮复核完成，最终主分析入口`E52/qualified-v3.jsonl`保留原S/Q/gold和独立T2/T3。严格矛盾仅覆盖2个NPS词汇组，不代表全部理解错误；`qualified-v2`仅为历史资格。
-- E52完整14模型/5族地图、[E59](experiments/E59-source-grounding-versus-world-question.md)三族源支持测量、[E54](experiments/E54-prequestion-oracle-and-revision-selectivity.md)三族问句前可见性干预均已统计。明确源支持任务中仍有差距，可见性干预未有稳定选择性恢复；控制损伤与GP修复分别报告。尚无合格idea，能力/解析主张仍未建立。
-- **2026-10-07 执行调整：** 根据用户提醒停止追加实验与标注，在途API已收束、资产保留，重新审视科学问题与研究价值；注册状态不变。诊断见[当日日志](logs/2026-10-07.md)。
-- **同日继续：** 用户要求由综述、最新顶会与arXiv重建认识；新增[82篇主文精读卡](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)。[E55](experiments/E55-natural-cue-source-patching.md)自然cue源位置替换已完成；[E60](experiments/E60-source-consumption-depth.md)保持源计算不变的消费时机干预已完成，初始收益伴随正确关系损伤；[E53](experiments/E53-faithful-two-sentence-paraphrase.md)10260复述的旧T4-native-v2已6244/6247 packet双遍、635裁决、3未解决；语态澄清前的旧协议不当当前role-v2能力证据，未再解读部分标签。[E63](experiments/E63-shared-source-cross-use-patching.md)同一任务未知源缓存的三族QA/角色生成已全部完成，495新文本完整双遍和74分歧裁决已结束；初版未支持三族共同角色恢复，MVRR的语态/施事v2纠正已闭合，三族共同正向角色恢复仍未建立。[E64](experiments/E64-source-bank-route-decomposition.md)以核心源位置分解检验用途路径，三族完整问答/生成已结束，QA和role-v2完整地图已自审，MVRR反向cue角色损伤跨三族、正向整体恢复不稳。[E65](experiments/E65-goal-conditioned-cross-question-reading.md)三族四构式的提前目标→未询问关系完整矩阵已自审（892QA/178clusters）；NPZ INITIAL联合收益跨三族，但跨关系修复不统一；E66完整路径切分已自审：源路径不能保留原生目标收益；E68对称路径整图已自审：纯直接作答也非三族关系修复，停止追加goal/mask网格，E67完整四构式自由关系迁移并行，与角色纠正独立推进。注册状态不变。
-- 新资产：上述cache的`E59/source-scope-final-v1.json`、`E54/prequestion-oracle-map-v1.json`与`E54/figures-v1/`（PNG/PDF），E55的`natural-cue-patch-map-v1.json`、E60的`source-consumption-depth-map-v1.json`，以及E60的`figures-v1/`、E63输入/仪器/全部失败版本和`T4-full-v1/`审核缓存；git的小摘要引用完整结果SHA。
+## 知识库与资产
 
-## 决策记录
-- **2026-10-05：** 人选择本 territory，授权 training-free baseline residency；取消 agent 自加的停步 gate；构造与语义审计改用 Step。
-- **2026-10-06：** 人要求暂停并归档（E51 后）。同日，人接受诊断，决定重置主线、采用新路线、恢复研究、标注只用 Step5、先广后深、允许白盒，并上传 main 交给本地 agent 执行。随后人决定采用**自主执行模式**：本地 agent 全程自主推进，原人审节点改为自审，只有真正卡住或需要人做的状态类决定时才回来找人；这条决定覆盖 AGENTS/EXECUTION 中"决策点请人审"的默认规则。
+- [领域地图](../../library/themes/incremental-language-processing/FIELD_MAP.md)、[84篇主文精读索引](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)、[跨领域综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。5综述/1 position/78研究；所读版本/附录/接收/代码核对分开，摘要与下载不混计。
+- 最新近邻：ABBEL/ReBel/Agent-BRACE的belief内容信号、TRLM的inverse feedback、IW-OPD的prefix compatibility、Self-CTRL的一致性、Causal Quotient的表示/使用/尺度、BeliefMem的候选置信记忆、Dark Room的奖励传递机制。定位与increment写在论文卡，不自动输出关线判决。
+- 外置根目录：`/data1/xiangding/work/incremental-interpretation-revision/`；`E##/`保留原数据、输入/配置、输出/LP、审核、map及complete标记；原始数据、模型、PDF不进git。当前95个已存在map文件索引及17模型0权重状态见[释放清单](RESOURCE_RELEASE_2026-10-08.md)，历史/interim不冒充独立完成结论。
+- E52主资格入口`E52/qualified-v3.jsonl`，原v2/双轮/裁决资产保留。E53旧T4-native-v2为6244/6247双遍、635裁决、3未解决，属于语态澄清前协议，不当当前role-v2能力证据；没有继续读partial效果。
+- [scripts/README](scripts/README.md)与各实验卡提供复现入口；当前tokenizer/config/revision/manifest可用、权重已释放。重新GPU/下载需人新增资源授权，模型只走国内镜像。
+- 历史入口：[E00–51总结](PROGRESS_SUMMARY_2026-10-06.md)、[旧路线诊断](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)、[FILE_INDEX](FILE_INDEX.md)、[DATA_PLAN](DATA_PLAN.md)、[CLAIMS](CLAIMS.md)、[PAIN_LOG](PAIN_LOG.md)。原事实与失败均保留在git历史/实验卡/日志。
 
-- 核心新节点：E69原发表45sets语义×结构图已完成（10944评分），合理性与GP差距并存，不能统一归为早期编码过时；E70只对既有BASE/TARGET自由输出标原Q的断言脚印（1280原子项、≤5/批）；E71原发表40对的新正确子句先盲审，再检验正确第一句的后续消费。E67三族3204自由输出已全部完成（6.530GPU·h），T4完整双遍运行中，批5/共享8/分歧裁决不变。所有新结果尚不等于合格idea。
+## 人的决定记录
 
-- 最新核心块：[E70](experiments/E70-atomic-repair-footprints.md)1280原子双遍/183裁决与完整地图已自审；[E84](experiments/E84-source-key-versus-value-revision.md)5664 K/V条件、.237GPU·h/0API完成，无共同完整修复，统计勘误保留。[E82](experiments/E82-current-open-model-baseline.md)复用原892QA的当下强模型测试三族8分片全21408条件完成（1.271GPU·h），已完整自审；[E85](experiments/E85-lexical-semantic-recovery-transfer.md)复用人类词义48框架/192句原coherence金标，8卡全4608条件完成；不新增原数据审核。
-
-- **最后一晚（人2026-10-07晚决定）：** 先找值得追的探索idea，不要求现在补齐成稿证据。[I06](ideas/I06-late-verb-frame-reanalysis.md)问早期谓词论元框架是否需重算；[E88](experiments/E88-verb-versus-noun-lookahead.md)复用151发表源组/784QA，18816条件/.468GPU·h已自审；E89的9408实际答案/.626GPU·h也完成，均0新API；每两项核心实验重新[对齐](REASSESSMENT_2026-10-07_2225.md)，不继续防御提示网格。
-- **最新探索切口：** [I07](ideas/I07-self-supervision-inherits-interpretation-bias.md)问自监督内容reward是否继承观察解释偏差；E91/E92已闭合（1944＋1800评分/0新API），固定P的原/消歧观察改变credit语义对齐，主要MVRR与一个generator，尚未认证一般机制。下一社区Belief-R原1744修订题直接用，不bulk审计。
-- **资源硬截止：** 2026-10-08 09:00北京时间前停止本工作全部GPU；持久timer 08:55提前释放、监测到09:02，不触碰他人服务。已删除11个完成实验模型的可再下载权重294.97GiB及8.64GB残片/安装缓存，项目约198GiB；剩余6模型权重停卡后也释放。全部tokenizer/config/revision/manifest、科学数据/结果保留，外置删除清单与国内镜像下载脚本可用于重建；原manifest不表示当前权重仍存在。
+2026-10-05选择territory并授权baseline residency；2026-10-06暂停归档E51后，接受诊断并恢复新路线；同日授权自主执行，覆盖普通流程中的停步gate。2026-10-07晚要求以高信息量实验找到值得追的idea，数据质量优先、无需今晚补齐完整训练论文；随后明确09:00释放GPU和模型空间。agent未作开关线、状态或候选决定。

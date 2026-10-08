@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-82篇主文（5综述+1 position+76研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+84篇主文（5综述+1 position+78研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -142,3 +142,7 @@
 - [IW-OPD作者v1](xie2026-position-bias-opd.md)：prefix compatibility加权训练，理论ratio与实用unsigned代理区别；v3未精读。
 
 - [Causal Quotient最新Oct4作者v1](li2026-causal-quotient-belief-state.md)：精确reward-null、recoverability/use/scale分离；合成流而非自然任务的范围。
+
+- [BeliefMem作者v2](liao2026-belief-memory.md)：多候选memory与非后验confidence merge，现成benchmark；接收未核。
+
+- [Dark Room作者v2](wang2026-dark-room-reward.md)：固定信号换传递通道与placebo归属，条件化的GRPO失败机制；独立研究者预印本，代码未独立复现。

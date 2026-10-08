@@ -32,3 +32,5 @@ Start from released psycholinguistic stimuli and frozen models. Use garden-path 
 ## 2026-10-08 08:12：真实候选与文献距离重新对齐
 
 知识库82 unique MAIN（5综述＋1 position＋76研究），TRLM/IW-OPD/Causal Quotient实际阅读版本及附录范围见新增卡；下载/摘要不混计。E103同原S候选的suffix角色收益目前Min明确、主要NPS；E105 Q更多候选确实改善，E106唯一自动规则无稳健修复。不能讲“更多搜索更坏”、通用“prefix应少奖”或一般“保留但不用”的新发现。E107高effort全1200候选依赖承诺审计将辨别真正绑定与自然隐式/未绑定，旧T4不覆盖，implicit不默认错。最新[重新对齐](../../../workbench/incremental-interpretation-revision/REASSESSMENT_2026-10-07_2355.md)明确当前最好故事、可推翻证据及下一动作，尚未认证合格idea。
+
+08:32补充：BeliefMem/Dark Room全文及指定方法附录已读，累计84 unique MAIN（5综述/1 position/78研究）。前者保留多候选、未校准confidence与规则式冲突，后者same-signal delivery/normalizer与placebo机制；共同提醒一般候选不确定性/预测奖励失败并非我们的独占贡献。E107仍完整审核在途，不读partial。

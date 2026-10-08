@@ -13,3 +13,5 @@
 - **算力：** CPU/API only，0GPU/新P/模型下载；复用exact packets减少调用不删Source，完成后原GPU已可清理权重，不占09:00后卡。
 
 2026-10-08T07:57:25.298407+08:00 全1200 assignment/243 distinct Source-P packet冻结，high-effort Step Plan新维度双遍共享8在途，0Source重审/0新P/0GPU。旧T4 ActorAgent/Patient规则不覆盖，仅新增content dependency明确程度，不以lack-that/NP-object形式判断错误，不强把自然implicit读法判坏。
+
+2026-10-08 08:25 封版前补充**次要内容credit读数**，不改变上面all-Source主指标/判据/标签/selection policy：在全三族同Source池所有known stopped候选中，分别比较EXPLICIT_FINAL vs INITIAL_MISREADING、EXPLICIT+IMPLICIT vs INITIAL，以及EXPLICIT vs GENERIC_UNBOUND。全候选对等权、再按Source→原cluster汇总；显式和unbound的比较只测承诺度偏好，不把implicit当错误。报告每格有两类别的Source覆盖/NA/unknown、whole/before/suffix的平均差和正确rank率、whole负而suffix正的比例。conditional pair分析不冒称全Source平均能力。另在all50上报是否出现至少一对完整修订被prefix抵消，未有eligible pair的Source只对这个存在事件记0，不当0能力。先核whole=before+suffix且all8同target，原unknown/cap候选不补标签。代码`analyze_dependency_credit_pairs.py`只等原E107 complete-map标记后读全图，无新GPU/API/位置规则；结果若只遗漏/隐式间重排，收紧内容修订叙事，不继续奖励网格。
