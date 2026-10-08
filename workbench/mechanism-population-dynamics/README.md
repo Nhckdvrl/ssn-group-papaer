@@ -9,6 +9,9 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
+### 2026-10-08 判别实验（人审 v2 之后）
+**E75：** 按头编号，IOI circuit 在 410M 兄弟模型间几乎不迁移（0.06）；按功能与因果映射后，同初始化 0.85、异初始化 0.94 → 计算相同，只是换了承担的头，“circuit 只部分对应”降级。**E76：** 代表性 Flan 也没有在继续预训练中装入问答开关（+0.15 ± 0.24），止损关闭。agent 建议本工作区停止投入，待人决定（`logs/2026-10-08.md`）。
+
 ### 当前进展（2026-10-06）
 **v2（2026-10-08）：** 研究问题升级为“不同预训练 run 之间机制在什么意义上对应、由什么决定”：层与算法共享，组件跟随初始化，task circuit 只部分对应（IOI，E73 / E74），功能跟随语料；见 `paper-acl-v2/` 与 `experiments/A09`。
 

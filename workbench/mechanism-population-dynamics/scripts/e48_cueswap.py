@@ -218,7 +218,7 @@ if __name__ == "__main__":
     ap.add_argument("--analyze", action="store_true")
     ap.add_argument("--size")
     ap.add_argument("--seed")
-    ap.add_argument("--cond", choices=["orig", "swap", "none"])
+    ap.add_argument("--cond", choices=["orig", "swap", "none", "rep"])
     ap.add_argument("--tokens", type=int, default=None)
     ap.add_argument("--p-flan", type=float, default=None)
     ap.add_argument("--evals-at", default=None, help="comma-separated token counts")
