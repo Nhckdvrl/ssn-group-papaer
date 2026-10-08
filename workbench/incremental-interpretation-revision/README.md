@@ -33,7 +33,7 @@ E93/E95/E97/E100的cap、unknown、Tie和整族仪器不可用全部保留，不
 
 ## 知识库与资产
 
-- [领域地图](../../library/themes/incremental-language-processing/FIELD_MAP.md)、[84篇主文精读索引](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)、[跨领域综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。5综述/1 position/78研究；所读版本/附录/接收/代码核对分开，摘要与下载不混计。
+- [领域地图](../../library/themes/incremental-language-processing/FIELD_MAP.md)、[85篇主文精读索引](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)、[跨领域综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。5综述/1 position/79研究；所读版本/附录/接收/代码核对分开，摘要与下载不混计。
 - 最新近邻：ABBEL/ReBel/Agent-BRACE的belief内容信号、TRLM的inverse feedback、IW-OPD的prefix compatibility、Self-CTRL的一致性、Causal Quotient的表示/使用/尺度、BeliefMem的候选置信记忆、Dark Room的奖励传递机制。定位与increment写在论文卡，不自动输出关线判决。
 - 外置根目录：`/data1/xiangding/work/incremental-interpretation-revision/`；`E##/`保留原数据、输入/配置、输出/LP、审核、map及complete标记；原始数据、模型、PDF不进git。当前95个已存在map文件索引及17模型0权重状态见[释放清单](RESOURCE_RELEASE_2026-10-08.md)，历史/interim不冒充独立完成结论。
 - E52主资格入口`E52/qualified-v3.jsonl`，原v2/双轮/裁决资产保留。E53旧T4-native-v2为6244/6247双遍、635裁决、3未解决，属于语态澄清前协议，不当当前role-v2能力证据；没有继续读partial效果。
