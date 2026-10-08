@@ -25,3 +25,5 @@
 **跨域反证边界：** [E104](../experiments/E104-belief-r-revision-evidence-credit.md)原Belief-R全1744×三族缓存LP唯一then后缀oracle，UPDATE选择Q/Min显著变差（−12.72/−25.12pp），G近零；MAINTAIN反而改善。故目前没有通用信念修订reward修复，I07新prefix cancellation对象只得到GP语法歧义支持。不得挑小部分局部抵消条目来遮住这个整体反证；作者语用Gold界限保留。原E96表述干预证据仍成立，E103检验真实proposal池后果。
 
 2026-10-08T06:38:57.045221+08:00 E104解释校正（原数字/SHA/条件完整保留）：原条件句唯一then是结构边界，未被认证为引发人类语用suppression的最早证据位置；alternative-cause等关键内容常在antecedent。因此其负结果只排除这次机械consequent-only迁移，不能作为“真正语义修订证据oracle在跨域失败”的反证，也不能声称否定通用prefix cancellation机制。当前跨域机制仍未核对/未建立；不继续扫描cut或事后挑语义位置。这是实验解释限制，不是Source数据错误或重标需求。
+
+**08:12完整实际候选/预算/自动规则后：** E103全三族的原角色正确选择suffix−whole仅Min CI正（+8.33[2.08,16.67]pp、NPS+16[4,32]）；Q+2.08/G+6.25均弱，MVRR同源8池无新增好候选。E105的whole预算gain Q+13.54[5.21,22.92]pp，不能讲更多搜索更坏；E106唯一无T2 positivegain没有稳定跨族修复，不调cutoff。三图SHA/自审见[最新重新对齐](../REASSESSMENT_2026-10-07_2355.md)。原T4角色类别不等于完整content binding；E107全1200匿名候选新增明确/隐式/未绑定依赖维度正在双遍高effort审计，implicit不预定坏，旧map不覆盖。I07仍探索SEED；值得追的增量必须是反修订credit的具体语义操作与真实选择后果，不是generic inverse scoring/token weighting（TRLM/IW-OPD已owner），也不是泛泛保留但不用（Causal Quotient已owner）。本局部reward块到E106收束，E107解释结果质量，不再扫描奖励公式。

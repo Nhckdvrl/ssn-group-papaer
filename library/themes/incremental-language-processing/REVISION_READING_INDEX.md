@@ -1,6 +1,6 @@
 # 2026-10-07 修订研究精读卡索引
 
-76篇主文（5综述+71研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+82篇主文（5综述+1 position+76研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
 
 - [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
 - [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
@@ -136,3 +136,9 @@
 - [Self-CTRL：独立行为与说明之间的一致性训练（arXiv2026，MIT CSAIL）](pres2026-self-ctrl.md)：主文/指定App已精读，版本范围见卡。
 
 - [Position：以跨输入关系作为优化对象（ICML2026，作者组接收页核；所读为March5作者稿）](pres2026-consistency-position.md)：主文/指定App已精读，版本范围见卡。
+
+- [TRLM NeurIPS2024 spotlight，作者v2](yerram2024-time-reversal.md)：inverse scoring与reverse-trained反馈的贡献归属；v3存在未精读。
+
+- [IW-OPD作者v1](xie2026-position-bias-opd.md)：prefix compatibility加权训练，理论ratio与实用unsigned代理区别；v3未精读。
+
+- [Causal Quotient最新Oct4作者v1](li2026-causal-quotient-belief-state.md)：精确reward-null、recoverability/use/scale分离；合成流而非自然任务的范围。
