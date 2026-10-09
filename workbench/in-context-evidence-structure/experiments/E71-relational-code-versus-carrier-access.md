@@ -1,6 +1,6 @@
 # E71：答案前缀的收益需要来源关系，还是只需要一套扩展语法？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** DONE
 - **类型：** PILOT
 - **对应：** I04/C17/C18/C19/P12；本次主张不升级。
 - **为什么现在：** E67同时改变了来源码的结构位置与答案namespace；E70只在Alex/Sam码词上冻结迁移。最强近邻已提出非任务特定QK alignment，不能再把label-blind状态当新规则表示。必须拆开关系信息、载体可读性和特定词先验。
@@ -28,3 +28,19 @@
 - **算力：** 本地GPU0先32contexts，预计单卡3–6分钟（包括模型加载），峰值<80GB；关键发现回来后才启动确认。fvcrc20留给独立问题，不盲目占满。记录进程墙时而非利用率积分。
 - **产物：** scripts/e71_relational.py、scripts/analyze_e71.py；results/e71/*/{run,analysis}.json入git，contexts/behavior JSONL及layout留NFS。
 - **定位：** Cho ICLR2025已有forerunner/shortcut与prediction bias；Few-Shot Examples Add Up §6/附录K已有alignment不需原任务identity；Wang anchor/QK已有。该卡只测试明确的relation×format预测与此前公共偏移的边界，不宣称这些概念首次发现。
+
+## 发现记录（确认运行之前写）
+- 32contexts全部控制通过：no-op/feature/mass/untouched=0，fixed-Q spread2.86e-6。
+- linked D0→D1 accuracy0.734→0.914；orthogonal0.578→0.578。relation×layout accuracy+0.180[0.078,0.281]、margin+0.526[0.422,0.614]，满足预定确认MIE。
+- frozen共享frame linked margin效应恢复0.720[0.570,0.871]，accuracy+0.125[0.063,0.188]、source排序+0.109[0.031,0.188]，满足预定确认MIE；orthogonal full gap0.045不足0.2，不解释ratio。
+- 预定cooperation的source排序交互为0[-0.047,0.047]，未复现E70的事后线索；不能写成已确认合作理论。发现阶段原生linked排序饱和到1.00，CI不代表跨任务确定性。
+- 按原卡启动64context seed171001（Alice/Bob、Left/Right、新词库、toxic/safe），不修改frame、读数或阈值。结果文件 results/e71/qwen3_discovery/analysis.json。
+
+## 独立确认：哪些预测成立，哪些失败
+- 64contexts全保留，no-op/feature/forbidden/未修改cache均0，fixed-Q spread2.86e-6。science wall time发现196.582s、确认388.433s。
+- relation×layout accuracy0.109[0.070,0.152]、margin0.514[0.427,0.597]；source排序0.063[-0.039,0.164]不确定。linked D0→D1 accuracy0.520→0.645、排序0.898→0.938；orthogonal0.500→0.516、排序0.664→0.641。相同扩展语法不充分解释收益，关系码是有界的关键条件；不是新binding电路证明。
+- **冻结frame泛化未过预设MIE：** 恢复35.0%[23.1,47.7]平均margin效应（低于50%），accuracy+3.1点[0.8,5.5]（低于5点），source排序−0.8点[-6.3,4.7]。不复现发现72%/12.5点规模；不能称跨名字/码词的通用frame。因确认同时换名字、码词、词库、标签，不能单独归因为哪个因素。
+- own common恢复69.5%[55.0,85.8]margin、accuracy+6.3点[2.7,9.8]，但source排序+2.3点CI跨0；说明该context的共享成分仍有用，固定跨context方向并不自动替代它。
+- 预定common×centered来源排序交互+0.086[0.023,0.156]；accuracy交互−0.016[-0.063,0.027]、margin+0.030[-0.088,0.137]。E70事后线索得到新材料有界支持，但发现集交互0、有排序饱和；只支持这个排序统计/接口的非加性，非完整普遍合作理论。
+- linked D1正常−翻code margin+1.021[0.892,1.165]；为冲突cue诊断，不报为Source准确率。只有一句Source指令的raw恢复很小，不能推广到native chat/reasoning；E72独立压力测试处理该边界。
+- 结果 results/e71/qwen3_confirmation/analysis.json；C17/C19仍L1，原E70的固定身份范围保留，通用frame候选收窄；不改ACTIVE状态。

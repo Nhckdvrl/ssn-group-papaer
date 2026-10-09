@@ -64,3 +64,10 @@
 | C19 | float32下，来自不同发现context的冻结label-blind公共prefix-key偏移，在新词库/标签词上恢复blind−isolated margin效应0.527[0.274,0.760]、accuracy+0.059[0.023,0.094]；固定Q组内相对logits近不变（spread<4e-6），支持group visibility/prior可介导预测恢复 | L1 | E70；`results/e70/qwen3_confirmation/analysis.json`、`frozen_frame/frame_metadata.json` | shared Source排序0.828，低于native0.938，预测恢复≠binding恢复。仅固定两名字/marker/布局、36层高容量偏移，保留原生其它缓存，非函数向量独立足够、非整个contextualization规律；进一步预测新schema/名字/模型与native路径 |
 
 E70 common/centered/both的Source排序交互为事后分析（`interaction_posthoc.json`），需要新材料预定确认才升级为合作机制解释。所有新主张不改C09/C13旧有界结果，也不自动定义新head。与Cho shortcut、Few-Shot Examples Add Up（特别附录K）及TVS等强近邻的差异尚需预测与因果路径补足。
+
+
+### E71对C17/C19的预定压力测试（2026-10-10，仍L1）
+- C17：保持扩展namespace、token频率/位置相同，code与source一一对应时prefix收益大、与source/class正交时小。独立新材料relation×layout accuracy+0.109[0.070,0.152]、margin+0.514[0.427,0.597]；来源排序交互CI跨0。Source字段仍真实/充分，故单纯答案空间扩展不足以解释该有界收益；尚非新binding电路。证据 E71、results/e71/qwen3_confirmation/analysis.json。
+- C19：**旧冻结frame的新身份/新码迁移未达到预设MIE**：fraction0.350[0.231,0.477]、accuracy+0.031[0.008,0.055]、来源排序−0.008[-0.063,0.047]。发现的0.720/accuracy+0.125幅度不复现。原C19的固定Alex/Sam范围保留；不升级“通用frame”，不按seed或词表重估旧frame后算确认。
+- 同context的own common仍恢复0.695[0.550,0.858]margin、accuracy+0.063[0.027,0.098]；完整blind与common/centered的来源排序交互+0.086[0.023,0.156]，是E70 POST-HOC之后新预定材料的有界支持。发现交互0、确认accuracy/margin交互CI跨0，不能升为普遍合作理论。
+- 新名字/码词/词库/label同时更换，只能说明联合泛化有边界，不能单独定位哪种身份导致。native chat/reasoning尚待E72，raw一句Source指令边界不得替代该测试。

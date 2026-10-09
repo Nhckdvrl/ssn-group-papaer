@@ -245,3 +245,8 @@
 ### E69/E70后再次校准所有权（2026-10-10）
 [How Few-Shot Examples Add Up, §2.3/5–6与Appendix K](https://arxiv.org/html/2605.16591v2)已经用跨example edge isolation和QK/V patch测contextualization。附录K更进一步：x→x、y→y、错配/跨task例子产生的Q也可能维持原任务FV与QK alignment；作者主动保留“相关semantic manifold而非唯一task identity”的解释。因此label-independent alignment或宽泛非任务specific state**不是ICES空白**。
 ICES E69指定prefix K全label列禁读、E70的common key translation仅改变fixed-Q下的group logit偏移（组内相对分数不变），是更具体的竞争解释；只有可迁移gate/共同frame与selection/content的明确边界及新布局预测，才可能构成增量。不要把label-blind/history必要的对照重新命名成首次发现contextualization；他们关注FV注入，ICES关注native完整query与指定cached carrier，证据范围不同。
+
+
+### Bakalova et al. — Contextualize-then-Aggregate（COLM2025/arXiv2504.00132v2）与Cho的过程材料（2026-10-10继续核对）
+[全文§3.2/§3.3及附录H](https://arxiv.org/html/2504.00132v2)。该文已用保持/改变输入空间、输出空间、具体identity、functional mapping的donor拆解contextualization内容；部分task的context边传domain而非具体item或rule。§3.3用可同时符合copy/past的ambiguous例子增加不确定性，保留full-model正确行为后再辨别必要路径。**所有权：** 历史依赖不等于任务知识、position-level circuit、任务相关边界都已有；E69不能将no-label历史作用本身当新认识。ICES潜在距离是source-code关系×载体位置的具体预测，以及公共K平移固定Q不变性与预测/来源排序恢复的分离；还需要native/模型边界。
+[Cho公开Hidden Calibration审稿材料](https://www.hakaze-c.com/reviews/hidden_calibration)是讨论与批评的过程材料，**不是完整发现记录，也不证明实验发生顺序**。reviewer指出probe/calibration额外监督、总标注数据预算比较，以及几何separation若只重复accuracy为何有额外理解价值；AC肯定简单想法与全面比较，并要求补数据效率对照。对ICES：E56额外1.31M训练参数、E70每层每head偏移都须明示资源；新状态图/方向只有能检验新的推断、给出独立预测时才加深理解，不能凭漂亮几何自动升级贡献。

@@ -1,4 +1,4 @@
-# 实验索引（E00–E70）
+# 实验索引（E00–E72）
 
 按主题分组；每行是结论的一句话版本，数字与置信区间见各卡。“规范”= 与 exact Bayes oracle 同方向；“噪声检验”= 前缀零散反例是否降低对后缀变化的信任（规范为负）。
 
@@ -78,3 +78,6 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E68](E68-prefix-history-versus-local-address.md) | 历史访问必要是否说明存了先前label判断 | isolated prefix KV损害排序13.3点，但label-flip状态只传递约1.3%rule效应；不能从必要性定位内容 |
 | [E69](E69-label-blind-contextualization.md) | 全部历史label禁读后prefix K是否仍可部署 | blind K保留accuracy/排序，blind−isolated排序+10.2点；其它native标签证据保留，非整ICL不需label |
 | [E70](E70-common-frame-versus-example-specific-keys.md) | 公共key平移还是逐样例变化；冻结状态能否迁移 | bf16几何控制失败VOID；float32冻结共享偏移独立恢复53%margin效应、accuracy+5.9点，来源排序仍比native低10.9点 |
+
+| [E71](E71-relational-code-versus-carrier-access.md) | 前缀是否只因扩大答案语法而有效；旧frame能否迁移新身份 | relation×layout accuracy独立+10.9点；冻结迁移35%/accuracy+3.1点低于MIE，own common仍有效；合作仅来源排序有界支持 |
+| [E72](E72-native-chat-and-reasoning-boundaries.md) | raw/native chat/指令/thinking是否同一能力边界 | RUNNING；8B direct短预算大量截断，不能当binding错误；较新27B已加载，终点评测待完成 |
