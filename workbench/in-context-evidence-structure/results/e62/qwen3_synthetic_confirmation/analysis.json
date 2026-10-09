@@ -1,0 +1,1088 @@
+{
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "out": "results/e62/qwen3_synthetic_confirmation",
+      "dataset": "synthetic",
+      "stage": "confirmation",
+      "n": 64,
+      "seed": 162001
+    },
+    "seconds": 111.22374105453491,
+    "sanity_max_error": 0.0,
+    "script_sha256": "a4c0af0fa8a7f9de0e5935feb5455d5df2eae7d34d782bcb5474647eb1287372",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+  },
+  "conditions": {
+    "yes_no.before.base": {
+      "accuracy": {
+        "mean": 0.78515625,
+        "ci95": [
+          0.7421875,
+          0.82421875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.912109375,
+        "ci95": [
+          0.78367919921875,
+          1.0385986328124999
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.before.source": {
+      "accuracy": {
+        "mean": 0.15234375,
+        "ci95": [
+          0.11328125,
+          0.19140625
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.9169921875,
+        "ci95": [
+          -1.02490234375,
+          -0.81494140625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.before.label": {
+      "accuracy": {
+        "mean": 0.1953125,
+        "ci95": [
+          0.15234375,
+          0.23828125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.86669921875,
+        "ci95": [
+          -0.97464599609375,
+          -0.7602294921875001
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.before.source.source_name.key": {
+      "accuracy": {
+        "mean": 0.21875,
+        "ci95": [
+          0.1796875,
+          0.26171875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.72607421875,
+        "ci95": [
+          -0.8271484375,
+          -0.6279296875
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 1.63818359375,
+        "ci95": [
+          1.42667236328125,
+          1.8466796875
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.895621996796583,
+        "ci95": [
+          0.8472259872542812,
+          0.9343712475335897
+        ]
+      }
+    },
+    "yes_no.before.source.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.75,
+        "ci95": [
+          0.703125,
+          0.796875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.89111328125,
+        "ci95": [
+          0.75146484375,
+          1.0346801757812498
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.02099609375,
+        "ci95": [
+          -0.0478515625,
+          0.09130859375
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.011478910838227442,
+        "ci95": [
+          -0.026650374086064743,
+          0.051307880342089565
+        ]
+      }
+    },
+    "yes_no.before.label.source_name.kv": {
+      "accuracy": {
+        "mean": 0.78125,
+        "ci95": [
+          0.7421875,
+          0.8203125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.88525390625,
+        "ci95": [
+          0.7724609375,
+          0.9995239257812499
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.02685546875,
+        "ci95": [
+          -0.0068359375,
+          0.06153564453124993
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.015097447158934943,
+        "ci95": [
+          -0.004426741274675518,
+          0.03297886464021311
+        ]
+      }
+    },
+    "yes_no.before.label.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.19921875,
+        "ci95": [
+          0.15234375,
+          0.24228515624999947
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.681640625,
+        "ci95": [
+          -0.7666015625,
+          -0.5976440429687501
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 1.59375,
+        "ci95": [
+          1.4267333984375,
+          1.7612548828124999
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.8959648641229756,
+        "ci95": [
+          0.857934278394013,
+          0.9295206687546217
+        ]
+      }
+    },
+    "yes_no.before.query_source_first": {
+      "accuracy": {
+        "mean": 0.71875,
+        "ci95": [
+          0.67578125,
+          0.76171875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.7783203125,
+        "ci95": [
+          0.7060546875,
+          0.85205078125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.before.instruction": {
+      "accuracy": {
+        "mean": 0.77734375,
+        "ci95": [
+          0.734375,
+          0.81640625
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 1.03271484375,
+        "ci95": [
+          0.9140380859375,
+          1.1650634765624999
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.before.noop": {
+      "accuracy": {
+        "mean": 0.78515625,
+        "ci95": [
+          0.7421875,
+          0.82421875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.912109375,
+        "ci95": [
+          0.78367919921875,
+          1.0385986328124999
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.after.base": {
+      "accuracy": {
+        "mean": 0.5546875,
+        "ci95": [
+          0.52734375,
+          0.5859375
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.1708984375,
+        "ci95": [
+          0.14599609375,
+          0.197265625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.after.source": {
+      "accuracy": {
+        "mean": 0.41015625,
+        "ci95": [
+          0.37890625,
+          0.44140625
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.17529296875,
+        "ci95": [
+          -0.19921875,
+          -0.15185546875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.after.label": {
+      "accuracy": {
+        "mean": 0.4375,
+        "ci95": [
+          0.40234375,
+          0.46875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.16357421875,
+        "ci95": [
+          -0.1904296875,
+          -0.13670654296875007
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.after.source.source_name.key": {
+      "accuracy": {
+        "mean": 0.41796875,
+        "ci95": [
+          0.38671875,
+          0.44921875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.1728515625,
+        "ci95": [
+          -0.19727783203125,
+          -0.14892578125
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.34375,
+        "ci95": [
+          0.2978515625,
+          0.39208984375
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.9929478138222849,
+        "ci95": [
+          0.956587462082912,
+          1.029412749035357
+        ]
+      }
+    },
+    "yes_no.after.source.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.55078125,
+        "ci95": [
+          0.5234375,
+          0.58203125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.1669921875,
+        "ci95": [
+          0.14158935546875,
+          0.19434814453124993
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.00390625,
+        "ci95": [
+          -0.0087890625,
+          0.01611328125
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.011283497884344146,
+        "ci95": [
+          -0.024733010592585997,
+          0.04489910570969961
+        ]
+      }
+    },
+    "yes_no.after.label.source_name.kv": {
+      "accuracy": {
+        "mean": 0.5234375,
+        "ci95": [
+          0.5,
+          0.55078125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.0849609375,
+        "ci95": [
+          0.06689453125,
+          0.1044921875
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.0859375,
+        "ci95": [
+          0.06640625,
+          0.10595703125
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.2569343065693431,
+        "ci95": [
+          0.2065204830173511,
+          0.3089244480144333
+        ]
+      }
+    },
+    "yes_no.after.label.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.50390625,
+        "ci95": [
+          0.48828125,
+          0.5234375
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.0205078125,
+        "ci95": [
+          0.00146484375,
+          0.0390625
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.150390625,
+        "ci95": [
+          0.12010498046875,
+          0.18408203125
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.44963503649635034,
+        "ci95": [
+          0.38992941998602376,
+          0.5083356741573033
+        ]
+      }
+    },
+    "yes_no.after.query_source_first": {
+      "accuracy": {
+        "mean": 0.6328125,
+        "ci95": [
+          0.59375,
+          0.67578125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.29345703125,
+        "ci95": [
+          0.25634765625,
+          0.3310546875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.after.instruction": {
+      "accuracy": {
+        "mean": 0.5546875,
+        "ci95": [
+          0.52734375,
+          0.58203125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.2216796875,
+        "ci95": [
+          0.19091796875,
+          0.2548828125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "yes_no.after.noop": {
+      "accuracy": {
+        "mean": 0.5546875,
+        "ci95": [
+          0.52734375,
+          0.5859375
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.1708984375,
+        "ci95": [
+          0.14599609375,
+          0.197265625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.before.base": {
+      "accuracy": {
+        "mean": 0.5234375,
+        "ci95": [
+          0.50390625,
+          0.546875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.84619140625,
+        "ci95": [
+          0.73291015625,
+          0.9765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.before.source": {
+      "accuracy": {
+        "mean": 0.48828125,
+        "ci95": [
+          0.46484375,
+          0.50390625
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.8349609375,
+        "ci95": [
+          -0.9580078125,
+          -0.7221557617187501
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.before.label": {
+      "accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.44921875,
+          0.48828125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.857421875,
+        "ci95": [
+          -1.00198974609375,
+          -0.7348266601562502
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.before.source.source_name.key": {
+      "accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.44140625,
+          0.48837890624999947
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.75390625,
+        "ci95": [
+          -0.86036376953125,
+          -0.6552368164062502
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 1.60009765625,
+        "ci95": [
+          1.39404296875,
+          1.8208251953124999
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.9517862329363926,
+        "ci95": [
+          0.9119475024061872,
+          0.994308544539223
+        ]
+      }
+    },
+    "toxic_safe.before.source.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.5234375,
+        "ci95": [
+          0.50390625,
+          0.546875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.826171875,
+        "ci95": [
+          0.7211669921875,
+          0.939453125
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.02001953125,
+        "ci95": [
+          -0.0459228515625,
+          0.08154296875
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.011908219575951205,
+        "ci95": [
+          -0.027770739034832213,
+          0.045826704505320996
+        ]
+      }
+    },
+    "toxic_safe.before.label.source_name.kv": {
+      "accuracy": {
+        "mean": 0.52734375,
+        "ci95": [
+          0.5078125,
+          0.55078125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.7939453125,
+        "ci95": [
+          0.69091796875,
+          0.91259765625
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.05224609375,
+        "ci95": [
+          0.02490234375,
+          0.080078125
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.030667813126970478,
+        "ci95": [
+          0.01568103675073258,
+          0.04503597816252308
+        ]
+      }
+    },
+    "toxic_safe.before.label.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.484375,
+        "ci95": [
+          0.46875,
+          0.49609375
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.6484375,
+        "ci95": [
+          -0.74512939453125,
+          -0.56298828125
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 1.49462890625,
+        "ci95": [
+          1.32420654296875,
+          1.693359375
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.8773287474921181,
+        "ci95": [
+          0.8369954900138642,
+          0.9190031116497985
+        ]
+      }
+    },
+    "toxic_safe.before.query_source_first": {
+      "accuracy": {
+        "mean": 0.5078125,
+        "ci95": [
+          0.5,
+          0.51953125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.5302734375,
+        "ci95": [
+          0.4643310546875,
+          0.6118286132812499
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.before.instruction": {
+      "accuracy": {
+        "mean": 0.52734375,
+        "ci95": [
+          0.5078125,
+          0.55078125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.97802734375,
+        "ci95": [
+          0.857421875,
+          1.109375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.before.noop": {
+      "accuracy": {
+        "mean": 0.5234375,
+        "ci95": [
+          0.50390625,
+          0.546875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.84619140625,
+        "ci95": [
+          0.73291015625,
+          0.9765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.after.base": {
+      "accuracy": {
+        "mean": 0.5078125,
+        "ci95": [
+          0.5,
+          0.51953125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.248046875,
+        "ci95": [
+          0.21142578125,
+          0.28516845703124993
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.after.source": {
+      "accuracy": {
+        "mean": 0.49609375,
+        "ci95": [
+          0.48828125,
+          0.5
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.25,
+        "ci95": [
+          -0.28662109375,
+          -0.21336669921875007
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.after.label": {
+      "accuracy": {
+        "mean": 0.48046875,
+        "ci95": [
+          0.4609375,
+          0.5
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.24462890625,
+        "ci95": [
+          -0.2841796875,
+          -0.20848388671875007
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.after.source.source_name.key": {
+      "accuracy": {
+        "mean": 0.48828125,
+        "ci95": [
+          0.4765625,
+          0.5
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.22705078125,
+        "ci95": [
+          -0.263671875,
+          -0.19189453125
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.47509765625,
+        "ci95": [
+          0.40478515625,
+          0.5454223632812499
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.953921568627451,
+        "ci95": [
+          0.9205208658631553,
+          0.9875288749705358
+        ]
+      }
+    },
+    "toxic_safe.after.source.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.50390625,
+        "ci95": [
+          0.5,
+          0.51171875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.240234375,
+        "ci95": [
+          0.203125,
+          0.27880859375
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.0078125,
+        "ci95": [
+          -0.00341796875,
+          0.0185546875
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.01568627450980392,
+        "ci95": [
+          -0.007137042659450421,
+          0.03857976643387769
+        ]
+      }
+    },
+    "toxic_safe.after.label.source_name.kv": {
+      "accuracy": {
+        "mean": 0.50390625,
+        "ci95": [
+          0.5,
+          0.51171875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.10009765625,
+        "ci95": [
+          0.0654296875,
+          0.13428955078124993
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.14794921875,
+        "ci95": [
+          0.1162109375,
+          0.1796875
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.3002973240832507,
+        "ci95": [
+          0.24147332702020202,
+          0.3684288154013352
+        ]
+      }
+    },
+    "toxic_safe.after.label.label_anchor.kv": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.48828125,
+          0.51171875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.0302734375,
+        "ci95": [
+          -0.00048828125,
+          0.05810546875
+        ],
+        "n_contexts": 64
+      },
+      "raw_effect": {
+        "mean": 0.2177734375,
+        "ci95": [
+          0.166015625,
+          0.2734375
+        ],
+        "n_contexts": 64
+      },
+      "fraction": {
+        "mean": 0.44202180376610506,
+        "ci95": [
+          0.3704543154214207,
+          0.5120368262503557
+        ]
+      }
+    },
+    "toxic_safe.after.query_source_first": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.234375,
+        "ci95": [
+          0.20166015625,
+          0.2685546875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.after.instruction": {
+      "accuracy": {
+        "mean": 0.50390625,
+        "ci95": [
+          0.5,
+          0.51171875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.23193359375,
+        "ci95": [
+          0.19873046875,
+          0.2666015625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "toxic_safe.after.noop": {
+      "accuracy": {
+        "mean": 0.5078125,
+        "ci95": [
+          0.5,
+          0.51953125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.248046875,
+        "ci95": [
+          0.21142578125,
+          0.28516845703124993
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "layout_contrasts": {
+    "yes_no": {
+      "base_accuracy_after_minus_before": {
+        "mean": -0.23046875,
+        "ci95": [
+          -0.28515625,
+          -0.17568359375000053
+        ],
+        "n_contexts": 64
+      },
+      "instruction_accuracy_after_minus_before": {
+        "mean": -0.22265625,
+        "ci95": [
+          -0.265625,
+          -0.17958984375000053
+        ],
+        "n_contexts": 64
+      },
+      "query_source_first_accuracy_after_minus_before": {
+        "mean": -0.0859375,
+        "ci95": [
+          -0.12890625,
+          -0.04296875
+        ],
+        "n_contexts": 64
+      },
+      "source.source_name.key_fraction_after_minus_before": {
+        "mean": 0.09732581702570187,
+        "ci95": [
+          0.0440731135211325,
+          0.1609526426385616
+        ]
+      },
+      "source.label_anchor.kv_fraction_after_minus_before": {
+        "mean": -0.00019541295388329598,
+        "ci95": [
+          -0.05979530871303574,
+          0.05449046713565525
+        ]
+      },
+      "label.source_name.kv_fraction_after_minus_before": {
+        "mean": 0.24183685941040814,
+        "ci95": [
+          0.19312232187723047,
+          0.29390504519805033
+        ]
+      },
+      "label.label_anchor.kv_fraction_after_minus_before": {
+        "mean": -0.44632982762662526,
+        "ci95": [
+          -0.5127765789194801,
+          -0.3801032118256375
+        ]
+      }
+    },
+    "toxic_safe": {
+      "base_accuracy_after_minus_before": {
+        "mean": -0.015625,
+        "ci95": [
+          -0.04296875,
+          0.00390625
+        ],
+        "n_contexts": 64
+      },
+      "instruction_accuracy_after_minus_before": {
+        "mean": -0.0234375,
+        "ci95": [
+          -0.046875,
+          -0.007714843750000533
+        ],
+        "n_contexts": 64
+      },
+      "query_source_first_accuracy_after_minus_before": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.01953125,
+          0.0
+        ],
+        "n_contexts": 64
+      },
+      "source.source_name.key_fraction_after_minus_before": {
+        "mean": 0.002135335691058393,
+        "ci95": [
+          -0.04859687943033943,
+          0.05001215852873191
+        ]
+      },
+      "source.label_anchor.kv_fraction_after_minus_before": {
+        "mean": 0.003778054933852717,
+        "ci95": [
+          -0.03196753020933406,
+          0.045011077681498216
+        ]
+      },
+      "label.source_name.kv_fraction_after_minus_before": {
+        "mean": 0.26962951095628024,
+        "ci95": [
+          0.21006263419079363,
+          0.33817933583851384
+        ]
+      },
+      "label.label_anchor.kv_fraction_after_minus_before": {
+        "mean": -0.43530694372601303,
+        "ci95": [
+          -0.5129294920850589,
+          -0.3637267497860735
+        ]
+      }
+    }
+  }
+}

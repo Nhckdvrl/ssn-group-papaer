@@ -21,3 +21,7 @@ logs/build_*.log
 # keep only code, docs, small summaries and figures in git; detailed outputs stay local (NFS)
 results/**/*.jsonl
 logs/*.log
+
+# New native states remain local; small JSON summaries are versioned.
+results/e5[89]/**/*.npy
+results/e6[0-4]/**/*.npy

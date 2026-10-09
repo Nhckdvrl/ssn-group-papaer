@@ -31,3 +31,11 @@
 - **目标会议：** ACL / EMNLP（perspectivist 与个性化叙事）为主；ICML / ICLR（ICL 机制叙事）并行。
 
 - **2026-10-09 判定（E50–E52）：** 三个现实情形中，logit 层面的一半区分损失都没有转化为明显的实际预测代价（剩下的区分通常已足够；指令常能补救）。站得住的是机制（读出层面分隔，2 家族 3 模型）、语义泄漏规律、logit 层面的现象；“读者应改变的做法”缺乏有分量的证据。**agent 判断：作为“ICL 证据按输出存放”的机制与规律分析尚可，未达到“合格的强贡献”；是否以此形态投稿由人决定。**
+
+## 2026-10-10 证据校正（保持旧形态卡作历史，不重写论文）
+E58–E64未把ICES判为trivial，也未确认其为强机制论文。C14–C16新增L1：来源差分可跨label、native source效应经name-key及query内部消息传递；Qwen与Mistral的label消息时序不同。旧标题保留为候选，不锁定全文。
+- source probe可读出不定位自然路由；trained query adapter成功不证明native完整算法存在；E56共20层、1.31M trainable weights。
+- “native默认完全不用source”撤回；“entity binding＋ICL不能组合”仍不是成立的中心发现。
+- 目前较好的切入点是**source-conditioned computation在query内部怎样形成、后续label检索怎样处理它**；末位直接读取不足以代表全部ICL学习/绑定过程。
+- 是否为新认识取决于能否正面对齐Cho shortcut/FV、CBR、Mixing Mechanisms与Test then Route，并预测新query布局、任务与强模型边界。“有更早计算”“QK/V不同”本身不构成novelty。
+- real-text控制任务不等于真实个人标注者规则；全文与独立机制校对均未完成。详见`REVIEW_2026-10-10.md`与各卡原始CI。

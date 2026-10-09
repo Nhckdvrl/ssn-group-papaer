@@ -1,0 +1,588 @@
+{
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "out": "results/e60/qwen3_real_discovery",
+      "dataset": "real",
+      "stage": "discovery",
+      "n": 48,
+      "seed": 60002
+    },
+    "seconds": 111.0515148639679,
+    "sanity_max_error": 0.0,
+    "script_sha256": "ecd5d350686c427724e49063f818292a09c4627d8d1e090424524cabdcff6332",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+  },
+  "conditions": {
+    "yes_no.base": {
+      "accuracy": {
+        "mean": 0.5481770833333334,
+        "ci95": [
+          0.5234375,
+          0.57421875
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.24658203125,
+        "ci95": [
+          0.17936197916666666,
+          0.31364746093749996
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      }
+    },
+    "yes_no.noop": {
+      "accuracy": {
+        "mean": 0.5481770833333334,
+        "ci95": [
+          0.5234375,
+          0.57421875
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.24658203125,
+        "ci95": [
+          0.17936197916666666,
+          0.31364746093749996
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      }
+    },
+    "yes_no.source_name.key": {
+      "accuracy": {
+        "mean": 0.5533854166666666,
+        "ci95": [
+          0.5286458333333334,
+          0.578125
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.25341796875,
+        "ci95": [
+          0.18928629557291668,
+          0.31885172526041666
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.005208333333333333,
+        "ci95": [
+          -0.005208333333333333,
+          0.015625
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.0068359375,
+        "ci95": [
+          -0.005537923177083333,
+          0.019205729166666668
+        ],
+        "n_contexts": 48
+      }
+    },
+    "yes_no.source_name.value": {
+      "accuracy": {
+        "mean": 0.5494791666666666,
+        "ci95": [
+          0.5286132812500001,
+          0.5729166666666666
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.23486328125,
+        "ci95": [
+          0.17201334635416665,
+          0.2985026041666667
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.0013020833333333333,
+        "ci95": [
+          -0.01171875,
+          0.014322916666666666
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": -0.01171875,
+        "ci95": [
+          -0.024580891927083334,
+          0.001953125
+        ],
+        "n_contexts": 48
+      }
+    },
+    "yes_no.label_prediction.key": {
+      "accuracy": {
+        "mean": 0.54296875,
+        "ci95": [
+          0.51953125,
+          0.56640625
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2581380208333333,
+        "ci95": [
+          0.18391113281250002,
+          0.33431396484375
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": -0.005208333333333333,
+        "ci95": [
+          -0.022135416666666668,
+          0.010416666666666666
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.011555989583333334,
+        "ci95": [
+          -0.029951985677083334,
+          0.050948079427083307
+        ],
+        "n_contexts": 48
+      }
+    },
+    "yes_no.label_anchor.key": {
+      "accuracy": {
+        "mean": 0.515625,
+        "ci95": [
+          0.5038736979166667,
+          0.53125
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2509765625,
+        "ci95": [
+          0.16194254557291668,
+          0.34766438802083327
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": -0.032552083333333336,
+        "ci95": [
+          -0.061197916666666664,
+          -0.00390625
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.00439453125,
+        "ci95": [
+          -0.057454427083333336,
+          0.07260335286458326
+        ],
+        "n_contexts": 48
+      }
+    },
+    "yes_no.instruction": {
+      "accuracy": {
+        "mean": 0.5403645833333334,
+        "ci95": [
+          0.5168945312500001,
+          0.5651041666666666
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2677408854166667,
+        "ci95": [
+          0.19970703125,
+          0.33822021484375
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.028645833333333332,
+          0.013020833333333334
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.021158854166666668,
+        "ci95": [
+          -0.015299479166666666,
+          0.05810953776041664
+        ],
+        "n_contexts": 48
+      }
+    },
+    "yes_no.single": {
+      "accuracy": {
+        "mean": 0.6588541666666666,
+        "ci95": [
+          0.625,
+          0.6953125
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.7823893229166666,
+        "ci95": [
+          0.6384969075520833,
+          0.9326253255208333
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.11067708333333333,
+        "ci95": [
+          0.07291666666666667,
+          0.15104166666666666
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.5358072916666666,
+        "ci95": [
+          0.39989827473958334,
+          0.6745076497395831
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.base": {
+      "accuracy": {
+        "mean": 0.5338541666666666,
+        "ci95": [
+          0.5143229166666666,
+          0.5546875
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2625325520833333,
+        "ci95": [
+          0.18162841796875,
+          0.34749755859375
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.noop": {
+      "accuracy": {
+        "mean": 0.5338541666666666,
+        "ci95": [
+          0.5143229166666666,
+          0.5546875
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2625325520833333,
+        "ci95": [
+          0.18162841796875,
+          0.34749755859375
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.source_name.key": {
+      "accuracy": {
+        "mean": 0.5390625,
+        "ci95": [
+          0.51953125,
+          0.55859375
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2501627604166667,
+        "ci95": [
+          0.16975097656250002,
+          0.33529866536458325
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.005208333333333333,
+        "ci95": [
+          -0.00390625,
+          0.014322916666666666
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": -0.012369791666666666,
+        "ci95": [
+          -0.024906412760416666,
+          0.00016276041666666666
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.source_name.value": {
+      "accuracy": {
+        "mean": 0.52734375,
+        "ci95": [
+          0.5104166666666666,
+          0.5442708333333334
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2587890625,
+        "ci95": [
+          0.18065999348958334,
+          0.3460449218749999
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": -0.006510416666666667,
+        "ci95": [
+          -0.018229166666666668,
+          0.00390625
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": -0.0037434895833333335,
+        "ci95": [
+          -0.02425537109375,
+          0.016764322916666668
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.label_prediction.key": {
+      "accuracy": {
+        "mean": 0.5364583333333334,
+        "ci95": [
+          0.5182291666666666,
+          0.5534179687499998
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.27294921875,
+        "ci95": [
+          0.19270426432291668,
+          0.36102701822916655
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.0026041666666666665,
+        "ci95": [
+          -0.013020833333333334,
+          0.018229166666666668
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.010416666666666666,
+        "ci95": [
+          -0.052408854166666664,
+          0.07910563151041665
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.label_anchor.key": {
+      "accuracy": {
+        "mean": 0.5260416666666666,
+        "ci95": [
+          0.5026041666666666,
+          0.55078125
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2606608072916667,
+        "ci95": [
+          0.16088663736979167,
+          0.36846923828124967
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.033854166666666664,
+          0.018229166666666668
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": -0.0018717447916666667,
+        "ci95": [
+          -0.09993693033854166,
+          0.09928588867187499
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.instruction": {
+      "accuracy": {
+        "mean": 0.5234375,
+        "ci95": [
+          0.5078125,
+          0.5390625
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.2353515625,
+        "ci95": [
+          0.17316487630208335,
+          0.30162353515624984
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": -0.010416666666666666,
+        "ci95": [
+          -0.029947916666666668,
+          0.0078125
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": -0.027180989583333332,
+        "ci95": [
+          -0.07357991536458333,
+          0.013513183593749978
+        ],
+        "n_contexts": 48
+      }
+    },
+    "toxic_safe.single": {
+      "accuracy": {
+        "mean": 0.6106770833333334,
+        "ci95": [
+          0.5846354166666666,
+          0.63671875
+        ],
+        "n_contexts": 48
+      },
+      "correct_margin": {
+        "mean": 0.7477213541666666,
+        "ci95": [
+          0.6117635091145833,
+          0.8987792968749999
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_accuracy": {
+        "mean": 0.07682291666666667,
+        "ci95": [
+          0.044270833333333336,
+          0.11067708333333333
+        ],
+        "n_contexts": 48
+      },
+      "patch_minus_base_margin": {
+        "mean": 0.4851888020833333,
+        "ci95": [
+          0.34765218098958334,
+          0.627156575520833
+        ],
+        "n_contexts": 48
+      }
+    }
+  },
+  "contrasts": {
+    "yes_minus_toxic_accuracy": {
+      "mean": 0.014322916666666666,
+      "ci95": [
+        -0.016927083333333332,
+        0.045572916666666664
+      ],
+      "n_contexts": 48
+    },
+    "yes_minus_toxic_single_accuracy": {
+      "mean": 0.048177083333333336,
+      "ci95": [
+        0.013020833333333334,
+        0.08333333333333333
+      ],
+      "n_contexts": 48
+    },
+    "verbalizer_extra_mixed_gap_accuracy": {
+      "mean": -0.033854166666666664,
+      "ci95": [
+        -0.08463541666666667,
+        0.014322916666666666
+      ],
+      "n_contexts": 48
+    }
+  }
+}

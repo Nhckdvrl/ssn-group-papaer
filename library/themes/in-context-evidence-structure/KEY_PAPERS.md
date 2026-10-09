@@ -153,3 +153,47 @@
 - **发现：** 浅层把每条 demo 的语义汇聚到其**标签词**位置；深层的最终预测主要从这些标签词“锚点”读取信息。基于此提出锚点重加权、demo 压缩（只保留标签词表示）与错误诊断。
 - **与我们的距离（关键近邻，机制层）：** 我们的行为结论“ICL 按输出标签存放证据，在时间/上下文上可交换地汇总”（I04、E31、E32）正是锚点机制的可检验后果：所有用同一标签词的 demo 汇入同一类锚点，锚点读出不携带“哪条更新、谁标的”这一二阶信息；换成不同的词 = 不同的锚点（E31 nonce 零泄漏），近义词锚点表示相近 → 部分合并（E31 近义词溢出 0.12–0.64）。增量：(1) 锚点机制对非平稳证据的后果（concept drift 盲、上下文交互泄漏）从未被指出；(2) 我们给出锚点之外的第二个通道——输出层面的变化点先验（标签流/格式/偏置成分规范）；(3) “换输出词”这一建设性预测被验证（E32）。
 - **idea 来源：** 信息流（saliency）分析 + 隔离实验。可借鉴其“隔离标签词”方法做机制验证：若锚点不携带位置信息，则在锚点层之后注入位置/时间信息也无法恢复时间推断。
+
+## 2026-10-10：来源条件化新结果后的参照系修正
+
+### Cho et al. — *Revisiting In-context Learning Inference Circuit*（ICLR 2025）`[全文 §3–5.2 复读]`
+- 原文：[2410.04468v3](https://arxiv.org/html/2410.04468v3)。其三步框架明确允许并行电路、直接读出及 forerunner→forerunner shortcut；“找到非label位置的通路”本身不是ICES增量。
+- idea来源（DOCUMENTED于文中）：电路消融后性能未退至zero-shot → 被剩余能力逼出旁路；不是先假设唯一电路再吸收反例。
+- 应学的研究动作：完整预测与干预后残差对照；区分电路存在、主导与充分。ICES E39只证明通用通路参与，E59需对不同反事实分别定位；E61再问两者是否组合。
+
+### Cho et al. — *Mechanism of Task-oriented Information Removal*（ICLR 2026）`[全文 §2–4.4，Appendix A.3 复读]`
+- 原文：[2509.21012v2](https://arxiv.org/html/2509.21012v2)。correct label未在demo出现而仍能回答，直接限制“复制已经出现的标签”的充分解释；TVS同时定义task与verbalization。
+- idea来源（DOCUMENTED于问题与方法，非完整发现过程）：上述反例 → train low-rank filter测试可行 → 用两个指标测自然过程 → 组件消融建立因果。filter后的query访问被截断，是归因清晰的重要设计。
+- 对ICES：E56逐层query模块跨20层，且没截断后续上下文计算，不能称无代价readout；E56c换数据与词表的失败不能单独证明source×label合取。
+
+### Cho et al. — *Token-based Decision Criteria Are Suboptimal*（NAACL 2025）`[全文 §2–4，Appendix A.2]`
+- 原文：[2406.16535v3](https://arxiv.org/html/2406.16535v3)。比较token、全词表、hidden-centroid读出；明确token probability的边界与hidden表征可分性不同。
+- idea来源（DOCUMENTED论证，发现顺序未核对）：输出词embedding给定的分类方向限制calibration → 对hidden与logit做相同centroid比较。
+- 对ICES：换词时准确率差不能自动归因source selection。E60 paired verbalizers的name-key transfer无收益，须优先保留输出几何/校准替代解释，不将得分涨幅当新路由。
+
+### Dai, Heinzerling, Inui — *Cell-Based Representation of Relational Binding*（ACL 2026）`[全文 §2–3.3，Appendix A.28–30]`
+- 原文：[2604.19052v1](https://arxiv.org/html/2604.19052v1)，[ACL主会记录](https://aclanthology.org/2026.acl-long.2194/)。实体×关系索引组成cell，用PLS、交换与跨域测试研究；涵盖Qwen3-8B。
+- idea来源（DOCUMENTED）：从实体/顺序的单维binding扩展至discourse的entity×relation；one-shot analogy用于减少直接query表层替代策略。
+- **所有权修正：** “双键绑定尚未被研究”不成立。ICES可检验的是“由demonstrations推断来源特定函数”与“检索上下文显式关系”是否采用相同计算条件，不能仅换名为双键。
+
+### Lepori et al. — *Language Models Struggle to Use Representations Learned In-Context*（ACL 2026）`[摘要，全文未深读]`
+- [原文](https://aclanthology.org/2026.acl-long.676/)。区分表示诱导与后续部署，覆盖开放模型及闭源reasoning；“表示有而不用”已属其问题空间。
+- 对ICES：只能作为ownership/竞争解释参照；本文具体电路与所有任务细节未核对，不能据摘要宣称它已经/尚未覆盖我们的完整设定。
+
+### Guo et al. — *When Context Changes: Understanding Update Failures in LLMs*（arXiv 2609.38866）`[全文 §4–6与C.1]`
+- [原文](https://arxiv.org/html/2609.38866v1)，2026-09-30。current value仍可读出、old-value attention竞争、组件替换与training-free干预；直接current-state读取与复杂更新场景分开。
+- 对ICES：时间更新、保留但选择失败及晚层干预均有强近邻。它不是exact collision（显式状态更新vs来源特定映射学习）；单靠新增probe/attention steering不能主张新机制。
+
+### Ravulapalli & Chadha — *Decodable In-Context State and Model Output Across Training*（arXiv 2609.31401）`[全文 §2.1–2.2、§5、代码可用性]`
+- [原文](https://arxiv.org/html/2609.31401v1)。给出反例：错误argmax不等于logits丢掉信息；比较hidden与candidate-logit decoder，明确external probe不是native readout。
+- idea来源（DOCUMENTED）：前作probe-correct/native-wrong现象 → 检验训练轨迹和读出可用性，而非直接认定丢弃信息。
+- 对ICES：E55可读出不定位原因；E56外部训练成功不证明native完整算法已存在。公开原始资产仍有缺口，作为概念压力而非替代本地复算。
+
+### 研究过程材料（与论文发现顺序区分）
+- [Steinhardt, Film Study](https://jsteinhardt.stat.berkeley.edu/blog/film-study)：完稿不展示全部思考；不把论文的方法章节当作发现顺序。
+- [Cho 博士答辩修改记录](https://www.hakaze-c.com/phd_defense)：公开记录委员会对“哪部分是新认识”、实验依赖关系与测量依据的追问，以及rebuttal后将方法/结果重新组织的过程。它是整理后的修改记录，不是原始实验日志。
+- [Hase et al., NeurIPS 2023](https://papers.neurips.cc/paper_files/paper/2023/hash/3927bbdcf0e8d1fa8aa23c26f358a281-Abstract-Conference.html)：因果定位与最佳编辑位置的桥不自动成立。ICES相应拆开表示可读出、自然计算中介与训练后的改进。
+
+### 新异常后追加近邻（2026-10-10）
+- *Test, then Route*（arXiv2608.04183，2026-08-04；[全文§3–4.2](https://arxiv.org/html/2608.04183v1)）：四donor将predicate outcome与answer word拆开；label-pair router跨词不迁移。**更重要的参照：** 原文已在query-digit位置检出早期predicate计算、随后传至最后token；不能把“答案前存在计算”当作首次发现。ICES潜在增量只能是来源条件化检索的具体消息链、何种末位诊断会误判，及可预测边界。其高准确率与donor-correct筛选设定不同于ICES保留全部弱signal实例；不混比能力数字。
+- *How Few-Shot Examples Add Up*（arXiv2605.16591v2，2026-05-24；[全文§3–6与K/L](https://arxiv.org/html/2605.16591v2)）：对contextualization的QK/V做2×2 causal decomposition，FV质量收益主要来自QK reweighting。**所有权：** “routing与payload应拆开”及“二者存在交互”本身已被研究。ICES需证明来源/任务关系的具体过程与边界，而非把QK/V交换当贡献。该文关注抽取FV与注入效果，E64测的是native模型整个query的metadata-conditioned消息传递。

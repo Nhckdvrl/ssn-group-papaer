@@ -60,3 +60,14 @@
 | [E18](E18-lora-volatile-classification.md) | 易变分类流上 LoRA | 只把分类推向近因，噪声方向从未转正 | Qwen3-8B |
 
 idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-indexed-evidence.md)（主 idea）、[`../ideas/I01-surface-time-latent-sets.md`](../ideas/I01-surface-time-latent-sets.md)（早期版本）。
+
+## G. 2026-10-10：意义与解释压力测试（旧工作标题不作为判据）
+| 卡 | 关键追问 | 结果 / 当前认识 |
+|---|---|---|
+| [E58](E58-source-label-factorization.md) | 来源能否跨标签解码；label KV是否中介来源 | common source差分可迁移，label锚点source效应很小；不等于全部可因子化 |
+| [E59](E59-source-mediation-sites.md) | source关系与mapping关系是否同位置 | name-K主要传递source，label-KV主要传递mapping；位置分离 |
+| [E60](E60-verbalizer-routing-transfer.md) | 同任务换词的差异能否经name-K转移 | 未得到有效转移；大synthetic词表差在real不复现 |
+| [E61](E61-crossed-routing-payload.md) | 两种定位是否可组合 | 纯V双翻转不足；label K+V参与，明显非加性，不是完整新电路 |
+| [E62](E62-information-equivalent-field-relocation.md) | 信息等价的字段后移会否改变carrier | 部分转移、未提高表现；不支持唯一terminal carrier |
+| [E63](E63-source-effect-label-message-mediation.md) | 最后token label消息是否足以中介source | Qwen剩余约一半；首轮数值失败VOID，原生重算控制通过 |
+| [E64](E64-whole-query-message-mediation.md) | 整个query还是最后token承载条件化 | Qwen范围差明显；Mistral label消息主要末位；model-dependent时序边界 |

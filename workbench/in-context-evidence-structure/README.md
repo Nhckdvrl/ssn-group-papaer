@@ -3,7 +3,7 @@
 ## 状态
 - **状态：** ACTIVE-EXPLORE（2026-10-08 人决定恢复，E39–E48 已开展；此前 2026-10-06 PAUSED 为历史记录）。这是正式研究排程；不意味着别的研究方向停止。
 - **2026-10-08/09 进展：** 真实数据上的后果与机制（C13，E46–E49）：多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（2 个真实数据集、8 模型、4 家族）；每人独立的标签词恢复到单人水平；读标签头把另一人的标签读进答案，换词后在读出层面分隔（E48）。顺序 / 格式敏感线（E40–E45）已止损关闭。见 `PAPER_SHAPE.md` 末节。
-- **2026-10-09 暂停整理：** E50–E56d 的完整链条与判断见 [`REVIEW_2026-10-09.md`](REVIEW_2026-10-09.md)（来源信息在、默认路由不用；只改 query 的秩 8 模块可修正，但修正与标签词绑定）。等人决定下一步。
+- **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **主 idea：** [`ideas/I04-output-indexed-evidence.md`](ideas/I04-output-indexed-evidence.md)
 - **目标会议：** ICML / ICLR（ICL 理论与机制叙事）；备选 ACL / EMNLP（标签语义、标注者视角、非平稳 NLP 场景叙事）。
 - **证据账本：** [`CLAIMS.md`](CLAIMS.md)　**实验索引：** [`experiments/INDEX.md`](experiments/INDEX.md)　**论文形态卡：** [`PAPER_SHAPE.md`](PAPER_SHAPE.md)　**日志：** [`logs/`](logs/)
@@ -16,10 +16,12 @@
 **收敛后的问题：** 模型在什么情况下能追踪变化、在什么情况下把新旧证据混在一起——以及为什么。
 
 ## 2. 核心 idea（I04）
-> **In-context learner 按“输出”存放输入-输出证据。** 某个输出得到的支持，来自带这个输出的 demo 的、按输入相似度加权的汇总；这份汇总在时间与上下文上可交换。
+> **I04原始候选解释：In-context learner 按“输出”存放输入-输出证据。** 某个输出得到的支持，来自带这个输出的 demo 的、按输入相似度加权的汇总；这份汇总在时间与上下文上可交换。
 > 因此：**改变“用哪些输出”的变化看得见**（标签流、格式、输出语言、换了新词的新 regime），**把已有输出重新分配给不同输入的变化看不见**（concept drift、因人而异的映射），而且新旧输出标签越相似，证据混得越多。
 
-机制（Qwen3-8B、Qwen2.5-7B）：一族晚层“读标签”注意力头从答案位置读取 demo 的标签词，按内容相似度选择、不看位置；旧 demo 的标签位置因因果掩码不可改写，新 demo 也不写入“变了”的信号——于是条件证据只能被可交换地汇总。
+原候选机制（Qwen3-8B、Qwen2.5-7B）：一族晚层“读标签”注意力头从答案位置读取 demo 的标签词，按内容相似度选择、不看位置；旧 demo 的标签位置因因果掩码不可改写，新 demo 也不写入“变了”的信号；可交换汇总是这条直接读取路径的有效描述，完整query程序的充分解释已受E59–E64限制。
+
+**解释边界（2026-10-10）：** 上述末位通路参与计算，但不是整个程序的充分解释。E59/E64检出来源名字K→query内部消息→答案的参与；source差分可跨标签迁移，但不等于完整绑定已可部署。当前追问：来源条件化在query的哪些位置形成、不同模型为何在不同阶段读取label，以及末位读取何时保留或稀释已经形成的条件规则。E64尚未证明最后一种“稀释”假说。
 
 ## 3. 证据（按主张组织；数字与 CI 见 CLAIMS 与实验卡）
 | 主张 | 关键数字 | 实验 | 等级* |
@@ -50,11 +52,10 @@
 Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. ICLR'24 · Falck et al. ICML'24 · Zhao et al. ICML'21 · Xiong et al. ICLR'25（任务叠加）· Dudley ICML'26 / Qin ICLR'26（训练模型的变化检测）· Cho et al. ICLR'25 / Yang-Cho-Inoue ICLR'26（检索电路、TR/TL 头）。
 **最危险的压缩：** “ICL = kNN + 标签偏置”——回应见 I04 §6。
 
-## 6. 恢复推进时的下一步（按信息量排序）
-1. 读标签头消融：映射效应与泄漏应同时消失（机制的因果确认）。
-2. 非 Qwen 模型的机制复现（需单 token 标签，如 Llama-3 系列）。
-3. 为什么：预训练数据中“同一输出被重新分配给不同输入”的稀缺性。
-4. 后果：真实非平稳 NLP 场景（内容审核政策更新、标注规范变化、多用户个性化）；DICES 真实评分者噪声过大（kappa 中位 0.19），需更干净的数据。
+## 6. 下一步（按信息量排序，非日程）
+1. 按query字段与消息做path干预，定位source→query内部label读取→末位的接力；检验条件规则是否在最终label读取中被增强或稀释，避免仅凭attention/低秩训练归因。
+2. 与Cho shortcut/FV、CBR、Mixing Mechanisms、Test then Route正面对齐；构造能预测独立query布局与模型差异的计算模型，才考虑形成中心贡献。
+3. 机制预测明确后，再用少量强模型/推理模式检验程序切换；实际多标注者自然规则复现仍未完成。E58–E64的real文本采用受控来源规则。
 
 ## 7. 目录
 | 路径 | 内容 |
@@ -75,6 +76,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **打分：** `scripts/run_lm.py`（左填充 + 显式 position_ids + 精确多 token log-prob）；多机排队 `scripts/run_queue2.sh HOST GPU "DATA:MODEL ..." BS`、即时启动 `scripts/launch.sh`。
 - **只在本地（不进 git，NFS `/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/`）：** 逐条 LM 打分 `results/*/*.jsonl`（约 570MB，可用 `run_lm.py` 按卡重跑）、训练/进程日志 `logs/*.log`、机制数组 `results/mech/*.npz`（逐头 DLA、锚点 value、注意力；可用 `scripts/mech_*.py` 重建）、注意力探针 `results/*/attn_*.npz`、LoRA/toy 权重 `/tmp/xiang_*`（fvcrc13 本地）。
 - **算力备注：** fvcrc10/13/20 的空卡；NFS 约 40 MB/s，32B 模型首次加载需 ~25 分钟；同一张卡上的任务只放一条队列（两条队列会在交接时撞车导致 OOM）。
+- **E58–E64资产：** `results/e58/`、`e59/`中的`*.npy`锚点状态与各卡`contexts.jsonl/behavior.jsonl`留在上述NFS路径，不进git；代码与固定种子可重建。小汇总`results/e58_e64_summary.json`与`analysis.json`入git。Qwen3-8B revision `b968826d9c46dd6066d109eabc6255188de91218`；Mistral-7B-v0.3 `caa1feb0e54d415e2df31207e5f4e273e33509b1`；节点NVMe `/tmp/ices_models/`由对应HF缓存snapshot复制。环境仍为conda `verl-clean`（torch2.8.0/cu128、transformers4.57.6）。
 
 ## 9. 决策记录
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。

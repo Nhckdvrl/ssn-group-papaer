@@ -1,0 +1,276 @@
+{
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "out": "results/e61/qwen3_synthetic_discovery",
+      "dataset": "synthetic",
+      "stage": "discovery",
+      "n": 64,
+      "seed": 61001
+    },
+    "seconds": 30.11406660079956,
+    "sanity_max_error": 0.0,
+    "script_sha256": "fb17b7aeb8d5ac13fd698eeb8179f1bc0df8543de03afbd7c37cabdc0d11354a",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+  },
+  "conditions": {
+    "base": {
+      "accuracy": {
+        "mean": 0.7890625,
+        "ci95": [
+          0.75,
+          0.828125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 1.08984375,
+        "ci95": [
+          0.9365234375,
+          1.2597778320312498
+        ],
+        "n_contexts": 64
+      }
+    },
+    "source": {
+      "accuracy": {
+        "mean": 0.19140625,
+        "ci95": [
+          0.15234375,
+          0.23046875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -1.05712890625,
+        "ci95": [
+          -1.20806884765625,
+          -0.92529296875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "label": {
+      "accuracy": {
+        "mean": 0.17578125,
+        "ci95": [
+          0.13671875,
+          0.21484375
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -1.01318359375,
+        "ci95": [
+          -1.17919921875,
+          -0.8622924804687501
+        ],
+        "n_contexts": 64
+      }
+    },
+    "natural_double": {
+      "accuracy": {
+        "mean": 0.78515625,
+        "ci95": [
+          0.75,
+          0.82421875
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 1.029296875,
+        "ci95": [
+          0.88963623046875,
+          1.1860473632812498
+        ],
+        "n_contexts": 64
+      }
+    },
+    "K": {
+      "accuracy": {
+        "mean": 0.19921875,
+        "ci95": [
+          0.16015625,
+          0.23828125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.93359375,
+        "ci95": [
+          -1.11182861328125,
+          -0.7670532226562502
+        ],
+        "n_contexts": 64
+      }
+    },
+    "V": {
+      "accuracy": {
+        "mean": 0.48046875,
+        "ci95": [
+          0.4609375,
+          0.49609375
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.60888671875,
+        "ci95": [
+          -0.70997314453125,
+          -0.51025390625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "K+V": {
+      "accuracy": {
+        "mean": 0.5078125,
+        "ci95": [
+          0.5,
+          0.51953125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.47900390625,
+        "ci95": [
+          0.36717529296875,
+          0.5898803710937498
+        ],
+        "n_contexts": 64
+      }
+    },
+    "YKV": {
+      "accuracy": {
+        "mean": 0.2109375,
+        "ci95": [
+          0.16796875,
+          0.2578125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": -0.861328125,
+        "ci95": [
+          -0.99759521484375,
+          -0.7289916992187501
+        ],
+        "n_contexts": 64
+      }
+    },
+    "K+YKV": {
+      "accuracy": {
+        "mean": 0.71875,
+        "ci95": [
+          0.671875,
+          0.765625
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 0.71728515625,
+        "ci95": [
+          0.58980712890625,
+          0.84619140625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "noop": {
+      "accuracy": {
+        "mean": 0.7890625,
+        "ci95": [
+          0.75,
+          0.828125
+        ],
+        "n_contexts": 64
+      },
+      "correct_margin": {
+        "mean": 1.08984375,
+        "ci95": [
+          0.9365234375,
+          1.2597778320312498
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "interactions": {
+    "V": {
+      "J": {
+        "mean": 3.111328125,
+        "ci95": [
+          2.72459716796875,
+          3.53125
+        ],
+        "n_contexts": 64
+      },
+      "joint_minus_base_margin": {
+        "mean": -0.61083984375,
+        "ci95": [
+          -0.76563720703125,
+          -0.46530761718750013
+        ],
+        "n_contexts": 64
+      },
+      "joint_minus_K_margin": {
+        "mean": 1.41259765625,
+        "ci95": [
+          1.19237060546875,
+          1.6494384765624999
+        ],
+        "n_contexts": 64
+      },
+      "joint_minus_payload_margin": {
+        "mean": 1.087890625,
+        "ci95": [
+          0.91649169921875,
+          1.25830078125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "YKV": {
+      "J": {
+        "mean": 3.60205078125,
+        "ci95": [
+          3.14794921875,
+          4.107556152343749
+        ],
+        "n_contexts": 64
+      },
+      "joint_minus_base_margin": {
+        "mean": -0.37255859375,
+        "ci95": [
+          -0.52783203125,
+          -0.2041015625
+        ],
+        "n_contexts": 64
+      },
+      "joint_minus_K_margin": {
+        "mean": 1.65087890625,
+        "ci95": [
+          1.40672607421875,
+          1.9180297851562496
+        ],
+        "n_contexts": 64
+      },
+      "joint_minus_payload_margin": {
+        "mean": 1.57861328125,
+        "ci95": [
+          1.3583984375,
+          1.8120849609374996
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "natural_double_minus_base": {
+    "mean": -0.060546875,
+    "ci95": [
+      -0.20020751953125,
+      0.08594970703124993
+    ],
+    "n_contexts": 64
+  }
+}

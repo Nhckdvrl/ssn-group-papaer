@@ -63,3 +63,19 @@ C（理论 + 受控）+ B（测量）：exact oracle 与方向相反检验 → �
 - 2026-10-06 凌晨：I02（TR/TL）被 E27 否定；I03（边缘统计）被 E28/E29 支持；推广为“主效应 vs 交互”（E30）。
 - 2026-10-06 晨：E31/E32 表明交互可学（换输出词），定稿为“按输出存放证据”；E33–E35 给出语义定律与分隔阶梯。
 - 2026-10-06 下午：机制 E36–E38；“可按上下文条件化的独立先验通路”在读取机制层面不存在（主效应的行为绑定来自 query 自己标注者锚点的反证）。
+
+## 2026-10-10：定位与解释收窄（原结果完整保留）
+
+工作标题是候选计算描述，不是已建立的普遍定律。C09/C10/C13的有界现象可靠，但E58–E64检出可迁移来源差分、native来源name-key中介，以及整个query的来源条件化label消息；因此“信息在但默认不用”和“唯一按输出存放”不能替代完整机制。
+
+| 近邻 | 已拥有的认识 / compression risk | 本线仍开放的可检验问题 |
+|---|---|---|
+| Cho ICLR2025 | label retrieval + input encoding +旁路；找到额外token/head只是已有框架的实例 | metadata-conditioned计算在整个query何处完成，最终label复制对它的作用 |
+| Cho ICLR2026 / NAACL2025 | task-verbalization subspace、过滤、token读出边界 | 不能用adapter成功或换词涨分直接定位source机制 |
+| Feng/Steinhardt与Mixing Mechanisms | binding IDs、跨任务子空间、多种机制组合 | demo诱导来源特定函数与显式fact binding的同/不同程序，尚待直接对照 |
+| CBR ACL2026 | entity×relation cells；双键binding不是空白 | 规则推断×来源条件化如何组合，不能把来源分类简单改名 |
+| Lepori ACL2026；2609.38866/2609.31401 | 表示可读出≠部署、保留但选择失败、probe/native/logit信息区分 | 可读出source方向为何未通过所测label-anchor路径承担source effect |
+| Test, then Route 2608.04183 | predicate先在query输入位置计算再传至末位；router与label pair绑定 | metadata-conditioned消息的scope、source→query→label具体链条；“早期有计算”本身不新 |
+| Few-Shot Examples Add Up 2605.16591 | QK/V因果分解与context-dependent weighting | full-query条件化与末位attribution的对应关系及其可靠边界 |
+
+扫描记录：venue corpus三次nearest（2026-10-10）；awesome入口main返回404、master读取；DailyArXiv镜像读取至10月7日条目并过滤ICL/binding（无新相关记录据此作结论）；随后回到上述arXiv/会议原文。**没有exact-collision判决，也没有“空白双键问题”的novelty声明。** 近邻压力是研究对象需要更具体，不是关闭项目的理由。

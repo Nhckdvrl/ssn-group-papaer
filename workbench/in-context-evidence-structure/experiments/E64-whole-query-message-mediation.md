@@ -1,6 +1,6 @@
 # E64：来源条件化是否先在query内部完成，再传到答案末位（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** DONE（2026-10-10；发现、预定独立确认及有界复现完成）
 - **类型：** PILOT（E63的必要边界检验，不将末位阴性等同完整path阴性）
 - **对应：** I04、C12/C13；E63末位label冻结后synthetic仍保留约69%来源效应。
 - **问题（一句话）：** 末位之外的query位置是否先读取label证据，从而使“答案末位的attention几乎不用来源”成为不充分的机制诊断？
@@ -18,10 +18,14 @@
   - 两scope都保留、name-message冻结移除 → 更支持其它位置/读出调制，查prefix relay而非label-only路径。
   - 各冻结均部分、all-output阳性 → 多消息协作，不作单一路径结论。
   - scope改变base或数值控制失败 → 修harness/VOID，不解释机制。
-- **算力预算：** ≤1GPU·时；**实际：** 待填。
+- **算力预算：** ≤1GPU·时；**实际：** 0.158 GPU·时（单卡进程墙时折算，含加载，非积分利用率）。
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
-- 待运行。
+- 同一context两scope base/sourceK逐位相同；所有原生重建/no-op/all-att controls误差0。
+- 独立synthetic确认：label冻结后的效应余量 final=0.471[0.438,0.508]，all_query=0.061[0.027,0.094]；paired差0.410[0.373,0.450]。独立真实评论池：0.527[0.476,0.581]→0.054[0.001,0.102]，paired差0.473[0.426,0.525]。
+- Mistral复现给出重要边界：final已仅余0.127[0.089,0.165]，all_query余0.078[0.040,0.113]，paired差0.049[0.033,0.065]；label retrieval时序不能从Qwen泛化。
+- 两家族name消息：只冻结末位几乎仍余1，冻结全部query降到约0，支持来源消息主要通过答案前位置传递。
+- 结果：`results/e64/*/analysis.json`；小汇总`results/e58_e64_summary.json`，图`results/figs/e64_query_scope.{png,pdf}`。C16新增L1；目前是native消息依赖/时序边界，尚非完整binding电路或预测理论。
 
 ### 启动修正（2026-10-10）
 首次扩展query-site记录遗漏NAMES导入，在首个context打分前NameError；无科学读数。补入导入后同种子重跑，日志保留`*_startup_failure.log`，不改变设计。
