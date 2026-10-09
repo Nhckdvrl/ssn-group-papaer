@@ -42,7 +42,7 @@ Pure system-latency engineering with no scientific quantity.
 
 **Anchors:** VO01–VO12.
 
-**Current workbench:** `../../../workbench/realtime-agent-capability-transition/README.md`.
+**历史实测与结论：** [Realtime / Omni 已结项工作台摘要](REALTIME_WORKBENCH_CLOSEOUT.md)。原三个独立 workbench 已移出当前仓库树；此页仅是科学题材资料，不代表当前活跃的语音实验。
 
 ## 3. 关键论文与本目录文件
 
@@ -87,6 +87,5 @@ Pure system-latency engineering with no scientific quantity.
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/realtime-computation-boundaries/`
-- `workbench/realtime-agent-capability-transition/`
-- `workbench/omni-recon/`
+- [Realtime / Omni 结项记录（原测量与事实边界）](REALTIME_WORKBENCH_CLOSEOUT.md)
+

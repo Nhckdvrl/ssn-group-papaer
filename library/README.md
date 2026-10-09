@@ -4,7 +4,9 @@
 
 这里是可复用的知识层：谱系、关键论文、精读卡、开源资产、热度数据与来源入口。**它不是候选题目清单。**
 
-## 题材索引（19 个主题，唯一入口）
+## 题材索引（18 个主题，唯一入口）
+
+2026-10-09 精简：不再保留已明确放弃的 AI4Quant 题材壳；真正可复用的分析记录在其他题材中，不另建“废弃研究资料”目录。
 
 这里按**科学对象/研究问题**组织，而不是按某次研究的活跃状态；`library` 的题材页负责领域背景和文献，**项目是否还在推进只以 [workbench 登记表](../workbench/README.md) 与用户最新决定为准**。历史文献画像不能代替实时研究状态。
 
@@ -27,7 +29,6 @@
 | 视频与世界模型 | [video-world-models](themes/video-world-models/README.md) | 生成式交互世界模型、causalization |
 | 紧凑隐空间世界模型 | [latent-world-models](themes/latent-world-models/README.md) | JEPA/LeWM、latent planning、规划代价 |
 | VLA 与具身 | [vla-embodied](themes/vla-embodied/README.md) | 动作表示、具身训练与控制 |
-| 科学基础模型 / 结构建模 | [scientific-fm-ai4quant](themes/scientific-fm-ai4quant/README.md) | 旧题材知识存档，**无活跃 AI4Quant workbench** |
 | 研究方法与研究品味 | [research-craft](themes/research-craft/README.md) | 谱系、反归因、实验有效性、选题 |
 
 **阅读顺序：** 题材 `README.md`（问题地图）→ `KEY_PAPERS.md` 或 `PAPER_CARDS.md`（可复用论文）→ 必要时查 `deep/`（大篇幅史料）→ 到 `workbench/` 查看本项目实验和实时状态。题材目录的文件结构因历史来源不同，不应为了形式一致而移动/改写几百份阅读卡。
