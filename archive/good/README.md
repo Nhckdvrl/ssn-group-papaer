@@ -1,6 +1,6 @@
 # Good Candidates — Historical Packages Only
 
-**Updated:** 2026-09-11  
+**Updated:** 2026-09-11; **trimmed:** 2026-10-09. Bulky historical raw/weights/logs have been deleted from current HEAD; original version is recoverable via [pruning ledger](../PRUNING_2026-10-09.md). These directories retain code, notes and compact result tables, not full raw replay material.  
 **Approved paper mainline:** **NONE**  
 **Active candidates in this directory:** **NONE**
 

@@ -109,5 +109,5 @@ Rebranding ordinary RAG/KV pruning as “memory science”.
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/shape-olmo/`
+- [Shape/OLMo 历史实测的可复用否定结论](SHAPE_OLMO_CLOSEOUT.md)（原 CLOSED workbench 已删除）
 - `archive/candidates/CT05_EXACT_MEMORY_DEMAND/`

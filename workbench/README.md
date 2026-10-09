@@ -118,7 +118,13 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 **`mechanism-population-dynamics` 研究继续。** 用户 2026-10-09 明确否决先前停止投入的结论；实验/论文代码和结果完全保留。登记表的 `PROPOSED` 只表示没有擅自重新分配唯一 ACTIVE-EXPLORE 行政槽位，不是研究停止。
 
-## 9. 登记表（2026-10-09 整理；`tools/process/check.py` 读取本表）
+## 第二轮精简（2026-10-09）
+
+按用户“没有继续价值就删除”的新指示，6 个已 CLOSED 的旧工作台已退出工作区：原始结果和实验不再随当前 HEAD 分发，唯一可复用的科学发现已整理进对应 [知识库](../library/README.md)，保留旧 Git commit 供必要时查证。当前工作台只容纳正在开展、曾实测但仍有明确再使用价值、或用户指定保留的方向；历史测量的完整原始输出不在 `workbench/` 继续堆放。详细大小和删除对象见 [清理报告](../archive/PRUNING_2026-10-09.md)。
+
+**严格保护**：`mechanism-population-dynamics` 仍在继续；两个 NPC workbench 依用户意见保留；`video-world-model-temporal-interfaces` 的时序评测工具仍供实时世界模型主线使用；其它尚未 CLOSED 的实验研究资产未批量删除。
+
+## 9. 登记表（2026-10-09 二次精简；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
@@ -134,11 +140,5 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | **人 2026-10-08：作为候补恢复准备（mechpop 停止后占用 ACTIVE-EXPLORE）**；原为主推候选储备（2026-10-06）：主 idea I04——ICL 按输出存放证据：看得见“用哪些输出”的变化，看不见把输出重新分配给输入的变化（concept drift / 因人而异的映射），泄漏随标签语义相似度增加；13 模型 0.6B–32B、换词修复、读标签头机制（2 模型因果修补）；主张多为 L2（泛化条件已满足，待独立校对）；暂停推进，之后作为主推 candidate 恢复 |
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
-| `pragmatic-inference-calibration` | CLOSED | — | — | `CLAIMS.md` | 2026-10-03 | **人明确决定终止本题**：有限核心检验已收尾，实验raw/data/旧runner与本地模型已清理；保留最终证据和环境，不再自动探索 |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
-| `realtime-agent-capability-transition` | CLOSED | — | — | — | — | 证据关闭：E04 严格对照下口语化不造成可测损失；资产：τ-Voice 20GB 轨迹 + 脚本 |
-| `realtime-computation-boundaries` | CLOSED | — | — | — | — | 证据关闭：失败落在前台模型默认策略（一句指令可恢复）；资产：多个全双工模型的评测脚本 |
-| `omni-recon` | CLOSED | — | — | — | — | 侦察记录；B1 null 等事实可复用 |
-| `shape-olmo` | CLOSED | — | — | — | — | hybrid 相关假设在对照下不成立；OLMo T/H 对照资产 |
-| `moe-route-preference` | CLOSED | — | — | — | — | 观察有效，但更广的结论已被反事实路由工作覆盖 |

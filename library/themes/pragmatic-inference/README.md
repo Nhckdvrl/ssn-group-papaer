@@ -1,5 +1,7 @@
 # Pragmatic Inference — parent residency
 
+**已关闭方向的压缩结果：** [PRAGMATIC_CLOSEOUT.md](PRAGMATIC_CLOSEOUT.md)（工作台已按用户原先的人审决定终止，现已移出当前仓库树）。
+
 更新2026-10-03。已建立68篇分级论文卡；不把下载/摘要计为全文。每卡标明已读部分与未复现资产，公开review/分数未核对。
 
 | 论文 / 阅读卡 | 证据范围 |

@@ -91,4 +91,4 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 
 - `workbench/mechanism-population-dynamics/`
 - **模型差分独立 workbench 已撤销**；不再将此题材误标为正在开展的项目。见 [模型差分知识卡](MODEL_DIFFING_MEASUREMENT.md)。
-- `workbench/shape-olmo/`
+- [Shape/OLMo 历史架构/表征混杂审计](../architecture-memory/SHAPE_OLMO_CLOSEOUT.md)（旧 workbench 已删除）

@@ -4,6 +4,8 @@
 
 territory 是可以长期积累专长的科学领域，不是题目。按流程 v3（`../search/README.md`），选主线时要为候选 territory 填四张卡（热度 / 谱系 / 形态 / 立足点）和压力清单；最新一次扫描见 `../search/our-taste/TERRITORY_SCAN_2026-09-30.md`。
 
+T11（AI4Quant）已依人类明确兴趣选择从当前资料库移除，编号不重新分配；如要查原文，从 [旧 Git 快照](https://github.com/Nhckdvrl/ssn-group-papaer/tree/81e319fdc3414b7b6d16c8950f0046646d198cb1) 找历史文件。
+
 | ID | Territory | 题材目录 |
 |---|---|---|
 | T01 | Post-training / learning-signal dynamics | [`themes/training-post-training/`](themes/training-post-training/README.md) |
@@ -16,7 +18,6 @@ territory 是可以长期积累专长的科学领域，不是题目。按流程 
 | T08 | VLA / action representation / embodied control | [`themes/vla-embodied/`](themes/vla-embodied/README.md) |
 | T09 | Re-attribution / negative results / measurement | [`themes/research-craft/`](themes/research-craft/README.md) |
 | T10 | Cross-domain method formation: diffusion / optimization / CV | [`themes/research-craft/`](themes/research-craft/README.md) |
-| T11 | AI4Quant / structured multivariate models（历史研究兴趣，当前无 workbench） | [`themes/scientific-fm-ai4quant/`](themes/scientific-fm-ai4quant/README.md) |
 | T12 | Agents / search / tools | [`themes/agents-tools/`](themes/agents-tools/README.md) |
 | T13 | Game NPCs / interactive characters | [`themes/game-npc-social/`](themes/game-npc-social/README.md) |
 | T14 | Cross-lingual capability formation / multilingual learning dynamics | [`themes/multilingual/`](themes/multilingual/README.md) |

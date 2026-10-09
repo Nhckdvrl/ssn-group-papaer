@@ -1,1 +1,16 @@
 workbench/mechanism-population-dynamics/software-submission.zip
+
+# Generated Python/NFS files: never commit ephemeral caches
+__pycache__/
+*.py[cod]
+.nfs*
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Historical archive is docs/code only, not a dumping ground for raw runs
+archive/**/*.jsonl
+archive/**/*.log
+archive/**/*.stdout
+archive/**/*.pt
+archive/**/*.pth
+archive/**/*.npz

@@ -38,7 +38,7 @@ Routing is a clean place to study the gap between **scores, surrogates, discrete
 
 Good diagnostic signal → endless loss search.
 
-**Anchors:** MOE01–MOE03; repository observation `../../../workbench/moe-route-preference/README.md`.
+**Anchors:** MOE01–MOE03; repository observation [MoE preference-vs-execution 关闭结果](MOE_ROUTE_CLOSEOUT.md).
 
 ## 3. 关键论文与本目录文件
 
@@ -55,5 +55,5 @@ Good diagnostic signal → endless loss search.
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/moe-route-preference/`
+- [MoE preference-vs-execution 关闭结果](MOE_ROUTE_CLOSEOUT.md)（已从 workbench 删除）
 - `archive/candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/`
