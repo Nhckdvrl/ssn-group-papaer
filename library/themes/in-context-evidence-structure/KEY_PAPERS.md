@@ -229,3 +229,15 @@
 [原文§2–5与Limitations](https://aclanthology.org/2026.acl-long.676.pdf)。以随机walk引入任意词对应的grid/line结构，再要求next-word或few-shot位移规则；Dirichlet energy/distance correlation衡量几何。关键对照是即时prefilled continuation vs用户指令后延迟回答、few-shot token表示保真度、显式拓扑与meta-learning样例。不是来源probe或同任务query路由的实验；“inert”主要来自几何与下游行为分离，未直接给出来源维度的因果swap。
 - frontier测试包含Gemini2.5、GPT5系列；grid仍弱于line。Gemini最多5000 reasoning tokens，GPT自行选预算；目标是是否任何模型可靠完成，不是预算匹配比较，不能借它证明所有reasoning均不管用。
 - 论文保留表示不足/调用不足与CoT机制不清的限制，不提供修复并不损害其清楚的检验对象。可迁移动作是把支持“已有表示”的证据与支持“后续部署”的证据分开，加入显式结构阳性；ICES现在需进一步证明**来源、任务规则与输出的特定组合条件**，不能再以一般部署失败立novelty。
+
+### E67：强近邻产生的明确预测（2026-10-10）
+- 重读[Cho2410.04468v3§4/5.2](https://arxiv.org/html/2410.04468v3)：forerunner复制并非special-token独有；shortcut明确利用之前demo本身作为query时已形成的判断。这使E67的source-code prefix收益可由旧电路解释，不能以“找到了新位置”立novelty。区分**prefix局部address**与**prefix的历史计算**才是下一必要动作。
+- 重读[Wang2305.14160v3§3](https://arxiv.org/html/2305.14160v3)：anchor reweighting直接把注意力看成分类器，单head/layer的label键决定系数、可训练截距调贡献；压缩依赖标签上下文化状态。E67全prefix格式改变但label-only K/V迁移不足，不能说该文错误，需量化其它carrier/全query计算的边界。
+
+**Huang, Zhang, Zhang — Challenging the Explanation Based on Preceding Tokens: Discovering Transferable Non-Literal Biasing（ACL2026 short；全文§2/Limitations）。** [原文](https://aclanthology.org/2026.acl-short.52.pdf)
+1. 形态：观察＋替换/迁移preceding text的行为证据，关注解释faithfulness。
+2. 前提：字面上不包含答案的前句也可能带有特定答案的预训练联想；以语义类似的改写、删掉实体证据检验。
+3. idea来源（RECONSTRUCTED）：从CoT解释疑问转向答案前措辞的独立作用；不是原始发现日志。
+4. 证据：Llama2-7B、DeepSeek-R1-distill-Qwen7B；GPT5.2造prompt/改写；样本仅保留Llama在40tokens内生成指定答案的条件，故不能把其比例当未经挑选任务分布的普遍率。
+5. 边界：等义改写、字面不相关不消除预训练搭配/概率选择偏差；论文明确没有直接揭示模型实际reasoning，也未解决CoTfaithfulness。E67的source code与rule orientation随机独立、最终标签/词频不变，与该文静态答案关联不同；但任何prefix提高margin都不能自动称新算法。
+6. 可迁移动作：把prefix作用与实体证据独立改变。ICES需分别核对accuracy/source排序与K/V/history，不能只看answer confidence。
