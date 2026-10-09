@@ -70,7 +70,7 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 - **PROPOSED（新增）**：[`workbench/data-centric-rsi/`](workbench/data-centric-rsi/README.md)，数据策略的可复用性、训练干预型数据研究与多时域学习效用；已有本地GPU闭环与E12强静态基线评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审，主张均L0；实时证据见该工作台状态页，不改变现有ACTIVE调度。
 - **已降级**：`workbench/video-world-model-temporal-interfaces/` → PAUSED（H 类 scientific-yield 决定）。块首接缝失聪仍是可靠诊断资产，但不再作为独立 MAIN paper story；只在新主线需要区分 causalization / distillation / rollout 损失时复用。
 - **研究持续进行（2026-10-09 最新人决定）**：[`workbench/mechanism-population-dynamics/`](workbench/mechanism-population-dynamics/README.md)，旧“停止投入”判断不再有效；论文与实验资产完整保留。当前登记为 `PROPOSED` 只是为了不擅自调整已有 ACTIVE-EXPLORE 排程，不意味着停做。
-- 完整登记表：[`workbench/README.md`](workbench/README.md) §9；[2026-10-09 整理清单](workbench/WORKBENCH_AUDIT_2026-10-09.md)；检查：`python3 tools/process/check.py`。
+- 完整登记表：[`workbench/README.md`](workbench/README.md) §9；[2026-10-09 整理清单](workbench/WORKBENCH_AUDIT_2026-10-09.md)；[知识库总索引](library/README.md)；检查：`python3 tools/process/check.py`。
 ## 仓库规则
 - 顶层目录代表阶段 / 功能，不代表题目；不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验。
 - 候选编号只在 candidate 阶段出现；观察结果留在产生它的 workbench。

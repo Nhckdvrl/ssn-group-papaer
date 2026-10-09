@@ -112,11 +112,11 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 ---
 
-## 清理范围与科学状态（2026-10-09）
+## 整理结果与科学状态（2026-10-09，用户最新要求）
 
-本次仅将 **5 个未开展实证实验的桌面方向** 从 `workbench/` 移至 [`archive/workbenches/`](../archive/workbenches/README.md)，不抹去想法与失败分析；逐项审核见 [`WORKBENCH_AUDIT_2026-10-09.md`](WORKBENCH_AUDIT_2026-10-09.md)。
+本次**直接从当前仓库树删除**三个未有实验资产的旧工作台：`ai4quant`、`hybrid-adaptation`、`model-diffing-measurement`；后者的可复用研究设计先整理进入 [模型差分测量知识卡](../library/themes/interpretability-representation/MODEL_DIFFING_MEASUREMENT.md)。两个 NPC workbench **原样保留**，不归档。详细清单：[2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md)。Git 历史天然仍可追溯，删除不是历史擦除。
 
-**重要纠错：`mechanism-population-dynamics` 正在继续。** 2026-10-09 用户明确否决 2026-10-08 “停止投入”的历史决定；不得据旧文档关闭/归档此方向。登记表中的 `PROPOSED` 仅指正式单槽位排程尚未重分配，而非研究停滞。已有实证、论文、harness 的项目都保留。未动任何实验、模型、代码、结果，也未启动或取消训练。
+**`mechanism-population-dynamics` 研究继续。** 用户 2026-10-09 明确否决先前停止投入的结论；实验/论文代码和结果完全保留。登记表的 `PROPOSED` 只表示没有擅自重新分配唯一 ACTIVE-EXPLORE 行政槽位，不是研究停止。
 
 ## 9. 登记表（2026-10-09 整理；`tools/process/check.py` 读取本表）
 
@@ -135,6 +135,8 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | **人 2026-10-08：作为候补恢复准备（mechpop 停止后占用 ACTIVE-EXPLORE）**；原为主推候选储备（2026-10-06）：主 idea I04——ICL 按输出存放证据：看得见“用哪些输出”的变化，看不见把输出重新分配给输入的变化（concept drift / 因人而异的映射），泄漏随标签语义相似度增加；13 模型 0.6B–32B、换词修复、读标签头机制（2 模型因果修补）；主张多为 L2（泛化条件已满足，待独立校对）；暂停推进，之后作为主推 candidate 恢复 |
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
 | `pragmatic-inference-calibration` | CLOSED | — | — | `CLAIMS.md` | 2026-10-03 | **人明确决定终止本题**：有限核心检验已收尾，实验raw/data/旧runner与本地模型已清理；保留最终证据和环境，不再自动探索 |
+| `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
+| `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
 | `realtime-agent-capability-transition` | CLOSED | — | — | — | — | 证据关闭：E04 严格对照下口语化不造成可测损失；资产：τ-Voice 20GB 轨迹 + 脚本 |
 | `realtime-computation-boundaries` | CLOSED | — | — | — | — | 证据关闭：失败落在前台模型默认策略（一句指令可恢复）；资产：多个全双工模型的评测脚本 |
 | `omni-recon` | CLOSED | — | — | — | — | 侦察记录；B1 null 等事实可复用 |

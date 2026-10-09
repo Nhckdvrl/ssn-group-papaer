@@ -32,6 +32,8 @@
 
 ## Model diffing
 
+**进一步的研究问题、模型对比较原则与负对照：** [模型差分测量专题](MODEL_DIFFING_MEASUREMENT.md)。
+
 ### science-of-finetuning diffing toolkit
 https://github.com/science-of-finetuning/diffing-toolkit
 
