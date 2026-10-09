@@ -1,6 +1,6 @@
 # E73：同一采样轨迹上的回复预算与来源条件化（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** DONE（4-context预算校对；未通过原direct阳性门槛）
 - **类型：** PILOT / E72接口校对（探索材料，非独立机制确认）
 - **对应：** I04/C17/C19/P12；E72的direct96-token阳性对照被截断。
 - **为什么现在：** E72关闭thinking后仍出现长分析，短预算与thinking2048的准确率差不能证明推理模式修复绑定。必须先排除censoring与采样变化，再讨论能力/程序。
@@ -25,3 +25,24 @@
 - **算力：** 本地GPU2（E72仍在GPU0/1独立运行），Qwen8B/conda verl-clean，模型NVMe复用，不改正在运行的E72源文件；预计单卡10–25分钟，额外short仅预定batch。27B后续仅在其E72接口有效与该budget校对成功后做，不盲目平铺。
 - **产物：** scripts/e73_budget.py、scripts/analyze_e73.py；小run/analysis JSON入git，完整trajectory tokens/text及prompts JSONL留NFS。原E72短预算结果保留，不替换。
 - **定位：** 延长scratchpad、reasoning与native/TF接口不等价已有大量研究；本卡为科学归因校对，不能单独构成ICES新贡献。后续有价值的问题仍需区别完整Source计算、正向label支持与函数约束推断。
+
+## 结果：预算与格式均是实质混杂
+
+`results/e73/qwen3_discovery/{analysis,run,prefix_audit}.json`；192条长轨迹，固定预定4contexts全部保留。**48次真实短生成前缀核对、0 mismatch**。科学运行924.247s。原严格解析器的4096-token accuracy如下；CI为context bootstrap，n=4很小，不作规模规律。
+
+| schema | chat默认 | chat+Source指令 | thinking+Source指令 |
+|---|---|---|---|
+| source_only | .500 | .500 | 1.00 |
+| orthogonal_prefix | .3125 | .375 | .8125 |
+| entity_binding | .4375 | .8125 | 1.00 |
+| single_source | .750 | .750 | 1.00 |
+
+orthogonal thinking同一轨迹2048→4096 accuracy .1875→.8125、截断.8125→.0625，直接确认不能把短预算低分解释为能力失败。相同4096预算，thinking−instructed-chat差：source_only+.500[.3125,.6875]、orthogonal+.4375[.125,.6875]，但**direct单来源.750低于预定.80正控**。因此不触发原卡能力确认、不称独有多来源组合缺陷。
+
+### POST-HOC格式审计（不替换主读数）
+
+认真看已完成无合法答案样例，发现`**Answer: yes**`等装饰被原严格parser漏掉；这是可避免的测量遗漏。新脚本只移除独立Answer/Final Answer行的Markdown装饰/标题符号；不同答案行冲突、unknown/缺失、复合`Red yes`仍不接受，不从推理正文择标签。全192条×3budget共同审计，原strict指标均保留，无严格正确答案因校正丢失。
+
+4096格式校正后的accuracy（`format_audit.json`，POST-HOC）：默认chat source_only .8125[.750,.9375]、entity .8125、single .9375、orthogonal .500；instructed-chat分别.500、.875、.750、.375；thinking原值不变。默认chat已具备不少来源判断能力，“关闭thinking不会绑定”的说法进一步不成立。Source指令的真实错误仍存在，不能都归解析器；其坏于默认模式的pilot差尚未独立确认。
+
+**实际改变的判断：** E72不支持能力失败；格式是测量变量，长预算非thinking也可能写自然语言分析。thinking在这批样例上可靠完成说明有效程序存在，但不能只从trace认定faithful机制。新的独立确认若开展，须先固定语义解析规范、完整预算与有效正控；不能将事后校正视为原确认门槛已经通过。

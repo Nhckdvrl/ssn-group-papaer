@@ -1,0 +1,2898 @@
+{
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "out": "results/e73/qwen3_discovery",
+      "stage": "discovery",
+      "n": 4,
+      "seed": 72001,
+      "batch_size": 4
+    },
+    "seconds": 924.2468914985657,
+    "prefix_audits": 48,
+    "prefix_mismatches": 0,
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "model_class": "Qwen3ForCausalLM",
+    "host": "fvcrc21",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "script_sha256": "7c3e2a55ecbe8ecfaa7d5ce0d0438e01e4004a1ddba86929e225bdc4db6c5745",
+    "dependency_sha256": {
+      "e72_native.py": "1d257cda4b46d2c3674a80064b91d9e1299718590fad83a31378a1cbb2a54268",
+      "e71_relational.py": "56730367121195cb886f25d160d90abf21c54fa53cd77f8c028ee6a97c5d17b9",
+      "e58_factorization.py": "0714e82c44c3191b07dae21d79931e7d5e4b7bb38f161cee72c14270caf9c5b3",
+      "e67_prefix.py": "42b8f205cbe02d913867391ac30171d10bd9a8083eeedd959f61e6a19bfc3256"
+    },
+    "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+    "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "git_commit": "2a9ddbb1a73e45431f9aee2edb4682db851e0e29"
+  },
+  "conditions": {
+    "source_only.chat.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 96.0,
+        "ci95": [
+          96.0,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat.2048": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 267.875,
+        "ci95": [
+          219.25,
+          326.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat.4096": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 267.875,
+        "ci95": [
+          219.25,
+          326.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat_instruction.96": {
+      "accuracy": {
+        "mean": 0.4375,
+        "ci95": [
+          0.125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.875,
+        "ci95": [
+          0.625,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 15.5,
+        "ci95": [
+          4.0,
+          38.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat_instruction.2048": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 36.9375,
+        "ci95": [
+          4.0,
+          102.8125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat_instruction.4096": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 36.9375,
+        "ci95": [
+          4.0,
+          102.8125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking_instruction.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 96.0,
+        "ci95": [
+          96.0,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking_instruction.2048": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1091.75,
+        "ci95": [
+          874.1875,
+          1260.1875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking_instruction.4096": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1091.75,
+        "ci95": [
+          874.1875,
+          1260.1875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 93.9375,
+        "ci95": [
+          89.8125,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat.2048": {
+      "accuracy": {
+        "mean": 0.3125,
+        "ci95": [
+          0.25,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.375,
+        "ci95": [
+          0.25,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 325.8125,
+        "ci95": [
+          271.875,
+          367.9375
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat.4096": {
+      "accuracy": {
+        "mean": 0.3125,
+        "ci95": [
+          0.25,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.375,
+        "ci95": [
+          0.25,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 325.8125,
+        "ci95": [
+          271.875,
+          367.9375
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat_instruction.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 93.3125,
+        "ci95": [
+          87.9375,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat_instruction.2048": {
+      "accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.125,
+          0.625
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 209.9375,
+        "ci95": [
+          173.5625,
+          249.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat_instruction.4096": {
+      "accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.125,
+          0.625
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 209.9375,
+        "ci95": [
+          173.5625,
+          249.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking_instruction.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 96.0,
+        "ci95": [
+          96.0,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking_instruction.2048": {
+      "accuracy": {
+        "mean": 0.1875,
+        "ci95": [
+          0.0625,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.1875,
+        "ci95": [
+          0.0625,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 2017.625,
+        "ci95": [
+          1997.0,
+          2038.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking_instruction.4096": {
+      "accuracy": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 2789.375,
+        "ci95": [
+          2412.375,
+          3272.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 96.0,
+        "ci95": [
+          96.0,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat.2048": {
+      "accuracy": {
+        "mean": 0.4375,
+        "ci95": [
+          0.3125,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.625,
+        "ci95": [
+          0.5,
+          0.75
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 246.4375,
+        "ci95": [
+          219.75,
+          273.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat.4096": {
+      "accuracy": {
+        "mean": 0.4375,
+        "ci95": [
+          0.3125,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.625,
+        "ci95": [
+          0.5,
+          0.75
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 246.4375,
+        "ci95": [
+          219.75,
+          273.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat_instruction.96": {
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 95.875,
+        "ci95": [
+          95.625,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat_instruction.2048": {
+      "accuracy": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 199.0,
+        "ci95": [
+          158.625,
+          251.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat_instruction.4096": {
+      "accuracy": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 199.0,
+        "ci95": [
+          158.625,
+          251.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking_instruction.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 96.0,
+        "ci95": [
+          96.0,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking_instruction.2048": {
+      "accuracy": {
+        "mean": 0.875,
+        "ci95": [
+          0.75,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.875,
+        "ci95": [
+          0.75,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1301.5625,
+        "ci95": [
+          1142.9375,
+          1430.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking_instruction.4096": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1334.0625,
+        "ci95": [
+          1163.25,
+          1495.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat.96": {
+      "accuracy": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.875,
+        "ci95": [
+          0.625,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 90.0,
+        "ci95": [
+          78.0,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat.2048": {
+      "accuracy": {
+        "mean": 0.75,
+        "ci95": [
+          0.5625,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.75,
+        "ci95": [
+          0.5625,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 151.625,
+        "ci95": [
+          118.625,
+          172.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat.4096": {
+      "accuracy": {
+        "mean": 0.75,
+        "ci95": [
+          0.5625,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.75,
+        "ci95": [
+          0.5625,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 151.625,
+        "ci95": [
+          118.625,
+          172.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat_instruction.96": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.75,
+        "ci95": [
+          0.4375,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.25,
+        "ci95": [
+          0.0,
+          0.5625
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 27.0,
+        "ci95": [
+          4.0,
+          55.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat_instruction.2048": {
+      "accuracy": {
+        "mean": 0.75,
+        "ci95": [
+          0.5625,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 37.625,
+        "ci95": [
+          4.0,
+          73.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat_instruction.4096": {
+      "accuracy": {
+        "mean": 0.75,
+        "ci95": [
+          0.5625,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 37.625,
+        "ci95": [
+          4.0,
+          73.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking_instruction.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 96.0,
+        "ci95": [
+          96.0,
+          96.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking_instruction.2048": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 649.0625,
+        "ci95": [
+          555.25,
+          742.875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking_instruction.4096": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 649.0625,
+        "ci95": [
+          555.25,
+          742.875
+        ],
+        "n_contexts": 4
+      }
+    }
+  },
+  "budget_contrasts": {
+    "source_only.chat.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -1.0,
+        "ci95": [
+          -1.0,
+          -1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 171.875,
+        "ci95": [
+          123.25,
+          230.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.125,
+        "ci95": [
+          -0.375,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 21.4375,
+        "ci95": [
+          0.0,
+          64.3125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.chat_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -1.0,
+        "ci95": [
+          -1.0,
+          -1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 995.75,
+        "ci95": [
+          778.1875,
+          1164.1875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.3125,
+        "ci95": [
+          0.25,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.375,
+        "ci95": [
+          0.25,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.9375,
+        "ci95": [
+          -1.0,
+          -0.8125
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 231.875,
+        "ci95": [
+          182.0625,
+          271.9375
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.125,
+          0.625
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.75,
+        "ci95": [
+          0.75,
+          0.75
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.9375,
+        "ci95": [
+          -1.0,
+          -0.8125
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 116.625,
+        "ci95": [
+          77.5625,
+          155.8125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.chat_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.9375,
+        "ci95": [
+          -1.0,
+          -0.8125
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 2693.375,
+        "ci95": [
+          2316.375,
+          3176.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.625,
+        "ci95": [
+          0.5,
+          0.75
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.75,
+        "ci95": [
+          0.75,
+          0.75
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.75,
+        "ci95": [
+          -0.75,
+          -0.75
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 771.75,
+        "ci95": [
+          418.4375,
+          1230.6875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.4375,
+        "ci95": [
+          0.3125,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.625,
+        "ci95": [
+          0.5,
+          0.75
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -1.0,
+        "ci95": [
+          -1.0,
+          -1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 150.4375,
+        "ci95": [
+          123.75,
+          177.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.75,
+        "ci95": [
+          0.5625,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.875,
+        "ci95": [
+          0.75,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.9375,
+        "ci95": [
+          -1.0,
+          -0.8125
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 103.125,
+        "ci95": [
+          63.0,
+          155.125
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.chat_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -1.0,
+        "ci95": [
+          -1.0,
+          -1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1238.0625,
+        "ci95": [
+          1067.25,
+          1399.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.125,
+        "ci95": [
+          -0.25,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 32.5,
+        "ci95": [
+          0.0,
+          65.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.625,
+        "ci95": [
+          0.375,
+          0.875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.625,
+        "ci95": [
+          0.375,
+          0.875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.875,
+        "ci95": [
+          -1.0,
+          -0.625
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 61.625,
+        "ci95": [
+          40.625,
+          76.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 0.25,
+        "ci95": [
+          0.0,
+          0.5625
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.25,
+        "ci95": [
+          0.0,
+          0.5625
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.25,
+        "ci95": [
+          -0.5625,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 10.625,
+        "ci95": [
+          0.0,
+          21.25
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.chat_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking_instruction.4096_minus_96": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -1.0,
+        "ci95": [
+          -1.0,
+          -1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 553.0625,
+        "ci95": [
+          459.25,
+          646.875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking_instruction.4096_minus_2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    }
+  },
+  "mode_contrasts": {
+    "source_only.instruction.96": {
+      "accuracy": {
+        "mean": 0.4375,
+        "ci95": [
+          0.125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.875,
+        "ci95": [
+          0.625,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.875,
+        "ci95": [
+          -1.0,
+          -0.625
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -80.5,
+        "ci95": [
+          -92.0,
+          -57.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking.96": {
+      "accuracy": {
+        "mean": -0.4375,
+        "ci95": [
+          -0.6875,
+          -0.125
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": -0.875,
+        "ci95": [
+          -1.0,
+          -0.625
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.875,
+        "ci95": [
+          0.625,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 80.5,
+        "ci95": [
+          57.5,
+          92.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.instruction.2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.25,
+          0.3125
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -230.9375,
+        "ci95": [
+          -259.1875,
+          -207.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking.2048": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1054.8125,
+        "ci95": [
+          842.375,
+          1251.0625
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.instruction.4096": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.25,
+          0.3125
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -230.9375,
+        "ci95": [
+          -259.1875,
+          -207.75
+        ],
+        "n_contexts": 4
+      }
+    },
+    "source_only.thinking.4096": {
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.3125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1054.8125,
+        "ci95": [
+          842.375,
+          1251.0625
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.instruction.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -0.625,
+        "ci95": [
+          -1.875,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking.96": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 2.6875,
+        "ci95": [
+          0.0,
+          8.0625
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.instruction.2048": {
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          -0.125,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.4375,
+        "ci95": [
+          0.3125,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -115.875,
+        "ci95": [
+          -167.25,
+          -64.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking.2048": {
+      "accuracy": {
+        "mean": -0.1875,
+        "ci95": [
+          -0.4375,
+          0.125
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": -0.625,
+        "ci95": [
+          -0.75,
+          -0.5
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.8125,
+        "ci95": [
+          0.75,
+          0.9375
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1807.6875,
+        "ci95": [
+          1783.625,
+          1846.625
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.instruction.4096": {
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          -0.125,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.4375,
+        "ci95": [
+          0.3125,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -115.875,
+        "ci95": [
+          -167.25,
+          -64.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "orthogonal_prefix.thinking.4096": {
+      "accuracy": {
+        "mean": 0.4375,
+        "ci95": [
+          0.125,
+          0.6875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 2579.4375,
+        "ci95": [
+          2213.3125,
+          3031.875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.instruction.96": {
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -0.125,
+        "ci95": [
+          -0.375,
+          0.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking.96": {
+      "accuracy": {
+        "mean": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.instruction.2048": {
+      "accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.25,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.3125,
+        "ci95": [
+          0.25,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -47.4375,
+        "ci95": [
+          -95.0,
+          20.0625
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking.2048": {
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          -0.125,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": -0.0625,
+        "ci95": [
+          -0.25,
+          0.125
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1102.5625,
+        "ci95": [
+          944.125,
+          1261.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.instruction.4096": {
+      "accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.25,
+          0.5
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.3125,
+        "ci95": [
+          0.25,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -47.4375,
+        "ci95": [
+          -95.0,
+          20.0625
+        ],
+        "n_contexts": 4
+      }
+    },
+    "entity_binding.thinking.4096": {
+      "accuracy": {
+        "mean": 0.1875,
+        "ci95": [
+          0.0625,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 1135.0625,
+        "ci95": [
+          944.125,
+          1326.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.instruction.96": {
+      "accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.125,
+          0.625
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.625,
+        "ci95": [
+          0.25,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": -0.625,
+        "ci95": [
+          -1.0,
+          -0.25
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -63.0,
+        "ci95": [
+          -92.0,
+          -34.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking.96": {
+      "accuracy": {
+        "mean": -0.5,
+        "ci95": [
+          -0.6875,
+          -0.3125
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": -0.75,
+        "ci95": [
+          -1.0,
+          -0.4375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.75,
+        "ci95": [
+          0.4375,
+          1.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 69.0,
+        "ci95": [
+          40.25,
+          92.0
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.instruction.2048": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.3125,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.25,
+        "ci95": [
+          0.0625,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -114.0,
+        "ci95": [
+          -165.5,
+          -62.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking.2048": {
+      "accuracy": {
+        "mean": 0.25,
+        "ci95": [
+          0.0625,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 611.4375,
+        "ci95": [
+          483.75,
+          738.875
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.instruction.4096": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.3125,
+          0.25
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.25,
+        "ci95": [
+          0.0625,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": -114.0,
+        "ci95": [
+          -165.5,
+          -62.5
+        ],
+        "n_contexts": 4
+      }
+    },
+    "single_source.thinking.4096": {
+      "accuracy": {
+        "mean": 0.25,
+        "ci95": [
+          0.0625,
+          0.4375
+        ],
+        "n_contexts": 4
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4
+      },
+      "tokens": {
+        "mean": 611.4375,
+        "ci95": [
+          483.75,
+          738.875
+        ],
+        "n_contexts": 4
+      }
+    }
+  },
+  "limitations": [
+    "Small context-only bootstrap; one sampled path per query/mode.",
+    "Budgets share exact trajectories; modes have different templates and independent samples.",
+    "Nonthinking outputs may contain natural-language analysis.",
+    "Censoring failures do not prove source-binding incapacity."
+  ]
+}

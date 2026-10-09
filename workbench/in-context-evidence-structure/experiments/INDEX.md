@@ -80,4 +80,7 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E70](E70-common-frame-versus-example-specific-keys.md) | 公共key平移还是逐样例变化；冻结状态能否迁移 | bf16几何控制失败VOID；float32冻结共享偏移独立恢复53%margin效应、accuracy+5.9点，来源排序仍比native低10.9点 |
 
 | [E71](E71-relational-code-versus-carrier-access.md) | 前缀是否只因扩大答案语法而有效；旧frame能否迁移新身份 | relation×layout accuracy独立+10.9点；冻结迁移35%/accuracy+3.1点低于MIE，own common仍有效；合作仅来源排序有界支持 |
-| [E72](E72-native-chat-and-reasoning-boundaries.md) | raw/native chat/指令/thinking是否同一能力边界 | RUNNING；8B direct短预算大量截断，不能当binding错误；较新27B已加载，终点评测待完成 |
+| [E72](E72-native-chat-and-reasoning-boundaries.md) | raw/native chat/指令/thinking是否同一能力边界 | DONE；27B thinking普通来源/linked/entity/single全对，orthogonal大量截断；direct96正控无效，不做能力失败归因 |
+| [E73](E73-paired-generation-budget-and-interface.md) | 同一采样路径预算与格式是否混杂模式差异 | DONE；48次实际前缀全一致，orthogonal think延长恢复；strict单源75%未过门槛，装饰校正为POST-HOC，不能称组合缺陷 |
+| [E74](E74-source-scoped-rule-completion.md) | 正确词全局出现但Source×类别未见，推断还是正向支持 | DONE；full100%、held32–36%，signed方向CI跨0、Unknown程序未执行；不触发原确认，先native有效性 |
+| [E75](E75-native-function-family-validity.md) | native thinking能否执行所声明的来源函数空间 | RUNNING；18新contexts，full/held bijection与held independent，先固定装饰parser与有效性门槛 |

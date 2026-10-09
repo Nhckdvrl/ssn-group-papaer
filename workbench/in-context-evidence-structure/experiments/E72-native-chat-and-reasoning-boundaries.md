@@ -1,6 +1,6 @@
 # E72：裸续写、原生聊天与推理，是否面对同一来源条件化边界？（2026-10-10）
 
-- **状态：** RUNNING（8B与27B均在原生生成；两模型候选评分已完整）
+- **状态：** DONE（完整pilot；能力归因受预算限制，不触发原门槛确认）
 - **类型：** PILOT
 - **对应：** I04/C17/C19/P12/P13；强模型意义压力测试，非新增方法。
 - **为什么现在：** E71关系码实验可用已知prefix/shortcut解释；继续只在Qwen3-8B裸续写中定位状态，可能把接口/输出校准当稳定能力缺陷。需要直接对比native接口和允许推理的行为，允许强模型解决来收窄问题。
@@ -35,3 +35,19 @@
 - 8B四种候选score共640行已完整，no-op/token-sum=0；direct96-token自由生成多为长分析未结束，包括single/entity阳性，说明回复预算不足。保留原输出，不能把低生成accuracy当绑定缺陷。
 - 27B四种候选score共640行已完整、控制见control_report.json；原生生成与8B的2048-token thinking仍在运行。缺少有效接口/预算控制时不触发独立能力确认，不把未完成推理当不具备能力。
 - 原模型/seed/读数不变；下一步先设计同prompt、相同采样前缀的短/长预算配对校对，预定后执行，不后补成原卡成功。
+
+## 完成结果与判断更新
+
+两模型各640条候选评分、480条自由生成，全部8contexts保留；no-op及token-sum误差0。结果：`results/e72/{qwen3_discovery,qwen38_discovery}/analysis.json`、`run.json`、`control_report.json`。8B科学运行1598.187s，27B2574.858s；27B环境torch2.9.1/cu129、tf5.12.1、Qwen3_5ForCausalLM text-only兼容加载，language keys无缺失；未使用MTP。
+
+| schema | 8B thinking2048 accuracy / 截断 | 27B thinking2048 accuracy / 截断 |
+|---|---|---|
+| source_only | .9375 / .0625 | 1.00 / 0 |
+| linked_prefix | .6875 / .3125 | 1.00 / 0 |
+| orthogonal_prefix | .15625 / .84375 | .4375 / .5625 |
+| entity_binding | .9375 / .0625 | 1.00 / 0 |
+| single_source | 1.00 / 0 | 1.00 / 0 |
+
+27B原生direct96在全部schema和两指令条件100%截断、无最终答案；8B相同问题也发生在single/entity正控。故direct−thinking差**不是有效的能力/计算模块比较**。27B source_only的raw条件accuracy .4375，而native thinking1.00，只支持裸续写与有效推理接口的行为边界；不能从家族/架构/模板同时改变中定位改进原因。orthogonal未闭合不能认定错误算法，更不能推广reasoning失败。
+
+格式事后审计：`scripts/audit_e72_e73_format.py`，`format_audit.json`标POST-HOC；仅允许独立Answer/Final Answer行上的Markdown装饰，不从正文捞标签、不剥复合code、不用gold选答案。本卡结果没有因格式校正改变；严格原读数继续保留。E73长轨迹揭示的格式遗漏单独记录，不回写E72主读数。当前没有独立能力确认，所有结论仅是pilot范围。

@@ -1,6 +1,6 @@
 # E74：标签全局出现，正确来源组合未出现——正向支持还是约束推断？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** DONE（发现pilot，主要方向未过MIE；不触发72-context确认）
 - **类型：** PILOT（新问题观测，不锁定机制）
 - **对应：** I04/C09/C15/P12；测试positive output-support解释的边界。
 - **为什么现在：** E71与预算压力测试不能自动把label-anchor路径变成新机制理论。Cho unseen-label区分copy与过滤，但语义任务仍可借预训练先验；此处随机source-specific映射令目标不是预训练已知分类，并令目标词全局出现，拆开word availability与source-specific evidence。
@@ -43,3 +43,22 @@ A的未见label等于B的独有已见label，反之亦然。因此positive synch
 ## 分析前符号校正
 模型发现运行期间、尚未读取任何科学打分或运行分析器时，代数复核发现分析代码误给owned_b−comp_b加了负号。由于Ψ=LD_A−LD_B，A由targetA换为targetB会降低LD_A，B由targetB换为targetA会提高LD_B，两者都降低Ψ。因此两条owner响应均为Ψ_comp−Ψ_owned，无额外符号。只校正分析器实现，运行中的打分脚本未改；edited-source单独LD的方向仍A正、B负。原卡的来源条件化方向与判断门槛未变。
 同阶段将分析器调用从导入函数的默认2000重采样显式改为本卡规定的4000次（bootstrap seed740）；没有读取科学结果。
+
+## 结果与判断更新
+
+36context全部64条件×12query完整，ordered target pair×missing category各2contexts；枚举oracle mismatch0、native重复no-op0，科学运行595.807s（.1655 GPUh）。代码/model/config hash见`results/e74/qwen3_discovery/run.json`，主读数`analysis.json`。
+
+| 条件 | A/B目标query accuracy | 其它已见query accuracy | Unknown候选概率 |
+|---|---|---|---|
+| full bijection 默认 / Source指令 | 1.00 / 1.00 | 1.00 / 1.00 | <.000003 |
+| held bijection 默认 | .3194[.2361,.4028] | .9972 | .0086 |
+| held bijection Source指令 | .3611[.2778,.4444] | 1.00 | .0048 |
+| held independent 默认 / Source指令 | 0 / 0（正确决策Unknown） | .9972 / 1.00 | .00187 / .00162 |
+
+held bijection同步signed响应：默认−.5947[−1.3698,.1119]、Source指令−.5163[−1.1777,.1046]nats。它略偏固定positive-support方向，但**CI跨0，不能报告已定位该算法**。两条owner-minus-comp（Source指令）−.1806[−.5342,.1241]与−.3228[−.7853,.1410]也未确认方向。full同步响应+28.8346[26.3387,31.3717]为已见映射阳性，与held不可混比机制含义。
+
+Source指令下held foreign-swap对Ψ为+.2443[−.2092,.7141]、foreign-cycle+.0400[−.4950,.5483]；不是等效性检验，不能从CI跨0说其它来源无影响。所有owner/foreign/补偿条件均在主分析里保留；没择response方向、source或seed。
+
+**按跑前决策：** 没有held高准确补全；相反方向也未过CI/MIE，不启动72新词库确认。independent从不可靠报Unknown提示即时接口没有可靠执行声明函数空间/不可识别性，不能据full检索成功将held低分直接解释为负约束能力缺失。下一动作是E75 native函数空间有效性gate，只有它有效才做owner/foreign及word/relationship拆解；不在无阳性基础上铺causal patch。
+
+没有C##升级；没有证明新的计算规律，也没有证明项目trivial。此卡提供一个可识别的新观测任务及明确未达门槛的结果，保持I04与ACTIVE状态。

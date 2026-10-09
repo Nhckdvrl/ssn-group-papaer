@@ -6,7 +6,8 @@
 - **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **E65/E66更新：** query接力有模型边界（Qwen的Label标记／Mistral的来源字段）；删direct-label无稳定accuracy修复。input前source缓存对single/mixed均失败，已见input的缓存保留logit但准确率收益有限，不能包装成新组合瓶颈。各卡与复盘已记负结果，C16仍L1。
 - **E67–E70更新：** 同信息code位置改变Qwen的来源排序；prefix K的历史作用可在完全禁读label后保留。独立冻结公共key偏移将accuracy从0.543恢复至0.602，但来源排序0.828仍低于原生0.938；预测恢复不等于binding恢复。C17–C19均L1，bf16数值失败已作废，详见复盘§8。
-- **E71更新：** 相同namespace下，关系码×位置的accuracy交互独立确认+10.9点；旧冻结frame迁移只35%/accuracy+3.1点，未过预设MIE。E72正在做native chat/reasoning边界；短direct预算造成截断，不算能力失败。
+- **E71更新：** 相同namespace下，关系码×位置的accuracy交互独立确认+10.9点；旧冻结frame迁移只35%/accuracy+3.1点，未过预设MIE。
+- **E72–E75更新：** 短direct预算连single/entity也截断，不能证明binding失败；48次同轨迹预算前缀核对全一致。27B thinking普通多来源pilot全对；8B长预算默认chat已有不少来源判断，Markdown漏判校正为POST-HOC，未做独立能力确认。E74 full100%、缺失组合32–36%，signed方向CI跨0且Unknown程序未执行；不触发原确认，E75先测native函数空间有效性，详见复盘§10。
 - **主 idea：** [`ideas/I04-output-indexed-evidence.md`](ideas/I04-output-indexed-evidence.md)
 - **目标会议：** ICML / ICLR（ICL 理论与机制叙事）；备选 ACL / EMNLP（标签语义、标注者视角、非平稳 NLP 场景叙事）。
 - **证据账本：** [`CLAIMS.md`](CLAIMS.md)　**实验索引：** [`experiments/INDEX.md`](experiments/INDEX.md)　**论文形态卡：** [`PAPER_SHAPE.md`](PAPER_SHAPE.md)　**日志：** [`logs/`](logs/)
@@ -80,6 +81,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **只在本地（不进 git，NFS `/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/`）：** 逐条 LM 打分 `results/*/*.jsonl`（约 570MB，可用 `run_lm.py` 按卡重跑）、训练/进程日志 `logs/*.log`、机制数组 `results/mech/*.npz`（逐头 DLA、锚点 value、注意力；可用 `scripts/mech_*.py` 重建）、注意力探针 `results/*/attn_*.npz`、LoRA/toy 权重 `/tmp/xiang_*`（fvcrc13 本地）。
 - **算力备注：** fvcrc10/13/20 的空卡；NFS 约 40 MB/s，32B 模型首次加载需 ~25 分钟；同一张卡上的任务只放一条队列（两条队列会在交接时撞车导致 OOM）。
 - **E67–E70资产：** `results/e67_e70_summary.json`、各有效`analysis/run.json`与汇总图入git；原始JSONL、token布局、`results/e70/frozen_frame/frame.npy`留上述NFS路径。冻结偏移按E70卡无query提取重建；bf16作废控制记录保留。科学确认使用独立seed/词库/label，E70为float32。
+- **E71–E75资产：** 各卡脚本、小`run/analysis/control/format_audit/prefix_audit.json`与图入git；原始生成token/text、contexts、prompts、behavior JSONL在`results/e71/`至`e75/`上述NFS路径，不进git。E72 27B用本地`/tmp/ices_models/Qwen3.8-27B`，HF revision `1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0`，conda openslime＋vendor tf5.12.1；text-only语言权重完整，无MTP。按卡固定seed、所有contexts与失败保留。
 - **E65/E66资产：** `results/e65_e66_summary.json`、各有效`analysis/run.json`与E65图入git；逐query原始JSONL及token布局留NFS。E66 bf16作废输出/控制记录保留，float32有效版本按卡重建。
 - **E58–E64资产：** `results/e58/`、`e59/`中的`*.npy`锚点状态与各卡`contexts.jsonl/behavior.jsonl`留在上述NFS路径，不进git；代码与固定种子可重建。小汇总`results/e58_e64_summary.json`与`analysis.json`入git。Qwen3-8B revision `b968826d9c46dd6066d109eabc6255188de91218`；Mistral-7B-v0.3 `caa1feb0e54d415e2df31207e5f4e273e33509b1`；节点NVMe `/tmp/ices_models/`由对应HF缓存snapshot复制。环境仍为conda `verl-clean`（torch2.8.0/cu128、transformers4.57.6）。
 

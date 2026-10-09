@@ -71,3 +71,12 @@ E70 common/centered/both的Source排序交互为事后分析（`interaction_post
 - C19：**旧冻结frame的新身份/新码迁移未达到预设MIE**：fraction0.350[0.231,0.477]、accuracy+0.031[0.008,0.055]、来源排序−0.008[-0.063,0.047]。发现的0.720/accuracy+0.125幅度不复现。原C19的固定Alex/Sam范围保留；不升级“通用frame”，不按seed或词表重估旧frame后算确认。
 - 同context的own common仍恢复0.695[0.550,0.858]margin、accuracy+0.063[0.027,0.098]；完整blind与common/centered的来源排序交互+0.086[0.023,0.156]，是E70 POST-HOC之后新预定材料的有界支持。发现交互0、确认accuracy/margin交互CI跨0，不能升为普遍合作理论。
 - 新名字/码词/词库/label同时更换，只能说明联合泛化有边界，不能单独定位哪种身份导致。native chat/reasoning尚待E72，raw一句Source指令边界不得替代该测试。
+
+### E72/E73对能力叙事的限制（2026-10-10，无升级）
+- 证据：E72、E73，`results/e72/*/analysis.json`、`results/e73/qwen3_discovery/analysis.json`、`prefix_audit.json`。direct96的single/entity也截断；48次实际短/长采样前缀完全一致，orthogonal thinking同轨迹2048→4096 accuracy .1875→.8125。不能拿未完成回复当来源绑定失败。
+- Qwen3.8-27B 8context thinking2048：source_only/linked/entity/single accuracy1.00，orthogonal .4375但56.25%截断。前四项只支持有有效行为程序，orthogonal低分不能证明程序不存在；不从同开发者模型推广frontier边界。
+- E73严格direct单来源.750，未过跑前.80控制，因此不触发原能力确认。观察Markdown遗漏后的装饰parser为POST-HOC：8B默认chat长预算source_only .8125、single .9375；不替换strict结果、不把事后阳性当原门槛通过。Source指令下真实错误仍存在，但只有4contexts、未确认。
+- 所有这些结果收窄“默认不使用来源”“reasoning无法恢复”的适用范围，未否定原E02/E46的指定任务现象；也未建立稳定新计算规律。C17/C19仍L1，完整因果算法与贡献门槛仍未跨过。
+
+### E74尚未鉴别正向支持与约束补全（不新增主张）
+E74、`results/e74/qwen3_discovery/{analysis,run}.json`：36contexts full/seen近100%，held bijection目标accuracy .319–.361；Source指令同步signed响应−.516[−1.178,.105]、owner响应也CI跨0。held independent Unknown决策accuracy0，说明即时输出未可靠执行声明函数空间，不能把微弱负号称已识别positive-support算法。原门槛均未达到，不跑72-context确认；先E75 native有效性。word读取来源≠rule证据来源仍是候选问题，不据此降级E48真实贡献测量或提升新机制主张。

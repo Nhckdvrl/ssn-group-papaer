@@ -21,3 +21,5 @@
 | P14 | 2026-10-10 | 外部float32 QK重算虽平均误差小，最坏SDPA重建相对RMS=7.2% | E63首轮组件干预VOID | 改原生eager attention weights/V，全重建RMS=0；同seed重跑，作废目录保留 |
 
 | P15 | 2026-10-10 | E66 bf16整段/分段推理评分差可达1.625nats；mask泄漏为0仍不足 | 切KV缓存的科学归因会混入分段精度变化 | 首轮VOID，同seed全float32校对；发现max差4.01e-5，任何后续都先过no-op，精度范围明确 |
+| P16 | 2026-10-10 | E72 direct短预算在single/entity也截断；E73严格parser漏掉加粗最终答案 | 生成低分混合了未完成、格式与判断错误，不能定位绑定能力 | 共同采样轨迹预算核对48次全一致；保留strict结果，装饰校正标POST-HOC，独立确认前冻结parser |
+| P17 | 2026-10-10 | 正确词从其它来源读入，不必等价于借用其它来源的映射关系 | E48的foreign-label贡献能否单独证明rule leakage仍需任务条件 | E74缺失Source×category组合，枚举函数约束、owner-only与foreign-only反事实；正控有效后才拆word/relationship来源 |

@@ -1,6 +1,6 @@
 # E75：原生推理是否理解来源内函数约束与不可识别性？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** RUNNING（预注册后GPU1原生推理，尚无最终结果）
 - **类型：** PILOT / E74接口有效性校对，非机制确认
 - **对应：** I04/C09/C15/P12/P17。
 - **为什么现在：** E74 full/seen几乎全对，held bijection仅32–36%，signed响应CI跨0，independent从不可靠报Unknown。裸续写没按声明函数空间回答，不足以鉴别正向支持/约束计算。先检查native thinking能否按规则作答；不继续扫raw seeds追显著性，不做尚无阳性基础的word/relationship patch。

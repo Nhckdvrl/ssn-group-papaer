@@ -250,3 +250,17 @@ ICES E69指定prefix K全label列禁读、E70的common key translation仅改变f
 ### Bakalova et al. — Contextualize-then-Aggregate（COLM2025/arXiv2504.00132v2）与Cho的过程材料（2026-10-10继续核对）
 [全文§3.2/§3.3及附录H](https://arxiv.org/html/2504.00132v2)。该文已用保持/改变输入空间、输出空间、具体identity、functional mapping的donor拆解contextualization内容；部分task的context边传domain而非具体item或rule。§3.3用可同时符合copy/past的ambiguous例子增加不确定性，保留full-model正确行为后再辨别必要路径。**所有权：** 历史依赖不等于任务知识、position-level circuit、任务相关边界都已有；E69不能将no-label历史作用本身当新认识。ICES潜在距离是source-code关系×载体位置的具体预测，以及公共K平移固定Q不变性与预测/来源排序恢复的分离；还需要native/模型边界。
 [Cho公开Hidden Calibration审稿材料](https://www.hakaze-c.com/reviews/hidden_calibration)是讨论与批评的过程材料，**不是完整发现记录，也不证明实验发生顺序**。reviewer指出probe/calibration额外监督、总标注数据预算比较，以及几何separation若只重复accuracy为何有额外理解价值；AC肯定简单想法与全面比较，并要求补数据效率对照。对ICES：E56额外1.31M训练参数、E70每层每head偏移都须明示资源；新状态图/方向只有能检验新的推断、给出独立预测时才加深理解，不能凭漂亮几何自动升级贡献。
+
+### E72–E74：改进观测与反事实，而不是靠失败立新意（2026-10-10）
+
+**Heimersheim & Nanda, How to use and interpret activation patching（方法预印本2404.15255v1，正文§2–4）。** [原文](https://arxiv.org/html/2404.15255v1)。形态：方法解释/测量。AND/OR或冗余路径令noising与denoising并非互补；大幅恢复不识别整个算法，抑制组件可造成超过100%的恢复。idea来源RECONSTRUCTED：简单反例拆开常用因果读数的含义。最近邻是patching/circuit faithfulness；不提出ICES新机制。对我们：E56/E70过恢复与“修复≠完整原算法”属于已有方法认识，不能据此立novelty；新增价值必须是具体反事实及可预测行为。
+
+**ICLR2026作者blogpost：随机walk几何与induction heads。** [原文](https://iclr-blogposts.github.io/2026/blog/2026/iclr-induction/)，正文模型/消融/简单邻居混合构造。形态：重现＋过程解释；不是已确认的全图推理算法。消融induction heads伤预测、几何却可留存；对随机向量作前词邻居混合也能出现grid PCA，需用bigram表示检查构造预测。idea来源DOCUMENTED于作者整理的过程材料，不是原始逐步日志。最近邻Lepori的geometry/deployment分离。对我们：几何像某种结构不等于部署该结构；先构造会产生相同图的更简单算法，再找分歧读数。
+
+**Fang et al., ICL Ciphers（2504.19395v1，正文方法/覆盖与局限，后续版本未全文比对）。** [原文](https://arxiv.org/html/2504.19395v1)。形态：学习/检索边界的受控测量；输入词替换为双射cipher，独立noise与coverage控制；作者保留二者难完全分离及自然性限制。idea来源RECONSTRUCTED：操纵能否从demo恢复输入意义，超越只换标签。近邻SUL-ICL、task recognition/learning。对我们：bijection/不可识别性与coverage不是空白；E74仅进一步问来源内函数约束与正向label支持的相反预测。
+
+**Gur-Arieh et al. Mixing Mechanisms重读§3.4/§4（v2，非新增论文）。** [原文](https://arxiv.org/html/2510.06182v2)。其reflexive并不是“按来源检索”：中间变量指向目标word，移植后需要原context有该词才能dereference。令反事实目标词在原context缺失，ℓ层移植不输出该词；ℓ+1已取回答案时可输出，排除通用absent-word抑制。这个**改变可访问对象＋下一阶段阳性**的动作，比画注意力更有辨别力。组合模型.95为1−JSD分布相似度，非95%全词表准确率；训练/测试分割发生于机制索引组合。ICES若做word来源/关系来源分离，需要越过该文和Test-then-Route已有的指针/答案区分，不能重命名即当增量。
+
+**E74定位（不是novelty裁决）。** venue corpus两次nearest：抽象“provenance/scoped completion”命中多篇非ICL任务，不能当无近邻证据；改用“label anchors / unseen label / information removal”后Cho2026第一，另有Selective Induction Heads、Task Recognition/Learning、Without Copying等。最新arXiv/主文核对仍以Cho、Incomplete ICL、ICL Ciphers、Mixing Mechanisms、Test-then-Route为强参照。compression risk：只是已知排除机制换了带来源任务；或只是“attention非解释”的新例。潜在增量须是**source-local关系使用与答案词读出的独立因果预测及成立边界**，当前没有证明。不能据检索排序或热度自动关线。
+
+**Ortu et al., Competition of Mechanisms（ACL2024；2402.11655v2，正文§3–6；另TMLR条目同题命中但受访问验证、未全文核对）。** [原文](https://arxiv.org/html/2402.11655v2)。形态：熟知的事实召回与context-copy的竞争，idea来源RECONSTRUCTED于正文；并非完整发现日志。它已发现支持事实的头也读counterfactual word，但主要压低该词；因此“读某token≠采用该token的事实”早有强机制参照。post-softmax缩放两/三条attention边提高原事实响应，含GPT2/Pythia；10K实例按原事实正确、单token属性筛选，alpha网格选最优，logit lens尤其早层不保证重要性，正文主动保留简单模板/模型限制。E74若未来成功仍只是source-scoped证据的候选，必须在新映射、owner/foreign分解与可预测条件上超过该文，不能将泛用的读取/采用区别当首次贡献。
