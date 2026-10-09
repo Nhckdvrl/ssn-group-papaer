@@ -1,6 +1,6 @@
 # E72：裸续写、原生聊天与推理，是否面对同一来源条件化边界？（2026-10-10）
 
-- **状态：** RUNNING（8B启动；27B暂存权重中）
+- **状态：** RUNNING（8B与27B均在原生生成；两模型候选评分已完整）
 - **类型：** PILOT
 - **对应：** I04/C17/C19/P12/P13；强模型意义压力测试，非新增方法。
 - **为什么现在：** E71关系码实验可用已知prefix/shortcut解释；继续只在Qwen3-8B裸续写中定位状态，可能把接口/输出校准当稳定能力缺陷。需要直接对比native接口和允许推理的行为，允许强模型解决来收窄问题。
@@ -28,3 +28,10 @@
 - **算力：** 单节点本地GPU1为27B、GPU0在E71结束后跑8B；优先conda（27B openslime，新transformers；8B verl-clean）。模型从已完整HF snapshot暂存NVMe一次，预计55.6GB复制约15分钟（NFS弱I/O，不计GPU科学运行）。先加载/小n完整pilot，不并行下游训练；默认卡空时不抢其它进程。
 - **产物：** scripts/e72_native.py、scripts/analyze_e72.py；results/e72/*/run.json与analysis.json入git，prompt/score/generation JSONL和模型权重不进git。
 - **定位：** E46b/E09已有指令与thinking边界；Cho Hidden Calibration已指出token决策空间不等于hidden分类能力；本卡为研究意义的压力测试，不据此宣布新机制。Qwen3.8仅代表较新本地推理模型，不替代闭源frontier/独立家族。
+
+
+## 运行中校对（不是最终能力结论）
+- 两模型完整加载，language missing/unexpected/mismatched keys为空；27B为text-only兼容loader，vendor transformers，无MTP加速。原始loading_info保留。
+- 8B四种候选score共640行已完整，no-op/token-sum=0；direct96-token自由生成多为长分析未结束，包括single/entity阳性，说明回复预算不足。保留原输出，不能把低生成accuracy当绑定缺陷。
+- 27B四种候选score共640行已完整、控制见control_report.json；原生生成与8B的2048-token thinking仍在运行。缺少有效接口/预算控制时不触发独立能力确认，不把未完成推理当不具备能力。
+- 原模型/seed/读数不变；下一步先设计同prompt、相同采样前缀的短/长预算配对校对，预定后执行，不后补成原卡成功。
