@@ -112,7 +112,13 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 ---
 
-## 9. 登记表（2026-10-02；`tools/process/check.py` 读取本表）
+## 清理范围与科学状态（2026-10-09）
+
+本次仅将 **5 个未开展实证实验的桌面方向** 从 `workbench/` 移至 [`archive/workbenches/`](../archive/workbenches/README.md)，不抹去想法与失败分析；逐项审核见 [`WORKBENCH_AUDIT_2026-10-09.md`](WORKBENCH_AUDIT_2026-10-09.md)。
+
+**重要纠错：`mechanism-population-dynamics` 正在继续。** 2026-10-09 用户明确否决 2026-10-08 “停止投入”的历史决定；不得据旧文档关闭/归档此方向。登记表中的 `PROPOSED` 仅指正式单槽位排程尚未重分配，而非研究停滞。已有实证、论文、harness 的项目都保留。未动任何实验、模型、代码、结果，也未启动或取消训练。
+
+## 9. 登记表（2026-10-09 整理；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
@@ -123,17 +129,12 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `multi-llm-collaboration` | PAUSED | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | 2026-10-01 | **可行性暂停（C）**：第一轮有解释力的 cross-play 需要至少两个充分训练 team；原始强 baseline 的完整 RL 成本过高，不适合作为当前探索线。保留全部 territory / cards，未来有廉价充分训练 substrate 时可重开 |
 | `cross-lingual-acquisition-regimes` | PAUSED | — | — | `CLAIMS.md` | 2026-10-02 | 已有八轮 52 次完成运行；人审撤回 acquisition 领先叙事，停止局部冻结探针，明确授权有界 MONOWEB 英语学习→德语迁移 baseline 修复；持续 ACTIVE 调度归属待人统一确认，不自行改其他线 |
 | `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
-| `mechanism-population-dynamics` | PAUSED | — | — | `CLAIMS.md` | 2026-10-08 | **人决定停止投入（2026-10-08）**：E75 表明跨 run 的 IOI 计算相同、只换承担的头（按编号 0.06 vs 按功能/因果映射 0.85–0.94），“初始化决定组件”只是对称性层面的结论；E76 Flan 继续预训练线止损关闭。v2 稿按 E75 改正后作为经验记录留存 |
+| `mechanism-population-dynamics` | PROPOSED | ICML / ICLR / ACL / EMNLP；具体届次待定 | — | `CLAIMS.md` | 2026-10-09 | **研究继续（2026-10-09 用户最新明确决定）**：之前“停止投入”的记录已被推翻；E75/E76 对具体解释和子线的否定不等于结束整个研究。所有论文草稿、实验代码、数据与日志完整保留，不清理、不归档。`PROPOSED` 仅表示暂未重排唯一 ACTIVE-EXPLORE 名额，**不表示没有在做**。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | **人 2026-10-08：作为候补恢复准备（mechpop 停止后占用 ACTIVE-EXPLORE）**；原为主推候选储备（2026-10-06）：主 idea I04——ICL 按输出存放证据：看得见“用哪些输出”的变化，看不见把输出重新分配给输入的变化（concept drift / 因人而异的映射），泄漏随标签语义相似度增加；13 模型 0.6B–32B、换词修复、读标签头机制（2 模型因果修补）；主张多为 L2（泛化条件已满足，待独立校对）；暂停推进，之后作为主推 candidate 恢复 |
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
 | `pragmatic-inference-calibration` | CLOSED | — | — | `CLAIMS.md` | 2026-10-03 | **人明确决定终止本题**：有限核心检验已收尾，实验raw/data/旧runner与本地模型已清理；保留最终证据和环境，不再自动探索 |
-| `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
-| `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
-| `model-diffing-measurement` | PAUSED | — | — | — | — | 同上；工具链可用于多智能体线的白盒分析（P4） |
-| `hybrid-adaptation` | PAUSED | — | — | — | — | v2 桌面降级，可重开 |
-| `ai4quant` | PAUSED | — | — | — | — | v2 桌面降级，可重开 |
 | `realtime-agent-capability-transition` | CLOSED | — | — | — | — | 证据关闭：E04 严格对照下口语化不造成可测损失；资产：τ-Voice 20GB 轨迹 + 脚本 |
 | `realtime-computation-boundaries` | CLOSED | — | — | — | — | 证据关闭：失败落在前台模型默认策略（一句指令可恢复）；资产：多个全双工模型的评测脚本 |
 | `omni-recon` | CLOSED | — | — | — | — | 侦察记录；B1 null 等事实可复用 |

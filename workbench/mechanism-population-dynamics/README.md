@@ -1,6 +1,7 @@
 # Mechanism Population Dynamics
 
-**Status:** **PAUSED** — 2026-10-08 人决定停止投入（E75 / E76 之后）；原 ACTIVE-EXPLORE（2026-10-01）  
+**Scientific state: ONGOING / DO NOT ARCHIVE** — 2026-10-09 用户最新明确决定继续本项目；2026-10-08 的停止投入记录已不再是当前有效决定。  
+**Registry scheduling label: PROPOSED**（不自动替换 ICES 占用的 ACTIVE-EXPLORE 名额；不是停止研究）。原 ACTIVE-EXPLORE（2026-10-01）  
 **Lane:** our-taste / mechanistic interpretability / model science  
 **Target:** ICML 2027 / NeurIPS 2027  
 **Territory card:** [`../../search/our-taste/TERRITORY_MECHANISM_POPULATION_2026-10-01.md`](../../search/our-taste/TERRITORY_MECHANISM_POPULATION_2026-10-01.md)
@@ -10,7 +11,7 @@
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
 ### 2026-10-08 判别实验（人审 v2 之后）
-**E75：** 按头编号，IOI circuit 在 410M 兄弟模型间几乎不迁移（0.06）；按功能与因果映射后，同初始化 0.85、异初始化 0.94 → 计算相同，只是换了承担的头，“circuit 只部分对应”降级。**E76：** 代表性 Flan 也没有在继续预训练中装入问答开关（+0.15 ± 0.24），止损关闭。agent 建议本工作区停止投入，待人决定（`logs/2026-10-08.md`）。
+**E75：** 按头编号，IOI circuit 在 410M 兄弟模型间几乎不迁移（0.06）；按功能与因果映射后，同初始化 0.85、异初始化 0.94 → 计算相同，只是换了承担的头，“circuit 只部分对应”降级。**E76：** 代表性 Flan 也没有在继续预训练中装入问答开关（+0.15 ± 0.24），该 Flan 具体子线未得到支持，停止作为当前证据；这**不代表整个工作台停止**。2026-10-08 曾建议停止本题，但已被 2026-10-09 用户最新决定明确否决（`logs/2026-10-08.md`）。
 
 ### 当前进展（2026-10-06）
 **v2（2026-10-08）：** 研究问题升级为“不同预训练 run 之间机制在什么意义上对应、由什么决定”：层与算法共享，组件跟随初始化，task circuit 只部分对应（IOI，E73 / E74），功能跟随语料；见 `paper-acl-v2/` 与 `experiments/A09`。
@@ -68,7 +69,8 @@ R0 产物审计 → E01 复现已知机制（induction）→ E02 群体扫描（
 - **2026-10-01：** 人选定本 territory 为唯一的 ACTIVE-EXPLORE。
 - **2026-10-03：** 人：校对免了，按同题材成熟顶会论文的标准补工作量、补实验，叙事按好论文的方式包装、对齐顶会尺度（→ A02、E42–E51）。
 
-- **2026-10-08：** 人看过 E75 / E76 后决定停止投入；转为准备两个候补（ICES 恢复 + 注意力选头 idea 的定位）。
+- **2026-10-08（历史记录，已被后续决定覆盖）：** 曾记为停止投入并准备候补（ICES 已恢复）。
+- **2026-10-09（当前有效的人类决定）：** 明确继续 `mechanism-population-dynamics`。不删、不归档、不暂停研究；对 E75/E76 的科学否定按原始记录保留，后续研究方向仍可继续调整。此次整理只修订状态说明，不改论文、实验、脚本或结果。
 
 ## 12. Assets
 - claims `CLAIMS.md` · pain log `PAIN_LOG.md` · 实验卡 / 脚本 `experiments/`、`scripts/` · 日志 `logs/`
