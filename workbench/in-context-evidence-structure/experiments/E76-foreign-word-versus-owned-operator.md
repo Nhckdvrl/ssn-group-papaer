@@ -1,6 +1,6 @@
 # E76：答案词仅出现在其它来源，自己的熟悉运算能否决定答案？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** RUNNING（发现完成且过门槛；独立新名字/数字范围确认待终点）
 - **类型：** PILOT，独立于E75任意函数空间gate；本卡先测行为基础，尚无word/relationship内部因果结论。
 - **对应：** I04/C09/C15/P17；来源条件化与熟悉运算的组合。
 - **为什么现在：** E74任意label函数在raw下未有效执行，不能据此定位来源组合。改用预训练熟悉的±1运算，仍由demo确定各source采用哪个运算；正确词仅在foreign demo标签中出现，给word来源/关系来源一个便宜的阳性基础。不是首次发现ICL加法（E19及大量近邻已有）。
@@ -25,3 +25,11 @@
 
 ## 科学打分前tokenization校正
 首次启动在数字token断言处失败，0条科学评分，保留`results/e76/qwen3_operator_invalid_candidate_tokenization/`与日志。Qwen数字本身1token，但带前导空格是[220,digit]两token；误假设与英文标签一样。修为精确p(space|prefix)+p(digit|prefix,space)，四候选共享space，所有主差分/margin/排序中的公共space项自然抵消；不换任务/seed/门槛。数字anchor位置改记space后的digit。原程序已终止后再改，E75及其依赖未修改；不是看科学结果后调整读数。
+
+## 发现结果（先保留原读数）
+32contexts、no-op0、133.104s，`results/e76/qwen3_operator/{analysis,run}.json`。A/B未见input准确率默认.8281[.750,.9063]、Source指令.8438[.7656,.9219]；seen .9961/1.00。同步signed响应+4.6614[4.1365,5.1941] / +5.4340[4.7885,6.0944]，两owner-minus-comp响应在两指令均正且CI不跨0（Source指令3.0879[2.5954,3.5809]、2.7154[2.2799,3.2537]）。满足行为阳性门槛，不需要更长回复或额外训练。
+foreign-swap的Source指令Ψ差−.2706[−.6334,.0766]、accuracy+.0313[−.0469,.1094]；不能从不显著说foreign关系完全无影响，更不能直接说foreign word已被copy。只证明固定非负Source-matched label支持不足以解释这个熟悉函数任务；不是否定所有label-anchor机制。
+
+## 独立确认预注册（发现之后、确认结果之前）
+64contexts seed176001，Alice/Bob/Casey/Eli、q∈{23,24,25,26}，8格各8contexts；全部q±3候选变为20–29数字，仍不在本Source labels/input/query中，真实出现在foreign labels。其它因素、oracle、主读数、阳性阈值不变；不重估发现seed，不择答对实例。成功标准仍seen≥.90、owned novel≥.80、signed≥1CI不跨0，后续才机制。名字/数字同时变是联合泛化，不单独定位失败原因。
+完整数字continuation为共同[space,2]＋最后digit（三token），脚本支持共同prefix长度，用对应前序位置的logprob求和。discovery长度2情形与原实现数学相同；原结果不重写，记录脚本变更hash。确认前进行CPU token布局/数学索引校验，科学运行原生float32；不改E75依赖。仍为candidate-choice能力范围，非自由生成或新模型族证明。
