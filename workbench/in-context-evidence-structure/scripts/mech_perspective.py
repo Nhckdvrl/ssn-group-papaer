@@ -24,7 +24,7 @@ def main():
     tok = AutoTokenizer.from_pretrained(a.model)
     model = AutoModelForCausalLM.from_pretrained(a.model, dtype=torch.bfloat16, device_map="cuda", attn_implementation="eager").eval()
     cfg = model.config; L = cfg.num_hidden_layers; H = cfg.num_attention_heads; KV = cfg.num_key_value_heads
-    dh = getattr(cfg, "head_dim", cfg.hidden_size // H); rep = H // KV
+    dh = getattr(cfg, "head_dim", None) or cfg.hidden_size // H; rep = H // KV
     enc = lambda s: tok(s, add_special_tokens=False)["input_ids"]
     cap = {}
     for l, layer in enumerate(model.model.layers):
