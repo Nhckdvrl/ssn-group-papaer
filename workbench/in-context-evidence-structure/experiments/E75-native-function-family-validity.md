@@ -1,0 +1,25 @@
+# E75：原生推理是否理解来源内函数约束与不可识别性？（2026-10-10）
+
+- **状态：** PLANNED
+- **类型：** PILOT / E74接口有效性校对，非机制确认
+- **对应：** I04/C09/C15/P12/P17。
+- **为什么现在：** E74 full/seen几乎全对，held bijection仅32–36%，signed响应CI跨0，independent从不可靠报Unknown。裸续写没按声明函数空间回答，不足以鉴别正向支持/约束计算。先检查native thinking能否按规则作答；不继续扫raw seeds追显著性，不做尚无阳性基础的word/relationship patch。
+- **设置：** Qwen3-8B，本地conda verl-clean；18新contexts seed75001，6个ordered target pair×3缺失category完整交叉各1次。Alex/Sam/Chris/Dana、north/south/east、Red/Blue/Green沿E74；context生成、枚举oracle与base记录复用冻结e74_completion.py。不是跨词库独立确认。
+  - 三条件full bijection、held bijection、held independent；每context只问A/B缺失category（full里有真实记录），共108条。四来源函数、C/D互补重复数与全局目标词可用控制沿E74。
+  - header含来源独立函数、函数空间、Unknown规则及原E74一句Source指令；不给推断程序、映射表、unused-label答案或gold。user为完整记录＋未完成query，要求独立Answer: <code>行，允许三code/Unknown。
+  - 官方chat enable_thinking=True、reasoning_effort=medium，max_new_tokens4096，temperature.6/top_p.95/top_k20，1样本/query，batch4；seed750000+batch_index。全部样例保留；不把文字合理性当faithful机制。
+  - bfloat16沿E72 native，无raw/logit差异比较或K/V移植，不能从与E74 float32裸续写的总体差定位module。加载无missing/mismatched，记录model/config/template/脚本与依赖hash/版本/硬件/时间。
+- **读数：** accuracy、最终答案格式率、truncation、reply tokens；independent的Unknown命中率、每source准确率及context均值；不筛已完成答案重算能力率。context bootstrap4000 seed750。
+  - 主parser跑前冻结E72/E73装饰校正函数decorated_answer：仅独立Answer/Final Answer行去Markdown装饰/标题符号，忽略候选大小写，think须</think>闭合。冲突答案行、noncandidate最终行、正文标签、复合code都不接受，不用gold挑答案。旧strict为辅助，传小写候选避免其大小写实现问题。以前POST-HOC不是本卡确认。
+- **阳性对照：** full bijection两query accuracy≥.90、format≥.90；18格平衡，oracle full唯一、held independent不可识别、正确label全局出现；108条unique uid完整保存、无缺失权重，EOS/长度上限区分，generation config无forced_eos/bos。
+- **噪声地板 + MIE：** 无干预数值噪声项；若full有效、held bijection accuracy≥.80、held independent Unknown accuracy≥.80、held截断≤.10，才视为有效函数空间接口，考虑owner/foreign native反事实。未闭合/Unknown失败不声称约束机制有效。
+- **混杂审计：** 新seed同词库/身份、单采样路径、raw/native不同模板和精度，全部明确不作独立机制确认；函数假设是实验变量，不是唯一规范模型。既有Source一句指令沿用，无额外训练。思考过程的真实性未测。
+- **决策表（跑之前写）：**
+  - 三条件可靠 → 有效程序可处理来源内推断与不确定性；E74只是即时边界，先做owner/foreign，再谈word来源；不是新能力论文。
+  - bijection好、independent总猜code → 不可识别性/Unknown程序不可靠，不称理性任务推断。
+  - full好、held差且完成 → 保留有界差异，查看未筛样例定位；不称容量缺失，不扩模型表。
+  - full/格式差或大量截断 → 仅接口问题，不进入无阳性causal patch。
+  - 不重估seed/换标签后记本卡确认，模型通用性留开放。
+- **算力：** GPU1空卡、8B NVMe，conda；预计单卡5–15分钟（token数不确定），只一个native模式，不并行下游。
+- **产物：** scripts/e75_native_constraint.py、scripts/analyze_e75.py；小run/analysis JSON入git，108生成/布局本地JSONL。
+- **定位：** Cho/Incomplete ICL/ICL Ciphers/Mixing Mechanisms已拥有过滤/排除/函数空间/指针分离；本卡只做新测量阳性基础，无novelty主张，不改ACTIVE/I04。

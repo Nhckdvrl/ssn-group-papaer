@@ -39,3 +39,7 @@ A的未见label等于B的独有已见label，反之亦然。因此positive synch
 
 
 单源owned修改使A/B可以具有相同缺失label，不能继续强制两个target不同；其target仍在C/D实际记录中出现。C/D字面类别映射独立随机，但重复数按target pair设计，因此foreign-only swap/cycle和compensation-only必须报告，避免把C/D频率代理当source-local规则推断。Source-local解释须经过owned specificity；同步sign单独不够。
+
+## 分析前符号校正
+模型发现运行期间、尚未读取任何科学打分或运行分析器时，代数复核发现分析代码误给owned_b−comp_b加了负号。由于Ψ=LD_A−LD_B，A由targetA换为targetB会降低LD_A，B由targetB换为targetA会提高LD_B，两者都降低Ψ。因此两条owner响应均为Ψ_comp−Ψ_owned，无额外符号。只校正分析器实现，运行中的打分脚本未改；edited-source单独LD的方向仍A正、B负。原卡的来源条件化方向与判断门槛未变。
+同阶段将分析器调用从导入函数的默认2000重采样显式改为本卡规定的4000次（bootstrap seed740）；没有读取科学结果。

@@ -3,7 +3,11 @@ import argparse
 import json
 from pathlib import Path
 import numpy as np
-from analyze_e58 import interval
+from analyze_e58 import interval as context_interval
+
+
+def interval(value):
+    return context_interval(value, seed=740, nboot=4000)
 
 
 def main():
@@ -54,8 +58,9 @@ def main():
                 base = root + 'base'
                 out['signed_responses'][root + 'sync'] = interval(phi[base] - phi[root + 'scope_swap'])
                 for owned, comp in [('owned_a', 'comp_a'), ('owned_b', 'comp_b')]:
-                    sign = 1 if owned == 'owned_a' else -1
-                    out['signed_responses'][root + owned + '_minus_comp'] = interval(sign * (phi[root + comp] - phi[root + owned]))
+                    # Psi=LD_A-LD_B: either owner's correct target swap reduces Psi.
+                    # Both owner-minus-comp responses therefore have the same sign.
+                    out['signed_responses'][root + owned + '_minus_comp'] = interval(phi[root + comp] - phi[root + owned])
                     which = 0 if owned == 'owned_a' else 1
                     oriented = 1 if which == 0 else -1
                     out['specificity'][root + owned] = {
