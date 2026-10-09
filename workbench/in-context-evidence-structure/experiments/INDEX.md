@@ -1,4 +1,4 @@
-# 实验索引（E00–E38）
+# 实验索引（E00–E70）
 
 按主题分组；每行是结论的一句话版本，数字与置信区间见各卡。“规范”= 与 exact Bayes oracle 同方向；“噪声检验”= 前缀零散反例是否降低对后缀变化的信任（规范为负）。
 
@@ -73,3 +73,8 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E64](E64-whole-query-message-mediation.md) | 整个query还是最后token承载条件化 | Qwen范围差明显；Mistral label消息主要末位；model-dependent时序边界 |
 | [E65](E65-query-relay-versus-direct-copy.md) | query中间位置是否向答案接力，direct读取是否有害 | Qwen marker／Mistral source字段；删direct无稳定accuracy修复；factorial分解为POST-HOC |
 | [E66](E66-source-selected-function-state.md) | input出现前source缓存能否部署规则 | bf16 chunk对照失败VOID；float32独立确认single/mixed均失败；input-dependent logit能保留，但accuracy收益低于MIE，非新composition瓶颈 |
+
+| [E67](E67-source-code-at-answer-prefix.md) | 最终label相同、同信息code位置是否改变行为 | Qwen独立确认accuracy+7.4点、来源排序+10.9点；Mistralaccuracy差CI跨0；完整答案namespace仍改变 |
+| [E68](E68-prefix-history-versus-local-address.md) | 历史访问必要是否说明存了先前label判断 | isolated prefix KV损害排序13.3点，但label-flip状态只传递约1.3%rule效应；不能从必要性定位内容 |
+| [E69](E69-label-blind-contextualization.md) | 全部历史label禁读后prefix K是否仍可部署 | blind K保留accuracy/排序，blind−isolated排序+10.2点；其它native标签证据保留，非整ICL不需label |
+| [E70](E70-common-frame-versus-example-specific-keys.md) | 公共key平移还是逐样例变化；冻结状态能否迁移 | bf16几何控制失败VOID；float32冻结共享偏移独立恢复53%margin效应、accuracy+5.9点，来源排序仍比native低10.9点 |

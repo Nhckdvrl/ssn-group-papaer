@@ -21,7 +21,7 @@ def main():
         out['conditions'][k]=item
     den=means['blind']-means['isolated'];out['full_blind_minus_isolated']=interval(den)
     rng=np.random.default_rng(700);ix=rng.integers(len(rows),size=(4000,len(rows)))
-    for k in ['common','centered','both','norm','negative_common','blind']:
+    for k in ['common','centered','both','norm','negative_common','blind']+(['shared_frame'] if 'shared_frame' in raw else []):
         result={name:{label:interval(v[k]-v[base]) for label,v in [('margin',means),('accuracy',acc),('paired_source_ranking',rank)]} for name,base in [('minus_isolated','isolated'),('minus_native','D1Q1')]}
         if abs(den.mean())>.2:
             num=means[k]-means['isolated'];ratio=num[ix].mean(1)/den[ix].mean(1)

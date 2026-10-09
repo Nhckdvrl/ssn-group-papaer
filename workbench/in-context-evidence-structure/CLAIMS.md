@@ -23,6 +23,7 @@
 **混杂审计（C02 等升 L2 时完成）：** 1 噪声地板：bf16 batch 噪声 ~0.1 nats/条、无方向，200–300 base 平均后 ≈0.007 — 已控制。2 工具有效性：标签流阳性对照 13/13 — 已控制。3 选窗：配对设计，所有条件共享输入/名字/query — 无关。4 自校准：同一读数（exact 序列 log-odds），跨任务用归一化指数（CSIn/NDIn）— 已控制。5 提示词默认值：E03（指令）、E09（CoT/thinking）— 已控制（不能恢复）。6 输入一致性：同一 tokenizer/同一 prompt 字节 — 已控制。7 幸存种子：全部 base 报告 — 已控制。8 算力匹配：不适用。9 数据重叠：pilot 与确认版种子分离（≥500000）— 已控制。10 事后切片：多次修正如实记录（见下）；确认版与 E24 之后的实验预测均跑前写定 — 已控制。11 饱和：分类 accA 0.79–0.99；标签流 |logit| 大，用归一化指数 — 已注明。12 系统特有：13 模型 4 族 — 已控制。机制实验另有健全性检查（旧锚点逐位相同）与阳性对照（全位置修补精确复原）。
 
 **作废 / 修正记录**
+- 2026-10-10：E70首轮bf16 common key写回的fixed-Q组内logit spread max0.06986>预定0.02，32-context运行VOID，原始JSONL与control_failure.json保留；未读取科学条件结果。改float32同seed重跑，阈值不变；both直接取blind donor以精确实现数学同一性，不能把数值误差解释为地址变化。
 - 2026-10-10：E66首轮bf16分段cache实验完成24contexts，但与整段native max差1.625nats>预定0.10；标VOID，保留`results/e66/qwen3_discovery_invalid_chunking_bf16/`。仅检查控制、不使用其它条件解释机制；同seed改float32复核，阈值保持。
 - 2026-10-10：E63首轮SDPA消息分解的最大相对重建RMS=0.0723，超过跑前0.02阈值，synthetic/real两次运行标VOID（保留`results/e63/*_invalid_reconstruction/`）。no-op与all-attention冻结误差0不能替代组件数值校验。改为原生eager attention weights/V重跑同一种子，不使用首轮结果解释机制。
 - 2026-10-10：E59首个real发现运行将E56的toxic=1误作label_index=1(safe)，demo/query同步反向而与E56预定极性不一致；完整汇总前停止，保留`results/e59/qwen3_real_discovery_polarity_mismatch/`，不纳入证据。同seed59002按1−toxic重跑，synthetic不受影响。
@@ -53,3 +54,13 @@
 
 ### C16的E66压力测试（不升级，2026-10-10）
 输入前source-clause全层KV未部署规则（确认full−null margin−0.109[-0.202,−0.010]nats，single也失败）；已见input的query缓存保留rule相关logit（+1.109[0.861,1.369]nats、rule donor1.919[1.521,2.287]），accuracy仅+0.039，低于预定MIE。证据：E66、`results/e66/qwen3_confirmation/analysis.json`。不能从single/mixed接口共同失败推出独有组合瓶颈，不能从after-input成功证明function transfer；有效推断float32，bf16 chunk首轮VOID。
+
+## 2026-10-10：E67–E70（全部L1、尚非完整计算理论）
+
+| ID | 主张与范围 | 等级 | 实验卡 / 结果 | 限制与升级条件 |
+|---|---|---|---|---|
+| C17 | 在平衡2-source分类与匹配token多重集下，将相同source code从Tag字段移至答案prefix、不改变最终class词，Qwen独立确认accuracy+0.074[0.047,0.105]、source排序+0.109[0.055,0.172]；label-only K/V不能充分移植收益 | L1 | E67；`results/e67/qwen3_confirmation/analysis.json` | 只限最终class词相同：完整输出语法/namespace仍不同；TF prefix不等同全词表端到端生成。Mistral matched+0.031 CI跨0，非普遍规律；仍需独立schema与强模型边界 |
+| C18 | demo prefix K在指定native接口依赖历史上下文化，但不要求历史label内容：E68 isolated-K确认损害Source排序0.063；E69全label列禁读、非label KV逐位不随label-flip变化的K仍保留accuracy/排序，blind−isolated排序+0.102[0.031,0.172] | L1 | E68/E69；`results/e68/qwen3_confirmation/analysis.json`、`results/e69/qwen3_confirmation/analysis.json` | 其它native缓存/labels保留，不能说整模型无标签学习或所有V同等可部署；KV/V/joint的排序等效界更弱。历史必要≠先前task判决，需共偏移/角色/信息内容分解 |
+| C19 | float32下，来自不同发现context的冻结label-blind公共prefix-key偏移，在新词库/标签词上恢复blind−isolated margin效应0.527[0.274,0.760]、accuracy+0.059[0.023,0.094]；固定Q组内相对logits近不变（spread<4e-6），支持group visibility/prior可介导预测恢复 | L1 | E70；`results/e70/qwen3_confirmation/analysis.json`、`frozen_frame/frame_metadata.json` | shared Source排序0.828，低于native0.938，预测恢复≠binding恢复。仅固定两名字/marker/布局、36层高容量偏移，保留原生其它缓存，非函数向量独立足够、非整个contextualization规律；进一步预测新schema/名字/模型与native路径 |
+
+E70 common/centered/both的Source排序交互为事后分析（`interaction_posthoc.json`），需要新材料预定确认才升级为合作机制解释。所有新主张不改C09/C13旧有界结果，也不自动定义新head。与Cho shortcut、Few-Shot Examples Add Up（特别附录K）及TVS等强近邻的差异尚需预测与因果路径补足。

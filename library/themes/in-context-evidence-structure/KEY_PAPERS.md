@@ -241,3 +241,7 @@
 4. 证据：Llama2-7B、DeepSeek-R1-distill-Qwen7B；GPT5.2造prompt/改写；样本仅保留Llama在40tokens内生成指定答案的条件，故不能把其比例当未经挑选任务分布的普遍率。
 5. 边界：等义改写、字面不相关不消除预训练搭配/概率选择偏差；论文明确没有直接揭示模型实际reasoning，也未解决CoTfaithfulness。E67的source code与rule orientation随机独立、最终标签/词频不变，与该文静态答案关联不同；但任何prefix提高margin都不能自动称新算法。
 6. 可迁移动作：把prefix作用与实体证据独立改变。ICES需分别核对accuracy/source排序与K/V/history，不能只看answer confidence。
+
+### E69/E70后再次校准所有权（2026-10-10）
+[How Few-Shot Examples Add Up, §2.3/5–6与Appendix K](https://arxiv.org/html/2605.16591v2)已经用跨example edge isolation和QK/V patch测contextualization。附录K更进一步：x→x、y→y、错配/跨task例子产生的Q也可能维持原任务FV与QK alignment；作者主动保留“相关semantic manifold而非唯一task identity”的解释。因此label-independent alignment或宽泛非任务specific state**不是ICES空白**。
+ICES E69指定prefix K全label列禁读、E70的common key translation仅改变fixed-Q下的group logit偏移（组内相对分数不变），是更具体的竞争解释；只有可迁移gate/共同frame与selection/content的明确边界及新布局预测，才可能构成增量。不要把label-blind/history必要的对照重新命名成首次发现contextualization；他们关注FV注入，ICES关注native完整query与指定cached carrier，证据范围不同。

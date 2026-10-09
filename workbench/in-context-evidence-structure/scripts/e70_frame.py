@@ -22,6 +22,8 @@ def main():
     for x in ['model','out','stage']:ap.add_argument('--'+x,required=True)
     for x in ['n','seed']:ap.add_argument('--'+x,type=int,required=True)
     ap.add_argument('--dtype',choices=['bfloat16','float32'],default='float32')
+    ap.add_argument('--extract-frame-only',action='store_true')
+    ap.add_argument('--frame-source')
     a=ap.parse_args();assert a.stage in ['discovery','confirmation']
     torch.set_num_threads(6);torch.manual_seed(0);t0=time.time();dest=Path(a.out);dest.mkdir(parents=True,exist_ok=True)
     ctxs=make_contexts(a.stage,a.n,a.seed);rng=np.random.default_rng(a.seed+91117)
@@ -76,6 +78,35 @@ def main():
         state.update(measure=False,capture=False)
         return (logits[:,label_ids[1]]-logits[:,label_ids[0]]).cpu().numpy(),state['attention']
 
+    if a.extract_frame_only:
+        frames=[];frame_errors=[]
+        with torch.inference_mode():
+            for ctx in ctxs:
+                b,st,pl=prefix(ctx,mode='blind');i,_,_=prefix(ctx,mode='isolated')
+                fc=copy.deepcopy(ctx)
+                for x in fc['demos']:x['label']^=1
+                bf,_,_=prefix(fc,mode='blind');nonlabel=[j for j in range(pl) if j not in st['label']]
+                frame=[]
+                for dst,src,fl in zip(b.layers,i.layers,bf.layers):
+                    frame.append((dst.keys[:,:,st['prefix']].float()-src.keys[:,:,st['prefix']].float()).mean(2,keepdim=True).cpu().numpy())
+                    frame_errors.append(float((dst.keys[:,:,nonlabel]-fl.keys[:,:,nonlabel]).float().abs().max()))
+                frames.append(np.stack(frame))
+        assert max(frame_errors)==0 and state['mass_max']==0
+        mean=np.stack(frames).astype(np.float64).mean(0).astype(np.float32)
+        np.save(dest/'frame.npy',mean)
+        meta={'args':vars(a),'seconds':time.time()-t0,'label_blind_feature_error_max':max(frame_errors),
+              'forbidden_attention_mass_max':state['mass_max'],'shape':list(mean.shape),
+              'frame_sha256':hashlib.sha256((dest/'frame.npy').read_bytes()).hexdigest(),
+              'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              'config_sha256':hashlib.sha256((Path(a.model)/'config.json').read_bytes()).hexdigest(),
+              'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()}
+        (dest/'frame_metadata.json').write_text(json.dumps(meta,indent=2));print(json.dumps(meta),flush=True);return
+    frozen=None
+    if a.frame_source:
+        frozen=torch.from_numpy(np.load(a.frame_source)).to(device='cuda',dtype=torch.float32)
+        frame_meta=json.loads((Path(a.frame_source).parent/'frame_metadata.json').read_text())
+        assert frame_meta['args']['stage']=='discovery' and frame_meta['label_blind_feature_error_max']==0
+        assert frame_meta['config_sha256']==hashlib.sha256((Path(a.model)/'config.json').read_bytes()).hexdigest()
     (dest/'contexts.jsonl').write_text(''.join(json.dumps(c)+'\n' for c in ctxs))
     with (dest/'behavior.jsonl').open('w') as f,torch.inference_mode():
         for ci,ctx in enumerate(ctxs):
@@ -90,10 +121,12 @@ def main():
                 for q in (0,1):scores[f'D{d}Q{q}'],att[f'D{d}Q{q}']=score(c,ctx,q,pl,st,capture=d==1 and q==1)
             v,_=score(full,ctx,1,pl,st);errs.append(float(abs(v-scores['D1Q1']).max()))
             variants={k:copy.deepcopy(base) for k in ['isolated','blind','common','centered','both','norm','negative_common']}
+            if frozen is not None:variants['shared_frame']=copy.deepcopy(base)
             for li,(x,y) in enumerate(zip(iso.layers,blind.layers)):
                 pos_=st['prefix'];i=x.keys[:,:,pos_].float();b=y.keys[:,:,pos_].float();delta=b-i;mean=delta.mean(2,keepdim=True)
                 mats={'isolated':i,'blind':b,'common':i+mean,'centered':i+delta-mean,'both':b,
                       'norm':i*b.norm(dim=-1,keepdim=True)/i.norm(dim=-1,keepdim=True).clamp_min(1e-8),'negative_common':i-mean}
+                if frozen is not None:mats['shared_frame']=i+frozen[li]
                 for k,m in mats.items():variants[k].layers[li].keys[:,:,pos_]=m.to(x.keys.dtype)
                 errs.append(float((variants['both'].layers[li].keys[:,:,pos_]-y.keys[:,:,pos_]).float().abs().max()))
                 actual=variants['common'].layers[li].keys[:,:,pos_].float()-i
@@ -121,6 +154,7 @@ def main():
          'common_writeback_rms_max':max(rounding),'torch':torch.__version__,'transformers':transformers.__version__,
          'host':platform.node(),'gpu':torch.cuda.get_device_name(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
          'config_sha256':hashlib.sha256((Path(a.model)/'config.json').read_bytes()).hexdigest(),
+         'frame_sha256':hashlib.sha256(Path(a.frame_source).read_bytes()).hexdigest() if a.frame_source else None,
          'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()}
     assert max(errs)<=.1 and max(spreads)<=.02,run
     (dest/'run.json').write_text(json.dumps(run,indent=2));print(json.dumps(run),flush=True)
