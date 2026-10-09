@@ -197,3 +197,35 @@
 ### 新异常后追加近邻（2026-10-10）
 - *Test, then Route*（arXiv2608.04183，2026-08-04；[全文§3–4.2](https://arxiv.org/html/2608.04183v1)）：四donor将predicate outcome与answer word拆开；label-pair router跨词不迁移。**更重要的参照：** 原文已在query-digit位置检出早期predicate计算、随后传至最后token；不能把“答案前存在计算”当作首次发现。ICES潜在增量只能是来源条件化检索的具体消息链、何种末位诊断会误判，及可预测边界。其高准确率与donor-correct筛选设定不同于ICES保留全部弱signal实例；不混比能力数字。
 - *How Few-Shot Examples Add Up*（arXiv2605.16591v2，2026-05-24；[全文§3–6与K/L](https://arxiv.org/html/2605.16591v2)）：对contextualization的QK/V做2×2 causal decomposition，FV质量收益主要来自QK reweighting。**所有权：** “routing与payload应拆开”及“二者存在交互”本身已被研究。ICES需证明来源/任务关系的具体过程与边界，而非把QK/V交换当贡献。该文关注抽取FV与注入效果，E64测的是native模型整个query的metadata-conditioned消息传递。
+
+### E65新位置结果后重新核对（2026-10-10）
+
+**Bai et al., Identifying and Analyzing Performance-Critical Tokens（AAAI2026，arXiv2401.11323v4，全文§5–6/Limitations）。** [原文](https://arxiv.org/html/2401.11323v4)
+1. 形态：token信息汇聚与格式依赖的机制测量；不是证明模型忽略内容。
+2. 压力：LabelWords/FV只盯标签或末位；其它token可带内容信息。改变前提：区分删除原token与遮住已上下文化的表示。
+3. idea来源（RECONSTRUCTED）：这两种消融影响不同，提示内容通过模板/stopwords间接使用；论文叙事不是原始发现日志。
+4. 距离：Wang标签锚点、Hendel/Todd全局向量、Cho forerunner；扩到token类型，并分别检验lexical meaning/repetition/structural cue。
+5. 证据/短板：分类/翻译/QA，多尺寸；representation mask**始终保留demo答案token**，故不能说模板单独含全部规则。类型人工分类、mask重归一化与输出格式线索影响未完全分开。
+6. 可迁移动作：保留上下文化状态而切断未来访问，再和原文本删除竞争；不能把Label marker relay本身作为ICES novelty。
+
+**Xiong et al., Everything Everywhere All at Once（ICLR2025；arXiv2410.05603v1全文§6/附录C，与旧摘要卡并存）。** [原文](https://arxiv.org/html/2410.05603v1)
+- 用100个60-shot+dummy query的末位层状态均值构造task vector，在100个新query按迁移accuracy选层；混合任务状态沿单任务向量间插值。向量凸组合可产生输出任务叠加，但irrelevant outputs更多且权重曲线非完全线性。作者明确不把它当完整解释。
+- 对ICES：跨输入task-state迁移/混合向量已被拥有；E66只问在显式metadata之后、尚未见input的native cache能否选择规则。没有abstract rule唯一解释，缓存可压缩exemplars。
+
+**Li, Campbell, Chan, Lampinen, Just-in-time and distributed task representations（arXiv2509.04466v3，全文§3–5/附录D–F；接受信息本轮未核对）。** [原文](https://arxiv.org/html/2509.04466v3)
+1. 形态：inert task identity与transferrable task knowledge的动态/范围边界。
+2. 改变前提：task identity遍布context、可解码，不等于每位置均可迁移完整程序；task state可消退/重启。
+3. idea来源（RECONSTRUCTED）：把既有task-vector成功从“存在”扩到when/for how long，分别测identity与transfer。原文不是发现过程日志。
+4. 近邻：Hendel/Todd、Cho2025/2026、Xiong；已有跨token迁移（**input前的Q冒号也能部分恢复**）、simple-vs-mixed-generation、context不同任务状态改变。
+5. 实验：Gemma3 4/12/27B，Qwen3 4/8/14B；50-query development选注入层、独立余下queries评估，dummy query消除真实query泄漏。FV按token重新选critical heads；部分development限定正确答复，与ICES保留所有contexts不同。
+6. 短板：失败可能是表示未形成或注入无法重新启动，作者主动保留二者；单位置不能排除跨token/cross-layer机制。混合任务局部/分布式知识已是强近邻，不能将E66 negative重命名composition瓶颈。
+7. 对ICES：E66的metadata选择若成功仅提供native KV接口充分性；若失败，必须先看single/answer阳性，不能从缓存失败推断模型无function state。未来需要比较来源选择/示例检索的**具体条件与可预测算法**。
+
+**Verbalizable Representations Form a Global Workspace（Anthropic2026，全文intermediate-swap/broadcast与方法限制）。** [原文](https://transformer-circuits.pub/2026/workspace/index.html)
+- J-lens以输出Jacobian构造可命名方向，intermediate概念swap改变后续答案；与answer-direction swap比较生效层，避免把答案共线误读为中间计算。广播到多个不同下游函数，而非只看最终token的可解码性。
+- 可迁移动作：先建立多种函数可消费同一状态，再谈共享机制；decoder好看不等于causal/部署。文章的relay/J-space不属于ICES。公开材料是整理后的研究论证，非原始迭代日志。
+
+### Lepori et al. ACL2026：从摘要核对到正文（2026-10-10）
+[原文§2–5与Limitations](https://aclanthology.org/2026.acl-long.676.pdf)。以随机walk引入任意词对应的grid/line结构，再要求next-word或few-shot位移规则；Dirichlet energy/distance correlation衡量几何。关键对照是即时prefilled continuation vs用户指令后延迟回答、few-shot token表示保真度、显式拓扑与meta-learning样例。不是来源probe或同任务query路由的实验；“inert”主要来自几何与下游行为分离，未直接给出来源维度的因果swap。
+- frontier测试包含Gemini2.5、GPT5系列；grid仍弱于line。Gemini最多5000 reasoning tokens，GPT自行选预算；目标是是否任何模型可靠完成，不是预算匹配比较，不能借它证明所有reasoning均不管用。
+- 论文保留表示不足/调用不足与CoT机制不清的限制，不提供修复并不损害其清楚的检验对象。可迁移动作是把支持“已有表示”的证据与支持“后续部署”的证据分开，加入显式结构阳性；ICES现在需进一步证明**来源、任务规则与输出的特定组合条件**，不能再以一般部署失败立novelty。

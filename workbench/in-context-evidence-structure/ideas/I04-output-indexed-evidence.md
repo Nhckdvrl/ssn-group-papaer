@@ -79,3 +79,6 @@ C（理论 + 受控）+ B（测量）：exact oracle 与方向相反检验 → �
 | Few-Shot Examples Add Up 2605.16591 | QK/V因果分解与context-dependent weighting | full-query条件化与末位attribution的对应关系及其可靠边界 |
 
 扫描记录：venue corpus三次nearest（2026-10-10）；awesome入口main返回404、master读取；DailyArXiv镜像读取至10月7日条目并过滤ICL/binding（无新相关记录据此作结论）；随后回到上述arXiv/会议原文。**没有exact-collision判决，也没有“空白双键问题”的novelty声明。** 近邻压力是研究对象需要更具体，不是关闭项目的理由。
+
+### E65/E66进一步限制（2026-10-10）
+E65原生sender-edge显示Qwen marker接力与Mistral source字段接力的边界；删direct标签不稳定改善accuracy，平均source×input交互↑甚至可伴随source排序↓。E66 input前source KV缓存在single/mixed均未部署规则，input后query KV仅保留规则相关logit，独立确认accuracy收益低于MIE。两者不是新shortcut、可复用task-vector或普遍composition障碍的证明；参照Bai PCT、Li just-in-time状态、Cho过滤/旁路。下一关键切口需对信息等价编码提出竞争预测，不能以继续定位token填补意义缺口。证据见两卡、`results/e65_e66_summary.json`与10-10复盘，L1范围保持。

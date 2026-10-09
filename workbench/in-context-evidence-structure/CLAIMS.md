@@ -23,6 +23,7 @@
 **混杂审计（C02 等升 L2 时完成）：** 1 噪声地板：bf16 batch 噪声 ~0.1 nats/条、无方向，200–300 base 平均后 ≈0.007 — 已控制。2 工具有效性：标签流阳性对照 13/13 — 已控制。3 选窗：配对设计，所有条件共享输入/名字/query — 无关。4 自校准：同一读数（exact 序列 log-odds），跨任务用归一化指数（CSIn/NDIn）— 已控制。5 提示词默认值：E03（指令）、E09（CoT/thinking）— 已控制（不能恢复）。6 输入一致性：同一 tokenizer/同一 prompt 字节 — 已控制。7 幸存种子：全部 base 报告 — 已控制。8 算力匹配：不适用。9 数据重叠：pilot 与确认版种子分离（≥500000）— 已控制。10 事后切片：多次修正如实记录（见下）；确认版与 E24 之后的实验预测均跑前写定 — 已控制。11 饱和：分类 accA 0.79–0.99；标签流 |logit| 大，用归一化指数 — 已注明。12 系统特有：13 模型 4 族 — 已控制。机制实验另有健全性检查（旧锚点逐位相同）与阳性对照（全位置修补精确复原）。
 
 **作废 / 修正记录**
+- 2026-10-10：E66首轮bf16分段cache实验完成24contexts，但与整段native max差1.625nats>预定0.10；标VOID，保留`results/e66/qwen3_discovery_invalid_chunking_bf16/`。仅检查控制、不使用其它条件解释机制；同seed改float32复核，阈值保持。
 - 2026-10-10：E63首轮SDPA消息分解的最大相对重建RMS=0.0723，超过跑前0.02阈值，synthetic/real两次运行标VOID（保留`results/e63/*_invalid_reconstruction/`）。no-op与all-attention冻结误差0不能替代组件数值校验。改为原生eager attention weights/V重跑同一种子，不使用首轮结果解释机制。
 - 2026-10-10：E59首个real发现运行将E56的toxic=1误作label_index=1(safe)，demo/query同步反向而与E56预定极性不一致；完整汇总前停止，保留`results/e59/qwen3_real_discovery_polarity_mismatch/`，不纳入证据。同seed59002按1−toxic重跑，synthetic不受影响。
 - 2026-10-10：E55的“同一标签”回归项实际是该demo的二元label identity，非与query的正确输出相同；系数0.92不能解释为gold-label匹配程度。其prototype probe在CV前全数据标准化；E58/E59改为固定训练集预处理。暂保留原数值与L1范围，不把probe可读出当作天然部署/原因定位。
@@ -44,3 +45,11 @@
 | C14 | 固定Alex/Sam、平衡二元来源×标签任务中，标签锚点存在可跨标签迁移的来源**双胞胎差分**：Qwen3/Mistral合成检索层残差约0.98–1.00；独立真实评论池Qwen残差0.992–1.000。pre-RoPE K/V跨标签更弱且方向不对称（real某K层0.724），因此只支持common source component，非完整独立编码/天然可用绑定 | L1 | E58、E59；`results/e58/{qwen3_discovery,qwen3_confirmation,mistral_discovery}/analysis.json`、`results/e59/qwen3_real_confirmation/probe_analysis.json` | 新名字与来源抽象角色、去掉双胞胎配对的native解码、相关检索子空间中的因果交换；不得用差分probe饱和声明部署能力 |
 | C15 | 在此before-label格式中，native来源交换影响主要经来源名字K中介（Qwen synthetic0.92/0.94，real0.97/0.88，Mistral0.82）；同位置换label的作用很小，label-anchor KV主要承担mapping-flip。source-K与label-KV联合交换有明显非加性交互，纯label-V版本不足以恢复；支持分布于不同位置的协作，未定位精确串行电路 | L1 | E59、E61；`results/e59/*/mediation_analysis.json`、`results/e61/*/analysis.json`；真实与独立合成确认已完成 | 中介比例依赖反事实与hybrid操作；尚需消息/path干预及强模型边界，不能推出新计算构件或一般composition能力缺失 |
 | C16 | 对来源名字K交换的native来源影响，**答案末位**label消息不是完整中介：Qwen独立合成确认冻结末位仍余0.471[0.438,0.508]，冻结整个query仅余0.061[0.027,0.094]；受控来源规则的独立真实评论池余0.527[0.476,0.581]→0.054[0.001,0.102]。Mistral同词表复现末位已仅余0.127[0.089,0.165]、全query余0.078[0.040,0.113]，显示时序有模型差异。两scope base/sourceK逐位相同、原生消息重建RMS/no-op误差0。支持query内部、答案前位置参与来源条件化的label消息传递，不支持“默认完全不用source”，也未证明这些计算已足以稳定完成任务 | L1 | E63、E64；`results/e64/qwen3_{synthetic,real}_confirmation_{final,all}/analysis.json` | 独立校对；按query字段的path定位；与Cho shortcut/FV/conditional-rule文献正面对照；前沿推理模型边界。比例是指定干预的平均logit效应比，不是互斥可加份额 |
+
+### C16的E65扩展（L1，2026-10-10）
+- sender-edge反事实验证query→末位接力：Qwen独立synthetic冻结Label marker剩余0.226[0.172,0.285]、all-relay0.021[0.004,0.042]；real确认marker0.065[-0.016,0.138]。Mistral同synthetic发现集marker0.947[0.930,0.963]，source字段0.051[0.033,0.068]，sender有模型边界。证据：E65，`results/e65/*/analysis.json`；原生重建/no-op/full冻结全0。
+- direct-label删除**不构成稳定修复**：Qwen synthetic发现accuracy−0.086、确认+0.035，real确认−0.023（CI跨0）；Mistral−0.117且margin也下降。平均交互增强不足以推出更好source选择。POST-HOC四项分解还检出偏置与变异扩大，详见`factorial_posthoc.json`，非独立能力/校准验证。
+- 继续区分metadata-selected function与input-dependent answer，不因模板token relay或瞬时task state而宣称novelty（Bai2401.11323、Li2509.04466、Cho已有强参照）。
+
+### C16的E66压力测试（不升级，2026-10-10）
+输入前source-clause全层KV未部署规则（确认full−null margin−0.109[-0.202,−0.010]nats，single也失败）；已见input的query缓存保留rule相关logit（+1.109[0.861,1.369]nats、rule donor1.919[1.521,2.287]），accuracy仅+0.039，低于预定MIE。证据：E66、`results/e66/qwen3_confirmation/analysis.json`。不能从single/mixed接口共同失败推出独有组合瓶颈，不能从after-input成功证明function transfer；有效推断float32，bf16 chunk首轮VOID。

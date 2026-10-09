@@ -71,3 +71,5 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E62](E62-information-equivalent-field-relocation.md) | 信息等价的字段后移会否改变carrier | 部分转移、未提高表现；不支持唯一terminal carrier |
 | [E63](E63-source-effect-label-message-mediation.md) | 最后token label消息是否足以中介source | Qwen剩余约一半；首轮数值失败VOID，原生重算控制通过 |
 | [E64](E64-whole-query-message-mediation.md) | 整个query还是最后token承载条件化 | Qwen范围差明显；Mistral label消息主要末位；model-dependent时序边界 |
+| [E65](E65-query-relay-versus-direct-copy.md) | query中间位置是否向答案接力，direct读取是否有害 | Qwen marker／Mistral source字段；删direct无稳定accuracy修复；factorial分解为POST-HOC |
+| [E66](E66-source-selected-function-state.md) | input出现前source缓存能否部署规则 | bf16 chunk对照失败VOID；float32独立确认single/mixed均失败；input-dependent logit能保留，但accuracy收益低于MIE，非新composition瓶颈 |
