@@ -1,4 +1,6 @@
-"""E46: perspectivist ICL bridge on Measuring Hate Speech.  usage: e46_perspective.py --model M --out NPZ [--pairs 120]
+"""E49 (from e46_perspective.py): second real dataset -- GoEmotions raw raters, judgment neutral vs emotional.
+A = raters who mark many comments neutral, B = raters who rarely do.
+Original E46 doc:  usage: e46_perspective.py --model M --out NPZ [--pairs 120]
 Contexts per pair: single_A, single_B, mixed (shared words), mixed_near (B: offensive/okay), mixed_far (B: flag/pass).
 Each context is scored for the query annotator A and/or B over 70 reference comments: ld = logit(toxic pole) -
 logit(safe pole) in that annotator's vocabulary."""
@@ -8,42 +10,30 @@ import numpy as np, torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[1]
-HEAD = "Below are comments and the labels that individual annotators gave them.\n\n"
-HEAD_INSTR = ("Below are comments and the labels that individual annotators gave them. Annotators differ in how strict they are. "
+HEAD = "Below are Reddit comments and whether individual annotators judged them emotionally neutral.\n\n"
+HEAD_INSTR = ("Below are comments and the labels that individual annotators gave them. Annotators differ in how often they judge comments neutral. "
               "When asked for an annotator's label, predict the label that this specific annotator would give, judging only from "
               "that annotator's own examples and ignoring the other annotator's examples.\n\n")
-WORDS = {"shared": ("toxic", "safe"), "near": ("offensive", "okay"), "far": ("flag", "pass")}
+WORDS = {"shared": ("neutral", "emotional"), "near": ("calm", "charged"), "far": ("flag", "pass")}
 
 
-def build(n_pairs, seed=4600):
+def build(n_pairs, seed=4900):
     from datasets import load_dataset
-    df = load_dataset("ucberkeley-dlab/measuring-hate-speech", split="train").select_columns(
-        ["comment_id", "annotator_id", "hatespeech", "text"]).to_pandas()
-    df = df[df.hatespeech != 1].copy(); df["y"] = (df.hatespeech == 2).astype(float)
-    cnt = df.groupby("comment_id").size()
-    ref = cnt[cnt >= 50].index
-    others = df.groupby("comment_id").y.agg(["sum", "count"])
-    df = df.join(others, on="comment_id")
-    df = df[(df["count"] >= 2) & (~df.comment_id.isin(ref))]
-    df["resid"] = df.y - (df["sum"] - df.y) / (df["count"] - 1)
-    st = df.groupby("annotator_id").agg(n=("y", "size"), resid=("resid", "mean"), rate=("y", "mean"))
-    st = st[st.n >= 10]
-    A_pool = st[st.resid >= st.resid.quantile(0.9)].index.tolist()
-    B_pool = st[st.resid <= st.resid.quantile(0.1)].index.tolist()
+    df = load_dataset("google-research-datasets/go_emotions", "raw", split="train").to_pandas()
+    df = df[(df.example_very_unclear == False) & (df.text.map(lambda t: 5 <= len(t.split()) <= 40))]
+    rate = df.groupby("rater_id").neutral.mean(); n = df.groupby("rater_id").size(); rate = rate[n >= 300]
+    A_pool = rate[rate >= rate.quantile(0.8)].index.tolist(); B_pool = rate[rate <= rate.quantile(0.2)].index.tolist()
     rng = np.random.default_rng(seed)
-    allq = load_dataset("ucberkeley-dlab/measuring-hate-speech", split="train").select_columns(["comment_id", "text"]).to_pandas()
-    qs = allq[allq.comment_id.isin(ref)].drop_duplicates("comment_id")
-    qs = [t for t in qs.text if len(t.split()) <= 60]
-    short = lambda t: len(t.split()) <= 60
+    items = df.drop_duplicates("id")
+    qs = items.sample(60, random_state=seed).text.tolist(); qset = set(qs)
+    df = df[~df.text.isin(qset)]
     pairs = []
     for _ in range(n_pairs):
         a, b = int(rng.choice(A_pool)), int(rng.choice(B_pool))
-        da = df[(df.annotator_id == a) & df.text.map(short)]; db = df[(df.annotator_id == b) & df.text.map(short)]
-        if len(da) < 8 or len(db) < 8:
-            continue
-        da = da.sample(8, random_state=int(rng.integers(1e9))); db = db.sample(8, random_state=int(rng.integers(1e9)))
-        pairs.append({"A": [(t, int(y)) for t, y in zip(da.text, da.y)], "B": [(t, int(y)) for t, y in zip(db.text, db.y)],
-                      "a_rate": float(da.y.mean()), "b_rate": float(db.y.mean()), "names": list(rng.permutation(["Alex", "Sam"])),
+        da = df[df.rater_id == a].sample(8, random_state=int(rng.integers(1e9))); db = df[df.rater_id == b].sample(8, random_state=int(rng.integers(1e9)))
+        # y = 1 means the "first word" pole (neutral) as in E46 where y=1 -> words[0]
+        pairs.append({"A": [(t, int(y)) for t, y in zip(da.text, da.neutral)], "B": [(t, int(y)) for t, y in zip(db.text, db.neutral)],
+                      "a_rate": float(da.neutral.mean()), "b_rate": float(db.neutral.mean()), "names": list(rng.permutation(["Alex", "Sam"])),
                       "order": rng.permutation(16).tolist()})
     return pairs, qs
 
