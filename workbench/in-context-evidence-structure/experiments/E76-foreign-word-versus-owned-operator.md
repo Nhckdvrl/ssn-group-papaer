@@ -6,7 +6,7 @@
 - **为什么现在：** E74任意label函数在raw下未有效执行，不能据此定位来源组合。改用预训练熟悉的±1运算，仍由demo确定各source采用哪个运算；正确词仅在foreign demo标签中出现，给word来源/关系来源一个便宜的阳性基础。不是首次发现ICL加法（E19及大量近邻已有）。
 - **设置：** Qwen3-8B float32/eager、conda verl-clean、GPU0；32contexts seed76001，sourceA offset±1×query q∈{3,4,5,6}各4contexts完整平衡。Alex/Sam/Chris/Dana对应A/B/C/D，offset为[b,−b,−b,b]，input为q−2/q+2，每source×input两records，共16随机混排。
   - query q在所有sources都未出现；SourceA/B正确输出q±1从未在自己的labels中出现，却在相反offset的foreign source真实label里出现。输入只含q±2，header只声明±1，所以正确词不在任何input、query或任务候选列表中，只在foreign labels出现。模型可以自行算出词，不因此预设必须copy。
-  - 全12 source×input query；A/B的中点query为主读数，8已见input为正控，C/D中点另报。四候选数字q−3/q−1/q+1/q+3均单token，模型prompt不列候选；native即时next-token choices，不称自由生成能力。
+  - 全12 source×input query；A/B的中点query为主读数，8已见input为正控，C/D中点另报。四候选数字q−3/q−1/q+1/q+3，精确continuation logprob；模型prompt不列候选，即时choices，不称自由生成能力。token校对见末节。
   - base、scope_swap（A/B换offset）、owned_a（A/C换）、owned_b（B/D换）、foreign_swap（C/D换），均为真实±1函数、全局label/token频率/位置相同。comp_a只换C、comp_b只换D用于补偿-only，频率变化有意保留、不可混称matched。
   - header声明每source独立固定±1规则；默认与加E74同一句Source scope指令（R8）。不提供source offset表/答案，保留所有contexts。
 - **读数：** 候选margin/accuracy，8 seen controls与A/B、C/D novel分开；Ψ=[lp_A(tA)−lp_A(tB)]−[lp_B(tA)−lp_B(tB)]，同步response Ψ_base−Ψ_swap。正确source运算预测正号，固定非负source-matched label支持预测负号；该简化account不是所有label-anchor理论。owner-minus-comp同方向、untouched-source及foreign响应保留。4000context bootstrap seed760。
@@ -22,3 +22,6 @@
 - **算力：** 本地GPU0空卡，E75在GPU1独立回答任意函数空间问题；8B已在NVMe，预计单卡3–8分钟、float32无需训练。只行为pilot，关键结果未回不并行下游。
 - **产物：** scripts/e76_operator.py / scripts/analyze_e76.py，小run/analysis JSON入git，behavior/layout留本地；依卡复现。
 - **定位：** 已有E19/global transform、Cho shortcut/denoising、Test-then-Route predicate/word分离、Mixing Mechanisms指针/词以及Competition of Mechanisms读取/采用区别。潜在增量仅为来源内新参数的操作与foreign word carriers的具体因果边界；当前未证明，不能泛称新组合瓶颈。
+
+## 科学打分前tokenization校正
+首次启动在数字token断言处失败，0条科学评分，保留`results/e76/qwen3_operator_invalid_candidate_tokenization/`与日志。Qwen数字本身1token，但带前导空格是[220,digit]两token；误假设与英文标签一样。修为精确p(space|prefix)+p(digit|prefix,space)，四候选共享space，所有主差分/margin/排序中的公共space项自然抵消；不换任务/seed/门槛。数字anchor位置改记space后的digit。原程序已终止后再改，E75及其依赖未修改；不是看科学结果后调整读数。

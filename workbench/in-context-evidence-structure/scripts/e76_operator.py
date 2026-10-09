@@ -42,7 +42,7 @@ def encode(tok,c,bs,instructed):
     ids=tok.encode(text+'\n',add_special_tokens=False);sites=[]
     for r in c['records']:
         ids+=tok.encode(f'Input: {r["input"]}\nSource: {c["names"][r["source"]]}\nLabel:',add_special_tokens=False)
-        sites.append(len(ids));ids+=tok.encode(' '+str(r['input']+bs[r['source']])+'\n\n',add_special_tokens=False)
+        sites.append(len(ids)+1);ids+=tok.encode(' '+str(r['input']+bs[r['source']])+'\n\n',add_special_tokens=False)
     return ids,sites
 
 
@@ -53,19 +53,22 @@ def main():
     cs=contexts(a.n,a.seed);tok=AutoTokenizer.from_pretrained(a.model,local_files_only=True)
     model=AutoModelForCausalLM.from_pretrained(a.model,local_files_only=True,dtype=torch.float32,device_map='cuda',attn_implementation='eager').eval()
     errors=[]
+    space_ids=tok.encode(' ',add_special_tokens=False);assert len(space_ids)==1
+    space_id=space_ids[0]
     def score(cache,c,plen,label_ids):
-        qs=[tok.encode(f'Input: {q["input"]}\nSource: {c["names"][q["source"]]}\nLabel:',add_special_tokens=False) for q in c['queries']]
+        qs=[tok.encode(f'Input: {q["input"]}\nSource: {c["names"][q["source"]]}\nLabel:',add_special_tokens=False)+[space_id] for q in c['queries']]
         w=max(map(len,qs));ids=torch.zeros((12,w),dtype=torch.long,device='cuda');mask=torch.zeros((12,plen+w),dtype=torch.long,device='cuda');mask[:,:plen]=1;pos=torch.zeros_like(ids)
         for j,q in enumerate(qs):
             ids[j,-len(q):]=torch.tensor(q,device='cuda');mask[j,-len(q):]=1;pos[j,-len(q):]=torch.arange(plen,plen+len(q),device='cuda')
         cc=copy.deepcopy(cache);cc.batch_repeat_interleave(12)
-        v=model(input_ids=ids,attention_mask=mask,position_ids=pos,past_key_values=cc,use_cache=True,logits_to_keep=1).logits[:,-1].float().log_softmax(-1)
-        return v[:,label_ids].cpu().numpy()
+        v=model(input_ids=ids,attention_mask=mask,position_ids=pos,past_key_values=cc,use_cache=True,logits_to_keep=2).logits.float().log_softmax(-1)
+        return (v[:,-1,label_ids]+v[:,-2,space_id,None]).cpu().numpy()
     (d/'contexts.jsonl').write_text(''.join(json.dumps(c)+'\n' for c in cs))
     with torch.inference_mode(),(d/'behavior.jsonl').open('w') as f:
         for c in cs:
-            encoded=[tok.encode(' '+str(y),add_special_tokens=False) for y in c['candidates']];assert all(len(x)==1 for x in encoded)
-            label_ids=[x[0] for x in encoded];scores={};gold={}
+            encoded=[tok.encode(' '+str(y),add_special_tokens=False) for y in c['candidates']]
+            assert all(len(x)==2 and x[0]==space_id for x in encoded),encoded
+            label_ids=[x[1] for x in encoded];scores={};gold={}
             for instructed in [0,1]:
                 variants={change:encode(tok,c,offsets(c,change),instructed) for change in ['base','scope_swap','owned_a','owned_b','foreign_swap','comp_a','comp_b']}
                 original,sites=variants['base']
