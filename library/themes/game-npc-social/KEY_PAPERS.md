@@ -3,6 +3,8 @@
 从 `library/KEY_PAPERS.md` 按题材拆出（2026-09-30），ID 与内容保持不变。标签含义见 `../../KEY_PAPERS.md`。
 
 
+**ID 勘误（2026-10-09）**：旧增补段落把 `NPC13–NPC15` 分别用于两组不同论文，后者已更名为 `NPC19–NPC21`，各行内容未删。NPC 两条 workbench 均保留。详见 [知识库审计](../../LIBRARY_AUDIT_2026-10-09.md)。
+
 ## Game NPCs / interactive characters
 
 | ID | Paper | Role | Why reread | Link |
@@ -30,6 +32,6 @@
 
 | ID | Paper | Role | Why reread | Link |
 |---|---|---|---|---|
-| NPC13 | **Beyond Static Persona Consistency: Dynamic Persona Coherence in LLM Role-Playing** (ACL 2026) | PARENT / DYNAMIC PERSONA | Explicitly separates stable identity from evolving psychological state; shows that “dynamic persona” is already an owned research object rather than an empty NPC gap. | https://aclanthology.org/2026.acl-long.1336/ |
-| NPC14 | **Beyond Fixed Psychological Personas: State Beats Trait, but Language Models are State-Blind** (Findings ACL 2026) | PARENT / HUMAN-GROUNDED | Human data places much variation within-person state rather than fixed traits; useful pressure against evaluating agents only by static persona consistency. | https://aclanthology.org/2026.findings-acl.1316/ |
-| NPC15 | **ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?** (2026) | FRONTIER / DYNAMIC CHARACTER | Evaluates the same character across changing story phases, pushing persona evaluation toward context-dependent character arcs; strong ownership boundary for generic dynamic-persona proposals. | https://arxiv.org/abs/2606.05553 |
+| NPC19 | **Beyond Static Persona Consistency: Dynamic Persona Coherence in LLM Role-Playing** (ACL 2026) | PARENT / DYNAMIC PERSONA | Explicitly separates stable identity from evolving psychological state; shows that “dynamic persona” is already an owned research object rather than an empty NPC gap. | https://aclanthology.org/2026.acl-long.1336/ |
+| NPC20 | **Beyond Fixed Psychological Personas: State Beats Trait, but Language Models are State-Blind** (Findings ACL 2026) | PARENT / HUMAN-GROUNDED | Human data places much variation within-person state rather than fixed traits; useful pressure against evaluating agents only by static persona consistency. | https://aclanthology.org/2026.findings-acl.1316/ |
+| NPC21 | **ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?** (2026) | FRONTIER / DYNAMIC CHARACTER | Evaluates the same character across changing story phases, pushing persona evaluation toward context-dependent character arcs; strong ownership boundary for generic dynamic-persona proposals. | https://arxiv.org/abs/2606.05553 |

@@ -109,6 +109,5 @@ Rebranding ordinary RAG/KV pruning as “memory science”.
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/hybrid-adaptation/`
 - `workbench/shape-olmo/`
 - `archive/candidates/CT05_EXACT_MEMORY_DEMAND/`

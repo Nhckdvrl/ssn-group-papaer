@@ -1,6 +1,7 @@
 # 科学基础模型与 AI4Quant（Scientific FMs / AI4Quant）
 
 **范围：** 科学基础模型（基因组、分子、表格、时间序列）与 AI4Quant。
+**状态说明：** 2026-10-09 已按用户要求删除 AI4Quant 独立 workbench；此处作为科学基础模型/结构化时间序列的**历史知识页**保留，不表示当前研究或执行授权。
 **更新：** 2026-09-30（按题材重组；内容从 `KEY_PAPERS.md`、`TERRITORY_BANK.md`、`deep/` 迁移或索引而来，未改写）。
 
 ## 1. 热度（`tools/venue_corpus`，顶会 main 接收数；ICLR 括号内为切片接收率 / 全会基准）
@@ -16,8 +17,6 @@
 ### T11 — AI4Quant / structured multivariate models
 
 Current repository territories:
-- `../../../workbench/ai4quant/territories/state-coverage-vs-exposure-coverage.md`
-- `../../../workbench/ai4quant/territories/forecast-skill-vs-structural-skill.md`
 
 Use finance only when it supplies a load-bearing structural oracle, intervention, or decision consequence—not merely a new dataset.
 
@@ -69,4 +68,3 @@ Use finance only when it supplies a load-bearing structural oracle, intervention
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/ai4quant/`

@@ -4,36 +4,36 @@
 
 这里是可复用的知识层：谱系、关键论文、精读卡、开源资产、热度数据与来源入口。**它不是候选题目清单。**
 
-## 题材索引
+## 题材索引（19 个主题，唯一入口）
 
-| 题材 | 目录 | 对应组内偏好 / workbench |
+这里按**科学对象/研究问题**组织，而不是按某次研究的活跃状态；`library` 的题材页负责领域背景和文献，**项目是否还在推进只以 [workbench 登记表](../workbench/README.md) 与用户最新决定为准**。历史文献画像不能代替实时研究状态。
+
+| 主题 | 入口 | 适合先找什么 |
 |---|---|---|
-| 多智能体与大小模型协作 | [`themes/multi-agent-collaboration/`](themes/multi-agent-collaboration/README.md) | 偏好第一条；territory 扫描推荐（待人确认） |
-| 推理与测试时计算 | [`themes/reasoning-test-time/`](themes/reasoning-test-time/README.md) | 推理 |
-| 训练：预训练、SFT、蒸馏与 RL 后训练 | [`themes/training-post-training/`](themes/training-post-training/README.md) | |
-| 可解释性与表征分析 | [`themes/interpretability-representation/`](themes/interpretability-representation/README.md) | 表征分析、可解释性；`workbench/mechanism-population-dynamics/` |
-| 理解与生成 / 多模态 | [`themes/unified-multimodal/`](themes/unified-multimodal/README.md) | 理解与生成 |
-| 游戏 NPC 与社会智能体 | [`themes/game-npc-social/`](themes/game-npc-social/README.md) | 游戏 NPC；`workbench/npc-*` |
-| 智能体、工具与交互 | [`themes/agents-tools/`](themes/agents-tools/README.md) | |
-| 语音、全模态与实时交互 | [`themes/speech-omni-realtime/`](themes/speech-omni-realtime/README.md) | `workbench/realtime-*`、`omni-recon` |
-| 视频生成与世界模型 | [`themes/video-world-models/`](themes/video-world-models/README.md) | 当前主线 `workbench/video-world-model-temporal-interfaces/` |
-| VLA 与具身智能 | [`themes/vla-embodied/`](themes/vla-embodied/README.md) | |
-| 架构、记忆与长上下文 | [`themes/architecture-memory/`](themes/architecture-memory/README.md) | `workbench/shape-olmo/`、`hybrid-adaptation/` |
-| MoE 与路由 | [`themes/moe-routing/`](themes/moe-routing/README.md) | `workbench/moe-route-preference/` |
-| 跨语言能力形成 | [`themes/multilingual/`](themes/multilingual/README.md) | `workbench/cross-lingual-acquisition-regimes/` |
-| 科学基础模型与 AI4Quant | [`themes/scientific-fm-ai4quant/`](themes/scientific-fm-ai4quant/README.md) | `workbench/ai4quant/` |
-| 研究方法、测量与选题技艺 | [`themes/research-craft/`](themes/research-craft/README.md) | 选题流程、再归因、负结果 |
+| AI Agent / 工具使用 | [agents-tools](themes/agents-tools/README.md) | Agent harness、工具、长程交互 |
+| 多智能体协作 | [multi-agent-collaboration](themes/multi-agent-collaboration/README.md) | 大小模型协作、团队训练、交叉配对 |
+| NPC / 社会智能体 | [game-npc-social](themes/game-npc-social/README.md) | Persona、行为、可调查的欺骗与游戏世界 |
+| 推理与 Test-time Compute | [reasoning-test-time](themes/reasoning-test-time/README.md) | CoT、搜索、验证与计算分配 |
+| 训练与后训练 | [training-post-training](themes/training-post-training/README.md) | 数据、SFT、RL、蒸馏与 RSI 文献 |
+| 架构、记忆与长上下文 | [architecture-memory](themes/architecture-memory/README.md) | Transformer/SSM、状态、KV 与长上下文 |
+| 可解释性与表征 | [interpretability-representation](themes/interpretability-representation/README.md) | 机制、因果有效性、模型差分测量 |
+| ICL 证据结构 | [in-context-evidence-structure](themes/in-context-evidence-structure/README.md) | 漂移、噪声、示例聚合、输出身份 |
+| 增量语言理解 | [incremental-language-processing](themes/incremental-language-processing/README.md) | 重解析、证据修订；含逐篇阅读卡 |
+| 语用推理 | [pragmatic-inference](themes/pragmatic-inference/README.md) | 语义/语用、信念更新；含逐篇阅读卡 |
+| 跨语言学习 | [multilingual](themes/multilingual/README.md) | 多语训练、迁移、翻译桥接和数据混合 |
+| MoE 路由 | [moe-routing](themes/moe-routing/README.md) | 专家路由、偏好与实际 Top-K |
+| 语音与实时交互 | [speech-omni-realtime](themes/speech-omni-realtime/README.md) | 全双工、流式语音、实时 Agent |
+| 多模态理解与生成 | [unified-multimodal](themes/unified-multimodal/README.md) | VLM、多模态表示、理解生成统一 |
+| 视频与世界模型 | [video-world-models](themes/video-world-models/README.md) | 生成式交互世界模型、causalization |
+| 紧凑隐空间世界模型 | [latent-world-models](themes/latent-world-models/README.md) | JEPA/LeWM、latent planning、规划代价 |
+| VLA 与具身 | [vla-embodied](themes/vla-embodied/README.md) | 动作表示、具身训练与控制 |
+| 科学基础模型 / 结构建模 | [scientific-fm-ai4quant](themes/scientific-fm-ai4quant/README.md) | 旧题材知识存档，**无活跃 AI4Quant workbench** |
+| 研究方法与研究品味 | [research-craft](themes/research-craft/README.md) | 谱系、反归因、实验有效性、选题 |
 
-每个题材页的结构相同：
-1. **热度**（`tools/venue_corpus` 计算的顶会接收数与 ICLR 切片接收率）；
-2. **Territory 笔记**（原 `TERRITORY_BANK.md`）；
-3. **关键论文**（原 `KEY_PAPERS.md` 按 ID 前缀拆出）与本题材的精读卡；
-4. **深读材料**：`deep/` 长篇原文中与本题材相关的章节列表；
-5. **博客 / 报告**；
-6. **最新 arXiv 入口**（awesome 列表）；
-7. **本仓库相关 workbench / 历史**。
+**阅读顺序：** 题材 `README.md`（问题地图）→ `KEY_PAPERS.md` 或 `PAPER_CARDS.md`（可复用论文）→ 必要时查 `deep/`（大篇幅史料）→ 到 `workbench/` 查看本项目实验和实时状态。题材目录的文件结构因历史来源不同，不应为了形式一致而移动/改写几百份阅读卡。
 
 ## 其他入口
+- [本次知识库审计](LIBRARY_AUDIT_2026-10-09.md) — 目录完整性、历史引用与编号问题的修复记录。
 - [`KEY_PAPERS.md`](KEY_PAPERS.md) — ID 前缀 → 题材文件的索引（新增条目写进题材目录）。
 - [`TERRITORY_BANK.md`](TERRITORY_BANK.md) — T01–T14 → 题材目录的索引。
 - [`sources/AWESOME_LISTS.md`](sources/AWESOME_LISTS.md) — awesome 列表（标注是否仍在更新）、daily-arXiv 镜像、顶会名单数据源、PaperNotes。

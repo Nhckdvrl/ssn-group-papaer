@@ -16,7 +16,7 @@ territory 是可以长期积累专长的科学领域，不是题目。按流程 
 | T08 | VLA / action representation / embodied control | [`themes/vla-embodied/`](themes/vla-embodied/README.md) |
 | T09 | Re-attribution / negative results / measurement | [`themes/research-craft/`](themes/research-craft/README.md) |
 | T10 | Cross-domain method formation: diffusion / optimization / CV | [`themes/research-craft/`](themes/research-craft/README.md) |
-| T11 | AI4Quant / structured multivariate models | [`themes/scientific-fm-ai4quant/`](themes/scientific-fm-ai4quant/README.md) |
+| T11 | AI4Quant / structured multivariate models（历史研究兴趣，当前无 workbench） | [`themes/scientific-fm-ai4quant/`](themes/scientific-fm-ai4quant/README.md) |
 | T12 | Agents / search / tools | [`themes/agents-tools/`](themes/agents-tools/README.md) |
 | T13 | Game NPCs / interactive characters | [`themes/game-npc-social/`](themes/game-npc-social/README.md) |
 | T14 | Cross-lingual capability formation / multilingual learning dynamics | [`themes/multilingual/`](themes/multilingual/README.md) |

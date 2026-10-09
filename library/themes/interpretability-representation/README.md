@@ -61,6 +61,7 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 
 - [`INTERPRETABILITY_LANDSCAPE_2026.md`](INTERPRETABILITY_LANDSCAPE_2026.md)
 - [`INTERPRETABILITY_TOOLING_2026.md`](INTERPRETABILITY_TOOLING_2026.md)
+- **[MODEL_DIFFING_MEASUREMENT.md](MODEL_DIFFING_MEASUREMENT.md)** — 将原 desk-only workbench 的实验设计、强基线、证据效度与研究谱系凝练成可复用的知识卡（2026-10-09）。
 - [`KEY_PAPERS.md`](KEY_PAPERS.md)
 
 ## 4. 深读材料：`library/deep/` 中与本题材相关的章节
@@ -89,5 +90,5 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 ## 7. 本仓库相关 workbench / 历史
 
 - `workbench/mechanism-population-dynamics/`
-- `workbench/model-diffing-measurement/`
+- **模型差分独立 workbench 已撤销**；不再将此题材误标为正在开展的项目。见 [模型差分知识卡](MODEL_DIFFING_MEASUREMENT.md)。
 - `workbench/shape-olmo/`
