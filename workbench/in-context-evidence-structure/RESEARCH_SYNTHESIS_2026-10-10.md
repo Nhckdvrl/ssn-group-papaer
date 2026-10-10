@@ -217,3 +217,21 @@ Tag布局也重现同样符号。名字K改变不只是让Source信息消失：f
 **当前有分量的进展：** 由“同标签下的混合”推进到具体身份线索的原生依赖，再对未用于挑选的联合干预给出数值预测。**尚未完成的贡献：** 没有证明唯一的Source地址、独立子程序数目或跨任务统一机制。相关工作已有多机制检索、标签锚点、适用性判断；新的[demonstration conflict](../../library/themes/in-context-evidence-structure/jiao2026-demonstration-conflict.md)和[jurisdiction](../../library/themes/in-context-evidence-structure/li2026-jurisdiction.md)也明确限制宽泛novelty。它们并未自动覆盖本接口的具体预测，不能据此桌面判死。
 
 下一步的选择原则是先找**当前native计算与替代读取解释在何种条件下给不同预测**，不要求先完善所有边界，不用更多同分布正结果替代辨别。用户提供“Beyond Owls”的逆向实验设计材料，是要求把方法用于ICES，并非另做蒸馏练习题。E86只保存同Source等价码的候选分歧，尚未执行；用户又要求先完成具体文献调查再考虑方向，现据此核对任务、干预和可推导预测，见复盘§16。不以检索到相近术语降级主张。E85结果完整保存，C20仍L1，I04/ACTIVE及最终科研收益决策权限不变。
+
+## 13. E86 pilot与最新纠偏：控制不能自行成为研究问题
+
+**已完成的事实。** [E86](experiments/E86-source-equivalent-code-aliases.md)16新context，把同一Source的两个等价码分别与不同类别示例关联后，未知Item的matched/crossed margin差增量：Tag **14.463 [13.055,15.826]**、Prefix **15.892 [14.548,17.156]nats**。冻结E85外推只有.395/.928，**两个模型的量级预测都失败**。segregated的matched/crossed accuracy为98.4%/1.6%、100%/0%；平均50%会掩盖这个变化。旧规则的输出响应仍为正；不能据此说规则信息消失。布局交互CI跨0，不宣称Prefix作用更强。原始结果、小JSON与图全部保留，64-context确认没有启动。
+
+**这次控制的用途与偏移。** 原本想区分“名字/码先指向共同规则”与“字面码直接决定标签支持”。它确实暴露了冻结解释的失败，却也把任务变成码与class强相关的环境；一般特征捷径、上下文任务重新划分和label continuation仍是解释。再拆几项K/V可以定位作用，但未必让重要问题更清楚。效应很大不是自动追加实验的理由；人这次指出控制越来越细，是对研究优先级的纠偏，不是要求丢掉结果。C20和E85原有确认不降级，I04/ACTIVE不改。
+
+**这次真正读到的研究动作。** 复读Cho2025主文§3–5：主电路消融后剩余能力推动旁路解释；随后读Cho2026信息移除的主文、核对camera-ready v4，关键是用unseen label迫使单纯复制解释失效，再连接构造、原生观测和消融。其[公开答辩修改记录](https://www.hakaze-c.com/phd_defense)也把主贡献、结论依赖关系和次要细节分开；不是完整发现时间线。新读的contextualization预印本先问总体信息传递，再连接具体通道，提供组织研究的参考，不成为新的ICES技术要求。分别见[信息移除卡](../../library/themes/in-context-evidence-structure/cho2026-information-removal.md)与[contextualization卡](../../library/themes/in-context-evidence-structure/cho2026-contextualization-channels.md)。
+
+[Beyond Owls](../../library/themes/in-context-evidence-structure/beyond-owls-capabilities-backdoors.md)的要点是让相同ID分数的两种解释在有意义的新条件下分化，而非控制越细越好；[CoSToM](../../library/themes/in-context-evidence-structure/li2026-costom.md)则直接测试内部构造是否影响它关心的行为。两者不必给出完美机制。这里重建的是论文的论证逻辑，不冒充作者真实探索顺序。
+
+**回到自然问题。** 保留“多套规则共存时，模型怎样确定当前应使用的规则”。更有用途的切入点是：Source切换时，模型是在改变**对输入哪些信息的使用**，还是在共同输入表示上改变**读取哪套输出映射**？这两种计算可以并存。它解释正确回答如何形成，强模型会做也仍可研究；名字、code位置和attention接口只是观测把手。
+
+自然例子是同一条评论“电影很精彩，但工作人员很无礼”，两位评判者分别评价电影与服务，都用positive/negative。模型需要根据评判者选择同一输入中相关的信息。它与职业/交通工具的反向标签映射不同：后者可以始终利用同一语义特征，仅切换输出映射。**当前E58–E86没有证明上述输入选择机制**，不能直接重命名成新解释；这只是I04内的候选切入点，不另开workbench或宣称空白。
+
+**已调查的具体距离。** [TR/TL全文](../../library/themes/in-context-evidence-structure/yang2026-task-recognition-learning.md)主文§3–4与H.3/H.4把TR操作化为label-space recognition；共用同一答案集合时，这项读数不能单独区别哪套规则被选。它还研究了capital+antonym的两输出阶段，不能说没有组合任务；也不能把它宽泛的功能分解当成本任务的完整预测。Xiong正式ICML2025正文§7、附录D用task-vector混合解释未指定任务的混合答案分布，作者保留量级/无关输出失配；不是共享标签空间中的Source条件化完整算法。上述距离只给定位，不作已有框架失效、novelty已成立或研究trivial的判断。
+
+**下一动作。** 先围绕这个自然例子整理任务解释、相关输入与输出映射的竞争计算，把已有E64/E82/E85放在同一问题下；看正常、正确的回答以及Source切换时的状态，不依赖制造错误。接着选择能让这些计算产生不同预测的一个实验，并先写卡。当前不自动运行E86确认、不扩alias/Code K/V矩阵、不再增加整线资格门槛；也不把阅读变成无限推迟实验的理由。

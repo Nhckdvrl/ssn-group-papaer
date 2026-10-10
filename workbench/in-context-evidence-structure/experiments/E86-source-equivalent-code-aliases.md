@@ -1,6 +1,6 @@
 # E86：同一Source的两个等价码是否仍共享分类证据？（2026-10-10）
 
-- **状态：** PLANNED（最终预注册完成，执行16-context pilot；原草案保留，不另开方向）。
+- **状态：** DONE-PILOT（16新context完成；64-context确认未启动。人要求先纠正局部控制牵引，当前优先综合问题与阅读）。
 - **类型：** PILOT。
 - **对应：** I04 / C20 / P20。
 - **问题（一句话）：** 当一个Source有两个可互换的码，模型按Source合并规则证据，还是按字面码划分支持集合？
@@ -53,3 +53,25 @@
 CPU预检已通过，源码SHA256 `20a5c3eced7c5ec165abc55d9e5e188969db4fc7e11a162109353f8f73751d8a`；Scope明确、码所属Source、balanced/segregated计数、多重集/位置/长度、seen/unseen均核对。冻结预测文件`results/e86/frozen_forecast.json`源自E85探索原始行为hash，差值CI仅为旧参数不确定性。主比较是两布局等权、逐context的未知Item delta-gap预测MSE（cue−Scope），不在结果后换胜负指标。
 
 命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e86_aliases.py --model /tmp/ices_models/Qwen3-8B --out results/e86/qwen3_discovery --n 16 --seed 86001`。
+
+首次查看科学评分/统计之前追加解释备注（运行启动后、只看过进程状态，不改变引擎/读数/样本）：Prefix的crossed query中，正确class词虽然在同Source其它码的例子中出现，但该完整code+class组合未出现；Tag条件的Mark+class组合都已出现。因此alias响应也可能来自输出组合的continuation/copying约束，而非一个独立“来源分组模块”。E86用于辨别强Source等价不变性与alias敏感解释；后续若有作用，应问影响经过何种native读取接口，而不是仅凭这一行为差宣布唯一机制。此备注未使用E86科学输出，不是初始预注册的一部分，不以看到新近邻后压缩C20。
+
+## Pilot结果与独立确认的原拟预测
+
+16context×8条件×16query全部完成；88.305s=.02453科学GPU·时，no-op0、full/cache误差1.47e−4nats、行和7.15e−7、mask0，同科学hash，无科学VOID。数据`results/e86/qwen3_discovery/{run,analysis}.json`，raw全部留本地。
+
+未知Item的segregated−balanced gap：Tag **14.463 [13.055,15.826]nats**，Prefix **15.892 [14.548,17.156]**。原外推.395/.928均严重低估；Scope零预测也失败。cue−Scope预测MSE差−19.960虽有负CI，**两模型MSE都在200量级，不称胜出模型预测成功**。
+
+segregated未知Item matched/crossed accuracy：Tag98.4%/1.6%，Prefix100%/0%；平均约50%掩盖强alias响应。已有Item的crossed：Tag29.7%，Prefix3.1%，相应balanced为82.8%/89.1%。原规则响应仍为正（未知Tag .492 [.332,.637]、Prefix .927 [.719,1.119]），且比balanced增加；输出差异不说明规则信息已消失。Source一句指令没有恢复crossed预测。输出分量不当模块证据。
+
+**实际更新：** cue的平均增益不能从E85固定外推到“码能直接预测class”的环境。Tag同样有巨大效应，因此单纯缺失code+class输出组合不足以解释全部结果。下一项因果问题是码的预测关联怎样改变证据读取或消息内容；不是再证明Source信息不存在。
+
+按原决策触发同源码64新context seed186001确认，所有条件/预测文件/指标保留。确认前冻结：两布局未知Item delta-gap均为正且>.15nats；matched−crossed accuracy差方向同pilot；已有Item仍alias敏感（不预设完全等效到未知Item）；一句Source指令不完全恢复。旧两模型仍原样评分，不在确认中重新拟合。量级可与pilot作确认比较，但不事后设14nats门槛；布局交互pilot CI跨0，确认前不宣称Prefix效应大于Tag。
+
+确认命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e86_aliases.py --model /tmp/ices_models/Qwen3-8B --out results/e86/qwen3_confirmation --n 64 --seed 186001`。本段先commit再跑；这项负预测仅限制外推，不降低E85/C20原有证据。
+
+## 人纠偏后的实际执行范围
+
+上述确认计划与预测保留为历史，**未启动确认**。人在pilot完成后指出“控制越来越细、不太自然”，要求多读论文。此次不追加alias词表、Code K/V矩阵或训练模块；先核对这些局部差异能否帮助解释自然的多规则证据选择问题。16-context结果和冻结外推失败完整保存，不选择性删除，也不把一个强行为效应直接升级为新的计算原则。是否需要独立确认，取决于它在该问题中的用途，而非效应大就自动追加。C20/I04/正式状态未变。
+
+图：`results/figs/e86_alias_pilot.{png,pdf}`。正文统计来自原预注册指标；图示输出分量，不代表内部独立模块。

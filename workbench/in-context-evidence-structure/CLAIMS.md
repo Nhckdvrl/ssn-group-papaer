@@ -127,3 +127,7 @@ code predictor平均field/code分量接近指定Label donor重放，但逐query�
 [E85](experiments/E85-cue-specific-source-paths.md)、`results/e85/qwen3_confirmation/{analysis,run,gate_validation}.json`：64新contexts，Prefix field/code原生分量.566/.496；NameK交换后−.337/.321；LabelKV交换后−.497/−.460；joint +.319/−.309，各分量CI均不跨0。Tag符号同样重现。NameK使code减弱但未反转，不作无影响或独立模块结论。
 
 pilot之后明确POST-HOC提出、commit decabf63冻结的均值组合模型`n*m/b`，未用确认数据重拟合；四项joint均值绝对残差.007–.036nats，固定预测MSE .0232 [.0190,.0280]nats²，优于additive的1.2189。Tag code残差+.022 [.002,.041]仍存在。它只支持此身份/映射接口下的平均作用组合，不是新乘法原理、完整逐query算法或两个Source ID的证明。泛用多机制/绑定与QK/V耦合已有所有权；具体来源cue依赖及预测是这里的候选增量。Source-name K与LabelKV含上下文化信息，hybrid不等于full NM；仍同模型/schema、未经独立科研校对。
+
+### E86：冻结外推失败，保留E85自身的证据范围
+
+[E86](experiments/E86-source-equivalent-code-aliases.md)、`results/e86/qwen3_discovery/{analysis,run}.json`：16新contexts，明确同Source两码可互换；segregated−balanced的未知Item matched/crossed margin gap，Tag14.463 [13.055,15.826]、Prefix15.892 [14.548,17.156]nats；冻结E85均值外推仅.395/.928。两预测模型均严重失准，不因cue相对MSE较小称预测成功。规则输出响应仍为正；这不证明来源信息消失或唯一按码分组的native算法。C20仍L1，E85联合干预的独立确认不撤回。64-context确认未启动，当前不将alias局部控制扩展为主问题。

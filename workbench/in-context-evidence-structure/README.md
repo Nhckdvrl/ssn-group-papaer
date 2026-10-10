@@ -6,6 +6,7 @@
 - **E81确认：** 64新contexts，同实际码carrier m/pi下，改变其它token的whole-query读取使Tag准确率+13.3[9.4,17.2]点；固定m/kind翻Source分配使Prefix−11.3[−15.2,−7.8]点。C20 L1。旧Source ranking仅测输出contrast符号，不能直接当内部选择；公共偏移也可减少平均mass。下一步是解释已有因果区别，不扫新配置。
 - **E82/E83：** Label读取重放独立+7.8[3.9,11.7]点，末位可转移其主要收益；原生Source影响仍按C16经整个query。冻结旧native注意力拟合的关系reader在64新context增加Source contrast .376[.358,.393]nats，预算/位置模型无益；逐context预测相关仅.252，非完整解释。Source与code在自然query共线，E84只检验这个具体解释，不开新任务。
 - **E84/E85：** code代理更准确预测布局Label读取变化，但native两Cue都用；NameK交换独立确认使field反转/code保正，LabelKV改变两者。冻结联合干预四项均值预测误差.007–.036nats，形成有限依赖/组合解释，不称两个独立Source模块或完整算法。详见综合§11–12。
+- **E86与最新纠偏：** 16-context pilot中码与标签直接相关时，alias gap增强14.46/15.89nats，严重超出旧模型外推。结果保存，64-context确认未启动；先读完整机制论证、回到自然多规则问题，避免局部控制自行繁殖。详见综合§13。
 - **2026-10-08/09 进展：** 真实数据上的后果与机制（C13，E46–E49）：多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（2 个真实数据集、8 模型、4 家族）；每人独立的标签词恢复到单人水平；读标签头把另一人的标签读进答案，换词后在读出层面分隔（E48）。顺序 / 格式敏感线（E40–E45）已止损关闭。见 `PAPER_SHAPE.md` 末节。
 - **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **E65/E66更新：** query接力有模型边界（Qwen的Label标记／Mistral的来源字段）；删direct-label无稳定accuracy修复。input前source缓存对single/mixed均失败，已见input的缓存保留logit但准确率收益有限，不能包装成新组合瓶颈。各卡与复盘已记负结果，C16仍L1。
@@ -60,18 +61,19 @@
 表层 vs 潜在（E11b）· 单条 demo 可识别 regime（E13）· “可复制标签”（condarith）· 任务识别 vs 任务学习（E27）· 时间写进内容（E23）· 输入侧标签分流（E24）· 主效应来自相邻 token 统计（E34）· 映射与主效应由两组头承载（E36）· 新锚点是运行滤波器（E37）· “Label:” 预测位置存放运行估计（E38b）· 游程头 = 边缘通道（E28b）。详见 I04 §5 与 CLAIMS 作废记录。
 
 ## 5. 最近邻（完整定位见 I04 §6）
-Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. ICLR'24 · Falck et al. ICML'24 · Zhao et al. ICML'21 · Xiong et al. ICLR'25（任务叠加）· Dudley ICML'26 / Qin ICLR'26（训练模型的变化检测）· Cho et al. ICLR'25 / Yang-Cho-Inoue ICLR'26（检索电路、TR/TL 头）。
+Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. ICLR'24 · Falck et al. ICML'24 · Zhao et al. ICML'21 · Xiong et al. ICML'25（任务叠加；正式记录已校正）· Dudley ICML'26 / Qin ICLR'26（训练模型的变化检测）· Cho et al. ICLR'25 / Yang-Cho-Inoue ICLR'26（检索电路、TR/TL 头）。
 **最危险的压缩：** “ICL = kNN + 标签偏置”——回应见 I04 §6。
 
 ## 6. 下一步（按信息量排序，非日程）
-1. E82–E85已完成读取接口、共线身份及native依赖的聚焦链条；先用这些结果找当前解释与竞争解释在新条件下的不同预测，不追完整覆盖或最佳分数。
-2. 将用户提供的逆向实验设计方法用于ICES；先核对最近邻具体任务/干预/预测再决定实验。E86等价码只存候选草案，尚未执行；不因相近术语压缩已确认主张，不为数量铺GPU分支。
+1. 保留E59–E85因果结果，先解释多规则共存时模型怎样确定当前应采用的规则；把码位置、attention接口放回这个问题，不让它们成为选题本身。
+2. 已深读Cho电路/信息移除、TR/TL、CoSToM与Beyond Owls的实验逻辑；用自然样例区分任务相关输入的选择与输出映射选择，再决定最小实验。E86仅完成pilot，暂不扩展；不因近邻术语压缩已有证据。
+3. **人要求的工作习惯：** 每完成一组相关实验，回到研究问题、原文和已有结果检查：实际回答了什么，是否跑偏，替代解释还剩什么，增量与novelty在哪里；据此改变下一动作。不是每个控制失败就压缩主张，也不靠多写卡片代替判断。
 
 ## 7. 目录
 | 路径 | 内容 |
 |---|---|
 | `ideas/` | I04（主 idea）、I01（早期版本） |
-| `experiments/` | E00–E85 实验卡（E80未运行；跑前卡与POST-HOC分开）；`INDEX.md` 为总索引 |
+| `experiments/` | E00–E86 实验卡（E80未运行；E86仅pilot；跑前卡与POST-HOC分开）；`INDEX.md` 为总索引 |
 | `CLAIMS.md` | 主张账本 C00–C20、混杂审计、作废记录 |
 | `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_OUTLINE.md` 为 10-05 旧版提纲（已被取代，保留作历史） |
 | `DATA_PLAN.md` | 数据方案与实际使用的数据 |
@@ -95,6 +97,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **E81资产：** `results/e81/qwen3_{discovery,confirmation}/`的小run/preflight/analysis与标POST-HOC的输出几何、`results/figs/e81_carrier_and_query.{png,pdf}`入git；contexts/behavior JSONL留上述NFS路径。同Qwen3-8B/conda，按E81卡seed81001/181001重建；源码hash与完整行数均核对。旧读数核对为`results/e70_e71_attention_audit_posthoc.json`。
 - **E82/E83资产：** raw JSONL与E82 `native_features/*.npz`留上述NFS路径；小run/preflight/analysis与冻结reader metadata入git。唯一小数组`results/e83/frozen_reader/coefficients.npz`约152KB用于复现冻结预测，按`fit_e83_reader.py`从E82 seed82001重建。E82确认seed182001、E83验证seed183001，全部错误donor/contexts保留。
 - **E84/E85资产：** 小run/preflight/analysis、冻结预测与独立验证、E85静态图入git；raw contexts/behavior JSONL留上述NFS路径。E84 seed84001/184001，E85 seed85001/185001；按卡脚本/同conda复现，科学引擎hash冻结。
+- **E86资产：** 仅seed86001的16-context pilot，小run/preflight/analysis、冻结旧参数预测与图入git；raw在上述NFS的`results/e86/qwen3_discovery/`。按E86卡、同conda/Qwen3-8B重建；seed186001确认未运行。
 
 ## 9. 决策记录
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。

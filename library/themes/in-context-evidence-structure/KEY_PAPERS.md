@@ -140,7 +140,7 @@
 - 6 个文本分类数据集、3 个 LLM：demo 相关度高时 ICL 行为更接近 kNN 而非逻辑回归（“attention 更像 kNN 而非 GD”）；相关度低时 LLM 借参数记忆胜出。无时间/顺序分析。
 - 对我们：kNN/核回归视角（还有 Han 2023、Cho 2025）已被占有；我们的增量是它的**时间后果**——分类 ICL 按输入相似度而非时间选证据（“最近邻，不是最近期”，E21），以及“输出漂移被跟踪 vs concept drift 不被跟踪”的解离（E22）与规范的方向相反检验。
 
-## Xiong, Cai, …, Lee, Papailiopoulos — *Everything Everywhere All at Once: LLMs can In-Context Learn Multiple Tasks in Superposition*（ICLR 2025, arXiv 2410.05603）`[摘要]`
+## Xiong, Cai, …, Lee, Papailiopoulos — *Everything Everywhere All at Once: LLMs can In-Context Learn Multiple Tasks in Superposition*（ICML 2025, arXiv 2410.05603）`[此条摘要；下方另有全文复读]`
 - **发现：** 上下文里混合多种任务的 demo 时，模型的输出分布是各任务答案的混合（“任务叠加”），内部是各任务向量的混合；越大的模型越能同时保持多个任务。
 - **与我们的距离：** 我们的 concept drift 场景正是“同一输入格式下两个相反映射的叠加”。叠加文献把混合当作能力；我们问的是混合**是否按时间结构加权**——E02/E16 显示分类映射的混合权重≈两种映射的计数（可交换），E22 显示即使 regime 被标出，混合权重也不随“哪种映射更新”改变。E24 检验另一侧：混合能否按**输入可检索的上下文**（标注者名）来选择——若能，则“叠加 + 按相似度选择”可行，缺的是“按时间选择”。
 - **idea 来源：** 训练分布的任务混合 → 推理时的任务向量混合；我们的 toy（E12）与之同源（任务同质的训练 → 时间盲）。
@@ -208,7 +208,7 @@
 5. 证据/短板：分类/翻译/QA，多尺寸；representation mask**始终保留demo答案token**，故不能说模板单独含全部规则。类型人工分类、mask重归一化与输出格式线索影响未完全分开。
 6. 可迁移动作：保留上下文化状态而切断未来访问，再和原文本删除竞争；不能把Label marker relay本身作为ICES novelty。
 
-**Xiong et al., Everything Everywhere All at Once（ICLR2025；arXiv2410.05603v1全文§6/附录C，与旧摘要卡并存）。** [原文](https://arxiv.org/html/2410.05603v1)
+**Xiong et al., Everything Everywhere All at Once（ICML2025；arXiv2410.05603v1全文§6/附录C，与旧摘要卡并存）。** [原文](https://arxiv.org/html/2410.05603v1)
 - 用100个60-shot+dummy query的末位层状态均值构造task vector，在100个新query按迁移accuracy选层；混合任务状态沿单任务向量间插值。向量凸组合可产生输出任务叠加，但irrelevant outputs更多且权重曲线非完全线性。作者明确不把它当完整解释。
 - 对ICES：跨输入task-state迁移/混合向量已被拥有；E66只问在显式metadata之后、尚未见input的native cache能否选择规则。没有abstract rule唯一解释，缓存可压缩exemplars。
 
@@ -288,3 +288,9 @@ ICES E69指定prefix K全label列禁读、E70的common key translation仅改变f
 ICES的具体对象仍是两个合法Source的分类规则共享class词时，Source名字与冗余码怎样约束读取。E85 NameK/LabelKV分别取身份/映射donor，在拆开两种query cue后检验依赖；field/code数学分解及乘法组合本身不是新机制。其新增证据只能是具体cue依赖和未用于挑选的反事实预测，不能替代完整解释。主文能覆盖宏观问题，不等于自动覆盖这些具体操作，也不构成关闭依据。
 
 corpus broad nearest“source-conditioned … evidence selection”主要命中RAG等，不能当空白证据；改为“in-context learning label anchors inference circuit task recognition”首位Cho2025，另命中TR/TL等。上述新arXiv接受状态未核对；只做定位与compression risk记录，不给自动科学收益判决。
+
+### 2026-10-10：人要求每组实验后回到自然问题
+
+这轮阅读不从“哪个新名词与C20相似”出发，先核对论文怎样让重要解释给出有分辨力的预测。补充卡：[Cho信息移除camera-ready v4](cho2026-information-removal.md)、[TR/TL全文](yang2026-task-recognition-learning.md)、[Cho contextualization主文](cho2026-contextualization-channels.md)、[Beyond Owls主文](beyond-owls-capabilities-backdoors.md)；[CoSToM](li2026-costom.md)重读主文用途。阅读范围和DOCUMENTED/RECONSTRUCTED分开记录。
+
+[Xiong正式记录](https://proceedings.mlr.press/v267/xiong25a.html)是ICML2025，已修正上方与工作台README旧记为ICLR的两条；本次读取正式PDF §3/7–8与附录D（原v1章号不同）。混合task vectors只部分复现native任务混合分布，作者明确保留失配；不据此覆盖或否定共享标签下的Source条件化。Cho答辩记录的删减技术展示是slides修改，不是删除论文实验。
