@@ -95,3 +95,11 @@ E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规
 
 ### 本次综合：保持证据等级，收束投入与措辞
 见[`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)。E59–E71的来源因果路径、whole-query范围、关系×位置与公共载体偏移为优先解释链条；E74–E79不作为其成立的额外门槛。E71冻结frame新身份恢复.350[.231,.477]、accuracy+.031[.008,.055]是正的部分迁移，未达到原MIE不等于无迁移。公共key偏移作用于**整个demo prefix-code载体组**，不是两个Source各自的组偏移；固定Q组内相对logits不变只支持该局部不变性。保留所有原阈值与解释降级，不提升L1或改变I04/ACTIVE，不宣称已有统一ICL理论。
+
+## E81：来源码分配与更广的query读取（L1，有界因果解释）
+
+| ID | 主张（含适用范围） | 等级 | 证据 | 边界 |
+|---|---|---|---|---|
+| C20 | Qwen3-8B float32、E71 linked分类schema中，固定actual code-carrier每层/head/query的m及kind边缘、翻Source分配，独立64contexts的Prefix margin−.8489[−1.0027,−.7122]、accuracy−11.3[−15.2,−7.8]点；其分配有因果作用。但只移植该carrier的m/pi不能转移位置收益；同recipient Tag与相同码carrier m/pi下，角色对齐whole-query读取比carrier-only accuracy+13.3[9.4,17.2]点、margin+.9181[.7352,1.1107]，指向carrier之外读取的参与 | L1 | [E81](experiments/E81-carrier-mass-versus-source-allocation.md)、`results/e81/qwen3_confirmation/{analysis,run}.json`；32新context pilot→64新seed确认，源码冻结 | native demo缓存/V保留，query内V/状态活反馈；概率donor可能已有答案相关信息，不证明抽象策略或完整电路。单模型/同schema、未经独立科研校对；不能将head平均或output排名当整个证据选择 |
+
+**测量解释修正：** `output_geometry_posthoc.json`证明ranking仅测s>0，accuracy还依赖s与共享bias b的大小。Tag full-attention的Source contrast .583→1.371，|b|均值2.020→2.093；不能把prediction/ranking分离直接升级为“access与binding两个模块修复不同”。E70/71旧数值不作废；C19只保留指定key预算变化与输出效果的有界因果事实。一般校准/label prior已有强近邻，非新的ICES理论。

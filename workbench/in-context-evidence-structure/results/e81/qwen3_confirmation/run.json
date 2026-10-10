@@ -1,0 +1,33 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e81/qwen3_confirmation",
+    "n": 64,
+    "seed": 181001,
+    "preflight_only": false
+  },
+  "seconds": 140.78523874282837,
+  "control": {
+    "self_margin": 2.09808349609375e-05,
+    "full_attention_self": 0.0,
+    "full_forward": 2.86102294921875e-05,
+    "row_sum": 6.556510925292969e-07,
+    "mass_target": 2.384185791015625e-07,
+    "group_probability": 0.0,
+    "masked_mass": 0.0,
+    "kind_preservation": 2.980232238769531e-07
+  },
+  "source_hashes": {
+    "e81_carrier_allocation.py": "f16f918f0fc72389f8c6db1657e6010f367d01bba051d5e91b64a9dc11c364cc",
+    "e71_relational.py": "56730367121195cb886f25d160d90abf21c54fa53cd77f8c028ee6a97c5d17b9",
+    "e58_factorization.py": "0714e82c44c3191b07dae21d79931e7d5e4b7bb38f161cee72c14270caf9c5b3",
+    "e67_prefix.py": "42b8f205cbe02d913867391ac30171d10bd9a8083eeedd959f61e6a19bfc3256"
+  },
+  "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+  "git_commit": "8b7a4f45cae632c0c34b7c40c922f446eee8a15b",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "host": "fvcrc21",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+  "n_layers": 36
+}

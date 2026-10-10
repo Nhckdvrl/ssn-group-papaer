@@ -41,6 +41,8 @@ def main():
         pre = f'D{layout}.'
         for mode in ['mass', 'within', 'both', 'source_flip', 'full_attention', 'instruction']:
             out['contrasts'][pre + mode + '.minus_native'] = {name: ci(v[pre+mode] - v[pre+'native']) for name, v in metrics.items()}
+        out['contrasts'][pre + 'full_attention.minus_both'] = {
+            name: ci(v[pre+'full_attention'] - v[pre+'both']) for name, v in metrics.items()}
         out['factorial'][pre] = {}
         for name, v in metrics.items():
             s, m, p, b = [v[pre+x] for x in ['self', 'mass', 'within', 'both']]

@@ -273,3 +273,4 @@ ICES E69指定prefix K全label列禁读、E70的common key translation仅改变f
 - [Selection–Realization论文卡](li2026-selection-realization.md)：新搜到并读§2–5，已有共存规则的query条件选择与表示恢复/行为恢复区分。不能将自然问题当空白；具体原生载体的反事实分解仍需实测。
 - Test, then Route重读§3–4.2：四donor把predicate与答案身份解耦，筛四donor都正确的范围明确；token-bound路由的结论限指定patch/学习子空间，不是所有路由不可能抽象。
 - corpus nearest本次命中ICR及多个广义routing工作，不能当无近邻证据。以上只输出定位与compression risk，不自动关线；E81只检验source-conditioned分类的具体因果解释。
+- [Cho Hidden Calibration](https://arxiv.org/html/2406.16535v3)重读§2.2/3与讨论/限制：label-token方向与决策边界已有缺陷分析，额外监督centroid可改善，但不能据此说默认表示已完全部署。E81的s/b分解只是对现有输出读数的精确解释，不以它立新校准贡献；新的因果证据在固定码分配与更广query读取的反事实比较。

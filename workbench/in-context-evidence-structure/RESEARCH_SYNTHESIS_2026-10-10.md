@@ -146,3 +146,27 @@ E78 只交换函数定义块，mixed subtract 插值 **96.1%→25.0%**，说明�
 | E71关系×码位置 | 同namespace下冗余来源关系与结构角色 | 原生V/其它路径及输出语法同时作用，不是完整选择机制 |
 
 因此继续的是一个具体机制解释，而非“已有framework都完全不够”的宽泛宣言。[E81](experiments/E81-carrier-mass-versus-source-allocation.md)按真实码载体对齐，整query固定m/pi目标、保持kind边缘翻转Source分配，观察最终判断能否因果分离；其它权重与V保留活反馈。竞争解释若被支持就据此收窄，不追数字变大，不加新的函数能力关卡。CoSToM给我们的尺度是问题与证据链，其额外监督/decoder验证不要求ICES也做同样方法。
+
+## 10. E81已经完成：位置收益不是码carrier读取统计的直接复用
+
+一个聚焦pilot（32新context）与同源码的独立确认（64新context）得到一致结果，科学GPU墙时合计0.0602小时。所有材料/错误donor保留，无筛样本；self及mask/目标权重控制通过。详细数值与操作见[E81](experiments/E81-carrier-mass-versus-source-allocation.md)。
+
+| 确认条件 | accuracy | 它检验什么 |
+|---|---|---|
+| Tag native | 52.3% | 来源字段与码都在，但默认读取效果有限 |
+| Prefix native | 64.5% | 相同Source/最终label，结构角色改变 |
+| Tag仅接受Prefix码carrier的m/pi | 52.3% | 码carrier的读取统计未转移收益 |
+| Tag接受角色对齐的whole-query attention | 65.6% | 更广读取分布可以转移收益，未从donor移植V |
+| Prefix固定m/kind，翻转Source分配 | 53.1% | 组内Source分配具有独立的因果作用 |
+
+**同Tag recipient、同码carrier m/pi下，whole-query比carrier-only增加13.3点[9.4,17.2]、margin+.918[.735,1.111]。** 不同的是对其它token的读取条件分布；demo cache/V保留，query内V/MLP活反馈。Source flip使Prefix margin−.849[−1.003,−.712]、accuracy−11.3点[−15.2,−7.8]，同时保持每层/head/query的码carrier总量及kind边缘。
+
+这比“prefix多被看了一点”更具体：其Source分配有作用，但码carrier本身的选择不是位置收益的充分接口。native真实码的平均mass Tag 2.191%、Prefix 2.101%，requested-source份额60.9%/60.0%，也不支持简单的单调可见性解释。平均attention仍非完整机制；指定干预才提供这里的因果证据。
+
+审计中的另一座推断桥也要收窄。输出ranking只测Source contrast方向，不测其强度或共同label偏置。记s为正确方向的Source分数差的一半、b为两Source共同分数；ranking检验s>0，两人都答对还需s>|b|。POST-HOC精确重建显示Tag whole-query移植主要提高s（.583→1.371），平均|b|并未下降（2.020→2.093）；bias差CI跨0，不作等效零结论。**accuracy/ranking的分离，不能单独证明“访问修复、绑定未修复”的两个模块。** bias/读出的一般解释已有[Cho Hidden Calibration](https://arxiv.org/html/2406.16535v3)等强近邻，不能把这个代数当新理论。
+
+![E81独立确认](results/figs/e81_carrier_and_query.png)
+
+当前更合适的候选认识是：**Source cue通过query的读取程序改变相关证据的作用强度；实际cue载体的分配与其它证据的读取需要协调，不能只用“关注cue多少/关注谁”概括。** 这里的“需要协调”是上述受控接口的解释，尚不是完整新电路或跨任务抽象策略；whole-query donor可能已经带有答案相关选择。
+
+这支持继续深入自然的证据选择问题，也明确了novelty应落在哪里：具体Source条件怎样改变读取程序及其反事实后果，而非一般QK/V不同、信息可读却不用或新的token名称。C20记L1；不立即再扫配置，下一步用已有因果区别构建能预测Source对比的有限解释，与已有框架实际比较。完整预测模型仍未完成，不能宣布强机制论文已定型。

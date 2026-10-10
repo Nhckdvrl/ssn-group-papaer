@@ -2,7 +2,8 @@
 
 ## 状态
 - **状态：** ACTIVE-EXPLORE（2026-10-08 人决定恢复，E39–E48 已开展；此前 2026-10-06 PAUSED 为历史记录）。这是正式研究排程；不意味着别的研究方向停止。
-- **当前综合判断与下一步（2026-10-10）：** 先读 [`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)。已有可靠现象与实质因果线索；聚焦E59–E71的query内部来源条件化、载体可见性与组内选择，不追求覆盖全部ICL的完美解释，不把后续函数任务的控制变成主线门槛。本次按人要求总结并上传main，不启动新增实验。
+- **当前综合判断与下一步（2026-10-10）：** 先读 [`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)（§9–10为后续人审计与E81）。原总结已上传；后续按人审计聚焦“多套规则共存时怎样选择相关证据”，不追求覆盖全部ICL，不把函数任务的控制变成主线门槛。
+- **E81确认：** 64新contexts，同实际码carrier m/pi下，改变其它token的whole-query读取使Tag准确率+13.3[9.4,17.2]点；固定m/kind翻Source分配使Prefix−11.3[−15.2,−7.8]点。C20 L1。旧Source ranking仅测输出contrast符号，不能直接当内部选择；公共偏移也可减少平均mass。下一步是解释已有因果区别，不扫新配置。
 - **2026-10-08/09 进展：** 真实数据上的后果与机制（C13，E46–E49）：多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（2 个真实数据集、8 模型、4 家族）；每人独立的标签词恢复到单人水平；读标签头把另一人的标签读进答案，换词后在读出层面分隔（E48）。顺序 / 格式敏感线（E40–E45）已止损关闭。见 `PAPER_SHAPE.md` 末节。
 - **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **E65/E66更新：** query接力有模型边界（Qwen的Label标记／Mistral的来源字段）；删direct-label无稳定accuracy修复。input前source缓存对single/mixed均失败，已见input的缓存保留logit但准确率收益有限，不能包装成新组合瓶颈。各卡与复盘已记负结果，C16仍L1。
@@ -21,6 +22,7 @@
 **测量工具：** exact 层级 Bayes oracle（联合推断变化率 λ 与噪声率 ε）在指定生成模型与先验下给出一个**方向相反**的预测——在后缀反例之前加零散噪声，该oracle应**更不**相信后缀；而正权重的可加汇总会**更**相信。配合成簇检验（同样数量的反例，连成一串 vs 零散）与新旧对调检验（A→B vs B→A）。它不是所有ICL prompt唯一合理的规范假设。
 
 **收敛后的问题：** 模型在什么情况下能追踪变化、在什么情况下把新旧证据混在一起——以及为什么。
+**当前机制问题：** 多套规则共存时，模型怎样决定哪些示例约束当前query？来源cue怎样改变读取程序与来源对比强度？Tag/prefix是区分解释的变量，不是问题本身。
 
 ## 2. 核心 idea（I04）
 > **I04原始候选解释：In-context learner 按“输出”存放输入-输出证据。** 某个输出得到的支持，来自带这个输出的 demo 的、按输入相似度加权的汇总；这份汇总在时间与上下文上可交换。
@@ -60,15 +62,15 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 **最危险的压缩：** “ICL = kNN + 标签偏置”——回应见 I04 §6。
 
 ## 6. 下一步（按信息量排序，非日程）
-1. 综合E59–E71已有数据，形成query内部来源条件化、载体访问与组内来源选择的有界解释；保留E71部分迁移，明确已有近邻与真实证据范围。
-2. 只围绕Tag/prefix差异做一个候选pilot：对照控制载体组总attention mass、保留组内相对权重，分开测预测与来源排序。精确操作在跑前实验卡确定；后续由结果决定，不先铺函数/词典或模型扫描。详见综合总结§7。
+1. 综合E59–E71与E81，解释Source cue的分配为何有作用，而仅复用码carrier读取不足以转移条件化；区分实际权重操作、输出contrast强度和label bias，避免把ranking当选择或把mass视为越多越好。
+2. 在已有材料上形成可给出反事实预测的有限计算解释，正面对照Cho/QK框架与Selection–Realization；不把s/b输出代数当算法，不先增加任务/模型配置。E81聚焦pilot及一次独立确认已完成，无后续GPU分支。
 
 ## 7. 目录
 | 路径 | 内容 |
 |---|---|
 | `ideas/` | I04（主 idea）、I01（早期版本） |
-| `experiments/` | E00–E79 实验卡（跑前写决策表；早期 pilot 的事后补写已标注）；`INDEX.md` 为总索引 |
-| `CLAIMS.md` | 主张账本 C00–C19、混杂审计、作废记录 |
+| `experiments/` | E00–E81 实验卡（E80未运行；跑前卡与POST-HOC分开）；`INDEX.md` 为总索引 |
+| `CLAIMS.md` | 主张账本 C00–C20、混杂审计、作废记录 |
 | `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_OUTLINE.md` 为 10-05 旧版提纲（已被取代，保留作历史） |
 | `DATA_PLAN.md` | 数据方案与实际使用的数据 |
 | `PAIN_LOG.md` | 痛点与工程坑 |
@@ -88,6 +90,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **E58–E64资产：** `results/e58/`、`e59/`中的`*.npy`锚点状态与各卡`contexts.jsonl/behavior.jsonl`留在上述NFS路径，不进git；代码与固定种子可重建。小汇总`results/e58_e64_summary.json`与`analysis.json`入git。Qwen3-8B revision `b968826d9c46dd6066d109eabc6255188de91218`；Mistral-7B-v0.3 `caa1feb0e54d415e2df31207e5f4e273e33509b1`；节点NVMe `/tmp/ices_models/`由对应HF缓存snapshot复制。环境仍为conda `verl-clean`（torch2.8.0/cu128、transformers4.57.6）。
 
 - **E78/E79资产：** `results/e78/qwen3_bridge/`、`results/e79/qwen3_codebook/`的原始context/behavior JSONL本地留存；小run/preflight/analysis、E79事后错误签名及`results/figs/e78_definition_order.{png,pdf}`入git。按实验卡/seed与同conda重建；不把coded词典任务当原始多标注分布。
+- **E81资产：** `results/e81/qwen3_{discovery,confirmation}/`的小run/preflight/analysis与标POST-HOC的输出几何、`results/figs/e81_carrier_and_query.{png,pdf}`入git；contexts/behavior JSONL留上述NFS路径。同Qwen3-8B/conda，按E81卡seed81001/181001重建；源码hash与完整行数均核对。旧读数核对为`results/e70_e71_attention_audit_posthoc.json`。
 
 ## 9. 决策记录
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。
