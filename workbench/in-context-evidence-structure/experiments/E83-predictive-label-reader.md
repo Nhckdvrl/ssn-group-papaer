@@ -1,6 +1,6 @@
 # E83：用关系特征预测布局引起的Label读取变化（2026-10-10）
 
-- **状态：** PLANNED；问题来自E82 pilot，等待同源码确认再启动GPU验证。
+- **状态：** DONE；E82确认后启动独立64-context预测，全部冻结模型保留。
 - **类型：** PILOT（计算解释的构造/独立预测，不是提高accuracy的方法）。
 - **对应：** I04 / C16 / C20 / P20。
 - **为什么现在：** E82显示Label读取重放贡献较大，末位与全query重放差小。完整donor可能已算出答案，不构成解释；要用事先明确的关系变量预测其变化，并看预测是否能产生相应Source contrast。Source字段存在不等于只需Source-match偏移；预算、输入匹配、联合关系及label身份是竞争解释。
@@ -38,3 +38,26 @@ E82确认支持Label读取主效应，允许启动此有限预测。CPU只用E82
 **新seed183001运行前预测：** oracle_label有正margin作用（期待>.3nats）；R−B margin为正，Source翻号损害RJ的margin；RJ−R与RY−RJ增量预期较小（均值<.15nats），全部CI照实报告。不预设R重建全prefix accuracy；若统计误差改善而行为不转移，它会否定当前读取预测的充分性，而非算坏消息后加feature。
 
 命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e83_predictive_reader.py --model /tmp/ices_models/Qwen3-8B --reader results/e83/frozen_reader --out results/e83/qwen3_prediction --n 64 --seed 183001`。此时只完成token/feature preflight，未加载模型或读取验证输出。
+
+**验证运行中、未读行为结果时追加的解释限制（不改程序/读数）：** linked自然query的Source-match与code-match完全共线；R即使转移也不能证明Source字段与来源码拥有独立可调用的抽象地址。旧E71有冲突query但未用于此预测器选择。若本轮读取预测有价值，可用单一Source字段×query-code交叉反事实区分它跟随哪个关系；这是机制解释的候选区分，不是ICES整体成立的新门槛。
+
+### 64全新contexts：关系预测有平均作用，但非完整逐context解释
+
+seed183001全部保留，82.530s=.022925GPU·时，10条件/4query。self误差0，full/cache≤2.48e−5nats，G概率误差0、行和≤5.97e−7、masked mass0；冻结系数与科学依赖hash一致。结果`results/e83/qwen3_prediction/{analysis,run,preflight}.json`。
+
+| 条件 | correct margin | accuracy |
+|---|---|---|
+| Tag native | .6269 | .5508 |
+| Prefix native | 1.1508 | .6563 |
+| B（预算/位置） | .5984 | .5508 |
+| R（Source/input） | 1.0029 | .5742 |
+| RJ（加Source×input） | 1.0696 | .5859 |
+| RY（加Label身份项） | 1.0646 | .5820 |
+| oracle Label读取重放 | .9703 | .5820 |
+| RJ Source匹配翻号 | .4376 | .5508 |
+
+R−native margin+.3760[.3583,.3933]；R−B+.4045[.3853,.4236]、accuracy+2.3[.8,4.3]点。RJ−R+.0667[.0645,.0690]，小但真实保留；RY−RJ−.0050[−.0095,−.0005]，没有额外行为收益。RJ−Source翻号+.6320[.5978,.6660]。oracle−native+.3435[.2739,.4138]，平均>.3预期成立，但不将CI整个超过.3冒充已成立。其它预定方向也成立。
+
+加权allocation MSE B1.1887、R.7680、RJ.7676、RY.7325；RY统计拟合稍好不意味着行为更准确。R预测与oracle平均作用差+.0325[−.0344,.0997]，不能作等效零结论；**逐context作用相关只有.252、RMSE .273nats**（RJ .262/.288）。它是平均反事实作用的有限预测，不是完整跨context原生算法。
+
+**实际更新：** 输出身份项不是本接口必须增加的解释；仅预算/位置不足，关系型权重变化有可迁移到新context的作用。不是只训练修复accuracy，也不是抽象Source绑定已被证明。C20仍L1。下一步[E84](E84-source-field-versus-code-prediction.md)只区分Source字段与code代理两种共线解释，冻结参数不重训，不扩模型/任务矩阵。

@@ -109,3 +109,9 @@ E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规
 [E82](experiments/E82-label-reading-versus-query-relay.md)、`results/e82/qwen3_confirmation/{analysis,run}.json`：固定码carrier分布、原生Tag组外读取重放baseline下，替换Label列条件log权重使accuracy+7.8[3.9,11.7]点、margin+.4610[.3813,.5438]；只替换query内部列accuracy+.8[−.8,2.3]点、margin+.0472[.0261,.0679]。Label全query相对只在末位替换，margin差+.0140[.0069,.0229]，无大的额外收益。32-context pilot→64新seed确认，源码冻结，数值控制通过。
 
 这是指定布局收益的转移，不是原生Source-effect纯中介；与C16整query原生中介不矛盾。组外log权重拼接会重新归一化其它组，native/活反馈的baseline也不同；不报组件贡献百分比、不命名新独立模块。C20仍L1，同模型/schema，abstract Source策略尚未证明。后续E83用不含query gold的固定关系模型预测Label变化，避免以完整donor取代解释。
+
+### C20的E83预测原型（仍L1）
+
+[E83](experiments/E83-predictive-label-reader.md)、`results/e83/qwen3_prediction/{analysis,run}.json`：只拟合E82 discovery native Label权重变化、不拟合gold输出的冻结关系reader，在64全新contexts将Tag correct margin提高+.3760[.3583,.3933]；预算/位置reader无增益（−.0285[−.0344,−.0226]）。Source/input交互项再+.0667[.0645,.0690]；Label身份项改善统计拟合但无额外margin收益（−.0050[−.0095,−.0005]）。Source匹配翻号损害margin .6320[.5978,.6660]。
+
+这是多个层/head的固定显式关系模型（最大单模型9216系数、kind使用合成语义元数据），不是部署方法或原生模块定位。R与实际Label donor重放作用的逐context相关仅.252/RMSE .273nats，完整预测不足；native条件下Source-match与code-match共线，不能说已证明抽象Source寻址。最大模型不选winner、不重拟合新context，C20不升L2。下一步E84冻结同系数检验该具体共线解释。

@@ -89,3 +89,6 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E78](E78-operator-inference-and-execution.md) | Source函数识别、数字应用与显式code交接是否不同 | DONE；定义顺序让mixed subtract插值96.1%→25.0%；Rule-ID门槛未过，code+19–24点非新机制证据 |
 | [E79](E79-parameter-evidence-versus-codebook-evidence.md) | private规则与共享输出词典的证据来源能否因果区分 | DONE；词典95–99%，direct subtract组合仅15.6–21.9%，不作provenance归因；保留诊断，当前不启动后续 |
 | [E81](E81-carrier-mass-versus-source-allocation.md) | 全query实际来源码的总读取与组内分配能否因果区分 | DONE；64新context确认，同carrier m/pi下whole-query读取+13.3点；固定m/kind来源flip使Prefix−11.3点，C20 L1 |
+| [E82](E82-label-reading-versus-query-relay.md) | Label读取还是query内部重放转移布局收益 | DONE；64新context确认Label+7.8点、query+.8点；Label全query比末位margin仅+.014nats，非原生Source-effect纯中介 |
+| [E83](E83-predictive-label-reader.md) | 不拟合gold输出的冻结关系模型能否预测读取作用 | DONE；64新context R margin+.376nats，预算无收益；Label身份拟合改善不带来行为增益，逐context作用相关仅.252 |
+| [E84](E84-source-field-versus-code-prediction.md) | 关系预测跟随Source字段还是共线的码词代理 | PLANNED；冻结E83系数，Source×code反事实，不扩能力门槛 |
