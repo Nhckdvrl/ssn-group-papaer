@@ -83,4 +83,6 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E72](E72-native-chat-and-reasoning-boundaries.md) | raw/native chat/指令/thinking是否同一能力边界 | DONE；27B thinking普通来源/linked/entity/single全对，orthogonal大量截断；direct96正控无效，不做能力失败归因 |
 | [E73](E73-paired-generation-budget-and-interface.md) | 同一采样路径预算与格式是否混杂模式差异 | DONE；48次实际前缀全一致，orthogonal think延长恢复；strict单源75%未过门槛，装饰校正为POST-HOC，不能称组合缺陷 |
 | [E74](E74-source-scoped-rule-completion.md) | 正确词全局出现但Source×类别未见，推断还是正向支持 | DONE；full100%、held32–36%，signed方向CI跨0、Unknown程序未执行；不触发原确认，先native有效性 |
-| [E75](E75-native-function-family-validity.md) | native thinking能否执行所声明的来源函数空间 | RUNNING；18新contexts，full/held bijection与held independent，先固定装饰parser与有效性门槛 |
+| [E75](E75-native-function-family-validity.md) | native thinking能否执行所声明的来源函数空间 | DONE；full/held bijection全对，independent Unknown66.7%另33.3%截断，全闭合都正确；非能力缺失 |
+| [E76](E76-foreign-word-versus-owned-operator.md) | 词只在foreign labels时，是否执行自己的未知±1规则 | DONE；Source正确方向确认，但新材料accuracy73.4%未过门槛，中点/加性解释限制完整函数判断；暂不word机制 |
+| [E77](E77-source-conditioned-function-or-prototype.md) | 相同Source label频率下，是否执行输入依赖的函数 | DONE；direct全对、single comp强，但single identity也弱，多数错成另一个合法函数；不称Source独有缺陷 |

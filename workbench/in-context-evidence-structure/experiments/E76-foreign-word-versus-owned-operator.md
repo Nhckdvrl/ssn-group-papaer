@@ -1,6 +1,6 @@
 # E76：答案词仅出现在其它来源，自己的熟悉运算能否决定答案？（2026-10-10）
 
-- **状态：** RUNNING（发现完成且过门槛；独立新名字/数字范围确认待终点）
+- **状态：** DONE（Source方向响应确认；高准确率门槛未过，完整函数解释受中点混杂限制）
 - **类型：** PILOT，独立于E75任意函数空间gate；本卡先测行为基础，尚无word/relationship内部因果结论。
 - **对应：** I04/C09/C15/P17；来源条件化与熟悉运算的组合。
 - **为什么现在：** E74任意label函数在raw下未有效执行，不能据此定位来源组合。改用预训练熟悉的±1运算，仍由demo确定各source采用哪个运算；正确词仅在foreign demo标签中出现，给word来源/关系来源一个便宜的阳性基础。不是首次发现ICL加法（E19及大量近邻已有）。
@@ -33,3 +33,14 @@ foreign-swap的Source指令Ψ差−.2706[−.6334,.0766]、accuracy+.0313[−.04
 ## 独立确认预注册（发现之后、确认结果之前）
 64contexts seed176001，Alice/Bob/Casey/Eli、q∈{23,24,25,26}，8格各8contexts；全部q±3候选变为20–29数字，仍不在本Source labels/input/query中，真实出现在foreign labels。其它因素、oracle、主读数、阳性阈值不变；不重估发现seed，不择答对实例。成功标准仍seen≥.90、owned novel≥.80、signed≥1CI不跨0，后续才机制。名字/数字同时变是联合泛化，不单独定位失败原因。
 完整数字continuation为共同[space,2]＋最后digit（三token），脚本支持共同prefix长度，用对应前序位置的logprob求和。discovery长度2情形与原实现数学相同；原结果不重写，记录脚本变更hash。确认前进行CPU token布局/数学索引校验，科学运行原生float32；不改E75依赖。仍为candidate-choice能力范围，非自由生成或新模型族证明。
+
+## 确认结果与解释降级
+64context、no-op0、267.971s；新名字和20–29数字：owned novel accuracy默认.6875[.6328,.7500]、Source指令.7344[.6719,.7969]，**均未过预定.80**。seen .9844/.9922；同步signed响应+3.3137[3.0787,3.5504] / +3.6478[3.4032,3.8825]，Source指令owner-minus-comp1.8629[1.6776,2.0553]与1.8582[1.6393,2.0747]。结构方向复现，但不能报告完整高准确率程序已确认，名字/数字同时换不能独立定位失败。
+主数据`results/e76/qwen3_operator_confirmation/{analysis,run}.json`；额外完整前向＋逐token求和对照cached方法：发现max2.6703e−5、确认4.1962e−5nats，见`scoring_audit.json`（数值审计，不是新科学主读数）。
+
+### 新替代解释：中点与加性主效应（解释降级，不作废事实）
+所有novel query是训练两个input的中点，按Source取平均label即可得到gold，甚至不需要实际使用query Input；x+b还可由独立Input/Source加性项给出，不代表Source选择不同的Input变换。此前将阳性口头解释为完整Input×Source组合过强，现明确撤回。正确Source响应及word值不在其自己labels中的事实保留，但不识别真正运算/参数学习；不进入以正确函数为前提的foreign-word机制卡。
+双位数字确认中“完整标签值未在自己demo出现”仍真，**对应子token可能在自己的数字前缀出现**，不能宣称每个物理token只在foreign位置出现。此限制不影响精确全continuation概率或Source响应。
+
+### POST-HOC成对分解
+确认原生Source排序1.00但accuracy≤.7344；没有超出±1合法输出的four-candidate选择。定义c=(LD_A+LD_B)/2、s=(LD_A−LD_B)/2，两个合法选择都正确当且仅当s>|c|；确认Source指令|c|=.9335、s=.8756，53.1%的Source对最终选同一合法值。`pair_decomposition_posthoc.json`明确标POST-HOC，仅解释读数，不是部署校准，也不证明Source程序完整。排序/因果响应≠完整函数，E77改变query并保持每Source标签边缘相同，排除mean/prototype后再追完整计算。

@@ -80,3 +80,8 @@ E70 common/centered/both的Source排序交互为事后分析（`interaction_post
 
 ### E74尚未鉴别正向支持与约束补全（不新增主张）
 E74、`results/e74/qwen3_discovery/{analysis,run}.json`：36contexts full/seen近100%，held bijection目标accuracy .319–.361；Source指令同步signed响应−.516[−1.178,.105]、owner响应也CI跨0。held independent Unknown决策accuracy0，说明即时输出未可靠执行声明函数空间，不能把微弱负号称已识别positive-support算法。原门槛均未达到，不跑72-context确认；先E75 native有效性。word读取来源≠rule证据来源仍是候选问题，不据此降级E48真实贡献测量或提升新机制主张。
+
+### E75–E77：函数解释边界与进一步降级（不升级）
+- E75、`results/e75/qwen3_native_gate/analysis.json`：18新seed contexts full/held bijection均1.00，independent .6667并有.3333截断；所有闭合Unknown正确，不筛闭合后宣称全可靠。允许有效native推理可以补全Source约束，raw低分不是Source能力缺失；完整三条件gate尚未过。
+- E76、`results/e76/qwen3_operator_confirmation/analysis.json`：Source方向响应3.648[3.403,3.883]确认，但accuracy .7344[.6719,.7969]未过.80。**query恒为demo中点，Source均值即gold；x+b又是加性，不证明真正Input×Source函数**。撤回阳性的完整组合解释，保留实际数字与方向。两位数whole label值未见不等于每个子token在own source未见。pair分解为POST-HOC，Source排序1.00也不能证明函数完整。
+- E77、`results/e77/qwen3_function/analysis.json`：相同Source label边缘下，direct-rule全0..9 query1.00；single complement插值1.00/外推.8828，而single identity .5625/.6719也未过.80，mixed更弱。不能从Single−Mixed差称独有Source组合缺陷。错误多是另一合法function，接下来function识别/应用、指令先后与信息位置仍是竞争解释，不提前宣称“表示在却不用”。

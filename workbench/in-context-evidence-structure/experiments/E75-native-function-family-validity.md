@@ -1,6 +1,6 @@
 # E75：原生推理是否理解来源内函数约束与不可识别性？（2026-10-10）
 
-- **状态：** RUNNING（预注册后GPU1原生推理，尚无最终结果）
+- **状态：** DONE（双射补全有效；不可识别性条件有预算限制，完整三条件gate未过）
 - **类型：** PILOT / E74接口有效性校对，非机制确认
 - **对应：** I04/C09/C15/P12/P17。
 - **为什么现在：** E74 full/seen几乎全对，held bijection仅32–36%，signed响应CI跨0，independent从不可靠报Unknown。裸续写没按声明函数空间回答，不足以鉴别正向支持/约束计算。先检查native thinking能否按规则作答；不继续扫raw seeds追显著性，不做尚无阳性基础的word/relationship patch。
@@ -23,3 +23,8 @@
 - **算力：** GPU1空卡、8B NVMe，conda；预计单卡5–15分钟（token数不确定），只一个native模式，不并行下游。
 - **产物：** scripts/e75_native_constraint.py、scripts/analyze_e75.py；小run/analysis JSON入git，108生成/布局本地JSONL。
 - **定位：** Cho/Incomplete ICL/ICL Ciphers/Mixing Mechanisms已拥有过滤/排除/函数空间/指针分离；本卡只做新测量阳性基础，无novelty主张，不改ACTIVE/I04。
+
+## 结果与更新
+108条全保留、18context/36query每条件；语言权重完整、源脚本/依赖hash核对一致，2891.225s（.8031 GPUh），`results/e75/qwen3_native_gate/{analysis,run,loading_info}.json`。full bijection与held bijection均accuracy/格式1.00、0截断；held independent Unknown accuracy .6667[.500,.8333]，格式同值、截断.3333[.1667,.500]，所有已闭合回复均正确Unknown（不据完成筛选率宣称普遍能力）。主装饰parser与strict结果一致，无事后补解析。
+Source-conditioned约束补全**可以在这个有效推理接口中完成**，E74 raw弱不能定位Source能力缺失。独立函数的三分之一未完成，因此完整三条件gate未通过；不能宣称声明函数空间已在所有条件稳定执行，不能把未完成Unknown当推理错误。平均token full2028、held-bij1267、independent3464，预算/工作量差需要保留。
+本卡没有内部因果干预、只有一个模型和原词库新seed；不能从合理trace说faithful算法，也不能据此证明foreign demo Word被实际copy。E76同时发现中点/加性任务替代，后续先E77检验真正Input依赖，不直接跳word-provenance。

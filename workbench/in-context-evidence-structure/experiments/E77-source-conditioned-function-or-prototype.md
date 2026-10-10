@@ -1,6 +1,6 @@
 # E77：来源响应正确，是否就学会了来源条件化函数？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** DONE（direct控制有效；单来源identity也弱，不称独有Source组合缺陷）
 - **类型：** PILOT，修正E76中点/加性任务的替代解释；非Source能力判决。
 - **对应：** I04/C09/C15/P18；不能从Source反事实响应直接推出完整Input×Source计算。
 - **为什么现在：** E76新名字/数字确认准确率仅.6875/.7344、未过.80，虽然Source方向响应稳定。其未见Input总是demo中点，Source label平均值可答；且x+b是加性主效应，不足以检验Source对Input规则的真正选择。因此暂不铺foreign-word机制，先使mean/prototype与function预测分离。
@@ -26,3 +26,21 @@
 
 ## 启动控制校正（未读取科学结果）
 首轮在direct-rule的长度/位置断言失败，0条完整科学context，保留`qwen3_function_invalid_direct_layout`与日志。Direct-rule翻转会改变header中“copies…”/“subtracts…”长度，本来是额外给规则的能力阳性，不能当inferred条件的token-matched关系交换；原卡已明确direct额外信息与table更新。修正断言只用于四个inferred模式，且把所有contexts/variants的布局预检移到权重加载前；direct的Source响应仅辅助、不能作纯关系位置因果证据。数据/seed/规则/读数/MIE均未变，原进程终止后再改，E75依赖保持。
+
+## 结果
+32context、五模式×四真反事实×20query×10候选完整，no-op0、179.393s；`results/e77/qwen3_function/{analysis,run}.json`。
+
+| 模式 | seen | 插值identity / complement | 外推identity / complement |
+|---|---|---|---|
+| mixed | .9453 | .4219 / .8438 | .4141 / .6563 |
+| mixed+Source指令 | .9609 | .1875 / .9844 | .3438 / .7109 |
+| single | .9844 | .5625 / 1.00 | .6719 / .8828 |
+| single+Source指令 | .9922 | .3828 / 1.00 | .5625 / .8828 |
+| direct source-rule table | 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
+
+Single−Mixed 插值+.1484[.0195,.2695]，外推+.2422[.1719,.3125]，确有mixed代价；但identity单来源亦低于.80，所以**不判多来源特有的功能组合缺陷**。Direct所有query全对说明指定接口可绑定已给规则并执行，不能据此说已从demo推断正确。简单Source指令增强complement而进一步损害identity，不是普遍恢复。
+平均标签/prototype已不够解释全部结果：single complement在新输入上插值1.00、外推.8828，全部这些gold未在demo标签集{2,7}出现；同一context改变Input且function差随Input反转。另一方面，不能把该部分成功推广到两种operator或所有Source：identity多数失败，完整未知函数执行gate未过，不直接进入word-provenance。
+
+### POST-HOC错误签名（不改主读数）
+每operator256个novel query全保留：mixed identity错149，其中130输出另一合法operator结果、19其它值；single identity错98，全部输出complement结果。加Source指令后mixed identity188错，其中180另一operator。single complement241/256正确。提示更值得追的是**function-level偏好/参数推断与应用的区分**，不是Source均值或仅Label词出现次数。先检验operator-ID判断、函数描述顺序与Source-before-Input，再判断是否真“知道函数却不用”；当前没有该内部证据。
+只有发现材料，未做独立确认/正式科研校对；Source direction辅助见analysis，不以方向取代函数执行。没有C##升级。
