@@ -56,3 +56,9 @@ E58–E64未把ICES判为trivial，也未确认其为强机制论文。C14–C16
 自然问题保留为“多规则上下文怎样选相关证据”。E81独立64context表明：固定码carrier m/pi，改变其它token的whole-query读取，Tag accuracy+13.3[9.4,17.2]点；固定m/kind翻Source pi，使Prefix−11.3[−15.2,−7.8]点。C20 L1，直接Source分配操作比output ranking更接近选择证据，但仍非完整native策略。局部码carrier统计不能充分转移结构角色收益，是值得组织的具体解释边界。
 
 修正旧推断：mass不是越多越好；prediction/ranking分离可能来自Source contrast强度与共同label bias，不能直接当双模块已区分。当前候选认识是**Source cue怎样改变query对相关证据的作用权重，以及cue读取与其它证据读取怎样协调**。一般QK/V、校准或query选择规则已有强近邻；novelty须落在具体因果解释与预测，不能只换术语。先消化这项聚焦结果，不增列新门槛、不改正式状态。
+
+### E82–E85后的形态建议（不重写论文、不改正式状态）
+
+候选认识更具体：**来源字段和输出侧冗余身份线索怎样通过不同读取依赖约束共享标签证据，并与映射内容组合。** E82把布局收益落到Label读取接口；E83不按gold拟合的关系模型有平均作用、逐context预测不足；E84拆开Source字段/code；E85在64新context确认NameK的cue-specific影响，并冻结预测联合干预均值（绝对残差.007–.036nats）。这条链的价值是解释与预测互相约束，不是累计实验数。
+
+可以组织成有界的证据选择机制分析，但还不能称完整算法：身份/码冲突是诊断、TF改变条件语义、hybrid包含上下文化信息、均值乘法不是新原则、两Cue不同依赖不证明两个Source ID。CoSToM、Cho、Mixing Mechanisms、CTA/FV及新适用性论文各自拥有宽泛认识。是否具有足够科学收益，由具体预测和人审判断；不因近邻直接关线，也不要求解释全部ICL才值得保留。

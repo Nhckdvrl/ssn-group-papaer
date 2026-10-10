@@ -280,3 +280,11 @@ ICES E69指定prefix K全label列禁读、E70的common key translation仅改变f
 再次细读[Wang2026 §6–7](https://arxiv.org/html/2605.16591v2)：query-only与examples-only corruption分别偏向改变示例总预算与示例偏好，capitalization有相反特例。因此**access/selection的宽泛分离已直接被研究**，不能作为ICES中心新意。§7还区分query-input相似性与task-identity信息量，给出离散任务下query-independent FV的构造；这是特定理论/FV路径，不等于全模型的所有query都无关。多规则ICL的问题是query需要决定哪条规则有效，不能只用“对唯一任务的信息量”描述所有示例。E82先检查whole-query读取收益是否主要落在Label或query relay，而不是为了术语区别再做一轮mass/selection图。
 
 [Cho2025 §5.2](https://arxiv.org/html/2410.04468v3)重读原生消融：主label检索断开后仍有输出，作者提出并行电路、直接解码和forerunner shortcut，并未宣称完整枚举。因此ICES若只发现其它位置参与不构成反驳；应建立Source条件如何改变这些已有操作、为何单末位视角可能误判的具体预测。E82的固定log概率拼接同时重归一化其它组，须保留这个测量限制，不能包装成独立组件的百分比归因。
+
+### E85期间：适用性问题本身有近邻，增量要落在可检验计算上
+
+新检索并读[Jiao2026主文§3–5](jiao2026-demonstration-conflict.md)和[Li2026主文§3–5/附录F](li2026-jurisdiction.md)。前者研究单一规则下少数污染、竞争规则的表示与头消融；后者直接问一致context规则是否适用于query，并交叉私有/官方措辞与实际scope。不能将“哪些示例约束query”这个宽泛问题当新构念或无人研究。
+
+ICES的具体对象仍是两个合法Source的分类规则共享class词时，Source名字与冗余码怎样约束读取。E85 NameK/LabelKV分别取身份/映射donor，在拆开两种query cue后检验依赖；field/code数学分解及乘法组合本身不是新机制。其新增证据只能是具体cue依赖和未用于挑选的反事实预测，不能替代完整解释。主文能覆盖宏观问题，不等于自动覆盖这些具体操作，也不构成关闭依据。
+
+corpus broad nearest“source-conditioned … evidence selection”主要命中RAG等，不能当空白证据；改为“in-context learning label anchors inference circuit task recognition”首位Cho2025，另命中TR/TL等。上述新arXiv接受状态未核对；只做定位与compression risk记录，不给自动科学收益判决。

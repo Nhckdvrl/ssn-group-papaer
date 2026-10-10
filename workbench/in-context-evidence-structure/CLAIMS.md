@@ -121,3 +121,9 @@ E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规
 [E84](experiments/E84-source-field-versus-code-prediction.md)、`results/e84/qwen3_confirmation/{analysis,run}.json`：Source字段与query code交叉时，冻结同系数的code-match预测比Source-field-match的加权allocation MSE低1.5386[1.5041,1.5714]、输出作用MSE低.1651[.0711,.2750]；原自然query的两预测严格相同。native field/code两输出分量均为正（Prefix .594/.583），不能说code取代Source字段。
 
 code predictor平均field/code分量接近指定Label donor重放，但逐query效果RMSE .620、相关.116，简单B预算模型RMSE .527更低；不升级完整机制模型。cue冲突及TF prefix改变条件语义，结果只诊断身份影响、不作能力负结论。当前候选解释是布局改变涉及code关系驱动的Label读取，同时NameK来源路径仍存在；E85回native路径检验二者依赖，未经该实验不宣布两个独立Source模块。
+
+### E85：cue-specific原生依赖与有限组合预测（C20仍L1）
+
+[E85](experiments/E85-cue-specific-source-paths.md)、`results/e85/qwen3_confirmation/{analysis,run,gate_validation}.json`：64新contexts，Prefix field/code原生分量.566/.496；NameK交换后−.337/.321；LabelKV交换后−.497/−.460；joint +.319/−.309，各分量CI均不跨0。Tag符号同样重现。NameK使code减弱但未反转，不作无影响或独立模块结论。
+
+pilot之后明确POST-HOC提出、commit decabf63冻结的均值组合模型`n*m/b`，未用确认数据重拟合；四项joint均值绝对残差.007–.036nats，固定预测MSE .0232 [.0190,.0280]nats²，优于additive的1.2189。Tag code残差+.022 [.002,.041]仍存在。它只支持此身份/映射接口下的平均作用组合，不是新乘法原理、完整逐query算法或两个Source ID的证明。泛用多机制/绑定与QK/V耦合已有所有权；具体来源cue依赖及预测是这里的候选增量。Source-name K与LabelKV含上下文化信息，hybrid不等于full NM；仍同模型/schema、未经独立科研校对。

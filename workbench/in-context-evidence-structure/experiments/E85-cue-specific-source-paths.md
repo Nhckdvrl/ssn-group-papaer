@@ -1,6 +1,6 @@
 # E85：名字K的来源影响与码词影响是否共用同一条读取通路？（2026-10-10）
 
-- **状态：** PLANNED。
+- **状态：** DONE（32-context探索→64新context确认）。
 - **类型：** PILOT；回native因果路径，不再加回归feature。
 - **对应：** I04 / C15 / C16 / C20 / P20。
 - **为什么现在：** E84确认native同时使用Source字段与code，但预测的布局读取变化更跟随code代理。其逐query行为重建不足，不能以新回归器取代解释。E59已定位Source-name K，E61有NameK×LabelKV交互；现在把同一干预放到两独立query身份下，问依赖关系，不重新找头。
@@ -58,3 +58,24 @@ CPU/token/variant预检通过，科学源码SHA256 `efbd56e31b04d4f448fb9bb8bb83
 确认固定64新contexts、seed185001、相同科学源码/18条件/8queries，不筛donor或样本。先报告跑前native/hybrid符号预测是否重现；再比较冻结模型的四项joint绝对预测与实际均值/CI。主比较为每context四分量等权的固定预测MSE（product−additive，context bootstrap4000 seed851）；同时报告均值绝对残差。pilot参数不确定性与确认采样CI分开，不把CI重叠当等效。即使product胜出，也只支持此接口下的平均组合，不自动宣称新组件或跨任务机制；若均值误差明显，则收窄这一模型，不用确认数据改系数。
 
 确认命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e85_cue_paths.py --model /tmp/ices_models/Qwen3-8B --out results/e85/qwen3_confirmation --n 64 --seed 185001`。本段与预测文件先commit再运行。
+
+### 独立确认（冻结commit decabf63之后运行）
+
+| 布局/干预 | field分量（nats） | code分量（nats） |
+|---|---:|---:|
+| Tag base | .329 [.290,.368] | .235 [.203,.268] |
+| Tag NameK | −.204 [−.244,−.165] | .099 [.071,.127] |
+| Tag LabelKV | −.312 [−.352,−.275] | −.209 [−.238,−.181] |
+| Tag joint | .203 [.172,.235] | −.082 [−.102,−.063] |
+| Prefix base | .566 [.503,.632] | .496 [.437,.559] |
+| Prefix NameK | −.337 [−.390,−.285] | .321 [.270,.373] |
+| Prefix LabelKV | −.497 [−.562,−.436] | −.460 [−.516,−.406] |
+| Prefix joint | .319 [.274,.365] | −.309 [−.352,−.265] |
+
+四种full-native反事实符号与pilot一致；两布局的NameK/LabelKV/joint符号也全部重现。NameK不是对code无影响：其code分量减弱，但没有跟field一起反转。保持原读数，不将counterfactual的base-rule agreement叫正确率。
+
+冻结product预测+.209/−.105/+.352/−.345，对应实测+.203/−.082/+.319/−.309，均值绝对残差.007–.036nats。Tag code的实测−预测+.022 [.002,.041]，说明固定预测存在系统残差；其它残差CI跨0不作等效零。四项等权、按context比较的固定预测MSE：product **.0232 [.0190,.0280]nats²**，additive **1.2189 [1.1670,1.2723]**，差 **−1.1957 [−1.2490,−1.1436]**。它只预测四项均值；相加模型在field双翻转时本来就作出相反符号，不把胜出称完整算法重建或新乘法原理。未用确认集重估任何参数。
+
+产物`results/e85/qwen3_confirmation/{run,analysis,gate_validation}.json`；图`results/figs/e85_cue_paths.{png,pdf}`。确认科学墙时220.403s，两次合计343.965s=.09555GPU·时；同引擎/依赖hash，self=0、full-forward≤3.63e−5nats、行和≤5.96e−7、mask=0。18×8矩阵全部finite/完整，非目标切片逐位相同，无科学VOID。raw JSONL留本地。
+
+**认识更新：** 在此分类schema中，两种共线的身份线索不能直接用一个“来源信息有没有”读数概括；它们对native名字key有不同依赖，但共同受标签映射影响。这是一项有可确认反事实预测的具体读取解释，不识别唯一地址/模块数，不证明不存在共同Source状态，不外推所有ICL。C20追加L1，不改正式状态。
