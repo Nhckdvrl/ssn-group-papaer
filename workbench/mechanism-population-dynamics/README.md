@@ -10,6 +10,11 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
+### 2026-10-10 晚：回到头身份线（v3 叙事，见 `experiments/A10-v3-narrative.md`）
+- **问题：** 一个模型里“某个头负责某个计算”的结论，能不能搬到相关模型上？
+- **E81：** 同初始化、不同语料的兄弟之间，注意力角色对应约 0.3，IOI 因果承担者约 0（单头消融 0.02，迁移 0.03；已排除测量噪声）。同一次训练继续下去（OLMo 中期训练、SFT、DPO、Instruct；Pythia 后期）承担者不变（top-3 重合 2–3 / 3，迁移 0.93–1.0）。
+- **E82（进行中）：** 承担者在训练的什么时候定下来，兄弟从哪一步分叉。
+
 ### 2026-10-10 晚：停止（人决定）
 上下文 vs 记忆仲裁这条线的两个候选规律（γ 常数、发育中 γ 下降）在严格测量下都不成立；剩下的 Flan 格式效应被判定不值得作为研究对象。人决定：停止实验；删除 Flan 相关实验卡与 C04、删除本地逐条目数组；模型缓存与工作区保留。以下为停止前的记录。
 
