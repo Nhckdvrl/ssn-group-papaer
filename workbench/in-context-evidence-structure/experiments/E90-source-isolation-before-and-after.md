@@ -1,0 +1,50 @@
+# E90：只读正确来源是否足以使用正确规则？形成阶段与读取阶段的来源隔离（2026-10-10）
+
+- **状态：** PLANNED
+- **类型：** PILOT；不新增idea，不做层/头搜索
+- **对应：** I04 / C16 / C20 / P13 / P20；保留E48、E56、E85，不以新任务诊断替代它们
+- **问题（一句话）：** 多来源ICL的规则干扰主要发生在示例表示形成时，还是query读取时；把后者做到oracle级来源选择，是否已足以解释E56的训练收益？
+
+## 为什么现在做
+
+E48换标签后另一人的答案方向贡献下降，但其位置仍被读取；E64来源处理覆盖整个query。E56的query-only模块明确在demo prefill关闭、只修改答案末位，已有冻结demo表示上的强阳性。它们使“来源信息在不在”“哪个token重要”不再是优先问题。
+
+值得检验的桥梁是：**选择正确来源的位置，是否等于选择该来源的规则？** 先让规则不同的示例互相上下文化，再只访问目标来源，与在形成表示时就按来源分开，并非同一程序。这不是靠一个probe作归因，也不要求先证明全部能力已经完整存在。
+
+最强近邻已在运行前核对：Contextualize-then-Aggregate主文§3.1–3.3已有跨示例任务信息传递；How Few-Shot Examples Add Up已有上下文化QK/V作用；Rethinking Invariance in ICL（ICLR2025）§2–3已有BoE与context interdependence、结构mask。**新mask、新阶段名称本身没有novelty。** 本实验检验的是这些过程在来源特定规则上的具体功能：另一来源改变规则、当前来源全部原始证据不变时，其影响是否越过了query的完整来源隔离。已有解释可兼容任一结果，但还没有给出本设置的效应量或充分性结论；不据此宣布新理论。
+
+## 设置与读数（运行前冻结）
+
+- Qwen3-8B，revision `b968826d9c46dd6066d109eabc6255188de91218`；conda verl-clean，float32/eager。
+- 使用E56 Measuring Hate Speech原test池；24新contexts，seed90001；每Source 8demo，query为4新race＋4新gender评论。姓名随机，A的rule方向逐context随机；不选择种子/评论/成功context。A与B各自toxic/safe严格平衡。
+- 每对context只翻B的8个单token标签：conflict时B与A相反，aligned时B与A相同；A的文字、标签、名字、全部位置、query均相同，两个context全局标签频率相同。只评价保持规则不变的A，避免把目标规则改变当干扰。
+- 一个2×2设计：native；**early**（prefill时每条demo只能看同Source前文和初始header，query完整读取）；**late**（prefill原生，整个query所有位置只能读A/header/query）；**both**（两阶段均隔离）。阻断包含完整demo及其分隔符，不只label或最后答案位置。位置不压缩，保留同Source上下文化。
+- 附带现有强阳性/解释参照：single（A独立prompt，位置长度改变，只作参照）；一条指令恢复；冻结E56 query adapter（不重新训练，prefill始终关闭）；adapter＋late。不是新的配置搜索。
+- `z=logit(toxic)-logit(safe)`，A gold符号为g。主读数：来源规则margin `mean(g*z)`；B规则效应 `mean(g*(z_aligned-z_conflict))`，各条件独立报告。**late下的B效应**若非零，来自可访问A表示中已有的信息或其后续使用，而非query直接读B的位置；不是宣称该信息一定是完整抽象rule。
+- 次读数：二候选准确率、全词表argmax正确率/是否label、early×late准确率交互、adapter相对both的差。24contexts成对bootstrap10000次，seed900；不对query先筛选，不用均值比的微小分母决定结论。
+- 确认候选：如出现有解释价值的阶段分离，以seed190001的48新contexts确认同一科学脚本；pilot结果回来再冻结预测，不能先铺开后续。新context与原test池共享，不称独立语料。
+- 命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e90_source_isolation.py --out results/e90/qwen3_discovery --n 24 --seed 90001`
+
+## 对照、噪声与决策
+
+- **阳性对照：** E56冻结adapter在同任务新contexts应保留明显规则响应；single与aligned native提供任务读出参照。不是只有能力缺陷才允许研究。
+- **数值阳性：** 默认4D causal mask与2D/default完整前向一致；double阻断时改变B标签应精确无作用。float32最大差≤.001nats，否则停止科学判读、记录数值失败。不是用理论零效应当科学发现。
+- **噪声地板 + MIE：** 数值≤.001nats；pilot内容效应以paired CI报告。late剩余B效应≥.2nats、oracle隔离/adapter差≥5百分点会改变投资判断；这些是判断尺度，不是自动关线标准。
+- **混杂审计：** 原始输入、目标Source标签、token位置、标签频率配对固定。early改变contextualization和attention归一化，late改变可读范围及归一化，所以准确率涨幅不单独证明纯Source模块；B标签反事实才界定其功能信息影响。single长度不同；adapter额外监督计算存在且词表依赖，不能叫天然能力上界。无current query答案出现在上下文、无训练、无对层选优。
+
+## 决策表（跑之前写）
+
+| 实际结果 | 认识更新与下一步 |
+|---|---|
+| late去除几乎全部B效应，early额外贡献小 | 干扰主要通过直接跨Source读取；既有label retrieval解释在此够用，不包装新encoding缺陷。转向为什么训练的query读取超过简单Source门控的具体计算，而非继续切层 |
+| late仍留明确B效应，both去除且规则使用改善 | 读取正确Source与隔离规则信息可分；追能够预测这条间接路径的机制解释，不称已有CTA不存在 |
+| early隔离反而损害规则使用 | 跨Source上下文化可能支持规则形成；不能把隔离一概当修复。根据aligned/conflict与margin区分真实信息作用和整体表示扰动，再回到论文/自然问题 |
+| adapter显著超过both，但both已完全排除B信息 | E56的收益不仅是避免另一Source干扰；已有表示的额外内容检索/读出计算是待解释对象。不要再叫“只打开Source开关” |
+| 阳性不足或效应方向不清楚 | 记录有界结论，不展开位置/格式矩阵，不把该pilot升级为研究资格门槛 |
+
+- **算力预算：** 单卡≤1 GPU·时pilot；只有明确认识增量才做同脚本确认≤2 GPU·时；不使用多卡联合训练。
+- **实际：** 待填写。
+
+## 结果（运行后追加）
+
+尚未运行；不能把候选解释写成结果。原始contexts/behavior JSONL保留本地，小preflight/run/analysis入git。
