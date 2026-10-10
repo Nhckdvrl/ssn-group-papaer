@@ -178,7 +178,7 @@ def drop_revision(repo, revision):
     for s in (d / "snapshots").iterdir():
         if s.name != commit:
             others |= {os.path.realpath(f) for f in s.rglob("*") if f.is_symlink()}
-    still = {r.read_text().strip() for r in (d / "refs").iterdir() if r.name != revision}
+    still = {r.read_text().strip() for r in (d / "refs").rglob("*") if r.is_file() and r != ref}
     freed = 0
     for b in mine - others:
         if os.path.exists(b):
