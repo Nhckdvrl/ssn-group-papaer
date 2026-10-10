@@ -1,9 +1,10 @@
 # E96：共同标准的推断范围与功能传递（2026-10-11）
 
-- **状态：** PLANNED。
+- **状态：** DONE-PILOT；256 direct与48 thinking完整，0未解析，28初始截断全部续完。
 - **类型：** PILOT；围绕一个标准信息接口，不扫层/head/rank。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** 标准能被模型推断后，怎样成为当前来源新判断的约束，而不搬入他人的私人函数？
+- **决策表（跑之前写）：** 下表为345d5cbf冻结的不同结果分支，不把文字接口等同原生算法。
 
 ## 已知什么，为什么现在做
 
@@ -50,4 +51,20 @@ Cue仅说“requested reviewer judges only food spiciness/service pace; infer pe
 
 ## 结果（以后追加）
 
-尚未运行。正式主张/状态不变，未宣称顶会级贡献。
+完整304行/unique键，自查全记录保留，.213 GPU·时，两个阶段exit0，无训练。正式主张/状态不变，未宣称顶会级贡献。
+
+| 接收条件 | Mixed准确率 / cue函数正确率 | Concordant私人偏好 |
+|---|---|---|
+| 原E95 matched full native | 53.1% | 100% |
+| Full+self criterion | 93.75%[87.5,100] | 100% |
+| Own+none（criterion不可识别） | 50% | 100% |
+| Own+self criterion | 87.5% | 100% |
+| Own+inverse criterion | 按新cue函数87.5%；按旧世界12.5% | 100% |
+
+Full+self的mixed配对改善40.6[31.3,50.0]个百分点。Own+self/inverse两种新输入的答案改变率75%，内容有向response2.96nats；每个条件整体cue函数正确60/64=93.75%，不宣称全部profile完美。没有提供p_A，也没有给Own接收者B/C的数据或身份；标准提取时未来review未出现。标准信息可以治理新的私人判断，而非只能借用teacher答案/地址。此处运输的是文本意义，不证明默认Actor Goal已有可部署的同一latent，也兼容标准条件化的A-example检索。
+
+**范围解释被削弱：** A标准、B标准都16/16，与原all标准16/16相同；因此只用Source范围说明原Goal差别不足。A一句恢复反而13/16，三条错误完整保留，不能用提醒指令成功包装。标准问题没有测试review，私人判断有review且请求不同答案：仍需区分Goal语义、test review与答案格式，不直接归因单一stage。
+
+下一步优先在相同数据上让**测试review对标准问题保持逻辑无关**，并比较命名标准与普通yes/no标准问题，提供已给定标准的yes/no阳性。结果将决定是否是Input干扰、答案代码/组合，或判断Goal调用了不同过程；结束Scope提醒与文字cue矩阵，不继续改十种提示。已有Source形成/读取因果事实不撤回，C16/C20仍L1。
+
+结果`results/e96/qwen35_{direct,scopes}/{analysis,run,design_audit}.json`与`results/e96/completeness_audit.json`；原始输出/token IDs本地。n2、同材料探索、执行者自查的局限保留。
