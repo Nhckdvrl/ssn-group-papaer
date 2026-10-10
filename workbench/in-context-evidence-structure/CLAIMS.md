@@ -115,3 +115,9 @@ E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规
 [E83](experiments/E83-predictive-label-reader.md)、`results/e83/qwen3_prediction/{analysis,run}.json`：只拟合E82 discovery native Label权重变化、不拟合gold输出的冻结关系reader，在64全新contexts将Tag correct margin提高+.3760[.3583,.3933]；预算/位置reader无增益（−.0285[−.0344,−.0226]）。Source/input交互项再+.0667[.0645,.0690]；Label身份项改善统计拟合但无额外margin收益（−.0050[−.0095,−.0005]）。Source匹配翻号损害margin .6320[.5978,.6660]。
 
 这是多个层/head的固定显式关系模型（最大单模型9216系数、kind使用合成语义元数据），不是部署方法或原生模块定位。R与实际Label donor重放作用的逐context相关仅.252/RMSE .273nats，完整预测不足；native条件下Source-match与code-match共线，不能说已证明抽象Source寻址。最大模型不选winner、不重拟合新context，C20不升L2。下一步E84冻结同系数检验该具体共线解释。
+
+### E84对C20预测器的身份解释（仍L1）
+
+[E84](experiments/E84-source-field-versus-code-prediction.md)、`results/e84/qwen3_confirmation/{analysis,run}.json`：Source字段与query code交叉时，冻结同系数的code-match预测比Source-field-match的加权allocation MSE低1.5386[1.5041,1.5714]、输出作用MSE低.1651[.0711,.2750]；原自然query的两预测严格相同。native field/code两输出分量均为正（Prefix .594/.583），不能说code取代Source字段。
+
+code predictor平均field/code分量接近指定Label donor重放，但逐query效果RMSE .620、相关.116，简单B预算模型RMSE .527更低；不升级完整机制模型。cue冲突及TF prefix改变条件语义，结果只诊断身份影响、不作能力负结论。当前候选解释是布局改变涉及code关系驱动的Label读取，同时NameK来源路径仍存在；E85回native路径检验二者依赖，未经该实验不宣布两个独立Source模块。

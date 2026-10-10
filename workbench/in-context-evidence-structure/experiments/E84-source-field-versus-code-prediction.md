@@ -1,6 +1,6 @@
 # E84：冻结读取预测跟随Source字段，还是它的码词代理？（2026-10-10）
 
-- **状态：** PLANNED。
+- **状态：** DONE；32新context pilot与64新context确认完成。
 - **类型：** PILOT；不训练新参数，不增加模型或能力门槛。
 - **对应：** I04 / C20 / P20；E83预测模型的可识别性检验。
 - **为什么现在：** E83冻结R在64新context产生+.376nats Source contrast，B无益；R/RJ与oracle的平均作用接近，但逐context相关仅约.25。更关键的是natural query中Source-match=code-match。成功不识别抽象来源字段还是词码代理。需要让两预测分歧，而非继续换自然query画同一张图。
@@ -46,3 +46,13 @@ native输出field/code两分量Tag .3736/.2327、Prefix .5696/.5163，两类身�
 同源码/冻结系数/全部条件，64全新contexts seed184001。预计conflict R_code的加权allocation MSE低于R_field；效应预测MSE也较低（CI若跨0，按未确认报告）；native Tag与Prefix的field、code两分量都为正，不是code取代Source字段。同时预期两R的逐query效应仍不充分，不把确认变成拟合最好模型的搜索。自然两R完全一致的质量控制必须继续成立。
 
 命令同pilot，改out=`results/e84/qwen3_confirmation`、n64、seed184001。Source-code冲突问题在E83读取输出前已有卡内限制说明；E84预定具体读数/竞争预测，不声称完全预见E83。
+
+### 64-context确认：代理变量定位复现，完整效应预测失败也复现
+
+seed184001全部保留，112.108s；pilot+confirm175.651s=.04879GPU·时。科学源码/依赖/冻结系数hash一致；self与natural预测器差0，full/cache≤1.72e−5nats，row≤5.97e−7，G/forbidden mass0。结果`results/e84/qwen3_confirmation/{analysis,run,preflight}.json`。
+
+冲突code−field加权allocation MSE差−1.5386[−1.5714,−1.5041]，效应MSE差−.1651[−.2750,−.0711]，两个竞争预测方向确认。native Tag field/code .3601[.3113,.4093]/.2582[.2143,.3029]；Prefix .5944[.5169,.6716]/.5825[.5232,.6456]，两分量正值确认。oracle Label重放field/code .5090/.4888，R_code .4998/.5107，R_field .6819/.3286；code模型的平均分量更接近oracle，不宣称统计等效。
+
+逐query效应仍差：conflict RMSE field .741、code .620、B .527；相关field−.179/code .116/B .060。**R_code赢过另一Source解释，却未赢过简单预算模型的逐query效应误差。** 不加新feature追gold，不叫完整机制模型。下一项E85回原生NameK×LabelKV路径，检验名字影响与码影响的依赖；目标是具体因果计算关系，非再绘一次代理相关图。
+
+工程记录：在科学运行仍活跃时曾提前启动analyzer，因run.json尚未产生而失败；等运行exit0后原样重跑成功，没有读取/改动部分科学结果，没有改变评分/样本/代码。保留此备注，科学运行不作废。
