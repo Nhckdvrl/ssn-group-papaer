@@ -7,6 +7,7 @@
 Usage: figs_v3.py
 """
 import glob
+import itertools
 import json
 import re
 
@@ -321,6 +322,83 @@ def tab_reliability():
     (PAPER / "tables" / "tab_reliability.tex").write_text(tex)
 
 
+def fig_distance():
+    """1B siblings: corpus distance (unigram Jensen-Shannon) vs which-head correspondence (mean over 3 roles, 3 seeds)."""
+    dist = json.loads((R / "e60" / "recipe_distance.json").read_text())["pairs"]
+    bad = set(json.loads((R / "e35_verified.json").read_text())["excluded"])
+    seeds = ("default", "large-aux-2", "large-aux-3")
+    recs = sorted({f.split("/")[-1].split("-1B__")[0] for f in glob.glob(str(R / "e35" / "*-1B__*.json")) if "step" not in f})
+    maps = {(r, sd): json.loads((R / "e35" / f"{r}-1B__{sd}.json").read_text())["maps"] for r in recs for sd in seeds
+            if f"{r}|{sd}" not in bad and (R / "e35" / f"{r}-1B__{sd}.json").exists()}
+    xs, ys = [], []
+    for a, b in itertools.combinations(recs, 2):
+        key = f"{a}|{b}" if f"{a}|{b}" in dist else f"{b}|{a}"
+        if key not in dist:
+            continue
+        v = [np.mean([within(np.array(maps[(a, sd)][m]), np.array(maps[(b, sd)][m])) for m in ("M1", "M2", "M4")])
+             for sd in seeds if (a, sd) in maps and (b, sd) in maps]
+        if v:
+            xs.append(dist[key]["js_uni"])
+            ys.append(float(np.mean(v)))
+    from scipy.stats import spearmanr
+    rho = spearmanr(xs, ys)[0]
+    fig = plt.figure(figsize=(COL, 1.55))
+    ax = fig.add_axes([0.14, 0.25, 0.83, 0.62])
+    ax.scatter(xs, ys, s=5, color=ROLE, alpha=0.7, lw=0, zorder=3)
+    ax.set_xscale("log")
+    ax.set_xlabel("corpus distance (unigram Jensen--Shannon)")
+    ax.set_ylabel("which-head corresp.")
+    ax.grid(color=GRID, lw=0.5, zorder=0)
+    ax.text(0.97, 0.92, f"Spearman $\\rho$ = {rho:.2f}, {len(xs)} corpus pairs", transform=ax.transAxes, ha="right", fontsize=6.0)
+    save(fig, "fig_distance")
+    return {"rho": float(rho), "n": len(xs), "range": [float(min(ys)), float(max(ys))]}
+
+
+def tab_classes():
+    a = json.loads((R / "e75" / "analysis.json").read_text())
+    rows = []
+    def row(name, prof, h, classes):
+        rows.append(f"{name} & \\head{{{h}}} & {prof['dla']:.2f} & {prof['att_s2']:.2f} & ${prof['ov_copy']:.2f}$ & "
+                    f"{len(classes['NM'])} & {len(classes['NNM'])} \\\\")
+    for size, lab in (("160m", "160M"), ("410m", "410M")):
+        d = a[size]
+        tgt = "deduped"
+        # standard model: its strongest S2-attending, negative-copy head among its reference heads
+        refp = d[tgt]["ref_heads_profile"]
+        h = max(refp, key=lambda k: refp[k]["ref"]["dla"] if refp[k]["ref"]["ov_copy"] < 0 else -9)
+        row(f"Pythia-{lab}", refp[h]["ref"], h, d["ref_classes"])
+        for t, tl in (("deduped", f"Pythia-{lab}-dedup."), ("seed1", f"Pythia-{lab} seed 1")):
+            if t not in d:
+                continue
+            op = d[t]["target_own_profile"]
+            h = max(op, key=lambda k: op[k]["target"]["dla"] if op[k]["target"]["ov_copy"] < 0 else -9)
+            row(tl, op[h]["target"], h, d[t]["classes"])
+    tex = ("\\begin{tabular}{llccccc}\n\\toprule\n& \\multicolumn{4}{c}{subject-suppression head} & \\makecell{name\\\\movers} & "
+           "\\makecell{negative\\\\name movers} \\\\\n\\cmidrule(lr){2-5}\nModel & head & effect & \\makecell{attn.\\\\to S2} & OV copy & & \\\\\n"
+           "\\midrule\n" + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
+    (PAPER / "tables" / "tab_classes.tex").write_text(tex)
+
+
+def tab_mapping():
+    a = json.loads((R / "e75" / "analysis.json").read_text())
+    ro = {"160m": json.loads((R / "e75" / "role_only_160m.json").read_text()),
+          "410m": json.loads((R / "e75" / "role_only_410m.json").read_text())}
+    tr = json.loads((R / "e75" / "type_rule_posthoc.json").read_text())
+    cols = [("160m", "deduped", "160m-deduped"), ("410m", "deduped", "410m-deduped"), ("410m", "seed1", "410m-seed1")]
+    def get(size, t, key):
+        return a[size][t]["sets"][key]["ratio_total"]
+    rows = [("Same head index", [get(s, t, "index") for s, t, _ in cols]),
+            ("Nearest attention / OV profile", [ro[s][t]["ratio"] if t in ro[s] else None for s, t, _ in cols]),
+            ("Class rule (attention and OV sign)", [tr[k]["ratio"] for _, _, k in cols]),
+            ("Profile with the target's causal readout", [get(s, t, "profile_map") for s, t, _ in cols])]
+    fmt = lambda v: "--" if v is None else f"{v:.2f}".replace("-", "$-$")  # noqa: E731
+    body = "\n".join(f"{n} & " + " & ".join(fmt(v) for v in vals) + " \\\\" for n, vals in rows)
+    tex = ("\\begin{tabular}{lccc}\n\\toprule\n& \\multicolumn{2}{c}{same initialization} & \\makecell{different\\\\initialization} \\\\\n"
+           "\\cmidrule(lr){2-3}\\cmidrule(lr){4-4}\nMapping & 160M-dedup. & 410M-dedup. & 410M seed 1 \\\\\n\\midrule\n" + body
+           + "\n\\bottomrule\n\\end{tabular}\n")
+    (PAPER / "tables" / "tab_mapping.tex").write_text(tex)
+
+
 def tab_roles():
     e59 = json.loads((R / "e59" / "analysis.json").read_text())
     names = [("M1", "Induction"), ("M2", "Previous token"), ("M3", "Attention sink"), ("M4", "Knowledge retrieval"),
@@ -371,6 +449,9 @@ def main():
     tab_pythia()
     tab_reliability()
     stats["fig_scale"] = fig_scale()
+    stats["fig_distance"] = fig_distance()
+    tab_classes()
+    tab_mapping()
     (PAPER / "figures" / "numbers.json").write_text(json.dumps(stats, indent=1))
     print(json.dumps(stats, indent=1))
 

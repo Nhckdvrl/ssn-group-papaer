@@ -1,0 +1,13 @@
+\begin{tabular}{llccccc}
+\toprule
+& \multicolumn{4}{c}{subject-suppression head} & \makecell{name\\movers} & \makecell{negative\\name movers} \\
+\cmidrule(lr){2-5}
+Model & head & effect & \makecell{attn.\\to S2} & OV copy & & \\
+\midrule
+Pythia-160M & \head{8.9} & 1.43 & 0.94 & $-1.52$ & 4 & 1 \\
+Pythia-160M-dedup. & \head{8.9} & 1.65 & 0.90 & $-1.36$ & 3 & 2 \\
+Pythia-410M & \head{11.4} & 1.11 & 0.39 & $-1.81$ & 14 & 2 \\
+Pythia-410M-dedup. & \head{12.12} & 0.95 & 0.34 & $-1.83$ & 11 & 3 \\
+Pythia-410M seed 1 & \head{12.2} & 2.28 & 0.54 & $-1.99$ & 12 & 5 \\
+\bottomrule
+\end{tabular}

@@ -80,6 +80,16 @@ Pairs of runs are either \emph{siblings} (same initialization, different corpus)
 \emph{OLMo-2-0425-1B} provides one lineage: the end of pretraining (4T tokens), three midtraining runs on different mixtures (51B tokens each), and the SFT, DPO and Instruct models \citep{olmo2024olmo2}.
 \emph{Controlled pretraining} trains 12-layer, 12-head Llama-style models on C4 from three initializations with a fixed data order (Appendix~\ref{app:controlled}).
 
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{\input{tables/tab_populations}}
+\caption{Model populations and the relation between models that each one varies.}
+\label{tab:populations}
+\end{table}
+
+Table~\ref{tab:populations} summarizes the populations and the relation that each one varies.
+
 \paragraph{Attention roles.}
 For every head we compute nine role scores \citep{olsson2022context,xiao2024efficient,wu2025retrieval}: induction, previous token, attention sink, knowledge retrieval, duplicate token, current token, two tokens back, delimiter, and a weight-only OV copying score (Appendix~\ref{app:roles}).
 Each score gives a [layer $\times$ head] map per model.
@@ -136,8 +146,28 @@ The weight-only OV copying score behaves like the attention roles, so the shared
 \label{fig:scale}
 \end{figure}
 
+\paragraph{Across scale and model families.}
 The coordinate system strengthens with scale (Figure~\ref{fig:scale}).
 Across the 14 DataDecide sizes, sibling correspondence is small below 20M parameters, clear from 60M, and reaches 0.33--0.44 at 0.5--1B, while models from different initializations stay at zero at every size.
+The second family behaves the same way: the standard and deduplicated Pythia models, which share their initialization and differ in data, correspond at 0.38--0.72 on the induction, previous-token and retrieval maps at all six sizes we compare between 70M and 12B (Appendix~\ref{app:audit} explains why 2.8B is left out), against a 95th percentile of 0.04--0.26 for head permutations.
+
+\paragraph{Set in the first percent of training.}
+Controlled pretraining shows when the coordinate system is fixed (Table~\ref{tab:critical}).
+Adding noise as large as the weights themselves at 1\% of training rearranges which heads take the roles (correspondence with the uninterrupted run 0.36); the same perturbation from 2.5\% on is absorbed, and the heads return to their slots (0.85--0.98, against 0.97 for an exact rerun).
+A switch of the training corpus to code after this point keeps a correspondence of 0.60--0.95 with the uninterrupted layout, higher the later it happens.
+The public suites agree: DataDecide-1B siblings share the coordinate system at 3.6\% of training as strongly as at the end.
+
+\input{tables/tab_critical}
+
+\paragraph{How much siblings share.}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_distance}
+\caption{DataDecide-1B siblings share more of the coordinate system when their corpora are closer: which-head correspondence (mean over induction, previous-token and retrieval maps and over the three initializations) against the unigram Jensen--Shannon distance between the two corpora.}
+\label{fig:distance}
+\end{figure}
+Siblings share part of the coordinate system, and the part grows with the similarity of their data (Figure~\ref{fig:distance}).
+Over the 300 pairs of DataDecide corpora, the closer two corpora are in their word distribution, the more of the layout their siblings share (Spearman $\rho = -0.81$), from 0.16 for the most distant corpora to 0.67 for the closest.
 
 The initialization therefore defines a coordinate system that all its descendants share: in two siblings, ``layer 12, head 3'' refers to a head with the same attention role, and component-level comparisons between siblings need no alignment.
 This holds across all 25 corpora, which range from web crawls to curated and quality-filtered mixtures.
@@ -159,6 +189,9 @@ Within the shared coordinate system, a task's causal carriers are a separate mat
 For IOI, the attention role of a head, whether it attends from the final position to the IO name, corresponds between DataDecide siblings at 0.24, the same level as the roles of \S\ref{sec:roles}.
 The causal map does not: its reliability-corrected correspondence between siblings is 0.02, as low as between models with different initializations (0.01), and the top-three carriers of one sibling transfer 3\% of the damage to another.
 Of the 18 sibling pairs among four DataDecide corpora, none share the main carrier.
+Comparing the values of the direct logit attribution instead of their ranks gives the same picture: siblings correspond at 0.11 and models from different initializations at 0.07--0.10.
+The same contrast holds over all 69 DataDecide-1B models: siblings share the END$\to$IO attention map at 0.29 and models from different initializations at 0.00, while the single-head ablation map of IOI corresponds at 0.07 between siblings and at 0.00--0.01 otherwise, and a sibling's top three to top twenty heads transfer 7--16\% of the damage, against 4--12\% for unrelated models.
+Across these sibling pairs, carrier transfer barely depends on how close the two corpora are (Spearman $\rho = -0.10$ with corpus distance), whereas the shared coordinate system follows corpus distance closely ($\rho = -0.81$, \S\ref{sec:roles}).
 
 The assignment is equally independent of how similar the data are.
 Removing the Flan instruction data, about 1.5\% of the Dolma corpus, gives three sibling pairs whose attention roles agree most closely of all the sibling pairs we compare (0.57--0.58), and each pair carries IOI on different main heads.
@@ -174,7 +207,17 @@ Transfer: damage of the standard model's top three heads in the deduplicated mod
 
 What differs is the head, not the computation.
 In the Pythia models we analysed head by head (160M and 410M, standard and deduplicated, and an independently initialized 410M), IOI runs on the same functional classes: a head that attends to the repeated subject and writes against it through a negative OV copying circuit, and several name movers that attend to the IO name and copy it \citep{wang2023interpretability}.
-Each class has several members in each model, and siblings give the main role to different members (Figure~\ref{fig:classes}).
+Each class has several members in each model, and siblings give the main role to different members (Table~\ref{tab:classes}, Figure~\ref{fig:classes}).
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{\input{tables/tab_classes}}
+\caption{The IOI algorithm in five Pythia models.
+Every model has a subject-suppression head, which attends to the repeated subject (S2) and copies it negatively (OV copy score $<0$), and several name movers and negative name movers; the head that plays the suppression role differs between siblings at 410M.
+Effect: direct effect on the logit difference on held-out prompts.}
+\label{tab:classes}
+\end{table}
 In the 410M Pythia pair, the strongest carrier of the standard model, \head{11.4}, contributes 1.16 to the logit difference and its counterpart in the deduplicated model 0.02, while the deduplicated model's strongest carrier, \head{12.12}, contributes 0.97 and its counterpart 0.00; each is nearly silent in the other model, attending to the first token instead.
 
 \begin{figure}[t]
@@ -185,8 +228,18 @@ Direct effect on the IOI logit difference of each sibling's top-three heads, mea
 Each model's main carrier is silent in the other.}
 \label{fig:classes}
 \end{figure}
-Because several heads in a class share the attention profile, attention and OV profiles do not determine which member carries the task: mapping one model's carriers onto the other by these profiles recovers between 106\% and $-$6\% of the target's own top-three damage depending on the pair, whereas a causal readout in the target recovers 85--94\%.
+Because several heads in a class share the attention profile, attention and OV profiles do not determine which member carries the task (Table~\ref{tab:mapping}).
+Mapping one model's carriers onto another by the same index, by the nearest attention and OV profile, or by a class rule recovers the target's carriers for some pairs and fails for others; the mapping succeeds for every pair as soon as it includes a causal readout in the target (85--94\% of the target's own top-three damage).
 The carrier has to be identified causally in each model.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{\input{tables/tab_mapping}}
+\caption{Mapping the standard Pythia model's top-three IOI heads onto a target model: damage of the mapped heads in the target relative to the target's own top three, on held-out prompts.
+Only a mapping that uses a causal readout in the target recovers the carriers for every pair.}
+\label{tab:mapping}
+\end{table}
 
 \section{Carriers move during pretraining, then stay}
 \label{sec:lineage}
@@ -218,6 +271,7 @@ A finding about which heads carry IOI in a base model is therefore a finding abo
 Before that, during pretraining, the carriers move (Figure~\ref{fig:lineage}).
 In Pythia-410M, IOI appears at step 3000; head \head{11.4} becomes the strongest carrier at step 2000 and stays so, while the second and third places change hands until step 66k, after which the final top three are in place.
 Its deduplicated sibling settles on a different main carrier, \head{12.12}, by step 6k and completes its final top three at step 100k.
+At 160M the two siblings take the same main carrier, \head{8.9}, at step 3000, keep it to the end, and transfer 69--99\% of their damage to each other from then on, which is why the 160M pair shares its carriers in Table~\ref{tab:pythia}.
 From the moment carriers appear, the two siblings share none of their top three, while their attention roles start at a correspondence of 0.79 and diverge slowly to 0.47.
 In DataDecide-1B, the head that carries IOI when the behaviour first appears is still the main carrier at the end of training in three of twelve runs; in the other nine, another head takes over later in pretraining.
 
@@ -251,6 +305,7 @@ When two heads compete, a small change in the data decides the winner.
 In initialization 2, heads \head{7.9} and \head{8.1} rise together and \head{7.9} stays slightly ahead in the unmasked run and in its rerun.
 Masking a random 10\% of the sequences lets \head{8.1} lead from the moment induction appears, and it keeps the role: at step 3000 the original head scores 72\% of the unmasked run while the strongest induction score (97\%) and copying ability (92\%) are intact.
 A readout of \head{7.9} alone would report a weakened mechanism where the mechanism has moved.
+In the two initializations with a clear leader, the same random masking leaves the leading head in place (95\% and 98\% of its unmasked score at step 3000) and copying ability intact (91\% and 106\%).
 Induction heads thus show, in miniature and under full control, the pattern of the IOI carriers: a role with one leading candidate stays on its head, and a role with several candidates goes to whichever candidate the run's data favour when the role is formed.
 
 \section{Related Work}
@@ -259,6 +314,10 @@ Induction heads thus show, in miniature and under full control, the pattern of t
 Circuits are consistent in their algorithm across training and scale while components change \citep{tigges2024llm}; attention heads are unstable across seeds, most in middle layers \citep{bali2026quantifying}; positional consistency across Pythia seeds is limited \citep{trott2025generalizability}; and representations of independently trained networks share structure up to rotation or permutation \citep{li2016convergent,kornblith2019similarity,ainsworth2023git}.
 Seed variants such as PolyPythias \citep{vanderwal2025polypythias} and MultiBERTs \citep{sellam2022multiberts} change initialization and data order together.
 We separate initialization from data, and separate attention roles from causal carriers, which explains why components agree among siblings in one sense and not in the other.
+
+\paragraph{Circuit discovery.}
+Circuits are found by activation patching and its automated and gradient-based variants \citep{wang2023interpretability,conmy2023towards}, and universality has been studied for small algorithmic models and for neurons \citep{chughtai2023toy,gurnee2024universal}.
+Our results say which of a discovered circuit's statements to reuse in a related model and which to recompute, and that the recomputation needs a causal readout.
 
 \paragraph{Mechanisms after further training.}
 Fine-tuning reuses and enhances the circuits of the base model \citep{prakash2024finetuning}.
@@ -276,15 +335,28 @@ Split-half reliability of every head map, and its correction of cross-model corr
 \label{sec:discussion}
 
 \paragraph{When to carry a finding over.}
-Our results give a rule for reusing head-level findings.
-Along a training lineage, from a checkpoint to its continued pretraining, midtraining, SFT, DPO and instruction-tuned descendants, the named carriers can be reused directly.
-Between siblings that share an initialization, attention-role labels can be reused directly, and the carriers of a task are localized again with a causal readout.
-Between independently initialized models, the layer and the algorithm carry over.
-For data interventions, a single-head readout tracks the mechanism when one candidate leads the role; reading out the strongest head of the role and the behaviour as well covers the case in which candidates compete.
+Head-level findings carry over along a training lineage, from a checkpoint to its continued pretraining, midtraining, SFT, DPO and instruction-tuned descendants.
+Between siblings that share an initialization, attention-role labels carry over and a task's carriers are localized again; between independently initialized models, the layer and the algorithm carry over.
+
+\paragraph{A protocol for reusing a circuit.}
+To apply a circuit found in model A to model B:
+\begin{enumerate*}[label=(\roman*)]
+\item establish the lineage from the weights, since released labels can be wrong (Appendix~\ref{app:audit});
+\item if B continues A's training, reuse the named heads and confirm them with a single ablation of the named set;
+\item if B shares A's initialization, compare attention-role maps head by head to inherit role labels, and localize the task's carriers with single-head ablations in B;
+\item otherwise, transfer the algorithm and the layer profile and run circuit discovery in B;
+\item in every case, report the split-half reliability of the head maps that are compared.
+\end{enumerate*}
+
+\paragraph{Consequences for data attribution and model diffing.}
+Studies that retrain a model under a data intervention and track a named head compare two siblings that share the initialization and the data order.
+Our controlled runs show that such a comparison reads the mechanism correctly when one head leads the role, and that a role with close candidates can move under an intervention as small as a random 10\% mask, so checking the strongest head of the role and the behaviour alongside the named head separates a delayed mechanism from a moved one.
+Comparisons between a base model and its fine-tuned or instruction-tuned descendants, as in model diffing, sit on the other side of the rule: the descendants keep the base model's carriers, so differences between them can be attributed to the same named heads.
 
 \paragraph{What the coordinate system is.}
 The initialization does not choose the carriers; it chooses where each role can live.
 Heads that share a role's attention profile are candidates for the task, and the run's own data decide which candidate wins.
+The two are set at different times: the coordinates within the first few percent of training (Table~\ref{tab:critical}), before the corpus has had much effect, and the carriers late in pretraining (Figure~\ref{fig:lineage}), after each run's corpus has shaped the competition; this is why the coordinate system tracks the similarity of the corpora and the carriers do not.
 This places the variation that \citet{tigges2024llm} and \citet{bali2026quantifying} observe across seeds at a definite point: in the competition among candidates during pretraining, not in the coordinates of the roles, which the initialization sets, and not in later training, which keeps the outcome.
 
 \section*{Limitations}

@@ -1,0 +1,12 @@
+\begin{tabular}{lccc}
+\toprule
+& \multicolumn{2}{c}{same initialization} & \makecell{different\\initialization} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-4}
+Mapping & 160M-dedup. & 410M-dedup. & 410M seed 1 \\
+\midrule
+Same head index & 0.87 & 0.06 & 0.00 \\
+Nearest attention / OV profile & 0.92 & 0.84 & $-$0.06 \\
+Class rule (attention and OV sign) & 0.92 & 0.18 & 1.06 \\
+Profile with the target's causal readout & 0.89 & 0.85 & 0.94 \\
+\bottomrule
+\end{tabular}
