@@ -35,7 +35,7 @@ Models trained from the same initialization agree on which head of a layer takes
 The heads that causally carry a task follow the training run instead.
 Models that share an initialization but differ slightly in their data typically carry indirect-object identification on different heads of the same functional classes, whereas a model's carriers, once settled during pretraining, persist through midtraining, preference tuning and instruction tuning.
 Controlled pretraining shows how fine the decisive differences are: an identical rerun reproduces a model's role maps, yet in 9 of 15 initializations it gives the leading induction role to a different candidate head.
-Head-level findings thus transfer along a training lineage and role labels within an initialization, while across separately trained models the algorithm transfers and the carriers have to be localized again.
+Head-level findings thus transfer along a training lineage and role labels within an initialization, while across separately trained models the functional classes of the circuit transfer and the carriers have to be localized again.
 \end{abstract}
 
 \begin{figure}[t]
@@ -79,13 +79,13 @@ The answer depends on the relation (Figures~\ref{fig:schematic} and~\ref{fig:car
 Models trained from the same initialization agree on which head of a layer takes each role across all 25 corpora, whereas models from different initializations agree only on the profile over layers (\S\ref{sec:roles}).
 The initialization fixes a coordinate system that all models trained from it share.
 It does not fix the causal carriers of IOI (\S\ref{sec:carriers}).
-Within the shared coordinates, models that differ in their data typically carry IOI on different heads, even when their corpora differ only by the removal of 1.5\% of the data, while running the same algorithm.
+Within the shared coordinates, models that differ in their data typically carry IOI on different heads, even when their corpora differ only by the removal of 1.5\% of the data, while using the same functional classes of heads.
 Along one training run, the carriers move between heads during pretraining and then stay, so the carriers at the end of pretraining are those after midtraining, SFT, DPO and instruction tuning (\S\ref{sec:lineage}).
 Controlled pretraining shows what decides this assignment (\S\ref{sec:masking}).
 Several heads become candidates for a role, and which of them leads is not reproduced even by an identical rerun, while the role maps and the behaviour of the model are.
 
 Our contributions are as follows.
-(1) We separate shared initialization, different training data and continued training as relations between models, and show that role labels transfer within an initialization, causal carriers only along a training lineage, and the IOI algorithm across separately trained models.
+(1) We separate shared initialization, different training data and continued training as relations between models, and show that role labels transfer within an initialization, causal carriers only along a training lineage, and the functional classes of the IOI circuit across separately trained models.
 (2) We show in controlled pretraining that the leading head of a role is decided by differences as small as those between identical reruns, and derive how single-head readouts of data interventions are read against reruns.
 (3) We provide reliability-corrected comparisons of head maps, a protocol for reusing circuit findings, and an audit that finds four public checkpoints whose lineage differs from their labels (Appendix~\ref{app:audit}).
 
@@ -226,18 +226,18 @@ Transfer: damage of the standard model's carriers in the deduplicated model, rel
 \label{tab:pythia}
 \end{table}
 
-\paragraph{Same algorithm, different heads.}
+\paragraph{Same functional classes, different heads.}
 \begin{table}[t]
 \centering\small
 \setlength{\tabcolsep}{2.5pt}
 \resizebox{\columnwidth}{!}{\input{tables/tab_classes}}
-\caption{The IOI algorithm in five Pythia models.
-Every model has a subject-suppression head, which attends to the repeated subject (S2) and copies it negatively (OV copying score below zero), together with several name movers and negative name movers; which head suppresses the subject differs between the 410M siblings.
+\caption{Functional classes of the IOI circuit in five Pythia models.
+Every model has a subject-suppression head, which attends to the repeated subject (S2) and copies it negatively (name-copy score below zero), together with several name movers and negative name movers; which head suppresses the subject differs between the 410M siblings.
 Effect: direct effect on the logit difference on held-out prompts.}
 \label{tab:classes}
 \end{table}
 The siblings differ in which heads carry IOI, and agree on how it is computed.
-In the five Pythia models we analysed head by head (160M and 410M, standard and deduplicated, and a 410M model from another initialization), IOI runs on the same functional classes \citep{wang2023interpretability}: a subject-suppression head that attends to S2 and writes against it through a negative OV copying circuit, and several name movers that attend to the IO and copy it (Table~\ref{tab:classes}).
+In the five Pythia models we analysed head by head (160M and 410M, standard and deduplicated, and a 410M model from another initialization), IOI runs on the same functional classes \citep{wang2023interpretability}: a subject-suppression head that attends to S2 and writes against it through a negative name-copying OV circuit, and several name movers that attend to the IO and copy it (Table~\ref{tab:classes}).
 Each class has several members in each model, and the 410M siblings give the main role to different members (Figure~\ref{fig:classes}).
 The standard model's main carrier, \head{11.4}, contributes 1.16 to the logit difference and 0.02 in the deduplicated model, whose own main carrier, \head{12.12}, contributes 0.97 there and 0.00 in the standard model.
 
@@ -362,7 +362,7 @@ To apply a circuit found in model A to model B:
 \item establish the lineage from the weights, since released labels can be wrong (Appendix~\ref{app:audit});
 \item if B descends from A, reuse the named heads and confirm them with a single ablation of the named set;
 \item if B is a sibling of A, compare role maps head by head to inherit role labels, and localize the task's carriers with single-head ablations in B;
-\item otherwise, transfer the algorithm and the layer profile and run circuit discovery in B;
+\item otherwise, transfer the functional classes and the layer profile and run circuit discovery in B;
 \item in every case, report the split-half reliability of the head maps being compared.
 \end{enumerate*}
 
@@ -373,7 +373,6 @@ Model diffing between a base model and its fine-tuned descendants falls on the o
 \paragraph{Coordinates and carriers.}
 The initialization determines where each role can be carried, and the run decides which candidate carries it.
 The coordinates settle within the first few percent of training (Table~\ref{tab:critical}) and track corpus similarity; the carriers settle late in pretraining (Figure~\ref{fig:lineage}), decided by differences as small as those between reruns.
-This competition underlies the variation of heads across seeds \citep{tigges2024llm,bali2026quantifying}.
 
 \section*{Limitations}
 We trace one task circuit, IOI, through its causal carriers, and nine roles through attention and weights; extending the carrier analysis to circuits for factual recall and in-context learning is the natural next step.
@@ -404,7 +403,8 @@ Induction is the attention from the second copy of a repeated random block to th
 Previous token, current token and two tokens back are the attention to positions $t-1$, $t$ and $t-2$ on natural text, and the attention sink is the attention to position 0.
 Knowledge retrieval is the attention from the final prompt token to the answer entity in knowledge-conflict prompts.
 Duplicate token is the attention from the second copy of a random block to the same token's first occurrence, and delimiter is the attention mass on punctuation and newline tokens.
-OV copying is $\sum_i \mathrm{Re}\,\lambda_i / \sum_i |\lambda_i|$ over the eigenvalues $\lambda_i$ of the full OV circuit from the embedding to the unembedding.
+The OV copying role is $\sum_i \mathrm{Re}\,\lambda_i / \sum_i |\lambda_i| \in [-1, 1]$ over the eigenvalues $\lambda_i$ of the full OV circuit from the embedding to the unembedding.
+The name-copy score of Table~\ref{tab:classes} is the IOI-specific copy score of \citet{wang2023interpretability}: each name of the IOI prompts is passed from the embedding through the head's OV circuit to the unembedding, the logit of the same name is z-scored over all names, and the scores are averaged over names; it is unbounded, and negative values mark heads that write against the name they attend to.
 Every attention role is averaged over two halves of its inputs, with split-half reliabilities of 0.98 or higher.
 
 \begin{table}[t]

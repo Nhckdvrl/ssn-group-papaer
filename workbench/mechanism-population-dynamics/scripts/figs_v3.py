@@ -382,7 +382,7 @@ def tab_classes():
             h = max(op, key=lambda k: op[k]["target"]["dla"] if op[k]["target"]["ov_copy"] < 0 else -9)
             row(tl, op[h]["target"], h, d[t]["classes"])
     tex = ("\\begin{tabular}{llccccc}\n\\toprule\n& \\multicolumn{4}{c}{subject-suppression head} & \\makecell{name\\\\movers} & "
-           "\\makecell{negative\\\\name movers} \\\\\n\\cmidrule(lr){2-5}\nModel & head & effect & \\makecell{attn.\\\\to S2} & OV copy & & \\\\\n"
+           "\\makecell{negative\\\\name movers} \\\\\n\\cmidrule(lr){2-5}\nModel & head & effect & \\makecell{attn.\\\\to S2} & \\makecell{name\\\\copy} & & \\\\\n"
            "\\midrule\n" + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
     (PAPER / "tables" / "tab_classes.tex").write_text(tex)
 
