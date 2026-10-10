@@ -57,3 +57,16 @@ E92仍有一个实质缺口：所有人都把good称positive，所以A自己的�
 ## 结果（跑完后追加，不改冻结协议）
 
 待运行。C16/C20、I04及正式ACTIVE状态保持；E90/E91/E92结果不撤回。
+
+
+## 8-context第一阶段结果与下一次运行的冻结协议
+
+全部1344行、numeric no-op0、286.634秒=.07962 GPU·时。native same/different mixed accuracy48.4%[43.8,53.1]/50.0%[46.9,53.1]；B自己76.6%[68.8,84.4]、explicit oracle67.2%[60.9,71.9]。A偏好响应1.70[1.20,2.27]/1.63[1.12,2.23]nats；B仅换私人偏好仍使A答案改变19.5%[12.5,25.8]/15.6%[9.4,21.9]。criterion响应+.106[.056,.156]/−.095[−.142,−.048]nats；一句指令没有恢复完整功能结构。不称完整标准已形成后部署失败，不启动8B位置/层扫描。
+
+**读数审计（POST-HOC发现，原结果保留）：** 对完整对称p_B网格平均，D_c与D_cp的均值按换元必然相等；不是两份独立证据。逐world的joint仍保持B新输入verdict而改变A gold，这个反事实有效，但不能把相同的总体均值当额外机制确认。preference的有向/幅度响应及完整逐world正确性一并保留。
+
+**在强诊断GPU前登记：** 原冻结contexts前4，Qwen3.5-27B实际qwen3_5_text，openslime+vendor transformers5.12.1，bf16/SDPA行为。Direct：native16world×四格、oracle/probe各4world×四格，共384请求。Thinking：固定其中前2context，完整同样96请求/context，共192，medium greedy1024；所有初始截断按已保存prefix续2048。固定前2不是挑正确world；n分别是4/2context，不冒称独立大样本确认。两种模式不混合单位，direct给nats，thinking为±1输出的有向响应（未解析0且单列比例）。所有未解析/截断保留；冻结parser闭合think后接收exact yes/no或final Answer行，不改格式追阳性。
+
+模型材料/system/问题与8B相同，仅使用实际原生chat的direct/thinking差异；不加恢复指令、不训练，不对hybrid伪造Source-token mask。Direct repeat首batch≤1e−4；loading无missing keys，text loader的vision/MTP辅助unexpected按已核对白名单。脚本`scripts/e93_native_diagnostic.py`与上述协议提交后启动，`results/e93/qwen35_native_diagnostic`保存全部raw，小结果入git。预算≤1.5 GPU·时，完成登记的全部轨迹。
+
+**本次判断：** 这是当前功能问题的一次强模型诊断，而非新qualification关卡。若正确，按before-input内容/recipient私人偏好竞争研究其计算；若弱，分析具体错误及已有8B/E91对应结构，不继续新格式/模型/头矩阵。正式主线、I04、C16/C20等级不变。

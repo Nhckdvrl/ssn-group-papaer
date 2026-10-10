@@ -100,4 +100,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E90](E90-source-isolation-before-and-after.md) | 来源位置选择是否等于rule信息独立，query模块是否仅排除别的Source | DONE；原signed方向未确认；新32contexts仅可读A时B改rule仍使A17.6%答案改变；single模块独立+27.6点，停止mask细分 |
 | [E91](E91-label-namespace-and-inherited-rule.md) | 分标签是否只改直接foreign读出，或也改变当前来源形成/检索 | DONE；24→48确认：禁读B时namespace使rule幅度下降.491nats；A Key-only与V-only均可部分转移，非单Value解释 |
 | [E92](E92-relational-evidence-transfer.md) | B的信息何时成为关系可用的criterion，而非标签跟随 | DONE-PILOT；8B接口阳性弱；固定4context强thinking native63/64合规正确、余1内容正确格式未解析；不归因完整标准部署失败 |
-| [E93](E93-selective-rule-sharing.md) | 借用来源的criterion，同时保留当前来源的private preference | PLANNED；四donor正交，预先保留verdict换算/metric的行为等价反例 |
+| [E93](E93-selective-rule-sharing.md) | 借用来源的criterion，同时保留当前来源的private preference | 8B-PILOT完成；mixed约50%、B偏好flip仍改变A约16–20%；冻结同材料强direct/推理诊断，保留verdict换算/metric解释 |
