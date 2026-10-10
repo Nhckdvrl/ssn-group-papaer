@@ -86,3 +86,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E75](E75-native-function-family-validity.md) | native thinking能否执行所声明的来源函数空间 | DONE；full/held bijection全对，independent Unknown66.7%另33.3%截断，全闭合都正确；非能力缺失 |
 | [E76](E76-foreign-word-versus-owned-operator.md) | 词只在foreign labels时，是否执行自己的未知±1规则 | DONE；Source正确方向确认，但新材料accuracy73.4%未过门槛，中点/加性解释限制完整函数判断；暂不word机制 |
 | [E77](E77-source-conditioned-function-or-prototype.md) | 相同Source label频率下，是否执行输入依赖的函数 | DONE；direct全对、single comp强，但single identity也弱，多数错成另一个合法函数；不称Source独有缺陷 |
+| [E78](E78-operator-inference-and-execution.md) | Source函数识别、数字应用与显式code交接是否不同 | PLANNED；控制规则定义顺序、query字段顺序、single和一句来源指令，先过识别/执行阳性 |
