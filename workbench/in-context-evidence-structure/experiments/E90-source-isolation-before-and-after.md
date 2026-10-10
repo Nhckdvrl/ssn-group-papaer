@@ -60,3 +60,21 @@ B规则效应native+.95181[.64948,1.22843]，late仍+.43633[.04581,.87977]nats�
 adapter比both高不单独说明它在完全无B信息时也有效，因为两个条件的cache不同。为检验“模块是否仅通过避免B干扰而成功”这个具体桥梁，追加最小的native/adapter paired single-source测试：相同24 pilot contexts的A，**prompt根本没有B**；不新训练，不改评论/标签/姓名/顺序。两候选准确率、margin与全词表格式按原定义；用原single结果作no-op数值校对≤.001nats。额外脚本`scripts/e90_single_source_adapter.py`，本条是在看pilot后提出、实际追加运行前写，不冒称原始预注册或独立确认。
 
 若单Source也有明确收益，模块至少执行超出Source排除的读出计算，但可能仅增加anchor访问/改善内容读取；不会自动叫新抽象rule或输入过滤。若无收益，则mixed上下文关系可能是模块行为的条件，需要重新解释上述gap。无论结果，不展开层/attention条件大全。额外预算≤.5 GPU·时，与独立确认可在不同单卡并行。
+
+## 48-context确认：原方向预测没有确认，下一观测在新批前冻结
+
+原源码hash748c497f…不变。native54.17%[50.26,58.33]，late55.47%[51.82,59.64]，both59.90%[54.95,64.84]，adapter91.15%[87.76,94.27]。late的foreign signed effect=.15742[−.14629,.45000]nats，**原pilot的正方向预测未确认**；early隔离也未提供稳定修复，不继续据此扩上游层/头实验。adapter−both仍+31.25[25.0,37.5]点。
+
+单Source追加24contexts：native57.81%→adapter90.10%，paired +32.29[23.96,40.63]点，native no-op完全一致。追加比较是pilot后提出而非原始注册；只是明确模块收益超出排除另一Source，尚未反推完整新算法。
+
+### POST-HOC观察：平均方向不等于功能独立
+
+探索保存的逐context规则效应后发现，48contexts的late效应29正/19负（阈值.01nats），signed mean .157但mean absolute .776；24pilot相应.436/.810。adapter也有正负效应，不能用它的signed mean接近0宣称已经排除B的信息。这些绝对值是**看到确认方向CI跨0以后提出**，仅探索结果，未确认，原signed结果不替换。
+
+### 第三独立批运行前协议（不新增任务、不改源码）
+
+为区分“消失”与“抵消”，原脚本再运行32contexts、seed290001，15条件/全部样本保留，含原signed readout。新主读数是每context先计算 `d_i=mean_q(g_q*(z_aligned-z_conflict))`，再汇总 `mean_i(abs(d_i))`；**不是每query先取绝对值**，因此去除constant label bias对两个Input类别的共同影响。另报signed mean、正/负context数（±.01阈值）、两context之间二候选答案改变率、bias变化。没有用这些指标替代准确率，也不把confidence变化直接叫性能损失。
+
+至少native/late/adapter三条件的幅度、两阶段隔离的数值零对照和single native/adapter的独立追加均报告。判读：late幅度CI若明显高于.1nats、且支持两种方向，则source位置隔离不足以保证rule contrast对B不敏感；若幅度接近数值floor，则旧异质观察不迁移，不延长此线。adapter准确率高而幅度不低只说明正确行为仍可以依赖joint context，不自动称错误或纯粹泄漏；normative独立先验未直接告知模型，范围明确。第三批增加一个观测量而不是再切token/层，不追完美分解。
+
+本批约≤.5 GPU·时，原脚本与追加single脚本均冻结；新分析脚本只用于读数。后续回到多规则学习的计算解释与文献，不用又一个显著绝对值当成paper novelty。

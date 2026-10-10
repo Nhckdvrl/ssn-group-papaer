@@ -1,0 +1,20 @@
+{
+  "args": {
+    "source": "results/e90/qwen3_discovery",
+    "out": "results/e90/qwen3_single_adapter",
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "weights": "results/e56/Qwen3-8B_query_saved.pt"
+  },
+  "elapsed_seconds": 26.331202030181885,
+  "gpu_hours": 0.0073142227861616345,
+  "script_sha256": "e3d1032011611f941a71e4651ece3caae319de3e53739c50beb10abe1b2ff50e",
+  "source_contexts_sha256": "00fee53eb22819b4e85d2b808f13bed59c7906ceb9a6e29aa8c95f06b8104240",
+  "weights_sha256": "2d0a57bba5e6c3ecac32293911ba7795369e2bbd49452e6c1b154c9ace5af6c4",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "dtype": "float32",
+  "attn": "eager",
+  "foreign_source_tokens": 0,
+  "prefill_adapter_enabled": false,
+  "adapter_scope": "answer last position only"
+}
