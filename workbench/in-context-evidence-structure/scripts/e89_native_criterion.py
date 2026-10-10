@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import platform
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -12,6 +13,7 @@ from e88_criterion_transfer import NAMES, LABELS, contexts, prefix_text, interva
 SYSTEM = ("Infer each reviewer's judgment criterion from the examples and follow the requested reviewer's criterion. "
           "For a review, answer exactly positive or negative. For a criterion question, answer exactly food or service. "
           "Use no other words.")
+CLEAR_SYSTEM = "Infer each reviewer's judgment criterion from the examples and answer the user's question."
 
 
 def main():
@@ -20,6 +22,8 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--n", type=int, default=16)
     ap.add_argument("--seed", type=int, default=89001)
+    ap.add_argument("--clear-request", action="store_true")
+    ap.add_argument("--generate", action="store_true")
     a = ap.parse_args()
     import torch
     import transformers
@@ -42,7 +46,7 @@ def main():
     assert not set(groups["food"]) & set(groups["service"])
 
     def prompt(content):
-        return tok.apply_chat_template([{"role": "system", "content": SYSTEM}, {"role": "user", "content": content}],
+        return tok.apply_chat_template([{"role": "system", "content": CLEAR_SYSTEM if a.clear_request else SYSTEM}, {"role": "user", "content": content}],
                                        tokenize=True, add_generation_prompt=True, enable_thinking=False)
 
     example = prompt(prefix_text(cs[0]) + f"Source: {NAMES[0]}\nReview: {cs[0]['queries'][0]['text']}\nLabel:")
@@ -73,9 +77,26 @@ def main():
             z = (torch.logsumexp(logits[:, groups[words[1]]], -1)
                  - torch.logsumexp(logits[:, groups[words[0]]], -1))
             top = logits.argmax(-1).tolist()
-            data.extend({"z": float(v), "argmax_token": t,
+            batch_data = [{"z": float(v), "argmax_token": t,
                          "argmax_class": 0 if t in groups[words[0]] else 1 if t in groups[words[1]] else -1}
-                        for v, t in zip(z, top))
+                        for v, t in zip(z, top)]
+            if a.generate:
+                batch = seqs[start:start+4]
+                width = max(map(len, batch))
+                ids = torch.full((len(batch), width), tok.pad_token_id, dtype=torch.long, device="cuda")
+                mask = torch.zeros_like(ids)
+                for i, seq in enumerate(batch):
+                    ids[i, -len(seq):] = torch.tensor(seq, device="cuda")
+                    mask[i, -len(seq):] = 1
+                generated = model.generate(input_ids=ids, attention_mask=mask, max_new_tokens=32,
+                                           do_sample=False, pad_token_id=tok.pad_token_id, eos_token_id=tok.eos_token_id)
+                for row, tokens in zip(batch_data, generated[:, width:].tolist()):
+                    text = tok.decode(tokens, skip_special_tokens=True)
+                    matches = set(re.findall(r"\b(" + "|".join(words) + r")\b", text.lower()))
+                    row.update(text=text, generated_class=words.index(next(iter(matches))) if len(matches) == 1 else -1,
+                               exact_word_class=words.index(text.strip().lower()) if text.strip().lower() in words else -1,
+                               truncated=tok.eos_token_id not in tokens)
+            data.extend(batch_data)
         return data
 
     errors = []
@@ -87,14 +108,18 @@ def main():
             row = {"context": ci, "criteria": ctx["criteria"], "queries": ctx["queries"], "conditions": {}}
             for name, opts in settings.items():
                 head = prefix_text(ctx, **opts)
-                seqs = [prompt(head + f"Source: {NAMES[q['source']]}\nReview: {q['text']}\nLabel:") for q in ctx["queries"]]
+                seqs = [prompt(head + f"Source: {NAMES[q['source']]}\nReview: {q['text']}\n" +
+                               (f"What is {NAMES[q['source']]}'s judgment of this review? Answer exactly positive or negative."
+                                if a.clear_request else "Label:")) for q in ctx["queries"]]
                 if ci == 0 and name == "base":
                     batched = logits_batch(seqs[:4])
                     for i in range(4):
                         single = logits_batch([seqs[i]])
                         errors.append(float((batched[i] - single[0]).abs().max()))
                     assert max(errors) <= .01, errors
-                criteria_seqs = [prompt(head + f"Source: {source}\nQuestion: Which aspect determines this reviewer's judgments?\nAnswer:")
+                criteria_seqs = [prompt(head + f"Source: {source}\n" +
+                                       (f"Which aspect determines {source}'s judgments? Infer from the examples. Answer exactly food or service."
+                                        if a.clear_request else "Question: Which aspect determines this reviewer's judgments?\nAnswer:"))
                                  for source in NAMES]
                 row["conditions"][name] = {"application": score(seqs, LABELS),
                                            "recognition": score(criteria_seqs, ["food", "service"])}
@@ -121,6 +146,17 @@ def main():
                 - ((z[:, disagree] > 0) == (gold[:, disagree] > 0)).mean(1)),
             "application_label_argmax_fraction": interval((top >= 0).mean(1)),
             "recognition_label_argmax_fraction": interval((ctop >= 0).mean(1))}
+        if a.generate:
+            app = np.array([[s["generated_class"] for s in r["conditions"][key]["application"]] for r in rows])
+            rec = np.array([[s["generated_class"] for s in r["conditions"][key]["recognition"]] for r in rows])
+            out["conditions"][key].update(
+                generated_recognition_accuracy=interval((rec == cgold).mean(1)),
+                generated_application_accuracy=interval((app == (gold > 0)).mean(1)),
+                generated_discordant_accuracy=interval((app[:, disagree] == (gold[:, disagree] > 0)).mean(1)),
+                generated_application_parse_fraction=interval((app >= 0).mean(1)),
+                generated_recognition_parse_fraction=interval((rec >= 0).mean(1)),
+                application_truncated_fraction=interval(np.array([[s["truncated"] for s in r["conditions"][key]["application"]] for r in rows]).mean(1)),
+                recognition_truncated_fraction=interval(np.array([[s["truncated"] for s in r["conditions"][key]["recognition"]] for r in rows]).mean(1)))
     recipient = np.array([[q["recipient_gold"] for q in r["queries"]] for r in rows])
     donor = np.array([[q["donor_gold"] for q in r["queries"]] for r in rows])
     for base, flip in [("base", "flip"), ("explicit", "explicit_flip")]:

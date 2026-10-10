@@ -20,3 +20,13 @@ E88得到的是有界迁移分离，隐式native在discordant query约51%，不�
 ## 结果（运行后追加）
 
 待运行；E87保持未运行。C16/C20不升级。
+
+## 初版结果与明确请求／完整回答协议（再次评分前冻结）
+
+初版源码`f6e72024…`（d54e2605），原结果`results/e89/qwen3_discovery/`保留；数值误差.000217、139.34秒。但人工读实际argmax发现，explicit的256个评论请求里181个首token为food/service大小写变体。system同时定义两种回答类型、user只写`Label:`，形成真实的请求类型歧义，不能把22.3%的合法Label argmax准确率当标准应用失败。仅第一token也不足以测完整回答。隐式识别50%，显式96.9%的初读数暂只作诊断，不升claim。
+
+修订使用同16contexts/seed89001，全部条件保留，不换幸存seed；输出`results/e89/qwen3_clear_request/`。system仅要求从示例推断各人的标准、回答用户问题；每条application显式问“What is Alice's judgment of this review? Answer exactly positive or negative.”，recognition显式问该姓名评判哪方面、只答food/service。原生chat、thinking关闭不变。
+
+每条请求完整greedy生成最多32新tokens；保存原文与EOS截断标记。读数增加完整回答accuracy：只出现一个合法候选词类型时识别其内容（大小写无关），两个都出现/都不出现记unknown，所有context仍入分母；另保存exact-word与第一token，报告parse和截断比例。未完成/unknown不能直接当能力缺失。protocol中的原读数继续报告，修订是POST-HOC诊断，不称独立确认。追加预算≤.25 GPU·时，整卡≤.5。
+
+命令在原命令上加`--clear-request --generate`，out换为上述新目录。先冻结修订再运行，不由prompt恢复直接声称新机制。
