@@ -71,3 +71,9 @@ Corpus nearest已执行，长句检索主要是词汇近邻，不能替代以上
 ## 结果（以后追加）
 
 尚未运行。
+
+### 执行配置更新（direct完成后、thinking未选样例）
+
+Direct544行已完整返回。提出并行排程时thinking首batch8行已写出，其中5项触及1024-token上限并按原prefix续写；执行排程时第二batch也返回，故保留**首两batch16行**，将剩余16个原始8行batch分给GPU0/2/3。样例、batch成员、顺序、精度、medium greedy、1024+2048预算和parser均不变。分片按batch索引取模，不参考答案。原GPU1串行进程在已写结果处停止；已写的所有行保留，未写出的下一batch重新按同一协议执行，不把技术中断当negative。
+
+使用`scripts/e95_thinking_shard.py`记录dispatch/hash；全部688行合并后才报告完整thinking结果。此为计算排程变化，无新科学条件、无筛种子/筛primitive通过项。原1.2 GPU·时估计偏低，完整续写按实际用量记录，允许总≤3.5 GPU·时；不以时间耗尽选取有利结果。Oracle给出标准与私人偏好，严格称完整规则执行阳性。

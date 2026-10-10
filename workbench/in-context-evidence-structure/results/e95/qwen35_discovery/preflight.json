@@ -1,0 +1,25 @@
+{
+  "args": {
+    "out": "results/e95/qwen35_discovery",
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "n": 4,
+    "seed": 95001,
+    "batch_size": 8,
+    "thinking_n": 2,
+    "design_only": false
+  },
+  "label_ids": {
+    "criterion": [
+      3487,
+      2393
+    ],
+    "judgment": [
+      874,
+      9542
+    ]
+  },
+  "n_direct": 544,
+  "n_thinking": 144,
+  "example": "<|im_start|>system\nInfer rules from the examples. Return only the requested one-word answer.<|im_end|>\n<|im_start|>user\nEach reviewer decides yes or no based on exactly one aspect: food spiciness (spicy or mild), or service pace (quick or leisurely). All three reviewers judge the same aspect. Each reviewer has a personal preference for one of the two values of that aspect. Reviewers may have different preferences. yes means the experience matches that reviewer's personal preference; no means it does not. Infer their rules from the examples.\n\nReviewer: Alice\nReview: The dishes arrived rapidly. The noodles had no chili heat.\nLabel: no\n\nReviewer: Bob\nReview: The team served at a fast pace. The curry was mild.\nLabel: yes\n\nReviewer: Alice\nReview: The staff took their time. The sauce had plenty of chili heat.\nLabel: yes\n\nReviewer: Alice\nReview: The dishes arrived at an unhurried pace. The noodles had a strong chili kick.\nLabel: yes\n\nReviewer: Alice\nReview: The team served at a fast pace. The curry was mild.\nLabel: no\n\nReviewer: Bob\nReview: The dishes arrived at an unhurried pace. The noodles had a strong chili kick.\nLabel: no\n\nReviewer: Bob\nReview: The staff took their time. The sauce had plenty of chili heat.\nLabel: no\n\nReviewer: Bob\nReview: The service was quick. The dish was fiery.\nLabel: no\n\nReviewer: Bob\nReview: The noodles had no chili heat. The dishes arrived at an unhurried pace.\nLabel: yes\n\nReviewer: Alice\nReview: The curry was spicy. The team served at a fast pace.\nLabel: yes\n\nReviewer: Alice\nReview: The curry was mild. The dishes arrived at an unhurried pace.\nLabel: no\n\nReviewer: Alice\nReview: The noodles had no chili heat. The dishes arrived at an unhurried pace.\nLabel: no\n\nReviewer: Bob\nReview: The curry was mild. The dishes arrived at an unhurried pace.\nLabel: yes\n\nReviewer: Alice\nReview: The service was quick. The dish was fiery.\nLabel: yes\n\nReviewer: Bob\nReview: The dishes arrived rapidly. The noodles had no chili heat.\nLabel: yes\n\nReviewer: Bob\nReview: The curry was spicy. The team served at a fast pace.\nLabel: no\n\nReviewer: Carol\nReview: The staff took their time. The curry was mild.\nLabel: no\n\nReviewer: Carol\nReview: The service was leisurely. The sauce was not spicy.\nLabel: no\n\nReviewer: Carol\nReview: The sauce was not spicy. The staff took their time.\nLabel: no\n\nReviewer: Carol\nReview: The service was quick. The curry was spicy.\nLabel: yes\n\nReviewer: Carol\nReview: The dishes arrived rapidly. The sauce had plenty of chili heat.\nLabel: yes\n\nReviewer: Carol\nReview: The sauce had plenty of chili heat. The dishes arrived rapidly.\nLabel: yes\n\nReviewer: Carol\nReview: The staff took their time. The sauce was not spicy.\nLabel: no\n\nReviewer: Carol\nReview: The curry was spicy. The dishes arrived rapidly.\nLabel: yes\n\nReviewer: Carol\nReview: We were served very quickly. Our dinner had a pronounced chili burn.\nGive this reviewer's yes/no label for the review.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:",
+  "no_hybrid_cache_interventions": true
+}
