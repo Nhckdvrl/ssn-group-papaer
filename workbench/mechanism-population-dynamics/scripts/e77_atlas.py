@@ -146,19 +146,48 @@ def hf_rev(family, rev):
     return f"step{rev}" if family == "pythia" else rev
 
 
+def weight_blob_mtime(repo, revision):
+    """Oldest mtime of the weight blobs behind repo@revision (None if not fully present)."""
+    import os
+    d = mc.HF_CACHE / f"models--{repo.replace('/', '--')}"
+    ref = d / "refs" / revision
+    if not ref.exists():
+        return None
+    snap = d / "snapshots" / ref.read_text().strip()
+    ws = [f for f in snap.glob("*") if f.suffix in (".safetensors", ".bin")]
+    if not ws or not all(f.exists() for f in ws):
+        return None
+    return min(os.stat(os.path.realpath(f)).st_mtime for f in ws)
+
+
 def is_cached(repo, revision):
-    ref = mc.HF_CACHE / f"models--{repo.replace('/', '--')}" / "refs" / revision
-    return ref.exists()
+    return weight_blob_mtime(repo, revision) is not None
 
 
 def drop_revision(repo, revision):
-    """Delete a checkpoint we downloaded only for this measurement (user rule: don't keep one-off downloads)."""
-    from huggingface_hub import scan_cache_dir
-    commit = (mc.HF_CACHE / f"models--{repo.replace('/', '--')}" / "refs" / revision).read_text().strip()
-    info = scan_cache_dir(mc.HF_CACHE)
-    strat = info.delete_revisions(commit)
-    print(f"dropping {repo}@{revision}: frees {strat.expected_freed_size / 1e9:.1f} GB", flush=True)
-    strat.execute()
+    """Delete a checkpoint we downloaded only for this measurement (user rule: don't keep one-off downloads).
+    Repo-local: remove the snapshot, its ref, and blobs no other snapshot of the repo points to."""
+    import os
+    import shutil
+    d = mc.HF_CACHE / f"models--{repo.replace('/', '--')}"
+    ref = d / "refs" / revision
+    commit = ref.read_text().strip()
+    snap = d / "snapshots" / commit
+    mine = {os.path.realpath(f) for f in snap.rglob("*") if f.is_symlink()}
+    others = set()
+    for s in (d / "snapshots").iterdir():
+        if s.name != commit:
+            others |= {os.path.realpath(f) for f in s.rglob("*") if f.is_symlink()}
+    still = {r.read_text().strip() for r in (d / "refs").iterdir() if r.name != revision}
+    freed = 0
+    for b in mine - others:
+        if os.path.exists(b):
+            freed += os.path.getsize(b)
+            os.remove(b)
+    if commit not in still:
+        shutil.rmtree(snap, ignore_errors=True)
+    ref.unlink()
+    print(f"dropping {repo}@{revision}: freed {freed / 1e9:.1f} GB", flush=True)
 
 
 def tag(family, repo, rev):
@@ -193,9 +222,12 @@ def compute(family, repo, rev):
             "mean_capacity": float(cap.mean()),
             "spearman_adopt_conf": float(__import__("scipy.stats").stats.spearmanr(adopt, conf)[0])}
     summ["was_cached"] = was_cached
+    mt = weight_blob_mtime(repo, hf_rev(family, rev))
+    fresh = (not was_cached) or (mt is not None and mt >= t0 - 60)  # blob written during this job = one-off download
+    summ["fresh_download"] = bool(fresh)
     (RUNS / f"{t}.json").write_text(json.dumps(summ, indent=1))
     print(json.dumps(summ), flush=True)
-    if not was_cached and hf_rev(family, rev) not in KEEP.get(repo, ()):
+    if fresh and hf_rev(family, rev) not in KEEP.get(repo, ()):
         del model
         drop_revision(repo, hf_rev(family, rev))
 
