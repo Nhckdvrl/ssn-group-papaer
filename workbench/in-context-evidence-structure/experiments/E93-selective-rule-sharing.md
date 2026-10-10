@@ -1,6 +1,6 @@
 # E93：共享判断标准，保留各自偏好（2026-10-10）
 
-- **状态：** PLANNED（先冻结设计与静态反例，再运行）
+- **状态：** DONE-PILOT（8B全部8context；strong direct4context/thinking2context完成）
 - **类型：** PILOT；一个正交功能实验，不扫位置/头/别名
 - **对应：** I04 / C16 / C20 / P17
 - **问题（一句话）：** 模型怎样借用其它来源的判断标准，又让新输入按当前来源自己的偏好输出？
@@ -70,3 +70,14 @@ E92仍有一个实质缺口：所有人都把good称positive，所以A自己的�
 模型材料/system/问题与8B相同，仅使用实际原生chat的direct/thinking差异；不加恢复指令、不训练，不对hybrid伪造Source-token mask。Direct repeat首batch≤1e−4；loading无missing keys，text loader的vision/MTP辅助unexpected按已核对白名单。脚本`scripts/e93_native_diagnostic.py`与上述协议提交后启动，`results/e93/qwen35_native_diagnostic`保存全部raw，小结果入git。预算≤1.5 GPU·时，完成登记的全部轨迹。
 
 **本次判断：** 这是当前功能问题的一次强模型诊断，而非新qualification关卡。若正确，按before-input内容/recipient私人偏好竞争研究其计算；若弱，分析具体错误及已有8B/E91对应结构，不继续新格式/模型/头矩阵。正式主线、I04、C16/C20等级不变。
+
+
+## 强诊断完整返回：把减少混入与有效共享分开
+
+共576行/unique mode-uid，direct384、thinking192；所有7初始截断均续完，0仍截断，thinking全部解析合法。Direct：native same/different mixed50.0%[45.3,54.7]/48.4%[45.3,50.0]，concordant都100%；B整体98.4%[95.3,100]、oracle100%。B私人偏好flip使A答案改变6.25%[1.56,10.94]/4.69%[0,9.38]。4context的小pilot，不能把bf16下约.02nats的细微差作为高精度机制分量。
+
+Thinking前2完整context：native same56/64、different64/64，共120/128；mixed same24/32、different32/32，oracle32/32，B29/32。不是全解决：8个native错误全部来自context1/same/pa=-1/cb=1的mixed评论，另3个probe错误来自context0。逐条末段检查：前者在A的同向示例上挑一个可拟合的spiciness标准，却未一致落实已给的same-aspect关系；后者部分把requested reviewer切换成另一人。保留所有错误，不筛成功world、不给reasoning全解决结论。Direct/thinking同n2的native平均75%→93.75%，这是小样本功能差异，不定位特定原生组件。
+
+**认识更新：** 更强direct在保留当前来源私人偏好上更可靠、B-private混入更少，但借用B来确定A标准仍弱；“减少干扰”与“合法共享”不可互相替代。B预测正确可能靠exemplar lookup，尚不证明完整criterion。下一项E94以input前Goal内容的两种坐标运输模型检验其是否有可迁移的功能标准分量，保留独立criterion/私人编码方向/输入后lookup等结果；不是增加一个新的能力资格关。
+
+strong1432.137秒=.39782 GPU·时，主pilot加strong约.47744；no-op0、无loading缺失，源码5eaa7219…不变。结果`results/e93/qwen35_native_diagnostic/{analysis,run,completeness_audit,direct_phase_audit}.json`；raw文本/token/contexts本地。C16/C20仍L1，无正式状态改变。

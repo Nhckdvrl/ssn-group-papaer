@@ -1,0 +1,57 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "out": "results/e94/qwen35_discovery",
+    "n": 4,
+    "seed": 94001,
+    "batch_size": 4,
+    "preflight_only": true
+  },
+  "label_ids": [
+    874,
+    9542
+  ],
+  "bands_1based": [
+    16,
+    32,
+    48
+  ],
+  "cases": [
+    {
+      "context": 0,
+      "donor_count": 8,
+      "goal_tokens": 3,
+      "prefix_length": 510,
+      "all_future_inputs_excluded": true,
+      "token_prefix_and_all_four_queries_aligned": true
+    },
+    {
+      "context": 1,
+      "donor_count": 8,
+      "goal_tokens": 3,
+      "prefix_length": 496,
+      "all_future_inputs_excluded": true,
+      "token_prefix_and_all_four_queries_aligned": true
+    },
+    {
+      "context": 2,
+      "donor_count": 8,
+      "goal_tokens": 3,
+      "prefix_length": 491,
+      "all_future_inputs_excluded": true,
+      "token_prefix_and_all_four_queries_aligned": true
+    },
+    {
+      "context": 3,
+      "donor_count": 8,
+      "goal_tokens": 3,
+      "prefix_length": 494,
+      "all_future_inputs_excluded": true,
+      "token_prefix_and_all_four_queries_aligned": true
+    }
+  ],
+  "actual_model_type": "qwen3_5_text",
+  "future_input_excluded_from_directions": true,
+  "context0_goal_prefix_example": "<|im_start|>system\nInfer the requested reviewer's rule from the examples. Return exactly yes or no.<|im_end|>\n<|im_start|>user\nEach reviewer decides yes or no based on exactly one aspect: food spiciness (spicy or mild), or service pace (quick or leisurely). Each reviewer has a personal preference for one of the two values of their chosen aspect. yes means the experience matches that personal preference; no means it does not. Reviewers can have different preferences even when they judge the same aspect.\nAlice and Bob judge the same aspect. Infer their rules from the examples.\n\nReviewer: Bob\nReview: The service was leisurely. The sauce had plenty of chili heat.\nLabel: yes\n\nReviewer: Bob\nReview: The staff brought everything promptly. The sauce was not spicy.\nLabel: no\n\nReviewer: Bob\nReview: The dishes arrived at an unhurried pace. The noodles had a strong chili kick.\nLabel: yes\n\nReviewer: Bob\nReview: The dishes arrived rapidly. The sauce had plenty of chili heat.\nLabel: yes\n\nReviewer: Bob\nReview: The dishes arrived rapidly. The dish had gentle seasoning.\nLabel: no\n\nReviewer: Bob\nReview: The dishes arrived at an unhurried pace. The dish had gentle seasoning.\nLabel: no\n\nReviewer: Bob\nReview: The staff brought everything promptly. The sauce had plenty of chili heat.\nLabel: yes\n\nReviewer: Bob\nReview: The sauce was not spicy. The service was leisurely.\nLabel: no\n\nReviewer: Alice\nReview: The dish was fiery. The staff brought everything promptly.\nLabel: yes\n\nReviewer: Alice\nReview: The dishes arrived at an unhurried pace. The sauce was not spicy.\nLabel: no\n\nReviewer: Alice\nReview: The noodles had no chili heat. The service was leisurely.\nLabel: no\n\nReviewer: Alice\nReview: The team served at a fast pace. The dish was fiery.\nLabel: yes\n\nReviewer: Alice\nReview: The dish had gentle seasoning. The team served slowly.\nLabel: no\n\nReviewer: Alice\nReview: The service was leisurely. The dish had gentle seasoning.\nLabel: no\n\nReviewer: Alice\nReview: The sauce had plenty of chili heat. The team served at a fast pace.\nLabel: yes\n\nReviewer: Alice\nReview: The curry was spicy. The service was quick.\nLabel: yes\n\nReviewer: Bob",
+  "projection_or_training": false
+}
