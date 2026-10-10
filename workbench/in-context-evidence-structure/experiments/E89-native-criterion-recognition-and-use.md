@@ -30,3 +30,11 @@ E88得到的是有界迁移分离，隐式native在discordant query约51%，不�
 每条请求完整greedy生成最多32新tokens；保存原文与EOS截断标记。读数增加完整回答accuracy：只出现一个合法候选词类型时识别其内容（大小写无关），两个都出现/都不出现记unknown，所有context仍入分母；另保存exact-word与第一token，报告parse和截断比例。未完成/unknown不能直接当能力缺失。protocol中的原读数继续报告，修订是POST-HOC诊断，不称独立确认。追加预算≤.25 GPU·时，整卡≤.5。
 
 命令在原命令上加`--clear-request --generate`，out换为上述新目录。先冻结修订再运行，不由prompt恢复直接声称新机制。
+
+## 完整回答的预算续完（运行前冻结）
+
+明确请求版本完整生成后，base/flip/explicit/explicit-flip的评论回答分别23.05%/28.52%/8.20%/9.77%仍在32-token上限截断。实际样例是正常的分析前言，尚未输出判断；不能把它们计成能力错误。标准问答均完成，但表现依请求而变，初版explicit 96.9%的first-token识别在修订请求下不保持。不给“知道却不用”主张升级。
+
+此次只将所有未完成的回答续到最多512新tokens；same16contexts、全部条件、greedy、同原prompt与原batch分组。重新执行含截断样本的原batch，要求新的解码文本以旧截断文本为严格字节前缀；已完成的旧回答保持，不筛正确性、不生成新材料。完整保留32-token原结果。输出`results/e89/qwen3_completed_answers/`，剩余截断仍报告unknown/未完成，不推出能力缺失。这个前缀控制是文本字节检查，未保存旧token IDs，不冒称token轨迹严格证明。
+
+预算追加≤.65 GPU·时、整卡≤1.15；脚本`complete_e89_answers.py`首次运行前提交。最终只做完整读数汇总及研究判断，不在本卡继续增加请求变体或位置控制。
