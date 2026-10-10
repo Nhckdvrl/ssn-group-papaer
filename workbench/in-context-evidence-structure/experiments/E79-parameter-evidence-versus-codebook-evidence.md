@@ -1,0 +1,31 @@
+# E79：foreign label提供了词典，还是提供了别人的规则？（2026-10-10）
+
+- **状态：** RUNNING（启动前完整CPU控制16640项通过）
+- **类型：** PILOT；先检验语义分解任务的有效性，不在行为基础失败时铺patch。
+- **对应：** I04/C09/C15/P17/P18。承接E74未鉴别、E76均值捷径、E77/E78函数描述先验控制；不预设新“识别却不用”机制。
+- **问题（一句话）：** 相同的最终label翻转，若分别来自本Source的函数参数变化与共享输出词典变化，模型能否区分它们，而physical foreign-label贡献是否必须意味着foreign-rule使用？
+- **为什么现在：** 继续堆operator准确率不能自动提升意义，Liu2024已拥有识别/预测/执行分离。返回更具体的推断桥：E48标签位置的来源是否足以决定规则证据的来源？共享词典反例在逻辑上不新；科学增量只有在可识别任务上因果拆出模型实际使用的变量，并对原任务的测量给出更准确解释才成立。当前仅建立有界behavior gate。
+- **设置：** Qwen3-8B同revision、float32/eager、conda、空GPU0。16新contexts seed79001，Alice/Bob/Casey/Eli。theta_A/theta_B/theta_D独立copy/subtract，8组合各2；Casey公开固定copy。所有Source先做x或9−x，再用同一共享bijection g将0..9换为十个color words（每context随机置换）。A/B各Input2/7各2；C/D各Input0..9一次；28条混排。所有C/D标签各词一次，A/B各只g(2)/g(7)，每Source边缘不泄露theta。C已知copy使g可唯一确定，再由A/B的2/7关系唯一确定theta，避免全局g/函数同时翻转的不确定性。
+  - Query A/B全0..9：seen2/7、插值3/4/5/6、外推0/1/8/9；另C全0..9词典lookup阳性。novel正确词在A/B所有demo均未出现，只在C/D的label中出现，Header/query都没有word inventory。这是“label词来源”条件，不说所有表示只来自foreign。
+  - 两定义顺序（完整copy/subtract定义块交换）；E78已说明需要此控制，等权合并并分别报告，不选最佳。
+  - 四证据：mixed inferred、mixed+一句Source scope、own+dictionary（所问A/B自己的4records＋Casey10records，仍保留合法共享词典，不能叫字面single Source）、mixed direct rule table（theta_A/B/D全部明确，仍需由Casey读取g）。Direct多给参数/变长，仅执行阳性，不作matched Header机制效应。
+  - 八真反事实：base；owned_A/B/AB（只把相应Source的Input2/7交换、label Word位置不动，theta翻转）；lexical（g(v)与g(9−v)互换，仅v不为2/7，A/B文本不变）；ownedAB+lexical；foreign_D（D Input字段x↔9−x，label Word位置不动，theta_D翻转、g与A/B不变）；dictionary_reorder（C的novel成对完整records交换，g/所有theta不变、正确词位置变）。所有inferred条件长度/每Source输入与输出Word频率相等，label/input sites固定；direct更新其真table，不称pure Word edit。
+  - 对novel query，ownedAB与lexical单独操纵产生**相同正确label翻转**，合起来又回到base正确词。这使输出词相同但latent原因不同；foreign_D与reorder不改正确答案。两类操纵不是同信息量控制：一个改私人函数，一个改共享词典，依exact oracle解释。
+- **读数：** 精确十完整单token color continuation logp，strict margin>0 accuracy；seen/interpolation/extrapolation、copy/subtract、C lookup分开；对应base/changed oracle均保存，不挑seed/Source/定义顺序。owned/lexical同方向target margin响应、both取消是否跟随oracle；foreign_D/reorder影响。4000context bootstrap seed790，函数子组以ratio重采样所有context，不删无该函数context。
+- **阳性对照：** CPU枚举两函数/共享g唯一识别；global/perSource Word频率、位置/长度、完整token分段检查；完整权重与no-op/full-forward-cache≤.10nats。Casey lookup≥.95，seen≥.90；direct两函数两novel组各≥.90才解释未知函数行为。
+- **噪声地板 + MIE：** no-op≤.10；inferred两函数两novel组各≥.80才有行为基础。owned/lexical oracle-margin响应≥1nat且CI不跨0为读数有效阳性。foreign_D不敏感须95%CI完全落±.5nats，不能CI跨0当无效应；reorder同理但允许改变物理检索路径。要比较own+dictionary与mixed，accuracy差≥.10且CI不跨0才改变干扰判断。
+- **混杂审计：** task family与共享codebook公开，不是arbitrary algorithm learning；known SourceC人为打破参数不可识别性，不能声称所有多标注数据都有共享g。novel输出词只在foreign label出现，Codebook利用必然依赖C；逻辑必要性不是attention机制发现。限制candidate评分非自由生成能力；Word语义/tok/先验虽随机g打散，须独立新word/new names确认；C reorder动整个record，是物理位置控制非仅单Word状态。Codebook真假因果变化与原ICES的同label任务不是同一数据分布，不据此抹掉原泄漏现象。
+- **决策表（跑之前写）：**
+  - C lookup/direct失败 → 接口/复合计算阳性无效，不把低分解释Source不能组合；先原生gate。
+  - direct有效、inferred失败 → 仅证明已知参数执行与推断有界，不做foreign-label机制归因；已有Liu2024邻近，增量仍有限。
+  - inferred可靠且own/lexical/both跟随oracle、foreign_D等效无影响 → 才进一步分解因果label messages的共享词典与private参数作用；物理foreign贡献≠rule来源成为可测对象，仍需独立确认。
+  - 同时错误跟随foreign_D → 真foreign函数干扰与合法词典共享并存，继续分解，不以单一pooling或单一binding解释。
+  - 仅Header order/reorder支配 → 先把边界定为格式/位置敏感，不称通用函数或provenance规律。
+- **算力预算：** 空GPU0预计.15GPU·时；先本卡behavior gate，其它GPU不铺下游mechanism。**实际：** 待填。
+- **产物：** scripts/e79_codebook.py、scripts/analyze_e79.py；small JSON入git，raw本地。
+- **命令：** `CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e79_codebook.py --model /tmp/ices_models/Qwen3-8B --out results/e79/qwen3_codebook`。完整CPU预检在权重加载/科学评分前通过，函数/词典唯一识别、gold XOR、word频率与分段等价均断言。
+- **定位：** Wang/Cho labels、Few-Shot Examples Add Up的task-specific QK/non-specific V与alignment，Feng/Gur-Arieh的value检索、Cho信息过滤、Ortu read-but-suppress均属强近邻；一般attention≠解释已被拥有。需要具体parameter/codebook因果读数与适用范围，不以任务新命名宣布novel。
+
+## 结果（跑完后填写；不改上方读数/门槛）
+
+待运行。

@@ -24,3 +24,4 @@
 | P16 | 2026-10-10 | E72 direct短预算在single/entity也截断；E73严格parser漏掉加粗最终答案 | 生成低分混合了未完成、格式与判断错误，不能定位绑定能力 | 共同采样轨迹预算核对48次全一致；保留strict结果，装饰校正标POST-HOC，独立确认前冻结parser |
 | P17 | 2026-10-10 | 正确词从其它来源读入，不必等价于借用其它来源的映射关系 | E48的foreign-label贡献能否单独证明rule leakage仍需任务条件 | E74缺失Source×category组合，枚举函数约束、owner-only与foreign-only反事实；正控有效后才拆word/relationship来源 |
 | P18 | 2026-10-10 | E76 unseen query恒为demo中点，且x+b没有Source-specific Input斜率；正确Source响应可由Source label均值产生 | 不能将Source方向阳性称完整Input×Source程序；确认高accuracy亦未过门槛 | E77用copy/9−x、每Source相同label边缘与全0..9 queries，区分seen/interpolation/extrapolation、Single/Mixed/Direct |
+| P19 | 2026-10-10 | E78交换定义块，mixed subtract插值96.1%→25.0%，single亦有强偏好变化；规则识别/执行部分gate失败 | E77的函数类别不对称不能当稳定Source组成机制；中间code涨分已有直接COLM2024近邻 | 不铺本组“知道却不用”patch；先把private函数参数与共享输出词典的证据角色分开，E79仅先behavior有效性 |

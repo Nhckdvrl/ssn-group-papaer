@@ -9,6 +9,7 @@
 - **E71更新：** 相同namespace下，关系码×位置的accuracy交互独立确认+10.9点；旧冻结frame迁移只35%/accuracy+3.1点，未过预设MIE。
 - **E72–E75更新：** 短direct预算与Markdown漏判不能证明binding失败。48次同轨迹前缀核对全一致；27B thinking普通多来源pilot全对，8B native Source双射补全亦全对（18contexts），independent未完成三分之一，不称能力缺失。E74即时缺失组合32–36%，方向CI跨0；详见复盘§10。
 - **E76/E77更新：** Source方向响应可复现，但E76中点与加性任务允许Source均值解释，撤回完整函数组合解释；新数字accuracy73.4%未过门槛。E77相同Source标签频率/多个Input下，显式规则全对，而从示例推断时连Single identity也弱；追函数识别、全局偏好与实际调用，不直接称Source特有缺陷。详见复盘§11。
+- **E78更新：** 交换定义顺序使mixed subtract插值96.1%→25.0%；Rule-ID与部分执行gate未过，不称可靠知道却不用。中间code收益已有直接COLM2024近邻，未提高机制等级；E79先检验private规则与共享codebook的证据角色。详见复盘§12。
 - **主 idea：** [`ideas/I04-output-indexed-evidence.md`](ideas/I04-output-indexed-evidence.md)
 - **目标会议：** ICML / ICLR（ICL 理论与机制叙事）；备选 ACL / EMNLP（标签语义、标注者视角、非平稳 NLP 场景叙事）。
 - **证据账本：** [`CLAIMS.md`](CLAIMS.md)　**实验索引：** [`experiments/INDEX.md`](experiments/INDEX.md)　**论文形态卡：** [`PAPER_SHAPE.md`](PAPER_SHAPE.md)　**日志：** [`logs/`](logs/)
@@ -87,6 +88,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **E58–E64资产：** `results/e58/`、`e59/`中的`*.npy`锚点状态与各卡`contexts.jsonl/behavior.jsonl`留在上述NFS路径，不进git；代码与固定种子可重建。小汇总`results/e58_e64_summary.json`与`analysis.json`入git。Qwen3-8B revision `b968826d9c46dd6066d109eabc6255188de91218`；Mistral-7B-v0.3 `caa1feb0e54d415e2df31207e5f4e273e33509b1`；节点NVMe `/tmp/ices_models/`由对应HF缓存snapshot复制。环境仍为conda `verl-clean`（torch2.8.0/cu128、transformers4.57.6）。
 
 ## 9. 决策记录
+- **E78资产：** `results/e78/qwen3_bridge/`的原始context/behavior JSONL本地留存；小run/preflight/analysis及`results/figs/e78_definition_order.{png,pdf}`入git。E79按实验卡/seed与同conda重建，raw留`results/e79/`；不把coded词典任务当原始多标注分布。
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。
 - **2026-10-06：** 人决定 I04 为主 idea，先做机制；机制阶段完成第一轮（E36–E38）。
 - **2026-10-06：** 人决定暂停推进，留作之后主推的 candidate；转去找新题。

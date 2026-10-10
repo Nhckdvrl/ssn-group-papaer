@@ -1,6 +1,6 @@
 # E78：辨认来源函数与部署函数，是同一项能力吗？（2026-10-10）
 
-- **状态：** RUNNING（启动前全32context预检通过）
+- **状态：** DONE（定义顺序强混杂；Rule-ID gate未过，未证明可靠知道却不用）
 - **类型：** PILOT；E77错误签名驱动的诊断，不预设存在“知道但不用”。
 - **对应：** I04/C09/C15/P18。推进Source反事实响应→完整函数执行这座推断桥的有效边界；无C##升级预承诺。
 - **为什么现在：** E77排除Source label均值后，single identity也只有.5625/.6719插值/外推，而single complement为1/.8828；direct两函数全对。多数identity错误恰是另一合法函数。需要拆开函数识别、Source选择、numeric执行，且排除函数描述顺序与query字段顺序诱发的偏好。
@@ -32,4 +32,25 @@
 
 ## 结果（跑完后填写；上方读数/MIE不按结果改）
 
-待运行。
+32个新context×三证据×两定义顺序×六numeric接口×20query完整，另每条件两Source Rule-ID。251.922s=.0700 GPU·时；no-op0，60个完整forward/cache校对max9.16e−5nats，source hash一致。`results/e78/qwen3_bridge/{run,preflight,analysis}.json`，raw JSONL本地。
+
+**主要改变判断的是定义顺序，而非涨分：** mixed/input-first插值copy-first定义（最后描述subtract）copy/subtract=.7734/.9609；subtract-first（最后描述copy）=.9609/.2500。copy-minus-subtract准确率偏好反转差+.8984 CI[.7284,1.0821]；外推+.7813[.5748,.9894]。seen .9961几乎全对，任务从示例可识别、word/频率不变，仍有非常强的描述位置依赖。Single该偏好差插值+.3672[.2812,.4467]、外推+.3516[.2197,.4825]，不是Source特有。**E77的identity劣势不能当稳定函数/组合结构。** 尚未独立确认新名字/算子表示；不将本组格式效应自动立novelty。
+
+两order等权、未挑正确识别Source：
+
+| 证据 | Rule-ID copy/subtract | direct插值 copy/subtract | direct外推 copy/subtract | auto插值 copy/subtract | auto外推 copy/subtract |
+|---|---|---|---|---|---|
+| mixed | .8750/.8281 | .8672/.6055 | .7461/.6523 | .8750/.8281 | .8750/.7734 |
+| single | 1.000/.7969 | .9883/.8281 | .8750/.8320 | .9961/.7969 | .8945/.7969 |
+| mixed+一句Source | .8594/.8594 | .8281/.6250 | .7109/.6523 | .8594/.8594 | .8555/.8008 |
+
+Mixed Rule-ID总体.8516 CI[.7734,.9141]，single .8984[.8516,.9453]；各scope未有两函数都≥.90，**识别 gate未过，不称可靠知道却不用**。两候选概率质量按condition约.325–.505，完整vocab top1为候选的比例.453–.734；候选选择不是自由生成能力。Gold-code mixed插值.9961/1.00、外推.9922/.9414；single gold-copy外推.8945（copy-first仅.7891），未过该接口.90阳性，不能把全部条件解释成纯部署缺陷。
+
+Mixed auto−empty插值+.1895[.1016,.2637]、外推+.2441[.1680,.3125]，满足差值MIE；auto−source-first +.2031[.1250,.2696]/+.2109[.1387,.2773]。但Source-first直接反而−.0879[−.1465,−.0293]/−.0859[−.1270,−.0469]；非Source-before-Input普遍恢复。Source指令−mixed direct插值−.0098[−.0391,.0176]、外推−.0176[−.0469,.0117]，无稳定恢复。
+
+Opposite code的novel原任务accuracy几乎为0，说明给定字段能驱动不同数值；seen却仍大量跟随原demo（mixed seen .7422，single .4688）。这不是合法任务错误率，是故意不一致字段的语义控制；其seen/novel差目前仅诊断线索，未独立确认，不能直接宣布两套电路。
+
+**按原决策执行：** 定义顺序控制偏好、识别和部分gold执行阳性不足，优先重建稳健测量，暂不做本组“已识别程序为何不用”的内部patch分支。中间code收益已有Liu2024直接近邻，不升级C##、不因涨分自动提高贡献评级。仍可进一步检验physical label来源与rule evidence来源是否可分，而非把原E77函数偏好强保为新机制。
+
+### 运行期间新近邻核对（科学结果未读，不改实验）
+[Liu/Neubig/Andreas COLM2024，2404.03028v3](https://arxiv.org/html/2404.03028v3) §2–5已直接研究instruction inference、following与few-shot预测的分离，且把归纳的instruction回交执行。**一般识别/应用分离与self-inferred code改善不是本项目的新认识。** [Fu等2609.03213v1](https://arxiv.org/html/2609.03213v1) §2–4/B.3比较rule/examples，指出不同机制不推出combined性能收益。两篇独立论文卡已写。本卡结果仍有诊断价值，但贡献需要具体Source条件下的可预测因果解释，不从潜在涨分自动成立。Corpus较具体查询找出Yang/Cho、Davidson common task representations、Few-Shot Examples Add Up；模糊Source/code查询命中无关program RL，不当空白证据。JIT的接收状态第三方与本地corpus不一致，继续只称预印本，其机制结论仍是强近邻。

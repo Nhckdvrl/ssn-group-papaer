@@ -83,5 +83,9 @@ E74、`results/e74/qwen3_discovery/{analysis,run}.json`：36contexts full/seen�
 
 ### E75–E77：函数解释边界与进一步降级（不升级）
 - E75、`results/e75/qwen3_native_gate/analysis.json`：18新seed contexts full/held bijection均1.00，independent .6667并有.3333截断；所有闭合Unknown正确，不筛闭合后宣称全可靠。允许有效native推理可以补全Source约束，raw低分不是Source能力缺失；完整三条件gate尚未过。
+
 - E76、`results/e76/qwen3_operator_confirmation/analysis.json`：Source方向响应3.648[3.403,3.883]确认，但accuracy .7344[.6719,.7969]未过.80。**query恒为demo中点，Source均值即gold；x+b又是加性，不证明真正Input×Source函数**。撤回阳性的完整组合解释，保留实际数字与方向。两位数whole label值未见不等于每个子token在own source未见。pair分解为POST-HOC，Source排序1.00也不能证明函数完整。
 - E77、`results/e77/qwen3_function/analysis.json`：相同Source label边缘下，direct-rule全0..9 query1.00；single complement插值1.00/外推.8828，而single identity .5625/.6719也未过.80，mixed更弱。不能从Single−Mixed差称独有Source组合缺陷。错误多是另一合法function，接下来function识别/应用、指令先后与信息位置仍是竞争解释，不提前宣称“表示在却不用”。
+
+### E78：函数偏好依赖定义顺序，识别→部署主张未建立（不升级）
+E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规则，mixed direct插值subtract在两定义顺序下.9609→.2500，copy .7734→.9609；word/频率不变。copy-minus-subtract偏好变化+.8984[.7284,1.0821]，single同样+.3672[.2812,.4467]。因此E77的identity劣势不是已经证明的稳定函数或Source组合结构。两order mixed Rule-ID .8516，copy/subtract .8750/.8281，未过两函数.90；single gold-copy外推.8945亦未过执行阳性。auto−empty插值+.1895[.1016,.2637]、外推+.2441[.1680,.3125]是真差值，但一般self-inferred instruction交回执行已有Liu/Neubig/Andreas2024强近邻，不能当新机制。所有材料保留，无C##升级；physical label来源→rule evidence来源仍待有界检验，而非已有新结论。
