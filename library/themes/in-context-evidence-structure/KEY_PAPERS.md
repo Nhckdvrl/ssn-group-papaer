@@ -274,3 +274,9 @@ ICES E69指定prefix K全label列禁读、E70的common key translation仅改变f
 - Test, then Route重读§3–4.2：四donor把predicate与答案身份解耦，筛四donor都正确的范围明确；token-bound路由的结论限指定patch/学习子空间，不是所有路由不可能抽象。
 - corpus nearest本次命中ICR及多个广义routing工作，不能当无近邻证据。以上只输出定位与compression risk，不自动关线；E81只检验source-conditioned分类的具体因果解释。
 - [Cho Hidden Calibration](https://arxiv.org/html/2406.16535v3)重读§2.2/3与讨论/限制：label-token方向与决策边界已有缺陷分析，额外监督centroid可改善，但不能据此说默认表示已完全部署。E81的s/b分解只是对现有输出读数的精确解释，不以它立新校准贡献；新的因果证据在固定码分配与更广query读取的反事实比较。
+
+### E82前：强近邻的具体预测，而不是泛称QK/V已知（2026-10-10）
+
+再次细读[Wang2026 §6–7](https://arxiv.org/html/2605.16591v2)：query-only与examples-only corruption分别偏向改变示例总预算与示例偏好，capitalization有相反特例。因此**access/selection的宽泛分离已直接被研究**，不能作为ICES中心新意。§7还区分query-input相似性与task-identity信息量，给出离散任务下query-independent FV的构造；这是特定理论/FV路径，不等于全模型的所有query都无关。多规则ICL的问题是query需要决定哪条规则有效，不能只用“对唯一任务的信息量”描述所有示例。E82先检查whole-query读取收益是否主要落在Label或query relay，而不是为了术语区别再做一轮mass/selection图。
+
+[Cho2025 §5.2](https://arxiv.org/html/2410.04468v3)重读原生消融：主label检索断开后仍有输出，作者提出并行电路、直接解码和forerunner shortcut，并未宣称完整枚举。因此ICES若只发现其它位置参与不构成反驳；应建立Source条件如何改变这些已有操作、为何单末位视角可能误判的具体预测。E82的固定log概率拼接同时重归一化其它组，须保留这个测量限制，不能包装成独立组件的百分比归因。

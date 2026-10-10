@@ -30,4 +30,30 @@
 
 运行前CPU与token检查通过，重建误差5.96e−8；科学源码SHA256 `671b3bca5a931a1ee34012007f2e3f42058148140bf06e28329c8ea37be32a5d`。命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e82_label_query_replay.py --model /tmp/ices_models/Qwen3-8B --out results/e82/qwen3_discovery --n 32 --seed 82001`。
 
-待GPU运行。事实、解释及下一项预测分开填写。
+### 32-context pilot：Label读取贡献较大，额外query重放贡献小
+
+全部32context/13条件/4query保留，83.648s=.02324GPU·时。self≤7.63e−6nats、整段/cache≤2.87e−5、全donor重建≤4.77e−7，carrier概率误差0、forbidden mass0；结果`results/e82/qwen3_discovery/{analysis,run,preflight}.json`。
+
+| 条件 | accuracy | correct margin |
+|---|---|---|
+| Tag native | .5234 | .6317 |
+| Prefix native | .6484 | 1.2437 |
+| 固定G、活组外carrier_live | .5469 | .4927 |
+| 固定G、原生Tag组外frozen_base | .5391 | .7622 |
+| +全query Label读取 | .6172 | 1.2861 |
+| +query内部读取 | .5469 | .7861 |
+| +Label与query读取 | .6484 | 1.3518 |
+| +末位Label读取 | .6094 | 1.2693 |
+| 完整读取重放 | .7031 | 1.5071 |
+
+Label−base margin+.5238[.3894,.6660]、accuracy+7.8[3.9,12.5]点；query−base margin+.0239[−.0062,.0521]、accuracy+.8[−1.6,3.1]点。Label−末位Label margin只有+.0168[.0082,.0266]、accuracy+.8[0,2.3]点，不支持把位置收益主要归到早期Label读取。Label×query margin交互+.0419[.0256,.0574]，虽可检出但幅度小，accuracy交互CI跨0；不包装成强合作模块。
+
+full−Label/query仍margin+.1553[.1023,.2058]、accuracy+5.5[1.6,10.2]点，不能说两组解释全部收益。固定组外与活反馈差margin+.2696[.1320,.4030]、output排序+25.0[15.6,34.4]点；基线选择确实改变读取程序，禁止把它当纯边中介百分比。
+
+**实际认识更新：** C16的原生Source-effect分布于整个query仍成立；E82问的是另一个反事实——怎样移植布局收益。当前两者不需要同一组位置承担：末位Label读取重放可转移大部分指定Label组收益，不代表原生Source程序只在末位发生。一般定位/改动位置区别已有Hase等文献；ICES应据此建立具体读取解释，而非增加一条通用新原则。
+
+### 独立确认前写下的预测
+
+同科学源码/条件/词库/名字/labels，64新contexts seed182001，未读取其数据：Label−base margin为正且>.3nats；query−base平均margin<.15nats；Label−末位Label平均差<.1nats。报告这些差的CI，不把点估计低于阈值等同统计等效零。full仍超过Label/query；固定组外的Source排序仍高于活组外。若不能复现，收窄该解释，不换seed/分区。确认只覆盖新context，不是新模型或词表迁移。
+
+命令与pilot相同，改out为`results/e82/qwen3_confirmation`、n64、seed182001。
