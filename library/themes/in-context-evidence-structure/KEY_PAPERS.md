@@ -319,3 +319,9 @@ E88有界接口分离确认，E89未建立可靠知道却不用；不继续格�
 [Strategies Emerge Rationally v2](https://arxiv.org/html/2506.17859v2)本次只核对引言、讨论/局限及附录B/C，未重新完整复算§4理论。它的hierarchical是对memorizing/generalizing预测器的权重与训练偏好，不等于MT-ICL的共享task-prior层次。不能将术语相同当机制相同，也不能把多来源数据影响预测本身作为首次发现。
 
 候选具体方向是Source关系约束下的标准信息传播：同样的foreign数据何时是错误干扰，何时必须影响当前规则；它是在demo上下文化还是query阶段进入计算。与CTA、Local Task Vectors、Binding/Mixing Mechanisms正面对齐，只有不同反事实预测和功能干预才可能给具体增量。详见ICES综合§15.6，当前没有自动转向/关线或并行新矩阵。
+
+### 来源选择与上下文化的运行前补读（E90，2026-10-10）
+
+- [Fang等，Rethinking Invariance in ICL，ICLR2025](fang2025-invariant-icl.md)：结构隔离与示例互相依赖已有；non-leakage指自身答案不可见，不能混称Source干扰。
+- [Kahardipraja等，ICL Atlas，NeurIPS2025](kahardipraja2025-icl-atlas.md)：已有retrieval头的答案span追踪；复制词的来源与从示例推断的rule信息来源要分别检验。作者本身承认token信息混合，不把它写成稻草人。
+- E90用原有强基线检验形成阶段/完整query阶段的Source隔离，只翻foreign rule，当前Source证据原样保持。新mask与宽泛的attention不忠实均不是新贡献；不预设跨Source上下文化一定有害，结果回来后按功能充分性判断。

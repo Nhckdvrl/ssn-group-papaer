@@ -26,3 +26,5 @@
 | P18 | 2026-10-10 | E76 unseen query恒为demo中点，且x+b没有Source-specific Input斜率；正确Source响应可由Source label均值产生 | 不能将Source方向阳性称完整Input×Source程序；确认高accuracy亦未过门槛 | E77用copy/9−x、每Source相同label边缘与全0..9 queries，区分seen/interpolation/extrapolation、Single/Mixed/Direct |
 | P19 | 2026-10-10 | E78交换定义块，mixed subtract插值96.1%→25.0%，single亦有强偏好变化；规则识别/执行部分gate失败 | E77的函数类别不对称不能当稳定Source组成机制；中间code涨分已有直接COLM2024近邻 | 不铺本组“知道却不用”patch；先把private函数参数与共享输出词典的证据角色分开，E79仅先behavior有效性 |
 | P20 | 2026-10-10 | 人审计后的核对：旧D0 prefix读数实际为Mark；output Source排名只测contrast符号；公共偏移可以减少平均mass | 不能把“码更显眼”或accuracy/ranking分离直接当访问/选择机制 | E81按actual码位置对齐，全query钳制m/pi，固定kind翻Source；64新contexts确认carrier外读取有独立效果，保持C20 L1 |
+
+E90对P13/P20的更新：Source组内读取与rule信息的功能依赖不是同一读数；signed平均影响为0也可掩盖context间正负抵消。原24→48方向没有确认，之后新增幅度观测在32新contexts冻结确认，原结果完整保留。single上的同一模块+27.6点说明Source排除不能唯一解释E56。后续不为这项区别继续拆mask矩阵，回到共享Task信息与私有输出映射的内容解释。

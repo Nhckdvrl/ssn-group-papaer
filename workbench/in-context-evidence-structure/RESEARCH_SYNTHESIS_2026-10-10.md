@@ -1,8 +1,10 @@
 # ICES 当前进展与下一步：从证据混合到来源条件化的计算（2026-10-10）
 
+**本次最新：** E90的实际认识与未确认结果见[§16](#16-e90来源位置规则信息的来源与正确答案是不同对象)和[实验卡](experiments/E90-source-isolation-before-and-after.md)。研究中心仍待机制解释，不按实验数量评价。
+
 **当前判断：ICES 已有可靠的现象、若干实质性的因果结果，以及值得组织成论文的认识；尚不能确信它已经是一篇强机制论文，也没有证据把整个项目判为 trivial。最有价值的下一步是把已有结果解释得更清楚，而不是再给项目增加一串必须通过的关卡。**
 
-这份总结响应本次人的纠偏：耐心整理全部进展，收束下一步，上传 GitHub main。事实截至 E79；没有启动 E80。正式 ACTIVE-EXPLORE / I04 状态不变。这是当前综合判断，详细结果和原先跑前标准仍在[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)及[10 月 10 日详细复盘](REVIEW_2026-10-10.md)。下文的区间均为相应实验原报告的 95% CI；百分点与相对恢复比例分开写。
+这份总结响应人的纠偏：耐心整理全部进展，收束下一步，上传 GitHub main。§1–8保留截至E79的初次综合；§9–16记录后续审计与实际推进，当前截至E90。正式 ACTIVE-EXPLORE / I04 状态不变。详细结果和原先跑前标准仍在[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)及[10 月 10 日详细复盘](REVIEW_2026-10-10.md)。下文的区间均为相应实验原报告的 95% CI；百分点与相对恢复比例分开写。
 
 ## 1. 我之前哪里做偏了
 
@@ -352,3 +354,31 @@ E88尚不能证明前置名字状态携带完整criterion；JIT/LTV已经预期�
 这不是跨任务共享的首次提出：[Multi-Task Bayesian ICL](../../library/themes/in-context-evidence-structure/zhu2026-multi-task-bayesian-icl.md)已通过pool-MCMC对照区分其它数据作为prior信息与直接target证据；[Strategies Emerge Rationally](https://arxiv.org/html/2506.17859v2)也已给出多预测器的定量解释。CTA/Local Task Vectors拥有上下文化与局部任务状态的宽认识，Binding/Mixing Mechanisms拥有引用/值区分。这里可争取的具体增量是**Source关系怎样改变从demo形成的规则信息，以及哪种功能状态能预测反事实**，不是换一个Source任务名。
 
 候选还须把足够明确的规则family和原生可执行接口落实到一个有限pilot；不先把全部关系、词表、模型与干预展开。本轮没有另开该实验，没有宣布novelty成立或由agent关线。E85保留，E88/E89使下一项投入更明确：回到标准的形成和使用，不继续细磨来源字段接口。
+
+## 16. E90：来源位置、规则信息的来源与正确答案是不同对象
+
+这次回到E48/E56的强材料，没有继续Source-field capsule或新算术任务。先补读InvICL和ICL Atlas的具体实验，与CTA/How Few-Shot Examples Add Up对齐，再用真实评论完成[E90](experiments/E90-source-isolation-before-and-after.md)。
+
+### 16.1 哪个问题被实际检验了
+
+**只允许模型读当前来源的示例，是否已经足以正确使用该来源的规则？** 保持A的所有demo/名字/位置/标签不变，只翻B的rule；形成阶段与整个query读取阶段分别按Source隔离，现有E56模块始终不在prefill工作。后者有强阳性，不以另造弱任务的失败推动主线。
+
+24pilot→48新contexts：native54.2%，query隔离55.5%，两阶段隔离59.9%，同一query模块91.1%。不能说early isolation修好问题，不能说Source位置选择足以解释学习模块。
+
+### 16.2 原预测没有确认，而新的观测对象得到新材料支持
+
+原signed B效应在48contexts为+.157[−.146,.450]nats，pilot的统一正方向未确认。看逐context后发现大量正负抵消，**绝对幅度读数是此后提出**；在运行前另冻结seed290001的32新contexts，不替换原读数。
+
+新批query只读A时，B改rule仍改变A的17.6%[12.1,23.8]答案；rule contrast幅度.734[.474,1.083]nats，16正/16负。两阶段隔离为数学预期零；它不是科学发现，只是完整阻断数值对照。额外训练后的94.1%准确率也可与非零B依赖并存（答案改变7.4%[3.1,12.5]），因此不是只研究一个低准确率模型的缺陷。
+
+另一个真正明确的功能结论：根本没有B的单Source context中，E56模块仍在48新contexts把61.7%→89.3%，+27.6[21.4,33.9]点。它执行了Source排除之外的读出计算；这是对原构造性证据的解释，而非撤回它的价值。
+
+### 16.3 研究意义与novelty判断
+
+自然问题仍是**多套规则共存时，模型怎样形成并使用当前来源的判断标准**。E90说明按来源选位置、使规则信息对其它来源独立、取得正确输出，不能互相替代；它也给出超越平均signed leakage的可重复反事实读数。这是实际认识更新。
+
+但“上下文化存在”“Source attention不能覆盖全部计算”不是新原则。CTA已用edge干预传递task关系，Atlas已区分词复制与全路径归因，InvICL已讨论隔离损失上下文化。E90的新范围是**共享输出下、从demo推断的Source特定规则的功能依赖**，不是首次提出这些宽概念，更不是一个完整新算法。已有框架能解释这种现象的可能性，但其具体方向/幅度/行为依赖还需计算模型，不用抽象相似性自动判trivial。
+
+接下来的科学取舍：结束这组mask测量；回到信息内容，区分跨Source共享的输入特征/criterion与各Source自己的输出映射。分标签修复究竟仅改变词的实现，还是也改变rule信息的形成，是一个可直接连接旧I04的竞争解释；另一候选是用能使criterion选择与全局输出反转预测不同的新Input组合。它们要先对齐原论文和明确预测，再择一个实施，不能两线铺开。不会为了确认所有情况而再拆一圈层/头，也不预先宣布上述候选有novelty。
+
+C16/C20仍L1，E85有效预测保留。原signed forecast未确认与新幅度验证的区别明确；位置干预不证明完整criterion表示、跨Source影响也未自动被定义为不合理。图见`results/figs/e90_source_exclusion_and_rule_sensitivity.{png,pdf}`。

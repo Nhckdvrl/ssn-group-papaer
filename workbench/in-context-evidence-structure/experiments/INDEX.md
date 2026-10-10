@@ -97,3 +97,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E87](E87-source-conditioned-aspect-state.md) | 自然方面判断的候选设计与机制歧义 | PLANNED候选未定稿；最新人指令下不实施整段状态交换，无科学脚本/运行 |
 | [E88](E88-preinput-criterion-transfer.md) | 同姓名input前状态是否携带标准，保留recipient证据 | DONE；24→32新措辞确认隐式迁移约0、显式+.182nats；不称完整program/纯地址，C16/C20不升级 |
 | [E89](E89-native-criterion-recognition-and-use.md) | 原生对话识别标准与实际判断是否不同 | DONE诊断；请求歧义和预算截断完整保留，178前缀续完一致；没有稳定知道却不用证据，不扩格式/位置矩阵 |
+| [E90](E90-source-isolation-before-and-after.md) | 来源位置选择是否等于rule信息独立，query模块是否仅排除别的Source | DONE；原signed方向未确认；新32contexts仅可读A时B改rule仍使A17.6%答案改变；single模块独立+27.6点，停止mask细分 |

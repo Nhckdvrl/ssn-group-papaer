@@ -149,3 +149,11 @@ pilot之后明确POST-HOC提出、commit decabf63冻结的均值组合模型`n*m
 **E56代码核对（不是新结果）：** `scripts/e56_query_adapter.py`的qhook只在最后位置加delta，且prefill时state.on=False；示例缓存确实来自未修改模型。不能为了减弱E56而假设该adapter重编码了示例。其成功仍支持baseline表示加额外训练计算的构造性可用性；不等于原生程序或一个八维独立开关已存在。
 
 E88功能校对：explicit patch后的recipient向selectivity仍+.04938[−.01601,.11380]；正的donor向T可以来自Source效应减弱。双向T排除常数label bias，没有排除一般Source-cue扰动，故不将+.182nats直接称为执行donor criterion。用原已注册读数保留这个解释，不开新控制矩阵。
+
+### E90：来源位置选择与rule信息依赖（C16/C20仍L1）
+
+[E90](experiments/E90-source-isolation-before-and-after.md)、`results/e90/qwen3_{discovery,confirmation,heterogeneity}/{analysis,run,rule_sensitivity}.json`：24→48原signed正方向没有确认；POST-HOC发现异质性后，在第三批32新contexts运行前冻结rule contrast幅度。query所有位置只允许读A、其原始证据不变时，B改rule仍使A答案改变17.58%[12.11,23.83]，幅度.73394[.47362,1.08336]nats，16正/16负；两阶段隔离为数值零。不是用绝对值替换原预测，也不称平均性能损失。
+
+`results/e90/qwen3_single_adapter_confirmation/{analysis,run}.json`：现有E56模块在完全没有另一Source的48新contexts仍使61.72%→89.32%，+27.60[21.35,33.85]点；native复测完全一致。这明确排除“收益仅仅来自排除另一Source”的充分解释；模块仍是额外监督计算，不能据此定位完整原生criterion。
+
+Source正确位置读取不蕴含Source信息的功能独立，准确率高也不蕴含独立。宽泛上下文化/attention归因限制已有文献；具体关系信息的计算模型和novelty仍待建立，不自动升级或关闭I04。保留E48/E56/E85，C16/C20仍L1。
