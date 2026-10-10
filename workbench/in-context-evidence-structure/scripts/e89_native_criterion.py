@@ -121,6 +121,16 @@ def main():
                 - ((z[:, disagree] > 0) == (gold[:, disagree] > 0)).mean(1)),
             "application_label_argmax_fraction": interval((top >= 0).mean(1)),
             "recognition_label_argmax_fraction": interval((ctop >= 0).mean(1))}
+    recipient = np.array([[q["recipient_gold"] for q in r["queries"]] for r in rows])
+    donor = np.array([[q["donor_gold"] for q in r["queries"]] for r in rows])
+    for base, flip in [("base", "flip"), ("explicit", "explicit_flip")]:
+        delta = np.array([[f["z"]-b["z"] for b, f in zip(r["conditions"][base]["application"],
+                                                        r["conditions"][flip]["application"])] for r in rows])
+        directed = delta * (donor - recipient) / 2
+        out["contrasts"][flip+"_minus_"+base] = {"donor_directed_effect": interval(directed[:, disagree].mean(1))}
+        for direction in (-1, 1):
+            mask = disagree[None, :] & (donor == direction)
+            out["contrasts"][flip+"_minus_"+base][f"donor_sign_{direction}"] = interval((directed*mask).sum(1)/mask.sum(1))
     run = {"args": vars(a), "seconds": time.time()-t0, "numeric_max_error": max(errors),
            "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
            "data_engine_sha256": hashlib.sha256(Path(__file__).with_name("e88_criterion_transfer.py").read_bytes()).hexdigest(),
