@@ -1,0 +1,181 @@
+{
+  "original_args": {
+    "out": "results/e95/qwen35_discovery",
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "n": 4,
+    "seed": 95001,
+    "batch_size": 8,
+    "thinking_n": 2,
+    "design_only": false
+  },
+  "actual_model_type": "qwen3_5_text",
+  "serial_transition": {
+    "owned_pid": 730749,
+    "retained_direct_rows": 544,
+    "retained_thinking_rows": 16,
+    "skip_batches": 2,
+    "remaining_original_batches": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "reason": "parallel execution of all fixed remaining batches; no selection by outcome",
+    "original_engine_sha256": "edee291691ae67b1a03a6289bfe6e207baa0d9d016e88ab7604a52aaaac7da78"
+  },
+  "original_serial_exit": "intentional interruption after retaining complete written batches",
+  "serial_loaded_phase_seconds_upper_bound": 768.3059430122375,
+  "shard_gpu_hours": 0.4853769332170486,
+  "total_gpu_hours_upper_bound": 0.6987952507204479,
+  "shard_runs": [
+    {
+      "args": {
+        "source": "results/e95/qwen35_discovery",
+        "part": 0,
+        "parts": 3,
+        "skip_batches": 2,
+        "out": "results/e95/qwen35_thinking_part0",
+        "design_only": false
+      },
+      "original_args": {
+        "out": "results/e95/qwen35_discovery",
+        "model": "/tmp/ices_models/Qwen3.8-27B",
+        "n": 4,
+        "seed": 95001,
+        "batch_size": 8,
+        "thinking_n": 2,
+        "design_only": false
+      },
+      "batch_indices": [
+        2,
+        5,
+        8,
+        11,
+        14,
+        17
+      ],
+      "n_rows": 48,
+      "source_script_sha256": "edee291691ae67b1a03a6289bfe6e207baa0d9d016e88ab7604a52aaaac7da78",
+      "contexts_sha256": "1504dc22d2b0d2a531df2eccd7724e51e48df3702dd3983032d76ce19857e6af",
+      "unchanged_frozen_batch_membership": true,
+      "selection_by_outcome": false,
+      "actual_model_type": "qwen3_5_text",
+      "continued": 21,
+      "elapsed_seconds": 716.1522314548492,
+      "gpu_hours": 0.19893117540412478,
+      "script_sha256": "42edbdb113b7dca8a40b6e9288844af4366807de3b0f99ec4a2af990619d7cb6",
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "training": false,
+      "python": "3.12.12",
+      "torch": "2.9.1+cu129",
+      "transformers": "5.12.1",
+      "pid": 735135,
+      "git_head": "7b16cbf7c945d9fda898088338574f190d9a43a8"
+    },
+    {
+      "args": {
+        "source": "results/e95/qwen35_discovery",
+        "part": 1,
+        "parts": 3,
+        "skip_batches": 2,
+        "out": "results/e95/qwen35_thinking_part1",
+        "design_only": false
+      },
+      "original_args": {
+        "out": "results/e95/qwen35_discovery",
+        "model": "/tmp/ices_models/Qwen3.8-27B",
+        "n": 4,
+        "seed": 95001,
+        "batch_size": 8,
+        "thinking_n": 2,
+        "design_only": false
+      },
+      "batch_indices": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ],
+      "n_rows": 40,
+      "source_script_sha256": "edee291691ae67b1a03a6289bfe6e207baa0d9d016e88ab7604a52aaaac7da78",
+      "contexts_sha256": "1504dc22d2b0d2a531df2eccd7724e51e48df3702dd3983032d76ce19857e6af",
+      "unchanged_frozen_batch_membership": true,
+      "selection_by_outcome": false,
+      "actual_model_type": "qwen3_5_text",
+      "continued": 16,
+      "elapsed_seconds": 488.20188903808594,
+      "gpu_hours": 0.13561163584391275,
+      "script_sha256": "42edbdb113b7dca8a40b6e9288844af4366807de3b0f99ec4a2af990619d7cb6",
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "training": false,
+      "python": "3.12.12",
+      "torch": "2.9.1+cu129",
+      "transformers": "5.12.1",
+      "pid": 735140,
+      "git_head": "7b16cbf7c945d9fda898088338574f190d9a43a8"
+    },
+    {
+      "args": {
+        "source": "results/e95/qwen35_discovery",
+        "part": 2,
+        "parts": 3,
+        "skip_batches": 2,
+        "out": "results/e95/qwen35_thinking_part2",
+        "design_only": false
+      },
+      "original_args": {
+        "out": "results/e95/qwen35_discovery",
+        "model": "/tmp/ices_models/Qwen3.8-27B",
+        "n": 4,
+        "seed": 95001,
+        "batch_size": 8,
+        "thinking_n": 2,
+        "design_only": false
+      },
+      "batch_indices": [
+        4,
+        7,
+        10,
+        13,
+        16
+      ],
+      "n_rows": 40,
+      "source_script_sha256": "edee291691ae67b1a03a6289bfe6e207baa0d9d016e88ab7604a52aaaac7da78",
+      "contexts_sha256": "1504dc22d2b0d2a531df2eccd7724e51e48df3702dd3983032d76ce19857e6af",
+      "unchanged_frozen_batch_membership": true,
+      "selection_by_outcome": false,
+      "actual_model_type": "qwen3_5_text",
+      "continued": 19,
+      "elapsed_seconds": 543.0028390884399,
+      "gpu_hours": 0.15083412196901108,
+      "script_sha256": "42edbdb113b7dca8a40b6e9288844af4366807de3b0f99ec4a2af990619d7cb6",
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "training": false,
+      "python": "3.12.12",
+      "torch": "2.9.1+cu129",
+      "transformers": "5.12.1",
+      "pid": 735138,
+      "git_head": "7b16cbf7c945d9fda898088338574f190d9a43a8"
+    }
+  ],
+  "n_rows": 688,
+  "training": false,
+  "precision": "bfloat16",
+  "attention": "sdpa"
+}

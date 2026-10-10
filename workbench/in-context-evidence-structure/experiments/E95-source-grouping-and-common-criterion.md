@@ -1,6 +1,6 @@
 # E95：输入和标签完全相同，来源分组如何决定共同标准？（2026-10-11）
 
-- **状态：** RUNNING；运行前卡与源码已提交b8ddd987。
+- **状态：** DONE-PILOT；完整688个冻结请求保留，2个thinking输出在总预算后仍未结束，记未解析。
 - **类型：** PILOT；一个有效世界对有效世界的反事实，不扫描激活位置。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** 模型如何从私人判断中提取可共享的评判标准，而不是直接借用别人的标签？
@@ -70,7 +70,29 @@ Corpus nearest已执行，长句检索主要是词汇近邻，不能替代以上
 
 ## 结果（以后追加）
 
-尚未运行。
+以下追加完整结果；原设计与执行调整保留。
+
+## 完整结果（原协议不改）
+
+Direct4context/544、thinking固定前2context/144，共688唯一键；原batch全部覆盖。65个thinking首次截断全部按原prefix续写；其中2个B-probe到3072预算仍未结束，主分母保留为未解析，不能叫已得到错误最终答案。实际总GPU用量保守上界.699 GPU·时，三分片全部正常退出；原串行仅因排程主动中断。
+
+| 功能 | Direct（4ctx） | Thinking（2ctx，未筛选） |
+|---|---|---|
+| B私人判断 | 126/128，98.4%[96.9,100] | 60/64，93.75%；2错、2未解析 |
+| A私人判断，mixed | 33/64，51.6%[50.0,54.7] | 19/32，59.4%[56.3,62.5] |
+| A私人判断，concordant | 64/64 | 32/32 |
+| 共同criterion | 20/32，62.5%[50.0,87.5] | 16/16；p_B翻转不改变答案 |
+| A明确完整规则oracle | 128/128（含criterion及私人偏好） | 原协议未运行 |
+
+一句指令mixed33/64，没有恢复。A thinking完整51/64，matched前2context direct49/64；不拿4ctx direct与2ctx thinking作独立样本显著性比较。Thinking标准世界成对都正确100%，A mixed成对都正确仅18.75%；两个p_A方向与p_B全世界均保留。
+
+**实际判断改变：** Direct不能宣称已经稳定提取标准；但thinking在明确criterion问题上完整16/16，而同材料A判断仍19/32 mixed，出现可用的功能区别。它说明这个模型能在该Goal/计算条件下从私人分组推断标准，不证明默认A预测过程中已含同一个可直接部署的内部状态。这里的标准询问没有未来Review，非已解析的yes/no答案。
+
+**POST-HOC全profile审计：** “各Source各自选合法规则，只忽略共同约束”在direct仅12.5%[0,28.1]世界符合，不能作为主要解释；thinking25%[12.5,37.5]，部分文本也有此类错误，仍不能代替原生计算图。文件`joint_rule_audit_posthoc*.json`明标事后分析，原读数均保留。
+
+按决策表下一步是检验**模型自己得到的criterion是否能约束A的新输入，同时保留A私人偏好**，不是再磨Source字段。先做criterion-only功能传递（不提供p_A），区分标准推断的Goal范围与标准部署；若有实质功能接口，再考虑latent因果运输。不直接宣布信息在默认预测中存在但没用，也不把描述性criterion问答当完整机制发现。C16/C20 L1、I04/正式状态不变。
+
+资产`results/e95/qwen35_discovery/{analysis,analysis_direct,run,completeness_audit,joint_rule_audit_posthoc}.json`及三分片run/dispatch；raw/merged行为、token IDs、本地contexts不进git。执行者完整性校对不等于独立科学校对。
 
 ### 执行配置更新（direct完成后、thinking未选样例）
 

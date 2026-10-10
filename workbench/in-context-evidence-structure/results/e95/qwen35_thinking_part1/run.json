@@ -1,0 +1,44 @@
+{
+  "args": {
+    "source": "results/e95/qwen35_discovery",
+    "part": 1,
+    "parts": 3,
+    "skip_batches": 2,
+    "out": "results/e95/qwen35_thinking_part1",
+    "design_only": false
+  },
+  "original_args": {
+    "out": "results/e95/qwen35_discovery",
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "n": 4,
+    "seed": 95001,
+    "batch_size": 8,
+    "thinking_n": 2,
+    "design_only": false
+  },
+  "batch_indices": [
+    3,
+    6,
+    9,
+    12,
+    15
+  ],
+  "n_rows": 40,
+  "source_script_sha256": "edee291691ae67b1a03a6289bfe6e207baa0d9d016e88ab7604a52aaaac7da78",
+  "contexts_sha256": "1504dc22d2b0d2a531df2eccd7724e51e48df3702dd3983032d76ce19857e6af",
+  "unchanged_frozen_batch_membership": true,
+  "selection_by_outcome": false,
+  "actual_model_type": "qwen3_5_text",
+  "continued": 16,
+  "elapsed_seconds": 488.20188903808594,
+  "gpu_hours": 0.13561163584391275,
+  "script_sha256": "42edbdb113b7dca8a40b6e9288844af4366807de3b0f99ec4a2af990619d7cb6",
+  "dtype": "bfloat16",
+  "attention": "sdpa",
+  "training": false,
+  "python": "3.12.12",
+  "torch": "2.9.1+cu129",
+  "transformers": "5.12.1",
+  "pid": 735140,
+  "git_head": "7b16cbf7c945d9fda898088338574f190d9a43a8"
+}
