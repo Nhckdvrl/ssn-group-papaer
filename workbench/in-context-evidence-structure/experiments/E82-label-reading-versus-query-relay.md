@@ -1,6 +1,6 @@
 # E82：位置收益经由示例标签读取，还是query内的信息传递？（2026-10-10）
 
-- **状态：** PLANNED；先32新context pilot，结果决定是否独立确认，不铺模型/任务矩阵。
+- **状态：** DONE；32新context pilot与64新context确认完成，不铺模型/任务矩阵。
 - **类型：** PILOT。
 - **对应：** I04 / C16 / C20 / P13 / P20。
 - **为什么现在：** E81在固定实际来源码carrier分布时，whole-query全attention移植仍比carrier-only提高13.3[9.4,17.2]点。这个差已证明其它读取重要，不再重做组外效应。现在需要判断一个具体计算解释：prefix是否主要改变了示例Label读取，还是还依赖query位置间传递条件状态。Cho的提前计算/shortcut、Wang2026的示例驱动重权重已有所有权，不能把“不是只在末位计算”或QK/V区别重新命名为新机制。
@@ -57,3 +57,15 @@ full−Label/query仍margin+.1553[.1023,.2058]、accuracy+5.5[1.6,10.2]点，不
 同科学源码/条件/词库/名字/labels，64新contexts seed182001，未读取其数据：Label−base margin为正且>.3nats；query−base平均margin<.15nats；Label−末位Label平均差<.1nats。报告这些差的CI，不把点估计低于阈值等同统计等效零。full仍超过Label/query；固定组外的Source排序仍高于活组外。若不能复现，收窄该解释，不换seed/分区。确认只覆盖新context，不是新模型或词表迁移。
 
 命令与pilot相同，改out为`results/e82/qwen3_confirmation`、n64、seed182001。
+
+### 64-context确认：Label读取主要效应复现，早期额外移植不是主因
+
+159.293s；两次科学运行合计242.941s=.06748GPU·时。源码hash逐项相同；self≤7.63e−6、整段/cache≤2.68e−5nats，完整donor概率重建≤4.77e−7，carrier误差0、masked mass0。
+
+Tag/prefix native accuracy .5156/.6406；frozen_base .5547、Label .6328、query .5625、Label/query .6523、末位Label .6367、full .6563。Label−base accuracy+7.8[3.9,11.7]点、margin+.4610[.3813,.5438]；query−base accuracy+.8[−.8,2.3]点、margin+.0472[.0261,.0679]。Label−末位Label margin+.0140[.0069,.0229]、accuracy−.4[−1.2,0]点。预定主要均值判断均成立，数值CI也支持query单独效应与早期额外Label效应小于设定范围，非零效应仍照实保留。
+
+full−Label/query margin+.1251[.0933,.1575]，accuracy+.4[−2.0,3.1]点；pilot的额外5.5点准确率不复现为清晰正效应，不能把它立成另一组件。frozen_base−carrier_live margin+.2411[.1520,.3356]，活/固定反馈不是同一个baseline。
+
+**主张：** C20仍L1，追加末位Label读取对布局收益的有界作用；C16不撤回也不提升。下一步固定关系/输出身份预测器，从native读取变化学习，不用gold分数拟合；目标是独立context预测而非继续保存完整donor重放图。
+
+结果`results/e82/qwen3_confirmation/{analysis,run,preflight}.json`。raw JSONL/native_features本地，不入git。

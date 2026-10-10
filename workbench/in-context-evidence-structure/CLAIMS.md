@@ -103,3 +103,9 @@ E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规
 | C20 | Qwen3-8B float32、E71 linked分类schema中，固定actual code-carrier每层/head/query的m及kind边缘、翻Source分配，独立64contexts的Prefix margin−.8489[−1.0027,−.7122]、accuracy−11.3[−15.2,−7.8]点；其分配有因果作用。但只移植该carrier的m/pi不能转移位置收益；同recipient Tag与相同码carrier m/pi下，角色对齐whole-query读取比carrier-only accuracy+13.3[9.4,17.2]点、margin+.9181[.7352,1.1107]，指向carrier之外读取的参与 | L1 | [E81](experiments/E81-carrier-mass-versus-source-allocation.md)、`results/e81/qwen3_confirmation/{analysis,run}.json`；32新context pilot→64新seed确认，源码冻结 | native demo缓存/V保留，query内V/状态活反馈；概率donor可能已有答案相关信息，不证明抽象策略或完整电路。单模型/同schema、未经独立科研校对；不能将head平均或output排名当整个证据选择 |
 
 **测量解释修正：** `output_geometry_posthoc.json`证明ranking仅测s>0，accuracy还依赖s与共享bias b的大小。Tag full-attention的Source contrast .583→1.371，|b|均值2.020→2.093；不能把prediction/ranking分离直接升级为“access与binding两个模块修复不同”。E70/71旧数值不作废；C19只保留指定key预算变化与输出效果的有界因果事实。一般校准/label prior已有强近邻，非新的ICES理论。
+
+### C20的E82扩展：Label读取收益与原生Source-effect不是同一反事实
+
+[E82](experiments/E82-label-reading-versus-query-relay.md)、`results/e82/qwen3_confirmation/{analysis,run}.json`：固定码carrier分布、原生Tag组外读取重放baseline下，替换Label列条件log权重使accuracy+7.8[3.9,11.7]点、margin+.4610[.3813,.5438]；只替换query内部列accuracy+.8[−.8,2.3]点、margin+.0472[.0261,.0679]。Label全query相对只在末位替换，margin差+.0140[.0069,.0229]，无大的额外收益。32-context pilot→64新seed确认，源码冻结，数值控制通过。
+
+这是指定布局收益的转移，不是原生Source-effect纯中介；与C16整query原生中介不矛盾。组外log权重拼接会重新归一化其它组，native/活反馈的baseline也不同；不报组件贡献百分比、不命名新独立模块。C20仍L1，同模型/schema，abstract Source策略尚未证明。后续E83用不含query gold的固定关系模型预测Label变化，避免以完整donor取代解释。
