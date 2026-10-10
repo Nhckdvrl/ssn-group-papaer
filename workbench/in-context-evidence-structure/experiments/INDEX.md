@@ -98,3 +98,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E88](E88-preinput-criterion-transfer.md) | 同姓名input前状态是否携带标准，保留recipient证据 | DONE；24→32新措辞确认隐式迁移约0、显式+.182nats；不称完整program/纯地址，C16/C20不升级 |
 | [E89](E89-native-criterion-recognition-and-use.md) | 原生对话识别标准与实际判断是否不同 | DONE诊断；请求歧义和预算截断完整保留，178前缀续完一致；没有稳定知道却不用证据，不扩格式/位置矩阵 |
 | [E90](E90-source-isolation-before-and-after.md) | 来源位置选择是否等于rule信息独立，query模块是否仅排除别的Source | DONE；原signed方向未确认；新32contexts仅可读A时B改rule仍使A17.6%答案改变；single模块独立+27.6点，停止mask细分 |
+| [E91](E91-label-namespace-and-inherited-rule.md) | 分标签是否只改直接foreign读出，或也改变当前来源形成/检索 | DONE；24→48确认：禁读B时namespace使rule幅度下降.491nats；A Key-only与V-only均可部分转移，非单Value解释 |

@@ -157,3 +157,9 @@ E88功能校对：explicit patch后的recipient向selectivity仍+.04938[−.0160
 `results/e90/qwen3_single_adapter_confirmation/{analysis,run}.json`：现有E56模块在完全没有另一Source的48新contexts仍使61.72%→89.32%，+27.60[21.35,33.85]点；native复测完全一致。这明确排除“收益仅仅来自排除另一Source”的充分解释；模块仍是额外监督计算，不能据此定位完整原生criterion。
 
 Source正确位置读取不蕴含Source信息的功能独立，准确率高也不蕴含独立。宽泛上下文化/attention归因限制已有文献；具体关系信息的计算模型和novelty仍待建立，不自动升级或关闭I04。保留E48/E56/E85，C16/C20仍L1。
+
+### E91：输出namespace对来源内形成/检索的作用（C16/C20仍L1）
+
+[E91](experiments/E91-label-namespace-and-inherited-rule.md)、`results/e91/qwen3_{discovery,confirmation}/{analysis,run,preflight}.json`：24→48新contexts，同脚本SHA45d2f946…；A全部raw token与输出词表固定，只改B编码。query所有位置禁止读取B时，rule影响幅度shared .68334→far .19266，配对下降.49068[.34106,.64469]nats；只改A缓存K、固定全部cached V，下降.22772[.09473,.36098]；V-only下降.24758[.10033,.40605]。两单项均不能复现far；K/V全换精确复现far是数值对照，max误差1.72e−5。A-only B-rule翻转改变答案率22.4%→7.3%，accuracy差CI跨0。
+
+支持B的标签编码影响A历史K/V与后续读取；纯直接foreign词的Value投影不是完整充分解释。保留E48直接DLA、E85冻结预测。一般上下文化/QK-V区分已有文献，未定位完整criterion或唯一子空间；Key作用含access与活query状态，跨Source影响不自动视为不合理。当前一个family/受控rule/原test池，执行者自查不算独立科研校对；无L2/L3升级或开关线。
