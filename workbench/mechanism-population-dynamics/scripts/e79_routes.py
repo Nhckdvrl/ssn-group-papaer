@@ -49,8 +49,9 @@ def run(repo, rev, n):
     for i, layer in enumerate(model.gpt_neox.layers):
         hs.append(layer.attention.dense.register_forward_pre_hook(hook_dense(i)))
         hs.append(layer.mlp.register_forward_hook(hook_mlp(i)))
-    rows = {k: [] for k in ("head_real", "head_nonce", "mlp_real", "mlp_nonce", "att_real", "att_nonce",
-                            "ld_real", "ld_nonce", "keep")}
+    KEYS = ("real", "nonce", "creal", "cnonce")  # ctx real, ctx nonce, clean real, clean nonce
+    rows = {f"{a}_{k}": [] for a in ("head", "mlp", "att", "ld") for k in KEYS}
+    rows["keep"] = []
     for x in I:
         o = tok(" " + x["ans"], add_special_tokens=False)["input_ids"][0]
         o2 = tok(" " + x["dist"], add_special_tokens=False)["input_ids"][0]
@@ -61,13 +62,15 @@ def run(repo, rev, n):
                     rows[k].append(None)
             continue
         du = (WU[o2] - WU[o])  # direction: context answer minus memory answer
-        for which, key in (("c1_decl", "real"), ("nonce_c1_decl", "nonce")):
+        for which, key in (("c1_decl", "real"), ("nonce_c1_decl", "nonce"), ("clean_decl", "creal"), ("nonce_clean", "cnonce")):
             prompt = x["prompts"][which]
             enc = tok(prompt, add_special_tokens=False, return_offsets_mapping=True)
             ids = [tok.eos_token_id] + enc["input_ids"]
-            c0 = prompt.index(x["dist"])  # first occurrence = the context sentence
-            span = [j + 1 for j, (a, b) in enumerate(enc["offset_mapping"]) if b > c0 and a < c0 + len(x["dist"])]
-            pos, dist_ids = span[0], span
+            if x["dist"] in prompt:
+                c0 = prompt.index(x["dist"])  # first occurrence = the context sentence
+                dist_ids = [j + 1 for j, (a, b) in enumerate(enc["offset_mapping"]) if b > c0 and a < c0 + len(x["dist"])]
+            else:
+                dist_ids = []
             out = model(torch.tensor([ids]).cuda(), output_attentions=True)
             pre = cap["pre"]  # residual entering the final LayerNorm (captured by hook)
             scale = 1.0 / torch.sqrt(pre.var(unbiased=False) + lnf.eps)
@@ -81,7 +84,8 @@ def run(repo, rev, n):
                 contrib = torch.einsum("hk,dhk->hd", z, W)  # per-head write to residual (bias excluded)
                 head[i] = ((contrib * g) @ du).cpu().numpy()
                 mlp[i] = float(((cap[("mlp", i)] * g) @ du))
-                att[i] = out.attentions[i][0, :, -1, dist_ids].sum(-1).cpu().numpy()
+                if dist_ids:
+                    att[i] = out.attentions[i][0, :, -1, dist_ids].sum(-1).cpu().numpy()
             logit = out.logits[0, -1]
             rows[f"head_{key}"].append(head)
             rows[f"mlp_{key}"].append(mlp)
@@ -97,7 +101,14 @@ def run(repo, rev, n):
     idx = np.array([i for i, kk in enumerate(keep) if kk])
     np.savez_compressed(OUT / f"{tag}.npz", item_index=idx, **arr)
     recon = arr["head_real"].sum((1, 2)) + arr["mlp_real"].sum(1)
+    k_ = (arr["ld_cnonce"] - arr["ld_creal"])  # first-token knowledge (o - o' lead of real over nonce, clean)
+    mem_ctx = (arr["head_nonce"] - arr["head_real"]).sum((1, 2)) + (arr["mlp_nonce"] - arr["mlp_real"]).sum(1)
+    mem_cln = (arr["head_cnonce"] - arr["head_creal"]).sum((1, 2)) + (arr["mlp_cnonce"] - arr["mlp_creal"]).sum(1)
     summ = {"tag": tag, "n": int(keep.sum()),
+            "gamma_first_token": float(np.polyfit(k_, arr["ld_nonce"] - arr["ld_real"], 1)[0]),
+            "memory_route_clean_vs_ctx": [float(mem_cln.mean()), float(mem_ctx.mean())],
+            "mlp_mem_clean_vs_ctx": [float((arr["mlp_cnonce"] - arr["mlp_creal"]).sum(1).mean()), float((arr["mlp_nonce"] - arr["mlp_real"]).sum(1).mean())],
+            "head_mem_clean_vs_ctx": [float((arr["head_cnonce"] - arr["head_creal"]).sum((1, 2)).mean()), float((arr["head_nonce"] - arr["head_real"]).sum((1, 2)).mean())],
             "recon_corr_real": float(np.corrcoef(recon, arr["ld_real"])[0, 1]),
             "mean_ld": [float(arr["ld_real"].mean()), float(arr["ld_nonce"].mean())],
             "mean_heads": [float(arr["head_real"].sum((1, 2)).mean()), float(arr["head_nonce"].sum((1, 2)).mean())],
