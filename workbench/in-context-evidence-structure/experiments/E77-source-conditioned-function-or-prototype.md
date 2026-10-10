@@ -23,3 +23,6 @@
 - **算力：** GPU0空卡，E75在GPU1仍回答任意函数空间问题。NVMe8B，预计3–8分钟，不训练；只这组辨别pilot，不并行下游patch。
 - **产物：** scripts/e77_function.py、scripts/analyze_e77.py；小run/analysis入git，raw JSONL本地。
 - **定位：** Cho task recognition/learning、Kossen label relations、ICL Ciphers、Few-Shot Examples Add Up与activation patching方法已拥有很多成分。本卡是对我们自身因果Source→能力桥的校对和更好任务，不因新实验名称宣称novelty。
+
+## 启动控制校正（未读取科学结果）
+首轮在direct-rule的长度/位置断言失败，0条完整科学context，保留`qwen3_function_invalid_direct_layout`与日志。Direct-rule翻转会改变header中“copies…”/“subtracts…”长度，本来是额外给规则的能力阳性，不能当inferred条件的token-matched关系交换；原卡已明确direct额外信息与table更新。修正断言只用于四个inferred模式，且把所有contexts/variants的布局预检移到权重加载前；direct的Source响应仅辅助、不能作纯关系位置因果证据。数据/seed/规则/读数/MIE均未变，原进程终止后再改，E75依赖保持。

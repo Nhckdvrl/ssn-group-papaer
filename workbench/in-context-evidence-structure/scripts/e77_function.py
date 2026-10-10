@@ -56,6 +56,15 @@ def main():
     enc=[tok.encode(' '+str(y),add_special_tokens=False) for y in range(10)];space=tok.encode(' ',add_special_tokens=False)
     assert len(space)==1 and all(len(e)==2 and e[0]==space[0] for e in enc)
     labels=[e[-1] for e in enc]
+    # Audit every controlled layout before loading weights. Direct-rule tables
+    # change header wording and are capacity controls, not matched word edits.
+    for c in cs:
+        for mode in ['mixed','mixed_instruction','single','single_instruction']:
+            for ss in [0,1] if mode.startswith('single') else [None]:
+                original,sites=encode(tok,c,theta(c,'base'),mode,ss)
+                for change in ['owned_a','owned_b','foreign_swap']:
+                    ids,other_sites=encode(tok,c,theta(c,change),mode,ss)
+                    assert len(ids)==len(original) and sites==other_sites and Counter(ids)==Counter(original)
     model,loading=AutoModelForCausalLM.from_pretrained(a.model,local_files_only=True,dtype=torch.float32,device_map='cuda',attn_implementation='eager',output_loading_info=True)
     model.eval();assert not loading.get('missing_keys') and not loading.get('unexpected_keys') and not loading.get('mismatched_keys'),loading
     errors=[]
@@ -77,8 +86,8 @@ def main():
                         ss=sources[0] if mode.startswith('single') else None
                         ids,sites=encode(tok,c,t,mode,ss)
                         original,original_sites=encode(tok,c,theta(c,'base'),mode,ss)
-                        assert sites==original_sites and len(ids)==len(original)
-                        if mode!='direct':assert Counter(ids)==Counter(original)
+                        if mode!='direct':
+                            assert sites==original_sites and len(ids)==len(original) and Counter(ids)==Counter(original)
                         signature=(tuple(ids),tuple(sources))
                         if signature not in computed:
                             prefix=model(input_ids=torch.tensor([ids],device='cuda'),use_cache=True).past_key_values
