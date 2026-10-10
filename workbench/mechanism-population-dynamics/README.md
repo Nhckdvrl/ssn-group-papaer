@@ -10,6 +10,9 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
+### 2026-10-10 晚：停止（人决定）
+上下文 vs 记忆仲裁这条线的两个候选规律（γ 常数、发育中 γ 下降）在严格测量下都不成立；剩下的 Flan 格式效应被判定不值得作为研究对象。人决定：停止实验；删除 Flan 相关实验卡与 C04、删除本地逐条目数组；模型缓存与工作区保留。以下为停止前的记录。
+
 ### 2026-10-10 当前进度（17:20）
 - **问题：** 训练数据（尤其是问答式指令数据）怎样改变模型在“上下文证据 vs 自身记忆”之间的取舍，能否把它与知识增长、一般的提示格式效应分开。
 - **E77 仲裁图谱（120 个检查点，已停）：** 成熟模型中“主语特定知识”对冲突答案的影响随训练下降；但跨 seed 差异大（Pythia-410M 0.56–0.82），“普适常数”撤回；E77 只存整句概率，改由 E80 重测。
