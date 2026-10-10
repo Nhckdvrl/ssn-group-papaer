@@ -33,7 +33,7 @@ Using public model suites that cross initialization with training data (69 DataD
 The layer that hosts a role and the algorithm a circuit runs are shared by all models.
 The attention role of an individual head is shared among models trained from the same initialization, across all 25 corpora, and not between models from different initializations.
 The causal carrier of a task is assigned by training: siblings that share the initialization and differ only slightly in data run the same indirect-object-identification algorithm on different heads, while a model's own carriers, once settled in pretraining, stay in place through midtraining, preference tuning and instruction tuning.
-Controlled pretraining exposes the mechanism: the heads of a functional class compete for a role while it forms, and when two candidates are close, masking a random 10\% of the data hands the role to the other one with the ability intact.
+Controlled pretraining exposes the mechanism: candidate heads compete for a role while it forms, and when two candidates are close, masking a random 10\% of the data hands the role to the other one with the ability intact.
 Head-level findings therefore carry over along a training lineage, and attention-role labels carry over within an initialization; across separately trained runs, the algorithm carries over and the carriers are found anew.
 \end{abstract}
 
@@ -62,7 +62,7 @@ All models agree on the layer that hosts each of nine head roles; which head wit
 \item \textbf{Training assigns the causal carriers within that coordinate system} (\S\ref{sec:carriers}).
 Siblings from the same initialization run the same IOI algorithm with different heads, including siblings whose corpora differ only by the removal of 1.5\% of the data, and, at four of six Pythia sizes, by deduplication.
 \item \textbf{Carriers move during pretraining and then stay} (\S\ref{sec:lineage}).
-Along one run, responsibility moves among heads of the same functional class through most of pretraining, and the carriers present at the end of pretraining are the carriers after midtraining, SFT, DPO and instruction tuning.
+Along one run, responsibility moves between heads through most of pretraining, and the carriers present at the end of pretraining are the carriers after midtraining, SFT, DPO and instruction tuning.
 \end{enumerate*}
 Controlled pretraining shows the competition directly (\S\ref{sec:masking}): when one induction head leads, masking training data during its emergence delays that head; when two heads are nearly equal, masking a random 10\% of the data hands the role to the other head with the ability intact.
 
@@ -216,13 +216,13 @@ A finding about which heads carry IOI in a base model is therefore a finding abo
 \end{figure*}
 
 Before that, during pretraining, the carriers move (Figure~\ref{fig:lineage}).
-In Pythia-410M, IOI appears at step 3000; head \head{11.4} becomes the strongest carrier at step 2000 and stays so, while the second and third places change among name movers until step 66k, after which the final top three are in place.
+In Pythia-410M, IOI appears at step 3000; head \head{11.4} becomes the strongest carrier at step 2000 and stays so, while the second and third places change hands until step 66k, after which the final top three are in place.
 Its deduplicated sibling settles on a different main carrier, \head{12.12}, by step 6k and completes its final top three at step 100k.
 From the moment carriers appear, the two siblings share none of their top three, while their attention roles start at a correspondence of 0.79 and diverge slowly to 0.47.
-In DataDecide-1B, the head that carries IOI when the behaviour first appears is still the main carrier at the end of training in five of twelve runs; in the other seven, another member of the same class takes over later in pretraining.
+In DataDecide-1B, the head that carries IOI when the behaviour first appears is still the main carrier at the end of training in three of twelve runs; in the other nine, another head takes over later in pretraining.
 
 Carrier assignment is thus an outcome of a run's own training.
-Siblings begin from the same coordinate system, the members of each functional class compete for the task while the corpus is being learned, and the winner is kept once pretraining is over.
+Siblings begin from the same coordinate system, candidate heads compete for the task while the corpus is being learned, and the winner is kept once pretraining is over.
 This explains the two halves of Figure~\ref{fig:carryover}: siblings have each been through their own competition, descendants inherit its result.
 
 \section{Data interventions and the competition among candidates}
@@ -284,7 +284,7 @@ For data interventions, a single-head readout tracks the mechanism when one cand
 
 \paragraph{What the coordinate system is.}
 The initialization does not choose the carriers; it chooses where each role can live.
-Every member of a functional class is a candidate for the task, and the run's own data decide which candidate wins.
+Heads that share a role's attention profile are candidates for the task, and the run's own data decide which candidate wins.
 This places the variation that \citet{tigges2024llm} and \citet{bali2026quantifying} observe across seeds at a definite point: in the competition among candidates during pretraining, not in the coordinates of the roles, which the initialization sets, and not in later training, which keeps the outcome.
 
 \section*{Limitations}

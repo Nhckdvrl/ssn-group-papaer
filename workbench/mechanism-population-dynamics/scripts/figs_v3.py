@@ -200,7 +200,7 @@ def fig3():
     axC.set_xlabel("training step")
     axC.set_ylabel("induction score")
     axC.set_title("c  two candidates (initialization 2)", fontsize=6.9)
-    axC.legend(loc="upper left", fontsize=5.2, borderaxespad=0.1)
+    axC.legend(loc="lower right", fontsize=5.0, borderaxespad=0.1, handlelength=1.6)
     save(fig, "fig3_masking")
     return out
 
