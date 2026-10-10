@@ -89,3 +89,9 @@ E74、`results/e74/qwen3_discovery/{analysis,run}.json`：36contexts full/seen�
 
 ### E78：函数偏好依赖定义顺序，识别→部署主张未建立（不升级）
 E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规则，mixed direct插值subtract在两定义顺序下.9609→.2500，copy .7734→.9609；word/频率不变。copy-minus-subtract偏好变化+.8984[.7284,1.0821]，single同样+.3672[.2812,.4467]。因此E77的identity劣势不是已经证明的稳定函数或Source组合结构。两order mixed Rule-ID .8516，copy/subtract .8750/.8281，未过两函数.90；single gold-copy外推.8945亦未过执行阳性。auto−empty插值+.1895[.1016,.2637]、外推+.2441[.1680,.3125]是真差值，但一般self-inferred instruction交回执行已有Liu/Neubig/Andreas2024强近邻，不能当新机制。所有材料保留，无C##升级；physical label来源→rule evidence来源仍待有界检验，而非已有新结论。
+
+### E79：共享词典的执行阳性不足，不作规则来源归因（不升级）
+[E79](experiments/E79-parameter-evidence-versus-codebook-evidence.md)、`results/e79/qwen3_codebook/{analysis,run,preflight,error_signature_posthoc}.json`：16新context、两定义顺序全部保留。词典lookup .9531–.9875、seen .9844–1.00，但提供真实规则的direct subtract插值 .2188[.0625,.3889]、外推 .1563[.0667,.2639]，未通过复合执行阳性；同context numeric原子未测，不能声称原子均可靠而组合失败。Mixed own-source signed响应约1.5–2.1nats且CI为正，仍不等于完整函数执行；lexical及foreign_D读数CI宽，不能当已区分机制或等效零影响。事后direct subtract错误中151/256输出g(x)、48正确、57其它，是行为签名而非内部计算时序证据。分析bool相减修正不改评分引擎/读数/样本，无新C##。
+
+### 本次综合：保持证据等级，收束投入与措辞
+见[`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)。E59–E71的来源因果路径、whole-query范围、关系×位置与公共载体偏移为优先解释链条；E74–E79不作为其成立的额外门槛。E71冻结frame新身份恢复.350[.231,.477]、accuracy+.031[.008,.055]是正的部分迁移，未达到原MIE不等于无迁移。公共key偏移作用于**整个demo prefix-code载体组**，不是两个Source各自的组偏移；固定Q组内相对logits不变只支持该局部不变性。保留所有原阈值与解释降级，不提升L1或改变I04/ACTIVE，不宣称已有统一ICL理论。

@@ -2,14 +2,15 @@
 
 ## 状态
 - **状态：** ACTIVE-EXPLORE（2026-10-08 人决定恢复，E39–E48 已开展；此前 2026-10-06 PAUSED 为历史记录）。这是正式研究排程；不意味着别的研究方向停止。
+- **当前综合判断与下一步（2026-10-10）：** 先读 [`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)。已有可靠现象与实质因果线索；聚焦E59–E71的query内部来源条件化、载体可见性与组内选择，不追求覆盖全部ICL的完美解释，不把后续函数任务的控制变成主线门槛。本次按人要求总结并上传main，不启动新增实验。
 - **2026-10-08/09 进展：** 真实数据上的后果与机制（C13，E46–E49）：多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（2 个真实数据集、8 模型、4 家族）；每人独立的标签词恢复到单人水平；读标签头把另一人的标签读进答案，换词后在读出层面分隔（E48）。顺序 / 格式敏感线（E40–E45）已止损关闭。见 `PAPER_SHAPE.md` 末节。
 - **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **E65/E66更新：** query接力有模型边界（Qwen的Label标记／Mistral的来源字段）；删direct-label无稳定accuracy修复。input前source缓存对single/mixed均失败，已见input的缓存保留logit但准确率收益有限，不能包装成新组合瓶颈。各卡与复盘已记负结果，C16仍L1。
 - **E67–E70更新：** 同信息code位置改变Qwen的来源排序；prefix K的历史作用可在完全禁读label后保留。独立冻结公共key偏移将accuracy从0.543恢复至0.602，但来源排序0.828仍低于原生0.938；预测恢复不等于binding恢复。C17–C19均L1，bf16数值失败已作废，详见复盘§8。
-- **E71更新：** 相同namespace下，关系码×位置的accuracy交互独立确认+10.9点；旧冻结frame迁移只35%/accuracy+3.1点，未过预设MIE。
+- **E71更新：** 相同namespace下，关系码×位置的accuracy交互独立确认+10.9点；旧冻结frame新身份迁移35%[23.1,47.7]/accuracy+3.1点[0.8,5.5]，是正的部分迁移，未达到原预设MIE，不能说没有可迁移结构。
 - **E72–E75更新：** 短direct预算与Markdown漏判不能证明binding失败。48次同轨迹前缀核对全一致；27B thinking普通多来源pilot全对，8B native Source双射补全亦全对（18contexts），independent未完成三分之一，不称能力缺失。E74即时缺失组合32–36%，方向CI跨0；详见复盘§10。
 - **E76/E77更新：** Source方向响应可复现，但E76中点与加性任务允许Source均值解释，撤回完整函数组合解释；新数字accuracy73.4%未过门槛。E77相同Source标签频率/多个Input下，显式规则全对，而从示例推断时连Single identity也弱；追函数识别、全局偏好与实际调用，不直接称Source特有缺陷。详见复盘§11。
-- **E78更新：** 交换定义顺序使mixed subtract插值96.1%→25.0%；Rule-ID与部分执行gate未过，不称可靠知道却不用。中间code收益已有直接COLM2024近邻，未提高机制等级；E79先检验private规则与共享codebook的证据角色。详见复盘§12。
+- **E78/E79更新：** 定义顺序使mixed subtract插值96.1%→25.0%；共享词典任务lookup95–99%，但direct subtract组合仅15.6–21.9%，不作可靠知道却不用/provenance机制归因。两者作为诊断与解释边界保留；不优先追新的原生/算术门槛。详见复盘§12–13及综合总结。
 - **主 idea：** [`ideas/I04-output-indexed-evidence.md`](ideas/I04-output-indexed-evidence.md)
 - **目标会议：** ICML / ICLR（ICL 理论与机制叙事）；备选 ACL / EMNLP（标签语义、标注者视角、非平稳 NLP 场景叙事）。
 - **证据账本：** [`CLAIMS.md`](CLAIMS.md)　**实验索引：** [`experiments/INDEX.md`](experiments/INDEX.md)　**论文形态卡：** [`PAPER_SHAPE.md`](PAPER_SHAPE.md)　**日志：** [`logs/`](logs/)
@@ -17,7 +18,7 @@
 
 ## 1. 研究问题
 **起点（T16）：** 冻结 LLM 能不能判断上下文里的反例是“噪声”还是“规则变了”，并据此调整证据的汇总方式？
-**测量工具：** exact 层级 Bayes oracle（联合推断变化率 λ 与噪声率 ε）给出一个**方向相反**的预测——在后缀反例之前加零散噪声，规范学习者应**更不**相信后缀；而任何正权重的可加汇总都会**更**相信。配合成簇检验（同样数量的反例，连成一串 vs 零散）与新旧对调检验（A→B vs B→A）。
+**测量工具：** exact 层级 Bayes oracle（联合推断变化率 λ 与噪声率 ε）在指定生成模型与先验下给出一个**方向相反**的预测——在后缀反例之前加零散噪声，该oracle应**更不**相信后缀；而正权重的可加汇总会**更**相信。配合成簇检验（同样数量的反例，连成一串 vs 零散）与新旧对调检验（A→B vs B→A）。它不是所有ICL prompt唯一合理的规范假设。
 
 **收敛后的问题：** 模型在什么情况下能追踪变化、在什么情况下把新旧证据混在一起——以及为什么。
 
@@ -59,15 +60,14 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 **最危险的压缩：** “ICL = kNN + 标签偏置”——回应见 I04 §6。
 
 ## 6. 下一步（按信息量排序，非日程）
-1. 检验E70的公共group-prior解释能否预测未参与发现的code身份/schema；区分载体组可读性、组内样例匹配与label知识。预测分数和来源排序均保留。
-2. 对common×centered合作作新材料的预定验证；与Cho shortcut、Few-Shot Examples Add Up附录K、多机制binding正面对齐，避免把已有alignment或事后交互当新理论。
-3. 机制预测明确后，再用少量强模型/推理模式检验程序切换；自然多标注者规则与前沿reasoning压力测试仍未完成。已有real文本采用受控来源规则。
+1. 综合E59–E71已有数据，形成query内部来源条件化、载体访问与组内来源选择的有界解释；保留E71部分迁移，明确已有近邻与真实证据范围。
+2. 只围绕Tag/prefix差异做一个候选pilot：对照控制载体组总attention mass、保留组内相对权重，分开测预测与来源排序。精确操作在跑前实验卡确定；后续由结果决定，不先铺函数/词典或模型扫描。详见综合总结§7。
 
 ## 7. 目录
 | 路径 | 内容 |
 |---|---|
 | `ideas/` | I04（主 idea）、I01（早期版本） |
-| `experiments/` | E00–E70 实验卡（跑前写决策表；早期 pilot 的事后补写已标注）；`INDEX.md` 为总索引 |
+| `experiments/` | E00–E79 实验卡（跑前写决策表；早期 pilot 的事后补写已标注）；`INDEX.md` 为总索引 |
 | `CLAIMS.md` | 主张账本 C00–C19、混杂审计、作废记录 |
 | `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_OUTLINE.md` 为 10-05 旧版提纲（已被取代，保留作历史） |
 | `DATA_PLAN.md` | 数据方案与实际使用的数据 |
@@ -87,10 +87,12 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **E65/E66资产：** `results/e65_e66_summary.json`、各有效`analysis/run.json`与E65图入git；逐query原始JSONL及token布局留NFS。E66 bf16作废输出/控制记录保留，float32有效版本按卡重建。
 - **E58–E64资产：** `results/e58/`、`e59/`中的`*.npy`锚点状态与各卡`contexts.jsonl/behavior.jsonl`留在上述NFS路径，不进git；代码与固定种子可重建。小汇总`results/e58_e64_summary.json`与`analysis.json`入git。Qwen3-8B revision `b968826d9c46dd6066d109eabc6255188de91218`；Mistral-7B-v0.3 `caa1feb0e54d415e2df31207e5f4e273e33509b1`；节点NVMe `/tmp/ices_models/`由对应HF缓存snapshot复制。环境仍为conda `verl-clean`（torch2.8.0/cu128、transformers4.57.6）。
 
+- **E78/E79资产：** `results/e78/qwen3_bridge/`、`results/e79/qwen3_codebook/`的原始context/behavior JSONL本地留存；小run/preflight/analysis、E79事后错误签名及`results/figs/e78_definition_order.{png,pdf}`入git。按实验卡/seed与同conda重建；不把coded词典任务当原始多标注分布。
+
 ## 9. 决策记录
-- **E78资产：** `results/e78/qwen3_bridge/`的原始context/behavior JSONL本地留存；小run/preflight/analysis及`results/figs/e78_definition_order.{png,pdf}`入git。E79按实验卡/seed与同conda重建，raw留`results/e79/`；不把coded词典任务当原始多标注分布。
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。
 - **2026-10-06：** 人决定 I04 为主 idea，先做机制；机制阶段完成第一轮（E36–E38）。
 - **2026-10-06：** 人决定暂停推进，留作之后主推的 candidate；转去找新题。
 
 - **2026-10-08：** 人决定恢复为 ACTIVE-EXPLORE；E39–E48 已开展，见当日日志及实验卡。此决定不构成永久关闭其他项目的依据。
+- **2026-10-10：** 人要求停止不断追加解释条件，耐心总结全部进展与下一步并上传GitHub main。本次据此完成综合与记录；不改变ACTIVE/I04，不启动新实验，下一步聚焦已有E59–E71链条。

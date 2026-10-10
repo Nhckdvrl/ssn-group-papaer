@@ -87,4 +87,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E76](E76-foreign-word-versus-owned-operator.md) | 词只在foreign labels时，是否执行自己的未知±1规则 | DONE；Source正确方向确认，但新材料accuracy73.4%未过门槛，中点/加性解释限制完整函数判断；暂不word机制 |
 | [E77](E77-source-conditioned-function-or-prototype.md) | 相同Source label频率下，是否执行输入依赖的函数 | DONE；direct全对、single comp强，但single identity也弱，多数错成另一个合法函数；不称Source独有缺陷 |
 | [E78](E78-operator-inference-and-execution.md) | Source函数识别、数字应用与显式code交接是否不同 | DONE；定义顺序让mixed subtract插值96.1%→25.0%；Rule-ID门槛未过，code+19–24点非新机制证据 |
-| [E79](E79-parameter-evidence-versus-codebook-evidence.md) | private规则与共享输出词典的证据来源能否因果区分 | PLANNED；own参数与codebook各自产生同一label翻转、合起来取消，先过behavior阳性 |
+| [E79](E79-parameter-evidence-versus-codebook-evidence.md) | private规则与共享输出词典的证据来源能否因果区分 | DONE；词典95–99%，direct subtract组合仅15.6–21.9%，不作provenance归因；保留诊断，当前不启动后续 |

@@ -1,6 +1,6 @@
 # E79：foreign label提供了词典，还是提供了别人的规则？（2026-10-10）
 
-- **状态：** RUNNING（启动前完整CPU控制16640项通过）
+- **状态：** DONE（词典lookup阳性，direct组合执行阳性失败；不做provenance机制归因）
 - **类型：** PILOT；先检验语义分解任务的有效性，不在行为基础失败时铺patch。
 - **对应：** I04/C09/C15/P17/P18。承接E74未鉴别、E76均值捷径、E77/E78函数描述先验控制；不预设新“识别却不用”机制。
 - **问题（一句话）：** 相同的最终label翻转，若分别来自本Source的函数参数变化与共享输出词典变化，模型能否区分它们，而physical foreign-label贡献是否必须意味着foreign-rule使用？
@@ -21,11 +21,35 @@
   - inferred可靠且own/lexical/both跟随oracle、foreign_D等效无影响 → 才进一步分解因果label messages的共享词典与private参数作用；物理foreign贡献≠rule来源成为可测对象，仍需独立确认。
   - 同时错误跟随foreign_D → 真foreign函数干扰与合法词典共享并存，继续分解，不以单一pooling或单一binding解释。
   - 仅Header order/reorder支配 → 先把边界定为格式/位置敏感，不称通用函数或provenance规律。
-- **算力预算：** 空GPU0预计.15GPU·时；先本卡behavior gate，其它GPU不铺下游mechanism。**实际：** 待填。
+- **算力预算：** 空GPU0预计.15GPU·时；先本卡behavior gate，其它GPU不铺下游mechanism。**实际：** 429.0415s=.1192GPU·时。
 - **产物：** scripts/e79_codebook.py、scripts/analyze_e79.py；small JSON入git，raw本地。
 - **命令：** `CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e79_codebook.py --model /tmp/ices_models/Qwen3-8B --out results/e79/qwen3_codebook`。完整CPU预检在权重加载/科学评分前通过，函数/词典唯一识别、gold XOR、word频率与分段等价均断言。
 - **定位：** Wang/Cho labels、Few-Shot Examples Add Up的task-specific QK/non-specific V与alignment，Feng/Gur-Arieh的value检索、Cho信息过滤、Ortu read-but-suppress均属强近邻；一般attention≠解释已被拥有。需要具体parameter/codebook因果读数与适用范围，不以任务新命名宣布novel。
 
 ## 结果（跑完后填写；不改上方读数/门槛）
 
-待运行。
+16新context、4证据×2order×8真反事实×30query×10候选完整，429.0415s=.1192GPU·时；no-op0、24项full-forward/cache max5.82e−5nats，原引擎hash未变。`results/e79/qwen3_codebook/{run,preflight,analysis}.json`；raw本地。
+
+### 阳性未过，先收窄结论
+
+| 证据（两order等权） | Casey词典lookup | seen A/B | 插值copy/subtract | 外推copy/subtract |
+|---|---|---|---|---|
+| mixed inferred | .9531 | 1.00 | .7500/.1953 | .7031/.1406 |
+| mixed+Source scope | .9844 | .9844 | .6875/.2266 | .7266/.1094 |
+| own+dictionary | .9875 | .9922 | .9844/.0234 | .8828/.0469 |
+| direct true rule table | .9625 | 1.00 | .8594/.2188 | .8203/.1563 |
+
+Direct subtract插值CI[.0625,.3889]、外推[.0667,.2639]，即使提供真实私人规则，也未可靠完成复合任务。Lookup/seen好不能推出算术/新词典的组合有效；**同context的numeric原子F尚未测，不能宣称两个原子都可靠却不能compose。** 整个direct gate失败，更没有inferred两函数≥.80的基础；不进入label messages/provenance patch。
+
+Mixed own_A/B signed响应插值1.528[.435,2.774]/2.102[.471,3.980]，外推1.663[.450,3.010]/1.860[.539,3.335]。这些方向不等于完整函数执行，再次不能拿Source响应替代准确率。Lexical插值1.978[−4.375,9.121]、外推.853[−4.965,7.282]，未稳定鉴别；foreign_D CI非常宽，插值−.705[−5.258,3.763]、外推.057[−4.002,4.246]，**不满足±.5等效界，不说foreign函数无影响**。own+dictionary的foreign_D零效应由该source文本未入prompt逻辑保证，不当模型自主隔离。
+
+own+dictionary−mixed插值+.0313[−.0859,.1602]、外推+.0430[−.0586,.1485]，未过差值MIE；Source scope同样无稳定恢复。高copy/低subtract差异允许copy字典的便利检索、数字→word接口、先后计算/Source规则读取不足等解释；不能由此直接推出新计算定律。
+
+### POST-HOC错误签名与分析修正
+`error_signature_posthoc.json`：每函数256个novel Source/query/order全保留。direct subtract48正确，151输出g(x)，57其它；own+dictionary subtract9正确，198输出g(x)，49其它。符合跳过数值变换直接lookup的输出签名，但没有内部时序证据，**“read-before-transform”只是猜测**。
+初版analyzer对bool准确率数组做相减，报TypeError且尚未写analysis/打印科学统计；改为float subtraction，读数/门槛/样本不变。评分引擎与结果不改、不重跑科学数据。无主张升级。
+
+### 实际决策
+若继续此分支，按原表应先做native原生有效性和同context原子F/G对照。可能的解释包括即时候选评分接口、Source/算术读取、数字与Word的接口及计算顺序；广义组合缺陷、可解码≠部署、晚层hop/backpatching已有强近邻，不自动把本结果重命名成新compose limitation。
+
+**本次综合排序（人纠偏之后）：** 不启动上述后续，不把它们当ICES整条主线的门槛。本结果保留为诊断；优先综合E59–E71已有计算证据与聚焦一个解释问题，见[`RESEARCH_SYNTHESIS_2026-10-10.md`](../RESEARCH_SYNTHESIS_2026-10-10.md)。这是投入排序变化，不改跑前标准或实验事实。

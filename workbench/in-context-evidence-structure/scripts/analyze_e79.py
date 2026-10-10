@@ -104,7 +104,7 @@ def main():
         out['responses'][mode] = {k: ci(np.mean(values, axis=0)) for k, values in responses.items()}
     for label, ma, mb in [('own_dictionary_minus_mixed', 'own_dictionary', 'mixed'),
                          ('scope_minus_mixed', 'mixed_scope', 'mixed'), ('direct_minus_mixed', 'direct', 'mixed')]:
-        delta = np.mean([acs[ma + '.' + o + '.base'] - acs[mb + '.' + o + '.base'] for o in ORDERS], axis=0)
+        delta = np.mean([acs[ma + '.' + o + '.base'].astype(float) - acs[mb + '.' + o + '.base'].astype(float) for o in ORDERS], axis=0)
         out['contrasts'][label] = {g: ci(delta[:, :2, xs].mean((1, 2))) for g, xs in GROUPS.items()}
     (d / 'analysis.json').write_text(json.dumps(out, indent=2))
     print(json.dumps({'base': {k: v for k, v in out['conditions'].items() if k.endswith('both_orders.base')},
