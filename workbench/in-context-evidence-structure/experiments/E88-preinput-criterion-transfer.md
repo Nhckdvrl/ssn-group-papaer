@@ -26,3 +26,19 @@ E66移除demo读取后single/mixed都失败；本实验保留recipient证据，�
 ## 结果（首次运行后追加）
 
 待运行。C16/C20不升级；没有开关线或workbench状态变化。
+
+## 2026-10-10：pilot结果后的确认协议（新运行前冻结）
+
+pilot完整24contexts/384queries，源码SHA `522515d8679de5a7947400ba149616993d7d25df7e22aff04eef39e1d8b57b80`；数值误差最大1.14e−5nats，178.33秒=.04953 GPU·时。
+
+主读数同姓名隐式标准T=.00883[−.00798,.02561]nats；姓名交换T=.30106[.14337,.47816]；native标准flipT=.36674[.30070,.43677]。显式标准同接口T=.31405[.25119,.38131]，正/负两个donor方向均为正；显式native flip1.25562[1.12991,1.42052]。
+
+**实际改变判断：** 不进入隐式criterion与recipient证据竞争分支，不扫层/位置。不能说隐式模型已可靠学会：默认discordant accuracy50%[46.9,53.1]；一句指令55.2%[51.6,59.4]；显式63.0%[57.8,68.2]。native logit对标准有响应，与可靠完成标准判断是两回事。接口不是全然无效，但显式/隐式的native作用本来也不等强，绝对迁移差不能自动解释成不同算法。
+
+**POST-HOC发现、随后冻结的确认目标：** 同一来源字段接口，显式给出的criterion比demo推断的criterion有更大迁移作用。确认不是隐式阳性分支，而是有限地检查这项新分离是否随措辞消失。
+
+- 32新contexts，seed188001，stage confirmation；demo和query的各方面/极性短语池与pilot完全不重叠，继续保留全部8个条件、16queries/context。科学引擎不改，不能选好seed。
+- 主确认量：`T_explicit_patch − T_implicit_patch`的context配对CI；另报两项T、各方向、姓名swap和native flip以及discordant accuracy。只有差异在新材料仍明确、阳性/数值正常，才保留有界分离。
+- 补充量：两项各自相对native flip的**均值比**及配对bootstrap差异，用于诊断原生响应强度的替代解释。native接近0时不据比值判断，不截掉困难context/重采样；该比值不是模块贡献份额。探索集报告为POST-HOC，确认集是冻结读数。
+- 如果新材料隐式迁移恢复，或显式/隐式差异消失 → 不保留稳定分离；如果仅native大小不同且相对比值差异不明确 → 更兼容效应强度/识别难度，不称不同信息组织机制；如果同接口分离仍明确 → 保留“标准推断与来源条件状态形成之间的有界区别”，仍不证明纯地址/完整program，不把显式规则任务替代研究中心。
+- 额外预算≤.25 GPU·时；本卡总预算≤.55。命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e88_criterion_transfer.py --model /tmp/ices_models/Qwen3-8B --out results/e88/qwen3_confirmation --n 32 --seed 188001 --stage confirmation`。
