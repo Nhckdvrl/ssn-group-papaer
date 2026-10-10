@@ -31,4 +31,18 @@ CPU/token/feature检查通过，科学源码SHA256 `d5932b6af16274b6a7d0a21f91c9
 
 命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e84_source_code_prediction.py --model /tmp/ices_models/Qwen3-8B --reader results/e83/frozen_reader --out results/e84/qwen3_discovery --n 32 --seed 84001`。
 
-待GPU运行。Source-code冲突问题在E83读取输出前已有卡内限制说明；E84预定了具体读数和竞争预测，不声称完全预见E83。
+### 32-context pilot：读取变化更跟随code代理，但完整行为预测仍不足
+
+seed84001全部32contexts/9条件/8query保留，63.543s=.01765GPU·时。self0、natural R_field/R_code行为差0、full/cache≤2.68e−5nats，G概率误差0、行和≤5.97e−7、mask0。结果`results/e84/qwen3_discovery/{analysis,run,preflight}.json`。
+
+native输出field/code两分量Tag .3736/.2327、Prefix .5696/.5163，两类身份都被使用；不支持“prefix只看码、不看Source字段”。自然Source contrast分别.6063/1.0860。oracle Label重放分量.4937/.4298；R_field .6917/.3026，R_code .5137/.4805。自然query两R作用完全相同，冲突才能区分。
+
+冲突上的code−field条件mass加权allocation MSE差−1.5897[−1.6474,−1.5266]；读数支持R_code。对实际Label重放的冲突输出效应预测，MSE差−.1468[−.2739,−.0305]，code也优于field。但**两者都没有很好重建逐query作用：RMSE field .719、code .609，B更低.490**，相关field−.152/code .114/B .239。不能把“胜过竞争Source解释”写成“已得到完整预测模型”。这触发原决策表的有界支持与行为不足两项，不加feature追gold。
+
+**实际更新：** E83的S项在此布局变化中主要跟踪code关系代理，不能把它直接归因到独立Source字段寻址；native Source字段效应仍在。输出分解是统计四格，不识别两个独立模块；TF prefix的冲突也可能改变输出条件语义，不当能力失败。
+
+### 确认前固定预测
+
+同源码/冻结系数/全部条件，64全新contexts seed184001。预计conflict R_code的加权allocation MSE低于R_field；效应预测MSE也较低（CI若跨0，按未确认报告）；native Tag与Prefix的field、code两分量都为正，不是code取代Source字段。同时预期两R的逐query效应仍不充分，不把确认变成拟合最好模型的搜索。自然两R完全一致的质量控制必须继续成立。
+
+命令同pilot，改out=`results/e84/qwen3_confirmation`、n64、seed184001。Source-code冲突问题在E83读取输出前已有卡内限制说明；E84预定具体读数/竞争预测，不声称完全预见E83。
