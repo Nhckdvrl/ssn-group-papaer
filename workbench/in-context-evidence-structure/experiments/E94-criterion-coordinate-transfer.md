@@ -1,6 +1,6 @@
 # E94：输入出现之前，学到的标准如何跨私人输出坐标迁移？（2026-10-10）
 
-- **状态：** PLANNED；先冻结方法/静态预测/源码，再运行。
+- **状态：** DONE-PILOT；全部4context/1216行完成，原协议与源码保留。
 - **类型：** PILOT；一次有功能预测的内容干预，不扫head/rank/alpha。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题（一句话）：** 从另一个Source示例得到的标准信息，是近似独立的criterion，还是依私人label assignment编码的规则方向；它能否用于当前来源的新输入？
@@ -52,12 +52,12 @@ E93强direct已完整384行：B自身98.4%、explicit A oracle100%，A mixed约4
 | 两者均弱、Source-name阳性 | 此input前field/三个band不能迁移相同功能；保留输入后lookup/JIT/非线性解释，结束该局部矩阵 |
 | Source-name及两方向都弱 | 当前接口的functional scope不清；不添加一套位置/alpha搜寻来包装negative |
 
-- **算力预算：** 单节点两卡，总≤2 GPU·时；实际待运行。
-- **资产：** `results/e94/qwen35_discovery`；raw prompts/contexts/behavior/activation本地，小run/analysis/preflight/source入git。
+- **算力预算：** 单节点两卡，总≤2 GPU·时；实际.93565 GPU·时。
+- **资产：** `results/e94/qwen35_discovery`；raw prompts/contexts/behavior本地，小run/analysis/preflight/direction norms/source入git。本次未持久化原始activation张量。
 
 ## 结果（以后追加，不改冻结协议）
 
-未运行。C16/C20仍L1，I04/ACTIVE状态不变。标准信息的载体、因果运输与原生实际调用不混同。
+完整结果见本卡末尾。C16/C20仍L1，I04/ACTIVE状态不变。标准信息的载体、因果运输与原生实际调用不混同。
 
 
 ### 2026-10-11运行前记录
@@ -70,3 +70,18 @@ E93thinking最终已返回：120/128 native、oracle32/32、probe29/32，全部7
 
 
 **科学运行前资源纠正：** 启动前查到本地各卡已有其它作业约16GiB、util约97%；未中止或改动它们。将本实验auto placement上限从每卡78改为64GiB，给既有作业和activation留内存。数据/精度/三个band/读数不变，修改在科学行产生之前提交。两卡合计128GiB仍可容纳约108GB float32权重；加载时必须全部落在两张CUDA卡，禁止无声CPU offload。
+
+
+## 实际结果：有来源切换，未得到标准运输
+
+4新context全部1216行完成；float32/eager、真实双CUDA分段，self-copy0、非Goal字段修改0，源码b121016a…与运行记录一致，.93565 GPU·时，卡释放。所有行argmax为yes/no，384条inv/sign criterion干预与各自native的binary/argmax答案**0条改变**。
+
+- Layer16的A→B整字段复制：预测符合B的私人函数从28.1%提高到98.4%[95.3,100]，配对增益70.3个百分点（精确CI见completeness_audit）。该操作会切换私人偏好，不能叫只借用criterion。Layer32为62.5%[43.8,82.8]；Layer48接近native。
+- inv的最大T在32层为+.00242[.00015,.00643]nats；sign最大也在32层，+.00303[.00043,.00563]。这与完整criterion profile要求的.15nats/5百分点明显不同；一些很小CI不跨0不成为“标准运输成功”。16/48更小，随机方向同样有小扰动，全部条件/方向保留。
+- 32/48层的CB差分norm可明显非零（例如inv norm最高约20/48），但没有相应criterion功能迁移；不能把差分幅度/可读出性等同可部署标准。没有为了放大这点变化扫alpha/补层。
+
+**判断更新：** 三个input前Goal-field接口有强来源条件作用，尤其16层能选择B的完整私人函数；本次两种线性运输分量没有形成可共享criterion。因此不能据E93 B函数正确就说独立criterion已经被存进来源字段，也不能凭整体复制成功宣布复制了规则。来源地址与Source-bound程序仍可同时解释该整体操作；本实验不宣布在全模型中没有标准信息、或Field必然只是纯地址。
+
+**设计审计：** inv和recipient-calibrated sign是不同信号分量；若后者成功，进一步宣称“必须做recipient坐标校准”还需固定同一个sign信号比较raw与calibrated，这一点原比较本身不够。本次两种运输都没有功能profile，不追加这个无当前收益的local control，不改变原始读数。按照跑前决策结束这一Goal-field矩阵；回到规则信息的形成/选择问题、重新对照label-conditional表示与criterion推断，而非继续猜哪个字段/alpha有效。C16/C20仍L1，I04/ACTIVE不变。
+
+结果`results/e94/qwen35_discovery/{analysis,run,preflight,direction_norms,completeness_audit}.json`；raw行为/contexts仅本地。此为小样本功能范围诊断，不是新的完整机制或顶会级结论。

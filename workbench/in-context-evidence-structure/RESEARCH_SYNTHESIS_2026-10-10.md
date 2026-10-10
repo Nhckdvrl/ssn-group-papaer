@@ -445,4 +445,13 @@ E93 strong direct4context：B自身98.4%、明确A criterion oracle100%，A mixe
 
 当前最有意义的区别是：**来源间私人映射混入可以减少，但这不自动带来有效的标准共享。** 同一批例子中的信息有不同的功能权限：A提供私人偏好，B提供潜在标准。合法共享与避免私有判断污染，应在计算模型中分别预测，而非由统一的来源gating指标代替。现有多任务Bayes已有这个统计思想；ICES需要的是原生LLM如何实现该区别的功能与因果解释。
 
-[E94](experiments/E94-criterion-coordinate-transfer.md)用input前B Goal字段的criterion变化，在B私人assignment两方向上作不变/变号分解，比较直接运输与按A私人坐标校准后的运输。同一operator必须对四个新输入、两个A偏好给完整profile；没有未来Input或答案进入donor。它使用额外gold坐标校准，成功也不证明原生已经执行了这个组合；相反它检验了学到的功能信息以什么形式可组合。对照来源地址及input后lookup，固定三个band，不由结果不断制造更细问题。当前只是已写设计，不是新机制发现。
+[E94](experiments/E94-criterion-coordinate-transfer.md)用input前B Goal字段的criterion变化，在B私人assignment两方向上作不变/变号分解，比较直接运输与按A私人坐标校准后的运输。同一operator必须对四个新输入、两个A偏好给完整profile；没有未来Input或答案进入donor。它使用额外gold坐标校准，成功也不证明原生已经执行了这个组合。固定三个band的完整结果见下节：整体来源状态能切换判断，这两种criterion运输没有改变答案，按原决策结束这个局部矩阵。
+
+
+### 18.3 E94完成：整体来源状态能切换函数，不等于它携带可复用标准
+
+全部4新context/1216行，float32、双卡同节点，self-copy/非Goal修改均0。16层把B的input前Reviewer字段放入A，可使预测符合B私人函数的比例28.1%→98.4%；32层62.5%，48层弱。这个阳性有实际功能范围，却不能区分选择B证据地址与搬入Source-bound程序。
+
+相同接口上的assignment-invariant与recipient-calibrated signed criterion分量，384条**0个答案改变**，最大T仅约.0024/.0030nats。部分晚层差分norm大，也没有成为可靠标准运输；小CI不跨0不等于功能标准已迁移。原读数不改、不放大alpha、不补层，不对全模型下不存在criterion或仅有lookup作过强判断。
+
+这轮实验保留的认识是：当前可直接控制的是**从哪位Source取得完整判断**，而不是已获得**可供其它Source使用的标准**。B自身函数表现很好、来源状态可切换函数，都不能单独跨过“完整函数→可共享criterion”这座推理桥。下一投资应研究这座桥，重新理解label-conditional表示、规则识别和证据选择的关系；结束当前Goal-field局部矩阵，不再把它打磨成完整解释。未升级主张或正式状态，也未以局部negative否定整个ICES。

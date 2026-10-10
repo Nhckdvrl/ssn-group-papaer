@@ -101,4 +101,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E91](E91-label-namespace-and-inherited-rule.md) | 分标签是否只改直接foreign读出，或也改变当前来源形成/检索 | DONE；24→48确认：禁读B时namespace使rule幅度下降.491nats；A Key-only与V-only均可部分转移，非单Value解释 |
 | [E92](E92-relational-evidence-transfer.md) | B的信息何时成为关系可用的criterion，而非标签跟随 | DONE-PILOT；8B接口阳性弱；固定4context强thinking native63/64合规正确、余1内容正确格式未解析；不归因完整标准部署失败 |
 | [E93](E93-selective-rule-sharing.md) | 借用来源的criterion，同时保留当前来源的private preference | DONE-PILOT；strong direct原子约98–100%、A mixed约50%、B偏好混入降至5–6%；thinking120/128，保留11个全部错误与解释边界 |
-| [E94](E94-criterion-coordinate-transfer.md) | input前标准信息是否需要私人输出坐标校准才能跨Source迁移 | PLANNED；固定三个band，invariant/signed运输与四函数profile竞争，无训练/alpha扫寻 |
+| [E94](E94-criterion-coordinate-transfer.md) | input前标准信息是否需要私人输出坐标校准才能跨Source迁移 | DONE-PILOT；1216行，16层整字段可转B私人函数98.4%，384条标准运输0答案改变；结束此字段矩阵 |
