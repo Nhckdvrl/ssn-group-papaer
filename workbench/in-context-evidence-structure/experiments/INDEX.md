@@ -93,4 +93,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E83](E83-predictive-label-reader.md) | 不拟合gold输出的冻结关系模型能否预测读取作用 | DONE；64新context R margin+.376nats，预算无收益；Label身份拟合改善不带来行为增益，逐context作用相关仅.252 |
 | [E84](E84-source-field-versus-code-prediction.md) | 关系预测跟随Source字段还是共线的码词代理 | DONE；code预测更准独立确认，native两Cue同时用；code逐query效应仍不胜过预算模型，不称完整解释 |
 | [E85](E85-cue-specific-source-paths.md) | NameK对Source字段与code的影响是否依赖同一路径 | DONE；64新context复现field反转/code保正；冻结joint均值预测误差.007–.036nats，有限组合解释非完整算法 |
-| [E86](E86-source-equivalent-code-aliases.md) | 同Source等价码是否共享分类证据 | PLANNED；仅候选草案、0运行，先做具体文献对照再决定，不代表新方向或novelty声明 |
+| [E86](E86-source-equivalent-code-aliases.md) | 同Source等价码是否共享分类证据 | PLANNED；文献/具体预测对照完成，最终预注册16新contexts，冻结Scope vs cue预测，不另开方向 |

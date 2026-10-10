@@ -1,6 +1,6 @@
 # E86：同一Source的两个等价码是否仍共享分类证据？（2026-10-10）
 
-- **状态：** PLANNED（候选草案，0科学运行；尚未决定执行，不代表新开方向）。
+- **状态：** PLANNED（最终预注册完成，执行16-context pilot；原草案保留，不另开方向）。
 - **类型：** PILOT。
 - **对应：** I04 / C20 / P20。
 - **问题（一句话）：** 当一个Source有两个可互换的码，模型按Source合并规则证据，还是按字面码划分支持集合？
@@ -23,7 +23,7 @@
 
 ## 结果
 
-无。用户要求先完成具体文献调查再考虑方向；本卡只保存候选的解释分歧，尚无科学源码、预检或GPU进程。C20与I04/ACTIVE均未改变。
+截至上一会话无科学运行。用户要求先完成具体文献调查再考虑方向；原候选记录完整保留。C20与I04/ACTIVE均未改变。
 
 ## 解释能否给出不同预测：静态推导，非实验结果
 
@@ -35,3 +35,21 @@
 这是已有检索/绑定框架在当前问题上的两个明确实例化，不是文献声称它们就是完整LLM算法。任意alias增多、Scope说明与输入支持变化都可能改变f/c；所以量级预测失败会限制这个冻结外推，不撤回E85的自身证据。共同bias在平衡配对平均中抵消的假设也要核对。
 
 另一个解释是模型将每alias理解成不同task而非简单copying；它也可产生alias响应。本项行为实验即使成功，也只区分强共同Source范围与alias敏感版本，不能单独区分task重新划分/直接Label读取。要怎样用E85既有接口检验后者，仍需在实际样例支持下决定，不预先宣称已经锁定机制。
+
+## 最终预注册：2026-10-10，用户要求快速持续推进之后
+
+上述具体近邻调查和预测推导已完成；选择此项作为**现有I04的机制辨别实验**，不另开方向。原草案不是事后卡，下列内容在首次GPU评分前冻结。
+
+- 模型Qwen3-8B revision `b968826d9c46dd6066d109eabc6255188de91218`；float32/eager，conda verl-clean，GPU0。16新context seed86001，职业/交通工具、Alice/Bob、toxic/safe；码Left/Right/Up/Down逐context随机分配，alias与kind关联的方向在两个Source分别随机。
+- 16demo、每Source×kind四例、每Source每码四例；balanced每Source×kind×alias两例，segregated同Source一alias仅kind0、另一仅kind1。两支持条件保持原Item/Source/class/顺序和token多重集/所有sites，仅改code分配。Tag/prefix布局仍仅互换码与Mark。HEAD固定明确两码可互换，并列出每Source的两个码，避免没有告知等价关系；所有条件另有相同的一句Source指令恢复对照。
+- query 16项：8未知Item（Source×kind×alias）＋8已出现Item；每Source/kind的seen Item从其4demo中随机选一次、对两alias复用，不挑能答对的词。未知Item与所有demo不同；两Source共享相同未知Item。未给最终gold class，code为外部指定有效alias，仍非原生端到端生成。
+- 条件仅balanced/segregated×Tag/prefix×默认/Source指令，共8项。先做这一最小行为/预测辨别；不提前铺所有K/V分支。
+- 主读数：未知Item的`gap = matched-alias correct margin − crossed-alias correct margin`；segregated−balanced的gap，以及其Prefix−Tag差。报告Input规则分量R、alias分量A、shared bias、matched/crossed accuracy，seen同读数作诊断。gap=2A可代数核对，不能称A为内部模块。4000 context bootstrap seed860。
+- 冻结外推：Scope模型gap=0；两Cue模型segregated gap=.3951/.9284nats（Tag/Prefix），布局差+.5333；基于E85探索32context的参数bootstrap单独保存，不重估alias确认参数。候选量级来自较简单任务，数值失配限制这项外推而不撤回E85。
+- 阳性/噪声：token/词频/布局/Scope表核对、batch/cache对逐条完整forward（前2context全部16query）、自拷贝cache、mask与行和；numeric≤.01nats、mask≤1e−7。balanced与seen用于区分无效读数或未知Input泛化，不要求它们先达到新绝对accuracy才允许报告作用。所有contexts保留；科学负结果不是VOID。
+- 决策：若未知Item alias gap在segregated增强>.15nats且CI不跨0，或两冻结解释的预测误差有清楚区别，则先冻结方向/量级再同源码64新context seed186001确认；随后才考虑实际有区分力的Code/Label key干预。若gap不增强则拒绝此强字面分组版本，结合已有NameK/Label结果更新解释。若方向不确定，认真看完整样例，不扫seed/模型追效应。
+- 预算单卡探索≤.2GPU·时、确认≤.3；raw context/behavior JSONL本地，小run/preflight/analysis/冻结预测入git。C20保持L1、正式排程不变。脚本与卡先commit、预检后运行，源码/依赖hash入run。
+
+CPU预检已通过，源码SHA256 `20a5c3eced7c5ec165abc55d9e5e188969db4fc7e11a162109353f8f73751d8a`；Scope明确、码所属Source、balanced/segregated计数、多重集/位置/长度、seen/unseen均核对。冻结预测文件`results/e86/frozen_forecast.json`源自E85探索原始行为hash，差值CI仅为旧参数不确定性。主比较是两布局等权、逐context的未知Item delta-gap预测MSE（cue−Scope），不在结果后换胜负指标。
+
+命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e86_aliases.py --model /tmp/ices_models/Qwen3-8B --out results/e86/qwen3_discovery --n 16 --seed 86001`。
