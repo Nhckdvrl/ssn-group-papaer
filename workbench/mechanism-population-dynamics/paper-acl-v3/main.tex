@@ -31,20 +31,27 @@ Circuit analyses identify the attention heads that carry a computation, and thes
 We ask in which of these related models the same heads carry the computation.
 Public model suites that cross initializations with pretraining corpora, a complete public lineage from pretraining to instruction tuning, and controlled pretraining let us vary one relation between models at a time.
 Head roles follow the initialization.
-Models trained from the same initialization agree on which head of a layer takes each role, whatever their corpus, and so share a coordinate system for their components.
+Models trained from the same initialization agree on which head of a layer takes each role across all corpora we study, and so share a coordinate system for their components.
 The heads that causally carry a task follow the training run instead.
-Models that share an initialization but differ slightly in their data carry indirect-object identification on different heads of the same functional classes, whereas a model's carriers, once settled during pretraining, persist through midtraining, preference tuning and instruction tuning.
-Controlled pretraining shows how carriers are assigned: candidate heads compete while a role forms, and the data of the run decide between close candidates.
+Models that share an initialization but differ slightly in their data typically carry indirect-object identification on different heads of the same functional classes, whereas a model's carriers, once settled during pretraining, persist through midtraining, preference tuning and instruction tuning.
+Controlled pretraining shows how fine the decisive differences are: an identical rerun reproduces a model's role maps, yet in 9 of 15 initializations it gives the leading induction role to a different candidate head.
 Head-level findings thus transfer along a training lineage and role labels within an initialization, while across separately trained models the algorithm transfers and the carriers have to be localized again.
 \end{abstract}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig0_schematic}
+\caption{What a head-level finding carries over between two models, drawn as [layer $\times$ head] grids with heads that take a role (blue, e.g.\ induction) and heads that carry a task (orange, e.g.\ IOI).
+Unrelated models agree on the layers that host a role but not on the heads; siblings, trained from the same initialization on other data, agree on which head takes each role but carry a task on different heads; descendants of one model keep both (\S\ref{sec:roles}--\S\ref{sec:lineage}).}
+\label{fig:schematic}
+\end{figure}
 
 \section{Introduction}
 
 Mechanistic interpretability explains what a language model computes by locating the components that carry the computation.
 Its findings are statements about specific heads.
 The indirect-object identification (IOI) circuit of GPT-2 consists of name-mover heads, heads that suppress the repeated subject, and the heads that feed them \citep{wang2023interpretability}, and in-context copying runs through a previous-token head composed with an induction head \citep{olsson2022context}.
-Such statements are increasingly reused beyond the model in which they were found.
-Circuits are tracked across the checkpoints of a training run \citep{tigges2024llm}, compared between a base model and its fine-tuned versions \citep{prakash2024finetuning}, and used as the readout of training-data interventions that retrain a model and examine the same head again \citep{chen2026mechanistic}.
+Such statements are reused beyond the model in which they were found: circuits are tracked across the checkpoints of a training run \citep{tigges2024llm}, compared between a base model and its fine-tuned versions \citep{prakash2024finetuning}, and used as the readout of training-data interventions that retrain a model and examine the same head again \citep{chen2026mechanistic}.
 Each of these uses assumes that a head in one model corresponds to a head in another.
 
 The architecture does not provide this correspondence.
@@ -58,7 +65,7 @@ Whether a head-level finding holds in such models is the question of this paper.
 \includegraphics[width=\columnwidth]{figures/fig1_carryover}
 \caption{What carries over between two models, by their relation.
 Blue: correspondence of the attention maps from the final position to the indirect object; orange: reliability-corrected correspondence of the causal maps of IOI (single-head ablation).
-Bars are means over model pairs, whiskers the range.
+Dots are model pairs and bars their means; pairs of the same training lineage are Pythia-410M at mid and end of pretraining and successive OLMo-2-1B stages, closely related data are Pythia standard vs.\ deduplicated and Dolma with vs.\ without Flan.
 Models from one initialization share the attention role of a head but not its causal role; models in one training lineage share both.}
 \label{fig:carryover}
 \end{figure}
@@ -68,18 +75,18 @@ DataDecide trains the same three initializations on 25 pretraining corpora \cite
 Controlled pretraining, finally, lets us intervene on the data of a single run.
 In every model we measure nine head roles and the heads that causally carry IOI, and every comparison between models is corrected for the reliability of the measurements.
 
-The answer depends on the relation (Figure~\ref{fig:carryover}).
+The answer depends on the relation (Figures~\ref{fig:schematic} and~\ref{fig:carryover}).
 Models trained from the same initialization agree on which head of a layer takes each role across all 25 corpora, whereas models from different initializations agree only on the profile over layers (\S\ref{sec:roles}).
 The initialization fixes a coordinate system that all models trained from it share.
 It does not fix the causal carriers of IOI (\S\ref{sec:carriers}).
-Within the shared coordinates, models that differ in their data carry IOI on different heads, even when their corpora differ only by the removal of 1.5\% of the data, while running the same algorithm.
+Within the shared coordinates, models that differ in their data typically carry IOI on different heads, even when their corpora differ only by the removal of 1.5\% of the data, while running the same algorithm.
 Along one training run, the carriers move between heads during pretraining and then stay, so the carriers at the end of pretraining are those after midtraining, SFT, DPO and instruction tuning (\S\ref{sec:lineage}).
-Controlled pretraining reveals the competition behind this assignment (\S\ref{sec:masking}).
-A role with a single leading head stays on that head when training data are masked during its emergence, while between two close candidates a random mask of a tenth of the data changes the winner.
+Controlled pretraining shows what decides this assignment (\S\ref{sec:masking}).
+Several heads become candidates for a role, and which of them leads is not reproduced even by an identical rerun, while the role maps and the behaviour of the model are.
 
 Our contributions are as follows.
 (1) We separate shared initialization, different training data and continued training as relations between models, and show that role labels transfer within an initialization, causal carriers only along a training lineage, and the IOI algorithm across separately trained models.
-(2) We show that carriers are assigned by a competition among candidate heads during pretraining, and use it to tell when a single-head readout of a data intervention reports a change in the mechanism and when it reports a change of carrier.
+(2) We show in controlled pretraining that the leading head of a role is decided by differences as small as those between identical reruns, and derive how single-head readouts of data interventions are read against reruns.
 (3) We provide reliability-corrected comparisons of head maps, a protocol for reusing circuit findings, and an audit that finds four public checkpoints whose lineage differs from their labels (Appendix~\ref{app:audit}).
 
 \section{Setup}
@@ -91,19 +98,11 @@ A model's \emph{descendants} continue its training: later checkpoints of the sam
 A training \emph{lineage} is a model together with its descendants.
 
 \paragraph{Model populations.}
-Table~\ref{tab:populations} lists the populations and the relation each one varies.
+Figure~\ref{fig:schematic} illustrates the three relations.
 DataDecide trains three initializations on 25 corpora at 1B parameters for 100B tokens, and on 10 to 23 corpora at thirteen smaller sizes \citep{magnusson2025datadecide}.
 We checked every 1B run's initialization against the released initial weights and use the 69 runs whose initialization matches its label.
 From Pythia we use the standard and deduplicated models at six sizes from 70M to 12B and fifteen checkpoints each of the 160M and 410M pairs \citep{biderman2023pythia}, and from OLMo-2-0425-1B the end of pretraining (4T tokens), three midtraining runs on different mixtures (51B tokens each), and the SFT, DPO and Instruct models \citep{olmo2024olmo2}.
 Controlled pretraining uses Llama-style models with 4 or 12 layers trained on C4 (Appendix~\ref{app:controlled}).
-
-\begin{table}[t]
-\centering\small
-\setlength{\tabcolsep}{2.5pt}
-\resizebox{\columnwidth}{!}{\input{tables/tab_populations}}
-\caption{Model populations and the relation between models that each one varies.}
-\label{tab:populations}
-\end{table}
 
 \paragraph{Head roles.}
 A head role is a score computed for every head, which gives a [layer $\times$ head] role map for each model.
@@ -111,7 +110,7 @@ We use eight attention roles, namely induction, previous token, attention sink, 
 
 \paragraph{Causal carriers of IOI.}
 An IOI prompt names an indirect object (IO) and a subject, mentions the subject a second time (S2), and ends at a final position (END) where the model should predict the IO.
-On 200 prompts \citep{wang2023interpretability} we compute three quantities for every head. Its direct logit attribution (DLA) is the head's direct contribution at END to the logit difference between IO and subject, with every normalization layer linearized at its actual scale. Its ablation effect is the drop of the logit difference when the head's output is replaced by its mean at END. Its attention from END to the IO and S2 tokens completes the profile.
+On 200 prompts \citep{wang2023interpretability} we compute three quantities for every head. Its direct logit attribution (DLA) is the head's direct contribution at END to the logit difference between IO and subject, with every normalization layer linearized at its actual scale. Its ablation effect is the drop of the logit difference when the head's output is replaced by its mean at END, the position where the circuit's output heads act. Its attention from END to the IO and S2 tokens completes the profile.
 The ablation effects of all heads form the \emph{causal map} of a model.
 A model's \emph{carriers} are its three heads with the largest DLA, and its \emph{main carrier} is the first of them.
 Carriers are compared between two models by the overlap of their top three and by \emph{transfer}, the damage that ablating the source model's carriers does in the target, relative to ablating the target's own carriers.
@@ -162,7 +161,6 @@ Two models share it to the degree that the same index carries the same role.
 
 \paragraph{Shared across corpora.}
 In the 69 DataDecide-1B models, the profile of every role over layers is as similar between unrelated models as between siblings, and which head of a layer takes the role follows the initialization (Figure~\ref{fig:maps}, Table~\ref{tab:roles}).
-Ordered by initialization, the pairwise correspondences form three blocks.
 Siblings correspond at 0.31 on average and unrelated models at 0.00, and the two distributions barely touch (lowest sibling pair 0.10, highest unrelated pair 0.14).
 Siblings agree on the head for all nine roles (0.18--0.43), and unrelated models agree at chance whether they share the corpus or not.
 In a per-head variance decomposition, the initialization has a significant effect on 66--79\% of heads, the corpus on 4--7\%, the rate expected by chance.
@@ -208,15 +206,17 @@ In two siblings, then, ``layer 12, head 3'' refers to heads with the same roles,
 The causal carriers of a task are not part of the shared coordinate system (Figure~\ref{fig:carryover}).
 For IOI, the attention from END to the IO token corresponds between DataDecide siblings at 0.24, at the level of the roles in \S\ref{sec:roles}.
 Their causal maps correspond at 0.02 after reliability correction, as low as between unrelated models (0.01), and the carriers of one sibling transfer 3\% of the damage to another.
-None of the 18 sibling pairs among four DataDecide corpora shares its main carrier.
+In eight of the nine sibling pairs the attention maps correspond more closely than the causal maps, and none of the 18 sibling pairs among four DataDecide corpora shares its main carrier.
 Comparing DLA values instead of ranks gives the same result, with siblings at 0.11 and unrelated models at 0.07--0.10.
-Over all 69 DataDecide-1B models, the uncorrected correspondences show the same contrast: the END$\to$IO attention maps of siblings correspond at 0.29 and those of unrelated models at 0.00, while the causal maps correspond at 0.07 between siblings and at 0.00--0.01 otherwise, and a sibling's three to twenty strongest heads transfer 7--16\% of the damage, compared with 4--12\% between unrelated models.
+Over all 69 DataDecide-1B models, the uncorrected correspondences show the same contrast (attention 0.29 between siblings and 0.00 otherwise; causal maps 0.07 and 0.00--0.01).
+The pattern extends beyond IOI.
+In a subset of 18 DataDecide-1B models, the causal maps of induction on repeated sequences and of the use of a conflicting context, obtained by single-head ablation, correspond at 0.11 between siblings and at 0.00 between unrelated models, a third of the correspondence of the attention maps for the same roles (0.31--0.33).
 
 \paragraph{Independent of data similarity.}
 Carriers differ between siblings however similar their data are.
 Carrier transfer between DataDecide siblings barely depends on the distance of their corpora (Spearman $\rho = -0.10$), whereas the shared coordinate system follows it closely ($\rho = -0.81$).
 Removing the Flan instruction data, about 1.5\% of the Dolma corpus, gives the three sibling pairs with the most similar role maps of all the pairs we compare (0.57--0.58), and each of them carries IOI on different main carriers.
-The standard and deduplicated Pythia models carry IOI on largely the same heads at 160M and 1B (transfer 0.85 and 0.90) and on different heads at 410M, 1.4B, 6.9B and 12B ($-$0.05 to 0.16; Table~\ref{tab:pythia}), and at 410M their attention maps correspond at 0.48 while their causal maps correspond at 0.15.
+Between the standard and deduplicated Pythia models, the standard model's carriers still carry most of the task in the sibling at 160M and 1B (transfer 0.85 and 0.90) and almost none of it at 410M, 1.4B, 6.9B and 12B ($-$0.05 to 0.16; Table~\ref{tab:pythia}), and at 410M the attention maps correspond at 0.47 while the causal maps correspond at 0.15.
 
 \begin{table}[t]
 \centering\small
@@ -240,30 +240,22 @@ The siblings differ in which heads carry IOI, and agree on how it is computed.
 In the five Pythia models we analysed head by head (160M and 410M, standard and deduplicated, and a 410M model from another initialization), IOI runs on the same functional classes \citep{wang2023interpretability}: a subject-suppression head that attends to S2 and writes against it through a negative OV copying circuit, and several name movers that attend to the IO and copy it (Table~\ref{tab:classes}).
 Each class has several members in each model, and the 410M siblings give the main role to different members (Figure~\ref{fig:classes}).
 The standard model's main carrier, \head{11.4}, contributes 1.16 to the logit difference and 0.02 in the deduplicated model, whose own main carrier, \head{12.12}, contributes 0.97 there and 0.00 in the standard model.
-Each is nearly silent in the other model and attends to the first token instead.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_classes}
-\caption{Same algorithm, different carriers.
-Direct effect on the IOI logit difference of the carriers of Pythia-410M and of its deduplicated sibling, measured in both models.
-Each model's main carrier is silent in the other.}
+\caption{Same coordinates, different carriers: layers 9--21 of Pythia-410M and its deduplicated sibling.
+Top: attention from END to the IO; bottom: direct effect of each head on the IOI logit difference; boxes: each model's three carriers.
+The attention maps correspond at 0.47, and each model carries IOI on heads that are nearly silent in the other.}
 \label{fig:classes}
 \end{figure}
 
 \paragraph{Carriers are found causally.}
-Because several heads of a class share its attention profile, the profile does not single out the member that carries the task (Table~\ref{tab:mapping}).
+Because several heads of a class share its attention profile, the profile does not single out the member that carries the task (Table~\ref{tab:mapping} in Appendix~\ref{app:roles}).
 Mapping the standard model's carriers onto a target by head index, by the nearest attention and OV profile, or by a rule based on the class signature recovers the target's carriers for some pairs and misses them for others.
 A mapping that includes a causal readout in the target recovers them for every pair, at 85--94\% of the damage of the target's own carriers.
 
-\begin{table}[t]
-\centering\small
-\setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{\input{tables/tab_mapping}}
-\caption{Mapping the standard Pythia model's carriers onto a target model: damage of the mapped heads in the target relative to the target's own carriers, on held-out prompts.
-A mapping that uses a causal readout in the target recovers the carriers for every pair.}
-\label{tab:mapping}
-\end{table}
+
 
 \section{Carriers move during pretraining, then persist}
 \label{sec:lineage}
@@ -273,7 +265,7 @@ A mapping that uses a causal readout in the target recovers the carriers for eve
 \includegraphics[width=\textwidth]{figures/fig2_lineage}
 \caption{Carriers during pretraining.
 (a) Number of each Pythia-410M model's final carriers already among its three strongest heads (solid), and number of carriers the two siblings share (dashed).
-(b) Twelve DataDecide-1B runs (four corpora $\times$ three initializations), filled where the current main carrier is the run's final main carrier.}
+(b) Twelve DataDecide-1B runs (four corpora $\times$ three initializations), filled where the current main carrier is the run's final main carrier; triangles mark the first checkpoint with an IOI logit difference above 1.}
 \label{fig:lineage}
 \end{figure*}
 
@@ -281,7 +273,7 @@ A mapping that uses a causal readout in the target recovers the carriers for eve
 Within one run, the carriers change during most of pretraining (Figure~\ref{fig:lineage}).
 In Pythia-410M, IOI appears at step 3000.
 Head \head{11.4} becomes the main carrier at step 2000 and keeps the role, while the second and third places change hands until step 66k, after which the final carriers are in place.
-The deduplicated sibling settles on a different main carrier, \head{12.12}, by step 6k and completes its final carriers at step 100k.
+The deduplicated sibling settles on \head{12.12} by step 6k and on its final carriers at step 100k.
 From the moment carriers appear, the two 410M siblings share none of them, while their attention roles start at a correspondence of 0.79 and diverge slowly to 0.47.
 The 160M siblings instead take the same main carrier, \head{8.9}, at step 3000, keep it to the end, and transfer 69--99\% of their damage to each other from then on, matching their shared carriers in Table~\ref{tab:pythia}.
 In DataDecide-1B, the main carrier at the point where IOI first appears is still the main carrier at the end of training in three of twelve runs, and in the other nine another head takes over later in pretraining.
@@ -302,39 +294,43 @@ The main carrier, \head{14.4}, is the same in all of them.
 SFT, DPO and instruction tuning keep the same three carriers with full transfer, and so does the second half of Pythia-410M pretraining.
 A finding about the heads that carry IOI in a base model is also a finding about its midtrained, preference-tuned and instruction-tuned descendants, in line with the observation that fine-tuning enhances existing mechanisms \citep{prakash2024finetuning}.
 
-Carriers are assigned in each run's own pretraining: siblings go through separate competitions among candidate heads, and descendants inherit the outcome, which gives the two halves of Figure~\ref{fig:carryover}.
+Siblings thus go through separate competitions among candidate heads, and descendants inherit the outcome (Figure~\ref{fig:carryover}).
 
-\section{Data interventions and the competition among candidates}
+\section{Competing candidates in controlled pretraining}
 \label{sec:masking}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig3_masking}
-\caption{Masking training data while induction heads emerge (shaded: steps 500--2000) in controlled 12-layer models from three initializations.
-(a) Induction score of the unmasked run's strongest induction head, relative to the unmasked run (mean and range over initializations); (b) copying ability (loss reduction on the repeated half of random sequences), relative to the unmasked run.
-(c) Initialization 2 has two near-equal candidates, and masking a random 10\% of sequences gives the role to the second one from the moment it emerges.}
+\caption{Induction heads in controlled 12-layer models.
+(a) Two identically configured runs of initialization 12.
+(b) Score of the first run's strongest induction head in a rerun or a randomly masked run, relative to that run's strongest head.
+(c) Role-map correspondence with the first run, and between initializations.
+(d) Copying ability relative to the first run, masking during steps 500--2000 (shaded); band: range over initializations for the repetitive-data mask.}
 \label{fig:masking}
 \end{figure*}
 
-The competition among candidates also decides what a training-data intervention does to a single head.
-Training-data attribution identifies the data that create a component by removing data, retraining, and examining the same head \citep{chen2026mechanistic}.
-We run such interventions in controlled pretraining, where the initialization and the data order are fixed and only the intervention differs (Figure~\ref{fig:masking}).
-From three initializations we mask the loss of 10\% of the sequences during steps 500--2000, the window in which induction heads emerge, choosing either the most repetitive sequences, which most accelerate induction heads \citep{chen2026mechanistic}, or a random tenth.
+To see how fine the differences are that decide among candidate heads, we train 12-layer models from 15 initializations with one data order and follow the induction heads, the role that training-data attribution traces to its data \citep{chen2026mechanistic}.
+An identical rerun repeats each first run's initialization, data order and hyperparameters, so that the two differ only in the nondeterminism of GPU arithmetic.
+Two further runs mask the loss of a random 10\% of the sequences during steps 500--2000, the window in which induction heads form (Figure~\ref{fig:masking}).
 
-\paragraph{One leading head.}
-When one head leads the role, the intervention delays that head.
-Masking the most repetitive data lowers the strongest head's induction score to 36--55\% of the unmasked run at step 750 and copying ability to about half at step 1000.
-Both recover after the window, and at step 3000 the strongest induction head is the same head in all three initializations, as it is in a rerun of the unmasked configuration.
-A drop in the score of that head is a delay of the mechanism, which is what a single-head readout reports.
+\paragraph{The coordinate system is reproduced.}
+Reruns and masked runs reproduce the role maps of the first run (Figure~\ref{fig:masking}c).
+Their induction maps correspond with it at 0.80 and 0.77 within layers and their previous-token maps at 0.91 and 0.90, compared with 0.00 between initializations, and their copying ability at the end of training lies at 0.80--1.22 of the first run's.
 
-\paragraph{Two close candidates.}
-When two heads compete, a small change in the data decides the winner.
-In initialization 2, heads \head{7.9} and \head{8.1} rise together, and \head{7.9} stays slightly ahead in the unmasked run and in its rerun.
-Masking a random 10\% of the sequences lets \head{8.1} lead from the moment induction appears, and it keeps the role.
-At step 3000 the original head scores 72\% of the unmasked run, while the strongest induction score (97\%) and copying ability (92\%) are intact.
-A readout of \head{7.9} alone would report a weakened mechanism where the mechanism has moved to another head.
-In the two initializations with a clear leader, the same random mask leaves the leading head in place (95\% and 98\% of its unmasked score) and copying ability intact (91\% and 106\%).
-Induction heads show the pattern of the IOI carriers in a fully controlled setting: a role with one leading candidate stays on its head, and a role with several candidates goes to whichever candidate the data of the run favour while the role forms.
+\paragraph{The leading candidate is decided by the run.}
+Each model forms several induction heads, and which of them leads differs between identical runs (Figure~\ref{fig:masking}b).
+The first run's strongest induction head is the strongest of its rerun in 6 of 15 initializations, and it falls below 90\% of the new leader in 4 of the other 9.
+In initialization 12, head \head{7.2} becomes the strongest induction head of the first run (score 0.64) and remains without induction attention in the rerun (0.00), although the two runs reach the same training loss to within 0.01 and the same copying ability, and head \head{8.3} becomes an induction head in both (Figure~\ref{fig:masking}a).
+A random 10\% mask moves the leader at the same rate (16 of 30 masked runs keep it; 9 fall below 90\%).
+Usually the first leader remains an induction head and another candidate edges ahead; it stays below half of the leader's score in one rerun and three masked runs.
+The assignment of the IOI carriers to siblings thus extends to the finest difference between two runs: the initialization fixes the coordinate system, and the run decides which candidate takes a role.
+
+\paragraph{The mechanism responds to its data.}
+An intervention on the data that drive the mechanism delays the mechanism itself.
+Masking the 10\% most repetitive sequences, the data that most accelerate induction heads \citep{chen2026mechanistic}, halves copying ability at step 1000 (0.50--0.54 of the first run) in all three initializations we test and keeps it at 0.47--0.71 until the end of the window, after which it recovers (0.80--1.07 at step 3000; Figure~\ref{fig:masking}d).
+A random mask of the same size keeps copying ability at 0.86--0.98 of the first run on average throughout.
+Read against reruns and together with the role map and the behaviour, a retrained model thus reports how its data shape a mechanism.
 
 \section{Related Work}
 
@@ -342,24 +338,20 @@ Induction heads show the pattern of the IOI carriers in a fully controlled setti
 Whether circuits recur across models has been studied across training and scale, where the algorithm persists while its heads change \citep{tigges2024llm}, and across seeds, where attention heads, most of all those in middle layers, are unstable, and decoupled weight decay makes them more stable \citep{bali2026quantifying}, and where heads with a shared role are positionally inconsistent \citep{trott2025generalizability}.
 Representations of independently trained networks share structure up to rotation or permutation \citep{li2016convergent,kornblith2019similarity,ainsworth2023git}.
 Most seed variants, among them the PolyPythias \citep{vanderwal2025polypythias} and MultiBERTs \citep{sellam2022multiberts}, change initialization and data order together.
-Separating the initialization from the data, and attention roles from causal carriers, shows why components agree between siblings in one sense and not in the other.
-
-\paragraph{Circuit discovery.}
-Circuits are discovered by path patching and its automated variants \citep{wang2023interpretability,conmy2023towards}, and universality has been examined in small algorithmic models and at the level of neurons \citep{chughtai2023toy,gurnee2024universal}.
-Our results identify which statements of a discovered circuit can be reused in a related model, and show that the rest require a causal readout in that model.
+Universality has also been examined in algorithmic models and in neurons \citep{chughtai2023toy,gurnee2024universal}, and circuit components are reused across tasks \citep{merullo2024circuit}.
+Separating the initialization from the data, and attention roles from causal carriers, shows why components agree between siblings in one sense and not in the other, and which statements of a circuit discovered by path patching or its automated variants \citep{wang2023interpretability,conmy2023towards} can be reused in a related model.
 
 \paragraph{Mechanisms after further training.}
 Fine-tuning reuses and enhances the circuits of the base model \citep{prakash2024finetuning}.
-We trace carriers through a complete public lineage, including midtraining on new mixtures, SFT, DPO and instruction tuning, and contrast it with siblings trained separately.
-\citet{tigges2024llm} observe that the heads of a circuit change over the course of training while its algorithm persists. Our lineage results place these changes in pretraining and show that they stop once pretraining has settled the carriers.
+We trace carriers through a complete public lineage from pretraining to instruction tuning and contrast it with siblings, and place the head changes that \citet{tigges2024llm} observe over training in pretraining, before the carriers settle.
 
 \paragraph{Training data and components.}
 Influence-based attribution traces heads to training samples and verifies the attribution by retraining \citep{chen2026mechanistic}, and properties of the data such as burstiness determine when in-context learning emerges \citep{chan2022data}.
-Our controlled masking distinguishes interventions that delay a head from those that move its role to another candidate.
+Our identical reruns give the reference against which such single-head readouts are compared.
 
 \paragraph{Reliability of circuit measurements.}
 Circuit scores vary across inputs and methods \citep{meloux2026statistical}, and redundant heads repair ablations \citep{mcgrath2023hydra}.
-Split-half reliability of every head map, and the correction of cross-model correspondence by it, make causal maps comparable across models.
+Correcting for split-half reliability makes causal maps comparable across models.
 
 \section{Discussion}
 \label{sec:discussion}
@@ -375,16 +367,13 @@ To apply a circuit found in model A to model B:
 \end{enumerate*}
 
 \paragraph{Data attribution and model diffing.}
-A study that retrains a model under a data intervention and tracks a named head compares two siblings with the same initialization and data order.
-Our controlled runs show that such a comparison reads the mechanism correctly when one head leads the role, and that a role with close candidates can move under an intervention as small as a random 10\% mask.
-Checking the strongest head of the role and the behaviour alongside the named head separates a delayed mechanism from a moved one.
-Comparisons between a base model and its fine-tuned or instruction-tuned descendants, as in model diffing, fall on the other side of the rule: the descendants keep the base model's carriers, so differences between them can be attributed to the same named heads.
+A study that retrains a model under a data intervention and tracks a named head compares two siblings with the same initialization and data order, whose role maps and behaviour are reproducible and whose leading heads vary between identical reruns (\S\ref{sec:masking}); the intervention is read from the role map and the behaviour, and from single heads relative to reruns.
+Model diffing between a base model and its fine-tuned descendants falls on the other side: the descendants keep the base model's carriers, so differences can be attributed to the same named heads.
 
 \paragraph{Coordinates and carriers.}
-The initialization determines where each role can be carried, and the data of a run determine which candidate carries it.
-The two are settled at different times: the coordinates within the first few percent of training (Table~\ref{tab:critical}), before the corpus has had much effect, and the carriers late in pretraining (Figure~\ref{fig:lineage}), after each corpus has shaped the competition.
-This is why the coordinate system tracks the similarity of the corpora and the carriers do not.
-The variation that \citet{tigges2024llm} and \citet{bali2026quantifying} observe across seeds arises in this competition.
+The initialization determines where each role can be carried, and the run decides which candidate carries it.
+The coordinates settle within the first few percent of training (Table~\ref{tab:critical}) and track corpus similarity; the carriers settle late in pretraining (Figure~\ref{fig:lineage}), decided by differences as small as those between reruns.
+This competition underlies the variation of heads across seeds \citep{tigges2024llm,bali2026quantifying}.
 
 \section*{Limitations}
 We trace one task circuit, IOI, through its causal carriers, and nine roles through attention and weights; extending the carrier analysis to circuits for factual recall and in-context learning is the natural next step.
@@ -418,13 +407,22 @@ Duplicate token is the attention from the second copy of a random block to the s
 OV copying is $\sum_i \mathrm{Re}\,\lambda_i / \sum_i |\lambda_i|$ over the eigenvalues $\lambda_i$ of the full OV circuit from the embedding to the unembedding.
 Every attention role is averaged over two halves of its inputs, with split-half reliabilities of 0.98 or higher.
 
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{\input{tables/tab_mapping}}
+\caption{Mapping the standard Pythia model's carriers onto a target model: damage of the mapped heads in the target relative to the target's own carriers, on held-out prompts.
+A mapping that uses a causal readout in the target recovers the carriers for every pair.}
+\label{tab:mapping}
+\end{table}
+
 \section{Controlled pretraining}
 \label{app:controlled}
 All controlled models are Llama-style decoders with a 50k vocabulary trained on C4 with sequences of 512 tokens and batches of 64 sequences, using AdamW with learning rate $10^{-3}$, 300 warm-up steps and cosine decay over 10k steps.
 The interventions of Table~\ref{tab:critical} use 4-layer models with 8 heads and width 256, trained for 10k steps from two initializations.
 A run is branched from its saved state at a given step, and either Gaussian noise scaled to each tensor's standard deviation is added to the weights or the corpus is switched to code; the final layout is compared with that of the uninterrupted run.
 One condition repeats the code switch with a 12-layer model, and two conditions lengthen the warm-up to 1{,}000 steps or start the branch with a fresh optimizer state.
-The masking experiments of \S\ref{sec:masking} use 12-layer models with 12 heads and width 768, trained for the first 3000 steps of the same schedule from three initializations with one data order.
+The experiments of \S\ref{sec:masking} use 12-layer models with 12 heads and width 768, trained for the first 3000 steps of the same schedule from 15 initializations with one data order; identical reruns use the same code, seeds and configuration, and the repetitive-data mask is applied to initializations 1--3.
 Masking sets the loss weight of the selected sequences to zero for steps 500--2000 and leaves the data order unchanged.
 A sequence's repetition score is the share of tokens whose two preceding tokens occurred earlier in the sequence followed by the same token, and the masking threshold is its 90th percentile on C4 (0.08).
 Random masking selects a tenth of the sequences with a separate random generator.

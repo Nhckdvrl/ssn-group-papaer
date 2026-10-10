@@ -22,8 +22,7 @@
     \multicolumn{2}{@{}l}{exact rerun} & \multicolumn{7}{c}{0.97} \\
     \bottomrule
   \end{tabular}
-  \caption{When the coordinate system is set (controlled 4-layer models, means over two initializations; one 12-layer model for the code switch in the fourth column; Appendix~\ref{app:controlled}).
-Which-head correspondence (mean of induction and previous-token maps) between the final layout of a run that was intervened on at a given step and the uninterrupted run: switching the corpus to code, or adding Gaussian noise scaled to 100\% or 10\% of each tensor's standard deviation, under the default 300-step warm-up, a 1{,}000-step warm-up, and with a freshly initialized optimizer.
-Step 0 for the code switch: the same initialization trained on code from scratch.}
+  \caption{When the coordinate system is set (controlled 4-layer models, means over two initializations; one 12-layer model in the fourth column; Appendix~\ref{app:controlled}).
+Which-head correspondence (induction and previous-token maps) between the final layout of a run intervened on at a given step and the uninterrupted run. Interventions: switching the corpus to code, or Gaussian noise scaled to 100\% or 10\% of each tensor's standard deviation; step 0 for the code switch trains the same initialization on code from scratch.}
   \label{tab:critical}
 \end{table*}

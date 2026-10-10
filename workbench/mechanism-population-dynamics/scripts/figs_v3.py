@@ -2,7 +2,7 @@
 
   Fig 1  fig1_carryover   attention-role vs carrier correspondence by relation between two models (E81, E83, E82)
   Fig 2  fig2_lineage     carriers along a training lineage: Pythia-410M pair (E82) and DataDecide-1B runs (E83)
-  Fig 3  fig3_masking     MDA-style data masking on induction heads (E84)
+  Fig 3  fig3_masking     identical reruns and data masking on induction heads (E84-E86)
   Tables tab_roles.tex (E35 / E59), tab_lineage.tex (E81), tab_audit.tex (P09 / P11 / P12 / P13)
 Usage: figs_v3.py
 """
@@ -61,7 +61,7 @@ def fig1():
     E83 = {f.split("/")[-1][:-4]: npz(f) for f in glob.glob(str(R / "e83" / "*step69369*.npz"))}
     dd = {k: v for k, v in E81.items() if k.startswith("dd__")}
     rel = {"different\ninitialization": [], "same init.,\ndifferent corpus": [],
-           "same init.,\nnear-identical\ncorpus": [], "same training\nlineage": []}
+           "same init.,\nclosely related\ncorpus": [], "same training\nlineage": []}
     keys = sorted(dd)
     for i, a in enumerate(keys):
         for b in keys[i + 1:]:
@@ -74,9 +74,9 @@ def fig1():
     for s in ("default", "large-aux-2", "large-aux-3"):  # Flan ablation: ~1.5% of the corpus removed
         a, b = f"dd__DataDecide-dolma1_7-1B__step69369-seed-{s}", f"dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-{s}"
         if a in E83 and b in E83:
-            rel["same init.,\nnear-identical\ncorpus"].append(pair_stats(E83[a], E83[b]))
+            rel["same init.,\nclosely related\ncorpus"].append(pair_stats(E83[a], E83[b]))
     a, b = "pythia__pythia-410m__143000", "pythia__pythia-410m-deduped__143000"
-    rel["same init.,\nnear-identical\ncorpus"].append(pair_stats(E81[a], E81[b]))
+    rel["same init.,\nclosely related\ncorpus"].append(pair_stats(E81[a], E81[b]))
     O = "hf__OLMo-2-0425-1B__"
     lineage = [("pythia__pythia-410m__66000", "pythia__pythia-410m__143000")]
     lineage += [(O + "stage1-step1907359-tokens4001B", O + f"stage2-ingredient{i}-step23852-tokens51B") for i in (1, 2, 3)]
@@ -123,10 +123,12 @@ def fig2():
     ax.set_xlabel("training step (Pythia, 143k total)")
     ax.set_ylabel("top-3 IOI heads in common")
     ax.set_yticks([0, 1, 2, 3])
-    ax.set_ylim(-0.2, 4.7)
+    ax.set_ylim(-0.2, 3.6)
     ax.grid(axis="y", color=GRID, lw=0.5, zorder=0)
-    ax.legend(loc="upper left", fontsize=5.6, ncol=1, borderaxespad=0.2)
-    ax.set_title("a  Pythia-410M and its deduplicated sibling", fontsize=7.2)
+    ax.text(70000, 3.25, "410M", color=CARR, fontsize=6.0, ha="center")
+    ax.text(2.6e4, 0.68, "410M-dedup.", color="#E69F00", fontsize=6.0, ha="center")
+    ax.text(1.5e5, 0.2, "shared by the two siblings", color=OTHER, fontsize=6.0, ha="right")
+    ax.set_title("a  Pythia-410M siblings: final carriers in place", fontsize=7.0)
     ax2 = fig.add_axes([0.57, 0.24, 0.41, 0.62])
     runs = c["runs"]
     names = sorted(runs, key=lambda k: (k.split("/")[0], k.split("/")[1]))
@@ -141,12 +143,18 @@ def fig2():
     cmap = matplotlib.colors.ListedColormap(["#F2F2F2", CARR])
     cmap.set_bad("white")
     ax2.imshow(np.ma.masked_invalid(M), aspect="auto", cmap=cmap, vmin=0, vmax=1)
+    for i in range(len(names) + 1):
+        ax2.axhline(i - 0.5, color="white", lw=0.6)
+    for j in range(len(steps) + 1):
+        ax2.axvline(j - 0.5, color="white", lw=0.6)
+    for i, n in enumerate(names):
+        ax2.plot(steps.index(runs[n]["selection"]), i, marker="v", ms=2.6, color=INK, mec="none")
     ax2.set_xticks(range(len(steps)), [f"{s / 1000:g}k" if s < 60000 else f"{s // 1000}k" for s in steps])
     lab = {"c4-1B": "C4", "dolma1_7-1B": "Dolma", "dolma1_7-no-flan-1B": "Dolma$-$Flan", "dclm-baseline-1B": "DCLM"}
     ax2.set_yticks(range(len(names)), [f"{lab[n.split('/')[0]]} {n.split('/')[1].replace('large-aux-', 's')}" for n in names],
                    fontsize=5.4)
     ax2.set_xlabel("training step (DataDecide-1B, 69k total)")
-    ax2.set_title("b  main IOI carrier already the final one (filled)", fontsize=7.2)
+    ax2.set_title("b  DataDecide-1B: main carrier is already the final one (filled)", fontsize=7.0)
     for sp in ax2.spines.values():
         sp.set_visible(False)
     save(fig, "fig2_lineage")
@@ -439,11 +447,12 @@ def tab_lineage():
 
 
 def main():
-    stats = {"fig1": fig1()}
-    stats["fig_maps"] = fig_maps()
-    stats["fig_classes"] = fig_classes()
+    fig_schematic_grids()
+    fig1_dots()
+    stats = {"fig_maps": fig_maps()}
+    fig_heatmaps()
     fig2()
-    stats["fig3"] = fig3()
+    stats["fig3"] = fig_competition()
     tab_roles()
     tab_lineage()
     tab_pythia()
@@ -454,6 +463,287 @@ def main():
     tab_mapping()
     (PAPER / "figures" / "numbers.json").write_text(json.dumps(stats, indent=1))
     print(json.dumps(stats, indent=1))
+
+
+
+# ---------------------------------------------------------------- Fig 1: schematic of the three relations
+def fig_schematic():
+    from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
+    fig = plt.figure(figsize=(COL, 2.0))
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 6.6)
+    ax.axis("off")
+
+    def box(x, y, w, h, text, fc, fs=5.6, bold=False):
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.02,rounding_size=0.12", fc=fc, ec=INK, lw=0.6))
+        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fs, fontweight="bold" if bold else "normal")
+
+    def arrow(x0, y0, x1, y1, col=INK, style="-|>", ls="-"):
+        ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), arrowstyle=style, mutation_scale=5, lw=0.6, color=col, linestyle=ls))
+
+    def label(x, y, text, src, ysrc=None):
+        ax.text(x, y, text, ha="center", va="center", fontsize=5.6, style="italic")
+        ax.text(x, y - 0.42 if ysrc is None else ysrc, src, ha="center", va="center", fontsize=4.6, color=OTHER)
+    INIT, RUN, DESC = "#DCE9F5", "#F7F7F7", "#FBE3D6"
+    box(0.25, 5.55, 2.85, 0.75, "initialization A", INIT, bold=True)
+    box(0.15, 3.95, 1.2, 0.72, "corpus X", RUN)
+    box(2.0, 3.95, 1.2, 0.72, "corpus Y", RUN)
+    arrow(1.1, 5.55, 0.75, 4.67)
+    arrow(2.25, 5.55, 2.6, 4.67)
+    box(4.1, 5.55, 1.45, 0.75, "init. B", INIT, bold=True)
+    box(4.22, 3.95, 1.2, 0.72, "corpus X", RUN)
+    arrow(4.82, 5.55, 4.82, 4.67)
+    arrow(1.38, 4.31, 1.97, 4.31, col=ROLE, style="<|-|>", ls="--")
+    arrow(3.23, 4.31, 4.19, 4.31, col=OTHER, style="<|-|>", ls="--")
+    box(0.15, 2.45, 1.2, 0.7, "midtraining", DESC)
+    box(0.15, 1.1, 1.2, 0.8, "SFT, DPO,\ninstruct", DESC)
+    arrow(0.75, 3.95, 0.75, 3.15)
+    arrow(0.75, 2.45, 0.75, 1.9)
+    label(1.68, 4.82, "siblings", "DataDecide, Pythia", ysrc=3.68)
+    label(3.71, 4.82, "unrelated", "DataDecide", ysrc=3.68)
+    label(2.5, 1.85, "descendants", "OLMo 2, Pythia")
+    ax.text(2.75, 0.45, "controlled pretraining: interventions within a run", fontsize=4.6, color=OTHER, ha="center")
+    rows = ["layer of a role", "algorithm", "which head\nhas a role", "which heads\ncarry a task"]
+    cols = ["unrelated", "siblings", "descen-\ndants"]
+    val = [[1, 1, 1], [1, 1, 1], [0, 1, 1], [0, 0, 1]]
+    x0, xs, y0, ys = 7.35, 0.92, 4.95, 1.13
+    ax.text(x0 + xs, 6.3, "carries over to", ha="center", fontsize=5.8, fontweight="bold")
+    for j, c in enumerate(cols):
+        ax.text(x0 + j * xs, 5.75, c, ha="center", va="center", fontsize=5.1)
+    for i, r in enumerate(rows):
+        y = y0 - i * ys
+        ax.text(x0 - 0.5, y, r, ha="right", va="center", fontsize=5.3)
+        col = CARR if i == 3 else ROLE
+        for j in range(3):
+            ax.scatter([x0 + j * xs], [y], s=24, color=col if val[i][j] else "white", edgecolors=col, linewidths=0.8, zorder=3)
+    save(fig, "fig0_schematic")
+
+
+def fig_schematic_grids():
+    """Fig 1: three relations drawn as pairs of [layer x head] grids; blue = a head role, orange = the task carrier."""
+    from matplotlib.patches import FancyBboxPatch, Rectangle
+    LIGHT = "#E6E9EC"
+    fig = plt.figure(figsize=(COL, 1.22))
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, 30.3)
+    ax.set_ylim(2.8, 15.0)
+    ax.axis("off")
+    c = 1.02  # cell size
+    model1 = {"role": [(0, 2), (2, 0)], "carrier": [(1, 3)]}
+    second = {"unrelated": {"role": [(0, 0), (2, 3)], "carrier": [(1, 1)]},
+              "siblings": {"role": [(0, 2), (2, 0)], "carrier": [(1, 1)]},
+              "descendants": {"role": [(0, 2), (2, 0)], "carrier": [(1, 3)]}}
+    titles = {"unrelated": ("Unrelated", "different initialization"),
+              "siblings": ("Siblings", "same init., other data"),
+              "descendants": ("Descendants", "continued training")}
+
+    def grid(x0, y0, m):
+        for li in range(3):
+            for hj in range(4):
+                fc = LIGHT
+                if (li, hj) in m["role"]:
+                    fc = ROLE
+                if (li, hj) in m["carrier"]:
+                    fc = CARR
+                ax.add_patch(Rectangle((x0 + hj * c, y0 + (2 - li) * c), c * 0.88, c * 0.88, fc=fc, ec="none"))
+    for k, rel in enumerate(("unrelated", "siblings", "descendants")):
+        x = 0.25 + k * 10.0
+        ax.add_patch(FancyBboxPatch((x, 3.0), 9.6, 11.7, boxstyle="round,pad=0,rounding_size=0.6",
+                                    fc="#F7F8FA", ec="#D5D9DE", lw=0.5))
+        ax.text(x + 4.8, 13.6, titles[rel][0], ha="center", va="center", fontsize=7.2, fontweight="bold")
+        ax.text(x + 4.8, 12.35, titles[rel][1], ha="center", va="center", fontsize=5.9, color=INK)
+        grid(x + 0.45, 7.7, model1)
+        grid(x + 5.15, 7.7, second[rel])
+        ax.text(x + 0.45 + 2.0, 6.8, "model 1", ha="center", va="center", fontsize=5.4, color=OTHER)
+        ax.text(x + 5.15 + 2.0, 6.8, "model 2", ha="center", va="center", fontsize=5.4, color=OTHER)
+        same_role = second[rel]["role"] == model1["role"]
+        same_carr = second[rel]["carrier"] == model1["carrier"]
+        ax.text(x + 4.8, 5.15, ("same" if same_role else "different") + " role heads", ha="center", va="center", fontsize=6.0,
+                color=ROLE, fontweight="bold" if same_role else "normal")
+        ax.text(x + 4.8, 3.95, ("same" if same_carr else "different") + " carriers", ha="center", va="center", fontsize=6.0,
+                color=CARR, fontweight="bold" if same_carr else "normal")
+    save(fig, "fig0_schematic")
+
+
+def fig1_dots():
+    """Fig 2 (redesign): per-pair dots and mean bars for attention-role vs carrier correspondence by relation."""
+    E81 = {f.split("/")[-1][:-4]: npz(f) for f in glob.glob(str(R / "e81" / "*.npz"))}
+    E83 = {f.split("/")[-1][:-4]: npz(f) for f in glob.glob(str(R / "e83" / "*step69369*.npz"))}
+    dd = {k: v for k, v in E81.items() if k.startswith("dd__")}
+    rel = {"same training\nlineage": [], "same init.,\nclosely related\ndata": [], "same init.,\ndifferent\ncorpus": [],
+           "different\ninitialization": []}
+    keys = sorted(dd)
+    for i, a in enumerate(keys):
+        for b in keys[i + 1:]:
+            ca, sa = a.split("__")[1], a.split("seed-")[1]
+            cb, sb = b.split("__")[1], b.split("seed-")[1]
+            if sa != sb:
+                rel["different\ninitialization"].append(pair_stats(dd[a], dd[b]))
+            elif ca != cb:
+                rel["same init.,\ndifferent\ncorpus"].append(pair_stats(dd[a], dd[b]))
+    for s in ("default", "large-aux-2", "large-aux-3"):
+        a, b = f"dd__DataDecide-dolma1_7-1B__step69369-seed-{s}", f"dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-{s}"
+        if a in E83 and b in E83:
+            rel["same init.,\nclosely related\ndata"].append(pair_stats(E83[a], E83[b]))
+    rel["same init.,\nclosely related\ndata"].append(pair_stats(E81["pythia__pythia-410m__143000"], E81["pythia__pythia-410m-deduped__143000"]))
+    O = "hf__OLMo-2-0425-1B__"
+    lineage = [("pythia__pythia-410m__66000", "pythia__pythia-410m__143000")]
+    lineage += [(O + "stage1-step1907359-tokens4001B", O + f"stage2-ingredient{i}-step23852-tokens51B") for i in (1, 2, 3)]
+    lineage += [("hf__OLMo-2-0425-1B-SFT__main", "hf__OLMo-2-0425-1B-DPO__main"), ("hf__OLMo-2-0425-1B-DPO__main", "hf__OLMo-2-0425-1B-Instruct__main")]
+    for a, b in lineage:
+        rel["same training\nlineage"].append(pair_stats(E81[a], E81[b]))
+    fig = plt.figure(figsize=(COL, 1.85))
+    ax = fig.add_axes([0.14, 0.25, 0.84, 0.64])
+    rng = np.random.default_rng(0)
+    for k, (name, pairs) in enumerate(rel.items()):
+        for j, col in enumerate((ROLE, CARR)):
+            v = np.array([p[j] for p in pairs])
+            x = k + (j - 0.5) * 0.36
+            ax.bar(x, v.mean(), 0.32, color=col, alpha=0.25, zorder=1)
+            ax.plot([x - 0.16, x + 0.16], [v.mean()] * 2, color=col, lw=1.4, zorder=3)
+            ax.scatter(x + rng.uniform(-0.09, 0.09, len(v)), v, s=5, color=col, lw=0, zorder=4)
+            ax.text(x, v.max() + 0.045, f"{v.mean():.2f}", ha="center", fontsize=5.6, color=col, fontweight="bold")
+    ax.set_xticks(range(len(rel)), list(rel), fontsize=5.8)
+    ax.set_ylim(-0.25, 1.15)
+    ax.set_yticks([0, 0.5, 1.0])
+    ax.axhline(0, color=INK, lw=0.5)
+    ax.set_ylabel("correspondence of head maps")
+    ax.grid(axis="y", color=GRID, lw=0.5, zorder=0)
+    ax.text(0.02, 1.06, "which head attends to the IO", transform=ax.transAxes, color=ROLE, fontsize=6.2, fontweight="bold")
+    ax.text(0.52, 1.06, "which head carries IOI (causal)", transform=ax.transAxes, color=CARR, fontsize=6.2, fontweight="bold")
+    save(fig, "fig1_carryover")
+
+
+def fig_heatmaps():
+    """Sec 4: Pythia-410M and its deduplicated sibling, END->IO attention and DLA, carriers boxed."""
+    from matplotlib.patches import Rectangle
+    a = npz(R / "e81" / "pythia__pythia-410m__143000.npz")
+    b = npz(R / "e81" / "pythia__pythia-410m-deduped__143000.npz")
+    lo, hi = 9, 22
+    fig = plt.figure(figsize=(COL, 2.2))
+    vmax_att = max(a["att_io"].mean(0)[lo:hi].max(), b["att_io"].mean(0)[lo:hi].max())
+    vmax_dla = max(a["dla"].mean(0)[lo:hi].max(), b["dla"].mean(0)[lo:hi].max())
+    for r, (key, cmap, vmax, lab) in enumerate((("att_io", "Blues", vmax_att, "attention END$\\to$IO"),
+                                                 ("dla", "Oranges", vmax_dla, "direct effect on IOI"))):
+        for cidx, (d, name) in enumerate(((a, "Pythia-410M"), (b, "Pythia-410M-dedup."))):
+            ax = fig.add_axes([0.1 + cidx * 0.45, 0.52 - r * 0.43, 0.4, 0.37])
+            M = d[key].mean(0)[lo:hi]
+            ax.imshow(np.clip(M, 0, None), cmap=cmap, vmin=0, vmax=vmax, aspect="auto", interpolation="nearest")
+            for (l, h) in top(d["dla"].mean(0)):
+                if lo <= l < hi:
+                    ax.add_patch(Rectangle((h - 0.5, l - lo - 0.5), 1, 1, fill=False, ec=INK, lw=0.9))
+            ax.set_xticks([0, 15], ["0", "15"] if r == 1 else ["", ""], fontsize=5.4)
+            ax.set_yticks([0, hi - lo - 1], [str(lo), str(hi - 1)], fontsize=5.4)
+            if r == 0:
+                ax.set_title(name, fontsize=6.6, fontweight="normal", loc="center")
+            if cidx == 0:
+                ax.set_ylabel(lab, fontsize=6.0)
+            if r == 1:
+                ax.set_xlabel("head", fontsize=5.6, labelpad=-4)
+            for sp in ax.spines.values():
+                sp.set_visible(False)
+    save(fig, "fig_classes")
+
+
+def fig_competition():
+    """Sec 6 (E84-E86): which candidate becomes the strongest induction head is not reproducible; the role map is."""
+    import e86_analyze as e86
+    E46 = R / "e46"
+    full = lambda n: json.loads((E46 / f"{n}.json").read_text())["measures"] if (E46 / f"{n}.json").exists() else None  # noqa: E731
+    pats = {"base": "L_i{i}_c4_o1_st3000", **e86.NAMES, "repeat": "L_i{i}_c4_o1_st3000_maskrepeat0.1_500-2000"}
+    steps = ["100", "250", "500", "750", "1000", "1500", "2000", "3000"]
+    xs = [int(s) for s in steps]
+    MASK = "#E69F00"
+    fig = plt.figure(figsize=(TXT, 1.72))
+    axA = fig.add_axes([0.055, 0.25, 0.19, 0.6])
+    axB = fig.add_axes([0.305, 0.25, 0.2, 0.6])
+    axC = fig.add_axes([0.575, 0.25, 0.16, 0.6])
+    axD = fig.add_axes([0.80, 0.25, 0.19, 0.6])
+    # a: one initialization, two identical runs
+    b, r = full(pats["base"].format(i=12)), full(pats["rerun"].format(i=12))
+    for (l, h), col in (((7, 2), CARR), ((8, 3), ROLE)):
+        for d, ls, mk in ((b, "-", "o"), (r, "--", "s")):
+            axA.plot(xs, [np.array(d[s]["M1"])[l, h] for s in steps], ls, marker=mk, ms=2.4, color=col)
+    axA.text(110, 0.72, "head 8.3, runs 1 and 2", color=ROLE, fontsize=5.8)
+    axA.text(110, 0.62, "head 7.2, run 1", color=CARR, fontsize=5.8)
+    axA.text(2000, 0.06, "7.2, run 2", color=CARR, fontsize=5.8, ha="center")
+    axA.set_xscale("log")
+    axA.set_xticks([100, 1000, 3000], ["100", "1k", "3k"])
+    axA.set_ylim(-0.03, 0.8)
+    axA.set_ylabel("induction score")
+    axA.set_xlabel("training step")
+    axA.set_title("a  two identical runs", fontsize=6.9)
+    # b: original strongest head in the other run, per initialization
+    rows = []
+    for i in range(1, 16):
+        bm = full(pats["base"].format(i=i))
+        if bm is None:
+            continue
+        o = e86.best(bm["3000"]["M1"])
+        for cond in ("rerun", "mask0", "mask1"):
+            d = full(pats[cond].format(i=i))
+            if d is not None:
+                D = np.array(d["3000"]["M1"])
+                rows.append((i, cond, D[o] / D.max()))
+    for cond, col, mk, dx, lab in (("rerun", INK, "o", -0.18, "identical rerun"), ("mask0", MASK, "^", 0.06, "random 10% mask"),
+                                   ("mask1", MASK, "^", 0.22, None)):
+        v = [(i + dx, x) for i, c, x in rows if c == cond]
+        axB.scatter(*zip(*v), s=7, marker=mk, color=col, lw=0, label=lab, zorder=3)
+    axB.axhline(1, color=GRID, lw=0.8, zorder=0)
+    axB.axhline(0.9, color=OTHER, lw=0.5, ls=":", zorder=0)
+    axB.set_xticks([1, 5, 10, 15])
+    axB.set_xlabel("initialization")
+    axB.set_ylabel("first run's head / strongest")
+    axB.set_ylim(-0.05, 1.08)
+    axB.legend(loc="lower left", fontsize=5.4, handletextpad=0.1, borderaxespad=0.1)
+    axB.set_title("b  strongest head, 15 initializations", fontsize=6.9)
+    # c: role maps reproduce
+    res = json.loads((R / "e85" / "e86_analysis.json").read_text())
+    groups = (("rerun", ("rerun",)), ("random\nmask", ("mask0", "mask1")))
+    for k, (name, conds) in enumerate(groups):
+        for j, (key, col) in enumerate((("r_M1", ROLE), ("r_M2", "#56B4E9"))):
+            v = np.array([x[key] for x in res["rows"] if x["cond"] in conds])
+            x0 = k + (j - 0.5) * 0.36
+            axC.bar(x0, v.mean(), 0.32, color=col, alpha=0.25)
+            axC.plot([x0 - 0.16, x0 + 0.16], [v.mean()] * 2, color=col, lw=1.3)
+            axC.scatter(x0 + np.random.default_rng(k * 2 + j).uniform(-0.09, 0.09, len(v)), v, s=4, color=col, lw=0, zorder=3)
+    for j, (key, col) in enumerate((("r_M1", ROLE), ("r_M2", "#56B4E9"))):
+        x0 = 2 + (j - 0.5) * 0.36
+        axC.plot([x0 - 0.16, x0 + 0.16], [res["unrelated"][key]] * 2, color=col, lw=1.3)
+    axC.text(0.25, 1.08, "induction", color=ROLE, fontsize=5.6, ha="center")
+    axC.text(1.8, 1.08, "previous token", color="#56B4E9", fontsize=5.6, ha="center")
+    axC.set_xticks([0, 1, 2], ["rerun", "random\nmask", "other\ninit."], fontsize=5.8)
+    axC.set_ylim(-0.1, 1.15)
+    axC.set_yticks([0, 0.5, 1])
+    axC.axhline(0, color=INK, lw=0.5)
+    axC.set_ylabel("role-map correspondence")
+    axC.set_title("c  role maps", fontsize=6.9)
+    # d: copying ability, relative to the first run
+    for cond, col, inits, lab in (("rerun", INK, range(1, 16), "rerun"), ("mask0", MASK, range(1, 16), "random 10%"),
+                                  ("repeat", CARR, (1, 2, 3), "most repetitive 10%")):
+        Y = []
+        for i in inits:
+            bm, d = full(pats["base"].format(i=i)), full(pats[cond].format(i=i))
+            if bm is None or d is None:
+                continue
+            Y.append([d[s]["copy_gain"] / bm[s]["copy_gain"] for s in steps[4:]])
+        Y = np.array(Y)
+        axD.plot(xs[4:], Y.mean(0), "-o", ms=2.4, color=col, label=lab, zorder=3)
+        if cond == "repeat":
+            axD.fill_between(xs[4:], Y.min(0), Y.max(0), color=col, alpha=0.15, lw=0)
+    axD.axvspan(500, 2000, color="#F4E1D2", lw=0, zorder=0)
+    axD.axhline(1, color=INK, lw=0.5)
+    axD.set_ylim(0, 1.6)
+    axD.set_xlim(900, 3100)
+    axD.set_xticks([1000, 2000, 3000], ["1k", "2k", "3k"])
+    axD.text(1450, 1.45, "masking window", color="#B5835A", fontsize=5.6, ha="center")
+    axD.set_xlabel("training step")
+    axD.set_ylabel("copying rel. to first run")
+    axD.legend(loc="lower right", fontsize=5.2, handlelength=1.2, borderaxespad=0.1)
+    axD.set_title("d  copying ability", fontsize=6.9)
+    save(fig, "fig3_masking")
+    return {"rows": [(i, c, round(float(x), 3)) for i, c, x in rows]}
 
 
 if __name__ == "__main__":
