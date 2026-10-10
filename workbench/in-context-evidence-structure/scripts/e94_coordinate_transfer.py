@@ -84,7 +84,7 @@ def main():
     from transformers import AutoModelForCausalLM
     torch.set_num_threads(6); torch.manual_seed(0); t0 = time.time(); print('Loading float32 two-device model', flush=True)
     model, loading = AutoModelForCausalLM.from_pretrained(a.model, local_files_only=True, dtype=torch.float32, device_map='auto',
-            max_memory={0: '78GiB', 1: '78GiB'}, attn_implementation='eager', output_loading_info=True)
+            max_memory={0: '64GiB', 1: '64GiB'}, attn_implementation='eager', output_loading_info=True)
     model.eval(); model.requires_grad_(False); assert not loading.get('missing_keys'), loading
     assert set(model.hf_device_map.values()) <= {0, 1, 'cuda:0', 'cuda:1'}, model.hf_device_map
     assert all(any(k in x for k in ('visual.', 'vision_', 'mtp.')) for x in loading.get('unexpected_keys', [])), loading

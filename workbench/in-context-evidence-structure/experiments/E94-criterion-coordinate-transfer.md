@@ -67,3 +67,6 @@ E93强direct已完整384行：B自身98.4%、explicit A oracle100%，A mixed约4
 执行第一步用float32/eager双卡以分开数值误差与很小的运输分量；scientific rows预计每context304，共1216：四native组各16（64），三个band各四criterion/random operator×16（192），Source-name三band×16（48）。Prefix donor每context8个另行前向，只用于构造方向。原始模型分段加载不涉及训练/高速跨节点集群。
 
 E93thinking最终已返回：120/128 native、oracle32/32、probe29/32，全部7截断已续完；其11错误完整保留。E94依赖的direct阳性不变，未依据thinking成功项筛选本实验材料或band。
+
+
+**科学运行前资源纠正：** 启动前查到本地各卡已有其它作业约16GiB、util约97%；未中止或改动它们。将本实验auto placement上限从每卡78改为64GiB，给既有作业和activation留内存。数据/精度/三个band/读数不变，修改在科学行产生之前提交。两卡合计128GiB仍可容纳约108GB float32权重；加载时必须全部落在两张CUDA卡，禁止无声CPU offload。
