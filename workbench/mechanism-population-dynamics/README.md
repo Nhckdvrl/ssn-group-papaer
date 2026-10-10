@@ -10,6 +10,12 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
+### 2026-10-10 当前进度（17:20）
+- **问题：** 训练数据（尤其是问答式指令数据）怎样改变模型在“上下文证据 vs 自身记忆”之间的取舍，能否把它与知识增长、一般的提示格式效应分开。
+- **E77 仲裁图谱（120 个检查点，已停）：** 成熟模型中“主语特定知识”对冲突答案的影响随训练下降；但跨 seed 差异大（Pythia-410M 0.56–0.82），“普适常数”撤回；E77 只存整句概率，改由 E80 重测。
+- **E80 测量审计（进行中，12 卡）：** Flan 的问答格式效应在首 token 与 ParaConflict 上都稳健；它**不只是**与主语无关的照抄推动（约 60–73%），还有约 27–42% 的主语特定部分。虚构主语对照经检验有效。
+- **下一步：** E80 其余部分（OLMo 中期训练与后训练、Pythia 发育与 seed、DataDecide 中间步）；确认后再决定是否做受控训练。详见 `experiments/E80-*.md`、`logs/2026-10-10.md`。
+
 ### 2026-10-10 转向判断（待人决定）
 复核 GPT 审计：方向 A（机制知识跨 run 复用）被 E75 现有数据否定（映射头 2/3 即目标自身 top-3）；方向 B 的起点 E24 是语料家族效应（家族内 ρ −0.18）。建议把中心换成“同一份指令数据何时教模型相信上下文、何时教它相信记忆”（从头训练↑ / 中期训练先升后降 / 继续预训练↓ 三处矛盾），见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。
 
