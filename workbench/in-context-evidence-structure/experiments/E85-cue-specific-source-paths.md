@@ -27,4 +27,34 @@
 
 CPU/token/variant预检通过，科学源码SHA256 `efbd56e31b04d4f448fb9bb8bb8386032ed843c52f85570d5cc7694440ec89e3`；N/M/NM与base的词频、sites、长度一致。命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e85_cue_paths.py --model /tmp/ices_models/Qwen3-8B --out results/e85/qwen3_discovery --n 32 --seed 85001`。
 
-待GPU运行；E84完整确认已回、读数允许此一项native依赖实验，不先训练新预测器。
+32-context pilot已完成，18条件×8 queries全部保留。科学墙时123.562s（.03432 GPU·时）；no-op=0、完整前向误差3.62e−5nats、行和误差5.96e−7、mask=0，所有非目标cache切片逐位相同。结果见`results/e85/qwen3_discovery/{run,analysis}.json`。
+
+| 布局/干预 | field分量（nats） | code分量（nats） |
+|---|---:|---:|
+| Tag base | .336 [.282,.396] | .198 [.154,.247] |
+| Tag NameK | −.235 [−.292,−.182] | .098 [.055,.144] |
+| Tag LabelKV | −.299 [−.368,−.235] | −.212 [−.277,−.152] |
+| Tag joint | .240 [.184,.297] | −.088 [−.129,−.049] |
+| Prefix base | .609 [.499,.727] | .464 [.374,.562] |
+| Prefix NameK | −.398 [−.488,−.308] | .325 [.254,.406] |
+| Prefix LabelKV | −.539 [−.643,−.443] | −.494 [−.601,−.398] |
+| Prefix joint | .376 [.300,.461] | −.314 [−.382,−.254] |
+
+四种完整native反事实的符号都符合跑前预测。NameK使field反转而code仍正，但code也减弱，因此不是完美分离；LabelKV使两者反转，joint的field回正/code仍负。支持cue-specific依赖与共享映射的参与，不识别两个独立Source ID或唯一电路。
+
+### POST-HOC解释与独立确认前冻结（尚未看确认数据）
+
+看到pilot joint之后提出一个有限组合解释：每布局/每cue分别用三个**pilot均值**b（base）、n（NameK）、m（LabelKV），预测joint为`n*m/b`；与直接相加的预测`n+m-b`比较。它测试名字读取与映射的平均增益是否能组合，不是新的注意力数学，不是逐query完整算法。拟合只用pilot b/n/m；事后提出的身份如实保留。参数不在确认集重新拟合。
+
+冻结文件`results/e85/gate_forecast_posthoc.json`记录原始行为hash、脚本hash、4000次context bootstrap的参数不确定性。固定绝对均值预测：
+
+| 确认目标 | product预测 | additive预测 |
+|---|---:|---:|
+| Tag field | +.209 | −.870 |
+| Tag code | −.105 | −.311 |
+| Prefix field | +.352 | −1.545 |
+| Prefix code | −.345 | −.633 |
+
+确认固定64新contexts、seed185001、相同科学源码/18条件/8queries，不筛donor或样本。先报告跑前native/hybrid符号预测是否重现；再比较冻结模型的四项joint绝对预测与实际均值/CI。主比较为每context四分量等权的固定预测MSE（product−additive，context bootstrap4000 seed851）；同时报告均值绝对残差。pilot参数不确定性与确认采样CI分开，不把CI重叠当等效。即使product胜出，也只支持此接口下的平均组合，不自动宣称新组件或跨任务机制；若均值误差明显，则收窄这一模型，不用确认数据改系数。
+
+确认命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e85_cue_paths.py --model /tmp/ices_models/Qwen3-8B --out results/e85/qwen3_confirmation --n 64 --seed 185001`。本段与预测文件先commit再运行。

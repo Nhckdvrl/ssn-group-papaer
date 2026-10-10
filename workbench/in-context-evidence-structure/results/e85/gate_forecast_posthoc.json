@@ -1,0 +1,97 @@
+{
+  "status": "POST-HOC discovery model; frozen before independent confirmation",
+  "n_discovery_contexts": 32,
+  "source_behavior_sha256": "ed4947b0f6a79f410a14baee1ac8879c4a9b2af0b4e6a0fdf7c653f2719fd58b",
+  "script_sha256": "ab5e7b4d71dd106f8cfc55e949e5f134061e32c1174a682d85c39e26143aa3a4",
+  "predictions": {
+    "D0.field": {
+      "base": 0.33608032017946243,
+      "name": -0.23547882586717606,
+      "mapping": -0.2985021770000458,
+      "name_ratio": -0.7006623468504002,
+      "mapping_ratio": -0.8881870168436211,
+      "product": {
+        "mean": 0.20914923587680562,
+        "ci95": [
+          0.1517092654279352,
+          0.27416484341366276
+        ]
+      },
+      "additive": {
+        "mean": -0.8700613230466843,
+        "ci95": [
+          -1.030911197885871,
+          -0.7202844707295298
+        ]
+      }
+    },
+    "D0.code": {
+      "base": 0.19754838198423386,
+      "name": 0.09772663563489914,
+      "mapping": -0.21166206896305084,
+      "name_ratio": 0.49469722127462734,
+      "mapping_ratio": -1.071444204387072,
+      "product": {
+        "mean": -0.10470863736525979,
+        "ci95": [
+          -0.16321014722847535,
+          -0.058200976072835094
+        ]
+      },
+      "additive": {
+        "mean": -0.31148381531238556,
+        "ci95": [
+          -0.3932752043008804,
+          -0.2349536381661892
+        ]
+      }
+    },
+    "D1.field": {
+      "base": 0.6089218333363533,
+      "name": -0.39766937494277954,
+      "mapping": -0.5388749614357948,
+      "name_ratio": -0.6530713027054769,
+      "mapping_ratio": -0.8849657409773541,
+      "product": {
+        "mean": 0.35192377306023814,
+        "ci95": [
+          0.2674832161395035,
+          0.44609441283731877
+        ]
+      },
+      "additive": {
+        "mean": -1.5454661697149277,
+        "ci95": [
+          -1.7984263963997364,
+          -1.2824839564040302
+        ]
+      }
+    },
+    "D1.code": {
+      "base": 0.46420934051275253,
+      "name": 0.32489125430583954,
+      "mapping": -0.4935775026679039,
+      "name_ratio": 0.6998809070644159,
+      "mapping_ratio": -1.0632649100139004,
+      "product": {
+        "mean": -0.34544547027380174,
+        "ci95": [
+          -0.4326338221767705,
+          -0.27041238771193044
+        ]
+      },
+      "additive": {
+        "mean": -0.6328955888748169,
+        "ci95": [
+          -0.7670453930273652,
+          -0.5025867516174912
+        ]
+      }
+    }
+  },
+  "scope": "Mean field/code effect under joint native-cache intervention; not full algorithm or accuracy.",
+  "limitations": [
+    "Identity and mapping patch donors change contextualized K/V, not isolated semantic variables.",
+    "Mean gain composition need not describe all contexts or all pathways."
+  ]
+}
