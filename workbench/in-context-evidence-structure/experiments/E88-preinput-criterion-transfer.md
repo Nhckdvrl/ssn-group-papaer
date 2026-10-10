@@ -1,6 +1,6 @@
 # E88：测试输入前的来源条件状态能否转移判断标准？（2026-10-10）
 
-- **状态：** PLANNED；下述协议与脚本在首次GPU评分前冻结。E87原候选继续未运行。
+- **状态：** DONE（24-context pilot与32-context新措辞确认）；原预注册PLANNED，协议与脚本在首次GPU评分前冻结。E87原候选继续未运行。
 - **类型：** PILOT。
 - **对应：** I04 / C16 / C20 / P13 / P20。
 - **问题（一句话）：** 保留recipient示例时，名字相同但从示例推断的标准不同的input前状态，能否使新评论转向donor标准？
@@ -25,7 +25,16 @@ E66移除demo读取后single/mixed都失败；本实验保留recipient证据，�
 
 ## 结果（首次运行后追加）
 
-待运行。C16/C20不升级；没有开关线或workbench状态变化。
+确认主读数同姓名隐式标准T=−.00084[−.01307,.01154]nats；显式标准T=.18225[.14904,.21662]，两者差=.18309[.15328,.21541]。姓名交换T=.17472[.02833,.32209]，隐式native标准flipT=.26421[.21986,.31144]，显式native flip=.90162[.81844,.98987]。
+
+相对各自native均值，隐式迁移−.00317[−.05247,.04274]、显式.20214[.16465,.24277]；比值差.20531[.15679,.26142]，所有bootstrap分母>.1，未删context。该比值不是天然模块贡献率。
+
+默认discordant accuracy约50.78%；一句指令约52.34%；显式约53.52%（完整CI见analysis）。显式patch两个方向T=.16997[.12867,.21275]/.19453[.15187,.23701]，同向评论绝对扰动也有.17916[.15198,.20649]nats，故不称纯标准操作。最大数值误差1.335e−5nats；confirmation247.215秒=.06867 GPU·时。两次合计约.11821 GPU·时。
+
+- **结果文件：** `results/e88/qwen3_{discovery,confirmation}/{analysis,run,preflight,availability_comparison}.json`；原始contexts/behavior JSONL留本地；`results/e88/readout_sanity.json`检查known criterion与constant-bias scorer，图`results/figs/e88_criterion_transfer.{png,pdf}`已目视检查。
+- **实际决策：** 有界分离确认；不进入隐式criterion/recipient证据竞争，不扫位置。先用E89原生对话对照标准识别与评论判断，理解raw native弱的来源，不能把这里的失败说成完整规则不存在或组合能力缺失。
+- **主张：** C16/C20仍L1；E85有效结果不撤回；没有idea/workbench开关线。确认材料/脚本hash一致，独立科研校对尚未完成，不升L2/3。
+- **解释：** 支持该前置来源字段接口对显式和demo推断标准有不同功能范围；不证明pure address、独立抽象program，仍兼容分布式任务信息与输入出现后才形成的标准相关计算。
 
 ## 2026-10-10：pilot结果后的确认协议（新运行前冻结）
 
@@ -42,3 +51,5 @@ pilot完整24contexts/384queries，源码SHA `522515d8679de5a7947400ba149616993d
 - 补充量：两项各自相对native flip的**均值比**及配对bootstrap差异，用于诊断原生响应强度的替代解释。native接近0时不据比值判断，不截掉困难context/重采样；该比值不是模块贡献份额。探索集报告为POST-HOC，确认集是冻结读数。
 - 如果新材料隐式迁移恢复，或显式/隐式差异消失 → 不保留稳定分离；如果仅native大小不同且相对比值差异不明确 → 更兼容效应强度/识别难度，不称不同信息组织机制；如果同接口分离仍明确 → 保留“标准推断与来源条件状态形成之间的有界区别”，仍不证明纯地址/完整program，不把显式规则任务替代研究中心。
 - 额外预算≤.25 GPU·时；本卡总预算≤.55。命令：`CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e88_criterion_transfer.py --model /tmp/ices_models/Qwen3-8B --out results/e88/qwen3_confirmation --n 32 --seed 188001 --stage confirmation`。
+
+**功能解释校对（使用已预注册selectivity）：** explicit patch后的recipient方向selectivity均值仍+.04938[−.01601,.11380]，base+.14050[.07642,.20488]；没有形成平均donor方向反转。双向T排除了简单常数label bias，却未排除Source效应衰减/来源身份信号被扰动。+.182nats应称donor方向的输出扰动，不能独立叫“执行donor标准”。本备注不改变原始T或确认结果，不据此增加GPU控制。

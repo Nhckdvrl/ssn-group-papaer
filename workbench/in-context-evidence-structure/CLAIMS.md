@@ -131,3 +131,21 @@ pilot之后明确POST-HOC提出、commit decabf63冻结的均值组合模型`n*m
 ### E86：冻结外推失败，保留E85自身的证据范围
 
 [E86](experiments/E86-source-equivalent-code-aliases.md)、`results/e86/qwen3_discovery/{analysis,run}.json`：16新contexts，明确同Source两码可互换；segregated−balanced的未知Item matched/crossed margin gap，Tag14.463 [13.055,15.826]、Prefix15.892 [14.548,17.156]nats；冻结E85均值外推仅.395/.928。两预测模型均严重失准，不因cue相对MSE较小称预测成功。规则输出响应仍为正；这不证明来源信息消失或唯一按码分组的native算法。C20仍L1，E85联合干预的独立确认不撤回。64-context确认未启动，当前不将alias局部控制扩展为主问题。
+
+### E88：来源字段状态的功能范围（C16/C20仍L1）
+
+[E88](experiments/E88-preinput-criterion-transfer.md)、`results/e88/qwen3_confirmation/{analysis,availability_comparison,run}.json`：24 pilot→32新措辞contexts；保留recipient示例，在input前query来源字段上换同姓名donor K/V。隐式criterion T=−.00084[−.01307,.01154]nats；另一姓名T=.17472[.02833,.32209]；显式criterion T=.18225[.14904,.21662]。显式−隐式=.18309[.15328,.21541]，相对native均值比的差也为正。源码冻结、数值误差≤1.34e−5，不筛contexts。
+
+这项分离限制了该Source-field状态的功能解释，不证明pure address、完整criterion不存在或新独立模块。raw默认discordant accuracy约50.8%，不能先假定完整标准已经可靠学会。JIT/Local Task Vectors已提供时间/分布式表示的强解释；显式标准阳性不替代从多Source demo推断规则的中心。E85有效均值预测保留；独立科研校对未完成，不升L2/3。
+
+### E89初版的能力解释作废／接口校对
+
+[E89](experiments/E89-native-criterion-recognition-and-use.md)、`results/e89/qwen3_discovery/wrong_answer_type_posthoc.json`：共享system列两种回答类型，评论请求只用Label:结尾。explicit条件256条评论请求中181个首token为food/service变体。第一token/合法标签域的低准确率不能支持“标准应用失败”；初版只保留为请求歧义诊断，没有主张据此升级。修订明确每次问题，并完整生成，原始数据/源码revision保留。这个校对不自动作废E88的preregistered logit反事实。
+
+### E89完整解码后的解释边界（仍不升级）
+
+`results/e89/qwen3_completed_answers/{run,final_answer_audit_posthoc}.json`：所有178截断样本延长，原前缀178/178保持；最后两条仍未完成。最终内容parser的138项修正已逐项核对末行，标POST-HOC并保留原统计。相反情绪评论base56.25%[52.34,60.94]，explicit52.34%[48.44,56.25]；标准识别在明确请求中分别50.0%和53.12%，初版explicit96.9%没有跨请求保持。没有形成“标准已可靠学会但无法使用”的证据，不据此给C16/C20或能力缺失升级。
+
+**E56代码核对（不是新结果）：** `scripts/e56_query_adapter.py`的qhook只在最后位置加delta，且prefill时state.on=False；示例缓存确实来自未修改模型。不能为了减弱E56而假设该adapter重编码了示例。其成功仍支持baseline表示加额外训练计算的构造性可用性；不等于原生程序或一个八维独立开关已存在。
+
+E88功能校对：explicit patch后的recipient向selectivity仍+.04938[−.01601,.11380]；正的donor向T可以来自Source效应减弱。双向T排除常数label bias，没有排除一般Source-cue扰动，故不将+.182nats直接称为执行donor criterion。用原已注册读数保留这个解释，不开新控制矩阵。

@@ -303,3 +303,19 @@ corpus broad nearest“source-conditioned … evidence selection”主要命中R
 - [JIT主文卡](li2025-just-in-time-task-representations.md)、[Lepori主文卡](lepori2026-representation-deployment.md)补实际阅读全文范围；以可迁移状态、任务范围和后续计算作对象。旧Lepori摘要条保留为历史，不再把其所有具体机制都标未核对。
 - CAT正式PDF主文§1–3与FaiMA主文§1–3.1也检查过：前者已有counterfactual输入使用测量，后者是显式方面任务与外部例子检索。本文不以一般方面敏感性或ABSA为novelty，不声称已核对两篇全部实验/代码。corpus nearest E87自然Source条件问题命中较散，不能当空白证据。
 - 此次静态检索反例与下一候选的功能预测见ICES综合§14，不把新论文变成追加技术清单，不由近邻自动关线。
+
+### E88开始前：标准信号的功能反事实
+
+补读[JIT v3](li2025-just-in-time-task-representations.md)主文§2–5（HTML503，改读最新PDF）：v3包含Qwen3、输入前状态部分迁移及cross-token迁移，任务身份/可用状态并非严格二分。读[Local Task Vectors](zheng2026-local-task-vectors.md)官方主文§2–6：分类规则可保存在异质的demo答案状态，平均全局状态可能失败。二者已经占据抽象规则迁移与位置局部性的宽解释。
+
+corpus nearest与最新arXiv还命中[CC-ICL](yang2026-criterion-conditional-icl.md)，实际读v2主文§1–6；它已有同support输入改标签、标准敏感/不变案例配对。不会把E88的这项行为测量当新构念；也不会从其有限prompt控制推出所有模型必须训练才能适应标准。
+
+当前具体增量候选：多来源标准共存时，**同姓名的input前条件状态与recipient保留证据如何结合**。E88首次只测从demo形成的标准相关信号能否跨新评论起作用，阳性仍允许criterion-conditioned retrieval；并非首次任务向量或完整抽象规则。先预注册24-context pilot（提交567e28d3）再评分，不因近邻重叠撤回E85的有效预测。
+
+### E88/E89后回到科学问题
+
+E88有界接口分离确认，E89未建立可靠知道却不用；不继续格式矩阵。补读[Multi-Task Bayesian ICL主文、特别§5.2.2](zhu2026-multi-task-bayesian-icl.md)：固定target/query改其它任务数据，比较正确hierarchical conditioning与错误单latent pooling。原生神经电路并未反推；不能把该功能匹配当完整算法定位。
+
+[Strategies Emerge Rationally v2](https://arxiv.org/html/2506.17859v2)本次只核对引言、讨论/局限及附录B/C，未重新完整复算§4理论。它的hierarchical是对memorizing/generalizing预测器的权重与训练偏好，不等于MT-ICL的共享task-prior层次。不能将术语相同当机制相同，也不能把多来源数据影响预测本身作为首次发现。
+
+候选具体方向是Source关系约束下的标准信息传播：同样的foreign数据何时是错误干扰，何时必须影响当前规则；它是在demo上下文化还是query阶段进入计算。与CTA、Local Task Vectors、Binding/Mixing Mechanisms正面对齐，只有不同反事实预测和功能干预才可能给具体增量。详见ICES综合§15.6，当前没有自动转向/关线或并行新矩阵。

@@ -8,6 +8,8 @@
 - **E84/E85：** code代理更准确预测布局Label读取变化，但native两Cue都用；NameK交换独立确认使field反转/code保正，LabelKV改变两者。冻结联合干预四项均值预测误差.007–.036nats，形成有限依赖/组合解释，不称两个独立Source模块或完整算法。详见综合§11–12。
 - **E86与最新纠偏：** 16-context pilot中码与标签直接相关时，alias gap增强14.46/15.89nats，严重超出旧模型外推。结果保存，64-context确认未启动；先读完整机制论证、回到自然多规则问题，避免局部控制自行繁殖。详见综合§13。
 - **最新研究重构：** 不扩实验矩阵。输入过滤/条件读出/示例检索未必是互斥机制，整段状态交换也不识别所携带信息的功能。综合§14已逐项对照旧证据和原论文；优先明确Source地址与criterion含义的不同预测。E87仅未实施候选记录，无科学脚本/运行。
+- **E88实际推进：** 保留recipient示例、input前同姓名来源字段K/V移植，24 pilot→32新措辞确认；隐式criterion迁移−.00084[−.01307,.01154]nats，显式+.18225[.14904,.21662]；两者差+.18309[.15328,.21541]。这是接口功能的有界分离，raw discordant accuracy约51%，不宣称完整规则/纯地址已证明。详见综合§15与卡。
+- **E89诊断已完成：** 原生chat初版有请求类型歧义，明确请求后续完全部178截断回答、逐项核对最终结论；默认discordant accuracy56.25%[52.34,60.94]，标准识别50%。显式识别不跨请求稳定，未建立“知道标准但不会使用”。不继续格式/位置矩阵；候选下一问题是规则形成中的合法跨Source信息传播，定位与竞争解释见综合§15.6。
 - **2026-10-08/09 进展：** 真实数据上的后果与机制（C13，E46–E49）：多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（2 个真实数据集、8 模型、4 家族）；每人独立的标签词恢复到单人水平；读标签头把另一人的标签读进答案，换词后在读出层面分隔（E48）。顺序 / 格式敏感线（E40–E45）已止损关闭。见 `PAPER_SHAPE.md` 末节。
 - **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **E65/E66更新：** query接力有模型边界（Qwen的Label标记／Mistral的来源字段）；删direct-label无稳定accuracy修复。input前source缓存对single/mixed均失败，已见input的缓存保留logit但准确率收益有限，不能包装成新组合瓶颈。各卡与复盘已记负结果，C16仍L1。
@@ -99,6 +101,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **E82/E83资产：** raw JSONL与E82 `native_features/*.npz`留上述NFS路径；小run/preflight/analysis与冻结reader metadata入git。唯一小数组`results/e83/frozen_reader/coefficients.npz`约152KB用于复现冻结预测，按`fit_e83_reader.py`从E82 seed82001重建。E82确认seed182001、E83验证seed183001，全部错误donor/contexts保留。
 - **E84/E85资产：** 小run/preflight/analysis、冻结预测与独立验证、E85静态图入git；raw contexts/behavior JSONL留上述NFS路径。E84 seed84001/184001，E85 seed85001/185001；按卡脚本/同conda复现，科学引擎hash冻结。
 - **E86资产：** 仅seed86001的16-context pilot，小run/preflight/analysis、冻结旧参数预测与图入git；raw在上述NFS的`results/e86/qwen3_discovery/`。按E86卡、同conda/Qwen3-8B重建；seed186001确认未运行。
+- **E88/E89资产：** 小analysis/run/preflight、注明POST-HOC的内容审计、E88图入git；原始JSONL和生成token IDs留上述NFS的`results/e88/`、`results/e89/`。E88源hash522515d8…两阶段不变；E89版本/完整预算续完按各卡与run重建。Qwen3-8B/conda同上，实际合计约.466 GPU·时；没有新checkpoint。
 
 ## 9. 决策记录
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。

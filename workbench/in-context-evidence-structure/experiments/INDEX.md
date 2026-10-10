@@ -95,3 +95,5 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E85](E85-cue-specific-source-paths.md) | NameK对Source字段与code的影响是否依赖同一路径 | DONE；64新context复现field反转/code保正；冻结joint均值预测误差.007–.036nats，有限组合解释非完整算法 |
 | [E86](E86-source-equivalent-code-aliases.md) | 同Source等价码是否共享分类证据 | DONE-PILOT；16contexts中alias关联作用远超冻结外推（14.46/15.89nats）；确认未启动，先按人纠偏综合自然问题 |
 | [E87](E87-source-conditioned-aspect-state.md) | 自然方面判断的候选设计与机制歧义 | PLANNED候选未定稿；最新人指令下不实施整段状态交换，无科学脚本/运行 |
+| [E88](E88-preinput-criterion-transfer.md) | 同姓名input前状态是否携带标准，保留recipient证据 | DONE；24→32新措辞确认隐式迁移约0、显式+.182nats；不称完整program/纯地址，C16/C20不升级 |
+| [E89](E89-native-criterion-recognition-and-use.md) | 原生对话识别标准与实际判断是否不同 | DONE诊断；请求歧义和预算截断完整保留，178前缀续完一致；没有稳定知道却不用证据，不扩格式/位置矩阵 |
