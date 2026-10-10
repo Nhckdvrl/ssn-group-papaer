@@ -1,6 +1,6 @@
 # E91：另一来源的标签词怎样改变当前来源的规则读取？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** RUNNING-CONFIRMATION（24 pilot已完成；48确认在本次附记冻结后启动）
 - **类型：** PILOT；一个namespace反事实，无训练、无层/头选择
 - **对应：** I04 / C16 / C20 / P17；直接连接E48的换词读出解释与E90的来源内继承效应
 - **问题（一句话）：** 分开输出标签的作用是否只来自另一来源Value退出当前答案方向，还是也改变了当前来源的可访问表示及其检索Key？
@@ -42,8 +42,18 @@ E48指定头的foreign-label DLA下降、attention大致不变是有效事实，
 | 原生far作用弱/数值阳性不足 | 记录该设置的结果/限制，不把负结果自动贬低E48，也不铺更多别名 |
 
 - **算力预算：** 单卡pilot≤1 GPU·时；只有明确功能分离才做同脚本新context确认≤1 GPU·时。
-- **实际：** 待填写。
+- **实际：** 24 pilot为136.78秒／.03799 GPU·时；最大数值误差1.91e−6nats。
 
 ## 结果
 
-尚未运行；源码/卡先登记。raw contexts/behavior JSONL仅本地，小preflight/run/analysis入git。
+源码/卡先提交6c14bf89后运行；raw contexts/behavior JSONL仅本地，小preflight/run/analysis入git。
+
+### 24-context发现结果与48-context确认前附记
+
+发现集`results/e91/qwen3_discovery/analysis.json`：A-only的rule幅度shared=.49798[.34987,.65478]、far=.13699[.09091,.18971]，配对下降.36099[.21228,.51885]nats。Value-only为.26635，配对下降.23163[.07099,.40687]；Key-only为.40568，配对下降.09230[−.11135,.28950]，**不能当Key无作用或Value唯一机制**。K、V各自与far的逐context d误差均明显非零；K/V合换复现far是工具阳性。
+
+shared native accuracy56.77%→far67.19%，+10.42[4.17,16.15]点；A-only accuracy57.81%→63.02%，差CI跨零。规则独立性恢复不等同于已确认准确率收益。此次signed A-only平均.00298，仍有异质性；没有因signed平均零宣布没有依赖。
+
+**确认在此附记及forecast文件提交后启动。** 使用原已登记n48/seed191001、同引擎SHA45d2f946473aae0d97f7a3269dbc903e9c111e7d111af4740fe3822f97db8321；不改变任务、模式、标签或主读数。关注原注册的namespace下降是否至少.15nats、V下降是否至少.10，以及K/V单独是否仍偏离far。保留K magnitude下降的不确定性，不把确认当Key零效应的等价检验。数值量级forecast是发现均值的冻结外推，**不是一个已提出的完整计算模型**；全模式与失败预测均报告。
+
+若确认成立，回到主问题：标签词是否只是答案的编码，还是同时影响来源内证据的形成？当前可排除纯粹直接foreign Value退出读出的充分解释；不能排除经A继承的Value/readout、普通上下文化或二者交互。无论确认结果如何不扩词表/层/头矩阵。
