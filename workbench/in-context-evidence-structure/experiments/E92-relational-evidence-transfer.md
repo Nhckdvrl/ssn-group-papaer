@@ -1,6 +1,6 @@
 # E92：另一来源的信息什么时候成为可用的判断标准？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** RUNNING-DIAGNOSTIC（16-context主pilot完成；新增强模型行为诊断先登记）
 - **类型：** PILOT；先定义可辨别的功能信息，不扫头/层/别名
 - **对应：** I04 / C16 / C20 / P17；从E90/E91的历史依赖推进到有用的规则信息共享
 - **问题（一句话）：** 当前Source的样例对food/service标准有歧义时，模型能否按来源关系利用B来确定标准；共享标签与分开标签怎样改变这种信息的作用？
@@ -58,3 +58,14 @@ CTA已有用歧义例检验上下文化的直接所有权，而且实际更支�
 运行前静态枚举已通过（`results/e92/qwen3_discovery/design_audit.json`）：A-alone始终两标准拟合；B及关系唯一拟合，允许B输出polarity正反两种后亦唯一。逻辑规则100%、直接跟B及关系整体反转均75%全四格，discordant/agree错误分布不同；这是设计验证，不是LLM证据。
 
 未运行。与上一goal turn的区别：上一轮是实际进展（E91已验证并上传），本轮明确检验可用的规则信息，未改研究目标为一个更容易通过的小目标。
+
+## 16-context主pilot与强模型诊断的运行前附记
+
+原引擎SHA2edb17847ef6361b63521580d0c3a35771141a48c531dba56828d79ffdfd5f44，16全contexts/34条件完成，numeric7.63e−6nats、.04815 GPU·时。shared native S：same+.28695[.04771,.52912]、different−.27466[−.49340,−.05622]；但B-probe discordant45.3–60.9%、explicit oracle50.0–64.1%。查看完整四格样例，concordant几乎全对、两个mixed-sign例经常都给negative，不能把该签名单独归因“知道标准却不能按关系使用”。E90/E91不撤回，本pilot也不因Task-family已明示就宣称criterion已可靠形成。
+
+**新增诊断在此附记与脚本提交后运行：** 用本地已验证可运行的Qwen3.8-27B目录（实际config为Qwen3.5 hybrid，非普通Qwen3 attention）检查同材料的能力与接口。固定前4个context、每个template0四格；shared词表，native两关系×两world全部四格，oracle只看两discordant格，B-probe两world全部四格，共128请求。固定前4不是挑正确样例；不扩far/格式矩阵，不伪造hybrid Source-token mask。
+
+- native chat对比direct（thinking关闭、Answer: prefill）和原生thinking（medium）；Task内容/例子/问题一致。bf16/SDPA仅用于behavior，不移植activation或从微小logit差定位机制。模型loading不得有missing keys，允许原已核对的vision/MTP辅助tensors未进入text路径。
+- thinking greedy，每请求1024 token；**所有**截断轨迹按已生成prefix追加2048，不把截断当错误、不给成功样例额外预算。final parser在闭合think之后接收exact positive/negative及Answer行，unknown/censored完整报告，不过滤。原始文本/token仅本地。
+- 显式criterion与B-probe若在强model可靠，则这个自然Task接口可继续研究；若更强model也不稳定，重新分析材料/任务而非扫位置。强model正确不支持“小model缺陷永久存在”，而是给正确计算一个机制起点；direct/thinking差不直接定位原生电路。
+- 此次是主pilot回来后的诊断，**不是E92关系或namespace效应的独立确认**。128样例来自4context，只检验Task/接口可行性，不用样例数冒充独立context数。单卡预算≤1 GPU·时，必要完整续完已登记轨迹；不新建research line、不升级C16/C20。

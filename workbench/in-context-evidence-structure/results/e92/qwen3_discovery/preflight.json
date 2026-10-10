@@ -1,0 +1,24 @@
+{
+  "args": {
+    "out": "results/e92/qwen3_discovery",
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "n": 16,
+    "seed": 92001,
+    "stage": "discovery",
+    "design_only": false,
+    "analyze_only": false
+  },
+  "words": {
+    "shared": [
+      8225,
+      6785
+    ],
+    "far": [
+      5181,
+      1494
+    ]
+  },
+  "native_chat_shell": "<|im_start|>system\nInfer the requested reviewer's criterion and label. Return exactly the requested label word.<|im_end|>\n<|im_start|>user\nCONTENT_PLACEHOLDER<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "a_raw_invariant": true,
+  "world_changes_only_b_discordant_labels": true
+}
